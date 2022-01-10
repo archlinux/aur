@@ -2,7 +2,7 @@
 
 _pkgname=lynx-dock
 pkgname=${_pkgname,}
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Lynx Dock - Official Dock for LynxOS"
 url="https://gitlab.com/LynxOS/$pkgname"
@@ -19,7 +19,7 @@ depends=(
         )
 license=('GPL')
 arch=('any')
-md5sums=('8a524e95db0d46bdbf5b3547c80bf858')
+md5sums=('f93fe7d66f9c8e313175f9106a9dae3d')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {
