@@ -1,13 +1,13 @@
 pkgbase = eis-bin
 	pkgdesc = eis is a simple to use command line interface which allows you to use Christian R.'s elearning platform.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://vccourses.cs.ovgu.de/bjoern.gehrke/eis
 	arch = x86_64
 	license = MIT
 	provides = eis
 	noextract = eis
-	source = eis-bin-1.0.0::https://git.hering.sh/finn/eis/-/jobs/487/artifacts/raw/bin/eis
+	source = eis-bin-1.0.0-4::https://git.hering.sh/finn/eis/-/jobs/487/artifacts/raw/bin/eis
 	sha256sums = 0c531b6e30bc375249fb8c0e2d76909283f77d886eb60a47298d7d8fe7cd2ddf
 
 pkgname = eis-bin
