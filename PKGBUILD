@@ -2,23 +2,23 @@
 
 pkgname=keyd
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
-url="https://github.com/rvaiya/keyd"
+url="https://github.com/rvaiya/$pkgname"
 license=('MIT')
 depends=('libudev.so')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("git+$url.git#tag=v$pkgver")
 install=keyd.install
-sha256sums=('9b2195e69f407f08b9aa377d0bca2cd877c5aa9d67a606b81194941ff4ee8b11')
+sha256sums=('SKIP')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver/"
+	cd "$srcdir/$pkgname/"
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/"
+	cd "$srcdir/$pkgname/"
 	make DESTDIR="${pkgdir}" PREFIX='/usr' install
 	install -Dm644 /dev/stdin "${pkgdir}/usr/share/doc/keyd/libinput/local-overrides.quirks" <<-'EOF'
 		# /etc/libinput/local-overrides.quirks (/usr/share/keyd/libinput/local-overrides.quirks)
