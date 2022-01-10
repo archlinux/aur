@@ -1,0 +1,31 @@
+pkgbase = libadwaita-git-pkgs
+	pkgdesc = Building blocks for modern adaptive GNOME applications
+	pkgver = 1.0.1.3.gfddc56f7
+	pkgrel = 1
+	epoch = 1
+	url = https://gnome.pages.gitlab.gnome.org/libadwaita/
+	arch = x86_64
+	license = LGPL
+	checkdepends = weston
+	makedepends = git
+	makedepends = meson
+	makedepends = gi-docgen
+	makedepends = sassc
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = gtk4
+	source = git+https://gitlab.gnome.org/GNOME/libadwaita.git
+	sha256sums = SKIP
+
+pkgname = libadwaita-git
+	depends = gtk4
+	depends = libgtk-4.so
+	provides = libadwaita-1.so
+
+pkgname = libadwaita-docs-git
+	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
+	depends = 
+
+pkgname = libadwaita-demos-git
+	pkgdesc = Building blocks for modern adaptive GNOME applications (demo applications)
+	depends = libadwaita
