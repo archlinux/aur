@@ -1,6 +1,6 @@
 pkgbase = xfel
 	pkgdesc = Tiny FEL tools for allwinner SOC, support RISC-V D1 chip.
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/xboot/xfel
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = xfel
 	depends = libusb
 	conflicts = xfel-git
 	options = !strip
-	source = xfel-1.2.3.tar.gz::https://ghproxy.com/https://github.com/xboot/xfel/archive/refs/tags/v1.2.3.tar.gz
-	sha256sums = b0170a58449a6e92de5ed9f040ee83b35bcf75a3e0b8975a05328de15cbd608d
+	source = xfel-1.2.4.tar.gz::https://ghproxy.com/https://github.com/xboot/xfel/archive/refs/tags/v1.2.4.tar.gz
+	sha256sums = 872a405a1a3c79a36d3b0871f7c2edab066ee94f7c27948e9bd607eab80589f4
 
 pkgname = xfel
