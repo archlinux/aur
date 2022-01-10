@@ -3,7 +3,7 @@
 # Contributor: Roman Kupriyanov <mr.eshua@gmail.com>
 
 pkgname=jitsi-meet-desktop
-pkgver=2021.12.2
+pkgver=2022.1.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,8 @@ replaces=('jitsi-meet-electron')
 depends=('gtk3'
          'libxss'
          'nss')
-depends=('electron>=16.0.4')
+# depends=('electron>=16.0.6')
+depends=('electron15')
 makedepends=('coreutils'
              'git'
              'npm'
@@ -24,14 +25,12 @@ makedepends=('coreutils'
              'libxtst'
              'nvm'
              )
-# _node_version="v16.13.0"
-# v16 seems to make robotjs-installation/building break, so 14 it is for now
 _node_version="16"
 options=(!strip)
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/jitsi/jitsi-meet-electron/archive/v${pkgver}.tar.gz"
         'no_targets.patch'
         'jitsi-meet-desktop.desktop')
-sha256sums=('6d3e896f7e53906cf8d48597e6953d1af6177ed6c28ec86eed4c1c83131a298a'
+sha256sums=('2f11bfe8829e485f174f039b901673aaf4ca375a6c09661bde27ec43998c72d5'
             'ab22749aa1570cc5d6050711011f849ec3f4fa49080231f98957255fa5250e36'
             '36a30a15613d53b2a01626a5551315c6970889ce3c2688bce71e26c3333081a4')
 
@@ -57,7 +56,7 @@ prepare() {
   # target when calling electron-builder..
   patch -Np1 -i ${srcdir}/no_targets.patch
 
-  _electron_dist=/usr/lib/electron
+  _electron_dist=/usr/lib/electron15
   _electron_ver=$(cat ${_electron_dist}/version)
   sed -r 's#("electron": ").*"#\1'${_electron_ver}'"#' -i package.json
   sed 's#git+ssh://git@github.com#git+https://github.com#g' -i package-lock.json
@@ -72,6 +71,9 @@ build() {
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm use ${_node_version}
+
+  _electron_dist=/usr/lib/electron15
+  _electron_ver=$(cat ${_electron_dist}/version)
 
   # npm run build
   # no npx anymore, see https://github.com/electron-userland/electron-builder/issues/6411
@@ -94,7 +96,7 @@ package() {
   cat << EOF > "$pkgdir"/usr/bin/$pkgname
 #!/bin/sh
 
-NODE_ENV=production ELECTRON_IS_DEV=false exec electron /opt/$pkgname/app.asar "\$@"
+NODE_ENV=production ELECTRON_IS_DEV=false exec electron15 /opt/$pkgname/app.asar "\$@"
 EOF
 
   chmod +x "$pkgdir"/usr/bin/$pkgname
