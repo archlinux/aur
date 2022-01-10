@@ -2,7 +2,7 @@
 Operation = Install
 Operation = Upgrade
 Type = Path
-Target = /opt/spotify/Apps/xpui.spa
+Target = opt/spotify/Apps/xpui.spa
 
 [Action]
 Description = Removing Spotify ad banner...

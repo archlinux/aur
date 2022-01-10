@@ -10,7 +10,7 @@ install="${pkgname}.install"
 source=("${pkgname}.hook"
         'remove.sh'
         'restore.sh')
-md5sums=('f2cacbd802efba6ad3007cfa29be84b7'
+md5sums=('c99ab56771851f41b1560e9f8847b7cb'
          '60088b0472eaf8226324ca984c099f00'
          '1e0ab46ea5763380e6f52b12e120affa')
 
