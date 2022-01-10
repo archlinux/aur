@@ -55,12 +55,16 @@ _pick() {
 package_libadwaita-docs-git() {
   pkgdesc+=" (documentation)"
   depends=()
+  provides=(libadwaita-docs)
+  conflicts=(libadwaita-docs)
   mv docs/* "$pkgdir"
 }
 
 package_libadwaita-demos-git() {
   pkgdesc+=" (demo applications)"
   depends=(libadwaita)
+  provides=(libadwaita-demos)
+  conflicts=(libadwaita-demos)
   mv demo/* "$pkgdir"
 }
 

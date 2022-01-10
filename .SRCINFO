@@ -20,7 +20,11 @@ pkgbase = libadwaita-git-pkgs
 pkgname = libadwaita-docs-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
 	depends = 
+	provides = libadwaita-docs
+	conflicts = libadwaita-docs
 
 pkgname = libadwaita-demos-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications (demo applications)
 	depends = libadwaita
+	provides = libadwaita-demos
+	conflicts = libadwaita-demos
