@@ -1,0 +1,60 @@
+diff --color --unified --recursive --text src.old/xdmf/core/CMakeLists.txt src/xdmf/core/CMakeLists.txt
+--- src.old/xdmf/core/CMakeLists.txt	2022-01-10 23:22:52.940028728 +0100
++++ src/xdmf/core/CMakeLists.txt	2022-01-10 23:55:29.950022745 +0100
+@@ -29,6 +29,9 @@
+ if(HDF5_FOUND)
+   include_directories(${HDF5_INCLUDE_DIRS})
+   include_directories(${HDF5_C_INCLUDE_DIR})
++  if(HDF5_VERSION VERSION_GREATER "1.12.0")
++      set(XDMF_HID_T_64 TRUE)
++  endif()
+   # FIXME: Would like to get this info from HDF5 so we don't have conflicting
+   # MPI versions
+   if(HDF5_IS_PARALLEL)
+diff --color --unified --recursive --text src.old/xdmf/core/XdmfCoreConfig.hpp.in src/xdmf/core/XdmfCoreConfig.hpp.in
+--- src.old/xdmf/core/XdmfCoreConfig.hpp.in	2022-01-10 23:22:52.940028728 +0100
++++ src/xdmf/core/XdmfCoreConfig.hpp.in	2022-01-10 23:56:44.850022516 +0100
+@@ -29,9 +29,10 @@
+ 
+ #cmakedefine BUILD_SHARED
+ #ifndef BUILD_SHARED
+-#  define XDMFSTATIC
++#define XDMFSTATIC
+ #endif
+ 
+ #cmakedefine XDMF_NO_REALPATH
++#cmakedefine XDMF_HID_T_64
+ 
+ #endif /* XDMFCORECONFIG_HPP_ */
+diff --color --unified --recursive --text src.old/xdmf/core/XdmfHDF5Controller.hpp src/xdmf/core/XdmfHDF5Controller.hpp
+--- src.old/xdmf/core/XdmfHDF5Controller.hpp	2022-01-10 23:22:52.940028728 +0100
++++ src/xdmf/core/XdmfHDF5Controller.hpp	2022-01-10 23:55:29.950022745 +0100
+@@ -33,7 +33,11 @@
+ #ifndef _H5Ipublic_H
+   #ifndef XDMF_HID_T
+   #define XDMF_HID_T
+-    typedef int hid_t;
++    #ifndef XDMF_HID_T_64
++      typedef int hid_t;
++    #else
++      typedef int64_t hid_t;
++    #endif
+   #endif
+ #endif
+ 
+diff --color --unified --recursive --text src.old/xdmf/core/XdmfHDF5Writer.hpp src/xdmf/core/XdmfHDF5Writer.hpp
+--- src.old/xdmf/core/XdmfHDF5Writer.hpp	2022-01-10 23:22:52.950028728 +0100
++++ src/xdmf/core/XdmfHDF5Writer.hpp	2022-01-10 23:55:29.950022745 +0100
+@@ -34,7 +34,11 @@
+ #ifndef _H5Ipublic_H
+   #ifndef XDMF_HID_T
+   #define XDMF_HID_T
+-    typedef int hid_t;
++    #ifndef XDMF_HID_T_64
++      typedef int hid_t;
++    #else
++      typedef int64_t hid_t;
++    #endif
+   #endif
+ #endif
+ 
