@@ -2,9 +2,9 @@
 
 _pkgname=lynx-desktop-service
 pkgname=${_pkgname,}
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
-pkgdesc="Lynx Desktop Service - Servicios de LynxOS"
+pkgdesc="Lynx Desktop Service - Desktop Services for LynxOS"
 url="https://gitlab.com/LynxOS/$pkgname"
 depends=(
         'python'
@@ -16,7 +16,7 @@ depends=(
         )
 license=('GPL')
 arch=('any')
-md5sums=('c6e8063f87ca3c6482a861b494264445')
+md5sums=('0f72ef53f142e6fa9fd3b0b2002a47ed')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {
