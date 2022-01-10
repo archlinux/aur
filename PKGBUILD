@@ -15,7 +15,6 @@ source=("https://download.fastgit.org/siyuan-note/siyuan/releases/download/v${pk
 sha512sums=("a1c4dd25208d0d557fecb13211f6bfc713f6f182b8415b62f8383130118ee4c82158aa785b1fb21db82fb51a28d2a72216ab4b1c05d92311a9ef84e972cb9d52")
 
 _installdir=/opt/appimages
-_installname=siyuan
 
 prepare() {
     cd ${srcdir}
