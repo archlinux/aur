@@ -1,6 +1,6 @@
 pkgbase = dv-processing
 	pkgdesc = Generic algorithms for event cameras.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://gitlab.com/inivation/dv/dv-processing/
 	arch = i686
@@ -13,11 +13,14 @@ pkgbase = dv-processing
 	depends = boost
 	depends = opencv
 	depends = eigen
+	depends = libcaer
 	depends = fmt
 	depends = lz4
 	depends = zstd
-	source = https://release.inivation.com/processing/dv-processing-1.0.0.tar.gz
-	sha256sums = 10d4b799df1ed5c731a047b56300774084da01b29fc7de4a7c7a7799b17dbdf2
+	depends = python
+	depends = python-numpy
+	source = https://release.inivation.com/processing/dv-processing-1.1.0.tar.gz
+	sha256sums = 1f3ae9256fcb2697466a14f5970cf9457edae7e13e86426a397525b468563029
 
 pkgname = dv-processing
 
