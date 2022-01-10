@@ -2,7 +2,7 @@
 
 pkgname="python-flake8-comprehensions"
 _pkgname="flake8-comprehensions"
-pkgver=3.3.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Flake8 plugin to help you write better list/set/dict comprehensions."
 arch=('any')
