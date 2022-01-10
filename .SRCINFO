@@ -10,6 +10,7 @@ pkgbase = wildfly
 	optdepends = libaio: ActiveMQ Artemis
 	optdepends = lib32-glibc: native OpenSSL support
 	conflicts = wildfly-devel
+	options = !strip
 	backup = opt/wildfly/domain/configuration/application-roles.properties
 	backup = opt/wildfly/domain/configuration/application-users.properties
 	backup = opt/wildfly/domain/configuration/logging.properties

@@ -6,14 +6,13 @@ pkgname=wildfly
 pkgver=26.0.0
 pkgrel=1
 pkgdesc='Wildfly Application Server.'
-arch=('any')
 url='http://www.wildfly.org/'
 license=('LGPL')
+arch=('any')
 depends=('java-runtime>=8')
 optdepends=('libaio: ActiveMQ Artemis'
             'lib32-glibc: native OpenSSL support')
 conflicts=("${pkgname}-devel")
-
 _pkgloc=opt
 _cfgloc=etc
 _sysdloc=usr/lib/systemd/system
@@ -37,13 +36,11 @@ backup=("${_pkgloc}/${pkgname}/domain/configuration/application-roles.properties
         "${_pkgloc}/${pkgname}/bin/jboss-cli.xml"
         "${_pkgloc}/${pkgname}/bin/standalone.conf"
         "${_cfgloc}/${pkgname}/${pkgname}.conf")
-
+options=(!strip)
 install="${pkgname}.install"
-
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}.Final/${pkgname}-${pkgver}.Final.tar.gz"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-
 sha256sums=('f6ff4dcd5312f83e37b663e2e16ce6474f09324c11dc1712b79320aabfcd096f'
             'd2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac'
             '796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540')

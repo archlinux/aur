@@ -1,10 +1,27 @@
 post_install() {
-    echo "    Wildfly is installed as a systemd service."
-    echo "    You should run the add-user script (/opt/wildfly/bin/add-user.sh) in order to add a management user"
-    echo "        if you want to access the management console, which listens locally on port 9990."
-    echo "    The main server listens on all networks at port 8080."
+	echo "  -> Wildfly is installed as a systemd service."
+	echo "  -> You should run the add-user script (/opt/wildfly/bin/add-user.sh) in order to add a management user"
+	echo "  -> if you want to access the management console, which listens locally on port 9990."
+	echo "  -> The main server listens on all networks at port 8080."
+}
+
+pre_upgrade() {
+	echo "  -> Stoping wildfly.service ..."
+	systemctl stop wildfly.service
+	wait
 }
 
 post_upgrade() {
-    post_install "$1"
+	echo "  -> Updating installation directory permissions ..."
+	chmod -R u=rwX,g=rwX,o=rX opt/wildfly
+	post_install "$1"
 }
+
+pre_remove() {
+	echo "  -> Stoping wildfly.service ..."
+	systemctl stop wildfly.service
+	wait
+	echo "  -> Disabling wildfly.service ..."
+	systemctl disable wildfly.service
+}
+
