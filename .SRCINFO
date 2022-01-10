@@ -1,6 +1,6 @@
 pkgbase = libretro-dosbox-pure-git
 	pkgdesc = MS-DOS core
-	pkgver = 0.20.r2.gf6b8c46
+	pkgver = 0.24.r0.gd64bc25
 	pkgrel = 1
 	url = https://github.com/schellingb/dosbox-pure
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libretro-dosbox-pure-git
 	depends = libretro-core-info
 	provides = libretro-dosbox-pure
 	conflicts = libretro-dosbox-pure
-	source = libretro-dosbox-pure::git+https://github.com/schellingb/dosbox-pure.git
+	source = git+https://github.com/schellingb/dosbox-pure.git
 	b2sums = SKIP
 
 pkgname = libretro-dosbox-pure-git
