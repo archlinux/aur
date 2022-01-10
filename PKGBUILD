@@ -3,17 +3,17 @@ pkgbase=python-sphinx-book-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="A lightweight book theme built off of the pydata sphinx theme"
 arch=('any')
 url="https://sphinx-book-theme.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools')
-checkdepends=('python-yaml' 'python-sphinx' 'python-click' 'python-pydata-sphinx-theme' 'python-beautifulsoup4')
+checkdepends=('python-yaml' 'python-sphinx' 'python-pydata-sphinx-theme' 'python-beautifulsoup4')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ec62f2651025cd722a3dd75cc1c96aa0')
+md5sums=('b02e5b808c89ffff6c59b9b0e3ba11ad')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -31,7 +31,7 @@ check() {
 }
 
 package_python-sphinx-book-theme() {
-    depends=('python-yaml' 'python-sphinx' 'python-click' 'python-pydata-sphinx-theme' 'python-beautifulsoup4<5' 'python-importlib_resources')
+    depends=('python-yaml' 'python-sphinx' 'python-pydata-sphinx-theme' 'python-beautifulsoup4<5' 'python-importlib_resources')
     optdepends=('python-pre-commit: code_style'
                 'python-folium: sphinx'
                 'python-numpy: sphinx'
