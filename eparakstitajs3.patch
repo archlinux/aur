@@ -1,53 +1,38 @@
-diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/applications/eparakstitajs3.desktop src/eparakstitajs3.new/usr/share/applications/eparakstitajs3.desktop
---- src/eparakstitajs3.orig/usr/share/applications/eparakstitajs3.desktop	2021-02-13 12:00:00.000000000 +0200
-+++ src/eparakstitajs3.new/usr/share/applications/eparakstitajs3.desktop	2021-02-14 17:48:58.580140002 +0200
+diff --color --unified --recursive --text --color ./eparakstitajs3.desktop.orig ./eparakstitajs3.desktop
+--- src/eparakstitajs3/usr/share/applications/eparakstitajs3.desktop.orig	2022-01-10 15:11:50.060249053 +0200
++++ src/eparakstitajs3/usr/share/applications/eparakstitajs3.desktop	2022-01-10 15:13:29.724741854 +0200
 @@ -4,7 +4,7 @@
  Icon=eparakstitajs3
  Type=Application
  Categories=Application;Office;Viewer;
--Exec=/opt/eparakstitajs3/eparakstitajs3 %F
-+Exec=/bin/sh -c "export PATH=/opt/eparakstitajs3:$PATH; /opt/eparakstitajs3/eparakstitajs3 %F"
+-Exec=/opt/eparakstitajs3/bin/eparakstitajs3 %F
++Exec=/bin/sh -c "export PATH=/opt/eparakstitajs3:$PATH; /opt/eparakstitajs3/bin/eparakstitajs3 %F"
  MimeType=application/pdf;application/lv.eme.edoc;application/vnd.etsi.asic-e+zip;
  StartupWMClass=lv.euso.signanywhere.SignAnywhere
  
-diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/menu/eparakstitajs3 src/eparakstitajs3.new/usr/share/menu/eparakstitajs3
---- src/eparakstitajs3.orig/usr/share/menu/eparakstitajs3	2021-02-13 12:00:00.000000000 +0200
-+++ src/eparakstitajs3.new/usr/share/menu/eparakstitajs3	2021-02-14 17:49:28.566161954 +0200
-@@ -1,5 +1,5 @@
- ?package(eparakstitajs3):needs="X11" section="Applications/Viewers"\
--  title="eParakstītājs 3.0" command="/opt/eparakstitajs3/eparakstitajs3"\
-+  title="eParakstītājs 3.0" command="/bin/sh -c \"export PATH=/opt/eparakstitajs3:$PATH; /opt/eparakstitajs3/eparakstitajs3\""\
-   hints="eParakstītājs 3.0"\
-   kderemove="y"\
-   icon="/usr/share/icons/hicolor/32x32/apps/eparakstitajs3.png"
 diff --color --unified --recursive --text --color src/eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py src/eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py
 --- src/eparakstitajs3.orig/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-13 12:00:00.000000000 +0200
 +++ src/eparakstitajs3.new/usr/share/nautilus-python/extensions/eparakstitajs3-ctx-menu.py	2021-02-14 16:13:33.916358188 +0200
-@@ -1,7 +1,10 @@
- from gi.repository import Nautilus, GObject
- import subprocess
+@@ -4,84 +4,93 @@
  import os
--import urllib
-+import urllib.request
-+import urllib.parse
-+import urllib.error
-+
+ import urllib
  
++
  class eParakstsContextMenu(GObject.GObject, Nautilus.MenuProvider):
  
-@@ -9,78 +12,86 @@
+     def __init__(self):
          pass
  
      def open_eparakstitajs(self, menu, command, files):
 -        print "menu_activate_cb", command
--	bash_string=["/opt/eparakstitajs3/eparakstitajs3", command]
+-	bash_string=["/opt/eparakstitajs3/bin/eparakstitajs3", command]
 -	for file in files:
 -		bash_string.append(file.get_location().get_path())
 -	
 -	subprocess.Popen(bash_string)
 -    
-+        print("menu_activate_cb", command)
-+        bash_string = ["/opt/eparakstitajs3/eparakstitajs3", command]
++        print("menu_activate_cb"), command
++        bash_string = ["/opt/eparakstitajs3/bin/eparakstitajs3", command]
 +        for file in files:
 +            bash_string.append(file.get_location().get_path())
 +

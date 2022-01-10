@@ -1,6 +1,6 @@
 # Maintainer: Māris Vilks <kaaposc@gmail.com>
 pkgname=eparakstitajs3
-pkgver=1.5.19
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Application software to sign and validate documents in EDOC and PDF formats."
 arch=('x86_64')
@@ -14,9 +14,9 @@ optdepends=('python-nautilus: Nautilus context menu integration'
 source=("https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/e/${pkgname}/${pkgname}_${pkgver}_amd64.deb"
         'dpkg'
         'eparakstitajs3.patch')
-sha512sums=('e783f905dc4a5cd96f3f701cbb2f37660781c8db549d91dc31224f5aa9e2652b7bb43cfe7bb19a5925416638d7fdd5e065f2e489efb610b78339a305ba198ee2'
+sha512sums=('218c8b282644790f05ab4af58b351b32714388e3aeb3e48aba036869b430038f01a40190aaf085422dcc88a0a9faed72b2b873782331580876a6b1737cbc1c30'
             '2831607d41e6480620869264866711341917de093bdd0228c2b8efb041c9c9ae8861ca0564f1e9917dab888cad69eb81c97a7a5509b58adb2ce61eb7a95a3d4a'
-            '4b361882fd9701544afb7c68bb6aa3807cb9ecbe6026e76727e9c37ebe4dff69946f92bd55addb8bf8b0b7c30d846d2aeaad11b84391881378c7a20680fdc8ba')
+            '7f7a8884c72b291c9e83bb84d9d3ce74cf27e953acab6833d7c9a21341e9fe6f29ffcfc9022ff60cc8ecf8b07c2240ba0dca48b4e8ac05a82594129a8abd7387')
 
 package() {
 
