@@ -7,9 +7,9 @@ pkgbase = hermes-relayer-bin
 	license = Apache
 	provides = hermes-relayer
 	conflicts = hermes-relayer
+	source = https://raw.githubusercontent.com/informalsystems/ibc-rs/v0.9.0/LICENSE
+	sha256sums = 1816dfba29b8182ddffbc675e228906b2acaa338fcaada5e330065e650092689
 	source_x86_64 = https://github.com/informalsystems/ibc-rs/releases/download/v0.9.0/hermes-v0.9.0-x86_64-unknown-linux-gnu.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/informalsystems/ibc-rs/v0.9.0/LICENSE
 	sha256sums_x86_64 = 31785abb8c2ab2bee68ff3003080d049ea9b702a43ce8f8a937bf8df5370c3e6
-	sha256sums_x86_64 = 1816dfba29b8182ddffbc675e228906b2acaa338fcaada5e330065e650092689
 
 pkgname = hermes-relayer-bin
