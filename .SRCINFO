@@ -1,24 +1,22 @@
 pkgbase = python-axelrod
 	pkgdesc = Research tool for the Iterated Prisoner's Dilemma
-	pkgver = 4.4.0
-	pkgrel = 3
+	pkgver = 4.12.0
+	pkgrel = 1
 	url = https://github.com/Axelrod-Python/Axelrod
 	arch = any
 	license = MIT
+	checkdepends = python-hypothesis
 	makedepends = python-setuptools
 	depends = python-dask
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-prompt_toolkit
-	depends = python-pygments
+	depends = python-yaml
 	depends = python-scipy
 	depends = python-tqdm
 	options = !emptydirs
-	source = https://github.com/Axelrod-Python/Axelrod/archive/v4.4.0.tar.gz
-	source = https://github.com/Axelrod-Python/Axelrod/commit/0a7a1b0.patch
-	sha256sums = 1f8f8386ab292877e9c063aa371e0d5709a969cce9cba828ee95567be1858c7e
-	sha256sums = d7497624ecafa3f9f57e0be82c8f88f3a12e34c1727266fbbbf2e66fd67ce370
+	source = python-axelrod-v4.12.0.tar.gz::https://github.com/Axelrod-Python/Axelrod/archive/v4.12.0.tar.gz
+	sha256sums = 5360e7e52a8fdf8e2f8af5e59f4e0fb54f11f245103ed77be91f854e6848b019
 
 pkgname = python-axelrod
-
