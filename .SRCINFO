@@ -1,14 +1,16 @@
 pkgbase = osm-bulk-upload-git
 	pkgdesc = set of tools for performing bulk imports to OpenStreetMap database
-	pkgver = r7.90c61f5
+	pkgver = r9.5033f43
 	pkgrel = 1
 	url = https://wiki.openstreetmap.org/wiki/Upload.py
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = python
+	depends = python2
+	provides = osm-bulk-upload
+	conflicts = osm-bulk-upload
 	source = osm-bulk-upload::git+https://github.com/grigory-rechistov/osm-bulk-upload
 	md5sums = SKIP
 
 pkgname = osm-bulk-upload-git
-
