@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-coin-or-osi
 	pkgdesc = COIN-OR Open Solver Interface (mingw-w64)
-	pkgver = 0.108.6
+	pkgver = 0.108.7
 	pkgrel = 1
 	url = https://projects.coin-or.org/Osi
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = mingw-w64-coin-or-osi
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://www.coin-or.org/download/source/Osi/Osi-0.108.6.tgz
-	sha256sums = 57ef3f0c97995bac647504aee0ed34d31f79033ece04cd2cb86b4645f0a552d8
+	source = https://github.com/coin-or/Osi/archive/refs/tags/releases/0.108.7.tar.gz
+	sha256sums = f1bc53a498585f508d3f8d74792440a30a83c8bc934d0c8ecf8cd8bc0e486228
 
 pkgname = mingw-w64-coin-or-osi
-
