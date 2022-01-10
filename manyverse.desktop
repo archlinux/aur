@@ -1,6 +1,10 @@
 [Desktop Entry]
-Type=Application
 Name=Manyverse
+Exec=/opt/Manyverse/manyverse %U
+Terminal=false
+Type=Application
+Icon=manyverse
+StartupWMClass=Manyverse
 Comment=A social network off the grid
-Exec=/opt/manyverse/manyverse
-
+MimeType=x-scheme-handler/ssb;
+Categories=Network;
