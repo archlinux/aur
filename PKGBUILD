@@ -1,23 +1,32 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Michel Zou <xantares09@hotmail.com>
+# Contributor: Sigvald Marholm <marholm@marebakken.com>
+# Contributor: G S Voelker <voelker@mailbox.org>
+# Contributor: Andreas Bilke <abilke@cosy.sbg.ac.at>
+# Contributor: Myles English <mylesenglish@gmail.com>
+# Contributor: Felix Schindler <aur dot felixschindler dot net>
+# Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
-pkgver=3.13.3
+pkgver=3.16.1
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('x86_64')
-url="http://slepc.upv.es"
-license=('BSD')
+url="https://${pkgname}.upv.es"
+license=('custom')
 depends=("petsc>=${pkgver:0:4}")
-makedepends=('python')
+makedepends=(gcc-fortran)
 install=slepc.install
-source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-sha256sums=('23d179c22b4b2f22d29fa0ac0a62f5355a964d3bc245a667e9332347c5aa8f81')
+source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
+md5sums=('9f71f53dead97f62138ab5158f1f083d')
 
+# export MAKEFLAGS="-j1"
 
 build() {
   # get SLEPC_DIR
-  source /etc/profile.d/petsc.sh		# gets PETSC_DIR
+  source /etc/profile.d/petsc.sh # gets PETSC_DIR
 
   _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
-  _install_dir=/opt/slepc/`basename ${PETSC_DIR}`
+  _install_dir=/opt/slepc/$(basename ${PETSC_DIR})
 
   cd ${_build_dir}
 
@@ -30,23 +39,23 @@ build() {
 
 package() {
   # get SLEPC_DIR
-  source /etc/profile.d/petsc.sh		# gets PETSC_DIR
+  source /etc/profile.d/petsc.sh # gets PETSC_DIR
 
   _build_dir=${srcdir}/${pkgname}-${pkgver/_/-}
-  _install_dir=/opt/slepc/`basename ${PETSC_DIR}`
+  _install_dir=/opt/slepc/$(basename ${PETSC_DIR})
   _dest_dir=${pkgdir}${_install_dir}
 
   cd ${_build_dir}
   export SLEPC_DIR=${_build_dir}
-  source /etc/profile.d/petsc.sh	# sets PETSC_DIR
+  source /etc/profile.d/petsc.sh # sets PETSC_DIR
 
-  make install > /dev/null # redirect in order to suppress confusing messages
+  make install >/dev/null # redirect in order to suppress confusing messages
 
   export SLEPC_DIR=${_install_dir}
   unset PETSC_ARCH
 
   sed -i "s#${pkgdir}##g" "${_dest_dir}/include/slepcconf.h"
-  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/pkgconfig/SLEPc.pc"
+  sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/pkgconfig/slepc.pc"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/modules/${pkgname}/${pkgver}"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_rules"
   sed -i "s#${pkgdir}##g" "${_dest_dir}/lib/slepc/conf/slepc_variables"
@@ -64,10 +73,10 @@ package() {
   cp ${_build_dir}/LICENSE.md ${pkgdir}/usr/share/licenses/$pkgname/
 
   mkdir -p ${pkgdir}/etc/profile.d
-  echo "export SLEPC_DIR=${_install_dir}" > ${pkgdir}/etc/profile.d/slepc.sh
+  echo "export SLEPC_DIR=${_install_dir}" >${pkgdir}/etc/profile.d/slepc.sh
   chmod +x ${pkgdir}/etc/profile.d/slepc.sh
 
   # show where the shared libraries are
   install -d -m755 "${pkgdir}"/etc/ld.so.conf.d/
-  echo "${_install_dir}/lib" > "${pkgdir}"/etc/ld.so.conf.d/slepc.conf
+  echo "${_install_dir}/lib" >"${pkgdir}"/etc/ld.so.conf.d/slepc.conf
 }
