@@ -14,4 +14,3 @@ pkgbase = r-rstudioapi
 	sha256sums = aac35bbdcb4a8e8caba943bc8a2b98120e8940b80cd1020224bb1a26ff776d8b
 
 pkgname = r-rstudioapi
-
