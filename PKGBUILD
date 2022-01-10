@@ -9,7 +9,7 @@ _pkgver='0.5.1'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=11
+pkgrel=12
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -49,7 +49,7 @@ _msg2 'creating dirs'
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
 _skyscripts="${_skydir}/scripts"
-_systemddir="etc/systemd/system"
+_systemddir="usr/lib/systemd/system/systemd/system"
 _skybin="${_skydir}/bin"
 mkdir -p ${pkgdir}/usr/bin
 mkdir -p ${pkgdir}/${_skydir}/bin
