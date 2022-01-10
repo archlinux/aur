@@ -2,7 +2,7 @@
 
 pkgname=gyosu-git
 pkgver=r28.aa9b8e1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple C documentation generator"
 arch=('x86_64')
 url="https://git.sr.ht/~emersion/gyosu"
@@ -44,4 +44,7 @@ check() {
 package() {
 	cd "$pkgname"
 	install -D build/gyosu -t "$pkgdir/usr/bin/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find template \
+		-type f -exec install -Dm644 '{}' "$pkgdir/usr/share/$pkgname/{}" \;
 }
