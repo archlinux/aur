@@ -3,14 +3,14 @@
 pkgname=canonical-multipass
 _realname=multipass
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multipass is a lightweight VM manager for Linux, Windows and macOS."
 arch=('x86_64')
 url="https://multipass.run"
 license=('GPL3')
 depends=('apparmor' 'qt5-base')
 optdepednds=('qt5-x11extras')
-makedepends=('cmake')
+makedepends=('cmake' 'libvirt')
 source=("git+https://github.com/canonical/${_realname}.git#tag=v${pkgver}"
         git+https://github.com/CanonicalLtd/grpc.git
         git+https://github.com/canonical/yaml-cpp.git
