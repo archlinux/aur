@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=jmeter
-pkgver=5.4.2
+pkgver=5.4.3
 pkgrel=1
 arch=('any')
 pkgdesc="Java application designed to load test functional behavior and measure performance"
@@ -15,7 +15,7 @@ depends=("java-environment>=8")
 options=('!strip')
 source=("http://archive.apache.org/dist/jmeter/binaries/apache-${pkgname}-${pkgver}.tgz"
   "${pkgname}.desktop")
-sha256sums=('aedbfaf000aa2d19e3534cc4062acb9f97308711b2d37ba965643222a7840b10'
+sha256sums=('72521214c0cb87dac5b974c1c6e83a17a009c7fd377b55bf23525c72403b1dee'
   '3f039d5a34c55ce5d884bffb252cec8d88ceec367620b0ab42b201f8e45a2218')
 validpgpkeys=('C4923F9ABFB2F1A06F08E88BAC214CAA0612B399')
 
