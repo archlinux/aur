@@ -1,7 +1,7 @@
 pkgbase = gdal-hdf4
 	pkgdesc = A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool). Based on gdal ArchLinux package version.
-	pkgver = 3.3.1
-	pkgrel = 9.0
+	pkgver = 3.4.0
+	pkgrel = 2.0
 	url = https://gdal.org/
 	changelog = gdal-hdf4.changelog
 	arch = x86_64
@@ -39,18 +39,16 @@ pkgbase = gdal-hdf4
 	provides = gdal
 	conflicts = gdal
 	options = !emptydirs
-	source = https://download.osgeo.org/gdal/3.3.1/gdal-3.3.1.tar.xz
-	source = poppler-21.10.0.patch
+	source = https://download.osgeo.org/gdal/3.4.0/gdal-3.4.0.tar.xz
 	source = gdal-perl-vendor.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/gdal/trunk/gdal-perl-vendor.patch
-	sha256sums = 48ab00b77d49f08cf66c60ccce55abb6455c3079f545e60c90ee7ce857bccb70
-	sha256sums = 3074318889631fa9a9f351feccedb4d7a368b56017cc3660276c7aac154af6de
+	sha256sums = ac7bd2bb9436f3fc38bc7309704672980f82d64b4d57627d27849259b8f71d5c
 	sha256sums = 2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed
 
 pkgname = gdal-hdf4
 
 pkgname = python-gdal-hdf4
 	pkgdesc = Python bindings for GDAL, with support to HDF4 format
-	depends = gdal-hdf4=3.3.1
+	depends = gdal-hdf4=3.4.0
 	depends = python-numpy
 	optdepends = 
 	provides = python-gdal

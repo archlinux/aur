@@ -9,8 +9,8 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=('gdal-hdf4' 'python-gdal-hdf4')
-pkgver=3.3.1
-pkgrel=9.0
+pkgver=3.4.0
+pkgrel=2.0
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool). Based on gdal ArchLinux package version."
 arch=('x86_64')
 url="https://gdal.org/"
@@ -24,10 +24,8 @@ optdepends=('postgresql: postgresql database support'
 options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
-        poppler-21.10.0.patch
         gdal-perl-vendor.patch::https://raw.githubusercontent.com/archlinux/svntogit-community/packages/gdal/trunk/gdal-perl-vendor.patch)
-sha256sums=('48ab00b77d49f08cf66c60ccce55abb6455c3079f545e60c90ee7ce857bccb70'
-            '3074318889631fa9a9f351feccedb4d7a368b56017cc3660276c7aac154af6de'
+sha256sums=('ac7bd2bb9436f3fc38bc7309704672980f82d64b4d57627d27849259b8f71d5c'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed')
 
 prepare() {
@@ -35,9 +33,6 @@ prepare() {
 
 # Fix mandir
   sed -i "s|^mandir=.*|mandir='\${prefix}/share/man'|" configure
-
-# Fix build with poppler 21.10.0
-  patch -Np2 -i "${srcdir}"/poppler-21.10.0.patch
 
 # Fix Perl bindings installation path
   patch -Np0 -i "${srcdir}"/gdal-perl-vendor.patch
