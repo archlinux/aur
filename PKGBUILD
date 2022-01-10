@@ -5,38 +5,48 @@
 
 pkgname=dvc
 pkgver=2.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
 license=(Apache)
 url="https://github.com/iterative/${pkgname}"
-_pydeps=(appdirs
+_pydeps=(aiohttp-retry
+         appdirs
+         benedict
          colorama
          configobj
+         dpath
+         dictdiffer
+         diskcache
          distro
+         flatten-dict
          flufl-lock
+         fsspec
          funcy
          gitdb
          gitpython
+         grandalf
          humanize
          inflect
+         nanotime
+         nanotime
+         ntfs
          packaging
          pathspec
          ply
          pyasn1
-         yaml
+         pydot
+         pygtrie
          requests
          ruamel-yaml
+         scmrepo
          shortuuid
+         shtab
          tqdm
          treelib
          voluptuous
-         zc.lockfile
-         nanotime
-         grandalf
-         ntfs
-         shtab
-         pygtrie)
+         yaml
+         zc.lockfile)
 depends=(python
         "${_pydeps[@]/#/python-}")
 optdepends=('python-google-cloud-storage: support for Google Cloud'
@@ -50,7 +60,7 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
             'python-pyarrow: support for HDFS remote'
             'python-pydrive: support for GDrive'
             'python-s3fs: support for AWS S3 remote')
-makedepends=(python-setuptools)
+makedepends=(python-setuptools-scm{,-git-archive})
 # checkdepends=(mypy
 #               python-flaky
 #               python-fsspec
@@ -68,6 +78,11 @@ makedepends=(python-setuptools)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
 sha256sums=('513d0d9ee3c3123e616f760eb8556ee569121286c3e400a1fe4b3bf66e6dea29')
+
+prepare() {
+	cd "$_archive"
+	sed -i -e '/wheel/d' setup.cfg
+}
 
 build() {
 	cd "$_archive"
