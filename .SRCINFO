@@ -2,7 +2,7 @@ pkgbase = git-sendgmail-git
 	pkgdesc = Use git send-email with gmail via OAuth2
 	pkgver = r20.e322915
 	pkgrel = 1
-	url = https://github.com/google/gmail-oauth2-tools/go/sendgmail
+	url = https://github.com/google/gmail-oauth2-tools/tree/master/go/sendgmail
 	arch = x86_64
 	license = APACHE
 	makedepends = go
@@ -10,4 +10,3 @@ pkgbase = git-sendgmail-git
 	sha256sums = SKIP
 
 pkgname = git-sendgmail-git
-
