@@ -2,7 +2,7 @@
 # Contributor: Sébastien Luttringer
 
 pkgname=drbd-utils
-pkgver=9.16.0
+pkgver=9.19.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Userland tools for Distributed Replicated Block Device'
@@ -12,9 +12,9 @@ depends=('perl' 'bash')
 makedepends=('libxslt' 'systemd' 'po4a')
 conflicts=('drbd')
 replaces=('drbd')
-source=(http://www.linbit.com/downloads/drbd/utils/drbd-utils-$pkgver.tar.gz)
+source=(https://pkg.linbit.com//downloads/drbd/utils/drbd-utils-$pkgver.tar.gz)
 backup=('etc/drbd.conf' 'etc/drbd.d/global_common.conf')
-md5sums=('b0b7a94b7f3e4127f1e31405ecf01932')
+md5sums=('fe7119b497c617d05cd8f7b9c703b034')
 
 build() {
   cd $pkgname-$pkgver
