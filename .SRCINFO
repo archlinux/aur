@@ -1,0 +1,14 @@
+pkgbase = headsetcontrol-notificationd-git
+	pkgdesc = Logitech G933 battery notification daemon for Linux
+	pkgver = r11.bb8a80e
+	pkgrel = 1
+	url = https://github.com/Manawyrm/headsetcontrol-notificationd
+	arch = any
+	depends = headsetcontrol
+	depends = libnotify
+	depends = php
+	provides = headsetcontrol-notificationd
+	source = git+https://github.com/Manawyrm/headsetcontrol-notificationd
+	b2sums = SKIP
+
+pkgname = headsetcontrol-notificationd-git
