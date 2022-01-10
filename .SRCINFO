@@ -1,0 +1,12 @@
+pkgbase = hugo-extended-bin
+	pkgdesc = hugo entended version
+	pkgver = 0.91.2
+	pkgrel = 1
+	url = https://gohugo.io
+	arch = x86_64
+	license = Apache-2.0
+	conflicts = hugo
+	source = https://github.com/gohugoio/hugo/releases/download/v0.91.2/hugo_extended_0.91.2_Linux-64bit.deb
+	sha256sums = a7480201ec1e32f7fc0c0346234fa8f80cea9b9945a33809e984addd1ef322fb
+
+pkgname = hugo-extended-bin
