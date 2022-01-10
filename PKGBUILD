@@ -3,7 +3,7 @@
 
 pkgname=askpass-menu
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc='Provide sudo-askpass functionalities for various menus.'
 url="https://github.com/ruijieyu/$pkgname"
@@ -15,3 +15,9 @@ optdepends=(
     'bemenu: askpass-bemenu'
     'bash: shell scripts'
 )
+
+package() {
+    install -Dm0755 \
+            "$srcdir/$pkgname-$pkgver/askpass-"* \
+            -t "$pkgdir/usr/bin/"
+}
