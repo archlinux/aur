@@ -3,7 +3,7 @@
 
 pkgbase='oclint'
 pkgname=("${pkgbase}")
-pkgver=21.03
+pkgver=21.10
 pkgrel=0
 pkgdesc="A static source code analysis tool to improve quality and reduce
          defects for C, C++ and Objective-C"
@@ -12,7 +12,7 @@ url="http://oclint.org/"
 license=('BSD')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}-git")
-depends=('clang>=11.1.0' 'llvm-libs>=11.1.0' 'gcc-libs' 'glibc' 'xz' 'libffi' 'libedit' 'libxml2' 'icu' 'zlib')
+depends=('clang>=13.0.0' 'llvm-libs>=13.0.0' 'gcc-libs' 'glibc' 'xz' 'libffi' 'libedit' 'libxml2' 'icu' 'zlib')
 makedepends=('gcc' 'binutils' 'make' 'cmake' 'ninja' 'git' 'python')
 options=(!ccache)
 source=(
