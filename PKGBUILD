@@ -2,7 +2,7 @@
 # Contributor: Emmanuele Massimi <finferflu at gmail dot com>
 pkgname=gtkmagnetic
 pkgver=2.3
-pkgrel=8
+pkgrel=9
 pkgdesc="An interpreter for British text adventures by Magnetic Scrolls."
 arch=(i686 x86_64)
 url="http://mirror.ifarchive.org/indexes/if-archiveXmagnetic-scrollsXinterpretersXmagnetic.html"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtk2' 'smpeg')
 source=("http://mirror.ifarchive.org/if-archive/magnetic-scrolls/interpreters/magnetic/Magnetic23Src.zip"
 	gargoyle.patch ms_init.patch glibc.patch gtkmagnetic.desktop gtkmagnetic.png)
-md5sums=('74b0d027c6a70e39d9447f12c215e8a9'
+md5sums=('1a2102ead4f5e6aab09108ccf7189dc2'
          '2f1dcd0446348b32a873d591ce670a37'
          'ec4cb13ac5f78d46069baf83ba674542'
          'd5c5e901442b913279eca35467066222'
