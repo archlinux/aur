@@ -1,0 +1,19 @@
+pkgbase = spotify-remove-ad-banner
+	pkgdesc = Remove Spotify ad banner
+	pkgver = 1
+	pkgrel = 1
+	install = spotify-remove-ad-banner.install
+	arch = any
+	license = unknown
+	depends = spotify
+	depends = sed
+	depends = unzip
+	depends = zip
+	source = spotify-remove-ad-banner.hook
+	source = remove.sh
+	source = restore.sh
+	md5sums = f2cacbd802efba6ad3007cfa29be84b7
+	md5sums = 60088b0472eaf8226324ca984c099f00
+	md5sums = 1e0ab46ea5763380e6f52b12e120affa
+
+pkgname = spotify-remove-ad-banner

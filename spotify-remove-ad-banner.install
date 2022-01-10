@@ -1,0 +1,15 @@
+post_install() {
+  /usr/share/spotify-remove-ad-banner/remove.sh
+}
+
+pre_upgrade() {
+  /usr/share/spotify-remove-ad-banner/restore.sh
+}
+
+post_upgrade() {
+  /usr/share/spotify-remove-ad-banner/remove.sh
+}
+
+pre_remove() {
+  /usr/share/spotify-remove-ad-banner/restore.sh
+}

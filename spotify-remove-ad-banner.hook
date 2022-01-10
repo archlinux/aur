@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = /opt/spotify/Apps/xpui.spa
+
+[Action]
+Description = Removing Spotify ad banner...
+Exec = /usr/share/spotify-remove-ad-banner/remove.sh
+When = PostTransaction
