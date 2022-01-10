@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=iminuit
 pkgname=python-${_pyname}-doc
-pkgver=2.8.4
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Documentation for Python iminuit module"
 arch=(any)
@@ -9,7 +9,7 @@ url="http://iminuit.readthedocs.io"
 license=('GPL' 'MIT')
 makedepends=("python-${_pyname}=${pkgver}" 'python-nbsphinx>=0.8.6' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow' 'pandoc')
 source=("https://github.com/iminuit/iminuit/archive/v${pkgver}.tar.gz")
-md5sums=('187e9ca15e8c2ce80a3d2fc343a1cb7e')
+md5sums=('080dbfc289523eedce38f5a592e38a83')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}/doc
