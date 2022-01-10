@@ -1,8 +1,8 @@
 # Maintainer: Beshr Ghalil <bshrghalil@gmail.com>
 pkgname=todome-git
 _pkgname=todome
-pkgver=77__2022.01.06
-pkgrel=1
+pkgver=77__2022.01.10
+pkgrel=2
 epoch=
 pkgdesc="Language agnostic tool that collects TODOs, FIXMEs and BUGs in the source code."
 arch=('x86_64' 'i686')
