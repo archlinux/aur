@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-diff
-pkgver=3.2.0
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=helm-diff.install
 depends=('helm')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('38b3aa194493f5d12dfc05e35db636af5e07ae7a708c3dba34ef81334434bc2c')
+sha256sums=('c9e2cccdfdaf0ccfb76514f7e1cafc88352895892c1f35ffa08f7ca9fb2ca2a7')
 
 prepare() {
   sed -i '/^hooks:$/Q' "$pkgname-$pkgver"/plugin.yaml
