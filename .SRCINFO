@@ -1,7 +1,7 @@
 pkgbase = winesync
 	pkgdesc = Wine synchronization primitive driver
 	pkgver = 5.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync3
 	arch = any
 	license = GPL2
