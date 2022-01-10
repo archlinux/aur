@@ -1,0 +1,182 @@
+﻿Kaspersky Endpoint Security 11.2.1 for Linux (11.2.0.4528) RELEASE NOTES
+==============================================================================
+Version released on: 14.07.2021
+
+Contents:
+	* What's new
+	* System requirements
+	* Installing the application
+	* Known issues and solutions
+	* Sources of information about the application
+
+
+What's new
+--------------------------------------------------------------------------------
+The following features and improvements have been implemented in Kaspersky Endpoint Security:
+
+Kaspersky Endpoint Security 11.2.1 for Linux:
+	* Added the ability to manage devices on which Kaspersky Endpoint Security is installed using Kaspersky Security Center Web Console and Kaspersky Security Center Cloud Console.
+
+Kaspersky Endpoint Security 11.2.0 for Linux:
+	* The ability to control application launches on user’s computers has been implemented (Application Control task).
+	* A task that obtains information about all the executable files of applications stored on the computers has been implemented (Inventory task).
+	* Support for integration with the CRI-O environment, the Podman and runc utilities is implemented.
+	* Application distribution kit includes files for building a container application (hereinafter referred to as KESL container) with a REST API for embedding into external systems.
+	* Integration with Kaspersky Managed Detection and Response (MDR) is implemented, which provides continuous search, detection and elimination of threats aimed at your organization.
+	* The Boot sector scan (Boot_Scan) and Process and kernel memory scan (Memory_Scan) tasks are moved to the new Critical area scan task (Critical_Areas_Scan), which allows you to scan startup objects, boot sectors, process memory, and kernel memory. Individual Boot sector scan (Boot_Scan) and Process and kernel memory scan (Memory_Scan) tasks have been removed.
+	* The ability to specify one of three priorities for the following tasks has been implemented: Virus scan, Custom scan, Inventory, and ContainerScan.
+	* Capability to enable generation of trace files at application startup is implemented.
+	* Support for working with policy profiles in Kaspersky Security Center is implemented.
+	* The proxy server settings used to connect to Kaspersky update servers and to custom update sources in the Update task have been removed.
+	* Updated the list of supported operating systems.
+
+	
+System requirements
+--------------------------------------------------------------------------------
+Minimum hardware requirements for 32-bit operating systems:
+	* CPU: Core 2 Duo 1.86 GHz or higher
+	* Swap partition of at least 1 GB
+	* 1 GB of RAM
+	* 4 GB of free hard disk space for installation of the application and storage of temporary and log files.
+
+Minimum hardware requirements for 64-bit operating systems:
+	* CPU: Core 2 Duo 1.86 GHz or higher
+	* Swap partition of at least 1 GB
+	* 2 GB of RAM
+	* 4 GB of free hard disk space for installation of the application and storage of temporary and log files.
+
+Software requirements:
+
+1. Supported operating systems:
+	32-bit operating systems:
+		* CentOS 6.7 and later
+		* Debian GNU / Linux 9.4 and later
+		* Debian GNU / Linux 10.1 and later
+		* Linux Mint 19 and later
+		* Mageia 4
+		* Red Hat® Enterprise Linux® 6.7 and later
+		* ALT Education 9
+		* ALT Workstation 9
+		* ALT Server 9
+	64-bit operating systems:
+		* AlterOS 7.5 and later
+		* Amazon Linux 2
+		* Astra Linux 1.5 (generic and PaX kernel)
+		Astra Linux 1.6 (generic and PaX kernel)
+		Astra Linux Common Edition "Oryol" 2.12
+		* CentOS 6.7 and later
+		* CentOS 7.2 and later
+		* CentOS 8.0 and later
+		* Debian GNU / Linux 9.4 and later
+		* Debian GNU / Linux 10.1 and later
+		* Linux Mint 19 and later
+		* Linux Mint 20.1 and later
+		* openSUSE® Leap 15.0 and later
+		* Oracle Linux 7.3 and later
+		* Oracle Linux 8.0 and later
+		* Pardus OS 19.1
+		* Red Hat Enterprise Linux 6.7 and later
+		* Red Hat Enterprise Linux 7.2 and later
+		* Red Hat Enterprise Linux 8.0 and later
+		* SUSE® Linux Enterprise Server 15 and later
+		* Ubuntu 18.04 LTS and later
+		* Ubuntu 20.04 LTS
+		* ALT Education 9
+		* ALT Workstation 9
+		* ALT Server 9
+		* GosLinux 7.2
+		* Red OS 7.3
+2. Perl interpreter: version 5.10 or later (www.perl.org)
+3. Installed the which utility
+4. Packages for compiling application and running tasks (gcc, binutils, glibc, glibc-devel, make, ld, rpcbind) and operating system kernel source code for compiling application modules in the operating systems that do not support fanotify must be installed.
+5. Prior to installing the application and Network Agent on the SUSE Linux Enterprise Server 15 operating system, the insserv-compat package must be installed.
+6. The perl-Getopt-Long package must be installed for the Red Hat® Enterprise Linux® 8 and CentOS 8 operating systems.
+7. For the Web_Threat_Protection task to operate correctly with Mozilla Firefox, the browser version must be 58 or higher.
+8. Kaspersky Endpoint Security is compatible with the following Kaspersky Security Center versions:
+	* Kaspersky Security Center 10 Service Pack 3.
+	* Kaspersky Security Center 11
+	* Kaspersky Security Center 12
+	* Kaspersky Security Center 13
+	* Kaspersky Security Center 13.1
+
+
+Installing and updating the application
+--------------------------------------------------------------------------------
+Installing and updating the application is described in the online help: https://support.kaspersky.com/help/KES4Linux/11.2.1/en-US/197896.htm.
+
+After updating, Kaspersky Endpoint Security for Linux is started, even if it was stopped before the update process.
+
+
+Known issues and solutions
+--------------------------------------------------------------------------------
+* 2181748. Anti-Cryptor works with SMB1, SMB2, SMB3, and NFS3 protocols.
+
+* 1933381. The application may not be terminated correctly in the operating systems of the Red Hat® Enterprise Linux® 7.3 family when working with the NFS4 protocol.
+Possible solution: Configure the network partitions to use NFS3.
+
+* 1936085, 2038451. When the application is running in the operating systems of the Red Hat® Enterprise Linux® 7.2 family, files larger than 2 GB may be blocked.
+Possible solution: Upgrade the operating system to Red Hat® Enterprise Linux® 7.3 and later.
+
+* 2066268. When the application is running in the operating systems of the Red Hat® Enterprise Linux® 7 family and the CIFS (SMB1) protocol is used, files in remote network partitions can take a long time to be created.
+Possible solution: Switch to SMB2 protocol and disable CIFS oplock.
+
+* 2009503. If network connection is broken when the remote network partitions are actively used, delays in the operating system operation may occur.
+
+* 1709422. It may be impossible to scan a file whose name is specified in the encoding that differs from the operating system encoding using the scan-file command.
+Possible solution: Change the file name or configure a scan of the entire folder, or use the standard ODS task.
+
+* 1762651. The application may not process files in virtual pseudo-file systems.
+Possible solution: Use the mount command to connect network or local partitions.
+
+* In the Mageia 4 operating system, remote installation of Kaspersky Security Center package klnagent\kesl via the SSH protocol does not work.
+Possible solution: in the /etc/sudoers configuration file, remove the Defaults requiretty parameter.
+
+* 3908879. In the Red Hat® Enterprise Linux® 8 operating system, if the firewall blocks the SMB protocol, errors may occur when the application is unloaded or the File Threat Protection task is stopped.
+Possible solution: Remove the block of the SMB protocol for the mounted SMB partition.
+
+* 3883615. When using Docker container system, the threats inside the containers may not be intercepted immediately.
+
+* 3163038. When the value of the SizeLimit setting is changed from the command line, the current value is not changed until application restart.
+Possible solution: restart the application after changing this setting.
+
+* 3307326. The klnagent-astra package cannot be removed by Kaspersky Security Center tools.
+Possible solution: remove the package manually from the command line.
+
+* 3734131. In the Red Hat® Enterprise Linux® 8 operating system, firewall is managed through the iptables-legacy package.
+Possible solution: do not use nftables to manage the firewall rules.
+
+* 3710494. When using Docker container system, the application Storage contains only one instance of the malicious object for the containers started from one image.
+
+* 3275738. The Device Control (Device_Control) task does not block floppy discs connected using the ISA bus.
+
+* 3337145. When changing the user role from "admin" to "user" and vice versa, the new role will not be assigned until GUI is restarted. Restart the GUI to assign a new role.
+
+* 4084284. When the application is running on a special-purpose operating system "Astra Linux Special Edition" (release "Smolensk", version 1.5), numerous errors and performance slowdown may occur during the execution of the File Threat Protection (File_Threat_Protection) task.
+
+* If an SMB server is not responding in the Red Hat Enterprise Linux 8.1 operation system, it may cause the File Threat Protection (File_Threat_Protection) task to hang in the Starting or Stopping state.
+A possible solution is described in the Red Hat Knowledge Base article, "SMB: Processes do not exit when accessing an unresponsive SMB server" (https://access.redhat.com/solutions/4771201).
+
+* 4326124. When the "Stop" action is selected for the container (OnAccessContainerScanAction=StopContainer), the container may not be stopped if the File Threat Protection task has detected and removed a threat on the host before scanning the container. In this case, the File Threat Protection task does not detect this threat in the container during scan, and the container is not stopped.
+Possible solution: when using "union filesystems aufs" and "overlay" the application scans the files twice (the first time at the host filesystem level, and the second time at the union filesystem level). Thus it is recommended to add the container storage directory of the host filesystem (usually the /var/lib/docker or /var/lib/containers/storage directory) to the exclusions of the File Threat Protection task to improve performance.
+
+* 4686247. When the application is running in the Red Hat Enterprise Linux 6.7 operating systems, the Network Threat Protection task (Network_Threat_Protection) does not start.
+Possible solution: disable IPv6 addressing support using the ipv6.disable=1 kernel parameter and restart the operating system.
+
+* 4730506. When the application is running in systems that require the kernel interceptor module (redirfs) usage, the GPFS file system is excluded from scan.
+
+* Application Control does not work if the application is running in the operating systems that do not support the fanotify technology.
+
+* 5028782. If Private KSN usage is disabled in the Administration Server settings, the KSN participation settings specified in the policy are not passed to the user computers during their synchronization with the Administration Server.
+To pass the KSN participation settings, manually apply or activate the Kaspersky Endpoint Security 11.2.0 for Linux policy.
+
+
+Sources of information about the application
+--------------------------------------------------------------------------------
+The application page on the Kaspersky website: https://www.kaspersky.com/small-to-medium-business-security/endpoint-linux
+The application page on the Technical Support website (Knowledge Base): https://support.kaspersky.com/kes11linux
+Online help: https://support.kaspersky.com/help/KES4Linux/11.2.1/en-US/219385.htm
+Kaspersky community: https://community.kaspersky.com
+
+
+2021 AO Kaspersky Lab.
+

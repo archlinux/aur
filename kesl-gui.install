@@ -1,0 +1,19 @@
+
+post_install(){
+    echo $FUNCNAME
+    /var/opt/kaspersky/kesl-gui/pkgscripts/postinst configure
+
+    # execute the kesl installer with preconfigured settings
+    echo -e "\e[32m\e[1m ... starting '/opt/kaspersky/kesl/bin/kesl-setup.pl' now\e[0m\n(no need to execute it again after installation has finished)."
+    /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=/var/opt/kaspersky/kesl/pkgscripts/kesl.ini
+}
+
+post_upgrade(){
+    post_install
+}
+
+pre_remove(){
+    echo $FUNCNAME
+    /var/opt/kaspersky/kesl-gui/pkgscripts/prerm remove
+}
+

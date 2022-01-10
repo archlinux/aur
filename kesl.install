@@ -1,0 +1,120 @@
+export TMPDIR=/tmp
+# avoid re-creating tmp dir when already exists
+[ -d "$KTMP" ] || KTMP=$(mktemp -d -t kesl.XXXXX)
+
+# man pages are special here:
+# 1) usr/local/share is protected (owned by filesystem package)
+# 2) when modding /opt/kaspersky/kesl/libexec/symlinks/man directly the hash will break and kesl won't work properly
+# 3) to be flexible for future changes we backup the symlink defs to tmp, replace, run installer, revert original
+# this ensures that the kesl install dir isn't tampered and future changes will be added automagically or by
+# extending the following func:
+man_pre(){
+    # man pages
+    cp /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/man $KTMP/
+    sed -i 's#usr/local/#usr/#g' /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/man
+}
+
+man_post(){
+    # revert man pages symlinks
+    cp $KTMP/man /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/man
+    [ -d "/opt/kaspersky/kesl/libexec/symlinks" ] && cp $KTMP/man /opt/kaspersky/kesl/libexec/symlinks/man
+}
+
+# create all directories referenced by the kesl installer
+# no idea why this is not covered by it but this ensures nothing breaks during the install
+kesl_symlinks(){
+    man_pre
+    # create any directory expected to be there for symlinking
+    for sl in $(cat /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/*);do
+        sld=$(dirname $sl)
+        [ ! -d $sld ] && mkdir -p $sld
+    done
+}
+
+kesl_updatedb(){
+    # upgrading the database can take a LONG time while any other pacman
+    # jobs would wait until this has been finished. It is recommended to do
+    # this manually:
+    echo -e "\n\n\e[93m\e[1mPlease update the AV database MANUALLY with the following command (or use the GUI):\e[0m\nsudo /opt/kaspersky/kesl/bin/kesl-control --start-task Update --progress\n\n"
+}
+
+pre_install(){
+    echo $FUNCNAME
+    # this always breaks post_install:
+    #/var/opt/kaspersky/kesl/pkgscripts/preinst install
+}
+
+post_install(){
+    echo $FUNCNAME
+
+    # load preconfiguration variables and export them
+    source /var/opt/kaspersky/kesl/pkgscripts/kesl.ini
+    for k in $(egrep -v "^#" /var/opt/kaspersky/kesl/pkgscripts/kesl.ini);do
+        key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
+        export ${key}=$v ${kkey}=$v
+    done
+
+    kesl_symlinks
+
+    # manually add the link to /opt (really wondering why this is not covered
+    # anywhere but likely I am blind:
+    ln -s /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl /opt/kaspersky/
+
+    # exec the debian package postinst
+    /var/opt/kaspersky/kesl/pkgscripts/postinst configure
+
+    man_post
+
+    # execute the kesl installer with preconfigured settings
+    echo -e "\e[32m\e[1m ... starting '/opt/kaspersky/kesl/bin/kesl-setup.pl' now\e[0m\n(no need to execute it again after installation has finished)."
+    /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=/var/opt/kaspersky/kesl/pkgscripts/kesl.ini
+
+    kesl-control -L --query
+
+    kesl_updatedb
+}
+
+pre_upgrade(){
+    echo $FUNCNAME
+    for k in $(egrep -v "^#" /var/opt/kaspersky/kesl/pkgscripts/kesl.ini);do
+        key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
+        export ${key}=$v ${kkey}=$v
+    done
+
+    # exec the debian package preinst
+    man_pre
+    /var/opt/kaspersky/kesl/pkgscripts/preinst upgrade
+    man_post
+}
+
+post_upgrade(){
+    echo $FUNCNAME
+
+    # load preconfiguration variables and export them
+    source /var/opt/kaspersky/kesl/pkgscripts/kesl.ini
+    for k in $(egrep -v "^#" /var/opt/kaspersky/kesl/pkgscripts/kesl.ini);do
+        key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
+        export ${key}=$v ${kkey}=$v
+    done
+    kesl_symlinks
+
+    # exec the debian package postinst
+    /var/opt/kaspersky/kesl/pkgscripts/preinst configure
+    man_post
+
+    kesl_updatedb
+}
+
+pre_remove(){
+    echo $FUNCNAME
+    # exec the debian package rm scripts (post_remove is too late)
+    /var/opt/kaspersky/kesl/pkgscripts/prerm remove
+    /var/opt/kaspersky/kesl/pkgscripts/postrm remove
+}
+
+post_remove(){
+    echo $FUNCNAME
+    rm -rf /etc/opt/kaspersky/ /opt/kaspersky/ /usr/share/licenses/kesl /var/opt/kaspersky
+}
+
+#rm -rf $KTMP/
