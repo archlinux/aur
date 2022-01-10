@@ -1,7 +1,7 @@
 pkgbase = w1retap
 	pkgdesc = one wire weather station data acquisition to RDBMS
-	pkgver = 1.4.3
-	pkgrel = 3
+	pkgver = 1.4.6
+	pkgrel = 4
 	url = https://sourceforge.net/projects/w1retap/
 	arch = x86_64
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = w1retap
 	optdepends = libmysqlclient
 	optdepends = sqlite3
 	optdepends = libmongo-client-git
-	source = https://sourceforge.net/projects/w1retap/files/latest/download/w1retap-1.4.3.tar.xz
-	md5sums = f0b8a200ad39d4bec2a42b203f1f277b
+	source = https://sourceforge.net/projects/w1retap/files/latest/download/w1retap-1.4.6.tar.xz
+	md5sums = bbaccc694e55fc32942c0e2b2b02b1a0
 
 pkgname = w1retap
-
