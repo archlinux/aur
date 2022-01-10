@@ -1,3 +1,19 @@
+pre_upgrade() {
+	echo "  -> Stoping payara.service ..."
+	systemctl stop payara.service
+	wait
+}
+
 post_upgrade() {
+	echo "  -> Updating installation directory permissions ..."
 	chmod -R u=rwX,g=rwX,o=rX opt/payara
 }
+
+pre_remove() {
+	echo "  -> Stoping payara.service ..."
+	systemctl stop payara.service
+	wait
+	echo "  -> Disabling payara.service ..."
+	systemctl disable payara.service
+}
+
