@@ -2,9 +2,9 @@
 
 _pkgname=lynx-desktop
 pkgname=${_pkgname,}
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Lynx Desktop Environment - Escritorio Oficial de LynxOS"
+pkgdesc="Lynx Desktop Environment - Desktop for LynxOS"
 url="https://gitlab.com/LynxOS/$pkgname"
 depends=(
         'lynx-nw'
@@ -18,7 +18,7 @@ depends=(
         )
 license=('GPL')
 arch=('any')
-md5sums=('be9eaf1018f21d767d0cf1cefd1104bf')
+md5sums=('12a0ade261195334e0357937ec52d4c4')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {
