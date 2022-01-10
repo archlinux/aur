@@ -7,9 +7,9 @@ pkgbase = akash-bin
 	license = Apache
 	provides = akash
 	conflicts = akash
+	source = https://raw.githubusercontent.com/ovrclk/akash/v0.14.1/LICENSE
+	sha256sums = f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd
 	source_x86_64 = https://github.com/ovrclk/akash/releases/download/v0.14.1/akash_0.14.1_linux_amd64.zip
-	source_x86_64 = https://raw.githubusercontent.com/ovrclk/akash/v0.14.1/LICENSE
 	sha256sums_x86_64 = 679830454f9d84d1e6f77dbbc11b9c1acedbaba9a9d889aa83b32a1e82e46a78
-	sha256sums_x86_64 = f88a0de961dddc3410a201b6174c54190fdd912310df24ea8292c675981a39cd
 
 pkgname = akash-bin
