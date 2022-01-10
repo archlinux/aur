@@ -6,7 +6,7 @@
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=k1.4.5.r559.gc214b376e
+pkgver=k1.4.8.r174.g98f2683e5
 pkgrel=1
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Dev branch'
 arch=('x86_64')
@@ -108,7 +108,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
-        '1e2705008ea8cef1a5c46793a6115ba0f35f77529d18ea04a03e5a0e89980916d78d49a9aa86863b1a0b440debb650262ceb3c9d68600ffe6e5c98fd65804526'
+        '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f'
         '8feeb47ad0c238b32cb91788340b8794d6e58fa3a1c4027a57f7edcbd2c30d755cf27a778d446d59a4dbc07c255f3d0bcefdce4b5322ed2d00854c6e4a7831e0')
 
 pkgver() {
