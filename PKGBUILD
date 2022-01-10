@@ -5,18 +5,18 @@
 # Contributor: David Herrmann <dh.herrmann at gmail dot com>
 
 _pkgname=qemu-user-static
-pkgname=$_pkgname-bin
-pkgver=6.1
-pkgrel=7
+pkgname=${_pkgname}-bin
+pkgver=6.2
+pkgrel=1
 pkgdesc='A generic and open source machine emulator, statically linked'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.qemu.org"
 license=('GPL2' 'LGPL2.1')
 depends=('binfmt-qemu-static')
-provides=("qemu-user" "$_pkgname")
-conflicts=("qemu-user" "$_pkgname")
+provides=("qemu-user" "${_pkgname}")
+conflicts=("qemu-user" "${_pkgname}")
 
-_pkgadditver="+dfsg-8+b2"
+_pkgadditver="+dfsg-1"
 # case "${CARCH}" in
 #	"")_pkgadditver="+dfsg-sth-else"
 # esac
@@ -27,13 +27,12 @@ source_aarch64=("https://deb.debian.org/debian/pool/main/q/qemu/${_pkgname}_${pk
 source_armv7h=("https://deb.debian.org/debian/pool/main/q/qemu/${_pkgname}_${pkgver}${_pkgadditver}_armhf.deb")
 source_armv6h=("https://deb.debian.org/debian/pool/main/q/qemu/${_pkgname}_${pkgver}${_pkgadditver}_armel.deb")
 
-sha256sums_x86_64=("917e0bed044374bda4607c07dc5b28614176397c7c10025f67e88adb7c9a8e92")
-sha256sums_i686=("add7d26016c5c0a2a28d58dd0b7dad1cadc2df5bf5bc0489dc634e2c6038caa3")
-sha256sums_aarch64=("b3aa30eefd51d7c37d6f12b95a595ea84e5326c1d41eb6979cc78a5061b2d754")
-sha256sums_armv7h=("aace823e6d6802d31d9e46d35149e1e8ca2ba9e018cce07d7823c9e3abed87af")
-sha256sums_armv6h=("63a796fd3555d6e5ccc5e7bcde366b046c1ca35b04a1d72fc8574144b986b660")
+sha256sums_x86_64=("95590198a480ec48fa3780803a6622889fd298c6ccdd435f92051936ba2d358c")
+sha256sums_i686=("83217bdb0563405e11440997e709d26876136c8acf792c8018a5fa4ab2bd8244")
+sha256sums_aarch64=("e632e50ac67cde51b1013fa3a6509dc6ff806fb0a993e5979bdcdab48271b5e4")
+sha256sums_armv7h=("6486d2fa815cf413dce49b7a925f6cde1f90378043db5c4d6fe3418dc639cff5")
+sha256sums_armv6h=("3bbd81e80c958918c7e5368dcbf401eed17934a2e46c17cc5e596ff94a8f496c")
 
 package() {
-	cd "${pkgdir}"
-	tar -xf "${srcdir}/data.tar.xz" --exclude=./usr/share/man/man1/qemu-debootstrap.1.gz ./usr/bin ./usr/share/man
+	tar -C "${pkgdir}" -xf "${srcdir}/data.tar.xz" --exclude=./usr/share/man/man1/qemu-debootstrap.1.gz ./usr/bin ./usr/share/man
 }
