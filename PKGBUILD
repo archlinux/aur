@@ -1,23 +1,23 @@
 # Maintainer: thr <r at sledinmay dot com>
 pkgname=grotz
 pkgver=0.2c
-pkgrel=5
+pkgrel=6
 pkgdesc="A Z-code interactive fiction interpreter for GTK."
 arch=(i686 x86_64)
-url=http://kevinboone.net/README_grotz.html
+url=https://github.com/kevinboone/grotz
 license=(GPL)
 depends=(gtk2 mplayer)
-source=("http://kevinboone.net/grotz2.tar.gz")
+source=("git+$url")
 install=grotz.install
-md5sums=('8cc05bef45467643e15a8624aa0e49a3')
+md5sums=('SKIP')
 
 build() {
-  cd grotz2
+  cd grotz
   make bundle
 }
 package() {
-  install -D grotz2/grotz ${pkgdir}/usr/bin/grotz
-  install -D grotz2/scripts/grotz_playmedia.sh ${pkgdir}/usr/bin/grotz_playmedia.sh
-  install -D -m644 grotz2/icons/${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
-  install -D -m644 grotz2/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+  install -D grotz/grotz ${pkgdir}/usr/bin/grotz
+  install -D grotz/scripts/grotz_playmedia.sh ${pkgdir}/usr/bin/grotz_playmedia.sh
+  install -D -m644 grotz/icons/${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -D -m644 grotz/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
