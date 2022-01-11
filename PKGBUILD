@@ -3,7 +3,7 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.5.r145.g77bc0391
+pkgver=0.5.r149.ge37572b3
 pkgrel=2
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
@@ -26,6 +26,12 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  sed -i "s/from gi.repository import Gtk, GLib, Gdk, GObject, GtkSource/import gi\ngi.require_version('GtkSource', '4')\nfrom gi.repository import Gtk, GLib, Gdk, GObject, GtkSource/g" \
+    GTG/gtk/editor/taskview.py
 }
 
 build() {
