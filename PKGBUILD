@@ -2,7 +2,7 @@
 
 pkgname=bgpq3-git
 pkgver=0.1.35.r9.g14bff82
-pkgrel=2
+pkgrel=3
 pkgdesc="bgp filtering automation tool"
 arch=("x86_64" "i686")
 url="https://github.com/snar/bgpq3"
@@ -11,7 +11,7 @@ provides=('bgpq3')
 conflicts=('bgpq3')
 depends=('glibc')
 makedepends=('git')
-source=("$pkgname::git://github.com/snar/bgpq3.git"
+source=("$pkgname::git+https://github.com/snar/bgpq3.git"
         "01-fix-man-location.patch")
 sha256sums=('SKIP'
             '4723df01270b3c4b712768b9f867ac72c9070ab7a96469f0aa34d65769e8412c')
