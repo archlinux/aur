@@ -1,15 +1,15 @@
 pkgbase = kyocera-ppd-git
 	pkgdesc = PPD files for Kyocera FS printers
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mnorin/kyocera-ppd-installer.git
 	arch = i686
 	arch = x86_64
 	license = GPL 2.0
 	makedepends = git
 	depends = cups
+	depends = rastertokpsl-git
 	source = git+https://github.com/mnorin/kyocera-ppd-installer.git
 	sha256sums = SKIP
 
 pkgname = kyocera-ppd-git
-
