@@ -1,37 +1,42 @@
 # Maintainer: Alexandros Theodotou <alex at zrythm dot org>
+
 pkgname=zrythm
-pkgver=alpha.15.0.1
-pkgrel=3
+_pkgver=1.0.0-alpha.27.0.3
+pkgver=1.0.0.alpha.27.0.3
+pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
-depends=('gtk3' 'lilv' 'libx11' 'jack' 'libsndfile' 'libyaml' 'libsamplerate' 'alsa-lib' 'fftw'
-         'suil' 'breeze-icons' 'lv2' 'rubberband')
-makedepends=('ruby-sass' 'python' 'gettext' 'sed' 'python-sphinx-intl'
-  'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2' 'gtksourceview3')
-optdepends=('portaudio: portaudio backend'
-            'qt5-base: for embedding qt5 plugin UIs')
+depends=('gtk4' 'graphviz' 'carla' 'fluidsynth' 'vamp-plugin-sdk' 'guile' 'libaudec' 'xxhash' 'libcyaml' 'libadwaita' 'reproc' 'libbacktrace' 'rubberband' 'gtksourceview5' 'fftw' 'sratom' 'serd' 'portaudio')
+makedepends=('meson' 'cmake' 'guile' 'ruby-sass' 'help2man')
 conflicts=('zrythm-git')
-source=("https://www.zrythm.org/releases/$pkgname-1.0.0-$pkgver.tar.xz"{,.asc})
-sha256sums=('7acb878b875895dcf1a638f1db720ada4429cb50d3be0f8ea19399e981075d2c' 'SKIP')
+source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc})
+sha256sums=('3a857d63283ed547be62e2478b2dc2c8aaf308979a9f731cc48e254a9bba2ac4'
+            'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
+
+prepare() {
+  cd "$pkgname-$_pkgver"
+
+  rm -r subprojects
+}
+
 build() {
-  cd "$pkgname-1.0.0-$pkgver"
+  cd "$pkgname-$_pkgver"
   meson build --buildtype=release --prefix=/usr \
-    -Denable_tests=true -Duser_manual=true \
-    -Dmanpage=true
+    -Dcheck_updates=false \
+    -Dmanpage=true -Dtests=true -Dportaudio=enabled
   ninja -C build
 }
 
-check() {
-  cd "$pkgname-1.0.0-$pkgver"
-  ninja -C build test
-}
+#check() {
+#  cd "$pkgname-$_pkgver"
+#  ninja -C build test
+#}
 
 package() {
-  cd "$pkgname-1.0.0-$pkgver"
+  cd "$pkgname-$_pkgver"
   install -vDm 644 AUTHORS CONTRIBUTING.md \
     CHANGELOG.md README.md THANKS TRANSLATORS \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
