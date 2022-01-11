@@ -1,0 +1,12 @@
+pkgbase = c19
+	pkgdesc = COVID-19 Stats for the country of Pakistan.
+	pkgver = 0.0
+	pkgrel = 3
+	url = https://www.techtum.dev/work-c19-220109.html
+	arch = x86_64
+	license = MIT
+	depends = python
+	source = https://github.com/siphr/c19.git
+	md5sums = SKIP
+
+pkgname = c19
