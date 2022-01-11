@@ -12,4 +12,4 @@ srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src haste-client*.tar.*
+	rm -rf pkg src haste-client/ haste-client*.tar.*

@@ -1,7 +1,7 @@
 pkgbase = haste-client-git
 	pkgdesc = A little utility for uploading code to hastebin server, written in Go.
 	pkgver = r11.00dea98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zneix/haste-client
 	changelog = haste-client-git.changelog
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = haste-client-git
 	provides = haste
 	conflicts = haste-client
 	conflicts = haste-client-bin
-	source = haste-client::git://github.com/zneix/haste-client.git
+	source = haste-client::git+https://github.com/zneix/haste-client.git
 	sha256sums = SKIP
 
 pkgname = haste-client-git
-

@@ -2,10 +2,10 @@
 
 pkgname=haste-client-git
 pkgver=r11.00dea98
-pkgrel=1
-pkgdesc="A little utility for uploading code to hastebin server, written in Go."
+pkgrel=2
+pkgdesc='A little utility for uploading code to hastebin server, written in Go.'
 arch=('x86_64')
-url="https://github.com/zneix/haste-client"
+url=https://github.com/zneix/haste-client
 license=('AGPL3')
 depends=()
 makedepends=('go' 'git' 'make')
@@ -13,7 +13,7 @@ provides=('haste')
 conflicts=('haste-client' 'haste-client-bin')
 options=()
 changelog=$pkgname.changelog
-source=('haste-client::git://github.com/zneix/haste-client.git')
+source=('haste-client::git+https://github.com/zneix/haste-client.git')
 sha256sums=('SKIP')
 
 pkgver() {
