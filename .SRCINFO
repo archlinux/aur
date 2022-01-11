@@ -1,0 +1,17 @@
+pkgbase = libaudec
+	pkgdesc = A library for reading and resampling audio files
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://git.sr.ht/~alextee/libaudec/archive/v0.3.4.tar.gz
+	arch = x86_64
+	arch = i686
+	license = AGPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cmake
+	depends = libsamplerate
+	depends = libsndfile
+	source = libaudec-v0.3.4::https://git.sr.ht/~alextee/libaudec/archive/v0.3.4.tar.gz
+	sha256sums = edaf7cb187c5e0235e527cde741708e7c8144c9a0c837182dd36d61f5ea26f23
+
+pkgname = libaudec
