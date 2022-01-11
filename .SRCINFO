@@ -1,0 +1,25 @@
+pkgbase = mysterium-vpn-desktop-bin
+	pkgdesc = Mysterium VPN is a Desktop VPN client for Windows, macOS and Linux.
+	pkgver = 10.4.1
+	pkgrel = 1
+	url = https://github.com/mysteriumnetwork/mysterium-vpn-desktop
+	arch = x86_64
+	license = MIT
+	depends = libxss
+	depends = nss
+	depends = libxtst
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = openresolv
+	depends = gtk3
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	provides = mysterium-vpn-desktop
+	source_x86_64 = https://github.com/mysteriumnetwork/mysterium-vpn-desktop/releases/download/10.4.1/mysterium-vpn-desktop_10.4.1_amd64.deb
+	source_x86_64 = LICENSE
+	sha256sums_x86_64 = 994f3b13cda3483d4ca4a970caf7e02f230b35a7750dec4e9d531f9324a45603
+	sha256sums_x86_64 = 070d2f42e03987ec349cdb0f4c8668dda323ce30996c848703e70ae3944d3aa8
+
+pkgname = mysterium-vpn-desktop-bin
