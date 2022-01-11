@@ -1,7 +1,7 @@
 pkgbase = proxmark3-iceman
 	pkgdesc = RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.
-	pkgver = 4.14434
-	pkgrel = 3
+	pkgver = 4.14831
+	pkgrel = 1
 	url = https://github.com/RfidResearchGroup/proxmark3
 	install = proxmark3-iceman.install
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = proxmark3-iceman
 	replaces = proxmark3-iceman-generic
 	replaces = proxmark3-iceman-rdv4
 	options = !buildflags
-	source = proxmark3-iceman::git+https://github.com/RfidResearchGroup/proxmark3.git#tag=v4.14434
+	source = proxmark3-iceman::git+https://github.com/RfidResearchGroup/proxmark3.git#tag=v4.14831
 	sha512sums = SKIP
 
 pkgname = proxmark3-iceman
