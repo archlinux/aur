@@ -2,7 +2,7 @@
 pkgname=python-hypergan
 _pkgname=hypergan
 pkgver=1.0.6
-pkgrel=0
+pkgrel=1
 pkgdesc="A customizable generative adversarial network with good defaults. Build your own content generator."
 arch=('i686' 'x86_64')
 url="https://github.com/255BITS/HyperGAN"
