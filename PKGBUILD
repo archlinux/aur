@@ -1,7 +1,7 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=wl-color-picker
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A wayland color picker that also works on wlroots"
 arch=('any')
