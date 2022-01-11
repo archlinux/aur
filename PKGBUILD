@@ -1,4 +1,4 @@
-# Maintainer: Santiago Lo Coco <santilococo.01@gmail.com>
+# Maintainer: Santiago Lo Coco <santilococo.01 at gmail dot com>
 
 _pkgname="holehe"
 pkgname="${_pkgname}-git"
