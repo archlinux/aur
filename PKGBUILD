@@ -3,7 +3,7 @@
 pkgname=cerebro-git
 _pkgname=cerebro
 pkgver=v0.4.0.r4.gb2039c2
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source productivity booster with a brain.'
 arch=('x86_64')
 url='https://cerebroapp.com/'
