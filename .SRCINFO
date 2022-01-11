@@ -1,0 +1,12 @@
+pkgbase = nsis-inetc-bin
+	pkgdesc = Internet client plug-in for files download and upload.
+	pkgver = 1.0.5.3
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/Inetc_plug-in
+	arch = any
+	license = custom
+	depends = nsis
+	source = Inetc-1.0.5.3.zip::https://nsis.sourceforge.io/mediawiki/images/c/c9/Inetc.zip
+	sha256sums = 88d9dcffbe967df6ee9f5820f8199a673383e581bf650dbc35b94846314b1a4b
+
+pkgname = nsis-inetc-bin
