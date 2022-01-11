@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname=lutris-wine-git
-pkgver=0.56.r0.g4c1694a
+pkgver=0.56.r3.ge5e10a1
 pkgrel=1
 pkgdesc='Lutris Wine Runner as system Wine and even better'
 arch=('any')
@@ -62,6 +62,7 @@ package() {
     install -Dm644 "usr/share/lutris-wine/themes/Wine Dark.reg" "${pkgdir}/usr/share/lutris-wine/themes/Wine Dark.reg"
     install -Dm644 usr/share/lutris-wine/db/LeagueClient.lwdb ${pkgdir}/usr/share/lutris-wine/db/LeagueClient.lwdb
     install -Dm644 usr/share/lutris-wine/db/re8.lwdb ${pkgdir}/usr/share/lutris-wine/db/re8.lwdb
+    install -Dm644 usr/share/lutris-wine/db/nvapi64-tests.lwdb ${pkgdir}/usr/share/lutris-wine/db/nvapi64-tests.lwdb
     install -Dm644 usr/share/lutris-wine/gif/league-of-legends.gif ${pkgdir}/usr/share/lutris-wine/gif/league-of-legends.gif
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/lutris-wine/LICENSE
 }
