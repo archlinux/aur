@@ -3,7 +3,7 @@
 
 pkgname=argo-bin
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/argoproj/argo-workflows"
