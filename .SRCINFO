@@ -1,7 +1,7 @@
 pkgbase = roc-toolkit-git
 	pkgdesc = Real-time audio streaming over network. Compiled without pulseaudio modules.
 	pkgver = v0.1.5.r41.gc8968733
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roc-streaming/roc-toolkit
 	arch = x86_64
 	arch = i686

@@ -4,7 +4,7 @@
 _pkgname=roc-toolkit
 pkgname=${_pkgname}-git
 pkgver=v0.1.5.r41.gc8968733
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time audio streaming over network. Compiled without pulseaudio modules."
 arch=('x86_64' 'i686' 'armv6l' 'armv7l' 'aarch64' 'armv7h' 'armv6h')
 conflicts=(roc)
@@ -17,7 +17,7 @@ source=('git+https://github.com/roc-streaming/roc-toolkit.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${_pkgname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
