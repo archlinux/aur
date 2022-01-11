@@ -1,17 +1,19 @@
 pkgbase = inferno
-	pkgdesc = A compact operating system designed for building distributed and networked systems. (Prebuilt)
-	pkgver = 20150328
+	pkgdesc = A Rust port of FlameGraph
+	pkgver = 0.10.9
 	pkgrel = 2
-	url = http://www.vitanuova.com/inferno/
-	install = inferno.install
-	arch = any
-	license = GPL2
-	provides = inferno
-	conflicts = inferno
-	source = http://www.vitanuova.com/dist/4e/inferno-20150328.tgz
-	source = make-install-root.sh
-	sha256sums = 3f648d01a5264e1e4fd773824581205cdf9efe0a2e505298d07db21e1828ef7f
-	sha256sums = SKIP
+	url = https://github.com/jonhoo/inferno
+	arch = x86_64
+	license = CDDL
+	makedepends = rust
+	depends = gcc-libs
+	provides = inferno-collapse-perf
+	provides = inferno-collapse-dtrace
+	provides = inferno-collapse-guess
+	provides = inferno-flamegraph
+	provides = inferno-diff-folded
+	conflicts = inferno-git
+	source = inferno-0.10.9.tar.gz::https://github.com/jonhoo/inferno/archive/refs/tags/v0.10.9.tar.gz
+	sha256sums = be7339159f6d889a89a3c91746487375b08fdfcb99196e511c2e8d4077687ff6
 
 pkgname = inferno
-
