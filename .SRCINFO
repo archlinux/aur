@@ -1,7 +1,7 @@
 pkgbase = python-hypergan
 	pkgdesc = A customizable generative adversarial network with good defaults. Build your own content generator.
 	pkgver = 1.0.6
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/255BITS/HyperGAN
 	arch = i686
 	arch = x86_64
