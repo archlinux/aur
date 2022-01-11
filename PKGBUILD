@@ -74,7 +74,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=90
+_minor=91
 _srcname=linux-${_major}
 _clr=${_major}.89-40
 pkgbase=linux-clear-lts2020
@@ -133,6 +133,9 @@ prepare() {
     # Power management and ACPI options
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                    --enable ACPI_TABLE_UPGRADE
+
+    # General architecture-dependent options
+    scripts/config --enable KPROBES
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
@@ -349,7 +352,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            'da23117293a58028bfc0eec76b61b27c588efa7475022e232f33db51f9a15f27'
+            'de26ebfe8d9db3e190361b2ed7c5779a0ce19c51bbbd8c39cecd5b4922b5c959'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
