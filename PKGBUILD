@@ -2,7 +2,7 @@
 
 pkgname=pokemon-revolution-online-bin
 __LIN_DESKTOP_ASSET_VER=0.4.1
-__PROCLIENT_VER=20211201
+__PROCLIENT_VER=20220108
 pkgver=${__PROCLIENT_VER}+${__LIN_DESKTOP_ASSET_VER}
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
@@ -15,10 +15,10 @@ optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 install="install"
 source=("git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#tag=${__LIN_DESKTOP_ASSET_VER}"
-    "PROClient_linux-${__PROCLIENT_VER}.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip"
+        "PROClient_linux-${__PROCLIENT_VER}.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip"
 )
 sha512sums=('SKIP'
-            '5252fc2805505f2e3c2fa1735f8b66cc4c95831c187ace5226f7c3b3bf538c3f42b5698be2d09843e17359d21cf57de16f5fec2861ea68e60c843a0e40c1356c')
+            '002ca2595522b0c804b2cc891a8cbda1b3260d82f94ee25131770ee183726bcf8b1d5972f2bacdc2a2c78633d190ddf7f099ba308ed6d2cd243e0b91e35a84c1')
 
 package() {
     cd "PROClient"
