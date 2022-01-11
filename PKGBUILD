@@ -1,7 +1,7 @@
 # Maintainer: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgname=cmus-git
-pkgver=v2.8.0.r24.gd1290d5
+pkgver=v2.9.1.r25.g54d7213
 pkgrel=1
 pkgdesc="Small, fast and powerful console music player for Unix-like operating systems."
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ optdepends=('alsa-lib: for ALSA output plugin support'
 conflicts=('cmus')
 provides=('cmus')
 license=('GPL')
-source=(git://github.com/cmus/cmus)
+source=('git+https://github.com/cmus/cmus.git')
 sha512sums=('SKIP')
 _gitname=cmus
 
