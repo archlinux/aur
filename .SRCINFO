@@ -1,6 +1,6 @@
 pkgbase = v4l2loopback-dkms-git
 	pkgdesc = v4l2-loopback device
-	pkgver = 0.12.5.r220.gf62fb90
+	pkgver = 0.12.5.r232.g2fa9d6d
 	pkgrel = 1
 	url = https://github.com/umlaeute/v4l2loopback
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = v4l2loopback-dkms-git
 	depends = dkms
 	provides = v4l2loopback-dkms
 	conflicts = v4l2loopback-dkms
-	source = git://github.com/umlaeute/v4l2loopback.git#branch=main
+	source = git+https://github.com/umlaeute/v4l2loopback.git#branch=main
 	md5sums = SKIP
 
 pkgname = v4l2loopback-dkms-git
-
