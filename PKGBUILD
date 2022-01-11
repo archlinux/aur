@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=gitty-git
-pkgver=r21.e656106
+pkgver=r43.09abb4c
 pkgrel=1
 pkgdesc="Contextual information about your git projects, right on the command-line"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::"git://github.com/muesli/${pkgname%-git}.git")
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
