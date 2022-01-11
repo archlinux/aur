@@ -77,7 +77,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.15
-_minor=13
+_minor=14
 _srcname=linux-${_major}
 _clr=${_major}.12-1113
 pkgbase=linux-clear
@@ -157,6 +157,9 @@ prepare() {
     # Power management and ACPI options
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                    --enable ACPI_TABLE_UPGRADE
+
+    # General architecture-dependent options
+    scripts/config --enable KPROBES
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
@@ -398,7 +401,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '660362158b5dbe3044d027d568b2cb8a0fb510dd7713e1671dc701456b3d9e10'
+            '283bf58378a8f8ff457fc1259dd2864dc4de92295482ef3ae868e13e017250ee'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba'
             'a99d5a96302aaf49da43d3b4d2f9a5f92b1ae9a1bc7f474f0f01a87f64439391'
