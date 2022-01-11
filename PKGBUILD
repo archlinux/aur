@@ -12,7 +12,7 @@ pkgname=(
 	nordic-bluish-accent-theme
 	nordic-bluish-accent-standard-buttons-theme)
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Nord-derived themes for GTK and other platforms"
 arch=('any')
 url="https://github.com/EliverLara/Nordic"

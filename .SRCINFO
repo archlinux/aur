@@ -1,7 +1,7 @@
 pkgbase = nordic-theme
 	pkgdesc = Nord-derived themes for GTK and other platforms
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EliverLara/Nordic
 	arch = any
 	license = GPL3
