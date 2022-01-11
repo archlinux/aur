@@ -1,6 +1,6 @@
 pkgbase = photobroom-git
 	pkgdesc = Photos managing tool
-	pkgver = v1.5.0.r15.ge2467e6f8
+	pkgver = v1.5.2.r213.g9211861b9
 	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = photobroom-git
 	depends = exiv2
 	depends = qt6-base
 	depends = dlib
+	depends = qt6-multimedia
 	provides = photobroom
 	conflicts = photobroom
 	source = photobroom-git::git+https://github.com/Kicer86/photobroom.git#branch=master
