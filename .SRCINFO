@@ -1,0 +1,12 @@
+pkgbase = permfix
+	pkgdesc = Fix permissions.sqlite db to allow cookies for specified domains in Firefox.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.com/stanzabird/permfix
+	arch = x86_64
+	license = MPL2
+	depends = sqlite
+	source = https://gitlab.com/stanzabird/permfix/-/archive/v0.2.1/permfix-v0.2.1.tar.bz2
+	sha256sums = ce2519230e1ef59db1839726aac36229367a024d427752c47d4321f775903e1b
+
+pkgname = permfix
