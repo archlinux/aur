@@ -1,7 +1,7 @@
 pkgbase = spigot
 	pkgdesc = High performance Minecraft server implementation
-	pkgver = 1.18.1+b141
-	pkgrel = 5
+	pkgver = 1.18.1+b144
+	pkgrel = 1
 	url = https://www.spigotmc.org/
 	install = spigot.install
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = spigot
 	conflicts = craftbukkit
 	conflicts = spigot-patcher
 	backup = etc/conf.d/spigot
-	source = BuildTools-1.18.1+b141.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/141/artifact/target/BuildTools.jar
-	source = minecraft-server-1.0.0.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.0.tar.gz
-	sha512sums = d4ffaf205dd8565f133c0045e8eee1e6ef3cadaff899fa5c04deada1f9727cd025e41e0dbbfdb20a403406e502d92e20cbe62396e78a5f2a7a738976e51571de
-	sha512sums = e315277da81cb28de338e870f477dc58dc9d8f8542594431ab5321150c92ff5634ace2be8c6778d1edb718fdeb6850d7021bffcbd3cae2a00f20e3a64caa3d92
+	source = BuildTools-1.18.1+b144.jar::https://hub.spigotmc.org/jenkins/job/BuildTools/144/artifact/target/BuildTools.jar
+	source = minecraft-server-1.0.1.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.1.tar.gz
+	sha512sums = 13f41720b581f447eb3c43f4aa37cdb0e0e70e51a832ab5d7868a29a2e725e1459e0a2ccd8e70665b43d02d19e3080ff247af6274ee0e535efe3f5007d91676b
+	sha512sums = 5fecf7bbcc5e2861640ae34bc32770a02a137cb4cf142adf565997c20141744b00517501ad717f390056bdcf59c4e03e365656454b427e771a15fcf152f1bc97
 
 pkgname = spigot
