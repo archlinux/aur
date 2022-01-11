@@ -5,7 +5,7 @@
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=5006v1.0.3
+pkgver=5144v1.1.1
 pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='https://shatteredpixel.com'
@@ -18,12 +18,14 @@ source=(
   "$_pkgname::git+https://github.com/00-Evan/shattered-pixel-dungeon.git"
   "$_pkgname.sh"
   "$_pkgname.desktop"
+  'fix-build.patch'
 )
 
 sha512sums=(
   'SKIP'
   '88814d1f33eea6bd5656d3ca731ed5a6cfce10ecdae24012252c5b32c4b194ec75fb0e22cac70897802679086c6a32e210d52933ec45ca94ff350ac4ad7c266e'
   '204a7bcedbbc14bdad6586e4b759b326191a7fd2c344dadc7032495d4caa5fe32edac4118d7294229a6fe24f6684416fff37e260bbc9dde9e50846a03ba77db8'
+  '2abddbb6e8e46045c406e3728cf0a616db279d807a129b860d86e692be97943052e0dffb9e30b051c0a99db9a13629913f411f887fe1a02b04fa9b2bf54d3d26'
 )
 
 pkgver() {
@@ -32,8 +34,13 @@ pkgver() {
 }
 
 prepare() {
+  cd "$_pkgname"
+
   # Make the gradlew script executable
-  chmod 755 "$_pkgname/gradlew"
+  chmod 755 gradlew
+
+  # Fix the build
+  patch -p1 < ../fix-build.patch
 }
 
 build() {

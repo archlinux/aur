@@ -1,0 +1,17 @@
+diff --git a/gradle.properties b/gradle.properties
+index 7cae816c4..0fbc8af10 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -4,9 +4,9 @@
+ # Specifies the JVM arguments used for the daemon process.
+ # The setting is particularly useful for tweaking memory settings.
+ # Default value: -Xmx1024m -XX:MaxPermSize=256m
+-org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
++org.gradle.jvmargs=-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
+ #
+ # When configured, Gradle will run in incubating parallel mode.
+ # This option should only be used with decoupled projects. More details, visit
+ # http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+-org.gradle.parallel=true
+\ No newline at end of file
++org.gradle.parallel=true
