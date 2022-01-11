@@ -1,23 +1,13 @@
 pkgbase = python-curses-menu
-	pkgdesc = A simple console menu system using curses in Python
-	pkgver = 0.5.0
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/curses-menu
+	pkgdesc = A simple console menu system using curses
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/pmbarrett314/curses-menu
 	arch = any
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-curses-menu-0.5.0.zip::https://pypi.python.org/packages/3b/7d/82f1492afd33f92e64d44d51f65eff4c39382642cfced65d5748a770bb8f/curses-menu-0.5.0.zip
-	sha256sums = 29c45e2f16283833e2940fac0fd64e948f2ff603d3e11f510c5bd2b946cd8981
+	depends = python
+	source = https://github.com/pmbarrett314/curses-menu/archive/0.6.0.tar.gz
+	sha512sums = e0c1c0fe5677db76febf8f5f71bf167ced45c045bdfaa24bcfd434948246e095ae0a37e41a1213b065fba2ffb91bd68a2a81311c94a69e1ad2f82920904ebe32
 
 pkgname = python-curses-menu
-	checkdepends = python-tox
-	depends = python
-
-pkgname = python2-curses-menu
-	checkdepends = python2-tox
-	depends = python2
-

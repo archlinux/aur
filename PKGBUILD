@@ -1,47 +1,26 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_name=curses-menu
-pkgbase='python-curses-menu'
-pkgname=('python-curses-menu' 'python2-curses-menu')
-pkgver=0.5.0
-pkgrel=2
-pkgdesc="A simple console menu system using curses in Python"
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
+_base=curses-menu
+pkgname=python-${_base}
+pkgver=0.6.0
+pkgrel=1
+pkgdesc="A simple console menu system using curses"
 arch=('any')
-url="https://pypi.python.org/pypi/curses-menu"
-license=('MIT')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".zip::https://pypi.python.org/packages/3b/7d/82f1492afd33f92e64d44d51f65eff4c39382642cfced65d5748a770bb8f/curses-menu-0.5.0.zip)
-sha256sums=('29c45e2f16283833e2940fac0fd64e948f2ff603d3e11f510c5bd2b946cd8981')
+url="https://github.com/pmbarrett314/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+# options=(!emptydirs)
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('e0c1c0fe5677db76febf8f5f71bf167ced45c045bdfaa24bcfd434948246e095ae0a37e41a1213b065fba2ffb91bd68a2a81311c94a69e1ad2f82920904ebe32')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+build() {
+  cd "${_base}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-curses-menu() {
-  depends=('python2')
-  checkdepends=('python2-tox')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-}
-
-package_python-curses-menu() {
-  depends=('python')
-  checkdepends=('python-tox')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
