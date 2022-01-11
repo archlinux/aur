@@ -40,5 +40,4 @@ package() {
   mkdir -p "${pkgdir}"/opt
   mv "${srcdir}/${_pkgfolder}" "$pkgdir/opt/$pkgname"
   install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
-  sed -i 's/Name=Alchemy/Name='"${_releasename}"'/' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
 }
