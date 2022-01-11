@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = a highly automated and intuitive digital audio workstation
 	pkgver = 1.0.0.alpha.27.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.zrythm.org
 	arch = x86_64
 	arch = i686
@@ -33,6 +33,7 @@ pkgbase = zrythm
 	depends = rtaudio
 	depends = lsp-dsp-lib
 	depends = sdl2
+	optdepends = realtime-privileges: allow memory locking
 	conflicts = zrythm-git
 	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.27.0.3.tar.xz
 	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.27.0.3.tar.xz.asc
