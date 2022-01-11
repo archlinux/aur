@@ -5,7 +5,7 @@
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 pkgname=cycles-standalone
-pkgver=v2.93.0.r6.gb48e9556
+pkgver=v2.93.0.r7.gacb51a8e
 pkgrel=1
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
