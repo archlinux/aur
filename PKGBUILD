@@ -10,7 +10,7 @@ pkgname=nvidia-container-runtime
 # identical to nvidia-container-toolkit's PKGBUILD.
 
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 
 toolkit_ver=1.7.0
 
@@ -33,6 +33,7 @@ build() {
 
   mkdir bin
 
+  GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
   go build -v \
     -buildmode=pie \
@@ -44,6 +45,7 @@ build() {
     # -trimpath \  # only go > 1.13
 
   # go leaves a bunch of local stuff with 0400, making it break future `makepkg -C` _grumble grumble_
+  GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
   go clean -modcache
 }
