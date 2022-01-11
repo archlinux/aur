@@ -1,7 +1,7 @@
 pkgbase = hexokinase-git
 	pkgdesc = Fast text scraper for converting colors into hex values
 	pkgver = r44.11fc3ef
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rrethy/hexokinase
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = hexokinase-git
 	depends = glibc
 	optdepends = vim-hexokinase: companion vim plugin
 	provides = hexokinase
-	source = git+https://github.com/rrethy/hexokinase
+	conflicts = hexokinase
+	source = hexokinase-git::git+https://github.com/rrethy/hexokinase
 	md5sums = SKIP
 
 pkgname = hexokinase-git
-
