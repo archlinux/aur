@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pacoloco-git
-pkgver=1.0.r1.g824e1a8
+pkgver=1.2.r0.g3338566
 pkgrel=1
 pkgdesc='Pacman caching proxy server'
 arch=(x86_64 armv7h aarch64)
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=(git go)
 provides=(pacoloco)
 conflicts=(pacoloco)
-source=(git://github.com/anatol/pacoloco)
+source=(git+https://github.com/anatol/pacoloco)
 sha1sums=('SKIP')
 
 pkgver() {
