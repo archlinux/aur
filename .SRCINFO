@@ -1,0 +1,23 @@
+pkgbase = holehe-git
+	pkgdesc = Efficiently finding registered accounts from emails.
+	pkgver = r376.ac5f160
+	pkgrel = 1
+	url = https://github.com/megadose/holehe
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-termcolor
+	depends = python-bs4
+	depends = python-httpx
+	depends = python-trio
+	depends = python-argparse
+	depends = python-tqdm
+	depends = python-colorama
+	provides = holehe
+	conflicts = holehe
+	source = git+https://github.com/megadose/holehe.git
+	sha256sums = SKIP
+
+pkgname = holehe-git
