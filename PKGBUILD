@@ -4,7 +4,7 @@ pkgver=11.2.0.4528
 _pkgver_gui=11.2.1.4528
 _pkgverbuild=$(echo ${pkgver} | cut -d "." -f 4)
 _pkgver=$(echo ${pkgver} | cut -d "." -f 1-3)
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='Kaspersky Endpoint Security 11.2.0 for Linux'
 url='https://www.kaspersky.de/small-to-medium-business-security/endpoint-linux'
@@ -25,8 +25,8 @@ source=( "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/m
          "kesl.ini")
 sha256sums=('44aef3025d9c440a87effa684169057d4a50d31dca9cc1e2e1d91a2cd42f6160'
             'dc2c5c82cac25ba6ebf02220deb5c40fd2035bd24e74a62fb6d0bf3933e7db31'
-            'ee9df719cdba6ffb1928c6f8b3e32acf55de3d5a683128f0d9540676651f57a2'
-            'ec1dd039f4048589acb8987f3c4e7c52f659ef21483d65daf0cdc94756483821')
+            'fb1a3921de63e89b399080a0a08face8eeac94a92d06d38e428e68ecabf00732'
+            '86203f1dcd663763bc9c8d51a98e510523189c7e78a7fb293183095b89bfa6cf')
 validpgpkeys=('6AFE173577C4CBD621DF217FD093435AA3ED2C4A')
 
 package_kesl() {
