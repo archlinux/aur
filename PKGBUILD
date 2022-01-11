@@ -1,7 +1,8 @@
 # Maintainer: Howetuft <howetuft@gmail.com>
 # Contributor:
 
-
+# You may define CUDA_ARCH to target specific GPU architecture
+# for instance: CUDA_ARCH=sm_50
 [[ -v CUDA_ARCH ]] && _cuda_capability=(${CUDA_ARCH})
 
 pkgname=cycles-standalone
@@ -20,7 +21,7 @@ source=("cycles-standalone::git+https://git.blender.org/cycles.git"
         OpenEXR3.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
-            '7abd5530694535db488568cc98d2a7be4cb5ded0f5d8d5d2dad2d08da7008330'
+            '2ba856e1734fcc8daed987a547f4b556293e57ff3bce5dadbd1d9e72da92bd73'
             '9e644ccbfb58f1e9cd4a31ada9abcc5496371fb29195b2a92069a7f8888750e7'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
