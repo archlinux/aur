@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-fmt
 	pkgdesc = Open-source formatting library for C++ (mingw-w64)
-	pkgver = 8.0.1
-	pkgrel = 3
+	pkgver = 8.1.1
+	pkgrel = 1
 	url = https://fmt.dev/
 	arch = any
 	license = MIT
@@ -11,9 +11,8 @@ pkgbase = mingw-w64-fmt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = mingw-w64-fmt-8.0.1.tar.gz::https://github.com/fmtlib/fmt/archive/8.0.1.tar.gz
-	source = test_patch.patch
-	sha256sums = b06ca3130158c625848f3fb7418f235155a4d389b2abc3a6245fb01cb0eb1e01
-	sha256sums = fc5915d5df2e7bf07dcede5c5fc101b74a52c9a3dc77fe36625adda1a7d7531d
+	options = !lto
+	source = fmt-8.1.1.tar.gz::https://github.com/fmtlib/fmt/archive/8.1.1.tar.gz
+	sha256sums = 3d794d3cf67633b34b2771eb9f073bde87e846e0d395d254df7b211ef1ec7346
 
 pkgname = mingw-w64-fmt
