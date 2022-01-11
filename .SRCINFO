@@ -1,7 +1,7 @@
 pkgbase = corectrl
 	pkgdesc = Core control application
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/corectrl/corectrl
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = corectrl
 	makedepends = gcc>=8
 	makedepends = extra-cmake-modules
 	depends = procps-ng
-	depends = hwids
+	depends = hwdata
 	depends = karchive
 	depends = kauth
 	depends = qt5-charts
