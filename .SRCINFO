@@ -18,7 +18,7 @@ pkgbase = moodle-dl-git
 	depends = python-aioxmpp
 	provides = moodle-dl
 	conflicts = moodle-dl
-	source = git://github.com/C0D3D3V/Moodle-Downloader-2.git
+	source = git+https://github.com/C0D3D3V/Moodle-Downloader-2.git
 	md5sums = SKIP
 
 pkgname = moodle-dl-git
