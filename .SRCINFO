@@ -1,6 +1,6 @@
 pkgbase = cycles-standalone
 	pkgdesc = Blender Cycles rendering engine, standalone version
-	pkgver = v1.11.0.r582.gaab1ad98
+	pkgver = v2.93.0.r7.gacb51a8e
 	pkgrel = 1
 	url = https://wiki.blender.org/wiki/Source/Render/Cycles/Standalone
 	arch = x86_64
@@ -29,9 +29,8 @@ pkgbase = cycles-standalone
 	source = OpenEXR3.patch
 	source = cycles_wrap.sh
 	sha256sums = SKIP
-	sha256sums = 7abd5530694535db488568cc98d2a7be4cb5ded0f5d8d5d2dad2d08da7008330
+	sha256sums = 2ba856e1734fcc8daed987a547f4b556293e57ff3bce5dadbd1d9e72da92bd73
 	sha256sums = 9e644ccbfb58f1e9cd4a31ada9abcc5496371fb29195b2a92069a7f8888750e7
 	sha256sums = 00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96
 
 pkgname = cycles-standalone
-
