@@ -1,0 +1,11 @@
+pkgbase = mint-backgrounds-una
+	pkgdesc = The backgrounds included in Linux Mint 20.3 una
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-una
+	arch = any
+	license = Various
+	source = http://packages.linuxmint.com/pool/main/m/mint-backgrounds-una/mint-backgrounds-una_1.1.tar.gz
+	sha256sums = 42a8af8c7f18bb83743ba31ee6c2d74ba9328bbac2d28399a7218991400a6e9c
+
+pkgname = mint-backgrounds-una
