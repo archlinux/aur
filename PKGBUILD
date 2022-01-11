@@ -4,7 +4,7 @@
 pkgname=nvidia-container-toolkit
 
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc='NVIDIA container runtime toolkit'
 arch=('x86_64')
@@ -35,6 +35,7 @@ build() {
 
   mkdir bin
 
+  GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
   go build -v \
     -buildmode=pie \
@@ -47,6 +48,7 @@ build() {
     #-ldflags " -s -w -extldflags=-Wl,-z,now,-z,relro" \
 
   # go leaves a bunch of local stuff with 0400, making it break future `makepkg -C` _grumble grumble_
+  GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
   go clean -modcache
 }
