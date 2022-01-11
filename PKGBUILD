@@ -2,14 +2,15 @@
 # Contributor: Vyacheslav Artemiev <artemiev.vyacheslav a gmail d com>
 _pkgname=Nagstamon
 pkgname=nagstamon-beta
-pkgver=3.8.0.r2325.20c03b77
+pkgver=3.9.20211208.r2329.16549c68
 
 _pkgname=nagstamon
 pkgname=$_pkgname-git
-pkgver=3.8.0.r2325.20c03b77
+pkgver=3.9.20211208.r2329.16549c68
 pkgrel=1
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks')
+optdepends=('python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present')
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
 license=('GPL2')
