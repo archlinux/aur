@@ -2,7 +2,7 @@
 
 pkgbase=sniprun
 pkgname=('sniprun' 'neovim-sniprun')
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Independently run snippets of code'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc-libs')
 changelog=CHANGELOG.md
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aa5f827fd640e2cfe1881632a91bb9ddce0b7420098f95ea8d4e3c188457a0f8')
+sha256sums=('c4bba53a04a5aa50e2c40aefbc3768e508be32c74aef27ce56256e641122ae01')
 
 prepare() {
 	cd "$pkgbase-$pkgver"
