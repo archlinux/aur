@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/cdf38_0/linux/cdf38_0-dist-all.tar.gz")
 noextract=()
-md5sums=('20f9c693f1d80eabd2e5d00af5fc891c')
+md5sums=('7c61172bc6ff5306c78c1781559dade6')
 validpgpkeys=()
 
 prepare() {
