@@ -1,9 +1,9 @@
 # Maintainer: Lucas Pape <development@lucaspape.de>
 
 _npmname=monitoring.js
-_npmver=1.1.2
+_npmver=1.1.3
 pkgname=monitoring.js
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Run commands on local/remote servers and send messages when they fail"
 arch=('i686' 'x86_64')
