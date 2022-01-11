@@ -1,0 +1,23 @@
+pkgbase = dymoprint
+	pkgdesc = Linux Software to print with LabelManager PnP from Dymo
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/computerlyrik/dymoprint
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	depends = python-appdirs
+	depends = python-pillow
+	depends = python-pyqrcode
+	depends = python-barcode
+	depends = usb_modeswitch
+	provides = dymoprint
+	noextract = dymoprint-1.2.0-py2.py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/e6/04/0df45c240e2568bd2ad77eabe167650615e8a8cf36d5155fb6bc1eb38402/dymoprint-1.2.0-py2.py3-none-any.whl
+	source = 91-dymo-labelmanager-pnp.rules
+	source = dymo-labelmanager-pnp.conf
+	sha256sums = 1e4885fa4a82ad7d7af41beec90f68bd5cb28a1c7400309fbcf81c23ebd127fb
+	sha256sums = edbbce0aac6fceb778fef854170144842fc444326bf9c1b86c314d6dbfe6b2e8
+	sha256sums = 73aa314b713171892672bf9f68468bec137b37c5a7a07513b6b25573bec4e99d
+
+pkgname = dymoprint
