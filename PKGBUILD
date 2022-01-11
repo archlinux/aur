@@ -1,5 +1,6 @@
 # Maintainer: Brent Mackey <bjdm.92 at gmail dot com>
-pkgname='qml-lsp'
+pkgname='qml-lsp-git'
+_binname='qml-lsp'
 _reponame='qew-em-el-el-ess-pee'
 pkgrel=1
 pkgver=rjienrlwey.number.two.r10.ga426fd6
@@ -43,5 +44,5 @@ build() {
 
 package() {
   cd "$_reponame"
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 $pkgname "$pkgdir"/usr/bin/$_binname
 }
