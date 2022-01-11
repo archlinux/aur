@@ -1,6 +1,6 @@
 # Maintainer: Christian Muehlhaeuser <muesli@gmail.com>
 pkgname=kristall-git
-pkgver=r506.c8eae06
+pkgver=r543.6b39f24
 pkgrel=1
 pkgdesc="A high-quality visual cross-platform gemini browser."
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('qt5-tools')
 depends=('qt5-base' 'qt5-multimedia' 'openssl' 'qt5-svg')
 provides=("kristall")
 conflicts=("kristall")
-source=($pkgname::git://github.com/MasterQ32/kristall.git)
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

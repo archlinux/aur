@@ -1,6 +1,6 @@
 pkgbase = kristall-git
 	pkgdesc = A high-quality visual cross-platform gemini browser.
-	pkgver = r506.c8eae06
+	pkgver = r543.6b39f24
 	pkgrel = 1
 	url = https://github.com/MasterQ32/kristall
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = kristall-git
 	depends = qt5-svg
 	provides = kristall
 	conflicts = kristall
-	source = kristall-git::git://github.com/MasterQ32/kristall.git
+	source = kristall-git::git+https://github.com/MasterQ32/kristall.git
 	sha256sums = SKIP
 
 pkgname = kristall-git
-
