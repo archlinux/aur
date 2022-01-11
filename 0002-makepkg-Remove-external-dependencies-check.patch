@@ -1,0 +1,45 @@
+From b52ee2bd5f6e9a88ece3640bc374dea4e5139016 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+git@kokakiwi.net>
+Date: Mon, 10 Jan 2022 15:47:10 +0100
+Subject: [PATCH 2/3] makepkg: Remove external dependencies check
+
+---
+ CMakeLists.txt            |  1 -
+ cmake/build_helpers.cmake | 11 -----------
+ 2 files changed, 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aa250cf..9037111 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,6 @@ set(PLUGINS
+ detectOS()
+ detectArch()
+ setDefaultBuiltTypeIfUnset()
+-detectBadClone()
+ 
+ # Add bundled dependencies
+ add_subdirectory(plugins/libimhex)
+diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
+index 9bee5b7..83501e8 100644
+--- a/cmake/build_helpers.cmake
++++ b/cmake/build_helpers.cmake
+@@ -257,14 +257,3 @@ macro(setDefaultBuiltTypeIfUnset)
+         set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
+     endif()
+ endmacro()
+-
+-macro(detectBadClone)
+-    file (GLOB EXTERNAL_DIRS "external/*")
+-    foreach (EXTERNAL_DIR ${EXTERNAL_DIRS})
+-        file(GLOB RESULT "${EXTERNAL_DIR}/*")
+-        list(LENGTH RESULT ENTRY_COUNT)
+-        if(ENTRY_COUNT LESS_EQUAL 1)
+-            message(FATAL_ERROR "External dependency ${EXTERNAL_DIR} is empty!\nMake sure to correctly clone ImHex using the --recurse-submodules git option or initialize the submodules manually.")
+-        endif()
+-    endforeach ()
+-endmacro()
+\ No newline at end of file
+-- 
+2.34.1
+
