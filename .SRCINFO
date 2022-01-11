@@ -1,7 +1,7 @@
 pkgbase = calibre-plugin-dedrm
 	pkgdesc = DeDRM tools for ebooks - Calibre plugin
 	pkgver = 10.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noDRM/DeDRM_tools/
 	arch = x86_64
 	license = GPL3
@@ -11,6 +11,6 @@ pkgbase = calibre-plugin-dedrm
 	optdepends = openssl: for crytographic primitives
 	optdepends = python-pycryptodome: for crytographic primitives
 	source = DeDRM_tools-10.0.2.tar.gz::https://github.com/noDRM/DeDRM_tools/archive/refs/tags/v10.0.2.tar.gz
-	sha256sums = 227220a88b0c87d0c8dc511bd91be59d3bffd74ef82bacf75bdcf9d5c2f56094
+	sha256sums = f01ca82ae5224bb1f32086b045401a93a4845403e370b04134561e7c46af0656
 
 pkgname = calibre-plugin-dedrm

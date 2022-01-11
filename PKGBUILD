@@ -2,7 +2,7 @@
 
 pkgname=calibre-plugin-dedrm
 pkgver=10.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DeDRM tools for ebooks - Calibre plugin"
 arch=(x86_64)
 url=https://github.com/noDRM/DeDRM_tools/
@@ -16,7 +16,7 @@ optdepends=(
 source=(
 	DeDRM_tools-$pkgver.tar.gz::https://github.com/noDRM/DeDRM_tools/archive/refs/tags/v$pkgver.tar.gz
 )
-sha256sums=('227220a88b0c87d0c8dc511bd91be59d3bffd74ef82bacf75bdcf9d5c2f56094')
+sha256sums=('f01ca82ae5224bb1f32086b045401a93a4845403e370b04134561e7c46af0656')
 
 _calibre_system_plugin_dir='/usr/share/calibre/system-plugins'
 _libalfcryptodir="libalfcrypto-${pkgver}"
