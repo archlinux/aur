@@ -1,6 +1,17 @@
 ChangeLog
 =========
 
+1.13 (2022-01-11)
+-----------------
+
+* Parsing very long numbers from a fraction string was very slow, even slower
+  than ``fractions.Fraction``.  The parser is now faster in all cases (and
+  still much faster for shorter numbers).
+
+* ``Fraction`` did not implement ``__int__``.
+  https://bugs.python.org/issue44547
+
+
 1.12 (2022-01-07)
 -----------------
 

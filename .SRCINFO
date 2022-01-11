@@ -1,6 +1,6 @@
 pkgbase = python-quicktions
 	pkgdesc = Fast fractions implementation in Cython
-	pkgver = 1.12
+	pkgver = 1.13
 	pkgrel = 1
 	url = https://github.com/scoder/quicktions
 	changelog = CHANGES.rst
@@ -9,7 +9,7 @@ pkgbase = python-quicktions
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = glibc
-	source = python-quicktions-1.12.tar.gz::https://github.com/scoder/quicktions/archive/1.12.tar.gz
-	sha256sums = 691463020f41386e10dc05da1eef4090270443557dbdf94a5ceabed389951cfa
+	source = python-quicktions-1.13.tar.gz::https://github.com/scoder/quicktions/archive/1.13.tar.gz
+	sha256sums = 4dfbe8dee81099deb28059aeeed72e7b47e22c4204be4ad52aef501b49bd21e7
 
 pkgname = python-quicktions
