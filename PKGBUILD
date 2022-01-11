@@ -3,21 +3,21 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.5.r143.g7ce950c6
+pkgver=0.5.r145.g77bc0391
 pkgrel=2
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
 arch=('x86_64')
 license=('GPL')
 depends=('gtk3' 'gtksourceview4' 'libsecret' 'python-caldav' 'python-liblarch-git' 'python-lxml')
-makedepends=('git' 'meson')
+makedepends=('git' 'itstool' 'meson')
 optdepends=('python-cheetah3: for the Export and print plugin'
             'texlive-bin: pdflatex, for the Export and print plugin'
             'texlive-core: pdfjam, for the Export and print plugin'
             'pdftk: for the Export and print plugin'
             'hamster-time-tracker: send a task to the Hamster time tracking applet'
             'yelp: view user manual')
-checkdepends=('python-nose' 'python-mock')
+checkdepends=('gtk4' 'python-nose' 'python-mock')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/getting-things-gnome/gtg.git')
