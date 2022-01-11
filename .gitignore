@@ -2,7 +2,10 @@
 pkg/
 src/
 *.xz
+*.zst
+
+# mkarchchroot files
+*.log
 
 # source files
 *.gz
-cclib/
