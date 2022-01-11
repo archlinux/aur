@@ -5,6 +5,7 @@
 # https://build.opensuse.org/package/show/home:PeterBBB/c-evo
 
 pkgname=c-evo-nh-bin
+pkgbase=c-evo-bin
 pkgver=1.3.0.418.1
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"

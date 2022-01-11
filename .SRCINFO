@@ -1,4 +1,4 @@
-pkgbase = c-evo-nh-bin
+pkgbase = c-evo-bin
 	pkgdesc = Empire Building Game, C-evo: New Horizons
 	pkgver = 1.3.0.418.1
 	pkgrel = 1
