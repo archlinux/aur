@@ -1,0 +1,10 @@
+pkgname=kiba-dock-bin
+
+post_install() {
+gconftool-2 --install-schema-file=/usr/share/gconf/schemas/kiba.schemas
+update-desktop-database -q
+}
+
+post_remove() {
+update-desktop-database -q
+}

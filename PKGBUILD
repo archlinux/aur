@@ -1,14 +1,15 @@
 # Maintainer: thr <r at sledinmay dot com>
 pkgname=kiba-dock-bin
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An eyecandy'd physics-based application launcher. (binary version)"
 arch=(i686 x86_64)
 url="https://launchpad.net/kiba-dock"
 license=(GPL)
 depends_i686=('gconf' 'gtk-update-icon-cache' 'orbit2' 'librsvg' 'libglade' 'glitz' 'libcanberra')
 depends_x86_64=('lib32-gconf' 'gtk-update-icon-cache' 'lib32-orbit2' 'lib32-librsvg' 'lib32-libglade' 'lib32-glitz' 'lib32-libcanberra')
-source=("https://downloads.sourceforge.net/project/junkyard/Kiba-Dock/kiba-dock_0.1-1.2_i386.deb")
+source=("https://web.archive.org/web/20100615170245/http://cesarius.net/wp-content/uploads/kiba-dock_0.1-1.2_i386.deb")
+install=kiba-dock-bin.install
 md5sums=('2c39a4062dccf7cbe16351ef392ce622')
 
 prepare() {
