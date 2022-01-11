@@ -1,14 +1,14 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-pak64.german
-pkgver=122.0.0.2
+pkgver=123.0.0.1
 pkgrel=1
 pkgdesc="Low resolution graphics set for Simutrans, with a german theme"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('Freeware')
-source=(http://simutrans-germany.com/pak.german/pak64.german_0-122-0-0-2_full.zip)
-sha256sums=('28b35069ec4bd49f4831a111508dc4fa54458bf1ada48241bad23937a0364261')
+source=(https://simutrans-germany.com/pak.german/pak64.german_0-123-0-0-1_full.zip)
+sha256sums=('20e54239a1b160dada8c439d489870e67efb2fc6862691d85baa484f6cee5fd5')
 
 package() {
   #data
