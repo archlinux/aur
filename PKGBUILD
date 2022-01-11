@@ -1,9 +1,9 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.9.2
+pkgver=1.9.3
 _asyncver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
 url="https://github.com/doitsujin/dxvk"
@@ -49,8 +49,8 @@ prepare() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
-    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
+    export CXXFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # Uncomment to enable extra optimizations
@@ -123,7 +123,7 @@ package() {
 }
 
 sha256sums=('SKIP'
-            '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
+            'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
             'c9c2f02bce1e1e93d511aff73484208456835d4d7601a36ab4524939472fc401'
             'bcc15521e4c7f966a0192a1dabb7fb4935b33db39344ab5b861f9d81486f1362'
             'b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96')
