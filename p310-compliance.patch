@@ -1,0 +1,30 @@
+diff -r -U 0 a/nuxhash/nuxhash/gui/about.py b/nuxhash/nuxhash/gui/about.py
+--- a/nuxhash/nuxhash/gui/about.py	2022-01-11 17:00:33.364855467 -0500
++++ b/nuxhash/nuxhash/gui/about.py	2022-01-11 17:01:19.702270077 -0500
+@@ -23 +23 @@
+-        h_sizer.Add(v_sizer, wx.SizerFlags().Proportion(1.0)
++        h_sizer.Add(v_sizer, wx.SizerFlags().Proportion(1)
+diff -r -U 0 a/nuxhash/nuxhash/gui/benchmarks.py b/nuxhash/nuxhash/gui/benchmarks.py
+--- a/nuxhash/nuxhash/gui/benchmarks.py	2022-01-11 17:00:33.404856688 -0500
++++ b/nuxhash/nuxhash/gui/benchmarks.py	2022-01-11 17:02:08.670764883 -0500
+@@ -56 +56 @@
+-                                              .Proportion(1.0)
++                                              .Proportion(1)
+diff -r -U 0 a/nuxhash/nuxhash/gui/mining.py b/nuxhash/nuxhash/gui/mining.py
+--- a/nuxhash/nuxhash/gui/mining.py	2022-01-11 17:00:33.404856688 -0500
++++ b/nuxhash/nuxhash/gui/mining.py	2022-01-11 17:02:42.848808134 -0500
+@@ -57 +57 @@
+-        self._Timer.Start(milliseconds=BALANCE_UPDATE_MIN*60*1e3)
++        self._Timer.Start(milliseconds=BALANCE_UPDATE_MIN*60*1000)
+@@ -63 +63 @@
+-                                              .Proportion(1.0)
++                                              .Proportion(1)
+@@ -72 +72 @@
+-        bottomSizer.Add(balances, wx.SizerFlags().Proportion(1.0).Expand())
++        bottomSizer.Add(balances, wx.SizerFlags().Proportion(1).Expand())
+diff -r -U 0 a/nuxhash/nuxhash/gui/settings.py b/nuxhash/nuxhash/gui/settings.py
+--- a/nuxhash/nuxhash/gui/settings.py	2022-01-11 17:59:20.480302893 -0500
++++ b/nuxhash/nuxhash/gui/settings.py	2022-01-11 18:00:54.151921534 -0500
+@@ -195 +195 @@
+-        self._Threshold.SetValue(self._Settings['switching']['threshold']*100)
++        self._Threshold.SetValue(int(self._Settings['switching']['threshold']*100))
