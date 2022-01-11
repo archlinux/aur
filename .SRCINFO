@@ -1,6 +1,6 @@
 pkgbase = duf-git
 	pkgdesc = Disk Usage/Free Utility
-	pkgver = r128.bb93070
+	pkgver = r142.af580c4
 	pkgrel = 1
 	url = https://github.com/muesli/duf
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = duf-git
 	makedepends = git
 	provides = duf
 	conflicts = duf
-	source = duf-git::git://github.com/muesli/duf.git
+	source = duf-git::git+https://github.com/muesli/duf.git
 	sha256sums = SKIP
 
 pkgname = duf-git
-

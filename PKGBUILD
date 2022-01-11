@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=duf-git
-pkgver=r128.bb93070
+pkgver=r142.af580c4
 pkgrel=1
 pkgdesc="Disk Usage/Free Utility"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::"git://github.com/muesli/${pkgname%-git}.git")
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
