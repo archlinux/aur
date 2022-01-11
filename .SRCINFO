@@ -2,7 +2,7 @@ pkgbase = hlbsp-git
 	pkgdesc = Half-Life's .BSP maps viewer.
 	pkgver = r150.a5e59d9
 	pkgrel = 1
-	url = https://github.com/r4v3n6101/hlbsp
+	url = https://github.com/r4v3n6101/hlbsp-viewer
 	arch = any
 	license = GPL
 	makedepends = rust
@@ -10,8 +10,7 @@ pkgbase = hlbsp-git
 	makedepends = git
 	provides = hlbsp
 	conflicts = hlbsp
-	source = hlbsp-git::git+https://github.com/r4v3n6101/hlbsp
+	source = hlbsp-git::git+https://github.com/r4v3n6101/hlbsp-viewer
 	md5sums = SKIP
 
 pkgname = hlbsp-git
-

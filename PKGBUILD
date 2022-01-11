@@ -6,12 +6,12 @@ pkgver=r150.a5e59d9
 pkgrel=1
 pkgdesc="Half-Life's .BSP maps viewer."
 arch=('any')
-url="https://github.com/r4v3n6101/hlbsp"
+url="https://github.com/r4v3n6101/hlbsp-viewer"
 license=('GPL')
 makedepends=('rust' 'cargo' 'git')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
-source=("${pkgname}::git+https://github.com/r4v3n6101/hlbsp")
+source=("${pkgname}::git+https://github.com/r4v3n6101/hlbsp-viewer")
 md5sums=('SKIP')
 
 pkgver() {
