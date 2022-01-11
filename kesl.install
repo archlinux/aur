@@ -1,3 +1,26 @@
+TMPDIR=/tmp
+KESLDIR=/etc/kesl
+
+# checkout https://support.kaspersky.com/KES4Linux/11/en-US/161263.htm for all
+# possible options. Another way is to export all settings like that:
+# kesl-control --export-settings > all.conf
+# then review key=value within.
+KSET="File_Threat_Protection
+      Scan_My_Computer
+      Scan_File Boot_Scan
+      Memory_Scan
+      System_Integrity_Monitoring
+      Firewall
+      AntiCryptor
+      Web_Threat_Protection
+      Device_Control
+      Removable_Drives_Scan
+      Network_Threat_Protection
+      Container_Scan
+      Custom_Container_Scan
+      Behavior_Detection
+      Update"
+
 create_tmp(){
     export TMPDIR=/tmp
     # avoid re-creating tmp dir when already exists
@@ -20,6 +43,11 @@ man_pre(){
     # man pages
     cp /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/man $KTMP/
     sed -i 's#usr/local/#usr/#g' /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/man
+
+    for sl in $(cat /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/man);do
+        sld=$(dirname $sl)
+        [ ! -d $sld ] && mkdir -p $sld
+    done
 }
 
 man_post(){
@@ -28,29 +56,68 @@ man_post(){
     [ -d "/opt/kaspersky/kesl/libexec/symlinks" ] && cp $KTMP/man /opt/kaspersky/kesl/libexec/symlinks/man
 }
 
-# create all directories referenced by the kesl installer
-# no idea why this is not covered by it but this ensures nothing breaks during the install
-kesl_symlinks(){
-    man_pre
-    # create any directory expected to be there for symlinking
-    for sl in $(cat /var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/libexec/symlinks/*);do
-        sld=$(dirname $sl)
-        [ ! -d $sld ] && mkdir -p $sld
+# backup current kesl config
+kesl_exportconf(){
+    #echo $FUNCNAME
+    # must be survive between different calls to this kesl.install file so
+    # we use a static path + name instead of KTMP here:
+    [ ! -d "$KESLDIR" ] && mkdir -p "$KESLDIR" && chmod 700 $KESLDIR
+
+    # this does not work on import ("internal error" nothing in log):
+    kesl-control --export-settings | sed 's/\[/\n[/g' > $KESLDIR/allsettings.conf
+
+    kesl-control --get-app-settings > $KESLDIR/app.conf
+    kesl-control --get-net-settings > $KESLDIR/net.conf
+    for k in $KSET ; do
+        kesl-control --get-settings $k > $KESLDIR/${k}.conf 2> /dev/null
     done
 }
 
-kesl_updatedb(){
-    # upgrading the database can take a LONG time while any other pacman
-    # jobs would wait until this has been finished. It is recommended to do
-    # this manually:
-    echo -e "\n\n\e[93m\e[1mPlease update the AV database MANUALLY with the following command (or use the GUI):\e[0m\nsudo /opt/kaspersky/kesl/bin/kesl-control --start-task Update --progress\n\n"
+# restore kesl config
+kesl_importconf(){
+    #echo $FUNCNAME
+    echo -e "\n\n"
+    # must survive between different calls to this kesl.install file so
+    # we use static paths + name instead of KTMP here.
+    # during import any file with the extension "persistent" will be used when found
+    # otherwise a previous conf will be used if found, otherwise default settings will be used.
+    # "*.persistent" files need to be created manually and will never be touched by the installer other then read-only.
+
+    #[ -s "$KESLDIR/config.export" ] && kesl-control --import-settings --file $KESLDIR/config.export && echo "... restored pervious configuration"
+
+    if [ -s "$KESLDIR/app.conf.persistent" ];then
+        kesl-control --set-app-settings --file $KESLDIR/app.conf.persistent --accept-ksn && echo "... restored persistent configuration (app)"
+    elif [ -s "$KESLDIR/app.conf" ];then
+        kesl-control --set-app-settings --file $KESLDIR/app.conf --accept-ksn && echo "... restored previous configuration (app)"
+    fi
+    if [ -s "$KESLDIR/net.conf.persistent" ];then
+        kesl-control --set-net-settings --file $KESLDIR/net.conf.persistent && echo "... restored persistent configuration (network)"
+    elif [ -s "$KESLDIR/net.conf" ];then
+        kesl-control --set-net-settings --file $KESLDIR/net.conf && echo "... restored previous configuration (network)"
+    fi
+    for k in $KSET ; do
+        if [ -s "$KESLDIR/${k}.conf.persistent" ];then
+            kesl-control --set-settings $k --file $KESLDIR/${k}.conf.persistent && echo "... restored persistent configuration ($k)"
+        elif [ -s "$KESLDIR/${k}.conf" ];then
+            kesl-control --set-settings $k --file $KESLDIR/${k}.conf && echo "... restored previous configuration ($k)"
+        fi
+    done
+    echo -e "\n\n"
 }
 
-pre_install(){
-    echo $FUNCNAME
+kesl_updatedb(){
+    #echo $FUNCNAME
+    # upgrading the database can take a LONG time while any other pacman
+    # jobs would wait until this has been finished. so we start the process but without progress (i.e. running in background)
+    kesl-control --start-task Update
+    echo -e "\n\n\e[93m\e[1mThe AV database update has been started in the background.\nCheck the GUI or watch the progress on the CLI with the following command:\e[0m\nkesl-control --get-task-state Update\n\n\e[93m\e[1mkesl will be fully operational first when this update has been finished\n(especially on new installation this will take a very long time)\e[0m\n\n"
+}
+
+#pre_install(){
+    #echo $FUNCNAME
     # this always breaks post_install:
     #/var/opt/kaspersky/kesl/pkgscripts/preinst install
-}
+#}
 
 post_install(){
     #echo $FUNCNAME
@@ -62,7 +129,8 @@ post_install(){
         export ${key}=$v ${kkey}=$v
     done
     KTMP=$(create_tmp)
-    kesl_symlinks
+    #kesl_symlinks
+    man_pre
 
     # manually add the link to /opt (really wondering why this is not covered
     # anywhere but likely I am blind:
@@ -80,6 +148,7 @@ post_install(){
     /opt/kaspersky/kesl/bin/kesl-setup.pl --autoinstall=$KTMP/kesl.ini
 
     kesl-control -L --query
+    kesl_importconf
     kesl_updatedb
 
     remove_tmp "$KTMP"
@@ -87,12 +156,14 @@ post_install(){
 
 pre_upgrade(){
     #echo $FUNCNAME
+    KTMP=$(create_tmp)
+    kesl_exportconf
+
     for k in $(egrep -v "^#" /var/opt/kaspersky/kesl/pkgscripts/kesl.ini);do
         key=${k/=*}; kkey="KESL_${key}"; v="${k/*=}"
         export ${key}=$v ${kkey}=$v
     done
 
-    KTMP=$(create_tmp)
 
     # exec the debian package preinst
     man_pre
@@ -112,18 +183,24 @@ post_upgrade(){
         export ${key}=$v ${kkey}=$v
     done
     KTMP=$(create_tmp)
-    kesl_symlinks
+    #kesl_symlinks
+    man_pre
 
     # exec the debian package postinst
     /var/opt/kaspersky/kesl/pkgscripts/preinst configure
     man_post
 
+    kesl_importconf
     kesl_updatedb
+
     remove_tmp "$KTMP"
 }
 
 pre_remove(){
     #echo $FUNCNAME
+    # ensure the configuration does not get lost even on a full uninstall
+    #kesl_exportconf
+
     # exec the debian package rm scripts (post_remove is too late)
     /var/opt/kaspersky/kesl/pkgscripts/prerm remove
     /var/opt/kaspersky/kesl/pkgscripts/postrm remove
