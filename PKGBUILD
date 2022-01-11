@@ -9,7 +9,7 @@
 
 _npmname=winston
 pkgname=nodejs-winston
-pkgver=3.3.4
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="A logger for just about everything."
 arch=(any)
@@ -19,7 +19,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('f9764197c28ff456a3c02bfcdc0b65da0b4d33626762042357994a6cfc928720')
+sha256sums=('c6d0eb520b4edafd318aa81e221f185ba333cefc442bfd2b891370351b215cf3')
 
 package() {
     cd "$srcdir"

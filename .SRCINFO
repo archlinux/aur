@@ -1,14 +1,14 @@
 pkgbase = nodejs-winston
 	pkgdesc = A logger for just about everything.
-	pkgver = 3.3.4
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/flatiron/winston
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = winston-3.3.4.tgz
-	source = http://registry.npmjs.org/winston/-/winston-3.3.4.tgz
-	sha256sums = f9764197c28ff456a3c02bfcdc0b65da0b4d33626762042357994a6cfc928720
+	noextract = winston-3.4.0.tgz
+	source = http://registry.npmjs.org/winston/-/winston-3.4.0.tgz
+	sha256sums = c6d0eb520b4edafd318aa81e221f185ba333cefc442bfd2b891370351b215cf3
 
 pkgname = nodejs-winston
