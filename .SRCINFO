@@ -1,9 +1,9 @@
 pkgbase = rt-plugins
 	pkgdesc = Richard Taylor's LADSPA plugins
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://faculty.tru.ca/rtaylor/rt-plugins/
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = ladspa
 	makedepends = cmake
@@ -11,4 +11,3 @@ pkgbase = rt-plugins
 	sha1sums = 430eec188ed3bbb3dbe163f8b23a334b81d9e0aa
 
 pkgname = rt-plugins
-

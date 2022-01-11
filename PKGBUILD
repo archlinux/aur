@@ -2,9 +2,9 @@
 
 pkgname=rt-plugins
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Richard Taylor's LADSPA plugins"
-arch=("x86_64")
+arch=("any")
 url="https://faculty.tru.ca/rtaylor/rt-plugins/"
 license=("GPL3")
 makedepends=("ladspa" "cmake")
