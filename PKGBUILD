@@ -1,4 +1,4 @@
-# Maintainer: Santiago Lo Coco <santilococo.01@gmail.com>
+# Maintainer: Santiago Lo Coco <santilococo.01 at gmail dot com>
 
 pkgname=libxft-bgra
 pkgver=2.3.4
