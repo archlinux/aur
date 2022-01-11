@@ -2,14 +2,14 @@
 # Contributor: Yosef Or Boczko <yoseforb@gnome.org>
 
 pkgname=baobab-git
-pkgver=3.34.0.r24.gbf4ad84
+pkgver=42.alpha.r1.g30f0653
 pkgrel=1
 pkgdesc="A graphical directory tree analyzer"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 url="https://wiki.gnome.org/Apps/DiskUsageAnalyzer"
 license=(GPL2)
 groups=(gnome)
-depends=(dconf gtk3 gsettings-desktop-schemas librsvg)
+depends=(dconf gtk4 libadwaita gsettings-desktop-schemas librsvg)
 makedepends=(intltool itstool vala gobject-introspection yelp-tools appstream-glib git meson)
 provides=(baobab)
 conflicts=(baobab)
