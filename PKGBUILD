@@ -74,7 +74,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=170
+_minor=171
 _srcname=linux-${_major}
 _clr=${_major}.169-162
 pkgbase=linux-clear-lts2019
@@ -134,6 +134,9 @@ prepare() {
     # Power management and ACPI options
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                    --enable ACPI_TABLE_UPGRADE
+
+    # General architecture-dependent options
+    scripts/config --enable KPROBES
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
@@ -350,7 +353,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '8dbdb83fb5919af4fec556c2dfb51ab11d5ac625cd539da056f2599c1f3e116c'
+            'd28321f7f5bcd5ec96d23f995d21b5ff2071945a66a9df6dccc70eab2fee8879'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
