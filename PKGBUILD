@@ -6,7 +6,7 @@
 #_plugin_voip='true'
 
 # Set this to 'true' to enable the new automatically generated jsaon api
-#_jsonapi='true'
+# _jsonapi='true'
 
 # Set this to 'true' to enable auto login
 #_autologin='true'
@@ -28,7 +28,7 @@ _nativ_dialogs='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.6.r71.g8bed99cc9
+pkgver=v0.6.6.r404.g10f2e483b
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -42,8 +42,18 @@ optdepends=('tor: tor hidden node support'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git")
-sha256sums=('SKIP')
+source=(
+	"${_pkgname}::git+https://github.com/RetroShare/RetroShare.git"
+	'libbitdht::git+https://github.com/RetroShare/BitDHT.git'
+	'libretroshare::git+https://github.com/RetroShare/libretroshare.git'
+	'openpgpsdk::git+https://github.com/RetroShare/OpenPGP-SDK.git'
+)
+sha256sums=(
+	'SKIP'
+	'SKIP'
+	'SKIP'
+	'SKIP'
+)
 
 # Add sql dependency
 [[ "$_no_sqlcipher" == 'true' ]] && depends=(${depends[@]} 'sqlite') || depends=(${depends[@]} 'sqlcipher')
@@ -71,19 +81,19 @@ _optNativDialogs=''
 ([[ "$_plugin_voip" == 'true' ]] || [[ "$_plugin_feedreader" == 'true' ]]) && _optPlugin='CONFIG+=retroshare_plugins'
 [[ "$_wiki" == 'true' ]] && _optWiki='CONFIG+=wikipoos'
 
-# Handle unofficial plugins
-if [[ "$_plugin_lua4rs" == 'true' ]] ; then
-	depends=(${depends[@]} 'lua')
-	source=(${source[@]} 'Lua4RS::git+https://github.com/RetroShare/Lua4RS.git')
-fi
-
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-        cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_pkgname}"
+
+	git submodule init
+	git config submodule.libbitdht.url "$srcdir/libbitdht"
+	git config submodule.libretroshare.url "$srcdir/libretroshare"
+	git config submodule.openpgpsdk.url "$srcdir/openpgpsdk"
+	git submodule update
 }
 
 build() {
