@@ -102,7 +102,7 @@ kesl_importconf(){
             kesl-control --set-settings $k --file $KESLDIR/${k}.conf && echo "... restored previous configuration ($k)"
         fi
     done
-    echo -e "\n\n"
+    echo -e "\n"
 }
 
 kesl_updatedb(){
@@ -149,6 +149,12 @@ post_install(){
 
     kesl-control -L --query
     kesl_importconf
+
+    if [ "$SCHEDULE_AUTOUPDATES" == "y" ];then
+        kesl-control --set-schedule Update RuleType=Minutely RunMissedStartRules=Yes StartTime="00:00:00; $SCHEDULE_UPDATE_INTERVAL" RandomInterval=99 \
+            && echo "... scheduled virus database updates once within >${SCHEDULE_UPDATE_INTERVAL}< minutes"
+    fi
+
     kesl_exportconf
     kesl_updatedb
 
