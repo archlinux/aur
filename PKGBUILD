@@ -2,8 +2,8 @@
 
 pkgname=mint-backgrounds-una
 pkgver=1.1
-pkgrel=1
-pkgdesc="The backgrounds included in Linux Mint 20.3 una"
+pkgrel=2
+pkgdesc="The backgrounds included in Linux Mint 20.3 Una"
 license=('Various')
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
