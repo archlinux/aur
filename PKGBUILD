@@ -4,11 +4,11 @@ pkgname=papermc
 # curl -X GET "https://papermc.io/api/v2/projects/paper" -H  "accept: application/json"
 _pkgver=1.18.1
 # curl -X GET "https://papermc.io/api/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
-_build=68
-_license_commit=e955cb5
+_build=147
+_license_commit=31f0137
 pkgver="${_pkgver}+b${_build}"
-pkgrel=2
-_mng_ver=1.0.0
+pkgrel=1
+_mng_ver=1.0.1
 pkgdesc="Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance"
 arch=('any')
 url="https://papermc.io/"
@@ -23,9 +23,9 @@ source=("papermc.${pkgver}.jar"::"https://papermc.io/api/v2/projects/paper/versi
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('62802d0f1f46c4996e8b4ac11f1fc1773165e046c90229d6276384a6100399094c578fff0eae3edc6f8c2f67ffbab4a24c337ec34e0f0abc40be8174e5123200'
-            'b46b8ef9b837ac7cb3cded4ba2c4b5215e92ab27fcd889766a6fa3238e76a8b9ba8eb608b136648af5c08e4ef80c21570d6ac2868e4ef6c46521c387c1f7e519'
-            'e315277da81cb28de338e870f477dc58dc9d8f8542594431ab5321150c92ff5634ace2be8c6778d1edb718fdeb6850d7021bffcbd3cae2a00f20e3a64caa3d92')
+sha512sums=('a750616286b84f12555e5f09bd474089ea906987ea8361d0b5fe5d6f5ebeb435349759f20dc77f26dc6b442f2ba0a95e6aaa9631fe130a4ca194b5b7a0c0b5a7'
+            'e801ac8f8902483adf67f3b5029c8710bf378b27f5b5860d4fff169cedacc856b987333afed9e2640fdd8f6d5d98ca5eef076b82b720be7335ab46ecd5dfa184'
+            '5fecf7bbcc5e2861640ae34bc32770a02a137cb4cf142adf565997c20141744b00517501ad717f390056bdcf59c4e03e365656454b427e771a15fcf152f1bc97')
 
 _game="papermc"
 _server_root="/srv/papermc"
@@ -35,7 +35,7 @@ build() {
 
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		GAME=${_game} \
-		MYNAME=${_game} \
+		INAME=${_game} \
 		SERVER_ROOT=${_server_root} \
 		BACKUP_PATHS="world" \
 		GAME_USER=${_game} \
@@ -48,7 +48,7 @@ package() {
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		DESTDIR="${pkgdir}" \
 		GAME=${_game} \
-		MYNAME=${_game} \
+		INAME=${_game} \
 		install
 
 	install -Dm644 ${_game}.${pkgver}.jar     "${pkgdir}/${_server_root}/${_game}.${pkgver}.jar"
