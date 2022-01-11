@@ -1,6 +1,6 @@
 pkgbase = keyd-git
 	pkgdesc = A key remapping daemon for linux.
-	pkgver = 2.1.0.beta.r2.1551abe
+	pkgver = 2.2.2.beta.r0.405709e
 	pkgrel = 1
 	url = https://github.com/rvaiya/keyd
 	install = keyd.install
