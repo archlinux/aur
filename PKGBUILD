@@ -1,5 +1,3 @@
-# Maintainer: Akrai <drokergeek@gmail.com>
-
 # Before you complain about unverifiable signature, please read Allan's post:
 # http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/
 # TL;DR: gpg --keyserver pgp.mit.edu --recv-keys 14F26682D0916CDD81E37B6D61B7B526D98F0353
@@ -12,8 +10,8 @@ _pkgname=${_name}-${_channel}
 pkgname=${_pkgname}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=97.0a1
-pkgver=97.0a1.20211207
+_version=98.0a1
+pkgver=98.0a1.20220111
 pkgrel=1
 arch=(i686 x86_64)
 conflicts=('firefox-nightly')
