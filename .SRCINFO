@@ -1,7 +1,7 @@
 pkgbase = wafw00f-git
 	pkgdesc = The Web Application Firewall Fingerprinting Tool
 	pkgver = 2.1.0.r2.g74b8c75
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EnableSecurity/wafw00f
 	arch = any
 	license = BSD
@@ -11,8 +11,7 @@ pkgbase = wafw00f-git
 	depends = python-requests
 	provides = wafw00f
 	conflicts = wafw00f
-	source = wafw00f-git::git://github.com/EnableSecurity/wafw00f.git
+	source = wafw00f-git::git+https://github.com/EnableSecurity/wafw00f.git
 	sha256sums = SKIP
 
 pkgname = wafw00f-git
-

@@ -2,7 +2,7 @@
 
 pkgname=wafw00f-git
 pkgver=2.1.0.r2.g74b8c75
-pkgrel=1
+pkgrel=2
 pkgdesc="The Web Application Firewall Fingerprinting Tool"
 arch=("any")
 url="https://github.com/EnableSecurity/wafw00f"
@@ -12,7 +12,7 @@ conflicts=('wafw00f')
 depends=("python-pluginbase"
          "python-requests")
 makedepends=('python-setuptools' 'git')
-source=("$pkgname::git://github.com/EnableSecurity/wafw00f.git")
+source=("$pkgname::git+https://github.com/EnableSecurity/wafw00f.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,3 +30,4 @@ package() {
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+
