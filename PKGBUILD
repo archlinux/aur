@@ -1,26 +1,32 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-rtmpdump
-pkgver=2.4.r96.fa8646d
-pkgrel=3
-pkgdesc="Tool to download rtmp streams (mingw-w64)"
-arch=('any')
-url="https://rtmpdump.mplayerhq.hu/"
-license=('GPL2' 'LGPL2.1')
-depends=('mingw-w64-crt' 'mingw-w64-gnutls')
-options=('!strip' '!buildflags' '!makeflags' 'staticlibs')
-makedepends=('mingw-w64-gcc' 'git')
-_commit='fa8646d'
-source=("git+https://git.ffmpeg.org/rtmpdump#commit=${_commit}")
-sha256sums=('SKIP')
+pkgver=2.4.r99.f1b83c1
+pkgrel=1
+pkgdesc='A toolkit for RTMP streams (mingw-w64)'
+arch=(any)
+url=https://rtmpdump.mplayerhq.hu/
+license=(
+  GPL2
+  LGPL2.1
+)
+depends=(
+  mingw-w64-crt
+  mingw-w64-gnutls
+  mingw-w64-zlib
+)
+options=(!strip !buildflags !makeflags staticlibs)
+makedepends=(
+  mingw-w64-gcc git
+)
+_commit=f1b83c10d8beb43fcc70a6e88cf4325499f25857
+source=(git+https://git.ffmpeg.org/rtmpdump#commit=${_commit})
+sha256sums=(SKIP)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgver() {
   cd rtmpdump
 
-  _ver_name='2.4'
-  _ver_commit='c28f1bab7822de97353849e7787b59e50bbb1428'
-
-  echo "${_ver_name}.r$(git rev-list --count ${_ver_commit}..HEAD).${_commit}"
+  echo "2.4.r$(git rev-list --count c28f1bab7822de97353849e7787b59e50bbb1428..HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
