@@ -1,23 +1,27 @@
-# Maintainer: Peter blackman <peter at pblackman dot plus dot com>
+# Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 # Build package from OBS source
-# 22-Oct-2021
+# 11-Jan-2022
 # See http://www.c-evo.org/
+# https://build.opensuse.org/package/show/home:PeterBBB/c-evo
 
-pkgname=c-evo
-pkgver=400
-pkgrel=5
+pkgname=c-evo-nh
+pkgbase=c-evo
+_shortpkgname=c-evo
+pkgver=1.3.0.418
+pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
 url="https://app.zdechov.net/c-evo"
 license=('GPL2')
 makedepends=('fpc' 'lazarus-gtk2')
 depends=('gtk2')
+#options=(debug !strip)
 optdepends=('ffmpeg: Needed for sounds')
-conflicts=('c-evo-bin')
-source=("$pkgname-$pkgver.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg5.orig.tar.xz"
-        "$pkgname-$pkgver.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_$pkgver+dfsg5-2.debian.tar.xz")
-sha256sums=('6d967cdc5b5b2466578ebe9f79adfb00182715fd273b9d0d31c75793c4b495c1'
-            '9226f46e102fff63ff2071ee87a138142f7804ba303a11dd3d061d47a24f8e48')
+conflicts=('c-evo' 'c-evo-bin' 'c-evo-nh-bin')
+source=("$pkgname-$pkgver.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg.orig.tar.xz"
+        "$pkgname-$pkgver.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg-1.debian.tar.xz")
+sha256sums=('317dfd485dc74569173517df63590e4ec69087584a7942d0d54c04b801d52e18'
+            '80fc74ec09ce8d863c5289b91762f1aefd880d6ee285761bb9047d4a23ba0977')
 
 prepare() {
   cd "${srcdir}"
@@ -36,7 +40,6 @@ prepare() {
   patch -Np1 < debian/patches/016-unsupported.patch
   patch -Np1 < debian/patches/017-citywalls.patch
   patch -Np1 < debian/patches/018-badwindow.patch
-  patch -Np1 < debian/patches/020-localization.patch
   patch -Np1 < debian/patches/021-sound.patch
   patch -Np1 < debian/patches/022-buttons.patch
   patch -Np1 < debian/patches/023-stability.patch
@@ -44,12 +47,13 @@ prepare() {
   patch -Np1 < debian/patches/025-common.patch
   patch -Np1 < debian/patches/026-help.patch
   patch -Np1 < debian/patches/028-bigbuttons.patch
+  patch -Np1 < debian/patches/029-spaceshipcost.patch
 
   # Arch does not use a 'games' folder
-  sed -i "s|share/games|share|"   debian/extras/$pkgname-launch-gtk2
-  sed -i "s|/usr/games|/usr/bin|" debian/extras/$pkgname-launch-gtk2
-  sed -i "s|share/games|share|"   debian/extras/$pkgname-launch-qt5
-  sed -i "s|/usr/games|/usr/bin|" debian/extras/$pkgname-launch-qt5
+  sed -i "s|share/games|share|"   debian/extras/$_shortpkgname-launch-gtk2
+  sed -i "s|/usr/games|/usr/bin|" debian/extras/$_shortpkgname-launch-gtk2
+  sed -i "s|share/games|share|"   debian/extras/$_shortpkgname-launch-qt5
+  sed -i "s|/usr/games|/usr/bin|" debian/extras/$_shortpkgname-launch-qt5
 
   # Corruption.png needs to be upper case
   mv Help/Corruption.png Help/CORRUPTION.png
@@ -123,24 +127,24 @@ build() {
   rm -fr Packages/CevoComponents/lib
   lazbuild -v
   lazbuild --ws=gtk2 -B --bm=Release --lazarusdir=/usr/lib/lazarus --pcp="$srcdir/config" Integrated.lpi
-  mv "$pkgname" "$pkgname-gtk2"
+  mv "$_shortpkgname" "$_shortpkgname-gtk2"
 }
 
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm 644 "debian/extras/$pkgname-gtk2.desktop"         -t "$pkgdir/usr/share/applications"
-  install -Dm 644 "debian/extras/$pkgname-manual-gtk2.desktop"  -t "$pkgdir/usr/share/applications"
-  install -Dm 644 "debian/extras/$pkgname.svg"                  -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+  install -Dm 644 "debian/extras/$_shortpkgname-gtk2.desktop"         -t "$pkgdir/usr/share/applications"
+  install -Dm 644 "debian/extras/$_shortpkgname-manual-gtk2.desktop"  -t "$pkgdir/usr/share/applications"
+  install -Dm 644 "debian/extras/$_shortpkgname.svg"                  -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
 
-  install -Dm 755 "$pkgname-gtk2"                       -t "$pkgdir/usr/bin"
-  install -Dm 755 "debian/extras/$pkgname-launch-gtk2"  -t "$pkgdir/usr/bin"
-  install -Dm 644 AI/StdAI/StdAI.png                    -t "$pkgdir/usr/share/$pkgname/AI/StdAI"
-  install -Dm 644 AI/StdAI/StdAI.ai.txt                 -t "$pkgdir/usr/share/$pkgname/AI/StdAI"
-  install -Dm 755 AI/StdAI/libstdai.so                  -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm 755 "$_shortpkgname-gtk2"                      -t "$pkgdir/usr/bin"
+  install -Dm 755 "debian/extras/$_shortpkgname-launch-gtk2" -t "$pkgdir/usr/bin"
+  install -Dm 644 AI/StdAI/StdAI.png                         -t "$pkgdir/usr/share/$_shortpkgname/AI/StdAI"
+  install -Dm 644 AI/StdAI/StdAI.ai.txt                      -t "$pkgdir/usr/share/$_shortpkgname/AI/StdAI"
+  install -Dm 755 AI/StdAI/libstdai.so                       -t "$pkgdir/usr/lib/$_shortpkgname"
 
-  ln -s "/usr/lib/$pkgname/libstdai.so"                "$pkgdir/usr/share/$pkgname/AI/StdAI/libstdai.so"
+  ln -s "/usr/lib/$_shortpkgname/libstdai.so"    "$pkgdir/usr/share/$_shortpkgname/AI/StdAI/libstdai.so"
 
   install -Dm 644 readme.txt                        -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 debian/README.source              -t "$pkgdir/usr/share/doc/$pkgname"
@@ -156,52 +160,52 @@ package() {
   install -Dm 644 debian/extras/c-evo-gtk2.6        -t "$pkgdir/usr/share/man/man6"
   install -Dm 644 debian/c-evo-gtk2.metainfo.xml    -t "$pkgdir/usr/share/metainfo"
 
-  install -Dm 644 Language.txt                      -t "$pkgdir/usr/share/$pkgname"
-  install -Dm 644 Language2.txt                     -t "$pkgdir/usr/share/$pkgname"
-  install -Dm 644 Fonts.txt                         -t "$pkgdir/usr/share/$pkgname"
+  install -Dm 644 Language.txt                      -t "$pkgdir/usr/share/$_shortpkgname"
+  install -Dm 644 Language2.txt                     -t "$pkgdir/usr/share/$_shortpkgname"
+  install -Dm 644 Fonts.txt                         -t "$pkgdir/usr/share/$_shortpkgname"
 
-  install -Dm 644 debian/extras/ButtonsC2.png       -t "$pkgdir/usr/share/$pkgname/Graphics"
-  install -Dm 644 Graphics/*                        -t "$pkgdir/usr/share/$pkgname/Graphics"
-  install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$pkgname/Help"
-  install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$pkgname/Maps"
-  install -Dm 644 debian/extras/maps/*              -t "$pkgdir/usr/share/$pkgname/Maps"
-  install -Dm 644 Saved/*                           -t "$pkgdir/usr/share/$pkgname/Saved"
-  install -Dm 644 Sounds/*                          -t "$pkgdir/usr/share/$pkgname/Sounds"
-  install -Dm 644 Tribes/*                          -t "$pkgdir/usr/share/$pkgname/Tribes"
+  install -Dm 644 debian/extras/ButtonsC2.png       -t "$pkgdir/usr/share/$_shortpkgname/Graphics"
+  install -Dm 644 Graphics/*                        -t "$pkgdir/usr/share/$_shortpkgname/Graphics"
+  install -Dm 644 Help/*                            -t "$pkgdir/usr/share/$_shortpkgname/Help"
+  install -Dm 644 Maps/*                            -t "$pkgdir/usr/share/$_shortpkgname/Maps"
+  install -Dm 644 debian/extras/maps/*              -t "$pkgdir/usr/share/$_shortpkgname/Maps"
+  install -Dm 644 Saved/*                           -t "$pkgdir/usr/share/$_shortpkgname/Saved"
+  install -Dm 644 Sounds/*                          -t "$pkgdir/usr/share/$_shortpkgname/Sounds"
+  install -Dm 644 Tribes/*                          -t "$pkgdir/usr/share/$_shortpkgname/Tribes"
 
-  install -Dm 644 debian/extras/Textures/*.jpg      -t "$pkgdir/usr/share/$pkgname/Graphics"
-  install -Dm 644 debian/extras/Sounds/*.mp3        -t "$pkgdir/usr/share/$pkgname/Sounds"
+  install -Dm 644 debian/extras/Textures/*.jpg      -t "$pkgdir/usr/share/$_shortpkgname/Graphics"
+  install -Dm 644 debian/extras/Sounds/*.mp3        -t "$pkgdir/usr/share/$_shortpkgname/Sounds"
 
-  install -Dm 644 Localization/cs/Help/*            -t "$pkgdir/usr/share/$pkgname/Localization/cs/Help"
-  install -Dm 644 Localization/cs/Tribes/*          -t "$pkgdir/usr/share/$pkgname/Localization/cs/Tribes"
-  install -Dm 644 Localization/cs/*.txt             -t "$pkgdir/usr/share/$pkgname/Localization/cs"
+  install -Dm 644 Localization/cs/Help/*            -t "$pkgdir/usr/share/$_shortpkgname/Localization/cs/Help"
+  install -Dm 644 Localization/cs/Tribes/*          -t "$pkgdir/usr/share/$_shortpkgname/Localization/cs/Tribes"
+  install -Dm 644 Localization/cs/*.txt             -t "$pkgdir/usr/share/$_shortpkgname/Localization/cs"
 
-  install -Dm 644 Localization/de/Help/*            -t "$pkgdir/usr/share/$pkgname/Localization/de/Help"
-  install -Dm 644 Localization/de/Tribes/*          -t "$pkgdir/usr/share/$pkgname/Localization/de/Tribes"
-  install -Dm 644 Localization/de/*.txt             -t "$pkgdir/usr/share/$pkgname/Localization/de"
-  install -Dm 644 debian/extras/de/*.txt            -t "$pkgdir/usr/share/$pkgname/Localization/de"
+  install -Dm 644 Localization/de/Help/*            -t "$pkgdir/usr/share/$_shortpkgname/Localization/de/Help"
+  install -Dm 644 Localization/de/Tribes/*          -t "$pkgdir/usr/share/$_shortpkgname/Localization/de/Tribes"
+  install -Dm 644 Localization/de/*.txt             -t "$pkgdir/usr/share/$_shortpkgname/Localization/de"
+  install -Dm 644 debian/extras/de/*.txt            -t "$pkgdir/usr/share/$_shortpkgname/Localization/de"
 
-  install -Dm 644 debian/extras/fr/help.txt         -t "$pkgdir/usr/share/$pkgname/Localization/fr/Help"
-  install -Dm 644 debian/extras/fr/StdUnits.txt     -t "$pkgdir/usr/share/$pkgname/Localization/fr/Tribes"
-  install -Dm 644 debian/extras/fr/Language*.txt    -t "$pkgdir/usr/share/$pkgname/Localization/fr"
+  install -Dm 644 debian/extras/fr/Help.txt         -t "$pkgdir/usr/share/$_shortpkgname/Localization/fr/Help"
+  install -Dm 644 debian/extras/fr/StdUnits.txt     -t "$pkgdir/usr/share/$_shortpkgname/Localization/fr/Tribes"
+  install -Dm 644 debian/extras/fr/Language*.txt    -t "$pkgdir/usr/share/$_shortpkgname/Localization/fr"
 
-  install -Dm 644 Localization/it/Help/*            -t "$pkgdir/usr/share/$pkgname/Localization/it/Help"
-  install -Dm 644 Localization/it/Tribes/*          -t "$pkgdir/usr/share/$pkgname/Localization/it/Tribes"
-  install -Dm 644 Localization/it/AI/*              -t "$pkgdir/usr/share/$pkgname/Localization/it/AI"
-  install -Dm 644 Localization/it/*.txt             -t "$pkgdir/usr/share/$pkgname/Localization/it"
+  install -Dm 644 Localization/it/Help/*            -t "$pkgdir/usr/share/$_shortpkgname/Localization/it/Help"
+  install -Dm 644 Localization/it/Tribes/*          -t "$pkgdir/usr/share/$_shortpkgname/Localization/it/Tribes"
+  install -Dm 644 Localization/it/AI/*              -t "$pkgdir/usr/share/$_shortpkgname/Localization/it/AI"
+  install -Dm 644 Localization/it/*.txt             -t "$pkgdir/usr/share/$_shortpkgname/Localization/it"
 
-  install -Dm 644 Localization/ru/Help/*            -t "$pkgdir/usr/share/$pkgname/Localization/ru/Help"
-  install -Dm 644 Localization/ru/Tribes/*          -t "$pkgdir/usr/share/$pkgname/Localization/ru/Tribes"
-  install -Dm 644 Localization/ru/*.txt             -t "$pkgdir/usr/share/$pkgname/Localization/ru"
-  install -Dm 644 debian/extras/ru/*.txt            -t "$pkgdir/usr/share/$pkgname/Localization/ru"
+  install -Dm 644 Localization/ru/Help/*            -t "$pkgdir/usr/share/$_shortpkgname/Localization/ru/Help"
+  install -Dm 644 Localization/ru/Tribes/*          -t "$pkgdir/usr/share/$_shortpkgname/Localization/ru/Tribes"
+  install -Dm 644 Localization/ru/*.txt             -t "$pkgdir/usr/share/$_shortpkgname/Localization/ru"
+  install -Dm 644 debian/extras/ru/*.txt            -t "$pkgdir/usr/share/$_shortpkgname/Localization/ru"
 
-  install -Dm 644 Localization/zh-Hans/Help/*       -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hans/Help"
-  install -Dm 644 Localization/zh-Hans/Tribes/*     -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hans/Tribes"
-  install -Dm 644 Localization/zh-Hans/Maps/*       -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hans/Maps"
-  install -Dm 644 Localization/zh-Hans/*.txt        -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hans"
+  install -Dm 644 Localization/zh-Hans/Help/*       -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hans/Help"
+  install -Dm 644 Localization/zh-Hans/Tribes/*     -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hans/Tribes"
+  install -Dm 644 Localization/zh-Hans/Maps/*       -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hans/Maps"
+  install -Dm 644 Localization/zh-Hans/*.txt        -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hans"
 
-  install -Dm 644 Localization/zh-Hant/Help/*       -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hant/Help"
-  install -Dm 644 Localization/zh-Hant/Tribes/*     -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hant/Tribes"
-  install -Dm 644 Localization/zh-Hant/Maps/*       -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hant/Maps"
-  install -Dm 644 Localization/zh-Hant/*.txt        -t "$pkgdir/usr/share/$pkgname/Localization/zh-Hant"
+  install -Dm 644 Localization/zh-Hant/Help/*       -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hant/Help"
+  install -Dm 644 Localization/zh-Hant/Tribes/*     -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hant/Tribes"
+  install -Dm 644 Localization/zh-Hant/Maps/*       -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hant/Maps"
+  install -Dm 644 Localization/zh-Hant/*.txt        -t "$pkgdir/usr/share/$_shortpkgname/Localization/zh-Hant"
 }

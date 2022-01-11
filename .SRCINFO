@@ -1,7 +1,7 @@
 pkgbase = c-evo
 	pkgdesc = Empire Building Game, C-evo: New Horizons
-	pkgver = 400
-	pkgrel = 5
+	pkgver = 1.3.0.418
+	pkgrel = 1
 	url = https://app.zdechov.net/c-evo
 	arch = x86_64
 	license = GPL2
@@ -9,10 +9,12 @@ pkgbase = c-evo
 	makedepends = lazarus-gtk2
 	depends = gtk2
 	optdepends = ffmpeg: Needed for sounds
+	conflicts = c-evo
 	conflicts = c-evo-bin
-	source = c-evo-400.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg5.orig.tar.xz
-	source = c-evo-400.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo_400+dfsg5-2.debian.tar.xz
-	sha256sums = 6d967cdc5b5b2466578ebe9f79adfb00182715fd273b9d0d31c75793c4b495c1
-	sha256sums = 9226f46e102fff63ff2071ee87a138142f7804ba303a11dd3d061d47a24f8e48
+	conflicts = c-evo-nh-bin
+	source = c-evo-nh-1.3.0.418.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_1.3.0.418+dfsg.orig.tar.xz
+	source = c-evo-nh-1.3.0.418.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_1.3.0.418+dfsg-1.debian.tar.xz
+	sha256sums = 317dfd485dc74569173517df63590e4ec69087584a7942d0d54c04b801d52e18
+	sha256sums = 80fc74ec09ce8d863c5289b91762f1aefd880d6ee285761bb9047d4a23ba0977
 
-pkgname = c-evo
+pkgname = c-evo-nh
