@@ -1,6 +1,6 @@
 # Maintainer: coxackie
 pkgname=spotify-remove-ad-banner
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='Remove Spotify ad banner'
 arch=('any')
@@ -11,7 +11,7 @@ source=("${pkgname}.hook"
         'remove.sh'
         'restore.sh')
 md5sums=('c99ab56771851f41b1560e9f8847b7cb'
-         '60088b0472eaf8226324ca984c099f00'
+         'f344da349a17edf763c9715bb259787f'
          '1e0ab46ea5763380e6f52b12e120affa')
 
 
