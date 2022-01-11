@@ -5,14 +5,25 @@
 
 _pkgname=gnome-bluetooth
 pkgname=$_pkgname-git
-pkgver=3.34.3+11+gcf4a0ba5
+pkgver=42.alpha+2+g65004396
 pkgrel=1
 pkgdesc="The GNOME Bluetooth Subsystem"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
 arch=(x86_64)
 license=(GPL LGPL)
-depends=(gtk3 libnotify bluez libcanberra systemd-libs pipewire-pulse-git)
-makedepends=(gobject-introspection gtk-doc docbook-xsl git systemd meson)
+depends=(gtk3
+         libadwaita
+         libnotify
+         bluez
+         libcanberra
+         systemd-libs
+         pipewire-pulse-git)
+makedepends=(gobject-introspection
+             gtk-doc
+             docbook-xsl
+             git
+             systemd
+             meson)
 provides=(libgnome-bluetooth.so $_pkgname)
 conflicts=($_pkgname)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-bluetooth.git")
