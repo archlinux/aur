@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec "/opt/SchildiChat/schildichat-desktop" "$@"
+exec @ELECTRON@ /usr/lib/schildichat-desktop/app.asar --disable-dev-mode "$@"

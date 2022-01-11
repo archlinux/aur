@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Schildichat
+Comment=Matrix client / Element Web/Desktop fork
+Exec=/usr/bin/schildichat-desktop %u
+Terminal=false
+Type=Application
+Icon=schildichat-desktop
+StartupWMClass=Schildichat
+Categories=Network;InstantMessaging;Chat;IRCClient
+MimeType=x-scheme-handler/element;
