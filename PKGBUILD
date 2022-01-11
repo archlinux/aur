@@ -13,7 +13,7 @@ depends=(glibc sh)
 makedepends=(git)
 conflicts=('pkg-config' 'pkgconfig' 'pkgconf')
 provides=('pkg-config' 'pkgconfig' 'pkgconf')
-source=(git://github.com/pkgconf/pkgconf.git
+source=(git+https://github.com/pkgconf/pkgconf.git
         i686-pc-linux-gnu.personality
         x86_64-pc-linux-gnu.personality)
 md5sums=('SKIP'
