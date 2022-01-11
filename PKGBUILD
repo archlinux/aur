@@ -20,7 +20,7 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=261
+_minor=262
 _srcname=linux-${_major}
 _clr=${_major}.260-186
 pkgbase=linux-clear-lts2017
@@ -76,6 +76,9 @@ prepare() {
     # Power management and ACPI options
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                    --enable ACPI_TABLE_UPGRADE
+
+    # General architecture-dependent options
+    scripts/config --enable KPROBES
 
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
@@ -274,7 +277,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '34e1c7cc8f3002fec780ee587eb1a64fb9f8bc48d68a491c5b0a502bb1c27e3c'
+            '2d7eba783a30ecb57f26171faa6a0f776c42aed5d81cf2b463e450b6e5a428f4'
             'SKIP')
 
 validpgpkeys=(
