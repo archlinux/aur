@@ -11,7 +11,7 @@ depends=('pam')
 makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::"git://github.com/muesli/pam-beacon.git")
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

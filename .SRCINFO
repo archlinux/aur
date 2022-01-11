@@ -14,7 +14,7 @@ pkgbase = pam_beacon-git
 	depends = pam
 	provides = pam_beacon
 	conflicts = pam_beacon
-	source = pam_beacon-git::git://github.com/muesli/pam-beacon.git
+	source = pam_beacon-git::git+https://github.com/muesli/pam-beacon.git
 	sha256sums = SKIP
 
 pkgname = pam_beacon-git
