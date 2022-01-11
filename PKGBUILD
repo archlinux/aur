@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=litemdview
-pkgver=0.0.26
-pkgrel=2
+pkgver=0.0.29
+pkgrel=1
 pkgdesc="Suckless markdown viewer"
 url="https://notabug.org/g0tsu/litemdview"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('gtkmm3')
 makedepends=('fontconfig')
 source=($url/archive/$pkgname-$pkgver.tar.gz)
-sha256sums=('0aa98ed1e5769c925f10c916d69f5b11a2b7c8791813fff1d226cfedf78cb625')
+sha256sums=('b67e98655fc2f5c9cbb611d3463eabd36733ca9375f3af1f81b2805170ca3216')
 
 build() {
   cd $pkgname
