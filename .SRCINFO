@@ -1,0 +1,12 @@
+pkgbase = nsis-untgz-bin
+	pkgdesc = NSIS plugin that allows to extract the files from a tarball
+	pkgver = 1.0.18
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/UnTGZ_plug-in
+	arch = any
+	license = custom
+	depends = nsis
+	source = Untgz-1.0.18.zip::https://nsis.sourceforge.io/mediawiki/images/9/9d/Untgz.zip
+	sha256sums = 3c2a088b82b27b6183ea6479d61a6c0ecc54f52e484577b641ca21867bd81a4b
+
+pkgname = nsis-untgz-bin
