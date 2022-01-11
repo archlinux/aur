@@ -13,9 +13,8 @@ Usage
 
    .. code-block:: javascript
 
-       xhr = new XMLHttpRequest();
        resourceType = "network_access";
-       with (xhr) {
+       with (new XMLHttpRequest()) {
            responseType = "document";
            open("GET", `https://${location.host}:${location.port}/vdesk/resource_list.xml?resourcetype=res`);
            onload = () => console.log(`f5-vpn://${location.host}:${location.port}/?server=${location.host}&resourcename=${responseXML.querySelector(`list[type=${resourceType}] entry`).textContent}&resourcetype=${resourceType}&cmd=launch&protocol=https&port=${location.port || 443}&sid=${document.cookie.match(/MRHSession=(.*?); /)[1]}`);
