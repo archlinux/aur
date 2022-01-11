@@ -15,9 +15,9 @@ depends=('qt5-base' 'qt5-webengine' 'qt5-multimedia' 'qt5-x11extras'
 makedepends=('git' 'patch' 'cmake')
 provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
 conflicts=('psi-plus' 'psi-plus-qt5-git' 'psi-plus-webkit-qt5-git' 'psi-plus-webkit-git')
-source=('git://github.com/psi-im/psi.git'
-        'git://github.com/psi-im/iris.git'
-        'git://github.com/psi-im/libpsi.git')
+source=('git+https://github.com/psi-im/psi.git'
+        'git+https://github.com/psi-im/iris.git'
+        'git+https://github.com/psi-im/libpsi.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
