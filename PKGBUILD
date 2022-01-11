@@ -1,7 +1,7 @@
 ## Maintainer: Konrad L. <nat@nekopon.pl>
 
 pkgname=jazz2-bin
-pkgver=0.6.8
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Jazz² Resurrection: An open-source reimplementation of Jazz Jackrabbit 2"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/deathkiller/jazz2/releases/dow
         "jazz2"
         "jazz2import")
 
-sha256sums=('7f4e61f3c9a0a457066f0969c035dcb9e461447ecaf6d83a1a28e24e68065ba4'
+sha256sums=('f5aa7c4aa20a7b01a07719b060052e7c137cdc857ef6ab2353e160637d038f5d'
             '21e0399e95bc84eafaec6c7b41a1b4f0a8cd843286f5ab5e0638ba27c1ebf4de'
             '4b8e7dbed18698f92fd774bb363f9d98093b3e6b797e543efaaa310fae4417fd'
             '200bad11af3795caed6d19935f92c379ab223120aba7b88ebe580e8606284374'
