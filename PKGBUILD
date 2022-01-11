@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=deckmaster-git
-pkgver=r87.9328b84
+pkgver=r168.3e87251
 pkgrel=1
 pkgdesc="An application to control your Elgato Stream Deck"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=('ttf-roboto')
 makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::"git://github.com/muesli/${pkgname%-git}.git")
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
