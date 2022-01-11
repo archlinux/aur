@@ -1,7 +1,7 @@
 pkgbase = jack-example-tools-git
 	pkgdesc = Official JACK example clients and tools
 	pkgver = r647.fc9e9c4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jackaudio/jack-example-tools
 	arch = x86_64
 	license = GPL2

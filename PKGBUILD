@@ -2,7 +2,7 @@
 
 pkgname=jack-example-tools-git
 pkgver=r647.fc9e9c4
-pkgrel=1
+pkgrel=2
 pkgdesc="Official JACK example clients and tools"
 arch=(x86_64)
 url="https://github.com/jackaudio/jack-example-tools"
@@ -21,7 +21,14 @@ pkgver() {
 }
 
 build() {
-  arch-meson build "$pkgname"
+  local _meson_args=()
+  # jack1 does not provide libjacknet.so, but arch-meson enables all features,
+  # so we disable the building jack_net integration manually
+  if (( $(vercmp "$(pkgconf --mod-version jack)" '1.9.0') < 0 )); then
+    _meson_args+=(-D jack_net=disabled)
+  fi
+
+  arch-meson build "$pkgname" "${_meson_args[@]}"
   ninja -vC build
 }
 
