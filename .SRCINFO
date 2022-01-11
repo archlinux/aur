@@ -1,0 +1,25 @@
+pkgbase = openhsp-git
+	pkgdesc = Hot Soup Processor version 3 Compiler
+	pkgver = v3.6.r3.0e0c213
+	pkgrel = 1
+	url = https://github.com/onitama/OpenHSP
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glew
+	depends = sdl2
+	depends = mesa
+	depends = sdl2_image
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = gtk2
+	provides = openhsp
+	conflicts = openhsp
+	source = openhsp::git+https://github.com/onitama/OpenHSP.git
+	source = hsed.desktop
+	source = application-hot-soup-processor.xml
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = openhsp-git

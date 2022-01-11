@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/hot-soup-processor">
+        <comment>hot soup processor source code</comment>
+        <icon name="application-hot-soup-processor"/>
+        <glob-deleteall/>
+        <glob pattern="*.hsp"/>
+    </mime-type>
+</mime-info>

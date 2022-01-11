@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=HSP Script Editor
+Comment=Hot Soup Processor Editor
+Icon=/usr/share/pixmaps/hsed.png
+Exec=/usr/bin/hsed
+MimeType=application/hot-soup-processor
+Terminal=true
+Categories=Development;
