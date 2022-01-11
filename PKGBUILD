@@ -1,12 +1,13 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 pkgname=git-whoami-git
 pkgver=r3.5d77e00
-pkgrel=1
+pkgrel=2
 pkgdesc='The `whoami` command, but for Git. Useful when working with multiple identities.'
 arch=("any")
 url="https://github.com/petere/git-whoami"
 license=("unknown")
 depends=("git")
+makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/petere/git-whoami.git#branch=master")
