@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-/opt/manyverse/manyverse "$@"
+/opt/Manyverse/manyverse "$@"
