@@ -2,12 +2,12 @@
 
 pkgname=kyocera-ppd-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='PPD files for Kyocera FS printers'
 arch=('i686' 'x86_64')
 url="https://github.com/mnorin/kyocera-ppd-installer.git"
 license=('GPL 2.0')
-depends=('cups')
+depends=('cups' 'rastertokpsl-git')
 makedepends=('git')
 source=('git+https://github.com/mnorin/kyocera-ppd-installer.git')
 sha256sums=('SKIP')
@@ -17,9 +17,4 @@ package(){
   
   mkdir -p "$pkgdir/usr/share/cups/model/Kyocera"
   install -m 0644 kyocera-ppd-installer/*.ppd "$pkgdir/usr/share/cups/model/Kyocera"
-  BITS=$(getconf LONG_BIT)
-  
-  install -D -m 0755 kyocera-ppd-installer/rastertokpsl_$BITS "$pkgdir/usr/lib/cups/filter/rastertokpsl-bin"
-  install -D -m 0755 kyocera-ppd-installer/rastertokpsl_wrapper "$pkgdir/usr/lib/cups/filter/rastertokpsl"
-
   }
