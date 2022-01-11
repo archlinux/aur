@@ -1,6 +1,6 @@
 pkgbase = passwordmanager
 	pkgdesc = A simple password store using AES-256-CBC encryption via OpenSSL
-	pkgver = 4.1.8
+	pkgver = 4.1.9
 	pkgrel = 1
 	url = https://github.com/Martchus/passwordmanager
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = passwordmanager
 	depends = xdg-utils
 	depends = qt5-quickcontrols2
 	optdepends = kirigami2: Qt Quick GUI
-	source = passwordmanager-4.1.8.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.8.tar.gz
-	sha256sums = 9a7971ed8d52305cbd1dc1991f2bf087b46023f19bf8c19906b9019b34e7f239
+	source = passwordmanager-4.1.9.tar.gz::https://github.com/Martchus/passwordmanager/archive/v4.1.9.tar.gz
+	sha256sums = c2ad78bd57308a7424c4c856e7404f4bb3cdf23b83d98a7b0e6c03beaf008875
 
 pkgname = passwordmanager
