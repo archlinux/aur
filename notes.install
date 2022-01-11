@@ -27,7 +27,7 @@ msg_modules() {
 }
 
 msg_faq() {
-	echo -e "In the case that you still have issues after following these instructions, the FAQ at ${GREEN}https://github.com/InfinityGhost/OpenTabletDriver/wiki/Linux-FAQ${RESET} may help."
+	echo -e "In the case that you still have issues after following these instructions, the FAQ at ${GREEN}https://opentabletdriver.net/Wiki/FAQ/Linux${RESET} may help."
 	echo
 }
 
@@ -40,4 +40,14 @@ post_install() {
 	msg_starting
 	msg_modules
 	msg_faq
+}
+
+post_upgrade() {
+  if [ $(vercmp $2 'v0.6.0-1') -lt 0 ]; then
+    return 0
+  fi
+  echo -e "${BOLD}The plugin API and tablet configuration format has changed in OpenTabletDriver 0.6${RESET}"
+  echo -e "You may want to clear the contents of the ${GREEN}Plugins/${RESET} and ${GREEN}Configurations/${RESET} folder in ${GREEN}~/.config/OpenTabletDriver/${RESET}"
+  echo "Mismatching GUI and daemon versions isn't supported, so make sure to restart the OpenTabletDriver daemon"
+  echo
 }
