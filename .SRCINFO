@@ -1,4 +1,4 @@
-pkgbase = qml-lsp
+pkgbase = qml-lsp-git
 	pkgdesc = QML Language Server
 	pkgver = rjienrlwey.number.two.r10.ga426fd6
 	pkgrel = 1
@@ -12,4 +12,4 @@ pkgbase = qml-lsp
 	source = git+https://invent.kde.org/cblack/qew-em-el-el-ess-pee.git
 	sha256sums = SKIP
 
-pkgname = qml-lsp
+pkgname = qml-lsp-git
