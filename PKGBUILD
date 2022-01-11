@@ -1,8 +1,8 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=bbcli-git
-pkgver=r39.50a3d2f
-pkgrel=2
+pkgver=r143.e36682e
+pkgrel=1
 pkgdesc="inoffical Bitbucket.org command line tool"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/craftamap/bb"
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git://github.com/craftamap/bb.git)
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 prepare() {
