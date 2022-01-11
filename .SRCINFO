@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = a highly automated and intuitive digital audio workstation
 	pkgver = 1.0.0.alpha.27.0.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.zrythm.org
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = zrythm
 	makedepends = cmake
 	makedepends = ruby-sass
 	makedepends = help2man
+	makedepends = sassc
 	depends = gtk4
 	depends = graphviz
 	depends = carla
