@@ -4,8 +4,11 @@ pkgbase = argo-bin
 	pkgrel = 1
 	url = https://github.com/argoproj/argo-workflows
 	arch = x86_64
+	arch = aarch64
 	license = Apache
-	source = argo_3.2.6.gz::https://github.com/argoproj/argo-workflows/releases/download/v3.2.6/argo-linux-amd64.gz
-	md5sums = 925d5ab66eb8d2173fa3402d1b44917c
+	source_x86_64 = argo_3.2.6_x86_64.gz::https://github.com/argoproj/argo-workflows/releases/download/v3.2.6/argo-linux-amd64.gz
+	sha256sums_x86_64 = d30ed9692fcf45b363039e3a9e7dbd6ba84a4a99bb72026ec0da27b9aebc611a
+	source_aarch64 = argo_3.2.6_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v3.2.6/argo-linux-arm64.gz
+	sha256sums_aarch64 = c1818f3619a344b952e5fb37dc3e3e0f0a0cca7b83622489f83622ab3c58d2d7
 
 pkgname = argo-bin
