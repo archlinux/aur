@@ -5,7 +5,7 @@ pkgname="${_pkgname}-git"
 pkgver=r376.ac5f160
 pkgrel=1
 pkgdesc="Efficiently finding registered accounts from emails."
-arch=('x86_64')
+arch=("any")
 url="https://github.com/megadose/holehe"
 license=("GPL")
 _pydeps=('termcolor' 'bs4' 'httpx' 'trio' 'argparse' 'tqdm' 'colorama')
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    python3 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    python3 setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
+    python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
