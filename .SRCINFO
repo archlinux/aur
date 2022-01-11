@@ -1,0 +1,14 @@
+pkgbase = guile-gi-git
+	pkgver = 1163.0e849b1
+	pkgrel = 1
+	url = https://github.com/spk121/guile-gi
+	arch = x86_64
+	license = GPL3
+	depends = glib2
+	depends = guile
+	depends = gtk3
+	depends = gobject-introspection
+	source = guile-gi-git::git+https://github.com/spk121/guile-gi.git
+	md5sums = SKIP
+
+pkgname = guile-gi-git
