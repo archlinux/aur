@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=docker-backup-git
-pkgver=r31.ef8a899
+pkgver=r37.4fc51ee
 pkgrel=1
 pkgdesc="A tool to create & restore complete, self-contained backups of Docker containers"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::"git://github.com/muesli/${pkgname%-git}.git")
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
