@@ -9,8 +9,8 @@ _pkgbase=nginx
 pkgbase=${_pkgbase}-quiche
 pkgname=${pkgbase}
 pkgver=1.18.0
-pkgrel=2
-_quichever=0.8.1
+pkgrel=3
+_quichever=0.10.0
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with cloudflare quiche and boringssl for http3 support'
 arch=(x86_64)
 url='https://nginx.org'
@@ -32,14 +32,14 @@ install=nginx.install
 source=(https://nginx.org/download/nginx-$pkgver.tar.gz{,.asc}
         hg+http://hg.nginx.org/nginx-tests#revision=c1d167a13c24
 	https://github.com/cloudflare/quiche/archive/$_quichever.tar.gz
-        git+https://boringssl.googlesource.com/boringssl#commit=067cfd92f4d7da0edfa073b096d090b98a83b860
+        git+https://boringssl.googlesource.com/boringssl#commit=f1c75347daa2ea81a941e953f2263e0a4d970c8d
         service
         logrotate)
 validpgpkeys=(B0F4253373F8F6F510D42178520A9993A1C052F8) # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('b2d33d24d89b8b1f87ff5d251aa27eb8'
          'SKIP'
          'SKIP'
-         'b9efece5ea0cf0b868e0da8c2962220a'
+         'dcf48ce31436688dbce85b9061a9448a'
          'SKIP'
          'ba2e3b08ce0f0fff7cced624d0ecf7cc'
          '6a01fb17af86f03707c8ae60f98a2dc2')
