@@ -1,0 +1,17 @@
+pkgbase = sshyp
+	pkgdesc = A light-weight, self-hosted, synchronized password manager
+	pkgver = 2022.01.10.fr2.3
+	pkgrel = 1
+	url = https://github.com/rwinkhart/sshyp
+	arch = any
+	license = GPL3
+	depends = python
+	depends = gnupg
+	depends = openssh
+	depends = nano
+	depends = xclip
+	depends = wl-clipboard
+	source = https://github.com/rwinkhart/sshyp/releases/download/v2022.01.10.fr2.3/sshyp-2022.01.10.fr2.3.tar.xz
+	sha512sums = be6695cc231f4414322f2c4b919caf0759f4111e50259b3a6bbcb6e90a0ceba5d094c8766c287e5443c61adfdf414c1a93bc70e505dfd4bf34097c713b6e7d2f
+
+pkgname = sshyp
