@@ -2,8 +2,8 @@
 
 pkgname=chatterino2-7tv-git
 _pkgname=chatterino7
-pkgver=r3459.29c731c2
-pkgrel=2
+pkgver=r3487.dbd99e4c
+pkgrel=1
 pkgdesc='A fork of Chatterino2 with built-in support for 7tv emotes'
 arch=('any')
 url=https://github.com/SevenTV/chatterino7
@@ -16,16 +16,16 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage')
 install=$pkgname.install
-source=("git://github.com/SevenTV/chatterino7"
-        "git://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-        "git://github.com/jiakuan/qBreakpad"
-        "git://github.com/mohabouje/WinToast"
-        "git://github.com/pajlada/settings"
-        "git://github.com/pajlada/signals"
-        "git://github.com/pajlada/serialize"
-        "git://github.com/Tencent/rapidjson"
-        "git://github.com/Chatterino/qtkeychain"
-        "git://github.com/zaphoyd/websocketpp")
+source=("git+https://github.com/SevenTV/chatterino7"
+        "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
+        "git+https://github.com/jiakuan/qBreakpad"
+        "git+https://github.com/mohabouje/WinToast"
+        "git+https://github.com/pajlada/settings"
+        "git+https://github.com/pajlada/signals"
+        "git+https://github.com/pajlada/serialize"
+        "git+https://github.com/Tencent/rapidjson"
+        "git+https://github.com/Chatterino/qtkeychain"
+        "git+https://github.com/zaphoyd/websocketpp")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'

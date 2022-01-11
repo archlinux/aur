@@ -1,7 +1,7 @@
 pkgbase = chatterino2-7tv-git
 	pkgdesc = A fork of Chatterino2 with built-in support for 7tv emotes
-	pkgver = r3459.29c731c2
-	pkgrel = 2
+	pkgver = r3487.dbd99e4c
+	pkgrel = 1
 	url = https://github.com/SevenTV/chatterino7
 	install = chatterino2-7tv-git.install
 	arch = any
@@ -23,16 +23,16 @@ pkgbase = chatterino2-7tv-git
 	conflicts = chatterino2-git
 	conflicts = chatterino2-appimage
 	conflicts = chatterino2-nightly-appimage
-	source = git://github.com/SevenTV/chatterino7
-	source = git://github.com/Chatterino/libcommuni#branch=chatterino-cmake
-	source = git://github.com/jiakuan/qBreakpad
-	source = git://github.com/mohabouje/WinToast
-	source = git://github.com/pajlada/settings
-	source = git://github.com/pajlada/signals
-	source = git://github.com/pajlada/serialize
-	source = git://github.com/Tencent/rapidjson
-	source = git://github.com/Chatterino/qtkeychain
-	source = git://github.com/zaphoyd/websocketpp
+	source = git+https://github.com/SevenTV/chatterino7
+	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
+	source = git+https://github.com/jiakuan/qBreakpad
+	source = git+https://github.com/mohabouje/WinToast
+	source = git+https://github.com/pajlada/settings
+	source = git+https://github.com/pajlada/signals
+	source = git+https://github.com/pajlada/serialize
+	source = git+https://github.com/Tencent/rapidjson
+	source = git+https://github.com/Chatterino/qtkeychain
+	source = git+https://github.com/zaphoyd/websocketpp
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
