@@ -6,6 +6,7 @@ pkgdesc="open source relational database implemented entirely in Java"
 arch=('any')
 url="https://db.apache.org/derby/"
 license=('Apache')
+install='derby.install'
 depends=(
     'java-environment'
     'bash'

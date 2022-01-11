@@ -3,6 +3,7 @@ pkgbase = db-derby
 	pkgver = 10.15.2.0
 	pkgrel = 1
 	url = https://db.apache.org/derby/
+	install = derby.install
 	arch = any
 	license = Apache
 	depends = java-environment
