@@ -1,0 +1,15 @@
+pkgbase = python-niaaml
+	pkgdesc = Python automated machine learning framework
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/lukapecnik/NiaAML
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python-niapy
+	depends = python-scikit-learn
+	source = https://github.com/lukapecnik/NiaAML/archive/1.1.6.tar.gz
+	sha512sums = e2508c1c0bc199a0a1aef1e2d475f5ceb92cea209ad23b0827901b576bf09efe79feed07b482075e54f8bdbc632516214aec6761a5e010e78eabd5b69322bd49
+
+pkgname = python-niaaml
