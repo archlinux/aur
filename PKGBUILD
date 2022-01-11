@@ -1,14 +1,15 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=ratt-git
-pkgver=r65.c41fa7c
+pkgver=r85.eac7e14
 pkgrel=1
 pkgdesc="A tool for converting websites to RSS/Atom feeds"
 arch=('x86_64')
 url="https://git.sr.ht/~ghost08/ratt"
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'scdoc')
+options=('!emptydirs')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("$pkgname::git+$url")
@@ -27,7 +28,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	go build -o ratt ./cmd/ratt
+	make
 }
 
 check() {
@@ -43,8 +44,8 @@ check() {
 
 package() {
 	cd "$pkgname"
-	install -Dm 755 ratt -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-	find confs -type f -exec install -Dm 644 -t "$pkgdir/usr/share/$pkgname/" '{}' \+
+	make install PREFIX=/usr DESTDIR="$pkgdir/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find confs -type f -exec install -Dm644 -t "$pkgdir/usr/share/$pkgname/" '{}' \+
 }
