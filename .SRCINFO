@@ -1,6 +1,6 @@
 pkgbase = cura-appimage-bin
 	pkgdesc = Ultimakers 3D printer / slicing GUI built on top of the Uranium framework
-	pkgver = 4.12.1
+	pkgver = 4.13.0
 	pkgrel = 1
 	url = https://ultimaker.com/software/ultimaker-cura
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = cura-appimage-bin
 	conflicts = cura-appimage-bin
 	noextract = ${_pkgname}-${pkgver}.AppImage
 	options = !strip
-	source = Ultimaker_Cura-4.12.1.AppImage::https://github.com/Ultimaker/Cura/releases/download/4.12.1/Ultimaker_Cura-4.12.1.AppImage
+	source = Ultimaker_Cura-4.13.0.AppImage::https://github.com/Ultimaker/Cura/releases/download/4.13.0/Ultimaker_Cura-4.13.0.AppImage
 	source = cura.sh
 	source = cura.desktop.patch
-	sha256sums = 8559b695c86a5abf7573a63e4849cd716cca41498efd8edd9db4d11fc1bee8be
+	sha256sums = c3382e11ffe2e01163371d40b1215587815fd2b15c84bc6e3275dc25aa24c1b0
 	sha256sums = 591cd8c33986ad7707e10eed49ba66e87de01c0f761f705c1650e66bc3f22991
 	sha256sums = c950da916ead034a4ce871c25ca20c5d3f0fc5d65492a082dcaf7897af357aa3
 
