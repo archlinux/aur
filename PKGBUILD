@@ -10,7 +10,7 @@ license=('custom')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 depends=('pacman')
 makedepends=('git')
-source=("git://github.com/falconindy/${_pkgname}.git#branch=master")
+source=("git+https://github.com/falconindy/${_pkgname}.git#branch=master")
 sha512sums=('SKIP')
 
 pkgver() {

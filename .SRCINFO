@@ -11,8 +11,7 @@ pkgbase = aurood-git
 	license = custom
 	makedepends = git
 	depends = pacman
-	source = git://github.com/falconindy/aurood.git#branch=master
+	source = git+https://github.com/falconindy/aurood.git#branch=master
 	sha512sums = SKIP
 
 pkgname = aurood-git
-
