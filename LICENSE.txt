@@ -6,11 +6,11 @@ SAC - Single Assignment C
 
 SAC COPYRIGHT NOTICE, LICENSE, AND DISCLAIMER
 
-(c) Copyright 1994 - 2020 by
+(c) Copyright 1994 - 2021 by
 
   SAC Development Team
 
-   web: http://www.sac-home.org
+   web: https://www.sac-home.org
  email: info@sac-home.org
 
 ---------------------------------------------------------------------------
