@@ -1,6 +1,6 @@
 pkgbase = knoxite-git
 	pkgdesc = A data storage & backup system
-	pkgver = r551.bfdf2fa
+	pkgver = r696.4388cb0
 	pkgrel = 1
 	url = https://github.com/knoxite/knoxite
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = knoxite-git
 	makedepends = git
 	provides = knoxite
 	conflicts = knoxite
-	source = knoxite-git::git://github.com/knoxite/knoxite.git
+	source = knoxite-git::git+https://github.com/knoxite/knoxite.git
 	sha256sums = SKIP
 
 pkgname = knoxite-git
-

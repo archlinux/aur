@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=knoxite-git
-pkgver=r551.bfdf2fa
+pkgver=r696.4388cb0
 pkgrel=1
 pkgdesc="A data storage & backup system"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('go' 'git')
 provides=("knoxite")
 conflicts=("knoxite")
-source=($pkgname::git://github.com/knoxite/knoxite.git)
+source=($pkgname::"git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
