@@ -1,0 +1,18 @@
+pkgbase = siji-ttf
+	pkgdesc = Iconic bitmap with scalable ttf version
+	pkgver = r22.14e7da9
+	pkgrel = 1
+	url = https://github.com/fauno/siji
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-mkfontscale
+	depends = xorg-xset
+	optdepends = xorg-xfd: use view.sh script to view glyphs
+	optdepends = font-manager: alternate way to view glyphs
+	conflicts = siji
+	source = siji-ttf::git+https://github.com/fauno/siji
+	sha512sums = SKIP
+
+pkgname = siji-ttf
