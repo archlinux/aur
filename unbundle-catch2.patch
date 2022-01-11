@@ -5,7 +5,7 @@
      set(REQUIRED_LIBS
      #    Cmake Pkg Prefix  Version     Conan Pkg
 -        "Catch2            2.13.7      catch2/2.13.7"
-         "fmt               8.0.1       fmt/8.0.1"
+         "fmt               8.0.1       fmt/8.1.1"
          "lz4               1.8         lz4/1.9.2"
          "nlohmann_json     3.8         nlohmann_json/3.8.0"
 @@ -786,6 +785,11 @@ add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY
