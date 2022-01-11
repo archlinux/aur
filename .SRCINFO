@@ -25,7 +25,6 @@ pkgbase = cmus-git
 	depends = ncurses
 	depends = libdiscid
 	optdepends = alsa-lib: for ALSA output plugin support
-	optdepends = oss: for Open Sound System output plugin support
 	optdepends = libao: for AO output plugin support
 	optdepends = libpulse: for PulseAudio output plugin support
 	optdepends = faad2: for AAC input plugin support

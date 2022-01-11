@@ -24,7 +24,6 @@ makedepends=('git'
              'opusfile'
              'wavpack')
 optdepends=('alsa-lib: for ALSA output plugin support'
-	    'oss: for Open Sound System output plugin support'
             'libao: for AO output plugin support'
             'libpulse: for PulseAudio output plugin support'
             'faad2: for AAC input plugin support'
