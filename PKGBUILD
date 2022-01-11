@@ -1,45 +1,28 @@
-# Maintaner: Ocelot 1112345@airmail.cc
-
-_pypiname=censys
-pkgbase=python-censys
-pkgname=(python-censys python2-censys)
-pkgdesc='A light weight Python wrapper to the Censys REST API'
-pkgver=0.0.8
+# Contributor:: Ocelot <1112345@airmail.cc>
+_base=censys
+pkgname=python-${_base}
+pkgdesc="An easy-to-use and lightweight API wrapper for Censys APIs"
+pkgver=2.1.1
 pkgrel=1
-url="https://github.com/censys/censys-python"
-license=('Apache')
+url="https://github.com/${_base}/${_base}-python"
+license=(Apache)
 arch=("any")
-makedepends=('python' 'python-setuptools' 'python2-setuptools' 'python-requests' 'python2-requests' 'python-netaddr' 'python2-netaddr')
-source=("https://files.pythonhosted.org/packages/88/4b/3ca07679928c26bb5503b53c37e2f6eef2521289956e2c1bf74b64008afa/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('7e5f623fbdc2ce1dcf3ef531e63ba486f7e255f20c4d4006b4f70b6d59a78534')
-
-prepare() {
-    # Create a copy for the python2 package
-    cp -r "${_pypiname}-${pkgver}" "python2-${_pypiname}-${pkgver}"
-}
+depends=(python-requests python-backoff python-rich)
+makedepends=(python-build python-install python-poetry)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('87bc66dc58906ca6032994b453e0a7ffa48e37fb198cf7bc3c424ef9debb938ac8c6d8fe38ddb418322fe4d6b4373be8f1ad11ca1c35a9c0cb2fef8a6659f0ed')
 
 build() {
-	# build for python 3
-	cd "${srcdir}/${_pypiname}-${pkgver}"
-	python setup.py build
-	
-	# build for python 2
-	cd "${srcdir}/python2-${_pypiname}-${pkgver}"
-	python2 setup.py build
+  cd "${_base}-python-${pkgver}"
+  # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+  # from incorrectly using a parent git checkout info.
+  # https://github.com/pypa/build/issues/384#issuecomment-947675975
+  GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-package_python-censys() {
-	pkgdesc="A light weight Python 3 wrapper to the Censys REST API"
-	depends=('python' 'python-requests' 'python-netaddr')
-	cd "${srcdir}/${_pypiname}-${pkgver}"
-	
-	python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
-package_python2-censys() {
-	pkgdesc="A light weight Python 2 wrapper to the Censys REST API"
-	depends=('python2' 'python2-requests' 'python2-netaddr')
-	cd "${srcdir}/python2-${_pypiname}-${pkgver}"
-	
-	python2 setup.py install --root="${pkgdir}/" --optimize=1
+package() {
+  cd "${_base}-python-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

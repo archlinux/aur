@@ -1,29 +1,17 @@
 pkgbase = python-censys
-	pkgdesc = A light weight Python wrapper to the Censys REST API
-	pkgver = 0.0.8
+	pkgdesc = An easy-to-use and lightweight API wrapper for Censys APIs
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/censys/censys-python
 	arch = any
 	license = Apache
-	makedepends = python
-	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = python-requests
-	makedepends = python2-requests
-	makedepends = python-netaddr
-	makedepends = python2-netaddr
-	source = https://files.pythonhosted.org/packages/88/4b/3ca07679928c26bb5503b53c37e2f6eef2521289956e2c1bf74b64008afa/censys-0.0.8.tar.gz
-	sha256sums = 7e5f623fbdc2ce1dcf3ef531e63ba486f7e255f20c4d4006b4f70b6d59a78534
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry
+	depends = python-requests
+	depends = python-backoff
+	depends = python-rich
+	source = https://github.com/censys/censys-python/archive/v2.1.1.tar.gz
+	sha512sums = 87bc66dc58906ca6032994b453e0a7ffa48e37fb198cf7bc3c424ef9debb938ac8c6d8fe38ddb418322fe4d6b4373be8f1ad11ca1c35a9c0cb2fef8a6659f0ed
 
 pkgname = python-censys
-	pkgdesc = A light weight Python 3 wrapper to the Censys REST API
-	depends = python
-	depends = python-requests
-	depends = python-netaddr
-
-pkgname = python2-censys
-	pkgdesc = A light weight Python 2 wrapper to the Censys REST API
-	depends = python2
-	depends = python2-requests
-	depends = python2-netaddr
-
