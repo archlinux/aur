@@ -2,20 +2,22 @@
 # Contributor: Olivier Biesmans <o dot archlinux at biesmans dot fr>
 
 pkgname=certigo
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='A utility to examine and validate certificates in a variety of formats'
 arch=('x86_64' 'i686')
 url='https://github.com/square/certigo'
 license=('MIT')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/square/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('06d7663b6c46904a020edcaeaceb6476fd808677a1ee0c11b3aaf1926c84da5b')
+sha256sums=('3ed30adc63869fcbded9bff51e07eaadb08c243980ee08f18858cb6c2a86d232')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  export GOFLAGS="-buildmode=pie -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  export CGO_CPPFLAGS="-D_FORTIFY_SOURCE=2"
+  export CGO_LDFLAGS="-Wl,-z,relro,-z,now"
   ./build
 }
 
