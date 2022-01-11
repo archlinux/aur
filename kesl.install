@@ -155,6 +155,11 @@ post_install(){
             && echo "... scheduled virus database updates once within >${SCHEDULE_UPDATE_INTERVAL}< minutes"
     fi
 
+    # disable all modules except file threat protection (realtime/on-access)
+    # the user should enable the modules manually:
+    kesl-control --import-settings --file /var/opt/kaspersky/kesl/pkgscripts/kesl.start.conf \
+        && echo -e "... imported initial startup config - all modules disabled except realtime-scan\n"
+
     kesl_exportconf
     kesl_updatedb
 
