@@ -4,7 +4,7 @@
 
 pkgname=sc-im-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc='A spreadsheet program based on SC'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/andmarti1424/sc-im'
@@ -13,7 +13,7 @@ optdepends=('libxlsxwriter: export to xlsx. Requires rebuild of sc-im'
             'gnuplot: create graphs')
 license=('BSD')
 conflicts=('scim-spreadsheet' 'sc-im')
-source=('git://github.com/andmarti1424/sc-im'
+source=('git+https://github.com/andmarti1424/sc-im'
         'arch.patch')
 md5sums=('SKIP'
          '1fbfee20dfb2f3150bd9b20748a9cca1')

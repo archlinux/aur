@@ -1,7 +1,7 @@
 pkgbase = sc-im-git
 	pkgdesc = A spreadsheet program based on SC
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andmarti1424/sc-im
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sc-im-git
 	optdepends = gnuplot: create graphs
 	conflicts = scim-spreadsheet
 	conflicts = sc-im
-	source = git://github.com/andmarti1424/sc-im
+	source = git+https://github.com/andmarti1424/sc-im
 	source = arch.patch
 	md5sums = SKIP
 	md5sums = 1fbfee20dfb2f3150bd9b20748a9cca1
