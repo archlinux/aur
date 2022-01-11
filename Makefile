@@ -9,4 +9,4 @@ srcinfo:
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src x11-emoji-picker*.tar.*
+	rm -rf pkg src x11-emoji-picker/ x11-emoji-picker*.tar.*

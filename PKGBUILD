@@ -1,7 +1,7 @@
 # Maintainer: zneix <zneix@zneix.eu>
 
 pkgname=x11-emoji-picker-git
-pkgver=0.8.2.r4.g7fd438b
+pkgver=0.8.2.r10.gcf0dd46
 pkgrel=1
 pkgdesc='Linux XServer emoji picker written in C++.'
 arch=('x86_64' 'armv7h')
