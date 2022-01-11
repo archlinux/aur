@@ -1,15 +1,13 @@
 pkgbase = python-ntfs
 	pkgdesc = Python module to manipulate NTFS junctions and hardlinks
-	pkgver = 0.1.4
-	pkgrel = 4
-	url = https://github.com/sunshowers/ntfs
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/sunshowers-code/py-ntfs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/sunshowers/ntfs/archive/0.1.4/ntfs-0.1.4.tar.gz
-	source = https://github.com/sunshowers/ntfs/pull/13/commits/8b990e3459ca2ccaf96113ce3442464c6147cdc0.patch
-	sha256sums = 80ada586fd132b1db9fc6b2a844b98f4e2a883cb26f115f6af2b58f84295da98
-	sha256sums = 9c47b8b4f95570918bf5afb57a80f534eba0be1ca078940566240f2a6e2f362a
+	source = https://github.com/sunshowers-code/py-ntfs/archive/0.1.5/py-ntfs-0.1.5.tar.gz
+	sha256sums = 9a927a0821460bf3e3a9bfc0b3e23aa732f056aadbc5c116ebac6a6dca56f5c3
 
 pkgname = python-ntfs
