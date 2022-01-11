@@ -15,7 +15,7 @@ depends=('fuse' 'sqlite>=3')
 makedepends=('git' 'go')
 provides=('tmsu')
 conflicts=('tmsu' 'tmsu-bin')
-source=("git+git://github.com/oniony/tmsu.git")
+source=("git+https://github.com/oniony/tmsu.git")
 sha256sums=('SKIP')
 
 pkgver() {

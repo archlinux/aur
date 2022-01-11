@@ -13,7 +13,7 @@ pkgbase = tmsu-git
 	provides = tmsu
 	conflicts = tmsu
 	conflicts = tmsu-bin
-	source = git+git://github.com/oniony/tmsu.git
+	source = git+https://github.com/oniony/tmsu.git
 	sha256sums = SKIP
 
 pkgname = tmsu-git
