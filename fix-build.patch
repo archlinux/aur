@@ -2,15 +2,6 @@ diff --git a/desktop-app/package.json b/desktop-app/package.json
 index 9ff6d1c..15827c5 100644
 --- a/desktop-app/package.json
 +++ b/desktop-app/package.json
-@@ -1,7 +1,7 @@
- {
-   "name": "Responsively-App",
-   "productName": "ResponsivelyApp",
--  "version": "0.16.0",
-+  "version": "0.17.0",
-   "description": "A developer-friendly browser for developing responsive web apps",
-   "scripts": {
-     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
 @@ -147,8 +147,7 @@
      },
      "linux": {
