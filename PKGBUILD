@@ -18,7 +18,7 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-source=("git://github.com/sddm/sddm.git#branch=develop"
+source=("git+https://github.com/sddm/sddm.git#branch=develop"
 sddm.sysusers sddm.tmpfiles)
 sha256sums=('SKIP'
             '9fce66f325d170c61caed57816f4bc72e9591df083e89da114a3bb16b0a0e60f'

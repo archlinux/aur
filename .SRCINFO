@@ -20,7 +20,7 @@ pkgbase = sddm-git
 	backup = etc/pam.d/sddm
 	backup = etc/pam.d/sddm-autologin
 	backup = etc/pam.d/sddm-greeter
-	source = git://github.com/sddm/sddm.git#branch=develop
+	source = git+https://github.com/sddm/sddm.git#branch=develop
 	source = sddm.sysusers
 	source = sddm.tmpfiles
 	sha256sums = SKIP
