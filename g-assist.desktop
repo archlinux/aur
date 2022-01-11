@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Google Assistant
+Exec=g-assist
+Terminal=false
+Type=Application
+Icon=g-assist
+StartupWMClass=Google Assistant
+Comment=Google Assistant Unofficial Desktop Client
+Categories=Productivity;
+Hidden=false
