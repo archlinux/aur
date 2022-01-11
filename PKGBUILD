@@ -2,10 +2,10 @@
 
 pkgname=cuberite
 _pkgver=1.12.2
-_commit=1be14eb
+_commit=efeedcb
 pkgver="${_pkgver}c1_${_commit}"
 pkgrel=1
-_mng_ver=1.0.0
+_mng_ver=1.0.1
 pkgdesc="A Minecraft-compatible multiplayer game server that is written in C++ and designed to be efficient with memory and CPU, as well as having a flexible Lua Plugin API. It is compatible with the vanilla Minecraft client."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://cuberite.org/"
@@ -53,7 +53,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'e315277da81cb28de338e870f477dc58dc9d8f8542594431ab5321150c92ff5634ace2be8c6778d1edb718fdeb6850d7021bffcbd3cae2a00f20e3a64caa3d92')
+            '5fecf7bbcc5e2861640ae34bc32770a02a137cb4cf142adf565997c20141744b00517501ad717f390056bdcf59c4e03e365656454b427e771a15fcf152f1bc97')
 
 _game="cuberite"
 _server_root="/srv/cuberite"
@@ -101,7 +101,7 @@ build() {
 
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		GAME=${_game} \
-		MYNAME=${_game} \
+		INAME=${_game} \
 		SERVER_ROOT=${_server_root} \
 		BACKUP_PATHS="world world_nether world_the_end" \
 		GAME_USER=${_game} \
@@ -114,7 +114,7 @@ package() {
 	make -C "${srcdir}/minecraft-server-${_mng_ver}" \
 		DESTDIR="${pkgdir}" \
 		GAME=${_game} \
-		MYNAME=${_game} \
+		INAME=${_game} \
 		install
 
 	make -C "${srcdir}/${pkgname}/build" DESTDIR="${pkgdir}" install
