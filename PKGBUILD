@@ -24,7 +24,7 @@ provides=("${pkgname%-cli}")
 checkdepends=('cppunit')
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('c6a787ef5b235b93f55a5f458cc1cb6376a53f60b2de1a76c70efdfa8390b928')
+sha256sums=('a01b68af858b4802e498e926e2e75efa400c1922a73d65693f0795eb79956259')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
