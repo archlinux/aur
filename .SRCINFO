@@ -1,0 +1,14 @@
+pkgbase = nsis-shelllink-bin
+	pkgdesc = NSIS plugin that allows you to read and change shell link (.lnk) files
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://nsis.sourceforge.io/ShellLink_plug-in
+	arch = any
+	license = custom
+	depends = nsis
+	source = ShellLink-1.2.zip::https://nsis.sourceforge.io/mediawiki/images/6/6c/Shelllink.zip
+	source = LICENSE
+	sha256sums = 789bc4610272f8b01de8e2889987d50c7dd401193a90350184e58cb4c26393b9
+	sha256sums = 4af69618123057702c0c8cea990bae7e1c72e030d7a10e0f35056f0afa3d9fcf
+
+pkgname = nsis-shelllink-bin
