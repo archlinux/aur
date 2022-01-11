@@ -1,6 +1,6 @@
 pkgbase = picom-arian8j2-git
 	pkgdesc = Arian8j2's picom fork with everything from jonaburg's fork plus a patch for rounded corners and shadows
-	pkgver = 0.1
+	pkgver = 8.r1651.20220111
 	pkgrel = 1
 	url = https://github.com/Arian8j2/picom
 	arch = i686
@@ -10,7 +10,6 @@ pkgbase = picom-arian8j2-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = gcc
 	makedepends = asciidoc
 	makedepends = uthash
 	depends = libconfig
@@ -38,7 +37,7 @@ pkgbase = picom-arian8j2-git
 	conflicts = compton-git
 	conflicts = picom
 	conflicts = picom-git
-	source = picom::git+https://github.com/Arian8j2/picom.git
+	source = picom-arian8j2::git+https://github.com/Arian8j2/picom.git
 	md5sums = SKIP
 
 pkgname = picom-arian8j2-git
