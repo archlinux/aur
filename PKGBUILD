@@ -7,10 +7,10 @@ pkgdesc="X FreeType library with support for BGRA glyphs and scaling."
 arch=('x86_64')
 url="https://xorg.freedesktop.org"
 license=('custom')
-provides=('libxft')
-conflicts=('libxft')
 depends=('fontconfig' 'libxrender')
 makedepends=('pkgconf')
+provides=('libxft')
+conflicts=('libxft')
 source=("${url}/releases/individual/lib/libXft-${pkgver}.tar.bz2"
         "bgra_patch::https://gitlab.freedesktop.org/xorg/lib/libxft/merge_requests/1.patch")
 sha256sums=('57dedaab20914002146bdae0cb0c769ba3f75214c4c91bd2613d6ef79fc9abdd' 
