@@ -1,0 +1,12 @@
+diff -r -U 0 a/nuxhash/nuxhash/nhrest/python/nicehash.py b/nuxhash/nuxhash/nhrest/python/nicehash.py
+--- a/nuxhash/nuxhash/nhrest/python/nicehash.py	2022-01-11 13:45:29.215436461 -0500
++++ b/nuxhash/nuxhash/nhrest/python/nicehash.py	2022-01-11 13:47:15.789264605 -0500
+@@ -165 +165 @@
+-        return self.request('GET', '/main/api/v2/accounting/accounts/', '', None)
++        return self.request('GET', '/main/api/v2/accounting/accounts2/', '', None)
+diff -r -U 0 a/nuxhash/nuxhash/nicehash.py b/nuxhash/nuxhash/nicehash.py
+--- a/nuxhash/nuxhash/nicehash.py	2022-01-11 13:45:29.215436461 -0500
++++ b/nuxhash/nuxhash/nicehash.py	2022-01-11 13:47:26.635552456 -0500
+@@ -27 +27 @@
+-            'GET', f'/main/api/v2/mining/external/{address}/rigs/', '', None)
++            'GET', f'/main/api/v2/mining/external/{address}/rigs2/', '', None)

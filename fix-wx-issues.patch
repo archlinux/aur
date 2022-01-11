@@ -1,0 +1,32 @@
+diff -r -U 0 a/nuxhash/nuxhash/gui/benchmarks.py b/nuxhash/nuxhash/gui/benchmarks.py
+--- a/nuxhash/nuxhash/gui/benchmarks.py	2022-01-11 13:45:29.211436355 -0500
++++ b/nuxhash/nuxhash/gui/benchmarks.py	2022-01-11 13:54:25.729552602 -0500
+@@ -7 +7 @@
+-from wx.lib.pubsub import pub
++from pubsub import pub
+diff -r -U 0 a/nuxhash/nuxhash/gui/main.py b/nuxhash/nuxhash/gui/main.py
+--- a/nuxhash/nuxhash/gui/main.py	2022-01-11 13:45:29.211436355 -0500
++++ b/nuxhash/nuxhash/gui/main.py	2022-01-11 13:54:31.362631038 -0500
+@@ -10 +10 @@
+-from wx.lib.pubsub import pub
++from pubsub import pub
+diff -r -U 0 a/nuxhash/nuxhash/gui/mining.py b/nuxhash/nuxhash/gui/mining.py
+--- a/nuxhash/nuxhash/gui/mining.py	2022-01-11 13:45:29.211436355 -0500
++++ b/nuxhash/nuxhash/gui/mining.py	2022-01-11 13:56:53.792824763 -0500
+@@ -12 +12 @@
+-from wx.lib.pubsub import pub
++from pubsub import pub
+@@ -67,2 +67 @@
+-        sizer.Add(bottomSizer, wx.SizerFlags().Border(wx.ALL, main.PADDING_PX)
+-                                              .Expand())
++        sizer.Add(bottomSizer, wx.SizerFlags().Border(wx.ALL, main.PADDING_PX).Expand())
+@@ -91,2 +90 @@
+-        bottomSizer.Add(self._StartStop, wx.SizerFlags().Expand()
+-                                                        .Center())
++        bottomSizer.Add(self._StartStop, wx.SizerFlags().Center())
+diff -r -U 0 a/nuxhash/nuxhash/gui/settings.py b/nuxhash/nuxhash/gui/settings.py
+--- a/nuxhash/nuxhash/gui/settings.py	2022-01-11 13:45:29.211436355 -0500
++++ b/nuxhash/nuxhash/gui/settings.py	2022-01-11 13:55:08.500165099 -0500
+@@ -5 +5 @@
+-from wx.lib.pubsub import pub
++from pubsub import pub
