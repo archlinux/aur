@@ -1,0 +1,5 @@
+src/
+pkg/
+waydroid_script/
+*.log
+*.tar*
