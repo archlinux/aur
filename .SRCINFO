@@ -1,6 +1,6 @@
 pkgbase = python-qcengine
 	pkgdesc = Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry
-	pkgver = 0.18.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = http://docs.qcarchive.molssi.org/projects/QCEngine/en/stable/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-qcengine
 	depends = python-qcelemental
 	depends = python-py-cpuinfo
 	depends = python-psutil
-	source = https://github.com/MolSSI/QCEngine/archive/v0.18.0.tar.gz
-	sha256sums = 6e2b889cd0a12b4fa98664b84549769f48e2b03c8896a4595d511fee1dc4c028
+	source = https://github.com/MolSSI/QCEngine/archive/v0.21.0.tar.gz
+	sha256sums = 0fb9a60e68d9c9be05d63a65838efb5e853cfbf1fcf8e8b12ad211421d97a53c
 
 pkgname = python-qcengine
-
