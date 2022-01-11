@@ -2,6 +2,26 @@
 
 Arch package for Kaspersky Endpoint Security for Linux (KESL)
 
+## Features
+
+In summary KESL provides:
+
+- Realtime / On-Access Scan
+- Scheduled Scans
+- Network threat protection
+- Web threat protection
+- Removable drives auto-scan
+- .. and much more ;)
+
+All details can be found here: https://www.kaspersky.com/small-to-medium-business-security/endpoint-linux
+
+
+## Packages
+
+* packagebase: https://aur.archlinux.org/pkgbase/kesl/
+* [kesl](https://aur.archlinux.org/packages/kesl/): main package, needed on servers and desktops
+* [kesl-gui](https://aur.archlinux.org/packages/kesl-gui/): highly recommended for desktops - optional on servers
+
 ## Configuration
 
 The following explains how this package behaves during install, re-install, upgrade and removal. For a manual configuration based on the resulting configuration files check out the last topic ***"Manual configuration / import"***
