@@ -14,7 +14,7 @@ makedepends=('gendesk' 'python2' 'git' 'npm' 'yarn')
 provides=('cerebro')
 source=(
     'cerebro.desktop'
-    'git://github.com/cerebroapp/cerebro.git'
+    'git+https://github.com/cerebroapp/cerebro.git'
 )
 sha256sums=(
     '3f6cf397952372f1bdf144b61dc02c977a127b04d52166947173aadf94cf3274'
