@@ -1,6 +1,6 @@
 pkgbase = mcpkg
 	pkgdesc = Package manager for Minecraft resource packs, datapacks and crafting tweaks, wrapped around vanillatweaks.net
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/CRISPYricePC/mcpkg
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = mcpkg
 	depends = java-environment
 	provides = mcpkg
 	conflicts = mcpkg
-	source = https://github.com/CRISPYricePC/mcpkg/releases/download/2.3.0/mcpkg-2.3.0.jar
-	source = mcpkg::https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.3.0/mcpkg.sh
-	source = mcpkg-README.md::https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.3.0/README.md
-	sha256sums = 71dad8d68f7e264ea52aafec71d915a6a640c4aeef72fa95ba076a0b818ce55e
+	source = https://github.com/CRISPYricePC/mcpkg/releases/download/2.3.1/mcpkg-2.3.1.jar
+	source = mcpkg::https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.3.1/mcpkg.sh
+	source = mcpkg-README.md::https://raw.githubusercontent.com/CRISPYricePC/mcpkg/2.3.1/README.md
+	sha256sums = 9e8d22044d26ad7902b726a860b21cfcadef18de189279677e3dcc024f84f5ea
 	sha256sums = 6441858f0311f7bba190c870afb2a9df838f8099e0d9a4618d07a5724a18387f
 	sha256sums = c7f9239141e45649167907d755cae237057a3b55471fbd950650dc77ff3cb3fe
 
