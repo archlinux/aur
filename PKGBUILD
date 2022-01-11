@@ -4,7 +4,7 @@ pkgver=11.2.0.4528
 _pkgver_gui=11.2.1.4528
 _pkgverbuild=$(echo ${pkgver} | cut -d "." -f 4)
 _pkgver=$(echo ${pkgver} | cut -d "." -f 1-3)
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='Kaspersky Endpoint Security 11.2.0 for Linux'
 url='https://www.kaspersky.de/small-to-medium-business-security/endpoint-linux'
@@ -22,11 +22,13 @@ changelog=${pkgname}.changelog
 source=( "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/multilanguage-${pkgver}/3437313131347c44454c7c31/kesl_${_pkgver}-${_pkgverbuild}_amd64.deb"
          "https://products.s.kaspersky-labs.com/endpoints/keslinux10/${pkgver}/multilanguage-${_pkgver_gui}/3437373638347c44454c7c4e554c4c/kesl-gui_${_pkgver}-${_pkgverbuild}_amd64.deb"
          "${pkgname}.install"
-         "kesl.ini")
+         "kesl.ini"
+         "kesl.start.conf")
 sha256sums=('44aef3025d9c440a87effa684169057d4a50d31dca9cc1e2e1d91a2cd42f6160'
             'dc2c5c82cac25ba6ebf02220deb5c40fd2035bd24e74a62fb6d0bf3933e7db31'
-            'fb1a3921de63e89b399080a0a08face8eeac94a92d06d38e428e68ecabf00732'
-            '86203f1dcd663763bc9c8d51a98e510523189c7e78a7fb293183095b89bfa6cf')
+            '926d6136a8c455b5aab649f3be547ca1a82a4920e8467f209c91ae6ee797d08f'
+            '86203f1dcd663763bc9c8d51a98e510523189c7e78a7fb293183095b89bfa6cf'
+            '29efcd166bb0fc5baa5a85dc0f41c6c2e253f6b8fd3ee723862496364281cb4c')
 validpgpkeys=('6AFE173577C4CBD621DF217FD093435AA3ED2C4A')
 
 package_kesl() {
@@ -64,6 +66,10 @@ package_kesl() {
     for lic in $(find ${pkgdir}/var/opt/kaspersky/kesl/install/opt/kaspersky/kesl/doc/ -maxdepth 1 -mindepth 1 -type f |grep license);do
         install -Dm644 ${lic} "$pkgdir/usr/share/licenses/$pkgname/${lic/*\/}"
     done
+
+    # install startup config
+    cp kesl.start.conf ${pkgdir}/var/opt/kaspersky/kesl/pkgscripts/
+    sed -i "s/@PKGVER@/$pkgver/g" ${pkgdir}/var/opt/kaspersky/kesl/pkgscripts/kesl.start.conf
 }
 
 package_kesl-gui(){

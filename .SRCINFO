@@ -1,7 +1,7 @@
 pkgbase = kesl
 	pkgdesc = Kaspersky Endpoint Security 11.2.0 for Linux
 	pkgver = 11.2.0.4528
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.kaspersky.de/small-to-medium-business-security/endpoint-linux
 	install = kesl.install
 	changelog = kesl.changelog
@@ -19,11 +19,13 @@ pkgbase = kesl
 	source = https://products.s.kaspersky-labs.com/endpoints/keslinux10/11.2.0.4528/multilanguage-11.2.1.4528/3437373638347c44454c7c4e554c4c/kesl-gui_11.2.0-4528_amd64.deb
 	source = kesl.install
 	source = kesl.ini
+	source = kesl.start.conf
 	validpgpkeys = 6AFE173577C4CBD621DF217FD093435AA3ED2C4A
 	sha256sums = 44aef3025d9c440a87effa684169057d4a50d31dca9cc1e2e1d91a2cd42f6160
 	sha256sums = dc2c5c82cac25ba6ebf02220deb5c40fd2035bd24e74a62fb6d0bf3933e7db31
-	sha256sums = fb1a3921de63e89b399080a0a08face8eeac94a92d06d38e428e68ecabf00732
+	sha256sums = 926d6136a8c455b5aab649f3be547ca1a82a4920e8467f209c91ae6ee797d08f
 	sha256sums = 86203f1dcd663763bc9c8d51a98e510523189c7e78a7fb293183095b89bfa6cf
+	sha256sums = 29efcd166bb0fc5baa5a85dc0f41c6c2e253f6b8fd3ee723862496364281cb4c
 
 pkgname = kesl
 
