@@ -2,7 +2,7 @@
 
 pkgname=glitz
 pkgver=0.5.6
-pkgrel=7
+pkgrel=8
 pkgdesc='OpenGL image compositing library'
 arch=('x86_64')
 url='https://www.freedesktop.org/wiki/Software/glitz/'
@@ -15,7 +15,7 @@ sha256sums=('132adf06e48531f4c01b6ba5843881e2b584a170c5222353d03cbef736d4a471')
 build() {
   cd "$pkgname-$pkgver"
 
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr CFLAGS="-Wno-error"
   make
 }
 
