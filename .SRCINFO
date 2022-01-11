@@ -1,6 +1,6 @@
 pkgbase = prism-git
 	pkgdesc = An RTMP stream recaster / splitter
-	pkgver = r5.869794b
+	pkgver = r9.2b52a64
 	pkgrel = 1
 	url = https://github.com/muesli/prism
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = prism-git
 	makedepends = git
 	provides = prism
 	conflicts = prism
-	source = prism-git::git://github.com/muesli/prism.git
+	source = prism-git::git+https://github.com/muesli/prism.git
 	sha256sums = SKIP
 
 pkgname = prism-git
-
