@@ -1,7 +1,7 @@
 pkgbase = hgview
 	pkgdesc = Mercurial interactive Qt based history viewer
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.logilab.org/project/hgview
 	arch = any
 	license = GPL
@@ -12,7 +12,6 @@ pkgbase = hgview
 	depends = python-urwid
 	depends = python-pyinotify
 	depends = python-pygments
-	depends = python-pyqt5
 	depends = python-qscintilla-qt5
 	depends = python-docutils
 	source = http://download.logilab.org/pub/hgview/hgview-1.14.0.tar.gz
