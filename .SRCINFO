@@ -1,7 +1,7 @@
 pkgbase = cmus-git
 	pkgdesc = Small, fast and powerful console music player for Unix-like operating systems.
 	pkgver = v2.9.1.r25.g54d7213
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cmus.github.io/
 	arch = x86_64
 	arch = aarch64

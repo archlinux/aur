@@ -2,7 +2,7 @@
 
 pkgname=cmus-git
 pkgver=v2.9.1.r25.g54d7213
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, fast and powerful console music player for Unix-like operating systems."
 arch=('x86_64' 'aarch64')
 url="https://cmus.github.io/"
