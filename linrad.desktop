@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Linrad
+GenericName=Software defined radio application (SDR)
+Exec=linrad
+Icon=linrad
+Terminal=true
+Categories=Network;HamRadio;

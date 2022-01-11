@@ -1,19 +1,27 @@
 pkgbase = linrad-svn
-	pkgdesc = Software defined radio receiver for x11, latest code from sourceforge.net
-	pkgver = 988
+	pkgdesc = Software defined radio receiver for x11
+	pkgver = 05.01.r998
 	pkgrel = 1
-	url = http://www.sm5bsz.com/linuxdsp/linrad.htm
+	url = https://www.sm5bsz.com/linuxdsp/linrad.htm
+	arch = i686
 	arch = x86_64
-	license = custom
+	license = MIT
+	makedepends = subversion
 	makedepends = nasm
-	makedepends = autoconf
-	makedepends = svn
+	makedepends = icoutils
 	depends = portaudio
 	depends = libxext
 	depends = libusb-compat
+	optdepends = hamradio-menus: XDG menus for ham radio software
 	provides = linrad
-	source = svn+https://svn.code.sf.net/p/linrad/code
+	conflicts = linrad
+	source = linrad::svn+https://svn.code.sf.net/p/linrad/code/trunk
+	source = linrad.desktop
+	source = linrad-wrapper.sh
+	source = linrad-obey-cflags-and-ldflags.patch
 	sha512sums = SKIP
+	sha512sums = 7b4d462d422b15c7c9249544d0792cd9f9902ceb10708770b8594f7cfa226b8aca2617168bcfb88861d6db76e7d573ea86812c3ab20d1ae4c8a2e92ee832e3e7
+	sha512sums = 1c661e4bea550ae496af121fc1c658cccc1fbe15c4aecb783641064729d5593f501fb977dff310739c9e303d4869ddafb36df3290c242df139560e6cbd4c661a
+	sha512sums = 3c499b0acc036c9709474b707919452d4d8333217ae3890499ea3decb3849571395b95bd1d7492d2cc4ab10433e56d68768d2ad8679a178a6ad4cea90a974aee
 
 pkgname = linrad-svn
-
