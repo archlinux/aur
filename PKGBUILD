@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 #changelog="Initial release"
-source=("https://github.com/mattn/longcat.git")
+source=("longcat::https://github.com/mattn/longcat.git")
 md5sums=('SKIP')
 
 pkgver() {
