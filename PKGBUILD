@@ -1,8 +1,8 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
-pkgver=7.3.1
+pkgver=7.3.2
 _wmcname=wmcommons
-_wmcver=0.1.3
+_wmcver=0.1.4
 pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
@@ -28,8 +28,8 @@ options=()
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/jzbor/moonwm/tar.gz/refs/tags/$pkgver"
         "$_wmcname-$_wmcver.tar.gz::https://codeload.github.com/jzbor/wmcommons/tar.gz/refs/tags/$_wmcver")
 noextract=()
-sha256sums=('eff7016ebbe2ecc14cb82cc7ff9a892a75e06644a5f1dfafd4c19d149f9b3a47'
-    'a900a468bfe15f6cf10033ed889076f12b7f72cbc8ff9d7ab71544be1202fd67')
+sha256sums=('bffb6eddd092985f2c1687d97a2bd7f7baaafb4faef18acb2701bd235d2b8f4f'
+    '456ee1ab14f5f9cd5c1a35694ebf9a18a8bb4e2654bd0565810faaac352a74f0')
 validpgpkeys=()
 
 build() {
