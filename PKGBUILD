@@ -10,7 +10,7 @@ url="https://github.com/adamchainz/${_pkgname}"
 license=('ISC')
 depends=('flake8')
 source=("https://github.com/adamchainz/flake8-comprehensions/archive/$pkgver.tar.gz")
-md5sums=('795ac94157b2e68e857f7c2d2f7b461f')
+md5sums=('c5189bbae414cb08a20164af2895d1dd')
 
 build() {
     cd "${_pkgname}-${pkgver}"
