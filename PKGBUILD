@@ -3,7 +3,7 @@
 
 _npmname=foundation-cli
 pkgname=nodejs-foundation-cli
-pkgver=2.3.0
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="The command line installer for Foundation Sites, Emails, Apps."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('6288b1bbd60ac86ea3ba8b716b21f8e123ed9dfdc8bd7d03131cdf1e034535fd')
+sha256sums=('6fdcf8de64132e0cf79ea01e0d7a8348e4879fccc7780595388a84e5a46e61c5')
 
 package() {
     cd "$srcdir"
