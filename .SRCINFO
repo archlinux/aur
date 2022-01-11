@@ -1,7 +1,7 @@
 pkgbase = longcat
 	pkgdesc = Creates a loooonng cat in the terminal
 	pkgver = r117.62bfdec
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/mattn/longcat.git
 	arch = i686
 	arch = pentium4
@@ -14,7 +14,7 @@ pkgbase = longcat
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = longcat::https://github.com/mattn/longcat.git
+	source = longcat::git+https://github.com/mattn/longcat.git
 	md5sums = SKIP
 
 pkgname = longcat
