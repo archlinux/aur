@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-databricks-cli
-pkgver=0.16.0
+pkgver=0.16.2
 pkgrel=1
 pkgdesc='open source tool which provides an easy to use interface to the
 Databricks platform'
@@ -12,7 +12,7 @@ depends=('python' 'python-click' 'python-requests' 'python-tabulate' 'python-six
 optdepends=()
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/databricks/databricks-cli/archive/$pkgver.tar.gz")
-sha256sums=('ee2f4e8417c33b8362874f14994a43d6e6e702cbb5a7bc8e6df75fa01738632d')
+sha256sums=('2a27fc4fe019275c7fe4c9438c3a33068413f2769b3dd175c239cbe61edb80a3')
 
 _pkgname=databricks-cli
 
