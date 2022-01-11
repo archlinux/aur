@@ -3,7 +3,7 @@
 pkgname=libxft-bgra
 pkgver=2.3.4
 pkgrel=1
-pkgdesc="X FreeType library with support for BGRA glyphs and scaling"
+pkgdesc="X FreeType library with support for BGRA glyphs and scaling."
 arch=('x86_64')
 url="https://xorg.freedesktop.org"
 license=('custom')
