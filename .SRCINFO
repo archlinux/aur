@@ -21,11 +21,11 @@ pkgbase = psi-plus-plugins-git
 	provides = psi-plus-plugins-qt5-git=1.1.345.ga0acd31
 	conflicts = psi-plus-plugins
 	conflicts = psi-plus-plugins-qt5-git
-	source = git://github.com/psi-im/plugins
-	source = git://github.com/psi-im/psi.git
-	source = psi-plus::git://github.com/psi-plus/main.git
-	source = git://github.com/psi-im/iris.git
-	source = git://github.com/psi-im/libpsi.git
+	source = git+https://github.com/psi-im/plugins
+	source = git+https://github.com/psi-im/psi.git
+	source = psi-plus::git+https://github.com/psi-plus/main.git
+	source = git+https://github.com/psi-im/iris.git
+	source = git+https://github.com/psi-im/libpsi.git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -33,4 +33,3 @@ pkgbase = psi-plus-plugins-git
 	md5sums = SKIP
 
 pkgname = psi-plus-plugins-git
-

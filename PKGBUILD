@@ -21,11 +21,11 @@ makedepends=('libotr' 'tidy' 'git' 'cmake' 'libsignal-protocol-c')
 optdepends=('libotr: for OTR plugin'
             'tidy: for OTR plugin'
             'libsignal-protocol-c: for omemoplugin')
-source=('git://github.com/psi-im/plugins'
-        'git://github.com/psi-im/psi.git'
-        'psi-plus::git://github.com/psi-plus/main.git'
-        'git://github.com/psi-im/iris.git'
-        'git://github.com/psi-im/libpsi.git')
+source=('git+https://github.com/psi-im/plugins'
+        'git+https://github.com/psi-im/psi.git'
+        'psi-plus::git+https://github.com/psi-plus/main.git'
+        'git+https://github.com/psi-im/iris.git'
+        'git+https://github.com/psi-im/libpsi.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
