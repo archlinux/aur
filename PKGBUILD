@@ -5,33 +5,35 @@
 
 _name=jack2
 pkgbase=jack2-git
-pkgname=('jack2-git' 'jack2-dbus-git')
+pkgname=(jack2-git jack2-dbus-git)
 pkgdesc="The JACK low-latency audio server"
-pkgver=1.9.18.r0.g5041ab0f
+pkgver=1.9.17.r85.g0daa887b
 pkgrel=1
-epoch=1
-arch=('x86_64')
+epoch=2
+arch=(x86_64)
 url="http://jackaudio.org/"
-license=('GPL2' 'LGPL2.1')
-groups=('pro-audio')
-makedepends=('alsa-lib' 'celt' 'dbus' 'expat' 'git' 'libffado' 'libsamplerate'
-'libsndfile' 'readline' 'systemd' 'waf' 'zita-alsa-pcmi' 'zita-resampler')
-depends=('db' 'expat' 'opus')
-source=("${pkgbase}::git+https://github.com/jackaudio/${_name}#branch=master")
+license=(GPL2 LGPL2.1)
+groups=(pro-audio)
+makedepends=(alsa-lib dbus expat git libffado libsamplerate opus systemd waf)
+source=("${pkgbase}::git+https://github.com/jackaudio/${_name}#branch=develop")
 md5sums=('SKIP')
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
 
 prepare() {
   cd "${pkgbase}"
-  # copying relevant custom waf scripts and loading them specifically using
-  # wscript
+  # remove custom waflib, as we are using system provided waf
   (
     touch __init__.py
-    mkdir -vp tools
-    cp -v waflib/extras/xcode*.py tools
     rm -rv waflib
-    sed -e "s/load('xcode'/load('xcode', tooldir='tools'/g" \
-        -e "s/load('xcode6'/load('xcode6', tooldir='tools'/g" \
-        -i wscript
   )
 }
 
@@ -43,58 +45,50 @@ pkgver() {
 
 build() {
   cd "${pkgbase}"
+  export LINKFLAGS="$LDFLAGS"
   export PYTHONPATH="${PWD}:${PYTHONPATH}"
   waf configure --prefix=/usr \
                 --autostart=none \
                 --htmldir="/usr/share/doc/${pkgbase}/" \
                 --systemd-unit \
                 --classic \
+                --example-tools=no \
                 --dbus
   waf build
 }
 
 package_jack2-git() {
-  depends=('db' 'gcc-libs' 'glibc' 'opus' 'libasound.so' 'libcelt0.so'
-  'libdbus-1.so' 'libreadline.so' 'libsamplerate.so' 'libsndfile.so'
-  'libsystemd.so')
+  depends=(db gcc-libs glibc opus libasound.so libdbus-1.so libsamplerate.so
+  libsystemd.so)
   optdepends=('a2jmidid: for ALSA MIDI to JACK MIDI bridging'
               'libffado: for firewire support using FFADO'
+              'jack-example-tools: for official JACK example-clients and tools'
               'jack2-dbus: for dbus integration'
               'realtime-privileges: for realtime privileges'
               'zita-alsa-pcmi: for using multiple ALSA devices'
               'zita-resampler: for using multiple ALSA devices')
-  provides=('jack' "${_name}" 'libjack.so' 'libjacknet.so' 'libjackserver.so'
+  conflicts=(jack "${_name}")
+  provides=(jack "${_name}" libjack.so libjacknet.so libjackserver.so
             "${_name}=${pkgver//.r*/}")
-  conflicts=('jack' "${_name}")
 
   cd "${pkgbase}"
   export PYTHONPATH="${PWD}:${PYTHONPATH}"
   waf install --destdir="${pkgdir}"
-  rm -rfv "${pkgdir}/usr/bin/jack"{dbus,_control} "${pkgdir}/usr/share/dbus-1/"
+
+  (
+    cd "$pkgdir"
+    _pick jack2-dbus usr/bin/jack{dbus,_control}
+    _pick jack2-dbus usr/share/dbus-1/
+  )
 }
 
 package_jack2-dbus-git() {
-  local _names=( 'alias' 'bufsize' 'connect' 'cpu' 'cpu_load' 'disconnect'
-  'evmon' 'freewheel' 'iodelay' 'latent_client' 'load' 'lsp' 'metro'
-  'midi_dump' 'midi_latency_test' 'midiseq' 'midisine' 'monitor_client'
-  'multiple_metro' 'net_master' 'net_slave' 'netsource' 'property' 'rec'
-  'samplerate' 'server_control' 'session_notify' 'showtime' 'simdtests'
-  'simple_client' 'simple_session_client' 'test' 'thru' 'transport' 'unload'
-  'wait' 'zombie')
-
   pkgdesc+=" (dbus integration)"
-  depends=('dbus-python' 'gcc-libs' 'glibc' 'jack2' 'libdbus-1.so' 'libexpat.so'
-  'libjackserver.so')
-  conflicts=('jack2-dbus')
-  provides=('jack2-dbus')
+  depends=(dbus-python gcc-libs glibc jack2-git libdbus-1.so libexpat.so
+  libjackserver.so)
+  conflicts=(jack2-dbus)
+  provides=(jack2-dbus)
 
-  cd "${pkgbase}"
-  export PYTHONPATH="${PWD}:${PYTHONPATH}"
-  waf install --destdir="${pkgdir}"
-  rm -rfv "${pkgdir}/etc/" "${pkgdir}/usr/include/" "${pkgdir}/usr/lib/" \
-    "${pkgdir}/usr/share/man/" "${pkgdir}/usr/bin/alsa"* "${pkgdir}/usr/bin/jackd"
-  for _name in "${_names[@]}"; do
-    rm -v "${pkgdir}/usr/bin/jack_${_name}"
-  done
+  mv -v jack2-dbus/* "$pkgdir"
 }
 # vim:set ts=2 sw=2 et:
