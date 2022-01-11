@@ -1,7 +1,7 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=matrix-synapse-imap
 pkgver=0.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="IMAP auth provider for Synapse"
 arch=('any')
 url="https://github.com/bit/matrix-synapse-imap"
