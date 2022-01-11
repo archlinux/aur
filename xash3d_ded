@@ -1,0 +1,11 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH+="/usr/local/lib/xash3d_ded/"
+export XASH3D_BASEDIR="$HOME/.xash3d"
+
+if [ ! -d "$XASH3D_BASEDIR" ]; then
+    echo "$XASH3D_BASEDIR not found. Create a new one and put gamefiles into it (e.g. $XASH3D_BASEDIR/valve/)"
+    exit 1
+fi
+
+/usr/local/lib/xash3d_ded/xash "$@"
