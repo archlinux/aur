@@ -4,7 +4,7 @@
 # Contributor: orbisvicis <gmail.com>
 
 pkgname=xmonad-contrib-git
-pkgver=v0.17.0.r44.g3d71669b
+pkgver=v0.17.0.r89.g41ca7998
 pkgrel=1
 pkgdesc="Add-ons for xmonad"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=('ghc'
 makedepends=('git')
 conflicts=('xmonad-contrib')
 provides=('xmonad-contrib')
-source=('git://github.com/xmonad/xmonad-contrib')
+source=('git+https://github.com/xmonad/xmonad-contrib')
 md5sums=('SKIP')
 
 pkgver() {
