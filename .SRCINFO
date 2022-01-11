@@ -1,7 +1,7 @@
 pkgbase = system-monitoring-center
 	pkgdesc = System performance and usage monitoring tool
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	arch = any
 	license = GPL3
@@ -9,7 +9,6 @@ pkgbase = system-monitoring-center
 	depends = bash
 	depends = dmidecode
 	depends = gtk3
-	depends = hwdata
 	depends = libwnck3
 	depends = mesa-utils
 	depends = python-cairo
