@@ -1,14 +1,14 @@
-# Maintainer: Johnpoint <me at lvcshu.com>
-# Contributor: Shiroko <hhx.xxm at gmail.com>
+# Maintainer: Yongchun Jiang <me at JSpringYC@gmail.com>
 pkgname=clash-for-windows-chinese
 pkgver=0.19.5
 pkgrel=0
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
-logo_url="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png"
-parch=$(echo ${arch} | sed "s/x86_64/x64/")
+_logo_url="https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png"
+_parch=$(echo ${arch} | sed "s/x86_64/x64/")
 install=clash-for-windows.install
+license=('custom')
 
 depends=('libxss' 'gtk3' 'p7zip')
 
@@ -18,9 +18,9 @@ optdepends=(
 )
 
 source=(
-    "${pkgname}-${pkgver}-${arch}-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-${parch}-linux.tar.gz"
+    "${pkgname}-${pkgver}-${arch}-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-${_parch}-linux.tar.gz"
     "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V${pkgver}_CN/app.7z"
-    "clash.png::${logo_url}"
+    "clash.png::${_logo_url}"
     "clash-for-windows-chinese.desktop"
     "cfw"
 )
@@ -38,7 +38,7 @@ build() {
 }
 
 package() {
-    cd "Clash for Windows-${pkgver}-${parch}-linux"
+    cd "Clash for Windows-${pkgver}-${_parch}-linux"
     echo "packaging resource files as 644"
     find . -type f -not \( -name "cfw" -or -name "clash-linux" -or -name "clash-core-service" -or -name "chrome-sandbox" -or -name "*.sh" \) \
         -exec install -Dm 644 {} "${pkgdir}/opt/${pkgname}"/{} \;

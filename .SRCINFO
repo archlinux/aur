@@ -5,6 +5,7 @@ pkgbase = clash-for-windows-chinese
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows.install
 	arch = x86_64
+	license = custom
 	depends = libxss
 	depends = gtk3
 	depends = p7zip
