@@ -1,7 +1,7 @@
 pkgbase = python-numpy-openblas
 	pkgdesc = Scientific tools for Python - built with openblas
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://numpy.org/
 	arch = i686
 	arch = x86_64

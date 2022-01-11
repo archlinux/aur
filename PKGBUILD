@@ -6,7 +6,7 @@
 
 pkgname="python-numpy-openblas"
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
@@ -30,7 +30,6 @@ build() {
   export Atlas=None
   export LDFLAGS="$LDFLAGS -shared"
   
-
   cd numpy-$pkgver
 
   NPY_BLAS_ORDER=openblas NPY_LAPACK_ORDER=openblas python setup.py config_fc --fcompiler=gnu95 build
@@ -40,7 +39,8 @@ check() {
   cd numpy-$pkgver
   python setup.py install --root="$PWD/tmp_install" --optimize=1
   cd "$PWD/tmp_install"
-  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/python3.10/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
+  local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+  PATH="$PWD/usr/bin:$PATH" PYTHONPATH="$PWD/usr/lib/${python_version}/site-packages:$PYTHONPATH" python -c 'import numpy; numpy.test()'
 }
 
 package() {
