@@ -1,14 +1,12 @@
 pkgbase = mongoose
 	pkgdesc = Easy to use, powerful, embeddable web server
-	pkgver = 7.1
+	pkgver = 7.5
 	pkgrel = 1
 	url = https://github.com/cesanta/mongoose
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL2
 	depends = openssl
-	source = mongoose-7.1.tar.gz::https://github.com/cesanta/mongoose/archive/7.1.tar.gz
-	sha256sums = f099bf7223c527e1a0b7fc8888136a3992e8b5c7123839639213b9483bb4f95b
+	source = mongoose-7.5.tar.gz::https://github.com/cesanta/mongoose/archive/7.5.tar.gz
+	sha256sums = 834c482fbd31dee96479c256e5ea9ac0b7b5357c29c4668581090df168dfbb5f
 
 pkgname = mongoose
-
