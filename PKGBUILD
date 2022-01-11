@@ -4,7 +4,7 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-dynamic-buffering
-pkgver=41.2
+pkgver=41.3
 pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -13,21 +13,21 @@ license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile)
+         xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols)
+             wayland-protocols sysprof)
 checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
 provides=(mutter libmutter-9.so)
 conflicts=(mutter)
 groups=(gnome)
-_commit=664ac09eecfd365b5258f53d2c9e6c8410a37919  # tags/41.2^0
+_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'backports.patch'
         'mr1441.patch')
 
 sha256sums=('SKIP'
             '650e2d88bad9226be7cde62974b3a39a99d63156d0fe61df6bc54887481a1b51'
-            '592c03f4a492d39d760b174e487b3b2a58e9caef9b9ef886f5aa09abb94b69d3')
+            'cf99896763558258f489ff0e9a1e8001f716d63b06366f740e044cc72a71d3e7')
 
 pkgver() {
   cd $pkgname
@@ -47,7 +47,6 @@ build() {
     -D egl_device=true \
     -D wayland_eglstream=true \
     -D installed_tests=false \
-    -D profiler=false \
     -D tests=false
   meson compile -C build
 }
@@ -69,7 +68,7 @@ _check_internal() (
 )
 
 _check_disabled() {
-  dbus-run-session xvfb-run -s '-nolisten local' \
+  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
     bash -c "$(declare -f _check_internal); _check_internal"
 }
 

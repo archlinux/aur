@@ -1372,11 +1372,10 @@ index 00b2d9f89..eb1e7412a 100644
    kms_update = meta_kms_get_pending_update (kms, kms_device);
    if (!kms_update)
      {
-@@ -2095,8 +2094,6 @@ meta_onscreen_native_dispose (GObject *object)
-       /* flip state takes a reference on the onscreen so there should
-        * never be outstanding flips when we reach here. */
-       g_warn_if_fail (onscreen_native->gbm.next_fb == NULL);
--
+@@ -2096,7 +2094,6 @@ meta_onscreen_native_dispose (GObject *object)
+     {
+     case META_RENDERER_NATIVE_MODE_GBM:
+       g_clear_object (&onscreen_native->gbm.next_fb);
 -      free_current_bo (onscreen);
        break;
      case META_RENDERER_NATIVE_MODE_SURFACELESS:
