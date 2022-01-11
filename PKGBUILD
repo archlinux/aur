@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.5.r110.g5b91b9e
+pkgver=22.02.122.r0.g27764b2
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -17,7 +17,7 @@ optdepends=('ttf-dejavu: For true type font support'
         'xf86-video-fbdev: Support special graphic cards on early startup'
         'cantarell-fonts: True Type support for BGRT theme')
 provides=('plymouth')
-conflicts=('plymouth' 'plymouth-legacy' 'plymouth-nosystemd')
+conflicts=('plymouth')
 backup=('etc/plymouth/plymouthd.conf')
 
 options=('!libtool' '!emptydirs')
@@ -30,8 +30,6 @@ source=("git+https://gitlab.freedesktop.org/plymouth/plymouth.git"
        'lightdm-plymouth.service'
        'sddm-plymouth.service'
        'plymouth-deactivate.service' # needed for sddm
-#       'plymouth-start.service.in.patch'
-#       'plymouth-start.path'
        'plymouth.initcpio_hook'
        'plymouth.initcpio_install'
        'sd-plymouth.initcpio_install'
@@ -64,8 +62,6 @@ prepare() {
 	cd plymouth
 	patch -p1 -i $srcdir/plymouth-update-initrd.patch
 	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
-# Does not actually seem needed???	
-#	patch -p1 -i $srcdir/plymouth-start.service.in.patch
 	patch -p1 -i $srcdir/plymouthd.conf.patch
 }
 
@@ -113,11 +109,7 @@ package() {
 	for i in {sddm,lxdm,lightdm}-plymouth.service; do
 		install -Dm644 "$srcdir/$i" "$pkgdir/usr/lib/systemd/system/$i"
 	done
-	
-# soft-linking gdm-plymouth is deprecated and no longer necessary	
-#	ln -s "/usr/lib/systemd/system/gdm.service" "$pkgdir/usr/lib/systemd/system/gdm-plymouth.service"
 
 	install -Dm644 "$srcdir/plymouth-deactivate.service" 	"$pkgdir/usr/lib/systemd/system/plymouth-deactivate.service"
-#	install -Dm644 "$srcdir/plymouth-start.path" 	"$pkgdir/usr/lib/systemd/system/plymouth-start.path"
 	install -Dm644 "$pkgdir/usr/share/plymouth/plymouthd.defaults" "$pkgdir/etc/plymouth/plymouthd.conf"
 }

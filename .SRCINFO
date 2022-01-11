@@ -1,6 +1,6 @@
 pkgbase = plymouth-git
 	pkgdesc = A graphical boot splash screen with kernel mode-setting support (Development version)
-	pkgver = 0.9.5.r110.g5b91b9e
+	pkgver = 22.02.122.r0.g27764b2
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/Plymouth/
 	arch = i686
@@ -16,8 +16,6 @@ pkgbase = plymouth-git
 	optdepends = cantarell-fonts: True Type support for BGRT theme
 	provides = plymouth
 	conflicts = plymouth
-	conflicts = plymouth-legacy
-	conflicts = plymouth-nosystemd
 	options = !libtool
 	options = !emptydirs
 	backup = etc/plymouth/plymouthd.conf
