@@ -2,7 +2,7 @@
 
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
-pkgver=495.46
+pkgver=510.39.01
 pkgrel=1
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
@@ -43,7 +43,7 @@ sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
   "4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499"
   "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
-  "859548fa81478acb994b40434fc85824976b1f83bc15846290898854db84ea3c6550586a1d7e89ff3afa248310d2bcf4d2d52d5d8e91cf74e3f7e4108a7002ad"
+  "0c7ec6dd585d339f44ff10475abd614c9487bf399aed8bf1546cd95bbcbe3b2938cd52cea402d46e439252fc5fe0e03908f9821fa66f475ffe5573b266047a14"
   "SKIP"
 )
 
@@ -214,6 +214,9 @@ package() {
   install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
 
   install -Dm644 "${srcdir}/nvidia.rules" "$pkgdir"/usr/lib/udev/rules.d/60-nvidia.rules
+
+  echo "blacklist nouveau" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+  echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
   create_links
 }
