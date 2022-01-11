@@ -1,10 +1,11 @@
-# Maintainer: Peter blackman <peter at pblackman dot plus dot com>
+# Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 # Make Arch package using OBS binaries
-# 22-Oct-2021 
+# 11-Jan-2022 
 # See http://www.c-evo.org/
+# https://build.opensuse.org/package/show/home:PeterBBB/c-evo
 
-pkgname=c-evo-bin
-pkgver=400.5.2
+pkgname=c-evo-nh-bin
+pkgver=1.3.0.418.1
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
@@ -12,13 +13,13 @@ url="https://app.zdechov.net/c-evo"
 license=('GPL2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
-conflicts=('c-evo')
-source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_400+dfsg5-2_all.deb"
-       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_400+dfsg5-2_amd64.deb"
-        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_400+dfsg5-2_amd64.deb")
-sha256sums=('fddd09fac3da26e3e4e94dab7f8c62e758c2814e4c8ab5cb1a5c11045c38ba4d'
-            '727cbc06ae106d4ae568ffa0f73950bc76a9c051b7d52a026ecfceab2293c00d'
-            '0069fcb037df9fcc940d0f5a813909b2519160e7b7a969db725c4a6e1b06e7f1')
+conflicts=('c-evo' 'c-evo-nh' 'c-evo-bin')
+source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_1.3.0.418+dfsg-1_all.deb"
+       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_1.3.0.418+dfsg-1_amd64.deb"
+        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_1.3.0.418+dfsg-1_amd64.deb")
+sha256sums=('f164f5370b334fc5afd6cf73a665db61697d80cc80c64edadb9acf8cde637fdb'
+            'f9d884b9cb6e6dc6a0af378d6aa2d6fc4a20210906f58b3fda7387e9f375e767'
+            '00f604183f9eb3e8a5172287783365220fa5b8cba31a3b3f46bdffe54483bb30')
 
 noextract=("$pkgname-$pkgver.data.deb"
 	  "$pkgname-$pkgver.stdai.deb"
