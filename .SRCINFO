@@ -1,15 +1,15 @@
 pkgbase = jjazzlab-x-bin
 	pkgdesc = A Midi-based framework dedicated to backing tracks generation
-	pkgver = 3.0.1
+	pkgver = 3.0.2a
 	pkgrel = 1
 	url = https://www.jjazzlab.com/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = java-environment>=8
-	source = https://www.jjazzlab.com/pkg/JJazzLab-3.0.1-Linux.zip
+	source = https://www.jjazzlab.com/pkg/JJazzLab-3.0.2a-Linux.zip
 	source = jjazzlab-x.desktop
-	sha256sums = d135dd7489ebe97ae79b7b431e26e5c756b6a85b8237827578c5d33814bc72bf
+	sha256sums = fcbc75fd21472e8c6b9e3aa2e7cdaea0d7d408cd503e13f5bc6da7b50e43f0a7
 	sha256sums = ca15408fd0f11505def63f04359bc3c9745c0077a9f3b5953edc31391ee7a882
 
 pkgname = jjazzlab-x-bin
