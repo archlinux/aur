@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Linrad
-Comment=Software defined radio application (SDR)
+GenericName=Software defined radio application (SDR)
 Exec=linrad
 Icon=linrad
 Terminal=true
