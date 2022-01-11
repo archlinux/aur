@@ -27,35 +27,9 @@ msg_modules() {
 }
 
 msg_faq() {
-	echo -e "In the case that you still have issues after following these instructions, the FAQ at ${GREEN}https://github.com/InfinityGhost/OpenTabletDriver/wiki/Linux-FAQ${RESET} may help."
+	echo -e "In the case that you still have issues after following these instructions, the FAQ at ${GREEN}https://opentabletdriver.net/Wiki/FAQ/Linux${RESET} may help."
 	echo
 }
-
-
-msg_upgrade_starting() {
-	if [ $(vercmp $1 'v0.4.2.r282.g4372321-2') -gt -1 ]
-	then
-		return 0
-	fi
-
-	echo "The method of starting the daemon has changed since your previous version of OpenTabletDriver."
-	msg_starting
-}
-
-msg_upgrade_systemd() {
-	if [ $(vercmp $1 'v0.5.0.r63.g309e422-2') -gt -1 ]
-	then
-		return 0
-	fi
-
-	echo "OpenTabletDriver's systemd user service has been updated since your previous version"
-	echo "To make systemd aware of this and apply changes immediately, please run the following commands:"
-	echo -e "${GREEN}systemctl --user daemon-reload"
-	echo    "systemctl --user reenable opentabletdriver.service"
-	echo -e "systemctl --user restart opentabletdriver.service${RESET}"
-	echo
-}
-
 
 post_install() {
 	echo
@@ -66,9 +40,4 @@ post_install() {
 	msg_starting
 	msg_modules
 	msg_faq
-}
-
-post_upgrade() {
-	msg_upgrade_starting $2
-	msg_upgrade_systemd $2
 }

@@ -5,15 +5,15 @@ pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=v0.5.3.1.r908.g2850f105
+pkgver=v0.6.0.r0.gb8b346c4
 pkgrel=2
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
 license=('LGPL3')
-depends=('dotnet-runtime>=5.0' 'dotnet-host>=5.0' 'gtk3' 'libevdev')
+depends=('dotnet-runtime>=6.0' 'dotnet-host>=6.0' 'gtk3' 'libevdev')
 optdepends=('libxrandr: x11 display querying support' 'libx11')
-makedepends=('git' 'dotnet-sdk>=5.0')
+makedepends=('git' 'dotnet-sdk>=6.0')
 provides=("opentabletdriver")
 conflicts=("opentabletdriver")
 install="notes.install"
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'f1f88e4a57b4caf503192a773fdbb88531b51499bfb9b350421d7e92795736fd')
+            '7deefb285b6a39596d0b14973fd6f1eccf819bc2fa7d299f7dd28437dcbaab77')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -42,15 +42,13 @@ build() {
 
     cd "$srcdir/$_pkgname"
     PREFIX=$(git describe --long --tags | sed 's/-.*//;s/v//')
-    SUFFIX=$(git describe --long --tags | sed 's/^[^-]*-//;s/\([^-]*-g\)/r\1/;s/-/./g')
 
     if check_option "strip" y; then
         EXTRA_OPTIONS="/p:DebugType=None /p:DebugSymbols=false"
     fi
 
     ./build.sh linux-x64 \
-        --version-suffix "$SUFFIX"                  \
-        /p:VersionPrefix="$PREFIX"                  \
+        /p:VersionPrefix="$PREFIX" \
         $EXTRA_OPTIONS
 
     ./generate-rules.sh
@@ -70,8 +68,8 @@ package() {
 
     sed -i "s/OTD_VERSION/$pkgver/" "$_pkgname.desktop"
 
-    install -Dm 644 -o root "$srcdir/$_pkgname/bin/99-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
-    install -Dm 644 -o root "$srcdir/$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
+    install -Dm 644 -o root "$_pkgname/bin/99-$_lpkgname.rules" -t "$pkgdir/usr/lib/udev/rules.d"
+    install -Dm 644 -o root "$_pkgname/$_pkgname.UX/Assets/$_spkgname.png" -t "$pkgdir/usr/share/pixmaps"
 
     install -Dm 755 -o root "$_spkgname" -t "$pkgdir/usr/bin"
     install -Dm 755 -o root "$_spkgname-gui" -t "$pkgdir/usr/bin"
