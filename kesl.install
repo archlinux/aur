@@ -149,6 +149,7 @@ post_install(){
 
     kesl-control -L --query
     kesl_importconf
+    kesl_exportconf
     kesl_updatedb
 
     remove_tmp "$KTMP"
@@ -209,5 +210,6 @@ pre_remove(){
 post_remove(){
     #echo $FUNCNAME
     rm -rf /etc/opt/kaspersky/ /opt/kaspersky/ /usr/share/licenses/kesl /var/opt/kaspersky
+    rm /etc/kesl/*.conf
 }
 
