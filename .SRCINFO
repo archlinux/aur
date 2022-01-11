@@ -1,12 +1,12 @@
 pkgbase = cras
 	pkgdesc = The Anti-Procrastination Tool
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~arivigo/cras
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = sline
+	depends = sline
 	conflicts = cras-git
 	source = cras-2.1.2.tar.gz::https://git.sr.ht/~arivigo/cras/archive/2.1.2.tar.gz
 	sha256sums = 3e1e18c9ca96f02b7271a6134c87e22a208a1136ae7d10856d46e6322cb9f5a1
