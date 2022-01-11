@@ -1,13 +1,13 @@
 pkgname=nvidia-vaapi-driver-git
 _pkgname=nvidia-vaapi-driver
-pkgver=0.0.1.r16.gfe068ca
+pkgver=0.0.1.r41.g6c51241
 pkgrel=1
 pkgdesc="A VA-API implemention using NVIDIA's NVDEC"
 arch=('x86_64')
 url="https://github.com/elFarto/nvidia-vaapi-driver"
 license=('MIT')
 depends=('nvidia-utils' 'gst-plugins-bad-libs')
-makedepends=('meson' 'cuda' 'git' 'gst-plugins-bad')
+makedepends=('meson' 'cuda' 'git' 'gst-plugins-bad' 'ffnvcodec-headers-git')
 provides=('nvidia-vaapi-driver')
 conflicts=('nvidia-vaapi-driver')
 source=("${_pkgname}::git+$url.git")
