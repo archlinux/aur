@@ -8,7 +8,7 @@
 
 pkgbase=handbrake-full
 pkgname=(handbrake-full handbrake-full-cli)
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Multithreaded video transcoder. Enabled: x265, nvenc, fdk-aac, qsv, vce, numa, hardened"
 arch=(i686 x86_64)
@@ -21,14 +21,14 @@ source=("${pkgbase%-full}::git+https://github.com/HandBrake/HandBrake.git#tag=${
         #'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/ffmpeg-4.4.1.tar.bz2'
         'https://ffmpeg.org/releases/ffmpeg-4.4.1.tar.bz2'
         'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libbluray-1.3.0.tar.bz2'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdnav-6.1.1.tar.bz2'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdread-6.1.1.tar.bz2'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libvpx-1.7.0.tar.gz'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/mfx_dispatch-1.35.tar.gz'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/nv-codec-headers-11.0.10.1.tar.gz'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/oneVPL-2021.6.0.tar.gz'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265_3.5.tar.gz'
-	    'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.3.tar.gz')
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdnav-6.1.1.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libdvdread-6.1.1.tar.bz2'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/libvpx-1.7.0.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/mfx_dispatch-1.35.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/nv-codec-headers-11.0.10.1.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/oneVPL-2021.6.0.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/x265_3.5.tar.gz'
+        'https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/zimg-3.0.3.tar.gz')
 _commondeps=(libxml2 libass libvorbis opus speex libtheora lame
              libx264.so jansson libvpx libva numactl)
 _guideps=(gst-plugins-base gtk3 librsvg libgudev)
