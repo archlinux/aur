@@ -2,31 +2,22 @@
 # Contributor: Gionn <me[at]gionn[dot]net>
 
 pkgname=upnp-router-control
-pkgver=0.2
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="UPnP Router Control allow to see some params of the router like the download speed and control port forwarding trough UPnP protocol."
 url="https://launchpad.net/upnp-router-control"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('gtk2' 'gupnp' 'curl')
+depends=('gtk3' 'gupnp')
 makedepends=('intltool')
 source=("http://launchpad.net/upnp-router-control/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('60bfd58c56ad2e81144416b718e7c2f5')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac
-  sed -i 's/AM_PROG_CC_STDC/AC_PROG_CC/g' configure.ac
-
-  ./autogen.sh
-}
+md5sums=('17028c2681a571b0998e2d81b12f2488')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr
-  make CFLAGS="$CFLAGS -lm -lgssdp-1.0"
+  make
 }
 
 package() {
