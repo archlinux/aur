@@ -3,7 +3,7 @@
 _base=matplotx
 pkgname=python-${_base}
 pkgdesc="Useful styles and extensions for Matplotlib"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
@@ -11,10 +11,10 @@ license=(MIT)
 depends=(python-matplotlib)
 makedepends=(python-setuptools)
 # checkdepends=(python-networkx python-pytest-codeblocks)
-optdepends=('python-networkx: for creation of graphs')
-# TODO: Reminder for 0.3.1 'python-pypng: for iterator support'
+optdepends=('python-networkx: for creation of graphs'
+  'python-pypng: for iterator support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('c69cdf18668c30c25db859bb94ee5032f73f1d7a72c1f601fc8f735075bb9ad2169f1722f81fd23a4cc0492ca1098c8f9119447100f5b3e12fc40a51bfcd3686')
+sha512sums=('4e4532dbf4d876c820e45b5cf45b61538e02c50b4f5500dbb91527c872730dc94f28d99750e7b6b6a0392f7447c102be1ddfea6548036d4c76377ff9b00f0dd4')
 
 build() {
   cd "${_base}-${pkgver}"
