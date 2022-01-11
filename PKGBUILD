@@ -2,11 +2,12 @@
 
 pkgname=tetrio-desktop
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TETR.IO desktop client'
 arch=('x86_64')
 license=('custom')
 url='https://tetr.io/'
+depends=('libxss')
 source=("$pkgname-$pkgver::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.deb"
         LICENSE) # https://tetr.io/about/terms/
 sha256sums=('ae07110f88692e1485f7ef1d3ab5eff95774746631b17833e28cc09ba1a38bda'

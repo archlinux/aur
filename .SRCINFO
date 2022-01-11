@@ -1,14 +1,14 @@
 pkgbase = tetrio-desktop
 	pkgdesc = TETR.IO desktop client
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tetr.io/
 	arch = x86_64
 	license = custom
+	depends = libxss
 	source = tetrio-desktop-8.0.0::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.deb
 	source = LICENSE
 	sha256sums = ae07110f88692e1485f7ef1d3ab5eff95774746631b17833e28cc09ba1a38bda
 	sha256sums = 5e721783706e2018878ca127ec6ed5d6a1298ee9cc6a853329e25fafe45265f9
 
 pkgname = tetrio-desktop
-
