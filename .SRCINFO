@@ -13,8 +13,7 @@ pkgbase = psi-plus-l10n-git
 	conflicts = psi-plus-l10n-qt5-git
 	options = !strip
 	options = !zipman
-	source = git://github.com/psi-plus/psi-plus-l10n.git
+	source = git+https://github.com/psi-plus/psi-plus-l10n.git
 	md5sums = SKIP
 
 pkgname = psi-plus-l10n-git
-
