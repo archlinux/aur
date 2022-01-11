@@ -1,7 +1,7 @@
 pkgbase = zrythm
 	pkgdesc = a highly automated and intuitive digital audio workstation
 	pkgver = 1.0.0.alpha.27.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zrythm.org
 	arch = x86_64
 	arch = i686
@@ -29,6 +29,7 @@ pkgbase = zrythm
 	depends = sratom
 	depends = serd
 	depends = portaudio
+	depends = breeze-icons
 	conflicts = zrythm-git
 	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.27.0.3.tar.xz
 	source = https://www.zrythm.org/releases/zrythm-1.0.0-alpha.27.0.3.tar.xz.asc

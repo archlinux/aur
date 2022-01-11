@@ -1,14 +1,15 @@
-# Maintainer: Alexandros Theodotou <alex at zrythm dot org>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
 _pkgver=1.0.0-alpha.27.0.3
 pkgver=1.0.0.alpha.27.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
-depends=('gtk4' 'graphviz' 'carla' 'fluidsynth' 'vamp-plugin-sdk' 'guile' 'libaudec' 'xxhash' 'libcyaml' 'libadwaita' 'reproc' 'libbacktrace' 'rubberband' 'gtksourceview5' 'fftw' 'sratom' 'serd' 'portaudio')
+depends=('gtk4' 'graphviz' 'carla' 'fluidsynth' 'vamp-plugin-sdk' 'guile' 'libaudec' 'xxhash' 'libcyaml' 'libadwaita' 'reproc' 'libbacktrace' 'rubberband' 'gtksourceview5' 'fftw' 'sratom' 'serd' 'portaudio' 'breeze-icons')
 makedepends=('meson' 'cmake' 'guile' 'ruby-sass' 'help2man')
 conflicts=('zrythm-git')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc})
