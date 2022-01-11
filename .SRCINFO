@@ -1,0 +1,24 @@
+pkgbase = clash-for-windows-chinese
+	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）.
+	pkgver = 0.19.5
+	pkgrel = 0
+	url = https://github.com/Fndroid/clash_for_windows_pkg
+	install = clash-for-windows.install
+	arch = x86_64
+	depends = libxss
+	depends = gtk3
+	depends = p7zip
+	optdepends = nftables: TUN mode required.
+	optdepends = iproute2: TUN mode required.
+	source = clash-for-windows-chinese-0.19.5-x86_64-linux.tar.gz::https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.19.5/Clash.for.Windows-0.19.5-x64-linux.tar.gz
+	source = https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V0.19.5_CN/app.7z
+	source = clash.png::https://raw.githubusercontent.com/Dreamacro/clash/master/docs/logo.png
+	source = clash-for-windows-chinese.desktop
+	source = cfw
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 12f6f13248a1de0249ef5fbd85bd3eae44401b98049f2fd42bdd1431edf8919e
+	sha256sums = 7828a4c3577f7a6616b01a62a0ad56c5b38d52eec080bae95a432546b56ecd1e
+
+pkgname = clash-for-windows-chinese
