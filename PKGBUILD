@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 _pluginname=scene-collection-manager
 pkgname=obs-$_pluginname
-pkgver=0.0.2
+pkgver=0.0.3
 _obsver=27.0.0
 pkgrel=1
 pkgdesc="Plugin for OBS Studio to add a Scene Collection Manager"
@@ -11,7 +11,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=fce0b629a9ec5030c699cfaea0b4f72f077e01b3"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=41fbfea54d68fb3fa9b58499d29ccaaf4eededab"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
