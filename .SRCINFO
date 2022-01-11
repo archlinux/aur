@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 29.0.50.153388
+	pkgver = 29.0.50.153441
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -40,7 +40,7 @@ pkgbase = emacs-git
 	replaces = emacs-seq
 	replaces = emacs-nox
 	options = !strip
-	source = emacs-git::git://github.com/emacs-mirror/emacs.git
+	source = emacs-git::git://git.savannah.gnu.org/emacs.git
 	b2sums = SKIP
 
 pkgname = emacs-git

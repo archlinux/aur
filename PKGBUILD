@@ -80,7 +80,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.153388
+pkgver=29.0.50.153441
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -92,12 +92,7 @@ makedepends=('git')
 provides=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-#
-# If Savannah fails for reasons, use Github's mirror
-#
-#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
-#
-source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
