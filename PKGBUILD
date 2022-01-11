@@ -1,5 +1,4 @@
-# Maintainer: Devaev Maxim <mdevaev@gmail.com>
-# Contributor: Michael Serpieri <contact at pygoscelis dot org>
+# Maintainer: rern <rernrern@gmail.com>
 
 # get pkgurl:
 #   - https://sourceforge.net/p/raspberry-gpio-python/code/ci/default/tree/
