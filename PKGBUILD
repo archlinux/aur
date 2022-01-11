@@ -6,7 +6,7 @@
 _reponame=passwordfile
 pkgname=mingw-w64-passwordfile
 _name=${pkgname#mingw-w64-}
-pkgver=5.0.6
+pkgver=5.0.7
 pkgrel=1
 arch=('any')
 pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL (mingw-w64)'
@@ -17,7 +17,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('44f53c4171c147e8c0b56e5d52155968a71c4d81a0cc81a27bcf88b7a2f89e67')
+sha256sums=('03a0ced7ecfce18ec35104dedb73eec457875ff72859290c11616b36b2da0bbb')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
