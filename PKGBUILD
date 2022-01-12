@@ -19,7 +19,7 @@ package() {
     install -dm755 "$pkgdir/opt/Netflix"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/Netflix"
-    cp -r "$pkgdir/opt/Netflix/Netflix.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r "$pkgdir/opt/Netflix/netflix.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
