@@ -60,8 +60,8 @@ if [[ $CLI == YES ]]; then
 else
     pkgname=emacs28-git
 fi
-pkgver=28.0.91.151127
-pkgrel=2
+pkgver=28.0.91.151129
+pkgrel=1
 pkgdesc='emacs-28 release branch'
 arch=(x86_64)
 url=http://www.gnu.org/software/emacs/
@@ -74,9 +74,7 @@ conflicts=(emacs emacs26-git emacs-27-git emacs-git emacs-seq emacs-nox)
 replaces=(emacs emacs26-git emacs-27-git emacs-git emacs-seq emacs-nox)
 options=(!strip)
 install=emacs28-git.install
-# Savannah may fail, use GitHub’s mirror instead
-#source=($pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-28)
-source=($pkgname::git+https://github.com/emacs-mirror/emacs.git#branch=emacs-28)
+source=($pkgname::git+https://git.savannah.gnu.org/git/emacs.git#branch=emacs-28)
 b2sums=(SKIP)
 
 ################################################################################
