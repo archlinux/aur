@@ -3,7 +3,7 @@
 
 pkgname=argo-bin
 pkgver=3.2.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/argoproj/argo-workflows"
@@ -12,7 +12,7 @@ source_x86_64=("argo_${pkgver}_x86_64.gz::https://github.com/argoproj/argo-workf
 source_aarch64=("argo_${pkgver}_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v$pkgver/argo-linux-arm64.gz")
 
 build() {
-  chmod +x "argo_$pkgver_${arch}"
+  chmod +x "argo_${pkgver}_${arch}"
 }
 
 check() {
