@@ -1,0 +1,14 @@
+pkgbase = waydroid-image-dev
+	pkgdesc = A container-based approach to boot a full Android system on a regular Linux system (Android 11 image from blissos-dev).
+	pkgver = 18.1_202111291420
+	pkgrel = 1
+	url = https://sourceforge.net/projects/blissos-dev/
+	arch = x86_64
+	license = Apache
+	depends = waydroid
+	provides = waydroid-image
+	conflicts = waydroid-image
+	source = https://sourceforge.net/projects/blissos-dev/files/waydroid/lineage/lineage-18.1/Lineage-OS-18.1-waydroid_x86_64-202111291420-foss-sd-hd-ex_ax86-vaapi_gles-aep.zip
+	sha256sums = f24a0804a5c8d40d65f772d7e0daed446974969e872ba03eb0cc49204d791665
+
+pkgname = waydroid-image-dev
