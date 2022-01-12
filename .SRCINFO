@@ -1,17 +1,18 @@
 pkgbase = lib32-bluez-libs
-	pkgver = 5.57
+	pkgver = 5.63
 	pkgrel = 1
 	url = http://www.bluez.org/
 	arch = x86_64
 	license = LGPL2.1
+	makedepends = python-docutils
 	makedepends = lib32-dbus
 	makedepends = lib32-gcc-libs
 	makedepends = lib32-glib2
 	makedepends = lib32-systemd
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.57.tar.xz
-	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.57.tar.sign
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.63.tar.xz
+	source = https://www.kernel.org/pub/linux/bluetooth/bluez-5.63.tar.sign
 	validpgpkeys = E932D120BC2AEC444E558F0106CA9F5D1DCF2659
-	sha256sums = 73b258d965769dcfdb7a27c5c9b4c9a8b3f72635e53278b73313c8742cf0f69c
+	sha256sums = 9349e11e8160bb3d720835d271250d8a7424d3690f5289e6db6fe07cc66c6d76
 	sha256sums = SKIP
 
 pkgname = lib32-bluez-libs
