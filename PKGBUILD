@@ -2,26 +2,26 @@
 
 pkgbase=lazarus-svn
 pkgname=('lazarus-svn' 'lazarus-svn-gtk2' 'lazarus-svn-qt5')
-pkgver=r64717
+pkgver=r61931.b8f2e92f03
 pkgrel=1
+epoch=1
 pkgdesc='Delphi-like build environment for FreePascal.'
 arch=(x86_64)
 url=https://www.lazarus-ide.org/
 license=('GPL2' 'MPL' 'custom:modifiedLGPL')
 conflicts=('lazarus')
-makedepends=('subversion' 'fpc' 'fpc-src' 'gtk2' 'qt5pas' 'rsync')
+makedepends=('git' 'fpc' 'fpc-src' 'gtk2' 'qt5pas' 'rsync')
 optdepends=('perl: to run some scirpts in the tools directory.'
             'gtk2: to compile gtk2 apps.'
             'qt5pas: to compile qt5 apps and use help viewer')
 provides=('lazarus')
-source=("$pkgbase::svn+https://svn.freepascal.org/svn/lazarus/trunk")
+source=("$pkgbase::git+https://gitlab.com/freepascal.org/lazarus/lazarus.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgbase
 
-  local ver="$(svnversion)"
-  printf "r%s" "${ver//[[:alpha:]]}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
