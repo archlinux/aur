@@ -1,6 +1,6 @@
 pkgbase = pademelon-desktop
 	pkgdesc = Providing a modular desktop environment with pademelon
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jzbor/pademelon
 	arch = x86_64
@@ -16,6 +16,14 @@ pkgbase = pademelon-desktop
 	depends = firefox
 	depends = arandr
 	depends = pavucontrol
+	depends = pulseaudio
+	depends = pulseaudio-alsa
+	depends = lightdm
+	depends = lightdm-gtk-greeter
+	depends = lightdm-gtk-greeter-settings
+	depends = gnome-backgrounds
 	optdepends = sxhkd: Hotkey Daemon
+	optdepends = pipewire: very good sound server than pulse audio
+	optdepends = pipewire-pulse: pulse compatibility layer for pipewire
 
 pkgname = pademelon-desktop

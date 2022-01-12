@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon-desktop
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Providing a modular desktop environment with pademelon"
 arch=(x86_64)
@@ -18,11 +18,19 @@ depends=(
     firefox
     arandr
     pavucontrol
+    pulseaudio
+    pulseaudio-alsa
+    lightdm
+    lightdm-gtk-greeter
+    lightdm-gtk-greeter-settings
+    gnome-backgrounds
 )
 makedepends=(pkgconf)
 checkdepends=()
 optdepends=(
     'sxhkd: Hotkey Daemon'
+    'pipewire: very good sound server than pulse audio'
+    'pipewire-pulse: pulse compatibility layer for pipewire'
 )
 # Add in future version: 'pasystray: System Tray Icon for Audio Control'
 provides=()
