@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r10347
+pkgver=r10350
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
@@ -52,20 +52,19 @@ prepare() {
 
 build() {
   cd $pkgname
-  sh ./get_lang_files.sh
   mkdir build && cd build
   cmake -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build .
+  cmake --build . --target install
 }
 
 package() {
   #binary
   install -Dm755 $pkgname/build/simutrans/simutrans "$pkgdir/usr/bin/simutrans"
+  rm $pkgname/build/simutrans/simutrans
   
   #data
   mkdir -p "$pkgdir/usr/share/games/simutrans"
-  cp -r $pkgname/simutrans/* "$pkgdir/usr/share/games/simutrans"
-  cp -r "How to add files and paksets.md" "$pkgdir/usr/share/games/simutrans"
+  cp -r $pkgname/build/simutrans/* "$pkgdir/usr/share/games/simutrans"
 
   #desktop file and icon
   install -Dm644 $pkgname/simutrans.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simutrans.svg"
@@ -74,6 +73,8 @@ package() {
   #license
   install -Dm644 $pkgname/simutrans/license.txt "$pkgdir/usr/share/licenses/simutrans/license.txt"
   
+  install -Dm644 "How to add files and paksets.md" "$pkgdir/usr/share/games/simutrans/How to add files and paksets.md"
+
 }
 
 pkgver() {
