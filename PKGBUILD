@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=kosmorro
-pkgver=0.10.8
+pkgver=0.10.9
 pkgrel=1
 pkgdesc='A program to calculate the ephemerides'
 depends=(
@@ -30,7 +30,7 @@ url='https://kosmorro.space'
 license=('AGPL3')
 
 source=("$pkgname-v$pkgver.tar.gz::https://codeload.github.com/Kosmorro/kosmorro/tar.gz/v$pkgver")
-sha256sums=("2862b33d1ab0d4b227cdd8a2c9bebe0b153ff3e57b10af1d47e0e4d97106d9f7")
+sha256sums=("910109c4f8f6816e4f92f45f8fee63b5f47defb92b781ce26e0f1cfc2ed92f77")
 
 build() {
     cd "${srcdir}/kosmorro-${pkgver}"
