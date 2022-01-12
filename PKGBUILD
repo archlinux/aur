@@ -3,7 +3,7 @@
 pkgname=an-anime-game-launcher-bin
 pkgver=2.0.0
 pkgrel=2
-pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
+pkgdesc="An Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher")
 arch=("x86_64")
