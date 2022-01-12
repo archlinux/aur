@@ -16,6 +16,7 @@ pkgbase = kotatogram-dev-git
 	makedepends = webkit2gtk
 	makedepends = unzip
 	makedepends = yasm
+	makedepends = libtg_owt
 	depends = hunspell
 	depends = ffmpeg
 	depends = hicolor-icon-theme
