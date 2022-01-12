@@ -1,0 +1,19 @@
+[Unit]
+Description=Apache TomEE Application Server
+After=network.target
+
+[Service]
+User=tomee
+Type=forking
+Environment=JAVA_HOME=/usr/lib/jvm/default-runtime
+Environment=CATALINA_PID=/opt/tomee/temp/tomee.pid
+Environment=CATALINA_HOME=/opt/tomee
+Environment=CATALINA_BASE=/opt/tomee
+Environment=CATALINA_OPTS='-server'
+Environment=JAVA_OPTS='-Djava.awt.headless=true'
+ExecStart=/opt/tomee/bin/startup.sh
+ExecStop=/opt/tomee/bin/shutdown.sh
+KillSignal=SIGCONT
+
+[Install]
+WantedBy=multi-user.target

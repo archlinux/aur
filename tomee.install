@@ -1,0 +1,18 @@
+pre_upgrade() {
+	echo "  -> Stoping tomee.service ..."
+	systemctl stop tomee.service
+	wait
+}
+
+post_upgrade() {
+	echo "  -> Updating installation directory permissions ..."
+	chmod -R u=rwX,g=rwX,o=rX opt/tomee
+}
+
+pre_remove() {
+	echo "  -> Stoping tomee.service ..."
+	systemctl stop tomee.service
+	wait
+	echo "  -> Disabling tomee.service ..."
+	systemctl disable tomee.service
+}
