@@ -2,7 +2,7 @@
 pkgname=python-circlecore
 url="https://github.com/circleguard/circlecore"
 pkgver=5.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A utilities library for osu!."
 arch=('any')
 license=('GPL3')
@@ -21,8 +21,7 @@ depends=(
     'python-wtc=1.2.1'
     'python-ossapi>=2'
     'python-ossapi<3'
-    'python-osrparse>=5'
-    'python-osrparse<6'
+    'python-osrparse>=6'
 )
 makedepends=('python-setuptools')
 conflicts=('python-circlecore-git')

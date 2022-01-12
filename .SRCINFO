@@ -1,7 +1,7 @@
 pkgbase = python-circlecore
 	pkgdesc = A utilities library for osu!.
 	pkgver = 5.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/circleguard/circlecore
 	arch = any
 	license = GPL3
@@ -14,8 +14,7 @@ pkgbase = python-circlecore
 	depends = python-wtc=1.2.1
 	depends = python-ossapi>=2
 	depends = python-ossapi<3
-	depends = python-osrparse>=5
-	depends = python-osrparse<6
+	depends = python-osrparse>=6
 	conflicts = python-circlecore-git
 	source = https://github.com/circleguard/circlecore/archive/refs/tags/v5.2.5.tar.gz
 	sha256sums = 8fa6bc18bc2c9b3a0d4163548a61034b25500646247866436c36311056d2ac62
