@@ -1,0 +1,14 @@
+pkgbase = logpresso-log4j-scan
+	pkgdesc = log4j2-scan is a single binary command-line tool for CVE-2021-44228 CVE-2021-45046 (log4j 2.15.0), CVE-2021-45105 (log4j 2.16.0), CVE-2021-44832 (log4j 2.17.0), CVE-2021-4104 (log4j 1.x), and CVE-2021-42550 (logback 0.9-1.2.7) vulnerabilities
+	pkgver = 2.7.2
+	pkgrel = 1
+	url = https://github.com/mergebase/log4j-detector
+	arch = any
+	license = GPL3
+	optdepends = java-runtime=11
+	source = https://github.com/logpresso/CVE-2021-44228-Scanner/releases/download/v2.7.2/logpresso-log4j2-scan-2.7.2-linux.tar.gz
+	source = https://github.com/logpresso/CVE-2021-44228-Scanner/releases/download/v2.7.2/logpresso-log4j2-scan-2.7.2.jar
+	sha256sums = bd6b7597a840f66a07df04f33bb5b1d25cb8b12a9e7b2cc08ebe5f6281d6ed8b
+	sha256sums = e6da143d39f2dbf751e7a81fc6af5216a2819b5810f6cde0764085cefa849ee9
+
+pkgname = logpresso-log4j-scan
