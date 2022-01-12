@@ -1,22 +1,24 @@
-pkgname=("python-djangocms-admin-style" "python2-djangocms-admin-style")
-pkgbase=python-djangocms-admin-style
-pkgver=1.2.6.2
+_base=djangocms-admin-style
+pkgname=python-${_base}
+pkgver=2.0.2
 pkgrel=1
-pkgdesc='Adds pretty CSS styles for the django CMS admin interface.'
+pkgdesc="Adds pretty CSS styles for the django CMS admin interface"
 arch=('any')
-url="http://pypi.python.org/pypi/djangocms-admin-style/"
-license=('BSD')
-source=("https://pypi.python.org/packages/1f/87/5360d70729d2e03275a550cfe383acaff564ad2663ecd949a77d5f648d9e/djangocms-admin-style-1.2.6.2.tar.gz")
-md5sums=('cd0be52cd95a84eb5df2fbf5ad6e575f')
+url="http://pypi.python.org/pypi/${_base}"
+license=('custom')
+depends=(python)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('e6cd6def086d7195b3781feba891ff56349b6a5e39f8cfad8a129f7e3f158c0445aee7d182bfe2c6cf311aa3563dadda10474b95c557d7c61526d75dcf8285eb')
 
-package_python-djangocms-admin-style() {
-    depends=('python')
-    cd "$srcdir/djangocms-admin-style-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
-package_python2-djangocms-admin-style() {
-    depends=('python2')
-    cd "$srcdir/djangocms-admin-style-$pkgver"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
