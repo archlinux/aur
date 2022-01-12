@@ -5,15 +5,16 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.6.4.nightly.26.r0.ge3de5c87'
-pkgrel='2'
+pkgver='5.7.0.r0.g094d3762'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
 _electronpkg='electron15'
 depends=("$_electronpkg" 'libxkbfile')
-makedepends=('git' 'nodejs>=16.0.0' 'npm>=8.1.0' 'pnpm' 'python')
+# We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
+makedepends=('git' 'nodejs-lts-gallium' 'npm>=8.1.0' 'pnpm' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
