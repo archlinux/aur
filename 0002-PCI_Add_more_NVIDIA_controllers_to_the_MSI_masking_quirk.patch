@@ -1,0 +1,21 @@
+From 0bb6e4f104167b1e283269b46f3bbd30b2d979a7 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Thu, 18 Nov 2021 22:53:31 +0100
+Subject: [PATCH] PCI: Add more NVIDIA controllers to the MSI masking quirk
+
+For: https://bugs.archlinux.org/task/72734
+For: https://bugs.archlinux.org/task/72777
+---
+ drivers/pci/quirks.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index 208fa03acdda0..7fdb7e9c2e12c 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -5802,3 +5802,5 @@ static void nvidia_ion_ahci_fixup(struct pci_dev *pdev)
+ 	pdev->dev_flags |= PCI_DEV_FLAGS_HAS_MSI_MASKING;
+ }
+ DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0ab8, nvidia_ion_ahci_fixup);
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0ab9, nvidia_ion_ahci_fixup);
++DECLARE_PCI_FIXUP_FINAL(PCI_VENDOR_ID_NVIDIA, 0x0d88, nvidia_ion_ahci_fixup);

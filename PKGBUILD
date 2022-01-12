@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.10.90
+pkgver=5.15.13
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme python-six graphviz imagemagick
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
 _srcname=linux-$pkgver
@@ -17,6 +17,11 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-PCI_Add_more_NVIDIA_controllers_to_the_MSI_masking_quirk.patch
+  0003-iommu_intel_do_deep_dma-unmapping_to_avoid_kernel-flooding.patch
+  0004-cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch
+  0005-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch
+  0006-lg-laptop_Recognize_more_models.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -25,12 +30,17 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('945e4264c014a3d9dfc0a4639309dd1ec2fb545416556421f931b95da78c2725'
+sha256sums=('0a131b6a2f9f5ee37ecb332b5459ab35a87f0bf2d4ec923988d0663646cf156a'
             'SKIP'
-            '80de9382be09f765b5cb1c11e21a09c99f75a0000bcc10def0542228644ea828'
-            '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e'
+            '1656c79785890306bb0974ecd42bca5fed1ae91c9863cb31dfb23058ae019076'
+            '99df282c594cc269d9a5d19bb86ea887892d3654cfc53c4ce94a644cf3278423'
+            'c35018601f04ae81e0a2018a8597595db6ae053158c206845399cdebb2d2b706'
+            '7c7707c738983f3683d76295b496f578996b7341fa39ad334ec2833bfe4b966e'
+            '420844779356286057d931e30bbe1dabb8ee52bff575845a8fbf3c34e1a1d29e'
+            '3fa8a4af66d5a3b99b48ca979a247c61e81c9b2d3bcdffa9d3895a5532a420b4'
+            '79266c6cc970733fd35881d9a8f0a74c25c00b4d81741b8d4bba6827c48f7c78'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '1c621f67bbf9efef610d1b2d1afd727fca9ceaa298f807bd0348b59ec6ce9562')
+            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -73,7 +83,8 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  
+  replaces=(wireguard-lts)
+
   cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
@@ -95,6 +106,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -120,13 +132,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -162,7 +177,6 @@ _package-headers() {
         strip -v $STRIP_SHARED "$file" ;;
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
-
 
   echo "Stripping vmlinux..."
   strip -v $STRIP_STATIC "$builddir/vmlinux"
