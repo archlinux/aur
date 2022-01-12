@@ -1,17 +1,17 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrdesktop
-pkgver=1.01
+pkgver=3.0
 pkgrel=1
 pkgdesc="OCR the current window or desktop and make it browsable for the user"
 arch=('any')
 url="http://linux-a11y.org"
 license=('GPL3')
-depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-tesserwrap' 'tesseract-data-eng')
-source=("https://github.com/chrys87/ocrdesktop/archive/$pkgver.tar.gz")
+depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-webcolors' 'python-scipy' 'python-pytesseract' 'tesseract-data-eng')
+source=("https://github.com/chrys87/ocrdesktop/archive/refs/tags/v$pkgver.tar.gz")
 install='ocrdesktop.install'
 provides=('ocrdesktop')
 conflicts=('ocrdesktop-git')
-md5sums=("c48f6005b89b7d8be6265164fd434f5b")
+md5sums=("52bb16d1b65c8a84e6728e4aa3187be4")
 
 package() {
  cd "${srcdir}/${pkgname}-${pkgver}"
