@@ -7,6 +7,7 @@ arch=('any')
 url="http://www.crivatec.de"
 license=('GPL')
 depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-webcolors' 'python-scipy' 'python-pytesseract' 'tesseract-data-eng')
+makedepends=('git')
 source=("git+https://github.com/chrys87/ocrdesktop.git")
 install='ocrdesktop.install'
 provides=('ocrdesktop')

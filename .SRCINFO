@@ -6,6 +6,7 @@ pkgbase = ocrdesktop-git
 	install = ocrdesktop.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = libwnck3
 	depends = python-atspi
 	depends = python-pillow
