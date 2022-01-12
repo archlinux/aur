@@ -1,7 +1,7 @@
 pkgbase = trader
 	pkgdesc = Star Trader, a text-based game of interstellar trading
 	pkgver = 7.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zap.org.au/software/trader
 	arch = i486
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = trader
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	depends = hicolor-icon-theme
 	depends = ncurses
 	source = https://ftp.zap.org.au/pub/trader/unix/trader-7.16.tar.xz
 	source = https://ftp.zap.org.au/pub/trader/unix/trader-7.16.tar.xz.sig
