@@ -3,14 +3,14 @@
 _pkgname=persistent-evdev
 pkgname=persistent-evdev-git
 pkgver=r3.c2a8c30
-pkgrel=1
+pkgrel=2
 pkgdesc="Creates a udev proxy device to pass to QEMU"
 arch=('x86_64')
 license=('MIT')
 provides=('persistent-evdev')
 conflicts=('persistent-evdev')
 requires=('python' 'python-evdev' 'python-pyudev')
-source=("git://github.com/aiberia/persistent-evdev.git")
+source=("git+https://github.com/aiberia/persistent-evdev.git")
 sha256sums=('SKIP')
 install='persistent-evdev.install'
 

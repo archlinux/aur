@@ -1,14 +1,13 @@
 pkgbase = persistent-evdev-git
 	pkgdesc = Creates a udev proxy device to pass to QEMU
 	pkgver = r3.c2a8c30
-	pkgrel = 1
+	pkgrel = 2
 	install = persistent-evdev.install
 	arch = x86_64
 	license = MIT
 	provides = persistent-evdev
 	conflicts = persistent-evdev
-	source = git://github.com/aiberia/persistent-evdev.git
+	source = git+https://github.com/aiberia/persistent-evdev.git
 	sha256sums = SKIP
 
 pkgname = persistent-evdev-git
-
