@@ -1,6 +1,6 @@
 # Maintainer: Jonatan Bravo <zephrax@gmail.com>
-pkgname=envconsul
-pkgver=0.6.2
+pkgname=envconsul-0.12.1
+pkgver=0.12.1
 pkgrel=1
 epoch=
 pkgdesc="Launch a subprocess with environment variables using data from @HashiCorp Consul and Vault."
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("envconsul")
-source=("https://releases.hashicorp.com/${pkgname}/0.6.2/envconsul_${pkgver}_linux_amd64.tgz")
-md5sums=("490ff5f4981a477cf9767a71492c467e")
+source=("https://releases.hashicorp.com/${pkgname}/${pkgver}/envconsul_${pkgver}_linux_amd64.zip")
+sha256sums=("361628aada03816d25ff13f4a0938953beda57f3a4ccd60e4278343762b95f6a")
 validpgpkeys=()
 
 package() {
