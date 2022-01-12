@@ -1,9 +1,9 @@
 # Maintainer: BrinkerVII <brinkervii@gmail.com>
 
-pkgname=grapejuice-git
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-pkgver=4.8.2
+pkgname="${_pkgname}-git"
+pkgver=4.9.2
 pkgrel=1
 pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
@@ -35,6 +35,7 @@ optdepends=(
     'xorg-xrandr: Required for PRIME systems running XOrg, where XRandR based profiling is desired'
 )
 provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 license=('GPL3')
 source=("${_pkgname}"::git+"${_repository}")
 sha256sums=('SKIP')
