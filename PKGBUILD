@@ -6,7 +6,7 @@ pkgver=0.1.3.1
 pkgrel=1
 pkgdesc='A script for download backgrounds on https://alphacoders.com written in Python.'
 arch=('any')
-url='https://github.com/Asthowen/AlphacodersWallpaperDownloader/'
+url='https://github.com/Asthowen/AlphacodersDownloader/'
 license=('GNUv3')
 makedepends=('python-setuptools')
 depends=('python>=3.6' 'python-aiohttp' 'python-aiofiles' 'python-setproctitle' 'python-beautifulsoup4')
