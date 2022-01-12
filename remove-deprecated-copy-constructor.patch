@@ -1,0 +1,24 @@
+diff --git a/envoy/network/socket.h b/envoy/network/socket.h
+index 225b76297a..d5e0253b6e 100644
+--- a/envoy/network/socket.h
++++ b/envoy/network/socket.h
+@@ -23,7 +23,6 @@ namespace Network {
+ // avoid #ifdef proliferation.
+ struct SocketOptionName {
+   SocketOptionName() = default;
+-  SocketOptionName(const SocketOptionName&) = default;
+   SocketOptionName(int level, int option, const std::string& name)
+       : value_(std::make_tuple(level, option, name)) {}
+ 
+diff --git a/source/common/grpc/typed_async_client.h b/source/common/grpc/typed_async_client.h
+index af9e8df949..9a385bb2af 100644
+--- a/source/common/grpc/typed_async_client.h
++++ b/source/common/grpc/typed_async_client.h
+@@ -35,7 +35,6 @@ template <typename Request> class AsyncStream /* : public RawAsyncStream */ {
+ public:
+   AsyncStream() = default;
+   AsyncStream(RawAsyncStream* stream) : stream_(stream) {}
+-  AsyncStream(const AsyncStream& other) = default;
+   void sendMessage(const Protobuf::Message& request, bool end_stream) {
+     Internal::sendMessageUntyped(stream_, std::move(request), end_stream);
+   }

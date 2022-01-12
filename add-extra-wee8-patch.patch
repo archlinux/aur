@@ -1,0 +1,15 @@
+diff -Naur envoy-1.20.1.a/bazel/repositories.bzl envoy-1.20.1.b/bazel/repositories.bzl
+--- envoy-1.20.1.a/bazel/repositories.bzl	2021-11-30 15:28:08.000000000 -0500
++++ envoy-1.20.1.b/bazel/repositories.bzl	2022-01-11 23:16:56.949821344 -0500
+@@ -804,7 +804,10 @@
+         name = "com_googlesource_chromium_v8",
+         genrule_cmd_file = "@envoy//bazel/external:wee8.genrule_cmd",
+         build_file = "@envoy//bazel/external:wee8.BUILD",
+-        patches = ["@envoy//bazel/external:wee8.patch"],
++        patches = [
++            "@envoy//bazel/external:wee8.patch",
++            "@envoy//bazel/external:wee8-jinja2-python-collections.patch",
++		],
+     )
+     native.bind(
+         name = "wee8",
