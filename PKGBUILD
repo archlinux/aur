@@ -2,23 +2,21 @@
 pkgbase=python-pyvo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Astropy affiliated package for accessing Virtual Observatory data and services"
 arch=('any')
 url="https://pyvo.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools' 'python-astropy-helpers>=3.2.1' 'python-sphinx-astropy' 'graphviz' 'python-mimeparse' 'python-astropy')
-#'python-astropy-helpers>=3.2.1' 'python-sphinx-astropy')
+makedepends=('python-setuptools' 'python-astropy-helpers>=3.2.1' 'python-sphinx-astropy' 'graphviz' 'python-astropy')
 checkdepends=('python-pytest-astropy' 'python-requests-mock')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('2449155b6917381789e2a0742b47b7b5')
+md5sums=('6557afc540a54b71e6a66f492a63422f')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     sed -i -e '/auto_use/s/True/False/' setup.cfg
-    sed -i -e 's/mimeparse/python-mimeparse/' setup.cfg
 }
 
 build() {
