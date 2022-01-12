@@ -1,0 +1,15 @@
+pkgbase = vertex-maia-icon-theme
+	pkgdesc = Icons matching Vertex Maia themes, based on Menda Circle (Mirrored onto AUR)
+	pkgver = 20160526
+	pkgrel = 1
+	url = https://gitlab.manjaro.org/artwork/icon-themes/vertex-maia-icon-themes
+	arch = any
+	license = GPL
+	depends = hicolor-icon-theme
+	depends = librsvg
+	options = !emptydirs
+	options = !strip
+	source = vertex-maia-icon-theme-20160526-1.tar.bz2::https://gitlab.manjaro.org/artwork/icon-themes/vertex-maia-icon-themes/-/archive/20160526/vertex-maia-icon-themes-20160526.tar.bz2
+	b2sums = 4bae330134535f589641e21cc9f4570360cf97746de590b7098f4a2612890f492253d54e585b5946642e8ad3623c240a4dd39fd125e1824fba7fa3fb566fbd8e
+
+pkgname = vertex-maia-icon-theme
