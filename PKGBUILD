@@ -1,7 +1,7 @@
 pkgname=foxtelgo-git
 _pkgname=FoxtelGO-git
-pkgver=1.0.2 
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Unofficial Foxtel Go desktop app."
 arch=('x86_64')
 url="https://gitlab.com/foxtelgo/application"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/application"
-    npm install "https://github.com/castlabs/electron-releases#v14.2.2-wvvmp" --save-dev
+    npm install "https://github.com/castlabs/electron-releases#v13.6.6-wvvmp" --save-dev
     npm --cache "$srcdir/npm-cache" i electron-context-menu@3.1.1
 }
 
@@ -33,7 +33,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/$_pkgname/FoxtelGO" "$pkgdir/usr/bin/FoxtelGO"
+    ln -s "/opt/FoxtelGO/foxtelgo" "$pkgdir/usr/bin/foxtelgo"
 
     # Desktop Entry
     install -Dm644 "$srcdir/application/FoxtelGO.desktop" \

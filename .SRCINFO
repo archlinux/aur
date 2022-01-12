@@ -1,7 +1,7 @@
 pkgbase = foxtelgo-git
 	pkgdesc = Unofficial Foxtel Go desktop app.
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://gitlab.com/foxtelgo/application
 	arch = x86_64
 	license = GPL
