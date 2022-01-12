@@ -3,7 +3,7 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
@@ -25,25 +25,25 @@ cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '2731343777'
-        '1065450062'
-        '1475329516'
+        '958875474'
+        '2410660081'
+        '3400210263'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'cd76811ae9ba4dec024789df7911bcde62068ca8bd7bc4b7b4929becab4a2cbe'
-            'ed7ec4af837d18800ce8b79098568447931f9265e9c88734441f8644124b6dc2'
-            '108dbeb30c796cc1a29a51462ee169162859d076a9916db4e47e2c34361c9b26'
+            '8f08f1d8d63ccea33268ccb21df75649b3bbb513f862f9410c68256376aba9af'
+            '23f0266303a3b2e0f651d62799aabed1f495a7e0f10cb8b308811298a3ca9447'
+            'bf9136bcce90a25a49f71a34fca33dd19290280408666239bbea01a12201a1e8'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'f4c0c5018b14083c568a1b22fe546c146b267afb327240f94488d55cac14d321b2d18a949b0e2f2635641dbaca7c0a85f60de125219f563a38f1a11efb333b42'
-        'd80571606e5dac33720d0af44f100b6355c592626b6ef22033556020aff1c00b9b18864c0c9aa3f0a46ec8c371240eba63eb9878916d7cc0ed54114d3ffd09dd'
-        '65f84db4f5fcc30e0da3b3ab69f4c1dcc550f211755cd571249b5018cb835849ed575a5b852ee3f27f9a41ea679a757a238a9368b8d45ff8f89901b04423beda'
+        '92294cc844b8d53ce7bf3a3fc2e3b93f4cad0b9b7b160a33967cadd5185238f30f525ae98977035dd75e2f6df072306fbe0302cfabc6cd66bc0f413a0060fcba'
+        'f6de5713a871d5a7b5976bb8d70eb2dff355a82cc2a1088b95d90b8237ca6f80b9fb58cad6ad7d3a97e1d9207ab2418181dbf6c86ec6cbd7ca144136ee67f71c'
+        '28d4610f9daed3f9e15785be4281f918636d5b7a93bdd1cb32c0d4d52d1f76ab225234a48c5c498a04e7c1271b56e090f7d665ac160dc1bf22dcccbc591a2e83'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {

@@ -1,4 +1,4 @@
-From b52ee2bd5f6e9a88ece3640bc374dea4e5139016 Mon Sep 17 00:00:00 2001
+From e7a5901e6049dd312c522f3adfeb17608826e780 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 10 Jan 2022 15:47:10 +0100
 Subject: [PATCH 2/3] makepkg: Remove external dependencies check
@@ -9,7 +9,7 @@ Subject: [PATCH 2/3] makepkg: Remove external dependencies check
  2 files changed, 12 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index aa250cf..9037111 100644
+index dcd3644..bfe3f5f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -20,7 +20,6 @@ set(PLUGINS
