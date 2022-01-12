@@ -7,8 +7,8 @@
 # Contributor: oguzkagan <me@oguzkaganeren.com.tr>
 
 pkgname='xampp'
-_srcver='8.0.13'
-_binver=0
+_srcver='8.1.1'
+_binver=1
 pkgrel=1
 
 # This PKGBUILD deals with two different versioning formats: the upstream
@@ -60,7 +60,7 @@ sha256sums=('3f262ef4b3e752992667ab482cbf364e3b9e6f95b4b6fb12a1ce6fa7a88f124e'
             '39a5617deaf42d17281b3b1b828351c0f6108cee774b3e4671af3d9bbcd48883'
             '8825623ea18abb8bfb3a8811b6c59dc8485f7d767c6f3a013fdc1b1afc979426'
             '83b30970378e8d30d7acd13ebe6dc31652548a44d2cca9fd5919fa7f06fe238d')
-sha256sums_x86_64=('7816e50b2f311e39553d93d016e9cb37435fbc9d9b20ffa2290c2ae8619e15e2')
+sha256sums_x86_64=('5585177f62e40e122b4cc87bd46005d76f9f59b6f29eddfbfdf3e2338b2cd795')
 sha256sums_i686=('SKIP')
 
 _platform="$(test "${CARCH}" = 'x86_64' && echo "${_build64name}" || echo "${_build32name}")"
