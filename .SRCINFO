@@ -13,8 +13,8 @@ pkgbase = kodi-addon-inputstream-adaptive-any
 	conflicts = kodi-addon-inputstream-adaptive
 	conflicts = kodi-addon-inputstream-adaptive-19
 	source = https://github.com/peak3d/inputstream.adaptive/archive/19.0.2-Matrix.tar.gz
-	source = https://github.com/xbmc/xbmc/archive/19.1-Matrix.tar.gz
+	source = https://github.com/xbmc/xbmc/archive/19.3-Matrix.tar.gz
 	sha256sums = f2285e77043a0c9160d1ab11dd5943cc584be17a2f7920be3002751ff697ec7b
-	sha256sums = 195a916a32057e259e6f42b49ba8f07cc6253460018851a52deb058ae938c58c
+	sha256sums = 440f47e475dd8a48e0a6d41349e83b74890f3fbe8275d3e401d3c50f5b9ea09b
 
 pkgname = kodi-addon-inputstream-adaptive-any

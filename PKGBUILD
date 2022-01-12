@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Inputstream adaptive without kodi-dev dependency, so it can be built on any architecture"
 _koditarget=Matrix
 _gitname=inputstream.adaptive
-_kodiver=19.1
+_kodiver=19.3
 arch=('any')
 url="https://github.com/peak3d/${_gitname}"
 license=('GPL')
@@ -19,7 +19,8 @@ source=("https://github.com/peak3d/${_gitname}/archive/${pkgver}-${_koditarget}.
 )
 
 sha256sums=('f2285e77043a0c9160d1ab11dd5943cc584be17a2f7920be3002751ff697ec7b'
-            '195a916a32057e259e6f42b49ba8f07cc6253460018851a52deb058ae938c58c')
+            '440f47e475dd8a48e0a6d41349e83b74890f3fbe8275d3e401d3c50f5b9ea09b')
+
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
 }
