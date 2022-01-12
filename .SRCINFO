@@ -1,7 +1,7 @@
 pkgbase = xkcd-gtk
 	pkgdesc = A simple xkcd comic viewer written in Go using GTK+3.
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rkoesters/xkcd-gtk
 	arch = x86_64
 	license = GPL3

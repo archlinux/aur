@@ -2,7 +2,7 @@
 # Contributor: Mark Wagie <mark[dot]wagie[at]tutanota[dot]com>
 pkgname=xkcd-gtk
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple xkcd comic viewer written in Go using GTK+3."
 arch=('x86_64')
 url="https://github.com/rkoesters/xkcd-gtk"
@@ -12,21 +12,22 @@ depends=('gtk3')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=("baa6a67332abcf7eeb9a244ef2bef6e73672aa48041816418e574e13864c60c7")
 prepare() {
-  export GOPATH="$srcdir/gopath"
-  go clean -modcache
+    export GOPATH="$srcdir/gopath"
+    go clean -modcache
 }
 build()  {
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make
-  go clean -modcache
+    cd "$pkgname-$pkgver"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    make
+    go clean -modcache
 }
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
-  ln -s "/usr/bin/com.github.rkoesters.$pkgname" "$pkgdir/usr/bin/$pkgname"
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    ln -s "/usr/bin/com.github.rkoesters.$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
