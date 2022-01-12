@@ -8,4 +8,6 @@ post_install() {
   echo "   These scripts will add the needed entries into the user dirs for either"
   echo "   browser.  This action has to be performed only once; the registering will"
   echo "   persist after package upgrades."
+  echo ":: IMPORTANT (2): WidevineCDM on ARM now requires patches to glibc.  Therefore"
+  echo "   a dependency to the AUR package glibc-widevine has been added."
 }

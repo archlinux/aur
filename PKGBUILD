@@ -2,14 +2,14 @@
 
 pkgname=widevine-armv7h
 pkgdesc='A browser plugin designed for the viewing of premium video content (version for armv7h)'
-pkgver=4.10.1679.0
+pkgver=4.10.2252.0
 _debian_pkgname='libwidevinecdm0'
 _debian_pkgrel=1
-pkgrel=2
+pkgrel=1
 arch=('armv7h')
 url='https://www.widevine.com/'
 license=('custom')
-depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
+depends=('gcc-libs' 'glib2' 'glibc-widevine' 'nspr' 'nss')
 provides=('chromium-widevine')
 conflicts=('chromium-widevine' 'chromium-widevine-armv7h')
 install="widevine-armv7h.install"
@@ -20,10 +20,11 @@ source=("chrome-eula_text.html::https://www.google.com/intl/en/chrome/privacy/eu
         "register_widevine_firefox"
         "widevine-armv7h.install")
 sha256sums=(SKIP
-            '7e2240774620a5ec4a722567439fd5d8b54acc35dfe9e3766d8de9e231bbbf0a'
+            '47703a2db5aacb8ec77318041c4327645a6b81a78839857357edbcb9275f05ef'
             'ebca260ca197c4eee5a8b76ae1fad2bf800ab99b40d8be0c2189b566bd9621d0'
             'b976bb594b8b51d5eee1929defaebd0313c54ddd6d62241bfa4a7d5421491e12'
-            '8790061f5a5b9eed63545a9caa0bb6452bec965313b40857657973f986b01794')
+            '6be10c8786b24f47dbbb54ff676f28a7b49771b8d5f7c03cc3f2e73b7e18c22f')
+
 
 prepare() {
   # Extract data.tar.gz from deb package
