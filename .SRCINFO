@@ -1,0 +1,13 @@
+pkgbase = rgs
+	pkgdesc = Batch git repository analysis tool
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://github.com/7aske/rgs
+	arch = x86_64
+	license = GPLv2
+	checkdepends = cargo
+	makedepends = cargo
+	source = rgs-1.12.tar.gz::https://github.com/7aske/rgs/archive/1.12.tar.gz
+	sha256sums = b95456fa2d1694f9b05664bb08f8ae6f571cc207efee4f4a9e8abce2541cca35
+
+pkgname = rgs
