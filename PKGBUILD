@@ -1,6 +1,6 @@
 # Maintainer: Aphosis <aphosis.github@gmail.com>
 pkgname=gmux
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Manage multiple git repositories with ease."
 url="https://github.com/Aphosis/gmux"
@@ -9,8 +9,8 @@ license=("MIT")
 makedepends=("cargo")
 provides=("gmux")
 source=(https://github.com/Aphosis/${pkgname}/archive/${pkgver}.tar.gz)
-sha512sums=('0009468dc95c28c8ec1d35af526a355663f872bb46e48c5dc93929ce952dcaab7641268c267168a7a9fe38a5718fa4dbd53323bb67c684c4c4c52e5a06836372')
-b2sums=('2dd71a9f5fac3864d630ab36453d537e2c1a9f894666badccf9ebc5942b9c0b6ec60256cdfa2b0c955248d11a4bdba91a8cd76cf01dec3fde4bbc56fc9855adf')
+sha512sums=('4a4a6b8c295955f3d75a978d0b3411ede71ca415be0d85997505f459deb1adb08ded977a087edb74e48a7927adac2e2ac4af6c55f36a240475ba11eaf4ad2e85')
+b2sums=('0bfa3076b5757fb0da8612399d61989041b2cde13612d5e028b18693da41a18961a5ec56110ee00a109973d4c2793490563e9e4cd8263c8b752be8ea25a5343c')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -26,7 +26,15 @@ package() {
 
   install -Dm 644 \
     target/release/${pkgname}.fish \
-    -t "${pkgdir}/usr/local/share/fish/vendor_completions.d"
+    -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+
+  install -Dm 644 \
+    target/release/${pkgname}.bash \
+    -T "${pkgdir}/usr/share/bash-completion/completions/gmux"
+
+  install -Dm 644 \
+    target/release/_${pkgname} \
+    -T "${pkgdir}/usr/share/zsh/site-functions/_gmux"
 
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
