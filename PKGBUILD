@@ -1,12 +1,13 @@
 # Maintainer: Vasil Bakalov <jens300304@gmail.com>
 pkgname=danser-git
 url="https://github.com/Wieku/danser-go"
-pkgver=0.6.7.r0.g7848ca95
+pkgver=0.6.8.r1.g5fb69fb4
 pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go (git version)"
 arch=('any')
 license=('MIT')
 source=("git+https://github.com/Wieku/danser-go.git")
+conflicts=('danser')
 sha256sums=('SKIP')
 depends=(
     'libyuv'
@@ -24,6 +25,11 @@ pkgver() {
     git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "${srcdir}/danser-go"
+    git checkout dev
+}
+
 build() {
     cd "${srcdir}/danser-go"
 
@@ -38,16 +44,15 @@ build() {
 
 package() {
     cd "${srcdir}/danser-go"
-    mkdir -p "${pkgdir}/opt/danser-git" "${pkgdir}/usr/bin"
-    chmod 777 "${pkgdir}/opt/danser-git"
-    install -Dm755 libbass.so libbass_fx.so libbassmix.so "${pkgdir}/opt/danser-git"
-    # i hate install i hate install i hate in-
-    cp -r "assets" "${pkgdir}/opt/danser-git/assets"
-    chmod 755 "${pkgdir}/opt/danser-git/assets"
+    mkdir -p "${pkgdir}/usr/lib/danser" "${pkgdir}/usr/bin"
 
-    install -Dm755 danser-go "${pkgdir}/opt/danser-git/${pkgname}"
+    install -Dm755 libbass.so libbass_fx.so libbassmix.so "${pkgdir}/usr/lib/danser"
+    cp -r "assets" "${pkgdir}/usr/lib/danser/assets"
+    chmod 755 "${pkgdir}/usr/lib/danser/assets"
+
+    install -Dm755 danser-go "${pkgdir}/usr/lib/danser/danser"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    ln -s "/opt/danser-git/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/danser/danser" "${pkgdir}/usr/bin/danser"
 }
