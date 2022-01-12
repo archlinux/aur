@@ -1,15 +1,12 @@
 pkgbase = html5videoplayer-git
 	pkgdesc = HTML 5 video player. Just a video tag in a html file
-	pkgver = 1.0.0
+	pkgver = r4.d25e2b5
 	pkgrel = 1
-	url = https://github.com/Luviz/html5videoplayer.git
-	arch = i686
-	arch = pentium4
-	arch = x86_64
-	arch = arm
-	arch = armv7h
-	arch = armv6h
-	arch = aarch64
+	url = https://github.com/Luviz/html5videoplayer
+	arch = any
 	license = MIT
+	makedepends = git
+	source = git+https://github.com/Luviz/html5videoplayer.git
+	sha256sums = SKIP
 
 pkgname = html5videoplayer-git
