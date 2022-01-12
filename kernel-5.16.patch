@@ -1,0 +1,11 @@
+--- a/file.c
++++ b/file.c
+@@ -995,7 +990,7 @@
+ 		frame_vbo = pos & ~(frame_size - 1);
+ 		index = frame_vbo >> PAGE_SHIFT;
+ 
+-		if (unlikely(iov_iter_fault_in_readable(from, bytes))) {
++		if (unlikely(fault_in_iov_iter_readable(from, bytes))) {
+ 			err = -EFAULT;
+ 			goto out;
+ 		}
