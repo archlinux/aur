@@ -2,7 +2,7 @@
 
 pkgname=an-anime-game-launcher-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Launcher for a specific anime game written in Electron with auto-patching and playtime tracking function"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher")
@@ -41,6 +41,7 @@ md5sums=(
 )
 
 prepare() {
+    chmod +x "${srcdir}/An_Anime_Game_Launcher.AppImage"
     "${srcdir}/An_Anime_Game_Launcher.AppImage" --appimage-extract
 }
 
