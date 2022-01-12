@@ -1,14 +1,14 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=dyff-bin
-pkgver=1.4.6
+pkgver=1.4.7
 pkgrel=1
 pkgdesc="diff tool for YAML files"
 arch=('x86_64')
 url="https://github.com/homeport/dyff"
 license=('MIT')
 source=("https://github.com/homeport/dyff/releases/download/v${pkgver}/dyff_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('a3a45e55e3326a897aed33550c74d2e93c53482289536b71385ff4b5e31303db')
+sha256sums=('b66e4863b169c87ab1e25362e02c92444eb7411081a8f793255a915c16ee9b31')
 
 package() {
   install -Dm 755 "$srcdir/dyff" -t "$pkgdir/usr/bin"
