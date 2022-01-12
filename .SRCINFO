@@ -1,13 +1,12 @@
 pkgbase = libvirt-hook-helper-git
 	pkgdesc = Helper tool to run scripts on libvirt VM startup or shutdown
-	pkgver = r42.0bdc0aa
+	pkgver = r50.2bb6d4c
 	pkgrel = 1
 	arch = any
 	license = MIT
 	provides = libvirt-hook-helper
 	conflicts = libvirt-hook-helper
-	source = libvirt-hook-helper::git://github.com/PassthroughPOST/VFIO-Tools
+	source = libvirt-hook-helper::git+https://github.com/PassthroughPOST/VFIO-Tools
 	sha256sums = SKIP
 
 pkgname = libvirt-hook-helper-git
-

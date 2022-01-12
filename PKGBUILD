@@ -4,14 +4,14 @@ _reponame=VFIO-Tools
 _binname=qemu
 _pkgname=libvirt-hook-helper
 pkgname=libvirt-hook-helper-git
-pkgver=r42.0bdc0aa
+pkgver=r50.2bb6d4c
 pkgrel=1
 pkgdesc="Helper tool to run scripts on libvirt VM startup or shutdown"
 arch=('any')
 license=('MIT')
 provides=('libvirt-hook-helper')
 conflicts=('libvirt-hook-helper')
-source=("${_pkgname}::git://github.com/PassthroughPOST/VFIO-Tools")
+source=("${_pkgname}::git+https://github.com/PassthroughPOST/VFIO-Tools")
 sha256sums=('SKIP')
 
 pkgver() {
