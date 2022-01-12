@@ -2,8 +2,8 @@
 # Maintainer: Leopold Bloom <leopoldbloom@riseup.net>
 
 pkgname=numix-square-icon-theme
-pkgver=21.11.07
-_pkgver=21.11.07
+pkgver=22.01.10
+_pkgver=${pkgver}
 _gitname=numix-icon-theme-square
 pkgrel=1
 pkgdesc="A square-ish shaped icon theme from the Numix Project"
@@ -14,7 +14,7 @@ provides=("numix-square-icon-theme=${pkgver}")
 depends=('numix-icon-theme-git' 'gtk-update-icon-cache')
 conflicts=("numix-square-icon-theme-git")
 source=("https://github.com/numixproject/${_gitname}/archive/${_pkgver}.tar.gz")
-b2sums=('fc96281bc55af7140c59afc756fe71f80b001e4a67fb9a1263648552330d97eb165c9d09913ee5988e4ace9af82f7f06ebe9b2b20a6cfbe04023504c477dc8ee')
+b2sums=('ceb74f9f82e62589f11a6658b9a469df5fd34549a67819a0c1d8e772b1472ace2499ccf647b53b3d7ffce8affbb8c4fd19288e7fc6d51dca11e5d8f2903a4279')
 options=('!strip')
 
 package() {

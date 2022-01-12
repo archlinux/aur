@@ -1,16 +1,16 @@
 pkgbase = numix-square-icon-theme
 	pkgdesc = A square-ish shaped icon theme from the Numix Project
-	pkgver = 21.11.07
+	pkgver = 22.01.10
 	pkgrel = 1
 	url = https://github.com/numixproject/numix-icon-theme-square/
 	arch = any
 	license = GPL3
 	depends = numix-icon-theme-git
 	depends = gtk-update-icon-cache
-	provides = numix-square-icon-theme=21.11.07
+	provides = numix-square-icon-theme=22.01.10
 	conflicts = numix-square-icon-theme-git
 	options = !strip
-	source = https://github.com/numixproject/numix-icon-theme-square/archive/21.11.07.tar.gz
-	b2sums = fc96281bc55af7140c59afc756fe71f80b001e4a67fb9a1263648552330d97eb165c9d09913ee5988e4ace9af82f7f06ebe9b2b20a6cfbe04023504c477dc8ee
+	source = https://github.com/numixproject/numix-icon-theme-square/archive/22.01.10.tar.gz
+	b2sums = ceb74f9f82e62589f11a6658b9a469df5fd34549a67819a0c1d8e772b1472ace2499ccf647b53b3d7ffce8affbb8c4fd19288e7fc6d51dca11e5d8f2903a4279
 
 pkgname = numix-square-icon-theme
