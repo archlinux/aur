@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=95.0.2
+pkgver=96.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -24,23 +24,23 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 backup=('usr/lib/librewolf/librewolf.cfg'
         'usr/lib/librewolf/distribution/policies.json')
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags !strip !lto)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _common_tag="v${pkgver}-${pkgrel}"
-_settings_tag='4.0'
+_settings_tag='5.1'
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
-        ${_arch_git}/0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
+        "pref_pane.patch"
         )
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('c178cbf61979bd39a8daa9a09c6e03089da37baded692ad1f745ecfcaae74d64'
+sha256sums=('b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP'
-            '8a893ae44955c90a0fb4a504134773293054ab57a41ba7931df98c8cf5449549')
+            '982fe27ebcf8326c47ef7ca30436051fc18fa3de93aea06e9821618d33695be6')
 sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
@@ -96,6 +96,7 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # mk_add_options MOZ_MAKE_FLAGS="-j4"
 # ac_add_options --enable-linker=gold
 
+# wasi
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 END
 
@@ -128,9 +129,6 @@ fi
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   # patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
 
-  # Fix build with wayland 1.20
-  patch -Np1 -i ../0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
-
   # LibreWolf
 
   # Remove some pre-installed addons that might be questionable
@@ -138,7 +136,7 @@ fi
 
   # Disable (some) megabar functionality
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -Np1 -i ${_patches_dir}/megabar.patch
+  patch -Np1 -i ${_patches_dir}/deprecated/megabar.patch
 
   # Debian patch to enable global menubar
   # disabled for the default build, as it seems to cause issues in some configurations
@@ -166,16 +164,12 @@ fi
 
   # Assorted patches
   patch -Np1 -i ${_patches_dir}/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
 
   # allow overriding the color scheme light/dark preference with RFP
   # deprecated, will probably be dropped soon
   # patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
-
-  # fix an URL in 'about' dialog
-  patch -Np1 -i ${_patches_dir}/about-dialog.patch
 
   # change some hardcoded directory strings that could lead to unnecessarily
   # created directories
@@ -185,10 +179,6 @@ fi
   patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
 
   # ui patches
-
-  # show a warning saying that changing language is not allowed through the UI,
-  # and that it requires to visit our FAQ, instead of telling the user to check his connection.
-  patch -Np1 -i ${_patches_dir}/ui-patches/add-language-warning.patch
 
   # remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
@@ -208,6 +198,9 @@ fi
 
   # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
+
+  # pref pane
+  patch -Np1 -i ${srcdir}/pref_pane.patch
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/browser ./
@@ -333,8 +326,9 @@ END
     install -Dvm644 browser/branding/${pkgname}/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png"
   done
-  install -Dvm644 browser/branding/librewolf/content/about-logo.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
+  # 192x logo is gone. would need to convert from svg; skip for now
+  # install -Dvm644 browser/branding/librewolf/content/about-logo.png \
+    # "$pkgdir/usr/share/icons/hicolor/192x192/apps/$pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
   install -Dvm644 browser/branding/${pkgname}/default16.png \

@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 95.0.2
+	pkgver = 96.0
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
@@ -53,19 +53,20 @@ pkgbase = librewolf
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
+	options = !lto
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/95.0.2/source/firefox-95.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0/source/firefox-96.0.source.tar.xz
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v95.0.2-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=4.0
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk/0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
-	sha256sums = c178cbf61979bd39a8daa9a09c6e03089da37baded692ad1f745ecfcaae74d64
+	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v96.0-1
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=5.1
+	source = pref_pane.patch
+	sha256sums = b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 8a893ae44955c90a0fb4a504134773293054ab57a41ba7931df98c8cf5449549
-	source_aarch64 = 95.0.2-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	sha256sums = 982fe27ebcf8326c47ef7ca30436051fc18fa3de93aea06e9821618d33695be6
+	source_aarch64 = 96.0-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf
