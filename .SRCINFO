@@ -22,6 +22,7 @@ pkgbase = calibre-web
 	depends = python-iso639
 	depends = python-lxml
 	depends = python-flask-wtf
+	optdepends = python-jsonschema: kobo sync support
 	provides = calibre-web
 	source = calibre-web-0.6.14.tar.gz::https://github.com/janeczku/calibre-web/archive/0.6.14.tar.gz
 	source = calibre-web.service

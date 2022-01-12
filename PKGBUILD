@@ -27,6 +27,9 @@ depends=(
   'python-lxml'
   'python-flask-wtf'
 )
+optdepends=(
+  'python-jsonschema: kobo sync support'
+)
 provides=('calibre-web')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/janeczku/calibre-web/archive/${pkgver}.tar.gz"
