@@ -1,12 +1,12 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=extension-manager
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 arch=('x86_64')
 url="https://github.com/mjakeman/extension-manager"
 license=('GPL3')
-depends=('gtk4>=4.6' 'libadwaita' 'libsoup3' 'json-glib')
+depends=('gtk4>=1:4.6.0' 'libadwaita' 'libsoup3' 'json-glib')
 makedepends=('meson' 'blueprint-compiler-git' 'gobject-introspection')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
