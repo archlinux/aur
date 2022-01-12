@@ -13,8 +13,6 @@ pkgbase = ocrdesktop
 	depends = python-scipy
 	depends = python-pytesseract
 	depends = tesseract-data-eng
-	provides = ocrdesktop
-	conflicts = ocrdesktop-git
 	source = https://github.com/chrys87/ocrdesktop/archive/refs/tags/v3.0.tar.gz
 	md5sums = 52bb16d1b65c8a84e6728e4aa3187be4
 

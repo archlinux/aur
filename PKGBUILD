@@ -9,8 +9,6 @@ license=('GPL3')
 depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-webcolors' 'python-scipy' 'python-pytesseract' 'tesseract-data-eng')
 source=("https://github.com/chrys87/ocrdesktop/archive/refs/tags/v$pkgver.tar.gz")
 install='ocrdesktop.install'
-provides=('ocrdesktop')
-conflicts=('ocrdesktop-git')
 md5sums=("52bb16d1b65c8a84e6728e4aa3187be4")
 
 package() {
