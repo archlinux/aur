@@ -2,18 +2,11 @@ pkgbase = python2-gunicorn
 	pkgdesc = WSGI HTTP Server for UNIX
 	pkgver = 19.9.0
 	pkgrel = 3
-	url = http://gunicorn.org/
+	url = https://gunicorn.org
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	source = gunicorn-19.9.0.tar.gz::https://github.com/benoitc/gunicorn/archive/19.9.0.tar.gz
+	source = https://github.com/benoitc/gunicorn/archive/19.9.0.tar.gz
 	sha512sums = 8d1ff775dd5c1abb8bb4c80aecacb544382e38d101f105fd0fd7eb6bf98ecb663dd533d16e7b1741d6e5ef0eb12a707ab90e0a7751356e625725f076b4dc1a30
 
 pkgname = python2-gunicorn
-	depends = python2-setuptools
-	optdepends = python2-eventlet: For asynchronous request handling with eventlet.
-	optdepends = python2-gevent: For asynchronous request handling with gevent.
-	provides = gunicorn-python2
-	conflicts = gunicorn-python2
-	replaces = gunicorn-python2
-
