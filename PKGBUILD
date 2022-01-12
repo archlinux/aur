@@ -2,8 +2,8 @@
 
 _pkgname=single-file
 pkgname=single-file-git
-pkgver=r4448.6de221b2
-pkgrel=2
+pkgver=r6826.6c5ed9c2
+pkgrel=1
 pkgdesc="Command line tool to download a web page into a single HTML file"
 arch=('any')
 url="https://github.com/gildas-lormeau/SingleFile"
@@ -11,7 +11,7 @@ license=('GNU Affero GPL')
 makedepends=('git' 'npm')
 depends=('nodejs')
 provides=('single-file')
-source=("${_pkgname}::git://github.com/gildas-lormeau/SingleFile.git")
+source=("${_pkgname}::git+https://github.com/gildas-lormeau/SingleFile.git")
 sha256sums=('SKIP')
 
 pkgver() {
