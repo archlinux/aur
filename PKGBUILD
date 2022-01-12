@@ -1,44 +1,27 @@
 # Contributor: Thomas Fanninger <thomas@fanninger.at>
-# Maintainer: Thomas Fanninger <thomas@fanninger.at>
-
-pkgbase=python-e4u
-pkgname=('python-e4u' 'python2-e4u')
-pkgver=0.1rc4
-pkgrel=2
+_base=e4u
+pkgname=python-${_base}
+pkgver=0.1rc5
+pkgrel=1
 epoch=1
 pkgdesc="Bundle Library of emoji4unicode at Google"
 arch=('any')
-url="https://github.com/lambdalisue/e4u"
-license=('GPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-beautifulsoup4' 'python2-beautifulsoup3')
-options=('!strip' '!emptydirs')
+url="https://github.com/lambdalisue/${_base}"
+license=('custom')
+depends=(python-utils python-beautifulsoup4)
+makedepends=(python-setuptools)
+# options=('!strip' '!emptydirs')
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('SKIP')
 
-source=("$pkgbase-$pkgver.tar.gz"::"https://github.com/lambdalisue/e4u/archive/${pkgver}.tar.gz")
-sha512sums=(SKIP)
-
-build(){
-  cd $srcdir
-  cp -r e4u-${pkgver} python2-e4u-${pkgver}
+build() {
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
-package_python-e4u() {
-  depends=('python' 'python-beautifulsoup4')
-
-  cd "${srcdir}/e4u-${pkgver}"
-  python3 setup.py install --root=$pkgdir --optimize=1
-}
-
-package_python2-e4u() {
-  depends=('python2' 'python2-beautifulsoup3')
-
-  cd "${srcdir}/python2-e4u-${pkgver}"
-  python2 setup.py install --root=$pkgdir --optimize=1
-}
-
-check(){
-  cd ${srcdir}/e4u-${pkgver}
-  #python3 setup.py test
-
-  cd ${srcdir}/python2-e4u-${pkgver}
-  python2 setup.py test
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
