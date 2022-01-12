@@ -1,7 +1,7 @@
 # Maintainer: doublesack <doublesackI@gmail.com>
 pkgname=('python-osqp')
 _module='osqp-python'
-pkgver=v0.6.2.post0
+pkgver=v0.6.2.post5
 pkgrel=1
 pkgdesc="Python interface for OSQP (Operator Splitting QP Solver)"
 url="http://github.com/oxfordcontrol/osqp-python"

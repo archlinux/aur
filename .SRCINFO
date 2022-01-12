@@ -1,6 +1,6 @@
 pkgbase = python-osqp
 	pkgdesc = Python interface for OSQP (Operator Splitting QP Solver)
-	pkgver = v0.6.2.post0
+	pkgver = v0.6.2.post5
 	pkgrel = 1
 	url = http://github.com/oxfordcontrol/osqp-python
 	arch = x86_64
