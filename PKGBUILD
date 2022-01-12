@@ -46,13 +46,14 @@ package() {
   chmod 0775 "${pkgdir}/usr/share/fhem"
 
   # Remove unnecessary stuff
-  rm -r "${pkgdir}/usr/share/fhem/contrib/DEBIAN"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/FB7270"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/FB7390"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/init-scripts"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/lcd4linux"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/PRESENCE/deb"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/RaspberryPi"
-  rm -r "${pkgdir}/usr/share/fhem/contrib/Synology"
+  rm --recursive \
+    "${pkgdir}/usr/share/fhem/contrib/DEBIAN" \
+    "${pkgdir}/usr/share/fhem/contrib/FB7270" \
+    "${pkgdir}/usr/share/fhem/contrib/FB7390" \
+    "${pkgdir}/usr/share/fhem/contrib/init-scripts" \
+    "${pkgdir}/usr/share/fhem/contrib/lcd4linux" \
+    "${pkgdir}/usr/share/fhem/contrib/PRESENCE/deb" \
+    "${pkgdir}/usr/share/fhem/contrib/RaspberryPi" \
+    "${pkgdir}/usr/share/fhem/contrib/Synology"
   rmdir --ignore-fail-on-non-empty --parents "${pkgdir}/var/lib/fhem"
 }
