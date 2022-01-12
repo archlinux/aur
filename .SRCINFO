@@ -1,7 +1,7 @@
 pkgbase = heli-x
 	pkgdesc = Professional R/C Flight Simulator
 	pkgver = 10.0.2465
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.heli-x.info
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = heli-x
 	source = heli-x-wrapper.sh
 	source = heli-x.desktop
 	source = heli-x-server.desktop
-	sha512sums = 22e2323e71396dc38d94142ef6235b1002fec094ab00fbdc5dae59fd5863c5692ab4c8491f21af7c0a48588c368d339d6019f0fe91ade57fa790b55d13ddcb87
+	sha512sums = 99c74a4f628b0d25a082b8685e6c1869c94142233e703914313fd2da5984c1c1d1444627588c1a84ed2144e94dbaa8d1bb0e830ce350bf57f1957ac6250d42bc
 	sha512sums = b8d49650284a8b7b05bc65aaed1c2bc3219cfa448165fb90b5953e2ad92a716a7543d1fb9da258162bf3541e116a7d59fc9235fdada263e8b5ff878cc4a35f31
 	sha512sums = 32cca4e3a8fcdee8553931b82bf867bfdf20594b02cce8125ad8967ed56f5d10405490dc9c12f50a4a37f8c280f4dfd843a228e09cf7ec7250ae7724de207b5b
 	sha512sums = b6b318c787c45602f0f1cfe1e30edfc56a2fec4fd98d8add9715ef950a9355dee0f5267378a4f4aade487bb75e26150b87ece9481278dee8c20775ca01669a90
