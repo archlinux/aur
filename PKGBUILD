@@ -1,52 +1,25 @@
-# Maintainer: mawcomw <mawcomw@gmail.com>
-
-pkgbase=python-dj-database-url
-pkgname=('python-dj-database-url' 'python2-dj-database-url')
-pkgver=0.4.2
+# Contributor: mawcomw <mawcomw@gmail.com>
+_base=dj-database-url
+pkgname=python-${_base}
+pkgver=0.5.0
 pkgrel=0
 arch=('i686' 'x86_64')
-url="https://github.com/kennethreitz/dj-database-url"
-license=('BSD')
-makedepends=('python2' 'python')
-source=("https://github.com/kennethreitz/dj-database-url/archive/v$pkgver.tar.gz")
-md5sums=('c7c63c1a57ee464d15ea26d1a21e9536')
-
-prepare() {
-   cp -r dj-database-url-${pkgver} python2-dj-database-url-${pkgver}
-}
+pkgdesc="Use Database URLs in your Django Application"
+url="https://github.com/kennethreitz/${_base}"
+license=('custom')
+depends=(python)
+makedepends=(python-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('541d5177bff0fcc21372d2d9dc699ba11de1b1cabf10d61fb9f1e844a6dd4d46df5c7fdb6ccb4505cf984e41d7a2ae4e3af5e7d05072b0ed6982499eac5aac66')
 
 build() {
-   cd $srcdir/dj-database-url-${pkgver}
-   python setup.py build
-   
-   cd $srcdir/python2-dj-database-url-${pkgver}
-   python2 setup.py build
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
-#check(){
-#   cd $srcdir/dj-database-url-${pkgver}
-#   python setup.py test
-#
-#   cd $srcdir/python2-dj-database-url-${pkgver}
-#   python2 setup.py test
-#}
-
-package_python-dj-database-url() {
-   pkgdesc="A simple Python3 utility that allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application."
-   depends=('python')
-
-   cd dj-database-url-${pkgver}
-   python setup.py install --root="${pkgdir}" --optimize=1
-   
-   #install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
-}
-
-package_python2-dj-database-url() {
-   pkgdesc="A simple Python2 utility that allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application."
-   depends=('python2')
-   
-   cd python2-dj-database-url-${pkgver}
-   python2 setup.py install --root="${pkgdir}" --optimize=1
-   
-   #install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE.txt
 }
