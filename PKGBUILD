@@ -1,24 +1,24 @@
 # Maintainer: Luo Yi <langisme_at_qq_dot_com>
 
+# Contributor: Joakim Soderlund <joakim.soderlund@gmail.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
 pkgver=41.3
-pkgrel=1.1
-pkgdesc="A window manager for GNOME, with rounded corners patch"
+pkgrel=1.2
+pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile libsysprof-capture wireplumber)
+         xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof)
-checkdepends=(xorg-server-xvfb python-dbusmock)
+checkdepends=(xorg-server-xvfb python-dbusmock wireplumber)
 provides=(libmutter-9.so mutter)
 conflicts=(mutter)
 groups=(gnome)
@@ -45,6 +45,7 @@ source=("$_mutter_src"
         "shader.h"
         "$_shell_blur_h_src"
         "$_shell_blur_c_src"
+        "mr1441.patch"
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -54,7 +55,8 @@ sha256sums=('SKIP'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
             '644ab34d1c6eebe8d632b3b26a993a2b9f8a5b58c821758c50eef1cdd0b7cc0c'
             '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
-            'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a')
+            'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a'
+            'cf99896763558258f489ff0e9a1e8001f716d63b06366f740e044cc72a71d3e7')
 
 pkgver() {
   cd $pkgname
@@ -69,6 +71,7 @@ prepare() {
   cp $srcdir/*.[ch] $srcdir/$pkgname/src
   patch -p1 < $srcdir/rounded_corners.patch
   patch -p1 < $srcdir/shell_blur_effect.patch
+  patch -p1 < $srcdir/mr1441.patch
 }
 
 build() {
