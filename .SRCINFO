@@ -1,8 +1,8 @@
 pkgbase = vfu
 	pkgdesc = Versatile text-based file-manager
-	pkgver = 4.21
+	pkgver = 4.22
 	pkgrel = 1
-	url = http://cade.datamax.bg/vfu/
+	url = http://cade.noxrun.com/projects/vfu
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -10,15 +10,13 @@ pkgbase = vfu
 	arch = ppc64le
 	license = GPL
 	depends = ncurses
-	depends = pcre
 	optdepends = perl: for the rx_* archiving utilities
 	optdepends = rpmextract: for rx_rpm
 	optdepends = unrar: for rx_rar
 	optdepends = unzip: for rx_zip
 	backup = etc/vfu.conf
 	backup = etc/vfu/vfu.conf
-	source = http://cade.datamax.bg/vfu/vfu-4.21.tar.gz
-	sha256sums = f675abdeb6e1b933db956ef6a78c0a1abd0f87166981158fef3146f17a256c37
+	source = http://cade.noxrun.com/projects/vfu/vfu-4.22.tar.gz
+	sha256sums = 39d726cc4c24945c85cd76842053f01bdf686728dad2add6ca2f0157fa409223
 
 pkgname = vfu
-
