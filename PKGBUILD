@@ -1,4 +1,4 @@
-# Maintainer: Luke Featherston <lukefeatherston at gmail dot com>
+# Maintainer: Luke Featherston <lukefeatherston1223 at gmail dot com>
 _pkgname=siji
 _commit=14e7da94de514c3ada6a2b250ae3a1e76cb6c94f
 pkgname="${_pkgname}-ttf"
@@ -10,7 +10,6 @@ conflicts=("${_pkgname}")
 arch=('any')
 url="https://github.com/fauno/${_pkgname}"
 license=('GPLv2')
-depends=('fontconfig' 'xorg-mkfontscale' 'xorg-xset')
 optdepends=('xorg-xfd: use view.sh script to view glyphs' 'font-manager: alternate way to view glyphs')
 makedepends=('git')
 source=("${pkgname}-${pkgver}::git+https://github.com/fauno/siji/#commit=${_commit}")
