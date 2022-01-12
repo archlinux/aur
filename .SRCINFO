@@ -36,7 +36,7 @@ pkgbase = gzdoom
 	optdepends = xorg-xmessage: crash dialog (other)
 	replaces = gzdoom1
 	replaces = gzdoom-legacy
-	source = gzdoom::git://github.com/coelckers/gzdoom.git#tag=g4.7.1
+	source = gzdoom::git+https://github.com/coelckers/gzdoom.git#tag=g4.7.1
 	source = gzdoom.desktop
 	source = 0001-Fix-file-paths.patch
 	sha256sums = SKIP
