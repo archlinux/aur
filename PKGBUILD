@@ -1,9 +1,9 @@
-# Maintainer: Nemo aur [at] captnemo.in
+# Maintainer: Nemo <archlinux at captnemo dot in>
 pkgname=notable-insiders-electron
 pkgdesc='Insider build of the Notable note-taking app'
 _electron=electron16
 packager="nemo"
-_pkgver="1.9.0-beta.3"
+_pkgver="1.9.0-beta.4"
 pkgver=${_pkgver/-/.}
 pkgrel=1
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('asar')
 depends=($_electron sh)
 source=("$url/releases/download/v$_pkgver/Notable-$_pkgver.AppImage"
         "notable.desktop")
-sha512sums=('76414dafd5ee5f525365d2f9a1232d0436c75de8c2f083853724fb936145d56dd9027dc3bcc35a4edc4b1d399788275fa35bfb5a91dbe08403d9cc13bc8b2816'
+sha512sums=('b44c3f80181a3e627ebd06261237599ee56491ac7cc596ce72a5585e66c0b3709c933fbf3ede68177102a2111b8b77b01eaabd7968beafe4bc2ff9b8ad944911'
             '3f95463979fb112d08077ecda88663a1bf978b6367b035037a6615039bafd7f3d248eaf1cce0182844f2b7d727ba8430cf2d954fe776314a1da966c5cbf99270')
 provides=('notable')
 conflicts=('notable-insiders-bin')
