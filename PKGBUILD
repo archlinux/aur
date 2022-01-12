@@ -22,7 +22,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/bin
-ExecStart=/usr/bin/alist -conf /etc/alist.json
+ExecStart=/usr/bin/alist -conf data/config.json
 Restart=on-failure
 
 [Install]
