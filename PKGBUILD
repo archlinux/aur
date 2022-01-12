@@ -1,52 +1,25 @@
-# Maintainer: mawcomw <mawcomw@gmail.com>
-
-pkgbase=python-django-reversion
-pkgname=('python-django-reversion' 'python2-django-reversion')
-pkgver=1.8.5
+# Contributor: mawcomw <mawcomw@gmail.com>
+_base=django-reversion
+pkgname=python-${_base}
+pkgver=4.0.1
 pkgrel=1
 arch=(any)
-url="http://github.com/etianen/django-reversion"
-license=('BSD')
-makedepends=( 'python2' 'python2-setuptools' 'python' 'python-setuptools' )
-source=( "https://pypi.python.org/packages/source/d/django-reversion/django-reversion-$pkgver.tar.gz" )
-md5sums=( '2de5a3fe82aaf505c134570f96fcc7a8' )
-
-prepare() {
-   cp -r django-reversion-${pkgver} python2-django-reversion-${pkgver}
-}
+url="https://github.com/etianen/${_base}"
+pkgdesc="An extension to the Django web framework that provides version control for model instances"
+license=('custom')
+depends=(python-django)
+makedepends=(python-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('52d0f7548a1622b6e50dbbcc8cfaa4f5ef2aae1e257b227718e1d9b1906529e8ba569418026cc1a7961f7418aba09e7c90ab4020f6c4021e581dfb8fbfd8b193')
 
 build() {
-   cd $srcdir/django-reversion-${pkgver}
-   python setup.py build
-
-   cd $srcdir/python2-django-reversion-${pkgver}
-   python2 setup.py build
+  cd "${_base}-${pkgver}"
+  python setup.py build
 }
 
-#check(){
-#   cd $srcdir/django-reversion-${pkgver}
-#   python setup.py test
-#   
-#   cd $srcdir/python2-django-reversion-${pkgver}
-#   python2 setup.py test
-#}
-
-package_python-django-reversion() {
-   depends=('python' )
-   pkgdesc="An python3 extension to the Django web framework that provides comprehensive version control facilities"
-
-   cd $srcdir/django-reversion-${pkgver}
-   python setup.py install --root="$pkgdir" --optimize=1 
-
-   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
-}
-
-package_python2-django-reversion() {
-   depends=('python2' )
-   pkgdesc="An python2 extension to the Django web framework that provides comprehensive version control facilities"
-   
-   cd python2-django-reversion-${pkgver}
-   python2 setup.py install --root="${pkgdir}" --optimize=1
-
-   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
