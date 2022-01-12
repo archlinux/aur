@@ -1,9 +1,10 @@
+# Maintainer: Alfred Jophy alfredjophy <at> protonmail <dot> com
 # Maintainer: Cullen Ross <cullenrss at gmail.com>
 # Contributer: Alexis Viguié <net at siphonay.fr>
 
 _name=farge
 pkgname="${_name}-git"
-pkgver=20190723
+pkgver=r56.eadb483
 pkgrel=1
 pkgdesc="Click on a pixel on your screen and show its color value"
 arch=('any')
@@ -25,6 +26,11 @@ provides=("${_name}")
 conflicts=("${_name}")
 source=("${_name}::git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	cd "${srcdir}/${_name}"
