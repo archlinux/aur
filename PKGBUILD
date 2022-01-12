@@ -1,7 +1,7 @@
 # Maintainer: Tobias Borgert <tobias.borgertt@gmail.com>
 
 pkgname=fineftp-server
-pkgver=1.0.13
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="FineFTP is a minimal FTP server library for Windows and Unix flavors"
 arch=('any')
@@ -10,8 +10,14 @@ license=('MIT')
 depends=('asio')
 makedepends=()
 optdepends=()
-source=(https://github.com/continental/fineftp-server/archive/v$pkgver.tar.gz)
-md5sums=('c1d6db6add56bfe25fb57542982924fe')
+source=(https://github.com/continental/fineftp-server/archive/v$pkgver.tar.gz
+        Findasio.cmake.patch)
+md5sums=('a59fe090a62bc211751ccb153ff15b4c'
+         '4073a681f63f2b346acefebe026f506f')
+
+prepare() {
+    patch --forward --strip=1 --input="../Findasio.cmake.patch" "$pkgname-$pkgver/cmake/Findasio.cmake"
+}
 
 build() {
     cd $pkgname-$pkgver
