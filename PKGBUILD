@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=95.0.2
+pkgver=96.0
 pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -31,7 +31,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 backup=('usr/lib/cachy-browser/cachy.cfg'
         'usr/lib/cachy-browser/distribution/policies.json')
 groups=('cachyos')
-options=(!emptydirs !strip !makeflags)
+options=(!emptydirs !strip !makeflags !lto)
 _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 # _common_tag="v90.0-1"
 _common_tag="v${pkgver}-${pkgrel}"
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('c178cbf61979bd39a8daa9a09c6e03089da37baded692ad1f745ecfcaae74d64'
+sha256sums=('b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP')
@@ -129,14 +129,16 @@ END
 
   # Gentoo patches
   msg2 "---- Gentoo patches"
-  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0025-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0022-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0027-Make-elfhack-use-toolchain.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0026-Make-elfhack-use-toolchain.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0028-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
   # Use more system libs
   msg2 "---- Patching for system libs"
@@ -146,10 +148,10 @@ END
 
   # upstream Arch fix
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  echo "---- Arch patches"
+  msg2 "---- Arch patches"
   patch -Np1 -i ${_patches_dir}/arch/0001-arch.patch
 
-  echo "---- Librewolf patches"
+  msg2 "---- Librewolf patches"
   msg2 "Remove some pre-installed addons that might be questionable"
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
@@ -158,7 +160,7 @@ END
   patch -Np1 -i ${_patches_dir}/megabar.patch
 
   # KDE patches (W. Rosenauer)
-  echo "---- Patching for KDE"
+  msg2 "---- Patching for KDE"
   patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
   patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
 
@@ -182,6 +184,7 @@ END
 
   #msg2  "remove search extensions (experimental)"
   #patch -Np1 -i ${_patches_dir}/search-config.patch
+
   cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
@@ -193,9 +196,8 @@ END
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
 
-
-  msg2 "allow overriding the color scheme light/dark preference with RFP"
-  patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
+  #msg2 "allow overriding the color scheme light/dark preference with RFP"
+  #patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
 
   msg2 "fix an URL in 'about' dialog"
   patch -Np1 -i ${_patches_dir}/about-dialog.patch
@@ -203,13 +205,14 @@ END
   msg2 "change some hardcoded directory strings that could lead to unnecessarily created directories"
   patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
-  # allow uBlockOrigin to run in private mode by default, without user intervention.
+  msg2  "allow uBlockOrigin to run in private mode by default, without user intervention."
   patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
 
-  msg2 "fix an URL in 'about' dialog"
-  patch -Np1 -i ${_patches_dir}/fix-wayland.patch
+  # msg2 "fix an URL in 'about' dialog"
+  # patch -Np1 -i ${_patches_dir}/fix-wayland.patch
+  patch -Np1 -i ${_patches_dir}/fix-psutil.patch
 
-  patch -Np1 -i ${_patches_dir}/1745560-Add-missing-stub-for-wl_proxy_marshal_flags.patch
+  #
   #patch -Np1 -i ${_patches_dir}/use-mcpu-native-with-lto-pgo.patch
 
   # ui patches
