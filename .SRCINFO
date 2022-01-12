@@ -1,6 +1,6 @@
 pkgbase = nvidia-merged
 	pkgver = 460.73.01
-	pkgrel = 15
+	pkgrel = 16
 	url = https://krutavshah.github.io/GPU_Virtualization-Wiki/
 	arch = x86_64
 	groups = nvidia-merged
@@ -55,6 +55,7 @@ pkgname = lib32-opencl-nvidia-merged
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = lib32-opencl-driver
 	provides = lib32-opencl-nvidia
+	conflicts = lib32-opencl-nvidia
 
 pkgname = nvidia-merged-dkms
 	pkgdesc = NVIDIA drivers - module sources; patched for vGPU support w/ Rust unlock
@@ -98,3 +99,4 @@ pkgname = opencl-nvidia-merged
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
 	provides = opencl-nvidia
+	conflicts = opencl-nvidia
