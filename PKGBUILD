@@ -1,6 +1,13 @@
 # Maintainer: Evgeny Myandin <evgeny.myandin[at]gmail[dot]com>
+# Manjaro credits:
+# Bernhard Landauer <bernhard@manjaro.org>
+# Philip Müller <philm[at]manjaro[dot]org>
+# Arch credits:
+# Tobias Powalowski <tpowa@archlinux.org>
+# Thomas Baechler <thomas@archlinux.org>
 #
 # This is original kernel of Manjaro Linux + ACS patch
+
 
 pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
