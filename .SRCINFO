@@ -1,0 +1,12 @@
+pkgbase = alist-bin
+	pkgdesc = Another file list program that supports multiple storage
+	pkgver = 2.0.5
+	pkgrel = 2
+	url = https://github.com/Xhofe/alist
+	arch = x86_64
+	license = AGPL3
+	provides = alist
+	source = https://github.com/Xhofe/alist/releases/download/v2.0.5-libc/alist-linux-amd64.tar.gz
+	sha256sums = 7ccb47ae3e69395e0127d0cc3d3bee68e57859dee9e0bb23d267e008ba488c7b
+
+pkgname = alist-bin
