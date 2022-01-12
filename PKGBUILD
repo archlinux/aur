@@ -28,8 +28,8 @@ depends=(
 makedepends=(pkgconf)
 checkdepends=()
 optdepends=(
-    'sxhkd: Hotkey Daemon'
-    'pipewire: very good sound server than pulse audio'
+    'sxhkd: hotkey daemon'
+    'pipewire: sound server - very good alternative to pulseaudio'
     'pipewire-pulse: pulse compatibility layer for pipewire'
 )
 # Add in future version: 'pasystray: System Tray Icon for Audio Control'
