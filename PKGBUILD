@@ -1,3 +1,4 @@
+# Maintainer: Joe Baldino <pedanticdm@gmx.us>
 # Contributor: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Brian "Beej" Hall <beej@beej.us>
