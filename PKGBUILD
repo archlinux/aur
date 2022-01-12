@@ -3,7 +3,7 @@
 pkgname=ananicy-cpp
 _pkgver=1.0.0-rc5
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
 license=(GPLv3)
@@ -31,16 +31,16 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-v${_pkgver}/build"
+	cd "$pkgname-v${_pkgver}"
 
-	cmake --build .
+	cmake --build build
 }
 
 package() {
-	cd "$pkgname-v${_pkgver}/build"
+	cd "$pkgname-v${_pkgver}"
 
 	export DESTDIR="$pkgdir"
-	cmake --install .
+	cmake --install build --component Runtime
 
 	install -m755 -d "$pkgdir/etc/ananicy.d"
 }
