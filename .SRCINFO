@@ -1,7 +1,7 @@
 pkgbase = farge-git
 	pkgdesc = Click on a pixel on your screen and show its color value
 	pkgver = r56.eadb483
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sdushantha/farge
 	arch = any
 	license = MIT
