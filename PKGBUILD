@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 
 pkgname=gnome-search-providers-jetbrains
-pkgver=1.9.0
-pkgrel=2
+pkgver=1.9.1
+pkgrel=1
 pkgdesc="Add Jetbrains IDE projects to Gnome Search"
 arch=('x86_64')
 url="https://github.com/lunaryorn/gnome-search-providers-jetbrains"
@@ -10,13 +10,17 @@ license=('MPL2')
 depends=('gnome-shell')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-md5sums=('d3231c30e590b3a2d7ed116cfdcf8bc9')
-sha1sums=('01a98fbc6ccb8b737bfa6a807562b061b294dd0e')
-sha512sums=('1fbc74de8d9348cacfda0b56993b234a36d9f77625d52ca1fac582e8548f425eb30abd72b273074aa6f52d029dce92a8f7be45ccc96676dbf38400b7333345cf')
+md5sums=('3de447237ce5293a4c95c86c4debc57f')
+sha1sums=('f9b7c99834ad83def2ad201438f76b06093e1ecf')
+sha512sums=('c2b8598d4a750e9462bafbeb4e3561cba8359f85dcb6d2a7946267cda0b57a08a300c02f56fd70fd39e2f54408df95fa8d3efd01894962ec5778b4fca2c53a5e')
+
+build() {
+	cd "$pkgname-$pkgver"
+	export RUSTFLAGS='--cap-lints=allow'
+	make PREFIX="/usr" build
+}
 
 package() {
 	cd "$pkgname-$pkgver"
-
-	export RUSTFLAGS='--cap-lints=allow'
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
