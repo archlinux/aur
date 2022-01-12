@@ -1,7 +1,7 @@
 # Maintainer: Dhananjay Tanpure <dtan13@pm.me>
 
 pkgname="xplorer-bin"
-pkgver="0.3.0"
+pkgver="0.3.1"
 pkgrel=1
 pkgdesc="Xplorer, a customizable, modern file manager"
 arch=("any")
@@ -18,7 +18,7 @@ source=(
 )
 
 sha256sums=(
-	"48f302db523c60bd6a4dac90672ae9bb74d7f01d083551906da81d30abc0a7b7"
+	"b1f18cc3f079aa52dc38afa69ee2a81d283162f444a5787163f6bc17ed070e34"
 	"35b1ad3c63571b825b1bf9ccb0134df153c8ed8d0d29f0cefa898f5ea220669c"
 )
 
