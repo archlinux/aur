@@ -1,7 +1,7 @@
 pkgbase = rofi-gister-git
 	pkgdesc = Rofi user script for accessing gists synced by gister
 	pkgver = r6.77229b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hwangeug/rofi-gister
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,7 @@ pkgbase = rofi-gister-git
 	depends = gister-git
 	provides = rofi-gister
 	conflicts = rofi-gister
-	source = rofi-gister::git://github.com/hwangeug/rofi-gister.git
+	source = rofi-gister::git+https://github.com/hwangeug/rofi-gister.git
 	sha256sums = SKIP
 
 pkgname = rofi-gister-git
-
