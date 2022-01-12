@@ -3,7 +3,7 @@ _release=beta
 _target=aur
 
 pkgname=makedeb-beta
-pkgver=8.7.0
+pkgver=8.7.1
 pkgrel=1
 pkgdesc="A simplicity-focused packaging tool for Debian archives (${_release} release)"
 arch=('any')
