@@ -1,7 +1,7 @@
 # Maintainer: Gimmeapill <gimmeapill at gmail dot com>
 
 pkgname=fluidplug-git
-pkgver=r36.889b256
+pkgver=r37.8457f10
 pkgrel=1
 pkgdesc="SoundFonts as LV2 plugins via FluidSynth"
 arch=('i686' 'x86_64')
@@ -9,15 +9,20 @@ url="https://github.com/falkTX/FluidPlug"
 license=('CCPL')
 groups=('lv2-plugins')
 depends=('fluidsynth')
-makedepends=('git' 'wget' 'lv2' 'p7zip')
+makedepends=('git' 'wget' 'lv2' 'p7zip' 'fluidsynth')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git://github.com/falkTX/FluidPlug.git")
+source=("${pkgname%-*}::git+https://github.com/falkTX/FluidPlug.git")
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname%-*}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${pkgname%-*}"
+	make DESTDIR=$pkgdir download
 }
 
 build() {
