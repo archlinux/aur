@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=transmission-remote-gtk-git
-pkgver=1.4.1.r7.gafc1514
+pkgver=1.4.2.r27.g64a0250
 pkgrel=1
 pkgdesc='A remote interface to the Transmission BitTorrent client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -10,7 +10,7 @@ license=('GPL')
 options=('!libtool')
 depends=('gtk3' 'libnotify' 'curl' 'libproxy' 'geoip'
          'desktop-file-utils')
-makedepends=('intltool' 'git' 'appstream-glib' 'autoconf-archive')
+makedepends=('intltool' 'git' 'appstream-glib' 'meson')
 provides=('transmission-remote-gtk')
 conflicts=('transmission-remote-gtk')
 source=('git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git')
@@ -24,19 +24,15 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir"
+  mkdir -p build
+  env POD2MAN=/usr/bin/core_perl/pod2man \
+    meson setup build "$_gitname" --prefix=/usr
 }
 
 build() {
-  cd "$_gitname"
-
-  env POD2MAN=/usr/bin/core_perl/pod2man \
-    ./autogen.sh --prefix=/usr --disable-debug --disable-desktop-database-update
-  make -s
+  meson compile -C build
 }
 
 package() {
-  cd "$_gitname"
-
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir="$pkgdir"
 }
