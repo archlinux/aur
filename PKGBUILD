@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=41.2
-pkgrel=2.1
+pkgver=41.3
+pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -18,13 +18,13 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof)
-checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
+checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
 provides=(libmutter-9.so mutter)
 conflicts=(mutter)
 groups=(gnome)
 install=mutter.install
 
-_commit=664ac09eecfd365b5258f53d2c9e6c8410a37919  # tags/41.2^0
+_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c"
@@ -32,7 +32,7 @@ _settings_src="mutter_settings::git+https://github.com/yilozt/mutter-rounded-set
 
 # Mirrors in Gitee
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
-  _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
+  # _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
   _settings_src="mutter_settings::git+https://gitee.com/lluo/mutter-rounded-setting/"
 fi
 
@@ -48,7 +48,7 @@ source=("$_mutter_src"
         )
 sha256sums=('SKIP'
             'SKIP'
-            'f161768e446deb36ea787f03daf3162b517f091a1690b1938c99b777687f44f0'
+            '347cb5fd030d693b9d7892e8f27157f5fbc12c6e2611a12acc0174d89c4c6cf3'
             '895f35f5e8a458c71b4312061cf7d2b0108a3c6df4b0324ab342c5a3576ee09a'
             'dc4279ec3c0995ba9a9ee3ecd581376140c78089a058863dea0bd9ec7894dc49'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
@@ -89,7 +89,7 @@ _check() (
   pipewire &
   _p1=$!
 
-  wireplumber &
+  pipewire-media-session &
   _p2=$!
 
   trap "kill $_p1 $_p2; wait" EXIT
