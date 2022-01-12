@@ -1,34 +1,31 @@
-_appname=omikhleia-sile-packages
-_builddir=build
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: hollma <hollma@users.noreply.github.com>
 
-pkgname=${_appname}-git
-pkgver=20211212.7693970
+pkgname=sile-package-omikhleia-git
+_project=omikhleia-sile-packages
+pkgver=r132.ab974f4
 pkgrel=1
-pkgdesc="Packages and classes for the SILE typesetter"
-arch=('aarch64' 'i686' 'x86_64')
-url="https://github.com/Omikhleia/omikhleia-sile-packages"
-license=('MIT')
-depends=('sile')
-makedepends=('git')
-source=("${_appname}::git+https://github.com/Omikhleia/${_appname}")
-sha1sums=('SKIP')
+pkgdesc="Omikhleia's packages and classes for The SILE Typesetter"
+arch=(any)
+url="https://github.com/Omikhleia/$_project"
+license=(MIT)
+depends=(sile)
+provides=(${pkgname%-git})
+conflicts=(${pkgname%-git})
+makedepends=(git)
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-cd "${srcdir}/${_appname}"
-git log -1 --format='%cd.%h' --date=short | tr -d -
-}
-
-build() {
-echo "build ..."
+	cd "$pkgname"
+	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-mkdir -p "${pkgdir}/usr/share/sile/"
-mkdir -p "${pkgdir}/usr/share/sile/"
-
-cd "${srcdir}/${_appname}"
-cp -R classes "${pkgdir}/usr/share/sile/"
-cp -R packages "${pkgdir}/usr/share/sile/"
-cp -R docs "${pkgdir}/usr/share/sile/"
-cp -R examples "${pkgdir}/usr/share/sile/"
+	cd "$pkgname"
+	local _sharedir="$pkgdir/usr/share/sile/sile/"
+	mkdir -p "$_sharedir"
+	cp -R classes packages preambles "$_sharedir"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/share/docs/$pkgname/" docs/*.pdf
 }

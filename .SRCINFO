@@ -1,15 +1,15 @@
-pkgbase = omikhleia-sile-packages-git
-	pkgdesc = Packages and classes for the SILE typesetter
-	pkgver = 20211212.7693970
+pkgbase = sile-package-omikhleia-git
+	pkgdesc = Omikhleia's packages and classes for The SILE Typesetter
+	pkgver = r132.ab974f4
 	pkgrel = 1
 	url = https://github.com/Omikhleia/omikhleia-sile-packages
-	arch = aarch64
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	depends = sile
-	source = omikhleia-sile-packages::git+https://github.com/Omikhleia/omikhleia-sile-packages
-	sha1sums = SKIP
+	provides = sile-package-omikhleia
+	conflicts = sile-package-omikhleia
+	source = sile-package-omikhleia-git::git+https://github.com/Omikhleia/omikhleia-sile-packages.git
+	sha256sums = SKIP
 
-pkgname = omikhleia-sile-packages-git
+pkgname = sile-package-omikhleia-git
