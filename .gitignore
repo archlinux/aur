@@ -1,7 +1,4 @@
 kotatogram-desktop*
-libvpx
-libyuv
-pipewire
 kotatogram-dev-git*
 pkg/
 src/
