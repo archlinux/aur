@@ -8,7 +8,7 @@ post_install() {
 
 post_upgrade() {
 	cd /var/lib/crowdsec/installers/crowdsec
-	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --upgrade --unattended
+	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --binupgrade
 	echo -ne "\n"
 	echo "Crowdsec installer files have been saved to /var/lib/crowdsec/installers"
 	echo "It's recommended to keep these in place for proper package removal"
