@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.876
+pkgver=mainline.0.877
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -38,7 +38,6 @@ source=(
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'git+https://github.com/ReinUsesLisp/sirit.git'
-	'unbundle-catch2.patch'
 	'unbundle-cubeb.patch'
 	'unbundle-discord-rpc.patch'
 	'unbundle-dynarmic.patch'
@@ -53,7 +52,6 @@ b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'a7617a02d632e3c5e30d965ab74b56e1e4dc4b3e7d75726e96f5eb855fa9cdeb0a9523645a2b6650b8e1e87c30242d04ea5dba5c04937944cf24685d31424280'
 	'5f1cf15e9486e50fe9416919bf34d9b78e5f02cab96216cef77f365855e4c09eaa74118de89c29f6b7899fa43f07e0f70ef8fb21e47808ef347212ea9ee4ed39'
 	'0c9b84444e4c938a04b1f60907fc816cbe8eb8d598a9a4b7e490750d339fac7a48de1b682bc5b00b6c2333b5f4e39b1738287b9168844094e3817703635aad9c'
 	'3e0faf4c5ef6a836001af09b90ebb7f9a0e3b9dc42c1a312815f4ad9c4dc1ed79672539cecdbaf7ce01f2297a76dc3f17579f058c5515d8f328fc286705192b6'
@@ -72,7 +70,6 @@ prepare() {
 	git submodule update
 	install -Dm644 "../gamedb-$(date -I).json" ../build/dist/compatibility_list/compatibility_list.json
 	ln -sr .git ../build
-	patch -Np1 < ../unbundle-catch2.patch
 	patch -Np1 < ../unbundle-cubeb.patch
 	patch -Np1 < ../unbundle-discord-rpc.patch
 	patch -Np1 < ../unbundle-dynarmic.patch
