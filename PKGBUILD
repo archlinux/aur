@@ -5,7 +5,7 @@ pkgname=riscv-gnu-toolchain-bin
 pkgver=2021.09.21
 _target=11.1.0
 _pkg_prefix=ubuntu-20.04-nightly
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU toolchain for RISC-V, including GCC. Precompiled riscv64-unknown-elf-gcc, riscv32-unknown-elf-gcc, riscv64-unknown-linux-gnu-gcc, and riscv32-unknown-linux-gnu-gcc."
 arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/riscv-collab/riscv-gnu-toolchain"
@@ -18,7 +18,7 @@ provides=(${pkgname}
 )
 depends=()
 optdepends=()
-makedepends=(curl python3 mpc mpfr gmp texinfo gperf libtool patchutils bc zlib expat)
+makedepends=(curl python3 libmpc mpfr gmp texinfo gperf libtool patchutils bc zlib expat)
 source=(
   "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv32-elf-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
   "https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/${pkgver}/riscv32-glibc-${_pkg_prefix}-${pkgver}-nightly.tar.gz"
