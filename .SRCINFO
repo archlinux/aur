@@ -6,7 +6,7 @@ pkgbase = envconsul-0.12.1
 	arch = x86_64
 	license = MPL-2.0
 	provides = envconsul
-	source = https://releases.hashicorp.com/envconsul-0.12.1/0.12.1/envconsul_0.12.1_linux_amd64.zip
+	source = https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_linux_amd64.zip
 	sha256sums = 361628aada03816d25ff13f4a0938953beda57f3a4ccd60e4278343762b95f6a
 
 pkgname = envconsul-0.12.1

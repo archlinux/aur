@@ -13,13 +13,14 @@ makedepends=()
 checkdepends=()
 optdepends=()
 provides=("envconsul")
-source=("https://releases.hashicorp.com/${pkgname}/${pkgver}/envconsul_${pkgver}_linux_amd64.zip")
+source=("https://releases.hashicorp.com/envconsul/${pkgver}/envconsul_${pkgver}_linux_amd64.zip")
 sha256sums=("361628aada03816d25ff13f4a0938953beda57f3a4ccd60e4278343762b95f6a")
 validpgpkeys=()
 
 package() {
-	cd "${srcdir}/"
-	mkdir -p "${pkgdir}/usr/local/bin"
-	install -m755 "${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
-	chmod +x ${pkgdir}/usr/local/bin/${pkgname}
+    pkgname=envconsul
+    cd "${srcdir}/"
+    mkdir -p "${pkgdir}/usr/local/bin"
+    install -m755 "${pkgname}" "${pkgdir}/usr/local/bin/${pkgname}"
+    chmod +x ${pkgdir}/usr/local/bin/${pkgname}
 }
