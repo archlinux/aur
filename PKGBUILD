@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r517.7a3bf2f
+pkgver=r543.322e5c5
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("any")
@@ -54,14 +54,13 @@ build()
     mkdir -p build/
     cd build/
     cmake ..
-    cmake --build .
+    cmake --build . --target fastfetch # don't build flashfetch, as it is meant to be configured at compile time. So it doesn't make sense to pre build it.
 }
 
 package() {
     cd ${srcdir}/fastfetch
 
     install -D "build/fastfetch" "${pkgdir}/usr/bin/fastfetch"
-    install -D "build/flashfetch" "${pkgdir}/usr/bin/flashfetch"
     install -D "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/fastfetch"
 
     install -Dd "${pkgdir}/usr/share/fastfetch/presets/"
