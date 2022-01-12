@@ -1,7 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
+pkgdesc='Serif family for text with Cyrillic support'
 pkgname=ttf-lora-cyrillic
 pkgver=3.001
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(custom:OFL)
 conflicts=(ttf-lora-cyrillic-ibx)
