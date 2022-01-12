@@ -2,12 +2,12 @@
 pkgname=minetest-lordofthetest
 _pkgname=lordofthetest
 _pkgauthor=Amaz
-pkgver=1.2.4
-_cdbrel=4798
+pkgver=1.2.5
+_cdbrel=10555
 pkgrel=1
 pkgdesc="Lord of the Test is a game which adds LOTR elements to Minetest "
 license=("LGPLv2.1")
-sha256sums=('c5eda772acd1f477ce8b9f134d79c2c5ca418780af3ed8ed99ce1be01f8061c2')
+sha256sums=('b0b83783f2693e3416afb9b99730dad16b35562020b40b5b523d7ff9bcdd866c')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
