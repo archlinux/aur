@@ -1,3 +1,4 @@
 #!/bin/bash
 
-exec electron /usr/lib/an-anime-game-launcher-bin/app.asar "$@"
+cd /usr/lib/an-anime-game-launcher-bin
+exec /usr/lib/an-anime-game-launcher-bin/an-anime-game-launcher "$@"
