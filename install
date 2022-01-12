@@ -1,3 +1,0 @@
-post_install() {
-    printf "   ➜➜➜ You need to create an account at\n   ➜➜➜ https://pokemonrevolution.net/register\n\n"
-}
