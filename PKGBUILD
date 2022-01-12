@@ -2,13 +2,13 @@
 # Co-maintainer: Henry-Joseph Audéoud <h.audeoud@gmail.com>
 
 pkgname=piwigo
-pkgver=12.1.0
+pkgver=12.2.0
 pkgrel=1
 pkgdesc='Photo gallery software for the web'
 arch=(any)
 url="https://piwigo.org/"
 license=("GPL")
-depends=('php' 'mariadb')
+depends=('php>=7.3' 'mariadb>=10.1')
 optdepends=('php-gd: graphic library (one graphic library is required)'
             'imagemagick: graphic library (one graphic library is required)'
             'php-apache: Apache Web Server (one web server is required)'
@@ -28,9 +28,9 @@ source=("${pkgname}-${pkgver}.zip::https://piwigo.org/download/dlcounter.php?cod
         'nginx.conf'
         'php-fpm.conf'
         'php-fpm.service.conf')
-md5sums=('c6edb6d0617ccbdc27bf35e06efbaa96'  # Provided by upstream
+md5sums=('678b3c33015357ff6e1c58ff981f4190'  # Provided by upstream
          SKIP SKIP SKIP SKIP SKIP)
-sha256sums=('538c8b6974cf69720f683f082cf413db0e122e1ce52a81e491cd5145b8948e3c'
+sha256sums=('824ee83f46654b68962263567f2957933d75b2bac016e6dbb9ea9df9a2a86e88'
             '64435b2f5fe29ab6201e00a755bff5dbe77bc4450559a2668a21e750ce13f8be'
             '0e6d4af6552f4eead62825999eee115152cf5f884f2c65b759379ac5b15d36f7'
             '13db3e357bd30cab3ba9eb460e76ac9009cf974606ea55981d30c326db6db366'
@@ -49,6 +49,7 @@ package() {
     # Install doc
     install -d "${pkgdir}/usr/share/doc/piwigo/"
     mv -t "${pkgdir}/usr/share/doc/piwigo/" "${install_path}/docs"/*
+    rmdir "${install_path}/docs"
 
     # Variable data directories.  Should be in /var, but no way to change it in
     # piwigo configuration (Bug Report?).  So use symbolic links to allow that.
