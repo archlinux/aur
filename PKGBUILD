@@ -1,11 +1,11 @@
 #Contributor: Hector Mtz-Seara (hseara#at#gmail#com)
 pkgname=python-griddataformats
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The gridDataFormats package provides classes to unify reading and writing n-dimensional datasets. One can read grid data from files, make them available as a Grid object, and allows one to write out the data again."
 url="https://github.com/orbeckst/GridDataFormats/"
 license=("GPL")
-arch=('' 'x86_64')
+arch=('x86_64')
 depends=('python-numpy')
 
 
