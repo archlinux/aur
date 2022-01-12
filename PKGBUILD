@@ -1,45 +1,26 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_name=cyvcf2
-pkgbase='python-cyvcf2'
-pkgname=('python-cyvcf2' 'python2-cyvcf2')
-pkgver=0.8.6
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
+_base=cyvcf2
+pkgname=python-${_base}
+pkgver=0.30.14
 pkgrel=1
-pkgdesc="Fast VCF/BCF processor in Python using Cython and htslib"
+pkgdesc="fast vcf parsing with cython + htslib"
 arch=('any')
-url=https://pypi.python.org/pypi/"${_name}"
-license=('MIT')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/39/c9/b2b5d29b945e5599cddc0f04aa10e7f50e45d80a32cf22aa639d0b3a201b/cyvcf2-0.8.6.tar.gz)
-sha256sums=('eca706d5c94786fe94c27839772f16d0e1b04de6569857ef2180035f6d07b03d')
+url="https://pypi.python.org/pypi/${_base}"
+license=(MIT)
+depends=(python-numpy python-coloredlogs python-click htslib)
+makedepends=(cython python-setuptools)
+# options=(!emptydirs)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('588d7bed6e29780f1ff10e09276172613e5bf478647eb0cd2566c62c8e0eca586648dfc5e88917ae07e8b2a2c32ba262f9dcf4f38e43fe50a7414cc0336501e4')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+build() {
+  cd "${_base}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-cyvcf2() {
-  depends=('python2' 'python2-numpy' 'htslib')
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-}
-
-package_python-cyvcf2() {
-  depends=('python' 'python-numpy' 'htslib')
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
