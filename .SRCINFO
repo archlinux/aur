@@ -1,0 +1,19 @@
+pkgbase = poi-bin
+	pkgdesc = Scalable KanColle browser and tool
+	pkgver = 10.7.0
+	pkgrel = 1
+	url = https://github.com/poooi/poi/
+	arch = any
+	license = MIT
+	depends = nss
+	depends = gtk3
+	provides = poi
+	conflicts = poi
+	noextract = poi-10.7.0.7z
+	options = !strip
+	source = https://github.com/poooi/poi/releases/download/v10.7.0/poi-10.7.0.7z
+	source = poi-bin.sh
+	sha256sums = a59624a5cb265fe52e5b08b8ed63a8f812a64ab85cdac2c8d3299af0b8f70b4a
+	sha256sums = 1226865a0add6b146ea556c5d02e302ea175bdbbb59530ce9830a1828e18875e
+
+pkgname = poi-bin
