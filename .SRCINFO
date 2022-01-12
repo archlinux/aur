@@ -1,14 +1,14 @@
 pkgbase = minetest-subway-miner
 	pkgdesc = A Subway Surfer inspired game
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://content.minetest.net/packages/AFCM/subway_miner/
 	arch = any
 	license = GPLv3
 	depends = minetest-common
-	noextract = subway_miner-1.3.zip
+	noextract = subway_miner-1.4.zip
 	options = !strip
-	source = subway_miner-1.3.zip::https://content.minetest.net/packages/AFCM/subway_miner/releases/10146/download/
-	sha256sums = 355116145c382cffd29ee8fec9df791e488362ff220a66349310bbab642f14c4
+	source = subway_miner-1.4.zip::https://content.minetest.net/packages/AFCM/subway_miner/releases/10568/download/
+	sha256sums = e18655b5a876f2790ffa339cdcdd3b6c1d0961c63ec856fb67f854a7b26ce5a6
 
 pkgname = minetest-subway-miner
