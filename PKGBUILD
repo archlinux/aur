@@ -1,24 +1,52 @@
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
+# Contributor: Piotr Gorski <lucjan.lucjanov@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+
+### Selecting the CPU scheduler
+# ATTENTION - one of seven predefined values should be selected!
+# 'bmq' - select 'BitMap Queue CPU scheduler'
+# 'pds' - select 'Priority and Deadline based Skip list multiple queue CPU scheduler'
+# 'cacule' - select 'CacULE scheduler'
+# 'cacule-rdb' - select 'CacULE-RDB scheduler'
+# 'bore' - select 'Burst-Oriented Response Enhancer'
+# 'tt' - select 'Task Type Scheduler by Hamad Marri'
+# 'cfs' - select 'Completely Fair Scheduler'
+_cpusched='cfs'
 
 ### BUILD OPTIONS
-# Set the next two variables to ANYTHING that is not null to enable them
+# Set these variables to ANYTHING that is not null to enable them
+
+### Tweak kernel options prior to a build via nconfig
+_makenconfig=
 
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
 _NUMAdisable=y
 
-# Enable fsync
-_fsync=y
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+_localmodcfg=
 
-#enable futex2
-_futex2=y
+# Use the current kernel's .config file
+# Enabling this option will use the .config of the RUNNING kernel rather than
+# the ARCH defaults. Useful when the package gets updated and you already went
+# through the trouble of customizing your config options.  NOT recommended when
+# a new kernel is released, but again, convenient for package bumps.
+_use_current=
 
 #enable winesync
 _winesync=y
 
 ### Running with a 1000HZ, 750Hz or  500HZ tick rate
-_2k_HZ_ticks=
 _1k_HZ_ticks=y
 _750_HZ_ticks=
 _600_HZ_ticks=
@@ -31,16 +59,19 @@ _mq_deadline_disable=y
 _kyber_disable=y
 
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+_mm_protect=
 
 ### Enable multigenerational LRU
 _lru_enable=y
 
-### Enable Linux Random Number Generator
-_lrng_enable=
+## Enable Page-Table-Check
+_page_table_check=y
 
-## Samba3 Server
-_ksmbd_enable=
+### Enable DAMON
+_damon=
+
+### Enable Linux Random Number Generator
+#_lrng_enable=y
 
 ## Apply Kernel automatic Optimization
 _use_auto_optimization=y
@@ -84,80 +115,75 @@ _use_cfi=
 ## Enable PGO (patch is failing when cfi is also used)
 #_use_pgo=
 
-# Only compile active modules to VASTLY reduce the number of modules built and
-# the build time.
-#
-# To keep track of which modules are needed for your specific system/hardware,
-# give module_db a try: https://aur.archlinux.org/packages/modprobed-db
-# This PKGBUILD reads the database kept if it exists
-#
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
-
-# Use the current kernel's .config file
-# Enabling this option will use the .config of the RUNNING kernel rather than
-# the ARCH defaults. Useful when the package gets updated and you already went
-# through the trouble of customizing your config options.  NOT recommended when
-# a new kernel is released, but again, convenient for package bumps.
-_use_current=
-
-# Tweak kernel options prior to a build via nconfig
-_makenconfig=
-
 
 if [ -n "$_use_llvm_lto" ]; then
   pkgbase=linux-cachyos-rt-lto
 else
   pkgbase=linux-cachyos-rt
 fi
-pkgver=5.15.11
-pkgrel=1
+_major=5.16
+_minor=0
+#_minorc=$((_minor+1))
+#_rcver=rc8
+pkgver=${_major}.${_minor}
+#_stable=${_major}.${_minor}
+_stable=${_major}
+_stablerc=${_major}-${_rcver}
+_srcname=linux-${_stable}
+#_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
-pkgdesc='Linux-cacule Kernel by CachyOS and with some other patches and other improvements'
-_gittag=v${pkgver%.*}-${pkgver##*.}
+pkgdesc='Linux CFS scheduler Kernel by CachyOS and with some other patches and other improvements'
+pkgrel=2
 arch=('x86_64' 'x86_64_v3')
-url="https://github.com/ptr1337/linux-cacule"
+url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 if [ -n "$_use_llvm_lto" ]; then
+  depends=(clang llvm lld python)
+fi
+if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
-_caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
-_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
-source=("https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver}.tar.xz"
+_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.16"
+source=(
+  "https://git.kernel.org/torvalds/t/linux-${_stable}.tar.gz"
   "config"
-  "${_patchsource}/0001-5.15.10-rt24.patch"
-  "${_patchsource}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+  #  "${_patchsource}/sched/0001-pjrc.patch"
+  # "${_patchsource}/sched/0001-cacULE-5.16-full.patch"
+  #  "${_patchsource}/sched/0001-bore-sched.patch"
+  #    "${_patchsource}/sched/0001-tt.patch"
+  "${_patchsource}/RT/0001-5.16-RT.patch"
+  "${_patchsource}/RT/0002-MG-LRU-v6-RT.patch"
+  #  "${_patchsource}/RT/0003-RCU-NEXT-RT.patch"
+  "${_patchsource}/RT/0004-CFI-RT.patch"
+  "${_patchsource}/RT/0005-mm-next-rt.patch"
+  "${_patchsource}/0001-block-patches.patch"
+  "${_patchsource}/0001-blk-patches.patch"
+  "${_patchsource}/0001-pm.patch"
+  "${_patchsource}/0001-anbox.patch"
+  "${_patchsource}/0001-bbr2-patches.patch"
+  "${_patchsource}/0001-btrfs.patch"
+  "${_patchsource}/0001-cpu.patch"
+  "${_patchsource}/0001-clearlinux.patch"
+  "${_patchsource}/0001-f2fs-xfs-ext4-patches.patch"
   "${_patchsource}/0001-misc.patch"
-  "${_patchsource}/AMD/0001-amd64-patches.patch"
-  "${_patchsource}/0001-bbr2.patch"
-  "${_patchsource}/0001-clearlinux-patches.patch"
-  "${_patchsource}/0001-cpu-patches.patch"
-  "${_patchsource}/AMD/0001-amdpstate.patch"
-  "${_patchsource}/0001-btrfs-patches.patch"
-  "${_patchsource}/0001-ck-hrtimer.patch"
-  "${_patchsource}/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/0001-futex-wait.v-fsync-winesync.patch"
-  "${_patchsource}/0001-hwmon-patches.patch"
-  "${_patchsource}/0001-ksmbd-patches.patch"
-  #  "${_patchsource}/0001-damon-patches.patch"
-  "${_patchsource}/0001-lqx-patches.patch"
-  #  "${_patchsource}/0001-lrng-patches.patch"
-  "${_patchsource}/0001-pf-patches.patch"
-  "${_patchsource}/0001-v4l2loopback.patch"
+  "${_patchsource}/0001-fixes.patch"
+  "${_patchsource}/0001-futex-winesync.patch"
+  "${_patchsource}/0001-hwmon.patch"
+  "${_patchsource}/0001-ksmbd.patch"
+  "${_patchsource}/0001-zstd-patches.patch"
   "${_patchsource}/0001-zen-patches.patch"
-  "${_patchsource}/0001-zstd.patch"
+  "${_patchsource}/0001-v4l2loopback.patch"
+  "${_patchsource}/next/0003-folio-io.patch"
   "auto-cpu-optimization.sh"
 )
-if [ -n "$_use_cfi" ]; then
-  source+=("${_patchsource}/0002-clang-cfi.patch")
-fi
 
-if [ -n "$_use_pgo" ]; then
-  source+=("${_patchsource}/0001-PGO.patch")
-fi
+
+#if [ -n "$_use_pgo" ]; then
+#  source+=("${_patchsource}/0001-PGO.patch")
+#fi
 
 if [ -n "$_use_llvm_lto" ]; then
   LLVMOPTS="LLVM=1 LLVM_IAS=1"
@@ -171,12 +197,9 @@ export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
-
 prepare() {
-  cd "${srcdir:?}/linux-${pkgver}" || (
-    echo -e "\E[1;31mCan't cd to ${srcdir:?}/linux-${pkgver} directory! Prepare failed! \E[0m"
-    exit 1
-  )
+
+  cd $_srcname
 
   ### Setting version
   echo "Setting version..."
@@ -184,7 +207,7 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-
+  ### Patching sources
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -194,27 +217,84 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  ### Setting config
   echo "Setting config..."
   cp ../config .config
 
-  if [ -n "$_use_cfi" ]; then
-    scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
-    scripts/config --enable CONFIG_CFI_CLANG
-  fi
 
-  if [ -n "$_use_pgo" ]; then
-    scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
-    scripts/config --enable DEBUG_FS
-    scripts/config --enable CONFIG_PGO_CLANG
+  ### Optionally use running kernel's config
+  # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
+  if [ -n "$_use_current" ]; then
+    if [[ -s /proc/config.gz ]]; then
+      echo "Extracting config from /proc/config.gz..."
+      # modprobe configs
+      zcat /proc/config.gz > ./.config
+    else
+      warning "Your kernel was not compiled with IKCONFIG_PROC!"
+      warning "You cannot read the current config!"
+      warning "Aborting!"
+      exit
+    fi
   fi
 
   ### Microarchitecture Optimization (GCC/CLANG)
   if [ -n "$_use_auto_optimization" ]; then
     "${srcdir}"/auto-cpu-optimization.sh
   fi
+
   if [ -n "$_use_optimization_select" ]; then
     source "${startdir}"/configure
     cpu_arch
+  fi
+
+  ### Selecting the CPU scheduler
+  if [ "$_cpusched" = "bmq" ]; then
+    echo "Selecting BMQ CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_BMQ
+    scripts/config --disable CONFIG_SCHED_PDS
+  elif [ "$_cpusched" = "pds" ]; then
+    echo "Selecting PDS CPU scheduler..."
+    scripts/config --disable CONFIG_SCHED_BMQ
+    scripts/config --enable CONFIG_SCHED_PDS
+  elif [ "$_cpusched" = "cacule" ]; then
+    echo "Selecting CacULE scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+    scripts/config --enable CONFIG_CACULE_SCHED
+  elif [ "$_cpusched" = "cacule-rdb" ]; then
+    echo "Selecting CacULE-RDB scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+    scripts/config --enable CONFIG_CACULE_SCHED
+    scripts/config --enable CONFIG_CACULE_RDB
+    scripts/config --set-val CONFIG_RDB_INTERVAL 19
+  elif [ "$_cpusched" = "tt" ]; then
+    echo "Enable TT CPU scheduler..."
+    scripts/config --enable CONFIG_TT_SCHED
+    scripts/config --enable CONFIG_TT_ACCOUNTING_STATS
+  elif [ "$_cpusched" = "bore" ]; then
+    echo "Selecting BORE Scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+  elif [ "$_cpusched" = "cfs" ]; then
+    echo "Selecting Completely Fair Scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+  else
+    if [ -n "$_cpusched" ]; then
+      error "The value $_cpusched is invalid. Choose the correct one again."
+    else
+      error "The value is empty. Choose the correct one again."
+    fi
+    error "Selecting the CPU scheduler failed!"
+    exit
+  fi
+
+  if [ -n "$_use_cfi" ] && [ -n "$_use_llvm_lto" ]; then
+    echo "Enabling CFI"
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_CFI_CLANG
+    scripts/config --enable CONFIG_CFI_CLANG
+  fi
+
+  if [ -n "$_use_llvm_lto" ]; then
+    echo "Enable LLVM LTO"
+    scripts/config --disable CONFIG_LTO_NONE
   fi
 
   ### Optionally set tickrate to 1000
@@ -240,6 +320,7 @@ prepare() {
     scripts/config --enable CONFIG_HZ_600
     scripts/config --set-val CONFIG_HZ 600
   fi
+
   ### Optionally set tickrate to 500HZ
   if [ -n "$_500_HZ_ticks" ]; then
     echo "Setting tick rate to 500HZ..."
@@ -253,12 +334,6 @@ prepare() {
   if [ -n "$_NUMAdisable" ]; then
     echo "Disabling NUMA from kernel config..."
     scripts/config --disable CONFIG_NUMA
-  fi
-
-  if [ -n "$_fsync" ]; then
-    echo "Enable Fsync support"
-    scripts/config --enable CONFIG_FUTEX
-    scripts/config --enable CONFIG_FUTEX_PI
   fi
 
   if [ -n "$_winesync" ]; then
@@ -278,79 +353,21 @@ prepare() {
     scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
   fi
 
-  ### Enable protect file mappings under memory pressure
+
+  ### Enable protect mappings under memory pressure
   if [ -n "$_mm_protect" ]; then
     echo "Enabling protect file mappings under memory pressure..."
-    scripts/config --enable CONFIG_UNEVICTABLE_FILE
-    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_LOW 262144
-    scripts/config --set-val CONFIG_UNEVICTABLE_FILE_KBYTES_MIN 131072
-    scripts/config --enable CONFIG_UNEVICTABLE_ANON
-    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_LOW 65536
-    scripts/config --set-val CONFIG_UNEVICTABLE_ANON_KBYTES_MIN 32768
-    scripts/config --enable CONFIG_DAMON
-    scripts/config --disable CONFIG_DAMON_VADDR
-    scripts/config --disable CONFIG_DAMON_DBGFS
-    scripts/config --enable CONFIG_DAMON_PADDR
-    scripts/config --enable CONFIG_DAMON_RECLAIM
+    scripts/config --set-val CONFIG_ANON_MIN_KBYTES 0
+    scripts/config --set-val CONFIG_CLEAN_LOW_KBYTES 524288
+    scripts/config --set-val CONFIG_CLEAN_MIN_KBYTES 0
   fi
 
   ### Enable multigenerational LRU
-  if [ -n "$_lru_enable" ]; then
-    echo "Enabling multigenerational LRU..."
-    scripts/config --enable CONFIG_HAVE_ARCH_PARENT_PMD_YOUNG
-    scripts/config --enable CONFIG_LRU_GEN
-    scripts/config --set-val CONFIG_NR_LRU_GENS 7
-    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-    scripts/config --enable CONFIG_LRU_GEN_ENABLED
-    scripts/config --disable CONFIG_LRU_GEN_STATS
-  fi
-
-  ### Enable Linux Random Number Generator
-  if [ -n "$_lrng_enable" ]; then
-    echo "Enabling Linux Random Number Generator ..."
-    scripts/config --enable CONFIG_LRNG
-    scripts/config --enable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
-    scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 64
-    scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 128
-    scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-    scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-    scripts/config --enable CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION
-    scripts/config --enable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
-    scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
-    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
-    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
-    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
-    scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
-    scripts/config --enable CONFIG_LRNG_HEALTH_TESTS
-    scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
-    scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
-    scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-    scripts/config --enable CONFIG_LRNG_JENT
-    scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-    scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-    scripts/config --enable CONFIG_LRNG_DRNG_SWITCH
-    scripts/config --enable CONFIG_LRNG_KCAPI_HASH
-    scripts/config --module CONFIG_LRNG_DRBG
-    scripts/config --module CONFIG_LRNG_KCAPI
-    scripts/config --enable CONFIG_LRNG_TESTING_MENU
-    scripts/config --disable CONFIG_LRNG_RAW_HIRES_ENTROPY
-    scripts/config --disable CONFIG_LRNG_RAW_JIFFIES_ENTROPY
-    scripts/config --disable CONFIG_LRNG_RAW_IRQ_ENTROPY
-    scripts/config --disable CONFIG_LRNG_RAW_IRQFLAGS_ENTROPY
-    scripts/config --disable CONFIG_LRNG_RAW_RETIP_ENTROPY
-    scripts/config --disable CONFIG_LRNG_RAW_REGS_ENTROPY
-    scripts/config --disable CONFIG_LRNG_RAW_ARRAY
-    scripts/config --disable CONFIG_LRNG_IRQ_PERF
-    scripts/config --disable CONFIG_LRNG_ACVT_HASH
-    scripts/config --enable CONFIG_LRNG_RUNTIME_ES_CONFIG
-    scripts/config --disable CONFIG_LRNG_RUNTIME_MAX_WO_RESEED_CONFIG
-    scripts/config --enable CONFIG_LRNG_SELFTEST
-    scripts/config --disable CONFIG_LRNG_SELFTEST_PANIC
-  fi
-  echo "Enable LLVM LTO"
-  if [ -n "$_use_llvm_lto" ]; then
-    scripts/config --disable CONFIG_LTO_NONE
+  if [ -n "$_page_table_check" ]; then
+    echo "Enabling Page-Table-Check..."
+    scripts/config --enable CONFIG_PAGE_TABLE_CHECK
+    scripts/config --enable CONFIG_PAGE_TABLE_CHECK_ENFORCED
+    scripts/config --enable CONFIG_ARCH_SUPPORTS_PAGE_TABLE_CHECK
   fi
 
   ### Enable multigenerational LRU
@@ -364,15 +381,15 @@ prepare() {
     scripts/config --disable CONFIG_LRU_GEN_STATS
   fi
 
-  ### Enable SMB3 Kernel Server
-  if [ -n "$_ksmbd_enable" ]; then
-    echo "Enabling SMB3 Kernel Server..."
-    scripts/config --module CONFIG_SMB_SERVER
-    scripts/config --enable CONFIG_SMB_SERVER_SMBDIRECT
-    scripts/config --enable CONFIG_SMB_SERVER_CHECK_CAP_NET_ADMIN
-    scripts/config --enable CONFIG_SMB_SERVER_KERBEROS5
+  ### Enable DAMON
+  if [ -n "$_damon" ]; then
+    echo "Enabling DAMON..."
+    scripts/config --enable CONFIG_DAMON
+    scripts/config --disable CONFIG_DAMON_VADDR
+    scripts/config --disable CONFIG_DAMON_DBGFS
+    scripts/config --enable CONFIG_DAMON_PADDR
+    scripts/config --enable CONFIG_DAMON_RECLAIM
   fi
-
 
   ### Selecting the ZSTD compression level
   if [ "$_zstd_level" = "ultra" ]; then
@@ -420,9 +437,6 @@ prepare() {
   scripts/config --enable CONFIG_TCP_CONG_BBR2
   scripts/config --enable CONFIG_DEFAULT_BBR2
   scripts/config --set-str CONFIG_DEFAULT_TCP_CONG bbr2
-  echo "Enabling FULLCONENAT..."
-  scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
-  scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
   echo "Setting performance governor..."
   scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
@@ -432,40 +446,18 @@ prepare() {
   scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
   scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
   echo "Enable AMD PSTATE driver"
+  scripts/config --enable CONFIG_X86_AMD_PSTATE
   scripts/config --enable CONFIG_AMD_PTDMA
-  scripts/config --enable CONFIG_AMD_PSTATE
   echo "Enable Anbox"
   scripts/config --enable CONFIG_ASHMEM
   scripts/config --enable CONFIG_ANDROID
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable CONFIG_ANDROID_BINDERFS
   scripts/config --enable CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
-  echo "Enable NTFS"
   scripts/config --enable CONFIG_NTFS3_FS
-
-
-
-  ### Optionally disable NUMA for 64-bit kernels only
-  # (x86 kernels do not support NUMA)
-  if [ -n "$_NUMAdisable" ]; then
-    echo "Disabling NUMA from kernel config..."
-    scripts/config --disable CONFIG_NUMA
-  fi
-
-  ### Optionally use running kernel's config
-  # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
-  if [ -n "$_use_current" ]; then
-    if [[ -s /proc/config.gz ]]; then
-      echo "Extracting config from /proc/config.gz..."
-      # modprobe configs
-      zcat /proc/config.gz > ./.config
-    else
-      warning "Your kernel was not compiled with IKCONFIG_PROC!"
-      warning "You cannot read the current config!"
-      warning "Aborting!"
-      exit
-    fi
-  fi
+  echo "Enabling KBUILD_CFLAGS -O3..."
+  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
@@ -479,8 +471,8 @@ prepare() {
     fi
   fi
 
-
   echo "Applying default config..."
+
   make $LLVMOPTS olddefconfig
   make $LLVMOPTS -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -488,21 +480,13 @@ prepare() {
   ### Running make nconfig
   [[ -z "$_makenconfig" ]] ||  make $LLVMOPTS nconfig
 
-  ### Running make menuconfig
-  [[ -z "$_makemenuconfig" ]] || make $LLVMOPTS menuconfig
-
-  ### Running make xconfig
-  [[ -z "$_makexconfig" ]] || make $LLVMOPTS xconfig
-
-  ### Running make gconfig
-  [[ -z "$_makegconfig" ]] || make $LLVMOPTS gconfig
-
   ### Save configuration for later reuse
   cp -Tf ./.config "${startdir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
 }
 
 build() {
+
   cd $_srcname
 
   make $LLVMOPTS -j$(nproc) all
@@ -516,31 +500,29 @@ _package() {
   'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
-  cd $_srcname
 
+  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make $CLANGOPTS -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make $CLANGOPTS INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
   depends=("${pkgbase}=${pkgver}" "pahole")
-
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -551,11 +533,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -617,9 +599,7 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
-
 
 pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
@@ -630,25 +610,28 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('7fcbea316f8439d092040996295c8f9d'
-         'a0e0c04d19191dce51b530d04f38e7cb'
-         'cdbb72be18eed85ed1beb02cb799acb1'
-         'cf26387aadf2a90428350ac246b070c9'
-         '299b176cbfc1b386d74406387e9e2d6b'
-         '53f037488a66667220c263f92ded333d'
-         '2a8097ba46be56fbbe3967e9c34c9a0b'
-         '41887f2f959068e41756f4c39671ca79'
-         '67764a5824b567b49bcce19c01d4e1b3'
-         '3aaa8d1bc993d4173aa1bb79ade16fb7'
-         '70be88d96e0bc9e72759bf3902e7eb53'
-         '6038177c72982533035309fcd6df208a'
-         '8bda7327ae759b1b52e3b617952bd964'
-         '8c354c3d1962ec6785db7f0c3fbbab03'
-         '349c88a39ec553aa3c9caf886b44c7ab'
-         '480c6bb9db4842114787f66ad5a68404'
-         '56fdf3562b041c0408d9751b7e447977'
-         '08c84362cb916b30d9c77e35b1b3bc54'
-         'd9a892f66631615a72bdc93ee7397afa'
+md5sums=('5c6acbcc119ab680a32264c865ea70e1'
+         'f8d7a1429f30756bee8583d7c59fd225'
+         '6723aa447f3897ed71e4464082dfa01d'
+         '254cdfbf39e2313408d8f729d5c49d57'
+         'b6da8bb6dcb8952c409925462d46844d'
+         'a0cd7013f0649a500fd3c01a899a7209'
+         'f717c0a238353f443a6f0633a59ee8ca'
+         '194c8e20ad30973c32159cb23f3be4c9'
+         '2faaa79055263c1cdeeaa2896e641696'
+         '80e419d6847d4122a23a141fd3a40e52'
+         'd194311161f8f44755e532db738f4a2d'
+         'e9dff9b551b8fa7c0b47ae5ac0b16365'
+         'd4c38ce51fb9a69aa92ad9b9e0199122'
+         'a687c26c262ccb9ad7cb54697a1476bc'
+         '8ef0e994f61bcd8d2188588f42805005'
+         '80920e501b9b87bfe587edff445e6efe'
+         'f574f1c40fa2d07602e77418b863e144'
+         '28dcc1fe3029c6c316773bbcbe82954d'
+         '2160aabf2b9798907d36c4d246937d71'
+         '12ad5085b7f01793980f137f2c9451cb'
+         'bf58290793d3a095ef95fb1fac2de89a'
          'de6db1147385c058b2e94df3c1739fdf'
-         '8a7c7cf90dcad3f655491b21c35f36b3'
+         'cb9384ce179d08be6c90df6d0a0977a1'
+         '9956af4381a21744369bf81d76d3142d'
          '21c98f19e883879dd3336c1fa143fd31')
