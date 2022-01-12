@@ -1,0 +1,18 @@
+pkgbase = python-pynec-git
+	pkgdesc = Antenna simulation in python
+	pkgver = r97.03713c8
+	pkgrel = 1
+	url = https://github.com/tmolteno/python-necpp/tree/master/PyNEC
+	arch = x86_64
+	license = GPL
+	makedepends = swig
+	makedepends = cython
+	makedepends = python-setuptools
+	depends = python
+	depends = python-numpy
+	source = python-pynec-git::git+https://github.com/tmolteno/python-necpp.git
+	source = build_diff.patch
+	sha256sums = SKIP
+	sha256sums = f5454afc38f05cb6db2b300c83bfe4981ed353b938f602a405a13c7a19dada1e
+
+pkgname = python-pynec-git

@@ -1,0 +1,7 @@
+--- build.sh.old	2022-01-12 00:13:50.208176083 -0500
++++ build.sh	2022-01-12 00:14:30.399171778 -0500
+@@ -17,2 +17,2 @@
+-swig3.0 -Wall -v -c++ -python PyNEC.i
+-python3 setup.py build
++swig -Wall -v -c++ -python PyNEC.i
++python setup.py build
