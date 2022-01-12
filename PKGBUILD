@@ -3,12 +3,12 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
 pkgver=6.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
 license=('GPL2')
-makedepends=('rustup')
+makedepends=('rustup' 'clang')
 depends=('hyperscan' 'jansson' 'libcap-ng' 'libmagic.so' 'libmaxminddb' 'libnet' 'libpcap' 'libyaml' 'lua' 'pcre' 'python-yaml')
 optdepends=('geoipupdate: GeoIP2 databases')
 conflicts=('python-sphinx' 'suricata-nfqueue') # Issue with doc generation at compile time - https://github.com/OISF/suricata/pull/6123
@@ -30,6 +30,7 @@ build() {
   export RUSTUP_TOOLCHAIN=1.52.0 # Use rustup and toolchain version to get build to complete
   cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	      --enable-ebpf --enable-ebpf-build --with-clang=/usr/bin/clang \
 	      --disable-gccmarch-native --enable-lua --enable-geoip
   make
 }
