@@ -34,7 +34,7 @@ _NUMAdisable=y
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=y
+_localmodcfg=
 
 # Use the current kernel's .config file
 # Enabling this option will use the .config of the RUNNING kernel rather than
@@ -59,7 +59,7 @@ _mq_deadline_disable=y
 _kyber_disable=y
 
 ### Enable protect file mappings under memory pressure
-_mm_protect=y
+_mm_protect=
 
 ### Enable multigenerational LRU
 _lru_enable=y
@@ -121,13 +121,18 @@ if [ -n "$_use_llvm_lto" ]; then
 else
   pkgbase=linux-cachyos-bore
 fi
-_major=5.15
-_minor=13
+_major=5.16
+_minor=0
+#_minorc=$((_minor+1))
+#_rcver=rc8
 pkgver=${_major}.${_minor}
-_srcname=linux-${pkgver}
+#_stable=${_major}.${_minor}
+_stable=${_major}
+_stablerc=${_major}-${_rcver}
+_srcname=linux-${_stable}
+#_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux BORE scheduler Kernel by CachyOS and with some other patches and other improvements'
-_srcname=linux-${pkgver}
 pkgrel=2
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
@@ -141,41 +146,39 @@ fi
 if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
-_caculepatches="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/CacULE"
-_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.15"
+_patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.16"
 source=(
-  "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
+  "https://git.kernel.org/torvalds/t/linux-${_stable}.tar.gz"
   "config"
-  "${_patchsource}/bore/0001-bore-sched.patch"
-  "${_patchsource}/0001-arch-patches.patch"
-  "${_patchsource}/0001-cfi.patch"
-  "${_patchsource}/0001-lru-patches.patch"
-  "${_patchsource}/AMD/0001-amdpstate.patch"
-  "${_patchsource}/AMD/amd-sched.patch"
-  "${_patchsource}/AMD/0001-amd64-patches.patch"
-  "${_patchsource}/0001-bbr2.patch"
+  #  "${_patchsource}/sched/0001-pjrc.patch" ## not released for 5.16 right now
+  #  "${_patchsource}/sched/0001-cacULE-5.16-full.patch"
+  "${_patchsource}/sched/0001-bore-sched.patch"
+  #  "${_patchsource}/sched/0001-tt.patch"
+  "${_patchsource}/0001-MG-LRU-v6.patch"
+  "${_patchsource}/0001-amd64-patches.patch"
+  "${_patchsource}/0001-sched-perf-fix.patch"
   "${_patchsource}/0001-block-patches.patch"
-  "${_patchsource}/0001-cpu-patches.patch"
+  "${_patchsource}/0001-blk-patches.patch"
+  "${_patchsource}/0001-pm.patch"
+  "${_patchsource}/0001-anbox.patch"
+  "${_patchsource}/0001-bbr2-patches.patch"
+  "${_patchsource}/0001-btrfs.patch"
+  "${_patchsource}/0001-lrng.patch"
+  "${_patchsource}/0001-cfi.patch"
+  "${_patchsource}/0001-cpu.patch"
+  "${_patchsource}/0001-clearlinux.patch"
+  "${_patchsource}/0001-f2fs-xfs-ext4-patches.patch"
   "${_patchsource}/0001-misc.patch"
-  "${_patchsource}/0001-btrfs-patches.patch"
-  "${_patchsource}/0001-clearlinux-patches.patch"
-  "${_patchsource}/0001-intel-patches.patch"
-  "${_patchsource}/0001-ntfs3.patch"
-  "${_patchsource}/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/0001-futex-wait.v-fsync-winesync.patch"
-  "${_patchsource}/0001-hwmon-patches.patch"
-  "${_patchsource}/0001-ksmbd-patches.patch"
-  "${_patchsource}/0001-pf-patches.patch"
-  "${_patchsource}/0001-page-table-check.patch"
-  "${_patchsource}/0001-lqx-patches.patch"
-  "${_patchsource}/0001-lrng-patches.patch"
+  "${_patchsource}/0001-fixes.patch"
+  "${_patchsource}/0001-futex-winesync.patch"
+  "${_patchsource}/0001-hwmon.patch"
+  "${_patchsource}/0001-ksmbd.patch"
+  "${_patchsource}/0001-rcu.patch"
+  "${_patchsource}/0001-zstd-patches.patch"
+  "${_patchsource}/0001-zen-patches.patch"
   "${_patchsource}/0001-v4l2loopback.patch"
-  "${_patchsource}/0001-security-patches.patch"
-  "${_patchsource}/0001-spectre-patches.patch"
-  "${_patchsource}/0001-xanmod-patches.patch"
-  "${_patchsource}/0001-net-patches.patch"
-  "${_patchsource}/0001-sbitmap-patches.patch"
-  "${_patchsource}/0001-zstd.patch"
+  "${_patchsource}/next/0002-mm-next.patch"
+  "${_patchsource}/next/0003-folio-io.patch"
   "auto-cpu-optimization.sh"
 )
 
@@ -240,52 +243,49 @@ prepare() {
     "${srcdir}"/auto-cpu-optimization.sh
   fi
 
-
   if [ -n "$_use_optimization_select" ]; then
     source "${startdir}"/configure
     cpu_arch
   fi
 
-
   ### Selecting the CPU scheduler
- if [ "$_cpusched" = "bmq" ]; then
-   echo "Selecting BMQ CPU scheduler..."
-   scripts/config --enable CONFIG_SCHED_BMQ
-   scripts/config --disable CONFIG_SCHED_PDS
- elif [ "$_cpusched" = "pds" ]; then
-   echo "Selecting PDS CPU scheduler..."
-   scripts/config --disable CONFIG_SCHED_BMQ
-   scripts/config --enable CONFIG_SCHED_PDS
- elif [ "$_cpusched" = "cacule" ]; then
-   echo "Selecting CacULE scheduler..."
-   scripts/config --disable CONFIG_SCHED_ALT
-   scripts/config --enable CONFIG_CACULE_SCHED
- elif [ "$_cpusched" = "cacule-rdb" ]; then
-   echo "Selecting CacULE-RDB scheduler..."
-   scripts/config --disable CONFIG_SCHED_ALT
-   scripts/config --enable CONFIG_CACULE_SCHED
-   scripts/config --enable CONFIG_CACULE_RDB
-   scripts/config --set-val CONFIG_RDB_INTERVAL 19
- elif [ "$_cpusched" = "tt" ]; then
-       echo "Enable TT CPU scheduler..."
-       scripts/config --enable CONFIG_TT_SCHED
-       scripts/config --enable CONFIG_TT_ACCOUNTING_STATS
- elif [ "$_cpusched" = "bore" ]; then
-   echo "Selecting BORE Scheduler..."
-   scripts/config --disable CONFIG_SCHED_ALT
- elif [ "$_cpusched" = "cfs" ]; then
-   echo "Selecting Completely Fair Scheduler..."
-   scripts/config --disable CONFIG_SCHED_ALT
- else
-   if [ -n "$_cpusched" ]; then
-     error "The value $_cpusched is invalid. Choose the correct one again."
-   else
-     error "The value is empty. Choose the correct one again."
-   fi
-   error "Selecting the CPU scheduler failed!"
-   exit
- fi
-
+  if [ "$_cpusched" = "bmq" ]; then
+    echo "Selecting BMQ CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_BMQ
+    scripts/config --disable CONFIG_SCHED_PDS
+  elif [ "$_cpusched" = "pds" ]; then
+    echo "Selecting PDS CPU scheduler..."
+    scripts/config --disable CONFIG_SCHED_BMQ
+    scripts/config --enable CONFIG_SCHED_PDS
+  elif [ "$_cpusched" = "cacule" ]; then
+    echo "Selecting CacULE scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+    scripts/config --enable CONFIG_CACULE_SCHED
+  elif [ "$_cpusched" = "cacule-rdb" ]; then
+    echo "Selecting CacULE-RDB scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+    scripts/config --enable CONFIG_CACULE_SCHED
+    scripts/config --enable CONFIG_CACULE_RDB
+    scripts/config --set-val CONFIG_RDB_INTERVAL 19
+  elif [ "$_cpusched" = "tt" ]; then
+    echo "Enable TT CPU scheduler..."
+    scripts/config --enable CONFIG_TT_SCHED
+    scripts/config --enable CONFIG_TT_ACCOUNTING_STATS
+  elif [ "$_cpusched" = "bore" ]; then
+    echo "Selecting BORE Scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+  elif [ "$_cpusched" = "cfs" ]; then
+    echo "Selecting Completely Fair Scheduler..."
+    scripts/config --disable CONFIG_SCHED_ALT
+  else
+    if [ -n "$_cpusched" ]; then
+      error "The value $_cpusched is invalid. Choose the correct one again."
+    else
+      error "The value is empty. Choose the correct one again."
+    fi
+    error "Selecting the CPU scheduler failed!"
+    exit
+  fi
 
   if [ -n "$_use_cfi" ] && [ -n "$_use_llvm_lto" ]; then
     echo "Enabling CFI"
@@ -297,12 +297,6 @@ prepare() {
     echo "Enable LLVM LTO"
     scripts/config --disable CONFIG_LTO_NONE
   fi
-
-#  if [ -n "$_use_pgo" ]; then
-#    scripts/config --enable CONFIG_ARCH_SUPPORTS_PGO_CLANG
-#    scripts/config --enable DEBUG_FS
-#    scripts/config --enable CONFIG_PGO_CLANG
-#  fi
 
   ### Optionally set tickrate to 1000
   if [ -n "$_1k_HZ_ticks" ]; then
@@ -513,9 +507,6 @@ prepare() {
   echo "Enabling KBUILD_CFLAGS -O3..."
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-  scripts/config --module CONFIG_IP_NF_TARGET_FULLCONENAT
-  scripts/config --module CONFIG_NETFILTER_XT_TARGET_FULLCONENAT
-
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
@@ -554,9 +545,10 @@ _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=('coreutils' 'kmod' 'initramfs')
   optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices'
-              'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    'linux-firmware: firmware images needed for some devices'
+  'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+
 
   cd $_srcname
   local kernver="$(<version)"
@@ -565,23 +557,21 @@ _package() {
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
-  install -Dm644 "$(make $CLANGOPTS -s image_name)" "$modulesdir/vmlinuz"
+  install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make $CLANGOPTS INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
 }
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the ${pkgdesc}"
   depends=("${pkgbase}=${pkgver}" "pahole")
-
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
@@ -592,11 +582,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -658,9 +648,7 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
-
 
 pkgname=("$pkgbase" "$pkgbase-headers")
 for _p in "${pkgname[@]}"; do
@@ -671,36 +659,32 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('4423a9fc25fcaa9e562c0f28e03960b3'
-         '5402af533ceb55bf08d42d626889c33f'
-         'f98ffed5a49d131e97ca6cb3ddb37047'
-         'ef9fa3407854cea8e78112c25bb72e41'
-         'e3fa8507aed6ef3ce37e62f18fe9b7e1'
-         '1f3becd94390729d940a60b1e9b872b1'
-         '9ce207e47ad186b612050bd83641a697'
-         'dccfe71705b24d3fb1f51aaf2016216d'
-         '53f037488a66667220c263f92ded333d'
-         '2a8097ba46be56fbbe3967e9c34c9a0b'
-         '56ceaed8bfb44eca93298ccc5fe11ca7'
-         '67764a5824b567b49bcce19c01d4e1b3'
-         '018c728c9e744a99bb9b589028b8a1f6'
-         '05308acbf7baf527692474cdef1dca82'
-         '41887f2f959068e41756f4c39671ca79'
-         'b04c8a3f01b3dfba1410e2c26ec7d975'
-         '8cf507777e20cd4d75a0627eef10c10d'
-         '8bda7327ae759b1b52e3b617952bd964'
-         '8c354c3d1962ec6785db7f0c3fbbab03'
-         'b6b2c2c6b4761aa5a8dea6ac0add8736'
-         '5b5ea6f0b8ae6b726aab697a946f750d'
-         '08c84362cb916b30d9c77e35b1b3bc54'
-         '7d28f804d6b74f9a22ad30d67af5a669'
-         '2130bb325438a2fc880593c5e345521f'
-         'b09b84168822521426f197610727618b'
-         'd9a892f66631615a72bdc93ee7397afa'
-         'bc64b1d1a9c95b07c28457f7214ebf81'
-         '8d390345afa36c56fa15bf4f4edad9a2'
-         '102fd2533e85eaecb4255df77d3e2901'
-         '03bb361f5f900cc9fd1159eda5e4f0ff'
-         '7530840f2eb439f64307dd3157beb28e'
-         '940d98858e6e59ecc07da50e05f6bc3d'
+md5sums=('5c6acbcc119ab680a32264c865ea70e1'
+         'f9425b75de74d70497781f8c8448c27f'
+         '1fb4de64e7b59b67afecc7b71b951576'
+         'd16ccc4f52eb0bc08893dc66a7caa154'
+         'dbdb6754a1f5b3ccf26321843a070406'
+         'd6feae0f2dd1b24a853d335da003cb51'
+         'f717c0a238353f443a6f0633a59ee8ca'
+         '194c8e20ad30973c32159cb23f3be4c9'
+         '2faaa79055263c1cdeeaa2896e641696'
+         '80e419d6847d4122a23a141fd3a40e52'
+         'd194311161f8f44755e532db738f4a2d'
+         'e9dff9b551b8fa7c0b47ae5ac0b16365'
+         '9f86c3b9e6271cfc4440864a6857b256'
+         'b61fd5f488e44208fc97bfa6a274aebb'
+         'd4c38ce51fb9a69aa92ad9b9e0199122'
+         'a687c26c262ccb9ad7cb54697a1476bc'
+         '8ef0e994f61bcd8d2188588f42805005'
+         '80920e501b9b87bfe587edff445e6efe'
+         'f574f1c40fa2d07602e77418b863e144'
+         '28dcc1fe3029c6c316773bbcbe82954d'
+         '2160aabf2b9798907d36c4d246937d71'
+         '12ad5085b7f01793980f137f2c9451cb'
+         '167a4267269e6a709c54e7b9ea8bf8d5'
+         'bf58290793d3a095ef95fb1fac2de89a'
+         'de6db1147385c058b2e94df3c1739fdf'
+         'cb9384ce179d08be6c90df6d0a0977a1'
+         '258c33888c85d1ecc0bbdf59c3a92895'
+         '9956af4381a21744369bf81d76d3142d'
          '21c98f19e883879dd3336c1fa143fd31')
