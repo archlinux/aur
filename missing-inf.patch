@@ -1,0 +1,23 @@
+From 3a58e5e39f69afe084f5ffed3dd0badd3eb89efb Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mark.weiman@markzz.com>
+Date: Wed, 12 Jan 2022 12:52:53 -0500
+Subject: [PATCH] Fix error in b47575801e1903e8b316d01840572ce2681cf2c6
+
+---
+ OvmfPkg/OvmfPkgIa32.dsc | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/OvmfPkg/OvmfPkgIa32.dsc b/OvmfPkg/OvmfPkgIa32.dsc
+index 085cc7ece1..f8a2015011 100644
+--- a/OvmfPkg/OvmfPkgIa32.dsc
++++ b/OvmfPkg/OvmfPkgIa32.dsc
+@@ -986,3 +986,6 @@
+   #
+ !include OvmfPkg/OvmfTpmComponentsDxe.dsc.inc
+ 
++!if $(LOAD_X64_ON_IA32_ENABLE) == TRUE
++  OvmfPkg/CompatImageLoaderDxe/CompatImageLoaderDxe.inf
++!endif
+-- 
+2.34.1
+
