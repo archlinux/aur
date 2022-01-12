@@ -1,8 +1,8 @@
 # Maintainer: Andrea Manenti <andrea [dot] manenti [at] yahoo [dot] com>
 
 pkgname=sdpb-git
-pkgver=1512.80746b8
-pkgrel=2
+pkgver=1513.4668f72
+pkgrel=1
 pkgdesc="Semidefinite program solver designed for the conformal bootstrap"
 arch=(x86_64)
 license=('MIT')
