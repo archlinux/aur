@@ -1,0 +1,16 @@
+pkgbase = aaaaxy
+	pkgdesc = Go PKGBUILD Example
+	pkgver = 1.0.187
+	pkgrel = 1
+	url = git+https://github.com/divVerent/aaaaxy
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = make
+	source = git+https://github.com/divVerent/aaaaxy#tag=v1.0.187
+	sha256sums = SKIP
+
+pkgname = aaaaxy
