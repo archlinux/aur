@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=27.2.0-beta2
+_pkgver=27.2.0-beta3
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=1
@@ -124,6 +124,9 @@ prepare() {
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
+
+  # aja: Fix format-security warning (https://github.com/obsproject/obs-studio/commit/9d02ca0fef3b987e73ab94a716f0e6bdf0e6154b)
+  git cherry-pick -n 9d02ca0fef3b987e73ab94a716f0e6bdf0e6154b
 }
 
 build() {
