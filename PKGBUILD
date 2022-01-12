@@ -25,7 +25,6 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
-          '33a314e0c1f965c265cced8548c7d2235052f79d'
           'd7a3801037333c582dba976db27cf8896bc1b401'
           '3a356f52131e39f59d360c54a572d678c7208b42'
           '77b84f9ab5ecce37af2f4dce3b94bcfe54a87b00'
@@ -41,7 +40,7 @@ sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
           'f17b1a8ccbd807fd59fbc716cc695be32e261e38'
           '3c61762a183a2f76cc2ff2e55cfffb68b6a8320c'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '5842bf236a709a2f7aa73bffd8f3dec60e4fbdff'
+          '81a662d3cf3e5fdbeb3c3e5d0b78efbacc6587d7'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
