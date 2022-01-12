@@ -1,0 +1,30 @@
+From 77cb1707f8bb2a5fae69a1b9e92881c8823cf620 Mon Sep 17 00:00:00 2001
+Message-Id: <77cb1707f8bb2a5fae69a1b9e92881c8823cf620.1641985440.git.maciej.zenon.borzecki@canonical.com>
+From: Jakub Duchateau <duchateaujakub@gmail.com>
+Date: Sat, 8 Jan 2022 10:50:06 +0100
+Subject: [PATCH] Threat XDG_DATA_DIRS like PATH
+
+Tell fish to treat XDG_DATA_DIRS as a column separated list and not space separated (default).
+Otherwise, get corrupted list with mixed separators:
+XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop /var/lib/snapd/desktop /var/lib/snapd/desktop
+
+Signed-off-by: Maciej Borzecki <maciej.zenon.borzecki@canonical.com>
+---
+ data/env/snapd.fish.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/data/env/snapd.fish.in b/data/env/snapd.fish.in
+index f2a6591249595661b7c9a829b6c252e27fcb3d08..f208c60702dccadb37d7fade6b677cf5c028f430 100644
+--- a/data/env/snapd.fish.in
++++ b/data/env/snapd.fish.in
+@@ -6,6 +6,7 @@ fish_add_path -aP $snap_bin_path
+ # looked for in XDG_DATA_DIRS; make sure it includes the relevant directory for
+ # snappy applications' desktop files.
+ set -u snap_xdg_path /var/lib/snapd/desktop
++set --path XDG_DATA_DIRS $XDG_DATA_DIRS
+ if ! contains $snap_xdg_path $XDG_DATA_DIRS
+     set XDG_DATA_DIRS $XDG_DATA_DIRS $snap_xdg_path
+ end
+-- 
+2.34.1
+
