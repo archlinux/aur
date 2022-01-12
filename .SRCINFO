@@ -1,14 +1,15 @@
 pkgbase = extension-manager
 	pkgdesc = A native tool for browsing, installing, and managing GNOME Shell Extensions
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mjakeman/extension-manager
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	makedepends = blueprint-compiler-git
-	depends = gtk4
+	makedepends = gobject-introspection
+	depends = gtk4>=4.6
 	depends = libadwaita
 	depends = libsoup3
 	depends = json-glib
