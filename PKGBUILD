@@ -10,8 +10,8 @@
 
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
-pkgver=0.23.4
-pkgrel=4
+pkgver=0.23.5
+pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=('GPL2')
@@ -29,7 +29,7 @@ source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-$
         "${_pkgname}.conf"
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles")
-sha512sums=('fb476b108a7be842663683fe6ca6737cffad73c0f09874f9d052121d188d16f69b144e993d1691f2edfac713db24aa3c28302b399f4720b29c09c909860c0938'
+sha512sums=('3a870e79bb82c9e8877958d271e933daa3dd970a4510aff4aeea91feab521d7927cd59c7f1ea16a36e84ff879e4f24e4347602ac449c5da31853acb5a3b46f34'
             'SKIP'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
             '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
