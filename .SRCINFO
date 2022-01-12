@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-lunar-calendar
 	pkgdesc = Display Chinese Lunar Calendar in panel
-	pkgver = 26
-	pkgrel = 4
+	pkgver = 27
+	pkgrel = 2
 	url = https://extensions.gnome.org/extension/675/lunar-calendar/
 	arch = any
 	license = GPL3
-	depends = gnome-shell>3.40
+	depends = gnome-shell>3.41
 	depends = unzip
 	depends = lunar-date
-	source = https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v26.shell-extension.zip
-	md5sums = 32e53a4632bf84cae13daa39f171c126
+	source = https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v27.shell-extension.zip
+	md5sums = 315946a9a764c077cc21f2d2650e60da
 
 pkgname = gnome-shell-extension-lunar-calendar
