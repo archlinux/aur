@@ -1,7 +1,7 @@
 pkgbase = python-nbdime
 	pkgdesc = Diff and merge of Jupyter Notebooks
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter/nbdime
 	arch = any
 	license = BSD
@@ -16,6 +16,8 @@ pkgbase = python-nbdime
 	depends = python-pygments
 	depends = python-requests
 	depends = python-jinja
+	provides = jupyterlab-extension-nbdime
+	provides = jupyter-nbdime
 	source = nbdime-3.1.1.tar.gz::https://github.com/jupyter/nbdime/archive/3.1.1.tar.gz
 	sha256sums = b1ea9019786c258d958b631500d55c9d08cf97a8901519d593800645f5f661b3
 

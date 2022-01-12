@@ -5,12 +5,13 @@
 pkgname=python-nbdime
 _pkgname="nbdime"
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Diff and merge of Jupyter Notebooks"
 url="https://github.com/jupyter/nbdime"
 makedepends=(python-setuptools npm)
 depends=(python python-gitpython python-six jupyter-nbformat python-tornado
          python-colorama python-pygments python-requests python-jinja)
+provides=(jupyterlab-extension-nbdime jupyter-nbdime)
 license=('BSD')
 arch=('any')
 source=($_pkgname-$pkgver.tar.gz::"https://github.com/jupyter/nbdime/archive/$pkgver.tar.gz")
