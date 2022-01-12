@@ -8,7 +8,7 @@ pkgdesc="Leapp is a Desktop DevTool that handles the management and security of 
 arch=("x86_64")
 url="https://www.leapp.cloud/"
 license=('custom')
-depends=('gtk3' 'libxss' 'libnotify' 'libnss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux-libs' 'libsecret' 'at-spi2-core')
+depends=('gtk3' 'libxss' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'util-linux-libs' 'libsecret' 'at-spi2-core')
 source=(
     "Leapp_${pkgver}_amd64.deb::https://asset.noovolari.com/latest/Leapp_${pkgver}_amd64.deb"
 )
