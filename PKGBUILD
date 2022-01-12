@@ -3,7 +3,7 @@
 pkgname=qdirstat-git
 _pkgname=qdirstat
 pkgver=20220105.96ba7b6
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI disk usage utility (successor to kdirstat)"
 arch=('i686' 'x86_64')
 url="https://github.com/shundhammer/qdirstat"
@@ -12,7 +12,7 @@ depends=('qt5-base')
 makedepends=('git')
 provides=('qdirstat')
 conflicts=('qdirstat' 'qdirstat-bin')
-source=("git://github.com/shundhammer/qdirstat.git")
+source=("git+https://github.com/shundhammer/qdirstat.git")
 md5sums=('SKIP')
 
 pkgver() {

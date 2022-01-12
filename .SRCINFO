@@ -1,7 +1,7 @@
 pkgbase = qdirstat-git
 	pkgdesc = GUI disk usage utility (successor to kdirstat)
 	pkgver = 20220105.96ba7b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shundhammer/qdirstat
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = qdirstat-git
 	provides = qdirstat
 	conflicts = qdirstat
 	conflicts = qdirstat-bin
-	source = git://github.com/shundhammer/qdirstat.git
+	source = git+https://github.com/shundhammer/qdirstat.git
 	md5sums = SKIP
 
 pkgname = qdirstat-git
