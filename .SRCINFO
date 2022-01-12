@@ -7,7 +7,7 @@ pkgbase = cmake-extras
 	license = LGPL3
 	depends = cmake
 	depends = python
-	source = https://gitlab.com/tari01/cmake-extras/-/archive/1.6/cmake-extras-1.6.tar.gz
-	md5sums = a020e179077617809e7fbec7ec7d099c
+	source = https://gitlab.com/ubports/core/cmake-extras/-/archive/1.6/cmake-extras-1.6.tar.gz
+	md5sums = 3f4a4f785cf34e6d201422e00e9e3ffa
 
 pkgname = cmake-extras
