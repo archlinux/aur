@@ -9,7 +9,7 @@ _pkgver='0.5.1'
 _tag_ver="v${_pkgver}"
 pkgver=${_pkgver//-/.}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=22
+pkgrel=23
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -19,7 +19,7 @@ conflicts=( 'skywire' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
-sha256sums=('8f4550d2690e0fd86c7ea1c8a7a3d7d22c37292f21b3c143a3b4de3ac01c3b46')
+sha256sums=('17132ff03a5c7030efa12ebd2bb5f3410d34ff580db3080bc6c85ddaf154363d')
 sha256sums_i686=('6c600e33593e2b4053c5d08fdeb5cedcde425f019e4fc7b2d0b3b3adb7f322f6')
 sha256sums_x86_64=('c661fb78caa9dae961800069b188f8035b36cc151fe5665c8eb59c16da7c5781')
 sha256sums_aarch64=('bc5c2227de16bc71d16c73cafcdf071c9f6c40f715d9c5416bea66dcc5659eed')
@@ -65,6 +65,7 @@ _msg2 'installing binaries'
 _msg3 'skywire-visor'
 install -Dm755 ${srcdir}/${_pkgname}-visor ${pkgdir}/${_skybin}/
 ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}-visor
+ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
 _msg3 'skywire-cli'
 install -Dm755 ${srcdir}/${_pkgname}-cli ${pkgdir}/${_skybin}/
 ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-cli ${pkgdir}/usr/bin/${_pkgname}-cli
@@ -85,12 +86,11 @@ for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
 
-#rename visor to skywire
-[[ -f ${pkgdir}/usr/bin/${_pkgname}-visor ]] && mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
-
-#install the patched system.d services
+#install systemd services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
 
 #tls key and certificate generation
 install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
