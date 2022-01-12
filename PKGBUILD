@@ -2,7 +2,7 @@
 
 pkgname=gister-git
 _pkgname=gister
-pkgver=2.4.0.r7.gb916d6a
+pkgver=2.4.0.r8.gabf421c
 pkgrel=1
 pkgdesc="A command line tool for managing GitHub gists"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('legit-git: more streamlined syncing of gist repository'
             'codesearch-git: faster searching of gists')
 provides=('gister')
 conflicts=('gister')
-source=("$_pkgname::git://github.com/weakish/gister.git")
+source=("$_pkgname::git+https://github.com/weakish/gister.git")
 sha256sums=('SKIP')
 
 pkgver() {

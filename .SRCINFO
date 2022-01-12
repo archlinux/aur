@@ -1,6 +1,6 @@
 pkgbase = gister-git
 	pkgdesc = A command line tool for managing GitHub gists
-	pkgver = 2.4.0.r7.gb916d6a
+	pkgver = 2.4.0.r8.gabf421c
 	pkgrel = 1
 	url = https://github.com/weakish/gister
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = gister-git
 	optdepends = codesearch-git: faster searching of gists
 	provides = gister
 	conflicts = gister
-	source = gister::git://github.com/weakish/gister.git
+	source = gister::git+https://github.com/weakish/gister.git
 	sha256sums = SKIP
 
 pkgname = gister-git
-
