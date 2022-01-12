@@ -3,7 +3,7 @@ pkgbase=boost1.69
 pkgname=('boost1.69-libs' 'boost1.69')
 pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=10
+pkgrel=11
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -47,7 +47,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.9 \
+      python=3.10 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
@@ -87,7 +87,7 @@ package_boost1.69-libs() {
 
    # https://github.com/boostorg/python/issues/203#issuecomment-391477685
    for _lib in python numpy; do
-     ln -srL "${pkgdir}"/opt/boost1.69/lib/libboost_${_lib}3{9,}.so
+     ln -srL "${pkgdir}"/opt/boost1.69/lib/libboost_${_lib}310.so
    done
 
    install -Dm644 "${srcdir}/"boost_${_boostver}/LICENSE_1_0.txt \
