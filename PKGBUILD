@@ -1,14 +1,13 @@
-# Maintainer: Nikola Tasić <nik@7aske.com>
+# Maintainer: Nikola Tasić <nik at 7aske dot com>
 pkgname="rgs"
 pkgver="1.12"
 pkgrel=1
 pkgdesc="Batch git repository analysis tool"
 arch=('x86_64')
 url="https://github.com/7aske/rgs"
-license=('GPLv2')
-depends=()
+license=('GPL2')
+depends=('libgit2')
 makedepends=('cargo')
-checkdepends=('cargo')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 
 prepare() {
@@ -21,12 +20,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --locked --all-features --frozen
-}
-
-check() {
-	cd $pkgname-$pkgver
-	export RUSTUP_TOOLCHAIN=stable
-	cargo test --frozen --locked
 }
 
 package() {
