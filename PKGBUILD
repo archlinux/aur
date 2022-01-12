@@ -3,7 +3,7 @@
 
 pkgname=argo-bin
 pkgver=3.2.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/argoproj/argo-workflows"
@@ -12,15 +12,15 @@ source_x86_64=("argo_${pkgver}_x86_64.gz::https://github.com/argoproj/argo-workf
 source_aarch64=("argo_${pkgver}_aarch64.gz::https://github.com/argoproj/argo-workflows/releases/download/v$pkgver/argo-linux-arm64.gz")
 
 build() {
-  chmod +x "argo_${pkgver}_${arch}"
+  chmod +x "argo_${pkgver}_${CARCH}"
 }
 
 check() {
-  ./"argo_${pkgver}_${arch}" version
+  ./"argo_${pkgver}_${CARCH}" version
 }
 
 package() {
-  install -Dm755 "argo_${pkgver}_${arch}" "$pkgdir/usr/bin/argo"
+  install -Dm755 "argo_${pkgver}_${CARCH}" "$pkgdir/usr/bin/argo"
   $pkgdir/usr/bin/argo completion zsh > argo.zsh
   $pkgdir/usr/bin/argo completion bash > argo.bash
   install -Dm644 argo.zsh "$pkgdir/usr/share/zsh/site-functions/_argo"
