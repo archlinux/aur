@@ -5,8 +5,8 @@
 _pkgname=kotatogram-desktop-beta
 pkgname="${_pkgname}-dynamic-bin"
 pkgver=1.4.6
-pkgrel=1
-_pkgrel=1
+pkgrel=2
+_pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Beta version precompiled package"
 arch=('x86_64')
 url="https://kotatogram.github.io"
@@ -14,11 +14,9 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
-         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs' 'rlottie-git')
-optdepends=(
-	'webkit2gtk: embedded browser features'
-	'xdg-desktop-portal: desktop integration'
-)
+         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs')
+optdepends=('webkit2gtk: embedded browser features'
+            'xdg-desktop-portal: desktop integration')
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
 provides=('kotatogram-desktop')
 source=("https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")

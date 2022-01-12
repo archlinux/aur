@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-beta-dynamic-bin
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork - Beta version precompiled package
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kotatogram.github.io
 	arch = x86_64
 	license = GPL3
@@ -42,13 +42,12 @@ pkgbase = kotatogram-desktop-beta-dynamic-bin
 	depends = xcb-util-keysyms
 	depends = libxcb
 	depends = gcc-libs
-	depends = rlottie-git
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
 	conflicts = kotatogram-desktop-bin
-	source = https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/download/k1.4.6-1/kotatogram-desktop-beta-1.4.6-1-x86_64.pkg.tar.zst
+	source = https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/download/k1.4.6-2/kotatogram-desktop-beta-1.4.6-2-x86_64.pkg.tar.zst
 	b2sums = a48f50db41aa728bd93fa7570e16df0cd1b5c28a9e001c40b50e29eae7612f43e90fcdcff6bedb1bdc90ae42471246d7e31c7d9178dee960a99391d498b1dbf7
 
 pkgname = kotatogram-desktop-beta-dynamic-bin
