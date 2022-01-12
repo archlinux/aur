@@ -1,24 +1,14 @@
 pkgbase = python-duckling
 	pkgdesc = Python wrapper for wit.ai's Duckling Clojure library
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FraBle/python-duckling
 	arch = any
-	license = APACHE
-	makedepends = python
-	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	source = python-duckling-1.8.0.tar.gz::https://github.com/FraBle/python-duckling/archive/v1.8.0.tar.gz
+	license = Apache
+	makedepends = python-pytest-runner
+	depends = java-environment
+	depends = python-jpype1
+	source = https://github.com/FraBle/python-duckling/archive/v1.8.0.tar.gz
 	sha512sums = 9aa59d55cd546b977d86987c68676d3ed38d2a902d74bd67960c23e5f8d4a41e893f3ef495d15862a9b18cc839a1fce07f490caa96c5a3f6a86ffcf4e69f27fa
 
 pkgname = python-duckling
-	depends = python
-	depends = java-environment
-	depends = python-jpype1
-
-pkgname = python2-duckling
-	depends = python2
-	depends = java-environment
-	depends = python2-jpype1
-
