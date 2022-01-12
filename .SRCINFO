@@ -1,7 +1,7 @@
 pkgbase = ttf-lora-cyrillic
 	pkgdesc = Serif family for text with Cyrillic support
 	pkgver = 3.001
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.cyreal.org/2012/07/lora/
 	arch = any
 	license = custom:OFL
@@ -13,3 +13,7 @@ pkgbase = ttf-lora-cyrillic
 	b2sums = e118ba71dc5e5bf2a801876934a13bcc5a4faeb0096f712e0b9eb5d01a7c37b3fdd3c702e2891c2ff1842d0abae6fbe2597cabb072cc6edb483562a24b71e734
 
 pkgname = ttf-lora-cyrillic
+
+pkgname = otf-lora-cyrillic
+
+pkgname = ttf-lora-cyrillic-variable
