@@ -1,6 +1,6 @@
 pkgbase = lightctl
 	pkgdesc = backlight control utility that does smooth transitions
-	pkgver = 0.0.1
+	pkgver = r10.16ae2a6
 	pkgrel = 1
 	url = https://git.sr.ht/~whynothugo/lightctl
 	arch = x86_64
