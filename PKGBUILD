@@ -1,57 +1,31 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_name=ete3
-pkgbase='python-ete'
-pkgname=('python-ete' 'python2-ete')
-pkgver=3.1.1
-pkgrel=2
-pkgdesc="Python toolkit for building, comparing, annotating, manipulating and visualising phylogenetic trees"
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
+_base=ete3
+pkgname=python-${_base/3/}
+pkgver=3.1.2
+pkgrel=1
+pkgdesc="A Python Environment for (phylogenetic) Tree Exploration"
 arch=('any')
-url=http://etetoolkit.org/
-license=('GPL3')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/21/17/3c49b7fafe10ed63bb7904ebf9764b98db726aa5fd482fb006818854bc04/ete3-3.1.1.tar.gz)
-sha256sums=('870a3d4b496a36fbda4b13c7c6b9dfa7638384539ae93551ec7acb377fb9c385')
+url="http://${_base/3/}toolkit.org"
+license=(GPL)
+depends=(python-six)
+makedepends=(python-setuptools)
+optdepends=(
+  'python-lxml: Nexml and Phyloxml support'
+  'python-numpy: ArrayTable and ClusterTree class support'
+  'python-pyqt5: tree visualization and image rendering'
+)
+# options=(!emptydirs)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('e21d47ff4ec0f7669beb88e9526b33fed7c802e610277c2e09436e54b127b06439c49b4ad82316fe1e08bc0a40635b822949ec51f60b1ab2d604069988a212a4')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
+build() {
+  cd "${_base}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
 }
 
-package_python2-ete() {
-  depends=('python2' 'python2-six')
-  optdepends=(
-    'python2-lxml: Nexml and Phyloxml support'
-    'python2-numpy: ArrayTable and ClusterTree class support'
-    'python2-pyqt4: tree visualization and image rendering'
-    'python2-pyqt5: tree visualization and image rendering'
-  )
-
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-
-  mv "${pkgdir}"/usr/bin/"${_name}" "${pkgdir}"/usr/bin/"${_name}"-2
-}
-
-package_python-ete() {
-  depends=('python' 'python-six')
-  optdepends=(
-    'python-lxml: Nexml and Phyloxml support'
-    'python-numpy: ArrayTable and ClusterTree class support'
-    'python-pyqt4: tree visualization and image rendering'
-    'python-pyqt5: tree visualization and image rendering'
-  )
-
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+package() {
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

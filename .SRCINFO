@@ -1,31 +1,16 @@
 pkgbase = python-ete
-	pkgdesc = Python toolkit for building, comparing, annotating, manipulating and visualising phylogenetic trees
-	pkgver = 3.1.1
-	pkgrel = 2
-	url = http://etetoolkit.org/
+	pkgdesc = A Python Environment for (phylogenetic) Tree Exploration
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = http://etetoolkit.org
 	arch = any
-	license = GPL3
-	makedepends = python
+	license = GPL
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-ete-3.1.1.tar.gz::https://pypi.python.org/packages/21/17/3c49b7fafe10ed63bb7904ebf9764b98db726aa5fd482fb006818854bc04/ete3-3.1.1.tar.gz
-	sha256sums = 870a3d4b496a36fbda4b13c7c6b9dfa7638384539ae93551ec7acb377fb9c385
-
-pkgname = python-ete
-	depends = python
 	depends = python-six
 	optdepends = python-lxml: Nexml and Phyloxml support
 	optdepends = python-numpy: ArrayTable and ClusterTree class support
-	optdepends = python-pyqt4: tree visualization and image rendering
 	optdepends = python-pyqt5: tree visualization and image rendering
+	source = https://pypi.org/packages/source/e/ete3/ete3-3.1.2.tar.gz
+	sha512sums = e21d47ff4ec0f7669beb88e9526b33fed7c802e610277c2e09436e54b127b06439c49b4ad82316fe1e08bc0a40635b822949ec51f60b1ab2d604069988a212a4
 
-pkgname = python2-ete
-	depends = python2
-	depends = python2-six
-	optdepends = python2-lxml: Nexml and Phyloxml support
-	optdepends = python2-numpy: ArrayTable and ClusterTree class support
-	optdepends = python2-pyqt4: tree visualization and image rendering
-	optdepends = python2-pyqt5: tree visualization and image rendering
-
+pkgname = python-ete
