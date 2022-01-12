@@ -1,6 +1,6 @@
 pkgbase = fhem
 	pkgdesc = A perl server for house automation
-	pkgver = 6.0
+	pkgver = 6.1
 	pkgrel = 1
 	url = https://fhem.de
 	install = fhem.install
@@ -16,16 +16,15 @@ pkgbase = fhem
 	optdepends = perl-net-snmp: SNMP support
 	optdepends = python2: DoorPi support
 	backup = etc/fhem.cfg
-	source = https://fhem.de/fhem-6.0.tar.gz
+	source = https://fhem.de/fhem-6.1.tar.gz
 	source = fhem.service
 	source = sysusers.conf
 	source = tmpfiles.conf
 	source = fix-makefile-paths.patch
-	sha256sums = 5fc95d5e2febffcd270c3736257ae58d53e7004031fe09133bb1b99aa837e10f
+	sha256sums = f56de4629e633721f86405ba4886bf73878437beaa7126c63a2cb5b9e84f63c8
 	sha256sums = 7adaffd1036198c8f942a7cbcdc187ba59557eccdfcd19aa28ed5f578810ce14
 	sha256sums = 564796d24351c6c1ebeb5995551ec670170b1c451b5efa12ea77f764f1ee7202
 	sha256sums = 216cbb566c38b893f7036e8e32997a3595c1cf618688be00371d9d49f715a2bd
 	sha256sums = e68b54d1a10231b625a8f23b31012b877bd3a78131423b5cbd1f0449b4a3c206
 
 pkgname = fhem
-
