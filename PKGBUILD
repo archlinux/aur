@@ -2,7 +2,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse
-pkgver=21.11.4.14
+pkgver=21.12.3.32
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('x86_64')
@@ -20,9 +20,9 @@ source=(
   https://repo.clickhouse.tech/deb/stable/main/clickhouse-server_${pkgver}_all.deb
 )
 sha256sums=(
-  e3afd36e46b4b65c741a8a4ec7c6d37df7f7c5503abe5316b36971f4a15a1590
-  523d1c5dd91a4d9d094b77186c8ea4729eb326a711fb886c84e86ff34ba0297d
-  e6ab48d398a068cf7459bae512311fab03db7f7ce06de02211907c0b43aeb91f
+  cc65d46bccd4c431bccf67422f39bfd51bc30e01e77c2b8f994199cb210dc7cb
+  06b867cec79ab68472637b3e60e4d10cb9ae32cfef67ced380c52134e25b4fea
+  38613256f08316de143e624764b36fc80941e062e6af4186d5478697c2f9a8f4
 )
 install=$pkgname.install
 backup=(
