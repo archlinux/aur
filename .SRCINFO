@@ -1,6 +1,6 @@
 pkgbase = embedded-studio-risc-v
 	pkgdesc = Segger Embedded Studio for RISC-V
-	pkgver = 5.66
+	pkgver = 6.10
 	pkgrel = 1
 	url = https://www.segger.com/products/development-tools/embedded-studio/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = embedded-studio-risc-v
 	license = Commercial
 	depends = jlink-software-and-documentation
 	options = !strip
-	source_x86_64 = Setup_EmbeddedStudio_RISCV_v566_linux_x64.tar.gz::https://dl.segger.com/files/embedded-studio/Setup_EmbeddedStudio_RISCV_v566_linux_x64.tar.gz
-	md5sums_x86_64 = 87e899127916571ea325a6dc8c4a1f05
-	source_aarch64 = Setup_EmbeddedStudio_RISCV_v566_linux_arm64.tar.gz::https://dl.segger.com/files/embedded-studio/Setup_EmbeddedStudio_RISCV_v566_linux_arm64.tar.gz
-	md5sums_aarch64 = 10c9743370d81c8eefc2b58cbc989312
+	source_x86_64 = Setup_EmbeddedStudio_RISCV_v610_linux_x64.tar.gz::https://dl.segger.com/files/embedded-studio/Setup_EmbeddedStudio_RISCV_v610_linux_x64.tar.gz
+	md5sums_x86_64 = 38849daf2fa654a7cc35cf9a39672b2a
+	source_aarch64 = Setup_EmbeddedStudio_RISCV_v610_linux_arm64.tar.gz::https://dl.segger.com/files/embedded-studio/Setup_EmbeddedStudio_RISCV_v610_linux_arm64.tar.gz
+	md5sums_aarch64 = 734efd526b6d8db6c7fbb30d10c941f4
 
 pkgname = embedded-studio-risc-v
