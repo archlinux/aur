@@ -3,7 +3,7 @@
 
 pkgname=ananicy-cpp-git
 _pkgname=ananicy-cpp
-pkgver=1.0.0.rc5.r10.g0adc86c
+pkgver=1.0.0.rc5.r13.g38ad7b1
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
 source=(
@@ -30,10 +30,7 @@ prepare() {
 	git config submodule."external/std-format".url "${srcdir}/std-format"
 	git submodule update
 
-	mkdir -p build
-	cd build
-
-	cmake .. \
+	cmake -B build -S . \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_EXTERNAL_SPDLOG=ON \
@@ -42,14 +39,14 @@ prepare() {
 }
 
 build() {
-	cd "$_pkgname/build"
-	cmake --build . --target ananicy-cpp
+	cd "$_pkgname"
+	cmake --build build --target ananicy-cpp
 }
 
 package() {
-	cd "$_pkgname/build"
+	cd "$_pkgname"
 	export DESTDIR="$pkgdir"
-	cmake --install . --component Runtime
+	cmake --install build --component Runtime
 
 	install -m755 -d "$pkgdir/etc/ananicy.d"
 }
