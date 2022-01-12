@@ -1,10 +1,18 @@
---- Makefile.orig	2021-06-05 14:12:08.523206518 +0300
-+++ Makefile	2021-06-05 14:15:00.663156464 +0300
-@@ -51,6 +51,7 @@ install: libudev.so libudev.a libudev.pc
- 	cp -f libudev.a  ${DESTDIR}${LIBDIR}/libudev.a
+--- Makefile.orig	2022-01-12 18:48:51.787247423 +0300
++++ Makefile	2022-01-12 18:50:32.105253773 +0300
+@@ -57,6 +57,7 @@ install-shared: libudev.so.1 install-hea
+ 	mkdir -p ${DESTDIR}${LIBDIR}
  	cp -f libudev.so.1 ${DESTDIR}${LIBDIR}/libudev.so.1
  	ln -fs libudev.so.1 ${DESTDIR}${LIBDIR}/libudev.so
 +	ln -fs libudev.so.1 ${DESTDIR}${LIBDIR}/libudev.so.${LIBUDEV_VER}
- 	cp -f libudev.pc ${DESTDIR}${PKGCONFIGDIR}/libudev.pc
  
- uninstall:
+ install-static: libudev.a install-headers install-pkgconfig
+ 	mkdir -p ${DESTDIR}${LIBDIR}
+@@ -68,6 +69,7 @@ uninstall:
+ 	rm -f ${DESTDIR}${LIBDIR}/libudev.a \
+           ${DESTDIR}${LIBDIR}/libudev.so \
+           ${DESTDIR}${LIBDIR}/libudev.so.1 \
++          ${DESTDIR}${LIBDIR}/libudev.so.${LIBUDEV_VER} \
+           ${DESTDIR}${PKGCONFIGDIR}/libudev.pc \
+           ${DESTDIR}${INCLUDEDIR}/libudev.h
+ 

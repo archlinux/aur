@@ -1,6 +1,6 @@
 pkgbase = libudev-zero-git
 	pkgdesc = Daemonless replacement for libudev
-	pkgver = 202
+	pkgver = 219
 	pkgrel = 1
 	url = https://github.com/illiliti/libudev-zero
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = libudev-zero-git
 	source = git+https://github.com/illiliti/libudev-zero
 	source = artix-install.patch
 	md5sums = SKIP
-	md5sums = ac1272d59fe80e488d09c088de1c59a4
+	md5sums = b951df22b38f2c30383334a462a1ec2a
 
 pkgname = libudev-zero-git
