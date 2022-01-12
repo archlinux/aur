@@ -1,6 +1,6 @@
 # Contributor: Arthur Vuillard <arthur@hashbang.fr>
 _base=djangorestframework-camel-case
-pkgname=python-${_base/ore/o-re}
+pkgname=python-${_base/orestf/o-rest-f}
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Camel case JSON support for Django REST framework"
