@@ -1,36 +1,29 @@
+# Contributor: Yoan Blanc <yoan@dosimple.ch>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: David Moore <davidm@sjsoft.com>
-
-pkgname=python2-simplejson
-pkgver=3.17.5
+_base=simplejson
+pkgname=python2-${_base}
+pkgver=3.17.6
 pkgrel=1
 pkgdesc='Simple, fast, extensible JSON encoder/decoder for python2'
 license=('MIT')
 arch=('x86_64')
-url='https://github.com/simplejson/simplejson'
-depends=('python2')
-makedepends=('python2-setuptools')
-checkdepends=('python2-pytest-runner')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('cfde404fd896030a65749f2c29c9d9e603e51c90b977777caa7749d8fa0c400ff6cf7d49c23afd650aaffddaa6407ac6d68454caa0ea703410a84f38cb6a5bed')
+url="https://github.com/${_base}/${_base}"
+depends=(python2)
+makedepends=(python2-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('48b74388cd3a5cf0acf46a9aa050d628513d842297625f791c7ae07a7c9289afcb0be8d374f77af3bebd50f4c200844bc69f5b77a67220fee357cdfc0d913726')
 
 build() {
-    cd "${srcdir}"/simplejson-${pkgver}
-
-    python2 setup.py build
+  cd "${_base}-${pkgver}"
+  python2 setup.py build
 }
 
-check() {
-    cd "${srcdir}"/simplejson-${pkgver}
-
-    python2 setup.py pytest
-}
-
-package_python2-simplejson() {
-    cd simplejson-${pkgver}
-
-    python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+package() {
+  cd "${_base}-${pkgver}"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
