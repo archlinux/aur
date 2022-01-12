@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.11.0.beta2
+pkgver=3.11.0beta2
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -54,7 +54,7 @@ prepare() {
 
 pkgver() {
   cd gamescope
-  git describe --tags | sed 's/-/./'
+  git describe --tags | sed 's/-//'
 }
 
 build() {
