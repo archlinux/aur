@@ -13,7 +13,7 @@ pkgbase = siji-ttf
 	optdepends = font-manager: alternate way to view glyphs
 	provides = siji
 	conflicts = siji
-	source = siji-ttf::git+https://github.com/fauno/siji
+	source = siji-ttf-r22.14e7da9::git+https://github.com/fauno/siji/#commit=14e7da94de514c3ada6a2b250ae3a1e76cb6c94f
 	md5sums = SKIP
 
 pkgname = siji-ttf
