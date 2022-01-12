@@ -1,0 +1,5 @@
+opencl-caps-viewer
+OpenCL-Headers
+pkg
+src
+*.pkg.*
