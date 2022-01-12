@@ -3,7 +3,7 @@
 
 pkgname=piwigo
 pkgver=12.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Photo gallery software for the web'
 arch=(any)
 url="https://piwigo.org/"
@@ -14,10 +14,8 @@ optdepends=('php-gd: graphic library (one graphic library is required)'
             'php-apache: Apache Web Server (one web server is required)'
             'nginx: nginx Web Server (one web server is required)'
             'php-fpm: FastCGI, required with nginx Web Server'
-            'exiftool: Write Metadata plugin or any other plugin dealing with EXIF/IPTC metadata'
             'ffmpeg: VideoJS plugin to create video poster'
-            'jpegtran: RotateImage plugin to rotate images with no compression'
-            'pdftoppm: generate poster from PDF files (instead of ImageMagick)')
+            'poppler: generate poster from PDF files')
 makedepends=("unzip")
 backup=('etc/webapps/piwigo/apache.conf'
         'etc/php/php-fpm.d/piwigo.conf')
