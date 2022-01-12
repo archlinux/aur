@@ -6,8 +6,8 @@
 pkgname=sway9
 pkgver=1.6.1
 epoch=1
-pkgrel=2
-_commit=2e86c22ab87900f0efcadc03a6aa23c345c7b60c
+pkgrel=3
+_commit=8370a4bb068ce8db4bc6da901e5d964610681b3a
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/9ary/sway9'
