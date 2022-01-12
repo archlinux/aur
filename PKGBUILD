@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.1.0.r4.g98e3866
-pkgrel=1
+pkgver=1.1.0.r7.g74d1bdf
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
 depends=('fd' 'gtk3' 'libqalculate')
 makedepends=('cargo' 'git')
+options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
 sha256sums=('SKIP')
 

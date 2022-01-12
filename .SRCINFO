@@ -1,6 +1,6 @@
 pkgbase = pop-launcher-git
-	pkgver = 1.1.0.r4.g98e3866
-	pkgrel = 1
+	pkgver = 1.1.0.r7.g74d1bdf
+	pkgrel = 2
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = pop-launcher-git
 	depends = fd
 	depends = gtk3
 	depends = libqalculate
+	options = !lto
 	source = git+https://github.com/pop-os/launcher.git
 	sha256sums = SKIP
 
