@@ -36,7 +36,7 @@ optdepends_x86_64=('vulkan-driver: Vulkan renderer'
 provides=('gzdoom')
 conflicts=('gzdoom')
 replaces=('gzdoom1-git' 'gzdoom-legacy-git')
-source=('gzdoom::git://github.com/coelckers/gzdoom.git'
+source=('gzdoom::git+https://github.com/coelckers/gzdoom.git'
         'gzdoom.desktop'
         '0001-Fix-file-paths.patch')
 sha256sums=('SKIP'
