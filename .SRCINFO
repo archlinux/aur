@@ -1,7 +1,7 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
 	pkgver = 2021
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AdaCore/gps
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = gnat-gps
 	sha1sums = 12fe188cc9ddcf06341d52af4dd086c9ded5afda
 	sha1sums = 4c13859aa25c5142bd5d0fde7b645217ddeccb50
 	sha1sums = 4e6cb35c4e2e74d343d0917b926c7377a81b1aba
-	sha1sums = c71a4484b1e791ea8455a44e602b236dc7497c4d
+	sha1sums = 25a479bc5332e4e863ff6186498645368a1d63cc
 	sha1sums = 7a928f86dad330590a8c9e9aff04291e458fd1c6
 	sha1sums = 8815ffbf0077a50c4c2023637d214b1847be40f1
 	sha1sums = 6ec11d04620cb5225df8a43c9a5dbd98e3e3ca53

@@ -6,7 +6,7 @@
 pkgname=gnat-gps
 _upstream_ver=2021-20210701-19B6B
 pkgver=2021
-pkgrel=2
+pkgrel=3
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ sha1sums=("$_checksum"
           '12fe188cc9ddcf06341d52af4dd086c9ded5afda'
           '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
           '4e6cb35c4e2e74d343d0917b926c7377a81b1aba'
-          'c71a4484b1e791ea8455a44e602b236dc7497c4d'
+          '25a479bc5332e4e863ff6186498645368a1d63cc'
           '7a928f86dad330590a8c9e9aff04291e458fd1c6'
           '8815ffbf0077a50c4c2023637d214b1847be40f1'
           '6ec11d04620cb5225df8a43c9a5dbd98e3e3ca53'
@@ -75,8 +75,8 @@ build()
   # GPS uses a lot of Unchecked_Conversion (too many to patch), so we have to build with -fno-strict-aliasing.
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
 
-  make -j1 OS=unix PROCESSORS=0 BUILD=Production LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.9 -gargs"
-  make -C docs all
+  make -j1 OS=unix PROCESSORS=0 BUILD=Production LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.10 -gargs"
+#  make -C docs all
 }
 
 package() 
