@@ -1,6 +1,6 @@
 pkgbase = skylobby-git
 	pkgdesc = A Spring RTS lobby and replay viewer written in Clojure
-	pkgver = 0.7.49.r0.g475d09b
+	pkgver = 0.7.49.r6.g8526d81
 	pkgrel = 1
 	url = https://github.com/skynet-gh/skylobby
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = skylobby-git
 	makedepends = git
 	makedepends = clojure
 	depends = java-runtime>=14
-	provides = skylobby=0.7.49.r0.g475d09b
+	provides = skylobby=0.7.49.r6.g8526d81
 	conflicts = skylobby
 	source = skylobby::git+https://github.com/skynet-gh/skylobby
 	sha256sums = SKIP
