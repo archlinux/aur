@@ -1,7 +1,7 @@
 pkgbase = meep-python
 	pkgdesc = A free finite-difference time-domain simulation software package (with Python support)
-	pkgver = 1.21.0
-	pkgrel = 2
+	pkgver = 1.22.0
+	pkgrel = 1
 	url = http://ab-initio.mit.edu/wiki/index.php/Meep
 	arch = x86_64
 	license = GPL
@@ -27,7 +27,7 @@ pkgbase = meep-python
 	options = !libtool
 	options = !makeflags
 	options = staticlibs
-	source = meep-1.21.0.tar.gz::https://github.com/NanoComp/meep/archive/v1.21.0.tar.gz
-	sha256sums = 71911cd2f38b15bdafe9a27ad111f706f24717894d5f9b6f9f19c6c10a0d5896
+	source = meep-1.22.0.tar.gz::https://github.com/NanoComp/meep/archive/v1.22.0.tar.gz
+	sha256sums = f7486a1f25f8e90a5f39785ad9c1f7a029f99443db7dc3a5bb44b4eba2651625
 
 pkgname = meep-python
