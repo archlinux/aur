@@ -1,13 +1,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=extension-manager-git
-pkgver=r34.a10a0ce
+pkgver=r48.ba1a4e1
 pkgrel=1
 pkgdesc="A native tool for browsing, installing, and managing GNOME Shell Extensions"
 arch=('x86_64')
 url="https://github.com/mjakeman/extension-manager"
 license=('GPL3')
-depends=('gtk4' 'libadwaita' 'json-glib')
-makedepends=('meson' 'blueprint-compiler-git')
+depends=('gtk4>=1:4.6.0' 'libadwaita' 'libsoup3' 'json-glib')
+makedepends=('meson' 'blueprint-compiler-git' 'gobject-introspection')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
