@@ -3,7 +3,7 @@
 # Maintainer: Bence Hornák <hornak.bence@gmail.com>
 
 pkgname=anyk
-pkgver=3.11.0
+pkgver=3.12.0
 subver=0.1
 cms='cms587298'
 pkgrel=1
@@ -14,13 +14,13 @@ license=('proprietary')
 depends=('java8-openjfx')
 makedepends=('unzip')
 provides=('abevjava')
-source=("https://www.nav.gov.hu/data/${cms}/abevjava_install-${pkgver}-${subver}.noarch.rpm"
+source=("https://www.nav.gov.hu/data/${cms}/abevjava_install-3.11.0-${subver}.noarch.rpm" # temporary fix for 3.12 as the link on nav.gov.hu is incorrect. TODO: clean up after NAV fixes the link on their site
         'abevjava'
         'abevjavapath.cfg'
         'anyk.desktop'
         'setenv'
         'anyk.sysusers')
-md5sums=('c1bc5938ef0aad5e38a058200d69f2f1'
+md5sums=('127f09a178df966829582c5a289de1f4'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
