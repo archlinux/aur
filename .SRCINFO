@@ -1,6 +1,6 @@
 pkgbase = tagainijisho-git
 	pkgdesc = Free Japanese dictionary and study assistant (qt5)
-	pkgver = 1.1.90.r1773.dde2ad8
+	pkgver = 1.1.91.r1.a84d46b
 	pkgrel = 1
 	url = http://www.tagaini.net/
 	arch = i686
@@ -10,12 +10,10 @@ pkgbase = tagainijisho-git
 	license = GPL3
 	makedepends = cmake>=2.8.12
 	makedepends = desktop-file-utils
+	makedepends = git
 	depends = qt5-base>=5.4
 	depends = qt5-tools
 	depends = sqlite3>=3.7.9
 	conflicts = tagainijisho
-	source = git://github.com/Gnurou/tagainijisho.git#branch=master
-	md5sums = SKIP
 
 pkgname = tagainijisho-git
-
