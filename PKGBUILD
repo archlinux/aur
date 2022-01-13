@@ -1,4 +1,5 @@
-# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
+# Maintainer: Ernesto Castellotti <debendraoli@pm.me>
+# Previous Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
 # Previous maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Previous maintainer: silentnoodle <lonnqvistben at gmail dot com>
 # Previous maintainer:  agnotek <agnostic.sn [at]gmail.com>
