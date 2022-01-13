@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/sorayuki/obs-multi-rtmp'
 license=('GPL')
 depends=('obs-studio')
-makedepends=('cmake' 'obs-studio')
+makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('caaf2fcccf775a15e8c98035b9065449475a4cc95bcbf5cec5c872ee47cf3cf5')
 
