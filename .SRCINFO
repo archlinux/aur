@@ -1,0 +1,20 @@
+pkgbase = asus-touchpad-numpad
+	pkgdesc = asus touchpad numpad toggler, require configuration, read the PKGBUILD and the github stuff
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver
+	arch = any
+	license = GPL
+	depends = python>=3.8
+	depends = libevdev
+	depends = python-libevdev
+	depends = i2c-tools
+	depends = git
+	provides = asus-touchpad-numpad-driver
+	conflicts = asus-touchpad-numpad-driver
+	replaces = asus-touchpad-numpad-driver
+	noextract = git+https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver.git
+	source = git+https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver.git
+	md5sums = SKIP
+
+pkgname = asus-touchpad-numpad
