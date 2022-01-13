@@ -1,16 +1,16 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=crane-bin
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='Lift containers with ease'
 arch=('x86_64')
-url="https://www.crane-orchestration.com"
+url="https://github.com/michaelsauter/crane"
 license=('MIT')
 provides=('crane')
 source=("${pkgname}-${pkgver}::https://github.com/michaelsauter/crane/releases/download/v${pkgver}/crane_linux_amd64"
     'LICENSE::https://raw.githubusercontent.com/michaelsauter/crane/master/LICENSE')
-sha256sums=('1a5a9f6315d899c5e9a8d5c5d109e8db2e3e74ddb5edb24d2e46a2a0ee994d93'
+sha256sums=('3be0ef0615d3fbbeaefdc4a43b6baff787c329c4efcf19914371d0a22670f65d'
             '2aeedce7ad8c94cb7ca12dc52001cbe398c1173bd0ce7f0d596a7c53429ddf28')
 
 package() {
