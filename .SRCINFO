@@ -11,18 +11,15 @@ pkgbase = tibia
 	depends = libgl
 	depends = libice
 	depends = libxext
-	depends = openssl-1.0
+	depends = openssl
 	depends = pcre
 	depends = qt5-base
 	depends = qt5-declarative
 	source = tibia.tar.gz::https://static.tibia.com/download/tibia.x64.tar.gz
 	source = tibia-agreement.php::https://www.tibia.com/support/agreement.php
-	source = 01_openssl102.patch
 	source = 02_freetype.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = f3a7c01c0664155a82f00a3d84d6d4a01f7786e872f3a12ae89886542bc43482
 	sha256sums = 55d87bd8f32728cd47757a195102e2af2d10a1501d9370af86606b2c75211515
 
 pkgname = tibia
-
