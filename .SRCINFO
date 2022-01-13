@@ -11,6 +11,7 @@ pkgbase = aseprite
 	makedepends = python
 	makedepends = libxi
 	makedepends = pixman
+	makedepends = gn
 	makedepends = harfbuzz-icu
 	depends = cmark
 	depends = libcurl.so
@@ -33,21 +34,21 @@ pkgbase = aseprite
 	noextract = Aseprite-v1.2.31-Source.zip
 	source = https://github.com/aseprite/aseprite/releases/download/v1.2.31/Aseprite-v1.2.31-Source.zip
 	source = git+https://github.com/aseprite/skia.git#branch=aseprite-m96
-	source = gn.zip::https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-amd64/+/git_revision:d62642c920e6a0d1756316d225a90fd6faa9e21e
 	source = git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8
 	source = git+https://skia.googlesource.com/common.git#commit=9737551d7a52c3db3262db5856e6bcd62c462b92
 	source = is_clang.py
 	source = shared-libarchive.patch
 	source = shared-libwebp.patch
+	source = shared-skia-deps.patch
 	source = optional-pixman.patch
 	sha256sums = 966bd940e1072ed24b70e211ca2bb1eb9aa6432ca12972a8e1df5f1e0150213d
 	sha256sums = SKIP
-	sha256sums = 0ef7a431fa1bfd2d12edd1f6ceffac7e2b6ed89dcfae9aea9bf681d42a068347
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = cb901aaf479bcf1a2406ce21eb31e43d3581712a9ea245672ffd8fbcd9190441
 	sha256sums = e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7
 	sha256sums = 2d6b5f33f23adc4f9912511ac35311a776ce34519ef40e9db3659e4c5457f055
+	sha256sums = eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0
 	sha256sums = c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654
 
 pkgname = aseprite
