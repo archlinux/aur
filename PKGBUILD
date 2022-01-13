@@ -5,7 +5,7 @@
 _pkgname=8188eu
 pkgname="${_pkgname}-dkms-git"
 _pkgver=5.2.2.4
-pkgver=5.2.2.4.r767.33dbf80
+pkgver=5.2.2.4.r794.53ed527
 pkgrel=1
 pkgdesc='Standalone driver for Realtek RTL8188EUS (RTL8188EUS, RTL8188ETV) WLAN'
 arch=('any')
@@ -40,10 +40,8 @@ package() {
   # Copy sources
   cd "${_pkgname}"
 
-  for d in "core" "hal" "include" "os_dep"; do
-    for f in $(find "$d" -type f); do
+  for f in $(find . -type f); do
       install -Dm644 "$f" "${install_dir}/$f"
-    done
   done
 
   install -m644 "Makefile" "${install_dir}/Makefile"
