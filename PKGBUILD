@@ -38,7 +38,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         "git+https://github.com/aseprite/skia.git#branch=aseprite-m96"
         # `gn` executable required to configure Skia, pulled from `skia/bin/fetch-gn`
         # Normally we'd use the Arch-provided one, but it has API incompatibilities
-        "gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74"
+        "gn.zip::https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-amd64/+/git_revision:d62642c920e6a0d1756316d225a90fd6faa9e21e"
         # Skia dependencies, determined from `skia/DEPS`
         # Only pulling what we need, though
         "git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8"
@@ -53,7 +53,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
 noextract=("${source[0]##*/}") # Don't extract Aseprite sources at the root
 sha256sums=('966bd940e1072ed24b70e211ca2bb1eb9aa6432ca12972a8e1df5f1e0150213d'
             'SKIP'
-            'c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2'
+            '0ef7a431fa1bfd2d12edd1f6ceffac7e2b6ed89dcfae9aea9bf681d42a068347'
             'SKIP'
             'SKIP'
             'cb901aaf479bcf1a2406ce21eb31e43d3581712a9ea245672ffd8fbcd9190441'
@@ -75,6 +75,7 @@ prepare() {
 	for _dep in "${!_skiadeps[@]}"; do
 		ln -svfT "$(realpath $_dep)" "skia/${_skiadeps[$_dep]}"
 	done
+	bsdtar -xf gn.zip gn
 	chmod 755 gn
 
 	# Replace `is_clang.py` with Python 3-compliant version
@@ -95,13 +96,13 @@ build() {
 	# Flags can typically be found in `src/skia/gn/skia.gni`... but you're kind of on your own
 	env -C skia ../gn gen "$_skiadir" --args="`printf '%s ' \
 is_debug=false is_official_build=true skia_enable_{skottie,pdf}=false \
-skia_use_{expat,libjpeg_turbo,libwebp,xps,zlib,libgifcodec,sfntly}=false`"
+skia_use_{expat,libwebp,xps,zlib,libgifcodec,sfntly}=false`"
 	ninja -C "$_skiadir" skia modules
 
 	echo Building Aseprite...
 	# Suppress install messages since we install to a temporary area; `install -v` will do the job
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
--DENABLE_UPDATER=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
+-DENABLE_UPDATER=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_OS_BACKEND=skia -DLAF_BACKEND=skia \
 -DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
 -DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES
 	ninja -C build
