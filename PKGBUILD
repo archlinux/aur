@@ -2,14 +2,14 @@
 
 pkgname=qbittorrent-enhanced-nox
 pkgver=4.4.0.10
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition)"
 arch=('x86_64')
 url="https://github.com/c0re100/qBittorrent-Enhanced-Edition"
 license=('GPL' 'custom')
 groups=()
-depends=('libtorrent-rasterbar>=1:1.2.14' 'qt6-base')
+depends=('libtorrent-rasterbar>=1:2.0' 'qt6-base')
 makedepends=('cmake' 'boost>1.65.0' 'qt6-tools' 'qt6-svg')
 checkdepends=()
 optdepends=('python: needed for torrent search tab')
