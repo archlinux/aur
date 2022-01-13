@@ -1,7 +1,7 @@
 pkgbase = linux-zen-versioned-bin
 	pkgdesc = The Linux ZEN kernel and modules | repackaged with a unique package name for each version
 	pkgver = 5.16.zen1
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.16-zen1
 	arch = x86_64
 	license = GPL2

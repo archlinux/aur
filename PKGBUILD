@@ -14,7 +14,7 @@ pkgname=("${_pkgname}-versioned-bin"
          "${_versioned_pkgname}-headers-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_pkgver}
-pkgrel=${_pkgrel}
+pkgrel=${_pkgrel}.1
 pkgdesc="The Linux ZEN kernel and modules | repackaged with a unique package name for each version"
 url="https://github.com/zen-kernel/zen-kernel/commits/v5.16-zen1"
 arch=(x86_64)
