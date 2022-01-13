@@ -9,8 +9,8 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.2.30
-pkgrel=5
+pkgver=1.2.31
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -35,7 +35,7 @@ makedepends=(# "Meta" dependencies
              harfbuzz-icu)
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
-        "git+https://github.com/aseprite/skia.git#branch=aseprite-m81"
+        "git+https://github.com/aseprite/skia.git#branch=aseprite-m96"
         # `gn` executable required to configure Skia, pulled from `skia/bin/fetch-gn`
         # Normally we'd use the Arch-provided one, but it has API incompatibilities
         "gn::https://chromium-gn.storage-download.googleapis.com/3523d50538357829725d4ed74b777a572ce0ac74"
@@ -51,7 +51,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         shared-libwebp.patch
         optional-pixman.patch)
 noextract=("${source[0]##*/}") # Don't extract Aseprite sources at the root
-sha256sums=('9f4b098fe2327f2e9d73eb9f2aeebecad63e87ff2cf6fb6eeeee3c0778bb8874'
+sha256sums=('966bd940e1072ed24b70e211ca2bb1eb9aa6432ca12972a8e1df5f1e0150213d'
             'SKIP'
             'c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2'
             'SKIP'
