@@ -3,7 +3,7 @@ pkgname=betterbird-de-bin
 _pkgname=betterbird
 pkgver=91.5.0_bb24
 _build=
-pkgrel=2
+pkgrel=3
 pkgdesc="GERMAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -11,7 +11,7 @@ license=('MPL2')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
-    "https://www.betterbird.eu/downloads/${_pkgname}-${pkgver//_/-}-${_build}.de.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/${_pkgname}-${pkgver//_/-}${_build}.de.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
