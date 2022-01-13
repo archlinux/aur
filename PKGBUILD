@@ -36,10 +36,6 @@ makedepends=(# "Meta" dependencies
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "git+https://github.com/aseprite/skia.git#branch=aseprite-m96"
-        # Skia dependencies, determined from `skia/DEPS`
-        # Only pulling what we need, though
-        "git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8"
-        "git+https://skia.googlesource.com/common.git#commit=9737551d7a52c3db3262db5856e6bcd62c462b92"
         desktop.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
         shared-libarchive.patch
@@ -49,8 +45,6 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         optional-pixman.patch)
 noextract=("${source[0]##*/}") # Don't extract Aseprite sources at the root
 sha256sums=('966bd940e1072ed24b70e211ca2bb1eb9aa6432ca12972a8e1df5f1e0150213d'
-            'SKIP'
-            'SKIP'
             'SKIP'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
@@ -62,16 +56,6 @@ prepare() {
 	# Extract Aseprite's sources
 	mkdir -p aseprite
 	bsdtar -xf "${noextract[0]}" -C aseprite
-
-	# Symlink Skia's build dependencies
-	# Sort of emulating `skia/tools/git-sync-deps`, but only grabbing what we need
-	mkdir -p skia/third_party/externals
-	# Key = repo name (from above), value = path under `src/skia/`
-	local -A _skiadeps=([buildtools]=buildtools
-	                    [common]=common) _dep
-	for _dep in "${!_skiadeps[@]}"; do
-		ln -svfT "$(realpath $_dep)" "skia/${_skiadeps[$_dep]}"
-	done
 
 	# Fix up Aseprite's desktop integration
 	env -C aseprite patch -tp1 <desktop.patch
