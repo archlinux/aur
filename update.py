@@ -8,7 +8,7 @@ NAME = 'linux-lts'
 # Script to update the PKGBUILD to the latest [core]/linux-lts
 
 def get_current():
-    cmd = ['bash', '-c', 'source PKGBUILD; echo ${pkgver}-${pkgrel}']
+    cmd = ['bash', '-c', 'source PKGBUILD; echo ${pkgver}-${_pkgrel}']
     version = subprocess.check_output(cmd).decode('utf8').strip()
     return version
 
