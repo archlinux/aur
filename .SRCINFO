@@ -4,10 +4,11 @@ pkgbase = r-rprojroot
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rprojroot
 	arch = any
-	license = GPL3
+	license = MIT
 	depends = r>=3.0.0
 	optdepends = r-covr
 	optdepends = r-knitr
+	optdepends = r-lifecycle
 	optdepends = r-mockr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
@@ -16,4 +17,3 @@ pkgbase = r-rprojroot
 	sha256sums = 5fa161f0d4ac3b7a99dc6aa2d832251001dc92e93c828593a51fe90afd019e1f
 
 pkgname = r-rprojroot
-
