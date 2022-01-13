@@ -4,7 +4,7 @@
 
 pkgname=simp_le-git
 _pkgname=simp_le
-pkgver=0.18.1.r0.g7138ef6
+pkgver=0.19.0.r0.ga1934be
 pkgrel=1
 epoch=1
 pkgdesc="Simple Let's Encrypt client."
@@ -25,7 +25,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/zenhack/simp_le.git"
         'remove-deps-version-bounds.patch')
 sha256sums=('SKIP'
-            '5ca82e064a0b040c067c44d745eb31ff23dbf6d934b09518b71c4fab1fe65e74')
+            '251ca926d6b50e8a24c434d4247a753ba69767abe42f7adc8e724408d4bdab3c')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
