@@ -9,7 +9,7 @@
 # This PKGBUILD is based on the official Arch cmake package.
 
 pkgname=cmake-git
-pkgver=3.22.1.718.g50cfe54402
+pkgver=3.20.0.409.g61fd90b90c
 pkgrel=1
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
@@ -43,9 +43,7 @@ build() {
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
     --docdir=/share/doc/cmake \
-    --datadir=/share/cmake \
     --sphinx-man \
-    --sphinx-html \
     --system-libs \
     --qt-gui \
     --parallel=$(/usr/bin/getconf _NPROCESSORS_ONLN)
@@ -56,7 +54,9 @@ package() {
   cd "$srcdir/cmake"
   make DESTDIR="${pkgdir}" install
 
-  rm -r "$pkgdir"/usr/share/doc/cmake/html/_sources
-  emacs -batch -f batch-byte-compile "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
-  install -Dm644 Copyright.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  emacs -batch -f batch-byte-compile \
+    "${pkgdir}"/usr/share/emacs/site-lisp/cmake-mode.el
+
+  install -Dm644 Copyright.txt \
+    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
