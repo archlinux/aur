@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=diffobj
 _cranver=0.3.5
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Diffs for R Objects"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=(MIT)
+license=(GPL2 GPL3)
 depends=('r>=3.1.0' 'r-crayon>=1.3.2')
 optdepends=(r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
