@@ -1,0 +1,24 @@
+pkgbase = birdie-alarm-mobile-git
+	pkgdesc = Wakeup Alarm App for a Linux Phone
+	pkgver = r61.14831c3
+	pkgrel = 1
+	url = https://github.com/Dejvino/birdie
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = desktop-file-utils
+	depends = glib2
+	depends = gobject-introspection-runtime
+	depends = gst-plugins-base
+	depends = hicolor-icon-theme
+	depends = python-gobject
+	depends = python-mpris_server
+	depends = python-psutil
+	provides = birdie-alarm-mobile
+	conflicts = birdie-alarm-mobile
+	conflicts = wake-mobile-git
+	source = git+https://github.com/Dejvino/birdie.git
+	md5sums = SKIP
+
+pkgname = birdie-alarm-mobile-git
