@@ -25,7 +25,7 @@ index f16f09660d..40065905d3 100644
 @@ -229,9 +230,17 @@ add_definitions(-DPNG_NO_MMX_CODE) # Do not use MMX optimizations in PNG code
  
  # libwebp
- if(WITH_WEBP_SUPPORT)
+ if(ENABLE_WEBP)
 -  set(WEBP_LIBRARIES webp webpdemux libwebpmux)
 -  set(WEBP_INCLUDE_DIR ${LIBWEBP_DIR}/src)
 -  include_directories(${WEBP_INCLUDE_DIR})
@@ -51,8 +51,8 @@ index 4839d4097c..e8c3e83cbc 100644
    add_subdirectory(giflib)
  endif()
  
--if(WITH_WEBP_SUPPORT)
-+if(WITH_WEBP_SUPPORT AND NOT USE_SHARED_WEBP)
+-if(ENABLE_WEBP)
++if(ENABLE_WEBP AND NOT USE_SHARED_WEBP)
    set(WEBP_BUILD_EXTRAS OFF CACHE BOOL "Build extras.")
    add_subdirectory(libwebp)
  endif()
