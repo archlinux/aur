@@ -1,0 +1,14 @@
+pkgbase = difftance-bin
+	pkgdesc = A diff tool to show edit distance
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fabon-f/difftance
+	arch = x86_64
+	license = MIT
+	conflicts = difftance-git
+	source = difftance::https://github.com/fabon-f/difftance/releases/download/v0.1.0/difftance-x86_64
+	source = https://raw.githubusercontent.com/fabon-f/difftance/v0.1.0/LICENSE
+	md5sums = f98c1cc41fb657f24f4f9deff100567d
+	md5sums = 334fc80d9b7396dc25a560729528c05c
+
+pkgname = difftance-bin
