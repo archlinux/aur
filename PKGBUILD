@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 
 _cranname=spelling
@@ -16,14 +16,11 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
 sha256sums=('740dc8546d096f89d796d8778d522ae980fbde6e0d105170c2f8881d7892369d')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
