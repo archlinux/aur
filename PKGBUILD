@@ -81,16 +81,16 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  	cd dotfiles
-        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd dotfiles || exit 1
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd dotfiles
-        install -d "${pkgdir}/opt/${pkgname}"
-        cp -Rf * "${pkgdir}/opt/${pkgname}"
-        install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-        install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-        install -Dm755 dots -t "${pkgdir}/usr/bin/"
-        install -Dm755 dots-scripts -t "${pkgdir}/usr/bin/"
+	cd dotfiles || exit 1
+	install -d "${pkgdir}/opt/${pkgname}"
+	cp -Rf * "${pkgdir}/opt/${pkgname}"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm755 dots -t "${pkgdir}/usr/bin/"
+	install -Dm755 dots-scripts -t "${pkgdir}/usr/bin/"
 }
