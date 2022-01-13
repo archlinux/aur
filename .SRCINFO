@@ -1,6 +1,6 @@
 pkgbase = python-cartopy
 	pkgdesc = A cartographic Python library with Matplotlib support for visualisation
-	pkgver = 0.20.1
+	pkgver = 0.20.2
 	pkgrel = 1
 	url = https://scitools.org.uk/cartopy/
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = python-cartopy
 	optdepends = python-pyepsg: interface to https://epsg.io
 	optdepends = python-pykdtree: faster warping of images
 	optdepends = python-owslib: access OGC clients
-	source = https://files.pythonhosted.org/packages/source/c/cartopy/Cartopy-0.20.1.tar.gz
-	sha256sums = 91f87b130e2574547a20cd634498df97d797abd12dcfd0235bc0cdbcec8b05e3
+	source = https://files.pythonhosted.org/packages/source/C/Cartopy/Cartopy-0.20.2.tar.gz
+	sha256sums = 4d08c198ecaa50a6a6b109d0f14c070e813defc046a83ac5d7ab494f85599e35
 
 pkgname = python-cartopy

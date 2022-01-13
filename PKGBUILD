@@ -3,7 +3,7 @@
 # Contributor: Rich Li <rich@dranek.com>
 
 pkgname=python-cartopy
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="A cartographic Python library with Matplotlib support for visualisation"
 url="https://scitools.org.uk/cartopy/"
@@ -22,21 +22,23 @@ makedepends=('python-setuptools' 'cython' 'python-setuptools-scm')
 checkdepends=('python-pytest' 'python-flufl-lock')
 license=('LGPL3')
 arch=('x86_64')
+
+_pypi=Cartopy
 source=(
-    "https://files.pythonhosted.org/packages/source/c/cartopy/Cartopy-$pkgver.tar.gz"
+    "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-    '91f87b130e2574547a20cd634498df97d797abd12dcfd0235bc0cdbcec8b05e3'
+    '4d08c198ecaa50a6a6b109d0f14c070e813defc046a83ac5d7ab494f85599e35'
 )
 
 build() {
-    cd "$srcdir/Cartopy-${pkgver}"
+    cd "$_pypi-$pkgver"
     FORCE_CYTHON=1 python setup.py build
 }
 
 check() {
     local PYVER=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
-    cd "$srcdir/Cartopy-${pkgver}/build/lib.linux-$CARCH-$PYVER"
+    cd "$_pypi-$pkgver/build/lib.linux-$CARCH-$PYVER"
 
     # The deselected tests fail an image comparison due to small changes in the
     # size and position of text labels.
@@ -46,6 +48,6 @@ check() {
 }
 
 package() {
-    cd "$srcdir/Cartopy-${pkgver}"
+    cd "$_pypi-$pkgver"
     python setup.py install --root="$pkgdir" --prefix=/usr --optimize=1 --skip-build
 }
