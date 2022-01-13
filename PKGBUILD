@@ -1,17 +1,17 @@
 # Maintainer: 
 
 pkgname=whdd
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Diagnostic and recovery tool for block devices (near to replace MHDD for Linux)"
 arch=('i686' 'x86_64')
 url="https://github.com/whdd/whdd"
-license=('GPL')
+license=('GPL3')
 depends=('ncurses' 'dialog')
 optdepends=('smartmontools: for reading SMART attributes')
 # makedepends=('cmake')
-source=(https://github.com/whdd/whdd/archive/${pkgver}.tar.gz)
-md5sums=('f8a52f3be562d8210c2f33ad098b7b31')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/whdd/whdd/archive/${pkgver}.tar.gz")
+sha512sums=('6d5d8dad7537118a5915a29a549e18595da1b6ba031f0ca661805ad0033fd48f32804eb307f67e7b31d6002e708ae578a32aff366f3e610ab36b25f0a4e50803')
 
 build() {
   cd ${pkgname}-${pkgver}
