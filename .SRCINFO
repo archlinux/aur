@@ -1,15 +1,15 @@
 pkgbase = vim-wheel
 	pkgdesc = Quick navigation framework for Vim and Neovim
-	pkgver = 2.7
+	pkgver = 2.10.3
 	pkgrel = 1
 	url = https://github.com/chimay/wheel
 	arch = any
 	groups = vim-plugins
 	license = MIT
 	depends = vim-plugin-runtime
-	source = vim-wheel-2.7.tar.gz::https://github.com/chimay/wheel/archive/v2.7.tar.gz
+	source = vim-wheel-2.10.3.tar.gz::https://github.com/chimay/wheel/archive/v2.10.3.tar.gz
 	source = LICENSE
-	sha256sums = 8bc5e18624128f888fbd82aab067d2da498e670768440083ba797468810c95f4
+	sha256sums = 169549a2e8994aec143f875f9cf6799a5e9dcd02d06d0da4fd9817c8220b5b8e
 	sha256sums = b801c8d677ef9701149e05cf98f28b82a56832dd67c94d96d36d25d063b1b353
 
 pkgname = vim-wheel
