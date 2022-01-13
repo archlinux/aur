@@ -3,7 +3,7 @@
 _pkgname=radicale-auth-seafile
 pkgname=python-$_pkgname
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Authenticate Radicale 2 requests against Seafile"
 arch=('any')
 url="https://github.com/klemens/radicale-auth-seafile"
