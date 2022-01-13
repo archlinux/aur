@@ -1,6 +1,6 @@
 pkgbase = seiscomp-maps
 	pkgdesc = SeisComp map files.
-	pkgver = 4.8.2
+	pkgver = 20220113
 	pkgrel = 1
 	url = https://www.seiscomp.de
 	install = seiscomp-maps.install
@@ -10,6 +10,6 @@ pkgbase = seiscomp-maps
 	source = https://www.seiscomp.de/downloader/seiscomp-maps.tar.gz
 	source = seiscomp-maps-tmpfiles.conf
 	sha256sums = e0488c4905260ab160b7ee2508ad5b70467665632b8f15428864cccb444e4cca
-	sha256sums = d322747672e4261c5aad058391b5c9d3e6dde34c05133edb9a9ef5c67aead1de
+	sha256sums = 312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2
 
 pkgname = seiscomp-maps
