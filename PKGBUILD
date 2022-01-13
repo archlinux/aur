@@ -3,8 +3,8 @@
 # Contributor: slact
 
 pkgname=tlpui
-tlpui_ver="1.4.0"
-pkgver="$(echo "${tlpui_ver}" | tr "-" ".")"
+tlpui_ver="1.5.0"
+pkgver="$(tr "-" "." <<< "${tlpui_ver}")"
 pkgrel="1"
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
     "tlpui-${tlpui_ver}.zip::https://github.com/d4nj1/TLPUI/archive/tlpui-${tlpui_ver}.zip"
     "${pkgname}.desktop"
 )
-sha256sums=('4570c24fc9c749bb04f058891def62574114f87ab4416f88d29720088c7b5ac6'
+sha256sums=('baafbbd55ce73b24d1f47cebc98120fce8b4522de50cddf74a07b70f1dbf9a2c'
             'fbf9e4b92bff5c92f5ced1ee1b155110b32cd128e5f066260d8dc6cea163c4af')
 
 build() {
