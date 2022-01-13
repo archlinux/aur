@@ -1,0 +1,18 @@
+pkgbase = keylight-systray
+	pkgdesc = elgato keylight controller GUI for linux mac and windows
+	pkgver = r5.95e5ddb
+	pkgrel = 1
+	url = https://github.com/mschneider82/keylight-systray
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = git: To interact with repositories
+	provides = keylight-systray
+	conflicts = keylight-systray
+	source = git+https://github.com/mschneider82/keylight-systray.git
+	sha256sums = SKIP
+
+pkgname = keylight-systray
