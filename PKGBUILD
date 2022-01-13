@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retr
 
 pkgname=uqm-megamod-data
 _pkgname=uqm-megamod
-pkgver=0.8.0.85
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Base content for the Ur-Quan Masters MegaMod by Serosis."
 arch=("any")
@@ -18,7 +18,7 @@ source=(
 )
 
 md5sums=(
-  "f41e04ff670e51813f5ddcac615cb25b"
+  "6ca00a5a2c7db3d60a0d5828bd921ce8"
   "4f30efe3d129bd9a8bddd0d455c849f7"
   "b2732e9de2e18b31eeb50030ade062f7"
 )
