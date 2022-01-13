@@ -14,6 +14,7 @@ pkgbase = ocrdesktop-git
 	depends = python-scipy
 	depends = python-pytesseract
 	depends = tesseract-data-eng
+	depends = python-pdf2image
 	provides = ocrdesktop
 	conflicts = ocrdesktop
 	source = git+https://github.com/chrys87/ocrdesktop.git
