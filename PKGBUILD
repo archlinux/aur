@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=quickredis
-pkgver=2.2.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="A free forever Redis GUI tool. It supports direct connection, sentinel, and cluster mode, supports multiple languages, supports hundreds of millions of keys and has an amazing UI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:unknown')
 makedepends=('gendesk')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/quick123official/quick_redis_blog/releases/download/v${pkgver}/QuickRedis-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('8d3e09e41429a34026e6f95b6cd7788b5f79a58ad7eb4082f7069ae9145ff2b4')
+sha256sums=('1ab223c07a8964aade030fd663edfc2efdd9675368a5549edd42da40f66ab611')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
