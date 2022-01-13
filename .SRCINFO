@@ -1,0 +1,14 @@
+pkgbase = nmxptool
+	pkgdesc = SeisComP Seedlink nmxp plugin for interacting with NaqsServer and DataServer of Nanometrics Inc.
+	pkgver = 2.1.8
+	pkgrel = 1
+	url = https://gitlab.rm.ingv.it/matteo.quintiliani/nmxptool
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libmseed
+	depends = seiscomp
+	source = nmxptool-2.1.8::git+https://gitlab.rm.ingv.it/matteo.quintiliani/nmxptool.git#tag=nmxptool-2.1.8
+	md5sums = SKIP
+
+pkgname = nmxptool
