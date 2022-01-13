@@ -5,10 +5,9 @@ pkgbase = jakartaee9-doc
 	url = https://github.com/eclipse-ee4j/jakartaee-api
 	arch = any
 	license = EPL
-	makedepends = java-environment>=8
+	makedepends = java-environment-openjdk=11
 	makedepends = maven
 	source = jakartaee9-doc-9.1.0.tar.gz::https://github.com/eclipse-ee4j/jakartaee-api/archive/9.1.0.tar.gz
 	sha256sums = 6e76bd0d9e895709977f058bf71beb355d5b117028b626e121db8793e3ed14ff
 
 pkgname = jakartaee9-doc
-
