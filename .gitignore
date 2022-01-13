@@ -2,7 +2,6 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
-!/is_clang.py
 !/shared-libarchive.patch
 !/shared-libwebp.patch
 !/shared-skia-deps.patch
