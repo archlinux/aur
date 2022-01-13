@@ -23,4 +23,3 @@ pkgbase = r-hunspell
 	sha256sums = 1fedbb913bc13c790d2fabfe4edda0a987db3a078bea8c0ca9b777d20af08662
 
 pkgname = r-hunspell
-
