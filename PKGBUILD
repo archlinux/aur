@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=nostalgia-git
-pkgver=0.8.r0.g7a9fd74
+pkgver=0.9.r0.g402fe35
 pkgrel=1
 pkgdesc='Set historic GNOME wallpapers'
 arch=(x86_64 aarch64)
@@ -10,8 +10,8 @@ license=(GPL3)
 provides=(nostalgia)
 conflicts=(nostalgia)
 depends=(
-	libhandy
-	libportal
+	libadwaita
+	libportal-gtk4
 )
 makedepends=(
 	git
@@ -20,7 +20,7 @@ makedepends=(
 	vala
 )
 source=("git+${url}.git")
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 build() {
 	arch-meson nostalgia build

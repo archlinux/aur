@@ -1,6 +1,6 @@
 pkgbase = nostalgia-git
 	pkgdesc = Set historic GNOME wallpapers
-	pkgver = 0.8.r0.g7a9fd74
+	pkgver = 0.9.r0.g402fe35
 	pkgrel = 1
 	url = https://gitlab.gnome.org/bertob/nostalgia
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = nostalgia-git
 	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = vala
-	depends = libhandy
-	depends = libportal
+	depends = libadwaita
+	depends = libportal-gtk4
 	provides = nostalgia
 	conflicts = nostalgia
 	source = git+https://gitlab.gnome.org/bertob/nostalgia.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = nostalgia-git
