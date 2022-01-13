@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google-cloud-storage
-pkgver=1.44.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
@@ -14,13 +14,12 @@ depends=(
 	'python-google-cloud-core'
 	'python-google-resumable-media'
 	'python-protobuf'
-	'python-requests'
-	'python-six')
+	'python-requests')
 makedepends=('python-setuptools' 'python-sphinx' 'python-recommonmark')
-# checkdepends=('python-pytest-runner' 'python-mock' 'python-google-test-utils')
+# checkdepends=('python-pytest-runner' 'python-mock' 'python-google-cloud-testutils')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f60ed0d8f05ab8e7214faf220c9663cfb917074b41a0a198eae032585f4fcad2')
+sha256sums=('74dc5e63db5223067145516e452c06dbf4493f58c7ac4de7718ca3a432b95250')
 
 build() {
 	cd "python-storage-$pkgver"
