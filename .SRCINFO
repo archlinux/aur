@@ -10,7 +10,6 @@ pkgbase = r-rematch2
 	optdepends = r-covr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/rematch2_2.1.2.tar.gz
-	md5sums = 41627df5d3fbf98f0cf98c027e14af00
+	sha256sums = fe9cbfe99dd7731a0a2a310900d999f80e7486775b67f3f8f388c30737faf7bb
 
 pkgname = r-rematch2
-
