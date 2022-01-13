@@ -3,7 +3,7 @@
 pkgname=keylight-systray
 pkgver=r5.95e5ddb
 pkgrel=1
-pkgdesc=" elgato keylight controller GUI for linux mac and windows "
+pkgdesc=" Elgato Keylight systray control golang "
 arch=('i686' 'x86_64')
 url="https://github.com/mschneider82/keylight-systray"
 license=('MIT')
