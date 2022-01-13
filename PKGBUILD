@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=tcpview
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Graphical network connections viewer for Linux'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('qt5-base')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/chipmunk-sm/tcpview/archive/${pkgver}.tar.gz")
-sha256sums=('6fc4690709aae965fe0b21dfaf249b352cf6f5eee4d6bd0ee6e7ebb5a36d5933')
+sha256sums=('361b6a1edada4b8b7856d762b5847a28a9c3e456eec8683e6863e5dcf2445ce7')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
