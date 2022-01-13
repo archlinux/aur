@@ -75,8 +75,8 @@ optdepends=(
 	"xfce4-power-manager: Power manager for the Xfce4 desktop"
 	"xfce4-screenshooter: An application to take screenshots"
 )
-provides=(dots)
-conflicts=(dots)
+provides=(dots dots-scripts)
+conflicts=(dots dots-scripts)
 source=("git+$url.git")
 md5sums=('SKIP')
 

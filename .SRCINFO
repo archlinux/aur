@@ -58,7 +58,9 @@ pkgbase = dots-git
 	optdepends = xfce4-power-manager: Power manager for the Xfce4 desktop
 	optdepends = xfce4-screenshooter: An application to take screenshots
 	provides = dots
+	provides = dots-scripts
 	conflicts = dots
+	conflicts = dots-scripts
 	source = git+https://github.com/ulises-jeremias/dotfiles.git
 	md5sums = SKIP
 
