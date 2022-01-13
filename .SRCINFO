@@ -1,16 +1,15 @@
 pkgbase = mole-bin
 	pkgdesc = CLI app to create SSH tunnels
-	pkgver = 0.5.0
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://davrodpin.github.io/mole
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	provides = mole
-	source = mole-bin-0.5.0.tar.gz::https://github.com/davrodpin/mole/releases/download/v0.5.0/mole0.5.0.linux-amd64.tar.gz
+	source = mole-bin-2.0.0.tar.gz::https://github.com/davrodpin/mole/releases/download/v2.0.0/mole2.0.0.linux-amd64.tar.gz
 	source = https://raw.githubusercontent.com/davrodpin/mole/master/LICENSE
-	sha256sums = 3d9398791f00878bb77bfaee9d84dd5c93755f639fbe592b7b655ec4f5889edd
+	sha256sums = fd38d9f529181651b230c013825849fc467292fa11c44b27b0c21c579f883d82
 	sha256sums = 7e7839a3eb39cd8fa942a0ceeeac3ad214ec7d03b4be72da318ca0c15b1fb3a7
 
 pkgname = mole-bin
-
