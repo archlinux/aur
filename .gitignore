@@ -1,0 +1,10 @@
+# makepkg directories
+/src/*
+/pkg/*
+
+# Built packages
+shopware-cli-*.tar.zst
+
+# Downloaded sources
+shopware-cli-*.tar.gz
+LICENSE*
