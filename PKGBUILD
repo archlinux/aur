@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism
-pkgver="211210"
-commit="2cb90e7e"
+pkgver="220107"
+commit="f5b7ef83"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
@@ -24,7 +24,7 @@ options=()
 install=
 changelog=
 source=("https://github.com/photoprism/photoprism/archive/$pkgver-$commit.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/facenet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers" "options.yml" "photoprism.tmpfiles")
-sha256sums=('2374a00885a42db3f66cf55e40cdccc35f30c3fd34b82e37271ef208a4f897aa'
+sha256sums=('d92064f73ad98c4038e72d4c6b9999473d0c68da4e4ed58a53dfcd553b433b1a'
             'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
             'bf9ae0945d2ac53ac3db27082162d2b9dda5ba2c564c0e4c4f539f31f8b670af'
             'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
