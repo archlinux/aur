@@ -1,0 +1,21 @@
+pkgbase = mandown-git
+	pkgdesc = Command line application and Python library to download comics from various sources
+	pkgver = r34.cdeae10
+	pkgrel = 1
+	url = https://github.com/potatoeggy/mandown
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python-requests
+	depends = python-typer
+	depends = python-feedparser
+	depends = python-beautifulsoup4
+	provides = mandown
+	conflicts = mandown
+	source = git+https://github.com/potatoeggy/mandown.git
+	sha256sums = SKIP
+
+pkgname = mandown-git
