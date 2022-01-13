@@ -6,12 +6,12 @@
 
 pkgname='emacs-mozc'
 pkgver=2.26.4610.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('emacs' 'mozc=2.26.4610.102')
+depends=('emacs' 'mozc>=2.26.4610.102')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 conflicts=('emacs-mozc-ut2' 'emacs-mozc-ut-united')
 replaces=('emacs-mozc-ut')
