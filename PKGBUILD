@@ -2,7 +2,7 @@
 pkgbase=python-pytest-arraydiff
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Pytest plugin to help with comparing array output from tests"
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest' 'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f1329e8b636f2381ebf2b56ee7f3aba0')
+md5sums=('279c9933e08652200bd81fce2d80f0a7')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -33,7 +33,7 @@ check() {
 }
 
 package() {
-    depends=('python>=3.7' 'python-pytest>=4.6' 'python-astropy')
+    depends=('python-numpy' 'python-pytest>=4.6')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
