@@ -1,6 +1,6 @@
 pkgbase = keylight-control
 	pkgdesc = elgato keylight controller GUI for linux mac and windows
-	pkgver = 0.1.0.r0.g2fb058d
+	pkgver = 0.1.0.2fb058d
 	pkgrel = 1
 	url = https://github.com/mschneider82/keylight-control
 	arch = i686
@@ -8,8 +8,6 @@ pkgbase = keylight-control
 	license = MIT
 	makedepends = git
 	makedepends = go
-	depends = glibc
-	optdepends = git: To interact with repositories
 	provides = keylight-control
 	conflicts = keylight-control
 	source = git+https://github.com/mschneider82/keylight-control.git
