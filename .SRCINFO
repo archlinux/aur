@@ -1,0 +1,17 @@
+pkgbase = dipha-git
+	pkgdesc = A Distributed Persistent Homology Algorithm (BorgwardtLab fork)
+	pkgver = r129.6a60427
+	pkgrel = 1
+	url = https://github.com/BorgwardtLab/DIPHA
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = openmpi
+	provides = dipha
+	conflicts = dipha
+	source = dipha::git+https://github.com/BorgwardtLab/DIPHA
+	md5sums = SKIP
+
+pkgname = dipha-git
