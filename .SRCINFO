@@ -9,6 +9,7 @@ pkgbase = difftance-git
 	makedepends = git
 	makedepends = make
 	depends = crystal
+	conflicts = difftance-bin
 	source = difftance-git::git+https://github.com/fabon-f/difftance.git
 	md5sums = SKIP
 

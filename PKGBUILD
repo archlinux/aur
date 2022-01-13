@@ -8,6 +8,7 @@ url="https://github.com/fabon-f/difftance"
 license=('MIT')
 depends=('crystal')
 makedepends=('git' 'make')
+conflicts=('difftance-bin')
 
 source=("${pkgname}::git+https://github.com/fabon-f/difftance.git")
 md5sums=('SKIP')
