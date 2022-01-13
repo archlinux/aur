@@ -2,7 +2,7 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-git
 _pkgname=xrdp
-pkgver=0.9.18.r0.gd76732b3
+pkgver=0.9.18.r2.gd27e5472
 pkgrel=1
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
@@ -10,7 +10,7 @@ url="https://github.com/neutrinolabs/$_pkgname"
 arch=(i686 x86_64 armv6h armv7l aarch64)
 license=('Apache')
 makedepends=('git' 'nasm')
-depends=('tigervnc' 'libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg')
+depends=('tigervnc' 'libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 backup=('etc/xrdp/sesman.ini' 'etc/xrdp/xrdp.ini')
@@ -51,7 +51,8 @@ build() {
 	      --enable-vsock \
 	      --enable-ipv6 \
 	      --enable-pam-config=arch \
-	      --enable-rdpsndaudin
+	      --enable-rdpsndaudin \
+	      --with-imlib2
   # Fight unused direct deps
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
