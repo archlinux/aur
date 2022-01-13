@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Lutris Wine Runner as system Wine and even better
-	pkgver = 0.57.r0.gf51b639
+	pkgver = 0.57.r1.gda3c676
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = any
