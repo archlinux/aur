@@ -4,7 +4,7 @@ pkgbase=python-lazyarray
 #pkgname=('python-lazyarray' 'python2-lazyarray')
 pkgname=('python-lazyarray')
 _name=${pkgbase#python-}
-pkgver=0.3.4
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="a Python package that provides a lazily-evaluated numerical array class, larray, based on and compatible with NumPy arrays"
 arch=('any')
@@ -14,7 +14,7 @@ license=('BSD')
 makedepends=("python" 'python-setuptools')
 conflicts=("python2-lazyarray")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('357e80db7472c940ed3cab873544f2b7028f6ade8737adde2c91f91aeab2835a')
+sha256sums=('76964dd1384a6d020ae0e70806983d15d8fcd731734063f716696ebe300ab0af')
 
 package_python-lazyarray() {
   depends+=('python')
