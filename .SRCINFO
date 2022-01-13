@@ -1,0 +1,15 @@
+pkgbase = kondo
+	pkgdesc = Save disk space by cleaning non-essential files from software projects
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/tbillington/kondo
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	options = !lto
+	source = kondo-0.5.tar.gz::https://github.com/tbillington/kondo/archive/v0.5.tar.gz
+	sha512sums = 050cfbaea70b5c17e415864c88cd4245b9b28ebcb4a92be6c5ae2d14cb9dd7ce22eacf6013d331ba1ae51bcd6a8b7114d73df800a6d83449176ad3604c42222b
+	b2sums = 5df9a133b3aa024e0cdad5f85f598b05d0d23399c41f9a6ab3ab7930f98acf1e5c7be95e296cfaf512763362c366147154f53a8bfb235e911e94c01687b15b25
+
+pkgname = kondo
