@@ -1,7 +1,7 @@
 pkgbase = jakartaee9-doc
 	pkgdesc = Jakarta EE 9 documentation.
 	pkgver = 9.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse-ee4j/jakartaee-api
 	arch = any
 	license = EPL

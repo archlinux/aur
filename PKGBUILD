@@ -2,7 +2,7 @@
 
 pkgname=jakartaee9-doc
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Jakarta EE 9 documentation."
 arch=('any')
 url="https://github.com/eclipse-ee4j/jakartaee-api"
