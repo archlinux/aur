@@ -6,12 +6,12 @@
 
 pkgname='ibus-mozc'
 pkgver=2.26.4610.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('ibus>=1.4.1' 'mozc=2.26.4610.102')
+depends=('ibus>=1.4.1' 'mozc>=2.26.4610.102')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 conflicts=('ibus-mozc-ut2' 'ibus-mozc-ut-united')
 replaces=('ibus-mozc-ut')

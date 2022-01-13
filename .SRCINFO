@@ -1,7 +1,7 @@
 pkgbase = ibus-mozc
 	pkgdesc = Mozc module for IBus
 	pkgver = 2.26.4610.102
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/mozc
 	arch = x86_64
 	license = Apache
@@ -14,7 +14,7 @@ pkgbase = ibus-mozc
 	makedepends = python-six
 	makedepends = qt5-base
 	depends = ibus>=1.4.1
-	depends = mozc=2.26.4610.102
+	depends = mozc>=2.26.4610.102
 	conflicts = ibus-mozc-ut2
 	conflicts = ibus-mozc-ut-united
 	replaces = ibus-mozc-ut
