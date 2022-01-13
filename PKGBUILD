@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retr
 
 pkgname=uqm-megamod-addon-hd
 _pkgname=uqm-megamod
-pkgver=0.8.0.85
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="HD Graphics package for the Ur-Quan Masters MegaMod by Serosis."
 arch=("any")
@@ -18,8 +18,8 @@ source=(
 )
 
 md5sums=(
-  "f2a0f661fc9b07b4c800a2c6b78ed8ea"
-  "e4bd4924cef83fd3594ea4154d141e7a"
+  "98f4b2cee09fb59f13661b5cafd017ec"
+  "ff908319ce20057293c3c350854b390d"
   "4f30efe3d129bd9a8bddd0d455c849f7"
 )
 

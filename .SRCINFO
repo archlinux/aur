@@ -1,15 +1,15 @@
 pkgbase = uqm-megamod-addon-hd
 	pkgdesc = HD Graphics package for the Ur-Quan Masters MegaMod by Serosis.
-	pkgver = 0.8.0.85
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/Serosis/UQM-MegaMod-Content
 	arch = any
 	license = custom:CC BY-NC-SA 2.5
-	noextract = mm-0.8.0.85-hd.uqm
-	source = mm-0.8.0.85-hd.uqm::https://files.serosis.net/MegaMod/0.8.0.85/mm-0.8.0.85-hd.uqm
+	noextract = mm-0.8.1-hd.uqm
+	source = mm-0.8.1-hd.uqm::https://files.serosis.net/MegaMod/0.8.1/mm-0.8.1-hd.uqm
 	source = ATTRIBUTION.txt::https://raw.githubusercontent.com/Serosis/UQM-MegaMod-Content/master/addons/mm-hd/ATTRIBUTION.txt
 	source = LICENSE
-	md5sums = f2a0f661fc9b07b4c800a2c6b78ed8ea
+	md5sums = 98f4b2cee09fb59f13661b5cafd017ec
 	md5sums = e4bd4924cef83fd3594ea4154d141e7a
 	md5sums = 4f30efe3d129bd9a8bddd0d455c849f7
 
