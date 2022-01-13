@@ -1,12 +1,12 @@
 pkgbase = vector-bin
 	pkgdesc = A lightweight and ultra-fast tool for building observability pipelines
-	pkgver = 0.15.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://vector.dev
 	arch = x86_64
 	license = MPL
 	provides = vector
-	source = vector-bin-0.15.1.tar.gz::https://packages.timber.io/vector/0.15.1/vector-0.15.1-x86_64-unknown-linux-musl.tar.gz
-	sha256sums = 16c9aa0b9cf2c3df3cfcd745e69d0b9ca094fde28ea2597d6f49b6423397574a
+	source = vector-bin-0.19.0.tar.gz::https://packages.timber.io/vector/0.19.0/vector-0.19.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 60f4afce8bafba97ab971ba7cacc88f7c9617865d30a201dc6dcbbf3c41ee0e7
 
 pkgname = vector-bin
