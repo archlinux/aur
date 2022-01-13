@@ -121,6 +121,7 @@ package() {
 	# Install the binary and its `.desktop` file
 	install -vDm 755 staging/bin/aseprite "$pkgdir/usr/bin/aseprite"
 	install -vDm 644 aseprite/src/desktop/linux/aseprite.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -vDm 644 aseprite/src/desktop/linux/mime/aseprite.xml "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
 	# Install the icons in the correct directory (which is not the default)
 	local _size
 	for _size in 16 32 48 64 128 256; do
