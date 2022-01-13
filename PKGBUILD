@@ -3,8 +3,8 @@
 _pkgname=macast
 _gitname=Macast
 pkgname=${_pkgname}-git
-pkgver=r143.d1aa55b
-pkgrel=4
+pkgver=0.7
+pkgrel=1
 pkgdesc="DLNA Media Renderer"
 arch=('any')
 url="https://github.com/xfangfang/Macast"
@@ -24,7 +24,7 @@ depends=(
 	'mpv'
 )
 source=(
-	"git+${url}.git#branch=dev"
+	"git+${url}.git#branch=main"
 	"${_pkgname}.desktop"
 )
 sha256sums=(
