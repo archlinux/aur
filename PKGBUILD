@@ -1,7 +1,7 @@
 # Maintainer: keithamus <archlinux at keithcirkel dot co dot uk>
 
 pkgname=keylight-systray
-pkgver=r5.95e5ddb
+pkgver=0.1.0.r0.g95e5ddb
 pkgrel=1
 pkgdesc=" Elgato Keylight systray control golang "
 arch=('i686' 'x86_64')
@@ -25,8 +25,7 @@ export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readon
 pkgver() {
   cd "keylight-systray"
 
-  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

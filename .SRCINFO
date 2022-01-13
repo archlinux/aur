@@ -1,6 +1,6 @@
 pkgbase = keylight-systray
 	pkgdesc = Elgato Keylight systray control golang
-	pkgver = r5.95e5ddb
+	pkgver = 0.1.0.r0.g95e5ddb
 	pkgrel = 1
 	url = https://github.com/mschneider82/keylight-systray
 	arch = i686
