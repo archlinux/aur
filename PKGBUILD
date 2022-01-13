@@ -3,7 +3,7 @@
 # Contributor: Markus Sommer <markus@splork.de>
 pkgname=core
 pkgver=7.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
 url="https://github.com/coreemu/core/"
@@ -19,7 +19,8 @@ makedepends=('help2man' 'imagemagick' 'python-dephell' 'python-grpcio-tools'
 optdepends=('openvswitch: Open vSwitch SDN support'
             'tk: Legacy Tk-based GUI'
             'tkimg: Thumbnail support in Tcl/Tk GUI'
-            'emane: Support for heterogeneous network emulation')
+            'emane: Support for heterogeneous network emulation'
+            'mgen: Traffic generation')
 backup=('etc/core/core.conf'
         'etc/core/logging.conf')
 source=("https://github.com/coreemu/core/archive/release-$pkgver.tar.gz"

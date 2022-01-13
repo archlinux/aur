@@ -1,7 +1,7 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
 	pkgver = 7.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/coreemu/core/
 	arch = i686
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = core
 	optdepends = tk: Legacy Tk-based GUI
 	optdepends = tkimg: Thumbnail support in Tcl/Tk GUI
 	optdepends = emane: Support for heterogeneous network emulation
+	optdepends = mgen: Traffic generation
 	backup = etc/core/core.conf
 	backup = etc/core/logging.conf
 	source = https://github.com/coreemu/core/archive/release-7.5.2.tar.gz
