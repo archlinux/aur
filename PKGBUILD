@@ -1,29 +1,25 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=egg
 _cranver=0.4.5
-pkgname=r-${_cranname}
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Miscellaneous functions to help customise 'ggplot2' objects"
-arch=('any')
+pkgdesc="Extensions for 'ggplot2': Custom Geom, Custom Themes, Plot Alignment, Labelled Panels, Symmetric Scales, and Fixed Panel Size"
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3')
-depends=('r' 'r-gridextra' 'r-ggplot2' 'r-gtable')
-optdepends=('r-knitr' 'r-png')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('5092b6f00723cee6c47d923780cc781b')
+license=(GPL3)
+depends=(r 'r-gridextra>=2.3' r-ggplot2 r-gtable)
+optdepends=(r-knitr r-png)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('15c8ba7cf2676eb0460de7e5dfbc89fc3175ac22a8869cfd44d66d156fd6c7bb')
 
-build(){
-    cd "${srcdir}"
-
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
+build() {
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    cd "${srcdir}"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-    install -dm0755 "$pkgdir/usr/lib/R/library"
-    cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-
