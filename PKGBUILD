@@ -2,7 +2,7 @@
 # Contributor: jbpratt <jbpratt78 at gmail dot com>
 
 pkgname=sourcegraph-cli
-pkgver=3.35.1
+pkgver=3.35.3
 pkgrel=1
 pkgdesc="Command line interface to Sourcegraph"
 url="https://github.com/sourcegraph/src-cli"
@@ -18,6 +18,7 @@ prepare() {
 	cd "$pkgname"
 	mkdir -p build
 	go mod tidy
+	go mod verify
 }
 
 build() {
