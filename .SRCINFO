@@ -1,5 +1,5 @@
 pkgbase = keylight-systray
-	pkgdesc = elgato keylight controller GUI for linux mac and windows
+	pkgdesc = Elgato Keylight systray control golang
 	pkgver = r5.95e5ddb
 	pkgrel = 1
 	url = https://github.com/mschneider82/keylight-systray
