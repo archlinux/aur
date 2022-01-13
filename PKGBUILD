@@ -6,7 +6,7 @@ _name="${pkgname%-git}"
 
 epoch=1
 pkgver() { git -C "$_name" describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=0.4.2.r42.87ac665
+pkgver=0.4.2.r56.b83e68c
 pkgrel=1
 
 pkgdesc='Web path scanner/fuzzer, written in Python'
@@ -29,7 +29,7 @@ sha256sums=('SKIP')
 
 prepare() {
   # refrain from trying to write logs/reports into the apps (readonly) folder
-  sed -i '/report-ou\|logs-lo/s/^# *\([^=]*\)=.*/\1= ./' "$_name/default.conf"
+  sed -i '/report-output-folder\|logs-folder/s/^# *\([^=]*\)=.*/\1= ./' "$_name/default.conf"
 }
 
 package() {
