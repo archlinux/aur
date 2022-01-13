@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=litemdview
+GenericName=Markdown Viewer
+Comment=Suckless Markdown viewer
+Exec=litemdview %u
+Icon=litemdview
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+MimeType=text/markdown;text/x-markdown
+StartupNotify=true
+StartupWMClass=litemdview
