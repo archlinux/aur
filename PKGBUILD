@@ -1,8 +1,8 @@
 # Maintainer: Jat <chat@jat.email>
 
 _pkgname=obs-multi-rtmp
-pkgname=${_pkgname}-git
-pkgver=r92.b8b110c
+pkgname="${_pkgname}-git"
+pkgver=r96.b27ea4b
 pkgrel=1
 pkgdesc='Multiple RTMP outputs plugin'
 arch=('x86_64')
@@ -12,11 +12,8 @@ depends=('obs-studio')
 makedepends=('git' 'cmake')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-_obsver="$(obs -V | grep -Po '(\d+\.)+\d+' | head -1)"
-source=("git+${url}.git"
-        "obs-studio-${_obsver}.tar.gz::https://github.com/obsproject/obs-studio/archive/${_obsver}.tar.gz")
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${_pkgname}
@@ -25,7 +22,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    OBS_SRC_DIR=../obs-studio-${_obsver} ./build_linux.sh
+    ./build_linux.sh
 }
 
 package() {
