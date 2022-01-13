@@ -1,0 +1,52 @@
+diff --git a/ddb_customizabletb.c b/ddb_customizabletb.c
+index f0d6a10..2678ac9 100644
+--- a/ddb_customizabletb.c
++++ b/ddb_customizabletb.c
+@@ -20,7 +20,7 @@
+ 
+ #include <stdio.h>
+ 
+-#define DDB_API_LEVEL 5
++#define DDB_API_LEVEL 15
+ #define DDB_WARN_DEPRECATED 1
+ #include <deadbeef/deadbeef.h>
+ 
+diff --git a/toolbar_items.h b/toolbar_items.h
+index a324a31..f2cac63 100644
+--- a/toolbar_items.h
++++ b/toolbar_items.h
+@@ -21,7 +21,7 @@
+ #ifndef __TOOLBAR_ITEMS_H
+ #define __TOOLBAR_ITEMS_H
+ 
+-#define DDB_API_LEVEL 5
++#define DDB_API_LEVEL 15
+ #define DDB_WARN_DEPRECATED 1
+ #include <deadbeef/deadbeef.h>
+ 
+diff --git a/utils.h b/utils.h
+index 14511fb..9196c9c 100644
+--- a/utils.h
++++ b/utils.h
+@@ -23,7 +23,7 @@
+ 
+ #include <gtk/gtk.h>
+ 
+-#define DDB_API_LEVEL 5
++#define DDB_API_LEVEL 15
+ #define DDB_WARN_DEPRECATED 1
+ 
+ #include <deadbeef/deadbeef.h>
+diff --git a/w_toolbar.h b/w_toolbar.h
+index 808d636..e357e4e 100644
+--- a/w_toolbar.h
++++ b/w_toolbar.h
+@@ -23,7 +23,7 @@
+ 
+ #include <gtk/gtk.h>
+ 
+-#define DDB_API_LEVEL 5
++#define DDB_API_LEVEL 15
+ #define DDB_WARN_DEPRECATED 1
+ #include <deadbeef/deadbeef.h>
+ 
