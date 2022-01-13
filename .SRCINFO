@@ -8,7 +8,6 @@ pkgbase = r-praise
 	depends = r
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/praise_1.0.0.tar.gz
-	md5sums = 9318724cec0454884b5f762bee2da6a1
+	sha256sums = 5c035e74fd05dfa59b03afe0d5f4c53fbf34144e175e90c53d09c6baedf5debd
 
 pkgname = r-praise
-
