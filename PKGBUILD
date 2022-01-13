@@ -3,7 +3,7 @@
 
 pkgname='python-pagegen'
 _pkgname="${pkgname#python-}"
-pkgver=3.3.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Python static site generator with reStructuredText markup'
 arch=('any')
@@ -18,19 +18,11 @@ depends=(
   'python-htmlmin'
   'python-jsmin'
   'python-lxml'
+  'python-mako'
   'python-rcssmin'
 )
 makedepends=(
   'python-pip'
-)
-sha256sums=(
-  '8bbc526582409bb8f63b8b1b8ff917a22ad64e70586552b348495269bc891be3'
-)
-sha512sums=(
-  'e318669efc533b83b67402a1f9064bad9f6111a536f9c073776855f208476baf791962a4ead6712cd7bad5c0095e5859ddf11b4e86cb82d4788179997773030e'
-)
-b2sums=(
-  '3fd58cb396478a40b561a99b6d573c929bda17d58d205a3c5e9ba33ea12b8d2b81358c47ec5ba0e3e5ded8fd1bfbfa34e09a07c42edffb1b5c43eff605c08c54'
 )
 
 package() {
@@ -45,5 +37,15 @@ package() {
     --prefix='/usr' \
       "$srcdir/$wheel"
 }
+
+sha256sums=(
+  '2de6675def19fdb96acb16fa7be9004b007b084a756bb1b5cdf5292ec04fc83b'
+)
+sha512sums=(
+  '360a048152e927ab9c58ebd3623e7019b070207461f78084a6bd3c695a055e702230684ad57f6f6b85477d045d9d93ee9c4d2f36ba27816988ed8344b288441a'
+)
+b2sums=(
+  '4950cf48994caa1f2115c1bdd5b4a87e91fe775799121272936e9a7e0320b007725804489d616df0c4ca8c0268952813af86712e75577f615fbdce8a297f5e0b'
+)
 
 # eof
