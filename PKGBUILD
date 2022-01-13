@@ -30,7 +30,7 @@ depends=(# ~ Aseprite's direct dependencies ~
 makedepends=(# "Meta" dependencies
              cmake ninja git python
              # Aseprite (including e.g. LAF)
-             libxi pixman
+             libxi
              # Skia
              gn harfbuzz-icu)
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"

@@ -10,7 +10,6 @@ pkgbase = aseprite
 	makedepends = git
 	makedepends = python
 	makedepends = libxi
-	makedepends = pixman
 	makedepends = gn
 	makedepends = harfbuzz-icu
 	depends = cmark
