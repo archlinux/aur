@@ -1,6 +1,6 @@
 pkgbase = pcb-rnd
 	pkgdesc = free/open source, flexible, modular Printed Circuit Board editor
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = http://www.repo.hu/projects/pcb-rnd/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = pcb-rnd
 	optdepends = gd: gd based exports and pixmap imports (png, gif, jpeg)
 	optdepends = freetype2: import_ttf plugin
 	optdepends = fungw
-	source = http://www.repo.hu/projects/pcb-rnd/releases/pcb-rnd-3.0.2.tar.gz
-	sha256sums = c47e901a1871ae0063274680d32f130ba2850c01112b2ce96ec34fcf9faf485b
+	source = http://www.repo.hu/projects/pcb-rnd/releases/pcb-rnd-3.0.3.tar.gz
+	sha256sums = 0568bd6857a33e5d5c1ba97bd45f936dc0db8eb441f0c64e64d5d0d978352bb4
 
 pkgname = pcb-rnd
