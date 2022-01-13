@@ -1,0 +1,14 @@
+pkgbase = mgen
+	pkgdesc = Multi-Generator traffic generation tool
+	pkgver = 5.1.1
+	pkgrel = 1
+	url = https://github.com/USNavalResearchLaboratory/mgen
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	depends = libpcap
+	source = https://github.com/USNavalResearchLaboratory/mgen/releases/download/V5.1.1/src-mgen-5.1.1-protolib.tar.gz
+	sha512sums = c24743d17b2ecfe4d76857112253b00a523218733eebcc26c0c80ba2be24f1b492149042b9106e2e04773833c65ea5b74254c46cb3f98163cfd1eb06d0a52cb2
+
+pkgname = mgen
