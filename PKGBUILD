@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
