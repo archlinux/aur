@@ -1,7 +1,7 @@
 pkgbase = hexcurse-git
 	pkgdesc = Versatile ncurses-based hex editor.
 	pkgver = v1.60.0.r6.ga7d60e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LonnyGomes/hexcurse
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,14 @@ pkgbase = hexcurse-git
 	depends = ncurses
 	options = !makeflags
 	source = git+https://github.com/LonnyGomes/hexcurse
-	source = hexcurse_gccerrors.patch
+	source = https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-Werror.patch
+	source = https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-gcc10.patch
+	source = https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-tinfo.patch
+	source = hexcurse_pr40.patch::https://github.com/LonnyGomes/hexcurse/commit/cb70d4a93a46102f488f471fad31a7cfc9fec025.patch
 	md5sums = SKIP
-	md5sums = 0d1229aa298581c16493a26f25ff40f2
+	md5sums = 3f8372409addcbb199f6cfb635c95a5a
+	md5sums = 1be42b813594507f9910be2fc014e4e9
+	md5sums = 7db1bd4770c0f4350f5ae80991421b50
+	md5sums = 1f67d69aa4b0944477c5ad174af96f8d
 
 pkgname = hexcurse-git
-

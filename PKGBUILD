@@ -2,18 +2,23 @@
 
 pkgname=hexcurse-git
 pkgver=v1.60.0.r6.ga7d60e8
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile ncurses-based hex editor."
 arch=('i686' 'x86_64')
-#url="http://directory.fsf.org/project/HexCurse/"
 url="https://github.com/LonnyGomes/hexcurse"
 license=('GPL')
 depends=('ncurses')
 options=('!makeflags')
 source=("git+https://github.com/LonnyGomes/hexcurse"
-        "hexcurse_gccerrors.patch")
+        "https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-Werror.patch"
+        "https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-gcc10.patch"
+        "https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-tinfo.patch"
+        "hexcurse_pr40.patch::https://github.com/LonnyGomes/hexcurse/commit/cb70d4a93a46102f488f471fad31a7cfc9fec025.patch")
 md5sums=('SKIP'
-         '0d1229aa298581c16493a26f25ff40f2')
+         '3f8372409addcbb199f6cfb635c95a5a'
+         '1be42b813594507f9910be2fc014e4e9'
+         '7db1bd4770c0f4350f5ae80991421b50'
+         '1f67d69aa4b0944477c5ad174af96f8d')
 
 function pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -22,7 +27,10 @@ function pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  patch --forward --strip=1 --input="${srcdir}/hexcurse_gccerrors.patch"
+  patch --forward --strip=1 --input="${srcdir}/hexcurse-1.60.0-Werror.patch"
+  patch --forward --strip=1 --input="${srcdir}/hexcurse-1.60.0-gcc10.patch"
+  patch --forward --strip=1 --input="${srcdir}/hexcurse-1.60.0-tinfo.patch"
+  patch --forward --strip=1 --input="${srcdir}/hexcurse_pr40.patch"
 }
 
 build() {
