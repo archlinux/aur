@@ -40,6 +40,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # Only pulling what we need, though
         "git+https://chromium.googlesource.com/chromium/buildtools.git#commit=505de88083136eefd056e5ee4ca0f01fe9b33de8"
         "git+https://skia.googlesource.com/common.git#commit=9737551d7a52c3db3262db5856e6bcd62c462b92"
+        desktop.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
         shared-libarchive.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2523.patch
@@ -51,6 +52,7 @@ sha256sums=('966bd940e1072ed24b70e211ca2bb1eb9aa6432ca12972a8e1df5f1e0150213d'
             'SKIP'
             'SKIP'
             'SKIP'
+            '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
             '2d6b5f33f23adc4f9912511ac35311a776ce34519ef40e9db3659e4c5457f055'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
@@ -71,6 +73,8 @@ prepare() {
 		ln -svfT "$(realpath $_dep)" "skia/${_skiadeps[$_dep]}"
 	done
 
+	# Fix up Aseprite's desktop integration
+	env -C aseprite patch -tp1 <desktop.patch
 	# Allow using shared libarchive (the bundled version prevents using the `None` build type...)
 	env -C aseprite patch -tp1 <shared-libarchive.patch
 	# Allow using shared libwebp (breaks builds otherwise...)

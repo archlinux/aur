@@ -2,6 +2,7 @@
 !/.gitignore
 !/.SRCINFO
 !/PKGBUILD
+!/desktop.patch
 !/shared-libarchive.patch
 !/shared-libwebp.patch
 !/shared-skia-deps.patch
