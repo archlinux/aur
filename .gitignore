@@ -1,7 +1,6 @@
 *
 !/.gitignore
 !/.SRCINFO
-!/aseprite.desktop
 !/PKGBUILD
 !/is_clang.py
 !/shared-libarchive.patch
