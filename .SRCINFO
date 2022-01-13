@@ -1,6 +1,6 @@
 pkgbase = ca-certificates-blacklist-anti-china
 	pkgdesc = A set of Chinese CAs' certificates which should be avoided
-	pkgver = 3.67
+	pkgver = 3.74
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ca-certificates-blacklist-anti-china
 	license = GPL
 	makedepends = python
 	depends = ca-certificates-utils
-	source = https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_67_RTM/src/nss-3.67.tar.gz
+	source = https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_74_RTM/src/nss-3.74.tar.gz
 	source = certdata2pem.py
-	sha256sums = f6549a9148cd27b394b40c77fa73111d5ea23cdb51d796665de1b7458f88ce7f
+	sha256sums = 88928811f9f40f87d42e2eaccdf6e454562e51486067f2ddbe90aa47ea6cd056
 	sha256sums = d2a1579dae05fd16175fac27ef08b54731ecefdf414085c610179afcf62b096c
 
 pkgname = ca-certificates-blacklist-anti-china
