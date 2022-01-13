@@ -1,11 +1,11 @@
 # Maintainer: Rudolf Polzer <divVerent at gmail dot com>
 pkgname=aaaaxy
 pkgver=1.0.187
-pkgrel=2
+pkgrel=3
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="git+https://github.com/divVerent/$pkgname"
-license=('GPL')
+license=('Apache')
 makedepends=('git' 'go' 'graphviz' 'imagemagick' 'make')
 source=("$url#tag=v$pkgver")
 sha256sums=('SKIP')
