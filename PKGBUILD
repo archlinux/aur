@@ -5,7 +5,7 @@ _kernver=5.16
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-KERNNAME="${_kernver}-${_zenver}-${_pkgrel}-zen"
+_KERNNAME=5.16.0-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -65,7 +65,7 @@ package_linux-zen-versioned-docs-bin() {
 }
 
 package_linux5.16.zen1-1-zen-bin() {
-  pkgdesc="The Linux ZEN kernel and modules, version ${KERNNAME}"
+  pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
@@ -77,11 +77,11 @@ package_linux5.16.zen1-1-zen-bin() {
             WIREGUARD-MODULE)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
 package_linux5.16.zen1-1-zen-headers-bin() {
-  pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${KERNNAME}"
+  pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -90,7 +90,7 @@ package_linux5.16.zen1-1-zen-headers-bin() {
 }
 
 package_linux5.16.zen1-1-zen-docs-bin() {
-  pkgdesc="Documentation for the Linux ZEN kernel ${KERNNAME}"
+  pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}

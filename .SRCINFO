@@ -30,7 +30,7 @@ pkgname = linux-zen-versioned-docs-bin
 	depends = linux5.16.zen1-1-zen-docs-bin
 
 pkgname = linux5.16.zen1-1-zen-bin
-	pkgdesc = The Linux ZEN kernel and modules, version 5.16-zen1-1-zen
+	pkgdesc = The Linux ZEN kernel and modules, version 5.16.0-zen1-1-zen
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -42,10 +42,10 @@ pkgname = linux5.16.zen1-1-zen-bin
 	conflicts = linux-zen
 
 pkgname = linux5.16.zen1-1-zen-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 5.16-zen1-1-zen
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 5.16.0-zen1-1-zen
 	depends = pahole
 	conflicts = linux-zen-headers
 
 pkgname = linux5.16.zen1-1-zen-docs-bin
-	pkgdesc = Documentation for the Linux ZEN kernel 5.16-zen1-1-zen
+	pkgdesc = Documentation for the Linux ZEN kernel 5.16.0-zen1-1-zen
 	conflicts = linux-zen-docs
