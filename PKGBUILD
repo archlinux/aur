@@ -6,12 +6,12 @@
 
 pkgname='fcitx5-mozc-ut'
 pkgver=2.26.4610.102
-pkgrel=1
+pkgrel=2
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx5' 'mozc=2.26.4610.102')
+depends=('fcitx5' 'mozc')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 optdepends=('fcitx5-configtool')
 conflicts=('fcitx-mozc' 'fcitx-mozc-ut' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
