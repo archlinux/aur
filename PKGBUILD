@@ -2,7 +2,7 @@
 
 _gemname=serverengine
 pkgname=ruby-$_gemname
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc='A framework to implement robust multiprocess servers'
 arch=('any')
@@ -12,7 +12,8 @@ depends=('ruby' 'ruby-sigdump')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('66e3b10c4396b4613b734d3d2764293de2935b0e99bc33c9ba0e79f69c2af6fbb53dee8e356ab351d65195124e139ec4b0aa7976594387432b88a3875e985ef9')
+sha512sums=('fb4abbf35553b8d69447be195a14018e335cbce0756b9ae91160bc4dc8253968a4b94c383f40aad1e1bd20aaeb700efced91341f3b26077a0d44b3dc00aa89c7')
+b2sums=('a7b256c1029c38b35673d104f6aba118bc5644947db7feb185d57456af60baebafb3c6a74996998630b7a0dbe3ee0baa5d4f260538ca7a8abf542b7528cd7204')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
