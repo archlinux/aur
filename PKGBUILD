@@ -13,9 +13,9 @@ depends=("python-requests"
 	 "python-feedparser"
 	 "python-beautifulsoup4"
 )
-makedepends=("git" "python" "python-setuptools" "python-dephell")
-provides=("mandown")
-conflicts=("${pkgname%-git}")
+makedepends=("git" "python-setuptools" "python-dephell")
+provides=()
+conflicts=("mandown")
 source=("git+$url.git")
 sha256sums=("SKIP")
 
