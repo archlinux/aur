@@ -1,5 +1,17 @@
 # ChangeLog for zram-init:
 
+*zram-init-11.1:
+	Martin Väth <martin at mvath.de>:
+	- Make typeN=- work, see https://github.com/vaeth/zram-init/issues/38.
+	  Thanks to https://github.com/allixx for the report and fix.
+
+*zram-init-11.0:
+	Martin Väth <martin at mvath.de>:
+	- Check only for an absolute path name, not for directory presence, see
+	  https://github.com/vaeth/zram-init/issues/35
+	- Add some translations. Note: then[Tab]... and else[Tab]... are not
+	  recognized by xgettext; they have to be in a separate line
+
 *zram-init-10.12:
 	Martin Väth <martin at mvath.de>:
 	- Make the options -M and -2 work. Thanks to GimmeHardware for the
