@@ -8,6 +8,7 @@ pkgbase = r-misc3d
 	license = GPL3
 	depends = r
 	depends = tcl
+	depends = tk
 	optdepends = r-rgl
 	optdepends = r-tkrplot
 	source = https://cran.r-project.org/src/contrib/misc3d_0.9-1.tar.gz
