@@ -1,6 +1,6 @@
 pkgbase = python-quantities
 	pkgdesc = Support for physical quantities with units, based on numpy
-	pkgver = 0.12.4
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://pypi.org/project/quantities/#files
 	arch = any
@@ -9,12 +9,11 @@ pkgbase = python-quantities
 	makedepends = python2-setuptools
 	makedepends = python-numpy
 	makedepends = python2-numpy
-	source = https://files.pythonhosted.org/packages/source/q/quantities/quantities-0.12.4.tar.gz
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/q/quantities/quantities-0.12.5.tar.gz
+	sha256sums = 67546963cb2a519b1a4aa43d132ef754360268e5d551b43dd1716903d99812f0
 
 pkgname = python-quantities
 	depends = python
 
 pkgname = python2-quantities
 	depends = python2
-
