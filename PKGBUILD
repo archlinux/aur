@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=pkgload
 _cranver=1.2.4
@@ -6,7 +6,7 @@ pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Simulate Package Installation and Attach"
-arch=(i686 x86_64)
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=(r r-cli r-crayon r-desc r-rlang r-rprojroot r-rstudioapi r-withr)

@@ -3,8 +3,7 @@ pkgbase = r-pkgload
 	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgload
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = r
 	depends = r-cli
