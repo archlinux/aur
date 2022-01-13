@@ -1,0 +1,14 @@
+pkgbase = tim-bin
+	pkgdesc = ToDo improved - CLI todo application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/NChechulin/tim
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source = https://github.com/NChechulin/tim/releases/download/v1.0.0/tim
+	source = https://raw.githubusercontent.com/NChechulin/tim/master/LICENSE
+	md5sums = 867a99f1ba2267eb311947281bbfe325
+	md5sums = b5a8a46f2c9142bdbfb1be8ac82a0bae
+
+pkgname = tim-bin
