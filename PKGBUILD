@@ -43,6 +43,8 @@ build() {
 check() {
 	cd "$srcdir/${pkgname%-git}"
   cd build
+  # We need to build the package first.
+  make -j8
 	make -k test
 }
 
