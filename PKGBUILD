@@ -2,7 +2,7 @@
 
 pkgname=joplin-appimage
 pkgver=2.6.10
-pkgrel=4
+pkgrel=5
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
@@ -30,8 +30,8 @@ package() {
     mkdir -p squashfs-root/usr/share/icons/hicolor/{72x72,16x16}/apps
     ./${_filename} --appimage-extract "usr/share/icons/hicolor/*/apps/@joplinapp-desktop.png" > /dev/null 2>&1
     ./${_filename} --appimage-extract @joplinapp-desktop.desktop > /dev/null 2>&1
-    sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" squashfs-root/@joplinapp-desktop.desktop
-    sed -i -E "s|Icon=joplin|Icon=@joplinapp-desktop|" squashfs-root/@joplinapp-desktop.desktop
+    sed -i -E "s|Exec=AppRun|Exec=${_install_path}|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Icon=joplin|Icon=@joplinapp-desktop|" "squashfs-root/${_squashfs_desktop_file}"
 
     # install icons
     install -dm755 "${pkgdir}/usr/share/icons"
@@ -42,7 +42,7 @@ package() {
     # install .desktop file and image file
     # disable AppimageLauncher integration prompt
     # https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
-    sed -i -E "s|Exec=${_install_path}|Exec=APPIMAGELAUNCHER_DISABLE=1 /usr/bin/joplin-desktop|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Exec=${_install_path}|Exec=env APPIMAGELAUNCHER_DISABLE=1 /usr/bin/joplin-desktop|" "squashfs-root/${_squashfs_desktop_file}"
     install -Dm644 "squashfs-root/${_squashfs_desktop_file}" "${pkgdir}/${_desktop_file}"
     install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
     mkdir "${pkgdir}/usr/bin/" && chmod 755 "${pkgdir}/usr/bin/"
