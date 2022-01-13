@@ -1,0 +1,23 @@
+pkgbase = pdfcpu-git
+	pkgdesc = A Command-line PDF processor written in Go.
+	pkgver = 0.3.13.r16.g31d2490
+	pkgrel = 1
+	url = https://github.com/pdfcpu/pdfcpu
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go>=1.17
+	makedepends = git
+	provides = pdfcpu
+	conflicts = pdfcpu
+	options = !strip
+	options = !emptydirs
+	source = git+https://github.com/pdfcpu/pdfcpu
+	md5sums = SKIP
+
+pkgname = pdfcpu-git
