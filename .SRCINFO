@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-fancyindex
-	pkgdesc = Fancy indexes module for the nginx web server
+	pkgdesc = Fancy index module for the nginx-mainline web server
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nginx.com/resources/wiki/modules/fancy_index/
 	arch = x86_64
 	license = BSD
