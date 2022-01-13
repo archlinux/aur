@@ -7,11 +7,9 @@ pkgbase = r-png
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = gcc
 	depends = r>=2.9.0
 	depends = libpng
 	source = https://cran.r-project.org/src/contrib/png_0.1-7.tar.gz
-	md5sums = 1ebc8b8aa5979b12c5ec2384b30d649f
+	sha256sums = e269ff968f04384fc9421d17cfc7c10cf7756b11c2d6d126e9776f5aca65553c
 
 pkgname = r-png
-
