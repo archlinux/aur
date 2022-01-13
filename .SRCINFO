@@ -1,0 +1,13 @@
+pkgbase = 1pass-autologin
+	pkgdesc = 1Password Automatic Login with Polkit
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://1password.com
+	arch = any
+	license = MIT
+	optdepends = 1password
+	optdepends = 1password-beta
+	source = 00-1password.rule
+	sha512sums = 47b973d34a7b31825351a0b33a4a136f2911ef09b5b1837090aeafe41f80e24bdf6d2ab24775cbe67d79ef2f8a2d4e7f23d3a09e098263a4380340902a32e607
+
+pkgname = 1pass-autologin
