@@ -1,8 +1,8 @@
 # Maintainer: Rudolf Polzer <divVerent at gmail dot com>
 pkgname=aaaaxy
 pkgver=1.0.187
-pkgrel=1
-pkgdesc='Go PKGBUILD Example'
+pkgrel=2
+pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="git+https://github.com/divVerent/$pkgname"
 license=('GPL')
