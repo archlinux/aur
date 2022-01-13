@@ -49,7 +49,7 @@ index e1e3bc1ae3..4a37838e95 100644
 +  ${LibArchive_LIBRARIES}
    json11
 -  archive_static
-   fmt
+   ${FMT_LIBRARIES}
    tinyexpr)
  
 diff --git a/third_party/CMakeLists.txt b/third_party/CMakeLists.txt

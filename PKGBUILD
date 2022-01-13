@@ -18,7 +18,7 @@ license=('custom')
 depends=(# ~ Aseprite's direct dependencies ~
          # pixman is not linked to because we use Skia instead
          # harfbuzz is linked statically because Aseprite expects an older version
-         cmark libcurl.so libgif.so libjpeg.so zlib libpng tinyxml libfreetype.so libarchive.so
+         cmark libcurl.so libgif.so libjpeg.so zlib libpng tinyxml libfreetype.so libarchive.so libfmt.so
          libwebp.so libwebpmux.so libwebpdemux.so
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
@@ -37,6 +37,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprit
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "git+https://github.com/aseprite/skia.git#branch=aseprite-m96"
         desktop.patch
+        shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
         shared-libarchive.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2523.patch
@@ -47,7 +48,8 @@ noextract=("${source[0]##*/}") # Don't extract Aseprite sources at the root
 sha256sums=('966bd940e1072ed24b70e211ca2bb1eb9aa6432ca12972a8e1df5f1e0150213d'
             'SKIP'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
-            'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
+            '821f1354dbbc0bb3fa700e63037ed3c89b0d32bd2ab253450f91eeacd7d47c06'
+            'd7f2f8c43d24382453273ed17b1c0e05928980a36ad0b7c988da3aa0fe32de53'
             '2d6b5f33f23adc4f9912511ac35311a776ce34519ef40e9db3659e4c5457f055'
             'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
@@ -59,11 +61,10 @@ prepare() {
 
 	# Fix up Aseprite's desktop integration
 	env -C aseprite patch -tp1 <desktop.patch
-	# Allow using shared libarchive (the bundled version prevents using the `None` build type...)
+	# Allow using more shared libs
+	env -C aseprite patch -tp1 <shared-fmt.patch
 	env -C aseprite patch -tp1 <shared-libarchive.patch
-	# Allow using shared libwebp (breaks builds otherwise...)
 	env -C aseprite patch -tp1 <shared-libwebp.patch
-	# Skip the build-time dependency on Pixman since it doesn't get used in the end
 	env -C aseprite patch -tp1 <optional-pixman.patch
 	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
 	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
@@ -86,7 +87,7 @@ skia_use_{expat,xps,zlib,libgifcodec,sfntly}=false`"
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
 -DENABLE_{UPDATER,SCRIPTING,WEBSOCKET}=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$PWD/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
--DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES
+-DUSE_SHARED_{CMARK,CURL,FMT,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES
 	ninja -C build
 }
 
