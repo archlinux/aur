@@ -7,9 +7,7 @@ pkgbase = r-snow
 	license = GPL2
 	license = GPL3
 	depends = r>=2.13.1
-	optdepends = r-rmpi
 	optdepends = r-rlecuyer
-	optdepends = r-nws
 	source = https://cran.r-project.org/src/contrib/snow_0.4-4.tar.gz
 	sha256sums = 84587f46f222a96f3e2fde10ad6ec6ddbd878f4e917cd926d632f61a87db13c9
 

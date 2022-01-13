@@ -11,19 +11,16 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=2.13.1')
-optdepends=(r-rmpi r-rlecuyer r-nws)
+optdepends=(r-rlecuyer)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('84587f46f222a96f3e2fde10ad6ec6ddbd878f4e917cd926d632f61a87db13c9')
 
 build(){
-    cd "${srcdir}"
-
-    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-    cd "${srcdir}"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-    install -dm0755 "${pkgdir}/usr/lib/R/library"
-    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
