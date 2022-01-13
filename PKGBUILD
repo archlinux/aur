@@ -1,7 +1,7 @@
 # Maintainer: Dāvis Mosāns <davispuh at gmail dot com>
 
 pkgname=epicgames-freebies-claimer
-pkgver=1.5.4
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="Automatically claim free game promotions from the Epic Game Store."
 arch=("any")
@@ -11,7 +11,7 @@ depends=("nodejs")
 makedepends=("npm")
 source=("https://github.com/Revadike/epicgames-freebies-claimer/archive/refs/tags/V$pkgver.tar.gz"
         "epicgames-freebies-claimer" "epicgames-freebies-claimer.service")
-sha256sums=('c8a7471f7922ed315e5bccfa7410b0cae56a9616d37ec466b53acb3165b3086d'
+sha256sums=('135cf008bb4aabb6e8be44ff70c2c7ce175c769aea865ab956272e5691115cf7'
             'ef1f2943deb5776fa3fa44b850c202373b222b8232c02832f102c80f693d0630'
             '26001be311424a616f2c4ca35de68d5427d918b4849857e36dba0eeb88ac6a22')
 
