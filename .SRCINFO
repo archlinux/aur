@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-ecorp-glitch
+	pkgdesc = E-Corp glitch animation from Mr. Robot scene ported to Plymouth
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/hrshbh/plymouth-themes
+	install = plymouth-theme-ecorp-glitch.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/hrshbh/plymouth-themes.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-ecorp-glitch
