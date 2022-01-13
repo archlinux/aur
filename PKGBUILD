@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retr
 
 pkgname=uqm-megamod-addon-sol-textures
 _pkgname=uqm-megamod
-pkgver=0.8.0.85
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Improved textures for the planets in the Sol System for the Ur-Quan Masters MegaMod by Serosis."
 arch=("any")
@@ -17,7 +17,7 @@ source=(
 )
 
 md5sums=(
-  "5915c8d811345f1a27632c30190768f7"
+  "d6c19401e94c826a4a5c7b92758a681b"
   "4f30efe3d129bd9a8bddd0d455c849f7"
 )
 
