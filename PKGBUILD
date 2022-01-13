@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retr
 
 pkgname=uqm-megamod-addon-3do
 _pkgname=uqm-megamod
-pkgver=0.8.0.85
+pkgver=0.8.1
 _pkgver=0.7.0
 pkgrel=1
 pkgdesc="3do voice, video and music package for the Ur-Quan Masters MegaMod by Serosis."
@@ -14,15 +14,15 @@ license=("custom:CC BY-NC-SA 2.5")
 
 source=(
   "mm-${pkgver}-3dovoice.uqm::https://files.serosis.net/MegaMod/${pkgver}/mm-${pkgver}-3dovoice.uqm"
-  "uqm-${_pkgver}-3dovideo.uqm::https://files.serosis.net/MegaMod/uqm-${_pkgver}-3dovideo.uqm"
   "uqm-${_pkgver}-3DOMusicRemastered.uqm::https://files.serosis.net/MegaMod/uqm-${_pkgver}-3DOMusicRemastered.uqm"
+  "uqm-${_pkgver}-3dovideo.uqm::https://files.serosis.net/MegaMod/uqm-${_pkgver}-3dovideo.uqm"
   LICENSE
 )
 
 md5sums=(
-  "899f81deec665ea182286338043f33d1"
-  "8412ced77245d2f6cac31feee6df05c6"
+  "3be61785ab05344fd315e75d2efa313d"
   "293a8b036746bcee3823f0b33c2a16a7"
+  "8412ced77245d2f6cac31feee6df05c6"
   "4f30efe3d129bd9a8bddd0d455c849f7"
 )
 
