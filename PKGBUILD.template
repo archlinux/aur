@@ -4,8 +4,8 @@ _kernver=%KERNVER
 _archver=%ARCHVER
 _pkgrel=%PKGREL
 _pkgver="${_kernver}.${_archver}"
+_KERNNAME=%KERNNAME
 pkgbase="${_pkgname}-versioned-bin"
-KERNNAME="${_kernver}-${_archver}-${_pkgrel}"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -65,7 +65,7 @@ package_linux-versioned-docs-bin() {
 }
 
 package_linux%PKGVER-%PKGREL-bin() {
-  pkgdesc="%KERN_PKGDESC, version ${KERNNAME}"
+  pkgdesc="%KERN_PKGDESC, version ${_KERNNAME}"
   %KERN_DEPENDS
   %KERN_CONFLICTS
   %KERN_OPTDEPENDS
@@ -73,11 +73,11 @@ package_linux%PKGVER-%PKGREL-bin() {
   %KERN_REPLACES
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
 package_linux%PKGVER-%PKGREL-headers-bin() {
-  pkgdesc="%HEADERS_PKGDESC ${KERNNAME}"
+  pkgdesc="%HEADERS_PKGDESC ${_KERNNAME}"
   %HEADERS_DEPENDS
   %HEADERS_CONFLICTS
   %HEADERS_OPTDEPENDS
@@ -89,7 +89,7 @@ package_linux%PKGVER-%PKGREL-headers-bin() {
 }
 
 package_linux%PKGVER-%PKGREL-docs-bin() {
-  pkgdesc="%DOCS_PKGDESC ${KERNNAME}"
+  pkgdesc="%DOCS_PKGDESC ${_KERNNAME}"
   %DOCS_DEPENDS
   %DOCS_CONFLICTS
   %DOCS_OPTDEPENDS

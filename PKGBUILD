@@ -4,8 +4,8 @@ _kernver=5.16
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
+_KERNNAME=5.16.0-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
-KERNNAME="${_kernver}-${_archver}-${_pkgrel}"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -65,7 +65,7 @@ package_linux-versioned-docs-bin() {
 }
 
 package_linux5.16.arch1-1-bin() {
-  pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
+  pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
@@ -78,11 +78,11 @@ package_linux5.16.arch1-1-bin() {
             wireguard-arch)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
 package_linux5.16.arch1-1-headers-bin() {
-  pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
+  pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -91,7 +91,7 @@ package_linux5.16.arch1-1-headers-bin() {
 }
 
 package_linux5.16.arch1-1-docs-bin() {
-  pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
+  pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}

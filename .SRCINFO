@@ -30,7 +30,7 @@ pkgname = linux-versioned-docs-bin
 	depends = linux5.16.arch1-1-docs-bin
 
 pkgname = linux5.16.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.16-arch1-1
+	pkgdesc = The Linux kernel and modules, version 5.16.0-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -43,10 +43,10 @@ pkgname = linux5.16.arch1-1-bin
 	replaces = wireguard-arch
 
 pkgname = linux5.16.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.16-arch1-1
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.16.0-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
 pkgname = linux5.16.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.16-arch1-1
+	pkgdesc = Documentation for the Linux kernel 5.16.0-arch1-1
 	conflicts = linux-docs

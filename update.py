@@ -43,11 +43,16 @@ def update():
 
     template = Template(Path('PKGBUILD.template').read_text())
 
+    kernver, archver = kern_info['pkgver'].rsplit('.', 1)
+    pkgrel = kern_info['pkgrel']
+    padded_kernver = kernver if len(kernver.split('.')) == 3 else kernver + '.0'
+    
     pkgbuild = template.substitute(
-        KERNVER=kern_info['pkgver'].rsplit('.', 1)[0],
-        ARCHVER=kern_info['pkgver'].rsplit('.', 1)[1],
+        KERNVER=kernver,
+        ARCHVER=archver,
         PKGVER=kern_info['pkgver'],
-        PKGREL=kern_info['pkgrel'],
+        PKGREL=pkgrel,
+        KERNNAME=f"{padded_kernver}-{archver}-{pkgrel}",
         URL=kern_info['url'],
         KERN_PKGDESC=kern_info['pkgdesc'],
         KERN_DEPENDS=arr("depends", kern_info['depends']),
