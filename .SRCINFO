@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-enhanced-qt5
 	pkgdesc = A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), Built against Qt5
 	pkgver = 4.4.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = x86_64
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = qbittorrent-enhanced-qt5
 	makedepends = cmake
 	makedepends = boost>=1.65
 	makedepends = qt5-tools
-	depends = libtorrent-rasterbar>=1:1.2.14
+	depends = libtorrent-rasterbar>=1:2.0
 	depends = qt5-base
 	depends = qt5-svg
 	depends = hicolor-icon-theme
