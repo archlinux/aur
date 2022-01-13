@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=pwncat
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Netcat on steroids with Firewall, IDS/IPS evasion, bind and reverse shell, self-injecting shell and port forwarding magic - and its fully scriptable with Python (PSE)'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/cytopia/pwncat/archive/v${pkgver}.tar.gz")
-sha256sums=('24c52fd9463c91217b7c7405a6cdb567d14e0de586a2a34cf226a8d4a3467776')
+sha256sums=('bca4deb557d4341a6ae3695cd42b9571c247ac4d81dca141e3b26119621a79fd')
 
 build() {
   cd "${pkgname}-${pkgver}"
