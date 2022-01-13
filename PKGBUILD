@@ -2,7 +2,7 @@
 # Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2021.12.28
+pkgver=2022.1.14
 pkgrel=0
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -32,8 +32,8 @@ optdepends=(
   'vulkan-icd-loader'
   'gamemode')
 makedepends=('meson' 'ninja')
-source=("${pkgname}-${pkgver}-treviso.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-treviso.tar.gz")
-sha256sums=('ebf4d5fa156ee8f765a4aa614b4f18b301a3dc1d3b1580c5c1d36ca515b58079')
+source=("${pkgname}-${pkgver}-trento.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-trento.tar.gz")
+sha256sums=('b86227ad65ab7bf2ae397c087c6801276648bf0ad9b08e9eb71dafd80cc5652f')
 
 build() {
   if [[ -d Bottles ]]; then 
