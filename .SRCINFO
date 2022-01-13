@@ -1,7 +1,7 @@
 pkgbase = aaaaxy
-	pkgdesc = Go PKGBUILD Example
+	pkgdesc = A nonlinear puzzle platformer taking place in non-Euclidean geometry
 	pkgver = 1.0.187
-	pkgrel = 1
+	pkgrel = 2
 	url = git+https://github.com/divVerent/aaaaxy
 	arch = x86_64
 	license = GPL
