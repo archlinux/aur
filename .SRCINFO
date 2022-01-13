@@ -1,0 +1,19 @@
+pkgbase = dzr
+	pkgdesc = Command Line deezer.com Player
+	pkgver = 211226
+	pkgrel = 1
+	url = https://github.com/yne/dzr
+	arch = any
+	license = Unlicense
+	depends = mpv
+	depends = curl
+	depends = jq
+	depends = dialog
+	depends = openssl
+	provides = dzr
+	provides = dzr-dec
+	provides = dzr-url
+	source = https://github.com/yne/dzr/archive/refs/tags/211226.tar.gz
+	sha256sums = SKIP
+
+pkgname = dzr
