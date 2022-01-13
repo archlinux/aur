@@ -1,8 +1,8 @@
 pkgbase = 1pass-autologin
 	pkgdesc = 1Password Automatic Login with Polkit
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://1password.com
+	pkgrel = 2
+	url = https://gist.github.com/ShayBox/177fee12bc424dfe79507cb4c827bc7d
 	arch = any
 	license = MIT
 	optdepends = 1password
