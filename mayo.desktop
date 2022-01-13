@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Mayo
+GenericName=Mayo
+Comment=3D CAD viewer and converter
+Exec=mayo
+Icon=/usr/share/mayo/appicon.png
+Terminal=false
+Categories=Science;
+StartupNotify=true
