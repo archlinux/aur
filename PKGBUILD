@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=rJava
-_cranver=1.0-5
+_cranver=1.0-6
 pkgname=r-${_cranname,,}
 pkgdesc="Low-Level R to Java Interface"
 url="https://cran.r-project.org/package=rJava"
@@ -15,7 +15,7 @@ optdepends=()
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("97aaf40756f84501c78382243cb93853")
+md5sums=("effeeb4517301a2024fab8e10d07d824")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
