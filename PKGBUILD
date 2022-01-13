@@ -16,7 +16,7 @@ pkgname=vmware-workstation14
 pkgver=14.1.7
 _buildver=12989993
 _pkgver=${pkgver}_${_buildver}
-pkgrel=12
+pkgrel=13
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -125,7 +125,7 @@ sha256sums=(
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
   '161720a88406a8ca4e6aa3920f291ad43ac0c94d068c3ea1b893cc3fb99ca6de'
-  '2cb7e37a807db07cff3e0eb833c05e306f3d4a8c198ddddf8e3f7492750c10bd'
+  'dfbff7b2caebab70e64eaf775b515bbac51fdb4d547910c60449dd98ddd2752b'
 )
 options=(!strip emptydirs)
 
@@ -142,7 +142,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=10.1.6_12989998
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.6
+_unlocker_ver=3.0.7
 
 makedepends+=(
   python
