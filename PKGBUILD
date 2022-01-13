@@ -16,7 +16,7 @@ pkgname=vmware-workstation12
 pkgver=12.5.9
 _buildver=7535481
 _pkgver=${pkgver}_${_buildver}
-pkgrel=19
+pkgrel=20
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -122,7 +122,7 @@ sha256sums=(
   '10562d11d50edab9abc2b29c8948714edcb9b084f99b3766d07ddd21259e372e'
   '273d4357599a3e54259c78cc49054fef8ecfd2c2eda35cbcde3a53a62777a5ac'
   '9ba0c4f87196f922cadc14bf8674b707c7d1fc7dc1eccfb2d5d847870e1c5398'
-  'ba069b2d5b7a81d3648991444cf67945e31cab061dc089e5c44c78a37058d080'
+  '36312592f8954f942b704c0e25dc70669ade2c51bb5a882c20764ac23f836109'
 )
 options=(!strip emptydirs)
 
@@ -139,7 +139,7 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=8.5.10_7527438
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.6
+_unlocker_ver=3.0.7
 
 makedepends+=(
   python
