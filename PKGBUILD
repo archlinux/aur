@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -gqb "" -A "Mozilla/5.0" -fLC - --retry 3 --retr
 
 pkgname=uqm-megamod-addon-vols-remix
 _pkgname=uqm-megamod
-pkgver=0.8.0.85
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Volasaurus' complete remix Pack for the Ur-Quan Masters MegaMod by Serosis."
 arch=("any")
@@ -18,7 +18,7 @@ source=(
 )
 
 md5sums=(
-  "8b7b1230bf83914c9877443197efcebd"
+  "75c92755fa6ad0818659fa58cea1d995"
   "98782edfae5a7e1c54422d1d7759e22c"
   "4f30efe3d129bd9a8bddd0d455c849f7"
 )
