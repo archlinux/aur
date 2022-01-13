@@ -1,15 +1,14 @@
 pkgbase = fortio-bin
 	pkgdesc = Fortio load testing library, command line tool, advanced echo server and web UI in go (golang). Allows to specify a set query-per-second load and record latency histograms and other useful stats
-	pkgver = 1.11.3
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://fortio.org
 	arch = x86_64
 	license = Apache
 	makedepends = tar
 	provides = fortio
-	noextract = fortio-bin-1.11.3
-	source = fortio-bin-1.11.3.tgz::https://github.com/fortio/fortio/releases/download/v1.11.3/fortio-linux_x64-1.11.3.tgz
-	sha256sums = 7a47adb5fc76dba86566d7b50f4ce3e78ce400b2f6496474ddfa80f1621e2ab2
+	noextract = fortio-bin-1.20.0
+	source = fortio-bin-1.20.0.tgz::https://github.com/fortio/fortio/releases/download/v1.20.0/fortio-linux_x64-1.20.0.tgz
+	sha256sums = 017957c6cfe3f9706f434b5a947721e668ebdf7519f2916d7542319b8adf325a
 
 pkgname = fortio-bin
-
