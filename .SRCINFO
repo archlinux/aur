@@ -7,10 +7,8 @@ pkgbase = r-filehash
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = gcc
 	depends = r>=3.0.0
 	source = https://cran.r-project.org/src/contrib/filehash_2.4-2.tar.gz
-	md5sums = bb3e4827574764679be6085fb80d8c4d
+	sha256sums = b6d056f75d45e315943a4618f5f62802612cd8931ba3f9f474b595140a3cfb93
 
 pkgname = r-filehash
-
