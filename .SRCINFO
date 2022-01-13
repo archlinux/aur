@@ -1,10 +1,18 @@
 pkgbase = box-installer
 	pkgdesc = A utility to install and run packages in chroot environments
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ia-projekt-zespolowy-2021-2022/box-installer
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = i486
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
+	makedepends = git
 	depends = pacman
 	optdepends = git: downloading from AUR
 	source = git+https://gitlab.com/ia-projekt-zespolowy-2021-2022/box-installer.git#tag=v1.0
