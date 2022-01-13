@@ -12,10 +12,10 @@ sha256sums=('6d9398bd4a001a4bf77f12f9cc0e42212b48027973bdc5f25abf2c63d54f0cc1')
 provides=('arduino-language-server')
 conflicts=('arduino-language-server')
 
-source=(https://github.com/arduino/arduino-language-server/releases/download/${pkgver}/arduino-language-server_${pkgver}_Linux_64bit.tar.gz)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/arduino/arduino-language-server/releases/download/${pkgver}/arduino-language-server_${pkgver}_Linux_64bit.tar.gz")
 
 package() {
-	cd ${srcdir}
+	cd "$SOURCE_DIR"
 	msg2 'Installing executables...'
 	install -Dm 755 arduino-language-server -t "$pkgdir"/usr/bin
 }
