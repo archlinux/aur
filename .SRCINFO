@@ -1,15 +1,14 @@
 pkgbase = xradio-git
 	pkgdesc = Driver for the Allwinner XRadio XR819 wifi chip
 	pkgver = r183.354e8c3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/karabek/xradio
 	install = xradio.install
 	arch = armv7h
 	license = GPL
 	makedepends = git
 	makedepends = linux-headers
-	source = git+https://github.com/karabek/xradio.git
+	source = git+https://github.com/dbeinder/xradio.git#branch=karabek_rebase
 	sha256sums = SKIP
 
 pkgname = xradio-git
-

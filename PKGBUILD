@@ -4,14 +4,14 @@ _KVER=$(uname -r)
 pkgname=xradio-git
 _pkgname=xradio
 pkgver=r183.354e8c3
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for the Allwinner XRadio XR819 wifi chip"
 arch=('armv7h')
 url="https://github.com/karabek/xradio"
 license=('GPL')
 install=xradio.install
 makedepends=('git' 'linux-headers')
-source=("git+https://github.com/karabek/xradio.git")
+source=("git+https://github.com/dbeinder/xradio.git#branch=karabek_rebase")
 sha256sums=('SKIP')
 
 pkgver() {
