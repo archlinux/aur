@@ -1,0 +1,12 @@
+pkgbase = cshatag
+	pkgdesc = Detect silent data corruption under Linux using checksums in extended attributes
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/rfjakob/cshatag
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/rfjakob/cshatag/archive/refs/tags/v2.0.tar.gz
+	sha256sums = ec06106f5bff76f4d7847151b19a1fbfd6934b3a2a292ae8f7f24b0f25907195
+
+pkgname = cshatag
