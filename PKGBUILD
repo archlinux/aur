@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-cbc
-pkgver=2.10.5
-pkgrel=3
+pkgver=2.10.6
+pkgrel=1
 pkgdesc="COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Cbc"
@@ -9,20 +9,20 @@ groups=('mingw-w64-coin-or')
 depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-asl')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
-source=("http://www.coin-or.org/download/source/Cbc/Cbc-${pkgver}.tgz")
-sha256sums=('da1a945648679b21ba56b454b81e939451dc7951d9beb3c3e14f18f64dde6972')
+source=(https://github.com/coin-or/Cbc/archive/refs/tags/releases/$pkgver.tar.gz)
+sha256sums=('59d0f45c4c6ce399b723e528d637fb8e409dba7449b91ae27edbb5c0617cc65d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd Cbc-$pkgver
+  cd Cbc-releases-$pkgver
   # see mingw-w64-coin-or-pkg-config
   sed -i "s|export PKG_CONFIG_PATH|export PKG_CONFIG_PATH_CUSTOM|g" Cbc/configure
   sed -i "s| PKG_CONFIG_PATH=| PKG_CONFIG_PATH_CUSTOM=|g" Cbc/configure
 }
 
 build() {
-  cd Cbc-$pkgver
+  cd Cbc-releases-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     COIN_SKIP_PROJECTS="Sample" \
@@ -43,7 +43,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/Cbc-$pkgver/build-${_arch}
+    cd "$srcdir"/Cbc-releases-$pkgver/build-${_arch}
     PKG_CONFIG_PATH_CUSTOM="$pkgdir"/usr/${_arch}/lib/pkgconfig/ \
     make DESTDIR="$pkgdir"/ install
     rm -r "$pkgdir"/usr/${_arch}/share
