@@ -1,6 +1,6 @@
 pkgbase = tcpview
 	pkgdesc = Graphical network connections viewer for Linux
-	pkgver = 3.0.1
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/chipmunk-sm/tcpview
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tcpview
 	makedepends = qt5-base
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = tcpview-3.0.1.tar.gz::https://github.com/chipmunk-sm/tcpview/archive/3.0.1.tar.gz
-	sha256sums = 6fc4690709aae965fe0b21dfaf249b352cf6f5eee4d6bd0ee6e7ebb5a36d5933
+	source = tcpview-3.1.0.tar.gz::https://github.com/chipmunk-sm/tcpview/archive/3.1.0.tar.gz
+	sha256sums = 361b6a1edada4b8b7856d762b5847a28a9c3e456eec8683e6863e5dcf2445ce7
 
 pkgname = tcpview
