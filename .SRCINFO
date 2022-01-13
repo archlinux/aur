@@ -5,10 +5,9 @@ pkgbase = arduino-language-server-bin
 	url = https://github.com/arduino/arduino-language-server
 	arch = x86_64
 	license = APACHE
-	makedepends = go
 	provides = arduino-language-server
 	conflicts = arduino-language-server
-	source = arduino-language-server-bin-0.6.0.tar.gz::https://github.com/arduino/arduino-language-server/releases/download/0.6.0/arduino-language-server_0.6.0_Linux_64bit.tar.gz
+	source = https://github.com/arduino/arduino-language-server/releases/download/0.6.0/arduino-language-server_0.6.0_Linux_64bit.tar.gz
 	sha256sums = 6d9398bd4a001a4bf77f12f9cc0e42212b48027973bdc5f25abf2c63d54f0cc1
 
 pkgname = arduino-language-server-bin
