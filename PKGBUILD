@@ -2,7 +2,7 @@
 
 _pkgname='pbrt-v4'
 pkgname="${_pkgname}-git"
-pkgver=r698.6dd3325
+pkgver=r1127.e98b6a1
 pkgrel=1
 pkgdesc="Physically based rendering system (CUDA disabled)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('pbrt-v3-git')
 source=("${_pkgname}::git+https://github.com/mmp/${_pkgname}#branch=master"
         "DisableCuda.patch")
 md5sums=('SKIP'
-         '5ef46949ab39c74cdc0c221f9170b202')
+         '89f724d6b0ac88fb95c2510a9a895009')
 
 pkgver() {
         cd "${_pkgname}"

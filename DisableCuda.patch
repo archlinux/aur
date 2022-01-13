@@ -2,7 +2,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index a59e9ea..84337ef 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -133,7 +133,7 @@ add_library (cuda_build_configuration INTERFACE)
+@@ -141,7 +141,7 @@ add_library (cuda_build_configuration INTERFACE)
  
  include (CheckLanguage)
  
@@ -10,4 +10,4 @@ index a59e9ea..84337ef 100644
 +#check_language(CUDA)
  
  if (CMAKE_CUDA_COMPILER)
-     find_package (CUDA REQUIRED)
+   if (CUDA_VERSION_MAJOR LESS 11)
