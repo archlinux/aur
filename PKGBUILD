@@ -7,8 +7,8 @@ _pkgbase=nautilus
 pkgbase=nautilus-typeahead
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
 packager="Albert Vaca Cintora <albertvaka@gmail.com>"
-pkgver=41.1
-pkgrel=2
+pkgver=41.2
+pkgrel=1
 pkgdesc="Default file manager for GNOME - Patched to bring back the 'typeahead find' feature"
 url="https://wiki.gnome.org/Apps/Files"
 arch=(x86_64)
@@ -18,13 +18,18 @@ depends=(libgexiv2 gnome-desktop gvfs dconf tracker3 tracker3-miners
 makedepends=(gobject-introspection git gtk-doc meson appstream-glib 'meson>=0.44.1' ninja)
 optdepends=('nautilus-sendto: right click to send files')
 checkdepends=(python-gobject)
-_commit=ca5283a5207463ef86b8509e9c2cb3c0f047288b  # tags/41.1^0
+_commit=1394dfc4588348cf6c9ae3d1cf373120f65eefb5  # tags/41.1^0
 source=("git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgd.git'
         nautilus-restore-typeahead.patch)
 sha256sums=('SKIP'
             'SKIP'
             '1eb93cbbb4557258c09a5d36917b53b13a2abbac3f9dcb1dbb0a1814a2da0949')
+
+pkgver() {
+  cd "$_pkgbase"
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
+}
 
 prepare() {
   cd "$_pkgbase"
@@ -38,11 +43,6 @@ prepare() {
 
   patch -p1 -i ../nautilus-restore-typeahead.patch
 
-}
-
-pkgver() {
-  cd "$_pkgbase"
-  git describe --tags | sed 's/-/+/g'
 }
 
 build() {
