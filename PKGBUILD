@@ -3,7 +3,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname="invoiceninja"
-pkgver=5.3.39
+pkgver=5.3.45
 pkgrel=1
 pkgdesc="Invoices, Expenses and Tasks built with Laravel and Flutter"
 url="https://www.invoiceninja.com/"
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/$pkgname/$pkgname/releases/dow
         "$pkgname-queue.timer"
         "$pkgname-scheduler.service"
         "$pkgname-scheduler.timer")
-sha256sums=('a8d644c4e4a6c3f6f9a1492af8818ea27ac3c1a8dfa32ca2deefe6089dcc9109'
+sha256sums=('bd320c1569976bc114372c360932a1e246c6902d52707ba4a9099771c481cb8a'
             '2e41b2c94877d29f7abf8912d7bd9a26dd7d003876253c7d49762c6ec9f72ea5'
             'ed7ce9c42bf1de019c4ca43c1a7bfb32e65aae8c6687ce0e5a4474c7e4a7537e'
             'b54a95a349294c93a97832cc88652e46d30692c722906ef4bce99ef4d73e8d33'
@@ -35,7 +35,7 @@ backup=("etc/webapps/$pkgname/config.env")
 options=("!strip")
 
 prepare(){
- unzip -q -f "$pkgname-$pkgver.zip" -d "$pkgname-$pkgver"
+ unzip -q -o "$pkgname-$pkgver.zip" -d "$pkgname-$pkgver"
  cd "$pkgname-$pkgver"
  # specify the newer pdf generator
  sed -i ".env.example" \
