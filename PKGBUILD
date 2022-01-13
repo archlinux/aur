@@ -1,7 +1,7 @@
 # Maintainer: Silas Groh <rubixdev@mailfence.com>
 pkgname=pixterm-rust
 cratename=pixterm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='CLI to show images in a terminal'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo')
 conflicts=('pixterm')
 source=("$cratename-$pkgver.tar.gz::https://static.crates.io/crates/$cratename/$cratename-$pkgver.crate")
-sha256sums=('1543d496f8c2f9e1260b42006f3e3cec4c1d010b90ec6d2710a75a4d1dfe3ade')
+sha256sums=('fd1bd486e234b74a419df2c76fb31e7615513f0152aedbdab01bdfb6d9c7d10d')
 
 prepare() {
     cd "$srcdir/$cratename-$pkgver"
