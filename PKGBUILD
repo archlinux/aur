@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=soft-serve
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A self-hosted Git server for the command line"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('04599719f9582b6572ca79662f6da28cca689f922b5f28baa3e96edd65dae7b6')
+sha256sums=('93333ac4549f0fab53e3d1e927aa65e986a4c708bba1ba7479d84598f04b1703')
 
 build() {
     local commit
