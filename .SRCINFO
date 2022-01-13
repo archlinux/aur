@@ -1,0 +1,16 @@
+pkgbase = librone
+	pkgdesc = scarica e-book in italiano | ebook | companion per calibre
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/kitalia/librone
+	arch = any
+	license = GPL2
+	provides = librone
+	source = https://raw.githubusercontent.com/kitalia/librone/main/librone.sh
+	source = https://github.com/kitalia/librone/raw/main/librone.png
+	source = https://github.com/kitalia/librone/raw/main/librone.desktop
+	md5sums = 13099fd0dbb7cc3e4393c116c4691f9c
+	md5sums = 2e16b5a15dd9ec02dd10dcfa588bd2cd
+	md5sums = f0b45569eb070685113c73332d1798f2
+
+pkgname = librone
