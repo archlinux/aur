@@ -1,0 +1,18 @@
+pkgbase = mqtt-monitor-git
+	pkgdesc = MQTT Monitor UI using react and mqtt.js
+	pkgver = v1.0.0.alpha.12.r100.ga5421d1
+	pkgrel = 1
+	url = https://github.com/mcxiaoke/mqtt-monitor
+	arch = any
+	license = Apache-2.0
+	depends = npm
+	depends = poppler
+	depends = ghostscript
+	provides = mqtt-monitor-git
+	conflicts = mqtt-monitor-git
+	conflicts = mqtt-monitor
+	options = !strip
+	source = mqtt-monitor::git+https://github.com/mcxiaoke/mqtt-monitor.git
+	sha256sums = SKIP
+
+pkgname = mqtt-monitor-git
