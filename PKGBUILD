@@ -2,21 +2,22 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=arti
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="An implementation of Tor in Rust"
 arch=('x86_64')
 url="https://gitlab.torproject.org/tpo/core/arti"
 license=('MIT' 'Apache')
 depends=('sqlite' 'openssl' 'xz')
-makedepends=('rust')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgname-v$pkgver/$pkgname-$pkgname-v$pkgver.tar.gz")
-sha256sums=('aff46ead2391ca7b7b2aa9c4ee64b83ec7bff3446afe8cc1fd1b249b7896b7a1')
+sha256sums=('f6a49016804a6a997c31903b787585f9bceeaefcf93856aae270b7916ee90ad7')
+options=('!lto')
 
 prepare() {
   mv "$pkgname-$pkgname-v$pkgver" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
