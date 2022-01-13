@@ -1,13 +1,20 @@
 # Maintainer: Evgeny Myandin <evgeny.myandin[at]gmail[dot]com>
+# Manjaro credits:
+# Bernhard Landauer <bernhard@manjaro.org>
+# Philip Müller <philm[at]manjaro[dot]org>
+# Arch credits:
+# Tobias Powalowski <tpowa@archlinux.org>
+# Thomas Baechler <thomas@archlinux.org>
 #
 # This is original kernel of Manjaro Linux + ACS patch
+
 
 pkgbase=linux-vfio-manjaro
 pkgname=('linux-vfio-manjaro' 'linux-vfio-manjaro-headers')
 _kernelname=-VFIO-MANJARO
 _basekernel=5.15
 _basever=515
-pkgver=5.15.12
+pkgver=5.15.14
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -30,12 +37,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         'config'
         # ARCH Patches
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
-        '0002-HID-quirks-Add-Apple-Magic-Trackpad-2-to-hid_have_special_driver-list.patch'
-        'PCI_Add_more_NVIDIA_controllers_to_the_MSI_masking_quirk.patch'
-        'iommu_intel_do_deep_dma-unmapping_to_avoid_kernel-flooding.patch'
-        'cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch'
-        'Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch'
-        'lg-laptop_Recognize_more_models.patch'
+        '0002-PCI_Add_more_NVIDIA_controllers_to_the_MSI_masking_quirk.patch'
+        '0003-iommu_intel_do_deep_dma-unmapping_to_avoid_kernel-flooding.patch'
+        '0004-cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch'
+        '0005-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch'
+        '0006-lg-laptop_Recognize_more_models.patch'
         # MANJARO Patches
         '0101-i2c-nuvoton-nc677x-hwmon-driver.patch'
 #        '0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch'
@@ -65,10 +71,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch'
         '0999-acs.gitpatch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            '161deb7c6bd10e7c530a3ee83793e2e135f93a5afd73d8b16e251c708ade0b1b'
+            '283bf58378a8f8ff457fc1259dd2864dc4de92295482ef3ae868e13e017250ee'
             '7c65b68bd250de8726c3dd5befa556cde515393c871dd0e0b599f40a5c33ac41'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
-            'df5843818f1571841e1a8bdbe38d7f853d841f38de46d6a6a5765de089495578'
             'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
             'ce53090a4572cd6162d22225113082f7e4df5028a1230529d170460e26dcf849'
             'ab0360eac59329eb84f028c2f402ee4a17e4b3dfacb7957355e6178d35af87b9'
