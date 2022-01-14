@@ -65,4 +65,6 @@ package() {
 	sudo make install
 	echo "Enabling mongodb service"
 	sudo systemctl enable --now mongodb.service
+	sudo ln -s /usr/bin/rmdir /usr/local/bin/rmtag
+  	sudo ln -s /usr/bin/mkdir /usr/local/bin/mktag
 }
