@@ -5,17 +5,17 @@
 
 _pkgname=kwin
 pkgname=kwinft-git
-pkgver=5.20.0.beta.0.r1.g1a0ab9082
+pkgver=5.23.0.beta.0.r532.g6185c5b33
 pkgrel=1
 pkgdesc='drop-in replacement for KWin with additional libwayland wrapping Qt/C++ library Wrapland'
 arch=(x86_64)
 url="https://gitlab.com/kwinft/kwinft"
 license=(LGPL)
-depends=(xcb-util-cursor plasma-framework kcmutils breeze kinit qt5-sensors qt5-script wrapland disman kdisplay kscreenlocker pipewire libqaccessibilityclient qt5-sensors xorg-server-xwayland hwids qt5-quickcontrols wlroots-git)
-makedepends=(extra-cmake-modules qt5-tools kdoctools)
+depends=(xcb-util-cursor plasma-framework kcmutils kio breeze kinit qt5-sensors qt5-script wrapland disman kdisplay kscreenlocker pipewire libqaccessibilityclient qt5-sensors xorg-server-xwayland qt5-quickcontrols wlroots-git)
+makedepends=(git extra-cmake-modules qt5-tools kdoctools)
 optdepends=('qt5-virtualkeyboard: virtual keyboard support for kwin-wayland')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_pkgname=${pkgver}" "kwinft=${pkgver}")
+conflicts=("$_pkgname" "kwinft")
 source=("$_pkgname::git+https://gitlab.com/kwinft/kwinft.git")
 sha256sums=('SKIP')
 install=kwinft.install
