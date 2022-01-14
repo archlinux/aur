@@ -1,14 +1,15 @@
-# Jose Riha: Jose Riha <jose 1711 gmail com>
-# Maintainer: Andy Mender <andymenderunix@gmail.com>
+# Maintainer: rdb <me@rdb.name>
+# Contributor: Andy Mender <andymenderunix@gmail.com>
+# Contributor: Jose Riha <jose 1711 gmail com>
 # Contributor: David Radford <croxis gmail com>
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d
-pkgver=1.10.8
-pkgrel=4
+pkgver=1.10.11
+pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
-url="http://www.panda3d.org"
+url="https://www.panda3d.org"
 arch=('i686' 'x86_64')
 license=('BSD')
 # Dependencies recommended by upstream and available in main repositories
@@ -16,13 +17,13 @@ license=('BSD')
 depends=('libpng' 'libtiff' 'zlib' 'openssl'
          'libgl' 'libxrandr' 'libxcursor'
          'freetype2' 'libvorbis' 'openal'
-         'gtk2' 'assimp' 'openexr'
+         'assimp' 'openexr'
          'desktop-file-utils' 'shared-mime-info')
 makedepends=('python' 'bison' 'cmake' 'flex')
 
-# NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
-# more information. Optdepends you want your package to support, need to be
-# installed before compiletime! You don't need to change anything in the
+# NOTICE: please read https://docs.panda3d.org/1.10/python/distribution/thirdparty-licenses
+# for more information. Optdepends you want your package to support, need to
+# be installed before compiletime! You don't need to change anything in the
 # pkgbuild to get support; makepanda automatically detects available
 # dependencies.
 optdepends=(# Recommended
@@ -36,7 +37,8 @@ optdepends=(# Recommended
             'opusfile: Support for manipulating opus audio files'
             'eigen: Optimised linear algebra library'
             # Optional
-            'nvidia-cg-toolkit: Shader support'
+            'nvidia-cg-toolkit: Automatic shader support'
+            'gtk2: PStats profiling server'
             'opencv: alternative to ffmpeg for video texture support'
             'fftw: Support for discrete Fourier transform (DFT)'
             'fmodex: Advanced audio engine support (AUR)'
@@ -52,15 +54,15 @@ optdepends=(# Recommended
             )
 
 install='panda3d.install'
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/panda3d/panda3d/archive/v$pkgver.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://www.panda3d.org/download/panda3d-$pkgver/panda3d-$pkgver.tar.gz"
         'panda3d.install'
         'libdir_fix.patch')
-sha256sums=('d969e3d998944cbac3f6cb872d2fcff53361a1fa9997ff511dc72031318e96a6'
-            'e67aaaf6e2e9b0ac56444e5a3c8140a5d1e311d356d937fa161ca9b863a3bb0f'
-            '0ae2d418ac574cdf0c164df9b86836c7f1e0893d53721647c9353bae3d0204da')
-md5sums=('387ca03839cd6cad2622897b9e3ad4ef'
+md5sums=('9aeb39d97c7afe87cd211fdda70eea4d'
          '057269173f3c1987953302519bc744fa'
          '44d5cd0d121ec966f52d6ca00fdf81eb')
+sha256sums=('192b95135f91a1db493a839f9438207c8b51d2209d3a1d3b5f050c39931c4cd8'
+            'e67aaaf6e2e9b0ac56444e5a3c8140a5d1e311d356d937fa161ca9b863a3bb0f'
+            '0ae2d418ac574cdf0c164df9b86836c7f1e0893d53721647c9353bae3d0204da')
 
 JOBS=$(nproc)
 
@@ -71,7 +73,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname}-$pkgver"
-  python makepanda/makepanda.py --everything --no-maya2012 --no-gles --no-gles2 --no-egl ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  python makepanda/makepanda.py --everything --no-maya2012 ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {
