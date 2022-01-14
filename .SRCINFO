@@ -1,6 +1,6 @@
 pkgbase = inim-git
 	pkgdesc = Interactive Nim Shell / REPL / Playground
-	pkgver = 0
+	pkgver = r149.53a18a5
 	pkgrel = 1
 	url = https://github.com/inim-repl/INim
 	arch = x86_64

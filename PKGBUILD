@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_dirname}"
-    nimble install
+    nimble install -y
 }
 
 build() {
