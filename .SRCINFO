@@ -1,0 +1,21 @@
+pkgbase = libqv2ray-git
+	pkgdesc = Modular, feature-rich infrastructure library for Qv2ray
+	pkgver = r157.6b3de89
+	pkgrel = 1
+	url = https://github.com/Shadowsocks-NET/Qv2rayBase
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = libuv
+	depends = qt6-base
+	depends = qv2ray-plugin-interface-git
+	depends = uvw
+	provides = libqv2ray
+	conflicts = libqv2ray
+	source = libqv2ray-git::git+https://github.com/Shadowsocks-NET/Qv2rayBase.git
+	sha512sums = SKIP
+
+pkgname = libqv2ray-git

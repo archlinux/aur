@@ -1,0 +1,5 @@
+pkg/
+src/
+libqv2ray-git/
+
+*.tar.zst
