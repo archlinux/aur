@@ -2,7 +2,7 @@
 
 pkgname=siyuan-note-bin
 _pkgname=siyuan-note
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A local-first personal knowledge management system"
 arch=('x86_64')
@@ -16,13 +16,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/siyuan-note/siyuan/rele
 "$_pkgname.desktop"
 # "$_pkgname.patch"
 )
-sha512sums=('750b0ce3a813492ca2e1507399c14a3fa268132689ced7c184f8b67285492c56ee1bb0b35754cf1a7c5083abc3ba9bd5362d0aeaef97254584750caf8c2a67ef'
+sha512sums=('b07ba405011c79a299a0fe3f41f8265e592cf47283b49ebe902f31fc461f3f4cbc73bced1c28433bfdf7c09e5f6622d4ddd66d6c7f080930ca9819d7a401f933'
             '4f8f503e770c96cd376db79e4691823b5e801bc8e8c62b8da46dc743786982c978f39b07761830578806ce8aba823491f35463d14746fcd1dc3c6466b9b2901e'
             '4ca7d777c2dce64d89a874af268773009ba0ebe064c3ce0034913c447666bf6636a3c81d1145579fe1b0b6a35195b1f97b1b4cd56b50e990fb0642c4aae281f0')
 
 prepare(){
     cd $srcdir/siyuan-${pkgver}-linux
-    rm resources/pandoc.zip
 }
 
 package() {
