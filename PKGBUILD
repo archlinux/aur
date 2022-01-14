@@ -1,7 +1,9 @@
-# Maintainer: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
-pkgname=pam_mount-git
-pkgver=2.16
-pkgrel=3
+# Maintainer: Viktor Semykin <thesame.ml@gmail.com>
+# Contributor: Frank Vanderham <twelve_dot_eighty_at_gmail_dot_com>
+
+pkgname=pam_mount-no-workqueues
+pkgver=2.18
+pkgrel=1
 pkgdesc="A PAM module that can mount volumes for a user session"
 arch=('x86_64')
 url="http://pam-mount.sourceforge.net/"
@@ -12,7 +14,7 @@ provides=("pam_mount")
 conflicts=("pam_mount")
 backup=('etc/security/pam_mount.conf.xml')
 options=(!emptydirs)
-source=("${pkgname}::git+git://git.code.sf.net/p/pam-mount/pam-mount")
+source=("${pkgname}::git+git://git.code.sf.net/u/thesameml/pam-mount")
 md5sums=('SKIP')
 
 pkgver() {
