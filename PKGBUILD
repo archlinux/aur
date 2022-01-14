@@ -4,7 +4,7 @@
 _pkgname="wasm4"
 pkgname=wasm4-bin
 _binname=w4
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Build retro games using WebAssembly for a fantasy console'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='https://github.com/aduros/wasm4'
 license=('ISC')
 depends=('npm')
 source=("${_pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/w4-linux.zip" "https://raw.githubusercontent.com/aduros/wasm4/main/LICENSE.txt")
-sha256sums=('745ab56762915068259e111493d859648a2c718d706c6fef4a340a69acf28e15' 'SKIP')
+sha256sums=('64bf04bcc3e65cdfaeeb814f22a186aa4de9be6577a79653ae3e3857227afa7b' 'SKIP')
 provides=('wasm4')
 conflicts=('wasm4')
 options=('!strip')
