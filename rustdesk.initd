@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="RustDesk Daemon Service"
+supervisor="supervise-daemon"
+command="/usr/bin/rustdesk"
+command_args="--service"
+
+depend() {
+	after xdm
+	need net
+}

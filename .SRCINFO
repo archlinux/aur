@@ -1,0 +1,12 @@
+pkgbase = rustdesk-openrc
+	pkgdesc = OpenRC rustdesk init script
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = rustdesk
+	depends = openrc
+	source = rustdesk.initd
+	sha256sums = bdbac168499f14d10b3fa74922b89707f145eb693419104a54bd5af7ee314d8c
+
+pkgname = rustdesk-openrc
