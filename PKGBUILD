@@ -1,6 +1,6 @@
 # Maintainer: Amadeus Folego <amadeusfolego@gmail.com>
 
-pkgname=xorg-xwayland-dev
+pkgname=('xorg-server-xwayland-dbg')
 pkgver=21.1.4
 pkgrel=1
 arch=('x86_64')

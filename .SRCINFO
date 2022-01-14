@@ -1,4 +1,4 @@
-pkgbase = xorg-xwayland-dev
+pkgbase = xorg-server-xwayland-dbg
 	pkgdesc = run X clients under wayland (debug)
 	pkgver = 21.1.4
 	pkgrel = 1
@@ -33,4 +33,4 @@ pkgbase = xorg-xwayland-dev
 	source = https://xorg.freedesktop.org/archive/individual/xserver/xwayland-21.1.4.tar.xz
 	sha512sums = SKIP
 
-pkgname = xorg-xwayland-dev
+pkgname = xorg-server-xwayland-dbg
