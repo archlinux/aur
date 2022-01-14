@@ -1,14 +1,14 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qbittorrent-nox-git
-pkgver=4.4.0beta3.r102.g559a97953
+pkgver=4.4.0rc1.r118.g43441d829
 pkgrel=1
 pkgdesc="A bittorrent client programmed in C++ / Qt that uses libtorrent-rasterbar (w/o GUI)"
 arch=('i686' 'x86_64')
 url="https://www.qbittorrent.org/"
 license=('GPL' 'custom')
-depends=('glibc' 'libtorrent-rasterbar' 'qt5-base')
-makedepends=('git' 'boost' 'cmake' 'qt5-tools')
+depends=('glibc' 'libtorrent-rasterbar' 'qt6-base')
+makedepends=('git' 'boost' 'cmake' 'qt6-tools')
 provides=('qbittorrent-nox')
 conflicts=('qbittorrent-nox')
 source=("git+https://github.com/qbittorrent/qBittorrent.git")
@@ -33,6 +33,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
     -DGUI=OFF \
+    -DQT6=ON \
     -DSYSTEMD=ON \
     ./
   make -C "_build"
