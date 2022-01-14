@@ -1,8 +1,8 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=perfplot
 pkgname=python-${_base}
-pkgdesc="Performance analysis for Python snippets"
-pkgver=0.9.13
+pkgdesc="Performance plots for Python code snippets"
+pkgver=0.9.14
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotx python-rich)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f322c9be8de63fbdb33e45e895b1fe48b342fa4912895deb0da26c86eb7f753bb74066516f8a3b14f685ec12b05214f221231dfea0f3186931056f25d63f8e5b')
+sha512sums=('c6204950c695a07ce60c4a681fdbc1c3841e180114ce9223566b9d865ff7bbccbb328798e39ad8593be797970654a0703e7de4fc0eb11fca108ae27c9fca4853')
 
 build() {
   cd "${_base}-${pkgver}"
