@@ -1,0 +1,12 @@
+[Unit]
+Description=tun2socks - powered by gVisor TCP/IP stack
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Restart=on-failure
+ExecStart=/usr/bin/tun2socks -config /etc/tun2socks/config.yaml
+
+[Install]
+WantedBy=multi-user.target

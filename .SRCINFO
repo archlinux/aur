@@ -1,0 +1,25 @@
+pkgbase = tun2socks-bin
+	pkgdesc = tun2socks - powered by gVisor TCP/IP stack
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/xjasonlyu/tun2socks
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	conflicts = tun2socks
+	source = config.yaml
+	source = tun2socks.service
+	sha256sums = 33e1d59671dd21199b241313658d5ec23ef65c79586d1108d7237362458f5329
+	sha256sums = 877cd2b80c5c4065b5828fa470754e5c812110ffbf545c9471f63b651a2808c7
+	source_x86_64 = tun2socks-linux-amd64-2.4.1.zip::https://github.com/xjasonlyu/tun2socks/releases/download/v2.4.1/tun2socks-linux-amd64.zip
+	sha256sums_x86_64 = 4e025470453cc0b4c72b384b1441ecbeba1cf3b2ae98837ba630aa5102d1b6d0
+	source_i686 = tun2socks-linux-386-2.4.1.zip::https://github.com/xjasonlyu/tun2socks/releases/download/v2.4.1/tun2socks-linux-386.zip
+	sha256sums_i686 = ac208550f9e5497ef437b924f8e284359c7cdff98f2d1924d212821ae544940d
+	source_armv7h = tun2socks-linux-armv7-2.4.1.zip::https://github.com/xjasonlyu/tun2socks/releases/download/v2.4.1/tun2socks-linux-armv7.zip
+	sha256sums_armv7h = 1182b15d8277fa6ea660c74b71599cb2417bdc28c889215514f414978a26a9d3
+	source_aarch64 = tun2socks-linux-arm64-2.4.1.zip::https://github.com/xjasonlyu/tun2socks/releases/download/v2.4.1/tun2socks-linux-arm64.zip
+	sha256sums_aarch64 = 74200b1f738a038ff90ec70377feb61c978487c71b2a9468d827c188fc33a900
+
+pkgname = tun2socks-bin

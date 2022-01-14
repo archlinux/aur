@@ -1,0 +1,30 @@
+# An example configuration copied and slightly modified from the official wiki.
+#
+# Maybe you need to modify `proxy`, `device` and `interface` config items to fit
+# with your own network environment.
+#
+# See https://github.com/xjasonlyu/tun2socks/wiki/Configuration.
+
+# debug / info / warning / error / silent
+loglevel: warning
+
+# URL format: [protocol://]host[:port]
+proxy: direct://
+
+# URL format: [driver://]name
+device: tun://tun0
+
+# Maximum transmission unit for each packet
+mtu: 1500
+
+# Network interface to bind, Linux/macOS only
+interface: eth0
+
+# Timeout for each UDP session, default value: 60 seconds
+udp-timeout: 60s
+
+# SO_MARK socket option, Linux only
+fwmark: 0
+
+# RESTful API server URL
+restapi: http://127.0.0.1:9000
