@@ -29,7 +29,7 @@ pkgbase = wlroots-eglstreams-git
 	provides = wlroots-git
 	conflicts = wlroots
 	conflicts = wlroots-git
-	source = wlroots-eglstreams-git::git+https://github.com/danvd/wlroots-eglstreams
+	source = wlroots-eglstreams-git::git+https://github.com/danvd/wlroots-eglstreams.git
 	md5sums = SKIP
 
 pkgname = wlroots-eglstreams-git
