@@ -7,7 +7,7 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
