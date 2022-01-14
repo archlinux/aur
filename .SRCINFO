@@ -1,0 +1,20 @@
+pkgbase = molecule-containers
+	pkgdesc = Molecule Container-agnostic Driver Plugin
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ansible-community/molecule-containers
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools-scm-git-archive
+	depends = molecule
+	depends = python-ansible-compat
+	depends = python-selinux
+	optdepends = podman: for using a local podman setup
+	optdepends = docker: for using a local docker setup
+	source = https://files.pythonhosted.org/packages/source/m/molecule-containers/molecule-containers-1.0.2.tar.gz
+	sha512sums = ad2bfb61e3c0608e981ce9a8f466e21cb5c62e0310f1cc13fd3555ff5b53e11cba0263756b6fd8ea70cc1cf1bbd259bd577e8d4fdb4e27f1461f79baf684e270
+	b2sums = 3b88f6c4a12ddad8fd993cbffed23f1cc941a696fceb24ef309c4bc6ede36debc6bcfd0c09807fefdaf15e4fcc70bf925f8caaf4ec806c146e5de98afd27f54c
+
+pkgname = molecule-containers
