@@ -1,3 +1,11 @@
+bin_name="vanta"
+
+post_install() {
+    sudo cp /tmp/$bin_name.conf /etc/
+    sudo chmod 640 /etc/$bin_name.conf
+    sudo chown root. /etc/$bin_name.conf
+}
+
 post_remove() {
     sudo rm -Rf /var/vanta
 }
