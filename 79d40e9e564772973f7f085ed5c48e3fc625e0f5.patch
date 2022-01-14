@@ -1,0 +1,22 @@
+From 79d40e9e564772973f7f085ed5c48e3fc625e0f5 Mon Sep 17 00:00:00 2001
+From: Erfan Abdi <erfangplus@gmail.com>
+Date: Mon, 6 Sep 2021 13:57:22 +0430
+Subject: [PATCH] setup: Drop None from keywords
+
+---
+ setup.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/setup.py b/setup.py
+index cf3a42e..ed2b1ed 100644
+--- a/setup.py
++++ b/setup.py
+@@ -19,6 +19,8 @@ def pkgconfig(package, kw):
+ 
+ extension_kwargs = { 'sources': ["gbinder" + file_ext] }
+ extension_kwargs = pkgconfig('libgbinder', extension_kwargs)
++if None in extension_kwargs:
++    del extension_kwargs[None]
+ extensions = [Extension('gbinder', **extension_kwargs)]
+ 
+ if USE_CYTHON:
