@@ -8,7 +8,7 @@ _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=250.r192.gcd933f14bd
+pkgver=250.r310.g007721e939
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -135,7 +135,7 @@ package_systemd-git() {
   pkgdesc='system and service manager (git version)'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwids' 'libcap' 'libcap.so'
+           'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-git' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
