@@ -6,8 +6,7 @@ supervisor="supervise-daemon"
 command="/opt/todesk/bin/todeskd"
 command_args="-f /opt/todesk/config/todeskd.conf"
 
-stop() {
-	ebegin "Stopping $RC_SVCNAME"
-	/bin/kill -SIGINT $MAINPID
-	eend $?
+depend() {
+	after xdm
+	need net
 }

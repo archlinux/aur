@@ -1,14 +1,14 @@
 # Maintainer: mochaaP <aur@mochaa.ws>
 
 pkgname=todesk-openrc
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='OpenRC todesk init script'
 arch=('any')
 license=('GPL')
 depends=('todesk' 'openrc')
 source=('todesk.initd')
-sha256sums=('e5db0e72d2b5161139b9e37752c30886baf23e0cf5fd566d55adbb171cafca6e')
+sha256sums=('c32ec999aea63304cb19295bf5ca8171d19cddf3afaef205c6210c4555b22283')
 
 package() {
     install -Dm755 'todesk.initd' "${pkgdir}/etc/init.d/todesk"
