@@ -1,0 +1,12 @@
+pkgbase = vanta-agent
+	pkgdesc = Vanta agent
+	pkgver = 2.0.3
+	pkgrel = 1
+	url = https://www.vanta.com/
+	arch = x86_64
+	license = custom:vanta
+	depends = systemd
+	source = https://vanta-agent-repo.s3.amazonaws.com/targets/versions/2.0.3/vanta-amd64.deb
+	sha256sums = 2d25af250f3ef1656283cf42fcc6c737a052adfeda765d266b034d21226e3842
+
+pkgname = vanta-agent
