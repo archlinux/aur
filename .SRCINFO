@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-ocdownloader
 	pkgdesc = Easy to use download manager using Curl/Aria2 and youtube-dl for Nextcloud
-	pkgver = 1.7.12
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/e-alfred/ocdownloader
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = nextcloud-app-ocdownloader
 	optdepends = curl: To download files using curl
 	optdepends = youtube-dl: To download videos
 	options = !strip
-	source = ocdownloader-v1.7.12.tar.gz::https://github.com/e-alfred/ocdownloader/releases/download/1.7.12/ocdownloader-1.7.12.tar.gz
-	sha512sums = 1513e3e9a3bdedecc2dc214fb678e1392c1c8d965f989aaabcce9fa16c735168734c9f84f3767c5b08db8b1a26b9e513e345c5f1e891a2d5bfe1887aaa5af33d
+	source = ocdownloader-v1.8.0.tar.gz::https://github.com/e-alfred/ocdownloader/releases/download/1.8.0/ocdownloader-1.8.0.tar.gz
+	sha512sums = 7dba9e87df471c1c5adaa5ce7ff33524b005cf221758146af1fdd82d82337cda558c3b3bd0709ca60b3942def6c678830bea42ad27eb628c5008249b8ad5f5af
 
 pkgname = nextcloud-app-ocdownloader
