@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-exec /opt/poi/poi
+exec /opt/poi/poi "$@"
