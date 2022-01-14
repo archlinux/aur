@@ -1,6 +1,6 @@
 _gitname=pihole-exporter
 pkgname=prometheus-pihole-exporter
-pkgver=0.0.11
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Prometheus exporter for PI-Hole's Raspberry PI ad blocker."
 arch=('any')
@@ -8,9 +8,9 @@ url="https://github.com/eko/pihole-exporter"
 license=('unknown')
 makedepends=('go')
 source=("https://github.com/eko/pihole-exporter/archive/v$pkgver.tar.gz"
-	'prometheus-pihole-exporter.service'
-	)
-sha256sums=('ac66ea935b69890313ba4fda83a9f6d80dee6ef9b261e33b5885cf3f1ddbd4aa'
+	    'prometheus-pihole-exporter.service'
+	    )
+sha256sums=('db623b4d48556ed245d27485f29b24f20bda9a18771f326799ea5bbc2d7e270a'
             '80250d75f04a788c4194ca606dc95172df477c99b745e5a0e0b960f8a62657b5'
             )
 
