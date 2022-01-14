@@ -1,6 +1,6 @@
 pkgbase = dbus-cpp
 	pkgdesc = A header-only dbus-binding leveraging C++-11
-	pkgver = 5.0.1
+	pkgver = 5.0.3
 	pkgrel = 1
 	url = https://gitlab.com/ubports/core/lib-cpp/dbus-cpp
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = dbus-cpp
 	depends = dbus
 	depends = libxml2
 	depends = process-cpp
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-cpp/5.0.1-4/dbus-cpp_5.0.1.orig.tar.gz
-	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/dbus-cpp/5.0.1-4/dbus-cpp_5.0.1-4.debian.tar.xz
-	sha256sums = 37f0391cad90f419db37c7c93c2726d832ef6bf29c420a57d6d42cb1f9d42e22
-	sha256sums = 96067d7efe657bab84eb127f05a89d700e218583ea4982d9d021d1ea6baea141
+	source = https://gitlab.com/ubports/core/lib-cpp/dbus-cpp/-/archive/5.0.3/dbus-cpp-5.0.3.tar.gz
+	sha256sums = 465ca23024c8f245d13a0afd454da17e6344d0c78941d99b7c9323a17f6e82ba
 
 pkgname = dbus-cpp
