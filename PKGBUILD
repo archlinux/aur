@@ -32,9 +32,6 @@ package() {
     chown -R root:root "${pkgdir}"
     
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-
-    echo $"$pkgdir/kerbal-telemetry \"$@\"" > $pkgdir/kerbaltelemetry
-    install $pkgdir/kerbaltelemetry /usr/bin
-    rm $pkgdir/kerbaltelemetry
+    ln -s "$Pkgdir/kerbal-telemetry" /usr/bin/
 }
 sha256sums=('65235ddd8e8ff71089b83c707ae36ac8bb2fc238384143d70d8450160a701e9b')
