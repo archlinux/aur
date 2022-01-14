@@ -1,6 +1,6 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
-pkgver=6.0.34.r120e78627
+pkgver=6.0.40.r8b523755e
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
@@ -65,7 +65,7 @@ build() {
     electronVer=$(electron --version | tail -c +2)
     yarn build
     yarn buildkmfrontend
-    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron13 -c.electronVersion=$electronVer --dir
+    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron -c.electronVersion=$electronVer --dir
 }
 
 package() {
