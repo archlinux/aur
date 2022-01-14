@@ -2,8 +2,8 @@
 # Contributor: Konstantin Gizdov <arch@kge.pw>
 
 pkgname=(tensorflow_metadata)
-pkgver='1.4.0'
-pkgrel=2
+pkgver='1.5.0'
+pkgrel=1
 url="https://github.com/tensorflow/metadata"
 pkgdesc="Utilities for passing TensorFlow-related metadata between tools"
 depends=('absl-py'
@@ -13,8 +13,8 @@ makedepends=('python-setuptools'
              'python-wheel')
 license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/03/4b/5ebc78654b002b880478b3211798bb4ff7b39c996d15a3340f732927149c/${pkgname}-${pkgver}-py3-none-any.whl")
-sha256sums=('551f7193a2bd08d4f70c281ad0ba95d5055043fcace754ce5b8f45699fa8d09d')
+source=("https://files.pythonhosted.org/packages/81/e6/193d9637b844f88797199fced0e3baa893dd110bdca34b5708b49120ae30/${pkgname}-${pkgver}-py3-none-any.whl")
+sha256sums=('982aa5715a306c5fcce0817da49ad0892f5d977db37e1811c34013ba4da06207')
 
 package() {
   cd "${srcdir}"
