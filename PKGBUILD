@@ -6,7 +6,7 @@ pkgver=10.5.3.r56.gf9cfa8e6
 pkgrel=1
 pkgdesc="A feature-rich, modern desktop - latest git"
 arch=('x86_64')
-url="https://solus-project.com/budgie"
+url="https://github.com/BuddiesOfBudgie/budgie-desktop"
 license=('GPL2' 'LGPL2.1')
 depends=('gnome-bluetooth' 'gnome-menus' 'gnome-session' 'gnome-themes-standard' 'libpeas' 'libwnck3'
          'mutter' 'accountsservice' 'sassc' 'ibus')
