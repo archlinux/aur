@@ -1,19 +1,19 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=wluma
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 license=('ISC')
 pkgdesc='Automatic brightness adjustment based on screen contents and ALS'
 url='https://github.com/maximbaz/wluma'
 arch=('x86_64')
-depends=('vulkan-icd-loader' 'vulkan-driver' 'wayland')
-makedepends=('rust')
+depends=('vulkan-icd-loader' 'vulkan-driver' 'wayland' 'systemd-libs' 'glibc' 'gcc-libs' 'v4l-utils' 'libjpeg')
+makedepends=('rust' 'clang' 'systemd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('a31f22379318f16b6e808b9577782c16f0be71dd2a313d49c9623be27d29e200'
+sha256sums=('fe7191cdeb58f7adb4ef4799650603c5b7c09f1520221ad68969bcbc083391e9'
             'SKIP')
-validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
+validpgpkeys=('56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601')
 
 build() {
     cd "${pkgname}-${pkgver}"
