@@ -1,8 +1,8 @@
 pkgbase = qv2ray-plugin-interface-git
 	pkgdesc = Qv2ray plugin interface
-	pkgver = 4.0.pre1.r37.g2bd1c2f
+	pkgver = r88.b767b4c
 	pkgrel = 1
-	url = https://github.com/moodyhunter/Qv2rayBase-PluginInterface
+	url = https://github.com/Shadowsocks-NET/Qv2rayBase-PluginInterface
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = qv2ray-plugin-interface-git
 	depends = qt6-base
 	provides = qv2ray-plugin-interface
 	conflicts = qv2ray-plugin-interface
-	source = qv2ray-plugin-interface-git::git+https://github.com/moodyhunter/Qv2rayBase-PluginInterface
+	source = qv2ray-plugin-interface-git::git+https://github.com/Shadowsocks-NET/Qv2rayBase-PluginInterface
 	sha512sums = SKIP
 
 pkgname = qv2ray-plugin-interface-git
