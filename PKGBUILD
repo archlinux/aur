@@ -2,7 +2,7 @@
 
 pkgbase=duckdb-git
 pkgname=('duckdb-git' 'python-duckdb-git')
-pkgver=v0.2.1.r52.gd40fc014c
+pkgver=v0.3.1.r996.gf1c8c7ae2
 pkgrel=1
 pkgdesc="Embeddable SQL OLAP Database Management System"
 arch=('x86_64')
@@ -29,7 +29,8 @@ prepare() {
     -DAMALGAMATION_BUILD=1 \
     -DTREAT_WARNINGS_AS_ERRORS=1 \
     -DBUILD_PARQUET_EXTENSION=1 \
-    -DBUILD_TESTING=ON
+    -DBUILD_REST=1 \
+    -DBUILD_UNITTESTS=ON
 }
 
 build() {

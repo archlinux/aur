@@ -1,6 +1,6 @@
 pkgbase = duckdb-git
 	pkgdesc = Embeddable SQL OLAP Database Management System
-	pkgver = v0.2.1.r52.gd40fc014c
+	pkgver = v0.3.1.r996.gf1c8c7ae2
 	pkgrel = 1
 	url = https://www.duckdb.org/
 	arch = x86_64
@@ -23,4 +23,3 @@ pkgname = python-duckdb-git
 	optdepends = python-numpy
 	optdepends = python-pandas
 	provides = python-duckdb
-
