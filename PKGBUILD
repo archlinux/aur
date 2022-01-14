@@ -29,6 +29,7 @@ prepare() {
 package() {
     _ensure_local_nvm
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
+    $pkgdir/usr/lib/node_modules/kerbal-telemetry/kerbal-telemetry install
     chown -R root:root "${pkgdir}"
     
     install -Dm644 "$pkgdir/usr/lib/node_modules/kerbal-telemetry/LICENSE"  -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
