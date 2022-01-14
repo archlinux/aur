@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-indent-blankline
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="Indent guides for Neovim"
 arch=('any')
@@ -11,11 +11,11 @@ groups=('neovim-plugins')
 depends=('neovim')
 install=indent-blankline.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9c973a90ed8048203ab6e846ca36c41ae40b666e5278f4ad6eecdb51fbcbd2f9')
+sha256sums=('d36b8a4ed7570981ea195768f1462a29e037ad8daa840ec28b586375c9afaa5c')
 
 package() {
 	cd "indent-blankline.nvim-$pkgver"
-	find autoload doc lua plugin \
+	find doc lua plugin \
 		-type f \
 		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
 	install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
