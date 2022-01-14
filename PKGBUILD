@@ -2,7 +2,7 @@
 # Contributor: Musikid <musikid@outlook.com>
 
 pkgname=fancy
-pkgver=0.4.0
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Set of software which allows you to control your laptop fans.
 It includes a service daemon to allow accessing to the embedded controller
@@ -14,7 +14,7 @@ license=('MPL2')
 arch=('i686' 'x86_64')
 url="https://github.com/MusiKid/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('98ce1356eecf95fa2d32120e7ea22debd7fce30ed7c9f13ec0210aa29f5e0d103fb9af4c0154e9529da1fec67b7618e1b998cd672087f2f9d10ef5187a5d5d63')
+sha512sums=('67430980bdae994f488eb55f1d3ba2c5517beaacb118e3aa412b58466699b9f8c183b367ed4a51bcb754d60828e4a556b4f1e58d24fffd042faddb66df3c35e4')
 
 build() {
   cd "$pkgname-$pkgver"

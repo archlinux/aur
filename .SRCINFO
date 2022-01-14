@@ -1,6 +1,6 @@
 pkgbase = fancy
 	pkgdesc = Set of software which allows you to control your laptop fans. It includes a service daemon to allow accessing to the embedded controller and controlling it through D-Bus, and a CLI to send commands.
-	pkgver = 0.4.0
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/MusiKid/fancy
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = fancy
 	makedepends = pandoc
 	depends = dbus
 	optdepends = systemd: to use the included service file
-	source = fancy-0.4.0.tar.gz::https://github.com/MusiKid/fancy/archive/refs/tags/v0.4.0.tar.gz
-	sha512sums = 98ce1356eecf95fa2d32120e7ea22debd7fce30ed7c9f13ec0210aa29f5e0d103fb9af4c0154e9529da1fec67b7618e1b998cd672087f2f9d10ef5187a5d5d63
+	source = fancy-0.7.3.tar.gz::https://github.com/MusiKid/fancy/archive/refs/tags/v0.7.3.tar.gz
+	sha512sums = 67430980bdae994f488eb55f1d3ba2c5517beaacb118e3aa412b58466699b9f8c183b367ed4a51bcb754d60828e4a556b4f1e58d24fffd042faddb66df3c35e4
 
 pkgname = fancy
