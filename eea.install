@@ -141,7 +141,7 @@ post_install() {
 				groupadd -r $g
 			done
 
-			for ug in eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-scand:eset-eea-daemons; do
+			for ug in eset-eea-licensed:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons; do
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
 			done
 		fi
@@ -235,7 +235,7 @@ post_upgrade() {
 				groupadd -r $g
 			done
 
-			for ug in eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-scand:eset-eea-daemons; do
+			for ug in eset-eea-licensed:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons; do
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
 			done
 		fi
@@ -351,7 +351,7 @@ post_remove() {
 
 	#################################### Uninstall ####################################
 	# remove users and groups
-	for ug in eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-scand:eset-eea-daemons; do
+	for ug in eset-eea-licensed:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-updated:eset-eea-daemons; do
 		usr=${ug%:*}
 		userdel $usr 2>/dev/null || true
 	done
