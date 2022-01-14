@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Maia <natemaia10@gmail.com>
 
 pkgname=baph
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Basic AUR Package Helper"
 arch=('any')
