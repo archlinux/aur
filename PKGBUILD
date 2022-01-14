@@ -7,18 +7,18 @@
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
 pkgver=k1.4.8.r174.g98f2683e5
-pkgrel=2
+pkgrel=3
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Dev branch'
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
 provides=(kotatogram-desktop kotatogram-desktop-git)
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
          'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'extra-cmake-modules' 'webkit2gtk' 'unzip'
+             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'webkit2gtk' 'unzip'
              'yasm' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
@@ -104,7 +104,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git submodule init
 
     git config submodule.cmake.url "${srcdir}/${_pkgname}-cmake_helpers"
 
@@ -141,7 +140,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/kwayland.url "${srcdir}/${_pkgname}-kwayland"
     git config submodule.Telegram/ThirdParty/dispatch.url "${srcdir}/${_pkgname}-dispatch"
 
-    git submodule update
+    git submodule update --init
 
     #patches
     patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
@@ -150,12 +149,12 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
     cmake . \
         -B build \
         -G Ninja  \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DDESKTOP_APP_QT6=off \
         -DTDESKTOP_API_TEST=ON
     cmake --build build
 }
