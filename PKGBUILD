@@ -8,16 +8,16 @@
 _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=6.0
-_pkgver=${_pkgvermajmin}.0
+_pkgver=${_pkgvermajmin}.1
 _verpostfix=""
 pkgver="${_pkgver}${_verpostfix}"
-pkgrel=2
+pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
 if [[ -n $_verpostfix ]]; then
   _pkgver=${_pkgver}-${_verpostfix}
   _urlbase="https://download.qt.io/development_releases"
 fi
-_filename=qt-creator-opensource-src-${_pkgver}
+_source_archive_name=qt-creator-opensource-src-${_pkgver}
 pkgdesc='Qt Creator prerelease/latest'
 arch=('x86_64')
 url='http://qt.io/ide'
@@ -38,41 +38,35 @@ optdepends=('qbs'
             'bzr: bazaar support'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt6-base' 'patchelf')
-source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha512sums=('4d97b18cb5ad8388f3ea0f1cff3b4d0cb04251d2dba22770a7d9f387efbe670b9461a8d83e08a92aefb6472c36e19d0902ff42fd85fd224318b99c66d2526bbb')
+source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_source_archive_name}.tar.xz")
+sha512sums=('39fe083d533b5658f2b1aec71d7a9d1276644f18350cdedaf2b33f32bd3aa5d19b00cd7ff2f5c4f12567d907a814ec4eec4b2f4dac1c429449f3fc9cfc4f0f29')
 
 prepare() {
-  cd ${srcdir}/${_filename}
-
-  # fix hardcoded libexec path
-  sed -e 's|libexec\/qtcreator|lib\/qtcreator|g' -i qtcreator.pri
-  sed -e 's|libexec|lib|g' -i src/tools/tools.pro
-  # use system qbs
-  rm -r src/shared/qbs
+  local working_dir=${srcdir}/${_source_archive_name}
+  cd ${working_dir}
 }
 
 build() {
-  cd ${srcdir}/${_filename}
+  local working_dir=${srcdir}/${_source_archive_name}
+  local build_dir=${working_dir}/build
 
-  # chokes with Qt 6
-  qmake6 \
-    -spec linux-clang \
-    -r \
-    DEFINES+=QBS_ENABLE_PROJECT_FILE_UPDATES \
-    ${srcdir}/${_filename}/qtcreator.pro
+  mkdir -p ${build_dir}
+  cd ${build_dir}
 
-  make
-  make docs
+  cmake -G Ninja \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_COMPILER=clang++ \
+    -DCMAKE_C_COMPILER=clang \
+    -DCMAKE_BUILD_TYPE=Release -DWITH_DOCS=ON -DBUILD_QBS=OFF -DBUILD_WITH_CRASHPAD=ON \
+    ${working_dir}
+
+  ninja all
 }
 
 package() {
-  cd ${srcdir}/${_filename}
+  local working_dir=${srcdir}/${_source_archive_name}
+  local build_dir=${working_dir}/build
 
-  make INSTALL_ROOT=${pkgdir}/usr/ install
-  make INSTALL_ROOT=${pkgdir}/usr/ install_docs
-
-  install -Dm644 ${srcdir}/${_filename}/LICENSE.GPL3-EXCEPT "$pkgdir"/usr/share/licenses/qtcreator/LICENSE.GPL3-EXCEPT
-
-# Link clazy plugin explicitely
-  #patchelf --add-needed ClazyPlugin.so "$pkgdir"/usr/lib/qtcreator/clangbackend
+  cd ${build_dir}
+  DESTDIR=${pkgdir} ninja install
 }
