@@ -4,15 +4,15 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.70.1
-pkgrel=1
+pkgver=2.70.2
+pkgrel=2
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
 provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
            libgobject-2.0.so libgthread-2.0.so)
 conflicts=('glib2')
-depends=(pcre libffi util-linux-libs zlib tumbler libmount.so libffi.so)
+depends=(pcre libffi util-linux-libs zlib tumbler libsysprof-capture libmount.so libffi.so)
 makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
              meson dbus)
 checkdepends=(desktop-file-utils)
@@ -49,7 +49,8 @@ build() {
   arch-meson glib build \
     -D glib_debug=disabled \
     -D selinux=disabled \
-    -D man=true
+    -D man=true \
+    -D sysprof=enabled
   meson compile -C build
 }
 
