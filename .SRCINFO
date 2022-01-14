@@ -8,6 +8,7 @@ pkgbase = dash-static-musl
 	arch = x86_64
 	license = BSD
 	makedepends = musl
+	makedepends = libedit
 	provides = dash
 	conflicts = dash
 	source = https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/dash-0.5.11.4.tar.gz

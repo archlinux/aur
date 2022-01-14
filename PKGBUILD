@@ -12,7 +12,7 @@ url="http://gondor.apana.org.au/~herbert/dash/"
 license=('BSD')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
-makedepends=('musl') #we are static
+makedepends=('musl' 'libedit') #we are static
 install=dash.install
 source=("https://git.kernel.org/pub/scm/utils/dash/dash.git/snapshot/${_pkgbase}-${pkgver}.tar.gz")
 sha512sums=('6bfe9f4cd4c8d7f0ba0f71d6df1fb784b3a3960d4395f76604e46d21e13c16e504c0b73ee7e8113d64448d1db2c90f5dbcc19fd2a40b8a52d3e8f32ee3ad61ca')
@@ -26,9 +26,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
-  export CC="musl-gcc -static"
-  export CFLAGS='-Os -static'
+  export CC="musl-gcc"
+  export CFLAGS="$CFLAGS -Os"
   ./configure \
+    --enable-static \
     --prefix=/usr \
     --bindir=/usr/bin \
     --mandir=/usr/share/man \
