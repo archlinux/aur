@@ -1,6 +1,6 @@
 pkgbase = firefox-bin
 	pkgdesc = Standalone web browser from mozilla.org - Static binaries from upstream
-	pkgver = 96
+	pkgver = 96.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/new/
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = firefox-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = firefox=96
+	provides = firefox=96.0.1
 	conflicts = firefox
-	source = https://archive.mozilla.org/pub/firefox/releases/96/linux-x86_64/en-US/firefox-96.tar.bz2
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0.1/linux-x86_64/en-US/firefox-96.0.1.tar.bz2
 	source = firefox.sh
 	source = firefox.desktop
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = f78a41215d168a2a215528a08877b3cc51e0caa3f1a840c27075b3112ef3d7d7
+	sha256sums = 85143f6936bd6d5b2f55907ed6e84a91cf69bb57aa2b4427a07cf3e3e670bd30
 	sha256sums = 9491f195066aa56f4f0bbc83e5f0581a460f4c34ee455ba24db312b540322703
 	sha256sums = c64008cbf01956ce3dba693230670de58fa9487ad19f4ba76614af13beb1b8ef
 
