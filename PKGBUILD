@@ -1,8 +1,8 @@
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 pkgname=sdl2-git
-pkgver=2.0.16.r31.g907943a23
-pkgrel=2
+pkgver=2.0.20.r19.g9a2bbd8ac
+pkgrel=1
 pkgdesc="A library for portable low-level access to a video framebuffer, audio output, mouse, and keyboard (Version 2)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.libsdl.org"
