@@ -1,7 +1,7 @@
 pkgbase = linux-zen-g14
 	pkgdesc = Linux ZEN
 	pkgver = 5.16.zen1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.16-zen1
 	arch = x86_64
 	license = GPL2
@@ -13,6 +13,7 @@ pkgbase = linux-zen-g14
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
+	makedepends = texlive-core
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -22,9 +23,9 @@ pkgbase = linux-zen-g14
 	options = !strip
 	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel#tag=v5.16-zen1
 	source = config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config
-	source = git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.15
+	source = git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.16
 	sha256sums = SKIP
-	sha256sums = de0f863e315ab2de7671ce512f6755ae14b58a64f21e48bd2b0158d719533011
+	sha256sums = f8d332e96d1d5826b386a87e1588fef9c94c36638228718eb847658efa07dbaa
 	sha256sums = SKIP
 
 pkgname = linux-zen-g14
