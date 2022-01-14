@@ -2,7 +2,7 @@
 # Contributor: Guillaume Alaux <guillaume@archlinux.org>
 
 pkgname=tomcat8
-pkgver=8.5.73
+pkgver=8.5.74
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=(any)
@@ -30,7 +30,7 @@ backup=(
   etc/tomcat8/web.xml
 )
 install=tomcat8.install
-_tag=e8de8521b0f88b452ac6bd79abad3aad3bcc18b6
+_tag=2ea50557ae05ccfca7f521ab328c238237aec8b1
 source=(
   git+https://github.com/apache/tomcat.git#tag=${_tag}
   tomcat8.service
