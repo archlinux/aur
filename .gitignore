@@ -7,6 +7,7 @@
 !anbox.desktop
 !anbox-session-manager.service
 !desktop-dir.patch
+!cpu_features.patch
 !dev-binderfs.mount
 !.gitignore
 !org.anbox.service

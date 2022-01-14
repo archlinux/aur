@@ -5,21 +5,21 @@
 
 pkgname=anbox-git
 pkgver=r1358.84f0268
-pkgrel=3
+pkgrel=4
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
 license=('GPL3')
 pkgdesc="Running Android in a container"
-depends=('lxc-git' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'boost-libs' 'sdbus-cpp')
+depends=('lxc-git' 'sdl2_image' 'protobuf' 'anbox-image' 'libsystemd' 'libcpufeatures' 'boost-libs' 'sdbus-cpp')
 replaces=('anbox-launchers')
 conflicts=('anbox-launchers')
 makedepends=('cmake' 'git' 'glm' 'boost' 'properties-cpp' 'gtest' 'python' 'systemd' 'dbus')
 source=("git+https://github.com/anbox/anbox.git"
-	"git+https://github.com/google/cpu_features.git"
-	'lxc.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/lxc4.patch'
+	'lxc4.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/lxc4.patch'
 	'sdbus.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/no-bundled-sdbus.patch'
 	'delayed-start.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/70a1a8afb7b6ac37291d382e6e5cc7561fc88626/community/anbox/give-more-time-to-start.patch'
+	'cpu_features.patch'
 	'desktop-dir.patch'
 	'anbox-container-manager.service'
 	'anbox-session-manager.service'
@@ -31,10 +31,10 @@ source=("git+https://github.com/anbox/anbox.git"
 	'anbox-bridge.network'
 	'anbox-bridge.netdev')
 sha256sums=('SKIP'
-            'SKIP'
             'c1071203defdeaee56122913a6d7e67ac496c889a0c59cb889d94a58bc655bfa'
             '7c0626afaf1ce004ac2c57cd89db393f9a6ba21f1087001d15278a7bd79c8219'
             '253c211455ff0cfaa058a0b80eb41d58f84ee646c0c67dbcbcc888b5833009a7'
+            'eeeb4dd40d30d0e8c0f0001d44ca7876c1c564dfc31b24ecfb871fd133037825'
             'd1e2e3fa1299b423f1d98cbd3c591d853f1ce8646f508ef838fe714f986fc5b2'
             'be18c27f349560d46f7d7912b3b84d503e477fb643c55e4a7d6de9a84be93d0b'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
@@ -60,7 +60,6 @@ prepare() {
   # Don't build tests
   truncate -s 0 cmake/FindGMock.cmake
   truncate -s 0 tests/CMakeLists.txt
-  sed -i '1i\#include <cstdint>' "$srcdir/anbox/src/anbox/input/manager.cpp"
 
   # Thanks to @bartus <arch-user-repo@bartus.33mail.com> for suggesting the patch
   # checking before applying it.
@@ -72,14 +71,10 @@ prepare() {
           warning "Patch already applied, please remove $patch.patch from source[]!"
           read -t5 -p 'press enter to continue...' || true
         else
+          msg "Applying patch: $patch"
           patch -Np1 < "$srcdir/$patch.patch"
         fi
       done
-
-  git submodule init
-  git config submodule.external/cpu_features.url $srcdir/cpu_features
-  git config --remove-section submodule.external/sdbus-cpp
-  git submodule update
 }
 
 build() {
