@@ -1,7 +1,7 @@
 pkgbase = todesk-openrc
 	pkgdesc = OpenRC todesk init script
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = todesk
