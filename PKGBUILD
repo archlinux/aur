@@ -7,15 +7,16 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r420.gad83b4b57
+pkgver=1.4.0.development.snapshot.006.r446.g3b0fa8f8b
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
 arch=('i686' 'x86_64')
 url='https://www.mumble.info'
 license=('BSD')
-depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11' 'libxi'
-         'openssl' 'opus' 'poco' 'qt5-base' 'qt5-svg' 'speex' 'xdg-utils')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11'
+         'libxi' 'openssl' 'opus' 'poco' 'rnnoise' 'qt5-base' 'qt5-svg'
+         'speex' 'xdg-utils')
 makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'jack' 'lib32-gcc-libs'
              'libpulse' 'libsndfile' 'mesa' 'pipewire' 'protobuf' 'python'
              'qt5-tools' 'speech-dispatcher')
@@ -57,6 +58,7 @@ build() {
     -Dserver:BOOL='OFF' \
     -Dbundled-celt:BOOL='ON' \
     -Dbundled-opus:BOOL='OFF' \
+    -Dbundled-rnnoise:BOOL='OFF' \
     -Dbundled-speex:BOOL='OFF' \
     -Dupdate:BOOL='OFF' \
     -Wno-dev
