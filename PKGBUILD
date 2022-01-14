@@ -33,7 +33,7 @@ package() {
     
     install -Dm644 "$pkgdir/usr/lib/node_modules/kerbal-telemetry/LICENSE"  -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     
-    echo $"../lib/node_modules/kerbal-telemetry/kerbal-telemetry \"$@\"" > "$srcdir/kerbal-telemetry"
+    echo $"cd "${0%/*}" || exit;../lib/node_modules/kerbal-telemetry/kerbal-telemetry \"$@\"" > "$srcdir/kerbal-telemetry"
     install -D "$srcdir/kerbal-telemetry" "$pkgdir/usr/bin/kerbal-telemetry"
 }
 sha256sums=('65235ddd8e8ff71089b83c707ae36ac8bb2fc238384143d70d8450160a701e9b')
