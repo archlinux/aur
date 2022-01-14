@@ -1,7 +1,7 @@
 # Contributor: Ivan Zenin <i.zenin@gmx.com>
 
-pkgname=urxvt-url-picker
-pkgver=r30.1c7abb9
+pkgname=urxvt-url-picker-git
+pkgver=latest
 pkgrel=1
 pkgdesc='Perl extension for rxvt-unicode (aka urxvt) to enable quick keyboard navigation of URLs shown in the terminal window'
 arch=('any')
