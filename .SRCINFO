@@ -1,0 +1,11 @@
+pkgbase = makepkg-sccache-link
+	pkgdesc = Link sccache with ccache making it available to makepkg
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	depends = sccache
+	conflicts = ccache
+	source = ccache
+	md5sums = 200f4d8423fc6cd066a781a6dfb06486
+
+pkgname = makepkg-sccache-link
