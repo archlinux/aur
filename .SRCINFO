@@ -1,6 +1,6 @@
 pkgbase = imlib2-heic-git
 	pkgdesc = HEIC/HEIF decoder for imlib2 (development version)
-	pkgver = r7.8362aa9
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/vi/imlib2-heic
 	arch = x86_64

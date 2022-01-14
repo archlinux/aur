@@ -1,7 +1,7 @@
 # Contributor: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=imlib2-heic-git
-pkgver=r7.8362aa9
+pkgver=latest
 pkgrel=1
 pkgdesc="HEIC/HEIF decoder for imlib2 (development version)"
 arch=('x86_64')
