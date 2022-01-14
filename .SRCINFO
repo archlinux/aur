@@ -1,0 +1,12 @@
+pkgbase = relaygram
+	pkgdesc = NekoX compatible WebSocket relay
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/traidento/relaygram
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://github.com/traidento/relaygram/archive/v0.2.0.tar.gz
+	sha256sums = f1b2de65a3f86fa3ece02d9dc40e59bc3ca25411cd6b2e082d081d24e34fcb73
+
+pkgname = relaygram
