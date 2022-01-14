@@ -1,0 +1,12 @@
+pkgbase = cdndrive-go
+	pkgdesc = BiliDrive-compatible multi source downloader
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/arm64v8a/CDNDrive-go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/arm64v8a/CDNDrive-go/archive/v0.9.tar.gz
+	sha256sums = 360fe6c4a9ed06a17b2349770dcf9a342f4904747b34c965f33f14d4bf802f06
+
+pkgname = cdndrive-go
