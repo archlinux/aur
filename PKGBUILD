@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=wiznote-electron
 _pkgname=wiznote
-pkgver=0.1.60
+pkgver=0.1.62
 pkgrel=1
 pkgdesc='A powerful note-taking tool.'
 arch=('any')
@@ -14,7 +14,7 @@ provides=("wiznote")
 source=("$_pkgname-$pkgver.AppImage::https://wizteam-generic.pkg.coding.net/client/wiznote-autoupdate/wiznote-desktop-${pkgver}-linux-x86_64.AppImage"
 "${_pkgname}".sh
 )
-sha256sums=('df33033ec2a21d684dae2e4e681a64887406fd92286d81d0afb24dda9d83c299'
+sha256sums=('6faf6de81980bf045cace050de3ce39def404f4969387889228643edd1ed06f2'
             'ba433c18cd2c82e234d1921ed125c46d6a8ab6a20688e10181834bdbd5650bb1')
 
 prepare() {
