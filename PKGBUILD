@@ -3,13 +3,13 @@
 
 pkgname=aaaaxy
 pkgver=1.0.187
-pkgrel=4
+pkgrel=5
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
 license=('Apache')
 depends=('alsa-lib' 'libglvnd' )
-makedepends=('git' 'go' 'graphviz' 'imagemagick' 'make' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
+makedepends=('alsa-lib' 'git' 'go' 'graphviz' 'imagemagick' 'libglvnd' 'libx11' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/gabomdq/SDL_GameControllerDB.git")
 sha256sums=('SKIP'
