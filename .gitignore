@@ -1,0 +1,5 @@
+pkg/
+src/
+uvw-git/
+
+*.tar.zst
