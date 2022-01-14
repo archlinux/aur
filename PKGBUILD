@@ -31,7 +31,7 @@ package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
     chown -R root:root "${pkgdir}"
     
-    install -Dm644 "$pkgdir/LICENSE"  -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/LICENSE"  -t "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     ln -s "$Pkgdir/kerbal-telemetry" /usr/bin/
 }
 sha256sums=('65235ddd8e8ff71089b83c707ae36ac8bb2fc238384143d70d8450160a701e9b')
