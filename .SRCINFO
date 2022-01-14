@@ -1,7 +1,7 @@
 pkgbase = caff-git
 	pkgdesc = CA Fire and Forget is a script that helps you in keysigning.
 	pkgver = r823.a8e6e7d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://salsa.debian.org/stappers/pgp-tools
 	arch = any
 	license = GPL
@@ -15,7 +15,6 @@ pkgbase = caff-git
 	conflicts = signing-party
 	conflicts = caff-svn
 	source = caff::git+https://salsa.debian.org/debian/signing-party.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = caff-git
-

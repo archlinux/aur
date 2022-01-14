@@ -1,9 +1,8 @@
-# Maintainer: Ingo Sieverdingbeck <aur@sieverdingbeck.com>
-
+# Maintainer: ghostbuster <ghost_buster+aur@posteo.de>
 pkgname=caff-git
 _pkgname=caff
 pkgver=r823.a8e6e7d
-pkgrel=1
+pkgrel=2
 pkgdesc="CA Fire and Forget is a script that helps you in keysigning."
 arch=('any')
 url="https://salsa.debian.org/stappers/pgp-tools"
@@ -11,7 +10,7 @@ license=('GPL')
 depends=('gnupg' 'perl' 'perl-gnupg-interface' 'perl-mime-tools' 'perl-text-template' 'perl-net-idn-encode')
 makedepends=('git')
 conflicts=('signing-party' 'caff-svn')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 source=("$_pkgname::git+https://salsa.debian.org/debian/signing-party.git")
 
 pkgver() {
