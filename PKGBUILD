@@ -2,21 +2,18 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.1.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='CLI for Globus'
 arch=('any')
 url="https://globus.github.io/globus-cli"
 license=('Apache')
 depends=(
-	'python-globus-sdk=3.1.0'
-	'python-click>=8.0.0'
-	'python-click<9'
+	'python-globus-sdk'
+	'python-click'
 	'python-jmespath=0.10.0'
-	'python-requests>=2.19.1'
-	'python-requests<3.0.0'
-	'python-cryptography>=3.3.1'
-	'python-cryptography<37')
+	'python-requests'
+	'python-cryptography')
 makedepends=('python-setuptools' 'git')
 replaces=('python-globus-cli')
 changelog=changelog.adoc

@@ -1,6 +1,6 @@
 pkgbase = globus-cli
 	pkgdesc = CLI for Globus
-	pkgver = 3.1.4
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://globus.github.io/globus-cli
 	changelog = changelog.adoc
@@ -8,16 +8,13 @@ pkgbase = globus-cli
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = git
-	depends = python-globus-sdk=3.1.0
-	depends = python-click>=8.0.0
-	depends = python-click<9
+	depends = python-globus-sdk
+	depends = python-click
 	depends = python-jmespath=0.10.0
-	depends = python-requests>=2.19.1
-	depends = python-requests<3.0.0
-	depends = python-cryptography>=3.3.1
-	depends = python-cryptography<37
+	depends = python-requests
+	depends = python-cryptography
 	replaces = python-globus-cli
-	source = globus-cli::git+https://github.com/globus/globus-cli#tag=3.1.4?signed
+	source = globus-cli::git+https://github.com/globus/globus-cli#tag=3.2.0?signed
 	validpgpkeys = FC694E40DC03A8B702D96372CF7E843C41E814C9
 	sha256sums = SKIP
 

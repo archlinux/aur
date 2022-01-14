@@ -2,6 +2,34 @@
 
 // scriv-insert-here
 
+== 3.2.0 (2022-01-13)
+
+Enhancements:
+
+* Add a `globus group member add` command to add users to a group
+* Add a `globus group member remove` command to remove a user from a group
+* Add a new `globus search index show` command which displays an index by ID
+* Add a new `globus search index list` command which lists indices for which
+  the current user has permissions
+* Add a new `globus search index create` command which creates a new Globus
+  Search index. Note that because the index creation API is in public beta, the
+  command is also labeled as "beta"
+* Add docs on `GLOBUS_PROFILE` setting to help for login and logout commands
+* Add support for client credentials for authentication in the Globus CLI
+  by setting `GLOBUS_CLI_CLIENT_ID` and `GLOBUS_CLI_CLIENT_SECRET`
+  environment variables
+** Both variables must be set to enable this behavior
+** Tokens generated with client credentials are cached in the current user's home
+   directory, but isolated from any user credentials
+** With client credentials, `globus login` is invalid, but `globus logout` can be used
+   to revoke any cached tokens
+** Attempting to run `globus login` while using client credentials will show an
+   appropriate error message
+* A new command, `globus cli-profile-list` can be used to list values for
+  `GLOBUS_PROFILE` and `GLOBUS_CLI_CLIENT_ID` ("client profiles") which have
+  been used. By default, the listing is restricted to the current environment. A
+  hidden option (`--all`) can be used to list all environments
+
 == 3.1.4 (2021-11-09)
 
 Bugfixes:
