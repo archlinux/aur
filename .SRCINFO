@@ -1,5 +1,5 @@
 pkgbase = wine-discord-ipc-bridge-git
-	pkgver = 0.0.1.6.g2f9dfca
+	pkgver = 0.0.1.10.ga61da30
 	pkgrel = 1
 	url = https://github.com/0e4ef622/wine-discord-ipc-bridge
 	arch = x86_64
