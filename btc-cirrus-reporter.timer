@@ -1,0 +1,8 @@
+[Unit]
+Description=Timeline of btc-cirrus-reporter
+
+[Timer]
+OnCalendar=hourly
+
+[Install]
+WantedBy=timers.target
