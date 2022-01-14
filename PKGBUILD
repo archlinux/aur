@@ -24,6 +24,10 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+prepare() {
+	export PKGDEST="src"
+}
+
 pkgver() {
 	cd UCUTag
 	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
