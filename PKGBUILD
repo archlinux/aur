@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=earthly
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='A build automation tool that executes in containers'
 arch=('x86_64')
@@ -27,7 +27,7 @@ build() {
     export CGO_CFLAGS="$CFLAGS"
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
     cd earthly
     go build -tags "$_tags" -ldflags "$_ldflags" -o build ./cmd/...
 }
