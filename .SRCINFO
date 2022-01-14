@@ -1,6 +1,6 @@
 pkgbase = ucutag-git
 	pkgdesc = This is fuse based tag-oriented filesystem that uses MongoDB as backend
-	pkgver = 1.0.r67.923add5
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/yewhenp/UCUTag.git
 	arch = x86_64
@@ -14,4 +14,4 @@ pkgbase = ucutag-git
 	source = git+https://github.com/yewhenp/UCUTag.git
 	md5sums = SKIP
 
-pkgname = ucutag
+pkgname = ucutag-git
