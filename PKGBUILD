@@ -3,12 +3,12 @@
 # Contributor: Roberto Catini <roberto.catini@gmail.com>
 
 pkgname=rippled
-pkgrel=2
-pkgver=1.8.2
+pkgrel=1
+pkgver=1.8.4
 pkgdesc="Ripple peer-to-peer network daemon"
 arch=('x86_64')
 url="https://github.com/ripple/rippled"
-license=('custom:ISC')
+license=('ISC')
 backup=("etc/$pkgname/rippled.cfg" "etc/$pkgname/validators.txt")
 depends=('protobuf' 'boost-libs' 'libarchive' 'libsecp256k1' 'rocksdb')
 makedepends=('git' 'cmake' 'boost' 'clang' 'doxygen')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.sysusers"
         "0001-cflag_werror_format-security.patch"
         "0002-service_execstart_paths_security_and_sandboxing.patch")
-sha512sums=('a18f5eb9930586b49e6cbdae5edebf8f268b9c114b068543734a90282c5e5367c26d1bc6e2a31a6c42e294a763b5e9fa79792c580d049195b755b1af719496f2'
+sha512sums=('3b50abd43d57bca14d8eee8a4658f6c852b2ecc05a1c3e376e29003c9482818cdd17eb4c101f0301af3438475d84b92b4632081ae8d667e4d3d905ac4de2e9e5'
             '0c50bbd6b790163ca77ab6b8f5a078049dafe69f3818f05c8de3db626227c20cb55fbeaf38ca7594ce3a4f82156319ab69ccf24ca2615a278459f10a3ad7a04c'
             'bf651f870dc788a53960b950f1d069a2775fb806399c11b4e96499c26e325c844120bf7a1698a9482621b5634d2c7202b5917c582fd8a53002b2c9fe4caf6bae'
             '826c1233d10339176267cbd6ef394e3b4647630a074f2c4cdade7ee683319e01ea45209037cbce7acef7e97885adce7250f23d65174baca65f40a4aa2ef6b0fb'
@@ -26,8 +26,8 @@ sha512sums=('a18f5eb9930586b49e6cbdae5edebf8f268b9c114b068543734a90282c5e5367c26
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -p1 -i "$srcdir/0001-cflag_werror_format-security.patch"
-  patch -p1 -i "$srcdir/0002-service_execstart_paths_security_and_sandboxing.patch"
+  patch -N -p1 -i "$srcdir/0001-cflag_werror_format-security.patch"
+  patch -N -p1 -i "$srcdir/0002-service_execstart_paths_security_and_sandboxing.patch"
 }
 
 build() {
