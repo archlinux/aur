@@ -3,11 +3,12 @@
 
 pkgname=cshatag
 pkgver=2.0
-pkgrel=1
-pkgdesc='Detect silent data corruption under Linux using checksums in extended attributes'
+pkgrel=2
+pkgdesc='Detect silent data corruption using checksums in Ext4 extended attributes'
 arch=('x86_64')
 url="https://github.com/rfjakob/cshatag"
 makedepends=('go')
+optdepends=('attr: Inspect extended file attributes')
 license=('MIT')
 source=(
     "${url}/archive/refs/tags/v${pkgver}.tar.gz"
