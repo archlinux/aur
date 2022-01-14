@@ -1,0 +1,15 @@
+pkgbase = ffind
+	pkgdesc = A sane replacement for command line file search
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/jaimebuelta/ffind
+	arch = any
+	license = MIT
+	depends = python-setuptools
+	conflicts = friendly-find
+	source = https://files.pythonhosted.org/packages/source/f/ffind/ffind-1.3.1.tar.gz
+	source = ffind-LICENSE.txt::https://raw.githubusercontent.com/jaimebuelta/ffind/v1.3.1/LICENSE.txt
+	sha256sums = 91d5d1e824f0f7621cc30c8d28dba8908457f78837234eb78762155c142f68fe
+	sha256sums = 6b9175754584f5fb0e867391e8992bc46d1181826e0d7511f834872bb2312852
+
+pkgname = ffind

@@ -1,0 +1,7 @@
+pkg/
+src/
+ffind-LICENSE.txt
+ffind-*.tar.gz
+ffind-*.pkg.tar.xz
+ffind-*.pkg.tar.zst
+ffind-*.src.tar.gz
