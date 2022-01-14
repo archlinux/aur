@@ -1,6 +1,6 @@
 pkgbase = nyxt
 	pkgdesc = A keyboard-oriented, infinitely extensible web browser designed for power users
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/atlas-engineer/nyxt
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = nyxt
 	conflicts = nyxt-browser
 	options = !strip
 	options = !makeflags
-	source = git+https://github.com/atlas-engineer/nyxt.git#tag=2.2.3
+	source = git+https://github.com/atlas-engineer/nyxt.git#tag=2.2.4
 	sha256sums = SKIP
 
 pkgname = nyxt
