@@ -3,12 +3,17 @@
 
 pkgname=aaaaxy
 pkgver=1.0.187
-pkgrel=7
+pkgrel=8
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
 license=('Apache')
 depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
+# Note: libxcursor libxinerama libxi libxrandr are unused direct dependencies.
+# They are referenced at build time, but as no symbols are referenced and the
+# external linker is used with --as-needed in Arch's default LDFLAGS, these will
+# not actually be linked to by the final binary. This is why these are in
+# makedepends but not depends.
 makedepends=('git' 'go' 'graphviz' 'imagemagick' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/gabomdq/SDL_GameControllerDB.git")

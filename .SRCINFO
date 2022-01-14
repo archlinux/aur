@@ -1,7 +1,7 @@
 pkgbase = aaaaxy
 	pkgdesc = A nonlinear puzzle platformer taking place in non-Euclidean geometry
 	pkgver = 1.0.187
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/divVerent/aaaaxy
 	arch = x86_64
 	license = Apache
