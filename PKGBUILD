@@ -1,3 +1,5 @@
+# Maintainer: mochaaP <aur@mochaa.ws>
+
 pkgname=relaygram
 pkgver=0.2.0
 pkgrel=1
