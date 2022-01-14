@@ -1,13 +1,14 @@
 pkgbase = karbowanecwallet-git
 	pkgdesc = Karbowanec Wallet - wallet for Karbo (Karbovanets) cryptocurrency
-	pkgver = v.1.7.6.r2.g1f2dc45
+	pkgver = v.1.7.7.r1.g40047b1
 	pkgrel = 1
 	url = https://github.com/seredat/karbowanecwallet.git
-	arch = any
-	license = GPL2
-	license = LGPL2.1
+	arch = i686
+	arch = x86_64
+	license = custom
 	makedepends = cmake
 	makedepends = git
+	depends = boost
 	source = karbowanecwallet-git::git+https://github.com/seredat/karbowanecwallet.git
 	sha256sums = SKIP
 
