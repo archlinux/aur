@@ -3,7 +3,7 @@
 
 pkgname=python-fontmake
 _pyname=${pkgname#python-}
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
 arch=(any)
@@ -30,7 +30,7 @@ optdepends=(python-mutatormath
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('179585fbcbe52f1341d93c85982d70d0f7807ec7af0e46d6430c6535cc0f5e2e')
+sha256sums=('69851d47c034def5b30353c755f87ffa921e49a8e5188864561ad0dca60b901d')
 
 build() {
 	cd "$_archive"
