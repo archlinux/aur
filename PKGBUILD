@@ -1,9 +1,9 @@
 # Maintainer: Funami
 pkgname=coredns-fanout
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A DNS server that chains plugins - with module fanout"
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/networkservicemesh/fanout"
 license=('APACHE')
 provides=('coredns')

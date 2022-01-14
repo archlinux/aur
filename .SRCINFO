@@ -1,10 +1,9 @@
 pkgbase = coredns-fanout
 	pkgdesc = A DNS server that chains plugins - with module fanout
 	pkgver = 1.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/networkservicemesh/fanout
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = APACHE
 	makedepends = go
 	provides = coredns
