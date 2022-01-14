@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 95.0.2
+	pkgver = 96.0
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -47,13 +47,14 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=95.0.2
+	provides = firefox=96.0
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = https://archive.mozilla.org/pub/firefox/releases/95.0.2/source/firefox-95.0.2.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/95.0.2/source/firefox-95.0.2.source.tar.xz.asc
+	options = !lto
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0/source/firefox-96.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0/source/firefox-96.0.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = 0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
 	source = firefox.desktop
@@ -62,14 +63,14 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = c178cbf61979bd39a8daa9a09c6e03089da37baded692ad1f745ecfcaae74d64
+	sha256sums = b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0
 	sha256sums = SKIP
-	sha256sums = a7a5ea4680c0a4c6eb5a5f99970008f5ad3e2f29f0d6d050aa651bce8c713718
+	sha256sums = 5ead90994f91bed3231c2661977c69fc276cfbe278a1ab904daa544c9455ff42
 	sha256sums = 8a893ae44955c90a0fb4a504134773293054ab57a41ba7931df98c8cf5449549
 	sha256sums = 34514a657d6907a159594c51e674eeb81297c431ec26a736417c2fdb995c2c0c
 	sha256sums = a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9
 	sha256sums = 46724a625f51c358abaee488a7ce75673078e96ba009459339120b8dd11dec25
-	sha256sums = e040947cd991286eaae7d7de38412a32f5c4adcb73dc19e7ecc5901af5e37381
+	sha256sums = 0efba173f3e16aaf1726aedfd89e64159d9094cb337b9ec98b4e005824ef13e3
 	sha256sums = e08d0bc5b7e562f5de6998060e993eddada96d93105384960207f7bdf2e1ed6e
 
 pkgname = firefox-appmenu
