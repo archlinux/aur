@@ -19,6 +19,7 @@ pkgver() {
 
 build() {
 	cd $pkgname
+    rm -rf cryptnote
 	git clone https://github.com/seredat/karbowanec.git cryptonote
     mkdir -p build
 	cd build
