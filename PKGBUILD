@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
 pkgname=hardened_malloc
-pkgver=9
+pkgver=10
 pkgrel=1
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
@@ -10,14 +10,15 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git')
 checkdepends=('python')
-provides=('libhardened_malloc.so')
+provides=('libhardened_malloc.so' 'libhardened_malloc-light.so')
 source=("git+https://github.com/GrapheneOS/$pkgname#tag=$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('65EEFE022108E2B708CBFCF7F9E712E59AF5F22A') # Daniel Micay <danielmicay@gmail.com>
 
 build() {
   cd "$pkgname"
-  make
+  make VARIANT=default
+  make VARIANT=light
 }
 
 check() {
@@ -27,7 +28,9 @@ check() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 --target-directory="$pkgdir/usr/lib" libhardened_malloc.so
+  install -Dm755 --target-directory="$pkgdir/usr/lib" \
+    out/libhardened_malloc.so \
+    out-light/libhardened_malloc-light.so
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
