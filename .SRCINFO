@@ -1,10 +1,11 @@
 pkgbase = nueclipse
 	pkgdesc = Ecipse base C/C++ IDE for Nuvoton Microcontroller
 	pkgver = 1.01.018
-	pkgrel = 1
+	pkgrel = 2
 	url = www.nuvoton.com
 	arch = x86_64
 	license = custom
+	depends = gtk2
 	depends = arm-none-eabi-gcc
 	depends = arm-none-eabi-newlib
 	depends = arm-none-eabi-gdb
