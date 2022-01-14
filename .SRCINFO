@@ -1,13 +1,13 @@
 pkgbase = filius
 	pkgdesc = Network simulation program
-	pkgver = 1.11.0
+	pkgver = 1.13.1
 	pkgrel = 0
 	url = http://www.lernsoftware-filius.de
 	arch = any
 	license = GPL
 	depends = java-environment>=8
-  source = http://www.lernsoftware-filius.de/downloads/Setup/filius-1.10.4.zip
-	sha256sums = 90e681e9aede53abc464aa3d830d92d18b2afa6fd4544f670d9c843921dd5a89
+  	source = https://www.lernsoftware-filius.de/downloads/Setup/filius-1.12.5.zip 
+	sha256sums = 820d3443454e5504e4b99d7ef4e795b7d4d8aec3a3935a517cebe8adc8c94bd8
 
 pkgname = filius
 

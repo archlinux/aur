@@ -1,6 +1,6 @@
 # Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
 pkgname="filius"
-pkgver="1.11.0"
+pkgver="1.13.1"
 _pkgver="${pkgver}"
 pkgrel=0
 pkgdesc="Network simulation program"
@@ -20,8 +20,8 @@ package() {
   rm Filius.exe
   rm Filius.command
   # mv lib $pkgdir/usr/lib/filius
-  cp -r Changelog.md  config  Einfuehrung_Filius.pdf  filius.jar  Filius.sh  GPLv2.txt  GPLv3.txt  hilfe  img  Introduction_Filius.pdf  lib  tmpl $pkgdir/usr/share/filius/
-  chmod +x $pkgdir/usr/share/filius/Filius.sh
+  cp -r Changelog.md  config  Einfuehrung_Filius.pdf  filius.jar  filius.sh  GPLv2.txt  GPLv3.txt  hilfe  img  Introduction_Filius.pdf  lib  tmpl $pkgdir/usr/share/filius/
+  chmod +x $pkgdir/usr/share/filius/filius.sh
   ln -s /usr/share/filius/Filius.sh $pkgdir/usr/bin/filius
 
   base64 -d > $pkgdir/usr/share/pixmaps/filius32.png <<EOF
@@ -52,7 +52,7 @@ Name=Filius
 Name[de]=Filius
 Comment=Learn how Computer Networks are built
 Comment[de]=Lernsoftware zu Rechnernetzen
-Exec=/usr/share/filius/Filius.sh
+Exec=/usr/share/filius/filius.sh
 Icon=filius32
 Terminal=false
 Type=Application
@@ -63,5 +63,5 @@ EOF
 }
 
 
-md5sums=('dae3257d898a31a85069c8562feab7ed')
-sha256sums=('a1ff9fd10b6a7021a75b8f5cc711ad859f4c5cd34d1b768863ed63667b42628f')
+md5sums=('82be8b50b604f30130958c400808c19a')
+sha256sums=('820d3443454e5504e4b99d7ef4e795b7d4d8aec3a3935a517cebe8adc8c94bd8')
