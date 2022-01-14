@@ -2,9 +2,9 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=pyside2
-_qtver=5.15.2
+_qtver=5.15.2.1
 pkgver=${_qtver/-/}
-pkgrel=5
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -34,18 +34,11 @@ conflicts=(python-pyside2)
 provides=(python-pyside2 qt5-python-bindings)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
-source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz"
-        python310.patch)
-sha256sums=('b306504b0b8037079a8eab772ee774b9e877a2d84bab2dbefbe4fa6f83941418'
-            'ae896a09d18ef215243175fce047d8c370ab4a2d77ed0022991ed70bd23a30d0')
-
-prepare() {
-  cd ${_pkgfqn}
-  patch -Np1 -i ../python310.patch
-}
+source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.gz)
+sha256sums=('91e78e4e3b31ebb0053c2e4f1029703e578615695450c0dd03072248d713b391')
 
 build() {
-  cmake -B build -S ${_pkgfqn}/sources/pyside2 \
+  cmake -B build -S ${_pkgfqn%.*}/sources/pyside2 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=OFF \
     -DPYTHON_EXECUTABLE=/usr/bin/python
@@ -56,7 +49,7 @@ package() {
   DESTDIR="$pkgdir" cmake --install build
 
 # Install egg-info
-  cd $_pkgfqn
+  cd ${_pkgfqn%.*}
   python setup.py egg_info --build-type=pyside2
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   cp -r PySide2.egg-info "$pkgdir"/$_pythonpath
