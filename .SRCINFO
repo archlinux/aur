@@ -1,8 +1,9 @@
 pkgbase = lyra
 	pkgdesc = A simple to use, composable, command line parser for C++ 11 and beyond
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
+	makedepends = cmake
 	source = https://github.com/bfgroup/lyra/archive/refs/tags/1.6.tar.gz
 	sha256sums = 919e92a9c02fea3f365a3a7bdccd8b306311a28a7f2044dac8e7651106d7b644
 
