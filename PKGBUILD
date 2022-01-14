@@ -2,7 +2,7 @@
 
 pkgname=cloud-sql-proxy-bin
 pkgdesc="Google Cloud SQL proxy client"
-pkgver=1.27.0
+pkgver=1.28.0
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="https://github.com/GoogleCloudPlatform/cloudsql-proxy"
@@ -18,7 +18,7 @@ package() {
   install -Dm755 "$srcdir/$_bin_file-$CARCH" "$pkgdir/usr/bin/cloud_sql_proxy"
 }
 
-sha256sums_i686=('d37fb716dcda8f4872ffec9ee140878dd23aeac29f72ba157afcb3245a06b1c8  ')
-sha256sums_x86_64=('80934dfd7fd4097e2782be51d21c6e7d3d99327fb4e2fee3a151f4990809f63f')
-sha256sums_arm=('a241fa03a7ccee0e096e77931cc369175390105c5ef98a4f679c8f8448c7b26a')
-sha256sums_arm_64=('e6a1e1c740511a791341119cc6ff89f992f05d0e5019ca02000703b5667d8c9b')
+sha256sums_i686=('8d13445477aff16f400832c17786c5daf785b1bd3b73eafa1b2145cf0b6345ab')
+sha256sums_x86_64=('f86d58ddab285238c84d1d0463a9ea5dc6047af9f439c0852ef9d31ac31514d0')
+sha256sums_arm=('3b0d150f0473aff437464fd0e0bbaafa0533f552704039fb2ec77d3a09950d51')
+sha256sums_arm_64=('a58a8dfeebdbb4bc068af0f3ddd26acc2827e89a4ab20644178a2ad34d2c5a1e')
