@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-screenshot-dbus-emulator
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Gnome Shell Screenshot DBus Emulation.'
 arch=('x86_64')
 url="https://github.com/cyrinux/${pkgname}"
@@ -13,7 +13,8 @@ source=("${pkgname}-${pkgver}-src.tar.gz::${url}/releases/download/${pkgver}/${p
     "${pkgname}-${pkgver}-src.tar.gz.asc::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz.asc")
 validpgpkeys=('4F7BC1FD97170A79267686A6FC9B1319726657D3')
 sha256sums=('e432deb88c59e2265d30165180441f58535dc2ebe509dd62489c8116991bacac'
-            'SKIP')
+    'SKIP')
+options=(!lto)
 
 build() {
     cd "${pkgname}-${pkgver}"
