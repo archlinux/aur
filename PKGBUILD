@@ -5,7 +5,7 @@
 _npmname=@soketi/soketi
 pkgname=soketi
 pkgdesc='Just another simple, fast, and resilient open-source WebSockets server.'
-pkgver=0.26.1
+pkgver=0.26.3
 pkgrel=1
 arch=('any')
 url='https://github.com/soketi/soketi'
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tar.gz)
-sha512sums=('712c0a31c0575cd8f04d665ada4daf95f752dafd571654fcfc6ade11211af352d76e7806fea5a619fd9a3553632773c2aa5bffcfc3d46499f881594a8ed2eb03')
+sha512sums=('fb6be2291d94782b9f036e3fa899b7e6ac7ac60022da3e0fba460fa999ce457ae78082d784b24849899c777e4d2f4920062be8d21a4cf79cdb381786d90c846f')
 
 # see: https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 
@@ -38,11 +38,4 @@ package() {
   jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   mv "$tmppackage" "$pkgjson"
   chmod 644 "$pkgjson"
-
-  find "$pkgdir" -type f -name package.json | while read pkgjson; do
-      local tmppackage="$(mktemp)"
-      jq 'del(.man)' "$pkgjson" > "$tmppackage"
-      mv "$tmppackage" "$pkgjson"
-      chmod 644 "$pkgjson"
-  done
 }
