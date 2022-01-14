@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=coredns-fanout
-pkgver=1.8.6
-pkgrel=2
+pkgver=1.8.7
+pkgrel=1
 pkgdesc="A DNS server that chains plugins - with module fanout"
 arch=('x86_64' 'i686')
 url="https://github.com/networkservicemesh/fanout"
@@ -12,9 +12,9 @@ makedepends=('go')
 source=("coredns-$pkgver.tar.gz::https://github.com/coredns/coredns/archive/v$pkgver.tar.gz"
         'coredns.service'
         'coredns-sysusers.conf')
-sha256sums=('cbe3764afe2148b8047ea7e5cbba5108c298dee3a9a0391028e2980e35beaa2b'
+sha256sums=('0684addf625f10e99b652e5ef452f18d5ed3072fb7d9fe284fd9c4113171e0b5'
             '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
-            '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
+            'e3cc35967f12c8bca2961f4d98413958649072492fe37052249a8cbcd2313ed1')
 
 build() {
   export GOPATH="$srcdir/build"
