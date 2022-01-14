@@ -30,5 +30,5 @@ build() {
 
 package() {
 	cd $pkgname/build
-	make install
+	sudo make install
 }
