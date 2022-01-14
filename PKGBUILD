@@ -1,14 +1,15 @@
-# Maintainer: Andy Mender <andymenderunix@gmail.com>
+# Maintainer: rdb <me@rdb.name>
+# Contributor: Andy Mender <andymenderunix@gmail.com>
 # Contributor: David Radford <croxis gmail com>
 # Contributor: Faule Socke <github@socker.lepus.uberspace.de>
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Hubert Grzeskowiak <arch at nemesis13 de>
 
 pkgname=panda3d-git
-pkgver=r24784.c5705e0137
+pkgver=r25265.ce7c1ec16c
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
-url="http://www.panda3d.org"
+url="https://github.com/panda3d/panda3d"
 arch=('i686' 'x86_64')
 license=('BSD')
 provides=('panda3d')
@@ -19,7 +20,7 @@ conflicts=('panda3d')
 depends=('libpng' 'libtiff' 'zlib' 'openssl'
          'libgl' 'libxrandr' 'libxcursor'
          'freetype2' 'libvorbis' 'openal'
-         'gtk2' 'assimp' 'openexr'
+         'assimp' 'openexr'
          'desktop-file-utils' 'shared-mime-info')
 makedepends=('python' 'bison' 'cmake' 'flex' 'git')
 
@@ -42,7 +43,8 @@ optdepends=(# Recommended
             'opusfile: Support for manipulating opus audio files'
             'eigen: Optimised linear algebra library'
             # Optional
-            'nvidia-cg-toolkit: Shader support'
+            'nvidia-cg-toolkit: Automatic shader support'
+            'gtk2: PStats profiling server'
             'opencv: alternative to ffmpeg for video texture support'
             'fftw: Support for discrete Fourier transform (DFT)'
             'fmodex: Advanced audio engine support (AUR)'
@@ -57,13 +59,10 @@ optdepends=(# Recommended
             'libegl: GLX for OpenGL ES'
             )
 source=('panda3d::git+https://github.com/panda3d/panda3d.git'
-        'libdir_fix.patch'
         'panda3d-git.install')
 md5sums=('SKIP'
-         '44d5cd0d121ec966f52d6ca00fdf81eb'
          '85fa99c55d4458014976196306eca716')
 sha256sums=('SKIP'
-            '0ae2d418ac574cdf0c164df9b86836c7f1e0893d53721647c9353bae3d0204da'
             '75832d97bfce7c6b1b314a91c27bf67479289657e5e03f2be50b1854cdc7d92d')
 
 JOBS=$(nproc)
@@ -73,17 +72,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir/panda3d/makepanda"
-  patch -p0 -i "$srcdir/libdir_fix.patch"
-}
-
 build() {
   cd $srcdir/panda3d
   # disable broken extensions
   # you can use PANDAFLAGS and BUILD_THREADS to control building
-  # building is very memory intensive so you might want to use less threads
-  python makepanda/makepanda.py --everything --no-maya2012 --no-gles --no-gles2 ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  # building is very memory intensive so you might want to use fewer threads
+  python makepanda/makepanda.py --everything --no-maya2012 ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {
