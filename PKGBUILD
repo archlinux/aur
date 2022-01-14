@@ -31,7 +31,7 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 prepare () {
@@ -47,9 +47,9 @@ pkgver () {
 		set -o pipefail
 		meson introspect --projectinfo build \
 		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
-		cd "${pkgname}"
-		printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
+	cd "${pkgname}"
+	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
