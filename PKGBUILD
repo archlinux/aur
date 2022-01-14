@@ -4,8 +4,9 @@ _pkgbase=rtw89
 _srcname=rtw89
 _branch=main
 pkgname=${_pkgbase}-dkms-git
-pkgver=r129.248a921
-pkgrel=5
+pkgver=r148.4dc5371
+pkgrel=1
+epoch=1
 pkgdesc="Driver for Realtek 8852AE, an 802.11ax device"
 arch=('x86_64')
 url="https://github.com/lwfinger/rtw89"
@@ -17,7 +18,8 @@ conflicts=("${_pkgbase}")
 source=("$_srcname::git+https://github.com/lwfinger/rtw89.git#branch=${_branch}"
         'dkms.conf')
 sha256sums=('SKIP'
-            'd4015a9c63b86baa120b558f4acc19c60fe5cbea7ded338173e08cec47327b40')
+            '3261b90709a41e7d1030d2365d8ee0d821275f8deba4825307c4de35013dbf8e')
+install='rtw89-dkms-git.install'
 
 build() {
   cd "$srcdir/${_srcname}"

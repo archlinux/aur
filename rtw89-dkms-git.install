@@ -1,0 +1,10 @@
+post_upgrade() {
+  if [[ $(vercmp "1:r0.4dc5371-1" "$2") -eq 1 ]]; then
+    # upgraded from epoch 0, kernel <= 5.15
+    for i in /usr/lib/modules/*/; do
+      i="${i%/*}"
+      echo "==> rtw89-dkms-git: depmod ${i}"
+      depmod "${i##*/}"
+    done
+  fi
+}
