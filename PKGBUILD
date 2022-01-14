@@ -2,13 +2,13 @@
 # Contributor: thaliarchos <thaliarchos at protonmail dot com>
 
 pkgname=bookmenu-git
-pkgver=r138.e8f8109
-pkgrel=2
+pkgver=r165.e6947cf
+pkgrel=1
 pkgdesc="Command line utility to browse and download ebooks from LibGen, using the InterPlanetary File System."
 arch=('any')
 url="https://github.com/kusky3/bookmenu"
 license=('GPL3')
-depends=('viu' 'wget')
+depends=('chafa' 'wget')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

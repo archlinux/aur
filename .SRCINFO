@@ -1,12 +1,12 @@
 pkgbase = bookmenu-git
 	pkgdesc = Command line utility to browse and download ebooks from LibGen, using the InterPlanetary File System.
-	pkgver = r138.e8f8109
-	pkgrel = 2
+	pkgver = r165.e6947cf
+	pkgrel = 1
 	url = https://github.com/kusky3/bookmenu
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = viu
+	depends = chafa
 	depends = wget
 	provides = bookmenu
 	conflicts = bookmenu
