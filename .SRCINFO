@@ -5,6 +5,7 @@ pkgbase = generatorfabricmod
 	url = https://github.com/ExtraCrafTX/GeneratorFabricMod
 	arch = any
 	license = APACHE
+	depends = bash
 	depends = java-runtime
 	source = generatorfabricmod-0.1.4.tar::https://github.com/ExtraCrafTX/GeneratorFabricMod/releases/download/0.1.4/generatorfabricmod.tar
 	sha256sums = 3052124a8cdee451572b8dbe2b5efd0f9d8d4d3b192160060075d6b6bf302465
