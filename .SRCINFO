@@ -1,11 +1,11 @@
 pkgbase = budgie-desktop-git
-	pkgdesc = Simple GTK3 desktop experience
-	pkgver = 10.5.2.r2.g3d2b8998
+	pkgdesc = A feature-rich, modern desktop - latest git
+	pkgver = 10.5.3.r56.gf9cfa8e6
 	pkgrel = 1
 	url = https://solus-project.com/budgie
-	arch = i686
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
+	license = LGPL2.1
 	makedepends = meson
 	makedepends = git
 	makedepends = gobject-introspection
@@ -20,8 +20,6 @@ pkgbase = budgie-desktop-git
 	depends = libwnck3
 	depends = mutter
 	depends = accountsservice
-	depends = gnome-desktop
-	depends = libpulse
 	depends = sassc
 	depends = ibus
 	optdepends = gnome-backgrounds: Default background
@@ -30,8 +28,7 @@ pkgbase = budgie-desktop-git
 	optdepends = network-manager-applet: Network management
 	provides = budgie-desktop
 	conflicts = budgie-desktop
-	source = budgie-desktop-git::git+https://github.com/solus-project/budgie-desktop.git
+	source = budgie-desktop-git::git+https://github.com/BuddiesOfBudgie/budgie-desktop.git
 	md5sums = SKIP
 
 pkgname = budgie-desktop-git
-
