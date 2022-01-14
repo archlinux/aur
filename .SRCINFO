@@ -1,7 +1,7 @@
 pkgbase = brother-dcp7065dn
 	pkgdesc = LPR and CUPS driver for the Brother DCP7065DN
 	pkgver = 3.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://support.brother.com/g/b/downloadlist.aspx?c=de&lang=de&prod=dcp7065dn_all&os=128&flang=English
 	install = brother-dcp7065dn.install
 	arch = i686
@@ -13,14 +13,9 @@ pkgbase = brother-dcp7065dn
 	source = https://download.brother.com/welcome/dlf101123/brgenml1lpr-3.1.0-1.i386.deb
 	source = cupswrapper-license.txt
 	source = lpr-license.txt
-	md5sums = 9d31b628b552959419f2f6c05e16b84a
-	md5sums = dea333f953fcce13c1239bf991524885
-	md5sums = 97ad0cffd216059e9d1d3121899d8646
-	md5sums = 5e87a3dc0f3e3438c088eda0f3565f0d
 	sha256sums = d9e8a164b36bd1bc74cb7a90111ae1f0d2569a1d3a221db69b2064acb850a24d
 	sha256sums = 2e01bfadc82b0416f05c18ba1d3d23999672bb8db48832815a3afd2cb395bb7d
 	sha256sums = 2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9
 	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
 
 pkgname = brother-dcp7065dn
-
