@@ -1,14 +1,14 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=5.1.33
+pkgver=6.0.40
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
-depends=('mpv' 'ffmpeg' 'postgresql' 'patch' 'electron13')
-makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=14' 'python2')
+depends=('mpv' 'ffmpeg' 'postgresql' 'patch' 'electron')
+makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=16' 'python2')
 optdepends=('sudo: for using karaokemugen-install script')
 provides=()
 conflicts=()
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-source=('karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v5.1.33'
+source=('karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.0.40'
         'karaokemugen-lib::git+https://gitlab.com/karaokemugen/lib.git'
         'karaokemugen-avatars::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git'
         'install.sh'
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          '8373c231fb432d6efef66e3ecf94ff0f'
-         'ff9dfba9af9c8fdba5b36a2f8e0b65b6'
+         '55557823030b7824a85a55469e119cb4'
          '5e9a33a42fef7572b7e0fa504c586f32'
          '10561eed906a5efeed427f90501b4f49')
 
@@ -54,10 +54,10 @@ build() {
     yarn installkmfrontend
     # Build and package with electron-builder
     export NODE_ENV='production'
-    electronVer=$(electron13 --version | tail -c +2)
+    electronVer=$(electron --version | tail -c +2)
     yarn build
     yarn buildkmfrontend
-    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron13 -c.electronVersion=$electronVer --dir
+    yarn electron-builder --linux --x64 -c.electronDist=/usr/lib/electron -c.electronVersion=$electronVer --dir
 }
 
 package() {
