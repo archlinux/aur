@@ -9,12 +9,18 @@ url="https://gitlab.com/lagru/pacautomation"
 license=("GPL")
 depends=("python>=3.10" "hicolor-icon-theme")
 optdepends=("breeze-icons: icons for desktop notifications")
+checkdepends=("python-pytest")
 backup=("etc/pacautomation.conf")
 install="INSTALL.sh"
 changelog="CHANGELOG.md"
 source=("https://gitlab.com/lagru/pacautomation/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 # Update with updpkgsums
 sha256sums=('48b8a686632bb0be58621b68f4c72632431f60296598198a34e56de9671b549b')
+
+check() {
+    cd "pacautomation-v${pkgver}"
+    pytest "test/"
+}
 
 package() {
     cd "pacautomation-v${pkgver}/src"
