@@ -1,8 +1,9 @@
 pkgbase = ssh-rdp-host-git
 	pkgdesc = Udev rules and dependencies for an ssh-rdp host
-	pkgver = r102.7a48766
+	pkgver = r110.5047f55
 	pkgrel = 1
 	url = https://github.com/kokoko3k/ssh-rdp
+	install = ssh-rdp-host-git.install
 	arch = any
 	license = LGPL3
 	makedepends = git
@@ -16,6 +17,8 @@ pkgbase = ssh-rdp-host-git
 	provides = ssh-rdp-host
 	conflicts = ssh-rdp-host
 	source = git+https://github.com/kokoko3k/ssh-rdp.git
-	sha256sums = SKIP
+	source = ssh-rdp-host-git.install
+	sha512sums = SKIP
+	sha512sums = 43ee6d7d124d9b5f710470f62bbfba371975d88d022325d68dc6a33cdf047a9382a752d3972dca602cb77db052683c6a6f57db8cbfea46304f0dd531c38bfed4
 
 pkgname = ssh-rdp-host-git

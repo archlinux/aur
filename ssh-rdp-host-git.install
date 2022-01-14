@@ -1,0 +1,4 @@
+post_install() {
+    echo -e 'Running `udevadm control --reload-rules`'
+    udevadm control --reload-rules
+}
