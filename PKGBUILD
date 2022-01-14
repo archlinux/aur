@@ -10,8 +10,8 @@
 
 pkgbase=networkmanager-iwd
 pkgname=(networkmanager-iwd libnm-iwd nm-iwd-cloud-setup)
-pkgver=1.32.12
-pkgrel=2
+pkgver=1.34.0
+pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
@@ -23,18 +23,18 @@ makedepends=(intltool dhclient gobject-introspection gtk-doc
              python-gobject git vala jansson bluez-libs glib2-docs iwd dnsmasq
              openresolv libpsl audit meson)
 checkdepends=(libx11 python-dbus)
-_commit=d90c03b1b8f3e6f5ff8fbc1cbc176f0a0dec6362  # tags/1.32.12^0
+_commit=9133a30c9deb3a003a20b09a617a25b07ada18ae  # tags/1.34.0^0
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#commit=$_commit"
         "$pkgbase.install")
 sha256sums=('SKIP' '6f77a626ec3fd7583beb45ffcac236cdc1fe2b5e5b8ccc5d90983312a265e818')
 
 pkgver() {
   cd NetworkManager
-  git describe --abbrev=10 | sed 's/-dev/dev/;s/-rc/rc/;s/-/+/g'
+  git describe --tags | sed 's/-dev/dev/;s/-rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
-  local meson_args=(
+  local meson_options=(
     # system paths
     -D dbus_conf_dir=/usr/share/dbus-1/system.d
 
@@ -68,7 +68,7 @@ build() {
     -D qt=false
   )
 
-  arch-meson NetworkManager build "${meson_args[@]}"
+  arch-meson NetworkManager build "${meson_options[@]}"
   meson compile -C build
 }
 
@@ -87,20 +87,21 @@ _pick() {
 }
 
 package_networkmanager-iwd() {
-  depends=(libnm-iwd iproute2 polkit iwd libmm-glib libnewt libndp libteam curl
+  depends=(libnm-iwd iproute2 iwd libmm-glib libnewt libndp libteam curl
            bluez-libs libpsl audit mobile-broadband-provider-info)
   provides=(networkmanager)
   conflicts=(networkmanager)
-  optdepends=('dnsmasq: connection sharing'
-              'nftables: connection sharing'
-              'iptables: connection sharing'
-              'bluez: Bluetooth support'
-              'ppp: dialup connection support'
-              'modemmanager: cellular network support'
-              'dhclient: alternative DHCP client'
-              'dhcpcd: alternative DHCP client'
-              'openresolv: alternative resolv.conf manager'
-              'firewalld: firewall support')
+  optdepends=(
+    'polkit: let non-root users control networking'
+    'dnsmasq: connection sharing'
+    'nftables: connection sharing'
+    'iptables: connection sharing'
+    'bluez: Bluetooth support'
+    'ppp: dialup connection support'
+    'modemmanager: cellular network support'
+    'openresolv: alternative resolv.conf manager'
+    'firewalld: firewall support'
+  )
   backup=(etc/NetworkManager/NetworkManager.conf)
   install="$pkgbase.install"
 
