@@ -1,0 +1,23 @@
+pkgbase = libproxy-git
+	pkgdesc = A library that provides automatic proxy configuration management
+	pkgver = r879.g5d5e13d
+	pkgrel = 1
+	url = https://libproxy.github.io/libproxy/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = perl
+	makedepends = python
+	makedepends = webkit2gtk
+	depends = glibc
+	depends = glib2
+	depends = dbus
+	provides = libproxy
+	conflicts = libproxy
+	options = staticlibs
+	source = git+https://github.com/libproxy/libproxy.git
+	sha256sums = SKIP
+
+pkgname = libproxy-git
