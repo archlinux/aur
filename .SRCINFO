@@ -1,6 +1,6 @@
 pkgbase = libqv2ray-git
 	pkgdesc = Modular, feature-rich infrastructure library for Qv2ray
-	pkgver = r157.6b3de89
+	pkgver = r160.eb10006
 	pkgrel = 1
 	url = https://github.com/Shadowsocks-NET/Qv2rayBase
 	arch = x86_64
