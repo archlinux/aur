@@ -1,6 +1,6 @@
 pkgbase = micromamba-bin
 	pkgdesc = Tiny version of mamba, the fast conda package installer.
-	pkgver = 0.17.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/mamba-org/mamba
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = micromamba-bin
 	provides = micromamba
 	conflicts = micromamba
 	options = strip
-	source = micromamba-0.17.0.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/0.17.0/linux-64/micromamba-0.17.0-0.tar.bz2
-	sha256sums = 99154b445e875c9592d15ad00790f584a2a9e347a32281c0761ef19a95bf21d5
+	source = micromamba-0.19.1.tar.bz2::https://api.anaconda.org/download/conda-forge/micromamba/0.19.1/linux-64/micromamba-0.19.1-0.tar.bz2
+	sha256sums = a176ea7d3c43f98a8a4fd7b85f1f288be845f81aa9cb5686d65c7506b4cc80f3
 
 pkgname = micromamba-bin
