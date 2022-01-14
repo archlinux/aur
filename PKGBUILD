@@ -2,14 +2,14 @@
 
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-256xresources
-pkgver=9.26
+pkgver=9.30
 pkgrel=1
 pkgdesc="urxvt with patches to support 256 Xresource colors and fixes for line/font spacing"
 arch=('x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
 license=('GPL')
 makedepends=('libxft' 'perl' 'startup-notification' 'libnsl')
-depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification' 'libnsl')
+depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification' 'libnsl' 'libptytty')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         font-width-fix.patch
@@ -20,7 +20,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         urxvt-tabbed.desktop)
 provides=(rxvt-unicode)
 conflicts=(rxvt-unicode)
-sha256sums=('643116b9a25d29ad29f4890131796d42e6d2d21312282a613ef66c80c5b8c98b'
+sha256sums=('fe1c93d12f385876457a989fc3ae05c0915d2692efc59289d0f70fabe5b44d2d'
             '686770fe4e8d6bb0ba497ad2e1f217d17515f2544d80abe76496c63ead2bfaa4'
             '546a388d0595404a59c71c3eaeba331031032a75f96c57e9a860f27bbd7ebfcc'
             'e51a598ee616b5953c991a4135dd1acc13a62f1180a8b842297f5401df55dc69'
