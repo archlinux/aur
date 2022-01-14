@@ -16,7 +16,7 @@ source=("https://github.com/poooi/poi/releases/download/v${pkgver}/${_pkgname}-$
 	"${pkgname}.sh")
 noextract=("${_pkgname}-${pkgver}.7z")
 sha256sums=('a59624a5cb265fe52e5b08b8ed63a8f812a64ab85cdac2c8d3299af0b8f70b4a'
-            '1226865a0add6b146ea556c5d02e302ea175bdbbb59530ce9830a1828e18875e')
+            '2e3837fbe43bc5154d34190f9c10bd39b860a3a0cf6eb49c04c66701d9980b94')
 
 package() {
 	mkdir -p "${pkgdir}/opt/${_pkgname}/"
