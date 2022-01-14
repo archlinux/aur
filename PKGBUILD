@@ -4,7 +4,7 @@
 # Contributor: PedroHLC <root@pedrohlc.com>
 
 pkgname=gamescope
-pkgver=3.11.0beta3
+pkgver=3.11.0beta4
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
 arch=(x86_64)
@@ -43,7 +43,7 @@ makedepends=(
   ninja
   vulkan-headers
 )
-_tag=8b00767ed5080c45ce62898434e7a0a4083db6d8
+_tag=dd68d7bffe9f1a6b8811a807abff1d3d4df930cc
 source=(git+https://github.com/Plagman/gamescope.git#tag=${_tag})
 b2sums=(SKIP)
 
@@ -60,7 +60,7 @@ pkgver() {
 build() {
   export LDFLAGS="$LDFLAGS -lrt"
   arch-meson gamescope build \
-    -Dforce_fallback_for= \
+    -Dforce_fallback_for=stb \
     -Dpipewire=enabled
   meson compile -C build
 }
