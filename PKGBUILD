@@ -19,7 +19,7 @@ _merge_requests_to_use=('1862')
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=41.2+17+g540f5f947
+pkgver=41.3
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -38,7 +38,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=540f5f9476e10aa01007515858593596bb64e04f  # tags/41.2^17
+_commit=0599ffd06e1795f2c1c1bb18fe3d495c7206a3b7  # tags/41.3^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -117,6 +117,13 @@ prepare() {
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
 
+  # Title: build: Drop incorrect positional arg
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65450a836ee9e0722a2d4c3327f52345eae293c6
+  # Type: 3
+  # Status: 4
+  # Comment: Fix build with meson 0.61.0
+  git cherry-pick -n 65450a836ee9e0722a2d4c3327f52345eae293c6
+
   # Title: St theme: use css instance data
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/536
   # Type: 2
@@ -151,17 +158,24 @@ prepare() {
 }
 
 build() {
+  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
+  LDFLAGS+=" -Wl,-Bsymbolic-functions"
+
   arch-meson $_pkgname build -D gtk_doc=true
   meson compile -C build
 }
 
-check() (
+_check() (
   mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
   export XDG_RUNTIME_DIR
 
-  dbus-run-session xvfb-run -s '-nolisten local' \
-    meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs
 )
+
+check() {
+  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
+    bash -c "$(declare -f _check); _check"
+}
 
 package() {
   depends+=(libmutter-9.so)
