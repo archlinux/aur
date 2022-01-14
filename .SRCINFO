@@ -1,6 +1,6 @@
 pkgbase = qv2ray-git
 	pkgdesc = A cross platform connection manager for V2Ray and other backends
-	pkgver = 3.0.0.rc1.r18.gdac7ed16
+	pkgver = 3.0.0.rc1.r19.g7898f0e2
 	pkgrel = 1
 	url = https://github.com/Shadowsocks-NET/Qv2ray
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = qv2ray-git
 	makedepends = which
 	depends = grpc
 	depends = hicolor-icon-theme
+	depends = libqv2ray-git
 	depends = protobuf
 	depends = qt6-base
 	depends = qt6-svg
