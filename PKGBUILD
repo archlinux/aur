@@ -3,14 +3,14 @@
 
 _pkgname=FishFight
 pkgname=fishfight-git
-pkgver=0.3.r0.g089be0a
+pkgver=0.3.r21.g0e27777
 pkgrel=1
 pkgdesc="A tactical 2D shooter game"
 arch=('x86_64')
 url="https://github.com/fishfight/FishFight"
 license=('MIT' 'Apache')
-depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib')
-makedepends=('rust' 'git' 'cmake')
+depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib' 'sdl2')
+makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}"
@@ -49,5 +49,5 @@ package() {
 
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 docs/LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 licenses/LICENSE-MIT -t "$pkgdir/usr/share/licenses/$pkgname"
 }
