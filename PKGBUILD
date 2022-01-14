@@ -15,10 +15,12 @@ b2sums=('acfdc58991dcfc476ea7a448788a2a32250b0e8dcc9017e082746f12a06b203859b8d2f
 
 build() {
     cd "${srcdir}/or-tools-${pkgver}"
-    make third_party
-    pacman -Qi cplex &> /dev/null && echo 'UNIX_CPLEX_DIR = /usr/lib' >> Makefile.local
-    make python
-    make pypi_archive
+    if [ `pacman -Qi cpelx &>/dev/null` ]; then
+        cmake -S. -Bbuild -DBUILD_PYTHON:BOOL=ON -DUSE_CPLEX:BOOL=ON -DCPLEX_ROOT=/usr/lib/cplex
+    else
+	cmake -S. -Bbuild -DBUILD_PYTHON:BOOL=ON
+    fi
+    cmake --build build
 }
 
 package() {
