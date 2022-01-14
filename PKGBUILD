@@ -2,7 +2,7 @@
 
 pkgname=tun2socks
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="tun2socks - powered by gVisor TCP/IP stack"
 arch=('any')
 url="https://github.com/xjasonlyu/tun2socks"
@@ -29,4 +29,5 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 build/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
