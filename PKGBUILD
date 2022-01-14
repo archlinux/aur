@@ -1,7 +1,7 @@
 # Maintainer: Lars Grüter <lagru+pacautomation@mailbox.org>
 
 pkgname="pacautomation"
-pkgver="0.16.2"
+pkgver="0.16.3"
 pkgrel="1"
 pkgdesc="Background download of package upgrades and cache cleaning."
 arch=("any")
@@ -15,7 +15,7 @@ install="INSTALL.sh"
 changelog="CHANGELOG.md"
 source=("https://gitlab.com/lagru/pacautomation/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 # Update with updpkgsums
-sha256sums=('7b7e2a39a91bf97cf802777775623f57a6b91e67b6fe531c6bc0b87c5d0cfcaa')
+sha256sums=('c8c718acc4fd03a303e89c1bbae01f5f4d3c55cec3dfedfa67ce9308c3a9edd7')
 
 check() {
     cd "pacautomation-v${pkgver}"
