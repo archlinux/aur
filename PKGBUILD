@@ -2,7 +2,7 @@
 
 pkgname='rustpad-bin'
 pkgdesc='Multi-threaded Padding Oracle attacks against any service.'
-pkgver='1.7.0'
+pkgver='1.7.3'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/Kibouo/rustpad/'
@@ -14,7 +14,7 @@ checkdepends=()
 provides=('rustpad')
 conflicts=('rustpad')
 source=("${url}releases/download/v${pkgver}/rustpad")
-sha256sums=('ff13fc312379292bcefcc44ccae67658ea07354082e994148431bf71959a4c91')
+sha256sums=('8f1fefd7827d18893027d2bc953db587387ce9dbb27e31d4491654efc385a356')
 
 package() {
     install -Dm755 "rustpad" "$pkgdir/usr/bin/rustpad"

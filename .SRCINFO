@@ -1,13 +1,13 @@
 pkgbase = rustpad-bin
 	pkgdesc = Multi-threaded Padding Oracle attacks against any service.
-	pkgver = 1.7.0
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = https://github.com/Kibouo/rustpad/
 	arch = x86_64
 	license = GPL-3.0
 	provides = rustpad
 	conflicts = rustpad
-	source = https://github.com/Kibouo/rustpad/releases/download/v1.7.0/rustpad
-	sha256sums = ff13fc312379292bcefcc44ccae67658ea07354082e994148431bf71959a4c91
+	source = https://github.com/Kibouo/rustpad/releases/download/v1.7.3/rustpad
+	sha256sums = 8f1fefd7827d18893027d2bc953db587387ce9dbb27e31d4491654efc385a356
 
 pkgname = rustpad-bin
