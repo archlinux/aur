@@ -1,17 +1,18 @@
 pkgbase = pacautomation
 	pkgdesc = Background download of package upgrades and cache cleaning.
-	pkgver = 0.16.1
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://gitlab.com/lagru/pacautomation
 	install = INSTALL.sh
 	changelog = CHANGELOG.md
 	arch = any
 	license = GPL
+	checkdepends = python-pytest
 	depends = python>=3.10
 	depends = hicolor-icon-theme
 	optdepends = breeze-icons: icons for desktop notifications
 	backup = etc/pacautomation.conf
-	source = https://gitlab.com/lagru/pacautomation/-/archive/v0.16.1/pacautomation-v0.16.1.tar.gz
-	sha256sums = 48b8a686632bb0be58621b68f4c72632431f60296598198a34e56de9671b549b
+	source = https://gitlab.com/lagru/pacautomation/-/archive/v0.16.2/pacautomation-v0.16.2.tar.gz
+	sha256sums = 7b7e2a39a91bf97cf802777775623f57a6b91e67b6fe531c6bc0b87c5d0cfcaa
 
 pkgname = pacautomation

@@ -1,6 +1,5 @@
-## Release 0.16.1 on 2021-12-27
+## Release 0.16.2 on 2022-01-14
 
-- Fix internal error which caused the script to fail if an orphaned package was
-  found.
-- Fix version comparison between packages; was only relevant for ordering the
-  package order in the log and command line.
+- Use icons in notifications that are more consistent with KDE Plasma.
+- Run very basic test suite when building the package.
+- Include PYC files for all optimization levels in package.
