@@ -1,13 +1,9 @@
-# Maintainer: ghostbuster <aur@sieverdingbeck.com>
+# Maintainer: ghostbuster <ghost_buster+aur@posteo.de>
 # Contributor: Vyacheslav Artemiev <artemiev.vyacheslav a gmail d com>
-_pkgname=Nagstamon
-pkgname=nagstamon-beta
-pkgver=3.9.20211208.r2329.16549c68
-
 _pkgname=nagstamon
 pkgname=$_pkgname-git
 pkgver=3.9.20211208.r2329.16549c68
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios status monitor for the desktop"
 depends=('python-pyqt5' 'qt5-multimedia' 'qt5-svg' 'python-requests' 'python-beautifulsoup4' 'python-keyring' 'python-psutil' 'python-requests-kerberos' 'python-lxml' 'python-dbus' 'python-dateutil' 'python-pysocks')
 optdepends=('python-requests-gssapi: Will be used instead of python-requests-kerberos for kerberos auth if present')
@@ -19,7 +15,7 @@ optdepends=()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(repo::git+https://github.com/HenriWahl/Nagstamon.git)
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 #pkgver() {
 #  cd "${srcdir}/${_pkgname}"
@@ -43,6 +39,6 @@ package() {
   sed -i setup.py -e "s/from Nagstamon.Helpers import get_distro//"
   sed -i setup.py -e "s/get_distro()/('arch', '', 'Arch Linux')/"
   python setup.py install --prefix=/usr --root="$pkgdir"
-  mv $pkgdir/usr/bin/nagstamon.py $pkgdir/usr/bin/nagstamon
+  mv "$pkgdir/usr/bin/nagstamon.py" "$pkgdir/usr/bin/nagstamon"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
