@@ -286,3 +286,17 @@ Bug Fixes
 - We fixed an issue on the Morgen link widget preventing the correct navigation through months
 - We fixed an issue that could sometimes cause events to disappear from the calendar view
 
+=== Morgen 2.4.2
+New Features
+- The native Zoom integration is now available! It took a few weeks for Zoom to perform a security review of Morgen and giving us green light, but finally here it is. As with Google Meet and Microsoft Teams, you can now create an ad-hoc meeting link for each new event scheduled manually or through a Morgen Scheduling link.
+- With the start of 2022, we have decided to replace the closed feedback board with a more open roadmap platform that is accessible from both the Morgen app and our website. Open to everyone, no registration required.
+- You can now embed your Personal Booking page on your website. A button with the instructions to do so have been added to Morgen.
+
+Improvements
+- The one-click Join button for virtual meetings now appears only for meetings you are attending (and not, for example, for meetings that are only on your colleagues calendars)
+- Virtual room links are now displayed in the confirmation and reminder emails that are sent to your attendees, when they book a meeting using a Morgen Scheduling link
+
+Bug Fixes
+- We fixed the categorisation of some CalDAV calendars, erroneously considered read-only, which was preventing the editing of the events
+- We fixed a problem causing some Office 365 accounts to load forever in case of bad internet connection
+- We fixed some layout glitches, like the sidebar header moving behind the macOS traffic light buttons and the scheduler tooltip being hardly readable
