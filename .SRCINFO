@@ -1,0 +1,15 @@
+pkgbase = qdriverstation-appimage
+	pkgdesc = Cross-platform clone of the FRC Driver Station
+	pkgver = 21.04
+	pkgrel = 1
+	url = https://github.com/FRC-Utilities/QDriverStation
+	arch = x86_64
+	license = MIT
+	noextract = qdriverstation-21.04.AppImage
+	options = !strip
+	source = qdriverstation-21.04.AppImage::https://github.com/FRC-Utilities/QDriverStation/releases/download/v21.04/QDriverStation-21.04-Linux.AppImage
+	source = https://raw.githubusercontent.com/FRC-Utilities/QDriverStation/master/LICENSE.md
+	sha256sums = 0b601f1bf3631defec637a105b359624110af0cf1f3901046173bb954ad8946e
+	sha256sums = f3e0b8f4c98a989ce7363ab1b9b6adb87e99409db674fdc192ea8d1c99adf184
+
+pkgname = qdriverstation-appimage
