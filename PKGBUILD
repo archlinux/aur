@@ -6,7 +6,7 @@
 
 pkgname=tmsu-git
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for tagging your files and accessing them through a virtual filesystem. (development version)"
 arch=('i686' 'x86_64')
 url="https://tmsu.org/"
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}"/tmsu
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
