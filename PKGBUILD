@@ -6,7 +6,7 @@
 _bundle_pandoc=false
 
 pkgname=zettlr
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -19,14 +19,14 @@ optdepends=('pandoc: For exporting to various format'
             'ttf-lato: Display output in a more comfortable way')
 _csl_locale_commit=c38205618f1a23eb80e8c5f33c8086648ca3874b # Dec 23, 2021
 _csl_style_commit=ccb71844fdafb2b7a48cccb364f4b4c03d3cdce6  # Sep 19, 2021
-_pandoc_binary_ver=2.16.2 # check scripts/get-pandoc.sh for update
+_pandoc_binary_ver=2.17 # check scripts/get-pandoc.sh for update
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Zettlr/Zettlr/archive/v${pkgver}.tar.gz"
         '0001-Do-not-download-pandoc.patch'
         # citation style
         "locales-${pkgver}-${pkgrel}.zip::https://github.com/citation-style-language/locales/archive/${_csl_locale_commit}.zip"
         "chicago-author-date-${pkgver}-${pkgrel}.csl::https://github.com/citation-style-language/styles/raw/${_csl_style_commit}/chicago-author-date.csl")
-sha256sums=('080e25c2307d5fa6a2510fe4551636425f373415804a6ab77a36135aa102a3a3'
+sha256sums=('5e7c17ee7664c84929f859e46d3bd098c6f8047a69c9a40a1c6a90af0fe9d816'
             'a0fe981dade0ce52be190d8e8a2fd7f6c05c32c7d44d96c63f6f494460d483ef'
             '275fc80a391b4002b52182deb12997a1408118b7753977ea69ef5256c6f3ff47'
             '1455e57b314fd13ba155f4ab93f061e3e6393c13cd0f16380adb9d73614f7930')
