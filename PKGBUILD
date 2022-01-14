@@ -16,12 +16,6 @@ source=("https://gitlab.com/lagru/pacautomation/-/archive/v${pkgver}/${pkgname}-
 # Update with updpkgsums
 sha256sums=('48b8a686632bb0be58621b68f4c72632431f60296598198a34e56de9671b549b')
 
-build() {
-    cd "pacautomation-v${pkgver}/src"
-    # Prepare byte-code file for installation (not sure if this works)
-    python -O -m compileall *.py
-}
-
 package() {
     cd "pacautomation-v${pkgver}/src"
     install -Dm 644 "pacautomation.conf" -t "${pkgdir}/etc/"
@@ -30,7 +24,9 @@ package() {
     install -Dm 644 "pacautomation.notifyrc" -t "${pkgdir}/usr/share/knotifications5/"
     install -Dm 644 "pacautomation.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
     install -Dm 755 "pacautomation.py" -t "${pkgdir}/usr/lib/pacautomation/"
-    cp -a "__pycache__" "${pkgdir}/usr/lib/pacautomation/"
+
+    # Compile PYC files so that they can be tracked by pacman
+    python -m compileall -q -o 0 -o 1 -o 2 -d "/" "${pkgdir}"
 
     install -dm 755 "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${pkgname}/pacautomation.py" "${pkgdir}/usr/bin/pacautomation"
