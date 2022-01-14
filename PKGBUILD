@@ -1,6 +1,8 @@
+# Maintainer: BigmenPixel <bigmen dot pixel at tuta dot io>
+
 pkgname=tun2socks
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="tun2socks - powered by gVisor TCP/IP stack"
 arch=('any')
 url="https://github.com/xjasonlyu/tun2socks"

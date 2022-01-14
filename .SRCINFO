@@ -1,7 +1,7 @@
 pkgbase = tun2socks
 	pkgdesc = tun2socks - powered by gVisor TCP/IP stack
 	pkgver = 2.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xjasonlyu/tun2socks
 	arch = any
 	license = GPL3
