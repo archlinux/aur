@@ -8,6 +8,8 @@ url="https://github.com/skypjack/uvw"
 license=('MIT')
 depends=('libuv')
 makedepends=('cmake')
+provides=('uvw')
+conflicts=('uvw')
 source=("$pkgname::git+$url.git")
 b2sums=('SKIP')
 
