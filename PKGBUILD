@@ -1,18 +1,25 @@
 # Maintainer: Rudolf Polzer <divVerent at gmail dot com>
+# Contributor: FabioLolix
+
 pkgname=aaaaxy
 pkgver=1.0.187
-pkgrel=3
+pkgrel=4
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
-url="git+https://github.com/divVerent/$pkgname"
+url="https://github.com/divVerent/$pkgname"
 license=('Apache')
-makedepends=('git' 'go' 'graphviz' 'imagemagick' 'make')
-source=("$url#tag=v$pkgver")
-sha256sums=('SKIP')
+depends=('alsa-lib' 'libglvnd' )
+makedepends=('git' 'go' 'graphviz' 'imagemagick' 'make' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
+source=("git+$url#tag=v$pkgver"
+        "git+https://github.com/gabomdq/SDL_GameControllerDB.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare() {
   cd "$pkgname"
-  git submodule update --init
+  git submodule init
+  git config 'submodule.third_party/SDL_GameControllerDB/assets/input/SDL_GameControllerDB.url' "${srcdir}/SDL_GameControllerDB"
+  git submodule update
 }
 
 build() {
