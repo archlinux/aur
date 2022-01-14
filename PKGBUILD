@@ -2,7 +2,7 @@
 
 pkgname=orion-desktop
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities"
 arch=('x86_64')
 url="https://snapcraft.io/orion-desktop"
@@ -59,7 +59,7 @@ depends=(
   'zstd'
 )
 
-makedepends=('squashfs-tools')
+makedepends=('squashfs-tools' 'jq')
 sha256sums=('fe8c4be513d2d88a07cdc4c7d073adf84a1a2b25c25ea8c12010456006ff1cca'
             '25f7ceaaec37eb9c287abeb839ba2036738eb363079e321c2bd410fa48301dd6'
             '71420954985d07f63c8195d5e6ff12c55ac366d99fd3024846bbdc8463af2579'

@@ -1,11 +1,12 @@
 pkgbase = orion-desktop
 	pkgdesc = A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snapcraft.io/orion-desktop
 	arch = x86_64
 	license = PROPRIETARY
 	makedepends = squashfs-tools
+	makedepends = jq
 	depends = brotli
 	depends = bzip2
 	depends = double-conversion
