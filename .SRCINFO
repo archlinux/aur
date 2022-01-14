@@ -1,6 +1,6 @@
 pkgbase = qv2ray-git
-	pkgdesc = The original Qv2ray project by the author who contributed over 95% code and other contributors. Unlike Qv2ray/Qv2ray whose control has been forcibly taken away from the author by another organization owner.
-	pkgver = 3.0.0.6999.r3052.910d9aeb
+	pkgdesc = A cross platform connection manager for V2Ray and other backends
+	pkgver = 3.0.0.rc1.r18.gdac7ed16
 	pkgrel = 1
 	url = https://github.com/Shadowsocks-NET/Qv2ray
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = qv2ray-git
 	optdepends = v2ray: use packaged v2ray
 	provides = qv2ray
 	conflicts = qv2ray
+	conflicts = xray
 	source = qv2ray-git::git+https://github.com/Shadowsocks-NET/Qv2ray.git
 	sha512sums = SKIP
 
