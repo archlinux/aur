@@ -1,0 +1,17 @@
+pkgbase = edfbrowser-git
+	pkgdesc = A free, opensource, multiplatform, universal viewer and toolbox intended for, but not limited to, timeseries storage files like EEG, EMG, ECG, BioImpedance, etc. (development version)
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.teuniz.net/edfbrowser/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	provides = edfbrowser
+	conflicts = edfbrowser
+	source = git+https://gitlab.com/Teuniz/EDFbrowser.git
+	source = edfbrowser.desktop
+	sha1sums = SKIP
+	sha1sums = 3076f5b8ab0313edb7b20ca13214382914725f52
+
+pkgname = edfbrowser-git

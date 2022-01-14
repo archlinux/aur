@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=EDFbrowser
+GenericName=Biosignal Viewer
+Comment=A universal viewer for timeseries storage files like EEG, EMG, and ECG
+Exec=edfbrowser %f
+Icon=edfbrowser
+Terminal=false
+Categories=Science
