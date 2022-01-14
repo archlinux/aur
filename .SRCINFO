@@ -1,6 +1,6 @@
 pkgbase = maui-shell-git
 	pkgdesc = Maui Shell is a convergent shell for desktops, tablets, and phones.
-	pkgver = r93.fa8398e
+	pkgver = r96.7843cc7
 	pkgrel = 1
 	url = https://github.com/Nitrux/maui-shell
 	arch = x86_64
