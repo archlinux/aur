@@ -1,7 +1,7 @@
 pkgbase = nvlax-git
 	pkgdesc = Future-proof NvENC & NvFBC patcher
 	pkgver = r11.b3699ad
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/illnyang/nvlax
 	arch = x86_64
 	license = GPL

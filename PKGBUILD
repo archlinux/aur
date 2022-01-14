@@ -3,7 +3,7 @@
 _gitname=nvlax
 pkgname=$_gitname-git
 pkgver=r11.b3699ad
-pkgrel=2
+pkgrel=3
 pkgdesc='Future-proof NvENC & NvFBC patcher'
 arch=('x86_64')
 url='https://github.com/illnyang/nvlax'
@@ -19,6 +19,13 @@ source=("$_gitname"::"git+https://github.com/illnyang/$_gitname.git"
 sha256sums=('SKIP'
             '09c135c0a372f0b0020fea2665301249e73d32919d9b83d37718d402897ba5f7'
             '5d7eae6a93cd66b602a723f615d1c768f131dbb1e14432783f2a452a87e4501e')
+
+prepare() {
+  cd $_gitname
+
+  # Fixes: https://github.com/illnyang/nvlax/issues/11
+  sed -i 's|CPMAddPackage("gh:zyantific/zydis#master")|CPMAddPackage("gh:zyantific/zydis#55dd08c210722aed81b38132f5fd4a04ec1943b5")|g' CMakeLists.txt
+}
 
 pkgver() {	
   cd $_gitname
