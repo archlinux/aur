@@ -1,6 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=libqv2ray-git
-pkgver=r157.6b3de89
+pkgver=r160.eb10006
 pkgrel=1
 pkgdesc="Modular, feature-rich infrastructure library for Qv2ray"
 arch=(x86_64)
@@ -18,11 +18,6 @@ pkgver() {
     # git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-# prepare() {
-#     cd "$srcdir/$pkgname"
-#     git submodule update --init --recursive 3rdparty/uvw
-# }
 
 build() {
     cd "$srcdir/$pkgname"
