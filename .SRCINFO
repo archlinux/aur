@@ -1,0 +1,14 @@
+pkgbase = multiwfn-bin
+	pkgdesc = A program for realizing electronic wavefunction analysis, stable binary version
+	pkgver = 3.7
+	pkgrel = 1
+	url = http://sobereva.com/multiwfn
+	arch = x86_64
+	license = custom
+	depends = openmotif
+	depends = libglvnd
+	provides = multiwfn
+	source = http://sobereva.com/multiwfn/misc/Multiwfn_3.7_bin_Linux.zip
+	sha256sums = 7a6573e6e340a5b24b755b676fb23dd51649924ab5b65643778591c1589c68f7
+
+pkgname = multiwfn-bin
