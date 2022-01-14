@@ -6,7 +6,7 @@
 # - use upstream oss-licenses instead of bundling it
 
 pkgname=mondoo
-pkgver=5.0.0
+pkgver=5.21.1
 pkgrel=1
 pkgdesc="Infrastructure search, analytics, and security analysis"
 url="https://mondoo.io"
@@ -20,8 +20,8 @@ source=(
 )
 arch=('x86_64')
 
-sha256sums=('cb8cfc25ee93516ace120123fcecf1ba8587973aea9cf5a7ca8542e44a9ec6df'
-            '77e73e231a13c3c072e4c8a4812779d34b9bdf9cc6a495f82fd0efc92f07c1aa'
+sha256sums=('c3e5b20854742482a2547f096ffbe3e475703c82636c7d26b364e2250b5f9904'
+            '490d47ec3d892b3cab9f37b8e4379f4534f7ce1bfb1dcadd0184d7d1896e86ce'
             'cd99e204a986af5a91f46c43478b28f556a4f50fd9721844d0b600d45ac43cb8'
             '2febf46353886823e6a61ca15c73e651d71d45579b0a1a17e18905a61387e7e6'
             '92ceefe40c2963f96d02e36743338599cfa9a062d00a5e38580370099b01066c')
@@ -35,7 +35,7 @@ package() {
 
   install -Dm 755 mondoo.sh ${pkgdir}/usr/bin/mondoo
   install -Dm 644 LICENSE.html "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.html
-  install -Dm 644 OSS-LICENSES.txt "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.txt
+  install -Dm 644 OSS-LICENSES.tar.xz "$pkgdir"/usr/share/licenses/$pkgname/OSS-LICENSES.tar.xz
   install -Dm 644 mondoo.service "$pkgdir"/usr/lib/systemd/system/mondoo.service
 }
 
