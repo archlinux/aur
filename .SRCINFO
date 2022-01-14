@@ -1,8 +1,8 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.15.12.arch1
+	pkgver = 5.16.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.15.12-arch1
+	url = https://github.com/archlinux/linux/commits/v5.16-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,23 +20,19 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.15.12-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.16-arch1
 	source = config
 	source = bfq-default.patch
-	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/64f7cf7ff3174a30cca539d181afb47872ffb188/linux-tkg-patches/5.15/0007-v5.15-fsync1_via_futex_waitv.patch
-	source = https://raw.githubusercontent.com/Frogging-Family/linux-tkg/64f7cf7ff3174a30cca539d181afb47872ffb188/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 6ab7a66895804f832f1b9594b682be0e2e6982455a8fc3f7e87111e1c7dff866
+	sha256sums = 7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5
 	sha256sums = f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d
-	sha256sums = 63a2ddf7ca9d3922f4eac3ac66bc37ffb10ad8b18b3e596832d3faa66b93dfa6
-	sha256sums = c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97
 
 pkgname = linux-covolunablu-gaming
-	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler and Valve futex patches (from linux-tkg).
+	pkgdesc = The Linux kernel and modules; it includes BFQ as default scheduler (quite vanilla now, will add patches when needed).
 	depends = coreutils
 	depends = kmod
 	depends = initramfs

@@ -3,11 +3,10 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.15.12.arch1
+pkgver=5.16.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
-_linux_tkg_commit="64f7cf7ff3174a30cca539d181afb47872ffb188"
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -22,8 +21,6 @@ source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
   bfq-default.patch
-  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-fsync1_via_futex_waitv.patch"
-  "https://raw.githubusercontent.com/Frogging-Family/linux-tkg/${_linux_tkg_commit}/linux-tkg-patches/5.15/0007-v5.15-futex_waitv.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -32,11 +29,9 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '6ab7a66895804f832f1b9594b682be0e2e6982455a8fc3f7e87111e1c7dff866'
+            '7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
             # -- covolunablu-gaming patches --
-            'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d'
-            '63a2ddf7ca9d3922f4eac3ac66bc37ffb10ad8b18b3e596832d3faa66b93dfa6'
-            'c8f7c50d9b1418ba22b5ca735c47111a162be416109714d26a674162e5b2cb97')
+            'f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d')
 
 export KBUILD_BUILD_HOST=covolunablu
 export KBUILD_BUILD_USER=$pkgbase
@@ -74,7 +69,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler and Valve futex patches (from linux-tkg)."
+  pkgdesc="The $pkgdesc kernel and modules; it includes BFQ as default scheduler (quite vanilla now, will add patches when needed)."
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
