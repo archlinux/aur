@@ -2,7 +2,7 @@
 
 pkgname=urxvt-url-picker-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl extension for rxvt-unicode (aka urxvt) to enable quick keyboard navigation of URLs shown in the terminal window'
 arch=('any')
 url='https://github.com/quite/urlpicker'
