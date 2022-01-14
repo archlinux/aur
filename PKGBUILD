@@ -3,14 +3,14 @@
 _pkgname=paperback
 pkgname=${_pkgname}-git
 _pkgver=0.0.0
-pkgver=0.0.0.8512e5f
+pkgver=0.0.0.709375a
 pkgrel=1
 pkgdesc="Paper backup generator suitable for long-term storage."
 url="https://github.com/cyphar/${_pkgname}"
 arch=(${CARCH})
 license=('GPL')
 makedepends=('cargo' 'git')
-_commit=8512e5fb74939e176a46cda9b0d38f0ee47bfa78
+_commit=709375aad3e1a03da7fc9313a3c50f450786e0d6
 source=("git+${url}#commit=${_commit}")
 sha512sums=('SKIP')
 
