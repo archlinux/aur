@@ -10,5 +10,6 @@ pkgbase = kerbal-telemetry
 	depends = npm
 	noextract = kerbal-telemetry-v2.0.1.tar.gz
 	source = https://gitlab.com/Overloader/kerbal-telemetry/-/archive/v2.0.1/kerbal-telemetry-v2.0.1.tar.gz
+	sha256sums = 65235ddd8e8ff71089b83c707ae36ac8bb2fc238384143d70d8450160a701e9b
 
 pkgname = kerbal-telemetry

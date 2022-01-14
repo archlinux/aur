@@ -31,3 +31,4 @@ package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
     chown -R root:root "${pkgdir}"
 }
+sha256sums=('65235ddd8e8ff71089b83c707ae36ac8bb2fc238384143d70d8450160a701e9b')
