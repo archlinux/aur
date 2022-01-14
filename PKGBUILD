@@ -4,7 +4,7 @@
 pkgname=zrythm
 _pkgver=1.0.0-alpha.27.0.3
 pkgver=1.0.0.alpha.27.0.3
-pkgrel=5
+pkgrel=6
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
@@ -13,6 +13,7 @@ depends=('gtk4' 'graphviz' 'carla' 'fluidsynth' 'vamp-plugin-sdk' 'guile' 'libau
 makedepends=('meson' 'cmake' 'ruby-sass' 'help2man' 'sassc')
 optdepends=('realtime-privileges: allow memory locking')
 conflicts=('zrythm-git')
+options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc})
 sha256sums=('3a857d63283ed547be62e2478b2dc2c8aaf308979a9f731cc48e254a9bba2ac4'
             'SKIP')
@@ -29,7 +30,8 @@ build() {
   cd "$pkgname-$_pkgver"
 
   # TODO: tests
-  meson build --buildtype=release --prefix=/usr \
+  meson build --prefix=/usr \
+    -Doptimization=3 -Ddebug=true \
     -Dmanpage=true \
     -Dcheck_updates=false \
     -Dportaudio=enabled -Drtmidi=enabled -Drtaudio=enabled -Dsdl=enabled
