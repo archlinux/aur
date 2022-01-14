@@ -1,0 +1,18 @@
+pkgbase = btc-cirrus-reporter
+	pkgdesc = bitcoin core cirrus reporter
+	pkgver = db2b312
+	pkgrel = 1
+	url = https://github.com/pro-bitcoin/cirrus-ci-reporter
+	arch = any
+	license = MIT
+	makedepends = go
+	makedepends = make
+	backup = etc/default/btc-cirrus-reporter
+	source = btc-cirrus-reporter::git+https://github.com/pro-bitcoin/cirrus-ci-reporter.git
+	source = btc-cirrus-reporter.service
+	source = btc-cirrus-reporter.env
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = btc-cirrus-reporter

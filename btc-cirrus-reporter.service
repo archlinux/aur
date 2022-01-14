@@ -1,0 +1,11 @@
+[Unit]
+Description=bitcoin core cirrus ci reporter
+After=postgresql.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/default/btc-cirrus-reporter
+ExecStart=/usr/sbin/btc-cirrus-reporter sync --dsn $BTC_CIRRUS_DSN --token $CIRRUS_TOKEN
+
+[Install]
+WantedBy=multi-user.target
