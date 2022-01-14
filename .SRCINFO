@@ -1,0 +1,16 @@
+pkgbase = json-tui
+	pkgdesc = A JSON terminal UI made in C++
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/ArthurSonzogni/json-tui
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	source = https://codeload.github.com/ArthurSonzogni/json-tui/tar.gz/refs/tags/v1.1.0
+	sha256sums = a23cea38ad70bd1b50c219b482cd23f76b12cf73b9a0d8c1a736fe14787b5152
+
+pkgname = json-tui
