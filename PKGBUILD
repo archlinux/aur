@@ -3,7 +3,7 @@
 
 pkgname=inim-git
 _pkgname=inim
-pkgver=0
+pkgver=r149.53a18a5
 pkgrel=1
 pkgdesc="Interactive Nim Shell / REPL / Playground"
 arch=('x86_64')
@@ -28,9 +28,6 @@ pkgver() {
 }
 
 prepare() {
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
-    mkdir -p "${pkgdir}/usr/local/bin/"
-
     cd "${srcdir}/${_dirname}"
     nimble install
 }
@@ -42,6 +39,6 @@ build() {
 
 package() {
     cd "${srcdir}/${_dirname}"
-    install -D $_pkgname "${pkgdir}/usr/local/bin/${_pkgname}"
+    install -D $_pkgname "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
