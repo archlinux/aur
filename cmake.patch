@@ -1,0 +1,12 @@
+diff -urN msamr-1.1.3-orig/CMakeLists.txt msamr-1.1.3/CMakeLists.txt
+--- msamr-1.1.3-orig/CMakeLists.txt	2022-01-14 15:09:22.495180947 -0500
++++ msamr-1.1.3/CMakeLists.txt	2022-01-14 15:09:33.788521185 -0500
+@@ -52,7 +52,7 @@
+ 	include("${EP_ortp_CONFIG_DIR}/ORTPConfig.cmake")
+ 	include("${EP_ms2_CONFIG_DIR}/Mediastreamer2Config.cmake")
+ else()
+-	find_package(ORTP REQUIRED)
++	find_package(ortp REQUIRED)
+ 	find_package(Mediastreamer2 REQUIRED)
+ endif()
+ if(ENABLE_NARROWBAND)
