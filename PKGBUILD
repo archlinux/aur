@@ -7,7 +7,6 @@ pkgdesc='GTK theme for catppuccin. Warm dark theme for the masses!'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft' 'giflib' 'libwebp')
 source=("https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin.tar.gz"
         "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-green.tar.gz"
         "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-magenta.tar.gz"
