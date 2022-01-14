@@ -8,7 +8,7 @@ pkgdesc="A set of office applications for creating text and spreadsheet document
 arch=('x86_64')
 url="https://myoffice.ru/products/standard-home-edition/"
 license=('EULA')
-groups=('')
+groups=('myoffice')
 depends=('abseil-cpp' 'cuneiform' 'curl' 'expat' 'fontconfig' 'freetype2' 'glib2' 'hunspell' 'krb5'
 	'libcups' 'libglvnd' 'libpng12' 'libpulse' 'libx11' 'libxcb' 'libxext' 'libxkbcommon' 'libxkbcommon-x11'
 	'libxrender' 'libzip' 'link-grammar' 'lua' 'mono' 'openssl' 'pixman' 'qt5-base' 'qt5-multimedia'
