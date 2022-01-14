@@ -1,8 +1,9 @@
 pkgbase = vanta-agent
 	pkgdesc = Vanta agent
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vanta.com/
+	install = vanta-agent.install
 	arch = x86_64
 	license = custom:vanta
 	depends = systemd

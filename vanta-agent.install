@@ -1,0 +1,3 @@
+post_remove() {
+    sudo rm -Rf /var/vanta
+}
