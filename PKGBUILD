@@ -8,8 +8,8 @@ pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
 license=('Apache')
-depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr')
-makedepends=('git' 'go' 'graphviz' 'imagemagick' 'make')
+depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
+makedepends=('git' 'go' 'graphviz' 'imagemagick' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("git+$url#tag=v$pkgver"
         "git+https://github.com/gabomdq/SDL_GameControllerDB.git")
 sha256sums=('SKIP'
