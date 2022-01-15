@@ -11,13 +11,12 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('296baab44b11647200c9245520970c0bbe685d4d38da683e7adaa71fc6111c71')
 
 build() {
-	cd "$pkgname-$pkgver"
-	GOPATH="$srcdir" go get -v .
-    GOPATH="$srcdir" go build -v -o gobbl .
+    cd "$pkgname-$pkgver"
+    go build -v -o gobbl .
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+    cd "$pkgname-$pkgver"
+    install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}
 }
