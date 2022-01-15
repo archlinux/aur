@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PyPacman
+Comment=Pacman game written in python
+Exec=/usr/bin/pypacman
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/pypacman.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
