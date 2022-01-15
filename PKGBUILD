@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=8.1.20211208_r562.2d15471
+pkgver=9.0_r637.ca60560
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -32,7 +32,8 @@ optdepends=(
 	'rsync: optional for backing up steamuser files from proton games'
 	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
 	'p7zip: optional for extracting SpecialK archives'
-	'pev: optional for extracting data from windows game executables'
+	'pev: optional for extracting data from the game exe'
+	'gdb: optional for starting the game under the debugger gdb'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
