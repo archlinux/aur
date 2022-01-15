@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=concordium-desktop-wallet-testnet-bin
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Desktop wallet for Concordium blockchain in testnet'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('unknown')
 depends=('gtk3' 'libnotify' 'libsecret' 'libxss' 'nss' 'xdg-utils')
 optional=('libappindicator-gtk3')
 source=("https://distribution.testnet.concordium.com/tools/linux/concordium-desktop-wallet-testnet-$pkgver.deb")
-sha512sums=('9c0156d59288a3f7768602fc6fdf60086e554df5d840f7331954f94b7edaeb50c5608aeae2908301f6cfe0de48ae3f1eeb6423bd4933285142f287da779fb3be')
+sha512sums=('d27cdc2b3f0d88cef30437334588c1c8c05b3cd3eb6ed8ab953b5c86c33cbb9e2368e8a4bf945f0986dc47885cf8f85572eb283de5422090b0662d21d96b3116')
 
 prepare() {
     bsdtar -xf data.tar.xz
