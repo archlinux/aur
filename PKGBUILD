@@ -6,6 +6,7 @@ pkgdesc='UT: C++20 μ(micro)/Unit Testing Framework.'
 arch=('any')
 url='https://github.com/boost-ext/ut'
 license=('Boost')
+makedepends=('cmake')
 source=("https://github.com/boost-ext/ut/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('eb8ae4db6b0d27b2a7d4621315db5c32')
 
