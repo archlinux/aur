@@ -48,9 +48,9 @@ depends=('wxgtk3'
           'libedit'
           'libssh'
           'mariadb-libs'
-          'ncurses',
-          'uchardet',
-          'hunspell',
+          'ncurses'
+          'uchardet'
+          'hunspell'
           #'xterm' 'wget' 'curl'
           #'python2'
           #'python'
