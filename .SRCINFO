@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = Next generation of the Alchemy Viewer, an open-source Second Life client - Official CI Project build
 	pkgver = 6.5.2.1342
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemyviewer.org
 	arch = x86_64
 	license = LGPL
