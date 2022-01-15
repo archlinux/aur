@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=lunatic
-pkgver=0.7.0
+pkgver=0.7.4
 pkgrel=1
 pkgdesc='Lunatic is an Erlang inspired runtime for WebAssembly'
 arch=('x86_64')
@@ -21,4 +21,4 @@ package() {
   install -Dm644 $pkgname-$pkgver/LICENSE-MIT "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE-MIT
 }
 
-sha256sums=('25eea03a220804d104db52fe3e525630cfb2a0873a62200eb85982d0e49c21e9')
+sha256sums=('f2cd01758fa4fc8deea0fde7d98d785d348136ae0c923cc4f1848eb92d0853d7')
