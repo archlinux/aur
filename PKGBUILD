@@ -2,7 +2,7 @@
 # Contributor: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="monica-crm"
-pkgver=3.5.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Personal CRM. Remember everything about your friends, family and business relationships."
 url="https://www.monicahq.com/"
@@ -22,7 +22,7 @@ source=(
     "monica-crm-schedulerun.timer"
 )
 sha512sums=(
-    "6ba35356aab7ac9db09ef97677816d1448224fdc54a389e4fad7bdf1fef5b0876564fdb0841e3a5b1e9dc566006ecf68cf93c5f9c0d1dc21c32f3e3451bdc67a"
+    "fcc1f5ae67586bc7afb562ae131e4a5fb31c1a8368318649e5aabd5d3527d19bb99ab767a687c2930b10fa218ec946bbd5a96cd1cc1efe7740994c6dfa6b80ef"
     #"b2e1bed4a3b80ed26989c5cf3d32cdc697da913570bacc924451579d73bb08eee9bc20a3af34cac5287fcd659231313c65f5f6ec9a5443427c25e413fb826719"
     "638655e17e071fe6e84cc779ad5348c24be555dd9d0699fdbab1f0f04b0544688d1f96903ed33aaf139d78ce1a75ffd0cc99b79a77201fe349bf7eb21a22cfed"
     "9a9309807c9bec47ff38333223a6ad8b518ce1fc89aab02f2b6d2f953c55bc048a522182842759292fa4604636e966f9bca0c213cf5f28eaef94f668693029fe"
