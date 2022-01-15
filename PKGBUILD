@@ -2,7 +2,7 @@
 
 pkgname="pdfcpu-git"
 _pkgname="pdfcpu"
-pkgver=0.3.13.r16.g31d2490
+pkgver=0.3.13.r17.gb8b77ee
 pkgrel=1
 pkgdesc="A Command-line PDF processor written in Go."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')

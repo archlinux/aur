@@ -1,6 +1,6 @@
 pkgbase = pdfcpu-git
 	pkgdesc = A Command-line PDF processor written in Go.
-	pkgver = 0.3.13.r16.g31d2490
+	pkgver = 0.3.13.r17.gb8b77ee
 	pkgrel = 1
 	url = https://github.com/pdfcpu/pdfcpu
 	arch = i686
