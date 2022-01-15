@@ -1,7 +1,7 @@
 pkgbase = jack
 	pkgdesc = A low-latency audio server
-	pkgver = 0.125.0
-	pkgrel = 13
+	pkgver = 0.126.0
+	pkgrel = 1
 	url = http://jackaudio.org/
 	arch = x86_64
 	license = GPL
@@ -17,24 +17,13 @@ pkgbase = jack
 	makedepends = readline
 	makedepends = zita-alsa-pcmi
 	makedepends = zita-resampler
-	source = jack::git+https://github.com/jackaudio/jack1.git#tag=0.125.0
-	source = git+https://github.com/jackaudio/example-clients
+	source = jack::git+https://github.com/jackaudio/jack1.git#tag=0.126.0?signed
 	source = git+https://github.com/jackaudio/headers
-	source = git+https://github.com/jackaudio/tools
-	source = jack-0.125.0-headers.patch::https://github.com/jackaudio/jack1/pull/111.patch
-	source = jack-0.125.0-pkgconf.patch::https://github.com/jackaudio/jack1/pull/114.patch
+	validpgpkeys = 62B11043D2F6EB6672D93103CDBAA37ABC74FBA0
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = 56a6f966df0950e5b8b0366721edb17fea96438abf3807115b9f1c3659858d8d5cb0759b4bedbc69f4460a238700be76b98c1628554f4c6e73b65b96de994250
-	sha512sums = d951199dbaa6de773509b49f78a05da139f49194c6b43ff5d08a658f079a71af0929a6b259ad3e98017068d0b785f5313c6068d0c9693d6d3a17276817970c40
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = SKIP
-	b2sums = d7caa45c5e926e66065a3c4578b73d369fc738a01092999ce79c1c14453cb3c387d49a6b9f2c9189c4e47b3a643270f1e77f10f1ba6bdfe056683b8e788786ad
-	b2sums = 60ca4dfa76b837bf09b213fc0bf935fbf049c9fa3017b354ff341d22dcc74545e6df6bc4da85892812696ccc84f9b7e8e57735c477e329efee6e13127f6dcbfd
 
 pkgname = jack
 	depends = db
@@ -48,6 +37,7 @@ pkgname = jack
 	depends = libzita-resampler.so
 	optdepends = celt: NetJACK driver
 	optdepends = jack-docs: for documentation
+	optdepends = jack-example-tools: for official JACK example-clients and tools
 	optdepends = libffado: FireWire support
 	optdepends = realtime-privileges: Acquire realtime privileges
 	provides = jack2
