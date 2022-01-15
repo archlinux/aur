@@ -2,6 +2,7 @@ pkgbase = stylepak-git
 	pkgdesc = Automatically install your host GTK+ theme as a Flatpak. Git version.
 	pkgver = 16.124fbdc
 	pkgrel = 1
+	url = https://github.com/refi64/stylepak
 	arch = any
 	depends = ostree
 	depends = appstream-glib
