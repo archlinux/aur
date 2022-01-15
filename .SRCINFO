@@ -1,0 +1,16 @@
+pkgbase = cutefish-gtk-themes-git
+	pkgdesc = Cutefish gtk dark/light themes
+	pkgver = 0.7.r0.g91f762f
+	pkgrel = 1
+	url = https://github.com/cutefishos/gtk-themes
+	arch = any
+	groups = cutefish-git
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	provides = cutefish-gtk-themes
+	conflicts = cutefish-gtk-themes
+	source = git+https://github.com/cutefishos/gtk-themes.git
+	sha512sums = SKIP
+
+pkgname = cutefish-gtk-themes-git
