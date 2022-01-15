@@ -3,11 +3,15 @@ pkgbase = t2sz-git
 	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/martinellimarco/t2sz
+	arch = i686
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	makedepends = cmake
 	depends = zstd
+	provides = t2sz
 	source = git+https://github.com/martinellimarco/t2sz
 	sha256sums = SKIP
 
