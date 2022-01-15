@@ -75,7 +75,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.13-xanmod1
+xanmod=5.15.14-xanmod1
 pkgver=${xanmod//-/.}
 #pkgver=5.15.8.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
@@ -139,7 +139,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
         # mediatek mt7921 bt/wifi patches
-        "mt76-mt7921-Add-mt7922-support.patch"
         "1-2-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
         "2-2-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
@@ -160,7 +159,7 @@ validpgpkeys=(
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'f1c742503e85c1ae11b60c2faf826ff590e23e7acca27d6ab8e84119d11c2262'
+            'ea5dceb862b22e645d72e0d759b646643bc6569d0910f1711aedb66447962c76'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
             '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
@@ -175,7 +174,6 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
-            'a01cf700d79b983807e2285be1b30df6e02db6adfd9c9027fe2dfa8ca5a74bc9'
             '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
             '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
