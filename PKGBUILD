@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=python-pip-audit
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A tool for scanning Python environments for known vulnerabilities'
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=('python-setuptools')
 conflicts=('python-pip-audit-git')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trailofbits/pip-audit/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('f51c9911b57db1dcff74730041ef9cdc8913939c6d21bad1fcfc44feb1ce4c6d9cff00d6fd4e74c2defc04defdacac701c80dc8a65ef3e9fa9e3a10ac53dd9b7')
+sha512sums=('bc77a98d11ac3733427d31ed5cfcebafcbb41e73289702a1ad7f2dfb603e3bf6a82f9e81a556824eb0dd22ef45027c22d53678b01dbd6e371bf0a4324ef76bea')
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
