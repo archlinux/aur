@@ -1,54 +1,55 @@
-# Maintainer:  Caleb Maclennan <caleb@alerque.com>
-# Maintainer:  Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Jeremy Asuncion <jeremyasuncion808@gmail.com>
 # Contributor: Simon Reiser <simonfxr@gmail.com>
 
 _pkgname=lab
 pkgname=$_pkgname-git
-pkgver=0.20.0.r37.g3ffb5d9
+pkgver=0.23.0.r48.gbf54583
 _branch=master
 pkgrel=1
 pkgdesc="A hub-like tool for GitLab (git $_branch branch)"
-arch=('x86_64')
+arch=(x86_64)
 url="https://zaquestion.github.io/$_pkgname"
 license=('custom:CC0')
-depends=('git')
-optdepends=('hub')
-makedepends=('git' 'go')
+depends=(git)
+optdepends=(hub)
+makedepends=(git
+             go)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git://github.com/zaquestion/$_pkgname.git#branch=$_branch")
+source=("git+https://github.com/zaquestion/$_pkgname.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$_pkgname"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$_pkgname"
-    go mod download
+	cd "$_pkgname"
+	go mod download
 }
 
 build () {
-    cd "$_pkgname"
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-extldflags \"$LDFLAGS\" -X main.version=$pkgver" \
-        .
-    ./lab completion bash > completion.bash
-    ./lab completion zsh > completion.zsh
-    ./lab completion fish > completion.fish
+	cd "$_pkgname"
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-extldflags \"$LDFLAGS\" -X main.version=$pkgver" \
+		.
+	./lab completion bash > completion.bash
+	./lab completion fish > completion.fish
+	./lab completion zsh  > completion.zsh
 }
 
 package() {
-    cd "$_pkgname"
-    install -Dm755 -t "$pkgdir/usr/bin/" $_pkgname
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
-    install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
-    install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_lab"
-    install -Dm644 completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/lab.fish"
+	cd "$_pkgname"
+	install -Dm0755 -t "$pkgdir/usr/bin/" $_pkgname
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm0644 completion.bash "$pkgdir/usr/share/bash-completion/completions/lab"
+	install -Dm0644 completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/lab.fish"
+	install -Dm0644 completion.zsh  "$pkgdir/usr/share/zsh/site-functions/_lab"
 }

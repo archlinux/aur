@@ -1,6 +1,6 @@
 pkgbase = lab-git
 	pkgdesc = A hub-like tool for GitLab (git master branch)
-	pkgver = 0.20.0.r37.g3ffb5d9
+	pkgver = 0.23.0.r48.gbf54583
 	pkgrel = 1
 	url = https://zaquestion.github.io/lab
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = lab-git
 	optdepends = hub
 	provides = lab
 	conflicts = lab
-	source = git://github.com/zaquestion/lab.git#branch=master
+	source = git+https://github.com/zaquestion/lab.git#branch=master
 	sha256sums = SKIP
 
 pkgname = lab-git
-
