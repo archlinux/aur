@@ -1,4 +1,5 @@
 # Maintainer: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=minizip-git
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
