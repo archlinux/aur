@@ -1,27 +1,27 @@
-# Maintainer: -=De/\/=-
-# Author: -=De/\/=-
 pkgname=pyxenon
 pkgver=0.1
-pkgrel=15
-pkgdesc="Pyxenon - xenon like game preview written in python"
-arch=('x86_64')
-url='https://games.os.vc'
-license=('GPLv3')
+pkgrel=16
+pkgdesc="Xenon like game written in python"
+arch=("any")
+url="https://github.com/denix666/pyxenon"
+license=("GPLv3")
+makedepends=('python-setuptools')
 
-source=("https://games.os.vc/pygames/${pkgname}-${pkgver}-${pkgrel}.tar.gz"
-        "pyxenon.desktop")
+source=("https://games.os.vc/pygames/pyxenon/pyxenon-${pkgver}-${pkgrel}.tar.gz"
+        "pyxenon.png"
+        "pyxenon.desktop"
+)
 
-package() {
-    cd ${srcdir}
-    install -d -m755 ${pkgdir}/usr/local/games/pyxenon
-    install -d -m755 ${pkgdir}/usr/local/bin
-
-    install -D -m644 pyxenon.desktop ${pkgdir}/usr/share/applications/pyxenon.desktop
+package () {
+    depends+=('python')
     
-    cp -r * ${pkgdir}/usr/local/games/pyxenon/
-    install -D -m755  ${pkgdir}/usr/local/games/pyxenon/pyxenon ${pkgdir}/usr/local/bin/pyxenon
-    rm -rf ${pkgdir}/usr/local/games/pyxenon/pyxenon*
+    cd "${srcdir}/${pkgname}"
+    python setup.py install --root="${pkgdir}"
+    
+    cd "${srcdir}"
+    install -D -m644 pyxenon.png ${pkgdir}/usr/share/pixmaps/pyxenon.png
+    install -D -m644 pyxenon.desktop ${pkgdir}/usr/share/applications/pyxenon.desktop
 }
-
-sha256sums=('954a6ec3280f368ad8451b0d39522f61ebc822e2e500b3af9cb49693c1ced834'
-            '6124c10735be364fa02c5dbcd33d1647e3a65119f7241151d3eba389033b9b21')
+sha256sums=('88aedc5b75327922d278e0e2eb6a856682795c5221657d9be7f4912af99cf163'
+            'a0814bdb6a4e9382c15f874ed1ec59a38e8897ee27ba3e33b99a31653badfe4f'
+            '167c71e5640b72b6f6804b20db2e44d275e1851dcc72875895004cf2c02393f1')

@@ -1,10 +1,9 @@
 [Desktop Entry]
-Exec=/usr/local/bin/pyxenon
-Icon=/usr/local/games/pyxenon/images/pyxenon.ico
-Name=Pyxenon
+Name=PyXenon
+Comment=Xenon like game written in python
+Exec=/usr/bin/pyxenon
 Terminal=false
 Type=Application
-Categories=GNOME;GTK;Game;
+Icon=/usr/share/pixmaps/pyxenon.png
 Encoding=UTF-8
-Comment=Pyxenon - xenon like game written in python
-
+Categories=GNOME;GTK;Game;
