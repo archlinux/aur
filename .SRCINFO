@@ -1,15 +1,15 @@
 pkgbase = netlify
 	pkgdesc = Create, deploy, and delete new sites hosted on Netlify straight from your terminal
-	pkgver = 8.1.8
+	pkgver = 8.8.2
 	pkgrel = 1
 	url = https://www.netlify.com/docs/cli/
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = netlify-cli-8.1.8.tgz
+	noextract = netlify-cli-8.8.2.tgz
 	options = !strip
-	source = https://registry.npmjs.org/netlify-cli/-/netlify-cli-8.1.8.tgz
-	sha256sums = c7ebdfee4e33fa9c00de0a8978b4e89d6ad8daea0628abdd49351f79bb9c0d68
+	source = https://registry.npmjs.org/netlify-cli/-/netlify-cli-8.8.2.tgz
+	sha256sums = ee34a00f72b8123d8fb388db90b01169c172edba4da9aa2fffd03f03eb55b5ed
 
 pkgname = netlify
