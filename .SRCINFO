@@ -23,5 +23,6 @@ pkgbase = cutefish-git
 	depends = cutefish-screenshot-git
 	depends = cutefish-videoplayer-git
 	depends = cutefish-gtk-themes-git
+	depends = cutefish-cursor-themes-git
 
 pkgname = cutefish-git
