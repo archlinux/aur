@@ -1,7 +1,7 @@
 pkgbase = fasttrack
 	pkgdesc = Multiple objects tracking software, easy to use, and performant.
-	pkgver = 6.1.0
-	pkgrel = 7
+	pkgver = 6.1.1
+	pkgrel = 8
 	url = https://www.fasttrack.sh
 	arch = any
 	license = GPL3
@@ -10,8 +10,8 @@ pkgbase = fasttrack
 	depends = qt6-webengine
 	depends = qt6-svg
 	depends = gcc-libs
-	source = fasttrack-6.1.0.tar.gz::https://github.com/FastTrackOrg/FastTrack/archive/refs/tags/v6.1.0.tar.gz
-	sha256sums = 50896446abf458e30c14eb361cf3004ad50bdf14c81adaeecfb5b7fe04a8e964
+	source = fasttrack-6.1.1.tar.gz::https://github.com/FastTrackOrg/FastTrack/archive/refs/tags/v6.1.1.tar.gz
+	sha256sums = c94bca81cdc2c93c3822ef44911d1d47a5460dcaf0cc09c28a781ba955ab2a7c
 
 pkgname = fasttrack
 
