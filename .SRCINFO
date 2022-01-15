@@ -1,0 +1,16 @@
+pkgbase = playhouse
+	pkgdesc = A Playground for HTML/CSS/JavaScript
+	pkgver = r4.7ffa057
+	pkgrel = 1
+	url = https://github.com/sonnyp/Playhouse
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = webkit2gtk-5.0
+	depends = gjs
+	depends = gtk4
+	source = git+https://github.com/sonnyp/Playhouse
+	md5sums = SKIP
+
+pkgname = playhouse
