@@ -9,6 +9,7 @@ pkgbase = raysession-git
 	makedepends = qt5-tools
 	depends = python-pyqt5
 	depends = python-pyliblo
+	depends = python-pyxdg
 	provides = raysession
 	provides = raysession-git
 	conflicts = raysession
@@ -17,4 +18,3 @@ pkgbase = raysession-git
 	md5sums = SKIP
 
 pkgname = raysession-git
-
