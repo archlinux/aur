@@ -1,11 +1,14 @@
 pkgbase = ispc-bin
 	pkgdesc = Intel SPMD program compiler
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ispc.github.io/
 	arch = x86_64
 	license = BSD
 	depends = glibc
+	optdepends = intel-compute-runtime: GPU support
+	optdepends = level-zero-loader: GPU support
+	optdepends = openmp: GPU support
 	provides = ispc
 	conflicts = ispc
 	source_x86_64 = ispc-v1.17.0-linux.tar.gz::https://github.com/ispc/ispc/releases/download/v1.17.0/ispc-v1.17.0-linux.tar.gz
