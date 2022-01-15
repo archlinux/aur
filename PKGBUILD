@@ -1,11 +1,11 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=nwdiag
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="Generate network-diagram image files from spec-text files."
+pkgdesc="nwdiag generates network-diagram image from text."
 arch=(any)
-url="http://blockdiag.com/en/nwdiag"
+url="https://pypi.org/project/nwdiag/"
 license=(APACHE)
 depends=('python'
          'blockdiag>=1.5.0'
@@ -15,9 +15,9 @@ optdepends=('python-reportlab: to use the PDF output format'
 makedepends=(python-distribute)
 changelog=Changelog
 source=("https://pypi.python.org/packages/source/n/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('82975c822cc8052a73fb0c9ba8896d56')
-sha1sums=('472a3c6a845f81c31c331068de6884d6a78be600')
-sha256sums=('5cd7fafd6085cd762ca9171234d07d2a33c6e81f5c66a1b233992e76300d74e2')
+md5sums=('01f48cfe8cc1624ae9653559d2eb2c50')
+sha1sums=('ea5f42290cc3b1deb58259673e32b06daecc01d1')
+sha256sums=('e267530fcaac8a1d9e7403048597ed30e031e17f0191569dc6f704087bacb2eb')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
