@@ -2,8 +2,8 @@
 
 _pkgname=context
 pkgname=${_pkgname}
-pkgver=1.04
-pkgrel=2
+pkgver=2022.01.15_11.45
+pkgrel=1
 pkgdesc='ConTeXt LMTX, the Lean and Mean TeX eXperience with Lua, MetaPost, TeX, and XML'
 arch=('x86_64')
 url="https://wiki.contextgarden.net/Installation"
@@ -33,6 +33,8 @@ package() {
 }
 
 pkgver() {
-  cat "${srcdir}/tex/texmf-context/scripts/context/lua/mtx-context.xml" |
-    grep 'entry name="version"' | sed 's/.*>\(.*\)<.*/\1/'
+  cat "${srcdir}/tex/texmf-context/tex/context/base/mkxl/context.mkxl" |
+    grep "def\\\\contextversion" |
+    sed 's/^.*{\(.*\)}.*$/\1/' |
+    tr ' :' '_.'
 }

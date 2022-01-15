@@ -1,7 +1,7 @@
 pkgbase = context
 	pkgdesc = ConTeXt LMTX, the Lean and Mean TeX eXperience with Lua, MetaPost, TeX, and XML
-	pkgver = 1.04
-	pkgrel = 2
+	pkgver = 2022.01.15_11.45
+	pkgrel = 1
 	url = https://wiki.contextgarden.net/Installation
 	install = context.install
 	arch = x86_64
