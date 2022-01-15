@@ -1,0 +1,396 @@
+From ac7032db7c5cfd913e07ee51950d1b8aa9a7e047 Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Sat, 15 Jan 2022 00:36:23 -0800
+Subject: [PATCH] v5.16 s0ix patch 2022-01-15
+
+Squashed commit of the following:
+
+commit 3b070758bd5756cc5c75765292e003b4ca92135b
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Tue Nov 30 16:53:18 2021 +0530
+
+    platform/x86: amd-pmc: Add support for AMD Smart Trace Buffer (v6)
+
+    STB (Smart Trace Buffer), is a debug trace buffer that isolates the
+    failures by analyzing the last running feature of a system. This
+    non-intrusive way always runs in the background and stores the trace
+    into the SoC.
+
+    This patch enables the STB feature by passing module param
+    "enable_stb=1" while loading the driver and provides mechanism to
+    access the STB buffer using the read and write routines.
+
+    Co-developed-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+
+commit a60bac2812d1dc1d555acbf938403a6e171be167
+Author: Sanket Goswami <Sanket.Goswami@amd.com>
+Date:   Tue Nov 30 16:53:17 2021 +0530
+
+    platform/x86: amd-pmc: Simplify error handling and store the pci_dev in amd_pmc_dev structure
+
+    Handle error-exits in the amd_pmc_probe() to avoid duplication and store
+    the root port information in amd_pmc_probe() so that the information
+    can be used across multiple routines.
+
+    Suggested-by: Hans de Goede <hdegoede@redhat.com>
+    Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
+
+commit 59eddf7c5b7f573bd2e0ff79a6e50620eaa938ee
+Author: Julian Sikorski <belegdol+github@gmail.com>
+Date:   Fri Nov 19 17:52:36 2021 +0100
+
+    GFXOFF check patch by Lijo Lazar
+
+commit df10edb6cc7d6b1d03ece93f89c035bb140e21a9
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Fri Sep 24 12:32:06 2021 -0500
+
+    ACPI: PM: s2idle: Don't report missing devices as failing constraints
+
+    ACPI tables may have entries for devices that are not physically
+    present but that can be connected.  These devices shouldn't cause
+    constraints checking to fail.
+
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+    Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
+---
+ drivers/acpi/x86/s2idle.c                 |   6 +
+ drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   5 +-
+ drivers/platform/x86/amd-pmc.c            | 172 ++++++++++++++++++++--
+ 3 files changed, 167 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
+index 1c48358b43ba..0b65d4623214 100644
+--- a/drivers/acpi/x86/s2idle.c
++++ b/drivers/acpi/x86/s2idle.c
+@@ -309,6 +309,12 @@ static void lpi_check_constraints(void)
+ 			continue;
+ 		}
+ 
++		if (!acpi_get_first_physical_node(adev)) {
++			acpi_handle_debug(handle, "LPI: Device is not physically present\n");
++			lpi_constraints_table[i].handle = NULL;
++			continue;
++		}
++
+ 		if (adev->power.state < lpi_constraints_table[i].min_dstate)
+ 			acpi_handle_info(handle,
+ 				"LPI: Constraint not met; min power state:%s current power state:%s\n",
+diff --git a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
+index 9d7d64fdf410..37e83df92264 100644
+--- a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
++++ b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
+@@ -277,8 +277,11 @@ static int smu_dpm_set_power_gate(void *handle,
+ 	struct smu_context *smu = handle;
+ 	int ret = 0;
+ 
+-	if (!smu->pm_enabled || !smu->adev->pm.dpm_enabled)
++	if (!smu->pm_enabled || !smu->adev->pm.dpm_enabled) {
++		WARN(true, "SMU uninitialized but power %s requested for %u!\n",
++		     gate ? "gate" : "ungate", block_type);
+ 		return -EOPNOTSUPP;
++	}
+ 
+ 	switch (block_type) {
+ 	/*
+diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
+index 230593ae5d6d..15a5b23e7b8d 100644
+--- a/drivers/platform/x86/amd-pmc.c
++++ b/drivers/platform/x86/amd-pmc.c
+@@ -35,6 +35,12 @@
+ #define AMD_PMC_SCRATCH_REG_CZN		0x94
+ #define AMD_PMC_SCRATCH_REG_YC		0xD14
+ 
++/* STB Registers */
++#define AMD_PMC_STB_INDEX_ADDRESS	0xF8
++#define AMD_PMC_STB_INDEX_DATA		0xFC
++#define AMD_PMC_STB_PMI_0		0x03E30600
++#define AMD_PMC_STB_PREDEF		0xC6000001
++
+ /* Base address of SMU for mapping physical address to virtual address */
+ #define AMD_PMC_SMU_INDEX_ADDRESS	0xB8
+ #define AMD_PMC_SMU_INDEX_DATA		0xBC
+@@ -82,6 +88,7 @@
+ #define SOC_SUBSYSTEM_IP_MAX	12
+ #define DELAY_MIN_US		2000
+ #define DELAY_MAX_US		3000
++#define FIFO_SIZE		4096
+ enum amd_pmc_def {
+ 	MSG_TEST = 0x01,
+ 	MSG_OS_HINT_PCO,
+@@ -121,14 +128,21 @@ struct amd_pmc_dev {
+ 	u16 minor;
+ 	u16 rev;
+ 	struct device *dev;
++	struct pci_dev *rdev;
+ 	struct mutex lock; /* generic mutex lock */
+ #if IS_ENABLED(CONFIG_DEBUG_FS)
+ 	struct dentry *dbgfs_dir;
+ #endif /* CONFIG_DEBUG_FS */
+ };
+ 
++static bool enable_stb;
++module_param(enable_stb, bool, 0644);
++MODULE_PARM_DESC(enable_stb, "Enable the STB debug mechanism");
++
+ static struct amd_pmc_dev pmc;
+ static int amd_pmc_send_cmd(struct amd_pmc_dev *dev, u32 arg, u32 *data, u8 msg, bool ret);
++static int amd_pmc_write_stb(struct amd_pmc_dev *dev, u32 data);
++static int amd_pmc_read_stb(struct amd_pmc_dev *dev, u32 *buf);
+ 
+ static inline u32 amd_pmc_reg_read(struct amd_pmc_dev *dev, int reg_offset)
+ {
+@@ -175,6 +189,50 @@ static int amd_pmc_get_smu_version(struct amd_pmc_dev *dev)
+ 	return 0;
+ }
+ 
++static int amd_pmc_stb_debugfs_open(struct inode *inode, struct file *filp)
++{
++	struct amd_pmc_dev *dev = filp->f_inode->i_private;
++	u32 size = FIFO_SIZE * sizeof(u32);
++	u32 *buf;
++	int rc;
++
++	buf = kzalloc(size, GFP_KERNEL);
++	if (!buf)
++		return -ENOMEM;
++
++	rc = amd_pmc_read_stb(dev, buf);
++	if (rc) {
++		kfree(buf);
++		return rc;
++	}
++
++	filp->private_data = buf;
++	return rc;
++}
++
++static ssize_t amd_pmc_stb_debugfs_read(struct file *filp, char __user *buf, size_t size,
++					loff_t *pos)
++{
++	if (!filp->private_data)
++		return -EINVAL;
++
++	return simple_read_from_buffer(buf, size, pos, filp->private_data,
++				       FIFO_SIZE * sizeof(u32));
++}
++
++static int amd_pmc_stb_debugfs_release(struct inode *inode, struct file *filp)
++{
++	kfree(filp->private_data);
++	return 0;
++}
++
++const struct file_operations amd_pmc_stb_debugfs_fops = {
++	.owner = THIS_MODULE,
++	.open = amd_pmc_stb_debugfs_open,
++	.read = amd_pmc_stb_debugfs_read,
++	.release = amd_pmc_stb_debugfs_release,
++};
++
+ static int amd_pmc_idlemask_read(struct amd_pmc_dev *pdev, struct device *dev,
+ 				 struct seq_file *s)
+ {
+@@ -288,6 +346,10 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+ 			    &s0ix_stats_fops);
+ 	debugfs_create_file("amd_pmc_idlemask", 0644, dev->dbgfs_dir, dev,
+ 			    &amd_pmc_idlemask_fops);
++	/* Enable STB only when the module_param is set */
++	if (enable_stb)
++		debugfs_create_file("stb_read", 0644, dev->dbgfs_dir, dev,
++				    &amd_pmc_stb_debugfs_fops);
+ }
+ #else
+ static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -484,6 +546,13 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+ 	if (rc)
+ 		dev_err(pdev->dev, "suspend failed\n");
+ 
++	if (enable_stb)
++		rc = amd_pmc_write_stb(pdev, AMD_PMC_STB_PREDEF);
++	if (rc)	{
++		dev_err(pdev->dev, "error writing to STB\n");
++		return rc;
++	}
++
+ 	return rc;
+ }
+ 
+@@ -504,6 +573,14 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+ 	/* Dump the IdleMask to see the blockers */
+ 	amd_pmc_idlemask_read(pdev, dev, NULL);
+ 
++	/* Write data incremented by 1 to distinguish in stb_read */
++	if (enable_stb)
++		rc = amd_pmc_write_stb(pdev, AMD_PMC_STB_PREDEF + 1);
++	if (rc)	{
++		dev_err(pdev->dev, "error writing to STB\n");
++		return rc;
++	}
++
+ 	return 0;
+ }
+ 
+@@ -521,6 +598,62 @@ static const struct pci_device_id pmc_pci_ids[] = {
+ 	{ }
+ };
+ 
++static int amd_pmc_write_stb(struct amd_pmc_dev *dev, u32 data)
++{
++	int err;
++
++	err = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_ADDRESS, AMD_PMC_STB_PMI_0);
++	if (err) {
++		dev_err(dev->dev, "failed to write addr in stb: 0x%X\n",
++			AMD_PMC_STB_INDEX_ADDRESS);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
++	}
++
++	err = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_DATA, data);
++	if (err) {
++		dev_err(dev->dev, "failed to write data in stb: 0x%X\n",
++			AMD_PMC_STB_INDEX_DATA);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
++	}
++
++	return 0;
++
++err_pci_dev_put:
++	pci_dev_put(dev->rdev);
++	return err;
++}
++
++static int amd_pmc_read_stb(struct amd_pmc_dev *dev, u32 *buf)
++{
++	int i, err;
++
++	err = pci_write_config_dword(dev->rdev, AMD_PMC_STB_INDEX_ADDRESS, AMD_PMC_STB_PMI_0);
++	if (err) {
++		dev_err(dev->dev, "error writing addr to stb: 0x%X\n",
++			AMD_PMC_STB_INDEX_ADDRESS);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
++	}
++
++	for (i = 0; i < FIFO_SIZE; i++) {
++		err = pci_read_config_dword(dev->rdev, AMD_PMC_STB_INDEX_DATA, buf++);
++		if (err) {
++			dev_err(dev->dev, "error reading data from stb: 0x%X\n",
++				AMD_PMC_STB_INDEX_DATA);
++			err = pcibios_err_to_errno(err);
++			goto err_pci_dev_put;
++		}
++	}
++
++	return 0;
++
++err_pci_dev_put:
++	pci_dev_put(dev->rdev);
++	return err;
++}
++
+ static int amd_pmc_probe(struct platform_device *pdev)
+ {
+ 	struct amd_pmc_dev *dev = &pmc;
+@@ -534,22 +667,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 
+ 	rdev = pci_get_domain_bus_and_slot(0, 0, PCI_DEVFN(0, 0));
+ 	if (!rdev || !pci_match_id(pmc_pci_ids, rdev)) {
+-		pci_dev_put(rdev);
+-		return -ENODEV;
++		err = -ENODEV;
++		goto err_pci_dev_put;
+ 	}
+ 
+ 	dev->cpu_id = rdev->device;
++	dev->rdev = rdev;
+ 	err = pci_write_config_dword(rdev, AMD_PMC_SMU_INDEX_ADDRESS, AMD_PMC_BASE_ADDR_LO);
+ 	if (err) {
+ 		dev_err(dev->dev, "error writing to 0x%x\n", AMD_PMC_SMU_INDEX_ADDRESS);
+-		pci_dev_put(rdev);
+-		return pcibios_err_to_errno(err);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
+ 	}
+ 
+ 	err = pci_read_config_dword(rdev, AMD_PMC_SMU_INDEX_DATA, &val);
+ 	if (err) {
+-		pci_dev_put(rdev);
+-		return pcibios_err_to_errno(err);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
+ 	}
+ 
+ 	base_addr_lo = val & AMD_PMC_BASE_ADDR_HI_MASK;
+@@ -557,24 +691,25 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 	err = pci_write_config_dword(rdev, AMD_PMC_SMU_INDEX_ADDRESS, AMD_PMC_BASE_ADDR_HI);
+ 	if (err) {
+ 		dev_err(dev->dev, "error writing to 0x%x\n", AMD_PMC_SMU_INDEX_ADDRESS);
+-		pci_dev_put(rdev);
+-		return pcibios_err_to_errno(err);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
+ 	}
+ 
+ 	err = pci_read_config_dword(rdev, AMD_PMC_SMU_INDEX_DATA, &val);
+ 	if (err) {
+-		pci_dev_put(rdev);
+-		return pcibios_err_to_errno(err);
++		err = pcibios_err_to_errno(err);
++		goto err_pci_dev_put;
+ 	}
+ 
+ 	base_addr_hi = val & AMD_PMC_BASE_ADDR_LO_MASK;
+-	pci_dev_put(rdev);
+ 	base_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
+ 
+ 	dev->regbase = devm_ioremap(dev->dev, base_addr + AMD_PMC_BASE_ADDR_OFFSET,
+ 				    AMD_PMC_MAPPING_SIZE);
+-	if (!dev->regbase)
+-		return -ENOMEM;
++	if (!dev->regbase) {
++		err = -ENOMEM;
++		goto err_pci_dev_put;
++	}
+ 
+ 	mutex_init(&dev->lock);
+ 
+@@ -583,8 +718,10 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 	base_addr_hi = FCH_BASE_PHY_ADDR_HIGH;
+ 	fch_phys_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
+ 	dev->fch_virt_addr = devm_ioremap(dev->dev, fch_phys_addr, FCH_SSC_MAPPING_SIZE);
+-	if (!dev->fch_virt_addr)
+-		return -ENOMEM;
++	if (!dev->fch_virt_addr) {
++		err = -ENOMEM;
++		goto err_pci_dev_put;
++	}
+ 
+ 	/* Use SMU to get the s0i3 debug stats */
+ 	err = amd_pmc_setup_smu_logging(dev);
+@@ -595,6 +732,10 @@ static int amd_pmc_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, dev);
+ 	amd_pmc_dbgfs_register(dev);
+ 	return 0;
++
++err_pci_dev_put:
++	pci_dev_put(rdev);
++	return err;
+ }
+ 
+ static int amd_pmc_remove(struct platform_device *pdev)
+@@ -602,6 +743,7 @@ static int amd_pmc_remove(struct platform_device *pdev)
+ 	struct amd_pmc_dev *dev = platform_get_drvdata(pdev);
+ 
+ 	amd_pmc_dbgfs_unregister(dev);
++	pci_dev_put(dev->rdev);
+ 	mutex_destroy(&dev->lock);
+ 	return 0;
+ }
+-- 
+2.34.1
+
