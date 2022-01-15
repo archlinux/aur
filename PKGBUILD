@@ -2,7 +2,7 @@
 
 pkgname=cutefish-icons-git
 _pkgname=cutefish-icons
-pkgver=0.5.r6.g119feb59
+pkgver=0.7.r2.g0f7b4831
 pkgrel=1
 pkgdesc="System default icon theme of CutefishOS"
 arch=('any')
