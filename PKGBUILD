@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=8.0
+pkgver=9.0
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -31,10 +31,12 @@ optdepends=(
     'rsync: optional for backing up steamuser files from proton games'
 	'imagemagick: optional to scale a custom installed game header picture and for converting game icons'
 	'p7zip: optional for extracting SpecialK archives'
+	'pev: optional for extracting data from the game exe'
+	'gdb: optional for starting the game under the debugger gdb'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b9adb81fc747f64415820d578c361f3901deec905d559639f2106e53c4f31929')
+sha256sums=('8cb7a5fa911517b9503b599064e6b9041a815a0b9de56d7372e62077e3036f1d')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
