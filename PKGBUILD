@@ -50,7 +50,7 @@ prepare() {
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1.28/anki-sync-server/__init__.py
   sed -i "7s/0\.0\.0\.0/${_your_ip_}/" plugins/nginx/config
 
-  # set current ip address as the server's ip address and chang port
+  # set current ip address as the server's ip address and change port
   sed "3s/0\.0\.0\.0/${_your_ip_}/" ankisyncd.conf -i
   sed "4s/27701/27702/" ankisyncd.conf -i
 
