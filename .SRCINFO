@@ -1,6 +1,6 @@
 pkgbase = steamguard-cli-git
 	pkgdesc = A command line utility to generate Steam 2FA codes and respond to confirmations.
-	pkgver = 0.4.2.r1.df699f07
+	pkgver = 0.4.3.r1.145c03e9
 	pkgrel = 1
 	url = https://github.com/dyc3/steamguard-cli
 	arch = i686
