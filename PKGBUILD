@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Netease Ynote for Linux"
 arch=('x86_64')
 url="https://note.youdao.com/"
-license=('unknown')
+license=('custom')
 depends=('gtk3'
          'libnotify'
          'nss'
