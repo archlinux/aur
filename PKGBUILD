@@ -2,7 +2,7 @@
 
 pkgname=ff2mpv-go-git
 pkgver=1.0.1.r1.639496c
-pkgrel=1
+pkgrel=2
 pkgdesc="Native messaging host for ff2mpv written in Go. Includes manifest json for many browsers."
 arch=(x86_64)
 url="https://git.clsr.net/util/ff2mpv-go"
@@ -10,7 +10,7 @@ license=('custom: public domain')
 depends=(mpv)
 makedepends=(go jq)
 optdepends=(
-	"ff2mpv: browser extension"
+#	"ff2mpv: browser extension"
 	"chromium: supported browser"
 	"firefox: supported browser, untested"
 	"firefox-developer-edition: supported browser"
@@ -24,9 +24,7 @@ provides=("${pkgname%-git}" "ff2mpv-native-messaging-host-git" "ff2mpv-native-me
 source=("$pkgname::git+$url")
 sha256sums=('SKIP')
 
-# no need for cgo
-export CGO_ENABLED=0
-export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readonly -modcacherw"
 
 pkgver() {
 	cd "$pkgname"
