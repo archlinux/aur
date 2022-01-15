@@ -1,0 +1,14 @@
+pkgbase = keeweb-html
+	pkgdesc = Free cross-platform password manager compatible with KeePass
+	pkgver = 1.18.7
+	pkgrel = 1
+	url = https://keeweb.info/
+	arch = any
+	license = MIT
+	makedepends = unzip
+	noextract = keeweb-html-1.18.7.zip
+	options = !strip
+	source = keeweb-html-1.18.7.zip::https://github.com/keeweb/keeweb/releases/download/v1.18.7/KeeWeb-1.18.7.html.zip
+	sha256sums = 6f3d06891117072e62b43b08a84bdaf4fc43c0aae6127ac6c2e7564299d8a890
+
+pkgname = keeweb-html
