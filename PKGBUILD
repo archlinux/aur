@@ -12,6 +12,7 @@ depends=('vim-plugin-runtime' 'vim-tabular')
 makedepends=('git')
 conflicts=('vim-markdown')
 provides=('vim-markdown')
+groups=('vim-plugins')
 source=("git+https://github.com/plasticboy/${_pkgname}.git")
 sha256sums=('SKIP')
 

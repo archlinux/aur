@@ -4,6 +4,7 @@ pkgbase = vim-markdown-git
 	pkgrel = 3
 	url = https://github.com/plasticboy/vim-markdown
 	arch = any
+	groups = vim-plugins
 	license = MIT
 	makedepends = git
 	depends = vim-plugin-runtime
