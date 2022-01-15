@@ -1,6 +1,6 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="The MC modpack manager for professionals."
 arch=('x86_64')
@@ -12,11 +12,15 @@ conflicts=('pax-mc-bin' 'pax-mc-git')
 replaces=()
 changelog=
 source=("pax-${pkgver}.tar.gz::https://github.com/froehlichA/pax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fbe9ed89c1a46607374a9e2b8f9adec1876be2baa0fb1fd2e55644d41eb9830d')
+sha256sums=('429414554c2a2aa53bf6a56d3d7567ca27273505516f30a5faf1f62bfef189ce')
+
+prepare() {
+    echo "const currentPaxVersion*: string = \"v${pkgver}\"" > "${srcdir}/pax-${pkgver}/src/util/paxVersion.nim"
+}
 
 build() {
     cd "${srcdir}/pax-${pkgver}"
-    echo "y" | nimble buildProd --nimbleDir:"${srcdir}/nimble"
+    nimble buildCI --nimbleDir:"${srcdir}/nimble"
 }
 
 package() {
