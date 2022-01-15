@@ -1,6 +1,6 @@
 pkgbase = libshumate-git
 	pkgdesc = GTK4 widget to display maps (git version)
-	pkgver = r270.5c08c3a
+	pkgver = 1.0.0.alpha.1.r1.g4804d64
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/libshumate
 	arch = x86_64

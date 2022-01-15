@@ -2,7 +2,7 @@
 
 _pkgname=libshumate
 pkgname=${_pkgname}-git
-pkgver=r270.5c08c3a
+pkgver=1.0.0.alpha.1.r1.g4804d64
 pkgrel=1
 pkgdesc="GTK4 widget to display maps (git version)"
 arch=(x86_64)
@@ -19,16 +19,15 @@ sha256sums=('SKIP')
 # Use version once repo has been tagged. But use revision numbers for now.
 pkgver() {
   cd "${_pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 
 build() {
   arch-meson ${_pkgname} build -D gtk_doc=true
   ninja -C build
 }
+
 
 check() {
     # Run tests with headless x11 server.
