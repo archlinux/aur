@@ -8,8 +8,8 @@ pkgbase = gula-plugins-git
 	license = GPL
 	makedepends = faust
 	depends = lv2
+	depends = boost
 	source = git+https://github.com/steveb/gula-plugins
 	md5sums = SKIP
 
 pkgname = gula-plugins-git
-
