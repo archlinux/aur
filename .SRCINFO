@@ -1,16 +1,16 @@
 pkgbase = python-subprocrunner
 	pkgdesc = Python wrapper library for subprocess module
-	pkgver = 1.6.0
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/thombashi/subprocrunner
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-mbstrdecoder
-	source = python-subprocrunner-1.6.0.tar.gz::https://files.pythonhosted.org/packages/source/s/subprocrunner/subprocrunner-1.6.0.tar.gz
-	source = python-subprocrunner-1.6.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/s/subprocrunner/subprocrunner-1.6.0.tar.gz.asc
+	source = python-subprocrunner-2.0.0.tar.gz::https://files.pythonhosted.org/packages/source/s/subprocrunner/subprocrunner-2.0.0.tar.gz
+	source = python-subprocrunner-2.0.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/s/subprocrunner/subprocrunner-2.0.0.tar.gz.asc
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = 1c1e928db282e7453853744290908d04047a8fb3b49ff1e7f8284e6a3be3a810
+	sha256sums = fd22aad8befd610461536463955e205122fed80303b814cc926c3a4a8d9aaf3c
 	sha256sums = SKIP
 
 pkgname = python-subprocrunner
