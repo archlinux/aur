@@ -23,7 +23,7 @@ build() {
 }
 
 package_python-nfcpy-git() {
-	pkgdesc="Module to read/write NFC tags or communicate with another NFC device (git)"
+	pkgdesc="Module to read/write NFC tags or communicate with another NFC device."
 	depends=(
 	    'python-libusb1'
 	    'python-pyserial'
@@ -39,7 +39,7 @@ package_python-nfcpy-git() {
 }
 
 package_python-nfcpy-examples-git() {
-	pkgdesc="nfcpy examples (git)"
+	pkgdesc="Python nfcpy examples."
 	depends=('python-nfcpy')
         provides=("${pkgname%-git}")
         conflicts=("${pkgname%-git}")

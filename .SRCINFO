@@ -9,7 +9,7 @@ pkgbase = python-nfcpy-git
 	sha256sums = SKIP
 
 pkgname = python-nfcpy-git
-	pkgdesc = Module to read/write NFC tags or communicate with another NFC device (git)
+	pkgdesc = Module to read/write NFC tags or communicate with another NFC device.
 	depends = python-libusb1
 	depends = python-pyserial
 	depends = python-ndeflib
@@ -18,7 +18,7 @@ pkgname = python-nfcpy-git
 	conflicts = python-nfcpy
 
 pkgname = python-nfcpy-examples-git
-	pkgdesc = nfcpy examples (git)
+	pkgdesc = Python nfcpy examples.
 	depends = python-nfcpy
 	provides = python-nfcpy-examples
 	conflicts = python-nfcpy-examples
