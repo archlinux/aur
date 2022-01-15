@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-dssi
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="OCaml bindings for dssi plugins"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('5b017c5fb139f9ef90b23c6c9661ec28948e540664e68ca70649f58994b9aca9')
+sha256sums=('576d593ef431d60e07f2a1190863e7c0c9fefb0cad69d286460e0b661134ec66')
