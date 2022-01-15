@@ -1,6 +1,6 @@
 pkgbase = telescope-git
 	pkgdesc = w3m-like browser for Gemini.
-	pkgver = 0.7.r2.g2122686
+	pkgver = 0.7.1.r0.g84b0c4a
 	pkgrel = 1
 	url = https://telescope.omarpolo.com/
 	arch = x86_64

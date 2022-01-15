@@ -3,7 +3,7 @@
 
 pkgname=telescope-git
 _pkgname=${pkgname%-*}
-pkgver=0.7.r2.g2122686
+pkgver=0.7.1.r0.g84b0c4a
 pkgrel=1
 pkgdesc='w3m-like browser for Gemini.'
 arch=('x86_64')
