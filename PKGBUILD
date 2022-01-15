@@ -1,4 +1,4 @@
-# Maintainer: env252525@gmail.com
+# Maintainer: eNV25 <env252525@gmail.com>
 # Contributor: Jeremy Ruten <jeremy.ruten@gmail.com>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
