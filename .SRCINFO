@@ -20,6 +20,7 @@ pkgbase = python-or-tools
 	depends = python-protobuf>=3.19.1
 	depends = absl-py>=0.13
 	depends = python-numpy>=1.13.3
+	depends = python-mypy-protobuf
 	optdepends = cplex: CPLEX solver support
 	options = !emptydirs
 	source = https://github.com/google/or-tools/archive/v9.2.tar.gz

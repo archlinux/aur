@@ -7,7 +7,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/google/or-tools"
 license=('Apache2')
 depends=('python>=3.6' 'swig' 'python-protobuf>=3.19.1' 'absl-py>=0.13' 'python-numpy>=1.13.3')
-makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip' 'git')
+makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip' 'git' 'python-mypy-protobuf')
 optdepends=('cplex: CPLEX solver support')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
