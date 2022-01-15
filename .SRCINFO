@@ -13,6 +13,7 @@ pkgbase = iscan
 	depends = sane
 	depends = libstdc++5
 	optdepends = iscan-data: Image Scan! data files required for some devices
+	provides = iscan
 	conflicts = iscan-for-epson-v500-photo
 	conflicts = epson-perfection-v10-v100-scanner-driver-aio
 	backup = etc/sane.d/epkowa.conf

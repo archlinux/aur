@@ -11,6 +11,7 @@ arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('GPL2' 'custom:AVASYSPL')
 depends=('gtk2' 'sane' 'libstdc++5')
+provides=('iscan')
 conflicts=('iscan-for-epson-v500-photo' 'epson-perfection-v10-v100-scanner-driver-aio')
 makedepends=('gettext' 'gimp')
 optdepends=('iscan-data: Image Scan! data files required for some devices')
