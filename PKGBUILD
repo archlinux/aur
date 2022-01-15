@@ -1,6 +1,6 @@
 #Maintainer: Marco Martinelli <marco+t2sz@13byte.com>
 pkgname=t2sz-git
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="t2sz compress a file into a seekable zstd. If the file is a tar archive it compress each file in the archive into an independent frame, hence the name: tar 2 seekable zstd."
 arch=('x86_64')
