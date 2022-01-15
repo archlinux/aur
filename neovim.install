@@ -1,0 +1,15 @@
+# $1: new package version
+post_install() {
+  echo ":: The Neovim executable is called 'nvim'."
+  echo ":: If you are already familiar with Vim, see ':help nvim-from-vim'"
+  echo "   to get started."
+}
+
+post_upgrade() {
+  echo ":: If you have any questions, check the following page first:"
+  echo "   https://github.com/neovim/neovim/wiki/FAQ"
+  echo ":: Remember this a pre-release build, see 'Following HEAD' for more info"
+  echo "   https://github.com/neovim/neovim/wiki/Following-HEAD"
+}
+
+# vim:set sw=2 sts=2 et:
