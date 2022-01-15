@@ -3,10 +3,11 @@ _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
 pkgver=2.0.1.r5.g8f34829
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
 makedepends=('unrar' 'cmake' 'git')
+optdepends=('freepats-general-midi: Soundfont for playing background music')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 license=('MIT' 'proprietary')
@@ -47,6 +48,13 @@ package() {
   # Install wrapper script
   install -Dm0755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
+
+# Configure soundfonts if not already configured
+if [ -z "$SDL_SOUNDFONTS" ]; then
+  # Use first available soundfont
+  export SDL_SOUNDFONTS="$(find /usr/share/soundfonts -type f -print -quit 2> /dev/null)"
+fi
+
 # Run program in correct directory so it can find it's resources
 cd /usr/lib/$_pkgname
 exec ./$_pkgname "\$@"
