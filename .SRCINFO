@@ -1,6 +1,6 @@
 pkgbase = cutefish-videoplayer-git
 	pkgdesc = An open source video player built with Qt/QML and libmpv
-	pkgver = 0.5
+	pkgver = 0.5.r0.gc121801
 	pkgrel = 1
 	url = https://github.com/cutefishos/videoplayer
 	arch = x86_64
