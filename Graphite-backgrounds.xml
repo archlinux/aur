@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+
+    <wallpaper deleted="false">
+      <name>Wave Color</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-color.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Arch</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-arch.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Debian</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-debian.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Fedora</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-fedora.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord Manjaro</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord-manjaro.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Ubuntu</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-ubuntu.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Arch</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-arch.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Debian</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-debian.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Fedora</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-fedora.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Manjaro</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-manjaro.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Ubuntu</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-ubuntu.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Color Nord</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-color-nord.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Nord</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-nord.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord Arch</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord-arch.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord Debian</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord-debian.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord Fedora</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord-fedora.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord Manjaro</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord-manjaro.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Dark Nord Ubuntu</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-dark-nord-ubuntu.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Nord Arch</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-nord-arch.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Nord Debian</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-nord-debian.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Nord Fedora</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-nord-fedora.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Nord Manjaro</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-nord-manjaro.png</filename>
+    </wallpaper>
+
+    <wallpaper deleted="false">
+      <name>Wave Light Nord Ubuntu</name>
+      <filename>/usr/share/backgrounds/Graphite/wave-light-nord-ubuntu.png</filename>
+    </wallpaper>
+
+</wallpapers>

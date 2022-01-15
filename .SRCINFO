@@ -1,6 +1,6 @@
 pkgbase = graphite-gtk-theme-git
 	pkgdesc = Graphite gtk theme
-	pkgver = 2021.11.26.r5.gea5abc7
+	pkgver = 2021.11.26.r45.gbdc64af
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
@@ -16,3 +16,54 @@ pkgbase = graphite-gtk-theme-git
 	sha256sums = SKIP
 
 pkgname = graphite-gtk-theme-git
+
+pkgname = graphite-gtk-theme-wallpaper-git
+	optdepends = 
+	provides = graphite-theme-wallpaper
+	conflicts = graphite-theme-wallpaper
+
+pkgname = graphite-gtk-theme-nord-git
+
+pkgname = graphite-gtk-theme-black-git
+
+pkgname = graphite-gtk-theme-rimless-git
+
+pkgname = graphite-gtk-theme-normal-git
+
+pkgname = graphite-gtk-theme-nord-rimless-git
+
+pkgname = graphite-gtk-theme-nord-normal-git
+
+pkgname = graphite-gtk-theme-black-rimless-git
+
+pkgname = graphite-gtk-theme-black-normal-git
+
+pkgname = graphite-gtk-theme-rimless-normal-git
+
+pkgname = graphite-gtk-theme-nord-rimless-normal-git
+
+pkgname = graphite-gtk-theme-black-rimless-normal-git
+
+pkgname = graphite-gtk-theme-compact-git
+
+pkgname = graphite-gtk-theme-nord-compact-git
+
+pkgname = graphite-gtk-theme-black-compact-git
+
+pkgname = graphite-gtk-theme-rimless-compact-git
+
+pkgname = graphite-gtk-theme-normal-compact-git
+
+pkgname = graphite-gtk-theme-nord-rimless-compact-git
+
+pkgname = graphite-gtk-theme-nord-normal-compact-git
+
+pkgname = graphite-gtk-theme-black-rimless-compact-git
+
+pkgname = graphite-gtk-theme-black-normal-compact-git
+
+pkgname = graphite-gtk-theme-rimless-normal-compact-git
+
+pkgname = graphite-gtk-theme-nord-rimless-normal-compact-git
+
+pkgname = graphite-gtk-theme-black-rimless-normal-compact-git
