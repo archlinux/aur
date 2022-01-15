@@ -72,7 +72,7 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.15.14-xanmod1
+xanmod=5.16.0-xanmod1
 pkgver=${xanmod//-/.}
 #pkgver=5.15.8.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
@@ -107,8 +107,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
 
-        # amd-pstate v5 included in Xanmod
-        # multigenerational lru v5 included in Xanmod
+        # amd-pstate included in Xanmod
+        # multigenerational lru included in Xanmod
         # 5.17 TCP Optimizations included in Xanmod
         # 5.17 TCP csum optimization included in Xanmod
 
@@ -142,9 +142,9 @@ validpgpkeys=(
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            'ea5dceb862b22e645d72e0d759b646643bc6569d0910f1711aedb66447962c76'
+            '8d54d0c699a77c93b743a3cdd6e6af62c46707d4781534a837e84aaa5fcc5978'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
