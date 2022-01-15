@@ -15,12 +15,12 @@ sha1sums=('b7db56f92c71ba22a54127113a3e4205bd4f5c96')
 sha512sums=('dfe624aebc376062c43856a975f0e1a607b1046e77f544e398a3f67277ad402df7f0514cbec9c808a1c80028e1bc412cdfc664de476b1d33f927cdfde9c5282c')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   LIBGIT2_SYS_USE_PKG_CONFIG=1 cargo build --release --locked
 }
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$pkgname-$pkgver/git-gone.1" "$pkgdir/usr/share/man/man1/git-gone.1"
+  install -Dm755 "$srcdir/$pkgname/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$srcdir/$pkgname/git-gone.1" "$pkgdir/usr/share/man/man1/git-gone.1"
 }
