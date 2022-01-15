@@ -4,20 +4,20 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
 ## Major kernel version
-_major=5.10
+_major=5.15
 ## Minor kernel version
-_minor=81
+_minor=14
 
 pkgbase=linux-multimedia-lts
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
 pkgrel=1
-pkgdesc='Linux Multimedia Optimized (LTS)'
+pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
 license=(GPL2)
@@ -39,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('a2e1686132c4598c0adfdf52acbf1ab4bb327b2398badef346a0eff849da5adb'
+sha256sums=('2df2b4e71b5b2f25b201ba5a3d42bdf676b1deaae2fb44c14a1d8a33c9f76a4d'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -56,23 +56,26 @@ prepare() {
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
-
+  
   ## --- Patches
-
+  
   ### Apply patches
   msg2 "Apply Linux TKG Patches..."
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0001-mm-Support-soft-dirty-flag-reset-for-VA-range.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex2_interface.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex_waitv.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
-  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.8-5.14.patch
+  patch -Np1 < ${srcdir}/kernel_compiler_patch/more-uarches-for-kernel-5.15+.patch
 
   ### Setting config
   echo "Setting config..."
@@ -80,12 +83,33 @@ prepare() {
   make olddefconfig
 
   ## --- Configs And Tweaks
-
+  
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
+  ### Configure Kernel Compression
+  msg2 "Setting ZSTD Compression Globally..."
+  scripts/config --enable CONFIG_KERNEL_ZSTD
+
+  msg2 "Setting ZSTD Compression Level Globally..."
+  scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
+  scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
+
+  ### Configure Kernel Module Compression
+  msg2 "Setting ZSTD Compression For Modules..."
+  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
+
+  msg2 "Setting ZSTD Compression Level For Modules..."
+  scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+  scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+
+  ## Optimize Kernel for Performance Using (GCC -O3)
+  msg2 "Setting Up A GCC -O3 Optimized Kernel"
+  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+
   ### Set tickrate to 1000HZ
-  msg2 "Setting tick rate to 1k..."
+  msg2 "Setting tick rate to 1000HZ..."
   scripts/config --disable CONFIG_HZ_300
   scripts/config --enable CONFIG_HZ_1000
   scripts/config --set-val CONFIG_HZ 1000
@@ -98,20 +122,16 @@ prepare() {
   ### Enable Futex 2 (Fsync 2) Support
   msg2 "Enable Futex2 support..."
   scripts/config --enable CONFIG_FUTEX2
-
-  ### Enable Esync Support
-  msg2 "Enable winesync support..."
-  scripts/config --enable CONFIG_WINESYNC
-
+  
   ### Enable Full Tickless Timer
   msg2 "Enabling Full Tickless..."
   scripts/config --disable CONFIG_HZ_PERIODIC
   scripts/config --disable CONFIG_NO_HZ_IDLE
   scripts/config --enable CONFIG_NO_HZ_FULL
   scripts/config --disable CONFIG_NO_HZ
-  scripts/config --enable CONFIG_NO_HZ_COMMON
-
-  ### Enable Pre-emptation
+  scripts/config --disable CONFIG_NO_HZ_COMMON
+  
+  ### Enable Preemptation
   msg2 "Enable PREEMPT..."
   scripts/config --disable CONFIG_PREEMPT_NONE
   scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
@@ -120,18 +140,8 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
 
-  ### Enable New NTFS3 Driver
-  msg2 "Enable NTFS3..."
-  scripts/config --enable CONFIG_NTFS_FS
-  scripts/config --enable CONFIG_NTFS_RW
-  scripts/config --enable CONFIG_NTFS_DEBUG
-  scripts/config --enable CONFIG_NTFS3_FS
-  scripts/config --enable CONFIG_NTFS3_64BIT_CLUSTER
-  scripts/config --enable CONFIG_NTFS3_LZX_XPRESS
-  scripts/config --enable CONFIG_NTFS3_FS_POSIX_ACL
-
   ### Disable Kernel Debugging
-  msg2 "Disable Kernel Debugging..."
+  msg2 "Disable Kernel Debugging For Smaller Builds"
   scripts/config --disable CONFIG_CONTEXT_TRACKING
   scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
   scripts/config --disable CONFIG_DEBUG_KERNEL
@@ -145,7 +155,7 @@ prepare() {
   scripts/config --disable CONFIG_KGDB
   scripts/config --disable CONFIG_FUNCTION_TRACER
   scripts/config --disable CONFIG_STACK_TRACER
-
+  
   ### Use Nconfig to customize compile options
   #msg2 "Enabling Ncurses Config Menu..."
   #make nconfig
