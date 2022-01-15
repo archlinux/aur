@@ -1,19 +1,20 @@
-# Maintainer: xerus <27jf at pm dot me>
+# Maintainer: xeruf <27jf at pm dot me>
 
 _pkgname=context
-pkgname=${_pkgname}-bin
+pkgname=${_pkgname}
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc='ConTeXt LMTX, the Lean and Mean TeX eXperience with Lua, MetaPost, TeX, and XML'
 arch=('x86_64')
 url="https://wiki.contextgarden.net/Installation"
 license=(GPL)
 depends=()
-provides=("${_pkgname}")
-conflicts=("texlive-core")
+replaces=(context-bin)
+provides=(${_pkgname})
+conflicts=(texlive-core)
 optdepends=()
 source=("http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip")
-md5sums=(SKIP)
+sha256sums=(SKIP)
 install=${_pkgname}.install
 
 prepare() {

@@ -1,14 +1,15 @@
-pkgbase = context-bin
+pkgbase = context
 	pkgdesc = ConTeXt LMTX, the Lean and Mean TeX eXperience with Lua, MetaPost, TeX, and XML
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.contextgarden.net/Installation
 	install = context.install
 	arch = x86_64
 	license = GPL
 	provides = context
 	conflicts = texlive-core
+	replaces = context-bin
 	source = http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
-	md5sums = SKIP
+	sha256sums = SKIP
 
-pkgname = context-bin
+pkgname = context
