@@ -1,13 +1,13 @@
 # Maintainer: Kyle Yasuda <ksyasuda at umich dot edu>
 pkgname=aniwrapper-git
 _pkgname=aniwrapper
-pkgver=r181.44438b3
+pkgver=r182.86531b3
 pkgrel=1
 pkgdesc="A rofi wrapper around a modified ani-cli: a cli to browse and watch anime"
 arch=('any')
 url="https://github.com/ksyasuda/aniwrapper"
 license=('GPL3')
-depends=('aria2' 'curl' 'grep' 'mpv' 'rofi' 'sed' 'sqlite3')
+depends=('aria2' 'curl' 'grep' 'jq' 'mpv' 'rofi' 'sed' 'sqlite3')
 makedepends=('git')
 source=('aniwrapper::git+https://github.com/ksyasuda/aniwrapper.git')
 md5sums=('SKIP')
