@@ -3,7 +3,7 @@
 
 pkgname=itch
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The best way to play itch.io games."
 
@@ -12,6 +12,7 @@ url="https://github.com/itchio/itch"
 license=('MIT')
 
 depends=('libnotify' 'nss' 'libxss' 'gtk3')
+optdepends=('wine: launch windows games')
 options=('!strip')
 install="itch.install"
 
