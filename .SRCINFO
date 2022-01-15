@@ -1,0 +1,17 @@
+pkgbase = serverman-preview-git
+	pkgdesc = Minecraft Server Management program
+	pkgver = e90972095919d452ebe6004f7dbfffc509abc906
+	pkgrel = 1
+	url = https://gitlab.com/NoahJelen/serverman
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = gzip
+	depends = ncurses
+	depends = gcc-libs
+	depends = glibc
+	source = git+https://gitlab.com/NoahJelen/serverman
+	md5sums = SKIP
+
+pkgname = serverman-preview-git
