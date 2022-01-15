@@ -1,9 +1,10 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Flávio Tapajós <tapajos at outlook doc com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Eric Bailey <nerflad@gmail.com>
 
 pkgname=ocaml-curl
-pkgver=0.9.1
-pkgrel=4
+pkgver=0.9.2
+pkgrel=1
 pkgdesc='OCaml bindings to libcurl'
 url='https://ygrek.org.ua/p/ocurl'
 arch=('i686' 'x86_64' 'armv7h')
@@ -12,7 +13,7 @@ depends=('curl>=7.28.0')
 makedepends=('ocaml-findlib')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ygrek/ocurl/archive/${pkgver}.tar.gz")
-sha256sums=('2b3f8a44321c2e086b6d3bd6da4d9b1f9f4a71cb85a8f64e03af8e042f66de0e')
+sha256sums=('dfa55b83f2ba1f32898c3488fd7bfcd55414f4719f563d83d126e5b9de2bd156')
 
 build() {
   cd "${srcdir}/ocurl-${pkgver}"
