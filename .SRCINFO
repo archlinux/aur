@@ -1,12 +1,12 @@
 pkgbase = vim-markdown-git
 	pkgdesc = Markdown Vim Mode
 	pkgver = r504.8e5d86f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/plasticboy/vim-markdown
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = vim
+	depends = vim-plugin-runtime
 	depends = vim-tabular
 	provides = vim-markdown
 	conflicts = vim-markdown

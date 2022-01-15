@@ -3,12 +3,12 @@
 _pkgname=vim-markdown
 pkgname=vim-markdown-git
 pkgver=r504.8e5d86f
-pkgrel=2
+pkgrel=3
 pkgdesc="Markdown Vim Mode"
 arch=('any')
 url="https://github.com/plasticboy/vim-markdown"
 license=('MIT')
-depends=('vim' 'vim-tabular')
+depends=('vim-plugin-runtime' 'vim-tabular')
 makedepends=('git')
 conflicts=('vim-markdown')
 provides=('vim-markdown')
