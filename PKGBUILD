@@ -3,7 +3,7 @@
 pkgname=ynote-desktop-bin
 _pkgname=${pkgname%-bin}
 pkgver=7.0.4_1907
-pkgrel=1
+pkgrel=2
 pkgdesc="Netease Youdao Ynote for Linux"
 arch=('x86_64')
 url="https://note.youdao.com/"
@@ -48,7 +48,7 @@ package() {
   sed -i "s|/opt/有道云笔记|/opt/${_pkgname}|g" \
          ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
-  install -Dm644 LICENSE.html -t ${pkgdir}/usr/share/licenses/${pkgname}
+  install -Dm644 ${srcdir}/LICENSE.html -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
 
 # vim: set sw=2 ts=2 et:
