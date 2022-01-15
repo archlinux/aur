@@ -1,0 +1,14 @@
+pkgbase = t2sz-git
+	pkgdesc = t2sz compress a file into a seekable zstd. If the file is a tar archive it compress each file in the archive into an independent frame, hence the name: tar 2 seekable zstd.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/martinellimarco/t2sz
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = zstd
+	source = git+https://github.com/martinellimarco/t2sz
+	sha256sums = SKIP
+
+pkgname = t2sz-git
