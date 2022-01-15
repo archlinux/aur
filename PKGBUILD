@@ -97,7 +97,7 @@ _branch=${xanmod%%\.*\-*}.x       # 5.x
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${xanmod}/patch-${xanmod}.xz"
         "choose-gcc-optimization.sh"
-        "sphinx-workaround.patch"
+        #"sphinx-workaround.patch"
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
@@ -105,11 +105,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"Linux-5.15.7.patch.xz"
 
         # Arch: misc hotfixes
-        "PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
-        "iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
-        "cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "lg-laptop-Recognize-more-models.patch"
 
         # amd-pstate v5 included in Xanmod
         # multigenerational lru v5 included in Xanmod
@@ -117,13 +113,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17 TCP csum optimization included in Xanmod
 
         # 5.16: zstd 1.4.10 update stack size regression fixes
-        "zstd-udpate-fixes.patch"
-
         # 5.16: don't drop shared caches on C3 state transitions
-        "x86-ACPI-State-Optimize-C3-entry-on-AMD-CPUs.patch"
-
         # 5.16 spectre defaults
-        "x86-change-default-to-spec_store_bypass_disable-prct.patch"
 
         # -- patch from Chromium developers; more accurately report battery state changes
         "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
@@ -136,10 +127,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
         # mediatek mt7921 bt/wifi patches
-        "1-2-mt76-mt7915-send-EAPOL-frames-at-lowest-rate.patch"
-        "2-2-mt76-mt7921-send-EAPOL-frames-at-lowest-rate.patch"
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
-        "1-2-mt76-mt7921-robustify-hardware-initialization-flow.patch"
         "1-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-Foxconn.patch"
         "2-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-IMC-Network.patch"
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip.patch"
@@ -158,23 +146,12 @@ sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
             'ea5dceb862b22e645d72e0d759b646643bc6569d0910f1711aedb66447962c76'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
-            '52fc0fcd806f34e774e36570b2a739dbdf337f7ff679b1c1139bee54d03301eb'
-            '20c0926964a4286486c3ae1dd05014767f42388316a7d60b4f52639536fbd615'
-            '6c48a3e96b49ddb6ece78f3abb1a8a889a77c097f93b14ab052f1e19eda05076'
-            '54f161457cc4de4ebd5770c16f14f7a47f1dbbc4f1af83dec651e6a8b1eaad56'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
-            '80538b0f529ed32118dac933d50599c6e843ae31882361fd88cd40a1dc7d21f9'
-            'd636bd74a71b2d898b20246e3c013b853fd1a462ed622e7e90302d53b4157428'
-            '923230ed8367e28adfdeed75d3cdba9eec6b781818c37f6f3d3eb64101d2e716'
-            'cc401107f1bf7b7d8e8a78ee594f9db4b6fa252b7239b6aa88f678aef84d935c'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
-            '4bfbff4eba07fc9de2ce78097a4a269509468ba0e24c15a82905cd94e093ad55'
-            '021f8539ab2fb722b46937b95fdab22a2308236a24ecc1a9ea8db4853721dd39'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
-            'c368cc4eefff20b7ae904eec686b7e72b46ff02b32c8a4fbd6bd4039f087e7ba'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'
             'cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
