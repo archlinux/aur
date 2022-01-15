@@ -5,7 +5,7 @@ _orgname=strangelove-ventures
 _reponame=lens
 _pkgname=${_prjname}-${_reponame}
 pkgname=${_pkgname}-bin
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lens for Cosmos ecosystem"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source_x86_64=("https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/lens_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/lens_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('f4de75faa3fb49ca06ad3784b37e9f8c928ca0c79059b4dd842f11cd49e52352')
-sha256sums_aarch64=('5e7079f57f8f4f6125fb9f5e5382c6d31c4c8878bf4df3588af1e32a278016e1')
+sha256sums_x86_64=('5556170b2f8b67bef1f6780fce836670ca4d96797cf4fb95051a5759e902205f')
+sha256sums_aarch64=('2cdcb8b92d7b66b8081c74902c7bdb9a3579d5ad24206f75e189d9e75025aaa3')
 
 package() {
 	install -DT "${_reponame}" "${pkgdir}/usr/local/bin/${_pkgname}"
