@@ -1,0 +1,14 @@
+pkgbase = uproot-git
+	pkgdesc = Move or copy deeply nested files and folders to the surface or another folder
+	pkgver = r5.fb51847
+	pkgrel = 1
+	url = https://github.com/keystroke3/uproot
+	arch = any
+	license = GPLv3+
+	makedepends = git
+	depends = python>=3.7
+	provides = uproot
+	source = uproot-git::git+https://github.com/keystroke3/uproot
+	md5sums = SKIP
+
+pkgname = uproot-git
