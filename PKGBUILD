@@ -1,7 +1,7 @@
 # Maintainer: Angelo Fallaria <ba.fallaria@gmail.com>
 
 pkgname=treefetch-bin
-pkgver=1.2.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A lightning-fast system fetch tool built with Rust."
 arch=('x86_64')
