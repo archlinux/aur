@@ -1,0 +1,16 @@
+pkgbase = trdsql-bin
+	pkgdesc = Tool that can execute SQL queries on CSV, LTSV and JSON
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/noborus/trdsql
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = glibc
+	conflicts = trdsql
+	source = trdsql-bin-0.9.1.zip::https://github.com/noborus/trdsql/releases/download/v0.9.1/trdsql_v0.9.1_linux_amd64.zip
+	source = trdsql-completion.zsh
+	sha256sums = f8883e94905a2e32e8df589ae09e00f7cbdfb1937683852852626467e2b9582c
+	sha256sums = c7ebfa2d1eb4f56b8ae404c66a2796e7e76e61e35b189ccee8e6363686aed6a6
+
+pkgname = trdsql-bin
