@@ -26,4 +26,5 @@ depends=(
     'cutefish-screenshot-git'
     'cutefish-videoplayer-git'
     'cutefish-gtk-themes-git'
+    'cutefish-cursor-themes-git'
 )
