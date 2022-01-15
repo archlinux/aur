@@ -1,6 +1,6 @@
 # Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=chroma-bin
-pkgver=0.9.4
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A general purpose syntax highlighter in pure Go"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,9 +10,9 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-amd64.tar.gz")
 source_i686=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-386.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}-$pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('9f482448b2fb10ba876241f17dfdbee7ef2715b45e94678278fe5c5ea6bc2e91')
-sha256sums_i686=('5af6c33fbebc42813970fc1e2f143700790c95ce5e57b8b0b3e4304ab3621a73')
-sha256sums_aarch64=('96655611c56e5952e03986eb234625725fee480711b4da0a6b5b4d4d1f4d7aca')
+sha256sums_x86_64=('d16c893ff3a03739179e97ff68ece185fbd4a4fb469dc97275b06d0c2f209256')
+sha256sums_i686=('d8d59a4d1bc662d90caa90cef7cc644cff3e9b3582bbd7458ba20a3a70ec02a9')
+sha256sums_aarch64=('c11d4feabb457f28a6d6d3a13670845995b6bd9aa623e26144f904dfd9a2ccca')
 
 package() {
     install -Dm755 "${pkgname%-bin}" -t "${pkgdir}/usr/bin"

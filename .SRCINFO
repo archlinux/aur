@@ -1,6 +1,6 @@
 pkgbase = chroma-bin
 	pkgdesc = A general purpose syntax highlighter in pure Go
-	pkgver = 0.9.4
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/alecthomas/chroma
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = chroma-bin
 	arch = aarch64
 	license = MIT
 	provides = chroma
-	source_x86_64 = chroma-bin-0.9.4.tar.gz::https://github.com/alecthomas/chroma/releases/download/v0.9.4/chroma-0.9.4-linux-amd64.tar.gz
-	sha256sums_x86_64 = 9f482448b2fb10ba876241f17dfdbee7ef2715b45e94678278fe5c5ea6bc2e91
-	source_i686 = chroma-bin-0.9.4.tar.gz::https://github.com/alecthomas/chroma/releases/download/v0.9.4/chroma-0.9.4-linux-386.tar.gz
-	sha256sums_i686 = 5af6c33fbebc42813970fc1e2f143700790c95ce5e57b8b0b3e4304ab3621a73
-	source_aarch64 = chroma-bin-0.9.4.tar.gz::https://github.com/alecthomas/chroma/releases/download/v0.9.4/chroma-0.9.4-linux-arm64.tar.gz
-	sha256sums_aarch64 = 96655611c56e5952e03986eb234625725fee480711b4da0a6b5b4d4d1f4d7aca
+	source_x86_64 = chroma-bin-0.10.0.tar.gz::https://github.com/alecthomas/chroma/releases/download/v0.10.0/chroma-0.10.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = d16c893ff3a03739179e97ff68ece185fbd4a4fb469dc97275b06d0c2f209256
+	source_i686 = chroma-bin-0.10.0.tar.gz::https://github.com/alecthomas/chroma/releases/download/v0.10.0/chroma-0.10.0-linux-386.tar.gz
+	sha256sums_i686 = d8d59a4d1bc662d90caa90cef7cc644cff3e9b3582bbd7458ba20a3a70ec02a9
+	source_aarch64 = chroma-bin-0.10.0.tar.gz::https://github.com/alecthomas/chroma/releases/download/v0.10.0/chroma-0.10.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = c11d4feabb457f28a6d6d3a13670845995b6bd9aa623e26144f904dfd9a2ccca
 
 pkgname = chroma-bin
