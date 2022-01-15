@@ -1,19 +1,13 @@
 pkgbase = mangodl
-	pkgdesc = An easy-to-use cli tool for downloading manga
-	pkgver = r19.68d3b56
+	pkgdesc = CLI tool for downloading manga
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/Gyro7/mangodl
 	arch = x86_64
-	arch = i686
-	arch = armv7h
-	arch = amd64
-	license = GPL
-	makedepends = git
+	license = GPL3
 	makedepends = go
-	provides = mangodl
-	conflicts = mangodl
-	source = mangodl::git+https://github.com/Gyro7/mangodl.git#branch=main
-	sha256sums = SKIP
+	depends = glibc
+	source = mangodl-1.5.tar.gz::https://github.com/Gyro7/mangodl/archive/mangodl-v1.5-linux.tar.gz
+	sha256sums = 69d674c1ec171afd414022a242f52f19a82c0f78476c78f43d220311c47ede05
 
 pkgname = mangodl
-

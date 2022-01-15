@@ -1,51 +1,42 @@
-
 # Maintainer: Gyro7 <gyro@sach1.tk>
-pkgname=mangodl
-pkgver=r19.68d3b56
-pkgrel=1
-pkgdesc="An easy-to-use cli tool for downloading manga"
-arch=(x86_64 i686 armv7h amd64)
-url="https://github.com/Gyro7/mangodl"
-license=('GPL')
-makedepends=(git go)
-source=("mangodl::git+$url.git#branch=main")
-sha256sums=('SKIP')
-provides=($pkgname)
-conflicts=($pkgname)
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgver() {
-  cd "$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+pkgname=mangodl
+pkgver=1.5
+pkgrel=1
+pkgdesc="CLI tool for downloading manga"
+arch=('x86_64')
+url="https://github.com/Gyro7/mangodl"
+license=('GPL3')
+depends=('glibc')
+makedepends=('go')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/mangodl-v$pkgver-linux.tar.gz")
+sha256sums=('69d674c1ec171afd414022a242f52f19a82c0f78476c78f43d220311c47ede05')
+
+prepare() {
+	cd "$pkgname-mangodl-v$pkgver-linux"
+	mkdir -p build
+	go mod tidy
 }
 
 build() {
-  cd $pkgname
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-  go build -o $pkgname .
+	cd "$pkgname-mangodl-v$pkgver-linux"
+	go build -o build
 }
 
 check() {
-  cd "$pkgname"
-  go test ./...
+	cd "$pkgname-mangodl-v$pkgver-linux"
+	go test ./...
 }
 
 package() {
-  cd "$pkgname"
-  if [ -f /usr/bin/$pkgname ]
-  then
-	  echo Removing previously installed version...
-	  sudo rm /usr/bin/$pkgname
-  fi 
-  sudo install -Dm755 $pkgname /usr/bin/$pkgname
-  sudo install -Dm644 LICENSE /usr/share/licenses/$pkgname/LICENSE
+	cd "$pkgname-mangodl-v$pkgver-linux"
+	install -D build/mangodl -t "$pkgdir/usr/bin/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
-
