@@ -1,6 +1,6 @@
 pkgbase = ocaml-pulseaudio
 	pkgdesc = OCaml bindings for pulseaudio
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/savonet/ocaml-pulseaudio
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = ocaml-pulseaudio
 	depends = ocaml
 	depends = libpulse
 	options = !strip
-	source = https://github.com/savonet/ocaml-pulseaudio/archive/v0.1.4.tar.gz
-	md5sums = f73f732602cc3a70d418a307d32a87bd
+	source = https://github.com/savonet/ocaml-pulseaudio/archive/v0.1.5.tar.gz
+	md5sums = 007d7ad74bab49c36644b13e651c2680
 
 pkgname = ocaml-pulseaudio
-
