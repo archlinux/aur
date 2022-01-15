@@ -3,5 +3,5 @@
 cd "$(dirname "$(dirname "$(realpath "$0")")")"
 
 exec /usr/bin/java \
-    -cp lib/dvbern-lib-update.jar:lib/cryptutil.jar \
+    -cp lib/dvbern-lib-update.jar:lib/cryptutil.jar:lib/jaxb-api.jar:lib/activation.jar:lib/jaxb-impl.jar \
     ch.dvbern.lib.update.Launcher
