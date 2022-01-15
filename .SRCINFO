@@ -1,0 +1,13 @@
+pkgbase = pfetch-btw
+	pkgdesc = A pretty system information tool written in POSIX sh. (Tuned for ArchLinux BTW)
+	pkgver = 0.7.0.1
+	pkgrel = 1
+	url = https://github.com/FedericoAntoniazzi/pfetch-btw
+	arch = any
+	license = MIT
+	provides = pfetch-btw
+	conflicts = pfetch-git
+	source = pfetch-btw-0.7.0.1.tar.gz::https://github.com/FedericoAntoniazzi/pfetch-btw/archive/0.7.0.1.tar.gz
+	sha256sums = 3811b48929ac88742cff9eedcb9cdac8730be68ad8cf93ab6e332c9f90cd1c8a
+
+pkgname = pfetch-btw
