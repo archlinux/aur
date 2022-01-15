@@ -1,13 +1,14 @@
 pkgbase = difftance-git
 	pkgdesc = A diff tool to show edit distance
 	pkgver = r5.25789f0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fabon-f/difftance
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = make
+	makedepends = shards
 	depends = crystal
 	conflicts = difftance-bin
 	source = difftance-git::git+https://github.com/fabon-f/difftance.git

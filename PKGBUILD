@@ -1,13 +1,13 @@
 # Maintainer: fabon <syobon.hinata.public[at]gmail[dot]com>
 pkgname='difftance-git'
 pkgver=r5.25789f0
-pkgrel=1
+pkgrel=2
 pkgdesc="A diff tool to show edit distance"
 arch=('i686' 'x86_64')
 url="https://github.com/fabon-f/difftance"
 license=('MIT')
 depends=('crystal')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'shards')
 conflicts=('difftance-bin')
 
 source=("${pkgname}::git+https://github.com/fabon-f/difftance.git")
