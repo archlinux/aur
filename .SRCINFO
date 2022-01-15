@@ -1,0 +1,15 @@
+pkgbase = ndeftool
+	pkgdesc = command line utility to create, modify and print NDEF Records
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nfcpy/ndeftool
+	arch = x86_64
+	license = ISC
+	makedepends = python-setuptools
+	depends = python-ndeflib
+	depends = python-click
+	depends = python-magic
+	source = ndeftool-0.1.1.tar.gz::https://github.com/nfcpy/ndeftool/archive/v0.1.1.tar.gz
+	sha256sums = 6f7c68d858e54a181639f10346a589166a09edb6a513cd8e55ada9cead64aac0
+
+pkgname = ndeftool
