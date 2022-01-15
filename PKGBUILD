@@ -1,7 +1,7 @@
 # Maintainer: Jan Hensel <ja_he@uni-bremen.de>
 pkgname=dayplan
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="Utility to plan your day and track your time"
 license=('MIT')
@@ -27,4 +27,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm755 "./dayplan" "$pkgdir/usr/bin/dayplan"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/dayplan/LICENSE"
 }

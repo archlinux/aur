@@ -1,7 +1,7 @@
 pkgbase = dayplan
 	pkgdesc = Utility to plan your day and track your time
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ja-he/dayplan
 	arch = x86_64
 	license = MIT
