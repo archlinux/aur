@@ -1,0 +1,5 @@
+post_install() {
+  echo "Warning: woeusbgui is no longer maintained."
+  echo "Use lastest command line woeusb at https://aur.archlinux.org/packages/woeusb/"
+  echo "Or a new gui version woeusb-ng at https://aur.archlinux.org/packages/woeusb-ng/"
+}
