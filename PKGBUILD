@@ -2,8 +2,8 @@
 
 pkgname=yabridge-bin
 _pkgname=yabridge
-pkgver=3.7.0
-pkgrel=4
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux (includes yabridgectl)"
 epoch=
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('yabridge' 'yabridgectl' 'yabridgectl-git')
 options=('!strip')
 install=yabridge.install
 source=("https://github.com/robbert-vdh/yabridge/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('46a68052157bd30c4aeb5b0eb84154582408eb099377716e3690518dec048384')
+sha256sums=('352b054335bffbb3a401b510ab9fc542ed7fd43a75a26e5eb6292ec10f869d8c')
 
 package() {
   cd "$srcdir/$_pkgname"
