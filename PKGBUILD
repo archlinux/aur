@@ -2,7 +2,7 @@
 
 pkgname=cutefish-screenshot-git
 _pkgname=cutefish-screenshot
-pkgver=0.5
+pkgver=0.5.r34.gd47f8cf
 pkgrel=1
 pkgdesc="Screenshot tool for CutefishOS"
 arch=('x86_64')
@@ -16,10 +16,10 @@ conflicts=("$_pkgname")
 source=("git+$url.git")
 sha512sums=('SKIP')
 
-# pkgver() {
-#   cd screenshot
-#   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-# }
+pkgver() {
+  cd screenshot
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd screenshot

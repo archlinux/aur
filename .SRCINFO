@@ -1,6 +1,6 @@
 pkgbase = cutefish-screenshot-git
 	pkgdesc = Screenshot tool for CutefishOS
-	pkgver = 0.5
+	pkgver = 0.5.r34.gd47f8cf
 	pkgrel = 1
 	url = https://github.com/cutefishos/screenshot
 	arch = x86_64
