@@ -1,7 +1,7 @@
 pkgbase = kde-thumbnailer-apk-libarchive
-	pkgdesc = Preview image generator plugin for Android Application Package files (libarchive branch)
+	pkgdesc = Preview image generator plugin for APK files (libarchive branch)
 	pkgver = 1.1+libarchive
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/z3ntu/kde-thumbnailer-apk
 	arch = i686
 	arch = x86_64
