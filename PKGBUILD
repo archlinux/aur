@@ -1,8 +1,8 @@
 # Maintainer: Leo <i@setuid0.dev>
 
-_rr_ver=2.6.3
-_binary_ver=2.6.6
-_plugins_ver=2.6.7
+_rr_ver=2.7.1
+_binary_ver=2.7.0
+_plugins_ver=2.7.1
 
 pkgname=roadrunner
 pkgver=$_rr_ver
@@ -21,9 +21,9 @@ source=(
 	".rr.yaml.sample-minimal"
 )
 sha256sums=(
-	'e0c29b8eb3f05721f4483594e7c735253a6cb118bc97e10c4c6b6ddba58ba501'
-	'6aed8ca0b8eca5789734b26db1716a71c95fec6f16b7407c7a3a320d81e362b8'
-	'1a0e31f5d147491f63a77b91da47e429c2a4b2af081b18830ba98c7019329e89'
+	'ad6a4bbcbf5731d552f36a5b4637035199c2c570d0a1c500ee2abbc13b60347a'
+	'b4b96126d5098dfb3f5adfed0e0a65cb3fb83237d7fda3af13e4fbb8c0004363'
+	'2ee53609c79a0dad9409acbbdfc8fb9f6bd70c40783319304d693c5ae2026c11'
 	SKIP
 	SKIP
 )
