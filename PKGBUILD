@@ -2,7 +2,7 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r9013.651c9d0d6
+pkgver=r9120.f5979074d
 pkgrel=1
 pkgdesc='An experimental open-source Nintendo 3DS emulator/debugger'
 arch=('i686' 'x86_64')
@@ -34,14 +34,16 @@ source=("$_pkgname::git+https://github.com/citra-emu/citra-canary.git"
         'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/kinetiknz/cubeb.git'
-        'git+https://github.com/discordapp/discord-rpc.git'
+        'git+https://github.com/discord/discord-rpc.git'
         'git+https://github.com/arun11299/cpp-jwt.git'
         'git+https://github.com/wwylele/teakra.git'
         'git+https://github.com/lvandeve/lodepng.git'
         'git+https://github.com/facebook/zstd.git'
+        'git+https://github.com/lemenkov/libyuv.git'
         # cubeb dependencies
         'git+https://github.com/arsenm/sanitizers-cmake.git')
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -70,7 +72,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{boost,nihstro,soundtouch,catch,dynarmic,xbyak,cryptopp/cryptopp,fmt,enet,inih/inih,libressl,libusb/libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng/lodepng,zstd}; do
+    for submodule in externals/{boost,nihstro,soundtouch,catch,dynarmic,xbyak,cryptopp/cryptopp,fmt,enet,inih/inih,libressl,libusb/libusb,cubeb,discord-rpc,cpp-jwt,teakra,lodepng/lodepng,zstd,libyuv}; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
         git submodule update

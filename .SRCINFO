@@ -1,6 +1,6 @@
 pkgbase = citra-canary-git
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = r9013.651c9d0d6
+	pkgver = r9120.f5979074d
 	pkgrel = 1
 	url = https://github.com/citra-emu/citra-canary
 	arch = i686
@@ -34,12 +34,14 @@ pkgbase = citra-canary-git
 	source = libressl::git+https://github.com/citra-emu/ext-libressl-portable.git
 	source = git+https://github.com/libusb/libusb.git
 	source = git+https://github.com/kinetiknz/cubeb.git
-	source = git+https://github.com/discordapp/discord-rpc.git
+	source = git+https://github.com/discord/discord-rpc.git
 	source = git+https://github.com/arun11299/cpp-jwt.git
 	source = git+https://github.com/wwylele/teakra.git
 	source = git+https://github.com/lvandeve/lodepng.git
 	source = git+https://github.com/facebook/zstd.git
+	source = git+https://github.com/lemenkov/libyuv.git
 	source = git+https://github.com/arsenm/sanitizers-cmake.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -62,4 +64,3 @@ pkgbase = citra-canary-git
 	md5sums = SKIP
 
 pkgname = citra-canary-git
-
