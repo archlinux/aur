@@ -3,7 +3,7 @@
 
 _gemname=dry-configurable
 pkgname=ruby-$_gemname
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A mixin to add configuration functionality to your classes"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('bb2faa7387b3a2066d95d0ae3dd1e83edd0f61983b7cefaa7b3faa4c8809ae52eb654087e684bac9ad3ac837e6fb4470f7931cfdc9a1fde47add0b4ab1e5d38d')
+b2sums=('d1fc8d031031e9754ed9a7ca40f54b670cda5a24a4230f83ce0cedd199bb0d0e48eea09f755b2aa62a05cf600647b6f1453d8b49024eeffedec9cd51e8badd6c')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
