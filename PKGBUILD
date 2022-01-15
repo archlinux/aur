@@ -5,8 +5,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibutils
-pkgver=6.10
-pkgrel=2
+pkgver=7.2
+pkgrel=1
 pkgdesc="Bibliography format interconversion"
 arch=("i686" "x86_64")
 url="http://sourceforge.net/p/bibutils/home/Bibutils"
@@ -14,7 +14,7 @@ license=('GPL2')
 makedepends=('tcsh')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tgz::https://sourceforge.net/projects/bibutils/files/bibutils_${pkgver}_src.tgz/download")
-sha256sums=('8656c042fa1371443aa4e1a58bcab5fcea0b236eb39182e4004fc348ce56e496')
+sha256sums=('6e028aef1e8a6b3e5acef098584a7bb68708f35cfe74011b341c11fea5e4b5c3')
 
 build() {
   cd "${pkgname}_${pkgver}"
