@@ -1,7 +1,7 @@
 # Maintainer: Ali Nabipour <alinabipour01@gmail.com>
 
 pkgname=cutefish-git
-pkgver=0.4
+pkgver=0.7
 pkgrel=1
 pkgdesc='Cutefish desktop environment meta package'
 arch=('x86_64')
@@ -23,4 +23,7 @@ depends=(
     'cutefish-statusbar-git'
     'cutefish-terminal-git'
     'cutefish-wallpapers-git'
+    'cutefish-screenshot-git'
+    'cutefish-videoplayer-git'
+    'cutefish-gtk-themes-git'
 )

@@ -1,6 +1,6 @@
 pkgbase = cutefish-git
 	pkgdesc = Cutefish desktop environment meta package
-	pkgver = 0.4
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://cutefishos.com/
 	arch = x86_64
@@ -20,5 +20,8 @@ pkgbase = cutefish-git
 	depends = cutefish-statusbar-git
 	depends = cutefish-terminal-git
 	depends = cutefish-wallpapers-git
+	depends = cutefish-screenshot-git
+	depends = cutefish-videoplayer-git
+	depends = cutefish-gtk-themes-git
 
 pkgname = cutefish-git
