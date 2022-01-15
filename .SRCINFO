@@ -1,6 +1,6 @@
 pkgbase = coin-or-hsl
 	pkgdesc = HSL Mathematical Software Library. Including solvers for sparse linear systems of equations and sparse eigenvalue problems. Compiled with coin-or-tools, supports Ipopt.
-	pkgver = 2019.05.21
+	pkgver = 2021.05.05
 	pkgrel = 1
 	url = http://www.hsl.rl.ac.uk/
 	arch = i686
@@ -12,8 +12,8 @@ pkgbase = coin-or-hsl
 	optdepends = openmp
 	optdepends = coin-or-ipopt
 	source = ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git
-	source = manual://coinhsl-2019.05.21.tar.gz
+	source = manual://coinhsl-2021.05.05.tar.gz
 	sha256sums = SKIP
-	sha256sums = 95ce1160f0b013151a3e25d40337775c760a8f3a79d801a1d190598bf4e4c0c3
+	sha256sums = f77ad752a37de8695c02c81bcc503674af76689d40a9864b6f2a7a790c3efc95
 
 pkgname = coin-or-hsl
