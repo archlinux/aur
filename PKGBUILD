@@ -1,4 +1,4 @@
-# Maintainer: 
+# Maintainer: Arun G <lunar.arun@gmail.com>
 
 pkgname=stylepak-git
 pkgver=16.124fbdc
@@ -17,4 +17,5 @@ pkgver() {
 package() {
   install -D -t "$pkgdir/usr/bin" "$srcdir/$pkgname/stylepak"
   install -D -t "$pkgdir/usr/share/licenses/stylepak" "$srcdir/$pkgname/LICENSE"
+  install -D -t "$pkgdir/usr/share/doc/stylepak/README.md" "$srcdir/$pkgname/README.md"
 }
