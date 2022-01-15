@@ -3,9 +3,9 @@
 
 pkgname=apple-music-electron-git
 _pkgname=Apple-Music-Electron
-pkgver=3.0.0.r45.g5403f56
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface."
+pkgdesc="An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. NOTE: This package has been archived by the development team for the newer native Cider Project."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
 license=("MIT")

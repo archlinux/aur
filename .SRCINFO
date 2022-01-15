@@ -1,6 +1,6 @@
 pkgbase = apple-music-electron-git
-	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface.
-	pkgver = 3.0.0.r45.g5403f56
+	pkgdesc = An open-source, GPU-accelerated Electron application that emulates the Apple Music website in a customizable interface. NOTE: This package has been archived by the development team for the newer native Cider Project.
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/CiderApp/Apple-Music-Electron.git
 	arch = armv7h
