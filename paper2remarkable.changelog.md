@@ -1,3 +1,10 @@
+# Changelog
+
+## Version 0.9.11
+
+* Bugfix for SagePub provider
+* Enable Taylor & Francis provider again
+
 ## Version 0.9.10
 
 * Bugfix for ACM provider

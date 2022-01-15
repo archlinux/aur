@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=paper2remarkable
-pkgver=0.9.10
+pkgver=0.9.11
 pkgrel=1
 pkgdesc="Easily download an academic paper and send it to a reMarkable."
 arch=(any)
@@ -12,13 +12,14 @@ depends=('python>=3.6.0' 'qpdf' 'ghostscript' 'poppler' 'rmapi' 'python-pikepdf>
 'python-beautifulsoup4>=4.8' 'python-html2text>=2020.1.16' 'python-markdown>=3.1.1'
 'python-pdfplumber>=0.5' 'python-yaml>=5.1' 'python-readability-lxml>=0.7.1'
 'python-regex>=2018.11' 'python-requests>=2.21' 'python-titlecase>=0.12' 
-'python-unidecode>=1.1' 'python-weasyprint>=51')
+'python-unidecode>=1.1' 'python-weasyprint>=51', 'python-cloudscraper>=1.2.58'
+'python-pycryptodome' 'python-cssselect')
 makedepends=('python-setuptools')
 optdepends=('python-readabilipy: Improves output of web articles')
 changelog=$pkgname.changelog.md
 install=$pkgname.install
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=("1bbf18246b04972f11417e817e6ca863764303191acac17cab0e9d02dc47ee7d")
+sha256sums=("b032adeabf72d04b3dd4bf8f91c305850fd865b3eabc2efaf0ae2f6ea23b6be3")
 
 build() {
     cd "$pkgname-$pkgver/"
