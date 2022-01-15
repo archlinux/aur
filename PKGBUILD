@@ -3,7 +3,7 @@ _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
 pkgver=2.0.1.r5.g8f34829
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
 makedepends=('unrar' 'cmake' 'git')
@@ -50,9 +50,9 @@ package() {
 #!/bin/sh
 
 # Configure soundfonts if not already configured
-if [ -z "$SDL_SOUNDFONTS" ]; then
+if [ -z "\$SDL_SOUNDFONTS" ]; then
   # Use first available soundfont
-  export SDL_SOUNDFONTS="$(find /usr/share/soundfonts -type f -print -quit 2> /dev/null)"
+  export SDL_SOUNDFONTS="\$(find /usr/share/soundfonts -type f -print -quit 2> /dev/null)"
 fi
 
 # Run program in correct directory so it can find it's resources
