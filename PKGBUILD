@@ -2,8 +2,8 @@
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor3-git
-pkgver=77.f8e029c
-pkgrel=2
+pkgver=83.8ebd281
+pkgrel=1
 pkgdesc="Zenmonitor3 is monitoring software for AMD Zen-based CPUs, now with Zen 3 support! "
 arch=('x86_64' 'i686')
 url="https://github.com/Ta180m/zenmonitor3"
@@ -34,7 +34,9 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgbase"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" all
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install-cli
   mkdir -p "${pkgdir}/usr/share/polkit-1/actions"
   make DESTDIR="${pkgdir}" PREFIX="/usr" install-polkit
 }
