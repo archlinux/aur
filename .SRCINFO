@@ -1,0 +1,14 @@
+pkgbase = python-marshmallow-oneofschema
+	pkgdesc = Schema (de)multiplexing for marshmallow
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/marshmallow-code/marshmallow-oneofschema
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-marshmallow
+	source = python-marshmallow-oneofschema-3.0.1.tar.gz::https://files.pythonhosted.org/packages/source/m/marshmallow-oneofschema/marshmallow-oneofschema-3.0.1.tar.gz
+	sha256sums = 62cd2099b29188c92493c2940ee79d1bf2f2619a71721664e5a98ec2faa58237
+
+pkgname = python-marshmallow-oneofschema
