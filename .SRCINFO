@@ -1,13 +1,14 @@
 pkgbase = molecule-containers
 	pkgdesc = Molecule Container-agnostic Driver Plugin
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansible-community/molecule-containers
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools-scm
 	makedepends = python-setuptools-scm-git-archive
+	makedepends = python-build
 	depends = molecule
 	depends = python-ansible-compat
 	depends = python-selinux
