@@ -56,14 +56,14 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=15
+_minor=16
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 pkgbase=linux-pf
-_unpatched_sublevel=11
-_pfrel=5
+_unpatched_sublevel=0
+_pfrel=1
 _kernelname=pf
 _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
@@ -73,7 +73,7 @@ _CPUSUFFIXES_KBUILD=(
   ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
   IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE SKYLAKEX CANNONLAKE ICELAKE CASCADELAKE)
 pkgname=('linux-pf')
-pkgdesc="Linux with the pf-kernel patch (uksm, BMQ, ZSTD, FSGSBASE and more)"
+pkgdesc="Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
 pkgver=${_basekernel}.${_unpatched_sublevel}.${_kernelname}${_pfrel}
 pkgrel=1
@@ -89,7 +89,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	      "${_pfpatchhome}/${_pfpatchname}"	# the -pf patchset
         # bmq-scheudler
-        "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
+        # "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
         'asus_zenith_ii_map.patch::https://bugzilla.kernel.org/attachment.cgi?id=294489'
@@ -102,7 +102,7 @@ prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
-  patch -Np1 < ${srcdir}/${_projectcpatchname}
+  #patch -Np1 < ${srcdir}/${_projectcpatchname}
 
 
   # Add port map for ASUS Zenith II
@@ -665,13 +665,12 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            '6000b247aac5620ba08ec862353063f5f8806a33c4c8f55263843c8f47027e63'
-            '325fd274fb60d37fd1ebc329e035b703512531a5bc3c99cfbe8f2fa0e4b55a8d'
-            '8723eb2d5e3473db978bfa7e8d94c80efeac61d71e7fad2f1214ad55671a33a2'
+sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
+            '7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
+            '425743a84ca63599680f28ed2ebb7885483805104953579b6452c6c3ba24d22a'
+            '30566498a4f549e972fcd430d2fc44b2bd643c55bae20096f083f8837d8c43e4'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            'bb0ea5613dbdc05d702339f379c4b1e1381d79f404df312dd5eb120e6cc3d24a'
-            '768239d739180c0199545b5c5cf2d78de6261aec769008e6a2b7e97c7477b756'
+            '1eb6a4d75c4aa9ba32ec92e60b502c9d04a3869004f1f2686db8631d5f573561'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '67558840c3e1f1de229b23a54342cb126735282353a4d0a8cd10e4d582e6d9d6')
