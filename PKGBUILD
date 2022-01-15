@@ -10,10 +10,10 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='9c8279cdd5d0bc256b8cc0ced2312e27e069a214' # git rev-parse v${_tag_name}
-_tag_name=250
+_tag='95d0353dad616c275fda9b123ba9660e16b20d0a' # git rev-parse v${_tag_name}
+_tag_name=250.2
 pkgver="${_tag_name/-/}"
-pkgrel=4
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -69,11 +69,8 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # chrattr-util: return EOPNOTSUPP from chrattr_full if no other failure was observed
-  '7c3b51c469140cdbc1b7e9a232af3f250fea3884'
-
-  # manager: always close idle pipe when sending ready notification
-  '9c1b17c3dc1541df02118ee3aaf6dd5dd540cdc2'
+  # boot: Fix readdir_harder() on VirtualBox
+  'ed3abbfbde674bd163cb1c64d9e31dd24e352f85'
 )
 
 _reverts=(
@@ -167,7 +164,7 @@ package_systemd-selinux() {
   pkgdesc='system and service manager with SELinux support'
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
-           'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwids' 'libcap' 'libcap.so'
+           'iptables' 'kbd' 'kmod' 'libkmod.so' 'hwdata' 'libcap' 'libcap.so'
            'libgcrypt' 'libxcrypt' 'libcrypt.so' 'systemd-libs-selinux' 'libidn2' 'lz4' 'pam-selinux'
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux-selinux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
