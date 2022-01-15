@@ -1,5 +1,5 @@
 pkgbase = ynote-desktop-bin
-	pkgdesc = Netease Ynote for Linux
+	pkgdesc = Netease Youdao Ynote for Linux
 	pkgver = 7.0.4_1907
 	pkgrel = 1
 	url = https://note.youdao.com/
