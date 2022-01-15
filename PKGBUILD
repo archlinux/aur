@@ -16,7 +16,7 @@ _minor=0
 pkgbase=linux-multimedia
 pkgver=${_major}
 #pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -106,19 +106,6 @@ prepare() {
   msg2 "Setting Up A GCC -O3 Optimized Kernel"
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-
-  ### Disable NUMA Support
-  msg2 "Disable NUMA..."
-  scripts/config --disable CONFIG_NUMA
-
-  ### Set performance as default governor
-  msg2 "Setting performance governor..."
-  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
 
   ### Set tickrate to 1000HZ
   msg2 "Setting tick rate to 1000HZ..."
