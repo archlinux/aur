@@ -2,7 +2,7 @@
 # Maintainer: squitch
 
 pkgname=tess-git
-pkgver=0.5.3.r0.g070b198
+pkgver=0.5.4.r0.g5f299fe
 pkgrel=1
 epoch=1
 pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/SquitchYT/Tess"
 license=(MPL2)
 depends=(gtk3 nss)
-makedepends=(git npm cmake)
+makedepends=(git npm cmake nodejs-lts-gallium)
 source=("git+https://github.com/SquitchYT/Tess.git")
 sha256sums=('SKIP')
 
@@ -25,6 +25,7 @@ package() {
   install -D tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
   install -D appintess.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
   install -D build/icon.png "${pkgdir}/usr/share/pixmaps/tess.png"
+  mkdir -p "${pkgdir}/usr/share/man"
   cp -r -f ./man/* "${pkgdir}/usr/share/man/"
 
   if type "$kbuildsycoca5" > /dev/null; then
