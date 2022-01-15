@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=PyShamus
+Comment=Clone of old DOS game SHAMUS
+Exec=/usr/bin/pyshamus
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/pyshamus.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
