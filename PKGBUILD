@@ -1,7 +1,7 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=flux
-pkgver=0.123.0
+pkgver=0.149.0
 pkgrel=1
 pkgdesc='Lightweight scripting language for querying databases and working with data'
 arch=('i686' 'x86_64' 'arm64')
