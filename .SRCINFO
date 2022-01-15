@@ -1,0 +1,26 @@
+pkgbase = ynote-desktop-bin
+	pkgdesc = Netease Ynote for Linux
+	pkgver = 7.0.4_1907
+	pkgrel = 1
+	url = https://note.youdao.com/
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	provides = ynote-desktop
+	conflicts = ynote-desktop
+	source = ynote-desktop-7.0.4_1907.deb::https://artifact.lx.netease.com/download/ynote-electron/%E6%9C%89%E9%81%93%E4%BA%91%E7%AC%94%E8%AE%B0-web.deb
+	source = LICENSE.html::https://note.youdao.com/license.html
+	sha256sums = 512dcaee31b3a72b2466c7e79a87b51f4f47ce35e3dd0e1158a2f55d34e15a39
+	sha256sums = a8aec47c7cc6e6d838d525c89b58a962d650c84b0ebec09ecfb8955381fe6460
+
+pkgname = ynote-desktop-bin
