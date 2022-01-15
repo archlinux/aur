@@ -1,6 +1,6 @@
 pkgbase = termius
 	pkgdesc = Desktop SSH Client
-	pkgver = 7.23.2
+	pkgver = 7.32.0
 	pkgrel = 1
 	url = https://www.termius.com/
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = termius
 	depends = libxtst
 	depends = nss
 	depends = libxss
-	source = termius-7.23.2.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_90.snap
+	source = termius-7.32.0.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_98.snap
 	source = termius.desktop
 	source = tos.html
-	sha512sums = dfcb143bc0e1612a7d0cdb173a167125b67606a5f3db138152306bdb6ea47f88f989566a5cb628a657d0507be93a605b2deb022a204412ab9dcba70bdb7b343d
+	sha512sums = a05902bbf3bb6be226537e03cdcc02a1a8931c89a379e0b533cb7277cd66532a8fe70d90d147aa69ccbdcd6ee21440d96f69c516b5aea92a193a254f3813aeaa
 	sha512sums = 9b0788a02b9bf371de07adec8f3e14f4db8bf83dae6dee60d91027d8ba09cbab253b8b714f980d5c62b72d97e4ac11e6c3985139322bdceaad9f2f0232427656
 	sha512sums = 53f9c61fba12b72817c5e7f4e0ac520489265fbf425fa46f13129da66632b41a2a128072d9e0e64e37e4e8feb8424bc1c15eed127d630314e6459ceb2dbafb4b
 
