@@ -4,13 +4,13 @@
 _base=ufl
 pkgname=python-${_base}-git
 pkgdesc="UFL - Unified Form Language"
-pkgver=2021.1.0.14.g1de7f12a
+pkgver=2021.1.0.19.g04e3fe93
 pkgrel=1
 arch=('any')
 url="https://github.com/FEniCS/${_base}"
 license=(LGPL3)
 depends=(python-numpy)
-makedepends=(python-setuptools git)
+makedepends=(python-setuptools python-wheel git)
 checkdepends=(python-pytest)
 provides=("python-${_base}=${pkgver%%.r*}")
 conflicts=("python-${_base}")
