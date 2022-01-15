@@ -2,7 +2,7 @@
 
 pkgname=cutefish-statusbar-git
 _pkgname=cutefish-statusbar
-pkgver=0.5.r18.g90f0041
+pkgver=0.7.r1.g6d9c8a0
 pkgrel=1
 pkgdesc="Top status bar of CutefishOS"
 arch=('x86_64')

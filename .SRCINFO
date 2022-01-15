@@ -1,6 +1,6 @@
 pkgbase = cutefish-statusbar-git
 	pkgdesc = Top status bar of CutefishOS
-	pkgver = 0.5.r18.g90f0041
+	pkgver = 0.7.r1.g6d9c8a0
 	pkgrel = 1
 	url = https://github.com/cutefishos/statusbar
 	arch = x86_64
