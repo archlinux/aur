@@ -57,9 +57,11 @@ package_graphite-gtk-theme-wallpaper-git() {
     conflicts=('graphite-theme-wallpaper')
     optdepends=()
     
-    dist="${pkgdir}/usr/share/gnome-background-properties/"
+    dist="${pkgdir}/usr/share/backgrounds/Graphite"
+    dist2="${pkgdir}/usr/share/gnome-background-properties/"
     mkdir -p "${dist}"
-    cp Graphite-backgrounds.xml "${dist}"
+    mkdir -p "${dist2}"
+    cp Graphite-backgrounds.xml "${dist2}"
     cd "${srcdir}/${_reponame}/wallpaper"
     cp Graphite-nord/* "${dist}"
     cp Graphite-normal/* "${dist}"
