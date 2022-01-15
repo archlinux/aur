@@ -2,16 +2,15 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.0.0
+pkgver=1.0.0.822.4bb64e2
 pkgrel=1
-pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. This is a git package, thus it compiles straight from the GitHub repository."
+pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories main branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
-license=("MIT")
-depends=('gtk3' 'libxss' 'nss')
-makedepends=('yarn' 'git' 'npm' 'nodejs-lts-gallium')
-optdepends=('libnotify: Playback notifications'
-            'otf-apple-sf-pro: Use of SF Font for certain themes')
+license=("GPL")
+depends=('gtk3' 'nss')
+makedepends=('git' 'npm' 'yarn')
+optdepends=('libnotify: Playback notifications')
 source=(
   "git+https://github.com/CiderApp/${_pkgname}.git"
   "Cider.desktop"
