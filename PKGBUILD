@@ -2,7 +2,7 @@
 # Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=ruby-listen
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('ruby-rdoc')
 source=("https://rubygems.org/downloads/listen-$pkgver.gem")
 noextract=("listen-$pkgver.gem")
 options=('!emptydirs')
-sha256sums=('b72c0ca66346956c1939719bf21b90e24f20d4155d1d546fa009f32867838e59')
+sha256sums=('3b80caa7aa77fae836916c2f9e3fbcafbd15f5d695dd487c1f5b5e7e465efe29')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
