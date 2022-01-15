@@ -1,7 +1,7 @@
 pkgbase = util-linux-selinux
 	pkgdesc = SELinux aware miscellaneous system utilities for Linux
 	pkgver = 2.37.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/karelzak/util-linux
 	arch = x86_64
 	arch = aarch64
@@ -16,6 +16,7 @@ pkgbase = util-linux-selinux
 	options = strip
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.2.tar.xz
 	source = https://www.kernel.org/pub/linux/utils/util-linux/v2.37/util-linux-2.37.2.tar.sign
+	source = 0001-agetty-resolve-tty-name-even-if-stdin-is-specified.patch
 	source = pam-login
 	source = pam-common
 	source = pam-runuser
@@ -27,6 +28,7 @@ pkgbase = util-linux-selinux
 	validpgpkeys = B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284
 	sha256sums = 6a0764c1aae7fb607ef8a6dd2c0f6c47d5e5fd27aa08820abaad9ec14e28e9d9
 	sha256sums = SKIP
+	sha256sums = 53395b7e434b32e6fee25f1b6fa59330ab72c1a2f99a17c3d3fd92473379fd9a
 	sha256sums = 99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f
 	sha256sums = 57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af
 	sha256sums = 48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1
@@ -54,8 +56,8 @@ pkgname = util-linux-selinux
 	optdepends = words: default dictionary for look
 	provides = rfkill
 	provides = hardlink
-	provides = util-linux=2.37.2-4
-	provides = selinux-util-linux=2.37.2-4
+	provides = util-linux=2.37.2-5
+	provides = selinux-util-linux=2.37.2-5
 	conflicts = rfkill
 	conflicts = hardlink
 	conflicts = util-linux
@@ -77,7 +79,7 @@ pkgname = util-linux-libs-selinux
 	provides = libmount.so
 	provides = libsmartcols.so
 	provides = libuuid.so
-	provides = util-linux-libs=2.37.2-4
+	provides = util-linux-libs=2.37.2-5
 	provides = libutil-linux-selinux
 	conflicts = util-linux-libs
 	conflicts = libutil-linux-selinux
