@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=95.0.2
-pkgrel=2
+pkgver=96.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -40,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('c178cbf61979bd39a8daa9a09c6e03089da37baded692ad1f745ecfcaae74d64'
+sha256sums=('b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -74,15 +74,18 @@ prepare() {
 
   # Gentoo patches
   echo "---- Gentoo patches"
-  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0025-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0022-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0027-Make-elfhack-use-toolchain.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0026-Make-elfhack-use-toolchain.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0028-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
+
   # Use more system libs
   echo "---- Patching for system libs"
   patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
@@ -92,10 +95,6 @@ prepare() {
   # Remove some pre-installed addons that might be questionable
   echo "---- Librewolf patches"
   patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
-
-  # Disable (some) megabar functionality
-  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -Np1 -i ${_patches_dir}/librewolf/megabar.patch
 
   # Debian patch to enable global menubar
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
@@ -110,10 +109,6 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
 
   echo "---- Librewolf patches - UI"
-  # Show a warning saying that changing language is not allowed through the UI,
-  # and that it requires to visit our FAQ, instead of telling the user to check his connection.
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/add-language-warning.patch
-
   # Remove references to Firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
   patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
@@ -133,11 +128,13 @@ prepare() {
   # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
   patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
 
+  # Pref pane
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/pref_pane.patch
+
   echo "---- Fixing build issues"
   # Needed patch to have build working
   patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
-  patch -Np1 -i ${_patches_dir}/misc/fix-wl_proxy_marshal_flags.patch
-  patch -Np1 -i ${_patches_dir}/misc/firefox-95-diable-pip-check.patch
+  patch -Np1 -i ${_patches_dir}/misc/fix-psutil.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
