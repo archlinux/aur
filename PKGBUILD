@@ -1,5 +1,5 @@
 # Maintainer: Gyro7 <gyro@sach1.tk>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mangodl
 pkgver=1.5
