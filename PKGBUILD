@@ -8,7 +8,7 @@ url="https://github.com/google/or-tools"
 license=('Apache2')
 depends=('python>=3.6' 'swig' 'python-protobuf>=3.19.1' 'absl-py>=0.13' 'python-numpy>=1.13.3')
 makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip' 'git' 'python-mypy-protobuf')
-optdepends=('cplex: CPLEX solver support')
+optdepends=('cplex: CPLEX solver support' 'python-pandas: used by some examples' 'python-matplotlib: used by some examples')
 options=(!emptydirs)
 source=("https://github.com/google/or-tools/archive/v${pkgver}.tar.gz")
 b2sums=('acfdc58991dcfc476ea7a448788a2a32250b0e8dcc9017e082746f12a06b203859b8d2f55c14542f58798c9fbecfc2daa3dd4f3b9d7c9557974469a273698afa')
