@@ -1,18 +1,24 @@
 pkgbase = python-nfcpy-git
-	pkgdesc = Module to read/write NFC tags or communicate with another NFC device
 	pkgver = 1.0.3.r19.gacc6d32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nfcpy/nfcpy
-	arch = x86_64
+	arch = any
 	license = custom:EUPL
 	makedepends = python-setuptools
+	source = nfcpy::git+https://github.com/nfcpy/nfcpy
+	sha256sums = SKIP
+
+pkgname = python-nfcpy-git
+	pkgdesc = Module to read/write NFC tags or communicate with another NFC device (git)
 	depends = python-libusb1
 	depends = python-pyserial
 	depends = python-ndeflib
 	depends = python-pydes
 	provides = python-nfcpy
 	conflicts = python-nfcpy
-	source = nfcpy::git+https://github.com/nfcpy/nfcpy
-	sha256sums = SKIP
 
-pkgname = python-nfcpy-git
+pkgname = python-nfcpy-examples-git
+	pkgdesc = nfcpy examples (git)
+	depends = python-nfcpy
+	provides = python-nfcpy-examples
+	conflicts = python-nfcpy-examples
