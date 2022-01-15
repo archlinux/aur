@@ -1,19 +1,21 @@
 pkgbase = tiptop-cli
 	pkgdesc = Command-line system monitoring
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/nschloe/tiptop
 	arch = any
 	license = MIT
 	checkdepends = python-pytest-codeblocks
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
 	depends = python-py-cpuinfo
 	depends = python-distro
 	depends = python-psutil
 	depends = python-textual
 	provides = tiptop
 	conflicts = tiptop
-	source = tiptop-0.0.19::https://github.com/nschloe/tiptop/archive/v0.0.19.tar.gz
-	sha512sums = cde52272a909cd0ce634f03aca1bddf5a9d10dddf6d3daa8e6d42062d6aae472a3fc37a195b8814ffdfb569d865dc6558000a0c75a62ff65beb4b24a0b7b56d9
+	source = tiptop-0.0.20::https://github.com/nschloe/tiptop/archive/v0.0.20.tar.gz
+	sha512sums = e0f0a6e8a766f8b534e827a47a45e55f575f06351f92cc8d58080447bd807ed6c488a14ab00c50b5cca577ff9b608417b2264051acc1f34f206edb12a8e6217c
 
 pkgname = tiptop-cli
