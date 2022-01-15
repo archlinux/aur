@@ -17,7 +17,9 @@ pkgbase = python-or-tools
 	makedepends = git
 	depends = python>=3.6
 	depends = swig
-	depends = python-protobuf
+	depends = python-protobuf>=3.19.1
+	depends = absl-py>=0.13
+	depends = python-numpy>=1.13.3
 	optdepends = cplex: CPLEX solver support
 	options = !emptydirs
 	source = https://github.com/google/or-tools/archive/v9.2.tar.gz

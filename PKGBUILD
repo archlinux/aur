@@ -6,7 +6,7 @@ pkgdesc="Google's Operations Research tools"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/google/or-tools"
 license=('Apache2')
-depends=('python>=3.6' 'swig' 'python-protobuf')
+depends=('python>=3.6' 'swig' 'python-protobuf>=3.19.1' 'absl-py>=0.13' 'python-numpy>=1.13.3')
 makedepends=('cmake' 'wget' 'lsb-release' 'automake' 'python-wheel' 'python-pip' 'git')
 optdepends=('cplex: CPLEX solver support')
 options=(!emptydirs)
