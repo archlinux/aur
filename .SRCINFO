@@ -1,0 +1,11 @@
+pkgbase = ut
+	pkgdesc = UT: C++20 μ(micro)/Unit Testing Framework.
+	pkgver = 1.1.8
+	pkgrel = 1
+	url = https://github.com/boost-ext/ut
+	arch = any
+	license = Boost
+	source = https://github.com/boost-ext/ut/archive/refs/tags/v1.1.8.tar.gz
+	md5sums = eb8ae4db6b0d27b2a7d4621315db5c32
+
+pkgname = ut
