@@ -6,13 +6,12 @@
 pkgbase=jack
 pkgname=(jack jack-docs)
 pkgver=0.126.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A low-latency audio server"
 arch=(x86_64)
 url="http://jackaudio.org/"
 license=(GPL LGPL)
-makedepends=(alsa-lib db celt doxygen git libffado libsamplerate libsndfile
-readline zita-alsa-pcmi zita-resampler)
+makedepends=(alsa-lib db celt doxygen git libffado libsamplerate)
 source=(
   "$pkgname::git+https://github.com/jackaudio/${pkgname}1.git#tag=${pkgver}?signed"
   "git+https://github.com/jackaudio/headers"
@@ -44,8 +43,7 @@ build() {
 }
 
 package_jack() {
-  depends=(db gcc-libs glibc libasound.so libreadline.so libsndfile.so
-  libsamplerate.so libzita-alsa-pcmi.so libzita-resampler.so)
+  depends=(db gcc-libs glibc libasound.so libsamplerate.so)
   optdepends=(
     'celt: NetJACK driver'
     'jack-docs: for documentation'
