@@ -15,8 +15,8 @@
 
 #
 _pkg_name=codelite
-_pkg_ver=15.0.8
-#_commit=c4971afd07a893b42a8aaf1d855fb54de895cc5f
+_pkg_ver=15.0.9
+#_commit=eeccfe61c0876d1d7b63dbf2a69daec4aa86ffb1
 
 # pkg
 pkgname=${_pkg_name}-unstable
@@ -48,7 +48,9 @@ depends=('wxgtk3'
           'libedit'
           'libssh'
           'mariadb-libs'
-          'ncurses'
+          'ncurses',
+          'uchardet',
+          'hunspell',
           #'xterm' 'wget' 'curl'
           #'python2'
           #'python'
@@ -67,8 +69,8 @@ source=(
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('9775fbe4acf998ee7f4c189b26658381'
-         '20f3428eb831c3ff2539a7228afaa3b4')
+sha256sums=('869cd08d10ff6b25db2c9a5d12030b483c2556ad6f7e0da34406714eead391e3'
+            '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
 
