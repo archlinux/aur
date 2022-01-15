@@ -1,0 +1,11 @@
+pkgbase = plank-theme-sirius-deeplight
+	pkgdesc = Sirius Deeplight Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1308718
+	arch = any
+	license = MIT
+	source = https://github.com/MMcQueenGNU/plank-theme-sirius-deeplight/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 6f57578b724454c3f542f70d11882c6c23c226ee4e083172371d249a6dbe3d53
+
+pkgname = plank-theme-sirius-deeplight
