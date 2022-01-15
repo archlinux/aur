@@ -1,3 +1,4 @@
+
 # Maintainer: Leonidas P. <jpegxguy at outlook dot com>
 # Maintainer: Jerry <isjerryxiao at outlook dot com>
 # Contributor: Anes Belfodil <ans.belfodil at gmail dot com>
@@ -7,14 +8,14 @@
 _pkgname=qemu-user-static
 pkgname=${_pkgname}-bin
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A generic and open source machine emulator, statically linked'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.qemu.org"
 license=('GPL2' 'LGPL2.1')
 depends=('binfmt-qemu-static')
-provides=("qemu-user" "${_pkgname}")
-conflicts=("qemu-user" "${_pkgname}")
+provides=("qemu-user" "${_pkgname}" "qemu-arm-static")
+conflicts=("qemu-user" "${_pkgname}" "qemu-arm-static")
 
 _pkgadditver="+dfsg-1"
 # case "${CARCH}" in
