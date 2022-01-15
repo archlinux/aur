@@ -1,6 +1,6 @@
 pkgbase = cutefish-core-git
 	pkgdesc = System components and backend of CutefishOS
-	pkgver = 0.5.r27.g929ff52
+	pkgver = 0.7.r4.g78325c3
 	pkgrel = 1
 	url = https://github.com/cutefishos/core
 	arch = x86_64
