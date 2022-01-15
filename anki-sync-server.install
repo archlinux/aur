@@ -15,7 +15,7 @@ post_install() {
   systemctl start nginx
 
   # link systemd service file
-  ln -s /opt/anki-sync-server/plugins/systemd/anki-sync-server.service /etc/systemd/system/
+  ln -s /opt/anki-sync-server/plugins/systemd/anki-sync-server.service /usr/lib/systemd/system/
   systemctl enable anki-sync-server
   systemctl start anki-sync-server
 
