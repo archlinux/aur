@@ -1,7 +1,7 @@
 pkgbase = astronciaiptv-git
 	pkgdesc = IPTV player with EPG support
-	pkgver = 0.0.87
-	pkgrel = 2
+	pkgver = 0.0.90
+	pkgrel = 1
 	url = https://gitlab.com/astroncia/iptv
 	arch = any
 	license = GPL3
