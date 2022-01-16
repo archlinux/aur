@@ -11,6 +11,8 @@ pkgver=5.5.2
 pkgrel=1
 swiftargumentparserver=0.4.3
 swiftcryptover=1.1.5
+swiftniover=2.31.2
+swiftniosslver=2.15.0
 yamsver=4.0.2
 
 pkgdesc="The Swift programming language and debugger"
@@ -41,14 +43,28 @@ source=(
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
     "yams::git+https://github.com/jpsim/Yams#tag=${yamsver}"
     "sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#tag=${_swiftver}"
+    "swift-cmark-gfm::git+https://github.com/apple/swift-cmark#branch=gfm"
     "swift-crypto::git+https://github.com/apple/swift-crypto#tag=${swiftcryptover}"
+    "swift-docc::git+https://github.com/apple/swift-docc#branch=main"
+    "swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main"
+    "swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main"
     "swift-format::git+https://github.com/apple/swift-format#tag=${_swiftver}"
     "swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main"
+    "swift-markdown::git+https://github.com/apple/swift-markdown#branch=main"
+    "swift-nio::git+https://github.com/apple/swift-nio#tag=${swiftniover}"
+    "swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#tag=${swiftniosslver}"
     "swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#tag=${_swiftver}"
     "swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#tag=${_swiftver}"
 )
 noextract=()
 sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
