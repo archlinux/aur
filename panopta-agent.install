@@ -23,6 +23,8 @@ post_install() {
     chown -R panopta-agent /var/log/panopta-agent
     chown -R panopta-agent /etc/panopta-agent
 
+    # Start cron
+    systemctl enable --now cronie.service
 }
 
 post_upgrade() {
