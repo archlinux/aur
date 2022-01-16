@@ -12,6 +12,7 @@ pkgbase = rnote-git
 	depends = glib2
 	depends = libadwaita
 	depends = poppler-glib
+	depends = gstreamer
 	provides = rnote
 	conflicts = rnote
 	source = git+https://github.com/flxzt/rnote.git
