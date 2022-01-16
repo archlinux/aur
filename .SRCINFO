@@ -1,24 +1,71 @@
 pkgbase = rabbitvcs-git
-	pkgdesc = Utilities for better client integration with popular version control systems (git)
-	pkgver = 0.16.r78.g3181199
+	pkgdesc = A set of graphical tools written to provide simple and straightforward access to the version control systems you use
+	pkgver = r1866.1b833c9
 	pkgrel = 1
-	url = http://rabbitvcs.org/
+	url = https://github.com/rabbitvcs/rabbitvcs
 	arch = any
 	license = GPL
-	makedepends = python2-setuptools
 	makedepends = git
-	depends = git
-	depends = pygtk
-	depends = python2-pysvn
-	depends = python2-dulwich
-	depends = python2-gobject2
-	depends = python2-configobj
-	depends = python2-simplejson
-	depends = python2-gtkspellcheck
-	optdepends = meld: graphical diff viewer
-	provides = rabbitvcs=0.16.r78.g3181199
-	conflicts = rabbitvcs
+	makedepends = python-setuptools
 	source = rabbitvcs::git+https://github.com/rabbitvcs/rabbitvcs.git
+	source = rabbitvcs-ignore-post-install.patch
+	source = 328.patch
 	sha256sums = SKIP
+	sha256sums = b24d913ff1317281bab5bdcf7fb35e7f78d6cd4d43d0f4ce08d63330a1293c8b
+	sha256sums = 47ee39a0288c20183a4d8375fe32d783b886737501dac02ac666be3188e8605e
 
 pkgname = rabbitvcs-git
+	depends = git
+	depends = gtk3
+	depends = python-configobj
+	depends = python-dulwich
+	depends = python-gobject
+	depends = python-pysvn
+	depends = python-simplejson
+	depends = tk
+	optdepends = meld: graphical diff tool
+	optdepends = python-pygments: For syntax highlighting
+	optdepends = python-gtkspellcheck: For spell checking of commit messages
+	optdepends = hunspell: For spell checking of commit messages
+	provides = rabbitvcs
+	conflicts = rabbitvcs
+
+pkgname = rabbitvcs-cli-git
+	pkgdesc = A command line client for RabbitVCS
+	depends = rabbitvcs
+	provides = rabbitvcs-cli
+	conflicts = rabbitvcs-cli
+
+pkgname = rabbitvcs-caja-git
+	pkgdesc = Caja extension for RabbitVCS
+	install = rabbitvcs-caja.install
+	depends = dbus-python
+	depends = python-caja
+	depends = rabbitvcs
+	provides = rabbitvcs-caja
+	conflicts = rabbitvcs-caja
+
+pkgname = rabbitvcs-nautilus-git
+	pkgdesc = Nautilus extension for RabbitVCS
+	install = rabbitvcs-nautilus.install
+	depends = dbus-python
+	depends = python-nautilus
+	depends = rabbitvcs
+	provides = rabbitvcs-nautilus
+	conflicts = rabbitvcs-nautilus
+
+pkgname = rabbitvcs-nemo-git
+	pkgdesc = Nemo extension for RabbitVCS
+	install = rabbitvcs-nemo.install
+	depends = dbus-python
+	depends = nemo-python
+	depends = rabbitvcs
+	provides = rabbitvcs-nemo
+	conflicts = rabbitvcs-nemo
+
+pkgname = rabbitvcs-thunar-git
+	pkgdesc = Thunar extension for RabbitVCS
+	install = rabbitvcs-thunar.install
+	depends = dbus-python
+	depends = rabbitvcs
+	depends = thunarx-python

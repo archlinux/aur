@@ -1,0 +1,7 @@
+post_install(){
+  printf '=> This is the RabbitCVS core version. When installing RabbitVCS, you must install the core package as well as a package for each front-end you wish to use.'
+}
+
+post_upgrade(){
+	post_install
+}

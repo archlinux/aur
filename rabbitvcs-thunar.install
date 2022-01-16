@@ -1,0 +1,26 @@
+post_install(){
+cat << _EOF
+=> Be sure to restart Thunar for RabbitCVS to get loaded.
+=> Restart thunar with the following commands:
+=>   $ thunar -q
+=>   $ nohup thunar > /dev/null &
+_EOF
+}
+
+post_upgrade(){
+cat << _EOF
+=> Be sure to restart Thunar for RabbitCVS to get reloaded.
+=> Restart thunar with the following commands:
+=>   $ thunar -q
+=>   $ nohup thunar > /dev/null &
+_EOF
+}
+
+post_remove(){
+cat << _EOF
+=> Be sure to restart Thunar for RabbitCVS to get unloaded.
+=> Restart thunar with the following commands:
+=>   $ thunar -q
+=>   $ nohup thunar > /dev/null &
+_EOF
+}

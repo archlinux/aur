@@ -1,0 +1,26 @@
+post_install(){
+cat << _EOF
+=> Be sure to restart Nemo for RabbitCVS to get loaded.
+=> Restart Nemo with the following commands:
+=>   $ nemo -q
+=>   $ nohup nemo > /dev/null &
+_EOF
+}
+
+post_upgrade(){
+cat << _EOF
+=> Be sure to restart Nemo for RabbitCVS to get reloaded.
+=> Restart Nemo with the following commands:
+=>   $ nemo -q
+=>   $ nohup nemo > /dev/null &
+_EOF
+}
+
+post_remove(){
+cat << _EOF
+=> Be sure to restart Nemo for RabbitCVS to get unloaded.
+=> Restart Nemo with the following commands:
+=>   $ nemo -q
+=>   $ nohup nemo > /dev/null &
+_EOF
+}

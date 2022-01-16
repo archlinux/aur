@@ -1,0 +1,26 @@
+post_install(){
+cat << _EOF
+=> Be sure to restart Caja for RabbitCVS to get loaded.
+=> Restart Caja with the following commands:
+=>   $ caja -q
+=>   $ nohup caja > /dev/null &
+_EOF
+}
+
+post_upgrade(){
+cat << _EOF
+=> Be sure to restart Caja for RabbitCVS to get reloaded.
+=> Restart Caja with the following commands:
+=>   $ caja -q
+=>   $ nohup caja > /dev/null &
+_EOF
+}
+
+post_remove(){
+cat << _EOF
+=> Be sure to restart Caja for RabbitCVS to get unloaded.
+=> Restart Caja with the following commands:
+=>   $ caja -q
+=>   $ nohup caja > /dev/null &
+_EOF
+}
