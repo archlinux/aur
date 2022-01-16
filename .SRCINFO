@@ -1,0 +1,11 @@
+pkgbase = ttf-swei-gothic-git
+	pkgdesc = Swei Gothic-derived from Noto Sans CJK font family with a more concise & modern look.
+	pkgver = 2.129.r30.9fbdd43
+	pkgrel = 1
+	url = https://github.com/max32002/swei-gothic
+	arch = any
+	license = OFL
+	source = git+https://github.com/max32002/swei-gothic.git
+	sha256sums = SKIP
+
+pkgname = ttf-swei-gothic-git
