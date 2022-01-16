@@ -8,8 +8,15 @@ pkgdesc="OCR the current window or desktop and make it browsable for the user (d
 arch=('any')
 url="http://www.crivatec.de"
 license=('GPL')
-depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-webcolors' 'python-scipy' 'python-pytesseract' 'tesseract-data-eng' 'python-pdf2image')
+depends=('libwnck3' 'python-atspi' 'python-pillow' 'python-pytesseract' 'tesseract-data-eng')
 makedepends=('git')
+
+optdepends=(
+'python-webcolors: For color analyzing support'
+'python-scipy: For color analyzing support'
+'python-pdf2image: for PDF support'
+)
+
 source=("git+https://github.com/chrys87/ocrdesktop.git")
 install='ocrdesktop.install'
 provides=('ocrdesktop')
