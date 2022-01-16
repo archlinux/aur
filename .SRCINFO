@@ -1,6 +1,6 @@
 pkgbase = ly-git
 	pkgdesc = TUI display manager
-	pkgver = 0.5.1.r0.gf6658f8
+	pkgver = 0.5.3.r5.g609b3f9
 	pkgrel = 1
 	url = https://github.com/nullgemm/ly
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = ly-git
 	md5sums = SKIP
 
 pkgname = ly-git
-
