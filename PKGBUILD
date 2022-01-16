@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe Calà <gcala at mailbox dot org>
 
 pkgname=kalendar-git
-pkgver=0.3.1.r10.gc4a70bb3
+pkgver=0.4.0.r35.g9cb796be
 pkgrel=1
 pkgdesc="A calendar application using Akonadi to sync with external services (NextCloud, GMail, ...)"
 arch=(x86_64 aarch64)

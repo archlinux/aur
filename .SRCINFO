@@ -1,6 +1,6 @@
 pkgbase = kalendar-git
 	pkgdesc = A calendar application using Akonadi to sync with external services (NextCloud, GMail, ...)
-	pkgver = 0.3.1.r10.gc4a70bb3
+	pkgver = 0.4.0.r35.g9cb796be
 	pkgrel = 1
 	url = https://invent.kde.org/pim/kalendar
 	arch = x86_64
