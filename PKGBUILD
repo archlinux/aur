@@ -1,7 +1,7 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
 # Contributors: Janne Heß <jannehess at gmail dot com>
 pkgname=anki-sync-server-git
-pkgver=r425.ef41934
+pkgver=r408.0753292
 pkgrel=1
 pkgdesc="A sync server for anki using a forked version from github.com/ankicommunity (orig:dsnopek)"
 arch=('any')
