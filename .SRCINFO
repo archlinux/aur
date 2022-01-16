@@ -1,7 +1,7 @@
 pkgbase = tessen
 	pkgdesc = An interactive menu to autotype and copy password-store data
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ayushnix/tessen
 	install = tessen.install
 	arch = x86_64
@@ -19,6 +19,6 @@ pkgbase = tessen
 	optdepends = xdg-utils: to open URLs in default web browser
 	conflicts = tessen-git
 	source = https://github.com/ayushnix/tessen/releases/download/v1.3.0/tessen-1.3.0.tar.gz
-	sha256sums = 1a3cd2afc5297cc417e3f7383c08af0a911f72e005950fc940f9717c0a0156f5
+	sha256sums = dacc1ef85c1519fbb2f2d61e95573f1a846a83ef8d408d530a99d4e38fb4164f
 
 pkgname = tessen
