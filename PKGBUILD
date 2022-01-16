@@ -2,7 +2,7 @@
 
 pkgname=xplayer-plparser-git
 _pkgbasename=xplayer-plparser
-pkgver=master.lmde3.r0.g600ec3d
+pkgver=1.0.2.r4.g58682a7
 pkgrel=1
 pkgdesc="Playlist parser for xplayer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

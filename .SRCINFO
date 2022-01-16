@@ -1,6 +1,6 @@
 pkgbase = xplayer-plparser-git
 	pkgdesc = Playlist parser for xplayer. X-Apps Project (git version).
-	pkgver = master.lmde3.r0.g600ec3d
+	pkgver = 1.0.2.r4.g58682a7
 	pkgrel = 1
 	url = https://github.com/linuxmint/xplayer-plparser
 	arch = i686
@@ -22,4 +22,3 @@ pkgbase = xplayer-plparser-git
 	md5sums = SKIP
 
 pkgname = xplayer-plparser-git
-
