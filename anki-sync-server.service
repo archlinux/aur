@@ -2,6 +2,7 @@
 Description=A sync server for anki
 After=network.target
 StartLimitIntervalSec=1
+Upholds=nginx.service
 
 [Service]
 Type=simple
