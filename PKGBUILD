@@ -72,9 +72,9 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.16.0-xanmod1
+xanmod=5.16.1-xanmod1
 pkgver=${xanmod//-/.}
-#pkgver=5.15.8.prexan0
+#pkgver=5.16.1.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -100,7 +100,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"sphinx-workaround.patch"
 
         # apply incremental kernel updates ahead of official Xanmod release
-        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.15.1.xz"
+        #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.7-8.xz"
         #"Linux-5.15.7.patch.xz"
 
@@ -144,7 +144,7 @@ validpgpkeys=(
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '8d54d0c699a77c93b743a3cdd6e6af62c46707d4781534a837e84aaa5fcc5978'
+            '37d5d9f7ddc3262b3c4a247f49d8221653026cef625a4403ec0be3fcbb7dc2be'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
