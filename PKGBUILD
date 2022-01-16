@@ -368,7 +368,7 @@ _package-headers() {
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # required when CONFIG_DEBUG_INFO_BTF is enabled
+  # required when DEBUG_INFO_BTF_MODULES is enabled
   [[ -x tools/bpf/resolve_btfids/resolve_btfids ]] &&
     install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
