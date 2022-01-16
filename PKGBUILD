@@ -20,7 +20,7 @@ optdepends=('webkit2gtk: embedded browser features'
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-bin')
 provides=('kotatogram-desktop')
 source=("https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/download/k${pkgver}-${_pkgrel}/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst")
-b2sums=('a48f50db41aa728bd93fa7570e16df0cd1b5c28a9e001c40b50e29eae7612f43e90fcdcff6bedb1bdc90ae42471246d7e31c7d9178dee960a99391d498b1dbf7')
 package() {
 	tar -xaf "$srcdir/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude=".*"
 }
+b2sums=('1b4ef7f04a28391527bfdea2de6db40fcc2202432b4cc7a3491387c21136320db69a8c3c73aa608ad254822f08404942764f50a06aa4272e6873e75635959810')
