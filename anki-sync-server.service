@@ -1,5 +1,5 @@
 [Unit]
-Description=A sync server for anki
+Description=A personal sync server for anki
 After=network.target
 StartLimitIntervalSec=1
 Upholds=nginx.service
