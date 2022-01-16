@@ -1,15 +1,25 @@
 # Maintainer: Christian Schendel (doppelhelix@gmail.com)
 
 pkgname=mediaelch-git
-pkgver=2.8.12.r84.gb3ff2507
+pkgver=2.8.12.r90.g5cbc63bf
 pkgrel=1
 pkgdesc='MediaElch is a MediaManager for Kodi'
 url='https://github.com/Komet/MediaElch'
 arch=('x86_64')
 license=('LGPL3')
-depends=('glibc' 'gcc-libs' 'libmediainfo' 'qt5-declarative' 'qt5-multimedia'
-         'qt5-script' 'qt5-svg' 'quazip')
-makedepends=('cmake' 'ninja' 'qt5-tools')
+
+depends=('glibc'
+         'gcc-libs'
+         'libmediainfo'
+         'qt5-declarative'
+         'qt5-multimedia'
+         'qt5-script'
+         'qt5-svg'
+         'quazip')
+makedepends=('cmake'
+             'ninja'
+             'qt5-tools')
+             
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
