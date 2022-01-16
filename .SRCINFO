@@ -1,0 +1,13 @@
+pkgbase = saurch-git
+	pkgver = r4.36a9cdb
+	pkgrel = 1
+	url = http://vitali64.duckdns.org/?p=utils/saurch.git
+	arch = any
+	license = GPL
+	depends = python
+	depends = git
+	provides = saurch-git
+	source = git+http://vitali64.duckdns.org/git/utils/saurch.git
+	md5sums = SKIP
+
+pkgname = saurch-git
