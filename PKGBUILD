@@ -2,7 +2,7 @@
 # Contributor: Giga300 <giga300@protonmail.com>
 
 pkgname=bitwarden-git
-pkgver=1.24.6.r428.g6cea5e05
+pkgver=1.24.6.r494.gdad1a95f
 pkgrel=1
 _electronversion=14
 pkgdesc='A secure and free password manager for all of your devices. (development version)'
@@ -22,7 +22,7 @@ source=(${pkgname%-git}::'git+https://github.com/bitwarden/desktop.git'
 sha512sums=('SKIP'
             'SKIP'
             '87cdb8287cbc0c4eb49b0fd456a66e200551b5da5c14991505f6301cf1b11132d938dfdf795c4df2a4b3e1ae2badf5dfe33c1207923ec8abc6f9b3e064af6015'
-            '822d97be407c2ac2a6926f5c925b0fd188c541014a623dd3815fdbf5ef67c0542f43aaf8d11535571a83a265f620e330f5326244f42c3902fddab442128fda95'
+            'a54a37d554ab289086f1dbeec804be214dcb863548dc0858f1826bc15e70f2f73b0d296fa12959e27876ad846e13a08184a3f6782d3dd6c9baf7d0c7ed74a8ed'
             '44ee70d71abf9cf399736d00df0aa6815d452792c9589f5517fed4454bdfff6ad2a39ffee401eab0db180718b19e9565d9ecff8d1bd96a93d13e4f63eaf4d5fc'
             '05b771e72f1925f61b710fb67e5709dbfd63855425d2ef146ca3770b050e78cb3933cffc7afb1ad43a1d87867b2c2486660c79fdfc95b3891befdff26c8520fd')
 
