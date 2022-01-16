@@ -5,14 +5,14 @@
 
 _pkgname=cool-retro-term
 pkgname=$_pkgname-git
-pkgver=1.1.0.r99.gcfe35d7
+pkgver=1.1.0.r115.g01c7929
 pkgrel=1
 pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/Swordfish90/cool-retro-term'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'qt5-declarative')
-makedepends=('git' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qmltermwidget-git')
+makedepends=('git' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qmltermwidget-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("git://github.com/Swordfish90/cool-retro-term.git")
