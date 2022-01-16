@@ -1,5 +1,5 @@
 pkgbase = ruby-nanoc-checking
-	pkgdesc = Provides the 'check' subcommand and associated functionality for Nanoc
+	pkgdesc = Provides checking functionality for Nanoc
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://nanoc.app
