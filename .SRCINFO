@@ -1,0 +1,20 @@
+pkgbase = mingw-w64-cubeb-git
+	pkgdesc = A cross platform audio library (mingw-w64)
+	pkgver = r1491.9edd150
+	pkgrel = 1
+	url = https://github.com/mozilla/cubeb
+	arch = any
+	license = GPL2
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-speex
+	provides = mingw-w64-cubeb
+	conflicts = mingw-w64-cubeb
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = git+https://github.com/mozilla/cubeb
+	source = git+https://github.com/arsenm/sanitizers-cmake
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mingw-w64-cubeb-git
