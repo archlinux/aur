@@ -1,0 +1,14 @@
+pkgbase = python-redis-collections
+	pkgdesc = Set of basic Python collections backed by Redis.
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/redis-collections/redis-collections
+	arch = any
+	license = custom:ISC License (ISCL)
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/redis-collections/redis-collections-0.9.1.tar.gz
+	sha256sums = b018cddabfc9f2bdae63a771607051e5f88857219e421281168a67dfe17aa1d1
+
+pkgname = python-redis-collections
+	depends = python
