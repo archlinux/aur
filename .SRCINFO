@@ -1,0 +1,13 @@
+pkgbase = python-foolscap
+	pkgdesc = Remote object-messaging for Python+Twisted
+	pkgver = 21.7.0
+	pkgrel = 1
+	url = https://github.com/warner/foolscap
+	arch = any
+	license = MIT
+	depends = python-twisted
+	depends = python-pyopenssl
+	source = https://github.com/warner/foolscap/archive/refs/tags/foolscap-21.7.0.tar.gz
+	sha256sums = e409d272f888373a84a2a02e7fcf4aa211cba9e0e921a3b3aea91a283a59743f
+
+pkgname = python-foolscap
