@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=qtscrcpy
 _pkgname=QtScrcpy
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'path-fix.patch'
         "$pkgname.desktop"
         "$pkgname.sh")
-sha256sums=('1afdc592cac608e785327891d47092a91886a9d539aaf213a9015cd6ed04aa66'
+sha256sums=('254263d07cbf0096d039b03fe1f2a185a76bb6a022761bff4b34cfbebfc7d458'
             'e3ed3f795ec088f766f9c41cbd422224b1f3bfa31f76115028017719f55dcc97'
             '0dc5b08698162c8a0172a9c2e92b18fa7cd9df4b295bd350329b1e4dbd892a6e'
             '26335d1e208c47ddfc4abaabce3f32734788a80a6663577b3ff462346d8dec6f')
