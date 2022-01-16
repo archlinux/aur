@@ -50,6 +50,11 @@ post_upgrade() {
     "2.4.0-2")
         printf "Check https://pleroma.social/announcements/2021/08/29/pleroma-patch-release-2-4-1/ for upgrade notes.\n"
         ;&
+    "2.4.1-1")
+        printf "Check https://pleroma.social/announcements/2022/01/11/pleroma-patch-release-2-4-2/ for upgrade notes.\n"
+        ;&
+    "2.4.2-1")
+        ;&
     esac
 
     if [ "$migration_needed" = "true" ]; then
