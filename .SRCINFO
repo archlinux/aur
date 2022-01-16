@@ -1,7 +1,7 @@
 pkgbase = seiscomp-maps
-	pkgdesc = SeisComp map files.
+	pkgdesc = SeisComP default map files.
 	pkgver = 20220113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.seiscomp.de
 	install = seiscomp-maps.install
 	arch = any
