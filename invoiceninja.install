@@ -1,0 +1,30 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation of Invoice Ninja, you need to create a dedicated SQL database and user.
+Then you need to configure the app accordingly using the configuration file "/var/lib/invoiceninja/config.env".
+To apply the configuration and initialize the database, you have to run the following commands:
+
+    sudo -u http php /usr/share/webapps/invoiceninja/artisan optimize
+    sudo -u http php /usr/share/webapps/invoiceninja/artisan optimize
+
+Once done, you have to configure your reverse proxy to serve the app.
+Finally, you should start and enable the required backgrund jobs with
+
+    sudo systemctl start invoiceninja-queue.timer
+    sudo systemctl start invoiceninja-scheduler.timer
+
+The official documentation is available at: https://invoiceninja.github.io/docs/self-host-installation/
+
+INFO
+}
+
+post_upgrade(){
+ cat <<INFO
+
+To complete the update of Invoice Ninja, you need to run these commands:
+
+    sudo -u http php /usr/share/webapps/invoiceninja/artisan migrate
+
+INFO
+}
