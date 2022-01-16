@@ -4,9 +4,9 @@
 pkgname=scratch3
 conflicts=("scratch3-bin")
 pkgver=3.27.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
-arch=("x86_64" "aarch64")
+arch=("x86_64" "i686" "aarch64" "arm7h")
 url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
 depends=("gtk3" "nss")
@@ -21,33 +21,34 @@ sha256sums=('0bb89f64bc933a00a56fd87a3a27b2106b42d0dc1ba61cf1a9f3f19beae5cec8'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
             '326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
-            '60c7088f464303b8bf9c17ba456f386da1f1ebf4d2c91e6662e3864e5b41ee42')
+            '9e11b3d3c5833a6eba0a96adc9f1b6029e724ee8f265ea2d3237940172d6a802')
 
 appOutputDir="linux-unpacked"
 
 case "$CARCH" in
   x86_64)  appOutputDir="linux-unpacked";;
+  i686)    appOutputDir="linux-ia32-unpacked";;
   aarch64) appOutputDir="linux-arm64-unpacked";;
-  arm)     appOutputDir="linux-armv5-unpacked";;
-  arm6h)   appOutputDir="linux-armv6-unpacked";;
-  arm7h)   appOutputDir="linux-armv7-unpacked";;
+  arm7h)   appOutputDir="linux-armv7l-unpacked";;
   *)       appOutputDir="linux-unpacked";;
 esac
 
-## Needs testing (for aarch64, arm, arm6h, arm7h)!
-## Values for aarch64 given by one user but no feedback yet.
-## Other values deduced from previous one.
+## Needs testing (for arm7h and i686)!
+## arm and arm6h: they don't seem to be supported by Electron.
+## Value for aarch64 given and tested by one user: ok on Raspberry Pi 4B.
+## Other values deduced from previous one with no warranty.
 ## To find them out, start installation like usual.
 ## If it succeeds, fine. If not, in the output of the build,
-## look for this kind of line, at the end of the build:
-##   • packaging  platform=linux arch=????? electron=13.6.3 appOutDir=dist/linux-?????-unpacked
-## In any case, please give a feedback to the maintainer, thanks.
+## look for this kind of line, at the end of the (failed) build:
+##   • packaging  platform=linux arch=????? electron=13.6.6 appOutDir=dist/linux-?????-unpacked
+## In any case, please report to the maintainer, thanks.
 
 prepare() {
    cd "$srcdir/"
 
 #  Copy patch files to be able to compile on Linux platform
-#  and with our own electron version (13.6.3)
+#  and with electron version (13.6.x) [https://github.com/electron/electron/releases/]
+#  instead of default version (15.3.1) due to issue (https://github.com/electron/electron/issues/31152).
    cp package-json.patch scratch-desktop-${pkgver}/
    cp electron-builder-yaml.patch scratch-desktop-${pkgver}/
    cp electron-builder-wrapper-js.patch scratch-desktop-${pkgver}/scripts/
