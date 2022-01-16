@@ -1,7 +1,7 @@
 # Maintainer: alyrow
 
 pkgname=hyperlap2d-bin
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="A powerful, platform-independent, visual editor for complex 2D worlds and scenes."
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libxtst' 'libxrender' 'alsa-lib' 'hicolor-icon-theme' 'libnet' 'java-r
 makedepends=('binutils' 'tar')
 optdepends=()
 source=("$pkgname-$pkgver.deb::https://github.com/rednblackgames/HyperLap2D/releases/download/v${pkgver}/hyperlap2d_${pkgver}-1_amd64.deb")
-sha512sums=('ce411bdb42beafcf9cc597403c438bb451513eb29b366036d4212addc4201ee54ad001f173e0838737c4fb0e4e6692336e4fc8914c500c88e05a86303848610e')
+sha512sums=('934aff574a2fdfb4265894812f57f6b88b5e8aa4c491617fe6ba6aebaaddcf0f00f38eb67ffc5b31464fe07113ed5f80c7fd0feef19ab403552724fe183c57a6')
 
 build() {
   ar xv ${pkgname}-${pkgver}.deb
