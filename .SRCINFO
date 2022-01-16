@@ -1,0 +1,14 @@
+pkgbase = vim-taboo-git
+	pkgdesc = A Vim plugin to manage tabs
+	pkgver = r46.caf9481
+	pkgrel = 1
+	url = https://github.com/gcmt/taboo.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-runtime
+	source = git+https://github.com/gcmt/taboo.vim.git
+	sha512sums = SKIP
+
+pkgname = vim-taboo-git
