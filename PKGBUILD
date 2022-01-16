@@ -2,7 +2,7 @@
 
 pkgname=badabib
 _pkgname=BadaBib
-pkgver=0.1.1
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Bada Bib! is a simple BibTeX Viewer and Editor written in Python and GTK"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'glib2' 'python' 'python-bibtexparser' 'python-watchgod')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)
-sha512sums=('c73233272a4588c7b469461a1c2fed3d1306404f609c2a481d70d4f46d4c34ad62bae63ab10be7e9556d701c5a9474b5153bd6e820f6b9943ef5dbbec1533a95')
+b2sums=('3e9081db5f6c3786c5aecc6806c1ab748d0c5394116915afd7e40f7d26ae69f9be20999d6581e863be8bc2fba80c0c0ff1f1a4f63f9c6c1b216882325aa6fc1b')
 
 build() {
   arch-meson $_pkgname-$pkgver build
@@ -20,9 +20,9 @@ build() {
 }
 
 #check() {
-#  meson test -C build --print-errorlogs
+#  meson test -C build
 #}
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
