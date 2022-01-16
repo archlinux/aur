@@ -2,7 +2,7 @@
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
-pkgver=3.0.0.r0.g38e7ba5
+pkgver=3.2.4.r0.g0ec47bc
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
