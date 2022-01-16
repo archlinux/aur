@@ -2,7 +2,7 @@
 # Contributor: Sabart Otto - Seberm <seberm[at]seberm[dot]com>
 
 pkgname=ctstream
-pkgver=31
+pkgver=32
 pkgrel=1
 pkgdesc="Get URLs of Czech Television video streams for specific entry page"
 arch=('any')
