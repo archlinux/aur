@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <njsimon10@gmail.com>
 
 pkgname=xviewer
-pkgver=3.2.2
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
@@ -10,12 +10,11 @@ depends=('xapp' 'gtk3' 'cinnamon-desktop' 'libpeas' 'libexif' 'libjpeg-turbo'
          'exempi')
 makedepends=('gnome-common' 'gobject-introspection' 'librsvg')
 optdepends=('xviewer-plugins: Extra plugins'
-            'exempi: XMP metadata support'
             'librsvg: for scaling svg images')
 url='https://github.com/linuxmint/xviewer'
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-md5sums=('290f88e3d73443fc65976e0e3153bd47')
+md5sums=('1223f1f66063ee2fcdfcdf8bf549189b')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
