@@ -1,7 +1,7 @@
 pkgbase = sogo
 	pkgdesc = groupware server built around OpenGroupware.org (OGo) and the SOPE application server
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sogo.nu/
 	install = sogo.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = sogo
 	depends = memcached
 	depends = libwbxml
 	depends = mariadb-libs
+	depends = postgresql-libs
 	depends = inetutils
 	depends = libsodium
 	depends = libytnef
