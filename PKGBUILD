@@ -9,8 +9,10 @@ arch=('any')
 url="http://guacamole.sourceforge.net/"
 license=('GPL3')
 replaces=('guacamole')
-depends=('java-runtime' 'tomcat8' 'java-environment<=17')
+depends=('java-runtime' 'java-environment<=17')
 makedepends=('maven' 'java-environment-openjdk<=17')
+optdepends=('tomcat8: open source Java Servlet container'
+            'tomcat9: open source Java Servlet container')
 source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${pkgver}/source/${pkgname}-${pkgver}.tar.gz"
         "guacamole.properties")
 install=guacamole-client.install

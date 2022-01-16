@@ -9,8 +9,9 @@ pkgbase = guacamole-client
 	makedepends = maven
 	makedepends = java-environment-openjdk<=17
 	depends = java-runtime
-	depends = tomcat8
 	depends = java-environment<=17
+	optdepends = tomcat8: open source Java Servlet container
+	optdepends = tomcat9: open source Java Servlet container
 	replaces = guacamole
 	backup = etc/guacamole/guacamole.properties
 	backup = etc/guacamole/user-mapping.xml
