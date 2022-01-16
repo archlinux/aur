@@ -1,10 +1,11 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: mochaaP <aur@mochaa.ws>
 
 _fontname=lxgw-new-clear-gothic
 
-pkgname="${_fontname}-fonts"
+pkgname="ttf-${_fontname}"
 pkgver=0.235
-pkgrel=1
+pkgrel=2
 pkgdesc='A Simplified Chinese sans-serif font derived from IPAex Gothic'
 arch=('any')
 url='https://github.com/lxgw/LxgwNewClearGothic'
