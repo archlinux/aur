@@ -3,7 +3,7 @@
 _perlmod='Crypt-SMIME'
 _modnamespace=Crypt
 pkgname=perl-crypt-smime
-pkgver=0.27
+pkgver=0.28
 pkgrel=1
 pkgdesc="S/MIME message signing, verification, encryption and decryption"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('perl')
 makedepends=('perl-extutils-cchecker' 'perl-extutils-pkgconfig')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('0ec42d9e7702525db13c9d250a44e63daccb7fdfeaeaa55ae572a755daaaebdf')
+sha256sums=('ca90ecacfef620f8a2f1723c5bc3307a0079c0c6f5170849a9896b20280d1c2d')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
