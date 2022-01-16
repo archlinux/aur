@@ -1,7 +1,7 @@
 # Maintainer: Pavle Portic <archlinux@theedgeofrage.com>
 
 pkgname=cdk8s-cli
-pkgver=1.0.48
+pkgver=1.0.78
 _pkgver=${pkgver/beta/-beta.}
 pkgrel=1
 pkgdesc="Define Kubernetes native apps and abstractions using object-oriented programming"
@@ -12,7 +12,7 @@ makedepends=('npm')
 depends=('nodejs')
 optdepends=('python: python language support')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$_pkgver.tgz)
-sha256sums=('5e362c7be68ff7033c263708a54a13b582501c32bdecf2ae7bea34c74f05c8dd')
+sha256sums=('7719593312efc6c19df597def23df703982aa1ce99d9de2f2e1310590ba0f683')
 
 package() {
   local _npmdir="$pkgdir/usr/lib/node_modules/"
