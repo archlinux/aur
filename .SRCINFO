@@ -1,4 +1,4 @@
-pkgbase = spdcon
+pkgbase = untitled-spotifyd-controller
 	pkgdesc = A simple Go utility to display track information from, and send commands to, spotifyd from status bars and indicators
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = spdcon
 	license = BSD
 	makedepends = go>=1.17
 	depends = spotifyd
-	source = spdcon-0.1.0.tar.gz::https://github.com/seabassapologist/untitled-spotifyd-controller/archive/v0.1.0.tar.gz
-	sha256sums = 296baab44b11647200c9245520970c0bbe685d4d38da683e7adaa71fc6111c71
+	source = untitled-spotifyd-controller-0.1.0.tar.gz::https://github.com/seabassapologist/untitled-spotifyd-controller/archive/v0.1.0.tar.gz
+	sha256sums = d7fdf0eab49d27df55f87cdb372c4361a33510ae09eafac098b4d0117712aebf
 
-pkgname = spdcon
+pkgname = untitled-spotifyd-controller
