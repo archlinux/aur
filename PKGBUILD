@@ -2,7 +2,7 @@
 # Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=calibre-web
-pkgver=0.6.14
+pkgver=0.6.15
 pkgrel=2
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
@@ -37,7 +37,7 @@ source=(
   'calibre-web.sysusers'
   'calibre-web.tmpfiles'
 )
-md5sums=('dce09c2758f43dcdc61db16a00300ca3'
+md5sums=('1f7b22a1b5910663e0521d4e85de1b1b'
          'e8bd98c32daa92e0dc32fddde579d30f'
          'a0a99595f01f35e5b3f78fa5379d10ae'
          '40101a01e29b944c7eb889b34849d8c5')
