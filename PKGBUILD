@@ -12,8 +12,10 @@ depends=('dosbox-x')
 makedepends=('git')
 provides=('talking-dosbox')
 source=("git+https://gitlab.com/jticket1024/${_gitname}.git"
+  'talking-dosbox.desktop'
   'talking-dosbox')
 md5sums=('SKIP'
+         '2e7cc61f8c131dcc0a86ef1ce8fad162'
          'a51b87908deaa075f024f74631d05208')
 backup=(opt/talking-dosbox/dosbox-x.conf)
 options=(!strip)
@@ -28,6 +30,8 @@ package()
 {
   install -d "$pkgdir/opt/talking-dosbox/"
   install -Dm755 talking-dosbox "$pkgdir/usr/bin/talking-dosbox"
+  install -d "$pkgdir/usr/share/applications/"
+  install -Dm644 talking-dosbox.desktop "$pkgdir/usr/share/applications/talking-dosbox.desktop"
   cd "$srcdir/$_gitname"
 cp -r dosbox-x.conf cdrive $pkgdir/opt/talking-dosbox/
 }

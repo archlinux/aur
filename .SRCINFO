@@ -14,8 +14,10 @@ pkgbase = talking-dosbox-git
 	options = !strip
 	backup = opt/talking-dosbox/dosbox-x.conf
 	source = git+https://gitlab.com/jticket1024/talking-dos-box.git
+	source = talking-dosbox.desktop
 	source = talking-dosbox
 	md5sums = SKIP
+	md5sums = 2e7cc61f8c131dcc0a86ef1ce8fad162
 	md5sums = a51b87908deaa075f024f74631d05208
 
 pkgname = talking-dosbox-git
