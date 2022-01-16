@@ -5,11 +5,11 @@ _fontname=lxgw-new-clear-gothic
 
 pkgname="ttf-${_fontname}"
 pkgver=0.235
-pkgrel=2
+pkgrel=3
 pkgdesc='A Simplified Chinese sans-serif font derived from IPAex Gothic'
 arch=('any')
 url='https://github.com/lxgw/LxgwNewClearGothic'
-license=('custom:IPA_Font_License')
+license=('OFL')
 
 _fontfiles=(
   'LXGWFasmartGothic.ttf'
@@ -31,7 +31,7 @@ sha256sums=(
 
 package() {
   for _file in "${_fontfiles[@]}"; do
-    install -Dm644 "${pkgname}-${pkgver}-${_file}" "${pkgdir}/usr/share/fonts/${_fontname}/${_file}"
+    install -Dm644 "${pkgname}-${pkgver}-${_file}" "${pkgdir}/usr/share/fonts/TTF/${_file}"
   done
   install -Dm644 "${pkgname}-${pkgver}-LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }

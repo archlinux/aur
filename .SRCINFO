@@ -1,10 +1,10 @@
 pkgbase = ttf-lxgw-new-clear-gothic
 	pkgdesc = A Simplified Chinese sans-serif font derived from IPAex Gothic
 	pkgver = 0.235
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lxgw/LxgwNewClearGothic
 	arch = any
-	license = custom:IPA_Font_License
+	license = OFL
 	source = ttf-lxgw-new-clear-gothic-0.235-LICENSE.txt::https://github.com/lxgw/LxgwNewClearGothic/raw/v0.235/LICENSE.txt
 	source = ttf-lxgw-new-clear-gothic-0.235-LXGWFasmartGothic.ttf::https://github.com/lxgw/LxgwNewClearGothic/releases/download/v0.235/LXGWFasmartGothic.ttf
 	source = ttf-lxgw-new-clear-gothic-0.235-LXGWNewClearGothic-Book.ttf::https://github.com/lxgw/LxgwNewClearGothic/releases/download/v0.235/LXGWNewClearGothic-Book.ttf
