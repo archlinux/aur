@@ -1,0 +1,12 @@
+diff -Naur latex-mk.orig/doc/latex-mk.texi latex-mk.new/doc/latex-mk.texi
+--- latex-mk.orig/doc/latex-mk.texi	2010-12-28 22:50:27.000000000 +0100
++++ latex-mk.new/doc/latex-mk.texi	2022-01-16 14:08:35.712143053 +0100
+@@ -3,7 +3,7 @@
+ @c %**start of header
+ @setfilename latex-mk.info
+ @settitle LaTeX-Mk
+-@setcontentsaftertitlepage
++@contents
+ @c %**end of header
+ 
+ @include version.texi
