@@ -3,7 +3,7 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=mpich
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
@@ -12,12 +12,12 @@ license=("custom")
 replaces=(mpich2)
 depends=('gcc-fortran' 'libxml2' 'openssh' 'numactl' 'pciutils' 'hwloc' 'bash')
 makedepends=(texlive-core sowing autoconf python)
-optdepends=(perl)
+optdepends=(perl python)
 install="${pkgname}.install"
 source=("https://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"mpich.profile"
 	"mpich-3.4.2-flags.diff")
-sha256sums=('5c19bea8b84e8d74cca5f047e82b147ff3fba096144270e3911ad623d6c587bf'
+sha256sums=('8154d89f3051903181018166678018155f4c2b6f04a9bb6fe9515656452c4fd7'
             'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284'
             'ce0b565b11a6abc2771e75b53ba84c17bf6534e7f83d20c0fc226ff468c40bae')
 options=('!libtool')
