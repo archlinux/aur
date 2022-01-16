@@ -1,34 +1,44 @@
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Georg Wagner <puxplaying_at_gmail_dot_com>
+# Contributor: @xabbu <https://github.com/xabbu>
+# Contributor: Stefano Capitani <stefano_at_manjaro_dot_org>
+# Contributor: Mark Wagie <mark_at_manjaro_dot_org>
+# Contributor: Jonathon Fernyhough
+
+# Archlinux credits:
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
+# Ubuntu credits:
+# Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
+
+pkgname=mutter-x11-scaling
 _pkgname=mutter
-pkgname=$_pkgname-x11-scaling
-pkgver=41.1
+pkgver=41.3
 pkgrel=1
-pkgdesc="A window manager for GNOME (with X11 fractional scaling patch)"
+pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
-arch=(aarch64 x86_64)
+arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libcanberra startup-notification zenity libsm gnome-desktop upower
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
-         xorg-xwayland graphene libxkbfile wayland-protocols)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server)
-checkdepends=(xorg-server-xvfb pipewire-session-manager python-dbusmock)
-conflicts=($_pkgname)
+         xorg-xwayland graphene libxkbfile libsysprof-capture)
+makedepends=(gobject-introspection git egl-wayland meson xorg-server
+             wayland-protocols sysprof)
+checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
 provides=($_pkgname libmutter-9.so)
 groups=(gnome)
-_commit=8de96d3d7c40e6b5289fd707fdd5e6d604f33e8f  # tags/41.1^0
+conflicts=($_pkgname)
+_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        #https://salsa.debian.org/gnome-team/mutter/-/raw/91d9bdafd5d624fe1f40f4be48663014830eee78/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch)
-        https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/bf134596c22abbb6dc70adb7844e6d391ea4cd80/x11-Add-support-for-fractional-scaling-using-Randr.patch)
+        "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/bf134596c22abbb6dc70adb7844e6d391ea4cd80/x11-Add-support-for-fractional-scaling-using-Randr.patch")
 sha256sums=('SKIP'
             '34463f4b17921fae3e75d7e1d862e4c170209eff35b2fc9fad376b8e14f3efb6')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -36,7 +46,7 @@ prepare() {
 
   # Add scaling support using randr under x11 (Marco Trevisan and Georg Wagner)
   git revert -n ef0f7084
-  patch -p1 -i ../x11-Add-support-for-fractional-scaling-using-Randr.patch
+  patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
 }
 
 build() {
@@ -45,8 +55,7 @@ build() {
   arch-meson $_pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
-    -D installed_tests=false \
-    -D profiler=false
+    -D installed_tests=false
   meson compile -C build
 }
 
@@ -63,14 +72,15 @@ _check() (
 
   trap "kill $_p1 $_p2; wait" EXIT
 
-  meson test -C build --print-errorlogs
+  #meson test -C build --print-errorlogs
 )
 
 check() {
-  dbus-run-session xvfb-run -s '-nolisten local' \
+  dbus-run-session xvfb-run -s '-nolisten local +iglx -noreset' \
     bash -c "$(declare -f _check); _check"
 }
 
 package() {
   meson install -C build --destdir "$pkgdir"
 }
+
