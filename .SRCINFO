@@ -1,9 +1,8 @@
 pkgbase = gnome-control-center-x11-scaling
-	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with X11 fractional scaling patches)
+	pkgdesc = GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch
 	pkgver = 41.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
-	arch = aarch64
 	arch = x86_64
 	groups = gnome
 	license = GPL2
@@ -40,16 +39,16 @@ pkgbase = gnome-control-center-x11-scaling
 	depends = libhandy
 	depends = gsound
 	depends = colord-gtk
-	depends = power-profiles-daemon
 	optdepends = system-config-printer: Printer settings
 	optdepends = gnome-user-share: WebDAV file sharing
 	optdepends = gnome-remote-desktop: screen sharing
 	optdepends = rygel: media sharing
 	optdepends = openssh: remote login
+	optdepends = power-profiles-daemon: Power profiles support
 	provides = gnome-control-center
 	conflicts = gnome-control-center
 	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=babeb0ce357d55406b0ba0a4597e0513a0419de8
-	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git#commit=c5ab6037f460406ac9799b1e5765de3ce0097a8b
+	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/10b4141256e5027b6df14eaa6659f15c523b2b8b/fractional-scaling.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
