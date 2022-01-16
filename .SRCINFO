@@ -1,0 +1,13 @@
+pkgbase = diogenes-bin
+	pkgdesc = Application for searching and browing legacy databases of texts in Latin and ancient Greek.
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://d.iogen.es/d/index.html
+	arch = x86_64
+	license = GPL3
+	depends = perl
+	depends = libglvnd
+	source = https://github.com/pjheslin/diogenes/releases/download/4.5/diogenes-4.5.pkg.tar.xz
+	sha512sums = 030d67fd8fcdf2aba0a8631aac95a4bc1c7d82ae23c1274f7a37b01b58a2bdb09545e6c9c4c50f37d021dc064ee36c36485774c4af6bdbb7291f678995bf4018
+
+pkgname = diogenes-bin
