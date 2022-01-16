@@ -1,0 +1,11 @@
+pkgbase = ttf-975maru-git
+	pkgdesc = A Chinese Font Derived from Source Han Sans / Swei Gothic.
+	pkgver = 0.0.0.r20.gb7e6214
+	pkgrel = 1
+	url = https://github.com/lxgw/975maru
+	arch = any
+	license = OFL
+	source = git+https://github.com/lxgw/975maru.git
+	sha256sums = SKIP
+
+pkgname = ttf-975maru-git
