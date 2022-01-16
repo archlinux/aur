@@ -1,0 +1,57 @@
+pkgbase = jdk18-beta-temurin
+	pkgdesc = Temurin (OpenJDK 18 beta Java binaries by Adoptium, formerly AdoptOpenJDK)
+	pkgver = 18.beta27
+	pkgrel = 1
+	url = https://adoptium.net/
+	install = install_jdk-temurin.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime-headless=18
+	provides = java-runtime-headless-openjdk=18
+	provides = jre18-openjdk-headless=18.beta27
+	provides = jre-openjdk-headless=18.beta27
+	provides = java-runtime=18
+	provides = java-runtime-openjdk=18
+	provides = jre18-openjdk=18.beta27
+	provides = jre-openjdk=18.beta27
+	provides = java-environment=18
+	provides = java-environment-openjdk=18
+	provides = jdk18-openjdk=18.beta27
+	provides = jdk-openjdk=18.beta27
+	provides = openjdk18-src=18.beta27
+	provides = openjdk-src=18.beta27
+	replaces = jdk-adoptopenjdk
+	backup = etc/java-temurin/logging.properties
+	backup = etc/java-temurin/management/jmxremote.access
+	backup = etc/java-temurin/management/jmxremote.password.template
+	backup = etc/java-temurin/management/management.properties
+	backup = etc/java-temurin/net.properties
+	backup = etc/java-temurin/sdp/sdp.conf.template
+	backup = etc/java-temurin/security/java.policy
+	backup = etc/java-temurin/security/java.security
+	backup = etc/java-temurin/security/policy/limited/default_local.policy
+	backup = etc/java-temurin/security/policy/limited/default_US_export.policy
+	backup = etc/java-temurin/security/policy/limited/exempt_local.policy
+	backup = etc/java-temurin/security/policy/README.txt
+	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
+	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-temurin/sound.properties
+	source = https://github.com/adoptium/temurin18-binaries/releases/download/jdk18-2021-12-15-03-37-beta/OpenJDK18-jdk_x64_linux_hotspot_2021-12-15-03-37.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 279e4e3a116de7b20c890b851e98c8ba504b4292d56b663b88ba43214a6175e2
+	sha256sums = ea75ce65e1393a91fcb83beed3b84759a88bbe9df1ab4efa440062bbd2fe6c1f
+	sha256sums = 36b2ff191c81ce5eef9e1eed2acc54dba78b2bcdf47532607f0cc9302503a265
+	sha256sums = b73453a639017037627d926cf2179d1c7e296d9c0804747848d1c799ca38652c
+
+pkgname = jdk18-beta-temurin
