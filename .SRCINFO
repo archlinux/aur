@@ -1,0 +1,20 @@
+pkgbase = nodestatus-client-go
+	pkgdesc = The client of NodeStatus / Go Version
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/cokemine/nodestatus-client-go
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = nodestatus-client
+	conflicts = nodestatus-client
+	conflicts = nodestatus-client-nodejs
+	source = nodestatus-client-go-1.0.2.tar.gz::https://github.com/cokemine/nodestatus-client-go/archive/v1.0.2.tar.gz
+	source = nodestatus-client.service
+	source = config.conf.example
+	sha512sums = aec6c6941c3720ffcf19d76c5e1e29fd0ea9d1b7391771f9e79c3c29847ca1c8af0a88c05ff74598c368cc0af8b83ee2f838589f78472c33630c12e5698a0742
+	sha512sums = 81c4e9344cc0f2205dd527924e93344118cc8d9a459500c9aba41896e2e577e781ebfb0e1b08039c084c8a5567b1f0cdfbb5eadb19ecf101b4e006e07b1437d1
+	sha512sums = 7616fdfa1ecbb75a7ba7e860a4efe1a616f539bb9becc54c84c2513af83a10c4edb24e8a783044be9bce9312fe90d8680115cd57affe12be0072cac94d316f1f
+
+pkgname = nodestatus-client-go

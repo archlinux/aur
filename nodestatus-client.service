@@ -1,0 +1,13 @@
+[Unit]
+Description=NodeStatus-Client
+Documentation=https://github.com/cokemine/nodestatus-client-go
+After=network.target
+
+[Service]
+EnvironmentFile=/etc/nodestatus/client/config.conf
+ExecStart=/usr/bin/nodestatus-client --dsn $DSN
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
