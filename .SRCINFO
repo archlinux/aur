@@ -1,0 +1,11 @@
+pkgbase = ttf-fakepearl-git
+	pkgdesc = A free font family derived from open-huninn-font.
+	pkgver = 1.1.r31.1bb7821
+	pkgrel = 1
+	url = https://github.com/max32002/fakepearl
+	arch = any
+	license = OFL
+	source = git+https://github.com/max32002/fakepearl.git
+	sha256sums = SKIP
+
+pkgname = ttf-fakepearl-git
