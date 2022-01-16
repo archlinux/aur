@@ -6,7 +6,7 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname="e2fsprogs-git"
-pkgver=1.46.4.r5.g4cda2545
+pkgver=1.46.5.r8.g8adeabee
 pkgrel=1
 pkgdesc="Ext2/3/4 filesystem utilities (git)"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ license=('GPL' 'LGPL' 'MIT')
 url="http://e2fsprogs.sourceforge.net"
 depends=('sh' 'util-linux-libs')
 makedepends=('git' 'util-linux' 'systemd')
-conflicts=('e2fsprogs')
-provides=('e2fsprogs'
+conflicts=('e2fsprogs' 'fuse2fs')
+provides=('e2fsprogs' 'fuse2fs'
           'libcom_err.so'
           'libe2p.so'
           'libext2fs.so'
@@ -52,13 +52,9 @@ build() {
               --disable-uuidd \
               --disable-libuuid \
               --disable-libblkid \
-              --enable-compression \
-              --enable-htree \
               --enable-blkid-debug \
               --enable-verbose-makecmds \
-              --enable-e2initrd-helper \
-              --enable-quota \
-              --enable-libquota
+              --enable-e2initrd-helper
               #--enable-jbd-debug  # this likes to break the build
 
   make
