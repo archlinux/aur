@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _upstream_name=plasma-applet-resources-monitor
 pkgname=plasma5-applets-resources-monitor
-_pkgver="2.6.2"
+_pkgver="2.7.1"
 pkgver="${_pkgver/-/_}"
 pkgrel=1
 pkgdesc="Plasma 5 applet for monitoring CPU and RAM"
@@ -15,7 +15,7 @@ depends=(
 optdepends=()
 makedepends=('extra-cmake-modules')
 source=("https://github.com/orblazer/${_upstream_name}/archive/v${_pkgver}.tar.gz")
-sha256sums=('362b55c7b35974e5c17e473bd65a5eab142cccc3576e0f11a3cc7e353783d3f1')
+sha256sums=('d4c163629801a9ae4b93b359d696f531d830d1869102d316bd574361024ff849')
 
 build() {
   cd "$srcdir/$_upstream_name-$_pkgver"
