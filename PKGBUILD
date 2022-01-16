@@ -10,7 +10,7 @@
 #_BUILD_OCTAVE=
 
 pkgname=spm12
-pkgver=7487
+pkgver=7771
 pkgrel=1
 pkgdesc="A MATLAB toolbox for the analysis of brain imaging data sequences"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ url="http://www.fil.ion.ucl.ac.uk/spm/"
 license=('GPL2')
 makedepends=(make)
 source=("${pkgname}-r${pkgver}.tar.gz::https://github.com/spm/${pkgname}/archive/r${pkgver}.tar.gz")
-sha512sums=('4c8d448771bc7e1c1923fd92138d736f3760542686942e02242b137e3aed8455098e247b5d903cfa5f1f573757fb6c1c220f47d4d2dd74002674aa7346315ae8')
+sha512sums=('063adac233d28d6912ab6e0a1bc4bda56f011bf0349855eb45ae5e2f63ee6b6a459829ed5a7145ee6744d1afa7c7d9ca8acfe8783784876f048e88d7ee287adb')
 
 prepare() {
 
@@ -54,7 +54,7 @@ prepare() {
     
   echo "Using Matlab directory: ${_MATLAB_DIR}"
 
-  sed -i "/^MEXBIN/c MEXBIN         = ${_MATLAB_DIR}/bin/mex" src/Makefile.var
+  sed -i "/^  MEXBIN/c MEXBIN         = ${_MATLAB_DIR}/bin/mex" src/Makefile.var
   sed -i "s^largeArrayDims$^& CFLAGS=\"${CFLAGS} -fPIC\" CXXFLAGS=\"${CXXFLAGS} -fPIC\" LDFLAGS=\"${LDFLAGS}\"^g" src/Makefile.var
   find . -type f -name \*.mex\* -delete
 
