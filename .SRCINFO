@@ -1,0 +1,13 @@
+pkgbase = python-kbinxml
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/mon/kbinxml
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python-lxml
+	source = https://files.pythonhosted.org/packages/source/k/kbinxml/kbinxml-1.7.tar.gz
+	sha256sums = ad4224a7baa1fa205f5f747a06e35f82ebf8d2121d80465b49fd0119378a9450
+
+pkgname = python-kbinxml
