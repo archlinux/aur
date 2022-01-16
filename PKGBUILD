@@ -20,9 +20,11 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/paul-nameless/tg.git"
-	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch")
+	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch"
+	"0002-Update-to-TDLib-1.7.10.patch")
 md5sums=('SKIP'
-         '1977134e8c8fcd093d7081877711255d')
+         '1977134e8c8fcd093d7081877711255d'
+         '84f26c2df9961f4f88f5f8b20daa0b18')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -34,6 +36,7 @@ prepare() {
 	cd "$srcdir/$_pkgname"
 
 	patch -p1 -i "$srcdir/0001-Change-setup.py-to-accept-new-python-telegram-ver.patch"
+	patch -p1 -i "$srcdir/0002-Update-to-TDLib-1.7.10.patch"
 }
 
 build() {
