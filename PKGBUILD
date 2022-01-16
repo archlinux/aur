@@ -1,5 +1,5 @@
-# CPAN Name  : PDL
-# Maintainer : Ordoban <dirk.langer@vvovgonik.de>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Ordoban <dirk.langer@vvovgonik.de>
 # Contributor: Anton Leontiev <bunder /at/ t-25.ru>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: carltonf <xiong[c05]@gmail.com>
@@ -7,34 +7,40 @@
 
 pkgname=perl-pdl
 _pkgname=PDL
-pkgver=2.021
+pkgver=2.068
 pkgrel=1
 pkgdesc='The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display'
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/dist/PDL'
 license=('PerlArtistic' 'GPL')
 depends=(
-	'perl>=5.10'
-	'perl-inline>=0.43'
+	'perl'
+	'perl-inline'
+	'perl-term-readkey'
 	'gsl'
 )
 makedepends=(
-	'perl>=5.11.3' # To provide ExtUtils::MakeMaker 6.56
+	'perl'
 	'fftw2'
 	'hdf4'
 	'perl-opengl'
 	'plplot'
 	'perl-extutils-f77'
 	'proj'
-        'perl-extutils-parsexs>=3.01'
+        'perl-extutils-parsexs'
         'perl-convert-uu'
-        'perl-inline-c>=0.62'
-        'perl-module-compile>=0.23'
+        'perl-inline-c'
+        'perl-module-compile'
+        'perl-devel-checklib'
+        'perl-pod-parser'
+        'perl-extutils-depends'
 )
 checkdepends=(
 	'perl-test-warn'
         'perl-perlio-layers'
         'perl-file-map'
+        'perl-test-exception'
+        'perl-test-deep'
 )
 optdepends=(
 	'fftw2: for PDL::FFTW support'
@@ -47,9 +53,8 @@ optdepends=(
 	'proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support'
 )
 source=(https://cpan.metacpan.org/authors/id/E/ET/ETJ/${_pkgname}-${pkgver}.tar.gz perldl.conf Makefile.patch)
-changelog='ChangeLog'
 options=(!emptydirs)
-md5sums=('e4ac3d06f3defc4daac3fdb2d63a61eb'
+md5sums=('c21578cbaf5e2e76144fd48c4c45c695'
          'ac56f2a88b89d359a0dc80063d31cf59'
          'e2b2dff48643a5051a8f7d1ee9dc4ea9')
 
