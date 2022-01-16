@@ -1,0 +1,5 @@
+post_upgrade() {
+	if [[ "$(vercmp ${1:0:1} ${2:0:1})" == 1 ]]; then
+		echo ':: Check upstream for any breaking changes.'
+	fi
+}
