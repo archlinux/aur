@@ -3,7 +3,8 @@
 pkgname=python-kbinxml
 _name=${pkgname#python-}
 pkgver=1.7
-pkgrel=1
+pkgrel=2
+pkgdesc="Decoder/encoder for Konami's binary XML format"
 arch=('any')
 url="https://github.com/mon/${_name}"
 license=('MIT')

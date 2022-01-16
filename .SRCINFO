@@ -1,6 +1,7 @@
 pkgbase = python-kbinxml
+	pkgdesc = Decoder/encoder for Konami's binary XML format
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mon/kbinxml
 	arch = any
 	license = MIT
