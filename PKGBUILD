@@ -2,7 +2,7 @@
 
 pkgname=xreader-git
 _pkgbasename=xreader
-pkgver=master.lmde4.r1.ga4ed5f6
+pkgver=3.2.2.r0.g93d2696
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project (git version)."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
