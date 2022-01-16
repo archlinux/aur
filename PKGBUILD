@@ -5,7 +5,7 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.0.5.r5.g1d8196e1
+pkgver=1.0.5.r35.g81fe41a0
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
