@@ -1,6 +1,6 @@
 pkgbase = jack2-git
 	pkgdesc = The JACK low-latency audio server
-	pkgver = 1.9.17.r85.g0daa887b
+	pkgver = 1.9.20.r0.ga2fe7ec2
 	pkgrel = 1
 	epoch = 2
 	url = http://jackaudio.org/
@@ -10,6 +10,7 @@ pkgbase = jack2-git
 	license = LGPL2.1
 	makedepends = alsa-lib
 	makedepends = dbus
+	makedepends = doxygen
 	makedepends = expat
 	makedepends = git
 	makedepends = libffado
@@ -34,14 +35,12 @@ pkgname = jack2-git
 	optdepends = jack-example-tools: for official JACK example-clients and tools
 	optdepends = jack2-dbus: for dbus integration
 	optdepends = realtime-privileges: for realtime privileges
-	optdepends = zita-alsa-pcmi: for using multiple ALSA devices
-	optdepends = zita-resampler: for using multiple ALSA devices
 	provides = jack
 	provides = jack2
 	provides = libjack.so
 	provides = libjacknet.so
 	provides = libjackserver.so
-	provides = jack2=1.9.17
+	provides = jack2=1.9.20
 	conflicts = jack
 	conflicts = jack2
 
@@ -56,3 +55,8 @@ pkgname = jack2-dbus-git
 	depends = libjackserver.so
 	provides = jack2-dbus
 	conflicts = jack2-dbus
+
+pkgname = jack2-docs-git
+	pkgdesc = The JACK low-latency audio server (documentation)
+	provides = jack2-docs
+	conflicts = jack2-docs

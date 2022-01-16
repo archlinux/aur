@@ -5,16 +5,16 @@
 
 _name=jack2
 pkgbase=jack2-git
-pkgname=(jack2-git jack2-dbus-git)
+pkgname=(jack2-git jack2-dbus-git jack2-docs-git)
 pkgdesc="The JACK low-latency audio server"
-pkgver=1.9.17.r85.g0daa887b
+pkgver=1.9.20.r0.ga2fe7ec2
 pkgrel=1
 epoch=2
 arch=(x86_64)
 url="http://jackaudio.org/"
 license=(GPL2 LGPL2.1)
 groups=(pro-audio)
-makedepends=(alsa-lib dbus expat git libffado libsamplerate opus systemd waf)
+makedepends=(alsa-lib dbus doxygen expat git libffado libsamplerate opus systemd waf)
 source=("${pkgbase}::git+https://github.com/jackaudio/${_name}#branch=develop")
 md5sums=('SKIP')
 
@@ -49,10 +49,11 @@ build() {
   export PYTHONPATH="${PWD}:${PYTHONPATH}"
   waf configure --prefix=/usr \
                 --autostart=none \
-                --htmldir="/usr/share/doc/${pkgbase}/" \
+                --doxygen=yes \
+                --htmldir="/usr/share/doc/${_name}/html" \
+                --example-tools=no \
                 --systemd-unit \
                 --classic \
-                --example-tools=no \
                 --dbus
   waf build
 }
@@ -60,13 +61,13 @@ build() {
 package_jack2-git() {
   depends=(db gcc-libs glibc opus libasound.so libdbus-1.so libsamplerate.so
   libsystemd.so)
-  optdepends=('a2jmidid: for ALSA MIDI to JACK MIDI bridging'
-              'libffado: for firewire support using FFADO'
-              'jack-example-tools: for official JACK example-clients and tools'
-              'jack2-dbus: for dbus integration'
-              'realtime-privileges: for realtime privileges'
-              'zita-alsa-pcmi: for using multiple ALSA devices'
-              'zita-resampler: for using multiple ALSA devices')
+  optdepends=(
+    'a2jmidid: for ALSA MIDI to JACK MIDI bridging'
+    'libffado: for firewire support using FFADO'
+    'jack-example-tools: for official JACK example-clients and tools'
+    'jack2-dbus: for dbus integration'
+    'realtime-privileges: for realtime privileges'
+  )
   conflicts=(jack "${_name}")
   provides=(jack "${_name}" libjack.so libjacknet.so libjackserver.so
             "${_name}=${pkgver//.r*/}")
@@ -79,6 +80,7 @@ package_jack2-git() {
     cd "$pkgdir"
     _pick jack2-dbus usr/bin/jack{dbus,_control}
     _pick jack2-dbus usr/share/dbus-1/
+    _pick jack2-docs usr/share/doc/${_name}/html
   )
 }
 
@@ -91,4 +93,13 @@ package_jack2-dbus-git() {
 
   mv -v jack2-dbus/* "$pkgdir"
 }
+
+package_jack2-docs-git() {
+  pkgdesc+=" (documentation)"
+  conflicts=(jack2-docs)
+  provides=(jack2-docs)
+
+  mv -v jack2-docs/* "${pkgdir}"
+}
+
 # vim:set ts=2 sw=2 et:
