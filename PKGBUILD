@@ -3,7 +3,8 @@
 pkgname=python-ifstools
 _name=${pkgname#python-}
 pkgver=1.14
-pkgrel=2
+pkgrel=3
+pkgdesc="Extractor/repacker for Konmai IFS files"
 arch=('any')
 url="https://github.com/mon/${_name}"
 license=('MIT')
