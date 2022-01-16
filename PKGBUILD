@@ -3,7 +3,7 @@
 _pkgname=bakudaifont
 pkgname=ttf-${_pkgname%font}-git
 pkgver=1.46.r33.901d26e
-pkgrel=1
+pkgrel=2
 pkgdesc="A free font family derived from KouzanBrushFont."
 arch=('any')
 license=('OFL')
@@ -17,7 +17,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/fonts/TTF/" tw/*.ttf
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
-  install -Dm644 bakudai_history.md "${pkgdir}/usr/share/doc/${pkgname%-git}/CHANGELOG.md"
+  install -Dm644 ${_pkgname%font}_history.md "${pkgdir}/usr/share/doc/${pkgname%-git}/CHANGELOG.md"
   install -Dm644 SIL_Open_Font_License_1.1.txt "${pkgdir}/usr/share/licenses/${pkgname%-git}/OFL.txt"
 }
 
