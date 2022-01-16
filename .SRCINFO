@@ -1,12 +1,12 @@
 pkgbase = vim-signify-git
 	pkgdesc = Show a diff using Vim its sign column
-	pkgver = r752.b2a0450
+	pkgver = r770.69498f6
 	pkgrel = 1
 	url = https://github.com/mhinz/vim-signify
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = vim
+	depends = vim-plugin-runtime
 	optdepends = git: git support
 	optdepends = yadm: yadm support
 	optdepends = mercurial: mercurial support
@@ -24,4 +24,3 @@ pkgbase = vim-signify-git
 	sha256sums = SKIP
 
 pkgname = vim-signify-git
-

@@ -1,13 +1,13 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-signify-git
 _pkgname=vim-signify
-pkgver=r752.b2a0450
+pkgver=r770.69498f6
 pkgrel=1
 pkgdesc='Show a diff using Vim its sign column'
 arch=('any')
 url='https://github.com/mhinz/vim-signify'
 license=('MIT')
-depends=('vim')
+depends=('vim-plugin-runtime')
 optdepends=('git: git support'
             'yadm: yadm support'
             'mercurial: mercurial support'
@@ -32,9 +32,8 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    vim -es --cmd ":helptags doc" --cmd ":q"
     find autoload doc plugin -type f -exec \
-        install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/pack/${_pkgname}/start/${_pkgname}/{}" \;
+        install -Dm 644 '{}' "${pkgdir}/usr/share/vim/vimfiles/{}" \;
     install -Dm 644 "${srcdir}/${_pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
