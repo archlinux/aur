@@ -1,0 +1,14 @@
+pkgbase = python-collections-extended
+	pkgdesc = Extra Python Collections - bags(multiset), setlists, RangedMap and IndexedDict
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mlenzen/collections-extended
+	arch = any
+	license = APACHE
+	makedepends = python-poetry
+	provides = python-collections-extended
+	conflicts = python-collections-extended-git
+	source = python-collections-extended-2.0.0.tar.gz::https://github.com/mlenzen/collections-extended/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 93d3aa1d19f644d2478da870cea3fd6a3796be212636fc1d125036609c6d5adf
+
+pkgname = python-collections-extended
