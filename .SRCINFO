@@ -1,15 +1,15 @@
 pkgbase = wasm-bindgen-cli
 	pkgdesc = Command line interface of the wasm-bindgen attribute and project.
-	pkgver = 0.2.69
+	pkgver = 0.2.78
 	pkgrel = 1
 	url = https://github.com/rustwasm/wasm-bindgen
 	arch = x86_64
 	license = APACHE
 	license = MIT
+	makedepends = cargo
 	depends = rust-wasm
 	depends = nodejs
-	source = wasm-bindgen-cli-0.2.69.tar.gz::https://github.com/rustwasm/wasm-bindgen/archive/0.2.69.tar.gz
-	sha256sums = 207645bdd2a0c927593fe34a75fe93bd8a69f82525d160e99429307b51d11f01
+	source = wasm-bindgen-cli-0.2.78.tar.gz::https://github.com/rustwasm/wasm-bindgen/archive/0.2.78.tar.gz
+	sha256sums = 31f12d90c621b32e0fc50a28f0609a651600ab143f32c9b5575039d3d01446b1
 
 pkgname = wasm-bindgen-cli
-
