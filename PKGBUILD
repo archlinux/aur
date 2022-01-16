@@ -1,18 +1,23 @@
 # Maintainer: Marco Martinelli <marco+libzstd-seek@13byte.com>
 
 pkgname=libzstd-seek-git
-pkgver=1.0.0
+pkgver=r27.1e8fb0d
 pkgrel=1
 pkgdesc="A library that mimic fread, fseek and ftell for reading zstd compressed files."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/martinellimarco/libzstd-seek"
-license=('GPLv3' 'MIT')
+license=('GPL3' 'MIT')
 provides=("libzstd-seek")
 depends=('zstd')
 makedepends=('cmake' 'git')
 options=('staticlibs')
 source=("git+https://github.com/martinellimarco/libzstd-seek.git")
 sha384sums=('SKIP')
+
+pkgver() {
+    cd "$srcdir/libzstd-seek"
+    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd "$srcdir/libzstd-seek"
