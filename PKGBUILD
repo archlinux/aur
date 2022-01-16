@@ -1,7 +1,7 @@
 # Maintainer: alyrow
 
 pkgname=hyperlap2d-git
-pkgver=v0.0.7.r89.g08d6510
+pkgver=v0.0.8.r0.g9d105ca
 pkgrel=1
 pkgdesc="A powerful, platform-independent, visual editor for complex 2D worlds and scenes."
 arch=('x86_64')
@@ -38,7 +38,7 @@ build() {
   chmod +x gradlew
   ./gradlew dist
   ./gradlew jpackage -PSNAPSHOT=true
-  mkdir dist
+  mkdir -p dist
   mv build/jpackage/*.deb dist/hyperlap2d.deb
   cd dist
   ar xv hyperlap2d.deb
