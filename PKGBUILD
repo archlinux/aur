@@ -1,6 +1,6 @@
 # Maintainer: Gadzhi Kharkharov <x at kkga dot me>
 pkgname=kks
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Handy Kakoune companion'
 arch=('x86_64' 'arm')
