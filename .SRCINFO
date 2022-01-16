@@ -1,7 +1,7 @@
 pkgbase = mergerfs-tools-git
 	pkgdesc = Tools to help manage data in a mergerfs pool
 	pkgver = r67.0138e09
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/trapexit/mergerfs-tools
 	arch = any
 	license = ISC
