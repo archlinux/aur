@@ -1,13 +1,13 @@
 pkgname=qbittorrent-enhanced-ua
 pkgver=4.4.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _name="qBittorrent-Enhanced-Edition"
 url="https://github.com/c0re100/${_name}"
 license=('custom' 'GPL')
 depends=('libtorrent-rasterbar' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
-makedepends=('cmake' 'boost' 'qt6-tools')
+makedepends=('cmake' 'ninja' 'boost' 'qt6-tools')
 optdepends=('python: needed for torrent search tab')
 provides=('qbittorrent')
 conflicts=('qbittorrent')
@@ -32,18 +32,20 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}"
+    mkdir -p "${srcdir}/build" && cd "$_"
 
-    cmake -B build -S "${_snapshot}" -DQT6=ON -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build "build"
+    cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DQT6=ON \
+        -GNinja "${srcdir}/${_snapshot}"
+
+    ninja
 }
 
 package() {
-    cd "${srcdir}"
+    cd "${srcdir}/build"
+    DESTDIR="${pkgdir}" ninja install
 
-    DESTDIR="${pkgdir}" cmake --install "build"
-
-    cd "${_snapshot}"
-
+    cd "${srcdir}/${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "COPYING"
 }
