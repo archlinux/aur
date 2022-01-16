@@ -1,22 +1,26 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python-pydata-sphinx-theme
-_pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}")
-#"python-${_pyname}-doc")
-pkgver=0.7.2
+_pname=${pkgbase#python-}
+_pyname=${_pname//-/_}
+pkgname=("python-${_pname}")
+#"python-${_pname}-doc")
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Bootstrap-based Sphinx theme from the PyData community"
 arch=('any')
 url="https://pydata-sphinx-theme.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools')
-#checkdepends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils')
-checkdepends=('python-pytest' 'python-sphinx' 'python-beautifulsoup4' 'python-pytest-regressions')
-#'python-sphinx' 'python-sphinx-bootstrap-theme')
+makedepends=('python-dephell')
+#'python-sphinx' 'python-beautifulsoup4' 'python-jupyter_sphinx' 'python-myst-parser' 'python-numpydoc' 'python-sphinxext-rediraffe' 'python-sphinx-sitemap')
+checkdepends=('python-pytest-regressions' 'python-sphinx' 'python-beautifulsoup4')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d13330b18df272bd9f46f42b033f1524')
+md5sums=('a4ef9f5f9f0b6e05945f186be9b85d94')
 
 prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    dephell deps convert --from pyproject.toml --to setup.py
+    sed -i "s/docs.demo.test_py_module/${_pyname}/" setup.py
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
@@ -25,21 +29,21 @@ build() {
     python setup.py build
 
 #   msg "Building Docs"
-#   python setup.py build_sphinx
+#   PYTHONPATH="build/lib" python setup.py build_sphinx
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
-#   python setup.py test || warning "Tests failed"
-    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname//-/_}*egg-info \
-        build/lib/${_pyname//-/_}-${pkgver}-py${_pyver}.egg-info
-    PYTHONPATH="build/lib" pytest
+    #python setup.py egg_info
+    #export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+    #ln -rs ${srcdir}/${_pyname}-${pkgver}/src/${_pyname//-/_}*egg-info \
+    #    build/lib/${_pyname//-/_}-${pkgver}-py${_pyver}.egg-info
+    PYTHONPATH="build/lib" pytest || warning "Tests failed"
 }
 
 package_python-pydata-sphinx-theme() {
-    depends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils>0.17.0')
+    depends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
