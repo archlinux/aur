@@ -1,4 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
+# Contributor: Sam L. Yes <samlukeyes123 at gmail dot com>
+
 pkgname=qv2ray-git
 pkgver=3.0.0.rc1.r19.g7898f0e2
 pkgrel=1
@@ -11,22 +13,46 @@ makedepends=('cmake' 'gcc' 'git' 'grpc-cli' 'make' 'ninja' 'qt6-declarative' 'qt
 optdepends=('qt6-wayland: Wayland support (experimental)' 'v2ray: use packaged v2ray')
 provides=('qv2ray')
 conflicts=('qv2ray' 'xray')
-source=("$pkgname::git+$url.git")
-sha512sums=('SKIP')
+source=(
+    "$pkgname::git+$url.git"
+    "git+https://github.com/itay-grudev/SingleApplication.git"
+    "git+https://github.com/cpeditor/QCodeEditor.git"
+    "git+https://github.com/danielsanfr/qt-qrcode.git"
+    "git+https://github.com/xiaokangwang/v2ray-core-1.git"
+    "git+https://github.com/moodyhunter/libRoutingA.git"
+    "git+https://github.com/fukuchi/libqrencode.git"
+)
+sha512sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "$srcdir/$pkgname"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+patch_gitmodules() {
+    sed -i "s|https://github.com/.*/|${srcdir}/|;s|\.git||" .gitmodules
+}
+
 prepare() {
     cd "$srcdir/$pkgname"
-    git submodule update --init --recursive \
+    patch_gitmodules
+    git submodule update --init \
         3rdparty/SingleApplication \
         3rdparty/QCodeEditor \
         3rdparty/qt-qrcode \
         src/plugins/v2ray/3rdparty/v2ray-core \
         src/plugins/routingA/core
+    cd 3rdparty/qt-qrcode
+    patch_gitmodules
+    git submodule update --init
 }
 
 build() {
