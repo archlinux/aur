@@ -2,19 +2,20 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=menyoki-git
-pkgver=1.5.5.r0.g7a96353
+pkgver=1.5.6.r0.g088e9c2
 pkgrel=1
 pkgdesc="Screen{shot,cast} and perform ImageOps on the command line (git)"
 arch=('x86_64')
 url="https://github.com/orhun/menyoki"
 license=('GPL3')
 depends=('gcc-libs' 'libxrandr')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 optdepends=('slop: area selection support')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -23,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
