@@ -5,11 +5,11 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=240f2f39632a08d81e8133dde20b441d8378ed0f
-_stag_commit=93e94fcbc077db4243eec763ed91d6e8312add29
+_wine_commit=b2f75a026f14805888a4b91d8a2e2c60a35fc1b7
+_stag_commit=0111d074e60d98cea562fed60b81e25aa276dd98
 
 pkgname=wine-ge-custom
-_srctag=7.0rc3-GE-1
+_srctag=7.0rc6-GE-1
 pkgver=${_srctag//-/.}
 pkgrel=1
 
