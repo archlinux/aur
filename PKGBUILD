@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-hibernate-git
 _pkgname=gnome-shell-hibernate-extension
-pkgver=r16.82dd95b
+pkgver=r21.8282cf1
 pkgrel=1
 pkgdesc="A GNOME extension that adds the option to hibernate amongst other system actions"
 arch=('any')
@@ -28,6 +28,10 @@ build() {
   meson compile -C build
 }
 
+check() {
+  meson test -C build
+}
+
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }

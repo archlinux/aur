@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-hibernate-git
 	pkgdesc = A GNOME extension that adds the option to hibernate amongst other system actions
-	pkgver = r16.82dd95b
+	pkgver = r21.8282cf1
 	pkgrel = 1
 	url = https://codeberg.org/kiyui/gnome-shell-hibernate-extension
 	arch = any
