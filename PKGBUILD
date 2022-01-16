@@ -1,34 +1,33 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
+# Maintainer: mochaaP <aur@mochaa.ws>
 
-_version=3.11
-_version_pkg_updates=0
-_gitcommit=c1a6ec8e3093b41bb936eeb8deb86c4a573a99a2
-
-pkgname=kose-font
-pkgver="${_version}+${_version_pkg_updates}+${_gitcommit::7}"
+_pkgname=kose-font
+pkgname=ttf-${_pkgname%-font}-git
+pkgver=3.11.r129.g0d24786
 pkgrel=1
 pkgdesc="A Chinese Font derived from SetoFont / Naikai Font / cjkFonts-AllSeto"
 arch=('any')
-license=('custom:SIL')
-url="https://github.com/lxgw/kose-font"
-source=(
-  "git+${url}.git#commit=${_gitcommit}"
-)
-sha256sums=(
-  'SKIP'
-)
+license=('OFL')
+url="https://github.com/lxgw/${_pkgname}"
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
-  install -dm755 "${pkgdir}/usr/share/fonts/${pkgname}"
-  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiSC-Regular.ttf "${pkgdir}/usr/share/fonts/${pkgname}/XiaolaiSC-Regular.ttf"
-  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiMonoSC-Regular.ttf "${pkgdir}/usr/share/fonts/${pkgname}/XiaolaiMonoSC-Regular.ttf"
-  install -Dm644 TTF\ \(Japanese\)/Kosefont-JP.ttf "${pkgdir}/usr/share/fonts/${pkgname}/Kosefont-JP.ttf"
-  install -Dm644 TTF\ \(Japanese\)/KosefontP-JP.ttf "${pkgdir}/usr/share/fonts/${pkgname}/KosefontP-JP.ttf"
+  install -dm755 "${pkgdir}/usr/share/fonts/${_pkgname}"
+  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiSC-Regular.ttf "${pkgdir}/usr/share/fonts/TTF/XiaolaiSC-Regular.ttf"
+  install -Dm644 TTF\ \(Simplified\ Chinese\)/XiaolaiMonoSC-Regular.ttf "${pkgdir}/usr/share/fonts/TTF/XiaolaiMonoSC-Regular.ttf"
+  install -Dm644 TTF\ \(Japanese\)/Kosefont-JP.ttf "${pkgdir}/usr/share/fonts/TTF/Kosefont-JP.ttf"
+  install -Dm644 TTF\ \(Japanese\)/KosefontP-JP.ttf "${pkgdir}/usr/share/fonts/TTF/KosefontP-JP.ttf"
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 OpenType_Features.md "${pkgdir}/usr/share/doc/${pkgname}/OpenType_Features.md"
-  install -Dm644 history.md "${pkgdir}/usr/share/doc/${pkgname}/history.md"
-  install -Dm644 SIL_Open_Font_License_1.1.txt "${pkgdir}/usr/share/licenses/${pkgname}/SIL_Open_Font_License_1.1.txt"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname%-git}/README.md"
+  install -Dm644 OpenType_Features.md "${pkgdir}/usr/share/doc/${pkgname%-git}/OpenType_Features.md"
+  install -Dm644 history.md "${pkgdir}/usr/share/doc/${pkgname%-git}/CHANGELOG.md"
+  install -Dm644 SIL_Open_Font_License_1.1.txt "${pkgdir}/usr/share/licenses/${pkgname%-git}/OFL.txt"
+}
+
+pkgver() {
+  cd "$srcdir/${_pkgname}"
+  printf "%s" "$(head -n 1 history.md | grep -oE '[0-9]+\.[0-9]+').r$(git rev-list HEAD --count).g$(git log -1 --format=%h)"
 }
