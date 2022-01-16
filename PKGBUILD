@@ -3,7 +3,7 @@
 _gemname=nanoc-core
 pkgname=ruby-$_gemname
 pkgver=4.12.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Contains the core of Nanoc"
 arch=('any')
 url="https://nanoc.app"
@@ -11,11 +11,12 @@ license=('MIT')
 depends=(
   'ruby'
   'ruby-concurrent'
-  'ruby-ddmemoize'
   'ruby-ddmetrics'
   'ruby-ddplugin'
   'ruby-hamster'
   'ruby-json_schema'
+  'ruby-memo_wise'
+  'ruby-psych'
   'ruby-slow_enumerator_tools'
   'ruby-tty-platform'
   'ruby-zeitwerk'
