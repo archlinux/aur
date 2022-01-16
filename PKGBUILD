@@ -7,7 +7,7 @@ url="https://projects.coin-or.org/Bonmin"
 license=('EPL')
 groups=('coin-or')
 depends=('coin-or-cbc' 'coin-or-ipopt' 'coin-or-bcp')
-makedepends=()
+makedepends=('nauty')
 source=("https://www.coin-or.org/download/source/Bonmin/Bonmin-$pkgver.tgz")
 sha256sums=('1a47cf5a4c115974f09d765408ab2116efd4dc1ec13faccd078f2870404316d2')
 

@@ -6,6 +6,7 @@ pkgbase = coin-or-bonmin
 	arch = x86_64
 	groups = coin-or
 	license = EPL
+	makedepends = nauty
 	depends = coin-or-cbc
 	depends = coin-or-ipopt
 	depends = coin-or-bcp
