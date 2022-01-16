@@ -4,7 +4,7 @@
 _pkgname=libcpufeatures
 pkgname="${_pkgname}-git"
 pkgver=0.6.0.19.r218.d20210707.628c50e
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform C library to retrieve CPU features (such as available instructions) at runtime. By google."
 url="https://github.com/google/cpu_features"
 arch=(
@@ -24,6 +24,7 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+  'libvolk'
 )
 source=(
   "${_pkgname}::git+git://github.com/google/cpu_features.git"
