@@ -1,7 +1,7 @@
 pkgbase = plasma5-runners-nordvpn
 	pkgdesc = Nordvpn plasma runner
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alex1701c/NordVPNKrunner
 	arch = any
 	license = MIT

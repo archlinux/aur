@@ -2,7 +2,7 @@
 pkgname=plasma5-runners-nordvpn
 reponame=NordVPNKrunner
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Nordvpn plasma runner"
 arch=("any")
 url="https://github.com/alex1701c/${reponame}"
