@@ -3,7 +3,7 @@
 # Contributor: GI Jack <GI_Jack@hackermail.com>
 
 pkgname=sleuthkit-java
-pkgver=4.11.0
+pkgver=4.11.1
 pkgrel=1
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('CPL', 'custom:"IBM Public Licence"', 'GPL2')
 depends=(java-environment=11 java11-openjfx sleuthkit)
 makedepends=(ant)
 source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz")
-sha512sums=('fabaf0e7815145f82cf7d8c342d403939511afa36f29318a89212a8aa1a3465e2050629ff9e308b34cfeb3c2c98efa94f9546737cba749c075c4e583b8808580')
+sha512sums=('04e4ca1c18bda56c816aa493eb3b887f2f62162e16c35079d4208b89464a78109fc189fec55ea6db8a60ab01a4e46c87902f00286abee203ff0c53ab572cfeda')
 
 build() {
 	cd "sleuthkit-${pkgver}"
