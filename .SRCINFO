@@ -20,7 +20,7 @@ pkgbase = rmg-git
 	depends = qt5-svg
 	provides = rmg
 	conflicts = rmg
-	source = git+https://github.com/Rosalie241/rmg.git#branch=Directories
+	source = git+https://github.com/Rosalie241/rmg.git
 	sha256sums = SKIP
 
 pkgname = rmg-git

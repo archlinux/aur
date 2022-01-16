@@ -14,7 +14,7 @@ conflicts=("$_pkgname")
 depends=("hidapi" "libsamplerate" "minizip" "sdl2" "zlib" "freetype2" "qt5-base" "qt5-svg")
 makedepends=("git" "pkg-config" "nasm" "cmake" "rustup")
 
-source=("git+https://github.com/Rosalie241/${_pkgname}.git#branch=Directories")
+source=("git+https://github.com/Rosalie241/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver()
