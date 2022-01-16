@@ -1,6 +1,6 @@
 # Maintainer: Omar Emara <mail@OmarEmara.dev>
 pkgname=blender-plugin-animation-nodes-git
-pkgver=2.1.5.r5344.b75b9435
+pkgver=2.3.0.r5663.b1e3ace8
 pkgrel=1
 pkgdesc="Node based visual scripting system designed for motion graphics in Blender."
 arch=('any')
@@ -17,12 +17,12 @@ pkgver() {
 }
 prepare() {
   cd "animation_nodes"
-  _blender_version=$(blender --version | grep -Po 'Blender \K[0-9]\...')
+  _blender_version=$(blender --version | sed -E -n -e 's/.*([0-9]+\.[0-9]+)\.[0-9]+.*/\1/p')
   echo "{\"Copy Target\" : \"$pkgdir/usr/share/blender/$_blender_version/scripts/addons\"}" > conf.json
 }
 package() {
   cd "animation_nodes"
-  _blender_version=$(blender --version | grep -Po 'Blender \K[0-9]\...')
+  _blender_version=$(blender --version | sed -E -n -e 's/.*([0-9]+\.[0-9]+)\.[0-9]+.*/\1/p')
   mkdir -p $pkgdir/usr/share/blender/$_blender_version/scripts/addons
   python setup.py build --copy --noversioncheck
 }
