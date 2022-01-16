@@ -10,17 +10,17 @@ depends=('spotifyd')
 makedepends=('go>=1.17')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('d7fdf0eab49d27df55f87cdb372c4361a33510ae09eafac098b4d0117712aebf')
-_binname="spdcon"
+_shortname="spdcon"
 
 build() {
     cd "$pkgname-$pkgver"
     go build -v -o $pkgname .
-    ln -s $pkgname $_binname
+    ln -s $pkgname $_shortname
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-    install -Dm777 $_binname "$pkgdir"/usr/bin/$_binname
+    cp -a $_shortname "$pkgdir"/usr/bin/
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}
 }
