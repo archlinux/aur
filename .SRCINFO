@@ -1,7 +1,7 @@
 pkgbase = folks-telepathy-git
 	pkgdesc = Library to aggregates people into metacontacts. Variant of 'folks' with telepathy backend compiled in. Latest git checkout.
 	pkgver = 0.15.3.7+r2985.20211116.69285b88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/Folks
 	arch = x86_64
 	arch = i686

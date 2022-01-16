@@ -6,7 +6,7 @@ _pkgname='folks'
 _pkgfeature='telepathy'
 pkgname="${_pkgname}-${_pkgfeature}-git"
 pkgver=0.15.3.7+r2985.20211116.69285b88
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to aggregates people into metacontacts. Variant of 'folks' with telepathy backend compiled in. Latest git checkout."
 arch=(
   'x86_64'
@@ -72,7 +72,7 @@ build() {
     -D docs=true
     -D telepathy_backend=true
   )
-  artix-meson "${_pkgname}" build "${meson_args[@]}"
+  arch-meson "${_pkgname}" build "${meson_args[@]}"
   meson compile -C build
 }
 
