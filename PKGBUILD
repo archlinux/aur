@@ -4,11 +4,15 @@ pkgbase='python-activitypub'
 pkgname=('python-activitypub')
 _module='activitypub'
 pkgver='0.0.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="A general Python ActivityPub library"
 url="https://github.com/dsblank/activitypub"
 depends=('python')
 makedepends=('python-setuptools')
+optdepends=(
+    'python-sqlalchemy: Various DBs backend'
+    'python-redis: Redis backend'
+    'python-pymongo: MongoDB backeund')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
