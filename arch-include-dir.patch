@@ -1,0 +1,13 @@
+diff --git a/platform/qt/qt.cmake b/platform/qt/qt.cmake
+index fbf9ce6ee..9569b297b 100644
+--- a/platform/qt/qt.cmake
++++ b/platform/qt/qt.cmake
+@@ -184,7 +184,7 @@ install(
+         platform/qt/include/QMapboxGL
+         platform/qt/include/qmapbox.hpp
+         platform/qt/include/qmapboxgl.hpp
+-    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/qt5"
++    DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/qt"
+     COMPONENT development
+ )
+ 

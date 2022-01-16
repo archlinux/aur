@@ -1,0 +1,19 @@
+pkgbase = mapbox-gl-native
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/mapbox/mapbox-gl-native
+	arch = x86_64
+	arch = aarch64
+	depends = glfw
+	source = https://dev.alpinelinux.org/archive/mapbox-gl-native/mapbox-gl-native-1.6.0.tar.gz
+	source = fix-compilation.patch
+	source = allow-qt-deprecations.patch
+	source = 16591.patch
+	source = arch-include-dir.patch
+	sha512sums = 5e70f04fc22854f2208c335e12bd85252432d7939a1b205c5dbaebe27a3de681cd14e2ef88100f04bc4c84b412020670681f2d548e7cdc209ee3aaa70349f025
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = mapbox-gl-native
