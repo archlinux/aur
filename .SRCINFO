@@ -1,0 +1,14 @@
+pkgbase = vim-oscyank-git
+	pkgdesc = A Vim plugin copy text to system clipboard
+	pkgver = r54.5d152a9
+	pkgrel = 1
+	url = https://github.com/ojroques/vim-oscyank
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim-runtime
+	source = git+https://github.com/ojroques/vim-oscyank.git
+	sha512sums = SKIP
+
+pkgname = vim-oscyank-git
