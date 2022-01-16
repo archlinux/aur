@@ -18,7 +18,7 @@ source=("http://deb.debian.org/debian/pool/main/f/fbterm/fbterm_1.7.orig.tar.gz"
     'fbtermrc')
 sha256sums=('b98d487e84618503887e3996162354c482e24884bad8bf2219b6776372f306ad'
             '0d1781e2654d32d5dfd1cbf17680b49aefbb124b7164ca1d70fcf4468563be7c'
-            'dfed22b91dfabc18143f767974764654946cd7d2e2d28558f038654b1134f613'
+            '3b83ffe402cdb66f0bf46a05823ec13357cfebb6534d05acf6d1e4a732441cfc'
             '5cd1c14c640679a40f8a9d9781c2a5af5db7543c2296cda99f2886aa40468735'
             '8054410ab97da3df03406543c6a471acf3323b9e5712da6455d7c49cad7489ce'
             '73f0c87aaa5a74631c167fb765c0340dc28626b00d0a3cd065cebf71acc585f7'
