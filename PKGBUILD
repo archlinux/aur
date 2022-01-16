@@ -2,7 +2,7 @@
 pkgname=rpcs3-bin
 pkgver=0.0.20
 _pkgbuild='13138-61d98526'
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
@@ -23,6 +23,7 @@ depends=(
   libswscale.so
   libx11
   libxext
+  ncurses5-compat-libs
   openal
   qt5-base
   qt5-declarative
