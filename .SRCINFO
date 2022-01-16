@@ -1,9 +1,12 @@
 pkgbase = scratch3-bin
 	pkgdesc = Scratch 3.0 as a self-contained desktop application
 	pkgver = 3.27.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://scratch.mit.edu
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = arm7h
 	license = custom:BSD-3-Clause
 	makedepends = electron13
 	makedepends = p7zip
