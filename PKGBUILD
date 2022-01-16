@@ -1,7 +1,7 @@
 pkgbase=overtone-wpc
 pkgname=("${pkgbase}-af210-vst" "${pkgbase}-af210m-vst" "${pkgbase}-dyn500-vst" "${pkgbase}-eq500-vst" "${pkgbase}-fc70-vst" "${pkgbase}-ptc2a-vst" "${pkgbase}-ptm5a-vst" "${pkgbase}-rvb500-vst")
 pkgver=201904
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.overtonedsp.co.uk/download/download_wpc/"
 license=('EULA')

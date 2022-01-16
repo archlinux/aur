@@ -1,6 +1,6 @@
 pkgbase = overtone-wpc
 	pkgver = 201904
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.overtonedsp.co.uk/download/download_wpc/
 	arch = x86_64
 	groups = pro-audio
