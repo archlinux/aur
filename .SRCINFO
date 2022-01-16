@@ -1,4 +1,5 @@
 pkgbase = saurch-git
+	pkgdesc = Small AUR Command Helper
 	pkgver = r4.36a9cdb
 	pkgrel = 1
 	url = http://vitali64.duckdns.org/?p=utils/saurch.git
