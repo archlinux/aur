@@ -1,8 +1,9 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: Michał Wojdyła < micwoj9292@gmail.com >
+# Contributor: Carsten Feuls <archlinux@carstenfeuls.de>
 
 _gemname=fog-core
 pkgname=ruby-$_gemname
-pkgver=1.35.0
+pkgver=2.2.4
 pkgrel=1
 pkgdesc='Shared classes and tests for fog providers and services.'
 arch=(any)
@@ -18,4 +19,4 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
-sha512sums=('0acac93d4abf552201cf3ac8c31d80960be5d47323480f443e99528665dc3d15846c906f21b1db19f8de9a80729e3ca6048d375c91f964c0fa9dd332d9abc8f2')
+sha512sums=('6902aa0e0d4cc3be9ec9e670698f2ad1ddeefa3f418262a73146016ed2aa4b4031a3df98401c43c5a55372cf8aca49bd307192bbf981349959e4ba8361be733e')

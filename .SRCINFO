@@ -1,6 +1,6 @@
 pkgbase = ruby-fog-core
 	pkgdesc = Shared classes and tests for fog providers and services.
-	pkgver = 1.35.0
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/fog/fog-core
 	arch = any
@@ -12,10 +12,9 @@ pkgbase = ruby-fog-core
 	depends = ruby-mime-types
 	depends = ruby-net-scp
 	depends = ruby-net-ssh
-	noextract = fog-core-1.35.0.gem
+	noextract = fog-core-2.2.4.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fog-core-1.35.0.gem
-	sha512sums = 0acac93d4abf552201cf3ac8c31d80960be5d47323480f443e99528665dc3d15846c906f21b1db19f8de9a80729e3ca6048d375c91f964c0fa9dd332d9abc8f2
+	source = https://rubygems.org/downloads/fog-core-2.2.4.gem
+	sha512sums = 6902aa0e0d4cc3be9ec9e670698f2ad1ddeefa3f418262a73146016ed2aa4b4031a3df98401c43c5a55372cf8aca49bd307192bbf981349959e4ba8361be733e
 
 pkgname = ruby-fog-core
-
