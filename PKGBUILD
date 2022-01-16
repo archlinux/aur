@@ -2,12 +2,12 @@
 
 pkgname=pix-git
 _pkgbasename=pix
-pkgver=1.6.2.r0.gceadb95
+pkgver=2.8.4.r0.g62fc6e2
 pkgrel=1
 pkgdesc="Image viewer and browser based on gthumb. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
-depends=('desktop-file-utils' 'gconf' 'librsvg' 'clutter-gtk'
+depends=('desktop-file-utils' 'librsvg' 'clutter-gtk'
         'gst-plugins-base-libs' 'gsettings-desktop-schemas' 'libwebp' 'webkit2gtk')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool'
         'liboauth' 'libchamplain' 'libopenraw' 'exiv2' )
@@ -28,7 +28,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -56,4 +56,3 @@ package(){
     cd ${srcdir}/${pkgname}
     make DESTDIR="$pkgdir/" install
 }
-
