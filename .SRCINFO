@@ -1,0 +1,15 @@
+pkgbase = signal-captcha-helper-git
+	pkgdesc = Creates Signal captchas required for device registration
+	pkgver = r4.19347af
+	pkgrel = 1
+	url = https://gitlab.com/signald/captcha-helper
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	makedepends = vala
+	depends = gtk3
+	depends = webkit2gtk
+	source = signal-captcha-helper-git::git+https://gitlab.com/signald/captcha-helper.git
+	md5sums = SKIP
+
+pkgname = signal-captcha-helper-git
