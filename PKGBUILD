@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('perl' 'perl-libwww' 'perl-xml-xpath' 'perl-json')
 source=(http://xpisar.wz.cz/$pkgname/$pkgname-$pkgver{,.asc})
 validpgpkeys=('4B528393E6A3B0DFB2EF3A6412C9C5C767C6FAA2')
-sha256sums=('58ebfd4c2a7789854d46b5059233e35a74afadab9e805c8efc7bd577c8fb4372'
+sha256sums=('44de49df2fb68faf155b65c97194fdec40c45afbabd1c4a4ab5e445fc88a36bb'
             'SKIP')
 
 package() {
