@@ -1,0 +1,11 @@
+pkgbase = ttf-swei-spring-git
+	pkgdesc = Swei Spring-derived from Noto Serif CJK font family with a more concise & modern look.
+	pkgver = 1.065.r6.6668e35
+	pkgrel = 1
+	url = https://github.com/max32002/swei-spring
+	arch = any
+	license = OFL
+	source = git+https://github.com/max32002/swei-spring.git
+	sha256sums = SKIP
+
+pkgname = ttf-swei-spring-git
