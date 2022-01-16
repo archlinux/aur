@@ -1,22 +1,44 @@
-# Maintainer: Remy Adriaanse <remy@adriaanse.it>
+# Contributor: Tim Meusel <tim@bastelfreak.de>
+# Contributor: Remy Adriaanse <remy@adriaanse.it>
 
-pkgname=ruby-net-scp
-pkgver=1.2.1
-_gemname=net-scp
-pkgrel=2
+_gemname='net-scp'
+pkgname="ruby-${_gemname}"
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='A pure Ruby implementation of the SCP client protocol'
-arch=(any)
+arch=('any')
 url='https://github.com/net-ssh/net-scp'
-license=(MIT)
-depends=(ruby ruby-net-ssh)
-options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha512sums=('64645a4517d6e408e3acfdb24576c8ded3b6ff981035ca10a2e081f9e3ab093f97b4848da4acca03ade364483766677e31296d09a31db4c81eb40123fc966829')
+license=('MIT')
+depends=('ruby' 'ruby-net-ssh')
+makedepends=('ruby-rake' 'ruby-bundler' 'ruby-rdoc')
+checkdepends=('ruby-minitest' 'ruby-mocha' 'ruby-test-unit')
+options=('!emptydirs')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('6d68b75124ccd2d387983f6d66a8b0e040132ba17d942631c806e899dff757ffae7a031a27ea0988166bf56e803c1a6175199845a848b92c7064388564e0ac79')
+
+prepare() {
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  sed -E 's|~>|>=|g' -i ${_gemname}.gemspec Gemfile
+  sed --in-place 's|`git ls-files -z`|`find . -print0`|' "${_gemname}.gemspec"
+}
+
+build() {
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  gem build ${_gemname}.gemspec
+}
+
+check() {
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  rake test
+}
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cd "${srcdir}/${_gemname}-${pkgver}"
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  install -Dm 644 README.rdoc CHANGES.txt net-scp-public_cert.pem -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
+
+# vim: ts=2 sw=2 et:
