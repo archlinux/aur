@@ -5,7 +5,7 @@
 _perlmod='Cache-FastMmap'
 _modnamespace=Cache
 pkgname=perl-cache-fastmmap
-pkgver=1.56
+pkgver=1.57
 pkgrel=1
 pkgdesc="Uses an mmap'ed file to act as a shared memory interprocess cache"
 arch=("x86_64" "i686")
@@ -14,7 +14,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('8becaf0dacc876e9f60f4737104b79fd4e343d6fd984cef7d7a6dd14516b2159')
+sha256sums=('e04b3a28d989edb8fb96eafacdc2b87f9eccb84f047eb2e27cb26aa7d08cc7b8')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
