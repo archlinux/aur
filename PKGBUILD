@@ -7,7 +7,7 @@ pkgdesc="Scratch mod with a compiler to run projects faster, dark mode for your 
 arch=("any")
 url="https://desktop.turbowarp.org/"
 license=("GPL3")
-depends=("electron")
+depends=("electron16")
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/TurboWarp/desktop/releases/download/v$pkgver/TurboWarp-linux-armv7l-$pkgver.tar.gz"
     "$pkgname.sh"
