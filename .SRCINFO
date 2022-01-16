@@ -1,13 +1,13 @@
 pkgbase = soem
 	pkgdesc = Simple Open EtherCAT Master Library
-	pkgver = 1.4.0.r55.g6f04be1
+	pkgver = 1.4.0.r61.g9b6ebd6
 	pkgrel = 1
 	url = https://openethercatsociety.github.io/doc/soem
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
-	source = git+https://github.com/OpenEtherCATsociety/SOEM.git#commit=6f04be13c916b51dccfe6ce84b1181f689efff2d
+	source = git+https://github.com/OpenEtherCATsociety/SOEM.git#commit=9b6ebd6e43e03be461c5eab803a74786319a14db
 	sha256sums = SKIP
 
 pkgname = soem
