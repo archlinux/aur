@@ -1,12 +1,13 @@
 pkgbase = haruna-git
 	pkgdesc = A Qt/QML video player built on top of libmpv
-	pkgver = 0.7.3.r4.g9e21bcc
+	pkgver = 0.7.3.r34.g034d88a
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/haruna
 	arch = x86_64
 	license = GPL3
 	makedepends = extra-cmake-modules
 	makedepends = git
+	makedepends = kdoctools
 	depends = breeze
 	depends = kfilemetadata
 	depends = kio-extras
