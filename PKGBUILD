@@ -2,13 +2,13 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=swayblur
 pkgdesc="Blurs the wallpaper when a client is present"
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 url="https://github.com/willpower3309/swayblur"
 arch=('any')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a13a68e5c508357c30e9af88fa2fc493490584fe413859e95cfa0aa5bbc5a140')
+sha256sums=('660d4667570b0391d4c7839efb64b280c78b0f12cca0b19bc6c4a98499ef0557')
 provides=('swayblur')
 makedepends=('python-setuptools' 'python-wheel')
 depends=('imagemagick' 'python-i3ipc' 'oguri')
