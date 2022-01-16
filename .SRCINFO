@@ -1,0 +1,13 @@
+pkgbase = shaarli-material
+	pkgdesc = A theme for Shaarli, the famous personal, minimalist, super-fast, database free, bookmarking service
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/kalvn/Shaarli-Material
+	arch = any
+	license = MIT
+	depends = shaarli
+	options = !strip
+	source = shaarli-material-0.12.1.tar.gz::https://github.com/kalvn/Shaarli-Material/releases/download/v0.12.1/shaarli-material.v0.12.1.tar.gz
+	sha256sums = 7579741765e8b0e7805a78030b7bd3967291415fa88c05a92ffce46fb8f3358e
+
+pkgname = shaarli-material
