@@ -1,4 +1,7 @@
 post_install() {
-  printf "%s\n" "tessen needs either 'bemenu', 'rofi-lbonn-wayland-git', or 'wofi' to work."
-  printf "%s\n" "Please install at least one of the packages mentioned above."
+  printf "%s" "\
+Please install at least one wayland native dmenu like backend to use tessen.
+The suggested backends are 'bemenu' and 'fuzzel'. However,
+'rofi-lbonn-wayland-git' and 'wofi' will also work.
+"
 }

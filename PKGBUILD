@@ -2,7 +2,7 @@
 
 pkgname=tessen
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive menu to autotype and copy password-store data"
 arch=(x86_64)
 url="https://github.com/ayushnix/tessen"
