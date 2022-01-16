@@ -1,6 +1,6 @@
-# Maintainer: Logan Magee <mageelog@gmail.com>
+# Maintainer: steffeno <steffeno dash etc at protonmail dot com>
 pkgname=ly-git
-pkgver=0.5.1.r0.gf6658f8
+pkgver=0.5.3.r5.g609b3f9
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd ly
-	make github
+    git submodule update --init --recursive
 }
 
 build() {
