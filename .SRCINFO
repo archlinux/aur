@@ -1,11 +1,12 @@
 pkgbase = gmt-dcw
 	pkgdesc = The Digital Chart of the World Polygon data for the Generic Mapping Tools.
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
-	url = https://www.generic-mapping-tools.org/
+	url = https://github.com/GenericMappingTools/dcw-gmt
 	arch = any
 	license = LGPL
-	source = https://github.com/GenericMappingTools/dcw-gmt/releases/download/2.0.2/dcw-gmt-2.0.2.tar.gz
-	sha256sums = 2b300f01ca350db17aadd0260ae33bf36dc6b61be4150e66829033cec3d65c3c
+	depends = gmt>=6.1.1
+	source = https://github.com/GenericMappingTools/dcw-gmt/releases/download/2.1.0/dcw-gmt-2.1.0.tar.gz
+	sha256sums = e810567cd474d5af9d84751938acb447a8612391ed66190d60d789974a1f9e29
 
 pkgname = gmt-dcw
