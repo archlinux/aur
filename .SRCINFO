@@ -1,0 +1,11 @@
+pkgbase = ttf-naikai-git
+	pkgdesc = A free font family derived from KouzanBrushFont.
+	pkgver = 1.0.r31.f0f396f
+	pkgrel = 1
+	url = https://github.com/max32002/naikaifont
+	arch = any
+	license = OFL
+	source = git+https://github.com/max32002/naikaifont.git
+	sha256sums = SKIP
+
+pkgname = ttf-naikai-git
