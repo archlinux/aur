@@ -3,7 +3,7 @@
 
 pkgname=ocrdesktop-git
 pkgver=3.0.r0.g196a287
-pkgrel=1
+pkgrel=2
 pkgdesc="OCR the current window or desktop and make it browsable for the user (development version)"
 arch=('any')
 url="http://www.crivatec.de"
