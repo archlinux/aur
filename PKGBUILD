@@ -1,6 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=seiscomp-git
-pkgver=4.8.2.r0.g36dc05e
+pkgver=4.8.3.r0.gb1f2c7d
 pkgrel=1
 pkgdesc="A seismological software for data acquisition, processing, distribution and interactive analysis (GitHub version)."
 arch=('x86_64')
@@ -9,6 +9,7 @@ license=('AGPL3')
 depends=('boost-libs' 'inetutils' 'libxml2' 'mariadb' 'ncurses' 'openssl' 'python' 'python-dateutil' 'python-numpy' 'python-twisted' 'qt5-base' 'qt5-svg' 'sqlite')
 makedepends=('boost' 'cmake' 'gcc-fortran' 'git' 'libmariadbclient' 'python-myst-parser' 'python-sphinx' 'postgresql-libs')
 optdepends=("${pkgname%-git}-maps: for SeisComp default map files"
+            "nmxptool: for seedlink nmxp plugin"
             "postgresql: for using PostgreSQL database")
 provides=("${pkgname%-git}" "${pkgname%-git}-docs")
 conflicts=("${pkgname%-git}" "${pkgname%-git}-docs")
@@ -33,7 +34,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'e8195d8cebe4a134d6054fb3cbf6fea9e5284d96192c957c9079059e4b463016'
-            '4cdce628264921efa947ddccba19cf5fd2d6af21a9b23e6fbe8972558a27f182'
+            'be8a26d9ac60c17b1ee56207f82e7e3ca5c5c2249ab24ce75c4ac25f952a0ee1'
             '312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2')
 scmodules=('seedlink' 'common' 'main' 'extras' 'contrib-gns' 'contrib-ipgp' 'contrib-sed')
 
@@ -79,14 +80,18 @@ build() {
 package() {
     cd "${pkgname%-git}/build"
     make DESTDIR="${pkgdir}/" install
-    install -D -m 644 "../src/system/apps/${pkgname%-git}/share/shell-completion/${pkgname%-git}.bash" \
+    cd "${srcdir}/${pkgname%-git}/src/system/apps/${pkgname%-git}/share/shell-completion"
+    install -D -m 644 "${pkgname%-git}.bash" \
         "${pkgdir}/usr/share/bash-completion/completions/${pkgname%-git}"
-    install -D -m 644 "../src/system/apps/${pkgname%-git}/share/shell-completion/${pkgname%-git}.fish" \
+    install -D -m 644 "${pkgname%-git}.fish" \
         "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname%-git}.fish"
     cd ${srcdir}
     install -D -t "${pkgdir}/etc/profile.d/" -m 755 "${pkgname%-git}.sh"
-    install -D -m 644 "${pkgname%-git}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
-    install -D -m 644 "${pkgname%-git}-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
-    chmod -R g+w "${pkgdir}/opt/${pkgname%-git}"
+    install -D -m 644 "${pkgname%-git}-sysusers.conf" \
+        "${pkgdir}/usr/lib/sysusers.d/${pkgname%-git}.conf"
+    install -D -m 644 "${pkgname%-git}-tmpfiles.conf" \
+        "${pkgdir}/usr/lib/tmpfiles.d/${pkgname%-git}.conf"
+    chmod -R u=rwX,g=rwX,o=rX "${pkgdir}/opt/${pkgname%-git}"
+    find "${pkgdir}/opt/${pkgname%-git}" -type d -exec chmod g+s '{}' \;
 }
 # vim:set ts=4 sw=4 et:

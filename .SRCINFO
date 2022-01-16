@@ -1,6 +1,6 @@
 pkgbase = seiscomp-git
 	pkgdesc = A seismological software for data acquisition, processing, distribution and interactive analysis (GitHub version).
-	pkgver = 4.8.2.r0.g36dc05e
+	pkgver = 4.8.3.r0.gb1f2c7d
 	pkgrel = 1
 	url = https://github.com/SeisComP
 	install = seiscomp.install
@@ -28,6 +28,7 @@ pkgbase = seiscomp-git
 	depends = qt5-svg
 	depends = sqlite
 	optdepends = seiscomp-maps: for SeisComp default map files
+	optdepends = nmxptool: for seedlink nmxp plugin
 	optdepends = postgresql: for using PostgreSQL database
 	provides = seiscomp
 	provides = seiscomp-docs
@@ -53,7 +54,7 @@ pkgbase = seiscomp-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e8195d8cebe4a134d6054fb3cbf6fea9e5284d96192c957c9079059e4b463016
-	sha256sums = 4cdce628264921efa947ddccba19cf5fd2d6af21a9b23e6fbe8972558a27f182
+	sha256sums = be8a26d9ac60c17b1ee56207f82e7e3ca5c5c2249ab24ce75c4ac25f952a0ee1
 	sha256sums = 312911098291e60a40d4f3fd455b9a40b2d9b3489a589fb927fb6fc0b9ac2dd2
 
 pkgname = seiscomp-git
