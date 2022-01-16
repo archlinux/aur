@@ -6,10 +6,10 @@
 # Contributor: <gucong43216@gmail.com>
 
 # Installs as (for example)
-# /opt/OpenFOAM/OpenFOAM-v2012
+# /opt/OpenFOAM/OpenFOAM-v2112
 
 pkgname=openfoam-com
-pkgver=v2106
+pkgver=v2112
 _distname=OpenFOAM
 _dist=$_distname-$pkgver
 pkgrel=1
@@ -20,9 +20,9 @@ license=('GPL')
 install="${pkgname}.install"
 depends=('gcc' 'cgal' 'fftw' 'boost' 'openmpi' 'paraview' 'utf8cpp' 'scotch' 'parmetis')
 
-source=('https://sourceforge.net/projects/openfoam/files/v2106/OpenFOAM-v2106.tgz')
+source=('https://sourceforge.net/projects/openfoam/files/v2112/OpenFOAM-v2112.tgz')
 
-md5sums=('e5fe7768407fdccc3e160d9c1b2d0a1c')
+md5sums=('b6553cfbb6c398e8fe50c96e9e456968')
 
 prepare() {
   if [ -n "$WM_PROJECT_DIR" ]
