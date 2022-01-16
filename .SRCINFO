@@ -1,44 +1,30 @@
 pkgbase = tahoe-lafs
-	pkgdesc = Secure, decentralized, and fault-tolerant filesystem.
-	pkgver = 1.13.0
-	pkgrel = 3
+	pkgdesc = Secure, decentralized, and fault-tolerant storage system.
+	pkgver = 1.17.1
+	pkgrel = 1
 	url = https://tahoe-lafs.org/trac/tahoe-lafs
 	arch = any
 	license = GPL
-	depends = openssl>=1.0.2
-	depends = python2-twisted>=16.1.0
-	depends = python2-pyopenssl>=0.14
-	depends = python2-pyasn1>=0.1.8
-	depends = python2-pyasn1-modules>=0.0.5
-	depends = python2-zope-interface>=4.0.5
-	depends = python2-characteristic>=14.3.0
-	depends = python2-service-identity>=14.0.0
-	depends = python2-cryptography
-	depends = python2-pyutil>=1.9.4
-	depends = python2-simplejson>=3.1.3
-	depends = nevow>=0.12.0
-	depends = python2-zbase32>=1.1.5
-	depends = python2-zfec>=1.4.24
-	depends = pycryptopp>=0.6.0
-	depends = python2-cffi
-	depends = python2-enum34
-	depends = python2-pycparser
-	depends = python2-six
-	depends = libffi
-	depends = python2-foolscap>=0.12.6
-	depends = net-tools
-	depends = python2-setuptools
-	depends = python2-shutilwhich>=1.1.0
-	depends = python2-yaml
-	depends = python2-pycryptodome
-	optdepends = python2-numpy: reliability test
-	conflicts = tahoe-lafs-i2p
-	replaces = tahoe-lafs-i2p
-	source = https://tahoe-lafs.org/downloads/tahoe-lafs-1.13.0.tar.bz2
-	source = https://tahoe-lafs.org/downloads/tahoe-lafs-1.13.0.tar.bz2.asc
-	validpgpkeys = E34E62D06D0E69CFCA4179FFBDE0D31D68666A7A
-	sha256sums = 82d4d20f2672e67927d91e73e54dbfd7e526eca27dea09a29f131bef7dfaee86
+	license = custom
+	depends = magic-wormhole
+	depends = python-argparse
+	depends = python-bcrypt
+	depends = python-boltons
+	depends = python-cbor2
+	depends = python-collections-extended
+	depends = python-eliot
+	depends = python-foolscap
+	depends = python-future
+	depends = python-klein
+	depends = python-netifaces
+	depends = python-pyrsistent
+	depends = python-treq
+	depends = python-yaml
+	depends = python-zfec
+	source = https://tahoe-lafs.org/downloads/tahoe-lafs-1.17.1.tar.gz
+	source = https://tahoe-lafs.org/downloads/tahoe-lafs-1.17.1.tar.gz.asc
+	validpgpkeys = 9D5A2BD5688ECB889DEBCD3FC2602803128069A7
+	sha256sums = 2dc7fc103fe0e4f9fc69953934089f55e4428bd5d94670e844e64c210d7c1672
 	sha256sums = SKIP
 
 pkgname = tahoe-lafs
-
