@@ -54,6 +54,8 @@ prepare() {
 build() {
     cd jitsi-meet-electron-${pkgver}/
     export npm_config_cache="${srcdir}/npm_cache"
+
+    source /usr/share/nvm/init-nvm.sh
     nvm use 14
 
     npm run build
