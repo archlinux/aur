@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-pysodium
-pkgver=0.7.10
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Python wrapper for libsodium"
 arch=('any')
@@ -11,8 +11,8 @@ makedepends=('python2-setuptools')
 url="https://github.com/stef/pysodium"
 license=('BSD')
 options=(!emptydirs)
-source=(https://files.pythonhosted.org/packages/88/84/6d5eb564d6aa7a717a99d2bf0d9b6fb5877c44c3dcf48f082e39a67304f6/pysodium-0.7.10.tar.gz)
-sha256sums=('3e81b91472df6c166f31d8b7e8ccbe2e768c113a6c1472f1422d151ebe20f17d')
+source=(https://pypi.io/packages/source/p/pysodium/pysodium-$pkgver.tar.gz)
+sha256sums=('1a739ff00606595f5e818d9f1414ea82a0c75aed6ba6778f580e52cb5ff6a625')
 
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
