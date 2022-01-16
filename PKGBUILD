@@ -4,7 +4,7 @@ _npmname=server
 _npmscope=@volar
 pkgname=volar-server-bin
 _pkgname=volar-server
-pkgver=0.30.3
+pkgver=0.30.4
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
@@ -16,7 +16,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(https://registry.npmjs.org/$_npmscope/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('c36a4717cf0a61c6c5a66d1ff8e1bf9e5c505e96c4384d900e2b7f7318be99a6')
+sha256sums=('65789d9f2bff566dccafa1a07cc7581734f549d237ebee7fcfc9f67baa2c7e64')
 
 package() {
     cd "$srcdir"
