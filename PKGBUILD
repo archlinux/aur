@@ -2,7 +2,7 @@
 
 pkgname=xplayer-git
 _pkgbasename=xplayer
-pkgver=2.4.0.r0.g5e31bef
+pkgver=2.4.2.r2.g50f3bd9
 pkgrel=1
 pkgdesc="Simple media player. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -35,7 +35,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
