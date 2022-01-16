@@ -13,19 +13,12 @@ makedepends=('python2-setuptools' 'git')
 provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 license=('GPL')
-source=("${_pkgname}::git+https://github.com/rabbitvcs/rabbitvcs.git"
-        'no_update_icon_cache_from_setup.patch')
-sha256sums=('SKIP'
-            '5599d5e439bf51ed2777e69ef64b24491a3f83b2116b809dec5b4deeac297384')
+source=("${_pkgname}::git+https://github.com/rabbitvcs/rabbitvcs.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
 	git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "${srcdir}/${_pkgname}"
-	patch -uNp2 -r- -i ../no_update_icon_cache_from_setup.patch
 }
 
 build() {
