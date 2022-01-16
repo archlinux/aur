@@ -1,0 +1,11 @@
+pkgbase = ttf-bakudai-git
+	pkgdesc = A free font family derived from KouzanBrushFont.
+	pkgver = 1.46.r33.901d26e
+	pkgrel = 1
+	url = https://github.com/max32002/bakudaifont
+	arch = any
+	license = OFL
+	source = git+https://github.com/max32002/bakudaifont.git
+	sha256sums = SKIP
+
+pkgname = ttf-bakudai-git
