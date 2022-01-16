@@ -29,13 +29,15 @@ scripts/config  --disable CONFIG_X86_X32
 # sync default hostname with Arch
 scripts/config  --set-str CONFIG_DEFAULT_HOSTNAME archlinux
 
-# XXX: CONFIG_BPF_PRELOAD is throwing boot-time warnings for people, disabling until we figure this out
-## sync up BPF defaults with mainline
-#scripts/config  --enable CONFIG_BPF_PRELOAD \
-#                --module CONFIG_BPF_PRELOAD_UMD \
-#                --enable CONFIG_BPF_LSM
+# sync up some BPF defaults with mainline
+scripts/config  --enable CONFIG_DEBUG_INFO \
+                --enable CONFIG_DEBUG_INFO_DWARF4 \
+                --enable CONFIG_DEBUG_INFO_BTF \
+                --enable CONFIG_DEBUG_INFO_BTF_MODULES
 
-scripts/config  --enable CONFIG_BPF_LSM
+scripts/config  --enable CONFIG_BPF_PRELOAD \
+                --module CONFIG_BPF_PRELOAD_UMD \
+                --enable CONFIG_BPF_LSM
 
 # sync some settings with Arch:
 scripts/config  --enable CONFIG_TASKS_RUDE_RCU \
