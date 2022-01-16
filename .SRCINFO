@@ -1,0 +1,20 @@
+pkgbase = ytp+
+	pkgdesc = The nonsensical video generator
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://ytp-plus.github.io/
+	arch = any
+	license = GPL3
+	depends = nodejs>=17.0.0,
+	depends = git>=2.0.0,
+	depends = curl>=7.0.0,
+	depends = love>=11.0.0
+	noextract = YTPPlusLauncher.love
+	source = https://github.com/YTP-Plus/YTPPlusLauncher/releases/download/v1.0.2/YTPPlusLauncher.love
+	source = ytp+.png
+	source = ytp+.desktop
+	md5sums = ed6fef54c865eedef3447cbcc134ef06
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ytp+

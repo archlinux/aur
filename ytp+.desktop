@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=YTP+
+Exec=love /usr/share/ytp+/YTPPlusLauncher.love
+Icon=/usr/share/pixmaps/ytp+.png
