@@ -8,12 +8,12 @@ _tinydir_commit=64fb1d4376d7580aa1013fdbacddbbeba67bb085
 pkgname=openfx-io
 pkgver=2.4.2
 _pkgname="${pkgname}-Natron-${pkgver}"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="A set of Readers/Writers plugins written using the OpenFX standard"
 url="https://github.com/NatronGitHub/openfx-io"
 license=('GPL')
-depends=('ffmpeg' 'openimageio' 'libseexpr2')
+depends=('ffmpeg' 'opencolorio1' 'openimageio' 'libseexpr2')
 conflicts=("${pkgname}-git")
 
 _natron_ver="Natron-${pkgver}"
