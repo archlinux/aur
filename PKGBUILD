@@ -2,7 +2,7 @@
 
 pkgname=xed-git
 _pkgbasename=xed
-pkgver=master.mint20.r4.ga71e7ee
+pkgver=3.2.2.r0.gbb0b252
 pkgrel=1
 pkgdesc="A small and lightweight text editor. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
@@ -23,7 +23,7 @@ prepare() {
 
 pkgver() {
     cd ${srcdir}/${pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,4 +42,3 @@ package(){
 
     DESTDIR="$pkgdir/" ninja install
 }
-
