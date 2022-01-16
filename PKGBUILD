@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('BSD')
 depends=('boost-libs' 'openssl')
 makedepends=('boost' 'cmake' 'ninja' 'python-setuptools')
-provides=('libtorrent-rasterbar=1.2.15')
+provides=("libtorrent-rasterbar=${pkgver}")
 conflicts=('libtorrent-rasterbar')
 options=('!emptydirs')
 
