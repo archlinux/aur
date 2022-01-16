@@ -2,7 +2,7 @@
 
 pkgname=datcom-jitsi-meet-electron
 pkgver=2021.12.300
-pkgrel=2
+pkgrel=3
 pkgdesc="DatCom Jitsi Meet Desktop"
 arch=('x86_64')
 url="https://github.com/datcom-unibw/jitsi-meet-electron"

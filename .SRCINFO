@@ -1,7 +1,7 @@
 pkgbase = datcom-jitsi-meet-electron
 	pkgdesc = DatCom Jitsi Meet Desktop
 	pkgver = 2021.12.300
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/datcom-unibw/jitsi-meet-electron
 	arch = x86_64
 	license = APACHE-2.0
