@@ -1,0 +1,21 @@
+pkgbase = talking-dosbox-git
+	pkgdesc = A talking dosbox with screen reader.
+	pkgver = r3.1d2b27b
+	pkgrel = 1
+	epoch = 1
+	url = https://gitlab.com/jticket1024/talking-dos-box
+	install = talking-dosbox.install
+	arch = any
+	license = LGPL
+	license = unknown
+	makedepends = git
+	depends = dosbox-x
+	provides = talking-dosbox
+	options = !strip
+	backup = opt/talking-dosbox/dosbox-x.conf
+	source = git+https://gitlab.com/jticket1024/talking-dos-box.git
+	source = talking-dosbox
+	md5sums = SKIP
+	md5sums = a51b87908deaa075f024f74631d05208
+
+pkgname = talking-dosbox-git

@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Starting Talking-dosbox..."
+dosbox-x -fastlaunch -conf /opt/talking-dosbox/dosbox-x.conf

@@ -1,0 +1,15 @@
+post_install() {
+  groupadd talking-dosbox >/dev/null
+  chgrp -R talking-dosbox /opt/talking-dosbox
+  chmod -R 2764 /opt/talking-dosbox
+  sed -i 's+mount C cdrive+mount C /opt/talking-dosbox/cdrive+g' /opt/talking-dosbox/dosbox-x.conf
+  echo "Please ensure you are added to the talking-dosbox group before running talking-dosbox. This also requires that you log out and back in to make the changes take affect."
+}
+
+post_upgrade() {
+ 	post_install
+}
+
+post_remove() {
+  groupdel talking-dosbox
+}
