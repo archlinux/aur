@@ -1,14 +1,15 @@
 pkgbase = python-activitypub
 	pkgdesc = A general Python ActivityPub library
 	pkgver = 0.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dsblank/activitypub
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-sqlalchemy: Various DBs backend
-	optdepends = python-redis: Redis backend
+	optdepends = python-redis: Redis backend (need python-redis-collections)
+	optdepends = python-redis-collections: Redis backend (need python-redis)
 	optdepends = python-pymongo: MongoDB backeund
 	source = https://files.pythonhosted.org/packages/source/a/activitypub/activitypub-0.0.3.tar.gz
 	sha256sums = 81f02761097fa9bacb8490a1a6f8cf61ae96bc100c74775046ea441082b69510
