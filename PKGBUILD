@@ -3,10 +3,10 @@
 _gemname=memo_wise
 pkgname=ruby-$_gemname
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The wise choice for Ruby memoization"
 arch=('any')
-url="https://github.com/"
+url="https://github.com/panorama-ed/memo_wise"
 license=('MIT')
 depends=('ruby')
 makedepends=('ruby-rdoc')
@@ -34,7 +34,7 @@ package() {
   # remove unnecessary files and folders
   cd "gems/$_gemname-$pkgver"
   find . -type f -name ".*" -delete
-  rm -rf .github logo benchmarks Rakefile Gemfile Gemfile.lock "$_gemname.spec"
+  rm -rf .github logo benchmarks Rakefile Gemfile Gemfile.lock "$_gemname.gemspec"
 
   # move documentation
   install -vd "$pkgdir/usr/share/doc/$pkgname"
@@ -43,4 +43,14 @@ package() {
   # move license
   install -vd "$pkgdir/usr/share/licenses/$pkgname"
   mv -vt "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+
+  # generate reproducible documentation
+  install -vd "$pkgdir/$_gemdir/doc/$_gemname-$pkgver"
+  cd "$pkgdir/$_gemdir/gems/$_gemname-$pkgver"
+  rdoc \
+    --format ri \
+    --output "$pkgdir$_gemdir/doc/$_gemname-$pkgver/ri" \
+    ./lib
+  # delete unnecessary rdoc metadata file
+  rm -f "$pkgdir$_gemdir/doc/$_gemname-$pkgver/ri/created.rid"
 }
