@@ -13,7 +13,6 @@ pkgbase = ptcollab-git
 	makedepends = libvorbis
 	depends = qt5-base
 	depends = rtmidi
-	provides = ptcollab
 	conflicts = ptcollab
 	source = ptcollab::git+https://github.com/yuxshao/ptcollab.git
 	md5sums = SKIP

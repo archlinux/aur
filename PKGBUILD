@@ -4,27 +4,15 @@ pkgname=ptcollab-git
 _pkgname=ptcollab
 pkgver=0.5.0.r0.gcbee073
 pkgrel=1
-epoch=
 pkgdesc="Multiplayer music editor"
 arch=('x86_64' 'aarch64')
 url="https://yuxshao.github.io/ptcollab/"
 license=('MIT')
-groups=()
 depends=('qt5-base' 'rtmidi')
 makedepends=('git' 'qt5-tools' 'qt5-multimedia' 'libogg' 'libvorbis')
-checkdepends=()
-optdepends=()
-provides=("$_pkgname")
 conflicts=("$_pkgname")
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=("$_pkgname::git+https://github.com/yuxshao/ptcollab.git")
 md5sums=('SKIP')
-noextract=()
-validpgpkeys=()
 
 pkgver() {
   cd "$_pkgname"
