@@ -31,7 +31,6 @@ provides=("java-runtime-headless=${_majorver}"
           "jdk-openjdk=${pkgver}"
           "openjdk${_majorver}-src=${pkgver}"
           "openjdk-src=${pkgver}")
-replaces=("jdk-adoptopenjdk")
 backup=(etc/java-18-temurin/logging.properties
         etc/java-18-temurin/management/jmxremote.access
         etc/java-18-temurin/management/jmxremote.password.template
