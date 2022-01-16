@@ -1,6 +1,5 @@
 [Unit]
 Description=A personal sync server for anki
-After=network.target
 StartLimitIntervalSec=30
 StartLimitBurst=6
 Upholds=nginx.service
