@@ -1,0 +1,17 @@
+pkgbase = python-pyshark-git
+	pkgdesc = Python wrapper for tshark, allowing python packet parsing using wireshark dissectors (git version)
+	pkgver = v0.4.3.r10.g753cd0a
+	pkgrel = 1
+	url = https://github.com/KimiNewt/pyshark
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = wireshark-cli
+	depends = python-py
+	depends = python-lxml
+	provides = python-pyshark
+	conflicts = python-pyshark
+	source = git+https://github.com/KimiNewt/pyshark.git
+	sha512sums = SKIP
+
+pkgname = python-pyshark-git
