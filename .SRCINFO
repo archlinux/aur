@@ -1,15 +1,15 @@
 pkgbase = ruby-ctf-party
-	pkgdesc = A library to enhance and speed up script/exploit writting for CTF players
-	pkgver = 1.2.0
+	pkgdesc = A CLI tool & library to enhance and speed up script/exploit writing with string conversion/manipulation.
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://orange-cyberdefense.github.io/ctf-party/
+	url = https://noraj.github.io/ctf-party/
 	arch = x86_64
 	license = MIT
 	depends = ruby
-	noextract = ctf-party-1.2.0.gem
+	depends = ruby-docopt
+	noextract = ctf-party-2.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/ctf-party-1.2.0.gem
-	b2sums = 2aafce9ee3cf78e9c417058ccfcdcd74ad2c1964bf5b1bd07c7272207d2f0fedb08640a88083b9e5b4bb07beca7a95fcd6bbf2b9b0a069a747770f7f5125b2c7
+	source = https://rubygems.org/downloads/ctf-party-2.0.0.gem
+	b2sums = dc3c1ced81a4c7e46d08f4bb430dc4f618fd7cade349d624f9421ade51f99c238ca6466268ff8debac043098f094e36e6bd969202899538cb42867066bfadaf8
 
 pkgname = ruby-ctf-party
-
