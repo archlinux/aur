@@ -1,0 +1,14 @@
+pkgbase = python-sphinxext-rediraffe
+	pkgdesc = Sphinx Extension that redirects non-existent pages to working pages
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://sphinxext-rediraffe.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-sphinx
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/s/sphinxext-rediraffe/sphinxext-rediraffe-0.2.7.tar.gz
+	md5sums = 48a2ad7999cbc5271c1b37ba0c31a894
+
+pkgname = python-sphinxext-rediraffe
+	depends = python-sphinx>=2.0
