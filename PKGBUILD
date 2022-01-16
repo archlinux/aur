@@ -1,6 +1,6 @@
 # Maintainer: Mintsuki <mintsuki@protonmail.com>
 pkgname=limine
-pkgver=2.74.6
+pkgver=2.75
 pkgrel=1
 pkgdesc="An advanced x86/x86_64 BIOS/UEFI bootloader"
 arch=("x86_64")
@@ -12,14 +12,13 @@ makedepends=('nasm' 'mtools')
 _dir="limine-v${pkgver}"
 
 build() {
-  (
-    unset CFLAGS
-    unset LDFLAGS
-    make -C "${_dir}"
-  )
+  mkdir -p "${srcdir}/build" && cd "${srcdir}/build"
+  "${srcdir}/${_dir}/configure" --prefix=/usr
+  make
 }
 
 package() {
-  make -C "${_dir}" PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 "${_dir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${srcdir}/build"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 "${srcdir}/${_dir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
