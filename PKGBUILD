@@ -2,7 +2,7 @@
 pkgname=saurch-git
 pkgver=r4.36a9cdb
 pkgrel=1
-pkgdesc=""
+pkgdesc="Small AUR Command Helper"
 arch=('any')
 url="http://vitali64.duckdns.org/?p=utils/saurch.git"
 license=('GPL')
