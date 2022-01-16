@@ -2,7 +2,7 @@
 
 pkgname=datcom-jitsi-meet-electron
 pkgver=2021.12.300
-pkgrel=1
+pkgrel=2
 pkgdesc="DatCom Jitsi Meet Desktop"
 arch=('x86_64')
 url="https://github.com/datcom-unibw/jitsi-meet-electron"
@@ -37,23 +37,27 @@ sha256sums=('5976b5ced6c707d79cc21666abcbfc11c6d8f1b83eb8505dc8b29d62ca85c7e9'
 
             
 prepare() {
-  export npm_config_cache="$srcdir/npm_cache"
-  _npm_prefix=$(npm config get prefix)
-  npm config delete prefix
-  source /usr/share/nvm/init-nvm.sh
-  nvm install 14 && nvm use 14
+    export npm_config_cache="${srcdir}/npm_cache"
+    _npm_prefix=$(npm config get prefix)
+    npm config delete prefix
+    source /usr/share/nvm/init-nvm.sh
+    nvm install 14 && nvm use 14
 
-  cd jitsi-meet-electron-${pkgver}/
-  sed -i 's#git+ssh://git@github.com#https://github.com#' package-lock.json
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
+    cd jitsi-meet-electron-${pkgver}/
+    sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
+    sed -i 's#git+ssh://git@github.com#https://github.com#g' package-lock.json
 
-  export npm_config_cache="${srcdir}/npm_cache"
-  npm install
+    export npm_config_cache="${srcdir}/npm_cache"
+    npm install
 }
             
 build() {
     cd jitsi-meet-electron-${pkgver}/
+    export npm_config_cache="${srcdir}/npm_cache"
+    nvm use 14
+
     npm run build
+    
     npx electron-builder --dir
     npm config set prefix ${_npm_prefix}
     nvm unalias default

@@ -1,7 +1,7 @@
 pkgbase = datcom-jitsi-meet-electron
 	pkgdesc = DatCom Jitsi Meet Desktop
 	pkgver = 2021.12.300
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/datcom-unibw/jitsi-meet-electron
 	arch = x86_64
 	license = APACHE-2.0
@@ -16,10 +16,12 @@ pkgbase = datcom-jitsi-meet-electron
 	depends = gtk3
 	depends = libxss
 	depends = nss
+	conflicts = jitsi-meet-electron-bin
+	conflicts = jitsi-meet-electron
+	replaces = jitsi-meet-electron
 	source = datcom-jitsi-meet-electron.desktop
 	source = jitsi-meet-electron-2021.12.300.tar.gz::https://github.com/datcom-unibw/jitsi-meet-electron/archive/v2021.12.300.tar.gz
 	sha256sums = 5976b5ced6c707d79cc21666abcbfc11c6d8f1b83eb8505dc8b29d62ca85c7e9
-	sha256sums = 391aae579c639cbe9f569e49fe90303c505ea36fc453c9b868981fd900c08cfc
+	sha256sums = 44cfdf34d04231d5b37327a9daa2e1f9f49c880329d5742e5d77537a0a64df8f
 
 pkgname = datcom-jitsi-meet-electron
-
