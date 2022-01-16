@@ -4,7 +4,7 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=transifex-client
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
   'python-gitpython'
 )
 source=("https://pypi.io/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('b0aa25ebb9516983c56bb060f4a35ad6b0eb3684fd0ed51de3c358f23a8ad62c')
+sha256sums=('11dc95cefe90ebf0cef3749c8c7d85b9d389c05bd0e3389bf117685df562bd5c')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
