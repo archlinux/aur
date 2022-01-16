@@ -6,7 +6,7 @@
 pkgbase=jack
 pkgname=(jack jack-docs)
 pkgver=0.126.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A low-latency audio server"
 arch=(x86_64)
 url="http://jackaudio.org/"
@@ -53,7 +53,6 @@ package_jack() {
   )
   conflicts=(jack2)
   provides=(jack2 libjack.so libjackserver.so)
-  replaces=(jack2)
 
   cd "${pkgbase}-${pkgver}"
   make DESTDIR="$pkgdir" install
