@@ -4,7 +4,7 @@
 # Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.2.48009.03b02da5ba
+pkgver=6.5.3.48014.ea2de4f658
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
@@ -72,7 +72,7 @@ package() {
     mkdir -p "${pkgdir}/opt"
     mkdir -p "${pkgdir}/usr/local/share/applications"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
-    install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
     # Patch shortcut to avoid duplicated entries
     sed -i 's;Name=Alchemy;Name=Alchemy (git build);' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
     sed -i 's;Name=Alchemy;Name=Alchemy (git build);' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
