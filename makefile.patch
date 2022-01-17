@@ -1,0 +1,4 @@
+59a60,62
+> 	rm electron/electron-v$(ELECTRONVERSION)-linux-x64/libEGL.so
+> 	rm electron/electron-v$(ELECTRONVERSION)-linux-x64/libGLESv2.so
+> 	rm electron/electron-v$(ELECTRONVERSION)-linux-x64/swiftshader -rf

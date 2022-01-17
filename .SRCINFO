@@ -1,0 +1,20 @@
+pkgbase = diogenes
+	pkgdesc = Application for searching and browsing legacy databases of texts in Latin and ancient Greek.
+	pkgver = 4.5
+	pkgrel = 1
+	url = https://d.iogen.es/d/index.html
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = xz
+	makedepends = unzip
+	makedepends = librsvg
+	depends = perl
+	depends = libglvnd
+	conflicts = diogenes-bin
+	source = diogenes::git+https://github.com/pjheslin/diogenes.git
+	source = makefile.patch
+	sha512sums = SKIP
+	sha512sums = 463e4842c87a449622e42b81a25bd1345f368427c6f87fd08abb2939b973b18d236314e299a0791b12076a5abe6119fd22ae1e42173103dd944affcf517f70ca
+
+pkgname = diogenes
