@@ -5,13 +5,14 @@
 
 pkgname=libxml2
 pkgver=2.9.12
-pkgrel=6
+pkgrel=7
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
 license=(MIT)
 depends=(zlib readline ncurses xz icu)
 makedepends=(python git)
+provides=(libxml2.so)
 _commit=b48e77cf4f6fa0792c5f4b639707a2b0675e461b  # tags/v2.9.12^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
@@ -85,4 +86,4 @@ package() {
   install -Dm 644 build/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 et:
