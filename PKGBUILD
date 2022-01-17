@@ -4,13 +4,14 @@
 
 pkgname=ocaml-curl
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='OCaml bindings to libcurl'
 url='https://ygrek.org/p/ocurl'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=('curl>=7.28.0')
 makedepends=('ocaml-findlib')
+optdepends=('ocaml-lwt: Lwt-enabled asynchronous interface - Curl_lwt')
 options=('!strip' '!makeflags' 'staticlibs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ygrek/ocurl/archive/${pkgver}.tar.gz")
 sha256sums=('dfa55b83f2ba1f32898c3488fd7bfcd55414f4719f563d83d126e5b9de2bd156')

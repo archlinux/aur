@@ -9,6 +9,7 @@ pkgbase = ocaml-curl
 	license = MIT
 	makedepends = ocaml-findlib
 	depends = curl>=7.28.0
+	optdepends = ocaml-lwt: Lwt-enabled asynchronous interface - Curl_lwt
 	options = !strip
 	options = !makeflags
 	options = staticlibs
