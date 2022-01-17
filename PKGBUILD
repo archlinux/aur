@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=41.3
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=("$_mutter_src"
         )
 sha256sums=('SKIP'
             'SKIP'
-            '347cb5fd030d693b9d7892e8f27157f5fbc12c6e2611a12acc0174d89c4c6cf3'
+            '675b2e8e07ed0cd29578a4f4a5c251d52477848e1edcff68be5d96e0530c637a'
             '895f35f5e8a458c71b4312061cf7d2b0108a3c6df4b0324ab342c5a3576ee09a'
             'dc4279ec3c0995ba9a9ee3ecd581376140c78089a058863dea0bd9ec7894dc49'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
