@@ -3,12 +3,12 @@
 
 pkgname='perl-module-compile'
 pkgver='0.38'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl Module Compilation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-digest-sha1>=2.13')
+depends=('perl-digest-sha1>=2.13' 'perl-capture-tiny')
 makedepends=()
 url='https://metacpan.org/release/Module-Compile'
 source=("http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Module-Compile-${pkgver}.tar.gz")
