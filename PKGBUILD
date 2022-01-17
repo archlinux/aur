@@ -2,7 +2,7 @@
 # Contributor: Eric Le Bras <eric.lebras@gmail.com>
 
 pkgname=mma-songs
-pkgver=20.12
+pkgver=21.09
 pkgrel=1
 pkgdesc="Songs archive for Musical MIDI Accompaniment (MMA)"
 url="http://www.mellowood.ca/mma/"
@@ -11,7 +11,7 @@ depends=()
 license=('GPL')
 arch=('any')
 source=(http://www.mellowood.ca/mma/examples/mma-songs-$pkgver.tar.gz)
-sha1sums=('fd71e5af568da563bad3b72ddacac8649d0dc34e')
+sha1sums=('51acf1893f93cea729e3b0b739c5dd21d62f49f8')
 options=(!strip !zipman)
 
 package () {
