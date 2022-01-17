@@ -1,7 +1,7 @@
 # Maintainer: katoitalia
 
 pkgname=librone
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='scarica e-book in italiano | ebook | companion per calibre'
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://raw.githubusercontent.com/kitalia/librone/main/librone.sh"
 	"https://github.com/kitalia/librone/raw/main/librone.desktop"
 	)
 
-md5sums=('13099fd0dbb7cc3e4393c116c4691f9c'
+md5sums=('823d7a1d8e10950411d7b8df74969211'
 	 '2e16b5a15dd9ec02dd10dcfa588bd2cd'
 	 'f0b45569eb070685113c73332d1798f2'
 	)
