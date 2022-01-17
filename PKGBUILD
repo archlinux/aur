@@ -2,7 +2,7 @@
 
 pkgname=kaf-cli
 pkgver=v1.2.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="把txt文本转成epub与mobi电子书的命令行工具"
 arch=('x86_64')
@@ -13,5 +13,5 @@ source=("https://github.com/ystyle/TmdTextEpub/releases/download/$pkgver/kaf-cli
 md5sums=('45d3bd3dbd251aa966f8b5dee92087d1')
 
 package() {
-    install -Dm755 kaf-cli-linux "$pkgdir/usr/bin/kaf-cli"
+    install -Dm755 kaf-cli "$pkgdir/usr/bin/kaf-cli"
 }
