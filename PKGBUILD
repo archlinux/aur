@@ -2,7 +2,7 @@
 
 pkgname=ruby2.4-bundler
 _gemname=${pkgname#ruby2.4-}
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ruby2.4')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('e7f97326c36a66df37328b6cf6185a4c72d1dae79dc0b0132bcb41e4debf2485')
+sha256sums=('2553cbd138b466bc56a3c724c5c28648dff8e2343b13a7c696cf9c2818c8d629')
 
 package() {
   cd "$srcdir"
