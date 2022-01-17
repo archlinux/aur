@@ -44,10 +44,12 @@ provides=(pcsx2)
 conflicts=(pcsx2)
 source=(git+https://github.com/PCSX2/pcsx2.git
 git+https://github.com/fmtlib/fmt.git
+git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
 git+https://github.com/mozilla/cubeb.git
 git+https://github.com/KhronosGroup/Vulkan-Headers.git
+git+https://github.com/KhronosGroup/glslang.git
 )
 sha256sums=(SKIP)
 
@@ -65,7 +67,9 @@ prepare()
   git config submodule.https://github.com/rtissera/libchdr.git.url libchdr
   git config submodule.https://github.com/google/googletest.git.url gtest
   git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
-  git config submodule.https://github.com/KhronosGroup/Vulkan-Headers.git vulkan-headers
+  git config submodule.https://github.com/ocornut/imgui.git.url imgui
+  git config submodule.https://github.com/KhronosGroup/glslang.git glslang
+  git config submodule.https://github.com/KhronosGroup/Vulkan-Headers.git Vulkan-Headers
   git submodule update
 }
 
@@ -94,6 +98,8 @@ package()
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
