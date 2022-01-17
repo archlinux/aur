@@ -1,0 +1,5 @@
+99.patch
+*.tar.zst
+pkg/
+src/
+*.zip

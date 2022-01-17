@@ -1,15 +1,17 @@
 pkgbase = moltengamepad
 	pkgdesc = Flexible Linux input device translator, geared for gamepads
-	pkgver = 1.1.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/jgeumlek/MoltenGamepad
 	install = moltengamepad.install
 	arch = x86_64
 	license = MIT
+	makedepends = go-md2man
 	depends = scraw
 	depends = scrawpp
-	source = https://github.com/jgeumlek/MoltenGamepad/archive/6fd48a49a9ddb0b509b10f6e79ff3da3a49e925d.zip
-	md5sums = 80bcf71ebb0d0ea757e3089ac9bfc231
+	source = https://github.com/jgeumlek/MoltenGamepad/archive/refs/tags/v1.2.1.zip
+	source = https://patch-diff.githubusercontent.com/raw/jgeumlek/MoltenGamepad/pull/99.patch
+	sha256sums = 6ba8708953fd1ba08dd480bf33bdce678720842fbfdd1b5215c65e1700a0d869
+	sha256sums = 1f724c23aadec8d8d09172e1db63e32f530e5b8b902de393bf1fa733c39c5a17
 
 pkgname = moltengamepad
-
