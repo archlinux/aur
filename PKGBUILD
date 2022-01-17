@@ -14,7 +14,7 @@ pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.15
 _basever=515
-pkgver=5.15.14
+pkgver=5.15.15
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -71,7 +71,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch'
         '0999-acs.gitpatch')
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
-            '283bf58378a8f8ff457fc1259dd2864dc4de92295482ef3ae868e13e017250ee'
+            'dcd6c14eae29a175fe13bbfdaa9adee1ab1cfa374d7d789658c373c340b3201a'
             '7c65b68bd250de8726c3dd5befa556cde515393c871dd0e0b599f40a5c33ac41'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'e2823eff3355b7c88a3fa327ea2f84f23cbd36569e0a5f0f76599023f63a52ca'
@@ -135,9 +135,6 @@ prepare() {
 
   msg "set extraversion to pkgrel"
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
-
-  # set patchlevel to 14
-  #sed -ri "s|^(PATCHLEVEL =).*|\1 14|" Makefile
 
   msg "don't run depmod on 'make install'"
   # We'll do this ourselves in packaging
