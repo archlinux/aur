@@ -1,1 +1,1 @@
-DSN="ws://username:password@localhost.localdomain"
+DSN="ws://username:password@host:port"
