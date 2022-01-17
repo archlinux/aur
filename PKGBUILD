@@ -4,7 +4,7 @@
 # $ makepkg --printsrcinfo > .SRCINFO
 
 pkgname=bitstower-markets
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="A stock, currency and cryptocurrency tracker"
 url="https://github.com/bitstower/markets"
@@ -25,7 +25,7 @@ makedepends=(
     appstream-glib
 )
 _upstream="markets"
-_commit=61e38e971af9f3eda359026ba9ad19fb1b02ab88 # 0.5.3
+_commit=39d581f8f5ad30d99e8b3f214128f59ca1267e6d # 0.5.4
 source=("git+https://github.com/bitstower/$_upstream.git#commit=$_commit")
 sha256sums=('SKIP')
 

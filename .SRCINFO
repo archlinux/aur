@@ -1,6 +1,6 @@
 pkgbase = bitstower-markets
 	pkgdesc = A stock, currency and cryptocurrency tracker
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/bitstower/markets
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bitstower-markets
 	depends = json-glib
 	depends = glib2
 	depends = gtk3
-	source = git+https://github.com/bitstower/markets.git#commit=61e38e971af9f3eda359026ba9ad19fb1b02ab88
+	source = git+https://github.com/bitstower/markets.git#commit=39d581f8f5ad30d99e8b3f214128f59ca1267e6d
 	sha256sums = SKIP
 
 pkgname = bitstower-markets
