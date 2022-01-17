@@ -2,7 +2,7 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=1.12
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
@@ -27,20 +27,20 @@ source=(
     '0009-data-Add-Microsoft-Surface-Book-2-15.patch'
     '0010-data-Add-Microsoft-Surface-Book-3-13.5.patch'
     '0011-data-Add-Microsoft-Surface-Book-3-15.patch'
-    "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.bz2"{,.sig}
+    "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.xz"{,.sig}
 )
-sha256sums=('f5fce00cc3fa80e6bad42c6baa96480014ef7244a3da235b5bb2fc270c6812f5'
-            '73ab975b884bf45269c680fcfd6c4ee96e17f984b98978b3301d5cb492bee733'
-            '12d054857e2bd1bdcbdda55dd326928f386916284aed3e64c87fd8221ab25338'
-            '2405d843de802644eb3bd9cd8f33c5def1d6b985b69b59e0a9b0b83a89b6949e'
-            'c02b0444d411f4485de7b5c34ddc237ffe8800386adf64642f4ab78b64512352'
-            '5e376b3a90ac9d8ff080462d7b2ad5a126696601c184f47ac029d5ee8d92e944'
-            'cc61efcac4b62437a8b03186da837482305e684e055bf6c668328f820cf31896'
-            'b24a49d1ef7f16b6af37196d074e99fc7d059c6de3c40bb72a426c9708daa7eb'
-            '21f0dab7f1727b7ac1f0491c1758c3b839017cba6e97790e8bf11ff82a957e03'
-            'b4263d845e180b6deb94002bd9c6fba1b7243994e37fb7b9ec336a8ad4b58683'
-            'bd5140879a449a3ca5443d7cae7c32426a2ffb78fafe20ad5f1998b0d226d40f'
-            '290450d604f78bbd956eddb69f79f8d56f8ed1a5ccbb5e88e22fa84fa2fceb4f'
+sha256sums=('b2110eced57007d601e4ed18644f0f44ceff357aede0ee321794d214fa038881'
+            '0f43297b2248df9df0d315edb25a1f9e30e86a9a2c13d1260cf66ec7c7c42d3c'
+            '7a2886015574ddaffdbf3462255064831a03e4a6df0152d10516e1639824ab19'
+            '0cc9ae1d12bb2d72f2c465326ae94bb0ce6bd3fb85a8c21ad4d64ee386bdce22'
+            '8026b2bbf840fe8e24897a740b4cc8ee0eb807440c9cd4502750823b022eeaef'
+            '51c09e64e452d41a3a2ed98fa01a1283c51f6e3e517083baaba42af2262894fe'
+            '25d3831c5d090d9053690f6b8d683e155789d05db116b14c23a3f8604e58b2db'
+            'b9633f0c292a0f385fdd8e8a2d1fa0214e0dd5aedf18460a92230b021dcb8b07'
+            '4cd9ac66a493ec2a363154f682066aabb3c3b1f89f459addabcef3a4a00efcdf'
+            '55e2dabee35ad1d6e8df0703afdd75344a08b2e56898255e31c722eb07341b47'
+            '447507d06e842d1e83d90fa454b828e1a7a487619c57b1d62ac73bbdeb2cb4b1'
+            '4923bdf3e7b4940bd81d3e7c1b8ab1843597a1bdf1e6f627840e0c87c381fe0a'
             'SKIP')
 
 prepare() {

@@ -1,4 +1,4 @@
-From 0e7b62459bdebcb5aec97e13babcbd792d25f0fd Mon Sep 17 00:00:00 2001
+From a5d0ce373887e3c8af7061e02b097fa9e7a95e07 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sat, 1 Jun 2019 21:17:15 +0200
 Subject: [PATCH 02/11] Add support for Intel Management Engine bus
@@ -37,7 +37,7 @@ index 3c7d0de..28c0ac5 100644
  	g_assert_not_reached ();
  }
 diff --git a/libwacom/libwacom.c b/libwacom/libwacom.c
-index 88d0777..09e289f 100644
+index d9b8a22..e3364f4 100644
 --- a/libwacom/libwacom.c
 +++ b/libwacom/libwacom.c
 @@ -153,6 +153,10 @@ get_bus_vid_pid (GUdevDevice  *device,
@@ -51,7 +51,7 @@ index 88d0777..09e289f 100644
  	}
  
  out:
-@@ -802,6 +806,7 @@ static void print_match(int fd, const WacomMatch *match)
+@@ -822,6 +826,7 @@ static void print_match(int fd, const WacomMatch *match)
  		case WBUSTYPE_SERIAL:		bus_name = "serial";	break;
  		case WBUSTYPE_I2C:		bus_name = "i2c";	break;
  		case WBUSTYPE_VIRTUAL:		bus_name = "virt";	break;
@@ -60,7 +60,7 @@ index 88d0777..09e289f 100644
  		default:			g_assert_not_reached(); break;
  	}
 diff --git a/libwacom/libwacom.h b/libwacom/libwacom.h
-index a4cbb23..034a894 100644
+index b184ed7..5cd6736 100644
 --- a/libwacom/libwacom.h
 +++ b/libwacom/libwacom.h
 @@ -150,6 +150,7 @@ typedef enum {
@@ -97,5 +97,5 @@ index 734463f..c9c6312 100755
          assert re.match('[0-9a-f]{4}', pid), f'{tabletfile}: {pid} must be lowercase hex'
  
 -- 
-2.33.0
+2.34.1
 
