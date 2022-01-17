@@ -3,8 +3,8 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.5.0.r29.d264bb0
-pkgrel=2
+pkgver=1.5.0.r37.bb25362
+pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/evilsocket/opensnitch"
@@ -91,4 +91,8 @@ package() {
   install -Dm644 daemon/system-fw.json -t "$pkgdir/etc/${pkgname%-git}d"
   install -Dm644 "debian/${pkgname%-git}.logrotate" \
     "$pkgdir/etc/logrotate.d/${pkgname%-git}"
+
+  # clean up test dir to avoid conflicts with other packages
+  # that also do not clear up the test dir ^^
+  rm -rf "$pkgdir/usr/lib/python3.10/site-packages/tests"
 }
