@@ -1,7 +1,7 @@
 pkgbase = openring
 	pkgdesc = A webring for static site generators
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~sircmpwn/openring/
 	arch = x86_64
 	license = GPL3

@@ -2,7 +2,7 @@
 
 pkgname=openring
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A webring for static site generators"
 arch=('x86_64')
 url="https://sr.ht/~sircmpwn/openring/"
