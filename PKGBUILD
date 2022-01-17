@@ -58,21 +58,12 @@ build() {
         fi
     fi
     pip3 install --upgrade autobuild -i https://git.alchemyviewer.org/api/v4/projects/54/packages/pypi/simple --extra-index-url https://pypi.org/simple
-    autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL=$(grep -cq '[^!]lto' <<< $OPTIONS && echo 'ON' || echo 'OFF') -DVIEWER_CHANNEL="Alchemy Test"
-
-  cd "build-linux-64" || exit 1
-  if ninja -j"$(nproc)"; then
-    echo "Build successful."
-  else
-    echo "Build failed. Cleaning and trying again for you..."
-    echo "Cleaning build folder..."
-    rm -rf "${pkgname}/build-linux-64"
-    if ninja -j"$(nproc)"; then
-      echo "Build succeeded after 2 tries"
-    else
-      echo "Build failed twice. Will not try again."
-    fi
-  fi
+    # we have a lot of files, relax ulimit to help performance
+    ulimit -n 20000
+    # shellcheck disable=SC2153
+    autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL="$(grep -cq '[^!]lto' <<< "${OPTIONS}" && echo 'ON' || echo 'OFF')" -DVIEWER_CHANNEL="Alchemy Test"
+    cd "build-linux-64"
+    ninja -j"$(nproc)"
 }
 package() {
     mkdir -p "$pkgdir/opt"
