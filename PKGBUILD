@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thingy
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Utility application used to make collections and quickly access recent and favorite documents."
 arch=('any')
 url="https://github.com/linuxmint/thingy"
 license=('GPL3')
-depends=('python-gobject' 'python-setproctitle' 'xapp')
+depends=('libgsf' 'python-gobject' 'python-setproctitle' 'xapp')
 optdepends=('libreoffice' 'xreader')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d0b9a5e1c9a64bdc0c80e4e5933e0837d3a44f17a78d95a25568f50095d46f4d')
+sha256sums=('74f39656dd7d196dbc7b21b1e5c3efa9ed65fe5029fe434bbe58c30c735a9755')
 
 prepare() {
   cd "$pkgname-$pkgver"
