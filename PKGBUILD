@@ -1,20 +1,20 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 
 pkgname=sshyp
-pkgver=2022.01.10.fr2.3
+pkgver=2022.01.17.fr3.3
 pkgrel=1
 pkgdesc='A light-weight, self-hosted, synchronized password manager'
 url='https://github.com/rwinkhart/sshyp'
 arch=('any')
 license=('GPL3')
-depends=( python gnupg openssh nano xclip wl-clipboard)
+depends=(python gnupg openssh nano xclip wl-clipboard)
 
 source=("https://github.com/rwinkhart/sshyp/releases/download/v$pkgver/sshyp-$pkgver.tar.xz")
-sha512sums=('be6695cc231f4414322f2c4b919caf0759f4111e50259b3a6bbcb6e90a0ceba5d094c8766c287e5443c61adfdf414c1a93bc70e505dfd4bf34097c713b6e7d2f')
+sha512sums=('7a8231830b56aaa2850458a91435b0cfebfb02e9b41e279f7a5c96d336cf3dacecf25956f23cee00c00d306e54602448be58679fbc830475caf62d007952613f')
 
 package() {
 
-	tar xf sshyp-"$pkgver".tar.xz -C "${pkgdir}"
-	chown -R "$USER" ${pkgdir}/var/lib/sshyp
+    tar xf sshyp-"$pkgver".tar.xz -C "${pkgdir}"
 
 }
+
