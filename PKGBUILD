@@ -16,6 +16,7 @@ license=('LGPL')
 options=(!strip)
 # depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 depends=(dbus-glib glu gtk3 libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
+makedepends=(sed)
 optdepends=(
   'alsa-lib: ALSA support'
   'freealut: OpenAL support'
@@ -40,4 +41,8 @@ package() {
   mkdir -p "${pkgdir}"/opt
   mv "${srcdir}/${_pkgfolder}" "$pkgdir/opt/$pkgname"
   install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
+  # Patch shortcut to avoid duplicated entries
+  sed -i 's;Name=.*$;Name='"${_releasename}"';' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
+  sed -i 's;Name=.*$;Name='"${_releasename}"';' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
+  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
 }

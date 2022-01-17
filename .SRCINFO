@@ -5,6 +5,7 @@ pkgbase = alchemy-next-viewer-bin
 	url = https://www.alchemyviewer.org
 	arch = x86_64
 	license = LGPL
+	makedepends = sed
 	depends = dbus-glib
 	depends = glu
 	depends = gtk3
