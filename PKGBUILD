@@ -1,7 +1,7 @@
 # Maintainer: Roman Kupriyanov <mr.eshua@gmail.com>
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
-pkgver=2021.11.2
+pkgver=2022.1.1
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
@@ -18,7 +18,7 @@ backup=()
 options=(!strip)
 source=("jitsi-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/jitsi/jitsi-meet-electron/releases/download/v${pkgver//_/-}/jitsi-meet-${arch[0]}.AppImage"
         "${_pkgname}.desktop")
-sha256sums=('bb6d06763555e0d099fd2551439aa4ae6721480cf243498714d83000068cdaa7'
+sha256sums=('d4c47e5840e409256c412f8af1a6e888158ae0e8ee6b7b1638a5692b1f6e6e74'
             '16de58926874dd4bbb0f2a232eb7df7b57058d04637f0109cda4dbdeb0c23b9c')
 
 
@@ -42,10 +42,10 @@ package() {
     rm             ${pkgdir}/opt/${_pkgname}/jitsi-meet.desktop
     rm             ${pkgdir}/opt/${_pkgname}/jitsi-meet.png
     # Since 2.8.4 jitsi-meet is a bash script that needs to point to jitsi-meet.bin, the bash script that jitsi ships is broken without this
-    cat > ${pkgdir}/opt/${_pkgname}/jitsi-meet << EOF
-#!/bin/bash
-/opt/${_pkgname}/jitsi-meet.bin --no-sandbox "\$@"
-EOF
+#    cat > ${pkgdir}/opt/${_pkgname}/jitsi-meet << EOF
+##!/bin/bash
+#/opt/${_pkgname}/jitsi-meet.bin --no-sandbox "\$@"
+#EOF
 
     find           ${srcdir}/squashfs-root/usr/share/icons/ -type d -exec chmod 755 {} +
 
