@@ -24,7 +24,6 @@ optdepends=(
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 conflicts=('alchemy-next-viewer' 'alchemy-viewer')
 provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
-replaces=('alchemy-next-viewer')
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
          '59114df2d7f081aad499ad5b7d8401b7')
