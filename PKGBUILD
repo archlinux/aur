@@ -5,14 +5,15 @@
 pkgver=4.5
 pkgname='diogenes-bin'
 _pkgname='diogenes'
-pkgrel=1
+pkgrel=2
 license=('GPL3')
 arch=('x86_64')
 url="https://d.iogen.es/d/index.html"
-pkgdesc="Application for searching and browing legacy databases of texts in Latin and ancient Greek."
+pkgdesc="Application for searching and browsing legacy databases of texts in Latin and ancient Greek."
 source=("https://github.com/pjheslin/diogenes/releases/download/4.5/$_pkgname-$pkgver.pkg.tar.xz")
 sha512sums=('030d67fd8fcdf2aba0a8631aac95a4bc1c7d82ae23c1274f7a37b01b58a2bdb09545e6c9c4c50f37d021dc064ee36c36485774c4af6bdbb7291f678995bf4018')
 depends=('perl' 'libglvnd')
+conflicts=('diogenes')
 package() {
 	cd "${pkgdir}"
 	mkdir opt/
