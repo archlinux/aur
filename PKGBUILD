@@ -1,14 +1,14 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=rnote-git
-pkgver=r340.04983e5
+pkgver=r485.0152fa7
 pkgrel=1
 pkgdesc="A simple note taking application written in Rust and GTK4"
 arch=('x86_64')
 url="https://github.com/flxzt/rnote"
 license=('GPL3')
 depends=('gtk4' 'glib2' 'libadwaita' 'poppler-glib' 'gstreamer')
-makedepends=('meson' 'rust')
+makedepends=('git' 'meson' 'rust')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

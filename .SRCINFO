@@ -1,11 +1,12 @@
 pkgbase = rnote-git
 	pkgdesc = A simple note taking application written in Rust and GTK4
-	pkgver = r340.04983e5
+	pkgver = r485.0152fa7
 	pkgrel = 1
 	url = https://github.com/flxzt/rnote
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
+	makedepends = git
 	makedepends = meson
 	makedepends = rust
 	depends = gtk4
