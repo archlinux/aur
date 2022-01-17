@@ -1,0 +1,21 @@
+diff -pNaru5 a/driver/2.6.27/dgrp_tty.c b/driver/2.6.27/dgrp_tty.c
+--- a/driver/2.6.27/dgrp_tty.c	2022-01-16 22:20:11.863319323 -0500
++++ b/driver/2.6.27/dgrp_tty.c	2022-01-16 22:21:00.024125434 -0500
+@@ -325,15 +325,17 @@ static void drp_param(struct ch_struct *
+ 	 * Determine if FAST writes can be performed.
+ 	 */
+ 
+ 	if ((ch->ch_digi.digi_flags & DIGI_COOK) != 0 &&
+ 	    (ch->ch_tun.un_open_count != 0)  &&
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,16,0)
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,31)
+ 	    !((un->un_tty)->ldisc->ops->flags & LDISC_FLAG_DEFINED) &&
+ #else
+ 	    !((un->un_tty)->ldisc.ops->flags & LDISC_FLAG_DEFINED) &&
+ #endif
++#endif
+ 	    !(L_XCASE(un->un_tty))) {
+ 		ch->ch_flag |= CH_FAST_WRITE;
+ 	} else {
+ 		ch->ch_flag &= ~CH_FAST_WRITE;
+ 	}
