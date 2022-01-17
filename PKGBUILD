@@ -12,20 +12,17 @@ url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=(LGPL2)
 depends=(r r-zlibbioc bzip2 xz curl)
 makedepends=(make)
-optdepends=(r-biocstyle r-knitr)
+optdepends=(r-knitr r-rmarkdown r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
 sha256sums=('24bba61616e7d4fc57fda86172486b92ffcae31d1a7183d7b8ee29e324ff955f')
 options=(staticlibs)
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
