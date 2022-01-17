@@ -3,7 +3,7 @@
 
 pkgname=opencryptoki-git
 pkgname_=opencryptoki
-pkgver=v3.13.0.r57.ga4991809
+pkgver=v3.17.0.r47.g16007527
 pkgrel=1
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
@@ -11,6 +11,7 @@ url="https://github.com/opencryptoki/opencryptoki"
 license=('CPL')
 depends=('openssl' 'trousers')
 makedepends=('expect')
+conflicts=('opencryptoki')
 provides=(opencryptoki)
 source=("git://github.com/opencryptoki/opencryptoki.git"
         opencryptoki.sysusers.conf
