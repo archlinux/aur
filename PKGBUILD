@@ -1,6 +1,6 @@
 # Maintainer: Richard Petri <git@rpls.de>
 pkgname=prjapicula
-pkgver=0.2a1
+pkgver=0.2a2
 pkgrel=1
 pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ provides=('prjapicula')
 _name=Apycula
 source=("apicula-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'version.patch')
-sha256sums=('dc4de568bb20a32718f3813c377d7f18ab4992e6e24730e7a97d58db91443ffd'
-            'a51d41482737d43057c6c980e3dad3186f5bb9ca7d2c84badc55338634e60428')
+sha256sums=('a5c568606061a7d8f2b96049fd1a62f1c8f00e03e3849d4facf6e58f90d04e99'
+            '9d73dc456defa024b99d7828747f927944e3c4de78ce6be9af78e76e10dd88c2')
 
 prepare() {
   cd "$srcdir/Apycula-$pkgver"
