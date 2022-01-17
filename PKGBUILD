@@ -4,8 +4,8 @@
 # Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.2.47999.e0e1e9fb6f
-pkgrel=2
+pkgver=6.5.2.48009.03b02da5ba
+pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
