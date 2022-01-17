@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-sdk-python
-pkgver=0.11.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Outscale Python 3 SDK'
 
@@ -14,5 +14,5 @@ makedepends=('python-pip')
 depends=(python-pip python-ruamel-yaml python-requests)
 
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps https://github.com/outscale/osc-sdk-python/releases/download/0.11.1/osc_sdk_python-0.11.1-py3-none-any.whl
+	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps https://github.com/outscale/osc-sdk-python/releases/download/0.14.0/osc_sdk_python-0.14.0-py3-none-any.whl
 }
