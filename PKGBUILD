@@ -3,27 +3,31 @@ _pkgname=spacecadetpinball
 pkgname=$_pkgname-git
 pkgdesc='Reverse engineered port of "3D Pinball for Windows – Space Cadet" to Linux'
 pkgver=2.0.1.r5.g8f34829
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 depends=('sdl2' 'sdl2_mixer')
-makedepends=('unrar' 'cmake' 'git')
+makedepends=('p7zip' 'cmake' 'git')
 optdepends=('freepats-general-midi: Soundfont for playing background music')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 license=('MIT' 'proprietary')
-noextract=('Space_Cadet.rar')
+noextract=('Space_Cadet.rar' 'Full%20tilt%20pinball.iso')
 url="https://github.com/k4zmu2a/SpaceCadetPinball"
 source=(
   'https://archive.org/download/SpaceCadet_Plus95/Space_Cadet.rar'
+  'https://archive.org/download/full-tilt-pinball/Full%20tilt%20pinball.iso'
   "$pkgname::git+$url"
   'spacecadetpinball.desktop'
 )
 sha256sums=('3cc5dfd914c2ac41b03f006c7ccbb59d6f9e4c32ecfd1906e718c8e47f130f4a'
+            'a81b5d31ecd0c903e52f019f546beec44667b4c5695204fd080502cd5b94a865'
             'SKIP'
             'SKIP')
 
+_FT_BASEDIR="WIN95/FULLTILT/CADET"
 prepare() {
-  unrar e -y Space_Cadet.rar Space_Cadet/
+  7z x -y Space_Cadet.rar -oSpace_Cadet/
+  7z x -y 'Full%20tilt%20pinball.iso' -oFullTilt/ "$_FT_BASEDIR/CADET.DAT" "$_FT_BASEDIR/SOUND/*"
 }
 
 pkgver() {
@@ -51,18 +55,35 @@ package() {
 
 # Configure soundfonts if not already configured
 if [ -z "\$SDL_SOUNDFONTS" ]; then
-  # Use first available soundfont
-  export SDL_SOUNDFONTS="\$(find /usr/share/soundfonts -type f -print -quit 2> /dev/null)"
+  DEFAULT_SOUNDFONT="/usr/share/soundfonts/default.sf2"
+  if [ -f "\$DEFAULT_SOUNDFONT" ]; then
+    # Use default soundfont since it exists
+    export SDL_SOUNDFONTS="\$DEFAULT_SOUNDFONT"
+  else
+    # Use first available soundfont
+    export SDL_SOUNDFONTS="\$(find /usr/share/soundfonts -type f,l -print -quit 2> /dev/null)"
+  fi
 fi
 
 # Run program in correct directory so it can find it's resources
 cd /usr/lib/$_pkgname
 exec ./$_pkgname "\$@"
 END
-  # Install resources
+
+  # Install original game files
   cd Space_Cadet
-  install -m0644 *.DAT *.DOC *.MID *.BMP *.INF *.WAV -t "$pkgdir/usr/lib/$_pkgname"
+  # Install resources
+  install -m0644 PINBALL.DAT *.MID Sounds/*.WAV -t "$pkgdir/usr/lib/$_pkgname"
+  # Install documentation
+  install -Dm0644 PINBALL.DOC TABLE.BMP -t "$pkgdir/usr/share/doc/$_pkgname"
   cd ..
+
+  # Install full tilt game files
+  cd "FullTilt/$_FT_BASEDIR"
+  install -m0644 CADET.DAT -t "$pkgdir/usr/lib/$_pkgname"
+  install -Dm0644 SOUND/* -t "$pkgdir/usr/lib/$_pkgname/SOUND"
+  cd "$srcdir"
+
   # Install icon
   install -Dm0644 "$pkgname/SpaceCadetPinball/Icon_1.ico" "$pkgdir/usr/lib/$_pkgname/icon.ico"
   # Install desktop launcher
