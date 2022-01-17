@@ -1,17 +1,17 @@
 # Author: Justin Jagieniak <justin@jagieniak.net>
 # Contributor: Rye Mutt
-# Maintainer: Xenhat Hex (me@xenh.at)
+# Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 
 
 pkgname=alchemy-next-viewer-git
 pkgver=6.5.2.48000.fb451f141d
 pkgrel=1
 _branch="${AL_GIT_BRANCH:=main}"
-pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - git version"
+pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
-depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
+depends=(dbus-glib glu gtk3 libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 optdepends=(
   'alsa-lib: ALSA support'
   'freealut: OpenAL support'
@@ -23,7 +23,7 @@ optdepends=(
   'nvidia-utils: NVIDIA support')
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
 conflicts=('alchemy-next-viewer')
-provides=('alchemy-next')
+provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
 replaces=('alchemy-next-viewer')
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
