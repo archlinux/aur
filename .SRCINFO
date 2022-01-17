@@ -9,6 +9,7 @@ pkgbase = pyradio-git
 	makedepends = python-setuptools
 	depends = python-dnspython
 	depends = python-requests
+	depends = python-psutil
 	optdepends = mplayer: as backend
 	optdepends = mpv: as backend
 	optdepends = vlc: as backend
