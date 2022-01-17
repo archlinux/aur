@@ -2,7 +2,7 @@
 
 pkgname=budgie-screensaver-git
 pkgver=3.6.0.r75.gd72022b
-pkgrel=1
+pkgrel=2
 pkgdesc="Budgie's fork of GNOME's legacy screensaver"
 arch=('x86_64')
 license=('GPL2')
@@ -16,21 +16,21 @@ source=("${pkgname}::git+https://github.com/BuddiesOfBudgie/budgie-screensaver")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/$pkgname"
-    arch-meson build --prefix=/usr --sysconfdir=/etc --buildtype plain
+    cd "$pkgname"
+    arch-meson build --prefix=/usr --sysconfdir=/etc --libexecdir=lib/budgie-screensaver --buildtype plain
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     ninja -C build
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     DESTDIR=$pkgdir ninja -C build install
 }
