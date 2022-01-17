@@ -1,9 +1,10 @@
-# Maintainer: James An <james@jamesan.ca>
+# Maintainer: Arti Zirk <arti.zirk@gmail.com>
+# Contributor: James An <james@jamesan.ca>
 
 pkgname=git-subrepo-git
 _pkgname=${pkgname%-git}
 pkgver=0.4.3.r1.g2f68596
-pkgrel=1
+pkgrel=2
 pkgdesc='Git Submodule Alternative'
 arch=('any')
 url="https://github.com/ingydotnet/$_pkgname"
