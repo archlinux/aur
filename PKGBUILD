@@ -9,11 +9,11 @@
 pkgname=llvm70
 pkgdesc="LLVM compiler toolchain, version 7.0 (installed under /opt/llvm70)"
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:University of Illinois/NCSA Open Source License')
-depends=('libedit' 'libxml2' 'python2')
+depends=('libedit' 'libxml2' 'python')
 makedepends=('cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx')
 options=('staticlibs')
 source=(https://releases.llvm.org/$pkgver/llvm-$pkgver.src.tar.xz)
@@ -25,6 +25,7 @@ build() {
   cmake .. -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/opt/llvm70 \
+    -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DLLVM_HOST_TRIPLE=$CHOST \
     -DLLVM_BUILD_LLVM_DYLIB=ON \
     -DLLVM_LINK_LLVM_DYLIB=ON \

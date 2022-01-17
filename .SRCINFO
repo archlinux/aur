@@ -1,7 +1,7 @@
 pkgbase = llvm70
 	pkgdesc = LLVM compiler toolchain, version 7.0 (installed under /opt/llvm70)
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://llvm.org/
 	arch = x86_64
 	license = custom:University of Illinois/NCSA Open Source License
@@ -14,10 +14,9 @@ pkgbase = llvm70
 	makedepends = python-sphinx
 	depends = libedit
 	depends = libxml2
-	depends = python2
+	depends = python
 	options = staticlibs
 	source = https://releases.llvm.org/7.0.1/llvm-7.0.1.src.tar.xz
 	sha256sums = a38dfc4db47102ec79dcc2aa61e93722c5f6f06f0a961073bd84b78fb949419b
 
 pkgname = llvm70
-
