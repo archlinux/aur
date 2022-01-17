@@ -1,0 +1,13 @@
+pkgbase = spl-token-wallet
+	pkgdesc = Example Solana wallet with support for SPL tokens and Serum integration.
+	pkgver = v0.2.5
+	pkgrel = 1
+	url = https://github.com/project-serum/spl-token-wallet
+	arch = any
+	license = Apache
+	makedepends = yarn
+	depends = chromium
+	source = spl-token-wallet::git+https://github.com/project-serum/spl-token-wallet#tag=0.2.5
+	sha512sums = SKIP
+
+pkgname = spl-token-wallet
