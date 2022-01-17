@@ -1,6 +1,6 @@
 pkgbase = firefox-appmenu
 	pkgdesc = Firefox from extra with appmenu patch
-	pkgver = 96.0
+	pkgver = 96.0.1
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -47,14 +47,14 @@ pkgbase = firefox-appmenu
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	provides = firefox=96.0
+	provides = firefox=96.0.1
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
 	options = !lto
-	source = https://archive.mozilla.org/pub/firefox/releases/96.0/source/firefox-96.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/96.0/source/firefox-96.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0.1/source/firefox-96.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0.1/source/firefox-96.0.1.source.tar.xz.asc
 	source = 0001-Use-remoting-name-for-GDK-application-names.patch
 	source = 0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
 	source = firefox.desktop
@@ -63,7 +63,7 @@ pkgbase = firefox-appmenu
 	source = unity-menubar.patch
 	source = fix_csd_window_buttons.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0
+	sha256sums = cb86f3cbd31960305dee7d7f3dc254c64fb0462e27ea624ee62f3682e99079ee
 	sha256sums = SKIP
 	sha256sums = 5ead90994f91bed3231c2661977c69fc276cfbe278a1ab904daa544c9455ff42
 	sha256sums = 8a893ae44955c90a0fb4a504134773293054ab57a41ba7931df98c8cf5449549
