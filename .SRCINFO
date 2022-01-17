@@ -1,0 +1,12 @@
+pkgbase = ttf-misans
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854
+	arch = any
+	license = custom
+	depends = fontconfig
+	source = https://cdn.cnbj1.fds.api.mi-img.com/vipmlmodel/font/MiSans/MiSans.zip
+	sha256sums = 38bdec9525024ee9ce1ee56ebc5a32a37efaecf86b385ec3da71898708dad7f6
+
+pkgname = ttf-misans
+	pkgdesc = MiSans MIUI 13 全新系统字体供全社会免费商用。
