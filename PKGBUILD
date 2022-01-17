@@ -2,30 +2,35 @@
 _base=pytest-codeblocks
 pkgname=python-${_base}
 pkgdesc="Test code blocks in your READMEs"
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-pytest)
-makedepends=(python-setuptools)
-checkdepends=(python-pytest-cov)
+makedepends=(python-build python-flit-core python-install)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d69819106b389ce3cd2d04a1385e49f2bdf4eb70ea334175e6ba5e2921d77266ac2e69b22ce5a42880846555dd271e5b7dc25bda838b9238ad5d14add9389681')
+sha512sums=('092035e5cf3d1d35fedbc6f867ff77a40751df5b4a3b922d5f960fdaa5d1ca9e599c7b813ae60a4da3cd43e3e7884f38260f77bc466e234422480b5edebee24a')
 
 build() {
   cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -p pytester
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m pytest -p pytester
 }
 
 package() {
   cd "${_base}-${pkgver}"
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  ln -s "${site_packages}/${_base}-$pkgver.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
