@@ -13,7 +13,7 @@ license=('custom')
 depends=('p7zip' 'deepin-wine5' 'xorg-xwininfo')
 conflicts=('deepin.com.qq.qqmusic')
 install="deepin-wine-qqmusic.install"
-_mirror="https://community-store-packages.deepin.com"
+_mirror="https://mirror.deepines.com"
 source=("$_mirror/appstore/pool/appstore/c/${debpkgname}/${debpkgname}_${debpkgver}_i386.deb"
         "run.sh")
 md5sums=('350dd5fb3f0725c76767573397bccd4f'
