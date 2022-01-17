@@ -63,4 +63,5 @@ package() {
    "${pkgdir}/etc/profile.d/${pkgname}.sh"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/include/linuxcnc/config.h"
   sed -i "s|${srcdir}||" "${pkgdir}/usr/share/linuxcnc/Makefile.modinc"
+  install -Dm 644 "${srcdir}/linuxcnc.sh" -t "${pkgdir}/etc/profile.d/"
 }
