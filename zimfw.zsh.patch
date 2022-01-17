@@ -1,7 +1,9 @@
---- zimfw.zsh   2021-09-21 16:26:34.034179638 +1000
-+++ zimfw.zsh   2021-09-21 16:30:58.546504098 +1000
-@@ -53,10 +53,6 @@
-
+diff --git a/zimfw.zsh b/zimfw.zsh
+index fe05e46..8251aff 100644
+--- a/zimfw.zsh
++++ b/zimfw.zsh
+@@ -52,10 +52,6 @@ _zimfw_mv() {
+ 
  _zimfw_build_init() {
    local -r ztarget=${ZIM_HOME}/init.zsh
 -  # Force update of init.zsh if it's older than .zimrc
@@ -11,29 +13,24 @@
    _zimfw_mv =(
      print -R "zimfw() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
      print -R "zmodule() { source ${ZIM_HOME}/zimfw.zsh \"\${@}\" }"
-@@ -65,16 +61,13 @@
-     if (( ${#_zfunctions} )) print -R 'autoload -Uz '${_zfunctions#${~zpre}}
+@@ -65,18 +61,16 @@ _zimfw_build_init() {
+     if (( ${#_zfunctions} )) print -R 'autoload -Uz -- '${_zfunctions#${~zpre}}
      print -R ${(F)_zcmds#${~zpre}}
    ) ${ztarget}
 +  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
-
+ 
  _zimfw_build_login_init() {
-   # Array with unique dirs. ${ZIM_HOME} or any subdirectory should only occur once.
-   local -Ur zscriptdirs=(${ZIM_HOME} ${${_zdirs##${ZIM_HOME}/*}:A})
-   local -r zscriptglob=("${^zscriptdirs[@]}/(^*test*/)#*.zsh(|-theme)(N-.)") ztarget=${ZIM_HOME}/login_init.zsh
+   local -r ztarget=${ZIM_HOME}/login_init.zsh
 -  # Force update of login_init.zsh if it's older than .zimrc
 -  if [[ ${ztarget} -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
 -    command mv -f ${ztarget}{,.old} || return 1
 -  fi
    _zimfw_mv =(
-     print -Rn "() {
-   setopt LOCAL_OPTIONS CASE_GLOB EXTENDED_GLOB
-@@ -101,6 +94,7 @@
- } \"\${@}\"
+     print -nR "# Do nothing. This file is deprecated.
  "
    ) ${ztarget}
 +  chmod -R u+rX,g+rX,o+rX "${ZIM_HOME}" &>/dev/null
  }
-
+ 
  _zimfw_build() {

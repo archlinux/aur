@@ -1,7 +1,7 @@
 # Contributor: Mateusz Galazyn <carbolymer at gmail.com>
 
 pkgrel=1
-pkgver=r588.de7d2b1
+pkgver=r606.bd765df
 pkgname=zsh-zim-git
 pkgdesc="ZIM - Zsh IMproved"
 url="https://github.com/zimfw/zimfw"
@@ -10,20 +10,20 @@ license=('MIT')
 depends=('zsh')
 makedepends=('git' 'patch')
 optdepends=('otf-powerline-symbols-git: for eriner prompt')
-source=('git://github.com/zimfw/zimfw.git'
-        'git://github.com/zimfw/install.git'
+source=('git+https://github.com/zimfw/zimfw.git'
+        'git+https://github.com/zimfw/install.git'
         'zim.install'
         'zimfw.zsh.patch'
         'zshrc')
 md5sums=('SKIP'
          'SKIP'
-         '6e5ffd11ddfc72d74afb105829821f28'
-         '775a924bf0c8c86677d52e9389b2b408'
+         '344a011e44e34549568e8aee31c8e8be'
+         'a1a7242bb1b9c3ee6f799ab7d4f9ac7c'
          '0cb8764ba7f67c37c3c6452cc06751af')
 options=('!strip')
 install='zim.install'
 _gitname='zimfw'
-backup=('etc/zsh/zlogin' 'etc/zsh/zimrc' 'etc/zsh/zshrc')
+backup=('etc/zsh/zimrc' 'etc/zsh/zshrc')
 
 pkgver() {
   cd "$srcdir/$_gitname"
@@ -39,11 +39,13 @@ package() {
   ZIM_TPL_DIR="${pkgdir}/usr/lib/zim/templates"
   mkdir -p $ZIM_TPL_DIR
 
-  rcfiles=('zshenv' 'zshrc' 'zlogin' 'zimrc')
+  rcfiles=('zshrc' 'zimrc')
   for entry in "${rcfiles[@]}"; do
     cp -L "${srcdir}/install/src/templates/${entry}" $ZIM_TPL_DIR
   done
   cp ${srcdir}/$_gitname/zimfw.zsh ${pkgdir}/usr/lib/zim/
+  # correct ZIM_HOME in the template
+  sed -i "s#^ZIM_HOME=.*#ZIM_HOME=/usr/lib/zim#" "$ZIM_TPL_DIR/zshrc"
 
   # zimfw.zsh generates hardcoded reference to .zimrc, so for packaging purpose we fake it
   ( cd $ZIM_TPL_DIR ; ln -s ./zimrc .zimrc )
@@ -54,7 +56,6 @@ package() {
 
   # Prepare /etc/zsh/ contents
   mkdir -p $pkgdir/etc/zsh
-  echo "source /usr/lib/zim/templates/zlogin" >> "$pkgdir/etc/zsh/zlogin"
   cp -f $ZIM_TPL_DIR/zimrc $pkgdir/etc/zsh/zimrc
   cp -f zshrc "$pkgdir/etc/zsh/zshrc"
 
