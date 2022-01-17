@@ -9,7 +9,7 @@ _releasename="Alchemy Project AgileAkita"
 _releasename_underscored="${_releasename// /_}"
 _version_underscored="${pkgver//\./_}"
 _pkgfolder="${_releasename_underscored}_${pkgver//\./_}_x86_64"
-pkgdesc="Next generation of the Alchemy Viewer, an open-source Second Life client - Official CI Project build"
+pkgdesc="This is the next generation of the Alchemy Viewer! - Binary Project build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
@@ -25,7 +25,7 @@ optdepends=(
   'mesa-libgl: Intel, Radeon, Nouveau support'
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
-provides=('alchemy-next')
+provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
 source=(
         "${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2"
         'alchemy-next.desktop')
