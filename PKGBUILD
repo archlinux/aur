@@ -3,7 +3,7 @@
 
 pkgname=swaybg
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Wallpaper tool for Wayland compositors'
 arch=(x86_64)
 url='https://github.com/swaywm/swaybg'
