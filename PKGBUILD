@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=alephone-git
-pkgver=release.20220115.r3.g7ca24da0
+pkgver=1.5.r5536.7ca24da0
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
