@@ -5,18 +5,18 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - binary releases'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
-_filename="${_pkgname}_linux_v${pkgver}"
+_filename="${_pkgname}_ubuntu2004_v${pkgver}"
 source=("https://sourceforge.net/projects/deniseemu/files/v%20${pkgver}/${_filename}.tar.gz")
-md5sums=('c134d8c906eedace5a29e178428b3607')
+sha256sums=('f91d683884cfb65369985d5613488d8f4c6cedb96ac78c5f55d078b6d049e36c')
 provides=('denise')
 conflicts=('denise-git' 'denise')
 depends=('sdl2' 'gtk3')
 arch=('i686' 'x86_64')
 
 prepare() {
-  sed -i 's/Exec=Denise/Exec=denise/g' "$srcdir/$_filename/data/denise.desktop"
+  sed -i 's/Exec=Denise/Exec=denise/g' "$srcdir/$_filename/denise.desktop"
 }
 package() {
   cd "$srcdir/$_filename"
