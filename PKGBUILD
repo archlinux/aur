@@ -4,7 +4,7 @@
 
 
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.2.48000.fb451f141d
+pkgver=6.5.2.48005.c0f6ab8dca
 pkgrel=1
 _branch="${AL_GIT_BRANCH:=main}"
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
@@ -22,7 +22,7 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
-conflicts=('alchemy-next-viewer')
+conflicts=('alchemy-next-viewer' 'alchemy-viewer')
 provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
 replaces=('alchemy-next-viewer')
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')

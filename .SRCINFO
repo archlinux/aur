@@ -1,6 +1,6 @@
 pkgbase = alchemy-next-viewer-git
 	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
-	pkgver = 6.5.2.48000.fb451f141d
+	pkgver = 6.5.2.48005.c0f6ab8dca
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	arch = x86_64
@@ -40,6 +40,7 @@ pkgbase = alchemy-next-viewer-git
 	provides = alchemy-viewer
 	provides = secondlife
 	conflicts = alchemy-next-viewer
+	conflicts = alchemy-viewer
 	replaces = alchemy-next-viewer
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = alchemy-next.desktop
