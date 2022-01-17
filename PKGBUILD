@@ -1,5 +1,5 @@
 # Author: Xenhat Hex (me@xenh.at)
-# Maintainer: Xenhat Hex (me@xenh.at)
+# Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
