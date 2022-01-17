@@ -6,7 +6,7 @@ pkgname=ocaml-curl
 pkgver=0.9.2
 pkgrel=1
 pkgdesc='OCaml bindings to libcurl'
-url='https://ygrek.org.ua/p/ocurl'
+url='https://ygrek.org/p/ocurl'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
 depends=('curl>=7.28.0')
