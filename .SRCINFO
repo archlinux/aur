@@ -1,0 +1,17 @@
+pkgbase = enarx-git
+	pkgdesc = Application deployment system enabling applications to run within Trusted Execution Environments (TEEs)
+	pkgver = 0.1.3.git
+	pkgrel = 1
+	url = https://github.com/enarx/enarx
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = enarx
+	conflicts = enarx
+	source = enarx::git+https://github.com/enarx/enarx.git
+	sha256sums = SKIP
+
+pkgname = enarx-git
+
