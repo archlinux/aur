@@ -44,10 +44,10 @@ pkgbase = alchemy-next-viewer-git
 	source = alchemy-next-viewer-git::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = alchemy-next.desktop
 	md5sums = SKIP
-	md5sums = 59114df2d7f081aad499ad5b7d8401b7
+	md5sums = 020597da0cf98b3f0feb7ac3ebcd79f6
 	sha256sums = SKIP
-	sha256sums = 28f928d7620818db47e7903722173a49daf36973ae51091e9ab9845211448864
+	sha256sums = 24bd9f6e0127049968b78d261f799fc992a8ea25692b1dbe6fe610e5d74e0acb
 	b2sums = SKIP
-	b2sums = da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729
+	b2sums = 94fcf7335d3c7696a5e24ecec4aa68b574bdbdb5d193c8e8cce741e71c398508a2a438c5865d2366b4999954c8057870930b88a2f49471577fa4555e0fe79f9f
 
 pkgname = alchemy-next-viewer-git

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Alchemy (git build)
+Name=Alchemy
 Comment=Client for the On-line Virtual World, Second Life
 Exec=/opt/alchemy-next-viewer/alchemy
 Icon=/opt/alchemy-next-viewer/alchemy_icon.png
