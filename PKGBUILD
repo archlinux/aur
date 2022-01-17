@@ -4,7 +4,7 @@
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 
 pkgname=mma
-pkgver=20.12
+pkgver=21.09
 pkgrel=1
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
@@ -16,7 +16,7 @@ install=mma.install
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --user-agent Mozilla/4.0 -o %o %u')
 source=("http://www.mellowood.ca/mma/mma-bin-$pkgver.tar.gz"
   mmarc)
-sha1sums=('35ea29ce7c44547a59c2b3587ff7cabb3d053656'
+sha1sums=('0d7a2a46b5807351dd14f62ef119516ca0b09f43'
           '3c03107c2a1b380f66ed68458d9b9def8371c0f6')
 options=(!strip)
 backup=(etc/mmarc)
@@ -27,25 +27,24 @@ package () {
   mkdir -p "$pkgdir"/usr/{bin,share/mma,share/man/man1,share/man/man8}
   mkdir -p "$pkgdir"/etc
 
-  cp mma.py "$pkgdir"/usr/bin/mma
-  cp mma-gb "$pkgdir"/usr/bin/mma-gb
-  cp mma-libdoc "$pkgdir"/usr/bin/mma-libdoc
-  cp mma-renum "$pkgdir"/usr/bin/mma-renum
-  cp mma-splitrec "$pkgdir"/usr/bin/mma-splitrec
-  cp util/mma-mnx.py "$pkgdir"/usr/bin/mma-mnx
-  cp util/mma-rm2std.py "$pkgdir"/usr/bin/mma-rm2std
-  cp util/mmatabs.py "$pkgdir"/usr/bin/mmatabs
-  cp util/mup2mma.py "$pkgdir"/usr/bin/mup2mma
-  cp util/pg2mma.py "$pkgdir"/usr/bin/pg2mma
-  cp util/synthsplit.py "$pkgdir"/usr/bin/mma-synthsplit
-  cp -r {docs,egs,includes,lib,MMA,plugins,text} "$pkgdir"/usr/share/mma
-  rmdir "$pkgdir"/usr/share/mma/includes/aria
+  cp -p mma.py "$pkgdir"/usr/bin/mma
+  cp -p mma-gb "$pkgdir"/usr/bin/mma-gb
+  cp -p mma-libdoc "$pkgdir"/usr/bin/mma-libdoc
+  cp -p mma-renum "$pkgdir"/usr/bin/mma-renum
+  cp -p mma-splitrec "$pkgdir"/usr/bin/mma-splitrec
+  cp -p util/mma-mnx.py "$pkgdir"/usr/bin/mma-mnx
+  cp -p util/mma-rm2std.py "$pkgdir"/usr/bin/mma-rm2std
+  cp -p util/mmatabs.py "$pkgdir"/usr/bin/mmatabs
+  cp -p util/mup2mma.py "$pkgdir"/usr/bin/mup2mma
+  cp -p util/pg2mma.py "$pkgdir"/usr/bin/pg2mma
+  cp -p util/synthsplit.py "$pkgdir"/usr/bin/mma-synthsplit
+  cp -pr {docs,egs,includes,lib,MMA,plugins,text} "$pkgdir"/usr/share/mma
 
-  cp util/README.* "$pkgdir"/usr/share/mma/docs
+  cp -p util/README.* "$pkgdir"/usr/share/mma/docs
   mv "$pkgdir"/usr/share/mma/docs/man/mma-libdoc.8 "$pkgdir"/usr/share/man/man8
   mv "$pkgdir"/usr/share/mma/docs/man/mma-renum.1 "$pkgdir"/usr/share/man/man1
   mv "$pkgdir"/usr/share/mma/docs/man/mma.1 "$pkgdir"/usr/share/man/man1
   mv "$pkgdir"/usr/share/mma/docs/man/mma-gb.1 "$pkgdir"/usr/share/man/man1
   rm -rf "$pkgdir"/usr/share/mma/docs/man
-  cp "$srcdir"/mmarc "$pkgdir"/etc
+  cp -p "$srcdir"/mmarc "$pkgdir"/etc
 }
