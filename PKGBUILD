@@ -1,6 +1,6 @@
 # Maintainer: Carmine Margiotta <car.margiotta@icloud.com>
 pkgname='mqtt-system-monitor'
-pkgver=0.0.1alpha
+pkgver=0.0.1beta
 pkgrel=1
 pkgdesc="MQTT System Monitor, compatible with Home Assistant"
 arch=('any')
@@ -36,7 +36,7 @@ install=
 changelog=
 source=("https://github.com/cmargiotta/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('44dc17a0c5bbef68f0d12489375ae3aa8fea210c2367cc8e2623795ea0e03447')
+sha256sums=('e380119cf121a1439cf903d6dd60a92811d5e63f6bfc15a59490919ddab13f1d')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
