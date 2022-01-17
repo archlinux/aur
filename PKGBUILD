@@ -9,13 +9,13 @@
 _electron=electron13
 pkgname=schildichat-desktop
 pkgver=1.9.8.sc.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
 url="https://schildi.chat"
 license=(Apache)
 makedepends=(npm git yarn python rust sqlcipher nvm make)
-depends=(${_electron})
+depends=(${_electron} sqlcipher)
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#tag=v${pkgver/.sc./-sc.}
         git+https://github.com/SchildiChat/matrix-js-sdk.git
         git+https://github.com/SchildiChat/matrix-react-sdk.git
@@ -31,7 +31,7 @@ sha256sums=('SKIP'
             'SKIP'
             'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
             '04610d85973c320d0fea5853c8a5fd55e701e9d31c0651bb9b698ed31546d3eb'
-            'da41f71e000cd64f8da66725c0ff95bbf525d5d5f953a93f355ea8d9f5f6ef53')
+            '26c4058e067932a63f8143ed06c65f97b22ddcb693130580de9ffd1a24f1f5c7')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
