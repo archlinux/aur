@@ -6,10 +6,9 @@ pkgbase = r-miniui
 	arch = any
 	license = GPL3
 	depends = r
-	depends = r-shiny
-	depends = r-htmltools
-	source = http://cran.r-project.org/src/contrib/miniUI_0.1.1.1.tar.gz
-	md5sums = 4f174186bb12a76cc6b1249a1a13a4b0
+	depends = r-shiny>=0.13
+	depends = r-htmltools>=0.3
+	source = https://cran.r-project.org/src/contrib/miniUI_0.1.1.1.tar.gz
+	sha256sums = 452b41133289f630d8026507263744e385908ca025e9a7976925c1539816b0c0
 
 pkgname = r-miniui
-
