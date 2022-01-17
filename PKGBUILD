@@ -2,7 +2,7 @@
 
 pkgname=ghdl-mcode-git
 pkgver=2.0.0dev.r6945.gaee3585af
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'pentium4')
 pkgdesc='VHDL simulator - mcode back-end'
 url='https://github.com/ghdl/ghdl'
@@ -44,6 +44,10 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/ghdl"
+
+	export ADA_FLAGS="$CFLAGS -fno-strict-aliasing"
+	ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+	ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
 	./configure \
 		--prefix=/usr/ \
