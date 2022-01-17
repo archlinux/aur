@@ -41,6 +41,7 @@ pkgbase = alchemy-viewer
 	conflicts = alchemy-next-viewer-git
 	replaces = alchemy-next-viewer
 	replaces = alchemy-next-viewer-git
+	options = !strip
 	source = alchemy-viewer::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = alchemy-next.desktop
 	md5sums = SKIP
