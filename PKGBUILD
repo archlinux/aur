@@ -1,6 +1,6 @@
 # Maintainer: Jean-Baptiste Delisle <jb dot delisle at aliceadsl dot fr>
 pkgname=bed-latex
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="BEd: Beamer Editor, GUI for LaTeX Beamer presentations."
 arch=(any)
@@ -11,12 +11,12 @@ optdepends=('python-pygments')
 makedepends=()
 conflicts=('bed')
 install="bed.install"
-source=("bed-$pkgver.tar.gz::https://framagit.org/delisle/bed/repository/archive.tar.gz?ref=v$pkgver")
-md5sums=('2697f285da0de78974531dda8264c676')
-tag=879802151be0bb37eb168d17e5e85757dce16b7f
+source=("bed-$pkgver.tar.gz::https://framagit.org/delisle/bed/-/archive/v${pkgver}/bed-v${pkgver}.tar.gz")
+md5sums=('8ca1e73dc2b120662d63edc12090f548')
+tag=d31fa054700f62ea702cd6f5826dba67c4d938c1
 
 prepare() {
-  cd bed-v$pkgver-$tag
+  cd bed-v$pkgver
   sed -i -e "s#/tmp/python3#/usr/bin/python3#" python/bed.py
   sed -i -e "s#/tmp/pdflatex#pdflatex#" python/settings.py
   sed -i 's#/local##g' launcher/bed.desktop
@@ -29,7 +29,7 @@ package(){
     mkdir -p $pkgdir/usr/share/applications
     mkdir -p $pkgdir/usr/share/pixmaps
 
-    cd bed-v$pkgver-$tag
+    cd bed-v$pkgver
     cp python/*.py $pkgdir/usr/share/bed
     chmod +x $pkgdir/usr/share/bed/bed.py
     cp icons/* $pkgdir/usr/share/bed
