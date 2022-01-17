@@ -36,7 +36,6 @@ pkgbase = alchemy-viewer
 	optdepends = mesa-libgl: Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
-	provides = alchemy-viewer
 	provides = alchemy-next
 	provides = secondlife
 	conflicts = alchemy-next-viewer-git
