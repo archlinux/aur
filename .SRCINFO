@@ -1,6 +1,6 @@
 pkgbase = ttf-misans
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854
 	arch = any
 	license = custom
