@@ -19,4 +19,3 @@ pkgbase = r-stanheaders
 	sha256sums = 27546e064f0e907e031d9185ad55245d118d82fbe3074ecb1d76fae8b9f2336b
 
 pkgname = r-stanheaders
-
