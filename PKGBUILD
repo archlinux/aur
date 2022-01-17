@@ -1,7 +1,7 @@
 _pkgname=pymacropad
 pkgname=$_pkgname-git
 pkgrel=1
-pkgver=1.1.2.r0.gc144f39
+pkgver=1.1.3.r0.g7a8250c
 pkgdesc="Utility program for binding actions to keys on a given input"
 url="https://github.com/j-waters/pymacropad"
 depends=('python-click'
