@@ -4,7 +4,7 @@
 # Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.3.48014.ea2de4f658
+pkgver=6.5.3.48015.27eba6132d
 pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
@@ -25,11 +25,11 @@ provides=('alchemy-viewer')
 options=(!emptydirs !makeflags !strip !lto)
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
-         '020597da0cf98b3f0feb7ac3ebcd79f6')
+         'dd3a176168f14b974ba55e94997ffb92')
 sha256sums=('SKIP'
-            '24bd9f6e0127049968b78d261f799fc992a8ea25692b1dbe6fe610e5d74e0acb')
+            'd99a439e6d5c8d51ef3b237eaf0ce0810832634623be5bddbf1a944d4f686d67')
 b2sums=('SKIP'
-        '94fcf7335d3c7696a5e24ecec4aa68b574bdbdb5d193c8e8cce741e71c398508a2a438c5865d2366b4999954c8057870930b88a2f49471577fa4555e0fe79f9f')
+        'a0555d6d259655845f90f24d3f1490efd9b1753ecf0e7817a98042d7543869b2c1fe37f5456a36a4dc5c8754c68ab9a20fa59f169db704f466fa9755862af0fe')
 
 pkgver() {
     cd "${pkgname}" || exit 1
