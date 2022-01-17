@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2021.10.05.a.r2611.g850426514ad
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2022.01.09.a.r228.g5a9abb2119a
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main'
     'swiftpm::git+https://github.com/apple/swift-package-manager#branch=main'
     'swift-syntax::git+https://github.com/apple/swift-syntax#branch=main'
-    'swift-system::git+https://github.com/apple/swift-system#commit=1.0.1'
+    'swift-system::git+https://github.com/apple/swift-system#commit=1.1.1'
     'swift-stress-tester::git+https://github.com/apple/swift-stress-tester#branch=main'
     'swift-corelibs-xctest::git+https://github.com/apple/swift-corelibs-xctest#branch=main'
     'swift-corelibs-foundation::git+https://github.com/apple/swift-corelibs-foundation#branch=main'
@@ -42,13 +42,13 @@ source=(
     'swift-docc::git+https://github.com/apple/swift-docc#branch=main'
     'swift-docc-render-artifact::git+https://github.com/apple/swift-docc-render-artifact#branch=main'
     'swift-docc-symbolkit::git+https://github.com/apple/swift-docc-symbolkit#branch=main'
-    'swift-experimental-string-processing::git+https://github.com/apple/swift-experimental-string-processing#branch=dev/5'
+    'swift-experimental-string-processing::git+https://github.com/apple/swift-experimental-string-processing#commit=dev/5'
     'swift-format::git+https://github.com/apple/swift-format#branch=main'
     'swift-installer-scripts::git+https://github.com/apple/swift-installer-scripts#branch=main'
     'swift-lmdb::git+https://github.com/apple/swift-lmdb#branch=main'
     'swift-markdown::git+https://github.com/apple/swift-markdown#branch=main'
-    'swift-nio::git+https://github.com/apple/swift-nio#branch=2.31.2'
-    'swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#branch=2.15.0'
+    'swift-nio::git+https://github.com/apple/swift-nio#commit=2.31.2'
+    'swift-nio-ssl::git+https://github.com/apple/swift-nio-ssl#commit=2.15.0'
     'swift-tools-support-core::git+https://github.com/apple/swift-tools-support-core#branch=main'
     'swift-xcode-playground-support::git+https://github.com/apple/swift-xcode-playground-support#branch=main'
 )
