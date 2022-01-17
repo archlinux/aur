@@ -1,0 +1,108 @@
+diff -rauN pdfalto-git/CMakeLists.txt pdfalto-use-system-libs-patch/CMakeLists.txt
+--- pdfalto-git/CMakeLists.txt	2022-01-17 13:25:13.065067929 +0100
++++ pdfalto-use-system-libs-patch/CMakeLists.txt	2022-01-17 14:28:58.881738284 +0100
+@@ -34,11 +34,17 @@
+ 
+ set ( XML_LIB_SUBDIR ${CMAKE_CURRENT_SOURCE_DIR}/libs/libxml)
+ 
+-set(FREETYPE_INCLUDE_DIR_ft2build ${CMAKE_CURRENT_SOURCE_DIR}/libs/freetype/include)
+-set(FREETYPE_INCLUDE_DIR_freetype_freetype ${CMAKE_CURRENT_SOURCE_DIR}/libs/freetype/include)
++# yes, we should use pkg-config for that, I know..
++add_definitions(-I/usr/include/freetype)
++set(FREETYPE_INCLUDE_DIR_ft2build "")
++set(FREETYPE_INCLUDE_DIR_freetype_freetype "")
+ 
++# dito
++add_definitions(-I/usr/include/libxml2)
++
++add_definitions(-I/usr/include/libpng14)
+ include_directories("${ZLIB_SUBDIR}/src")
+-set(PNG_INCLUDE_DIRS ${PNG_SUBDIR}/src)
++#set(PNG_INCLUDE_DIRS "")
+ set(PNG_FOUND TRUE)
+ 
+ set ( ICU_PATH ${CMAKE_CURRENT_SOURCE_DIR}/libs/icu)
+@@ -65,12 +71,12 @@
+     set(ARCHSUFFIX "32")
+ endif()
+ 
+-set ( XML_LIBRARY ${XML_LIB_SUBDIR}/${OSSUFFIX}/${ARCHSUFFIX}/libxml2.a)
+-set ( PNG_LIBRARIES ${PNG_SUBDIR}/${OSSUFFIX}/${ARCHSUFFIX}/libpng.a)
+-set ( ZLIB_LIBRARY ${ZLIB_SUBDIR}/${OSSUFFIX}/${ARCHSUFFIX}/libzlib.a)
+-set ( FREETYPE_LIBRARY ${CMAKE_CURRENT_SOURCE_DIR}/libs/freetype/${OSSUFFIX}/${ARCHSUFFIX}/libfreetype.a)
+-set ( ICUUC_LIB ${CMAKE_CURRENT_SOURCE_DIR}/libs/icu/${OSSUFFIX}/${ARCHSUFFIX}/libicuuc.a)
+-set ( ICUDATA_LIB ${CMAKE_CURRENT_SOURCE_DIR}/libs/icu/${OSSUFFIX}/${ARCHSUFFIX}/libicudata.a)
++set ( XML_LIBRARY -lxml2)
++set ( PNG_LIBRARIES -lpng14)
++set ( ZLIB_LIBRARY -lz)
++set ( FREETYPE_LIBRARY -lfreetype)
++set ( ICUUC_LIB -licuuc)
++set ( ICUDATA_LIB -licudata)
+ 
+ 
+ set(XPDF_BUILD_DIR ${XPDF_SUBDIR}/build)
+@@ -114,7 +120,6 @@
+ target_include_directories(pdfalto
+         PUBLIC ${XML_LIB_SUBDIR}/include
+         PUBLIC ${FREETYPE_INCLUDE_DIR_ft2build}
+-        PUBLIC ${PNG_INCLUDE_DIRS}
+         PUBLIC ${ZLIB_SUBDIR}/src
+         PUBLIC ${XPDF_SUBDIR}
+         PUBLIC ${XPDF_SUBDIR}/goo
+diff -rauN pdfalto-git/xpdf-4.03/CMakeLists.txt pdfalto-use-system-libs-patch/xpdf-4.03/CMakeLists.txt
+--- pdfalto-git/xpdf-4.03/CMakeLists.txt	2022-01-17 13:25:13.318401264 +0100
++++ pdfalto-use-system-libs-patch/xpdf-4.03/CMakeLists.txt	2022-01-17 13:51:30.238402710 +0100
+@@ -26,9 +26,9 @@
+ add_subdirectory(xpdf)
+ #add_subdirectory(xpdf-qt)
+ 
+-if (NOT HAVE_FREETYPE_H)
+-  message(WARNING "Couldn't find FreeType -- will not build pdftoppm, pdftopng, pdftohtml, or xpdf.")
+-endif ()
++#if (NOT HAVE_FREETYPE_H)
++#  message(WARNING "Couldn't find FreeType -- will not build pdftoppm, pdftopng, pdftohtml, or xpdf.")
++#endif ()
+ 
+ #if (NOT PNG_FOUND)
+ #  message(WARNING "Couldn't find libpng -- will not build pdftopng or pdftohtml.")
+diff -rauN pdfalto-git/xpdf-4.03/cmake-config.txt pdfalto-use-system-libs-patch/xpdf-4.03/cmake-config.txt
+--- pdfalto-git/xpdf-4.03/cmake-config.txt	2022-01-17 13:25:13.318401264 +0100
++++ pdfalto-use-system-libs-patch/xpdf-4.03/cmake-config.txt	2022-01-17 14:41:58.885072346 +0100
+@@ -196,9 +196,9 @@
+ else ()
+   message(STATUS "FreeType not found")
+ endif ()
+-if (HAVE_FREETYPE_H)
++#if (HAVE_FREETYPE_H)
+   set(HAVE_SPLASH TRUE)
+-endif ()
++#endif ()
+ 
+ 
+ #--- look for zlib
+diff -rauN pdfalto-git/xpdf-4.03/splash/CMakeLists.txt pdfalto-use-system-libs-patch/xpdf-4.03/splash/CMakeLists.txt
+--- pdfalto-git/xpdf-4.03/splash/CMakeLists.txt	2022-01-17 13:25:13.321734596 +0100
++++ pdfalto-use-system-libs-patch/xpdf-4.03/splash/CMakeLists.txt	2022-01-17 14:52:42.358406339 +0100
+@@ -13,7 +13,8 @@
+   include_directories("${PROJECT_BINARY_DIR}")
+   include_directories("${PROJECT_SOURCE_DIR}/goo")
+   include_directories("${PROJECT_SOURCE_DIR}/fofi")
+-  include_directories("${FREETYPE_INCLUDE_DIRS}")
++#  include_directories("${FREETYPE_INCLUDE_DIRS}")
++  include_directories("/usr/include/freetype2")
+ 
+   if (HAVE_DTYPE4_H)
+     include_directories("${DTYPE_INCLUDE_DIR}")
+diff -rauN pdfalto-git/xpdf-4.03/xpdf/CMakeLists.txt pdfalto-use-system-libs-patch/xpdf-4.03/xpdf/CMakeLists.txt
+--- pdfalto-git/xpdf-4.03/xpdf/CMakeLists.txt	2022-01-17 13:25:13.328401263 +0100
++++ pdfalto-use-system-libs-patch/xpdf-4.03/xpdf/CMakeLists.txt	2022-01-17 14:14:03.088404058 +0100
+@@ -14,7 +14,8 @@
+ include_directories("${PROJECT_SOURCE_DIR}/fofi")
+ include_directories("${PROJECT_SOURCE_DIR}/splash")
+ if (PNG_FOUND)
+-  include_directories("${PNG_INCLUDE_DIRS}")
++  add_definitions(-I/usr/include/libpng14)
++# include_directories("${PNG_INCLUDE_DIRS}")
+   add_definitions("${PNG_DEFINITIONS}")
+ endif ()
+ if (HAVE_LCMS)
