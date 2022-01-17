@@ -1,6 +1,6 @@
 pkgbase = pymacropad-git
 	pkgdesc = Utility program for binding actions to keys on a given input
-	pkgver = 1.2.0.r1.g0775db7
+	pkgver = 1.2.1.r0.g64b3eba
 	pkgrel = 1
 	url = https://github.com/j-waters/pymacropad
 	arch = any
