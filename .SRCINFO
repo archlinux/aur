@@ -1,0 +1,17 @@
+pkgbase = pajeng
+	pkgdesc = PajeNG - Trace Visualization Tool
+	pkgver = 1.3.6
+	pkgrel = 1
+	url = https://github.com/schnorr/pajeng
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cmake
+	makedepends = boost
+	makedepends = asciidoc
+	makedepends = flex
+	makedepends = bison
+	source = https://github.com/schnorr/pajeng/archive/refs/tags/1.3.6.tar.gz
+	md5sums = 4d371589c4f8d0309b68f81811c577e8
+
+pkgname = pajeng
