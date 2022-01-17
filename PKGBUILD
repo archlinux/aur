@@ -5,7 +5,7 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=96.0
+pkgver=96.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
@@ -34,13 +34,15 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/${pkgname}-community/browser/common.git#tag=${_common_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
         "pref_pane.patch"
+        "default192x192.png"
         )
 source_aarch64=("${pkgver}-${pkgrel}_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch")
-sha256sums=('b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0'
+sha256sums=('cb86f3cbd31960305dee7d7f3dc254c64fb0462e27ea624ee62f3682e99079ee'
             '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
             'SKIP'
             'SKIP'
-            '982fe27ebcf8326c47ef7ca30436051fc18fa3de93aea06e9821618d33695be6')
+            '982fe27ebcf8326c47ef7ca30436051fc18fa3de93aea06e9821618d33695be6'
+            '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
 sha256sums_aarch64=('2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 
 prepare() {
@@ -183,6 +185,9 @@ fi
   # remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
   patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
+
+  #
+  patch -Np1 -i ${_patches_dir}/ui-patches/hide-safe-browsing.patch
 
   # remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
