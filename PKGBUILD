@@ -22,8 +22,8 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
-conflicts=('alchemy-next-viewer' 'alchemy-viewer')
 provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
+conflicts=('alchemy-next-viewer' 'alchemy-viewer')
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
          '59114df2d7f081aad499ad5b7d8401b7')
@@ -31,7 +31,6 @@ sha256sums=('SKIP'
             '28f928d7620818db47e7903722173a49daf36973ae51091e9ab9845211448864')
 b2sums=('SKIP'
         'da5639043f1854d9d2dc884fd62a4239fdc7ca2467cd95cfcb7f6bc73ac93e73cc0229e16000378efa22d646e3756a9495d2d8bb8c76049f77e4731c2a997729')
-
 pkgver() {
     cd "${pkgname}"
     ( set -o pipefail
@@ -39,7 +38,6 @@ pkgver() {
         printf "%s.%s.%s" "$(cat indra/newview/VIEWER_VERSION.txt)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
-
 prepare() {
     cd "$pkgname" || exit 1
     git fetch --prune
@@ -47,7 +45,6 @@ prepare() {
     git pull --autostash
     git checkout "origin/${_branch}"
 }
-
 build() {
     cd "$pkgname" || exit 1
     virtualenv ".venv" -p python3
@@ -77,12 +74,9 @@ build() {
     fi
   fi
 }
-
 package() {
     mkdir -p "$pkgdir/opt"
     mkdir -p "$pkgdir/usr/share/applications"
-
     mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next-viewer"
-
     install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
 }
