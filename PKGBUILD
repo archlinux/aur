@@ -1,19 +1,19 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=signald
-pkgver=0.15.0
-pkgrel=2
+pkgver=0.16.1
+pkgrel=1
 pkgdesc='An unofficial daemon that facilitates communication with the Signal messaging app.'
 url='https://gitlab.com/signald/signald'
 license=('GPL3')
 arch=('any')
 makedepends=('gradle')
-depends=('java-runtime>=11' "java-runtime<16")
+depends=('java-runtime')
 optdepends=('qrencode: display account linking token as QR code')
 conflicts=('signald-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/signald/signald/-/archive/${pkgver}/signald-${pkgver}.tar.gz"
         'gradle-no-daemon.patch')
-sha512sums=('f733ec8022082b33cbb18e38c1cba8c3028a28540989aa8838a9bf3021b6ee16a439c925851a7db02154137804a1c8acc81b9228c3b1125417926603690e4979'
+sha512sums=('156e049cc32329ccdeb514eeeecf44b3f5097a48c1196ab5d31f99a935177c5ec92e82f8432ebcb6cdc3abebd537716675ac76372ffaa8e6341cebfabc43a195'
             'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535')
 
 backup=('var/lib/signald/data')
