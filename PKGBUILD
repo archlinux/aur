@@ -3,7 +3,7 @@ _srcname=clasp
 _qlver=2021-02-13
 pkgname=clasp-cl
 pkgname=clasp-cl-git
-pkgver=0.4.2.r4948.g2e58b43e2
+pkgver=0.4.2.r5028.g298d96103
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -39,6 +39,7 @@ prepare() {
 }
 
 build() {
+  echo $MAKEFLAGS
   cd "$_srcname/"
   cp ../wscript.config .
   sed -i s/\"--link-static\",//g wscript
@@ -46,7 +47,7 @@ build() {
   sed -i s/stlib/lib/g extensions/cando/wscript
   sed -i s/STLIB/LIB/g extensions/cando/wscript
   ./waf configure --enable-jupyter
-  CLASP_QUICKLISP_DIRECTORY=$srcdir/quicklisp-client-version-$_qlver ./waf build_dboehmprecise
+  CLASP_QUICKLISP_DIRECTORY=$srcdir/quicklisp-client-version-$_qlver ./waf --jobs=$(($(nproc)>1 ? ($(nproc) / 2) : 1)) build_dboehmprecise
 }
 
 package() {
