@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-llvm-git
-pkgver=2.0.0dev.r6542.gbbdff59e4
+pkgver=2.0.0dev.r6945.gaee3585af
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
@@ -14,19 +14,16 @@ makedepends=('git' 'llvm' 'clang')
 depends=('gcc-ada')
 checkdepends=(
 	'python-pytest' 'python-pydecor' 'python-pyvhdlmodel>=0.12'
-	'python-pymetaclasses' 'python-pyattributes' 'python-pyterminalui'
+	'python-pytooling' 'python-pyattributes' 'python-pytooling-terminalui'
 )
 optdepends=(
-	'python-pydecor: for pyGHDL'
-	'python-pyvhdlmodel: for pyGHDL.dom'
+	'python-pyghdl: python bindings and utilities'
 )
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
 )
-sha256sums=(
-	'SKIP'
-)
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/ghdl"
