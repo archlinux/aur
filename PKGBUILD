@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=transmission-remote-gtk-git
-pkgver=1.4.2.r27.g64a0250
+pkgver=1.4.2.r49.gf893b87
 pkgrel=1
 pkgdesc='A remote interface to the Transmission BitTorrent client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -10,7 +10,7 @@ license=('GPL')
 options=('!libtool')
 depends=('gtk3' 'libnotify' 'curl' 'libproxy' 'geoip'
          'desktop-file-utils')
-makedepends=('intltool' 'git' 'appstream-glib' 'meson')
+makedepends=('git' 'appstream-glib' 'meson')
 provides=('transmission-remote-gtk')
 conflicts=('transmission-remote-gtk')
 source=('git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git')

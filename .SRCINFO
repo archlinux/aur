@@ -7,7 +7,6 @@ pkgbase = transmission-remote-gtk-git
 	arch = x86_64
 	arch = armv6h
 	license = GPL
-	makedepends = intltool
 	makedepends = git
 	makedepends = appstream-glib
 	makedepends = meson
