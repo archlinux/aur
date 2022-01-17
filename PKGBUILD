@@ -20,7 +20,7 @@ sha256sums_arm=('7652d8214c1153f28ee46d172035112668f5f142275e99376cff792430421fb
 sha256sums_aarch64=('02ac047c837825830963c3ddfdebbea6f614c00774baf53750f4b71e81691b60')
 
 package() {
-    install -Dm755 "$srcdir/diffsitter-$arch-unknown-linux-gnu/diffsitter" "$pkgdir/usr/bin/diffsitter"
-    install -Dm644 "$srcdir/diffsitter-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/diffsitter/LICENSE"
+    install -Dm755 "$srcdir/diffsitter-$CARCH-unknown-linux-gnu/diffsitter" "$pkgdir/usr/bin/diffsitter"
+    install -Dm644 "$srcdir/diffsitter-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/diffsitter/LICENSE"
 }
 
