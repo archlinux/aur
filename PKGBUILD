@@ -2,7 +2,7 @@
 # Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp-headless
-pkgver=5.5.1
+pkgver=5.5.2
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) headless client (It does not support 2FA.)"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
   "${pkgname%%-*}driver.service.patch"
 )
 sha256sums=(
-  "1e201096164352493e322b911a823e4ac4aca8d20fd120b1a8d6460751184008"
+  "fa4ea0aa6c14460e8e711a52be7738a40af6fcb20b3b1c47d6c65a90b9f9ec64"
   "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
 )
 
