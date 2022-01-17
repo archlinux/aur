@@ -3,7 +3,7 @@
 
 pkgname='perl-starlink-ast'
 pkgver='3.01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -16,6 +16,10 @@ source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-${pkgver}.
 md5sums=('db53bc018bd349e3a0c85bd8c6883f3c')
 sha512sums=('0beddc6c7c76f260725aa0958b2c82c2496b80c94529fca37e912493d45b09a07494f2b1bb3b0eb0ca99f61c6f415a6671240e9e69a8bef166d6b1591a00ddcf')
 _distdir="Starlink-AST-${pkgver}"
+
+# Pacman v6.0.0 sets -Werror=format-security in /etc/makepkg.conf. This breaks the compilation of lib/Starlink/AST.xs 
+CFLAGS="${CFLAGS} -Wno-error=format-security"
+
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
