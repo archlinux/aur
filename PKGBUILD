@@ -1,20 +1,21 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Maintainer: xeruf <27f at pm dot me>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 # Contributor: Alex Smith <azphreal19@protonmail.com
 
 pkgname=koel
-pkgver=5.1.8
+pkgver=5.1.12
 pkgrel=1
 pkgdesc="A personal music streaming server that works."
 arch=('any')
 url="https://koel.dev/"
 license=('MIT')
-depends=('php' 'python3' 'mysql' 'openssl')
-makedepends=('composer' 'nodejs-lts-fermium')
+depends=(php php-sqlite python3 mysql openssl)
+makedepends=(composer nodejs yarn)
 backup=('usr/share/webapps/koel/.env')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('b12b359beba8cde455f3da1213a24bb6f35ad6f7d11983c29f1fdced8c18af3afd08fcfdf2b600a2f7c85bb6085b62db5edda8f9ab1777595cfdcf41d6c5bca9')
+sha512sums=('79d45c06c3b948fcd99f5ab0c3bb14b39b21594a3a3f0cb26bbdbb438c88f0011e064c3a10039ebee32add94fd5b5b84d9c41f3dcc0e400409ab37ad921fd817')
 
 prepare() {
   cp "${srcdir}/${pkgname}-${pkgver}"/.env{.example,}
@@ -23,9 +24,8 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-
-  composer update
-  php -d 'extension=exif' /usr/bin/composer install
+  echo "++ ENABLE THE FOLLOWING MODULES IN /etc/php/php.ini: pdo_sqlite, sqlite3, exif"
+  php -d 'extension=pdo_sqlite' -d 'extension=sqlite3' -d 'extension=exif' /usr/bin/composer install
 }
 
 package() {
