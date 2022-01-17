@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=sonixd
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -38,6 +38,7 @@ build() {
 	cd "$pkgname-$pkgver"
 
 	_ver="$(</usr/lib/electron13/version)"
+	_ensure_local_nvm
 	local i686=ia32 x86_64=x64
 	export NODE_ENV=production
 	yarn build --cache-folder="$srcdir/yarn-cache"
