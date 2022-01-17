@@ -8,6 +8,7 @@ pkgbase = firefoxext
 	depends = firefox
 	depends = gcc
 	depends = make
+	depends = cjson
 	source = git+https://github.com/Interfiber/firefoxext.git
 	sha256sums = SKIP
 
