@@ -44,7 +44,7 @@ prepare() {
     git fetch --prune
     git checkout main
     git pull --autostash
-    git checkout "${AL_GIT_BRANCH:-e0e1e9fb6f}"
+    git checkout "${AL_GIT_REVISION:-origin/main}"
 }
 
 build() {
@@ -73,4 +73,8 @@ package() {
     mkdir -p "${pkgdir}/usr/local/share/applications"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
     install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # Patch shortcut to avoid duplicated entries
+    sed -i 's;Name=.*$;Name=Alchemy (git build);' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
+    sed -i 's;Name=.*$;Name=Alchemy (git build);' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
+    sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
 }
