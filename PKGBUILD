@@ -36,11 +36,12 @@ pkgver() {
 }
 
 prepare() {
-    # Check locale
-    locale | grep LANG | grep UTF-8
-    if [[ $? -ne 0 ]]; then
-        printf "Locale must support UTF-8. See https://wiki.archlinux.org/index.php/locale
-        or https://wiki.archlinux.org/index.php/locale ."
+    # Check locale according to
+    # https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html#set-locale
+	if ! locale | grep LANG | grep UTF-8 > /dev/null; then
+		echo 'Your locale must support UTF-8. See ' \
+             'https://wiki.archlinux.org/index.php/locale and ' \
+             'https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html#set-locale'
         exit 1
     fi
 
