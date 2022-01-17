@@ -7,9 +7,7 @@ pkgbase = r-r.methodss3
 	license = LGPL2.1
 	license = LGPL3
 	depends = r>=2.13.0
-	optdepends = r-codetools
 	source = https://cran.r-project.org/src/contrib/R.methodsS3_1.8.1.tar.gz
-	md5sums = 32f84a24a30dc8d0ebe4677c87161f50
+	sha256sums = 8a98fb81bcfa78193450f855f614f6f64e6c65daf115f301d97d1f474f5e619b
 
 pkgname = r-r.methodss3
-

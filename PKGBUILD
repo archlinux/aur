@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=R.methodsS3
 _cranver=1.8.1
@@ -10,19 +10,15 @@ arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1 LGPL3)
 depends=('r>=2.13.0')
-optdepends=(r-codetools)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('32f84a24a30dc8d0ebe4677c87161f50')
+sha256sums=('8a98fb81bcfa78193450f855f614f6f64e6c65daf115f301d97d1f474f5e619b')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
