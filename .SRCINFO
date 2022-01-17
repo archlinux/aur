@@ -1,38 +1,35 @@
 pkgbase = vcvrack
-	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 1.1.6
-	pkgrel = 3
+	pkgdesc = Open-source Eurorack modular synthesizer simulator
+	pkgver = 2.0.6
+	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
 	license = custom
 	license = CCPL
 	license = GPL3
-	makedepends = cmake
-	makedepends = gendesk
 	makedepends = git
-	makedepends = unzip
 	makedepends = wget
-	depends = curl
+	makedepends = cmake
+	makedepends = unzip
+	makedepends = gendesk
 	depends = glew
 	depends = glfw
-	depends = gtk3
 	depends = jack
-	depends = jansson
 	depends = libpulse
 	depends = libx11
-	depends = libzip
-	depends = openssl
-	depends = rtaudio
-	depends = rtmidi
-	depends = speexdsp
-	source = vcvrack-1.1.6::git+https://github.com/vcvrack/Rack.git#tag=v1.1.6
-	source = git+https://github.com/glfw/glfw.git#commit=0fb001c
-	source = git+https://github.com/memononen/nanosvg.git#commit=25241c5
-	source = git+https://github.com/memononen/nanovg.git#commit=1f9c886
-	source = git+https://github.com/AndrewBelt/osdialog.git#commit=e5db5de
-	source = git+https://github.com/AndrewBelt/oui-blendish.git#commit=79ec59e
-	source = git+https://github.com/thestk/rtaudio.git#commit=d27f257
-	source = vcvrack-use_system_libs.patch::https://github.com/flying-sheep/Rack/commit/c74ada5fa42de4947eb0d65886f21528b8e65be7.patch
+	depends = libxcursor
+	depends = libxinerama
+	depends = libxrandr
+	source = vcvrack-2.0.6::git+https://github.com/vcvrack/Rack.git#tag=v2.0.6
+	source = git+https://github.com/VCVRack/nanovg.git#commit=0bebdb314aff9cfa28fde4744bcb037a2b3fd756
+	source = git+https://github.com/memononen/nanosvg.git#commit=25241c5a8f8451d41ab1b02ab2d865b01600d949
+	source = git+https://github.com/AndrewBelt/osdialog.git#commit=21b9dcc2a1bbdacb9b46da477ffd82a4ce9204b9
+	source = git+https://github.com/VCVRack/oui-blendish.git#commit=2fc6405883f8451944ed080547d073c8f9f31898
+	source = git+https://github.com/VCVRack/rtaudio.git#commit=8128053f4bd83463c7c901d9f5d40b272c2f4e4e
+	source = git+https://github.com/VCVRack/glfw.git#commit=0e18076016f4ba57c314eeebd85654c70644abe3
+	source = git+https://bitbucket.org/j_norberg/fuzzysearchdatabase.git#commit=fe62479811e503ef3c091f5a859d27bfcf0a44da
+	source = git+https://github.com/gulrak/filesystem.git#commit=7e37433f318488ae4bc80f80e12df12a01579874
+	source = git+https://bitbucket.org/jpommier/pffft.git#commit=74d7261be17cf659d5930d4830609406bd7553e3
 	source = vcvrack.sh
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -41,8 +38,9 @@ pkgbase = vcvrack
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = b31b3a3fa2b568dc875312144191dae07ef5df99e4e2a3e1faea9e2ad2f3c898c11e25c922cb99a80971cec4f8129a69928148e4fdf09351bdf0411e20e9e1a1
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = 8ca3fbc790fa5d311ce41b5b9e84a79fe51db73cbf0f56f04d0429b28f0c4c0646e2d0c081b584161356ec24b06cc0181b115b865d564ff1452c64a57135acf6
 
 pkgname = vcvrack
-
