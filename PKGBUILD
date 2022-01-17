@@ -7,8 +7,8 @@ license=('ISC')
 pkgdesc='Automatic brightness adjustment based on screen contents and ALS'
 url='https://github.com/maximbaz/wluma'
 arch=('x86_64')
-depends=('vulkan-icd-loader' 'vulkan-driver' 'wayland' 'systemd-libs' 'glibc' 'gcc-libs' 'v4l-utils' 'libjpeg')
-makedepends=('rust' 'clang' 'systemd')
+depends=('vulkan-icd-loader' 'vulkan-driver' 'wayland' 'systemd-libs' 'glibc' 'gcc-libs' 'v4l-utils')
+makedepends=('cargo' 'clang' 'systemd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/archive/${pkgver}.tar.gz"
         "https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
 sha256sums=('fe7191cdeb58f7adb4ef4799650603c5b7c09f1520221ad68969bcbc083391e9'
