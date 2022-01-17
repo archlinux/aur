@@ -1,7 +1,7 @@
 # Maintainer: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=kdreports
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A Qt library for generating printable and exportable reports from code and from XML descriptions'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL' 'LGPL' 'custom')
 depends=('qt5-base')
 makedepends=('cmake>=2.8.12')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KDAB/KDReports/releases/download/kdreports-${pkgver}/kdreports-${pkgver}.tar.gz")
-sha512sums=('80ab3a9fdd490a998b0f200fd1f7a218517b39e1ff2fceb70c5badce74a59e6957becd976233083628739fd8d984aced3733e1f12b1ad39f9cf24a0f9c36ee78')
+sha512sums=('c35f9cb22785d758f6e505c61d3c2f78db8ab99b2292c561d43e2934126a8127702df8b4e5b6b7fd6630fe30660a342481f325481485405ea5c4e195a20f4f1b')
 
 prepare() {
   mkdir -p build
