@@ -22,8 +22,8 @@ optdepends=(
     'nvidia-libgl: NVIDIA support'
 'nvidia-utils: NVIDIA support')
 makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
-conflicts=('alchemy-next-viewer')
-provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
+conflicts=('alchemy-next-viewer-git')
+provides=('alchemy-viewer' 'alchemy-next' 'secondlife')
 replaces=('alchemy-next-viewer' 'alchemy-next-viewer-git')
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
