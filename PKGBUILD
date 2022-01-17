@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.15.12
+pkgver=5.16.1
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -100,11 +100,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
+b2sums=('07a90cc640ff89e1359c06cee8c38abd33e51f9b9a89833e31a1d2750526fda4a59e8884db3c1ea63df0a37f0d3de6b5a922b014b7313d8abce20d90ac08adcb'
         'SKIP'
-        '8ac09e5cff7465641818e24e846a014bc936e2e2f61b7d1973319d5665d45acd6be24d28430173b5646e80cf67351044165b949575baf76ccdfb46ae34fc1468'
+        'dcdef3f247252ac7cbbdd7892fb017b8181ea4028d56b1d710144effaf59498c42703b85ea3ecaa85f513f1813dc4ce6bb24adbfe54395a119f9ad20d35ea523'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        '28540af4732569d0638c4b2525cbc3701aec60330d8ac4b081a62145a20226725c1444521cd750ae9cd18ff0f469ce40f8db451588ba0d85c6e0d388f1d82c3b')
+        '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -312,11 +312,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
