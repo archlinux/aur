@@ -1,6 +1,6 @@
 pkgbase = alchemy-viewer
 	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
-	pkgver = 6.5.2.48005
+	pkgver = 6.5.2.48005.c0f6ab8dca
 	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	arch = x86_64
@@ -36,18 +36,19 @@ pkgbase = alchemy-viewer
 	optdepends = mesa-libgl: Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: NVIDIA support
 	optdepends = nvidia-utils: NVIDIA support
-	provides = alchemy-next
 	provides = alchemy-viewer
+	provides = alchemy-next
 	provides = secondlife
-	conflicts = alchemy-next-viewer
+	conflicts = alchemy-next-viewer-git
 	replaces = alchemy-next-viewer
+	replaces = alchemy-next-viewer-git
 	source = alchemy-viewer::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
 	source = alchemy-next.desktop
 	md5sums = SKIP
-	md5sums = 6d65e849f37a05b8684d99185feaa07c
+	md5sums = adb72c8434b2bc90258f187eaec6987d
 	sha256sums = SKIP
-	sha256sums = d4eb1a048c26a17d5ab64c8961c1340007ba82502b88638cdf89f0af32ee3d50
+	sha256sums = aa3e45d00a567b26b226ff4429c783c12fcd50dbda05e39eda09ad62074d5ae6
 	b2sums = SKIP
-	b2sums = 479bfaa80a807e81bda2a27fc44a330feb996272e5b99f4581ef516946d7d67fc20be8eb5f2ae41a2dc5afbf3dd448cb582c5fa3e123e83c92945aa35f2f009f
+	b2sums = 4b90a26925bfa68e96db72a7508039a39600fcec549fa189e42ff38d1956b9b8ee6caeaad8dad8f746976f81754078910930dc8d145def453147acced5dcd2c9
 
 pkgname = alchemy-viewer

@@ -27,11 +27,11 @@ provides=('alchemy-viewer' 'alchemy-next' 'secondlife')
 replaces=('alchemy-next-viewer' 'alchemy-next-viewer-git')
 source=("$pkgname"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
-         '1eea759a50a7bc119df8d199943f1273')
+         'adb72c8434b2bc90258f187eaec6987d')
 sha256sums=('SKIP'
-            'a844e2d370edafd128c5f99b3ae6eeeac3aba37e11c9733f2e3525aa9efad849')
+            'aa3e45d00a567b26b226ff4429c783c12fcd50dbda05e39eda09ad62074d5ae6')
 b2sums=('SKIP'
-        'feae876630a3d7abfb99fe460331a3ff80f837c6ab8f9a128a695f239565cd832c9b30004f192b7dc3c3c0182331c692abaad82d3789f7ec4e279352475e6fce')
+        '4b90a26925bfa68e96db72a7508039a39600fcec549fa189e42ff38d1956b9b8ee6caeaad8dad8f746976f81754078910930dc8d145def453147acced5dcd2c9')
 
 pkgver() {
     cd "${pkgname}"
