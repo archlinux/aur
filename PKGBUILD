@@ -2,7 +2,7 @@
 # Maintainer: András Wacha < awacha at gmail >
 
 pkgname='perl-module-compile'
-pkgver='0.35'
+pkgver='0.38'
 pkgrel='1'
 pkgdesc="Perl Module Compilation"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-digest-sha1>=2.13')
 makedepends=()
 url='https://metacpan.org/release/Module-Compile'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Module-Compile-0.35.tar.gz')
-md5sums=('7b9cf30692ab350d2ac013db55d9bc34')
-sha512sums=('4115277ffb0da033c6c7fea6480c7245c8b5eb151378081fefaef35761b92a4218d56e8e1e9a4892ce78a379592336badefa2de56062d9e5b7024cdc35d3e46b')
-_distdir="Module-Compile-0.35"
+source=("http://search.cpan.org/CPAN/authors/id/I/IN/INGY/Module-Compile-${pkgver}.tar.gz")
+md5sums=('b51c0b2ebc169b2290d4c4d40fbd6206')
+sha512sums=('50f17cf6e88f9834d69944e64a46b2ca260824220cf09fe962c29dd36a8d0cdd7a2d59c7e0cf360a7fb506252cdea3b13b99437e443735b35c7a713a0bea1f31')
+_distdir="Module-Compile-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
