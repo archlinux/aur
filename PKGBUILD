@@ -13,9 +13,17 @@ makedepends=('go')
 source=("https://git.sr.ht/~sircmpwn/openring/archive/${pkgver}.tar.gz")
 sha256sums=('9df83d980473fc85d5e8df8bf55e509a90751d6be32500a304216108da4d17ca')
 
+prepare() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+}
+
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  GOPATH="${srcdir}/go" GOCACHE="${srcdir}/cache" go build -o "${pkgname}"
+  go build -o "${pkgname}"
 }
 
 package() {
