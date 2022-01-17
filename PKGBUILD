@@ -2,7 +2,7 @@
 
 pkgname=sysdig-inspect
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful opensource interface for container troubleshooting and security investigation"
 arch=('x86_64')
 url="https://github.com/draios/sysdig-inspect"
@@ -11,7 +11,7 @@ depends=('alsa-lib' 'gtk3' 'libxss' 'libxtst' 'nss')
 optdepends=('org.freedesktop.secrets')
 source=("https://download.sysdig.com/stable/sysdig-inspect/${pkgname}_${pkgver}_amd64.deb")
 noextract=("${pkgname}_${pkgver}_amd64.deb")
-sha256sums=('519bfdffdc158d4c394cf09e68412c0ca9cdf45797a664db57bbbd9a0d65a8bd')
+b2sums=('5ece0959a6638a927bdcffa96784a78f7d34b5aa002f5875f73adaba64e92d65e4c93b791fdbf4356b52245cca1987692555b9dc6d67540fc5db73cd57f2da71')
 
 package() {
     bsdtar -O -xf "${pkgname}_${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
