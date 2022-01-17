@@ -1,32 +1,34 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# ex-Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='contrast'
-pkgname="${_pkgname}-git"
-pkgver=0.0.3.r55.gb90638b
+pkgname=contrast-git
+pkgver=0.0.5.r0.g37250e4
 pkgrel=1
 pkgdesc='Check whether the contrast between two colors meets the WCAG requirements'
 arch=('x86_64')
 url='https://gitlab.gnome.org/World/design/contrast'
 license=('GPL3')
-depends=('libhandy')
-makedepends=('cmake' 'git' 'meson' 'rust')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("git+${url}.git")
-sha256sums=('SKIP')
+depends=('gtk4' 'glib2' 'libadwaita')
+makedepends=('git' 'meson' 'rust')
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+$url.git)
+b2sums=('SKIP')
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "${pkgname%-git}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  arch-meson "${_pkgname}" 'build'
-  meson compile -C 'build'
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C 'build'
-  install -Dvm644 "${_pkgname}/README.md" -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  meson install -C build --destdir "$pkgdir"
 }
-
-# vim: ts=2 sw=2 et:

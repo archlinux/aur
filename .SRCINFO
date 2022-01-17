@@ -1,19 +1,20 @@
 pkgbase = contrast-git
 	pkgdesc = Check whether the contrast between two colors meets the WCAG requirements
-	pkgver = 0.0.3.r55.gb90638b
+	pkgver = 0.0.5.r0.g37250e4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/contrast
 	arch = x86_64
 	license = GPL3
-	makedepends = cmake
+	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
-	depends = libhandy
+	depends = gtk4
+	depends = glib2
+	depends = libadwaita
 	provides = contrast
 	conflicts = contrast
 	source = git+https://gitlab.gnome.org/World/design/contrast.git
-	sha256sums = SKIP
+	b2sums = SKIP
 
 pkgname = contrast-git
-
