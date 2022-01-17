@@ -27,8 +27,7 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 provides=('alchemy-next' 'alchemy-viewer' 'secondlife')
-source=(
-        "${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2"
+source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2"
         'alchemy-next.desktop')
 sha1sums=('3479198ce34e8d6a52f88a8627e6ab16bc72fa81'
           '8468775b4863b9a4d5c7c0f7d0319a54b97636de')
