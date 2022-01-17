@@ -1,0 +1,19 @@
+pkgbase = pymacropad-git
+	pkgdesc = Utility program for binding actions to keys on a given input
+	pkgver = 1.0.0.r1.g46991e2
+	pkgrel = 1
+	url = https://github.com/j-waters/pymacropad
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-click
+	depends = python-yaml
+	depends = python-libevdev
+	depends = python-pyxdg
+	provides = pymacropad
+	conflicts = pymacropad
+	source = pymacropad::git+https://github.com/j-waters/pymacropad.git
+	md5sums = SKIP
+
+pkgname = pymacropad-git
