@@ -1,8 +1,8 @@
 # Maintainer: Ayush Agarwal <ayush at fastmail dot in>
 
 pkgname=tessen
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 pkgdesc="An interactive menu to autotype and copy password-store data"
 arch=(x86_64)
 url="https://github.com/ayushnix/tessen"
@@ -20,7 +20,7 @@ optdepends=('libnotify: to send notifications about copied data'
             'xdg-utils: to open URLs in default web browser')
 conflicts=('tessen-git')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('dacc1ef85c1519fbb2f2d61e95573f1a846a83ef8d408d530a99d4e38fb4164f')
+sha256sums=('2e09f84f82bfd199d34f069d866d998346a85b115eaed8644c8cc81a6159ad1d')
 install=tessen.install
 
 package() {
