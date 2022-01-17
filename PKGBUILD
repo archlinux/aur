@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
 pkgver=0.5.0b2.dev9
-pkgrel=2
+pkgrel=3
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
@@ -11,7 +11,9 @@ depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'pytho
 	 'python-cheroot')
 optdepends=('caffeine: For AntiStandby plugin'
             'python-beautifulsoup4: for XFileSharing plugin'
-            'python-slixmpp: for XMPP plugin')
+            'python-slixmpp: for XMPP plugin'
+            'python-pillow: for some CAPTCHA stuff'
+            'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
 sha256sums=('d5696d660b666f0676d5fdcfbb0040346a46e1177539202b7ff8a39d3d247b2b')
