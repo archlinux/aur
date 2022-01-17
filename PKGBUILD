@@ -24,7 +24,7 @@ pkgver=2111
 _build1=8.4.0
 _build2=18957622
 _cart='CART22FH2'
-pkgrel=2
+pkgrel=3
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 url='https://www.vmware.com/go/viewclients'
@@ -100,10 +100,12 @@ package_vmware-horizon-client() {
 		'freerdp: RDP remote desktop connections'
 		'libpulse: audio support via pulse sound server'
 		'rdesktop: RDP remote desktop connections'
+		'vmware-horizon-html5mmr: HTML5 MultiMedia Redirection'
 		'vmware-horizon-integrated-printing: integrated printing'
-		'vmware-horizon-mmr: multimedia redirection'
+		'vmware-horizon-mmr: MultiMedia Redirection'
 		'vmware-horizon-rtav: Real-Time Audio-Video (webcam and audio-in)'
 		'vmware-horizon-smartcard: smartcard authentication'
+		'vmware-horizon-teams-optimization: Teams optimization'
 		'vmware-horizon-tsdr: folder sharing'
 		'vmware-horizon-usb: USB device redirection')
 	install=vmware-horizon-client.install
