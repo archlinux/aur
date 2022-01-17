@@ -81,9 +81,9 @@ build() {
 
 package() {
     mkdir -p "$pkgdir/opt"
-    mkdir -p "$pkgdir/usr/share/applications"
+    mkdir -p "$pkgdir/usr/local/share/applications"
     
-    mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/alchemy-next-viewer"
+    mv "${pkgname}/build-linux-64/newview/packaged" "$pkgdir/opt/$pkgname"
     
-    install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-next.desktop"
+    install -Dm644 "alchemy-next.desktop" "$pkgdir/usr/share/applications/alchemy-viewer.desktop"
 }
