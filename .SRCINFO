@@ -1,7 +1,7 @@
 pkgbase = adobe-reader-11
 	pkgdesc = The reference software for viewing, printing, annotating and digitally signing PDF files
 	pkgver = 11.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html
 	arch = i686
 	arch = x86_64

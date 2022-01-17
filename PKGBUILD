@@ -1,7 +1,7 @@
 # Maintainer: Daniel Berjón <asuranceturix@gmail.com>
 pkgname=adobe-reader-11
 pkgver=11.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="The reference software for viewing, printing, annotating and digitally signing PDF files"
 arch=(i686 x86_64)
 url="https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
@@ -26,7 +26,7 @@ build() {
   export WINEPREFIX="$srcdir"/tmp/env
   export WINEARCH=win32
   export XDG_DATA_HOME="$srcdir"/tmp/local
-  winetricks winxp mspatcha
+  winetricks -q winxp mspatcha
   wineserver -w
   msiexec /i AdbeRdr11000_en_US.msi /q
   # For some reason, the update patch fails if the previous wine instance has not exited yet
@@ -45,9 +45,9 @@ package() {
   sed -i "s/pkgname/$pkgname/g" "$pkgdir"/usr/bin/$pkgname
   install -Dm644 launcher.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   sed -i "s/pkgname/$pkgname/g" "$pkgdir"/usr/share/applications/$pkgname.desktop
-  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/16x16/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/$pkgname.png
-  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/32x32/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/$pkgname.png
-  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/48x48/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/$pkgname.png
-  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/256x256/apps/F449_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/16x16/apps/*_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/32x32/apps/*_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/48x48/apps/*_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/$pkgname.png
+  install -Dm644 "$srcdir"/tmp/local/icons/hicolor/256x256/apps/*_SC_Reader.0.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/$pkgname.png
   install -Dm644 "$srcdir"/tmp/env/drive_c/Program\ Files/Adobe/Reader\ 11.0/Reader/Legal/ENU/license.html "$pkgdir"/usr/share/licenses/$pkgname/license.html
 }
