@@ -29,7 +29,7 @@ backup=('etc/guacamole/guacd.conf')
 
 md5sums=('b17c6152e96af0488ca4c0608e5ec3ae'
          'ab0ac97ad76d16be73768f89abb6ee7e'
-         'bd58fffb01f7f6ab9bae306bdbea61ea')
+         'd2d4b33532da5dd2d85e4bb7b3db8c31')
 
 prepare() {
 	cd "$srcdir"/$pkgname-$pkgver
