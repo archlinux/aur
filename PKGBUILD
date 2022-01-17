@@ -1,7 +1,7 @@
 # Maintainer: TurboPunk <turbopunk@telenet.be>
 # Contributor: José San Juan <josesj@gmail.com>
 pkgname=snapmaker-luban
-pkgver=4.1.3
+pkgver=4.1.4
 pkgrel=1
 pkgdesc="Snapmaker Luban is an easy-to-use 3-in-1 software tailor-made for Snapmaker machines."
 url="https://github.com/Snapmaker/Luban"
@@ -13,7 +13,7 @@ source=(
     "https://snapshot.debian.org/archive/debian/20191014T030756Z/pool/main/g/gconf/libgconf-2-4_3.2.6-6_amd64.deb"
 )
 sha256sums=(
-    '050472be765656b5e7ab1d82c6cbed6606318588687a83c0f7e62185c30d82dd'
+    '20a1f501ad286dc4a8be81ba8e4fa11309b4abef7a30231a8ce5d9002840a6d9'
     '57a77787a3b29cef92470e2ffdf6582924bfdab2f38d089c490c5ac8511c60cd'
 )
 noextract=("${source[@]##*/}")
