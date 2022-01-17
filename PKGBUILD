@@ -3,12 +3,13 @@
 # Contributor: yuanyuyuan <az6980522@gmail.com>
 # Contributor: Rémy B. (github.com/KirrimK)
 # Contributor: Renato Caldas (github.com/rmsc)
+# Contributor: goekce (github.com/goekce)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-git
 pkgver=r230.4a36f31
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
