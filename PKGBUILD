@@ -4,7 +4,7 @@
 # Contributor: Flamelab <panosfilip@gmail.com
 
 pkgname=gnome-shell-perf
-pkgver=41.2
+pkgver=41.3
 pkgrel=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -24,7 +24,7 @@ source=("git+https://github.com/lazerl0rd/gnome-shell-perf.git"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
             'SKIP')
-provides=(gnome-shell=41.2)
+provides=(gnome-shell=41.3)
 conflicts=(gnome-shell)
 
 prepare() {
