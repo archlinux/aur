@@ -3,17 +3,17 @@
 # Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin
-_pkgname=ramboxpro
-pkgver=1.5.3
+_pkgname=rambox
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
 url='https://rambox.app/'
 license=('custom')
 depends=('alsa-lib' 'gtk3' 'libxss' 'libxtst' 'nss' 'python')
-provides=('ramboxpro')
+provides=('rambox' 'ramboxpro')
 options=('!emptydirs')
-conflicts=('rambox-pro-bin-beta')
+conflicts=('rambox' 'rambox-bin' 'rambox-pro-bin-beta')
 
 # To extract the EULA as a file:
 # 1. Go to https://rambox.app/eula in a Javascript-enabled browser.
@@ -21,10 +21,10 @@ conflicts=('rambox-pro-bin-beta')
 # 3. Run the shell command line:
 #    html2text --body-width=80 file.html | awk '/^# .*EULA/,/footer_logo/ { print }' | head -n -1
 source=("${_pkgname}-EULA"
-        "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/RamboxPro-${pkgver}-linux-x64.deb")
+        "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
 sha256sums=('220a1fe2afa6485bfc15dde23dd081804a29f94a86ce74164082aa8b2266e662'
-            'b390263e0f88264439e779d511bdec06b3acf787a0807e30f00d95dde38d29d7')
+            '14da96b4a703394695803e97063d1fd733377c247334a0abf478cd9517e105c2')
 
 build() {
     rm -rf "${srcdir}/root"
@@ -40,13 +40,13 @@ package() {
         "${pkgdir}/usr/share/icons" \
         "${pkgdir}/usr/share/licenses/${pkgname}"
 
-    cp -rp "${srcdir}/root/opt/RamboxPro/." "${pkgdir}/opt/${_pkgname}/."
+    cp -rp "${srcdir}/root/opt/Rambox/." "${pkgdir}/opt/${_pkgname}/."
     cp -rp "${srcdir}/root/usr/share/icons/." "${pkgdir}/usr/share/icons/."
 
     install -m 0644 "${srcdir}/${_pkgname}-EULA" "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
-    install -m 0644 "${srcdir}/root/usr/share/applications/ramboxpro.desktop" \
+    install -m 0644 "${srcdir}/root/usr/share/applications/${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    ln -s "/opt/${_pkgname}/ramboxpro" "${pkgdir}/usr/bin/${_pkgname}"
-    sed -i "s~/opt/RamboxPro/~/opt/${_pkgname}/~g" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    sed -i "s~/opt/Rambox/~/opt/${_pkgname}/~g" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }

@@ -1,6 +1,6 @@
 pkgbase = rambox-pro-bin
 	pkgdesc = Workspace browser to manage many web applications in one place
-	pkgver = 1.5.3
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://rambox.app/
 	arch = x86_64
@@ -11,12 +11,15 @@ pkgbase = rambox-pro-bin
 	depends = libxtst
 	depends = nss
 	depends = python
+	provides = rambox
 	provides = ramboxpro
+	conflicts = rambox
+	conflicts = rambox-bin
 	conflicts = rambox-pro-bin-beta
 	options = !emptydirs
-	source = ramboxpro-EULA
-	source = ramboxpro-1.5.3.deb::https://github.com/ramboxapp/download/releases/download/v1.5.3/RamboxPro-1.5.3-linux-x64.deb
+	source = rambox-EULA
+	source = rambox-2.0.0.deb::https://github.com/ramboxapp/download/releases/download/v2.0.0/Rambox-2.0.0-linux-x64.deb
 	sha256sums = 220a1fe2afa6485bfc15dde23dd081804a29f94a86ce74164082aa8b2266e662
-	sha256sums = b390263e0f88264439e779d511bdec06b3acf787a0807e30f00d95dde38d29d7
+	sha256sums = 14da96b4a703394695803e97063d1fd733377c247334a0abf478cd9517e105c2
 
 pkgname = rambox-pro-bin
