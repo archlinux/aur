@@ -2,8 +2,8 @@
 # Contributors: Marcin Skory, Arkham, Christoph Zeiler, Jacek Poplawski, carstene1ns
 
 pkgname=alephone
-_pkgdate=20210408
-pkgver=1.4.0_$_pkgdate
+_pkgdate=20220115
+pkgver=1.5.0_$_pkgdate
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-marathon2: original data for Marathon 2: Durandal')
 makedepends=('boost' 'mesa' 'icoutils')
 source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2")
-sha256sums=('b4cc004d4854a68f16da8496c464997001d5923d4f584bd447fae9319c160960')
+sha256sums=('ca0f5e94c4493a49522fccbbbe512831ed21f88d08bc93b4e365509ca057c2ce')
 
 prepare() {
   cd AlephOne-$_pkgdate
