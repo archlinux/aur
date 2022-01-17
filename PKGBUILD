@@ -3,12 +3,13 @@
 # Contributor: yuanyuyuan <az6980522@gmail.com>
 # Contributor: Rémy B. (github.com/KirrimK)
 # Contributor: Renato Caldas (github.com/rmsc)
+# Contributor: goekce (github.com/goekce)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=6
+pkgrel=7
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
