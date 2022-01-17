@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://element.io"
 license=('Apache')
 depends=('sqlcipher')
-source=("https://packages.riot.im/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_amd64.deb"
+source=("https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_amd64.deb"
         "element-desktop-nightly.sh")
 sha256sums=('c9a5d79821877e242872e6a41476d6ab664bfb070ccba26cbd264307f2d2cb54'
             'eec30e5b0e549f7fa9c9c66fd3edb60bc8e0d9d0a77b79d8659cc06deced588d')
