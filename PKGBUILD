@@ -10,7 +10,7 @@ license=('MIT' 'APACHE')
 makedepends=('git' 'cargo' 'wayland' 'wayland-protocols')
 depends=('wayland')
 optdepends=('swayidle: Idle management daemon')
-b2sums=('f33837327700da2e68f4bd7a654dbaafb84c17e0a41becf77d9f92466a2e2e2c229da7f9e7ef239bbc7b300c7d48908606b6236a5722da90a9251aab40551e0b')
+b2sums=('SKIP')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
