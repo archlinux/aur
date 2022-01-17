@@ -1,7 +1,7 @@
 # Maintainer: SuperITMan <admin(at)superitman(dot)com>
 
 pkgname=chromium-keepassxc-browser
-pkgver=1.7.3
+pkgver=1.7.11
 pkgrel=1
 pkgdesc="KeePassXC Browser Extension for Chrome / Chromium"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=("chromium: open-source web browser by Google"
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::https://github.com/keepassxreboot/keepassxc-browser/releases/download/${pkgver}/keepassxc-browser_${pkgver}_chromium.zip")
 noextract=("${pkgname}-${pkgver}.zip")
-sha256sums=("e84f938301fed25e79cd75129e0a779fa1b345242b3fdc63e3529ecf4c2d5403")
+sha256sums=("5f445eeddb3d77239c598ec553c8bd0632b6c09df2898dfbf83fc30ac450c3bf")
 extensionname="keepassxc-browser"
 
 prepare() {
