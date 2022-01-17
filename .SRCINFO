@@ -1,6 +1,6 @@
 pkgbase = python-pytooling
 	pkgdesc = A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/pyTooling/pyTooling
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pytooling
 	depends = python-ruamel-yaml
 	provides = python-pytooling-packaging
 	replaces = python-pytooling-packaging
-	source = python-pytooling-1.9.2.tar.gz::https://github.com/pyTooling/pyTooling/archive/v1.9.2.tar.gz
-	sha256sums = 5e7de7a69e70e1760f2a1b03da392847225d9bd1751d77221861466777307cb2
+	source = python-pytooling-1.9.3.tar.gz::https://github.com/pyTooling/pyTooling/archive/v1.9.3.tar.gz
+	sha256sums = 090c6c4c5c0401b81a448e4fcb45fc5b681c866e16b72cc4870dbe0a8330bd29
 
 pkgname = python-pytooling
