@@ -1,30 +1,20 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 pkgname=writerscafe
-pkgver=2.42
-pkgrel=2
+pkgver=2.44
+pkgrel=1
 pkgdesc="A set of power tools for all fiction writers, whether experienced or just starting out"
 url="http://writerscafe.co.uk/"
 license=("custom")
-arch=('i686' 'x86_64')
-depends=('libpng12' 'gtk2' 'libsm')
-source_x86_64=(http://writerscafe.co.uk/WritersCafe-${pkgver}-x86_64.tar.gz writerscafe.sh)
-source_i686=(http://writerscafe.co.uk/WritersCafe-${pkgver}-i386.tar.gz writerscafe.sh)
-md5sums_i686=('5cb5a833a83448668e89047c47b4dd6a'
-              'e5a70cdeabb167db5a91e463a8fc1857')
-md5sums_x86_64=('10d2439f045622223d8b16b98ab185aa'
-                'e5a70cdeabb167db5a91e463a8fc1857')
+arch=('x86_64')
+depends=('gtk2')
+source_x86_64=(http://writerscafe.co.uk/WritersCafe-${pkgver}-ubuntu-x86_64.tar.gz "${pkgname}".sh)
+sha256sums_x86_64=('abd9bcc56ea458a5202a8e9d9e125167538a351bc50acd2a42709f9a0f2700c1'
+                   '645b88a294043452fa72a508acb46eead006d207ae8e7702a3772da90c5f68ff')
 
 package() {
-    cd "$srcdir"
-    tar -xzf WritersCafeData.tar.gz
-
-    rm -f WritersCafeData.tar.gz
-    if [ "${CARCH}" = "x86_64" ]; then
-        rm -f WritersCafe-${pkgver}-x86_64.tar.gz
-    fi
-    if [ "${CARCH}" = "i686" ]; then
-        rm -f WritersCafe-${pkgver}-i386.tar.gz
-    fi
+    cd "${srcdir}"
+    mkdir out
+    tar -xzf WritersCafeData.tar.gz -C out
 
     install -dm755 "${pkgdir}"/usr/share/writerscafe2
     install -D -m755 "${srcdir}"/writerscafe.sh "${pkgdir}"/usr/bin/writerscafe2
@@ -33,7 +23,7 @@ package() {
     mkdir -p "${pkgdir}"/usr/share/applications
     mkdir -p "${pkgdir}"/usr/share/pixmaps
 
-    cp -R * "${pkgdir}"/usr/share/writerscafe2    
+    cp -R "${srcdir}"/out/* "${pkgdir}"/usr/share/writerscafe2
     cp "${pkgdir}"/usr/share/writerscafe2/writerscafe2.desktop "${pkgdir}"/usr/share/applications/writerscafe2.desktop
     cp "${pkgdir}"/usr/share/writerscafe2/appicons/writerscafe128x128.png "${pkgdir}"/usr/share/pixmaps/writerscafe2.png
 }
