@@ -1,0 +1,15 @@
+pkgbase = pndpd-git
+	pkgdesc = NDP Proxy + Responder daemon
+	pkgver = 1.2.7.r1.gdff2f9a
+	pkgrel = 1
+	url = https://github.com/Kioubit/pndpd
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	provides = pndpd
+	conflicts = pndpd
+	source = git+https://github.com/Kioubit/pndpd.git
+	sha256sums = SKIP
+
+pkgname = pndpd-git
