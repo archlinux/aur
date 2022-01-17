@@ -1,19 +1,18 @@
 pkgbase = alephone-marathon
 	pkgdesc = Marathon 1 scenario data files for Aleph One
-	pkgver = 20210408
+	pkgver = 20220115
 	pkgrel = 1
 	url = https://alephone.lhowon.org/
 	arch = any
 	license = custom
 	depends = alephone
-	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20210408/Marathon-20210408-Data.zip
+	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20220115/Marathon-20220115-Data.zip
 	source = alephone-marathon.sh
 	source = LICENSE
 	source = alephone-marathon.desktop
-	sha256sums = 58ce5cd17fc119e0eef1dee1304dcb8996af92026597aadcdc179ab7fd9bb1d8
+	sha256sums = 02186d6a05c7101119191dcb11b53acce52bb8a627cbe05c818018e017590410
 	sha256sums = b26bd186919c8e3ee3950e29054b3b932e8881e7a443a3854e97d692a72bb022
 	sha256sums = 0dde70e490e4cb3e262ed7cc4f7ef6bdc49db557a14fc8674de38b2a9a426504
 	sha256sums = 65c3e36b3fa89a39e76861dc36f61786c924723e6c53fd0ec486b8b4bd21e5df
 
 pkgname = alephone-marathon
-
