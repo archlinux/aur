@@ -2,8 +2,8 @@
 
 pkgbase=ttf-misans
 pkgname=($pkgbase)
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.000
+pkgrel=1
 arch=(any)
 url='https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854'
 license=(custom)
