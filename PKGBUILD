@@ -1,4 +1,5 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
@@ -6,11 +7,9 @@
 # Contributor: Andrea Fagiani <andfagiani _at_ gmail dot com>
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
-
 pkgbase=calibre-git
 pkgname=calibre-git
-pkgver=5.22.1.r16.g4dc0502a29
+pkgver=5.34.0.r114.g0cf7af69ac
 pkgrel=1
 _dictionaries_commit="8cd38fb5138f2e456506aaa889ec2b7042a7439e"
 pkgdesc="Ebook management application"
@@ -41,13 +40,13 @@ sha256sums=('SKIP'
 validpgpkeys=('3CE1780F78DD88DF45194FD706BC317B515ACE7C') # Kovid Goyal (New longer key) <kovid@kovidgoyal.net>
 
 pkgver() {
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${pkgbase%-git}"
 
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${pkgbase%-git}"
 
     python setup.py git_version
 
@@ -62,7 +61,7 @@ prepare(){
 }
 
 build() {
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${pkgbase%-git}"
 
     # Don't use the bootstrapper, since it tries to checkout/pull the
     # translations repo and generally touch the internet. Instead call each
@@ -87,24 +86,22 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${pkgbase%-git}"
 
     _test_excludes=(
-        # merely testing if a runtime-optional feature works, but is not
-        # operative yet e.g. only tries checking if the optdepend is importable
+        # merely testing if a runtime-optional feature optdepend is importable
         'speech_dispatcher'
         # tests if a completely unused module is bundled
         'pycryptodome'
+        # only fails on local builds, and that intermittently
+        'test_searching'
     )
 
-    # without xvfb-run this fails with much "Control socket failed to recv(), resetting"
-    # ERROR: test_websocket_perf (calibre.srv.tests.web_sockets.WebSocketTest)
-    # one or two tests are a bit flaky, but the python3 build seems to succeed more often
-    LANG='en_US.UTF-8' xvfb-run python setup.py test "${_test_excludes[@]/#/--exclude-test-name=}"
+    LANG='en_US.UTF-8' python setup.py test "${_test_excludes[@]/#/--exclude-test-name=}"
 }
 
 package() {
-    cd "${srcdir}/${pkgbase%-git}"
+    cd "${pkgbase%-git}"
 
     # If this directory doesn't exist, zsh completion won't install.
     install -d "${pkgdir}/usr/share/zsh/site-functions"
@@ -112,13 +109,15 @@ package() {
     LANG='en_US.UTF-8' python setup.py install \
         --staging-root="${pkgdir}/usr" \
         --prefix=/usr \
-        --system-plugins-location /usr/share/calibre/system-plugins
+        --system-plugins-location=/usr/share/calibre/system-plugins
 
     cp -a man-pages/ "${pkgdir}/usr/share/man"
 
     # not needed at runtime
     rm -r "${pkgdir}"/usr/share/calibre/rapydscript/
 
+    # Compiling bytecode FS#33392
+    # This is kind of ugly but removes traces of the build root.
     while read -rd '' _file; do
         _destdir="$(dirname "${_file#${pkgdir}}")"
         python3 -m compileall -d "${_destdir}" "${_file}"
