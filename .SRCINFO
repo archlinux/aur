@@ -7,7 +7,6 @@ pkgbase = r-tikzdevice
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = gcc
 	depends = r>=2.14.0
 	depends = r-filehash>=2.3
 	depends = r-png
@@ -23,7 +22,6 @@ pkgbase = r-tikzdevice
 	optdepends = r-testthat
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/tikzDevice_0.12.3.1.tar.gz
-	md5sums = 1f1cfeea483220306944046dff5eafe9
+	sha256sums = 5bed80c0fca8806f0d0c0c2930e7184119b3abd7275165530d251410b9f91e10
 
 pkgname = r-tikzdevice
-
