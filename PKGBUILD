@@ -1,0 +1,30 @@
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
+
+pkgname=wldash
+pkgver=0.3.0
+pkgrel=1
+pkgdesc='Wayland launcher and dashboard'
+arch=('x86_64')
+url='https://git.sr.ht/~kennylevinsen/wldash'
+license=('GPL3')
+depends=('alsa-lib' 'dbus' 'fontconfig' 'gcc-libs' 'glibc' 'libpulse')
+makedepends=('cargo')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~kennylevinsen/${pkgname}/archive/v${pkgver}.tar.gz"
+        "fix-cargo-lock.patch")
+sha512sums=('48f5356e76f77f9284b5533ee410b9a6ea2cb279da29f45d827ee521c4a46213909298e4c08c05cf1964b280d0cfb5124b0b85e85437c8289d7557194b95548d'
+            '887a94e2af4aac20c118f75a63b5b12f41b925efa3a685792953dda4b02d94d08c1048cc9db61794d296470c2b85fca1fc947ba0b6f5b60dfc0ffcbba11c242a')
+
+prepare() {
+    cd "${pkgname}-v${pkgver}"
+    patch -Np1 -i "${srcdir}/fix-cargo-lock.patch"
+}
+
+build() {
+    cd "${pkgname}-v${pkgver}"
+    cargo build --release --locked
+}
+
+package() {
+    cd "${pkgname}-v${pkgver}"
+    install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
