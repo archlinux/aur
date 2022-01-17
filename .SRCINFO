@@ -12,6 +12,7 @@ pkgbase = hut
 	license = AGPLv3
 	makedepends = go
 	makedepends = git
+	makedepends = scdoc
 	source = git+https://git.sr.ht/~emersion/hut
 	sha256sums = SKIP
 

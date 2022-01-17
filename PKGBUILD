@@ -5,7 +5,7 @@ pkgdesc='A CLI tool for sr.ht'
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://git.sr.ht/~emersion/hut"
 license=('AGPLv3')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'scdoc')
 source=("git+https://git.sr.ht/~emersion/hut")
 sha256sums=('SKIP')
 
