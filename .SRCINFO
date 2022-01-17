@@ -1,0 +1,16 @@
+pkgbase = perl-tk-zinc
+	pkgdesc = Another Canvas which proposes many new functions, some based on openGL
+	pkgver = 3.306
+	pkgrel = 1
+	url = https://metacpan.org/dist/Tk-Zinc
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	depends = perl-tk
+	depends = glu
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/A/AS/ASB/Tk-Zinc-3.306.tar.gz
+	md5sums = 3c3e646795e7ab3d45bdeada4566aa09
+
+pkgname = perl-tk-zinc
