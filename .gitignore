@@ -6,3 +6,4 @@
 !*.patch
 !*.diff
 !sonixd
+!*.desktop

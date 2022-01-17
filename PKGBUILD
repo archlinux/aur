@@ -11,9 +11,11 @@ makedepends=('yarn' 'nvm' 'asar')
 conflicts=("$pkgname-appimage")
 replaces=("$pkgname-appimage")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeffvli/sonixd/archive/refs/tags/v$pkgver.tar.gz"
-	"$pkgname")
+	"$pkgname"
+	"$pkgname.desktop")
 sha256sums=('7a6f05612d2459d07d49d885d7547fd62d44745f53b4073f1da4e7bdab36fb13'
-            '89039f59dc58490cc5a2e05bb38b3645448df56b2e763d6170facb64e73241d0')
+            '89039f59dc58490cc5a2e05bb38b3645448df56b2e763d6170facb64e73241d0'
+            '9e2e1cce47b594b75b8df7a1cf3a5a6da340dda9d0cfdf2aa305d097fc0bbc7a')
 
 _ensure_local_nvm() {
 	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
@@ -47,12 +49,14 @@ build() {
 
 package() {
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
 	cd "$pkgname-$pkgver"
 	local i686=linux-ia32-unpacked x86_64=linux-unpacked
 
 	install -d "$pkgdir/usr/lib/$pkgname/"
 
+	install -Dm644 "release/${!CARCH}/resources/assets/icons/512x512.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	cp -r "release/${!CARCH}/resources/assets" "$pkgdir/usr/lib/$pkgname"
 	asar e "release/${!CARCH}/resources/app.asar" "$pkgdir/usr/lib/$pkgname/$pkgname/"
 }
