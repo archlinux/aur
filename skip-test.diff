@@ -1,0 +1,13 @@
+ tests/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git c/tests/Makefile.am i/tests/Makefile.am
+index 5ffdd46..b326d47 100644
+--- c/tests/Makefile.am
++++ i/tests/Makefile.am
+@@ -1,4 +1,4 @@
+-TESTS = proxy proxy-continuous threaded oauth oauth-async oauth2 flickr lastfm xml custom-serialize
++TESTS = proxy proxy-continuous threaded oauth2 flickr lastfm xml custom-serialize
+ 
+ AM_CPPFLAGS = $(SOUP_CFLAGS) -I$(top_srcdir) $(GCOV_CFLAGS)
+ AM_LDFLAGS = $(SOUP_LIBS) $(GCOV_LDFLAGS) \
