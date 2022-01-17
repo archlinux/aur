@@ -15,8 +15,9 @@ pkgname=(pipewire-full-git
          pipewire-full-jack-client-git
          pipewire-full-vulkan-git
          pipewire-full-ffmpeg-git
+         pipewire-full-roc-git
          )
-pkgver=0.3.42.r26.g15ce86af
+pkgver=0.3.43.r68.g7c6649b5
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -32,6 +33,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              jack2
              vulkan-headers vulkan-icd-loader
              ffmpeg
+             roc-toolkit
              )
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
@@ -49,7 +51,6 @@ build() {
     -D test=enabled \
     -D libcamera=disabled \
     -D sdl2=disabled \
-    -D roc=disabled \
     -D session-managers=[] \
     -D vulkan=enabled \
     -D ffmpeg=enabled \
@@ -88,6 +89,7 @@ package_pipewire-full-git() {
               'pipewire-full-jack-client-git: JACK device/client'
               'pipewire-full-pulse-git: PulseAudio replacement'
               'pipewire-full-zeroconf-git: Zeroconf support'
+              'pipewire-full-roc-git: ROC support'
               'gst-plugin-pipewire-full-git: GStreamer support'
               'ofono: ofono Bluetooth HFP support'
               'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
@@ -127,6 +129,8 @@ package_pipewire-full-git() {
   _pick vulkan usr/lib/spa-0.2/vulkan
 
   _pick ffmpeg usr/lib/spa-0.2/ffmpeg
+
+  _pick roc usr/lib/pipewire-$_ver/libpipewire-module-roc-{sink,source}.so
 }
 
 package_pipewire-full-docs-git() {
@@ -254,6 +258,17 @@ package_pipewire-full-ffmpeg-git() {
   conflicts=(pipewire-ffmpeg)
 
   mv ffmpeg/* "${pkgdir}"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+}
+
+package_pipewire-full-roc-git() {
+  pkgdesc+=" - ROC support"
+  depends=(pipewire-full-git roc-toolkit)
+  provides=(pipewire-roc)
+  conflicts=(pipewire-roc)
+
+  mv roc/* "${pkgdir}"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
