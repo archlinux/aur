@@ -6,7 +6,7 @@
 pkgname=alchemy-viewer
 pkgver=6.5.2.48005.c0f6ab8dca
 pkgrel=1
-_branch="${AL_GIT_BRANCH:=main}"
+_revision='fb451f141d'
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -46,7 +46,7 @@ prepare() {
     git fetch --prune
     git checkout main
     git pull --autostash
-    git checkout "origin/${_branch}"
+    git checkout "${AL_GIT_BRANCH:=${_revision}}"
 }
 
 build() {
