@@ -2,7 +2,7 @@
 
 pkgname=stardust-xr-git
 _pkgname=stardust-xr
-pkgver=r511.44fe01c
+pkgver=r656.ec7be6b
 pkgrel=1
 
 pkgdesc="Reference server implementation for Stardust XR using StereoKit"
@@ -11,8 +11,8 @@ url="https://stardustxr.org/"
 license=('GPL2')
 
 provides=('stardust-xr')
-depends=('openxr>=1.0.16' 'fontconfig' 'libegl' 'libgl' 'flatbuffers>=1.12.0' 'libstardustxr' 'wayland-protocols')
-makedepends=('git' 'meson>=0.55.0' 'ninja' 'cmake')
+depends=('openxr>=1.0.16' 'fontconfig' 'libegl' 'libgl' 'flatbuffers>=1.12.0' 'libstardustxr' 'xcb-util-wm' 'xcb-util-errors' 'libxkbcommon' 'seatd' 'pixman')
+makedepends=('git' 'meson>=0.55.0' 'ninja' 'cmake' 'wayland-protocols' 'xorgproto')
 
 source=(git+https://github.com/StardustXR/stardust-xr.git#branch=dev)
 sha256sums=('SKIP')
@@ -28,5 +28,6 @@ build() {
 }
 
 package() {
-	meson install -C build --destdir "$pkgdir"
+	#meson install -C build --destdir "$pkgdir" --skip-subprojects
+	meson install -C build --destdir "$pkgdir" --skip-subprojects
 }
