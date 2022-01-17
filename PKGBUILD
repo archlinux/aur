@@ -1,7 +1,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-screensaver-git
-pkgver=3.6.0.r58.g19b0852
+pkgver=3.6.0.r75.gd72022b
 pkgrel=1
 pkgdesc="Budgie's fork of GNOME's legacy screensaver"
 arch=('x86_64')
@@ -22,16 +22,15 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$pkgname"
-    ./autogen.sh
+    arch-meson build --prefix=/usr --sysconfdir=/etc --buildtype plain
 }
 
 build() {
     cd "$srcdir/$pkgname"
-    ./configure --prefix=/usr --sysconfdir=/etc
-    make
+    ninja -C build
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR=$pkgdir ninja -C build install
 }
