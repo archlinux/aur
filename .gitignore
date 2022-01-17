@@ -1,0 +1,5 @@
+/anki
+*.pkg.*
+*.tar.gz
+/pkg
+/src
