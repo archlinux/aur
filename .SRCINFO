@@ -11,7 +11,6 @@ pkgbase = r-futile.logger
 	optdepends = r-testthat
 	optdepends = r-jsonlite
 	source = https://cran.r-project.org/src/contrib/futile.logger_1.4.3.tar.gz
-	md5sums = ba0e8d2dfb5a970b51c21907bbf8bfc2
+	sha256sums = 5e8b32d65f77a86d17d90fd8690fc085aa0612df8018e4d6d6c1a60fa65776e4
 
 pkgname = r-futile.logger
-
