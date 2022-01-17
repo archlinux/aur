@@ -2,14 +2,14 @@
 
 pkgname=purism-stream-git
 _pkgname=Stream
-pkgver=0.1.6.r0.g36db6ed
+pkgver=0.1.6.r2.ga2897ee
 pkgrel=1
 pkgdesc="YouTube client for GNOME, built for the Librem 5"
 arch=('x86_64')
 url="https://source.puri.sm/todd/Stream"
 license=('GPL3')
-depends=('gtk3' 'libhandy' 'pulseaudio')
-makedepends=('meson' 'python')
+depends=('gtk3' 'libhandy' 'libsoup' 'libpulse' 'python')
+makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -30,9 +30,9 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
