@@ -2,20 +2,20 @@
 # Maintainer: András Wacha < awacha at gmail >
 
 pkgname='perl-file-map'
-pkgver='0.64'
+pkgver='0.67'
 pkgrel='1'
 pkgdesc="Memory mapping made simple and safe."
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-module-build>=0.28' 'perl-perlio-layers>=0' 'perl-sub-exporter-progressive>=0.001005' 'perl>=5.008')
+depends=('perl-module-build>=0.4231' 'perl-perlio-layers>=0.012' 'perl-sub-exporter-progressive>=0.001013' 'perl>=5.008')
 makedepends=()
 checkdepends=('perl-test-fatal>=0' 'perl-test-warnings>=0.005')
 url='https://metacpan.org/release/File-Map'
-source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/File-Map-0.64.tar.gz')
-md5sums=('83445eda69ea0b79abaeab7950506283')
-sha512sums=('dc1182e79d20e835e19c78f5187dd108b45938209933a7074674d472ac300277fc1fb7604b023ad7d3456ef5837bb8274a94e1cac79f95f2a2235855c59d3809')
-_distdir="File-Map-0.64"
+source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/File-Map-${pkgver}.tar.gz")
+md5sums=('abcc4cbd9a8765b18f8a107859d69df0')
+sha512sums=('52bd9ebb546e6b0e0d58cce3e5f5983c0f89bf05ba3f29d220b6d83ca150e200ac9c6e7d2adb717838c0b20e9ddd68c94509b47775d27273c37bc44dcff1d507')
+_distdir="File-Map-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
