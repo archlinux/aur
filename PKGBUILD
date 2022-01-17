@@ -2,7 +2,7 @@
 # Contributor: Richard Quirk
 
 pkgname=cmake-lint
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Check for coding style issues in CMake files"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/cmake-lint/cmake-lint"
 license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('7be6c4bab4c46c21a4c96cc8451ec112ee6c6190ff97a169f0920be5711c49def38e02926da2cf37c2f3a227ccb858defd310eed8f87b79a2c21ce643942110f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('bf060987c74e07890f7314a4832c2e54ffb9c5c1e6d799387bc438010f918676')
 
 build() {
   cd "$pkgname-$pkgver"
