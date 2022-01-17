@@ -2,7 +2,7 @@
 
 pkgname=ghdl-llvm-git
 pkgver=2.0.0dev.r6945.gaee3585af
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - LLVM back-end'
 url='https://github.com/ghdl/ghdl'
@@ -48,6 +48,10 @@ build() {
 	# 2021-05-16 Comment by xiretza : LLVM can't handle -fvar-tracking-assignments from DEBUG_C(XX)FLAGS
 	CFLAGS=${CFLAGS/-fvar-tracking-assignments}
 	CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
+
+	export ADA_FLAGS="$CFLAGS -fno-strict-aliasing"
+	ADA_FLAGS="${ADA_FLAGS//-Wformat}"
+	ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
 	./configure \
 		--prefix=/usr/ \
