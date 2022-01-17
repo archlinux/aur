@@ -1,2 +1,0 @@
-# virtualgl-git
-
