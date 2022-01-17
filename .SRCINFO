@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-git
 	pkgdesc = This is the next generation of Alchemy Viewer! - Git Source build
 	pkgver = 6.5.2.47999.e0e1e9fb6f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemyviewer.org
 	arch = x86_64
 	license = LGPL
