@@ -7,7 +7,6 @@ pkgbase = r-futile.options
 	license = LGPL3
 	depends = r>=2.8.0
 	source = https://cran.r-project.org/src/contrib/futile.options_1.0.1.tar.gz
-	md5sums = 040daac5089839c104ffd0e0fbedb98d
+	sha256sums = 7a9cc974e09598077b242a1069f7fbf4fa7f85ffe25067f6c4c32314ef532570
 
 pkgname = r-futile.options
-
