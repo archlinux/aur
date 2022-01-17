@@ -3,8 +3,8 @@
 
 pkgbase=litecoin-git
 pkgname=('litecoin-daemon-git' 'litecoin-cli-git' 'litecoin-qt-git' 'litecoin-tx-git')
-git_branch=0.18
-pkgver=0.18.1+0+g81c4f2d80
+git_branch=0.21
+pkgver=0.21.1rc1+0+g3665dadce
 pkgrel=1
 arch=('x86_64')
 url="http://www.litecoin.org/"
@@ -22,23 +22,23 @@ makedepends=(
 )
 source=(
   "$pkgbase::git+https://github.com/litecoin-project/litecoin.git#branch=$git_branch"
-  "qt515.patch"
   'litecoin-qt.desktop'
   'litecoind.service'
   'litecoin.sysusers'
+  'boost1770.patch'
 )
 sha256sums=('SKIP'
-            '97fbaf4f5dca82771a960b545c277a84eadce1eb146e8a61b0a31e73d2df6cc8'
             'ec2a2669a50fa96147a1d04cacf1cbc3d63238aee97e3b0df3c6f753080dae96'
             '98f5a1b28fe13b9093fa89cfe56bb84af09ff5f0d6e9ca196ec02d6dd826ca88'
-            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db')
+            'a722b958a7e9b3468d902efa6c9804e01d78fdf88ead4252c934aee2b1d800db'
+            '3ccbff49fef5a7e820168f4c4b75ae9a1e74e81dc08587145aa85599254b85e5')
 
 
 prepare() {
   cd "$pkgbase"
   autoreconf -fi
 
-  patch -Np1 -i ../qt515.patch
+  patch -Np1 -i ../boost1770.patch
 }
 
 pkgver() {
@@ -50,11 +50,6 @@ build() {
   cd "$pkgbase"
   ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --disable-gui-tests
   make
-}
-
-check() {
-  cd "$pkgbase"
-  make check
 }
 
 package_litecoin-qt-git() {
@@ -95,7 +90,7 @@ package_litecoin-cli-git() {
   provides=(litecoin-cli)
 
   cd "$pkgbase"
-  install -Dt "$pkgdir/usr/bin/litecoin-cli"        -m755 src/litecoin-cli
+  install -Dt "$pkgdir/usr/bin"                     -m755 src/litecoin-cli
   install -Dt "$pkgdir/usr/share/man/man1"          -m644 doc/man/litecoin-cli.1
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 COPYING
 }
