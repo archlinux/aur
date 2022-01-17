@@ -1,7 +1,9 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: George Rawlinson <grawlinson@archlinux.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=pulldown-cmark
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Pull parser for CommonMark, written in Rust'
 arch=('x86_64')
@@ -10,8 +12,8 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("pulldown-cmark-$pkgver.tar.gz::https://crates.io/api/v1/crates/pulldown-cmark/$pkgver/download")
-sha512sums=('57151704ea4e46138b5712d32a67600569615886d7b9f1329324bac2e26ec5cbee3a3db1634348b485bc39e8ccd4531ece3ae377efcce9a4b8e128cdad9792bd')
-b2sums=('b627deaf477b27eabb1086f2d4b81450e8d9247c6fb931514e87c9d7b49850bb38bf4aaa8738cf6a74214f00260804c0bbd001e3150c8cd3bde1edd07c173eaf')
+sha512sums=('466d6b4ceee89e1a8c71ff7ab8fc1000e7ef1d9bd22193a152358e1dad28c0c1bbe619caf71106d74eb376805dbfd2b888a0626c8c2851bd814d348873843306')
+b2sums=('ee295f4b65dee11c0b39054a4613cbfa1058a8dce05dc298bacc151e049dbe3f05b1739205ac345a98e70662187932d226c0d0667974b3c6a6f55882b566564b')
 
 prepare() {
   cd $pkgname-$pkgver
