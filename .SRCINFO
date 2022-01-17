@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 2111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
@@ -48,6 +48,10 @@ pkgname = vmware-horizon-client
 	conflicts = vmware-horizon-pcoip
 	replaces = vmware-horizon-pcoip
 
+pkgname = vmware-horizon-html5mmr
+	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - HTML5 MultiMedia Redirection
+	depends = vmware-horizon-client
+
 pkgname = vmware-horizon-integrated-printing
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - integrated printing
 	depends = vmware-horizon-client
@@ -79,6 +83,10 @@ pkgname = vmware-horizon-smartcard
 	depends = vmware-horizon-client
 	depends = pcsclite
 	depends = glib2
+
+pkgname = vmware-horizon-teams-optimization
+	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - Teams optimization
+	depends = vmware-horizon-client
 
 pkgname = vmware-horizon-tsdr
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - folder sharing
