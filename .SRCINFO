@@ -1,19 +1,14 @@
 pkgbase = python-pylru
 	pkgdesc = A least recently used (LRU) cache implementation
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jlhutch/pylru
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	options = !emptydirs
 	source = pylru-1.2.0.tar.gz::https://github.com/jlhutch/pylru/archive/v1.2.0.tar.gz
 	sha256sums = c4dcf175f6317539199434db13ffea0f642a52fac1e547e2e5f0866686fc9292
 
 pkgname = python-pylru
 	depends = python
-
-pkgname = python2-pylru
-	depends = python2
-
