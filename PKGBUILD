@@ -4,8 +4,8 @@ pkgname=opentabletdriver
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.0.2
+pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -20,22 +20,16 @@ source=("OpenTabletDriver-$pkgver.tar.gz::https://github.com/OpenTabletDriver/Op
         "$_lpkgname.service"
         "$_pkgname.desktop"
         "notes.install"
-        "fix-settings-migration.patch::https://github.com/OpenTabletDriver/OpenTabletDriver/commit/a4616aa0aea08a0b4470c7ba9624a8e7604b0f90.patch")
+        )
 
-sha256sums=('ccec597692b17530afef836583cf4af5029bd0edccfa9b86cacc084db90e6178'
+sha256sums=('d148aac9dee2175261669b51cedd046f19efff6fbda5573ca1f0e2a636d2d4d9'
             '8a09d29e683aefcbf54e5fe891d5688f959d9399804f9c151f0e8f6e6a1ede1a'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'b28aa1d2d4f531d877f6601eb5e684f78cee7acfe2bd7af739e5144fd36bafdf'
-            '1c8441611cdbd3652be66813ff33fa16a2093db43838ce454d7af270b187ee3e')
+            'b28aa1d2d4f531d877f6601eb5e684f78cee7acfe2bd7af739e5144fd36bafdf')
 
 _srcdir="OpenTabletDriver-$pkgver"
-
-prepare() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  patch -Np1 < "$srcdir/fix-settings-migration.patch"
-}
 
 build() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
