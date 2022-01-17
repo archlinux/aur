@@ -1,7 +1,7 @@
 pkgbase = ghdl-llvm-git
 	pkgdesc = VHDL simulator - LLVM back-end
 	pkgver = 2.0.0dev.r6945.gaee3585af
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = ghdl-llvm-git
 	conflicts = ghdl
 	conflicts = ghdl-gcc-git
 	conflicts = ghdl-mcode-git
-	source = ghdl::git://github.com/ghdl/ghdl.git
+	source = ghdl::git+https://github.com/ghdl/ghdl.git
 	sha256sums = SKIP
 
 pkgname = ghdl-llvm-git
