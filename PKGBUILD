@@ -15,14 +15,11 @@ source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_$
 sha256sums=('1276702b631a9fb50a68364ceae30b52d2076f8f7d7d349291ad7f54fea10d28')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
