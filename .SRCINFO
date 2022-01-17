@@ -1,7 +1,7 @@
 pkgbase = ghdl-mcode-git
 	pkgdesc = VHDL simulator - mcode back-end
 	pkgver = 2.0.0dev.r6945.gaee3585af
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ghdl/ghdl
 	arch = x86_64
 	arch = i686
