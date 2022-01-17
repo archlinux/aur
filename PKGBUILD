@@ -1,6 +1,6 @@
 # Maintainer: wostarxi <wostarxi@outlook.com>
 pkgname=hugo-extended-bin
-pkgver=0.91.2
+pkgver=0.92.0
 pkgrel=1
 epoch=
 pkgdesc="hugo entended version"
@@ -18,8 +18,8 @@ replaces=()
 backup=()
 options=()
 install=
-source=("https://github.com/gohugoio/hugo/releases/download/v0.91.2/hugo_extended_0.91.2_Linux-64bit.deb")
-sha256sums=("a7480201ec1e32f7fc0c0346234fa8f80cea9b9945a33809e984addd1ef322fb")
+source=("https://github.com/gohugoio/hugo/releases/download/v${pkgver}/hugo_extended_${pkgver}_Linux-64bit.deb")
+sha256sums=("99b49ab93b6a337d872affbeb257ed63a80735a3cc26f85e8eb282a23103185d")
 
 package() {
 	cd $srcdir
