@@ -1,13 +1,12 @@
 pkgbase = vcd
-	pkgdesc = VCD file (Value Change Dump) command line viewer for Windows, Linux, OSX
-	pkgver = 191029
+	pkgdesc = VCD file (Value Change Dump) command line viewer
+	pkgver = 211113
 	pkgrel = 1
 	url = https://github.com/yne/vcd
 	arch = i686
 	arch = x86_64
-	license = custom
-	source = https://github.com/yne/vcd/archive/191029.tar.gz
-	md5sums = 3a60fa3212d5c93c76668fd162b0b223
+	license = MIT
+	source = https://github.com/yne/vcd/archive/211113.tar.gz
+	sha256sums = f4e6df3ef8a9f7dc10162ad7994d9dfcb64914df355e563fb70406ca4a838a19
 
 pkgname = vcd
-

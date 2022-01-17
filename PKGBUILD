@@ -5,19 +5,22 @@
 #
 
 pkgname=vcd
-pkgver=191029
+pkgver=211113
 pkgrel=1
-pkgdesc="VCD file (Value Change Dump) command line viewer for Windows, Linux, OSX"
+pkgdesc="VCD file (Value Change Dump) command line viewer"
 arch=('i686' 'x86_64')
 url="https://github.com/yne/vcd"
-license=('custom') # see LICENSE.txt
+license=('MIT')
 depends=()
 #
 source=(
         https://github.com/yne/${pkgname}/archive/${pkgver}.tar.gz
        )
+
 #
-md5sums=('3a60fa3212d5c93c76668fd162b0b223')
+#md5sums=('90b917fc4d98010619321cb7e006d4ec')
+sha256sums=('f4e6df3ef8a9f7dc10162ad7994d9dfcb64914df355e563fb70406ca4a838a19')
+
 
 #
 prepare()
@@ -37,8 +40,8 @@ build()
 package()
 {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}"/usr/bin
-  cp vcd "${pkgdir}"/usr/bin
+  mkdir -p "${pkgdir}/usr/bin"
+  cp vcd "${pkgdir}/usr/bin"
 }
 
 #
