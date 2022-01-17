@@ -104,6 +104,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.15.7-8.xz"
         #"Linux-5.15.7.patch.xz"
 
+        # fix graphical corruption during boot
+        "v2-drm-amdgpu-Use-correct-VIEWPORT_DIMENSION-for-DCN2.patch"
+
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
 
@@ -146,6 +149,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
             '37d5d9f7ddc3262b3c4a247f49d8221653026cef625a4403ec0be3fcbb7dc2be'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
+            'abfc143482bb993f12bc1e8b94b98e419a09641c68e8be7ece29b5a1f0b0f43b'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'

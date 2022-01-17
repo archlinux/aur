@@ -1,0 +1,85 @@
+From patchwork Fri Jan  7 16:48:14 2022
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: [v2] drm/amdgpu: Use correct VIEWPORT_DIMENSION for DCN2
+From: Harry Wentland <harry.wentland@amd.com>
+X-Patchwork-Id: 468786
+Message-Id: <20220107164814.7161-1-harry.wentland@amd.com>
+To: <amd-gfx@lists.freedesktop.org>
+Cc: Alex Deucher <alexander.deucher@amd.com>, Huang
+ Rui <ray.huang@amd.com>, Harry Wentland <harry.wentland@amd.com>,
+ =?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+ stable@vger.kernel.org
+Date: Fri, 7 Jan 2022 11:48:14 -0500
+
+For some reason this file isn't using the appropriate register
+headers for DCN headers, which means that on DCN2 we're getting
+the VIEWPORT_DIMENSION offset wrong.
+
+This means that we're not correctly carving out the framebuffer
+memory correctly for a framebuffer allocated by EFI and
+therefore see corruption when loading amdgpu before the display
+driver takes over control of the framebuffer scanout.
+
+Fix this by checking the DCE_HWIP and picking the correct offset
+accordingly.
+
+Long-term we should expose this info from DC as GMC shouldn't
+need to know about DCN registers.
+
+Cc: stable@vger.kernel.org
+Signed-off-by: Harry Wentland <harry.wentland@amd.com>
+Reviewed-by: Huang Rui <ray.huang@amd.com>
+Acked-by: Christian König <christian.koenig@amd.com>
+Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+---
+ drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c b/drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c
+index 57f2729a7bd0..c1a22a8a4c85 100644
+--- a/drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/gmc_v9_0.c
+@@ -72,6 +72,9 @@
+ #define mmDCHUBBUB_SDPIF_MMIO_CNTRL_0                                                                  0x049d
+ #define mmDCHUBBUB_SDPIF_MMIO_CNTRL_0_BASE_IDX                                                         2
+ 
++#define mmHUBP0_DCSURF_PRI_VIEWPORT_DIMENSION_DCN2                                                          0x05ea
++#define mmHUBP0_DCSURF_PRI_VIEWPORT_DIMENSION_DCN2_BASE_IDX                                                 2
++
+ 
+ static const char *gfxhub_client_ids[] = {
+ 	"CB",
+@@ -1134,6 +1137,8 @@ static unsigned gmc_v9_0_get_vbios_fb_size(struct amdgpu_device *adev)
+ 	u32 d1vga_control = RREG32_SOC15(DCE, 0, mmD1VGA_CONTROL);
+ 	unsigned size;
+ 
++	/* TODO move to DC so GMC doesn't need to hard-code DCN registers */
++
+ 	if (REG_GET_FIELD(d1vga_control, D1VGA_CONTROL, D1VGA_MODE_ENABLE)) {
+ 		size = AMDGPU_VBIOS_VGA_ALLOCATION;
+ 	} else {
+@@ -1142,7 +1147,6 @@ static unsigned gmc_v9_0_get_vbios_fb_size(struct amdgpu_device *adev)
+ 		switch (adev->ip_versions[DCE_HWIP][0]) {
+ 		case IP_VERSION(1, 0, 0):
+ 		case IP_VERSION(1, 0, 1):
+-		case IP_VERSION(2, 1, 0):
+ 			viewport = RREG32_SOC15(DCE, 0, mmHUBP0_DCSURF_PRI_VIEWPORT_DIMENSION);
+ 			size = (REG_GET_FIELD(viewport,
+ 					      HUBP0_DCSURF_PRI_VIEWPORT_DIMENSION, PRI_VIEWPORT_HEIGHT) *
+@@ -1150,6 +1154,14 @@ static unsigned gmc_v9_0_get_vbios_fb_size(struct amdgpu_device *adev)
+ 					      HUBP0_DCSURF_PRI_VIEWPORT_DIMENSION, PRI_VIEWPORT_WIDTH) *
+ 				4);
+ 			break;
++		case IP_VERSION(2, 1, 0):
++			viewport = RREG32_SOC15(DCE, 0, mmHUBP0_DCSURF_PRI_VIEWPORT_DIMENSION_DCN2);
++			size = (REG_GET_FIELD(viewport,
++					      HUBP0_DCSURF_PRI_VIEWPORT_DIMENSION, PRI_VIEWPORT_HEIGHT) *
++				REG_GET_FIELD(viewport,
++					      HUBP0_DCSURF_PRI_VIEWPORT_DIMENSION, PRI_VIEWPORT_WIDTH) *
++				4);
++			break;
+ 		default:
+ 			viewport = RREG32_SOC15(DCE, 0, mmSCL0_VIEWPORT_SIZE);
+ 			size = (REG_GET_FIELD(viewport, SCL0_VIEWPORT_SIZE, VIEWPORT_HEIGHT) *
