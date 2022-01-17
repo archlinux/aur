@@ -1,3 +1,6 @@
-*
-!PKGBUILD
-!.SRCBUILD
+/.vscode
+/src
+/pkg
+*.deb
+*.pkg.*
+*.tar.*
