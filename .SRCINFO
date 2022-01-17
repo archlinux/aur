@@ -1,6 +1,6 @@
 pkgbase = antimicrox
 	pkgdesc = Graphical program used to map keyboard buttons and mouse controls to a gamepad
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/AntiMicroX/antimicroX
 	arch = aarch64
@@ -23,7 +23,7 @@ pkgbase = antimicrox
 	provides = antimicro
 	conflicts = antimicro
 	replaces = antimicro
-	source = antimicrox-3.2.0.tar.gz::https://github.com/AntiMicroX/antimicroX/archive/3.2.0.tar.gz
-	sha256sums = 07ea9ea783d683523f21438b0e35c3295e1040e104904595fc6f79d8ee5054b8
+	source = antimicrox-3.2.1.tar.gz::https://github.com/AntiMicroX/antimicroX/archive/3.2.1.tar.gz
+	sha256sums = 395149a5d5736f414c3b5a1fb2fad619b8a155f4bc251c8ba21af687ae78ff9b
 
 pkgname = antimicrox
