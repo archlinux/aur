@@ -38,10 +38,10 @@ pkgver() {
 }
 package() {
   mkdir -p "${pkgdir}"/opt
-  mv "${srcdir}/${_pkgfolder}" "$pkgdir/opt/$pkgname"
+  mv "${srcdir}/${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
   install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
   # Patch shortcut to avoid duplicated entries
   sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
-  sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
-  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
+  sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${pkgdir}/opt/${pkgname}/etc/refresh_desktop_app_entry.sh"
+  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "${pkgdir}/opt/${pkgname}/etc/refresh_desktop_app_entry.sh"
 }
