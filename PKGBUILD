@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../${pkgname}-${pkgver} \
+  cmake ../kdreports-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
@@ -33,7 +33,7 @@ check() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
-  cd ${pkgname}-${pkgver}
+  cd kdreports-${pkgver}
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
   install -Dm644 LICENSES/*.txt ${pkgdir}/usr/share/licenses/${pkgname}/
 }
