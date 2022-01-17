@@ -1,0 +1,15 @@
+pkgbase = kdreports-qt6
+	pkgdesc = A Qt library for generating printable and exportable reports from code and from XML descriptions
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.kdab.com/development-resources/qt-tools/kd-reports
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = custom
+	makedepends = cmake>=3.3
+	depends = qt6-base
+	source = kdreports-qt6-2.1.0.tar.gz::https://github.com/KDAB/KDReports/releases/download/kdreports-2.1.0/kdreports-2.1.0.tar.gz
+	sha512sums = c35f9cb22785d758f6e505c61d3c2f78db8ab99b2292c561d43e2934126a8127702df8b4e5b6b7fd6630fe30660a342481f325481485405ea5c4e195a20f4f1b
+
+pkgname = kdreports-qt6
