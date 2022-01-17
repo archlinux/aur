@@ -76,7 +76,7 @@ xanmod=5.16.1-xanmod1
 pkgver=${xanmod//-/.}
 #pkgver=5.16.1.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
