@@ -21,8 +21,7 @@ optdepends=(
     'mesa-libgl: Intel, Radeon, Nouveau support'
     'nvidia-libgl: NVIDIA support'
 'nvidia-utils: NVIDIA support')
-provides=('alchemy-viewer' 'secondlife')
-replaces=('alchemy-next-viewer')
+provides=('alchemy-viewer')
 options=(!emptydirs !makeflags !strip !lto)
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
