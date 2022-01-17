@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-starlink-ast'
-pkgver='1.05'
+pkgver='3.01'
 pkgrel='1'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ depends=('perl>=5.008')
 makedepends=()
 checkdepends=('perl-test-deep>=0' 'perl-test-number-delta>=0')
 url='https://metacpan.org/release/Starlink-AST'
-source=('http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Starlink-AST-1.05.tar.gz')
-md5sums=('5ca28e250d2fa93882a03603547cb6d6')
-sha512sums=('9f1353c139cbecad4b468dbac73d27af53784ed0979fcd6dcb57277e1eae0d1f0d32d18dc4cf8d072b86e0534759c979e386ade809f75b0866a6afe953f00b31')
-_distdir="Starlink-AST-1.05"
+source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Starlink-AST-${pkgver}.tar.gz")
+md5sums=('db53bc018bd349e3a0c85bd8c6883f3c')
+sha512sums=('0beddc6c7c76f260725aa0958b2c82c2496b80c94529fca37e912493d45b09a07494f2b1bb3b0eb0ca99f61c6f415a6671240e9e69a8bef166d6b1591a00ddcf')
+_distdir="Starlink-AST-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
