@@ -24,7 +24,7 @@ optdepends=(
 provides=('alchemy-next' 'secondlife')
 conflicts=('alchemy-next-viewer-git')
 replaces=('alchemy-next-viewer' 'alchemy-next-viewer-git')
-options=(!strip)
+options=(!emptydirs !makeflags !strip !lto)
 source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
 md5sums=('SKIP'
          'adb72c8434b2bc90258f187eaec6987d')
