@@ -15,10 +15,9 @@ pkgbase = r-webshot
 	depends = optipng
 	optdepends = r-httpuv
 	optdepends = r-knitr
-	optdepends = r-markdown
+	optdepends = r-rmarkdown
 	optdepends = r-shiny
-	source = http://cran.r-project.org/src/contrib/webshot_0.5.2.tar.gz
-	md5sums = a7ea6a307cb98e49c6e65ed8b8a608ab
+	source = https://cran.r-project.org/src/contrib/webshot_0.5.2.tar.gz
+	sha256sums = f183dc970157075b51ac543550a7a48fa3428b9c6838abb72fe987c21982043f
 
 pkgname = r-webshot
-
