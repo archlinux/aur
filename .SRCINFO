@@ -1,7 +1,7 @@
 pkgbase = projen
 	pkgdesc = Define and maintain complex project configuration through code. projen synthesizes project configuration files from a well-typed definition written in JavaScript.
 	pkgver = 0.50.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projen/projen/
 	arch = any
 	license = Apache

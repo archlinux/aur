@@ -2,7 +2,7 @@
 
 pkgname=projen
 pkgver=0.50.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Define and maintain complex project configuration through code. projen synthesizes project configuration files from a well-typed definition written in JavaScript."
 arch=('any')
 url="https://github.com/projen/projen/"
@@ -28,16 +28,16 @@ package() {
     # Remove references to $srcdir
     local tmppackage="$(mktemp)"
     local pkgjson="$pkgdir/usr/lib/node_modules/$pkgname/package.json"
-	jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-	mv "$tmppackage" "$pkgjson"
-	chmod 644 "$pkgjson"
+    jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+    mv "$tmppackage" "$pkgjson"
+    chmod 644 "$pkgjson"
 
-	find "$pkgdir" -type f -name package.json | while read pkgjson; do
-		local tmppackage="$(mktemp)"
-		jq 'del(.man)' "$pkgjson" > "$tmppackage"
-		mv "$tmppackage" "$pkgjson"
-		chmod 644 "$pkgjson"
-	done
+    find "$pkgdir" -type f -name package.json | while read pkgjson; do
+        local tmppackage="$(mktemp)"
+        jq 'del(.man)' "$pkgjson" > "$tmppackage"
+        mv "$tmppackage" "$pkgjson"
+        chmod 644 "$pkgjson"
+    done
 
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
