@@ -14,10 +14,11 @@ font-size=12
 #font-width=
 #font-height=
 
-# default color of foreground/background text
-# available colors: 0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 = cyan, 7 = white
-color-foreground=7
-color-background=0
+# terminal palette consists of 256 colors (0-255)
+# 0 = black, 1 = red, 2 = green, 3 = brown, 4 = blue, 5 = magenta, 6 = cyan, 7 = white
+# 8-15 are brighter versions of 0-7
+# 16-231 is 6x6x6 color cube
+# 232-255 is grayscale
 color-0=000000
 color-1=AA0000
 color-2=00AA00
@@ -34,6 +35,10 @@ color-12=5555FF
 color-13=FF55FF
 color-14=55FFFF
 color-15=FFFFFF
+
+# default foreground/background colors (chosen from palette)
+color-foreground=7
+color-background=0
 
 # max scroll-back history lines of every window, value must be [0 - 65535], 0 means disable it
 history-lines=0
