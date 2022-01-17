@@ -5,12 +5,10 @@ _pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator - Git version'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL')
-pkgver=v1.1.0.r2.ga110906
+pkgver=v1.1.2.r55.g387e4a7
 pkgrel=1
-source=('git+https://bitbucket.org/piciji/denise.git'
-	'desktop_patch.patch')
-md5sums=('SKIP'
-         '06a239a04fa746ba7465cfe516a00a61')
+source=('git+https://bitbucket.org/piciji/denise.git')
+sha256sums=('SKIP')
 provides=('denise')
 conflicts=('denise-bin' 'denise')
 depends=('sdl2' 'gtk3' 'openal' 'libpulse')
@@ -23,10 +21,6 @@ pkgver() {
   git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  patch --binary -Np1 -i desktop_patch.patch
 }
 
 build() {
@@ -45,7 +39,7 @@ package() {
   mkdir -p $pkgdir/usr/lib/$_pkgname/img/
   mkdir -p $pkgdir/usr/lib/$_pkgname/shader/
 
-  install -Dm755 out/Denise $pkgdir/usr/bin/$_pkgname
+  install -Dm755 out/denise $pkgdir/usr/bin/$_pkgname
   install -Dm644 data/img/$_pkgname.png $pkgdir/usr/share/icons/$_pkgname.png
   install -Dm644 data/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
   install -Dm644 data/translation/* $pkgdir/usr/lib/$_pkgname/translation
