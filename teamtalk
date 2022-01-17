@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Starting Team Talk Client..."
+cd /opt/teamtalk-client && ./run.sh

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TeamTalk Client
+GenericName=TeamTalk Client
+Comment=TeamTalk Client for voice and video
+Exec=teamtalk
+Icon=teamtalk
+Terminal=false
+Type=Application
+Categories=Network
+Keywords=TeamTalk

@@ -1,0 +1,10 @@
+post_install() {
+  rm /opt/teamtalk-client/TeamTalk5.ini
+  chmod 755 /opt/teamtalk-client/teamtalk5
+chmod 755 /opt/teamtalk-client/run.sh
+}
+
+post_upgrade() {
+ 	post_install
+}
+
