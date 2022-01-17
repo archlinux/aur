@@ -1,9 +1,9 @@
 # Maintainer: solnce <echo c29sbmNlQHJhdGFqY3phay5vbmU= | base64 -d>
 pkgname=pacdef-git
 _pkgname=pacdef
-pkgver=0.5.0.r82.ge304465
-pkgrel=1
-pkgdesc='declarative manager of Arch packages'
+pkgver=0.7.1.r4.gdd1781a
+pkgrel=2
+pkgdesc='declarative package manager for Arch Linux'
 url='https://github.com/steven-omaha/pacdef'
 source=("git+https://github.com/steven-omaha/${_pkgname}")
 arch=('any')
