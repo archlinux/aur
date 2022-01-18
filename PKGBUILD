@@ -38,7 +38,8 @@ prepare() {
   cp "../anki2.1.py" "${_plugins_}/anki2.1/anki-sync-server/__init__.py"
   cp "../anki2.1.28.py" "${_plugins_}/anki2.1.28//anki-sync-server/__init__.py"
   cp "../anki-sync-server.service" "${_plugins_}/systemd/"
-  cp "../nginx_config" "${_plugins_}/nginx/config"
+  cp "../nginx_http" "${_plugins_}/nginx/anki-sync-server-http"
+  cp "../nginx_https" "${_plugins_}/nginx/anki-sync-server-https"
   cp "../nginx_append_config.awk" "${_plugins_}/nginx/append.awk"
 
   # set plugins to use current ip address as plugins' target address
