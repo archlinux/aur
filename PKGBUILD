@@ -19,8 +19,7 @@ depends=('absl-py'
          'tensorflow_metadata'
          'python-termcolor'
          'python-tqdm')
-makedepends=('python-setuptools'
-             'python-wheel')
+makedepends=('python-pip')
 optdepends=('python-beautifulsoup4: wsc273'
             'python-pycocotools: youtube_vis'
             'python-h5py: robonet'
