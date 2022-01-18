@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-go
-pkgver=0.25.2
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
@@ -19,7 +19,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/fluxcd/flux2/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  c199e3208e709ac3b583d0e23cb98258e997a9fb3c49a4465de43abff1743822
+  4ba9143a30361c38c9bd33187c413755abc7b7352b503251f47d33cb477312b2
 )
 _srcname=flux
 
@@ -30,12 +30,20 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  ./manifests/scripts/bundle.sh "${PWD}/manifests" "${PWD}/cmd/flux/manifests"
+  make cmd/flux/.manifests.done
   go build -ldflags "-linkmode=external -X main.VERSION=${pkgver}" -o ${_srcname} ./cmd/flux
 }
 
 check() {
   cd "flux2-${pkgver}"
+  case $CARCH in
+    aarch64)
+      export ENVTEST_ARCH=arm64
+      ;;
+    armv6h|armv7h)
+      export ENVTEST_ARCH=arm
+      ;;
+  esac
   make test
 }
 
