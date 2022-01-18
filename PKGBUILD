@@ -9,9 +9,6 @@ url="https://github.com/ecies/py"
 license=('MIT')
 depends=('python-coincurve' 'python-eth-keys' 'python-pycryptodome')
 makedepends=('python-poetry-core' 'python-build' 'python-install')
-checkdepends=()
-optdepends=()
-changelog=
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/e/eciespy/eciespy-$pkgver.tar.gz")
 sha256sums=('2aa1a6516ac3bc5185d6d58f196c91f869a812b640492769660ef257426acee7')
 
@@ -21,10 +18,6 @@ build() {
 		--wheel \
 		--skip-dependency-check \
 		--no-isolation
-}
-
-check() {
-	cd "eciespy-$pkgver"
 }
 
 package() {
