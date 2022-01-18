@@ -2,7 +2,7 @@
 
 pkgname='wiretrustee-bin'
 _pkgname="${pkgname%-bin}"
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Connect your devices into a single secure private WireGuard®-based mesh network'
 url='https://wiretrustee.com'
@@ -27,13 +27,13 @@ sha256sums=(
 _base_url="https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux"
 
 source_x86_64=("${pkgname}-${pkgver}.tar.gz::${_base_url}_amd64.tar.gz")
-sha256sums_x86_64=('3a3ee1994aa361af2569b8d8244dfab10bb5265ef14b87c3ba397d3db60f3447')
+sha256sums_x86_64=('84696bf3016a8b1b71400b697548857ec14dc4dfb13f0540bc202cc819797bb1')
 
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::${_base_url}_arm64.tar.gz")
-sha256sums_aarch64=('a64fad4479575280e2842f3237e0e1d18a78a3216f80bdd7475543d2f0c3098c')
+sha256sums_aarch64=('b6bc24d4a2064fcfb8aadbc88bcb62f02636c61de18b2cec3588d2663979d6e2')
 
 source_armv6h=("${pkgname}-${pkgver}.tar.gz::${_base_url}_armv6.tar.gz")
-sha256sums_armv6h=('892f2784e1f8529ac38937242782a5bc1f67cc6c7af2049bcd8888ac4b04e251')
+sha256sums_armv6h=('4a416413116845d4d5dcf0ded81841c6179e2264324fff0cee73678cf31bc51f')
 
 package() {
   # binary
