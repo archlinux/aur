@@ -6,13 +6,9 @@ pkgbase = python-itunes
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://github.com/ocelma/python-itunes/archive/6ddc251fb0ba2f6dd0fbdd04a9560c6e22c0c011.tar.gz
 	source = python-itunes.patch
 	sha256sums = 5f9fa69dcaea47e532e5821552e7340d88724a980224b66e19d3d118d7e17ed1
 	sha256sums = eec11f7a3be113af34c727efef293dfe57a9474aca3b46fa53a302804f08bc20
 
 pkgname = python-itunes
-
-pkgname = python2-itunes
-
