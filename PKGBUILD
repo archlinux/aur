@@ -1,3 +1,5 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 _cranname=metadynminer3d
 _cranver=0.0.1
 pkgname=r-${_cranname,,}
@@ -8,20 +10,16 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=('r>=3.3.0' r-metadynminer r-rgl r-rcpp r-misc3d)
-makedepends=('gcc>=4.3')
-optdepends=(testthat)
+optdepends=(r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('3cdd3e9333c165d3347d44595aa46050')
+sha256sums=('e5dfd7281f98603d10842cb94f8f739208275a134b5a524fcd009209a1c83866')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
