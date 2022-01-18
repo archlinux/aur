@@ -2,7 +2,7 @@
 # Maintainer: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-scm
-pkgver=0.25.2
+pkgver=0.25.3
 pkgrel=1
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
 url="https://fluxcd.io/"
@@ -38,6 +38,14 @@ build() {
 
 check() {
   cd "flux2"
+  case $CARCH in
+    aarch64)
+      export ENVTEST_ARCH=arm64
+      ;;
+    armv6h|armv7h)
+      export ENVTEST_ARCH=arm
+      ;;
+  esac
   make test
 }
 
