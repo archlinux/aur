@@ -4,9 +4,8 @@
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_pkgspin=greentext
-pkgbase=element-desktop-git-$_pkgspin
-pkgname=("element-desktop-git-$_pkgspin" "element-web-git-$_pkgspin")
+pkgbase=element-desktop-git-greentext
+pkgname=(element-{desktop,web}-git-greentext)
 pkgver=1.9.9.r11.g840867bc0+greentext
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
@@ -15,8 +14,8 @@ url="https://element.io"
 license=(Apache)
 makedepends=(npm git yarn python rust sqlcipher electron nodejs-lts-fermium)
 optdepends=('darkhttpd: using element-web without electron')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=(element-desktop{,-git})
+conflicts=(element-desktop{,-git})
 _giturl="git+https://github.com/vector-im"
 source=("element-web::${_giturl}/element-web.git"
         "element-desktop::${_giturl}/element-desktop.git"
@@ -74,8 +73,8 @@ build() {
 package_element-web-git-greentext() {
   pkgdesc+="web version."
   replaces=(riot-web vector-web)
-  provides=(element-web)
-  conflicts=(element-web element-web-git)
+  provides=(element-web{,-git})
+  conflicts=(element-web{,-git})
 
   cd element-web
 
@@ -94,8 +93,8 @@ package_element-desktop-git-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
   depends=("element-web-git=${pkgver}" ${_electron} sqlcipher)
-  provides=(element-desktop)
-  conflicts=(element-desktop element-desktop-git)
+  provides=(element-desktop{,-git})
+  conflicts=(element-desktop{,-git})
   backup=("etc/element/config.json")
 
   cd element-desktop
@@ -112,7 +111,7 @@ package_element-desktop-git-greentext() {
 
   # Required extras
   install -Dm644 ../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
-  install -Dm755 ../${pkgname%-git}.sh "${pkgdir}"/usr/bin/${pkgname%-git}
+  install -Dm755 ../element-desktop.sh "$pkgdir/usr/bin/element-desktop"
 
   # Icons
   install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
