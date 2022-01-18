@@ -1,6 +1,6 @@
 pkgbase = itext-rups-bin
 	pkgdesc = iText RUPS is a tool to view PDF structure in a Swing GUI.
-	pkgver = 7.2.0
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://github.com/itext/i7j-rups/
 	arch = any
@@ -12,11 +12,11 @@ pkgbase = itext-rups-bin
 	provides = itext-rups
 	source = itext-rups.sh
 	source = itext-rups.desktop
-	source = https://github.com/itext/i7j-rups/releases/download/7.2.0/iText7-RUPS-7.2.0-only-jars.zip
+	source = https://github.com/itext/i7j-rups/releases/download/7.2.1/iText7-RUPS-7.2.1-only-jars.zip
 	source = itext-rups.svg::https://itextpdf.com/sites/default/files/2018-11/iText%205%20Product%20software%20-%20icons_57x45px_V2_iText%20RUPS.svg
 	sha256sums = c9b4e4c2b77b89c1e01354d059ea6abf0ea34fff0b33ad50d349ad875cb93d6a
 	sha256sums = c213befd1132bebcbc588a7ef52c0089682767618317bd09128668d3550218b3
-	sha256sums = 509cd033995cff140c524ad5bc71660634beee275fd1ddc3bb99e7964a178b17
+	sha256sums = 18e00a7613aa50b8c4baeefe16651d7d5c61d402dbbe0ec4a6eb71fa57ba10a5
 	sha256sums = 8cb4cb1758ff4986caf8fa111f992b07d9572105cb47ec9c98dbda5926beb5a6
 
 pkgname = itext-rups-bin
