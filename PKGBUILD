@@ -2,7 +2,7 @@
 
 pkgname=katex
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast math typesetting for the web'
 arch=('any')
 url='https://katex.org'
