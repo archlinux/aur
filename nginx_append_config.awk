@@ -7,7 +7,7 @@
 		print nextLine
 	}
 
-  print "include /etc/nginx/sites-enabled/*";
+  print "    include /etc/nginx/sites-enabled/*;"
 	print "}"
 	next
 };
