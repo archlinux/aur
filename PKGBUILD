@@ -14,11 +14,7 @@ noextract=("$pkgname-$pkgver.tgz")
 sha256sums=('6267c706f9e7c1301b9bbd38d7bc5abd8b7da4398dba05c67733687b3da8c7d1')
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
-
-  # Non-deterministic race in npm gives 777 permissions to random directories.
-  # See https://github.com/npm/npm/issues/9359 for details.
-  chmod -R u=rwX,go=rX "$pkgdir"
+  npm install -g --prefix "$pkgdir"/usr "$srcdir"/$pkgname-$pkgver.tgz
 
   # npm installs package.json owned by build user
   # https://bugs.archlinux.org/task/63396
