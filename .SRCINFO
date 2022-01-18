@@ -1,14 +1,14 @@
 pkgbase = python-iterfzf
-	pkgdesc = Pythonic interface to fzf, a CLI fuzzy finder
-	pkgver = 0.4.0.17.3
-	pkgrel = 3
+	pkgdesc = Pythonic interface to fzf
+	pkgver = 0.5
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/dahlia/iterfzf
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
-	depends = python
-	source = python-iterfzf-0.4.0.17.3.tar.gz::https://github.com/dahlia/iterfzf/archive/0.4.0.17.3.tar.gz
-	sha256sums = 91884eb65aae192461f9bc8ab2b2eaded07f950369e5802599d008bec191ced3
+	depends = python-setuptools
+	depends = fzf
+	source = python-iterfzf-0.5.tar.gz::https://files.pythonhosted.org/packages/source/i/iterfzf/iterfzf-0.5.0.20.0.tar.gz
+	sha256sums = 2b6f04d87a7cba79d03c2bb83575bb4580f47502dc024a24fc5dc8c0cfbcc52f
 
 pkgname = python-iterfzf
-
