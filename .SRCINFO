@@ -1,6 +1,6 @@
 pkgbase = tmux-plugin-manager-git
 	pkgdesc = tpm - Tmux Plugin Manager - Bound to the version number
-	pkgver = r207.b699a7e
+	pkgver = b699a7e
 	pkgrel = 1
 	url = https://github.com/tmux-plugins/tpm
 	install = tmux-plugin-manager-git.install
@@ -10,7 +10,7 @@ pkgbase = tmux-plugin-manager-git
 	depends = git
 	depends = bash
 	conflicts = tmux-plugin-manager
-	source = git+https://github.com/tmux-plugins/tpm.git#branch=master
+	source = git+https://github.com/tmux-plugins/tpm.git#commit=b699a7e
 	sha256sums = SKIP
 
 pkgname = tmux-plugin-manager-git
