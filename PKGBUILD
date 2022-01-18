@@ -1,28 +1,28 @@
-# Maintainer: workonfire <kolucki62@gmail.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# ex-Maintainer: workonfire <kolucki62@gmail.com>
 
-pkgname='contrast'
-pkgver=0.0.3
-pkgrel=2
-pkgdesc='Checks whether the contrast between two colors meet the WCAG requirements.'
-changelog='CHANGELOG'
+pkgname=contrast
+pkgver=0.0.5
+pkgrel=1
+pkgdesc='Checks whether the contrast between two colors meet the WCAG requirements'
 arch=('x86_64')
-url="https://gitlab.gnome.org/World/design/${pkgname}"
+url='https://gitlab.gnome.org/World/design/contrast'
 license=('GPL3')
-depends=('libhandy0')
-makedepends=('rust' 'meson' 'git')
-source=("git+${url}.git#tag=${pkgver}")
-sha256sums=('SKIP')
+depends=('gtk4' 'glib2' 'libadwaita')
+makedepends=('meson' 'rust')
+checkdepends=('appstream-glib')
+source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
+b2sums=('70a0d97155aa09738d19183e97210003823de11249c77d6740c230256389710590d7f300b806fa9a57477fa552c249520968acd3db69810df44c64908781041f')
 
-pkgver () {
-	cd ${pkgname}
-	git describe --tags | sed 's/-/.r/; s/-/./'
+build() {
+  arch-meson "$pkgname-$pkgver" build
+  meson compile -C build
 }
 
-build () {
-	arch-meson ${pkgname} build
-	ninja -C build
+check() {
+  meson test -C build
 }
 
-package () {
-	DESTDIR="${pkgdir}" ninja -C build install
+package() {
+  meson install -C build --destdir "$pkgdir"
 }
