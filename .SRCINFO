@@ -1,21 +1,21 @@
 pkgbase = perl-pod-projectdocs
 	pkgdesc = generates CPAN like pod pages
 	pkgver = 0.53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Pod-ProjectDocs
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-class-accessor>=0
-	depends = perl-class-data-inheritable>=0
-	depends = perl-json>=2.04
-	depends = perl-readonly>=0
-	depends = perl-template-toolkit>=0
-	depends = perl-uri>=0
-	depends = perl-moose>=0
-	depends = perl>=5.30
+	depends = perl-class-accessor
+	depends = perl-class-data-inheritable
+	depends = perl-json
+	depends = perl-readonly
+	depends = perl-template-toolkit
+	depends = perl-html-parser
+	depends = perl-moose
+	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-0.53.tar.gz
+	source = https://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-0.53.tar.gz
 	md5sums = 456961beea93816d74975a3c39710a37
 	sha512sums = 6335031ce3223295d8f39ab98a7d413fa050cb36c4ef4cea6c88d6e29fc445948eab09e51b2fbfbc09d35c1e6b3077444098a2ba49ca8f0e33fd764969054221
 

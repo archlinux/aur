@@ -1,17 +1,16 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 # Maintainer: András Wacha < awacha at gmail >
-
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='perl-pod-projectdocs'
 pkgver='0.53'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="generates CPAN like pod pages"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor>=0' 'perl-class-data-inheritable>=0' 'perl-json>=2.04' 'perl-readonly>=0' 'perl-template-toolkit>=0' 'perl-uri>=0' 'perl-moose>=0' 'perl>=5.30')
-makedepends=()
+depends=('perl-class-accessor' 'perl-class-data-inheritable' 'perl-json' 'perl-readonly' 'perl-template-toolkit' 'perl-html-parser' 'perl-moose' 'perl')
 url='https://metacpan.org/release/Pod-ProjectDocs'
-source=("http://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-${pkgver}.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/M/MG/MGRUNER/Pod-ProjectDocs-${pkgver}.tar.gz")
 md5sums=('456961beea93816d74975a3c39710a37')
 sha512sums=('6335031ce3223295d8f39ab98a7d413fa050cb36c4ef4cea6c88d6e29fc445948eab09e51b2fbfbc09d35c1e6b3077444098a2ba49ca8f0e33fd764969054221')
 _distdir="Pod-ProjectDocs-${pkgver}"
