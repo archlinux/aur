@@ -7,11 +7,9 @@ pkgbase = r-rinside
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	makedepends = gcc
 	depends = r
 	depends = r-rcpp
 	source = https://cran.r-project.org/src/contrib/RInside_0.2.16.tar.gz
-	md5sums = 5cbcd914b0b409ee6f88b19b862fa314
+	sha256sums = 7ae4ade128ea05f37068d59e610822ff0b277f9d39d8900f7eb31759ad5a2a0e
 
 pkgname = r-rinside
-
