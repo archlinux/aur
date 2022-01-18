@@ -3,8 +3,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_version=2.1+595+g3637fda4
-_url=https://download.jitsi.org/stable/jitsi-videobridge2_2.1-595-g3637fda4-1_all.deb
+_version=2.1+607+g153f7e4e
+_url=https://download.jitsi.org/stable/jitsi-videobridge2_2.1-607-g153f7e4e-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
@@ -21,8 +21,8 @@ makedepends=('tar' 'unzip')
 options=('!strip')
 backup=(
   "etc/${_pkgbase}/config"
-  "etc/${_pkgbase}/log4j2.xml"
   "etc/${_pkgbase}/logging.properties"
+  "etc/${_pkgbase}/callstats-java-sdk.properties"
   "etc/${_pkgbase}/sip-communicator.properties"
   "etc/${_pkgbase}/jvb.conf"
 )
@@ -59,8 +59,6 @@ package() {
 
         install -dm700 "${CONFDIR}"
         install -Dm600 -t "${CONFDIR}" etc/jitsi/videobridge/*
-        sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/log4j2.xml"
-
         install -Dm644 "etc/sysctl.d/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${_pkgbase}.conf"
 
         cd "$srcdir"
@@ -71,7 +69,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('bf09fd0bc337c30888ab0c40bb53037b6adad92090d87b2c728e49ff1505a0a3'
+sha256sums=('28488fdd02fe64a86d8fbcdb4f24d6236bb478de3c6af018cc9ff7d0ef1477a3'
             'ecf266d0fe026ced8121a0491ee560fed4e9e586ff510c8e9b2f21ce505f0a2d'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '5d78e8eec07c6aae84a1f1c0922f951217741ccc6f1a50ed7ef966c665bbf291'
