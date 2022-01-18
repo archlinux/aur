@@ -10,7 +10,6 @@ pkgbase = r-chron
 	optdepends = r-scales
 	optdepends = r-ggplot2
 	source = https://cran.r-project.org/src/contrib/chron_2.3-56.tar.gz
-	md5sums = f5e34ca17d417202b4934c464e6b0b5d
+	sha256sums = 863ecbb951a3da994761ea9062fa96d34e94e19fbc4122521ac179274dfa3f5d
 
 pkgname = r-chron
-
