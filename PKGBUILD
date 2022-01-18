@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-astro-fits-cfitsio'
-pkgver='1.11'
+pkgver='1.15'
 pkgrel='1'
 pkgdesc="Perl extension for using the cfitsio library"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=0' 'glibc>=2.24' 'cfitsio')
 makedepends=()
 url='https://metacpan.org/release/Astro-FITS-CFITSIO'
-source=('http://search.cpan.org/CPAN/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-1.11.tar.gz')
-md5sums=('99526138ddeaee2f14f364d2406b1ee9')
-sha512sums=('e823831c51f20ea775b66c0fa3855451ca0b9de984968daa07e365b86151578a4424089d21c5b7528c15c1eb49e9517935f266d60c1b074ce7d9d02265fc20a5')
-_distdir="Astro-FITS-CFITSIO-1.11"
+source=("http://search.cpan.org/CPAN/authors/id/P/PR/PRATZLAFF/Astro-FITS-CFITSIO-${pkgver}.tar.gz")
+md5sums=('b192177a6756655c74361d766ba43cbc')
+sha512sums=('5b4792a32f75e9dc7e2c6efb15424aaf75e6b920b3441d9674a1203a47fbf797bdc98d6045dec6422d5932dac536356755e4f9dd493eaa8709703c1f0c874e9b')
+_distdir="Astro-FITS-CFITSIO-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
