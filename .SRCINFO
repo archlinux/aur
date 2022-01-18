@@ -1,37 +1,25 @@
 pkgbase = fabric-server
 	pkgdesc = Minecraft Fabric server unit files, script and jar
 	pkgver = 1.18.1_0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fabricmc.net
 	install = fabric-server.install
 	arch = any
 	license = Apache
-	depends = java-runtime-headless>=16
+	depends = java-runtime-headless>=17
 	depends = tmux
 	depends = sudo
 	depends = bash
 	depends = awk
 	depends = sed
-	optdepends = tar: needed in order to create world backups
+	optdepends = tar: required in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	provides = fabric-server=1.18.1_0.10.2
 	noextract = fabric-1.18.1-0.10.2.jar
 	backup = etc/conf.d/fabric
-	source = fabricd-backup.service
-	source = fabricd-backup.timer
-	source = fabricd.service
-	source = fabricd.sysusers
-	source = fabricd.tmpfiles
-	source = fabricd.conf
-	source = fabricd.sh
+	source = minecraft-server-1.0.1.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.1.tar.gz
 	source = fabric-installer-0.10.2.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/0.10.2/fabric-installer-0.10.2.jar
-	sha512sums = 38642e2cbd218221a93996b86cdb1bf1b1d3c78a377ea22b32c597ce5e4a2e6cb2b4541179d9b4dff6e4c463e60f4bdee101538c58bf455aeb85c73838b6ed2c
-	sha512sums = 755d3f532913f999c3abde1eae8a713f5bee8e758314fdeef0a70f81d4411b91b4c88d30824cdf5b0f8f5dae76ceffc10d2b1e5db6161a1daf02a50399b718d3
-	sha512sums = 78e688805d448be6a0d05cc4aa7bf728c5b662a1f8c335e5a1bab3a5af42de186585761d2b52cf77c97b474780b410fd8f8539052532235285242f71d295abfc
-	sha512sums = dc1f355d0be1aa6b9941cb50be6543656f7b1dd03582ef760f830ecae723de168281d6a96fcc37920b3226a1e8542225c61b4348852521db5847d8821ef48a39
-	sha512sums = 5c1bcd2e0298d0200bfd3ec4996510e8fc04ac62f0a688bd6ef4cf0c92d6b1c545406fe8cbc447148f1dbaf4fb1e5cbf4c2636c0c088d127a54356d98552beed
-	sha512sums = d3d7ed650444b6bb3bae6a0730ed378b077a596cec6c5d543e52eae9fd95f20721e16e49be8a39991de677a19ec584d241b385a52ea2cc8cde49146d700e88dc
-	sha512sums = ee04c7e30cedbc724975973bba144b6f0137f66f1d2bd2f132d59e09990e7fa7817dda9eedcdaeb961cef0ce3f728a0727fec3c590ce6abd9b93ef6467a4587f
+	sha512sums = 5fecf7bbcc5e2861640ae34bc32770a02a137cb4cf142adf565997c20141744b00517501ad717f390056bdcf59c4e03e365656454b427e771a15fcf152f1bc97
 	sha512sums = b1a36cb8f5d5f9a13a344d4669e10c7d6d706abe0856adc5fa1187616c2302a1a22d4a5a44c0c2942d0ffea5201e52548126e42b40a2abe4bc074411959e6f71
 
 pkgname = fabric-server

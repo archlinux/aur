@@ -1,3 +1,0 @@
-z /srv/fabric 2775 fabric fabric - -
-d /srv/fabric/logs 2755 fabric fabric -
-z /srv/fabric/logs - fabric fabric - -
