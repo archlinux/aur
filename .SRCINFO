@@ -6,11 +6,10 @@ pkgbase = r-minpack.lm
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc
+	makedepends = gcc-fortran
 	depends = r
 	depends = gcc-fortran
 	source = https://cran.r-project.org/src/contrib/minpack.lm_1.2-1.tar.gz
-	md5sums = 87be5956b864a28da20e8341ca1fa240
+	sha256sums = 14cb7dba3ef2b46da0479b46d46c76198e129a31f6157cd8b37f178adb15d5a3
 
 pkgname = r-minpack.lm
-

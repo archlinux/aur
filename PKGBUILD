@@ -11,19 +11,16 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
 depends=(r gcc-fortran)
-makedepends=(gcc)
+makedepends=(gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('87be5956b864a28da20e8341ca1fa240')
+sha256sums=('14cb7dba3ef2b46da0479b46d46c76198e129a31f6157cd8b37f178adb15d5a3')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
