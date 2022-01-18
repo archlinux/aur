@@ -49,7 +49,6 @@ prepare() {
   sed -i "3s/0\.0\.0\.0/${_your_ip_})/" plugins/anki2.0/anki-sync-server.py
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1/anki-sync-server/__init__.py
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1.28/anki-sync-server/__init__.py
-  sed -i "7s/0\.0\.0\.0/${_your_ip_}/" plugins/nginx/config
 
   # set current ip address as the server's ip address and change port
   sed "3s/0\.0\.0\.0/${_your_ip_}/" ankisyncd.conf -i
@@ -69,9 +68,15 @@ prepare() {
 }
 
 package() {
+  # anki-sync-server package
   mkdir -p "${pkgdir}${_install_dir_}"
   cp -R "${srcdir}/${_anki_dir_}/." "${pkgdir}${_install_dir_}"
 
+  # manpage
   mkdir -p "${pkgdir}/usr/share/man/man1"
   ln -s -T "${_install_dir_}/plugins/man/man1/anki-sync-server.1.gz" "${pkgdir}/usr/share/man/man1/anki-sync-server.1.gz"
+
+  # nginx
+  mkdir -p "${pkgdir}/etc/nginx/sites-available"
+  mkdir -p "${pkgdir}/etc/nginx/sites-enabled"
 }

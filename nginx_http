@@ -1,7 +1,7 @@
 # nginx http unchunker
 server {
     listen      27701;
-    type_hash_max_size 4096;
+    types_hash_max_size 4096;
 
     location / {
         proxy_http_version 1.0;
