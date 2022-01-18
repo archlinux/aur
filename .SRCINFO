@@ -1,0 +1,18 @@
+pkgbase = tidal-gui
+	pkgdesc = GUI to download videos and tracks from Tidal.
+	pkgver = 2022.1.18.3
+	pkgrel = 1
+	url = https://github.com/yaronzz/Tidal-Media-Downloader
+	arch = any
+	license = Apache
+	depends = python-aigpy
+	depends = python-pycryptodome
+	depends = python-pydub
+	depends = python-prettytable
+	depends = python-pyqt5
+	depends = python-setuptools
+	depends = tidal-dl
+	source = https://files.pythonhosted.org/packages/source/t/tidal-gui/tidal-gui-2022.1.18.3.tar.gz
+	sha256sums = ae18580ec43d61b7e317023e8ae700ec3a2692b8eeffb09aac6fcf036d163603
+
+pkgname = tidal-gui
