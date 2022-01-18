@@ -3,7 +3,7 @@
 pkgname=stardust-xr-git
 _pkgname=stardust-xr
 pkgver=r656.ec7be6b
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Reference server implementation for Stardust XR using StereoKit"
 arch=('x86_64' 'aarch64' 'armv7l')
