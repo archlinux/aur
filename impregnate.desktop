@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.2.6
+Type=Application
+Name=Impregnate
+Comment=Official installer for Discord client mod 'Cumcord'
+Exec=env FRENYARD_SCALE=1 impregnate
+Icon=impregnate
+Categories=Installer;
