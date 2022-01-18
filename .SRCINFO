@@ -1,7 +1,7 @@
 pkgbase = python-django-extra-views
 	pkgdesc = The missing class-based generic views for Django
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AndrewIngram/django-extra-views
 	arch = any
 	license = MIT
@@ -17,4 +17,3 @@ pkgname = python-django-extra-views
 
 pkgname = python2-django-extra-views
 	depends = python2-django
-
