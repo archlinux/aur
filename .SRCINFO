@@ -7,7 +7,6 @@ pkgbase = r-extrafontdb
 	license = GPL2
 	depends = r>=2.14
 	source = https://cran.r-project.org/src/contrib/extrafontdb_1.0.tar.gz
-	md5sums = 69f3ce30cdd568e31369bdea7583943c
+	sha256sums = faa1bafee5d4fbc24d03ed237f29f1179964ebac6e3a46ac25b0eceda020b684
 
 pkgname = r-extrafontdb
-
