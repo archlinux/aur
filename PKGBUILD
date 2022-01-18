@@ -1,17 +1,17 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 # Maintainer: András Wacha < awacha at gmail >
-
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='perl-chemistry-elements'
 pkgver='1.075'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl extension for working with Chemical Elements"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
-makedepends=()
+depends=('perl')
+checkdepends=('perl-test-pod')
 url='https://metacpan.org/release/Chemistry-Elements'
-source=("http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Chemistry-Elements-${pkgver}.tar.gz")
+source=("https://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Chemistry-Elements-${pkgver}.tar.gz")
 md5sums=('eae84ee452cc2acd6eae2b68f0883498')
 sha512sums=('fb310ed3b8d2185da06487b777b5a912175628ddc0d803a9e9225ab308aad87586e4986868da7c0c3f8314fb10b63a9f7cb6ae0fdc354c13d5515112fd08f3d2')
 _distdir="Chemistry-Elements-${pkgver}"
