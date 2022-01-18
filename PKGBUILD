@@ -32,62 +32,14 @@
 #          (your mileage may vary.)
 pkgname=ghc8.0
 pkgver=8.0.2
-pkgrel=1
-pkgdesc='Legacy GHC (8.0 series).  Originally released on January 2017.'
+pkgrel=2
+pkgdesc='Legacy GHC 8.0 installed as /usr/bin/ghc-8.0 (May/2016 - Jan/2017).'
 arch=('i686' 'x86_64')
 url='http://www.haskell.org/ghc/'
 license=('custom')
 depends=('perl' 'gmp' 'gcc' 'libffi')
-makedepends=('ghc8.0' 'perl' 'libxslt' 'docbook-xsl')
-provides=('haskell8.0-array=0.5.1.1'
-          'haskell8.0-base=4.9.1.0'
-          'haskell8.0-binary=0.8.3.0'
-          'haskell8.0-bytestring=0.10.8.1'
-          'haskell8.0-containers=0.5.7.1'
-          'haskell8.0-deepseq=1.4.2.0'
-          'haskell8.0-directory=1.3.0.0'
-          'haskell8.0-filepath=1.4.1.1'
-          'haskell8.0-ghc-boot=8.0.2'
-          'haskell8.0-ghc-boot-th=8.0.2'
-          'haskell8.0-ghc-prim=0.5.0.0'
-          'haskell8.0-haskeline=0.7.3.0'
-          'haskell8.0-hoopl=3.10.2.1'
-          'haskell8.0-hpc=0.6.0.3'
-          'haskell8.0-integer-gmp=1.0.0.1'
-          'haskell8.0-pretty=1.1.3.3'
-          'haskell8.0-process=1.4.3.0'
-          'haskell8.0-template-haskell=2.11.1.0'
-          'haskell8.0-terminfo=0.4.0.2'
-          'haskell8.0-time=1.6.0.1'
-          'haskell8.0-transformers=0.5.2.0'
-          'haskell8.0-unix=2.7.2.1'
-          'haskell8.0-xhtml=3000.2.1'
-          'haskell8.0-cabal=1.24.2.0')
-replaces=('haskell8.0-array'
-          'haskell8.0-base'
-          'haskell8.0-binary'
-          'haskell8.0-bytestring'
-          'haskell8.0-containers'
-          'haskell8.0-deepseq'
-          'haskell8.0-directory'
-          'haskell8.0-filepath'
-          'haskell8.0-ghc-boot'
-          'haskell8.0-ghc-boot-th'
-          'haskell8.0-ghc-prim'
-          'haskell8.0-haskeline'
-          'haskell8.0-hoopl'
-          'haskell8.0-hpc'
-          'haskell8.0-integer-gmp'
-          'haskell8.0-pretty'
-          'haskell8.0-process'
-          'haskell8.0-template-haskell'
-          'haskell8.0-terminfo'
-          'haskell8.0-time'
-          'haskell8.0-transformers'
-          'haskell8.0-unix'
-          'haskell8.0-xhtml'
-          'haskell8.0-cabal'
-          'ghc8.0-bin')
+makedepends=('ghc8.0' 'libxslt' 'docbook-xsl')
+replaces=('ghc8.0-bin')
 install='ghc.install'
 options=('staticlibs')
 source=("https://downloads.haskell.org/~ghc/$pkgver/ghc-$pkgver-src.tar.xz")
