@@ -1,8 +1,8 @@
 pkgbase = mkinitcpio-sd-zfs-git
 	pkgdesc = Compatibility between systemd and ZFS roots
 	pkgver = 1.0.2.r4.g1a36d4f
-	pkgrel = 1
-	url = https://github.com/dasJ/sd-zfs
+	pkgrel = 2
+	url = git+https://github.com/dasJ/sd-zfs
 	arch = any
 	license = MIT
 	depends = mkinitcpio
