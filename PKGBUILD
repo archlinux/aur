@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha@gmail.com>
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
@@ -11,6 +11,7 @@ makedepends=( python-setuptools
               python-sphinx 
 		python-sphinx_rtd_theme
               python-nose 
+	      python-wheel
 	      texlive-core
 	      texlive-bin
 )
@@ -23,8 +24,7 @@ depends=( python-reportlab
 	python-six
 )
 source=("https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz"  )
-sha256sums=('b98cccd6ee6ce0c9bc9ff06c906517a72951a6c2ad4fdfb9041fcd3245d47bf2')
-
+sha256sums=('6cb3ff827861bc53e88a5ff99fe6b166dabe2861a7bc51f0817009436a7dd4b8')
 build() {
 	cd ${_name}-${pkgver}
 	python setup.py build
