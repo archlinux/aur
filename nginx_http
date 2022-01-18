@@ -1,8 +1,7 @@
+# nginx http unchunker
 server {
     listen      27701;
-    server_name anki-sync-server-request-unchunker;
-    types_hash_bucket_size 64;
-
+    type_hash_max_size 4096;
 
     location / {
         proxy_http_version 1.0;
