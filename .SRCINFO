@@ -1,0 +1,22 @@
+pkgbase = ttf-golos
+	pkgver = 2.000
+	pkgrel = 1
+	url = https://www.paratype.com/fonts/pt/golos-ui
+	arch = any
+	license = custom:OFL
+	source = ttf-golos-text-2.000.zip::https://api.paratype.com/api/editions/ofl/download/66963
+	source = b2sums
+	b2sums = SKIP
+	b2sums = 9e754e598ff9e1b8bceed8d90a17715e157196ef73bdac03fe9f0b140754ff0b0a7999687efdd9e2031f9c05b8dea068447b29854329996f096a87484ed3d247
+
+pkgname = ttf-golos-text
+	pkgdesc = Uniwidth sans-serif font suitable for text
+
+pkgname = ttf-golos-ui
+	pkgdesc = Uniwidth sans-serif font suitable for user interfaces
+
+pkgname = ttf-golos-ui-variable
+	pkgdesc = Uniwidth sans-serif font suitable for user interfaces (variable version)
+
+pkgname = ttf-golos-text-variable
+	pkgdesc = Uniwidth sans-serif font suitable for text (variable version)
