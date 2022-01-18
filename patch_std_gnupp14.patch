@@ -1,0 +1,15 @@
+diff --git a/cMake/FreeCAD_Helpers/CompilerChecksAndSetups.cmake b/cMake/FreeCAD_Helpers/CompilerChecksAndSetups.cmake
+index 55370ed883..f74c845ce1 100644
+--- a/cMake/FreeCAD_Helpers/CompilerChecksAndSetups.cmake
++++ b/cMake/FreeCAD_Helpers/CompilerChecksAndSetups.cmake
+@@ -30,9 +30,8 @@ macro(CompilerChecksAndSetups)
+ 
+     # Enabled C++11 for Freecad 0.17 and later
+     if (FREECAD_VERSION VERSION_GREATER 0.16)
+-        set(BUILD_ENABLE_CXX_STD "C++11"  CACHE STRING  "Enable C++ standard")
++        set(BUILD_ENABLE_CXX_STD "C++14"  CACHE STRING  "Enable C++ standard")
+         set_property(CACHE BUILD_ENABLE_CXX_STD PROPERTY STRINGS
+-                     "C++11"
+                      "C++14"
+                      "C++17"
+                      "C++20"
