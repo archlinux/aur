@@ -2,7 +2,7 @@
 # Maintainer: András Wacha < awacha at gmail >
 
 pkgname='perl-astro-fits-header'
-pkgver='3.07'
+pkgver='3.08'
 pkgrel='1'
 pkgdesc="Object Orientated interface to FITS HDUs"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=0' 'perl-astro-fits-cfitsio' 'perl-starlink-ast')
 makedepends=()
 url='https://metacpan.org/release/Astro-FITS-Header'
-source=('http://search.cpan.org/CPAN/authors/id/T/TJ/TJENNESS/Astro-FITS-Header-3.07.tar.gz')
-md5sums=('3a9795ecc74269419340e900018a5840')
-sha512sums=('21b72ca2727fd77c6da01407ab97ac1bc3bfb4f6864d7a4728fa3f9cbad07b64ca20445bc8daf6c34a3523ab16a2b688cf99936157a41f36147b39f05a6c1f90')
-_distdir="Astro-FITS-Header-3.07"
+source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSB/Astro-FITS-Header-${pkgver}.tar.gz")
+md5sums=('dc62a668e29278bb5f0d02e26071b644')
+sha512sums=('c94a9da46212a2db95c1ce32da2609869bc85687c236919791c16b06f1787311ee3ac3323baece790c04d56818754c6f487b15c20487ded9ebe61bf97cc11c29')
+_distdir="Astro-FITS-Header-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
