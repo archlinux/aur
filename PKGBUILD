@@ -2,7 +2,7 @@
 pkgname=python-clr_loader
 _name=${pkgname#python-}
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic pure Python loader for .NET runtimes"
 arch=('any')
 url="https://github.com/pythonnet/clr-loader"

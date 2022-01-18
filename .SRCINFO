@@ -1,7 +1,7 @@
 pkgbase = python-clr_loader
 	pkgdesc = Generic pure Python loader for .NET runtimes
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pythonnet/clr-loader
 	arch = any
 	license = MIT
