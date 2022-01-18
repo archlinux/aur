@@ -12,7 +12,6 @@ pkgbase = r-zeallot
 	optdepends = r-purrr
 	optdepends = r-magrittr
 	source = https://cran.r-project.org/src/contrib/zeallot_0.1.0.tar.gz
-	md5sums = 5de529556de3154caf069ce3ee39329d
+	sha256sums = 439f1213c97c8ddef9a1e1499bdf81c2940859f78b76bc86ba476cebd88ba1e9
 
 pkgname = r-zeallot
-

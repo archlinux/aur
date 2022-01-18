@@ -13,17 +13,14 @@ license=(MIT)
 depends=(r)
 optdepends=(r-testthat r-knitr r-rmarkdown r-purrr r-magrittr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('5de529556de3154caf069ce3ee39329d')
+sha256sums=('439f1213c97c8ddef9a1e1499bdf81c2940859f78b76bc86ba476cebd88ba1e9')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
