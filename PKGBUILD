@@ -2,11 +2,12 @@
 pkgname=qwt5-qt5
 _commit=a2b11e3f7c83dcba30a9bfac86a54ccb8305691d
 pkgver=5.2.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Qwt library (version 5.2.3) updated to work with Qt5.'
 arch=('x86_64')
 license=('custom')
 depends=('qt5-base' 'qt5-svg')
+options=(staticlibs !strip)
 url='https://github.com/gbm19/qwt5-qt5'
 source=(
 "qwt5-qt5-${pkgver}.zip::https://github.com/gbm19/qwt5-qt5/archive/${_commit}.zip"
