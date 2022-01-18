@@ -1,6 +1,6 @@
 pkgbase = python-netdisco
 	pkgdesc = Library for Python that discovers devices on your local network [deprecated]
-	pkgver = 2.7.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/home-assistant/netdisco
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-netdisco
 	depends = python-zeroconf
 	depends = python-requests
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/n/netdisco/netdisco-2.7.0.tar.gz
-	sha256sums = 46839e47c57554241971fbf3ba7e0077cadd22dd2bcf7eec4f72b243de2e062d
+	source = https://files.pythonhosted.org/packages/source/n/netdisco/netdisco-3.0.0.tar.gz
+	sha256sums = 4dbb590482f377ccc461e01742707ccbe8f1d2d1b28578af91dc9b7febcdcbd2
 
 pkgname = python-netdisco
-
