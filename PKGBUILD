@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
