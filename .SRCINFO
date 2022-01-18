@@ -1,0 +1,17 @@
+pkgbase = algorand-bin
+	pkgdesc = Implementation of the Algorand protocol and node software
+	pkgver = 3.2.3
+	pkgrel = 1
+	url = https://www.algorand.com
+	install = algorand-bin.install
+	arch = x86_64
+	license = AGPL3
+	depends = systemd
+	provides = algorand
+	conflicts = algorand
+	backup = var/lib/algorand/genesis.json
+	backup = var/lib/algorand/system.json
+	source = http://algorand-dev-deb-repo.s3-website-us-east-1.amazonaws.com/releases/stable/f9e2a447d_3.2.3/algorand-3.2.3-1.x86_64.rpm
+	sha256sums = d00f8943ae30c0fe032aafe7b925529e27cfc978b1f37cb72fb6dec06da545b0
+
+pkgname = algorand-bin

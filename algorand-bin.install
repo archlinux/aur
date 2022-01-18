@@ -1,0 +1,30 @@
+post_install() {
+    getent passwd algorand >/dev/null || useradd --system --user-group \
+        --home-dir /var/lib/algorand --no-create-home algorand >/dev/null
+	chown -R algorand:algorand /var/lib/algorand
+    printf "%b\n" "$instdoc"
+}
+
+read -d '' instdoc <<'EOF'
+##############################################################
+##############################################################
+##                      ~~~~~~~~~~~~                        ##
+##                        Algorand                          ##
+##                     ~~~~~~~~~~~~~~                       ##
+##  To start the node, run:                                 ##
+##      # systemctl start algorand.service                  ##
+##  Or to also enable at startup:                           ##
+##      # systemctl enable --now algorand.service           ##
+##  -----------------------------------------------         ##
+##  Configure ALGORAND_DATA environment variable:           ##
+##      $ export ALGORAND_DATA=/var/lib/algorand            ##
+##  Check running node status:                              ##
+##      $ goal node status                                  ##
+##  -----------------------------------------------         ##
+##  Config/Files:  /var/lib/algorand                        ##
+##  Documentation: https://developer.algorand.org/          ##
+##  Source Code:   https://github.com/algorand/go-algorand  ##
+##                                                          ##
+##############################################################
+##############################################################
+EOF
