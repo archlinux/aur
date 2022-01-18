@@ -21,8 +21,12 @@ pkgbase = r-rcmdcheck
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-mockery
+	optdepends = r-processx
+	optdepends = r-ps
 	optdepends = r-rmarkdown
+	optdepends = r-svglite
 	optdepends = r-testthat
+	optdepends = r-webfakes
 	source = https://cran.r-project.org/src/contrib/rcmdcheck_1.4.0.tar.gz
 	sha256sums = bbd4ef7d514b8c2076196a7c4a6041d34623d55fbe73f2771758ce61fd32c9d0
 
