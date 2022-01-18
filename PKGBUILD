@@ -1,6 +1,6 @@
 # Maintainer: ANDRoid7890 <andrey.android7890@gmail.com>
 
-# https://gitlab.manjaro.org/packages/core/linux512
+# https://gitlab.manjaro.org/packages/core/linux515
 #
 # Maintainer: Philip Müller
 # Maintainer: Bernhard Landauer
@@ -11,9 +11,6 @@
 # Maintainer: Joan Figueras
 # Contributor: Torge Matthies
 # Contributor: Jan Alexander Steffens (heftig)
-# Contributor: Yoshi2889
-# Contributor: Tobias Powalowski
-# Contributor: Thomas Baechler
 
 ##
 ## The following variables can be customized at build time. Use env or export to change at your wish
@@ -75,15 +72,15 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.6
+pkgver=${_major}.15
 _branch=5.x
-xanmod=2
+xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="e07c100203a9e1e30ed3dc84d6a14e6e37e72849" # 5.13.6-1
+__commit="a55126932f41661d03f8d93b968b427f6daa2aa5" # 5.15.15
 
 license=(GPL2)
 makedepends=(
@@ -112,9 +109,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '8055bcb3765ca7995477db3f5de71d3ce76a232885a8179ff37dda21e0e5a587'  # xanmod
+            'a1bbbcae6fa04985e51304242b4908447abda1c0112f14818bc051bee531dfc2'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '0595d4c51f631b2d1ed2424511aab36970043f143e66bcf07fd0274273377060') # manjaro
+            '26a7fc03e3252fe3004a1a78989d78a9136bdd1a8f87dd1222038373d6388d13') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -150,10 +147,9 @@ prepare() {
   rm ../linux515-$__commit/0103-futex.patch  # remove conflicting ones
   rm ../linux515-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   rm ../linux515-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
-  local _patch
   rm ../linux515-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
-  rm ../linux515-$__commit/0106-Fix_OLED_brightness_control_on_eDP.patch
 
+  local _patch
   for _patch in ../linux515-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
@@ -311,11 +307,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [ -f "$builddir/tools/bpf/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -325,13 +321,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+  
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
