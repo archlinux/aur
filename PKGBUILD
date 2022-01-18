@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Guldner <gabriel at guldner dot eu>
 
 pkgname=kubectl-minio
-pkgver=4.4.2
+pkgver=4.4.3
 pkgrel=1
 pkgdesc="Minio plugin for kubectl"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ groups=()
 depends=('kubectl')
 source_x86_64=("https://github.com/minio/operator/releases/download/v${pkgver}/kubectl-minio_${pkgver}_linux_amd64")
 source_aarch64=("https://github.com/minio/operator/releases/download/v${pkgver}/kubectl-minio_${pkgver}_linux_arm64")
-sha256sums_x86_64=('8708c7c0a10d6e072eaefc57537784d45d98574aaf49d7c41facf39742774dd7')
-sha256sums_aarch64=('52d184372aad952af4aad541ecd8d746f9cf14baa7726c43fe28cec88eb2f133')
+sha256sums_x86_64=('e3a3d2241eb45c1f91b72568af166370ebb936a1e1f67010b4606124fb6ff5aa')
+sha256sums_aarch64=('dd518f0da86488553b7eb00c8afc3e66ed36a5e240ef2d16be33a65b90de2aa4')
 
 package() {
 	cd "$srcdir"
