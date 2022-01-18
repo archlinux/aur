@@ -2,7 +2,7 @@
 
 pkgname=ly-reloaded-git
 _name=ly-reloaded
-pkgver=r56.767be72
+pkgver=r65.eddb094
 pkgrel=1
 pkgdesc="Maintained fork of the Ly TUI display manager"
 url="https://github.com/SartoxOnlyGNU/ly-reloaded"
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/$_name"
-	make github
+	git submodule update --init --recursive
 }
 
 build() {
