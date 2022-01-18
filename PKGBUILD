@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha at gmail>
 pkgname=demeter
-pkgver=0.9.26
-pkgrel=1
+pkgver=0.9.27
+pkgrel=2
 pkgdesc="Demeter is a comprehensive system for processing and analyzing X-ray Absorption Spectroscopy data."
 arch=('i686' 'x86_64')
 url="https://bruceravel.github.io/demeter/"
@@ -18,22 +18,17 @@ depends=('ifeffit' 'pgplot' 'perl-archive-zip' 'perl-capture-tiny'
 	'perl-moosex-aliases' 'perl-moosex-types-laxnum' 'perl-pdl-stats'
 	'perl-regexp-assemble' 'perl-spreadsheet-writeexcel' 'perl-file-slurper'
 	'perl-pod-projectdocs' 'perl-file-monitor-lite' 
-	'perl-graphics-gnuplotif' 'perl-term-sk' 'perl-term-twiddle')
-makedepends=('perl-module-build' 'imagemagick')
-source=(https://github.com/bruceravel/${pkgname}/archive/${pkgver}.tar.gz
-	dathena.desktop
-	dartemis.desktop
-	dhephaestus.desktop
-	)
+	'perl-graphics-gnuplotif' 'perl-term-sk' 'perl-term-twiddle' 'perl-file-copy-recursive' 
+	'perl-rpc-xml' 'perl-yaml-tiny')
+makedepends=('perl-module-build' 'imagemagick' 'perl-file-copy-recursive' 'python-sphinx' 'python-pybtex' 'python-sphinxcontrib-bibtex' 'python-sphinxcontrib-blockdiag')
+source=("https://github.com/bruceravel/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('9cc4f0f862fbea3d569079435208707e848cf61762aa901bd7ad199aed0330ca651658ce99e26d7fb8eafaa3874432d3478c1af48042d0ef91a26f48685b61f0')
 
-sha512sums=('1e79fba4a5a6da35e6d3b353455d7c17b3af5455ee43288d644524ebdb15cba483ebd57d6cf216b71f3983b29dddd3762248758f5565ee770d6f695538b6f112'
-            '78cd3f5cef6e990f386c6161e214b6e4986e2cccf3019b1766f3ce97cb81b40804092d85a7f532e76fd0e5185940ea0a3b9dd01315ffc177fcca75164b1940f5'
-            '43457010f1d7251c606380c0a4ca9faa601be627d37476c4a23dd1d4715c1793bfbdfb45dd8925c2fe8b92b9d1f4798f05b22a4898633a2b6e9b702cafe767a7'
-            '4f7b47ed4b09226fe494b52ca9f51d0ac2a12e816507bd279c6cfde14c356f5843740c0d2c01781eaf0c0b8ad3a0d49a617d1a5ccc1af67d67bae26498adc1d3')
+CFLAGS="${CFLAGS} -Wno-error=format-security"
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	perl Build.PL
+	perl -I. Build.PL
 }
 
 build() {
@@ -48,7 +43,7 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	PLIB=${pkgdir}/usr/lib/perl5/vendor_perl
+	PLIB=${pkgdir}/usr/share/perl5/vendor_perl
 	mkdir -p $PLIB
 	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/usr/share/man
@@ -59,13 +54,16 @@ package() {
 		--install_path bindoc=${pkgdir}/usr/share/man \
 		--install_path libdoc=${pkgdir}/usr/share/man \
 		install
-	mkdir -p ${pkgdir}/usr/share/icons/hicolor/48x48/apps
-	cp "blib/lib/Demeter/UI/Artemis/share/artemis_icon.png" ${pkgdir}/usr/share/icons/hicolor/48x48/apps/artemis.png
-	cp "blib/lib/Demeter/UI/Athena/share/athena_icon.png" ${pkgdir}/usr/share/icons/hicolor/48x48/apps/athena.png
-	convert "blib/lib/Demeter/UI/Atoms/icons/atoms.ico" ${pkgdir}/usr/share/icons/hicolor/48x48/apps/atoms.png
-	cp "blib/lib/Demeter/UI/Hephaestus/icons/vulcan.png" ${pkgdir}/usr/share/icons/hicolor/48x48/apps/vulcan.png
+	mkdir -p ${pkgdir}/usr/share/pixmaps
+	cp "blib/lib/Demeter/UI/Artemis/share/artemis_icon.png" ${pkgdir}/usr/share/pixmaps/dartemis.png
+	cp "blib/lib/Demeter/UI/Athena/share/athena_icon.png" ${pkgdir}/usr/share/pixmaps/dathena.png
+	convert "blib/lib/Demeter/UI/Atoms/icons/atoms.ico" ${pkgdir}/usr/share/pixmaps/datoms.png
+	cp "blib/lib/Demeter/UI/Hephaestus/icons/vulcan.png" ${pkgdir}/usr/share/pixmaps/dhephaestus.png
 	mkdir -p ${pkgdir}/usr/share/applications
- 	cp "${srcdir}/dhephaestus.desktop"  ${pkgdir}/usr/share/applications
- 	cp "${srcdir}/dartemis.desktop"  ${pkgdir}/usr/share/applications
- 	cp "${srcdir}/dathena.desktop"  ${pkgdir}/usr/share/applications
+	gendesk -n -f --pkgname=Hephaestus --pkgdesc="A souped-up periodic table for the X-ray absorption spectroscopistd" --name=DHephaestus --icon=dhephaestus.png --terminal=false --startupnotify=true --categories="Science;Chemistry;Physics;Education" --exec=/usr/bin/dhephaestus ../../PKGBUILD
+	gendesk -n -f --pkgname=Artemis --pkgdesc="EXAFS analysis using Feff and Ifeffit" --name=DArtemis --icon=dartemis.png --terminal=false --startupnotify=true --categories="Science;Chemistry;Physics;Education" --exec=/usr/bin/dartemis ../../PKGBUILD
+	gendesk -n -f --pkgname=Athena --pkgdesc="XAS Data Processing" --name=DAthena --icon=dathena.png --terminal=false --startupnotify=true --categories="Science;Chemistry;Physics;Education" --exec=/usr/bin/dathena ../../PKGBUILD
+ 	cp "Hephaestus.desktop"  ${pkgdir}/usr/share/applications
+ 	cp "Artemis.desktop"  ${pkgdir}/usr/share/applications
+ 	cp "Athena.desktop"  ${pkgdir}/usr/share/applications
 }
