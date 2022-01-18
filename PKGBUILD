@@ -8,6 +8,7 @@ arch=('any')
 _repo=tpm
 url="https://github.com/tmux-plugins/$_repo"
 license=('MIT')
+conflicts=('tmux-plugin-manager')
 depends=('tmux>=1.9' 'git' 'bash')
 install=$pkgname.install
 source=("git+$url.git#branch=master")
