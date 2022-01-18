@@ -2,8 +2,8 @@
 
 _gemname=minitest-reporters
 pkgname=ruby-$_gemname
-pkgver=1.4.3
-pkgrel=3
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Extend Minitest through simple hooks"
 arch=(any)
 url=https://github.com/minitest-reporters/minitest-reporters

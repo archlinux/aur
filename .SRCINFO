@@ -1,7 +1,7 @@
 pkgbase = ruby-minitest-reporters
 	pkgdesc = Extend Minitest through simple hooks
-	pkgver = 1.4.3
-	pkgrel = 3
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/minitest-reporters/minitest-reporters
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = ruby-minitest-reporters
 	depends = ruby-minitest
 	depends = ruby-ruby-progressbar
 	options = !emptydirs
-	source = git+https://github.com/minitest-reporters/minitest-reporters.git?tag=v1.4.3
+	source = git+https://github.com/minitest-reporters/minitest-reporters.git?tag=v1.5.0
 	sha256sums = SKIP
 
 pkgname = ruby-minitest-reporters
