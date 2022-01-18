@@ -2,7 +2,7 @@
 pkgbase=ttf-golos
 pkgname=(ttf-golos-text ttf-golos-ui ttf-golos-ui-variable ttf-golos-text-variable)
 pkgver=2.000
-pkgrel=1
+pkgrel=2
 url=https://www.paratype.com/fonts/pt/golos-ui
 license=(custom:OFL)
 arch=(any)
@@ -22,9 +22,7 @@ prepare () {
 _package () {
 	install -D "${srcdir}/${_zipdir}/OFL.txt" \
 		"${pkgdir}/usr/share/licenses/${pkgname}/OFL.txt"
-	echo "$@"
-	install -Dt "${pkgdir}/usr/share/fonts/${pkgname}" \
-		"$@"
+	install -Dt "${pkgdir}/usr/share/fonts/${pkgname}" "$@"
 }
 
 package_ttf-golos-text () {
