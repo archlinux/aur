@@ -1,4 +1,4 @@
-# Maintainer: rarick <tyler dot rarick at gmail dot com>
+# Maintainer: Anagastes
 
 pkgname=tmux-plugin-manager-git
 pkgver=r207.b699a7e
