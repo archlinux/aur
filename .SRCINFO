@@ -1,9 +1,9 @@
 pkgbase = buku
 	pkgdesc = Bookmark manager like a text-based mini-web
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jarun/buku
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python

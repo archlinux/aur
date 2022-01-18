@@ -6,9 +6,9 @@
 
 pkgname=buku
 pkgver=4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Bookmark manager like a text-based mini-web"
-arch=(x86_64)
+arch=('any')
 url="https://github.com/jarun/buku"
 license=('GPL')
 depends=('python'
@@ -23,7 +23,7 @@ optdepends=('wl-clipboard: to copy text in wayland'
             'xsel: to copy text in xorg'
             'xclip: to copy text in xorg')
 conflicts=('buku-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jarun/buku/archive/refs/tags/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2e1968016d3856184db8ac49cdc92a6c70869f62846185f28c8c60ead0c42888')
 
 package() {
