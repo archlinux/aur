@@ -2,9 +2,9 @@
 # -*- sh -*-
 
 pkgname='python-nestedtext'
-_pkgname=${pkgname##python-}
-pkgver=3.1
-pkgrel=3
+_pkgname=${pkgname#python-}
+pkgver=3.2
+pkgrel=1
 pkgdesc='Human readable and writable data interchange format'
 arch=('any')
 license=('MIT')
@@ -12,26 +12,20 @@ url='https://github.com/KenKundert/nestedtext'
 source=(
   "$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-depends=('python>=3.6')
+depends=('python')
 makedepends=(
   'python-inform'
   'python-setuptools'
   'python-sphinx'
 )
-md5sums=(
-  'ac4203d20e0bc44d99cdb231cfdd617c'
-)
-sha1sums=(
-  'a013c3739ec27c67c66cf8879dd09177b978d0b5'
-)
 sha256sums=(
-  'c9557c4980d908e52a6c5b4e6b78d0d914d1109d1633ae2aeb9003da6a3108f5'
+  '5f2f2e9e215b10aff09d7703aea086c4bd5ee0b0e71a11d47d77e25375e4acc5'
 )
 sha512sums=(
-  'de8f5add591c93a6bf9edf598af9de00458d1dbec64e4ef2cef2be07dae0c194025fd3035030a436ad43c241ec7e2194c953d19b406dc4c9a78e096171079e04'
+  '1879ba6d2d01d8f5fe9ba4dd2aaba65601e2a4a701780ee740e6fd48c8a89620848da250e6bd0dfb6b92c77c27cf17c88e53cc0e18ffed47ef0c47d5a36d862d'
 )
 b2sums=(
-  '4d29b0cb52f260f495b7e263242247f13aeea934c15b0ca3ce06e38827f862ceb8405c209b65ae29f78530279c000c1ad3b911309145f2dfebf66cee11b20fa2'
+  '5933aa5276728511336c37fec5ee3384df81a10151a9145d463c12b0511229109f5479e06ec9f3dc8370047142b907823bcc2be1dd2faf6052a72f6a61f93334'
 )
 
 build() {
