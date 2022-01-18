@@ -1,7 +1,7 @@
 pkgbase = tidal-dl
 	pkgdesc = Download videos and tracks from Tidal.
-	pkgver = 2022.1.11.1
-	pkgrel = 2
+	pkgver = 2022.1.18.2
+	pkgrel = 1
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
 	arch = any
 	license = Apache
@@ -12,7 +12,7 @@ pkgbase = tidal-dl
 	depends = python-prettytable
 	depends = python-setuptools
 	depends = python-psutil
-	source = https://files.pythonhosted.org/packages/source/t/tidal-dl/tidal-dl-2022.1.11.1.tar.gz
-	sha256sums = 4c1bd416fa8a233b7f3982d47ad4e94b56b94a9d340148855baa60501b87b44f
+	source = https://files.pythonhosted.org/packages/source/t/tidal-dl/tidal-dl-2022.1.18.2.tar.gz
+	sha256sums = 32135a688cf2d9c2abe55fc1ac5ca1a749a171eae1a8716742b8ab009e36aa00
 
 pkgname = tidal-dl
