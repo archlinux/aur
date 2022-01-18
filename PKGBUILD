@@ -1,6 +1,6 @@
 # Maintainer: J. King <jking@jkingweb.ca>
 pkgname="arsse"
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 epoch=
 pkgdesc="Multi-protocol RSS/Atom newsfeed synchronization server"
@@ -25,7 +25,7 @@ backup=("etc/webapps/arsse/config.php"
         "etc/webapps/arsse/apache/arsse.conf"
         "etc/webapps/arsse/apache/arsse-loc.conf")
 source=("$pkgname-$pkgver.tar.gz::https://thearsse.com/releases/$pkgver")
-md5sums=('d15cb2fe9d8409b244e6a4acef523aa8')
+md5sums=('4bdc37ed7d59b59f694337c3ab2550c4')
 
 package() {
     # define runtime dependencies
