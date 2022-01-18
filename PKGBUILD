@@ -23,7 +23,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "stardust-xr" build
+	arch-meson -D b_lto=false "stardust-xr" build
 	meson compile -C build
 }
 
