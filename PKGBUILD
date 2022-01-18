@@ -14,6 +14,7 @@ arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 options=(!strip)
+install=alchemy.install
 # depends=(dbus-glib glu gtk3 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 depends=(dbus-glib glu gtk3 libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
 makedepends=(sed)
@@ -27,21 +28,16 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
-source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2"
-        'alchemy-next.desktop')
-sha1sums=('3479198ce34e8d6a52f88a8627e6ab16bc72fa81'
-          '8468775b4863b9a4d5c7c0f7d0319a54b97636de')
-b2sums=('c78acbfb5015a4d36e4169f8624fd8711eda0d93f0fe89e37ea570633ae00d328208380a176b499ac3bcf547bd470190f7479eb31225b62f3e858e65551f8256'
-        'fbab51351cd1c427563fdaf8ffd35d1ca2aef3f4eaea03644cc35cd2063b0b3ea29fd96ca9cc774f21d6172584c195a79aafab4b37aa1108c9e47abef013f709')
-pkgver() {
-  echo "${pkgver}"
-}
+source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2")
+sha1sums=('3479198ce34e8d6a52f88a8627e6ab16bc72fa81')
+b2sums=('c78acbfb5015a4d36e4169f8624fd8711eda0d93f0fe89e37ea570633ae00d328208380a176b499ac3bcf547bd470190f7479eb31225b62f3e858e65551f8256')
+# pkgver() {
+  # echo "${pkgver}"
+# }
 package() {
   mkdir -p "${pkgdir}"/opt
-  mv "${srcdir}/${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
-  install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
   # Patch shortcut to avoid duplicated entries
-  sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
   sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${pkgdir}/opt/${pkgname}/etc/refresh_desktop_app_entry.sh"
   sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "${pkgdir}/opt/${pkgname}/etc/refresh_desktop_app_entry.sh"
+  mv "${srcdir}/${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
 }
