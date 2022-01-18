@@ -20,7 +20,7 @@ pkgbase = zsh-zim-git
 	source = zshrc
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 344a011e44e34549568e8aee31c8e8be
+	md5sums = d63ab2a0308488aa4d7ffc817a2106d7
 	md5sums = a1a7242bb1b9c3ee6f799ab7d4f9ac7c
 	md5sums = 0cb8764ba7f67c37c3c6452cc06751af
 

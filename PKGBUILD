@@ -17,7 +17,7 @@ source=('git+https://github.com/zimfw/zimfw.git'
         'zshrc')
 md5sums=('SKIP'
          'SKIP'
-         '344a011e44e34549568e8aee31c8e8be'
+         'd63ab2a0308488aa4d7ffc817a2106d7'
          'a1a7242bb1b9c3ee6f799ab7d4f9ac7c'
          '0cb8764ba7f67c37c3c6452cc06751af')
 options=('!strip')
