@@ -2,7 +2,7 @@
 # Maintainer: András Wacha < awacha at gmail >
 
 pkgname='perl-chemistry-elements'
-pkgver='1.071'
+pkgver='1.075'
 pkgrel='1'
 pkgdesc="Perl extension for working with Chemical Elements"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
 url='https://metacpan.org/release/Chemistry-Elements'
-source=('http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Chemistry-Elements-1.071.tar.gz')
-md5sums=('ecb456164a66372a5a15c12ae6a469ee')
-sha512sums=('4af09435a43e9c8a8651f7333e10a2a52ea221cbc179332b4deb472f8af59ac1fd1b0551a5af33ce8f58c032dbdaaaba459836da746a80889e9e089d301bb385')
-_distdir="Chemistry-Elements-1.071"
+source=("http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Chemistry-Elements-${pkgver}.tar.gz")
+md5sums=('eae84ee452cc2acd6eae2b68f0883498')
+sha512sums=('fb310ed3b8d2185da06487b777b5a912175628ddc0d803a9e9225ab308aad87586e4986868da7c0c3f8314fb10b63a9f7cb6ae0fdc354c13d5515112fd08f3d2')
+_distdir="Chemistry-Elements-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
