@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 _pkgbase=rtc-pcf85063
 pkgname=$_pkgbase-dkms
-pkgver=5.11
+pkgver=5.16
 pkgrel=1
 pkgdesc="PC85063 kernel module (DKMS)"
 arch=("any")
@@ -13,7 +13,7 @@ conflicts=($_pkgbase)
 source=("https://raw.githubusercontent.com/torvalds/linux/v$pkgver/drivers/rtc/$_pkgbase.c"
         "dkms.conf"
         "Makefile")
-sha256sums=('7052640bb954f19c6c5ba38cb7e050d79f833cb9b9e53bfa2ca23869dc3b5d4b'
+sha256sums=('d4137e3d2c10f0e5544126d3f3f07766b4db1f2fac5f147341e70998427d843b'
             '06612e69e2c592b9dd32d15a4eae118e7a717b3e89170ecc02a6f64dbaf3bf21'
             '4cd1a6449b1b74d11e103e25e43007c60ca646e96485e98fc359815a7c12a7fa')
 
