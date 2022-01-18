@@ -1,10 +1,10 @@
 
 _pkgname=minq_nhentai
 pkgname="${_pkgname}-git"
-pkgver=r32.5f5781e32d7874f9285c13792b28b043fb26bae5
+pkgver=r40.2646ba904101d1dce4cb2154557d9132bf7e8b0b
 pkgrel=1
 epoch=
-pkgdesc='Browse hnehtai in your terminal. Sixel support for full image resolution (your terminal needs to support sixel).'
+pkgdesc='Browse hnehtai in your terminal. Kitty support for full image resolution (your terminal needs to support kitty).'
 arch=(x86_64 i686)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
@@ -12,7 +12,7 @@ groups=()
 depends=(python python-beautifulsoup4 viu)
 makedepends=(git)
 checkdepends=()
-optdepends=("wezterm: an example terminal that supports sixel, for full image resolution")
+optdepends=("wezterm: an example terminal that supports kitty, for full image resolution", "python-minq_storage-git: needed for the beta version")
 provides=("${_pkgname}")
 conflicts=()
 replaces=()
@@ -38,4 +38,5 @@ package() {
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	mkdir -p "${pkgdir}/usr/bin/"
 	ln -s "/opt/${pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/opt/${pkgname}/${_pkgname}_beta.py" "${pkgdir}/usr/bin/${_pkgname}_beta"
 }
