@@ -1,16 +1,16 @@
 # Maintainer: dreieck
 # Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
-_pkgorigname=minizip
-_pkgname="${_pkgorigname}2"
+_pkgorigname=minizip-ng
+_pkgname=minizip2
 pkgname="${_pkgname}-2.3.3"
 pkgdesc="Mini zip and unzip based on libbsd and zlib. Version 2.3.3 (specific version)."
 _pkgver=2.3.3
 pkgver="${_pkgver}"
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 license=('custom')
-url="http://github.com/nmoinvaz/minizip"
+url="https://github.com/zlib-ng/minizip-ng"
 depends=(
   # 'bzip2'
   'glibc'
@@ -29,11 +29,12 @@ conflicts=(
   "lib${_pkgname}"
 )
 source=(
-  "${_pkgorigname}-${_pkgver}.tar.gz::https://github.com/nmoinvaz/${_pkgorigname}/archive/${_pkgver}.tar.gz"
+  # "${_pkgorigname}-${_pkgver}.tar.gz::https://github.com/nmoinvaz/${_pkgorigname}/archive/${_pkgver}.tar.gz"
+  "${_pkgorigname}-${_pkgver}.tar.gz::https://github.com/zlib-ng/minizip-ng/archive/${_pkgver}.tar.gz"
   "minizip.pc.rename-minizip2.patch::http://ix.io/1yQu"
 )
 sha256sums=(
-  '8c74530d3095891525f53cda6aabe1df138255ef53d0f294791cb57c2cb5710c'
+  'aeb4eb0e1bbf6ddfc1eaf469cc18803ea40ed8f5bbd2dcf342e32c04a673feed'
   '0700dfdb6c637b1a36cf15018a5d4d3ee92cb51d637e33341f4aaae3d4f480ad'
 )
 
