@@ -10,9 +10,9 @@
 # Contributor: anthrit <anthrit [at] anthware [dot] com>
 
 pkgname=lightworks
-lwksver=2021.2
-lwksreldir=2021.2.1
-lwksbuild=128456
+lwksver=2022.1.1
+lwksreldir=2022.1.1
+lwksbuild=132185
 pkgver=$lwksver
 pkgrel=1
 pkgdesc="Lightworks is a professional video editing suite"
@@ -29,8 +29,8 @@ source=(
     "https://cdn.lwks.com/releases/$lwksreldir/lightworks_${lwksver}_r${lwksbuild}.deb"
     )
 
-sha256sums=(
-    '1a44e0e37214175360126ff04fd099c3af03c3f476058054fc5e1bb02c50a304'
+sha512sums=(
+    '0b4ab5199288fd39ad7c44c3ab2fb36f007e5f8ec9708ff5b130eaf9b3402ec267ee23d6431aa8c577c36408416eba5b287f397457dccb9f409e738ea8981991'
     )
 
 package() {
