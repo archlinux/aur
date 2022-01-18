@@ -50,8 +50,7 @@ prepare() {
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1/anki-sync-server/__init__.py
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1.28/anki-sync-server/__init__.py
 
-  # set current ip address as the server's ip address and change port
-  sed "3s/0\.0\.0\.0/${_your_ip_}/" ankisyncd.conf -i
+  # change port to 27702 since 27701 will be for nginx
   sed "4s/27701/27702/" ankisyncd.conf -i
 
   # set user and directory information for systemd service file
