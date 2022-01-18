@@ -1,12 +1,13 @@
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 # Contributor: graysky <graysky AT archlinux dot us>
 
 pkgname=monitorix
-pkgver=3.13.1
+pkgver=3.14.0
 pkgrel=1
 pkgdesc='A lightweight system monitoring tool that uses rrd databases.'
 arch=('any')
 url='https://www.monitorix.org'
-license=('GPLv2')
+license=('GPL2')
 depends=('perl' 'perl-cgi' 'perl-mailtools' 'perl-mime-lite' 'perl-libwww'
 	'perl-dbi' 'perl-xml-simple' 'perl-config-simple' 'perl-config-general'
 	'rrdtool' 'perl-http-server-simple')
@@ -23,7 +24,7 @@ conflicts=("$pkgname-git")
 backup=("etc/$pkgname/$pkgname.conf" "etc/$pkgname.conf")
 install=readme.install
 source=("http://www.$pkgname.org/$pkgname-$pkgver.tar.gz")
-sha256sums=('ea2e579978e7c1e1ac924fc0f5477c488e5b8bb8a2f2ce5b2657fcb84d29d949')
+sha256sums=('2e901d4f5a266f23c5b3788a3da10a03c2bdb6512e1af61306c01a2ed2b61d49')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -31,9 +32,6 @@ prepare() {
 	# use Arch default location for http servers and enable built-in httpd
 	sed -i -e '/^base_dir/ s,var\/lib\/monitorix\/www,srv\/http\/monitorix,' \
 		-i -e '/^<httpd_builtin>/{$!N; s/y/n/}' $pkgname.conf
-	
-	# apply fix for RRDtool 1.5 scheduled to be included in the next release
-	sed -i '/$macti = $minac/ s,"",0,' lib/system.pm
 }
 
 package() {
@@ -43,7 +41,7 @@ package() {
 
 	# Arch provides the license so do not duplicate it
 	rm -f "$pkgdir/usr/share/doc/$pkgname/COPYING"
-	
+
 	# remove unneed files
 	rm -f "$pkgdir/usr/share/doc/$pkgname/README.OpenBSD"
 	rm -f "$pkgdir/usr/share/doc/$pkgname/README.NetBSD"
