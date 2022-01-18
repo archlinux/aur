@@ -5,8 +5,7 @@
 
 _pkgbase=quassel
 pkgname=('quassel-core-small')
-_pkgver=0.14-rc2
-pkgver=0.14.0.rc2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Next-generation distributed IRC client - core only, minimal dependencies"
 arch=('x86_64')
@@ -18,12 +17,12 @@ makedepends=('qt5-tools' 'cmake' 'extra-cmake-modules' 'boost' 'ninja')
 provides=('quassel-core')
 conflicts=('quassel-core')
 backup=(etc/conf.d/quassel)
-source=("https://github.com/quassel/quassel/releases/download/$_pkgver/$_pkgbase-$_pkgver.tar.xz"
+source=("https://github.com/quassel/quassel/releases/download/$pkgver/$_pkgbase-$pkgver.tar.xz"
         ${_pkgbase}.service
         ${_pkgbase}.sysusers
         ${_pkgbase}.tmpfiles
         ${_pkgbase}.conf)
-sha256sums=('a7e10b5a8fb242ed84cfd593dfb7a90861498eeb0d584e3a7e7f5639cd7f588b'
+sha256sums=('090777f37a6ae1057a046d5c2896ce5e4bef2382377e3ba52c63efe6b5fe4e10'
             '0f5adfcaf9a640a795255d6bb82d6242882a1106a7b53b86bcbee6cc1e704241'
             '3c72441a99e2668c6a8a751fa07beeb44f937576c8a1b5f615e4a55f841d93d9'
             '2afd4340c7713f6533e5d175a86b28fd118ecd907776c2b10925d1a4fb31cdca'
@@ -32,7 +31,7 @@ sha256sums=('a7e10b5a8fb242ed84cfd593dfb7a90861498eeb0d584e3a7e7f5639cd7f588b'
 build() (
   mkdir -p "build"
   cd "build"
-  cmake -G Ninja ../"$_pkgbase-$_pkgver" \
+  cmake -G Ninja ../"$_pkgbase-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DCMAKE_BUILD_TYPE=Release \
     -DHAVE_SSL=ON \
