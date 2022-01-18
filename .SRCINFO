@@ -33,7 +33,7 @@ pkgbase = element-desktop-git-greentext
 
 pkgname = element-desktop-git-greentext
 	pkgdesc = Glossy Matrix collaboration client with greentext baked in — desktop version.
-	depends = element-web-git=1.9.9.r11.g840867bc0+greentext
+	depends = element-web-git-greentext=1.9.9.r11.g840867bc0+greentext
 	depends = electron
 	depends = sqlcipher
 	provides = element-desktop

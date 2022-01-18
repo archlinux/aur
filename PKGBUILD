@@ -86,13 +86,13 @@ package_element-web-git-greentext() {
   echo "$pkgver" > "$pkgdir/usr/share/webapps/element/version"
 
   # Install element web launcher
-  install -Dm755 ../element-web.sh "$pkgdir/usr/bin/element-web"
+  install -Dm755 "$srcdir/../element-web.sh" "$pkgdir/usr/bin/element-web"
 }
 
 package_element-desktop-git-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
-  depends=("element-web-git=${pkgver}" ${_electron} sqlcipher)
+  depends=("element-web-git-greentext=${pkgver}" ${_electron} sqlcipher)
   provides=(element-desktop{,-git})
   conflicts=(element-desktop{,-git})
   backup=("etc/element/config.json")
