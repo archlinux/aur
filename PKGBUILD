@@ -1,6 +1,6 @@
 # Maintainer: Yann Büchau <nobodyinperson@posteo.de>
 pkgname=python-polt-git
-pkgver=0.12.1.r13.ge8829ab
+pkgver=1.0.0.r13.g235ccc1
 pkgrel=1
 epoch=
 pkgdesc="Live plotting with Matplotlib"
@@ -8,7 +8,7 @@ arch=(any)
 url="https://gitlab.com/nobodyinperson/python3-polt"
 license=('GPL')
 groups=()
-depends=(python-matplotlib python-scipy python-click python-xdgspec)
+depends=(python-matplotlib python-scipy python-click python-xdgspec gettext make)
 makedepends=(python-setuptools)
 checkdepends=()
 optdepends=()
@@ -31,6 +31,7 @@ pkgver () {
 
 build () {
     cd "$srcdir/${pkgname%-git}"
+    make locale
     python setup.py build
 }
 
