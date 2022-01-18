@@ -3,9 +3,9 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
 license=('ZLIB' 'custom')
 depends=('zlib' 'gcc-libs')
