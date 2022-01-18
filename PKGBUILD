@@ -3,7 +3,7 @@
 pkgname=tmux-plugin-manager-git
 pkgver=v3.0.0.r69.gb699a7e
 pkgrel=1
-pkgdesc="tpm - Tmux Plugin Manager"
+pkgdesc="tpm - Tmux Plugin Manager - Bound to the version number"
 arch=('any')
 _repo=tpm
 url="https://github.com/tmux-plugins/$_repo"
