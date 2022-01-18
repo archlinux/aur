@@ -1,10 +1,9 @@
 # Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 
 _name='napari'
-_author='napari'
 pkgname="${_name}"
-pkgver=0.4.12
-pkgrel=2
+pkgver=0.4.13
+pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
 url='https://napari.org'
@@ -14,6 +13,10 @@ makedepends=(
   'icoutils'
 )
 depends=(
+  'napari-console'
+  'napari-npe2'
+  'napari-plugin-engine'
+  'napari-svg'
   'python'
   'python-importlib-metadata'
   'python-appdirs'
@@ -23,16 +26,12 @@ depends=(
   'python-importlib-metadata'
   'python-jsonschema'
   'python-magicgui'
-  'python-napari-console'
-  'python-napari-svg'
-  'python-napari-plugin-engine'
   'python-numpy'
   'python-numpydoc'
   'python-pandas'
   'python-pillow'
   'python-pint'
   'python-psutil'
-  'python-opengl-accelerate'
   'python-pyaml'
   'python-pydantic'
   'python-qtpy'
@@ -51,7 +50,7 @@ source=(
   "${_name}.desktop"
 )
 sha256sums=(
-  '6cb7c09b53b3ad921fc1609a672c76dca0b11106cb440922457660c5e6eb6020'
+  '54bb85c3afbf12d1333512aa0f7bdae0d652ddbe6bede1476fc6d0e89c1c87fb'
   '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 provides=("${_name}")
 
