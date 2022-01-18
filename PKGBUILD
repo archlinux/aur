@@ -1,7 +1,7 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rbibutils
-_cranver=2.2.5
+_cranver=2.2.7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2)
 depends=('r>=2.10')
 optdepends=(r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('642cba061865c21ce4efd3755330c3abba1e1013ea63b1440dccda36398b19fd')
+sha256sums=('7c9e6719556b8caa9fb58743b717e89f45e8e7018371bf16f07dc3c1f96a55c5')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
