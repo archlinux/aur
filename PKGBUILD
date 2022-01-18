@@ -3,7 +3,7 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
@@ -25,20 +25,23 @@ sha512sums=('3b5fa28c873a3c45a374855dcf99005ac0ce2ff411a9f4b360e6afc72fe7846803d
 
 _srcdir='.'
 
+_cflags=${CLANG_CFLAGS:-}
+check_option 'lto' 'y' && _cflags+=' -flto=thin'
+_cxxflags=${CLANG_CXXFLAGS:-}
+check_option 'lto' 'y' && _cxxflags+=' -flto=thin'
+
 prepare() {
 	cd "${_srcdir}"
 	sed -i 's/libSDL-1.2/libSDL-2.0/' 'check_install.sh'
 	sed -i 's|CUBE_OPTIONFILE=-Cconfig/servercmdline.txt|CUBE_OPTIONFILE=-C/etc/assaultcube/servercmdline.txt|' 'server.sh'
 	rm -rf 'source/include'
 	cd 'source/src'
-	FLAGS=${CLANG_CXXFLAGS:-}
-	check_option 'lto' 'y' && FLAGS+=' -flto'
-	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${FLAGS} -O3/" 'Makefile'
+	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${_cxxflags} -O3/" 'Makefile'
 }
 
 build() {
 	cd "${_srcdir}/source/src"
-	make
+	CC=clang CXX=clang++ CFLAGS="${_cflags}" CXXFLAGS="${_cxxflags}" make
 }
 
 package_assaultcube-common() {
