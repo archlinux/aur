@@ -1,6 +1,6 @@
 pkgbase = python2-saml
 	pkgdesc = OneLogin's SAML Python Toolkit. Python 2 version / upstream python-saml.
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/onelogin/python-saml
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python2-saml
 	depends = python2-defusedxml
 	depends = python2-isodate
 	depends = python2-dm.xmlsec.binding
-	source = python2-saml-2.7.0.tar.gz::https://github.com/onelogin/python-saml/archive/v2.7.0.tar.gz
-	sha256sums = 58d47df18a5f2539d6efd7662b1bc00f69d13b7d11a3536b0fa24679c510112c
+	source = python2-saml-2.8.0.tar.gz::https://github.com/onelogin/python-saml/archive/v2.8.0.tar.gz
+	sha256sums = 9b42f3e584fe1248bfe1b029f6033a8c2ed051852ea1c7d90e8f76a087e541f8
 
 pkgname = python2-saml
