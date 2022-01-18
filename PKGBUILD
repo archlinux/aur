@@ -13,17 +13,14 @@ license=(GPL2 GPL3)
 depends=('r>=3.6.0' r-png r-jpeg r-rcolorbrewer)
 optdepends=(r-maps r-mapproj r-deldir r-tripack r-quantreg r-zoo r-mgcv)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('0a01f66ccf60abc874649d430f3902d5')
+sha256sums=('6cadc31d56f73d926e2e8d72e43ae17ac03607a4d1a374719999a4a231e3df11')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
