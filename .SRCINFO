@@ -1,13 +1,15 @@
 pkgbase = waybackpy
 	pkgdesc = CLI tool that interfaces with the Internet Archives Wayback Machine API
-	pkgver = 2.4.4
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/akamhy/waybackpy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
-	source = waybackpy-2.4.4.tar.gz::https://files.pythonhosted.org/packages/source/w/waybackpy/waybackpy-2.4.4.tar.gz
-	sha256sums = 17c224d71ab874a91b40535e861ef6a5b0934a5d5197771f1765c3c4303df415
+	depends = python-click
+	provides = python-waybackpy
+	source = waybackpy-3.0.0.tar.gz::https://files.pythonhosted.org/packages/source/w/waybackpy/waybackpy-3.0.0.tar.gz
+	sha256sums = 264aa84a76365e8355ede96cb6cf02a1945295724ddfb7d4a43e6f3d8f97740a
 
 pkgname = waybackpy
