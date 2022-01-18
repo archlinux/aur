@@ -10,7 +10,6 @@ pkgbase = r-multcompview
 	optdepends = r-multcomp
 	optdepends = r-pgirmess
 	source = https://cran.r-project.org/src/contrib/multcompView_0.1-8.tar.gz
-	md5sums = 0bc6539f7bb3c08e87ead391d1578cea
+	sha256sums = 123d539172ad6fc63d83d1fc7f356a5ed7b691e7803827480118bebc374fd8e5
 
 pkgname = r-multcompview
-
