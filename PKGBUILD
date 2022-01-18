@@ -3,16 +3,16 @@
 pkgname=python-django-bootstrap4
 _name='django-bootstrap4'
 pkgdesc="Bootstrap 4 integration with Django"
-pkgver=2.3.1
-pkgrel=2
+pkgver=3.0.1
+pkgrel=1
 url="https://github.com/zostera/django-bootstrap4"
 license=('BSD-3-Clause')
 arch=('any')
 depends=('python-django')
 makedepends=('python' 
   'python-setuptools')
-source=("https://files.pythonhosted.org/packages/f9/aa/b1a7a77b080aeea0c06edd6117609f1525dbf05f31a772b52b374acf27c9/$_name-$pkgver.tar.gz")
-sha256sums=('2c199020ac38866cdf8d1c5561ce7468116b9685b455a29843c0225ef8568879')
+source=("https://github.com/zostera/django-bootstrap4/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('981c823dab35f12cce3792011d25da33e9dec1566b0784b21a25ce158a129cf2')
 
 build() {
   cd ${srcdir}/django-bootstrap4-${pkgver}
