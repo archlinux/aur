@@ -1,0 +1,16 @@
+pkgbase = git-crecord
+	pkgdesc = Git subcommand to interactively select changes to commit or stage
+	pkgver = 20201025.0
+	pkgrel = 1
+	url = https://github.com/andrewshadura/git-crecord
+	arch = any
+	license = GPL
+	makedepends = python-docutils
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/andrewshadura/git-crecord/releases/download/20201025.0/git-crecord-20201025.0.tar.gz
+	sha256sums = 54a1ff68464302c8aff4278c0ad137b5b6e7ad10b7a4c12016e5dbc89cf93df7
+
+pkgname = git-crecord
+	depends = python
+	depends = git
