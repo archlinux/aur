@@ -5,7 +5,7 @@
 
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.8.5.r27.g1aa2efd2c
+pkgver=1.9.9.r11.g840867bc0+greentext
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
@@ -19,11 +19,13 @@ source=("element-web::${_giturl}/element-web.git"
         "element-desktop::${_giturl}/element-desktop.git"
         autolaunch.patch
         io.element.Element.desktop
+        greentext.patch
         element-desktop.sh)
 sha256sums=('SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
+            'a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 _electron=electron
 
@@ -34,24 +36,26 @@ pkgver() {
     # cutting off 'v' prefix that presents in the git tag
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+    echo '+greentext'
+  ) | tr -d '\n'
 }
 
 prepare() {
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" element-desktop.sh
 
-  cd element-web
+  cd "$srcdir/element-web"
   yarn install --no-fund
 
-  cd ../element-desktop
+  cd "$srcdir/element-desktop"
   patch -p1 < ../autolaunch.patch
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
   sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
-  cd ../element-web/node_modules/matrix-react-sdk
+  cd "$srcdir/element-web/node_modules/matrix-react-sdk"
+  patch -p1 < "$srcdir/../greentext.patch"
   yarn reskindex
 }
 
@@ -69,7 +73,7 @@ package_element-web-git() {
   replaces=(riot-web vector-web)
   provides=(element-web)
   conflicts=(element-web)
-  
+
   cd element-web
 
   install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/element

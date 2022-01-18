@@ -1,0 +1,58 @@
+From f66fb203ead9ddf3df864f46a23dc5c10820a81d Mon Sep 17 00:00:00 2001
+From: Daniel Olsen <daniel.olsen99@gmail.com>
+Date: Thu, 8 Apr 2021 11:31:52 +0200
+Subject: [PATCH] add greentext command
+
+---
+ src/SlashCommands.tsx       | 22 ++++++++++++++++++++++
+ src/i18n/strings/en_EN.json |  1 +
+ 2 files changed, 23 insertions(+)
+
+diff --git a/src/SlashCommands.tsx b/src/SlashCommands.tsx
+index 3b6a202cf..3a293d538 100644
+--- a/src/SlashCommands.tsx
++++ b/src/SlashCommands.tsx
+@@ -155,6 +155,28 @@ function success(promise?: Promise<any>) {
+  */
+ 
+ export const Commands = [
++    new Command({
++        command: 'greentext',
++        args: 'message',
++        description: _td('Makes your text green and adds meme arrows to the beginning of each line of the message'),
++        runFn: function(roomId, args) {
++            const texts = args.split(/\n{2,}(.+|\n+)/g);
++            const greentext = texts[0];
++            const normalText = texts[1] || "";
++
++            let plainGreentext = greentext.replace(/^/g, "> ");
++            plainGreentext = plainGreentext.replace(/(?:\r\n|\r|\n)+/g, "\n> ");
++
++            let htmlGreentext = greentext.replace(/^/g, "&gt; ");
++            htmlGreentext = htmlGreentext.replace(/(?:\r\n|\r|\n)+/g, "<br />&gt; ");
++
++            return success(ContentHelpers.makeHtmlMessage(
++                plainGreentext + "\n" + normalText,
++                `<font color="#789902">${htmlGreentext}</font><br/>${normalText}`,
++            ));
++        },
++        category: CommandCategories.messages,
++    }),
+     new Command({
+         command: 'spoiler',
+         args: '<message>',
+diff --git a/src/i18n/strings/en_EN.json b/src/i18n/strings/en_EN.json
+index c192e51f9..f57e17b78 100644
+--- a/src/i18n/strings/en_EN.json
++++ b/src/i18n/strings/en_EN.json
+@@ -417,6 +417,7 @@
+     "Other": "Other",
+     "Command error": "Command error",
+     "Usage": "Usage",
++    "Makes your text green and adds meme arrows to the beginning of each line of the message": "Makes your text green and adds meme arrows to the beginning of each line of the message",
+     "Sends the given message as a spoiler": "Sends the given message as a spoiler",
+     "Prepends ¯\\_(ツ)_/¯ to a plain-text message": "Prepends ¯\\_(ツ)_/¯ to a plain-text message",
+     "Prepends (╯°□°）╯︵ ┻━┻ to a plain-text message": "Prepends (╯°□°）╯︵ ┻━┻ to a plain-text message",
+-- 
+2.34.1
+
