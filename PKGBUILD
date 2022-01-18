@@ -2,8 +2,8 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.0.187
-pkgrel=8
+pkgver=1.1.6
+pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
