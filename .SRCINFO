@@ -1,6 +1,6 @@
 pkgbase = python2-openbabel
 	pkgdesc = A library designed to interconvert between many file formats used in molecular modeling and computational chemistry: Python2 bindings
-	pkgver = 3.0.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://openbabel.org/wiki/Main_Page
 	arch = i686
@@ -11,13 +11,16 @@ pkgbase = python2-openbabel
 	makedepends = swig
 	depends = python2
 	depends = openbabel
-	depends = wxgtk
+	depends = wxgtk3
 	depends = eigen
 	depends = boost-libs
+	depends = rapidjson
 	depends = python-rapidjson
 	depends = libxml2
-	source = https://github.com/openbabel/openbabel/archive/openbabel-3-0-0.tar.gz
-	md5sums = 4c0ba0ce5dac240b51dded72f69edbc0
+	depends = cairo
+	depends = boost
+	source = https://github.com/openbabel/openbabel/archive/refs/tags/openbabel-3-1-1.tar.gz
+	md5sums = 7efb864d2ba5593b286ddc49d70aa851
+	sha256sums = c97023ac6300d26176c97d4ef39957f06e68848d64f1a04b0b284ccff2744f02
 
 pkgname = python2-openbabel
-
