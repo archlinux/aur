@@ -15,6 +15,7 @@ pkgbase = r-move
 	depends = r-memoise
 	depends = r-xml2
 	depends = r-rcpp
+	depends = gdal
 	optdepends = r-adehabitathr
 	optdepends = r-adehabitatlt
 	optdepends = r-markdown
