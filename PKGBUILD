@@ -3,12 +3,12 @@
 
 pkgname='perl-starlink-ast'
 pkgver='3.01'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Interface to the Starlink AST library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.008' 'perl-pgplot' 'perl-tk')
+depends=('perl>=5.008' 'perl-pgplot' 'perl-tk' 'perl-tk-zinc')
 makedepends=('perl-module-build')
 checkdepends=('perl-test-deep>=0' 'perl-test-number-delta>=0')
 url='https://metacpan.org/release/Starlink-AST'
