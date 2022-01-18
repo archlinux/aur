@@ -2,10 +2,10 @@
 
 pkgname=mkinitcpio-sd-zfs-git
 pkgver=1.0.2.r4.g1a36d4f
-pkgrel=1
+pkgrel=2
 pkgdesc='Compatibility between systemd and ZFS roots'
 license=('MIT')
-url='https://github.com/dasJ/sd-zfs'
+url='git+https://github.com/dasJ/sd-zfs'
 conflicts=('mkinitcpio-sd-zfs')
 depends=('mkinitcpio' 'systemd')
 
