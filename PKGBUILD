@@ -1,7 +1,7 @@
 # Maintainer: Anagastes
 
 pkgname=tmux-plugin-manager-git
-pkgver=r207.b699a7e
+pkgver=b699a7e
 pkgrel=1
 pkgdesc="tpm - Tmux Plugin Manager - Bound to the version number"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 conflicts=('tmux-plugin-manager')
 depends=('tmux>=1.9' 'git' 'bash')
 install=$pkgname.install
-source=("git+$url.git#branch=master")
+source=("git+$url.git#commit=${pkgver}")
 sha256sums=('SKIP')
 
 pkgver() {
