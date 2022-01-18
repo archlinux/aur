@@ -6,12 +6,10 @@ pkgbase = r-metadynminer
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc>=4.3
 	depends = r>=3.3.0
 	depends = r-rcpp
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/metadynminer_0.1.6.tar.gz
-	md5sums = 6b7a0c2e451864142055d9a3fafc75da
+	sha256sums = 64746dddfc3278785150b925016c7d08510d3d7ab334c01477d5d6683945e07d
 
 pkgname = r-metadynminer
-
