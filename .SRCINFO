@@ -7,7 +7,6 @@ pkgbase = r-sfsmisc
 	license = GPL2
 	license = GPL3
 	depends = r>=3.3.0
-	optdepends = r-cluster
 	optdepends = r-lokern
 	source = https://cran.r-project.org/src/contrib/sfsmisc_1.1-12.tar.gz
 	sha256sums = 9b12184a28fff87cacd0c3602d0cf63acb4d0f3049ad3a6ff16177f6df350782
