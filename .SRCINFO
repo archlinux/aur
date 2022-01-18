@@ -7,7 +7,6 @@ pkgbase = r-dichromat
 	license = GPL2
 	depends = r>=2.10
 	source = https://cran.r-project.org/src/contrib/dichromat_2.0-0.tar.gz
-	md5sums = 84e194ac95a69763d740947a7ee346a6
+	sha256sums = 31151eaf36f70bdc1172da5ff5088ee51cc0a3db4ead59c7c38c25316d580dd1
 
 pkgname = r-dichromat
-
