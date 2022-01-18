@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=python2-saml
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="OneLogin's SAML Python Toolkit. Python 2 version / upstream python-saml."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('python2-setuptools')
 depends=('python2-defusedxml' 'python2-isodate' 'python2-dm.xmlsec.binding')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('05a189309d58d5ac58fe8e82caf98c6a948748af066d7dc24bb267584026a05d')
+sha256sums=('459a06c6540a89c473d4ce47bdae295da9648538c6f702d8836d1c995114e03b')
 
 build() {
 
