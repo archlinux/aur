@@ -9,6 +9,7 @@ pkgbase = tmux-plugin-manager-git
 	depends = tmux>=1.9
 	depends = git
 	depends = bash
+	conflicts = tmux-plugin-manager
 	source = git+https://github.com/tmux-plugins/tpm.git#branch=master
 	sha256sums = SKIP
 
