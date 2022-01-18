@@ -1,0 +1,14 @@
+pkgbase = seqcombgo-bin
+	pkgdesc = Sequence Combination tool written in Golang
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/MalacoLab/SeqCombGo
+	arch = x86_64
+	license = GPL
+	provides = seqcombgo
+	conflicts = seqcombgo-git
+	conflicts = seqcombgo
+	source = https://github.com/MalacoLab/SeqCombGo/releases/download/0.0.1/SeqCombGo_linuxamd64
+	sha256sums = 64533ab3e0df5f2d9e757af79a8657e9189f95505e0e826f511d486c88eb4796
+
+pkgname = seqcombgo-bin
