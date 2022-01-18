@@ -13,7 +13,7 @@ _desktop_i18n=67b07d5
 
 pkgname=anki-before-bazel
 pkgver=2.1.48
-pkgrel=1
+pkgrel=2
 
 pkgdesc="(old version) Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://ankisrs.net/"
@@ -38,7 +38,7 @@ depends=(
 	'python-markdown'
 	'python-jsonschema'
 	'python-pyaudio'
-	'python-pyqtwebengine'
+	'python-pyqt5-webengine'
 	'python-flask'
 	'python-flask-cors'
 	'python-waitress'

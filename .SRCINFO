@@ -1,7 +1,7 @@
 pkgbase = anki-before-bazel
 	pkgdesc = (old version) Helps you remember facts (like words/phrases in a foreign language) efficiently
 	pkgver = 2.1.48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ankisrs.net/
 	arch = x86_64
 	license = AGPL3
@@ -25,7 +25,7 @@ pkgbase = anki-before-bazel
 	depends = python-markdown
 	depends = python-jsonschema
 	depends = python-pyaudio
-	depends = python-pyqtwebengine
+	depends = python-pyqt5-webengine
 	depends = python-flask
 	depends = python-flask-cors
 	depends = python-waitress
