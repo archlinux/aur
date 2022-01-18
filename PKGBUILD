@@ -9,7 +9,8 @@ pkgrel=1
 source=("git+https://github.com/ayntgl/$_pkgname.git")
 md5sums=('SKIP')
 provides=('discordo')
-depends=('glibc')
+optdepends=('xclip: clipboard support for X11'
+            'wl-clipboard: clipboard support for Wayland')
 makedepends=('go' 'git')
 arch=('x86_64')
 
