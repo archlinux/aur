@@ -17,4 +17,3 @@ pkgbase = r-dicekriging
 	sha256sums = ab5d1332809f2bb16d156ed234b102eb9fbd6de792e4291f9f6ea4652215cb49
 
 pkgname = r-dicekriging
-
