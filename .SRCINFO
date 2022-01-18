@@ -1,0 +1,14 @@
+pkgbase = python-minq_storage-git
+	pkgdesc = gfdgsdfgdfsgdfsgfd
+	pkgver = r2.8d95d7790d45f947258b66096b0b103442adb318
+	pkgrel = 1
+	url = https://github.com/kuche1/minq_storage
+	arch = any
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python
+	provides = python-minq_storage
+	source = git+https://github.com/kuche1/minq_storage
+	sha256sums = SKIP
+
+pkgname = python-minq_storage-git
