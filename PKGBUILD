@@ -1,6 +1,6 @@
 # Maintainer: Onur Kader <onurorkunkader1999@gmail.com>
 pkgname=scnlib-git
-pkgver=r379.e82a3af
+pkgver=r396.9e7d038
 pkgrel=1
 pkgdesc="A formatted input library, think {fmt} but in the other direction. 'scanf' for modern C++"
 arch=("x86_64")
@@ -21,7 +21,7 @@ build() {
 	cd "$srcdir/$pkgname"
 	mkdir build
 	cd build
-	cmake -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON ..
+	cmake -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON -DCMAKE_INSTALL_PREFIX="/usr" ..
 	cmake --build .
 }
 
