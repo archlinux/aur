@@ -1,0 +1,16 @@
+[Unit]
+Description=Woodpecker
+Documentation=https://woodpecker-ci.org/docs/intro
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=woodpecker
+Group=woodpecker
+ExecStart=/usr/bin/woodpecker-server
+RestartSec=5
+Restart=on-failure
+SyslogIdentifier=woodpecker-server
+
+[Install]
+WantedBy=multi-user.target
