@@ -1,0 +1,11 @@
+pkgbase = plank-theme-tokyo-night
+	pkgdesc = Tokyo Night Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1681818
+	arch = any
+	license = CC-NC-ND
+	source = https://github.com/MMcQueenGNU/plank-theme-tokyo-night/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = baef831d08b73c05bab1c21061704de2d521b29d8f22722c983d33371a5fcf86
+
+pkgname = plank-theme-tokyo-night
