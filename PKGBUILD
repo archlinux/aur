@@ -23,13 +23,11 @@ optdepends=(
 'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
 options=(!emptydirs !makeflags !strip !lto)
-source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main' 'alchemy-next.desktop')
-md5sums=('SKIP'
-         'dd3a176168f14b974ba55e94997ffb92')
-sha256sums=('SKIP'
-            'd99a439e6d5c8d51ef3b237eaf0ce0810832634623be5bddbf1a944d4f686d67')
-b2sums=('SKIP'
-        'a0555d6d259655845f90f24d3f1490efd9b1753ecf0e7817a98042d7543869b2c1fe37f5456a36a4dc5c8754c68ab9a20fa59f169db704f466fa9755862af0fe')
+install=alchemy.install
+source=("${pkgname}"::'git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main')
+md5sums=('SKIP')
+sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}" || exit 1
@@ -71,10 +69,8 @@ build() {
 package() {
     mkdir -p "${pkgdir}/opt"
     mkdir -p "${pkgdir}/usr/local/share/applications"
-    mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
-    install -Dm644 "alchemy-next.desktop" "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
     # Patch shortcut to avoid duplicated entries
-    sed -i 's;Name=Alchemy;Name=Alchemy (git build);' "${pkgdir}/usr/local/share/applications/${pkgname}.desktop"
     sed -i 's;Name=Alchemy;Name=Alchemy (git build);' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
     sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "$pkgdir/opt/$pkgname/etc/refresh_desktop_app_entry.sh"
+    mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
