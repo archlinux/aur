@@ -13,7 +13,7 @@ pkgver=2.4.0+r1
 _commit=b7a35c7fcb9d1badac418bf07ab8353bbe6658f1
 _commit_liborigin=a92f26f28e531f64684b66a2731dd617bea3cb45
 _commit_qwtplot3d=b2655743d30ed3185f3c0e2626b33a1d29655216
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -51,7 +51,7 @@ build() {
   cd "${_pkgname}-${_commit}"
   cd build
   cmake ..  -DSEARCH_FOR_UPDATES=OFF -DDOWNLOAD_LINKS=OFF -DORIGIN_IMPORT=ON -DSCRIPTING_PYTHON=ON \
-            -DCMAKE_INSTALL_PREFIX=/usr
+            -DCMAKE_INSTALL_PREFIX=/usr || true
   make
 }
 
