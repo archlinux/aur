@@ -1,21 +1,16 @@
 # Maintainer: <contact@amadejpapez.com>
 
-pkgname='gau'
-pkgver=2.0.6
+pkgname=gau
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl"
-arch=('x86_64')
+arch=(any)
 url='https://github.com/lc/gau'
-license=('MIT')
-depends=('glibc')
-makedepends=('go')
+license=(MIT)
+depends=(glibc)
+makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1728c341b147388fa8e60784c4b3895391be25f1e2e1b1cbb734329be7603693')
-
-prepare() {
-  export GOPATH="${srcdir}/gopath"
-  go clean -modcache
-}
+sha256sums=('9604f0b7bf258547778a155afd2c58d32eeeb82d3bcbcbe97616ccefd1287d9a')
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -31,6 +26,5 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dvm755 "cmd/gau/gau" -t "${pkgdir}/usr/bin"
-  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
