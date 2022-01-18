@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('go')
 provides=('seqcombgo')
 conflicts=('seqcombgo-git' 'seqcombgo-bin')
-source=(https://github.com/MalacoLab/SeqCombGo/archive/refs/tags/0.0.1.tar.gz)
+source=(https://github.com/MalacoLab/SeqCombGo/archive/refs/tags/${pkgver}.tar.gz)
 sha256sums=('a07562d0660314c41bb83e8f077dddb8fb536a943a826062f4fb8f0feac8a925')
 build() {
   cd "$_pkgname-$pkgver"
