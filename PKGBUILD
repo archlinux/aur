@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $_repo
-    echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "v3.0.0.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
