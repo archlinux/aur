@@ -5,8 +5,7 @@ pkgbase = r-roxygen2
 	url = https://cran.r-project.org/package=roxygen2
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
+	license = MIT
 	depends = r>=3.3
 	depends = r-brew
 	depends = r-commonmark
