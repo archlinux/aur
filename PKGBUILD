@@ -9,7 +9,7 @@ pkgdesc="Utilities for passing TensorFlow-related metadata between tools"
 depends=('absl-py'
          'python-googleapis-common-protos'
          'python-protobuf')
-makedepends=('python-setuptools'
+makedepends=('python-pip'
              'python-wheel')
 license=('Apache')
 arch=('any')
