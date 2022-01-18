@@ -13,7 +13,6 @@ pkgbase = r-cyclocomp
 	depends = r-withr
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/cyclocomp_1.1.0.tar.gz
-	md5sums = f2e9acc45196fd255f85915d00e9332e
+	sha256sums = cdbf65f87bccac53c1527a2f1269ec7840820c18503a7bb854910b30b71e7e3e
 
 pkgname = r-cyclocomp
-
