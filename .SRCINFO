@@ -8,7 +8,6 @@ pkgbase = r-clisymbols
 	depends = r
 	optdepends = r-testthat
 	source = https://cran.r-project.org/src/contrib/clisymbols_1.2.0.tar.gz
-	md5sums = 15c0124e37789c5ec74e556eb866ff5c
+	sha256sums = 0649f2ce39541820daee3ed408d765eddf83db5db639b493561f4e5fbf88efe0
 
 pkgname = r-clisymbols
-
