@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=giara-git
-pkgver=1.0.r4.g52a03a8
+pkgver=1.0.r76.g8d4850b
 pkgrel=1
 epoch=
 pkgdesc="GTK app for Reddit"
@@ -16,7 +16,7 @@ depends=(
 	'python-beautifulsoup4'
 	'python-dateutil'
 	'python-gobject'
-	'python-mistune'
+	'python-mistune1'
 	'python-pillow'
 	'python-praw'
 )

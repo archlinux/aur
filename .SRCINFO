@@ -1,6 +1,6 @@
 pkgbase = giara-git
 	pkgdesc = GTK app for Reddit
-	pkgver = 1.0.r4.g52a03a8
+	pkgver = 1.0.r76.g8d4850b
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/giara
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = giara-git
 	depends = python-beautifulsoup4
 	depends = python-dateutil
 	depends = python-gobject
-	depends = python-mistune
+	depends = python-mistune1
 	depends = python-pillow
 	depends = python-praw
 	optdepends = ffmpeg: For video
