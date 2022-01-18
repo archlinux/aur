@@ -1,22 +1,17 @@
 pkgbase = roadrunner
 	pkgdesc = High-performance PHP application server, load-balancer and process manager written in Golang
-	pkgver = 2.7.1
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = https://roadrunner.dev/
 	arch = x86_64
 	license = MIT
-	makedepends = go>=1.16
-	makedepends = composer
-	depends = php>=7.3
+	makedepends = go>=1.17
+	depends = php>=7.4
 	options = !buildflags
-	source = roadrunner-2.7.1.tar.gz::https://github.com/spiral/roadrunner/archive/v2.7.1.tar.gz
-	source = roadrunner-binary-2.7.0.tar.gz::https://github.com/spiral/roadrunner-binary/archive/v2.7.0.tar.gz
-	source = roadrunner-plugins-2.7.1.tar.gz::https://github.com/spiral/roadrunner-plugins/archive/v2.7.1.tar.gz
+	source = roadrunner-2.7.2.tar.gz::https://github.com/spiral/roadrunner/archive/v2.7.2.tar.gz
 	source = .rr.yaml.sample-full
 	source = .rr.yaml.sample-minimal
-	sha256sums = ad6a4bbcbf5731d552f36a5b4637035199c2c570d0a1c500ee2abbc13b60347a
-	sha256sums = b4b96126d5098dfb3f5adfed0e0a65cb3fb83237d7fda3af13e4fbb8c0004363
-	sha256sums = 2ee53609c79a0dad9409acbbdfc8fb9f6bd70c40783319304d693c5ae2026c11
+	sha256sums = ad5c1b94e29482ea9cc924a9cdeafa3678a47e68278af99c438d9cec86d46040
 	sha256sums = SKIP
 	sha256sums = SKIP
 
