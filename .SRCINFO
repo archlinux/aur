@@ -1,6 +1,6 @@
-pkgbase = element-desktop-git
-	pkgdesc = Glossy Matrix collaboration client —
-	pkgver = 1.8.5.r27.g1aa2efd2c
+pkgbase = element-desktop-git-greentext
+	pkgdesc = Glossy Matrix collaboration client with greentext baked in —
+	pkgver = 1.9.9.r11.g840867bc0+greentext
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -13,32 +13,36 @@ pkgbase = element-desktop-git
 	makedepends = sqlcipher
 	makedepends = electron
 	makedepends = nodejs-lts-fermium
-	provides = element-web
-	conflicts = element-web
+	provides = element-desktop-git-greentext
+	conflicts = element-desktop-git-greentext
 	source = element-web::git+https://github.com/vector-im/element-web.git
 	source = element-desktop::git+https://github.com/vector-im/element-desktop.git
 	source = autolaunch.patch
 	source = io.element.Element.desktop
+	source = greentext.patch
 	source = element-desktop.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f
 	sha256sums = 0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9
+	sha256sums = a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576
 	sha256sums = c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba
 
-pkgname = element-web-git
-	pkgdesc = Glossy Matrix collaboration client — web version.
-	provides = element-web
-	conflicts = element-web
-	replaces = riot-web
-	replaces = vector-web
-
-pkgname = element-desktop-git
-	pkgdesc = Glossy Matrix collaboration client — desktop version.
-	depends = element-web-git=1.8.5.r27.g1aa2efd2c
+pkgname = element-desktop-git-greentext
+	pkgdesc = Glossy Matrix collaboration client with greentext baked in — desktop version.
+	depends = element-web-git=1.9.9.r11.g840867bc0+greentext
 	depends = electron
 	depends = sqlcipher
 	provides = element-desktop
 	conflicts = element-desktop
+	conflicts = element-desktop-git
 	replaces = riot-desktop
 	backup = etc/element/config.json
+
+pkgname = element-web-git-greentext
+	pkgdesc = Glossy Matrix collaboration client with greentext baked in — web version.
+	provides = element-web
+	conflicts = element-web
+	conflicts = element-web-git
+	replaces = riot-web
+	replaces = vector-web
