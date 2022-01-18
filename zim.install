@@ -13,7 +13,7 @@ post_install() {
   echo
   echo "    NOTE: Zim errors are suppressed, so if you're experiencing any issues"
   echo "          with Zim, remove &>/dev/null from /etc/zsh/zshrc"
-  echo "    NOTE: /etc/zsh/zprofile is not needed by this package anymore and can be removed"
+  echo "    NOTE: /etc/zsh/zlogin is not needed by this package anymore and can be removed"
   echo
 }
 
