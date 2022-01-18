@@ -7,7 +7,7 @@
 pkgname=wine-stable
 _pkgver=7.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=1
+pkgrel=2
 
 source=(https://dl.winehq.org/wine/source/7.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -27,19 +27,16 @@ install=wine.install
 
 depends=(
   desktop-file-utils
-  faudio                 lib32-faudio
   fontconfig             lib32-fontconfig
   freetype2              lib32-freetype2
   gcc-libs               lib32-gcc-libs
   gettext                lib32-gettext
   glu                    lib32-glu
-  lcms2                  lib32-lcms2
   libpcap                lib32-libpcap
   libsm                  lib32-libsm
   libxcursor             lib32-libxcursor
   libxdamage             lib32-libxdamage
   libxi                  lib32-libxi
-  libxml2                lib32-libxml2
   libxrandr              lib32-libxrandr
 )
 
@@ -48,22 +45,17 @@ makedepends=(
   fontforge
   giflib                 lib32-giflib
   gnutls                 lib32-gnutls
-  gsm                    lib32-gsm
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   libcups                lib32-libcups
   libgphoto2             lib32-libgphoto2
-  libjpeg-turbo          lib32-libjpeg-turbo
   libldap                lib32-libldap
-  libpng                 lib32-libpng
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
   libxmu                 lib32-libxmu
-  libxslt                lib32-libxslt
   libxxf86vm             lib32-libxxf86vm
   mesa                   lib32-mesa
   mingw-w64-gcc
-  mpg123                 lib32-mpg123
   ncurses                lib32-ncurses
   ocl-icd                lib32-ocl-icd
   openal                 lib32-openal
@@ -84,20 +76,15 @@ optdepends=(
   dosbox
   giflib                 lib32-giflib
   gnutls                 lib32-gnutls
-  gsm                    lib32-gsm
   gst-plugins-base       lib32-gst-plugins-base
   gst-plugins-base-libs  lib32-gst-plugins-base-libs
   gst-plugins-good       lib32-gst-plugins-good
   libcups                lib32-libcups
   libgphoto2             lib32-libgphoto2
-  libjpeg-turbo          lib32-libjpeg-turbo
   libldap                lib32-libldap
-  libpng                 lib32-libpng
   libpulse               lib32-libpulse
   libxcomposite          lib32-libxcomposite
   libxinerama            lib32-libxinerama
-  libxslt                lib32-libxslt
-  mpg123                 lib32-mpg123
   ncurses                lib32-ncurses
   ocl-icd                lib32-ocl-icd
   openal                 lib32-openal
