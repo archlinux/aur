@@ -2,7 +2,7 @@
 
 _pkgname=autopanorama
 pkgname="${_pkgname}-bin"
-_pkgver=1.3.2
+_pkgver=1.3.4
 pkgver="${_pkgver}"
 pkgrel=1
 epoch=0
@@ -14,7 +14,7 @@ depends=('qt5-base')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-${_pkgver}.deb::http://github.com/qchateau/AutoPanorama/releases/download/${_pkgver}/autopanorama-${_pkgver}.deb")
-sha256sums=('ca8c6b22f03e4da5a67e054259e8dafc4b23bc78b9bca01816521a4adb0e894a')
+sha256sums=('94052801e8e1aa276a5da872fce6203cd6ddb826d15f19ac8a29a52bb828ce01')
 
 package() {
     cd "${pkgdir}"
