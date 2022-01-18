@@ -3,7 +3,7 @@ pkgname=moonwm
 pkgver=7.3.2
 _wmcname=wmcommons
 _wmcver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
@@ -31,6 +31,7 @@ noextract=()
 sha256sums=('bffb6eddd092985f2c1687d97a2bd7f7baaafb4faef18acb2701bd235d2b8f4f'
     '456ee1ab14f5f9cd5c1a35694ebf9a18a8bb4e2654bd0565810faaac352a74f0')
 validpgpkeys=()
+install='moonwm.install'
 
 build() {
     cp -rv "$_wmcname-$_wmcver/src" "$pkgname-$pkgver/$_wmcname/"
