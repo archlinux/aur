@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/pythonnet/clr-loader"
 license=('MIT')
 depends=('python' 'python-cffi')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel' 'dotnet-sdk')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-$pkgver.tar.gz")
 sha256sums=('bd1967d3cf80368c7d890a332704f169c5d2b5d7141635f1dae84d7d40346d51')
 
