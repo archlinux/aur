@@ -1,4 +1,4 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rversions
 _cranver=2.1.1
@@ -15,14 +15,11 @@ source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
 sha256sums=('79aaacf5a1258d91ac0ddedf3c8c16a2d10d39010993dcc7b0a2638afee27cb1')
 
 build() {
-  cd "${srcdir}"
-
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
+
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
