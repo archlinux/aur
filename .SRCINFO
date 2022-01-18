@@ -3,6 +3,7 @@ pkgbase = alchemy-viewer
 	pkgver = 6.5.2.48000
 	pkgrel = 4
 	url = https://www.alchemyviewer.org
+	install = alchemy.install
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
@@ -43,12 +44,8 @@ pkgbase = alchemy-viewer
 	options = !strip
 	options = !lto
 	source = alchemy-viewer::git+https://git.alchemyviewer.org/alchemy/alchemy-next.git#branch=main
-	source = alchemy-next.desktop
 	md5sums = SKIP
-	md5sums = adb72c8434b2bc90258f187eaec6987d
 	sha256sums = SKIP
-	sha256sums = aa3e45d00a567b26b226ff4429c783c12fcd50dbda05e39eda09ad62074d5ae6
 	b2sums = SKIP
-	b2sums = 4b90a26925bfa68e96db72a7508039a39600fcec549fa189e42ff38d1956b9b8ee6caeaad8dad8f746976f81754078910930dc8d145def453147acced5dcd2c9
 
 pkgname = alchemy-viewer
