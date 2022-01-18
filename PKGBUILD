@@ -40,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0'
+sha256sums=('cb86f3cbd31960305dee7d7f3dc254c64fb0462e27ea624ee62f3682e99079ee'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
