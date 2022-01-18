@@ -1,7 +1,7 @@
 pkgbase = cpupower-gui
 	pkgdesc = A GUI utility to set CPU frequency limits
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vagnum08/cpupower-gui
 	install = cpupower_gui.install
 	arch = any
@@ -26,4 +26,3 @@ pkgbase = cpupower-gui
 	sha256sums = 09f8b9619e974abe00fc06c0d5528b6a36518f6b283b3db338349bada1d51492
 
 pkgname = cpupower-gui
-
