@@ -4,7 +4,7 @@
 # Contributor: defkeh <defkeh@gmail.com>
 
 pkgname=rivalcfg
-pkgver=4.3.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='CLI tool and Python library to configure SteelSeries gaming mice'
 arch=('any')
