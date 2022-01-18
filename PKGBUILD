@@ -1,6 +1,6 @@
 # Maintainer: VCalV
 pkgname=overdrive2opus-git
-pkgver=r17.7136280
+pkgver=r18.fb9a74b
 pkgrel=1
 pkgdesc="convert overdrive audiobooks into opus files with chapters and thumbnails"
 arch=('any')
