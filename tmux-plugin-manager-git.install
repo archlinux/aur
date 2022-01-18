@@ -1,0 +1,28 @@
+# Colored makepkg-like functions
+msg_blue() {
+  printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+  printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+  note "Add the following line to the end of your ~/.tmux.conf:"
+  echo
+  echo "    run '/usr/share/tmux-plugin-manager/tpm'"
+  echo
+  note "If already running tmux, run the following to reload your current session:"
+  echo
+  echo "    tmux source ~/.tmux.conf"
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
