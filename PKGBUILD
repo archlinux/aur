@@ -4,8 +4,8 @@ _name=ctpg
 _author=peter-winter
 
 pkgname=${_name}-git
-pkgver=v1.3.6.r7.gc9b9b44
-pkgrel=2
+pkgver=v1.3.6.r15.g2a4953e
+pkgrel=1
 pkgdesc="Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time."
 arch=('any')
 url="https://github.com/${_author}/${_name}"
@@ -28,7 +28,7 @@ prepare() {
   cmake -B build -S ${pkgname} \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCTPG_ENABLE_TESTS=OFF \
+        -DBUILD_TESTING=OFF \
         -Wno-dev
 }
 
