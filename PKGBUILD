@@ -1,13 +1,15 @@
-# Maintainer: ta180m <ta180m@pm.me>
+# Maintainer: tatsumoto <tatsu at autistici.org>
+# Contributor: ta180m <ta180m@pm.me>
 # Contributor: teutat3s <teutates@mailbox.org>
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-pkgbase=element-desktop-git
-pkgname=(element-web-git element-desktop-git)
+_pkgspin=greentext
+pkgbase=element-desktop-git-$_pkgspin
+pkgname=("element-desktop-git-$_pkgspin" "element-web-git-$_pkgspin")
 pkgver=1.9.9.r11.g840867bc0+greentext
 pkgrel=1
-pkgdesc="Glossy Matrix collaboration client — "
+pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
@@ -68,11 +70,11 @@ build() {
   yarn run build
 }
 
-package_element-web-git() {
+package_element-web-git-greentext() {
   pkgdesc+="web version."
   replaces=(riot-web vector-web)
   provides=(element-web)
-  conflicts=(element-web)
+  conflicts=(element-web element-web-git)
 
   cd element-web
 
@@ -81,15 +83,15 @@ package_element-web-git() {
   cp -r webapp/* "${pkgdir}"/usr/share/webapps/element/
   install -Dm644 config.sample.json -t "${pkgdir}"/etc/webapps/element/
   ln -s /etc/webapps/element/config.json "${pkgdir}"/usr/share/webapps/element/
-  echo "${pkgver}" > "${pkgdir}"/usr/share/webapps/element/version
+  echo "$pkgver" > "$pkgdir/usr/share/webapps/element/version"
 }
 
-package_element-desktop-git() {
+package_element-desktop-git-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
   depends=("element-web-git=${pkgver}" ${_electron} sqlcipher)
   provides=(element-desktop)
-  conflicts=(element-desktop)
+  conflicts=(element-desktop element-desktop-git)
   backup=("etc/element/config.json")
 
   cd element-desktop
