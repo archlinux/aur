@@ -1,8 +1,10 @@
-# Maintainer: Samuel Balula sbalula@ethz.ch
-# Intructions/ Troubleshoot
-# Download the source from https://www.hsl.rl.ac.uk/ipopt/ and place it in the folder, replacing the empty placeholder file
-# Check the sha256sum of the downloaded tarball, it may be different from the one listed here. If so either use "SKIP"
-# or replace with your tarball sha256sum
+# Maintainer: Samuel Balula <sbalula@ethz.ch>
+# Contributor: Maik93 <michael.mugnai@gmail.com>
+
+# Instructions / Troubleshoot
+# Download the source from https://www.hsl.rl.ac.uk/ipopt/ and place it in the folder, alongside this PKGBUILD.
+# Check package version and sha256sum of the downloaded tarball, it may be different from the one listed here.
+# If so either use "SKIP" or replace with your tarball sha256sum.
 
 pkgname=coin-or-hsl
 _pkgname=coinhsl
@@ -12,9 +14,10 @@ pkgdesc="HSL Mathematical Software Library. Including solvers for sparse linear 
 arch=('i686' 'x86_64')
 url="http://www.hsl.rl.ac.uk/"
 makedepends=('gcc' 'metis' 'gcc-fortran')
-depends=('openblas-lapack')
-optdepends=('openmp' 'coin-or-ipopt')
-source=("ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git" "manual://${_pkgname}-${pkgver}.tar.gz")
+depends=('openblas-lapack' 'openmp')
+optdepends=('coin-or-ipopt')
+source=("ThirdParty-HSL::git+https://github.com/coin-or-tools/ThirdParty-HSL.git"
+		"manual://${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('SKIP'
             'f77ad752a37de8695c02c81bcc503674af76689d40a9864b6f2a7a790c3efc95')
 
