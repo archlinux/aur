@@ -2,7 +2,7 @@
 # Maintainer: András Wacha < awacha at gmail >
 
 pkgname='perl-regexp-assemble'
-pkgver='0.37'
+pkgver='0.38'
 pkgrel='1'
 pkgdesc="Assemble multiple Regular Expressions into a single RE"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl>=0')
 makedepends=()
 checkdepends=('perl-test-pod>=1.48')
 url='https://metacpan.org/release/Regexp-Assemble'
-source=('http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Regexp-Assemble-0.37.tgz')
-md5sums=('2f7f232642f0f30f69983ef1316ecb42')
-sha512sums=('2b21154c814fec9b0fc0affc3c7751e17bd93e5d0b42c13379131498ea2c4ea340316a01045d936dbc9b0e8cfdb1afa7b778936083d04cc533766942fd46c407')
-_distdir="Regexp-Assemble-0.37"
+source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Regexp-Assemble-${pkgver}.tgz")
+md5sums=('75905c73b33c123ce085fd7d194dd95e')
+sha512sums=('65f4fefe2ad93bda1a9a367bfd660702ad3fbdef122d4272766afa96b863b7a85850be3261162a9362dba01af8dfc055435f6b125b3268c4f48d46cfc9664ef7')
+_distdir="Regexp-Assemble-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
