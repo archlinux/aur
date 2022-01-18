@@ -1,4 +1,3 @@
 pre_remove() {
-	systemctl stop overture.service
-	systemctl disable overture.service
+	systemctl disable --now overture.service
 }

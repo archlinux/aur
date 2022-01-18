@@ -9,8 +9,10 @@
 !.SRCINFO
 
 # add files that don't have an online source
-!china_ip_list.txt
-!domain_ttl.txt
-!config.json
-!gfwlist.txt
+!config.yml
+!domain_alternative
+!domain_primary
+!domain_ttl
 !hosts
+!ip_network_alternative
+!ip_network_primary
