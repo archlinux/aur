@@ -3,12 +3,12 @@
 _gemname=regexp_parser
 pkgname=ruby-${_gemname}
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A regular expression parser library for Ruby"
 arch=(any)
 depends=(ruby)
-checkdepends=(ruby-rspec ruby-ice_nine ruby-regexp_property_values)
-makedepends=(rubygems ruby-rdoc ragel ruby-rake ruby-bundler)
+checkdepends=(ruby-ice_nine ruby-regexp_property_values)
+makedepends=(rubygems ruby-rdoc ragel ruby-rake ruby-bundler ruby-rspec)
 url=https://github.com/ammar/regexp_parser
 license=(MIT)
 options=(!emptydirs)
