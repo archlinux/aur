@@ -1,6 +1,6 @@
 pkgbase = perl-pdl-nohdf4
-	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 2.019
+	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display. Built without hdf4 support.
+	pkgver = 2.068
 	pkgrel = 1
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
@@ -8,34 +8,40 @@ pkgbase = perl-pdl-nohdf4
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-warn
+	checkdepends = perl-perlio-layers
+	checkdepends = perl-file-map
 	checkdepends = perl-test-exception
 	checkdepends = perl-test-deep
-	checkdepends = perl-list-moreutils
-	makedepends = perl>=5.11.3
+	makedepends = perl
 	makedepends = fftw2
 	makedepends = perl-opengl
-	makedepends = perl-devel-checklib
+	makedepends = plplot
+	makedepends = perl-extutils-f77
 	makedepends = proj
-	depends = perl>=5.8.9
-	depends = perl-inline>=0.43
+	makedepends = perl-extutils-parsexs
+	makedepends = perl-convert-uu
+	makedepends = perl-inline-c
+	makedepends = perl-module-compile
+	makedepends = perl-devel-checklib
+	makedepends = perl-pod-parser
+	makedepends = perl-extutils-depends
+	depends = perl
+	depends = perl-inline
+	depends = perl-term-readkey
 	depends = gsl
-	depends = perl-inline-c
-	depends = perl-astro-fits-header
-	depends = perl-convert-uu
-	depends = perl-file-map
-	depends = perl-module-compile
 	optdepends = fftw2: for PDL::FFTW support
 	optdepends = perl-astro-fits-header: improved FITS files support
-	optdepends = perl-convert-uu: for the case when something wrong with Unicode support
-	optdepends = perl-extutils-f77: for PDL::Slatec and PDL::Minuit support
-	optdepends = perl-opengl>=0.6703: for PDL::Graphics::TriD support
+	optdepends = perl-opengl: for PDL::Graphics::TriD support
 	optdepends = plplot: for PDL::Graphics::PLplot support
 	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
-	provides = perl-pdl=${pkgver}
+	provides = perl-pdl
 	conflicts = perl-pdl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/C/CH/CHM/PDL-2.019.tar.gz
-	sha256sums = 51a47beedb1dd5bb4b6f6441a0ad38d4c95d7cbf3bf6b1b4c9128732ea2d77fe
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.068.tar.gz
+	source = perldl.conf
+	source = Makefile.patch
+	md5sums = c21578cbaf5e2e76144fd48c4c45c695
+	md5sums = 8bab55b7af0597c6979b620b03375c2e
+	md5sums = e2b2dff48643a5051a8f7d1ee9dc4ea9
 
 pkgname = perl-pdl-nohdf4
-
