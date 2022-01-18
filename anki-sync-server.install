@@ -32,6 +32,9 @@ post_remove(){
   getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
   getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
 
+  # remove systemd service symlink
+  rm -f '/usr/lib/systemd/system/anki-sync-server.service'
+
   echo "==================================================================="
   echo "rm -rf /opt/anki-sync-server to remove the database and cache files"
   echo "==================================================================="
