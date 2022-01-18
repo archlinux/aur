@@ -13,6 +13,7 @@ pkgbase = alchemy-viewer
 	makedepends = boost
 	makedepends = xz
 	makedepends = ninja
+	makedepends = sed
 	depends = dbus-glib
 	depends = glu
 	depends = gtk3

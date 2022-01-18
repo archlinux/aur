@@ -11,7 +11,7 @@ arch=('x86_64')
 url=https://www.alchemyviewer.org
 license=('LGPL')
 depends=(dbus-glib glu gtk3 libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl2 vlc zlib)
-makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja')
+makedepends=('cmake' 'gcc' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz' 'ninja' 'sed')
 optdepends=(
     'alsa-lib: ALSA support'
     'freealut: OpenAL support'
