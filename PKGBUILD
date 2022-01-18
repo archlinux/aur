@@ -4,14 +4,14 @@
 pkgname=scratch3
 conflicts=("scratch3-bin")
 pkgver=3.27.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
 url="https://scratch.mit.edu"
 license=("custom:BSD-3-Clause")
-depends=("gtk3" "nss")
+depends=("c-ares" "ffmpeg" "gtk3" "libevent" "libxslt" "minizip" "nss" "re2" "snappy")
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
-makedepends=('npm' 'patch' 'sed')
+makedepends=('npm' 'electron13')
 source=("https://github.com/LLK/scratch-desktop/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.xml"
@@ -21,7 +21,7 @@ sha256sums=('0bb89f64bc933a00a56fd87a3a27b2106b42d0dc1ba61cf1a9f3f19beae5cec8'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf'
             '326558f3f2d4044ea897d22baab2f23fbfc2034d7d11dfb8215ee6ba29106001'
-            '9e11b3d3c5833a6eba0a96adc9f1b6029e724ee8f265ea2d3237940172d6a802')
+            '5e96fa6431393256c0f3f2ad9170f28c69a2480b9097cd4591d2c6086a3beebf')
 
 appOutputDir="linux-unpacked"
 
@@ -47,26 +47,24 @@ prepare() {
    cd "$srcdir/"
 
 #  Copy patch files to be able to compile on Linux platform
-#  and with electron version (13.6.x) [https://github.com/electron/electron/releases/]
-#  instead of default version (15.3.1) due to issue (https://github.com/electron/electron/issues/31152).
+#  and with electron version (13.6.x) instead of default version (15.3.1)
+#  due to issue (https://github.com/electron/electron/issues/31152).
    cp package-json.patch scratch-desktop-${pkgver}/
    cp electron-builder-yaml.patch scratch-desktop-${pkgver}/
-   cp electron-builder-wrapper-js.patch scratch-desktop-${pkgver}/scripts/
    cp index-js.patch scratch-desktop-${pkgver}/src/main/
 
    cd "scratch-desktop-${pkgver}/"
    patch < package-json.patch
    patch < electron-builder-yaml.patch
 
-   cd "scripts/"
-   patch < electron-builder-wrapper-js.patch
-
-   cd "$srcdir/scratch-desktop-${pkgver}/src/main/"
+   cd "src/main/"
    patch < index-js.patch
+}
 
+build(){
    cd "$srcdir/scratch-desktop-${pkgver}/"
 
-#  Dependencies installation & application compilation
+#  Node modules installation & application compilation
    npm install
    npm run clean && npm run compile && npm run fetch
 
