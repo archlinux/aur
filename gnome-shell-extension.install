@@ -1,7 +1,7 @@
 post_install() {
 	echo "==> ****************************************************"
-  	echo "==> Don't forget to Restart GNOME Shell ([Alt]+[F2], r)."
-  	echo "==> ****************************************************"
+	echo "==> Don't forget to Restart GNOME Shell ([Alt]+[F2], r)."
+	echo "==> ****************************************************"
 }
 
 post_upgrade() {
