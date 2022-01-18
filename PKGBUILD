@@ -34,9 +34,9 @@ build() {
 
 package() {
     cd "$srcdir/$_gitname/build"
-	install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
-	install -Dm755 bin/player-sdl "${pkgdir}/usr/bin/player-sdl"
-	install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
+    install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
+    install -Dm755 bin/player-sdl "${pkgdir}/usr/bin/player-sdl"
+    install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
     install -Dm644 linux/tic80.desktop -t "${pkgdir}/usr/share/applications/"
     install -Dm644 linux/tic80.png -t "${pkgdir}/usr/share/icons/"
 }
