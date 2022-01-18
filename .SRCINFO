@@ -1,0 +1,15 @@
+pkgbase = python-pytomlpp
+	pkgdesc = A python wrapper for toml++.
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/bobfang1992/pytomlpp
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = pybind11
+	provides = python-pytomlpp
+	source = https://files.pythonhosted.org/packages/source/p/pytomlpp/pytomlpp-1.0.10.tar.gz
+	sha256sums = 6de110c8fe43f46c52b2041d5fbaa0522677a712234832ffd8cbb51cff50804e
+
+pkgname = python-pytomlpp
