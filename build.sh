@@ -7,6 +7,7 @@ docker run \
     --entrypoint /usr/bin/bash \
     --workdir /srv \
     docker.io/archlinux -c '\
+        pacman -Sy --noconfirm archlinux-keyring && \
         pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils go gcc && \
         git clean -fdx && \
         chmod a+w PKGBUILD .SRCINFO . && \
