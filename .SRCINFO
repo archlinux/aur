@@ -1,0 +1,17 @@
+pkgbase = python-eciespy
+	pkgdesc = Elliptic curve integrated encryption scheme for secp256k1
+	pkgver = 0.3.11
+	pkgrel = 1
+	url = https://github.com/ecies/py
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-install
+	depends = python-coincurve
+	depends = python-eth-keys
+	depends = python-pycryptodome
+	source = python-eciespy-0.3.11.tar.gz::https://files.pythonhosted.org/packages/source/e/eciespy/eciespy-0.3.11.tar.gz
+	sha256sums = 2aa1a6516ac3bc5185d6d58f196c91f869a812b640492769660ef257426acee7
+
+pkgname = python-eciespy
