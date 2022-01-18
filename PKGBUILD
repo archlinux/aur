@@ -1,14 +1,14 @@
 # Maintainer: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=r1400.c6d246e
+pkgver=r1996.06fde12
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('any')
-url="https://tic.computer/"
+url="https://tic80.com/"
 license=('MIT')
 depends=('gtk3' 'glu' 'freeglut>=3.0.0' 'libglvnd' 'lua-sdl2')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ruby-rake')
 provides=(tic-80)
 
 _gitname=TIC-80
@@ -37,5 +37,7 @@ package() {
 	install -Dm755 bin/tic80 "${pkgdir}/usr/bin/tic80"
 	install -Dm755 bin/player-sdl "${pkgdir}/usr/bin/player-sdl"
 	install -Dm755 bin/bin2txt "${pkgdir}/usr/bin/bin2txt"
+    install -Dm644 linux/tic80.desktop "${pkgdir}/usr/share/applications/"
+    install -Dm644 linux/tic80.png "${pkgdir}/usr/share/icons/"
 }
 
