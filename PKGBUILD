@@ -113,4 +113,10 @@ package_element-desktop-git() {
   for i in 16 24 48 64 96 128 256 512; do
     install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/io.element.Element.png
   done
+
+  # Alter config
+  sed -i \
+  -e 's/matrix\.org/matrix.waifuhunter.club/g' \
+  -e 's/"showLabsSettings": false/"showLabsSettings": true/g' \
+  "$pkgdir/etc/element/config.json"
 }
