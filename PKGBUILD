@@ -1,7 +1,7 @@
 # Maintainer: rarick <tyler dot rarick at gmail dot com>
 
 pkgname=tmux-plugin-manager-git
-pkgver=v3.0.0.r69.gb699a7e
+pkgver=v3.0.0.r207.b699a7e
 pkgrel=1
 pkgdesc="tpm - Tmux Plugin Manager - Bound to the version number"
 arch=('any')
