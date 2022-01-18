@@ -7,7 +7,7 @@
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
 pkgver=3.42.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
@@ -38,16 +38,21 @@ _fgsoverridefile='org.gnome.Terminal.gschema.override'
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
+	"0001-Fix-build-with-latest-meson.patch"
 )
 sha256sums=('8a9c8e5ef7a3a73b246a947e1190bb08ec98935af860cf0b3aa2fbf4606817a0'
             '0b6adf6f8ec31c88044c349fe0e6d10a3cfce96896fd8a655a547fd55ca33838'
-            'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9')
+            'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9'
+            'f67d28346b2ea612a1633c40e2b120f6bebf20d68202330ab6446d4d9d71c94f')
 
 prepare () {
     cd "${_pkgname}-${pkgver}"
 
     # Apply patches
     patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
+
+    # Apply meson patch until fixed upstream
+    patch -p1 -i "../0001-Fix-build-with-latest-meson.patch"
 }
 
 build() {
