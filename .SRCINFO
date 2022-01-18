@@ -1,0 +1,24 @@
+pkgbase = napari-npe2
+	pkgdesc = napari plugin refactor.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/napari/npe2
+	arch = any
+	license = BSD
+	makedepends = python-setuptools-scm
+	makedepends = python-dephell
+	depends = napari-plugin-engine
+	depends = python
+	depends = python-importlib-metadata
+	depends = python-intervaltree
+	depends = python-magicgui
+	depends = python-psygnal
+	depends = python-pyaml
+	depends = python-pydantic
+	depends = python-pytomlpp
+	depends = python-typer
+	provides = napari-npe2
+	source = https://files.pythonhosted.org/packages/source/n/npe2/npe2-0.1.1.tar.gz
+	sha256sums = dbd3a9f3d9e2d71d59ca094d5ea260573e056cd371084e0f325b000544b14490
+
+pkgname = napari-npe2
