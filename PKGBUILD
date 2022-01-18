@@ -1,18 +1,16 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 # Maintainer: András Wacha < awacha at gmail >
-
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='perl-regexp-assemble'
 pkgver='0.38'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Assemble multiple Regular Expressions into a single RE"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0')
-makedepends=()
-checkdepends=('perl-test-pod>=1.48')
+depends=('perl')
 url='https://metacpan.org/release/Regexp-Assemble'
-source=("http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Regexp-Assemble-${pkgver}.tgz")
+source=("https://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Regexp-Assemble-${pkgver}.tgz")
 md5sums=('75905c73b33c123ce085fd7d194dd95e')
 sha512sums=('65f4fefe2ad93bda1a9a367bfd660702ad3fbdef122d4272766afa96b863b7a85850be3261162a9362dba01af8dfc055435f6b125b3268c4f48d46cfc9664ef7')
 _distdir="Regexp-Assemble-${pkgver}"
