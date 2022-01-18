@@ -13,6 +13,7 @@ pkgbase = element-desktop-git-greentext
 	makedepends = sqlcipher
 	makedepends = electron
 	makedepends = nodejs-lts-fermium
+	optdepends = darkhttpd: using element-web without electron
 	provides = element-desktop-git-greentext
 	conflicts = element-desktop-git-greentext
 	source = element-web::git+https://github.com/vector-im/element-web.git

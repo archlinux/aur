@@ -14,6 +14,7 @@ arch=(x86_64)
 url="https://element.io"
 license=(Apache)
 makedepends=(npm git yarn python rust sqlcipher electron nodejs-lts-fermium)
+optdepends=('darkhttpd: using element-web without electron')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _giturl="git+https://github.com/vector-im"
@@ -84,6 +85,9 @@ package_element-web-git-greentext() {
   install -Dm644 config.sample.json -t "${pkgdir}"/etc/webapps/element/
   ln -s /etc/webapps/element/config.json "${pkgdir}"/usr/share/webapps/element/
   echo "$pkgver" > "$pkgdir/usr/share/webapps/element/version"
+
+  # Install element web launcher
+  install -Dm755 ../element-web.sh "$pkgdir/usr/bin/element-web"
 }
 
 package_element-desktop-git-greentext() {
