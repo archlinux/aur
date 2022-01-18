@@ -4,7 +4,7 @@
 # Contributor: Alex Smith <azphreal19@protonmail.com
 
 pkgname=koel
-pkgver=5.1.12
+pkgver=5.1.13
 pkgrel=1
 pkgdesc="A personal music streaming server that works."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(composer nodejs yarn)
 backup=('usr/share/webapps/koel/.env')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('79d45c06c3b948fcd99f5ab0c3bb14b39b21594a3a3f0cb26bbdbb438c88f0011e064c3a10039ebee32add94fd5b5b84d9c41f3dcc0e400409ab37ad921fd817')
+sha512sums=('f9e76f41b4a9b18a1bd8c5daf03a5b2ff190688d178db9ed5c78a7534d4b60ea3b648181e805d1446bb75dcc03b57eccbd96bb49fda803891587d2f29aad79ec')
 
 prepare() {
   cp "${srcdir}/${pkgname}-${pkgver}"/.env{.example,}
