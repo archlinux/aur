@@ -1,6 +1,6 @@
 pkgbase = python-bumps
 	pkgdesc = Data fitting with uncertainty analysis
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/bumps/bumps
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = python-bumps
 	depends = python-periodictable
 	depends = python-scikit-learn
 	depends = python-six
-	source = https://github.com/bumps/bumps/archive/v0.8.0.tar.gz
+	source = https://github.com/bumps/bumps/archive/v0.8.1.tar.gz
 	source = bumps.patch
-	sha256sums = 225dd236fd014f9cd15fbaec5badbcb65d4f1e31a96dc62f71f042e4ed091c5b
+	sha256sums = 2ae088288f0954a72489d0302fcd89f8f98bcf5fbdec3c0ecfa7dc7e4c854569
 	sha256sums = dbe2b429a766f2c8b022f5745cc43d1cf947cb481c348f86fa551d592920e1c0
 
 pkgname = python-bumps
