@@ -13,17 +13,17 @@ source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd $srcdir/minq_storage
+	cd $srcdir/minq-storage
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse HEAD)"
 }
 
 check() {
-    cd $srcdir/minq_storage
+    cd $srcdir/minq-storage
     #python3 setup.py check
 }
 
 package() {
-    cd $srcdir/minq_storage
+    cd $srcdir/minq-storage
     #python setup.py install --root="$pkgdir/" --optimize=1
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
