@@ -1,7 +1,8 @@
 # Maintainer: SEGFAULT <segfault@mailbox.org>
+# Maintainer: Spacekookie <kookie@spacekookie.de>
 pkgname=ratman
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modular decentralised userspace packet router.'
 arch=('any')
 url='https://irde.st'
@@ -9,8 +10,8 @@ license=('AGPL3')
 depends=('libsodium')
 makedepends=('git' 'rust' 'protobuf' 'pkg-config' 'clang')
 provides=('ratman' 'ratcat' 'ratctl')
-conflicts=('ratmand')
-source=("${pkgname}::git+https://git.irde.st/we/irdest.git#branch=release/ratman-0.3.0")
+conflicts=('ratman')
+source=("${pkgname}::git+https://git.irde.st/we/irdest.git#tag=ratman-0.3.0")
 sha1sums=('SKIP')
 
 build () {
