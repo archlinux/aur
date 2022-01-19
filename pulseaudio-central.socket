@@ -1,0 +1,13 @@
+[Unit]
+Description=Sound System pseudo-system-wide
+
+[Socket]
+SocketMode=0660
+SocketUser=pulse
+SocketGroup=pulse-access
+Priority=6
+Backlog=5
+ListenStream=/run/pulse/native
+
+[Install]
+WantedBy=sockets.target

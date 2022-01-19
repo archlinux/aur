@@ -1,0 +1,30 @@
+.TH PULSEAUDIO-CENTRAL 5 "2021-01-12"
+.SH NAME
+pulseaudio-central \- Pseudo-system-wide PulseAudio service
+.SH SYNOPSIS
+\fBpulseaudio-central.socket\fR
+.SH DESCRIPTION
+The above file is a systemd socket unit.
+Starting this socket unit creates the \fI/run/pulse/native\fR PulseAudio socket.
+This socket is accessible to all members of the \fIpulse-access\fR user group.
+Use it, for example, as follows:
+.nf
+.RS
+paplay --server=/run/pulse/native sound.wav
+.RE
+.fi
+.PP
+The systemd service activated by this socket unit executes PulseAudio
+as the \fIpulse\fR user and \fBnot\fR in the system-wide mode.
+.SH FILES
+\fI/run/pulse/native\fR
+.RS
+PulseAudio socket
+.RE
+\fI/var/lib/pulseaudio-central\fR
+.RS
+the home directory of the \fIpulse\fR user where
+the configuration and the state of this PulseAudio service are stored.
+.RE
+.SH AUTHOR
+Roman Beslik <me@beroal.in.ua>

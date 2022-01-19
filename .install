@@ -1,0 +1,10 @@
+home=/var/lib/pulseaudio-central
+
+post_install() {
+	if test ! -e "$home"
+	then
+		mkdir -m 700 "$home"
+		install -D -m 644 -t "$home/.config/pulse" /usr/share/pulseaudio-central/default.pa
+		chown -R pulse:pulse "$home"
+	fi
+}

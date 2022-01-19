@@ -1,0 +1,21 @@
+[Unit]
+Description=Sound Service pseudo-system-wide
+Requires=pulseaudio-central.socket
+
+[Service]
+User=pulse
+PAMName=login
+ExecStart=/usr/bin/pulseaudio --daemonize=no --log-target=journal
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+Restart=on-failure
+RestrictNamespaces=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+Type=notify
+UMask=0077
+
+[Install]
+Also=pulseaudio-central.socket
+WantedBy=default.target
