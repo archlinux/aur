@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=openvsp
-pkgver=3.25.0
-pkgrel=2
+pkgver=3.26.1
+pkgrel=1
 pkgdesc='OpenVSP allows the user to create a 3D model of an aircraft defined by
          common engineering parameters.'
 arch=('i686' 'x86_64')
@@ -23,8 +23,15 @@ optdepends=('doxygen: generate documentation'
             'swig: build interface to APIs')
 makedepends=('cmake' 'unzip')
 _name=OpenVSP-OpenVSP_${pkgver}
-source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz")
-sha256sums=('1471032c683149c377c7e7ac9a1b9e9e8306e63c5f33d3ca98d4c2dbf6d0595a')
+source=("${pkgname}-${pkgver}"::"https://github.com/OpenVSP/OpenVSP/archive/OpenVSP_${pkgver}.tar.gz"
+        "stackgeom_ptr.patch"::"https://patch-diff.githubusercontent.com/raw/OpenVSP/OpenVSP/pull/219.patch")
+sha256sums=('4870fe67da063293d6e0444a4b2272564406f202982025620b03a610b51c55de'
+            'SKIP')
+
+prepare() {
+  cd "${srcdir}/${_name}"
+  patch --strip=1 < "${srcdir}/stackgeom_ptr.patch"
+}
 
 build() {
 
