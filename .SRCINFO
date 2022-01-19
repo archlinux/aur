@@ -1,0 +1,13 @@
+pkgbase = brother-mfc8690dw-cups-bin
+	pkgdesc = CUPS wrapper for Brother MFC-8690DW printer
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfc8690dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006359/cupswrapperMFC8690DW-2.0.4-2.i386.deb
+	md5sums = c898f4ff3024bf19afec94dcc4e1c5f3
+
+pkgname = brother-mfc8690dw-cups-bin
