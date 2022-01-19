@@ -33,6 +33,7 @@ package_tailwindcss-language-server-git() {
   conflicts=("${pkgname[0]%-git}")
   cd ${pkgbase%-git}/packages/"${pkgname[0]%-git}"
   install -Dt "$pkgdir"/usr/bin bin/"${pkgname[0]%-git}"
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/"${pkgname[0]}" LICENSE
 }
 
 #package_vscode-tailwindcss-git() {
