@@ -7,7 +7,7 @@ pkgdesc="piscope is a logic analyser (digital waveform viewer) for the Raspberry
 url="http://abyz.me.uk/rpi/pigpio/"
 license=('custom:LICENSE')
 arch=('i686' 'x86_64' 'aarch64')
-depends=('gtk3' 'glib2')
+depends=('gtk3' 'glib2' 'pigpio')
 source=("https://github.com/joan2937/${pkgname}/archive/refs/tags/V${pkgver}.tar.gz")
 sha256sums=('b871116ac0e1c879dbe20f7907e75bb958ad76ef1bfcba91fc3f188f4b8e15a0')
 
