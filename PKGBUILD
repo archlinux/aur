@@ -1,19 +1,34 @@
-# Maintainer: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
+
 pkgname=git-town
-pkgver=7.4.0
+pkgver=7.6.0
 pkgrel=1
-pkgdesc="Generic, high-level Git workflow support!"
-url="https://github.com/git-town/git-town"
-arch=('x86_64')
-license=('MIT')
-depends=('git')
-source=("${pkgname}.tar.gz"::"https://github.com/git-town/git-town/releases/download/v$pkgver/git-town_${pkgver}_linux_intel_64.tar.gz")
-sha256sums=('80ae7fd645be59d60689b117bde1ab363f18be2329ae92688d4b0297e272ce06')
+pkgdesc='Generic, high-level Git workflow support'
+url="https://github.com/$pkgname/$pkgname"
+arch=(x86_64)
+license=(MIT)
+depends=(git)
+makedepends=(go)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('801d16047a5b74ccbe14f300c721289192d6c68115e97852b21a6eec4be71914')
+
+build() {
+	cd "$_archive"
+	local _date=$(date +'%Y/%m/%d' ${SOURCE_DATE_EPOCH:+-d @$SOURCE_DATE_EPOCH})
+	local _varpath='github.com/git-town/git-town/src/cmd'
+	go build \
+		-trimpath \
+		-buildmode=pie \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-X $_varpath.version=\"$pkgver\" -X $_varpath.buildDate=\"$_date\" -linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
+}
 
 package() {
-  tar xf ${pkgname}.tar.gz
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  install -m755 git-town "$pkgdir"/usr/bin
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_archive"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
