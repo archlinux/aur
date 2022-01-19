@@ -2,7 +2,7 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-git
 _pkgname=xrdp
-pkgver=0.9.18.r2.gd27e5472
+pkgver=0.9.18.r14.ge528a1f4
 pkgrel=1
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
@@ -13,7 +13,11 @@ makedepends=('git' 'nasm')
 depends=('tigervnc' 'libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
-backup=('etc/xrdp/sesman.ini' 'etc/xrdp/xrdp.ini')
+backup=('etc/xrdp/sesman.ini'
+	'etc/xrdp/xrdp.ini'
+	'etc/xrdp/cert.pem'
+	'etc/xrdp/key.pem'
+	'etc/xrdp/startwm.sh')
 install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git#branch=devel"
         "arch-config.diff")
