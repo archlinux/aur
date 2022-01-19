@@ -2,7 +2,7 @@
 
 _gemname=dry-initializer
 pkgname=ruby-$_gemname
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="DSL for building class initializer with params and options"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('48df83b5a0ab20cef52778e2c9062dd4414b0f495df8dcb27d926311a499dbdea90098fbe625283b7e7f8eb603ae1da5de9e7885e9eec2cad10393b3d8183ea5')
+b2sums=('f23ff593389f0da2ba96823873b941f43a9aa732b30bc3541694866080673a99e18594db29c6caea9f6289a50a7a96a330199629422f038dc4dc17bd42e5d6f6')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
