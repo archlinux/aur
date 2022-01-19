@@ -1,8 +1,8 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=remotebox
-pkgver=3.0
-pkgrel=3
+pkgver=3.1
+pkgrel=1
 pkgdesc="Open Source VirtualBox Client with Remote Management"
 arch=('any')
 url="http://remotebox.knobgoblin.org.uk/"
@@ -11,7 +11,7 @@ install=remotebox.install
 depends=('perl' 'perl-soap-lite' 'perl-gtk3')
 optdepends=('rdesktop')
 source=("http://remotebox.knobgoblin.org.uk/downloads/RemoteBox-${pkgver}.tar.bz2" "remotebox.desktop")
-md5sums=('c231deb84c7e11f9a0eff08b66ca93ff'
+md5sums=('574a8a16109daec49932ddafa19ee01b'
          'b64b16d198471f9868ce7ed018295296')
 
 package() {
