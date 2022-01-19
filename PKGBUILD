@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" PREFIX="usr/bin" LIBDIR="usr/lib" MANDIR="usr/share/man/man1" install
 }
