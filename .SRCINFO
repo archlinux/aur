@@ -1,7 +1,7 @@
 pkgbase = git-town
 	pkgdesc = Generic, high-level Git workflow support
 	pkgver = 7.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/git-town/git-town
 	arch = x86_64
 	license = MIT

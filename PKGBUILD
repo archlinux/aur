@@ -3,7 +3,7 @@
 
 pkgname=git-town
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Generic, high-level Git workflow support'
 url="https://github.com/$pkgname/$pkgname"
 arch=(x86_64)
@@ -23,7 +23,7 @@ build() {
 		-buildmode=pie \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-X $_varpath.version=\"$pkgver\" -X $_varpath.buildDate=\"$_date\" -linkmode external -extldflags \"${LDFLAGS}\"" \
+		-ldflags "-X $_varpath.version=$pkgver -X $_varpath.buildDate=$_date -linkmode external -extldflags \"${LDFLAGS}\"" \
 		.
 }
 
