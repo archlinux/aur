@@ -9,6 +9,7 @@ pkgbase = piscope
 	license = custom:LICENSE
 	depends = gtk3
 	depends = glib2
+	depends = pigpio
 	source = https://github.com/joan2937/piscope/archive/refs/tags/V0.8.tar.gz
 	sha256sums = b871116ac0e1c879dbe20f7907e75bb958ad76ef1bfcba91fc3f188f4b8e15a0
 
