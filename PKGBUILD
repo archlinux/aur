@@ -6,7 +6,7 @@ pkgname=git-vfs
 _pkgname=git
 pkgver=2.34.1.vfs.0.0
 _pkgver=${pkgver} # Sometimes needed when the tarball has a different name
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft fork of git including gvfs and scalar'
 arch=('x86_64')
 provides=('git')
@@ -30,7 +30,7 @@ optdepends=('tk: gitk and git gui'
             'org.freedesktop.secrets: keyring credential helper'
             'libsecret: libsecret credential helper')
 install=git.install
-source=("https://github.com/microsoft/git/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/microsoft/git/archive/refs/tags/v${pkgver}.tar.gz"
         'git-daemon@.service'
         'git-daemon.socket'
         'git-sysusers.conf')

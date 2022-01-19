@@ -1,7 +1,7 @@
 pkgbase = git-vfs
 	pkgdesc = Microsoft fork of git including gvfs and scalar
 	pkgver = 2.34.1.vfs.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git-scm.com/
 	install = git.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = git-vfs
 	optdepends = libsecret: libsecret credential helper
 	provides = git
 	conflicts = git
-	source = https://github.com/microsoft/git/archive/refs/tags/v2.34.1.vfs.0.0.tar.gz
+	source = git-vfs-2.34.1.vfs.0.0.tar.gz::https://github.com/microsoft/git/archive/refs/tags/v2.34.1.vfs.0.0.tar.gz
 	source = git-daemon@.service
 	source = git-daemon.socket
 	source = git-sysusers.conf
