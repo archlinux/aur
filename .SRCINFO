@@ -1,0 +1,13 @@
+pkgbase = python2-attrs
+	pkgdesc = Attributes without boilerplate. (Python 2)
+	pkgver = 21.4.0
+	pkgrel = 1
+	url = https://attrs.readthedocs.org/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://pypi.io/packages/source/a/attrs/attrs-21.4.0.tar.gz
+	sha512sums = 5a52776eb505c8a354912fa037a9710e49830fa6ad37272cb6d8c3298f4179a5b237e36cd7db3b1c9af19fbf0194ad6b83c3db9a473f9349769180073273ba65
+
+pkgname = python2-attrs
