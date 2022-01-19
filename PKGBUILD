@@ -8,8 +8,14 @@ arch=('x86_64')
 url="https://github.com/Domterion/catfetch"
 license=('MIT')
 makedepends=('go')
-source=("$pkgname-$pkgver::git+$url")
+source=("${pkgname}-${pkgver}::git+$url")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	printf "0.0.1r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
     cd "${pkgname}-${pkgver}"
