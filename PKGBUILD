@@ -6,9 +6,7 @@ pkgdesc="A subprocess caching utility"
 arch=('x86_64')
 url="https://www.bkt.rs/"
 license=('MIT')
-depends=()
 makedepends=('cargo')
-checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dimo414/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('e68b0d22f1262e27dfbdaefe198928a66cb64b69e3ada3e05969a5eb6719bc73')
 
