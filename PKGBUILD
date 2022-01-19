@@ -51,7 +51,7 @@
 
 pkgname=flameshot-git
 _pkgname=flameshot
-pkgver=r1568.f25d58b6
+pkgver=r1629.0fe55916
 pkgrel=1
 pkgdesc="Powerful yet simple to use screenshot software"
 arch=('i686' 'x86_64')
