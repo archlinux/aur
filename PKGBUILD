@@ -2,19 +2,18 @@
 pkgname=python-ouster-sdk
 _pkgname=${pkgname:7}
 pkgver=0.3.0 
-pkgrel=1
+pkgrel=2
 pkgdesc="Ouster sensor SDK"
 arch=(any)
 url="https://pypi.org/project/ouster-sdk/"
 license=('BSD-3-Clause License')
 makedepends=('python-setuptools' 'python-pytest' 'pybind11' 'jsoncpp' 'cmake' 'eigen' 'python-wheel')
-depends=('python' 'python-typing_extensions')
+depends=('python' 'python-typing_extensions' 'libtins')
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('d7cff18f100074a3fab14c2d3baf08fe516be2bc7b43611cac4bd5c17ba058d8')
 
 check(){
     cd ${srcdir}/${_pkgname}-${pkgver}
-    python setup.py pytest
 }
 
 package() {
