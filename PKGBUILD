@@ -4,7 +4,7 @@
 # Submitter: BxS <bxsbxs at gmail dot com>
 
 pkgname=microchip-mplabx-bin
-pkgver=5.50
+pkgver=6.00
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
 arch=(x86_64)
@@ -32,7 +32,7 @@ source=("http://ww1.microchip.com/downloads/en/DeviceDoc/${_mplabx_installer}.ta
         "LICENSE"
         "mplabx-override.conf")
 
-md5sums=('6153c217487ead4ee10e3316d283c490'
+md5sums=('452cf9fb8c889ea1e2744c0d2b1fa3d1'
          'a34a85b2600a26f1c558bcd14c2444bd'
          'a476a71af625380a2fd52f82fb5d5492')
 
@@ -41,7 +41,7 @@ backup=("etc/mplab_ide.conf")
 PKGEXT='.pkg.tar'
 
 package() {
-  mkdir -p "${pkgdir}"/{etc,usr/{bin,lib,local/lib},tmp}
+  mkdir -p "${pkgdir}"/{etc,usr/{bin,lib},tmp}
 
   # Create a fake chroot in $pkgdir to run the installer into
   ln -s /usr/bin "${pkgdir}/"
@@ -99,7 +99,7 @@ EOF
   rmdir "${pkgdir}${_mplabx_dir}/sys" # the intent here is to fail if something else than java is put into sys.
 
   # Move libs away from /usr/local/lib
-  mv "${pkgdir}"/usr/local/lib/*.so{,.*} "${pkgdir}"/usr/lib/
+  mv "${pkgdir}"/usr/local/lib/*.so "${pkgdir}"/usr/lib/
   rm -rf "${pkgdir}/usr/local/"
 
   _mplabcomm_pkgdir=("${pkgdir}${_mplabcomm_dir}"/*)
