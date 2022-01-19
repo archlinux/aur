@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.4.0
+Name=Bitburner
+GenericName=Programming incremental game
+Icon=bitburner
+Exec=bitburner %U
+Terminal=false
+Categories=Game;
+StartupWMClass=bitburner
