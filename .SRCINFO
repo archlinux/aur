@@ -1,6 +1,6 @@
 pkgbase = librsvg-git
 	pkgdesc = SVG rendering library
-	pkgver = 2.52.0.r10.g9d9c4c1d
+	pkgver = 2.53.0.r12.gf95afedf
 	pkgrel = 1
 	epoch = 2
 	url = https://wiki.gnome.org/Projects/LibRsvg
@@ -9,13 +9,14 @@ pkgbase = librsvg-git
 	license = LGPL
 	makedepends = gobject-introspection
 	makedepends = vala
-	makedepends = gtk-doc
 	makedepends = git
 	makedepends = rust
+	makedepends = python-docutils
+	makedepends = gi-docgen
 	depends = gdk-pixbuf2
 	depends = pango
 	provides = librsvg-2.so
-	provides = librsvg=2.52.0-1
+	provides = librsvg=2.53.0-1
 	conflicts = librsvg
 	source = librsvg-git::git+https://gitlab.gnome.org/GNOME/librsvg.git
 	sha256sums = SKIP
