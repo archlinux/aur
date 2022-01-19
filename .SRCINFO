@@ -1,6 +1,6 @@
 pkgbase = wluma
 	pkgdesc = Automatic brightness adjustment based on screen contents and ALS
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/maximbaz/wluma
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = wluma
 	depends = glibc
 	depends = gcc-libs
 	depends = v4l-utils
-	source = wluma-3.0.0.tar.gz::https://github.com/maximbaz/wluma/archive/3.0.0.tar.gz
-	source = https://github.com/maximbaz/wluma/releases/download/3.0.0/wluma-3.0.0.tar.gz.asc
+	source = wluma-4.0.0.tar.gz::https://github.com/maximbaz/wluma/archive/4.0.0.tar.gz
+	source = https://github.com/maximbaz/wluma/releases/download/4.0.0/wluma-4.0.0.tar.gz.asc
 	validpgpkeys = 56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601
-	sha256sums = fe7191cdeb58f7adb4ef4799650603c5b7c09f1520221ad68969bcbc083391e9
+	sha256sums = 5f7098d9dfffb43dcc14cf4295491776cd446b0ede9034538ed0c8db2dc38ef4
 	sha256sums = SKIP
 
 pkgname = wluma
