@@ -1,7 +1,7 @@
 pkgbase = dd4hep
 	pkgdesc = Detector Description Toolkit for High Energy Physics
-	pkgver = 01.15
-	pkgrel = 2
+	pkgver = 01.19
+	pkgrel = 1
 	url = https://dd4hep.web.cern.ch/dd4hep/
 	arch = x86_64
 	license = LGPL3
@@ -13,8 +13,7 @@ pkgbase = dd4hep
 	depends = boost-libs>=1.49
 	depends = intel-tbb
 	depends = cern-vdt
-	source = https://github.com/AIDASoft/dd4hep/archive/v01-15.tar.gz
-	md5sums = 6e28f8ddc798522ede04644fc45209bb
+	source = https://github.com/AIDASoft/dd4hep/archive/v01-19.tar.gz
+	md5sums = c439da43813ecf3d417d9edc2cfb605b
 
 pkgname = dd4hep
-
