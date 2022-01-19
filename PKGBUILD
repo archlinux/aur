@@ -1,7 +1,7 @@
 # Maintainer: axzxc1236 <axzxc1236 [(@>>] users.noreply.github.com>
 pkgname=twitch-dl-bin
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
 url="https://github.com/ihabunek/twitch-dl"
