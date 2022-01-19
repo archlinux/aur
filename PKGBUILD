@@ -1,7 +1,7 @@
 # Maintainer: Darkpelz <lukeh@outlook.my>
 # Maintainer: TheDarkBug <adrianoliviero23@gmail.com>
 pkgname=uwufetch-git
-pkgver=1.7.r0.g4e13dfd
+pkgver=1.7.r85.gb05a9d9
 pkgrel=1
 pkgdesc="A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
 arch=('any')
@@ -26,5 +26,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	make DESTDIR="$pkgdir" PREFIX="usr/bin" LIBDIR="usr/lib" MANDIR="usr/share/man/man1" install
+	make DESTDIR="$pkgdir/usr" install
 }
