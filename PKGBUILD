@@ -5,15 +5,11 @@
 # Contributor: Jeagoss <jgoliver@jeago.com>
 # Contributor: Saikrishna Arcot <saiarcot895@gmail.com> and Steven Newbury <steve@snewbury.org.uk> (First Authors of VAAPI patch)
 
-#########################
-## -- Build options -- ##
-#########################
-
 ##############################################
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=98.0.4750.0
+pkgver=99.0.4818.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -54,7 +50,7 @@ makedepends=(
              'yasm'
              'nasm'
              'git'
-             'hwids'
+             'hwdata'
              'nodejs'
              'java-runtime-headless'
              )
@@ -74,13 +70,17 @@ source=(
         'git+https://github.com/foutrelis/chromium-launcher.git'
         'chromium-dev.svg'
         # Patch form Gentoo.
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-96-EnumTable-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-97-fix-tag-dragging-i3.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-EnumTable-crash.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-system-libdrm.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
         # Misc Patches.
 #
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/chromium/trunk/use-oauth2-client-switches-as-default.patch'
+        'fix_build_use_gio_false_part1.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~3352616/revisions/2/patch?download'
+        'fix_build_use_gio_false_part2.patch.base64::https://chromium-review.googlesource.com/changes/chromium%2Fsrc~3399896/revisions/2/patch?download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -88,13 +88,17 @@ sha256sums=(
             'SKIP'
             '18a2dfc0a56b2fbbeb8ef16a19227b77bf9a6621c6021d04396e52a9a2313034'
             # Patch form Gentoo
-            'bf0ab64df0121908ff0aa260643f73c02fe402a30eea824f89017ad3b9f518cf'
             '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
+            '67b4658070c9f0b134175e49a0a920dddeb09457044c6495806490df4b9f0df8'
+            '31620c30a1e6b77fdafbc4be3b499420f7862c30957d43f5962fb346614164db'
+            '2543b0b4b54119484c9ba881840a9b035d4885802da9f246b5627a62a966c326'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
             # Misc Patches
 #
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
+            'fb075666b991ccfe4a02e1a287dc75a659e947e0b02bc5cd2237e74a866c6f02'
+            '6db1f1c23f0816f350d45f0ffecb689fdb450674e3fdb5822cd112cffb30a5aa'
             )
 install=chromium-dev.install
 
@@ -329,7 +333,6 @@ _keeplibs=(
            'third_party/utf'
            'third_party/vulkan'
            'third_party/wayland'
-           'third_party/wayland-protocols'
            'third_party/web-animations-js'
            'third_party/webdriver'
            'third_party/webgpu-cts'
@@ -385,13 +388,14 @@ _flags=(
         'blink_enable_generated_code_formatting=false'
         'blink_symbol_level=0'
         'use_aura=true'
+        'use_gtk=true'
+        'gtk_version=3'
         'use_gio=false'
         'use_gnome_keyring=false'
         'link_pulseaudio=true'
         'use_sysroot=false'
         'treat_warnings_as_errors=false'
         'enable_nacl=true'
-        'enable_nacl_nonsfi=true'
         'use_custom_libcxx=true' # use true if you want use bundled RE2
         'use_vaapi=true'
         'enable_platform_hevc=true'
@@ -408,8 +412,8 @@ _flags=(
         'enable_platform_hevc_decoding=true'
         'dcheck_always_on=false'
         'dcheck_is_configurable=false'
-        'use_system_harfbuzz=false'
-        'use_system_freetype=false'
+        'use_system_harfbuzz=true'
+        'use_system_freetype=true'
         'use_system_lcms2=true'
         'use_system_minigbm=true'
         'use_system_libwayland=true'
@@ -427,8 +431,8 @@ _use_system=(
 #              'ffmpeg'       # I'm not sure why, but all videos stop playback if use system ffmpeg.
              'flac'
              'fontconfig'
-#              'freetype'
-#              'harfbuzz-ng'
+             'freetype'
+             'harfbuzz-ng'
 #              'icu'          # https://crbug.com/678661.
              'libdrm'
 #              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
@@ -514,7 +518,10 @@ prepare() {
       -i chrome/common/chrome_paths_linux.cc
   sed -e 's|/etc/chromium|&-dev|' \
       -e 's|/usr/share/chromium|&-dev|' \
-      -i chrome/common/chrome_paths.cc
+      -i chrome/common/chrome_paths.cc \
+      -i ash/constants/ash_paths.cc \
+      -i chrome/browser/web_applications/preinstalled_web_apps/README.md \
+      -i chrome/browser/web_applications/preinstalled_web_app_manager.cc
   sed -e 's|/etc/chromium|&-dev|' \
       -e "s|'app_name': 'Chromium|&-Dev|g" \
       -i components/policy/tools/template_writers/writer_configuration.py
@@ -545,8 +552,9 @@ prepare() {
 #   patch -p1 -i "${srcdir}/fix_hevc_in_non_cromeos_r1.patch"
 
   # # Patch from Gentoo
-  patch -p1 -i "${srcdir}/chromium-96-EnumTable-crash.patch"
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
+  patch -p1 -i "${srcdir}/chromium-97-fix-tag-dragging-i3.patch"
+  patch -p1 -i "${srcdir}/chromium-98-EnumTable-crash.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
 
   # # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
@@ -560,6 +568,10 @@ prepare() {
   ln -s /usr/bin/java third_party/jdk/current/bin/java
 
   # Upstream fixes
+
+  # fix https://crbug.com/1288414 (bring back again)
+  base64 -d "${srcdir}/fix_build_use_gio_false_part1.patch.base64" | patch -Rp1 -i -
+#   base64 -d "${srcdir}/fix_build_use_gio_false_part2.patch.base64" | patch -Rp1 -i -  # NOTE: comment out when the commit land to dev channel tarball
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
