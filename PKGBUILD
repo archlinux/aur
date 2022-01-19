@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-hidetopbar-git
-pkgver=r172
+pkgver=r297.62d0296
 pkgrel=1
 pkgdesc="Gnome 3 extension to hide the top bar except in overview mode"
 arch=(any)
@@ -50,7 +50,7 @@ package_10_locale() {
     cd locale
     for locale in */
     do
-      install -Dm644 -t "$pkgdir/usr/share/locale/$locale/LC_MESSAGES" "$locale/LC_MESSAGES"/*.mo
+      install -Dm644 -t "$pkgdir/usr/share/locale/$locale/LC_MESSAGES" "$locale/LC_MESSAGES"/*.po
     done
   )
 }
@@ -70,13 +70,11 @@ package_20_version() {
     find -path ./pkg -type d -prune -o \
     -name metadata.json -exec cat '{}' \; | \
     tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
-    tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
-  depends+=("gnome-shell>=3.${compatibles[0]}")
+    tr '\n," ' '\n' | grep -v -e '^$'))
+  depends+=("gnome-shell>=${compatibles[0]}")
   local max="${compatibles[-1]}"
-  if [ "$max" != $(
-    gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
-  ) ]; then
-    depends+=("gnome-shell<3.$((${max%%.*} + 1))")
-  fi
+  # if [ "$max" != "$(gnome-shell --version | grep -Po '(?<=GNOME Shell )[[:digit:]]+.[[:digit:]]+')" ]; then
+  #   depends+=("gnome-shell<=1:$max")
+  # fi
   unset depends[125]
 }
