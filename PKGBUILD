@@ -2,7 +2,7 @@
 
 _pkgname=starport
 pkgname=${_pkgname}-bin
-pkgver=0.19.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc="The all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source_x86_64=("https://github.com/tendermint/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('056a953ea7e9be2194ba32262df3eea90b96a47dea0d4ce2b75cd7b0c1180e67')
+sha256sums_x86_64=('619d3eee0ff4fe40e0b47b0579fe81418809b82f3907cf7b4dc73064e52afe42')
 
 package() {
     install -Dt "$pkgdir/usr/local/bin" "$_pkgname"
