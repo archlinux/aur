@@ -14,8 +14,8 @@ url="https://element.io"
 license=(Apache)
 makedepends=(npm git yarn python rust sqlcipher electron nodejs-lts-fermium)
 optdepends=('darkhttpd: using element-web without electron')
-provides=(element-desktop{,-git})
-conflicts=(element-desktop{,-git})
+provides=(element-desktop{,-git} element-web{,-git})
+conflicts=(element-desktop{,-git} element-web{,-git})
 _giturl="git+https://github.com/vector-im"
 source=("element-web::${_giturl}/element-web.git"
         "element-desktop::${_giturl}/element-desktop.git"
