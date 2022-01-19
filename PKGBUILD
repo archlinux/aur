@@ -122,8 +122,5 @@ package_element-desktop-git-greentext() {
   done
 
   # Alter config
-  sed -i \
-  -e 's/matrix\.org/matrix.waifuhunter.club/g' \
-  -e 's/"showLabsSettings": false/"showLabsSettings": true/g' \
-  "$pkgdir/etc/element/config.json"
+  curl -s 'https://chat.waifuhunter.club/config.json' -o "$pkgdir/etc/element/config.json"
 }
