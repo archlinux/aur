@@ -1,7 +1,7 @@
 # Maintainer: Dominic Harris <dominic@domm.me>
 
 pkgname=catfetch-git
-pkgver=0.0.3r24.ced493c
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='A small and cute fetch program written in Go'
 arch=('x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${pkgname}-${pkgver}"
 
-	printf "0.0.3r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "0.0.4r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
