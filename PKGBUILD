@@ -1,16 +1,15 @@
-# $Id$
 # Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=bowtie2
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequence."
 arch=("x86_64")
 url="http://bowtie-bio.sourceforge.net/bowtie2"
 license=("GPL3")
 source=("https://github.com/BenLangmead/bowtie2/archive/v${pkgver}.tar.gz")
-sha1sums=('cf23a10261d0ef4b7a993ef562d5ccd4410e7dd6')
+sha1sums=('1d9ab9d5c0a90cad48b447e93b95d7ff9f72545e')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
