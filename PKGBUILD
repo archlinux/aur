@@ -3,7 +3,7 @@
 pkgname=('python-django-location-field' 'python2-django-location-field')
 pkgdesc="Let users pick locations using a map widget and store its latitude and longitude"
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/caioariede/django-location-field"
 license=('MIT')
 arch=('any')
@@ -29,6 +29,7 @@ package_python-django-location-field() {
   cd ${srcdir}/django-location-field-${pkgver}
   python setup.py install --prefix=/usr --root=${pkgdir}
   install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  rm -rf "$pkgdir/usr/lib/python3.10/site-packages/tests"
 }
 
 package_python2-django-location-field() {
@@ -36,6 +37,7 @@ package_python2-django-location-field() {
   cd ${srcdir}/django-location-field-${pkgver}-py2
   python2 setup.py install --prefix=/usr --root=${pkgdir}
   install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  rm -rf "$pkgdir/usr/lib/python3.10/site-packages/tests"
 }
 
 # vim:set ts=2 sw=2 et:
