@@ -1,0 +1,13 @@
+pkgbase = hydrogen-theme
+	pkgdesc = Hydrogen Themes.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/orbitrc/Hydrogen
+	arch = any
+	license = MIT
+	license = LGPL3
+	makedepends = xorg-xcursorgen>=1.0.7
+	source = https://github.com/orbitrc/Hydrogen/archive/refs/tags/v0.1.1.tar.gz
+	md5sums = fbe7eb8b72b23da4575098dc20268c91
+
+pkgname = hydrogen-theme
