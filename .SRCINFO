@@ -1,6 +1,6 @@
 pkgbase = sope
 	pkgdesc = application server used by SOGo
-	pkgver = 5.4.0
+	pkgver = 5.5.0
 	pkgrel = 1
 	url = http://www.sogo.nu/files/downloads/SOGo/Sources/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = sope
 	optdepends = postgresql: run database server for sogo locally
 	replaces = sope2
 	options = !strip
-	source = https://packages.inverse.ca/SOGo/sources/SOPE-5.4.0.tar.gz
-	sha256sums = 4253328eb9595b00ca5e5d61c03358be21cdb36a69b354b3d79279d4327720b8
+	source = https://packages.inverse.ca/SOGo/sources/SOPE-5.5.0.tar.gz
+	sha256sums = dde493ad53b2cda85fc40972836cf41188d3ec96a2b80ea263a085cedb39afd0
 
 pkgname = sope
