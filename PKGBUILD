@@ -2,7 +2,7 @@
 # Contributor: John Hamelink <me@johnhame.link>
 
 pkgname=python-tidalapi
-pkgver=0.6.8
+pkgver=0.6.9
 pkgrel=1
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=('any')
@@ -10,16 +10,19 @@ url='https://github.com/tamland/python-tidal'
 license=('LGPL3')
 depends=('python-requests')
 makedepends=('python-setuptools' 'git')
-source=("$pkgname-$pkgver::git+$url#tag=v$pkgver?signed")
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('E09E6FC5E0472F735B7599C4BBEDD0C513635C9F')
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	python setup.py build
 }
 
+## tests require an active Tidal session
+
 package() {
-	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	export PYTHONHASHSEED=0
+	cd "$pkgname"
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
