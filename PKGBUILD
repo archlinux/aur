@@ -3,7 +3,7 @@
 
 pkgname=git-town
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Generic, high-level Git workflow support'
 url="https://github.com/$pkgname/$pkgname"
 arch=(x86_64)
@@ -25,10 +25,16 @@ build() {
 		-modcacherw \
 		-ldflags "-X $_varpath.version=$pkgver -X $_varpath.buildDate=$_date -linkmode external -extldflags \"${LDFLAGS}\"" \
 		.
+	for s in bash fish zsh; do
+		./$pkgname completions $s > completions.$s
+	done
 }
 
 package() {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm0644 completions.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm0644 completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+	install -Dm0644 completions.zsh  "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }
