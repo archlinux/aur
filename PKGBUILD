@@ -1,8 +1,8 @@
 # Maintainer: SEGFAULT <segfault@mailbox.org>
-# Maintainer: Spacekookie <kookie@spacekookie.de>
+# Maintainer: spacekookie <kookie@spacekookie.de>
 pkgname=ratman
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=3
 pkgdesc='A modular decentralised userspace packet router.'
 arch=('any')
 url='https://irde.st'
@@ -11,7 +11,7 @@ depends=('libsodium')
 makedepends=('git' 'rust' 'protobuf' 'pkg-config' 'clang')
 provides=('ratmand' 'ratcat' 'ratctl')
 conflicts=('ratman')
-source=("${pkgname}::git+https://git.irde.st/we/irdest.git#tag=ratman-0.3.0")
+source=("${pkgname}::git+https://git.irde.st/we/irdest.git#tag=ratman-${pkgver}")
 sha1sums=('SKIP')
 
 build () {
@@ -25,8 +25,11 @@ package() {
   install -Dm644 ${srcdir}/${pkgname}/licenses/CC-BY.md    ${pkgdir}/usr/share/licenses/ratman/CC_BY.md  
   install -Dm644 ${srcdir}/${pkgname}/licenses/GPL-3.0.md  ${pkgdir}/usr/share/licenses/ratman/GPL-3.0.md
   install -Dm644 ${srcdir}/${pkgname}/licenses/MPL-v2.0.md ${pkgdir}/usr/share/licenses/ratman/MPL-v2.0.md
+
+  install -Dm644 ${srcdir}/${pkgname}/docs/man/ratmand.1 ${pkgdir}/usr/share/man/man1/
   
   install -Dm755 ${srcdir}/${pkgname}/target/release/ratmand ${pkgdir}/usr/bin/ratmand
   install -Dm755 ${srcdir}/${pkgname}/target/release/ratcat  ${pkgdir}/usr/bin/ratcat
   install -Dm755 ${srcdir}/${pkgname}/target/release/ratctl  ${pkgdir}/usr/bin/ratctl
+
 }
