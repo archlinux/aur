@@ -25,7 +25,7 @@ source=("https://gitlab.com/NickCao/RAIT/-/archive/v$pkgver/RAIT-v$pkgver.tar.gz
 "rait.conf")
 noextract=()
 sha256sums=('c5c45746ccd0fc4077980dd3bff36efb35003eb91935698e91d81ecf53865e6f'
-            '7dce9ea0fbbea74320ae8ab55f92b59630b440e4a516beca03389114417d6d6f'
+            'f43c04d33ca5f747d906bff3f00f40fb616f769106b07c754e42510ccb1b45cc'
             'db6854d47284aa1e902edbc01911d48311de82bef3d81fd1f0ca3f67dbea0cb4'
             '7f85c1f0f3979bce2072974b423964aeeb95f05176e0c06bf264b55ff51e53c3')
 validpgpkeys=()
