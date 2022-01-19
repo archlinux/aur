@@ -1,0 +1,22 @@
+pkgbase = tasktimer-bin
+	pkgdesc = testing the goreleaser integration, please disregard
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://carlosbecker.com
+	license = MIT
+	
+	
+	
+	
+	arch = aarch64
+	source_aarch64 = https://github.com/caarlos0-graveyard/test/releases/download/v0.1.10/test_0.1.10_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 113a3d58400fa95fdc3f7a2b3cd9f1a241f1045ad6df441414cd9e0ae175c8a1
+	arch = i686
+	source_i686 = https://github.com/caarlos0-graveyard/test/releases/download/v0.1.10/test_0.1.10_Linux_i386.tar.gz
+	sha256sums_i686 = f1228e8722f02c797dcc43734d51ecfb82bc71edc9209001523babf730adf0d3
+	arch = x86_64
+	source_x86_64 = https://github.com/caarlos0-graveyard/test/releases/download/v0.1.10/test_0.1.10_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 95affcde9feb5fb5a49ff772d0fc742d21ad674987a9e35c54b1fb8e7506824e
+	
+
+pkgname = tasktimer-bin
