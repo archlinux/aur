@@ -1,12 +1,12 @@
 pkgbase = catfetch-git
 	pkgdesc = A small and cute fetch program written in Go
-	pkgver = 0.0.1
+	pkgver = 0.0.2r23.e9a2374
 	pkgrel = 1
 	url = https://github.com/Domterion/catfetch
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = catfetch-git-0.0.1::git+https://github.com/Domterion/catfetch
+	source = catfetch-git-0.0.2r23.e9a2374::git+https://github.com/Domterion/catfetch
 	sha256sums = SKIP
 
 pkgname = catfetch-git
