@@ -1,7 +1,7 @@
 pkgbase = python-functoolsplus
 	pkgdesc = More higher-order functions and operations on callable objects.
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/homeinfogmbh/functoolsplus
 	arch = any
 	license = GPLv3
@@ -11,7 +11,7 @@ pkgbase = python-functoolsplus
 	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-setuptools
-	source = functoolsplus::git+https://github.com/homeinfogmbh/functoolsplus.git#tag=1.0.0
+	source = functoolsplus::git+https://github.com/homeinfogmbh/functoolsplus.git#tag=1.0.1
 	md5sums = SKIP
 
 pkgname = python-functoolsplus

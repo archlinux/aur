@@ -2,8 +2,8 @@
 
 _pkgbase='functoolsplus'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='More higher-order functions and operations on callable objects.'
 arch=('any')
 url="https://github.com/homeinfogmbh/${_pkgbase}"
