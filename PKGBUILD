@@ -15,7 +15,7 @@ makedepends=('python-pip')
 package_python-jgraph(){
   depends=('python'
            'ipython')
-  pip install --no-deps --target "${pkgdir}/usr/lib/python3.9/site-packages" "jgraph-${pkgver}-py2.py3-none-any.whl"
+  pip install --no-deps --target "${pkgdir}/usr/lib/python3.10/site-packages" "jgraph-${pkgver}-py2.py3-none-any.whl"
 }
 
 # vim: ts=2 sw=2 et
