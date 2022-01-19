@@ -91,6 +91,9 @@ package_element-web-git-greentext() {
 
   # Install element web launcher
   install -Dm755 "$srcdir/element-web.sh" "$pkgdir/usr/bin/element-web"
+
+  # Alter config
+  install -Dm644 "$srcdir/element-config.json" "$pkgdir/etc/webapps/element/config.sample.json"
 }
 
 package_element-desktop-git-greentext() {
