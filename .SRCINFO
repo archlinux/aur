@@ -12,7 +12,7 @@ pkgbase = twitch-dl-bin
 	conflicts = twitch-dl
 	conflicts = twitch-dl-bin
 	noextract = twitch-dl
-	source = twitch-dl::https://github.com/ihabunek/twitch-dl/releases/download/1.14.1/twitch-dl.1.14.1.pyz
+	source = twitch-dl::https://github.com/ihabunek/twitch-dl/releases/download/1.17.1/twitch-dl.1.17.1.pyz
 	sha256sums = ('402efcc6123a14f89aa394e9f504d55d2c24f28d04e6aeb4df7e1a9aac0ff548')
 
 pkgname = twitch-dl-bin
