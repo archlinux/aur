@@ -1,7 +1,7 @@
 # Maintainer: Thiago Perrotta <tbperrotta@gmail.com>
 pkgname=bkt
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A subprocess caching utility"
 arch=('x86_64')
 url="https://www.bkt.rs/"
@@ -21,15 +21,15 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release --all-features
+	cargo build --frozen --release
 }
 
-# check() {
-# 	cd "$srcdir/$pkgname-$pkgver"
+check() {
+	cd "$srcdir/$pkgname-$pkgver"
 
-# 	export RUSTUP_TOOLCHAIN=stable
-# 	cargo test --frozen --all-features
-# }
+	export RUSTUP_TOOLCHAIN=stable
+	cargo test --frozen
+}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
