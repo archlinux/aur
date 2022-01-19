@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon-desktop
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Providing a modular desktop environment with pademelon"
 arch=(x86_64)
@@ -16,6 +16,7 @@ depends=(
     xfce4-power-manager
     network-manager-applet
     firefox
+    xfce4-terminal
     arandr
     pavucontrol
     pulseaudio
