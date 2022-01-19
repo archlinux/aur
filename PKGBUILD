@@ -2,7 +2,7 @@
 pkgname=cnijfilter-ts7450series
 pkgver=6.10
 pkgrel=1
-pkgdesc="Canon IJ Printer Driver for Linux"
+pkgdesc="Canon IJ Printer Driver for Linux for Pixma 7450 series and other based on 6.10 version"
 arch=('i686' 'x86_64')
 url="https://www.canon.com.au/home-printers"
 license=('GPL' 'custom:canon')
