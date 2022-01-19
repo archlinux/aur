@@ -1,0 +1,14 @@
+#!/bin/bash
+
+post_install() {
+	systemctl daemon-reload
+}
+
+post_upgrade(){
+	systemctl daemon-reload
+}
+
+pre_remove() {
+	systemctl stop monitoring-js.service
+	systemctl disable monitoring-js.service
+}
