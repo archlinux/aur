@@ -1,7 +1,7 @@
 pkgbase = bindfs
 	pkgdesc = A FUSE filesystem for mirroring a directory to another directory, similar to 'mount --bind', with permission settings.
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bindfs.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = bindfs
 	arch = armv6l
 	arch = armv7h
 	license = GPL
-	depends = fuse
+	depends = fuse3
 	source = http://bindfs.org/downloads/bindfs-1.15.1.tar.gz
 	sha512sums = da9003f141b7aa2c23651b3b836b1d979bf1b19915f307c05e40ae6906aab738036cc8b5df6caeec158e4fa6b7bca71489ea7884ff1607c6fea72a603a048d59
 
