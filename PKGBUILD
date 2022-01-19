@@ -10,7 +10,7 @@ license=('custom:Artistic')
 depends=('simutrans-extended-git')
 source=(http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.britain-ex-nightly.tar.gz
         license.txt)
-sha256sums=('f1ed62e521b475721d0a24337306ffb9b5eb5fa5f917094594738d51c3b5b422'
+sha256sums=('22a97e4321c6936eb9e4a1f0b9e4e3dcb27e5b83045cb76741a15ec4956c86c7'
             'def758cfe51b6f16d838f777a6540163fb47f334df5a0fb86448f92a36a92017')
 
 package() {
