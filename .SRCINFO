@@ -1,13 +1,12 @@
 pkgbase = radarr-develop
 	pkgdesc = Movie download automation for usenet and torrents.
 	pkgver = 4.0.2.5836
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Radarr/Radarr
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = GPL3
-	depends = libmediainfo
 	depends = sqlite
 	optdepends = sabnzbd: usenet downloader
 	optdepends = nzbget: usenet downloader

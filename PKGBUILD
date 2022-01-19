@@ -3,13 +3,13 @@
 
 pkgname="radarr-develop"
 pkgver=4.0.2.5836
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Radarr/Radarr"
 license=('GPL3')
 options=('!strip' 'staticlibs')
-depends=('libmediainfo' 'sqlite')
+depends=('sqlite')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
             'transmission-cli: torrent downloader (CLI and daemon)'
@@ -46,7 +46,7 @@ package() {
   install -d -m 755 "${pkgdir}/usr/lib/radarr/bin"
   cp -dpr --no-preserve=ownership "${srcdir}/Radarr/"* "${pkgdir}/usr/lib/radarr/bin"
   chmod -R a=,a+rX,u+w "${pkgdir}/usr/lib/radarr/bin"
-  chmod +x "${pkgdir}/usr/lib/radarr/bin/Radarr"
+  chmod +x "${pkgdir}/usr/lib/radarr/bin/Radarr" "${pkgdir}/usr/lib/radarr/bin/ffprobe"
 
   # Disable built in updater.
   install -D -m 644 "${srcdir}/package_info" "${pkgdir}/usr/lib/radarr"
