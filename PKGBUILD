@@ -1,16 +1,15 @@
 # Maintainer: morguldir <morguldir@protonmail.com>
 # Contributor: Sebastian Gumprich <sebastian.gumprich@38.de>
 pkgname=tuxemon-git
-pkgver=0.4.25.r5.g2c741edc
-pkgrel=2
+pkgver=0.4.33.r47.gee807080
+pkgrel=1
 pkgdesc="A free, open source monster-fighting RPG."
 arch=('any')
 url="http://www.tuxemon.org"
 license=('GPL3')
 groups=('games')
-depends=('python' 'python-cbor' 'python-pytmx' 'python-neteria' 'python-pyscroll' 'python-babel' 'python-lxml' 'python-natsort' 'python-pillow' 'python-click')
+depends=('python' 'python-cbor' 'python-pytmx' 'python-neteria' 'python-pyscroll' 'python-babel' 'python-lxml' 'python-natsort' 'python-pillow' 'python-click' 'python-prompt_toolkit')
 makedepends=('git')
-optdepends=('libShake: rumble library for Linux.')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('tuxemon-git::git+https://github.com/Tuxemon/Tuxemon.git#branch=development')
