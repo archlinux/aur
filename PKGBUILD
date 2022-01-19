@@ -7,7 +7,7 @@
 pkgname='python-jira'
 pkgdesc='Python library to work with Jira APIs'
 pkgver='3.1.1'
-pkgrel=1
+pkgrel=2
 url='https://github.com/pycontribs/jira'
 license=('BSD')
 arch=('any')
@@ -33,4 +33,5 @@ package() {
   cd "${srcdir}/jira-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  rm -rf "$pkgdir/usr/lib/python3.10/site-packages/tests"
 }
