@@ -14,7 +14,7 @@ source=("git+$url#branch=master"
         git+https://github.com/ianlancetaylor/libbacktrace.git)
 sha1sums=('SKIP' 'SKIP' 'SKIP')
 depends=()
-makedepends=(cmake ninja)
+makedepends=(git cmake ninja)
 
 pkgver() {
   cd SwiftShader
