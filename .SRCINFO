@@ -1,7 +1,7 @@
 pkgbase = ciphey
 	pkgdesc = Automated decryption tool
 	pkgver = 5.14.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Ciphey/Ciphey
 	arch = any
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = ciphey
 	depends = python-base58
 	depends = python-base91
 	depends = python-click
+	depends = python-loguru
 	depends = python-mock
 	depends = python-pyaml
 	depends = python-pybase62

@@ -9,7 +9,7 @@ pkgver=5.14.0
 _pkgver_cipheycore=0.3.2
 _pkgver_cipheydists=0.3.35
 
-pkgrel=2
+pkgrel=3
 pkgdesc='Automated decryption tool'
 arch=('any')
 url='https://github.com/Ciphey/Ciphey'
@@ -23,6 +23,7 @@ depends=(
 #    'python-cipheycore' #aur #temporarily included in this PKGBUILD
 #    'python-cipheydists' #aur #temporarily included in this PKGBUILD
     'python-click'
+    'python-loguru' #aur
     'python-mock'
     'python-pyaml'
     'python-pybase62' #aur
