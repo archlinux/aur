@@ -6,7 +6,7 @@ epoch=
 pkgdesc="Redundant Array of Inexpensive Tunnels"
 arch=(x86_64)
 url="https://gitlab.com/NickCao/RAIT"
-license=('custom')
+license=('Apache')
 groups=()
 depends=(glibc)
 makedepends=(go)
@@ -52,8 +52,6 @@ check() {
 package() {
 	cd "RAIT-v$pkgver"
 	install -Dm755 build "$pkgdir"/usr/bin/$pkgname
-	mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/license
 	cd ..
 	mkdir -p "$pkgdir"/usr/lib/systemd/system/
 	install -Dm644 rait.service "$pkgdir"/usr/lib/systemd/system/
