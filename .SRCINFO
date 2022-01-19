@@ -6,9 +6,12 @@ pkgbase = git-crecord-git
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = python2
+	makedepends = python-docutils
+	makedepends = python-setuptools
+	depends = python
+	depends = git
+	conflicts = git-crecord
 	source = git+https://github.com/andrewshadura/git-crecord.git
 	md5sums = SKIP
 
 pkgname = git-crecord-git
-

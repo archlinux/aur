@@ -1,19 +1,19 @@
 # Maintainer: bobpaul <aurpackage [at] bobpaul 'period' org>
 pkgname="git-crecord-git"
-pkgver=20161216.0.r4.g30c7f4c
-pkgrel=2
+pkgver=20201025.0.r4.gf520edf
+pkgrel=1
 epoch=
 pkgdesc="Git subcommand to interactively select changes to commit or stage"
 arch=(any)
 url="https://github.com/andrewshadura/git-crecord"
 license=('GPL')
 groups=()
-depends=('python2')
-makedepends=('git')
+depends=('python' 'git')
+makedepends=('git' 'python-docutils' 'python-setuptools')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=('git-crecord')
 replaces=()
 backup=()
 options=()
