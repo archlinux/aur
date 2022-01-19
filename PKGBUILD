@@ -30,8 +30,8 @@ build() {
 }
 
 package_tailwindcss-language-server() {
-  provides=("tailwindcss-language-server=$_serverver")
   pkgdesc='Tailwind CSS Language Server'
+  provides=("tailwindcss-language-server=$_serverver")
   conflicts=("$pkgbase")
   cd $pkgbase/packages/"${pkgname[0]}"
   install -Dt "$pkgdir"/usr/bin bin/"${pkgname[0]}"
