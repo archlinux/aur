@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2020
 	pkgdesc = Clear Linux lts2020
 	pkgver = 5.10.92
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2020
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-clear-lts2020
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.10.92.xz
-	source = linux-clear-lts2020::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=5.10.89-40
+	source = linux-clear-lts2020::git+https://github.com/clearlinux-pkgs/linux-lts2020.git#tag=5.10.92-43
 	source = more-uarches-20211114.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20211114.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E

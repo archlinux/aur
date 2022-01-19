@@ -76,10 +76,10 @@
 _major=5.10
 _minor=92
 _srcname=linux-${_major}
-_clr=${_major}.89-40
+_clr=${_major}.92-43
 pkgbase=linux-clear-lts2020
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2020'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2020"
@@ -155,7 +155,8 @@ prepare() {
                    --module-after SND_OSSEMUL SND_MIXER_OSS \
                    --module-after SND_MIXER_OSS SND_PCM_OSS \
                    --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA
+                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA \
+                   --enable FW_LOADER_COMPRESS
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
