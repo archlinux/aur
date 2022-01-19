@@ -4,7 +4,7 @@
 
 pkgname=lxpolkit-git
 pkgver=0.1.0.r34.g55fc5d4
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Simple polkit authentication agent for LXDE"
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ build() {
   cd $pkgname
   ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/lxpolkit
-  make
+  make CFLAGS="$CFLAGS -Wno-deprecated-declarations -Wno-format -Wno-format-security"
 }
 
 package() {
