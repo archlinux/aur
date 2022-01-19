@@ -2,7 +2,7 @@
 
 pkgname=cpupower-gui
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A GUI utility to set CPU frequency limits"
 arch=(any)
 url="https://github.com/vagnum08/cpupower-gui"
@@ -20,7 +20,7 @@ source=("${pkgname}_${pkgver}.orig.tar.gz"::"https://github.com/vagnum08/cpupowe
 sha256sums=('09f8b9619e974abe00fc06c0d5528b6a36518f6b283b3db338349bada1d51492')
 
 build() {
-  sed -i '15d' data/meson.build
+  sed -i '15d' "$srcdir/${pkgname}-${pkgver}/data/meson.build"
   meson --prefix /usr -Dsystemddir=/usr/lib/systemd --buildtype=plain "$srcdir/${pkgname}-${pkgver}" build
   ninja -C build
 }
