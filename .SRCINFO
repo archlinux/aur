@@ -1,6 +1,6 @@
 pkgbase = ferret
 	pkgdesc = A web scraping system aiming to simplify data extraction from the web
-	pkgver = 0.16.0
+	pkgver = 0.16.5
 	pkgrel = 1
 	url = https://www.montferret.dev
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = ferret
 	license = Apache
 	makedepends = go
 	optdepends = chromium: to handle dynamically rendered web pages
-	source = ferret-0.16.0.tar.gz::https://github.com/MontFerret/ferret/archive/v0.16.0.tar.gz
-	b2sums = b31e649034c32d3c2a6baa5475669c09a8feb9c95306621110ef02a7fa444732f383ff08b515448e3c2c0c6fd30f7c1278d6a4fdd18f7807a3903a4d0e94d981
+	source = ferret-0.16.5.tar.gz::https://github.com/MontFerret/ferret/archive/v0.16.5.tar.gz
+	b2sums = 7f2b1a734428038d586c80b7b5e1c3731611521b8538de96aaefdbf411e2a6160ca527f2835b860c95fccdaf0f42fad46cf85c108e2982c0b1b974ac2040324b
 
 pkgname = ferret
