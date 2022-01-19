@@ -4,6 +4,7 @@ StartLimitIntervalSec=30
 StartLimitBurst=6
 Upholds=nginx.service
 PropagatesStopTo=nginx.service
+PropagatesReloadTo=nginx.service
 
 [Service]
 Type=simple
