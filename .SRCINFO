@@ -1,0 +1,15 @@
+pkgbase = piscope
+	pkgdesc = piscope is a logic analyser (digital waveform viewer) for the Raspberry. It shows the state (high or low) of selected GPIO in real-time.
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://abyz.me.uk/rpi/pigpio/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = custom:LICENSE
+	depends = gtk3
+	depends = glib2
+	source = https://github.com/joan2937/piscope/archive/refs/tags/V0.8.tar.gz
+	sha256sums = b871116ac0e1c879dbe20f7907e75bb958ad76ef1bfcba91fc3f188f4b8e15a0
+
+pkgname = piscope
