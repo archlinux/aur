@@ -8,7 +8,7 @@ pkgbase = python-llvmlite-bin
 	depends = python
 	provides = python-llvmlite=0.38.0rc1
 	conflicts = python-llvmlite
-	source = https://anaconda.org/numba/llvmlite/0.38.0rc1/download/linux-64/llvmlite-0.38.0rc1-py310he1b5a44_0.tar.bz2
-	md5sums = 78276249b418b24aab41e2ca899043d4
+	source = https://anaconda.org/numba/llvmlite/0.38.0/download/linux-64/llvmlite-0.38.0-py310he1b5a44_0.tar.bz2
+	md5sums = cbf89d4a4a31216b3619e0a5c024e2ac
 
 pkgname = python-llvmlite-bin

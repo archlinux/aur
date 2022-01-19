@@ -11,11 +11,11 @@ groups=()
 depends=("python")
 provides=("python-llvmlite=$pkgver")
 conflicts=("python-llvmlite")
-source=("https://anaconda.org/numba/llvmlite/0.38.0rc1/download/linux-64/llvmlite-0.38.0rc1-py310he1b5a44_0.tar.bz2")
+source=("https://anaconda.org/numba/llvmlite/0.38.0/download/linux-64/llvmlite-0.38.0-py310he1b5a44_0.tar.bz2")
 
 package() {
 	  cd "$srcdir/lib/python3.10/site-packages"
 	  mkdir -p "$pkgdir/usr/lib/python3.10/site-packages/"
 	  cp -r * "$pkgdir/usr/lib/python3.10/site-packages/"
 }
-md5sums=('78276249b418b24aab41e2ca899043d4')
+md5sums=('cbf89d4a4a31216b3619e0a5c024e2ac')
