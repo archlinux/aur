@@ -4,7 +4,7 @@
 
 pkgname=git-vfs
 _pkgname=git
-pkgver=2.32.0.vfs.0.99.exp
+pkgver=2.34.1.vfs.0.0
 _pkgver=${pkgver} # Sometimes needed when the tarball has a different name
 pkgrel=1
 pkgdesc='Microsoft fork of git including gvfs and scalar'
@@ -34,7 +34,7 @@ source=("https://github.com/microsoft/git/archive/refs/tags/v${pkgver}.tar.gz"
         'git-daemon@.service'
         'git-daemon.socket'
         'git-sysusers.conf')
-sha256sums=('64de8c1958b86a6463e78144ac1af885cefd5b9474d1bd1e050d8f10545b2061'
+sha256sums=('0eda7f4ad8060381135f5237dab5e713b9e61590989f247618177634f03e6517'
             '14c0b67cfe116b430645c19d8c4759419657e6809dfa28f438c33a005245ad91'
             'ac4c90d62c44926e6d30d18d97767efc901076d4e0283ed812a349aece72f203'
             '7630e8245526ad80f703fac9900a1328588c503ce32b37b9f8811674fcda4a45')
