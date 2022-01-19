@@ -52,22 +52,22 @@ prepare() {
   yarn install --no-fund
 
   cd "$srcdir/element-desktop"
-  patch -p1 < ../autolaunch.patch
+  patch -p1 < "$srcdir/autolaunch.patch"
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
   sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
   cd "$srcdir/element-web/node_modules/matrix-react-sdk"
-  patch -p1 < "$srcdir/../greentext.patch"
+  patch -p1 < "$srcdir/greentext.patch"
   yarn reskindex
 }
 
 build() {
-  cd element-web
+  cd "$srcdir/element-web"
   yarn build --offline
 
-  cd ../element-desktop
+  cd "$srcdir/element-desktop"
   yarn run build:native
   yarn run build
 }
@@ -88,7 +88,7 @@ package_element-web-git-greentext() {
   echo "$pkgver" > "$pkgdir/usr/share/webapps/element/version"
 
   # Install element web launcher
-  install -Dm755 "$srcdir/../element-web.sh" "$pkgdir/usr/bin/element-web"
+  install -Dm755 "$srcdir/element-web.sh" "$pkgdir/usr/bin/element-web"
 }
 
 package_element-desktop-git-greentext() {
