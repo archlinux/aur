@@ -1,0 +1,100 @@
+--- hostapd/config_file.c	2022-01-16 23:51:29.000000000 +0300
++++ hostapd/config_file.c	2022-01-19 13:47:09.436558002 +0300
+@@ -2904,10 +2904,12 @@
+ 			wpa_printf(MSG_ERROR,
+ 				   "Line %d: Invalid wpa_deny_ptk0_rekey=%d; allowed range 0..2",
+ 				   line, bss->wpa_deny_ptk0_rekey);
+ 			return 1;
+ 		}
++    } else if (os_strcmp(buf, "noscan") == 0) {
++        conf->noscan = atoi(pos);
+ 	} else if (os_strcmp(buf, "wpa_group_update_count") == 0) {
+ 		char *endp;
+ 		unsigned long val = strtoul(pos, &endp, 0);
+ 
+ 		if (*endp || val < 1 || val > (u32) -1) {
+@@ -3472,10 +3474,12 @@
+ 	} else if (os_strcmp(buf, "ocv") == 0) {
+ 		bss->ocv = atoi(pos);
+ 		if (bss->ocv && !bss->ieee80211w)
+ 			bss->ieee80211w = 1;
+ #endif /* CONFIG_OCV */
++    } else if (os_strcmp(buf, "noscan") == 0) {
++        conf->noscan = atoi(pos);
+ 	} else if (os_strcmp(buf, "ieee80211n") == 0) {
+ 		conf->ieee80211n = atoi(pos);
+ 	} else if (os_strcmp(buf, "ht_capab") == 0) {
+ 		if (hostapd_config_ht_capab(conf, pos) < 0) {
+ 			wpa_printf(MSG_ERROR, "Line %d: invalid ht_capab",
+--- src/ap/ap_config.h	2022-01-16 23:51:29.000000000 +0300
++++ src/ap/ap_config.h	2022-01-19 13:48:24.301239489 +0300
+@@ -1012,10 +1012,11 @@
+ 	 */
+ 	struct hostapd_wmm_ac_params wmm_ac_params[4];
+ 
+ 	int ht_op_mode_fixed;
+ 	u16 ht_capab;
++    int noscan;
+ 	int ieee80211n;
+ 	int secondary_channel;
+ 	int no_pri_sec_switch;
+ 	int require_ht;
+ 	int obss_interval;
+--- src/ap/hw_features.c	2022-01-16 23:51:29.000000000 +0300
++++ src/ap/hw_features.c	2022-01-19 13:52:15.198720584 +0300
+@@ -515,11 +515,11 @@
+ {
+ 	struct wpa_driver_scan_params params;
+ 	int ret;
+ 
+ 	/* Check that HT40 is used and PRI / SEC switch is allowed */
+-	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch)
++	if (!iface->conf->secondary_channel || iface->conf->no_pri_sec_switch || iface->conf->noscan)
+ 		return 0;
+ 
+ 	hostapd_set_state(iface, HAPD_IFACE_HT_SCAN);
+ 	wpa_printf(MSG_DEBUG, "Scan for neighboring BSSes prior to enabling "
+ 		   "40 MHz channel");
+@@ -913,11 +913,11 @@
+ 		return 0;
+ 	}
+ 	if (!hostapd_is_usable_edmg(iface))
+ 		return 0;
+ 
+-	if (!iface->conf->secondary_channel)
++	if (!iface->conf->secondary_channel || iface->conf->noscan)
+ 		return 1;
+ 
+ 	if (hostapd_is_usable_chan(iface, iface->freq +
+ 				   iface->conf->secondary_channel * 20, 0)) {
+ 		if (iface->conf->secondary_channel == 1 &&
+--- src/ap/ieee802_11_ht.c	2022-01-16 23:51:29.000000000 +0300
++++ src/ap/ieee802_11_ht.c	2022-01-19 13:55:53.112624851 +0300
+@@ -228,10 +228,13 @@
+ 		wpa_printf(MSG_DEBUG,
+ 			   "Ignore 20/40 BSS Coexistence Management frame since 40 MHz capability is not enabled");
+ 		return;
+ 	}
+ 
++    if (iface->conf->noscan)
++        return;
++
+ 	if (len < IEEE80211_HDRLEN + 2 + sizeof(*bc_ie)) {
+ 		wpa_printf(MSG_DEBUG,
+ 			   "Ignore too short 20/40 BSS Coexistence Management frame");
+ 		return;
+ 	}
+@@ -388,10 +391,13 @@
+ void ht40_intolerant_add(struct hostapd_iface *iface, struct sta_info *sta)
+ {
+ 	if (iface->current_mode->mode != HOSTAPD_MODE_IEEE80211G)
+ 		return;
+ 
++    if (iface->conf->noscan)
++        return;
++
+ 	wpa_printf(MSG_INFO, "HT: Forty MHz Intolerant is set by STA " MACSTR
+ 		   " in Association Request", MAC2STR(sta->addr));
+ 
+ 	if (sta->ht40_intolerant_set)
+ 		return;

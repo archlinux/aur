@@ -1,10 +1,10 @@
 pkgbase = hostapd-noscan
 	pkgdesc = IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator (with "noscan" patch)
-	pkgver = 2.9
-	pkgrel = 5
+	pkgver = 2.10
+	pkgrel = 1
 	url = https://w1.fi/hostapd/
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
@@ -22,22 +22,13 @@ pkgbase = hostapd-noscan
 	backup = etc/hostapd/hostapd.radius_clients
 	backup = etc/hostapd/hostapd.vlan
 	backup = etc/hostapd/hostapd.wpa_psk
-	source = https://w1.fi/releases/hostapd-2.9.tar.gz
-	source = https://w1.fi/security/2020-1/0001-WPS-UPnP-Do-not-allow-event-subscriptions-with-URLs-.patch
-	source = https://w1.fi/security/2020-1/0002-WPS-UPnP-Fix-event-message-generation-using-a-long-U.patch
-	source = https://w1.fi/security/2020-1/0003-WPS-UPnP-Handle-HTTP-initiation-failures-for-events-.patch
-	source = hostapd-2.9-CVE-2021-30004.patch::https://w1.fi/cgit/hostap/patch/?id=a0541334a6394f8237a4393b7372693cd7e96f15
+	source = https://w1.fi/releases/hostapd-2.10.tar.gz
 	source = config
 	source = hostapd.service
-	source = hostapd-noscan.patch
-	sha256sums = 881d7d6a90b2428479288d64233151448f8990ab4958e0ecaca7eeb3c9db2bd7
-	sha256sums = 2d9a5b9d616f1b4aa4a22b967cee866e2f69b798b0b46803a7928c8559842bd7
-	sha256sums = 49feb35a5276279b465f6836d6fa2c6b34d94dc979e8b840d1918865c04260de
-	sha256sums = a8212a2d89a5bab2824d22b6047e7740553df163114fcec94832bfa9c5c5d78a
-	sha256sums = a726eec646a4c6bbff380fbc4a4797d9b2d0f1e45fb79411bbc26859e3213557
-	sha256sums = 87445203a518864e704b85fa970d90940e9a5d9b401ceb802d11caab6c07a495
+	source = noscan.patch
+	sha256sums = 206e7c799b678572c2e3d12030238784bc4a9f82323b0156b4c9466f1498915d
+	sha256sums = d0bbbfec38e338938910b09704ab986f3615b15ed2e0832d368ce3e9b94e3c51
 	sha256sums = 989bc6855f44c0b360e3d4cd4a146c35b7c12f8a0ced627b4b033f58edcade8e
-	sha256sums = f2a57f118d5884bdc5eaba3828545742775e763eade4837668f8cd3dec8bb812
+	sha256sums = b449b6158466903c06c0ed0f19aef506351021f8b332eabc03467e9928258128
 
 pkgname = hostapd-noscan
-
