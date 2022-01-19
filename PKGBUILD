@@ -6,9 +6,9 @@
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
-pkgver=11.1.0.10702
+pkgver=11.1.0.10920
 #_pkgver=8372
-pkgrel=2
+pkgrel=1
 #_pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) - an office productivity suite"
 arch=('x86_64')
@@ -19,10 +19,10 @@ options=('!emptydirs')
 #source_i686=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-office_${pkgver}_i386.deb"
 #            'add_no_kdialog_variable.patch')
 #source=("http://kdl.cc.ksosoft.com/wps-community/download/${pkgver##*.}/wps-office_${pkgver}_amd64.deb"
-source=("http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb")
+source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb")
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('a378948de6a7da63da4a40883e8e4e96b7b537c0')
+sha1sums=('2c08fd9b25f79e7c9bc3d934a189714686a3fd40')
 
 prepare() {
     bsdtar -xpf data.tar.xz
@@ -92,6 +92,7 @@ package_wps-office() {
 
 package_wps-office-mime() {
     pkgdesc="Mime files provided by Kingsoft Office (WPS Office)"
+    arch=('any')
     depends=('shared-mime-info')
     cd "${srcdir}/usr/share"
 
