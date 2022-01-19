@@ -1,5 +1,5 @@
 *.deb
-*.tar.*
+*.tar*
 src/
 pkg/
 .vscode/
