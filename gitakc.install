@@ -1,0 +1,3 @@
+post_install() {
+        echo 'Please modify to "AuthorizedKeysCommand gitakc" in /etc/ssh/sshd_config.'
+}
