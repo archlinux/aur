@@ -1,4 +1,5 @@
-# Maintainer: OrangeJuicelol <tep789 at gmail dot com>
+# Maintainer: silverhikari <kerrickethan at gmail dot com>
+# Contributor: OrangeJuicelol <tep789 at gmail dot com>
 # Contributor: Rylie <chiefdoraemon at gmail dot com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
@@ -22,9 +23,9 @@ _bldtype=Release
 # https://osdn.net/users/utuhiro/pf/utuhiro/files/
 #*************************************************************
 
-_mozcrev=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
-_mozcver=2.23.2815.102
-_utdicdate=20201229
+_mozcrev=c914d1dfe8b4193731b22da7ee3f53612a94269d
+_mozcver=2.26.4610.102
+_utdicdate=20220112
 _utdicver=1
 
 pkgbase=mozc-ut-united
@@ -36,20 +37,9 @@ arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
-makedepends=('python' 'ruby' 'git' 'ninja' 'clang' 'gyp' 'zinnia')
-#source=("${_svndir}/${_svnmod}::svn+${_svntrunk}")
-source=(
-  mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}
-  https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
-  https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
-  https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-  https://github.com/OrangeJuicelol/mozc-ut-united/raw/master/mozcdic-ut-${_utdicdate}.${_utdicver}.tar.bz2
-)
-sha1sums=('SKIP'
-          'a366077418ae6f235aecf374256354a40dc5b37a'
-          '3aa3077cb28352f9aafde71f8d864b333424338f'
-          'f363373e892ac53b972cb092a3627b3a4fbc5b6a'
-          'f248798642153122628b41c62a7329c9be4f8e52')
+makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel')
+source=("mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}" "https://osdn.net/downloads/users/37/37585/mozcdic-ut-${_utdicdate}.tar.bz2" "config-arch-new.patch" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/google/protobuf.git" "git+https://github.com/abseil/abseil-cpp.git")
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
@@ -61,27 +51,31 @@ if [[ "$_ibus_mozc" == "yes" ]]; then
   true && pkgname+=('ibus-mozc-ut-united')
 fi
 
-
-pkgver() {
-  printf "%s.%s" $_mozcver $_utdicdate
-}
-
-
 prepare() {
   # Enabling all dictionaries
-  sed -i '/^#.*="true"/ s/^#//' ${srcdir}/mozcdic-ut-${_utdicdate}.${_utdicver}/src/make-dictionaries.sh
+  sed -i '/^#.*="true"/ s/^#//' ${srcdir}/mozcdic-ut-${_utdicdate}/src/make-dictionaries.sh
   
   mkdir -p mozc/src/third_party
-  cd "${srcdir}/mozc/"
-  git submodule update --init --recursive
-  patch -Np1 -i ${srcdir}/mozc.patch
-  patch -Np1 -i ${srcdir}/Change-from-python2-code-to-python3.patch
-  patch -Np1 -i ${srcdir}/Add_support_new_Japanese_era.patch
-  
-  # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicdate}.${_utdicver}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
-}
 
+  cd "${srcdir}/mozc/"
+
+
+  git submodule init
+  git config submodule.breakpad.url "$srcdir/breakpad"
+  git config submodule.gtest.url "$srcdir/googletest"
+  git config submodule.gyp.url "$srcdir/gyp"
+  git config submodule.japanese_usage_dictionary.url "$srcdir/japanese-usage-dictionary"
+  git config submodule.jsoncpp.url "$srcdir/jsoncpp"
+  git config submodule.protobuf.url "$srcdir/protobuf"
+  git config submodule.abseil-cpp.url "$srcdir/abseil-cpp"
+  git submodule update
+
+  # Add UT dictionary
+  cat ${srcdir}/mozcdic-ut-${_utdicdate}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+
+  #fixes file include locations for ibus, and gtk along with correcting qt location on arch
+  patch -d "${srcdir}/mozc/src" -i "${srcdir}/config-arch-new.patch"
+}
 
 build() {
   echo '====================================================='
@@ -99,17 +93,11 @@ build() {
 
   echo "Starting make..."
 
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool "
-  [[ "$_emacs_mozc" == "yes" ]] && _targets+="unix/emacs/emacs.gyp:mozc_emacs_helper "
-  [[ "$_ibus_mozc" == "yes" ]] && _targets+="unix/ibus/ibus.gyp:ibus_mozc renderer/renderer.gyp:mozc_renderer "
-
-  GYP_DEFINES="use_libzinnia=1 document_dir=/usr/share/licenses/${pkgbase}" \
-    python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
-  python build_mozc.py build -c $_bldtype $_targets
+  bazel --output_user_root="$srcdir/bazel-cache" build package --config oss_linux -c opt
 
   if [[ "$_ibus_mozc" == "yes" ]]; then
       sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
-          out_linux/${_bldtype}/gen/unix/ibus/mozc.xml
+          "${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin/unix/ibus/mozc.xml"
   fi
 }
 
@@ -121,22 +109,23 @@ package_mozc-ut-united() {
   conflicts=('mozc' 'mozc-ut-unified' 'mozc-neologd-ut' 'mozc-ut2' 'mozc-neologd-ut+ut2' 'mozc-server' 'mozc-utils-gui')
   optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 
-  cd "${srcdir}/mozc"
-  install -D -m 755 src/out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
-  install    -m 755 src/out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
+  _output="${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin"
+
+  install -D -m 755 "${_output}/server/mozc_server" "${pkgdir}/usr/lib/mozc/mozc_server"
+  install    -m 755 "${_output}/gui/tool/mozc_tool"   "${pkgdir}/usr/lib/mozc/mozc_tool"
 
   install -d "${pkgdir}/usr/lib/mozc/documents/"
-  install    -m 644 src/data/installer/*.html "${pkgdir}/usr/lib/mozc/documents/"
+  install    -m 644 "${srcdir}/mozc/src/data/installer/credits_en.html" "${pkgdir}/usr/lib/mozc/documents/"
   
   _licpath="${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -D -m 644 LICENSE "${_licpath}/LICENSE_MOZC"
-  install    -m 644 src/data/installer/*.html "${_licpath}"
+  install -D -m 644 "${srcdir}/mozc/LICENSE" "${_licpath}/LICENSE_MOZC"
+  install    -m 644 "${srcdir}/mozc/src/data/installer/credits_en.html" "${_licpath}"
   
-  cd "${srcdir}/mozcdic-ut-${_utdicdate}.${_utdicver}"
-  install    -m 644 README.md "${_licpath}/README_MOZC-UT.md"
+  cd "${srcdir}/mozcdic-ut-${_utdicdate}"
+  install    -m 644 "README.md" "${_licpath}/README_MOZC-UT.md"
   
   cd "${srcdir}/mozc"
-  cp -rf docs/ "${_licpath}/"
+  cp -rf "docs/" "${_licpath}/"
   chmod 644 -R "${_licpath}/docs/"
 }
 
@@ -148,9 +137,12 @@ package_ibus-mozc-ut-united() {
   conflicts=('ibus-mozc' 'ibus-mozc-ut2')
 
   cd "${srcdir}/mozc/src"
-  install -D -m 755 out_linux/${_bldtype}/ibus_mozc       "${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc"
-  install -D -m 644 out_linux/${_bldtype}/gen/unix/ibus/mozc.xml "${pkgdir}/usr/share/ibus/component/mozc.xml"
-  install -D -m 644 data/images/unix/ime_product_icon_opensource-32.png "${pkgdir}/usr/share/ibus-mozc/product_icon.png"
+
+  _output="${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin"
+
+  install -D -m 644 "${_output}/unix/ibus/mozc.xml" "${pkgdir}/usr/share/ibus/component/mozc.xml"
+  install -D -m 755 "${_output}/unix/ibus/ibus_mozc"       "${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc"
+  install -D -m 644 "data/images/unix/ime_product_icon_opensource-32.png" "${pkgdir}/usr/share/ibus-mozc/product_icon.png"
   install    -m 644 data/images/unix/ui-tool.png          "${pkgdir}/usr/share/ibus-mozc/tool.png"
   install    -m 644 data/images/unix/ui-properties.png    "${pkgdir}/usr/share/ibus-mozc/properties.png"
   install    -m 644 data/images/unix/ui-dictionary.png    "${pkgdir}/usr/share/ibus-mozc/dictionary.png"
@@ -161,7 +153,7 @@ package_ibus-mozc-ut-united() {
   install    -m 644 data/images/unix/ui-alpha_half.png    "${pkgdir}/usr/share/ibus-mozc/alpha_half.png"
   install    -m 644 data/images/unix/ui-alpha_full.png    "${pkgdir}/usr/share/ibus-mozc/alpha_full.png"
 
-  install -D -m 755 out_linux/${_bldtype}/mozc_renderer "${pkgdir}/usr/lib/mozc/mozc_renderer"
+  install -D -m 755 "${_output}/renderer/mozc_renderer" "${pkgdir}/usr/lib/mozc/mozc_renderer"
 }
 
 package_emacs-mozc-ut-united() {
@@ -170,12 +162,15 @@ package_emacs-mozc-ut-united() {
   depends=('emacs')
   provides=('emacs-mozc')
   conflicts=('emacs-mozc' 'emacs-mozc-bin' 'emacs-mozc-ut2')
-  install=emacs-mozc.install
+  install=
 
   cd "${srcdir}/mozc/src"
-  install -D -m 755 out_linux/${_bldtype}/mozc_emacs_helper "${pkgdir}/usr/bin/mozc_emacs_helper"
+
+  _output="${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin"
+
+  install -D -m 755 "${_output}/unix/emacs/mozc_emacs_helper" "${pkgdir}/usr/bin/mozc_emacs_helper"
   install -d "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc/"
-  install -m 644 unix/emacs/mozc.el "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc"
+  install -m 644 "${srcdir}/mozc/src/unix/emacs/mozc.el" "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc"
 }
 
 # Global pkgdesc and depends are here so that they will be picked up by AUR

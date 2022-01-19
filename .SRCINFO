@@ -1,34 +1,41 @@
 pkgbase = mozc-ut-united
-	pkgdesc = IBus engine module for Mozc with UT dictionary
-	pkgver = 2.23.2815.102.20201229
+	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
+	pkgver = 2.26.4610.102.20220112
 	pkgrel = 1
-	url = https://code.google.com/p/mozc/
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	license = GPL
 	license = custom
-	makedepends = python
 	makedepends = ruby
 	makedepends = git
 	makedepends = ninja
 	makedepends = clang
-	makedepends = gyp
 	makedepends = zinnia
+	makedepends = bazel
 	depends = qt5-base
-	depends = ibus>=1.4.1
 	depends = zinnia
-	source = mozc::git+https://github.com/google/mozc.git#commit=afb03ddfe72dde4cf2409863a3bfea160f7a66d8
-	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/mozc.patch
-	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Add_support_new_Japanese_era.patch
-	source = https://raw.githubusercontent.com/OrangeJuicelol/mozc-ut-united/master/Change-from-python2-code-to-python3.patch
-	source = https://github.com/OrangeJuicelol/mozc-ut-united/raw/master/mozcdic-ut-20201229.1.tar.bz2
+	source = mozc::git+https://github.com/google/mozc.git#commit=c914d1dfe8b4193731b22da7ee3f53612a94269d
+	source = https://osdn.net/downloads/users/37/37585/mozcdic-ut-20220112.tar.bz2
+	source = config-arch-new.patch
+	source = git+https://chromium.googlesource.com/breakpad/breakpad
+	source = git+https://github.com/google/googletest.git
+	source = git+https://chromium.googlesource.com/external/gyp
+	source = git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git
+	source = git+https://github.com/open-source-parsers/jsoncpp.git
+	source = git+https://github.com/google/protobuf.git
+	source = git+https://github.com/abseil/abseil-cpp.git
 	sha1sums = SKIP
-	sha1sums = a366077418ae6f235aecf374256354a40dc5b37a
-	sha1sums = 3aa3077cb28352f9aafde71f8d864b333424338f
-	sha1sums = f363373e892ac53b972cb092a3627b3a4fbc5b6a
-	sha1sums = f248798642153122628b41c62a7329c9be4f8e52
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
+	sha1sums = SKIP
 
 pkgname = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
@@ -37,7 +44,7 @@ pkgname = mozc-ut-united
 	depends = qt5-base
 	depends = zinnia
 	optdepends = tegaki-models-zinnia-japanese: hand-writing recognition support
-	provides = mozc=2.23.2815.102
+	provides = mozc=2.26.4610.102
 	conflicts = mozc
 	conflicts = mozc-ut-unified
 	conflicts = mozc-neologd-ut
@@ -54,15 +61,3 @@ pkgname = ibus-mozc-ut-united
 	provides = ibus-mozc
 	conflicts = ibus-mozc
 	conflicts = ibus-mozc-ut2
-	
-pkgname = emacs-mozc-ut-united
-    pkgdesc = Emacs engine module for Mozc with UT dictionary
-	arch = i686
-	arch = x86_64
-	depends = emacs
-	provides = emacs-mozc
-	conflicts = emacs-mozc
-	conflicts = emacs-mozc-ut2
-	conflicts = emacs-mozc-bin
-
-

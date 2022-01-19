@@ -1,0 +1,58 @@
+diff -Naur mozc-old/src/BUILD.gtk2.bazel mozc-new-patch/src/BUILD.gtk2.bazel
+--- mozc-old/src/BUILD.gtk2.bazel	2022-01-15 15:41:14.496303209 -0500
++++ mozc-new-patch/src/BUILD.gtk2.bazel	2022-01-15 15:00:19.359619101 -0500
+@@ -27,8 +27,8 @@
+         "include/pango-1.0/**",
+         "include/pixman-1/**",
+         "include/uuid/**",
+-        "lib/x86_64-linux-gnu/glib-2.0/include/**",
+-        "lib/x86_64-linux-gnu/gtk-2.0/include/**",
++        "lib/glib-2.0/include/**",
++        "lib/gtk-2.0/include/**",
+     ]),
+     copts = ["-pthread"],
+     includes = [
+@@ -46,8 +46,8 @@
+         "include/pango-1.0",
+         "include/pixman-1",
+         "include/uuid",
+-        "lib/x86_64-linux-gnu/glib-2.0/include",
+-        "lib/x86_64-linux-gnu/gtk-2.0/include",
++        "lib/glib-2.0/include",
++        "lib/gtk-2.0/include",
+     ],
+     linkopts = [
+         "-latk-1.0",
+diff -Naur mozc-old/src/BUILD.ibus.bazel mozc-new-patch/src/BUILD.ibus.bazel
+--- mozc-old/src/BUILD.ibus.bazel	2022-01-15 15:41:14.496303209 -0500
++++ mozc-new-patch/src/BUILD.ibus.bazel	2022-01-15 14:54:50.964671878 -0500
+@@ -17,7 +17,7 @@
+         "include/libmount/**",
+         "include/blkid/**",
+         "include/glib-2.0/**",
+-        "lib/x86_64-linux-gnu/glib-2.0/include/**",
++        "lib/glib-2.0/include/**",
+     ]),
+     copts = ["-pthread"],
+     includes = [
+@@ -25,7 +25,7 @@
+         "include/libmount",
+         "include/blkid",
+         "include/glib-2.0",
+-        "lib/x86_64-linux-gnu/glib-2.0/include",
++        "lib/glib-2.0/include",
+     ],
+     linkopts = [
+         "-libus-1.0",
+diff -Naur mozc-old/src/config.bzl mozc-new-patch/src/config.bzl
+--- mozc-old/src/config.bzl	2022-01-15 15:41:14.849644550 -0500
++++ mozc-new-patch/src/config.bzl	2022-01-15 15:44:40.410965639 -0500
+@@ -37,7 +37,7 @@
+ MACOS_MIN_OS_VER = "10.12"
+ 
+ ## Qt paths
+-QT_BASE_PATH = "/usr/include/x86_64-linux-gnu/qt5"  # For Debian
++QT_BASE_PATH = "/usr/include/qt"  # For Debian
+ QT_BIN_PATH = "/usr/bin/"
+ 
+ ## For macOS
