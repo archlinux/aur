@@ -1,7 +1,7 @@
 pkgbase = python-hass-data-detective
 	pkgdesc = Set of convenience functions to analyse the data in your Home Assistant database
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/robmarkcole/HASS-data-detective
 	arch = any
 	license = MIT
@@ -11,4 +11,3 @@ pkgbase = python-hass-data-detective
 	sha256sums = e4cda934120fc4bca21edcb4e9fd98a0a4fa5d6bac3e12112bebfe0be9d96b17
 
 pkgname = python-hass-data-detective
-
