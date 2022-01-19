@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha at gmail>
 pkgname=demeter
 pkgver=0.9.27
-pkgrel=2
+pkgrel=3
 pkgdesc="Demeter is a comprehensive system for processing and analyzing X-ray Absorption Spectroscopy data."
 arch=('i686' 'x86_64')
 url="https://bruceravel.github.io/demeter/"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('ifeffit' 'pgplot' 'perl-archive-zip' 'perl-capture-tiny' 
 	'perl-config-ini' 'perl-const-fast' 'perl-datetime' 'perl-file-touch' 
 	'perl-graph' 'perl-heap' 'perl-list-moreutils' 'perl-moose'
-	'perl-moosex-types' 'perl-pdl-nohdf4' 'perl-pod-pom' 
+	'perl-moosex-types' 'perl-pdl' 'perl-pod-pom' 
 	'perl-regexp-common' 'perl-statistics-descriptive' 'perl-text-template'
 	'perl-text-unidecode' 'perl-tree-simple' 'perl-want' 'perl-xmlrpc-lite>=0'
 	'perl-wx' 'perl-chemistry-elements' 'perl-encoding-fixlatin'
