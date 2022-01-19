@@ -3,7 +3,7 @@
 pkgname=woodpecker
 pkgver=0.15.0_rc1
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Woodpecker is a community fork of the Drone CI system."
 arch=(any)
 url="https://woodpecker-ci.org/"
@@ -16,21 +16,21 @@ source=(
   'tmpfiles.conf'
   'sysusers.conf'
 )
-sha256sums=('39769d543dddd1cc2afaaff6af8ad145447ff4c220a9969e7fb24e780bd30704'
+sha256sums=('9ee17a0271944bb95d6d8198ada10010c7cea306381f131635b91b5a5887dc48'
             '34d9dfbe0c360b6a6e2976e095cd63b81e2adc65951cfbceaa7df3176f042075'
             'e9dc665a71ccabbc07bce28c835d7ee78c2cb8853f2f5bc8e6f1e3852194fd60'
             '878466f384b124353a7247bcc26f374a8c174874afc47c227eefaf38b9905e5a')
+
+prepare() {
+  cd "$pkgname-$_pkgver"
+
+  sed -i 's/-extldflags \"-static\"//' Makefile
+}
 
 build() {
   cd "$pkgname-$_pkgver"
 
   GOFLAGS=-trimpath make build
-}
-
-check() {
-  cd "$pkgname-$_pkgver"
-
-  make test
 }
 
 package() {
