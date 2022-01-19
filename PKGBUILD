@@ -4,7 +4,7 @@
 
 pkgname=lib32-tcl
 pkgver=8.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc='The Tcl scripting language'
 arch=(x86_64)
 url=http://tcl.sourceforge.net/
@@ -20,17 +20,14 @@ b2sums=('21367f4ee5903fac68177b6cc61517237e1b9347a18f213cb02ebd7cde21af9d5590d72
 
 prepare() {
   cd tcl${pkgver}
-
   rm -rf pkgs/sqlite3*
 }
 
 build() {
   cd tcl${pkgver}/unix
-
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
-
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib32 \
@@ -44,9 +41,8 @@ package() {
 
   make INSTALL_ROOT="${pkgdir}" install install-private-headers
   rm -rf "${pkgdir}"/usr/{bin,include,lib,share}
+  find "${pkgdir}" -type f -name '*.a' -delete
   ln -sf libtcl${pkgver%.*}.so "${pkgdir}"/usr/lib32/libtcl.so
-  strip "${pkgdir}"/usr/lib32/libtcl8.6.so
-  chmod 644 "${pkgdir}"/usr/lib32/libtclstub8.6.a
 
   sed -e "s#${srcdir}/tcl${pkgver}/unix#/usr/lib32#" \
       -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
@@ -64,7 +60,6 @@ package() {
       -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${ictlver}/generic#/usr/include#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/itcl${ictlver}#/usr/include#" \
       -i "${pkgdir}/usr/lib32/itcl${ictlver}/itclConfig.sh"
-
 
   install -dm 755 -p "${pkgdir}"/usr/share/licenses
   ln -s tcl "${pkgdir}"/usr/share/licenses/lib32-tcl
