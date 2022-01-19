@@ -1,16 +1,16 @@
 pkgbase = wps-office-cn
 	pkgdesc = Kingsoft Office (WPS Office) CN version - an office productivity suite
-	pkgver = 11.1.0.10702
-	pkgrel = 2
+	pkgver = 11.1.0.10920
+	pkgrel = 1
 	url = https://linux.wps.cn
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	options = !emptydirs
-	source_x86_64 = https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/10702/wps-office_11.1.0.10702_amd64.deb
-	sha1sums_x86_64 = d786fcbcdfd83915f5f242b74cc27fd38422352a
-	source_aarch64 = https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/10702/wps-office_11.1.0.10702_arm64.deb
-	sha1sums_aarch64 = 1ba32549d604eb80dbdda5bbf6ed57b9a0a150a0
+	source_x86_64 = https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/10920/wps-office_11.1.0.10920_amd64.deb
+	sha1sums_x86_64 = 5748fec427c5c1dab2b356c2f058dcce22f15212
+	source_aarch64 = https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/10920/wps-office_11.1.0.10920_arm64.deb
+	sha1sums_aarch64 = 21a13e2a82c07137c7c2e9a519a4ba68cd9d6920
 
 pkgname = wps-office-cn
 	install = wps-office-cn.install
@@ -46,9 +46,11 @@ pkgname = wps-office-cn
 
 pkgname = wps-office-mime-cn
 	pkgdesc = Mime files provided by Kingsoft Office (WPS Office) cn version
+	arch = any
 	depends = shared-mime-info
 	provides = wps-office-mime
 	conflicts = wps-office-mime
 
 pkgname = wps-office-mui-zh-cn
 	pkgdesc = Chinese (Simplified) mui package for WPS Office
+	arch = any

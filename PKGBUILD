@@ -6,8 +6,8 @@
 
 pkgbase=wps-office-cn
 pkgname=('wps-office-cn' 'wps-office-mime-cn' 'wps-office-mui-zh-cn')
-pkgver=11.1.0.10702
-pkgrel=2
+pkgver=11.1.0.10920
+pkgrel=1
 pkgdesc="Kingsoft Office (WPS Office) CN version - an office productivity suite"
 arch=('x86_64' 'aarch64')
 license=('custom')
@@ -15,8 +15,8 @@ url="https://linux.wps.cn"
 options=('!emptydirs')
 source_x86_64=("https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_amd64.deb")
 source_aarch64=("https://wdl1.cache.wps.cn/wps/download/ep/Linux2019/${pkgver##*.}/wps-office_${pkgver}_arm64.deb")
-sha1sums_x86_64=('d786fcbcdfd83915f5f242b74cc27fd38422352a')
-sha1sums_aarch64=('1ba32549d604eb80dbdda5bbf6ed57b9a0a150a0')
+sha1sums_x86_64=('5748fec427c5c1dab2b356c2f058dcce22f15212')
+sha1sums_aarch64=('21a13e2a82c07137c7c2e9a519a4ba68cd9d6920')
 
 prepare() {
     bsdtar -xpf data.tar.xz
@@ -78,6 +78,7 @@ package_wps-office-cn() {
 
 package_wps-office-mui-zh-cn() {
     pkgdesc="Chinese (Simplified) mui package for WPS Office"
+    arch=('any')
     cd "${srcdir}/opt/kingsoft/wps-office/office6/mui"
 
     install -d "${pkgdir}/usr/lib/office6/mui/en_US/resource"
@@ -90,6 +91,7 @@ package_wps-office-mui-zh-cn() {
 
 package_wps-office-mime-cn() {
     pkgdesc="Mime files provided by Kingsoft Office (WPS Office) cn version"
+    arch=('any')
     depends=('shared-mime-info')
     conflicts=('wps-office-mime')
     provides=('wps-office-mime')
