@@ -1,0 +1,27 @@
+pkgbase = secrets-git
+	pkgdesc = Manage your passwords
+	pkgver = 6.0.beta.2.r21.g30766176
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/secrets
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = gtk4>=4.5.0
+	depends = glib2
+	depends = libadwaita>=1.0.0
+	depends = libpwquality>=1.4.0
+	depends = python-gobject
+	depends = python-pykeepass>=4.0.1
+	depends = python-pyotp>=2.4.0
+	provides = secrets
+	conflicts = gnome-passwordsafe
+	conflicts = secrets
+	replaces = gnome-passwordsafe
+	replaces = secrets
+	source = git+https://gitlab.gnome.org/World/secrets.git
+	b2sums = SKIP
+
+pkgname = secrets-git
