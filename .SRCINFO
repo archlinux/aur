@@ -1,0 +1,13 @@
+pkgbase = brother-mfc8690dw-lpr-bin
+	pkgdesc = LPR driver for Brother MFC-8690DW printer
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfc8690dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006357/mfc8690dwlpr-2.1.0-1.i386.deb
+	md5sums = 4a8404e28860ee7935a99900ecc422c9
+
+pkgname = brother-mfc8690dw-lpr-bin
