@@ -1,0 +1,49 @@
+[Unit]
+Description=immugw daemon
+Documentation=https://github.com/codenotary/immugw
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=immugw
+Group=immugw
+PIDFile=/var/lib/immugw/immugw.pid
+ExecStartPre=/usr/bin/rm -f /var/lib/immugw/immugw.pid
+ExecStart=/usr/bin/immugw --config /etc/immugw/immugw.toml
+WorkingDirectory=/var/lib/immugw
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+
+# Hardening
+ReadWritePaths=/var/log/immugw
+ReadWritePaths=/var/lib/immugw
+UMask=0027
+NoNewPrivileges=true
+LimitNOFILE=1048576
+ProtectSystem=strict
+ProtectHome=true
+PrivateUsers=yes
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

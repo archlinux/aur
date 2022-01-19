@@ -1,0 +1,19 @@
+dir = "/var/lib/immugw"
+address = "0.0.0.0"
+port = 3323
+immudb-address = "127.0.0.1"
+immudb-port = 3322
+pidfile = "/var/lib/immugw/immugw.pid"
+logfile = "/var/log/immugw/immugw.log"
+mtls = false
+detached = false
+servername = "localhost"
+pkey = ""
+certificate = ""
+clientcas = ""
+audit = false
+# valid suffixes: "s", "m", "h", examples: 10s, 5m 1h
+audit-interval = "5m"
+audit-username = "immugwauditor"
+# password can be plaintext or base64
+audit-password = ""
