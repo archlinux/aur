@@ -1,6 +1,6 @@
 pkgbase = minq_nhentai-git
 	pkgdesc = Alias for minq-nhentai-git
-	pkgver = 50
+	pkgver = 51
 	pkgrel = 1
 	url = https://github.com/kuche1/minq_nhentai.git
 	arch = x86_64

@@ -1,7 +1,7 @@
 
 _pkgname=minq_nhentai
 pkgname="${_pkgname}-git"
-pkgver=50
+pkgver=51
 pkgrel=1
 epoch=
 pkgdesc='Alias for minq-nhentai-git'
@@ -24,10 +24,6 @@ source=("git+$url")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
-
-pkgver() {
-	cd "${_pkgname}"
-}
 
 package() {
 	cd "${_pkgname}"
