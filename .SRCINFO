@@ -1,8 +1,8 @@
 pkgbase = zterm-git
 	pkgdesc = A simple terminal emulator using Vte and Gtk+ writting using the Zig programming language
-	pkgver = r68.adad382
+	pkgver = r80.9772c67
 	pkgrel = 1
-	url = https://gitlab.com/jeang3nie/zterm
+	url = https://codeberg.org/jeang3nie/zterm
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -12,7 +12,7 @@ pkgbase = zterm-git
 	depends = libvte-2.91.so
 	provides = zterm
 	conflicts = zterm
-	source = git+https://gitlab.com/jeang3nie/zterm.git
+	source = git+https://codeberg.org/jeang3nie/zterm.git
 	sha256sums = SKIP
 
 pkgname = zterm-git
