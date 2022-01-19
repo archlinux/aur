@@ -4,14 +4,19 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.62
+pkgver=2.1.63
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
 url='https://github.com/pantsbuild/pex'
 license=('Apache')
 depends=('python')
-makedepends=('git' 'python-pyproject2setuppy' 'python-flit' 'python-sphinx')
+makedepends=(
+	'git'
+	'python-build'
+	'python-install'
+	'python-flit'
+	'python-sphinx')
 # checkdepends=('python-pytest-runner' 'python-pkginfo')
 changelog=CHANGES.rst
 provides=('pex')
@@ -22,7 +27,10 @@ validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
 
 build() {
 	cd "$pkgname"
-	python -m pyproject2setuppy.main build
+	python -m build \
+		--wheel \
+		--skip-dependency-check \
+		--no-isolation
 	cd docs
 	make man
 }
@@ -37,6 +45,9 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m pyproject2setuppy.main install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m install \
+		--optimize=1 \
+		--destdir="$pkgdir/" \
+		dist/*.whl
 	install -Dm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }
