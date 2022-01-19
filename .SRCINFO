@@ -1,12 +1,12 @@
 pkgbase = icalingua-git
 	pkgdesc = A Linux client for QQ and more
-	pkgver = 2.4.5_11_gbdff0ad
+	pkgver = 2.4.5.r21.g8d64b5d
 	pkgrel = 1
 	url = https://github.com/Icalingua/Icalingua
 	arch = aarch64
 	arch = x86_64
 	arch = i686
-	license = GPL
+	license = AGPL
 	makedepends = yarn
 	makedepends = git
 	depends = ffmpeg
@@ -18,7 +18,7 @@ pkgbase = icalingua-git
 	conflicts = electron-qq
 	conflicts = icalingua
 	replaces = electron-qq
-	source = git+https://github.com/Icalingua/Icalingua
+	source = git+https://github.com/Icalingua/Icalingua#branch=dev
 	sha256sums = SKIP
 
 pkgname = icalingua-git
