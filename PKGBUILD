@@ -1,10 +1,9 @@
 # Maintainer: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-_pkgname=polkit
-pkgname=${_pkgname}-duktape
+pkgname=polkit-duktape
 pkgver=0.120
-pkgrel=3
+pkgrel=4
 pkgdesc="polkit with duktape as the javascript engine"
 arch=(x86_64)
 license=(LGPL)
@@ -19,15 +18,22 @@ _commit=92b910ce2273daf6a76038f6bd764fa6958d4e8e # tags/0.120
 source=("git+https://gitlab.freedesktop.org/polkit/polkit.git#commit=$_commit"
         "0001-Add-duktape-as-javascript-engine.patch")
 sha256sums=('SKIP'
-            'a064fe5738b15fe8ebeea2f9584e084d129403ab92e6d11032bd623ea59cbad7')
+            '518217b4dad71ac1662d271c89f2f3f40b3435e0f3530a9c81944644fed76534')
 
 pkgver() {
-  cd $_pkgname
+  cd polkit
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd $_pkgname
+  cd polkit
+
+  # https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/99
+  git remote add upstream https://gitlab.freedesktop.org/polkit/polkit.git
+  git fetch upstream merge-requests/99/merge
+  git merge --no-commit --squash FETCH_HEAD
+
+  # https://gitlab.freedesktop.org/polkit/polkit/-/merge_requests/97
   patch -p1 -i ../0001-Add-duktape-as-javascript-engine.patch
 }
 
@@ -46,9 +52,9 @@ build() {
   meson compile -C build
 }
 
-check() {
-  meson test -C build --print-errorlogs
-}
+#check() {
+#  meson test -C build --print-errorlogs
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
