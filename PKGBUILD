@@ -67,8 +67,8 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=87
-_rtpatchver=59
+_minor=90
+_rtpatchver=60
 _clr=${_major}.59-83
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -128,6 +128,9 @@ prepare() {
     scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                    --enable ACPI_TABLE_UPGRADE
 
+    # General architecture-dependent options
+    scripts/config --enable KPROBES
+
     # Enable loadable module support
     scripts/config --undefine MODULE_SIG_FORCE \
                    --enable MODULE_COMPRESS \
@@ -145,7 +148,8 @@ prepare() {
                    --enable SND_OSSEMUL \
                    --module-after SND_OSSEMUL SND_MIXER_OSS \
                    --module-after SND_MIXER_OSS SND_PCM_OSS \
-                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS
+                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
+                   --enable FW_LOADER_COMPRESS
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
@@ -324,9 +328,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('03128b70f3063433cfab4ff4c7da288d7c045fe1eafa2a59081df4032fece64b'
+sha256sums=('945e4264c014a3d9dfc0a4639309dd1ec2fb545416556421f931b95da78c2725'
             'SKIP'
-            '437adfc562f6927534c543afddbba6d29d3b6cc522d1546803186f1a871d5913'
+            'f18ed0d2f38655e99ad0d26e7eddc399b5af2fb4497f0456215ccac902d06314'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
