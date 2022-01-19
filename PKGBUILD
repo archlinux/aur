@@ -9,7 +9,7 @@ url='https://irde.st'
 license=('AGPL3')
 depends=('libsodium')
 makedepends=('git' 'rust' 'protobuf' 'pkg-config' 'clang')
-provides=('ratman' 'ratcat' 'ratctl')
+provides=('ratmand' 'ratcat' 'ratctl')
 conflicts=('ratman')
 source=("${pkgname}::git+https://git.irde.st/we/irdest.git#tag=ratman-0.3.0")
 sha1sums=('SKIP')
