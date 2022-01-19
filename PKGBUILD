@@ -22,6 +22,7 @@ source=("element-web::${_giturl}/element-web.git"
         autolaunch.patch
         io.element.Element.desktop
         greentext.patch
+        element-config.json
         element-web.sh
         element-desktop.sh)
 sha256sums=('SKIP'
@@ -29,6 +30,7 @@ sha256sums=('SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
             'a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576'
+            'eae6c39d5d21e3c5e1e1bf9e2a3d5f5104985112c8542bc94521f8ca5b75ac44'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 _electron=electron
@@ -122,5 +124,5 @@ package_element-desktop-git-greentext() {
   done
 
   # Alter config
-  curl -s 'https://chat.waifuhunter.club/config.json' -o "$pkgdir/etc/element/config.json"
+  install -Dm644 "$srcdir/element-config.json" "$pkgdir/etc/element/config.json"
 }

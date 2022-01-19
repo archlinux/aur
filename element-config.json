@@ -1,0 +1,91 @@
+{
+    "default_server_config": {
+        "m.homeserver": {
+            "base_url": "https://matrix.waifuhunter.club",
+            "server_name": "waifuhunter.club"
+        },
+        "m.identity_server": {
+            "base_url": "https://midov.pl"
+        }
+    },
+    "disable_identity_server": false,
+    "disable_custom_urls": false,
+    "disable_guests": true,
+    "disable_login_language_selector": false,
+    "disable_3pid_login": false,
+    "brand": "Element",
+    "integrations_ui_url": "https://dimension.t2bot.io/element",
+    "integrations_rest_url": "https://dimension.t2bot.io/api/v1/scalar",
+    "integrations_jitsi_widget_url": "https://dimension.midov.pl/widgets/jitsi",
+    "integrations_widgets_urls": [
+        "https://dimension.t2bot.io/widgets",
+        "https://dimension.midov.pl/widgets"
+    ],
+    "bug_report_endpoint_url": "https://element.io/bugreports/submit",
+    "defaultCountryCode": "GB",
+    "showLabsSettings": true,
+    "features": {
+        "feature_pinning": "enable",
+        "feature_custom_status": "labs",
+        "feature_custom_tags": "labs",
+        "feature_state_counters": "labs",
+        "feature_custom_themes": "enable",
+        "feature_bridge_state": "labs",
+        "feature_mjolnir": "labs",
+        "feature_presence_in_room_list": "labs",
+        "feature_new_spinner": "labs",
+        "feature_many_integration_managers": "labs",
+        "feature_report_to_moderators": "enable"
+    },
+    "default_federate": true,
+    "default_theme": "light",
+    "roomDirectory": {
+        "servers": [
+            "glowers.club",
+            "midov.pl",
+            "cutefunny.art",
+            "cuum.space",
+            "waifuhunter.club",
+            "nerdsin.space",
+            "halogen.city",
+            "anontier.nl",
+            "matrix.thisisjoes.site",
+            "poa.st",
+            "kde.org",
+            "linuxdelta.com"
+        ]
+    },
+    "piwik": false,
+    "enable_presence_by_hs_url": {
+        "https://matrix.org": false,
+        "https://matrix-client.matrix.org": false
+    },
+    "settingDefaults": {
+        "breadcrumbs": true,
+        "custom_themes": [
+            {
+                "name": "moepink",
+                "is_dark": false,
+                "colors": {
+                    "accent-color": "#ff33f4",
+                    "primary-color": "#ff33f4",
+                    "warning-color": "#ff4cf6",
+                    "sidebar-color": "#fc7eb4",
+                    "roomlist-background-color": "#fdbbd8",
+                    "roomlist-text-color": "#ff33f4",
+                    "roomlist-text-secondary-color": "#ff33f4",
+                    "roomlist-highlights-color": "#fff4ff",
+                    "roomlist-separator-color": "#ed73b1",
+                    "timeline-background-color": "#ffd7e6",
+                    "timeline-text-color": "#e54e9e",
+                    "timeline-text-secondary-color": "#3c3c3c",
+                    "timeline-highlights-color": "#fdbbd8",
+                    "reaction-row-button-selected-bg-color": "#fea5fa"
+                }
+            }
+        ]
+    },
+    "jitsi": {
+        "preferredDomain": "jitsi.riot.im"
+    }
+}
