@@ -5,9 +5,8 @@ _pkgname=${pkgname}
 _githuborg=${_pkgname}
 pkgdesc="Skycoin Cryptocurrency Wallet. skycoin.com"
 pkgver=0.27.1
-#pkgver=0.27.1
-pkgrel=2
-#pkgrel=1
+pkgrel=3
+#pkgrel=3
 arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
@@ -34,7 +33,19 @@ build() {
   export CC=musl-gcc
   export CGO_ENABLED=1
 	_cmddir=${srcdir}/go/src/${_pkggopath}/cmd
-
+  cd ${srcdir}/go/src/${_pkggopath}
+  [[ ! -f go.mod ]] && go mod init
+  #go mod vendor
+  go mod tidy
+  ### manually go get the go deps
+  go get github.com/blang/semver
+	go get github.com/mgutz/ansi
+	go get github.com/sirupsen/logrus
+	go get github.com/spf13/viper
+	go get github.com/urfave/cli
+	go get golang.org/x/crypto/ssh/terminal
+  go get github.com/shopspring/decimal
+  ###
   _buildbins address_gen
   _buildbins cipher-testdata
   _buildbins monitor-peers
@@ -54,7 +65,7 @@ _msg2 "building ${_binname} binary"
 #SPEED UP TESTING OF BUILDS
 if [[ ! -f ${GOBIN}/${_binname} ]] ; then
 	cd ${_cmddir}/${_binname}
-  go build -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
+  go build -mod=mod -trimpath --ldflags '-linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ .
 fi
 }
 
