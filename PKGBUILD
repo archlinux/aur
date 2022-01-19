@@ -7,9 +7,9 @@
 pkgname=coreutils-hybrid
 _pkgname=coreutils
 __pkgname=uutils-coreutils
-pkgver=9.0_0.0.8
+pkgver=9.0_0.0.12
 _pkgver=9.0
-__pkgver=0.0.8
+__pkgver=0.0.12
 pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
@@ -19,14 +19,12 @@ _url='https://github.com/uutils/coreutils'
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl')
 conflicts=('coreutils')
 provides=('coreutils')
-makedepends=('rust' 'cargo' 'python-sphinx')
-source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"{,.sig}
+makedepends=('rust' 'cargo')
+source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"
         "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz"
         "01-fix-fs72253.patch")
-validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
 sha512sums=('9be08212891dbf48e5b22e7689dc27dac50df4631ebf29313470b72b7921f0b2aa5242917d05587785358495ca56e3b21f5b3ca81043d53cab92354da6c53a03'
-            'SKIP'
-            '87a200113bbed495a8924edf60913e12853afd2c2d7710e2901ac33e81e2a4582c7f857c4e9e56fbb093ae67683ac1a6766a0099dc511754ccdfb967544ffe50'
+            '9c78c1ffe8495e95ddb07ce104f68e48dc7ed0d5c156f9095a579b4a27fafbded276314b2a3a239dac693aa0e9bde9bfda6513dcf30ddb17c1925cea27a4578f'
             '10313ecc918de8ee007c3bc9a57a96372a537b7b1653577daa5609f1026bcc7e6ef4907b75243b37cef305c5c9b45eb446e49649059f667009a2b1fdf6ef3dc3')
 
 prepare() {
