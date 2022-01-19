@@ -54,7 +54,7 @@ prepare() {
   cd "$srcdir/element-desktop"
   patch -p1 < ../autolaunch.patch
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
-  sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
+  sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
   sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
