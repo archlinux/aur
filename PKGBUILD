@@ -3,7 +3,7 @@
 pkgbase=python-jgraph
 pkgname=('python-jgraph')
 pkgver='0.2.1'
-pkgrel='5'
+pkgrel='6'
 pkgdesc="View graph data structures in the IPython notebook"
 arch=('any')
 url="http://patrickfuller.github.io/jgraph/"
