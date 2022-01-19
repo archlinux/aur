@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=civo-bin
-pkgver=1.0.6
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Civo CLI is a tool to manage your Civo.com account from the terminal"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("Apache License 2.0")
 provides=("civo")
 conflicts=("civo" "civo-git")
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/civo_amd64.deb")
-sha256sums=('44e9d09fd249a64b327678cfd779a0fb51f8007d7ef0dd3efa74ea9229c4aa8e')
+sha256sums=('bedcfb3c88ac8eed2948337a227d92429e5413ae5c1b5ce600a2f96e67e7111d')
 
 prepare() {
   bsdtar xf data.tar.gz
