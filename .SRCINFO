@@ -1,7 +1,7 @@
 pkgbase = ratman
 	pkgdesc = A modular decentralised userspace packet router.
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 3
 	url = https://irde.st
 	arch = any
 	license = AGPL3
@@ -15,7 +15,7 @@ pkgbase = ratman
 	provides = ratcat
 	provides = ratctl
 	conflicts = ratman
-	source = ratman::git+https://git.irde.st/we/irdest.git#tag=ratman-0.3.0
+	source = ratman::git+https://git.irde.st/we/irdest.git#tag=ratman-0.3.1
 	sha1sums = SKIP
 
 pkgname = ratman
