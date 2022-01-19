@@ -22,12 +22,14 @@ source=("element-web::${_giturl}/element-web.git"
         autolaunch.patch
         io.element.Element.desktop
         greentext.patch
+        element-web.sh
         element-desktop.sh)
 sha256sums=('SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
             'a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576'
+            '2794bcb8723674dad9a5a90fccb4c7571903e94478333a3043eca6c565f73765'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 _electron=electron
 

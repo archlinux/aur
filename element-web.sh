@@ -28,5 +28,6 @@ status() {
 if declare -f -- "$1" >/dev/null; then
 	"$@"
 else
-	echo "USAGE: $(basename -- "$0") serve|stop|restart"
+	echo "This script serves element-web at http://$addr:$port/"
+	echo "USAGE: $(basename -- "$0") serve|stop|restart|status"
 fi
