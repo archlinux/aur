@@ -1,13 +1,14 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A desktop manager for modular Linux desktop setups"
 arch=(x86_64)
 url="https://github.com/jzbor/pademelon"
 license=('MIT')
 groups=()
-depends=(arandr gtk3 imlib2 libinih libx11 libxrandr python-gobject xorg-setxkbmap)
+depends=(acpilight arandr gtk3 imlib2 libcanberra libinih libpulse libx11 libxrandr lxappearance-gtk3
+            python-gobject xorg-setxkbmap)
 makedepends=(pkgconf)
 checkdepends=()
 optdepends=( 'moonwm: a good default wm'
@@ -19,7 +20,7 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('de1498aec8eaba0c473b8ff1763f38f72e924e2184832be9ae5cd061be9d957a')
+sha256sums=('2fec6b1a97302b8149bb9409117609a60a367b3605d43fce5bca92d7f9ee19f2')
 validpgpkeys=()
 
 build() {
@@ -32,6 +33,7 @@ package() {
     make PREFIX=/usr DESTDIR="${pkgdir}" install-all
     # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
+    install -Dm644 doc/* -t "${pkgdir}/usr/share/doc/$pkgname"
 }
 
 
