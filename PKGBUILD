@@ -1,6 +1,6 @@
-# Maintainer: Your Name <gabriel.t.banks@gmail.com>
+# Maintainer: Gabe Banks <gabriel.t.banks@gmail.com>
 pkgname='tstock'
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A command line tool to view stock charts in the terminal."
 arch=('x86_64')
