@@ -1,10 +1,11 @@
 pkgbase = python-numpy-mkl-bin
 	pkgdesc = Scientific tools for Python - with Intel MKL - prebuilt binaries from Anaconda
 	pkgver = 1.21.2.anaconda0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.numpy.org/
 	arch = x86_64
 	license = custom
+	makedepends = jq
 	depends = python-mkl-service
 	provides = python-numpy
 	provides = python-numpy-mkl
