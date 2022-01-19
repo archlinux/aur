@@ -1,0 +1,15 @@
+pkgbase = talentedhack-git
+	pkgdesc = a lv2 conversion of autotalent, a pitch correction plugin
+	pkgver = v1.9.r0.95c20a5
+	pkgrel = 1
+	url = https://github.com/jeremysalwen/TalentedHack
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = fftw
+	provides = talentedhack
+	conflicts = talentedhack
+	source = git+https://github.com/jeremysalwen/TalentedHack
+	md5sums = SKIP
+
+pkgname = talentedhack-git
