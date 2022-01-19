@@ -7,14 +7,18 @@
 
 pkgname=xrdp
 pkgver=0.9.18
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
 license=('Apache')
 makedepends=('nasm')
 depends=('tigervnc' 'libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
-backup=('etc/xrdp/sesman.ini' 'etc/xrdp/xrdp.ini')
+backup=('etc/xrdp/sesman.ini'
+	'etc/xrdp/xrdp.ini'
+	'etc/xrdp/cert.pem'
+	'etc/xrdp/key.pem'
+	'etc/xrdp/startwm.sh')
 install="${pkgname}.install"
 source=("https://github.com/neutrinolabs/xrdp/releases/download/v${pkgver}/xrdp-${pkgver}.tar.gz"
 	"arch-config.diff")
