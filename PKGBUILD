@@ -1,4 +1,5 @@
-# Maintainer: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
+# Maintainer: orphan
+# Contributor: Allonsy < linuxbash8 [at@at] gmail [dot.dot] com >
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-town-bin
