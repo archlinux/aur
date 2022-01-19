@@ -1,7 +1,7 @@
 pkgbase = blacksun-vst
 	pkgdesc = An Extremely Versatile Amp (VST Plugin)
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://audioassault.mx/products/blacksun
 	arch = x86_64
 	groups = pro-audio
