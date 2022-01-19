@@ -2,7 +2,7 @@
 Description=immudb database daemon
 Documentation=https://github.com/codenotary/immudb
 Documentation=https://docs.immudb.io/@@PKGVER@@/
-Wants=network-online.target
+Requires=network-online.target
 After=network-online.target
 
 [Service]
