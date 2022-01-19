@@ -2,16 +2,21 @@
 
 _pkgbase='configlib'
 pkgname="python-${_pkgbase}"
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Configuration file parsing library'
 arch=('any')
 url="https://github.com/homeinfogmbh/${_pkgbase}"
 license=('GPLv3')
 depends=('python' 'python-setuptools')
-makedepends=('git' 'python-setuptools-scm')
+makedepends=('git' 'python-pytest' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
 md5sums=('SKIP')
+
+check() {
+    cd "${srcdir}/${_pkgbase}"
+    pytest
+}
 
 build() {
     cd "${srcdir}/${_pkgbase}"
