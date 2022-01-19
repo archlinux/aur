@@ -9,11 +9,12 @@
 
 pkgname=ros2-git
 pkgver=r230.4a36f31
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
 license=('Apache')
+makedepends=(git)
 depends=(
     'ros2-arch-deps'
     'ros2-pyqt5-sip-compat'
@@ -21,6 +22,7 @@ depends=(
     'gmock'
     'sip4'
 )
+provides=(ros2)
 source=(
     "ros2::git+https://github.com/ros2/ros2#branch=master"
     "rviz_assimp_vendor.patch"
