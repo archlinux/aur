@@ -18,14 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd $pkgname
-
-    _info="$(git blame -s README.md|grep 'Tuxemon [0-9].[0-9].[0-9]')"
-    _version="$(echo $_info | awk '{print $4}')"
-    _commit="$(echo $_info | awk '{print $1}')"
-    _revisions="$(git rev-list --count $_commit..HEAD)"
-    _current_commit="$(git log --pretty=format:'%h' -n 1)"
-
-    printf "%s.r%d.g%s" $_version $_revisions $_current_commit
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
