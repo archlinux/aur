@@ -3,7 +3,7 @@
 
 pkgname=polkit-duktape
 pkgver=0.120
-pkgrel=4
+pkgrel=5
 pkgdesc="polkit with duktape as the javascript engine"
 arch=(x86_64)
 license=(LGPL)
@@ -52,9 +52,9 @@ build() {
   meson compile -C build
 }
 
-#check() {
-#  meson test -C build --print-errorlogs
-#}
+check() {
+  meson test -C build --print-errorlogs
+}
 
 package() {
   meson install -C build --destdir "$pkgdir"

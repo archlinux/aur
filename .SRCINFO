@@ -1,7 +1,7 @@
 pkgbase = polkit-duktape
 	pkgdesc = polkit with duktape as the javascript engine
 	pkgver = 0.120
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.freedesktop.org/wiki/Software/polkit/
 	arch = x86_64
 	license = LGPL
