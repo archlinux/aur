@@ -1,9 +1,9 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=swiftshader-git
-pkgver=r4824.e7ce4e5391
+pkgver=r6374.2e74d5dc03
 pkgrel=1
-pkgdesc='High-performance CPU-based implementation of the Vulkan, OpenGL ES, and Direct3D 9 graphics APIs'
+pkgdesc='High-performance CPU-based implementation of the Vulkan graphics API12.'
 arch=(x86_64)
 url=https://swiftshader.googlesource.com/SwiftShader
 provides=(swiftshader libgl opengl-driver vulkan-driver)
@@ -25,9 +25,11 @@ pkgver() {
 
 prepare() {
   git -C SwiftShader submodule init
+  # this repo is not publicly accessible so we won't fetch it
+  git -C SwiftShader config submodule."third_party/git-hooks".update none
   git -C SwiftShader config submodule."third_party/googletest".url "$srcdir/googletest"
   git -C SwiftShader config submodule."third_party/libbacktrace/src".url "$srcdir/libbacktrace"
-  git -C SwiftShader submodule update
+  git -C SwiftShader submodule update --depth=1
 
   cmake \
     -G Ninja \
@@ -55,9 +57,6 @@ package() {
 
   install -dm755 "$pkgdir"/usr/lib
   install -m755 -t "$pkgdir"/usr/lib \
-    build/libEGL.so \
-    build/libGLES_CM.so \
-    build/libGLESv2.so \
     build/libvk_swiftshader.so
 
   install -dm755 "$pkgdir"/usr/share/vulkan/icd.d/

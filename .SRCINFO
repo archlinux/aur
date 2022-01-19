@@ -1,6 +1,6 @@
 pkgbase = swiftshader-git
-	pkgdesc = High-performance CPU-based implementation of the Vulkan, OpenGL ES, and Direct3D 9 graphics APIs
-	pkgver = r4824.e7ce4e5391
+	pkgdesc = High-performance CPU-based implementation of the Vulkan graphics API12.
+	pkgver = r6374.2e74d5dc03
 	pkgrel = 1
 	url = https://swiftshader.googlesource.com/SwiftShader
 	arch = x86_64
@@ -12,8 +12,11 @@ pkgbase = swiftshader-git
 	provides = opengl-driver
 	provides = vulkan-driver
 	conflicts = swiftshader
-	source = https://swiftshader.googlesource.com/SwiftShader
+	source = git+https://swiftshader.googlesource.com/SwiftShader#branch=master
+	source = git+https://github.com/google/googletest.git
+	source = git+https://github.com/ianlancetaylor/libbacktrace.git
+	sha1sums = SKIP
+	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = swiftshader-git
-
