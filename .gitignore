@@ -7,3 +7,5 @@ pkg
 *.xz
 *.gz
 *_
+*.tar
+mental-omega

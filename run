@@ -1,21 +1,22 @@
 #!/usr/bin/bash
 
-export WINEDEBUG=-all
-
 RO_DATADIR="/usr/share/mental-omega"
-RW_DATADIR="$HOME/.MentalOmega"
-TOP_NODE="/tmp/MentalOmega.unionfs"
+APPDIR="$HOME/.mental-omega"
+RW_DATADIR="$APPDIR/game"
 
-mkdir -p $RW_DATADIR $TOP_NODE
-unionfs -o use_ino,nonempty,uid=$UID -ocow "$RW_DATADIR"=RW:"$RO_DATADIR"=RO "$TOP_NODE"
+export WINEPREFIX="$APPDIR/wine"
 
-function finish {
-  echo "Cleaning up"
-  sleep 3s
-  umount $TOP_NODE
-}
-trap finish EXIT
+mkdir -p $RW_DATADIR $TOP_NODE $WINEPREFIX
 
-export WINEPREFIX="$TOP_NODE/wine"
 export WINEARCH=win32
-wine "$TOP_NODE/MentalOmega335SC/Resources/clientxna.exe"
+
+if [ ! -f "$APPDIR/xna_installed" ]; then
+  winetricks xna40
+  winetricks winxp
+  ln -s "$RO_DATADIR"/{Resources,MapsMO,Ares.dll,Ares.dll.inj,BINKW32.DLL,Blowfish.dll,clientupdt.dat,cncnet5.dll,cncnet5mo.dll,*.mix,*.exe,qres.dat,qres32.dll} "$RW_DATADIR/"
+  cp -a "$RO_DATADIR"/{INI,"Map Editor","Map Renderer",Maps,*.ini,version} "$RW_DATADIR/"
+  touch "$APPDIR/xna_installed"
+fi
+
+export WINEDLLOVERRIDES="ddraw=n,b"
+wine "$RW_DATADIR/Resources/clientxna.exe"

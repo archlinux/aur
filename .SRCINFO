@@ -1,21 +1,20 @@
 pkgbase = mental-omega
 	pkgdesc = Mental Omega is a free unofficial expansion pack for Command & Conquer Red Alert 2 Yuri's Revenge.
 	pkgver = 3.3.6
-	pkgrel = 1
+	pkgrel = 4
 	url = https://mentalomega.com/
 	arch = x86_64
 	arch = i686
 	license = custom
 	depends = wine
-	depends = unionfs-fuse
 	options = !strip
-	source = mental-omega-3.3.6.tar.gz::https://dl.lwqwq.com/ali/Linux-apps/mental-omega.tar.gz
+	source = mental-omega-3.3.6-4.tar::https://alist.api13.lwqwq.com/d/%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98/res/mental-omega.tar
 	source = mental-omega.png
 	source = mental-omega.desktop
 	source = run
-	sha256sums = bb2d70630b5fb42e4f1815935db8d70cb97d1a7d435cb59a06055fb36314a19d
+	sha256sums = 07b89d381cc345ba1cb619c71912264ed5d0d9651ef96fbde31b37d3c53535aa
 	sha256sums = 322ffee7754f18e80ac94947537965b31c48ceef2358d0c27ce9d0bba83de09f
 	sha256sums = 1ed82c3e0ec1bf9e264112145dd02cdc0b9ef74d7528acf3757442eac6155802
-	sha256sums = 2d97e3b068905f060ce3637dec22063cd55fdd1c2335545edd48fddc6bb84f0f
+	sha256sums = 071c0e9510ee6c7d7e62cc2151ee770fe544cf93af4abe322dfcea58bba4728d
 
 pkgname = mental-omega
