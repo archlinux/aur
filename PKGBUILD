@@ -3,8 +3,8 @@
 # Contributor: Grigorios Bouzakis <grbzks@gmail.com>
 
 pkgname=dwm
-pkgver=6.2
-pkgrel=3
+pkgver=6.3
+pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(dwm.desktop
         https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
         config.h)
 sha256sums=('bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
-            '97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e'
+            'badaa028529b1fba1fd7f9a84f3b64f31190466c858011b53e2f7b70c6a3078d'
             'SKIP')
 
 prepare() {
