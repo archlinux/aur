@@ -3,15 +3,15 @@
 pkgname=vim-ssh-annex-git
 _pkgname=${pkgname%-git}
 pkgver=r2.5a56f26
-pkgrel=1
+pkgrel=2
 pkgdesc="Auxiliary vim syntax files for OpenSSH"
 arch=(any)
 url='https://github.com/qnighy/vim-ssh-annex'
 license=(unknown)
-depends=(vim)
+depends=(vim-plugin-runtime)
 makedepends=(git)
 groups=(vim-plugins)
-source=("git+https://github.com/qnighy/${_pkgname}")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
