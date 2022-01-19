@@ -1,6 +1,6 @@
 # Maintainer: Gabe Banks <gabriel.t.banks@gmail.com>
 pkgname='tstock'
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="A command line tool to view stock charts in the terminal."
 arch=('x86_64')
