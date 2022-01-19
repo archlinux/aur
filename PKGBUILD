@@ -1,7 +1,7 @@
 # Maintainer: ObserverOfTime <chronobserver@disroot.org>
 
 pkgname=gdlauncher-git
-pkgver=1.1.15.beta.4.r0.gdda24322
+pkgver=1.1.21.r0.g22d01934
 pkgrel=2
 pkgdesc='Modded Minecraft launcher built with Electron/React (git version)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=('git+https://github.com/gorilla-devs/GDLauncher.git'
         'use-system-7za-and-disable-updater.patch')
 sha256sums=('SKIP'
             'f4cbb8a47e80c498972e548897a01190ac1975fbed0879565ff8fc57b8e9dbf0'
-            '1613bb24307191ae6fb0fc05e8a555b11287a064788f5858fb972984490cbd3f')
+            'f607390d7e6f79981bf14e0308ef8f55aed3daa425219872dc864c61e74e4192')
 
 pkgver() {
   cd "$srcdir"/GDLauncher
@@ -30,7 +30,12 @@ prepare() {
   sed -i package.json \
     -e '/electron-updater/d;/7zip-bin/d' \
     -e 's$public/electron.js$build/electron.js$' \
-    -e '/"dependencies"/i\  "bundledDependencies": ["7zip-bin"],'
+    -e '/"dependencies"/i "bundledDependencies": ["7zip-bin"],'
+  sed -i package-lock.json \
+    -e 's/^16 \|\|.*\|\| ^6/>= 6/'
+  sed -i craco.config.js \
+    -e "/class-properties/a '@babel\/plugin-proposal-private-methods'," \
+    -e "/class-properties/a '@babel\/plugin-proposal-private-property-in-object',"
   patch -p1 -i ../use-system-7za-and-disable-updater.patch
 }
 
@@ -38,7 +43,7 @@ build() {
   cd "$srcdir"/GDLauncher
 
   export CARGO_HOME="$srcdir"/cargo-cache
-  npm install --cache="$srcdir"/npm-cache
+  npm i --legacy-peer-deps --cache="$srcdir"/npm-cache
 
   export CI=false \
          APP_TYPE=electron \
@@ -62,8 +67,8 @@ package() {
 
   # create run script
   mkdir -p "$pkgdir"/usr/bin
-  cat >"$pkgdir"/usr/bin/gdlauncher <<< \
-      '#!/bin/sh'$'\n''exec electron /usr/lib/gdlauncher "$@"'
+  printf >"$pkgdir"/usr/bin/gdlauncher \
+      '#!/bin/sh\n\nexec electron /usr/lib/gdlauncher "$@"\n'
   chmod a+x "$pkgdir"/usr/bin/gdlauncher
 
   # create desktop file
