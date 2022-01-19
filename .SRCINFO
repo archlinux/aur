@@ -1,0 +1,13 @@
+pkgbase = dlb_mp4base-git
+	pkgdesc = The Dolby MP4 streaming muxer (for Dolby Vision).
+	pkgver = r24.6bd15a5
+	pkgrel = 1
+	url = https://github.com/DolbyLaboratories/dlb_mp4base
+	arch = x86_64
+	arch = x86
+	license = BSD-3
+	makedepends = git
+	source = dlb_mp4base::git+https://github.com/DolbyLaboratories/dlb_mp4base.git
+	sha512sums = SKIP
+
+pkgname = dlb_mp4base-git
