@@ -1,7 +1,7 @@
 pkgbase = ly-reloaded-git
 	pkgdesc = Maintained fork of the Ly TUI display manager
 	pkgver = r65.eddb094
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SartoxOnlyGNU/ly-reloaded
 	arch = any
 	license = WTFPL
@@ -9,6 +9,8 @@ pkgbase = ly-reloaded-git
 	depends = pam
 	depends = xorg-xauth
 	conflicts = ly
+	backup = etc/ly/config.ini
+	backup = etc/pam.d/ly
 	source = git+https://github.com/SartoxOnlyGNU/ly-reloaded
 	sha256sums = SKIP
 

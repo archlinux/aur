@@ -3,7 +3,7 @@
 pkgname=ly-reloaded-git
 _name=ly-reloaded
 pkgver=r65.eddb094
-pkgrel=1
+pkgrel=2
 pkgdesc="Maintained fork of the Ly TUI display manager"
 url="https://github.com/SartoxOnlyGNU/ly-reloaded"
 arch=('any')
@@ -13,6 +13,10 @@ depends=('pam' 'xorg-xauth')
 conflicts=('ly')
 source=("git+https://github.com/SartoxOnlyGNU/ly-reloaded")
 sha256sums=('SKIP')
+backup=(
+  'etc/ly/config.ini'
+  'etc/pam.d/ly'
+)
 
 pkgver() {
   cd "${srcdir}/$_name"
