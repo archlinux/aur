@@ -1,7 +1,7 @@
 pkgbase = x86_64-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the x86_64-elf target
 	pkgver = 2.37
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL

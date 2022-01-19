@@ -6,7 +6,7 @@ _pkgname=binutils
 
 pkgname=$_target-${_pkgname}
 pkgver=2.37
-pkgrel=2
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the x86_64-elf target'
 arch=(x86_64)
 url='https://www.gnu.org/software/binutils/'
