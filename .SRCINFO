@@ -1,7 +1,7 @@
 pkgbase = clash-for-windows-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron.
 	pkgver = 0.19.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
 	arch = x86_64

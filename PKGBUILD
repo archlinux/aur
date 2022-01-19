@@ -2,7 +2,7 @@
 # Maintainer: Johnpoint <me at lvcshu.com>
 pkgname=clash-for-windows-bin
 pkgver=0.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron."
 arch=("x86_64")
 url="https://github.com/Fndroid/clash_for_windows_pkg"
