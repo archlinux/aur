@@ -1,10 +1,10 @@
 # Maintainer: ZhangHua <zhanghuadedn at gmail dot com>
 # Maintainer: Clansty <i at gao4 dot pw>
 pkgname=("icalingua-git" "icalingua-electron-git")
-pkgver=2.4.5_11_gbdff0ad
+pkgver=2.4.5.r21.g8d64b5d
 pkgrel=1
 pkgdesc='A Linux client for QQ and more'
-license=('GPL')
+license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3')
 makedepends=('yarn' 'git')
 optdepends=('mongodb-bin: Provides storage'
@@ -14,16 +14,16 @@ url="https://github.com/Icalingua/Icalingua"
 provides=('electron-qq' 'icalingua')
 conflicts=('electron-qq' 'icalingua')
 replaces=('electron-qq')
-source=("git+${url}")
+source=("git+${url}#branch=dev")
 sha256sums=('SKIP')
 
 pkgver(){
     cd "${srcdir}/Icalingua"
-    git describe --tags | sed "s/v//;s/-/_/g"
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 prepare(){
     cd "${srcdir}/Icalingua/icalingua"
-    yarn install
+    yarn install --immutable
 }
 build(){
     cd "${srcdir}/Icalingua/icalingua"
