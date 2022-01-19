@@ -3,7 +3,8 @@
 # Contributor: Aline Freitas <aline@alinefreitas.com.br>
 
 pkgname=polkit-git
-pkgver=0.118.r12.g2c8287f
+_pkgname=polkit
+pkgver=0.120.r0.g92b910c
 pkgrel=1
 epoch=1
 pkgdesc="Application development toolkit for controlling system-wide privileges"
@@ -12,10 +13,10 @@ license=(LGPL)
 url="https://www.freedesktop.org/wiki/Software/polkit/"
 depends=(glib2 pam expat systemd js78)
 makedepends=(intltool gtk-doc gobject-introspection git autoconf-archive python-six)
-provides=('polkit')
-conflicts=('polkit')
-options=('!emptydirs')
-#source=($pkgname::git+http://anongit.freedesktop.org/git/polkit.git)
+checkdepends=(python-dbusmock)
+backup=(etc/pam.d/polkit-1)
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 source=($pkgname::git+https://gitlab.freedesktop.org/polkit/polkit.git)
 sha256sums=('SKIP')
 
