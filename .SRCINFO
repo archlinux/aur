@@ -1,7 +1,7 @@
 pkgbase = nicotine-plus-git
 	pkgdesc = A graphical client for the SoulSeek peer-to-peer system
-	pkgver = 3.2.0rc2.r6476.b5fa236a
-	pkgrel = 1
+	pkgver = 3.2.1rc2.r6879.a5e1e62d
+	pkgrel = 2
 	url = https://nicotine-plus.github.io/nicotine-plus
 	arch = any
 	license = GPL3

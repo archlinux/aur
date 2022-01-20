@@ -3,8 +3,8 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.2.0rc2.r6476.b5fa236a
-pkgrel=1
+pkgver=3.2.1rc2.r6879.a5e1e62d
+pkgrel=2
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
 url="https://nicotine-plus.github.io/nicotine-plus"
@@ -61,7 +61,4 @@ package() {
 
   install -Dm644 "$srcdir"/org.nicotine_plus.Nicotine{-gtk4.desktop,-gtk4-libadwaita.desktop} -t \
     "$pkgdir/usr/share/applications/"
-
-  # Remove duplicate GPL license
-  rm "$pkgdir/usr/share/doc/nicotine/COPYING"
 }
