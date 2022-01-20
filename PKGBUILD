@@ -13,5 +13,5 @@ sha512sums=("SKIP")
 package() {
 	cd $srcdir
 	install -Dm755 $srcdir/goshs $pkgdir/usr/bin/goshs
-	install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/goshs/LICENSE"
+	install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$goshs/LICENSE"
 }
