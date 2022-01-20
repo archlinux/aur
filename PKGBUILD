@@ -1,6 +1,6 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # shellcheck shell=bash
-# shellcheck disable=SC2034,2154
+# shellcheck disable=2034,2154
 
 pkgbase=docspell
 pkgname=(
@@ -8,7 +8,7 @@ pkgname=(
     'docspell-restserver'
     # 'firefox-extension-docspell'
 )
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 changelog=.CHANGELOG
 arch=('any')
@@ -25,8 +25,8 @@ source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/rele
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('6e69b1553b2891f64e57b7743c9cb9e474e759023bb5f05ae4417cee730fba3d4b5a2d8a857e7ba9dc4267cb352bab3bcdb1cc30f6204d9ccfdd48c72910c255'
-            '15b8cf23c50a8544b3e364934e6f91b9a3c3aefb98803c2fa1451d4f1919d63884818fdf5892b3f805e5e7234130d8d329deb84c5ac48681c0f82ca54f2d7e1f'
+sha512sums=('0501b6e6ef991c277e03f48f7800f05bb4b65c376721236c30d74bbb1b239d5f15761989e0b4c994f865ea9e5a874532637d1405f81e41e1056c5ee9cc8e2cbd'
+            'b5f92969d0882898e141b33ebd5de4cd096ddc982624af0e684093ec9f510000476ab7caf96985a7dbd1403fda2b55538784adc4d6d8e0d9ef5081ec836cdbb3'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'c1a7a9cb942413d0febb083554a15ded0ead5c7124624f0ec5fe43d3bc73a1637f89bc27f7b6e0bbdbd0d886799e5331beb5f45f476db70b69ae17c0d803f004'
