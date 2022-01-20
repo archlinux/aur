@@ -9,14 +9,14 @@ arch=('any')
 url="https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator"
 license=('GPL')
 groups=('')
-depends=('bash-completion' 'python-pip')
+depends=('python' 'python-pip')
 optdepends=("dialog: GUI elements")
 makedepends=("binutils" "tar")
 conflicts=("iicalc-beta")
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("iicalc-$pkgver.deb::https://gitlab.com/TurboWafflz/ImaginaryInfinity-Calculator/-/jobs/artifacts/master/raw/iicalc.deb?job=debian%20packager")
-sha512sums=('5dfd979a18bbf1baf08d71ab5423292df5504dda3045c6511fbb4e440dda3b711627a0d20e55f005ba722e0f78a2080a9c7d763b0f1c3381fd37020d9a91cf76')
+sha512sums=('7f575c6aacd4c5148ad5bd75b171a6904a06fb6587db432fa6b2805fb9549837b8cc2d78dd946321eefecff50a9a042e4230acfdcfd873b503a7a3f36e2108a9')
 
 package(){
 
