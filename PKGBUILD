@@ -1,15 +1,15 @@
 pkgname=nvidia-vaapi-driver-git
 _pkgname=nvidia-vaapi-driver
-pkgver=0.0.1.r41.g6c51241
+pkgver=0.0.2.r10.gf5924d5
 pkgrel=1
 pkgdesc="A VA-API implemention using NVIDIA's NVDEC"
 arch=('x86_64')
 url="https://github.com/elFarto/nvidia-vaapi-driver"
 license=('MIT')
 depends=('nvidia-utils' 'gst-plugins-bad-libs')
-makedepends=('meson' 'cuda' 'git' 'gst-plugins-bad' 'ffnvcodec-headers-git')
-provides=('nvidia-vaapi-driver')
-conflicts=('nvidia-vaapi-driver')
+makedepends=('meson' 'git' 'gst-plugins-bad' 'ffnvcodec-headers-git')
+provides=('nvidia-vaapi-driver' 'libva-nvidia-driver')
+conflicts=('nvidia-vaapi-driver' 'libva-nvidia-driver')
 source=("${_pkgname}::git+$url.git")
 sha1sums=('SKIP')
 
@@ -23,7 +23,7 @@ prepare() {
     cd "$_pkgname"
     #sed -i "s|usr/include/cuda|opt/cuda/include|" meson.build
     #sed -i "s|drm/drm|libdrm/drm|" src/vabackend.c
-    arch-meson . build
+    arch-meson -Dav1=true . build
 }
 
 build() {
