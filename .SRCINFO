@@ -6,7 +6,6 @@ pkgbase = dream
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = gcc
 	makedepends = patch
 	depends = faad2
 	depends = libpcap
