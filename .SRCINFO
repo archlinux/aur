@@ -1,4 +1,4 @@
-pkgbase = albert-git-application-switch
+pkgbase = albert-switch-application
 	pkgdesc = A sophisticated standalone keyboard launcher with application switch
 	pkgver = v0.17.2
 	pkgrel = 1
@@ -33,4 +33,4 @@ pkgbase = albert-git-application-switch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = albert-git-application-switch
+pkgname = albert-switch-application

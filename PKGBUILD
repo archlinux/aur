@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@criticalstack.com>
 
-pkgname=albert-git-application-switch
+pkgname=albert-switch-application
 pkgver=v0.17.2
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher with application switch"
