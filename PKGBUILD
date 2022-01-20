@@ -2,6 +2,7 @@
 
 _pkgname=pyatv
 pkgname=pyatv-git
+pkgbase=pyatv
 pkgver=0.9.8
 pkgrel=1
 pkgdesc="A client library for Apple TV and AirPlay devices"

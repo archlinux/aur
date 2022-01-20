@@ -1,4 +1,4 @@
-pkgbase = pyatv-git
+pkgbase = pyatv
 	pkgdesc = A client library for Apple TV and AirPlay devices
 	pkgver = 0.9.8
 	pkgrel = 1
