@@ -90,7 +90,7 @@ if [ "$_compiler" = "clang" ]; then
   makedepends+=(clang llvm lld python)
   _LLVM=1
 fi
-options=('!strip')
+options=('!strip' '!ccache')
 _major=${xanmod%\.*\-*}           # 5.15
 _branch=${xanmod%%\.*\-*}.x       # 5.x
 

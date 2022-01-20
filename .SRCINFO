@@ -16,6 +16,7 @@ pkgbase = linux-xanmod-rog
 	makedepends = zstd
 	makedepends = gcc>=11.0
 	options = !strip
+	options = !ccache
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.16.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.16.tar.sign
 	source = https://github.com/xanmod/linux/releases/download/5.16.1-xanmod1/patch-5.16.1-xanmod1.xz
