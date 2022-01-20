@@ -137,6 +137,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chip.patch"
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch"
 
+        # WARNING: this patch could be buggy, recommended to *only* build mt76 as a module; see the mailing list
+        "mt76-mt7921e-fix-possible-probe-failure-after-reboot.patch"
+
         # squashed s0ix enablement
         "9001-v5.16-s0ix-patch-2022-01-17.patch"
         )
@@ -161,6 +164,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '292a7e32b248c7eee6e2f5407d609d03d985f367d329adb02b9d6dba1f85b44c'
             '7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812'
             '1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac'
+            '63ebf908ba2a66865a94e3a4af579d41ec15573522d3ebb07bf8ded3bc57e833'
             'c9e46df90b9bd721fcd3c84205efce5a6963daf0cadad46c29f5d57be3ec6187')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
