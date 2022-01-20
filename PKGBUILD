@@ -3,7 +3,7 @@
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=libosmocore
-pkgver=1.3.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="core libs for osmocom"
 arch=('armv7h' 'i686' 'x86_64')
