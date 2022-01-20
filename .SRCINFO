@@ -1,0 +1,14 @@
+pkgbase = hid-alps-hp-dkms-git
+	pkgdesc = ALPS HP specific HID driver
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://github.com/himekifee/hid-alps-hp.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	source = git+https://github.com/himekifee/hid-alps-hp.git
+	sha512sums = SKIP
+
+pkgname = hid-alps-hp-dkms-git
