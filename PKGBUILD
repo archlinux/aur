@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=seiscomp-maps
-pkgver=20220113
-pkgrel=2
+pkgver=20220120
+pkgrel=1
 pkgdesc="SeisComP default map files."
 arch=('any')
 url="https://www.seiscomp.de"
