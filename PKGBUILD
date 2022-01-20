@@ -1,7 +1,7 @@
 # Maintainer: Vadym Livertovsky <vadym@livertovsky.name>
 
 pkgname=karbowanecwallet-git
-pkgver=v.1.7.7.r1.g40047b1
+pkgver=v.1.7.8.r0.g297751d
 pkgrel=1
 pkgdesc='Karbowanec Wallet - wallet for Karbo (Karbovanets) cryptocurrency'
 arch=('i686' 'x86_64')
