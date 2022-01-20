@@ -2,8 +2,8 @@
 # Maintainer:  max.bra <max dot bra dot gtalk at gmail dot com>
 
 pkgname=arronax
-pkgver=0.8
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='A program to create and modify starters/launchers (technically: .desktop files) for applications and locations (URLs).'
 arch=('any')
 license=('GPL3')
@@ -16,7 +16,7 @@ optdepends=('python-nautilus: Arronax as Nautilus extension'
 
 source=(https://launchpad.net/~diesch/+archive/ubuntu/stable/+sourcefiles/arronax/$pkgver/arronax_$pkgver.tar.xz)
 
-md5sums=('fb41dc3515607a45f19f44c9c6e38462')
+md5sums=('d4b674425e7479b3074fae5611b5f961')
 
 prepare() {
   # Fix icon location
