@@ -1,10 +1,11 @@
 # Maintainer: zoorat <zoorat [at] protonmail [dot] com>
 # Contributor: Ben Silverman <bensilverman10 at gmail dot com>
+# Contributor: Kevin Morris <kevr [at] 0cost [dot] org>
 
 _npmname=alacritty-themes
 pkgname=$_npmname
-pkgver=4.1.6
-pkgrel=3
+pkgver=4.2.0
+pkgrel=1
 
 pkgdesc="A utility for choosing and applying Alacritty terminal themes."
 arch=(any)
@@ -20,7 +21,7 @@ options=(strip emptydirs zipman)
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/rajasegar/alacritty-themes/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('1b662634f0f4d43912568c36927a34548cce77709674dcd3102e4c3bd082ad435cdd5fe65eaf6857755a3fc050bb6747f30f7dd6f86117efc53f3e3895a812f8'
+b2sums=('420b1068d56df54d7a0bc5f259b0b81d28297d7308a06ee6072e05a1d28ecb07b0ca751c92d011ddc423e19b7331fe26159a069fce41aad01784ff800a5b3dc6'
 	'7a11e2eeed89bc67e6cef84badf8cccd1bf2de44423c22bd023fe579795b45bc8906c7a2dc3df4c005d0524b99994d2f534410df8e9a52e2d95f97591dd8949c')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
