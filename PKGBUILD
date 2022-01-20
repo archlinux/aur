@@ -15,8 +15,8 @@ optdepends=('muparser: Calculator plugin'
             'python: Python extension'
             'virtualbox: VirtualBox plugin')
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git"
-        "mirrors/plugins::git+https://github.com/rosaLux161/python.git"
-        "mirrors/python::git+https://github.com/albertlauncher/python.git"
+        "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
+        "mirrors/python::git+https://github.com/rosaLux161/python.git"
         "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
 sha256sums=('SKIP'
             'SKIP'
