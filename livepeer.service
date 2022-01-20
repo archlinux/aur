@@ -10,8 +10,6 @@ Type=simple
 EnvironmentFile=/etc/go-livepeer/environment
 
 ExecStart=/usr/bin/livepeer $ARGS
-ExecStop=/usr/bin/kill --signal SIGTERM $MAINPID
-ExecReload=/usr/bin/kill --signal SIGUSR1 $MAINPID
 
 Restart=on-failure
 RestartSec=1
