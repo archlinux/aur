@@ -3,13 +3,13 @@
 pkgname=pcem-git
 _pkgname=pcem
 pkgver=r1830.d09d5d0
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('wxgtk2' 'openal' 'sdl2' 'alsa-lib')
-makedepends=('git' 'cmake' 'ninja')
+makedepends=('git' 'cmake')
 conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git")
 sha256sums=('SKIP')
