@@ -16,18 +16,18 @@ install=anki-sync-server.install
 source=('git+https://github.com/ankicommunity/anki-sync-server.git')
 md5sums=('SKIP')
 
-_repo_dir="$(basename ${source} | cut -f 1 -d '.')"
-_anki_dir="${_repo_dir}/src"
-_install_dir="/opt/${pkgname%-git}"
+_repo_dir_="$(basename ${source} | cut -f 1 -d '.')"
+_anki_dir_="${_repo_dir_}/src"
+_install_dir_="/opt/${pkgname%-git}"
 
 pkgver() {
-  cd "${_repo_dir}"
+  cd "${_repo_dir_}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   # move plugins and systemd file to src package
-  local _plugins_="${_anki_dir}/plugins/"
+  local _plugins_="${_anki_dir_}/plugins/"
   mkdir -p "${_plugins_}"
   mkdir -p "${_plugins_}/anki2.0/"
   mkdir -p "${_plugins_}/anki2.1/anki-sync-server"
@@ -42,7 +42,7 @@ prepare() {
   cp "../nginx_append_config.awk" "${_plugins_}/nginx/append.awk"
 
   # set plugins to use current ip address as plugins' target address
-  cd "${_anki_dir}"
+  cd "${_anki_dir_}"
   _your_ip_=$(ip route get 1.2.3.4 | awk '{print $7}')
   sed -i "2s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.0/anki-sync-server.py
   sed -i "3s/0\.0\.0\.0/${_your_ip_})/" plugins/anki2.0/anki-sync-server.py
@@ -62,6 +62,6 @@ prepare() {
 }
 
 package() {
-  mkdir -p "${pkgdir}${_install_dir}"
-  cp -R "${srcdir}/${_anki_dir}/." "${pkgdir}${_install_dir}"
+  mkdir -p "${pkgdir}${_install_dir_}"
+  cp -R "${srcdir}/${_anki_dir_}/." "${pkgdir}${_install_dir_}"
 }
