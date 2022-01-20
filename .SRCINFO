@@ -1,27 +1,24 @@
 pkgbase = betterbib
-	pkgdesc = Update BibTeX files with info from online resources
-	pkgver = 4.0.2
+	pkgdesc = Better BibTeX data
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/nschloe/betterbib
 	arch = any
-	license = custom
-	depends = python>=3.8
+	license = GPL3
 	depends = python-appdirs
-	depends = python-latexcodec
-	depends = python-pybtex>=0.19.0
+	depends = python-pybtex
 	depends = python-pyenchant
-	depends = python-requests
+	depends = python-pylatexenc
 	depends = python-requests-cache
 	depends = python-rich
-	depends = python-setuptools
+	depends = python-tomli
 	depends = python-unidecode
-	depends = aspell-en
-	depends = hspell
+	depends = hunspell
 	depends = libvoikko
 	depends = nuspell
-	source = betterbib-4.0.2.tar.gz::https://github.com/nschloe/betterbib/archive/refs/tags/v4.0.2.tar.gz
-	source = abbrev.jabref.org-2021-09.tar.gz::https://github.com/JabRef/abbrv.jabref.org/archive/refs/tags/2021-09.tar.gz
-	sha256sums = c6e95fc26e90273280b269e9dbb093f1b80d2f5066d6dfc21d636a8022d6dafa
-	sha256sums = 77617e9d59da089d39235d1c69e390bb4d98780c42579ba5c368be3d3e3daaa3
+	depends = hspell
+	depends = aspell-en
+	source = https://pypi.org/packages/source/b/betterbib/betterbib-4.2.0.tar.gz
+	sha512sums = 90f7d6865d384193ce82de07f26adc15cbcb4f40e97ab7e429727d36074c0156aab95dbfb8612d5628304113627f1278b095c7584645963ee51ac1eb80ab47b8
 
 pkgname = betterbib
