@@ -10,22 +10,23 @@ pkgdesc="Launch old versions of Minecraft just as you remembered them, only with
 url="http://mineonline.codie.gg"
 license=('CCPL:by-nc')
 arch=('any')
-source=("https://github.com/${pkgdev}/${pkg_case}/releases/download/${pkgver}/${pkg_case}.jar"
-		"${pkg_case}.desktop"
-		"${pkg_case}.png"
-		"${pkgname}")
-noextract=('MineOnline.jar')
+source=("https://github.com/${pkgdev}/${pkg_case}/releases/download/${pkgver}/${pkg_case}-${pkgver}.jar"
+                "${pkg_case}.desktop"
+                "${pkg_case}.png"
+                "${pkgname}")
+noextract=("${pkg_case}-${pkgver}.jar")
 md5sums=('SKIP'
-		 'ee7c23b2f3f53e811960769c676b788b'
-		 '7b03ae414098babec81c613bd7b8fe5b'
-		 'f71684f402cd53a32be3b8d2cc05964b')
+                 'ee7c23b2f3f53e811960769c676b788b'
+                 '7b03ae414098babec81c613bd7b8fe5b'
+                 'f71684f402cd53a32be3b8d2cc05964b')
 
 package() {
-	cd $srcdir
-	mkdir -p $pkgdir/usr/{bin,share/{applications,pixmaps,java/$pkgname}}
-	install -m 755 $pkgname $pkgdir/usr/bin/
-	install -m 755 ${pkg_case}.jar $pkgdir/usr/share/java/$pkgname/
-	install -m 644 $srcdir/${pkg_case}.desktop $pkgdir/usr/share/applications/
-	install -m 644 $srcdir/${pkg_case}.png $pkgdir/usr/share/pixmaps/
-	rm $startdir/${pkg_case}.jar
+        cd $srcdir
+        mv "${pkg_case}-${pkgver}.jar" "${pkg_case}.jar"
+        mkdir -p $pkgdir/usr/{bin,share/{applications,pixmaps,java/$pkgname}}
+        install -m 755 $pkgname $pkgdir/usr/bin/
+        install -m 755 ${pkg_case}.jar $pkgdir/usr/share/java/$pkgname/
+        install -m 644 $srcdir/${pkg_case}.desktop $pkgdir/usr/share/applications/
+        install -m 644 $srcdir/${pkg_case}.png $pkgdir/usr/share/pixmaps/
+        rm $startdir/${pkg_case}.jar
 }
