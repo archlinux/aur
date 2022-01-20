@@ -19,5 +19,5 @@ source_x86_64=('https://github.com/caarlos0-graveyard/test/releases/download/v0.
 sha256sums_x86_64=('95affcde9feb5fb5a49ff772d0fc742d21ad674987a9e35c54b1fb8e7506824e')
 
 package() {
-  install -Dm755 "./test "${pkgdir}/usr/bin/test"
+  install -Dm755 "./test" "${pkgdir}/usr/bin/test"
 }
