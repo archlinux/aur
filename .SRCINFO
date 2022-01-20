@@ -5,6 +5,7 @@ pkgbase = tachidesk-jui-bin
 	url = https://github.com/Suwayomi/Tachidesk-JUI
 	arch = x86_64
 	license = MPL2
+	depends = jre-openjdk>=17
 	provides = tachidesk-jui
 	conflicts = tachidesk-jui
 	source = https://github.com/Suwayomi/Tachidesk-JUI/releases/download/v1.2.1/tachidesk-jui_1.2.1-1_amd64.deb

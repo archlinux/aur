@@ -7,6 +7,7 @@ pkgrel=1
 arch=('x86_64')
 url='https://github.com/Suwayomi/Tachidesk-JUI'
 license=('MPL2')
+depends=("jre-openjdk>=17")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/Suwayomi/Tachidesk-JUI/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}-1_amd64.deb")
