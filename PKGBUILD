@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=libreport
-pkgver=2.13.1
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Generic library for reporting various problems'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('python: python 3.x bindings'
 url='https://github.com/abrt/libreport'
 license=('GPL')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/abrt/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ac3a4f0822d1cc5dab562801b7ab3a0753c0705378ce23cb4664ab10379ff72c')
+sha256sums=('059cee9c6ea2830272980659366ce049d04f4421ffe94e569723ae2b457e7474')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
