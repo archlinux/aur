@@ -7,7 +7,7 @@ pkgbase = mili
 	license = MIT
 	depends = python-gobject
 	depends = gtksourceview3
-	depends = hicolor-icon-theme
+	backup = etc/mili/mili.ini
 	source = https://gitlab.com/zehkira/mili/-/archive/v0.1.2/mili-v0.1.2.tar.gz
 	sha256sums = SKIP
 
