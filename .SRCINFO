@@ -1,7 +1,7 @@
 pkgbase = gitakc
 	pkgdesc = A small program to use user's GitHub keys for ssh authorization.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sequencer/gitakc
 	install = gitakc.install
 	arch = any

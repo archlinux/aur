@@ -3,7 +3,7 @@
 pkgname=gitakc
 pkgver=0.1
 _scalaversion=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A small program to use user's GitHub keys for ssh authorization."
 arch=('any')
 url="https://github.com/sequencer/gitakc"
@@ -21,7 +21,6 @@ build() {
 package() {
   cd gitakc-$pkgver
   install -dm755 "$pkgdir"/usr/bin
-  (echo "#!/bin/sh"; cat out/gitakc/jvm/$_scalaversion/assembly.dest/out.jar) > "$pkgdir"/usr/bin/gitakc
-  chmod +x "$pkgdir"/usr/bin/gitakc
+  install -Dm755 out/gitakc/jvm/$_scalaversion/assembly.dest/out.jar "$pkgdir"/usr/bin/gitakc
   install -Dm644 gitakc/resources/test.json "$pkgdir"/etc/gitakc.json
 }
