@@ -1,10 +1,10 @@
 pkgbase = authenticator-git
 	pkgdesc = 2FA code generator for GNOME
-	pkgver = 4.0.2.r22.gb1c9dba
+	pkgver = 4.0.3.r47.g900b5bd
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Authenticator
 	arch = any
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
@@ -19,9 +19,6 @@ pkgbase = authenticator-git
 	provides = authenticator
 	conflicts = authenticator
 	source = authenticator::git+https://gitlab.gnome.org/World/Authenticator.git
-	source = zbar-rust::git+https://github.com/magiclen/zbar-rust.git#commit=fc38e762b93326c98db965e7fcde55c7ab024ae8
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = authenticator-git
-
