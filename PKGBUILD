@@ -2,13 +2,13 @@
 
 pkgbase=czkawka
 pkgname=('czkawka-cli' 'czkawka-gui')
-pkgver=3.3.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc. '
 url='https://github.com/qarmin/czkawka'
 arch=('x86_64')
 makedepends=('cargo' 'rust' 'git' 'gtk3')
-_commit=4a202633eef7b6155628bbf7449c03cdf8308169 # tags/3.3.1^0
+_commit=a0d17fccea11a150d659a44e42f915faf951ba4b # tags/4.0.0^0
 source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
 sha512sums=('SKIP')
 
@@ -47,6 +47,13 @@ package_czkawka-gui() {
         "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE"
   install -Dm755 "${srcdir}/czkawka/target/release/czkawka_gui" \
         "${pkgdir}/usr/bin/czkawka_gui"
-  install -Dm644 "${srcdir}/czkawka/pkgs/com.github.qarmin.czkawka.desktop" \
+  install -Dm644 "${srcdir}/czkawka/data/com.github.qarmin.czkawka.desktop" \
         "${pkgdir}/usr/share/applications/com.github.qarmin.czkawka.desktop"
+  install -Dm644 "${srcdir}/czkawka/data/icons/com.github.qarmin.czkawka.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/com.github.qarmin.czkawka.svg"
+  install -Dm644 "${srcdir}/czkawka/data/icons/com.github.qarmin.czkawka.Devel.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/com.github.qarmin.czkawka.Devel.svg"
+  install -Dm644 "${srcdir}/czkawka/data/icons/com.github.qarmin.czkawka-symbolic.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/com.github.qarmin.czkawka-symbolic.svg"
+
 }
