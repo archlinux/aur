@@ -2,7 +2,7 @@
 
 pkgname=swiftshader-git
 pkgver=r6374.2e74d5dc03
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance CPU-based implementation of the Vulkan graphics API12.'
 arch=(x86_64)
 url=https://swiftshader.googlesource.com/SwiftShader
@@ -10,9 +10,15 @@ provides=(swiftshader libgl opengl-driver vulkan-driver)
 conflicts=(swiftshader)
 license=(Apache)
 source=("git+$url#branch=master"
-        git+https://github.com/google/googletest.git
-        git+https://github.com/ianlancetaylor/libbacktrace.git)
-sha1sums=('SKIP' 'SKIP' 'SKIP')
+	git+https://github.com/google/cppdap
+	git+https://github.com/google/googletest.git
+	git+https://github.com/nlohmann/json.git
+	git+https://github.com/ianlancetaylor/libbacktrace.git
+	git+https://github.com/powervr-graphics/Native_SDK.git
+	git+https://github.com/google/benchmark.git
+	git+https://github.com/KhronosGroup/glslang.git
+)
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 depends=()
 makedepends=(git cmake ninja)
 
@@ -25,18 +31,22 @@ pkgver() {
 
 prepare() {
   git -C SwiftShader submodule init
+  git -C SwiftShader config submodule."third_party/cppdap".url "$srcdir/cppdap"
+  git -C SwiftShader config submodule."third_party/googletest".url "$srcdir/googletest"
+  git -C SwiftShader config submodule."third_party/json".url "$srcdir/json"
+  git -C SwiftShader config submodule."third_party/libbacktrace/src".url "$srcdir/libbacktrace"
+  git -C SwiftShader config submodule."third_party/PowerVR_Examples".url "$srcdir/Native_SDK"
+  git -C SwiftShader config submodule."third_party/benchmark".url "$srcdir/benchmark"
+  git -C SwiftShader config submodule."third_party/glslang".url "$srcdir/glslang"
   # this repo is not publicly accessible so we won't fetch it
   git -C SwiftShader config submodule."third_party/git-hooks".update none
-  git -C SwiftShader config submodule."third_party/googletest".url "$srcdir/googletest"
-  git -C SwiftShader config submodule."third_party/libbacktrace/src".url "$srcdir/libbacktrace"
-  git -C SwiftShader submodule update --depth=1
+  git -C SwiftShader submodule update
 
   cmake \
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -D WARNINGS_AS_ERRORS=off \
-    -D BUILD_SAMPLES=off \
+    -D SWIFTSHADER_WARNINGS_AS_ERRORS=off \
     -S SwiftShader -B build
 }
 
