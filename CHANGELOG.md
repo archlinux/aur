@@ -1,5 +1,11 @@
 # Changelog
 
+- SSH (`ssh`)
+  - Public Keys (`pubkeys`)
+    - add [public key](https://datatracker.ietf.org/doc/html/rfc4253#section-6.6) related classes (\#43)
+  - Versions (`versions`)
+    - add [software version](https://tools.ietf.org/html/rfc4253#section-4.2) related classes (\#46)
+
 ## 0.7.3 - 2021-12-26
 
 - Generic
