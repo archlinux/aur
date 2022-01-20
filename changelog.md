@@ -2959,4 +2959,22 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.3.50 fix: fix stock_notice_report interface
 
 1.3.51 fix: fix futures_comm_info interface
+
+1.3.52 fix: fix stock_hsgt_individual_detail_em interface
+
+1.3.53 fix: fix sw_index_cons interface
+
+1.3.54 fix: fix stock_em_qbzf interface
+
+1.3.55 fix: fix futures_comm_info interface
+
+1.3.56 fix: fix stock_hsgt_board_rank_em interface
+
+1.3.57 fix: fix futures_main_sina interface
+
+1.3.58 fix: fix stock_margin_detail_szse interface
+
+1.3.59 add: add covid_19_risk_area interface
+
+1.3.60 fix: fix covid_19_risk_area interface
 ```
