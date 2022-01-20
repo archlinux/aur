@@ -1,0 +1,6 @@
+owner: kopia
+repo: kopia
+provider: github
+vPrefixedTagName: true
+releaseType: release
+updaterCacheDirName: kopia-ui-updater
