@@ -1,0 +1,13 @@
+pkgbase = python-spacy-en_core_web_lg
+	pkgdesc = English pretrained model for spaCy (large)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://spacy.io/models/en#section-en_core_web_lg
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.2.0/en_core_web_lg-3.2.0.tar.gz
+	b2sums = fd346ba82a4b372dd53bd4d394e78ff16162dfb1c76a80af939610ab99c6dd654d0888b8ae9970b7a5497d7e0d38a391ae53d255e2d3de954b9241cf3e211edc
+
+pkgname = python-spacy-en_core_web_lg
