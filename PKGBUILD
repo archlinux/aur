@@ -9,13 +9,13 @@
 
 pkgname=pcl
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A comprehensive open source library for n-D Point Clouds and 3D geometry processing"
 arch=('x86_64' 'i686')
 url='http://www.pointclouds.org'
 license=('BSD')
 depends=('boost' 'eigen' 'flann' 'vtk' 'qhull' 'qt5-base' 'glu' 'qt5-webkit'
-  'openmpi' 'python' 'libxt' 'libharu' 'proj' 'glew' 'netcdf' 'libusb')
+  'openmpi' 'python' 'libxt' 'libharu' 'proj' 'glew' 'netcdf' 'libusb' 'fmt' 'pugixml')
 makedepends=('cmake' 'gl2ps' 'python')
 optdepends=('cuda' 'openni2' 'python-sphinx')
 source=("pcl-${pkgver}.tar.gz"::"https://github.com/PointCloudLibrary/pcl/archive/pcl-${pkgver}.tar.gz")
