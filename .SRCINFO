@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-favourites-in-appgrid-git
 	pkgdesc = Keep favourite applications in AppGrid. For GNOME Shell 40+
-	pkgver = r6.d9e6b51
+	pkgver = r7.8794dac
 	pkgrel = 1
 	url = https://gitlab.gnome.org/harshadgavali/favourites-in-appgrid
 	arch = any
