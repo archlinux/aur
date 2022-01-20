@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=RingCentral (Community) app
+Exec="/opt/ringcentral-community-app/ringcentral-community-app" --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=ringcentral-community-app
+StartupWMClass=RingCentral (Community) app
+Comment=A RingCentral community app
+MimeType=x-scheme-handler/tel;x-scheme-handler/callto;x-scheme-handler/rcapp;x-scheme-handler/rcvdt;
+Categories=Telephony;

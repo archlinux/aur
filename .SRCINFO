@@ -1,0 +1,23 @@
+pkgbase = ringcentral-community-app-git
+	pkgdesc = RingCentral Community client for Linux using Electron
+	pkgver = 0.0.4.r3.g751b79b
+	pkgrel = 1
+	url = https://github.com/ringcentral/ringcentral-community-app
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs>=14
+	makedepends = yarn
+	depends = gtk3
+	depends = nss
+	provides = ringcentral-community-app
+	conflicts = ringcentral-community-app
+	source = git+https://github.com/ringcentral/ringcentral-community-app#branch=master
+	source = ringcentral-community-app.desktop
+	sha256sums = SKIP
+	sha256sums = 9ddf83488430c508ed95e2f20297f75be165b1a6284fc06f15b3d18f5345f8d2
+
+pkgname = ringcentral-community-app-git
