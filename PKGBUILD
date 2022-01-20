@@ -1,7 +1,7 @@
 # Maintainer: Philipp Fent <philipp@fent.de>
 
 pkgname=sqlsmith
-pkgver=1.2.1
+pkgver=1.3
 pkgrel=1
 pkgdesc="SQLsmith: A random SQL query generator"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(GPL3)
 makedepends=('cmake' 'ninja' 'autoconf-archive')
 depends=('libpqxx' 'boost-libs' 'sqlite')
 source=("https://github.com/anse1/sqlsmith/releases/download/v$pkgver/sqlsmith-$pkgver.tar.gz")
-sha256sums=('a136a8162487555e6aded49c7082189eacf0117cf2c64456c3bc0838071bcb00')
+sha256sums=('11840c1edb523bdb192073abf8af8a83025538f417426aac69ee52035c7f7578')
 
 build() {
     cd "$srcdir/sqlsmith-$pkgver/"
