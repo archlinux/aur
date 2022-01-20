@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Lutris Wine Runner as system Wine and even better
-	pkgver = 0.59.r3.ge73c27e
+	pkgver = 0.60.r0.g2615e90
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = any
@@ -91,6 +91,7 @@ pkgbase = lutris-wine-git
 	depends = lib32-vulkan-mesa-layers
 	depends = libstrangle
 	depends = openssl
+	depends = libnotify
 	optdepends = lib32-vulkan-radeon
 	optdepends = vulkan-radeon
 	optdepends = xf86-video-amdgpu
