@@ -35,9 +35,12 @@ scripts/config  --enable CONFIG_DEBUG_INFO \
                 --enable CONFIG_DEBUG_INFO_BTF \
                 --enable CONFIG_DEBUG_INFO_BTF_MODULES
 
-scripts/config  --enable CONFIG_BPF_PRELOAD \
-                --module CONFIG_BPF_PRELOAD_UMD \
-                --enable CONFIG_BPF_LSM
+# FIXME: BPF preloading is still causing boot-time errors for people, disable for now
+#scripts/config  --enable CONFIG_BPF_PRELOAD \
+#                --module CONFIG_BPF_PRELOAD_UMD \
+#                --enable CONFIG_BPF_LSM
+
+scripts/config  --enable CONFIG_BPF_LSM
 
 # sync some settings with Arch:
 scripts/config  --enable CONFIG_TASKS_RUDE_RCU \
