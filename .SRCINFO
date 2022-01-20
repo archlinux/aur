@@ -1,7 +1,7 @@
 pkgbase = catgirl
 	pkgdesc = TLS-only terminal IRC client
-	pkgver = 2.0a
-	pkgrel = 1
+	pkgver = 2.0.a
+	pkgrel = 2
 	url = https://git.causal.agency/catgirl/
 	arch = x86_64
 	license = GPL3
