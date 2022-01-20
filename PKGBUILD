@@ -1,6 +1,6 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.2.r0.gcb3f58a
+pkgver=6.3.r0.d39e2f34
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
@@ -15,9 +15,9 @@ conflicts=('dwm')
 source=(dwm.desktop
         "$_pkgname::git+http://git.suckless.org/dwm"
         config.h)
-md5sums=('939f403a71b6e85261d09fc3412269ee'
-         'SKIP'
-         'SKIP') # so you can customize config.h
+sha256sums=('bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
+            'SKIP'
+            'SKIP')
 
 pkgver(){
   cd $_pkgname
