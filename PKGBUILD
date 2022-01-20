@@ -2,14 +2,14 @@
 
 pkgname=junction-git
 _pkgname=Junction
-pkgver=r48.a552f65
+pkgver=r170.63c8a70
 pkgrel=1
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
 url="https://github.com/sonnyp/Junction"
 license=('GPL3')
-depends=('glib2' 'gjs')
-makedepends=('meson')
+depends=('glib2' 'gtk4' 'libadwaita' 'libportal-gtk4' 'gjs')
+makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
