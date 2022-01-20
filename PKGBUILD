@@ -1,11 +1,11 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=canaries-form-420
-pkgver=8.2.0
-pkgrel=2
+pkgver=8.2.1
+pkgrel=1
 pkgdesc='Helper program for filling out Modelo 420 of Agencia Tributaria Canaria'
 arch=('x86_64')
-url=http://www.gobiernodecanarias.org/tributos/portal/jsf/publico/asistenciaContribuyente/modelos/listado.jsp?tributo=IGIC
+url=https://www3.gobiernodecanarias.org/tributos/atc/jsf/publico/asistenciaContribuyente/modelos/listado.jsp?tributo=IGIC
 license=('custom')
 _java=11 # Latest working supported version (11 is LTS, broken in 16)
 depends=(
@@ -18,10 +18,11 @@ makedepends=(
   'imagemagick'
 )
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.zip::https://www.gobiernodecanarias.org/tributos/atc/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod420/bin/M420V820E21.zip")
-sha256sums=('8a24f1fcef85f9d05f848b2a828c9976e7273e17055f5e4aaf3cb5417bb62d74')
+_zipname=M420V821E21
+source=("${pkgname}-${pkgver}.zip::https://www.gobiernodecanarias.org/tributos/atc/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod420/bin/${_zipname}.zip")
+sha256sums=('e92ccc682c2c0af4150d78912f654eee6326ac874000829ef52dac19f88423f0')
 
-_innerdir=I.G.I.C.-Modelo420-\(2021\)
+_innerdir="${_zipname}/I.G.I.C.-Modelo420-(2021)"
 _srcjar="${_innerdir}/pa-mod420.jar"
 _pkgjar="/usr/share/java/${pkgname}/${pkgname}.jar"
 
