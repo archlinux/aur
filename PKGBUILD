@@ -4,8 +4,8 @@
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
@@ -23,7 +23,7 @@ depends=('swig' 'python' 'acl' 'libcap' 'curl' 'libgcrypt' 'libxml2' 'libxslt'
 optdepends=()
 makedepends=('doxygen' 'cmake')
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('4725085cd876c952ca15de48b0bc340c')
+sha512sums=('5e4d6c4addc15b2a0245b5caef80fda3020f1cac83ed4aa436ef3f1703d1d761060c931c2536fa68de7ad5bab002b79c8b2d1e5f7695d46249f4562f5a1569a0')
 
 
 build() {
