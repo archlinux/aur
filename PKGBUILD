@@ -2,10 +2,10 @@
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=8.8.1
-_pkgtimestamp=1525200006881
-_pkgbuild=36
-pkgrel=2
+pkgver=8.8.2
+_pkgtimestamp=1525200006882
+_pkgbuild=143
+pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
@@ -20,11 +20,11 @@ source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/
         upgrade.sh
         crashplan-pro_upgrade.service
         crashplan-pro_upgrade.path)
-sha1sums=('8afc06a75f35be5b6eec68abddd32fb8c8a80871'
+sha1sums=('8cdd216ee34c4704ff170faa0d932fb5796e1aee'
           '068c73e030c4ae12b97960d90d736ad42d41f9de'
-          '3b7a17085cf93170254fb9f29bfc5a683f29f2de'
-          'a6c1f459caefbc581cfe5638cc9cb95894547f17'
-          '844c4fd73692d888f8dd27b145652a9f571d7133')
+          '402ff6f7aa67b139871d0d94757a5181a6f927c4'
+          'aabdb5cbbc45216f8ae9d645758f4f9d6a4892d2'
+          '0dfbf0ef3df2ad386419def132c28d63560f6e4e')
 options=(!strip)
 build() {
   cd $srcdir/code42-install

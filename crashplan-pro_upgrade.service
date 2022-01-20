@@ -1,6 +1,11 @@
 [Unit]
 Description=CrashPlanPRO Backup Engine Upgrade
 After=network.target
+Requires=crashplan-pro.service
+After=crashplan-pro.service
+PropogatesReloadTo=crashplan-pro.service
+OnSuccess=crashplan-pro.service
+RefuseManualStart=True
 
 [Service]
 Type=oneshot

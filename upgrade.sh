@@ -13,6 +13,7 @@ if [[ -z $USER ]]; then
   USER=root
 fi
 
+systemctl stop crashplan-pro.service
 cp /opt/crashplan/bin/upgrade.sh ${TMP}/upgrade.sh
 
 echo "Editing ${UPDATE_PATH}/install.sh"
@@ -42,6 +43,8 @@ echo "LC_ALL=$LANG" > ${UPDATE_PATH}/run.conf
 /usr/bin/sed -i '/^[[:blank:]]*strip_keys_from_indentity_file/ s/./#&/' ${UPDATE_PATH}/uninstall.sh
 
 echo "Installing update"
+chmod +x ${UPDATE_PATH}/install.sh
+chmod +x ${UPDATE_PATH}/uninstall.sh
 cd ${UPDATE_PATH} && ${UPDATE_PATH}/install.sh -q -v -u $USER
 
 cp ${TMP}/upgrade.sh /opt/crashplan/bin/upgrade.sh
@@ -59,4 +62,6 @@ ln -sf "/opt/crachplan/bin/service.sh" /opt/crashplan/bin/CrashPlanEngine
 
 rm -rf ${TMP}
 rm -rf /opt/crashplan/upgrade/*
+
+systemctl start crashplan-pro.service
 echo "Done!"

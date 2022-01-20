@@ -1,8 +1,11 @@
 [Unit]
 Description="File monitor for updates from the Crashplan Daemon"
+Requires=crashplan-pro.service
+After=crashplan-pro.service
+
 
 [Path]
-DirectoryNotEmpty=/opt/crashplan/upgrade
+PathExistsGlob=/opt/crashplan/upgrade/*/install.sh
 Unit=crashplan-pro_upgrade.service
 
 [Install]
