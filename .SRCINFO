@@ -1,0 +1,13 @@
+pkgbase = python-spacy-en_core_web_trf
+	pkgdesc = English pretrained model for spaCy (transformers)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://spacy.io/models/en#section-en_core_web_trf
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/en_core_web_trf-3.2.0/en_core_web_trf-3.2.0.tar.gz
+	b2sums = 85a93216b0e58b2327a2fef232f90480ba3f9dcd818bd095f6e9bcd82ff7efe50d575bfd9abaeb83f3b6bec3d4837ecadef5e81c4efd64d2cc5a8587fd3b9aac
+
+pkgname = python-spacy-en_core_web_trf
