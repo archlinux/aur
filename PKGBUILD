@@ -5,8 +5,7 @@
 pkgname=anyk
 pkgver=3.12.0
 subver=0.1
-cms='cms587298'
-pkgrel=1
+pkgrel=2
 pkgdesc='Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
 arch=('any')
 url='https://www.nav.gov.hu/nav/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/abevjava_install.html'
@@ -14,13 +13,13 @@ license=('proprietary')
 depends=('java8-openjfx')
 makedepends=('unzip')
 provides=('abevjava')
-source=("https://www.nav.gov.hu/data/${cms}/abevjava_install-3.11.0-${subver}.noarch.rpm" # temporary fix for 3.12 as the link on nav.gov.hu is incorrect. TODO: clean up after NAV fixes the link on their site
+source=("https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava"
         'abevjava'
         'abevjavapath.cfg'
         'anyk.desktop'
         'setenv'
         'anyk.sysusers')
-md5sums=('127f09a178df966829582c5a289de1f4'
+md5sums=('c41a359524a1c2d0fa4cb240fd6ec234'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
