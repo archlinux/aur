@@ -1,0 +1,66 @@
+--- build.xml.orig	2022-01-20 10:53:16.417109453 +0100
++++ build.xml.mod	2022-01-20 10:51:11.613210989 +0100
+@@ -1024,7 +1024,7 @@
+     </if>
+   </target>
+ 
+-  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jdk-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
++  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
+     <mkdir dir="linux/work" />
+ 
+     <copy todir="linux/work" preservelastmodified="true">
+@@ -1111,54 +1111,6 @@
+     <copy file="linux/processing-pde.xml" todir="linux/work/lib" />
+     <copy file="linux/appdata.xml" todir="linux/work/lib" />
+     <copy file="linux/desktop.template" todir="linux/work/lib" />
+-
+-<!--
+-    Cannot use ant version of tar because it doesn't preserve properties.
+-    <untar compression="gzip"
+-           dest="linux/work"
+-           src="linux/jdk.tgz"
+-           overwrite="false"/>
+--->
+-
+-<!--
+-    http://www.gnu.org/software/tar/manual/html_section/transform.html
+--->
+-    <exec executable="tar" dir="linux">
+-      <!-- Change directory -->
+-      <!--
+-      <arg value="-C" />
+-      <arg value="linux/work" />
+-      <arg value="-xzpf" />
+-      -->
+-      <arg value="xfz" />
+-      <arg value="../${jdk.archive.path}"/>
+-    </exec>
+-
+-    <property name="jdk.dir" value="jdk-${jdk.detail}+${jdk.build}/" />
+-
+-    <exec executable="rsync" dir="linux">
+-      <arg value="-a" />
+-      <arg value="--delete" />
+-      <arg value="${jdk.dir}" />
+-      <arg value="work/java/" />
+-    </exec>
+-
+-    <!-- Remove unused JRE bloat. -->
+-    <delete failonerror="true">
+-      <fileset refid="jdk-optional-linux" />
+-    </delete>
+-
+-    <exec executable="rm">
+-      <arg value="-r"/>
+-      <arg line="linux/jdk-${jdk.detail}+${jdk.build}"/>
+-    </exec>
+-
+-    <!--
+-    <exec executable="rm">
+-      <arg value="-r"/>
+-      <arg line="${jfx.path.dist}"/>
+-    </exec>
+-    -->
+   </target>
+ 
+   <target name="linux-run" depends="linux-build"

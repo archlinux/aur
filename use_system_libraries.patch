@@ -1,0 +1,26 @@
+diff --git a/core/build.xml b/core/build.xml
+index db633fff9..f984ae71c 100644
+--- a/core/build.xml
++++ b/core/build.xml
+@@ -66,14 +66,14 @@
+     <pathelement location="library/gluegen-rt.jar" />
+ 
+     <!-- <pathelement location="library/javafx-swt.jar" /> -->
+-    <pathelement location="library/javafx.base.jar" />
+-    <pathelement location="library/javafx.controls.jar" />
+-    <pathelement location="library/javafx.fxml.jar" />
+-    <pathelement location="library/javafx.graphics.jar" />
+-    <pathelement location="library/javafx.media.jar" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.base.jar" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.controls.jar" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.fxml.jar" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.graphics.jar" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.media.jar" />
+     <!-- error? it's not a .jar, but is this how config is handled? [fry 210619] -->
+-    <pathelement location="library/javafx.properties" />
+-    <pathelement location="library/javafx.swing.jar" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.properties" />
++    <pathelement location="/usr/lib/jvm/java-17-openjdk/lib/javafx.swing.jar" />
+     <!-- <pathelement location="library/javafx.web.jar" /> -->
+   </path>
+ 
