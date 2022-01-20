@@ -10,6 +10,7 @@ pkgbase = molecule-containers
 	makedepends = python-setuptools-scm
 	makedepends = python-setuptools-scm-git-archive
 	makedepends = python-build
+	makedepends = python-install
 	depends = molecule
 	depends = python-ansible-compat
 	depends = python-selinux
