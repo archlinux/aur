@@ -2,7 +2,7 @@
 
 _pkgname='KDiskMark'
 pkgname="${_pkgname,,}-git"
-pkgver=2.1.1.r1.ge7ea532
+pkgver=2.3.0.r4.g9783700
 pkgrel=1
 pkgdesc='Simple disk benchmark tool'
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('GPL3')
 depends=('fio' 'hicolor-icon-theme' 'qt5-base' 'kauth')
 makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
 provides=("${_pkgname,,}")
+conflicts=("${_pkgname,,}")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
