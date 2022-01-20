@@ -1,7 +1,7 @@
---- a/build/build.xml
-+++ b/build/build.xml
-@@ -1008,7 +1008,7 @@
-       </if>
+--- build.xml.orig	2022-01-20 09:27:03.184138511 +0100
++++ build.xml.mod	2022-01-20 09:34:06.541856662 +0100
+@@ -982,7 +982,7 @@
+     </if>
    </target>
  
 -  <target name="linux-build" depends="ignore-tools, check-linux-arm32, check-linux-arm64, revision-check, linux-check-os, jdk-download, subprojects-build, subprojects-build-linux-arm32, subprojects-build-linux-arm64" description="Build Linux version">
@@ -9,7 +9,7 @@
      <mkdir dir="linux/work" />
  
      <copy todir="linux/work" preservelastmodified="true">
-@@ -1098,54 +1098,6 @@
+@@ -1048,47 +1048,6 @@
      <copy file="linux/processing-pde.xml" todir="linux/work/lib" />
      <copy file="linux/appdata.xml" todir="linux/work/lib" />
      <copy file="linux/desktop.template" todir="linux/work/lib" />
@@ -33,7 +33,7 @@
 -      <arg value="-xzpf" />
 -      -->
 -      <arg value="xfz" />
--      <arg value="../${jdk.tgz.path}"/>
+-      <arg value="../${jdk.archive.path}"/>
 -    </exec>
 -
 -    <property name="jdk.dir" value="jdk-${jdk.detail}+${jdk.build}/" />
@@ -54,13 +54,6 @@
 -      <arg value="-r"/>
 -      <arg line="linux/jdk-${jdk.detail}+${jdk.build}"/>
 -    </exec>
--
--    <!--
--    <exec executable="rm">
--      <arg value="-r"/>
--      <arg line="${jfx.path.dist}"/>
--    </exec>
--    -->
    </target>
  
    <target name="linux-run" depends="linux-build"

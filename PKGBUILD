@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=4.0b2.r37.g82fcf9521
+pkgver=4.0b3.r92.g2e7b548a7
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -14,19 +14,13 @@ makedepends=('ant' 'gendesk' 'unzip')
 options=(!strip)
 source=('https://download.processing.org/reference.zip'
         disable_update_check.patch
-        fix_theme_engine.patch
         no_ffmpeg_download.patch
         no_jdk_download.patch
-        no_jfx_download.patch
-        use_system_jdk.patch
         use_system_libraries.patch)
 sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '24b8a3e18b6e3a0de9422e4dbde46cceb91385f7ad6bdc89ec0a9614e082c977'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
-            '0ef5266575db0fe6bde436e5a3205ca848440b3006bccb4c20fe8d7b98951ee9'
-            'dc733c1cb5a41cb06ef0f9ea01d701fd9ac7713b5817b4fe79d7076a505a7c44'
-            'd2877ad894f76594675534026ee91581f6357a3892afe2fd0efcf86de746c7cb'
+            '4d8bd4730a75b0288eb20230fc766523aa1cdb105bcc7ec893c7215f047bc234'
             '15119264b6ae7b154f033261ba93535c2d1b5e2b9d849f3999dd7881cc9e49cb')
 
 pkgver() {
@@ -48,17 +42,12 @@ prepare() {
   mkdir -p $pkgname/java
   cp reference.zip $pkgname/java/
 
-  # Don't download JDK and JFX files during Ant's build process
+  # Don't download packages that can be provided via dependencies
   patch $pkgname/build/build.xml < no_jdk_download.patch
-  patch $pkgname/java/libraries/javafx/build.xml < no_jfx_download.patch
   patch $pkgname/build/shared/tools/MovieMaker/build.xml < no_ffmpeg_download.patch
 
   # Use system libraries during build process
   patch $pkgname/core/build.xml < use_system_libraries.patch
-  patch $pkgname/build/shared/tools/ThemeEngine/build.xml < fix_theme_engine.patch
-
-  # Use system JDK to start processing
-  patch $pkgname/build/linux/processing < use_system_jdk.patch
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
