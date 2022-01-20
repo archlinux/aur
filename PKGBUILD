@@ -1,5 +1,6 @@
-# Maintainer: Paul Nicholson <brenix@gmail.com>
-# Contributor: Wes Jackson <icebal dot 7 at gmail dot com>
+# Maintainer: George Raven <GeorgeRavenCommunity PLUS kubeadmbin AT pm DOT me>
+# Contributor: Paul Nicholson <brenix AT gmail DOT com>
+# Contributor: Wes Jackson <icebal DOT 7 AT gmail DOT com>
 
 pkgname=kubeadm-bin
 pkgdesc="Kubernetes.io kubeadm binary"
