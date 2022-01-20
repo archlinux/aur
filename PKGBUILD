@@ -2,8 +2,8 @@
 
 pkgname=textidote-bin
 _pkgname=textidote
-pkgver=0.8.2
-pkgrel=4
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
 arch=('any')
 url="https://github.com/sylvainhalle/textidote"
@@ -16,7 +16,7 @@ source=(
   "https://github.com/sylvainhalle/textidote/releases/download/v${pkgver}/textidote_${pkgver}_all.deb"
   "textidote-desktop"
   "textidote.desktop")
-sha256sums=('47b74937d338cfb93d16d1016d64da70d0f83294d12663804df9b4017683e37f'
+sha256sums=('d231f890fa7bdeccd1a142b8996261d0914ace4d56b88a5f5ae53e0e983fb691'
             'fe73b75d1c718f18af697b4b2e5a638bd6d7fb2098d368bd79129d902ad715d8'
             '087ea7481edecff88c27af50766b3691dfbbdee33dc5a9a97fb767fde6711c6a')
 

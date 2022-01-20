@@ -1,19 +1,18 @@
 pkgbase = textidote-bin
 	pkgdesc = Spelling, grammar and style checking on LaTeX documents
-	pkgver = 0.8.2
-	pkgrel = 4
+	pkgver = 0.8.3
+	pkgrel = 1
 	url = https://github.com/sylvainhalle/textidote
 	arch = any
 	license = GPL
 	depends = java-runtime-headless>=8
 	optdepends = libnotify: Error messages for textidote-desktop
 	provides = textidote
-	source = https://github.com/sylvainhalle/textidote/releases/download/v0.8.2/textidote_0.8.2_all.deb
+	source = https://github.com/sylvainhalle/textidote/releases/download/v0.8.3/textidote_0.8.3_all.deb
 	source = textidote-desktop
 	source = textidote.desktop
-	sha256sums = 47b74937d338cfb93d16d1016d64da70d0f83294d12663804df9b4017683e37f
+	sha256sums = d231f890fa7bdeccd1a142b8996261d0914ace4d56b88a5f5ae53e0e983fb691
 	sha256sums = fe73b75d1c718f18af697b4b2e5a638bd6d7fb2098d368bd79129d902ad715d8
 	sha256sums = 087ea7481edecff88c27af50766b3691dfbbdee33dc5a9a97fb767fde6711c6a
 
 pkgname = textidote-bin
-
