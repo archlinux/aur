@@ -10,10 +10,6 @@ post_install() {
 
   append_nginx_config
 
-  #start nginx
-  systemctl enable nginx
-  systemctl start nginx
-
   # link systemd service file
   ln -s /opt/anki-sync-server/plugins/systemd/anki-sync-server.service /usr/lib/systemd/system/
   systemctl enable anki-sync-server
@@ -35,6 +31,9 @@ post_remove(){
   # remove user (& group)
   getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
   getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
+
+  # remove systemd service symlink
+  rm -f '/usr/lib/systemd/system/anki-sync-server.service'
 
   echo "==================================================================="
   echo "rm -rf /opt/anki-sync-server to remove the database and cache files"
