@@ -1,7 +1,7 @@
 # Maintainer: lantw44 at gmail dot com
 
 pkgname=mingw-w64-gtk3
-pkgver=3.24.30
+pkgver=3.24.31
 pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
@@ -13,7 +13,6 @@ makedepends=(
   'mingw-w64-pkg-config'
   'mingw-w64-configure'
   'gobject-introspection'
-  'gtk-doc'
   'gtk-update-icon-cache'
   'python') # python is required to run gdbus-codegen
 depends=(
@@ -29,18 +28,21 @@ depends=(
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk+/${pkgver%.*}/gtk+-${pkgver}.tar.xz"
-  'gtk3-merge-3991-fix-autotools-build.patch'
-  "${pkgname}-${pkgver}-winpointer.h::https://gitlab.gnome.org/GNOME/gtk/-/raw/${pkgver}/gdk/win32/winpointer.h")
+  "${pkgname}-${pkgver}-gdkkeys-win32.h::https://gitlab.gnome.org/GNOME/gtk/-/raw/${pkgver}/gdk/win32/gdkkeys-win32.h"
+  'gtk3-merge-4292-fix-windows-build.patch')
 sha256sums=(
-  'ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9'
-  '17d1a2307655a648f9f321cd720e6207fa507ea7cae8f72445621dc8313ec3a6'
-  '66d01eb23bc87533f7838f298354567c52ce246d9c8270ed503d5d5b654c2cd0')
+  '423c3e7fdb4c459ee889e35fd4d71fd2623562541c1041b11c07e5ad1ff10bf9'
+  '540c9fbca675a787377b9ba832df1acb0e870088e0c0bb2484312dc9754797a0'
+  'cbcda384fb206388d69729cb8e81cbbf87db362d83292f36a42cde9f0c2e7cb5')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
 prepare() {
   cd "${srcdir}/gtk+-${pkgver}"
   local source_file
+  for source_file in "${source[@]:1:1}"; do
+    cp "${srcdir}/${source_file%%::*}" "gdk/win32/${source_file##*/}"
+  done
   for source_file in "${source[@]}"; do
     case "${source_file}" in
       *.patch)
@@ -48,14 +50,10 @@ prepare() {
         ;;
     esac
   done
-  for source_file in "${source[@]:2:1}"; do
-    cp "${srcdir}/${source_file%%::*}" "gdk/win32/${source_file##*/}"
-  done
 }
 
 build() {
   cd "${srcdir}/gtk+-${pkgver}"
-  NOCONFIGURE=1 ./autogen.sh
   for _arch in "${_architectures[@]}"; do
     export PKG_CONFIG="${_arch}-pkg-config"
     export PKG_CONFIG_FOR_BUILD="pkg-config"
