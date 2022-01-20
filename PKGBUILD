@@ -28,5 +28,5 @@ package() {
         install -m 755 ${pkg_case}.jar $pkgdir/usr/share/java/$pkgname/
         install -m 644 $srcdir/${pkg_case}.desktop $pkgdir/usr/share/applications/
         install -m 644 $srcdir/${pkg_case}.png $pkgdir/usr/share/pixmaps/
-        rm $startdir/${pkg_case}.jar
+        rm "$startdir/${pkg_case}-${pkgver}.jar"
 }
