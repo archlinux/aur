@@ -16,7 +16,7 @@ depends=('qt5-base' 'qt5-multimedia' 'qt5-svg' 'qt5-script' 'qt5-webkit' 'qt5-to
 depends+=(quazip)  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
 makedepends=(git)
-source=("git://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
+source=("git+https://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
         openboard.desktop)
 source+=(qchar.patch)
 source+=(quazip.patch)

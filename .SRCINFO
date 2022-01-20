@@ -24,7 +24,7 @@ pkgbase = openboard-git
 	depends = poppler
 	provides = openboard=1.6.1
 	conflicts = openboard
-	source = git://github.com/OpenBoard-org/OpenBoard.git#branch=master
+	source = git+https://github.com/OpenBoard-org/OpenBoard.git#branch=master
 	source = openboard.desktop
 	source = qchar.patch
 	source = quazip.patch
