@@ -1,0 +1,2124 @@
+From 6001da688f23a186cd28a9e9bd0013c28a3965d4 Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Thu, 20 Jan 2022 02:25:29 -0800
+Subject: [PATCH] Linux 5.16.2
+
+Squashed commit of the following:
+
+commit 5fd3e07fd10e79694bff69fff1d38e97b47e77f0
+Author: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Date:   Thu Jan 20 09:12:22 2022 +0100
+
+    Linux 5.16.2
+
+    Link: https://lore.kernel.org/r/20220118160452.384322748@linuxfoundation.org
+    Tested-by: Jeffrin Jose T <jeffrin@rajagiritech.edu.in>
+    Tested-by: Florian Fainelli <f.fainelli@gmail.com>
+    Tested-by: Jon Hunter <jonathanh@nvidia.com>
+    Tested-by: Shuah Khan <skhan@linuxfoundation.org>
+    Tested-by: Zan Aziz <zanaziz313@gmail.com>
+    Tested-by: Ron Economos <re@w6rz.net>
+    Tested-by: Rudi Heitbaum <rudi@heitbaum.com>
+    Tested-by: Linux Kernel Functional Testing <lkft@linaro.org>
+    Tested-by: Ronald Warsow <rwarsow@gmx.de>
+    Tested-by: Guenter Roeck <linux@roeck-us.net>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit a498f4a42b8193934a6888a4a548c1c107636941
+Author: Takashi Iwai <tiwai@suse.de>
+Date:   Wed Jan 5 17:03:21 2022 +0100
+
+    ALSA: hda/realtek: Re-order quirk entries for Lenovo
+
+    commit 2aac550da3257ab46e8c7944365eb4a79ccbb3a1 upstream.
+
+    The recent few quirk entries for Lenovo haven't been put in the right
+    order.  Let's arrange the table again.
+
+    Fixes: ad7cc2d41b7a ("ALSA: hda/realtek: Quirks to enable speaker output...")
+    Fixes: 6dc86976220c ("ALSA: hda/realtek: Add speaker fixup for some Yoga 15ITL5 devices")
+    Fixes: 8f4c90427a8f ("ALSA: hda/realtek: Add quirk for Legion Y9000X 2020")
+    Cc: <stable@vger.kernel.org>
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 21ad9041b6155ad5c9d8cab6ad72a0135750c957
+Author: Baole Fang <fbl718@163.com>
+Date:   Wed Jan 5 22:08:54 2022 +0800
+
+    ALSA: hda/realtek: Add quirk for Legion Y9000X 2020
+
+    commit 8f4c90427a8f0ca0fcdd89d8966fcdab35fb2d4c upstream.
+
+    Legion Y9000X 2020 has a speaker, but the speaker doesn't work.
+    This can be fixed by applying alc285_fixup_ideapad_s740_coef
+    to fix the speaker's coefficients.
+    Besides, to support the transition between the speaker and the headphone,
+    alc287_fixup_legion_15imhg05_speakers needs to be run.
+
+    Signed-off-by: Baole Fang <fbl718@163.com>
+    Cc: <stable@vger.kernel.org>
+    Link: https://lore.kernel.org/r/20220105140856.4855-1-fbl718@163.com
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 5053b09e0e906843de2fec8e435a6b6596e9fd0b
+Author: Sameer Pujar <spujar@nvidia.com>
+Date:   Thu Dec 23 17:23:49 2021 +0530
+
+    ALSA: hda/tegra: Fix Tegra194 HDA reset failure
+
+    commit d278dc9151a034674b31ffeda24cdfb0073570f3 upstream.
+
+    HDA regression is recently reported on Tegra194 based platforms.
+    This happens because "hda2codec_2x" reset does not really exist
+    in Tegra194 and it causes probe failure. All the HDA based audio
+    tests fail at the moment. This underlying issue is exposed by
+    commit c045ceb5a145 ("reset: tegra-bpmp: Handle errors in BPMP
+    response") which now checks return code of BPMP command response.
+    Fix this issue by skipping unavailable reset on Tegra194.
+
+    Cc: stable@vger.kernel.org
+    Signed-off-by: Sameer Pujar <spujar@nvidia.com>
+    Reviewed-by: Dmitry Osipenko <digetx@gmail.com>
+    Link: https://lore.kernel.org/r/1640260431-11613-2-git-send-email-spujar@nvidia.com
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit ea3fcb111c87197ea0f48431fbd7bef7302f91a7
+Author: Bart Kroon <bart@tarmack.eu>
+Date:   Mon Dec 13 19:20:43 2021 +0100
+
+    ALSA: hda: ALC287: Add Lenovo IdeaPad Slim 9i 14ITL5 speaker quirk
+
+    commit b81e9e5c723de936652653241d3dc4f33ae05e8c upstream.
+
+    The speaker fixup that is used for the Yoga 7 14ITL5 also applies to
+    the IdeaPad Slim 9i 14ITL5. The attached patch applies the quirk to
+    initialise the amplifier on the IdeaPad Slim 9i as well.
+
+    This is validated to work on my laptop.
+
+    [ corrected the quirk entry position by tiwai ]
+
+    Signed-off-by: Bart Kroon <bart@tarmack.eu>
+    Cc: <stable@vger.kernel.org>
+    Link: https://lore.kernel.org/r/JAG24R.7NLJGWBF4G8U@tarmack.eu
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 73990b61c549c5891b06fd58413af0d18b0ccb06
+Author: Christian Lachner <gladiac@gmail.com>
+Date:   Mon Jan 3 15:05:17 2022 +0100
+
+    ALSA: hda/realtek - Fix silent output on Gigabyte X570 Aorus Master after reboot from Windows
+
+    commit c1933008679586b20437280463110c967d66f865 upstream.
+
+    This patch addresses an issue where after rebooting from Windows into Linux
+    there would be no audio output.
+
+    It turns out that the Realtek Audio driver on Windows changes some coeffs
+    which are not being reset/reinitialized when rebooting the machine. As a
+    result, there is no audio output until these coeffs are being reset to
+    their initial state. This patch takes care of that by setting known-good
+    (initial) values to the coeffs.
+
+    We initially relied upon alc1220_fixup_clevo_p950() to fix some pins in the
+    connection list. However, it also sets coef 0x7 which does not need to be
+    touched. Furthermore, to prevent mixing device-specific quirks I introduced
+    a new alc1220_fixup_gb_x570() which is heavily based on
+    alc1220_fixup_clevo_p950() but does not set coeff 0x7 and fixes the coeffs
+    that are actually needed instead.
+
+    This new alc1220_fixup_gb_x570() is believed to also work for other boards,
+    like the Gigabyte X570 Aorus Extreme and the newer Gigabyte Aorus X570S
+    Master. However, as there is no way for me to test these I initially only
+    enable this new behaviour for the mainboard I have which is the Gigabyte
+    X570(non-S) Aorus Master.
+
+    I tested this patch on the 5.15 branch as well as on master and it is
+    working well for me.
+
+    BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=205275
+    Signed-off-by: Christian Lachner <gladiac@gmail.com>
+    Fixes: 0d45e86d2267d ("ALSA: hda/realtek - Fix silent output on Gigabyte X570 Aorus Master")
+    Cc: <stable@vger.kernel.org>
+    Link: https://lore.kernel.org/r/20220103140517.30273-2-gladiac@gmail.com
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 2ac0c35159be625c1eda692ee86cc980c15cab15
+Author: Kai-Heng Feng <kai.heng.feng@canonical.com>
+Date:   Fri Dec 24 11:50:13 2021 +0800
+
+    ALSA: hda/realtek: Use ALC285_FIXUP_HP_GPIO_LED on another HP laptop
+
+    commit 08977fe8cfb7d9fe9337470eec4843081cf3a76d upstream.
+
+    The audio mute and mic mute LEDs don't work, so use the quirk to make
+    them work.
+
+    Signed-off-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+    Cc: <stable@vger.kernel.org>
+    Link: https://lore.kernel.org/r/20211224035015.310068-1-kai.heng.feng@canonical.com
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 08968ce43f9df46b9d45457918ac1c0f0227686a
+Author: Arie Geiger <arsgeiger@gmail.com>
+Date:   Thu Dec 23 15:28:57 2021 -0800
+
+    ALSA: hda/realtek: Add speaker fixup for some Yoga 15ITL5 devices
+
+    commit 6dc86976220cc904e87ee58e4be19dd90d6a36d5 upstream.
+
+    This patch adds another possible subsystem ID for the ALC287 used by
+    the Lenovo Yoga 15ITL5.
+    It uses the same initalization as the others.
+    This patch has been tested and works for my device.
+
+    Signed-off-by: Arie Geiger <arsgeiger@gmail.com>
+    Cc: <stable@vger.kernel.org>
+    Link: https://lore.kernel.org/r/20211223232857.30741-1-arsgeiger@gmail.com
+    Signed-off-by: Takashi Iwai <tiwai@suse.de>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 7faa2fb7bcd1bf5453f8328cafa50757c7250878
+Author: Dario Petrillo <dario.pk1@gmail.com>
+Date:   Mon Jan 10 00:44:41 2022 +0100
+
+    perf annotate: Avoid TUI crash when navigating in the annotation of recursive functions
+
+    commit d5962fb7d69073bf68fb647531cfd4f0adf84be3 upstream.
+
+    In 'perf report', entering a recursive function from inside of itself
+    (either directly of indirectly through some other function) results in
+    calling symbol__annotate2 multiple() times, and freeing the whole
+    disassembly when exiting from the innermost instance.
+
+    The first issue causes the function's disassembly to be duplicated, and
+    the latter a heap use-after-free (and crash) when trying to access the
+    disassembly again.
+
+    I reproduced the bug on perf 5.11.22 (Ubuntu 20.04.3 LTS) and 5.16.rc8
+    with the following testcase (compile with gcc recursive.c -o recursive).
+    To reproduce:
+
+    - perf record ./recursive
+    - perf report
+    - enter fibonacci and annotate it
+    - move the cursor on one of the "callq fibonacci" instructions and press enter
+      - at this point there will be two copies of the function in the disassembly
+    - go back by pressing q, and perf will crash
+
+      #include <stdio.h>
+
+      int fibonacci(int n)
+      {
+          if(n <= 2) return 1;
+          return fibonacci(n-1) + fibonacci(n-2);
+      }
+
+      int main()
+      {
+          printf("%d\n", fibonacci(40));
+      }
+
+    This patch addresses the issue by annotating a function and freeing the
+    associated memory on exit only if no annotation is already present, so
+    that a recursive function is only annotated on entry.
+
+    Signed-off-by: Dario Petrillo <dario.pk1@gmail.com>
+    Tested-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+    Cc: Alexander Shishkin <alexander.shishkin@linux.intel.com>
+    Cc: Jiri Olsa <jolsa@redhat.com>
+    Cc: Mark Rutland <mark.rutland@arm.com>
+    Cc: Namhyung Kim <namhyung@kernel.org>
+    Cc: Peter Zijlstra <peterz@infradead.org>
+    Cc: stable@kernel.org
+    Link: http://lore.kernel.org/lkml/20220109234441.325106-1-dario.pk1@gmail.com
+    Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 1f21b193707e1f2a1e2e5a8b1515fb896f5742ea
+Author: Johan Hovold <johan@kernel.org>
+Date:   Wed Dec 1 14:25:26 2021 +0100
+
+    firmware: qemu_fw_cfg: fix kobject leak in probe error path
+
+    commit 47a1db8e797da01a1309bf42e0c0d771d4e4d4f3 upstream.
+
+    An initialised kobject must be freed using kobject_put() to avoid
+    leaking associated resources (e.g. the object name).
+
+    Commit fe3c60684377 ("firmware: Fix a reference count leak.") "fixed"
+    the leak in the first error path of the file registration helper but
+    left the second one unchanged. This "fix" would however result in a NULL
+    pointer dereference due to the release function also removing the never
+    added entry from the fw_cfg_entry_cache list. This has now been
+    addressed.
+
+    Fix the remaining kobject leak by restoring the common error path and
+    adding the missing kobject_put().
+
+    Fixes: 75f3e8e47f38 ("firmware: introduce sysfs driver for QEMU's fw_cfg device")
+    Cc: stable@vger.kernel.org      # 4.6
+    Cc: Gabriel Somlo <somlo@cmu.edu>
+    Signed-off-by: Johan Hovold <johan@kernel.org>
+    Link: https://lore.kernel.org/r/20211201132528.30025-3-johan@kernel.org
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit fd8a2f12de64f456ed2450f0fd6bb0df6bbee462
+Author: Johan Hovold <johan@kernel.org>
+Date:   Wed Dec 1 14:25:25 2021 +0100
+
+    firmware: qemu_fw_cfg: fix NULL-pointer deref on duplicate entries
+
+    commit d3e305592d69e21e36b76d24ca3c01971a2d09be upstream.
+
+    Commit fe3c60684377 ("firmware: Fix a reference count leak.") "fixed"
+    a kobject leak in the file registration helper by properly calling
+    kobject_put() for the entry in case registration of the object fails
+    (e.g. due to a name collision).
+
+    This would however result in a NULL pointer dereference when the
+    release function tries to remove the never added entry from the
+    fw_cfg_entry_cache list.
+
+    Fix this by moving the list-removal out of the release function.
+
+    Note that the offending commit was one of the benign looking umn.edu
+    fixes which was reviewed but not reverted. [1][2]
+
+    [1] https://lore.kernel.org/r/202105051005.49BFABCE@keescook
+    [2] https://lore.kernel.org/all/YIg7ZOZvS3a8LjSv@kroah.com
+
+    Fixes: fe3c60684377 ("firmware: Fix a reference count leak.")
+    Cc: stable@vger.kernel.org      # 5.8
+    Cc: Qiushi Wu <wu000273@umn.edu>
+    Cc: Kees Cook <keescook@chromium.org>
+    Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+    Signed-off-by: Johan Hovold <johan@kernel.org>
+    Link: https://lore.kernel.org/r/20211201132528.30025-2-johan@kernel.org
+    Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 261f47d05859fafaa0586c07568edbaf5cf61a0c
+Author: Johan Hovold <johan@kernel.org>
+Date:   Wed Dec 1 14:25:27 2021 +0100
+
+    firmware: qemu_fw_cfg: fix sysfs information leak
+
+    commit 1b656e9aad7f4886ed466094d1dc5ee4dd900d20 upstream.
+
+    Make sure to always NUL-terminate file names retrieved from the firmware
+    to avoid accessing data beyond the entry slab buffer and exposing it
+    through sysfs in case the firmware data is corrupt.
+
+    Fixes: 75f3e8e47f38 ("firmware: introduce sysfs driver for QEMU's fw_cfg device")
+    Cc: stable@vger.kernel.org      # 4.6
+    Cc: Gabriel Somlo <somlo@cmu.edu>
+    Signed-off-by: Johan Hovold <johan@kernel.org>
+    Link: https://lore.kernel.org/r/20211201132528.30025-4-johan@kernel.org
+    Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 105ee59fc79edf9f2297eeb5cb539cdd174186c0
+Author: Larry Finger <Larry.Finger@lwfinger.net>
+Date:   Wed Dec 15 11:11:05 2021 -0600
+
+    rtlwifi: rtl8192cu: Fix WARNING when calling local_irq_restore() with interrupts enabled
+
+    commit 8b144dedb928e4e2f433a328d58f44c3c098d63e upstream.
+
+    Syzbot reports the following WARNING:
+
+    [200~raw_local_irq_restore() called with IRQs enabled
+    WARNING: CPU: 1 PID: 1206 at kernel/locking/irqflag-debug.c:10
+       warn_bogus_irq_restore+0x1d/0x20 kernel/locking/irqflag-debug.c:10
+
+    Hardware initialization for the rtl8188cu can run for as long as 350 ms,
+    and the routine may be called with interrupts disabled. To avoid locking
+    the machine for this long, the current routine saves the interrupt flags
+    and enables local interrupts. The problem is that it restores the flags
+    at the end without disabling local interrupts first.
+
+    This patch fixes commit a53268be0cb9 ("rtlwifi: rtl8192cu: Fix too long
+    disable of IRQs").
+
+    Reported-by: syzbot+cce1ee31614c171f5595@syzkaller.appspotmail.com
+    Cc: stable@vger.kernel.org
+    Fixes: a53268be0cb9 ("rtlwifi: rtl8192cu: Fix too long disable of IRQs")
+    Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
+    Signed-off-by: Kalle Valo <kvalo@kernel.org>
+    Link: https://lore.kernel.org/r/20211215171105.20623-1-Larry.Finger@lwfinger.net
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 230d1fa69ff8069953ffa7639a660219016ee665
+Author: Johan Hovold <johan@kernel.org>
+Date:   Tue Oct 26 11:55:11 2021 +0200
+
+    media: uvcvideo: fix division by zero at stream start
+
+    commit 8aa637bf6d70d2fb2ad4d708d8b9dd02b1c095df upstream.
+
+    Add the missing bulk-endpoint max-packet sanity check to
+    uvc_video_start_transfer() to avoid division by zero in
+    uvc_alloc_urb_buffers() in case a malicious device has broken
+    descriptors (or when doing descriptor fuzz testing).
+
+    Note that USB core will reject URBs submitted for endpoints with zero
+    wMaxPacketSize but that drivers doing packet-size calculations still
+    need to handle this (cf. commit 2548288b4fb0 ("USB: Fix: Don't skip
+    endpoint descriptors with maxpacket=0")).
+
+    Fixes: c0efd232929c ("V4L/DVB (8145a): USB Video Class driver")
+    Cc: stable@vger.kernel.org      # 2.6.26
+    Signed-off-by: Johan Hovold <johan@kernel.org>
+    Reviewed-by: Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>
+    Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+    Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit c923276ddd49a299fdbd7858bcf15d7a1700932d
+Author: Javier Martinez Canillas <javierm@redhat.com>
+Date:   Mon Jan 10 10:56:25 2022 +0100
+
+    video: vga16fb: Only probe for EGA and VGA 16 color graphic cards
+
+    commit 0499f419b76f94ede08304aad5851144813ac55c upstream.
+
+    The vga16fb framebuffer driver only supports Enhanced Graphics Adapter
+    (EGA) and Video Graphics Array (VGA) 16 color graphic cards.
+
+    But it doesn't check if the adapter is one of those or if a VGA16 mode
+    is used. This means that the driver will be probed even if a VESA BIOS
+    Extensions (VBE) or Graphics Output Protocol (GOP) interface is used.
+
+    This issue has been present for a long time but it was only exposed by
+    commit d391c5827107 ("drivers/firmware: move x86 Generic System
+    Framebuffers support") since the platform device registration to match
+    the {vesa,efi}fb drivers is done later as a consequence of that change.
+
+    All non-x86 architectures though treat orig_video_isVGA as a boolean so
+    only do the supported video mode check for x86 and not for other arches.
+
+    Link: https://bugzilla.kernel.org/show_bug.cgi?id=215001
+    Fixes: d391c5827107 ("drivers/firmware: move x86 Generic System Framebuffers support")
+    Reported-by: Kris Karas <bugs-a21@moonlit-rail.com>
+    Cc: <stable@vger.kernel.org> # 5.15.x
+    Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
+    Tested-by: Kris Karas <bugs-a21@moonlit-rail.com>
+    Acked-by: Maxime Ripard <maxime@cerno.tech>
+    Link: https://patchwork.freedesktop.org/patch/msgid/20220110095625.278836-3-javierm@redhat.com
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 0b1a05b219fe9da9384139474b8de867ab240cf1
+Author: Dominique Martinet <asmadeus@codewreck.org>
+Date:   Mon Jan 10 20:10:31 2022 +0900
+
+    9p: fix enodata when reading growing file
+
+    commit 19d1c32652bbbf406063025354845fdddbcecd3a upstream.
+
+    Reading from a file that was just extended by a write, but the write had
+    not yet reached the server would return ENODATA as illustrated by this
+    command:
+    $ xfs_io -c 'open -ft test' -c 'w 4096 1000' -c 'r 0 1000'
+    wrote 1000/1000 bytes at offset 4096
+    1000.000000 bytes, 1 ops; 0.0001 sec (5.610 MiB/sec and 5882.3529 ops/sec)
+    pread: No data available
+
+    Fix this case by having netfs assume zeroes when reads from server come
+    short like AFS and CEPH do
+
+    Link: https://lkml.kernel.org/r/20220110111444.926753-1-asmadeus@codewreck.org
+    Cc: stable@vger.kernel.org
+    Fixes: eb497943fa21 ("9p: Convert to using the netfs helper lib to do reads and caching")
+    Co-authored-by: David Howells <dhowells@redhat.com>
+    Reviewed-by: David Howells <dhowells@redhat.com>
+    Tested-by: David Howells <dhowells@redhat.com>
+    Signed-off-by: Dominique Martinet <asmadeus@codewreck.org>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 4947e1735a8780843ea47ea65eb994fa82d72a39
+Author: Christian Brauner <christian.brauner@ubuntu.com>
+Date:   Mon Nov 29 12:44:34 2021 +0100
+
+    9p: only copy valid iattrs in 9P2000.L setattr implementation
+
+    commit 3cb6ee991496b67ee284c6895a0ba007e2d7bac3 upstream.
+
+    The 9P2000.L setattr method v9fs_vfs_setattr_dotl() copies struct iattr
+    values without checking whether they are valid causing unitialized
+    values to be copied. The 9P2000 setattr method v9fs_vfs_setattr() method
+    gets this right. Check whether struct iattr fields are valid first
+    before copying in v9fs_vfs_setattr_dotl() too and make sure that all
+    other fields are set to 0 apart from {g,u}id which should be set to
+    INVALID_{G,U}ID. This ensure that they can be safely sent over the wire
+    or printed for debugging later on.
+
+    Link: https://lkml.kernel.org/r/20211129114434.3637938-1-brauner@kernel.org
+    Link: https://lkml.kernel.org/r/000000000000a0d53f05d1c72a4c%40google.com
+    Cc: Eric Van Hensbergen <ericvh@gmail.com>
+    Cc: Latchesar Ionkov <lucho@ionkov.net>
+    Cc: Dominique Martinet <asmadeus@codewreck.org>
+    Cc: stable@kernel.org
+    Cc: v9fs-developer@lists.sourceforge.net
+    Reported-by: syzbot+dfac92a50024b54acaa4@syzkaller.appspotmail.com
+    Signed-off-by: Christian Brauner <christian.brauner@ubuntu.com>
+    [Dominique: do not set a/mtime with just ATTR_A/MTIME as discussed]
+    Signed-off-by: Dominique Martinet <asmadeus@codewreck.org>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit cda396e5ce51dbe231f0af1d399aef40d1de7b3a
+Author: Chuck Lever <chuck.lever@oracle.com>
+Date:   Tue Dec 21 11:52:06 2021 -0500
+
+    NFSD: Fix zero-length NFSv3 WRITEs
+
+    commit 6a2f774424bfdcc2df3e17de0cefe74a4269cad5 upstream.
+
+    The Linux NFS server currently responds to a zero-length NFSv3 WRITE
+    request with NFS3ERR_IO. It responds to a zero-length NFSv4 WRITE
+    with NFS4_OK and count of zero.
+
+    RFC 1813 says of the WRITE procedure's @count argument:
+
+    count
+             The number of bytes of data to be written. If count is
+             0, the WRITE will succeed and return a count of 0,
+             barring errors due to permissions checking.
+
+    RFC 8881 has similar language for NFSv4, though NFSv4 removed the
+    explicit @count argument because that value is already contained in
+    the opaque payload array.
+
+    The synthetic client pynfs's WRT4 and WRT15 tests do emit zero-
+    length WRITEs to exercise this spec requirement. Commit fdec6114ee1f
+    ("nfsd4: zero-length WRITE should succeed") addressed the same
+    problem there with the same fix.
+
+    But interestingly the Linux NFS client does not appear to emit zero-
+    length WRITEs, instead squelching them. I'm not aware of a test that
+    can generate such WRITEs for NFSv3, so I wrote a naive C program to
+    generate a zero-length WRITE and test this fix.
+
+    Fixes: 8154ef2776aa ("NFSD: Clean up legacy NFS WRITE argument XDR decoders")
+    Reported-by: Trond Myklebust <trond.myklebust@hammerspace.com>
+    Signed-off-by: Chuck Lever <chuck.lever@oracle.com>
+    Cc: stable@vger.kernel.org
+    Signed-off-by: Chuck Lever <chuck.lever@oracle.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit f3f2900c93e21e988579a992021704ef3d502599
+Author: Sibi Sankar <sibis@codeaurora.org>
+Date:   Fri Jun 25 00:03:25 2021 +0530
+
+    remoteproc: qcom: pas: Add missing power-domain "mxc" for CDSP
+
+    commit dd585d9bfbf06fd08a6326c82978be1f06e7d1bd upstream.
+
+    Add missing power-domain "mxc" required by CDSP PAS remoteproc on SM8350
+    SoC.
+
+    Fixes: e8b4e9a21af7 ("remoteproc: qcom: pas: Add SM8350 PAS remoteprocs")
+    Signed-off-by: Sibi Sankar <sibis@codeaurora.org>
+    Cc: stable@vger.kernel.org
+    Tested-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+    Signed-off-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+    Link: https://lore.kernel.org/r/1624559605-29847-1-git-send-email-sibis@codeaurora.org
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 07f5f305ed81e677fa719cceba8eee8290f49810
+Author: Eric Farman <farman@linux.ibm.com>
+Date:   Mon Dec 13 22:05:50 2021 +0100
+
+    KVM: s390: Clarify SIGP orders versus STOP/RESTART
+
+    commit 812de04661c4daa7ac385c0dfd62594540538034 upstream.
+
+    With KVM_CAP_S390_USER_SIGP, there are only five Signal Processor
+    orders (CONDITIONAL EMERGENCY SIGNAL, EMERGENCY SIGNAL, EXTERNAL CALL,
+    SENSE, and SENSE RUNNING STATUS) which are intended for frequent use
+    and thus are processed in-kernel. The remainder are sent to userspace
+    with the KVM_CAP_S390_USER_SIGP capability. Of those, three orders
+    (RESTART, STOP, and STOP AND STORE STATUS) have the potential to
+    inject work back into the kernel, and thus are asynchronous.
+
+    Let's look for those pending IRQs when processing one of the in-kernel
+    SIGP orders, and return BUSY (CC2) if one is in process. This is in
+    agreement with the Principles of Operation, which states that only one
+    order can be "active" on a CPU at a time.
+
+    Cc: stable@vger.kernel.org
+    Suggested-by: David Hildenbrand <david@redhat.com>
+    Signed-off-by: Eric Farman <farman@linux.ibm.com>
+    Reviewed-by: Christian Borntraeger <borntraeger@linux.ibm.com>
+    Acked-by: David Hildenbrand <david@redhat.com>
+    Link: https://lore.kernel.org/r/20211213210550.856213-2-farman@linux.ibm.com
+    [borntraeger@linux.ibm.com: add stable tag]
+    Signed-off-by: Christian Borntraeger <borntraeger@linux.ibm.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 60af2066bc5d7816627f1595ce4c3e6fd5ffe0ae
+Author: Li RongQing <lirongqing@baidu.com>
+Date:   Thu Nov 4 19:56:13 2021 +0800
+
+    KVM: x86: don't print when fail to read/write pv eoi memory
+
+    commit ce5977b181c1613072eafbc7546bcb6c463ea68c upstream.
+
+    If guest gives MSR_KVM_PV_EOI_EN a wrong value, this printk() will
+    be trigged, and kernel log is spammed with the useless message
+
+    Fixes: 0d88800d5472 ("kvm: x86: ioapic and apic debug macros cleanup")
+    Reported-by: Vitaly Kuznetsov <vkuznets@redhat.com>
+    Reviewed-by: Vitaly Kuznetsov <vkuznets@redhat.com>
+    Signed-off-by: Li RongQing <lirongqing@baidu.com>
+    Cc: stable@kernel.org
+    Message-Id: <1636026974-50555-1-git-send-email-lirongqing@baidu.com>
+    Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit ec985a8dfbe9c023d8ebd15b5f83a899b9572494
+Author: Sean Christopherson <seanjc@google.com>
+Date:   Thu Nov 11 02:07:24 2021 +0000
+
+    KVM: x86: Register Processor Trace interrupt hook iff PT enabled in guest
+
+    commit f4b027c5c8199abd4fb6f00d67d380548dbfdfa8 upstream.
+
+    Override the Processor Trace (PT) interrupt handler for guest mode if and
+    only if PT is configured for host+guest mode, i.e. is being used
+    independently by both host and guest.  If PT is configured for system
+    mode, the host fully controls PT and must handle all events.
+
+    Fixes: 8479e04e7d6b ("KVM: x86: Inject PMI for KVM guest")
+    Reported-by: Alexander Shishkin <alexander.shishkin@linux.intel.com>
+    Reported-by: Artem Kashkanov <artem.kashkanov@intel.com>
+    Signed-off-by: Sean Christopherson <seanjc@google.com>
+    Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+    Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+    Cc: stable@vger.kernel.org
+    Link: https://lore.kernel.org/r/20211111020738.2512932-4-seanjc@google.com
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 51d24f081b90e51255b42ea34ababead7bcba91b
+Author: Sean Christopherson <seanjc@google.com>
+Date:   Thu Nov 11 02:07:23 2021 +0000
+
+    KVM: x86: Register perf callbacks after calling vendor's hardware_setup()
+
+    commit 5c7df80e2ce4c954c80eb4ecf5fa002a5ff5d2d6 upstream.
+
+    Wait to register perf callbacks until after doing vendor hardaware setup.
+    VMX's hardware_setup() configures Intel Processor Trace (PT) mode, and a
+    future fix to register the Intel PT guest interrupt hook if and only if
+    Intel PT is exposed to the guest will consume the configured PT mode.
+
+    Delaying registration to hardware setup is effectively a nop as KVM's perf
+    hooks all pivot on the per-CPU current_vcpu, which is non-NULL only when
+    KVM is handling an IRQ/NMI in a VM-Exit path.  I.e. current_vcpu will be
+    NULL throughout both kvm_arch_init() and kvm_arch_hardware_setup().
+
+    Signed-off-by: Sean Christopherson <seanjc@google.com>
+    Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+    Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+    Cc: stable@vger.kernel.org
+    Link: https://lore.kernel.org/r/20211111020738.2512932-3-seanjc@google.com
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 68fe61050dc2424733b735db7c9bbc1aed9fa317
+Author: Sean Christopherson <seanjc@google.com>
+Date:   Thu Nov 11 02:07:22 2021 +0000
+
+    perf: Protect perf_guest_cbs with RCU
+
+    commit ff083a2d972f56bebfd82409ca62e5dfce950961 upstream.
+
+    Protect perf_guest_cbs with RCU to fix multiple possible errors.  Luckily,
+    all paths that read perf_guest_cbs already require RCU protection, e.g. to
+    protect the callback chains, so only the direct perf_guest_cbs touchpoints
+    need to be modified.
+
+    Bug #1 is a simple lack of WRITE_ONCE/READ_ONCE behavior to ensure
+    perf_guest_cbs isn't reloaded between a !NULL check and a dereference.
+    Fixed via the READ_ONCE() in rcu_dereference().
+
+    Bug #2 is that on weakly-ordered architectures, updates to the callbacks
+    themselves are not guaranteed to be visible before the pointer is made
+    visible to readers.  Fixed by the smp_store_release() in
+    rcu_assign_pointer() when the new pointer is non-NULL.
+
+    Bug #3 is that, because the callbacks are global, it's possible for
+    readers to run in parallel with an unregisters, and thus a module
+    implementing the callbacks can be unloaded while readers are in flight,
+    resulting in a use-after-free.  Fixed by a synchronize_rcu() call when
+    unregistering callbacks.
+
+    Bug #1 escaped notice because it's extremely unlikely a compiler will
+    reload perf_guest_cbs in this sequence.  perf_guest_cbs does get reloaded
+    for future derefs, e.g. for ->is_user_mode(), but the ->is_in_guest()
+    guard all but guarantees the consumer will win the race, e.g. to nullify
+    perf_guest_cbs, KVM has to completely exit the guest and teardown down
+    all VMs before KVM start its module unload / unregister sequence.  This
+    also makes it all but impossible to encounter bug #3.
+
+    Bug #2 has not been a problem because all architectures that register
+    callbacks are strongly ordered and/or have a static set of callbacks.
+
+    But with help, unloading kvm_intel can trigger bug #1 e.g. wrapping
+    perf_guest_cbs with READ_ONCE in perf_misc_flags() while spamming
+    kvm_intel module load/unload leads to:
+
+      BUG: kernel NULL pointer dereference, address: 0000000000000000
+      #PF: supervisor read access in kernel mode
+      #PF: error_code(0x0000) - not-present page
+      PGD 0 P4D 0
+      Oops: 0000 [#1] PREEMPT SMP
+      CPU: 6 PID: 1825 Comm: stress Not tainted 5.14.0-rc2+ #459
+      Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 0.0.0 02/06/2015
+      RIP: 0010:perf_misc_flags+0x1c/0x70
+      Call Trace:
+       perf_prepare_sample+0x53/0x6b0
+       perf_event_output_forward+0x67/0x160
+       __perf_event_overflow+0x52/0xf0
+       handle_pmi_common+0x207/0x300
+       intel_pmu_handle_irq+0xcf/0x410
+       perf_event_nmi_handler+0x28/0x50
+       nmi_handle+0xc7/0x260
+       default_do_nmi+0x6b/0x170
+       exc_nmi+0x103/0x130
+       asm_exc_nmi+0x76/0xbf
+
+    Fixes: 39447b386c84 ("perf: Enhance perf to allow for guest statistic collection from host")
+    Signed-off-by: Sean Christopherson <seanjc@google.com>
+    Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
+    Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
+    Cc: stable@vger.kernel.org
+    Link: https://lore.kernel.org/r/20211111020738.2512932-2-seanjc@google.com
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 8b1530a3772ae5b49c6d8d171fd3146bb947430f
+Author: Jamie Hill-Daniel <jamie@hill-daniel.co.uk>
+Date:   Tue Jan 18 08:06:04 2022 +0100
+
+    vfs: fs_context: fix up param length parsing in legacy_parse_param
+
+    commit 722d94847de29310e8aa03fcbdb41fc92c521756 upstream.
+
+    The "PAGE_SIZE - 2 - size" calculation in legacy_parse_param() is an
+    unsigned type so a large value of "size" results in a high positive
+    value instead of a negative value as expected.  Fix this by getting rid
+    of the subtraction.
+
+    Signed-off-by: Jamie Hill-Daniel <jamie@hill-daniel.co.uk>
+    Signed-off-by: William Liu <willsroot@protonmail.com>
+    Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+    Tested-by: Thadeu Lima de Souza Cascardo <cascardo@canonical.com>
+    Acked-by: Dan Carpenter <dan.carpenter@oracle.com>
+    Acked-by: Al Viro <viro@zeniv.linux.org.uk>
+    Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit af8ad4718278236442e6a8b031ae5a99096ec98f
+Author: Stephen Boyd <swboyd@chromium.org>
+Date:   Tue Nov 16 22:54:54 2021 -0800
+
+    remoteproc: qcom: pil_info: Don't memcpy_toio more than is provided
+
+    commit fdc12231d885119cc2e2b4f3e0fbba3155f37a56 upstream.
+
+    If the string passed into qcom_pil_info_store() isn't as long as
+    PIL_RELOC_NAME_LEN we'll try to copy the string assuming the length is
+    PIL_RELOC_NAME_LEN to the io space and go beyond the bounds of the
+    string. Let's only copy as many byes as the string is long, ignoring the
+    NUL terminator.
+
+    This fixes the following KASAN error:
+
+     BUG: KASAN: global-out-of-bounds in __memcpy_toio+0x124/0x140
+     Read of size 1 at addr ffffffd35086e386 by task rmtfs/2392
+
+     CPU: 2 PID: 2392 Comm: rmtfs Tainted: G        W         5.16.0-rc1-lockdep+ #10
+     Hardware name: Google Lazor (rev3+) with KB Backlight (DT)
+     Call trace:
+      dump_backtrace+0x0/0x410
+      show_stack+0x24/0x30
+      dump_stack_lvl+0x7c/0xa0
+      print_address_description+0x78/0x2bc
+      kasan_report+0x160/0x1a0
+      __asan_report_load1_noabort+0x44/0x50
+      __memcpy_toio+0x124/0x140
+      qcom_pil_info_store+0x298/0x358 [qcom_pil_info]
+      q6v5_start+0xdf0/0x12e0 [qcom_q6v5_mss]
+      rproc_start+0x178/0x3a0
+      rproc_boot+0x5f0/0xb90
+      state_store+0x78/0x1bc
+      dev_attr_store+0x70/0x90
+      sysfs_kf_write+0xf4/0x118
+      kernfs_fop_write_iter+0x208/0x300
+      vfs_write+0x55c/0x804
+      ksys_pwrite64+0xc8/0x134
+      __arm64_compat_sys_aarch32_pwrite64+0xc4/0xdc
+      invoke_syscall+0x78/0x20c
+      el0_svc_common+0x11c/0x1f0
+      do_el0_svc_compat+0x50/0x60
+      el0_svc_compat+0x5c/0xec
+      el0t_32_sync_handler+0xc0/0xf0
+      el0t_32_sync+0x1a4/0x1a8
+
+     The buggy address belongs to the variable:
+      .str.59+0x6/0xffffffffffffec80 [qcom_q6v5_mss]
+
+     Memory state around the buggy address:
+      ffffffd35086e280: 00 00 00 00 02 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+      ffffffd35086e300: 00 02 f9 f9 f9 f9 f9 f9 00 00 00 06 f9 f9 f9 f9
+     >ffffffd35086e380: 06 f9 f9 f9 05 f9 f9 f9 00 00 00 00 00 06 f9 f9
+                        ^
+      ffffffd35086e400: f9 f9 f9 f9 01 f9 f9 f9 04 f9 f9 f9 00 00 01 f9
+      ffffffd35086e480: f9 f9 f9 f9 00 00 00 00 00 00 00 01 f9 f9 f9 f9
+
+    Fixes: 549b67da660d ("remoteproc: qcom: Introduce helper to store pil info in IMEM")
+    Signed-off-by: Stephen Boyd <swboyd@chromium.org>
+    Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+    Signed-off-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+    Link: https://lore.kernel.org/r/20211117065454.4142936-1-swboyd@chromium.org
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 931b93ac1fce734afa6e4ba3b1e5a05e169db32b
+Author: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Date:   Mon Dec 27 19:09:18 2021 +0100
+
+    orangefs: Fix the size of a memory allocation in orangefs_bufmap_alloc()
+
+    commit 40a74870b2d1d3d44e13b3b73c6571dd34f5614d upstream.
+
+    'buffer_index_array' really looks like a bitmap. So it should be allocated
+    as such.
+    When kzalloc is called, a number of bytes is expected, but a number of
+    longs is passed instead.
+
+    In get(), if not enough memory is allocated, un-allocated memory may be
+    read or written.
+
+    So use bitmap_zalloc() to safely allocate the correct memory size and
+    avoid un-expected behavior.
+
+    While at it, change the corresponding kfree() into bitmap_free() to keep
+    the semantic.
+
+    Fixes: ea2c9c9f6574 ("orangefs: bufmap rewrite")
+    Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+    Signed-off-by: Mike Marshall <hubcap@omnibond.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 16a1622c34243f7060ad5bf13fc34788f7304a22
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Wed Jan 5 12:48:16 2022 -0600
+
+    drm/amd/display: explicitly set is_dsc_supported to false before use
+
+    commit 63ad5371cd1e379519395c49a4b6a652c36c98e5 upstream.
+
+    When UBSAN is enabled a case is shown on unplugging the display that
+    this variable hasn't been initialized by `update_dsc_caps`, presumably
+    when the display was unplugged it wasn't copied from the DPCD.
+
+    Link: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1956497
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+    Acked-by: Alex Deucher <alexander.deucher@amd.com>
+    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+commit 3bddfeab42abf0cda1ffa181722befaf664a4453
+Author: NeilBrown <neilb@suse.de>
+Date:   Mon Jan 17 09:07:26 2022 +1100
+
+    devtmpfs regression fix: reconfigure on each mount
+
+    commit a6097180d884ddab769fb25588ea8598589c218c upstream.
+
+    Prior to Linux v5.4 devtmpfs used mount_single() which treats the given
+    mount options as "remount" options, so it updates the configuration of
+    the single super_block on each mount.
+
+    Since that was changed, the mount options used for devtmpfs are ignored.
+    This is a regression which affect systemd - which mounts devtmpfs with
+    "-o mode=755,size=4m,nr_inodes=1m".
+
+    This patch restores the "remount" effect by calling reconfigure_single()
+
+    Fixes: d401727ea0d7 ("devtmpfs: don't mix {ramfs,shmem}_fill_super() with mount_single()")
+    Acked-by: Christian Brauner <christian.brauner@ubuntu.com>
+    Cc: Al Viro <viro@zeniv.linux.org.uk>
+    Signed-off-by: NeilBrown <neilb@suse.de>
+    Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+---
+ Makefile                                      |  2 +-
+ arch/arm/kernel/perf_callchain.c              | 17 ++++--
+ arch/arm64/kernel/perf_callchain.c            | 18 ++++--
+ arch/csky/kernel/perf_callchain.c             |  6 +-
+ arch/nds32/kernel/perf_event_cpu.c            | 17 ++++--
+ arch/riscv/kernel/perf_callchain.c            |  7 ++-
+ arch/s390/kvm/interrupt.c                     |  7 +++
+ arch/s390/kvm/kvm-s390.c                      |  9 ++-
+ arch/s390/kvm/kvm-s390.h                      |  1 +
+ arch/s390/kvm/sigp.c                          | 28 ++++++++++
+ arch/x86/events/core.c                        | 17 ++++--
+ arch/x86/events/intel/core.c                  |  9 ++-
+ arch/x86/include/asm/kvm_host.h               |  1 +
+ arch/x86/kvm/lapic.c                          | 18 ++----
+ arch/x86/kvm/vmx/vmx.c                        |  1 +
+ arch/x86/kvm/x86.c                            | 12 ++--
+ drivers/base/devtmpfs.c                       |  7 +++
+ drivers/firmware/qemu_fw_cfg.c                | 20 +++----
+ .../gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c |  1 +
+ drivers/media/usb/uvc/uvc_video.c             |  4 ++
+ .../wireless/realtek/rtlwifi/rtl8192cu/hw.c   |  1 +
+ drivers/remoteproc/qcom_pil_info.c            |  2 +-
+ drivers/remoteproc/qcom_q6v5_pas.c            |  1 +
+ drivers/video/fbdev/vga16fb.c                 | 24 ++++++++
+ fs/9p/vfs_addr.c                              |  5 ++
+ fs/9p/vfs_inode_dotl.c                        | 29 +++++++---
+ fs/fs_context.c                               |  2 +-
+ fs/nfsd/nfs3proc.c                            |  6 +-
+ fs/nfsd/nfsproc.c                             |  5 --
+ fs/orangefs/orangefs-bufmap.c                 |  7 +--
+ fs/super.c                                    |  4 +-
+ include/linux/fs_context.h                    |  2 +
+ include/linux/perf_event.h                    | 13 ++++-
+ kernel/events/core.c                          | 13 ++++-
+ sound/pci/hda/hda_tegra.c                     | 43 +++++++++++---
+ sound/pci/hda/patch_realtek.c                 | 56 +++++++++++++++++--
+ tools/perf/ui/browsers/annotate.c             | 23 +++++---
+ 37 files changed, 322 insertions(+), 116 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 75b0550e3237..f966f5295c54 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0
+ VERSION = 5
+ PATCHLEVEL = 16
+-SUBLEVEL = 1
++SUBLEVEL = 2
+ EXTRAVERSION =
+ NAME = Gobble Gobble
+ 
+diff --git a/arch/arm/kernel/perf_callchain.c b/arch/arm/kernel/perf_callchain.c
+index 3b69a76d341e..1626dfc6f6ce 100644
+--- a/arch/arm/kernel/perf_callchain.c
++++ b/arch/arm/kernel/perf_callchain.c
+@@ -62,9 +62,10 @@ user_backtrace(struct frame_tail __user *tail,
+ void
+ perf_callchain_user(struct perf_callchain_entry_ctx *entry, struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct frame_tail __user *tail;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -98,9 +99,10 @@ callchain_trace(struct stackframe *fr,
+ void
+ perf_callchain_kernel(struct perf_callchain_entry_ctx *entry, struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct stackframe fr;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -111,18 +113,21 @@ perf_callchain_kernel(struct perf_callchain_entry_ctx *entry, struct pt_regs *re
+ 
+ unsigned long perf_instruction_pointer(struct pt_regs *regs)
+ {
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
+-		return perf_guest_cbs->get_guest_ip();
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
++
++	if (guest_cbs && guest_cbs->is_in_guest())
++		return guest_cbs->get_guest_ip();
+ 
+ 	return instruction_pointer(regs);
+ }
+ 
+ unsigned long perf_misc_flags(struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	int misc = 0;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
+-		if (perf_guest_cbs->is_user_mode())
++	if (guest_cbs && guest_cbs->is_in_guest()) {
++		if (guest_cbs->is_user_mode())
+ 			misc |= PERF_RECORD_MISC_GUEST_USER;
+ 		else
+ 			misc |= PERF_RECORD_MISC_GUEST_KERNEL;
+diff --git a/arch/arm64/kernel/perf_callchain.c b/arch/arm64/kernel/perf_callchain.c
+index 4a72c2727309..86d9f2013172 100644
+--- a/arch/arm64/kernel/perf_callchain.c
++++ b/arch/arm64/kernel/perf_callchain.c
+@@ -102,7 +102,9 @@ compat_user_backtrace(struct compat_frame_tail __user *tail,
+ void perf_callchain_user(struct perf_callchain_entry_ctx *entry,
+ 			 struct pt_regs *regs)
+ {
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
++
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -147,9 +149,10 @@ static bool callchain_trace(void *data, unsigned long pc)
+ void perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
+ 			   struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct stackframe frame;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -160,18 +163,21 @@ void perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
+ 
+ unsigned long perf_instruction_pointer(struct pt_regs *regs)
+ {
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
+-		return perf_guest_cbs->get_guest_ip();
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
++
++	if (guest_cbs && guest_cbs->is_in_guest())
++		return guest_cbs->get_guest_ip();
+ 
+ 	return instruction_pointer(regs);
+ }
+ 
+ unsigned long perf_misc_flags(struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	int misc = 0;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
+-		if (perf_guest_cbs->is_user_mode())
++	if (guest_cbs && guest_cbs->is_in_guest()) {
++		if (guest_cbs->is_user_mode())
+ 			misc |= PERF_RECORD_MISC_GUEST_USER;
+ 		else
+ 			misc |= PERF_RECORD_MISC_GUEST_KERNEL;
+diff --git a/arch/csky/kernel/perf_callchain.c b/arch/csky/kernel/perf_callchain.c
+index ab55e98ee8f6..35318a635a5f 100644
+--- a/arch/csky/kernel/perf_callchain.c
++++ b/arch/csky/kernel/perf_callchain.c
+@@ -86,10 +86,11 @@ static unsigned long user_backtrace(struct perf_callchain_entry_ctx *entry,
+ void perf_callchain_user(struct perf_callchain_entry_ctx *entry,
+ 			 struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	unsigned long fp = 0;
+ 
+ 	/* C-SKY does not support virtualization. */
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
++	if (guest_cbs && guest_cbs->is_in_guest())
+ 		return;
+ 
+ 	fp = regs->regs[4];
+@@ -110,10 +111,11 @@ void perf_callchain_user(struct perf_callchain_entry_ctx *entry,
+ void perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
+ 			   struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct stackframe fr;
+ 
+ 	/* C-SKY does not support virtualization. */
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		pr_warn("C-SKY does not support perf in guest mode!");
+ 		return;
+ 	}
+diff --git a/arch/nds32/kernel/perf_event_cpu.c b/arch/nds32/kernel/perf_event_cpu.c
+index 0ce6f9f307e6..f38791960781 100644
+--- a/arch/nds32/kernel/perf_event_cpu.c
++++ b/arch/nds32/kernel/perf_event_cpu.c
+@@ -1363,6 +1363,7 @@ void
+ perf_callchain_user(struct perf_callchain_entry_ctx *entry,
+ 		    struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	unsigned long fp = 0;
+ 	unsigned long gp = 0;
+ 	unsigned long lp = 0;
+@@ -1371,7 +1372,7 @@ perf_callchain_user(struct perf_callchain_entry_ctx *entry,
+ 
+ 	leaf_fp = 0;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -1479,9 +1480,10 @@ void
+ perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
+ 		      struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct stackframe fr;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -1493,20 +1495,23 @@ perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
+ 
+ unsigned long perf_instruction_pointer(struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
++
+ 	/* However, NDS32 does not support virtualization */
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
+-		return perf_guest_cbs->get_guest_ip();
++	if (guest_cbs && guest_cbs->is_in_guest())
++		return guest_cbs->get_guest_ip();
+ 
+ 	return instruction_pointer(regs);
+ }
+ 
+ unsigned long perf_misc_flags(struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	int misc = 0;
+ 
+ 	/* However, NDS32 does not support virtualization */
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
+-		if (perf_guest_cbs->is_user_mode())
++	if (guest_cbs && guest_cbs->is_in_guest()) {
++		if (guest_cbs->is_user_mode())
+ 			misc |= PERF_RECORD_MISC_GUEST_USER;
+ 		else
+ 			misc |= PERF_RECORD_MISC_GUEST_KERNEL;
+diff --git a/arch/riscv/kernel/perf_callchain.c b/arch/riscv/kernel/perf_callchain.c
+index 0bb1854dce83..8ecfc4c128bc 100644
+--- a/arch/riscv/kernel/perf_callchain.c
++++ b/arch/riscv/kernel/perf_callchain.c
+@@ -56,10 +56,11 @@ static unsigned long user_backtrace(struct perf_callchain_entry_ctx *entry,
+ void perf_callchain_user(struct perf_callchain_entry_ctx *entry,
+ 			 struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	unsigned long fp = 0;
+ 
+ 	/* RISC-V does not support perf in guest mode. */
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
++	if (guest_cbs && guest_cbs->is_in_guest())
+ 		return;
+ 
+ 	fp = regs->s0;
+@@ -78,8 +79,10 @@ static bool fill_callchain(void *entry, unsigned long pc)
+ void perf_callchain_kernel(struct perf_callchain_entry_ctx *entry,
+ 			   struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
++
+ 	/* RISC-V does not support perf in guest mode. */
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		pr_warn("RISC-V does not support perf in guest mode!");
+ 		return;
+ 	}
+diff --git a/arch/s390/kvm/interrupt.c b/arch/s390/kvm/interrupt.c
+index c3bd993fdd0c..0576d5c99138 100644
+--- a/arch/s390/kvm/interrupt.c
++++ b/arch/s390/kvm/interrupt.c
+@@ -2115,6 +2115,13 @@ int kvm_s390_is_stop_irq_pending(struct kvm_vcpu *vcpu)
+ 	return test_bit(IRQ_PEND_SIGP_STOP, &li->pending_irqs);
+ }
+ 
++int kvm_s390_is_restart_irq_pending(struct kvm_vcpu *vcpu)
++{
++	struct kvm_s390_local_interrupt *li = &vcpu->arch.local_int;
++
++	return test_bit(IRQ_PEND_RESTART, &li->pending_irqs);
++}
++
+ void kvm_s390_clear_stop_irq(struct kvm_vcpu *vcpu)
+ {
+ 	struct kvm_s390_local_interrupt *li = &vcpu->arch.local_int;
+diff --git a/arch/s390/kvm/kvm-s390.c b/arch/s390/kvm/kvm-s390.c
+index 14a18ba5ff2c..ef299aad4009 100644
+--- a/arch/s390/kvm/kvm-s390.c
++++ b/arch/s390/kvm/kvm-s390.c
+@@ -4645,10 +4645,15 @@ int kvm_s390_vcpu_stop(struct kvm_vcpu *vcpu)
+ 		}
+ 	}
+ 
+-	/* SIGP STOP and SIGP STOP AND STORE STATUS has been fully processed */
++	/*
++	 * Set the VCPU to STOPPED and THEN clear the interrupt flag,
++	 * now that the SIGP STOP and SIGP STOP AND STORE STATUS orders
++	 * have been fully processed. This will ensure that the VCPU
++	 * is kept BUSY if another VCPU is inquiring with SIGP SENSE.
++	 */
++	kvm_s390_set_cpuflags(vcpu, CPUSTAT_STOPPED);
+ 	kvm_s390_clear_stop_irq(vcpu);
+ 
+-	kvm_s390_set_cpuflags(vcpu, CPUSTAT_STOPPED);
+ 	__disable_ibs_on_vcpu(vcpu);
+ 
+ 	for (i = 0; i < online_vcpus; i++) {
+diff --git a/arch/s390/kvm/kvm-s390.h b/arch/s390/kvm/kvm-s390.h
+index c07a050d757d..1876ab0c293f 100644
+--- a/arch/s390/kvm/kvm-s390.h
++++ b/arch/s390/kvm/kvm-s390.h
+@@ -427,6 +427,7 @@ void kvm_s390_destroy_adapters(struct kvm *kvm);
+ int kvm_s390_ext_call_pending(struct kvm_vcpu *vcpu);
+ extern struct kvm_device_ops kvm_flic_ops;
+ int kvm_s390_is_stop_irq_pending(struct kvm_vcpu *vcpu);
++int kvm_s390_is_restart_irq_pending(struct kvm_vcpu *vcpu);
+ void kvm_s390_clear_stop_irq(struct kvm_vcpu *vcpu);
+ int kvm_s390_set_irq_state(struct kvm_vcpu *vcpu,
+ 			   void __user *buf, int len);
+diff --git a/arch/s390/kvm/sigp.c b/arch/s390/kvm/sigp.c
+index cf4de80bd541..8aaee2892ec3 100644
+--- a/arch/s390/kvm/sigp.c
++++ b/arch/s390/kvm/sigp.c
+@@ -276,6 +276,34 @@ static int handle_sigp_dst(struct kvm_vcpu *vcpu, u8 order_code,
+ 	if (!dst_vcpu)
+ 		return SIGP_CC_NOT_OPERATIONAL;
+ 
++	/*
++	 * SIGP RESTART, SIGP STOP, and SIGP STOP AND STORE STATUS orders
++	 * are processed asynchronously. Until the affected VCPU finishes
++	 * its work and calls back into KVM to clear the (RESTART or STOP)
++	 * interrupt, we need to return any new non-reset orders "busy".
++	 *
++	 * This is important because a single VCPU could issue:
++	 *  1) SIGP STOP $DESTINATION
++	 *  2) SIGP SENSE $DESTINATION
++	 *
++	 * If the SIGP SENSE would not be rejected as "busy", it could
++	 * return an incorrect answer as to whether the VCPU is STOPPED
++	 * or OPERATING.
++	 */
++	if (order_code != SIGP_INITIAL_CPU_RESET &&
++	    order_code != SIGP_CPU_RESET) {
++		/*
++		 * Lockless check. Both SIGP STOP and SIGP (RE)START
++		 * properly synchronize everything while processing
++		 * their orders, while the guest cannot observe a
++		 * difference when issuing other orders from two
++		 * different VCPUs.
++		 */
++		if (kvm_s390_is_stop_irq_pending(dst_vcpu) ||
++		    kvm_s390_is_restart_irq_pending(dst_vcpu))
++			return SIGP_CC_BUSY;
++	}
++
+ 	switch (order_code) {
+ 	case SIGP_SENSE:
+ 		vcpu->stat.instruction_sigp_sense++;
+diff --git a/arch/x86/events/core.c b/arch/x86/events/core.c
+index 38b2c779146f..32cec290d3ad 100644
+--- a/arch/x86/events/core.c
++++ b/arch/x86/events/core.c
+@@ -2768,10 +2768,11 @@ static bool perf_hw_regs(struct pt_regs *regs)
+ void
+ perf_callchain_kernel(struct perf_callchain_entry_ctx *entry, struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct unwind_state state;
+ 	unsigned long addr;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* TODO: We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -2871,10 +2872,11 @@ perf_callchain_user32(struct pt_regs *regs, struct perf_callchain_entry_ctx *ent
+ void
+ perf_callchain_user(struct perf_callchain_entry_ctx *entry, struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	struct stack_frame frame;
+ 	const struct stack_frame __user *fp;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
++	if (guest_cbs && guest_cbs->is_in_guest()) {
+ 		/* TODO: We don't support guest os callchain now */
+ 		return;
+ 	}
+@@ -2951,18 +2953,21 @@ static unsigned long code_segment_base(struct pt_regs *regs)
+ 
+ unsigned long perf_instruction_pointer(struct pt_regs *regs)
+ {
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest())
+-		return perf_guest_cbs->get_guest_ip();
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
++
++	if (guest_cbs && guest_cbs->is_in_guest())
++		return guest_cbs->get_guest_ip();
+ 
+ 	return regs->ip + code_segment_base(regs);
+ }
+ 
+ unsigned long perf_misc_flags(struct pt_regs *regs)
+ {
++	struct perf_guest_info_callbacks *guest_cbs = perf_get_guest_cbs();
+ 	int misc = 0;
+ 
+-	if (perf_guest_cbs && perf_guest_cbs->is_in_guest()) {
+-		if (perf_guest_cbs->is_user_mode())
++	if (guest_cbs && guest_cbs->is_in_guest()) {
++		if (guest_cbs->is_user_mode())
+ 			misc |= PERF_RECORD_MISC_GUEST_USER;
+ 		else
+ 			misc |= PERF_RECORD_MISC_GUEST_KERNEL;
+diff --git a/arch/x86/events/intel/core.c b/arch/x86/events/intel/core.c
+index ec6444f2c9dc..1e33c75ffa26 100644
+--- a/arch/x86/events/intel/core.c
++++ b/arch/x86/events/intel/core.c
+@@ -2835,6 +2835,7 @@ static int handle_pmi_common(struct pt_regs *regs, u64 status)
+ {
+ 	struct perf_sample_data data;
+ 	struct cpu_hw_events *cpuc = this_cpu_ptr(&cpu_hw_events);
++	struct perf_guest_info_callbacks *guest_cbs;
+ 	int bit;
+ 	int handled = 0;
+ 	u64 intel_ctrl = hybrid(cpuc->pmu, intel_ctrl);
+@@ -2901,9 +2902,11 @@ static int handle_pmi_common(struct pt_regs *regs, u64 status)
+ 	 */
+ 	if (__test_and_clear_bit(GLOBAL_STATUS_TRACE_TOPAPMI_BIT, (unsigned long *)&status)) {
+ 		handled++;
+-		if (unlikely(perf_guest_cbs && perf_guest_cbs->is_in_guest() &&
+-			perf_guest_cbs->handle_intel_pt_intr))
+-			perf_guest_cbs->handle_intel_pt_intr();
++
++		guest_cbs = perf_get_guest_cbs();
++		if (unlikely(guest_cbs && guest_cbs->is_in_guest() &&
++			     guest_cbs->handle_intel_pt_intr))
++			guest_cbs->handle_intel_pt_intr();
+ 		else
+ 			intel_pt_interrupt();
+ 	}
+diff --git a/arch/x86/include/asm/kvm_host.h b/arch/x86/include/asm/kvm_host.h
+index 555f4de47ef2..59fc339ba528 100644
+--- a/arch/x86/include/asm/kvm_host.h
++++ b/arch/x86/include/asm/kvm_host.h
+@@ -1519,6 +1519,7 @@ struct kvm_x86_init_ops {
+ 	int (*disabled_by_bios)(void);
+ 	int (*check_processor_compatibility)(void);
+ 	int (*hardware_setup)(void);
++	bool (*intel_pt_intr_in_guest)(void);
+ 
+ 	struct kvm_x86_ops *runtime_ops;
+ };
+diff --git a/arch/x86/kvm/lapic.c b/arch/x86/kvm/lapic.c
+index f206fc35deff..7c009867d6f2 100644
+--- a/arch/x86/kvm/lapic.c
++++ b/arch/x86/kvm/lapic.c
+@@ -676,31 +676,25 @@ static inline bool pv_eoi_enabled(struct kvm_vcpu *vcpu)
+ static bool pv_eoi_get_pending(struct kvm_vcpu *vcpu)
+ {
+ 	u8 val;
+-	if (pv_eoi_get_user(vcpu, &val) < 0) {
+-		printk(KERN_WARNING "Can't read EOI MSR value: 0x%llx\n",
+-			   (unsigned long long)vcpu->arch.pv_eoi.msr_val);
++	if (pv_eoi_get_user(vcpu, &val) < 0)
+ 		return false;
+-	}
++
+ 	return val & KVM_PV_EOI_ENABLED;
+ }
+ 
+ static void pv_eoi_set_pending(struct kvm_vcpu *vcpu)
+ {
+-	if (pv_eoi_put_user(vcpu, KVM_PV_EOI_ENABLED) < 0) {
+-		printk(KERN_WARNING "Can't set EOI MSR value: 0x%llx\n",
+-			   (unsigned long long)vcpu->arch.pv_eoi.msr_val);
++	if (pv_eoi_put_user(vcpu, KVM_PV_EOI_ENABLED) < 0)
+ 		return;
+-	}
++
+ 	__set_bit(KVM_APIC_PV_EOI_PENDING, &vcpu->arch.apic_attention);
+ }
+ 
+ static void pv_eoi_clr_pending(struct kvm_vcpu *vcpu)
+ {
+-	if (pv_eoi_put_user(vcpu, KVM_PV_EOI_DISABLED) < 0) {
+-		printk(KERN_WARNING "Can't clear EOI MSR value: 0x%llx\n",
+-			   (unsigned long long)vcpu->arch.pv_eoi.msr_val);
++	if (pv_eoi_put_user(vcpu, KVM_PV_EOI_DISABLED) < 0)
+ 		return;
+-	}
++
+ 	__clear_bit(KVM_APIC_PV_EOI_PENDING, &vcpu->arch.apic_attention);
+ }
+ 
+diff --git a/arch/x86/kvm/vmx/vmx.c b/arch/x86/kvm/vmx/vmx.c
+index 0dbf94eb954f..7f4e6f625abc 100644
+--- a/arch/x86/kvm/vmx/vmx.c
++++ b/arch/x86/kvm/vmx/vmx.c
+@@ -7905,6 +7905,7 @@ static struct kvm_x86_init_ops vmx_init_ops __initdata = {
+ 	.disabled_by_bios = vmx_disabled_by_bios,
+ 	.check_processor_compatibility = vmx_check_processor_compat,
+ 	.hardware_setup = hardware_setup,
++	.intel_pt_intr_in_guest = vmx_pt_mode_is_host_guest,
+ 
+ 	.runtime_ops = &vmx_x86_ops,
+ };
+diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
+index e50e97ac4408..0b5c61bb24a1 100644
+--- a/arch/x86/kvm/x86.c
++++ b/arch/x86/kvm/x86.c
+@@ -8560,7 +8560,7 @@ static struct perf_guest_info_callbacks kvm_guest_cbs = {
+ 	.is_in_guest		= kvm_is_in_guest,
+ 	.is_user_mode		= kvm_is_user_mode,
+ 	.get_guest_ip		= kvm_get_guest_ip,
+-	.handle_intel_pt_intr	= kvm_handle_intel_pt_intr,
++	.handle_intel_pt_intr	= NULL,
+ };
+ 
+ #ifdef CONFIG_X86_64
+@@ -8676,8 +8676,6 @@ int kvm_arch_init(void *opaque)
+ 
+ 	kvm_timer_init();
+ 
+-	perf_register_guest_info_callbacks(&kvm_guest_cbs);
+-
+ 	if (boot_cpu_has(X86_FEATURE_XSAVE)) {
+ 		host_xcr0 = xgetbv(XCR_XFEATURE_ENABLED_MASK);
+ 		supported_xcr0 = host_xcr0 & KVM_SUPPORTED_XCR0;
+@@ -8709,7 +8707,6 @@ void kvm_arch_exit(void)
+ 		clear_hv_tscchange_cb();
+ #endif
+ 	kvm_lapic_exit();
+-	perf_unregister_guest_info_callbacks(&kvm_guest_cbs);
+ 
+ 	if (!boot_cpu_has(X86_FEATURE_CONSTANT_TSC))
+ 		cpufreq_unregister_notifier(&kvmclock_cpufreq_notifier_block,
+@@ -11269,6 +11266,10 @@ int kvm_arch_hardware_setup(void *opaque)
+ 	memcpy(&kvm_x86_ops, ops->runtime_ops, sizeof(kvm_x86_ops));
+ 	kvm_ops_static_call_update();
+ 
++	if (ops->intel_pt_intr_in_guest && ops->intel_pt_intr_in_guest())
++		kvm_guest_cbs.handle_intel_pt_intr = kvm_handle_intel_pt_intr;
++	perf_register_guest_info_callbacks(&kvm_guest_cbs);
++
+ 	if (!kvm_cpu_cap_has(X86_FEATURE_XSAVES))
+ 		supported_xss = 0;
+ 
+@@ -11296,6 +11297,9 @@ int kvm_arch_hardware_setup(void *opaque)
+ 
+ void kvm_arch_hardware_unsetup(void)
+ {
++	perf_unregister_guest_info_callbacks(&kvm_guest_cbs);
++	kvm_guest_cbs.handle_intel_pt_intr = NULL;
++
+ 	static_call(kvm_x86_hardware_unsetup)();
+ }
+ 
+diff --git a/drivers/base/devtmpfs.c b/drivers/base/devtmpfs.c
+index 8be352ab4ddb..fa13ad49d211 100644
+--- a/drivers/base/devtmpfs.c
++++ b/drivers/base/devtmpfs.c
+@@ -59,8 +59,15 @@ static struct dentry *public_dev_mount(struct file_system_type *fs_type, int fla
+ 		      const char *dev_name, void *data)
+ {
+ 	struct super_block *s = mnt->mnt_sb;
++	int err;
++
+ 	atomic_inc(&s->s_active);
+ 	down_write(&s->s_umount);
++	err = reconfigure_single(s, flags, data);
++	if (err < 0) {
++		deactivate_locked_super(s);
++		return ERR_PTR(err);
++	}
+ 	return dget(s->s_root);
+ }
+ 
+diff --git a/drivers/firmware/qemu_fw_cfg.c b/drivers/firmware/qemu_fw_cfg.c
+index 172c751a4f6c..f08e056ed0ae 100644
+--- a/drivers/firmware/qemu_fw_cfg.c
++++ b/drivers/firmware/qemu_fw_cfg.c
+@@ -388,9 +388,7 @@ static void fw_cfg_sysfs_cache_cleanup(void)
+ 	struct fw_cfg_sysfs_entry *entry, *next;
+ 
+ 	list_for_each_entry_safe(entry, next, &fw_cfg_entry_cache, list) {
+-		/* will end up invoking fw_cfg_sysfs_cache_delist()
+-		 * via each object's release() method (i.e. destructor)
+-		 */
++		fw_cfg_sysfs_cache_delist(entry);
+ 		kobject_put(&entry->kobj);
+ 	}
+ }
+@@ -448,7 +446,6 @@ static void fw_cfg_sysfs_release_entry(struct kobject *kobj)
+ {
+ 	struct fw_cfg_sysfs_entry *entry = to_entry(kobj);
+ 
+-	fw_cfg_sysfs_cache_delist(entry);
+ 	kfree(entry);
+ }
+ 
+@@ -601,20 +598,18 @@ static int fw_cfg_register_file(const struct fw_cfg_file *f)
+ 	/* set file entry information */
+ 	entry->size = be32_to_cpu(f->size);
+ 	entry->select = be16_to_cpu(f->select);
+-	memcpy(entry->name, f->name, FW_CFG_MAX_FILE_PATH);
++	strscpy(entry->name, f->name, FW_CFG_MAX_FILE_PATH);
+ 
+ 	/* register entry under "/sys/firmware/qemu_fw_cfg/by_key/" */
+ 	err = kobject_init_and_add(&entry->kobj, &fw_cfg_sysfs_entry_ktype,
+ 				   fw_cfg_sel_ko, "%d", entry->select);
+-	if (err) {
+-		kobject_put(&entry->kobj);
+-		return err;
+-	}
++	if (err)
++		goto err_put_entry;
+ 
+ 	/* add raw binary content access */
+ 	err = sysfs_create_bin_file(&entry->kobj, &fw_cfg_sysfs_attr_raw);
+ 	if (err)
+-		goto err_add_raw;
++		goto err_del_entry;
+ 
+ 	/* try adding "/sys/firmware/qemu_fw_cfg/by_name/" symlink */
+ 	fw_cfg_build_symlink(fw_cfg_fname_kset, &entry->kobj, entry->name);
+@@ -623,9 +618,10 @@ static int fw_cfg_register_file(const struct fw_cfg_file *f)
+ 	fw_cfg_sysfs_cache_enlist(entry);
+ 	return 0;
+ 
+-err_add_raw:
++err_del_entry:
+ 	kobject_del(&entry->kobj);
+-	kfree(entry);
++err_put_entry:
++	kobject_put(&entry->kobj);
+ 	return err;
+ }
+ 
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index e727f1dd2a9a..05f7ffd6a28d 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6065,6 +6065,7 @@ static void update_dsc_caps(struct amdgpu_dm_connector *aconnector,
+ 							struct dsc_dec_dpcd_caps *dsc_caps)
+ {
+ 	stream->timing.flags.DSC = 0;
++	dsc_caps->is_dsc_supported = false;
+ 
+ 	if (aconnector->dc_link && sink->sink_signal == SIGNAL_TYPE_DISPLAY_PORT) {
+ 		dc_dsc_parse_dsc_dpcd(aconnector->dc_link->ctx->dc,
+diff --git a/drivers/media/usb/uvc/uvc_video.c b/drivers/media/usb/uvc/uvc_video.c
+index 9f37eaf28ce7..1b4cc934109e 100644
+--- a/drivers/media/usb/uvc/uvc_video.c
++++ b/drivers/media/usb/uvc/uvc_video.c
+@@ -1963,6 +1963,10 @@ static int uvc_video_start_transfer(struct uvc_streaming *stream,
+ 		if (ep == NULL)
+ 			return -EIO;
+ 
++		/* Reject broken descriptors. */
++		if (usb_endpoint_maxp(&ep->desc) == 0)
++			return -EIO;
++
+ 		ret = uvc_init_video_bulk(stream, ep, gfp_flags);
+ 	}
+ 
+diff --git a/drivers/net/wireless/realtek/rtlwifi/rtl8192cu/hw.c b/drivers/net/wireless/realtek/rtlwifi/rtl8192cu/hw.c
+index 6312fddd9c00..eaba66113328 100644
+--- a/drivers/net/wireless/realtek/rtlwifi/rtl8192cu/hw.c
++++ b/drivers/net/wireless/realtek/rtlwifi/rtl8192cu/hw.c
+@@ -1000,6 +1000,7 @@ int rtl92cu_hw_init(struct ieee80211_hw *hw)
+ 	_initpabias(hw);
+ 	rtl92c_dm_init(hw);
+ exit:
++	local_irq_disable();
+ 	local_irq_restore(flags);
+ 	return err;
+ }
+diff --git a/drivers/remoteproc/qcom_pil_info.c b/drivers/remoteproc/qcom_pil_info.c
+index 7c007dd7b200..aca21560e20b 100644
+--- a/drivers/remoteproc/qcom_pil_info.c
++++ b/drivers/remoteproc/qcom_pil_info.c
+@@ -104,7 +104,7 @@ int qcom_pil_info_store(const char *image, phys_addr_t base, size_t size)
+ 	return -ENOMEM;
+ 
+ found_unused:
+-	memcpy_toio(entry, image, PIL_RELOC_NAME_LEN);
++	memcpy_toio(entry, image, strnlen(image, PIL_RELOC_NAME_LEN));
+ found_existing:
+ 	/* Use two writel() as base is only aligned to 4 bytes on odd entries */
+ 	writel(base, entry + PIL_RELOC_NAME_LEN);
+diff --git a/drivers/remoteproc/qcom_q6v5_pas.c b/drivers/remoteproc/qcom_q6v5_pas.c
+index 03857dc9cdc1..120c16b14223 100644
+--- a/drivers/remoteproc/qcom_q6v5_pas.c
++++ b/drivers/remoteproc/qcom_q6v5_pas.c
+@@ -652,6 +652,7 @@ static const struct adsp_data sm8350_cdsp_resource = {
+ 	.auto_boot = true,
+ 	.proxy_pd_names = (char*[]){
+ 		"cx",
++		"mxc",
+ 		NULL
+ 	},
+ 	.load_state = "cdsp",
+diff --git a/drivers/video/fbdev/vga16fb.c b/drivers/video/fbdev/vga16fb.c
+index e2757ff1c23d..96e312a3eac7 100644
+--- a/drivers/video/fbdev/vga16fb.c
++++ b/drivers/video/fbdev/vga16fb.c
+@@ -184,6 +184,25 @@ static inline void setindex(int index)
+ 	vga_io_w(VGA_GFX_I, index);
+ }
+ 
++/* Check if the video mode is supported by the driver */
++static inline int check_mode_supported(void)
++{
++	/* non-x86 architectures treat orig_video_isVGA as a boolean flag */
++#if defined(CONFIG_X86)
++	/* only EGA and VGA in 16 color graphic mode are supported */
++	if (screen_info.orig_video_isVGA != VIDEO_TYPE_EGAC &&
++	    screen_info.orig_video_isVGA != VIDEO_TYPE_VGAC)
++		return -ENODEV;
++
++	if (screen_info.orig_video_mode != 0x0D &&	/* 320x200/4 (EGA) */
++	    screen_info.orig_video_mode != 0x0E &&	/* 640x200/4 (EGA) */
++	    screen_info.orig_video_mode != 0x10 &&	/* 640x350/4 (EGA) */
++	    screen_info.orig_video_mode != 0x12)	/* 640x480/4 (VGA) */
++		return -ENODEV;
++#endif
++	return 0;
++}
++
+ static void vga16fb_pan_var(struct fb_info *info, 
+ 			    struct fb_var_screeninfo *var)
+ {
+@@ -1422,6 +1441,11 @@ static int __init vga16fb_init(void)
+ 
+ 	vga16fb_setup(option);
+ #endif
++
++	ret = check_mode_supported();
++	if (ret)
++		return ret;
++
+ 	ret = platform_driver_register(&vga16fb_driver);
+ 
+ 	if (!ret) {
+diff --git a/fs/9p/vfs_addr.c b/fs/9p/vfs_addr.c
+index fac918ccb305..1d554d0b6e58 100644
+--- a/fs/9p/vfs_addr.c
++++ b/fs/9p/vfs_addr.c
+@@ -42,6 +42,11 @@ static void v9fs_req_issue_op(struct netfs_read_subrequest *subreq)
+ 	iov_iter_xarray(&to, READ, &rreq->mapping->i_pages, pos, len);
+ 
+ 	total = p9_client_read(fid, pos, &to, &err);
++
++	/* if we just extended the file size, any portion not in
++	 * cache won't be on server and is zeroes */
++	__set_bit(NETFS_SREQ_CLEAR_TAIL, &subreq->flags);
++
+ 	netfs_subreq_terminated(subreq, err ?: total, false);
+ }
+ 
+diff --git a/fs/9p/vfs_inode_dotl.c b/fs/9p/vfs_inode_dotl.c
+index 7dee89ba32e7..52f8ae79db21 100644
+--- a/fs/9p/vfs_inode_dotl.c
++++ b/fs/9p/vfs_inode_dotl.c
+@@ -551,7 +551,10 @@ int v9fs_vfs_setattr_dotl(struct user_namespace *mnt_userns,
+ {
+ 	int retval, use_dentry = 0;
+ 	struct p9_fid *fid = NULL;
+-	struct p9_iattr_dotl p9attr;
++	struct p9_iattr_dotl p9attr = {
++		.uid = INVALID_UID,
++		.gid = INVALID_GID,
++	};
+ 	struct inode *inode = d_inode(dentry);
+ 
+ 	p9_debug(P9_DEBUG_VFS, "\n");
+@@ -561,14 +564,22 @@ int v9fs_vfs_setattr_dotl(struct user_namespace *mnt_userns,
+ 		return retval;
+ 
+ 	p9attr.valid = v9fs_mapped_iattr_valid(iattr->ia_valid);
+-	p9attr.mode = iattr->ia_mode;
+-	p9attr.uid = iattr->ia_uid;
+-	p9attr.gid = iattr->ia_gid;
+-	p9attr.size = iattr->ia_size;
+-	p9attr.atime_sec = iattr->ia_atime.tv_sec;
+-	p9attr.atime_nsec = iattr->ia_atime.tv_nsec;
+-	p9attr.mtime_sec = iattr->ia_mtime.tv_sec;
+-	p9attr.mtime_nsec = iattr->ia_mtime.tv_nsec;
++	if (iattr->ia_valid & ATTR_MODE)
++		p9attr.mode = iattr->ia_mode;
++	if (iattr->ia_valid & ATTR_UID)
++		p9attr.uid = iattr->ia_uid;
++	if (iattr->ia_valid & ATTR_GID)
++		p9attr.gid = iattr->ia_gid;
++	if (iattr->ia_valid & ATTR_SIZE)
++		p9attr.size = iattr->ia_size;
++	if (iattr->ia_valid & ATTR_ATIME_SET) {
++		p9attr.atime_sec = iattr->ia_atime.tv_sec;
++		p9attr.atime_nsec = iattr->ia_atime.tv_nsec;
++	}
++	if (iattr->ia_valid & ATTR_MTIME_SET) {
++		p9attr.mtime_sec = iattr->ia_mtime.tv_sec;
++		p9attr.mtime_nsec = iattr->ia_mtime.tv_nsec;
++	}
+ 
+ 	if (iattr->ia_valid & ATTR_FILE) {
+ 		fid = iattr->ia_file->private_data;
+diff --git a/fs/fs_context.c b/fs/fs_context.c
+index b7e43a780a62..24ce12f0db32 100644
+--- a/fs/fs_context.c
++++ b/fs/fs_context.c
+@@ -548,7 +548,7 @@ static int legacy_parse_param(struct fs_context *fc, struct fs_parameter *param)
+ 			      param->key);
+ 	}
+ 
+-	if (len > PAGE_SIZE - 2 - size)
++	if (size + len + 2 > PAGE_SIZE)
+ 		return invalf(fc, "VFS: Legacy: Cumulative options too large");
+ 	if (strchr(param->key, ',') ||
+ 	    (param->type == fs_value_is_string &&
+diff --git a/fs/nfsd/nfs3proc.c b/fs/nfsd/nfs3proc.c
+index 15dac36ca852..8ef53f6726ec 100644
+--- a/fs/nfsd/nfs3proc.c
++++ b/fs/nfsd/nfs3proc.c
+@@ -202,15 +202,11 @@ nfsd3_proc_write(struct svc_rqst *rqstp)
+ 	fh_copy(&resp->fh, &argp->fh);
+ 	resp->committed = argp->stable;
+ 	nvecs = svc_fill_write_vector(rqstp, &argp->payload);
+-	if (!nvecs) {
+-		resp->status = nfserr_io;
+-		goto out;
+-	}
++
+ 	resp->status = nfsd_write(rqstp, &resp->fh, argp->offset,
+ 				  rqstp->rq_vec, nvecs, &cnt,
+ 				  resp->committed, resp->verf);
+ 	resp->count = cnt;
+-out:
+ 	return rpc_success;
+ }
+ 
+diff --git a/fs/nfsd/nfsproc.c b/fs/nfsd/nfsproc.c
+index de282f3273c5..312fd289be58 100644
+--- a/fs/nfsd/nfsproc.c
++++ b/fs/nfsd/nfsproc.c
+@@ -235,10 +235,6 @@ nfsd_proc_write(struct svc_rqst *rqstp)
+ 		argp->len, argp->offset);
+ 
+ 	nvecs = svc_fill_write_vector(rqstp, &argp->payload);
+-	if (!nvecs) {
+-		resp->status = nfserr_io;
+-		goto out;
+-	}
+ 
+ 	resp->status = nfsd_write(rqstp, fh_copy(&resp->fh, &argp->fh),
+ 				  argp->offset, rqstp->rq_vec, nvecs,
+@@ -247,7 +243,6 @@ nfsd_proc_write(struct svc_rqst *rqstp)
+ 		resp->status = fh_getattr(&resp->fh, &resp->stat);
+ 	else if (resp->status == nfserr_jukebox)
+ 		return rpc_drop_reply;
+-out:
+ 	return rpc_success;
+ }
+ 
+diff --git a/fs/orangefs/orangefs-bufmap.c b/fs/orangefs/orangefs-bufmap.c
+index 538e839590ef..b501dc07f922 100644
+--- a/fs/orangefs/orangefs-bufmap.c
++++ b/fs/orangefs/orangefs-bufmap.c
+@@ -176,7 +176,7 @@ orangefs_bufmap_free(struct orangefs_bufmap *bufmap)
+ {
+ 	kfree(bufmap->page_array);
+ 	kfree(bufmap->desc_array);
+-	kfree(bufmap->buffer_index_array);
++	bitmap_free(bufmap->buffer_index_array);
+ 	kfree(bufmap);
+ }
+ 
+@@ -226,8 +226,7 @@ orangefs_bufmap_alloc(struct ORANGEFS_dev_map_desc *user_desc)
+ 	bufmap->desc_size = user_desc->size;
+ 	bufmap->desc_shift = ilog2(bufmap->desc_size);
+ 
+-	bufmap->buffer_index_array =
+-		kzalloc(DIV_ROUND_UP(bufmap->desc_count, BITS_PER_LONG), GFP_KERNEL);
++	bufmap->buffer_index_array = bitmap_zalloc(bufmap->desc_count, GFP_KERNEL);
+ 	if (!bufmap->buffer_index_array)
+ 		goto out_free_bufmap;
+ 
+@@ -250,7 +249,7 @@ orangefs_bufmap_alloc(struct ORANGEFS_dev_map_desc *user_desc)
+ out_free_desc_array:
+ 	kfree(bufmap->desc_array);
+ out_free_index_array:
+-	kfree(bufmap->buffer_index_array);
++	bitmap_free(bufmap->buffer_index_array);
+ out_free_bufmap:
+ 	kfree(bufmap);
+ out:
+diff --git a/fs/super.c b/fs/super.c
+index 3bfc0f8fbd5b..a6405d44d4ca 100644
+--- a/fs/super.c
++++ b/fs/super.c
+@@ -1423,8 +1423,8 @@ struct dentry *mount_nodev(struct file_system_type *fs_type,
+ }
+ EXPORT_SYMBOL(mount_nodev);
+ 
+-static int reconfigure_single(struct super_block *s,
+-			      int flags, void *data)
++int reconfigure_single(struct super_block *s,
++		       int flags, void *data)
+ {
+ 	struct fs_context *fc;
+ 	int ret;
+diff --git a/include/linux/fs_context.h b/include/linux/fs_context.h
+index 6b54982fc5f3..13fa6f3df8e4 100644
+--- a/include/linux/fs_context.h
++++ b/include/linux/fs_context.h
+@@ -142,6 +142,8 @@ extern void put_fs_context(struct fs_context *fc);
+ extern int vfs_parse_fs_param_source(struct fs_context *fc,
+ 				     struct fs_parameter *param);
+ extern void fc_drop_locked(struct fs_context *fc);
++int reconfigure_single(struct super_block *s,
++		       int flags, void *data);
+ 
+ /*
+  * sget() wrappers to be called from the ->get_tree() op.
+diff --git a/include/linux/perf_event.h b/include/linux/perf_event.h
+index 0dcfd265beed..318c489b735b 100644
+--- a/include/linux/perf_event.h
++++ b/include/linux/perf_event.h
+@@ -1240,7 +1240,18 @@ extern void perf_event_bpf_event(struct bpf_prog *prog,
+ 				 enum perf_bpf_event_type type,
+ 				 u16 flags);
+ 
+-extern struct perf_guest_info_callbacks *perf_guest_cbs;
++extern struct perf_guest_info_callbacks __rcu *perf_guest_cbs;
++static inline struct perf_guest_info_callbacks *perf_get_guest_cbs(void)
++{
++	/*
++	 * Callbacks are RCU-protected and must be READ_ONCE to avoid reloading
++	 * the callbacks between a !NULL check and dereferences, to ensure
++	 * pending stores/changes to the callback pointers are visible before a
++	 * non-NULL perf_guest_cbs is visible to readers, and to prevent a
++	 * module from unloading callbacks while readers are active.
++	 */
++	return rcu_dereference(perf_guest_cbs);
++}
+ extern int perf_register_guest_info_callbacks(struct perf_guest_info_callbacks *callbacks);
+ extern int perf_unregister_guest_info_callbacks(struct perf_guest_info_callbacks *callbacks);
+ 
+diff --git a/kernel/events/core.c b/kernel/events/core.c
+index 30d94f68c5bd..63f041466643 100644
+--- a/kernel/events/core.c
++++ b/kernel/events/core.c
+@@ -6526,18 +6526,25 @@ static void perf_pending_event(struct irq_work *entry)
+  * Later on, we might change it to a list if there is
+  * another virtualization implementation supporting the callbacks.
+  */
+-struct perf_guest_info_callbacks *perf_guest_cbs;
++struct perf_guest_info_callbacks __rcu *perf_guest_cbs;
+ 
+ int perf_register_guest_info_callbacks(struct perf_guest_info_callbacks *cbs)
+ {
+-	perf_guest_cbs = cbs;
++	if (WARN_ON_ONCE(rcu_access_pointer(perf_guest_cbs)))
++		return -EBUSY;
++
++	rcu_assign_pointer(perf_guest_cbs, cbs);
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(perf_register_guest_info_callbacks);
+ 
+ int perf_unregister_guest_info_callbacks(struct perf_guest_info_callbacks *cbs)
+ {
+-	perf_guest_cbs = NULL;
++	if (WARN_ON_ONCE(rcu_access_pointer(perf_guest_cbs) != cbs))
++		return -EINVAL;
++
++	rcu_assign_pointer(perf_guest_cbs, NULL);
++	synchronize_rcu();
+ 	return 0;
+ }
+ EXPORT_SYMBOL_GPL(perf_unregister_guest_info_callbacks);
+diff --git a/sound/pci/hda/hda_tegra.c b/sound/pci/hda/hda_tegra.c
+index ea700395bef4..773f4903550a 100644
+--- a/sound/pci/hda/hda_tegra.c
++++ b/sound/pci/hda/hda_tegra.c
+@@ -68,14 +68,20 @@
+  */
+ #define TEGRA194_NUM_SDO_LINES	  4
+ 
++struct hda_tegra_soc {
++	bool has_hda2codec_2x_reset;
++};
++
+ struct hda_tegra {
+ 	struct azx chip;
+ 	struct device *dev;
+-	struct reset_control *reset;
++	struct reset_control_bulk_data resets[3];
+ 	struct clk_bulk_data clocks[3];
++	unsigned int nresets;
+ 	unsigned int nclocks;
+ 	void __iomem *regs;
+ 	struct work_struct probe_work;
++	const struct hda_tegra_soc *soc;
+ };
+ 
+ #ifdef CONFIG_PM
+@@ -170,7 +176,7 @@ static int __maybe_unused hda_tegra_runtime_resume(struct device *dev)
+ 	int rc;
+ 
+ 	if (!chip->running) {
+-		rc = reset_control_assert(hda->reset);
++		rc = reset_control_bulk_assert(hda->nresets, hda->resets);
+ 		if (rc)
+ 			return rc;
+ 	}
+@@ -187,7 +193,7 @@ static int __maybe_unused hda_tegra_runtime_resume(struct device *dev)
+ 	} else {
+ 		usleep_range(10, 100);
+ 
+-		rc = reset_control_deassert(hda->reset);
++		rc = reset_control_bulk_deassert(hda->nresets, hda->resets);
+ 		if (rc)
+ 			return rc;
+ 	}
+@@ -427,9 +433,17 @@ static int hda_tegra_create(struct snd_card *card,
+ 	return 0;
+ }
+ 
++static const struct hda_tegra_soc tegra30_data = {
++	.has_hda2codec_2x_reset = true,
++};
++
++static const struct hda_tegra_soc tegra194_data = {
++	.has_hda2codec_2x_reset = false,
++};
++
+ static const struct of_device_id hda_tegra_match[] = {
+-	{ .compatible = "nvidia,tegra30-hda" },
+-	{ .compatible = "nvidia,tegra194-hda" },
++	{ .compatible = "nvidia,tegra30-hda", .data = &tegra30_data },
++	{ .compatible = "nvidia,tegra194-hda", .data = &tegra194_data },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, hda_tegra_match);
+@@ -449,6 +463,8 @@ static int hda_tegra_probe(struct platform_device *pdev)
+ 	hda->dev = &pdev->dev;
+ 	chip = &hda->chip;
+ 
++	hda->soc = of_device_get_match_data(&pdev->dev);
++
+ 	err = snd_card_new(&pdev->dev, SNDRV_DEFAULT_IDX1, SNDRV_DEFAULT_STR1,
+ 			   THIS_MODULE, 0, &card);
+ 	if (err < 0) {
+@@ -456,11 +472,20 @@ static int hda_tegra_probe(struct platform_device *pdev)
+ 		return err;
+ 	}
+ 
+-	hda->reset = devm_reset_control_array_get_exclusive(&pdev->dev);
+-	if (IS_ERR(hda->reset)) {
+-		err = PTR_ERR(hda->reset);
++	hda->resets[hda->nresets++].id = "hda";
++	hda->resets[hda->nresets++].id = "hda2hdmi";
++	/*
++	 * "hda2codec_2x" reset is not present on Tegra194. Though DT would
++	 * be updated to reflect this, but to have backward compatibility
++	 * below is necessary.
++	 */
++	if (hda->soc->has_hda2codec_2x_reset)
++		hda->resets[hda->nresets++].id = "hda2codec_2x";
++
++	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, hda->nresets,
++						    hda->resets);
++	if (err)
+ 		goto out_free;
+-	}
+ 
+ 	hda->clocks[hda->nclocks++].id = "hda";
+ 	hda->clocks[hda->nclocks++].id = "hda2hdmi";
+diff --git a/sound/pci/hda/patch_realtek.c b/sound/pci/hda/patch_realtek.c
+index 28255e752c4a..fa80a79e9f96 100644
+--- a/sound/pci/hda/patch_realtek.c
++++ b/sound/pci/hda/patch_realtek.c
+@@ -1924,6 +1924,7 @@ enum {
+ 	ALC887_FIXUP_ASUS_BASS,
+ 	ALC887_FIXUP_BASS_CHMAP,
+ 	ALC1220_FIXUP_GB_DUAL_CODECS,
++	ALC1220_FIXUP_GB_X570,
+ 	ALC1220_FIXUP_CLEVO_P950,
+ 	ALC1220_FIXUP_CLEVO_PB51ED,
+ 	ALC1220_FIXUP_CLEVO_PB51ED_PINS,
+@@ -2113,6 +2114,29 @@ static void alc1220_fixup_gb_dual_codecs(struct hda_codec *codec,
+ 	}
+ }
+ 
++static void alc1220_fixup_gb_x570(struct hda_codec *codec,
++				     const struct hda_fixup *fix,
++				     int action)
++{
++	static const hda_nid_t conn1[] = { 0x0c };
++	static const struct coef_fw gb_x570_coefs[] = {
++		WRITE_COEF(0x1a, 0x01c1),
++		WRITE_COEF(0x1b, 0x0202),
++		WRITE_COEF(0x43, 0x3005),
++		{}
++	};
++
++	switch (action) {
++	case HDA_FIXUP_ACT_PRE_PROBE:
++		snd_hda_override_conn_list(codec, 0x14, ARRAY_SIZE(conn1), conn1);
++		snd_hda_override_conn_list(codec, 0x1b, ARRAY_SIZE(conn1), conn1);
++		break;
++	case HDA_FIXUP_ACT_INIT:
++		alc_process_coef_fw(codec, gb_x570_coefs);
++		break;
++	}
++}
++
+ static void alc1220_fixup_clevo_p950(struct hda_codec *codec,
+ 				     const struct hda_fixup *fix,
+ 				     int action)
+@@ -2415,6 +2439,10 @@ static const struct hda_fixup alc882_fixups[] = {
+ 		.type = HDA_FIXUP_FUNC,
+ 		.v.func = alc1220_fixup_gb_dual_codecs,
+ 	},
++	[ALC1220_FIXUP_GB_X570] = {
++		.type = HDA_FIXUP_FUNC,
++		.v.func = alc1220_fixup_gb_x570,
++	},
+ 	[ALC1220_FIXUP_CLEVO_P950] = {
+ 		.type = HDA_FIXUP_FUNC,
+ 		.v.func = alc1220_fixup_clevo_p950,
+@@ -2517,7 +2545,7 @@ static const struct snd_pci_quirk alc882_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x13fe, 0x1009, "Advantech MIT-W101", ALC886_FIXUP_EAPD),
+ 	SND_PCI_QUIRK(0x1458, 0xa002, "Gigabyte EP45-DS3/Z87X-UD3H", ALC889_FIXUP_FRONT_HP_NO_PRESENCE),
+ 	SND_PCI_QUIRK(0x1458, 0xa0b8, "Gigabyte AZ370-Gaming", ALC1220_FIXUP_GB_DUAL_CODECS),
+-	SND_PCI_QUIRK(0x1458, 0xa0cd, "Gigabyte X570 Aorus Master", ALC1220_FIXUP_CLEVO_P950),
++	SND_PCI_QUIRK(0x1458, 0xa0cd, "Gigabyte X570 Aorus Master", ALC1220_FIXUP_GB_X570),
+ 	SND_PCI_QUIRK(0x1458, 0xa0ce, "Gigabyte X570 Aorus Xtreme", ALC1220_FIXUP_CLEVO_P950),
+ 	SND_PCI_QUIRK(0x1462, 0x11f7, "MSI-GE63", ALC1220_FIXUP_CLEVO_P950),
+ 	SND_PCI_QUIRK(0x1462, 0x1228, "MSI-GP63", ALC1220_FIXUP_CLEVO_P950),
+@@ -6784,6 +6812,8 @@ enum {
+ 	ALC256_FIXUP_SYSTEM76_MIC_NO_PRESENCE,
+ 	ALC233_FIXUP_NO_AUDIO_JACK,
+ 	ALC256_FIXUP_MIC_NO_PRESENCE_AND_RESUME,
++	ALC285_FIXUP_LEGION_Y9000X_SPEAKERS,
++	ALC285_FIXUP_LEGION_Y9000X_AUTOMUTE,
+ };
+ 
+ static const struct hda_fixup alc269_fixups[] = {
+@@ -8380,6 +8410,18 @@ static const struct hda_fixup alc269_fixups[] = {
+ 		.chained = true,
+ 		.chain_id = ALC236_FIXUP_HP_MUTE_LED_MICMUTE_VREF,
+ 	},
++	[ALC285_FIXUP_LEGION_Y9000X_SPEAKERS] = {
++		.type = HDA_FIXUP_FUNC,
++		.v.func = alc285_fixup_ideapad_s740_coef,
++		.chained = true,
++		.chain_id = ALC285_FIXUP_LEGION_Y9000X_AUTOMUTE,
++	},
++	[ALC285_FIXUP_LEGION_Y9000X_AUTOMUTE] = {
++		.type = HDA_FIXUP_FUNC,
++		.v.func = alc287_fixup_legion_15imhg05_speakers,
++		.chained = true,
++		.chain_id = ALC269_FIXUP_THINKPAD_ACPI,
++	},
+ 	[ALC287_FIXUP_LEGION_15IMHG05_SPEAKERS] = {
+ 		.type = HDA_FIXUP_VERBS,
+ 		//.v.verbs = legion_15imhg05_coefs,
+@@ -8730,6 +8772,7 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x103c, 0x8896, "HP EliteBook 855 G8 Notebook PC", ALC285_FIXUP_HP_MUTE_LED),
+ 	SND_PCI_QUIRK(0x103c, 0x8898, "HP EliteBook 845 G8 Notebook PC", ALC285_FIXUP_HP_LIMIT_INT_MIC_BOOST),
+ 	SND_PCI_QUIRK(0x103c, 0x88d0, "HP Pavilion 15-eh1xxx (mainboard 88D0)", ALC287_FIXUP_HP_GPIO_LED),
++	SND_PCI_QUIRK(0x103c, 0x89c3, "HP", ALC285_FIXUP_HP_GPIO_LED),
+ 	SND_PCI_QUIRK(0x103c, 0x89ca, "HP", ALC236_FIXUP_HP_MUTE_LED_MICMUTE_VREF),
+ 	SND_PCI_QUIRK(0x1043, 0x103e, "ASUS X540SA", ALC256_FIXUP_ASUS_MIC),
+ 	SND_PCI_QUIRK(0x1043, 0x103f, "ASUS TX300", ALC282_FIXUP_ASUS_TX300),
+@@ -8921,13 +8964,16 @@ static const struct snd_pci_quirk alc269_fixup_tbl[] = {
+ 	SND_PCI_QUIRK(0x17aa, 0x3176, "ThinkCentre Station", ALC283_FIXUP_HEADSET_MIC),
+ 	SND_PCI_QUIRK(0x17aa, 0x3178, "ThinkCentre Station", ALC283_FIXUP_HEADSET_MIC),
+ 	SND_PCI_QUIRK(0x17aa, 0x31af, "ThinkCentre Station", ALC623_FIXUP_LENOVO_THINKSTATION_P340),
+-	SND_PCI_QUIRK(0x17aa, 0x3818, "Lenovo C940", ALC298_FIXUP_LENOVO_SPK_VOLUME),
+-	SND_PCI_QUIRK(0x17aa, 0x3827, "Ideapad S740", ALC285_FIXUP_IDEAPAD_S740_COEF),
+-	SND_PCI_QUIRK(0x17aa, 0x3843, "Yoga 9i", ALC287_FIXUP_IDEAPAD_BASS_SPK_AMP),
+ 	SND_PCI_QUIRK(0x17aa, 0x3813, "Legion 7i 15IMHG05", ALC287_FIXUP_LEGION_15IMHG05_SPEAKERS),
++	SND_PCI_QUIRK(0x17aa, 0x3818, "Lenovo C940", ALC298_FIXUP_LENOVO_SPK_VOLUME),
++	SND_PCI_QUIRK(0x17aa, 0x3819, "Lenovo 13s Gen2 ITL", ALC287_FIXUP_13S_GEN2_SPEAKERS),
++	SND_PCI_QUIRK(0x17aa, 0x3824, "Legion Y9000X 2020", ALC285_FIXUP_LEGION_Y9000X_SPEAKERS),
++	SND_PCI_QUIRK(0x17aa, 0x3827, "Ideapad S740", ALC285_FIXUP_IDEAPAD_S740_COEF),
++	SND_PCI_QUIRK(0x17aa, 0x3834, "Lenovo IdeaPad Slim 9i 14ITL5", ALC287_FIXUP_YOGA7_14ITL_SPEAKERS),
++	SND_PCI_QUIRK(0x17aa, 0x3843, "Yoga 9i", ALC287_FIXUP_IDEAPAD_BASS_SPK_AMP),
++	SND_PCI_QUIRK(0x17aa, 0x384a, "Lenovo Yoga 7 15ITL5", ALC287_FIXUP_YOGA7_14ITL_SPEAKERS),
+ 	SND_PCI_QUIRK(0x17aa, 0x3852, "Lenovo Yoga 7 14ITL5", ALC287_FIXUP_YOGA7_14ITL_SPEAKERS),
+ 	SND_PCI_QUIRK(0x17aa, 0x3853, "Lenovo Yoga 7 15ITL5", ALC287_FIXUP_YOGA7_14ITL_SPEAKERS),
+-	SND_PCI_QUIRK(0x17aa, 0x3819, "Lenovo 13s Gen2 ITL", ALC287_FIXUP_13S_GEN2_SPEAKERS),
+ 	SND_PCI_QUIRK(0x17aa, 0x3902, "Lenovo E50-80", ALC269_FIXUP_DMIC_THINKPAD_ACPI),
+ 	SND_PCI_QUIRK(0x17aa, 0x3977, "IdeaPad S210", ALC283_FIXUP_INT_MIC),
+ 	SND_PCI_QUIRK(0x17aa, 0x3978, "Lenovo B50-70", ALC269_FIXUP_DMIC_THINKPAD_ACPI),
+diff --git a/tools/perf/ui/browsers/annotate.c b/tools/perf/ui/browsers/annotate.c
+index e81c2493efdf..44ba900828f6 100644
+--- a/tools/perf/ui/browsers/annotate.c
++++ b/tools/perf/ui/browsers/annotate.c
+@@ -966,6 +966,7 @@ int symbol__tui_annotate(struct map_symbol *ms, struct evsel *evsel,
+ 		.opts = opts,
+ 	};
+ 	int ret = -1, err;
++	int not_annotated = list_empty(&notes->src->source);
+ 
+ 	if (sym == NULL)
+ 		return -1;
+@@ -973,13 +974,15 @@ int symbol__tui_annotate(struct map_symbol *ms, struct evsel *evsel,
+ 	if (ms->map->dso->annotate_warned)
+ 		return -1;
+ 
+-	err = symbol__annotate2(ms, evsel, opts, &browser.arch);
+-	if (err) {
+-		char msg[BUFSIZ];
+-		ms->map->dso->annotate_warned = true;
+-		symbol__strerror_disassemble(ms, err, msg, sizeof(msg));
+-		ui__error("Couldn't annotate %s:\n%s", sym->name, msg);
+-		goto out_free_offsets;
++	if (not_annotated) {
++		err = symbol__annotate2(ms, evsel, opts, &browser.arch);
++		if (err) {
++			char msg[BUFSIZ];
++			ms->map->dso->annotate_warned = true;
++			symbol__strerror_disassemble(ms, err, msg, sizeof(msg));
++			ui__error("Couldn't annotate %s:\n%s", sym->name, msg);
++			goto out_free_offsets;
++		}
+ 	}
+ 
+ 	ui_helpline__push("Press ESC to exit");
+@@ -994,9 +997,11 @@ int symbol__tui_annotate(struct map_symbol *ms, struct evsel *evsel,
+ 
+ 	ret = annotate_browser__run(&browser, evsel, hbt);
+ 
+-	annotated_source__purge(notes->src);
++	if(not_annotated)
++		annotated_source__purge(notes->src);
+ 
+ out_free_offsets:
+-	zfree(&notes->offsets);
++	if(not_annotated)
++		zfree(&notes->offsets);
+ 	return ret;
+ }
+-- 
+2.34.1
+
