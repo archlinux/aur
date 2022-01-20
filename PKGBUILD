@@ -3,12 +3,12 @@
 pkgname=junction
 _pkgname=Junction
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Application/browser chooser"
 arch=('x86_64')
 url="https://github.com/sonnyp/Junction"
 license=('GPL3')
-depends=('glib2' 'gtk4' 'libadwaita' 'gjs')
+depends=('glib2' 'gtk4' 'libadwaita' 'libportal-gtk4' 'gjs')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=($url/archive/v$pkgver.tar.gz)

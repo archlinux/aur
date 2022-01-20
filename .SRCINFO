@@ -1,7 +1,7 @@
 pkgbase = junction
 	pkgdesc = Application/browser chooser
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Junction
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = junction
 	depends = glib2
 	depends = gtk4
 	depends = libadwaita
+	depends = libportal-gtk4
 	depends = gjs
 	source = https://github.com/sonnyp/Junction/archive/v1.5.0.tar.gz
 	b2sums = 390ea7db13d7642f66b8ff1179bc3822808aa73642f8391a16a5909428e01e51bfdcd8604f562c91c07cac95e6f365b09b452394a89bc6c8c50f7ab437df3273
