@@ -1,7 +1,7 @@
 # Maintainer: <mrcjkb89@outlook.com>
 pkgname=idris2-lsp-git
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="[WIP] Idris 2 language server"
 arch=('any')
 url="https://github.com/idris-community/idris2-lsp"
@@ -18,10 +18,10 @@ _srcname="idris2-lsp"
 build() {
     cd "$srcdir/$_srcname"
     git checkout idris2-$pkgver
-    make clean
+    make build
 }
 
 package() {
     cd "$srcdir/$_srcname"
-    PREFIX="$pkgdir/usr" make install # Install idris2-lsp
+    PREFIX="$pkgdir/usr" make install-only # Install idris2-lsp
 }
