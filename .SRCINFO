@@ -1,0 +1,16 @@
+pkgbase = minq-youtube-git
+	pkgdesc = Terminal youtube browser
+	pkgver = r2.bc198b90d80cda547291fc0b7c1b41ba3f9f49b5
+	pkgrel = 1
+	url = https://github.com/kuche1/minq-youtube.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python
+	depends = python
+	depends = python-minq-storage-git
+	provides = minq-youtube
+	source = git+https://github.com/kuche1/minq-youtube.git
+	md5sums = SKIP
+
+pkgname = minq-youtube-git
