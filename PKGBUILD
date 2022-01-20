@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extensions-gravatar-git
 pkgver=7.r0.gc4a6e34
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME Shell extension to synchronize your user icon with Gravatar"
 arch=('any')
 url="https://github.com/jrouleau/gnome-shell-extensions-gravatar"
