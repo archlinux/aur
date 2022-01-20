@@ -18,6 +18,7 @@ pkgbase = libosmocore
 	depends = lksctp-tools
 	depends = talloc
 	depends = gnutls
+	optdepends = libusb: libosmousb support
 	source = git://git.osmocom.org/libosmocore.git#tag=1.6.0
 	md5sums = SKIP
 

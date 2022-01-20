@@ -12,6 +12,7 @@ license=('GPL')
 groups=()
 provides=()
 depends=('pcsclite' 'lksctp-tools' 'talloc' 'gnutls')
+optdepends=('libusb: libosmousb support')
 makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config')
 
 source=("git://git.osmocom.org/libosmocore.git#tag=$pkgver")
