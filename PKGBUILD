@@ -14,6 +14,7 @@ checkdepends=(python-mock python-pytest)
 conflicts=(pylink)
 provides=(pylink)
 replaces=(pylink)
+# no sdist on pypi.org: https://github.com/square/pylink/issues/119
 # source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source=("${_name}-${pkgver}.tar.gz::https://github.com/square/pylink/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('ac4280dc46f112678249c7241314a28da66ffb95bc1f1eda0f4881bf80db937a32d34bb2b0433fa998f26f0a8744d7e49d5850da7d062bb3077430e7b437fdce')
