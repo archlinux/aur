@@ -2,7 +2,7 @@
 
 pkgname=go1.15
 pkgver=1.15.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Core compiler tools for the Go programming language v1.15'
 arch=(x86_64)
 url='https://golang.org/'
@@ -14,7 +14,7 @@ source=(https://storage.googleapis.com/golang/go$pkgver.src.tar.gz{,.asc}
 validpgpkeys=('EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796')
 sha256sums=('60a4a5c48d63d0a13eca8849009b624629ff429c8bc5d1a6a8c3c4da9f34e70a'
             'SKIP'
-            '6005e40e447b402b07d52604cfa7d444f61152cecd9a19953edbcf88160fa46a')
+            'f6bf4c18e4395bdd4925b1f15a713fa3daca0a28123d6c20d51234d7ce2d3357')
 
 prepare() {
     cd go
