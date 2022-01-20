@@ -3,18 +3,19 @@
 
 pkgname=headlines
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK4 Reddit client"
 arch=('x86_64')
 url="https://gitlab.com/caveman250/headlines"
 license=('GPL3')
 depends=(
-	'gtkmm-4.0'
-	'libmicrohttpd'
+	'libgtkmm-4.0.so'
+	'cairo'
+	'libmicrohttpd.so'
 	'libcurl.so'
 	'openssl'
-	'jsoncpp'
-	'libxml2'
+	'libjsoncpp.so'
+	'libxml2.so'
 	'ffmpeg'
 	'gstreamer'
 	'gst-plugins-base'
