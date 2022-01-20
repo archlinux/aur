@@ -20,6 +20,7 @@ depends=(
     "openssl"
     "pcre"
     "sdl2"
+    "zlib"
 )
 optdepends=("mpg123")
 makedepends=(
