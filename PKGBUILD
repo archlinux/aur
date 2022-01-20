@@ -32,7 +32,7 @@ pkgbase=mozc-ut-united
 pkgname=mozc-ut-united
 true && pkgname=('mozc-ut-united')
 pkgver=${_mozcver}.${_utdicdate}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
@@ -97,7 +97,7 @@ build() {
 
   if [[ "$_ibus_mozc" == "yes" ]]; then
       sed -i 's|/usr/libexec/|/usr/lib/ibus-mozc/|g' \
-          "${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin/unix/ibus/mozc.xml"
+          "${srcdir}/mozc/src/bazel-out/k8-opt/bin/unix/ibus/mozc.xml"
   fi
 }
 
@@ -109,7 +109,7 @@ package_mozc-ut-united() {
   conflicts=('mozc' 'mozc-ut-unified' 'mozc-neologd-ut' 'mozc-ut2' 'mozc-neologd-ut+ut2' 'mozc-server' 'mozc-utils-gui')
   optdepends=('tegaki-models-zinnia-japanese: hand-writing recognition support')
 
-  _output="${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin"
+  _output="${srcdir}/mozc/src/bazel-out/k8-opt/bin"
 
   install -D -m 755 "${_output}/server/mozc_server" "${pkgdir}/usr/lib/mozc/mozc_server"
   install    -m 755 "${_output}/gui/tool/mozc_tool"   "${pkgdir}/usr/lib/mozc/mozc_tool"
@@ -138,7 +138,7 @@ package_ibus-mozc-ut-united() {
 
   cd "${srcdir}/mozc/src"
 
-  _output="${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin"
+  _output="${srcdir}/mozc/src/bazel-out/k8-opt/bin"
 
   install -D -m 644 "${_output}/unix/ibus/mozc.xml" "${pkgdir}/usr/share/ibus/component/mozc.xml"
   install -D -m 755 "${_output}/unix/ibus/ibus_mozc"       "${pkgdir}/usr/lib/ibus-mozc/ibus-engine-mozc"
@@ -166,7 +166,7 @@ package_emacs-mozc-ut-united() {
 
   cd "${srcdir}/mozc/src"
 
-  _output="${srcdir}/bazel-cache/f1b496bdad9cdb649e264cdd9915556c/execroot/mozc/bazel-out/k8-opt/bin"
+  _output="${srcdir}/mozc/src/bazel-out/k8-opt/bin"
 
   install -D -m 755 "${_output}/unix/emacs/mozc_emacs_helper" "${pkgdir}/usr/bin/mozc_emacs_helper"
   install -d "${pkgdir}/usr/share/emacs/site-lisp/emacs-mozc/"
