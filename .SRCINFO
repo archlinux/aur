@@ -1,17 +1,17 @@
 pkgbase = kcgi
 	pkgdesc = Minimal CGI and FastCGI library
-	pkgver = 0.12.2
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = http://kristaps.bsd.lv/kcgi/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:ISC
+	makedepends = git
 	makedepends = bmake
+	makedepends = libseccomp
+	makedepends = libmd
 	depends = glibc
-	source = https://kristaps.bsd.lv/kcgi/snapshots/kcgi-0.12.2.tgz
-	source = LICENSE
-	sha512sums = f28dd2134936036c44bbd3fc094e512c52019e0dc39f085a396924331c0e7f0bb940cee8afae43147674065b7d5a1d057c56cfdb0040131b72da53dff2289d31
-	sha512sums = b040c157fe8b95a41a0375d2cd3cc4e6406a988ed5f337b0c6dd15f1ea08344196018a5c2353c2acfbde7858ca5e0f2bf00d1cc4890661effadf39e239a95520
+	source = git+https://github.com/kristapsdz/kcgi.git#commit=2601ac1ef77345902f4c86f08924cfc678227e86
+	b2sums = SKIP
 
 pkgname = kcgi
-

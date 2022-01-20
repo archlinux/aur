@@ -1,44 +1,62 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 # Contributor: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 
 pkgname=kcgi
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Minimal CGI and FastCGI library"
 arch=('i686' 'x86_64')
 url="http://kristaps.bsd.lv/kcgi/"
-license=('custom')
+license=('custom:ISC')
 depends=('glibc')
-makedepends=('bmake')
-source=("https://kristaps.bsd.lv/kcgi/snapshots/$pkgname-$pkgver.tgz"
-        "LICENSE")
-sha512sums=('f28dd2134936036c44bbd3fc094e512c52019e0dc39f085a396924331c0e7f0bb940cee8afae43147674065b7d5a1d057c56cfdb0040131b72da53dff2289d31'
-            'b040c157fe8b95a41a0375d2cd3cc4e6406a988ed5f337b0c6dd15f1ea08344196018a5c2353c2acfbde7858ca5e0f2bf00d1cc4890661effadf39e239a95520')
+makedepends=('git' 'bmake' 'libseccomp' 'libmd')
+_commit='2601ac1ef77345902f4c86f08924cfc678227e86'
+source=("git+https://github.com/kristapsdz/kcgi.git#commit=$_commit")
+b2sums=('SKIP')
 
-build() {
-  cd $pkgname-$pkgver
+pkgver() {
+  cd kcgi
 
-  ./configure PREFIX=/usr MANDIR=/usr/share/man SBINDIR=/usr/bin LDFLAGS="${LDFLAGS}"
+  git describe --tags | sed -e 's/VERSION_//' -e 's/_/./g'
+}
+
+prepare() {
+  cd kcgi
+
+  ./configure \
+    PREFIX=/usr \
+    MANDIR=/usr/share/man \
+    SBINDIR=/usr/bin \
+    LDFLAGS="$LDFLAGS"
 
   # This is a bit hackish, but it manages to add the linker flags for kfcgi.
   # The "configure" script picks LDFLAGS from the environment, but then it
   # does not use the variable in the target ¯\_(ツ)_/¯
   echo 'LDADD_LIB_SOCKET += $(LDFLAGS)' >> Makefile.configure
 
+  # enable seccomp filter
+  sed -i 's/#CPPFLAGS/CPPFLAGS/' Makefile
+}
+
+build() {
+  cd kcgi
+
   bmake
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd kcgi
 
   bmake regress
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd kcgi
 
   bmake DESTDIR="$pkgdir" install
-  strip -x --strip-unneeded "${pkgdir}/usr/bin/kfcgi"
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  strip -x --strip-unneeded "$pkgdir/usr/bin/kfcgi"
+
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
