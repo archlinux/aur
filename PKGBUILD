@@ -10,8 +10,8 @@ pkgrel=1
 # epoch=
 pkgdesc="A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting."
 arch=("any")
-url="https://github.com/dbcli/mycli"
-license=("unknown")
+url="mycli.net"
+license=("BSD")
 # groups=()
 depends=(
     "python"
