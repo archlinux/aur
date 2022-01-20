@@ -1,13 +1,12 @@
 # Maintainer: Steven De Bondt <egnappah at gmail dot com>
-#
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.16.1
+gitver=v5.16.2
 patchver=20211114
 patchname=more-uarches-for-kernel-5.15+.patch
-pkgver=5.16.v.1
-pkgrel=2
+pkgver=5.16.v.2
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -26,7 +25,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'd3ca467684aae637a5e3803011a3640c550fa90498f54b798287fb99529fc3af'
+            'b834308f027dc45c37362e1a9b7cab2984bc06a28e210703bbfa4f8f4a3c7f2f'
             #.preset file
             '60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c'
             #linux install file
