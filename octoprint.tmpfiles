@@ -1,0 +1,3 @@
+Z /usr/lib/octoprint - root root - -
+z /usr/lib/octoprint/lib/python*/site-packages - octoprint octoprint - -
+Z /var/lib/octoprint - octoprint octoprint - -
