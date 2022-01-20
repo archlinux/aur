@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=autodiff
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Automatic differentiation made easier for C++"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('ccache: faster compilations')
 provides=('python-autodiff')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::https://github.com/autodiff/autodiff/archive/v$pkgver.tar.gz")
-sha256sums=('cfe0bb7c0de10979caff9d9bfdad7e6267faea2b8d875027397486b47a7edd75')
+sha256sums=('252ced0f4e892e9957c67fe8bb1c9edd5636f121a8481abc0a0cec9a4c465484')
 
 build() {
 	cmake \
@@ -33,5 +33,5 @@ build() {
 package() {
 	make -C build install DESTDIR="$pkgdir/"
 	cd "$pkgname-$pkgver"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
