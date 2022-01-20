@@ -1,24 +1,23 @@
-# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
-
-_name=paddlepaddle
-pkgname=$_name-bin
-_py=cp39
-pkgver=2.1.3
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Sam L. Yes <samlukeyes123@gmail.com>
+_base=paddlepaddle
+pkgname=${_base}-bin
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Machine Learning Framework from Industrial Practice"
-url="https://github.com/PaddlePaddle/Paddle"
-depends=('python-protobuf' 'python-numpy' 'python-gast' 'python-astor' 'perl')
-makedepends=('python-pip' 'python-wheel')
-provides=($_name=$pkgver)
-conflicts=($_name $_name-gpu)
+url="https://${_base}.org.cn"
+depends=(python-protobuf python-numpy python-gast python-astor perl)
+makedepends=(python-pip) # python-wheel
+provides=(${_base}=${pkgver})
+conflicts=(${_base} ${_base}-gpu)
 license=('Apache')
 arch=('x86_64')
-_wheel=${_name//-/_}-$pkgver-$_py-${_py}-manylinux1_x86_64.whl
-source=(https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/$_wheel)
-sha256sums=('34fad7293b318ee5f992ee607c690b5cdb8f74d50bae93ff66b12a1bfe1bb168')
+# _pyversion=$(python -c "import sys; print(f'cp{sys.version_info.major}{sys.version_info.minor}')")
+_wheel="${_base}-${pkgver}-cp39-cp39-manylinux1_${CARCH}"
+source=(https://pypi.org/packages/cp39/${_base::1}/${_base}/${_wheel}.whl)
+sha256sums=('1171809cb4d6a2c300a3e870f716d6093b19f93a142b12eb033fe29dac5794f7')
 
 package() {
-    export PIP_CONFIG_FILE=/dev/null 
-    pip install --isolated --root="$pkgdir" --ignore-installed --no-deps $_wheel
-    python -O -m compileall "${pkgdir}"
+  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps ./*whl
+  python -O -m compileall "${pkgdir}$(python -c "import site; print(site.getsitepackages()[0])")/${_base}"
 }
