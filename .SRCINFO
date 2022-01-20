@@ -1,0 +1,13 @@
+pkgbase = pyatv-git
+	pkgdesc = A client library for Apple TV and AirPlay devices
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://pyatv.dev
+	arch = any
+	license = MIT
+	depends = python
+	conflicts = pyatv
+	source = git://github.com/postlund/pyatv.git
+	sha256sums = SKIP
+
+pkgname = pyatv-git
