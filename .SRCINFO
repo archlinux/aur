@@ -1,6 +1,6 @@
 pkgbase = lxd-snapper-bin
 	pkgdesc = LXD snapshots, automated
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Patryk27/lxd-snapper
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = lxd-snapper-bin
 	conflicts = lxd-snapper
 	source = LICENSE::https://raw.githubusercontent.com/Patryk27/lxd-snapper/master/LICENSE
 	sha256sums = 161d3e4f2761b10a75f7fd88de8a66319d3017e67e77491e2da90a521fc1383a
-	source_i686 = lxd-snapper-1.1-i686::https://github.com/Patryk27/lxd-snapper/releases/download/v1.1/lxd-snapper-linux32
-	sha256sums_i686 = 017fd8e36641c947ea3096cc0b978899f05a93633374a14a1305b493d742ca6e
-	source_x86_64 = lxd-snapper-1.1-x86_64::https://github.com/Patryk27/lxd-snapper/releases/download/v1.1/lxd-snapper-linux64
-	sha256sums_x86_64 = a9c4f441cdfc715c4c534d543b0eac08daee995f5db6e8bb12eca2853a0cbcea
+	source_i686 = lxd-snapper-1.2-i686::https://github.com/Patryk27/lxd-snapper/releases/download/v1.2/lxd-snapper-linux32
+	sha256sums_i686 = dfd9368b974bdbe1930b17aa777ad65316c279151e647ebdfa189d5cd6029fb1
+	source_x86_64 = lxd-snapper-1.2-x86_64::https://github.com/Patryk27/lxd-snapper/releases/download/v1.2/lxd-snapper-linux64
+	sha256sums_x86_64 = 56f437ccd250b18ae83a1b32b08adbdef9d098716e28574a18989b283ba525d4
 
 pkgname = lxd-snapper-bin
-
