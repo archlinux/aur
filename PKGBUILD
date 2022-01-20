@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=wasm-bindgen-cli
-pkgver=0.2.78
+pkgver=0.2.79
 pkgrel=1
 pkgdesc="Command line interface of the wasm-bindgen attribute and project."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('APACHE' 'MIT')
 depends=('rust-wasm' 'nodejs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('31f12d90c621b32e0fc50a28f0609a651600ab143f32c9b5575039d3d01446b1')
+sha256sums=('17a4fcbd7cdd373f99282d82d1beea348e740f32eb5b4d92ae64c49343e9ff47')
 
 prepare() {
     cd "wasm-bindgen-${pkgver}/crates/cli"
