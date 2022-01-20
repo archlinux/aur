@@ -1,11 +1,11 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 pkgname=gnome-shell-extension-favourites-in-appgrid-git
 pkgver=r7.8794dac
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep favourite applications in AppGrid. For GNOME Shell 40+"
 arch=('any')
 url="https://gitlab.gnome.org/harshadgavali/favourites-in-appgrid"
-license=('unknown')
+license=('GPL3')
 depends=('gnome-shell>=40')
 makedepends=('git')
 conflicts=("${pkgname%-git}")
