@@ -16,26 +16,26 @@ sha256sums=('4b2591daa983b31716091bd1602988b5a06a19c1a3402150826fc36233edbedd'
             '9ac6861c60b7e68cc0daa58ff745fffbf5a99214b584d00e54574db41e4e7eca')
 
 prepare() {
-    cd "${srcdir}/cutecom-v${pkgver}"
+  cd "${srcdir}/cutecom-v${pkgver}"
 
-    patch -Np0 -i "${srcdir}/fix_qpainterpath.patch"
+  patch -Np0 -i "${srcdir}/fix_qpainterpath.patch"
 }
 
 build() {
-    cd "${srcdir}/cutecom-v${pkgver}"
+  cd "${srcdir}/cutecom-v${pkgver}"
 
-    mkdir build
-    cd build
+  mkdir build
+  cd build
 
-    cmake ..
-    make
+  cmake ..
+  make
 }
 
 package() {
-    cd "${srcdir}/cutecom-v${pkgver}"
+  cd "${srcdir}/cutecom-v${pkgver}"
 
-    install -Dm644 cutecom.desktop "${pkgdir}/usr/share/applications/cutecom.desktop"
-    install -Dm644 images/cutecom.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutecom.svg"
-    install -Dm755 build/cutecom "${pkgdir}/usr/bin/cutecom"
-    install -Dm644 cutecom.1 "${pkgdir}/usr/share/man/man1/cutecom.1"
+  install -Dm644 cutecom.desktop "${pkgdir}/usr/share/applications/cutecom.desktop"
+  install -Dm644 images/cutecom.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/cutecom.svg"
+  install -Dm755 build/cutecom "${pkgdir}/usr/bin/cutecom"
+  install -Dm644 cutecom.1 "${pkgdir}/usr/share/man/man1/cutecom.1"
 }
