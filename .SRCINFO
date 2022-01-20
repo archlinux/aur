@@ -1,7 +1,7 @@
 pkgbase = molecule-containers
 	pkgdesc = Molecule Container-agnostic Driver Plugin
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ansible-community/molecule-containers
 	arch = any
 	license = MIT

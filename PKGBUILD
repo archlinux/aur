@@ -2,7 +2,7 @@
 
 pkgname=molecule-containers
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Molecule Container-agnostic Driver Plugin"
 arch=('any')
 url="https://github.com/ansible-community/molecule-containers"
