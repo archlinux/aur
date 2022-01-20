@@ -1,12 +1,12 @@
 
 pkgname=python-minq-storage-git
-pkgver=r2.8d95d7790d45f947258b66096b0b103442adb318
+pkgver=r52.edcaceead2de88fb8f5a412aa9f0dc1f42311c53
 pkgrel=1
 pkgdesc='Python package for caching network requests'
 arch=('any')
 url='https://github.com/kuche1/minq-storage'
 license=()
-depends=('python')
+depends=('python' 'yt-dlp' 'viu' 'vlc')
 makedepends=('python-setuptools' 'python-pip')
 provides=('python-minq-storage')
 source=("git+$url")
