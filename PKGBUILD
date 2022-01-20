@@ -1,7 +1,7 @@
 # Maintainer: Yujŏnja <hardboiled65@gmail.com>
 pkgname=hydrogen-theme
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Hydrogen Themes."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/orbitrc/Hydrogen"
 license=('MIT' 'LGPL3')
 groups=()
 depends=()
-makedepends=('xorg-xcursorgen>=1.0.7')
+makedepends=('xorg-xcursorgen>=1.0.7' 'inkscape')
 checkdepends=()
 optdepends=()
 provides=()
