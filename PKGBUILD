@@ -15,11 +15,11 @@ source=("https://github.com/AresValley/Artemis/archive/v${pkgver}.tar.gz"
         "artemis3.desktop"
         "fixbuild.patch")
 install=artemis3.install
-md5sums=('22148f072132874ceae8afd7aad6b338'
-         '6500442c974df277f8baf40840126dad'
-         '375ed363a89e74943e4795486662e0c1'
-         'd6983e6f3123d95ca29e89405993d7f1'
-         'c3e46bdc63a33a07b06f644166bcd57a')
+sha256sums=('dfdfe81e0f7ef5f18cc04f8b410e58bdbde099f2e0d76de8b4e29e1155258c4a'
+            '11efdce8f8532de4064c42a6da264e3a835b134a05a8cc3be43081f397c901d1'
+            '5add7b9bc96f588c734da485dccb3451aa5aa6dfc6b452c0ec9b2144cf20365c'
+            'de6e877836308b2ab02ff677589a3e60167c51beea611dc80ce0315dcd586595'
+            'aabcef613f795dac33fb7f9a7ed71e514a63a02aaf697901449768869baa010b')
 
 prepare() {
     cd "${srcdir}/Artemis-${pkgver}"
