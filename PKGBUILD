@@ -1,4 +1,6 @@
-# Maintainer: Dominik Heidler <dominik@heidler.eu>
+# Maintainer: Matt Johnson <matt9j@cs.washington.edu>
+# Contributor: Dominik Heidler <dominik@heidler.eu>
+# Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=libosmocore
 pkgver=1.3.0
