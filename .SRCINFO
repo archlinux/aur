@@ -1,7 +1,7 @@
 pkgbase = tasktimer-bin
 	pkgdesc = testing the goreleaser integration, please disregard
 	pkgver = 0.1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://carlosbecker.com
 	license = MIT
 
