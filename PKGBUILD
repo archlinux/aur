@@ -17,7 +17,7 @@ url="https://freenetproject.org"
 license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
-depends=('java-runtime>=11' 'gmp' 'nss' 'java-service-wrapper')
+depends=('java-runtime>=11' 'nss' 'java-service-wrapper')
 makedepends=('java-environment>=11' 'ant' 'git' 'zip')
 backup=('opt/freenet/wrapper.config')
 

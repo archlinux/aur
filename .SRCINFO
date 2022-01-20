@@ -12,7 +12,6 @@ pkgbase = freenet
 	makedepends = git
 	makedepends = zip
 	depends = java-runtime>=11
-	depends = gmp
 	depends = nss
 	depends = java-service-wrapper
 	backup = opt/freenet/wrapper.config
