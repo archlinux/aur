@@ -30,8 +30,4 @@ package() {
   install -D -m644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-check() {
-  python -c "import yt"
-}
-
 # vim:set ts=2 sw=2 et:
