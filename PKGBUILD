@@ -5,7 +5,7 @@
 #
 
 pkgname=vcd
-pkgver=211113
+pkgver=220120
 pkgrel=1
 pkgdesc="VCD file (Value Change Dump) command line viewer"
 arch=('i686' 'x86_64')
@@ -18,8 +18,7 @@ source=(
        )
 
 #
-#md5sums=('90b917fc4d98010619321cb7e006d4ec')
-sha256sums=('f4e6df3ef8a9f7dc10162ad7994d9dfcb64914df355e563fb70406ca4a838a19')
+sha256sums=('74035b408c0fa646ebd94d61f8fc4f461cb331531936f4ae19b2343edd08cdd6')
 
 
 #
@@ -33,15 +32,14 @@ prepare()
 build()
 {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cc -o vcd vcd.c
+  make
 }
 
 #
 package()
 {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}/usr/bin"
-  cp vcd "${pkgdir}/usr/bin"
+  make DESTDIR="${pkgdir}" install
 }
 
 #
