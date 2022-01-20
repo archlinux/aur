@@ -20,75 +20,9 @@ post_install() {
   systemctl start anki-sync-server
 
   # post installation instructions
-  cat << EOF
-=======================================================================
-------------------
-Post Installation:
-------------------
-You'll need to go to:
-
-    /opt/anki-sync-server
-
-and run:
-
-    sudo -u anki-sync-server ./ankisyncctl.py adduser <username>
-
-to add a new user to the anki database.
-
---------------------
-Plugin Installation:
---------------------
-To have anki interface with the server, you'll need to copy the plugin
-from /opt/anki-sync-server/plugins to the relevant directory.
-
-Anki 2.1.28 (and up): ~/.local/share/Anki/addons21
-    ln -s /opt/anki-sync-server/plugins/anki2.1.28/anki-sync-server \\
-        ~/.local/share/Anki2/addons21/
-
-Anki 2.1: ~/.local/share/Anki2/addons21/
-    ln -s /opt/anki-sync-server/plugins/anki2.1/anki-sync-server \\
-        ~/.local/share/Anki2/addons21/
-
-Anki 2.0: ~/Anki/addons
-    ln -s /opt/anki-sync-server/plugins/anki2.0/anki-sync-server.py \\
-        ~/Anki/addons
-
-or your OS equivalent.
-
----------------
-Run The Server:
----------------
-The server should be set to auto start via systemctl and should be already running.
-See:
-
-    systemctl status anki-sync-server
-    systemctl status nginx
-
-for details.
-
-Otherwise, to run the server go to:
-
-    /opt/anki-sync-server/
-
-then run:
-
-    sudo -u anki-sync-server python -m ankisyncd
-
-if you run it as another user you may have to install the dependencies again:
-
-  pip install -r /opt/anki-sync-server/requirements.txt [--user]
-
-=== (be aware you may have trouble with permissions on your auth.db if you run as different users!) ===
-
------
-NGINX
------
-/etc/nginx/nginx.conf has been modified and a backup has been saved to /etc/nginx/nginx.conf.pacsave.  It would be a good idea to diff to see if anything has gone awry.
-
-nginx.service is set to autostart.
-
-=======================================================================
-EOF
+  echo "==============================================="
+  echo "Check the manpage for post-install instructions"
+  echo "==============================================="
 }
 
 post_remove(){

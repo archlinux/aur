@@ -1,0 +1,93 @@
+.ds server anki-sync-server
+.ds server-dir /opt/anki-sync-server
+
+.TH \*[server] 1 "" "" "Post Installation Guide"
+
+.SH Adding a user
+.PP
+You'll need to go to:
+
+.EX
+    \*[server-dir]
+.EE
+
+and run:
+
+.EX
+    sudo -u \*[server] ./ankisyncctl.py adduser <username>
+.EE
+
+to add a new user to the \*[server] database.
+
+.SH Plugin Installation
+.PP
+To have your anki client interface with the server, you'll need to copy the plugin
+from \fI\*[server-dir]/plugins\fR to the relevant directory.
+
+.ds anki-2.1.28 ~/.local/share/Anki2/addons21
+.ds anki-2.1 ~/.local/share/Anki2/addons21
+.ds anki-2 ~/Anki/addons
+.ds anki-plugins \*[server-dir]/plugins
+
+\fIAnki 2.1.28 (and up):\fR \*[anki-2.1.28]
+.EX
+    ln -s  \\
+        \*[anki-plugins]/anki2.1.28/\*[server] \\
+        \*[anki-2.1.28]/\*[server]
+.EE
+
+\fIAnki 2.1:\fR \*[anki-2.1]
+.EX
+    ln -s  \\
+        \*[anki-plugins]/anki2.1/\*[server] \\
+        \*[anki-2.1]/\*[server]
+.EE
+
+\fIAnki 2.0:\fR \*[anki-2]
+.EX
+    ln -s  \\
+        \*[anki-plugins]/anki2.0/\*[server].py \\
+        \*[anki-2]/\*[server].py
+.EE
+
+or your OS equivalent.
+
+.SH Running The Server
+.PP
+The server should be set to auto start via \fIsystemctl\fR and should be already running.
+See:
+
+.EX
+    systemctl status \*[server]
+    systemctl status nginx
+.EE
+
+for details.
+
+Otherwise, to run the server go to:
+
+.EX
+    \*[server-dir]/
+.EE
+
+then run:
+
+.EX
+    sudo -u \*[server] python -m ankisyncd
+.EE
+
+.B NOTE: if you run it as another user you may have to install the python dependencies again:
+
+.EX
+    pip install -r \*[server-dir]/requirements.txt [--user]
+.EE
+
+.B Be aware you may have trouble with permissions on your auth.db and
+.B other files if you run as different users!
+
+.SH NGINX
+.PP
+\fI/etc/nginx/nginx.conf\fR may have been modified.  If the installation modifed
+the \fInginx.conf\fR file, a backup has been saved to
+\fI/etc/nginx/nginx.conf.pacsave\fR.  It would be a good idea to to see if
+anything has gone awry.

@@ -1,7 +1,7 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
 # Contributors: Janne Heß <jannehess at gmail dot com>
 pkgname=anki-sync-server-git
-pkgver=r379.44ab07f
+pkgver=r425.ef41934
 pkgrel=1
 pkgdesc="A sync server for anki using a forked version from github.com/ankicommunity (orig:dsnopek)"
 arch=('any')
@@ -56,12 +56,21 @@ prepare() {
 
   # set user and directory information for systemd service file
   # the user is going to be named the same thing as the package name (minus '-git')
-  sed "8s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
-  sed "9s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
-  sed "10s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
+  sed "s/\(User=\)changeme/\1${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "s/\(Group=\)changeme/\1${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "s|\(WorkingDirectory=\)changeme|\1/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
+
+  # build manpage
+  local _man_="${_plugins_}/man/man1"
+  cd "${srcdir}"
+  mkdir -p "${_man_}"
+  cat "../anki-sync-server.groff" | gzip > "${_man_}/anki-sync-server.1.gz"
 }
 
 package() {
   mkdir -p "${pkgdir}${_install_dir_}"
   cp -R "${srcdir}/${_anki_dir_}/." "${pkgdir}${_install_dir_}"
+
+  mkdir -p "${pkgdir}/usr/share/man/man1"
+  ln -s -T "${_install_dir_}/plugins/man/man1/anki-sync-server.1.gz" "${pkgdir}/usr/share/man/man1/anki-sync-server.1.gz"
 }
