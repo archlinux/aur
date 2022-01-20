@@ -7,7 +7,7 @@
 _electron=electron13
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.9.7.sc.1.r1.8ada69c
+pkgver=1.9.8.sc.1.r1.c4e17a1
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -30,7 +30,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
-            '04610d85973c320d0fea5853c8a5fd55e701e9d31c0651bb9b698ed31546d3eb'
+            '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'
             'f928d6473446800cbbfea66945ffca5c953127a6c8b7d091fa32c31ef880905f')
 
 pkgver() {
