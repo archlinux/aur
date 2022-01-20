@@ -1,6 +1,6 @@
 pkgbase = wget2-git
 	pkgdesc = Updated version of popular Wget tool
-	pkgver = 1.99.2.r330.ge8178bd3
+	pkgver = v2.0.0.r62.g849b54ee
 	pkgrel = 1
 	url = http://www.gnu.org/software/wget/wget.html
 	arch = i686
@@ -30,4 +30,3 @@ pkgbase = wget2-git
 	md5sums = SKIP
 
 pkgname = wget2-git
-
