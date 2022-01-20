@@ -1,6 +1,6 @@
 # Maintainer: Konstantin Unruh <freaxmate@protonmail.com>
 pkgname=libreoffice-style-yaru-fullcolor
-_pkgver=2021-11-10
+_pkgver=2022-01-20
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A fullcolor icon pack for Libreoffice of the awesome Yaru theme."
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('libreoffice')
 makedepends=('zip')
 source=(https://github.com/ubuntu/$pkgname/archive/refs/tags/$_pkgver.tar.gz)
-sha512sums=('0e7337c11fec1e6521440d89481d056805f4e602508036e45f07754f257f84b6516c010b7fefdae0cc857548c9fb0b5f852cdc849cfe2977c4d7016d0c738e8f')
+sha512sums=('11701a71f4865754388babac25dad2116797cf3153b352b59ba60e22109dcc5777962b9e046341efeeb1693ea877595105c7891f621fa2f7df0dac17e5890f9e')
 
 package() {
   cd "$pkgname-$_pkgver"
