@@ -1,14 +1,14 @@
 pkgbase = siyuan-appimage
 	pkgdesc = The next generation PKM system, your digital garden
-	pkgver = 1.7.4
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = https://b3log.org/siyuan
 	arch = x86_64
 	license = unknown
 	provides = siyuan
-	noextract = siyuan-1.7.4-linux.AppImage
+	noextract = siyuan-1.7.5-linux.AppImage
 	options = !strip
-	source = https://download.fastgit.org/siyuan-note/siyuan/releases/download/v1.7.4/siyuan-1.7.4-linux.AppImage
-	sha512sums = e092f4a1efca944aa5301e63e8e9161b9f986329ce0c582dbcea4a9c53f60aa7d81cae3a5ad6dae11c72d1e4017182b02ae04e6e501a2df0d2e63537d577841f
+	source = https://download.fastgit.org/siyuan-note/siyuan/releases/download/v1.7.5/siyuan-1.7.5-linux.AppImage
+	sha512sums = a735ae955b430eb3a643c89efd97f0fe9a7d94b82f05eaefdc5d1fa46163e00a5dbd41b8688ad17ba854cd860ad4897592ec4124be8e0abfdf8537a344d1d952
 
 pkgname = siyuan-appimage
