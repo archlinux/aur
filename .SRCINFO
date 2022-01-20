@@ -9,11 +9,10 @@ pkgbase = glrpt-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
-	makedepends = gcc
 	depends = gtk3>=3.22.0
 	depends = glibc
 	depends = glib2
-	depends = soapysdr
+	depends = soapysdr>=0.8.0
 	depends = libconfig
 	optdepends = soapyrtlsdr: RTL-SDR support
 	optdepends = soapyairspy: Airspy support
@@ -23,4 +22,3 @@ pkgbase = glrpt-git
 	sha256sums = SKIP
 
 pkgname = glrpt-git
-
