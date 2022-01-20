@@ -100,17 +100,34 @@ post_upgrade(){
 }
 
 function append_nginx_config() {
-  # append nginx config to nginx config file
-  echo "appending nginx server config to /etc/nginx/nginx.conf"
-  local _config_dir_="/etc/nginx/"
+  local _config_dir_="/etc/nginx"
   local _pacsave_="${_config_dir_}/nginx.conf.pacsave"
   local _config_="${_config_dir_}/nginx.conf"
+  local _sites_available_dir_="${_config_dir_}/sites-available"
+  local _sites_enabled_dir_="${_config_dir_}/sites-enabled"
+  local _nginx_plugins_dir_="/opt/anki-sync-server/plugins/nginx"
 
-  if (grep "anki-sync-server-request-unchunker" "${_config_}" --quiet); then
-    echo "nginx config aleady updated!"
+  ! [ -f "${_sites_available_dir_}/anki-sync-server-http" ] && \
+    sudo \
+      ln -s "${_nginx_plugins_dir_}/anki-sync-server-http" \
+      "${_sites_available_dir_}/anki-sync-server-http"
+
+  ! [ -f "${_sites_available_dir_}/anki-sync-server-https" ] && \
+    sudo \
+      ln -s "${_nginx_plugins_dir_}/anki-sync-server-https" \
+      "${_sites_available_dir_}/anki-sync-server-https"
+
+  if (grep "include[[:space:]]\+/etc/nginx/sites-enabled" "${_config_}" --quiet); then
+    echo "nginx config aleady uses sites-enabled"
   else
     sudo cp "${_config_}" "${_pacsave_}"
-    sudo awk -f /opt/anki-sync-server/plugins/nginx/append.awk \
+    sudo awk -f "${_nginx_plugins_dir_}/append.awk" \
       "${_pacsave_}" > "${_config_}"
+
+    # defaulting to use http
+    ! [ -f "${_sites_enabled_dir_}/anki-sync-server-http" ] && \
+      sudo \
+        ln -s "${_sites_available_dir_}/anki-sync-server-http" \
+        "${_sites_enabled_dir_}/anki-sync-server-http"
   fi
 }

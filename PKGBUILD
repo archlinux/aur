@@ -38,7 +38,8 @@ prepare() {
   cp "../anki2.1.py" "${_plugins_}/anki2.1/anki-sync-server/__init__.py"
   cp "../anki2.1.28.py" "${_plugins_}/anki2.1.28//anki-sync-server/__init__.py"
   cp "../anki-sync-server.service" "${_plugins_}/systemd/"
-  cp "../nginx_config" "${_plugins_}/nginx/config"
+  cp "../nginx_http" "${_plugins_}/nginx/anki-sync-server-http"
+  cp "../nginx_https" "${_plugins_}/nginx/anki-sync-server-https"
   cp "../nginx_append_config.awk" "${_plugins_}/nginx/append.awk"
 
   # set plugins to use current ip address as plugins' target address
@@ -48,10 +49,8 @@ prepare() {
   sed -i "3s/0\.0\.0\.0/${_your_ip_})/" plugins/anki2.0/anki-sync-server.py
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1/anki-sync-server/__init__.py
   sed -i "3s/0\.0\.0\.0/${_your_ip_}/" plugins/anki2.1.28/anki-sync-server/__init__.py
-  sed -i "7s/0\.0\.0\.0/${_your_ip_}/" plugins/nginx/config
 
-  # set current ip address as the server's ip address and change port
-  sed "3s/0\.0\.0\.0/${_your_ip_}/" ankisyncd.conf -i
+  # change port to 27702 since 27701 will be for nginx
   sed "4s/27701/27702/" ankisyncd.conf -i
 
   # set user and directory information for systemd service file
@@ -68,9 +67,15 @@ prepare() {
 }
 
 package() {
+  # anki-sync-server package
   mkdir -p "${pkgdir}${_install_dir_}"
   cp -R "${srcdir}/${_anki_dir_}/." "${pkgdir}${_install_dir_}"
 
+  # manpage
   mkdir -p "${pkgdir}/usr/share/man/man1"
   ln -s -T "${_install_dir_}/plugins/man/man1/anki-sync-server.1.gz" "${pkgdir}/usr/share/man/man1/anki-sync-server.1.gz"
+
+  # nginx
+  mkdir -p "${pkgdir}/etc/nginx/sites-available"
+  mkdir -p "${pkgdir}/etc/nginx/sites-enabled"
 }
