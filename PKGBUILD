@@ -2,14 +2,14 @@
 
 pkgname=python-pelican-jupyter
 pkgver=0.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Pelican plugin for Jupyter Notebooks"
 arch=('any')
 url="https://github.com/danielfrg/pelican-jupyter"
 license=('apache')
 depends=('python' 'pelican' 'jupyter-nbconvert' 'jupyter-nbformat')
-makedepends=('python-setuptools')
-_name="${pkgname#python-}"
+makedepends=('python-setuptools' 'python-setuptools-scm')
+name="${pkgname#python-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('f2ab1505a494b1bb13065574d8ab3687c9f207d5be4c6a192da7fe4255f5e385')
 
