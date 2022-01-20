@@ -1,13 +1,13 @@
 pkgbase = sfz
 	pkgdesc = A simple static file server
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/weihanglo/sfz
 	arch = x86_64
 	license = MIT
 	license = APACHE
 	makedepends = cargo
-	source = sfz-0.6.2.tar.gz::https://github.com/weihanglo/sfz/archive/v0.6.2.tar.gz
-	sha512sums = eb574b709b3ec92585c675e7078e035df0ea88ad6b65b560c941c728ae106f4c95ac22545f77137a0acfc036a7252bbc786b41753ab51ad84272210ed3ab6a2f
+	source = sfz-0.7.0.tar.gz::https://github.com/weihanglo/sfz/archive/v0.7.0.tar.gz
+	sha512sums = 3053f4dd32b182ac3e8713e4f12d7ede411a5f0e6188c58b85781f2aa8a524e36ef38c652ed29394f5e3c2d61e2fab63d91fee4476c5a042cf38115fb55edf64
 
 pkgname = sfz
