@@ -1,6 +1,6 @@
 
 pkgname=python-minq-storage-git
-pkgver=r52.edcaceead2de88fb8f5a412aa9f0dc1f42311c53
+pkgver=r53.d63c79c84ae19bf86b8b103a72799e1fd03e8837
 pkgrel=1
 pkgdesc='Python package for caching network requests'
 arch=('any')
