@@ -1,6 +1,6 @@
 # Maintainer: rootjdev <rootjdev@gmail.com>
 pkgname=assemblyline-bin
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An in-memory assembler for x86. (latest stable release)"
 arch=(x86_64)
@@ -19,4 +19,4 @@ package() {
   cd "${pkgname%-bin}-${pkgver}"
   make DESTDIR="$pkgdir/" install
 }
-sha256sums=('14463688cafec94657664c96afff34be9fc889c6350ac6e8b45142e7cefdfa49')
+sha256sums=('deaee9b788e085358ce820ec17f2c05ec8ded990da0045dc58d5d7fd11be4b5c')
