@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.15.13
+pkgver=5.16.2
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -76,7 +76,7 @@ options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # thankfully xanmod keeps the hrtimer patches up to date
-_commit=8ba6612318090567422d49ccc79bc7bbe5484cfc
+_commit=6b08df20f31708099a7fbccf5448958b4836118f
 _xan=linux-5.15.y-xanmod
 
 _gcc_more_v=20211114
@@ -86,27 +86,19 @@ source=(
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
-  0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
-  0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  0006-lg-laptop-Recognize-more-models.patch
+  0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('ea8775ffb1e25107b62dfe7acac4e9098094f7e1cd9846566cdf9fc1f0a6e2520f27dc48ce85c29e91032eb21a6f6682f6698a91b02b9424f2d895b5c9b468ec'
+b2sums=('6f07d9da86101ab72eadd53a9f58a4740037608a006fc622a923d4dd9578ce62cc9959711dca2e953e3fb68286f55fb14be04a4a00fc49a33c2c28bd5944532f'
         'SKIP'
-        '28540af4732569d0638c4b2525cbc3701aec60330d8ac4b081a62145a20226725c1444521cd750ae9cd18ff0f469ce40f8db451588ba0d85c6e0d388f1d82c3b'
+        '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        'cf589ec357a96b9e573bce298bb1d64fa50339ea047767f2a730a8dc9808e2316b3e7c885d730233ba50d570725d4c72632d1b74a371ef02ac471d4c944fe63e'
-        'b830684472b4c8865f2041268aab1d0a84b07ca542c157901f668896e23816f268b79cbac1953d087cdf227f55bb3f312f19598f1c6de0ead32b77fdce8f618a'
-        'd98bf61e26e595deba649201787dd02b94a89ff0564c61555c569c59946ffc476932d46fd6fd23c7761fae3498bb412d61ca29a890b09d51e87e065cf0326ced'
-        '7be28283d5789cdf97e9cb56d9ec4c85c97f0df11d13ea438b29c2cafa7053074ffc7369b5f946d54c09b2d246423f29bce228469bc7fc483e3e0f9340edcc5e'
-        '32b7af5143c512f2e5a7ad015a61d23c8bc30649fdb58cfc74d95e564a8edd9b55dc82ce9bf02e10b38d8f18cd74c1027d5178f6fc08b32a8c267bc3da0805e1'
-        '5e2d8ece3e159266d6ebd7c1a9c89778beba238de770911048a7e3c02ed0a7f9647ce09fb91f13ded859aa1d4f805a3adcdf55ee6fa6c20bc0ac40ef326662f2'
-        '7d19c161bfe68d6d6a8889cee1a089c573d4618501d09bd4e2284aebff794c64b4b14a58f8034b71b63a5d88014ad289b8791cb4fb7f6c25d1749e09b0050009')
+        '7e12da62ddc8535b044f57447e15b550dc2d1421bba4fc830dfad7b328b01f21190f63c5534b9af6a8c09f56bfb9c21014b07645569a6c7b93b950aca07ade5a'
+        '8c06f840512d90c2339066677f1c64c07d1d9b7cd9a7d653fa7be1f806b0c66cb26892db662ef95cb6c27c996aef03566454699cfaa8d620dcb90c1f8f8d8276'
+        '863763c1880921c15f4d931194004461c1cb2bf195bb55ae04777694c15c01542e30d8f221d908b4fbb6a57e7b36e3260a97d67a109af3baeb53d6a85b671dd9')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -261,11 +253,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -328,7 +320,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
