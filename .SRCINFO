@@ -1,6 +1,6 @@
 pkgbase = minq-arch-setup-git
 	pkgdesc = This is what I use after a fresh xorgless arch install
-	pkgver = r131.669cc3ad142caed83666c62994310b0c3702b1a0
+	pkgver = r133.ad545bba4a45020fa1b2e22c990fa12a920ee1b8
 	pkgrel = 1
 	url = https://github.com/kuche1/minq-arch-setup.git
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = minq-arch-setup-git
 	makedepends = git
 	depends = python
 	depends = python-psutil
+	depends = git
 	provides = minq-arch-setup
 	source = git+https://github.com/kuche1/minq-arch-setup.git
 	md5sums = SKIP

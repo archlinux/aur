@@ -1,7 +1,7 @@
 
 _pkgname=minq-arch-setup
 pkgname="${_pkgname}-git"
-pkgver=r131.669cc3ad142caed83666c62994310b0c3702b1a0
+pkgver=r133.ad545bba4a45020fa1b2e22c990fa12a920ee1b8
 pkgrel=1
 epoch=
 pkgdesc='This is what I use after a fresh xorgless arch install'
@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
 groups=()
-depends=(python python-psutil)
+depends=(python python-psutil git)
 makedepends=(git)
 checkdepends=()
 optdepends=()
