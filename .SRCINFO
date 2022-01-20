@@ -1,16 +1,19 @@
 pkgbase = python-cplot
 	pkgdesc = Plot complex functions
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/nschloe/cplot
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-pytest-codeblocks
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
 	depends = python-colorio
 	depends = python-matplotx
 	depends = python-networkx
-	source = https://github.com/nschloe/cplot/archive/v0.8.4.tar.gz
-	sha512sums = 88c9069dadb53fd271c6e371b3822972a58549d1aa7f1b33857d48f01f709a3027afd3af534429584a44f6abfdcfb024708fe5a621d504522419630aad50c1ad
+	depends = python-pypng
+	source = https://github.com/nschloe/cplot/archive/v0.8.5.tar.gz
+	sha512sums = ccdb316f78dd0428d198bdb1b3eec6f54efae26a8113652d0a7b79a4a6b83a07e7710b1035c7133b217bc6972b40fbb203560ddeeb384b6abc6bcbf1fb6984f3
 
 pkgname = python-cplot

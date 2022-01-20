@@ -2,31 +2,37 @@
 _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
-depends=(python-colorio python-matplotx python-networkx)
-makedepends=(python-setuptools)
-checkdepends=(python-pytest-codeblocks) # python-mpmath python-scipy python-meshzoo
+depends=(python-colorio python-matplotx python-networkx python-pypng)
+makedepends=(python-build python-flit-core python-install)
+checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('88c9069dadb53fd271c6e371b3822972a58549d1aa7f1b33857d48f01f709a3027afd3af534429584a44f6abfdcfb024708fe5a621d504522419630aad50c1ad')
+sha512sums=('ccdb316f78dd0428d198bdb1b3eec6f54efae26a8113652d0a7b79a4a6b83a07e7710b1035c7133b217bc6972b40fbb203560ddeeb384b6abc6bcbf1fb6984f3')
 
 build() {
-  cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" build
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m install --optimize=1 dist/*.whl
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks
 }
 
 package() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  ln -s "${site_packages}/${_base}-$pkgver.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
