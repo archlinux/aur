@@ -6,7 +6,8 @@ pkgdesc="Minimalistic text editor made with Python and GTK"
 arch=("any")
 url="https://gitlab.com/zehkira/mili"
 license=("MIT")
-depends=("python-gobject" "gtksourceview3" "hicolor-icon-theme")
+depends=("python-gobject" "gtksourceview3")
+backup=("etc/mili/mili.ini")
 source=("https://gitlab.com/zehkira/mili/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("SKIP")
 
