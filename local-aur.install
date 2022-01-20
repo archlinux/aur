@@ -9,6 +9,8 @@
 
 # arg 1:  the new package version
 post_install() {
+	mkdir -p /var/lib/local-aur/repo
+	echo '{"packages": {}}' > /var/lib/local-aur/local-aur.json
 	repo-add "/var/lib/local-aur/repo/local-aur.db.tar.gz"
 	echo '' >> /etc/pacman.conf
 	echo '[local-aur]' >> /etc/pacman.conf

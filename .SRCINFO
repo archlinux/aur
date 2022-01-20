@@ -1,6 +1,6 @@
 pkgbase = local-aur
 	pkgdesc = Create a local pacman repo with the packages you want to use.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/rpkak/local-aur
 	install = local-aur.install
@@ -34,7 +34,7 @@ pkgbase = local-aur
 	depends = sudo
 	depends = texinfo
 	depends = which
-	source = local-aur-0.0.3.tar.gz::https://github.com/rpkak/local-aur/archive/refs/tags/v0.0.3.tar.gz
-	sha256sums = 22f0d1bbefcf5350527ad789d70b57d1bf91b0f6c909af7ca67e7cea92acd2e0
+	source = local-aur-0.0.4.tar.gz::https://github.com/rpkak/local-aur/archive/refs/tags/v0.0.4.tar.gz
+	sha256sums = e62187ceb14e27d1c38951a9cc1072949b8d317099ece162d62a5d24d4b25f8e
 
 pkgname = local-aur
