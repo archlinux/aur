@@ -1,32 +1,37 @@
-# Maintainer: Yaron de Leeuw < me@jarondl.net  >
-# Maintained at : https://github.com/jarondl/aur-pkgbuilds-jarondl
+# This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 
-# Contributor: Matz Radloff <matzradloff@gmx.de>
-# Contributor: Jan Willies <jan@willies.info>
-# Contributor: Carlos Franke <carlos_franke at lemtank dot de>
+# Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
+pkgname=cxxtools
+pkgver=3.0
+pkgrel=2
+pkgdesc="Collection of general-purpose C++ classes"
+url="http://www.tntnet.org"
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+license=('GPL2')
+depends=('bash' 'gcc-libs' 'libnsl')
+source=("$pkgname-${pkgver}_git.tar.gz::https://github.com/maekitalo/cxxtools/archive/refs/tags/V$pkgver.tar.gz"
+        "$pkgname-char-trivial-class.patch::https://github.com/maekitalo/cxxtools/commit/b773c01fc13d2ae67abc0839888e383be23562fd.patch")
+sha256sums=('c48758af8c8bf993a45492fdd8acaf1109357f1c574810e353d3103277b4296b'
+            '57f2e6c037f645a93f8979b923491ea3e996ee87ceebf790177f2b4e902d51d9')
 
-pkgname="cxxtools"
-pkgver="2.2.1"
-pkgrel="1"
-pkgdesc="A collection of general-purpose C++ classes"
-url="http://www.tntnet.org/cxxtools.html"
-license=("LGPL")
-arch=("i686" "x86_64")
-source=(http://www.tntnet.org/download/$pkgname-$pkgver.tar.gz)
-depends=('gcc-libs')
-optdepends=(
-  'bash: for running cxxtools-config'
-)
-md5sums=('aab00068ae5237435b37ac86f2ac7576')
-sha512sums=('b6dc3f63c39fbbc35af973eea668a44d30673140c72bfa7efbdc21a71816be2983e85312b9213264d4f5162c3e420eedb41974bacb7fe8176f2a069b6f8f6f7b')
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  patch -p1 -i "$srcdir/$pkgname-char-trivial-class.patch"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-    
-  ./configure --prefix=/usr
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  autoreconf -i
+  ./configure --prefix=/usr \
+              --disable-static \
+              --disable-demos \
+              --disable-unittest
   make
 }
+
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
