@@ -1,6 +1,6 @@
 pkgbase = low-battery-warning-git
 	pkgdesc = Light weight low battery warning notification
-	pkgver = 0.1.r12f678230
+	pkgver = 0.2.r12f678230
 	pkgrel = 1
 	url = https://github.com/vedpatil611/low-battery-warning
 	arch = x86_64

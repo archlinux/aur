@@ -1,11 +1,11 @@
 # Maintainer: Ved Patil <vedpatil611@gmail.com>
 pkgname=low-battery-warning-git
-pkgver=0.2
-pkgrel=2
+pkgver=0.2.r12f678230
+pkgrel=1
 epoch=
 pkgdesc="Light weight low battery warning notification"
 arch=('x86_64')
-url="https://github.com/vedpatil611/low-battery-warning.git"
+url="https://github.com/vedpatil611/low-battery-warning"
 license=('MIT')
 groups=()
 depends=('libnotify')
