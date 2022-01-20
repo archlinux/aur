@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=8.7.1.r748.gaf52d41d
+pkgver=8.7.1.r754.ga715d743
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -13,21 +13,18 @@ depends=('qt5-quickcontrols2'
 optdepends=('v4l-utils: Extra formats support for webcams'
             'akvcam-dkms-git: Virtual camera support (Recommended)'
             'v4l2loopback-dkms: Virtual camera support'
-            'ffmpeg: Video playing/recording/conversion (Recommended)'
-            'gst-plugins-base: Video playing/recording/conversion'
-            'gst-plugins-good: Video playing/recording/conversion'
-            'gst-plugins-bad: Video playing/recording/conversion'
-            'gst-plugins-ugly: Video playing/recording/conversion'
-            'vlc: Video playing (Recommended)'
+            'ffmpeg: Video playback/recording/conversion (Recommended)'
+            'gst-plugins-base: Video playback/recording/conversion'
+            'gst-plugins-good: Video playback/recording/conversion'
+            'gst-plugins-bad: Video playback/recording/conversion'
+            'gst-plugins-ugly: Video playback/recording/conversion'
+            'vlc: Video playback (Recommended)'
+            'pipewire: Screen capture'
             'libpulse: Audio playback (Recommended)'
             'alsa-lib: Audio playback'
             'jack: Audio playback'
             'libuvc: Camera capture'
-            'polkit: Root privileges for virtual camera module (Recommended)'
-            'kde-cli-tools: Root privileges for virtual camera module'
-            'gksu: Root privileges for virtual camera module'
-            'gtksu-git: Root privileges for virtual camera module'
-            'kdesudo: Root privileges for virtual camera module')
+            'polkit: Root privileges for virtual camera module (Recommended)')
 makedepends=('alsa-lib'
              'cmake'
              'ffmpeg'
@@ -36,6 +33,7 @@ makedepends=('alsa-lib'
              'jack'
              'libpulse'
              'libuvc'
+             'pipewire'
              'qt5-tools'
              'v4l-utils'
              'vlc')
