@@ -1,12 +1,12 @@
 pkgbase = urlbrowsermapper
 	pkgdesc = Map hostname/ips to different browsers and profiles
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/AlfredEVOL/browser-mapper
 	arch = any
 	license = GPL3
 	depends = python
-	source = https://github.com/AlfredEVOL/browser-mapper/archive/refs/tags/1.0.tar.gz
-	sha256sums = 1914a120de5fa2b0bcafb1a805040e333d4adfe8194c35de7f341da638adeedf
+	source = https://github.com/AlfredEVOL/browser-mapper/archive/refs/tags/1.1.tar.gz
+	sha256sums = b9aad19df004f14b46ce145bde8191409a82ba541d95d077a25c208c31f973e1
 
 pkgname = urlbrowsermapper
