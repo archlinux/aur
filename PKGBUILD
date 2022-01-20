@@ -2,22 +2,22 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=git-cola
-pkgver=3.11.0
+pkgver=3.12.0
 pkgrel=1
 pkgdesc="The highly caffeinated Git GUI"
 arch=('any')
 url="https://git-cola.github.io"
 license=('GPL2')
-depends=('git' 'python-qtpy' 'hicolor-icon-theme')
+depends=('git' 'hicolor-icon-theme' 'python-qtpy')
 makedepends=('asciidoc' 'docbook-xsl' 'python-sphinx' 'rsync' 'xmlto')
+checkdepends=('appstream-glib' 'desktop-file-utils' 'python-mock' 'python-pyqt5'
+              'python-pytest-flake8')
 optdepends=('python-pygments: syntax highlighting'
             'python-pyinotify: for inotify support'
             'python-send2trash: enables "Send to Trash" functionality.'
             'tcl: to use the built-in ssh-askpass handler')
-checkdepends=('appstream-glib' 'desktop-file-utils' 'python-mock' 'python-pyqt5'
-              'python-pytest-flake8')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-cola/git-cola/archive/v$pkgver.tar.gz")
-sha256sums=('5f14ab41508ee9c8756097d6fa81f471fce58089b178317cc25d948d42620994')
+sha256sums=('ec1167ea9a472214bf18f5537d96e137c724f3d28a85b3642f07dba35f04b24a')
 
 build() {
   cd "$pkgname-$pkgver"
