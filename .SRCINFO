@@ -8,7 +8,6 @@ pkgbase = python-yt
 	makedepends = cython
 	depends = python-numpy
 	depends = python-matplotlib
-	depends = cython
 	depends = python-sympy
 	depends = python-h5py
 	depends = python-unyt
