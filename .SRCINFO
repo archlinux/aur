@@ -1,12 +1,13 @@
 pkgbase = bitburner
 	pkgdesc = Bitburner is a programming-based incremental game
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielyxie/bitburner
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = npm
+	depends = electron
 	optdepends = steam: achievement support
 	optdepends = steam-native-runtime: achievement support
 	source = git+https://github.com/danielyxie/bitburner#commit=05cbc25a8fed73b9982925526940d65e55a842a1
