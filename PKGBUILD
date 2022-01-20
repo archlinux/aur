@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.138.6
+pkgver=1.138.11
 pkgrel=1
 epoch=1
 pkgdesc='TL (Legacy) is freeware launcher of Minecraft.'
@@ -30,7 +30,7 @@ _mojang='https://libraries.minecraft.net'
 
 _bootstrap_version='1.14.0'
 _bootstrap_checksum='fb56dc76a1b4d1e44065cc297ea7fcfca805f554e4e22298cb828ddd13c514eb'
-_launcher_checksum='7ddde1111c9e9d9128699c4b0edda0e2875b633015b57441773f70305550271c'
+_launcher_checksum='b2b58876cb75cfa1c59d0734ee09d44e5910b27b8403ebb5772c5d424e036a08'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
@@ -75,7 +75,6 @@ source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/
         'minecraft.64x64.png'
         'minecraft.48x48.png'
 
-        'tlauncher.install'
         'tlauncher.desktop'
         'tlauncher.bash')
 noextract=("${source[@]##*/}" "tl-bootstrap-${_bootstrap_version}.jar" "tl-launcher-${pkgver}.jar")
@@ -122,10 +121,8 @@ sha256sums=("${_bootstrap_checksum}"
             'd6da12b649df178826399a31e8f0f72be7428f90b5a3a95b7538cec0a58a4755'
             'beba733d11b80113007683cf61b122c4e1524c424f963960b08b74bf77d378e4'
 
-            'f3e8a4c48ac696475b8035e915170962bf2d1b9fbe09980665ec8170f3f26612'
             'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
             '0b31e2afee3a709c74daa0df9345d15c01ea361f8beee26e6cfac2a3b518aa23')
-install='tlauncher.install'
 
 package() {
   # install launch script and .desktop file
