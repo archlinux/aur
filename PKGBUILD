@@ -7,7 +7,7 @@ pkgdesc="Interactive GUI application for receiving, decoding and displaying LRPT
 arch=(i686 x86_64)
 license=(GPL3)
 url="https://github.com/dvdesolve/glrpt"
-depends=('gtk3>=3.22.0' glibc glib2 'soapysdr>=0.8.0' libconfig)
+depends=('gtk3>=3.22.0' glibc glib2 'soapysdr>=0.8.0' libconfig libjpeg-turbo)
 makedepends=(git cmake make)
 optdepends=('soapyrtlsdr: RTL-SDR support'
             'soapyairspy: Airspy support')
