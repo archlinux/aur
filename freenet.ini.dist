@@ -20,6 +20,7 @@ node.install.storeDir=/opt/freenet/user/data
 node.install.tempDir=/opt/freenet/tmp
 node.install.userDir=/opt/freenet/user
 node.load.nodeThrottleFile=/opt/freenet/user/data/node-throttle.dat
+node.load.threadLimit=1000
 node.masterKeyFile=/opt/freenet/user/master.keys
 node.skipWrapperWarning=true
 node.updater.autoupdate=false
