@@ -23,7 +23,7 @@ source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
 source+=(30fps.patch)
 sha256sums=('SKIP'
-            '00688af02006bddeab797f624e5cbae66a5c02f4e14315d87d3f198f74797c17'
+            'e518455b149ced284f515219d752a579f82c67fd143c6f489ea00ff0741a0c79'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
             '0a9d037336dab3dbd99652b71934a94cd1e9801650fe5e72f4dd1de1718dd4c1'
             'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14'
