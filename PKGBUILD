@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="SCSI Tape Encryption Manager"
 arch=('i686' 'x86_64')
 license=('GPLv2')
-url="http://stenc.sourceforge.net/"
+url="https://github.com/scsitape/stenc"
 source=("https://github.com/scsitape/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('4fd882861d248cf59cde1782833bd3e4f7e01e8b6c00424c55f26454a620510b22de0d42f2d7f6c4e67c2b277776a174fe687756a75f410026fda55554f9dc87')
 
@@ -18,8 +18,6 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc
-  
-  # build
   make
 }
 
