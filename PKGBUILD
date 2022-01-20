@@ -1,30 +1,20 @@
-# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
-# http://github.com/fukawi2/aur-packages
-
-### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
-### Please ask support questions about this software in one of:
-###   1) The AUR comments; OR
-###   2) Upstream forums/maillist etc; OR
-###   3) The ArchLinux forums
-### I do not always know enough about the software itself, or don't have the
-### time to promptly respond to direct emails.
-### If you have found a problem with the package/PKGBUILD (as opposed to
-### the software) then please do email me or post an AUR comment.
+# Maintainer: Dustin Wilhoit <dustin@wilhoitclan.com>
+# Original Maintainer: Phillip Smith <pkgbuild@phs.id.au> - http://github.com/fukawi2/aur-packages
 
 pkgname=stenc
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="SCSI Tape Encryption Manager"
 arch=('i686' 'x86_64')
 license=('GPLv2')
 url="http://stenc.sourceforge.net/"
 source=("https://github.com/scsitape/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('3783cd4e23076b6330e2645b5114e946')
+sha512sums=('4fd882861d248cf59cde1782833bd3e4f7e01e8b6c00424c55f26454a620510b22de0d42f2d7f6c4e67c2b277776a174fe687756a75f410026fda55554f9dc87')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
 
-  # configure
+  autoreconf --install
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc
