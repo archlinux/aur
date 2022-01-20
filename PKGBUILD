@@ -1,7 +1,7 @@
 # Maintainer: Jhyub <jhyub06 at gmail dot com>
 
 pkgname='kdeplasma-applets-supergfxctl'
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="KDE Plasma plasmoid for supergfxctl"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
     "https://gitlab.com/Jhyub/supergfxctl-plasmoid/-/archive/v$pkgver/supergfxctl-plasmoid-v$pkgver.tar.gz"
 )
 sha256sums=(
-    'ad0e414129fb2a24c2779a60a75a83d6189ae23d0a4595de223c657e15615f19'
+    '159ea2e74bdf0c6f5b7899d86fe8348ea96fb59e1606ab9758422abf446dff14'
 )
 
 build() {
