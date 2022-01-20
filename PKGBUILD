@@ -56,9 +56,15 @@ prepare() {
 
   # set user and directory information for systemd service file
   # the user is going to be named the same thing as the package name (minus '-git')
-  sed "8s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
-  sed "9s/changeme/${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
-  sed "10s|changeme|/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
+  sed "s/\(User=\)changeme/\1${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "s/\(Group=\)changeme/\1${pkgname%-git}/" plugins/systemd/anki-sync-server.service -i
+  sed "s|\(WorkingDirectory=\)changeme|\1/opt/${pkgname%-git}|" plugins/systemd/anki-sync-server.service -i
+
+  # build manpage
+  local _man_="${_plugins_}/man/man1"
+  cd "${_src_}"
+  mkdir -p "${_man_}"
+  cat "../anki-sync-server.groff" | gzip > "${_man_}/anki-sync-server.1.gz"
 }
 
 package() {
