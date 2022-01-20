@@ -2,15 +2,17 @@
 
 _pkgname=quakespasm
 pkgname=${_pkgname}-spiked-git
-pkgver=0.92.1.r543.gf1cc25c0
+_branch=qsrebase
+pkgver=r1995.033c7c18
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Quakespasm. AKA QSS. Git version with optional Mission pack desktop files."
 arch=('i686' 'x86_64')
 url="http://triptohell.info/moodles/qss/"
 license=('GPL2')
 depends=('libvorbis' 'libmad' 'sdl2' 'opus' 'opusfile')
+makedepends=('git')
 install=${_pkgname}-spiked.install
-source=("${_pkgname}::git+https://github.com/Shpoike/Quakespasm"
+source=("${_pkgname}::git+https://github.com/Shpoike/Quakespasm#branch=$_branch"
         ${_pkgname}-spiked.desktop
         ${_pkgname}-spiked-mp1.desktop
         ${_pkgname}-spiked-mp2.desktop
@@ -21,24 +23,24 @@ sha1sums=('SKIP'
           '4006dba3fa8ce322af72b7b4fbb1fc1d1bb07faf'
           '336a87e11c1a234adcadfea2d807d26d75bbbca9')
 
-# Using the most recent un-annotated tag reachable from the last commit:
+# use number of revisions since beginning of the history as git tagging is broken after switching branch
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${_pkgname}/${_pkgname}/Quake/"
+  cd "$srcdir/${_pkgname}/Quake/"
   msg "Starting make..."
   make DO_USERDIRS=1 USE_SDL2=1
 }
 
 package() {
-  cd "$srcdir/${_pkgname}/${_pkgname}/Quake/"
+  cd "$srcdir/${_pkgname}/Quake/"
   install -Dm755 quakespasm "$pkgdir"/usr/bin/${_pkgname}-spiked
   
   for i in 16 24 32 48 64 72; do
-    install -Dm644 $srcdir/${_pkgname}/${_pkgname}/Misc/QuakeSpasm_512.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/quakespasm-spiked.png
+    install -Dm644 $srcdir/${_pkgname}/Misc/QuakeSpasm_512.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/quakespasm-spiked.png
   done
 
   install -Dm644 $srcdir/${_pkgname}-spiked.desktop $pkgdir/usr/share/applications/${_pkgname}-spiked.desktop
