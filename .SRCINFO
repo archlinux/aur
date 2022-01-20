@@ -1,0 +1,13 @@
+pkgbase = python-spacy-fr_core_news_sm
+	pkgdesc = French pretrained model for spaCy (small)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://spacy.io/models/fr#section-en_core_news_sm
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/fr_core_news_sm-3.2.0/fr_core_news_sm-3.2.0.tar.gz
+	sha256sums = bcdd2c8c9ccef064f549298d2c5a4f1d22d96ba85011a989125ea4477fad9334
+
+pkgname = python-spacy-fr_core_news_sm
