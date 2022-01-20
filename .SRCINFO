@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extensions-gravatar-git
 	pkgdesc = GNOME Shell extension to synchronize your user icon with Gravatar
 	pkgver = 7.r0.gc4a6e34
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/jrouleau/gnome-shell-extensions-gravatar
 	install = gnome-shell-extensions-gravatar.install
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = gnome-shell-extensions-gravatar-git
 	depends = gnome-shell>=3.32
 	provides = gnome-shell-extensions-gravatar
 	conflicts = gnome-shell-extensions-gravatar
+	options = !strip
 	source = gnome-shell-extensions-gravatar::git+https://github.com/jrouleau/gnome-shell-extensions-gravatar
 	md5sums = SKIP
 
 pkgname = gnome-shell-extensions-gravatar-git
-
