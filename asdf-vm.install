@@ -1,11 +1,10 @@
 post_install() {
   cat <<EOF
 
-Follow the official instructions [1] to make asdf-vm work, replacing
-"\$HOME/.asdf" with "/opt/asdf-vm". The completions are already installed, just
-make sure your shell is configured to use them.
+Follow the official instructions [0] to make asdf-vm work, see the sections
+titled "YOUR_SHELL & Pacman".
 
-[1] https://asdf-vm.com/#/core-manage-asdf?id=add-to-your-shell
+[0] https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
 
 EOF
 }
