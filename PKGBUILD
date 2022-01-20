@@ -14,23 +14,23 @@ optdepends=('python-nautilus: Arronax as Nautilus extension'
             'python-caja: Arronax as Caja extension'
             'nemo-python: Arronax as Nemo extension')
 
-source=(https://launchpad.net/~diesch/+archive/ubuntu/stable/+sourcefiles/arronax/$pkgver/arronax_$pkgver.tar.xz)
+source=(https://www.florian-diesch.de/software/arronax/dist/arronax-$pkgver.tar.gz)
 
-md5sums=('d4b674425e7479b3074fae5611b5f961')
+md5sums=('de079a182806ed3b6626656605a1214c')
 
 prepare() {
   # Fix icon location
-  cd "$srcdir"/master
+  cd "$srcdir"/$pkgname-$pkgver
   sed -i 's|share/icons/hicolor/{s}x{s}|share/icons/hicolor/{s}x{s}/apps|g' setup.py
 }
 
 build() {
-  cd "$srcdir"/master
+  cd "$srcdir"/$pkgname-$pkgver
   /usr/bin/python setup.py build
 }
 
 package() {
-  cd "$srcdir"/master
+  cd "$srcdir"/$pkgname-$pkgver
   /usr/bin/python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
