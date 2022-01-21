@@ -1,6 +1,6 @@
 pkgbase = playhouse
 	pkgdesc = A Playground for HTML/CSS/JavaScript
-	pkgver = r4.7ffa057
+	pkgver = r6.6420e3b
 	pkgrel = 1
 	url = https://github.com/sonnyp/Playhouse
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Thomas Booker <tw.booker@outlook.com>
 _pkgname=Playhouse
 pkgname=playhouse
-pkgver=r4.7ffa057
+pkgver=r6.6420e3b
 pkgrel=1
 pkgdesc="A Playground for HTML/CSS/JavaScript"
 arch=('any')
