@@ -2,13 +2,13 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
 pkgver=4.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="https://ignitionrobotics.org/libs/common"
 license=('Apache')
 groups=('development')
-depends=('ignition-math>=6' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg')
+depends=('ignition-math>=6' 'ignition-utils' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg')
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
@@ -16,10 +16,6 @@ source=("https://github.com/ignitionrobotics/ign-common/archive/${pkgname}4_${pk
 sha256sums=('854331ba0d0f1ef8c8099fdba0977fde58b1e0f9fd8d3f71d5fb02768829a850')
 
 _dir="ign-common-${pkgname}4_${pkgver}"
-
-depends=(
-  ignition-utils
-)
 
 build() {
   cd "$srcdir/$_dir"
