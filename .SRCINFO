@@ -1,0 +1,15 @@
+pkgbase = forx
+	pkgdesc = a command line tool for getting forex quotes, exchange rates, and currency conversions from the terminal.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Gbox4/forx
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	provides = forx
+	source = git+https://github.com/Gbox4/forx
+	md5sums = SKIP
+
+pkgname = forx
