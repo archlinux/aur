@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Stelnykovych <alexandr dot stelnykovych at ivpn dot net>
 
 pkgname="ivpn-ui"
-pkgver=3.4.5
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="IVPN Graphical User Interface"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm')
 install="ivpn-ui.install"
 
 source=("ivpn-ui-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('e6837cb653dc9089afa50281bc11df5da99da0b6edd597220f50646db0c8cccd')
+sha256sums=('8cf8d61dfb8738151fbddd6cf6b39a2ebee0371565a74cffda5566f9cecbbc4b')
 
 _ensure_local_nvm() {
     # https://wiki.archlinux.org/title/Node.js_package_guidelines
