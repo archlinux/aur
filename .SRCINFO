@@ -1,16 +1,16 @@
 pkgbase = libminizinc
-	pkgdesc = MiniZinc is a modelling language for constraint programming problems
-	pkgver = 2.3.1
+	pkgdesc = A modelling language for constraint programming problems
+	pkgver = 2.5.5
 	pkgrel = 1
-	url = http://www.minizinc.org/
+	url = https://www.minizinc.org/
 	arch = i686
 	arch = x86_64
 	license = MPL2
 	makedepends = cmake
+	depends = gcc-libs
 	provides = minizinc
 	conflicts = minizinc-bin
-	source = https://github.com/MiniZinc/libminizinc/archive/2.3.1.tar.gz
-	sha256sums = 1ca3d927adda1ffbb2548c387fee2b55e0d635466c99167acaf5a1670742215e
+	source = libminizinc-2.5.5.tar.gz::https://github.com/MiniZinc/libminizinc/archive/2.5.5.tar.gz
+	sha256sums = c6c81fa8bdc2d7f8c8d851e5a4b936109f5d996abd8c6f809539f753581c6288
 
 pkgname = libminizinc
-

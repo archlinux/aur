@@ -1,17 +1,19 @@
-# Maintainer: Fredrik Strandin <fredrik@strandin.name>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Fredrik Strandin <fredrik@strandin.name>
 
 pkgname=libminizinc
-pkgver=2.3.1
+pkgver=2.5.5
 pkgrel=1
-pkgdesc="MiniZinc is a modelling language for constraint programming problems"
+pkgdesc="A modelling language for constraint programming problems"
 arch=(i686 x86_64)
-url="http://www.minizinc.org/"
+url="https://www.minizinc.org/"
 makedepends=(cmake)
+depends=(gcc-libs)
 license=('MPL2')
 conflicts=(minizinc-bin)
 provides=(minizinc)
-source=(https://github.com/MiniZinc/${pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('1ca3d927adda1ffbb2548c387fee2b55e0d635466c99167acaf5a1670742215e')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/MiniZinc/${pkgname}/archive/${pkgver}.tar.gz")
+sha256sums=('c6c81fa8bdc2d7f8c8d851e5a4b936109f5d996abd8c6f809539f753581c6288')
 
 build() {
   cd ${pkgname}-${pkgver}
