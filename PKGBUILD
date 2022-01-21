@@ -5,7 +5,7 @@
 
 pkgname=mutter-dynamic-buffering
 pkgver=41.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
