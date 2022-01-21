@@ -1,7 +1,7 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=zrepl
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('zrepl')
 conflicts=('zrepl-bin')
 makedepends=('go')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e7035a8a40913614f4ab24d7caad2c26419fd2b0aaa3565c16439e59214ae590')
+sha256sums=('4acfde9e7a09eca2de3de5c7d2987907ae446b345b69133e4b3c58a99c294465')
 
 zrepl_version="arch-${pkgver}"
 
