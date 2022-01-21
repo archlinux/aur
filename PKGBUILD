@@ -3,13 +3,13 @@ _upstream_name=plasma-applet-resources-monitor
 pkgname=plasma5-applets-resources-monitor
 _pkgver="2.7.1"
 pkgver="${_pkgver/-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma 5 applet for monitoring CPU and RAM"
 arch=('any')
 url="https://www.pling.com/p/1527636/"
 license=('GPL')
 depends=(
-    'ksysguard'
+    'libksysguard'
     'plasma-workspace'
 )
 optdepends=()
