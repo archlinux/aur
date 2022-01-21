@@ -63,7 +63,14 @@ build() {
     # shellcheck disable=SC2153
     autobuild configure -A 64 -c ReleaseOS -- -DLL_TESTS:BOOL=OFF -DDISABLE_FATAL_WARNINGS=ON -DUSE_LTO:BOOL="$(grep -cq '[^!]lto' <<< "${OPTIONS}" && echo 'ON' || echo 'OFF')" -DVIEWER_CHANNEL="Alchemy Test"
     cd "build-linux-64"
-    ninja -j"$(nproc)"
+    loadavg=$(nproc)
+    if [[ ${loadavg} -gt 1 ]]; then
+        if [[ ${loadavg} -le 8 ]]; then loadavg=$((loadavg - 1))
+        else
+            loadavg=$((loadavg - 2))
+        fi
+    fi
+    time ninja -l${loadavg}
 }
 
 package() {
