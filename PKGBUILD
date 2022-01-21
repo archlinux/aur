@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nucleistudioide
-pkgver=202102
-pkgrel=9
+pkgver=202109.ENG04
+pkgrel=1
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
 makedepends=()
@@ -13,19 +13,19 @@ url="https://www.nucleisys.com/download.php"
 license=('unknow')
 options=(!strip)
 
-source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_202102-lin64.tgz")
-sha256sums=('a005671317725f33e177d2ba9272cd77e0c04ef3d28c7cf8de4565c3f83b651e')
+source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_202109_ENG04-lin64.tgz")
+sha256sums=('6c710ed848881650eaebd07a5ccffd23a042bdec38798c383bf5a093385593ed')
 
 package() {
 	cd "$srcdir"
 
 	msg2 'Installing Nuclei Studio IDE'
 	install -d -m755 "${pkgdir}/opt/nuclei"
-	tar zxf "NucleiStudio_IDE_${pkgver}-lin64.tgz"
-	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/openocd"
-	rm -rf "NucleiStudio_IDE_${pkgver}/NucleiStudio/toolchain/gcc"
+	tar zxf "NucleiStudio_IDE_${pkgver/./_}-lin64.tgz"
+	rm -rf "NucleiStudio_IDE_${pkgver/./_}/NucleiStudio/toolchain/openocd"
+	rm -rf "NucleiStudio_IDE_${pkgver/./_}/NucleiStudio/toolchain/gcc"
     
-	mv "${srcdir}/NucleiStudio_IDE_${pkgver}/NucleiStudio" "${pkgdir}/opt/nuclei"
+	mv "${srcdir}/NucleiStudio_IDE_${pkgver/./_}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
 	msg2 'Instalation of binary file'
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" <<EOF
