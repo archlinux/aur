@@ -9,7 +9,7 @@ url="https://github.com/crate-ci/${pkgname}"
 license=('MIT' 'Apache')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('24476fcaf96864c6f08dc0308e2db201aa9b4cb4c70e8d645546d1b4b5597d26')
+sha256sums=('cdd4f59d8969ffcf51c8913dc52156a5aa748002bf12faf7a5e44fe09a2a44ab')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
