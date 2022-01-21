@@ -300,3 +300,13 @@ Bug Fixes
 - We fixed the categorisation of some CalDAV calendars, erroneously considered read-only, which was preventing the editing of the events
 - We fixed a problem causing some Office 365 accounts to load forever in case of bad internet connection
 - We fixed some layout glitches, like the sidebar header moving behind the macOS traffic light buttons and the scheduler tooltip being hardly readable
+
+
+=== Morgen 2.4.3
+New Features:
+- We now offer the possibility to set up a static IP address for our scheduler to access your calendar when somebody loads one of your Morgen Scheduling Links. This is important if you need to whitelist our servers on your firewall, for example, Azure Conditional Access. This is an option available on-demand in the Morgen Pro plan. If white-listing a location is enough, you'll just need to know that all the requests come from our servers located in Zurich, Switzerland.
+- This release introduces several improvements and fixes for CalDAV calendars. First and foremost, Morgen now fully supports CalDAV delegate access. This means that you can see all calendars that have been shared with you by another person. Before it was only possible to add such calendars by entering their full URL, which was not always easy to find. To see a full list of calendars you have access to, reconnect your account using the "Reconnect" button.
+
+Bug Fixes
+- We fixed an issue affecting some recurrent daily events. Depending on the timezone, it could happen that the series would end one day too early or one day too late. This was affecting CalDAV as well as Exchange calendars and has now been fixed.
+- Again talking about timezones, we fixed a problem parsing some non-standard timezones on CalDAV, which was preventing the correct visualization of these events.
