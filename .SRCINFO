@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-bouncehandler
 	pkgdesc = An extension for MediaWiki that allows a wiki to handle bounce emails efficiently
-	pkgver = 1.37+r425+gf60dea9
+	pkgver = 1.37+r426+ga40508b
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:BounceHandler
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/BounceHandler.git#commit=f60dea9f16b6a44accc2195f29030d426fc2292f
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/BounceHandler.git#commit=a40508b1a14ce507bbc2ddafaf6c0d13feb24f42
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-bouncehandler
