@@ -1,6 +1,6 @@
 pkgbase = terraform-provider-lxd
 	pkgdesc = Terraform provider to provision infrastructure with LXD
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/terraform-lxd/terraform-provider-lxd
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = terraform-provider-lxd
 	makedepends = git
 	depends = terraform
 	optdepends = lxd: for a local instance of LXD
-	source = terraform-provider-lxd-1.6.0.tar.gz::https://github.com/terraform-lxd/terraform-provider-lxd/archive/v1.6.0.tar.gz
-	sha512sums = 61c61b8220cd9ddf2f08e02e53a77f767d0d016b8c93ffc9c816bd5b50b970fe9f3f280767abae32a633e1d763739f26cd1372e6d0a8aec61b8e4fff2331c87e
-	b2sums = 9b7aa822fa1271792084c2b787eac5e520457f9c6bcc5cb4ac127f696deeea5b187796c33c38905f99fcf854e7344bebd6991469e56bfc3042cd501e59ada1e4
+	source = terraform-provider-lxd-1.7.0.tar.gz::https://github.com/terraform-lxd/terraform-provider-lxd/archive/v1.7.0.tar.gz
+	sha512sums = d5491cda4a0b2e7acc7fd94939517952916b6e65156d3a22e5c104fc31004556147b6d7bba3b2d67b3977dfd0a438c34ced85e476a9bc84794aa70f34a99fd91
+	b2sums = da45e7e07edb2fa31e917cedf9aa18299b501c12bea5160328256e22bc89fd6e3dc35bd603f54a935140bc7afece412ec8f6b2c6d1cf4b3ad1d3cded70dd121c
 
 pkgname = terraform-provider-lxd
