@@ -1,5 +1,5 @@
 pkgname="paths-bookmarks-git"
-pkgver=r94.f3ca8f9
+pkgver=r95.c20a8b1
 pkgrel=1
 pkgdesc="Save often used directories like bookmarks"
 arch=("x86_64")
