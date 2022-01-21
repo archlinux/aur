@@ -1,0 +1,15 @@
+pkgbase = libjxl-metrics-git
+	pkgdesc = Image metrics (butteraugli and ssimulacra) maintained as libjxl tools
+	pkgver = v0.3.7.777.g36ece47
+	pkgrel = 1
+	url = https://github.com/libjxl/libjxl
+	arch = any
+	license = BSD-3
+	makedepends = git
+	makedepends = cmake
+	provides = libjxl-metrics
+	conflicts = libjxl-metrics
+	source = libjxl-metrics-git::git+https://github.com/libjxl/libjxl.git
+	sha256sums = SKIP
+
+pkgname = libjxl-metrics-git
