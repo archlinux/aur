@@ -3,7 +3,7 @@
 
 pkgname=python-aigpy
 _name=${pkgname#python-}
-pkgver=2022.1.18.2
+pkgver=2022.1.20.1
 pkgrel=1
 pkgdesc="Python Common Lib"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python-requests' 'python-colorama' 'python-mutagen')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 
-sha256sums=('09837e5f11f6b35cc0b124dff0a71154ad27ed5f6f416db61bd085ef60fc8c62')
+sha256sums=('9add0659bf84e76fe79ff377d76cfe10b7982441ceb179b4e73a5f56671e2be3')
 
 build() {
   cd "${_name}-${pkgver}"
