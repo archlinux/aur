@@ -20,7 +20,7 @@ optdepends=('libxml2: XML / HTML support'
 conflicts=('gerbil-scheme-git')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "install.patch")
 sha512sums=('c23d5ead0b23991181c977b9fe5784df5ba9ee46221b44a3f3a194d7669b7fb1268b9bfa310f5cfd1c994036f2fbee2f8611c9bce556f1c235e17babc31ce43d'
-            '4090c8981e2337561a81075848db3463b7cd76feffd325d06d055346e3ad91c904cc00b1100c36ce5578324ccb3f71c1c5cd08da5d00b4fef446094fdf326036')
+            'ea220f3f0d8c23e8a859d4ce119dd4685f45730775d9f3be841deddc70345313f84d841e78bfe79d8fffd413a2b4408d19e65ca50c041a248f912deba4f9ce2a')
 
 pkg_installed() {
     pacman -Qq $1 >/dev/null 2>&1
