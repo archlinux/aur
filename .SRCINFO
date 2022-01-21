@@ -1,13 +1,11 @@
 pkgbase = pcal-calendar-git
 	pkgdesc = CLI tool to convert Georgian dates to Persian dates
 	pkgver = r12.94deca8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/a5hk/pcal
 	arch = any
 	license = MIT
 	makedepends = git
-	provides = pcal
-	conflicts = pcal
 	source = git+https://github.com/a5hk/pcal.git
 	md5sums = SKIP
 
