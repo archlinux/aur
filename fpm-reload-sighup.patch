@@ -1,0 +1,57 @@
+diff --git a/sapi/fpm/fpm/fpm_events.c b/sapi/fpm/fpm/fpm_events.c
+index ce5d543..63de0a4 100644
+--- a/sapi/fpm/fpm/fpm_events.c
++++ b/sapi/fpm/fpm/fpm_events.c
+@@ -113,6 +113,11 @@
+ 				zlog(ZLOG_NOTICE, "Reloading in progress ...");
+ 				fpm_pctl(FPM_PCTL_STATE_RELOADING, FPM_PCTL_ACTION_SET);
+ 				break;
++			case 'H' :                  /* SIGHUP */
++				zlog(ZLOG_DEBUG, "received SIGHUP");
++				zlog(ZLOG_NOTICE, "Reloading in progress ...");
++				fpm_pctl(FPM_PCTL_STATE_RELOADING, FPM_PCTL_ACTION_SET);
++				break;
+ 		}
+ 
+ 		if (fpm_globals.is_child) {
+diff --git a/sapi/fpm/fpm/fpm_signals.c b/sapi/fpm/fpm/fpm_signals.c
+index c5d0692..9fae650 100644
+--- a/sapi/fpm/fpm/fpm_signals.c
++++ b/sapi/fpm/fpm/fpm_signals.c
+@@ -160,6 +160,7 @@
+ 		[SIGINT]  = 'I',
+ 		[SIGUSR1] = '1',
+ 		[SIGUSR2] = '2',
++		[SIGHUP]  = 'H',
+ 		[SIGQUIT] = 'Q',
+ 		[SIGCHLD] = 'C'
+ 	};
+@@ -206,6 +207,7 @@
+ 	    0 > sigaction(SIGINT,   &act, 0) ||
+ 	    0 > sigaction(SIGUSR1,  &act, 0) ||
+ 	    0 > sigaction(SIGUSR2,  &act, 0) ||
++	    0 > sigaction(SIGHUP,   &act, 0) ||
+ 	    0 > sigaction(SIGCHLD,  &act, 0) ||
+ 	    0 > sigaction(SIGQUIT,  &act, 0)) {
+ 
+@@ -235,6 +237,7 @@
+ 	    0 > sigaction(SIGINT,   &act_dfl,  0) ||
+ 	    0 > sigaction(SIGUSR1,  &act_dfl,  0) ||
+ 	    0 > sigaction(SIGUSR2,  &act_dfl,  0) ||
++	    0 > sigaction(SIGHUP,   &act_dfl,  0) ||
+ 	    0 > sigaction(SIGCHLD,  &act_dfl,  0) ||
+ 	    0 > sigaction(SIGQUIT,  &act,      0)) {
+ 
+diff --git a/sapi/fpm/php-fpm.8.in b/sapi/fpm/php-fpm.8.in
+index 794f508..b1bcf08 100644
+--- a/sapi/fpm/php-fpm.8.in
++++ b/sapi/fpm/php-fpm.8.in
+@@ -150,7 +150,7 @@
+ .TP
+ .B SIGUSR1 			\fPre-open log file
+ .TP
+-.B SIGUSR2 			\fPgraceful reload of all workers + reload of fpm conf/binary
++.B SIGUSR2,SIGHUP		\fPgraceful reload of all workers + reload of fpm conf/binary
+ .RE
+ .PD 1
+ .P

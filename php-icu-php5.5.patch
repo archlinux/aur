@@ -1,5 +1,5 @@
---- 7.2.34/ext/intl/breakiterator/codepointiterator_internal.cpp
-+++ 7.2.34/ext/intl/breakiterator/codepointiterator_internal.cpp
+--- a/ext/intl/breakiterator/codepointiterator_internal.cpp
++++ b/ext/intl/breakiterator/codepointiterator_internal.cpp
 @@ -74,7 +74,11 @@
  	clearCurrentCharIter();
  }
@@ -27,8 +27,8 @@
  		virtual CodePointBreakIterator* clone(void) const;
  
  		virtual UClassID getDynamicClassID(void) const;
---- 7.2.34/ext/intl/locale/locale_methods.c
-+++ 7.2.34/ext/intl/locale/locale_methods.c
+--- a/ext/intl/locale/locale_methods.c
++++ b/ext/intl/locale/locale_methods.c
 @@ -1333,7 +1333,7 @@
  		if( token && (token==cur_lang_tag) ){
  			/* check if the char. after match is SEPARATOR */
