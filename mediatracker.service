@@ -1,0 +1,11 @@
+[Unit]
+Description=MediaTracker
+After=network.target
+
+[Service]
+User=mediatracker
+ExecStart=npm run start --prefix /srv/MediaTracker
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

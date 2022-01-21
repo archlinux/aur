@@ -1,0 +1,10 @@
+post_install() {
+    useradd mediatracker
+    chown -R mediatracker /srv/MediaTracker
+    echo "To run, systemctl start mediatracker"
+    echo "site at localhost:7481"
+}
+
+post_remove() {
+    userdel mediatracker
+}
