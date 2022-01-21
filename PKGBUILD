@@ -17,13 +17,6 @@ pkgver() {
   cd "$__pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-#pkgver() {
-#  git rev-list --count HEAD
-#}
-
-#prepare() {
-#  #cd "$srcdir/${_pkgname}"
-#}
 
 build() {
   cd "$srcdir/MediaTracker"
