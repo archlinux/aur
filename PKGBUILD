@@ -1,14 +1,14 @@
 # Maintainer: Sascha Pfau <MrPeacock at gmail dot com>
 plugin=bpmn-js-token-simulation-plugin
 pkgname=camunda-modeler-plugin-bpmn-js-token-simulation
-pkgver=0.13.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Token Simulation for the Camunda Modeler'
 arch=('any')
 url='https://github.com/bpmn-io/bpmn-js-token-simulation-plugin'
 license=('MIT')
 source=("https://github.com/bpmn-io/${plugin}/archive/v${pkgver}.tar.gz")
-sha256sums=('7d5e986f0a3f422b23061006a2cd1c8384a0d84921bbb4a6c561523f6b70a49e')
+sha256sums=('9697c7af28b6ab620b873d4f57767609b4f3594d01a1e918e9a4cc47040c878e')
 depends=('camunda-modeler')
 
 package() {
