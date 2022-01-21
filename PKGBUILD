@@ -3,7 +3,7 @@
 pkgname=i3gopher
 pkgver=1.1.1
 pkgrel=1
-pkgdesc='i3 wm helper rodent - focus last focused window per workspace'
+pkgdesc='i3 wm helper rodent - focus the last focused window (per workspace)'
 arch=('x86_64')
 url="https://github.com/quite/i3gopher"
 license=('BSD')
