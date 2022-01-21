@@ -2,7 +2,7 @@
 _pkgname=nitter
 pkgname=nitter-git
 pkgver=latest
-pkgrel=1
+pkgrel=15
 pkgdesc="Alternative Twitter front-end"
 url="https://github.com/zedeus/nitter"
 depends=('redis')
@@ -14,17 +14,18 @@ license=('AGPL3')
 arch=('x86_64')
 install=nitter.install
 source=("$pkgname::git+$url.git#branch=master"
-    "config.patch"
+    "config.patch" "nim-compile.patch"
     "tmpfilesd.conf"
     "nitter.sh"
     "nitter.service"
     "nitter.install")
 sha256sums=('SKIP'
-    'd70b74da1a9a5a4eb56a3272b3ba0c93cefc4df2cf0b97372447b206985ad96e'
-    '620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526'
-    '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
-    '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
-    '57eb0d0aa47416006f107df078221e64023881123e8ec961266029db9228af9d')
+            'd70b74da1a9a5a4eb56a3272b3ba0c93cefc4df2cf0b97372447b206985ad96e'
+            'a4a8f827b59de2ab46ea909c9914c86b5869c885228bc1bb7a73582dcd6a8878'
+            '620e38c7bb978a64d276b499d097ec4967fe8bda16852fe0c416ed61744b6526'
+            '79469c5cfeacf38c7469a2240ba5c19670ddaf757e6d1b5286206a18a0718487'
+            '560d98833c56979cb6b5d187a827788dbbdff95871f957225604b58b15c1c219'
+            '57eb0d0aa47416006f107df078221e64023881123e8ec961266029db9228af9d')
 
 pkgver() {
   cd "$pkgname"
@@ -41,6 +42,8 @@ prepare() {
   mv -v nitter.example.conf nitter.conf
   # Tweak the configuration file
   patch -p1 <"$srcdir/config.patch"
+  # Tweak the nimble configuration
+  patch -p1 <"$srcdir/nim-compile.patch"
 }
 
 build() {
