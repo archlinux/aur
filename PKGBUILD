@@ -3,12 +3,13 @@
 
 # Maintainer: Rami Chowdhury <rami.chowdhury@gmail.com>
 pkgname=gerbil-scheme
-pkgver=0.16
-pkgrel=5
+pkgver=0.17
+pkgrel=1
 pkgdesc="Opinionated dialect of Scheme designed for systems programming, on the Gambit runtime."
 arch=(x86_64 i686)
 url="https://github.com/vyzo/gerbil"
 license=('LGPLv2.1' 'Apache 2.0')
+
 depends=('openssl' 'zlib' 'sqlite' 'gambit-c>=4.9.3')
 # makedepends=('git')
 optdepends=('libxml2: XML / HTML support'
@@ -18,8 +19,8 @@ optdepends=('libxml2: XML / HTML support'
             'leveldb: key/value store support')
 conflicts=('gerbil-scheme-git')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "install.patch")
-sha512sums=('46782b4b71a3b437501b825f2f164e53b285d3a4cdba8f04485edaaa589d8500535c06a47a1464fc537ab7546413dde37c8d6a16a5e076a99ccf255905ed105d'
-            '79ad0046390b40748830dfd96d48162dcd3658503c208fecad33aee4b2f6f2430856d425a042c30a110b515135eab2105ae254548b762347d1d1efbd8c106cc9')
+sha512sums=('c23d5ead0b23991181c977b9fe5784df5ba9ee46221b44a3f3a194d7669b7fb1268b9bfa310f5cfd1c994036f2fbee2f8611c9bce556f1c235e17babc31ce43d'
+            '4090c8981e2337561a81075848db3463b7cd76feffd325d06d055346e3ad91c904cc00b1100c36ce5578324ccb3f71c1c5cd08da5d00b4fef446094fdf326036')
 
 pkg_installed() {
     pacman -Qq $1 >/dev/null 2>&1
