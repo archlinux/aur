@@ -1,8 +1,8 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 pkgname=plumed-mpi
-pkgver=2.7.1
-pkgrel=2
+pkgver=2.7.3
+pkgrel=1
 pkgdesc="An open source plugin for free energy calculations in molecular systems which works together with some of the most popular molecular dynamics engines (with MPI support)"
 url="http://www.plumed.org/"
 license=(GPL)
@@ -16,7 +16,7 @@ optdepends=('vmd-molfile-plugins: add capability to read vmd compatible trajecto
             'gawk: partial tempering support')
 makedepends=(vim)
 source=(https://github.com/plumed/plumed2/releases/download/v${pkgver}/plumed-${pkgver}.tgz)
-sha256sums=('23b3fe1226ffecd514e93983fe398af284bec8b15f33998d5db7fc252c423604')
+sha256sums=('2895515f31aae42002a539222f5b8558037496548a061b5d0db136d3a46f618b')
 
 prepare() {
   # Extend support for trajectory analysis to formats understood by vmd (thx hseara!)
