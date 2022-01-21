@@ -1,12 +1,12 @@
 pkgbase = tony
 	pkgdesc = Tony: a tool for melody transcription
 	pkgver = 2.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.sonicvisualiser.org/tony/
 	arch = x86_64
 	license = GPL2
 	makedepends = boost
-	depends = jack2
+	depends = jack
 	depends = libfishsound
 	depends = libid3tag
 	depends = liblo
@@ -25,4 +25,3 @@ pkgbase = tony
 	sha256sums = d79d85be738b00aef7859473f2c0385632d6cb30cd3752e07e952220695de20d
 
 pkgname = tony
-
