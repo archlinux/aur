@@ -1,12 +1,22 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
-	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+pkgbase = libwacom1
+	pkgdesc = Library to identify Wacom tablets and their features (provides libwacom.so.2)
+	pkgver = 1.12.1
+	pkgrel = 2
+	url = https://github.com/linuxwacom/libwacom/wiki
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-libevdev
+	checkdepends = python-pyudev
+	makedepends = libxml2
+	makedepends = meson
+	depends = glib2
+	depends = systemd
+	depends = libgudev
+	depends = libwacom
+	optdepends = python-libevdev: for libwacom-show-stylus
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.12.1/libwacom-1.12.1.tar.bz2
+	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
+	sha512sums = 944da1b23c1183d7b1bc1f44fc8420fb834e04ac1139c8bc71b79f35d0559e3c6001a6c51ad8fb2e73a8c0cfe371a638401ff6519f879ae4a266b0c5d52bb26f
 
-pkgname = yarxi
-
+pkgname = libwacom1
