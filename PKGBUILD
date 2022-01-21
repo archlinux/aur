@@ -1,8 +1,8 @@
 # Maintainer: Gabe Banks <gabriel.t.banks@gmail.com>
 pkgname='tstock'
-pkgver=2.0.9
+pkgver=2.0.10
 pkgrel=1
-pkgdesc="A command line tool to view stock charts in the terminal."
+pkgdesc="A command line tool for generating stock charts in the terminal."
 arch=('x86_64')
 url="https://github.com/Gbox4/tstock"
 license=('GPL')
