@@ -22,7 +22,7 @@ tidy_optipng() {
       [ $(jobs -p|wc -l) -gt $(getconf _NPROCESSORS_ONLN) ] && wait -n
       if [[ $(file --brief --mime-type "$png") = 'image/png' ]]; then
         { optipng "${OPTIPNGFLAGS[@]}" "$png" &>/dev/null ||
-        warning "$(gettext "Could not optimize PNG image : %s")" "${png/$pkgdir\//}"; } &
+          warning "$(gettext "Could not optimize PNG image : %s")" "${png/$pkgdir\//}"; } &
       fi
     done
     wait

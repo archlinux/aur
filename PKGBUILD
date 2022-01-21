@@ -3,7 +3,7 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize-mold
-pkgver=21
+pkgver=22
 pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
@@ -14,6 +14,7 @@ optdepends=("upx: Compress executables"
             "optipng: Optimize PNG files"
             "svgo: Optimize SVG files"
             "openmp: Parallelize loops"
+            "polly: Polyhedral model optimization for clang"
             "mold: a modern fast linker")
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,graphite,rice,mold}.sh.in)
@@ -25,26 +26,26 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
-          'd7a3801037333c582dba976db27cf8896bc1b401'
-          '3a356f52131e39f59d360c54a572d678c7208b42'
-          '77b84f9ab5ecce37af2f4dce3b94bcfe54a87b00'
+          '81547a110d9e28897e41f2f8accabb7721dbcc19'
+          '14cb27e5e45dacf8e59cfb498235036716393014'
+          '591d7cf066b01a7362caebafd68abea93cdb29c0'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
           '4def44ef53ba3b579bed40af897d6f0c038ec78d'
-          '2efb74a7743764205d20e0dd74fb5f948673f825'
-          '0dbba257ec59dc55583a74da0319d6c210cf717a'
-          '1a4f26170da04998f9cba088a63a95fd75c1113e'
+          '0022423564ed30dfe91bb3faa7f0c03ddcf4f25f'
+          'fbd6ee512b6486320d41a007b9670dcf5a3430b6'
+          '4d11331aeff1c1ec3de3759710acc060769ef274'
           '4cd8012f8946761d7288a198af7edb3ebaf0ece0'
-          '9cb1a46ca7c3c6fab8a44ca5355528e9eb9e0650'
-          'f17b1a8ccbd807fd59fbc716cc695be32e261e38'
-          '3c61762a183a2f76cc2ff2e55cfffb68b6a8320c'
+          'dea4d727d81ac040846555e59ac7c34eb0978233'
+          'eef21d80145bf64133206beba26fd7fab5a8f5bc'
+          '2e2cd8c680a86518652543fda9092bf2ab594660'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          '81a662d3cf3e5fdbeb3c3e5d0b78efbacc6587d7'
+          'cb14aaa95406b2a796635bcbf6936e4424e4b6d6'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
-          '67801619b39ea4542829a4b715034a9f7ac7cf2c')
+          '2f26e982500c7e799e99d150beec7b04fed99851')
 
 prepare() {
   # Use the current makepkg config as a base
@@ -94,7 +95,7 @@ package() {
 
   # Executable finding scripts
   for i in ${_executable[@]%.in}; do
-    install -m644 -D -T ${i} ${pkgdir}/usr/share/makepkg/executable/${i//-exec.sh/.sh}; done
+  install -m644 -D -T ${i} ${pkgdir}/usr/share/makepkg/executable/${i//-exec.sh/.sh}; done
 
   # Supplemental Tidy scripts
   install -m644 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}

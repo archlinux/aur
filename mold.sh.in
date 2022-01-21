@@ -18,6 +18,6 @@ buildenv_mold() {
   check_buildoption "mold" "y"; then
     CFLAGS+=" -fuse-ld=mold"
     CXXFLAGS+=" -fuse-ld=mold"
-    LDFLAGS+=" -fuse-ld=mold"
+#    LDFLAGS+=" -fuse-ld=mold"
   fi
 }

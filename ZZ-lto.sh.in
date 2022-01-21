@@ -1,7 +1,6 @@
 #!/usr/bin/bash
 #
-#   ZZ-lto.sh - Compile with link-time optimization # Changed lto to lto because arch already provides the options with lto
-#
+#   ZZ-lto.sh - Compile with link-time optimization
 #
 
 [[ -n "$LIBMAKEPKG_BUILDENV_LTO_SH" ]] && return
