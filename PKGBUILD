@@ -2,14 +2,13 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-asan-git
 _pkgname=sway
-pkgver=r6843.eaeb173a
+pkgver=r6863.b4fd4bca
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager (with address sanitizer)"
 makedepends=(
 	"git"
 	"meson"
-	"ninja"
 	"scdoc"
 	"wayland-protocols"
 )
@@ -54,23 +53,26 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	CFLAGS="$CFLAGS -fsanitize=address,undefined" meson \
+	CFLAGS="$CFLAGS -fsanitize=address,undefined" arch-meson \
+		-Dsd-bus-provider=libsystemd \
 		-Dwerror=false \
-		--prefix /usr \
-		"$srcdir/build"
-	ninja -C "$srcdir/build"
+		"$_pkgname" build
+	meson compile -C build
 }
 
 package() {
 	install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 
-	cd "$_pkgname"
-	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	DESTDIR="$pkgdir" meson install -C build
 
+        cd "$_pkgname"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
 	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
 		install -Dm755 "contrib/$util" -t "$pkgdir/usr/share/$pkgname/scripts"
 	done
+}
+
+post_upgrade() {
+	echo "Make sure to upgrade wlroots-git and sway-git together."
+	echo "Upgrading one but not the other is unsupported."
 }
