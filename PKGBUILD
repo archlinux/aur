@@ -3,7 +3,7 @@
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.28.0
+pkgver=7.32.0
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://termius.com/"
@@ -55,6 +55,7 @@ package() {
         cp -ax ./opt "$pkgdir"/opt
         ln -s /opt/Termius/$pkgname "$pkgdir"/usr/bin/$pkgname
         ln -s $pkgname "$pkgdir"/usr/bin/$_pkgname
+	chmod 4755 /opt/Termius/chrome-sandbox
         sed 's/\/opt\/Termius\/termius-app/\/usr\/bin\/termius/g' -i "$pkgdir"/usr/share/applications/$pkgname.desktop
         install -D -m 644 "$srcdir"/TERMS_OF_USE "$pkgdir"/usr/share/licenses/$_pkgname/TERMS_OF_USE
 }
