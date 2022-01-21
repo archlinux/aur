@@ -4,7 +4,7 @@
 # Maintainer: Rami Chowdhury <rami.chowdhury@gmail.com>
 pkgname=gerbil-scheme
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Opinionated dialect of Scheme designed for systems programming, on the Gambit runtime."
 arch=(x86_64 i686)
 url="https://github.com/vyzo/gerbil"
