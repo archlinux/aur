@@ -2,7 +2,7 @@
 
 pkgname=freerouting-zh-cn
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced PCB autorouter"
 arch=('any')
 url="https://gitee.com/YaJs666/freerouting-chinese-version"
@@ -27,7 +27,8 @@ build() {
 
 package() {
     cd "${pkgname}"
-    install -Dm644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable-zh-cn.jar"
+    install -Dm0644 design/icon/freerouting_icon_256x256_v2.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm0644 build/libs/freerouting-executable.jar "${pkgdir}/usr/lib/freerouting/freerouting-executable-zh-cn.jar"
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/usr/bin/bash
 
@@ -45,9 +46,9 @@ Comment=${pkgdesc}
 Exec=${pkgname}
 Type=Application
 StartupNotify=true
-Categories=Tool;
+Categories=Tool;Electron;PCB;
 Terminal=false
-Icon=
+Icon=${pkgname}.png
 Version=${pkgver}
 EOF
 }
