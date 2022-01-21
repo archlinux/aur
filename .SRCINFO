@@ -1,0 +1,19 @@
+pkgbase = python-sentence-splitter
+	pkgdesc = Text to sentence splitter using heuristic algorithm by Philipp Koehn and Josh Schroeder
+	pkgver = 1.4
+	pkgrel = 00
+	url = https://github.com/berkmancenter/mediacloud-sentence-splitter
+	arch = any
+	license = LGPL3
+	makedepends = python-pip
+	depends = python
+	depends = python-regex
+	noextract = sentence_splitter-1.4-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/4a/ae/3bd609c760d57849d7ddf223762f1881f3c4df6467f4eadb3a33652b7e0d/sentence_splitter-1.4-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 2997a3de186228e9d434f92bceb751ec
+	md5sums = 9abacc08227c884b12ecc2f9de7b3f5a
+
+pkgname = python-sentence-splitter
