@@ -1,0 +1,9 @@
+[Unit]
+Description=Filesystem indexer for Elasticsearch
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fs2es-indexer daemon
+
+[Install]
+WantedBy=graphical.target
