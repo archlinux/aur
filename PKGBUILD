@@ -3,8 +3,8 @@
 _jdkname=zulu-11
 pkgname="${_jdkname}-bin"
 _java_ver=11
-_zulu_build=11.52.13-ca
-pkgver=11.0.13
+_zulu_build=11.54.23-ca
+pkgver=11.0.14
 pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('aarch64' 'i686' 'x86_64')
@@ -27,9 +27,9 @@ install="$pkgname.install"
 source_aarch64=("https://cdn.azul.com/zulu-embedded/bin/zulu${_zulu_build}-jdk${pkgver}-linux_aarch64.tar.gz")
 source_i686=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_i686.tar.gz")
 source_x86_64=("https://cdn.azul.com/zulu/bin/zulu${_zulu_build}-jdk${pkgver}-linux_x64.tar.gz")
-sha256sums_aarch64=('6be187379c26506a4b804b4f734c17e554aebe4204bde58a10b429054cc9cf9f')
-sha256sums_i686=('fd64644c815875e5a3e6f009fcfd3972f17afd724c280daf8d6d27c66cf8c6a9')
-sha256sums_x86_64=('77a126669b26b3a89e0117b0f28cddfcd24fcd7699b2c1d35f921487148b9a9f')
+sha256sums_aarch64=('c810e10ebd761ad430746d01404ee4cb5119c104bbd14387b12db7f1b1590403')
+sha256sums_i686=('50b420f9b39eea76244e32e5abb18ae12646e4bddc035b2fdaca8d3cb48d8d52')
+sha256sums_x86_64=('4a7498edc338c84ec99be543dd160b28158a3485896e12e2ad8abcb8f89d1a51')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
