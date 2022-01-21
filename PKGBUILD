@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gnome-settings-daemon-338
-pkgver=3.38.2
+pkgver=3.38.2-1
 pkgrel=2
 pkgdesc="GNOME Settings Daemon"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
@@ -12,7 +12,7 @@ replaces=("gnome-settings-daemon")
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gnome-desktop gsettings-desktop-schemas-338 libcanberra-pulse libnotify systemd-libs
-         libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue nss
+         libwacom1 libwacom pulseaudio pulseaudio-alsa upower librsvg libgweather geocode-glib geoclue nss
          libgudev gtk3 libnm gcr)
 makedepends=(xf86-input-wacom libxslt docbook-xsl python git meson usbguard)
 checkdepends=(python-gobject python-dbusmock)
