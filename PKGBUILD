@@ -1,18 +1,16 @@
 # Maintainer: Ehsan Ghorbannezad <ehsangn at protonmail dot ch>
 
-_pkgname='pcal'
-pkgname="${_pkgname}-calendar-git"
+_pkgname=pcal
+pkgname=$_pkgname-calendar-git
 pkgver=r12.94deca8
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool to convert Georgian dates to Persian dates'
-arch=('any')
-url='https://github.com/a5hk/pcal'
-license=('MIT')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+arch=(any)
+url=https://github.com/a5hk/pcal
+license=(MIT)
+makedepends=(git)
 source=("git+${url}.git")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"
@@ -21,7 +19,7 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    install -Dm755 pcal "${pkgdir}/usr/bin/pcal"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 pcal "$pkgdir/usr/bin/pcal"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
