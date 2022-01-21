@@ -1,26 +1,27 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Grey Christoforo <first name at last name dot net>
 
-pkgbase='python-dataset'
-pkgname=('python-dataset')
-_module='dataset'
-pkgver='1.3.2'
-pkgrel=2
+pkgname=python-dataset
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="Toolkit for Python-based database access."
 url="https://github.com/pudo/dataset"
-depends=('python')
-makedepends=('python-setuptools' 'python-sqlalchemy' 'python-alembic')
+depends=(
+python-alembic
+python-sqlalchemy
+python-banal
+python)
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('6be387eefcd5a98fe1a68b1403390648c71f2edc5cb271f0e1f1a44ca83409eb')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pudo/dataset/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('27271f3fd5cfe93ae04cf9c91f87b9a3d4d50c48ed6fda3407f9ef50b913b8bd')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+  cd dataset-${pkgver}
+  python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd dataset-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
