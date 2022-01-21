@@ -3,13 +3,13 @@
 
 pkgname=lite-xl-git
 _pkgname=lite-xl
-pkgver=2.0.2.r114.gefbec1e
+pkgver=2.0.3.r335.g8c8bd46
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
 url="https://lite-xl.github.io/"
 license=('MIT')
-depends=('lua52' 'sdl2' 'freetype2' 'pcre2' 'hicolor-icon-theme')
+depends=('lua' 'sdl2' 'freetype2' 'pcre2' 'hicolor-icon-theme')
 makedepends=('meson>=0.58')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  arch-meson build --wrap-mode default
+  arch-meson build
   meson compile -C build
 }
 
@@ -32,5 +32,6 @@ package() {
   cd "$_pkgname"
   DESTDIR="$pkgdir" meson install --skip-subprojects -C build
 
-  install -Dm 644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s "/usr/share/doc/lite-xl/licenses.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
