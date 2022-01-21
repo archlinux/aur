@@ -1,6 +1,6 @@
 pkgbase = newaita-reborn-icons-git
 	pkgdesc = Remaster Newaita icon theme
-	pkgver = r78.51a2c97
+	pkgver = r79.d0f423c
 	pkgrel = 1
 	url = https://github.com/cbrnix/Newaita-reborn
 	arch = any
