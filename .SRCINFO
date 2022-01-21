@@ -1,16 +1,17 @@
 pkgbase = python-pygmsh
 	pkgdesc = Gmsh for Python
-	pkgver = 7.1.14
-	pkgrel = 4
+	pkgver = 7.1.15
+	pkgrel = 1
 	url = https://github.com/nschloe/pygmsh
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-pytest-codeblocks
-	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
 	depends = python-meshio
 	depends = gmsh
-	source = https://github.com/nschloe/pygmsh/archive/v7.1.14.tar.gz
-	sha512sums = 7a7a38e5a54bdd043f7d32bacbf2f936d762fbf88598e052183eed9ad154ed3051ac6d72f4ab5a5c44b8e104dfb04c93639b39fd1335057b31d2d1e7a2c3f507
+	source = https://github.com/nschloe/pygmsh/archive/v7.1.15.tar.gz
+	sha512sums = 601792a83f76a3da9fdae64cbba336fadf8e1f68641210280002c58abe5e6340d3582051621ca804362b05a8a90954974037d53d685ec0815ca6707e741aa567
 
 pkgname = python-pygmsh
