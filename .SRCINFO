@@ -1,0 +1,19 @@
+pkgbase = python-mobi
+	pkgdesc = unpack unencrypted mobi files
+	pkgver = 0.3.2
+	pkgrel = 00
+	url = https://github.com/iscc/mobi
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-loguru
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/a0/18/5633d9d791d7e0a6e4b227d69ed688fd6edfd4c45c242ed5cbe3a8bb7fd5/mobi-0.3.2.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 9b6706748236b256445350771b77b1b3
+	md5sums = d32239bcb673463ab874e80d47fae504
+
+pkgname = python-mobi
