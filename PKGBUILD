@@ -1,13 +1,13 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=docker-machine-driver-vmware
-pkgver=0.1.0
-pkgrel=0
+pkgver=0.1.5
+pkgrel=1
 pkgdesc='Create Docker machines locally on VMware Fusion and Workstation.'
 arch=('x86_64')
 url='https://github.com/machine-drivers/docker-machine-driver-vmware'
 license=('Apache')
-makedepends=('go'
+makedepends=('go1.15'
              'git')
 
 build() {
@@ -15,8 +15,9 @@ build() {
   cd $pkgname-$pkgver
   export GOPATH=`pwd`
   #export GOFLAGS="-modcacherw"
-  go get -d github.com/machine-drivers/docker-machine-driver-vmware
+  go1.15 get -d github.com/machine-drivers/docker-machine-driver-vmware
   cd ${GOPATH}/src/github.com/machine-drivers/docker-machine-driver-vmware
+
   git checkout tags/v$pkgver
   export VERSION=$pkgver
   make
