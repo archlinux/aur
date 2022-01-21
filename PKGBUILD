@@ -1,7 +1,7 @@
 # Maintainer: Arthur LAURENT <arthur.laurent4@gmail.com>
 pkgname='shaderwriter-git'
-pkgver=v1.0.0.r5.g4cbf830
-pkgrel=2
+pkgver=v1.0.0.r101.g9e74882
+pkgrel=1
 pkgdesc='Library used to write shaders from C++, and export them in either GLSL, HLSL or SPIR-V.'
 
 arch=('any')
