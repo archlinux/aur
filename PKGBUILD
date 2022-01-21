@@ -1,50 +1,25 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
-
-_name=memoized-property
-pkgbase='python-memoized-property'
-pkgname=('python-memoized-property' 'python2-memoized-property')
+# Contributor: Clint Valentine <valentine.clint@gmail.com>
+_base=memoized-property
+pkgname=python-${_base}
 pkgver=1.0.3
 pkgrel=3
-pkgdesc="Python decorator for defining properties that only run their fget function once"
+pkgdesc="A simple python decorator for defining properties that only run their fget function once"
 arch=('any')
-url="https://pypi.python.org/pypi/memoized-property"
-license=('BSD')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=("${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/70/db/23f8b5d86c9385299586c2469b58087f658f58eaeb414be0fd64cfd054e1/memoized-property-1.0.3.tar.gz)
-sha256sums=('4be4d0209944b9b9b678dae9d7e312249fe2e6fb8bdc9bdaa1da4de324f0fcf5')
+url="https://github.com/estebistec/${pkgname}"
+license=('custom:BSD-3-clause')
+depends=(python)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('8a8fdb548b8ea36e42ca878b299f128b7d349bf334ddadcfd7dda9b507d9a04a3ab7985145ad4ac21b3fdf52be9e442e1e1f08124b3730f264290d8e11551897')
 
-prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
-}
-
-package_python2-memoized-property() {
-  depends=('python2')
-
-  cd "${_name}"-"${pkgver}"-py2
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-}
-
-package_python-memoized-property() {
-  depends=('python')
-
-  cd "${_name}"-"${pkgver}"
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
