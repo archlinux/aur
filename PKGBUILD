@@ -1,5 +1,5 @@
 pkgname=difftance-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A diff tool to show edit distance"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/fabon-f/difftance"
 license=('MIT')
 conflicts=('difftance-git')
 source=("difftance::https://github.com/fabon-f/difftance/releases/download/v${pkgver}/difftance-linux-x86_64" "https://github.com/fabon-f/difftance/releases/download/v${pkgver}/LICENSE")
-md5sums=('0bf69c8b47298802a6d3df7a4162c220' '334fc80d9b7396dc25a560729528c05c')
+md5sums=('1528467d5b8598390f3a39e3694bf948' '334fc80d9b7396dc25a560729528c05c')
 
 package() {
   chmod +x "${srcdir}/difftance"
