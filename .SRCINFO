@@ -1,6 +1,6 @@
 pkgbase = ftcli
 	pkgdesc = A command line font editor
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/ftCLI/ftCLI
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ftcli
 	depends = python-fonttools
 	depends = python-skia-pathops
 	depends = python-zopfli
-	source = https://github.com/ftCLI/ftCLI/archive/v0.6.0/ftCLI-0.6.0.tar.gz
-	sha256sums = dd8fd669072b7c6506fba96b0121611050db6568f99b14b9581b895931bd5d28
+	source = https://github.com/ftCLI/ftCLI/archive/v0.6.1/ftCLI-0.6.1.tar.gz
+	sha256sums = d2d1e22357c026f112375c9774db118da9e42eea7032246561b20436139e2dd1
 
 pkgname = ftcli
