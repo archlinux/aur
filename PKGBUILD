@@ -2,18 +2,18 @@
 
 pkgname=faubox
 pkgver=16.6.100
-pkgrel=1
+pkgrel=2
 pkgdesc="FAU file synchronization client"
 arch=('any')
-url="https://www.intern.fau.de/personal-und-arbeitsleben/arbeitsmittel-und-instrumente/faubox-cloudspeicher-fuer-alle-fau-angehoerigen"
+url="https://www.doku.faubox.rrze.fau.eu/"
 license=(custom)
 depends=('java-runtime=11')
 makedepends=('gendesk')
 
 
 source=("faubox.sh"
-        "https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
-sha512sums=('8983893a7d470544633c0815a0f097f5c0ac2ceadf52a37e6fd308118692e228a455e084382d67c641385349eb25e5936502bc9322a88a29aa1c221ea5e18c90'
+        "FAUbox_Linux_${pkgver}.tar.gz::https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
+sha512sums=('71e82bead1ec64521f7179ec3cd863584288b809a5d6383dee267a0db0175e56a551142f50287c88bc0f471e413427565278d0c7d6a4d035c45689fe995cdf8b'
             '1621500deb6b2851fc9764126eb4afd0ef1a04f40777731f927b5c7ada3a03f325894fba78a02da7bf3c881b48e5979e2ffe9716f37af7401ef02e533ac69ac5')
 
 
