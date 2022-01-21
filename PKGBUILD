@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=typos
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 
 pkgdesc="Source code spell checker."
