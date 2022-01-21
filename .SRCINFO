@@ -1,0 +1,17 @@
+pkgbase = freerouting-zh-cn
+	pkgdesc = Advanced PCB autorouter
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://gitee.com/YaJs666/freerouting-chinese-version
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = java-runtime
+	provides = freerouting-zh-cn
+	conflicts = freerouting-zh-cn
+	conflicts = freerouting-zh-cn-git
+	options = !strip
+	source = freerouting-zh-cn::git+https://gitee.com/YaJs666/freerouting-chinese-version.git
+	sha256sums = SKIP
+
+pkgname = freerouting-zh-cn
