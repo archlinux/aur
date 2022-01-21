@@ -1,5 +1,5 @@
 pkgname=upcloud-cli
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="upctl - a CLI tool for managing UpCloud services."
 arch=('x86_64')
