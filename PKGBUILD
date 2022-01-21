@@ -4,14 +4,14 @@ _reponame=XDarkTerror.lv2
 _pkgname=xdarkterror.lv2
 _lv2uri="http://guitarix.sourceforge.net/plugins/${_reponame//.lv2}_#_darkterror_"
 pkgname="${_pkgname}-git"
-pkgver=r10.aac27f8
-pkgrel=3
+pkgver=r12.d1a69f0
+pkgrel=1
 pkgdesc="An amplifier simulation LV2 plugin modelled after a small high-gain british valve amp (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/brummer10/${_reponame}"
 license=('0BSD')
 depends=('cairo' 'gcc-libs' 'libx11')
-makedepends=('git' 'lv2' 'lv2lint')
+makedepends=('git' 'lv2' 'lv2lint' 'xxd')
 groups=('pro-audio' 'lv2-plugins')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" "${_pkgname//-/.}")
 conflicts=("${_pkgname}" "${_pkgname//-/.}")
