@@ -2,22 +2,16 @@
 # Contributor: John Hamelink <me@johnhame.link>
 
 pkgname=python-mopidy-tidal
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Tidal music service integration'
 arch=('any')
 url=https://github.com/tehkillerbee/mopidy-tidal
 license=('Apache')
-depends=(
-	'mopidy>=3.0'
-	'python-pykka>=1.1'
-	'python-tidalapi>=0.6.8'
-	'python-tidalapi<0.7.0'
-	'python-requests>=2.0.0')
+depends=('mopidy' 'python-pykka' 'python-tidalapi' 'python-requests')
 makedepends=('python-setuptools')
-checkdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/M/Mopidy-Tidal/Mopidy-Tidal-$pkgver.tar.gz")
-sha256sums=('f77a1d8aef2fe7565482a054fc6d4c65ea62c14cccdc81864b867dfd3d037cde')
+sha256sums=('69cec07e5065acc47e757a07c972130d7d148288450e0385b84d60f9dadc5cc3')
 
 build() {
 	cd "Mopidy-Tidal-$pkgver"
@@ -25,6 +19,7 @@ build() {
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "Mopidy-Tidal-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
