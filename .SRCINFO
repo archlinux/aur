@@ -1,7 +1,7 @@
 pkgbase = gnome-settings-daemon-338
 	pkgdesc = GNOME Settings Daemon
 	pkgver = 3.38.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 	arch = x86_64
 	groups = gnome-338
@@ -21,6 +21,7 @@ pkgbase = gnome-settings-daemon-338
 	depends = libcanberra-pulse
 	depends = libnotify
 	depends = systemd-libs
+	depends = libwacom1
 	depends = libwacom
 	depends = pulseaudio
 	depends = pulseaudio-alsa

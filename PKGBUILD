@@ -2,8 +2,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=gnome-settings-daemon-338
-pkgver=3.38.2-1
-pkgrel=2
+pkgver=3.38.2
+pkgrel=3
 pkgdesc="GNOME Settings Daemon"
 url="https://gitlab.gnome.org/GNOME/gnome-settings-daemon"
 conflicts=("gnome-settings-daemon")
