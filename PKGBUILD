@@ -6,7 +6,7 @@
 pkgname=mycli-git
 _pkgname=mycli
 pkgver=1.24.2.r0.g832086b
-pkgrel=1
+pkgrel=2
 # epoch=
 pkgdesc="A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting."
 arch=("any")
@@ -29,7 +29,7 @@ depends=(
 makedepends=("python-setuptools")
 optdepends=("python-paramiko: SSH support")
 provides=("mycli")
-# conflicts=()
+conflicts=("mycli")
 # replaces=()
 # backup=()
 # options=()
