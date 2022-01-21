@@ -1,6 +1,6 @@
 pkgbase = jwt-cli-bin
 	pkgdesc = A super fast CLI tool to decode and encode JWTs built in Rust
-	pkgver = 5.0.0
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/mike-engel/jwt-cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jwt-cli-bin
 	provides = jwt
 	conflicts = jwt-cli
 	conflicts = jwt-cli-git
-	source = https://github.com/mike-engel/jwt-cli/releases/download/5.0.0/jwt-linux.tar.gz
-	sha256sums = a1ee8e740ffa4c4d50893b0525e5ec05ebeaeb20217febb7bc8173ed7a23023b
+	source = https://github.com/mike-engel/jwt-cli/releases/download/5.0.2/jwt-linux.tar.gz
+	sha256sums = caf6479023d39199b65cd8816fcb18633d93ad5342b424b9bb0664d7a622b90f
 
 pkgname = jwt-cli-bin
