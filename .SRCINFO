@@ -1,7 +1,7 @@
 pkgbase = python-pelican-jupyter
 	pkgdesc = Pelican plugin for Jupyter Notebooks
 	pkgver = 0.10.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/danielfrg/pelican-jupyter
 	arch = any
 	license = apache
@@ -11,7 +11,7 @@ pkgbase = python-pelican-jupyter
 	depends = pelican
 	depends = jupyter-nbconvert
 	depends = jupyter-nbformat
-	source = https://files.pythonhosted.org/packages/source///-0.10.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pelican-jupyter/pelican-jupyter-0.10.0.tar.gz
 	sha256sums = f2ab1505a494b1bb13065574d8ab3687c9f207d5be4c6a192da7fe4255f5e385
 
 pkgname = python-pelican-jupyter
