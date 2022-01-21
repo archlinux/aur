@@ -25,7 +25,7 @@ prepare() {
     git config submodule.cmake.url $srcdir/open-eid-cmake
     git submodule update
     # openssl 1.1.1m https://github.com/open-eid/libdigidocpp/pull/453
-    git checkout 692b310f69636b020a75ffd60b11dbf6495f7a12 src/crypto/TS.cpp
+    git checkout 42a8cfd834c10bdd206fe784a13217df222b1c8e src/crypto/TS.cpp
 }
 
 build() {
