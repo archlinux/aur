@@ -1,0 +1,34 @@
+--- php-5.3.29-orig/acinclude.m4
++++ php-5.3.29/acinclude.m4
+@@ -2345,11 +2345,11 @@
+     fi
+ 
+     for i in $PHP_OPENSSL_DIR; do
+-      if test -r $i/include/openssl/evp.h; then
+-        OPENSSL_INCDIR=$i/include
++      if test -r $i/include/openssl-1.0/openssl/evp.h; then
++        OPENSSL_INCDIR=$i/include/openssl-1.0
+       fi
+       if test -r $i/$PHP_LIBDIR/libssl.a -o -r $i/$PHP_LIBDIR/libssl.$SHLIB_SUFFIX_NAME; then
+-        OPENSSL_LIBDIR=$i/$PHP_LIBDIR
++        OPENSSL_LIBDIR=$i/$PHP_LIBDIR/openssl-1.0
+       fi
+       test -n "$OPENSSL_INCDIR" && test -n "$OPENSSL_LIBDIR" && break
+     done
+--- php-5.3.29-orig/aclocal.m4
++++ php-5.3.29/aclocal.m4
+@@ -2345,11 +2345,11 @@
+     fi
+ 
+     for i in $PHP_OPENSSL_DIR; do
+-      if test -r $i/include/openssl/evp.h; then
+-        OPENSSL_INCDIR=$i/include
++      if test -r $i/include/openssl-1.0/openssl/evp.h; then
++        OPENSSL_INCDIR=$i/include/openssl-1.0
+       fi
+       if test -r $i/$PHP_LIBDIR/libssl.a -o -r $i/$PHP_LIBDIR/libssl.$SHLIB_SUFFIX_NAME; then
+-        OPENSSL_LIBDIR=$i/$PHP_LIBDIR
++        OPENSSL_LIBDIR=$i/$PHP_LIBDIR/openssl-1.0
+       fi
+       test -n "$OPENSSL_INCDIR" && test -n "$OPENSSL_LIBDIR" && break
+     done
