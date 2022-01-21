@@ -1,0 +1,13 @@
+pkgbase = python-spacy-es_core_news_md
+	pkgdesc = Spanish pretrained model for spaCy (medium)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://spacy.io/models/es#section-es_core_news_md
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/es_core_news_md-3.2.0/es_core_news_md-3.2.0.tar.gz
+	b2sums = bb7be5cc43c079ca37f7942a7d2b61cb7cd0a4d3692808b82e96df1983ba810b653e26df22c9a949d11c2cf6465dbacecdffc2651b77eaf46754eaf53ffc75b7
+
+pkgname = python-spacy-es_core_news_md
