@@ -1,8 +1,8 @@
 # Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=spacestation14-launcher-bin
-pkgver=0.11.1
-pkgrel=1
+pkgver=0.11.3
+pkgrel=2
 pkgdesc="Space Station 14 launcher"
 url="https://spacestation14.io/"
 license=(MIT)
@@ -16,7 +16,7 @@ source=(
     "SS14.desktop")
 noextract=("${_source_name}")
 
-sha256sums=('1d7b81754d18cd8b0adca0c602047de3f0405564cca6e9973bdbc7aca15a674b'
+sha256sums=('4c881dfee10548c0ebf20d098d61bd7634f1890a6f048ca28f9bb84b53775a6d'
             'ba123bf55027694ffbf3528f58ba7554d072a023de3282187dd692f365ee9ce5'
             SKIP)
 

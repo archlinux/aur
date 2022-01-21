@@ -1,7 +1,7 @@
 pkgbase = spacestation14-launcher-bin
 	pkgdesc = Space Station 14 launcher
 	pkgver = 0.11.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spacestation14.io/
 	arch = x86_64
 	license = MIT
