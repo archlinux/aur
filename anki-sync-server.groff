@@ -93,7 +93,7 @@ the \fInginx.conf\fR file, a backup has been saved to
 \fI/etc/nginx/nginx.conf.pacsave\fR. It would be a good idea to to see if
 anything has gone awry.
 
-.SS Using An HTTPS Server
+.SS Server Files
 .
 .PP
 There are two servers included in \fI/etc/nginx/site-available\fR:
@@ -105,13 +105,18 @@ anki-sync-server-http
 anki-sync-server-https
 .RE
 
+The files in \fIsites-available\fR are themselves symlinks to files in
+\fI/opt/anki-sync-server/plugins/nginx\fR.
+
+.SS Using The HTTPS Server
+
 By default the HTTP server is enabled. The plugins for the anki client are
 set to connect to the nginx server via HTTP.
 
-You can turn on the nginx HTTPS server by symlinking the https server by
-removing the http server from \fI/etc/nginx/sites-enabled\fR and symlinking the
-HTTPS server instead.
+You can turn on the nginx HTTPS server by symlinking the HTTPS server and
+removing the HTTP server from \fI/etc/nginx/sites-enabled\fR.
 
+.SS SSL Certificates
 The HTTPS server requires two key files in order to work. You can generate
 these keys by using a cert generator like \fImkcert\fR. The key needs to be
 named the same thing as the ip address (or dns address) you will be connecting to
