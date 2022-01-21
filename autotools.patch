@@ -57,15 +57,15 @@ diff -ruN recode-3.7.6/m4/libtool.m4 patched/m4/libtool.m4
      lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
      lt_cv_file_magic_cmd='func_win32_libid'
    else
-diff -ruN recode-3.7.6/src/Makefile.am patched/src/Makefile.am
---- recode-3.7.6/src/Makefile.am	2019-10-03 12:40:49.388359567 +0200
-+++ patched/src/Makefile.am	2019-10-03 12:42:03.622156896 +0200
+diff -ruN recode-3.7.10/src/Makefile.am patched/src/Makefile.am
+--- recode-3.7.10/src/Makefile.am	2022-01-20 00:25:59.000000000 +0100
++++ patched/src/Makefile.am	2022-01-22 00:51:19.676666666 +0100
 @@ -54,7 +54,7 @@
  librecode_la_SOURCES = charname.c combine.c fr-charname.c iconv.c \
  names.c outer.c recode.c request.c strip-pool.c task.c $(ALL_STEPS) \
  $(include_HEADERS) $(noinst_HEADERS) $(H_STEPS)
--librecode_la_LDFLAGS = -version-info $(VERSION_INFO)
-+librecode_la_LDFLAGS = @LIBRECODE_LDFLAGS@ -version-info $(VERSION_INFO)
+-librecode_la_LDFLAGS = -version-info $(VERSION_INFO) $(LTLIBINTL) \
++librecode_la_LDFLAGS = @LIBRECODE_LDFLAGS@ -version-info $(VERSION_INFO) $(LTLIBINTL) \
+ 	$(LIB_CLOCK_GETTIME) $(LIB_GETRANDOM) $(LIB_HARD_LOCALE) $(LIB_MBRTOWC) $(LIB_SETLOCALE_NULL)
  librecode_la_LIBADD = ../lib/libgnu.la libmerged.la
  
- libmerged_la_SOURCES = merged.c
