@@ -1,48 +1,32 @@
-# Maintainer: Jeremy MJ <jskier@gmail.com>
+# Contributor: Jeremy MJ <jskier@gmail.com>
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
-
 pkgname=motioneye
 pkgver=0.42.1
-pkgrel=3
-pkgdesc="web-based user interface for motion"
+pkgrel=4
+pkgdesc="A web frontend for the motion daemon"
 arch=(any)
-url="https://github.com/ccrisan/motioneye/"
-license=('GPL')
-depends=('motion>3' 
-         'ffmpeg' 
-         'v4l-utils' 
-         'python2' 
-         'openssl' 
-         'curl' 
-         'python2-tornado'
-	 'python2-futures'
-         'python2-jinja'
-         'python2-pycurl-motioneye'
-	 'python2-pytz'	
-         'python2-pillow'
-	 'mime-types')
-
-makedepends=('python2-distribute' )
+url="https://github.com/ccrisan/${pkgname}"
+license=(GPL3)
+depends=(motion ffmpeg openssl curl python-tornado5 python-jinja python-pillow mime-types)
+# python-pytz v4l-utils
+makedepends=(python-setuptools)
 options=(emptydirs)
-install=motioneye.install
-backup=('etc/motioneye/motioneye.conf')
-source=("https://github.com/ccrisan/motioneye/archive/$pkgver.tar.gz")
+install=${pkgname}.install
+backup=("etc/${pkgname}/${pkgname}.conf")
+source=(${url}/archive/${pkgver}.tar.gz)
 sha512sums=('462e24b520d17578a0ba69fac704ef8ed9d65b8b5b21f00ebd4796e4a7eb1f25dd365b80c4efb81c6f03b3c2f9b33a7158104126869e3f3fca65c916fe764102')
 
 build() {
-    cd $srcdir/motioneye-$pkgver
-    python2 setup.py build
+  cd ${pkgname}-${pkgver}
+  python setup.py build
 }
 
-
 package() {
-	mkdir -p $pkgdir/opt/motioneye
-	mkdir -p $pkgdir/etc/motioneye
-	mkdir -p $pkgdir/var/lib/motioneye
+  mkdir -p ${pkgdir}/opt/${pkgname} ${pkgdir}/etc/${pkgname} ${pkgdir}/var/lib/${pkgname}
 
-	cp $srcdir/motioneye-$pkgver/extra/motioneye.conf.sample $pkgdir/etc/motioneye/motioneye.conf
-	install -Dm644 "$srcdir/motioneye-$pkgver/extra/motioneye.systemd-unit" $pkgdir/usr/lib/systemd/system/motioneye.service
+  cp ${srcdir}/${pkgname}-${pkgver}/extra/${pkgname}.conf.sample ${pkgdir}/etc/${pkgname}/${pkgname}.conf
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/extra/${pkgname}.systemd-unit" ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
 
-	cd $srcdir/motioneye-$pkgver
-    	python2 setup.py install --root="$pkgdir" --optimize=1 
+  cd ${srcdir}/${pkgname}-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
