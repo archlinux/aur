@@ -4,7 +4,7 @@ pkgorg='loco-3d'
 _pkgname='ndcurves'
 pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for creating smooth cubic splines"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -28,12 +28,12 @@ check() {
 
 package_ndcurves() {
     export DESTDIR="$pkgdir/"
-    cmake --build "build-$pkgver"
+    cmake --build "build-$pkgver" -t install
     rm -rf "$pkgdir/usr/share/doc"
 }
 
 package_ndcurves-docs() {
     export DESTDIR="$pkgdir/"
-    cmake --build "build-$pkgver"
+    cmake --build "build-$pkgver" -t install
     rm -rf "$pkgdir"/usr/{lib,include,bin,"share/$_pkgname"}
 }
