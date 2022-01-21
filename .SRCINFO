@@ -11,10 +11,9 @@ pkgbase = rss-glx
 	depends = libmagick6
 	depends = glu
 	optdepends = xscreensaver: xscreensaver integration
-	source = http://downloads.sourceforge.net/rss-glx/rss-glx_0.9.1.tar.bz2
+	source = git://github.com/sirspudd/rss-glx.git
 	source = rss-glx-desktops.tar.bz2
-	md5sums = a772bd143cd8d141edf4d9eff9860ab3
+	md5sums = SKIP
 	md5sums = 4211215c9a4918b0dff30a7000647dd9
 
 pkgname = rss-glx
-

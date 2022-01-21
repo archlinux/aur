@@ -13,13 +13,13 @@ license=('GPL')
 depends=('freealut' 'glew' 'libmagick6' 'glu')
 optdepends=('xscreensaver: xscreensaver integration')
 install=rss-glx.install
-source=(http://downloads.sourceforge.net/rss-glx/${pkgname}_${pkgver}.tar.bz2
+source=(git://github.com/sirspudd/rss-glx.git
         rss-glx-desktops.tar.bz2)
-md5sums=('a772bd143cd8d141edf4d9eff9860ab3'
+md5sums=('SKIP'
          '4211215c9a4918b0dff30a7000647dd9')
 
 build() {
-  cd ${pkgname}_${pkgver}
+  cd ${pkgname}
 
   [ "$CARCH" = "x86_64" ] && (sed -i -e 's|@LIBS@|@LIBS@ -fopenmp|g' src/Makefile.in)
 
@@ -34,7 +34,8 @@ build() {
 }
 
 package() {
-  cd ${pkgname}_${pkgver}
+  cd ${pkgname}
+
   make DESTDIR="${pkgdir}" install
 
   # FS#18300
