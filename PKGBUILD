@@ -2,33 +2,33 @@
 
 pkgname=karbowanecwallet-git
 pkgver=v.1.7.8.r0.g297751d
-pkgrel=1
+pkgrel=2
 pkgdesc='Karbowanec Wallet - wallet for Karbo (Karbovanets) cryptocurrency'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/seredat/karbowanecwallet.git'
 license=('custom')
 makedepends=(cmake git)
-depends=(boost)
+depends=(boost qt5-networkauth)
 source=($pkgname::git+"$url")
 sha256sums=(SKIP)
 
 pkgver() {
-	cd $pkgname
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd $pkgname
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd $pkgname
+    cd $pkgname
     rm -rf cryptnote
-	git clone https://github.com/seredat/karbowanec.git cryptonote
+    git clone https://github.com/seredat/karbowanec.git cryptonote
     mkdir -p build
-	cd build
+    cd build
 
-	cmake ..
-	make
+    cmake ..
+    make
 }
 
 package() {
-	cd $pkgname/build
-	sudo make install
+    cd $pkgname/build
+    sudo make install
 }
