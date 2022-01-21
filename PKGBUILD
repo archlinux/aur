@@ -1,6 +1,7 @@
 # Maintainer: Jonathon Fernyhough <jonathon+mx2+dev>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
+_pkgbase=linux-firmware
 pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
@@ -36,7 +37,7 @@ _pick() {
 }
 
 prepare() {
-  cd ${pkgbase}
+  cd ${_pkgbase}
 
   local _c
   for _c in "${_backports[@]}"; do
@@ -49,7 +50,7 @@ prepare() {
 }
 
 pkgver() {
-  cd ${pkgbase}
+  cd ${_pkgbase}
 
   # Commit date + short rev
   echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
@@ -57,7 +58,7 @@ pkgver() {
 
 build() {
   mkdir -p kernel/x86/microcode
-  cat ${pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
+  cat ${_pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
 
   # Reproducibility: set the timestamp on the bin file
   if [[ -n ${SOURCE_DATE_EPOCH} ]]; then 
@@ -71,7 +72,7 @@ build() {
 }
 
 #package_linux-firmware-whence() {
-#  cd "$pkgbase"
+#  cd "$_pkgbase"
 #  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 WHENCE
 #}
 
@@ -80,7 +81,7 @@ package_linux-firmware-uncompressed() {
   conflicts=('linux-firmware')
   provides=('linux-firmware')
   
-  cd ${pkgname}
+  cd ${_pkgbase}
 
   make DESTDIR="${pkgdir}" FIRMWAREDIR=/usr/lib/firmware install
 
