@@ -1,7 +1,7 @@
 # Maintainer: Yujŏnja <hardboiled65@gmail.com>
 pkgname=hydrogen-theme
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Hydrogen Themes."
 arch=('any')
@@ -42,6 +42,6 @@ build() {
 
 package() {
 	cd "Hydrogen-$pkgver"
-	make DESTDIR="$srcdir/" install
+	make DESTDIR="$pkgdir/" install
 	install -D -m 644 "$srcdir/Hydrogen-$pkgver"/cursors/COPYING-ICONS "${pkgdir}"/usr/share/licenses/hydrogen/cursors/COPYING-ICONS
 }
