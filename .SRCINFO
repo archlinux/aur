@@ -1,0 +1,19 @@
+pkgbase = recidivm
+	pkgdesc = recidivm - estimate peak virtual memory use
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://jwilk.net/software/recidivm
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	source = https://github.com/jwilk/recidivm/releases/download/0.2/recidivm-0.2.tar.gz
+	sha256sums = 56c9e5199561a469763aa402e183fc82fdbe08d97132ec4e42fc737d7c178da3
+
+pkgname = recidivm
