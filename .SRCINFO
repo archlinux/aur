@@ -1,10 +1,10 @@
 pkgbase = liteaur-git
 	pkgdesc = LiteAUR: Just another AUR helper
-	pkgver = 1.6.3
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://gitea.com/ffqq/liteaur
 	arch = any
-	license = BSD3-Clause
+	license = GPL3
 	depends = pacman
 	depends = git
 	depends = jq

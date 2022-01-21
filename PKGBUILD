@@ -1,12 +1,12 @@
 # Maintainer: ffqq <shuttara@gmail.com>
 pkgname=liteaur-git
 _pkgname=liteaur
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="LiteAUR: Just another AUR helper"
 arch=('any')
 url="https://gitea.com/ffqq/liteaur"
-license=('BSD3-Clause')
+license=('GPL3')
 depends=('pacman' 'git' 'jq')
 optdepends=('sudo')
 provides=($_pkgname)
