@@ -3,13 +3,12 @@ if (!isset($argv, $argc)) {
     echo "No command line args provided\n";
     exit(1);
 }
-if ($argc < 4) {
+if ($argc < 3) {
     echo "Not all command line args provided\n";
     exit(2);
 }
 $targetFile = $confFile = $argv[1];
-$phpBin = $argv[2];
-$pearSuffix = $argv[3];
+$varPath = $argv[2];
 
 $data = '';
 $file = fopen($confFile, "r");
@@ -19,10 +18,10 @@ if ($file !== false) {
         $line = fgets($file);
         $serialized = @unserialize($line);
         if (is_array($serialized)) {
-            $serialized['cache_dir'] = "/tmp/pear{$pearSuffix}/cache";
-            $serialized['temp_dir'] = "/tmp/pear{$pearSuffix}";
-            $serialized['download_dir'] = "/tmp/pear{$pearSuffix}/download";
-            $serialized['php_bin'] = $phpBin;
+            $serialized['temp_dir'] = "{$varPath}/temp";
+            $serialized['cache_dir'] = "{$varPath}/cache";
+            $serialized['download_dir'] = "{$varPath}/download";
+            $serialized['metadata_dir'] = "{$varPath}/metadata";
             $data .= @serialize($serialized);
             $data .= "\n";
         } else {

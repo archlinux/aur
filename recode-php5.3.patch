@@ -8,16 +8,3 @@
 +    AC_MSG_WARN([recode extension can not be configured together with:$recode_conflict])
    fi
  fi
---- php-5.6.40/configure
-+++ php-5.6.40/configure
-@@ -104651,10 +104651,6 @@
- fi
- 
-   fi
--
--  if test -n "$recode_conflict"; then
--    as_fn_error $? "recode extension can not be configured together with:$recode_conflict" "$LINENO" 5
--  fi
- fi
- 
- 
