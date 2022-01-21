@@ -1,0 +1,16 @@
+pkgbase = dualsensectl-git
+	pkgdesc = Tool for controlling PS5 DualSense controller
+	pkgver = r10.dfaaa89
+	pkgrel = 1
+	url = https://github.com/nowrep/dualsensectl
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = gcc
+	depends = dbus
+	depends = hidapi
+	conflicts = dualsensectl
+	source = dualsensectl::git+https://github.com/nowrep/dualsensectl
+	sha512sums = SKIP
+
+pkgname = dualsensectl-git
