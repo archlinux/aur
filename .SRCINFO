@@ -1,12 +1,13 @@
 pkgbase = lighthouse-ethereum
 	pkgdesc = Ethereum 2.0 client
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lighthouse.sigmaprime.io/
 	arch = x86_64
 	license = Apache License 2.0
 	makedepends = cargo
 	makedepends = cmake
+	makedepends = clang
 	depends = openssl
 	provides = lighthouse
 	conflicts = lighthouse
