@@ -4,7 +4,7 @@ pkgbase='python-sphinxcontrib-confluencebuilder'
 pkgname=('python-sphinxcontrib-confluencebuilder'
          'python2-sphinxcontrib-confluencebuilder')
 pkgver='1.7.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Sphinx extension to build Confluence® compatible markup format files and optionally publish them"
 arch=('any')
 url="https://github.com/sphinx-contrib/confluencebuilder"
