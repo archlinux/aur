@@ -1,7 +1,7 @@
 _pkgname=openmpi
 pkgname=${_pkgname}-gcc10
-pkgver=4.1.1
-_gccver=10.2.0
+pkgver=4.1.2
+_gccver=10.3.0
 pkgrel=1
 pkgdesc='High performance message passing library (MPI) (built with GCC10)'
 url='https://www.open-mpi.org'
@@ -14,7 +14,7 @@ conflicts=('openmpi')
 provides=("openmpi=${pkgver}")
 options=('staticlibs')
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('e24f7a778bd11a71ad0c14587a7f5b00e68a71aa5623e2157bafee3d44c07cda')
+sha256sums=('9b78c7cf7fc32131c5cf43dd2ab9740149d9d87cadb2e2189f02685749a6b527')
 
 build() {
   cd ${_pkgname}-${pkgver}
