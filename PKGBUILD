@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r1089.5f54a23
+pkgver=r1092.f5ceefb
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -35,6 +35,12 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${pkgname%-git}"
+
+  python -m compileall -o 0 -o 1 moonraker # emulate typical setup.py output
 }
 
 package() {
