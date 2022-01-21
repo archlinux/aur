@@ -1,8 +1,8 @@
 # Maintainer: Gabe Banks <gabriel.t.banks@gmail.com>
 pkgname='forx'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="a command line tool for getting forex quotes, exchange rates, and currency conversions from the terminal."
+pkgdesc="a command line tool for checking exchange rates between currencies, both crypto and fiat."
 arch=('x86_64')
 url="https://github.com/Gbox4/forx"
 license=('GPL')
