@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=2.2.2.beta.r0.405709e
+pkgver=2.2.2.beta.r1.6514c4f
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
