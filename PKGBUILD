@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=protonup-qt
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Install and manage Proton-GE and Luxtorpeda for Steam and Wine-GE for Lutris"
 arch=('any')
 url="https://davidotek.github.io/protonup-qt"
@@ -21,4 +21,5 @@ package() {
   cp -r share "$pkgdir/usr/"
 
   install -Dm755 "$srcdir/net.davidotek.pupgui2.sh" "$pkgdir/usr/bin/net.davidotek.pupgui2"
+  ln -s /usr/bin/net.davidotek.pupgui2 "$pkgdir/usr/bin/$pkgname"
 }

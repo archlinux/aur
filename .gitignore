@@ -5,5 +5,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!net.davidotek.protonup-qt.desktop
-!pupgui2.sh
+!net.davidotek.pupgui2.sh
