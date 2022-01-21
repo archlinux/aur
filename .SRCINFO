@@ -1,0 +1,14 @@
+pkgbase = hid-hp-zbook-dkms-git
+	pkgdesc = HP ZBook x2 G4 HID driver
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = http://github.com/himekifee/hid-hp-zbook.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-headers
+	depends = dkms
+	source = git+https://github.com/himekifee/hid-hp-zbook.git
+	sha512sums = SKIP
+
+pkgname = hid-hp-zbook-dkms-git
