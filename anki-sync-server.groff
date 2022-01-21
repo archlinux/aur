@@ -3,7 +3,8 @@
 
 .TH \*[server] 1 "" "" "Post Installation Guide"
 
-.SH Adding a user
+.SH Post Installation Instructions
+.SS Adding a user
 .PP
 You'll need to go to:
 
@@ -19,7 +20,7 @@ and run:
 
 to add a new user to the \*[server] database.
 
-.SH Plugin Installation
+.SS Plugin Installation
 .PP
 To have your anki client interface with the server, you'll need to copy the plugin
 from \fI\*[server-dir]/plugins\fR to the relevant directory.
@@ -52,7 +53,7 @@ from \fI\*[server-dir]/plugins\fR to the relevant directory.
 
 or your OS equivalent.
 
-.SH Running The Server
+.SS Running The Server
 .PP
 The server should be set to auto start via \fIsystemctl\fR and should be already running.
 See:
