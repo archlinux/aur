@@ -2,13 +2,13 @@
 
 pkgname=python-bittrex
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Python bindings for bittrex'
 url='https://github.com/ericsomdahl/python-bittrex'
 license=('MIT')
 arch=('any')
+depends=('python-requests')
 makedepends=('python-setuptools')
-checkdepends=('python-requests')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('93c4b440dabeae2b33c3d3cec660001958e0fde8f35b4c294c63fccd9622a579')
 
