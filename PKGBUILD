@@ -1,6 +1,6 @@
 pkgname=lighthouse-ethereum-bin
 _pkgname=lighthouse
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('lighthouse')
 conflicts=('lighthouse')
 replaces=('lighthouse')
 source=("https://github.com/sigp/lighthouse/releases/download/v${pkgver}/lighthouse-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('6177783233fa1a63c674d07c161454b4ecbd5e1c4bc8a4ee51399828ff70f3a6')
+sha256sums=('76d89be10204c91b6d823051c551f87041aaaf08bb75aa581f2f6c5037f4fe90')
 
 package() {
     install -D -m755 "$srcdir/lighthouse" "$pkgdir/usr/bin/lighthouse"
