@@ -13,7 +13,7 @@
 _phpbase="81"
 _suffix=""
 pkgver="8.1.2"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php81"
 pkgdesc="PHP 8.1.2 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -93,6 +93,8 @@ pkgname=(
     "php81-sqlite"
     "php81-gd"
     "php81-exif"
+    "php81-tidy"
+    "php81-iconv"
     "php81-bcmath"
     "php81-gmp"
     "php81-zip"
@@ -165,6 +167,7 @@ makedepends=(
     "freetds"
     "sqlite"
     "gd"
+    "tidy"
     "gmp"
     "libzip"
     "oniguruma"
@@ -265,6 +268,8 @@ _phpextensions="\
     --with-webp \
     --with-freetype \
     --enable-exif=shared \
+    --with-tidy=shared,/usr \
+    --with-iconv=shared \
     --enable-bcmath=shared \
     --with-gmp=shared,/usr \
     --with-zip=shared \
