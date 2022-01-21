@@ -1,7 +1,7 @@
 pkgbase = python-paddlepaddle
 	pkgdesc = PArallel Distributed Deep LEarning: Machine Learning Framework from Industrial Practice
-	pkgver = 2.2.1
-	pkgrel = 2
+	pkgver = 2.2.2
+	pkgrel = 1
 	url = http://www.paddlepaddle.org
 	arch = x86_64
 	license = Apache
@@ -24,7 +24,7 @@ pkgbase = python-paddlepaddle
 	depends = python-protobuf
 	depends = python-requests
 	depends = python-six
-	source = Paddle::git+https://github.com/PaddlePaddle/Paddle.git#tag=v2.2.1
+	source = Paddle::git+https://github.com/PaddlePaddle/Paddle.git#tag=v2.2.2
 	sha512sums = SKIP
 
 pkgname = python-paddlepaddle

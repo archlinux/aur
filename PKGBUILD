@@ -3,11 +3,11 @@
 # cuda 11 supports Pascal， Volta，Turing, Ampere
 # see also https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards
 # adjust this list according to your target device
-_CUDA_ARCH_LIST="60;61;62;70;72;75;80;86"
+_CUDA_ARCH_LIST="60;61;62;70;72;75;80;86;86+PTX"
 _pkgname=Paddle
 pkgname=('python-paddlepaddle' 'python-paddlepaddle-cuda')
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc='PArallel Distributed Deep LEarning: Machine Learning Framework from Industrial Practice'
 arch=('x86_64')
 url='http://www.paddlepaddle.org'
