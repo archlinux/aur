@@ -1,18 +1,18 @@
 pkgbase = asgardex-appimage
 	pkgdesc = Thorchain wallet desktop app
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/thorchain/asgardex-electron/releases
 	arch = x86_64
 	license = MIT
-	noextract = ASGARDEX-0.7.0.AppImage
+	noextract = ASGARDEX-0.7.1.AppImage
 	options = !strip
-	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.7.0/ASGARDEX-0.7.0-linux.AppImage
-	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.7.0/msg-v070
-	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.7.0/msg-v070.asc
+	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.7.1/ASGARDEX-0.7.1-linux.AppImage
+	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.7.1/msg-v071
+	source = https://github.com/thorchain/asgardex-electron/releases/download/v0.7.1/msg-v071.asc
 	validpgpkeys = 0F1342110E1A10DCAFA7194DABB32D7C24F80F1D
 	validpgpkeys = 9A6461A8CAAAA0AEB8EFDDA8C5334FE4FD04D709
-	sha256sums = 53ccc955245aadc005591665fe2f26193ea7c2697b53573456bf2a742055b11d
+	sha256sums = 0e1fe8df1afd55d5d3378e0ca27fbbf43cc067712bd27a662d40389371769b24
 	sha256sums = SKIP
 	sha256sums = SKIP
 
