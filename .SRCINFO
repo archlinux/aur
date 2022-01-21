@@ -1,0 +1,13 @@
+pkgbase = python-spacy-nl_core_news_md
+	pkgdesc = Dutch pretrained model for spaCy (medium)
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://spacy.io/models/nl#section-nl_core_news_md
+	arch = any
+	license = CCPL
+	makedepends = python-setuptools
+	depends = python-spacy
+	source = https://github.com/explosion/spacy-models/releases/download/nl_core_news_md-3.2.0/nl_core_news_md-3.2.0.tar.gz
+	b2sums = 39887a5d29a49f69e58265ec4a10a1cdbf4ebc023f4e753667215469a6cd11c2ddcadf3c60fadf5dc15a7ce977f37a0dd364e6c6116ce6d3c1ddd8b9e1dc87ed
+
+pkgname = python-spacy-nl_core_news_md
