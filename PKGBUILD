@@ -1,32 +1,30 @@
-# Maintainer: Iru Cai <mytbk920423@gmail.com>
-
-pkgbase=('python-matrix-client-git')
-pkgname=('python-matrix-client-git' 'python2-matrix-client-git')
-pkgdesc='Matrix Client-Server SDK for Python 2 and 3'
-pkgver=0.0.5.179
+# Contributor: Iru Cai <mytbk920423@gmail.com>
+_base=matrix
+pkgname=python-${_base}-client-git
+pkgdesc="Matrix Client-Server SDK"
+pkgver=0.4.0
 pkgrel=1
-arch=('any')
-url='https://github.com/matrix-org/matrix-python-sdk'
+arch=(any)
+url="https://github.com/${_base}-org/${_base}-python-sdk"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=('git+https://github.com/matrix-org/matrix-python-sdk.git')
+depends=(python-requests)
+makedepends=(python-pytest-runner git)
+source=(git+${url}.git)
 sha256sums=('SKIP')
 
-package_python-matrix-client-git() {
-depends=('python-requests')
-
-	cd "${srcdir}/matrix-python-sdk"
-	python setup.py install --root="${pkgdir}" --optimize=1
-}
-
-package_python2-matrix-client-git() {
-depends=('python2-requests')
-
-	cd "${srcdir}/matrix-python-sdk"
-	python2 setup.py install --root="${pkgdir}" --optimize=1
-}
-
 pkgver() {
-	cd "${srcdir}/matrix-python-sdk"
-	git describe --always | cut -d- -f1-2 | sed -e 's/-/./' -e 's/^[^0-9]*//'
+  cd ${_base}-python-sdk
+  git describe --always | cut -d- -f1-2 | sed -e 's/-/./' -e 's/^[^0-9]*//'
+}
+
+build() {
+  cd ${_base}-python-sdk
+  export PYTHONHASHSEED=0
+  python setup.py build
+}
+
+package() {
+  cd ${_base}-python-sdk
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
