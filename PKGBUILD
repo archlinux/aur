@@ -3,9 +3,9 @@
 
 pkgname=qt5-virtualkeyboard
 _qtver=5.15.2
-pkgver=5.15.2+kde+r4
+pkgver=5.15.2+kde+r6
 pkgrel=1
-_commit=353b75b2e34bdae901625bbddf5c5e3f3e6c0de5
+_commit=98d1fd864cbb6c7c012c4139118808af110fb8f0
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
