@@ -1,48 +1,24 @@
-# Maintainer: Pierre Chapuis <catwell@archlinux.us>
-
-pkgname=("python-mailjet" "python2-mailjet")
-pkgver=1.3.3
+# Contributor: Pierre Chapuis <catwell@archlinux.us>
+_base=mailjet-rest
+pkgname=python-${_base/-*/}
+pkgver=1.3.4
 pkgrel=1
-pkgdesc="Official Mailjet Python Wrapper"
-arch=("any")
-url="https://pypi.org/project/mailjet-rest/"
+pkgdesc="Mailjet V3 API wrapper"
+arch=(any)
+url="https://pypi.org/project/${_base}"
 license=("MIT")
-makedepends=(
-    "python-setuptools" "python2-setuptools"
-    "python-requests" "python2-requests"
-)
-source=(
-    "https://files.pythonhosted.org/packages/69/04/a92885c635ca412c8f5bdf3d11da6f619bbd4bce45c4e28189eeef10bd6a/mailjet_rest-$pkgver.tar.gz"
-    "LICENSE.txt"
-)
-sha256sums=(
-    "f14424df10c30083491dcaa5902ff9b159af82bca261af5e7b2213afdcf7a11c"
-    "104cc6b013a00cb45959c7caa51e996f5b782cfffb7995eb57ebf44147194674"
-)
+depends=(python-requests)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base/-/_}/${_base/-/_}-${pkgver}.tar.gz)
+sha512sums=('ca0ff352b52aa836aa2e2bdeee213dad7f4101c123221b66fb1b1ad02f993d2413bc054328888313f0373fbe9104e66b7b242f18e42489590c2448e410284d6a')
 
 build() {
-    cd "$srcdir"
-    rm -rf python{2,3}-build
-    for builddir in python{2,3}-build; do
-        cp -r "mailjet_rest-$pkgver" "$builddir"
-        pushd "$builddir"
-            "${builddir%-build}" setup.py build
-        popd
-    done
+  cd ${_base/-/_}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python-mailjet() {
-    depends=("python-requests")
-    cd "$srcdir/python3-build"
-    python3 setup.py install --root="$pkgdir" -O1
-    install -Dm644 "$srcdir/LICENSE.txt" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_python2-mailjet() {
-    depends=("python2-requests")
-    cd "$srcdir/python2-build"
-    python2 setup.py install --root="$pkgdir" -O1
-    install -Dm644 "$srcdir/LICENSE.txt" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+  cd ${_base/-/_}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
