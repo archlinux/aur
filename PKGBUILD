@@ -2,15 +2,14 @@
 
 pkgname=vkvg
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Vulkan 2D graphics library following the Cairo API'
 arch=(x86_64)
 url='https://github.com/jpbruyere/vkvg'
 license=('MIT')
 depends=(fontconfig freetype2 harfbuzz vulkan-driver)
-makedepends=(cmake git
-             shaderc # for `glslc`
-             vim)    # for `xxd`
+makedepends=(cmake git xxd
+             shaderc) # for `glslc`
 source=("https://github.com/jpbruyere/vkvg/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/jpbruyere/vkhelpers#commit=fc5623d771907a94b0d68da221703a6ca6088885")
 sha256sums=('SKIP' 'SKIP')
