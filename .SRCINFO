@@ -1,0 +1,19 @@
+pkgbase = python-pystardict
+	pkgdesc = Library for manipulating StarDict dictionaries from within Python
+	pkgver = 0.8
+	pkgrel = 00
+	url = http://www.ohloh.net/p/pystardict
+	arch = any
+	license = custom:unknown
+	makedepends = python-pip
+	depends = python
+	depends = python-six
+	noextract = PyStarDict-0.8-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/ea/48/badae31222eb7edbc2c54f1ab194e9692f89c07f615672c8c09d1214021a/PyStarDict-0.8-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = ef43d0148a44edb6a16d534e65ec91d9
+	md5sums = d32239bcb673463ab874e80d47fae504
+
+pkgname = python-pystardict
