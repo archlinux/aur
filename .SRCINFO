@@ -1,0 +1,19 @@
+pkgbase = python-slpp
+	pkgdesc = SLPP is a simple lua-python data structures parser
+	pkgver = 1.2.3
+	pkgrel = 00
+	url = https://github.com/SirAnthony/slpp
+	arch = any
+	license = custom:MIT
+	makedepends = python-pip
+	depends = python
+	depends = python-six
+	noextract = SLPP-1.2.3-py2.py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/2d/5b/906a2f65d87a80041af995586d0b6d5e885f32943906298f0268639257d4/SLPP-1.2.3-py2.py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 127fa8d1075dae1a194af95401152c4f
+	md5sums = 50205a7e182aacec081d40810dc6cfb9
+
+pkgname = python-slpp
