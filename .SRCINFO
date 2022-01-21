@@ -1,29 +1,12 @@
 pkgbase = python-cryptolyzer
 	pkgdesc = Fast and flexible server cryptographic (TLS/SSL) settings analyzer library
-	pkgver = 0.7.3
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://gitlab.com/coroner/cryptolyzer
 	changelog = CHANGELOG.md
 	arch = any
 	license = MPL2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-cryptolyzer-0.7.3.tar.gz::https://files.pythonhosted.org/packages/source/c/cryptolyzer/CryptoLyzer-0.7.3.tar.gz
-	sha256sums = b46faab6eb942501b583f9c919b8c6ac0890e7cbdab66efeeca5152933c55717
-
-pkgname = python2-cryptolyzer
-	depends = python2-attrs
-	depends = python2-certvalidator
-	depends = python2-cryptoparser
-	depends = python2-enum34
-	depends = python2-ipaddress
-	depends = python2-dateutil
-	depends = python2-requests
-	depends = python2-six
-	depends = python2-typing
-	depends = python2-urllib3
-
-pkgname = python-cryptolyzer
 	depends = python-attrs
 	depends = python-certvalidator
 	depends = python-cryptoparser
@@ -31,3 +14,7 @@ pkgname = python-cryptolyzer
 	depends = python-requests
 	depends = python-six
 	depends = python-urllib3
+	source = python-cryptolyzer-0.8.0.tar.gz::https://files.pythonhosted.org/packages/source/c/cryptolyzer/CryptoLyzer-0.8.0.tar.gz
+	sha256sums = fa82f408de355da029acf37a282a38cb50b2b46cbeb10f9c08a7d814072d26c0
+
+pkgname = python-cryptolyzer
