@@ -2,26 +2,26 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=r1830.d09d5d0
-pkgrel=2
+pkgver=17.r101.g21509f3
+pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('wxgtk2' 'openal' 'sdl2' 'alsa-lib')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'ninja')
 conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 build() {
   cd "${srcdir}/pcem"
-  cmake .. -DCMAKE_BUILD_TYPE=Release .  -DUSE_NETWORKING=ON  -DUSE_ALSA=ON -DCMAKE_INSTALL_PREFIX=/usr
+  cmake -DUSE_NETWORKING=ON  -DUSE_ALSA=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .  
   make
 }
 
