@@ -1,7 +1,7 @@
 pkgbase = bochs-sdl
 	pkgdesc = A portable x86 PC emulation software package, including GUI debugger, with sdl support
-	pkgver = 2.6.11
-	pkgrel = 4
+	pkgver = 2.7
+	pkgrel = 1
 	url = http://bochs.sourceforge.net/
 	arch = x86_64
 	license = LGPL
@@ -11,10 +11,7 @@ pkgbase = bochs-sdl
 	depends = gtk2
 	provides = bochs
 	conflicts = bochs
-	source = https://downloads.sourceforge.net/sourceforge/bochs/bochs-2.6.11.tar.gz
-	source = fix-build.patch
-	md5sums = 61dbf6d5c0384712e1f3e51e88381b4c
-	md5sums = 0ae4954b32d49ac3c7a2431ea7935d1c
+	source = https://downloads.sourceforge.net/sourceforge/bochs/bochs-2.7.tar.gz
+	md5sums = d77a43c21cfd8aa013eb2eaa35644f80
 
 pkgname = bochs-sdl
-
