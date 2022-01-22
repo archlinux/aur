@@ -1,13 +1,13 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=lightctl
-pkgver=r10.16ae2a6
+pkgver=r23.a89cc36
 pkgrel=1
 pkgdesc="backlight control utility that does smooth transitions"
 url="https://git.sr.ht/~whynothugo/lightctl"
 license=("ISC")
 arch=("x86_64" "aarch64")
-makedepends=("git" "rust")
+makedepends=("git" "rust" "dbus")
 source=("git+https://git.sr.ht/~whynothugo/lightctl")
 sha256sums=('SKIP')
 
