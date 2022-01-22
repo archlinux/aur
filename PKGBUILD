@@ -2,7 +2,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname="tqm"
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="CLI tool to manage your torrent client queues. Primary focus is on removing torrents that meet specific criteria."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/l3uddz/tqm/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=('97509908a2f4be0223ea23131d6f0e005e409298532b95797026b3d8687d39d1042844d963fe6cca62d04cb49077f8c3e9d22b6bafa7d69f2234a41eed30bf89')
+sha512sums=('4406ac9a435ec4e960962e4d36a662a08b7a28b5e1a1f50dcfa229438a11dd088203e37c78f17394529993bfa64773b56d7d52b25d1a07d6debfc344ecd1fa87')
 
 prepare(){
   cd "$pkgname-$pkgver"
