@@ -2,7 +2,7 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.5.2
+_pkgver=2.6.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater'
@@ -11,13 +11,17 @@ arch=('x86_64')
 url='https://github.com/WowUp/WowUp'
 license=('GPL3')
 # no depends
-makedepends=('imagemagick' 'nodejs' 'npm')
+makedepends=(
+    'nodejs-lts-gallium' # cannot build with nodejs 17+
+    'npm'
+    'imagemagick'
+)
 source=(
     "$_pkgname-$_pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('e61ca9ad404021128e91993fcb15aede11ad663027d801a9658efbc171bffa5f'
+sha256sums=('abb33066b3ca863f385accd53ff7a8e461b3b55ee8f7ac8e8b8ec0bd265c019e'
             '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
             '9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7')
 
@@ -34,8 +38,8 @@ build() {
     npm install <<<"N"
 
     # or use miorrors
-    # export ELECTRON_MIRROR="https://npm.taobao.org/mirrors/electron/"
-    # npm --registry https://registry.npm.taobao.org install <<<"N"
+    # export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+    # npm --registry https://registry.npmmirror.com/ install <<<"N"
 
     npm run build:prod
     ./node_modules/.bin/electron-builder --linux dir
