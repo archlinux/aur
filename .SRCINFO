@@ -1,6 +1,6 @@
 pkgbase = python-pylibjpeg-openjpeg
 	pkgdesc = A J2K and JP2 plugin for pylibjpeg
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pydicom/pylibjpeg-openjpeg
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = python-pylibjpeg-openjpeg
 	sha512sums = SKIP
 
 pkgname = python-pylibjpeg-openjpeg
-
