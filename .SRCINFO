@@ -12,6 +12,7 @@ pkgbase = vkvg
 	depends = fontconfig
 	depends = freetype2
 	depends = harfbuzz
+	depends = vulkan-icd-loader
 	depends = vulkan-driver
 	source = https://github.com/jpbruyere/vkvg/archive/refs/tags/v0.2.1.tar.gz
 	source = git+https://github.com/jpbruyere/vkhelpers#commit=fc5623d771907a94b0d68da221703a6ca6088885
