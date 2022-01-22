@@ -6,7 +6,7 @@ _jdkname="zulu-jre-fx"
 _zulu_build="${_java_ver}.32.13-ca"
 pkgname="zulu-jre-fx-bin"
 pkgver="${_java_ver}.0.2"
-pkgrel=1
+pkgrel=2
 pkgdesc='Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.'
 arch=('x86_64')
 url='https://www.azul.com/downloads/'
@@ -21,6 +21,7 @@ provides=(
   "java-runtime=$_java_ver"
   "java-runtime-openjdk=$_java_ver"
   "java-openjfx=$_java_ver"
+  "jre-openjdk=$_java_ver"
 )
 install="$pkgname.install"
 _tarballname="zulu${_zulu_build}-fx-jre${pkgver}-linux_x64"
