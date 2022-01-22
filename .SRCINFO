@@ -1,13 +1,13 @@
 pkgbase = epoptes-client
 	pkgdesc = An opensource computer lab management and monitoring tool
-	pkgver = 21.02
+	pkgver = 22.01
 	pkgrel = 1
 	url = https://github.com/Epoptes/epoptes
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-distutils-extra
-	source = git+https://github.com/Epoptes/epoptes.git#tag=v21.02
+	source = git+https://github.com/Epoptes/epoptes.git#tag=v22.01
 	sha256sums = SKIP
 
 pkgname = epoptes
@@ -53,4 +53,3 @@ pkgname = epoptes-client
 	optdepends = xfce4-notifyd: XFCE notification support
 	optdepends = cups: printing support
 	optdepends = sane: scanners support
-
