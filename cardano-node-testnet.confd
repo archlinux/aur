@@ -1,0 +1,8 @@
+# Parameters to be passed to cardano-node
+DB_PATH="/var/lib/cardano-node/db/testnet"
+SOCKET_PATH="/run/cardano-node/testnet/socket"
+BIND_IPV4="127.0.0.1"
+BIND_IPV6="::1"
+BIND_PORT="3001"
+CONFIG_FILE="/var/lib/cardano-node/config/cardano/testnet-config.json"
+TOPOLOGY_FILE="/var/lib/cardano-node/config/cardano/testnet-topology.json"

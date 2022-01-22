@@ -1,0 +1,25 @@
+pkgbase = cardano-node-bin
+	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain (binary package).
+	pkgver = 1.33.0
+	pkgrel = 1
+	url = https://github.com/input-output-hk/cardano-node
+	arch = x86_64
+	license = Apache
+	provides = cardano-node
+	conflicts = cardano-node
+	source = https://hydra.iohk.io/build/11955068/download/1/cardano-node-1.33.0-linux.tar.gz
+	source = cardano-node.sysusers
+	source = cardano-node.tmpfiles
+	source = cardano-node.service
+	source = cardano-node.confd
+	source = cardano-node-testnet.service
+	source = cardano-node-testnet.confd
+	sha256sums = 1d357a8be28b157ef9e02c64fc0295259e1f2694cbb7316099edabb285c5a514
+	sha256sums = 782696d794db3c41cc96e301ed76c8108ac01cbd3347233eb9c4d4f970071633
+	sha256sums = 3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542
+	sha256sums = 6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d
+	sha256sums = d35f0e5e71ba476a4ee800898c892c22dedcc02eb4457f12ae68252740a8eeec
+	sha256sums = ec16edc07aa35dccd5fb6894b964ab304cd7a8c1cc65eed22aa569e9105c7982
+	sha256sums = 0a57c08cb631db16f2ca38f29d30229d45cab91176a1b376aaa629dab9d063d7
+
+pkgname = cardano-node-bin
