@@ -1,6 +1,6 @@
 pkgbase = azure-storage-fuse
 	pkgdesc = A virtual file system adapter for Azure Blob storage
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/Azure/azure-storage-fuse
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = azure-storage-fuse
 	depends = fuse
 	depends = gnutls
 	depends = libgcrypt
-	source = azure-storage-fuse-1.4.2.tar.gz::https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse-1.4.2.tar.gz
-	sha256sums = 252d0562c0403bc85cfd9f98fb66211180cf961b09f6f180752ea07c6694b10f
+	source = azure-storage-fuse-1.4.3.tar.gz::https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse-1.4.3.tar.gz
+	sha256sums = 782e571561b36f706ec36d474db42161318d8193d9deece023b529c13c9e5395
 
 pkgname = azure-storage-fuse
