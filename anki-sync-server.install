@@ -32,9 +32,6 @@ post_remove(){
   getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
   getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
 
-  # remove systemd service symlink
-  rm -f '/usr/lib/systemd/system/anki-sync-server.service'
-
   echo "==================================================================="
   echo "rm -rf /opt/anki-sync-server to remove the database and cache files"
   echo "==================================================================="
@@ -43,24 +40,6 @@ post_remove(){
 pre_upgrade(){
   echo "stopping anki-sync-server.service..."
   sudo systemctl stop anki-sync-server.service
-
-  cd "/opt/anki-sync-server"
-
-  local _auth_="auth.db"
-  local _coll_="collections"
-  local _sess_="session.db"
-
-  if [ -f "${_auth_}" ]; then
-    sudo mv -v "${_auth_}" "${_auth_}.BAK"
-  fi
-
-  if [ -d "${_coll_}" ]; then
-    sudo mv -v "${_coll_}" "${_coll_}.BAK"
-  fi
-
-  if [ -f "${_sess_}" ]; then
-    sudo mv -v "${_sess_}" "${_sess_}.BAK"
-  fi
 }
 
 post_upgrade(){
@@ -70,24 +49,6 @@ post_upgrade(){
 
   append_nginx_config
 
-  cd "/opt/anki-sync-server"
-
-  local _auth_="auth.db"
-  local _coll_="collections"
-  local _sess_="session.db"
-
-  if [ -f "${_auth_}.BAK" ]; then
-    sudo mv -v "${_auth_}.BAK" "${_auth_}"
-  fi
-
-  if [ -d "${_coll_}.BAK" ]; then
-    sudo mv -v "${_coll_}.BAK" "${_coll_}"
-  fi
-
-  if [ -f "${_sess_}.BAK" ]; then
-    sudo mv -v "${_sess_}.BAK" "${_sess_}"
-  fi
-
   sudo chown -R anki-sync-server /opt/anki-sync-server
   sudo chgrp -R anki-sync-server /opt/anki-sync-server
 
@@ -95,8 +56,6 @@ post_upgrade(){
   sudo systemctl daemon-reload
   echo "starting anki-sync-server.service..."
   sudo systemctl start anki-sync-server
-  echo "restarting nginx..."
-  sudo systemctl restart nginx
 }
 
 function append_nginx_config() {
@@ -107,18 +66,10 @@ function append_nginx_config() {
   local _sites_enabled_dir_="${_config_dir_}/sites-enabled"
   local _nginx_plugins_dir_="/opt/anki-sync-server/plugins/nginx"
 
-  ! [ -f "${_sites_available_dir_}/anki-sync-server-http" ] && \
-    sudo \
-      ln -s "${_nginx_plugins_dir_}/anki-sync-server-http" \
-      "${_sites_available_dir_}/anki-sync-server-http"
-
-  ! [ -f "${_sites_available_dir_}/anki-sync-server-https" ] && \
-    sudo \
-      ln -s "${_nginx_plugins_dir_}/anki-sync-server-https" \
-      "${_sites_available_dir_}/anki-sync-server-https"
-
   if (grep "include[[:space:]]\+/etc/nginx/sites-enabled" "${_config_}" --quiet); then
     echo "nginx config aleady uses sites-enabled"
+    echo "not modifying nginx.conf!"
+    echo "= you may need to manually enable the anki server ="
   else
     sudo cp "${_config_}" "${_pacsave_}"
     sudo awk -f "${_nginx_plugins_dir_}/append.awk" \
