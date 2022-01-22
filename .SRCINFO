@@ -1,6 +1,6 @@
 pkgbase = python-eth-abi
 	pkgdesc = Python utilities for working with Ethereum ABI definitions, especially encoding and decoding.
-	pkgver = 2.1.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/ethereum/eth-abi
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-eth-abi
 	depends = python-eth-utils
 	depends = python-eth-typing
 	depends = python-parsimonious
-	source = https://files.pythonhosted.org/packages/source/e/eth-abi/eth_abi-2.1.1.tar.gz
-	sha256sums = 4bb1d87bb6605823379b07f6c02c8af45df01a27cc85bd6abb7cf1446ce7d188
+	source = https://files.pythonhosted.org/packages/source/e/eth-abi/eth_abi-3.0.0.tar.gz
+	sha256sums = 31578b179cf9430c21ac32a4e5f401c14b6e2cc1fd64ca3587cd354068217804
 
 pkgname = python-eth-abi
