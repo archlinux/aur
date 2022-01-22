@@ -4,20 +4,22 @@
 # Contributor: Aniket Pradhan <aniket17133@iiitd.ac.in>
 # Contributer: Xinzhao Xu <z2d@jifangcheng.com>
 
-pkgname=annie
-pkgver=0.11.0
+pkgname=lux-dl
+pkgver=0.12.0
 pkgrel=1
-pkgdesc="A fast, simple and clean video downloader written in Go"
+pkgdesc="Fast and simple video download library and CLI tool written in Go"
 arch=('x86_64' 'i686')
-url="https://github.com/iawia002/annie"
+url="https://github.com/iawia002/lux"
 license=('MIT')
 depends=('ffmpeg')
 makedepends=('go')
+conflicts=('annie')
+replaces=('annie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6b3e005b6bc2519e2c7b4767fcf66a49dc3e8d34c19cd3c6c3d5517720d4f3ff')
+sha256sums=('f5bcbe1039219a299908fdd5a540052ef603ff5c8c21c0d64f44c53132c41cdd')
 
 build(){
-    cd $pkgname-$pkgver
+    cd lux-$pkgver
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -33,7 +35,7 @@ build(){
 }
 
 package() {
-    cd $pkgname-$pkgver
-    install -Dm755 $pkgname -t "$pkgdir/usr/bin"
+    cd lux-$pkgver
+    install -Dm755 lux -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
