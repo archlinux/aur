@@ -12,7 +12,6 @@ pkgbase = swaync
 	depends = gtk-layer-shell>=0.1
 	depends = dbus
 	depends = glib2>=2.50
-	depends = vala-dbus-binding-tool-git>=1.0
 	depends = gobject-introspection>=1.68
 	depends = libgee>=0.20
 	depends = json-glib>=1.0
