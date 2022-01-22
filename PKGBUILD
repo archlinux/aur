@@ -1,6 +1,6 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=helm-diff
-pkgver=3.3.2
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Helm plugin that shows a diff explaining what a helm upgrade would change'
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=helm-diff.install
 depends=('helm')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('c9e2cccdfdaf0ccfb76514f7e1cafc88352895892c1f35ffa08f7ca9fb2ca2a7')
+sha256sums=('f7d9ea36dfdce6c41c841f3607d415232ab5e6c4f0aff1844462abacec0a2291')
 
 prepare() {
   sed -i '/^hooks:$/Q' "$pkgname-$pkgver"/plugin.yaml
@@ -24,12 +24,12 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
-  go build -o bin/diff -ldflags "-linkmode=external -X github.com/databus23/helm-diff/cmd.Version=$pkgver"
+  go build -o bin/diff -ldflags "-linkmode=external -X github.com/databus23/helm-diff/cmd.Version=$pkgver" main.go
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  go test ./...
+  go test -ldflags "-linkmode=external" ./...
 }
 
 package() {
