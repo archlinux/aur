@@ -2,7 +2,7 @@
 
 pkgname=puddletag-git
 _pkgname="${pkgname%%-*}"
-pkgver=2.0.1.r73.g67dfacd
+pkgver=2.1.0.r12.gc8bceff
 pkgrel=1
 pkgdesc="An audio tag editor for GNU/Linux, git version"
 url="https://github.com/puddletag/${_pkgname}"
@@ -22,7 +22,7 @@ provides=('puddletag')
 conflicts=('puddletag')
 replaces=('puddletag-qt5-git')
 source=("${pkgname}::git+https://github.com/${_pkgname}/${_pkgname}")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
@@ -30,11 +30,11 @@ pkgver() {
 }
 
 build() {
-	cd "${pkgname}/source"
+	cd "${pkgname}"
 	python setup.py config
 }
 
 package() {
-	cd "${pkgname}/source"
+	cd "${pkgname}"
 	python setup.py install --root="${pkgdir}" --optimize=1
 }
