@@ -1,0 +1,12 @@
+pkgbase = emu2-git
+	pkgdesc = A simple DOS emulator for the Linux text console, supporting basic DOS system calls and console I/O.
+	pkgver = r91.c01cfa8
+	pkgrel = 1
+	url = https://github.com/dmsc/emu2
+	arch = any
+	license = GPL
+	makedepends = git
+	source = emu2-git::git+https://github.com/dmsc/emu2
+	sha256sums = SKIP
+
+pkgname = emu2-git
