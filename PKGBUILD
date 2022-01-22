@@ -1,6 +1,6 @@
 # Maintainer: chordtoll <arch@chordtoll.com>
 pkgname=pyxis-parcel
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Utilities to manipulate parcel archives for the pyxis package manager"
 license=("MIT")
@@ -9,7 +9,7 @@ depends=("gcc-libs")
 makedepends=("cargo")
 url="https://github.com/chordtoll/pyxis-parcel"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('8931ded3afeda8eb2f67d1812d468df7afe778e8383441669ad4ee4215662d7d')
+sha256sums=('90934259a52ded86b03e75bc840523bc0239ef4301f302f8d4ab35bddb532486')
 
 prepare() {
     cd "$pkgname-$pkgver"
