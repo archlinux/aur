@@ -1,13 +1,12 @@
 pkgbase = diffh
 	pkgdesc = Makes browsing diff output easy, converting it to highly-readable highlighted Wikipedia-style HTML
 	pkgver = 0.3.2
-	pkgrel = 1
-	url = http://sourceforge.net/projects/diffh/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/diffh/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = http://downloads.sourceforge.net/project/diffh/diffh/0.3.2/diffh-0.3.2.tar.gz
+	source = https://downloads.sourceforge.net/project/diffh/diffh/0.3.2/diffh-0.3.2.tar.gz
 	md5sums = f6a15436b0b367312cbc29091ce1a145
 
 pkgname = diffh
-
