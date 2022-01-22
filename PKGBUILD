@@ -1,8 +1,8 @@
 # Maintainer: Naohisa Murakami <tiqwab.ch90@gmail.com>
 
 pkgname=tftpff
-pkgver=0.0.1
-pkgrel=3
+pkgver=0.1.0
+pkgrel=1
 pkgdesc='Firewall-friendly TFTP server'
 url='https://github.com/tiqwab/tftpff'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('cargo')
 backup=('etc/conf.d/tftpff')
 source=(${pkgname}-v${pkgver}.tar.gz::https://github.com/tiqwab/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('776494ba3a6f948ef951afd697b153e47234453ea5585d8da4916f659f1fa96e')
+sha256sums=('7110b65863c4d8968d5b466109f34e8af66234437c10ffbfb43a53c95d0c7a04')
 
 build() {
     cd "${pkgname}-${pkgver}"
