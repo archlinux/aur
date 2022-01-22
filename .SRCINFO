@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 96.0.1
+	pkgver = 96.0.2
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf-bin.install
@@ -29,13 +29,13 @@ pkgbase = librewolf-bin
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
 	validpgpkeys = 031F7104E932F7BD7416E7F6D2845E1305D6E801
-	source_x86_64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.1-1/librewolf-96.0.1-1-x86_64.pkg.tar.zst
-	source_x86_64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.1-1/librewolf-96.0.1-1-x86_64.pkg.tar.zst.sig
-	sha256sums_x86_64 = cc433781a630c4a6170afcbcb4bd0674ef323b04a7e504148dab1219fc5a4695
+	source_x86_64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.2-1/librewolf-96.0.2-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.2-1/librewolf-96.0.2-1-x86_64.pkg.tar.zst.sig
+	sha256sums_x86_64 = 864b05adcaa5729b146ca3ec40fe297934fba12a56c3a4d158dd5f510059a90e
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.1-1/librewolf-96.0.1-1-aarch64.pkg.tar.zst
-	source_aarch64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.1-1/librewolf-96.0.1-1-aarch64.pkg.tar.zst.sig
-	sha256sums_aarch64 = d7a455f8fc07904a743d5c19273926755af91acd2b166af39989b72c4eb95430
+	source_aarch64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.2-1/librewolf-96.0.2-1-aarch64.pkg.tar.zst
+	source_aarch64 = https://gitlab.com/api/v4/projects/12875785/packages/generic/librewolf/96.0.2-1/librewolf-96.0.2-1-aarch64.pkg.tar.zst.sig
+	sha256sums_aarch64 = db520acafb3e42c23edd1c20601bad02a5a02173d8d141393d466b62e793e2c9
 	sha256sums_aarch64 = SKIP
 
 pkgname = librewolf-bin
