@@ -1,6 +1,6 @@
 pkgbase = python-circlevis
 	pkgdesc = A Qt Widget for visualizing osu! beatmaps and replays.
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/circleguard/circlevis
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-circlevis
 	depends = python-slider>=0.4
 	depends = python-pyqt5
 	conflicts = python-circlevis-git
-	source = https://github.com/circleguard/circlevis/archive/refs/tags/v1.4.5.tar.gz
-	sha256sums = b21d093a4ba4f250352b4d460717677a1b209d517721208f0cf938ebc2cdc3a7
+	source = https://github.com/circleguard/circlevis/archive/refs/tags/v1.4.6.tar.gz
+	sha256sums = bab6a0a4ee22daad1cea4f4459cb7cf6b241491b3a91d1a727362ce18d85a1ee
 
 pkgname = python-circlevis
