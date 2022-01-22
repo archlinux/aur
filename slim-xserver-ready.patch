@@ -1,7 +1,62 @@
-diff -upr slim-1.3.6-orig/app.cpp slim-1.3.6/app.cpp
---- slim-1.3.6-orig/app.cpp	2013-10-01 23:38:05.000000000 +0100
-+++ slim-1.3.6/app.cpp	2015-08-19 12:50:24.450834922 +0100
-@@ -979,6 +979,11 @@ int App::StartServer() {
+diff -uprw slim-1.3.6-orig/app.cpp slim-1.3.6/app.cpp
+--- slim-1.3.6-orig/app.cpp	2022-01-19 21:38:30.687259960 +0000
++++ slim-1.3.6/app.cpp	2022-01-19 21:27:47.669369387 +0000
+@@ -51,6 +51,7 @@ int conv(int num_msg, const struct pam_m
+ 					case Panel::Suspend:
+ 					case Panel::Halt:
+ 					case Panel::Reboot:
++					case Panel::StopSlim:
+ 						(*resp)[i].resp=strdup("root");
+ 						break;
+ 
+@@ -401,6 +402,9 @@ void App::Run() {
+ 			case Panel::Halt:
+ 				Halt();
+ 				break;
++			case Panel::StopSlim:
++				StopSlim();
++				break;
+ 			case Panel::Suspend:
+ 				Suspend();
+ 				break;
+@@ -460,6 +464,7 @@ bool App::AuthenticateUser(bool focuspas
+ 		case Panel::Suspend:
+ 		case Panel::Halt:
+ 		case Panel::Reboot:
++		case Panel::StopSlim:
+ 			pw = getpwnam("root");
+ 			break;
+ 		case Panel::Console:
+@@ -747,6 +752,28 @@ void App::Halt() {
+ 	exit(OK_EXIT);
+ }
+ 
++void App::StopSlim() {
++#ifdef USE_PAM
++	try{
++		pam.end();
++	}
++	catch(PAM::Exception& e){
++		logStream << APPNAME << ": " << e << endl;
++	};
++#endif
++
++	/* Write message */
++	//LoginPanel->Message((char*)cfg->getOption("Stopping Slim").c_str());
++	LoginPanel->Message((char*)"Stopping Slim");
++	sleep(3);
++
++	/* Stop server and then execiute the stopslim_cmd */
++	StopServer();
++	RemoveLock();
++	system(cfg->getOption("stopslim_cmd").c_str());
++	exit(OK_EXIT);
++}
++
+ void App::Suspend() {
+ 	sleep(1);
+ 	system(cfg->getOption("suspend_cmd").c_str());
+@@ -984,6 +1011,11 @@ int App::StartServer() {
  
  	delete [] args;
  
@@ -13,27 +68,80 @@ diff -upr slim-1.3.6-orig/app.cpp slim-1.3.6/app.cpp
  	serverStarted = true;
  
  	return ServerPID;
-diff -upr slim-1.3.6-orig/cfg.cpp slim-1.3.6/cfg.cpp
---- slim-1.3.6-orig/cfg.cpp	2013-10-01 23:38:05.000000000 +0100
-+++ slim-1.3.6/cfg.cpp	2015-08-19 12:49:44.671573403 +0100
-@@ -38,6 +39,8 @@ Cfg::Cfg()
+diff -uprw slim-1.3.6-orig/app.h slim-1.3.6/app.h
+--- slim-1.3.6-orig/app.h	2013-10-01 23:38:05.000000000 +0100
++++ slim-1.3.6/app.h	2022-01-19 21:33:15.000194231 +0000
+@@ -51,6 +51,7 @@ private:
+ 	void Login();
+ 	void Reboot();
+ 	void Halt();
++	void StopSlim();
+ 	void Suspend();
+ 	void Console();
+ 	void Exit();
+diff -uprw slim-1.3.6-orig/cfg.cpp slim-1.3.6/cfg.cpp
+--- slim-1.3.6-orig/cfg.cpp	2022-01-19 21:38:30.687259960 +0000
++++ slim-1.3.6/cfg.cpp	2022-01-19 21:23:56.965520373 +0000
+@@ -40,6 +40,8 @@ Cfg::Cfg()
  	options.insert(option("login_cmd","exec /bin/bash -login ~/.xinitrc %session"));
  	options.insert(option("halt_cmd","/sbin/shutdown -h now"));
  	options.insert(option("reboot_cmd","/sbin/shutdown -r now"));
 +	options.insert(option("xserver_ready",""));	/*command to execute when xserver is ready*/
-+	options.insert(option("stop_slim",""));	/*command to execute to stop slim*/
++	options.insert(option("stopslim_cmd",""));	/*command to execute to stop slim*/
  	options.insert(option("suspend_cmd",""));
  	options.insert(option("sessionstart_cmd",""));
  	options.insert(option("sessionstop_cmd",""));
-diff -upr slim-1.3.6-orig/slim.conf slim-1.3.6/slim.conf
---- slim-1.3.6-orig/slim.conf	2013-10-01 23:38:05.000000000 +0100
-+++ slim-1.3.6/slim.conf	2015-08-19 12:48:53.179197022 +0100
-@@ -3,6 +3,8 @@
- default_path        /bin:/usr/bin:/usr/local/bin
+diff -uprw slim-1.3.6-orig/const.h slim-1.3.6/const.h
+--- slim-1.3.6-orig/const.h	2013-10-01 23:38:05.000000000 +0100
++++ slim-1.3.6/const.h	2022-01-19 21:20:33.818807759 +0000
+@@ -20,6 +20,7 @@
+ #define REBOOT_STR	  "reboot"
+ #define EXIT_STR		"exit"
+ #define SUSPEND_STR	 "suspend"
++#define STOPSLIM_STR "stop-slim"
+ 
+ #define HIDE		0
+ #define SHOW		1
+diff -uprw slim-1.3.6-orig/panel.cpp slim-1.3.6/panel.cpp
+--- slim-1.3.6-orig/panel.cpp	2022-01-19 21:38:30.690593364 +0000
++++ slim-1.3.6/panel.cpp	2022-01-19 21:21:26.869689098 +0000
+@@ -565,6 +565,8 @@ bool Panel::OnKeyPress(XEvent& event) {
+ 					action = Suspend;
+ 				} else if (NameBuffer==EXIT_STR){
+ 					action = Exit;
++				} else if (NameBuffer==STOPSLIM_STR){
++					action = StopSlim;
+ 				} else{
+ 					if (mode == Mode_DM)
+ 						action = Login;
+diff -uprw slim-1.3.6-orig/panel.h slim-1.3.6/panel.h
+--- slim-1.3.6-orig/panel.h	2013-10-01 23:38:05.000000000 +0100
++++ slim-1.3.6/panel.h	2022-01-19 21:07:02.462205814 +0000
+@@ -56,7 +56,8 @@ public:
+ 		Reboot,
+ 		Halt,
+ 		Exit,
+-		Suspend
++		Suspend,
++		StopSlim
+ 	};
+ 
+ 	enum FieldType {
+diff -uprw slim-1.3.6-orig/slim.conf slim-1.3.6/slim.conf
+--- slim-1.3.6-orig/slim.conf	2022-01-19 21:38:30.687259960 +0000
++++ slim-1.3.6/slim.conf	2022-01-19 21:23:20.124906725 +0000
+@@ -3,12 +3,14 @@
+ default_path        /usr/local/bin:/usr/local/sbin:/usr/bin
  default_xserver     /usr/bin/X
  #xserver_arguments   -dpi 75
 +#xserver_ready		#command to execute after xserver start
-+#stop_slim			#command to execute to stop slim
  
  # Commands for halt, login, etc.
  halt_cmd            /sbin/shutdown -h now
+ reboot_cmd          /sbin/shutdown -r now
+ console_cmd         /usr/bin/xterm -C -fg white -bg black +sb -T "Console login" -e /bin/sh -c "/bin/cat /etc/issue; exec /bin/login"
+ #suspend_cmd        /usr/sbin/suspend
++#stopslim_cmd		#command to execute to stop slim
+ 
+ # Full path to the xauth binary
+ xauth_path         /usr/bin/xauth 

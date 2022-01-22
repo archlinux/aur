@@ -15,7 +15,7 @@
 
 pkgname=slim-xserver-ready
 pkgver=1.3.6
-pkgrel=7
+pkgrel=8
 pkgdesc="graphical login manager for X11 with xserver_ready command"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://sourceforge.net/projects/slim.berlios/"
@@ -49,7 +49,7 @@ sha256sums=('21defeed175418c46d71af71fd493cd0cbffd693f9d43c2151529125859810df'
             '5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def'
             'a6d021e52661c74914dc1c4a08ffbd7fce63da41005bfe006e252a74c57c9b70'
             '03149c9f5afb4679e9421d9965ecc126c0b159636212000aca98cb674b531ca7'
-            '83fb7b90f078c951a03a1bb625fca740891ac8caa4b52bef7666a06f23308cc1'
+            '86f7b11fadc70769efaa5861924d52aef86e6bcd7137073cb29f8d2b725f1648'
             )
 
 prepare() {
@@ -62,9 +62,9 @@ prepare() {
   patch -Np1 -i ../slim-1.3.6-add-sessiondir.patch
   patch -Np1 -i ../slim-1.3.6-systemd-session.patch
   patch -Np1 -i ../slim-1.3.6-default-path.patch
-  patch -Np1 -i ../slim-xserver-ready.patch
   patch -Np1 -i ../slim-session-sort.patch
   patch -Np1 -i ../slim-type-fix.patch
+  patch -Np1 -i ../slim-xserver-ready.patch
 }
 
 build() {
