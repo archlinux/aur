@@ -8,7 +8,7 @@ pkgbase = youtube-search-python-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python>=3.6
-	depends = httpx
+	depends = python-httpx>=0.14.2
 	provides = youtube-search-python
 	conflicts = youtube-search-python
 	source = git+https://github.com/alexmercerind/youtube-search-python.git

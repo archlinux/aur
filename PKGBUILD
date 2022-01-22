@@ -7,7 +7,7 @@ pkgver() {
     "$(grep version= setup.py | sed 's/^\s*version="\(.*\)".*/\1/')" \
     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.4.6.r116.539137a
+pkgver=1.6.0.r221.980e440
 pkgrel=1
 
 pkgdesc="Search for YouTube videos, channels & playlists & get video information using link WITHOUT YouTube Data API v3"
@@ -16,7 +16,7 @@ url="https://github.com/alexmercerind/youtube-search-python"
 license=('MIT')
 depends=(
 		"python>=3.6"
-		"httpx"
+		"python-httpx>=0.14.2"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
