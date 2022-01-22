@@ -16,7 +16,7 @@ pkgrel=1
 pkgdesc="Additional spline functions"
 arch=(any)
 url="https://octave.sourceforge.io/${_pack}"
-license=('custom')
+license=('GPL3')
 groups=('octave-forge')
 depends=('octave>=3.6.0')
 makedepends=()

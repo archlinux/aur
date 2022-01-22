@@ -6,7 +6,7 @@ pkgbase = octave-splines
 	install = octave-splines.install
 	arch = any
 	groups = octave-forge
-	license = custom
+	license = GPL3
 	depends = octave>=3.6.0
 	noextract = splines-1.3.4.tar.gz
 	source = https://downloads.sourceforge.net/octave/splines-1.3.4.tar.gz
