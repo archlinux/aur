@@ -1,6 +1,6 @@
 pkgbase = lutris-wine-git
 	pkgdesc = Lutris Wine Runner as system Wine and even better
-	pkgver = 0.60.r5.g2d79200
+	pkgver = 0.60.r6.ge79123e
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/lutris-wine
 	arch = any
@@ -73,6 +73,7 @@ pkgbase = lutris-wine-git
 	depends = gtk3
 	depends = lib32-gtk3
 	depends = gst-plugins-base
+	depends = lib32-gst-plugins-base
 	depends = gst-plugins-base-libs
 	depends = lib32-gst-plugins-base-libs
 	depends = lib32-vulkan-icd-loader
