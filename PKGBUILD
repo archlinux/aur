@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++'
 arch=('x86_64')
 url='https://www.copperspice.com/'
@@ -16,10 +16,11 @@ optdepends=('mariadb-libs: for MySQL database support'
 makedepends=('cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-libs'
              'libxcursor' 'libxext'  'libxfixes' 'libxinerama' 'libxrandr'
              'libxrender' 'libxml2')
+options=('!lto')
 source=("https://github.com/copperspice/copperspice/archive/cs-${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '010-copperspice-fix-cmake-include-dirs.patch')
-sha256sums=('2e74c809f6e9bffbe53f2f758b280781f6905631d9647717b47bc9202dba0d41'
-            '14c52854ed1d92430a4b4ce6dd967f86141cc3352784b2396f786575bac0bdd0')
+sha256sums=('c1c1318f04aae0e4af10fffa6d20267768c2b1acc4c339f41609629584f81c39'
+            'ad8764d825950dcb98a1088a2f778d449c39e33a3c2edf037a45c30c341045d4')
 
 prepare() {
     patch -d "copperspice-cs-${pkgver}" -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"
