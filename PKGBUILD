@@ -8,7 +8,7 @@ Cardano (binary package)."
 arch=("x86_64")
 url="https://github.com/input-output-hk/cardano-wallet"
 license=("Apache")
-depends=("cardano-node")
+depends=("cardano-node=1.33.0")
 provides=("cardano-wallet")
 conflicts=("cardano-wallet")
 source=("https://github.com/input-output-hk/cardano-wallet/releases/download/\
