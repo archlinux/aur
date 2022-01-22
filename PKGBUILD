@@ -1,15 +1,15 @@
-# Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
+# Contributor:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=velvet
 pkgver=1.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Sequence assembler for very short reads"
 arch=("i686" "x86_64")
-url="http://www.ebi.ac.uk/~zerbino/velvet/"
+url="https://www.ebi.ac.uk/~zerbino/velvet/"
 license=("GPL3")
 depends=("zlib")
 options=(!makeflags) # Build system for this software assumes non-parallel make
-source=("http://www.ebi.ac.uk/~zerbino/velvet/velvet_${pkgver}.tgz")
+source=("https://www.ebi.ac.uk/~zerbino/velvet/velvet_${pkgver}.tgz")
 
 build() {
   cd "${pkgname}_${pkgver}"
