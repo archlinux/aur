@@ -33,7 +33,8 @@ pre_install() {
 post_install() {
 	systemctl enable windscribe-helper
 	systemctl start windscribe-helper
-
+	systemctl enable systemd-resolved
+	systemctl start systemd-resolved
 }
 
 pre_upgrade() {
