@@ -1,28 +1,27 @@
-# Maintainer: Johann CAHIER <johann.cahier@iot.bzh>
+# Maintainer: Clar Fon <usr@ltdk.xyz>
+# Contributor: Johann CAHIER <johann.cahier@iot.bzh>
 pkgname=mustach
-pkgver=0.99
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="mustach is a C implementation of the mustache template specification.
-See : http://mustache.github.io/"
-arch=('x86_64')
+pkgdesc="mustach is a C implementation of the mustache template specification."
+arch=('x86_64' 'aarch64')
 url="https://gitlab.com/jobol/mustach/"
-license=('Apache-2.0')
+license=('ISC')
 depends=('json-c')
-makedepends=('gcc' 'make' 'json-c')
+makedepends=('gcc' 'make')
 checkdepends=()
 optdepends=()
-provides=('mustach')
+provides=()
 conflicts=()
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.com/jobol/mustach/-/archive/0.99/mustach-0.99.zip")
+source=("https://gitlab.com/jobol/mustach/-/archive/$pkgver/mustach-$pkgver.zip")
 noextract=()
-md5sums=('c36a37d9e46c7db1225853c7fb207265')
+sha256sums=('a31ede8351e03ae0c87d9d79fcbe40eef11daf6587f13c583847c5142bb3986e')
 validpgpkeys=()
-
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -31,6 +30,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    make DESTDIR="$pkgdir/" install
-#    install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE-2.0.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-2.0.txt"
+    make DESTDIR="$pkgdir/" PREFIX=/usr install
 }
