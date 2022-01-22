@@ -1,0 +1,18 @@
+pkgbase = cryptor
+	pkgdesc = Simple GUI application for gocryptfs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/moson-mo/cryptor
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = vala
+	makedepends = meson
+	depends = gtk3
+	depends = libgee
+	depends = glib2
+	depends = json-glib
+	source = cryptor-1.0.0.tar.gz::https://github.com/moson-mo/cryptor/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = afb0a2725b9a6a816da1385b756bc81822f612b065ad62a5086079e7f4898d2b
+
+pkgname = cryptor
