@@ -4,14 +4,50 @@ pkgname=qgroundcontrol-git
 pkgver=v4.2.0.r47.96401ec30
 pkgrel=1
 epoch=
-# extract_name=wjakob-tbb-9e219e2
 pkgdesc="ground control system for px4 autopilot"
 arch=('any')
 url=""
 license=('GPL')
 groups=()
-depends=()
-makedepends=('git')
+depends=('bzip2'
+         'dbus'
+         'flac'
+         'gst-plugins-base-libs'
+         'libasyncns'
+         'libffi'
+         'libgcrypt'
+         'libgpg-error'
+         'libogg'
+         'libsndfile'
+         'libsystemd'
+         'libunwind'
+         'libx11'
+         'libxau'
+         'libxcb'
+         'libxdmcp'
+         'libxext'
+         'lz4'
+         'orc'
+         'pcre'
+         'sdl2'
+         'xz'
+         'zlib'
+         'icu'
+         'qt5-speech'
+         'qt5-multimedia'
+         'qt5-serialport'
+         'qt5-charts'
+         'qt5-quickcontrols'
+         'qt5-quickcontrols2'
+         'qt5-location'
+         'qt5-svg'
+         'qt5-graphicaleffects'
+         'qt5-tools'
+         'qt5-wayland'
+         'qt5-x11extras'
+)
+
+makedepends=('git' 'qt5-base')
 checkdepends=()
 optdepends=()
 provides=("${pkgname%-git}")
@@ -21,6 +57,7 @@ backup=()
 options=()
 install=
 changelog=
+
 source=(
 	"git://github.com/mavlink/qgroundcontrol.git"
 	"git://github.com/PX4/GpsDrivers.git"
@@ -29,7 +66,6 @@ source=(
 	"git://github.com/mavlink/gst-plugins-good.git"
 	"git://github.com/Auterion/xz-embedded.git"
 	"git://github.com/mavlink/libevents.git"
-	# "git://gitlab.com/libeigen/eigen.git"
 	"eigen::git+https://gitlab.com/libeigen/eigen.git"
 	"git://github.com/patrickelectric/qmdnsengine.git"
 
@@ -125,4 +161,3 @@ package() {
 	cd $srcdir/${pkgname%-git}/build
 	make DESTDIR=$pkgdir install
 }
-
