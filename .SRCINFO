@@ -5,7 +5,7 @@ pkgbase = cardano-wallet-bin
 	url = https://github.com/input-output-hk/cardano-wallet
 	arch = x86_64
 	license = Apache
-	depends = cardano-node
+	depends = cardano-node=1.33.0
 	provides = cardano-wallet
 	conflicts = cardano-wallet
 	source = https://github.com/input-output-hk/cardano-wallet/releases/download/v2022-01-18/cardano-wallet-v2022-01-18-linux64.tar.gz
