@@ -2,7 +2,7 @@
 
 pkgname=foobar2000
 pkgver=1.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced freeware audio player (uses Wine)"
 arch=(i686 x86_64)
 url=http://www.foobar2000.org
@@ -17,7 +17,7 @@ source=("foobar2000_v$pkgver.exe::https://www.foobar2000.org/download"
 install="${pkgname}.install"
 sha256sums=('1efc461da260441208d854626c19267c723b34b5935ff74514f0ecdb4a244d94'
             '134cf36d7631628bfa4a3830704aa6a9efb6e265660b31d5b487df97aaa32721'
-            '99090a8094887dbd3f59dd988db0fdac21d3ceddad5fe03342b12054202458ef'
+            'e9d1f7a8dc182f780d0fb15818c2837ebe0b70abcbef1c849a4185da7c09be7c'
             '2031e952d1d1d6cb4c2ff2b879421149f3f0780ca5d3ac03bc9c23fcbbd053d6'
             '2b6134997e55ce5ef5014dc266cda71b763949ad683d321246a5143333dd1fa0')
 DLAGENTS=('https::/usr/bin/wget -nH --cut-dirs=3 -r -l 2 -A exe -R '*beta*.exe' %u')

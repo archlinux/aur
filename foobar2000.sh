@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 progName="foobar2000"
 progRealPath="/usr/share/$progName"
@@ -8,6 +8,7 @@ progPrefix="$HOME/.local/share/wineprefixes/$progName"
 
 # Symlink stuff
 mkdir -p "$progHome" || exit 1
+mkdir -p "$HOME/.local/share/wineprefixes" || exit 1
 # Delete broken symlinks
 find -L "$progHome" -type l -delete
 # Update existing symlinks, add new symlinks
