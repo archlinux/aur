@@ -1,0 +1,13 @@
+pkgbase = victor
+	pkgdesc = Command line tool to log activities and measure time spent
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ssiyad/victor
+	arch = x86_64
+	makedepends = git
+	makedepends = nimble
+	provides = victor
+	source = git+https://github.com/ssiyad/victor#tag=0.2
+	sha256sums = SKIP
+
+pkgname = victor
