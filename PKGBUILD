@@ -1,4 +1,4 @@
-# Maintainer: Vasil Bakalov <jens300304@gmail.com>
+# Maintainer: Stella <jens300304@gmail.com>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
 pkgver=0.6.8
