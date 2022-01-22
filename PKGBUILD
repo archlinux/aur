@@ -2,7 +2,7 @@
 
 pkgname=vkvg
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Vulkan 2D graphics library following the Cairo API'
 arch=(x86_64)
 url='https://github.com/jpbruyere/vkvg'
