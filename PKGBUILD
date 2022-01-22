@@ -9,13 +9,13 @@ license=('GPL3')
 depends=('qt5-base' 'qt5-multimedia' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=(make gcc)
 source=(
-https://random-hackery.net/data/qtalarm/src/QTalarm-2.2.0.tar.gz
-https://random-hackery.net/data/qtalarm/src/QTalarm-2.2.0.tar.gz.asc
+https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.0.tar.gz
+https://random-hackery.net/data/qtalarm/src/QTalarm-2.3.0.tar.gz.asc
 )
 validpgpkeys=('914897EC41BD3AED1CD9EC3DE41FF9C889B141CC')
 md5sums=(
-415710d7c01f1c7c69e9b173b7712722
-56bacf061670e831926bac8c23418b55
+fe82b4470557bde3821628ed9b5d802b
+894c062da028f0a1009eb1679eebde9c
 )
 
 build() {
