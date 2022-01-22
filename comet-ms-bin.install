@@ -1,3 +1,0 @@
-post_install() {
-    echo "PSI Mod OBO file installed to /usr/share/comet-ms/PSI-MOD.obo"
-}
