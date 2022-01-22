@@ -2,8 +2,8 @@
 # Contributor: Lev Lybin <aur@devtrue.net>
 
 pkgname=synology-hyper-backup-explorer
-pkgver=2.2.2.0141
-_pkgver=2.2.2-0141
+pkgver=3.0.0.0149
+_pkgver=3.0.0-0149
 pkgrel=2
 pkgdesc="A desktop tool for browsing, decrypting, and extracting different versions of backup data in Hyper Backup repositories"
 arch=('x86_64')
@@ -11,8 +11,8 @@ url="https://www.synology.com/en-global/releaseNote/HyperBackupExplorer"
 license=('unknown')
 depends=('qt5-base' 'gtk2' 'openssl-1.0')
 options=('!strip')
-source=(https://global.download.synology.com/download/Tools/HyperBackupExplorer/${_pkgver}/Linux/x86_64/HyperBackupExplorer-${_pkgver}-linux.tar.bz2)
-sha256sums=('d44ab409e8307d70ebe3a4b0a574666ce1543cd767a6784cf88cb0317bcae154')
+source=(https://global.download.synology.com/download/Utility/HyperBackupExplorer/${_pkgver}/Linux/${carch}/HyperBackupExplorer-${_pkgver}-linux.tar.bz2)
+sha256sums=('58605171a1fcc3f33117375c55ae738686667c85db3645ced23bb4f26545030f')
 
 prepare() {
     cd "${srcdir}"
