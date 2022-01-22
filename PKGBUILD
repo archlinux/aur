@@ -1,18 +1,19 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cocogitto-git
-pkgver=4.0.1.r1.gfb4a294
+pkgver=4.1.0.r2.gcd847de
 pkgrel=1
 pkgdesc="Set of CLI tools for the conventional commit and semver specifications (git)"
 arch=('x86_64')
-url="https://github.com/oknozor/cocogitto"
+url="https://github.com/cocogitto/cocogitto"
 license=('MIT')
-depends=('gcc-libs' 'zlib')
-makedepends=('rust' 'git')
+depends=('gcc-libs' 'libgit2' 'libgit2.so' 'zlib')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,37 +23,31 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  mkdir completions/
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --frozen
-  target/release/coco --completion bash > "completions/coco.bash"
-  target/release/coco --completion fish > "completions/coco.fish"
-  target/release/coco --completion zsh > "completions/_coco"
-  target/release/cog generate-completions bash > "completions/cog.bash"
-  target/release/cog generate-completions fish > "completions/cog.fish"
-  target/release/cog generate-completions zsh > "completions/_cog"
+  cargo build --frozen --release
 }
 
 check() {
   cd "${pkgname%-git}"
-  git config --global user.name "the name"
-  git config --global user.email "paul.delafosse@gmail.com"
-  cargo test --frozen -- --test-threads=1
+  # Test suite is not atomic, relies on user environment such as git user configs
+  # cargo test --frozen
 }
 
 package() {
   cd "${pkgname%-git}"
-  install -Dm 755 "target/release/coco" -t "$pkgdir/usr/bin"
-  install -Dm 755 "target/release/cog" -t "$pkgdir/usr/bin"
-  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  for bin in 'cog' 'coco'; do
-    install -Dm 644 "completions/$bin.bash" "${pkgdir}/usr/share/bash-completion/completions/$bin"
-    install -Dm 644 "completions/$bin.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
-    install -Dm 644 "completions/_$bin" -t "${pkgdir}/usr/share/zsh/site-functions"
+  for bin in coco cog; do
+    local target="target/release/$bin"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "$target"
+    local gen="$target "
+    [[ $bin == coco ]] && gen+='--completion' || gen+='generate-completions'
+    $gen bash | install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$bin"
+    $gen fish | install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$bin.fish"
+    $gen zsh |  install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$bin"
   done
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
