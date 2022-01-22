@@ -1,6 +1,6 @@
 # Maintainer: Yongchun Jiang <me at JSpringYC@gmail.com>
 pkgname=clash-for-windows-chinese
-pkgver=0.19.5
+pkgver=0.19.6
 pkgrel=0
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron（Chinese version.）."
 arch=("x86_64")
@@ -17,6 +17,9 @@ optdepends=(
     'iproute2: TUN mode required.'
 )
 
+provides=('clash-for-windows')
+conflicts=('clash-for-windows')
+
 source=(
     "${pkgname}-${pkgver}-${arch}-linux.tar.gz::${url}/releases/download/${pkgver}/Clash.for.Windows-${pkgver}-${_parch}-linux.tar.gz"
     "${pkgname}-app-${pkgver}.7z::https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V${pkgver}_CN/app.7z"
@@ -24,13 +27,11 @@ source=(
     "clash-for-windows-chinese.desktop"
     "cfw"
 )
-sha256sums=(
-    'ea030091be098fcfb4df371ff5fc4f6f3dd8c71d80c6bf6d2266c2083fb40147'
-    'bcea51eca069708aa4f04bec68037de04bc99a510679eaaf110435e6ad89e8a8'
-    'SKIP'
-    'f842f09d3b2ac2fa7e6b98159723c4f7605de0191779c61bc7b424ede58cd96c'
-    '2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7'
-)
+sha256sums=('fbd628037a53fe7bafe78eeea4bf36c19320b9e82b8ec5d7c8910ee8ae85133a'
+            '368fde645c74891ad26087a8449aa3c3f1eb32c9ef4432745a7d897dc7ab6809'
+            '0d48a2ea1ee05ad4579b6e6996889548fa8a61a5ff6c85a32f7622cddfcb5782'
+            'f842f09d3b2ac2fa7e6b98159723c4f7605de0191779c61bc7b424ede58cd96c'
+            '2451fc0eff3f48c48e4eb818d1e1ce62182737db19b95541cb13ec81183550c7')
 
 build() {
     # generate .desktop file
