@@ -2,7 +2,7 @@
 
 pkgname=python-hurry-filesize
 pkgver=0.9
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple Python library for human readable file sizes (or anything sized in bytes)."
 arch=('any')
 url="http://pypi.python.org/pypi/hurry.filesize/"
