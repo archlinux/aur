@@ -1,14 +1,14 @@
 pkgbase = evans-bin
 	pkgdesc = More expressive universal gRPC client
-	pkgver = 0.10.0
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/ktr0731/evans
 	arch = x86_64
 	license = MIT
 	provides = evans
-	source = evans-bin-0.10.0.tar.gz::https://github.com/ktr0731/evans/releases/download/0.10.0/evans_linux_amd64.tar.gz
-	source = evans-bin-0.10.0-LICENSE::https://raw.githubusercontent.com/ktr0731/evans/v0.10.0/LICENSE
-	sha256sums = d9c53f2e049fee97e8339615f5d3323021a5b68a4cdc5b1e8c271e0f203d2d74
+	source = evans-bin-0.10.2.tar.gz::https://github.com/ktr0731/evans/releases/download/v0.10.2/evans_linux_amd64.tar.gz
+	source = evans-bin-0.10.2-LICENSE::https://raw.githubusercontent.com/ktr0731/evans/v0.10.2/LICENSE
+	sha256sums = 12d61282d79ad12e6008f173197b47092981c0e4b2e50526eef33011633ac134
 	sha256sums = 1456fe7612f76bde2b443157a0755e31c31ef16f032e74328e64883a3402e46f
 
 pkgname = evans-bin
