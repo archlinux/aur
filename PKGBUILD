@@ -1,16 +1,17 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=yass-karaoke
-pkgver=2.1.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="editor for creating, finetuning, organizing and printing Ultrastar karaoke songs"
 arch=('i686' 'x86_64')
 url="http://yass-along.com/"
 license=('GPL')
 depends=('java-runtime' 'bash')
+makedepends=('unzip')
 source=("http://yass-along.com/data/downloads/yass-${pkgver}.jar"
 	"yass.desktop")
-md5sums=('2e0c4abb14ac02822d6cc300a68b3475'
+md5sums=('ddc7da431f404c77b7bf00c499d2d5b8'
          '0a20b92cab193f5054ce8c5047d8804b')
 options=(!strip)
 noextract=("yass-${pkgver}.jar")
