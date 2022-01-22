@@ -5,18 +5,15 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.7.0.DEV.r48888.g7b19e097294
+pkgver=1.8.0.DEV.r51125.g1db8b8f1607
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
 url='https://julialang.org/'
 license=(MIT)
 depends=(#compare with grep =1 Make.user|cut -c 11-|cut -d: -f1|tr _A-Z \\ta-z
-	libunwind
-	pcre2
 	openlibm
 	gmp
-	mpfr
 	libutf8proc
 	zlib p7zip
 
@@ -24,11 +21,21 @@ depends=(#compare with grep =1 Make.user|cut -c 11-|cut -d: -f1|tr _A-Z \\ta-z
 	gtk-update-icon-cache
 	hicolor-icon-theme
 )
-makedepends=(
+makedepends=( #See minimum in doc/src/devdocs/build/build.md#required-build-tools-and-external-libraries
+	'cmake>=3.4.3' # to build libgit2
+	gcc-libs  #provides libatomics.so needed to support atomi operations
+	'python>=2.7'
+	gcc-fortran
 	patchelf
-	cmake gcc-fortran
-	python
 	git
+	#the following documented minimum is already in group base-devel
+	#'gcc>5.1'
+	#make
+	#m4
+	#awk
+	#patch
+	#pkgconf #needed to build libgit2 correctly
+	#which
 )
 source=(git+https://github.com/JuliaLang/julia.git#branch=master
         Make.user
@@ -53,16 +60,15 @@ prepare() {
   git submodule update
 
   msg2 'Configuring the build...'
-  cp -v $srcdir/Make.user .
 
   # Fixing libunwind version check
   # https://github.com/JuliaLang/julia/pull/29082
   patch -p1 -i ../libunwind-version.patch
+  #make full-source-dist
 }
 
 build() {
   # See FS#57387 for why USE_SYSTEM_LLVM=0 is used, for now
-  # See FS#58221 for why USE_SYSTEM_ARPACK=0 is used, for now
   export PATH="$srcdir/bin:$PATH"
   env CFLAGS="$CFLAGS -w" CXXFLAGS="$CXXFLAGS -w" make VERBOSE=1 -C "$_pkgbase"
 
@@ -72,14 +78,9 @@ build() {
 }
 
 check() {
-  cd "$_pkgbase/test"
-
-  # this is the make testall target, plus the --skip option from
-  # travis/appveyor/circleci (one test failed with DNS resolution errors)
-  ../julia --check-bounds=yes --startup-file=no ./runtests.jl all \
-	--skip Distributed
-
-  find ../stdlib \( -name \*.cov -o -name \*.mem \) -delete
+  cd $_pkgbase
+  make test
+  find stdlib -name \*.mem -delete
 }
 
 package_julia-git() {
