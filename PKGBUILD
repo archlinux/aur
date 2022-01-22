@@ -1,4 +1,4 @@
-pkgname=yaf
+pkgname=yafetch
 pkgver=0.0.1
 pkgrel=0
 pkgdesc='Commandline tool to get system information'
@@ -7,21 +7,22 @@ url="https://github.com/deepjyoti30/yaf/"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.1.tar.gz")
-provides=("${pkgname}")
-conflicts=("${pkgname}-git")
+provides=("yaf")
+conflicts=("yaf-git")
 md5sums=("SKIP")
+i_pkgname=yaf
 
 prepare(){
-  cd "$pkgname-$pkgver"
+  cd "$i_pkgname-$pkgver"
   mkdir -p build/
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-  go build -o build/$pkgname .
+  cd "$i_pkgname-$pkgver"
+  go build -o build/$i_pkgname .
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  cd "$i_pkgname-$pkgver"
+  install -Dm755 build/$i_pkgname "$pkgdir"/usr/bin/$i_pkgname
 }

@@ -1,4 +1,4 @@
-pkgbase = yaf
+pkgbase = yafetch
 	pkgdesc = Commandline tool to get system information
 	pkgver = 0.0.1
 	pkgrel = 0
@@ -11,4 +11,4 @@ pkgbase = yaf
 	source = https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.1.tar.gz
 	md5sums = SKIP
 
-pkgname = yaf
+pkgname = yafetch
