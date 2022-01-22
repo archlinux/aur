@@ -2,8 +2,8 @@
 
 _pkgname=imath
 pkgname=mingw-w64-${_pkgname}
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)'
 url='https://github.com/AcademySoftwareFoundation/Imath'
 arch=(any)
@@ -15,9 +15,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=(
 	"$_pkgname-$pkgver.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=(
-	'0bf7ec51162c4d17a4c5b850fb3f6f7a195cff9fa71f4da7735f74d7b5124320'
-)
+sha256sums=('fcca5fbb37d375a252bacd8a29935569bdc28b888f01ef1d9299ca0c9e87c17a')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DIMATH_LIB_SUFFIX= )
@@ -31,7 +29,8 @@ prepare() {
 
 build() {
 	for _arch in ${_architectures}; do
-		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_TESTING=OFF \
+			-DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
 		cmake --build "build-${_arch}-static"
 		
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=OFF
