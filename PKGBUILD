@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=quake2rtx
-pkgver=1.5.0
-pkgrel=3
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="Ray-traced version of Quake II."
 arch=(x86_64 aarch64)
 url="https://github.com/NVIDIA/Q2RTX"
@@ -17,12 +17,15 @@ replaces=()
 source=("git+https://github.com/NVIDIA/Q2RTX.git"
         "https://github.com/NVIDIA/Q2RTX/releases/download/v${pkgver}/q2rtx-${pkgver}-linux.tar.gz")
 sha256sums=('SKIP'
-            '7ecf2798fbacce7efde0c6e02f6b08f850328a391a1cb5cb90719833b7c591c8')
+            'd2c8218b8d0e232a23f05b4b4a83097d28d53291584ef850bb79de8b888aa3b4')
 
 prepare() {
   cd $srcdir/Q2RTX
-  git checkout tags/v1.5.0
+  git checkout tags/v${pkgver}
+  sed -i 's/spurious\/SDL-mirror/libsdl-org\/SDL/' .gitmodules .git/config
   git submodule update --init --recursive
+  rm -rf extern/SDL2
+  git submodule update --init --recursive --remote --merge extern/SDL2
   mkdir -p $srcdir/Q2RTX/{build,baseq2}
   cp -rf $srcdir/q2rtx/baseq2/* $srcdir/Q2RTX/baseq2/
 }
