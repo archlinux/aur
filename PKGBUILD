@@ -13,7 +13,7 @@ source=("https://github.com/AAVSO/VStar/releases/download/${pkgver}/vstar-bash-$
 		vstar.sh)
 sha256sums=('20cee3f9a22f9b9c3d04738f7717200b0e6748592ceec122a480cb88783a106c'
             '2bc61bcf9c10f71d20795cc4befa69ead05d4addfd4ca28b694b05d9a53f5d08'
-            '73f2d8fe79a14cd0b76f868bb622845eae440b297a8056c07fcd72cc340530ed')
+            '6b3dd9024a3c394c3f75c87d27197bd141baa60a9880f8d365228128107ea9ea')
 
 package() {
 	mkdir -p ${pkgdir}/usr/bin
