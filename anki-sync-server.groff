@@ -1,7 +1,33 @@
 .ds server anki-sync-server
 .ds server-dir /opt/anki-sync-server
 
-.TH \*[server] 1 "" "" "Post Installation Guide"
+.TH \*[server] 1 "" "2022-01-22" "Post Installation Guide"
+
+.SH Name
+.IP anki-sync-server
+
+.SH Synopsis
+.
+database
+.RS
+cd /opt/anki-sync-server &&
+.br
+sudo -u anki-sync-server ankisyncctl.py
+.RE
+.
+server
+.RS
+cd /opt/anki-sync-server &&
+.br
+sudo -u anki-sync-server python -m ankisyncd
+.RE
+.
+systemctl
+.RS
+systemctl <command> anki-sync-server
+.RE
+.
+.YS
 
 .SH Post Installation Instructions
 .SS Adding a user
