@@ -1,7 +1,7 @@
 pkgbase = vkvg
 	pkgdesc = Vulkan 2D graphics library following the Cairo API
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jpbruyere/vkvg
 	arch = x86_64
 	license = MIT
