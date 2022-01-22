@@ -1,0 +1,16 @@
+pkgbase = vstar
+	pkgdesc = A visualisation and analysis tool for variable star obsevation data
+	pkgver = 2.21.3
+	pkgrel = 1
+	url = https://www.aavso.org/vstar
+	arch = any
+	license = AGPL3
+	depends = java-runtime>=1.8
+	source = https://github.com/AAVSO/VStar/releases/download/2.21.3/vstar-bash-2.21.3.zip
+	source = vstar.desktop
+	source = vstar.sh
+	sha256sums = 20cee3f9a22f9b9c3d04738f7717200b0e6748592ceec122a480cb88783a106c
+	sha256sums = 2bc61bcf9c10f71d20795cc4befa69ead05d4addfd4ca28b694b05d9a53f5d08
+	sha256sums = 73f2d8fe79a14cd0b76f868bb622845eae440b297a8056c07fcd72cc340530ed
+
+pkgname = vstar

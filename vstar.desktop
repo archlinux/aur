@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=2.21.3
+Type=Application
+Name=VStar
+Exec=vstar
+Icon=vstar
+Comment=VStar is a visualisation and analysis tool for variable star obsevation data
+Categories=Science;Graphics;
+Terminal=false
+MimeType=text/csv;application/fits;
