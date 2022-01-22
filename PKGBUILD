@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=ospray-studio
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A visualization application that leverages Intel OSPRay as its core rendering engine"
 arch=(x86_64)
@@ -11,8 +11,8 @@ license=(Apache)
 depends=('glfw' 'ospray' 'openimagedenoise' 'openimageio' 'openexr')
 makedepends=(cmake)
 source=("https://github.com/ospray/ospray_studio/archive/v${pkgver}.tar.gz")
-sha256sums=('55d71d324ea38ca10afd620ee7d652611845dc16c38494701b2f149b8b3826b3')
-provides=("ospray-studio=0.9.0")
+sha256sums=('bd9ef214b97b0899778474e675be4cbf79b9a281aecdbee2f3d148f5628a98f3')
+provides=("ospray-studio=0.9.1")
 
 prepare() {
     mkdir -p build
