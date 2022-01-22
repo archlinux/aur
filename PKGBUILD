@@ -13,7 +13,7 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.42.r26.g15ce86af
+pkgver=0.3.43.r151.g2e1a08ed
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -23,7 +23,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
-             lilv
+             lilv libx11 libcanberra
              avahi openssl
              gst-plugins-base-libs
              )
@@ -43,11 +43,11 @@ build() {
     -D test=enabled \
     -D libcamera=disabled \
     -D sdl2=disabled \
-    -D roc=disabled \
     -D session-managers=[] \
     -D jack=disabled \
     -D vulkan=disabled \
     -D ffmpeg=disabled \
+    -D roc=disabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
   meson compile -C build
 }
@@ -70,12 +70,12 @@ _ver=${pkgver:0:3}
 
 package_pipewire-common-git() {
   license+=(LGPL)
-  depends=(rtkit libdbus-1.so libncursesw.so libreadline.so
+  depends=(rtkit libx11 libdbus-1.so libncursesw.so libreadline.so
            libsndfile.so libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libfreeaptx.so libfdk-aac.so
-           liblilv-0.so)
+           liblilv-0.so libcanberra.so)
   optdepends=('pipewire-session-manager: Session manager'
               'pipewire-common-docs-git: Documentation'
               'pipewire-common-alsa-git: ALSA configuration'
