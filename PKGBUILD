@@ -7,7 +7,7 @@
 pkgname=wine-stable
 _pkgver=7.0
 pkgver=${_pkgver/-/}  # Useful for wine-stable-next
-pkgrel=2
+pkgrel=3
 
 source=(https://dl.winehq.org/wine/source/7.0/wine-$_pkgver.tar.xz{,.sign}
         30-win32-aliases.conf
@@ -21,7 +21,7 @@ validpgpkeys=(DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 pkgdesc="A compatibility layer for running Windows programs"
 url="http://www.winehq.com"
 arch=(x86_64)
-options=(staticlibs)
+options=(staticlibs !lto)
 license=(LGPL)
 install=wine.install
 

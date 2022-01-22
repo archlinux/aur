@@ -1,7 +1,7 @@
 pkgbase = wine-stable
 	pkgdesc = A compatibility layer for running Windows programs
 	pkgver = 7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.winehq.com
 	install = wine.install
 	arch = x86_64
@@ -123,6 +123,7 @@ pkgbase = wine-stable
 	provides = wine=7.0
 	conflicts = wine
 	options = staticlibs
+	options = !lto
 	source = https://dl.winehq.org/wine/source/7.0/wine-7.0.tar.xz
 	source = https://dl.winehq.org/wine/source/7.0/wine-7.0.tar.xz.sign
 	source = 30-win32-aliases.conf
