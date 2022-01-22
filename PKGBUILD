@@ -39,7 +39,7 @@ package()
 
     ## Create an executable.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/webapps/${pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
+dotnet run --no-launch-profile --no-build -c Release --project \"/usr/share/webapps/${pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
