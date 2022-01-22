@@ -2,8 +2,8 @@
 
 _pkgname=telegrand
 pkgname=telegrand-git
-pkgver=r558.df19f42
-pkgrel=2
+pkgver=r660.2573ccc
+pkgrel=1
 pkgdesc='A Telegram client for GNOME'
 arch=(x86_64)
 url='https://github.com/melix99/telegrand'
@@ -12,8 +12,12 @@ depends=(gtk4 libadwaita libtd-dev)
 makedepends=(git meson rust)
 provides=(telegrand)
 conflicts=(telegrand)
+# LTO is explicitly disabled because of linking issues with bundled libwebp
+options=(!lto)
+
 source=('git+https://github.com/melix99/telegrand.git')
 sha256sums=('SKIP')
+
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
