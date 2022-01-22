@@ -17,7 +17,7 @@ pkgname=(pipewire-full-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
          )
-pkgver=0.3.43.r68.g7c6649b5
+pkgver=0.3.43.r151.g2e1a08ed
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -27,7 +27,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
-             lilv
+             lilv libx11 libcanberra
              avahi openssl
              gst-plugins-base-libs
              jack2
@@ -76,12 +76,12 @@ _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
   license+=(LGPL)
-  depends=(rtkit libdbus-1.so libncursesw.so libreadline.so
+  depends=(rtkit libx11 libdbus-1.so libncursesw.so libreadline.so
            libsndfile.so libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libfreeaptx.so libfdk-aac.so
-           liblilv-0.so)
+           liblilv-0.so libcanberra.so)
   optdepends=('pipewire-session-manager: Session manager'
               'pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA configuration'
