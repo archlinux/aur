@@ -2,7 +2,7 @@
 
 pkgname=python-jsonrpcclient
 _name=jsonrpcclient
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Send JSON-RPC requests in Python."
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/bcb/jsonrpcclient"
 license=('MIT')
 options=('!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('fbc57c5150d210e350dcb54737a18c39dcd7e2d0ce43e517839ff457334011d5')
+sha256sums=('c0d475494b3e1b591ecdee7883739accaf5695edb673f16b7383b8c6bbdb1ca3')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
