@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=pico-project-generator
+Comment=A command line or GUI tool, written in Python, to automatically generate a Pico C SDK Project.
+Icon=pico-project-generator
+Exec=pico-project-generator --gui
+Categories=Utility
