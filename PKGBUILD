@@ -1,19 +1,19 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 _gemname=fog-local
 pkgname=ruby-$_gemname
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Module for the '\''fog'\'' gem to support local filesystem storage.'
 arch=(any)
 url='https://github.com/fog/fog-local'
 license=(MIT)
-depends=(ruby ruby-fog-core)
+depends=(ruby-fog-core)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('0ecec6ffcdd1ff9d51d3427b9f3416729d075da9d48a4399ccb35ef53bd8c6a1a6f60e1d6f200d8805008fcfd708e326edc3efeec634707a9e78d46ed525d5cc')
+sha256sums=('263b2d09e54c69d1b87ad7f235a1a1e53c8a674edcedf7512c1715765ad7ef79')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
