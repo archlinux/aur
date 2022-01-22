@@ -1,0 +1,7 @@
+*.pkg.tar*
+pkg
+src
+sm64ex
+sm64redrawn
+baserom.*.z64
+file.php?id=*
