@@ -2,7 +2,7 @@
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clight
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A C daemon that turns your webcam into a light sensor. It can also change display gamma temperature, dim your screen and set your dpms."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clight"
@@ -25,9 +25,9 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -Wno-dev
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
