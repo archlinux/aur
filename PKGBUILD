@@ -13,8 +13,10 @@ license=(LGPL)
 # replacing rc with -rc
 # pkgver is not allowed to contain hyphens
 _pkgbasever=${pkgver/rc/-rc}
+_pkgfolder=${pkgver/%[1-9]/x}
 
-source=(https://dl.winehq.org/wine/source/6.x/wine-$_pkgbasever.tar.xz{,.sign}
+
+source=(https://dl.winehq.org/wine/source/${_pkgfolder}/wine-$_pkgbasever.tar.xz{,.sign}
         30-win32-aliases.conf)
 sha512sums=('5326d500a2c5884e3ff004557a0360f8ff5c29ae42fdc256a13012ab746371dd403c87715efa00e43bf181fbc6d0647372e3e40944e5673b069f6e4f4cc700b5'
             '817899e53df7d4fc86e34c2baf3ead6c2788fbacb95aeae6ee006e97ca098947aac41a01fe581322e45beca833658047fd9e538faf20c2433cc789d26e367765'
