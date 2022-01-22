@@ -1,0 +1,13 @@
+pkgbase = pmis
+	pkgdesc = Companion CLI tool for paste.misterio.me
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://paste.misterio.me
+	arch = any
+	license = GPL3
+	makedepends = rust
+	source = pmis-1.0.0.tar.gz::https://git.sr.ht/~misterio/pmis/archive/1.0.0.tar.gz
+	sha256sums = cebc2dcd635fbff5c02015b318165cdff78790131311f277369e87faf9c08037
+
+pkgname = pmis
+
