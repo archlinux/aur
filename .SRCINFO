@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version)
-	pkgver = 0.3.40.126.g1e5f499ed
+	pkgver = 0.3.43.153.g4f57f3cda
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -26,16 +26,20 @@ pkgbase = pipewire-git
 	makedepends = libfdk-aac
 	makedepends = libcamera-git
 	makedepends = vulkan-headers
+	makedepends = vulkan-icd-loader
 	makedepends = avahi
 	makedepends = webrtc-audio-processing
 	makedepends = python-docutils
 	makedepends = lilv
+	makedepends = roc-toolkit-git
+	makedepends = libx11
+	makedepends = libcanberra
+	makedepends = chrpath
 	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git
 	sha256sums = SKIP
 
 pkgname = pipewire-git
 	install = pipewire-git.install
-	depends = alsa-card-profiles-git=0.3.40.126.g1e5f499ed
 	depends = rtkit
 	depends = libasound.so
 	depends = libbluetooth.so
@@ -49,12 +53,11 @@ pkgname = pipewire-git
 	depends = libsystemd.so
 	depends = libudev.so
 	depends = libvulkan.so
-	depends = libcamera-git
 	depends = libwebrtc_audio_processing.so
 	depends = libusb-1.0.so
-	depends = libavahi-common.so
-	depends = libavahi-client.so
 	depends = liblilv-0.so
+	depends = libcanberra.so
+	depends = libx11
 	optdepends = pipewire-docs-git: Documentation
 	optdepends = pipewire-jack-git: JACK support
 	optdepends = pipewire-alsa-git: ALSA support
@@ -64,18 +67,20 @@ pkgname = pipewire-git
 	optdepends = gst-plugin-pipewire-git: gstreamer support
 	optdepends = pipewire-zeroconf-git: Zeroconf support
 	optdepends = pipewire-v4l2-git: V4L2 interceptor
-	provides = pipewire=0.3.40.126.g1e5f499ed
+	optdepends = pipewire-roc-git: ROC support
+	optdepends = pipewire-libcamera-git: libcamera support
+	provides = pipewire=0.3.43.153.g4f57f3cda
 	provides = libpipewire-0.3.so
 	conflicts = pipewire
-	backup = usr/share/pipewire/pipewire.conf
-	backup = usr/share/pipewire/pipewire-pulse.conf
 	backup = usr/share/pipewire/client.conf
 	backup = usr/share/pipewire/client-rt.conf
+	backup = usr/share/pipewire/pipewire.conf
+	backup = usr/share/pipewire/minimal.conf
 
 pkgname = pipewire-docs-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - documentation (GIT Version)
 	arch = any
-	provides = pipewire-docs=0.3.40.126.g1e5f499ed
+	provides = pipewire-docs=0.3.43.153.g4f57f3cda
 	conflicts = pipewire-docs
 
 pkgname = pipewire-jack-git
@@ -84,23 +89,27 @@ pkgname = pipewire-jack-git
 	license = GPL2
 	depends = pipewire-session-manager
 	depends = libpipewire-0.3.so
-	provides = pipewire-jack=0.3.40.126.g1e5f499ed
-	provides = jack2
+	optdepends = jack-example-tools: for official JACK example-clients and tools
+	provides = pipewire-jack=0.3.43.153.g4f57f3cda
 	provides = jack
 	provides = libjack.so
 	provides = libjackserver.so
 	provides = libjacknet.so
 	conflicts = pipewire-jack
+	conflicts = jack
 	conflicts = jack2
 	backup = usr/share/pipewire/jack.conf
 
 pkgname = pipewire-alsa-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - ALSA configuration (GIT version)
-	arch = any
+	depends = pipewire-git=0.3.43.153.g4f57f3cda
+	depends = libpipewire-0.3.so
 	depends = pipewire-session-manager
-	provides = pipewire-alsa=0.3.40.126.g1e5f499ed
+	provides = pipewire-alsa=0.3.43.153.g4f57f3cda
 	provides = pulseaudio-alsa
 	conflicts = pipewire-alsa
+	backup = usr/share/alsa/alsa.conf.d/50-pipewire.conf
+	backup = usr/share/alsa/alsa.conf.d/99-pipewire-default.conf
 
 pkgname = pipewire-pulse-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - PulseAudio replacement (GIT version)
@@ -110,40 +119,53 @@ pkgname = pipewire-pulse-git
 	depends = libpulse.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
-	provides = pipewire-pulse=0.3.40.126.g1e5f499ed
+	provides = pipewire-pulse=0.3.43.153.g4f57f3cda
 	provides = pulseaudio
 	provides = pulseaudio-bluetooth
+	provides = alsa-card-profiles
 	conflicts = pipewire-pulse
 	conflicts = pulseaudio
 	conflicts = pulseaudio-bluetooth
+	conflicts = alsa-card-profiles
+	backup = usr/share/pipewire/pipewire-pulse.conf
 
 pkgname = pipewire-ffmpeg-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - FFmpeg SPA plugin (GIT version)
-	depends = pipewire-git=0.3.40.126.g1e5f499ed
+	depends = pipewire-git=0.3.43.153.g4f57f3cda
 	depends = libpipewire-0.3.so
 	depends = ffmpeg
-	provides = pipewire-ffmpeg=0.3.40.126.g1e5f499ed
+	provides = pipewire-ffmpeg=0.3.43.153.g4f57f3cda
 	conflicts = pipewire-ffmpeg
-
-pkgname = alsa-card-profiles-git
-	pkgdesc = Low-latency audio/video router and processor (GIT version) - ALSA card profiles (GIT version)
-	arch = any
-	license = LGPL
-	provides = alsa-card-profiles=0.3.40.126.g1e5f499ed
-	conflicts = alsa-card-profiles
 
 pkgname = pipewire-zeroconf-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - Zeroconf support (GIT version)
-	depends = pipewire-git=0.3.40.126.g1e5f499ed
+	depends = pipewire-git=0.3.43.153.g4f57f3cda
 	depends = libpipewire-0.3.so
 	depends = libavahi-client.so
 	depends = libavahi-common.so
-	provides = pipewire-zeroconf=0.3.40.126.g1e5f499ed
+	provides = pipewire-zeroconf=0.3.43.153.g4f57f3cda
 	conflicts = pipewire-zeroconf
 
 pkgname = pipewire-v4l2-git
 	pkgdesc = Low-latency audio/video router and processor (GIT version) - V4L2 interceptor (GIT version)
+	depends = pipewire-git=0.3.43.153.g4f57f3cda
 	depends = pipewire-session-manager
 	depends = libpipewire-0.3.so
-	provides = pipewire-v4l2=0.3.40.126.g1e5f499ed
+	provides = pipewire-v4l2=0.3.43.153.g4f57f3cda
 	conflicts = pipewire-v4l2
+
+pkgname = pipewire-roc-git
+	pkgdesc = Low-latency audio/video router and processor (GIT version) - ROC support (GIT version)
+	depends = pipewire-git=0.3.43.153.g4f57f3cda
+	depends = libpipewire-0.3.so
+	depends = roc-toolkit-git
+	provides = pipewire-roc=0.3.43.153.g4f57f3cda
+	conflicts = pipewire-roc
+
+pkgname = pipewire-libcamera-git
+	pkgdesc = Low-latency audio/video router and processor (GIT version) - libcamera support (GIT version)
+	depends = pipewire-git=0.3.43.153.g4f57f3cda
+	depends = libpipewire-0.3.so
+	depends = libcamera-git
+	provides = pipewire-libcamera=0.3.43.153.g4f57f3cda
+	conflicts = pipewire-libcamera
