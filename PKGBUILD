@@ -66,10 +66,6 @@ conflicts=(
 
 prepare() {
 
-  # https://bugs.winehq.org/show_bug.cgi?id=43530
-  export CFLAGS="${CFLAGS/-fno-plt/}"
-  export LDFLAGS="${LDFLAGS/,-z,now/}"
-
   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i wine-$_pkgbasever/configure*
 
   # Get rid of old build dirs
