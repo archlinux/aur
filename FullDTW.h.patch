@@ -1,0 +1,11 @@
+--- src/sonic-lineup-1.1/match/src/FullDTW.h	2022-01-22 11:15:25.298078377 +0100
++++ src/sonic-lineup-1.1/match/src/FullDTW.h.patched	2022-01-22 11:15:15.491541875 +0100
+@@ -83,7 +83,7 @@
+      * against the best-matching subsequence of s1; otherwise it is
+      * against the whole of s1.
+      */
+-    std::vector<size_t> align(const featureseq_t &s1,
++    std::vector<std::size_t> align(const featureseq_t &s1,
+                               const featureseq_t &s2);
+ 
+ private:

@@ -3,7 +3,7 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 pkgname=sonic-lineup
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sonic Lineup is a free, open-source application for Windows, Linux, and Mac, designed for rapid visualisation of multiple audio files containing versions of the same source material"
 arch=('x86_64')
 url="https://www.sonicvisualiser.org/sonic-lineup/"
@@ -43,6 +43,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   export INSTALL_ROOT="${pkgdir}/"
   ./configure --prefix=/usr
+  patch match/src/FullDTW.h ../../FullDTW.h.patch
   make
 }
 
