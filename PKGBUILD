@@ -2,7 +2,7 @@
 
 pkgname=corectrl
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Core control application"
 url="https://gitlab.com/corectrl/corectrl"
 license=('GPL3')
