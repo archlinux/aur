@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=youki
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="A container runtime written in Rust"
 arch=('x86_64')
@@ -10,14 +10,14 @@ license=('Apache')
 depends=('gcc-libs' 'libseccomp' 'dbus' 'docker')
 makedepends=('rust' 'git' 'dbus-glib' 'systemd')
 options=('!lto')
-_commit='91b76326029f18015cb865c0ce13871332a053ac'
+_commit='0f662dd9794f54f42ec26ed569efd3ba016555b9'
 source=("$pkgname::git+https://github.com/containers/youki.git#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {
   cd youki
 
-  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
