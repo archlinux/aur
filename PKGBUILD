@@ -1,14 +1,14 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=archipelago-git
 _pkgname=archipelago
-pkgver=v4.0.0.rc1.r3.576eddc3
+pkgver=v4.0.0.rc8.r13.d6ddb72
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
 url="https://github.com/npezza93/archipelago"
 license=('MIT')
-depends=('nodejs')
-makedepends=('git' 'npm' 'yarn') # 'bzr', 'git', 'mercurial' or 'subversion'
+depends=('glib2' 'libx11' 'python')
+makedepends=('git' 'npm' 'yarn' 'libx11' 'libxkbfile' 'openssl' 'nodejs-lts-gallium')
 provides=("archipelago")
 conflicts=("archipelago")
 replaces=('archipelago')
