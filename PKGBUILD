@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r10369
+pkgver=r10398
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
@@ -52,9 +52,9 @@ prepare() {
 
 build() {
   cd $pkgname
-  mkdir build && cd build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  cmake --build . --target install
+  cmake -S . -B build 
+  cmake build -DCMAKE_BUILD_TYPE=Release
+  cmake --build build -j$(nproc) --target simutrans-extended
 }
 
 package() {
