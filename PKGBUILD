@@ -20,7 +20,7 @@ source=("https://github.com/Clipteam/clipcc-desktop/releases/download/${pkgver//
         "${_pkgname}.xml")
 noextract=("clipcc-3.1.0-beta3-win-x64.exe")
 sha256sums=('4661045ecb362021cafc31648ff5ae50077df93a46be20712ab9b51ae8487140'
-            '6bca55869e1ab7452a170289a36eb977d4270502580c49faa440dd024bfef415'
+            'f7009e021b5eecf5897938f3f559829e596ca40fef79f8ce10189a1f1e462802'
             'c293e53da40fa54dae3ec2598e89b3bb2f7159f57a37e739cbcb70e8663739ed'
             '3afe472ea0ceffe52834abed6d838f88892c22bc15ef421e01a8829fc8887be0'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf')
