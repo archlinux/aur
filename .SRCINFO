@@ -10,7 +10,6 @@ pkgbase = boron
 	makedepends = zlib
 	options = !makeflags
 	source = https://sourceforge.net/projects/urlan/files/Boron/boron-2.0.6.tar.gz
-	md5sums = 37aea0827e5f4e927c1ae45441b746f5
+	sha256sums = f130e094780d037cc6dfe50d271e6b13cc81ec41cd9c90d81ac16c78d05f563e
 
 pkgname = boron
-

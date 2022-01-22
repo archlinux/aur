@@ -1,4 +1,4 @@
-# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 
 pkgname=boron
@@ -12,7 +12,7 @@ groups=('lib')
 makedepends=('zlib')
 options=('!makeflags')
 source=("https://sourceforge.net/projects/urlan/files/Boron/$pkgname-$pkgver.tar.gz")
-md5sums=('37aea0827e5f4e927c1ae45441b746f5')
+sha256sums=('f130e094780d037cc6dfe50d271e6b13cc81ec41cd9c90d81ac16c78d05f563e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
