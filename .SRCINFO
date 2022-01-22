@@ -1,6 +1,6 @@
 pkgbase = linux-amd-znver2
 	pkgver = 5.16.v.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -20,7 +20,7 @@ pkgbase = linux-amd-znver2
 	source = linux.install
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20211114/more-uarches-for-kernel-5.15+.patch
 	sha256sums = SKIP
-	sha256sums = 6d74e4b80aa9ffe450234944fd10ba113b294c4e289315ce383bc2ce24be4359
+	sha256sums = 88c26e4aa4dcec52048acd779a13bb1a3b1c81062810b899291b8d8a82226f2f
 	sha256sums = 60c6ba602443e94a9eba3aeee9d194027d69bffaa428c6d055348ebf03681b5c
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = 380bcf40cc8396e97bd1d7f2577ab2ace51885858d3f155b1fb2dd5469efd00d
