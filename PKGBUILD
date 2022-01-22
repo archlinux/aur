@@ -2,44 +2,43 @@
 # Contributor: Philipp Claßen <philipp.classen@posteo.de>
 
 pkgname=lib32-benchmark
-pkgver=1.5.0
+pkgver=1.6.1
 pkgrel=1
-pkgdesc="A microbenchmark support library, by Google (32-bit)"
+pkgdesc="A microbenchmark support library (32-bit)"
 arch=('x86_64')
 url="https://github.com/google/benchmark"
 license=('Apache')
 depends=('lib32-gcc-libs')
 makedepends=('cmake' 'gcc-multilib')
 
-source=("https://github.com/google/benchmark/archive/v${pkgver}.tar.gz")
-sha256sums=('3c6a165b6ecc948967a1ead710d4a181d7b0fbcaa183ef7ea84604994966221a')
+source=("https://github.com/google/benchmark/archive/v$pkgver/benchmark-$pkgver.tar.gz")
+sha256sums=('6132883bc8c9b0df5375b16ab520fac1a85dc9e4cf5be59480448ece74b278d4')
 
 prepare() {
-  cd "${srcdir}/benchmark-${pkgver}"
-
-  mkdir -p build && cd build
-
-  export CFLAGS="-m32 ${CFLAGS}"
-  export CXXFLAGS="-m32 ${CXXFLAGS}"
-  export LDFLAGS="-m32 ${LDFLAGS}"
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-           -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_INSTALL_LIBDIR=lib32 \
-           -DBUILD_SHARED_LIBS=ON \
-           -DBENCHMARK_ENABLE_LTO=ON \
-           -DBENCHMARK_ENABLE_INSTALL=ON \
-           -DBENCHMARK_ENABLE_GTEST_TESTS=OFF
+  cd "$srcdir/benchmark-$pkgver"
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/benchmark-${pkgver}/build"
+  cd "$srcdir/benchmark-$pkgver/build"
+
+  cmake \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -m32 -DNDEBUG" \
+    -DCMAKE_C_FLAGS="${CFLAGS} -m32 -DNDEBUG" \
+    -DCMAKE_LD_FLAGS="${LDFLAGS} -m32" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBENCHMARK_ENABLE_LTO=ON \
+    -DBENCHMARK_ENABLE_GTEST_TESTS=OFF \
+    ..
+
   make
 }
 
 package() {
-  cd "${srcdir}/benchmark-${pkgver}/build"
+  cd "$srcdir/benchmark-$pkgver/build"
   make DESTDIR="$pkgdir/" install
   rm -rf "$pkgdir"/usr/{include,lib,share}
 }

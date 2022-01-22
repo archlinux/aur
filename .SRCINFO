@@ -1,6 +1,6 @@
 pkgbase = lib32-benchmark
-	pkgdesc = A microbenchmark support library, by Google (32-bit)
-	pkgver = 1.5.0
+	pkgdesc = A microbenchmark support library (32-bit)
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/google/benchmark
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lib32-benchmark
 	makedepends = cmake
 	makedepends = gcc-multilib
 	depends = lib32-gcc-libs
-	source = https://github.com/google/benchmark/archive/v1.5.0.tar.gz
-	sha256sums = 3c6a165b6ecc948967a1ead710d4a181d7b0fbcaa183ef7ea84604994966221a
+	source = https://github.com/google/benchmark/archive/v1.6.1/benchmark-1.6.1.tar.gz
+	sha256sums = 6132883bc8c9b0df5375b16ab520fac1a85dc9e4cf5be59480448ece74b278d4
 
 pkgname = lib32-benchmark
 
