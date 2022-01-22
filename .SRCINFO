@@ -1,9 +1,10 @@
 pkgbase = clight-gui-git
 	pkgdesc = Qt GUI for Clight
 	pkgver = r90.f601899
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nullobsi/clight-gui
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake

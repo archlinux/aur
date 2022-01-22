@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=clight-gui-git
 pkgver=r90.f601899
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt GUI for Clight"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/nullobsi/clight-gui"
 license=('GPL3')
 depends=('clight' 'qt5-charts')
@@ -27,11 +27,11 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DGENERATE_TRANSLATIONS=ON \
     -Wno-dev
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
 }
