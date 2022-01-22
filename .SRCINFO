@@ -4,7 +4,6 @@ pkgbase = clight
 	pkgrel = 2
 	url = https://github.com/FedeDP/Clight
 	install = clight.install
-	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL
