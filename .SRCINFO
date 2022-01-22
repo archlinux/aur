@@ -1,6 +1,6 @@
 pkgbase = pyxis-fs-client
 	pkgdesc = Pyxis network filesystem- client code
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/chordtoll/pyxis-fs-client
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = pyxis-fs-client
 	makedepends = cargo
 	depends = fuse3
 	depends = gcc-libs
-	source = pyxis-fs-client-0.1.0.tar.gz::https://static.crates.io/crates/pyxis-fs-client/pyxis-fs-client-0.1.0.crate
-	sha256sums = 1c8ebc5748393a947ea8ba9c96438cb6f131be3b1cb7b19f82a625d09cc1e12f
+	source = pyxis-fs-client-1.0.0.tar.gz::https://static.crates.io/crates/pyxis-fs-client/pyxis-fs-client-1.0.0.crate
+	sha256sums = 552db0247e4e36e837639975ea2f2b61606540b7621af8954554e2906d816b35
 
 pkgname = pyxis-fs-client

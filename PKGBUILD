@@ -1,6 +1,6 @@
 # Maintainer: chordtoll <arch@chordtoll.com>
 pkgname=pyxis-fs-client
-pkgver=0.1.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Pyxis network filesystem- client code"
 license=("MIT")
@@ -9,7 +9,7 @@ depends=("fuse3" "gcc-libs")
 makedepends=("cargo")
 url="https://github.com/chordtoll/pyxis-fs-client"
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('1c8ebc5748393a947ea8ba9c96438cb6f131be3b1cb7b19f82a625d09cc1e12f')
+sha256sums=('552db0247e4e36e837639975ea2f2b61606540b7621af8954554e2906d816b35')
 
 prepare() {
     cd "$pkgname-$pkgver"
