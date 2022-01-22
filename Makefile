@@ -14,7 +14,8 @@ all: $(PKGFILE)
 .PHONY: clean
 clean:
 	git clean -fdX
-	sudo pacman -Rnsu boost cmake
+	{ pacman -Qi boost >/dev/null 2>&1 && sudo pacman -Rnsu boost; } || true
+	{ pacman -Qi cmake >/dev/null 2>&1 && sudo pacman -Rnsu cmake; } || true
 
 #-------------------------------------------------------------------------------
 # FILES
