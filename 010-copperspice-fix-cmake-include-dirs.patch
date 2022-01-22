@@ -1,6 +1,6 @@
 --- a/src/core/CMakeLists.txt
 +++ b/src/core/CMakeLists.txt
-@@ -156,8 +156,8 @@ endif()
+@@ -154,8 +154,8 @@ target_sources(CsCore
  
  target_include_directories(CsCore
     PUBLIC
@@ -10,10 +10,10 @@
 +   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/QtCore>
  )
  
- set_target_properties(CsCore
+ if(MSVC)
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -175,7 +175,7 @@ target_sources(CsGui
+@@ -179,7 +179,7 @@ target_sources(CsGui
  
  target_include_directories(CsGui
     PUBLIC

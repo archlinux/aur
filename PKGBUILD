@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=copperspice-git
-pkgver=1.7.1.r7.g32a9749a2
+pkgver=1.7.3.r0.gcef05d043
 pkgrel=1
 pkgdesc='Libraries for developing cross platform software applications in C++ (git version)'
 arch=('x86_64')
@@ -18,10 +18,11 @@ makedepends=('git' 'cmake' 'alsa-lib' 'mariadb-libs' 'postgresql' 'postgresql-li
              'libxrender' 'libxml2')
 provides=('copperspice')
 conflicts=('copperspice')
+options=('!lto')
 source=('git+https://github.com/copperspice/copperspice.git'
         '010-copperspice-fix-cmake-include-dirs.patch')
 sha256sums=('SKIP'
-            'f1f5f5b18d93173cdd78c9fac944a31feb7280efcca3d3533cbdee90266249fa')
+            'ad8764d825950dcb98a1088a2f778d449c39e33a3c2edf037a45c30c341045d4')
 
 prepare() {
     patch -d copperspice -Np1 -i "${srcdir}/010-copperspice-fix-cmake-include-dirs.patch"
