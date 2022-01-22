@@ -34,7 +34,7 @@ package()
 
     ## Create an executable.
     echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release -p \"/usr/share/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
+dotnet run --no-launch-profile --no-build -c Release --project \"/usr/share/${_pkgname}/NBXplorer/NBXplorer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
