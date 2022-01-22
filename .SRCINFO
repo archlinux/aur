@@ -1,6 +1,6 @@
 pkgbase = cantera-git
 	pkgdesc = suite of tools for kinetics, thermodynamics, and transport processes
-	pkgver = 2.5.1.r0.gb0bace782
+	pkgver = 2.5.1.r1074.g80e93621f
 	pkgrel = 1
 	url = https://cantera.org/
 	install = cantera-git.install
@@ -11,20 +11,19 @@ pkgbase = cantera-git
 	checkdepends = gtest
 	checkdepends = gmock
 	checkdepends = python-ruamel-yaml
+	checkdepends = python-pytest
 	makedepends = scons
 	makedepends = git
 	makedepends = gcc
-	makedepends = fmt
 	makedepends = doxygen
-	depends = eigen
+	makedepends = cython
 	depends = sundials
-	depends = boost
-	depends = tcsh
-	depends = cython
 	depends = python-numpy
+	depends = openmp
+	depends = yaml-cpp
+	depends = fmt
 	provides = libcantera_shared.so=2-64
 	source = git+https://github.com/Cantera/cantera.git
 	md5sums = SKIP
 
 pkgname = cantera-git
-
