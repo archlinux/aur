@@ -17,6 +17,12 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Fixed
 
+## 3.36.1
+
+### Changed
+
+- `src exec` now allows the `files:` property. (internal use only)
+
 ## 3.36.0
 
 _This version is the same as 3.35.3, just retagged for the upcoming 3.36.0 release of Sourcegraph._
