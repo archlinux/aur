@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-j5945dw-cups
+	pkgdesc = LPR driver for Brother MFC-J5945DW printer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj5945dw_us_eu_as
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	depends = cups
+	depends = ghostscript
+	depends = psutils
+	optdepends = brscan4
+	source = https://download.brother.com/welcome/dlf103902/mfcj5945dwpdrv-1.0.0-0.i386.deb
+	md5sums = 1c4e1872cc8116bde49f15b5dd7861d0
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-j5945dw-cups
