@@ -4,7 +4,7 @@
 
 pkgname=qt5ct-kde
 _pkgname=qt5ct
-pkgver=1.3
+pkgver=1.5
 pkgrel=1
 pkgdesc='Qt5 Configuration Utility, patched to work correctly with KDE applications'
 arch=(x86_64)
@@ -16,8 +16,8 @@ conflicts=(qt5ct)
 provides=(qt5ct)
 source=(https://downloads.sourceforge.net/project/$_pkgname/$_pkgname-$pkgver.tar.bz2
         qt5ct-shenanigans.patch)
-sha256sums=('dd443b14e590aff76a16e1316d56e688882e3248c470df4f71bc952569f3c3bc'
-            'bdac1e0bf247e2ae054f3ad5f8069b41f84ac60740a1afa9e9433908c71ae0f4')
+sha256sums=('d63d0ce16e02427207d86531f70a71c5b9c850044dd5b2dcb2285531f416e490'
+            '3e9d5ed24366a674fa5ab2df52d1e01fb956598b27ffb4e8e2d06ba7bb355aa0')
 
 prepare() {
   patch -d $_pkgname-$pkgver -p1 < qt5ct-shenanigans.patch # The magic

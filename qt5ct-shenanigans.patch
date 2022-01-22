@@ -1,6 +1,6 @@
 Index: qt5ct/CMakeLists.txt
 ===================================================================
---- qt5ct/CMakeLists.txt	(revision 600)
+--- qt5ct/CMakeLists.txt	(revision 622)
 +++ qt5ct/CMakeLists.txt	(working copy)
 @@ -24,8 +24,11 @@
  
@@ -28,7 +28,7 @@ Index: qt5ct/CMakeLists.txt
  message(STATUS "Generating translations ...")
 Index: qt5ct/src/qt5ct/appearancepage.cpp
 ===================================================================
---- qt5ct/src/qt5ct/appearancepage.cpp	(revision 600)
+--- qt5ct/src/qt5ct/appearancepage.cpp	(revision 622)
 +++ qt5ct/src/qt5ct/appearancepage.cpp	(working copy)
 @@ -86,6 +86,8 @@
  #else
@@ -50,7 +50,7 @@ Index: qt5ct/src/qt5ct/appearancepage.cpp
      {
 Index: qt5ct/src/qt5ct/qt5ct.cpp
 ===================================================================
---- qt5ct/src/qt5ct/qt5ct.cpp	(revision 600)
+--- qt5ct/src/qt5ct/qt5ct.cpp	(revision 622)
 +++ qt5ct/src/qt5ct/qt5ct.cpp	(working copy)
 @@ -111,6 +111,7 @@
      for(const QString &p : QStandardPaths::standardLocations(QStandardPaths::GenericDataLocation))
@@ -62,24 +62,24 @@ Index: qt5ct/src/qt5ct/qt5ct.cpp
      paths.removeDuplicates();
 Index: qt5ct/src/qt5ct-qtplugin/CMakeLists.txt
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(revision 600)
+--- qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(revision 622)
 +++ qt5ct/src/qt5ct-qtplugin/CMakeLists.txt	(working copy)
 @@ -10,5 +10,5 @@
  
  add_library(qt5ct-qtplugin MODULE ${app_SRCS})
  set_target_properties(qt5ct-qtplugin PROPERTIES OUTPUT_NAME qt5ct)
 -target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt5::ThemeSupportPrivate)
-+target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt::QuickControls2 Qt5::ThemeSupportPrivate KF5::ConfigCore KF5::ConfigWidgets KF5::IconThemes)
++target_link_libraries(qt5ct-qtplugin PRIVATE Qt5::Widgets Qt5::GuiPrivate Qt5::DBus Qt5::QuickControls2 Qt5::ThemeSupportPrivate KF5::ConfigCore KF5::ConfigWidgets KF5::IconThemes)
  install(TARGETS qt5ct-qtplugin DESTINATION ${PLUGINDIR}/platformthemes)
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(revision 600)
+--- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(revision 622)
 +++ qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp	(working copy)
 @@ -45,6 +45,7 @@
  #endif
  #include <QFile>
  #include <QFileSystemWatcher>
-+#include <QtQuickControls2/QQuickStyle>
++#include <QQuickStyle>
  
  #include <qt5ct/qt5ct.h>
  #include "qt5ctplatformtheme.h"
@@ -106,7 +106,15 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
      }
      qCDebug(lqt5ct) << "using qt5ct plugin";
  #ifdef QT_WIDGETS_LIB
-@@ -192,6 +202,11 @@
+@@ -81,6 +91,7 @@
+     if(!QStyleFactory::keys().contains("qt5ct-style"))
+         qCCritical(lqt5ct) << "unable to find qt5ct proxy style";
+ #endif
++	QCoreApplication::instance()->installEventFilter(this);
+ }
+ 
+ Qt5CTPlatformTheme::~Qt5CTPlatformTheme()
+@@ -195,6 +206,11 @@
  }
  #endif
  
@@ -117,26 +125,60 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.cpp
 +
  void Qt5CTPlatformTheme::applySettings()
  {
-     if(!QGuiApplication::desktopSettingsAware())
-@@ -306,7 +321,12 @@
+     if(!QGuiApplication::desktopSettingsAware() || m_isIgnored)
+@@ -313,7 +329,15 @@
      if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
      {
          schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
 -        m_palette = new QPalette(loadColorScheme(schemePath));
-+        if(schemePath.endsWith(".colors")) {
++        if(schemePath.endsWith(".colors"))
++        {
 +            m_palette = new QPalette(KColorScheme::createApplicationPalette(KSharedConfig::openConfig(schemePath)));
 +            qApp->setProperty("KDE_COLOR_SCHEME_PATH", schemePath);
-+        } else {
++        }
++        else
++        {
 +            m_palette = new QPalette(loadColorScheme(schemePath));
 +        }
      }
      m_iconTheme = settings.value("icon_theme").toString();
      //load dialogs
+@@ -480,3 +504,30 @@
+ 
+     return customPalette;
+ }
++
++bool Qt5CTPlatformTheme::eventFilter(QObject *obj, QEvent *e)
++{
++    if(obj == qApp && e->type() == QEvent::DynamicPropertyChange)
++    {
++        QDynamicPropertyChangeEvent *ee = static_cast<QDynamicPropertyChangeEvent*>(e);
++        if(ee->propertyName() == "KDE_COLOR_SCHEME_PATH")
++        {
++            if(qApp->property("KDE_COLOR_SCHEME_PATH").isNull())
++            {
++                QSettings settings(Qt5CT::configFile(), QSettings::IniFormat);
++                settings.beginGroup("Appearance");
++                QString schemePath = settings.value("color_scheme_path").toString();
++                if(!schemePath.isEmpty() && settings.value("custom_palette", false).toBool())
++                {
++                    schemePath = Qt5CT::resolvePath(schemePath); //replace environment variables
++                    if(schemePath.endsWith(".colors"))
++                    {
++                        qApp->setProperty("KDE_COLOR_SCHEME_PATH", schemePath);
++                        applySettings();
++                    }
++                }
++            }
++        }
++    }
++    return QObject::eventFilter(obj, e);
++}
 Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
 ===================================================================
---- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(revision 600)
+--- qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(revision 622)
 +++ qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h	(working copy)
-@@ -91,7 +91,7 @@
+@@ -91,10 +91,13 @@
      //virtual QPixmap fileIconPixmap(const QFileInfo &fileInfo, const QSizeF &size,
      //                               QPlatformTheme::IconOptions iconOptions = 0) const;
  
@@ -145,3 +187,9 @@ Index: qt5ct/src/qt5ct-qtplugin/qt5ctplatformtheme.h
      //virtual QList<QKeySequence> keyBindings(QKeySequence::StandardKey key) const;
      //virtual QString standardButtonText(int button) const;
  
++protected:
++	bool eventFilter(QObject *obj, QEvent *e) override;
++
+ private slots:
+     void applySettings();
+ #ifdef QT_WIDGETS_LIB
