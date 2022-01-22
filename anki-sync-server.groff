@@ -59,22 +59,22 @@ from \fI\*[server-dir]/plugins\fR to the relevant directory.
 \fIAnki 2.1.28 (and up):\fR \*[anki-2.1.28]
 .EX
     ln -s  \\
-        \*[anki-plugins]/anki2.1.28/\*[server] \\
-        \*[anki-2.1.28]/\*[server]
+      \*[anki-plugins]/anki2.1.28/\*[server] \\
+      \*[anki-2.1.28]/\*[server]
 .EE
 
 \fIAnki 2.1:\fR \*[anki-2.1]
 .EX
     ln -s  \\
-        \*[anki-plugins]/anki2.1/\*[server] \\
-        \*[anki-2.1]/\*[server]
+      \*[anki-plugins]/anki2.1/\*[server] \\
+      \*[anki-2.1]/\*[server]
 .EE
 
 \fIAnki 2.0:\fR \*[anki-2]
 .EX
     ln -s  \\
-        \*[anki-plugins]/anki2.0/\*[server].py \\
-        \*[anki-2]/\*[server].py
+      \*[anki-plugins]/anki2.0/\*[server].py \\
+      \*[anki-2]/\*[server].py
 .EE
 
 or your OS equivalent.
