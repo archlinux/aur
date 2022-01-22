@@ -2,7 +2,7 @@
 
 pkgname=graphite-gtk-theme
 _pkgname='Graphite-gtk-theme'
-_pkgver=2021-11-26
+_pkgver=2022-01-22
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc='Graphite gtk theme'
@@ -16,7 +16,7 @@ optdepends=("gtk-engine-murrine")
 options=(!strip)
 makedepends=("sassc")
 source=("https://github.com/vinceliuice/Graphite-gtk-theme/archive/refs/tags/${_pkgver}.zip")
-sha256sums=('c194bc114a12ee546ea926d7760864309b09818f7b51b064c1add9c55009b1ce')
+sha256sums=('22d8a230358e61466977b1f7be9b440ed8d61c06d55d326ec7538ad9cc0fb714')
 
 
 package() {
