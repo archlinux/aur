@@ -21,7 +21,7 @@ sha256sums=('723dd535a7c3d24ff20f8569f269f712f4086f7e25092328e1e1ec96b8be21f7'
             '2f29ea2883a8223d082518031ca567ae85285a06b0e5f7b793cdcb0ea359f5eb'
             '8e23107ac2c29d029c9b290a6ba32db34ef8d14291ec87df5003c52d034ef250')
 package() {
-  install -Dm 644 "${srcdir}/environment" "${pkgdir}/etc/${_pkgname}"
+  install -Dm 644 "${srcdir}/environment" "${pkgdir}/etc/${_pkgname}/environment"
   install -Dm 644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm 755 "${srcdir}/livepeer-linux-amd64/livepeer" "${pkgdir}/usr/bin/livepeer"
   install -Dm 755 "${srcdir}/livepeer-linux-amd64/livepeer_cli" "${pkgdir}/usr/bin/livepeer_cli"
