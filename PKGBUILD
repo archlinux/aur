@@ -9,6 +9,7 @@ url="https://github.com/input-output-hk/cardano-node"
 license=("Apache")
 provides=("cardano-node")
 conflicts=("cardano-node")
+install=cardano-node-bin.install
 source=("https://hydra.iohk.io/build/11955068/download/1/cardano-node-\
 ${pkgver}-linux.tar.gz"
   "cardano-node.sysusers"

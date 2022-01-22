@@ -1,6 +1,8 @@
 post_remove() {
 	cat <<-EOF
+
 NOTE: the "cardano" user, and any files in its home directory, likely still
 remain on disk! If you wish to clean this up, run "userdel -r cardano".
+
 EOF
 }
