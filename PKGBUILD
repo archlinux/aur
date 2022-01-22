@@ -2,13 +2,13 @@
 # Contributor: Federico Di Pierro <nierro92@gmail.com>
 pkgname=clightd
 pkgver=5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Bus interface to change screen brightness and capture frames from webcam."
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/FedeDP/Clightd"
 license=('GPL')
-depends=('systemd-libs>=237' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit'
-         'ddcutil>=0.9.5' 'libmodule>=5.0.0' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
+depends=('systemd-libs' 'linux-api-headers' 'libx11' 'libxrandr' 'libxext' 'polkit'
+         'ddcutil' 'libmodule' 'libjpeg-turbo' 'libusb' 'libdrm' 'wayland')
 makedepends=('git' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('a2153db7a4ed49f8aaab10b4e72c1aba8cb46c773652017a9eb6fe12ad7496f3')
@@ -25,13 +25,9 @@ build() {
     -DENABLE_SCREEN=1 \
     -DENABLE_YOCTOLIGHT=1 \
     -Wno-dev
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
-
-  install -d "$pkgdir/usr/lib/systemd/system"
-  mv "$pkgdir/etc/systemd/system/$pkgname.service" "$pkgdir/usr/lib/systemd/system"
-  rm -rf "$pkgdir/etc/systemd"
+  DESTDIR="$pkgdir" cmake --install build
 }
