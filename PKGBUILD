@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.15.12.arch1
+pkgver=5.16.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -95,7 +95,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.15+.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v5.15-r1.patch
+    0009-prjc_v5.16-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -113,9 +113,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '56463bf70745dfd3bfd35128aa576df2cbe6ffcd7a9fb16a11ce4e7b9809ed3aacfe3d36fd9665872b40cd9c8878155c46f416988be33ac31289fe9620e13706'
-            '1abcd3f10941b6e342cabb5fcd3d2a097ceb2451acad09336d3b191ace0bccca23202d87cc916fc0bacaf977e96b26a85e2b6729a08117c4cbe40a470dbf6eaa'
-            'a77ddd7c85509282682c1554f31f3fd842cf259bf843a5c8105da1650d6ad94f9c612c2b97a52b638ea3e96acda6f5fb64336315793c51d663031b339a54fcb3')
+            '1d637eae88d6d2bfd6ca4b0af649f6f1d19f4be5c7cd0ad82d70eb16f08caa581da922af723285d0231595e04aa3f835370d7c8acdf759f53bb21cfd2c754d63'
+            '5267d3eb96e1d03850cbc2ea47d33f35f3cc15c1a009bbb13239ddb6a1e25cbfc8e30fd8ae51b1747ec140b52d26e3e29fa2fe71ab694afa20cb9ba9f232f645'
+            '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -239,11 +239,11 @@ _package-headers() {
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
 
-    # add objtool for external module building and enabled VALIDATION_STACK option
+    # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-    # add xfs and shmem for aufs building
-    mkdir -p "$builddir"/{fs/xfs,mm}
+    # required when DEBUG_INFO_BTF_MODULES is enabled
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
     msg2 "Installing headers..."
     cp -t "$builddir" -a include

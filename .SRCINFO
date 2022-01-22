@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.15.12.arch1
+	pkgver = 5.16.2.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.15.12-arch1
+	url = https://github.com/archlinux/linux/commits/v5.16.2-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -20,10 +20,10 @@ pkgbase = linux-pds
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v5.15.12-arch1
+	source = linux-archlinux::git+https://github.com/archlinux/linux.git?signed#tag=v5.16.2-arch1
 	source = git+https://github.com/graysky2/kernel_compiler_patch.git
 	source = config
-	source = 0009-prjc_v5.15-r1.patch
+	source = 0009-prjc_v5.16-r0.patch
 	source = 0005-glitched-pds.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -31,9 +31,9 @@ pkgbase = linux-pds
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 56463bf70745dfd3bfd35128aa576df2cbe6ffcd7a9fb16a11ce4e7b9809ed3aacfe3d36fd9665872b40cd9c8878155c46f416988be33ac31289fe9620e13706
-	sha512sums = 1abcd3f10941b6e342cabb5fcd3d2a097ceb2451acad09336d3b191ace0bccca23202d87cc916fc0bacaf977e96b26a85e2b6729a08117c4cbe40a470dbf6eaa
-	sha512sums = a77ddd7c85509282682c1554f31f3fd842cf259bf843a5c8105da1650d6ad94f9c612c2b97a52b638ea3e96acda6f5fb64336315793c51d663031b339a54fcb3
+	sha512sums = 1d637eae88d6d2bfd6ca4b0af649f6f1d19f4be5c7cd0ad82d70eb16f08caa581da922af723285d0231595e04aa3f835370d7c8acdf759f53bb21cfd2c754d63
+	sha512sums = 5267d3eb96e1d03850cbc2ea47d33f35f3cc15c1a009bbb13239ddb6a1e25cbfc8e30fd8ae51b1747ec140b52d26e3e29fa2fe71ab694afa20cb9ba9f232f645
+	sha512sums = 889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57
 
 pkgname = linux-pds
 	pkgdesc = The Linux kernel and modules ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
