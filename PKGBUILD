@@ -2,7 +2,7 @@
 # Maintainer: jose <jose1711 [at] gmail (dot) com>
 
 pkgname=diodon
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="GTK+ clipboard manager"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://launchpad.net/diodon"
 depends=('gobject-introspection' 'libappindicator-gtk3' 'libpeas' 'xorg-server-xvfb' 'zeitgeist')
 makedepends=('cmake' 'meson' 'vala')
 source=("$pkgname-$pkgver.tar.xz::$url/trunk/$pkgver/+download/$pkgname-$pkgver.tar.xz")
-sha256sums=('a494b5b50210c5ff21b35c4e3fd72ba2b846462eeab5ce69fcb28dadcded3912')
+sha256sums=('e5f0d8165e293e10a21a0466b50dfaee6ecaa56b678f72bf161ee09287b65f09')
 
 build() {
   cd $srcdir/${pkgname}-${pkgver}
