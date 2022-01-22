@@ -8,6 +8,6 @@ pkgbase = libbuspirate
 	arch = armv6h
 	license = GPL3
 	source = https://downloads.sourceforge.net/project/libbuspirate/0.5.0/libbuspirate-0.5.0.tar.gz
-	sha1sums = b3e1094296b275d6d6ab326956e6f7819cc332d0
+	sha256sums = 11d89d3ce883800770c460785f98510b7a09b4a5437d1eaec85b454400e300df
 
 pkgname = libbuspirate
