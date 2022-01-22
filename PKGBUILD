@@ -3,7 +3,7 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=mpich
-pkgver=3.4.3
+pkgver=4.0
 pkgrel=1
 pkgdesc="An improved implementation of the Message Passing Interface."
 url="https://mpich.org"
@@ -15,19 +15,13 @@ makedepends=(texlive-core sowing autoconf python)
 optdepends=(perl python)
 install="${pkgname}.install"
 source=("https://www.mpich.org/static/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	"mpich.profile"
-	"mpich-3.4.2-flags.diff")
-sha256sums=('8154d89f3051903181018166678018155f4c2b6f04a9bb6fe9515656452c4fd7'
-            'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284'
-            'ce0b565b11a6abc2771e75b53ba84c17bf6534e7f83d20c0fc226ff468c40bae')
+	"mpich.profile")
+sha256sums=('df7419c96e2a943959f7ff4dc87e606844e736e30135716971aba58524fbff64'
+            'b9716439a544511bf88618edeb40c3eb80f1b5d0d9369c30d750251feed02284')
 options=('!libtool')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-
-  # https://github.com/pmodels/mpich/issues/5360
-  patch -p1 < ${srcdir}/mpich-3.4.2-flags.diff
-  autoreconf -fi
 
   # CFLAGS etc are normally written into the wrapper compilers.  This
   # gives surprising results, e.g. when the user wants to compile their
@@ -44,7 +38,7 @@ build() {
 
   ../configure --prefix=/opt/mpich \
                --with-device=ch4:ucx \
-               --with-hwloc-prefix=system \
+               --with-hwloc \
                --without-java \
                --enable-error-checking=runtime \
                --enable-error-messages=all \
