@@ -151,7 +151,7 @@ when you use the client.
 .SS HTTPS Example Usage
 .EX
 If your server is running on \fI192.168.0.1\fR, then your keys should be
-\fI192.168.0.1.pem\fR and \fI192.168.0.1-key.pem\fR.
+\fI<absolute-path>/192.168.0.1.pem\fR and \fI<absolute-path>/192.168.0.1-key.pem\fR.
 
 Your client will then be connecting to \fIhttps://192.168.0.1:27701\fR.
 .EE
