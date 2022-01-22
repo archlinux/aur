@@ -1,16 +1,15 @@
 pkgbase = python-irc3
 	pkgdesc = plugable irc client library based on asyncio
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/gawel/irc3
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = python
 	depends = python-venusian
+	depends = python-setuptools
 	optdepends = python-docopt: for the irc3 command
-	source = https://pypi.io/packages/source/i/irc3/irc3-1.1.6.tar.gz
-	sha256sums = 7c6e43c939804355021d1c6c7c3be9c962df592bd1a3d39d3acdf7fcef62508d
+	source = https://pypi.io/packages/source/i/irc3/irc3-1.1.7.tar.gz
+	sha256sums = 6800c8876a889736961e199e834dc9933244affa20d4da086fb4b47f76984e12
 
 pkgname = python-irc3
-
