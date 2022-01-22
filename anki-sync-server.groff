@@ -56,21 +56,21 @@ from \fI\*[server-dir]/plugins\fR to the relevant directory.
 .ds anki-2 ~/Anki/addons
 .ds anki-plugins \*[server-dir]/plugins
 
-\fIAnki 2.1.28 (and up):\fR \*[anki-2.1.28]
+\fIAnki 2.1.28 (and up)\fR
 .EX
     ln -s  \\
       \*[anki-plugins]/anki2.1.28/\*[server] \\
       \*[anki-2.1.28]/\*[server]
 .EE
 
-\fIAnki 2.1:\fR \*[anki-2.1]
+\fIAnki 2.1\fR
 .EX
     ln -s  \\
       \*[anki-plugins]/anki2.1/\*[server] \\
       \*[anki-2.1]/\*[server]
 .EE
 
-\fIAnki 2.0:\fR \*[anki-2]
+\fIAnki 2.0\fR
 .EX
     ln -s  \\
       \*[anki-plugins]/anki2.0/\*[server].py \\
