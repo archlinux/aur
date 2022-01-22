@@ -1,0 +1,14 @@
+pkgbase = yaf
+	pkgdesc = Commandline tool to get system information
+	pkgver = 0.0.1
+	pkgrel = 0
+	url = https://github.com/deepjyoti30/yaf/
+	arch = any
+	license = MIT
+	makedepends = go
+	provides = yaf
+	conflicts = yaf-git
+	source = https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = yaf
