@@ -3,7 +3,7 @@
 
 pkgname=shadowsocks-rust
 pkgver=1.12.5
-pkgrel=4
+pkgrel=5
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -28,12 +28,12 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --features local-redir,local-tun,local-http-native-tls,
+    cargo build --frozen --release --features local-redir,local-tun,local-dns,local-http-native-tls
 }
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cargo test --frozen --features local-redir,local-tun,local-http-native-tls
+    cargo test --frozen --features local-redir,local-tun,local-dns,local-http-native-tls
 }
 
 package() {
