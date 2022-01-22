@@ -1,7 +1,7 @@
 # Maintainer: John-Michael Mulesa <jmulesa@gmail.com>
 pkgname=quake2rtx-bin
 _pkgname=quake2rtx
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Ray-traced version of Quake II."
 arch=(x86_64)
@@ -16,7 +16,7 @@ provides=('quake2rtx')
 conflicts=('quake2rtx')
 replaces=()
 source=("https://github.com/NVIDIA/Q2RTX/releases/download/v${pkgver}/q2rtx-${pkgver}-linux.tar.gz")
-sha256sums=('7ecf2798fbacce7efde0c6e02f6b08f850328a391a1cb5cb90719833b7c591c8')
+sha256sums=('d2c8218b8d0e232a23f05b4b4a83097d28d53291584ef850bb79de8b888aa3b4')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/${_pkgname}/bin"
