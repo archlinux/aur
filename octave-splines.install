@@ -1,20 +1,17 @@
 _pack=splines
-_prefix=/usr/share/octave/packages
-_libdir=/usr/lib/octave/packages
 
-## arg 1:  the new package version
-post_install() {
-  octave-cli -q -f --eval "pkg prefix $_prefix $_libdir; pkg install -verbose -global /usr/share/octave/$_pack.tar.gz"
+_octave_run() {
+  octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
+post_install() {
+  _octave_run "pkg rebuild -global $_pack"
+}
+
 post_upgrade() {
-  post_remove
   post_install
 }
 
-## arg 1:  the old package version
 post_remove() {
-  octave-cli -q -f --eval "pkg prefix $_prefix $_libdir; pkg uninstall $_pack; pkg rebuild -global"
+  _octave_run "pkg rebuild -global"
 }
