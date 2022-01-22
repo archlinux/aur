@@ -1,13 +1,14 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
 
 pkgname=puddletag
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='An audio tag editor for GNU/Linux'
-url="https://docs.puddletag.net/"
+url="https://docs.${pkgname}.net/"
 license=('GPL3')
 arch=('any')
 depends=('python-configobj'
+		 'python-lxml'
          'python-mutagen'
          'python-pillow'
          'python-pyparsing'
@@ -16,14 +17,14 @@ depends=('python-configobj'
 optdepends=('chromaprint: AcoustID support'
             'quodlibet: QuodLibet library support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/puddletag/puddletag/archive/${pkgver}.tar.gz")
-sha256sums=('cd280ff0ea5c6b9837d8e90d15a3fc762d369dd71c0a54ea33889ea33de32c59')
+sha512sums=('638c12be894d157d0456f336972f0064c4f4087d1c689f58b7b01f0e88cd773319b9c447e6f2b606f6e482b6d1e2328f5bc2aca556bab427b764d6525b8c2d5e')
 
 build() {
-  cd "${pkgname}-${pkgver}/source"
-  python setup.py config
+	cd "${pkgname}-${pkgver}"
+	python setup.py config
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/source"
-  python setup.py install --root="${pkgdir}" --optimize=1
+	cd "${pkgname}-${pkgver}"
+	python setup.py install --root="${pkgdir}" --optimize=1
 }
