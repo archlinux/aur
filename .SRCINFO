@@ -1,20 +1,20 @@
 pkgbase = cardano-node
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain.
-	pkgver = 1.32.1
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-node
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = cabal-install
-	makedepends = ghc>=8.10.4
+	makedepends = ghc8.10>=8.10.4
 	depends = libsodium
 	backup = etc/conf.d/cardano-node
 	backup = var/lib/cardano-node/config/mainnet-config.json
 	backup = var/lib/cardano-node/config/mainnet-topology.json
 	backup = var/lib/cardano-node/config/testnet-config.json
 	backup = var/lib/cardano-node/config/testnet-topology.json
-	source = git+https://github.com/input-output-hk/cardano-node.git#tag=1.32.1
+	source = git+https://github.com/input-output-hk/cardano-node.git#tag=1.33.0
 	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-config.json
 	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-byron-genesis.json
 	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-shelley-genesis.json

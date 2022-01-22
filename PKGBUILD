@@ -1,6 +1,6 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
-pkgver=1.32.1
+pkgver=1.33.0
 pkgrel=1
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
@@ -11,7 +11,7 @@ _ghc_version="`ghc-8.10 --numeric-version`"
 # However, if you have corresponding haskell-* packages present in the system, the build
 # will most likely fail trying to use the installed lib.
 # This is probably configurable but I'm not experienced in Haskell. Suggestions are welcome.
-makedepends=('git' 'cabal-install' 'ghc>=8.10.4')
+makedepends=('git' 'cabal-install' 'ghc8.10>=8.10.4')
 depends=('libsodium')
 #
 # The latest build is reachable via the following redirection link:
