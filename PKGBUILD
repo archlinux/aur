@@ -4,8 +4,8 @@
 
 pkgname=python2-venusian
 _pkgname=venusian
-pkgver=1.2.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A library for deferring decorator actions."
 license=('custom:BSD')
 arch=('any')
@@ -13,7 +13,7 @@ url="https://pylonsproject.org"
 depends=('python2')
 makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/source/v/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('64ec8285b80b110d0ae5db4280e90e31848a59db98db1aba4d7d46f48ce91e3e')
+sha256sums=('b3445f038426f1a8fe4c8a45c2659329a96377778564f947c0138c36dc120144')
 
 build() {
   cd $_pkgname-$pkgver
