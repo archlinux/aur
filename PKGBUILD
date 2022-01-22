@@ -1,7 +1,7 @@
 # Maintainer: s7hoang <s7hoang at gmail dot com>
 # Contributors: Janne Heß <jannehess at gmail dot com>
 pkgname=anki-sync-server-git
-pkgver=r408.0753292
+pkgver=r425.ef41934
 pkgrel=1
 pkgdesc="A sync server for anki using a forked version from github.com/ankicommunity (orig:dsnopek)"
 arch=('any')
@@ -15,6 +15,7 @@ optdepends=()
 install=anki-sync-server.install
 source=('git+https://github.com/ankicommunity/anki-sync-server.git')
 md5sums=('SKIP')
+backup=(etc/nginx/nginx.conf etc/nginx/sites-available/{anki-sync-server-http,anki-sync-server-https} usr/lib/systemd/system/anki-sync-server.service)
 
 _repo_dir_="$(basename ${source} | cut -f 1 -d '.')"
 _anki_dir_="${_repo_dir_}/src"
@@ -73,9 +74,12 @@ package() {
 
   # manpage
   mkdir -p "${pkgdir}/usr/share/man/man1"
-  ln -s -T "${_install_dir_}/plugins/man/man1/anki-sync-server.1.gz" "${pkgdir}/usr/share/man/man1/anki-sync-server.1.gz"
+  cp "${srcdir}/${_anki_dir_}/plugins/man/man1/anki-sync-server.1.gz" \
+    "${pkgdir}/usr/share/man/man1/anki-sync-server.1.gz"
 
   # nginx
   mkdir -p "${pkgdir}/etc/nginx/sites-available"
   mkdir -p "${pkgdir}/etc/nginx/sites-enabled"
+  cp "${srcdir}/${_anki_dir_}/plugins/nginx/anki-sync-server-http" "${pkgdir}/etc/nginx/sites-available"
+  cp "${srcdir}/${_anki_dir_}/plugins/nginx/anki-sync-server-https" "${pkgdir}/etc/nginx/sites-available"
 }
