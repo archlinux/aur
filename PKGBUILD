@@ -159,5 +159,32 @@ build() {
 
 package() {
 	cd $srcdir/${pkgname%-git}/build
-	make DESTDIR=$pkgdir install
+	DESTDIR=$pkgdir make install
+
+	cd $pkgdir
+	mkdir -p $pkgdir/opt/${pkgname%-git} $pkgdir/usr/bin $pkgdir/usr/share/applications
+	
+	cp $srcdir/${pkgname%-git}/deploy/linux-fixup-rpaths.bash $pkgdir/opt/${pkgname%-git}
+	cp $srcdir/${pkgname%-git}/deploy/qgroundcontrol-start.sh $pkgdir/opt/${pkgname%-git}
+	cp $srcdir/${pkgname%-git}/deploy/org.mavlink.qgroundcontrol.desktop $pkgdir/opt/${pkgname%-git}
+	cp $srcdir/${pkgname%-git}/deploy/org.mavlink.qgroundcontrol.metainfo.xml $pkgdir/opt/${pkgname%-git}
+
+	cp $srcdir/${pkgname%-git}/resources/icons/qgroundcontrol.png $pkgdir/opt/${pkgname%-git}
+
+	echo "[Desktop Entry]
+Type=Application
+Name=QGroundControl Release
+Comment=Ground control for unmanned vehicles
+Path=/opt/${pkgname%-git}/
+Exec=/usr/bin/${pkgname%-git}
+Icon=/opt/${pkgname%-git}/qgroundcontrol.png
+Terminal=false
+Categories=Qt;Utility;" > "$srcdir/${pkgname%-git}.desktop"
+
+
+	# rm "$pkgdir/opt/${pkgname%-git}/${pkgname%-git}.desktop"
+	cp "$srcdir/${pkgname%-git}.desktop" $pkgdir/opt/${pkgname%-git}
+
+	ln -s "/opt/${pkgname%-git}/QGroundControl" "$pkgdir/usr/bin/${pkgname%-git}"
+	ln -s "/opt/${pkgname%-git}/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
