@@ -1,7 +1,7 @@
 # Maintainer: Ayatale <ayatale@qq.com>
 
-pkgname=fcitx5-cn
-pkgver=5.0.13
+pkgname=fcitx5-cn-meta
+pkgver=5.0.b1
 pkgrel=1
 pkgdesc='Meta package to install fcitx5 and Chinese addons'
 url='https://github.com/fcitx/fcitx5'

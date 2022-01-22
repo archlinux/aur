@@ -1,6 +1,6 @@
-pkgbase = fcitx5-cn
+pkgbase = fcitx5-cn-meta
 	pkgdesc = Meta package to install fcitx5 and Chinese addons
-	pkgver = 5.0.13
+	pkgver = 5.0.b1
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5
 	arch = x86_64
@@ -16,4 +16,4 @@ pkgbase = fcitx5-cn
 	optdepends = fcitx5-material-color
 	optdepends = fcitx5-nord
 
-pkgname = fcitx5-cn
+pkgname = fcitx5-cn-meta
