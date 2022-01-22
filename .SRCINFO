@@ -1,7 +1,7 @@
 pkgbase = soapui
 	pkgdesc = A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP.
-	pkgver = 5.6.0
-	pkgrel = 2
+	pkgver = 5.7.0
+	pkgrel = 1
 	url = http://www.soapui.org/
 	arch = i686
 	arch = x86_64
@@ -9,18 +9,17 @@ pkgbase = soapui
 	depends = java-environment>=12
 	depends = hicolor-icon-theme
 	optdepends = java-openjfx: Open JFX for Internal browser
-	source = https://s3.amazonaws.com/downloads.eviware/soapuios/5.6.0/SoapUI-5.6.0-linux-bin.tar.gz
+	source = https://s3.amazonaws.com/downloads.eviware/soapuios/5.7.0/SoapUI-5.7.0-linux-bin.tar.gz
 	source = http://freeapps.co.uk.s3.amazonaws.com/images/thumbnails/soapui.png
 	source = soapui.desktop
 	source = soapui
-	md5sums = 10be0158efbe3ab77eaf19c664454f03
+	md5sums = 531d1b29baf1efc9a1885b3ad0735735
 	md5sums = 3cc08aca62edb502fc53013edf69f640
 	md5sums = f0e2fa73dd9a7c271e38c179b4e284a3
 	md5sums = 2cd183f3ffcb9d4560dd6f275323baa5
-	sha1sums = 8fdf1dddd2250fa14fe5878a7271f6693427de10
+	sha1sums = 339ff044d47637599c4a1f414b74e8f00fde100d
 	sha1sums = 9f12e2f0db63083a3fa4e5b6fdfd10c8dfd038c0
 	sha1sums = 4ced7d28c3c5880db600bf4769fdb1a3dc3a6fce
 	sha1sums = 9a4b0d63fed9af9f4619beed02fbe62f08c214f4
 
 pkgname = soapui
-
