@@ -6,13 +6,12 @@ pkgdesc="A Rust REPL based on evcxr"
 arch=('i686' 'x86_64')
 url="https://github.com/google/evcxr"
 license=('Apache')
-depends=('gcc-libs' 'cargo')
+depends=('gcc-libs' 'rust-src')
 provides=('evcxr_repl')
 source=("https://github.com/google/evcxr/archive/v${pkgver}.tar.gz")
 sha256sums=("8274dd36d179f7c60b41e02f6c79807c713db293c051980cb1153ad6771967da")
 
 build() {
-  rustup component add rust-src
   cd "$srcdir/evcxr-$pkgver/$pkgname"
   cargo build --release --locked --package $pkgname
 }
