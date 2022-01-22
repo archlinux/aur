@@ -1,9 +1,10 @@
 pre_install() {
+
 	end=$((SECONDS+10))
+
 	while :
 	do
 	  if [ -z "$(ps -eo args | grep WindscribeEngine | grep -v grep)" ]; then
-	    echo "No WindscribeEngine running"
 	    break
 	  fi
 
@@ -12,6 +13,9 @@ pre_install() {
 	    exit 1
 	  fi
 	done
+
+	systemctl stop windscribe-helper > /dev/null 2>&1
+	systemctl disable windscribe-helper > /dev/null 2>&1
 
 	# Stop and disable firewalld service if it is active, otherwise it will conflict with iptables on OS reboot
 	# Relevant for Fedora distributions
@@ -27,16 +31,15 @@ pre_install() {
 }
 
 post_install() {
-	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	systemctl enable windscribe-helper
 	systemctl start windscribe-helper
-	update-desktop-database -q
+
 }
 
 pre_upgrade() {
+	set -e
 	systemctl stop windscribe-helper
 	systemctl disable windscribe-helper
-	pre_install
 }
 
 post_upgrade() {
@@ -46,9 +49,4 @@ post_upgrade() {
 pre_remove() {
 	systemctl stop windscribe-helper
 	systemctl disable windscribe-helper
-}
-
-post_remove() {
-	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-	update-desktop-database -q
 }

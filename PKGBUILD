@@ -1,25 +1,39 @@
-# Maintainer: Topik topik@topik.tech
+# Maintainer: Nik Rozman <admin[at]piskot[dot]si>
+# Maintainer: Windscribe Limited <hello[at]windscribe[dot]com>
+# Contributor: Nik Rozman <admin[at]piskot[dot]si>
+# Contributor: Windscribe Limited <hello[at]windscribe[dot]com>
+
 pkgname=windscribe-bin
-pkgver=2.3.11_beta
+pkgver=2.3.15
 pkgrel=1
-pkgdesc="A port of Windscribe's GUI desktop client (binary release)"
+pkgdesc="Windscribe Client"
 arch=('x86_64')
-url="https://github.com/Windscribe/desktop-v2"
+url="https://windscribe.com/download"
 license=('GPL2')
-depends=('bash' 'iptables' 'curl' 'icu67')
-conflicts=('windscribe-git')
+depends=('nftables' 'c-ares' 'qt5-svg' 'freetype2' 'hicolor-icon-theme' 'curl')
+conflicts=('windscribe-cli')
 provides=('windscribe')
+options=('!strip' '!emptydirs')
 install=${pkgname}.install
-# I had to comment these out because I had unofficial binaries as a source (there aren't any official binaries available yet), and that's apparently not allowed on the AUR (sorry, didn't know)
-# You can uncomment the lines below and download the PKGBUILD to get a working installation
+source=("https://windscribe.com/install/desktop/linux_deb_x64/beta")
+sha512sums=('SKIP')
 
-#source=("https://github.com/topik0/windscribe-desktop-v2-aur/releases/download/v2.3.11_beta/windscribe_2.3.11_beta_amd64.deb")
-#sha512sums=('88e22c070dc5e35ea5fbea0d988dd2b501942193434efe462357363976e404ef3348aad2a2cd8609d8b42dd87a72166d75b2876369d3f1e320eeac4e2974faab')
+package(){
+	# Extract package data
+	tar xf data.tar.xz -C "${pkgdir}"
 
-package() {
-	echo
-	# tar xf data.tar.xz -C "${pkgdir}"
-	# mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"
-	# curl https://raw.githubusercontent.com/Windscribe/desktop-v2/master/LICENSE --output LICENSE
-	# install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+	# Correct permissions
+	chmod -R 755 "${pkgdir}"
+
+	# Point files to the correct location
+	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/share/applications/windscribe.desktop
+	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/etc/systemd/system/windscribe-helper.service
+	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/polkit-1/actions/com.windscribe.authhelper.policy
+
+	# Move files to correct location
+	mkdir -p "${pkgdir}/opt/windscribe"
+	mv "${pkgdir}/usr/local/windscribe" "${pkgdir}/opt/"
+
+	# Install license
+	install -D -m644 "${pkgdir}/opt/windscribe/open_source_licenses.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
