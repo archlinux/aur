@@ -14,13 +14,13 @@ depends=("c-ares" "ffmpeg" "flac" "gtk3" "libevent" "libxslt" "minizip" "nss" "r
 optdepends=("xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
 makedepends=('electron13' 'p7zip' 'asar')
 source=("https://github.com/Clipteam/clipcc-desktop/releases/download/${pkgver//_/-}/clipcc-${pkgver//_/-}-win-x64.exe"
-        # "https://github.com/Clipteam/clipcc-desktop/blob/master/LICENSE"
+        "LICENSE"
         "${_pkgname}.desktop"
         "${_pkgname}-icons.tar.gz"
         "${_pkgname}.xml")
 noextract=("clipcc-3.1.0-beta3-win-x64.exe")
 sha256sums=('4661045ecb362021cafc31648ff5ae50077df93a46be20712ab9b51ae8487140'
-            # 'f7009e021b5eecf5897938f3f559829e596ca40fef79f8ce10189a1f1e462802'
+            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'c293e53da40fa54dae3ec2598e89b3bb2f7159f57a37e739cbcb70e8663739ed'
             '3afe472ea0ceffe52834abed6d838f88892c22bc15ef421e01a8829fc8887be0'
             '86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf')
@@ -38,7 +38,7 @@ prepare() {
   mv $pkgname/electron $pkgname/$_pkgname
   
 # All license files in one place
-  # mv $pkgname/LICENSE LICENSE-electron
+  mv $pkgname/LICENSE LICENSE-electron
   mv $pkgname/LICENSES.chromium.html LICENSES.chromium.html
   
 # This file is useless
@@ -64,7 +64,7 @@ package() {
   install -Dm644 "clipcc.svg" $pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
   install -Dm644 "sparrow.svg" $pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-${_pkgname}-sprite.svg
   install -Dm644 "${_pkgname}.xml" $pkgdir/usr/share/mime/packages/${_pkgname}.xml
-  install -Dm644 LICENSES* -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENS* -t "$pkgdir/usr/share/licenses/$pkgname"
 
   install -dm755 "${pkgdir}/opt/$pkgname"
   cp -r $srcdir/$pkgname -t "$pkgdir/opt"
