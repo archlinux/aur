@@ -3,6 +3,7 @@ PKGNAME := $(shell awk -F= '/^pkgname=/ {print $$2}' PKGBUILD)
 PKGVER := $(shell awk -F= '/^pkgver=/ {print $$2}' PKGBUILD)
 PKGREL := $(shell awk -F= '/^pkgrel=/ {print $$2}' PKGBUILD)
 PKGFILE := $(PKGNAME)-$(PKGVER)-$(PKGREL)-x86_64.pkg.tar.zst
+PKGURL := https://github.com/Azure/azure-storage-fuse/archive/refs/tags/blobfuse-$(PKGVER).tar.gz
 
 #-------------------------------------------------------------------------------
 # HELPERS
@@ -10,6 +11,10 @@ PKGFILE := $(PKGNAME)-$(PKGVER)-$(PKGREL)-x86_64.pkg.tar.zst
 
 .PHONY: all
 all: $(PKGFILE)
+
+.PHONY: checksum
+checksum:
+	http -qd "$(PKGURL)" | sha256sum - | cut -d" " -f1
 
 .PHONY: clean
 clean:
