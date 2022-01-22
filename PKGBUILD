@@ -2,7 +2,7 @@
 
 pkgname=libpdfium-nojs
 pkgver=4692.r0.31722577db
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
 url="https://pdfium.googlesource.com/pdfium/"
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('freetype2' 'lcms2' 'libjpeg' 'openjpeg2' 'icu')
 conflicts=('libpdfium-bin')
 provides=('libpdfium')
-makedepends=('git' 'python2' 'gn' 'ninja')
+makedepends=('git' 'python' 'gn' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
     "git+https://chromium.googlesource.com/chromium/src/build.git"
@@ -115,7 +115,7 @@ build() {
       'use_gold = false' 
   )
   
-  gn gen out/Release --script-executable=/usr/bin/python2 --args="${_flags[*]}"
+  gn gen out/Release --args="${_flags[*]}"
   ninja -C out/Release pdfium
 
   # set pdfium version in pc file
