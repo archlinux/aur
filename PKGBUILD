@@ -7,7 +7,7 @@ _use_zeroc_ice="1"
 _use_grpc="1"
 
 pkgname=murmur-git
-pkgver=1.4.0.development.snapshot.006.r258.g03e655bbb
+pkgver=1.4.0.r472.gdb3a28058
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (git version)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -30,11 +30,13 @@ backup=("etc/murmur.ini")
 install="murmur.install"
 source=("git+https://github.com/mumble-voip/mumble.git"
     "git+https://github.com/Krzmbrzl/FindPythonInterpreter.git"
+    "git+https://github.com/wolfpld/tracy.git"
     "murmur.dbus.conf"
     "murmur.service"
     "murmur.sysusers"
     "murmur.tmpfiles")
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             '97c7effdddec324e40195c36ef4927950a5de26d2ee2d268d89df6fb547207bbbe30292773316cae6f57ec9923244f205fb0edc377b798771ba7385e3c11d86a'
             '8454955b4a0e9c71d172ff5595a5d56078edf42a9060092660a7bf75ab36413ac8bcb275492c3b5293f11a5bada5ae1df34b77c488eb76289a871705f2cb3796'
@@ -45,7 +47,7 @@ _gitname="mumble"
 
 pkgver() {
     cd "${_gitname}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/development.snapshot.[0-9]\{3\}.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -53,6 +55,8 @@ prepare() {
     git submodule init
     git config submodule.3rdparty/FindPythonInterpreter.url $srcdir/FindPythonInterpreter
     git submodule update 3rdparty/FindPythonInterpreter
+    git config submodule.3rdparty/tracy.url $srcdir/tracy
+    git submodule update 3rdparty/tracy
 }
 
 build() {
