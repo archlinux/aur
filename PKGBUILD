@@ -1,7 +1,7 @@
 # Maintainer: Arturo Penen <apenen@gmail.com>
 
 pkgname=ghorg
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 pkgdesc='allows you to quickly clone all of an orgs, or users repos into a single directory.'
 arch=('x86_64')
@@ -18,4 +18,10 @@ build() {
 
 package() {
   install -Dm 755 "${srcdir}/$pkgname-$pkgver/ghorg" "${pkgdir}/usr/bin/ghorg"
+
+  # Populate bash and zsh completions
+  install -dm 755 "${pkgdir}/usr/share/bash-completion/completions"
+  install -dm 755 "${pkgdir}/usr/share/zsh/site-functions"
+  "${pkgdir}/usr/bin/ghorg" completion bash > "${pkgdir}/usr/share/bash-completion/completions/ghorg"
+  "${pkgdir}/usr/bin/ghorg" completion zsh >  "${pkgdir}/usr/share/zsh/site-functions/_ghorg"
 }
