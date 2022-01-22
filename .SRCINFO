@@ -1,0 +1,14 @@
+pkgbase = briar-desktop-bin
+	pkgdesc = Prototyping the next generation for Briar on desktop devices
+	pkgver = 0.1.0.beta
+	pkgrel = 1
+	url = https://code.briarproject.org/briar/briar-desktop
+	arch = any
+	license = GPL
+	depends = java-runtime>=17
+	depends = java-runtime<18
+	depends = bash
+	source = briar-desktop-0.1.0-beta.zip::https://code.briarproject.org/briar/briar-desktop/-/jobs/artifacts/0.1.0-beta/download?job=rb_jar
+	sha256sums = d448c38e3f40ce9bd7407b3916750b27f5ce6a49d71b9a518865c38eeb282765
+
+pkgname = briar-desktop-bin
