@@ -2,7 +2,7 @@
 # Maintainer: harshadgavali
 
 pkgname=tabsearchproviderconnector
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=4
 pkgdesc="Browser tab search provider for GNOME"
 url="https://github.com/harshadgavali/searchprovider-for-browser-tabs"
@@ -15,7 +15,7 @@ _tarver=connector-v$pkgver
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/harshadgavali/$_gitrepo/archive/refs/tags/$_tarver.tar.gz")
 
-sha256sums=('8d759df2e9b0c2e62a7fd799321d41426af861e15dcaa8037edfcbeaf0072bc5')
+sha256sums=('0a7c524df5714faf5fae4491f90174b4da93b1d902054b7400098fce7d2abf01')
 optdepends=('firefox: search firefox tabs from gnome shell'
             'chromium: search chromium tabs from gnome shell')
 
