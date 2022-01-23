@@ -1,5 +1,18 @@
 jellex changelog
 
+20211228 v0.5.5
+- Fix non-JSON file loading error
+- Minor updates
+
+20211228 v0.5.4
+- Minor performance optimization
+
+20211227 v0.5.3
+- Memory and performance optimizations
+
+20211220 v0.5.2
+- Schema viewer toggle
+
 20211212 v0.5.1
 - Fix exception handling
 
