@@ -1,13 +1,14 @@
 # Maintainer: Jeffrey Zhang zhang.lei.fly@gmail.com
 pkgname=terminator-git
-pkgver=2.0
+pkgver=2.1.1.136.gca335e45
 pkgrel=1
 pkgdesc='multiple GNOME terminals in one window'
 arch=('any')
 url='https://github.com/gnome-terminator/terminator.git'
 license=('GPL2')
-depends=('gconf'
+depends=('gsettings-desktop-schemas'
          'libkeybinder3'
+         'libnotify'
          'python-cairo'
          'python-configobj'
          'python-dbus'
@@ -15,7 +16,7 @@ depends=('gconf'
          'python-psutil'
          'vte3'
          'xdg-utils')
-makedepends=('git' 'intltool' 'python-setuptools')
+makedepends=('git' 'intltool' 'python-setuptools' 'python-pip')
 conflicts=('terminator' 'terminator-gtk3-bzr')
 source=("git+https://github.com/gnome-terminator/terminator.git")
 sha256sums=('SKIP')
