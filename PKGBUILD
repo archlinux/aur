@@ -2,7 +2,7 @@
 
 pkgname=python-locallib
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Ensure /usr/local/lib/pythonX is in sys.path"
 arch=("any")
 license=("Unlicense")
