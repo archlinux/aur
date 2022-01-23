@@ -1,0 +1,19 @@
+#!/bin/sh
+
+post_install() {
+  systemd-sysusers git.conf
+
+  if ! grep -qe '^/usr/bin/git-shell$' etc/shells; then
+    echo '/usr/bin/git-shell' >> etc/shells
+  fi
+
+  chsh -s /usr/bin/git-shell git
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  sed -i -r '/^\/usr\/bin\/git-shell$/d' etc/shells
+}

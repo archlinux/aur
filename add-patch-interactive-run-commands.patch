@@ -1,0 +1,49 @@
+diff --git a/git-add--interactive.perl b/git-add--interactive.perl
+index 95887fd8e5..3d06718886 100755
+--- a/git-add--interactive.perl
++++ b/git-add--interactive.perl
+@@ -95,6 +95,10 @@ sub colored {
+ my $patch_mode;
+ my $patch_mode_revision;
+ 
++my @commands_to_run_on_new_hunk = split("\n", $ENV{'GIT_RUN_ON_NEW_HUNK'} // "");
++my @commands_to_run_on_new_file = split("\n", $ENV{'GIT_RUN_ON_NEW_FILE'} // "");
++my $print_header_every_hunk = ($ENV{'GIT_PRINT_HEADER_EVERY_HUNK'} // "0") == "1";
++
+ sub apply_patch;
+ sub apply_patch_for_checkout_commit;
+ sub apply_patch_for_stash;
+@@ -1491,8 +1495,15 @@ sub patch_update_file {
+ 	my $path = shift;
+ 	my ($head, @hunk) = parse_diff($path);
+ 	($head, my $mode, my $deletion, my $addition) = parse_diff_header($head);
+-	for (@{$head->{DISPLAY}}) {
+-		print;
++	# Run commands from GIT_RUN_ON_NEW_FILE environment variable
++	foreach my $cmd (@commands_to_run_on_new_file) {
++		system($cmd);
++	}
++	# Skip header if print_header_every_hunk is set since we'll print it at hunk start below instead
++	if (!$print_header_every_hunk) {
++		for (@{$head->{DISPLAY}}) {
++			print;
++		}
+ 	}
+ 
+ 	if (@{$mode->{TEXT}}) {
+@@ -1556,6 +1567,15 @@ sub patch_update_file {
+ 			if ($hunk[$ix]{TYPE} eq 'hunk') {
+ 				$other .= ',e';
+ 			}
++			# Run commands from GIT_RUN_ON_NEW_HUNK environment variable
++			foreach my $cmd (@commands_to_run_on_new_hunk) {
++				system($cmd);
++			}
++			if ($print_header_every_hunk) {
++				for (@{$head->{DISPLAY}}) {
++					print;
++				}
++			}
+ 			for (@{$hunk[$ix]{DISPLAY}}) {
+ 				print;
+ 			}
