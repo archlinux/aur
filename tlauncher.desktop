@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=TLauncher
-Icon=minecraft
+Icon=tlauncher
 Exec=/usr/bin/java -jar /opt/tlauncher/tlauncher.jar
 Categories=AdventureGame;Game;
 GenericName=Explore your own unique world, survive the night, and create anything you can imagine!
