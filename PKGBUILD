@@ -2,7 +2,7 @@
 pkgname=wl-gammarelay
 pkgver=0.0.6
 pkgrel=1
-pkgdesc=""
+pkgdesc="A client and daemon for changing color temperature and brightness under Wayland via keybindings."
 arch=('x86_64')
 url="https://github.com/jeremija/wl-gammarelay"
 license=('GPL3')
