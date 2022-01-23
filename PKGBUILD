@@ -2,7 +2,7 @@
 
 pkgname=mustache-d
 pkgver=0.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Moustache template engine for D'
 arch=('x86_64')
 url='https://github.com/repeatedly/mustache-d'
@@ -13,6 +13,10 @@ sha512sums=('f6a84e69c5345ebe1c8aae3e6a214fd0b57055180f8c689468decab9d4e3cb92d88
 
 prepare() {
   mkdir -p build
+
+  cd "$srcdir"/$pkgname-$pkgver
+  # Fixes 'ERROR: Got unknown keyword arguments "soversion", "version"'
+  sed -i "/install: true/{n;N;d}" meson.build
 }
 
 build() {
