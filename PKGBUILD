@@ -1,6 +1,6 @@
 # Maintainer: Arisa Snowbell <goddess@chizuru.space>
 pkgname=shiny-mirrors
-pkgver=r185.2d9dc27
+pkgver=r188.2d9dc27
 pkgrel=1
 pkgdesc="An alternative to reflector, written in Rust! A tool to find the best mirrors for you!"
 arch=('x86_64' 'aarch64')
