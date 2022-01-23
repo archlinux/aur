@@ -1,0 +1,11 @@
+pkgbase = ltex-ls-bin
+	pkgdesc = LTeX Language Server: LSP language server for LanguageTool magheavy_check_mark with support for LaTeX mortar_board, Markdown memo, and others
+	pkgver = 15.2.0
+	pkgrel = 1
+	arch = x86_64
+	license = MPL2
+	provides = ltex-ls
+	source = https://github.com/valentjn/ltex-ls/releases/download/15.2.0/ltex-ls-15.2.0-linux-x64.tar.gz
+	md5sums = 6234713566e863420c728e32273ed88c
+
+pkgname = ltex-ls-bin
