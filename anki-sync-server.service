@@ -1,7 +1,7 @@
 [Unit]
 Description=A personal sync server for anki
 StartLimitIntervalSec=60
-StartLimitBurst=1
+StartLimitBurst=3
 Wants=nginx.service
 
 [Service]
@@ -11,7 +11,7 @@ Group=changeme
 WorkingDirectory=changeme
 ExecStart=python -m ankisyncd
 Restart=on-failure
-RestartSec=60
+RestartSec=20
 
 [Install]
 WantedBy=multi-user.target
