@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=16.0.0.rc2.r74.g47a3d2c6
+pkgver=16.0.0.rc2.r234.g647124d0
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=('alvr'::'git+https://github.com/alvr-org/ALVR.git')
+source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
 md5sums=('SKIP')
 
 pkgver() {
