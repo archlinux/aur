@@ -1,15 +1,16 @@
-pkgbase = qml-lsp-git
+pkgbase = qml-lsp
 	pkgdesc = QML Language Server
-	pkgver = rjienrlwey.number.two.r10.ga426fd6
-	pkgrel = 1
-	url = https://invent.kde.org/cblack/qew-em-el-el-ess-pee
+	pkgver = rjienrlwey.number.two.r14.gadb42f0
+	pkgrel = 2
+	url = https://invent.kde.org/bjdm/qew-em-el-el-ess-pee
 	arch = x86_64
 	license = GPLv3
 	makedepends = go
 	makedepends = git
-	provides = qew-em-el-el-ess-pee
-	conflicts = qew-em-el-el-ess-pee
-	source = git+https://invent.kde.org/cblack/qew-em-el-el-ess-pee.git
+	provides = qml-lsp
+	conflicts = qml-lsp
+	conflicts = qml-lsp-static
+	source = git+https://invent.kde.org/bjdm/qew-em-el-el-ess-pee.git
 	sha256sums = SKIP
 
-pkgname = qml-lsp-git
+pkgname = qml-lsp
