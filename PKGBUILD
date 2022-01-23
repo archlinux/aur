@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Alexander Sieg <aur at xanderio dot com>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 _pkgname=pika-backup
 pkgname=$_pkgname-git
-pkgver=v0.3.0.beta.2.r231.g50956d7
+pkgver=0.3.0.beta.2.r231.g50956d7
 pkgrel=1
 pkgdesc="Simple backups based on borg"
 arch=('x86_64' 'aarch64')
@@ -18,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
