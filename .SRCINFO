@@ -1,6 +1,6 @@
-pkgbase = booster-git
-	pkgdesc = Fast and secure initramfs generator
-	pkgver = 0.7.r70.gf371e98
+pkgbase = booster-wip-git
+	pkgdesc = Fast and secure initramfs generator. Booster WIP branch.
+	pkgver = 0.7.r72.ga9ec0f1
 	pkgrel = 1
 	url = https://github.com/anatol/booster
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = booster-git
 	conflicts = booster
 	replaces = booster
 	backup = etc/booster.yaml
-	source = git+https://github.com/anatol/booster
+	source = git+https://github.com/anatol/booster#branch=wip
 	sha512sums = SKIP
 
-pkgname = booster-git
+pkgname = booster-wip-git

@@ -1,9 +1,9 @@
 # Maintainer: Anatol Pomozov
 
-pkgname=booster-git
-pkgver=0.7.r70.gf371e98
+pkgname=booster-wip-git
+pkgver=0.7.r72.ga9ec0f1
 pkgrel=1
-pkgdesc='Fast and secure initramfs generator'
+pkgdesc='Fast and secure initramfs generator. Booster WIP branch.'
 arch=(x86_64)
 url='https://github.com/anatol/booster'
 license=(MIT)
@@ -19,7 +19,7 @@ backup=(etc/booster.yaml)
 provides=(booster initramfs)
 conflicts=(booster)
 replaces=(booster)
-source=(git+https://github.com/anatol/booster)
+source=(git+https://github.com/anatol/booster#branch=wip)
 sha512sums=('SKIP')
 
 pkgver() {
