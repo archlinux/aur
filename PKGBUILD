@@ -4,7 +4,7 @@ pkgname=d-containers
 _pkgname=containers
 _pkgver=0.8.0
 pkgver=${_pkgver/-/}
-pkgrel=5
+pkgrel=6
 pkgdesc='Containers for D backed by std.experimental.allocator'
 arch=('x86_64')
 url='https://github.com/dlang-community/containers'
@@ -20,6 +20,7 @@ build() {
 
   # Force build with LDC
   export DC=ldc
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto/--flto=full/')"
 
   arch-meson ..
 
