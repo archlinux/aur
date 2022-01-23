@@ -1,7 +1,7 @@
 pkgbase = doxypress-bin
 	pkgdesc = A fork of Doxygen, with improved output and support for clang parsing
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = https://www.copperspice.com/documentation-doxypress.html
 	arch = x86_64
 	license = GPL
@@ -22,9 +22,8 @@ pkgbase = doxypress-bin
 	provides = doxypress
 	conflicts = doxypress
 	replaces = doxypress
-	noextract = doxypress-1.4.1-arch-x64.tar.bz2
-	source = https://download.copperspice.com/doxypress/binary/doxypress-1.4.1-arch-x64.tar.bz2
-	sha512sums = 0f1285e0613ff3a830ba9193f0aa42ec6f491d7731d2501d9c002019e0f46c352688b8d0f933f8287aa855ae0079fcae7dbe0eb317548bcd74c4f31502a5aa3d
+	noextract = doxypress-1.4.2-arch-x64.tar.bz2
+	source = https://download.copperspice.com/doxypress/binary/doxypress-1.4.2-arch-x64.tar.bz2
+	sha512sums = 6ef02f1eb87209b9bcf283583a065109eeb053a6667d4f41ee57302b3ce8b67306d27a8e3976addb7c4f7e9faf246a683b87a3b18e75699323960518719e4daa
 
 pkgname = doxypress-bin
-
