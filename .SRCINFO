@@ -1,0 +1,11 @@
+pkgbase = wl-gammarelay
+	pkgver = 0.0.6
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = wayland
+	source = https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v0.0.6.tar.gz
+	md5sums = 7ae50fd272ccb0436961e777ac49192d
+
+pkgname = wl-gammarelay
