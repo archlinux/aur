@@ -3,7 +3,7 @@
 _pkgname="melonds"
 pkgname="${_pkgname}-bin"
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DS emulator, sorta"
 arch=("x86_64" "aarch64")
 url="http://melonds.kuribo64.net/"
@@ -23,7 +23,7 @@ sha256sums_aarch64=("2f900d036808e790dc33ee79ba46c93adda9fd25ae2af8e074c9918ad9e
 
 package() {
   # Install binary
-  install -Dm0755 "melonDS" "${pkgdir}/usr/bin/melonDS"
+  install -Dm0755 melonDS "${pkgdir}/usr/bin/melonDS"
 
   # Install icons
   for size in 16 32 64 128 256; do
