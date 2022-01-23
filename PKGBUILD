@@ -2,7 +2,7 @@
 pkgname='qml-lsp-git'
 _binname='qml-lsp'
 _reponame='qew-em-el-el-ess-pee'
-pkgrel=2
+pkgrel=3
 pkgver=rjienrlwey.number.two.r14.gadb42f0
 pkgdesc='QML Language Server'
 arch=('x86_64')
