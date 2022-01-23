@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
 
 pkgname=victor
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Command line tool to log activities and measure time spent"
 arch=('x86_64')
