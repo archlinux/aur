@@ -2,4 +2,4 @@
 /src/
 *.pkg.tar.*
 *.tar.gz
-LICENSE-*
+/LICENSE-*

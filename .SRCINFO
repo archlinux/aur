@@ -1,6 +1,6 @@
 pkgbase = scrutiny-web-frontend
 	pkgdesc = Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds - Web Frontend Files
-	pkgver = 0.3.12
+	pkgver = 0.3.13
 	pkgrel = 1
 	url = https://github.com/AnalogJ/scrutiny
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = scrutiny-web-frontend
 	license = custom:CC0
 	license = BSD
 	license = Apache
-	source = scrutiny-web-frontend-0.3.12.tar.gz::https://github.com/AnalogJ/scrutiny/releases/download/0.3.12/scrutiny-web-frontend.tar.gz
-	source = LICENSE-0.3.12::https://raw.githubusercontent.com/AnalogJ/scrutiny/master/LICENSE
-	sha512sums = 1e79660ead2f7a61649b31134db1d78c43eed040691032fa9c4155a97f68ab920e57eb952e20ec772c51103b5bcc4b747ed0489f9b971cb649def84840ec0b27
+	source = scrutiny-web-frontend-0.3.13.tar.gz::https://github.com/AnalogJ/scrutiny/releases/download/0.3.13/scrutiny-web-frontend.tar.gz
+	source = LICENSE-0.3.13::https://raw.githubusercontent.com/AnalogJ/scrutiny/master/LICENSE
+	sha512sums = c7f549e97890def5f66a8f2b24be3d700ceacb1e6891e0dc9ace2f94296e8b20b135d08cd3d43309e8abce0f5f5e5dc63c612f8ab4f7ae47f327f66793526a30
 	sha512sums = 4157986cf511d837141657ad499c6d34302a7b2c4fce138d66dd88c50f9b4ece7dbdc03351a41182e79ccedd46abe76cfd452e7e9834b39cad4c7b28d36364f2
 
 pkgname = scrutiny-web-frontend
