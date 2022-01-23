@@ -1,0 +1,17 @@
+pkgbase = corecrypto
+	pkgdesc = Library implementing Apple low-level cryptographic primitives
+	pkgver = 2020
+	pkgrel = 1
+	url = https://developer.apple.com/security/
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = clang
+	makedepends = cmake
+	makedepends = curl
+	makedepends = unzip
+	source = LICENSE
+	sha256sums = SKIP
+
+pkgname = corecrypto
