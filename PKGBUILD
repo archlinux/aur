@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-asan-git
-pkgver=0.16.0.r5320.6cdf843a
+pkgver=0.16.0.r5337.da2491d4
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version, with address sanitizer)'
