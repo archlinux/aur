@@ -1,7 +1,7 @@
 # Maintainer: Filip Weiss <minepkg+me@fiws.net>
 
 pkgname=minepkg
-pkgver=0.0.59
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Manage Minecraft mods with ease."
 arch=('x86_64')
@@ -11,8 +11,8 @@ groups=()
 depends=()
 makedepends=('go')
 optdepends=()
-source=("https://github.com/fiws/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('399742cfd0ad2fabd579ff5404bdfb27e397b4d335e694ba1291620cb8b189b3')
+source=("https://github.com/minepkg/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('3fd60c1e67cc0de675b301694284ee25846e3c9614f9f153ef55710ef812ce33')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
