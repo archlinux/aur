@@ -1,16 +1,17 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=xump
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple puzzler (aka 'The Final Run')"
 arch=('i686' 'x86_64')
-url="http://retroguru.com/xump/"
+url="https://retroguru.com/xump/"
 license=('custom: Freeware')
 depends=('sdl_mixer' 'zlib')
 optdepends=('libmodplug: better music decoder')
 install=$pkgname.install
-source=("http://www.retroguru.com/$pkgname/$pkgname-v.latest-linux.tar.gz"
+source=("https://www.retroguru.com/$pkgname/$pkgname-v.latest-linux.tar.gz"
         "$pkgname.png"
         "$pkgname.sh"
         "$pkgname.desktop")

@@ -1,8 +1,8 @@
 pkgbase = xump
 	pkgdesc = Simple puzzler (aka 'The Final Run')
 	pkgver = 1.00
-	pkgrel = 1
-	url = http://retroguru.com/xump/
+	pkgrel = 2
+	url = https://retroguru.com/xump/
 	install = xump.install
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = xump
 	depends = zlib
 	optdepends = libmodplug: better music decoder
 	options = !strip
-	source = http://www.retroguru.com/xump/xump-v.latest-linux.tar.gz
+	source = https://www.retroguru.com/xump/xump-v.latest-linux.tar.gz
 	source = xump.png
 	source = xump.sh
 	source = xump.desktop
@@ -21,4 +21,3 @@ pkgbase = xump
 	sha256sums = d9b60fdc9e2a6be48f09d493f646a9fa4267fae5f6f7849ec90443a4c2a8dcea
 
 pkgname = xump
-
