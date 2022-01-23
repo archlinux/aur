@@ -3,15 +3,15 @@
 
 pkgname=funkin-git
 pkgver=v0.2.7.1.r102.gf94dece4
-pkgrel=1
-pkgdesc="A game originally made for Ludum Dare 47 \"Stuck In a Loop\""
+pkgrel=2
+pkgdesc="A game originally made for Ludum Dare 47 \"Stuck in a Loop\""
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/ninjamuffin99/Funkin"
 license=("Apache")
 makedepends=("git" "haxe")
 provides=("funkin")
 conflicts=("funkin")
-source=("${pkgname}"::"git://github.com/ninjamuffin99/Funkin.git"
+source=("git+https://github.com/ninjamuffin99/Funkin.git"
         "APIStuff.hx"
         "funkin.sh"
         "funkin.desktop")
@@ -21,8 +21,13 @@ sha256sums=("SKIP"
             "7fe0fa2ac1312201c93f41cf9395c46703abf989e7f65783ff95e0d3b8c183e6")
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/Funkin"
   git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+}
+
+prepare() {
+  # https://github.com/ninjamuffin99/Funkin/issues/146#issuecomment-755064854
+  cp APIStuff.hx "${srcdir}/Funkin/APIStuff.hx"
 }
 
 build() {
@@ -33,7 +38,7 @@ build() {
   haxelib install lime
   haxelib install openfl
   haxelib install flixel
-  echo "n" | haxelib run lime setup # Decline prompt to add lime command
+  echo n | haxelib run lime setup # Decline prompt to add lime command
   haxelib run lime setup flixel
 
   # Install other depends
@@ -41,17 +46,14 @@ build() {
   haxelib git polymod https://github.com/larsiusprime/polymod.git
   haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
 
-  # https://github.com/ninjamuffin99/Funkin/issues/146#issuecomment-755064854
-  cp APIStuff.hx ${srcdir}/${pkgname}/APIStuff.hx
-
   # Build game
-  pushd "${srcdir}/${pkgname}" > /dev/null
+  pushd "${srcdir}/Funkin" > /dev/null
   haxelib run lime build linux -final
   popd > /dev/null
 }
 
 package() {
-  pushd "${srcdir}/${pkgname}" > /dev/null
+  pushd "${srcdir}/Funkin" > /dev/null
 
   # Copy game files to /usr/share/funkin
   install -dm0755 "${pkgdir}/usr/share/funkin"
