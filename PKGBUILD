@@ -1,4 +1,4 @@
-# Maintainer: Vasil Bakalov <jens300304@gmail.com>
+# Maintainer: Stella <jens300304@gmail.com>
 pkgname=python-slider
 url="https://llllllllll.github.io/slider/index.html"
 pkgver=0.5.3
