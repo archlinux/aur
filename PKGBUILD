@@ -33,7 +33,7 @@ prepare() {
 
 package() {
 	# Makes ble-update call an AUR helper
-	install -Dm755 blesh-update.sh "$pkgdir"/usr/share/blesh/lib/_package.sh
+	install -Dm644 blesh-update.sh "$pkgdir"/usr/share/blesh/lib/_package.sh
 	cd "$_pkgname"
 	make install DESTDIR="$pkgdir" PREFIX=/usr
 }
