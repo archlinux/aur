@@ -9,6 +9,8 @@ pkgbase = cardano-wallet-bin
 	provides = cardano-wallet
 	conflicts = cardano-wallet
 	source = https://github.com/input-output-hk/cardano-wallet/releases/download/v2022-01-18/cardano-wallet-v2022-01-18-linux64.tar.gz
+	source = cardano-wallet.service
 	sha256sums = fa215395af27138671dd250b7da369ad357e4487857335f1c506160b20648fbf
+	sha256sums = fc6cc0c430bc8cad8ed76617cf1817540c18af508ad0602f4dfb22df61f73018
 
 pkgname = cardano-wallet-bin

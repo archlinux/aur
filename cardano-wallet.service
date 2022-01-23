@@ -1,0 +1,17 @@
+[Unit]
+Description=Cardano wallet
+Requires=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/cardano-node
+ExecStart=cardano-wallet serve --mainnet \
+    --node-socket $SOCKET_PATH
+KillSignal=SIGINT
+Restart=always
+RestartSec=60
+User=cardano
+TimeoutStopSec=90
+
+[Install]
+WantedBy=multi-user.target
