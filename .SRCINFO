@@ -1,13 +1,13 @@
 pkgbase = depotdownloader-git
 	pkgdesc = Steam depot downloader utilizing the SteamKit2 library
-	pkgver = 2.4.3.r4.g913c85a4
+	pkgver = 2.4.5.r14.g48e8267e
 	pkgrel = 1
 	url = https://github.com/SteamRE/DepotDownloader
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = dotnet-sdk>=5
-	depends = dotnet-runtime>=5
+	makedepends = dotnet-sdk>=6
+	depends = dotnet-runtime>=6
 	provides = depotdownloader
 	options = !strip
 	source = git+https://github.com/SteamRE/DepotDownloader.git

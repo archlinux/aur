@@ -1,14 +1,14 @@
 # Maintainer: js6pak <kubastaron@hotmail.com>
 
 pkgname=depotdownloader-git
-pkgver=2.4.3.r4.g913c85a4
+pkgver=2.4.5.r14.g48e8267e
 pkgrel=1
 pkgdesc="Steam depot downloader utilizing the SteamKit2 library"
 arch=('x86_64')
 url="https://github.com/SteamRE/DepotDownloader"
 license=('GPL2')
-depends=('dotnet-runtime>=5')
-makedepends=('git' 'dotnet-sdk>=5')
+depends=('dotnet-runtime>=6')
+makedepends=('git' 'dotnet-sdk>=6')
 provides=("${pkgname%-git}")
 
 options=("!strip")
@@ -30,5 +30,5 @@ build() {
 package() {
   cd "DepotDownloader/DepotDownloader"
 
-  install -D -m755 "bin/Release/net5.0/linux-x64/publish/DepotDownloader" "$pkgdir/usr/bin/depotdownloader"
+  install -D -m755 "bin/Release/net6.0/linux-x64/publish/DepotDownloader" "$pkgdir/usr/bin/depotdownloader"
 }
