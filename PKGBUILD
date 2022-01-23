@@ -1,40 +1,48 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+
 pkgname=hugin-hg
-pkgver=7184.d888313bfc31
+pkgver=r8405.de3609447749
 pkgrel=1
 pkgdesc="A frontend to the panorama-tools"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="http://hugin.sourceforge.net/"
-license=('GPL')
-depends=('openexr' 'exiv2' 'wxgtk' 'boost-libs' 'libpano13>=2.9.19' 'python2' \
-         'lensfun' 'glew' 'enblend-enfuse' 'perl-exiftool' 'desktop-file-utils')
-makedepends=('mercurial' 'cmake' 'boost' 'swig')
-optdepends=('autopano-sift-c: automatic control point generator (obsolete)')
-provides=('hugin')
-conflicts=('hugin')
-install=hugin.install
-source=('hg+http://hg.code.sf.net/p/hugin/hugin')
-md5sums=('SKIP')
+license=(GPL)
+depends=(wxgtk3 boost-libs libtiff libpano13 libjpeg libpng openexr vigra
+         exiv2 glew sqlite lcms2 lapack fftw glu libxi libxmu python
+         lensfun enblend-enfuse)
+makedepends=(mercurial cmake boost tclap mesa swig)
+optdepends=('perl-image-exiftool: GPano tags support'
+            'dcraw: RAW import using dcraw'
+            'darktable: RAW import using darktable'
+            'rawtherapee: RAW import using rawtherapee')
+provides=(hugin)
+conflicts=(hugin)
+source=("hg+http://hg.code.sf.net/p/hugin/hugin")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/hugin"
-  echo $(hg identify -n).$(hg identify -i)
+  cd "${srcdir}/hugin"
+  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+}
+
+prepare() {
+  cd "${srcdir}/hugin"
+  [[ -d build ]] || mkdir build
 }
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake "$srcdir/hugin" \
+  cd "${srcdir}/hugin/build"
+  cmake .. -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_LAPACK=yes \
     -DBUILD_HSI=ON \
-    -DCMAKE_SHARED_LINKER_FLAGS="-lpthread"
+    -DUSE_GDKBACKEND_X11=ON \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3
   make
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "${srcdir}/hugin/build"
   make DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
