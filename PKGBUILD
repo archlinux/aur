@@ -4,7 +4,7 @@
 
 pkgname='karbowanecwallet-bin'
 _pkgname='KarbowanecWallet'
-pkgver=1.7.8
+pkgver=1.7.9
 pkgrel=1
 pkgdesc='Karbowanec Wallet - wallet for Karbo (Karbovanets) cryptocurrency'
 arch=('x86_64')
