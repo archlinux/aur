@@ -1,4 +1,4 @@
-pkgbase = snake
+pkgbase = console_snake
 	pkgdesc = UNIX sn@ke game
 	pkgver = 1
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = snake
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = snake
+pkgname = console_snake
