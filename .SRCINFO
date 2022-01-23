@@ -1,0 +1,18 @@
+pkgbase = zsh-git-prompt-hs-git
+	pkgdesc = Informative git prompt for zsh (haskell support only)
+	pkgver = v0.5.r0.g0a6c8b6
+	pkgrel = 1
+	url = https://github.com/olivierverdier/zsh-git-prompt
+	install = zsh-git-prompt-hs-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = stack
+	makedepends = git
+	depends = zsh
+	depends = git
+	conflicts = zsh-git-prompt
+	conflicts = zsh-git-prompt-git
+	source = git+https://github.com/olivierverdier/zsh-git-prompt#branch=master
+	sha256sums = SKIP
+
+pkgname = zsh-git-prompt-hs-git

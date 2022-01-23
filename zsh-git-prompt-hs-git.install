@@ -1,0 +1,12 @@
+post_install() {
+	echo ""
+	echo "	The plugin was installed to /usr/share/zsh/plugins/zsh-git-prompt"
+	echo "	To use it, source the file \"zshrc.sh\" inside the directory above in your zsrhc"
+	echo "	You must also set the GIT_PROMPT_EXECUTABLE=\"haskell\" env variable"
+	echo ""
+}
+
+post_upgrade() {
+	post_install
+}
+
