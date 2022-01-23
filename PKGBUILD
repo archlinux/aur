@@ -1,7 +1,7 @@
 # Maintainer: sTiKyt <stikyt@protonmail.com>
 pkgname=draquet-polyglot-bin
 pkgver=3.5
-pkgrel=2
+pkgrel=1
 
 pkgdesc="PolyGlot is a conlang construction toolkit"
 arch=('x86_64')
