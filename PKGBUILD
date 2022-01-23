@@ -2,7 +2,7 @@
 
 pkgbase="scrutiny"
 pkgname=("scrutiny" "scrutiny-collector")
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds"
 url="https://github.com/AnalogJ/scrutiny"
@@ -21,7 +21,7 @@ source=(
     "scrutiny-collector-metrics.env"
 )
 sha512sums=(
-    "a31e7463290499c33ce66b440a21f478d457ebd11c5313e6af3b380bfd4ba6481e7dfc86f2379357d115c89b4303678967784e3bb38e53a2534bb4e574934823"
+    "25e9789b58833d4eff7074b545c05500086f2fc04be836b3024ccde0b40e33f4612d3e7403ff4bc773f79269efc5e15d9ec73f47af1a1fe65d8d0dd7caf5be7b"
     "0a0c3765241e2beacbb2a3a3a4545dd4db465917897038e4e7a941c7d6bfe25439dffcb2fd6c4e11f185cf550eb9748091d9805463bf8ceb07971b275722088a"
     "b82b91733e01cd9384c460aa3b3519f9c99c3f854198fe8f80968c0b607bd272a71ecc4841b2538f0ad13ef0594d5c4cbceb147e116ea141ad360fc4d1b6ef02"
     "b98bedd6ec3d56d052bd2cb8c410f17da9a8254b64e3a759e45b3ea0d2a95ff65763274b489d93faba77f88420e362189b71bd970acf90061cb8c28a0f063fe1"
@@ -69,7 +69,7 @@ package_scrutiny-collector() {
 }
 
 package_scrutiny() {
-    depends+=("scrutiny-web-frontend")
+    depends+=("scrutiny-web-frontend==${pkgver}")
     backup=("etc/scrutiny/scrutiny.yaml")
 
     cd "scrutiny-${pkgver}"
