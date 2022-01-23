@@ -1,7 +1,7 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
 
 pkgname=tachidesk-jui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("${url}/releases/download/v${pkgver}/${_jar}"
         "${pkgname}.desktop"
         "${pkgname}.png"
         "${pkgname}.sh")
-sha256sums=('ecf44b840c102015207d9e3e84605284dc077eb1b478dec923841dbcd566af34'
+sha256sums=('2e98530a4c1b14195ecad4c89ba3527e4ecee0b51482244b37f9b4bb725ba535'
             'ce97f5451bc5cc13a17c7fbc4302ff5c7d5761f7981dc85abca5005add76a84b'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
             '2cb80b6ddf85b7697626b77d4bec0946734dc7a8306934fd58e993a5f3eeeb2c')
