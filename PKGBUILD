@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2243
+pkgver=1.7.2264
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -30,6 +30,7 @@ depends=(
   soundtouch
   wxgtk3
   wayland
+  vulkan-headers
   rapidyaml-git # only exists in the AUR
 )
 makedepends=(
@@ -48,7 +49,6 @@ git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
 git+https://github.com/mozilla/cubeb.git
-git+https://github.com/KhronosGroup/Vulkan-Headers.git
 git+https://github.com/KhronosGroup/glslang.git
 )
 sha256sums=(SKIP)
@@ -69,7 +69,6 @@ prepare()
   git config submodule.https://github.com/mozilla/cubeb.git.url cubeb
   git config submodule.https://github.com/ocornut/imgui.git.url imgui
   git config submodule.https://github.com/KhronosGroup/glslang.git glslang
-  git config submodule.https://github.com/KhronosGroup/Vulkan-Headers.git Vulkan-Headers
   git submodule update
 }
 
@@ -84,6 +83,7 @@ build()
     -DUSE_SYSTEM_YAML=TRUE \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DWAYLAND_API=ON \
+    -USE_VULKAN=ON \
     -GNinja \
     -DPACKAGE_MODE=ON \
     -DXDG_STD=TRUE \
@@ -98,7 +98,6 @@ package()
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
