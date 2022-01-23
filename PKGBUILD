@@ -34,18 +34,23 @@ makedepends=(
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
-prepare () {
+_meson_configure() {
+	local _builddir="$1"
 	CFLAGS="$CFLAGS -fsanitize=address,undefined" arch-meson \
 		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
-		"${pkgname}" build
+		"${pkgname}" "${_builddir}"
+}
+
+prepare () {
+	_meson_configure build-pkgver
 }
 
 pkgver () {
 	(
 		set -o pipefail
-		meson introspect --projectinfo build \
+		meson introspect --projectinfo build-pkgver \
 		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
 	)
 	cd "${pkgname}"
@@ -53,6 +58,7 @@ pkgver () {
 }
 
 build () {
+	_meson_configure build
 	meson compile -C build
 }
 
