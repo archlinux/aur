@@ -8,6 +8,7 @@ pkgdesc="Hex to binary converter."
 arch=('any')
 url="https://github.com/Keidan/hex2bin"
 license=('GPL3')
+replaces=('hex2bin')
 depends=('gcc')
 makedepends=('git' 'make' 'cmake')
 source=("$pkgname::git+https://github.com/Keidan/hex2bin")
