@@ -2,4 +2,4 @@
 /src/
 
 *.pkg.tar.*
-/draw.war
+/draw-*.war
