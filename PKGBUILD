@@ -1,34 +1,21 @@
 # Submitter: Germán Osella Massa <gosella@gmail.com>
 
-pkgname=('python-mpld3' 'python2-mpld3')
-pkgver=0.5.2
+pkgname=('python-mpld3')
+pkgver=0.5.7
 pkgrel=1
 pkgdesc='D3 Viewer for Matplotlib'
 arch=('any')
 url='http://mpld3.github.io/'
 license=('BSD 3-clause')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python' 'python-matplotlib' 'python-jinja')
+makedepends=('python-setuptools')
 pypiname='mpld3'
 source=("https://pypi.org/packages/source/${pypiname:0:1}/${pypiname}/${pypiname}-${pkgver}.tar.gz")
-md5sums=('7c2a1900563b818ab9a27146ab749973')
+md5sums=('d84e5c4087c3b288470dc00f4a55598a')
 
-prepare() {
-  cd "$srcdir/"
-  cp -a "mpld3-${pkgver}" "mpld3-${pkgver}-py2"
-}
-
-package_python-mpld3() {
-  depends=('python' 'python-matplotlib' 'python-jinja')
-
+package() {
   cd "$srcdir/mpld3-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
-}
-
-package_python2-mpld3() {
-  depends=('python2' 'python2-matplotlib' 'python2-jinja')
-
-  cd "$srcdir/mpld3-${pkgver}-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
