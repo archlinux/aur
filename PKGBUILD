@@ -1,6 +1,6 @@
 pkgname='alacritty-sixel-git'
 _pkgname="alacritty"
-pkgver=0.10.0.1880.gc96047dc
+pkgver=0.11.0.1944.g52fae2dd
 pkgrel=1
 epoch=1
 arch=('x86_64' 'i686')
