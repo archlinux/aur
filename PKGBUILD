@@ -2,7 +2,7 @@
 
 pkgname=joplin-appimage
 pkgver=2.6.10
-pkgrel=5
+pkgrel=6
 pkgdesc="The latest stable AppImage of Joplin - a cross-platform note taking and to-do app"
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
@@ -21,7 +21,6 @@ sha512sums=(
 _filename="Joplin-${pkgver}.AppImage"
 _squashfs_desktop_file="@joplinapp-desktop.desktop"
 _desktop_file="/usr/share/applications/joplin.desktop"
-_no_desktop_integration_file="/usr/share/appimagekit/no_desktopintegration"
 _appimage_name=$(echo "${_filename}"|sed -E 's/-[0-9]*.[0-9]*.[0-9]*//')
 _install_path="/opt/appimages/${_appimage_name}"
 
@@ -40,9 +39,10 @@ package() {
     find "${pkgdir}/usr/share/icons" -type f -name "@joplinapp-desktop.png" -exec chmod 644 {} \;
 
     # install .desktop file and image file
+    # disable appimage desktop integration: https://github.com/AppImage/AppImageSpec/blob/master/draft.md#desktop-integration
     # disable AppimageLauncher integration prompt
     # https://github.com/TheAssassin/AppImageLauncher/issues/78#issuecomment-466390939
-    sed -i -E "s|Exec=${_install_path}|Exec=env APPIMAGELAUNCHER_DISABLE=1 /usr/bin/joplin-desktop|" "squashfs-root/${_squashfs_desktop_file}"
+    sed -i -E "s|Exec=${_install_path}|Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/joplin-desktop|" "squashfs-root/${_squashfs_desktop_file}"
     install -Dm644 "squashfs-root/${_squashfs_desktop_file}" "${pkgdir}/${_desktop_file}"
     install -Dm755 "${_filename}" "${pkgdir}/${_install_path}"
     mkdir "${pkgdir}/usr/bin/" && chmod 755 "${pkgdir}/usr/bin/"
@@ -54,6 +54,4 @@ package() {
     # disable AppImage integration prompt
     # https://github.com/electron-userland/electron-builder/issues/1962
     install -dm755 "${pkgdir}/usr/share/appimagekit"
-    touch "${pkgdir}/${_no_desktop_integration_file}"
-    chmod 644 "${pkgdir}/${_no_desktop_integration_file}"
 }
