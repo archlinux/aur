@@ -1,0 +1,27 @@
+pkgbase = funkin
+	pkgdesc = A game originally made for Ludum Dare 47 "Stuck in a Loop"
+	pkgver = v0.2.7.1
+	pkgrel = 1
+	url = https://github.com/ninjamuffin99/Funkin
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = haxe
+	provides = funkin
+	conflicts = funkin
+	source = git+https://github.com/ninjamuffin99/Funkin.git#tag=v0.2.7.1
+	source = APIStuff.hx
+	source = funkin.sh
+	source = funkin.desktop
+	sha256sums = SKIP
+	sha256sums = ade2e5b25db77b404a6ed074d59d7fa80c1cbb627e18e1cc3bf6177020eee92f
+	sha256sums = 75ef6c467feac3a57848b2f01677d88be40b3b79a826cb0d450d6f5fd7b11c1f
+	sha256sums = 7fe0fa2ac1312201c93f41cf9395c46703abf989e7f65783ff95e0d3b8c183e6
+
+pkgname = funkin
