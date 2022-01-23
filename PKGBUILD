@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://karbo.io'
 license=('custom')
 depends=('qt5-networkauth')
-source=("$pkgname-$pkgver.deb::https://github.com/seredat/karbowanecwallet/releases/download/v.1.7.8/Karbo-wallet-ubuntu-20.04-v.1.7.9.tar.gz")
+source=("$pkgname-$pkgver.deb::https://github.com/seredat/karbowanecwallet/releases/download/v.1.7.9/Karbo-wallet-ubuntu-20.04-v.1.7.9.tar.gz")
 sha256sums=('4F4043D6E2643C1674600DADF0254F06F763892F3DCCE80A1B3D3F6B9FC6EB55')
 
 prepare() {
