@@ -2,13 +2,13 @@
 
 pkgname=terra-station-bin
 pkgver=3.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Web Application to interact with Terra Core"
 url="https://www.terra.money/"
 arch=('x86_64')
 license=('Unlicensed')
 depends=('electron')
-source=("https://github.com/terra-money/station/releases/download/v$pkgver/station-electron-1.1.1.x86_64.rpm")
+source=("https://github.com/terra-money/station-legacy/releases/download/v$pkgver/station-electron-1.1.1.x86_64.rpm")
 sha256sums=('f92f7de68f7fbd406908dca1b400be62bf4b00bdf67f08c9252e0a908dd42716')
 
 package() {
@@ -19,4 +19,3 @@ package() {
 	chmod 644 "${pkgdir}/usr"
 	chmod +x "${pkgdir}/opt/Terra Station/station-electron"
 }
-
