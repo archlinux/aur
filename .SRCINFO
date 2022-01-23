@@ -2,15 +2,14 @@ pkgbase = octave-divand
 	pkgdesc = divand performs an n-dimensional variational analysis (interpolation) of arbitrarily located observations.
 	pkgver = 1.1.2
 	pkgrel = 3
-	url = https://octave.sourceforge.net/divand/
+	url = https://octave.sourceforge.io/divand
 	install = octave-divand.install
 	arch = any
 	groups = octave-forge
-	license = GPL
+	license = GPL2
 	depends = octave>=3.4.0
 	noextract = divand-1.1.2.tar.gz
 	source = https://downloads.sourceforge.net/octave/divand-1.1.2.tar.gz
-	sha256sums = afaa9069daef3ae0fd9a9bb1031b7c2fbc03e7e7951245eef9d4b53364f9aa5a
+	sha512sums = 341a93bcdaf5e302bc02a53a88586887d372c0d1a319a2690acf5fe2d467e19b0af3ef38f3d385773f2becc0d0cb459bc46030fed31fa10e0b0b4ff096336b5e
 
 pkgname = octave-divand
-
