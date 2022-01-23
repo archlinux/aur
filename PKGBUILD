@@ -3,7 +3,7 @@
 
 pkgname="samrewritten-git"
 _pkgname="SamRewritten"
-pkgver=r135.cbc9583
+pkgver=r236.3e8d088
 pkgrel=1
 pkgdesc="A Steam Achievement Manager For Linux."
 arch=("any")
@@ -28,14 +28,6 @@ build() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/lib/"
-    # Only copy required files. (Except for Glade files, as more may be added in the future.)
-    cp -r --parents ${_pkgname}/{LICENSE,README.MD,bin/{launch.sh,libsteam_api.so,samrewritten},glade/*.glade,assets/icon_256.png} ${pkgdir}/usr/lib/
-    install -Dm644 ${_pkgname}/assets/icon_256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/samrewritten.png
-    install -Dm644 ${_pkgname}/assets/icon_64.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/samrewritten.png
-    # Executable
-    install -dm755 ${pkgdir}/usr/bin
-    ln -s /usr/lib/${_pkgname}/bin/launch.sh ${pkgdir}/usr/bin/samrewritten
-    # Desktop Entry
-    install -Dm644 ${_pkgname}/package/samrewritten.desktop ${pkgdir}/usr/share/applications/samrewritten.desktop
+    cd ${_pkgname}
+    make DESTDIR=${pkgdir} install
 }
