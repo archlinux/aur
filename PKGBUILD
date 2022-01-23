@@ -1,6 +1,6 @@
 #Maintainer Ivan Porto Carrero <ivan@flanders.co.nz> (@casualjim)
 pkgname=go-swagger
-pkgver=0.28.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="Toolkit for swagger in golang (go-swagger)"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go' 'gzip' 'tar')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/go-swagger/go-swagger/archive/v${pkgver}.tar.gz")
-sha256sums=('174a3e281058bc10cce9eb1359b4453778aa78a7c54ae25c0a3c42080d4565df')
+sha256sums=('21119eca2f3381c81104539e72ca9214daa9903c36e22478f7bc7da64fc6caa5')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
