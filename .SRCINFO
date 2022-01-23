@@ -1,5 +1,5 @@
 pkgbase = git-run-command-patch-git
-	pkgdesc = A fast distributed version control system
+	pkgdesc = A fast distributed version control system with patch applied for customizing git add --patch behaviour
 	pkgver = 2.35.0.rc2.r2.g297ca895a2
 	pkgrel = 1
 	url = http://git-scm.com/
