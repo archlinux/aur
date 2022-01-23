@@ -1,16 +1,17 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=sqrxz
 pkgver=0.996a
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast paced jump'n'run which will please the hardcore gamer amongst you"
 arch=('i686' 'x86_64')
-url="http://sqrxz.de"
+url="https://www.sqrxz.de/sqrxz/"
 license=('custom: Freeware')
 depends=('sdl_mixer' 'zlib')
 optdepends=('libmodplug: better music decoder')
 install=$pkgname.install
-source=("http://www.retroguru.com/$pkgname/$pkgname-v0996a-ubuntu.tar.gz"
+source=("https://www.retroguru.com/$pkgname/$pkgname-v0996a-ubuntu.tar.gz"
         "$pkgname.png"
         "$pkgname.sh"
         "$pkgname.desktop")
