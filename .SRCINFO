@@ -1,0 +1,14 @@
+pkgbase = python-timeslot
+	pkgdesc = Time slots/intervals with an arbitrary start and stop
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ErikBjare/timeslot
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	provides = python-timeslot
+	source = https://pypi.org/packages/source/t/timeslot/timeslot-0.1.2.tar.gz
+	sha256sums = a2ac998657e3f3b9ca928757b4906add2c05390c5fc14ed792bb9028d08547b1
+
+pkgname = python-timeslot
