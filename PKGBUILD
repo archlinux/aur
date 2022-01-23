@@ -83,7 +83,7 @@ PATCH_MATCH[0]="^5.1[0123456].*$"\
 PATCH[1]="fourteen.patch"\
 PATCH_MATCH[1]="^5\.1[456].*$"\
 PATCH[2]="sixteen.patch"\
-PATCH_MATCH[2]="^5\.16.*$' dkms.conf
+PATCH_MATCH[2]="^5\.16.*$"' dkms.conf
 }
 
 build() {
