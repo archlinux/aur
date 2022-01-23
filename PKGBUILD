@@ -1,6 +1,6 @@
 # Maintainer: Llathasa Veleth <llathasa at outlook dot com>
 pkgname=disfetch
-pkgver=3.2
+pkgver=3.3
 pkgrel=1
 pkgdesc='Yet another *nix distro fetching program, but less complex.'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/llathasa-veleth/$pkgname"
 license=('MIT')
 depends=('xorg-xprop')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('1d8214d93990c1fd4042a611471543040ef00bd19eb24a44a094feef8921df70')
+sha256sums=('53ee97882261bf4f090175ce54236d668a6b372240e88aa106fea01a7a50f1c3')
 
 package() {
   cd "$pkgname-$pkgver"
