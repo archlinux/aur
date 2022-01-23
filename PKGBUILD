@@ -4,7 +4,7 @@
 
 _name=x11docker
 pkgname=$_name
-pkgver=6.10.0
+pkgver=7.0.1
 _mainfolder=$pkgname-$pkgver
 pkgrel=1
 pkgdesc='Run GUI applications and desktops in Docker. Focus on security.'
@@ -29,16 +29,13 @@ optdepends=('cups: --printer support'
             'xorg-server: --xorg, --xdummy support')
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('028237adb274feb9cccaa02986f6a8dab3c11f7327e1a5616b79f898f3f85763')
+sha256sums=('a6943b3689f1e35f691c98fe4e4fa028f7124409fc2b9bc9f7972b1e4f172f88')
 
 package() {
   cd "$srcdir/$_mainfolder"
 
   # I don't use `x11docker --install` on purpose here since it wasn't designed
   # for packaging but rather for directly installing the program.
-
-  # I don't install `x11docker-gui` since I don't use it and it depends on
-  # another program that I had to package first.
 
   install -Dm755 x11docker              -t "$pkgdir/usr/bin"
   install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$_name"
