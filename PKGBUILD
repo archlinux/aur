@@ -1,6 +1,6 @@
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
-pkgver=0.2.9
+pkgver=0.1.6
 pkgrel=3
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
@@ -32,7 +32,7 @@ build(){
   cargo build --release --locked
 }
 
-package() {  
+package() {
   install -D -m755 "$srcdir/lockbook/target/release/lockbook-desktop" "$pkgdir/usr/bin/lockbook-desktop"
   install -D -m644 "$srcdir/lockbook/graphics/SVGs/dark-1.svg" "$pkgdir/usr/share/pixmaps/dark-1.svg"
   install -D -m644 "$srcdir/aur-lockbook-desktop/lockbook-desktop.desktop" "$pkgdir/usr/share/applications/lockbook-desktop.desktop"
