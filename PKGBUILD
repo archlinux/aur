@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr
-pkgver=16.0.0.r0.gece4d74c
-pkgrel=4
+pkgver=17.0.0.r0.ga30b2ae1
+pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
 url="https://github.com/alvr-org/ALVR"
@@ -11,10 +11,9 @@ depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=('alvr'::'git+https://github.com/alvr-org/ALVR.git#tag=v16.0.0'
-	"${pkgname}.patch")
-md5sums=('SKIP'
-	'8a2815f250ac231bb7252599771352f6')
+_tag="v17.0.0"
+source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=${_tag}")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -24,7 +23,7 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname}"
 
-	patch --strip=1 --input=$srcdir/${pkgname}.patch
+	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -34,12 +33,12 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 
-	# export ALVR_ROOT_DIR=/usr
+	export ALVR_ROOT_DIR=/usr
 
-	# export ALVR_LIBRARIES_DIR=$ALVR_ROOT_DIR/lib/
+	export ALVR_LIBRARIES_DIR=$ALVR_ROOT_DIR/lib/
 
-	# export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
-	# export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
+	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
+	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
 
 	cargo build \
 		--frozen \
@@ -94,7 +93,7 @@ package() {
 	install -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps/
 	cp -r icons/* $pkgdir/usr/share/icons/
 
-	install -Dm644 packaging/firewall/$pkgname-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${pkgname}.xml"
+	install -Dm644 packaging/firewall/$pkgname-firewalld.xml "$pkgdir/usr/lib/firewalld/services/${_pkgname}.xml"
 	install -Dm644 packaging/firewall/ufw-$pkgname -t "$pkgdir/etc/ufw/applications.d/"
 
 	install -Dm755 packaging/firewall/alvr_fw_config.sh -t "$pkgdir/usr/lib/alvr/"
