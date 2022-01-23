@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-settings-git
-pkgver=124.5efc0a6
+pkgver=0.1.1.alpha.1.gd1abce6
 pkgrel=1
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 arch=(any)
@@ -19,7 +19,7 @@ prepare() {
 }
 pkgver() {
   cd "$srcdir/$pkgname"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --tags --long | sed -e 's/^v//' -e 's/-/./g'
 }
 build() {
    arch-meson "$srcdir/$pkgname" build
