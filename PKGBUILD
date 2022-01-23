@@ -2,7 +2,7 @@
 pkgname=meowsql
 pkgver=0.4.13
 _pkgver="v${pkgver}-alpha"
-pkgrel=1
+pkgrel=2
 pkgdesc="An attempt to port a very useful GUI database client HeidiSQL to C++/Qt"
 arch=('x86_64')
 url="https://github.com/ragnar-lodbrok/meow-sql"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
-	qmake-qt5 meow-sql.pro
+	qmake-qt5 meowsql.pro
 	make
 }
 
