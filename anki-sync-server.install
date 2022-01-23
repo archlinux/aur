@@ -32,6 +32,10 @@ post_remove(){
   getent passwd anki-sync-server &>/dev/null && userdel anki-sync-server || true
   getent group anki-sync-server &>/dev/null && groupdel anki-sync-server || true
 
+  # remove servers from sites-enabled
+  sudo find /etc/nginx/sites-enabled \( -name "anki-sync-server-http" -or -name "anki-sync-server-https" \) -delete
+  sudo find /etc/nginx/sites-enabled -type d -empty -delete
+
   echo "==================================================================="
   echo "rm -rf /opt/anki-sync-server to remove the database and cache files"
   echo "==================================================================="
