@@ -2,14 +2,14 @@
 # Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=1.59.1
+pkgver=1.60
 pkgrel=1
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
 url='https://github.com/fatg3erman/RompR/'
 license=('custom')
 depends=('imagemagick'
-         'php' # note that deps php-json, php-curl, php-xml and php-mbstring are included in php
+         'php' # note that dependencies php-json, php-curl, php-xml and php-mbstring are included in php
          'php-sqlite'
          'php-gd'
          'php-intl')
@@ -17,7 +17,7 @@ optdepends=('apache: webserver to serve app'
             'nginx: webserver to serve app'
             'mysql: alternate database platform to sqlite')
 source=("https://github.com/fatg3erman/RompR/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('3f526881ed72a6b916eb47bf27b7a7131421176b7e5a832d0dbb943d8da9784c')
+sha256sums=('721b0a1e021236600873ca39ffd781098df51c85f87cba8f64352907df7913fd')
 install="${pkgname}.install"
 
 package() {
