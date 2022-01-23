@@ -16,9 +16,9 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus' >fcitx5.conf
+export GLFW_IM_MODULE=ibus' >fcitx5.sh
 }
 
 package() {
-  install -Dm644 fcitx5.conf "$pkgdir/etc/profile.d/fcitx5.sh"
+  install -Dm644 fcitx5.sh "$pkgdir/etc/profile.d/fcitx5.sh"
 }
