@@ -1,12 +1,12 @@
 pkgbase = gcs
 	pkgdesc = WYSIWYG editor for building character sheets for GURPS 4th Edition
-	pkgver = 4.36.0
+	pkgver = 4.37.0
 	pkgrel = 1
 	url = https://gurpscharactersheet.com
 	arch = x86_64
 	license = MPL2
 	depends = java-runtime>=15
-	source = gcs-4.36.0.deb::https://github.com/richardwilkes/gcs/releases/download/v4.36.0/gcs_4.36.0-1_amd64.deb
-	sha256sums = 6a653df3b53854fda770251aa0243d96059eece8e856961607b3b8efed88d6ee
+	source = gcs-4.37.0.deb::https://github.com/richardwilkes/gcs/releases/download/v4.37.0/gcs_4.37.0-1_amd64.deb
+	sha256sums = bbd4464b90236f68d9b5a7ffbf72608b6df2f714020cce492b77c9b0213e444d
 
 pkgname = gcs
