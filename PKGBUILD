@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.0.9
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
@@ -16,17 +16,17 @@ makedepends=('unarchiver')
 backup=()
 options=('!strip')
 install=${pkgname}.install
-source=("${pkgname/pc-wine/PC_release}.zip::http://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
+source=("${pkgname/pc-wine/PC_release}-${pkgver}.zip::http://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('89b52cdc43bbfdd3c75c634dcddc1933ffb7f69571322e883b3815ac67af3d82'
+sha256sums=('8190c636cc7d6e7e59ae44f1e9458506867f9ff4e4057c10f12f17ef7e2887b0'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
-noextract=("${pkgname/pc-wine/PC_release}.zip"
+noextract=("${pkgname/pc-wine/PC_release}-${pkgver}.zip"
             "icons.tar.gz")
 
 prepare() {
-    unar -e GBK "${srcdir}/${pkgname/pc-wine/PC_release}.zip"
+    unar -e GBK "${srcdir}/${pkgname/pc-wine/PC_release}-${pkgver}.zip"
 }
 
 package() {
