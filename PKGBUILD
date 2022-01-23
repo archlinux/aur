@@ -1,4 +1,4 @@
-# Maintainer: Vasil Bakalov <jens300304@gmail.com>
+# Maintainer: Stella <jens300304@gmail.com>
 pkgname=python-wtc
 url="https://github.com/circleguard/wtc-lzma-compressor"
 pkgver=1.2.1
