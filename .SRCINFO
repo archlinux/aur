@@ -1,8 +1,8 @@
 pkgbase = octave-fl-core
-	pkgdesc = The package contains code for basic functions in Fuzzy Logic for Octave.
+	pkgdesc = The package contains code for basic functions in Fuzzy Logic for Octave
 	pkgver = 1.0.0
 	pkgrel = 4
-	url = https://octave.sourceforge.net/fl-core/
+	url = https://octave.sourceforge.io/fl-core
 	install = octave-fl-core.install
 	arch = any
 	groups = octave-forge
@@ -11,8 +11,7 @@ pkgbase = octave-fl-core
 	noextract = fl-core-1.0.0.tar.gz
 	source = https://downloads.sourceforge.net/octave/fl-core-1.0.0.tar.gz
 	source = fl_compose.patch
-	sha256sums = 5ec025ecdc05aede186fad48c28fe8053888e6571ba557a22173649f7c0c0a1d
-	sha256sums = c957966877e08b5c7e21a57c57b713f8c30ddc65227b5ac1f3347ce835b11a97
+	sha512sums = a8eed986eae000aefd371e198e8f49afd18af9931df70c5142f829765f681dc75ebfa7bc920a1ffcf98cca1e7676f6dc6a9fbf2a8c6dd626cb21eb76f1929cbb
+	sha512sums = c92b0094520075a7363b363ff4a433fe71312a7a95ceecd360ccb8b47065b25a330b25410e1eb36b3f6964df369cdf71a6f30fbc017c1af0bc24d0f989447831
 
 pkgname = octave-fl-core
-
