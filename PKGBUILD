@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-asan-git
-pkgver=0.15.0.r9.g9988eb33
+pkgver=0.16.0.r5320.6cdf843a
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version, with address sanitizer)'
@@ -31,24 +31,28 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
-source=("${pkgname}::git+${url}")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}.git")
+md5sums=('SKIP')
 
-pkgver () {
-	cd "${pkgname}"
-	(
-		set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
-}
-
-build () {
+prepare () {
 	CFLAGS="$CFLAGS -fsanitize=address,undefined" arch-meson \
 		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
 		"${pkgname}" build
+}
+
+pkgver () {
+	(
+		set -o pipefail
+		meson introspect --projectinfo build \
+		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
+	)
+	cd "${pkgname}"
+	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build () {
 	meson compile -C build
 }
 
