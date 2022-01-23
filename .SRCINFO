@@ -1,13 +1,13 @@
 pkgbase = upliftpowerplay
 	pkgdesc = UPP: A tool for parsing, dumping and modifying data in Radeon PowerPlay tables
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sibradzic/upp
 	arch = x86_64
 	license = GPL3
 	depends = python-click
-	depends = python-registry
 	depends = python
+	optdepends = python-registry: reading "soft" PowerPlay table from Windows registry
 	source = https://files.pythonhosted.org/packages/source/u/upp/upp-0.1.3.tar.gz
 	md5sums = 0ac9329d7e247229a2a3979197422498
 
