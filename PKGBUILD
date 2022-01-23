@@ -2,7 +2,7 @@
 pkgname=meowsql
 pkgver=0.4.13
 _pkgver="v${pkgver}-alpha"
-pkgrel=2
+pkgrel=3
 pkgdesc="An attempt to port a very useful GUI database client HeidiSQL to C++/Qt"
 arch=('x86_64')
 url="https://github.com/ragnar-lodbrok/meow-sql"
@@ -22,10 +22,10 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}-${pkgrel}"
-	install -D -m755 meow-sql ${pkgdir}/usr/bin/meowsql
-	install -D -m644 meowsql.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/meowsql.svg
-	install -D -m644 meowsql.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/meowsql.png
-	install -D -m644 meowsql.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+	install -D -m755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+	install -D -m644 ${pkgname}.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg
+	install -D -m644 ${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
+	install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 	install -D -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
 	install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
