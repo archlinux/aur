@@ -42,6 +42,6 @@ package() {
 	#cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/"
 
-    install -D snake "$pkgdir/usr/bin/snake"
+    install -D console_snake "$pkgdir/usr/bin/snake"
 }
  
