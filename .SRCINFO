@@ -1,8 +1,8 @@
 pkgbase = sqrxz3
 	pkgdesc = A fast paced jump'n'run (Part III - 'Adventure for Love')
 	pkgver = 1.05r
-	pkgrel = 2
-	url = http://sqrxz.de
+	pkgrel = 3
+	url = https://www.sqrxz.de/sqrxz-3/
 	install = sqrxz3.install
 	arch = i686
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = sqrxz3
 	sha256sums = 65991c5ccf77f31b012be5d7e8ce4a34c5dc2714e2700ebe11e81b42bfec9130
 
 pkgname = sqrxz3
-
