@@ -1,7 +1,7 @@
 # Maintainer Vincent Schweiger <vincent.schweiger@xolley.de>
 
 pkgname=easyaur
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Easy-to-use wrapper useful for building packages and managing custom repositories"
 url="https://github.com/legendary-cookie/easyaur"
@@ -10,7 +10,7 @@ source=(
     "https://github.com/legendary-cookie/easyaur/archive/refs/tags/$pkgver.tar.gz"
 )
 arch=('any')
-sha256sums=('31a5a11a3c7c8d72ee0ef7fdcf404432db98b1b6aba8ec8eb9609f2abc95449c')
+sha256sums=('0ac714414217f6246a7a85556742ce6b537f88594af034c3ba423e1a8c41a407')
 depends=(
 	asp git pacman bash
 )
