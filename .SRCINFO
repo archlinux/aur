@@ -26,7 +26,7 @@ pkgbase = linux-mainline-anbox
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = d4ca1f9ebce6cb980e498ced7b6f64c0964951b204b6c030a45b8bbbc821b0cc
+	sha256sums = b820eeb0c62dff6c6f4fbcbf423b75f83335ede620462c29a5d96ed2296a78a8
 
 pkgname = linux-mainline-anbox
 	pkgdesc = The Linux Mainline kernel and modules with ashmem and binder enabled
