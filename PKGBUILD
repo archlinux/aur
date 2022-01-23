@@ -15,7 +15,7 @@ arch=(any)
 source=("git+$url" "git+${url/%.sh/sh-contrib}" 'blesh-update.sh')
 md5sums=('SKIP'
          'SKIP'
-         'b33329750a4d9001859f618929926302')
+         'cfe4b50a3b3c66a69af64059fb4a7683')
 install=blesh.install
 
 pkgver() {
