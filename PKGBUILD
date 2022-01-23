@@ -27,6 +27,7 @@ build() {
 
 package() {
     cd "Mopidy-TuneIn-${pkgver}"
+
     PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
     install -Dm644 README.rst "${pkgdir}/usr/share/doc/mopidy-tunein/README.rst"
