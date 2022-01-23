@@ -1,6 +1,6 @@
 pkgbase = ttf-golos
 	pkgver = 2.000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.paratype.com/fonts/pt/golos-ui
 	arch = any
 	license = custom:OFL
