@@ -1,7 +1,7 @@
 pkgbase = sqrxz3
 	pkgdesc = A fast paced jump'n'run (Part III - 'Adventure for Love')
 	pkgver = 1.05r
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.sqrxz.de/sqrxz-3/
 	install = sqrxz3.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = sqrxz3
 	depends = zlib
 	optdepends = libmodplug: better music decoder
 	options = !strip
-	source = http://www.retroguru.com/sqrxz3/sqrxz3-v.latest-ubuntu.tar.gz
+	source = https://www.retroguru.com/sqrxz3/sqrxz3-v.latest-ubuntu.tar.gz
 	source = sqrxz3.png
 	source = sqrxz3.sh
 	source = sqrxz3.desktop

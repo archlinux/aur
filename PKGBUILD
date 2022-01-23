@@ -3,7 +3,7 @@
 
 pkgname=sqrxz3
 pkgver=1.05r
-pkgrel=3
+pkgrel=4
 pkgdesc="A fast paced jump'n'run (Part III - 'Adventure for Love')"
 arch=('i686' 'x86_64')
 url="https://www.sqrxz.de/sqrxz-3/"
@@ -11,7 +11,7 @@ license=('custom: Freeware')
 depends=('sdl_mixer' 'zlib')
 optdepends=('libmodplug: better music decoder')
 install=$pkgname.install
-source=("http://www.retroguru.com/$pkgname/$pkgname-v.latest-ubuntu.tar.gz"
+source=("https://www.retroguru.com/$pkgname/$pkgname-v.latest-ubuntu.tar.gz"
         "$pkgname.png"
         "$pkgname.sh"
         "$pkgname.desktop")
