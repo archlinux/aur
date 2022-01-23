@@ -1,6 +1,7 @@
 pkgbase = wl-gammarelay
 	pkgver = 0.0.6
 	pkgrel = 1
+	url = https://github.com/jeremija/wl-gammarelay
 	arch = x86_64
 	license = GPL3
 	makedepends = go
