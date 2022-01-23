@@ -1,8 +1,8 @@
 pkgbase = sqrxz2
 	pkgdesc = A fast paced jump'n'run (Part II - 'Two seconds until death')
 	pkgver = 1.00
-	pkgrel = 2
-	url = http://sqrxz.de
+	pkgrel = 3
+	url = https://www.sqrxz.de/sqrxz-2/
 	install = sqrxz2.install
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = sqrxz2
 	depends = zlib
 	optdepends = libmodplug: better music decoder
 	options = !strip
-	source = http://www.retroguru.com/sqrxz2/sqrxz2-v.latest-linux.tar.gz
+	source = https://www.retroguru.com/sqrxz2/sqrxz2-v.latest-linux.tar.gz
 	source = sqrxz2.png
 	source = sqrxz2.sh
 	source = sqrxz2.desktop
@@ -21,4 +21,3 @@ pkgbase = sqrxz2
 	sha256sums = 20ca71769b459034ae89bca1a89e7f4eafbe6a1ad94944bf9d306dee87714d2f
 
 pkgname = sqrxz2
-
