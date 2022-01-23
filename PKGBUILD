@@ -1,17 +1,18 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=giana
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="'Giana's Return', unofficial sequel to the (in)famous Mario clone 'Great Giana Sisters'"
 arch=('i686' 'x86_64')
-url="http://www.gianas-return.de"
+url="https://www.gianas-return.de/"
 license=('custom: Freeware')
 depends=('sdl_mixer' 'zlib' 'glut' 'glu')
 optdepends=('libmodplug: better music decoder')
 install=$pkgname.install
-source=("http://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz"
+source=("https://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop"
         "$pkgname-fs.desktop")

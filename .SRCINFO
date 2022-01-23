@@ -1,8 +1,8 @@
 pkgbase = giana
 	pkgdesc = 'Giana's Return', unofficial sequel to the (in)famous Mario clone 'Great Giana Sisters'
 	pkgver = 1.10
-	pkgrel = 1
-	url = http://www.gianas-return.de
+	pkgrel = 2
+	url = https://www.gianas-return.de/
 	install = giana.install
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = giana
 	depends = glu
 	optdepends = libmodplug: better music decoder
 	options = !strip
-	source = http://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz
+	source = https://www.retroguru.com/gianas-return/gianas-return-v.latest-linux.tar.gz
 	source = giana.sh
 	source = giana.desktop
 	source = giana-fs.desktop
@@ -23,4 +23,3 @@ pkgbase = giana
 	sha256sums = 80aa0cd19c742199c69b7c1778f28c8f75aa6646c2b3a26ae6eed608b2d6a7a4
 
 pkgname = giana
-
