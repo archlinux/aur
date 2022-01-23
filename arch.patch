@@ -1,0 +1,12 @@
+diff -ur cardano-wallet-2021-12-15.orig/cabal.project cardano-wallet-2021-12-15/cabal.project
+--- cardano-wallet-2021-12-15.orig/cabal.project	2021-12-15 23:29:09.000000000 +0100
++++ cardano-wallet-2021-12-15/cabal.project	2022-01-08 07:54:35.295794003 +0100
+@@ -39,7 +39,7 @@
+ --------------------------------------------------------------------------------
+ 
+ index-state: 2022-01-01T00:00:00Z
+-with-compiler: ghc-8.10.7
++with-compiler: ghc-8.10
+ 
+ packages:
+     lib/dbvar/
