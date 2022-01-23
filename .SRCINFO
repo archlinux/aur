@@ -22,6 +22,7 @@ pkgbase = maui-bonsai-git
 	depends = qt5-svg
 	depends = qt5-quickcontrols2
 	depends = qt5-multimedia
+	depends = libgit2
 	provides = maui-bonsai
 	conflicts = maui-bonsai
 	source = git+https://invent.kde.org/maui/bonsai.git

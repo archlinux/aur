@@ -16,6 +16,7 @@ depends=(
   'qt5-svg'
   'qt5-quickcontrols2'
   'qt5-multimedia'
+  'libgit2'
 )
 makedepends=('git' 'extra-cmake-modules')
 provides=('maui-bonsai')
