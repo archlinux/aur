@@ -3,9 +3,9 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway
-pkgver=1.6.1
+pkgver=1.7
 epoch=1
-pkgrel=3
+pkgrel=1
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -24,7 +24,6 @@ depends=(
 makedepends=(git meson ninja scdoc setconf wayland-protocols)
 backup=(etc/sway/config)
 optdepends=(
-  'alacritty: Terminal emulator used by the default config'
   'dmenu: Application launcher'
   'grim: Screenshot utility'
   'i3status: Status line'
@@ -39,7 +38,7 @@ optdepends=(
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
         "50-systemd-user.conf")
-sha512sums=('7f37fea99970db42c5485277df06d69bef5225fa03d25be179893b14d73c1d681f0355a1bc74091b4173bbccc88994a63ad0f9322e070811ba963648cf68cdeb'
+sha512sums=('028cf5d504d5914bfb78d44156d6a290de660c5ed0638f4e2c56e5be76db9b0baeda035e1fa1ae23559016bd7e4312f7ff70c2fb4904df25358577c1a3d21243'
             'SKIP'
             'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
