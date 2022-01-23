@@ -1,4 +1,4 @@
-# Maintainer: Vasil Bakalov <jens300304@gmail.com>
+# Maintainer: Stella <jens300304@gmail.com>
 pkgname=python-ossapi
 url="https://github.com/circleguard/ossapi"
 pkgver=2.2.2
