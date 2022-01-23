@@ -3,7 +3,7 @@
 
 pkgname=victor
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to log activities and measure time spent"
 arch=('x86_64')
 url="https://github.com/ssiyad/victor"
@@ -19,7 +19,7 @@ sha256sums=("SKIP")
 
 build() {
     cd $srcdir/$pkgname
-    nimble c -d:release $pkgname
+    nimble build -d:release
 }
 
 package() {
