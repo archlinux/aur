@@ -3,7 +3,7 @@
 _pkgname=mir-core
 pkgname=d-$_pkgname
 pkgver=1.1.14
-pkgrel=7
+pkgrel=8
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
 url='https://github.com/libmir/mir-core'
@@ -25,6 +25,7 @@ build() {
   cd $_pkgname-$pkgver/build
 
   export DC=ldc
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto/--flto=full/')"
 
   arch-meson ..
 
