@@ -3,11 +3,11 @@
 _pkgbase='dzdsu'
 pkgname="python-${_pkgbase}"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='DayZ dedicated server utility.'
 arch=('any')
 url="https://github.com/conqp/${_pkgbase}"
-license=('GPLv3')
+license=('MIT')
 depends=('python' 'python-setuptools')
 makedepends=('git' 'python' 'python-pytest' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
