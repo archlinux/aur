@@ -1,5 +1,5 @@
 pkgbase = liteaur-git
-	pkgdesc = LiteAUR: Just another AUR helper
+	pkgdesc = Shell-based AUR helper
 	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://gitea.com/ffqq/liteaur
