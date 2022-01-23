@@ -1,18 +1,18 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-freiner
-pkgver=3.0.4
-pkgrel=2
+pkgver=3.0.5
+pkgrel=1
 pkgdesc="Generic rate limiting solution for python applications, supporting various strategies and storage backends."
 arch=("any")
 url="https://github.com/djmattyg007/freiner/"
 license=("MIT")
 depends=("python" "python-typing_extensions")
 makedepends=("python-setuptools")
-# Right now pymemcache doesn't even build, and I still have to package python-rediscluster
+# I haven't had time to test building the docs now that other parts of the AUR Python ecosystem have improved.
 #makedepends=("python-setuptools" "python-sphinx" "python-sphinx_rtd_theme" "python-pymemcache" "python-redis" "python-rediscluster")
 source=("https://pypi.io/packages/source/f/freiner/freiner-${pkgver}.tar.gz")
-sha256sums=("b9e660460c9b194b160233d0a59ce1b1968ea43d7b5798972c84bb17594f205f")
+sha256sums=("bf622e06fb1a4a4e497e235da61f6f3d103c3105b8f7fe3dd546b1ab39725bc2")
 
 build() {
     cd "freiner-${pkgver}"
