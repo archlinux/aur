@@ -1,7 +1,7 @@
 # Maintainer : Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-ffmpeg
-pkgver=4.4.1
+pkgver=5.0
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -49,21 +49,18 @@ depends=(
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
-_tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
+_tag=390d6853d0ef408007feb39c0040682c81c02751
 #source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=n${pkgver}"
 source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
-        vmaf-model-path.patch
+        ffmpeg-vmaf2.x.patch
+        add-av_stream_get_first_dts-for-chromium.patch
         configure.patch)
-sha256sums=('SKIP'
-            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
-            '3cec5d47cd190cc9cf7969b2c2c94690d7b15ffb5d7147bdd4e60eecb0991eed')
+b2sums=('SKIP'
+        '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a'
+        '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13'
+        '600ce3b6c87378f6d0827ba837484c859a84595f63f6ffdc8d6f5d989ebab4b661b3d15810bdd1192b983119e131fec7421f18fb0ed642b965554d2f9e5efc64')
+
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-pkgver() {
-  cd ffmpeg
-
-  git describe --tags | sed 's/^n//'
-}
 
 prepare() {
   cd ffmpeg
@@ -71,7 +68,15 @@ prepare() {
   patch -Np1 -i "${srcdir}/configure.patch"
 
 # TODO: Add vmaf dependency
-#  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+#  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch # vmaf 2.x support
+
+  patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+}
+
+pkgver() {
+  cd ffmpeg
+
+  git describe --tags | sed 's/^n//'
 }
 
 build() {
@@ -151,6 +156,8 @@ package() {
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
 
     mv "${pkgdir}"/usr/${_arch}/bin/*.lib "${pkgdir}"/usr/${_arch}/lib/
+
+    rm -rf "${pkgdir}"/usr/${_arch}/share
   done
 }
 
