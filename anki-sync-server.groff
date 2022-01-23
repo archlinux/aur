@@ -131,9 +131,6 @@ anki-sync-server-http
 anki-sync-server-https
 .RE
 
-The files in \fIsites-available\fR are themselves symlinks to files in
-\fI/opt/anki-sync-server/plugins/nginx\fR.
-
 .SS Using The HTTPS Server
 
 By default the HTTP server is enabled. The plugins for the anki client are
