@@ -82,4 +82,8 @@ package() {
   mkdir -p "${pkgdir}/etc/nginx/sites-enabled"
   cp "${srcdir}/${_anki_dir_}/plugins/nginx/anki-sync-server-http" "${pkgdir}/etc/nginx/sites-available"
   cp "${srcdir}/${_anki_dir_}/plugins/nginx/anki-sync-server-https" "${pkgdir}/etc/nginx/sites-available"
+
+  # systemd service
+  mkdir -p "${pkgdir}/usr/lib/systemd/system/"
+  cp "${srcdir}/${_anki_dir_}/plugins/systemd/anki-sync-server.service" "${pkgdir}/usr/lib/systemd/system/"
 }
