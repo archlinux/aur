@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-music-metadata-filter
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A module for cleaning up artist, album, and song names."
 arch=("any")
@@ -10,9 +10,15 @@ license=("MIT")
 depends=("python")
 makedepends=("python-setuptools")
 source=("https://pypi.io/packages/source/m/music-metadata-filter/music-metadata-filter-${pkgver}.tar.gz")
-sha256sums=("de1ce7e0196ee3a7e4509c8f6f004d2d9fb04c74a4901fd39f3cd27ece879145")
+sha256sums=("0b46f7bf69aecac464ea1262fd2af133c5c0e4e71d8124ba8096bb90441543f3")
+
+build() {
+    cd "music-metadata-filter-${pkgver}"
+    python setup.py build
+}
 
 package() {
     cd "music-metadata-filter-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/python-music-metadata-filter/LICENSE.md"
 }
