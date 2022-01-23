@@ -2,8 +2,8 @@
 # Contributor: Kyle Brennan <kyle@metalspork.xyz>
 
 pkgname=resticprofile
-pkgver=0.15.0
-_commit_hash="8e7cf44c0d6775602ab0ce3412cd3d981ef543e5"
+pkgver=0.16.0
+_commit_hash="433ecae5522c0cbb794dea3787d57cf0c44bf2c3"
 pkgrel=1
 pkgdesc="Configuration profiles for restic backup"
 arch=("x86_64")
@@ -12,7 +12,7 @@ license=("GPL3")
 depends=("glibc" "restic")
 makedepends=("go")
 source=("https://github.com/creativeprojects/resticprofile/archive/v${pkgver}.tar.gz")
-sha256sums=("10e7335b821d6e1399bd1f718eed5c1b726a8210fd36f20338cd0b4e2211efd4")
+sha256sums=("082f74ffced8e4f35b86a22b40013faaba70a12a9f5b676b2f27c030f2c2510d")
 
 build() {
     cd "resticprofile-${pkgver}"
@@ -36,6 +36,8 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/resticprofile/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/resticprofile/README.md"
 
-    install -dm644 "${pkgdir}/usr/share/resticprofile/examples/"
+    install -dm755 "${pkgdir}/usr/share/resticprofile/examples/"
     install -Dm644 examples/* "${pkgdir}/usr/share/resticprofile/examples/"
+    install -dm755 "${pkgdir}/usr/share/resticprofile/contrib/systemd/"
+    install -Dm644 contrib/systemd/* "${pkgdir}/usr/share/resticprofile/contrib/systemd/"
 }
