@@ -1,17 +1,14 @@
 pkgbase = lwatch
 	pkgdesc = Colourizing a system logs for easier reading.
 	pkgver = 0.6.2
-	pkgrel = 1
-	url = http://sourceforge.net/projects/lwatch/
+	pkgrel = 2
+	url = https://sourceforge.net/projects/lwatch/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = pcre
 	backup = etc/lwatch.conf
-	source = http://download.sourceforge.net/project/lwatch/current/lwatch-0.6.2.tar.bz2
-	source = http://download.sourceforge.net/project/lwatch/current/lwatch-0.6.2.tar.bz2.asc
+	source = https://download.sourceforge.net/project/lwatch/current/lwatch-0.6.2.tar.bz2
 	md5sums = 8cad9f315a7116d98d6640573b2569b0
-	md5sums = SKIP
 
 pkgname = lwatch
-
