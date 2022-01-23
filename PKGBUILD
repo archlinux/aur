@@ -12,7 +12,7 @@ options=('!strip')
 groups=('nvidia-merged')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-grid-vgpu-kvm-v5"
 _vgpuver=460.73.02
-source=('nvidia-drm-outputclass.conf' 'nvidia-smi' 'nvidia-vgpu.conf' 'vgpu_unlock-rs.conf' 'twelve.patch' 'fourteen.patch' '99-nvidia-ignoreabi.conf'
+source=('nvidia-drm-outputclass.conf' 'nvidia-smi' 'nvidia-vgpu.conf' 'vgpu_unlock-rs.conf' 'twelve.patch' 'fourteen.patch' 'sixteen.patch' '99-nvidia-ignoreabi.conf'
     "${_pkg}.run::gdrive://1dCyUteA2MqJaemRKqqTu5oed5mINu9Bw"
     'git+https://github.com/mbilker/vgpu_unlock-rs.git#commit=6541af7')
 sha256sums=('be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
@@ -21,6 +21,7 @@ sha256sums=('be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'c85ae100a6c87c12906fd0057b77c0c4190f68434de4bc3bc89348ffc19aed61'
             '8c374e9e6053c20b0bcf71faf33adfa2659c1020ce1f38d469b42dd2bbda9749'
             'affb0b2fde720ee7963746bc7a4eda459b1dd1a8a5650b4ae2de64c9e6cf54f1'
+            'fafcd708e1b0013969ddaaf945ed9ab1878d3e40c00780e77f23f2e7b32f0962'
             'a5caf3ce59fea2f99643be73412224cf27846bc10f09ba3a4758b05bbbf5fb1d'
             '0bc28cf13c1a4d8845c7f8987974e04bd52734321bb8db526c6938530ad12c71'
             'SKIP')
@@ -59,6 +60,7 @@ prepare() {
 
     cp "${srcdir}/twelve.patch" patches/
     cp "${srcdir}/fourteen.patch" patches/
+    cp "${srcdir}/sixteen.patch" patches/
 
     patch -R -p1 < patches/twelve.patch
 
@@ -77,9 +79,11 @@ BUILT_MODULE_NAME[4]="nvidia-vgpu-vfio"\
 DEST_MODULE_LOCATION[4]="/kernel/drivers/video"\
 \
 PATCH[0]="twelve.patch"\
-PATCH_MATCH[0]="^5.1[012345].*$"\
+PATCH_MATCH[0]="^5.1[0123456].*$"\
 PATCH[1]="fourteen.patch"\
-PATCH_MATCH[1]="^5\.1[45].*$"' dkms.conf
+PATCH_MATCH[1]="^5\.1[456].*$"\
+PATCH[2]="sixteen.patch"\
+PATCH_MATCH[2]="^5\.16.*$' dkms.conf
 }
 
 build() {
