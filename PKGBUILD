@@ -6,7 +6,7 @@ pkgname=mipsel-elf-binutils
 _pkgname=binutils
 _target="mipsel-elf"
 pkgver=2.37
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of binary tools for baremetal MIPS."
 url="http://www.gnu.org/software/binutils/"
 arch=('x86_64')
@@ -30,9 +30,8 @@ build() {
     mkdir -p binutils-build && cd binutils-build
 
 	../configure \
-		--prefix="${_sysroot}" \
-		--bindir=/usr/bin --program-prefix="${_target}-" \
-		--with-sysroot="${_sysroot}" \
+		--prefix=/usr \
+        --infodir=/usr/share/info/${_target} \
 		--target="${_target}" --build="$CHOST" --host="$CHOST" \
 		--disable-werror \
 		--disable-nls \
@@ -53,7 +52,5 @@ package() {
     cd binutils-build
 	
 	make DESTDIR="""$pkgdir""" install
-	
-    # remove the documentation
-	rm -rf """$pkgdir"""${_sysroot}/share
+    rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
 }
