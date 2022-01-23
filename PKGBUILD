@@ -1,7 +1,7 @@
 # Maintainer: sTiKyt <stikyt@protonmail.com>
 pkgname=draquet-polyglot-bin
-pkgver=3.3
-pkgrel=1
+pkgver=3.5
+pkgrel=2
 
 pkgdesc="PolyGlot is a conlang construction toolkit"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'xz' 'tar')
 provides=('draquet-polyglot')
 install=
 source=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/DraqueT/PolyGlot/releases/download/${pkgver}/PolyGlot-Ins-Lin.deb")
-md5sums=('24ebc0a74fc8d4f429fed9cd2a61904e')
+md5sums=('d20fc2a5e638f80cc73d5b2e6b37a0e6')
 
 desktopname=draquet-polyglot.desktop
 
