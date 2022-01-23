@@ -5,14 +5,14 @@ pkgname=blesh
 _pkgname=ble.sh
 pkgdesc="A replacement for bash's line editor with advanced features"
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 license=(BSD)
 conflicts=(blesh-git)
 url='https://github.com/akinomyoga/ble.sh'
 depends=(bash)
 arch=(any)
-source=("git+$url.git#commit=742777e770a8ce22aa76f67cb042f89feb34d631")
-sha256sums=('SKIP')
+source=("https://github.com/akinomyoga/ble.sh/releases/download/v0.3.3/ble-${pkgver}.tar.xz")
+sha256sums=('a7e66383bd828584e82133ee08ab0bd8074ef0a739eacb835ff0970c3853f33a')
 install=blesh.install
 
 package() {
