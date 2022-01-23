@@ -6,8 +6,8 @@
 # dreieck
 _pkgname=touchegg
 pkgname="${_pkgname}-nosystemd"
-pkgver=2.0.12
-pkgrel=2
+pkgver=2.0.13
+pkgrel=1
 pkgdesc="Multitouch gesture recognizer (with systemd support disabled)"
 arch=('i686' 'x86_64')
 url="https://github.com/JoseExposito/${_pkgname}/"
@@ -25,7 +25,7 @@ optdepends=(
     )
 #" This is somehow necessary vor syntac highlighting to work with nvim
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('ee56d81adfced97473f6fcaf641b569aaadc926b613556f8e9b732f95d35c45aa1c18dfab6467d063a5f2e7138960acc115079b458047422a2e8801a4e0a4825')
+sha512sums=('4db88b184da0363f35607655739b9b125f99261c3a65018258bb4adcb7f91fb0840b71044c7016245062865eecb7dcc04d05a9d1787c86f6074af26cadb53b0c')
 
 build() {
     cd "${srcdir}"
