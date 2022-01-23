@@ -1,0 +1,35 @@
+From 11ad767bd4c646efa89665519d335c69ba13d6a5 Mon Sep 17 00:00:00 2001
+From: Liao Junxuan <mikeljx at 126 dot com>
+Date: Mon, 24 Jan 2022 00:16:43 +0800
+Subject: [PATCH] specify the libraries after source files
+
+otherwise if the linker links the libraries "`--as-needed`",
+they won't be linked at all.
+
+---
+ Makefile | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 573ca62..004cf88 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,12 +3,13 @@ PREFIX  ?= /usr/local
+ NAME    ?= find-cursor
+ 
+ CFLAGS  += -std=c99 -pedantic -Wall -Wextra -Wpedantic -Os
+-LDFLAGS += -L/usr/lib -lX11 -lXext -lXfixes
++LDFLAGS += -L/usr/lib
++LIBS += -lX11 -lXext -lXfixes
+ 
+ .PHONY: all clean install uninstall
+ 
+ all:
+-	${CC} ${CFLAGS} ${LDFLAGS} -o ${NAME} *.c
++	${CC} ${CFLAGS} ${LDFLAGS} -o ${NAME} *.c ${LIBS}
+ 
+ clean:
+ 	rm -f ${NAME}
+-- 
+2.34.1
+
