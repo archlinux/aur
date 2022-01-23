@@ -1,23 +1,28 @@
-#Package from: Keidan <https://github.com/Keidan>
-#Maintainer : Sasasu <lizhaolong0123@gmail.com>
-pkgname=hex2bin
-pkgver=20161122
+# Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
+# Contributor: Sasasu <lizhaolong0123@gmail.com>
+
+pkgname=hex2bin-git
+pkgver=r20.578c77c
 pkgrel=1
 pkgdesc="Hex to binary converter."
 arch=('any')
 url="https://github.com/Keidan/hex2bin"
 license=('GPL3')
 depends=('gcc')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'cmake')
 source=("$pkgname::git+https://github.com/Keidan/hex2bin")
 md5sums=('SKIP')
 
+pkgver() {
+        cd "$srcdir/$pkgname"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-	cd "$srcdir"/"$_pkgname/$pkgname"
+	cd "$srcdir/$pkgname"
+	cmake -DDISTRIBUTION=release .
 	make
 }
 package() {
-	cd "$srcdir"/"$_pkgname/$pkgname"
-	mkdir -p "$pkgdir"/usr/bin
-	install -Dm755 "hex2bin" "$pkgdir"/usr/bin
+	install -Dm755 "$srcdir/$pkgname/bin/hex2bin" "$pkgdir/usr/bin/hex2bin"
 }
