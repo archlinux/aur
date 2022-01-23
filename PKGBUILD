@@ -7,7 +7,7 @@
 
 pkgname=ffmpeg-vulkan
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=(x86_64)
@@ -101,8 +101,9 @@ provides=(
   libswresample.so
   libswscale.so
 )
+_tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
 source=(
-  git+https://git.ffmpeg.org/ffmpeg.git
+  git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
   vmaf-model-path.patch
 )
 sha256sums=(
@@ -122,7 +123,7 @@ prepare() {
   git fetch --all --tags
 
   # Get latest stable tag
-  git checkout tags/$(git tag --list 'n*[!d][!e][!v]' | tail -n1)&>/dev/null
+  # git checkout tags/$(git tag --list 'n*[!d][!e][!v]' | tail -n1)&>/dev/null
 
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch

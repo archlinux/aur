@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-vulkan
 	pkgdesc = Complete solution to record, convert and stream audio and video
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
@@ -86,7 +86,7 @@ pkgbase = ffmpeg-vulkan
 	provides = libswresample.so
 	provides = libswscale.so
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
 	source = vmaf-model-path.patch
 	sha256sums = SKIP
 	sha256sums = 8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
