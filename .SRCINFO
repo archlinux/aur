@@ -1,0 +1,15 @@
+pkgbase = mopidy-bandcamp
+	pkgdesc = Mopidy backend for Bandcamp
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/impliedchaos/mopidy-bandcamp
+	arch = any
+	license = MIT
+	depends = mopidy
+	depends = python
+	depends = python-setuptools
+	depends = python-pykka
+	source = https://pypi.io/packages/source/M/Mopidy-Bandcamp/Mopidy-Bandcamp-1.1.5.tar.gz
+	sha256sums = c20f7370e29f650461a720350aee70bddc0aa66ae572bda6f66aea0478145c04
+
+pkgname = mopidy-bandcamp
