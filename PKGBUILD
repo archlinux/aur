@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=kt
-pkgver=13.0.0
-_commit=632c116
+pkgver=13.1.0
+_commit=5ecef5c
 pkgrel=1
 pkgdesc="Kafka JSON tool"
 arch=('x86_64')
@@ -17,6 +17,7 @@ validpgpkeys=('76DCDDA475507AA5186DC9E571E54A69B0C4269F') ## Felix Geller
 prepare() {
 	cd "$pkgname"
 	mkdir -p build
+	go mod tidy
 }
 
 build() {
@@ -24,20 +25,24 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	go build -o build
+	go build -o build \
+		-ldflags "-X main.buildTime=`date --iso-8601=s`
+		-X main.buildVersion=$pkgver
+		-linkmode external
+		-extldflags \"${LDFLAGS}\""
 }
 
-check() {
-	cd "$pkgname"
-	go test ./...
-}
+# check() {
+# 	cd "$pkgname"
+# 	go test -v -short -vet=all -failfast -ldflags "-linkmode external -extldflags \"${LDFLAGS}\""
+# }
 
 package() {
 	cd "$pkgname"
 	install -D build/kt -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
