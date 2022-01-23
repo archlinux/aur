@@ -3,14 +3,13 @@
 
 pkgname=nyrna
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3')
-depends=('clang' 'cmake' 'ninja')
 depends=('glib2' 'gtk3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
-makedepends=('flutter')
+makedepends=('flutter' 'clang' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2a706dc839d030b1031d2139bb50efc137f1671461a338efceb5a049941f1a70')
 

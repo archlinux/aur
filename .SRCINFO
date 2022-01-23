@@ -1,11 +1,14 @@
 pkgbase = nyrna
 	pkgdesc = Suspend games and applications at any time and resume whenever you wish
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Merrit/nyrna
 	arch = x86_64
 	license = GPL3
 	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
 	depends = glib2
 	depends = gtk3
 	depends = util-linux
