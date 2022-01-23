@@ -1,8 +1,8 @@
 pkgbase = octave-fpl
-	pkgdesc = Collection of routines to export data produced by Finite Elements or Finite Volume Simulations in formats used by some visualization programs.
+	pkgdesc = Collection of routines to export data produced by Finite Elements or Finite Volume Simulations in formats used by some visualization programs
 	pkgver = 1.3.5
 	pkgrel = 3
-	url = https://octave.sourceforge.net/fpl/
+	url = https://octave.sourceforge.io/fpl
 	install = octave-fpl.install
 	arch = any
 	groups = octave-forge
@@ -10,7 +10,6 @@ pkgbase = octave-fpl
 	depends = octave>=3.2.3
 	noextract = fpl-1.3.5.tar.gz
 	source = https://downloads.sourceforge.net/octave/fpl-1.3.5.tar.gz
-	sha256sums = da13b8044e0ffb91f488427c4d3f3fdefb8d208753f572ef4d3b53972c547731
+	sha512sums = 0d49fa779122d595c09f634f818d426c3a19d0122b1af96edd1d4af6b0487595bfb13cf0fedfd05b3c8c500c871dbe0acd0a52a997ec8a4bba7192b291599021
 
 pkgname = octave-fpl
-
