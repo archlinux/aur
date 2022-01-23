@@ -1,0 +1,18 @@
+pkgbase = go-cqhttp-dev-git
+	pkgdesc = Lightweight, native cross-platform implementation of cqhttp in Golang (Development Release).
+	pkgver = 1.0.0.beta8.fix2.r51.g6916fb7
+	pkgrel = 1
+	url = https://github.com/Mrs4s/go-cqhttp/tree/dev
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = AGPL3
+	makedepends = git
+	makedepends = go
+	optdepends = ffmpeg: support voice sending in any format
+	provides = go-cqhttp
+	source = go-cqhttp-dev-git::git+https://github.com/Mrs4s/go-cqhttp#branch=dev
+	sha512sums = SKIP
+
+pkgname = go-cqhttp-dev-git
