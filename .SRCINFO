@@ -1,7 +1,7 @@
 pkgbase = plasma5-runners-nordvpn
 	pkgdesc = Nordvpn plasma runner
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alex1701c/NordVPNKrunner
 	arch = any
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = plasma5-runners-nordvpn
 	makedepends = qt5-tools
 	depends = nordvpn-bin
 	depends = krunner
+	depends = kcmutils
 	source = https://github.com/alex1701c/NordVPNKrunner/archive/2.1.0.tar.gz
 	source = https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png
 	md5sums = 1c65eb2578217931dfb768cd19be1336
