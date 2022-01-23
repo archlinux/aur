@@ -1,39 +1,47 @@
-# Maintainer: Nik Rozman <admin[at]piskot[dot]si>
-# Maintainer: Windscribe Limited <hello[at]windscribe[dot]com>
-# Contributor: Nik Rozman <admin[at]piskot[dot]si>
-# Contributor: Windscribe Limited <hello[at]windscribe[dot]com>
-
-pkgname=windscribe-bin
-pkgver=2.3.15
+pkgname='alacritty-sixel-git'
+_pkgname="alacritty"
+pkgver=0.10.0.1880.gc96047dc
 pkgrel=1
-pkgdesc="Windscribe Client"
-arch=('x86_64')
-url="https://windscribe.com/download"
-license=('GPL2')
-depends=('nftables' 'c-ares' 'qt5-svg' 'freetype2' 'hicolor-icon-theme' 'curl')
-conflicts=('windscribe-cli')
-provides=('windscribe')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source=("https://windscribe.com/install/desktop/linux_deb_x64/beta")
-sha512sums=('SKIP')
+epoch=1
+arch=('x86_64' 'i686')
+url="https://github.com/microo8/alacritty-sixel"
+pkgdesc="A cross-platform, GPU-accelerated terminal emulator"
+license=('Apache')
+depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
+makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb' 'libxkbcommon' 'git')
+checkdepends=('ttf-dejavu') # for monospace fontconfig test
+provides=('alacritty')
+conflicts=('alacritty')
+source=("$_pkgname::git+https://github.com/microo8/alacritty.git")
+sha256sums=('SKIP')
 
-package(){
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+pkgver() {
+	cd $_pkgname/alacritty
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
 
-	# Correct permissions
-	chmod -R 755 "${pkgdir}"
+build(){
+  cd "$_pkgname"
+  env CARGO_INCREMENTAL=0 cargo build --release --locked
+}
 
-	# Point files to the correct location
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/share/applications/windscribe.desktop
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/etc/systemd/system/windscribe-helper.service
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/polkit-1/actions/com.windscribe.authhelper.policy
+check(){
+  cd "$_pkgname"
+  env CARGO_INCREMENTAL=0 cargo test --release
+}
 
-	# Move files to correct location
-	mkdir -p "${pkgdir}/opt/windscribe"
-	mv "${pkgdir}/usr/local/windscribe" "${pkgdir}/opt/"
+package_alacritty-sixel-git() {
+	cd $_pkgname
 
-	# Install license
-	install -D -m644 "${pkgdir}/opt/windscribe/open_source_licenses.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
+
+	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
+	install -D -m644 "extra/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
+	install -D -m644 "extra/linux/io.alacritty.Alacritty.appdata.xml" "$pkgdir/usr/share/appdata/io.alacritty.Alacritty.appdata.xml"
+	install -D -m644 "alacritty.yml" "$pkgdir/usr/share/doc/alacritty/example/alacritty.yml"
+	install -D -m644 "extra/completions/alacritty.bash" "$pkgdir/usr/share/bash-completion/completions/alacritty"
+	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
+	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
+	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
+	install -D -m644 "extra/logo/compat/alacritty-term.png" "$pkgdir/usr/share/pixmaps/Alacritty.png"
 }
