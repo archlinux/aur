@@ -1,7 +1,7 @@
 pkgbase = python-cuddle
 	pkgdesc = Python implementation of the KDL Document Language
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djmattyg007/python-cuddle
 	arch = any
 	license = MIT

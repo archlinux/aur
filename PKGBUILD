@@ -2,7 +2,7 @@
 
 pkgname=python-cuddle
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python implementation of the KDL Document Language"
 arch=("any")
 url="https://github.com/djmattyg007/python-cuddle"
