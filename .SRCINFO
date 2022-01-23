@@ -1,0 +1,15 @@
+pkgbase = vim-ferret
+	pkgdesc = Enhanced multi-file search for Vim
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://github.com/wincent/ferret
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim-plugin-runtime
+	source = vim-ferret::git+https://github.com/wincent/ferret#tag=5.1?signed
+	validpgpkeys = 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+	sha256sums = SKIP
+
+pkgname = vim-ferret
