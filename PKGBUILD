@@ -2,7 +2,7 @@
 
 pkgname=gir-to-d
 pkgver=0.22.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Create D bindings from GObject introspection files'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/gir-to-d'
@@ -17,6 +17,7 @@ build() {
   cd $pkgname-$pkgver/build
 
   export DC=ldc
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto/--flto=full/')"
 
   arch-meson ..
 
