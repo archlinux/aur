@@ -27,7 +27,7 @@ build() {
 package() {
     cd "simplediff-${pkgver}"
 
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/python-simplediff/LICENSE"
 }
