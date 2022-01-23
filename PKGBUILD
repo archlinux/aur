@@ -2,7 +2,7 @@
 
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
-pkgver=4.157.0
+pkgver=4.192.0
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
@@ -33,10 +33,10 @@ source=(
     "https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/${_pkgbasename}-v${pkgver}.tar.gz"
   )
 sha512sums=(
-    'efa909fe8e6f053322bdda64834038218ee313e7df7f6f03d049b38318f1627543b60d4902f968c67dd00ece4db0c8d2eb20e3dc7a43dd05a16700723cba1d5f'
+    '0f69e1d1e1005d54cda901de6bd057badf26ecfa05fd970917daf7a5121330a68db4afe3db45fd8bad45332a6601da1cdfd69eb17736dce4ac478cea7c7b359f'
   )
 b2sums=(
-    '32b348bee195e95f503cea3cc26a7de18e8c40ea793c70649a6d1dea157ab233c2422cdf8d84b8449bce4594e4457a30753f51b1c38a76b3199769616ffa65c5'
+    '611d009acb7624369566c864032b20407ca5458d760a5d0032c3e9dd14257349904aa5dc965873273c9458d379b37a73e024b2258014ffd469ed222bc7b6202e'
   )
 
 prepare() {
