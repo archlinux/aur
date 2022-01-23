@@ -2,7 +2,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=mangodl
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="CLI tool for downloading manga"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/mangodl-v$pkgver-linux.tar.gz")
-sha256sums=('69d674c1ec171afd414022a242f52f19a82c0f78476c78f43d220311c47ede05')
+sha256sums=('23bac458e5858d69ecff7032d8e0b73e81ed4adcace52968cebadbfdf28604e3')
 
 prepare() {
 	cd "$pkgname-mangodl-v$pkgver-linux"
@@ -27,7 +27,7 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname-mangodl-v$pkgver-linux"
-	go build -o build
+	go build -o build/mangodl
 }
 
 check() {
