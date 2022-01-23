@@ -1,6 +1,6 @@
 pkgbase = crosstool-ng-git
 	pkgdesc = crosstool-NG aims at building toolchains.
-	pkgver = 1.24.0.r362.g6dd60ca6
+	pkgver = 1.24.0.r504.g6737cfaa
 	pkgrel = 1
 	epoch = 1
 	url = http://crosstool-ng.org/
@@ -18,6 +18,7 @@ pkgbase = crosstool-ng-git
 	makedepends = lzip
 	depends = ncurses
 	depends = make
+	depends = rsync
 	provides = crosstool-ng
 	conflicts = crosstool-ng
 	source = git://github.com/crosstool-ng/crosstool-ng.git
