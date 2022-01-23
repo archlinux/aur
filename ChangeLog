@@ -1,10 +1,15 @@
+2022-01-22 Danilo J. S. Bellini <danilo.bellini@gmail.com>
+
+        * Restored/recreated the package from AUR history.
+        * Use openssl-1.0, fixing "import hashlib".
+
 2015-08-04 Yen Chi Hsuan <yan12125@gmail.com>
 
 	* Adopted the AUR package.
 	* Update to Python 3.2.6
 
 2014-10-22 Alireza Savand <alireza.savand@gmail.com>
-        
+
         * Adopted the AUR package.
         * Unflag package.
 

@@ -1,18 +1,17 @@
-# Maintainer: Alireza Savand <alireza.savand@gmail.com>
-# Contributors:
-#     * Christopher Arndt <chris@chrisarndt.de>
-#     * Simon Sapin <simon.sapin@kozea.fr>
-
-
+# Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: Yen Chi Hsuan <yan12125 at gmail.com>
+# Contributor: Alireza Savand <alireza.savand at gmail.com>
+# Contributor: Christopher Arndt <chris at chrisarndt.de>
+# Contributor: Simon Sapin <simon.sapin at kozea.fr>
 pkgname=python32
 pkgver=3.2.6
-pkgrel=2
+pkgrel=3
 _pybasever=3.2
 pkgdesc="Next generation of the python high-level scripting language"
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://www.python.org/"
-depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
+depends=('expat' 'bzip2' 'gdbm' 'openssl-1.0' 'libffi' 'zlib')
 makedepends=('tk' 'sqlite' 'valgrind')
 optdepends=('tk: for tkinter' 'sqlite')
 changelog=ChangeLog
@@ -42,6 +41,8 @@ build() {
   rm -rf Modules/zlib
   rm -rf Modules/_ctypes/{darwin,libffi}*
 
+  export CPPFLAGS="-I/usr/include/openssl-1.0"
+  export LDFLAGS="-L/usr/lib/openssl-1.0"
   ./configure --prefix=/usr \
               --enable-shared \
               --with-threads \
