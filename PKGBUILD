@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 depends=('grub')
 install="grub2-theme-ettery.install"
-source=("grub2-themes-ettery-$pkgver.tar.gz::https://github.com/Dacha204/grub2-themes-Ettery/archive/${pkgver##*r*.}.tar.gz")
+source=("https://github.com/Dacha204/grub2-themes-Ettery/archive/${pkgver##*r*.}.tar.gz")
 sha512sums=('354b5b23879c5f1783f3c7b2fe149b7b44f44641445cf185a1ad04b8e6075e2aaa5657906bbcacf32f4047a7ecfc0b72674f1ca1427deb7305826e97805c912b')
 
 package() {
