@@ -1,4 +1,4 @@
-# Maintainer: Vasil Bakalov <jens300304@gmail.com>
+# Maintainer: Stella <jens300304@gmail.com>
 pkgname=python-osrparse
 url="https://github.com/kszlim/osu-replay-parser"
 pkgver=6.0.0
