@@ -1,0 +1,24 @@
+diff --git a/Makefile b/Makefile
+index fc76416..f8a2762 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@ MANDIR=$(PREFIX)/share/man
+ VPATH=doc
+ RM=rm
+ GO=go
+-GOFLAGS=
++GOFLAGS?=
+ 
+ DOCS = \
+ 	astronaut.1
+@@ -28,7 +28,9 @@ doc: $(DOCS)
+ astronaut: $(GOSRC)
+ 	$(GO) build $(GOFLAGS) \
+ 		-ldflags "-X main.Version=$(VERSION) \
+-			-X main.ShareDir=$(SHAREDIR)" \
++			-X main.ShareDir=$(SHAREDIR) \
++			-linkmode=external \
++			-extldflags=$(LDFLAGS)" \
+ 		-o $@
+ 
+ clean:
