@@ -1,0 +1,3 @@
+post_install() {
+	echo "to use this grub theme, you must set GRUB_THEME to \"/boot/grub/themes/Ettery/theme.txt\" at your grub config (/etc/default/grub) and run \"sudo update-grub\""
+}
