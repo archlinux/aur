@@ -5,7 +5,7 @@
 pkgname=blesh-git
 _pkgname=ble.sh
 pkgdesc="Custom bash line editor with enhanced features"
-pkgver=0.4.0_devel3.r1523.9372670
+pkgver=0.4.0_devel3.r1690.dc3827b
 pkgrel=1
 license=(BSD)
 url='https://github.com/akinomyoga/ble.sh'
@@ -15,7 +15,7 @@ arch=(any)
 source=("git+$url" "git+${url/%.sh/sh-contrib}" 'blesh-update.sh')
 md5sums=('SKIP'
          'SKIP'
-         '4ee5c3bd58c0df81062b671bc2880a26')
+         'b33329750a4d9001859f618929926302')
 install=blesh.install
 
 pkgver() {

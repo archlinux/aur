@@ -10,9 +10,9 @@ function ble/base/package:AUR/version_check {
 }
 
 function ble/base/package:AUR/update {
-	local PKGNAME="blesh-git"
+	local PKGNAME='blesh-git'
 	local PRE_VERSION POST_VERSION
-	PRE_VERSION="$(ble/base/package:AUR/version_check)"
+	ble/util/assign PRE_VERSION ble/base/package:AUR/version_check
 	# Try to use an AUR helper
 	local helper_exit
 	(
@@ -37,7 +37,7 @@ function ble/base/package:AUR/update {
 			NEEDS_ROOT=''; OPERATION='S';
 			select helper in "${available[@]}"; do
 				# Check if default was set 
-				[[ ${helper:=$REPLY} = [dD] || $REPLY = default ]] && helper="$default_helper"
+				[[ ${helper:=$REPLY} = [dD] || $REPLY = default ]] && helper=$default_helper
 				# Special case: Aura
 				[[ $helper = aura ]] && { NEEDS_ROOT=1; OPERATION='Ax'; }
 				case $helper in
@@ -61,39 +61,39 @@ function ble/base/package:AUR/update {
 			exit 3
 		fi
 	)
-	helper_exit="$?"
+	helper_exit=$?
 
 	# Hope this exit code isn't used by "No" in some AUR helper
 	local makepkg_exit
 	if ((helper_exit == 3)); then
 		# Try to build from scratch
 		(
-			LOCALR="$HOME/.cache/blesh/package"
+			LOCALR=~/.cache/blesh/package
 			ble/util/print "Trying set up a build environment at $LOCALR"
 			AURREPO="https://aur.archlinux.org/${PKGNAME}.git"
 	
 			set -ex
-			[[ -w "${LOCALR%/*}" ]]
+			[[ -w ${LOCALR%/*} ]]
 			mkdir -p "$LOCALR" && builtin cd "$LOCALR"
-			git clone "$AURREPO" || [ "$(builtin cd "$PKGNAME" && git remote get-url origin)" = "$AURREPO" ]
+			git clone "$AURREPO" || [[ $(builtin cd "$PKGNAME" && git remote get-url origin) == "$AURREPO" ]]
 			builtin cd "$PKGNAME"
 			# Discard changes made by makepkg
 			git reset --hard HEAD
 			git pull
 			exec makepkg -fsi
 		)
-		makepkg_exit="$?"
+		makepkg_exit=$?
 	else
-		makepkg_exit="$helper_exit"
+		makepkg_exit=$helper_exit
 	fi
 
-	POST_VERSION="$(ble/base/package:AUR/version_check)"
+	ble/util/assign POST_VERSION ble/base/package:AUR/version_check
 
 	# TODO: make AUR helpers not build already up-to-date packages:
 	# (could be used to check for makepkg (1) exit code 13)
 	# [ "$makepkg_exit" -eq 13 ] && return 6
-	if ((makepkg_exit==0)); then
-		[ "$PRE_VERSION" = "$POST_VERSION" ] && return 6
+	if ((makepkg_exit == 0)); then
+		[[ $PRE_VERSION == "$POST_VERSION" ]] && return 6
 		return 0
 	fi
 	# Just return 1 if we reached this point
