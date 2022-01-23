@@ -1,94 +1,72 @@
-# Maintainer: Elijah Bansley <elijahbansley@gmail.com>
+# Maintainer: Harrison <htv04rules at gmail dot com>
+# Contributor: Elijah Bansley <elijahbansley@gmail.com>
+
 pkgname=funkin-git
-pkgver=v0.2.6.r38.ga4b79ab
+pkgver=v0.2.7.1.r102.gf94dece4
 pkgrel=1
-pkgdesc="Build Friday Night Funkin from it's repository and install it with shortcuts."
-arch=('x86_64')
+pkgdesc="A game originally made for Ludum Dare 47 \"Stuck In a Loop\""
+arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/ninjamuffin99/Funkin"
-license=('unknown')
-depends=()
-makedepends=('git' 'haxe')
-provides=('funkin')
-conflicts=('funkin')
-source=("$pkgname"::"git://github.com/ninjamuffin99/Funkin.git")
-sha512sums=('SKIP')
+license=("Apache")
+makedepends=("git" "haxe")
+provides=("funkin")
+conflicts=("funkin")
+source=("${pkgname}"::"git://github.com/ninjamuffin99/Funkin.git"
+        "APIStuff.hx"
+        "funkin.sh"
+        "funkin.desktop")
+sha256sums=("SKIP"
+            "ade2e5b25db77b404a6ed074d59d7fa80c1cbb627e18e1cc3bf6177020eee92f"
+            "75ef6c467feac3a57848b2f01677d88be40b3b79a826cb0d450d6f5fd7b11c1f"
+            "7fe0fa2ac1312201c93f41cf9395c46703abf989e7f65783ff95e0d3b8c183e6")
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-    cd "$srcdir/$pkgname"
-    git submodule update --init
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    mkdir -p ~/haxelib
-    haxelib setup ~/haxelib
-    haxelib install lime
-    haxelib install openfl
-    haxelib install flixel
-    haxelib run lime setup flixel
-    haxelib run lime setup <<EOF
-y
-EOF
-    haxelib install flixel-tools
-    haxelib run flixel-tools setup <<EOF
-y
-4
-EOF
-    haxelib update flixel
-    haxelib update flixel-addons
-    lime install newgrounds
-    haxelib git polymod https://github.com/larsiusprime/polymod.git
-    cat <<EOF > $srcdir/$pkgname/source/APIStuff.hx
-package;
+  # Create/confirm local haxelib repo for libraries
+  haxelib newrepo
 
-class APIStuff
-{
-    public static var API:String = "51348:TtzK0rZ8";
-    public static var EncKey:String = "5NqKsSVSNKHbF9fPgZPqPg==";
-}
-EOF
-    lime build linux -final
-}
+  # Install and setup lime and HaxeFlixel
+  haxelib install lime
+  haxelib install openfl
+  haxelib install flixel
+  echo "n" | haxelib run lime setup # Decline prompt to add lime command
+  haxelib run lime setup flixel
 
-check() {
-    cd "$srcdir/$pkgname"
-    #make -k check
+  # Install other depends
+  haxelib install newgrounds
+  haxelib git polymod https://github.com/larsiusprime/polymod.git
+  haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc.git
+
+  # https://github.com/ninjamuffin99/Funkin/issues/146#issuecomment-755064854
+  cp APIStuff.hx ${srcdir}/${pkgname}/APIStuff.hx
+
+  # Build game
+  pushd "${srcdir}/${pkgname}" > /dev/null
+  haxelib run lime build linux -final
+  popd > /dev/null
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-	
-    install -dm755 "$pkgdir/usr/share/funkin"
-    cp -R $srcdir/$pkgname/export/release/linux/bin/* "$pkgdir/usr/share/funkin/"
-	
-    cat <<EOF > $srcdir/$pkgname/funkin.sh
-#!/bin/bash
-pushd /usr/share/funkin > /dev/null
-./Funkin
-popd > /dev/null
-EOF
-	
-    install -D $srcdir/$pkgname/funkin.sh $pkgdir/usr/bin/funkin
-	
-    cat <<EOF > $srcdir/$pkgname/funkin.desktop
-[Desktop Entry]
-Version=1.0
-Name=Friday Night Funkin
-GenericName=Rhythm Game
-Comment="PRETTY DOPE ASS GAME" PLAYSTATION MAGAZINE MAY 2003 ISSUE
-Type=Application
-Terminal=false
-Exec=funkin
-Icon=funkin
-Categories=Game
-Keywords=game;funkin;friday;fridaynight;night;
-EOF
+  pushd "${srcdir}/${pkgname}" > /dev/null
 
-    install -D $srcdir/$pkgname/art/icon.png $pkgdir/usr/share/pixmaps/funkin.png
-    install -D $srcdir/$pkgname/funkin.desktop $pkgdir/usr/share/applications/funkin.desktop
+  # Copy game files to /usr/share/funkin
+  install -dm0755 "${pkgdir}/usr/share/funkin"
+  cp -r export/release/linux/bin/* "${pkgdir}/usr/share/funkin/"
+
+  # Install icons
+  for size in 16 32 64; do
+    install -Dm0644 "art/icon${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/funkin.png"
+  done
+
+  popd > /dev/null
+
+  # Install launcher script as binary
+  install -Dm0755 funkin.sh "${pkgdir}/usr/bin/funkin"
+
+  # Install desktop file
+  install -Dm0644 funkin.desktop "${pkgdir}/usr/share/applications/funkin.desktop"
 }

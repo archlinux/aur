@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Friday Night Funkin'
+GenericName=Rhythm Game
+Comment=A game originally made for Ludum Dare 47 "Stuck in a Loop"
+Type=Application
+Terminal=false
+Exec=funkin
+Icon=funkin
+Categories=Game
