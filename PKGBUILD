@@ -21,7 +21,7 @@ build() {
 package() {
     cd "python-webpagecache-${pkgver}"
 
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-webpagecache/LICENSE.txt"
     install -Dm644 REMADE.txt "${pkgdir}/usr/share/doc/python-webpagecache/README.txt"
