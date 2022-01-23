@@ -44,5 +44,5 @@ build() {
 
 package() {
   cd "$_reponame"
-  install -Dm755 bin/$binname "$pkgdir"/usr/bin/$binname
+  install -Dm755 bin/$_binname "$pkgdir"/usr/bin/$_binname
 }
