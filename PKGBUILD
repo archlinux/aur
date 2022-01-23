@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Your Name <youremail@domain.com>
-pkgbase="console_snake"
+#pkgbase="console_snake"
 pkgname="console_snake"
 pkgver=1
 pkgrel=1
