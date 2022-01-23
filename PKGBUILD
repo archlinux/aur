@@ -1,23 +1,23 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pomerium-cli-bin
-pkgver=0.14.7
-pkgrel=1
-pkgdesc='An identity-aware access proxy -- command-line interface'
+pkgver=0.16.0
+pkgrel=2
+pkgdesc='CLI component for Pomerium'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://www.pomerium.io"
+url="https://github.com/pomerium/cli"
 license=('Apache')
 provides=('pomerium-cli')
 conflicts=('pomerium-cli')
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-amd64.tar.gz")
-source_armv6h=("${pkgname}-${pkgver}-armv6h.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-armv6.tar.gz")
-source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-armv7.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/pomerium/pomerium/releases/download/v${pkgver}/pomerium-cli-linux-arm64.tar.gz")
-sha256sums_x86_64=('84b599724297869e8aca06cb10bf587622e488c0c92870672c7dee2c2a9a7575')
-sha256sums_armv6h=('f2f9a8cf8a05a0d6d35f89a3726f001afd9317871473291869031d411e03eb89')
-sha256sums_armv7h=('a1aaed5542aced7398eb953f1f11be0998f8a5d66e1f3b6f1fca25bd72446828')
-sha256sums_aarch64=('a7ad033749d0812925b12045b7214f3b0b6af6b2d2450ac4b00dcf0ec857f85f')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-amd64.tar.gz")
+source_armv6h=("${pkgname}-${pkgver}-armv6h.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-armv6.tar.gz")
+source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-armv7.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-arm64.tar.gz")
+sha256sums_x86_64=('648c2d96333224aa08f5019056f205bf138dd5705fb1049357f43f4e4b4adcf4')
+sha256sums_armv6h=('7e4d739bfa8ed723ca9aa71ae5c4beabef7ca90b576b2984191dd2a430a0b266')
+sha256sums_armv7h=('db9b5214f2adc9742764329ff580fe0ae05620c8e7e33e30bee0b8130f1550ed')
+sha256sums_aarch64=('6cc9bd42f376d9d721b09357d4bceca0852fbda3acd13e826fdf40aed4713f91')
 
 package() {
-	install -Dm755 pomerium-cli -t "${pkgdir}/usr/bin"
+	install -D pomerium-cli -t "${pkgdir}/usr/bin"
 }
