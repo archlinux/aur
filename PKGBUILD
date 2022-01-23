@@ -2,7 +2,7 @@
 
 pkgname=hut-git
 _pkgname=hut
-pkgver=r100.cb0e3c7
+pkgver=r184.9154619
 pkgrel=1
 pkgdesc='A CLI tool for sr.ht'
 arch=('x86_64')
@@ -32,17 +32,9 @@ build() {
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
     make -e
-
-    ./$_pkgname completion bash > completion.bash
-    ./$_pkgname completion fish > completion.fish
-    ./$_pkgname completion zsh > completion.zsh
 }
 
 package() {
     cd "$srcdir/$_pkgname"
     make PREFIX=/usr DESTDIR=$pkgdir install
-
-    install -Dm644 completion.bash "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-    install -Dm644 completion.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
-    install -Dm644 completion.zsh "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
