@@ -433,7 +433,6 @@ index 5019a3ac..5513eedc 100644
 -- 
 2.33.1
 
-
 From d0534fad64788e6f70389b8fa815d277a00ae51a Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
@@ -3171,4 +3170,3 @@ index 80cb2343..20e2a93c 100644
 +msgstr "透明背景"
 -- 
 2.33.1
-
