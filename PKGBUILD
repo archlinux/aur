@@ -1,6 +1,6 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=6.0.4
+pkgver=7.0
 pkgrel=1
 pkgdesc="This a simple, lightweight and fast script that loads an ASCII art that fits on your terminal."
 arch=(any)
