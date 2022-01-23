@@ -7,7 +7,7 @@ decentralised blockchain (binary package)."
 arch=("x86_64")
 url="https://github.com/input-output-hk/cardano-node"
 license=("Apache")
-provides=("cardano-node")
+provides=("cardano-node=${pkgver}")
 conflicts=("cardano-node")
 install=cardano-node-bin.install
 source=("https://hydra.iohk.io/build/11955068/download/1/cardano-node-\

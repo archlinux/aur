@@ -6,7 +6,7 @@ pkgbase = cardano-node-bin
 	install = cardano-node-bin.install
 	arch = x86_64
 	license = Apache
-	provides = cardano-node
+	provides = cardano-node=1.33.0
 	conflicts = cardano-node
 	source = https://hydra.iohk.io/build/11955068/download/1/cardano-node-1.33.0-linux.tar.gz
 	source = cardano-node.sysusers
