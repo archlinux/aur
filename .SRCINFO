@@ -1,7 +1,7 @@
 pkgbase = funkin-git
-	pkgdesc = A game originally made for Ludum Dare 47 "Stuck in a Loop"
+	pkgdesc = Friday Night Funkin': A rhythm game originally made for Ludum Dare 47 "Stuck in a Loop"
 	pkgver = v0.2.7.1.r102.gf94dece4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ninjamuffin99/Funkin
 	arch = x86_64
 	arch = i686
