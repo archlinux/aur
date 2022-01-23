@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-libplacebo
 pkgver=4.192.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (mingw-w64)'
 url='https://github.com/haasn/libplacebo'
 arch=('i686' 'x86_64')
@@ -16,11 +16,6 @@ source=(https://code.videolan.org/videolan/libplacebo/-/archive/v${pkgver}/libpl
 sha512sums=('0f69e1d1e1005d54cda901de6bd057badf26ecfa05fd970917daf7a5121330a68db4afe3db45fd8bad45332a6601da1cdfd69eb17736dce4ac478cea7c7b359f')
 b2sums=('611d009acb7624369566c864032b20407ca5458d760a5d0032c3e9dd14257349904aa5dc965873273c9458d379b37a73e024b2258014ffd469ed222bc7b6202e')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
-
-prepare() {
-    # avoid multiple definitions error
-    sed -i -e "71ilink_args += ['-Wl,--allow-multiple-definition']" "$srcdir/libplacebo-v${pkgver}/meson.build"
-}
 
 build() {
   export NEED_WINE=1
