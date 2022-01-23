@@ -1,8 +1,8 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=thumbor
-pkgver=7.0.0a5
-pkgrel=4
+pkgver=7.0.2
+pkgrel=1
 pkgdesc="open-source photo thumbnail service"
 arch=('x86_64')
 url="https://github.com/thumbor/thumbor"
@@ -12,7 +12,7 @@ makedepends=(python-setuptools)
 backup=("etc/thumbor.conf")
 source=("https://github.com/thumbor/thumbor/archive/$pkgver.tar.gz"
         "thumbor.service")
-b2sums=('be18d4cda7cfb759a4a928bb6e63f2b8126a379a81c9902dd3e8e243e0418bb294a684664c636ffdc86a96366976ed5510a084e44e643581874da1f085a219cc'
+b2sums=('89777b9d1adb1f03589dca7147ff3e0aad3a6e4341bca1d531f18b97880021722d792c2121be0e815bdc0cdf05d7b5056e1818c0347ad2b2e63babae599f7563'
         'c0fe21516f245132ac9bb1a833601eabc8348f8c420c76d49ffe7cb25e00712fcbc0fe7c579604616f5008507ec9f7582936596e54e8a311acf949fb031cd5ca')
 
 prepare() {
