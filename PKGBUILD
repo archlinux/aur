@@ -7,7 +7,7 @@
 
 pkgname=mutter-rounded
 pkgver=41.3
-pkgrel=1.3
+pkgrel=2
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -32,7 +32,7 @@ _settings_src="mutter_settings::git+https://github.com/yilozt/mutter-rounded-set
 
 # Mirrors in Gitee
 if [ "${LANG}" = "zh_CN.UTF-8" ] ; then
-  # _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
+  _mutter_src="$pkgname::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=$_commit"
   _settings_src="mutter_settings::git+https://gitee.com/lluo/mutter-rounded-setting/"
 fi
 
@@ -77,6 +77,7 @@ prepare() {
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
+
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
