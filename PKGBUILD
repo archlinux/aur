@@ -1,9 +1,9 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname="snapdrop"
-pkgver=2021.03.10
+pkgver=2022.1.6
 pkgrel=3
-_githash="fad4632eb903ea6de9ecbec90df0ac6bd7410e68"
+_githash="bd3d13d48a754121b53aa91034579466937ff2e3"
 pkgdesc="A Progressive Web App for local file sharing"
 url="https://github.com/RobinLinus/snapdrop"
 license=("GPL3" "MIT")
@@ -17,7 +17,7 @@ source=(
     "snapdrop.service"
 )
 sha256sums=(
-    "8886ae45aa5910606c8125e27cc589ae26fe162eedc11a396ca864f4788f2c2a"
+    "a447d1071a2f9e094af95534522b9dae354e8f0bf842817b32165ca062c01ba5"
     "c91545d65af2bfd6f09e05c7263b00340a98870ee9f3ded7447891e56b296fb6"
     "9bd2e544a4c3ac7e3d865881c02bb5c829aef5f34302f7a082c9724d85145930"
     "5d7f5efe54122221785ceeaa0b92873ce618a7d4160abf14b41c196bed2953db"
