@@ -9,11 +9,11 @@ pkgdesc="Application to control your hardware with ease using application profil
 url="https://gitlab.com/corectrl/corectrl"
 license=(GPL3)
 arch=(i686 x86_64)
-depends=('botan>=2.2.0' 'qt5-base>=5.9' qt5-quickcontrols2 qt5-charts qt5-svg qt5-xmlpatterns kauth karchive procps-ng hwids)
+depends=('botan>=2.2.0' 'qt5-base>=5.9' qt5-quickcontrols2 qt5-charts qt5-svg qt5-xmlpatterns kauth karchive procps-ng hwdata)
 makedepends=(git 'cmake>=3.3' extra-cmake-modules 'gcc>=8' qt5-tools)
 optdepends=(
     'vulkan-tools: for vulkaninfo'
-    'mesa-demos: for glxinfo'
+    'mesa-utils: for glxinfo'
     'util-linux: for lscpu'
 )
 provides=("$_pkgname")

@@ -20,9 +20,9 @@ pkgbase = corectrl-git
 	depends = kauth
 	depends = karchive
 	depends = procps-ng
-	depends = hwids
+	depends = hwdata
 	optdepends = vulkan-tools: for vulkaninfo
-	optdepends = mesa-demos: for glxinfo
+	optdepends = mesa-utils: for glxinfo
 	optdepends = util-linux: for lscpu
 	provides = corectrl
 	conflicts = corectrl
@@ -30,4 +30,3 @@ pkgbase = corectrl-git
 	md5sums = SKIP
 
 pkgname = corectrl-git
-
