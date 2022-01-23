@@ -3,7 +3,7 @@
 
 pkgname=mopidy-subidy
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from Subsonic servers"
 arch=("any")
 url="https://github.com/Prior99/mopidy-subidy"
@@ -21,9 +21,20 @@ _pkgver_commit="e8493923c1c15db1424d41444aa799c81a337e57"
 source=("https://github.com/Prior99/mopidy-subidy/archive/${_pkgver_commit}.tar.gz")
 sha256sums=("5289e09be1f8dba8fbd6bd347d54e4d6bb07f6238c3a2af21a0fc4bd9c6c89cb")
 
+build() {
+    #cd "mopidy-subidy-${pkgver}"
+    cd "mopidy-subidy-${_pkgver_commit}"
+
+    python setup.py build
+}
+
 package() {
     #cd "mopidy-subidy-${pkgver}"
     cd "mopidy-subidy-${_pkgver_commit}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+
+    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/mopidy-subidy/LICENSE"
+    install -Dm644 README.rst "${pkgdir}/usr/share/doc/mopidy-subidy/README.rst"
+    install -Dm644 CHANGELOG.rst "${pkgdir}/usr/share/doc/mopidy-subidy/CHANGELOG.rst"
 }
