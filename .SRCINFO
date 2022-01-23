@@ -6,6 +6,7 @@ pkgbase = gdm-settings-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = meson
 	depends = libadwaita
 	depends = glib2
 	depends = python-gobject
