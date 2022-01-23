@@ -3,19 +3,17 @@
 # Contributor: carstene1ns <arch carsten-teibes de>
 
 pkgname=python-tatsu
-pkgver=5.6.1
-pkgrel=3
+pkgver=5.7.3
+pkgrel=1
 pkgdesc="TatSu takes a grammar in a variation of EBNF as input, and outputs a memoizing PEG/Packrat parser in Python."
 arch=("any")
 url="https://github.com/neogeny/TatSu"
 license=("BSD")
-# TODO: Remove python-pytest-runner once this issue is resolved:
-# https://github.com/neogeny/TatSu/issues/216
-depends=("python" "python-pytest-runner")
+depends=("python")
 optdepends=("python-regex")
-makedepends=('python-setuptools')
+makedepends=("python-setuptools")
 source=("https://pypi.io/packages/source/T/TatSu/TatSu-${pkgver}.zip")
-sha256sums=("6a4f07aa7bfe9dfbee8015824feaf13f0b1a89577e2ee5a4a62c18630c309d4e")
+sha256sums=("cf1f3b16fc4f8c8f4d0135749407dc01c10051c34ce1f6c7e859867d89b5ac69")
 
 build() {
     cd "TatSu-${pkgver}"
