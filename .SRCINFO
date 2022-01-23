@@ -26,7 +26,7 @@ pkgbase = linux-mainline
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	sha256sums = SKIP
-	sha256sums = 0eecdc29b3bde4bccda282c4c04ef114250fedddcf3dbf07a3cc201dce35838f
+	sha256sums = 7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5
 
 pkgname = linux-mainline
 	pkgdesc = The Linux Mainline kernel and modules
