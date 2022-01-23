@@ -4,12 +4,13 @@
 # Contributor: Rémy B. (github.com/KirrimK)
 # Contributor: Renato Caldas (github.com/rmsc)
 # Contributor: goekce (github.com/goekce)
+# Contributor: David Castellon (github.com/bobosito000)
 # Acknowledgment: This work is hugely based on `ros2-arch-deps` AUR
 # package, maintained by T. Borgert.
 
 pkgname=ros2-git
 pkgver=r230.4a36f31
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
@@ -60,7 +61,7 @@ prepare() {
 
 build() {
     # Disable parallel build if RAM is low
-    if [[ $(free | grep -Po "Mem:\s+\K\d+") < 16000000 ]]; then
+    if [[ $(free | grep -Po "Mem:\s+\K\d+") -lt 16000000 ]]; then
         printf "\nRAM is smaller than 16 GB. Parallel build will be disabled for stability.\n\n"
         export COLCON_EXTRA_ARGS="${COLCON_EXTRA_ARGS} --executor sequential"
     fi
