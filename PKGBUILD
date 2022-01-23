@@ -32,11 +32,3 @@ package() {
 	install -Dm644 usr/lib/systemd/system/pomerium.service -t "$pkgdir/usr/lib/systemd/system/"
 	install -Dm644 etc/pomerium/config.yaml -t "$pkgdir/etc/pomerium/"
 }
-
-# package_pomerium-cli-bin() {
-# 	pkgdesc+=' -- CLI component'
-# 	provides=('pomerium-cli')
-# 	conflicts=('pomerium-cli')
-#
-# 	install -D pomerium-cli -t "$pkgdir/usr/bin/"
-# }
