@@ -15,7 +15,7 @@ optdepends=()
 install=anki-sync-server.install
 source=('git+https://github.com/ankicommunity/anki-sync-server.git')
 md5sums=('SKIP')
-backup=(etc/nginx/nginx.conf etc/nginx/sites-available/{anki-sync-server-http,anki-sync-server-https} usr/lib/systemd/system/anki-sync-server.service)
+backup=(etc/nginx/sites-available/{anki-sync-server-http,anki-sync-server-https} usr/lib/systemd/system/anki-sync-server.service)
 
 _repo_dir_="$(basename ${source} | cut -f 1 -d '.')"
 _anki_dir_="${_repo_dir_}/src"
