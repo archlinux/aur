@@ -1,18 +1,20 @@
 pkgbase = funkin-rewritten
 	pkgdesc = Optimized rewrite of Friday Night Funkin' built on LÖVE
 	pkgver = 1.1.0_beta.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HTV04/funkin-rewritten
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = zip
 	depends = love
-	source = git+https://github.com/HTV04/funkin-rewritten.git
+	source = git+https://github.com/HTV04/funkin-rewritten.git?tag=v1.1.0-beta.2
+	source = funkin_rewritten.svg
 	source = funkin-rewritten.sh
 	source = funkin-rewritten.desktop
 	sha256sums = SKIP
+	sha256sums = 2ea6c47142059be0ee1d26faa0b708d4cc3a3bd910990662bf2c1a34de5359ac
 	sha256sums = 073dc0138f7a3d4686f7a764ad98baf6e2d133de43ee199d8ccd562ba26490d5
-	sha256sums = 7a069ea2dccc9e5eaa18f9415dce2fccb22ded8d0b3b8e89122866829b2ec046
+	sha256sums = d35252269bf75fbbd1d30708f259c74efcdaec41bb6cb017b83e7588c2e41b0c
 
 pkgname = funkin-rewritten
