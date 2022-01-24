@@ -2,15 +2,14 @@ pkgbase = octave-optics
 	pkgdesc = Functions covering various aspects of optics
 	pkgver = 0.1.4
 	pkgrel = 1
-	url = http://octave.sourceforge.net/optics/
+	url = https://octave.sourceforge.io/optics
 	install = octave-optics.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
 	depends = octave>=3.2
 	noextract = optics-0.1.4.tar.gz
-	source = http://downloads.sourceforge.net/octave/optics-0.1.4.tar.gz
-	md5sums = 952a3ac11d704e17ae1eb584ee9cab3b
+	source = https://downloads.sourceforge.net/octave/optics-0.1.4.tar.gz
+	sha512sums = 86b44410f8b7ad56d3b7ca416cf91e2d3eab902144bcd47d9e9b2d7110810d21161d66b094f622d6b660c81b888b9423cfcf271a8a4207041138d9651d7c3620
 
 pkgname = octave-optics
-
