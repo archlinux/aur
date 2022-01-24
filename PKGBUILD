@@ -1,9 +1,9 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 _release=alpha
-_target=aur
+_target=arch
 
 pkgname=makedeb-alpha
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="A simplicity-focused packaging tool for Debian archives (${_release} release)"
 arch=('any')
