@@ -1,9 +1,10 @@
-# Maintainer: Sergey A. <murlakatamenka@disroot.org>
+# Maintainer: Kogasa <kogasapls at gmail dot com>
+# Contributor: Sergey A. <murlakatamenka@disroot.org>
 # based off `corectrl` PKGBUILD by Sergey Kostyuchenko <derfenix@gmail.com>
 
 _pkgname=corectrl
 pkgname=${_pkgname}-git
-pkgver=1.0.3.r128.g2aacf49
+pkgver=1.2.0.r41.ga2892df
 pkgrel=1
 pkgdesc="Application to control your hardware with ease using application profiles"
 url="https://gitlab.com/corectrl/corectrl"
