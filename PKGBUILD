@@ -1,7 +1,7 @@
 # Maintainer: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-git
-pkgver=0.7.2.r127.77be52a
+pkgver=0.7.3.r0.g435bbbb
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd tuigreet
-  printf "%s.r%s.%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 build() {
