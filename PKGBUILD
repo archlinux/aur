@@ -3,9 +3,9 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r897.16856ac
+pkgver=r898.32a1437
 pkgrel=1
-pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
+pkgdesc="The world's most popular non-default computer lockscreen."
 arch=('i686' 'x86_64')
 url="https://github.com/Raymo111/i3lock-color"
 license=('MIT')
@@ -30,7 +30,10 @@ build() {
     cd "${srcdir}/${_gitname}"
     git tag -f "aur-$(git rev-parse --short HEAD)"
     autoreconf -fi
-    ./configure --prefix="/usr" --sysconfdir="/etc"
+	./configure --prefix=/usr \
+        --sysconfdir=/etc \
+        --enable-debug=no \
+        --disable-sanitizers
     make
 }
 
