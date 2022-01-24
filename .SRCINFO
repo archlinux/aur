@@ -1,0 +1,13 @@
+pkgbase = intel-oneapi-dpl
+	pkgdesc = Intel® oneAPI DPC++ Library 2021.6.0 for Linux*
+	pkgver = 2021.6.0
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-libdpstd-devel-2021.6.0-2021.6.0-501_amd64.deb
+	sha256sums = f949db5bbc9d96b6f9e062691f931b19e5d07f208e590bc48954404d6a3fb9eb
+
+pkgname = intel-oneapi-dpl
+	depends = intel-oneapi-common-vars>=2022.0.0
+	depends = intel-oneapi-common-licensing=2022.0.0
