@@ -2,13 +2,13 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r102.g5b23875
+pkgver=17.r103.ge7e9000
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('wxgtk2' 'openal' 'sdl2')
+depends=('wxgtk2' 'openal' 'sdl2' 'alsa-lib')
 makedepends=('git' 'cmake' 'ninja')
 conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git")
@@ -21,8 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/pcem"
-  cmake -G "Ninja" -DUSE_NETWORKING=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .  
-  # deactivating -DUSE_ALSA=ON for now. Linking process is broken with it.
+  cmake -G "Ninja" -DUSE_NETWORKING=ON -DUSE_ALSA=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .  
   ninja
 }
 
