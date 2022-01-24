@@ -218,6 +218,8 @@ _sapi_depends=(
     "libedit"
     "argon2"
 )
+_ext_depends=(
+)
 _phpconfig="\
     --prefix=/usr \
     --sbindir=/usr/bin \
@@ -313,7 +315,7 @@ _phpextensions="\
     --enable-soap=shared \
     --enable-ftp=shared \
     --with-curl=shared,/usr \
-    --with-snmp=shared,/usr \
+    --enable-snmp=shared \
     --with-ldap=shared,/usr \
     --with-ldap-sasl=/usr \
     --with-imap=shared,/usr \
@@ -1072,13 +1074,7 @@ package_php72-xsl() {
 # MySQL
 package_php72-mysql() {
     pkgdesc="MySQL modules for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}")
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
-    if ((_build_shared_openssl)); then
-        depends+=("php${_phpbase}-openssl${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_mysql[@]}")
     _install_module mysqlnd
     _install_module mysql
     _install_module mysqli
@@ -1088,10 +1084,7 @@ package_php72-mysql() {
 # pdo_sqlite + sqlite3
 package_php72-sqlite() {
     pkgdesc="sqlite module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'sqlite')
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_sqlite[@]}")
     _install_module sqlite3
     _install_module pdo_sqlite
 }
@@ -1099,10 +1092,7 @@ package_php72-sqlite() {
 # ODBC
 package_php72-odbc() {
     pkgdesc="ODBC modules for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'unixodbc')
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_odbc[@]}")
     _install_module odbc
     _install_module pdo_odbc
 }
@@ -1110,10 +1100,7 @@ package_php72-odbc() {
 # PostgreSQL
 package_php72-pgsql() {
     pkgdesc="PostgreSQL modules for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'postgresql-libs')
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_pgsql[@]}")
     _install_module pgsql
     _install_module pdo_pgsql
 }
@@ -1128,10 +1115,7 @@ package_php72-interbase() {
 # firebird
 package_php72-firebird() {
     pkgdesc="pdo_firebird module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" "libfbclient")
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_firebird[@]}")
     _install_module pdo_firebird
 }
 
@@ -1152,10 +1136,7 @@ package_php72-mssql() {
 # Dba
 package_php72-dba() {
     pkgdesc="dba module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'db')
-    if ((_build_uses_lmdb)); then
-        depends+=('lmdb')
-    fi
+    depends=("${_ext_depends_dba[@]}")
     _install_module dba
 }
 
@@ -1166,12 +1147,10 @@ package_php72-dba() {
 # Intl
 package_php72-intl() {
     pkgdesc="intl module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}")
+    depends=("${_ext_depends_intl[@]}")
     if ((_build_with_custom_icu)); then
         # Patch to proper path inside intl.so
         patchelf --set-rpath "/usr/lib/${pkgbase}/icu${_pkgver_icu}/lib" "build-cli/modules/intl.so"
-    else
-        depends+=('icu')
     fi
     _install_module intl
 }
@@ -1212,13 +1191,7 @@ package_php72-calendar() {
 # GD
 package_php72-gd() {
     pkgdesc="gd module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'gd')
-    if ((_build_bundled_gd)); then
-        depends+=('libxpm' 'libpng' 'libjpeg')
-    fi
-    if ((_phpbase >= 55 && _phpbase < 72)); then
-        depends+=('libvpx');
-    fi
+    depends=("${_ext_depends_gd[@]}")
     _install_module gd
 }
 
@@ -1312,12 +1285,7 @@ package_php72-soap() {
 # FTP
 package_php72-ftp() {
     pkgdesc="FTP module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}")
-    if ((_build_openssl_v10_patch)); then
-        depends+=("openssl-1.0")
-    else
-        depends+=("openssl")
-    fi
+    depends=("${_ext_depends_ftp[@]}")
     _install_module ftp
 }
 
@@ -1331,12 +1299,7 @@ package_php72-ldap() {
 # SNMP
 package_php72-snmp() {
     pkgdesc="snmp module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'net-snmp')
-    if ((_build_openssl_v10_patch)); then
-        depends+=('openssl-1.0');
-    else
-        depends+=('openssl');
-    fi
+    depends=("${_ext_depends_snmp[@]}")
     _install_module snmp
 }
 
@@ -1350,12 +1313,7 @@ package_php72-xmlrpc() {
 # Imap
 package_php72-imap() {
     pkgdesc="imap module for ${pkgbase}"
-    depends=('pam' 'krb5' 'c-client' 'libxcrypt' "${pkgbase}=${pkgver}");
-    if ((_build_openssl_v10_patch)); then
-        depends+=("openssl-1.0")
-    else
-        depends+=("openssl")
-    fi
+    depends=("${_ext_depends_imap[@]}")
    _install_module imap
 }
 
@@ -1449,10 +1407,7 @@ package_php72-sysvshm() {
 # Ffi
 package_php72-ffi() {
     pkgdesc="ffi module for ${pkgbase}"
-    depends=(
-        'libffi'
-        "${pkgbase}=${pkgver}"
-    )
+    depends=("${pkgbase}=${pkgver}" 'libffi')
    _install_module ffi
 }
 
