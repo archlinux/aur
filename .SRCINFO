@@ -1,5 +1,3 @@
-generated-by = makedeb-makepkg
-
 pkgbase = rehex-git
 	pkgdesc = A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else (git version)
 	pkgver = r970.10fe1ef
