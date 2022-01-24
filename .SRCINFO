@@ -1,7 +1,7 @@
 pkgbase = park
 	pkgdesc = Configuration-based dotfiles manager
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/gbrlsnchs/park
 	arch = x86_64
 	arch = i686

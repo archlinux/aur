@@ -1,7 +1,7 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 pkgname=park
 pkgver=0.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration-based dotfiles manager"
 url="https://gitlab.com/gbrlsnchs/park"
 source=("https://gitlab.com/gbrlsnchs/park/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
@@ -16,7 +16,9 @@ optdepends=(
 sha256sums=("4ac2c12f7d063b1614d3e767942daea05765593566e102939976d267950f546a")
 
 prepare() {
-	cargo fetch --locked --target "$ARCH-unknown-linux-gnu"
+	cd "${srcdir}/${pkgname}-v${pkgver}"
+
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build () {
