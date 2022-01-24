@@ -1,0 +1,14 @@
+pkgbase = bore-client-git
+	pkgdesc = Reverse HTTP/TCP proxy to help you expose a local server behind a NAT or firewall to the internet via secure SSH tunnels
+	pkgver = r47.92498fe
+	pkgrel = 1
+	url = https://bore.network
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = bore
+	source = git+https://github.com/jkuri/bore.git
+	sha512sums = SKIP
+
+pkgname = bore-client-git
