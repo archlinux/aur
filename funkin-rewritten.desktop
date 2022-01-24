@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Friday Night Funkin' Rewritten
+GenericName=Rhythm Game
+Comment=Optimized rewrite of Friday Night Funkin'
+Type=Application
+Terminal=false
+Exec=funkin-rewritten
+Categories=Game
