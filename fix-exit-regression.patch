@@ -1,4 +1,4 @@
-From 0552a83b044517a35f48c42fd8eed8b6eda09656 Mon Sep 17 00:00:00 2001
+From 07c04ece7c0eb6644112c84454dc617d6b45458b Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
 Date: Sun, 23 Jan 2022 23:36:44 -0600
 Subject: [PATCH] Fix exit regression
@@ -20,7 +20,8 @@ was reported more than one year ago.
   https://gitlab.gnome.org/GNOME/vte/-/issues/204
 
 We know the child has exited, the client does not. It's up to the client
-to decide if it was to wait for rest of the input, or exit immediately.
+to decide if it wants to wait for the rest of the input, or exit
+immediately.
 
 So send the signal as soon as we receive it.
 

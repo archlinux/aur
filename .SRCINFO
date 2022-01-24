@@ -23,6 +23,6 @@ pkgbase = vte3-nohang
 	source = git+https://gitlab.gnome.org/GNOME/vte.git#tag=0.66.2
 	source = fix-exit-regression.patch
 	sha256sums = SKIP
-	sha256sums = 269072f4f65f42ac0338039c69bd03cb767fc08f837a78d12c11c9487397a195
+	sha256sums = 5e5715a928b3667e7dd15d2766b45e8fe159768ab949f0badd5c47d190ceb211
 
 pkgname = vte3-nohang
