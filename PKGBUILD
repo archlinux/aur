@@ -1,7 +1,7 @@
 # Maintainer: Egor Vorontsov <sdoregor@sdore.me>
 
 pkgname=updvcspkg
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Check upstream updates for VCS packages from AUR"
 arch=(any)
