@@ -2,12 +2,11 @@
 
 pkgname=updvcspkg
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Check upstream updates for VCS packages from AUR"
 arch=(any)
 url="https://github.com/egormanga/${pkgname}"
 license=(GPL)
-depends=(safe-rm)
 makedepends=(git)
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
