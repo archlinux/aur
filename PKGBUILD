@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2022.01.03.00
+pkgver=2022.01.24.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -16,7 +16,7 @@ install=watchman.install
 
 # https://github.com/facebook/watchman/releases
 source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('7c430d5c414396fbf39a48463c7eb0bd62b4f79757df5b340819931926b6a925')
+sha256sums=('6987d4d491026bdeed4cffdc51d1e68f982c4bb1867ac1209c9ae583c3c865b7')
 
 prepare() {
   cd watchman-v$pkgver-linux
@@ -29,7 +29,7 @@ data = Path("bin/watchman").read_bytes()
 badpath  = b"/usr/local/var/run/watchman\\x00"
 goodpath = b"/run/./././././././watchman\\x00"
 
-goodpath = goodpath.ljust(len(badpath), b"\\x00")
+assert len(badpath) == len(goodpath)
 data = data.replace(badpath, goodpath)
 
 Path("bin/watchman").write_bytes(data)
