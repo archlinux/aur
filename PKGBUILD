@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=16.0.0.rc2.r234.g647124d0
+pkgver=17.0.0.r5.gc1f86524
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -23,6 +23,11 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_pkgname}"
 
+	# bleh
+	git cherry-pick a30b2ae138c4c689d5089bc1c95692f8356799fb
+	git tag -d "v17.0.0"
+	git tag "v17.0.0" 647124d0001d3a3014ada7bf8cf5c5dcd576b794
+
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -35,7 +40,7 @@ build() {
 
 	export ALVR_ROOT_DIR=/usr
 
-	export ALVR_LIBRARIES_DIR=$ALVR_ROOT_DIR/lib/
+	export ALVR_LIBRARIES_DIR=$ALVR_ROOT_DIR/lib
 
 	export ALVR_OPENVR_DRIVER_ROOT_DIR=$ALVR_LIBRARIES_DIR/steamvr/alvr/
 	export ALVR_VRCOMPOSITOR_WRAPPER_DIR=$ALVR_LIBRARIES_DIR/alvr/
