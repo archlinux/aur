@@ -3,7 +3,7 @@
 
 pkgname='python-pagegen'
 _pkgname="${pkgname#python-}"
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Python static site generator with reStructuredText markup'
 arch=('any')
@@ -18,8 +18,12 @@ depends=(
   'python-htmlmin'
   'python-jsmin'
   'python-lxml'
+  'python-libsass'
   'python-mako'
+  'python-markdown'
+  'python-markupsafe'
   'python-rcssmin'
+  'python-six'
 )
 makedepends=(
   'python-pip'
@@ -39,13 +43,13 @@ package() {
 }
 
 sha256sums=(
-  '2de6675def19fdb96acb16fa7be9004b007b084a756bb1b5cdf5292ec04fc83b'
+  'f7ec451a826bb27fb4dd4c5db6eb54a81c4f2c64e24d027d313e6903c5a9a158'
 )
 sha512sums=(
-  '360a048152e927ab9c58ebd3623e7019b070207461f78084a6bd3c695a055e702230684ad57f6f6b85477d045d9d93ee9c4d2f36ba27816988ed8344b288441a'
+  '6ad29f3e50fe9fc70b6b76e95da0ab3a4a29ff902cd6f6797fb4dd21f6c3a32f020c18483e24954fdf64127532f5d5273eb784bf66c617492906c2f08792af5c'
 )
 b2sums=(
-  '4950cf48994caa1f2115c1bdd5b4a87e91fe775799121272936e9a7e0320b007725804489d616df0c4ca8c0268952813af86712e75577f615fbdce8a297f5e0b'
+  '8ebfe61cec0ecca1671bb3347b27114b9df7b879301df052533faa471d83a10e3a88cde0744452503cffe9a3d3c89eef125e40fc0990581738acbe439848e778'
 )
 
 # eof
