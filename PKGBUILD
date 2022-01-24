@@ -72,9 +72,9 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.16.1-xanmod1
-#pkgver=${xanmod//-/.}
-pkgver=5.16.2.prexan0
+xanmod=5.16.2-xanmod1
+pkgver=${xanmod//-/.}
+#pkgver=5.16.2.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -102,7 +102,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.1-2.xz"
-        "Linux-5.16.2.patch"
+        #"Linux-5.16.2.patch"
 
         # fix graphical corruption during boot
         "v2-drm-amdgpu-Use-correct-VIEWPORT_DIMENSION-for-DCN2.patch"
@@ -150,9 +150,8 @@ validpgpkeys=(
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '37d5d9f7ddc3262b3c4a247f49d8221653026cef625a4403ec0be3fcbb7dc2be'
+            '761d5f1c5d087b7e06d3bc00eba8dbc25651257037f88a082c9332f2a62bf866'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
-            'afc6a756a8c2fb29ac7fac714119245a3ef01a707b72ac7bb0648a559addcd99'
             'abfc143482bb993f12bc1e8b94b98e419a09641c68e8be7ece29b5a1f0b0f43b'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
