@@ -1,6 +1,6 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 pkgname=ictree
-pkgver='0.2'
+pkgver='0.2.1'
 pkgrel=1
 pkgdesc="Like tree but interactive"
 arch=('i686' 'x86_64')
