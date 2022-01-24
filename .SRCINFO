@@ -1,14 +1,15 @@
 pkgbase = downgrade
 	pkgdesc = Bash script for downgrading one or more packages to a version in your cache or the A.L.A.
-	pkgver = 10.1.1
+	pkgver = 11.0.0
 	pkgrel = 1
 	url = https://github.com/pbrisbin/downgrade
 	arch = any
 	license = GPL
 	depends = pacman-contrib
+	depends = fzf
 	optdepends = sudo: for installation via sudo
 	backup = etc/xdg/downgrade/downgrade.conf
-	source = downgrade-v10.1.1.tar.gz::https://github.com/pbrisbin/downgrade/archive/v10.1.1.tar.gz
-	md5sums = 44d82a13825eff9ec98dff632384ead7
+	source = downgrade-v11.0.0.tar.gz::https://github.com/pbrisbin/downgrade/archive/v11.0.0.tar.gz
+	md5sums = 768bbbd03e8ff2ec8afa02d6d2884a9e
 
 pkgname = downgrade
