@@ -1,0 +1,15 @@
+pkgbase = lux-git
+	pkgdesc = A fast, simple and clean video downloader written in Go
+	pkgver = 0.12.0.r4.gbfc1b1d
+	pkgrel = 1
+	url = https://github.com/iawia002/lux
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = ffmpeg
+	provides = lux
+	conflicts = lux
+	source = git+https://github.com/iawia002/lux.git
+	sha256sums = SKIP
+
+pkgname = lux-git
