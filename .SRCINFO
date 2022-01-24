@@ -1,0 +1,25 @@
+pkgbase = intel-oneapi-ippcp
+	pkgdesc = Intel® Integrated Performance Primitives Cryptography common
+	pkgver = 2021.5.1
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	noextract = intel-oneapi-ippcp-2021.5.1-2021.5.1-462_amd64.deb
+	noextract = intel-oneapi-ippcp-devel-2021.5.1-2021.5.1-462_amd64.deb
+	noextract = intel-oneapi-ippcp-common-2021.5.1-2021.5.1-462_all.deb
+	noextract = intel-oneapi-ippcp-common-devel-2021.5.1-2021.5.1-462_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ippcp-2021.5.1-2021.5.1-462_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ippcp-devel-2021.5.1-2021.5.1-462_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ippcp-common-2021.5.1-2021.5.1-462_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ippcp-common-devel-2021.5.1-2021.5.1-462_all.deb
+	source = intel-oneapi-ippcp.conf
+	sha256sums = 4a9e69f6ca80995af4b0947aaf5a2e3a7a329fb34d0426dadb923f659babe6e3
+	sha256sums = 680ffc4946a555ec13863ee61dd1885c45dccac5b5010f502ce3a05c6846fdb7
+	sha256sums = a32b92b6641a0310c46dc585a0967069d7149baae68156b5421e98c17cdcea45
+	sha256sums = 0190cb204ebff78bcd4631979ddbd0491a70dce29fea8b7588de19c4b64a03d2
+	sha256sums = 76925aa5c6d4dfcb5f87dbc6b51f5480a36abd05ff9e5cc7531bb95c7bee059c
+
+pkgname = intel-oneapi-ippcp
+	depends = intel-oneapi-common-vars>=2022.0.0
+	depends = intel-oneapi-common-licensing=2022.0.0
