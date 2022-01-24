@@ -1,6 +1,6 @@
 pkgbase = python-qiling
 	pkgdesc = An advanced binary emulation framework
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://qiling.io/
 	arch = x86_64
@@ -15,7 +15,8 @@ pkgbase = python-qiling
 	depends = python-pyelftools
 	depends = python-gevent
 	depends = python-multiprocess
-	source = https://files.pythonhosted.org/packages/source/q/qiling/qiling-1.4.0.tar.gz
+	depends = python-yaml>=6.0
+	source = https://files.pythonhosted.org/packages/source/q/qiling/qiling-1.4.1.tar.gz
 	sha256sums = c54a0d1ccc863741b68ad55c28bb24fbb40ac59760bb3ca1e8e642a821cd0786
 
 pkgname = python-qiling
