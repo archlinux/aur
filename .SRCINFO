@@ -1,0 +1,20 @@
+pkgbase = ctr-firm-builder-git
+	pkgdesc = A tool for building Nintendo 3DS FIRM containers
+	pkgver = r9.3dd773d
+	pkgrel = 1
+	url = https://github.com/derrekr/ctr_firm_builder
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	provides = ctr-firm-builder
+	conflicts = ctr-firm-builder
+	source = git+https://github.com/derrekr/ctr_firm_builder
+	sha256sums = SKIP
+
+pkgname = ctr-firm-builder-git
