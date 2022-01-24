@@ -1,9 +1,12 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=recastnavigation-openmw
 _pkgname=recastnavigation
 # since recastnavigation hasn't had an official release in a long time
-# but is now in debian repos maintained by an openmw dev, use same version as debian
-pkgver=1.5.1+git20210215.e75adf8
+# but is now in debian repos maintained by an openmw dev
+# https://packages.debian.org/source/sid/recastnavigation
+_pkgver=1.5.1
+pkgver=1.5.1.r754.e75adf8
 pkgrel=1
 pkgdesc="Navigation-mesh Toolset for openmw"
 url="https://github.com/recastnavigation/recastnavigation"
@@ -14,6 +17,12 @@ source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=e75
 sha256sums=("SKIP")
 conflicts=('recastnavigation')
 options=(debug strip)
+
+pkgver() {
+    cd $_pkgname
+    printf "%s.r%s.%s" "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # an adjustment of the example in wiki usable when upstream doesn't use tags (or neglects to maintain them)
+}
 
 build() {
     cmake \
