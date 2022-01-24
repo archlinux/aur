@@ -112,6 +112,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17 TCP Optimizations included in Xanmod
         # 5.17 TCP csum optimization included in Xanmod
 
+        # 5.17 UDP/IPv6 optimizations
+        "UDP-IPv6-Optimizations-from-5.17-partial.patch"
+
         # 5.16: zstd 1.4.10 update stack size regression fixes
         # 5.16: don't drop shared caches on C3 state transitions
         # 5.16 spectre defaults
@@ -150,6 +153,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '761d5f1c5d087b7e06d3bc00eba8dbc25651257037f88a082c9332f2a62bf866'
             '5b8eddb90671f3e8469a023b7ed0d3c5a9521f662affa1d541063e273b64dba8'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
+            '41b0cef536675f10fdfb69eeca2f1927653c69eb351dd92f4085ab6590485851'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
