@@ -10,13 +10,13 @@ Subject: [PATCH] Fix file paths
  3 files changed, 4 insertions(+), 27 deletions(-)
 
 diff --git a/source/common/platform/posix/sdl/i_main.cpp b/source/common/platform/posix/sdl/i_main.cpp
-index a984721fc..ddc209e34 100644
+index a28b90f01..3bd907336 100644
 --- a/source/common/platform/posix/sdl/i_main.cpp
 +++ b/source/common/platform/posix/sdl/i_main.cpp
-@@ -129,19 +129,7 @@ int main (int argc, char **argv)
- 	Args = new FArgs(argc, argv);
- 
- 	// Should we even be doing anything with progdir on Unix systems?
+@@ -175,19 +175,7 @@ int main (int argc, char **argv)
+	Args = new FArgs(argc, argv);
+
+	// Should we even be doing anything with progdir on Unix systems?
 -	char program[PATH_MAX];
 -	if (realpath (argv[0], program) == NULL)
 -		strcpy (program, argv[0]);
@@ -31,8 +31,8 @@ index a984721fc..ddc209e34 100644
 -		progdir = "./";
 -	}
 +	progdir = "/usr/lib/raze/";
- 	
- 	I_StartupJoysticks();
+
+	I_StartupJoysticks();
  
 diff --git a/source/core/gameconfigfile.cpp b/source/core/gameconfigfile.cpp
 index 115c737be..c83ce70ed 100644
