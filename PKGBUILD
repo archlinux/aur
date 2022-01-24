@@ -1,42 +1,35 @@
-# Maintainer: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
-
-_proj=fluiddyn
-_name=fluiddyn
-pkgname=python-${_name}
-pkgver=0.4.0
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
+_base=fluiddyn
+pkgname=python-${_base}
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="FluidDyn project | Framework for studying fluid dynamics."
+pkgdesc="A framework for studying fluid dynamics using Python"
 arch=('any')
-url="https://${_name}.readthedocs.io"
+url="https://foss.heptapod.net/${_base}/${_base}"
 license=('custom:"CeCILL-B"')
-depends=(
-  'python' 'python-numpy' 'python-matplotlib' 'python-h5py' 'python-psutil'
-  'python-distro' 'python-h5netcdf' 'python-qtpy'
-)
-optdepends=(
-  'python-pyfftw: Calculate FFT'
-  'python-pillow: Image I/O'
-)
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-provides=(python-${_name})
-conflicts=(python2-${_name}-hg)
-
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('1d662ce373e6303aaf0c3c2f0dd3e6ff8c485befef5a63e892dc60f7cc0743ad')
+depends=(python-matplotlib python-h5netcdf python-psutil python-distro python-qtpy)
+optdepends=('python-pyfftw: Calculate FFT')
+makedepends=(python-setuptools)
+checkdepends=(python-pytest python-scipy ipython)
+provides=(python-${_base})
+conflicts=(python2-${_base}-hg)
+source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
+sha512sums=('71834e9108ba373ecf67a5874c460beba2ae781cd43e1180d36f4092ec4d0740a0c00b39dda257c02a1a1067e17a5056ba03f3c774540033fe05fb2a3782e223')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_base}-${pkgver}"
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 check() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  # pytest
+  cd "${_base}-${pkgver}"
+  python -m pytest -k 'not image'
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
-  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "${_base}-${pkgver}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
