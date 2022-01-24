@@ -11,7 +11,7 @@
 pkgname=chromium-no-extras
 _pkgname=chromium
 pkgver=97.0.4692.99
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -35,8 +35,6 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         wayland-fix-binding-to-wrong-version.patch
         sql-make-VirtualCursor-standard-layout-type.patch
-        chromium-93-ffmpeg-4.4.patch
-        unbundle-ffmpeg-av_stream_get_first_dts.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('c91bae205705b367f2cfc1f72ce1ee99b2ceb5edfc584e15c60a6ab5ff01ecba'
@@ -44,8 +42,6 @@ sha256sums=('c91bae205705b367f2cfc1f72ce1ee99b2ceb5edfc584e15c60a6ab5ff01ecba'
             '7af5c0a55a20c0fb496b2f4448d89203a83bb1914754d864460e55e68731ef0b'
             '29541840921302060f712838ba460cd7e988148af3ce3c9dc45437fc78442a67'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-            '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
-            '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -101,16 +97,6 @@ prepare() {
   # setting GOOGLE_DEFAULT_CLIENT_ID and GOOGLE_DEFAULT_CLIENT_SECRET at
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
-
-  # Fix build with older ffmpeg
-  patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
-
-  # Substitute the custom function 'av_stream_get_first_dts'; will need to
-  # switch to bundled ffmpeg when we're no longer using ffmpeg 4.4 in Arch
-  # Upstream commit that made first_dts internal causing Chromium to add a
-  # custom function: https://github.com/FFmpeg/FFmpeg/commit/591b88e6787c4
-  # https://crbug.com/1251779
-  patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
 
   # https://crbug.com/1207478
   patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
