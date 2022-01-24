@@ -6,7 +6,7 @@ _mainpkgname="$_projectname-emu"
 _noguipkgname="$_projectname-emu-nogui"
 pkgbase="$_mainpkgname-git"
 pkgname=("$pkgbase" "$_noguipkgname-git")
-pkgver='5.0.r15132.g1b32a61d6a'
+pkgver='5.0.r15933.g900a0b0eee'
 pkgrel='1'
 pkgdesc='A Gamecube / Wii emulator'
 _pkgdescappend=' - git version'
@@ -50,6 +50,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
+	export CXXFLAGS+=" -fpermissive"
 	cmake -S '.' -B 'build/' -G Ninja \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
