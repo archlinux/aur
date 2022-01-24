@@ -2,27 +2,30 @@
 
 pkgname=docker-machine-driver-vmware
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Create Docker machines locally on VMware Fusion and Workstation.'
 arch=('x86_64')
 url='https://github.com/machine-drivers/docker-machine-driver-vmware'
 license=('Apache')
-makedepends=('go1.15'
+makedepends=('go'
              'git')
+source=("git+$url#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  mkdir -p $pkgname-$pkgver
-  cd $pkgname-$pkgver
-  export GOPATH=`pwd`
-  #export GOFLAGS="-modcacherw"
-  go1.15 get -d github.com/machine-drivers/docker-machine-driver-vmware
-  cd ${GOPATH}/src/github.com/machine-drivers/docker-machine-driver-vmware
+  cd $pkgname
 
-  git checkout tags/v$pkgver
+  # refs: Go package guidelines - https://wiki.archlinux.org/title/Go_package_guidelines
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   export VERSION=$pkgver
   make
 }
 
 package() {
-  install -Dm 755 "${GOPATH}/src/github.com/machine-drivers/docker-machine-driver-vmware/out/docker-machine-driver-vmware" "${pkgdir}/usr/bin/docker-machine-driver-vmware"
+  install -Dm 755 "${pkgname}/out/docker-machine-driver-vmware" "${pkgdir}/usr/bin/docker-machine-driver-vmware"
 }

@@ -1,11 +1,13 @@
 pkgbase = docker-machine-driver-vmware
 	pkgdesc = Create Docker machines locally on VMware Fusion and Workstation.
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/machine-drivers/docker-machine-driver-vmware
 	arch = x86_64
 	license = Apache
-	makedepends = go1.15
+	makedepends = go
 	makedepends = git
+	source = git+https://github.com/machine-drivers/docker-machine-driver-vmware#tag=v0.1.5
+	sha256sums = SKIP
 
 pkgname = docker-machine-driver-vmware
