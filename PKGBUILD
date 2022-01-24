@@ -4,7 +4,7 @@
 pkgname=vivaldi
 _rpmversion=5.0.2497.48-1
 pkgver=5.0.2497.48
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -16,11 +16,17 @@ optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
     'libnotify: native notifications'
 )
-source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm")
-sha512sums=('875384bf6ffda065251b04bb05fcb3184f97c53c8ad4f5cd5acceb75ba4b90dbb60404577df44ed7d60f43b644790be0f8fa761f8cbe05657ee9510c602499de')
+source=("https://downloads.vivaldi.com/stable/vivaldi-stable-${_rpmversion}.x86_64.rpm"
+        '0001-add-support-for-user-flags.patch')
+sha512sums=('875384bf6ffda065251b04bb05fcb3184f97c53c8ad4f5cd5acceb75ba4b90dbb60404577df44ed7d60f43b644790be0f8fa761f8cbe05657ee9510c602499de'
+            '334db2056114fdbf07407b1cee24284f019df7a15acd711ed016bab1a1ab211abf3884ed848f3496486e7c78056108ccf1e88547e22b787bc4f548c6785f64d2')
 
 package() {
     cp --parents -a {opt,usr/bin,usr/share} "$pkgdir"
+
+    # add support for ~/.config/vivaldi-stable.conf
+    patch -p1 -i "$srcdir/0001-add-support-for-user-flags.patch" \
+        "$pkgdir/opt/$pkgname/$pkgname"
 
     # suid sandbox
     chmod 4755 "$pkgdir/opt/$pkgname/vivaldi-sandbox"
@@ -38,10 +44,13 @@ package() {
             "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$pkgname.png"
     done
 
+    # install global icon in case hicolor theme gets bypassed
+    install -Dm644 "$pkgdir/opt/$pkgname/product_logo_256.png" \
+        "$pkgdir/usr/share/pixmaps/$pkgname.png"
+
     # license
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     w3m -dump "$pkgdir/opt/$pkgname/LICENSE.html" \
         | head -n 5 \
         > "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
-
