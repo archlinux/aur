@@ -1,37 +1,39 @@
-# Maintainer: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
-
-_name=transonic
-pkgname=python-${_name}
-pkgver=0.4.11
-pkgrel=2
-pkgdesc="AOT / JIT compiler frontend for modern Python-Numpy code"
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
+_base=transonic
+pkgname=python-${_base}
+pkgver=0.4.12
+pkgrel=1
+pkgdesc="Make your Python code fly at transonic speeds!"
 arch=('any')
-url="https://${_name}.readthedocs.io"
-license=('BSD')
-depends=(
-  'autopep8' 'python' 'python-setuptools' 'python-beniget'
-  'python-gast' 'python-numpy'
-)
+url="https://foss.heptapod.net/fluiddyn/${_base}"
+license=('custom:BSD-3-clause')
+depends=(python-beniget autopep8 python-numpy)
 optdepends=(
   'python-pythran: compiler backend'
   'python-numba: compiler backend'
   'cython: compiler backend'
   'python-rich: colourful logs'
 )
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-provides=(${_name})
-
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('257bd1abf3deff71a7fd1c5200c9d55f3ebd7fcc6df8454a49d96b9152818638')
+makedepends=(python-setuptools)
+checkdepends=(python-pytest)
+provides=(${_base})
+source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
+sha512sums=('6063d4b4bacba5b4049a6f6772edfc1ffb12817e7a1b2ceb4cc0cebf8d24d4e5e42be9814e4e75fbcfb4f39cd15f2b37601344c36d9c5e8ff707f45093d64af5')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${_base}-${pkgver}"
   python setup.py build
 }
 
+check() {
+  cd "${_base}-${pkgver}"
+  python setup.py install --root="${PWD}/tmp_install" --optimize=1 --skip-build
+  PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest tests -k 'not justintime and not init'
+}
+
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root=$pkgdir --optimize=1 --skip-build
-  install -D -m644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "${_base}-${pkgver}"
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
