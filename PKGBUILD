@@ -2,13 +2,19 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=1044.88b2476
+pkgver=1064.d443d47
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'electron')
+# 'electron' has been temporarily removed to mitigate an issue where Stretchly
+# break windows render without colour or text, so Electron is packaged with
+# Stretchly for now. See:
+# - https://github.com/hovancik/stretchly/issues/1048
+# - https://github.com/electron/electron/issues/32133
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
+#depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'electron')
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
@@ -40,8 +46,7 @@ prepare() {
     nvm ls "$_node_version" &>/dev/null ||
         nvm install "$_node_version" || false
     nvm use "$_node_version"
-    npm install --no-audit --no-progress --no-fund \
-        electron@"$(</usr/lib/electron/version)"
+    npm install --no-save --no-audit --no-progress --no-fund
 }
 
 build() {
@@ -51,30 +56,30 @@ build() {
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
     # pacman package and unpack it
-    local _outfile _appname _electron _unpackdir=${srcdir}/${_pkgname}.unpacked
+    local _outfile _appname _unpackdir=${srcdir}/${_pkgname}.unpacked
     _outfile=dist/$(jq -r '"\(.name)-\(.version)"' package.json).pacman
     _appname=$(jq -r .name package.json)
-    _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
     rm -Rf "${_unpackdir}"
     mkdir -p "${_unpackdir}"
     local i686=ia32 x86_64=x64
     ./node_modules/.bin/electron-builder build \
         --linux pacman \
-        --"${!CARCH}" \
-        -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(</usr/lib/electron/version)"
+        --"${!CARCH}"
     tar -C "${_unpackdir}" -Jxf "${_outfile}"
-    echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
-    rm -v "$_electron"
-    # Replace absolute path in desktop entry
-    sed -Ei "s/^(Exec=).*/\1stretchly/" \
-        "${_unpackdir}/usr/share/applications/${_pkgname}.desktop"
+    #local _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
+    #echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
+    #rm -v "$_electron"
+    ## Replace absolute path in desktop entry
+    #sed -Ei "s/^(Exec=).*/\1stretchly/" \
+    #    "${_unpackdir}/usr/share/applications/${_pkgname}.desktop"
     # Create /usr/bin/stretchly
-    install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
-    cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
-#!/bin/sh
-exec electron '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
-EOF
+    #install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
+    #cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
+    ##!/bin/sh
+    #exec electron '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
+    #EOF
+    install -d "${_unpackdir}/usr/bin"
+    ln -s "/opt/${_appname}/stretchly" "${_unpackdir}/usr/bin/stretchly"
 }
 
 package() {
