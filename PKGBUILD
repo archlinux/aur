@@ -1,4 +1,4 @@
-# Author: gardotd426 <gardotd426@gmail.com>
+# Author: Matt McDonald <gardotd426@gmail.com>
 # Contributor: Kevin Gilmer
 # Contributor: Avinash Duduskar <strykar@hotmail.com>
 # Maintainer: gardotd426 <gardotd426@gmail.com>
@@ -28,7 +28,7 @@ pkgname=(regolith-i3 # (regolith-i3-gaps regolith-i3-gaps-session i3-gaps-wm i3-
         regolith-desktop-config
 	remontoire-regolith)
 pkgver=1.6
-pkgrel=10
+pkgrel=11
 arch=('x86_64')
 url=https://github.com/regolith-linux/regolith-desktop
 url2=https://launchpad.net/~regolith-linux/+archive/ubuntu/release/+files
@@ -85,7 +85,7 @@ source=(http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/a/ayu-t
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/q/qogir-icon-theme/qogir-icon-theme_1.0.0-1_all.deb
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/f/fonts-materialdesignicons-webfont/fonts-materialdesignicons-webfont_1.6.50-3regolith3_amd64.deb
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/g/gruvbox-gtk/gruvbox-gtk_1.0.1-1_amd64.deb
-        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/d/dracula-gtk/dracula-gtk_1.0.1-1_amd64.deb
+        http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/d/dracula-gtk/dracula-gtk_1.1.0-1_amd64.deb
 	http://ppa.launchpad.net/regolith-linux/release/ubuntu/pool/main/p/pop-gtk-theme/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb
         git+https://github.com/regolith-linux/remontoire.git
 	rofitheme.patch
@@ -140,7 +140,7 @@ sha256sums=('6e8c3d2dbe8c192c40593c85c9c5f2f6fb29ea376e72770461b41b867a2dd996'
             '33602d8faec796be87966383f741f62b60c06c08714b546845379ada7ed0b77e'
             '6b3cd883cc38098b25d5fa828751d0d9b5c40a754d92d1925c354f969707ed99'
             '6884a081345953c3e5aa2cf7c32253604eb9bf07b5ca4570cf41802d6ca762d6'
-            '2f3d57a5445f46931b8184cdbea0aa52b5251b319f367ec188db00187c1c7e71'
+            'bf588ec5f3434d73db05085a2b6b08d8dde4383dd2a1d4a74030983d2cbc929e'
             'eb44cac833c369dc0f3afe71e334a7bccaaef45836030b3c9ab3d9dc70500370'
             'SKIP'
             '734b6fdfbfc78cd9c41b1c32e59ef15671a0ef650719fdedfc47f50c5ec633ad'
@@ -204,7 +204,7 @@ pkgdesc="Regolith's i3-gaps-based DE's underpinnings and gnome foundational depe
     license=('MIT')
     arch=('x86_64')
     depends=('i3-gaps' 'i3status' 'xorg-server' 'xcb-util-keysyms' 'xcb-util-wm'  'libev'
-             'yajl'  'startup-notification'  'pango'  'perl' 'xorg-server'
+             'yajl'  'startup-notification'  'pango'  'perl' 'xorg-server' 'xorg-xrdb'
              'xcb-util-xrm'  'libxkbcommon-x11' 'python-i3ipc' 'gnome-flashback' 
              'accountsservice' 'cups-pk-helper' 'libgtop' 'gnome-control-center' 'gnome-desktop' 
 	     'xorg-xwininfo' 'dbus' 'python-gobject' 'python-dbus' 'xorg-xprop' 'libev' 'pcre'
@@ -285,7 +285,7 @@ package_i3xrocks-cpu-usage () {
     pkgdesc="CPU usage blocklet for i3xrocks"
     license=('GPLv3')
     arch=('x86_64')
-    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome')
+    depends=('glibc' 'accountsservice' 'bc' 'ttf-font-awesome' 'sysstat')
     conflicts=()
     provides=('i3xrocks-cpu-usage')
     groups=('regolith-de')
@@ -482,8 +482,8 @@ package_regolith-styles () {
     pkgdesc="Regolith's themes for i3, gdm, gtk, rofi, plymouth, etc."
     license=('custom: GPLv3')
     depends=("regolith-i3" "gtk3" "ttf-iosevka-nerd" "ttf-jetbrains-mono" "adwaita-icon-theme" "otf-fira-mono" "ttf-ubuntu-font-family" "arc-icon-theme" "python-appdirs")
-    conflicts=("ayu-theme" "paper-icon-theme" "qogir-icon-theme" "moka-icon-theme-git" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git")
-    provides=("ayu-theme" "paper-icon-theme" "regolith-styles" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano")
+    conflicts=("ayu-theme" "paper-icon-theme" "qogir-icon-theme" "moka-icon-theme-git" "nordic-theme-git" "gtk-theme-solarc-git" "gtk-theme-plano" "gtk-theme-plano-git" "dracula-gtk-theme")
+    provides=("ayu-theme" "paper-icon-theme" "regolith-styles" "regolith-look" "gtk-theme-solarc" "gtk-theme-plano" "dracula-gtk-theme")
     groups=('regolith-de')
 
     extract_deb "${srcdir}"/ayu-theme_0.2.2-1_amd64.deb
@@ -515,7 +515,7 @@ package_regolith-styles () {
     extract_deb "${srcdir}"/qogir-icon-theme_1.0.0-1_all.deb
     extract_deb "${srcdir}"/fonts-materialdesignicons-webfont_1.6.50-3regolith3_amd64.deb
     extract_deb "${srcdir}"/gruvbox-gtk_1.0.1-1_amd64.deb
-    extract_deb "${srcdir}"/dracula-gtk_1.0.1-1_amd64.deb
+    extract_deb "${srcdir}"/dracula-gtk_1.1.0-1_amd64.deb
     extract_deb "${srcdir}"/pop-gtk-theme_4.1.4\~1560290633\~18.04\~f75e86a_all.deb
 
     move_copyright
