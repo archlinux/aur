@@ -1,7 +1,7 @@
 pkgbase = briar-desktop
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
 	pkgver = 0.1.0.beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = x86_64
 	arch = aarch64
@@ -22,7 +22,6 @@ pkgbase = briar-desktop
 	source = briar128.png
 	source = briar192.png
 	source = briar-desktop.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669
