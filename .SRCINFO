@@ -1,0 +1,21 @@
+pkgbase = guish
+	pkgdesc = A versatile graphical DSL and army knife to make and modify GUIs.
+	pkgver = 1.0.6_r1
+	pkgrel = 1
+	url = https://codeberg.org/phranz/guish
+	arch = x86_64
+	license = GPL3
+	makedepends = libx11
+	makedepends = qt5-base
+	makedepends = qt5-webkit
+	makedepends = libxtst
+	depends = libx11
+	depends = qt5-base
+	depends = qt5-webkit
+	depends = libxtst
+	provides = guish
+	conflicts = guish
+	source = guish-1.0.6_r1.tar.gz::https://codeberg.org/phranz/guish/archive/1.0.6-r1.tar.gz
+	sha512sums = e04046a75a5e57fdb3360335cb61d5d244d0dc80439e17dd46d6fde069790e64b28132d4ff125ee0d6411ce86490b3689c93601620f084f5c5b4bf02ef2be937
+
+pkgname = guish
