@@ -1,7 +1,7 @@
 pkgbase = uconfig
 	pkgdesc = Datasheet pinout extractor from PDF and library Stylizer for Kicad.
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Robotips/uConfig
 	arch = any
 	license = GPL3

@@ -3,7 +3,7 @@
 pkgname=uconfig
 _pkgname=uConfig
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Datasheet pinout extractor from PDF and library Stylizer for Kicad."
 arch=('any')
 url="https://github.com/Robotips/uConfig"
@@ -27,27 +27,14 @@ build() {
 
 package() {
     install -dm755 "${pkgdir}/usr/bin/" \
-                   "${pkgdir}/usr/share/${pkgname}/"
+                   "${pkgdir}/usr/lib/"
 
     cd ${srcdir}/${_pkgname}-${pkgver}/
-    cp --preserve=mode -r bin/*  "${pkgdir}/usr/share/${pkgname}/"
+    cp -P --preserve=links bin/lib*.so.*  "${pkgdir}/usr/lib/"
 
-    install -Dm0644 ${srcdir}/${_pkgname}-${pkgver}/src/uconfig_gui/img/${_pkgname}.ico "${pkgdir}/usr/share/pixmaps/${pkgname}_gui.ico"
-
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/usr/bin/bash
-
-cd /usr/share/${pkgname}/
-./${pkgname} "\$@"
-
-EOF
-        install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}_gui" << EOF
-#!/usr/bin/bash
-
-cd /usr/share/${pkgname}/
-./${pkgname}_gui "\$@"
-
-EOF
+    install -Dm0644 "${srcdir}/${_pkgname}-${pkgver}/src/uconfig_gui/img/${_pkgname}.ico" "${pkgdir}/usr/share/pixmaps/${pkgname}_gui.ico"
+    install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm0755 "${srcdir}/${_pkgname}-${pkgver}/bin/${pkgname}_gui" "${pkgdir}/usr/bin/${pkgname}_gui"
 
     install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname}_gui.desktop" << EOF
 [Desktop Entry]
