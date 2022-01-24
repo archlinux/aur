@@ -60,7 +60,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=4.4.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -437,6 +437,21 @@ prepare() {
   # avcodec/vaapi_encode: Fix segfault upon closing uninitialized encoder
   # https://github.com/FFmpeg/FFmpeg/commit/d1b47f3bfcc625ca1cae210fc198dcbd54381a88
   git cherry-pick -n d1b47f3bfcc625ca1cae210fc198dcbd54381a88
+
+  ## Cherry-pick for FFmpeg from obs FFmpeg repository
+  ## This was hastly made before 27.2 beta 4 release
+  # avcodec/libsvtav1: properly enforce CQP mode when set in wrapper
+  # https://github.com/FFmpeg/FFmpeg/commit/c5f314309067dc85c165b975f53975c38e196258
+  git cherry-pick -n c5f314309067dc85c165b975f53975c38e196258
+  # avcodec/libsvtav1: Fix value range for rc mode
+  # https://github.com/FFmpeg/FFmpeg/commit/0463f5d6d56db6cc01bc88a0d77488f4ef23dfdc
+  git cherry-pick -n 0463f5d6d56db6cc01bc88a0d77488f4ef23dfdc
+  # avcodec/libsvtav1: make coded GOP type configurable
+  # https://github.com/FFmpeg/FFmpeg/commit/64e2fb3f9d89e5ad552f48e2d5beb9be7a91572a
+  git cherry-pick -n 64e2fb3f9d89e5ad552f48e2d5beb9be7a91572a
+  # avcodec/libsvtav1: Fix duplicate definition of caps_internal
+  # https://github.com/FFmpeg/FFmpeg/commit/04b89e8ae33ba74e5cb5b3b770613fa599f9cb36
+  git cherry-pick -n 04b89e8ae33ba74e5cb5b3b770613fa599f9cb36
 
   ## Patch for FFmpeg from obs-deps repository
 
