@@ -1,18 +1,20 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
 # new octave-forge PKGBUILDs or update existing ones. Patches welcome.
 #
 
+
 _pack=informationtheory
-pkgname=octave-$_pack
+pkgname=octave-${_pack}
 pkgver=0.1.8
 pkgrel=3
-pkgdesc="Functions and routines for basic Information Theory definitions, and source coding."
+pkgdesc="Functions and routines for basic Information Theory definitions, and source coding"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/${_pack}"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=2.9.7')
@@ -20,11 +22,11 @@ makedepends=()
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
-noextract=("$_archive")
-md5sums=('8948c888555cd4377edcc3cdc8611bee')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}")
+noextract=("${_archive}")
+sha512sums=('14878e3e3f6c5b3ef43e2e7addd09bfc48ab6e4fc022b80448851c3f714fe0086144b740a08b0c445e9a3df65256ce8983d39cdd79f371339f419fc893a3ae69')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"

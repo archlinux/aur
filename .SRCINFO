@@ -1,16 +1,15 @@
 pkgbase = octave-informationtheory
-	pkgdesc = Functions and routines for basic Information Theory definitions, and source coding.
+	pkgdesc = Functions and routines for basic Information Theory definitions, and source coding
 	pkgver = 0.1.8
 	pkgrel = 3
-	url = http://octave.sourceforge.net/informationtheory/
+	url = https://octave.sourceforge.io/informationtheory
 	install = octave-informationtheory.install
 	arch = any
 	groups = octave-forge
 	license = GPL
 	depends = octave>=2.9.7
 	noextract = informationtheory-0.1.8.tar.gz
-	source = http://downloads.sourceforge.net/octave/informationtheory-0.1.8.tar.gz
-	md5sums = 8948c888555cd4377edcc3cdc8611bee
+	source = https://downloads.sourceforge.net/octave/informationtheory-0.1.8.tar.gz
+	sha512sums = 14878e3e3f6c5b3ef43e2e7addd09bfc48ab6e4fc022b80448851c3f714fe0086144b740a08b0c445e9a3df65256ce8983d39cdd79f371339f419fc893a3ae69
 
 pkgname = octave-informationtheory
-
