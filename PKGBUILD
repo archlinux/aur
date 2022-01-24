@@ -47,10 +47,10 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
-_major=5.15
-_minor=16
+_major=5.16
+_minor=2
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,9 +71,9 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K220107v1"
+_bfq_rel="r2K220121v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
-_compiler_path="cpu-patches-v2-sep"
+_compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
@@ -81,12 +81,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v11-sep/0006-lg-laptop-Recognize-more-models.patch"
+        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
          # the main kernel config files
         'config')
 
@@ -235,11 +231,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -334,17 +330,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a2e3dbd92b2079a64af4d4a17db998381b5afe41ffb8b6b7fb43a69eb93b1c6d766b4b8ebba287d45f3de8392e4808cca5a7ccd5da5d42f7f58a57bf17ce5d10'
+sha512sums=('197f387d5e3a5029e354aaf50dc4fffc20a894c2579132678396e69c567c4072ea365ade7484a0b964572829f4bbfe518f21df5704ae1685f5786fddbb321097'
             'SKIP'
-            '1c60a9eef8820cfbfd1537062741f326fdc8dae709707817f12592497f12edb84a63aed8669c96e16292b998573c3b330aef758196ff04082b6db61b88fc66ea'
-            '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
-            '0ef9de1a78ef703a08d079f517e60fb399f5f32703a70a209b06fafa1398a5aa04c45375569db0006d4168abe2a85497fc85c6faa42f9dbef44dfd2e9797bcf7'
-            '46ced42b6a0f73b06db3d8ff7e19ee11fad25a83f76f60e72374ae91e5d41b604cd45c5cb21359c1f8c9e185eaa62cba3f7b76000793a94e762e6ec1a8a2a903'
-            '469b0cafdacc16917ff49b59fd227b0c6a28c171857b2bac2cfa93f97bde75f26bba6b82e6c56c920fb1d5bf992b7f975b3128da2a546b969b0cc1d0c6336f88'
-            'cad9cf6b2ee00ba80ff164b4f4a26c02b009de524d2e4188e6d3cb7aa026bb2aee387d87d9bc04b237b132e390f3dd0a61bc6c19f33c4c2f5da89f693d20dab8'
-            '0ac500cc0dddaa1f6ed889e74b23279918e822c61f7e18786b9c99461e9754aab72c2f9c0e0d559c284dfc57fd6c85e3af83b07000432a5a5594231612daa956'
-            'daeb8dae170a0bee9ac57d237fb8e5824b07a7a9f5e043ead4559178ede658de6019342be2958ecba049a927c2419069851e0c6c9f3ed1ab8373ee9cd7eae16f'
-            '892ff1126a5d78423a2557672c6557f68894be5bbb1bf93c208732aa53862a404dd85c3fe9b86faf4b69d8e80e377afe166be4393a4786984bdf45813109e9d5')
+            '31e974993ec9d7e9e06b45d4f58aa2f3de64cb01f2bae21722bd711dca75d67e2dbba9db4e5d4c0a329ed0ab9b26dc33ff53a8a71b1ca36f97243b58ddcf2f40'
+            '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
+            '1f090ff2773bc595b488a6201a625f5ccfccd87c50eac603f86aea3d84ecf5e9da3c719da460b60956026e4d9ac9280402cbe45a27d7e7f851b92d4c04986cb5'
+            '79e0927b3efc3899e0412bc0cb515706f2cdc4892f1d9a19dc2fb85093a5052552cd4112a085589ca7e18912ea38db847f8e76184a66006a5a1938878853edf6'
+            '8566062587f9eff1391b7fa3873f42aac47a0869993553460eb49750f13c0bd267ed2497339e30f1b91bb9dc9f4724aab4fb681810c20106e3cf426d72e808f1')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
