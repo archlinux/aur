@@ -13,7 +13,7 @@
 _phpbase="81"
 _suffix=""
 pkgver="8.1.2"
-pkgrel="2"
+pkgrel="3"
 pkgbase="php81"
 pkgdesc="PHP 8.1.2 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -196,6 +196,61 @@ _sapi_depends=(
     "pcre2"
     "libedit"
     "argon2"
+)
+_ext_depends_snmp=(
+    "php81=8.1.2"
+    "net-snmp"
+    "openssl"
+)
+_ext_depends_ftp=(
+    "php81=8.1.2"
+    "openssl"
+)
+_ext_depends_intl=(
+    "php81=8.1.2"
+    "icu"
+)
+_ext_depends_imap=(
+    "php81=8.1.2"
+    "pam"
+    "krb5"
+    "c-client"
+    "libxcrypt"
+    "openssl"
+)
+_ext_depends_gd=(
+    "php81=8.1.2"
+    "gd"
+)
+_ext_depends_mysql=(
+    "php81=8.1.2"
+    "php81-pdo=8.1.2"
+    "php81-openssl=8.1.2"
+)
+_ext_depends_dba=(
+    "php81=8.1.2"
+    "db"
+    "lmdb"
+)
+_ext_depends_odbc=(
+    "php81=8.1.2"
+    "unixodbc"
+    "php81-pdo=8.1.2"
+)
+_ext_depends_pgsql=(
+    "php81=8.1.2"
+    "postgresql-libs"
+    "php81-pdo=8.1.2"
+)
+_ext_depends_firebird=(
+    "php81=8.1.2"
+    "libfbclient"
+    "php81-pdo=8.1.2"
+)
+_ext_depends_sqlite=(
+    "php81=8.1.2"
+    "sqlite"
+    "php81-pdo=8.1.2"
 )
 _phpconfig="\
     --prefix=/usr \
@@ -1047,13 +1102,7 @@ package_php81-xsl() {
 # MySQL
 package_php81-mysql() {
     pkgdesc="MySQL modules for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}")
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
-    if ((_build_shared_openssl)); then
-        depends+=("php${_phpbase}-openssl${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_mysql[@]}")
     _install_module mysqlnd
     _install_module mysql
     _install_module mysqli
@@ -1063,10 +1112,7 @@ package_php81-mysql() {
 # pdo_sqlite + sqlite3
 package_php81-sqlite() {
     pkgdesc="sqlite module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'sqlite')
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_sqlite[@]}")
     _install_module sqlite3
     _install_module pdo_sqlite
 }
@@ -1074,10 +1120,7 @@ package_php81-sqlite() {
 # ODBC
 package_php81-odbc() {
     pkgdesc="ODBC modules for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'unixodbc')
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_odbc[@]}")
     _install_module odbc
     _install_module pdo_odbc
 }
@@ -1085,10 +1128,7 @@ package_php81-odbc() {
 # PostgreSQL
 package_php81-pgsql() {
     pkgdesc="PostgreSQL modules for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'postgresql-libs')
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_pgsql[@]}")
     _install_module pgsql
     _install_module pdo_pgsql
 }
@@ -1103,10 +1143,7 @@ package_php81-interbase() {
 # firebird
 package_php81-firebird() {
     pkgdesc="pdo_firebird module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" "libfbclient")
-    if ((_build_shared_pdo)); then
-        depends+=("php${_phpbase}-pdo${_suffix}=${pkgver}")
-    fi
+    depends=("${_ext_depends_firebird[@]}")
     _install_module pdo_firebird
 }
 
@@ -1127,10 +1164,7 @@ package_php81-mssql() {
 # Dba
 package_php81-dba() {
     pkgdesc="dba module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'db')
-    if ((_build_uses_lmdb)); then
-        depends+=('lmdb')
-    fi
+    depends=("${_ext_depends_dba[@]}")
     _install_module dba
 }
 
@@ -1141,12 +1175,10 @@ package_php81-dba() {
 # Intl
 package_php81-intl() {
     pkgdesc="intl module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}")
+    depends=("${_ext_depends_intl[@]}")
     if ((_build_with_custom_icu)); then
         # Patch to proper path inside intl.so
         patchelf --set-rpath "/usr/lib/${pkgbase}/icu${_pkgver_icu}/lib" "build-cli/modules/intl.so"
-    else
-        depends+=('icu')
     fi
     _install_module intl
 }
@@ -1187,13 +1219,7 @@ package_php81-calendar() {
 # GD
 package_php81-gd() {
     pkgdesc="gd module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'gd')
-    if ((_build_bundled_gd)); then
-        depends+=('libxpm' 'libpng' 'libjpeg')
-    fi
-    if ((_phpbase >= 55 && _phpbase < 72)); then
-        depends+=('libvpx');
-    fi
+    depends=("${_ext_depends_gd[@]}")
     _install_module gd
 }
 
@@ -1287,12 +1313,7 @@ package_php81-soap() {
 # FTP
 package_php81-ftp() {
     pkgdesc="FTP module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}")
-    if ((_build_openssl_v10_patch)); then
-        depends+=("openssl-1.0")
-    else
-        depends+=("openssl")
-    fi
+    depends=("${_ext_depends_ftp[@]}")
     _install_module ftp
 }
 
@@ -1306,12 +1327,7 @@ package_php81-ldap() {
 # SNMP
 package_php81-snmp() {
     pkgdesc="snmp module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'net-snmp')
-    if ((_build_openssl_v10_patch)); then
-        depends+=('openssl-1.0');
-    else
-        depends+=('openssl');
-    fi
+    depends=("${_ext_depends_snmp[@]}")
     _install_module snmp
 }
 
@@ -1325,12 +1341,7 @@ package_php81-xmlrpc() {
 # Imap
 package_php81-imap() {
     pkgdesc="imap module for ${pkgbase}"
-    depends=('pam' 'krb5' 'c-client' 'libxcrypt' "${pkgbase}=${pkgver}");
-    if ((_build_openssl_v10_patch)); then
-        depends+=("openssl-1.0")
-    else
-        depends+=("openssl")
-    fi
+    depends=("${_ext_depends_imap[@]}")
    _install_module imap
 }
 
@@ -1424,10 +1435,7 @@ package_php81-sysvshm() {
 # Ffi
 package_php81-ffi() {
     pkgdesc="ffi module for ${pkgbase}"
-    depends=(
-        'libffi'
-        "${pkgbase}=${pkgver}"
-    )
+    depends=("${pkgbase}=${pkgver}" 'libffi')
    _install_module ffi
 }
 
