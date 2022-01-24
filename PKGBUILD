@@ -1,9 +1,9 @@
 # Maintainer: eggy <eggyrules at gmail dot com>
 
 pkgname=mandown-git
-pkgver=r34.cdeae10
+pkgver=r58.fd52093
 pkgrel=1
-pkgdesc="Command line application and Python library to download comics from various sources"
+pkgdesc="Command line application and Python library to download and convert comics from various sources"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
@@ -12,6 +12,7 @@ depends=("python-requests"
 	 "python-typer"
 	 "python-feedparser"
 	 "python-beautifulsoup4"
+	 "python-natsort"
 )
 makedepends=("git" "python-setuptools" "python-dephell")
 provides=()
