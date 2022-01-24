@@ -1,8 +1,8 @@
 # Maintainer: Egor Vorontsov <sdoregor@sdore.me>
 
 pkgname=updvcspkg
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Check upstream updates for VCS packages from AUR"
 arch=(any)
 url="https://github.com/egormanga/${pkgname}"
