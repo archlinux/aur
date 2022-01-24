@@ -1,0 +1,13 @@
+pkgbase = frogfetch-rs-bin
+	pkgdesc = Neofetch but frogged and in rust
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://git.karx.xyz/famfo/frogfetch-rs
+	arch = x86_64
+	license = GPL
+	provides = frogfetch-rs
+	conflicts = frogfetch-rs
+	source = frogfetch-rs
+	sha256sums = d4e6208fbd27820ebd1cf2e9cb092552a632e552020600c9ddfb56abb0ccc02a
+
+pkgname = frogfetch-rs-bin
