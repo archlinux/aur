@@ -1,5 +1,6 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Hekuran https://github.com/narukeh
+# Contributor: selurvedu
 
 # A legally obtained copy of the Super Mario 64 ROM should be included
 # The US version should have a sha1sum of 9bef1128717f958171a4afac3ed78ee2bb4e86ce
@@ -8,13 +9,13 @@ _region=us
 _pkgname=sm64ex
 pkgname=$_pkgname-redrawn-git
 pkgver=r513.58
-pkgrel=1
+pkgrel=2
 pkgdesc='Super Mario 64 PC port (sm64ex fork) with the redrawn texture pack and HD Mario'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
-depends=('python' 'audiofile' 'sdl2' 'glew')
-makedepends=('git')
+depends=('sdl2' 'libglvnd')
+makedepends=('audiofile' 'git' 'python')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
