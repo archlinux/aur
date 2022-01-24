@@ -1,5 +1,5 @@
 pkgbase = vapoursynth-plugin-removegrain-git
-	pkgdesc = Plugin for Vapoursynth: removegrain (GIT version)
+	pkgdesc = Plugin for Vapoursynth: removegrain/rgvs (GIT version)
 	pkgver = R1.4.gea3d156
 	pkgrel = 1
 	url = https://github.com/vapoursynth/vs-removegrain
