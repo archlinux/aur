@@ -2,7 +2,7 @@
 
 pkgbase=libopenmpt-svn
 pkgname=('libopenmpt-svn' 'libopenmpt-doc-svn')
-pkgver=0.6.r14144
+pkgver=0.7.r16685
 pkgrel=1
 pkgdesc='Library to decode tracked music files (modules) into a raw PCM audio stream (svn version)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('subversion' 'doxygen' 'flac' 'help2man' 'libpulse' 'libsndfile'
 source=('svn+https://source.openmpt.org/svn/openmpt/trunk/OpenMPT/'
         '010-libopenmpt-fix-doc-install-dir.patch')
 sha256sums=('SKIP'
-            'd670f3133ff0aa6adb42abef7000ab13693b07cfbf37d39cff66eb56b45085cd')
+            'd2be15bc41b0a28943eb0c300f3c952436408f084a3929580f06e8e3a33f690f')
 
 _options=(
     'CONFIG=gcc'
@@ -63,8 +63,8 @@ package_libopenmpt-doc-svn() {
     provides=('libopenmpt-doc')
     conflicts=('libopenmpt-doc')
     
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     mv doc "${pkgdir}/usr/share"
     make -C OpenMPT "${_options[@]}" DESTDIR="$pkgdir" install-doc
-    ln -s ../../doc/libopenmpt/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    mv "${pkgdir}/usr/share/doc/libopenmpt/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }

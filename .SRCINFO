@@ -1,6 +1,6 @@
 pkgbase = libopenmpt-svn
 	pkgdesc = Library to decode tracked music files (modules) into a raw PCM audio stream (svn version)
-	pkgver = 0.6.r14144
+	pkgver = 0.7.r16685
 	pkgrel = 1
 	url = https://lib.openmpt.org/libopenmpt/
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = libopenmpt-svn
 	source = svn+https://source.openmpt.org/svn/openmpt/trunk/OpenMPT/
 	source = 010-libopenmpt-fix-doc-install-dir.patch
 	sha256sums = SKIP
-	sha256sums = d670f3133ff0aa6adb42abef7000ab13693b07cfbf37d39cff66eb56b45085cd
+	sha256sums = d2be15bc41b0a28943eb0c300f3c952436408f084a3929580f06e8e3a33f690f
 
 pkgname = libopenmpt-svn
 	depends = libvorbis
@@ -41,4 +41,3 @@ pkgname = libopenmpt-doc-svn
 	arch = any
 	provides = libopenmpt-doc
 	conflicts = libopenmpt-doc
-
