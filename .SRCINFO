@@ -1,0 +1,19 @@
+pkgbase = warble
+	pkgdesc = Native Linux word-guessing game built in Vala and Gtk
+	pkgver = 1.2.0
+	pkgrel = 2
+	url = https://github.com/avojak/warble
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = vala>=0.28.0
+	depends = granite>=0.6.0
+	depends = gtk3>=3.10
+	depends = libhandy>=1.0.0
+	depends = libgee
+	source = https://github.com/avojak/warble/archive/1.2.0.tar.gz
+	source = https://github.com/avojak/warble/commit/65d044a94656fb4ba4a569e6acd0c300d847e17d.diff
+	sha256sums = f957bde187580ab004a3ae398a0c68ad9fd365d69056277ac87436b48085116f
+	sha256sums = 5a9082beb66705208e710debf27f75bb2f9b0aa669dd239d959f58c449d00338
+
+pkgname = warble
