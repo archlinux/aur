@@ -1,0 +1,13 @@
+pkgbase = intel-oneapi-vtune
+	pkgdesc = Intel® VTune(TM) Profiler
+	pkgver = 2022.1.0
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-vtune-2022.1.0-98_amd64.deb
+	sha256sums = 4e91aa1e233ecf62208941e367386733715d63e269fcec789fb9cf7ceb51fafe
+
+pkgname = intel-oneapi-vtune
+	depends = intel-oneapi-common-vars>=2022.0.0
+	depends = intel-oneapi-common-licensing=2022.0.0
