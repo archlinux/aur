@@ -74,9 +74,9 @@ _makenconfig=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.16.2-xanmod1
+xanmod=5.16.3-xanmod1
 pkgver=${xanmod//-/.}
-#pkgver=5.16.2.prexan0
+#pkgver=5.16.3rc2.prexan0
 #  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
@@ -105,6 +105,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.1-2.xz"
         #"Linux-5.16.2.patch"
+        #"Linux-5.16.3-rc2.patch.xz"
 
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
@@ -150,7 +151,7 @@ validpgpkeys=(
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '761d5f1c5d087b7e06d3bc00eba8dbc25651257037f88a082c9332f2a62bf866'
+            '188e5f155f1dd66d5c636b725ee6b9c312f4aa2bdc866ce5ff5b3f2de1101cda'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '802e9f8d5c98088946b8ad5629e0732350b4b0fd91c24e12af31935791fcd556'
             '41b0cef536675f10fdfb69eeca2f1927653c69eb351dd92f4085ab6590485851'
