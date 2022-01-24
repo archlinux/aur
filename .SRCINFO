@@ -21,7 +21,6 @@ pkgbase = zandronum
 	depends = glu
 	depends = openssl-1.0
 	depends = fluidsynth
-	depends = fmodex
 	optdepends = timidity++: midi support
 	optdepends = freedoom: free IWAD
 	optdepends = gtk2: for a GUI selection screen
