@@ -1,0 +1,17 @@
+pkgbase = brother-dcpb7500d
+	pkgdesc = Printing driver for Brother DCP-B7500 printer
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=in&lang=en&prod=dcpb7500d_as_cn
+	arch = i686
+	arch = x86_64
+	arch = armv7l
+	groups = base-devel
+	license = EULA
+	depends = cups
+	depends = ghostscript
+	source = https://download.brother.com/welcome/dlf103663/dcpb7500dpdrv-4.0.0-1.i386.deb
+	md5sums = c5d5c7febae0eab6254cb7332f4038c0
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-dcpb7500d
