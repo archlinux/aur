@@ -3,8 +3,8 @@
 pkgname=uconfig
 _pkgname=uConfig
 pkgver=0.4
-pkgrel=2
-pkgdesc="Datasheet pinout extractor from PDF and library Stylizer for Kicad."
+pkgrel=3
+pkgdesc="Datasheet pinout extractor from PDF and library Stylizer for KiCad."
 arch=('any')
 url="https://github.com/Robotips/uConfig"
 license=('GPL3')
@@ -16,8 +16,8 @@ makedepends=('qt5-tools')
 backup=()
 options=('!strip')
 # install=${pkgname}.install
-source=("${_pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('c60c81a0e1f5b1a620733dfbbbfa282480c75dbd8dede1e39126d9900d5925aa')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8075aac170c7864adfeea355fe6340ae488c52986dbccfde67fce548abd48888')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}/src/
