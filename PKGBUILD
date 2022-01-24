@@ -1,7 +1,7 @@
 # Maintainer: Florian Moser <arch@famoser.ch>
 
-pkgname=symfony-cli
-pkgrel=5
+pkgname=symfony-cli-bin
+pkgrel=6
 pkgver=5.2.2
 pkgdesc="The Symfony client helps developers create and manage Symfony applications."
 url="https://symfony.com/"
