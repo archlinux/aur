@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=27.2.0-beta3
+_pkgver=27.2.0-beta4
 pkgver=${_pkgver//-/_}
 pkgrel=1
 epoch=1
@@ -111,7 +111,7 @@ if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
 fi
 
 if [[ $CARCH == 'x86_64' ]]; then
-  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69")
+  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_2")
   provides+=("obs-browser")
   conflicts+=("obs-linuxbrowser" "obs-browser")
   _browser=ON
