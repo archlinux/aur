@@ -1,0 +1,13 @@
+pkgbase = dracula-cursors-git
+	pkgdesc = Dracula theme cursors
+	pkgver = v3.0.r5.gfa54bba
+	pkgrel = 1
+	url = https://github.com/dracula/gtk
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = dracula-cursors
+	source = git+https://github.com/dracula/gtk.git
+	sha256sums = SKIP
+
+pkgname = dracula-cursors-git
