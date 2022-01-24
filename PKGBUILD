@@ -9,8 +9,8 @@ url="https://github.com/HTV04/${pkgname}"
 license=("GPL3")
 depends=("love")
 makedepends=("git" "zip")
-source=("git+https://github.com/HTV04/${pkgname}.git?tag=v1.1.0-beta.2"
-        "funkin_rewritten.svg"
+source=("git+https://github.com/HTV04/${pkgname}.git?tag=v${pkgver//_/-}"
+        "${pkgname//-/_}.svg"
         "${pkgname}.sh"
         "${pkgname}.desktop")
 sha256sums=("SKIP"
@@ -30,7 +30,7 @@ package() {
   install -Dm0644 "${srcdir}/${pkgname}/build/lovefile/funkin-rewritten.love" "${pkgdir}/usr/share/${pkgname}/funkin-rewritten.love"
 
   # Install icon
-  install -Dm0644 funkin_rewritten.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/funkin_rewritten.svg"
+  install -Dm0644 ${pkgname//-/_}.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname//-/_}.svg"
   
   # Install launcher script as binary
   install -Dm0755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
