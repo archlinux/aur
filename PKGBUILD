@@ -1,6 +1,7 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
-# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: wangjiezhe <wangjiezhe@gmail.com>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
@@ -8,24 +9,24 @@
 #
 
 _pack=ga
-pkgname=octave-$_pack
-pkgver=0.10.1
+pkgname=octave-${_pack}
+pkgver=0.10.3
 pkgrel=1
 pkgdesc="Genetic optimization code"
 arch=(any)
-url="https://octave.sourceforge.net/$_pack/"
-license=('GPL')
+url="https://octave.sourceforge.io/${_pack}"
+license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.4.0')
+depends=('octave>=4.0.0')
 makedepends=()
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("https://downloads.sourceforge.net/octave/$_archive")
-noextract=("$_archive")
-sha256sums=('6d6ca5fece43958e4ad5a5c88dccebf5976d5b29f21b7bab1608bcd8af0e7202')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}")
+noextract=("${_archive}")
+sha512sums=('3ffebbd6058cdfd455c166b8641b78596c315dcece1116198eef67824369dc5cd3a12221ba655caa5895894695cbb05b583cfb98c3cd552e234efd53be14693f')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
@@ -43,12 +44,13 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	_octave_run "$(cat <<-EOF
-		pkg local_list octave_packages;
-		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive;
+	_octave_run "$(
+		cat <<-EOF
+			pkg local_list octave_packages;
+			pkg prefix $_prefix $_archprefix;
+			pkg install -verbose -nodeps $_archive;
 		EOF
-		)"
+	)"
 }
 
 package() {
