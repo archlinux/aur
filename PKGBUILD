@@ -29,5 +29,7 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make install
-	install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#     install -Dm644 i3lock-bash "${pkgdir}/usr/share/bash-completion/completions/i3lock"
+#     install -Dm644 i3lock-zsh "${pkgdir}/usr/share/zsh/vendor-completions/_i3lock"
 }
