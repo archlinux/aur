@@ -1,6 +1,6 @@
-From 21514e6d4f38cdf4d5ce9186c2dcc8e6bb63ce15 Mon Sep 17 00:00:00 2001
+From 0552a83b044517a35f48c42fd8eed8b6eda09656 Mon Sep 17 00:00:00 2001
 From: Felipe Contreras <felipe.contreras@gmail.com>
-Date: Sun, 6 Dec 2020 04:01:03 -0600
+Date: Sun, 23 Jan 2022 23:36:44 -0600
 Subject: [PATCH] Fix exit regression
 
 Any time you start a job in the background vte gets confused and waits
@@ -19,28 +19,40 @@ was reported more than one year ago.
 
   https://gitlab.gnome.org/GNOME/vte/-/issues/204
 
-With this patch we can return to the behavior of 0.59, where the
-terminal exits immediately.
+We know the child has exited, the client does not. It's up to the client
+to decide if it was to wait for rest of the input, or exit immediately.
+
+So send the signal as soon as we receive it.
 
 Signed-off-by: Felipe Contreras <felipe.contreras@gmail.com>
 ---
- src/vte.cc | 3 +++
- 1 file changed, 3 insertions(+)
+ src/vte.cc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/src/vte.cc b/src/vte.cc
-index 2614e5b4..ea80d1ee 100644
+index 103dc4d5..c47c10af 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -3130,6 +3130,9 @@ Terminal::child_watch_done(pid_t pid,
+@@ -3200,6 +3200,9 @@ Terminal::child_watch_done(pid_t pid,
  
          m_pty_pid = -1;
  
-+        if (pty())
-+                unset_pty();
++        if (widget())
++                widget()->emit_child_exited(status);
 +
          /* If we still have a PTY, or data to process, defer emitting the signals
           * until we have EOF on the PTY, so that we can process all pending data.
           */
+@@ -3210,9 +3213,6 @@ Terminal::child_watch_done(pid_t pid,
+                 m_child_exited_eos_wait_timer.schedule_seconds(2); // FIXME: better value?
+         } else {
+                 m_child_exited_after_eos_pending = false;
+-
+-                if (widget())
+-                        widget()->emit_child_exited(status);
+         }
+ }
+ 
 -- 
-2.29.2
+2.34.1
 
