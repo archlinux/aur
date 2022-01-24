@@ -1,0 +1,33 @@
+pkgbase = intel-oneapi-dal
+	pkgdesc = Intel® oneAPI Data Analytics Library
+	pkgver = 2021.5.1
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	noextract = intel-oneapi-dal-2021.5.1-2021.5.1-803_amd64.deb
+	noextract = intel-oneapi-dal-devel-2021.5.1-2021.5.1-803_amd64.deb
+	noextract = intel-oneapi-dal-common-2021.5.1-2021.5.1-803_all.deb
+	noextract = intel-oneapi-dal-common-devel-2021.5.1-2021.5.1-803_all.deb
+	noextract = intel-oneapi-dal-daal4py-2021.5.1-2021.5.1-803_amd64.deb
+	noextract = intel-oneapi-dal-scikit-learn-intelex-2021.5.1-2021.5.1-803_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dal-2021.5.1-2021.5.1-803_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dal-devel-2021.5.1-2021.5.1-803_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dal-common-2021.5.1-2021.5.1-803_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dal-common-devel-2021.5.1-2021.5.1-803_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dal-daal4py-2021.5.1-2021.5.1-803_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-dal-scikit-learn-intelex-2021.5.1-2021.5.1-803_amd64.deb
+	source = intel-oneapi-dal.conf
+	sha256sums = 0da79eba2cc7f90a8342c6cc5f8109b98c193d9001c69c6528683b9b97344d2f
+	sha256sums = db375f3dd4fa4acc099dcde1ebd79c1956eebe89b8319d3a4ced2661a4dc0649
+	sha256sums = dfd0b9e5d55377044b02e1148fedc0a7e9c28ca0a2eb61540dc6268c2fae61f5
+	sha256sums = 1960b604b84764ad5d93214579c0eacd793498bc22110c4ddcbd132fcbb5056c
+	sha256sums = 20da35b16fde0694c784c06ffe582946224ba313f85895ff7d8c20fd734feb66
+	sha256sums = 757c132534363486a932247bdde1385c299ef64644018cb16acdc25cd58d11ec
+	sha256sums = 3bb0049f5245c836472bdb977106ad9fb706d2d04d2544c49c11839d01361cbf
+
+pkgname = intel-oneapi-dal
+	depends = intel-oneapi-common-vars>=2022.0.0
+	depends = intel-oneapi-common-licensing=2022.0.0
+	depends = intel-oneapi-tbb>=2021.5.0
+	depends = intel-oneapi-compiler>=2022.0.1
