@@ -15,9 +15,7 @@ conflicts=('symfony-cli')
 source=(
     "git+https://github.com/symfony-cli/symfony-cli#tag=v${pkgver}"
 )
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('SKIP')
 
 build() {
   cd "symfony-cli"
