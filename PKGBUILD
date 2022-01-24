@@ -1,23 +1,31 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=kcc
 pkgver=5.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI"
 arch=(any)
 url="https://github.com/ciromattia/kcc"
 license=('ISC')
-depends=('python>=3.5' 'python-pillow>=5.2.0' 'python-psutil>=5.0.0' 'python-pyqt5>=5.6.0' 'python-raven>=6.0.0' 'python-slugify>=1.2.1')
+depends=('python>=3.10' 'python-pillow>=9.0.0' 'python-psutil>=5.0.0' 'python-pyqt5>=5.6.0' 'python-raven>=6.0.0' 'python-slugify>=1.2.1')
 optdepends=(
   'kindlegen>=2.9: for .mobi generation'
   'p7zip: for zip/CBZ, rar/CBZ, 7z/CB7 support'
 )
 makedepends=('python-setuptools')
 source=(kindlecomicconverter.desktop
+        kcc-py310.patch
         https://github.com/ciromattia/$pkgname/archive/$pkgver.tar.gz)
 md5sums=('f25b30fbc1bc1db491173215fe411789'
+         '4f12019d3efda060bf45bd516831a346'
          '483f06333bbae8e0f4c28252487b9d97')
 sha256sums=('3502c38d756f5a812ac06f63fe25e062d8720f620ffd7d25641e6accef9fdd9f'
+            '72b22f6fea6a7727ef8671e0386291c7d6946f4e8046dc037d46bfd8c3621138'
             '7b45fcdf0149bea36e8c738e76031790c8c235c777047001279698a526be892b')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p0 < "$srcdir"/kcc-py310.patch
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
