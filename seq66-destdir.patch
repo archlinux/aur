@@ -1,0 +1,28 @@
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 98af1d7e..6e4013d9 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -136,8 +136,10 @@ install-data-local:
+ 	cp -r -p $(top_builddir)/data/seq66cli/* $(datafolder)/seq66cli/
+ 	cp -r -p $(top_builddir)/data/win/* $(datafolder)/win/
+ 	cp -r -p $(top_builddir)/data/wrk/* $(datafolder)/wrk/
+-	cp -p $(top_srcdir)/data/share/applications/seq66.desktop $(datadir)/applications/
+-	cp -r -p $(top_srcdir)/data/share/icons/* $(datadir)/icons/
++	mkdir -p $(DESTDIR)$(datadir)/applications
++	cp -p $(top_srcdir)/data/share/applications/seq66.desktop $(DESTDIR)$(datadir)/applications
++	mkdir -p $(DESTDIR)$(datadir)/icons
++	cp -r -p $(top_srcdir)/data/share/icons/* $(DESTDIR)$(datadir)/icons/
+ 	@echo "Copying Seq66 documentation to $(docfolder)..."
+ 	mkdir -p $(docfolder)
+ 	cp -r -p $(top_srcdir)/data/share/doc/*.pdf $(docfolder)
+@@ -154,8 +156,8 @@ install-data-local:
+ uninstall-hook:
+ 	rm -rf $(datafolder)
+ 	rm -rf $(docfolder)
+-	rm -f $(datadir)/applications/seq66.desktop
+-	find $(datadir)/icons/ -iname "*seq66*.png" -exec rm -f '{}' \;
++	rm -f $(DESTDIR)$(datadir)/applications/seq66.desktop
++	find $(DESTDIR)$(datadir)/icons/ -iname "*seq66*.png" -exec rm -f '{}' \;
+ 
+ #******************************************************************************
+ # Makefile.am (seq66/include)
