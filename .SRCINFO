@@ -1,0 +1,21 @@
+pkgbase = xsg-fonts
+	pkgdesc = Condensed terminal emulator Unicode bitmap font
+	pkgver = 0.2021.04.01
+	pkgrel = 1
+	url = https://github.com/nereusx/xsg-fonts
+	arch = any
+	license = custom:OFL
+	makedepends = fontforge
+	makedepends = git
+	makedepends = xorg-bdftopcf
+	makedepends = fonttosfnt
+	source = xsg-fonts-0.2021.04.01::git+https://github.com/nereusx/xsg-fonts#commit=170be2c9b665d99e619c6dd2030fb3bb4fdf98ec
+	source = Makefile
+	b2sums = SKIP
+	b2sums = 8c0cf64ecb1db6e30e5b0e50e7d6de4fbd96acbab351e9ca00921f645fc207728953b9eba6f59a2b445902351b331ab2671972852cfff96cf66f4675e0e80ece
+
+pkgname = xsg-fonts-bdf
+
+pkgname = xsg-fonts-otb
+
+pkgname = xsg-fonts-pcf
