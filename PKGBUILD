@@ -1,8 +1,8 @@
 # Maintainer: Harrison <htv04rules at gmail dot com>
 
 pkgname=funkin
-pkgver=v0.2.7.1
-pkgrel=2
+pkgver=0.2.7.1
+pkgrel=1
 pkgdesc="Friday Night Funkin': A rhythm game originally made for Ludum Dare 47 \"Stuck in a Loop\""
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/ninjamuffin99/Funkin"
