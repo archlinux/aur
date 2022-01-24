@@ -7,7 +7,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -178,9 +178,9 @@ source+=(
   "$pkgname.hook"
   "$pkgname.sh"
 )
-sha256sums+=(
-  "d005e764c86763cba863426fd17a96ee6084fc3e96419df0c21bec824ad1bc55"
-  "1ded22f189d07046a26467b36ca2c53f64e1d7471ff03fac4e97cf1efb3d0be1"
+sha512sums+=(
+  "387bc13bd61ab926228d58e102271a964415f11a175778323487080a7ebc424d1a6148d5705e1563eee49c9ea6407643f82e274478b589664c9fcdffb6177f99"
+  "698b3ee23d02677cd46950adc5188320ff4e5ead76d655db8d276558ee6745a567bec878c68a76b65728a6d893919b2cd4c9c6fec544461762df52476e4a8fe6"
 )
 fi
 

@@ -1,7 +1,7 @@
 pkgbase = vlc-luajit
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility
 	pkgver = 3.0.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.videolan.org/vlc/
 	arch = i686
 	arch = x86_64
