@@ -14,5 +14,5 @@ sha256sums=('SKIP')
 
 package() {
 	cd "${srcdir}/${pkgname}"
-	install -Dm644 'updvcspkg' -t "${pkgdir}/usr/bin"
+	install -Dm755 'updvcspkg' -t "${pkgdir}/usr/bin"
 }
