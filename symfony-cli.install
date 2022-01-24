@@ -1,0 +1,4 @@
+pre_install() {
+	echo "
+Switch to the symfony-cli-bin package if you want to use the pre-build binaries."
+}
