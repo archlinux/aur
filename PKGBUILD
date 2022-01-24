@@ -1,7 +1,7 @@
 # Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=python-qiling-git
-pkgver=1.4.0.r7.gf050f42a
+pkgver=1.4.1.r122.gbba26a53
 pkgrel=1
 pkgdesc="An advanced binary emulation framework"
 url='https://qiling.io/'
@@ -9,7 +9,7 @@ arch=('x86_64')
 license=('GPL2')
 depends=('python' 'python-capstone' 'python-unicorn' 'python-pefile'
          'python-registry' 'python-keystone' 'python-pyelftools'
-         'python-gevent' 'python-multiprocess')
+         'python-gevent' 'python-multiprocess' 'python-yaml>=6.0')
 makedepends=('git' 'python-setuptools')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
