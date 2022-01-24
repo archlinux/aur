@@ -1,0 +1,22 @@
+pkgbase = ttf-lxgwwenkai
+	pkgdesc = 一款基于 FONTWORKS 的 Klee One 的开源中文字体。
+	pkgver = 1.113
+	pkgrel = 1
+	url = https://github.com/lxgw/LxgwWenKai
+	arch = any
+	license = SIL
+	provides = ttf-lxgwwenkai
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.113/LXGWWenKai-Bold.ttf
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.113/LXGWWenKai-Light.ttf
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.113/LXGWWenKai-Regular.ttf
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.113/LXGWWenKaiMono-Bold.ttf
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.113/LXGWWenKaiMono-Light.ttf
+	source = https://github.com/lxgw/LxgwWenKai/releases/download/v1.113/LXGWWenKaiMono-Regular.ttf
+	sha256sums = 13a4a029cfa98ff2ed3aa25f3eff5d8a904903f0ba3c5775c8eb8a85e5ca47d4
+	sha256sums = 96f641da36da6a6f55bdc20b8d2ef7c960aab0ea050a4cbfbc9bf294ff17b09b
+	sha256sums = 975b83d03ab110735a8d42dabf260642fdeca981f5b77cca5fb60d8f0289e1ff
+	sha256sums = 6053b6fa683f78244071d3370e022fc180cc214ff2bbe55c0da04b37cd9bb02a
+	sha256sums = 837db795918b2aaead1752e8aeefeec658afd6e9202d9133f1d4b2e3d3d15673
+	sha256sums = ae4bac1bc297e72ab9676576fa5d0ed689c4863c6e22d17b2e4deaf3fb351e4d
+
+pkgname = ttf-lxgwwenkai
