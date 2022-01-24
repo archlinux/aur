@@ -2,17 +2,17 @@
 # Contributor: Aniket Pradhan <aniket17133@iiitd.ac.in>
 # Contributor: Xinzhao Xu <z2d@jifangcheng.com>
 
-pkgname=lux-git
+pkgname=lux-go-git
 pkgver=0.12.0.r4.gbfc1b1d
 pkgrel=1
 arch=('x86_64')
-pkgdesc="A fast, simple and clean video downloader written in Go"
+pkgdesc="Fast and simple video download library and CLI tool written in Go "
 url="https://github.com/iawia002/lux"
 license=('MIT')
 makedepends=('go')
 depends=('ffmpeg')
-conflicts=('lux')
-provides=('lux')
+conflicts=('lux-go')
+provides=('lux-go')
 source=("git+https://github.com/iawia002/lux.git")
 sha256sums=('SKIP')
 
@@ -41,6 +41,6 @@ build(){
 
 package() {
     cd lux
-    install -Dm755 lux -t "$pkgdir/usr/bin"
+    install -Dm755 lux "$pkgdir/usr/bin/lux-go"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
