@@ -1,30 +1,25 @@
 # Maintainer:
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: shellkr <shellkr at protonmail dot com>
+# Contributor: Adrian Pop <adrian dot pop sixtyone at gmail dot com>
 pkgname=systemd-manager-git
-pkgver=1.0.0.r5.g946de58
+pkgver=1.0.0.r12.g4efeb47
 pkgrel=1
 pkgdesc="A systemd service manager written in Rust with the GTK-rs wrapper and direct integration with dbus"
 arch=('x86_64')
-url="https://gitlab.com/mmstick/systemd-manager"
+url="https://gitlab.com/adrianalin/systemd-manager"
 license=('MIT')
 depends=('gtk3')
 makedepends=('git' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.com/mmstick/systemd-manager.git')
+source=('git+https://gitlab.com/adrianalin/systemd-manager.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 	#echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2) # 1.0.2
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	sed -i 's/gtk = { version = "0.1"/gtk = { version = "0.2.0"/g' Cargo.toml
-	sed -i 's/gdk = { version = "0.5"/gdk = { version = "0.6"/g' Cargo.toml
 }
 
 build() {
