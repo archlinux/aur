@@ -1,6 +1,6 @@
 pkgbase = park
 	pkgdesc = Configuration-based dotfiles manager
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://gitlab.com/gbrlsnchs/park
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = park
 	license = MIT
 	makedepends = cargo
 	optdepends = gettext: contains envsubst, which can be used in configs to resolve environment variables
-	source = https://gitlab.com/gbrlsnchs/park/-/archive/v0.1.2/park-v0.1.2.tar.gz
-	sha256sums = 5ea22dccb489c84123c2a45fb1c9617da785f1541e01a334e12b51a343381de3
+	source = https://gitlab.com/gbrlsnchs/park/-/archive/v0.1.4/park-v0.1.4.tar.gz
+	sha256sums = 4ac2c12f7d063b1614d3e767942daea05765593566e102939976d267950f546a
 
 pkgname = park

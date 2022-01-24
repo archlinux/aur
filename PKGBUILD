@@ -1,6 +1,6 @@
 # Maintainer: Vasia Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 pkgname=park
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Configuration-based dotfiles manager"
 url="https://gitlab.com/gbrlsnchs/park"
@@ -13,12 +13,12 @@ optdepends=(
 	"gettext: contains envsubst, which can be used in configs to resolve environment variables"
 )
 
-sha256sums=("5ea22dccb489c84123c2a45fb1c9617da785f1541e01a334e12b51a343381de3")
+sha256sums=("4ac2c12f7d063b1614d3e767942daea05765593566e102939976d267950f546a")
 
 build () {
 	cd "${srcdir}/${pkgname}-v${pkgver}"
 
-	cargo build --release
+	cargo build --frozen --release
 }
 
 package() {
