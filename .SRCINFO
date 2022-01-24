@@ -1,8 +1,8 @@
 pkgbase = ruby-json_pure
 	pkgdesc = JSON Implementation for Ruby
 	pkgver = 2.6.1
-	pkgrel = 1
-	url = http://flori.github.com/json
+	pkgrel = 2
+	url = http://flori.github.io/json/
 	arch = any
 	license = RUBY
 	makedepends = ruby-rdoc
