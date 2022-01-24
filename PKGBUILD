@@ -1,5 +1,7 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: wangjiezhe <wangjiezhe@gmail.com>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
@@ -7,12 +9,12 @@
 #
 
 _pack=vibes
-pkgname=octave-$_pack
+pkgname=octave-${_pack}
 pkgver=0.2.0
 pkgrel=2
-pkgdesc="The VIBes API allows one to easily display results (boxes, pavings) from interval methods.  VIBes consists in two parts: (1) the VIBes application that features viewing, annotating and exporting figures, and (2) the VIBes API that enables your progr [...]"
+pkgdesc="The VIBes API allows one to easily display results (boxes, pavings) from interval methods"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/${_pack}"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=4.0.0')
@@ -20,11 +22,11 @@ makedepends=()
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
-noextract=("$_archive")
-md5sums=('c8055e4a00fe1c516e10859cabe590a8')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}")
+noextract=("${_archive}")
+sha512sums=('dfe766da20a62e58c1410b3b9956c4d4e7e66bba56c32deddab222c619a1924c2de275d4bf68eeb4f333278326c1c14dde896b158df2b5306259b60f1f91f270')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
