@@ -1,16 +1,15 @@
 pkgbase = teehee
 	pkgdesc = A modal terminal hex editor
-	pkgver = 0.2.3
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/Gskartwii/teehee
 	arch = x86_64
 	license = Apache
 	makedepends = rust
-	source = teehee-0.2.3.tar.gz::https://github.com/Gskartwii/teehee/archive/v0.2.3.tar.gz
-	source = teehee-0.2.3.tar.gz.sig::https://github.com/Gskartwii/teehee/releases/download/v0.2.3/teehee-v0.2.3.tar.gz.sig
+	source = teehee-0.2.6.tar.gz::https://github.com/Gskartwii/teehee/archive/v0.2.6.tar.gz
+	source = teehee-0.2.6.tar.gz.sig::https://github.com/Gskartwii/teehee/releases/download/v0.2.6/teehee-v0.2.6.tar.gz.sig
 	validpgpkeys = 9330E5D6861507BEFBF1893347E208E66179DC94
-	sha256sums = d25fcac4403926894fcb6b81c604f3c9a2d50630c94344ade907af32748f0ce7
+	sha256sums = 08dd44636e6a6426dff8cd39fb74da546e927ce9433c38c446c8b4b37c3e5024
 	sha256sums = SKIP
 
 pkgname = teehee
-
