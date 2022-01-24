@@ -33,6 +33,7 @@ pkgbase = flatcam-qt6
 	depends = python-networkx
 	depends = python-pikepdf
 	depends = hicolor-icon-theme
+	depends = python-pip
 	provides = flatcam
 	conflicts = flatcam-qt6
 	source = git+https://bitbucket.org/marius_stanciu/flatcam_beta.git

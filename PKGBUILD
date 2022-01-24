@@ -2,7 +2,7 @@
 
 pkgname=flatcam-qt6
 _pkgname=FlatCAM
-pkgver=r4043.f3d379e4
+pkgver=r4084.40894383
 pkgrel=1
 pkgdesc="Generates CNC gcode from 2D PCB files (Gerber/Excellon/SVG) [QT6 Fork]"
 arch=('any')
@@ -34,6 +34,7 @@ depends=('tk'
         'python-qrcode'
         'python-networkx'
         'python-pikepdf'
+	'python-pip'
         'hicolor-icon-theme'
 )
 makedepends=('git')
@@ -49,7 +50,7 @@ md5sums=('SKIP'
          '5b77a7a339068dce7a9064dca69d8525')
 
 prepare() {
-    mv "$srcdir/flatcam_beta" "$srcdir/${pkgname%-beta}"
+	 mv "$srcdir/flatcam_beta" "$srcdir/${pkgname%-beta}"
 	cd "$srcdir/${pkgname%-beta}"
 	git checkout Beta_8.995
 }
