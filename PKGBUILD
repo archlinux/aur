@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2264
+pkgver=1.7.2268
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -30,7 +30,6 @@ depends=(
   soundtouch
   wxgtk3
   wayland
-  vulkan-headers
   rapidyaml-git # only exists in the AUR
 )
 makedepends=(
@@ -40,6 +39,7 @@ makedepends=(
   ninja
   swig
   python
+  vulkan-headers
 )
 provides=(pcsx2)
 conflicts=(pcsx2)
