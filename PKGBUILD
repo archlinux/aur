@@ -1,6 +1,6 @@
 # Maintainer: jeremija <jerko.steiner+aur@gmail.com>
 pkgname=wl-gammarelay
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A client and daemon for changing color temperature and brightness under Wayland via keybindings."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=()
 md5sums=(
-  '7ae50fd272ccb0436961e777ac49192d'
+  'b9a1706f0dc6dded59a0172964977053'
 ) #generate with 'makepkg -g'
 
 build() {
