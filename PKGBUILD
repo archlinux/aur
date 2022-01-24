@@ -3,7 +3,7 @@
 # Contributor: bratus <szczepaniak.bartek plus github at gmail dot com>
 # Contributor: jjguti
 pkgname=radare2-git
-pkgver=5.5.1.r26987.e07fbc2f37
+pkgver=5.5.5.r27233.d812a78e2a
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
