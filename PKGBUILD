@@ -1,7 +1,8 @@
+# Maintainer: Brian Li <brian14708@gmail.com>
 # Maintainer: Denys Zariaiev <denys.zariaiev@gmail.com>
 
 pkgname=chitubox-free-bin
-pkgver=1.9.0
+pkgver=1.9.1
 
 pkgrel=1
 pkgdesc="All-in-one SLA/DLP/LCD Slicer"
@@ -9,7 +10,7 @@ pkgdesc="All-in-one SLA/DLP/LCD Slicer"
 makedepends=('xdg-user-dirs')
 
 url="https://www.chitubox.com/download.html"
-arch=("any")
+arch=("x86_64")
 license=("Commercial")
 
 DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
@@ -34,11 +35,19 @@ source=(
     "local://chitubox-free.desktop"
     "local://launcher"
 )
+
 sha256sums=(
-    "82ef2f36ee92238010e437b2e39494cee1a9ab0969e9507673a497b7633bf22c"
+    "dcaa2d139aed43f73e611515d363321574620212159f84edb16cf85e8e4624e5"
     "fdd0c1595cfa7ef97ae850b83de328db55150d76f42e6c472167bcc80f87ea47"
     "02fb0cfac1a04d8cc71345a6cf4921c92abcbfdd09e010604a1bc891657a2894"
 )
+
+noextract=("$ARCHIVE_NAME")
+
+prepare() {
+  mkdir "$DIR_NAME"
+  bsdtar -x -C "$DIR_NAME" -f "${ARCHIVE_NAME}"
+}
 
 package()
 {
