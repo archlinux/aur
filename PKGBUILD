@@ -2,7 +2,7 @@
 
 pkgname=listen1-desktop-appimage
 pkgver=2.21.7
-pkgrel=1
+pkgrel=2
 pkgdesc="One for all free music in China"
 arch=("x86_64")
 url="https://listen1.github.io/listen1"

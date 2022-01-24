@@ -1,7 +1,7 @@
 pkgbase = listen1-desktop-appimage
 	pkgdesc = One for all free music in China
 	pkgver = 2.21.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://listen1.github.io/listen1
 	arch = x86_64
 	license = MIT
