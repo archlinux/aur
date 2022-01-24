@@ -1,98 +1,165 @@
 # Maintainer: tytan652 <tytan652[at]tytanium[dot]xyz>
 
+DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
+
 pkgname=vlc-luajit
 _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=3
+pkgrel=4
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
 license=('LGPL2.1' 'GPL2')
-depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
-         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
-         'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
-         'libupnp' 'libixml.so' 'libupnp.so' 'libarchive' 'qt5-base'
-         'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
-         'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'wayland-protocols')
-makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
-             'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
-             'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
-             'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
-             'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
-             'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
-             'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
-             'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'aom' 'srt' 'dav1d'
-             'aribb24' 'aribb25' 'pcsclite' 'lua51')
-optdepends=('avahi: service discovery using bonjour protocol'
-            'aom: AOM AV1 codec'
-            'gst-plugins-base-libs: for libgst plugins'
-            'dav1d: dav1d AV1 decoder'
-            'libdvdcss: decoding encrypted DVDs'
-            'libavc1394: devices using the 1394ta AV/C'
-            'libdc1394: IEEE 1394 access plugin'
-            'kwallet: kwallet keystore'
-            'libva-vdpau-driver: vdpau backend nvidia'
-            'libva-intel-driver: video backend intel'
-            'libbluray: Blu-Ray video input'
-            'flac: Free Lossless Audio Codec plugin'
-            'twolame: TwoLAME mpeg2 encoder plugin'
-            'libgme: Game Music Emu plugin'
-            'vcdimager: navigate VCD with libvcdinfo'
-            'libmtp: MTP devices discovery'
-            'systemd-libs: udev services discovery'
-            'smbclient: SMB access plugin'
-            'libcdio: audio CD playback'
-            'gnu-free-fonts: subtitle font '
-            'ttf-dejavu: subtitle font'
-            'libssh2: sftp access'
-            'libnfs: NFS access'
-            'mpg123: mpg123 codec'
-            'protobuf: chromecast streaming'
-            'libmicrodns: mDNS services discovery (chromecast etc)'
-            'lua51-socket: http interface'
-            'live-media: RTSP input'
-            'libdvdread: DVD input module'
-            'libdvdnav: DVD with navigation input module'
-            'libogg: Ogg and OggSpots codec'
-            'libshout: shoutcast/icecast output plugin'
-            'libmodplug: MOD output plugin'
-            'libvpx: VP8 and VP9 codec'
-            'libvorbis: Vorbis decoder/encoder'
-            'speex: Speex codec'
-            'opus: opus codec'
-            'libtheora: theora codec'
-            'libpng: PNG support'
-            'libjpeg-turbo: JPEG support'
-            'librsvg: SVG plugin'
-            'x264: H264 encoding'
-            'x265: HEVC/H.265 encoder'
-            'zvbi: VBI/Teletext/webcam/v4l2 capture/decoding'
-            'libass: Subtitle support'
-            'libkate: Kate codec'
-            'libtiger: Tiger rendering for Kate streams'
-            'sdl_image: SDL image support'
-            'srt: SRT input/output plugin'
-            'aalib: ASCII art video output'
-            'libcaca: colored ASCII art video output'
-            'libpulse: PulseAudio audio output'
-            'alsa-lib: ALSA audio output'
-            'jack: jack audio server'
-            'libsamplerate: audio Resampler'
-            'libsoxr: SoX audio Resampler'
-            'chromaprint: Chromaprint audio fingerprinter'
-            'lirc: lirc control'
-            'libgoom2: Goom visualization'
-            'projectm: ProjectM visualisation'
-            'ncurses: ncurses interface'
-            'libnotify: notification plugin'
-            'gtk3: notification plugin'
-            'aribb24: aribsub support'
-            'aribb25: aribcam support'
-            'pcsclite: aribcam support')
+_aomver=3
+_libmicrodnsver=0.2
+_libplacebover=4.192
+_libupnpver=1.14
+_libvpxver=1.11
+_protobufver=3.19
+_srtver=1.4.3
+_x264ver=0.163; _libx264ver=163
+_x265ver=3.5; _libx265ver=199
+depends=(
+  'a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
+  'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
+  'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
+  'libarchive' 'qt5-base'
+  'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
+  'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'wayland-protocols'
+)
+# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
+# For Manjaro user this feature is disabled
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  depends+=(
+    'libplacebo'
+    'libupnp' 'libixml.so' 'libupnp.so'
+  )
+else
+  depends+=(
+    "libplacebo>=$_libplacebover"
+    "libupnp>=$_libupnpver" 'libixml.so' 'libupnp.so'
+  )
+fi
+makedepends=(
+  'gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
+  'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+  'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
+  'libmtp' 'libdvdcss' 'smbclient'
+  'vcdimager' 'libssh2' 'mesa' 'libnfs' 'mpg123'
+  'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug'
+  'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
+  'zvbi' 'libass' 'libkate' 'libtiger'
+  'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
+  'lirc' 'libgoom2' 'projectm' 'chromaprint' 'dav1d'
+  'aribb24' 'aribb25' 'pcsclite' 'lua51' 'lsb-release'
+)
+# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
+# For Manjaro user this feature is disabled
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  makedepends+=(
+    'aom'
+    'libmicrodns'
+    'libvpx'
+    'libx264.so'
+    'libx265.so'
+    'protobuf'
+    'srt'
+  )
+else
+  makedepends+=(
+    "aom>=$_aomver"
+    "libmicrodns>=$_libmicrodnsver"
+    "libvpx>=$_libvpxver"
+    "libx264.so>=$_libx264ver"
+    "libx265.so>=$_libx265ver"
+    "protobuf>=$_protobufver"
+    "srt>=$_srtver"
+  )
+fi
+optdepends=(
+  'avahi: service discovery using bonjour protocol'
+  'gst-plugins-base-libs: for libgst plugins'
+  'dav1d: dav1d AV1 decoder'
+  'libdvdcss: decoding encrypted DVDs'
+  'libavc1394: devices using the 1394ta AV/C'
+  'libdc1394: IEEE 1394 access plugin'
+  'kwallet: kwallet keystore'
+  'libva-vdpau-driver: vdpau backend nvidia'
+  'libva-intel-driver: video backend intel'
+  'libbluray: Blu-Ray video input'
+  'flac: Free Lossless Audio Codec plugin'
+  'twolame: TwoLAME mpeg2 encoder plugin'
+  'libgme: Game Music Emu plugin'
+  'vcdimager: navigate VCD with libvcdinfo'
+  'libmtp: MTP devices discovery'
+  'systemd-libs: udev services discovery'
+  'smbclient: SMB access plugin'
+  'libcdio: audio CD playback'
+  'gnu-free-fonts: subtitle font '
+  'ttf-dejavu: subtitle font'
+  'libssh2: sftp access'
+  'libnfs: NFS access'
+  'mpg123: mpg123 codec'
+  'lua51-socket: http interface'
+  'libdvdread: DVD input module'
+  'libdvdnav: DVD with navigation input module'
+  'libogg: Ogg and OggSpots codec'
+  'libshout: shoutcast/icecast output plugin'
+  'libmodplug: MOD output plugin'
+  'libvorbis: Vorbis decoder/encoder'
+  'speex: Speex codec'
+  'opus: opus codec'
+  'libtheora: theora codec'
+  'libpng: PNG support'
+  'libjpeg-turbo: JPEG support'
+  'librsvg: SVG plugin'
+  'zvbi: VBI/Teletext/webcam/v4l2 capture/decoding'
+  'libass: Subtitle support'
+  'libkate: Kate codec'
+  'libtiger: Tiger rendering for Kate streams'
+  'sdl_image: SDL image support'
+  'aalib: ASCII art video output'
+  'libcaca: colored ASCII art video output'
+  'libpulse: PulseAudio audio output'
+  'alsa-lib: ALSA audio output'
+  'jack: jack audio server'
+  'libsamplerate: audio Resampler'
+  'libsoxr: SoX audio Resampler'
+  'chromaprint: Chromaprint audio fingerprinter'
+  'lirc: lirc control'
+  'libgoom2: Goom visualization'
+  'projectm: ProjectM visualisation'
+  'ncurses: ncurses interface'
+  'libnotify: notification plugin'
+  'gtk3: notification plugin'
+  'aribb24: aribsub support'
+  'aribb25: aribcam support'
+  'pcsclite: aribcam support'
+)
+# To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  optdepends+=(
+    'aom: AOM AV1 codec'
+    'protobuf: chromecast streaming'
+    'libmicrodns: mDNS services discovery (chromecast etc)'
+    'libvpx: VP8 and VP9 codec'
+    'x264: H264 encoding'
+    'x265: HEVC/H.265 encoder'
+    'srt: SRT input/output plugin'
+  )
+else
+  optdepends+=(
+    "aom>=$_aomver: AOM AV1 codec"
+    "protobuf>=$_protobufver: chromecast streaming"
+    "libmicrodns>=$_libmicrodnsver: mDNS services discovery (chromecast etc)"
+    "libvpx>=$_libvpxver: VP8 and VP9 codec"
+    "x264>=$_x264ver: H264 encoding"
+    "x265>=$_x265ver: HEVC/H.265 encoder"
+    "srt>=$_srtver: SRT input/output plugin"
+  )
+fi
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
@@ -105,6 +172,17 @@ sha512sums=('35cdf191071224d0cf1b5a83c00773ff87b9e5bfcf0f5523f7edd53f75b23eda6b2
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ac1d33d434aca2a0ad6e70800073deeaefc02b8fd72656b682ca833ee0cffe10dfa19a9355388700cab46ffbf9421c007d00ed04c7fa562698ff81e70db5f283'
             'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
+
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+source+=(
+  "$pkgname.hook"
+  "$pkgname.sh"
+)
+sha256sums+=(
+  "d005e764c86763cba863426fd17a96ee6084fc3e96419df0c21bec824ad1bc55"
+  "1ded22f189d07046a26467b36ca2c53f64e1d7471ff03fac4e97cf1efb3d0be1"
+)
+fi
 
 prepare() {
   cd ${_name}-${_vlcver}
@@ -263,6 +341,9 @@ package() {
                      "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/vlc.png"
   done
   install -Dm 644 "${srcdir}/update-vlc-plugin-cache.hook" -t "${pkgdir}/usr/share/libalpm/hooks"
-}
 
-# vim: ts=2 sw=2 et:
+  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+    install -D -m644 "$srcdir/$pkgname.hook" -t "${pkgdir}"/usr/share/libalpm/hooks/
+    install -D -m755 "$srcdir/$pkgname.sh" -t "${pkgdir}"/usr/share/libalpm/scripts/
+  fi
+}
