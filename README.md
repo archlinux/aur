@@ -133,9 +133,6 @@ Or clone the repo and `makepkg -Ccsri` to manually build and install
       DKMS modules fail to build you'll want to re-build your kernel package to update your kernel headers, modules
       should build successfully after.
 
-      See the included [patch-dkms-for-llvm-clang-support.patch](patch-dkms-for-llvm-clang-support.patch) if your
-      version of DKMS doesn't support LLVM builds.
-
   - Building with `-O3` compiler optimization is supported though the performance gain over `-O2 -march=native` and/or 
       Clang ThinLTO is slim.
 
