@@ -1,6 +1,7 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
-# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: wangjiezhe <wangjiezhe@gmail.com>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
@@ -8,24 +9,24 @@
 #
 
 _pack=mapping
-pkgname=octave-$_pack
-pkgver=1.2.1
-pkgrel=2
-pkgdesc="Simple Mapping and GIS .shp file functions."
+pkgname=octave-${_pack}
+pkgver=1.4.1
+pkgrel=1
+pkgdesc="Simple mapping and GIS .shp .dxf and raster file functions"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.8.0')
+depends=('octave>=3.8.0' 'octave-io>=2.2.7' 'octave-geometry>=4.0.0')
 makedepends=()
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
-noextract=("$_archive")
-md5sums=('57e71a91c986dd378e8fc4f57844b368')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}")
+noextract=("${_archive}")
+sha512sums=('052c353b19fc852cc8f156428f71320e7ee1743bc9f5e53a9b94d9b9a1a80e971744d779e285d86746200a8c3218def17bcb7d913aa1cfb06af97e1da0e6d0fd')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
@@ -43,12 +44,13 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	_octave_run "$(cat <<-EOF
-		pkg local_list octave_packages;
-		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive;
+	_octave_run "$(
+		cat <<-EOF
+			pkg local_list octave_packages;
+			pkg prefix $_prefix $_archprefix;
+			pkg install -verbose -nodeps $_archive;
 		EOF
-		)"
+	)"
 }
 
 package() {
