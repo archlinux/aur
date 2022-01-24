@@ -121,7 +121,7 @@ package_amd-ucode-uncompressed() {
 
   install -Dt "${pkgdir}/boot" -m644 amd-ucode.img
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${pkgbase}/LICENSE.amd-ucode
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${_pkgbase}/LICENSE.amd-ucode
 }
 
 package_linux-firmware-nfp-uncompressed() {
