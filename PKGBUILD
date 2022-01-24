@@ -3,7 +3,7 @@
 
 _pkgname=seq66
 pkgname="${_pkgname}-devel-git"
-pkgver=0.92.0.r382.211a186
+pkgver=0.98.3.r773.0e0722f6
 pkgrel=1
 pkgdesc="A live-looping sequencer with an Qt graphical interface (git version)"
 arch=('i686' 'x86_64')
@@ -14,11 +14,13 @@ makedepends=('git' 'alsa-lib' 'jack' 'liblo')
 groups=('pro-audio')
 provides=("${_pkgname}" "${_pkgname}-git" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
-source=("${_pkgname}::git+https://github.com/ahlstromcj/${_pkgname}.git#branch=optimizing")
+source=("${_pkgname}::git+https://github.com/ahlstromcj/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
+
+  git checkout $(git for-each-ref refs/remotes/origin --sort="-committerdate" | head -1 | cut -d '/' -f 4)
 
   local ver=$(tail -n 1 VERSION)
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
@@ -26,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-
+  
   ./bootstrap --enable-debug
   ./configure --prefix=/usr --enable-rtmidi
   make
