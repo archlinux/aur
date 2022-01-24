@@ -1,0 +1,20 @@
+pkgbase = recastnavigation-openmw
+	pkgdesc = Navigation-mesh Toolset for openmw
+	pkgver = 1.5.1+git20210215.e75adf8
+	pkgrel = 1
+	url = https://github.com/recastnavigation/recastnavigation
+	arch = x86_64
+	license = Zlib
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = glut
+	conflicts = recastnavigation
+	options = debug
+	options = strip
+	source = git+https://github.com/recastnavigation/recastnavigation.git#commit=e75adf86f91eb3082220085e42dda62679f9a3ea
+	sha256sums = SKIP
+
+pkgname = recastnavigation-openmw
+	depends = sdl2
+	depends = glut
