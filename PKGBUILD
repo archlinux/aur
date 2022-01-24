@@ -2,8 +2,8 @@
 # Maintainer: ffqq <shuttara@gmail.com>
 
 pkgname=liteaur
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Shell-based AUR helper"
 arch=('any')
 url="https://gitea.com/ffqq/liteaur"
