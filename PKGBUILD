@@ -1,6 +1,6 @@
 pkgname=jdminecraftlauncher
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A oldstyle Minecraft launcher written in Python"
 arch=("any")
 url="https://gitlab.com/JakobDev/jdMinecraftLauncher"
@@ -13,6 +13,7 @@ depends=("python"
          "python-minecraft-launcher-lib"
          "python-jdtranslationhelper")
 makedepends=("gendesk")
+optdepends=("gamemode: Run Minecraft in gamemode")
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/JakobDev/jdMinecraftLauncher/-/archive/${pkgver}/jdMinecraftLauncher-${pkgver}.tar.gz")
 sha256sums=("b7e15059147d3480fa408789c850f252c38e7624fb8bb30f86b0784c4c1b76ae")
 
@@ -25,7 +26,7 @@ package() {
             --name "jdMinecraftLauncher" \
             --comment "$pkgdesc" \
             --exec jdMinecraftLauncher \
-            --categories "Game"
+            --categories "Game" \
             --icon "com.gitlab.JakobDev.jdMinecraftLauncher"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
