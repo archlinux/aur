@@ -2,7 +2,7 @@
 
 pkgname=siyuan-appimage
 pkgver=1.7.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation PKM system, your digital garden"
 arch=("x86_64")
 url="https://b3log.org/siyuan"
