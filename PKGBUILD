@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.16.3
-pkgrel=2
+pkgrel=3
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -39,6 +39,12 @@ sha256sums=('eff44c7e7f12991dc7d2b627c477807a215ce16c2ce8a1c78aa8237ddacf6ca5'
 
 _install_dir=/opt/petsc/${_config}
 _petsc_arch=arch-${_config}
+
+prepare() {
+  _build_dir=${srcdir}/${pkgname}-${pkgver}
+  cd ${_build_dir}
+  sed -i 's/PetscMax(1\,2\*oldnum);/*cid - PETSC_SMALLEST_FORTRAN_CALLBACK + 1;/g' src/sys/objects/inherit.c
+}
 
 build() {
   _build_dir=${srcdir}/${pkgname}-${pkgver}
