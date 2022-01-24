@@ -1,6 +1,7 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
-# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: wangjiezhe <wangjiezhe@gmail.com>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
@@ -8,12 +9,12 @@
 #
 
 _pack=secs2d
-pkgname=octave-$_pack
+pkgname=octave-${_pack}
 pkgver=0.0.8
 pkgrel=4
 pkgdesc="A Drift-Diffusion simulator for 2d semiconductor devices"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/${_pack}"
 license=('GPL')
 groups=('octave-forge')
 depends=('octave>=2.9.17')
@@ -21,14 +22,14 @@ makedepends=()
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-_archive_patched=$_pack-$pkgver-patched.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive"
-		"octave_map.patch")
-noextract=("$_archive")
-md5sums=('fd4d93f4d4ebed9ceae0d7aed88c18bf'
-         'c9cfc1bcf2a7fa1f0c5c582d0f8c7445')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+_archive_patched=${_pack}-${pkgver}-patched.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}"
+	"octave_map.patch")
+noextract=("${_archive}")
+sha512sums=('25828a2972e9c5e5572b1fd33ece3546f8089e9fac51b53987491a0d74ca8704aa3caae351719ae2db3fda1a1f343a03a988e3dd2f989f57054623ff9a90ccfe'
+	'd05462dc6cd77c4de6d6983778b9fc1a9e42e6638a6e694a837c7b54981338af42c3faf69aac86a6766b566cc5fdbbde7ed4d71fb6853f45c8f745fd538e193b')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
@@ -53,12 +54,13 @@ build() {
 	_archprefix="$srcdir"/install_archprefix
 	mkdir -p "$_prefix" "$_archprefix"
 	cd "$srcdir"
-	_octave_run "$(cat <<-EOF
-		pkg local_list octave_packages;
-		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive_patched;
+	_octave_run "$(
+		cat <<-EOF
+			pkg local_list octave_packages;
+			pkg prefix $_prefix $_archprefix;
+			pkg install -verbose -nodeps $_archive_patched;
 		EOF
-		)"
+	)"
 }
 
 package() {
