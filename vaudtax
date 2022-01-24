@@ -7,7 +7,7 @@ unset JDK_HOME
 
 prefix='/usr/share/vaudtax'
 
-export PATH="/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH"
+export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
 
-classpath='lib/dvbern-lib-update.jar:lib/cryptutil.jar'
+classpath='lib/dvbern-lib-update.jar:lib/cryptutil.jar:lib/jaxb-api.jar:lib/activation.jar:lib/jaxb-impl.jar'
 cd $prefix && java -cp $classpath ch.dvbern.lib.update.Launcher
