@@ -3,7 +3,7 @@
 # Contributor: Dan McGee <dpmcgee AT gmail.com>
 
 pkgname=sparse
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc='Semantic parser for C'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url='http://sparse.wiki.kernel.org/'
 license=('MIT')
 depends=('perl' 'libxml2')
 source=(https://www.kernel.org/pub/software/devel/sparse/dist/sparse-$pkgver.tar.xz)
-sha256sums=('d4f6dbad8409e8e20a19f164b2c16f1edf76438ff77cf291935fde081b61a899')
+sha256sums=('6ab28b4991bc6aedbd73550291360aa6ab3df41f59206a9bde9690208a6e387c')
 
 prepare() {
   cd $pkgbase-$pkgver
