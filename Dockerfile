@@ -3,8 +3,7 @@
 FROM archlinux
 
 # Preparation
-RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm --needed base-devel git
+RUN pacman -Syu --noconfirm --needed base-devel git
 
 # Configuration
 ARG PROJECT=python-pynng-git
@@ -23,9 +22,8 @@ WORKDIR $PREFIX/$BOT
 
 # Compiling required AUR packages
 RUN git clone https://aur.archlinux.org/aura-bin.git
-RUN cd aura-bin && makepkg -sric --noconfirm --needed --asdeps
-RUN sudo pacman -S --asdeps --need --noconfirm python-pytest-asyncio python-pytest-trio python-curio
-RUN sudo pacman -S --needed --noconfirm python-pip
+RUN cd aura-bin && makepkg -sric --noconfirm
+RUN sudo pacman -S --needed --noconfirm python-pytest-asyncio python-pytest-trio python-curio python-pip
 RUN sudo aura -Aax --noconfirm pyocd
 RUN sudo aura -Aax --noconfirm python2-prettytable
 RUN sudo aura -Aax --noconfirm python2-fasteners
