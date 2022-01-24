@@ -12,13 +12,13 @@ source=("git+https://github.com/jkuri/bore.git")
 sha512sums=("SKIP")
 
 pkgver() {
-  cd bore
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd bore
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd bore
-	make build_client
+    make build_client
 }
 
 package() {
