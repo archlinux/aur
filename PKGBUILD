@@ -9,8 +9,17 @@ license=("EULA")
 groups=("base-devel")
 depends=('cups' 'ghostscript')
 depends_x86_64=('lib32-glibc')
-source=("https://download.brother.com/welcome/dlf103663/dcpb7500dpdrv-$pkgver-1.i386.deb")
-md5sums=("c5d5c7febae0eab6254cb7332f4038c0")
+install="$pkgname.install"
+source=(
+    "https://download.brother.com/welcome/dlf103663/dcpb7500dpdrv-$pkgver-1.i386.deb"
+    'cupswrapper-license.txt'
+	'lpr-license.txt'
+    )
+md5sums=(
+    "c5d5c7febae0eab6254cb7332f4038c0"
+    '97ad0cffd216059e9d1d3121899d8646'
+    '5e87a3dc0f3e3438c088eda0f3565f0d'
+)
 
 package(){
   tar xf data.tar.gz
