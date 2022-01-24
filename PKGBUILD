@@ -1,9 +1,9 @@
 # Maintainer: Hunter Wittenborn <hunter@hunterwittenborn.com>
 _release=stable
-_target=aur
+_target=arch
 
 pkgname=makedeb
-pkgver=8.7.1
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="A simplicity-focused packaging tool for Debian archives (${_release} release)"
 arch=('any')
