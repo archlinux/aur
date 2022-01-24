@@ -1,11 +1,11 @@
 pkgbase = distribution-gpg-keys
 	pkgdesc = GPG keys used by various Linux distributions to sign packages
-	pkgver = 1.61
+	pkgver = 1.62
 	pkgrel = 1.1
 	url = https://github.com/xsuchy/distribution-gpg-keys
 	arch = any
 	license = custom:CC0
-	source = https://github.com/xsuchy/distribution-gpg-keys/archive/distribution-gpg-keys-1.61-1.tar.gz
-	sha256sums = 07d3512f409c126209e04ff7af830f872e8c069808e63dd514a68638e1fc9cc4
+	source = https://github.com/xsuchy/distribution-gpg-keys/archive/distribution-gpg-keys-1.62-1.tar.gz
+	sha256sums = d8c3bdca43260c5cadc0584f4248956a5b37af750d478c51bf6a280a797362ff
 
 pkgname = distribution-gpg-keys
