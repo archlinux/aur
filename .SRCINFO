@@ -1,7 +1,7 @@
 pkgbase = kyma
 	pkgdesc = Provides a set of commands you can use to install, manage, and test Kyma.
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kyma-project/cli
 	arch = x86_64
 	license = Apache
