@@ -9,7 +9,7 @@ license=('GPL')
 depends=('bash')
 makedepends=('po4a')
 checkdepends=('ed')
-source=(http://ftp.de.debian.org/debian/pool/main/s/$pkgname/${pkgname}_$pkgver.tar.xz)
+source=(http://ftp.debian.org/debian/pool/main/s/$pkgname/${pkgname}_$pkgver.tar.xz)
 sha256sums=('a6ee528bf4122d77acacdb97f20cd0434a12ad3ecd119186a5fcee066844c644')
 
 build() {
