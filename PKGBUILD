@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.63.1.r18.g353c002
+pkgver=1.63.1.r20.gd529fd3
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -105,10 +105,16 @@ build() {
     # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
     export SKIP_LINUX_PACKAGES="True"
 
+    # Set a temporary NVM directory to make sure the nvm in this script does not clash with a system-wide nvm install
+    export NVM_DIR=$(mktemp -d)
+
     # Build just like Travis does: install NodeJS and run the build.sh script.
     source /usr/share/nvm/init-nvm.sh
     nvm install ${_nodejs}
     ./build.sh
+
+    # Clean up temp NVM directory
+    rm -rf "$NVM_DIR" || true
 }
 
 package() {
