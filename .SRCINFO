@@ -1,0 +1,27 @@
+pkgbase = intel-oneapi-ipp
+	pkgdesc = Intel® Integrated Performance Primitives
+	pkgver = 2021.5.2
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = x86_64
+	license = custom
+	noextract = intel-oneapi-ipp-2021.5.2-2021.5.2-544_amd64.deb
+	noextract = intel-oneapi-ipp-devel-2021.5.2-2021.5.2-544_amd64.deb
+	noextract = intel-oneapi-ipp-common-2021.5.2-2021.5.2-544_all.deb
+	noextract = intel-oneapi-ipp-common-devel-2021.5.2-2021.5.2-544_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-2021.5.2-2021.5.2-544_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-devel-2021.5.2-2021.5.2-544_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-common-2021.5.2-2021.5.2-544_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-ipp-common-devel-2021.5.2-2021.5.2-544_all.deb
+	source = intel-oneapi-ipp.conf
+	sha256sums = 19020402a758e73c53791d0b56669b3b37663ea5ce5a53de91b929e0c60c40fb
+	sha256sums = bfba9918763d6fa4412d9d6672caf0470ed5e46e7b7540b28602ad903a8fb922
+	sha256sums = fd0c2017b726e9b8f24d945a8c4d1240798dc47f0d210962fa846e0e78069572
+	sha256sums = 926a1a514b66829f2750ea87032076967fc8db0a38facd84e489d2d32d25ff3c
+	sha256sums = a323ca2483f6ef07422fb19798447ac7ca43d59b5f42aa47710ec940eb2bbaff
+
+pkgname = intel-oneapi-ipp
+	depends = intel-oneapi-common-vars>=2022.0.0
+	depends = intel-oneapi-common-licensing=2022.0.0
+	depends = intel-oneapi-tbb=2021.5.1
+	depends = intel-oneapi-compiler=2022.0.2
