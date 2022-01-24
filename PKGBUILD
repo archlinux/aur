@@ -1,5 +1,7 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: wangjiezhe <wangjiezhe@gmail.com>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
@@ -7,12 +9,12 @@
 #
 
 _pack=strings
-pkgname=octave-$_pack
+pkgname=octave-${_pack}
 pkgver=1.2.0
 pkgrel=4
-pkgdesc="Additional functions for manipulation and analysis of strings."
+pkgdesc="Additional functions for manipulation and analysis of strings"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
+url="https://octave.sourceforge.io/${_pack}"
 license=('custom')
 groups=('octave-forge')
 depends=('octave>=3.8.0')
@@ -20,39 +22,40 @@ makedepends=('pcre')
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
-noextract=("$_archive")
-md5sums=('d8554b4131f753f0cc9fddebd985a8f3')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}")
+noextract=("${_archive}")
+sha512sums=('5635e67796c7f04fe6bf8cd1d39f3aa6d473ceae067b8127edfade936359cea015efe4418a4865b9aacbb254b9c6f4cf0dfd681d7da33d3fa6e5015ec89fdc0f')
 
 _octave_run() {
-	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
+  octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
 }
 
 _install_dir() {
-	src=$1
-	dst=$2
-	mkdir -p "$(dirname "$dst")"
-	cp -rT "$src" "$dst"
+  src=$1
+  dst=$2
+  mkdir -p "$(dirname "$dst")"
+  cp -rT "$src" "$dst"
 }
 
 build() {
-	_prefix="$srcdir"/install_prefix
-	_archprefix="$srcdir"/install_archprefix
-	mkdir -p "$_prefix" "$_archprefix"
-	cd "$srcdir"
-	_octave_run "$(cat <<-EOF
-		pkg local_list octave_packages;
-		pkg prefix $_prefix $_archprefix;
-		pkg install -verbose -nodeps $_archive;
+  _prefix="$srcdir"/install_prefix
+  _archprefix="$srcdir"/install_archprefix
+  mkdir -p "$_prefix" "$_archprefix"
+  cd "$srcdir"
+  _octave_run "$(
+    cat <<-EOF
+			pkg local_list octave_packages;
+			pkg prefix $_prefix $_archprefix;
+			pkg install -verbose -nodeps $_archive;
 		EOF
-		)"
+  )"
 }
 
 package() {
-	prefix=$pkgdir/usr/share/octave/packages
-	archprefix=$pkgdir/usr/lib/octave/packages
-	_install_dir "$srcdir"/install_prefix "$prefix"
-	_install_dir "$srcdir"/install_archprefix "$archprefix"
+  prefix=$pkgdir/usr/share/octave/packages
+  archprefix=$pkgdir/usr/lib/octave/packages
+  _install_dir "$srcdir"/install_prefix "$prefix"
+  _install_dir "$srcdir"/install_archprefix "$archprefix"
 }
