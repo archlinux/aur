@@ -2,14 +2,14 @@
 
 pkgname=rehex-git
 _gitname=rehex
-pkgver=r817.37fc164
-pkgrel=4
+pkgver=r970.10fe1ef
+pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else (git version)"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
 license=('GPL2')
-depends=('jansson' 'capstone' 'wxgtk2' 'lua' 'perl-template-toolkit')
-makedepends=('git')
+depends=('jansson' 'capstone' 'wxgtk2' 'lua')
+makedepends=('git' 'zip' 'perl-template-toolkit')
 conflicts=('rehex')
 source=("git://github.com/solemnwarning/rehex.git")
 sha256sums=('SKIP')
