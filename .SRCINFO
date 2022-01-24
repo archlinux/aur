@@ -2,7 +2,7 @@ pkgbase = brother-mfc-j4335dw
 	pkgdesc = LPR driver and CUPS wrapper for Brother MFC-J4335DW printer
 	pkgver = 3.5.0
 	pkgrel = 1
-	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj4335dw_us
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj4335dw_us_eu
 	install = brother-mfc-j4335dw.install
 	arch = i686
 	arch = x86_64

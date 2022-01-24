@@ -10,7 +10,7 @@ pkgver=3.5.0
 pkgrel=1
 pkgdesc="LPR driver and CUPS wrapper for Brother ${_device_name} printer"
 arch=("i686" "x86_64")
-url="https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=${_model}_us"
+url="https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=${_model}_us_eu"
 license=("EULA")
 source=("https://download.brother.com/welcome/dlf105294/${_model}pdrv-${pkgver}-${pkgrel}.i386.rpm")
 md5sums=('8cca8f3cfa37295e59ff774c862ef949')
