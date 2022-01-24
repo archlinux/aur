@@ -9,7 +9,6 @@ pkgbase = sm64plus-git
 	makedepends = python
 	makedepends = imagemagick
 	depends = sdl2
-	depends = glew
 	provides = sm64plus
 	conflicts = sm64plus
 	source = sm64plus::git+https://github.com/MorsGames/sm64plus
