@@ -9,10 +9,10 @@ pkgbase = plasma5-applets-thermal-monitor-git
 	makedepends = extra-cmake-modules
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
+	depends = ksysguard
 	provides = plasma5-applets-thermal-monitor
 	conflicts = plasma5-applets-thermal-monitor
 	source = git+https://gitlab.com/agurenko/plasma-applet-thermal-monitor.git
 	sha256sums = SKIP
 
 pkgname = plasma5-applets-thermal-monitor-git
-
