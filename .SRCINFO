@@ -13,8 +13,6 @@ pkgbase = funkin
 	license = Apache
 	makedepends = git
 	makedepends = haxe
-	provides = funkin
-	conflicts = funkin
 	source = git+https://github.com/ninjamuffin99/Funkin.git#tag=v0.2.7.1
 	source = APIStuff.hx
 	source = funkin.sh

@@ -8,8 +8,6 @@ arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/ninjamuffin99/Funkin"
 license=("Apache")
 makedepends=("git" "haxe")
-provides=("funkin")
-conflicts=("funkin")
 source=("git+https://github.com/ninjamuffin99/Funkin.git#tag=v0.2.7.1"
         "APIStuff.hx"
         "funkin.sh"
