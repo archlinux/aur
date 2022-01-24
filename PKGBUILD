@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=grcov
 pkgdesc="Rust tool to collect and aggregate code coverage data for multiple source files"
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/mozilla/$pkgname"
@@ -9,7 +9,7 @@ license=('MPL2')
 depends=('gcc')
 makedepends=('cargo')
 source=("$url/archive/v$pkgver.zip")
-sha256sums=('0e286b308a051cf6c6a8a84b3afe405ae755fe50df62f8fdbe6813a73b076446')
+sha256sums=('34d9701c04fe74c35c3e34d6f8210be4063c30496ddf85b064b1d6612f7c0906')
 
 build()
 {
