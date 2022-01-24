@@ -6,7 +6,7 @@ _spirv_headers_commit='f027d53ded7e230e008d37c8b47ede7cd308e19d'
 
 pkgname=spirv-cross
 pkgver=2021.01.15
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
 url='https://github.com/KhronosGroup/SPIRV-Cross/'
@@ -33,6 +33,9 @@ prepare() {
 build() {
     # NOTE: test suite fails when using 'None' build type
     local -a _common_opts=('-DCMAKE_BUILD_TYPE:STRING=Release' '-Wno-dev')
+    
+    export CFLAGS+=' -ffat-lto-objects'
+    export CXXFLAGS+=' -ffat-lto-objects'
     
     # glslang (required for tests)
     cmake -B SPIRV-Cross/external/glslang-build -S glslang \
