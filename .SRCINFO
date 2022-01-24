@@ -1,0 +1,18 @@
+pkgbase = freerouting-zh-cn-git
+	pkgdesc = Advanced PCB autorouter
+	pkgver = 1.4.5.1.r56.g99c2b4e
+	pkgrel = 1
+	url = https://github.com/freerouting/freerouting
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = java-runtime>=11
+	makedepends = gradle
+	provides = freerouting-zh-cn-git
+	conflicts = freerouting-zh-cn-git
+	conflicts = freerouting-zh-cn
+	options = !strip
+	source = freerouting-zh-cn::git+https://github.com/freerouting/freerouting.git
+	sha256sums = SKIP
+
+pkgname = freerouting-zh-cn-git
