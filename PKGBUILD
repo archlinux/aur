@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=pnpm
-pkgver=6.26.0
-pkgrel=1
+pkgver=6.28.0
+pkgrel=0
 pkgdesc="Fast, disk space efficient package manager"
 arch=('any')
 url="https://pnpm.js.org/"
@@ -10,7 +10,7 @@ depends=('nodejs>=12.17.0')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('09d1a35cab316e3857b45cf4ad32dc42734e6a91c464a1dddea04ede2113ce95')
+sha256sums=('3ac229d647ae6d0a343ed78de4583e4b6408534adc9f13e1d27a7781b2d4bb34')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir"/usr "$srcdir/$pkgname-$pkgver.tgz"
