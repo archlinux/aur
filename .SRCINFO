@@ -1,6 +1,6 @@
 pkgbase = libpamac-git
 	pkgdesc = Library for Pamac package manager based on libalpm - git version
-	pkgver = 1.2.0.r0.g1c3941e
+	pkgver = 1.2.0.r7.g79926bf
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/libpamac
 	arch = i686
