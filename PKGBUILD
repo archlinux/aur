@@ -1,7 +1,7 @@
-# Maintainer: Joe George <joe at externl dot com>
+# Maintainer: Arisu <arisuuwu32@gmail.com>
 
 pkgname="zeroc-ice-php"
-pkgver=3.7.2
+pkgver=3.7.6
 pkgrel=0
 pkgdesc="PHP bindings for Ice RPC framework"
 arch=("i686" "x86_64")
@@ -16,13 +16,17 @@ depends=("zeroc-ice=$pkgver" "php")
 
 source=("ice-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice/archive/v${pkgver}.tar.gz")
 
-sha256sums=('e329a24abf94a4772a58a0fe61af4e707743a272c854552eef3d7833099f40f9')
+sha256sums=('75b18697c0c74f363bd0b85943f15638736e859c26778337cbfe72d31f5cfb47')
 
 make_args=(
     "OPTIMIZE=yes"
     "ICE_HOME=/usr/" 
     "ICE_BIN_DIST=cpp"
 )
+prepare() {
+    cd ${srcdir}/ice-${pkgver}/
+    patch -p1 -i ../../redundant.patch
+}
 
 build() {
     cd ${srcdir}/ice-${pkgver}/php
@@ -33,7 +37,7 @@ build() {
 
 package() {
     cd ${srcdir}/ice-${pkgver}/php
-    make install ${make_args[@]} DESTDIR="${pkgdir}" "install_phpdir=/usr/share/ice/php" "install_phplibdir=/usr/share/ice/php"
+    make install ${make_args[@]} DESTDIR="${pkgdir}" "install_phpdir=/usr/share/ice/php" "install_phplibdir=/usr/lib/php/modules"
 
     msg "Installing Ice for PHP"
     install -dm755 ${pkgdir}/etc/php/conf.d/
