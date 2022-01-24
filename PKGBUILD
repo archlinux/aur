@@ -2,14 +2,13 @@
 
 pkgname=openconnect-git
 _pkgname=openconnect
-pkgver=8.10.r682.g5ddd857f
-pkgrel=2
+pkgver=8.10.r753.gb0e53bfa
+pkgrel=1
 pkgdesc="Open client for Cisco AnyConnect VPN"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://www.infradead.org/openconnect.html"
-depends=('libxml2' 'gnutls' 'libproxy' 'vpnc' 'krb5' 'lz4' 'pcsclite' 'trousers' 'stoken'
-		'oath-toolkit')
+depends=('libproxy' 'vpnc' 'pcsclite' 'trousers' 'stoken' 'oath-toolkit')
 makedepends=('intltool' 'python' 'git')
 options=('!emptydirs')
 provides=($_pkgname 'libopenconnect.so')
@@ -29,9 +28,12 @@ build() {
   ./autogen.sh
   PYTHON=/usr/bin/python ./configure --prefix=/usr \
       --sbindir=/usr/bin \
+      --libexecdir=/usr/lib \
       --disable-static \
       --without-gnutls \
       --with-vpnc-script=/etc/vpnc/vpnc-script
+  # Fight unused direct deps
+  sed -i -e "s/ -shared / $LDFLAGS\0 /g" libtool
   make V=0
 }
 
