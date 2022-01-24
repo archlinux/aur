@@ -1,11 +1,12 @@
 pkgbase = lib7zip
 	pkgdesc = A library using 7z.dll/7z.so(from 7-Zip) to handle different archive types.
 	pkgver = 3.0.0_17.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stonewell/lib7zip
 	arch = i686
 	arch = x86_64
 	license = MPL
+	makedepends = cmake
 	makedepends = libtool
 	options = !libtool
 	source = git+https://github.com/stonewell/lib7zip.git
