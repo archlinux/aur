@@ -1,12 +1,11 @@
 pkgbase = opencontest-server-git
 	pkgdesc = An OpenContest server written in Python
 	pkgver = v2.5.3_2_ge2c3b5f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LadueCS/OpenContest-Server
 	arch = any
 	license = AGPL
 	makedepends = python-setuptools
-	makedepends = python-dephell
 	depends = python
 	depends = python-requests
 	depends = firejail
