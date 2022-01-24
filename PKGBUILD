@@ -11,6 +11,7 @@ arch=('any')
 url="https://gitlab.com/agurenko/${_gitpkgname}"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects' 'ksysguard')
+optdepends=('lmsensors')
 makedepends=('git' 'extra-cmake-modules')
 conflicts=("${_pkgname-*}")
 provides=("${_pkgname-*}")

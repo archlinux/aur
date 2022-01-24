@@ -10,6 +10,7 @@ pkgbase = plasma5-applets-thermal-monitor-git
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
 	depends = ksysguard
+	optdepends = lmsensors
 	provides = plasma5-applets-thermal-monitor
 	conflicts = plasma5-applets-thermal-monitor
 	source = git+https://gitlab.com/agurenko/plasma-applet-thermal-monitor.git
