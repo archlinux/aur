@@ -1,7 +1,7 @@
 # Maintainer: Tobias Gerold <tobias at g3ro dot eu>
 pkgname=shiftfs-dkms
 pkgver=20220120
-pkgrel=1
+pkgrel=2
 #_commit=d347e71d2c0b4fc79891b00c47971f1ac5bd1ca8
 pkgdesc="Linux kernel module that provides a kernel filesystem for uid/gid shifting; dkms version for 5.15.x and 5.16.x kernels"
 arch=('x86_64')
