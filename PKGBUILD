@@ -1,6 +1,7 @@
 #
-# Maintainer: Clemens Buchacher <drizzd@aon.at>
-# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: wangjiezhe <wangjiezhe@gmail.com>
+# Contributor: Clemens Buchacher <drizzd@aon.at>
 #
 # You can use the newpkg script from
 # https://github.com/drizzd/octave-forge-archlinux to automatically generate
@@ -8,24 +9,24 @@
 #
 
 _pack=secs1d
-pkgname=octave-$_pack
+pkgname=octave-${_pack}
 pkgver=0.0.9
 pkgrel=3
 pkgdesc="A Drift-Diffusion simulator for 1d semiconductor devices"
 arch=(any)
-url="http://octave.sourceforge.net/$_pack/"
-license=('GPL')
+url="https://octave.sourceforge.io/${_pack}"
+license=('GPL2')
 groups=('octave-forge')
 depends=('octave>=3.0' 'octave-bim')
 makedepends=()
 optdepends=()
 backup=()
 options=()
-install=$pkgname.install
-_archive=$_pack-$pkgver.tar.gz
-source=("http://downloads.sourceforge.net/octave/$_archive")
-noextract=("$_archive")
-md5sums=('1dffa0c6ee88144bd4ecadb45618318d')
+install=${pkgname}.install
+_archive=${_pack}-${pkgver}.tar.gz
+source=("https://downloads.sourceforge.net/octave/${_archive}")
+noextract=("${_archive}")
+sha512sums=('fac5b64c3937e21e3663a8842266e1bf806e3e3fc5a89ba8e7f3ecd7b6d713c85ca81307bae122711500a1a2ed95ff5a30c412ca71c9b94a92281071c87a67b8')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
