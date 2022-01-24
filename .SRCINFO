@@ -6,13 +6,12 @@ pkgbase = sm64pc-git
 	arch = any
 	license = reverse-engineered and unlicensed
 	makedepends = git
-	depends = python
-	depends = audiofile
+	makedepends = python
+	makedepends = libglvnd
+	makedepends = audiofile
 	depends = sdl2
-	depends = glew
 	provides = sm64ex
 	source = git+https://github.com/sm64pc/sm64ex.git
 	sha256sums = SKIP
 
 pkgname = sm64pc-git
-

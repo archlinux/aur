@@ -7,8 +7,8 @@ pkgdesc='Super Mario 64 PC (sm64ex aka. sm64pc) - OpenGL adaptation of n64decomp
 arch=('any')
 url='https://github.com/sm64pc/sm64ex'
 license=('reverse-engineered and unlicensed')
-makedepends=('git')
-depends=('python' 'audiofile' 'sdl2' 'glew')
+makedepends=('git' 'python' 'libglvnd' 'audiofile')
+depends=('sdl2')
 provides=(sm64ex)
 
 _gitname=sm64ex
