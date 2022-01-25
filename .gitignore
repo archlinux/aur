@@ -17,3 +17,4 @@
 /src
 /pkg
 *.kate-swp
+*.tar.*

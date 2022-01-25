@@ -1,5 +1,5 @@
---- ext/enchant/config.m4.orig
-+++ ext/enchant/config.m4
+--- a/ext/enchant/config.m4
++++ b/ext/enchant/config.m4
 @@ -4,7 +4,7 @@
      [Include Enchant support])])
  
@@ -9,8 +9,8 @@
  
    PHP_EVAL_INCLINE($ENCHANT_CFLAGS)
    PHP_EVAL_LIBLINE($ENCHANT_LIBS, ENCHANT_SHARED_LIBADD)
---- ext/enchant/enchant.c.orig
-+++ ext/enchant/enchant.c
+--- a/ext/enchant/enchant.c
++++ b/ext/enchant/enchant.c
 @@ -738,7 +738,7 @@
  			for (i = 0; i < n_sugg; i++) {
  				add_next_index_string(sugg, suggs[i]);
