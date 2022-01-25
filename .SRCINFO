@@ -1,0 +1,18 @@
+pkgbase = perl-extutils-depends-git
+	pkgdesc = disables multidimensional array emulation.
+	pkgver = 0.8001.0+r117.20210515.g5ea5430
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/perl-extutils-depends
+	arch = any
+	license = PerlArtistic
+	makedepends = git
+	depends = perl
+	provides = perl-extutils-depends=0.8001.0+r117.20210515.g5ea5430
+	conflicts = perl-extutils-depends
+	options = !emptydirs
+	source = perl-extutils-depends::git+https://gitlab.gnome.org/GNOME/perl-extutils-depends.git
+	source = LICENSE.PerlArtistic.txt
+	sha256sums = SKIP
+	sha256sums = 916a330e64df209a924120bfddea0373db385eb3854e96d1a3dda6e0ea130c80
+
+pkgname = perl-extutils-depends-git
