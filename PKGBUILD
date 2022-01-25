@@ -6,7 +6,7 @@ pkgname=dfhack-twbt
 pkgver=0.47.05
 _pkgver=$pkgver-r3
 _twbtver=v6.61
-pkgrel=11
+pkgrel=12
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -57,6 +57,9 @@ prepare() {
 
 build() {
     cd "$srcdir"/dfhack/build || exit 1
+
+    export CC=gcc
+    export CXX=g++
 
     cmake \
         -DCMAKE_INSTALL_PREFIX=/opt/dwarffortress \
