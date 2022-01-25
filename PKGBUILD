@@ -6,8 +6,8 @@ _pkgname=perl-travel-status-de-vrr
 pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
-pkgver="${_pkgver}"
-pkgrel=3
+pkgver=1.20+r173.20210328.gea45260
+pkgrel=1
 pkgdesc='Interface to the efa.vrr.de departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-VRR/'
 license=('PerlArtistic')
@@ -55,7 +55,7 @@ check() {
 package() {
   cd "${srcdir}/${_perlmod}"
   ./Build install
-  install -D -v -m644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
-  install -D -v -m644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
+  install -D -v -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
 }
