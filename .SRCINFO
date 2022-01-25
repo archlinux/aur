@@ -1,0 +1,15 @@
+pkgbase = danse-bin
+	pkgdesc = A DNS proxy for DNS Over HTTPS/DNS Over TLS/DNSCrypt
+	pkgver = v0.4.0
+	pkgrel = 1
+	url = https://github.com/iamd3vil/danse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = danse
+	source_x86_64 = https://github.com/iamd3vil/danse/releases/download/v0.4.0/danse_0.4.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e400e9434852dbb9781fefe4808a65a27fb0445f95a8e304dd750e80f923bf48
+	source_aarch64 = https://github.com/iamd3vil/danse/releases/download/v0.4.0/danse_0.4.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3a13dddf2b04422d2dee14283c8b2c3705b5bcaa4eeb078db21e1da491d15ecf
+
+pkgname = danse-bin
