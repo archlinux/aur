@@ -26,6 +26,10 @@ sha512sums=('533599220567254bc4b5077dccdb81895f58c5d1e620bb2ed68a846c4679b989d36
             'SKIP')
 
 check () {
+    	# Set runtime directory
+    	mkdir -p -m 700 "${XDG_RUNTIME_DIR:=$PWD/runtime-dir}"
+    	export XDG_RUNTIME_DIR
+    	
 	meson test -C build --print-errorlogs
 }
 
