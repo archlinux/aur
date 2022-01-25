@@ -10,7 +10,7 @@ pkgrel=4
 url="https://github.com/haard/hgapi"
 license=('MIT')
 arch=('any')
-makedepends=("python-pbr>=1.9" "python2-pbr>=1.9")
+makedepends=("python-setuptools" "python2-setuptools")
 source=("https://files.pythonhosted.org/packages/36/db/6ad72214343e361c3fae732230e64bb7a5e4580002027782a4406748aee6/hgapi-$pkgver.tar.gz"
         "LICENSE")
 sha256sums=('0b1f20a6a8cefe9e9f72b14a0823b7abdbc88d19cdf815211849067d9ac27ebc'

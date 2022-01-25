@@ -5,8 +5,8 @@ pkgbase = python-hgapi
 	url = https://github.com/haard/hgapi
 	arch = any
 	license = MIT
-	makedepends = python-pbr>=1.9
-	makedepends = python2-pbr>=1.9
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/36/db/6ad72214343e361c3fae732230e64bb7a5e4580002027782a4406748aee6/hgapi-1.7.4.tar.gz
 	source = LICENSE
 	sha256sums = 0b1f20a6a8cefe9e9f72b14a0823b7abdbc88d19cdf815211849067d9ac27ebc
