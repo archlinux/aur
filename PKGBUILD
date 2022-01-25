@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue-git
-pkgver=v1.0.4.r43.g998b118
+pkgver=v1.0.6.r223.g815dacb
 pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
@@ -24,7 +24,10 @@ build() {
     # Build the daemon and client
     cargo build --release --locked
 
-    ./build_completions.sh
+    mkdir -p ./utils/completions
+    ./target/release/pueue completions bash ./utils/completions
+    ./target/release/pueue completions fish ./utils/completions
+    ./target/release/pueue completions zsh ./utils/completions
 }
 
 package() {
