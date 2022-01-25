@@ -7,21 +7,36 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.01+r141.20190704.g15af690
-pkgrel=1
+pkgrel=2
 pkgdesc='Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)'
 url='http://finalrewind.org/projects/Travel-Status-DE-URA/'
 license=('GPL' 'PerlArtistic')
 arch=('any')
-depends=('perl-class-accessor' 'perl-datetime' 'perl-datetime-format-duration'
-          'perl-list-moreutils' 'perl-text-csv')
-makedepends=('perl-file-slurp' 'perl-test-pod')
-provides=("${_pkgname}=${pkgver}")
-replaces=("${_pkgname}<=${pkgver}")
-conflicts=("${_pkgname}")
+depends=(
+  'perl-class-accessor'
+  'perl-datetime'
+  'perl-datetime-format-duration'
+  'perl-list-moreutils'
+  'perl-text-csv'
+)
+makedepends=(
+  'perl-file-slurp'
+  'perl-test-pod'
+)
+provides=(
+  "${_pkgname}=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz")
-source=("${_perlmod}::git+http://git.finalrewind.org/${_perlmod}")
-md5sums=('SKIP')
+source=(
+  "${_perlmod}::git+http://git.finalrewind.org/${_perlmod}"
+)
+md5sums=(
+  'SKIP'
+)
 
 pkgver() {
   cd "${srcdir}/${_perlmod}"
