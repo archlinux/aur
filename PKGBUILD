@@ -2,7 +2,7 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20210917
+pkgver=20220125
 pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
@@ -10,11 +10,13 @@ url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
          'djvulibre' 'libheif' 'libchamplain'
-         'poppler-glib' 'libarchive')
+         'poppler-glib' 'libarchive' 'libraw')
 makedepends=('git'
              'intltool' 'python' 'librsvg'
              'libwmf' 'libwebp' 'imagemagick'
-             'fbida' 'gawk' 'perl-image-exiftool')
+             'fbida' 'gawk' 'perl-image-exiftool'
+             # for the docs
+             'doxygen' 'yelp-tools' 'graphviz')
 optdepends=('librsvg: SVG rendering'
             'fbida: for jpeg rotation'
             'gawk: to use the geo-decode function'
