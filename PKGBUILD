@@ -1,18 +1,18 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.34.0.94.gd86bfebe6d
+pkgver=v0.34.0.158.g8087e3371f
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
 depends=(
-         'fribidi'
+         'libfribidi.so'
          'gnutls'
-         'jack'
-         'lcms2'
-         'libarchive'
+         'libjack.so'
+         'liblcms2.so'
+         'libarchive.so'
          'libbluray.so'
-         'libbs2b'
+         'libbs2b.so'
          'libcaca'
          'libcdio-paranoia'
          'libdav1d.so'
@@ -20,11 +20,11 @@ depends=(
          'libgme'
          'libmysofa'
          'libplacebo.so'
-         'libpulse'
+         'libpulse.so'
          'libshaderc_shared.so'
          'libsixel'
          'libsoxr'
-         'libssh'
+         'libssh.so'
          'libva.so'
          'libvdpau'
          'libxinerama'
@@ -34,16 +34,18 @@ depends=(
          'libxv'
          'luajit'
          'mujs'
-         'openal'
+         'libopenal.so'
          'rubberband'
          'sdl2'
          'sndio'
          'uchardet'
          'v4l-utils'
-         'vulkan-icd-loader'
+         'libvulkan.so'
          'wayland'
          'spirv-cross'
          'zimg'
+         'libpipewire-0.3.so'
+         'davs2'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
@@ -112,6 +114,7 @@ prepare() {
     '--enable-libssh'
     '--enable-libjack'
     '--enable-libpulse'
+    '--enable-libdavs2'
     '--enable-nonfree'
     '--enable-cuda'
     )
