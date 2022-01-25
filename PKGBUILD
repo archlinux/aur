@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vmaf-git
-pkgver=2.0.0.r27.g9f5ecc65
-pkgrel=2
+pkgver=2.3.0.r89.g278f6aba
+pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (git version)'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -12,6 +12,7 @@ makedepends=('git' 'meson' 'nasm' 'vim' 'doxygen')
 provides=('vmaf' 'libvmaf-git')
 conflicts=('vmaf' 'libvmaf-git')
 replaces=('libvmaf-git')
+options=('!lto')
 source=('git+https://github.com/Netflix/vmaf.git')
 sha256sums=('SKIP')
 
