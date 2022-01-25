@@ -28,7 +28,7 @@ conflicts=('geeqie')
 source=("git+git://git.geeqie.org/geeqie.git"
         "no-markdown.patch")
 sha256sums=('SKIP'
-            '03ae5b9673b9d3592244aca224e1a60fb6c1c1e8f38a6f84b2e53341f47288af')
+            '37b103135cf220289ea4b10cfebc93af967e7ad1704810c34f4c2b02091f299b')
 
 pkgver() {
     cd "${srcdir}/geeqie"
