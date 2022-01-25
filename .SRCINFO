@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-module-xrdp
 	pkgdesc = PulseAudio modules for xrdp
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/neutrinolabs/pulseaudio-module-xrdp
 	install = pulseaudio-module-xrdp.install
 	arch = i686
