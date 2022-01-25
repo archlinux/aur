@@ -1,18 +1,17 @@
 # Maintainer: ZaViBiS <igordnepr27 at gmail dot com>
 
 pkgname=ppd
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="calculates the percentage difference between two numbers."
 url="https://github.com/ZaViBiS/Percentage-difference"
 arch=("x86_64")
 license=('GPL3.0')
-md5sums=("bf2d42af3bb29110f888d71c3c22c01c")
-sha256sum=('ba52037497de84a3a42c3516ae16349496fb551fb997bfc6758a437ff194915a')
-sha512sum=('7bf02914cbf50f93960dfd035e6155eb4521d18b480a825505e06e37f46616a12e3785293f3c7b8c0e9e549f9303c9f62c3878908d8fe18a71a89c690c204740')
+md5sums=("501e8fcb323e14e254cc106e62b39f1e")
+sha256sum=('9fc7be8876cbd9fa23e5e6e18207c1ce10a41889ecea1144d1f5d7dff77a4cf9')
+sha512sum=('721bde5ae13596a74ecd2646571d35c4ba5c5ad945158affc2df2eb72d358397ada645c330bbbc00e8a88cbcbe7fc3699bbc9ccb6bce92dd583a59eb23d12efd')
 source=("https://github.com/ZaViBiS/Percentage-difference/releases/download/$pkgver/pd")
 
 package() {
-  mv pd ppd
-  install -D "$srcdir/$pkgname" "$pkgdir/usr/bin/ppd"
+  install -D "$srcdir/pd" "$pkgdir/usr/bin/ppd"
 }

@@ -1,11 +1,11 @@
 pkgbase = ppd
 	pkgdesc = calculates the percentage difference between two numbers.
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/ZaViBiS/Percentage-difference
 	arch = x86_64
 	license = GPL3.0
-	source = https://github.com/ZaViBiS/Percentage-difference/releases/download/0.1/pd
-	md5sums = bf2d42af3bb29110f888d71c3c22c01c
+	source = https://github.com/ZaViBiS/Percentage-difference/releases/download/0.2/pd
+	md5sums = 501e8fcb323e14e254cc106e62b39f1e
 
 pkgname = ppd
