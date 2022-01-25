@@ -54,7 +54,7 @@ build() {
   cd $pkgname
   cmake -S . -B build 
   cmake build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build -j$(nproc) --target simutrans
+  cmake --build build -j$(nproc) --target install
 }
 
 package() {
