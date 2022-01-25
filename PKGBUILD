@@ -2,20 +2,20 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='flow-tools'
-pkgver='0.68.5.1'
-pkgrel='6'
-pkgdesc="Netflow collector, analyser and report generator."
+pkgver='0.68.5.2'
+pkgrel='1'
+pkgdesc="Netflow collector, analyser and report generator"
 arch=('i686' 'x86_64')
-url="https://github.com/adsr/${pkgname}"
+url="https://github.com/markzz/${pkgname}"
 license=('BSD 3')
 makedepends=('make' 'zlib' 'libmariadbclient' 'postgresql-libs' 'bison' 'doxygen')
 depends=('libwrap')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+source=("${url}/archive/v${pkgver}.tar.gz"
 	"flow-capture.service"
 	"flow-capture.conf"
 	"flow-werror-fix.patch"
 	"sysusers.conf")
-sha256sums=('80bbd3791b59198f0d20184761d96ba500386b0a71ea613c214a50aa017a1f67'
+sha256sums=('51f1273283b7b337a790f9c307bf5d32cc75f2990fe57832bc41b7c61c90d362'
             '9567fe9c69f2c0a75f55673318be784d13bd8e8f0b6fa8444c2de5efe97b4ccd'
             '842e0c6d1734494c13c5a99fb643b44d8d3bfd49d8d069c5c397a4c799628e64'
             '3bb79f03e1e83e74ea1abd0d39dc6d3c72943a7b281275e33f69e5d9640b4ac3'
@@ -27,7 +27,7 @@ prepare() {
 
   patch -p1 -i "../flow-werror-fix.patch"
 
-  autoconf
+  autoreconf -vfi
   ./configure \
     --prefix=/usr \
     --bindir=/usr/bin \
