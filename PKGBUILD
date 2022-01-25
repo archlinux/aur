@@ -2,21 +2,28 @@
 
 pkgname=cicada-shell
 _pkgname=cicada
-pkgver=0.9.22
+pkgver=0.9.23
 pkgrel=1
 pkgdesc="A bash-like Unix shell written in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/mitnk/cicada"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust')
+makedepends=('cargo')
 provides=('cicada')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1d8163764dd94f76e857e39ac22dcd1e44133593f8bc225d5b57a84f8f809994')
+sha256sums=('fafc780b78153bbbb7160a2ec1354dde313fa380df86593bb806b69602bce145')
+
+prepare() {
+    cd $_pkgname-$pkgver
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
     cd $_pkgname-$pkgver
-    cargo build --release
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
