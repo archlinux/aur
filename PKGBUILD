@@ -3,31 +3,33 @@
 _pkgname=fluffychat
 pkgname=fluffychat-web
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
 license=('AGPL3')
-makedepends=('clang'
-             'ninja'
-             'cmake'
-             'unzip'
-    )
+depends=()
+makedepends=(
+    'clang'
+    'ninja'
+    'cmake'
+    'unzip'
+    'flutter'
+)
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=(
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.5.3-stable.tar.xz"
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz"
 )
-sha256sums=('b32d04a9fa5709326b4e724e0de64ff1b2b70268f89dd3c748e6360ac937fe01'
-            '92c4ae1a8a329e1139b95947ca8fb3e6a48435066f9aed9ca48a9ed84caddbbf')
+sha256sums=('92c4ae1a8a329e1139b95947ca8fb3e6a48435066f9aed9ca48a9ed84caddbbf')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
 
 prepare() {
   export PATH="${srcdir}/flutter/bin:$PATH"
+  [ -d "${srcdir}/flutter" ] || cp -pR --reflink=auto /opt/flutter "${srcdir}/flutter"
   cd "fluffychat-v${pkgver}"
   ./scripts/prepare-web.sh
 }
