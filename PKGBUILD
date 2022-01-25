@@ -2,26 +2,26 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-git
-pkgver=0.34.0.r726.g12cdee06
+pkgver=rc1.2.0.2.r15.gf17ae118
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
 license=('AGPL3')
-makedepends=('clang'
-             'ninja'
-             'cmake'
-             'unzip'
-    )
+makedepends=(
+    'clang'
+    'ninja'
+    'cmake'
+    'unzip'
+    'flutter'
+)
 optdepends=('pantalaimon: used for E2E encryption')
 provides=("fluffychat-web")
 conflicts=("fluffychat-web")
 source=(
     "$_pkgname::git+https://gitlab.com/famedly/fluffychat.git"
-    "https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_2.5.3-stable.tar.xz"
 )
-sha256sums=('SKIP'
-            'b32d04a9fa5709326b4e724e0de64ff1b2b70268f89dd3c748e6360ac937fe01')
+sha256sums=('SKIP')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
@@ -32,6 +32,8 @@ pkgver() {
 }
 
 prepare() {
+  export PATH="${srcdir}/flutter/bin:$PATH"
+  [ -d "${srcdir}/flutter" ] || cp -pR --reflink=auto /opt/flutter "${srcdir}/flutter"
   cd "$_pkgname"
   ./scripts/prepare-web.sh
 }
