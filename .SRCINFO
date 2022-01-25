@@ -1,0 +1,13 @@
+pkgbase = go-andotp
+	pkgdesc = CLI program to encrypt/decrypt andOTP files
+	pkgver = 1.0.23
+	pkgrel = 1
+	url = https://github.com/RijulGulati/go-andotp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = go-andotp-1.0.23.tar.gz::https://github.com/RijulGulati/go-andotp/archive/v1.0.23.tar.gz
+	sha256sums = 8a268f54374e9960a7d7f8163e59e1357a614048fa8aa6b263bbe7feebadd07c
+
+pkgname = go-andotp
