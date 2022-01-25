@@ -13,6 +13,7 @@ depends=("python-requests"
 	 "python-feedparser"
 	 "python-beautifulsoup4"
 	 "python-natsort"
+	 "python-lxml"
 )
 makedepends=("git" "python-setuptools" "python-dephell")
 provides=()
