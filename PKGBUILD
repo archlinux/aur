@@ -1,7 +1,8 @@
+# Maintainer: Roboron <robertoms258 at gmail dot com>
  
 _realname=fluidsynth
 pkgname=mingw-w64-fluidsynth
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications (mingw-w64)"
 url="http://www.fluidsynth.org/"
@@ -16,7 +17,7 @@ makedepends=('mingw-w64-cmake'
   'mingw-w64-make')
 options=('staticlibs' '!buildflags' '!strip')
 source=("${_realname}-${pkgver}.tar.gz::https://github.com/FluidSynth/${_realname}/archive/v${pkgver}.tar.gz")
-sha256sums=('83cb1dba04c632ede74f0c0717018b062c0e00b639722203b23f77a961afd390')
+sha256sums=('9037e703617f91c4c36039a5059e0f624164799d856af715bcd8a23c07ba03b8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -24,9 +25,12 @@ build() {
   cd fluidsynth-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DCMAKE_INSTALL_PREFIX=/usr/${_arch} -DBUILD_SHARED_LIBS=OFF -DBUILD_STATIC_LIBS=ON -Denable-portaudio=ON -Denable-dbus=OFF ..
-	# If you only need the bare minimum to play .sf2 soundfonts, use this instead
-    #${_arch}-cmake -DCMAKE_INSTALL_PREFIX=/usr/${_arch}  -DBUILD_SHARED_LIBS=0 -DBUILD_STATIC_LIBS=1 -Denable-aufile=0 -Denable-dbus=0 -Denable-ipv6=0 -Denable-jack=0 -Denable-ladspa=0 -Denable-midishare=0 -Denable-opensles=0 -Denable-oboe=0 -Denable-oss=0 -Denable-readline=0 -Denable-winmidi=0 -Denable-waveout=0 -Denable-libsndfile=0 -Denable-network=0 -Denable-pulseaudio=0 -Denable-dsound=1 -Denable-sdl2=0 ..
+    
+	# If you need every feature, uncomment this
+    #${_arch}-cmake -DBUILD_SHARED_LIBS=0 -Denable-portaudio=1 -Denable-dbus=0 ..
+	
+	# If you only need the bare minimum to play with SF2/SF3 soundfonts, use this instead
+    ${_arch}-cmake -DBUILD_SHARED_LIBS=0 -Denable-aufile=0 -Denable-dbus=0 -Denable-ipv6=0 -Denable-jack=0 -Denable-ladspa=0 -Denable-midishare=0 -Denable-opensles=0 -Denable-oboe=0 -Denable-oss=0 -Denable-readline=0 -Denable-winmidi=0 -Denable-waveout=0 -Denable-libsndfile=1 -Denable-network=0 -Denable-pulseaudio=0 -Denable-dsound=1 -Denable-sdl2=0 ..
     make
     popd
   done
