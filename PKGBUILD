@@ -6,14 +6,14 @@ pkgver=r504.8e5d86f
 pkgrel=3
 pkgdesc="Markdown Vim Mode"
 arch=('any')
-url="https://github.com/plasticboy/vim-markdown"
+url="https://github.com/preservim/vim-markdown"
 license=('MIT')
 depends=('vim-plugin-runtime' 'vim-tabular')
 makedepends=('git')
 conflicts=('vim-markdown')
 provides=('vim-markdown')
 groups=('vim-plugins')
-source=("git+https://github.com/plasticboy/${_pkgname}.git")
+source=("git+https://github.com/preservim/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
