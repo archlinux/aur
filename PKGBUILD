@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the efa.vrr.de departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-VRR/'
 license=('PerlArtistic')
@@ -15,7 +15,6 @@ arch=('any')
 depends=('perl-class-accessor' 'perl-libwww' 'perl-xml-libxml')
 makedepends=('perl-module-build' 'perl-file-slurp' 'perl-test-pod')
 provides=("${_pkgname}=${pkgver}")
-replaces=("${_pkgname}<=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
