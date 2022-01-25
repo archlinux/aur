@@ -1,6 +1,6 @@
 pkgbase = qoi-git
 	pkgdesc = The 'Quite OK Image' format for fast, lossless image compression
-	pkgver = r42.03c7ab1
+	pkgver = r172.0db7d65
 	pkgrel = 1
 	url = https://phoboslab.org/log/2021/11/qoi-fast-lossless-image-compression
 	arch = x86_64
