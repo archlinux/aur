@@ -1,7 +1,7 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 # Based on https://aur.archlinux.org/packages/mathematica/
 pkgname=wolframengine
-pkgver=12.3.1
+pkgver=13.0.0
 pkgrel=1
 pkgdesc="Free Wolfram Engine(TM) for Developers"
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "WolframEngine_${pkgver}_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX"
 )
 noextract=("WolframEngine_${pkgver}_LINUX.sh")
-sha256sums=("dbea88258ff3b56708948199192ab49e9dc7a8c83ebd29ae0052a456607728c5")
+sha256sums=("38783c9334944aa7ae095d216c934e145edce7eb06361c85f89ddef429e59781")
 # TODO: list based on namcap, all in opt but some are probably mandatory
 depends=( )
 optdepends=(
@@ -133,6 +133,6 @@ package() {
 
     msg2 "Clean up"
     rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolframscript*
-    rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolfram-mathematica12.desktop
+    rm -f ${pkgdir}/opt/WolframEngine/SystemFiles/Installation/wolfram-mathematica${pkgver%%\.*}.desktop
     rm -f ${pkgdir}/opt/WolframEngine/InstallErrors
 }
