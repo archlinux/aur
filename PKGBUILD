@@ -1,6 +1,6 @@
 # Maintainer: Luis Batalha <lfrb25 at gmail dot com>
 
-commit_hash=03c7ab14d4e9396821bd79898dcb0439447d3245
+commit_hash=0db7d65c83b39abdc760990b41c242f5b55d3207
 source_dir='qoi'
 
 pkgname=(qoi-headers-git
@@ -8,7 +8,7 @@ pkgname=(qoi-headers-git
          qoibench-git
         )
 pkgbase=qoi-git
-pkgver=r42.03c7ab1
+pkgver=r172.0db7d65
 pkgrel=1
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
