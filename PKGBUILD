@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.01+r141.20190704.g15af690
-pkgrel=4
+pkgrel=5
 pkgdesc='Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)'
 url='http://finalrewind.org/projects/Travel-Status-DE-URA/'
 license=('GPL' 'PerlArtistic')
@@ -64,7 +64,7 @@ check() {
 package() {
   cd "${srcdir}/${_perlmod}"
   ./Build install
-  install -D -v -m644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
+  install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
   install -D -v -m644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
 }
