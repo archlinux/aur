@@ -1,16 +1,15 @@
 pkgbase = grml-systemd-boot
 	pkgdesc = GRML as systemd-boot loader entry
-	pkgver = 2020.06
+	pkgver = 2021.07
 	pkgrel = 1
 	url = https://wiki.archlinux.org/title/Systemd-boot#Grml_on_ESP
 	arch = any
 	license = GPL
 	depends = systemd
-	noextract = grml64-small_2020.06.iso
-	source = https://download.grml.org/grml64-small_2020.06.iso
+	noextract = grml64-small_2021.07.iso
+	source = https://download.grml.org/grml64-small_2021.07.iso
 	source = grml.conf
-	sha256sums = f0279ed92b15385a2832020efab98b7cb8844e2713c3da0615e411fcd4b2df22
+	sha256sums = f94529b6cbfb79ae54a4b6d5dfe8caf1a836facd85959996dd6712c20bb9c5c2
 	sha256sums = SKIP
 
 pkgname = grml-systemd-boot
-
