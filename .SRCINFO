@@ -1,7 +1,7 @@
 pkgbase = rezound-svn
 	pkgdesc = A graphical audio file editor, not bloated, simple to use. Supports LADSPA-plugins. (NOTE: The package's dependencies can be minimised by changing the PKGBUILD's ./configure-script.)
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rezound.sourceforge.net/
 	install = rezound.install
 	arch = i686
@@ -24,7 +24,6 @@ pkgbase = rezound-svn
 	optdepends = cdrdao: For burn-to-CD-feature.
 	provides = rezound=latest
 	conflicts = rezound
-	replaces = rezound<=latest
 	source = rezound::svn+http://svn.code.sf.net/p/rezound/code/trunk
 	source = rezound.png
 	source = rezound.install
