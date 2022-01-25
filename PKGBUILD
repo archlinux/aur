@@ -3,10 +3,10 @@ pkgname="podman-tui-git"
 _pkgname="podman-tui"
 pkgver=0.1.0.r0.g3b1f222
 pkgrel=1
-pkgdesc="Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)"
+pkgdesc="Podman Terminal User Interface"
 arch=('x86_64')
-url="https://github.com/Jguer/yay"
-license=('GPL3')
+url="https://github.com/containers/podman-tui"
+license=('apache-2')
 depends=(
   'podman>3'
   )
