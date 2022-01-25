@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.20+r377.20210326.g353760f
-pkgrel=2
+pkgrel=3
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
 url='http://finalrewind.org/projects/Travel-Routing-DE-VRR/'
 license=('custom:WTFPL')
@@ -26,8 +26,14 @@ makedepends=(
   'perl-test-fatal'
   'perl-test-pod'
 )
-provides=("${_pkgname}=${pkgver}")
-conflicts=("${_pkgname}")
+provides=(
+  "${_pkgname}=${pkgver}"
+  "${_pkgname}-zsh-completion=${pkgver}"
+)
+conflicts=(
+  "${_pkgname}"
+  "${_pkgname}-zsh-completion"
+)
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc}
 #         'http://www.wtfpl.net/txt/copying/COPYING')
