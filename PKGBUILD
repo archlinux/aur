@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver=3.01+r182.20201121.geb72c48
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
 license=('PerlArtistic')
@@ -21,6 +21,7 @@ depends=(
   'perl-xml-libxml'
 )
 makedepends=(
+  'git'
   'perl-module-build'
   'perl-file-slurp'
   'perl-json'
@@ -59,7 +60,7 @@ check() {
 package() {
   cd "${srcdir}/${_perlmod}"
   ./Build install
-  install -D -v -m644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
-  install -D -v -m644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
+  install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
+  install -D -v -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
 }
