@@ -1,16 +1,13 @@
 pkgbase = python-fortranformat
 	pkgdesc = Python module to read and write data with fortran format strings.
-	pkgver = 0.2.3
-	pkgrel = 5
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/fortranformat
 	arch = any
-	license = MIT
-	source = http://pypi.python.org/packages/source/f/fortranformat/fortranformat-0.2.3.tar.gz
-	source = website.html
-	md5sums = d78c5a320fedcbdf21f823cd18e28ac0
-	md5sums = 444b8a8a633ac4db159165912e17e714
-	sha512sums = 4f4470a58684143e95a53fedf1f8a925a9bb27eb472eae480aeedc59fa45924b8bde5b173795183e9d1c4ce8c211a62a7e401a90c11dd29e958793723dc94584
-	sha512sums = b527d3fa53bea7abae6600da11fb271901940f8cb93a9a84237a6de548415c1f470b387d75fe76968480a148e11df4ec5be8e3e8cbc45dc94deadedab4ee59dd
+	license = custom:MIT
+	source = http://pypi.python.org/packages/source/f/fortranformat/fortranformat-1.1.1.tar.gz
+	source = website.html::https://pypi.python.org/pypi/fortranformat
+	sha256sums = 9b7aa2148af7a5f4f5fd955d121bd6869d44b82ac2182d459813b849aa87d831
+	sha256sums = ff4e0510a7b79f2eb9e139de93f593e9895d69a687b51911197606ebecbe8385
 
 pkgname = python-fortranformat
-
