@@ -1,11 +1,10 @@
 pkgbase = omniedge-cli
 	pkgdesc = A reliable and painless connectivity to all your devices in one click.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 0
 	url = https://omniedge.io/
 	arch = x86_64
-	license = GPL
-	source = https://github.com/omniedgeio/omniedge-linux-cli/releases/download/v0.1.0/omniedge-amd64.zip
-	sha256sums = 8e72bad059363a2303c05bfbc338508b4dceb24fd01c13956b519cf181230e75
+	source = https://github.com/omniedgeio/app-release/releases/download/v0.2.1/omniedgecli-amd64.zip
+	sha512sums = e82b437dbe4911e42208f16b75cc0b5cedbd59ab0deaba4d832a4dc1510c7591f3e2984ea18fefb9e96594e87d7ec324f5f08d0e7e92e6a72fc44e129a62b5fb
 
 pkgname = omniedge-cli
