@@ -12,7 +12,7 @@ depends=(
 makedepends=('go>=1.17')
 conflicts=('podman-tui-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/containers/podman-tui/archive/v${pkgver}.tar.gz")
-sha256sums=("SKIP")
+sha256sums=("058ad1fad33e21ae54b6ae883a7b68b5c145fb6b0bfbe7eab6ee99198ff92936")
 
 build() {
   export GOPATH="$srcdir"/gopath
