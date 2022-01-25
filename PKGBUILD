@@ -112,12 +112,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17 TCP Optimizations included in Xanmod
         # 5.17 TCP csum optimization included in Xanmod
 
-        # 5.17 UDP/IPv6 optimizations
+        # 5.17: UDP/IPv6 optimizations
         "UDP-IPv6-Optimizations-from-5.17-partial.patch"
-
-        # 5.16: zstd 1.4.10 update stack size regression fixes
-        # 5.16: don't drop shared caches on C3 state transitions
-        # 5.16 spectre defaults
 
         # -- patch from Chromium developers; more accurately report battery state changes
         "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
@@ -125,8 +121,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # -- squelch overzealous 802.11 regdomain not set warnings
         "cfg80211-dont-WARN-if-a-self-managed-device.patch"
 
-        # ASUS ROG patches
+        # -- Reduce hid-asus object size by consolidating calls
         "HID-asus-Reduce-object-size-by-consolidating-calls.patch"
+
+        # 5.17: ASUS ROG laptop custom fan curve support
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
         # mediatek mt7921 bt/wifi patches
@@ -199,6 +197,7 @@ prepare() {
     esac
   done
 
+  # Set kernel version
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.99-pkgrel
@@ -206,9 +205,8 @@ prepare() {
 
   # xanmod release localversion
   local _xanlver=${xanmod##*\-}
-  # pkgver localversion
+  # pkgver localversion, chop the +clang off clang builds
   local _localversion=${pkgver##*\.}
-  # chop the +clang off clang builds
   _localversion=${_localversion%\+*}
 
   # Monkey patch: If we're applying a point release on top of Xanmod official then we'll monkey with the
@@ -218,9 +216,10 @@ prepare() {
     sed -Ei "s/xanmod[0-9]+/${_localversion}/" localversion
   fi
 
+  # Apply configuration
   msg2 "Applying kernel config..."
-  # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
+
   # enable LTO_CLANG_THIN
   if [ "$_compiler" = "clang" ]; then
     msg2 "Enabling Clang ThinLTO ..."
@@ -250,6 +249,7 @@ prepare() {
     fi
   fi
 
+  # User set. See at the top of this file
   if [ "$use_numa" = "n" ]; then
     msg2 "Disabling NUMA..."
     scripts/config --disable CONFIG_NUMA
@@ -267,10 +267,10 @@ prepare() {
     scripts/config --enable CONFIG_X86_AMD_PSTATE
   fi
 
-  # let user choose microarchitecture optimization target;
+  # Let user choose microarchitecture optimization target;
   sh "${srcdir}/choose-gcc-optimization.sh" $_microarchitecture
 
-  # apply package config customizations
+  # Apply package config customizations
   if [[ -s ${startdir}/xanmod-rog-config ]]; then
     msg2 "Applying package config customization..."
     bash -x "${startdir}/xanmod-rog-config"
