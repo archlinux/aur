@@ -1,0 +1,6 @@
+--- Makefile.MakeMaker.org	2022-01-25 22:03:33.609888590 +0100
++++ Makefile.MakeMaker	2022-01-25 22:05:18.069885323 +0100
+@@ -155,2 +155,3 @@
+ VERSION_FROM = 
++INC = -I/usr/lib/perl5/5.34/vendor_perl/B/Hooks/OP/Check/Install
+ OBJECT = $(BASEEXT)$(OBJ_EXT)

@@ -1,0 +1,6 @@
+### This is to use MakeMaker instead of Dist::Zilla.
+### The following lines are taken from http://blogs.perl.org/users/piotr_roszatycki/2014/01/i-hate-distzilla-and-missing-makefilepl.html
+
+# Very simple stub because of damn Dist::Zilla
+use ExtUtils::MakeMaker;
+WriteMakefile( 'PL_FILES' => {}, 'VERSION' => '0.01', 'EXE_FILES' => [] );
