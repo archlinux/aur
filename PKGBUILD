@@ -1,14 +1,14 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 epoch=
 pkgdesc="MyAnimeList scrobbler"
 arch=('x86_64')
 url="https://tundra.moe"
 license=('GPL3')
 groups=()
-depends=('gtk3' 'dbus')
+depends=('gtk4' 'libadwaita' 'dbus')
 makedepends=('rust')
 checkdepends=()
 optdepends=()
@@ -20,10 +20,10 @@ options=()
 install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m4tx/$pkgname/archive/v$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/erengy/anime-relations/2c55e0ce48462a75ca8680dc2a9828887aea1792/anime-relations.txt")
+        "https://raw.githubusercontent.com/erengy/anime-relations/fe525396c7495b84fc10faae33e997c3faf42701/anime-relations.txt")
 noextract=()
-md5sums=('459cec687c6763f282478fc9a727f3b7'
-         'ec26a1895b54f4f7a03538e117354311')
+md5sums=('01ee2f012fa21dc0606eaa28bb296303'
+         '712fbe4ccca3db0fd5346db526bd7e59')
 validpgpkeys=()
 
 prepare() {
