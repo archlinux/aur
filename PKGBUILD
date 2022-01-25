@@ -2,9 +2,9 @@
 
 _pkgname=seq66
 pkgname="${_pkgname}-git"
-pkgver=0.98.3.r773.0e0722f6
+pkgver=0.98.3.1.r0.g5efdce36
 pkgrel=1
-pkgdesc="A live-looping sequencer with an Qt graphical interface (git version)"
+pkgdesc="A live-looping sequencer with a Qt graphical interface (git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/ahlstromcj/seq66"
 license=('GPL2')
@@ -13,23 +13,17 @@ makedepends=('git' 'alsa-lib' 'jack' 'liblo')
 groups=('pro-audio')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/ahlstromcj/${_pkgname}.git"
-        'seq66-destdir.patch')
-md5sums=('SKIP'
-         'b0acb87040cef1ff9ddaff9154be6632')
+source=("${_pkgname}::git+https://github.com/ahlstromcj/${_pkgname}.git")
+md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
   local ver=$(tail -n 1 VERSION)
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
 
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-
-  # some install commands do not respect DESTDIR properly
-  patch -p1 -r -N -i "${srcdir}"/seq66-destdir.patch
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = seq66-git
-	pkgdesc = A live-looping sequencer with an Qt graphical interface (git version)
-	pkgver = 0.98.3.r773.0e0722f6
+	pkgdesc = A live-looping sequencer with a Qt graphical interface (git version)
+	pkgver = 0.98.3.1.r0.g5efdce36
 	pkgrel = 1
 	url = https://github.com/ahlstromcj/seq66
 	arch = i686
@@ -13,12 +13,10 @@ pkgbase = seq66-git
 	makedepends = liblo
 	depends = qt5-base
 	provides = seq66
-	provides = seq66=0.98.3
+	provides = seq66=0.98.3.1
 	conflicts = seq66
 	source = seq66::git+https://github.com/ahlstromcj/seq66.git
-	source = seq66-destdir.patch
 	md5sums = SKIP
-	md5sums = b0acb87040cef1ff9ddaff9154be6632
 
 pkgname = seq66-git
 	depends = qt5-base
