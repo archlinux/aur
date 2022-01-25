@@ -3,7 +3,7 @@
 _pkgname=perl-extutils-depends
 pkgname="${_pkgname}-git"
 pkgver=0.8001.0+r117.20210515.g5ea5430
-pkgrel=1
+pkgrel=2
 pkgdesc='disables multidimensional array emulation.'
 arch=(
   'any'
@@ -14,15 +14,12 @@ license=(
 )
 depends=(
   'perl'
+  'perl-extutils-makemaker'
 )
 makedepends=(
   'git'
-  #'perl-extutils-depends'
-  #'perl-extutils-makemaker-dist-zilla-develop'
 )
-checkdepends=(
-  #'perl-test-pod-coverage'
-)
+checkdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
 )
