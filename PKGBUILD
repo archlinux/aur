@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-cn-meta
 pkgver=5.0.b1
-pkgrel=2
+pkgrel=3
 pkgdesc='Meta package to install fcitx5 and Chinese addons'
 url='https://github.com/fcitx/fcitx5'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt' 'fcitx5-chinese-a
 optdepends=('fcitx5-qt4' 'fcitx5-material-color' 'fcitx5-nord')
 
 prepare() {
-  echo 'export GTK_MODULE=fcitx
+  echo 'export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 export INPUT_METHOD=fcitx
