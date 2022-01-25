@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.20+r377.20210326.g353760f
-pkgrel=4
+pkgrel=5
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
 url='http://finalrewind.org/projects/Travel-Routing-DE-VRR/'
 license=('custom:WTFPL')
@@ -40,7 +40,7 @@ options=('!emptydirs')
 #         'http://www.wtfpl.net/txt/copying/COPYING')
 source=(
   "${_perlmod}::git+https://git.finalrewind.org/${_perlmod}"
-  'http://www.wtfpl.net/txt/copying/COPYING'
+  'COPYING::http://www.wtfpl.net/txt/copying/COPYING'
 )
 sha256sums=(
   'SKIP'

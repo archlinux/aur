@@ -1,7 +1,7 @@
 pkgbase = perl-travel-routing-de-vrr-git
 	pkgdesc = Unofficial efa.vrr.de command line client and Perl module
 	pkgver = 2.20+r377.20210326.g353760f
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Routing-DE-VRR/
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = perl-travel-routing-de-vrr-git
 	conflicts = perl-travel-routing-de-vrr-zsh-completion
 	options = !emptydirs
 	source = Travel-Routing-DE-VRR::git+https://git.finalrewind.org/Travel-Routing-DE-VRR
-	source = http://www.wtfpl.net/txt/copying/COPYING
+	source = COPYING::http://www.wtfpl.net/txt/copying/COPYING
 	sha256sums = SKIP
 	sha256sums = 0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5
 
