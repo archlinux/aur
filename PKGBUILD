@@ -7,17 +7,6 @@ pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url='https://github.com/prusa3d/PrusaSlicer'
 license=('AGPL3')
-depends=(
-    'boost-libs'
-    'cgal'
-    'curl'
-    'glew'
-    'intel-tbb'
-    'nlopt'
-    'openvdb'
-    'wxgtk3'
-    'qhull>=2020.2-4'
-)
 makedepends=(
     'cmake'
     'ninja'
@@ -26,6 +15,20 @@ makedepends=(
     'eigen'
     'gtest'
 )
+depends=(
+    'boost-libs'
+    'cgal'
+    'curl'
+    'dbus'
+    'glew'
+    'intel-tbb'
+    'libpng'
+    'nlopt'
+    'openvdb'
+    'qhull'
+    'wxgtk3'
+)
+
 source=(
     "git+${url}"
     'prusa-slicer-boost-placeholders.patch'
