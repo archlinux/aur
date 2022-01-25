@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-wayland-bin
-pkgver=3.05
+pkgver=3.1
 pkgrel=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader' 'qt5-wayland')
 provides=("${pkgname%-*-*}")
 conflicts=("${pkgname%-*-*}")
 source=("https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_${pkgver}_linux64_wayland.AppImage")
-sha256sums=('484cd119fccdf08015bab0e21503c9e75de425e85f35ca2511c7a8d980c6f480')
+sha256sums=('41f0ba0004556d7cff7cd75a05cb47019d41d1074e300c0e0e552093476d6eca')
 
 prepare() {
   chmod +x *.AppImage
