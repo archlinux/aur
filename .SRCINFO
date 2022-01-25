@@ -1,0 +1,21 @@
+pkgbase = cider-canary
+	pkgdesc = Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories upcoming branch.
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/CiderApp/Cider Canary.git
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = npm
+	makedepends = yarn
+	depends = gtk3
+	depends = nss
+	optdepends = libnotify: Playback notifications
+	source = git+https://github.com/CiderApp/cider.git#branch=upcoming
+	source = Cider.desktop
+	sha256sums = SKIP
+	sha256sums = daa9f225b565b30f6fda10c8fa7410b9784938d1ef6a69986891abac77ef0709
+
+pkgname = cider-canary
