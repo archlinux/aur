@@ -1,7 +1,7 @@
 pkgbase = chrome-gnome-shell
 	pkgdesc = Native browser connector for integration with extensions.gnome.org
 	pkgver = 10.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome
 	arch = any
 	license = GPL
@@ -11,8 +11,7 @@ pkgbase = chrome-gnome-shell
 	depends = gnome-shell
 	depends = python-requests
 	depends = python-gobject
-	source = git+https://git.gnome.org/browse/chrome-gnome-shell#commit=815ec9e1afa52bd3af5047e176a4ea9c1bfa2514
+	source = git+https://gitlab.gnome.org/GNOME/chrome-gnome-shell#commit=815ec9e1afa52bd3af5047e176a4ea9c1bfa2514
 	md5sums = SKIP
 
 pkgname = chrome-gnome-shell
-
