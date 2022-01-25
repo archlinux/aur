@@ -1,0 +1,12 @@
+pkgbase = myterm
+	pkgdesc = Simple utility to start a user's preferred terminal emulator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/electrickite/myterm
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	source = myterm-0.1.0.tar.gz::https://github.com/electrickite/myterm/archive/0.1.0.tar.gz
+	sha256sums = f19bbd0a94357343efb84a0d93f59340fe085c5cab2718b361f530e0c0dec90e
+
+pkgname = myterm
