@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver="${_pkgver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
 url='http://finalrewind.org/projects/Travel-Routing-DE-VRR/'
 license=('custom:WTFPL')
@@ -64,7 +64,7 @@ check() {
 package() {
   cd "${srcdir}/${_perlmod}"
   ./Build install
-  install -D -v -m644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -D -v -m644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.WTFPL.txt"
   install -D -v -m644 provides/zsh/completions/_efa "${pkgdir}/usr/share/zsh/site-functions/_efa"
   install -D -v -m644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
   install -D -v -m644 Changelog "${pkgdir}/usr/share/doc/${_pkgname}/Changelog"
