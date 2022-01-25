@@ -1,0 +1,22 @@
+pkgbase = ledger
+	pkgdesc = Web based ledger system to keep track of your money
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/jnphilipp/ledger
+	arch = any
+	license = GPL3+
+	makedepends = git
+	makedepends = help2man
+	makedepends = python
+	makedepends = python-virtualenv
+	depends = python
+	depends = python-django
+	depends = python-gobject
+	depends = python-dbus
+	depends = systemd
+	source = git://github.com/jnphilipp/ledger.git
+	source = git://github.com/jnphilipp/django_bootstrap5.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = ledger
