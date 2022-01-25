@@ -2,7 +2,7 @@
 # Maintainer: Rafael Silva <perigoso@riseup.net>
 
 pkgname=kicad-nightly
-pkgver=6.99.0_612_gefb323d57d
+pkgver=6.99.0_616_g5a2f351f28
 pkgrel=1
 pkgdesc='Electronic schematic and printed circuit board (PCB) design tools'
 arch=('x86_64')
@@ -16,13 +16,26 @@ optdepends=(
 	'kicad-library-3d-nightly: for 3d models of components'
 )
 source=(
-	'git+https://gitlab.com/kicad/code/kicad.git'#commit=efb323d57d
+	'git+https://gitlab.com/kicad/code/kicad.git'#commit=5a2f351f28
 	'kicad-nightly.env'
+	'no-metadata-translation.patch'
 )
 sha256sums=(
 	'SKIP'
-	'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
+    'fce26af6b9c181a99197bfc9bc6c778561ad55a375480f4d0d73bb34078b5d18'
+    'a80c387474705f22046e9f5dbc289441b68a2b4f1db44ba989159f6c8b77bd3d'
 )
+
+prepare()
+{
+	cd "$srcdir/kicad"
+
+	# override default icons with nightly ones
+	cp -r resources/linux/icons-nightly/hicolor/* resources/linux/icons/hicolor/
+
+	# prevent translation of metadata files
+	patch -p0 -i ../no-metadata-translation.patch
+}
 
 build()
 {
@@ -50,6 +63,7 @@ build()
 package()
 {
 	cd "$srcdir/kicad/build"
+
 	DESTDIR="$pkgdir" ninja install
 
 	mkdir -p "$pkgdir/usr/share/applications"
@@ -76,5 +90,17 @@ package()
 exec /usr/lib/kicad-nightly/bin/$prog "\$@"
 EOF
 		chmod +x "$pkgdir/usr/bin/$prog-nightly"
+	done
+
+	icons=$(find $pkgdir/usr/share/kicad-nightly/icons/ -type f -name kicad.*)
+	for icon in $icons; do
+		path=${icon%/*}
+		relpath=${path##*/kicad-nightly/}
+		basename=${icon##*/}
+		extension=${basename##*.}
+		filename=${basename%.*}
+
+		mkdir -p "$pkgdir/usr/share/$relpath"
+		mv "$icon" "$pkgdir/usr/share/$relpath/$filename-nightly.$extension"
 	done
 }
