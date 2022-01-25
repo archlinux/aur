@@ -1,7 +1,7 @@
 # Maintainer: krant <aleksey.vasilenko@gmail.com>
 
 pkgname=filetovox
-pkgver=1.14
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Tool for convert files into Magicavoxel file"
 url="https://github.com/Zarbuz/FileToVox"
@@ -10,7 +10,7 @@ arch=('x86_64' 'armv7h' 'aarch64')
 depends=('libgdiplus')
 makedepends=('dotnet-sdk')
 source=("https://github.com/Zarbuz/FileToVox/archive/$pkgver.tar.gz")
-sha256sums=('187f790398da8b20ccd678eb2285dc9e7860589e5201767d77f24abf5af23b81')
+sha256sums=('cd173e11649ad0b21d80383519f92b9132cecaf363a4209c0268f6bdcb16826d')
 options=(!strip)
 
 build() {
@@ -29,6 +29,7 @@ build() {
     ## Build as single file
     dotnet publish SchematicToVoxCore \
         -p:PublishSingleFile=true \
+        -p:PublishTrimmed=true \
         -r $runtime \
         -c Release \
         -o bin
