@@ -23,7 +23,7 @@ package() {
            "$pkgdir/usr/share/doc/$pkgname" \
            "$pkgdir/usr/share/applications/$pkgname"
 
-  ln -s "$pkgdir/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
   mv "$pkgdir/opt/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
   cp -L "$pkgdir/opt/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
   rm "$pkgdir/opt/$pkgname/REW.desktop"
@@ -36,8 +36,9 @@ package() {
   sed "s/REW/Room EQ Wizard/g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 
   # basic cleanup
-  rm -rf "$pkgdir/opt/$pkgname/.install4j/files.log"
-  rm -rf "$pkgdir/opt/$pkgname/.install4j/installation.log"
-  rm -rf "$pkgdir/opt/$pkgname/.install4j/uninstall.png"
+  rm -f "$pkgdir/opt/$pkgname/.install4j/files.log"
+  rm -f "$pkgdir/opt/$pkgname/.install4j/installation.log"
+  rm -f "$pkgdir/opt/$pkgname/.install4j/uninstall.png"
+  rm -f "$pkgdir/opt/$pkgname/.install4j/*.desktop"
   rm -rf "$pkgdir/opt/$pkgname/uninstall"
 }
