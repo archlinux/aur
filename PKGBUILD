@@ -2,7 +2,7 @@
 
 pkgname="go-andotp"
 pkgver=1.0.23
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI program to encrypt/decrypt andOTP files"
 arch=('x86_64')
 url="https://github.com/RijulGulati/go-andotp"
@@ -21,6 +21,6 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	install -Dm755 go-andotp "${pkgdir}/usr/bin/go-andotp"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/go-andotp/LICENSE"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
