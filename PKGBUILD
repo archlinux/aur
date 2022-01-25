@@ -1,5 +1,5 @@
 # Maintainer: dreieck
-# Maintainer: Jens Adam <jra@byte.cx>
+# Contributor: Jens Adam <jra@byte.cx>
 
 _perlmod=Travel-Status-DE-DeutscheBahn
 _pkgname=perl-travel-status-de-deutschebahn
@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
 license=('PerlArtistic')
@@ -26,7 +26,6 @@ makedepends=(
   'perl-test-pod'
 )
 provides=("${_pkgname}=${pkgver}")
-replaces=("${_pkgname}<=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
