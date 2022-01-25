@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-bin
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 epoch=
 pkgdesc="\$HOME, \$HOME everywhere"
@@ -45,17 +45,17 @@ source_armv7h=("${source_armv7[@]}")
 
 ## Checksums
 sha256sums_aarch64=(
-    "7b4d4d92b5ae4d86588df6ff4e4cd7c8d7affa7d34b17c5e596dbcffef99be14"
+    "76c19c96e4a936407091e621b56b8ff5a3c575ebf458756d0c693e77a1d55641"
     "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
     "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
 )
 sha256sums_armv7=(
-    "bea4320441fbee382a9f6d44471bcee8977e4fae8a0405ad165e89f10a850656"
+    "3bcb0f463aff105bdf4228c614b6bc6828f5a5ed238e1e463f9fcdc220e35956"
     "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
     "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
 )
 sha256sums_x86_64=(
-    "f29b3e1586b2245b83961c8944a2e293279a73651a1c87a2fbfe6b34d6293ec4"
+    "d5a0bf736739da579ae68f98fc69d870a7ffb3ff28915a29f1bd9f384291e372"
     "c95bae1d1ce0235ecccd3560b772ec1efb97f348a79f0fbe0a634f0c2ccefe2c"
     "1aac13b1e305a9a4f6a8a5a7123f3abd092c59b2696d1bde3df32eac0b934322"
 )
