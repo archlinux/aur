@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-recode
-pkgver=3.7.10
+pkgver=3.7.11
 pkgrel=1
 pkgdesc="Converts files between various character sets and usages (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-wine' 'python' 'he
 source=("https://github.com/rrthomas/recode/releases/download/v${pkgver}/recode-${pkgver}.tar.gz"
         "autotools.patch"
         "help2man.patch")
-sha256sums=('4a4b00a6080f8ef77956a18040454785d35b66ab7d8105ffd971798aa4a8f186'
+sha256sums=('97267a0e6ee3d859b7f4d1593282900dbc798151b70a6d1f73718880563b485e'
             '49d6019103484d4b81188d7eba39f35704a0a92049cdcb0b086e53c134595f1b'
             'ca789328432b01ebe066ca594ac611ca43bd19083ed499e88c4410b15cc8492a')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
