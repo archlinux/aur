@@ -1,5 +1,7 @@
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+
 pkgname=opencl-headers-git
-pkgver=2021.06.30.6.g1fc6fc1
+pkgver=2022.01.04.2.g80c10b1
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
