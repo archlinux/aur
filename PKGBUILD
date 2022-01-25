@@ -4,14 +4,14 @@
 # then please put 'unknown'.
 
 # Maintainer: Tsingv <tsingv@outlook.com>
-pkgname=omniedge-cli
-pkgver=0.1.0
-pkgrel=2
+pkgname=("omniedge-cli" "omniedge-cli-bin")
+pkgver=0.2.1
+pkgrel=0
 epoch=
 pkgdesc="A reliable and painless connectivity to all your devices in one click."
-arch=('x86_64')
+arch=("x86_64")
 url="https://omniedge.io/"
-license=('GPL')
+license=()
 groups=()
 depends=()
 makedepends=()
@@ -24,14 +24,20 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/omniedgeio/omniedge-linux-cli/releases/download/v${pkgver}/omniedge-amd64.zip")
+source=("https://github.com/omniedgeio/app-release/releases/download/v${pkgver}/omniedgecli-amd64.zip")
 noextract=()
-sha256sums=('8e72bad059363a2303c05bfbc338508b4dceb24fd01c13956b519cf181230e75')
+sha512sums=('e82b437dbe4911e42208f16b75cc0b5cedbd59ab0deaba4d832a4dc1510c7591f3e2984ea18fefb9e96594e87d7ec324f5f08d0e7e92e6a72fc44e129a62b5fb')
 validpgpkeys=()
 
-package() {
-    install -d "${pkgdir}/opt/${pkgname}"
+package_omniedge-cli() {
+    install -d "${pkgdir}/opt/omniedge-cli"
     install -d "${pkgdir}/usr/bin"
-    install -D -m 0755 omniedge "${pkgdir}/opt/${pkgname}/omniedge-cli"
-    ln -sf "/opt/${pkgname}/omniedge-cli" "${pkgdir}/usr/bin/omniedge-cli"
+    install -D -m 0755 omniedge "${pkgdir}/opt/omniedge-cli/omniedge"
+    ln -sf "${pkgdir}/opt/omniedge-cli/omniedge" "${pkgdir}/usr/bin/omniedge"
+}
+package_omniedge-cli-bin() {
+    install -d "${pkgdir}/opt/omniedge-cli"
+    install -d "${pkgdir}/usr/bin"
+    install -D -m 0755 omniedge "${pkgdir}/opt/omniedge-cli/omniedge"
+    ln -sf "${pkgdir}/opt/omniedge-cli/omniedge" "${pkgdir}/usr/bin/omniedge"
 }
