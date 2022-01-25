@@ -1,12 +1,13 @@
 pkgbase = perl-travel-status-de-iris-git
 	pkgdesc = Interface to IRIS-based web departure monitors (as used by DeutscheBahn)
-	pkgver = 1.43+r466.20200121.g9151036
+	pkgver = 1.63+r568.20220124.ga5a431d
 	pkgrel = 1
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-IRIS/
 	arch = any
 	license = PerlArtistic
 	checkdepends = perl-test-number-delta
+	makedepends = git
 	makedepends = perl-file-slurp
 	makedepends = perl-module-build
 	makedepends = perl-test-compile
@@ -21,15 +22,15 @@ pkgbase = perl-travel-status-de-iris-git
 	depends = perl-list-moreutils
 	depends = perl-list-utilsby
 	depends = perl-libwww
+	depends = perl-lwp-protocol-https
 	depends = perl-package-deprecationmanager
 	depends = perl-text-levenshtein
 	depends = perl-xml-libxml
-	provides = perl-travel-status-de-iris=1.43+r466.20200121.g9151036
+	provides = perl-travel-status-de-iris=1.63+r568.20220124.ga5a431d
 	conflicts = perl-travel-status-de-iris
-	replaces = perl-travel-status-de-iris<=1.43+r466.20200121.g9151036
+	replaces = perl-travel-status-de-iris<=1.63+r568.20220124.ga5a431d
 	options = !emptydirs
 	source = Travel-Status-DE-IRIS::git+http://git.finalrewind.org/Travel-Status-DE-IRIS
 	md5sums = SKIP
 
 pkgname = perl-travel-status-de-iris-git
-
