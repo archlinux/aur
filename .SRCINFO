@@ -1,13 +1,11 @@
 pkgbase = texlive-full
 	pkgdesc = This packages provides texlive-full in /opt. It also tricks ArchLinux into thinking it has its texlive packages installed.
-	pkgver = 20200626
+	pkgver = 20220125
 	pkgrel = 1
 	url = http://www.tug.org/texlive/
-	install = texlive-full.install
 	arch = x86_64
 	license = GPL
-	makedepends = wget
-	makedepends = xz
+	makedepends = rsync
 	provides = texlive-bin
 	provides = texlive-bibtexextra
 	provides = texlive-core
@@ -28,6 +26,7 @@ pkgbase = texlive-full
 	provides = texlive-langjapanese
 	provides = texlive-langkorean
 	conflicts = texlive-bin
+	conflicts = git-latexdiff
 	conflicts = texlive-bibtexextra
 	conflicts = texlive-core
 	conflicts = texlive-fontsextra
@@ -46,8 +45,8 @@ pkgbase = texlive-full
 	conflicts = texlive-langgreek
 	conflicts = texlive-langjapanese
 	conflicts = texlive-langkorean
+	options = !strip
 	source = http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 	sha256sums = SKIP
 
 pkgname = texlive-full
-
