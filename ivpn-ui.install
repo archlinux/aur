@@ -70,12 +70,7 @@ pre_remove() {
   killapp;
 }
 
-post_install() {
-	prepare;
-}
-
 post_upgrade() {
-	prepare;
   copySettingsFromOldAppVer;
 }
 
