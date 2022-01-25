@@ -1,7 +1,7 @@
 pkgbase = fluffychat-web
 	pkgdesc = Chat with your friends
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://fluffychat.im/
 	arch = any
 	license = AGPL3

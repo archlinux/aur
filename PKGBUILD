@@ -3,7 +3,7 @@
 _pkgname=fluffychat
 pkgname=fluffychat-web
 pkgver=1.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
