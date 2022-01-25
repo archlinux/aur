@@ -4,16 +4,16 @@
 
 pkgname=frogfetch-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch but frogged and in rust"
 url="https://git.karx.xyz/famfo/frogfetch-rs"
 license=("GPL")
 arch=("x86_64")
 provides=("frogfetch-rs")
 conflicts=("frogfetch-rs")
-source=("frogfetch-rs::https://git.karx.xyz/attachments/1c31eefd-1dbc-41e9-9acb-91bca5d96cfa")
+source=("frogfetch::https://git.karx.xyz/attachments/1c31eefd-1dbc-41e9-9acb-91bca5d96cfa")
 sha256sums=('351dc5713625031543778d653bdb92692fe4a5056cf2468d959f0fc48ef78a74')
 
 package() {
-    install -Dm755 frogfetch-rs -t "$pkgdir/usr/bin"
+    install -Dm755 frogfetch -t "$pkgdir/usr/bin"
 }
