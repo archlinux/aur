@@ -7,7 +7,7 @@ pkgdesc="Final Fantasy 7 Save Editor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.blackchocobo.com/"
 license=('GPL3')
-depends=('qt6-base' 'libff7tk')
+depends=('qt6-base' 'libff7tk-git')
 makedepends=('cmake' 'git')
 #optdepends=('otf-ipafont: font for displaying japanese')
 install=$pkgname.install
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "blackchocobo"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DQT_DEFAULT_VERSION_MAJOR=6 CMakeLists.txt
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DQT_DEFAULT_MAJOR_VERSION=6 CMakeLists.txt
   make
 }
 
