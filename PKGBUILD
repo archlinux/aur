@@ -3,18 +3,19 @@
 
 pkgname=geeqie-git
 pkgver=20220125
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
          'djvulibre' 'libheif' 'libchamplain'
-         'poppler-glib' 'libarchive' 'libraw')
+         'poppler-glib' 'libarchive' 'libraw' 'libjxl')
 makedepends=('git'
              'intltool' 'python' 'librsvg'
              'libwmf' 'libwebp' 'imagemagick'
              'fbida' 'gawk' 'perl-image-exiftool'
+             'highway' # for libjxl
              # for the docs
              'doxygen' 'yelp-tools' 'graphviz')
 optdepends=('librsvg: SVG rendering'
