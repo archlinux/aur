@@ -1,10 +1,10 @@
 #Maintainer: Dylan Delgado <dylan1496@live.com>
 
 pkgname=mtsieve
-_pkgrev=126
+_pkgrev=167
 _srcrev=r${_pkgrev}-trunk
-pkgver=2.2.1r${_pkgrev}
-_pkgver=2.2.1
+pkgver=2.2.3r${_pkgrev}
+_pkgver=2.2.3
 pkgrel=1
 pkgdesc='Library for sieving various types of numbers'
 url='https://sourceforge.net/projects/mtsieve/'
@@ -14,7 +14,7 @@ depends=('gmp' 'ocl-icd' 'opencl-driver')
 
 # Static copy of the snapshot file since sourceforge regenerates it on demand.
 source=("https://github.com/Dylan1496/mtsieve-source/raw/main/mtsieve-${_pkgver}-${_srcrev}.zip")
-sha256sums=('9606a78b1c9782098d93d2c78a300287541dbd21f812800a9bb6778779a92edb')
+sha256sums=('7908ffcfce8c6aa280b0fbe0f7eb27182f13983950200846a6d1fd0adadfefc9')
 
 prepare() {  
 	cd "${srcdir}/${pkgname}-svn"
@@ -52,6 +52,8 @@ package() {
 	  install -Dm755 psieve "${pkgdir}"/usr/bin/psieve
 	  install -Dm755 psievecl "${pkgdir}"/usr/bin/psievecl
 	  install -Dm755 sgsieve "${pkgdir}"/usr/bin/sgsieve
+	  install -Dm755 smsieve "${pkgdir}"/usr/bin/smsieve
+	  install -Dm755 smsievecl "${pkgdir}"/usr/bin/smsievecl
 	  install -Dm755 srsieve2 "${pkgdir}"/usr/bin/srsieve2
 	  install -Dm755 srsieve2cl "${pkgdir}"/usr/bin/srsieve2cl
 	  install -Dm755 twinsieve "${pkgdir}"/usr/bin/twinsieve
