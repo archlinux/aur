@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Tsingv <tsingv@outlook.com>
-pkgname=("omniedge-cli" "omniedge-cli-bin")
+pkgname=("omniedge-cli")
 pkgver=0.2.1
 pkgrel=0
 epoch=
@@ -29,13 +29,7 @@ noextract=()
 sha512sums=('e82b437dbe4911e42208f16b75cc0b5cedbd59ab0deaba4d832a4dc1510c7591f3e2984ea18fefb9e96594e87d7ec324f5f08d0e7e92e6a72fc44e129a62b5fb')
 validpgpkeys=()
 
-package_omniedge-cli() {
-    install -d "${pkgdir}/opt/omniedge-cli"
-    install -d "${pkgdir}/usr/bin"
-    install -D -m 0755 omniedge "${pkgdir}/opt/omniedge-cli/omniedge"
-    ln -sf "${pkgdir}/opt/omniedge-cli/omniedge" "${pkgdir}/usr/bin/omniedge"
-}
-package_omniedge-cli-bin() {
+package() {
     install -d "${pkgdir}/opt/omniedge-cli"
     install -d "${pkgdir}/usr/bin"
     install -D -m 0755 omniedge "${pkgdir}/opt/omniedge-cli/omniedge"
