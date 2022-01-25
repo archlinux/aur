@@ -1,16 +1,11 @@
-DRIVER_NAME := goodix
-KERNEL_SOURCE_DIR ?= /lib/modules/`uname -r`/build
+BASE_NAME := goodix
+KERNEL_SOURCE_DIR = /lib/modules/`uname -r`/build
 
-EXTRA_CFLAGS +=
-
-obj-m := $(DRIVER_NAME).o
-
-#DRIVER_FILES := goodix.o
-
-#$(DRIVER_NAME)-objs:= $(DRIVER_FILES)
+obj-m := goodixgpdw3.o
+goodixgpdw3-objs := $(BASE_NAME).o $(BASE_NAME)_fwupload.o
 
 modules:
-	$(MAKE) -C $(KERNEL_SOURCE_DIR) KCPPFLAGS="$(EXTRA_CFLAGS)" M=$(PWD) modules
+	$(MAKE) -C $(KERNEL_SOURCE_DIR) M=$(PWD) modules
 
 modules_install:
 	$(MAKE) -C $(KERNEL_SOURCE_DIR) M=$(PWD) modules_install
