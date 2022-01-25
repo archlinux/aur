@@ -6,7 +6,7 @@
 # Contributor: Gergely Imreh <imrehgATgmailDOTcom>
 
 pkgname=ninja-kitware
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc='Small build system with a focus on speed - Kitware version with JobServer and Fortran compatibility'
 arch=(x86_64)
@@ -17,9 +17,9 @@ license=(Apache)
 depends=(gcc-libs)
 makedepends=(python re2c)
 optdepends=(emacs)
-version_id=gfb670
+version_id=g51db2
 source=(ninja-$pkgver.$version_id.kitware.jobserver-1.zip::https://github.com/Kitware/ninja/archive/v$pkgver.$version_id.kitware.jobserver-1.zip)
-md5sums=('38ef72690bc38b6fc86f2c0493294c33')
+md5sums=('d2bd58b89f166fd74912c6dce1e8dc2e')
 build() {
   cd ninja-$pkgver.$version_id.kitware.jobserver-1
 
