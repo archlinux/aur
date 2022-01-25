@@ -1,13 +1,14 @@
 # Maintainer: Aria Moradi <aria.moradi007 at gmail dot com>
+# Maintainer: Mahor Foruzesh <mahorforuzesh at pm dot me>
 
 pkgname=tachidesk-jui
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free and open source manga reader that runs extensions built for Tachiyomi"
 arch=("x86_64")
 url="https://github.com/Suwayomi/Tachidesk-JUI"
 license=("MPL2")
-depends=("jre-openjdk>=15")
+depends=("jre-openjdk>=17")
 provides=("tachidesk-jui")
 
 _jar=Tachidesk-JUI-linux-x64-${pkgver}.jar
