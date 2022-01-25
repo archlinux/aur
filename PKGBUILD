@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=3.3.0
+pkgver=3.4.8
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -14,12 +14,11 @@ license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'extra-cmake-modules' 'gtk3' 'webkit2gtk' 'libtg_owt')
-optdepends=('gtk3: GTK environment integration'
-            'webkit2gtk: embedded browser features'
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
+             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
+optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 provides=(telegram-desktop)
 conflicts=(telegram-desktop)
@@ -28,26 +27,29 @@ _commit="tag=v$pkgver"
 # All the sources are Git repositories and might be adjusted when a build issue arise.
 # These files might require modifications to be up-to-date.
 # In such situation, extra patches will be added.
+# An easy way to clone the repo since the last update is:
+# git clone --shallow-since=vOLDVER https://github.com/telegramdesktop/tdesktop WORKDIR
 # All the submodules "source" definitions are generated them via:
 # git submodule foreach --quiet 'echo \"${name##*/}::git+`git remote get-url origin`\"' | sort
 source=(
     "tdesktop::git+https://github.com/telegramdesktop/tdesktop#$_commit"
-    "Catch::git+https://github.com/philsquared/Catch"
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
+    "dispatch::git+https://github.com/apple/swift-corelibs-libdispatch"
     "expected::git+https://github.com/TartanLlama/expected"
+    "extra-cmake-modules::git+https://github.com/KDE/extra-cmake-modules.git"
     "fcitx5-qt::git+https://github.com/fcitx/fcitx5-qt.git"
     "fcitx-qt5::git+https://github.com/fcitx/fcitx-qt5.git"
     "GSL::git+https://github.com/Microsoft/GSL.git"
     "hime::git+https://github.com/hime-ime/hime.git"
     "hunspell::git+https://github.com/hunspell/hunspell"
     "jemalloc::git+https://github.com/jemalloc/jemalloc"
+    "kwayland::git+https://github.com/KDE/kwayland.git"
     "lib_base::git+https://github.com/desktop-app/lib_base.git"
     "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
     "libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
     "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
     "lib_qr::git+https://github.com/desktop-app/lib_qr.git"
-    "lib_rlottie::git+https://github.com/desktop-app/lib_rlottie.git"
     "lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
     "lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck"
     "lib_storage::git+https://github.com/desktop-app/lib_storage.git"
@@ -59,13 +61,18 @@ source=(
     "lib_webview::git+https://github.com/desktop-app/lib_webview.git"
     "lz4::git+https://github.com/lz4/lz4.git"
     "nimf::git+https://github.com/hamonikr/nimf.git"
+    "plasma-wayland-protocols::git+https://github.com/KDE/plasma-wayland-protocols.git"
     "QR::git+https://github.com/nayuki/QR-Code-generator"
     "range-v3::git+https://github.com/ericniebler/range-v3.git"
     "rlottie::git+https://github.com/desktop-app/rlottie.git"
     "tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git"
+    "wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git"
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -111,7 +118,6 @@ prepare() {
     git config submodule.Telegram/lib_crl.url "$srcdir/lib_crl"
     git config submodule.Telegram/lib_lottie.url "$srcdir/lib_lottie"
     git config submodule.Telegram/lib_qr.url "$srcdir/lib_qr"
-    git config submodule.Telegram/lib_rlottie.url "$srcdir/lib_rlottie"
     git config submodule.Telegram/lib_rpl.url "$srcdir/lib_rpl"
     git config submodule.Telegram/lib_spellcheck.url "$srcdir/lib_spellcheck"
     git config submodule.Telegram/lib_storage.url "$srcdir/lib_storage"
@@ -120,22 +126,26 @@ prepare() {
     git config submodule.Telegram/lib_waylandshells.url "$srcdir/lib_waylandshells"
     git config submodule.Telegram/lib_webrtc.url "$srcdir/lib_webrtc"
     git config submodule.Telegram/lib_webview.url "$srcdir/lib_webview"
-    git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch"
+    git config submodule.Telegram/ThirdParty/dispatch.url "$srcdir/dispatch"
     git config submodule.Telegram/ThirdParty/expected.url "$srcdir/expected"
+    git config submodule.Telegram/ThirdParty/extra-cmake-modules.url "$srcdir/extra-cmake-modules"
     git config submodule.Telegram/ThirdParty/fcitx5-qt.url "$srcdir/fcitx5-qt"
     git config submodule.Telegram/ThirdParty/fcitx-qt5.url "$srcdir/fcitx-qt5"
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/hime.url "$srcdir/hime"
     git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
     git config submodule.Telegram/ThirdParty/jemalloc.url "$srcdir/jemalloc"
+    git config submodule.Telegram/ThirdParty/kwayland.url "$srcdir/kwayland"
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
+    git config submodule.Telegram/ThirdParty/plasma-wayland-protocols.url "$srcdir/plasma-wayland-protocols"
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR"
     git config submodule.Telegram/ThirdParty/range-v3.url "$srcdir/range-v3"
     git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
     git config submodule.Telegram/ThirdParty/tgcalls.url "$srcdir/tgcalls"
+    git config submodule.Telegram/ThirdParty/wayland-protocols.url "$srcdir/wayland-protocols"
     git config submodule.Telegram/ThirdParty/xxHash.url "$srcdir/xxHash"
 
     # Magic is over!
@@ -155,13 +165,13 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
 
+    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
     cmake \
         -B build \
         -G Ninja \
-        -DDESKTOP_APP_QT6=off \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
