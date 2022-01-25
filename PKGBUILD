@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ovirt_exporter'
-pkgver='0.9.1'
+pkgver='0.9.2'
 pkgrel='1'
 pkgdesc='Exporter for oVirt engine metrics'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ source=("${url}/archive/${pkgver}.tar.gz"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('ac7c4b5e470fcb2ea9c31c3e4098bb4402c492b20264bc3d7943a664c3fb4742'
+sha256sums=('fc0082bfd1e97dc976453550983f32a880792d93fac22db72e1d83992673715b'
             'dddb55bc9a696c56814ce4d34f6254469bf215c59629b3225546775f680a13c3'
             'fbe1800ff7dc0ce36292f4abe88141099ae0b8c245903f76a8f41ff2c6a81c0b'
             '2747fabb4e56b808361eb7dd7acf9729ab8973d1ebe2f857dd56f6c71f71e45f')
