@@ -1,31 +1,20 @@
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=khronos-ocl-icd-git
-pkgver=2020.12.18.7.g9b5e384
+pkgbase=khronos-ocl-icd-git
+pkgname=('khronos-ocl-icd-git'
+         'lib32-khronos-ocl-icd-git'
+        )
+pkgver=2022.01.04.1.gb7a648b
 pkgrel=1
-pkgdesc="Khronos Group OpenCL 1.2 installable client driver (ICD) loader. (GIT Version)"
 arch=('x86_64')
 url="http://www.khronos.org/registry/cl"
 license=('apache')
 makedepends=('git'
              'cmake'
-             'mesa'
              'opencl-headers-git'
              )
-depends=('glibc')
-provides=('libcl'
-          'opencl-icd-loader'
-          'ocl-icd'
-          )
-conflicts=('libcl'
-           'opencl-icd-loader'
-           'ocl-icd'
-           )
-source=('ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
-        '115.diff' # reference rebased: 'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-ICD-Loader/pull/115.diff'
-         )
-sha256sums=('SKIP'
-            '72345b554f86abbd99296e0fcd0781b886ec923fa8ea4b99142e2867a0682492'
-            )
+source=('ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ocl
@@ -33,22 +22,68 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-  patch -d ocl -Np1 -i "${srcdir}/115.diff"
+  mkdir -p build{32,64}
+
+  # fix .cmake path
+  sed 's|${CMAKE_INSTALL_DATADIR}/cmake|${CMAKE_INSTALL_LIBDIR}/cmake|g' -i ocl/CMakeLists.txt
 }
 
 build() {
-  cd build
+  cd "${srcdir}/build64"
   cmake ../ocl \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF
+    -DBUILD_TESTING=ON
+
+  make
+
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+
+  cd "${srcdir}/build32"
+  cmake ../ocl \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DBUILD_TESTING=ON
 
   make
 }
 
-package() {
-  make -C build DESTDIR="${pkgdir}" install
+check() {
+  (cd build64; OCL_ICD_FILENAMES="$(pwd)/libOpenCLDriverStub.so" ctest)
+  (cd build32; OCL_ICD_FILENAMES="$(pwd)/libOpenCLDriverStub.so" ctest)
+}
+
+package_khronos-ocl-icd-git() {
+pkgdesc="Khronos Group OpenCL installable client driver (ICD) loader. (GIT Version)"
+depends=('glibc')
+provides=('khronos-ocl-icd'
+          'opencl-icd-loader'
+          'ocl-icd'
+          )
+conflicts=('khronos-ocl-icd'
+           'opencl-icd-loader'
+           'ocl-icd'
+           )
+  make -C build64 DESTDIR="${pkgdir}" install
+
+  install -Dm644 ocl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_lib32-khronos-ocl-icd-git() {
+pkgdesc="Khronos Group OpenCL installable client driver (ICD) loader. (GIT Version) (32-bits)"
+depends=('lib32-glibc')
+provides=('lib32-lib32-khronos-ocl-icd'
+          'lib32-opencl-icd-loader'
+          'lib32-ocl-icd'
+          )
+conflicts=('lib32-khronos-ocl-icd'
+           'lib32-opencl-icd-loader'
+           'lib32-ocl-icd'
+           )
+  make -C build32 DESTDIR="${pkgdir}" install
 
   install -Dm644 ocl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
