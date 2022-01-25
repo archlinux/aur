@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver=1.63+r568.20220124.ga5a431d
-pkgrel=2
+pkgrel=3
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
 license=('PerlArtistic')
@@ -43,8 +43,14 @@ replaces=("${_pkgname}<=${pkgver}")
 conflicts=("${_pkgname}")
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz"{,.asc})
-source=("${_perlmod}::git+https://git.finalrewind.org/${_perlmod}")
-md5sums=('SKIP')
+source=(
+  "${_perlmod}::git+https://git.finalrewind.org/${_perlmod}"
+  'LICENSE.PerlArtistic.txt'
+)
+sha256sums=(
+  'SKIP'
+  '916a330e64df209a924120bfddea0373db385eb3854e96d1a3dda6e0ea130c80'
+)
 
 pkgver() {
   cd "${srcdir}/${_perlmod}"
@@ -78,4 +84,5 @@ package() {
   for _docfile in README.md Changelog; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
+  install -D -v -m "${srcdir}/LICENSE.PerlArtistic.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.PerlArtistic.txt"
 }
