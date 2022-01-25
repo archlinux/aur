@@ -6,6 +6,7 @@
 #
 # Thanks to:
 #
+# AUR php74 Co-maintainer: Tomasz Gruszka <tompear79@gmail.com>
 # AUR php73 Co-maintainer: Matt Harrison <matt@harrison.us.com>
 # AUR php73 Contirubutor: Pierre Schmitz <pierre@archlinux.de>
 # AUR php55 Original maintainer: Raphaël Doursenaud <rdoursenaud@gmail.com>
