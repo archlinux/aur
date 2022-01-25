@@ -4,7 +4,7 @@
 # Contributor: Douglas Soares de Andrade <douglas at archlinux dot org>
 
 pkgname=lib32-avahi
-pkgver=0.8+15+ge8a3dd0
+pkgver=0.8+22+gfd482a7
 pkgrel=1
 pkgdesc='Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)'
 arch=('x86_64')
@@ -16,12 +16,25 @@ makedepends=('git' 'gobject-introspection' 'libevent' 'lib32-libevent'
 optdepends=('lib32-gtk3: gtk3 bindings'
             'lib32-libevent: libevent bindings')
 options=(!emptydirs)
-_commit=e8a3dd0d480a754318e312e6fa66fea249808187  # master
-source=("git+$url#tag=$_commit")
-sha256sums=('SKIP')
+_commit=fd482a74625b8db8547b8cfca3ee3d3c6c721423  # master
+source=("git+$url#tag=$_commit"
+        282.patch
+        0001-Fix-avahi-browse-Invalid-service-type.patch)
+sha512sums=('SKIP'
+            '26b1e74450944f5c4385d2f5df18523cfb953e4138f6d9e81061a626453e40d8ed2dee44535cfbb547848eefb3cdca408009d5f0e0c465f144a8803db8593b46'
+            'e39c17d9a5d534784a3c7b6947da994d0ab5fa354aac5cecde6d3baaa2bb3d57f02f91cc6fb68885a4e98f44efe615b01631a4c7af752aa26f35082cfcc0ddd7')
 
 prepare() {
   cd ${pkgname#lib32-}
+
+  # https://bugs.archlinux.org/task/68518
+  # https://github.com/lathiat/avahi/pull/282
+  git apply -3 ../282.patch
+
+  # https://bugs.archlinux.org/task/71781
+  # https://github.com/lathiat/avahi/issues/212
+  git apply -3 ../0001-Fix-avahi-browse-Invalid-service-type.patch
+
   NOCONFIGURE=1 ./autogen.sh
 }
 

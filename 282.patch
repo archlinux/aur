@@ -1,0 +1,42 @@
+From bcafdcc5465091b6088532460b671f411703f90b Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Fri, 24 Apr 2020 11:25:41 +0100
+Subject: [PATCH] avahi-discover: Don't decode unicode strings, only
+ bytestrings
+
+Unicode strings (unicode in Python 2, str or unicode in Python 3) don't
+have a decode method; only bytestrings (str or bytes in Python 2,
+bytes in Python 3) have that. Decode exactly the strings that need
+decoding.
+
+Resolves: https://github.com/lathiat/avahi/issues/275
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ avahi-python/avahi-discover/avahi-discover.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/avahi-python/avahi-discover/avahi-discover.py b/avahi-python/avahi-discover/avahi-discover.py
+index 4a2b5756..fddf4a51 100755
+--- a/avahi-python/avahi-discover/avahi-discover.py
++++ b/avahi-python/avahi-discover/avahi-discover.py
+@@ -238,15 +238,17 @@ def update_label(self,interface, protocol, name, stype, domain, host, aprotocol,
+                 txts+="<b>" + _("TXT") + " <i>%s</i></b> = %s\n" % (k,v)
+         else:
+             txts = "<b>" + _("TXT Data:") + "</b> <i>" + _("empty") + "</i>"
+-        
+-        txts = txts.decode("utf-8")
++
++        if isinstance(txts, bytes):     # Python 2
++            txts = txts.decode("utf-8")
+ 
+         infos = "<b>" + _("Service Type:") + "</b> %s\n"
+         infos += "<b>" + _("Service Name:") + "</b> %s\n"
+         infos += "<b>" + _("Domain Name:") + "</b> %s\n"
+         infos += "<b>" + _("Interface:") + "</b> %s %s\n"
+         infos += "<b>" + _("Address:") + "</b> %s/%s:%i\n%s"
+-        infos = infos.decode("utf-8")
++        if isinstance(infos, bytes):    # Python 2
++            infos = infos.decode("utf-8")
+         infos = infos % (stype, name, domain, self.siocgifname(interface), self.protoname(protocol), host, address, port, txts.strip())
+         self.info_label.set_markup(infos)
+ 

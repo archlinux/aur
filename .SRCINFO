@@ -1,6 +1,6 @@
 pkgbase = lib32-avahi
 	pkgdesc = Service Discovery for Linux using mDNS/DNS-SD -- compatible with Bonjour (32-bit)
-	pkgver = 0.8+15+ge8a3dd0
+	pkgver = 0.8+22+gfd482a7
 	pkgrel = 1
 	url = https://github.com/lathiat/avahi
 	arch = x86_64
@@ -23,8 +23,12 @@ pkgbase = lib32-avahi
 	optdepends = lib32-gtk3: gtk3 bindings
 	optdepends = lib32-libevent: libevent bindings
 	options = !emptydirs
-	source = git+https://github.com/lathiat/avahi#tag=e8a3dd0d480a754318e312e6fa66fea249808187
-	sha256sums = SKIP
+	source = git+https://github.com/lathiat/avahi#tag=fd482a74625b8db8547b8cfca3ee3d3c6c721423
+	source = 282.patch
+	source = 0001-Fix-avahi-browse-Invalid-service-type.patch
+	sha512sums = SKIP
+	sha512sums = 26b1e74450944f5c4385d2f5df18523cfb953e4138f6d9e81061a626453e40d8ed2dee44535cfbb547848eefb3cdca408009d5f0e0c465f144a8803db8593b46
+	sha512sums = e39c17d9a5d534784a3c7b6947da994d0ab5fa354aac5cecde6d3baaa2bb3d57f02f91cc6fb68885a4e98f44efe615b01631a4c7af752aa26f35082cfcc0ddd7
 
 pkgname = lib32-avahi
 
