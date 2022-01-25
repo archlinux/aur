@@ -1,0 +1,19 @@
+pkgbase = nono
+	pkgdesc = Omron LUNA-I and LUNA-88K emulator
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://www.pastel-flower.jp/~isaki/nono
+	arch = x86_64
+	license = custom
+	makedepends = bmake
+	makedepends = clang
+	makedepends = freebsd-mk
+	makedepends = gettext
+	depends = libbsd
+	depends = libkqueue
+	depends = termcap
+	depends = wxgtk3
+	source = http://www.pastel-flower.jp/~isaki/nono/archive/nono-0.2.5.tar.gz
+	b2sums = 55a886b2ab634a34244cf4cd149bc95ce9c7046437715209cb7c3b192c143f651fba20a9a6aec65352f204b9767f0dd1d5b90e1450accb408b8f14d6920c0555
+
+pkgname = nono
