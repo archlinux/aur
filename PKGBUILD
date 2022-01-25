@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict [at] GMail [dot] com>
 
 pkgname=lib32-hwloc
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc='Portable Hardware Locality is a portable abstraction of hierarchical architectures'
 url='https://www.open-mpi.org/projects/hwloc/'
@@ -12,8 +12,8 @@ makedepends=('lib32-cairo' 'lib32-libx11' 'lib32-libxml2' 'lib32-pciutils')
 optdepends=('lib32-cairo' 'lib32-libx11' 'lib32-libxml2' 'lib32-pciutils')
 options=('!docs')
 source=("https://download.open-mpi.org/release/hwloc/v${pkgver%.*}/${pkgname#lib32-}-${pkgver}.tar.bz2")
-sha512sums=('3f35ee685507469e2c7d4a2ab4c339eff24123b4bc21d96bc53fd2737a36bdd371f1e1e4440b410ecac6cf1881562187243bfbf846203cb3702a4c4c7be0d5df')
-b2sums=('96099ae3527e11a83adc068e07756752d2effa38b4bae174045e5142a3457af8790e9fd3d778ff2d91708101aaf6e108affed7688918195e0f2bdbd55235ad46')
+sha512sums=('9f3a9d66ad9762ca88f9e38950a7c1beb208337517b635c4c363dcfbb050706562511cb12115bd403c0a86c0f7270174dd1888e7803d88557e41ae018e7e7e2f')
+b2sums=('b101451b1f7b0f4c86a4d009637d40430eca3f127c9a69f3bc95bf91ad7051e158b1310cec5aeddef000cbf461f648c2fd560b5c011e0b4b4a49848188e2ff5c')
 
 build() {
   # Modify environment to generate 32-bit ELF. Respects flags defined in makepkg.conf
