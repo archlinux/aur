@@ -3,6 +3,7 @@
 pkgname=vulkan-caps-viewer-wayland
 pkgver=3.1
 pkgrel=1
+epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
 url="http://vulkan.gpuinfo.org"
