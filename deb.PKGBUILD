@@ -27,7 +27,7 @@ _scripts="skywire-deb-scripts"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"  )
 sha256sums=('f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489'
-            'a295b4b732eac7a5883e1988eaa4c158c10be3e4df4c9cd5cc05b725c0d993bd')
+            'e47b816303ab824960feb74e205299c067a104c33f7ef59328e88931e92081f9')
 
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
