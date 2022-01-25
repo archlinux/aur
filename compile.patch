@@ -1,0 +1,11 @@
+diff --color -ruN 1/src/gopenvpn.c 2/src/gopenvpn.c
+--- 1/src/gopenvpn.c	2022-01-25 04:26:13.664424128 +0100
++++ 2/src/gopenvpn.c	2022-01-25 04:25:57.275182667 +0100
+@@ -751,6 +751,7 @@
+ 									GTK_DIALOG_DESTROY_WITH_PARENT,
+ 									GTK_MESSAGE_ERROR,
+ 									GTK_BUTTONS_OK,
++									"%s",
+ 									text);
+ 
+ 	g_free(text);
