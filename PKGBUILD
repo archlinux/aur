@@ -1,4 +1,4 @@
-# Maintainer Madison Brooke <madgeraccoon@outlook.com>
+# Maintainer Madison Brooke <madgeraccoon@outlook.com> and Robin Universe <rshaddock@elgin.edu>
 
 pkgname=mineonline
 pkg_case=MineOnline
