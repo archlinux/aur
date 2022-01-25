@@ -4,15 +4,15 @@
 # Contributor: nkoizu <nkoizu@gmail.com>
 
 pkgname=gauche
-pkgver=0.9.10
-pkgrel=3
+pkgver=0.9.11
+pkgrel=1
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
 depends=(libatomic_ops libxcrypt slib)
 makedepends=(autoconf gauche git)
 license=(BSD)
-source=("$pkgname::git+https://github.com/shirok/Gauche#commit=d028d2e291957b066572aae4a76dbd7a75a528d7") # tag: release0_9_10
+source=("$pkgname::git+https://github.com/shirok/Gauche#commit=83322b0b67aa543c23e1e255b96a7622e2ce7c1f") # tag: release_0_9_11
 b2sums=(SKIP)
 
 build() {
