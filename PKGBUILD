@@ -3,7 +3,7 @@
 _pkgname=sowon
 pkgname="${_pkgname}-git"
 pkgver=r66.85dbbd0
-pkgrel=2
+pkgrel=3
 pkgdesc="Starting Soon Timer and Clock"
 arch=('x86_64')
 url="https://github.com/tsoding/sowon"
@@ -27,5 +27,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname"
     make PREFIX=/usr DESTDIR="$pkgdir" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 

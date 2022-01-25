@@ -1,7 +1,7 @@
 pkgbase = sowon-git
 	pkgdesc = Starting Soon Timer and Clock
 	pkgver = r66.85dbbd0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tsoding/sowon
 	arch = x86_64
 	license = MIT
