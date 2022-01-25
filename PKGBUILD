@@ -3,23 +3,22 @@ pkgbase=python-jupyter-cache
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A defined interface for working with a cache of jupyter notebooks"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://jupyter-cache.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools')
-checkdepends=('jupyter-notebook'
-              'python-requests'
-              'python-nbdime'
-              'jupyter-nbclient'
-              'python-sqlalchemy'
-              'python-jinja'
-              'python-click-completion'
-              'python-click-log')
+checkdepends=('python-tabulate'
+               'python-click'
+               'python-jupyter_client'
+               'jupyter-nbclient'
+               'jupyter-nbformat'
+               'python-yaml'
+               'python-sqlalchemy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('fac82fe60e0d3a5366e31c7f82fc96e6')
+md5sums=('967f1e73243dbfe9e94aed413845e499')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -37,13 +36,13 @@ check() {
 }
 
 package_python-jupyter-cache() {
-    depends=('python-nbdime' 'jupyter-nbclient' 'python-sqlalchemy') # nbdime -> nbformat -> attrs
-    optdepends=('python-click-completion: cli'
-                'python-click-log: cli'
-                'python-tabulate: cli'
-                'python-yaml: cli'
-                'flake8: code_style'
-                'python-black: code_style'
+    depends=('python-attrs' 'python-click' 'python-importlib-metadata' 'python-tabulate' 'python-yaml' 'jupyter-nbformat' 'jupyter-nbclient<0.6' 'python-sqlalchemy<1.5')
+    optdepends=('python-click-log: cli'
+                'python-jupytext: rtd'
+                'python-myst-nb: rtd'
+                'python-nbdime: rtd'
+                'python-sphinx-book-theme: rtd'
+                'python-sphinx-copybutton: rtd'
                 'python-pre-commit: code_style')
     cd ${srcdir}/${_pyname}-${pkgver}
 
