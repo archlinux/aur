@@ -9,7 +9,6 @@ arch=('any')
 url="https://fennel-lang.org"
 license=('MIT')
 depends=('lua')
-makedepends=('make')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~technomancy/fennel/archive/$pkgver.tar.gz")
 sha512sums=('4ad1635807d244297fdc7bf7c06568ae708ae805dcaac2bb190fad412da21c9e3c3b86a6afa223e343488c725afea94682f213332fb22ba66eb5190e97f18415')
 b2sums=('07758493c8c96d2d5151a1cb38da9fec002eb2522926dc2cad0a125c3e608daf2035a3d21743a8634a5fd0cab372e78ee0179710388c56888cb9a2fef167ea58')

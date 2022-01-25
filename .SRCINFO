@@ -5,7 +5,6 @@ pkgbase = fennel
 	url = https://fennel-lang.org
 	arch = any
 	license = MIT
-	makedepends = make
 	depends = lua
 	source = fennel-1.0.0.tar.gz::https://git.sr.ht/~technomancy/fennel/archive/1.0.0.tar.gz
 	sha512sums = 4ad1635807d244297fdc7bf7c06568ae708ae805dcaac2bb190fad412da21c9e3c3b86a6afa223e343488c725afea94682f213332fb22ba66eb5190e97f18415
