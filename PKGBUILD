@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver=3.01+r182.20201121.geb72c48
-pkgrel=2
+pkgrel=3
 pkgdesc='Interface to the DeutscheBahn online departure monitor'
 url='http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/'
 license=('PerlArtistic')
@@ -16,6 +16,7 @@ depends=(
   'perl-class-accessor'
   'perl-datetime'
   'perl-datetime-format-strptime'
+  'perl-json'
   'perl-lwp-protocol-https'
   'perl-libwww'
   'perl-xml-libxml'
@@ -24,7 +25,6 @@ makedepends=(
   'git'
   'perl-module-build'
   'perl-file-slurp'
-  'perl-json'
   'perl-list-moreutils'
   'perl-test-compile'
   'perl-test-pod'
