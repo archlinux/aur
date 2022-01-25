@@ -1,7 +1,7 @@
 pkgbase = ddnet
 	pkgdesc = A Teeworlds modification with a unique cooperative gameplay.
 	pkgver = 15.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://ddnet.tw
 	arch = x86_64
 	license = custom:BSD
@@ -28,9 +28,13 @@ pkgbase = ddnet
 	source = ddnet-server.service
 	source = ddnet-sysusers.conf
 	source = ddnet-tmpfiles.conf
+	source = dont-expect-moments-ago-string-in-tests-use-regex-matcher.patch
+	source = fix-timestamp-in-record_maps-in-test.patch
 	sha256sums = bc354c2db9b0dee094ac3ce1ca95e5399d8282c91cfb878ebd3060345aa0c76d
 	sha256sums = 9377a9d7c87abae166c8fa98cd79a61c74482f80f80bc930ae043349e9a84965
 	sha256sums = 70034f237270b38bf312238a26cfd322e212ca5714bfea4ae91e80c639ce8738
 	sha256sums = 043452f4de3c86d903973009bb3e59b3492a6669b86d0b1410e59a1476a87369
+	sha256sums = 5d90ac84ee91556f676ab04006079fb0ad5399b4adde90cfd1b53374da62782a
+	sha256sums = 60cceac4c1caaec8899ffa691860690a2f2f95897c4525e7c51450849f21f62c
 
 pkgname = ddnet
