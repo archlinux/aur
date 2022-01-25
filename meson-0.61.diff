@@ -1,0 +1,24 @@
+diff --git i/actions/meson.build w/actions/meson.build
+index 2abaaf3..1e3f370 100644
+--- i/actions/meson.build
++++ w/actions/meson.build
+@@ -1,7 +1,6 @@
+ policy = 'org.freedesktop.policykit.policy'
+ 
+ i18n.merge_file(
+-  policy,
+   input: policy + '.in',
+   output: '@BASENAME@',
+   po_dir: po_dir,
+diff --git i/src/examples/meson.build w/src/examples/meson.build
+index c6305ab..8c18de5 100644
+--- i/src/examples/meson.build
++++ w/src/examples/meson.build
+@@ -1,7 +1,6 @@
+ policy = 'org.freedesktop.policykit.examples.pkexec.policy'
+ 
+ i18n.merge_file(
+-  policy,
+   input: policy + '.in',
+   output: '@BASENAME@',
+   po_dir: po_dir,

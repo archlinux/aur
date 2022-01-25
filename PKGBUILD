@@ -5,7 +5,7 @@
 
 pkgname=lib32-polkit
 pkgver=0.120
-pkgrel=3
+pkgrel=4
 pkgdesc='Application development toolkit for controlling system-wide privileges'
 arch=(x86_64)
 license=(LGPL)
@@ -24,10 +24,14 @@ makedepends=(
 _tag=92b910ce2273daf6a76038f6bd764fa6958d4e8e
 source=(
   git+https://gitlab.freedesktop.org/polkit/polkit.git#tag=${_tag}
+  meson-0.61.diff
   multilib.diff
 )
-sha256sums=('SKIP'
-            '7271f97282d22b58b74cf9089fa3a83c799cde184eb6e06a83164692362e50fe')
+sha256sums=(
+  SKIP
+  45d08bbb76e1e22ca8e698df04652b7aceaded34f9b76ce6b68152fb26b0de8d
+  7271f97282d22b58b74cf9089fa3a83c799cde184eb6e06a83164692362e50fe
+)
 
 pkgver() {
   cd polkit
@@ -37,6 +41,12 @@ pkgver() {
 
 prepare() {
   cd polkit
+
+  # CVE-2021-4034
+  git cherry-pick -n a2bf5c9c83b6ae46cbd5c779d3055bff81ded683
+
+  # Fix build with Meson 0.61.0
+  git apply -3 ../meson-0.61.diff
 
   # Don't build the backend
   git apply -3 ../multilib.diff
