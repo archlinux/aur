@@ -47,33 +47,29 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/PrusaSlicer"
-    mkdir -p build
-
-    cd build
-    WX_CONFIG=wx-config-gtk3 \
-    cmake .. -G Ninja \
+    cmake -B build -S PrusaSlicer -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DSLIC3R_FHS=ON \
-        -DSLIC3R_PCH=ON \
+        -DSLIC3R_PCH=OFF \
         -DSLIC3R_WX_STABLE=ON \
         -DSLIC3R_GTK=3 \
         -DSLIC3R_STATIC=OFF \
+        -DwxWidgets_CONFIG_EXECUTABLE=$(which wx-config-gtk3) \
         -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB
 
     # This is a trick to workaround RAM issues that kill GCC
-    ninja -k0
-    ninja -j2
+    ninja -C build -k0
+    ninja -C build -j2
 }
 
 check() {
-    cd "${srcdir}/PrusaSlicer/build"
+    cd "build"
     ctest -V
 }
 
 package () {
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/PrusaSlicer/build" install
+    DESTDIR="${pkgdir}" ninja -C "build" install
 
     # Patch desktop files
     for i in PrusaGcodeviewer PrusaSlicer; do
