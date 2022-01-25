@@ -23,33 +23,41 @@
 
 pkgname=matlab-support
 pkgver=9.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
 license=(custom)
 depends=(
     'ca-certificates'
-    'lsb-release'
     'alsa-lib'
+    'at-spi2-atk'
     'atk'
+    'at-spi2-core'
+    'glibc'
+    'cairo'
     'libcap'
     'libcups'
-    'libdbus'
+    'dbus'
+    'libdrm'
     'fontconfig'
-    'libgcrypt'
+    'mesa'
     'gdk-pixbuf2'
-    'gst-plugins-base'
+    'glib2'
+    'gcc-libs'
     'gstreamer'
-    'gtk2'
-    'krb5'
+    'gst-plugins-base-libs'
+    'gtk3'
     'nspr'
     'nss'
+    'unixodbc'
     'pam'
     'pango'
-    'cairo'
+    'python'
     'libsm'
     'libsndfile'
+    'openssl'
+    'util-linux-libs'
     'libx11'
     'libxcb'
     'libxcomposite'
@@ -59,30 +67,21 @@ depends=(
     'libxfixes'
     'libxft'
     'libxi'
-    'libxmu'
+    'libxinerama'
     'libxrandr'
     'libxrender'
-    'libxslt'
-    'libxss'
     'libxt'
     'libxtst'
     'libxxf86vm'
-    'procps-ng'
-    'xorg-server-xvfb'
-    'x11vnc'
+    'net-tools'
+    'procps'
     'sudo'
+    'unzip'
+    'wget'
     'zlib'
-    'portaudio'
-    'glu'
-    'libunwind'
-    'libxp'
-    'libxpm'
-    'portaudio'
-    'qt5-svg'
-    'qt5-webkit'
-    'qt5-websockets'
-    'qt5-x11extras'
-    'xerces-c')
+    'lsb-release'
+    'dconf'
+    )
 
     optdepends=('gcc6: For MEX support'
         'gcc7: For MEX support'
@@ -91,11 +90,9 @@ depends=(
         'gcc: For MEX support'
         'libselinux: for Addon manager support'
         'gconf: may be needed for Live Scripts')
-        makedepends=('gendesk')
-        provides=('matlab')
-        conflicts=('matlab')
-        source=('https://upload.wikimedia.org/wikipedia/commons/2/21/Matlab_Logo.png')
-sha512sums=('ba72458379c89b22a27d1d7e357cefae4437fa28caac47b26ccd4f5b01b8cbc2c000baf38b5a52565f29b14e6da922bc3dc14bc5d47fa682fb6871422a59c397')
+    makedepends=('gendesk')
+    provides=('matlab')
+    conflicts=('matlab')
 
         prepare() {
             # desktop file links matlab to system glib's as opposed to the ones shipped with matlab
@@ -113,5 +110,4 @@ sha512sums=('ba72458379c89b22a27d1d7e357cefae4437fa28caac47b26ccd4f5b01b8cbc2c00
         package() {
             msg2 'Installing desktop files'
             install -D -m644 "matlab.desktop" "${pkgdir}/usr/share/applications/matlab.desktop"
-            install -D -m644 "Matlab_Logo.png" "${pkgdir}/usr/share/pixmaps/matlab.png"
         }
