@@ -8,6 +8,7 @@ pkgbase = gazebo-git
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = doxygen
 	makedepends = ruby-ronn
 	makedepends = git
@@ -18,6 +19,7 @@ pkgbase = gazebo-git
 	depends = intel-tbb
 	depends = libccd
 	depends = libltdl
+	depends = graphviz
 	depends = libtar
 	depends = libxml2
 	depends = ogre=1.9
@@ -25,6 +27,7 @@ pkgbase = gazebo-git
 	depends = sdformat
 	depends = ignition-math
 	depends = ignition-transport
+	depends = ignition-cmake
 	depends = ignition-common
 	depends = ignition-fuel_tools
 	depends = ignition-msgs
@@ -37,7 +40,6 @@ pkgbase = gazebo-git
 	optdepends = libdart: DART support
 	optdepends = libspnav: space navigator joystick support
 	optdepends = libusb: USB peripherals support
-	optdepends = ruby-ronn: Generate manpages
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
 	provides = gazebo
@@ -46,4 +48,3 @@ pkgbase = gazebo-git
 	sha256sums = SKIP
 
 pkgname = gazebo-git
-

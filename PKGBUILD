@@ -9,10 +9,9 @@ arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
-depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl'
-         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat' 'ignition-math'
-         'ignition-transport' 'ignition-common' 'ignition-fuel_tools'
-         'ignition-msgs' 'tinyxml2' 'qwt')
+depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl' 'graphviz'
+         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat' 'ignition-math' 'ignition-transport'
+         'ignition-cmake' 'ignition-common' 'ignition-fuel_tools' 'ignition-msgs' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
@@ -20,10 +19,9 @@ optdepends=('bullet: Bullet support'
             'libdart: DART support'
             'libspnav: space navigator joystick support'
             'libusb: USB peripherals support'
-            'ruby-ronn: Generate manpages'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'ruby-ronn' 'git')
+makedepends=('cmake' 'ninja' 'doxygen' 'ruby-ronn' 'git')
 install="gazebo.install"
 provides=('gazebo')
 conflicts=('gazebo')
@@ -41,24 +39,16 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  # Create build directory
   mkdir -p build && cd build
 
-  # Run CMake
-  # Note: we skip unit tests (else set to TRUE)
-  cmake .. -DCMAKE_BUILD_TYPE="Release" \
+  cmake .. -GNinja \
+           -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
-
-  # Compile Gazebo
-  make
+  ninja
 }
 
 package() {
   cd "${srcdir}/${_pkgname}/build"
-
-  # Install Gazebo
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:
