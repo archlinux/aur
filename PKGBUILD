@@ -3,7 +3,7 @@
 _pkgname=etelemetry
 pkgname=python-$_pkgname
 _name=${pkgname#python-}
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Etelemetry python client API"
 url="https://github.com/sensein/etelemetry-client"
@@ -13,7 +13,7 @@ depends=('python-ci-info')
 provides=("python-etelemetry")
 options=(!emptydirs)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/sensein/etelemetry-client/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bfec416552d248ad0f50b90ba5ff015e825ad70e4a87f7a06cc7da6d19152897')
+sha256sums=('5f710fdb17ec02f93be29d234b33c1c62ad641320d1b4047e61044679018de03')
 
 build() {
   cd "$srcdir/$_pkgname-client-$pkgver"
