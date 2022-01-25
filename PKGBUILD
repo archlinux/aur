@@ -1,6 +1,6 @@
 # Maintainer: Vukky <hi at sus dot omg dot lol>
 pkgname=saladbind
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='A tool for Salad to customize your miner'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/LITdevs/SaladBind"
 license=('GPL3')
 makedepends=('nodejs' 'npm')
 source=("https://github.com/LITdevs/SaladBind/archive/v$pkgver.tar.gz")
-sha256sums=('77545a9252860d56428b0e3ce9694b1dda9d52f50c5e65cb07047be6675003ac')
+sha256sums=('cc1dbb9b1a28fac23bbe5b049a260114399c7be99cf76573b55a061bf5fdf106')
 options=("!strip")
 
 build() {
