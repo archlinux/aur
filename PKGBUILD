@@ -7,7 +7,7 @@ _srcname=linux-5.16
 _major=5.16
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=1
+_minor=2
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -38,9 +38,9 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('463b6cc4508e68a2f3bac60d016fe495b749d7ef127d91dfc9e7d3fd8e2e3ca48300befb2ed8b5bacb54266228290c74bb5ee46b4f2218d7ab339a02a9a8d6f5'
+b2sums=('de28a790288a265e1268cad5fc8e2e9491511e6cf8d566dcbbfb9d047659e359a498522265ee4e47fe1e380b5706260543bcbe47f011faf82d4932db743fb9be'
         'SKIP'
-        '39c5b24f069de76ef838fda68281ead1bcc2c98a5f16d95bb32b1d9eb67cb43aef4ccd80395071dbf64ac7409dfcbd129d923a5c8efd22a4998dfbb7c34996c1'
+        '6f07d9da86101ab72eadd53a9f58a4740037608a006fc622a923d4dd9578ce62cc9959711dca2e953e3fb68286f55fb14be04a4a00fc49a33c2c28bd5944532f'
         'SKIP'
         '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da'
         '8c06f840512d90c2339066677f1c64c07d1d9b7cd9a7d653fa7be1f806b0c66cb26892db662ef95cb6c27c996aef03566454699cfaa8d620dcb90c1f8f8d8276'
