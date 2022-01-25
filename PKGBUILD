@@ -3,7 +3,7 @@
 _name='napari-svg'
 _author='napari'
 pkgname="${_name}"
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A plugin for writing svg files from napari.'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'python-vispy'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('7b0c9dfb66d63a251f550c074e1b11d177aaea7a61dd19fcdaed87739c441bfd')
+sha256sums=('12fa5c64995fc7179349969a39316355496b463858c3b0815e3b3e7ffcdced34')
 provides=("python-${_name}")
 
 build() {
