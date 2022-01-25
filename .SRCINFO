@@ -1,7 +1,7 @@
 pkgbase = perl-travel-status-de-ura-git
 	pkgdesc = Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)
 	pkgver = 2.01+r141.20190704.g15af690
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-URA/
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = perl-travel-status-de-ura-git
 	depends = perl-datetime
 	depends = perl-datetime-format-duration
 	depends = perl-list-moreutils
+	depends = perl-lwp-protocol-https
 	depends = perl-text-csv
 	provides = perl-travel-status-de-ura=2.01+r141.20190704.g15af690
 	conflicts = perl-travel-status-de-ura

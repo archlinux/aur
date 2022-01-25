@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.01+r141.20190704.g15af690
-pkgrel=3
+pkgrel=4
 pkgdesc='Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)'
 url='http://finalrewind.org/projects/Travel-Status-DE-URA/'
 license=('GPL' 'PerlArtistic')
@@ -17,6 +17,7 @@ depends=(
   'perl-datetime'
   'perl-datetime-format-duration'
   'perl-list-moreutils'
+  'perl-lwp-protocol-https'
   'perl-text-csv'
 )
 makedepends=(
