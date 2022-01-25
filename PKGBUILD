@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=conserve
-pkgver=0.6.10
-pkgrel=2
+pkgver=0.6.15
+pkgrel=1
 pkgdesc="Robust portable backup tool written in Rust"
 arch=('x86_64')
 url="https://github.com/sourcefrog/conserve"
@@ -11,16 +11,21 @@ license=('GPL2')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('911dd02a26d2256fe674b36756367e49625a84a3abb16c4be7d05bd0bd2bdf6d08b1d9efa49badcfad16d8ee5fff5336013d19e7ea734761ed2b82ff812bf9fa')
+sha512sums=('cddb0e4aaa087d37fa79d197dbff5a0ccde99e25dbeef46ba836fd5dcb54dfe2f116507ba40736614aeaa5f8a530658bebe43c0d1c4c7b758864b53a73b1b986')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
