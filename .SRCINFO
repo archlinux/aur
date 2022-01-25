@@ -1,6 +1,6 @@
 pkgbase = lib32-tbb
 	pkgdesc = High level abstract threading library (32-bit)
-	pkgver = 2021.4.0
+	pkgver = 2021.5.0
 	pkgrel = 1
 	url = https://threadingbuildingblocks.org
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = lib32-tbb
 	provides = lib32-intel-tbb
 	conflicts = lib32-intel-tbb
 	replaces = lib32-intel-tbb
-	source = tbb-2021.4.0.tar.gz::https://github.com/oneapi-src/oneTBB/archive/v2021.4.0/lib32-tbb-2021.4.0.tar.gz
+	source = tbb-2021.5.0.tar.gz::https://github.com/oneapi-src/oneTBB/archive/v2021.5.0/lib32-tbb-2021.5.0.tar.gz
 	sha512sums = 96da2bc351fd64dfa854f8e6cabc1c4e53af3d55760e99d6f83ad53779c727af333d13d6be0828ed70371cf796498d2063e9dd0e4b2f6451623bb5d28ccbf20b
 
 pkgname = lib32-tbb
