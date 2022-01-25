@@ -2,7 +2,7 @@
 
 pkgname=python-miepython
 pkgdesc='Mie scattering of light off perfect spheres'
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 arch=('any')
 url='https://miepython.readthedocs.io/'
@@ -20,7 +20,7 @@ source=(
   "$_pyname-$pkgver.tar.gz::https://github.com/scottprahl/$_pyname/archive/v$pkgver.tar.gz"
 )
 sha256sums=(
-  'd361a9bf49b28a5b1038287c88059abb3770f1b1e92f894cdd25cdb92a4df1ad'
+  '3ac8dd0fe67c97dfb07e6237d771d67fa48f354793838ef8a22da5618aa19bf8'
 )
 
 build() {
