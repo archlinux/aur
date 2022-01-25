@@ -27,10 +27,17 @@ optdepends=('pocketsphinx: Pocketsphinx speech recognition backend'
 
 _tar=${pkgname}-${pkgver}
 source=("https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz"
-        "https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz.sig")
+        "https://download.kde.org/stable/${pkgname}/${_tar}.tar.xz.sig"
+        "https://invent.kde.org/multimedia/subtitlecomposer/-/commit/4f4f560e40ba0b760cf688eb024be3cc734ca347.patch")
 sha256sums=('ef9cb3c0c1fe1f40cf9d8e795859b9b28adf2da3be77a076d46bc28df4cd0255'
-            'SKIP')
+            'SKIP'
+	    '26197260a6e4419c7178c65a5ac9e8811418e40c97454b2aa8a62b149305dcd5')
 validpgpkeys=('76F79007A54A4B68F1547928E2418746EF9D9B26')
+
+prepare() {
+  cd "${srcdir}/${_tar}"
+  patch -p1 -i "$srcdir/4f4f560e40ba0b760cf688eb024be3cc734ca347.patch"
+}
 
 build() {
   cmake -S "${srcdir}/${_tar}" -B "${srcdir}/build" \
