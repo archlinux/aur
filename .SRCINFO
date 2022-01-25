@@ -1,17 +1,17 @@
 pkgbase = cytoscape
 	pkgdesc = Network Data Integration, Analysis, and Visualization in a Box
-	pkgver = 3.9.0
+	pkgver = 3.9.1
 	pkgrel = 1
-	url = http://www.cytoscape.org
+	url = https://www.cytoscape.org
 	arch = any
 	license = LGPL
 	depends = java-runtime=11
 	depends = bash
-	source = https://github.com/cytoscape/cytoscape/releases/download/3.9.0/cytoscape-unix-3.9.0.tar.gz
+	source = https://github.com/cytoscape/cytoscape/releases/download/3.9.1/cytoscape-unix-3.9.1.tar.gz
 	source = cytoscape.desktop
 	source = cytoscape.png
 	source = cytoscape
-	sha256sums = ed80e6a23cd0ba31ebb03b81ed60b40b7676b2b4ddf5052f7a1d5b6a87772af5
+	sha256sums = 2380b6c86888ca09c55244410b82c14901608d9955282a10191a61ca7569b1cc
 	sha256sums = f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0
 	sha256sums = 135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68
 	sha256sums = b16706514961f0d206a0e9c22dbf0bb9e74985e30163b1e26400121947688190

@@ -3,11 +3,11 @@
 # Contributor: florianbw <florian.bw gmail.com>
 
 pkgname=cytoscape
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Network Data Integration, Analysis, and Visualization in a Box"
 arch=('any')
-url=http://www.cytoscape.org
+url=https://www.cytoscape.org
 license=('LGPL')
 depends=('java-runtime=11' 'bash')
 source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cytoscape-unix-${pkgver}.tar.gz"
@@ -15,7 +15,7 @@ source=("https://github.com/cytoscape/cytoscape/releases/download/${pkgver}/cyto
         "${pkgname}.png"
         "${pkgname}")
 
-sha256sums=('ed80e6a23cd0ba31ebb03b81ed60b40b7676b2b4ddf5052f7a1d5b6a87772af5'
+sha256sums=('2380b6c86888ca09c55244410b82c14901608d9955282a10191a61ca7569b1cc'
             'f4476545086f845e1cec5861169270da9f82a6ad4944972010827a567af0c7d0'
             '135faa3f0beb8ecc1b704cf376408e8bd5f62f32ba50a84002c14321d0bb0b68'
             'b16706514961f0d206a0e9c22dbf0bb9e74985e30163b1e26400121947688190')
