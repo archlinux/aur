@@ -1,0 +1,15 @@
+pkgbase = frogfetch-git
+	pkgdesc = Neofetch but frogged and in rust
+	pkgver = v0.1.0.r1.g641e713
+	pkgrel = 1
+	url = https://git.karx.xyz/famfo/frogfetch-rs
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = rust
+	provides = frogfetch-rs
+	conflicts = frogfetch-bin
+	source = git+https://git.karx.xyz/famfo/frogfetch-rs.git
+	sha256sums = SKIP
+
+pkgname = frogfetch-git
