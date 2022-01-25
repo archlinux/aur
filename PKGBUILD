@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=rusolver-git
-pkgver=0.6.0.r0.gd1bb538
+pkgver=0.8.0.r0.gdfdc0ee
 pkgrel=1
 pkgdesc="Fast and accurate DNS resolver (git)"
 arch=('x86_64')
@@ -21,14 +21,19 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
