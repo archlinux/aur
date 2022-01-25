@@ -3,7 +3,7 @@
 _name='magicgui'
 _author='tlambert03'
 pkgname="python-${_name}"
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
@@ -20,7 +20,7 @@ depends=(
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ddbfa5c35c3d2a8d020a37e6cbfbb4b87b295959c4c1829c289d74f92a11e8f2')
+sha256sums=('8be9bb8542a0b972647b6872ca402d64e71d8ca739d8e6bc47ca098b7817654a')
 provides=("python-${_name}")
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = python-magicgui
 	pkgdesc = Build GUIs from functions, using magic.
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/tlambert03/magicgui
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-magicgui
 	depends = python-docstring-parser
 	depends = qt5-python-bindings
 	provides = python-magicgui
-	source = https://files.pythonhosted.org/packages/source/m/magicgui/magicgui-0.3.3.tar.gz
-	sha256sums = ddbfa5c35c3d2a8d020a37e6cbfbb4b87b295959c4c1829c289d74f92a11e8f2
+	source = https://files.pythonhosted.org/packages/source/m/magicgui/magicgui-0.3.4.tar.gz
+	sha256sums = 8be9bb8542a0b972647b6872ca402d64e71d8ca739d8e6bc47ca098b7817654a
 
 pkgname = python-magicgui
