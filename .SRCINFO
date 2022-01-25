@@ -1,0 +1,22 @@
+pkgbase = libproj4-projcompathack
+	pkgdesc = Cartographic Projections library, libraries only. Legacy version 4.x. Hack to be compatible with newer proj. Might not work fully, there to fulfill dependency for other legacy packages like perl-geo-proj4.
+	pkgver = 4.9.3
+	pkgrel = 1
+	url = https://proj.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gmock
+	makedepends = gtest
+	depends = curl
+	depends = glibc
+	depends = libtiff
+	depends = sqlite
+	provides = libproj4=4.9.3
+	conflicts = libproj4
+	conflicts = proj4
+	source = https://download.osgeo.org/proj/proj-4.9.3.tar.gz
+	sha256sums = 6984542fea333488de5c82eea58d699e4aff4b359200a9971537cd7e047185f7
+
+pkgname = libproj4-projcompathack
