@@ -1,11 +1,14 @@
 pkgbase = perl-travel-status-de-deutschebahn-git
 	pkgdesc = Interface to the DeutscheBahn online departure monitor
 	pkgver = latest
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/
 	arch = any
 	license = PerlArtistic
+	makedepends = perl-datetime
+	makedepends = perl-datetime-format-strptime
+	makedepends = perl-lwp-protocol-https
 	makedepends = perl-module-build
 	makedepends = perl-file-slurp
 	makedepends = perl-json
