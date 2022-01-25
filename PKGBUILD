@@ -3,14 +3,14 @@
 
 pkgname=geeqie-git
 pkgver=20220125
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
          'djvulibre' 'libheif' 'libchamplain'
-         'poppler-glib' 'libarchive' 'libraw' 'libjxl')
+         'poppler-glib' 'libarchive' 'libraw')
 makedepends=('git'
              'intltool' 'python' 'librsvg'
              'libwmf' 'libwebp' 'imagemagick'
@@ -25,8 +25,10 @@ optdepends=('librsvg: SVG rendering'
             'imagemagick: command-line tools for various (plugin) operations')
 provides=('geeqie')
 conflicts=('geeqie')
-source=("git+git://git.geeqie.org/geeqie.git")
-sha256sums=('SKIP')
+source=("git+git://git.geeqie.org/geeqie.git"
+        "no-markdown.patch")
+sha256sums=('SKIP'
+            '03ae5b9673b9d3592244aca224e1a60fb6c1c1e8f38a6f84b2e53341f47288af')
 
 pkgver() {
     cd "${srcdir}/geeqie"
@@ -40,7 +42,7 @@ prepare() {
     sed -i 's|^CFLAGS+=" -Werror|# CFLAGS+=" -Werror|' configure.ac
 
     # Remove autodetection of markdown
-    sed -i 's|^AM_CONDITIONAL(HAVE_MARKDOWN|#AM_CONDITIONAL(HAVE_MARKDOWN|' configure.ac
+    patch -p1 -i ../no-markdown.patch
 
     NOCONFIGURE=1 ./autogen.sh
 }

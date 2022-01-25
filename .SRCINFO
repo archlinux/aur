@@ -1,7 +1,7 @@
 pkgbase = geeqie-git
 	pkgdesc = Lightweight image viewer
 	pkgver = 20220125
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.geeqie.org/
 	arch = x86_64
 	license = GPL2
@@ -27,7 +27,6 @@ pkgbase = geeqie-git
 	depends = poppler-glib
 	depends = libarchive
 	depends = libraw
-	depends = libjxl
 	optdepends = librsvg: SVG rendering
 	optdepends = fbida: for jpeg rotation
 	optdepends = gawk: to use the geo-decode function
@@ -37,6 +36,8 @@ pkgbase = geeqie-git
 	provides = geeqie
 	conflicts = geeqie
 	source = git+git://git.geeqie.org/geeqie.git
+	source = no-markdown.patch
 	sha256sums = SKIP
+	sha256sums = 03ae5b9673b9d3592244aca224e1a60fb6c1c1e8f38a6f84b2e53341f47288af
 
 pkgname = geeqie-git
