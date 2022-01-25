@@ -1,13 +1,13 @@
 pkgbase = ivpn
 	pkgdesc = IVPN Command Line Interface
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ivpn.net
 	install = ivpn.install
 	arch = x86_64
 	license = GPL3
 	makedepends = curl
-	makedepends = go
+	makedepends = go>=1.16
 	depends = glibc
 	depends = lsof
 	depends = wireless_tools

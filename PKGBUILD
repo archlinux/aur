@@ -3,13 +3,13 @@
 # PKGBUILD config
 pkgname="ivpn"
 pkgver=3.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"
 license=('GPL3')
 depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
-makedepends=('curl' 'go')
+makedepends=('curl' 'go>=1.16')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
 sha256sums=('8cf8d61dfb8738151fbddd6cf6b39a2ebee0371565a74cffda5566f9cecbbc4b')
