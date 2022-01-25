@@ -14,6 +14,7 @@ pkgbase = fightcade2
 	depends = lib32-libcurl-gnutls
 	depends = libcurl-gnutls
 	depends = libzip
+	depends = miniupnpc
 	source = fightcade2-2.1.20.tar.gz::https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
 	md5sums = SKIP
 
