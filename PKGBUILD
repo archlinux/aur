@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.01+r141.20190704.g15af690
-pkgrel=5
+pkgrel=6
 pkgdesc='Travel::Status::DE::URA is an inofficial interface to URA-based departure monitors (as used by ASEAG)'
 url='http://finalrewind.org/projects/Travel-Status-DE-URA/'
 license=('GPL' 'PerlArtistic')
@@ -34,7 +34,7 @@ conflicts=(
 options=('!emptydirs')
 # source=("http://finalrewind.org/projects/${_perlmod}/${_perlmod}-${pkgver}.tar.gz")
 source=(
-  "${_perlmod}::git+http://git.finalrewind.org/${_perlmod}"
+  "${_perlmod}::git+https://git.finalrewind.org/${_perlmod}"
 )
 md5sums=(
   'SKIP'
