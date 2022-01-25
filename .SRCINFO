@@ -1,7 +1,7 @@
 pkgbase = jhbuild
 	pkgdesc = Tool to build the whole GNOME desktop from sources
 	pkgver = 3.38.0.r0.g30ef98f3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.gnome.org/Projects/Jhbuild
 	arch = any
 	license = GPL
@@ -22,4 +22,3 @@ pkgbase = jhbuild
 	sha256sums = SKIP
 
 pkgname = jhbuild
-

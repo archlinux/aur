@@ -5,11 +5,11 @@
 
 pkgname=jhbuild
 pkgver=3.38.0.r0.g30ef98f3
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool to build the whole GNOME desktop from sources'
-arch=('any')
+arch=(any)
 url='https://wiki.gnome.org/Projects/Jhbuild'
-license=('GPL')
+license=(GPL)
 depends=(python git)
 makedepends=(yelp-tools)
 optdepends=('subversion: fetch subversion repositories'
