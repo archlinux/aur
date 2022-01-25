@@ -1,6 +1,6 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=r5378.a779d96c
+pkgver=v1.7.r200.g4054756d
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
@@ -40,8 +40,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  #git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
