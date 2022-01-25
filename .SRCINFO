@@ -11,6 +11,7 @@ pkgbase = agrum
 	depends = python-six
 	depends = ipython
 	depends = python-ipykernel
+	depends = python-pandas
 	depends = unixodbc
 	source = https://gitlab.com/agrumery/aGrUM/-/archive/0.22.5/aGrUM-0.22.5.tar.bz2
 	sha256sums = 86773870de4183c9dd9be96933398f24e995cc68feefa47476e65269e4c3fb05
