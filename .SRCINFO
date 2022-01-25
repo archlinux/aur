@@ -1,0 +1,16 @@
+pkgbase = lib32-soundtouch
+	pkgdesc = An open-source audio processing library for changing the tempo, pitch and playback rates of audio streams or audio files (32 bit)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://www.surina.net/soundtouch
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = lib32-gcc-libs
+	depends = soundtouch
+	source = lib32-soundtouch-git::git+https://codeberg.org/soundtouch/soundtouch.git#tag=2.3.1
+	sha256sums = SKIP
+
+pkgname = lib32-soundtouch
