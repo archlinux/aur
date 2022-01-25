@@ -1,0 +1,12 @@
+pkgbase = ttf-noir-et-blanc
+	pkgdesc = Font Blanc et Noir by Paul Lloyd
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://moorstation.org/typoasis/designers/lloyd/
+	arch = any
+	license = custom:100% Free
+	source = https://dl.dafont.com/dl/?f=noir_et_blanc
+	md5sums = 7e424605bf1a76b4701e808159ae6b78
+	sha256sums = ed4635c83b8696f12173a67390636223144c20cc7673458cf562fcd0cbfe1144
+
+pkgname = ttf-noir-et-blanc
