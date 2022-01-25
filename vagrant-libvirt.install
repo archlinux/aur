@@ -1,0 +1,4 @@
+post_install() {
+  echo '> NOTE: The plugin needs to be marked as installed using `vagrant plugin install vagrant-libvirt` as your normal user.'
+  echo
+}
