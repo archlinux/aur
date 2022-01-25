@@ -29,9 +29,9 @@ scripts/config  --disable CONFIG_X86_X32
 # sync default hostname with Arch
 scripts/config  --set-str CONFIG_DEFAULT_HOSTNAME archlinux
 
-# sync up some BPF defaults with mainline
+# enable debug and BTF generation
 scripts/config  --enable CONFIG_DEBUG_INFO \
-                --enable CONFIG_DEBUG_INFO_DWARF4 \
+                --enable CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT \
                 --enable CONFIG_DEBUG_INFO_BTF \
                 --enable CONFIG_DEBUG_INFO_BTF_MODULES
 
