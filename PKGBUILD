@@ -6,8 +6,8 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=tenacity-git
-pkgver=r13925.g697c0e764
-pkgrel=2
+pkgver=r13926.g0665614b8
+pkgrel=1
 epoch=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
 depends=(gtk3 wxgtk3-dev-light libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
-         soundtouch portaudio portmidi lame jack2)
+         soundtouch portaudio portmidi lame jack)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg nasm chrpath)
 optdepends=('ffmpeg: additional import/export capabilities')
