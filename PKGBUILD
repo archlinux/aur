@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-  cd $_name
+  cd $_name/build
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
