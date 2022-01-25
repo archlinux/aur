@@ -1,0 +1,30 @@
+pkgbase = perl-extutils-makemaker-dist-zilla-develop
+	pkgdesc = create bare-bones Makefile.PL files for use with dzil.
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/pod/ExtUtils::MakeMaker::Dist::Zilla::Develop
+	arch = any
+	license = PerlArtistic
+	depends = perl
+	depends = perl-extutils-makemaker
+	options = !emptydirs
+	source = Develop.pm::https://fastapi.metacpan.org/source/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/lib/ExtUtils/MakeMaker/Dist/Zilla/Develop.pm
+	source = Changes::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/Changes?download=1
+	source = LICENSE::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/LICENSE?download=1
+	source = MANIFEST::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/MANIFEST?download=1
+	source = META.json::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/META.json?download=1
+	source = META.yml::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/META.yml?download=1
+	source = Makefile.PL::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/Makefile.PL?download=1
+	source = README::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/README?download=1
+	source = dist.ini::https://metacpan.org/release/DOY/ExtUtils-MakeMaker-Dist-Zilla-Develop-0.03/raw/dist.ini?download=1
+	sha256sums = 022bbb3e3cb73e8a9b0e57bcd6c38a0ae80192ff4e8a7cb274d3e773b8f786c8
+	sha256sums = ff48f8c0dec4857abd094c464674609b206343a2a42e319748563418166739a9
+	sha256sums = a329c5b201efd3f99389fe5b1c468967f7e7226e93066f10f61ae48977c1389c
+	sha256sums = a2395b2b99228848d916e7cb60a16edaf420c894c44d970e21ea5b26ffd10e2e
+	sha256sums = 5477803b0a221769421f330d49fdd01b3b8d9dbdc8a644c186e4399dc20a5b2c
+	sha256sums = 7a0c5475ec279d71ab4e21e1754c92551ba1af060183ce891157277d856e17c8
+	sha256sums = 2a430248fde84d225114259106e95e933a6e09f583340a5bb1bde6375371b556
+	sha256sums = e65d429dfca40565f4a978789ae711b7ed983f07d9e6869fb4192a0a52cdce8a
+	sha256sums = cd305a2f412a6d2c67ec881a19be596e7ed5cb279675eb78444af326a136f679
+
+pkgname = perl-extutils-makemaker-dist-zilla-develop
