@@ -1,0 +1,15 @@
+pkgbase = podman-tui-git
+	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)
+	pkgver = 0.1.0.r0.g3b1f222
+	pkgrel = 1
+	url = https://github.com/Jguer/yay
+	arch = x86_64
+	license = GPL3
+	makedepends = go>=1.17
+	depends = podman>3
+	provides = podman-tui
+	conflicts = podman-tui
+	source = podman-tui::git+https://github.com/containers/podman-tui.git#branch=main
+	sha256sums = SKIP
+
+pkgname = podman-tui-git
