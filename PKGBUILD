@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
 pkgname=yubihsm2-sdk
-pkgver=2021.04
-pkgrel=2
+pkgver=2021.12b
+pkgrel=1
 pkgdesc="YubiHSM2 SDK"
 url="https://developers.yubico.com/YubiHSM2/Releases/"
 arch=(x86_64)
@@ -12,12 +12,12 @@ license=(Apache "custom:https://www.yubico.com/support/terms-conditions/yubico-l
 depends=(bind curl libusb)
 
 source=(
-	"https://developers.yubico.com/YubiHSM2/Releases/yubihsm2-sdk-2021-04-fedora33-amd64.tar.gz"
+	"https://developers.yubico.com/YubiHSM2/Releases/yubihsm2-sdk-2021-12b-fedora34-amd64.tar.gz"
 	"70-yubihsm2.rules"
 	"yubihsm-connector.service"
 	"yubihsm-connector.yaml"
 )
-sha256sums=('3836bdca080036e2f07bc68b92dc4152b539becd18f9e73ec4153e9a3546587d'
+sha256sums=('00e4d646022097b05c5e8a7e6dcd1c0a413d134ded692c0a4f8dcc5f94180f7f'
             '13cc09150fe3b03665f864f86a5f8057259cc41a014d3631ca13c8c7b0445d2a'
             '3f2e731277d0fbdda8fe7fbff1e04eaf8d2ea40e5ea2b8db7d882f4a5af463b2'
             '6f5415db4913d31c0bc6dc398f89e93308251a6f86d07354dc16f062b8e726e0')
@@ -26,16 +26,16 @@ prepare() {
   cd $srcdir
 
   mkdir -p yubihsm-connector
-  bsdtar -xf yubihsm2-sdk/yubihsm-connector-3.0.1-1.fc33.x86_64.rpm -C yubihsm-connector
+  bsdtar -xf yubihsm2-sdk/yubihsm-connector-3.0.2-1.fc34.x86_64.rpm -C yubihsm-connector
 
   mkdir -p yubihsm-devel
-  bsdtar -xf yubihsm2-sdk/yubihsm-devel-2.2.0-1.fc33.x86_64.rpm -C yubihsm-devel
+  bsdtar -xf yubihsm2-sdk/yubihsm-devel-2.3.0-1.fc34.x86_64.rpm -C yubihsm-devel
 
   mkdir -p yubihsm-setup
-  bsdtar -xf yubihsm2-sdk/yubihsm-setup-2.1.1-1.fc33.x86_64.rpm -C yubihsm-setup
+  bsdtar -xf yubihsm2-sdk/yubihsm-setup-2.2.0-1.fc34.x86_64.rpm -C yubihsm-setup
 
   mkdir -p yubihsm-shell
-  bsdtar -xf yubihsm2-sdk/yubihsm-shell-2.2.0-1.fc33.x86_64.rpm -C yubihsm-shell
+  bsdtar -xf yubihsm2-sdk/yubihsm-shell-2.3.0-1.fc34.x86_64.rpm -C yubihsm-shell
 
 }
 
@@ -59,16 +59,17 @@ package() {
   install -Dt "$pkgdir/usr/bin" yubihsm-setup/usr/bin/yubihsm-setup
 
   # yubihsm-shell
+  shell_version=2.3.0
   install -Dt "$pkgdir/usr/bin" yubihsm-shell/usr/bin/yubihsm-shell
   install -Dt "$pkgdir/usr/bin" yubihsm-shell/usr/bin/yubihsm-wrap
   cp -d yubihsm-shell/usr/lib64/libyubihsm_http.so.2 "$pkgdir/usr/lib"
-  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm_http.so.2.2.0
+  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm_http.so.${shell_version}
   cp -d yubihsm-shell/usr/lib64/libyubihsm.so.2 "$pkgdir/usr/lib"
-  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm.so.2.2.0
+  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm.so.${shell_version}
   cp -d yubihsm-shell/usr/lib64/libykhsmauth.so.2 "$pkgdir/usr/lib"
-  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libykhsmauth.so.2.2.0
+  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libykhsmauth.so.${shell_version}
   cp -d yubihsm-shell/usr/lib64/libyubihsm_usb.so.2 "$pkgdir/usr/lib"
-  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm_usb.so.2.2.0
+  install -Dt "$pkgdir/usr/lib" yubihsm-shell/usr/lib64/libyubihsm_usb.so.${shell_version}
   install -Dt "$pkgdir/usr/lib/pkcs11" yubihsm-shell/usr/lib64/pkcs11/yubihsm_pkcs11.so
   install -Dt "$pkgdir/usr/share/licenses/$pkgname/yubihsm-shell"  yubihsm-shell/usr/share/licenses/yubihsm-shell/LICENSE
 
