@@ -1,10 +1,10 @@
-# Maintainer: <asamk@gmx.de>
-# Contributor: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Maintainer: Lucas Werkmeister <mail@lucaswerkmeister.de>
+# Contributor: <asamk@gmx.de>
 
 java_=17
 pkgname_=native-image
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=21.3.0
+pkgver=22.0.0.2
 pkgrel=1
 pkgdesc="Plugin to turn GraalVM-based applications into native binary images (Java ${java_} version)"
 arch=('x86_64'
@@ -14,8 +14,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('df488a04b5405c6443c90e94710cd3bd2be9adcb3768f91429aa494168d52440')
-sha256sums_aarch64=('3564a4ade5cdd7dea04396ee31ed4e120b22616fa047fdd8badbe86739ccaa4a')
+sha256sums_x86_64=('8c25f650d58c2649c97061cb806dfaec9e685d5d2b80afc7cf72fe61d6891831')
+sha256sums_aarch64=('798947d0a93988929d2b8e3555f7c65225e789124cd99fbc0c3aae5f350175db')
 
 package() {
     local file eq permissions mode name target
