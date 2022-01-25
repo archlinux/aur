@@ -1,0 +1,22 @@
+pkgbase = perl-geo-proj4-git
+	pkgdesc = One location on the globe, in any coordinate system. This package tries to hide the maths and the coordinate system in which the point is represented.
+	pkgver = 1.10.0.2+r25.20210515.g417cc66
+	pkgrel = 1
+	url = https://metacpan.org/pod/Geo::Proj4
+	arch = arm
+	arch = i686
+	arch = x86_64
+	license = PerlArtistic
+	makedepends = git
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = libproj4
+	provides = perl-geo-proj4=1.10.0.2+r25.20210515.g417cc66
+	conflicts = perl-geo-proj4
+	options = !emptydirs
+	source = perl-geo-proj4::git+git://github.com/markov2/perl5-Geo-Proj4.git
+	source = LICENSE.PerlArtistic.txt
+	sha256sums = SKIP
+	sha256sums = 916a330e64df209a924120bfddea0373db385eb3854e96d1a3dda6e0ea130c80
+
+pkgname = perl-geo-proj4-git
