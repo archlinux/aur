@@ -1,13 +1,12 @@
 pkgbase = urlcrazy
 	pkgdesc = Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage.
 	pkgver = 0.5
-	pkgrel = 3
-	url = http://www.morningstarsecurity.com/research/urlcrazy
+	pkgrel = 4
+	url = https://www.morningstarsecurity.com/research/urlcrazy
 	arch = any
 	license = custom
 	depends = ruby
-	source = http://www.morningstarsecurity.com/downloads/urlcrazy-0.5.tar.gz
-	md5sums = bfe2e0c71cc5160530b773f15d242964
+	source = https://www.morningstarsecurity.com/downloads/urlcrazy-0.5.tar.gz
+	sha256sums = 744bfee0933dc8f1f2432528d5f7c5ce770416146ddc67b984b5117426e99dcd
 
 pkgname = urlcrazy
-
