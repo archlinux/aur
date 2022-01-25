@@ -1,12 +1,12 @@
 #Maintainer: solisinvictum https://github.com/solisinvictum/borgrestore
 pkgname="borgrestore"
-pkgver="0.2"
-pkgrel="0.2"
+pkgver="0.3"
+pkgrel="0.3"
 pkgdesc="Puts the system in exactly the same state as it is in a Borg snapshot."
 arch=("any")
 source=("git+https://github.com/solisinvictum/borgrestore.git")
 sha512sums=("SKIP")
-depends=(git borg python-llfuse)
+depends=(git borg python-llfuse rsync)
 optdepends=('vorta: a nice Borg GUI')
 
 package() {
