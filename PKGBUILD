@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=1
 epoch=
 pkgdesc="\$HOME, \$HOME everywhere"
@@ -22,8 +22,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("c308462855979facb2d0bc119304c4c58698ef97f99b0f0f7a3a2d3fa1971dba")
+source=(
+    "https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz"
+)
+sha256sums=(
+    "62a368403d9aa1976ca9440e0553a2d546d3b22594492d1a060a79eec793d98f"
+)
 noextract=()
 validpgpkeys=()
 

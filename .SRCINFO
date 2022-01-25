@@ -1,6 +1,6 @@
 pkgbase = dt-cli
 	pkgdesc = $HOME, $HOME everywhere
-	pkgver = 0.6.3
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://dt.cli.rs
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = dt-cli
 	provides = dt-cli
 	conflicts = dt-cli-git
 	conflicts = dt-cli-bin
-	source = https://github.com/blurgyy/dt/archive/refs/tags/v0.6.3.tar.gz
-	sha256sums = c308462855979facb2d0bc119304c4c58698ef97f99b0f0f7a3a2d3fa1971dba
+	source = https://github.com/blurgyy/dt/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 62a368403d9aa1976ca9440e0553a2d546d3b22594492d1a060a79eec793d98f
 
 pkgname = dt-cli
