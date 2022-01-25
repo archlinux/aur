@@ -1,13 +1,13 @@
 pkgbase = chrome-gnome-shell-git
-	pkgdesc = Native connector for integration with extensions.gnome.org
-	pkgver = 10.1.r2.gf6d3cc3
+	pkgdesc = Native browser connector for integration with extensions.gnome.org
+	pkgver = 10.1.r65.ge609ff2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GnomeShellIntegrationForChrome
 	arch = any
 	license = GPL
-	makedepends = git
 	makedepends = cmake
 	makedepends = jq
+	makedepends = git
 	depends = gnome-shell
 	depends = python-requests
 	depends = python-gobject
@@ -19,4 +19,3 @@ pkgbase = chrome-gnome-shell-git
 	md5sums = SKIP
 
 pkgname = chrome-gnome-shell-git
-
