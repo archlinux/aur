@@ -1,0 +1,20 @@
+pkgbase = aw-watcher-window-wayland-git
+	pkgdesc = window and afk watcher for wayland
+	pkgver = r27.1cd0555
+	pkgrel = 1
+	url = https://github.com/ActivityWatch/aw-watcher-window-wayland
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = rust
+	depends = aw-client
+	depends = gcc-libs
+	provides = aw-watcher-window-wayland
+	conflicts = aw-watcher-window-wayland
+	conflicts = aw-watcher-window
+	conflicts = aw-watcher-afk
+	conflicts = activitywatch-bin
+	source = aw-watcher-window-wayland::git+https://github.com/ActivityWatch/aw-watcher-window-wayland
+	sha256sums = SKIP
+
+pkgname = aw-watcher-window-wayland-git
