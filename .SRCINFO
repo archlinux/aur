@@ -1,6 +1,6 @@
 pkgbase = zulu-13-bin
 	pkgdesc = Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
-	pkgver = 13.0.9
+	pkgver = 13.0.10
 	pkgrel = 1
 	url = https://www.azul.com/products/zulu-community/
 	install = zulu-13-bin.install
@@ -16,7 +16,7 @@ pkgbase = zulu-13-bin
 	provides = java-runtime-headless-openjdk=13
 	provides = java-runtime=13
 	provides = java-runtime-openjdk=13
-	source = https://cdn.azul.com/zulu/bin/zulu13.44.13-ca-jdk13.0.9-linux_x64.tar.gz
-	sha256sums = 97ea838617e2496eb797768babd7bc60d4773c9589b1a643f7ad88cc200f9d34
+	source = https://cdn.azul.com/zulu/bin/zulu13.46.15-ca-jdk13.0.10-linux_x64.tar.gz
+	sha256sums = c5206b3f2497f15dc71d7ad278c3c500c5c30b0f9c8cfd60ca3ec95b08c92350
 
 pkgname = zulu-13-bin

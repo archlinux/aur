@@ -1,10 +1,10 @@
-# Maintainer: Sam Guymer <sam at guymer dot me>
+# Maintainer: Maddie Zhan <maddie at emzee dot be>
 
 _jdkname=zulu-13
 pkgname="${_jdkname}-bin"
 _java_ver=13
-_zulu_build=13.44.13-ca
-pkgver=13.0.9
+_zulu_build=13.46.15-ca
+pkgver=13.0.10
 pkgrel=1
 pkgdesc='Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.'
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,9 @@ _tarbalarch="$CARCH"
 [ "$CARCH" = "x86_64" ] && _tarballarch="x64"
 _tarballname="zulu${_zulu_build}-jdk${pkgver}-linux_${_tarballarch}"
 source=("https://cdn.azul.com/zulu/bin/${_tarballname}.tar.gz")
-sha256sums=('5aa9105bbb9c46754bde8e0441d4b9d547eccc9cebde4787e3496acb1f85224e')
-[ "$CARCH" = "x86_64" ] && sha256sums=('97ea838617e2496eb797768babd7bc60d4773c9589b1a643f7ad88cc200f9d34')
+sha256sums=('c5206b3f2497f15dc71d7ad278c3c500c5c30b0f9c8cfd60ca3ec95b08c92350')
+[ "$CARCH" = "aarch64" ] && source=("https://cdn.azul.com/zulu-embedded/bin/${_tarballname}.tar.gz")
+[ "$CARCH" = "aarch64" ] && sha256sums=('7f2cb93caa1d5a074fb960bd2c01ebc4e010458bf4d1aa41e746967e24d33296')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
