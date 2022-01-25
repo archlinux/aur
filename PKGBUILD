@@ -3,14 +3,14 @@
 
 pkgname=geeqie-git
 pkgver=20220125
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('exiv2' 'gtk3' 'ffmpegthumbnailer'
          'djvulibre' 'libheif' 'libchamplain'
-         'poppler-glib' 'libarchive' 'libraw')
+         'poppler-glib' 'libarchive' 'libraw' 'libjxl')
 makedepends=('git'
              'intltool' 'python' 'librsvg'
              'libwmf' 'libwebp' 'imagemagick'
@@ -38,6 +38,9 @@ prepare() {
 
     # Remove Werror
     sed -i 's|^CFLAGS+=" -Werror|# CFLAGS+=" -Werror|' configure.ac
+
+    # Remove autodetection of markdown
+    sed -i 's|^AM_CONDITIONAL(HAVE_MARKDOWN|#AM_CONDITIONAL(HAVE_MARKDOWN|' configure.ac
 
     NOCONFIGURE=1 ./autogen.sh
 }
