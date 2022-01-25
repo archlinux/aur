@@ -19,6 +19,7 @@ makedepends=(
 provides=('hamsket')
 conflicts=('hamsket-bin' 'rambox' 'rambox-bin' 'rambox-os' 'ramboxpro-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/nightly/${pkgname}-${pkgver}.tar.gz")
+md5sums=('SKIP')
 # For gendesk
 _name='Hamsket'
 _exec='/usr/bin/hamsket -- %u'
@@ -74,4 +75,3 @@ package() {
     # Install desktop file
     desktop-file-install "${srcdir}/${pkgname}.desktop" --dir "${pkgdir}/usr/share/applications/"
 }
-md5sums=('7a5a036e93e5da6d338de636fb9b3faa')

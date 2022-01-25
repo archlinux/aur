@@ -20,6 +20,6 @@ pkgbase = hamsket
 	conflicts = rambox-os
 	conflicts = ramboxpro-bin
 	source = hamsket-0.6.3.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/hamsket-0.6.3.tar.gz
-	md5sums = 7a5a036e93e5da6d338de636fb9b3faa
+	md5sums = SKIP
 
 pkgname = hamsket
