@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gabtag
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="A Linux application to handle audio tags (Gtk3)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'python-mutagen' 'python-cairo' 'python-musicbrainzngs'
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('90a24768f699d6169d98ff56e76da8531cf69c39215cc3a1e6ed1f6d0b7f5f04')
+sha256sums=('ec22c1d69ce7e3e17fff7c02c731cf746fc23eea05bdc0854d5bf304f6b16b2d')
 
 build() {
   arch-meson "GabTag-$pkgver" build

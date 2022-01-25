@@ -1,6 +1,6 @@
 pkgbase = gabtag
 	pkgdesc = A Linux application to handle audio tags (Gtk3)
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/lachhebo/GabTag
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gabtag
 	depends = python-pylyrics
 	depends = python-gobject
 	depends = python-pillow
-	source = gabtag-3.tar.gz::https://github.com/lachhebo/GabTag/archive/v3.tar.gz
-	sha256sums = 90a24768f699d6169d98ff56e76da8531cf69c39215cc3a1e6ed1f6d0b7f5f04
+	source = gabtag-4.tar.gz::https://github.com/lachhebo/GabTag/archive/v4.tar.gz
+	sha256sums = ec22c1d69ce7e3e17fff7c02c731cf746fc23eea05bdc0854d5bf304f6b16b2d
 
 pkgname = gabtag
