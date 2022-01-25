@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver='latest'
 epoch=1
 pkgver=2.20+r377.20210326.g353760f
-pkgrel=3
+pkgrel=4
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
 url='http://finalrewind.org/projects/Travel-Routing-DE-VRR/'
 license=('custom:WTFPL')
@@ -16,6 +16,7 @@ depends=(
   'perl-class-accessor'
   'perl-exception-class'
   'perl-libwww'
+  'perl-lwp-protocol-https'
   'perl-xml-libxml'
 )
 makedepends=(
