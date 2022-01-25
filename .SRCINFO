@@ -13,6 +13,7 @@ pkgbase = mandown-git
 	depends = python-feedparser
 	depends = python-beautifulsoup4
 	depends = python-natsort
+	depends = python-lxml
 	conflicts = mandown
 	source = git+https://github.com/potatoeggy/mandown.git
 	sha256sums = SKIP
