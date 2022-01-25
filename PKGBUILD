@@ -1,8 +1,8 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-bioservices
 _pkgname=${pkgname#python-}
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc="Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers"
 arch=('any')
 license=('GPL')
@@ -11,7 +11,7 @@ depends=('python-easydev>=0.9.36' 'python-beautifulsoup4' 'python-pandas'
          'python-colorlog' 'python-grequests' 'python-requests-cache'
          'python-xmltodict' 'python-suds')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('9e6194e2795aac7e192cf4f4ff793243f63d2a8458eff169a832f56ed80528e0')
+sha256sums=('f901dfba137a98b1192f6352817eaaa36a0442e2d63cda591ef0078db1a00ef8')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
