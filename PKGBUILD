@@ -50,10 +50,10 @@ prepare() {
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" element-desktop.sh
 
-  cd "$srcdir/element-web"
+  cd -- "$srcdir/element-web"
   yarn install --no-fund
 
-  cd "$srcdir/element-desktop"
+  cd -- "$srcdir/element-desktop"
   patch -p1 < "$srcdir/autolaunch.patch"
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
