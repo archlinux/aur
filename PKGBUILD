@@ -1,9 +1,9 @@
 # Maintainer: Keith Scheiwiller <k.scheiw@gmail.com>
 
 pkgname=notable-insiders-bin
-pkgver=1.9.0_beta.4
+pkgver=1.9.0_beta.5
 # No hyphens allowed in pkgver
-_notable_ver=1.9.0-beta.4
+_notable_ver=1.9.0-beta.5
 pkgrel=1
 pkgdesc="Insider build of the Notable note-taking app"
 arch=('x86_64')
@@ -23,7 +23,7 @@ install='notable.install'
 changelog='notable.changelog'
 source=("https://github.com/notable/notable-insiders/releases/download/v${_notable_ver}/notable-${_notable_ver}.pacman")
 noextract=()
-sha256sums=('4df1e4bcb0e4772ae1a1c21341f1aa4b88c2bafcbd65b57ade97c6422d597bb2')
+sha256sums=('89789b4fc44ec377e04699d857defb7a685fed8498e8f9397685ec833507e402')
 
 package() {
   # SUID chrome-sandbox for Electron 5+
