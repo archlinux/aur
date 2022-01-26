@@ -1,16 +1,16 @@
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Joermungand <joermungand at gmail dot com>
-# Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=python2-reportlab
 pkgver=3.5.34
-pkgrel=1
+pkgrel=2
 pkgdesc="A proven industry-strength PDF generating solution"
 url="http://www.reportlab.com/"
-depends=('freetype2' 'python2-pip' 'python2-pillow' )
-makedepends=('python2-distribute' )
+depends=('freetype2' 'python2-pillow' )
+makedepends=('python2-setuptools' )
 license=('BSD')
 arch=('x86_64')
-source=('https://files.pythonhosted.org/packages/0f/0b/bce8f4a6641c30889fd82b50665f0f7521d633bfd3360af2c11b8b2200af/reportlab-3.5.34.tar.gz')
+source=("https://files.pythonhosted.org/packages/0f/0b/bce8f4a6641c30889fd82b50665f0f7521d633bfd3360af2c11b8b2200af/reportlab-${pkgver}.tar.gz")
 md5sums=('77d37a7f9f785b3666206de0fbc44aab')
 
 build() {
@@ -29,6 +29,6 @@ package() {
 	sed -i 's/#!\/bin\/env python/#!\/bin\/env python2/' $file;
 	sed -i 's/#!\/usr\/pkg\/bin\/python/#!\/usr\/pkg\/bin\/python2/' $file;
 	done
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -D -m644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
 }
