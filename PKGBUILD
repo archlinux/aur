@@ -15,7 +15,7 @@ depends=()
 options=(!strip)
 _appimage="qqmusic-${pkgver}.AppImage"
 source=("https://dldir1.qq.com/music/clntupate/linux/AppImage/${_appimage}")
-sha512sums=(SKIP)
+sha256sums=("d65042dabafead493af5b8275aceb5519f658441f589250c555eb1b6c17c16e1")
 #        https://dldir1.qq.com/music/clntupate/linux/AppImage/qqmusic-1.1.1.AppImage
 prepare() {
     chmod +x "${_appimage}"
