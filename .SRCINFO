@@ -1,16 +1,16 @@
 pkgbase = meteor-demod-git
 	pkgdesc = Meteor-M2 LRPT demodulator
-	pkgver = r55.7ab2534
+	pkgver = r75.bf8f6eb
 	pkgrel = 1
 	url = https://github.com/dbdexter-dev/meteor_demod
 	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = cmake
 	depends = ncurses
 	provides = meteor-demod
 	conflicts = meteor-demod
 	source = meteor-demod-git::git+https://github.com/dbdexter-dev/meteor_demod.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = meteor-demod-git
-
