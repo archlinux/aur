@@ -1,6 +1,6 @@
 pkgbase = ultragrid-git
 	pkgdesc = Low-latency audio and video network transmission system (from git)
-	pkgver = v1.7.r200.g4054756d
+	pkgver = v1.7.r216.g94239f92
 	pkgrel = 1
 	url = https://www.ultragrid.cz/
 	arch = x86_64
@@ -23,6 +23,8 @@ pkgbase = ultragrid-git
 	optdepends = qt5-base: QT GUI support
 	optdepends = gpujpeg: gpu accelerated jpeg
 	optdepends = libx11: X11 screen recording
+	optdepends = libjuice: UDP holepunching support
+	optdepends = opencv: resize filter, conference video mix
 	provides = ultragrid
 	conflicts = ultragrid
 	source = ultragrid-git::git+https://github.com/CESNET/UltraGrid
