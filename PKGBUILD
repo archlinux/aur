@@ -1,12 +1,12 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc-embedded-wlroots
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Wlroots based Phone compositor (matching wlroots embedded)'
+arch=(x86_64 aarch64)
 url='https://gitlab.gnome.org/World/Phosh/phoc'
 license=(GPL3)
-arch=(x86_64 aarch64)
 depends=(
 	mutter
 	seatd
@@ -28,7 +28,7 @@ source=(
 	"git+${url}.git#tag=v${pkgver}"
 	"git+https://source.puri.sm/Librem5/wlroots.git"
 )
-sha256sums=('SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP')
 
 prepare() {
 	cd phoc
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-	arch-meson phoc build -Dembed-wlroots=enabled --auto-features auto
+	arch-meson phoc build -Dembed-wlroots=enabled
 	meson compile -C build
 }
 
