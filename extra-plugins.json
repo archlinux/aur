@@ -1,10 +1,20 @@
 {
   "vscode-builtin-node-debug" : "",
   "vscode-builtin-node-debug2" : "",
+  "vscode-builtin-icon-theme-seti": "vscode.vscode-theme-seti=1.62.3",
   "vscode-builtin-js-debug" : "ms-vscode.js-debug=1.50.0",
   "vscode-builtin-markdown-language-features": "vscode.markdown-language-features=1.39.2",
   "vscode-builtin-php": "vscode.php",
   "vscode-builtin-php-language-features": "vscode.php-language-features",
-  "vscode-builtin-theme-solarized-light": "vscode.theme-solarized-light",
+  "vscode-builtin-theme-abyss": "vscode.theme-abyss=1.62.3",
+  "vscode-builtin-theme-defaults": "vscode.theme-defaults=1.62.3",
+  "vscode-builtin-theme-kimbie-dark": "vscode.theme-kimbie-dark=1.62.3",
+  "vscode-builtin-theme-monokai": "vscode.theme-monokai=1.62.3",
+  "vscode-builtin-theme-monokai-dimmed": "vscode.theme-monokai-dimmed=1.62.3",
+  "vscode-builtin-theme-quietlight": "vscode.theme-quietlight=1.62.3",
+  "vscode-builtin-theme-red": "vscode.theme-red=1.62.3",
+  "vscode-builtin-theme-solarized-dark": "vscode.theme-solarized-dark=1.62.3",
+  "vscode-builtin-theme-solarized-light": "vscode.theme-solarized-light=1.62.3",
+  "vscode-builtin-theme-tomorrow-night-blue": "vscode.theme-tomorrow-night-blue=1.62.3",
   "vscode-eslint": "dbaeumer.vscode-eslint=2.1.20"
 }
