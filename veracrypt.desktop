@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=veracrypt
+Icon=veracrypt.xpm
+Comment=Disk encryption with strong security based on TrueCrypt
+Terminal=false
+Name=VeraCrypt
+StartupNotify=true
+Categories=System;Administration;

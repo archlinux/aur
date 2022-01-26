@@ -1,0 +1,24 @@
+pkgbase = veracrypt-latest
+	pkgdesc = Disk encryption with strong security based on TrueCrypt
+	pkgver = 1.25.7
+	pkgrel = 1
+	url = https://www.veracrypt.fr/
+	arch = x86_64
+	license = custom:TrueCrypt
+	makedepends = yasm
+	depends = fuse2>=2.8.0
+	depends = wxgtk3>=3.0
+	depends = libsm
+	depends = device-mapper
+	optdepends = sudo: mounting encrypted volumes as nonroot users
+	provides = veracrypt
+	conflicts = veracrypt
+	source = https://launchpad.net/veracrypt/trunk/1.25.7/+download/VeraCrypt_1.25.7_Source.tar.bz2
+	source = https://launchpad.net/veracrypt/trunk/1.25.7/+download/VeraCrypt_1.25.7_Source.tar.bz2.sig
+	source = veracrypt.desktop
+	validpgpkeys = 5069A233D55A0EEB174A5FC3821ACD02680D16DE
+	sha512sums = 824a3cfa3a3fb702f92522a23ae33b1033f56f3224e4666c7b0dd6c1a4a5841c7ba148c8cd9a7fa900b0a6dda2febc65acbb57ee77a04666b7a2867a1063f981
+	sha512sums = SKIP
+	sha512sums = f689ca64bac7042030de7714aed8cc89f2c5f87b407444b1b121491c1d89c147babaaa454ddc2a93b70ae20d4da59f96ad64f01b04bea9017d658c377faeb75d
+
+pkgname = veracrypt-latest
