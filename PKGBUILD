@@ -2,32 +2,28 @@
 # Contributor: Nikola Hadžić <nikola@firemail.cc>
 
 pkgname=reddio
-pkgver=0.46
+pkgver=0.50
 pkgrel=1
-pkgdesc="A command-line interface for Reddit written in POSIX sh"
+pkgdesc='A command-line interface for Reddit written in POSIX sh'
 arch=('any')
-url="https://gitlab.com/aaronNG/reddio"
+url='https://gitlab.com/aaronNG/reddio'
 license=('MIT')
 conflicts=('reddio-git')
-depends=('curl' 'jq') 
+depends=('curl' 'jq')
 optdepends=('gnu-netcat: for authentication'
             'openbsd-netcat: for authentication'
-	    'bash: POSIX compliant shell'
 	    'dash: POSIX compliant shell'
 	    'ksh: POSIX compliant shell')
-source=(https://gitlab.com/aaronNG/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz
-	lib_dir.patch)
-sha512sums=("1b782b57c701d74769a5bbd0702f4eed92b5557f10309bee0076791bc4cb2f133d0b7b979a573a9eccb172afde09ac3adf73db6ecf9354211f53a0e9870322c3"
-            "ddbe50b279027ed76e8ce14516d3d8dfba79bfc306f9cbb9d782f31573e3ca14bccc03403a2dac393e2ec2798b1db17064fa618eb5b17cfd14c2aa37bb3e0ef3")
+source=("https://gitlab.com/aaronNG/$pkgname/-/archive/v.$pkgver/$pkgname-v.$pkgver.tar.gz")
+sha512sums=('0148c03f673fb5cdee78683eda19d3ac1098c03cc6e54e02bf5183813ff6769075878ec7295509dc3478b553e66c780ec96f78451ca2449aa9e71f8c06a1c413')
 
 prepare() {
-	cd "$pkgname-v$pkgver"
-	patch --forward --strip=1 --input="$srcdir"/lib_dir.patch
+	sed -i 's|usr/local|usr|g' "$pkgname-v.$pkgver/reddio"
 }
 
 package() {
-	cd "$pkgname-v$pkgver"
-	PREFIX="$pkgdir"/usr make install
+	cd "$pkgname-v.$pkgver"
+	make PREFIX='/usr' DESTDIR="$pkgdir" install
 
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
