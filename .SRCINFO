@@ -12,7 +12,6 @@ pkgbase = meteor-rectify-git
 	provides = meteor-rectify
 	conflicts = meteor-rectify
 	source = meteor-rectify-git::git+https://github.com/dbdexter-dev/meteor_rectify.git
-	sha1sums = SKIP
+	sha256sums = SKIP
 
 pkgname = meteor-rectify-git
-
