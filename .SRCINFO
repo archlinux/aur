@@ -1,13 +1,13 @@
 pkgbase = pandoc-eqnos
 	pkgdesc = Equation number filter for pandoc
-	pkgver = 2.1.1
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/tomduck/pandoc-eqnos
 	arch = any
 	license = GPL
-	depends = pandoc-xnos>=2.0.0
-	source = https://github.com/tomduck/pandoc-eqnos/archive/2.1.1.tar.gz
-	md5sums = 2fe07b5e2f3ba53060fa2df910d76a86
+	depends = pandoc-xnos>=2.5.0
+	depends = pandoc-xnos<3.0
+	source = https://github.com/tomduck/pandoc-eqnos/archive/2.5.0.tar.gz
+	md5sums = f59a2933c342d7e702812ba01afc58dc
 
 pkgname = pandoc-eqnos
-
