@@ -40,6 +40,7 @@ checkdepends=(
   'wlroots'
   'xorg-server-xephyr'
   'xorg-xrandr'
+  'xorg-xwayland'
 )
 optdepends=(
   'alsa-utils: volume widget'
@@ -57,6 +58,7 @@ optdepends=(
   'python-mpd2: mpd2widget widget'
   'python-psutil: graph, net and memory widget'
   'python-pywlroots: Wayland backend'
+  'xorg-xwayland: Wayland backend'
   'python-setproctitle: change process name to qtile'
   'python-xdg: launchbar widget'
 )
