@@ -1,7 +1,7 @@
 pkgbase = mopidy-advanced-scrobbler
 	pkgdesc = Mopidy extension for comprehensive management of Last.fm scrobbles
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/djmattyg007/mopidy-advanced-scrobbler
 	arch = any
 	license = Apache
