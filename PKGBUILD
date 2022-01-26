@@ -1,8 +1,8 @@
 # Maintainer: childofunix at gmail dot com
 
 pkgname="rmm-git"
-pkgver=0.0.9
-pkgrel=2
+pkgver=1.0.4.r1.g7df18bc
+pkgrel=1
 pkgdesc="RimWorld Mod Manager"
 arch=("any")
 url="https://github.com/Spoons/rmm.git"
