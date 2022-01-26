@@ -1,4 +1,5 @@
-# Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=libvarnam
 pkgver=3.2.6
