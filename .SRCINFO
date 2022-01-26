@@ -1,0 +1,14 @@
+pkgbase = cyberdrop-dl
+	pkgdesc = Cyberdrop downloader
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/wmw9/cyberdrop-dl
+	arch = x86_64
+	license = undefined
+	makedepends = cargo
+	makedepends = rust
+	conflicts = cyberdrop-dl-git
+	source = cyberdrop-dl-0.3.2.tar.gz::https://github.com/wmw9/cyberdrop-dl/archive/v0.3.2.tar.gz
+	sha256sums = fedd82fce80c672c66a09ca1f3f0b06180289e41cd91af954af14d729997bafe
+
+pkgname = cyberdrop-dl
