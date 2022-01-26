@@ -2,16 +2,17 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint
-pkgver=0.19.2
+pkgver=0.21.2
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
-url='https://dprint.dev/'
+url='https://github.com/dprint/dprint'
 license=('MIT')
-depends=('gcc-libs' 'bzip2')
+depends=('bzip2')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/dprint/dprint/archive/$pkgver.tar.gz")
-sha256sums=('13d8e07d4998801b12dfd1a287f23b2f2600db16f310af1af90b1c7b4eb23d15')
+options=('!lto') ## interferes with compiling
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('f83edb7f6c68509880c6a73187b66b288ae17441d031aa4d256131216290710b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
