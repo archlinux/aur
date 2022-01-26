@@ -2,7 +2,7 @@
 
 pkgname=python-aiopywttr
 _pkgname=aiopywttr
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Asynchronous wrapper for wttr.in weather forecast'
 url=https://github.com/monosans/aiopywttr
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=(python python-aiohttp python-pywttr-models)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('96622dbac569989c95a1e1be40f04b6523db5ae68d228e9689578e84038343cb')
+sha256sums=('11a1f83e0ab7e83d0aae98fc1373a543d129e92329d2b721e3237cc7cbe705cf')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
