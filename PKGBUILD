@@ -3,16 +3,16 @@
 
 pkgbase=noto-fonts-vf
 pkgname=(noto-fonts{,-slim}-vf)
-pkgver=20210725
+pkgver=20220126
 pkgrel=1
 pkgdesc='Google Noto variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
 arch=(any)
-_commit=5444496f4489ba6a4da2d7d7e9faa09ddb735e3b
+_commit=c27d6fad48db54fb253401999d79e9643bbb63c9
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/googlefonts/noto-fonts/archive/${_commit}.tar.gz"
         {46,66}-noto-{mono,serif,sans}.conf)
-sha256sums=('e27d5d8e8e706481c666953c541ed718ab0a6f53ac71239fa4d0dc53b7234299'
+sha256sums=('4f303cf97ac2b84cec41a644f597647cb13c98934c5874cfe3ae6acd5ab220dc'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 prepare(){
