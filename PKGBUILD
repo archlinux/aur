@@ -5,10 +5,9 @@
 
 _pkgname=librime
 pkgname=$_pkgname-sbxlm-git
-pkgver=1.4.0.r304.g0f7970c
+pkgver=1.4.0.r309.g62464a0
 _octagramcommit=f92e083052b9983ee3cbddcda5ed60bb3c068e24
 _luacommit=d45a41af2f9d731e3c1516a191cc3160e3cb8377
-_charcodecommit=b569184772b12965e3ebe1dfd431026951fed81c
 pkgrel=1
 epoch=1
 pkgdesc="Rime input method engine (声笔系列码 GIT version)"
