@@ -1,7 +1,7 @@
 pkgname=lighthouse-ethereum
-pkgver=2.1.0
+pkgver=2.1.1
 _pkgname=lighthouse
-pkgrel=2
+pkgrel=1
 pkgdesc='Ethereum 2.0 client'
 arch=('x86_64')
 url='https://lighthouse.sigmaprime.io/'
