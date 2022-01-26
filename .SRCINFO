@@ -1,7 +1,7 @@
 pkgbase = freecad-linkstage3-git
 	pkgdesc = A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout
-	pkgver = asm3.0.11.r7977.gcc06e8db3c
-	pkgrel = 1
+	pkgver = asm3.0.11.r8054.gaa5c706ef6
+	pkgrel = 2
 	url = http://www.freecadweb.org/
 	arch = x86_64
 	license = LGPL

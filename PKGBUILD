@@ -1,8 +1,8 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=freecad-linkstage3-git
-pkgver=asm3.0.11.r7977.gcc06e8db3c
-pkgrel=1
+pkgver=asm3.0.11.r8054.gaa5c706ef6
+pkgrel=2
 pkgdesc='A general purpose 3D CAD modeler - LinkStage3 dev branch, git checkout'
 arch=('x86_64')
 url='http://www.freecadweb.org/'
@@ -11,8 +11,8 @@ conflicts=('freecad')
 depends=(
     'boost-libs' 'curl' 'shared-mime-info' 'hicolor-icon-theme' 'utf8cpp' 'jsoncpp'
     'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'med' 'openmpi'
-    'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit' 
-    'python-pivy' 'python-pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'     
+    'qt5-base' 'qt5-declarative' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit'
+    'python-pivy' 'python-pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
 )
 makedepends=(
     'cmake' 'ninja' 'gcc-fortran'
@@ -38,27 +38,21 @@ sha256sums=(
 
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
+    cd "$srcdir/$_gitname"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_//'
 }
 
 prepare() {
-    cd "${srcdir}/${_gitname}"
+    cd "$srcdir/$_gitname"
     # git apply < "$srcdir/patch_std_gnupp14.patch"
 }
 
 build() {
-    cd "${srcdir}/${_gitname}"
-
-    rm build -rf
-    mkdir build -p
-    pushd build >/dev/null
-
     # Those deprecation warnings make debugging a nightmare
     export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
     export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 
-    cmake -GNinja -Wno-dev .. \
+    cmake -B build -S "$_gitname" -G Ninja -Wno-dev \
         -DBUILD_QT5=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_DATADIR='/usr/share/freecad' \
@@ -69,15 +63,13 @@ build() {
         -DFREECAD_USE_QT_FILEDIALOG=ON \
         -DPYTHON_EXECUTABLE=/usr/bin/python
 
-    ninja -j$(($(nproc)-1))
+    ninja -C build
 }
 
 package() {
-    pushd "${srcdir}/${_gitname}/build"
-        DESTDIR="${pkgdir}" ninja install
-    popd
+    DESTDIR="$pkgdir" ninja -C build install
 
-    pushd "${pkgdir}"
+    pushd "$pkgdir"
         # Symlink to /usr/bin
         install -dm755 "usr/bin"
         ln -sf "/usr/lib/freecad/bin/FreeCAD"       "usr/bin/freecad"
