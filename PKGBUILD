@@ -10,7 +10,9 @@ license=(unknown)
 url="https://github.com/SpiritQuaddicted/sourceforge-file-download"
 depends=(bash wget)
 makedepends=(git)
-source=("$pkgname::git+https://github.com/SpiritQuaddicted/sourceforge-file-download.git")
+provides=(sf-down)
+conflicts=(sf-down)
+source=("${pkgname}::git+https://github.com/SpiritQuaddicted/sourceforge-file-download.git")
 sha256sums=('SKIP')
 
 pkgver() {

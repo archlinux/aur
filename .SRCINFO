@@ -8,8 +8,9 @@ pkgbase = sf-down-git
 	makedepends = git
 	depends = bash
 	depends = wget
+	provides = sf-down
+	conflicts = sf-down
 	source = sf-down-git::git+https://github.com/SpiritQuaddicted/sourceforge-file-download.git
 	sha256sums = SKIP
 
 pkgname = sf-down-git
-
