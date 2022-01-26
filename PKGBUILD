@@ -2,7 +2,7 @@
 
 _gemname=dry-auto_inject
 pkgname=ruby-$_gemname
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Container-agnostic automatic constructor injection mixin"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('ruby-rdoc')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('7cc0aee99b59ed6cd610779e98ee8382d32c5c1b0a93933a32e2f8a9eb7c14a35dcaa675a059af42a0ed914af6bcec2a67173cd70cc6d248411c831b7a2bde49')
+b2sums=('e11cbbc2cacc84bf9cd8918295b532e5b32d4fb46b6738a928a765da203b78681ad2e0cbab2f24119ad3eb0547fa96445d69b09b9e47410de568ba34a2485379')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

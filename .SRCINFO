@@ -1,6 +1,6 @@
 pkgbase = ruby-dry-auto_inject
 	pkgdesc = Container-agnostic automatic constructor injection mixin
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/dry-rb/dry-auto_inject
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = ruby-dry-auto_inject
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-dry-container
-	noextract = dry-auto_inject-0.8.0.gem
+	noextract = dry-auto_inject-0.9.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/dry-auto_inject-0.8.0.gem
-	b2sums = 7cc0aee99b59ed6cd610779e98ee8382d32c5c1b0a93933a32e2f8a9eb7c14a35dcaa675a059af42a0ed914af6bcec2a67173cd70cc6d248411c831b7a2bde49
+	source = https://rubygems.org/downloads/dry-auto_inject-0.9.0.gem
+	b2sums = e11cbbc2cacc84bf9cd8918295b532e5b32d4fb46b6738a928a765da203b78681ad2e0cbab2f24119ad3eb0547fa96445d69b09b9e47410de568ba34a2485379
 
 pkgname = ruby-dry-auto_inject
