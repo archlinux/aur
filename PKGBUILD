@@ -2,7 +2,7 @@
 # Helpful suggestions by Foxboron
 pkgname=solo2-cli-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Solo 2 CLI'
 arch=('x86_64')
 url="https://github.com/solokeys/solo2-cli"
@@ -20,10 +20,10 @@ source=(
   "solo2.bash::${url}/releases/download/v${pkgver}/solo2.completions.bash"
   "solo2.zsh::${url}/releases/download/v${pkgver}/solo2.completions.zsh"
   "LICENSE-MIT::${url}/raw/v${pkgver}/LICENSE-MIT")
-sha256sums=('5dcb02977bc0599bca6e46518ba28ecd7aa749619283f282f32730d5e89d7a81'
+sha256sums=('0babee0afd2a2b1859a6ef373c0f2b65b6c3ee20fbffae6918d4b6c29b37bad9'
             '4133644b12a4e938f04e19e3059f9aec08f1c36b1b33b2f729b5815c88099fe3'
-            '52381afe1d5cd569b9c305127c8618bf4291a051184016d81e24b21b5cf00874'
-            'c9142ff446eb839ae37140aa9e9a48c489432c4774744b0e0010a2f48c39887a'
+            '8cff104a72d7af2292c2804af14a934cb57ae8dbf4b721c0acaf5aa4952d099d'
+            'c8bf857d31c72c348bd7c83ea28d2c5f584603b0bd8cdc61759972b5309d1f83'
             'bdc889204ff84470aaad9f6fc66829cd1cdfb78b307fe3a8c0fe7be5353e1165')
 
 package() {

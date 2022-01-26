@@ -1,7 +1,7 @@
 pkgbase = solo2-cli-bin
 	pkgdesc = Solo 2 CLI
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/solokeys/solo2-cli
 	arch = x86_64
 	license = Apache
@@ -17,10 +17,10 @@ pkgbase = solo2-cli-bin
 	source = solo2.bash::https://github.com/solokeys/solo2-cli/releases/download/v0.1.1/solo2.completions.bash
 	source = solo2.zsh::https://github.com/solokeys/solo2-cli/releases/download/v0.1.1/solo2.completions.zsh
 	source = LICENSE-MIT::https://github.com/solokeys/solo2-cli/raw/v0.1.1/LICENSE-MIT
-	sha256sums = 5dcb02977bc0599bca6e46518ba28ecd7aa749619283f282f32730d5e89d7a81
+	sha256sums = 0babee0afd2a2b1859a6ef373c0f2b65b6c3ee20fbffae6918d4b6c29b37bad9
 	sha256sums = 4133644b12a4e938f04e19e3059f9aec08f1c36b1b33b2f729b5815c88099fe3
-	sha256sums = 52381afe1d5cd569b9c305127c8618bf4291a051184016d81e24b21b5cf00874
-	sha256sums = c9142ff446eb839ae37140aa9e9a48c489432c4774744b0e0010a2f48c39887a
+	sha256sums = 8cff104a72d7af2292c2804af14a934cb57ae8dbf4b721c0acaf5aa4952d099d
+	sha256sums = c8bf857d31c72c348bd7c83ea28d2c5f584603b0bd8cdc61759972b5309d1f83
 	sha256sums = bdc889204ff84470aaad9f6fc66829cd1cdfb78b307fe3a8c0fe7be5353e1165
 
 pkgname = solo2-cli-bin
