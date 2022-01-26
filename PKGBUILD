@@ -1,7 +1,7 @@
 # Maintainer: Jesse McClure <code at jessemcclure dot org>
 _fossil=tabby
 pkgname=${_fossil}-fossil
-pkgver=1.2r54.ff6db57fc2
+pkgver=1.4r105.2745794ce3
 pkgrel=1
 pkgdesc='Tabbed tiling wayland compositor'
 arch=('x86_64')
@@ -22,7 +22,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_fossil}"
-	make protocols
 	make PREFIX=/usr
 }
 
