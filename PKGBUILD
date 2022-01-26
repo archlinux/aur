@@ -1,7 +1,8 @@
-# Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 
 pkgname=govarnam-git
-pkgver=1.6.0.r8.g35460dc
+pkgver=1.7.2.r0.gddcabaa
 pkgrel=1
 pkgdesc="Transliteration and reverse transliteration for Indian languages"
 arch=('x86_64')
