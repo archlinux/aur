@@ -1,14 +1,14 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname='pyload-ng'
-pkgver=0.5.0b2.dev9
-pkgrel=3
+pkgver=0.5.0b2.dev11
+pkgrel=1
 pkgdesc="The free and open-source Download Manager written in pure Python"
 url="https://pyload.net/"
 license=('AGPL3')
 arch=('any')
 depends=('python-semver' 'python-pycurl' 'python-js2py' 'python-filetype' 'python-cryptography' 'python-bitmath'
-	 'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-flask-babel'
-	 'python-cheroot')
+         'python-flask-themes2' 'python-flask-session' 'python-flask-compress' 'python-flask-caching' 'python-flask-babel'
+         'python-cheroot')
 optdepends=('caffeine: For AntiStandby plugin'
             'python-beautifulsoup4: for XFileSharing plugin'
             'python-slixmpp: for XMPP plugin'
@@ -16,7 +16,7 @@ optdepends=('caffeine: For AntiStandby plugin'
             'python-beaker: for some accounts') # <-- honestly I have no idea for which accounts but I saw there were some imports that needed beaker modules in code.
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('d5696d660b666f0676d5fdcfbb0040346a46e1177539202b7ff8a39d3d247b2b')
+sha256sums=('9bfc90931259369807d3f0b172693d292af027f593fabaab2211941fb7bda541')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
