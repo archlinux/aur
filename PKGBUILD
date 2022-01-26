@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=teehee
-pkgver=0.2.6
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='A modal terminal hex editor'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.sig")
-sha256sums=('08dd44636e6a6426dff8cd39fb74da546e927ce9433c38c446c8b4b37c3e5024'
+sha256sums=('3f14f684f7512f66801bfc3298c0a823ad7ff604925969c9daeaab3bd8e0dd3c'
             'SKIP')
 validpgpkeys=('9330E5D6861507BEFBF1893347E208E66179DC94')
 
@@ -19,10 +19,10 @@ build() {
     cargo build --release --locked --all-features
 }
 
-# check() {
-#     cd "${pkgname}-${pkgver}"
-#     cargo test --release --locked --all-features
-# }
+check() {
+    cd "${pkgname}-${pkgver}"
+    cargo test --release --locked --all-features
+}
 
 package() {
     cd "${pkgname}-${pkgver}"
