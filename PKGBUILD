@@ -2,7 +2,7 @@
 
 pkgname=python-wsgidav
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic WebDAV server based on WSGI"
 arch=("any")
 license=("MIT")
@@ -38,6 +38,7 @@ package() {
     cd "WsgiDAV-${pkgver}"
 
     PYTHONHASHSEED=0 python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+    rm "${pkgdir}/usr/CHANGELOG.md"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-wsgidav/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/python-wsgidav/README.md"
