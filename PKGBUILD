@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
 pkgver=1.63+r568.20220124.ga5a431d
-pkgrel=6
+pkgrel=7
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
 license=('PerlArtistic')
@@ -25,6 +25,7 @@ depends=(
   'perl-libwww'
   'perl-lwp-protocol-https'
   'perl-package-deprecationmanager'
+  'perl-strictures'
   'perl-text-levenshtein'
   'perl-xml-libxml'
 )
