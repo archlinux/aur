@@ -10,7 +10,7 @@ url="https://github.com/fofix/$_gitname.git"
 license=('GPL')
 groups=('games')
 makedepends=('git' 'cython2' 'sdl_mixer' 'python2-setuptools')
-depends=('python2' 'sdl_mixer')
+depends=('python2' 'sdl_mixer' 'soundtouch')
 source=("git+$url")
 sha256sums=('SKIP')
 

@@ -12,6 +12,7 @@ pkgbase = python2-fretwork-git
 	makedepends = python2-setuptools
 	depends = python2
 	depends = sdl_mixer
+	depends = soundtouch
 	source = git+https://github.com/fofix/fretwork.git
 	sha256sums = SKIP
 
