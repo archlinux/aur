@@ -1,15 +1,15 @@
 # Maintainer: J. Nathanael Philipp <nathanael@philipp.land>
-pkgname=psync
-pkgver=0.3.1
+pkgname=backup
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Python wrapper for rsync"
 arch=("any")
-url="https://github.com/jnphilipp/psync"
+url="https://github.com/jnphilipp/backup"
 license=("GPL3+")
 makedepends=("git" "help2man")
 depends=("python" "python-lxml" "rsync")
 optdepends=("python-notify2: Desktop notifications")
-source=("git://github.com/jnphilipp/psync.git")
+source=("git://github.com/jnphilipp/backup.git")
 md5sums=(SKIP)
 
 package() {

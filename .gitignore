@@ -1,5 +1,5 @@
 pkg/
 src/
-psync/
+backup/
 *.tar.gz
 *.pkg.tar.*

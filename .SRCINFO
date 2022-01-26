@@ -1,8 +1,8 @@
-pkgbase = psync
+pkgbase = backup
 	pkgdesc = Python wrapper for rsync
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
-	url = https://github.com/jnphilipp/psync
+	url = https://github.com/jnphilipp/backup
 	arch = any
 	license = GPL3+
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = psync
 	depends = python-lxml
 	depends = rsync
 	optdepends = python-notify2: Desktop notifications
-	source = git://github.com/jnphilipp/psync.git
+	source = git://github.com/jnphilipp/backup.git
 	md5sums = SKIP
 
-pkgname = psync
+pkgname = backup
