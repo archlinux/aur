@@ -2,8 +2,8 @@
 
 _pkgname=nvidia-vulkan-utils
 pkgname=${_pkgname}-nvlax
-pkgver=470.62.12
-pkgrel=2
+pkgver=470.62.22
+pkgrel=1
 pkgdesc="NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -36,13 +36,15 @@ _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=(
   "nvidia-drm-outputclass.conf"
   "${_pkgname}.sysusers"
+  "nvidia.rules"
   "${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
   "nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f"
 )
 sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
   "4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499"
-  "e7d21ce7bf4cf034cb7e6162dfc8b7cfb9bb3144fbb70c0c2e6b8aeaf6379665f15117edbb685ea7d97f0956f89d2a58f4c77645af967d33072cbc3186d5e503"
+  "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
+  "9e9f6a665034495bbfd438567fb9a0998adbfcc979fd1e0370d355b4f312e4c1fb5162b15e5264cc89d3aca6dcaf84ce7ebfff0885ac783dfcd8be3b99b3b96f"
   "SKIP"
 )
 
@@ -210,6 +212,11 @@ package() {
   install -Dm644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
 
   install -Dm644 "${srcdir}/${_pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+
+  install -Dm644 "${srcdir}/nvidia.rules" "$pkgdir"/usr/lib/udev/rules.d/60-nvidia.rules
+
+  echo "blacklist nouveau" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+  echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
   create_links
 }
