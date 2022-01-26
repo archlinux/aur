@@ -2,8 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=dktools
-pkgver=4.31.3
-pkgver=4.31.4
+pkgver=4.32.0
 pkgrel=1
 pkgdesc="Collection of tools by Dirk Krause, including converters, daemons, Perl modules, development tools, administration tools and printing tools."
 arch=('i686' 'x86_64')
@@ -14,7 +13,7 @@ makedepends=('wxgtk3') # also optional runtime dependency for wxbmpp, wxdkct and
 optdepends=('wxgtk3: for wxbmpp, wxdkct and wximgsz'
 	    'mariadb-libs: for itadmin')
 source=(http://sourceforge.net/projects/dktools/files/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('135c2d8e7cd64fa841d6b2187b32d4655fd05a444abb871a8cbf9bd4374dea5e')
+sha256sums=('2795d1d04313427132c02206a180f195cc94aa48355415c1988cfaa9b025650a')
 
 build() {
   cd $pkgname-$pkgver
