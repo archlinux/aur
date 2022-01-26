@@ -1,7 +1,7 @@
 # Maintainer: Nathaniel Cook <nvcook42@gmail.com>
 pkgname=rzip
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="rzip is a compression program, similar in functionality to gzip or bzip2, but able to take advantage long distance redundencies in files, which can sometimes allow rzip to produce much better compression ratios than other programs."
 arch=('x86_64')
@@ -14,6 +14,7 @@ sha256sums=('4bb96f4d58ccf16749ed3f836957ce97dbcff3e3ee5fd50266229a48f89815b7')
 build() {
 	cd "$pkgname-$pkgver"
 	./configure --prefix=/usr
+    make clean
 	make
 }
 
