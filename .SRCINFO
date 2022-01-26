@@ -1,7 +1,7 @@
 pkgbase = bind-git
 	pkgdesc = A complete, highly portable implementation of the DNS protocol: development version
 	pkgver = 9.main.r34613.ba181fe83d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.isc.org/software/bind/
 	install = bind.install
 	arch = x86_64
@@ -50,6 +50,7 @@ pkgbase = bind-git
 	provides = bind-tools
 	provides = dnsutils
 	provides = dns-server
+	conflicts = bind
 	conflicts = bind-tools
 	conflicts = dnsutils
 	replaces = bind-tools

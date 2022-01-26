@@ -3,7 +3,7 @@
 pkgname=bind-git
 reponame=bind9
 pkgver=9.main.r34613.ba181fe83d
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete, highly portable implementation of the DNS protocol: development version'
 url='https://www.isc.org/software/bind/'
 license=('MPL2')
@@ -15,7 +15,7 @@ makedepends=('dnssec-anchors' 'icu' 'jemalloc' 'json-c' 'krb5' 'libcap'
 depends=('bash' 'dnssec-anchors' 'glibc' 'icu' 'jemalloc' 'json-c' 'krb5'
     'libcap' 'libedit' 'libidn2' 'libmaxminddb' 'libnsl' 'libuv' 'libxml2'
     'lmdb' 'openssl' 'python' 'python-ply' 'readline' 'xz' 'zlib')
-conflicts=('bind-tools' 'dnsutils')
+conflicts=('bind' 'bind-tools' 'dnsutils')
 replaces=('bind-tools' 'dnsutils' 'host')
 provides=('bind' 'bind-tools' 'dnsutils' 'dns-server')
 backup=('etc/named.conf'
