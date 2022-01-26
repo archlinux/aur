@@ -2,7 +2,7 @@
 
 pkgname=python-vkbottle-types
 _pkgname=vkbottle-types
-pkgver=5.131.131.13
+pkgver=5.131.133.13
 pkgrel=1
 pkgdesc='Types for vkbottle'
 url=https://github.com/vkbottle/types
