@@ -1,5 +1,5 @@
 pkgbase = theme.sh-git
-	pkgver = 20210107.45d3236
+	pkgver = 20220109.69d9d2b
 	pkgrel = 1
 	arch = any
 	provides = theme.sh
@@ -7,4 +7,3 @@ pkgbase = theme.sh-git
 	md5sums = SKIP
 
 pkgname = theme.sh-git
-

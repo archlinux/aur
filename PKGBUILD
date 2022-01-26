@@ -1,11 +1,11 @@
 pkgname=theme.sh-git
 _pkgname=theme.sh
 provides=("theme.sh")
-pkgver=20210108.9156670
+pkgver=20220109.69d9d2b
 pkgrel=1
 arch=('any')
 source=("git+https://github.com/lemnos/theme.sh.git")
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -13,6 +13,6 @@ pkgver() {
 }
 
 package() {
-	chmod +x "$srcdir/$_pkgname/theme.sh"
-  install -Dm755 "$srcdir/$_pkgname/theme.sh" "$pkgdir/usr/bin/theme.sh"
+	chmod +x "$srcdir/$_pkgname/bin/theme.sh"
+	install -Dm755 "$srcdir/$_pkgname/bin/theme.sh" "$pkgdir/usr/bin/theme.sh"
 }
