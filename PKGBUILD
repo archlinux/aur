@@ -10,7 +10,7 @@ pkgrel=2
 arch=('x86_64' 'i686')
 
 makedepends=(
-    'bzr' 'cmake' 'ninja' 'vala' 'intltool' 'xcftools' 'python-dulwhich'
+    'bzr' 'cmake' 'ninja' 'vala' 'intltool' 'xcftools' 'python-dulwich'
 )
 depends=(
     'libpeas' 'upower' 'libappindicator-gtk3' 'gobject-introspection'
