@@ -2,7 +2,7 @@
 
 pkgname=terraform-ls
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Terraform Language Server'
 arch=('x86_64')
 url='https://github.com/hashicorp/terraform-ls'
@@ -10,6 +10,7 @@ license=('custom:MPL2')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ec028b03bb80a220e6ebed17c470ac6319839f53c6ad0a83b0e060e08a197ac1')
+options=(!lto)
 
 build() {
     cd "$pkgname-$pkgver"
