@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Macast
+Comment=DLNA Media Renderer
+Exec=/usr/bin/macast
+Icon=/usr/share/icons/Macast.png
+Terminal=false
+Type=Application
+Categories=Video;AudioVideo;

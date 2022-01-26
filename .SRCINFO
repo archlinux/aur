@@ -1,0 +1,18 @@
+pkgbase = macast-bin
+	pkgdesc = DLNA Media Renderer
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/xfangfang/Macast
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = mpv
+	conflicts = macast-git
+	source = macast::https://github.com/xfangfang/Macast/releases/download/v0.7/Macast-Linux-v0.7-amd64
+	source = icon.png::https://github.com/xfangfang/Macast/raw/main/macast/assets/icon.png
+	source = macast.desktop
+	sha256sums = fa3f5101e9c2c8b5aad33ea3ebcbddd4c9a605fca024357197ae1c9398c72661
+	sha256sums = c0736b51b9bb98859b83be68e246d60616f7f745b1a2254e2020b267852f4086
+	sha256sums = a246d1ed58ece390f50a888d342ba1c8933a63bdd838c4199b3efdd40422aa0d
+
+pkgname = macast-bin
