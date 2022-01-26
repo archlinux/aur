@@ -6,8 +6,8 @@
 
 pkgbase=element-desktop-git-greentext
 pkgname=(element-{desktop,web}-git-greentext)
-pkgver=1.9.9.r11.g840867bc0+greentext
-pkgrel=2
+pkgver=1.9.9.r27.gc6c1238ce+greentext
+pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
 url="https://element.io"
