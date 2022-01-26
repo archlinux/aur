@@ -4,10 +4,10 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=sway9
-pkgver=1.6.1
+pkgver=1.7
 epoch=1
-pkgrel=3
-_commit=8370a4bb068ce8db4bc6da901e5d964610681b3a
+pkgrel=1
+_commit=8afad182dffe7b4dc68481a1fcb301e427c8b536
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/9ary/sway9'
@@ -28,7 +28,6 @@ provides=(sway)
 conflicts=(sway)
 backup=(etc/sway/config)
 optdepends=(
-  'alacritty: Terminal emulator used by the default config'
   'dmenu: Application launcher'
   'grim: Screenshot utility'
   'i3status: Status line'
