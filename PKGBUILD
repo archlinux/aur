@@ -1,6 +1,6 @@
 # Maintainer: J. Nathanael Philipp <nathanael@philipp.land>
 pkgname=backup
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Python wrapper for rsync"
 arch=("any")
