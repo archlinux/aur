@@ -6,6 +6,7 @@ pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
 license=('MIT')
+options=('!lto')
 makedepends=('git' 'cargo')
 conflicts=('pueue')
 provides=('pueue')
