@@ -2,7 +2,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=sqlfluff
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A dialect-flexible and configurable SQL linter"
 arch=('any')
@@ -29,8 +29,8 @@ depends=(
 makedepends=('python-setuptools')
 #checkdepends=('python-hypothesis')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sqlfluff/sqlfluff/archive/$pkgver.tar.gz")
-sha512sums=('d399f00d03dfe1b75377985d1b222e353e4dae75a696904aa477c4913dedb3d82f90c11dde364b1a7391af8134e56dc19d3d1390edddb116f84c6614544df074')
-b2sums=('3b20d8a8ce04faae0b59174dadc74eb8b3f7ea58cc2945e2f0a53a121a79573366b3f1f9c3897b4056083f42166237feae3869014601e02c679b20917ea8fd1d')
+sha512sums=('754934c356ee381223d4103c2e3dad5e8da99a4308cbd28f13bae1d2657e108f9402a46e4fee394b3039eec4c2860dbb675075f5806dcf60c20d9633c13d1ef1')
+b2sums=('cf63a8f743d4dfa5ee084933e0eec37ffa6f1454b17bfdee69a2b52442ba27af57afdf3a2ed3a9dd32ce470c5471276748f44eaac7549b721e6b08fe038330c7')
 
 build() {
   cd "$pkgname-$pkgver"
