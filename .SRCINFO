@@ -2,11 +2,10 @@ pkgbase = lenopow
 	pkgdesc = A script to enable/disable battery conservation mode in Lenovo Ideapad/LEGION notebooks.
 	pkgver = 1.0.4
 	pkgrel = 1
-	url = https://github.com/schinfo/lenopow
+	url = https://github.com/makifdb/lenopow
 	arch = any
 	license = custom:unlicense
-	source = https://github.com/schinfo/lenopow/archive/1.0.4.tar.gz
-	sha256sums = 3a018b070e08df728a39bdd6d4bf1a75083b06c3fe6a0b54ac11e6895fa2e4ec
+	source = https://github.com/makifdb/lenopow/archive/1.0.4.tar.gz
+	sha256sums = d4b3e4453a65ebe3e67dea817e162aea391bceb8ab6b8f7e3cb02f25f41a13e4
 
 pkgname = lenopow
-
