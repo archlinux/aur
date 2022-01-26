@@ -4,7 +4,7 @@
 
 pkgname=python-xyzservices
 _name=xyzservices
-pkgver=2021.11.0
+pkgver=2022.1.1
 pkgrel=1
 pkgdesc='A lightweight library providing a repository of available XYZ services offering raster basemap tiles. The repository is provided via Python API and as a compressed JSON file.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('ded963a7eae6d1d7807f8399bae3031d13993483668e5d390fd98b387d6020f7743f2c50f89ff391aafbd000268dcc96306d3e4cc6379779d2bcb5885b772ea8')
+b2sums=('3ccf3d8e73f88f7fab1b308ae7b170bc06b72505c4fd3d7f6a9375e54a8ab7ab05acab093a27fd72f5c02731f4b7985d77ca64e472223297fdae1e288010226c')
 
 build() {
   cd "$_name-$pkgver" || exit
