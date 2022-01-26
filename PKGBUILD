@@ -2,15 +2,15 @@
 # Contributor: mdsitton <matthewsitton@gmail.com>
 pkgname='python2-fretwork-git'
 _gitname='fretwork'
-pkgver=0.2.0.r1.8d110d7
-pkgrel=3
+pkgver=0.5.0.r24.f63ad7d
+pkgrel=1
 pkgdesc=" Shared code for FoFiX and FoF:R"
 arch=('any')
 url="https://github.com/fofix/$_gitname.git"
 license=('GPL')
 groups=('games')
-makedepends=('git' 'python2' 'cython2' 'sdl_mixer')
-depends=()
+makedepends=('git' 'cython2' 'sdl_mixer' 'python2-setuptools')
+depends=('python2' 'sdl_mixer')
 source=("git+$url")
 sha256sums=('SKIP')
 
