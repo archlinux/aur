@@ -5,7 +5,7 @@
 
 pkgname=anbox-git
 pkgver=r1358.84f0268
-pkgrel=5
+pkgrel=7
 epoch=1
 arch=('x86_64')
 url="http://anbox.io/"
@@ -19,8 +19,9 @@ source=("git+https://github.com/anbox/anbox.git"
 	'lxc4.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/lxc4.patch'
 	'sdbus.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/fc60972afd4ff0c096498e28557b9a16e801aa7f/community/anbox/no-bundled-sdbus.patch'
 	'delayed-start.patch::https://gitlab.alpinelinux.org/alpine/aports/-/raw/70a1a8afb7b6ac37291d382e6e5cc7561fc88626/community/anbox/give-more-time-to-start.patch'
-#  'webview-opengles3.patch::https://github.com/anbox/anbox/pull/1877.patch'
-  'ByteSizeLong.patch::https://github.com/anbox/anbox/pull/1480.patch'
+	'egl.patch::https://github.com/anbox/anbox/pull/1877.patch'
+	'ByteSizeLong.patch::https://github.com/anbox/anbox/pull/1480.patch'
+	'lxc4010.patch::https://github.com/anbox/anbox/pull/1938.patch'
 	'cpu_features.patch'
 	'desktop-dir.patch'
 	'anbox-container-manager.service'
@@ -36,10 +37,12 @@ sha256sums=('SKIP'
             'c1071203defdeaee56122913a6d7e67ac496c889a0c59cb889d94a58bc655bfa'
             '7c0626afaf1ce004ac2c57cd89db393f9a6ba21f1087001d15278a7bd79c8219'
             '253c211455ff0cfaa058a0b80eb41d58f84ee646c0c67dbcbcc888b5833009a7'
+            'c684ff93824137d79a384a134e644849ef33c986f2d9e192636fc8d80ef9baba'
             'c922afe6a2cd4fe7296a0921e47e09abedf0104dc23d0037010d1df4cc42308b'
+            'b01699c635efcff48fc11f8d20e7f88e6497aba912496df2e379be46e584a6f4'
             'eeeb4dd40d30d0e8c0f0001d44ca7876c1c564dfc31b24ecfb871fd133037825'
             'd1e2e3fa1299b423f1d98cbd3c591d853f1ce8646f508ef838fe714f986fc5b2'
-            'be18c27f349560d46f7d7912b3b84d503e477fb643c55e4a7d6de9a84be93d0b'
+            'f76cf723e3436333176bcb778b2c32988d9789f14d339ee1cb8c13ef35e2fdd6'
             '1f22dbb5a3ca6925bbf62899cd0f0bbaa0b77c879adcdd12ff9d43adfa61b1d8'
             '210eb93342228168f7bb632c8b93d9bfda6f53f62459a6b74987fa1e17530475'
             '3e07dc524a827c1651857cce28a06c1565bc5188101c140ed213bbafedc5abff'
