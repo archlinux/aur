@@ -1,14 +1,14 @@
 pkgbase = python-vkbottle-types
 	pkgdesc = Types for vkbottle
-	pkgver = 5.131.131.12
-	pkgrel = 4
+	pkgver = 5.131.131.13
+	pkgrel = 1
 	url = https://github.com/vkbottle/types
 	arch = any
 	license = unknown
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/v/vkbottle-types/vkbottle-types-5.131.131.12.tar.gz
-	sha256sums = 9bebc09bbbf167777bf7c60b0ddee817e5eb63c2d32636dbed2fbe738a1c21f6
+	source = https://files.pythonhosted.org/packages/source/v/vkbottle-types/vkbottle-types-5.131.131.13.tar.gz
+	sha256sums = 8701af252163385ad509058546db017436520b04087b41e6d25194cc7f13b0b0
 
 pkgname = python-vkbottle-types
