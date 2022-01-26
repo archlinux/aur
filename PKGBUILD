@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=waybackpy
-pkgver=3.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='CLI tool that interfaces with the Internet Archives Wayback Machine API'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-requests' 'python-click')
 makedepends=('python-setuptools')
 provides=('python-waybackpy')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/w/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('264aa84a76365e8355ede96cb6cf02a1945295724ddfb7d4a43e6f3d8f97740a')
+sha256sums=('4a8b66c5de6c1a62076de798a8b7000cad9782ec7de45ac5dc71cc00a4674c35')
 
 build() {
   cd "$pkgname-$pkgver"
