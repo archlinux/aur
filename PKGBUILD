@@ -8,7 +8,7 @@
 
 pkgbase=nvidia-vulkan
 pkgname=('nvidia-vulkan' 'nvidia-vulkan-dkms' 'nvidia-vulkan-utils' 'opencl-nvidia-vulkan' 'lib32-nvidia-vulkan-utils' 'lib32-opencl-nvidia-vulkan')
-pkgver=470.62.12
+pkgver=470.62.22
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -19,10 +19,14 @@ options=('!strip')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 source=("${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
         'nvidia-drm-outputclass.conf'
-        'nvidia-vulkan-utils.sysusers')
-sha512sums=('e7d21ce7bf4cf034cb7e6162dfc8b7cfb9bb3144fbb70c0c2e6b8aeaf6379665f15117edbb685ea7d97f0956f89d2a58f4c77645af967d33072cbc3186d5e503'
+        'nvidia-vulkan-utils.sysusers'
+        'nvidia.rules'
+        'kernel-5.16-std.diff')
+sha512sums=('9e9f6a665034495bbfd438567fb9a0998adbfcc979fd1e0370d355b4f312e4c1fb5162b15e5264cc89d3aca6dcaf84ce7ebfff0885ac783dfcd8be3b99b3b96f'
             'de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
-            '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499')
+            '4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
+            '68c9ac6444cdb3c637eee4135cf1a5a137a233ab12e682e3dbe5b3db6e704907b2759567e99f13026f1e33d8ccc78f3dad12d471cc2ddf9c3d4370697dc169e9'
+            '2c86a2a1f8c9fd48b0fbcdfdf0d53efd28d31a411dfb5d9ac5aba84014cdd77df898ab1b9669edafa248f85c88d478a5454165567e3c8a5c40b803a2c8861e84')
 
 create_links() {
     # create soname links
@@ -39,8 +43,8 @@ prepare() {
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
-    #patch -Np1 -i ../kernel-5.11.patch
-    #patch -Np1 -i ../kernel-5.12.patch
+    # Thanks frogs - https://github.com/Frogging-Family/nvidia-all/blob/master/patches/kernel-5.16-std.diff
+    patch -Np1 -i ../kernel-5.16-std.diff
 
     # Fixing regex pattern for Module.symvers
     sed -i "s/${TAB}vmlinux/${TAB}*vmlinux/g" kernel/conftest.sh
@@ -83,8 +87,8 @@ package_nvidia-vulkan() {
 
     find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
-    echo "blacklist nouveau" |
-        install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+    echo "blacklist nouveau" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
+    echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
     install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 "${srcdir}/${_pkg}/LICENSE"
 }
@@ -258,6 +262,8 @@ package_nvidia-vulkan-utils() {
     install -D -m644 "${srcdir}/nvidia-drm-outputclass.conf" "${pkgdir}/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf"
 
     install -Dm644 "${srcdir}/nvidia-vulkan-utils.sysusers" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
+
+    install -Dm644 "${srcdir}/nvidia.rules" "$pkgdir"/usr/lib/udev/rules.d/60-nvidia.rules
 
     create_links
 }
