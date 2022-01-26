@@ -15,6 +15,7 @@ depends=(
     'qt5-declarative'
     'qt5-quickcontrols'
     'qt5-quickcontrols2'
+    'qt5-graphicaleffects'
     'hicolor-icon-theme'
 )
 makedepends=(
@@ -22,11 +23,15 @@ makedepends=(
     'golang-golang-x-text'
     'qt5-base'
     'qt5-tools'
+    'qt5-svg'
     'git'
     'qt-installer-framework'
     'pkgconf'
     'cmake'
     'fakeroot'
+)
+conflicts=(
+    'riseup-vpn'
 )
 source=(
     "git+https://0xacab.org/leap/bitmask-vpn.git"
