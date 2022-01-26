@@ -1,21 +1,20 @@
 pkgbase = btc-rpc-explorer
 	pkgdesc = Simple, database-free Bitcoin blockchain explorer, via RPC to Bitcoin Core
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/janoside/btc-rpc-explorer
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=10
-	noextract = btc-rpc-explorer-3.2.0.tgz
+	noextract = btc-rpc-explorer-3.3.0.tgz
 	options = !strip
 	backup = etc/default/btc-rpc-explorer
-	source = https://registry.npmjs.org/btc-rpc-explorer/-/btc-rpc-explorer-3.2.0.tgz
+	source = https://registry.npmjs.org/btc-rpc-explorer/-/btc-rpc-explorer-3.3.0.tgz
 	source = btc-rpc-explorer.service
 	source = btc-rpc-explorer.default
-	sha256sums = 442f9d9526de94800f7b207bbba521289ab1339bc5e0a6a330a906806e4920bd
+	sha256sums = 2f9f24240ee06ea7e4846a63e0e5881c1d2341e4f14654805ccad82be17b3014
 	sha256sums = f19d942b6b6789c7deeb076e70eaf140e65a18d9cfe9ceab30cf2c33120e25f3
 	sha256sums = 98a6cdcf741807d2cc98825b074a882e520563b7b6528c24d2abd090bc007d0a
 
 pkgname = btc-rpc-explorer
-
