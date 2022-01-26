@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=97.0.4692.71
+pkgver=97.0.4692.99
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -31,6 +31,7 @@ options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
+        wayland-fix-binding-to-wrong-version.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-93-ffmpeg-4.4.patch
         unbundle-ffmpeg-av_stream_get_first_dts.patch
@@ -38,12 +39,13 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('8ae189d44b782fe4d4942962260dbf5f753abf141148727d9fe82852778dfd7c'
+sha256sums=('c91bae205705b367f2cfc1f72ce1ee99b2ceb5edfc584e15c60a6ab5ff01ecba'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '7af5c0a55a20c0fb496b2f4448d89203a83bb1914754d864460e55e68731ef0b'
+            '29541840921302060f712838ba460cd7e988148af3ce3c9dc45437fc78442a67'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
-            '35c91f1a4bf539ef6aa7013cf09b1ab394ff4be5e5e5f7731aa53b07e51d6877'
+            '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
             '2a97b26c3d6821b15ef4ef1369905c6fa3e9c8da4877eb9af4361452a425290b'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'cd844867b5b2197ad097662fee32579a7091dfba1d46cb438c4c7e696690440a'
@@ -55,7 +57,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            'd2c6521a1d72a50181a5c1caa97ddd8efd9d5df7c2af6399163da4b853b6499e'
+            'e01148a7e94bfd5ee288b5c5cf7df869aaae545cf48951c8d1f47264792cbf44'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
@@ -125,6 +127,9 @@ prepare() {
   # https://crbug.com/1207478
   patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
 
+  # Upstream fixes
+  patch -Np1 -i ../wayland-fix-binding-to-wrong-version.patch
+
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
 
@@ -133,7 +138,6 @@ prepare() {
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
-
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
