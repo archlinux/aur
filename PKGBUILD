@@ -4,7 +4,7 @@ _name=blink
 _pkgname=blink-qt
 pkgname=blink-git
 pkgver=5.1.8.r1296.a54013c
-pkgrel=2
+pkgrel=1
 pkgdesc='Fully featured, easy to use SIP client with a Qt based UI'
 arch=('aarch64' 'x86_64')
 url='https://icanblink.com'
@@ -25,10 +25,11 @@ depends=(
   )
 conflicts=(blink)
 optdepends=('x11vnc: for screen sharing')
-source=("${pkgname}::git+https://github.com/AGProjects/${_pkgname}.git" 'fix_MutableSet.patch')
+source=("${pkgname}::git+https://github.com/AGProjects/${_pkgname}.git" 'fix_for_python310.patch')
 noextract=()
-sha512sums=('SKIP'
-  '6e648e733c651a780bc800f7c6228a6f56115d0bf78627de01bbfe093a6d2f68d9f1891303f9b9ee6b794db804b9c71a796dc4d9a2fc1cb7a7e2275516cc02cb'
+sha512sums=(
+  'SKIP'
+  'c6d77ded2a9297197cee01e55243fb13a2b20193a761fa7ddf2f2162ba33ebcbe4190b569956d6ddf4ac7fb487e7be9610a70b02273ca20e70c8e6131e366221'
 )
 
 pkgver() {
@@ -39,7 +40,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname}"
-  patch --forward --strip=1 --input="${srcdir}/fix_MutableSet.patch"
+  patch --forward --strip=1 --input="${srcdir}/fix_for_python310.patch"
 }
 
 build() {

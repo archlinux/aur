@@ -1,0 +1,106 @@
+diff --git a/blink/chatwindow.py b/blink/chatwindow.py
+index e55f590..40da6de 100644
+--- a/blink/chatwindow.py
++++ b/blink/chatwindow.py
+@@ -18,7 +18,8 @@ from application.python import Null, limit
+ from application.python.descriptor import WriteOnceAttribute
+ from application.python.types import MarkerType
+ from application.system import makedirs
+-from collections import MutableSet, deque
++from collections.abc import MutableSet
++from collections import deque
+ from datetime import datetime, timedelta
+ from itertools import count
+ from lxml import etree, html
+diff --git a/blink/sessions.py b/blink/sessions.py
+index 9805515..9928831 100644
+--- a/blink/sessions.py
++++ b/blink/sessions.py
+@@ -5094,13 +5094,13 @@ class IncomingDialogBase(QDialog):
+             total_width = width + window_frame_size.width()
+             total_height = height + window_frame_size.height()
+ 
+-            x = limit(screen_geometry.center().x() - total_width/2, min=available_geometry.left(), max=available_geometry.right()-total_width)
++            x = int(limit(screen_geometry.center().x() - total_width/2, min=available_geometry.left(), max=available_geometry.right()-total_width))
+             if slot is None:
+                 y = -1
+             elif slot % 2 == 0:
+-                y = screen_geometry.center().y() + (slot-1)*total_height/2
++                y = int(screen_geometry.center().y() + (slot-1)*total_height/2)
+             else:
+-                y = screen_geometry.center().y() - slot*total_height/2
++                y = int(screen_geometry.center().y() - slot*total_height/2)
+ 
+             if available_geometry.top() <= y <= available_geometry.bottom() - total_height:
+                 self.setGeometry(x, y, width, height)
+diff --git a/blink/widgets/buttons.py b/blink/widgets/buttons.py
+index c3b18bf..72aefd5 100644
+--- a/blink/widgets/buttons.py
++++ b/blink/widgets/buttons.py
+@@ -620,8 +620,8 @@ class StateButton(QToolButton):
+             return pixmap
+ 
+         size = max(pixmap.width(), pixmap.height())
+-        offset_x = (size - pixmap.width())/2
+-        offset_y = (size - pixmap.height())/2
++        offset_x = int((size - pixmap.width())/2)
++        offset_y = int((size - pixmap.height())/2)
+ 
+         new_pixmap = QPixmap(size, size)
+         new_pixmap.fill(Qt.transparent)
+diff --git a/blink/widgets/lineedit.py b/blink/widgets/lineedit.py
+index ee63e81..f03ac54 100644
+--- a/blink/widgets/lineedit.py
++++ b/blink/widgets/lineedit.py
+@@ -68,13 +68,13 @@ class LineEdit(QLineEdit):
+         text_rect.adjust(spacing, 0, -spacing, 0)
+         mid_height = text_rect.center().y() + 1 - (text_rect.height() % 2)  # need -1 correction for odd heights -Dan
+         if self.left_layout.count() > 0:
+-            left_height = mid_height - self.left_widget.height()/2
++            left_height = int(mid_height - self.left_widget.height()/2)
+             left_width = self.left_widget.width()
+             if left_width == 0:
+-                left_height = mid_height - self.left_widget.sizeHint().height()/2
++                left_height = int(mid_height - self.left_widget.sizeHint().height()/2)
+             self.left_widget.move(text_rect.x(), left_height)
+         text_rect.setX(self.left_margin)
+-        text_rect.setY(mid_height - self.right_widget.sizeHint().height()/2.0)
++        text_rect.setY(int(mid_height - self.right_widget.sizeHint().height()/2.0))
+         text_rect.setHeight(self.right_widget.sizeHint().height())
+         self.right_widget.setGeometry(text_rect)
+ 
+@@ -201,8 +201,8 @@ class SearchIcon(QWidget):
+     def paintEvent(self, event):
+         painter = QPainter(self)
+         if self.icon is not None:
+-            x = (self.width() - self.icon.width()) / 2
+-            y = (self.height() - self.icon.height()) / 2
++            x = int((self.width() - self.icon.width()) / 2)
++            y = int((self.height() - self.icon.height()) / 2)
+             painter.drawPixmap(x, y, self.icon)
+ 
+ 
+@@ -232,8 +232,8 @@ class ClearButton(QAbstractButton):
+         painter = QPainter(self)
+         icon = self.icon_pressed if self.isDown() else self.icon
+         if icon is not None:
+-            x = (self.width() - icon.width()) / 2
+-            y = (self.height() - icon.height()) / 2
++            x = int((self.width() - icon.width()) / 2)
++            y = int((self.height() - icon.height()) / 2)
+             painter.drawPixmap(x, y, icon)
+         else:
+             width = self.width()
+diff --git a/blink/widgets/video.py b/blink/widgets/video.py
+index eff4f7c..5ecab6a 100644
+--- a/blink/widgets/video.py
++++ b/blink/widgets/video.py
+@@ -56,7 +56,7 @@ class VideoSurface(QWidget):
+         self.cursors.resize_bottom = QCursor(QIcon(Resources.get('icons/resize-bottom.svg')).pixmap(16), hotX=8,  hotY=16)
+         if framerate is not None:
+             self._clock = QTimer()
+-            self._clock.setInterval(1000/framerate)
++            self._clock.setInterval(int(1000/framerate))
+             self._clock.timeout.connect(self.update)
+         else:
+             self._clock = None
