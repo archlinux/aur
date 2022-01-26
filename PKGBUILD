@@ -2,11 +2,11 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.3.68
+pkgver=1.3.94
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
-url='https://www.akshare.xyz'
+url='https://github.com/akfamily/akshare'
 license=('MIT')
 depends=(
 	'python-beautifulsoup4'
@@ -34,8 +34,8 @@ makedepends=(
 	'python-sphinx-markdown-tables'
 	'python-recommonmark')
 changelog=changelog.md
-source=("$pkgname-$pkgver.tar.gz::https://github.com/akfamily/akshare/archive/v$pkgver.tar.gz")
-sha256sums=('8672e502c5dde3339a1c4d267876817302001f472385375be57a77cfe2f88828')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/release-v$pkgver.tar.gz")
+sha256sums=('f2a16fd40e99f208a1f4b36fa10b5bd6a8e493580ada828f027b8e78d23078fe')
 
 prepare() {
 	cd "akshare-$pkgver"
