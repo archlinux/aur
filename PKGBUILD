@@ -4,7 +4,7 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.3.0.r10.gb6012e7
+pkgver=10.3.0.r13.gb826783
 _pkgver=10.3.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
@@ -32,6 +32,8 @@ prepare() {
   # adjust version string
   cd $_pkgname
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/manager_window.vala
+  # libpamac is still 11.2, not 11.3 - See https://gitlab.manjaro.org/applications/pamac/-/issues/1219
+  sed -i -e "s|'>=11.3'|'>=11.2'|g" src/meson.build
   # patches here
 }
 
