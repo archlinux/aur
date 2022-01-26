@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-roms-git
-pkgver=r403.cb4f520
+pkgver=20211223.r0.gcb4f520
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator.'
 arch=('any')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
