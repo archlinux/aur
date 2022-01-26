@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
-pkgver=2.2.0.r0.g1015120
+pkgver=2.3.0.r0.gf31342f
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -44,20 +44,20 @@ prepare() {
     local ver=$(perl -ne'/"esbuild":\s*"(\S+)",?/ && print $1' <"package.json")
     rm "package.json"
 
-    npm i -E --package-lock=false "esbuild"@"${ver}"
+    npm i -E "esbuild"@"${ver}"
 }
 
 build() {
     cd "${srcdir}/repo"
 
-    cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=MinSizeRel -DUSE_TSC=OFF
+    cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DUSE_TSC=OFF
     cmake --build "build"
 }
 
 package() {
     cd "${srcdir}/repo"
-
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" "LICENSES/"*
-
     DESTDIR="${pkgdir}" cmake --install "build"
+
+    cd "LICENSES"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" *
 }
