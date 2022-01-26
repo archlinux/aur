@@ -2,7 +2,7 @@
 
 pkgname=python-pywttr
 _pkgname=pywttr
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Wrapper for wttr.in weather forecast'
 url=https://github.com/monosans/pywttr
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=(python python-pywttr-models python-requests)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('618b1d148efbdb34bf823c7749c083ad1eec130d9ca34cd3abb2af4a1147ec69')
+sha256sums=('161161aa185ebc72a539763f6166a3a983f847222346b38f0f926bd39240abb7')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
