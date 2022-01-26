@@ -53,8 +53,10 @@ case "${_compiler,,}" in
                 *) _compiler=gcc            ;; # default to GCC
 esac
 
-## Compress modules with ZSTD (to save disk space); enabled by Xanmod-ROG
-##: "${_compress_modules:=y}"
+## Compress modules by default (following Arch's kernel)
+## Set variable "_compress_modules" to: n to disable
+##                                      y to enable (default)
+: "${_compress_modules:=y}"
 
 # Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
@@ -255,9 +257,11 @@ prepare() {
     scripts/config --disable CONFIG_NUMA
   fi
 
-  # Compress modules by default (following Arch's kernel)
-  scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
-                 --enable CONFIG_MODULE_COMPRESS_ZSTD
+  # Compress modules (Arch distro default)
+  if [ "$_compress_modules" = "y" ]; then
+    scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
+                   --enable CONFIG_MODULE_COMPRESS_ZSTD
+  fi
 
   # Toggle AMD pstate if requested
   if [ "$amd_pstate" = "n" ]; then
