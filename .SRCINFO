@@ -5,14 +5,12 @@ pkgbase = lib32-gsm
 	url = http://www.quut.com/gsm/
 	arch = x86_64
 	license = custom
-	depends = glibc
+	makedepends = lib32-gcc-libs
 	depends = gsm
 	depends = lib32-glibc
-	depends = lib32-gcc-libs
 	source = http://www.quut.com/gsm/gsm-1.0.19.tar.gz
 	source = gsm-shared.patch
 	sha256sums = 4903652f68a8c04d0041f0d19b1eb713ddcd2aa011c5e595b3b8bca2755270f6
 	sha256sums = 1b9fabd7da83a688fc0e5ec712d53c428ff5575b1d5feac8437283ade1448c2b
 
 pkgname = lib32-gsm
-
