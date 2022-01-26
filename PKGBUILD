@@ -1,4 +1,5 @@
 # Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Christian Häßler <arch@haessler.info>
 # Contributor: Lev Lybin <aur@devtrue.net>
 
 pkgname=synology-hyper-backup-explorer
@@ -11,7 +12,7 @@ url="https://www.synology.com/en-global/releaseNote/HyperBackupExplorer"
 license=('unknown')
 depends=('qt5-base' 'gtk2' 'openssl-1.0')
 options=('!strip')
-source=(https://global.download.synology.com/download/Utility/HyperBackupExplorer/${_pkgver}/Linux/${carch}/HyperBackupExplorer-${_pkgver}-linux.tar.bz2)
+source=(https://global.download.synology.com/download/Utility/HyperBackupExplorer/${_pkgver}/Linux/${CARCH}/HyperBackupExplorer-${_pkgver}-linux.tar.bz2)
 sha256sums=('58605171a1fcc3f33117375c55ae738686667c85db3645ced23bb4f26545030f')
 
 prepare() {

@@ -9,7 +9,7 @@ pkgbase = synology-hyper-backup-explorer
 	depends = gtk2
 	depends = openssl-1.0
 	options = !strip
-	source = https://global.download.synology.com/download/Utility/HyperBackupExplorer/3.0.0-0149/Linux//HyperBackupExplorer-3.0.0-0149-linux.tar.bz2
+	source = https://global.download.synology.com/download/Utility/HyperBackupExplorer/3.0.0-0149/Linux/x86_64/HyperBackupExplorer-3.0.0-0149-linux.tar.bz2
 	sha256sums = 58605171a1fcc3f33117375c55ae738686667c85db3645ced23bb4f26545030f
 
 pkgname = synology-hyper-backup-explorer
