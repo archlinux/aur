@@ -1,7 +1,7 @@
 pkgbase = ytdownloader
 	pkgdesc = GKT3 frontend for yt-dlp (the active branch of youtube-dl) with focus on best audio and video. Uses ffmpeg for joining audio & video
-	pkgver = 1.4.0
-	pkgrel = 3
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://github.com/kanehekili/YoutubeDownloader
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = ytdownloader
 	depends = python
 	depends = python-gobject
 	depends = ffmpeg
-	source = https://github.com/kanehekili/YoutubeDownloader/releases/download/1.4.0/YtDownloader1.4.0.tar
-	md5sums = 4ce7ae6922decc9401506de8f34c86ed
+	source = https://github.com/kanehekili/YoutubeDownloader/releases/download/1.4.1/YtDownloader1.4.1.tar
+	md5sums = 528c13203d7c2f93fc2571aa744919da
 
 pkgname = ytdownloader
