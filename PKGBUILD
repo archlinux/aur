@@ -1,14 +1,14 @@
 # Maintainer: BrainDamage
 pkgname="python-wfdb"
 _dirname='wfdb-python'
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="A library of tools for reading, writing, and processing WFDB signals and annotations"
 arch=(any)
 url="https://github.com/MIT-LCP/wfdb-python"
 license=("MIT")
 depends=("python" "python-numpy" "python-scipy" "python-matplotlib" "python-nose" "python-pandas" "python-requests" "python-scikit-learn" "python-certifi" "python-chardet" "python-cycler" "python-idna" "python-joblib" "python-pyparsing" "python-dateutil" "python-pytz" "python-requests" "python-urllib3" "python-threadpoolctl")
-sha256sums=('0fe5df76ccb718536a4ea9cce4ca37aedda990a9d474f50facbea511edaee75d')
+sha256sums=('1e90b7afc31e5f42db8c482cc4002e16188f1291c504575336fc1a2c73cc9025')
 source=("https://github.com/MIT-LCP/${_dirname}/archive/v${pkgver}.tar.gz")
 
 
