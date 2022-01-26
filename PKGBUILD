@@ -2,7 +2,7 @@
 
 pkgname=phinger-cursors
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Most likely the most over-engineered cursor theme.'
 url='https://github.com/phisch/phinger-cursors'
 license=('CC-BY-SA-4.0')

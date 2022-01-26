@@ -1,7 +1,7 @@
 pkgbase = phinger-cursors
 	pkgdesc = Most likely the most over-engineered cursor theme.
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/phisch/phinger-cursors
 	arch = any
 	license = CC-BY-SA-4.0
