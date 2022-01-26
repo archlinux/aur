@@ -4,7 +4,7 @@
 pkgname=python-dbg
 _major=3
 _minor=10
-_patch=1
+_patch=2
 _pybasever=${_major}
 _pyminorver=${_pybasever}.${_minor}
 pkgver=${_pyminorver}.${_patch}
@@ -25,7 +25,7 @@ backup=()
 options=(!debug !strip)
 
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz")
-sha256sums=('a7f1265b6e1a5de1ec5c3ec7019ab53413469934758311e9d240c46e5ae6e177')
+sha256sums=('17de3ac7da9f2519aa9d64378c603a73a0e9ad58dffa8812e45160c086de64c7')
 
 prepare() {
     cd Python-${pkgver}
