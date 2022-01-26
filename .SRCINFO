@@ -1,6 +1,6 @@
 pkgbase = qtile-git
 	pkgdesc = A full-featured, pure-Python tiling window manager. (git version)
-	pkgver = v0.18.0.r112.g2ec771fe
+	pkgver = 0.20.0.r3.g9b31bce6
 	pkgrel = 3
 	url = http://www.qtile.org
 	install = qtile-git.install
