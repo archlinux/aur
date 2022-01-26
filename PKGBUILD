@@ -1,8 +1,9 @@
-# Maintainer: Wouter Wijsman <wwijsman@live.nl>
+# Maintainer : silverhikari <kerrickethan@gmail.com>
+# Contributer: Wouter Wijsman <wwijsman@live.nl>
 
 pkgname=dosbox-staging
 pkgver=0.78.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="DOS/x86 emulator focusing on ease of use. Based on DOSBox"
 arch=('any')
@@ -46,4 +47,6 @@ package() {
   install -Dm 644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README"
   install -Dm 644 "docs/README.video" "$pkgdir/usr/share/doc/${pkgname}/video.txt"
   install -Dm 644 "README" "$pkgdir/usr/share/doc/${pkgname}/manual.txt"
+  # bash completions
+  install -Dm 644 "contrib/linux/bash-completion/dosbox" "$pkgdir/usr/share/bash-completion/completions/dosbox"
 }
