@@ -6,7 +6,7 @@
 
 pkgname=tupitube
 pkgver=0.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Design and authoring tool for digital artists interested in 2D animation'
 arch=('x86_64')
 url='https://tupitube.com/'
@@ -15,9 +15,11 @@ depends=('ffmpeg' 'qt5-multimedia' 'qt5-svg' 'quazip')
 makedepends=('ruby-rexml')
 replaces=('tupitube.desk')
 source=("https://downloads.sourceforge.net/tupi2d/$pkgname.desk-$pkgver.tar.gz"
-        'tupitube.appdata.xml')
+        'tupitube.appdata.xml'
+        'ffmpeg5.patch')
 sha256sums=('b765e39426531c383cc88cda62c5331efe5f965d02ec079e55eddd077749a4aa'
-            '99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a')
+            '99fbafe0b359130d53278db3cada052f8245c325dcb82ce33997322dd750707a'
+            'b08c12db5f9c66128f31c398ae5a50d96b4fdfd895b47c62fe0d3dab9325f45a')
 
 prepare() {
   cd $pkgname.desk
@@ -25,6 +27,8 @@ prepare() {
   sed -i 's|quazip-qt5|quazip1-qt5|' qonf/test.rb
   sed -i 's|/share/pixmaps|/share/icons/hicolor/128x128/apps|' qonf/makefile.rb
   sed -i '/require .os/d' qonf/configure.rb
+
+  patch -p1 -i ../ffmpeg5.patch # Fix build with FFmpeg 5
 }
 
 build() {

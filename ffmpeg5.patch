@@ -1,0 +1,65 @@
+diff --git a/configure.tests/ffmpeg/main.cpp b/configure.tests/ffmpeg/main.cpp
+index 907500d3..42d2eda9 100644
+--- a/configure.tests/ffmpeg/main.cpp
++++ b/configure.tests/ffmpeg/main.cpp
+@@ -43,7 +43,7 @@ extern "C" {
+ 
+ int main()
+ {
+-    AVOutputFormat *format = av_guess_format("ffh264", NULL, NULL);
++    const AVOutputFormat *format = av_guess_format("ffh264", NULL, NULL);
+ 
+     AVFormatContext *formatContext = avformat_alloc_context();
+     formatContext->oformat = format;
+@@ -53,7 +53,7 @@ int main()
+ 
+     stream = avformat_new_stream(formatContext, 0);
+ 
+-    AVCodec *codec = avcodec_find_encoder(stream->codecpar->codec_id);
++    const AVCodec *codec = avcodec_find_encoder(stream->codecpar->codec_id);
+     if (!codec) {
+         av_log(NULL, AV_LOG_ERROR, "Failed to find decoder for stream\n");
+         return AVERROR_DECODER_NOT_FOUND;
+diff --git a/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.cpp b/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.cpp
+index 2ecd5e79..52bd604b 100644
+--- a/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.cpp
++++ b/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.cpp
+@@ -40,6 +40,7 @@
+ #include "talgorithm.h"
+ 
+ #include <QDir>
++#include <QDebug>
+ #include <QTimer>
+ 
+ // Handy documentation about Libav library
+@@ -213,7 +214,6 @@ AVStream * TFFmpegMovieGenerator::addVideoStream()
+         return nullptr;
+     }
+ 
+-    /* SQA: Code pending for review
+     codecContext = avcodec_alloc_context3(codec);
+     if (!codecContext) {
+         qDebug() << "Could not allocate video codec context";
+@@ -223,9 +223,6 @@ AVStream * TFFmpegMovieGenerator::addVideoStream()
+         qDebug() << "Could not copy parameters to context";
+         return nullptr;
+     }
+-    */
+-
+-    codecContext = st->codec;
+ 
+     // Put sample parameters
+     codecContext->bit_rate = 6000000;
+diff --git a/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.h b/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.h
+index 257994c2..7bc60251 100644
+--- a/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.h
++++ b/src/plugins/export/ffmpegplugin/tffmpegmoviegenerator.h
+@@ -92,7 +92,7 @@ class TUPITUBE_PLUGIN TFFmpegMovieGenerator : public TMovieGenerator
+         AVFrame *videoFrame;
+         AVStream *video_st;
+         AVFormatContext *formatContext;
+-        AVOutputFormat *outputFormat;
++        const AVOutputFormat *outputFormat;
+         AVCodecContext *codecContext;
+         enum AVCodecID videoCodecID;
+         const AVCodec *codec;
