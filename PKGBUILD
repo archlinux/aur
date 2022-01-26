@@ -1,5 +1,6 @@
 # Contributor: Anonymous
 # Generator  : CPANPLUS::Dist::Arch 1.32
+# Maintainer : Salamandar <felix@piedallu.me>
 
 pkgname='perl-math-geometry-planar-offset'
 pkgver='1.05'
@@ -8,8 +9,8 @@ pkgdesc="Calculate offset polygons"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-yaml>=0')
-makedepends=()
+depends=('perl-yaml')
+makedepends=('perl-module-build')
 url='https://metacpan.org/release/Math-Geometry-Planar-Offset'
 source=('http://search.cpan.org/CPAN/authors/id/E/EW/EWILHELM/Math-Geometry-Planar-Offset-1.05.tar.gz')
 md5sums=('1c46de114f06dd742e95b7135009c707')
