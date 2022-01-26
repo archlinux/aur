@@ -1,7 +1,7 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=2.13.1.r1.gfc69988
-pkgrel=4
+pkgver=2.14.1.r31.gf86ffac
+pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
 url='https://github.com/SnosMe/awakened-poe-trade'
