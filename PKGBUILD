@@ -1,24 +1,23 @@
 pkgname=nsnotifyd
-pkgver=1.6
-_commit=1b469eceb83f811e3f22a164b8713c1fb307f0f0
+pkgver=2.0
 pkgrel=1
 pkgdesc="DNS NOTIFY message handler"
 arch=(i686 x86_64)
-url="http://dotat.at/prog/nsnotifyd/"
+url="https://dotat.at/prog/nsnotifyd/"
 license=(custom:CC0)
 provides=(metazone=$pkgver)
-source=("git+https://github.com/fanf2/nsnotifyd.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("https://dotat.at/prog/nsnotifyd/nsnotifyd-${pkgver}.tar.gz")
+sha256sums=('65b96065e653cbfe66400950bd0c05c7ba61b0ca7b3b13153c4a95038a5e90de')
 
 build() {
-  cd "$pkgname"
+  cd $pkgname-$pkgver
   sed -i '/^CFLAGS/d' Makefile.in
   ./configure
   make prefix=/usr
 }
 
 package() {
-  cd "$pkgname"
+  cd $pkgname-$pkgver
   make prefix=/usr DESTDIR="$pkgdir" install
   install -m 755 metazone "$pkgdir"/usr/bin/metazone
 }
