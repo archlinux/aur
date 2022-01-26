@@ -1,0 +1,17 @@
+pkgbase = mopidy-webhooks
+	pkgdesc = A simple Mopidy extension that sends webhook notifications to a remote URL.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/paddycarey/mopidy-webhooks
+	arch = any
+	license = Apache
+	makedepends = python-setuptools-scm
+	depends = mopidy
+	depends = python
+	depends = python-setuptools
+	depends = python-pykka
+	depends = python-requests
+	source = https://pypi.io/packages/source/M/Mopidy-Webhooks/Mopidy-Webhooks-1.0.1.tar.gz
+	sha256sums = d79d7bf628ba0bb7f3d3c5c0f4277e234084e2c8015813e006a9e236369a06d7
+
+pkgname = mopidy-webhooks
