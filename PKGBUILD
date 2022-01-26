@@ -30,6 +30,7 @@ optdepends=(
 	'qt5-base: QT GUI support'
 	'gpujpeg: gpu accelerated jpeg'
 	'libx11: X11 screen recording'
+	'libjuice: UDP holepunching support'
 )
 
 provides=('ultragrid')
@@ -49,6 +50,7 @@ build() {
 
   ./autogen.sh --prefix=/usr --enable-plugins \
 	  --enable-qt=auto \
+	  --enable-holepunch=auto \
 	  --disable-dvs \
 	  --disable-decklink \
 	  --disable-gpustitch \
