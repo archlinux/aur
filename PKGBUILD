@@ -2,13 +2,20 @@
 
 _name=libpysal
 pkgname=python-libpysal
-pkgver=4.5.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Core components of Python Spatial Analysis Library."
 arch=('any')
 url="https://pysal.org/libpysal/"
 license=('BSD')
-depends=('python-beautifulsoup4' 'python-jinja' 'python-numpy' 'python-pandas' 'python-requests' 'python-scipy')
+depends=(
+  'python-beautifulsoup4'
+  'python-jinja'
+  'python-numpy'
+  'python-pandas'
+  'python-requests'
+  'python-scipy'
+)
 optdepends=(
   'python-pypandoc: documents'
   'python-nbsphinx: documents'
@@ -41,7 +48,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('8353f5043c008b1c7fcfaf0a13304b7fd811e439857d9b0f348de3809d836e599d089b7ebce568ebb8c381961ab6f274d233ede064a75d635b0a54320cfc5f64')
+b2sums=('39c615ee86d7e344db104c2b11b8aac3ac03b7bde80be9b48f5dbdc6f92f14f6ce187d39b39226ab5f564156a66b80afc9b29e02a243c60c65964fc147dfb389')
 
 build() {
   cd "$_name-$pkgver"
