@@ -3,14 +3,14 @@
 
 pkgname=asn1c
 pkgver=0.9.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Source ASN.1 Compiler'
 arch=('i686' 'x86_64')
-url='https://lionet.info/asn1c/compiler.html'
+url='https://github.com/vlm/asn1c'
 license=('BSD')
 depends=('perl')
 makedepends=('pandoc')
-source=("https://lionet.info/soft/asn1c-${pkgver}.tar.gz")
+source=("https://github.com/vlm/asn1c/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('bb9d913ead074d59886652a681fb2cae3ac363beeb4ecdccf2b23753ed04a0dfa453f658a529c5c38eb34be8b90f322750f97513cd0a53b8541faa2f5b3da073')
 
 prepare() {
