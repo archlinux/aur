@@ -1,6 +1,6 @@
 pkgbase = ruby-fusuma-plugin-appmatcher
 	pkgdesc = Fusuma plugin configure app-specific gestures
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/iberianpig/fusuma-plugin-appmatcher
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = ruby-fusuma-plugin-appmatcher
 	depends = ruby-fusuma
 	depends = ruby-dbus
 	depends = ruby-rexml
-	noextract = fusuma-plugin-appmatcher-0.1.4.gem
+	noextract = fusuma-plugin-appmatcher-0.1.6.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/fusuma-plugin-appmatcher-0.1.4.gem
-	sha1sums = 0c2294bc076ea7909a7ea70b6832ab2e251a1034
+	source = https://rubygems.org/downloads/fusuma-plugin-appmatcher-0.1.6.gem
+	sha1sums = 7c5340d0d34c53287c26ba124955bb040a9950d4
 
 pkgname = ruby-fusuma-plugin-appmatcher
