@@ -6,11 +6,11 @@ url="https://launchpad.net/livewallpaper"
 license=('GPL3')
 
 pkgver=0.5.0.r333
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 
 makedepends=(
-    'bzr' 'cmake' 'ninja' 'vala' 'intltool' 'xcftools'
+    'bzr' 'cmake' 'ninja' 'vala' 'intltool' 'xcftools' 'python-dulwhich'
 )
 depends=(
     'libpeas' 'upower' 'libappindicator-gtk3' 'gobject-introspection'
