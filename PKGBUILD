@@ -3,7 +3,7 @@
 _pkgname=perl-geo-proj4
 pkgname="${_pkgname}-git"
 pkgver=1.10.0.2+r25.20210515.g417cc66
-pkgrel=1
+pkgrel=2
 pkgdesc='One location on the globe, in any coordinate system. This package tries to hide the maths and the coordinate system in which the point is represented.'
 arch=(
   'arm'
@@ -16,7 +16,8 @@ license=(
 )
 depends=(
   'perl'
-  'libproj4'
+  'libproj4<5'
+  'libproj4>=4'
 )
 makedepends=(
   'git'
