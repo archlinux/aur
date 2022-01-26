@@ -1,6 +1,6 @@
 pkgbase = fragments-git
 	pkgdesc = BitTorrent client for GNOME
-	pkgver = 1.4.r134.g5f1ed65
+	pkgver = 1.9.1.r53.g38f6a1e
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Fragments
 	arch = i686
@@ -9,22 +9,13 @@ pkgbase = fragments-git
 	arch = armv7h
 	license = GPL3
 	makedepends = git
-	makedepends = gobject-introspection
-	makedepends = libdazzle
-	makedepends = libhandy
 	makedepends = meson
-	makedepends = vala
-	makedepends = libtransmission
-	depends = curl
-	depends = libb64
-	depends = libevent
-	depends = libhandy
-	depends = libnatpmp
-	depends = miniupnpc
+	makedepends = rust
+	depends = gtk4
+	depends = libadwaita
 	provides = fragments
 	conflicts = fragments
 	source = git+https://gitlab.gnome.org/World/Fragments.git
 	sha256sums = SKIP
 
 pkgname = fragments-git
-
