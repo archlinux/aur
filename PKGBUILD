@@ -19,12 +19,12 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_ENABLED=1
 
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   cp "target/release/cyberdrop-dl" "$pkgdir/usr/bin"
 }
