@@ -3,12 +3,12 @@
 
 pkgname=gambit-c
 pkgver=4.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Efficient implementation of the Scheme programming language'
 arch=(x86_64)
 url='https://github.com/gambit/gambit'
 license=(Apache LGPL)
-options=(staticlibs)
+options=(staticlibs !lto)
 makedepends=(git setconf)
 source=("${pkgname/-c}-$pkgver.tar.gz::https://gambitscheme.org/latest/gambit-v${pkgver//./_}.tgz")
 b2sums=('f2d638a8ab901fb9d14d2f91291dd732e66913f18dc4e6c9c50af7aa1aafa49e97bdd7a704dfd1f14fa71aa16a859fe9b7a7bcbc5ee5953a1dac56966071148b')
