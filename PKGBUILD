@@ -3,7 +3,7 @@
 
 pkgname=jello
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Filter JSON and JSON Lines data with Python syntax'
 arch=('any')
 url='https://github.com/kellyjonbrazil/jello'
@@ -34,7 +34,7 @@ package() {
   export PYTHONHASHSEED=0
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 README.md ADVANCED_USAGE.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 man/jello.1 -t "$pkgdir/usr/share/man/man1/"
 }
