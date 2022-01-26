@@ -2,18 +2,18 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=rmw
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="safe-remove utility for the command line"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
 url="https://remove-to-waste.info"
 license=('GPL3')
 depends=('ncurses')
 makedepends=('meson' 'ninja' 'pkg-config')
-optdepends=('gettext')
+optdepends=('gettext' 'canfigger')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/theimpossibleastronaut/rmw/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a3bf20c29b4601b7f0122aa75cccc6887a5187329aff3138936d74c798e219ef')
+source=("https://github.com/theimpossibleastronaut/rmw/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('abad25d8c0b2d6593fe426ca2c2d064207630e6a827a7d769f4991cbb583337b')
 
 build() {
   arch-meson $pkgname-$pkgver build
