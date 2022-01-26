@@ -3,7 +3,7 @@ pkgbase=mindustry
 pkgname=("${pkgbase}" "${pkgbase}-server")
 _build=135
 pkgver="7.0_${_build}"
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('any')
 _repo_name="Mindustry"
@@ -50,14 +50,19 @@ build() {
   #   fi
   # done; unset version
 
-  # if [ -z "$found_correct_jdk" ]; then
+  # if [ -n "$found_correct_jdk" ]; then
+  #   export JAVA_HOME="${java_dir}"
+  # else
   #   error "Couldn't find a JDK with version >=8 and <13"
   #   return 1
   # fi
 
-  # JAVA_HOME="${java_dir}" ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
+  # Skip configuring of the android subproject because we aren't compiling the
+  # Android app here.
+  # <https://github.com/Anuken/Mindustry/blob/00e3a59463f41bdce5b12cf5b4715a253f7af306/settings.gradle#L14>
+  unset ANDROID_HOME
+
   ./gradlew --no-daemon dist -Pbuildversion="${_build}" desktop:dist server:dist
-  # unset java_dir
 
   cd core/assets/icons
   icns2png --extract icon.icns
