@@ -5,8 +5,8 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.9.1.r25.ge03f91f7
-pkgrel=3
+pkgver=0.5.9.1.r186.g90e7e5c9
+pkgrel=2
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
@@ -30,7 +30,8 @@ optdepends=(
   "mangohud: Display the games' FPS + other information"
   "lib32-mangohud: Display the games' FPS + other information"
   'innoextract: Extract Inno Setup installers'
-  'xorg-xgamma: Restore gamma on game exit')
+  'xorg-xgamma: Restore gamma on game exit'
+  'gamescope: draw the game window isolated from your desktop')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')

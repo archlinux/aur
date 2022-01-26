@@ -1,7 +1,7 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
-	pkgver = 0.5.9.1.r25.ge03f91f7
-	pkgrel = 3
+	pkgver = 0.5.9.1.r186.g90e7e5c9
+	pkgrel = 2
 	url = https://lutris.net/
 	arch = any
 	license = GPL3
@@ -42,6 +42,7 @@ pkgbase = lutris-git
 	optdepends = lib32-mangohud: Display the games' FPS + other information
 	optdepends = innoextract: Extract Inno Setup installers
 	optdepends = xorg-xgamma: Restore gamma on game exit
+	optdepends = gamescope: draw the game window isolated from your desktop
 	provides = lutris
 	conflicts = lutris
 	source = git+https://github.com/lutris/lutris.git
