@@ -4,7 +4,7 @@
 
 pkgname='perl-math-geometry-planar-offset'
 pkgver='1.05'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Calculate offset polygons"
 arch=('any')
 license=('PerlArtistic' 'GPL')
