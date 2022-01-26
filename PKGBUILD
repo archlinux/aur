@@ -1,6 +1,6 @@
 pkgname=heimdal
 pkgdesc="Heimdal, an implementation of Kerberos and PKIX"
-pkgver=7.99.r29746.g717ad8b04
+pkgver=7.99.r30301.ga8037d191
 pkgrel=1
 url="https://www.heimdal.software/"
 arch=(x86_64)
