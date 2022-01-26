@@ -13,7 +13,6 @@ pkgbase = linux-xanmod-rog
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
-	makedepends = zstd
 	makedepends = gcc>=11.0
 	options = !strip
 	options = !ccache
