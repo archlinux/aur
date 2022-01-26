@@ -5,7 +5,7 @@
 
 _base=petsc
 pkgname=("${_base}"-git "${_base}"-doc)
-pkgver=3.16.0.63.gedb78736ace
+pkgver=3.16.3.59.g94bef9dd528
 pkgrel=1
 _mainver="${pkgver:0:6}"
 pkgdesc="Portable, extensible toolkit for scientific computation"
@@ -16,7 +16,7 @@ options=(!staticlibs)
 depends=('openmpi' 'lapack' 'fftw' 'zlib' 'cython'
          'python-mpi4py' "python-numpy" "eigen>=3" "openblas")
 makedepends=('gcc' 'gcc-fortran' 'cmake' 'sowing' "pkgconf"
-             'git' 'cython' 'chrpath' "hypre=2.18.2")
+             'git' 'cython' 'chrpath' "hypre=2.23.0")
 source=(git+${url}.git#branch=release
         https://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-with-docs-"${_mainver}".tar.gz
         test_optdepends.sh)
@@ -122,15 +122,17 @@ build() {
     " $(sh ${srcdir}/test_optdepends.sh)")
 
   cd "${srcdir}"/"${_base}"
+  export PETSC_DIR="${srcdir}"/"${_base}"
   python ./configure ${CONFOPTS[@]}
   make -s ${MAKEFLAGS} all
-  # MPIEXEC="$(which mpiexec) --nooversubscribe" make -s ${MAKEFLAGS} all
+  make DESTDIR=${srcdir}/tmp install
 }
 
-check() {
-  cd "${srcdir}"/"${_base}"
-  make check
-  }
+# check() {
+#   cd "${srcdir}"/"${_base}"
+#   PETSC_DIR="${srcdir}"/"${_base}" PYTHONPATH="${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH}" make check
+#   exit
+# }
 
 package_petsc-git() {
   optdepends=(
