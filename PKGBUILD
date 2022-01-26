@@ -20,7 +20,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  git checkout $(git for-each-ref refs/remotes/origin --sort="-committerdate" | head -1 | cut -d '/' -f 4)
+  git checkout $(git for-each-ref refs/remotes/origin --sort="-committerdate" | head -1 | cut -d '/' -f 4) -q
 
   local ver=$(tail -n 1 VERSION)
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
