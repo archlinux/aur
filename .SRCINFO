@@ -1,7 +1,7 @@
 pkgbase = bind-git
 	pkgdesc = A complete, highly portable implementation of the DNS protocol: development version
-	pkgver = 9.main.r34613.ba181fe83d
-	pkgrel = 2
+	pkgver = 9.main.r35397.84878f18d2
+	pkgrel = 3
 	url = https://www.isc.org/software/bind/
 	install = bind.install
 	arch = x86_64
@@ -58,7 +58,6 @@ pkgbase = bind-git
 	replaces = host
 	options = !emptydirs
 	options = debug
-	options = !strip
 	backup = etc/named.conf
 	backup = var/named/127.0.0.zone
 	backup = var/named/localhost.zone
