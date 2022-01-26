@@ -2,7 +2,7 @@
 
 pkgname=fnott
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Keyboard driven and lightweight Wayland notification daemon"
 arch=('x86_64')
 url="https://codeberg.org/dnkl/fnott"
