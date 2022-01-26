@@ -1,27 +1,37 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=python-cuddle
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Python implementation of the KDL Document Language"
 arch=("any")
 url="https://github.com/djmattyg007/python-cuddle"
 license=("MIT")
 depends=("python" "python-regex" "python-tatsu")
-makedepends=("python-poetry-core" "python-setuptools")
-source=("https://pypi.io/packages/source/c/cuddle/cuddle-${pkgver}.tar.gz")
-sha256sums=("a5d7066544c8d7d5025436482113a4b03c0595772b9796b393a6414eece716a1")
+checkdepends=("python-invoke" "python-pytest")
+makedepends=("python-poetry-core" "python-build" "python-install")
+source=("https://github.com/djmattyg007/python-cuddle/archive/${pkgver}.tar.gz")
+sha256sums=("05cc62128198af7c20aa228786de5ebd1402d07d5c7225bdcd2eaf2998ec5e22")
 
 build() {
-    cd "cuddle-${pkgver}"
+    cd "python-cuddle-${pkgver}"
 
-    python setup.py build
+    python -m build --skip-dependency-check --no-isolation
+}
+
+check() {
+    cd "python-cuddle-${pkgver}"
+
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m install --optimize=1 dist/*.whl
+    PACKAGING=true test-env/bin/python -m invoke test
 }
 
 package() {
-    cd "cuddle-${pkgver}"
+    cd "python-cuddle-${pkgver}"
 
-    PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m install --destdir="${pkgdir}" --optimize=1 dist/*.whl
+
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-cuddle/LICENSE.txt"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/python-cuddle/README.md"
     install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/python-cuddle/CHANGELOG.md"
