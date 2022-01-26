@@ -1,9 +1,9 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgbase=gtksourceview-pkgbuild
-pkgname=('mime-pkgbuild' 'gtksourceview3-pkgbuild' 'gtksourceview4-pkgbuild')
+pkgname=('mime-pkgbuild' 'gtksourceview3-pkgbuild' 'gtksourceview4-pkgbuild' 'gtksourceview5-pkgbuild')
 pkgver=4
-pkgrel=2
+pkgrel=3
 pkgdesc="PKGBUILD syntax highlight support in GtkSourceView"
 arch=(any)
 url="https://gitlab.com/rafaelff/$pkgbase"
@@ -33,4 +33,12 @@ package_gtksourceview4-pkgbuild() {
 
   cd $pkgbase-v$pkgver
   install -Dm644 pkgbuild.lang "$pkgdir"/usr/share/gtksourceview-4/language-specs/pkgbuild.lang
+}
+
+package_gtksourceview5-pkgbuild() {
+  pkgdesc="PKGBUILD syntax highlight support in gtksourceview5-compliant editors"
+  depends=(gtksourceview5 mime-pkgbuild)
+
+  cd $pkgbase-v$pkgver
+  install -Dm644 pkgbuild.lang "$pkgdir"/usr/share/gtksourceview-5/language-specs/pkgbuild.lang
 }

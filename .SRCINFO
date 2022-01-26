@@ -1,7 +1,7 @@
 pkgbase = gtksourceview-pkgbuild
 	pkgdesc = PKGBUILD syntax highlight support in GtkSourceView
 	pkgver = 4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/rafaelff/gtksourceview-pkgbuild
 	arch = any
 	license = LGPL2.1
@@ -20,4 +20,9 @@ pkgname = gtksourceview3-pkgbuild
 pkgname = gtksourceview4-pkgbuild
 	pkgdesc = PKGBUILD syntax highlight support in gtksourceview4-compliant editors
 	depends = gtksourceview4
+	depends = mime-pkgbuild
+
+pkgname = gtksourceview5-pkgbuild
+	pkgdesc = PKGBUILD syntax highlight support in gtksourceview5-compliant editors
+	depends = gtksourceview5
 	depends = mime-pkgbuild
