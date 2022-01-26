@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.16.3
-pkgrel=3
+pkgrel=4
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -70,7 +70,7 @@ build() {
 check() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  if [ -z $(ldconfig -p | grep libcuda.so.1) ]; then
+  if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
   PYTHONPATH=${srcdir}/tmp/${_install_dir}/lib:${PYTHONPATH} make check
