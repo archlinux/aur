@@ -2,8 +2,8 @@
 # Contributers: Stephen304
 
 pkgname=crowdsec
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.3.0
+pkgrel=4
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
 url="https://crowdsec.net"
@@ -16,8 +16,6 @@ source=(
 depends=(
 	'jq'
 	'libnewt'
-	'iptables'
-	'ipset'
 )
 makedepends=(
 	'jq'
@@ -26,7 +24,6 @@ makedepends=(
 )
 optdepends=(
 	'docker: Used to run metabase container for statistics'
-	'iptables-nft: For use with nftables'
 )
 
 provides=('crowdsec')
@@ -40,8 +37,11 @@ build(){
 }
 
 package() {
-	mkdir -p ${pkgdir}/var/lib/crowdsec/installers/crowdsec
-	cp -R ${srcdir}/${pkgname}-${pkgver}/crowdsec-v${pkgver}/* ${pkgdir}/var/lib/crowdsec/installers/crowdsec
+	mkdir -p ${pkgdir}/usr/local/installers/crowdsec/crowdsec
+	cp -R ${srcdir}/${pkgname}-${pkgver}/crowdsec-v${pkgver}/* ${pkgdir}/usr/local/installers/crowdsec/crowdsec
 }
-sha256sums=('c94163ac2b90864149bd5ced3b77ecb5c9e9a68d3c7a938f23e05ef72da69938'
-            '99c943445ea56891ecd609871bbf76ff18901aa607925cbeb3aeec966b86bdfa')
+
+sha256sums=('b81419d9a1af500c16a02f052ac6af54253a621ee1575131dfae0f578426d816'
+            '835770e449aba837c8d6362c3d946ecd6f47e41cdc21e0bda21497338f6132dc')
+sha256sums=('b81419d9a1af500c16a02f052ac6af54253a621ee1575131dfae0f578426d816'
+            'e94363de7cef3d3b8896e812a8a682fb672780069ffb3157447839a55b191e16')

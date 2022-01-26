@@ -1,22 +1,45 @@
 post_install() {
-	cd /var/lib/crowdsec/installers/crowdsec
-	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --install --unattended
+	cd /usr/local/installers/crowdsec/crowdsec
+	sh ./wizard.sh --install --unattended
 	echo  -ne "\n"
-	echo "Crowdsec installer files have been saved to /var/lib/crowdsec/installers"
+	echo "Crowdsec installer files have been saved to /usr/local/installers/crowdsec"
 	echo "It's recommended to keep these in place for proper package removal"
 }
 
 post_upgrade() {
-	cd /var/lib/crowdsec/installers/crowdsec
-	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --binupgrade
-	echo -ne "\n"
-	echo "Crowdsec installer files have been saved to /var/lib/crowdsec/installers"
+	# Version check is needed. Minor revs need a different options
+	cd /usr/local/installers/crowdsec/crowdsec
+	CSCLI=`which cscli` # Find CSCLI
+	current_ver="$(${CSCLI}|grep version | awk '{print $4}' | sed -e 's/[v\-]//g')" # Query existing 1.x.y revision
+	new_ver="$(./cmd/crowdsec-cli/cscli version | grep version | awk '{print $4}'| sed -e 's/[v\-]//g')" # Fetch new 1.x.y revision
+	
+	# Check the 1.x revision 
+	IFS="." read -r -a current_ver_rev  <<< "$current_ver"
+	IFS="." read -r -a new_ver_ref  <<< "$new_ver"
+
+	# If new version is newer (1.2 versus 1.3) then run the upgrade
+	# Otherwise, only upgrade the binary files.
+	# Both options should keep exising configurations. 
+	if [ ${current_ver_rev[1]} -lt ${new_ver_ref[1]} ]; then
+		sh ./wizard.sh --upgrade
+	else
+		sh ./wizard.sh --binupgrade
+	fi
+
+	# Check if old AUR installer files still exist. 
+	# I set this keep installers in same dir. the wizard.sh actually removes the /var/lib/crowdsec directory
+	# So they had to move.
+
+	[[ -d "/var/lib/crowdsec/installers/crowdsec/" ]] && rm -rf /var/lib/crowdsec/installers/crowdsec/
+
+	echo  -ne "\n"
+	echo "Crowdsec installer files have been saved to /usr/local/installers/crowdsec"
 	echo "It's recommended to keep these in place for proper package removal"
 }
 
 pre_remove(){
 	echo "Removing CrowdSec installation"
-	cd /var/lib/crowdsec/installers/crowdsec
-	sh /var/lib/crowdsec/installers/crowdsec/wizard.sh --uninstall
+	cd /usr/local/installers/crowdsec/crowdsec
+	sh ./wizard.sh --uninstall
 }
 
