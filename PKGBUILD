@@ -1,44 +1,46 @@
-# Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
+# Contributor: loathingkernel <loathingkernel _a_ gmail _d_ com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=b2f75a026f14805888a4b91d8a2e2c60a35fc1b7
-_stag_commit=0111d074e60d98cea562fed60b81e25aa276dd98
+_wine_commit=51c7559e812f840db106da39bcfb6039a325e66a
+_stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 
-pkgname=wine-ge-custom
-_srctag=7.0rc6-GE-1
+pkgname=wine-ge-lol
+_reponame=wine-ge-custom
+_srctag=7.0-GE-1-LoL
 pkgver=${_srctag//-/.}
 pkgrel=1
 
 #_winever=${pkgver%.*}
-_winever=$pkgver
-_pkgbasever=${pkgver/rc/-rc}
+#_winever=$pkgver
+#_pkgbasever=${pkgver/rc/-rc}
 
-source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
-        wine::git+https://github.com/wine-mirror/wine.git#commit=${_wine_commit}
+source=($_reponame::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
+        wine::git+https://github.com/GloriousEggroll/wine.git#commit=${_wine_commit}
         wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=${_stag_commit}
-        wine-more_8x5_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
+        wine-redefinition.patch
         30-win32-aliases.conf
         wine-binfmt.conf)
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
             '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
+            '9277cfe9b2ebc5903f39b94f81077b07862091ae79cf19ddff299a060a4683e4d64f7086fb2bb94941d7d4a1123753b636249d026df91579d3c8e79d9684f241'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
             'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
-validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
-              DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
+#validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
+#              DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
 
-pkgdesc="A compatibility layer for running Windows programs - GloriousEggroll branch"
+pkgdesc="A compatibility layer for running League of Legends - GloriousEggroll branch"
 url="https://github.com/GloriousEggroll/wine-ge-custom"
-arch=(x86_64 x86_64_v3)
+arch=(x86_64)
 options=(!staticlibs !lto)
 license=(LGPL)
 
@@ -126,33 +128,34 @@ optdepends=(
   samba           dosbox
 )
 
-provides=("wine=${_srctag%%-*}" "wine-wow64=${_srctag%%-*}")
-conflicts=('wine' 'wine-wow64')
+provides=("wine=${_srctag%%-*}")
+conflicts=('wine' 'wine-ge-custom')
 install=wine.install
 
 prepare() {
-  pushd $pkgname
-    rm -r wine && cp -r "$srcdir"/wine wine
-    rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
-    patches/protonprep.sh
+  pushd $_reponame
+    rm -rf wine && cp -r "$srcdir"/wine wine
+    rm -rf wine-staging && cp -r "$srcdir"/wine-staging wine-staging
+    sed -i -e '/patch .*0001-ws2_32-Return-a-valid-value-for-WSAIoctl-SIO_IDEAL_S/d' patches/protonprep-LoL.sh
+    patches/protonprep-LoL.sh
     pushd wine
-      patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
+      patch -p1 -i "$srcdir"/wine-redefinition.patch
       dlls/winevulkan/make_vulkan
       tools/make_requests
       autoreconf -f
     popd
   popd
 
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/wine/configure*
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $_reponame/wine/configure*
 
   # Fix openldap 2.5+ detection
-  sed 's/-lldap_r/-lldap/' -i $pkgname/wine/configure
+  sed 's/-lldap_r/-lldap/' -i $_reponame/wine/configure
 
   # Get rid of old build dirs
-  rm -rf $pkgname-{32,64}-build
-  mkdir $pkgname-{32,64}-build
+  rm -rf $_reponame-{32,64}-build
+  mkdir $_reponame-{32,64}-build
 }
 
 build() {
@@ -181,8 +184,8 @@ build() {
 
   msg2 "Building Wine-64..."
 
-  cd "$srcdir/$pkgname-64-build"
-  ../$pkgname/wine/configure \
+  cd "$srcdir/$_reponame-64-build"
+  ../$_reponame/wine/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
@@ -204,8 +207,8 @@ build() {
   export CFLAGS+=" -mstackrealign"
   export CXXFLAGS+=" -mstackrealign"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-  cd "$srcdir/$pkgname-32-build"
-  ../$pkgname/wine/configure \
+  cd "$srcdir/$_reponame-32-build"
+  ../$_reponame/wine/configure \
     --prefix=/usr \
     --with-x \
     --with-faudio \
@@ -218,21 +221,21 @@ build() {
     --disable-tests \
     --with-xattr \
     --libdir=/usr/lib32 \
-    --with-wine64="$srcdir/$pkgname-64-build"
+    --with-wine64="$srcdir/$_reponame-64-build"
 
   make
 }
 
 package() {
   msg2 "Packaging Wine-32..."
-  cd "$srcdir/$pkgname-32-build"
+  cd "$srcdir/$_reponame-32-build"
 
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib32" \
     dlldir="$pkgdir/usr/lib32/wine" install
 
   msg2 "Packaging Wine-64..."
-  cd "$srcdir/$pkgname-64-build"
+  cd "$srcdir/$_reponame-64-build"
   make prefix="$pkgdir/usr" \
     libdir="$pkgdir/usr/lib" \
     dlldir="$pkgdir/usr/lib/wine" install
