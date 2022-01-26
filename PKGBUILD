@@ -2,7 +2,7 @@
 pkgname=python-healpy
 _pyname=${pkgname#python-}
 pkgver=1.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python package to manipulate healpix maps"
 arch=('i686' 'x86_64')
 url="http://healpy.readthedocs.io"
@@ -15,9 +15,6 @@ source=("https://files.pythonhosted.org/packages/source/h/healpy/healpy-${pkgver
 md5sums=('d677ca493bd7694850028ce559443e9e')
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-    sed -i 's/3.80.0/3.80/' setup.py
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
