@@ -1,13 +1,20 @@
 pkgbase = python-eliot
 	pkgdesc = Logging that tells you why it happened
 	pkgver = 1.14.0
-	pkgrel = 1
-	url = https://eliot.readthedocs.io
+	pkgrel = 2
+	url = https://github.com/itamarst/eliot
 	arch = any
 	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	checkdepends = python-testtools
 	makedepends = python-setuptools
-	depends = python>3.5.2
-	source = eliot-1.14.0.tar.gz::https://github.com/itamarst/eliot/archive/1.14.0.tar.gz
-	md5sums = 2a5e291904f8fcc4d57e157a6d86e7b8
+	makedepends = python-sphinx
+	depends = python-six
+	depends = python-zope-interface
+	depends = python-pyrsistent
+	depends = python-boltons
+	source = python-eliot-1.14.0.tar.gz::https://files.pythonhosted.org/packages/source/e/eliot/eliot-1.14.0.tar.gz
+	sha256sums = c2f099a3e8d5ecfc22745766e7cc664a48db64b6b89d986dff270491d8683149
 
 pkgname = python-eliot
