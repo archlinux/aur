@@ -1,7 +1,7 @@
 # Maintainer: Mišo Barišić <me@misobarisic.com>
 pkgname="cyberdrop-dl"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cyberdrop downloader"
 arch=('x86_64')
 url="https://github.com/wmw9/cyberdrop-dl"
