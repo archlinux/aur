@@ -5,7 +5,7 @@ pkgbase = phinger-cursors
 	url = https://github.com/phisch/phinger-cursors
 	arch = any
 	license = CC-BY-SA-4.0
-	source = phinger-cursors-1.1.tar.gz::https://github.com/phisch/phinger-cursors/releases/download/v1.1/phinger-cursors-variants.tar.bz2
+	source = phinger-cursors-1.1.tar.bz2::https://github.com/phisch/phinger-cursors/releases/download/v1.1/phinger-cursors-variants.tar.bz2
 	md5sums = 8a6b2bac363d08f51adb7231c2982a60
 	sha256sums = 208fb5c7eadc8c6451541f0662457090a54734770d6812916fa0bad77f74d687
 
