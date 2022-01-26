@@ -3,24 +3,25 @@
 
 pkgname=mod_auth_openidc
 pkgver=2.4.11
-pkgrel=1
-pkgdesc="OpenID Connect Relying Party implementation for Apache 2.x"
-arch=('x86_64')
-url="https://www.mod-auth-openidc.org/"
-license=('Apache')
-depends=('curl' 'cjose' 'pcre')
-makedepends=('apache' 'jansson')
-source=("https://github.com/zmartzone/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('9eed1257c308c0a6dd2ac3f5c7c997604f1f6b0ae855a7b094ac800f2e1ea90ad71fbaeecd99ec74d0e9cc2d67d1604710b3f06c13b63aa78b23dd1cb859a736')
+pkgrel=2
+pkgdesc='OpenID Connect Relying Party implementation for Apache 2.x'
+arch=(x86_64)
+url=https://www.mod-auth-openidc.org
+license=(Apache)
+depends=(cjose openssl pcre2)
+_archive="$pkgname-$pkgver"
+makedepends=(apache jansson)
+source=("https://github.com/zmartzone/$pkgname/releases/download/v$pkgver/$_archive.tar.gz")
+sha256sums=('5140333b384c879bc7352badd9622e21fb46fdbf8ca6716423cb2d1e1ba0e2ac')
 
 build() {
-        cd "$pkgname-$pkgver"
-        ./configure --prefix=/usr
-        make
+	cd "$_archive"
+	./configure --prefix=/usr
+	make
 }
 
 package() {
-        cd "$pkgname-$pkgver"
-        make DESTDIR="$pkgdir" install
+	cd "$_archive"
+	make DESTDIR="$pkgdir" install
 }
 

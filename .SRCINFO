@@ -1,16 +1,16 @@
 pkgbase = mod_auth_openidc
 	pkgdesc = OpenID Connect Relying Party implementation for Apache 2.x
 	pkgver = 2.4.11
-	pkgrel = 1
-	url = https://www.mod-auth-openidc.org/
+	pkgrel = 2
+	url = https://www.mod-auth-openidc.org
 	arch = x86_64
 	license = Apache
 	makedepends = apache
 	makedepends = jansson
-	depends = curl
 	depends = cjose
-	depends = pcre
+	depends = openssl
+	depends = pcre2
 	source = https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.4.11/mod_auth_openidc-2.4.11.tar.gz
-	sha512sums = 9eed1257c308c0a6dd2ac3f5c7c997604f1f6b0ae855a7b094ac800f2e1ea90ad71fbaeecd99ec74d0e9cc2d67d1604710b3f06c13b63aa78b23dd1cb859a736
+	sha256sums = 5140333b384c879bc7352badd9622e21fb46fdbf8ca6716423cb2d1e1ba0e2ac
 
 pkgname = mod_auth_openidc
