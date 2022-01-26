@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 )
 
 sha512sums=(
-    '674718945cece600b33895eceb358972b4f3b41f0fbe1ea29199738579b5a2b50c34e0c67a8ec9d67b0ef2ce2bf8e7db946c98db1820c9e698a85ac6610c84fa'
+    '95995b187e04503abffec5d186c455c1fc9f6d3f997bb7c12d8bf5919b2f1d4ce4d21c9c797d9b1d92bb21ccc3eb619eebef28e8c5284522c1a13d1aaf8295ff'
     '333a495c907652bfc583a6f365acac70077fb622817a390853524f2ec21debad00841b29b3ffd88271077287182814790496b4961c90412d71eae6d1a9d6e919'
 )
 
@@ -46,20 +46,20 @@ prepare() {
     local ver=$(perl -ne'/"esbuild":\s*"(\S+)",?/ && print $1' <"package.json")
     rm "package.json"
 
-    npm i -E --package-lock=false "esbuild"@"${ver}"
+    npm i -E "esbuild"@"${ver}"
 }
 
 build() {
     cd "${srcdir}/${_snapshot}"
 
-    cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=MinSizeRel -DUSE_TSC=OFF
+    cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DUSE_TSC=OFF
     cmake --build "build"
 }
 
 package() {
     cd "${srcdir}/${_snapshot}"
-
     DESTDIR="${pkgdir}" cmake --install "build"
 
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" "LICENSES/"*
+    cd "LICENSES"
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" *
 }
