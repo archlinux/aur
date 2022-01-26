@@ -1,8 +1,8 @@
-# Maintainer: BrainDammagee
+# Maintainer: BrainDamage
 
 pkgname=python-pelican-jupyter
-pkgver=0.10.0
-pkgrel=5
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="Pelican plugin for Jupyter Notebooks"
 arch=('any')
 url="https://github.com/danielfrg/pelican-jupyter"
@@ -11,7 +11,7 @@ depends=('python' 'pelican' 'jupyter-nbconvert' 'jupyter-nbformat')
 makedepends=('python-setuptools' 'python-setuptools-scm')
 _name="${pkgname#python-}"
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f2ab1505a494b1bb13065574d8ab3687c9f207d5be4c6a192da7fe4255f5e385')
+sha256sums=('775f19b674198e2c6f713ee00fb439f74398e98fa5bf2696af1eff461b06933d')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
