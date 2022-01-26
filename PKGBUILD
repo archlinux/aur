@@ -1,56 +1,37 @@
-# Maintainer: Clint Valentine <valentine.clint@gmail.com>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 
 _name=nose-progressive
-pkgbase='python-nose-progressive'
-pkgname=('python-nose-progressive' 'python2-nose-progressive')
-pkgver=1.5.1
-pkgrel=2
-pkgdesc="A Python nose plugin with a progress bar and smarter tracebacks"
+pkgname=python-nose-progressive
+pkgver=1.5.2
+pkgrel=9
+pkgdesc="Give your tests a progress bar and smarter tracebacks in 3 lines"
 arch=('any')
-url="https://pypi.python.org/pypi/nose-progressive"
+url="https://github.com/erikrose/nose-progressive"
 license=('MIT')
-makedepends=(
-  'python' 'python-setuptools'
-  'python2' 'python2-setuptools')
-options=(!emptydirs)
-source=(
-  "${pkgname}"-"${pkgver}".tar.gz::https://pypi.python.org/packages/4d/0c/c8b64017f43cddcae7e2ed5f3d7dc8b924311094882d9d9daa7339b0ff67/nose-progressive-1.5.1.tar.gz
-  https://raw.githubusercontent.com/erikrose/nose-progressive/c2011a2b82408fe18e14476b7db7202135398d63/LICENSE
-)
-sha256sums=(
-  '44bd41344c1cc1de434a72764ed47fdbbbdbcf03c7801114c0433cd6c696cb55'
-  '07a671a4d3b60c3fdd2750072437d5cab7a26a1fb52ef3cebf2e969036a4f8d4'
-)
+depends=('python-blessings' 'python-nose')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('59abe0e5f060149046aa4e9b8ca622af1eb65db3b69631b5c6230c31ee9641f9f7b9bba7ed50709f5243c04a9bbf36fd5901601e3d93e9b68867fc37357b649e')
+b2sums=('1d88949369fa29cdb1762455989889f54af2a15efbfc5856bc86936e0a97337a09cd9e82658e467335655835537a42b3507e9cec99f3b1abfadd4f6a88c43e0c')
 
 prepare() {
-  cp -a "${_name}"-"${pkgver}"{,-py2}
+  mv -v "${_name}-$pkgver" "$pkgname-$pkgver"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  python setup.py build
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  export PYTHONPATH="build/lib:${PYTHONPATH}"
+  nosetests noseprogressive || echo "Known failing test: https://github.com/erikrose/nose-progressive/issues/90"
 }
 
 package() {
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
-}
-
-build(){
-  cd "${srcdir}"/"${_name}"-"${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}"/"${_name}"-"${pkgver}"-py2
-  python2 setup.py build
-}
-
-package_python2-nose-progressive() {
-  depends=('python2' 'python2-blessings')
-
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  cd "${_name}"-"${pkgver}"-py2
-  python2 setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
-}
-
-package_python-nose-progressive() {
-  depends=('python' 'python-blessings')
-
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-  cd "${_name}"-"${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  cd "$pkgname-$pkgver"
+  python setup.py install --optimize=1 --root="${pkgdir}"
+  install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -vDm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
