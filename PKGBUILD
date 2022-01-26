@@ -3,7 +3,7 @@
 # Contributor: Patrik Hautala <phloyd@iki.fi>
 
 pkgname=moe
-pkgver=1.11
+pkgver=1.12
 pkgrel=1
 pkgdesc='A powerful, 8-bit clean, text editor. Supports ISO-8859-15 and ASCII.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ncurses')
 backup=('etc/moerc')
 source=(http://ftpmirror.gnu.org/moe/$pkgname-$pkgver.tar.lz)
-md5sums=('ccd9326e87f28ad584d638910ab45a87')
+md5sums=('15a7452b6fa5083a0e53e0ac616fa1d4')
 
 build() {
 	cd $pkgname-$pkgver
