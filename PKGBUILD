@@ -31,6 +31,7 @@ optdepends=(
 	'gpujpeg: gpu accelerated jpeg'
 	'libx11: X11 screen recording'
 	'libjuice: UDP holepunching support'
+	'opencv: resize filter, conference video mix'
 )
 
 provides=('ultragrid')
@@ -51,6 +52,7 @@ build() {
   ./autogen.sh --prefix=/usr --enable-plugins \
 	  --enable-qt=auto \
 	  --enable-holepunch=auto \
+	  --enable-opencv=auto \
 	  --disable-dvs \
 	  --disable-decklink \
 	  --disable-gpustitch \
@@ -58,7 +60,6 @@ build() {
 	  --disable-aja \
 	  --disable-deltacast \
 	  --disable-ximea \
-	  --disable-opencv \
 	  --disable-sage \
 	  --disable-text \
 	  --disable-syphon \
