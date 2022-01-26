@@ -5,7 +5,7 @@
 
 _name=google-cloud-core
 pkgname=python-google-cloud-core
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Google Cloud API client core library'
 url='https://github.com/googleapis/python-cloud-core'
@@ -24,7 +24,7 @@ optdepends=(
 source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
 )
-b2sums=('b72cd7d08412320b868b9d35e6091274256242c4e2e602fbce7a5203a50eb7f6f0289f26b5973a2fb7276b98630b2dcfbde072129430c8b70d2ef6c220594f82')
+b2sums=('1dd45406b6e1811f0531bd396128193b220a9f01895024997daf9ce29273ee4945d188ff227648965271833ed27997c11b9274fbba5a657110d773c7a4a39563')
 
 build() {
   cd "$srcdir/$_name-$pkgver" || exit
