@@ -4,7 +4,7 @@
 
 pkgname='lib32-soundtouch'
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source audio processing library for changing the tempo, pitch and playback rates of audio streams or audio files (32 bit)'
 arch=('x86_64')
 url='https://www.surina.net/soundtouch'
@@ -18,7 +18,7 @@ build() {
     cd ${srcdir}
 
     cmake -S ${pkgname}-git -B build -G Ninja \
-        -DCMAKE_BUILD_TYPE='' \
+        -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_SHARED_LIBS=ON \
         -DCMAKE_CXX_FLAGS='-m32' \
