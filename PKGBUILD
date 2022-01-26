@@ -15,6 +15,7 @@ optdepends=(
   'sh: for unbound-control-setup'
   'python: for python-bindings'
 )
+options=(debug)
 conflicts=(unbound)
 provides=(unbound libunbound.so)
 backup=(etc/${basen}/${basen}.conf)
@@ -70,7 +71,8 @@ build() {
               --with-rootkey-file=/etc/trusted-key.key \
               --with-libevent \
               --with-libnghttp2 \
-              --with-pyunbound
+              --with-pyunbound \
+              --enable-debug
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }

@@ -25,6 +25,7 @@ pkgbase = unbound-git
 	provides = unbound
 	provides = libunbound.so
 	conflicts = unbound
+	options = debug
 	backup = etc/unbound/unbound.conf
 	source = git+https://github.com/NLnetLabs/unbound.git#branch=master
 	source = unbound-1.14.0-trust_anchor_file.patch
