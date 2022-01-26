@@ -14,7 +14,7 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=213.6777.11
+_buildver=213.6777.38
 _veryear=2021
 _verrelease=3
 _verextra=2
