@@ -1,4 +1,5 @@
-# Maintainer: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Ashwin Vishnu <ashwinvis+arch at pr0t0nm4il dot com>
 _name=libvarnam-ibus
 pkgname="${_name}-git"
 pkgver=r40.79ee71e
