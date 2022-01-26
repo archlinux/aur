@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 17.0.1 Oracle Build.
-	pkgver = 17.0.1.u12
+	pkgdesc = Java OpenJDK 17.0.2 Oracle Build.
+	pkgver = 17.0.2.u8
 	pkgrel = 1
 	url = https://jdk.java.net/17
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = java-openjdk-bin
 	conflicts = jre-openjdk>=17
 	conflicts = jre-openjdk-headless>=17
 	conflicts = jdk-openjdk>=17
-	source = https://download.java.net/java/GA/jdk17.0.1/2a2082e5a09d4267845be086888add4f/12/GPL/openjdk-17.0.1_linux-x64_bin.tar.gz
-	sha256sums = 1c0a73cbb863aad579b967316bf17673b8f98a9bb938602a140ba2e5c38f880a
+	source = https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz
+	sha256sums = 0022753d0cceecacdd3a795dd4cea2bd7ffdf9dc06e22ffd1be98411742fbb44
 
 pkgname = java-openjdk-bin
