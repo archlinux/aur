@@ -1,15 +1,13 @@
 pkgbase = pandoc-xnos
 	pkgdesc = Library code for the pandoc-fignos/eqnos/tablenos filters.
-	pkgver = 2.3.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/tomduck/pandoc-xnos
 	arch = any
 	license = GPL
 	depends = python-pandocfilters
-	depends = pandoc-attributes
 	depends = python-psutil
-	source = https://github.com/tomduck/pandoc-xnos/archive/2.3.0.tar.gz
-	md5sums = 401f922e0708dc9db8de076b48387c8b
+	source = https://github.com/tomduck/pandoc-xnos/archive/2.5.0.tar.gz
+	md5sums = 270aae21d342c26020b6aec583e373e9
 
 pkgname = pandoc-xnos
-
