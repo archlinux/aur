@@ -1,6 +1,6 @@
 pkgbase = python-aiopygismeteo
 	pkgdesc = Asynchronous wrapper for Gismeteo.ru API
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/monosans/aiopygismeteo
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-aiopygismeteo
 	depends = python
 	depends = python-aiohttp
 	depends = python-pygismeteo-base
-	source = https://files.pythonhosted.org/packages/source/a/aiopygismeteo/aiopygismeteo-3.0.0.tar.gz
-	sha256sums = dcb2a3b9b85afdf021f44bf1985ab7d1a7a9b7e9890211098465d7cd793ebe0e
+	source = https://files.pythonhosted.org/packages/source/a/aiopygismeteo/aiopygismeteo-4.0.0.tar.gz
+	sha256sums = aa702133170feb2d1bd5ea94d1997de88f46be9d0330360c4ff4ad0bb80f3c38
 
 pkgname = python-aiopygismeteo
