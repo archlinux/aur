@@ -1,6 +1,6 @@
 pkgbase = python-pygismeteo-base
 	pkgdesc = Base for pygismeteo and aiopygismeteo
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/monosans/pygismeteo-base
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-pygismeteo-base
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/p/pygismeteo-base/pygismeteo-base-2.0.0.tar.gz
-	sha256sums = 209f9fd68520d34fcbc46dd3a347fafff4691a5bbd15af894d8e41ebbbefa642
+	source = https://files.pythonhosted.org/packages/source/p/pygismeteo-base/pygismeteo-base-2.1.0.tar.gz
+	sha256sums = 0ba618d155c3cb4c51adcdfc19f8d1c7cfb70c1211d817fe94814827302d7476
 
 pkgname = python-pygismeteo-base
