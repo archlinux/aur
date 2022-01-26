@@ -1,9 +1,8 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
-# Contributor: Steven Seifried <gitlab at canox dot net>
 
 pkgname=tuxedo-touchpad-switch
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A Linux userspace driver to enable and disable the touchpads on TongFang/Uniwill laptops"
 url="https://github.com/tuxedocomputers/tuxedo-touchpad-switch"
 arch=(x86_64)
@@ -15,21 +14,17 @@ makedepends=("git" "cmake" "ninja")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
+_commit="88c8e4561087a3c7e8bf60bdd72a1f0005864eb0"
 #https://github.com/tuxedocomputers/tuxedo-touchpad-switch/archive/v$pkgver/${pkgname}-${pkgver}.tar.gz
 source=(
-  git+https://github.com/tuxedocomputers/tuxedo-touchpad-switch.git#commit=3f90c9c6c1e51f6d8538877d2f15677ce39b167b
+  git+https://github.com/tuxedocomputers/tuxedo-touchpad-switch.git#commit=$_commit
 )
 sha256sums=(SKIP)
 #sha256sums=('dd4fa6871735fed3e094f177f0a2d0861fd3411ef4e6fbf1fbba5405a01ae219')
 
-prepare() {
-  cd "${pkgname}"
-
-  cat >> "res/99-tuxedo-touchpad-switch.rules" <<EOF
-KERNELS=="i2c-UNIW0001:00", SUBSYSTEMS=="i2c", DRIVERS=="i2c_hid_acpi", ATTRS{name}=="UNIW0001:00", SUBSYSTEM=="hidraw", MODE="0622"
-EOF
-
-}
+#prepare() {
+#  cd "${pkgname}"
+#}
 
 build() {
   cd "${pkgname}"
