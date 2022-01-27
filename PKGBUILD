@@ -5,7 +5,7 @@ pkgver=13.6.8
 _commit=fc41c71ce0f2f156c15237bd0c792f4e0a847ff7
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
-pkgrel=1
+pkgrel=2
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -190,6 +190,11 @@ build() {
 
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
+  # This appears to cause random segfaults when combined with ThinLTO
+  # https://bugs.archlinux.org/task/73518
+  CFLAGS=${CFLAGS/-fstack-clash-protection}
+  CXXFLAGS=${CXXFLAGS/-fstack-clash-protection}
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
