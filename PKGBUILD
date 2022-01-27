@@ -2,7 +2,7 @@
 # Contributor: Nikolay Korotkiy <sikmir@gmail.com>
 
 pkgname=pyglossary
-pkgver=4.3.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="A tool for converting dictionary files aka glossaries with various formats for different dictionary applications"
 arch=(any)
@@ -25,7 +25,7 @@ optdepends=(
 makedepends=('python-setuptools')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilius/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('f2ea549f7c26d1b1e7e3d9c1641848c87bb28e4c2bcc208e098db1632e3b1c33')
+sha256sums=('269a04addc73cdca3c8cf32bcaa301f7507df23ba9ce34054ea00fd1341e9bea')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
