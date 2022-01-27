@@ -1,11 +1,12 @@
 pkgbase = icingaweb2
 	pkgdesc = Icinga Web 2 Interface
 	pkgver = 2.9.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icinga.com/
 	install = icingaweb2.install
 	arch = any
 	license = GPL
+	makedepends = patchutils
 	depends = php
 	depends = icinga-php-library>=0.6.0
 	depends = icinga-php-thirdparty>=0.10.0
