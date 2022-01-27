@@ -26,8 +26,14 @@ pkgbase = emercoin-git
 	provides = emercoin
 	conflicts = emercoin
 	source = git+https://github.com/emercoin/emercoin.git
-	source = emercoin-qt.desktop
+	source = emercoin.install
+	source = emercoind.service
+	source = emc48.png
+	source = com.emercoin.Emercoin.desktop
 	sha256sums = SKIP
-	sha256sums = 06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508
+	sha256sums = 9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35
+	sha256sums = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
+	sha256sums = 99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132
+	sha256sums = dfa7a4c2f717bbc29ba4273d65f80e0ee5853379e0632e458ae12df1ace72fcf
 
 pkgname = emercoin-git

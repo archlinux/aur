@@ -1,0 +1,15 @@
+[Unit]
+Description=Emercoin Wallet
+After=network.target
+
+[Service]
+Type=forking
+User=emercoin
+Group=emercoin
+ExecStart=/usr/bin/emercoind -daemon -pid=/var/lib/emc/.emercoin/emercoind.pid
+ExecStop=/usr/bin/emercoin-cli -datadir=/var/lib/emc/.emercoin stop
+PIDFile=/var/lib/emc/.emercoin/emercoind.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

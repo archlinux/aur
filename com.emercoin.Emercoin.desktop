@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=P2P;Blockchain;
+Exec=emercoin-qt %U
+GenericName=Emercoin QT client
+Comment=Emercoin digital currency
+Icon=emercoin
+MimeType=application/x-emercoin-qt;
+Name=Emercoin
+Terminal=false
+Type=Application
+StartupNotify=false
+StartupWMClass=emercoin-qt
+Keywords=blockchain;p2p;emc;

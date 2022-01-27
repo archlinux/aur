@@ -15,19 +15,15 @@ makedepends=('boost' 'qt5-tools')
 provides=('emercoin')
 conflicts=('emercoin')
 source=("git+${url}.git" #branch=${BRANCH:-0.7.11}"
-#        "Fix-missing-include.patch"
-#        "Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
-        "emercoin-qt.desktop"
-)
+"emercoin.install"
+"emercoind.service"
+"emc48.png"
+"com.emercoin.Emercoin.desktop")
 sha256sums=('SKIP'
-#            '75b1e7bebb53a48cf93f2b701bbd8d9a1e7005b45c63a804596b68b0e9343c87'
-#            '1b339af10cbd8e003ce7c44f28b9d2eaf23e01d094078f96f21fa45d1679edef'
-            '06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508')
-#prepare() {
-#	cd "${_pkgname}"
-#	patch -Np1 -i ${srcdir}/Fix-missing-include.patch #See https://doc.qt.io/Qt-5/qintvalidator.html for more details
-#	patch -Np1 -i ${srcdir}/Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch #See https://bugs.archlinux.org/task/60235 and https://github.com/bitcoin/bitcoin/issues/14273#issuecomment-424905851 for more details
-#}
+            '9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35'
+            '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed'
+            '99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132'
+            'dfa7a4c2f717bbc29ba4273d65f80e0ee5853379e0632e458ae12df1ace72fcf')
 
 build() {
   cd ${srcdir}/${_pkgname}
@@ -36,18 +32,16 @@ build() {
   git pull --tags -f
 	./autogen.sh
   ./configure --prefix=/usr --with-gui=qt5 --with-incompatible-bdb --with-openssl --with-libressl=no --enable-tests=no --disable-dependency-tracking --disable-tests --disable-util-tx --disable-gui-tests --enable-bip70 --disable-hardening --disable-debug
-	make
+  make
+  mkdir -p ${srcdir}/usr
+  make DESTDIR=${srcdir}/usr install
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}
-  make DESTDIR=${pkgdir}/ install
-	install -Dm644 ${srcdir}/emercoin-qt.desktop ${pkgdir}/usr/share/applications/emercoin.desktop
-	install -Dm644 src/qt/res/icons/emercoin.png ${pkgdir}/usr/share/pixmaps/emercoin.png
-#	install -Dm644 contrib/debian/emercoin.conf \
-#		"$pkgdir/etc/emercoin.conf"
-#	install -Dm644 contrib/debian/emercoind.service \
-#		"$pkgdir/usr/lib/systemd/system/emercoind.service"
-	install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
-  mv  ${pkgdir}/usr/share/man/man1 ${pkgdir}/usr/share/man/man2
+  install -Dm644 ${srcdir}/emercoind.service ${pkgdir}/usr/lib/systemd/system/emercoind.service
+  install -Dm644 ${srcdir}/com.emercoin.Emercoin.desktop ${pkgdir}/usr/share/applications/com.emercoin.Emercoin.desktop
+  install -Dm644 ${srcdir}/emc48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/emercoin.png
+  install -Dm755 ${srcdir}/usr/usr/bin/emercoind $pkgdir/usr/bin/emercoind
+  install -Dm755 ${srcdir}/usr/usr/bin/emercoin-qt $pkgdir/usr/bin/emercoin-qt
+  install -Dm755 ${srcdir}/usr/usr/bin/emercoin-cli $pkgdir/usr/bin/emercoin-cli
 }

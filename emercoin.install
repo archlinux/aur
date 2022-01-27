@@ -1,0 +1,55 @@
+## arg 1:  the new package version
+pre_install() {
+    /usr/sbin/groupadd -r emercoin
+    /usr/sbin/useradd -r -d "/var/lib/emc" -m -g emercoin -c "emercoin user" -s /bin/false emercoin
+    /usr/sbin/usermod -a -G emercoin root
+}
+
+## arg 1:  the new package version
+post_install() {
+    chown emercoin:emercoin ./bin/emercoind $pkgdir/usr/bin/emercoind
+    chown emercoin:emercoin /usr/bin/emercoin-qt
+    chown emercoin:emercoin /usr/bin/emercoin-tx
+    chown emercoin:emercoin /usr/bin/emercoin-cli
+    chown emercoin:emercoin /usr/include/emercoinconsensus.h
+    chown emercoin:emercoin /usr/lib/libemercoinconsensus.so.0.0.0
+    chown emercoin:emercoin /share/man/man1/bitcoind.1
+    chown emercoin:emercoin /share/man/man1/bitcoin-qt.1
+    chown emercoin:emercoin /share/man/man1/bitcoin-tx.1
+    chown emercoin:emercoin /share/man/man1/bitcoin-cli.1
+    chmod 6750 /usr/bin/emercoind
+    chmod 6750 /usr/bin/emercoin-qt
+    chmod 6750 /usr/bin/emercoin-tx
+    chmod 6750 /usr/bin/emercoin-cli
+    ln -s /usr/bin/emercoin-cli /usr/bin/emc
+    chmod 6750 /usr/bin/emc
+    mkdir /var/lib/emc/.emercoin
+    if [ -f "/var/lib/emc/.emercoin/emercoin.conf" ]; then
+        false
+    else
+        rpcpass=`openssl rand 33 | base64`
+	echo "rpcuser=emccoinrpc
+rpcpassword=$rpcpass
+listen=1
+server=1
+rpcallowip=127.0.0.1
+rpcport=6662
+maxconnections=80
+gen=0
+daemon=1
+rpcssl=0
+reservebalance=0
+emcdns=0
+emcdnsallowed=.coin|.emc|.lib|.bazar
+emcdnsport=5335" > /var/lib/emc/.emercoin/emercoin.conf
+    fi
+    chown -R emercoin:emercoin /var/lib/emc
+    chmod 640 /var/lib/emc/.emercoin/emercoin.conf
+    chmod 750 /var/lib/emc/.emercoin
+}
+
+## arg 1:  the old package version
+post_remove() {
+    /usr/sbin/groupdel -f emercoin  
+    /usr/sbin/userdel -f emercoin 
+}
