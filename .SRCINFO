@@ -1,10 +1,9 @@
 pkgbase = emercoin-bin
 	pkgdesc = Emercoin is a digital currency and blockchain service platform.
-	pkgver = 0.7.10
-	pkgrel = 2
-	url = https://emercoin.com/
+	pkgver = 0.7.11
+	pkgrel = 1
+	url = http://emercoin.com/
 	install = emercoin.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = libevent>=2.1.8
@@ -14,17 +13,17 @@ pkgbase = emercoin-bin
 	depends = expat>=2.2.0
 	depends = freetype2>=2.7.1
 	depends = protobuf
-	source_i686 = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-i686-pc-linux-gnu.tar.gz
-	sha256sums_i686 = 993ddbebbd78bb654762d7dd9b0fb69bd365dc270a922d566d1adba0ac002174
-	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.7.10emc/emercoin-0.7.10-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = 6e851f289c652fd1055bd6084abe454ad172cc8df0926efcf05441e58fc14973
-	source = emercoin.install
-	source = emercoind.service
-	source = emc48.png
-	source = com.emercoin.Emercoin.desktop
-	sha256sums = 9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35
-	sha256sums = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
-	sha256sums = 99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132
-        sha256sums = dfa7a4c2f717bbc29ba4273d65f80e0ee5853379e0632e458ae12df1ace72fcf
+	provides = emercoin
+	conflicts = emercoin
+	source_x86_64 = https://github.com/emercoin/emercoin/releases/download/v0.7.11emc/emercoin-0.7.11-x86_64-linux-gnu.tar.bz2
+	source_x86_64 = emercoin.install
+	source_x86_64 = emercoind.service
+	source_x86_64 = emc48.png
+	source_x86_64 = com.emercoin.Emercoin.desktop
+	sha256sums_x86_64 = b2dfbd5016ab20965fcd0e245dc17e502b17a39e9c070fc094607888b8d84313
+	sha256sums_x86_64 = 9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35
+	sha256sums_x86_64 = 9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed
+	sha256sums_x86_64 = 99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132
+	sha256sums_x86_64 = dfa7a4c2f717bbc29ba4273d65f80e0ee5853379e0632e458ae12df1ace72fcf
 
 pkgname = emercoin-bin
