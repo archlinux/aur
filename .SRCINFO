@@ -1,21 +1,22 @@
 pkgbase = goreleaser-bin
 	pkgdesc = Deliver Go binaries as fast and easily as possible
-	pkgver = v1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://goreleaser.com
-	arch = x86_64
-	arch = i686
-	arch = aarch64
 	license = MIT
-	optdepends = nfpm: deb and rpm packager
-	optdepends = snapcraft: snap packager
-	provides = goreleaser
 	conflicts = goreleaser
-	source_x86_64 = goreleaser_v1.3.1_linux_x86_64.tar.gz::https://github.com/goreleaser/goreleaser/releases/download/v1.3.1/goreleaser_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 845ac8e7ede20c508c4e42acbda38df094ff2b744cd17201ac65a0316daa8cfb
-	source_i686 = goreleaser_v1.3.1_linux_i386.tar.gz::https://github.com/goreleaser/goreleaser/releases/download/v1.3.1/goreleaser_linux_i386.tar.gz
-	sha256sums_i686 = 33124980054aaca6c555b94d9b0e55cb73771d8eb52adcac2b703c50fedc8b28
-	source_aarch64 = goreleaser_v1.3.1_linux_arm64.tar.gz::https://github.com/goreleaser/goreleaser/releases/download/v1.3.1/goreleaser_linux_arm64.tar.gz
-	sha256sums_aarch64 = b0e65ea482c490e8a8c445b395e591f014dfcfeaec37a9b177d5f7864ecdf234
-
+	provides = goreleaser
+	arch = aarch64
+	source_aarch64 = https://github.com/goreleaser/goreleaser/releases/download/v1.4.0/goreleaser_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 61de2576faf6a16bb24f298c0a5fe1e70e20393f353b56943510bc5b3b65e41c
+	arch = armv7h
+	source_armv7h = https://github.com/goreleaser/goreleaser/releases/download/v1.4.0/goreleaser_Linux_armv7.tar.gz
+	sha256sums_armv7h = 9a6c94edbfb92097c3a67c2927f028c91b4b63bc110c6e2c21d08d07c7e5bc41
+	arch = i686
+	source_i686 = https://github.com/goreleaser/goreleaser/releases/download/v1.4.0/goreleaser_Linux_i386.tar.gz
+	sha256sums_i686 = df4e4067fc001e61037095b0f530b83520662a86186e4523be7ea2d2ff25a2a5
+	arch = x86_64
+	source_x86_64 = https://github.com/goreleaser/goreleaser/releases/download/v1.4.0/goreleaser_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = e39f1e6b25037dd21ceef8710597ae1d27748b3f84daeff93be2a435cb61f380
+	
 pkgname = goreleaser-bin
