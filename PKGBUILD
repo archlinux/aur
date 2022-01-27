@@ -1,14 +1,16 @@
-# Maintainer: Konstantinos Foutzopoulos <mail@konfou.xyz>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Konstantinos Foutzopoulos <mail@konfou.xyz>
 
 _pkgname=anarki
 pkgname=${_pkgname}-git
-pkgver=r878.cfdb0a1
+pkgver=3.1.1349.ge1c9fd4
 pkgrel=1
+epoch=1
 pkgdesc="Community-managed fork of the Arc dialect of Lisp. (GIT version)"
-arch=('x86_64' 'i686')
+arch=('any')
 url="https://github.com/arclanguage/anarki"
 license=('MIT' 'PerlArtistic')
-depends=('racket')
+depends=('racket' 'bash' 'perl')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -17,14 +19,13 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags| cut -c4- | sed 's+-+.+' | tr - .
 }
 
 package() {
-  mkdir -p "${pkgdir}/usr/share" "${pkgdir}/usr/bin"
-  cp -R "${_pkgname}" "${pkgdir}/usr/share/${_pkgname}"
-  chmod 755 -R "${pkgdir}/usr/share/${_pkgname}"
-  ln -s "/usr/share/${_pkgname}/arc.sh" "${pkgdir}/usr/bin/arc"
+  install -d "$pkgdir"/usr/{bin,share/licenses/$pkgname} 
+  cp -R "${_pkgname}" "$pkgdir/usr/share/${_pkgname}"
+  rm -rf "$pkgdir"/usr/share/${_pkgname}/.git
+  ln -s "/usr/share/${_pkgname}/arc.sh" "$pkgdir/usr/bin/arc"
+  install -Dm755 "${_pkgname}"/copyright "$pkgdir"/usr/share/licenses/$pkgname/copyright
 }
-
-# vim:set ts=2 sw=2 et:
