@@ -2,8 +2,8 @@
 
 _port=9001
 pkgname=minima-bin
-pkgver=0.100.25
-pkgrel=2
+pkgver=0.100.30
+pkgrel=1
 pkgdesc='A completely decentralized network for information and value transfer'
 arch=(any)
 url='https://github.com/minima-global/Minima'
@@ -18,7 +18,7 @@ source=(
     'minima@.service'
 )
 sha512sums=(
-    'ac9691f9142f1384ba07d98e89c222c036b5d40a511e584aa7dafb702353da2b5eb9810cb697231a43c5f198becb342809c2e0a274f385fab7ac296bc76b62d5'
+    'c31ddb753f87ef7031e0b3794d1683df1fcd52fab51e96bb28f61c55423646f465f0ee6d212ddc2350ed59abfdf909f5648531bd906be5442f914089b4918122'
     'c1dc29ed6b7fe84bad8e4d61737b5f47ef231bf27bdd5ebcb3db409e5ca994281d881f7840a37bf5c1667e1cbeba80628dea7e9af5afe4ff84160db028c38033'
     'eff286fa2f722bb1de82898a2552aa726c97f7fb9558426dad6802749bcd00792140b703e73da4491b85f883d92b8a8c6ffbb4ebf77a14d9cadbdad2e8af1e77'
     '8f7de769d1c382bdcf6f0560bfe8bac53295ede13c0f01dbbca2395bb0d828adc4200c60579c1bd9f9f6ba499a0940a0b344194cfc47b6500f333798c2bacc78'
