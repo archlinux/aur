@@ -22,6 +22,8 @@ prepare() {
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
+# vim:set ts=2 sw=2 et:
