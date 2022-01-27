@@ -1,7 +1,7 @@
 pkgbase = apio
 	pkgdesc = Experimental micro-ecosystem for open FPGAs
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/apio/
 	arch = any
 	license = GPL

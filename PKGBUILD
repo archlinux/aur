@@ -1,7 +1,7 @@
 pkgname=apio
 _name=apio
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental micro-ecosystem for open FPGAs"
 arch=('any')
 url="https://pypi.org/project/apio/"
@@ -27,7 +27,7 @@ check() {
   python -m venv --system-site-packages test-venv
   ./test-venv/bin/python -m install dist/*.whl
 
-  ./test-venv/bin/python -m pytest -v -c /dev/null test
+  ./test-venv/bin/python -m pytest -v -c /dev/null test --offline
 }
 
 package() {
