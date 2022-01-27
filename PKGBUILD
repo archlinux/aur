@@ -2,10 +2,10 @@
 
 pkgname=arduino-pro-ide
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Arduino Pro IDE bring features that address the needs of advanced users whilst retaining continuity with the simple "classic" Arduino IDE."
 arch=('x86_64')
-depends=('libxss' 'gtk3' 'nodejs-lts-dubnium' 'nss' 'libxkbfile' 'python')
+depends=('libxss' 'gtk3' 'nodejs' 'nss' 'libxkbfile' 'python')
 makedepends=('gendesk' 'ruby-ronn' 'git')
 optdepends=('arduino-cli')
 url="https://github.com/arduino/$pkgname"
