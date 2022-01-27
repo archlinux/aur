@@ -2,7 +2,7 @@
 # Contributor Tavian Barnes <tavianator@tavianator.com>
 # Contributor jhorcl
 pkgname=mozillavpn
-pkgver=2.6.0
+pkgver=2.7.0
 _debian_series=impish1
 pkgrel=1
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
@@ -34,8 +34,8 @@ makedepends=('qt5-tools' 'go' 'flex' 'python-yaml')
 source=(
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}.orig.tar.gz"
     "https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/${pkgver}-${_debian_series}/mozillavpn_${pkgver}-${_debian_series}.debian.tar.xz")
-sha256sums=('17dd9ef06a266325d2ecaf830548a002de4f5ba32ad43ebc4df6e0daa5914a3f'
-            'e124de5757d5118d26b3b40c400b586943fc0ad8cdfe45713fc01e389c4d89e6')
+sha256sums=('0aca5cc0752d30b7b120d8cf277cac6ef4e085db5f9d68fec3450030b0b1215b'
+            '064e87240c6807aecfee3e22c3510d7ceb49c4f969ed041458dca6cce6ccf060')
 
 build() {
     cd "${pkgname}-${pkgver}"
