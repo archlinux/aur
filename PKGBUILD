@@ -1,3 +1,5 @@
+# Maintainer: André Kugland <kugland at gmail dot com>
+
 pkgname="fastrandom"
 pkgver="1.0.1"
 pkgrel="1"
