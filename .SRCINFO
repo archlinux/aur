@@ -1,7 +1,7 @@
 pkgbase = blender-plugin-fspy
 	pkgdesc = blender addon for supporting fSpy project files
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stuffmatic/fSpy-Blender
 	arch = any
 	license = GPL
@@ -10,4 +10,3 @@ pkgbase = blender-plugin-fspy
 	sha256sums = ac10ee2b02f832d7d985928b4e10ff82f82e34e3245777fd4bd3615647e8f207
 
 pkgname = blender-plugin-fspy
-
