@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=0.7.1
+pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -15,7 +15,7 @@ optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
 provides=('rancher-desktop' 'docker' 'helm' 'kim' 'kubectl' 'nerdctl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b4b25bc8e87359ac1c84c3fa38fdfa4614d358a9b9899a0b4477861bc3ce9282')
+sha256sums=('54b8be05952ffaf465633711f4c9687afb1aa842c6f58ce127cda6d73fd4dd43')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -26,7 +26,7 @@ _ensure_local_nvm() {
 
 prepare() {
     _ensure_local_nvm
-    nvm install 14.17.0
+    nvm install 16.13.2
 
 
     cd "${pkgname}-${pkgver}"
@@ -45,6 +45,7 @@ build() {
     done
 
   sed -i "s|Exec=rancher-desktop|Exec=opt/${pkgname}/rancher-desktop|g" packaging/linux/rancher-desktop.desktop
+  sed -i "s|target: \[ zip \]|target: [ dir ]|g" electron-builder.yml
 
   # Remove Flatpak and appimage as they are not needed
   rm packaging/linux/appimage.yml

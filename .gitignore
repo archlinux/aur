@@ -1,3 +1,4 @@
 pkg/
 rancher-desktop*
 src/
+v*.tar.gz
