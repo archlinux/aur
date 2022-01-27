@@ -1,26 +1,26 @@
 pkgbase = noto-fonts-cjk-vf
 	pkgdesc = Google Noto CJK variable fonts
-	pkgver = 20210430
+	pkgver = 20220121
 	pkgrel = 1
 	url = https://www.google.com/get/noto/
 	arch = any
 	license = custom:SIL
 	provides = noto-fonts-cjk
 	conflicts = noto-fonts-cjk
-	source = noto-fonts-cjk-vf-20210430.tar.gz::https://github.com/googlefonts/noto-cjk/archive/cee7438f5f8e66397090d483c15275d1af3d87c7.tar.gz
+	source = noto-cjk-20220121.tar.gz::https://github.com/googlefonts/noto-cjk/archive/70dc26931fcfbed08afc8f683af108ee3027ad54.tar.gz
 	source = 70-noto-cjk.conf
 	source = 70-noto-hk.conf
 	source = 70-noto-jp.conf
 	source = 70-noto-kr.conf
 	source = 70-noto-sc.conf
 	source = 70-noto-tc.conf
-	sha256sums = e0b2b7d6eca2a336cd66d2a63e7145a961fd442601341075115dbe299fa3ddb5
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3e03522d5ee8ac0d8125eda48785c7afabbad81e20afb2e9da4403f00418535c
+	sha256sums = 357e9ed6553087567ec5a28f835db5c43d3cd68a688e4677f759cca465379a32
+	sha256sums = 70f5ad3bd3e3d90c98c6a9ea2f3a28c2564fe18f0d7b8d78926a284cec398fd0
+	sha256sums = 0b5bd14a869234e50b735505e96257cd8e0851031a02735353895b7408abd313
+	sha256sums = 233846410004447b718545aa83a5375400d5e3a0219e79ff0ab50a430aec765b
+	sha256sums = 099e5f2fff526d0d38d57ce5aa0ebd92e0886aaa937f77812f85d63d3e01e53c
+	sha256sums = 42d6a448bae63daba8eb6123a7b5e56683536f82709ed448a0b29c12bdf18e02
 
 pkgname = noto-fonts-cjk-vf
 

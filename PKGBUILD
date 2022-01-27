@@ -3,42 +3,40 @@
 
 pkgbase=noto-fonts-cjk-vf
 pkgname=(noto-fonts-{cjk,{cjk-,}{hk,jp,kr,sc,tc}}-vf)
-pkgver=20210430
+pkgver=20220121
 pkgrel=1
 pkgdesc='Google Noto CJK variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
 arch=(any)
-_commit=cee7438f5f8e66397090d483c15275d1af3d87c7
-source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/googlefonts/noto-cjk/archive/${_commit}.tar.gz"
-        70-noto-{cjk,hk,jp,kr,sc,tc}.conf)
-sha256sums=('e0b2b7d6eca2a336cd66d2a63e7145a961fd442601341075115dbe299fa3ddb5'
-            'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 conflicts=(noto-fonts-cjk)
 provides=(noto-fonts-cjk)
-
-_faces=(Black
-        Bold
-        ExtraLight 
-        Light 
-        Medium
-        Regular
-        SemiBold)
+_commit=70dc26931fcfbed08afc8f683af108ee3027ad54
+source=("noto-cjk-${pkgver}.tar.gz::https://github.com/googlefonts/noto-cjk/archive/${_commit}.tar.gz"
+        70-noto-{cjk,hk,jp,kr,sc,tc}.conf)
+sha256sums=('3e03522d5ee8ac0d8125eda48785c7afabbad81e20afb2e9da4403f00418535c'
+            '357e9ed6553087567ec5a28f835db5c43d3cd68a688e4677f759cca465379a32'
+            '70f5ad3bd3e3d90c98c6a9ea2f3a28c2564fe18f0d7b8d78926a284cec398fd0'
+            '0b5bd14a869234e50b735505e96257cd8e0851031a02735353895b7408abd313'
+            '233846410004447b718545aa83a5375400d5e3a0219e79ff0ab50a430aec765b'
+            '099e5f2fff526d0d38d57ce5aa0ebd92e0886aaa937f77812f85d63d3e01e53c'
+            '42d6a448bae63daba8eb6123a7b5e56683536f82709ed448a0b29c12bdf18e02')
 
 _langs=(hk jp kr sc tc)
 
 package_noto-fonts-cjk-vf(){
-  cd noto-cjk-*/
-  for f in NotoSans{,Mono}CJK-VF.otf.ttc; do
-    install -Dm644 \
-      Sans/Variable/OTC/${f} \
-      "$pkgdir"/usr/share/fonts/noto-cjk/${f//-VF.otf}
-  done
+  cd noto-cjk-${_commit}
 
-  for face in "${_faces[@]}"; do
+  for _font in Sans Serif; do
     install -Dm644 \
-      -t "$pkgdir"/usr/share/fonts/noto-cjk/ \
-      Serif/NotoSerifCJK-${face}.ttc
+      ${_font}/Variable/OTC/Noto${_font}CJK-VF.otf.ttc \
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}CJK.ttc
+
+    # mono is available only for sans
+    [ "${_font}" = "Sans" ] || continue
+    install -Dm644 \
+      ${_font}/Variable/OTC/Noto${_font}MonoCJK-VF.otf.ttc \
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}MonoCJKCJK.ttc
   done
 
   install -Dm644 -t "$pkgdir"/usr/share/fontconfig/conf.avail/ \
@@ -56,20 +54,16 @@ _package_locl(){
 
   cd noto-cjk-${_commit}
 
-  install -Dm644 \
-    Sans/Variable/OTF/NotoSansCJK${_lang}-VF.otf \
-    "$pkgdir"/usr/share/fonts/noto-cjk/NotoSansCJK.otf
-
-  install -Dm644 \
-    Sans/Variable/OTF/Mono/NotoSansMonoCJK${_lang}-VF.otf \
-    "$pkgdir"/usr/share/fonts/noto-cjk/NotoSansMonoCJK.otf
-
-  # no serif for hk so install the tc instead as the packages conflict
-  [ $_lang = hk ] && _lang=tc
-  for face in "${_faces[@]}"; do
+  for _font in Sans Serif; do
     install -Dm644 \
-      Serif/NotoSerifCJK${_lang}-${face}.otf \
-      "$pkgdir"/usr/share/fonts/noto-cjk/NotoSerifCJK-${face}.otf
+      ${_font}/Variable/OTF/Noto${_font}CJK${_lang}-VF.otf \
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}CJK.otf
+
+    # mono is available only for sans
+    [ "${_font}" = "Sans" ] || continue
+    install -Dm644 \
+      ${_font}/Variable/OTF/Mono/Noto${_font}MonoCJK${_lang}-VF.otf \
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}MonoCJK.otf
   done
 
   install -Dm644 -t "$pkgdir"/usr/share/fontconfig/conf.avail/ \
@@ -82,31 +76,24 @@ _package_locl(){
 }
 
 _package_subset(){
+  # the conflict is due to the multi-lingual mono font
+  conflicts+=(noto-fonts-cjk-vf)
+  provides+=(noto-fonts-cjk-vf)
+
   cd noto-cjk-${_commit}
 
-  # install sans font
-  install -Dm644 \
-    Sans/Variable/OTF/Subset/NotoSans${_lang^^}-VF.otf \
-    "$pkgdir"/usr/share/fonts/noto-cjk/NotoSans${_lang^^}.otf
+  for _font in Sans Serif; do
+    install -Dm644 \
+      ${_font}/Variable/OTF/Subset/Noto${_font}${_lang^^}-VF.otf \
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto{_font}${_lang^^}.otf
 
-  # install mono font
-  # there are no subset mono fonts, so install the multi-lingual with default locl, and then conflict
-  for i in ${_langs[@]}; do
-    [ $i = $_lang ] && continue
-    conflicts+=(noto-fonts-cjk-${i}-vf)
+    # mono is available only for sans
+    [ "${_font}" = "Sans" ] || continue
+    # there are no subset mono fonts, so install the multi-lingual with default locl
+    install -Dm644 \
+      ${_font}/Variable/OTF/Mono/Noto${_font}MonoCJK${_lang}-VF.otf \
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}MonoCJK.otf
   done
-  install -Dm644 \
-    Sans/Variable/OTF/Mono/NotoSansMonoCJK${_lang}-VF.otf \
-    "$pkgdir"/usr/share/fonts/noto-cjk/NotoSansMonoCJK.otf
-
-  # install serif font
-  if [ ${_lang} != 'hk' ]; then
-    for face in "${_faces[@]}"; do
-      install -Dm644 \
-        -t "$pkgdir"/usr/share/fonts/noto-cjk/ \
-        Serif/NotoSerif${_lang^^}-${face}.otf
-    done
-  fi
 
   install -Dm644 -t "$pkgdir"/usr/share/fontconfig/conf.avail/ \
     ../70-noto-${_lang}.conf 
