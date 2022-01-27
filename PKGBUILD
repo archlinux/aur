@@ -11,7 +11,7 @@ pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('any')
 url="https://www.elastic.co/products/elasticsearch"
 license=('APACHE')
-depends=('java-runtime-headless' 'systemd')
+depends=('jre8-openjdk-headless' 'systemd')
 conflicts=('elasticsearch')
 provides=("elasticsearch=$pkgver")
 install='elasticsearch.install'
@@ -30,7 +30,7 @@ sha256sums=('5f7e4bb792917bb7ffc2a5f612dfec87416d54563f795d6a70637befef4cfc6f'
             'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
             '815f6a39db6f54bb40750c382ffbdc298d2c4c187ee8ea7e2f855923e2ff354b'
             '6578cacc9fdbdf4713e9f607710701edcd46b026e99743af0fbb63e177eed9b1'
-            'bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8')
+            '3a27010e3e88d49e8b60f0630e81ac60974300b128ec99be8c937f6e682fcf60')
 
 backup=('etc/elasticsearch/elasticsearch.yml'
         'etc/elasticsearch/logging.yml'
