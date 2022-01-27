@@ -1,0 +1,16 @@
+#!/bin/bash
+
+case $1 in
+	asm)
+		java -cp /usr/share/java/sictools/sictools.jar sic.Asm ${@:2:$#-1}
+		;;
+	link)
+		java -cp /usr/share/java/sictools/sictools.jar sic.Link ${@:2:$#-1}
+		;;
+	sim)
+		java -cp /usr/share/java/sictools/sictools.jar sic.Sim ${@:2:$#-1}
+		;;
+	*)
+		echo "usage: sictools <asm|link|sim> [<args>]"
+		;;
+esac

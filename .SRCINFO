@@ -1,0 +1,16 @@
+pkgbase = sictools
+	pkgdesc = Tools for SIC/XE hypotetical computer
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/jurem/SicTools
+	arch = any
+	license = unknown
+	depends = java-runtime
+	source = sictools.jar::https://github.com/jurem/SicTools/releases/download/v2.0.1/sictools.jar
+	source = sictools
+	source = sictools.desktop
+	sha512sums = 97aa7a44cb5c59e8c5288a1009c4382d98834a19a2dc9964dfd73311d1fc283b6e628a4bd725835f10ed6eedf3758f88b8d238ea34e4818fe6335c792b3f7d52
+	sha512sums = edeec714008b00667420bdd881ceeec5b66e97b83a7ba34888f3a09f00a719b9db5a546553035bcb1bc1860ba396f13343e1be0f0f590922dd640015e538149f
+	sha512sums = aefa3d24d550160685778af9a687c18425534535fcf6c1309ab744de1916e9b41bfdce24bc206b7453150a688840b0892e72a1279f3be6c4ac292816744c8e81
+
+pkgname = sictools
