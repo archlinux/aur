@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer
 pkgver=6.5.2.48000
-pkgrel=4
+pkgrel=5
 pkgdesc="This is the next generation of Alchemy Viewer!"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -76,6 +76,6 @@ build() {
 package() {
     mkdir -p "${pkgdir}/opt"
     mkdir -p "${pkgdir}/usr/local/share/applications"
-    sed -i 's;alchemy-.*\.desktop;'"${pkgname}-git\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
+    sed -i 's;alchemy-.*\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
