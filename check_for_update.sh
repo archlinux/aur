@@ -26,6 +26,7 @@ echo $RELEASE_HASH;
 
 sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD
 sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
 
 git config --local user.name "Update Bot"
 git config --local user.email "thomas@eizinger.io"
