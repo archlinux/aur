@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs')
 optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
             'nerdctl-bin: Docker-compatible CLI for containerd'
             'helm: for Apps section, only useful if your deploy uses helm or plan to use it')
-provides=('rancher-desktop' 'docker' 'helm' 'kim' 'kubectl' 'nerdctl')
+provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('54b8be05952ffaf465633711f4c9687afb1aa842c6f58ce127cda6d73fd4dd43')
