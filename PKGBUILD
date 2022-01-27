@@ -2,7 +2,7 @@
 
 _pkgname="holehe"
 pkgname="${_pkgname}-git"
-pkgver=1
+pkgver=r379.e7d1688
 pkgrel=1
 pkgdesc="Efficiently finding registered accounts from emails."
 arch=("any")
