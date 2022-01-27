@@ -1,13 +1,13 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r1351+gccff1138
-pkgrel=3
+pkgver=1.0.0+r1588+g1b03db4c
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
 license=('AGPL')
-makedepends=('openssl')
+makedepends=('openssl' 'git')
 depends=(
         'uwsgi-ng'
         'uwsgi-ng-plugin-python'
@@ -27,8 +27,8 @@ depends=(
 	'python-brotli')
 conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
-_giturl="https://github.com/dalf/searxng"
-_gitbranch="test-uwsgi"
+_giturl="https://github.com/searxng/searxng"
+_gitbranch="master"
 source=(git+$_giturl#branch=$_gitbranch
         'searxng.ini'
         'searxng.sysusers')
