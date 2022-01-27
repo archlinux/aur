@@ -1,14 +1,14 @@
 pkgname=theme.sh
 provides=("${pkgname}")
-pkgver=1.0.1
+pkgver=1.1.5
 pkgrel=1
 arch=('any')
 url="https://github.com/lemnos/theme.sh"
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('603d33e340c7b8788b7b34c2196e59fbad53c6f336e80cf8dfd9b9e08298a95c')
+sha256sums=('00baa7e23c3a3922ddb90ac3ae4c31fc8353cc5a5f0ec8779f10a17490f46400')
 
 package() {
   cd "$pkgname-$pkgver"
-	chmod +x "theme.sh"
-  install -Dm755 "theme.sh" "$pkgdir/usr/bin/theme.sh"
+  chmod +x "bin/theme.sh"
+  install -Dm755 "bin/theme.sh" "$pkgdir/usr/bin/theme.sh"
 }
