@@ -1,0 +1,24 @@
+pkgbase = goreleaser-pro-bin
+	pkgdesc = Deliver Go binaries as fast and easily as possible
+	pkgver = 1.4.0-pro
+	pkgrel = 1
+	url = https://goreleaser.com
+	license = MIT
+	conflicts = goreleaser
+	conflicts = goreleaser-pro
+	provides = goreleaser
+	provides = goreleaser-pro
+	arch = aarch64
+	source_aarch64 = https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 07c5d1b1f6d02ea153a9ad1737d800b42cc605363a04eb8703abaa939216b1e6
+	arch = armv7h
+	source_armv7h = https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_armv7.tar.gz
+	sha256sums_armv7h = 2af757c885f136a5a777ca5a37f3f642a7b1cd216b4746657908a9b9b7ab4c8b
+	arch = i686
+	source_i686 = https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_i386.tar.gz
+	sha256sums_i686 = 024d6d14647e666561c8e6ca31fe0fb2bb8b20c7c42ca0c663ba8131e6cd9d87
+	arch = x86_64
+	source_x86_64 = https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 898957aa1d2675575ef6f7ed682482a3b2e272cdde52e038fafc90857a34d949
+	
+pkgname = goreleaser-pro-bin
