@@ -6,20 +6,20 @@
 # Maintainer: solstiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=virt-v2v
 pkgver=1.44.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert a guest image to use with KVM"
 arch=(x86_64)
 url="https://libguestfs.org/virt-v2v.1.html"
 license=('GPL')
 depends=('libguestfs' 'libosinfo')
 makedepends=('ocaml' 'ocaml-findlib')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-source=("https://download.libguestfs.org/virt-v2v/${pkgver:0:4}-stable/virt-v2v-${pkgver}.tar.gz")
-sha256sums=('c99ecabb93d1e6c81f0070b951e7bf42cee2a65a3ece387e01217f06080447fc')
+optdepends=('mingw-w64-rhsrvany: for Windows based VM'
+	'virtio-win: for windows based VM')
+source=("https://download.libguestfs.org/virt-v2v/${pkgver:0:4}-stable/virt-v2v-${pkgver}.tar.gz" "virt-v2v.install")
+install=virt-v2v.install
+
+sha256sums=('c99ecabb93d1e6c81f0070b951e7bf42cee2a65a3ece387e01217f06080447fc'
+            '6235d47396e8e193a80de17825fe337f18ab0bb6ffb4a61f204bea57e5a90f7d')
 
 build() {
 	cd "$pkgname-$pkgver"

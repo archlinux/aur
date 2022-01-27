@@ -1,0 +1,4 @@
+post_install() {
+	echo "virt-v2v expects rhsrvany.exe to be in /usr/share/virt-tools/; if installing the optdepends mingw-w64-rhsrvany, please make a symlink in that directory"
+	echo "virt-v2v expects virtio-win.iso to be in /usr/share/virto-win/; if installing the optdepends virtio-win, please make a symlink in that directory"
+}
