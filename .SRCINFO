@@ -15,7 +15,6 @@ pkgbase = rancher-desktop
 	provides = rancher-desktop
 	provides = docker
 	provides = helm
-	provides = kim
 	provides = kubectl
 	provides = nerdctl
 	source = https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v1.0.0.tar.gz
