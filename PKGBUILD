@@ -8,15 +8,15 @@
 
 pkgname=cegui
 pkgver=0.8.7
-pkgrel=15
+pkgrel=16
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
 license=("MIT")
 depends=('glm' 'ogre=1.9')
 makedepends=('git'
-	     'cmake'
-	     'pcre'
+             'cmake'
+             'pcre'
              'freetype2'
              'minizip'
              'fribidi'
@@ -100,6 +100,8 @@ build() {
         -DCEGUI_BUILD_XMLPARSER_LIBXML2=OFF \
         -DCEGUI_BUILD_LUA_MODULE=OFF \
         -DCEGUI_BUILD_LUA_GENERATOR=OFF \
+        -DCEGUI_BUILD_LUA_GENERATOR=OFF \
+        -DCEGUI_BUILD_XMLPARSER_XERCES=OFF \
         ..
 
   make
