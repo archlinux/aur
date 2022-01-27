@@ -3,12 +3,12 @@
 pkgname=imewlconverter-bin
 _name=imewlconverter
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="一款开源免费的输入法词库转换程序"
 arch=('x86_64' 'i686')
 url="https://github.com/studyzy/imewlconverter"
 license=('GPL3')
-depends=('dotnet-runtime' 'dotnet-runtime-3.1')
+depends=('dotnet-runtime-3.1')
 provides=('imewlconverter')
 conflicts=('imewlconverter')
 source=(

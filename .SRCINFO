@@ -1,12 +1,11 @@
 pkgbase = imewlconverter-bin
 	pkgdesc = 一款开源免费的输入法词库转换程序
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/studyzy/imewlconverter
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	depends = dotnet-runtime
 	depends = dotnet-runtime-3.1
 	provides = imewlconverter
 	conflicts = imewlconverter
@@ -14,4 +13,3 @@ pkgbase = imewlconverter-bin
 	sha256sums = c15d3a9dffe007235ad593cf75f2c89f44a9550a5596bc2b009745f7012434a9
 
 pkgname = imewlconverter-bin
-
