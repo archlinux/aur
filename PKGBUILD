@@ -2,8 +2,8 @@
 
 pkgname=invader
 pkgver=0.45.0
-_commit=e510d65ef12ce26902b88bb3ed201ae4c21a4339
-pkgrel=2
+_commit=13c1ba8c9ae10676e4aaa6b0d2b43d93dca412b0
+pkgrel=3
 pkgdesc="An open source toolkit for creating maps and assets for Halo: Combat Evolved"
 depends=('libtiff' 'libarchive' 'libsquish' 'flac' 'freetype2' 'libsamplerate'
          'libvorbis' 'qt5-base' 'qt5-multimedia' 'zlib')
