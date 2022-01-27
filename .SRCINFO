@@ -1,11 +1,12 @@
 pkgbase = invader
 	pkgdesc = An open source toolkit for creating maps and assets for Halo: Combat Evolved
-	pkgver = 0.44.0
+	pkgver = 0.45.0
 	pkgrel = 1
 	url = https://invader.opencarnage.net
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	makedepends = ninja
 	makedepends = python
 	depends = libtiff
@@ -18,9 +19,9 @@ pkgbase = invader
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = zlib
-	depends = zstd
-	source = invader-0.44.0.tar.gz::https://github.com/SnowyMouse/invader/archive/0.44.0.tar.gz
-	sha256sums = 6dba92c558c09a2e089a63b3323914db73d028d7c8e8cacae2bf2472d6ca7450
+	source = git+https://github.com/SnowyMouse/invader.git#commit=c31ab4ef90cd48d11d43521da353347ac60712a8
+	source = git+https://github.com/SnowyMouse/riat.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = invader
-
