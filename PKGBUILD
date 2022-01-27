@@ -4,7 +4,7 @@
 
 pkgname='osu'
 pkgver='20220101.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='A free-to-win rhythm game'
 _terms_commit='a5cf78c68e98280985f58725868b8df0cd2498b8'
 arch=('i686' 'x86_64')
@@ -21,12 +21,12 @@ source=("${pkgname}-installer-${pkgver}.exe::https://m1.ppy.sh/r/osu!install.exe
 sha256sums=('bd333075443f22e018b372d7bc1e71606270e7a9d42dea2a7f454aea1a4058a1'
             'd1768c68f6011c470c530db5d919f3643a161fce79b42bf6d8c6f6dab10253cc'
             '5765f6c08e946170806fa89de1a71351b4c48cd8cf61e1779f00ca71c4c7490f'
-            '0a2bb920ba3e8ddc9aa6e1bb2321c748b6efb06189294ccdb59fb1977d7a39b5'
-            '85a5f5468a22dad75b8e8cfad8bd0754ed5e4ece693a398de0b90ba1934ac4fe')
+            '3d98f5811539d652bf6378c2c76bff7b6d5ac82e6322942bb287ff9082f1715b'
+            '030fb176a43f6cc3306c48123bbdeea6643ef4d0014f369b2bb16d5772feb076')
 
 build() {
 	wrestool -x -t 3 -n 4 -R -o 'osu-stable.png' "${pkgname}-installer-${pkgver}.exe"
-	wrestool -x -t 3 -n 15 -R -o 'osu-stable-beatmap.png' "${pkgname}-installer-${pkgver}.exe"
+	wrestool -x -t 3 -n 15 -R -o 'osu-importable.png' "${pkgname}-installer-${pkgver}.exe"
 }
 
 package() {
@@ -36,5 +36,5 @@ package() {
 	install -D -m 644 "${pkgname}.xml" "${pkgdir}/usr/share/mime/packages/osu-stable.xml"
 	install -D -m 644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/sh.ppy.osu.stable.desktop"
 	install -D -m 644 'osu-stable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/apps/osu-stable.png"
-	install -D -m 644 'osu-stable-beatmap.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/osu-stable-beatmap.png"
+	install -D -m 644 'osu-importable.png' "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes/application-x-osu-importable.png"
 }
