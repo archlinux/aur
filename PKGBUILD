@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
 pkgver=6.5.3.48028.1339287b13
-pkgrel=2
+pkgrel=3
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -78,6 +78,6 @@ package() {
     mkdir -p "${pkgdir}/usr/local/share/applications"
     # Patch shortcut to avoid duplicated entries
     sed -i 's;Name=Alchemy;Name=Alchemy (git build);' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
-    sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
+    sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${pkgname}/build-linux-64/newview/packaged/etc/refresh_desktop_app_entry.sh"
     mv "${pkgname}/build-linux-64/newview/packaged" "${pkgdir}/opt/${pkgname}"
 }
