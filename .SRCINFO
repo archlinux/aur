@@ -11,6 +11,7 @@ pkgbase = telegram-bot-api
 	makedepends = cmake>=3.0.2
 	depends = openssl
 	depends = zlib
+	depends = gcc-libs
 	provides = telegram-bot-api
 	conflicts = telegram-bot-api-git
 	source = git+https://github.com/tdlib/telegram-bot-api.git#commit=93ccd2a145926612dc45c5e095560e43fbd94d2a

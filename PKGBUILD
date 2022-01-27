@@ -7,7 +7,7 @@ pkgdesc="Telegram Bot API server"
 arch=('x86_64')
 url="https://core.telegram.org/bots"
 license=('BSL-1.0')
-depends=('openssl' 'zlib')
+depends=('openssl' 'zlib' 'gcc-libs')
 makedepends=('git' 'gcc>=4.9' 'gperf' 'cmake>=3.0.2')
 provides=('telegram-bot-api')
 conflicts=('telegram-bot-api-git')
