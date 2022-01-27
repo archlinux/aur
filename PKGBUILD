@@ -1,8 +1,8 @@
 # Maintainer: 0b100100 <0b100100 at protonmail dot ch>
 
 pkgname=msieve-svn
-pkgver=1.54.r1043
-pkgrel=3
+pkgver=1.54.r1044
+pkgrel=1
 pkgdesc='Library for factoring large integers'
 url='https://sourceforge.net/projects/msieve'
 license=('custom')
@@ -45,11 +45,9 @@ build() {
 package() {
   cd "${pkgname%-svn}"
   install -Dm755 msieve -t "$pkgdir/usr/bin/"
-  install -Dm644 Readme* Changes -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 Readme* Changes -t "$pkgdir/usr/share/doc/${pkgname%-svn}/"
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s /usr/share/doc/$pkgname/Readme "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  ln -sr "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/usr/share/doc/${pkgname%-svn}"
-  ln -sr "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/usr/share/licenses/${pkgname%-svn}"
+  ln -s /usr/share/doc/${pkgname%-svn}/Readme "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
