@@ -1,0 +1,56 @@
+post_install() {
+    printf "You've successfully installed misskey!\n"
+    if ! [ -f "/etc/webapps/misskey/default.yml" ]; then
+        cp "/etc/webapps/misskey/example.yml" "/etc/webapps/misskey/default.yml"
+        printf "There is a list of things you need to do now.\n"
+        printf "1. Edit the default.yml to reflect your systems configuration\n"
+        printf "2. Setup PostgreSQL\n"
+        printf "3. Add a PostgreSQL user \"misskey\" and a database for this user also called \"misskey\"\n"
+        printf "4. Startup redis.service\n"
+        printf "^^^^^^^^ Only after thats done ^^^^^^^^\n"
+        printf "5. Run the database initialisation as root user\n"
+        printf "     cd \"/usr/share/webapps/misskey/\"\n"
+        printf "     runuser -u misskey -- env HOME=\"/usr/share/webapps/misskey\" yarn run init\n"
+        printf "6. Finally start misskey.service\n"
+        printf "More on the setup: https://misskey-hub.net/en/docs/install/manual.html\n"
+        printf "#TODO: Yes, this needs to be in the wiki."
+    fi
+    printf "You need to configure a reverse-proxy to grand network access localhost:3000\n"
+}
+
+## $1: new package version
+## $2: old package version
+pre_upgrade() {
+    ## Ignore reinstallations of the same or older versions
+    if [ $(vercmp $1 $2) -gt 0 ] ; then
+        ## Shut down the misskey service before touching it's files
+        if systemctl is-active misskey.service > /dev/null; then
+            printf "Shutting down misskey\n"
+            systemctl stop misskey.service
+        fi
+    fi
+}
+
+post_upgrade() {
+    ## Ignore reinstallations of the same or older versions
+    if [ $(vercmp $1 $2) -gt 0 ] ; then
+        ## Dont do anything if there is no default configuration (not setup)
+        if [ -f "/etc/webapps/misskey/default.yml" ]; then
+            ## Migration needs PostgreSQL + redis running. Dont migrate if not running
+            if systemctl is-active postgresql.service > /dev/null \
+              && systemctl is-active redis.service > /dev/null; then 
+                printf "Migrate data to new version\n"
+                cd "/usr/share/webapps/misskey/"
+                runuser -u misskey -- env HOME=/usr/share/webapps/misskey yarn migrate
+                printf "Misskey service is *not* started\n"
+                printf "Thats your job!\n"
+            else
+                printf "Misskey migration was not started because PostgreSQL and or redis is inactive."
+                printf "Please start the services and run\n"
+                printf "  cd /usr/share/webapps/misskey\n"
+                printf "  HOME=/usr/share/webapps/misskey yarn migrate\n"
+                printf "as misskey user manually\n"
+            fi
+        fi
+    fi
+}
