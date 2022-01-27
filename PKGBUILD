@@ -5,7 +5,7 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 pkgname=polymc
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("PolyMC::git+https://github.com/PolyMC/PolyMC#commit=1cc7a193c27855bd30a90cb24ad678064a26022d" # 1.0.5
+source=("PolyMC::git+https://github.com/PolyMC/PolyMC#tag=1.0.6"
         "git+https://github.com/MultiMC/libnbtplusplus#commit=dc72a20b7efd304d12af2025223fad07b4b78464"
         "git+https://github.com/PolyMC/quazip#commit=c9ef32de19bceb58d236f5c22382698deaec69fd")
 
