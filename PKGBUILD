@@ -1,17 +1,18 @@
-# Maintainer: ta180m <ta180m@pm.me>
+# Maintainer: Anthony Wang <ta180m@pm.me>
 # Contributor: teutat3s <teutates@mailbox.org>
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
+_electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.8.5.r27.g1aa2efd2c
+pkgver=1.9.9.r27.gc6c1238ce
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
-makedepends=(npm git yarn python rust sqlcipher electron nodejs-lts-fermium)
+makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _giturl="git+https://github.com/vector-im"
@@ -24,8 +25,7 @@ sha256sums=('SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
-            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
-_electron=electron
+            '4c931121009985e7d3f73928c9db88508eedd974a7741e635bb290e3a2cd75db')
 
 pkgver() {
   cd "$srcdir/element-web"
@@ -47,8 +47,8 @@ prepare() {
   cd ../element-desktop
   patch -p1 < ../autolaunch.patch
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
-  sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
-  sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
+  # sed -i 's|"electronVersion": "13.1.6"|"electronVersion": "13.1.8"|' package.json
+  sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
   cd ../element-web/node_modules/matrix-react-sdk

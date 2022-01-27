@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec @ELECTRON@ /usr/lib/element/app.asar --disable-dev-mode "$@"
+LD_PRELOAD=/usr/lib/libsqlcipher.so exec @ELECTRON@ /usr/lib/element/app.asar --disable-dev-mode "$@"
