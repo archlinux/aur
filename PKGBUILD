@@ -9,7 +9,7 @@
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=99.0.4818.0
+pkgver=99.0.4840.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -71,7 +71,6 @@ source=(
         'chromium-dev.svg'
         # Patch form Gentoo.
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-93-InkDropHost-crash.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-97-fix-tag-dragging-i3.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-EnumTable-crash.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-98-system-libdrm.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-shim_headers.patch'
@@ -89,7 +88,6 @@ sha256sums=(
             '18a2dfc0a56b2fbbeb8ef16a19227b77bf9a6621c6021d04396e52a9a2313034'
             # Patch form Gentoo
             '04bba6fb19ea5a4ab3949b65f06c88728a00ab296f42022ece62ca2fa25ec2e7'
-            '67b4658070c9f0b134175e49a0a920dddeb09457044c6495806490df4b9f0df8'
             '31620c30a1e6b77fdafbc4be3b499420f7862c30957d43f5962fb346614164db'
             '2543b0b4b54119484c9ba881840a9b035d4885802da9f246b5627a62a966c326'
             'fabf66cfb15449011a20e377d600573b6338cc4c52e3f28f80e0541772659e8b'
@@ -183,6 +181,7 @@ _keeplibs=(
            'third_party/devscripts'
            'third_party/devtools-frontend'
            'third_party/devtools-frontend/src/front_end/third_party/acorn'
+           'third_party/devtools-frontend/src/front_end/third_party/additional_readme_paths.json'
            'third_party/devtools-frontend/src/front_end/third_party/axe-core'
            'third_party/devtools-frontend/src/front_end/third_party/chromium'
            'third_party/devtools-frontend/src/front_end/third_party/codemirror'
@@ -553,7 +552,6 @@ prepare() {
 
   # # Patch from Gentoo
   patch -p1 -i "${srcdir}/chromium-93-InkDropHost-crash.patch"
-  patch -p1 -i "${srcdir}/chromium-97-fix-tag-dragging-i3.patch"
   patch -p1 -i "${srcdir}/chromium-98-EnumTable-crash.patch"
   patch -p1 -i "${srcdir}/chromium-shim_headers.patch"
 
@@ -571,7 +569,7 @@ prepare() {
 
   # fix https://crbug.com/1288414 (bring back again)
   base64 -d "${srcdir}/fix_build_use_gio_false_part1.patch.base64" | patch -Rp1 -i -
-#   base64 -d "${srcdir}/fix_build_use_gio_false_part2.patch.base64" | patch -Rp1 -i -  # NOTE: comment out when the commit land to dev channel tarball
+  base64 -d "${srcdir}/fix_build_use_gio_false_part2.patch.base64" | patch -Rp1 -i -
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
