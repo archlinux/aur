@@ -1,4 +1,5 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
+# Maintainer: Carlos A Becker <carlos at becker dot software>
 
 pkgname='goreleaser-bin'
 _pkgname="${pkgname%-bin}"
