@@ -1,11 +1,12 @@
 gitname=eml2mbox
 pkgname=${gitname}-git
-pkgver=21.67dd53a
+pkgver=29.0e7cb5e
 pkgrel=1
 pkgdesc="Converts a bunch of eml files into one mbox file"
 arch=('any')
 url="https://github.com/yardenac/${gitname}"
 license=('LGPL2.1')
+makedepends=(git)
 depends=('ruby')
 conflicts=($gitname)
 source=("git+$url.git")

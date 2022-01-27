@@ -1,13 +1,14 @@
 pkgbase = eml2mbox-git
 	pkgdesc = Converts a bunch of eml files into one mbox file
-	pkgver = 21.67dd53a
+	pkgver = 29.0e7cb5e
 	pkgrel = 1
 	url = https://github.com/yardenac/eml2mbox
 	arch = any
 	license = LGPL2.1
-	depends = ruby>=2.0.0_p0-1
+	makedepends = git
+	depends = ruby
+	conflicts = eml2mbox
 	source = git+https://github.com/yardenac/eml2mbox.git
 	sha512sums = SKIP
 
 pkgname = eml2mbox-git
-
