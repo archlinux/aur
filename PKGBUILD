@@ -643,7 +643,7 @@ build() {
 check() {
     pushd "build-cli"
     # Check if sendmail was configured correctly (FS#47600)
-    sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q '/usr/bin/sendmail'
+    sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q $(which sendmail)
     export REPORT_EXIT_STATUS=1
     export NO_INTERACTION=1
     export SKIP_ONLINE_TESTS=1
