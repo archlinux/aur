@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=ardupilot-gazebo-sitl-git
 pkgver=r34.e72ecf5
-pkgrel=2
+pkgrel=3
 pkgdesc="Gazebo plugin for Ardupilot's SITL."
 arch=('x86_64')
 url='https://ardupilot.org/dev/docs/using-gazebo-simulator-with-sitl.html'
@@ -12,8 +12,10 @@ makedepends=('cmake')
 provides=('ardupilot-gazebo-sitl')
 _pkgname=ardupilot-gazebo-stil
 source=("${_pkgname}::git+https://github.com/khancyr/ardupilot_gazebo.git"
-        "xacro.patch"::"https://github.com/khancyr/ardupilot_gazebo/pull/42.patch")
+        "xacro.patch"::"https://github.com/khancyr/ardupilot_gazebo/pull/42.patch"
+        "c++-std.patch"::"https://github.com/khancyr/ardupilot_gazebo/pull/50.patch")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -24,6 +26,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
     patch --forward --strip=1 --input="${srcdir}/xacro.patch"
+    patch --forward --strip=1 --input="${srcdir}/c++-std.patch"
 }
 
 build() {
@@ -33,7 +36,6 @@ build() {
 	cmake .. -Wno-dev \
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_PREFIX="/usr" \
-        -DCMAKE_CXX_STANDARD=17
 
     make
 }
