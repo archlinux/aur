@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@prok.pw>
 
 pkgname=dracut-uefi-hook
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="Install/update/removal hooks for dracut unifed uefi image generation"
 arch=(any)
@@ -12,7 +12,7 @@ source=('90-dracut-uefi-install.hook'
         'dracut-uefi-install'
         'dracut-uefi-remove'
         'dracut-uefi-hook.conf')
-sha256sums=('2429d3a7bd79fbb6f7a736f1beb88eaaa2a3a0585d9321fa18459c4f92085b15'
+sha256sums=('7c6aae6a733582fd16852e949565493bb6af1a555ab755f1bf86b136df74244c'
             '0fb3d028214ff7579386ca4b172a88fb7edb88b81286cfb7f82bd511d2f91832'
             '6f46e36799905c21b9b2a24a4bde415bad855e6e2c9a886c6bf22cd4dc4fb8c0'
             '8af469ab5647cd15c9370b4c44af422df99887105aca30531c0d4c7b92889f9d'

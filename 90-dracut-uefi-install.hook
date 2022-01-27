@@ -5,9 +5,10 @@ Operation = Upgrade
 Target = usr/lib/modules/*/pkgbase
 Target = usr/lib/dracut/*
 Target = usr/lib/systemd/systemd
-Target = usr/lib/systemd/boot/efi/linux*.efi.stub
+Target = usr/lib/systemd/boot/efi/*.efi.stub
 Target = usr/share/libalpm/hooks/90-dracut-uefi-install.hook
 Target = usr/share/libalpm/scripts/dracut-uefi-install
+Target = usr/src/*/dkms.conf
 
 [Action]
 Description = Updating linux images...
