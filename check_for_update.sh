@@ -32,6 +32,6 @@ git config --local user.email "thomas@eizinger.io"
 
 git checkout -b "bump-photoprism-$LATEST_RELEASE"
 git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
-git push origin "bump-photoprism-$LATEST_RELEASE"
+git push -f origin "bump-photoprism-$LATEST_RELEASE"
 
 gh pr create --title "Upgrade photoprism to $LATEST_RELEASE"
