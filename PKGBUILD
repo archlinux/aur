@@ -8,7 +8,7 @@ url="https://github.com/kamui-fin/gazou"
 license=('GPL')
 depends=("tesseract" "leptonica" "qt5-base" "qt5-x11extras")
 makedepends=("cmake" "pkg-config" "git")
-source=("$pkgname::git://github.com/kamui-fin/gazou.git")
+source=("$pkgname::git+https://github.com/kamui-fin/gazou.git")
 md5sums=('SKIP')
 
 prepare() {
