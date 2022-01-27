@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-noseofyeti
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A custom pyton codec that provides an RSpec style dsl for python"
 url="https://github.com/delfick/nose-of-yeti"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 checkdepends=('python-asynctest' 'python-pytest' 'python-alt-pytest-asyncio'
               'python-pytest-helpers-namespace')
 source=("https://github.com/delfick/nose-of-yeti/archive/release-$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('b76a1a12ebf6202c0788b7ac74dae06c3162464947a3e5ab6f2fc09bc58dae1442083d43fb0fdaa229d0fc00fe1567becee35102c3b9c82ed34cfb87f072ab87')
+sha512sums=('00069c6ae55905cdef1476bb6c6b9c72f45cd99ec9b68d3b327df95374306d46cf5ce6d763c0f5d2a418dcda3b3c81fc016973689ac7a50d4595d29953cbaa69')
 
 build() {
   cd nose-of-yeti-release-$pkgver
