@@ -51,7 +51,7 @@ _major=5.16
 _minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,8 +71,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
          # the main kernel config files
         'config')
 
@@ -316,8 +317,9 @@ sha512sums=('1d6de1fef30459e6c9157d4a2610ba97a4980b11212a9cf13d872db9035193712c0
             'SKIP'
             '91fd302b3b0eafbac581e5cd6e7d84fbc2e00daf9dd6b14382d8dce69c5e018d9e4bd4fb1f8bd82ef5610047b021227eec10e5ddd671f333404a8ae0ce6e1e3d'
             '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
-            '1f090ff2773bc595b488a6201a625f5ccfccd87c50eac603f86aea3d84ecf5e9da3c719da460b60956026e4d9ac9280402cbe45a27d7e7f851b92d4c04986cb5'
-            '79e0927b3efc3899e0412bc0cb515706f2cdc4892f1d9a19dc2fb85093a5052552cd4112a085589ca7e18912ea38db847f8e76184a66006a5a1938878853edf6'
+            '78e3537d8508280214dfe5d18e9cfe67c2acbc2ce22b2f2b1923457ba5fed1b075675c499a11e7a44072008a1643cc23d978a1fc2e12aab245a2284cd1dfd0a7'
+            'e15f3ff11bd829677df04fc5f72131441ebc933fa0f1b92daedb6071dfc2ebb1c5ac85a5c952df6a3d35cdf36544cd026f4fa4095256ea2a5a906e231ad8f33c'
+            '3b86c1dd1b5824f71354ac36a96273ac1ca98b18e753966cdd99e2d87d5d9037d7e6c0619db0d6be4defe6bfed9d5819146a524301b872dbf71ec635ceedaa67'
             '5794858e9f15a43e5d451f520935bcbc1ec584282662342253ee1f411e3931bf09b725f0ae42187c5a108e10b9f9246515971a218c1d8f204e53f0e1f79e13cf')
 
 validpgpkeys=(
