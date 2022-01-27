@@ -65,6 +65,8 @@ package() {
   cp -r share/icons/hicolor/* "$pkgdir/usr/share/icons/hicolor/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
+  # Some weird fix
+  sed -i "s|opt/rancher-desktop/||g" packaging/linux/rancher-desktop.desktop
   # Add integration for desktop env
   install -Dm644 packaging/linux/rancher-desktop.desktop -t "$pkgdir/usr/share/applications"
   install -Dm644 packaging/linux/rancher-desktop.appdata.xml -t "$pkgdir/usr/share/metainfo"
