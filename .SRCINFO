@@ -1,13 +1,14 @@
 pkgbase = docker-systemctl-replacement-git
-	pkgdesc = docker systemctl replacement
-	pkgver = 1814.1bb5768
+	pkgdesc = docker systemctl replacement - allows to deploy to systemd-controlled containers without starting an actual systemd daemon
+	pkgver = 1883.9cbe1a0
 	pkgrel = 1
 	url = https://github.com/gdraheim/docker-systemctl-replacement
 	arch = any
-	license = GPL
+	license = EUPL
 	depends = python
+	source = https://raw.githubusercontent.com/gdraheim/docker-systemctl-replacement/master/EUPL-LICENSE.md
 	source = docker-systemctl-replacement::git+https://github.com/gdraheim/docker-systemctl-replacement
-	sha512sums = SKIP
+	b2sums = 7c81e385a62dbee1326de1004377b5dabc4ed795542e5f09dd3d4a381ae25992a36cae90c86a2c785b84a56db807836a70afd49ae9f5f499d601cb72f18074ac
+	b2sums = SKIP
 
 pkgname = docker-systemctl-replacement-git
-
