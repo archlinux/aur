@@ -1,0 +1,32 @@
+From 24ed2f3a3488bb3188110d0623cfc50e632dfca1 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 27 Jan 2022 12:24:50 +0100
+Subject: [PATCH 1/2] Avoid calling setChildProcessModifier() on Windows
+
+---
+ plugins/qca-gnupg/gpgproc/sprocess.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/qca-gnupg/gpgproc/sprocess.cpp b/plugins/qca-gnupg/gpgproc/sprocess.cpp
+index 4eba7ac7..a1bbe737 100644
+--- a/plugins/qca-gnupg/gpgproc/sprocess.cpp
++++ b/plugins/qca-gnupg/gpgproc/sprocess.cpp
+@@ -32,6 +32,7 @@ namespace gpgQCAPlugin {
+ SProcess::SProcess(QObject *parent)
+     : QProcess(parent)
+ {
++#ifdef Q_OS_UNIX
+ #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+     setChildProcessModifier([this]() {
+         // set the pipes to be inheritable
+@@ -39,6 +40,7 @@ SProcess::SProcess(QObject *parent)
+             ::fcntl(pipeList[n], F_SETFD, (::fcntl(pipeList[n], F_GETFD) & ~FD_CLOEXEC));
+     });
+ #endif
++#endif
+ }
+ 
+ SProcess::~SProcess()
+-- 
+2.35.0
+

@@ -4,61 +4,86 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname='mingw-w64-qca-qt5'
-pkgver=2.1.3
-pkgrel=3
+pkgbase=mingw-w64-qca-qt5
+pkgname=(mingw-w64-qca-qt5 mingw-w64-qca-qt6)
+pkgver=2.3.4
+pkgrel=1
 pkgdesc='Qt Cryptographic Architecture (mingw-w64)'
 arch=('any')
 url='https://userbase.kde.org/QCA'
 license=(LGPL)
-depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'mingw-w64-qt5-base' 'mingw-w64-qt6-5compat' 'qt6-base' 'ninja')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("http://download.kde.org/stable/qca/$pkgver/src/qca-$pkgver.tar.xz"
-        qca-openssl-1.1.patch)
-sha256sums=('003fd86a32421057a03b18a8168db52e2940978f9db5ebbb6a08882f8ab1e353'
-            'b1505bc313fd2f4e350cd4c94af69256c901afa419ae6700b208cb6e40e6926d')
+source=(https://download.kde.org/stable/qca/$pkgver/qca-$pkgver.tar.xz{,.sig}
+        0001-Avoid-calling-setChildProcessModifier-on-Windows.patch
+	0002-Fix-types-in-socket-notifier-to-fix-x86_64-Windows-b.patch)
+sha256sums=('6b695881a7e3fd95f73aaee6eaeab96f6ad17e515e9c2b3d4b3272d7862ff5c4'
+            'SKIP' 'SKIP')
+validpgpkeys=(CB9387521E1EE0127DA804843FDBB55084CC5D84) # Harald Sitter <sitter@kde.org>
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 prepare() {
   cd qca-$pkgver
-  patch -p1 -i ../qca-openssl-1.1.patch # Fix build with OpenSSL 1.1 https://bugs.kde.org/show_bug.cgi?id=379810
+  for p in "$srcdir"/*.patch ; do
+    patch -p1 -i "$p"
+  done
 }
 
 build() {
-  unset LDFLAGS
   for _arch in ${_architectures}; do
-    mkdir "build-${_arch}" && pushd "build-${_arch}"
-    ${_arch}-cmake \
-      -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_TESTS=OFF \
+    ${_arch}-cmake -G Ninja -B build-qt5-${_arch} -S qca-$pkgver \
       -DQCA_INSTALL_IN_QT_PREFIX=ON \
-      ../qca-$pkgver
-    make
-    popd
+      -DBUILD_TESTS=OFF
+    VERBOSE=1 cmake --build build-qt5-$_arch
+
+    ${_arch}-cmake -G Ninja -B build-qt6-${_arch} -S qca-$pkgver \
+      -DQT6=ON \
+      -DQCA_INSTALL_IN_QT_PREFIX=ON \
+      -DQCA_PREFIX_INSTALL_DIR=/usr/${_arch} \
+      -DQCA_PLUGINS_INSTALL_DIR=/usr/${_arch}/lib/qt6/plugins \
+      -DQCA_BINARY_INSTALL_DIR=/usr/${_arch}/lib/qt6/bin \
+      -DQCA_LIBRARY_INSTALL_DIR=/usr/${_arch}/lib \
+      -DQCA_FEATURE_INSTALL_DIR=/usr/${_arch}/lib/qt6/mkspecs/features \
+      -DQCA_INCLUDE_INSTALL_DIR=/usr/${_arch}/include/qt6/Qca-qt6 \
+      -DQCA_PRIVATE_INCLUDE_INSTALL_DIR=/usr/${_arch}/include/qt6/Qca-qt6 \
+      -DQCA_DOC_INSTALL_DIR=/usr/${_arch}/share/doc \
+      -DQCA_MAN_INSTALL_DIR=/usr/${_arch}/share/man \
+      -DBUILD_TESTS=OFF
+    VERBOSE=1 cmake --build build-qt6-$_arch
   done
 }
 
-package() {
+_cleanup() {
+  # strip binaries
+  local _arch=$1
+  find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
+  [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
+    find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
+    find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
+  find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
+  find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
+  [[ -d "${pkgdir}/usr/${_arch}/lib/"qt*/bin/ ]] && \
+    find "${pkgdir}/usr/${_arch}/lib/"qt*/bin/ -exec strip --strip-all {} \;
+  find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
+  # remove manual
+  rm -r "${pkgdir}/usr/${_arch}/share"
+}
+
+package_mingw-w64-qca-qt5() {
+  depends=(mingw-w64-qt5-base)
+
   for _arch in ${_architectures}; do
-    pushd "build-${_arch}"
-    make DESTDIR="$pkgdir" install
-    # strip binaries
-    find "${pkgdir}/usr/${_arch}/lib" -maxdepth 1 -name "*.dll" -exec rm {} \;
-    [ "$NO_STATIC_EXECUTABLES" -a "${_config##*=}" = static -o "$NO_EXECUTABLES" ] && \
-      find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec rm {} \; || \
-      find "${pkgdir}/usr/${_arch}" -name "*.exe" -exec ${_arch}-strip --strip-all {} \;
-    find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name "*.a" -exec ${_arch}-strip -g {} \;
-    [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
-      find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
-    find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
-    # remove manual
-    rm -r "${pkgdir}/usr/${_arch}/share"
-    popd
+    DESTDIR="$pkgdir" cmake --install build-qt5-$_arch
+    _cleanup $_arch
   done
 }
 
+package_mingw-w64-qca-qt6() {
+  depends=(mingw-w64-qt6-5compat)
 
+  for _arch in ${_architectures}; do
+    DESTDIR="$pkgdir" cmake --install build-qt6-$_arch
+    _cleanup $_arch
+  done
+}

@@ -1,0 +1,48 @@
+From fec80e0fae55dfbe99211fbe51f3b1650d5c84b4 Mon Sep 17 00:00:00 2001
+From: Martchus <martchus@gmx.net>
+Date: Thu, 27 Jan 2022 13:40:30 +0100
+Subject: [PATCH 2/2] Fix types in socket notifier to fix x86_64 Windows build
+
+---
+ src/qca_safeobj.cpp | 2 +-
+ src/qca_safeobj.h   | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/qca_safeobj.cpp b/src/qca_safeobj.cpp
+index 7133990f..b2ad3888 100644
+--- a/src/qca_safeobj.cpp
++++ b/src/qca_safeobj.cpp
+@@ -34,7 +34,7 @@ inline void releaseAndDeleteLater(QObject *owner, QObject *obj)
+     obj->deleteLater();
+ }
+ 
+-SafeSocketNotifier::SafeSocketNotifier(int socket, QSocketNotifier::Type type, QObject *parent)
++SafeSocketNotifier::SafeSocketNotifier(qintptr socket, QSocketNotifier::Type type, QObject *parent)
+     : QObject(parent)
+ {
+     sn = new QSocketNotifier(socket, type, this);
+diff --git a/src/qca_safeobj.h b/src/qca_safeobj.h
+index ad819958..87b66594 100644
+--- a/src/qca_safeobj.h
++++ b/src/qca_safeobj.h
+@@ -33,7 +33,7 @@ class SafeSocketNotifier : public QObject
+ {
+     Q_OBJECT
+ public:
+-    SafeSocketNotifier(int socket, QSocketNotifier::Type type, QObject *parent = nullptr);
++    SafeSocketNotifier(qintptr socket, QSocketNotifier::Type type, QObject *parent = nullptr);
+ 
+     ~SafeSocketNotifier() override;
+ 
+@@ -57,7 +57,7 @@ public Q_SLOTS:
+     }
+ 
+ Q_SIGNALS:
+-    void activated(int socket);
++    void activated(QSocketDescriptor socket);
+ 
+ private:
+     QSocketNotifier *sn;
+-- 
+2.35.0
+
