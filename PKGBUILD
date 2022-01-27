@@ -14,10 +14,10 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=213.6777.38
-_veryear=2021
-_verrelease=3
-_verextra=2
+_buildver=221.3427.89
+_veryear=2022
+_verrelease=1
+_verextra=
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
