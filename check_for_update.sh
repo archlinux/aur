@@ -30,6 +30,6 @@ sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD
 git config --local user.name "Update Bot"
 git config --local user.email "thomas@eizinger.io"
 
-git commit -a
+git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
 
 gh pr create --title "Upgrade photoprism to $LATEST_RELEASE"
