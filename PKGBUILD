@@ -1,5 +1,5 @@
 pkgname=mingw-w64-opencl-headers
-pkgver=2021.06.30
+pkgver=2022.01.04
 pkgrel=1
 pkgdesc="OpenCL (Open Computing Language) header files (mingw-w64)"
 arch=(any)
@@ -9,7 +9,7 @@ license=('APACHE')
 makedepends=(mingw-w64-cmake)
 options=(!buildflags staticlibs !strip)
 source=("https://github.com/KhronosGroup/OpenCL-Headers/archive/v${pkgver}.tar.gz")
-sha256sums=('6640d590c30d90f89351f5e3043ae6363feeb19ac5e64bc35f8cfa1a6cd5498e')
+sha256sums=('6e716e2b13fc8d363b40a165ca75021b102f9328e2b38f8054d7db5884de29c9')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
