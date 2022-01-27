@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=electron13
-pkgver=13.6.7
-_commit=653e2ea0afdbd8571b4aa7375f0d41d0c7930d33
+pkgver=13.6.8
+_commit=fc41c71ce0f2f156c15237bd0c792f4e0a847ff7
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
 pkgrel=1
@@ -20,6 +20,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
+options=('!lto') # Electron adds its own flags for ThinLTO
 source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "https://github.com/stha09/chromium-patches/releases/download/chromium-${_chromiumver%%.*}-patchset-${_gcc_patchset}/chromium-${_chromiumver%%.*}-patchset-${_gcc_patchset}.tar.xz"
