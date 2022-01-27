@@ -1,6 +1,6 @@
 pkgbase = ayatana-indicator-application
 	pkgdesc = Ayatana Application Indicators
-	pkgver = 0.8.90
+	pkgver = 0.8.91
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/ayatana-indicator-application
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = ayatana-indicator-application
 	depends = libayatana-appindicator
 	depends = dbus-glib
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-application/archive/0.8.90.tar.gz
-	md5sums = af979333547d9a81793b09ab6cf1465e
+	source = https://github.com/AyatanaIndicators/ayatana-indicator-application/archive/0.8.91.tar.gz
+	md5sums = a52ad9d5d047f27f015102d89a6791e5
 
 pkgname = ayatana-indicator-application
