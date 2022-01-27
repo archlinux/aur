@@ -1,8 +1,9 @@
 pkgname=theme.sh
 provides=("${pkgname}")
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 arch=('any')
+makedepends=('git')
 url="https://github.com/lemnos/theme.sh"
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('00baa7e23c3a3922ddb90ac3ae4c31fc8353cc5a5f0ec8779f10a17490f46400')
