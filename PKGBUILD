@@ -1,4 +1,3 @@
-# Maintainer: Atte Lautanala <atte dot lautanala at gmail dot com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
