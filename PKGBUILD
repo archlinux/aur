@@ -3,8 +3,8 @@
 # Contributor: zwergnase <zwergnase@posteo.de>
 
 pkgname=sunvox
-pkgver=1.9.6c
-pkgrel=3
+pkgver=2.0b
+pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
 url="http://warmplace.ru/soft/sunvox/"
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('unzip')
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip)
-md5sums=('65c67faf242cdaed46e27bf311def60d')
+md5sums=('ad4e7eb9def268217fad928ee9b8c15b')
 
 prepare() {
 	gendesk --pkgname "$pkgname" --pkgdesc "$pkgdesc"
