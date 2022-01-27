@@ -8,9 +8,9 @@
 # berkus <berkus@madfire.net>
 # hm_b <holger@music-nerds.net>
 
-pkgname="renoise-demo"
-pkgver="3.3.2"
-pkgrel="1"
+pkgname=renoise-demo
+pkgver=3.3.2
+pkgrel=1
 pkgdesc="A music composition program"
 arch=("x86_64")
 url="https://www.renoise.com"
@@ -21,10 +21,10 @@ options=("!strip")
 conflicts=("renoise" "renoise3-demo")
 
 source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux.tar.gz")
-sha512sums=("87d1af9abbb593299120f894c3db746daedccb466e1ce6673e4eab84695ddaea3d9881e0e453aafff781e15284b350a383af393f55ee773e0af277f3b2cee19d")
+sha512sums=('87d1af9abbb593299120f894c3db746daedccb466e1ce6673e4eab84695ddaea3d9881e0e453aafff781e15284b350a383af393f55ee773e0af277f3b2cee19d')
 
 package() {
-    cd "$srcdir/Renoise_${pkgver//./_}_Demo_Linux"
+    cd "Renoise_${pkgver//./_}_Demo_Linux"
 
     mkdir -p "$pkgdir/usr/share/renoise-$pkgver"
     cp -r "Resources"/* "$pkgdir/usr/share/renoise-$pkgver"
