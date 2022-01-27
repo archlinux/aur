@@ -1,4 +1,4 @@
-# Maintainer: Harsh Barsaiyan <hbarsaiyan at gmail dot com>
+# Maintainer: Francesco Masala < mail@francescomasala.me >
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Oscar Morante <oscar@mooistudios.com>
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.zip::https://designer.gravit.io/_downloads/linux/G
         'gravit-designer-document.svg'
         'gravit-designer.xml'
         'LICENSE')
-sha256sums=('140fde48b6b5ea023474f2096c2a53e6dfda23f569a4a3ce2b297de313c1cad7'
+sha256sums=('3e463e45727c0e9a6fe40bf9f47004f2810ac36b30f07a5ed025c2bfa1e7c578'
             '80f947f51165c9764ec3ac168df64178a68c26c49d96ae1a970930146aee3cfe'
             '1c4673222f28e070258289a363ba1d03b3af87aaca99fee7c05a54c9de5deb2b'
             'd2228771efc34f1ed0953fd8f8cd49f60d72728d230c7f860862c4f2056c0df3'
