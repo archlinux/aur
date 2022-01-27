@@ -1,0 +1,31 @@
+# Maintainer: Sup3Legacy <constantin {dot} gierczak {dot} galle (at) protonmail [dot] com>
+
+pkgname=gurk-git
+pkgver=0.2.3.r150.g7651676
+pkgrel=1
+pkgdesc='CLI client for Signal'
+arch=('x86_64')
+url='https://github.com/boxdot/gurk-rs'
+license=('AGPL3')
+makedepends=('git' 'rust')
+optdepends=()
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
+install="${pkgname%-*}.install"
+source=("${pkgname%-*}::git+$url")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-*}"
+  echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2).r$(git rev-list --count HEAD).g$(git describe --always)
+}
+
+build() {
+  cd "${pkgname%-*}"
+  cargo build --release
+}
+
+package() {
+  cd "${pkgname%-*}"
+  install -Dm755 target/release/gurk "$pkgdir/usr/bin/gurk"
+}
