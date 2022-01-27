@@ -1,11 +1,12 @@
 pkgbase = nessus
 	pkgdesc = Nessus vulnerability scanner
 	pkgver = 10.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.tenable.com/downloads/nessus
 	install = nessus.install
 	arch = x86_64
 	license = custom
+	makedepends = inetutils
 	depends = gnupg
 	source = nessus-10.0.2-fc20.x86_64.rpm::https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/15475/download?i_agree_to_tenable_license_agreement=true
 	source = nessus.desktop
