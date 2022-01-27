@@ -9,7 +9,7 @@
 # Contributor: David Fuhr <david.fuhr@web.de>
 
 pkgname=oracle-sqldeveloper
-pkgver=21.4.1.349.1822
+pkgver=21.4.2.018.1706
 pkgrel=1
 pkgdesc="A graphical tool for database development"
 arch=("any")
@@ -30,21 +30,21 @@ source=(
   "java_home.patch"
 )
 md5sums=(
-  "d3258722b0097c1333c1c5ecbce30f77"
+  "02baeabd99d8fb3529162cb1bee1db5f"
   "1d17d18e10ab85dead0770e8840273b3"
   "26c1dc933a9ab58a4245f4f351717645"
   "71a4092467209c160d0f34abbc08e049"
   "f732d162c751dc096bbe0e0f96b78754"
 )
 sha1sums=(
-  "7adad1dc495c454b169e6ac196bfaf7d7aee55dc"
+  "62e35d3541877c0f762835b98fa6a98fef022200"
   "056bef8e3caa25e62c1395346c34f8a83c532aa8"
   "f33177179a2c6ea8b3fa8db5465dc36cf4317b1b"
   "524dfbd8baf17e348d529a831abf639029c56c7b"
   "f78dd599d2804dedabccf6e1746aa9bb27c2b7ee"
 )
 sha256sums=(
-  "0e8e20946a7f90ff41229c73ebd2019ff49d64f8716e002b3da7e7c791c41aba"
+  "2fc194141fd2eeef02d7c7c6b86709d9630895056954811795bcb5dbe1a46e41"
   "bd028a137c83ab3698a562e9a7ec4006fb396178ab4a6ebdbaa60c75b5c0974c"
   "43b16049fbf85740767c45f0387a7c5e6118b8876509a8f0bb621ed0b5576a25"
   "7b3a6fd8a1ade4427382ee36dc28432655902a0a68547b29c5ce089bd85fe3de"
