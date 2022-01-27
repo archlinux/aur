@@ -1,0 +1,14 @@
+pkgbase = python-youseedee
+	pkgdesc = Interface to the Unicode Character Database
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/simoncozens/youseedee
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/y/youseedee/youseedee-0.3.0.tar.gz
+	sha256sums = 596c1112230bdd154b6d6c962872933e16748ae8efd7cb2389b922cc9aabcab0
+
+pkgname = python-youseedee
