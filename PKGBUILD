@@ -1,5 +1,5 @@
-# Maintainer: Leo Verto <leotheverto plus aur at gmail dotcom>
-# Contributor: hannut
+# Maintainer: hannut
+# Contributor: Leo_Verto
 # Contributor: tsuflux
 # Contributor: sekret
 
