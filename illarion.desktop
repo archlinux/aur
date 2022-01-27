@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Illarion
+Comment=The Illarion Launcher that is used to download the actual game and start it
+Exec=/usr/bin/illarion
+Icon=illarion
+Categories=Game;
