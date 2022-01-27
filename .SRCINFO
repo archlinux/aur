@@ -1,13 +1,13 @@
 pkgbase = lbench
 	pkgdesc = Simple Linux multithread benchmarking tool
-	pkgver = 4.9
+	pkgver = 5.0
 	pkgrel = 1
 	url = http://www.kornelix.net/lbench/lbench.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = clutter-gtk
-	source = http://www.kornelix.net/downloads/downloads/lbench-4.9.tar.gz
-	sha256sums = 1c846fa6709b26048eb7a743b12fc8ab09bffc77d55c3b617559b4e7251363fd
+	source = http://www.kornelix.net/downloads/downloads/lbench-5.0.tar.gz
+	sha256sums = e2f211ada60f19cf408c18dd136ec48c3a81d68f5876e3fb9c6279c8e03cceee
 
 pkgname = lbench
