@@ -1,0 +1,16 @@
+pkgbase = task-timer-bin
+	pkgdesc = Task Timer (tt) is a dead simple TUI task timer
+	pkgver = 1.9.3
+	pkgrel = 1
+	url = https://github.com/caarlos0/tasktimer
+	license = MIT
+	conflicts = tt
+	provides = tt
+	arch = aarch64
+	source_aarch64 = https://github.com/caarlos0/tasktimer/releases/download/v1.9.3/tt_linux_arm64.tar.gz
+	sha256sums_aarch64 = 798dad1e9c9ffa3dc1a285317745399243d79756dbdf0b71ff3b3da112b89e06
+	arch = x86_64
+	source_x86_64 = https://github.com/caarlos0/tasktimer/releases/download/v1.9.3/tt_linux_amd64.tar.gz
+	sha256sums_x86_64 = 59670ef84c512131177d53c369224eda8d114d8e75688d1278da46ac467ba122
+	
+pkgname = task-timer-bin
