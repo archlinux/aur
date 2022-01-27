@@ -4,8 +4,8 @@
 # Contributor: Dmitry Nosachev <quartz64@gmail.com>
 
 pkgname=ipmicfg
-pkgver=1.32.0
-pkgrel=200910
+pkgver=1.33.0
+pkgrel=210528
 pkgdesc="Supermicro IPMI configuration tool"
 makedepends=("unzip" "python-html2text")
 depends=("glibc")
@@ -17,7 +17,7 @@ source=(
     "https://www.supermicro.com/about/policies/disclaimer.cfm"
     )
 sha256sums=(
-    "f484080aaa1bbb60327249e0818acf3671588c0f6fb3c46e53cc60636a586b33"
+    "25d3d6700346a0349053fd8c01b57fefd83d78510b22e59989702d5c62b40c82"
     "SKIP"
     )
 
