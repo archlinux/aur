@@ -1,6 +1,4 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Maintainer: Terra <terra@mcterra.id.au>
 
 pkgname=ktexteditor-fix
 pkgver=5.90.0
