@@ -6,15 +6,16 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
-pkgver=4.4
-pkgrel=2
+pkgver=5.0
+pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
 url="http://ffmpeg.org/"
 license=('GPL3')
   depends=(
-      "$_pkgbasename>=$pkgver"
+#      "$_pkgbasename"
+      "$_pkgbasename>=${epoch}:${pkgver}"
       'lib32-alsa-lib'
       'lib32-aom'
       'lib32-bzip2'
@@ -72,11 +73,11 @@ license=('GPL3')
 makedepends=(
 #      'avisynthplus'
       'amf-headers'
-      'clang'
+      'lib32-clang'
       'ffnvcodec-headers'
       'git'
       'lib32-ladspa'
-      'yasm'
+      'nasm'
 )
 optdepends=(
 #      'avisynthplus: AviSynthPlus support'
@@ -84,15 +85,17 @@ optdepends=(
       'lib32-ladspa: LADSPA filters'
       'lib32-nvidia-utils: Nvidia NVDEC/NVENC support'
 )
-_tag=09c358362008e2d04cec8239526c6827543da4cf
+_tag=390d6853d0ef408007feb39c0040682c81c02751
 source=(
       "git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
       "vmaf-model-path.patch"
+      "add-av_stream_get_first_dts-for-chromium.patch"
 )
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 sha256sums=(
       'SKIP'
       '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
+      '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
 )
 
 prepare() {
@@ -101,7 +104,10 @@ prepare() {
   # Patching if needed
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
   patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-}
+
+  # https://crbug.com/1251779
+  patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+  }
 
 build() {
   cd ${_pkgbasename}
@@ -159,7 +165,8 @@ build() {
     --enable-nvenc \
     --enable-nvdec \
     --enable-shared \
-    --enable-version3
+    --enable-version3 \
+    --disable-doc
 
 #    --enable-avisynth \ ## not available under 32 bit
 #    --enable-libopenh264
