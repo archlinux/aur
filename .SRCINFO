@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 3
 	url = https://vcvrack.com/
 	arch = x86_64
 	license = custom
@@ -12,27 +12,32 @@ pkgbase = vcvrack
 	makedepends = cmake
 	makedepends = unzip
 	makedepends = gendesk
+	makedepends = fontconfig
+	depends = curl
 	depends = glew
 	depends = glfw
 	depends = jack
+	depends = jansson
 	depends = libpulse
-	depends = libx11
-	depends = libxcursor
-	depends = libxinerama
-	depends = libxrandr
+	depends = openssl
+	depends = rtaudio
+	depends = rtmidi
+	depends = speexdsp
+	depends = ttf-dejavu
+	depends = ttf-dseg
+	depends = ttf-nunito
+	depends = ttf-share
+	depends = zenity
+	depends = zstd
 	source = vcvrack-2.0.6::git+https://github.com/vcvrack/Rack.git#tag=v2.0.6
-	source = git+https://github.com/VCVRack/nanovg.git#commit=0bebdb314aff9cfa28fde4744bcb037a2b3fd756
-	source = git+https://github.com/memononen/nanosvg.git#commit=25241c5a8f8451d41ab1b02ab2d865b01600d949
-	source = git+https://github.com/AndrewBelt/osdialog.git#commit=21b9dcc2a1bbdacb9b46da477ffd82a4ce9204b9
-	source = git+https://github.com/VCVRack/oui-blendish.git#commit=2fc6405883f8451944ed080547d073c8f9f31898
-	source = git+https://github.com/VCVRack/rtaudio.git#commit=8128053f4bd83463c7c901d9f5d40b272c2f4e4e
-	source = git+https://github.com/VCVRack/glfw.git#commit=0e18076016f4ba57c314eeebd85654c70644abe3
-	source = git+https://bitbucket.org/j_norberg/fuzzysearchdatabase.git#commit=fe62479811e503ef3c091f5a859d27bfcf0a44da
-	source = git+https://github.com/gulrak/filesystem.git#commit=7e37433f318488ae4bc80f80e12df12a01579874
-	source = git+https://bitbucket.org/jpommier/pffft.git#commit=74d7261be17cf659d5930d4830609406bd7553e3
+	source = git+https://github.com/VCVRack/nanovg.git
+	source = git+https://github.com/memononen/nanosvg.git
+	source = git+https://github.com/AndrewBelt/osdialog.git
+	source = git+https://github.com/VCVRack/oui-blendish.git
+	source = git+https://bitbucket.org/j_norberg/fuzzysearchdatabase.git
+	source = git+https://github.com/gulrak/filesystem.git
+	source = git+https://bitbucket.org/jpommier/pffft.git
 	source = vcvrack.sh
-	sha512sums = SKIP
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
