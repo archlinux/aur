@@ -1,5 +1,5 @@
 pkgname=mingw-w64-opencl-icd
-pkgver=2021.06.30
+pkgver=2022.01.04
 pkgrel=1
 pkgdesc="The OpenCL ICD Loader (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake mingw-w64-opencl-headers)
 depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip)
 source=("https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/v${pkgver}.tar.gz")
-sha256sums=('a50557ed6ff18c81aa1ed5e74700521e389c84ca5cd9188d35d368936e0a4972')
+sha256sums=('9f21d958af68c1b625a03c2befddd79da95d610614ddab6c291f26f01a947dd8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
