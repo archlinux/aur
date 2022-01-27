@@ -19,22 +19,24 @@ source=("git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname%-git}
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${pkgname%-git}
-    python setup.py build
+  cd "${pkgname%-git}"
+  python setup.py build
 }
 
 check() {
-    cd ${pkgname%-git}
-    pytest
+  cd "${pkgname%-git}"
+  pytest
 }
 
 package() {
-    cd ${pkgname%-git}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/${pkgname%-git}
+  cd "${pkgname%-git}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
+
+# vim:set ts=2 sw=2 et:
