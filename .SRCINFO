@@ -1,7 +1,7 @@
 pkgbase = python-binance-git
 	pkgdesc = An unofficial Python wrapper for the Binance exchange REST API
 	pkgver = 1.0.15.r2.g217f1e2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sammchardy/python-binance
 	arch = any
 	license = MIT

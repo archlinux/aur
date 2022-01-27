@@ -4,7 +4,7 @@
 
 pkgname=python-binance-git
 pkgver=1.0.15.r2.g217f1e2
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial Python wrapper for the Binance exchange REST API"
 arch=('any')
 url="https://github.com/sammchardy/python-binance"
@@ -36,7 +36,7 @@ check() {
 package() {
   cd "${pkgname%-git}"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
