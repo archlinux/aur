@@ -1,28 +1,27 @@
-# Contributor: Michael Straube <straubem@gmx.de>
-# Contributor: FadeMind <fademind@gmail.com>
-
+# Maintainer: Sainnhe Park <sainnhe@gmail.com>
+_pkgname=grub2-theme-breeze
 pkgname=grub2-theme-breeze-git
-pkgver=r21.b969dc5
+pkgver=5.21.5.r0.gae25316
 pkgrel=1
-pkgdesc="A minimalistic GRUB theme inspired by Breeze"
+pkgdesc=' A minimalistic GRUB theme inspired by Breeze Resources'
 arch=('any')
-url="https://github.com/gustawho/grub2-theme-breeze"
+url='https://github.com/gustawho/grub2-theme-breeze'
 license=('CCPL:by-sa')
 depends=('grub')
 makedepends=('git')
-conflicts=('breeze-grub')
-source=("git+https://github.com/gustawho/grub2-theme-breeze.git")
-sha1sums=('SKIP')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" 'breeze-grub')
+source=("${_pkgname}::git+${url}.git")
+md5sums=('SKIP')
 
-pkgver(){
-  cd grub2-theme-breeze
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+pkgver() {
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd grub2-theme-breeze
-
-  install -d "$pkgdir"/boot/grub/themes
-  cp -r breeze "$pkgdir"/boot/grub/themes
+    cd "${srcdir}/${_pkgname}"
+    find breeze -type f -exec \
+        install -Dm 644 '{}' "${pkgdir}/usr/share/grub/themes/{}" \;
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
