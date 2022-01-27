@@ -3,7 +3,7 @@
 
 _pkgname=devspace
 pkgname=${_pkgname}-bin
-_pkgver=5.18.1
+_pkgver=5.18.2
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="The Fastest Developer Tool for Kubernetes, develop software directly inside Kubernetes"
@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://devspace.sh'
 license=('Apache')
 source=($pkgname-$pkgver::https://github.com/loft-sh/${_pkgname}/releases/download/v$_pkgver/devspace-linux-amd64)
-sha256sums=('d83d61474d47d22cbcdc40602362a1fba0fed753c06cc0def8b1326d2151103e')
+sha256sums=('ef680aac154b1b23b1a25328e6098d44efaf95052e6ca8e4cda3973a856ee1f0')
 
 package() {
     install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/${_pkgname}"
