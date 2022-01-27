@@ -3,7 +3,7 @@
 
 pkgname=openlp-git
 _pkgbase=openlp
-pkgver=r16942.303b3ded1
+pkgver=r17137.ff0605cb2
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -12,7 +12,9 @@ license=('GPLv2')
 provides=('openlp')
 conflicts=('openlp')
 makedepends=('qt5-tools' 'git')
-depends=('python>=3.9' 'python<3.10' 'python-pyqt5' 'phonon-qt5'
+depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
+         'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
+         'python-pymediainfo'
          'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant' 'python-dbus'
          'python-alembic' 'mediainfo' 'qt5-multimedia' 'python-zeroconf'
@@ -24,34 +26,23 @@ optdepends=('libreoffice-fresh: display impress presentations'
             'python-mysql-connector: Use a mysql/mariadb database'
             'python-psycopg2: Use a postgresql database')
 install=openlp.install
-source=('git+https://gitlab.com/openlp/openlp.git' 'openlp.sh' 'dbus.patch')
+source=('git+https://gitlab.com/openlp/openlp.git' 'openlp.sh')
 sha256sums=('SKIP'
-            '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf'
-            'e8aabadd8037179b15cb0093bb0dbd0ad1aa069e2990e13cec677b07eee1b1b6')
-
-prepare() {
-    cd "$_pkgbase"
-    patch --forward --strip=1 --input="${srcdir}/dbus.patch"
-}
+            '19c2f3c622585bf308efc259013fb5518feaf8cf14b51613e1e71778fcc2e8cf')
 
 
 pkgver() {
   cd "$_pkgbase"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-#check() {
-#  cd "$srcdir/trunk"
-#  nosetests -v tests
-#}
-
 
 package() {
   cd "${srcdir}/${_pkgbase}"
   python setup.py install --root="$pkgdir/" --optimize=1
-
+  PYTHON_VERSION=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   TAG=$(git describe --tags --abbrev=0)
   VERSION="${TAG}.$(git rev-list $TAG.. --count)-$(git rev-parse --short HEAD)"
-  echo "$VERSION" > "$pkgdir/usr/lib/python3.9/site-packages/openlp/.version"
+  echo "$VERSION" > "$pkgdir/usr/lib/python${PYTHON_VERSION}/site-packages/openlp/.version"
 
   install -Dm0755 "$srcdir/openlp.sh" "$pkgdir/etc/profile.d/openlp.sh"
   install -Dm0644 "resources/openlp.desktop" "$pkgdir/usr/share/applications/openlp.desktop"
