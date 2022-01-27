@@ -3,7 +3,7 @@
 
 pkgname=('python-crccheck')
 _module=${pkgname#python-}
-pkgver='1.0'
+pkgver='1.1'
 pkgrel=2
 pkgdesc="Calculation library for CRCs and checksums"
 url="https://sourceforge.net/projects/crccheck"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('17c42dc4f069308ae962b682b2974bdbf2f80ee682c7032a9df44880fca3c9ab')
+sha256sums=('45962231cab62b82d05160553eebd9b60ef3ae79dc39527caef52e27f979fa96')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
