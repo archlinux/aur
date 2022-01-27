@@ -1,7 +1,7 @@
 # Maintainer: Adria Arrufat <swiftscythe at gmail dot com>
 
 pkgname=ugrep
-pkgver=3.6.0
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Universal grep: ultra fast searcher of file systems, text and binary files, source code, archives, compressed files, documents, and more."
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=(BSD-3)
 url="https://github.com/Genivia/ugrep"
 depends=(bzip2 lz4 pcre2 xz zlib)
 source=("https://github.com/Genivia/ugrep/archive/v${pkgver}.tar.gz")
-sha256sums=('8bed6f204161a81d090cfeb9d5fc6f6ec7ef4703b2ae06d4355c65a5f18a0f84')
+sha256sums=('7c9600b12d6a288734475afbfdc6ac13a697c78fa135f93c2aa28e9add32579b')
 
 build() {
     cd ${pkgname}-${pkgver}
