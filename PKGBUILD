@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-rtmp-git
-pkgver=19.0.0.Matrix.r0.g9e54899
+pkgver=20.1.0.Nexus.r0.g10640f8
 pkgrel=1
-pkgdesc="librtmp support for Kodi 18+"
+pkgdesc="librtmp support for Kodi 20+"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/xbmc/inputstream.rtmp"
 license=('GPL2')
@@ -10,12 +10,8 @@ depends=('kodi' 'rtmpdump')
 makedepends=('kodi-dev' 'cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-# kodi 18
-# source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Leia')
-# kodi 19
-source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Matrix')
 # kodi 20
-# source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Nexus')
+source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Nexus')
 md5sums=('SKIP')
 
 pkgver() {
