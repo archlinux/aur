@@ -1,7 +1,7 @@
 pkgbase = ttf-whatsapp-emoji
-	pkgdesc = TrueType WhatsApp emojis
+	pkgdesc = TrueType WhatsApp emoji
 	pkgver = 2.21.23.23
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/dmlls/whatsapp-emoji-linux
 	arch = any
 	license = Apache
@@ -12,6 +12,6 @@ pkgbase = ttf-whatsapp-emoji
 	conflicts = ttf-twemoji-color
 	conflicts = ttf-apple-emoji
 	source = WhatsAppEmoji.ttf::https://github.com/dmlls/whatsapp-emoji-linux/releases/download/latest/WhatsAppEmoji.ttf
-	sha256sums = 3375d4bdcd42f7392088fd8afc341d1d7dcdbba9068e950840d58ff63e2aabd5
+	sha256sums = b7de22f820bcd2458a0ac4706d2cddab50bbed584d37a85029c65c3b159ddebc
 
 pkgname = ttf-whatsapp-emoji
