@@ -3,7 +3,7 @@
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="https://github.com/mavlink/qgroundcontrol"
@@ -58,7 +58,7 @@ depends=('bzip2'
          'qt5-x11extras'
 )
 
-makedepends=('git' 'qt5-base')
+makedepends=('git' 'qt5-base' 'patchelf')
 
 source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcontrol/archive/v${pkgver}.tar.gz"
         "gps-drivers-qgc${pkgver}.tar.gz::https://github.com/PX4/GpsDrivers/archive/${pkgver_gps}.tar.gz"
