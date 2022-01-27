@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.16.2
+pkgver=5.16.3
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -87,18 +87,20 @@ source=(
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('6f07d9da86101ab72eadd53a9f58a4740037608a006fc622a923d4dd9578ce62cc9959711dca2e953e3fb68286f55fb14be04a4a00fc49a33c2c28bd5944532f'
+b2sums=('69e27d11073f60f7ed28e500f52b8b86c98fd080827947bac91f59013b10a37350b22403bfbd9a705c6d0a14c4ddef0547ab61b64bcefbde46f707a5e2a10b40'
         'SKIP'
         '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
         '7e12da62ddc8535b044f57447e15b550dc2d1421bba4fc830dfad7b328b01f21190f63c5534b9af6a8c09f56bfb9c21014b07645569a6c7b93b950aca07ade5a'
-        '8c06f840512d90c2339066677f1c64c07d1d9b7cd9a7d653fa7be1f806b0c66cb26892db662ef95cb6c27c996aef03566454699cfaa8d620dcb90c1f8f8d8276'
-        '863763c1880921c15f4d931194004461c1cb2bf195bb55ae04777694c15c01542e30d8f221d908b4fbb6a57e7b36e3260a97d67a109af3baeb53d6a85b671dd9')
+        '163ca2dc04f259cc99a58bc9ef25a54757b82ddc68ac40fdf21fa9f877d901aacf5081f6a44d2b2041ad731afaeac863549834f652a9622eaa84db44965525ec'
+        '0d264914102c22a3addd23ae94dbf8eba666c833ffd2c78d1a4f2633407365c4e5c5a84c95576f37ddf37759820b05d26ee80de2120f71e04b75559793a90385'
+        'b18b3d5d005bc9cb1479899534f35dc3797e0094fd1304ef57ef5e6e786ec7fbe7364a4421769ab4a4098a6150db0b93ae36043504c4f78251fef8ca2cc4791e')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
