@@ -1,13 +1,14 @@
 pkgbase = renoise-demo
 	pkgdesc = A music composition program
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.renoise.com
 	arch = x86_64
 	license = custom:renoise
 	depends = alsa-lib
 	depends = libx11
 	depends = gcc-libs
+	depends = hicolor-icon-theme
 	optdepends = jack: For JACK audio support
 	conflicts = renoise
 	conflicts = renoise3-demo

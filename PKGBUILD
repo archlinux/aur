@@ -10,12 +10,12 @@
 
 pkgname=renoise-demo
 pkgver=3.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A music composition program"
 arch=("x86_64")
 url="https://www.renoise.com"
 license=("custom:renoise")
-depends=("alsa-lib" "libx11" "gcc-libs")
+depends=("alsa-lib" "libx11" "gcc-libs" "hicolor-icon-theme")
 optdepends=("jack: For JACK audio support")
 options=("!strip")
 conflicts=("renoise" "renoise3-demo")
