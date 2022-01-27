@@ -9,6 +9,7 @@ pkgbase = photoprism
 	makedepends = go
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = git
 	depends = tensorflow115
 	provides = photoprism
 	conflicts = photoprism
