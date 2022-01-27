@@ -1,7 +1,7 @@
 pkgbase = simtrace2
 	pkgdesc = Traces the communication between phones and SIM cards with second generation simtrace hardware.
-	pkgver = 0.7.0
-	pkgrel = 3
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://osmocom.org/projects/simtrace2
 	arch = armv7h
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = simtrace2
 	depends = libusb
 	depends = lksctp-tools
 	depends = talloc
-	source = git://git.osmocom.org/simtrace2#tag=0.7.0
+	source = git://git.osmocom.org/simtrace2#tag=0.8.1
 	sha512sums = SKIP
 
 pkgname = simtrace2
-
