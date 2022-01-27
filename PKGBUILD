@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
 pkgname=hardened_malloc
-pkgver=10
+pkgver=11
 pkgrel=1
 pkgdesc="Hardened allocator designed for modern systems"
 arch=('x86_64')
@@ -22,16 +22,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname"
-  make CONFIG_WERROR=false test
+  make -C "$pkgname" test
 }
 
 package() {
   cd "$pkgname"
-  install -Dm755 --target-directory="$pkgdir/usr/lib" \
-    out/libhardened_malloc.so \
-    out-light/libhardened_malloc-light.so
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -vDm755 -t "$pkgdir/usr/lib" out/libhardened_malloc.so out-light/libhardened_malloc-light.so
+  install -vDm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-# vim:set ts=2 sw=2 et:
+# vim:set sts=2 sw=2 et:
