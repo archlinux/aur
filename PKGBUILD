@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=96.0
-pkgrel=3
+pkgver=96.0.2
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('b4b03214ad838fe2744fed26c497c8a6fa7aedc95f47d4146da1cf5cc97860c0'
+sha256sums=('d32d2afa9179a78e6ed97e15e0f39e372c0d662cb9614404db15e7616da31ab8'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP')
@@ -56,6 +56,7 @@ prepare() {
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
+ac_add_options --enable-linker=lld
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
