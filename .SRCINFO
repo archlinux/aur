@@ -1,0 +1,15 @@
+pkgbase = mergestat
+	pkgdesc = Query git repositories with SQL
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://app.mergestat.com/w/public
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = libgit2
+	options = !lto
+	source = mergestat::git+https://github.com/mergestat/mergestat.git#commit=7d127251a0e268fb7bf20e44fe500b3917cf1a91
+	md5sums = SKIP
+
+pkgname = mergestat
