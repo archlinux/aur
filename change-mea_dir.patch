@@ -1,11 +1,11 @@
 --- MEA.py
 +++ MEA.py
-@@ -9005,7 +9005,7 @@ cse_known_bad_hashes = [
- param = MEA_Param(mea_os, sys.argv)
- 
+@@ -10829,7 +10829,7 @@ ftbl_efst_plat = {
+ param = MEA_Param(sys.argv)
+
  # Get script location
 -mea_dir = get_script_dir()
 +mea_dir = os.getcwd()
- 
+
  # Enumerate parameter input
  arg_num = len(sys.argv)

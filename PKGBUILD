@@ -3,7 +3,7 @@
 # Contributor: Bailey Fox <bfox200012@gmail.com>
 
 pkgname=meanalyzer-git
-pkgver=1.185.0.r227.r0.g8d9f6aa
+pkgver=r269.r0.gc7694e4
 pkgrel=1
 pkgdesc='Intel Management Engine firmware analysis tool'
 arch=('any')
@@ -16,8 +16,8 @@ source=("${pkgname}::git+${url}#branch=${_branch}"
         'change-mea_dir.patch'
         'db-location.patch')
 sha256sums=('SKIP'
-            '879049a04596e87362e32bbc890dc7f6c9ad67ed59ec3fc1502a4265cdf7d58e'
-            '80e0afb63393a1b6bcff85caf378058bff2f6cfe8fbc23835a555bf682cdc83b')
+            '8d77dc46728f5dc3b396910f2626f3508b28cfd76de77890e27e3c55b1c09e85'
+            'b99918610c6b6d949593c0e02af003010d7f5a46846131d8cb83c1969e20510e')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
