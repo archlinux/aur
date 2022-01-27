@@ -1,7 +1,7 @@
 pkgbase = terra-station-bin
 	pkgdesc = Wallet for Terra Blockchain
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.terra.money/
 	arch = x86_64
 	license = ISC
