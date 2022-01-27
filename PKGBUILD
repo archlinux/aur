@@ -15,7 +15,6 @@ arch=('i686' 'x86_64')
 depends=('gtk3' 'libxt' 'dbus-glib' 'nss')
 makedepends=()
 provides=(firefox=${pkgver})
-conflicts=(firefox)
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
 

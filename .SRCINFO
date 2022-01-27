@@ -14,7 +14,6 @@ pkgbase = firefox-esr-bin
 	depends = dbus-glib
 	depends = nss
 	provides = firefox=91.5.1
-	conflicts = firefox
 	source = https://ftp.mozilla.org/pub/firefox/releases/91.5.1esr/linux-x86_64/en-US/firefox-91.5.1esr.tar.bz2
 	source = firefox-esr.desktop
 	source = firefox-esr-safe.desktop
