@@ -1,6 +1,6 @@
 #Maintainer: Xyne <gro xunilhcra enyx, backwards>
 pkgname=pkg_scripts
-pkgver=2021
+pkgver=2022
 pkgrel=1
 pkgdesc='A collection of pacman and package-related utilities.'
 arch=(any)
@@ -9,16 +9,16 @@ url="https://xyne.dev/projects/pkg_scripts"
 depends=(pyalpm python3 python3-xcpf)
 optdepends=('python3-colorsysplus: colorized output in some scripts')
 source=(
-  https://xyne.dev/projects/pkg_scripts/src/pkg_scripts-2021.tar.xz
-  https://xyne.dev/projects/pkg_scripts/src/pkg_scripts-2021.tar.xz.sig
+  https://xyne.dev/projects/pkg_scripts/src/pkg_scripts-2022.tar.xz
+  https://xyne.dev/projects/pkg_scripts/src/pkg_scripts-2022.tar.xz.sig
 )
 sha512sums=(
-  bdfa10babf29f4749a393410325d07eaeb0c23d7b191387b5485160bee8a7dccfcba516f664c3405db642b6ef670ac281ffd0af66063e64e0809da58ea509b6f
-  f3c6b85d5bcf6d5e9f268c276029d567c23758e77348a8870ddae97b02e60032588870f42d6484fd6c56d3f6b18336b34f98eb1e23c6f7e0969f2411f169f465
+  e80b42e8beccdf3dfaa8dcb731c7571a6841f9a9741ee7e2b041b056fb61f10867eed6a64e6d3c621cb2e58ee76ab67260506fa37dd0b95f915f826e347dd488
+  56979899af063f5af3727f5d00f546d5b8eaed2a214dafdb86d5056567a0fa4272810e185cf44b52ca11067cebbacf5caf663e02f6f18f9227b427d7a82afe9c
 )
 md5sums=(
-  84ca8be5fc3ba18bfe2dd30a6167b241
-  60de7026ad661d4b48c5e3464a0bd0d0
+  065d4f2672d4b8f7db2ed2a48682b2c1
+  e68959ac4eff7827c19d81ae77908338
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
