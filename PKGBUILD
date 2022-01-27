@@ -2,10 +2,10 @@
 
 gitname=alpine
 pkgname=$gitname-git
-pkgver=2.21.9999.351.d5f1993
+pkgver=2.22.0.410.6288c67
 pkgrel=1
 pkgdesc="Fork of the PINE mail client (git)"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64 aarch64)
 url='http://alpine.x10host.com/'
 license=('APACHE')
 depends=(
