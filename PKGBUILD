@@ -1,8 +1,8 @@
 # Maintainer: André Kugland <kugland at gmail dot com>
 
-pkgname="fastrandom"
-pkgver="1.0.2"
-pkgrel="1"
+pkgname=fastrandom
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Quickly generate large amounts of cryptographically insecure
 pseudo-random data"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("MIT")
 source=(
     "https://gitlab.com/kugland/fastrandom/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
 )
-sha256sums=('226175b569c3e5adf94b18f83d37b70a3ab3abb44da8455cf16a3bea23862dcc')
+sha256sums=('474a001f4f07628288810af0d5e60809320f98b84d384f3f4eb329f6293c93d6')
 
 package() {
     cd "${pkgname}-v${pkgver}"
