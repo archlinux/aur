@@ -2,7 +2,7 @@
 
 pkgname=gurk-git
 pkgver=0.2.3.r150.g7651676
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI client for Signal'
 arch=('x86_64')
 url='https://github.com/boxdot/gurk-rs'
@@ -11,7 +11,6 @@ makedepends=('git' 'rust')
 optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-install="${pkgname%-*}.install"
 source=("${pkgname%-*}::git+$url")
 sha1sums=('SKIP')
 
