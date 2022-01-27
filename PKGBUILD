@@ -11,7 +11,7 @@ url='http://openlp.org/'
 license=('GPLv2')
 provides=('openlp')
 conflicts=('openlp')
-makedepends=('qt5-tools' 'git')
+makedepends=('qt5-tools' 'git' 'python-pip')
 depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
          'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
          'python-pymediainfo'

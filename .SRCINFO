@@ -8,6 +8,7 @@ pkgbase = openlp-git
 	license = GPLv2
 	makedepends = qt5-tools
 	makedepends = git
+	makedepends = python-pip
 	depends = python>=3.10
 	depends = python<3.11
 	depends = python-pyqt5
