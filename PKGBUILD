@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-zimports
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Python import rewriter"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python>=3.7' 'python-pyflakes' 'python-flake8-import-order')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('99e3892348f7fd355d561d187c194fe0e0263eaaecc5d7118c509d61f9583ece')
+sha256sums=('b3605efb2849f932d923857bc7ec59065c068269c1816a8c326c0fe3187fcd37')
 
 build() {
 	cd "zimports-$pkgver"
