@@ -1,16 +1,24 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=panwriter
-pkgver=0.7.2
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Markdown editor with pandoc integration and paginated preview"
 arch=('x86_64')
 url='https://panwriter.com'
 license=('GPL3')
+depends=(
+    'gtk3'
+    'dbus-glib'
+    'libindicator-gtk2'
+    'libdbusmenu-gtk2'
+    'nss'
+)
 makedepends=('gendesk')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/mb21/panwriter/releases/download/v${pkgver}/PanWriter-${pkgver}.AppImage")
-sha256sums=('569c487d6f9339055127d221487f6fe96170967b781503ca7d9d3bd0f0ce1e46')
+sha256sums=('41a410509158711ce55c4268d7a927c0daada50dcdcbf467c428f4447cfe07c0')
 
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
