@@ -1,13 +1,13 @@
 pkgbase = archupd
 	pkgdesc = Arch updater
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/c4rlo/archupd
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = archupd-0.1.0.tar.gz::https://github.com/c4rlo/archupd/archive/refs/tags/0.1.0.tar.gz
-	sha256sums = b5073a30273518c8cab09e8d2e10b96e412641aeb3b7e2028c82994b9e85d5ea
+	source = archupd-0.2.0.tar.gz::https://github.com/c4rlo/archupd/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = 5217e8dead462f3ec57bf62b21c7cff7a017ffc4730dbfc8f6db9028f197ca10
 
 pkgname = archupd
