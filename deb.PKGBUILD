@@ -6,7 +6,7 @@ pkgname=emercoin-git
 _pkgname=emercoin
 pkgver=0.7.11
 _pkgver=${pkgver}
-pkgrel=7
+pkgrel=8
 _pkgrel=${pkgrel}
 pkgdesc="Digital currency and blockchain service platform - debian package"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
@@ -18,17 +18,15 @@ depends=()
 _debdeps="libboost-filesystem1.74.0 (>= 1.74.0), libc6 (>= 2.30), libdb5.3++, libevent-2.1-7 (>= 2.1.8-stable), libevent-pthreads-2.1-7 (>= 2.1.8-stable), libgcc-s1 (>= 3.0), libleveldb1d, libminiupnpc17 (>= 1.9.20140610), libqrencode4 (>= 3.2.0), libqt5core5a (>= 5.15.1), libqt5dbus5 (>= 5.0.2), libqt5gui5 (>= 5.14.1) | libqt5gui5-gles (>= 5.14.1), libqt5network5 (>= 5.0.2), libqt5widgets5 (>= 5.15.1), libsqlite3-0 (>= 3.7.15), libstdc++6 (>= 9), libzmq5 (>= 4.0.1+dfsg)"
 makedepends=('boost' 'qt5-tools' 'dpkg')
 source=("git+${url}.git" #branch=${BRANCH:-0.7.11}"
-        #"Fix-missing-include.patch"
-        #"Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch"
-        "emercoin-qt.desktop"
-)
+"emercoin.install"
+"emercoind.service"
+"emc48.png"
+"com.emercoin.Emercoin.desktop")
 sha256sums=('SKIP'
-            '06645c91c499215866a506e409a8f4a80d77dbb85fdfc0bd9d1db75e2687a508')
-#prepare() {
-#	cd "${_pkgname}"
-#	patch -Np1 -i ${srcdir}/Fix-missing-include.patch #See https://doc.qt.io/Qt-5/qintvalidator.html for more details
-#	patch -Np1 -i ${srcdir}/Fix-deadlock-while-switching-from-SSLv3-to-TLS.patch #See https://bugs.archlinux.org/task/60235 and https://github.com/bitcoin/bitcoin/issues/14273#issuecomment-424905851 for more details
-#}
+            '9ab66d1537081746f5eec016628bc810d216ed393f062368decbeea3756bca35'
+            '9e0832225a161a0c2694890e4d1791eedf943f96556db153e3cd5e40906ef5ed'
+            '99d13ec06eb0d09662632e9eb6309ee38e03162f09513b23747f189602552132'
+            'dfa7a4c2f717bbc29ba4273d65f80e0ee5853379e0632e458ae12df1ace72fcf')
 
 build() {
   cd ${srcdir}/${_pkgname}

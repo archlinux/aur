@@ -5,7 +5,7 @@
 pkgname=emercoin-git
 _pkgname=emercoin
 pkgver=0.7.11
-pkgrel=7
+pkgrel=8
 pkgdesc="Digital currency and blockchain service platform"
 arch=('i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -14,6 +14,7 @@ depends=('boost-libs' 'miniupnpc' 'qt5-base' 'protobuf' 'qrencode' 'libevent')
 makedepends=('boost' 'qt5-tools')
 provides=('emercoin')
 conflicts=('emercoin')
+install='emercoin.install'
 source=("git+${url}.git" #branch=${BRANCH:-0.7.11}"
 "emercoin.install"
 "emercoind.service"
