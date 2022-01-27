@@ -1,0 +1,19 @@
+pkgbase = python-gobbet
+	pkgdesc = Random news articles in any language
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/simoncozens/gobbet
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tqdm
+	depends = python-mwparserfromhell
+	depends = python-orjson
+	depends = python-nltk
+	depends = python-htmllistparse
+	depends = python-youseedee
+	source = https://files.pythonhosted.org/packages/source/g/gobbet/gobbet-0.0.3.tar.gz
+	sha256sums = df1178e40f16852cb4dd733c395e3e75679cfde22941bf4d701f23a3b75e8c01
+
+pkgname = python-gobbet
