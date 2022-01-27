@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-adaptive-git
-pkgver=19.0.0.Matrix.r0.gbd75dd8
+pkgver=20.1.0.Nexus.r8.gd05dba5
 pkgrel=1
-pkgdesc="InputStream client for adaptive streams for Kodi 18+"
+pkgdesc="InputStream client for adaptive streams for Kodi 20+"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/xbmc/inputstream.adaptive"
 license=('GPL2')
@@ -10,13 +10,12 @@ depends=('kodi' 'expat')
 makedepends=('kodi-dev' 'cmake' 'git' 'gtest')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-# kodi 18
-# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Leia')
-# kodi 19
-source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Matrix')
 # kodi 20
-# source=('kodi-addon-inputstream-adaptive-git::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Nexus')
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/xbmc/inputstream.adaptive.git#branch=Nexus"
+        "bento4.tar.gz::https://github.com/axiomatic-systems/Bento4/archive/refs/tags/v1.6.0-639.tar.gz")
+noextract=('bento4.tar.gz')
+sha256sums=('SKIP'
+            '9f3eb912207d7ed9c1e6e05315083404b32a11f8aacd604a9b2bdcb10bf79eb9')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -33,6 +32,8 @@ build() {
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_BUILD_TYPE=Release \
            -DBUILD_SHARED_LIBS=1 \
+           -DENABLE_INTERNAL_BENTO4=ON \
+           -DBENTO4_URL="$srcdir/bento4.tar.gz" \
            -DUSE_LTO=1
   make
 }
