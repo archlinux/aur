@@ -3,7 +3,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos at becker dot software>
 
 pkgname='goreleaser-pro-bin'
-pkgver=1.4.0-pro
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
@@ -12,17 +12,17 @@ license=('MIT')
 provides=('goreleaser' 'goreleaser-pro')
 conflicts=('goreleaser' 'goreleaser-pro')
 
-source_aarch64=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_arm64.tar.gz')
-sha256sums_aarch64=('07c5d1b1f6d02ea153a9ad1737d800b42cc605363a04eb8703abaa939216b1e6')
+source_aarch64=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.1-pro/goreleaser-pro_Linux_arm64.tar.gz')
+sha256sums_aarch64=('36f956ada18433fadff1bbee6829f1f1487bade0e161e0fa3dfd5e39e196fd5f')
 
-source_armv7h=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_armv7.tar.gz')
-sha256sums_armv7h=('2af757c885f136a5a777ca5a37f3f642a7b1cd216b4746657908a9b9b7ab4c8b')
+source_armv7h=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.1-pro/goreleaser-pro_Linux_armv7.tar.gz')
+sha256sums_armv7h=('4499fb2fb877e9e6f5d4837e218f8380e17e79c2ba2d7ba5c805d814a2a592f2')
 
-source_i686=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_i386.tar.gz')
-sha256sums_i686=('024d6d14647e666561c8e6ca31fe0fb2bb8b20c7c42ca0c663ba8131e6cd9d87')
+source_i686=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.1-pro/goreleaser-pro_Linux_i386.tar.gz')
+sha256sums_i686=('bdd6596d9118cf8f6b306d9ef98c45775f87803ddf890c848acc6df83bf2d3c3')
 
-source_x86_64=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.0-pro/goreleaser-pro_Linux_x86_64.tar.gz')
-sha256sums_x86_64=('898957aa1d2675575ef6f7ed682482a3b2e272cdde52e038fafc90857a34d949')
+source_x86_64=('https://github.com/goreleaser/goreleaser-pro/releases/download/v1.4.1-pro/goreleaser-pro_Linux_x86_64.tar.gz')
+sha256sums_x86_64=('05ddb23b8c6367d5b1f877f9b09d084faa5b38024352adf7d577f1c4e95930cc')
 
 package() {
   # bin
