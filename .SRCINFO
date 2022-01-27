@@ -1,8 +1,8 @@
-pkgbase = picom-git
-	pkgdesc = X compositor (fork of compton) (git-version)
-	pkgver = 1430_8.rc2.21.gfd6ff82_2020.06.06
+pkgbase = picom-animations-git
+	pkgdesc = X compositor (fork of compton) (git-version; animation fork)
+	pkgver = 1666_Next.104.g6a50198_2021.09.19
 	pkgrel = 1
-	url = https://github.com/yshui/picom
+	url = https://github.com/dccsillag/picom
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -36,8 +36,7 @@ pkgbase = picom-git
 	conflicts = compton-git
 	conflicts = picom
 	replaces = compton-git
-	source = git+https://github.com/yshui/picom.git#branch=next
-	md5sums = SKIP
+	source = git+https://github.com/dccsillag/picom.git#branch=implement-window-animations
+	sha256sums = SKIP
 
-pkgname = picom-git
-
+pkgname = picom-animations-git

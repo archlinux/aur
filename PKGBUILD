@@ -1,14 +1,19 @@
+# Maintainer: jzbor <jzbor at posteo dot net>
+
+# This PKGBUILD is forked from picom-git
+# Contributors of picom-git:
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: OK100 <ok100 at lavabit dot com>
 # Contributor: Valère Monseur <valere dot monseur at ymail dot com>
 
-pkgname=picom-git
+_forkname=dccsillag
+pkgname=picom-animations-git
 _gitname=picom
-pkgver=1430_8.rc2.21.gfd6ff82_2020.06.06
+pkgver=1666_Next.104.g6a50198_2021.09.19
 pkgrel=1
-pkgdesc="X compositor (fork of compton) (git-version)"
+pkgdesc="X compositor (fork of compton) (git-version; animation fork)"
 arch=(i686 x86_64)
-url="https://github.com/yshui/${_gitname}"
+url="https://github.com/${_forkname}/${_gitname}"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
@@ -20,8 +25,8 @@ optdepends=('dbus:          To control picom via D-Bus'
 provides=('compton' 'compton-git' 'picom')
 conflicts=('compton' 'compton-git' 'picom')
 replaces=('compton-git')
-source=(git+"https://github.com/yshui/${_gitname}.git#branch=next")
-md5sums=("SKIP")
+source=(git+"https://github.com/${_forkname}/${_gitname}.git#branch=implement-window-animations")
+sha256sums=("SKIP")
 
 pkgver() {
     cd ${_gitname}
