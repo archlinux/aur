@@ -4,7 +4,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
 pkgver=6.5.2.1342
-pkgrel=4
+pkgrel=5
 _releasename="Alchemy Project AgileAkita"
 _releasename_underscored="${_releasename// /_}"
 _version_underscored="${pkgver//\./_}"
@@ -38,6 +38,6 @@ package() {
   mkdir -p "${pkgdir}"/opt
   # Patch shortcut to avoid duplicated entries
   sed -i 's;Name=Alchemy;Name='"${_releasename}"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
-  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
+  sed -i 's;alchemy-viewer\.desktop;'"${pkgname}\.desktop"';' "${srcdir}/${_pkgfolder}/etc/refresh_desktop_app_entry.sh"
   mv "${srcdir}/${_pkgfolder}" "${pkgdir}/opt/${pkgname}"
 }
