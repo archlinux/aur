@@ -1,9 +1,9 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=v3.1.r129.g15b990f2
+pkgver=3.1.r146.g8cfa086c
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
-arch=('i686' 'x86_64')
+arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('freetype2' 'sdl2' 'libpng' 'openal' 'alsa-lib' 'rtmidi')
@@ -15,7 +15,7 @@ provides=('86box')
 
 pkgver() {
   cd ${pkgname}
-  git describe --long --tags | sed 's/^foo-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
