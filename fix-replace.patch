@@ -1,0 +1,12 @@
+diff --unified --recursive --text ktexteditor-5.90.0.orig/src/search/katesearchbar.cpp ktexteditor-5.90.0.new/src/search/katesearchbar.cpp
+--- ktexteditor-5.90.0.orig/src/search/katesearchbar.cpp	2022-01-01 23:36:07.000000000 +1100
++++ ktexteditor-5.90.0.new/src/search/katesearchbar.cpp	2022-01-27 18:30:32.474110139 +1100
+@@ -843,6 +843,8 @@
+ 
+                 // Replace
+                 lastRange = match.replace(m_replacement, false, ++m_matchCounter);
++                // update working range as text must have changed now
++                workingRangeCopy = m_workingRange->toRange();
+             } else {
+                 lastRange = match.range();
+                 ++m_matchCounter;
