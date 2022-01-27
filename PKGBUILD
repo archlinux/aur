@@ -1,7 +1,7 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=firefox-tab-unloader-for-tree-style-tab
-pkgver=6.7
+pkgver=6.11
 pkgrel=1
 pkgdesc='Tab unload options for Tree Style Tab'
 url=https://github.com/Lej77/tab-unloader-for-tree-style-tab
@@ -10,8 +10,8 @@ license=('GPL3')
 groups=('firefox-addons')
 source=("https://addons.cdn.mozilla.net/user-media/addons/947990/tab_unloader_for_tree_style_tab-$pkgver-fx.xpi")
 noextract=("${source##*/}")
-sha256sums=('348d35bd27755fd9eb9b097ba0b07fb7b971d026c48b8ce7032c767947a27efa')
-b2sums=('c875ae94e5ea8dabf80fedf83682c0c12c9df12a534c68850f3d6e1e0b5a055514890a4e099bca8742db509d5912f9877f94a54c68daf5ab201b8662be412456')
+sha256sums=('053ddde8e98d4b70b4fa8650fa66983722366c3cc5c78b23e685facaa22c7925')
+b2sums=('fa301bb7c338594f4ce7c0942ea6966b433ff5cb98078cf902ddf4b0e1c63d8a7e2927a9efa3751f36daa81f301ac1ba74df03478f4e682bcb22fd62c959c48e')
 
 package() {
   install -Dm644 "${source##*/}" \
