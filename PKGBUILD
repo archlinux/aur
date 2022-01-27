@@ -1,7 +1,7 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 
 pkgname='libgnunetworker'
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc='Multithreading with GNUnet'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('AGPL')
 depends=('gettext' 'gnunet')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
-sha256sums=('7c5b60259245f96b21bb73c07d723eaf626fd0e8092b7011402cd0dc27ed1291')
+sha256sums=('46f92b473627fa3988f09e7a9be687fbd66b93580d6fc3ea8b02f6f40cbf67d1')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
