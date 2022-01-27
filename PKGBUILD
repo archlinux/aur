@@ -5,10 +5,11 @@
 
 pkgname=nessus
 pkgver=10.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Nessus vulnerability scanner"
 arch=('x86_64')
 depends=('gnupg')
+makedepends=('inetutils')
 license=('custom')
 url="https://www.tenable.com/downloads/nessus"
 install=${pkgname}.install
