@@ -4,7 +4,7 @@ pkgbase = easytaxag
 	pkgrel = 1
 	url = https://msg-easytax.ch/ag/
 	arch = any
-	license = GPL2
+	license = unknown
 	depends = sh
 	depends = hicolor-icon-theme
 	depends = java-runtime=8

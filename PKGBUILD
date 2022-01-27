@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="EasyTax Applikation zur Steuererklärung 2021 für den Kanton Aargau"
 arch=('any')
 url="https://msg-easytax.ch/ag/"
-license=('GPL2')
+license=('unknown')
 depends=(
   'sh'
   'hicolor-icon-theme'
