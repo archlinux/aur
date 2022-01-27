@@ -16,7 +16,7 @@ arch=(any)
 depends=(python)
 makedepends=(python-distribute)
 source=("$pkgurl")
-sha256sums=('52ab34a0c00576fce5b572caf94ede316f9f8dffae08d14885ccd4d12811371f')
+sha256sums=('aa6c4cfd22a485f19223ea468ec05f840ae1f9744dbb11ba5b106ff9bf33c164')
 
 package() {
 	mv -f "$srcdir/$( basename $pkgurl .zip )" "$srcdir/RPi.GPIO-$pkgver"
