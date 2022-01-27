@@ -2,3 +2,4 @@
 /alpine-git-*.log
 /alpine-git-*.pkg.tar.xz
 /PKGBUILD-namcap.log
+/src/

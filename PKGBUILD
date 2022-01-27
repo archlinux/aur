@@ -2,7 +2,7 @@
 
 gitname=alpine
 pkgname=$gitname-git
-pkgver=2.22.0.410.6288c67
+pkgver=2.25.1.637.9a7f844
 pkgrel=1
 pkgdesc="Fork of the PINE mail client (git)"
 arch=(i686 x86_64 aarch64)
