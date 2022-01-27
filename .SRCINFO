@@ -11,12 +11,9 @@ pkgbase = yoga-image-optimizer
 	depends = python>=3.7
 	depends = python-cairo
 	depends = python-gobject
-	depends = yoga>=1.1.0
+	depends = yoga
+	depends = hicolor-icon-theme
 	source = yoga-image-optimizer-1.1.1.tar.gz::https://github.com/flozz/yoga-image-optimizer/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = 85181a8b47978358d3fcf18ba6d41d4ab88e36e19f77547f12abb1c18a5acdf5
 
 pkgname = yoga-image-optimizer
-	depends = python>=3.7
-	depends = python-cairo
-	depends = python-gobject
-	depends = yoga>=1.1.0
