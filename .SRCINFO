@@ -1,12 +1,13 @@
 pkgbase = mingw-w64-rhsrvany
 pkgdesc = Free equivalent of Windows 'srvany' (mingw-w64)
 pkgver = 1.1
-pkgrel = 1
+pkgrel = 2
 url = https://github.com/rwmjones/rhsrvany
 arch = any
 license = GPL
 makedepends = mingw-w64-configure
 depends = mingw-w64-crt
+provides = rhsrvany
 options = !strip
 options = !buildflags
 options = staticlibs
