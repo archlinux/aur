@@ -2,7 +2,7 @@
 pkgname=mdatp-bin
 _actual_pkgname=mdatp
 pkgver=101.56.62
-pkgrel=0
+pkgrel=1
 pkgdesc='Microsoft Defender Advanced Threat Protection for Endpoints'
 arch=('x86_64')
 license=('custom: commercial')
