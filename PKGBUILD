@@ -2,7 +2,7 @@
 
 pkgname=chirurgien
 _pkgname=Chirurgien
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Chirurgien helps understand and manipulate file formats"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk4' 'glib2')
 makedepends=('meson')
 checkdepends=('appstream-glib')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('5ced1900a9e6a0ff6fd8bf21bb19489d954118170be26dd3b37e4f0f535e0be7e68d4143dce7927f4894838d1005483bfefea70dcd713ac1204885ca957841d9')
+b2sums=('536428b81b6976410a4151d250ba67bbd3603f855000cfdef7c7a38d271208b39b84cfb956382433b48c68a9dc9a78621ed6d5bb164b5cb015e67b738491ee40')
 
 build() {
   arch-meson $_pkgname-$pkgver build
