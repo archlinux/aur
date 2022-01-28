@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=dkopp
-pkgver=7.8
+pkgver=7.9
 pkgrel=1
 pkgdesc="A backup program using DVDs"
 url="https://kornelix.net/dkopp/dkopp.html"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('d5838a2a98b7b33eebd585f372f0a35bb6443b874bc12f1c1bb2be6576561475')
+sha256sums=('98bf573ce2d2b0560a4f4f3ec9334d7dc8f7af5b01d6959c52dd016c200496ae')
 options=('!emptydirs')
 
 build() {
