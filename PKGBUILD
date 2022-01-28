@@ -1,38 +1,57 @@
 # Maintainer: Sanjay Pavan <tsppavan7@gmail.com>
 
 pkgname=catppuccin-gtk-theme
-pkgver=1.0.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='GTK theme for catppuccin. Warm dark theme for the masses!'
 arch=('any')
 license=('GPL3')
 url='https://github.com/catppuccin/gtk'
-source=("https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-green.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-magenta.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-peach.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-pink.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-red.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-teal.tar.gz"
-        "https://github.com/catppuccin/gtk/releases/download/v.${pkgver}/Catppuccin-yellow.tar.gz")
-sha256sums=('b80b74835fe011351569c64f51cf9235f13496e619dc5c168c133432c92ca332'
-            '1966add65592a814266bb7ccb2afb619e8e5623b076602f072b3bfd1f0a4b226'
-            '4eb8752dd99717d6dced36a29d42dfddbc4d4b28880ef28d50982ea1fe5329d5'
-            '51b2cd898ab60b0fc162405255604d78cf2f4dde436be840d311e38442952cc2'
-            '2ff2a62da106fbc0b6e0333d9e3e4b339a1fdb943276c5c3b0e46b8b82d1aba8'
-            'a4b50e1f10df283f49d6a87dc0b40d33cd7be406867d1bdc7e8451f3f5a87275'
-            'f3b66d136f9a98f42d3c9c22d0338cb1b640c1fe42ac0754de1e6fb925cd89a9'
-            '03f473062189f4da0ac3a58e067003b882b1196e4bb903437856df5ebd6c36d2')
+source=("https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-dark-compact.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-green-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-green-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-green-dark-compact.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-pink-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-pink-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-pink-dark-compact.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-purple-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-purple-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-purple-dark-compact.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-red-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-red-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-red-dark-compact.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-teal-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-teal-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-teal-dark-compact.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-yellow-dark-compact-hdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-yellow-dark-compact-xhdpi.zip"
+        "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-yellow-dark-compact.zip")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/themes"
-  cp -r "Catppuccin" \
-        "Catppuccin-green" \
-        "Catppuccin-magenta" \
-        "Catppuccin-peach" \
-        "Catppuccin-pink" \
-        "Catppuccin-red" \
-        "Catppuccin-teal" \
-        "Catppuccin-yellow" \
+  cp -r "Catppuccin-dark-compact-hdpi" \
+        "Catppuccin-dark-compact-xhdpi" \
+        "Catppuccin-dark-compact" \
+        "Catppuccin-green-dark-compact-hdpi" \
+        "Catppuccin-green-dark-compact-xhdpi" \
+        "Catppuccin-green-dark-compact" \
+        "Catppuccin-pink-dark-compact-hdpi" \
+        "Catppuccin-pink-dark-compact-xhdpi" \
+        "Catppuccin-pink-dark-compact" \
+        "Catppuccin-purple-dark-compact-hdpi" \
+        "Catppuccin-purple-dark-compact-xhdpi" \
+        "Catppuccin-purple-dark-compact" \
+        "Catppuccin-red-dark-compact-hdpi" \
+        "Catppuccin-red-dark-compact-xhdpi" \
+        "Catppuccin-red-dark-compact" \
+        "Catppuccin-teal-dark-compact-hdpi" \
+        "Catppuccin-teal-dark-compact-xhdpi" \
+        "Catppuccin-teal-dark-compact" \
+        "Catppuccin-yellow-dark-compact-hdpi" \
+        "Catppuccin-yellow-dark-compact-xhdpi" \
+        "Catppuccin-yellow-dark-compact" \
         "${pkgdir}/usr/share/themes"
 }
