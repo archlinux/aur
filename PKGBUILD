@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libdom-git'
-pkgver=0.3.0.r0.g54c4309
-pkgrel=2
+pkgver=0.4.1.r18.gade633d
+pkgrel=1
 pkgdesc='Implementation of the W3C DOM'
 url='http://www.netsurf-browser.org/projects/libdom/'
 license=('MIT')
