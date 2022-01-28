@@ -1,0 +1,36 @@
+From 8529255c22858c784aca6649f80acf43cba78725 Mon Sep 17 00:00:00 2001
+From: Jonathan Ravat <jonathan.ravat@gmail.com>
+Date: Tue, 6 Apr 2021 19:16:24 +0200
+Subject: [PATCH] Fix an error when remote IPv6 address is used
+
+---
+ src/otp.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/otp.c b/src/otp.c
+index 5fed65e..5bab2fc 100644
+--- a/src/otp.c
++++ b/src/otp.c
+@@ -714,6 +714,7 @@ openvpn_plugin_func_v1 (openvpn_plugin_handle_t handle, const int type, const ch
+   const char *username = get_env ("username", envp);
+   const char *password = get_env ("password", envp);
+   const char *ip = get_env ("untrusted_ip", envp);
++  const char *ip6 = get_env ("untrusted_ip6", envp);
+   const char *port = get_env ("untrusted_port", envp);
+ 
+   if (username == NULL) {
+@@ -724,10 +725,13 @@ openvpn_plugin_func_v1 (openvpn_plugin_handle_t handle, const int type, const ch
+     LOG("OTP_AUTH: Password is missing\n");
+     return OPENVPN_PLUGIN_FUNC_ERROR;
+   }
+-  if (ip == NULL || port == NULL) {
++  if ((ip == NULL && ip6 == NULL) || port == NULL) {
+    LOG("OTP_AUTH: IP or Port number is missing\n");
+    return OPENVPN_PLUGIN_FUNC_ERROR;
+   }
++  if (ip == NULL) {
++    ip = ip6;
++  }
+ 
+   const int ulen = strlen(username);
+   const int pwlen = strlen(password);

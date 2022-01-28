@@ -1,0 +1,107 @@
+From 9708ba2036f719a6431c3464168d3f755d46f9fe Mon Sep 17 00:00:00 2001
+From: Christoph Klaffl <christoph@phreaker.eu>
+Date: Tue, 5 Nov 2019 16:49:54 +0100
+Subject: [PATCH] support for openssl 1.1.1 and later
+
+---
+ src/otp.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/src/otp.c b/src/otp.c
+index 09f5489..5fed65e 100644
+--- a/src/otp.c
++++ b/src/otp.c
+@@ -405,13 +405,13 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+             LOG("OTP-AUTH: unknown encoding '%s'\n", otp_params.encoding);
+             goto done;
+         }
+-    
++
+         uint64_t T, Tn, Ti;
+         uint8_t mac[EVP_MAX_MD_SIZE];
+         unsigned maclen;
+ 
+         if (!strncasecmp("totp", otp_params.method, 4)) {
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+             HMAC_CTX* hmac = HMAC_CTX_new();
+ #else
+             HMAC_CTX hmac;
+@@ -436,7 +436,7 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+             for (i = -range; !ok && i <= range; ++i) {
+                 Tn = htobe64(T + i);
+ 
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+                 HMAC_CTX_reset(hmac);
+                 HMAC_Init_ex(hmac, otp_key, key_len, otp_digest, NULL);
+                 HMAC_Update(hmac, (uint8_t *)&Tn, sizeof(Tn));
+@@ -462,12 +462,12 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+                     DEBUG("OTP-AUTH: auth ok for method='%s', client_username='%s', client_secret='%s'\n", otp_params.method, vpn_username, vpn_secret);
+                 }
+             }
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+             HMAC_CTX_free(hmac);
+ #endif
+         }
+         else if (!strncasecmp("hotp", otp_params.method, 4)) {
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+             HMAC_CTX* hmac = HMAC_CTX_new();
+ #else
+             HMAC_CTX hmac;
+@@ -489,7 +489,7 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+               for (i = 0; !ok && i <= hotp_syncwindow; i++) {
+                   Ti = T+i;
+                   Tn = htobe64(Ti);
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+                   HMAC_CTX_reset(hmac);
+                   HMAC_Init_ex(hmac, otp_key, key_len, otp_digest, NULL);
+                   HMAC_Update(hmac, (uint8_t *)&Tn, sizeof(Tn));
+@@ -517,13 +517,13 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+                       hotp_set_counter(otp_params.key, Ti+1);
+                   }
+             }
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+             HMAC_CTX_free(hmac);
+ #endif
+           }
+         }
+         else if (!strcasecmp("motp", otp_params.method)) {
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+             EVP_MD_CTX* ctx = EVP_MD_CTX_new();
+ #else
+             EVP_MD_CTX ctx;
+@@ -535,8 +535,8 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+             T = time(NULL) / motp_step;
+ 
+             for (i = -range; !ok && i <= range; ++i) {
+-#ifdef HAVE_OPENSSL_110
+-                EVP_MD_CTX_reset(ctx); 
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++                EVP_MD_CTX_reset(ctx);
+                 EVP_DigestInit_ex(ctx, otp_digest, NULL);
+                 n = sprintf(buf, "%" PRIu64, T + i);
+                 EVP_DigestUpdate(ctx, buf, n);
+@@ -573,7 +573,7 @@ static int otp_verify(const char *vpn_username, const char *vpn_secret)
+                     DEBUG("OTP-AUTH: auth ok for method='%s', client_username='%s', client_secret='%s'\n", otp_params.method, vpn_username, vpn_secret);
+                 }
+             }
+-#ifdef HAVE_OPENSSL_110
++#if OPENSSL_VERSION_NUMBER >= 0x10100000L
+             EVP_MD_CTX_free(ctx);
+ #endif
+         }
+@@ -755,7 +755,7 @@ openvpn_plugin_func_v1 (openvpn_plugin_handle_t handle, const int type, const ch
+     LOG("OTP_AUTH: OTP Password is missing\n");
+     return OPENVPN_PLUGIN_FUNC_ERROR;
+   }
+-   
++
+   /* check entered username/password against what we require */
+   int ok = otp_verify(username, otp_password);
+ 
