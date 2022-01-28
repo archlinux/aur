@@ -19,15 +19,15 @@ sha256sums=('1816dfba29b8182ddffbc675e228906b2acaa338fcaada5e330065e650092689')
 sha256sums_x86_64=('3c5ea3e3b66d305323540bef3856716f18165c76afad435dfaa0bdf6e81550d2')
 
 package() {
-    install -D "${_basename}" "${pkgdir}/usr/local/bin/${_pkgname}"
+    install -Dt "${pkgdir}/usr/local/bin" "${_basename}"
 
     # Generate completion files.
     mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-    "${pkgdir}/usr/local/bin/${_pkgname}" completions bash > "${pkgdir}/usr/share/bash-completion/completions/hermes-relayer"
+    "${pkgdir}/usr/local/bin/${_basename}" completions bash > "${pkgdir}/usr/share/bash-completion/completions/${_basename}"
     mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d"
-    "${pkgdir}/usr/local/bin/${_pkgname}" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/hermes_relayer.fish"
+    "${pkgdir}/usr/local/bin/${_basename}" completions fish > "${pkgdir}/usr/share/fish/vendor_completions.d/${_basename}.fish"
     mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
-    "${pkgdir}/usr/local/bin/${_pkgname}" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/_hermes_relayer"
+    "${pkgdir}/usr/local/bin/${_basename}" completions zsh > "${pkgdir}/usr/share/zsh/site-functions/${_basename}"
 
     install -m644 -Dt "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
 }
