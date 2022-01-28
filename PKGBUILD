@@ -307,7 +307,7 @@ prepare() {
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f "$HOME/.config/modprobed.db" ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD="$HOME/.config/modprobed.db" localmodconfig
+      make ${_LLVM:+LLVM=$_LLVM LLVM_IAS=$_LLVM} LSMOD="$HOME/.config/modprobed.db" localmodconfig
     else
       msg2 "No modprobed.db data found"
       exit 1
@@ -315,12 +315,12 @@ prepare() {
   fi
 
   msg2 "Finalizing kernel config..."
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  make ${_LLVM:+LLVM=$_LLVM LLVM_IAS=$_LLVM} olddefconfig
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  [[ -z "$_makenconfig" ]] || make ${_LLVM:+LLVM=$_LLVM LLVM_IAS=$_LLVM} nconfig
 
   # save configuration for later reuse or inspection
   cat .config > "${startdir}/config.last"
@@ -333,7 +333,7 @@ build() {
   fi
 
   cd "linux-${_major}"
-  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
+  make ${_LLVM:+LLVM=$_LLVM LLVM_IAS=$_LLVM} all
 }
 
 # shellcheck disable=SC2154,SC2155
