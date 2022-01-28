@@ -1,10 +1,11 @@
 # Maintainer : Figue <ffigue@gmail.com>
+# Maintainer : Luna Jernberg <droidbittin@gmail.com>
 # Contributor : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor : Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=91.5.0
+pkgver=91.5.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
@@ -22,11 +23,11 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 provides=(firefox=${pkgver})
 conflicts=(firefox)
-options=(!emptydirs !makeflags !strip !lto)
+options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         ${pkgname}.desktop identity-icons-brand.svg)
-sha256sums=('f45cd9c96227e3e6eabe37962ce924b7a7ca86b6c191326c1bab18e082b4c813'
+sha256sums=('36049694505ff5edd1a086480e5a3d29fedd3f0b0d4a8a27a271a66e8fc6cd1f'
             'SKIP'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             '39c4c2d1f465e3fb08e20e3036c2284ee3e8dfbd539abe4ffea3c46b4058f16d'
