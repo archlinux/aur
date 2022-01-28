@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='nsgenbind-git'
-pkgver=0.3.r0.g93be211
-pkgrel=2
+pkgver=0.8.r1.gecdd703
+pkgrel=1
 pkgdesc='Decoding library for BMP and ICO image file formats'
 url='http://git.netsurf-browser.org/nsgenbind.git/'
 license=('MIT')
@@ -27,11 +27,6 @@ prepare() {
 build() {
 	make -C nsgenbind PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib
-}
-
-check() {
-	make -C nsgenbind PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib test
 }
 
 package() {
