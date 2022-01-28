@@ -1,16 +1,17 @@
 pkgbase = python-munge
 	pkgdesc = Data manipulation client/library
 	pkgver = 1.2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/20c/munge
 	changelog = CHANGELOG.md
 	arch = any
 	license = Apache
-	checkdepends = python-pytest-runner
-	makedepends = python-setuptools
-	makedepends = python-dephell
-	depends = python-requests>=2.6
-	depends = python-click>=5.1
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry-core
+	depends = python-requests
+	depends = python-click
 	optdepends = python-toml
 	optdepends = python-tomlkit
 	optdepends = python-yaml

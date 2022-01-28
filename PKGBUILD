@@ -3,36 +3,32 @@
 
 pkgname=python-munge
 pkgver=1.2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Data manipulation client/library'
 arch=('any')
 url='https://github.com/20c/munge'
 license=('Apache')
-depends=('python-requests>=2.6' 'python-click>=5.1')
+depends=('python-requests' 'python-click')
 optdepends=('python-toml' 'python-tomlkit' 'python-yaml')
-makedepends=('python-setuptools' 'python-dephell')
-checkdepends=('python-pytest-runner')
+makedepends=('python-build' 'python-install' 'python-poetry-core')
+checkdepends=('python-pytest')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('3ac675a807a624f59dfe9c27bb8ad41b52d7328a9b3828ae656c524c8cf34c15')
 
-prepare() {
-	cd "munge-$pkgver"
-	dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
 	cd "munge-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
 	cd "munge-$pkgver"
-	python setup.py pytest
+	PYTHONPATH=src python -m pytest -x
 }
 
 package() {
-	cd "munge-${pkgver}"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 docs/api.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	export PYTHONHASHSEED=0
+	cd "munge-$pkgver"
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 docs/api.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
