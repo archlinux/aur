@@ -21,7 +21,6 @@ sha256sums=('81bc026de2f6c0d4597d0a8cbbeb398cd82ce9a235e085674f7328be21a08e2c'
 
 package() {
   cd ${pkgname}-kali-${pkgver}
-  patch bin/kali-undercover ../kali-undercover.patch
   install -d "${pkgdir}/usr"
   cp -dr bin "${pkgdir}/usr/bin"
   cp -dr share "${pkgdir}/usr/share"
