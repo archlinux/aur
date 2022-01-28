@@ -1,0 +1,22 @@
+pkgbase = mkv-extractor-qt-git
+	pkgdesc = Graphical MKV demultiplexer. (GIT version)
+	pkgver = 5.5.9.r7.c321f99
+	pkgrel = 1
+	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1508741
+	arch = any
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = imagemagick
+	depends = python-pyqt5
+	depends = mkvtoolnix-cli
+	optdepends = ffmpeg: for DTS conversion
+	optdepends = mkclean: MKV optimisation
+	optdepends = mkvalidator: MKV check
+	optdepends = qtesseract5: subtitle conversion
+	optdepends = bdsup2subpp-git: SUP subtitle conversion
+	conflicts = mkv-extractor-qt
+	replaces = mkv-extractor-qt
+	source = git+https://github.com/Hizoka76/mkv-extractor-qt5.git
+	sha256sums = SKIP
+
+pkgname = mkv-extractor-qt-git
