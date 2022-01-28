@@ -9,9 +9,9 @@ license=(
  'LPPL'
 )
 source=(
- "https://gitlab.com/rubdos/texlive-vub/repository/archive.tar.bz2?ref=v${pkgver}"
+ "https://gitlab.com/rubdos/texlive-vub/-/archive/v${pkgver}/texlive-vub-v${pkgver}.tar.gz"
 )
-sha512sums=('c552d3485e360f80b8ad1785f794ed6a4220313d71d073a2ed91a3263b46fc69161d6d6b892c3bb972d681c199a5c89df7899876ee5ba8eb52eb79ca4b1b72c0')
+sha512sums=('a3d05dbf36b699d189e1563bc32063086c0e2bcb97d6619d27ad5f6b1af637ffe5118282e7ca36e6b5e87f75da92ac7993f29586d418aa833da1dc56f808e298')
 arch=(
  'any'
 )
