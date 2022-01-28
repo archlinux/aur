@@ -1,6 +1,6 @@
 pkgbase = element-desktop-git-greentext
 	pkgdesc = Glossy Matrix collaboration client with greentext baked in —
-	pkgver = 1.9.9.r27.gc6c1238ce+greentext
+	pkgver = 1.9.9.r28.gcfa97212f+greentext
 	pkgrel = 1
 	url = https://element.io
 	arch = x86_64
@@ -43,7 +43,7 @@ pkgbase = element-desktop-git-greentext
 
 pkgname = element-desktop-git-greentext
 	pkgdesc = Glossy Matrix collaboration client with greentext baked in — desktop version.
-	depends = element-web-git-greentext=1.9.9.r27.gc6c1238ce+greentext
+	depends = element-web
 	depends = electron
 	depends = sqlcipher
 	provides = element-desktop

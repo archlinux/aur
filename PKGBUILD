@@ -6,7 +6,7 @@
 
 pkgbase=element-desktop-git-greentext
 pkgname=(element-{desktop,web}-git-greentext)
-pkgver=1.9.9.r27.gc6c1238ce+greentext
+pkgver=1.9.9.r28.gcfa97212f+greentext
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
@@ -91,7 +91,7 @@ with open(emoji_file, "w") as ef:
   yarn install --no-fund
 
   cd "$srcdir/element-web/node_modules/matrix-react-sdk"
-  patch -p1 < "$srcdir/greentext.patch"
+  patch -p1 --forward < "$srcdir/greentext.patch" || true
   yarn reskindex
 }
 
@@ -129,7 +129,7 @@ package_element-web-git-greentext() {
 package_element-desktop-git-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
-  depends=("element-web-git-greentext=${pkgver}" ${_electron} sqlcipher)
+  depends=("element-web" ${_electron} sqlcipher)
   provides=(element-desktop{,-git})
   conflicts=(element-desktop{,-git})
   backup=("etc/element/config.json")
