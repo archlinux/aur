@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=zoho-cliq
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
@@ -14,7 +14,6 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
 source=(
     "https://downloads.zohocdn.com/chat-desktop/linux/cliq_${pkgver}_amd64.deb"
 )
-sha256sums=('47ac4e6f7f91a549139aa2740d5020d734539d35c80157e0c8aff0d6ede488a9')
 
 package() {
     install -d "${pkgdir}/opt"
@@ -24,3 +23,5 @@ package() {
     cp -r opt/Cliq "${pkgdir}/opt/Cliq"
     cp -r usr/share/* "${pkgdir}/usr/share/"
 }
+
+sha256sums=('2bb595f9af774d957c9b1ea286f2361f273bf183a050499b5f8180cb4352ce5d')
