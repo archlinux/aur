@@ -1,7 +1,7 @@
 pkgbase = wine-ge-lol
 	pkgdesc = A compatibility layer for running League of Legends - GloriousEggroll branch
 	pkgver = 7.0.GE.1.LoL
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	arch = x86_64
 	license = LGPL

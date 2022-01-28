@@ -13,7 +13,7 @@ pkgname=wine-ge-lol
 _reponame=wine-ge-custom
 _srctag=7.0-GE-1-LoL
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=3
 
 source=($_reponame::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
         wine::git+https://github.com/GloriousEggroll/wine.git#commit=${_wine_commit}
