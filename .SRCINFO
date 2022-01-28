@@ -1,15 +1,21 @@
 pkgbase = rtl88x2bu-cilynx-dkms-git
-	pkgdesc = Kernel module for Realtek rtl88x2bu WiFi chipset
-	pkgver = 5.3.1.r39.eece063
+	pkgdesc = rtl88x2bu driver updated for current kernels
+	pkgver = r105.e8ad266
 	pkgrel = 1
-	url = https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959
-	arch = i686
+	url = https://github.com/cilynx/rtl88x2bu
 	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL2
 	makedepends = git
+	makedepends = linux-headers
+	makedepends = bc
 	depends = dkms
-	source = rtl88x2bu-cilynx::git+https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959.git
+	source = git+https://github.com/cilynx/rtl88x2bu.git
 	sha256sums = SKIP
 
 pkgname = rtl88x2bu-cilynx-dkms-git
-

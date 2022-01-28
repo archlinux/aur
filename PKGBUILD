@@ -1,29 +1,37 @@
-# Maintainer: Michael Taboada <michael@2mb.solutions>
+# Maintainer: Harrison <htv04rules at gmail dot com>
+# Contributor: Michael Taboada <michael@2mb.solutions>
 
-pkgname=rtl88x2bu-cilynx-dkms-git
-_pkgbase=rtl88x2bu
-pkgver=5.3.1.r39.eece063
-_pkgver=5.3.1
+_pkgname=rtl88x2bu
+pkgname=${_pkgname}-cilynx-dkms-git
+pkgver=r105.e8ad266
 pkgrel=1
-pkgdesc="Kernel module for Realtek rtl88x2bu WiFi chipset"
-arch=('i686' 'x86_64')
-url="https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959"
+pkgdesc="rtl88x2bu driver updated for current kernels"
+arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
+url="https://github.com/cilynx/${_pkgname}"
 license=('GPL2')
 depends=('dkms')
-makedepends=('git')
-source=("rtl88x2bu-cilynx::git+https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959.git")
+makedepends=('git' 'linux-headers' 'bc')
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/rtl88x2bu-cilynx"
-    printf '%s.r%s.%s' "${_pkgver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+
+  # Build 88x2bu module
+  make
 }
 
 package() {
-    cd "${srcdir}/rtl88x2bu-cilynx"
-    mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    cp -pr * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
-    install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-    sed -e "s/PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${pkgver}\"/" -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
-}
+  cd "${srcdir}/${_pkgname}"
 
+  # Install source
+  install -dm755 "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+  cp -r * "${pkgdir}/usr/src/${_pkgname}-${pkgver}/"
+  sed -e "s/PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${pkgver}\"/" -i "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf" # Update version
+}
