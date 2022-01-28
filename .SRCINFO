@@ -1,7 +1,7 @@
 pkgbase = openvpn-auth-ldap
 	pkgdesc = OpenVPN Auth via LDAP/AD plugin. RFC2307 support.
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/threerings/openvpn-auth-ldap
 	arch = any
 	license = BSD
@@ -14,9 +14,8 @@ pkgbase = openvpn-auth-ldap
 	depends = openssl
 	backup = etc/openvpn/server/auth-ldap.conf
 	source = https://github.com/threerings/openvpn-auth-ldap/archive/auth-ldap-2.0.4.tar.gz
-	source = 77.patch
+	source = https://github.com/threerings/openvpn-auth-ldap/pull/77.patch
 	sha256sums = 81f600cdc88adb2258f57df1ed2d87f0afa945f66cbf8897ad50e76f42509168
 	sha256sums = 003e5acefebc5cdbea5a9513ca8a27f624917a357e72f825dccf4294c375b4f5
 
 pkgname = openvpn-auth-ldap
-
