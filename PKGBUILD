@@ -17,7 +17,7 @@ source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$_dlver.
         weka.desktop
         weka.png)
 sha256sums=('7e57405331f01c07ed84d9e0ffa07548cddf70877e4518fcd016c117e8c6e867'
-            'e1c9d5cb72580b4305957a459e8475e120132e6fee872e4a8c8b9b6dbaf7709a'
+            'bd00a9326cf324a4bdf7a6189afc31fb8179ac98eaed6586fb85c6898c884182'
             'b68628d484e775c90a3d6554837ee3be7dc7ef356a7107184da7136effa247c1'
             '6cb96deb1e8634048032400674faf2ef869ac090deee66d637051a5d1af42655')
 
