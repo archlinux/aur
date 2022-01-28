@@ -13,14 +13,14 @@ pkgver=2.4.0+r1
 _commit=b7a35c7fcb9d1badac418bf07ab8353bbe6658f1
 _commit_liborigin=a92f26f28e531f64684b66a2731dd617bea3cb45
 _commit_qwtplot3d=b2655743d30ed3185f3c0e2626b33a1d29655216
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
 license=('GPL')
 makedepends=('boost' 'cmake' 'qt5-tools'
 'sip' 'pyqt-builder'
-'qwt5-qt5>=5.2.3.1-2'
+'qwt5-qt5>=5.2.3.4-2'
 )
 depends=('gsl' 'glu' 'mesa' 'muparser>=2.3.2' 'shared-mime-info'
 'desktop-file-utils' 'hicolor-icon-theme'
