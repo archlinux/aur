@@ -6,6 +6,6 @@
 # Specifying command line arguments will override the defaults shown here.
 # Example: '-Xmx4g'
 
-_runtime11=$(/usr/bin/archlinux-java status | grep 11 | tr -d ' ')
+_runtime11=$(/usr/bin/archlinux-java status | grep -m1 11 | cut -d' ' -f3)
 
 exec /usr/lib/jvm/$_runtime11/bin/java -Xms32m -Xmx2g "$@" -jar /usr/share/weka/weka.jar

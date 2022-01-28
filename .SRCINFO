@@ -1,7 +1,7 @@
 pkgbase = weka
 	pkgdesc = A collection of machine learning algorithms for data mining tasks
 	pkgver = 3.8.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cs.waikato.ac.nz/ml/weka/
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = weka
 	source = weka.desktop
 	source = weka.png
 	sha256sums = 7e57405331f01c07ed84d9e0ffa07548cddf70877e4518fcd016c117e8c6e867
-	sha256sums = bd00a9326cf324a4bdf7a6189afc31fb8179ac98eaed6586fb85c6898c884182
+	sha256sums = d40e6131a7fd14f97b41f2db46053114ae986a8a0c4dc0001cb3f78b5d723dc1
 	sha256sums = b68628d484e775c90a3d6554837ee3be7dc7ef356a7107184da7136effa247c1
 	sha256sums = 6cb96deb1e8634048032400674faf2ef869ac090deee66d637051a5d1af42655
 

@@ -7,7 +7,7 @@
 pkgname=weka
 pkgver=3.8.6
 _dlver=${pkgver//./-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of machine learning algorithms for data mining tasks"
 url="https://www.cs.waikato.ac.nz/ml/weka/"
 license=("GPL")
@@ -17,7 +17,7 @@ source=(https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$_dlver.
         weka.desktop
         weka.png)
 sha256sums=('7e57405331f01c07ed84d9e0ffa07548cddf70877e4518fcd016c117e8c6e867'
-            'bd00a9326cf324a4bdf7a6189afc31fb8179ac98eaed6586fb85c6898c884182'
+            'd40e6131a7fd14f97b41f2db46053114ae986a8a0c4dc0001cb3f78b5d723dc1'
             'b68628d484e775c90a3d6554837ee3be7dc7ef356a7107184da7136effa247c1'
             '6cb96deb1e8634048032400674faf2ef869ac090deee66d637051a5d1af42655')
 
