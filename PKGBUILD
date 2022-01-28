@@ -1,8 +1,9 @@
-# Maintainer: David Wu <xdavidwuph@gmail.com>
+# Maintainer: Ben Poest <ben@poest.com>
+# Contributor: David Wu <xdavidwuph@gmail.com>
 
 pkgname=kali-undercover
-pkgver=2020.2.0
-pkgrel=2
+pkgver=2021.4.0
+pkgrel=3
 pkgdesc='Kali Undercover Mode'
 arch=('any')
 url='https://gitlab.com/kalilinux/packages/kali-undercover/'
