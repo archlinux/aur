@@ -1,6 +1,6 @@
 pkgbase = pcbdraw-git
 	pkgdesc = Convert your KiCAD boards into nice looking 2D drawings suitable for pinout diagrams.
-	pkgver = 194.99bcecd
+	pkgver = 252.1c3e689
 	pkgrel = 1
 	url = https://github.com/INTI-CMNB/pcbdraw
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = pcbdraw-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python
 	depends = kicad
 	provides = pcbdraw
@@ -17,4 +18,3 @@ pkgbase = pcbdraw-git
 	md5sums = SKIP
 
 pkgname = pcbdraw-git
-
