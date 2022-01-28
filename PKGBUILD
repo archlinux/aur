@@ -3,7 +3,7 @@
 
 set -u
 pkgbase="linux-lts49"
-pkgver="4.9.297"
+pkgver="4.9.298"
 _srcname="linux-${pkgver%.*}"
 pkgrel='1'
 arch=('x86_64')
@@ -159,6 +159,7 @@ _package() {
   #[ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends+=('linux-firmware-uncompressed: hardware support')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux-lts.install
   #provides=("linux=${pkgver}") # not permitted by order of Arch TU

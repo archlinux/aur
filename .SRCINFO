@@ -1,5 +1,5 @@
 pkgbase = linux-lts49
-	pkgver = 4.9.297
+	pkgver = 4.9.298
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = linux-lts49
 	makedepends = libelf
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.297.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.298.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
@@ -43,6 +43,7 @@ pkgname = linux-lts49
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware-uncompressed: hardware support
 	backup = etc/mkinitcpio.d/linux-lts49.preset
 
 pkgname = linux-lts49-headers
