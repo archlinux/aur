@@ -1,14 +1,14 @@
 pkgbase = python-merge3
 	pkgdesc = Python implementation of 3-way merge.
 	pkgver = 0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/breezy-team/merge3
 	arch = any
 	license = GPL2
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/m/merge3/merge3-0.0.8.tar.gz
-	source = https://pypi.org/packages/source/m/merge3/merge3-0.0.8.tar.gz.asc
+	source = python-merge3-0.0.8.tar.gz::https://files.pythonhosted.org/packages/source/m/merge3/merge3-0.0.8.tar.gz
+	source = python-merge3-0.0.8.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/merge3/merge3-0.0.8.tar.gz.asc
 	validpgpkeys = DC837EE14A7E37347E87061700806F2BD729A457
 	sha256sums = 4ef90eda29fb6f291e5d5ee1103ae97e295e15826ef17abee3098f5ce46fe18b
 	sha256sums = SKIP
