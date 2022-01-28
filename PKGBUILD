@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 at gmail.com>
 pkgname=tradingview-bin
 _pkgname=tradingview
-pkgver=1.0.1
-_snapver=13
+pkgver=1.0.2
+_snapver=14
 pkgrel=1
 pkgdesc="Track all markets"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('squashfs-tools')
 source=("${_pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_${_snapver}.snap"
 ${_pkgname}.sh
 )
-sha512sums=('768e6a234bd20887472743c3ac2aa2d619a2e0be365ac64ef67ea23b5813d4f8d95388fd671001fc2df617a5dc201bab50eefd3198c822ee5a76f8568916ac73'
+sha512sums=('af6fac89087d2a47694b106148ec9df6ea73e65fc513f2cb35b87e70278e90046f3785bd8972cc1733c4d5d8acd0680cd41f5fdcaa1c1e1ce1cdaee57abb83f5'
             '51b1b734dce954fe1200b37d3fe8f36c963977df7d82475468f57f744cc453963fafc7b662b3b761b39cc60c35a54c5894053555bcc721d2e9e065769abba397')
 
 
