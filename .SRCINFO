@@ -39,7 +39,7 @@ pkgbase = tensorflow_datasets
 	optdepends = python-scipy: aflw2k3d, duke_ultrasound, imagenet2012_corrupted, svhn, the300w_lp
 	optdepends = python-tifffile: eurosat
 	optdepends = python-tldextract: c4
-	source = https://files.pythonhosted.org/packages/01/19/3652b3b32892750a19ae2f8b260d3d42e41db749248583c1b80050c2fd80/tensorflow-datasets-4.5.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/01/19/3652b3b32892750a19ae2f8b260d3d42e41db749248583c1b80050c2fd80/tensorflow_datasets-4.5.0-py3-none-any.whl
 	sha256sums = 1c116a9c9c04ef4a14e0b3d61cd563f3fa0befcf6b64f5ffb220a9583e6bcc20
 
 pkgname = tensorflow_datasets

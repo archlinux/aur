@@ -2,7 +2,6 @@
 # Contributor: Konstantin Gizdov <arch@kge.pw>
 
 pkgname=(tensorflow_datasets)
-_name='tensorflow-datasets'
 pkgver='4.5.0'
 pkgrel=1
 url="https://github.com/tensorflow/datasets"
@@ -43,7 +42,7 @@ optdepends=('python-beautifulsoup4: wsc273'
             'python-tldextract: c4')
 license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/01/19/3652b3b32892750a19ae2f8b260d3d42e41db749248583c1b80050c2fd80/${_name}-${pkgver}-py3-none-any.whl")
+source=("https://files.pythonhosted.org/packages/01/19/3652b3b32892750a19ae2f8b260d3d42e41db749248583c1b80050c2fd80/${pkgname}-${pkgver}-py3-none-any.whl")
 sha256sums=('1c116a9c9c04ef4a14e0b3d61cd563f3fa0befcf6b64f5ffb220a9583e6bcc20')
 
 package() {
