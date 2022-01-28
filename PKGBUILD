@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=16.4.0
+pkgver=16.5.1
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=(yarn ant 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz")
-sha512sums=('a336203e486b9488c16ced9213aad12d7c5061578ad8c0995fd2a08869af4589d6482fc859c1ca281bbddaa949ed4628072556f4fc1f22b66cb8aeca306cc075'
-            '2b3638a02a033bce9ceec23e05afc339a2e25a49ba381129abb303734eb6f4063e0c11c6a24b9b7519bd0359537f955ff6fbe828a4cf7baa450ebff5a297a315')
+sha512sums=('ddfd0aa8356a268c92bb4d5a4f984b3a07fcdcc2e68204289d6ac7e5c8e6b52d82175de0339372ee20669d995f83e387c15b0bfc71b9ae9d0cdbde93f43b88ec'
+            '11dd7a3241ddb8d969764b3ccea8ec83f42b28a20c790671364c4f628607d00d641fcf09092e49f901be56b68d666b9bceebd82bdfbe7e7a8406bd5a922b1f7f')
 
 build() {
   cd "$srcdir/drawio-$pkgver"/etc/build
