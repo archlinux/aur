@@ -1,7 +1,7 @@
 pkgbase = fm-bin
 	pkgdesc = A terminal based file manager
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/knipferrc/fm
 	arch = x86_64
 	license = MIT
