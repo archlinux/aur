@@ -4,13 +4,13 @@
 _pkgname=rtl88x2bu
 pkgname=${_pkgname}-cilynx-dkms-git
 pkgver=r105.e8ad266
-pkgrel=1
+pkgrel=2
 pkgdesc="rtl88x2bu driver updated for current kernels"
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/cilynx/${_pkgname}"
 license=("GPL2")
 depends=("dkms")
-makedepends=("git" "linux-headers" "bc")
+makedepends=("git" "bc")
 source=("git+${url}.git")
 sha256sums=("SKIP")
 
@@ -18,13 +18,6 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-  cd "${srcdir}/${_pkgname}"
-
-  # Build 88x2bu module
-  make
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = rtl88x2bu-cilynx-dkms-git
 	pkgdesc = rtl88x2bu driver updated for current kernels
 	pkgver = r105.e8ad266
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cilynx/rtl88x2bu
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = rtl88x2bu-cilynx-dkms-git
 	arch = aarch64
 	license = GPL2
 	makedepends = git
-	makedepends = linux-headers
 	makedepends = bc
 	depends = dkms
 	source = git+https://github.com/cilynx/rtl88x2bu.git
