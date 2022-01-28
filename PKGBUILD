@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libutf8proc-git'
-pkgver=1.3.1.2.r0.g81ce692
-pkgrel=2
+pkgver=2.4.0.1.r0.g0d22740
+pkgrel=1
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 url='http://git.netsurf-browser.org/libutf8proc.git/'
 license=('MIT')
@@ -27,11 +27,6 @@ prepare() {
 build() {
 	make -C libutf8proc PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
-}
-
-check() {
-	make -C libutf8proc PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared test
 }
 
 package() {
