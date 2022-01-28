@@ -2,8 +2,8 @@
 
 pkgname=bauh-staging
 pkgver=0.9.26.RC
-pkgrel=4
-_commit="f69ed7aa4adc873ca6a7c81ab5b8516a85abcf2a"
+pkgrel=5
+_commit="c718fe0a3679855dec058138d1e33638467201e1"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -42,7 +42,7 @@ makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('58dd4c6f7a420d6a41ad090f232ae205e9327ac27fc119011f9557279c4733af28787aa75e82974cab692ee140ed119efe6322b4c67b7cab9a1e92013d92dfd3')
+sha512sums=('0570813009ac83d2c392bcf072f00f4e77958e27841a37317e2dff33151a34fa76ccced2dd7937b66a3e7266e4e2884e77acf4a52c5a90050dbef55d71e492e4')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
