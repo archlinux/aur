@@ -1,0 +1,14 @@
+pkgbase = guile-redis
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://savannah.nongnu.org/projects/guile-redis
+	arch = any
+	license = GPL3
+	depends = guile>=2.0.9
+	options = !strip
+	source = https://download.savannah.gnu.org/releases/guile-redis/guile-redis-2.1.2.tar.gz
+	source = https://download.savannah.gnu.org/releases/guile-redis/guile-redis-2.1.2.tar.gz.sig
+	md5sums = c56f2b2b2ccd948ee6a65d1c2908103e
+	md5sums = SKIP
+
+pkgname = guile-redis
