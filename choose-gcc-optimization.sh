@@ -134,6 +134,7 @@ msg "Building this package for microarchitecture: $Microarchitecture$default"
 sleep 5
 
 sed -e 's|^CONFIG_GENERIC_CPU=y|# CONFIG_GENERIC_CPU is not set|g' -i .config
+sed -e 's|^CONFIG_GENERIC_CPU2=y|# CONFIG_GENERIC_CPU2 is not set|g' -i .config
 sed -e "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i .config
 
 echo
