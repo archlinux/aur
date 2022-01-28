@@ -1,7 +1,8 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+
 pkgname=python-debmutate
-_name=${pkgname#python-}
-pkgver=0.34
+pkgver=0.47
 pkgrel=1
 pkgdesc="Format-preserving manipulation of Debian control files in Python"
 arch=('any')
@@ -10,21 +11,22 @@ license=('GPL2')
 depends=('python-debian' 'python-merge3' 'python-tr')
 makedepends=('python-setuptools')
 optdepends=('python-semver' 'python-tomlkit')
-source=("https://salsa.debian.org/jelmer/debmutate/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('af0fdf739753b7943399d86851a7343b26d957a95f09fa0cbf15234826e69e72')
+checkdepends=('python-pytest')
+source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/debmutate-$pkgver.tar.gz")
+sha256sums=('23d5107a9b97e3782ff2e300348c492375d607e72e8a41ba64dc58e0038b4bf9')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "debmutate-$pkgver"
 	python setup.py build
 }
 
 check() {
-	cd "$_name-$pkgver"
+	cd "debmutate-$pkgver"
 	python setup.py test
 }
 
 package() {
-	cd "$_name-$pkgver"
 	export PYTHONHASHSEED=0
+	cd "debmutate-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
