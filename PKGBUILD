@@ -13,7 +13,7 @@ makedepends=(cmake llvm python)
 options=(docs)
 optdepends=()
 source=(https://download.qt.io/official_releases/qtcreator/${pkgver%.*}/$pkgver/qt-creator-opensource-src-$pkgver.tar.xz)
-sha256sums=('3d173c1a02ce55137a23f294e1a840d7648656e97826067eb29d9df653351bfa')
+sha256sums=('')
 
 build() {
   cmake -B build -S qt-creator-opensource-src-$pkgver \
