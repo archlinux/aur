@@ -6,20 +6,27 @@ pkgname=(
   'sqlboiler-psql'
   # TODO: add mysql split package
 )
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc="Generate a Go ORM tailored to your database schema"
 arch=('x86_64')
 url="https://github.com/volatiletech/sqlboiler"
 license=('BSD')
 depends=('glibc')
-makedepends=('go' 'git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8a90bd1ae5bc352cc1606f17bc92f05b5355173b7b5744da30edc55bd951c025f27d96d36683ffb76f69ed2fea77e0921ed591304319fb1f67786c2bdf353f81')
-b2sums=('f8c3f8664e330ff80eee79443056be7b7ed06c23dfa2f40612c21c5b0ebb9566664838aa432fb66e9662a93ccd83bcafd545a888eec9ca2b7172c7a21a63a4eb')
+makedepends=('git' 'go')
+options=('!lto')
+_commit='38970310e1fc63c8971ba965e756165a39229085'
+source=("$pkgbase::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgbase"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase"
 
   # create directory for build output
   mkdir build
@@ -29,14 +36,14 @@ prepare() {
 }
 
 build() {
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase"
 
   # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
 
-  for BINARY in . ./drivers/sqlboiler-psql; do
+  for BINARY in . ./drivers/sqlboiler-psql ./drivers/sqlboiler-sqlite3; do
     go build -v \
       -trimpath \
       -buildmode=pie \
@@ -49,13 +56,13 @@ build() {
 }
 
 package_sqlboiler() {
-  optdepends=(
-    'sqlboiler-psql: PostgreSQL driver'
-  )
-  cd "$pkgbase-$pkgver"
+  cd "$pkgbase"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" "build/$pkgname"
+  install -vDm755 \
+    -t "$pkgdir/usr/bin" \
+    "build/$pkgname" \
+    "build/$pkgname-sqlite3"
 
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
@@ -67,7 +74,8 @@ package_sqlboiler() {
 package_sqlboiler-psql() {
   pkgdesc='PostgreSQL driver for SQLBoiler'
   depends=('sqlboiler' 'postgresql-libs')
-  cd "$pkgbase-$pkgver"
+
+  cd "$pkgbase"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" "build/$pkgname"
@@ -75,3 +83,4 @@ package_sqlboiler-psql() {
   # license
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
+
