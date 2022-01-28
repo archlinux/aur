@@ -11,7 +11,7 @@ _microarchitecture=0
 ## Major kernel version
 _major=5.15
 ## Minor kernel version
-_minor=16
+_minor=17
 
 pkgbase=linux-multimedia-lts
 #pkgver=${_major}
@@ -39,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ba0a0a14e89f8212bf3effa3e3118da9939e445bab52a6544f9f98a272ff1794'
+sha256sums=('2787f5c0cc59984902fd97916dc604f39718c73817497c25f963141bfb70abde'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -71,7 +71,6 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-futex_waitv.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
@@ -108,12 +107,6 @@ prepare() {
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
   scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
 
-  ### Set tickrate to 1000HZ
-  msg2 "Setting tick rate to 1000HZ..."
-  scripts/config --disable CONFIG_HZ_300
-  scripts/config --enable CONFIG_HZ_1000
-  scripts/config --set-val CONFIG_HZ 1000
-
   ### Enable Fsync Support
   msg2 "Enable Fsync support..."
   scripts/config --enable CONFIG_FUTEX
@@ -139,6 +132,17 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
+
+   ### Set tickrate to 1000HZ
+  msg2 "Setting tick rate to 1000HZ..."
+  scripts/config --disable CONFIG_HZ_300
+  scripts/config --enable CONFIG_HZ_1000
+  scripts/config --set-val CONFIG_HZ 1000
+
+  ### Set default CPU frequency governor to performance
+  msg2 "Setting default CPU governor to performance"
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
   ### Disable Kernel Debugging
   msg2 "Disable Kernel Debugging For Smaller Builds"
