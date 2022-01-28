@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libparserutils-git'
-pkgver=0.2.3.r0.ga191c15
-pkgrel=2
+pkgver=0.2.4.r1.gd101b2b
+pkgrel=1
 pkgdesc='Library for building efficient parsers'
 url='http://www.netsurf-browser.org/projects/libparserutils/'
 license=('MIT')
@@ -27,11 +27,6 @@ prepare() {
 build() {
 	make -C libparserutils PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
-}
-
-check() {
-	make -C libparserutils PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared test
 }
 
 package() {

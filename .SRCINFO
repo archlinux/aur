@@ -1,7 +1,7 @@
 pkgbase = libparserutils-git
 	pkgdesc = Library for building efficient parsers
-	pkgver = 0.2.3.r0.ga191c15
-	pkgrel = 2
+	pkgver = 0.2.4.r1.gd101b2b
+	pkgrel = 1
 	url = http://www.netsurf-browser.org/projects/libparserutils/
 	arch = x86_64
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = libparserutils-git
 	sha256sums = SKIP
 
 pkgname = libparserutils-git
-
