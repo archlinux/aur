@@ -16,8 +16,8 @@ arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/Lukas1818/mstickereditor'
 depends=('gcc-libs' 'rlottie' 'libwebp')
 makedepends=('cargo' 'clang' 'lld')
-source=("https://github.com/Lukas1818/mstickereditor/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('ea28239b0ca570f4472044c0cd6fc38d8bf2d1bcc3aa77d083bdbb760ef1b815f1f9c026471f2fe2335e29abce134dca47911eb0705196b642e67076c1cde162')
+source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
+sha512sums=('8d827eb1e565baed5e2420e1867e93827ab726911ea482fefdd71c3ff82dcac3b39fab5ec13347697d5ba857ffb8178c80090b5135eaf9846a1a7291ce0a8d00')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
