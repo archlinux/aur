@@ -1,7 +1,7 @@
 pkgbase = randrctl
 	pkgdesc = Lightweight profile based screen manager for X
-	pkgver = 1.8.2
-	pkgrel = 2
+	pkgver = 1.9.0
+	pkgrel = 1
 	url = http://github.com/edio/randrctl
 	install = randrctl.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = randrctl
 	depends = xorg-xrandr
 	depends = python-yaml
 	optdepends = bash-completion
-	source = randrctl-1.8.2.tar.gz::https://github.com/edio/randrctl/archive/1.8.2.tar.gz
-	sha256sums = 1adee72abd6ec6efffad35fb1cf3f17a072ad6ea4b4f3ae3fa359af4bf92aabd
+	source = randrctl-1.9.0.tar.gz::https://github.com/edio/randrctl/archive/1.9.0.tar.gz
+	sha256sums = aa5d20dea6c3bef3c3e92cb14569e2e3f8e8c0a44a0467c0d31e1931c6729431
 
 pkgname = randrctl
