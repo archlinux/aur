@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libnsbmp-git'
-pkgver=0.1.3.r0.ga44819c
-pkgrel=2
+pkgver=0.1.6.r0.g3155a7e
+pkgrel=1
 pkgdesc='Decoding library for BMP and ICO image file formats'
 url='http://www.netsurf-browser.org/projects/libnsbmp/'
 license=('MIT')
@@ -28,11 +28,6 @@ build() {
 	cd libnsbmp
 	make PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
-}
-
-check() {
-	make -C libnsbmp PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared test
 }
 
 package() {
