@@ -3,7 +3,7 @@
 
 pkgname=kali-undercover
 pkgver=2021.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Kali Undercover Mode'
 arch=('any')
 url='https://gitlab.com/kalilinux/packages/kali-undercover/'
@@ -16,8 +16,8 @@ optdepends=('xfce4-whiskermenu-plugin: for menu on undercover mode'
             'psmisc: for clearing existing notificaion')
 source=(https://gitlab.com/kalilinux/packages/${pkgname}/-/archive/kali/${pkgver}/${pkgname}-kali-${pkgver}.tar.gz
 	'kali-undercover.patch')
-sha256sums=('906e7881da3be1756dcc77bcad2612eb53f2f5a17e1349c24fee060b7f522d14'
-	    'f652a97f81712cfc81ad9f92478e6b6a8470e9097387e4cf4c84dd0b6b4bbdf8')
+sha256sums=('81bc026de2f6c0d4597d0a8cbbeb398cd82ce9a235e085674f7328be21a08e2c'
+            'f652a97f81712cfc81ad9f92478e6b6a8470e9097387e4cf4c84dd0b6b4bbdf8')
 
 package() {
   cd ${pkgname}-kali-${pkgver}
