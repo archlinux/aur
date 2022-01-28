@@ -1,16 +1,17 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-cflib
-pkgver=0.1.17
+pkgver=0.1.17.1
 pkgrel=1
 pkgdesc='Python library to communicate with Crazyflie'
 arch=('x86_64')
 url='https://github.com/bitcraze/crazyflie-lib-python'
 license=('GPL-2.0')
-depends=('python' 'python-pyusb' 'python-opencv')
+depends=('python' 'python-pyusb' 'python-libusb-package' 'python-scipy'
+         'python-numpy' 'python-opencv')
 makedepends=('python' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitcraze/crazyflie-lib-python/archive/$pkgver.tar.gz")
-sha256sums=('5bcd3e1ffefeb293dcdcde46674ffddab1bfa11fd9837bdbfd2632f346634b9b')
+sha256sums=('1fcae5bfb90395a2e3ac9e33e709cb2f5724a9f91d23646f8d22bb3806f880a2')
 
 _pkgname=crazyflie-lib-python
 
