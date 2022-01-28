@@ -6,12 +6,12 @@ set -eu
 CURRENT=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
 case $1 in
-    dark)
+    dark | night)
       for f in "$HOME/.local/share/dark-mode.d/"*; do
         "$f" &
       done
     ;;
-    light)
+    light | day | daytime)
       for f in "$HOME/.local/share/light-mode.d/"*; do
         "$f" &
       done
