@@ -1,0 +1,7 @@
+/var/log/pureftpd.log
+{
+        daily
+        missingok
+        notifempty
+        compress
+}
