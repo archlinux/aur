@@ -1,11 +1,10 @@
 # Maintainer: Taboon Egon <te451 -_AT_- netcourrier -_DOT_- com>
-# Contributor: relrel <relrelbachar@gmail.com>
 
 pkgname=scratch3-bin
 _pkgname=scratch3
 conflicts=("scratch3")
 pkgver=3.27.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
 url="https://scratch.mit.edu"
