@@ -3,7 +3,7 @@
 
 pkgname=vaping
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='python-smokeping alternative'
 arch=('any')
 url="https://github.com/20c/vaping"
@@ -13,6 +13,8 @@ depends=(
 	'python-daemon'
 	'python-whichcraft'
 	'python-munge'
+	'python-tomlkit'
+	'python-yaml'
 	'python-confu'
 	'python-pluginmgr')
 makedepends=('python-poetry' 'python-build' 'python-install')
