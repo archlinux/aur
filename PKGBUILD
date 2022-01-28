@@ -1,14 +1,13 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libwapcaplet-git'
-pkgver=0.3.0.r0.g894913a
-pkgrel=2
+pkgver=0.4.3.r0.gb5e42b1
+pkgrel=1
 pkgdesc='String internment library with rapid string comparison'
 url='http://www.netsurf-browser.org/projects/libwapcaplet/'
 license=('MIT')
 
 makedepends=('git' 'netsurf-buildsystem-git')
-checkdepends=('check')
 provides=('libwapcaplet')
 conflicts=('libwapcaplet')
 
@@ -28,11 +27,6 @@ prepare() {
 build() {
 	make -C libwapcaplet PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
-}
-
-check() {
-	make -C libwapcaplet PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared test
 }
 
 package() {
