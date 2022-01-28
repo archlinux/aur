@@ -3,8 +3,8 @@
 # Contributor: Adhityaa Chandrasekar <c.adhityaa@gmail.com>
 
 pkgname=python-unidiff
-pkgver=0.7.0
-pkgrel=3
+pkgver=0.7.2
+pkgrel=1
 pkgdesc='Simple Python library to parse and interact with unified diff data'
 arch=('any')
 url="https://github.com/matiasb/python-unidiff"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/u/unidiff/unidiff-$pkgver.tar.gz")
-sha256sums=('91bb13b4969514a400679d9ae5e29a6ffad85346087677f8b5e2e036af817447')
+sha256sums=('15297652e97870f55136bd3c07c697eaed813b24ca8cec7ae08398b026ff03cc')
 
 build() {
   cd unidiff-$pkgver
