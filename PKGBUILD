@@ -1,20 +1,27 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=gokart
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Static analysis tool for Go"
+pkgdesc="Static analysis tool for securing Go code"
 arch=('x86_64')
 url="https://github.com/praetorian-inc/gokart"
 license=('Apache')
 depends=('glibc')
-makedepends=('go' 'git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4c6df68a52e27fee902d4111eb02ea1c8868e45a6bd8f96e03f1f962afb017254d6ee77b8df241bf76c0664a8dd0531a1b43f4995f5a721ca249e455682edfb9')
-b2sums=('d0d9df9d553c2ccaebb805eda9dc815341f9af5ad2e19684f3c1985ef9d97c753ddf33ffe579038d440c960fb75a304ef1f38b8e24f2028b63ade9a37da5fe15')
+makedepends=('git' 'go')
+options=('!lto')
+_commit='2a2120f0fb5b9dc2654bdad55a316783088c8bb1'
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   # create directory for build output
   mkdir build
@@ -24,7 +31,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -39,12 +46,12 @@ build() {
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   go test -v ./...
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" "build/$pkgname"
