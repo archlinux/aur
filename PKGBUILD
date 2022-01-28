@@ -3,7 +3,7 @@
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgver=2.13.04
-pkgrel=2
+pkgrel=3
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
@@ -25,6 +25,11 @@ backup=()
 options=()
 install=
 changelog=
+source=(
+  '69-conbee.rules'
+  'deconz.sysusers'
+  'deconz.tmpfiles'
+)
 source_x86_64=($pkgname-$pkgver-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/$pkgname-$pkgver-qt5.deb)
 source_armv6h=($pkgname-$pkgver-armv6h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
 source_armv7h=($pkgname-$pkgver-armv7h.deb::https://deconz.dresden-elektronik.de/raspbian/beta/$pkgname-$pkgver-qt5.deb)
@@ -33,11 +38,14 @@ sha256sums_x86_64=('2c2ff7d9c9c19d29779f80713a47c95fdc45113f1b12c01706cb447de9a8
 sha256sums_armv6h=('745f2dec5d175d5465f1e7b55109d0e1750ae4e050b5275f33ae8a9909d15f8c')
 sha256sums_armv7h=('745f2dec5d175d5465f1e7b55109d0e1750ae4e050b5275f33ae8a9909d15f8c')
 sha256sums_aarch64=('51e65dbf52ae49902ce76fcaa4483c913118b9c9d7220ed48acf9711fd748821')
+sha256sums=(
+  '568f0ff41fad18d6a26ef96a90181e6fac6b1dd6abd69d202de849d1caf76354'
+  '4f4554238a3ee2ecd7af3510a3e4ff5a62259082f9b1672904da29c933c5e065'
+  '5cb6ea540da8cfb4343b97792886952ee244fa272b3c00e6e5c7dcc1aa10eb1c'
+)
 noextract=()
 
 package() {
-  cd "${srcdir}"
-
   tar -xJf data.tar.xz -C "${pkgdir}"
 
   chown -R root:root "${pkgdir}"
@@ -49,7 +57,7 @@ package() {
 
   # Run services with user deconz
   sed -e "s/User=1000/User=deconz/" -i ${pkgdir}/usr/lib/systemd/system/deconz.service ${pkgdir}/usr/lib/systemd/system/deconz-gui.service
-  install -vDm 644 "../69-conbee.rules" "${pkgdir}/etc/udev/rules.d/69-conbee.rules"
-  install -vDm 644 "../${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -vDm 644 "../${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -vDm 644 "69-conbee.rules" "${pkgdir}/etc/udev/rules.d/69-conbee.rules"
+  install -vDm 644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+  install -vDm 644 "${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
