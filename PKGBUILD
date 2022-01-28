@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.2.4
-_commit=771261f6b7af5f7618d52f7607a76a1010e64c42
+pkgver=14.2.5
+_commit=f6798c5e994f9e1d7f88812ef6e5877e85b9c0eb
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
 # shellcheck disable=SC2034
@@ -41,6 +41,8 @@ if [[ ${_use_suffix} == 0 ]]; then
   # shellcheck disable=SC2034
   provides=("electron${_major_ver}")
 fi
+# shellcheck disable=SC2034
+options=('!lto') # Electron adds its own flags for ThinLTO
 # shellcheck disable=SC2034
 source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
@@ -226,6 +228,11 @@ build() {
 
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
+  # This appears to cause random segfaults when combined with ThinLTO
+  # https://bugs.archlinux.org/task/73518
+  CFLAGS=${CFLAGS/-fstack-clash-protection}
+  CXXFLAGS=${CXXFLAGS/-fstack-clash-protection}
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
