@@ -1,6 +1,6 @@
 pkgbase = nixnote2-git
 	pkgdesc = Evernote clone (formerly Nevernote) - git checkout
-	pkgver = 2.1.6.r1.gaa5cfeb8
+	pkgver = 2.1.6.r4.g460aec81
 	pkgrel = 1
 	url = https://github.com/robert7/nixnote2
 	arch = x86_64
@@ -26,4 +26,3 @@ pkgbase = nixnote2-git
 	sha256sums = 8cb8e5c3d3d320ffb0991d34a5c155b631dd83b9a94d530815da4f92c5ebd5ff
 
 pkgname = nixnote2-git
-

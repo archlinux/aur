@@ -3,7 +3,7 @@
 
 _pkgname=nixnote2
 pkgname=${_pkgname}-git
-pkgver=2.1.6.r1.gaa5cfeb8
+pkgver=2.1.6.r4.g460aec81
 pkgrel=1
 pkgdesc='Evernote clone (formerly Nevernote) - git checkout'
 url="https://github.com/robert7/$_pkgname"
@@ -30,7 +30,11 @@ build() {
   fi
   cd "$srcdir/$_pkgname"
   qmake PREFIX=/usr
-  make -j $(( 1 + ($(nproc)-1) / 2 ))  # Use ceil(#processors / 2) jobs
+
+  local threads  # make quickly but `nice`ly -- use ceil(#processors / 3) jobs
+  threads=$(( 1 + ($(nproc)-1) / 3 ))
+  echo "Making with $threads threads."
+  nice -n 10 make -j "$threads"
 }
 
 package() {
