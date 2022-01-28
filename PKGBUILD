@@ -1,7 +1,7 @@
 # Maintainer: Sam Peters <dev at libertycloud dot de>
 pkgname=fm-bin
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal based file manager"
 arch=('x86_64')
 url="https://github.com/knipferrc/${pkgname%-bin}"
