@@ -1,5 +1,5 @@
 # Maintainer: Libor Wagner <liborw@archlinux.org>
-pkgname=trice
+pkgname=trice-git
 pkgver=v0.18.4.r703.g8b91772b
 pkgrel=1
 pkgdesc='super fast and tiny embedded device C printf-like trace code (works also inside inerrupts) and real-time PC logging (trace ID visualization)'
