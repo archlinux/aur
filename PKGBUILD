@@ -2,7 +2,7 @@
 # Contributor: Charlie Wolf <charlie at wolf dot is>
 
 pkgname=zurl
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="HTTP and WebSocket client worker with ZeroMQ interface"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=("curl" "qt5-base" "zeromq")
 makedepends=("qt5-base" "zeromq")
 source=("https://github.com/fanout/zurl/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('099c6056d24c7b72722f0ca281c2308ea52caddc8a7ea1357290ba450a6fed338ac8ca16d4c38775064a1fe4861a7b3cad9a09c38abe1e20674fc4fad960e77b')
+sha512sums=('fec50aa2c2ec61be10770d2806960a1286b837631a44d0a5e0a11cb1d5eb0508cb83167d697fdb6a097d2e3069b51c7abf27a535bb71d8053e95dc1c2d49a16a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
