@@ -1,6 +1,6 @@
 pkgbase = netsurf-git
 	pkgdesc = Lightweight and fast web browser
-	pkgver = 3.6.r434.g79cde2cef
+	pkgver = 3.10.r158.gd92b26962
 	pkgrel = 1
 	url = http://www.netsurf-browser.org/
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = netsurf-git
 	makedepends = netsurf-buildsystem-git
 	makedepends = nsgenbind-git
 	makedepends = perl-html-parser
+	makedepends = setconf
 	depends = curl
 	depends = desktop-file-utils
 	depends = duktape
@@ -25,13 +26,9 @@ pkgbase = netsurf-git
 	depends = libnsgif-git
 	depends = libnsutils-git
 	depends = libutf8proc-git
-	optdepends = gstreamer0.10: In-browser video support
 	provides = netsurf
 	conflicts = netsurf
 	source = git://git.netsurf-browser.org/netsurf.git
-	source = Makefile.config
 	md5sums = SKIP
-	md5sums = 5a7d43ded6a37a02f8079c5ea3c49851
 
 pkgname = netsurf-git
-
