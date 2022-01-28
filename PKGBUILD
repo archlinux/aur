@@ -5,33 +5,35 @@
 # --
 # shellcheck disable=SC2034,SC2164
 
-## The following variables can be customized at build time. Use env or export to change at your wish
+## The following variables can be customized at build time
 ##
-##    Eg: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
-##    Or: makepkg -sc -- _microarchitecture=98 use_numa=n use_tracers=n
+##  Usage:  env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
+##     or:  makepkg -sc -- _microarchitecture=98 use_numa=n use_tracers=n
+##     or:  export use_numa=n use_tracers=n; makepkg -sc
 
 ##
 ## Xanmod-ROG options:
 ##
-## 'amd_pstate' - Setting this variable to 'n' will disable amd-pstate
-##                unset/default enables the driver
+## 'amd_pstate' - Setting this variable to 'n' will disable the amd-pstate driver
+##
 : "${amd_pstate:=y}"
 
-## 'no_makeflags_check' - If /etc/makepkg.conf MAKEFLAGS is null or unset we'll throw a big warning
-##                        and pause long enough for the user to cancel their build.
-##                        Set "no_makeflags_check" to anything to skip this.
-: "${makeflags_check:=y}"
+## '_O3' -  Enable compiler -O3 optimizations, set _O3 to anything to enable
+##
+_O3="${_O3:+y}"
 
-## '_O3' -  Enable -O3 optimization - this isn't generally worth much, especially in the face of
-##          -march=native (or -march=x86-64-v3) and clang ThinLTO; set _O3 to anything to enable
-[[ -v _O3 ]] && _O3='y'
+## 'makeflags_check' - If MAKEFLAGS in /etc/makepkg.conf is null or unset we'll throw a big
+##                     warning and pause long enough for the user to cancel their build
+##                     Set "makeflags_check" to n to skip this
+##
+: "${makeflags_check:=y}"
 
 ##
 ## Xanmod options:
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
 ## Valid numbers between: 0 to 99
-## Default is: 0 => generic
+## Default is: 93 => x86-64-v3
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 : "${_microarchitecture:=93}"
 
@@ -47,9 +49,9 @@
 ##                                y to enable  (stock default)
 : "${use_tracers:=y}"
 
-## Choose between GCC and CLANG config (default is GCC)
+## Choose between GCC or CLANG config (default is GCC)
 case "${_compiler,,}" in
-  "clang" | "gcc") _compiler=${_compiler,,} ;; # tolower, simplifes later checks
+  "clang" | "gcc") _compiler=${_compiler,,} ;;
                 *) _compiler=gcc            ;; # default to GCC
 esac
 
@@ -71,13 +73,13 @@ esac
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-### IMPORTANT: Do no edit below this line unless you know what you're doing
+### IMPORTANT: Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
 xanmod=5.16.3-xanmod1
 pkgver=${xanmod//-/.}
 #pkgver=5.16.3rc2.prexan0
-#  NOTE: version sort is important here, pick something that sorts 'before' .xanmodY to avoid downgrade warnings
+#  NOTE: ^^ for custom pkgvers pick something that version sorts 'before' next .xanmodY to avoid downgrade warnings
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -93,13 +95,12 @@ if [ "$_compiler" = "clang" ]; then
   _LLVM=1
 fi
 options=('!strip' '!ccache')
-_major=${xanmod%\.*\-*}           # 5.15
-_branch=${xanmod%%\.*\-*}.x       # 5.x
+_major=${xanmod%\.*\-*}           # eg: 5.15
+_branch=${xanmod%%\.*\-*}.x       # eg: 5.x
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${xanmod}/patch-${xanmod}.xz"
         "choose-gcc-optimization.sh"
-        #"sphinx-workaround.patch"
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
@@ -137,8 +138,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip.patch"
         "Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chip.patch"
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch"
-
-        # WARNING: this patch could be buggy, recommended to *only* build mt76 as a module; see the mailing list
+        # XXX: this patch could be buggy, recommended to only build mt76 as a module; see the mailing list
         "mt76-mt7921e-fix-possible-probe-failure-after-reboot.patch"
 
         # squashed s0ix enablement
@@ -230,6 +230,7 @@ prepare() {
                    --enable LTO_CLANG_THIN
   fi
 
+  # enable O3 optimizations
   if [ "$_O3" = "y" ]; then
     msg2 "Enabling -O3 optimizations ..."
     scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE \
@@ -258,13 +259,13 @@ prepare() {
     scripts/config --disable CONFIG_NUMA
   fi
 
-  # Compress modules (Arch distro default)
+  # Compress modules
   if [ "$_compress_modules" = "y" ]; then
     scripts/config --disable CONFIG_MODULE_COMPRESS_NONE \
                    --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
 
-  # Toggle AMD pstate if requested
+  # Disable AMD pstate if requested
   if [ "$amd_pstate" = "n" ]; then
     msg2 "Disabling amd-pstate driver..."
     scripts/config --disable CONFIG_X86_AMD_PSTATE
@@ -272,7 +273,7 @@ prepare() {
     scripts/config --enable CONFIG_X86_AMD_PSTATE
   fi
 
-  # Let user choose microarchitecture optimization target;
+  # Select microarchitecture optimization target
   sh "${srcdir}/choose-gcc-optimization.sh" $_microarchitecture
 
   # Apply package config customizations
@@ -322,7 +323,7 @@ prepare() {
 
   [[ -z "$_makenconfig" ]] || make ${_LLVM:+LLVM=$_LLVM LLVM_IAS=$_LLVM} nconfig
 
-  # save configuration for later reuse or inspection
+  # save build configuration for reuse or inspection
   cat .config > "${startdir}/config.last"
 }
 
@@ -504,7 +505,7 @@ YEET
   fi
   plainerr ""
   plainerr "Edit your makepkg.conf and set appropriate MAKEFLAGS for your system to remove this warning"
-  plainerr "or run makepkg with 'env no_makeflags_check=y makepkg ...'"
+  plainerr "or run makepkg with 'env makeflags_check=n makepkg ...'"
   plainerr ""
   printf -- "${ALL_OFF}${BOLD} > ${YELLOW}Pressing CTRL-C now and fixing this before continuing is a very good idea ${ALL_OFF}${BOLD}<\n" >&2
   plainerr ""
