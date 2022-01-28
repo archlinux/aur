@@ -1,7 +1,7 @@
 # Maintainer: Hugo Hörnquist <hugo@lysator.liu.se>
 
 pkgname=guile-gumbo
-pkgver=0.10.1_0.3
+pkgver=0.10.1_0.4
 pkgrel=1
 pkgdesc='Guile bindings for the Gumbo HTML5 parser'
 arch=(any)
