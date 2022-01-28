@@ -1,16 +1,18 @@
-# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 # Maintainer: Kuan-Yen Chou <kuanyenchou@gmail.com>
+# Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
-pkgname=leagueoflegends-git
-pkgver=0.12.2.r0.g73913ed
+pkgbase=leagueoflegends-git
+pkgname=(leagueoflegends-git leagueoflegends-ge-git)
+_srcname=leagueoflegends
+pkgver=0.12.2.r5.g2c48af8
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
 url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
-depends=('wine-ge-lol' 'winetricks-git' 'bash' 'curl' 'openssl' 'samba'
-         'lib32-gnutls' 'lib32-libldap' 'lib32-openal' 'lib32-libpulse'
-         'lib32-alsa-lib' 'lib32-unixodbc' 'lib32-vkd3d' 'vulkan-icd-loader'
+depends=('winetricks-git' 'bash' 'curl' 'openssl' 'samba' 'lib32-gnutls'
+         'lib32-libldap' 'lib32-openal' 'lib32-libpulse' 'lib32-alsa-lib'
+         'lib32-unixodbc' 'lib32-vkd3d' 'vulkan-icd-loader'
          'lib32-vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver')
 makedepends=()
 optdepends=("lib32-amdvlk: AMD Vulkan driver"
@@ -20,11 +22,11 @@ optdepends=("lib32-amdvlk: AMD Vulkan driver"
             "zenity: Loading screen indication")
 provides=('leagueoflegends')
 conflicts=('leagueoflegends')
-source=("$pkgname"::'git+https://github.com/kyechou/leagueoflegends')
+source=("$_srcname"::'git+https://github.com/kyechou/leagueoflegends')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_srcname"
     if git describe --long --tags >/dev/null 2>&1; then
         git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
     else
@@ -32,7 +34,20 @@ pkgver() {
     fi
 }
 
-package() {
-    cd "$srcdir/$pkgname"
+package_leagueoflegends-git() {
+    depends+=('wine-lol')
+    conflicts+=('leagueoflegends-ge-git')
+    replaces+=('leagueoflegends-ge-git')
+
+    cd "$srcdir/$_srcname"
     make DESTDIR="$pkgdir" install
+}
+
+package_leagueoflegends-ge-git() {
+    depends+=('wine-ge-lol')
+    conflicts+=('leagueoflegends-git')
+    replaces+=('leagueoflegends-git')
+
+    cd "$srcdir/$_srcname"
+    make DESTDIR="$pkgdir" install-ge
 }
