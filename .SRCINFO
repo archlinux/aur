@@ -1,0 +1,16 @@
+pkgbase = python-libusb-package
+	pkgdesc = Packaged libusb shared libraries for Python.
+	pkgver = 1.0.24.2
+	pkgrel = 1
+	url = https://github.com/pyocd/libusb-package
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python
+	makedepends = python-setuptools-scm
+	makedepends = libusb
+	depends = python
+	depends = libusb
+	source = python-libusb-package-1.0.24.2::https://github.com/pyocd/libusb-package/archive/v1.0.24.2.tar.gz
+	sha256sums = 3708fbe5ea7a9c71db604ef5d725a4ea0e682ece23ea14b86ebeb2ad732519e4
+
+pkgname = python-libusb-package
