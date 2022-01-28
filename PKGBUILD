@@ -47,17 +47,17 @@ build() {
     -DLauncher_APP_BINARY_NAME="${pkgname}" \
     -DLauncher_SHARE_DEST_DIR="share/${pkgname}" \
     ..
-  make
+  cmake --build .
 }
 
 check() {
   cd "${srcdir}/PolyMC/build"
-  make test
+  ctest .
 }
 
 package() {
   cd "${srcdir}/PolyMC/build"
-  make install DESTDIR="${pkgdir}"
+  cmake --install . --prefix "${pkgdir}/usr"
   install -D "${srcdir}/PolyMC/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
   install -D "${srcdir}/PolyMC/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
 }
