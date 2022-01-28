@@ -19,6 +19,7 @@ conflicts=(element-desktop{,-git} element-web{,-git})
 _giturl="git+https://github.com/vector-im"
 source=("element-web::${_giturl}/element-web.git"
         "element-desktop::${_giturl}/element-desktop.git"
+        custom-emoji.json
         autolaunch.patch
         io.element.Element.desktop
         greentext.patch
@@ -26,6 +27,7 @@ source=("element-web::${_giturl}/element-web.git"
         element-web.sh
         element-desktop.sh)
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
@@ -52,6 +54,18 @@ prepare() {
 
   cd -- "$srcdir/element-web"
   yarn install --no-fund
+
+  # Custom reactions by @q:glowers.club
+  # Using python here to avoid depending on jq
+  grep -Fq cringe "./node_modules/emojibase-data/en/compact.json" ||
+  python -c '
+import json
+emoji_file = "./node_modules/emojibase-data/en/compact.json"
+additional_emoji = "../custom-emoji.json"
+with open(emoji_file) as ef, open(additional_emoji) as ae:
+    combined = json.load(ae) + json.load(ef)
+with open(emoji_file, "w") as ef:
+    json.dump(combined, ef, ensure_ascii=False)'
 
   # Adding custom emoji picker CSS...
   cd -- './node_modules/matrix-react-sdk/res/css/views/emojipicker/' &&
