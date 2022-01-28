@@ -1,6 +1,6 @@
 pkgbase = python3-sensors-git
 	pkgdesc = Python bindings to libsensors
-	pkgver = r49.ef46fc8
+	pkgver = r54.f36489e
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/PySensors/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python3-sensors-git
 	makedepends = git
 	depends = python3
 	depends = lm_sensors
-	source = git+https://github.com/bastienleonard/pysensors.git#commit=ef46fc8eb181ecb8ad09b3d80bc002d23d9e26b3
+	source = git+https://github.com/bastienleonard/pysensors.git
 	sha256sums = SKIP
 
 pkgname = python3-sensors-git
-
