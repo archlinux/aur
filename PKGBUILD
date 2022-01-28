@@ -1,5 +1,5 @@
 pkgname=mingw-w64-lua
-pkgver=5.4.3
+pkgver=5.4.4
 pkgrel=1
 pkgdesc="A powerful light-weight programming language designed for extending applications. (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-gcc')
 license=('MIT')
 source=("$url/ftp/lua-$pkgver.tar.gz")
 options=(!strip !buildflags staticlibs)
-sha256sums=('f8612276169e3bfcbcfb8f226195bfc6e466fe13042f1076cbde92b7ec96bbfb')
+sha256sums=('164c7849653b80ae67bec4b7473b884bf5cc8d2dca05653475ec2ed27b9ebf61')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 

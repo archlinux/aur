@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-lua
 	pkgdesc = A powerful light-weight programming language designed for extending applications. (mingw-w64)
-	pkgver = 5.4.3
+	pkgver = 5.4.4
 	pkgrel = 1
 	url = http://www.lua.org/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = mingw-w64-lua
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://www.lua.org//ftp/lua-5.4.3.tar.gz
-	sha256sums = f8612276169e3bfcbcfb8f226195bfc6e466fe13042f1076cbde92b7ec96bbfb
+	source = http://www.lua.org//ftp/lua-5.4.4.tar.gz
+	sha256sums = 164c7849653b80ae67bec4b7473b884bf5cc8d2dca05653475ec2ed27b9ebf61
 
 pkgname = mingw-w64-lua
-
