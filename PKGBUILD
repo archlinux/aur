@@ -2,7 +2,7 @@
 
 pkgname=jdtls
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse Java language server"
 arch=(any)
 url="https://github.com/eclipse/eclipse.jdt.ls"
@@ -12,7 +12,7 @@ makedepends=()
 source=("https://download.eclipse.org/jdtls/milestones/1.8.0/jdt-language-server-1.8.0-202201261434.tar.gz"
         "launcher.sh")
 sha256sums=('68378599cca158f7aab4d54782efcda9258ef98389ba7757c68d59284ed69672'
-            '78c7dc2936dedd27011a787438e85888c3846a16115ae02b281eb672456d547c')
+            '9645ba75ced59a4b903ad95d749fe0796e778df3d56e00c6b7b57775dc91ee02')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/java/jdtls"
