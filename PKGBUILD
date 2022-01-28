@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=janet-lang-bin
-pkgver=1.19.2
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='A dynamic Lisp dialect and bytecode vm'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('janet-lang' 'janet-lang-git')
 
 source=("https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgname/\-lang-bin/}-v${pkgver}-linux-x64.tar.gz"
 	"https://github.com/janet-lang/janet/releases/download/v${pkgver}/${pkgname/\-lang-bin/}.h")
-sha256sums=('7f1fb07a89f0f23e2be3b8a6f5c8db40389123cfdffae99fc0ba78b98a6ffbf1'
+sha256sums=('5e2c271b9c3180d77d996cf84c3cd774b4a4e60864fdf27268a74141dcdc6c5a'
             '1bcf23d0426d7fbe999f7f11bd3614e8407adaf2b9dbcf500a87ec8b5de461c2')
 
 package() {
