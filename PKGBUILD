@@ -9,7 +9,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8e97f4cda0e90774a41222390cbccf61cae73b57dae8d72004c7038f76e164a4')
+sha256sums_x86_64=('9ae5cb598beefe19b3d48a4a35881c0fc3fece884a0b7d3f4fd663b7161f8ac3')
 
 package() {
     install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
