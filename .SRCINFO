@@ -7,12 +7,14 @@ pkgbase = qxkb-qt5
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
+	makedepends = qt5-tools
 	depends = libxkbfile
 	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-x11extras
 	provides = qxkb
 	conflicts = qxkb
 	source = https://github.com/thegala/qxkb/archive/qxkb-0.5.2.tar.gz
 	md5sums = c095e2ecc2ea3f737de7eeffdb9c29e8
 
 pkgname = qxkb-qt5
-
