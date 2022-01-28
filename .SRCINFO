@@ -1,11 +1,16 @@
 pkgbase = python-zigpy
 	pkgdesc = Library implementation of the Zigbee Home Automation standard
-	pkgver = 0.41.0
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = https://github.com/zigpy/zigpy
 	arch = any
 	license = GPL3
+	checkdepends = python-asynctest
+	checkdepends = python-coveralls
 	checkdepends = python-pytest
+	checkdepends = python-pytest-aiohttp
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-timeout
 	makedepends = git
 	depends = python
 	depends = python-aiohttp
@@ -13,7 +18,7 @@ pkgbase = python-zigpy
 	depends = python-crccheck
 	depends = python-pycryptodome
 	depends = python-voluptuous
-	source = python-zigpy::git+https://github.com/zigpy/zigpy#tag=0.41.0
+	source = python-zigpy::git+https://github.com/zigpy/zigpy#tag=0.43.0
 	sha512sums = SKIP
 
 pkgname = python-zigpy
