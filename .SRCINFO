@@ -1,7 +1,7 @@
 pkgbase = fragments-git
 	pkgdesc = BitTorrent client for GNOME
-	pkgver = 1.9.1.r53.g38f6a1e
-	pkgrel = 1
+	pkgver = 1.9.1.r54.gae38fee
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/Fragments
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = fragments-git
 	makedepends = rust
 	depends = gtk4
 	depends = libadwaita
+	depends = transmission-cli
 	provides = fragments
 	conflicts = fragments
 	source = git+https://gitlab.gnome.org/World/Fragments.git

@@ -3,13 +3,13 @@
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=fragments-git
-pkgver=1.9.1.r53.g38f6a1e
-pkgrel=1
+pkgver=1.9.1.r54.gae38fee
+pkgrel=2
 pkgdesc="BitTorrent client for GNOME"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://gitlab.gnome.org/World/Fragments"
 license=(GPL3)
-depends=(gtk4 libadwaita)
+depends=(gtk4 libadwaita transmission-cli)
 makedepends=(git meson rust)
 provides=(fragments)
 conflicts=(fragments)
