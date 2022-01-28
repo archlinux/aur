@@ -1,0 +1,15 @@
+pkgbase = x11-emoji-picker
+	pkgdesc = Linux XServer emoji picker written in C++.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/GaZaTu/x11-emoji-picker
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt5-base
+	depends = icu
+	depends = xdotool
+	source = x11-emoji-picker-0.8.2.tar.gz::https://github.com/GaZaTu/x11-emoji-picker/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 6a1b9eddd3bee62b3133c4fcccedd02329707019e7dba217bf35782127ad18ba
+
+pkgname = x11-emoji-picker
