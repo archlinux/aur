@@ -1,6 +1,6 @@
 # Maintainer: Sam Peters <dev at libertycloud dot de>
 pkgname=fm-bin
-pkgver=0.12.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A terminal based file manager"
 arch=('x86_64')
