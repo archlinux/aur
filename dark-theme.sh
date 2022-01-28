@@ -30,6 +30,9 @@ case $1 in
         exec $0 light
       fi
     ;;
+    none)
+      # ignore this command
+    ;;
     *)
       echo "Command $1 not valid."
       exit 1
