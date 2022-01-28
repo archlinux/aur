@@ -1,7 +1,7 @@
 pkgbase = detwinner
 	pkgdesc = Duplicate file finder for the Linux desktop
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://neatdecisions.com/products/detwinner-linux/
 	arch = i686
 	arch = x86_64
