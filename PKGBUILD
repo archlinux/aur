@@ -1,16 +1,16 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 # Contributor: Alexander Rodseth <rodseth@gmail.com>
 # Contributor: Torjus Haakestad <torjuspuz@gmail.com>
-
 pkgname='libhubbub-git'
-pkgver=0.3.3.r0.g73071c0
-pkgrel=2
+pkgver=0.3.7.r19.g873ed6e
+pkgrel=1
 pkgdesc='HTML5 compliant parsing library'
 url='http://www.netsurf-browser.org/projects/hubbub/'
 license=('MIT')
 
 depends=('libparserutils-git' 'libxslt' 'wget')
-makedepends=('git' 'netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git' 'gperf')
 provides=('libhubbub')
 conflicts=('libhubbub')
 
