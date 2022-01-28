@@ -2,13 +2,13 @@
 
 _name=pdm-pep517
 pkgname=python-pdm-pep517
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=4
 pkgdesc="A PEP 517 backend for PDM that supports PEP 621 metadata"
 arch=(any)
 url="https://github.com/pdm-project/pdm-pep517"
 license=(MIT)
-depends=(python-cerberus python-packaging python-pyparsing python-toml)
+depends=(python-cerberus python-packaging python-toml)
 makedepends=(python-build python-install)
 checkdepends=(git python-pytest python-setuptools)
 optdepends=(
@@ -16,17 +16,17 @@ optdepends=(
 )
 source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-  "${pkgname}-0.10.1-devendor.patch"
+  "${pkgname}-0.10.2-devendor.patch"
 )
-sha512sums=('a02d3d3262ec62dbe44fdd66b6f08c911f1760814da275ffb9f6a6356371738cff85d3917525752e2d174ec4f00ba235ecc5c27f41af8230b2522ce9b033c31f'
-            'ac065d7ce661dec7c1f0e506539a3829f80183742178704fe71a476d72b9f48ff81083fb9c83fbf044063686bf321abdc3de830ff1d320f30c14c04cb3da7894')
-b2sums=('954338341652557b2baa1415d9274c8c7c204b3a65211b40316ec09d7b824a63038f30e620bca2d8bb38d70e68b7e4c9bd7ce06432e987923665f3a88de373a9'
-        '1b6f12f0da26ad96afd40a9cad000bba2cf191ff801e81868db861e1d3723f02644f97b4289ca89d605083cb1663590a62fe93b5e789dcd8472876b0caa14db8')
+sha512sums=('e5fc0b0c61a0bdf07fc276222e121c5bdbc1288b01e43d133bd2ed7c0d5402322de748dd7202ecb9a6795058abfcc6a7b959a9f7c99e3010b6e3c21c3dbc7e6e'
+            '25cea84fbb999190ddc2ca99d3550fb18f589aca13c75be39579f757ddbc7e9458a9707cb8164af9363d4ecccf4c5fe72d6b60ca53a94c061b222664a184fa11')
+b2sums=('e539408432132a28b6ed9dfe89ed9599a6cf315626090298b7ad5e13f0d94b3f81b7e37eddcb9187748ae8cf34024b9281ef9976a1a44dbee19980d98bcc987a'
+        '43d088928cb4bb4c1eb5cc780955fb41420912fbcaa302bba1935606f4a3f65720ce4ad8583be02e4e08b494fc857779e4790f0ed6ce82cdead85ab65de55bc5')
 
 prepare() {
   cd "$_name-$pkgver"
-  # remove vendoring of python-cerberus, python-packaging, python-pyparsing and python-toml
-  patch -Np1 -i ../"${pkgname}-0.10.1-devendor.patch"
+  # remove vendoring of python-cerberus, python-packaging and python-toml
+  patch -Np1 -i ../"${pkgname}-0.10.2-devendor.patch"
   rm -frv pdm/pep517/_vendor
 }
 
