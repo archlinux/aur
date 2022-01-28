@@ -10,7 +10,7 @@ url="https://github.com/minusium/optimus-manager"
 license=('MIT')
 conflicts=("optimus-manager" "optimus-manager-git")
 provides=("optimus-manager=$pkgver")
-depends=('python3' 'python-setuptools' 'python-dbus' 'mesa-demos' 'xorg-xrandr'
+depends=('python3' 'python-setuptools' 'python-dbus' 'glxinfo' 'xorg-xrandr'
          'python-py3nvml' 'python-psutil' 'openrc' 'elogind')
 optdepends=('bbswitch: alternative power switching method'
             'acpi_call: alternative power switching method'
