@@ -1,0 +1,19 @@
+pkgbase = zfs-utils-openrc
+	pkgdesc = OpenRC init scripts for the Zettabyte File System.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://zfsonlinux.org/
+	arch = any
+	license = CDDL
+	depends = zfs-utils=2.1.2
+	depends = openrc
+	provides = init-zfs-utils
+	conflicts = init-zfs-utils
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.2/zfs-2.1.2.tar.gz
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.1.2/zfs-2.1.2.tar.gz.asc
+	validpgpkeys = 4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027
+	validpgpkeys = C33DF142657ED1F7C328A2960AB9E991C6AF658B
+	sha256sums = 258cf1d17a1f668a3b99b61eaf14be06c614df42503db0319bef1b9fc4c8b9e7
+	sha256sums = SKIP
+
+pkgname = zfs-utils-openrc
