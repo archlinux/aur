@@ -8,11 +8,11 @@ pkgrel=1
 pkgdesc="rtl88x2bu driver updated for current kernels"
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/cilynx/${_pkgname}"
-license=('GPL2')
-depends=('dkms')
-makedepends=('git' 'linux-headers' 'bc')
+license=("GPL2")
+depends=("dkms")
+makedepends=("git" "linux-headers" "bc")
 source=("git+${url}.git")
-sha256sums=('SKIP')
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
