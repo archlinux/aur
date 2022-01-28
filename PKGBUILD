@@ -1,11 +1,11 @@
 pkgname=companion
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
 url="https://github.com/bitfocus/companion"
 license=('custom')
-depends=('libvips' 'libxss' 'gconf' 'gtk3')
+depends=('libvips' 'libxss' 'gconf' 'gtk3' 'libusb')
 makedepends=('nvm' 'git')
 install=companion.install
 
@@ -33,7 +33,7 @@ _ensure_local_nvm() {
 prepare() {
 	_ensure_local_nvm
 
-	nvm install 14
+	nvm install 12
 	npm install -g node-gyp
 	npm install -g yarn
 }
@@ -43,27 +43,11 @@ build() {
 
 	cd "${srcdir}/${pkgname}"
 
-	git submodule init
-	git submodule update
-
-	rm -Rf node_modules bitfocus-skeleton/node_modules lib/module/*/node_modules
-
-	npm install
-	npm install --prefix bitfocus-skeleton
-
-	rm -Rf node_modules/sharp/node_modules
-	npm install --prefix node_modules/sharp --production
-
-	for module in lib/module/*/; do
-		grep '"dependencies"' ${module}package.json > /dev/null 2>&1 && (
-			echo ${module}
-			yarn --cwd ${module}
-			echo ""
-		)
-	done
+	./tools/update.sh
+	./tools/build_writefile.sh
 
 	rm -rf electron-output
-	npx electron-builder --linux dir
+	yarn run pack
 }
 
 
