@@ -1,7 +1,7 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=emblem
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Generate project avatars for your Matrix rooms an git forges"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'glib2')
 makedepends=('meson' 'rust')
 checkdepends=('appstream-glib')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar)
-sha512sums=('319d46bab4c689e98dfa9160d32d17aa205679f23892864913bb40a3cd165235f03b8629d3c86ec3d85b86c22de0e2001501255500201a3dc71b9797a3d5a4f7')
+b2sums=('2d8a56205f45dcc336449d923d94ef2c4b5fa4f3e693c830ec37e6fbd6dfd4fbd7dfd3be5d91d03db08eacdaebe8c998a2d9b8e8ec57935d992e642ab4f41f98')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
