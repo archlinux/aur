@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 build/trice "$pkgdir"/usr/bin/trice
   install -Dm755 pkg/src/trice.h "$pkgdir"/usr/share/$pkgname/trice.h
   install -Dm755 pkg/src/trice.c "$pkgdir"/usr/share/$pkgname/trice.c
   install -Dm755 ./src/trice/test/MDK-ARM_STM32F030R8/Core/Inc/triceConfig.h "$pkgdir"/usr/share/$pkgname/triceConfig.h
