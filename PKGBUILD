@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libnsgif-git'
-pkgver=0.1.3.r0.gee6294d
-pkgrel=2
+pkgver=0.2.1.r117.g3832f7e
+pkgrel=1
 pkgdesc='Decoding library for the gif image file format'
 url='http://www.netsurf-browser.org/projects/libnsgif/'
 license=('MIT')
@@ -27,11 +27,6 @@ prepare() {
 build() {
 	make -C libnsgif PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
-}
-
-check() {
-	make -C libnsgif PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared test
 }
 
 package() {
