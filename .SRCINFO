@@ -1,7 +1,7 @@
 pkgbase = libnsutils-git
 	pkgdesc = NetSurf Utilities
-	pkgver = 0.0.2.r0.g59ceb7f
-	pkgrel = 2
+	pkgver = 0.1.0.r0.g142a794
+	pkgrel = 1
 	url = http://source.netsurf-browser.org/libnsutils.git/
 	arch = x86_64
 	arch = i686
@@ -14,4 +14,3 @@ pkgbase = libnsutils-git
 	sha256sums = SKIP
 
 pkgname = libnsutils-git
-

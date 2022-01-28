@@ -1,8 +1,8 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
-
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 pkgname='libnsutils-git'
-pkgver=0.0.2.r0.g59ceb7f
-pkgrel=2
+pkgver=0.1.0.r0.g142a794
+pkgrel=1
 pkgdesc='NetSurf Utilities'
 url='http://source.netsurf-browser.org/libnsutils.git/'
 license=('MIT')
@@ -27,11 +27,6 @@ prepare() {
 build() {
 	make -C libnsutils PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
-}
-
-check() {
-	make -C libnsutils PREFIX=/usr INCLUDEDIR=include \
-		LIBDIR=lib COMPONENT_TYPE=lib-shared test
 }
 
 package() {
