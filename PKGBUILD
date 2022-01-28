@@ -1,7 +1,7 @@
 # Maintainer: mynacol <paul àt dismail _ de>
 
 pkgname=theme-switcher-git
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Switching between light and dark themes made easy"
 arch=('any')
