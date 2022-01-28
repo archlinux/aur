@@ -1,7 +1,16 @@
-diff --git i/gio/glib-compile-schemas.c w/gio/glib-compile-schemas.c
-index cfea042f8..1b2afe457 100644
---- i/gio/glib-compile-schemas.c
-+++ w/gio/glib-compile-schemas.c
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Fri, 7 Jan 2022 18:59:10 +0000
+Subject: [PATCH] glib-compile-schemas: Remove noisy deprecation warnings
+
+---
+ gio/glib-compile-schemas.c | 13 -------------
+ 1 file changed, 13 deletions(-)
+
+diff --git a/gio/glib-compile-schemas.c b/gio/glib-compile-schemas.c
+index 7e1152f6bf45..924a3e7f176a 100644
+--- a/gio/glib-compile-schemas.c
++++ b/gio/glib-compile-schemas.c
 @@ -1232,19 +1232,6 @@ parse_state_start_schema (ParseState  *state,
        return;
      }

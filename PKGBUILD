@@ -4,8 +4,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.70.2
-pkgrel=2
+pkgver=2.70.3
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
@@ -21,12 +21,12 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
 options=('!docs')
 license=(LGPL)
 source=("git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
-        noisy-glib-compile-schemas.diff
+        0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
         glib-thumbnailer.patch
         glib-compile-schemas.hook
         glib-compile-schemas.hook gio-querymodules.{hook,script})
 sha256sums=('SKIP'
-            'b1cb539389aaabd13671424452f2805112a359b96c9e0e7f80fad804a77f9c7e'
+            'edb5e34ac0a77431978cab55b98e39754d73455e28a38f5003424e943bbe5fff'
             '9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
@@ -38,7 +38,7 @@ prepare() {
   cd glib
 
   # Suppress noise from glib-compile-schemas.hook
-  git apply -3 ../noisy-glib-compile-schemas.diff
+  git apply -3 ../0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 
   # Apply patch to generate thumbnails
   git apply -3 ../glib-thumbnailer.patch
