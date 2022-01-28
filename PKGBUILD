@@ -1,4 +1,5 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=gnurl
 pkgver=7.72.0
@@ -8,11 +9,10 @@ arch=(x86_64)
 url="https://gnunet.org/en/gnurl.html"
 license=('MIT')
 depends=('gnutls' 'krb5' 'libnghttp2' 'zstd')
-source=("https://ftp.gnu.org/gnu/gnunet/gnurl-$pkgver.tar.Z"{,.sig})
-validpgpkeys=('A88C8ADD129828D7EAC02E52E22F9BBFEE348588'  # Nils Gillmann
-              '6115012DEA3026F62A98A556D6B570842F7E7F8D') # nikita@3dfx.re
-sha512sums=('b68474750b6020ee4d82ec477c4c37b597eb74a688691e075d89422a72eca9a74600023bf4015c8e6a25e1a034df306010b137cce49a87c3faa08a117c5e37a5'
-            'SKIP')
+source=("https://ftp.gnu.org/gnu/gnunet/gnurl-$pkgver.tar.Z") #{,.sig})
+#validpgpkeys=('A88C8ADD129828D7EAC02E52E22F9BBFEE348588'  # Nils Gillmann
+#              '6115012DEA3026F62A98A556D6B570842F7E7F8D') # nikita@3dfx.re
+sha256sums=('45b4e3cc1f052b2d56d076c276f65358e6f643b217d72b9a35e7a945f8601668')
 
 build() {
   cd $pkgname-$pkgver
