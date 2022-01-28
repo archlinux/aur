@@ -2,7 +2,7 @@
 # Comaintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses-git
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=0
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -12,7 +12,7 @@ arch=('x86_64' 'aarch64')
 # dynamic library. Should the .so be shipped in the future, promote qrcodegen
 # from a makedepends to a true depends, and use that dynamic library.
 depends=('ncurses' 'ffmpeg' 'libunistring')
-provides=('notcurses=3.0.3')
+provides=('notcurses=3.0.5')
 conflicts=('notcurses')
 _pkgnameint=$(echo ${pkgname} | cut -d- -f1)
 source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz"
@@ -52,5 +52,5 @@ package() {
 	done
 }
 
-sha256sums=('467f826ab98e80a35a0ed10ff8f402fa6eba7e9d8cc297980856d73f659f4c19'
-            '3c55ccd0c80b085093d1cb21783fc7038a7a8dd15907d0b1b146884d557388e6')
+sha256sums=('accb41b9bad3415017207c0992c791e4d887c505d5aa1b3be0c44456489e537d'
+            '2eb05c7d01e32bfcbca4d05e2e42f2492297c456c1a4ee5c9bd024f4018a275b')
