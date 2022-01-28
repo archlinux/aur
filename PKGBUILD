@@ -2,13 +2,13 @@
 # Contributor: davedatum <ask at davedatum dot com>
 _name=imagine
 pkgname=${_name}-git
-pkgver=0.6.1.r0.g4d05a5a
+pkgver=0.6.1.r23.g12d922b
 pkgrel=1
 pkgdesc="PNG/JPEG optimization app"
 arch=(x86_64)
 url="https://github.com/meowtec/${_name}"
 license=(MIT)
-depends=(electron gconf imagemagick)
+depends=(electron imagemagick)
 makedepends=(nodejs-lts-gallium npm git)
 provides=("${_name}")
 conflicts=("${_name}")
