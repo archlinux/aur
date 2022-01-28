@@ -5,7 +5,7 @@
 
 set -u
 pkgname='gravit-designer-bin'
-pkgver='2021.i6'
+pkgver='2021.i13'
 pkgrel='1'
 pkgdesc='A cross-platform, free design tool for the 21st century empowering everyone to design'
 arch=('x86_64')

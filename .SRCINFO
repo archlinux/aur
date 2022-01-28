@@ -1,6 +1,6 @@
 pkgbase = gravit-designer-bin
 	pkgdesc = A cross-platform, free design tool for the 21st century empowering everyone to design
-	pkgver = 2021.i6
+	pkgver = 2021.i13
 	pkgrel = 1
 	url = https://designer.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gravit-designer-bin
 	depends = gtk3
 	depends = libindicator-gtk2
 	depends = libdbusmenu-gtk2
-	source = gravit-designer-bin-2021.i6.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=Version%202021.i6
+	source = gravit-designer-bin-2021.i13.zip::https://designer.gravit.io/_downloads/linux/GravitDesigner.zip?v=Version%202021.i13
 	source = gravit-designer.png
 	source = gravit-designer-document.svg
 	source = gravit-designer.xml
@@ -24,4 +24,3 @@ pkgbase = gravit-designer-bin
 	sha256sums = 0e6f46da5d7886180908ca6e37106050d7d25b4f0675dc839e8aafab43161ea3
 
 pkgname = gravit-designer-bin
-
