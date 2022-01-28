@@ -77,7 +77,6 @@ post_install () {
     systemctl enable --now ivpn-service
   else
     echo "[!] WARNING! systemd not detected. Please start ivpn-service manually."
-    return 1
   fi
 }
 
@@ -89,7 +88,6 @@ post_upgrade () {
     systemctl restart ivpn-service
   else
     echo "[!] WARNING! systemd not detected. Please restart ivpn-service manually."
-    return 1
   fi
 }
 
