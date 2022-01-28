@@ -1,66 +1,41 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Jacob Alexander <haata at kiibohd com>
 
-pkgbase=germinate
-pkgname=('germinate' 'python-germinate' 'python2-germinate')
-_pkgname=${pkgname[0]}
-pkgver=2.37
-pkgrel=2
+pkgname=('germinate' 'python-germinate')
+pkgver=2.38
+pkgrel=1
 pkgdesc='Expands dependencies in a list of seed packages'
-arch=('x86_64')
+arch=('any')
 url="https://tracker.debian.org/pkg/germinate"
 license=('GPL')
-makedepends=('python-setuptools' 'python-apt' 'python2-apt' 'python2-setuptools')
-options=(!emptydirs)
-source=("https://mirrors.ocf.berkeley.edu/debian/pool/main/g/germinate/${_pkgname}_$pkgver.tar.xz")
-sha256sums=('367771cdd892cfa94a46b8df8afec1060604b93d7bb98170d406bcdaddbfd096')
+makedepends=('python-setuptools' 'python-apt')
+source=("$pkgname-$pkgver.tar.xz::https://deb.debian.org/debian/pool/main/g/$pkgname/${pkgname}_$pkgver.tar.xz")
+sha256sums=('e998ba09fb90fddc6816b37931377906e013ef0b80a47766aba651e43180e800')
 
-# Base
-# Build last
-package_germinate() {
+prepare() {
 	cd work
-	depends+=('perl' 'python')
+	sed -i \
+		-e '/packages=/c\packages=find_packages(exclude=["*tests*"]),' \
+		setup.py
+}
 
-	# Initial python build
+build() {
+	cd work
 	python setup.py build
-
-	# Install files to /usr/bin
-	install -Dm 755 bin/germinate{,-pkg-diff,-update-metapackage} -t "$pkgdir/usr/bin"
-
-	# Install perl libs
-	install -Dm 644 debhelper/germinate.pm -t "$pkgdir/usr/share/perl5/vendor_perl/Debhelper/Sequence/"
-
-	# Install man pages (keep original files, or python builds will fail)
-	install -Dm 644 \
-	  debhelper/dh_germinate_{clean,metapackage} \
-	  man/germinate{,-pkg-diff,-update-metapackage}.1 \
-	  -t "$pkgdir/usr/share/man/man1/"
 }
 
-# Python libs
-# Build this first
+package_germinate() {
+	depends=('perl')
+
+	cd work
+	install -Dm644 debhelper/germinate.pm -t "$pkgdir/usr/share/perl5/vendor_perl/Debhelper/Sequence/"
+}
+
 package_python-germinate() {
+	depends+=('germinate' 'python-apt' 'python-six')
+
+	export PYTHONHASHSEED=0
 	cd work
-	depends+=('germinate' 'python' 'python-apt')
-
-	python setup.py install --root="$pkgdir/" --optimize=1
-
-	# Remove already installed portions
-	rm -rf $pkgdir/usr/share/man
-	rm -rf $pkgdir/usr/share/perl5
-	rm -rf $pkgdir/usr/bin
-}
-
-# Python2 libs
-package_python2-germinate() {
-	cd work
-	depends+=('germinate' 'python2' 'python2-apt')
-
-	python2 setup.py install --root="$pkgdir/" --optimize=1
-
-	# Remove already installed portions
-	rm -rf $pkgdir/usr/share/man
-	rm -rf $pkgdir/usr/share/perl5
-	rm -rf $pkgdir/usr/bin
+	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
