@@ -2,7 +2,7 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r103.ge7e9000
+pkgver=17.r117.g60fefc6
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/pcem"
-  cmake -G "Ninja" -DUSE_NETWORKING=ON -DUSE_ALSA=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .  
+  cmake -G "Ninja" -DUSE_NETWORKING=ON -DUSE_ALSA=ON -DPLUGIN_ENGINE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .  
   ninja
 }
 
