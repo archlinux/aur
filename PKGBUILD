@@ -4,8 +4,8 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.10.1
-_pkgver=1.10.1
+pkgver=1.10.2
+_pkgver=1.10.2
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
@@ -184,7 +184,7 @@ prepare() {
   sed -e '/set(ATen_VEC_TEST_SRCS ${ATen_VEC_TEST_SRCS} PARENT_SCOPE)/d' -i aten/CMakeLists.txt
 
   # https://github.com/pytorch/pytorch/issues/67153, https://github.com/pytorch/pytorch/pull/66219
-  patch -Np1 -i "${srcdir}/66219.patch" 
+  patch -Np1 -i "${srcdir}/66219.patch"
 
   # fix ideep/mkl-dnn
   patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch"
