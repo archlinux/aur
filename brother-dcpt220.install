@@ -1,0 +1,27 @@
+post_install() {
+  # lpr
+  /opt/brother/Printers/dcpt220/inf/setupPrintcapij dcpt220 -i
+  
+  # cupswrapper
+  /opt/brother/Printers/dcpt220/cupswrapper/cupswrapperdcpt220
+  
+  systemctl restart cups.service
+}
+
+post_upgrade() {
+  /bin/true
+}
+
+pre_remove() {
+  # lpr
+  /opt/brother/Printers/dcpt220/inf/setupPrintcapij dcpt220 -e
+  
+  # cupswrapper
+  /opt/brother/Printers/dcpt220/cupswrapper/cupswrapperdcpt220 -e
+}
+
+op=$1
+shift
+
+$op "$@"
+
