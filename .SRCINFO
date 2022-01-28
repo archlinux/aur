@@ -1,8 +1,8 @@
 pkgbase = kamailio
-	pkgdesc = Rock solid SIP server
-	pkgver = 5.2.3
+	pkgdesc = The Open Source SIP Server
+	pkgver = 5.5.3
 	pkgrel = 1
-	url = http://www.kamailio.org/
+	url = https://kamailio.org
 	arch = i686
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,6 @@ pkgbase = kamailio
 	makedepends = bison
 	makedepends = docbook2x
 	makedepends = pcre
-	makedepends = python2
 	makedepends = python
 	makedepends = openssl
 	makedepends = db
@@ -26,7 +25,6 @@ pkgbase = kamailio
 	makedepends = jansson
 	makedepends = geoip
 	makedepends = libmaxminddb
-	makedepends = curl
 	makedepends = unixodbc
 	makedepends = json-c
 	makedepends = librabbitmq-c
@@ -46,10 +44,10 @@ pkgbase = kamailio
 	makedepends = lksctp-tools
 	makedepends = ruby
 	makedepends = freeradius-client
-	source = http://www.kamailio.org/pub/kamailio/5.2.3/src/kamailio-5.2.3_src.tar.gz
+	source = https://kamailio.org/pub/kamailio/5.5.3/src/kamailio-5.5.3_src.tar.gz
 	source = kamailio.service
-	sha256sums = aa144e68bece94391c59ede19aa286780cce580edd872078dd3b866093ae5d16
-	sha256sums = 0ccad93274866b9116fe1e029368b92d4bebd7806a3d8f7978a20e44cf0f6451
+	sha512sums = dc0f8e9b8f95f679ab9f85dc8bed867ddd0764cb61ff767c37eaddf1cb62b13c7a1f9bc03821db29bc81ad1e77447637e19330dfcd701e7d240b68c9d0acb81a
+	sha512sums = f68404e92c974e8b1794b175e94bcd97da40d02d027b80ea8bb683a427af6663ae137ff98932226b437fd3a6e75e5a1beeccaea5f0449d8708bebfa7e7b8a4c4
 
 pkgname = kamailio
 	depends = pcre
@@ -183,12 +181,7 @@ pkgname = kamailio-presence-modules
 	depends = curl
 
 pkgname = kamailio-python-modules
-	pkgdesc = Python2 extension module for Kamailio
-	depends = kamailio
-	depends = python2
-
-pkgname = kamailio-python3-modules
-	pkgdesc = Python3 extension module for Kamailio
+	pkgdesc = Python extension module for Kamailio
 	depends = kamailio
 	depends = python
 
@@ -267,4 +260,3 @@ pkgname = kamailio-xmpp-modules
 	pkgdesc = SIP to XMPP IM translator module for Kamailio
 	depends = kamailio
 	depends = expat
-

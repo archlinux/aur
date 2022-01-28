@@ -1,33 +1,33 @@
-# Maintainer: Josef Miegl <josef@miegl.cz>
+# Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgbase=kamailio
-pkgname=('kamailio' 'kamailio-autheph-modules' 'kamailio-berkeley-modules' 'kamailio-cnxcc-modules'
-         'kamailio-cpl-modules' 'kamailio-dnssec-modules' 'kamailio-erlang-modules' 'kamailio-extra-modules'
-         'kamailio-geoip-modules' 'kamailio-geoip2-modules' 'kamailio-ims-modules' 'kamailio-json-modules'
-         'kamailio-kazoo-modules' 'kamailio-ldap-modules' 'kamailio-lua-modules' 'kamailio-memcached-modules'
-         'kamailio-mongodb-modules' 'kamailio-mono-modules' 'kamailio-mysql-modules' 'kamailio-outbound-modules'
-         'kamailio-perl-modules' 'kamailio-phonenum-modules' 'kamailio-postgres-modules'
-         'kamailio-presence-modules' 'kamailio-python-modules' 'kamailio-python3-modules'
-         'kamailio-rabbitmq-modules' 'kamailio-radius-modules' 'kamailio-redis-modules' 'kamailio-ruby-modules'
-         'kamailio-sctp-modules' 'kamailio-snmpstats-modules' 'kamailio-sqlite-modules'
-         'kamailio-systemd-modules' 'kamailio-tls-modules' 'kamailio-unixodbc-modules' 'kamailio-utils-modules'
-         'kamailio-websocket-modules' 'kamailio-xml-modules' 'kamailio-xmpp-modules')
-pkgver=5.2.3
+pkgname=("${pkgbase}" "${pkgbase}-autheph-modules" "${pkgbase}-berkeley-modules" "${pkgbase}-cnxcc-modules"
+  "${pkgbase}-cpl-modules" "${pkgbase}-dnssec-modules" "${pkgbase}-erlang-modules" "${pkgbase}-extra-modules"
+  "${pkgbase}-geoip-modules" "${pkgbase}-geoip2-modules" "${pkgbase}-ims-modules" "${pkgbase}-json-modules"
+  "${pkgbase}-kazoo-modules" "${pkgbase}-ldap-modules" "${pkgbase}-lua-modules" "${pkgbase}-memcached-modules"
+  "${pkgbase}-mongodb-modules" "${pkgbase}-mono-modules" "${pkgbase}-mysql-modules" "${pkgbase}-outbound-modules"
+  "${pkgbase}-perl-modules" "${pkgbase}-phonenum-modules" "${pkgbase}-postgres-modules"
+  "${pkgbase}-presence-modules" "${pkgbase}-python-modules"
+  "${pkgbase}-rabbitmq-modules" "${pkgbase}-radius-modules" "${pkgbase}-redis-modules" "${pkgbase}-ruby-modules"
+  "${pkgbase}-sctp-modules" "${pkgbase}-snmpstats-modules" "${pkgbase}-sqlite-modules"
+  "${pkgbase}-systemd-modules" "${pkgbase}-tls-modules" "${pkgbase}-unixodbc-modules" "${pkgbase}-utils-modules"
+  "${pkgbase}-websocket-modules" "${pkgbase}-xml-modules" "${pkgbase}-xmpp-modules")
+pkgver=5.5.3
 pkgrel=1
-pkgdesc="Rock solid SIP server"
-url="http://www.kamailio.org/"
+pkgdesc="The Open Source SIP Server"
+url="https://${pkgbase}.org"
 license=('GPL2')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-makedepends=('flex' 'bison' 'docbook2x' 'pcre' 'python2' 'python' 'openssl' 'db' 'libxml2' 'hiredis' 'libevent'
-             'dnssec-tools' 'expat' 'libunistring' 'libev' 'jansson' 'geoip' 'libmaxminddb' 'curl' 'unixodbc'
-             'json-c' 'librabbitmq-c' 'libldap' 'lua' 'libmemcached' 'mongo-c-driver' 'snappy' 'mono'
-             'mariadb-clients' 'perl' 'erlang' 'libphonenumber' 'postgresql' 'sqlite' 'net-snmp' 'lksctp-tools'
-             'ruby' 'freeradius-client')
-source=("http://www.kamailio.org/pub/${pkgbase}/${pkgver}/src/${pkgbase}-${pkgver}_src.tar.gz"
-        "${pkgname}.service")
-sha256sums=('aa144e68bece94391c59ede19aa286780cce580edd872078dd3b866093ae5d16'
-            '0ccad93274866b9116fe1e029368b92d4bebd7806a3d8f7978a20e44cf0f6451')
+makedepends=('flex' 'bison' 'docbook2x' 'pcre' 'python' 'openssl' 'db' 'libxml2' 'hiredis' 'libevent'
+  'dnssec-tools' 'expat' 'libunistring' 'libev' 'jansson' 'geoip' 'libmaxminddb' 'unixodbc'
+  'json-c' 'librabbitmq-c' 'libldap' 'lua' 'libmemcached' 'mongo-c-driver' 'snappy' 'mono'
+  'mariadb-clients' 'perl' 'erlang' 'libphonenumber' 'postgresql' 'sqlite' 'net-snmp' 'lksctp-tools'
+  'ruby' 'freeradius-client')
+source=("${url}/pub/${pkgbase}/${pkgver}/src/${pkgbase}-${pkgver}_src.tar.gz"
+  "${pkgname}.service")
+sha512sums=('dc0f8e9b8f95f679ab9f85dc8bed867ddd0764cb61ff767c37eaddf1cb62b13c7a1f9bc03821db29bc81ad1e77447637e19330dfcd701e7d240b68c9d0acb81a'
+  'f68404e92c974e8b1794b175e94bcd97da40d02d027b80ea8bb683a427af6663ae137ff98932226b437fd3a6e75e5a1beeccaea5f0449d8708bebfa7e7b8a4c4')
 
 prepare() {
   cd "${pkgbase}-${pkgver}"
@@ -37,11 +37,11 @@ prepare() {
 build() {
   cd "${pkgbase}-${pkgver}"
 
-  make FLAVOUR=kamailio STUN=1 \
+  make FLAVOUR=${pkgbase} STUN=1 \
     PREFIX=/usr \
     CC_EXTRA_OPTS="$CFLAGS -D_GNU_SOURCE" \
     LD_EXTRA_OPTS="$LDFLAGS" \
-    cfg_target=/etc/kamailio/ \
+    cfg_target=/etc/${pkgbase}/ \
     run_prefix="" \
     group_include="kstandard" \
     LIBDIR=lib \
@@ -51,9 +51,8 @@ build() {
 
   make EMBEDDED_UTF8_DECODE=1 STUN=1 FREERADIUS=1 all
 
-
   modules="kradius kldap kmysql kpostgres kunixodbc kxml kperl kcpl kxmpp kberkeley kutils kmemcached \
-           ktls kwebsocket ksnmpstats kpresence klua kpython kpython3 kruby kgeoip ksqlite kjson \
+           ktls kwebsocket ksnmpstats kpresence klua kpython kruby kgeoip ksqlite kjson \
            kredis kmono kims koutbound kdnssec ksctp kautheph kgzcompress kuuid kev kkazoo kmongodb kcnxcc \
            kjansson kgeoip2 kerlang ksystemd khttp_async krabbitmq kphonenum"
 
@@ -232,17 +231,10 @@ package_kamailio-presence-modules() {
 }
 
 package_kamailio-python-modules() {
-  pkgdesc="Python2 extension module for Kamailio"
-  depends=('kamailio' 'python2')
-  cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpython"
-}
-
-package_kamailio-python3-modules() {
-  pkgdesc="Python3 extension module for Kamailio"
+  pkgdesc="Python extension module for Kamailio"
   depends=('kamailio' 'python')
   cd "${pkgbase}-${pkgver}"
-  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpython3"
+  make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kpython"
 }
 
 package_kamailio-rabbitmq-modules() {
@@ -345,5 +337,3 @@ package_kamailio-xmpp-modules() {
   cd "${pkgbase}-${pkgver}"
   make DESTDIR=${pkgdir} cfg_prefix="${pkgdir}" install-modules-all group_include="kxmpp"
 }
-
-# vim:set ts=2 sw=2 et:
