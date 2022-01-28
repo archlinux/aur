@@ -1,7 +1,7 @@
 # Maintainer: Libor Wagner <liborw@archlinux.org>
 pkgname=trice-git
 pkgver=v0.18.4.r703.g8b91772b
-pkgrel=2
+pkgrel=3
 pkgdesc='Super fast and tiny embedded device C printf-like trace code and real-time PC logging'
 conflicts=('trice')
 provides=('trice')
@@ -35,7 +35,7 @@ build() {
 package() {
   cd "$pkgname"
   install -Dm755 build/trice "$pkgdir"/usr/bin/trice
-  install -Dm755 pkg/src/trice.h "$pkgdir"/usr/share/$pkgname/trice.h
-  install -Dm755 pkg/src/trice.c "$pkgdir"/usr/share/$pkgname/trice.c
-  install -Dm755 test/MDK-ARM_STM32F030R8/Core/Inc/triceConfig.h "$pkgdir"/usr/share/$pkgname/triceConfig.h
+  install -Dm755 pkg/src/trice.h "$pkgdir"/usr/share/trice/trice.h
+  install -Dm755 pkg/src/trice.c "$pkgdir"/usr/share/trice/trice.c
+  install -Dm755 test/MDK-ARM_STM32F030R8/Core/Inc/triceConfig.h "$pkgdir"/usr/share/trice/triceConfig.h
 }
