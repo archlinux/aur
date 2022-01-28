@@ -8,8 +8,6 @@ arch=('any')
 url='https://forum.ubuntu-fr.org/viewtopic.php?pid=21507283'
 license=('GPL3')
 depends=('python-pyqt5'
-         'hicolor-icon-theme'
-         'desktop-file-utils'
          'tesseract'
          )
 makedepends=('qt5-tools'
