@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-sensors
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Provides numerous sensor models designed to generate realistic data
 from simulation environments."
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-sensors/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('ef2660afa81be09f70881a22ddb4609eb627527a1b47040ce4ea99f35dddbc2c')
+sha256sums=('c0dc02e948f119ebe1173da312041e65ace11051c1f572732233d2b121cc74d5')
 
 _dir="ign-sensors-${pkgname}6_${pkgver}"
 
