@@ -3,9 +3,9 @@
 # Maintainer: Bence Hornák <hornak.bence@gmail.com>
 
 pkgname=anyk
-pkgver=3.12.0
+pkgver=3.13.0
 subver=0.1
-pkgrel=2
+pkgrel=1
 pkgdesc='Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
 arch=('any')
 url='https://www.nav.gov.hu/nav/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/abevjava_install.html'
@@ -19,7 +19,7 @@ source=("https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtat
         'anyk.desktop'
         'setenv'
         'anyk.sysusers')
-md5sums=('c41a359524a1c2d0fa4cb240fd6ec234'
+md5sums=('4e39dd57ca2eaefa7dd2a1bd1aff9492'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
