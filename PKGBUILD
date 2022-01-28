@@ -4,10 +4,10 @@ url="https://github.com/clearlinux-pkgs/linux"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.16
-_minor=2
-_clr=1117
+_minor=3
+_clr=1118
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=2
+pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -16,12 +16,12 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=35730
+_clear_version=35750
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=9c8d559c88be1cc4c4dc9d26f8e7243843ce4c4969d1b3d315c49c002e5fd7d5
-_config_hash_clear_version=35670
+_config_hash=d6ebb92bbbe178575622c4af8611ed8fb687570d430b8ae9058f7a064420affb
+_config_hash_clear_version=35750
 
 source=("Manifest.linux-dev.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "pack-linux-dev-from-0.${_clear_version}.tar::https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
@@ -53,6 +53,6 @@ package() {
     mkdir -p $pkgdir/usr/lib
     cp -Pr modules $pkgdir/usr/lib
 }
-b2sums=('1b95262bb8a47a36a92dca3c1892ff3c970a4bc9bad85c011ea898ab7b092325357b122ffd0f38f9aac3441526f9309034abd8a965a4b938dd1198c14f790b11'
-        '834d92023976ede00717a5c147f5fd5e55533ac5684d22175c18b3097f71801a6d970c87264a9828d34f4e7b61cea7048f2c9db1c6d4e4f0bdc868a67e3dc7f2'
-        '004844fe58a02e37f85469e46420fcaec712041c75ad31f7603b7b31f2cee80a7383f18bbae9af3b60547b7e8378fe6b30ee35dfa54b67b8325ae9e580dfe984')
+b2sums=('97fefcd9ef01ddf7736b909acd90168ef23640e23e9a4a96241e29f5aa7807422633f1efb71dcdb7e89d3ed7675659b85f4f14fb61704a925179a530339308f2'
+        'b098b4944037af8f9b0017d873637318e6ab2f5180933629cba4ef75cf68887e165104c39b1fa13af2a673f3aec9c94caf9095a21f5db55b578e5b4718da6d33'
+        '35027900544bec2452c06d54f434e4da767b9a77b6ebd8c9a13a00b09c4390544f1ed1d7ec4d6ed1cbc68601586f22ab876a5f3e6d631cc102183ebf3ad008d2')
