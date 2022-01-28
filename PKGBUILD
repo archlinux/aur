@@ -1,9 +1,9 @@
-# Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
+# Contributor: Ivy Foster <ivy.foster@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
-
 pkgname='netsurf-buildsystem-git'
-pkgver=1.5.r0.gbeca51c
-pkgrel=2
+pkgver=1.9.r1.g1fbac2b
+pkgrel=1
 pkgdesc='The Netsurf buildsystem'
 url='http://source.netsurf-browser.org/buildsystem.git/'
 license=('MIT')
@@ -23,7 +23,7 @@ pkgver() {
 
 package() {
 	cd buildsystem
-	make PREFIX=/usr DESTDIR="$pkgdir" install 
+	make PREFIX=/usr DESTDIR="$pkgdir" install
 	install -Dm644 COPYING \
 		"$pkgdir/usr/share/licenses/netsurf/buildsystem"
 }
