@@ -62,7 +62,7 @@ pkgbase=linux-xanmod-anbox
 _major=5.15
 pkgver=${_major}.17
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod with ashmem and binder enabled for Anbox - Current Stable (STABLE)'
 url="http://www.xanmod.org/"
@@ -97,7 +97,7 @@ done
 
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'dd250ea1060abd71f1a42201a48c5382a10d9f63f9f45dbc640f45a133d70847'
+            '10381d226a531a9faf8467a7614aec0ec5d2b48eee003aacf142769ebe0afc5d'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
@@ -170,9 +170,6 @@ prepare() {
 
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
-  # Disable CONFIG_GENERIC_CPU2 if we have choosen another microarchitecture
-  # https://github.com/xanmod/linux/issues/240
-  [ "$_microarchitecture" = "0" ] || scripts/config --disable CONFIG_GENERIC_CPU2
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod-anbox/myconfig"
