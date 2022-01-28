@@ -3,7 +3,7 @@
 
 pkgname=eovpn
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Application to connect, manage and update OpenVPN configurations'
 arch=('x86_64')
 url='https://github.com/jkotra/eOVPN'
@@ -15,7 +15,7 @@ source=("https://github.com/jkotra/eOVPN/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('b1c421331abee53e6cbe27e226c76b68f8a6fefbe84a6d85b2b66ce8093df6eb')
 
 build() {
-  arch-meson eOVPN-$pkgver build
+  meson eOVPN-$pkgver build
   meson compile -C build
 }
 
