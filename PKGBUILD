@@ -1,14 +1,15 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=geil-git
-pkgver=v0.0.1.alpha.0.r0.g2773cf2
-pkgrel=2
+pkgver=v0.0.1.alpha.0.r11.g091b5b9
+pkgrel=1
 arch=('any')
 pkgdesc='Update your git repos and see which need cleanup.'
 license=('MIT')
 makedepends=('git' 'cargo')
 conflicts=()
 provides=('geil')
+options=(!lto)
 url='https://github.com/nukesor/geil'
 source=("$pkgname"::"git://github.com/nukesor/geil.git")
 sha256sums=('SKIP')
