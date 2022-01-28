@@ -1,18 +1,28 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=carapace
-pkgver=0.8.3
+pkgver=0.8.9
 pkgrel=1
 pkgdesc='multi-shell multi-command argument completer'
-arch=('x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/rsteube/carapace-bin'
 license=('MIT')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("https://github.com/rsteube/carapace-bin/releases/download/v${pkgver}/carapace-bin_${pkgver}_Linux_${arch}.tar.gz")
-sha256sums=('3e1f57294db94e67e131993fb81f6d1c19fa5f71ce8a552f87ead9ce44e5239e')
+makedepends=("go" "git")
+source=("git+https://github.com/rsteube/carapace-bin.git")
+sha256sums=('SKIP')
 
-package() {
-    tar -xzvf carapace-bin_${pkgver}_Linux_${arch}.tar.gz
-    mkdir -p "${pkgdir}/usr/bin"
-    cp carapace "${pkgdir}/usr/bin/carapace"
+pkgver() {
+    cd carapace-bin
+    git describe --tags | sed 's/^v//;s/-/+/g'
+}
+
+build() {
+    cd carapace-bin
+    cd cmd/carapace && go generate ./... && go build -ldflags="-s -w -X main.version=$pkgver-git" -tags release 
+}
+
+package(){
+    cd carapace-bin
+    install -Dm755 cmd/carapace/carapace -t "$pkgdir/usr/bin"
 }
