@@ -311,5 +311,18 @@
       "既読"
     ],
     "unicode": "既読"
+  },
+  {
+    "annotation": "duh",
+    "group": 0,
+    "hexcode": "1F600",
+    "order": 1,
+    "shortcodes": [
+      "duh"
+    ],
+    "tags": [
+      "duh"
+    ],
+    "unicode": "duh"
   }
 ]
