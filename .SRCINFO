@@ -1,6 +1,6 @@
 pkgbase = nb
 	pkgdesc = A command line note-taking, bookmarking, archiving, and knowledge base application
-	pkgver = 6.8.0
+	pkgver = 6.8.1
 	pkgrel = 1
 	url = https://github.com/xwmx/nb
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = nb
 	optdepends = ripgrep-all
 	optdepends = termpdf.py-git
 	optdepends = vifm
-	source = nb-6.8.0.tar.gz::https://github.com/xwmx/nb/archive/6.8.0.tar.gz
-	sha512sums = 145ee7ec4dad216d41243b02e40ff0667ebf1ca7cf1aa718a4fb3d2553845b9f36e3df6408465e82466bef812b312518b752ba92c2965e362b7007361663ea1a
+	source = nb-6.8.1.tar.gz::https://github.com/xwmx/nb/archive/6.8.1.tar.gz
+	sha512sums = 503e6151cc55a5d4d149d30c3387b7c85488d1dcb267271e6868dc2e2ce461c1f63128f95db4d5b7543cecbdaf78628ada7f16ea94036ff920e8516a520c9044
 
 pkgname = nb

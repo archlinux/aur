@@ -1,8 +1,9 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 # Contributor: Vlad Petrov <ejiek@mail.ru>
+# Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname=nb
-pkgver=6.8.0
+pkgver=6.8.1
 pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
@@ -40,7 +41,7 @@ optdepends=(
   'termpdf.py-git'
   'vifm'
 )
-sha512sums=('145ee7ec4dad216d41243b02e40ff0667ebf1ca7cf1aa718a4fb3d2553845b9f36e3df6408465e82466bef812b312518b752ba92c2965e362b7007361663ea1a')
+sha512sums=('503e6151cc55a5d4d149d30c3387b7c85488d1dcb267271e6868dc2e2ce461c1f63128f95db4d5b7543cecbdaf78628ada7f16ea94036ff920e8516a520c9044')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -52,4 +53,8 @@ package() {
   install -Dm644 etc/nb-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   # Plugins
   install -Dm644 -t "${pkgdir}/usr/share/nb/plugins/" plugins/*
+  # Extras (prefixed with "nb-")
+  for extra in bookmark notes; do
+    install -Dm0755 "bin/$extra" "${pkgdir}/usr/bin/${pkgname}-${extra}"
+  done
 }
