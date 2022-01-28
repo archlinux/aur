@@ -2,9 +2,9 @@
 # Contributor: Fanninger Thomas <thomas at fanninger dot at>
 
 pkgname=prosody-mod-default-bookmarks
-pkgver=2018.08.18
+pkgver=2022.01.10
 pkgrel=1
-_commit="420ebea00cf3"
+_commit="62006f4022e9"
 pkgdesc="allows to add default bookmarks for users"
 arch=('any')
 url="https://modules.prosody.im/mod_default_bookmarks.html"
