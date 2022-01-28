@@ -6,6 +6,8 @@ pkgbase = trice-git
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	provides = trice
+	conflicts = trice
 	source = trice-git::git+https://github.com/rokath/trice.git
 	sha256sums = SKIP
 
