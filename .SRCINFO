@@ -1,10 +1,10 @@
 pkgbase = easyeda-bin
 	pkgdesc = easyeda.com desktop client
 	pkgver = 6.4.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://easyeda.com/
 	arch = x86_64
-	license = custom
+	license = unknown
 	makedepends = unzip
 	depends = gtk3
 	depends = nss
