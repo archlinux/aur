@@ -1,39 +1,47 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=prometheus-pgbouncer-exporter
-_pkgname=pgbouncer_exporter
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Prometheus exporter for PgBouncer metrics"
 arch=('x86_64')
 url="https://github.com/prometheus-community/pgbouncer_exporter"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go')
 optdepends=('pgbouncer: for monitoring a local pgbouncer instance')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+options=('!lto')
+_commit='6f7e6de674d3b7d412a5960b7d2e849e40c1d76b'
+source=("$pkgname::git+$url.git#commit=$_commit"
         'systemd.service'
         'sysusers.conf')
-b2sums=('db0906811fc02be92321f70699c1dab4fc942d05680ef5dc08ed4919bd82c6ae17bacc5d9ec51c8f1a34e864c85d5621b8859cf6f38736c77c2648ee495b842e'
+b2sums=('SKIP'
         '68c1e1cde7d13b095681ddbe3a473b07508cbca6b882a43108ccb652a4c7e8d509bb432159d3dfc68b073645178ec204122789529757cdab141de0fed301f274'
         '324a833a5c46446612e21faa29221dbd35dccae309b9373e0431ca96ca59020abec9f3de5fde93c237a0385e754aa0b587d471f7b26c275dbcfe967e68f0ace9')
 
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
+
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
   # create folder for build output
   mkdir build
 
   # download dependencies
-  go mod vendor
+  go mod download
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
+
   go build -v \
     -buildmode=pie \
     -trimpath \
-    -mod=vendor \
+    -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X github.com/prometheus/common/version.Version=$pkgver \
@@ -41,7 +49,8 @@ build() {
     -X github.com/prometheus/common/version.Branch=tarball \
     -X github.com/prometheus/common/version.BuildUser=someone@builder \
     -X github.com/prometheus/common/version.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
-    -o build .
+    -o "build/$pkgname" \
+    .
 }
 
 package() {
@@ -49,10 +58,10 @@ package() {
   install -Dm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
   # binary
-  install -Dm755 -t "$pkgdir/usr/bin" "build/$_pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin" "build/$pkgname"
 
   # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE

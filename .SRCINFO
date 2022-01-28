@@ -1,17 +1,19 @@
 pkgbase = prometheus-pgbouncer-exporter
 	pkgdesc = Prometheus exporter for PgBouncer metrics
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/prometheus-community/pgbouncer_exporter
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
 	optdepends = pgbouncer: for monitoring a local pgbouncer instance
-	source = prometheus-pgbouncer-exporter-0.4.0.tar.gz::https://github.com/prometheus-community/pgbouncer_exporter/archive/v0.4.0.tar.gz
+	options = !lto
+	source = prometheus-pgbouncer-exporter::git+https://github.com/prometheus-community/pgbouncer_exporter.git#commit=6f7e6de674d3b7d412a5960b7d2e849e40c1d76b
 	source = systemd.service
 	source = sysusers.conf
-	b2sums = db0906811fc02be92321f70699c1dab4fc942d05680ef5dc08ed4919bd82c6ae17bacc5d9ec51c8f1a34e864c85d5621b8859cf6f38736c77c2648ee495b842e
+	b2sums = SKIP
 	b2sums = 68c1e1cde7d13b095681ddbe3a473b07508cbca6b882a43108ccb652a4c7e8d509bb432159d3dfc68b073645178ec204122789529757cdab141de0fed301f274
 	b2sums = 324a833a5c46446612e21faa29221dbd35dccae309b9373e0431ca96ca59020abec9f3de5fde93c237a0385e754aa0b587d471f7b26c275dbcfe967e68f0ace9
 
