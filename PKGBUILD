@@ -3,7 +3,7 @@
 # Contributor: merlock <mlmatlock@gmail.com>
 
 pkgname=fahcontrol-gtk3-git
-pkgver=r183.f8cee6d
+pkgver=r185.2b57930
 pkgrel=1
 pkgdesc='Graphical monitor and control utility for the Folding@home client (python3/GTK3 fork)'
 url='https://foldingathome.org'
@@ -15,15 +15,8 @@ optdepends=('fahviewer: 3D simulation viewer')
 provides=('fahcontrol')
 conflicts=('fahcontrol')
 #changelog="src/${pkgname}/CHANGELOG.md"
-source=("${pkgname}::git+https://github.com/cdberkstresser/fah-control.git"
-        'fix-python-3.10.patch')
-sha256sums=('SKIP'
-            'ca8c09a5b58582d7af8443be5e9653d6ebac2e0e9df387fc51c2e88c822f64db')
-
-prepare() {
-	cd "$pkgname"
-	patch -p1 < "${srcdir}/fix-python-3.10.patch"
-}
+source=("${pkgname}::git+https://github.com/cdberkstresser/fah-control.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$pkgname"
