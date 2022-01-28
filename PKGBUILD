@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=obs-cli-bin
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="OBS-cli is a command-line remote control for OBS"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('c09bf6c304cab1b40913673a78aa4e008bf7a68014b01a2013a599665d07ce6a')
+sha256sums_x86_64=('620f4caff331286906654dfee61735901d9d8a8699a5d39bf8f4ba12e7da5185')
 
 package() {
     install -Dm755 "${pkgname%-bin}" "$pkgdir/usr/bin/${pkgname%-bin}"
