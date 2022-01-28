@@ -2,8 +2,8 @@
 # Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
-pkgver=20220125
-pkgrel=4
+pkgver=20220128
+pkgrel=1
 pkgdesc='Lightweight image viewer'
 arch=('x86_64')
 url="http://www.geeqie.org/"
@@ -26,10 +26,8 @@ optdepends=('librsvg: SVG rendering'
             'imagemagick: command-line tools for various (plugin) operations')
 provides=('geeqie')
 conflicts=('geeqie')
-source=("git+git://git.geeqie.org/geeqie.git"
-        "no-markdown.patch")
-sha256sums=('SKIP'
-            '37b103135cf220289ea4b10cfebc93af967e7ad1704810c34f4c2b02091f299b')
+source=("git+git://git.geeqie.org/geeqie.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/geeqie"
@@ -41,9 +39,6 @@ prepare() {
 
     # Remove Werror
     sed -i 's|^CFLAGS+=" -Werror|# CFLAGS+=" -Werror|' configure.ac
-
-    # Remove autodetection of markdown
-    patch -p1 -i ../no-markdown.patch
 
     NOCONFIGURE=1 ./autogen.sh
 }
