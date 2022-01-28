@@ -1,4 +1,5 @@
-# Maintainer: Noah Jelen <noahtjelen@gmail.com>
+# Maintainer: Ben Poest <ben@poest.com>
+# Contributor: Noah Jelen <noahtjelen@gmail.com>
 
 pkgname=2048-vanced-git
 pkgver=0.1.3
