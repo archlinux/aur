@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=vouch-proxy
-pkgver=0.35.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="an SSO and OAuth / OIDC login solution for Nginx using the auth_request module"
 arch=('x86_64')
@@ -22,5 +22,5 @@ package() {
   GOPATH="$pkgdir"/usr ./do.sh install
 }
 
-sha256sums=('0abd258f52a9f59b050b1e0bd5170cc55be3c23d772ecbf6b1aa22493829b424'
+sha256sums=('087aaf72e7e732c8a9320ce046f7c804d8d6b3a643fbe8c69d90260846bd7d70'
             'f278afaa8053181956b1b11fe156207fc56817aae7c8d145434a305662b25aa7')
