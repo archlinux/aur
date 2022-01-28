@@ -2,18 +2,16 @@
 _base=pygmsh
 pkgname=python-${_base}
 pkgdesc="Gmsh for Python"
-pkgver=7.1.15
+pkgver=7.1.17
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-meshio gmsh)
 makedepends=(python-build python-flit-core python-install)
-# python-pip
-checkdepends=(python-pytest-codeblocks)
-# python-matplotlib
+checkdepends=(python-pytest-codeblocks) # python-matplotlib
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('601792a83f76a3da9fdae64cbba336fadf8e1f68641210280002c58abe5e6340d3582051621ca804362b05a8a90954974037d53d685ec0815ca6707e741aa567')
+sha512sums=('f43716750d43c44121f06d7275540c0a6fb0fcb619b9475377b43b46c2e8f6c336e23b80a25383b617f6a0843ec86521699faae573aca01b1d4e12970cc72987')
 
 build() {
   cd "${_base}-${pkgver}"
