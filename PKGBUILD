@@ -1,9 +1,10 @@
+# Maintainer: Ben Poest <ben@poest.com>
 # Contributor: Lex Black <autumn-wind@web.de>
 # Contributor: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="https://github.com/B00merang-Project/Windows-10"

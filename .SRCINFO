@@ -1,7 +1,7 @@
 pkgbase = gtk-theme-windows10
 	pkgdesc = GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines.
 	pkgver = 3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/B00merang-Project/Windows-10
 	changelog = gtk-theme-windows10.changelog
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = gtk-theme-windows10
 	sha1sums = f68b7fadb2a94fa056ab5aab437ce027ec9ea49d
 
 pkgname = gtk-theme-windows10
-
