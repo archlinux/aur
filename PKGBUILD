@@ -4,8 +4,8 @@
 
 pkgname=python-pytorch-rocm
 _pkgname="pytorch"
-pkgver=1.10.0
-_pkgver=1.10.0
+pkgver=1.10.2
+_pkgver=1.10.2
 pkgrel=1
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
@@ -247,8 +247,10 @@ build() {
   python setup.py build --cmake-only
   sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
 
-  # same horrible hack as above
-  python setup.py build
+  # this horrible hack is necessary because the current release
+  # ships inconsistent CMake which tries to build objects before
+  # thier dependencies, build twice when dependencies are available
+  python setup.py build || python setup.py build
 }
 
 _package() {
