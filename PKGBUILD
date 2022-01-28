@@ -1,31 +1,27 @@
-# Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=timetrack
-pkgver=1.2.2.r0.gf273606
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Simple time-tracking app for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/danigm/timetrack"
 license=('GPL3')
-depends=(gobject-introspection libhandy python-timeago)
-makedepends=(meson git)
-_commit=f273606928ed32bfb5b0994f35dce9efb491241c # version 1.2.2
-source=("git+$url#commit=$_commit")
-md5sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+depends=('gtk4' 'libadwaita' 'python-gobject' 'python-timeago')
+makedepends=('gobject-introspection' 'meson')
+checkdepends=('appstream-glib')
+source=("https://gitlab.gnome.org/danigm/timetrack/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('58033be328266a03a431fc4b465063428d164b2fcc0b18bbce06f6a4ad8d7638')
 
 build() {
-  arch-meson $pkgname build
+  arch-meson "$pkgname-$pkgver" build
   meson compile -C build
 }
 
 check() {
-  meson test -C build
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
