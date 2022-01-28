@@ -2,7 +2,7 @@
 
 pkgname=sauklaue
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Notetaking application for lecturing with an external graphics tablet'
 url="https://github.com/fagu/$pkgname"
 license=('MIT')
