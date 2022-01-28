@@ -2,6 +2,7 @@
 # Contributor: 欠陥電気 <misaka13514 at google mail>
 
 pkgname=easyeda-bin
+_pkgname=${pkgname%-bin}
 pkgver=6.4.31
 pkgrel=2
 pkgdesc="easyeda.com desktop client"
@@ -22,4 +23,9 @@ prepare() {
 package() {
 	cd "$srcdir"
 	sh install.sh "$pkgdir"
+
+	# soft link
+	install -dm755 ${pkgdir}/usr/bin
+	ln -s /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+	chmod 755 ${pkgdir}/opt/${_pkgname}/${_pkgname}
 }
