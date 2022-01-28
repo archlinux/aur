@@ -3,13 +3,13 @@
 
 pkgname=fluffychat-git
 _name=fluffychat
-pkgver=v0.34.0.r124.g62a68984
-pkgrel=3
+pkgver=v1.2.0.r7.g12e9637d
+pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
 url="https://fluffychat.im/"
 license=('AGPL3')
-depends=('libolm' 'xdg-user-dirs' 'gtk3' 'jsoncpp')
+depends=('gtk3' 'jsoncpp' 'libsecret')
 makedepends=('clang'
              'ninja'
              'flutter'
@@ -27,17 +27,32 @@ pkgver(){
 }
 
 prepare() {
+  ####
+  # thanks to @dreieck 
+  _flutter_dir="${srcdir}/flutter"
+  PATH="${_flutter_dir}/bin:${PATH}"
+  export PATH
+
+  msg2 "Copying '/opt/flutter' to '${_flutter_dir}' ..."
+  cp -a /opt/flutter "${_flutter_dir}"
+  ####
+
   flutter config --enable-linux-desktop
   flutter config --no-analytics
   cd ${_name}
   git submodule update --init --recursive
+  
+  flutter clean
+  flutter pub get
 }
 
 build() {
-  cd ${_name}
+  _flutter_dir="${srcdir}/flutter"
+  PATH="${_flutter_dir}/bin:${PATH}"
+  export PATH
 
-  flutter clean
-  flutter pub get
+
+  cd ${_name}
   flutter build linux --release --verbose
 }
 
