@@ -5,7 +5,7 @@ pkgver=5.0.12330
 # pkgver is not allowed to contain forward slashes
 _pkgver_patch="6"
 _pkgver="$pkgver-$_pkgver_patch"
-pkgrel=2
+pkgrel=3
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
 url='https://cryptopro.ru/products/cryptopro-csp'
@@ -49,6 +49,9 @@ package() {
     bsdtar -xf "cprocsp-rdr-jacarta-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-rdr-rutoken-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
     bsdtar -xf "cprocsp-cptools-gtk-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-rdr-cloud-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
+    bsdtar -xf "lsb-cprocsp-devel-${_pkgver}.noarch.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-curl-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
 
     cd "$srcdir"
     bsdtar -xf "cprocsp-pki-cades-64-2.0.14458-1.amd64.rpm" -C "$pkgdir"

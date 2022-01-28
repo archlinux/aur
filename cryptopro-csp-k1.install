@@ -500,6 +500,26 @@ post_install() {
     cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_6 300
     cpconfig -hardware media -configure RutokenNFC -connect Default -add long size_7 8
 
+    # cprocsp-rdr-cloud-64
+    cpconfig -ini '\config\apppath' -add string librdrcloud.so /opt/cprocsp/lib/amd64/librdrcloud.so
+    cpconfig -ini '\config\KeyDevices\Cloud' -add string DLL librdrcloud.so
+    cpconfig -ini '\config\KeyDevices\Cloud' -add string AuthApp /opt/cprocsp/sbin/amd64/oauthapp
+    cpconfig -hardware reader -add Cloud > /dev/null
+    cpconfig -ini '\config\debug' -add long cloud 1
+    /sbin/ldconfig -f /etc/ld.so.conf
+
+    # cprocsp-curl-64
+    if test -f "/opt/cprocsp/sbin/amd64/cpconfig"; then
+        PATH=$PATH:/opt/cprocsp/sbin/amd64
+        libcurl_so_backup=`cpconfig -ini '\config\apppath\libcurl.so' -view 2> /dev/null`
+        status="$?"
+        if test "${status}" -eq 0 ; then
+            cpconfig -ini '\config\apppath\backup' -add string libcurl.so "${libcurl_so_backup}"
+        fi
+        cpconfig -ini '\config\apppath' -add string libcurl.so /opt/cprocsp/lib/amd64/libcpcurl.so
+    fi
+    /sbin/ldconfig -f /etc/ld.so.conf
+
     # cprocsp-pki-cades-64
     /opt/cprocsp/bin/amd64/ocsputil license -s 0A202-U0030-00ECW-RRLMF-UU2WK
     /opt/cprocsp/bin/amd64/tsputil license -s TA200-G0030-00ECW-RRLNE-BTDVV
