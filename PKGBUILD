@@ -3,8 +3,8 @@
 
 pkgname=(tensorflow_datasets)
 _name='tensorflow-datasets'
-pkgver='4.4.0'
-pkgrel=2
+pkgver='4.5.0'
+pkgrel=1
 url="https://github.com/tensorflow/datasets"
 pkgdesc="A collection of datasets ready to use with TensorFlow"
 depends=('absl-py'
@@ -19,7 +19,8 @@ depends=('absl-py'
          'tensorflow_metadata'
          'python-termcolor'
          'python-tqdm')
-makedepends=('python-pip')
+makedepends=('python-pip'
+             'python-wheel')
 optdepends=('python-beautifulsoup4: wsc273'
             'python-pycocotools: youtube_vis'
             'python-h5py: robonet'
@@ -42,17 +43,11 @@ optdepends=('python-beautifulsoup4: wsc273'
             'python-tldextract: c4')
 license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/04/9c/002251b49db860edeb7e203ad12b1369234f9f619bacb0931c60eacbf3ee/${_name}-${pkgver}.tar.gz")
-sha256sums=('3e95a61dec1fdb7b05dabc0dbed1b531e13d6c6fd362411423d0a775e5e9b960')
-
-build() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py sdist
-  python setup.py bdist_wheel
-}
+source=("https://files.pythonhosted.org/packages/01/19/3652b3b32892750a19ae2f8b260d3d42e41db749248583c1b80050c2fd80/${_name}-${pkgver}-py3-none-any.whl")
+sha256sums=('1c116a9c9c04ef4a14e0b3d61cd563f3fa0befcf6b64f5ffb220a9583e6bcc20')
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="${pkgdir}" -O2 --skip-build
+  cd "${srcdir}"
+  install -Dm644 "${pkgname}-${pkgver}.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  pip install "${pkgname}-${pkgver}-py3-none-any.whl" --root="${pkgdir}" --no-deps --ignore-installed --no-warn-script-location
 }
