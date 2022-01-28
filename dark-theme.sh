@@ -29,3 +29,5 @@ else
   echo "Command $1 not valid."
   exit 1
 fi
+
+wait
