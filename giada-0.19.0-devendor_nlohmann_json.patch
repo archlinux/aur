@@ -1,0 +1,45 @@
+diff -ruN a/src/core/conf.cpp b/src/core/conf.cpp
+--- a/src/core/conf.cpp	2021-11-06 21:07:22.000000000 +0100
++++ b/src/core/conf.cpp	2021-11-11 18:59:02.203649393 +0100
+@@ -27,9 +27,9 @@
+ #include "core/conf.h"
+ #include "core/const.h"
+ #include "core/types.h"
+-#include "deps/json/single_include/nlohmann/json.hpp"
+ #include "utils/fs.h"
+ #include "utils/log.h"
++#include <nlohmann/json.hpp>
+ #include <FL/Fl.H>
+ #include <cassert>
+ #include <fstream>
+@@ -296,4 +296,4 @@
+ 	data.channelsInCount  = std::max(1, data.channelsInCount);
+ 	data.channelsInStart  = std::max(0, data.channelsInStart);
+ }
+-} // namespace giada::m
+\ No newline at end of file
++} // namespace giada::m
+diff -ruN a/src/core/midiMapper.h b/src/core/midiMapper.h
+--- a/src/core/midiMapper.h	2021-11-06 21:07:22.000000000 +0100
++++ b/src/core/midiMapper.h	2021-11-11 18:59:25.850387884 +0100
+@@ -27,7 +27,7 @@
+ #ifndef G_MIDIMAPPER_H
+ #define G_MIDIMAPPER_H
+ 
+-#include "deps/json/single_include/nlohmann/json.hpp"
++#include <nlohmann/json.hpp>
+ #include <string>
+ #include <vector>
+ 
+diff -ruN a/src/core/patch.cpp b/src/core/patch.cpp
+--- a/src/core/patch.cpp	2021-11-06 21:07:22.000000000 +0100
++++ b/src/core/patch.cpp	2021-11-11 18:59:48.867124522 +0100
+@@ -26,7 +26,7 @@
+ 
+ #include "patch.h"
+ #include "core/mixer.h"
+-#include "deps/json/single_include/nlohmann/json.hpp"
++#include <nlohmann/json.hpp>
+ #include "utils/log.h"
+ #include "utils/math.h"
+ #include <fstream>
