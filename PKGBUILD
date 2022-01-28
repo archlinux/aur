@@ -4,14 +4,16 @@ pkgname=gurk-bin
 pkgver=0.2.3
 pkgrel=1
 pkgdesc='CLI client for Signal'
-arch=('x86_64')
+arch=(x86_64 aarch64)
 url='https://github.com/boxdot/gurk-rs'
 license=('AGPL3')
 optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${url}/releases/download/v${pkgver}/gurk-x86_64-unknown-linux-gnu.tar.gz")
-sha1sums=('SKIP')
+source_x86_64=("${url}/releases/download/v${pkgver}/gurk-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("${url}/releases/download/v${pkgver}/gurk-aarch64-unknown-linux-gnu.tar.gz")
+sha1sums_x86_64=('SKIP')
+sha1sums_aarch64=('SKIP')
 
 package() {
   install -Dm755 gurk "${pkgdir}/usr/bin/gurk"

@@ -4,10 +4,13 @@ pkgbase = gurk-bin
 	pkgrel = 1
 	url = https://github.com/boxdot/gurk-rs
 	arch = x86_64
+	arch = aarch64
 	license = AGPL3
 	provides = gurk
 	conflicts = gurk
-	source = https://github.com/boxdot/gurk-rs/releases/download/v0.2.3/gurk-x86_64-unknown-linux-gnu.tar.gz
-	sha1sums = SKIP
+	source_x86_64 = https://github.com/boxdot/gurk-rs/releases/download/v0.2.3/gurk-x86_64-unknown-linux-gnu.tar.gz
+	sha1sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/boxdot/gurk-rs/releases/download/v0.2.3/gurk-aarch64-unknown-linux-gnu.tar.gz
+	sha1sums_aarch64 = SKIP
 
 pkgname = gurk-bin
