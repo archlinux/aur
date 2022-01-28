@@ -1,4 +1,4 @@
-# Maintainer: timescam <rex.ky.ng at gmail dot com>
+# Maintainer: timescam <timescam at duck dot com>
 # Contributor: holouden <holouden @t tutanota d.o.t. com>
 
 pkgname=ttf-hack-ligatured
