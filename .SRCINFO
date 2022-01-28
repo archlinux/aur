@@ -1,6 +1,6 @@
 pkgbase = libviper
 	pkgdesc = API for ncurses/libgpm offering simple window creation and management to quickly create text interfaces
-	pkgver = 3.0.1
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/TragicWarrior/libviper
 	arch = i686
@@ -11,10 +11,9 @@ pkgbase = libviper
 	depends = glibc>=2.8
 	depends = gpm
 	depends = ncurses>=5.4
-	source = git+https://github.com/TragicWarrior/libviper.git#commit=1a991a8ccce65c7a0711a07a46a0ae830fcb7f8b
+	source = git+https://github.com/TragicWarrior/libviper.git#commit=d8b95263abeba72f281b6906ff96cdc36964a704
 	source = ncurses-import.patch
 	sha256sums = SKIP
 	sha256sums = 06ad5fde54fcc18e4ece0316a1917c18039784a9812bc86908ed9e6be46b26cf
 
 pkgname = libviper
-

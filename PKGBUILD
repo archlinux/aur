@@ -5,9 +5,9 @@
 
 
 pkgname=libviper
-pkgver=3.0.1
+pkgver=3.1.1
 pkgrel=1
-_commit=1a991a8ccce65c7a0711a07a46a0ae830fcb7f8b
+_commit=d8b95263abeba72f281b6906ff96cdc36964a704
 pkgdesc="API for ncurses/libgpm offering simple window creation and management to quickly create text interfaces"
 arch=('i686' 'x86_64')
 url="https://github.com/TragicWarrior/libviper"
