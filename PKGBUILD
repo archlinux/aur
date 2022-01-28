@@ -29,8 +29,10 @@ package() {
   install -Dm644 weka.png     "$pkgdir"/usr/share/pixmaps/weka.png
   install -D     weka.sh      "$pkgdir"/usr/bin/weka
 
+  cd $pkgname-$_dlver
+
   # jar file
-  install -Dm644 $pkgname-$_dlver/weka.jar "$pkgdir"/usr/share/$pkgname/weka.jar
+  install -Dm644 weka.jar "$pkgdir"/usr/share/$pkgname/weka.jar
 
   # Documentation
   install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname documentation.* README *.pdf weka.gif
