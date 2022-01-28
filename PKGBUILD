@@ -30,6 +30,7 @@ pkgver() {
   _ver="$(cat Qtesseract5.py | grep 'Qtesseract5.setApplicationVersion(' | cut -d '"' -f2)"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
+
 prepare() {
   cd QTesseract5
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
@@ -64,5 +65,5 @@ package() {
   install -Dm644 man/qtesseract5.fr.1 "${pkgdir}/usr/share/man/fr/man1/qtesseract5.1"
   install -Dm644 qtesseract5.desktop "${pkgdir}/usr/share/applications/qtesseract5.desktop"
 
-  install -Dm644 "${srcdir}/qtesseract5.svgz" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/qtesseract5.svgz"
+  install -Dm644 "${srcdir}/qtesseract5.svgz" "${pkgdir}/usr/share/pixmaps/qtesseract5.svgz"
 }
