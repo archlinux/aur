@@ -1,4 +1,5 @@
-# Maintainer: Shane Brown <contact at shanebrown dot ca>
+# Maintainer: Ben Poest <ben@poest.com>
+# Contributor: Shane Brown <contact at shanebrown dot ca>
 
 pkgname=('librewolf-extension-return-youtube-dislike-git')
 _gitname="return-youtube-dislike"
