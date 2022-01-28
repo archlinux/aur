@@ -1,9 +1,8 @@
 pkgbase = wine-ge-lol
 	pkgdesc = A compatibility layer for running League of Legends - GloriousEggroll branch
 	pkgver = 7.0.GE.1.LoL
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/wine-ge-custom
-	install = wine.install
 	arch = x86_64
 	license = LGPL
 	makedepends = autoconf
@@ -149,11 +148,6 @@ pkgbase = wine-ge-lol
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=7.0
-	conflicts = wine
-	conflicts = wine-ge-custom
-	options = !staticlibs
-	options = !lto
 	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=7.0-GE-1-LoL
 	source = wine::git+https://github.com/GloriousEggroll/wine.git#commit=51c7559e812f840db106da39bcfb6039a325e66a
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
@@ -161,7 +155,6 @@ pkgbase = wine-ge-lol
 	source = wine-isolate_home.patch
 	source = wine-redefinition.patch
 	source = 30-win32-aliases.conf
-	source = wine-binfmt.conf
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -169,6 +162,5 @@ pkgbase = wine-ge-lol
 	sha512sums = 3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282
 	sha512sums = 9277cfe9b2ebc5903f39b94f81077b07862091ae79cf19ddff299a060a4683e4d64f7086fb2bb94941d7d4a1123753b636249d026df91579d3c8e79d9684f241
 	sha512sums = 6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb
-	sha512sums = bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285
 
 pkgname = wine-ge-lol

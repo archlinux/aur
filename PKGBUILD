@@ -13,11 +13,7 @@ pkgname=wine-ge-lol
 _reponame=wine-ge-custom
 _srctag=7.0-GE-1-LoL
 pkgver=${_srctag//-/.}
-pkgrel=1
-
-#_winever=${pkgver%.*}
-#_winever=$pkgver
-#_pkgbasever=${pkgver/rc/-rc}
+pkgrel=2
 
 source=($_reponame::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
         wine::git+https://github.com/GloriousEggroll/wine.git#commit=${_wine_commit}
@@ -25,23 +21,18 @@ source=($_reponame::git+https://github.com/GloriousEggroll/wine-ge-custom.git#ta
         wine-wmclass.patch
         wine-isolate_home.patch
         wine-redefinition.patch
-        30-win32-aliases.conf
-        wine-binfmt.conf)
+        30-win32-aliases.conf)
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
             '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
             '9277cfe9b2ebc5903f39b94f81077b07862091ae79cf19ddff299a060a4683e4d64f7086fb2bb94941d7d4a1123753b636249d026df91579d3c8e79d9684f241'
-            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            'bdde7ae015d8a98ba55e84b86dc05aca1d4f8de85be7e4bd6187054bfe4ac83b5a20538945b63fb073caab78022141e9545685e4e3698c97ff173cf30859e285')
-#validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
-#              DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
+            '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb')
 
 pkgdesc="A compatibility layer for running League of Legends - GloriousEggroll branch"
 url="https://github.com/GloriousEggroll/wine-ge-custom"
 arch=(x86_64)
-options=(!staticlibs !lto)
 license=(LGPL)
 
 depends=(
@@ -128,10 +119,6 @@ optdepends=(
   samba           dosbox
 )
 
-provides=("wine=${_srctag%%-*}")
-conflicts=('wine' 'wine-ge-custom')
-install=wine.install
-
 prepare() {
   pushd $_reponame
     rm -rf wine && cp -r "$srcdir"/wine wine
@@ -186,8 +173,8 @@ build() {
 
   cd "$srcdir/$_reponame-64-build"
   ../$_reponame/wine/configure \
-    --prefix=/usr \
-    --libdir=/usr/lib \
+    --prefix=/opt/wine-ge-lol \
+    --libdir=/opt/wine-ge-lol/lib \
     --with-x \
     --with-faudio \
     --with-gstreamer \
@@ -209,7 +196,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cd "$srcdir/$_reponame-32-build"
   ../$_reponame/wine/configure \
-    --prefix=/usr \
+    --prefix=/opt/wine-ge-lol \
     --with-x \
     --with-faudio \
     --with-gstreamer \
@@ -220,7 +207,7 @@ build() {
     --disable-win16 \
     --disable-tests \
     --with-xattr \
-    --libdir=/usr/lib32 \
+    --libdir=/opt/wine-ge-lol/lib32 \
     --with-wine64="$srcdir/$_reponame-64-build"
 
   make
@@ -230,27 +217,26 @@ package() {
   msg2 "Packaging Wine-32..."
   cd "$srcdir/$_reponame-32-build"
 
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib32" \
-    dlldir="$pkgdir/usr/lib32/wine" install
+  make prefix="$pkgdir/opt/wine-ge-lol" \
+    libdir="$pkgdir/opt/wine-ge-lol/lib32" \
+    dlldir="$pkgdir/opt/wine-ge-lol/lib32/wine" install
 
   msg2 "Packaging Wine-64..."
   cd "$srcdir/$_reponame-64-build"
-  make prefix="$pkgdir/usr" \
-    libdir="$pkgdir/usr/lib" \
-    dlldir="$pkgdir/usr/lib/wine" install
+  make prefix="$pkgdir/opt/wine-ge-lol" \
+    libdir="$pkgdir/opt/wine-ge-lol/lib" \
+    dlldir="$pkgdir/opt/wine-ge-lol/lib/wine" install
 
   # Font aliasing settings for Win32 applications
   install -d "$pkgdir"/usr/share/fontconfig/conf.{avail,default}
-  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/usr/share/fontconfig/conf.avail"
-  ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-win32-aliases.conf"
-  install -Dm 644 "$srcdir/wine-binfmt.conf" "$pkgdir/usr/lib/binfmt.d/wine.conf"
+  install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/usr/share/fontconfig/conf.avail/30-wine-ge-lol-win32-aliases.conf"
+  ln -s ../conf.avail/30-wine-ge-lol-win32-aliases.conf "$pkgdir/usr/share/fontconfig/conf.default/30-wine-ge-lol-win32-aliases.conf"
 
-  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib32/wine/i386-windows/*.{dll,exe}
-  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/usr/lib/wine/x86_64-windows/*.{dll,exe}
+  i686-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/wine-ge-lol/lib32/wine/i386-windows/*.{dll,exe}
+  x86_64-w64-mingw32-strip --strip-unneeded "$pkgdir"/opt/wine-ge-lol/lib/wine/x86_64-windows/*.{dll,exe}
 
-  find "$pkgdir"/usr/lib{,32}/wine -iname "*.a" -delete
-  find "$pkgdir"/usr/lib{,32}/wine -iname "*.def" -delete
+  find "$pkgdir"/opt/wine-ge-lol/lib{,32}/wine -iname "*.a" -delete
+  find "$pkgdir"/opt/wine-ge-lol/lib{,32}/wine -iname "*.def" -delete
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
