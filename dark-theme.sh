@@ -7,11 +7,11 @@ CURRENT=$(gsettings get org.gnome.desktop.interface gtk-theme)
 
 if [ "$1" = "dark" ]; then
   for f in "$HOME/.local/share/dark-mode.d/"*; do
-    ( "$f" )
+    "$f" &
   done
 elif [ "$1" = "light" ]; then
   for f in "$HOME/.local/share/light-mode.d/"*; do
-    ( "$f" )
+    "$f" &
   done
 elif [ "$1" = "toggle" ]; then
   if echo "$CURRENT" | grep -q "dark"; then
