@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=ignition-gui
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
@@ -23,7 +23,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('b24eea52df6b3598b890650dead2bc2331ba223de72fd9d6308b7b9a0bf9b3c2')
+sha256sums=('f13d4af907c72b100dcfef75ec8155cc94db891626455c3ad2579d416953235c')
 
 _dir="ign-gui-${pkgname}6_${pkgver}"
 
