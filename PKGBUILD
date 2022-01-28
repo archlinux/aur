@@ -5,12 +5,12 @@ _pkgname=crashplan
 pkgver=8.8.2
 _pkgtimestamp=1525200006882
 _pkgbuild=143
-pkgrel=1
+pkgrel=2
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
 arch=('x86_64')
 license=('custom')
-depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils')
+depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gtk3' 'libxss' 'inetutils' 'slf4j')
 # We are trying without gconf or gtk3
 makedepends=('cpio')
 conflicts=('crashplan')
@@ -22,7 +22,7 @@ source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/
         crashplan-pro_upgrade.path)
 sha1sums=('8cdd216ee34c4704ff170faa0d932fb5796e1aee'
           '068c73e030c4ae12b97960d90d736ad42d41f9de'
-          '402ff6f7aa67b139871d0d94757a5181a6f927c4'
+          'ca94b0f4d1882a4755b2c406c3daeb912038f790'
           'aabdb5cbbc45216f8ae9d645758f4f9d6a4892d2'
           '0dfbf0ef3df2ad386419def132c28d63560f6e4e')
 options=(!strip)

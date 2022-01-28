@@ -1,7 +1,7 @@
 pkgbase = crashplan-pro
 	pkgdesc = An business online/offsite backup solution
 	pkgver = 8.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.crashplan.com/business
 	arch = x86_64
 	license = custom
@@ -12,6 +12,7 @@ pkgbase = crashplan-pro
 	depends = gtk3
 	depends = libxss
 	depends = inetutils
+	depends = slf4j
 	conflicts = crashplan
 	options = !strip
 	source = https://download.code42.com/installs/agent/cloud/8.8.2/143/install/CrashPlanSmb_8.8.2_1525200006882_143_Linux.tgz
@@ -21,7 +22,7 @@ pkgbase = crashplan-pro
 	source = crashplan-pro_upgrade.path
 	sha1sums = 8cdd216ee34c4704ff170faa0d932fb5796e1aee
 	sha1sums = 068c73e030c4ae12b97960d90d736ad42d41f9de
-	sha1sums = 402ff6f7aa67b139871d0d94757a5181a6f927c4
+	sha1sums = ca94b0f4d1882a4755b2c406c3daeb912038f790
 	sha1sums = aabdb5cbbc45216f8ae9d645758f4f9d6a4892d2
 	sha1sums = 0dfbf0ef3df2ad386419def132c28d63560f6e4e
 

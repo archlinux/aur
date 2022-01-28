@@ -56,9 +56,9 @@ install -D -m 755 ${UPDATE_PATH}/scripts/service.sh /opt/crashplan/bin/service.s
 echo "LC_ALL=$LANG" > /opt/crashplan/bin/run.conf
 
 # Rebuild the additional steps
-ln -sf "/opt/crachplan/bin/Code42Service" /opt/crashplan/bin/CrashPlanService
-ln -sf "/opt/crachplan/bin/desktop.sh" /opt/crashplan/bin/CrashPlanDesktop
-ln -sf "/opt/crachplan/bin/service.sh" /opt/crashplan/bin/CrashPlanEngine
+ln -sf "/opt/crashplan/bin/Code42Service" /opt/crashplan/bin/CrashPlanService
+ln -sf "/opt/crashplan/bin/desktop.sh" /opt/crashplan/bin/CrashPlanDesktop
+ln -sf "/opt/crashplan/bin/service.sh" /opt/crashplan/bin/CrashPlanEngine
 
 rm -rf ${TMP}
 rm -rf /opt/crashplan/upgrade/*
