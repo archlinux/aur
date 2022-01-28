@@ -9,7 +9,7 @@ license=(Apache)
 depends=('guile>=2.2' 'gumbo-parser>=0.10')
 url=https://git.lysator.liu.se/hugo/guile-gumbo
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('0bd273eb91cb37a944c2e0d55785c0ee')
+md5sums=('4e8da23e24f85ac5d23e97494e2d8aea')
 
 build(){
 	cd "${srcdir}/${pkgname}-${pkgver}"

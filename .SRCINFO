@@ -1,13 +1,13 @@
 pkgbase = guile-gumbo
 	pkgdesc = Guile bindings for the Gumbo HTML5 parser
-	pkgver = 0.10.1_0.3
+	pkgver = 0.10.1_0.4
 	pkgrel = 1
 	url = https://git.lysator.liu.se/hugo/guile-gumbo
 	arch = any
 	license = Apache
 	depends = guile>=2.2
 	depends = gumbo-parser>=0.10
-	source = https://git.lysator.liu.se/hugo/guile-gumbo/-/archive/0.10.1_0.3/guile-gumbo-0.10.1_0.3.tar.bz2
-	md5sums = 0bd273eb91cb37a944c2e0d55785c0ee
+	source = https://git.lysator.liu.se/hugo/guile-gumbo/-/archive/0.10.1_0.4/guile-gumbo-0.10.1_0.4.tar.bz2
+	md5sums = 4e8da23e24f85ac5d23e97494e2d8aea
 
 pkgname = guile-gumbo
