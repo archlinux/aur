@@ -1,5 +1,5 @@
 pkgbase = trice-git
-	pkgdesc = super fast and tiny embedded device C printf-like trace code (works also inside inerrupts) and real-time PC logging (trace ID visualization)
+	pkgdesc = Super fast and tiny embedded device C printf-like trace code and real-time PC logging
 	pkgver = v0.18.4.r703.g8b91772b
 	pkgrel = 1
 	url = https://rokath.github.io/trice/
