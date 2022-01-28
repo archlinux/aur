@@ -3,7 +3,7 @@
 pkgname=adwm-git
 _pkgname=adwm
 pkgver=0.7.16.r1.gfcfb1ff
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/$_pkgname"
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {
@@ -34,7 +34,7 @@ build() {
   cd $pkgname
   ./configure
   # Fight unused direct deps
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  sed -i -e "s| -shared | $LDFLAGS\0 |g" -e "s|    if test \"\$export_dynamic\" = yes && test -n \"\$export_dynamic_flag_spec\"; then|      func_append compile_command \" $LDFLAGS\"\n      func_append finalize_command \" $LDFLAGS\"\n\0|" libtool
   make
 }
 
