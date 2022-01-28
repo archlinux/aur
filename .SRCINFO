@@ -1,0 +1,23 @@
+pkgbase = qtesseract5-git
+	pkgdesc = Convert the SUB/IDX subtiltes to SRT file. (GIT version)
+	pkgver = 2.2.r2.40aecb5
+	pkgrel = 1
+	url = https://forum.ubuntu-fr.org/viewtopic.php?pid=21507283
+	arch = any
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = imagemagick
+	makedepends = git
+	depends = python-pyqt5
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = tesseract
+	optdepends = ogmrip
+	provides = qtesseract5
+	conflicts = qtesseract5
+	source = git+https://github.com/Hizoka76/QTesseract5.git
+	source = qtesseract5.svgz
+	sha256sums = SKIP
+	sha256sums = 968b76c98b03234eaa306e2fa689ed7f1a81b02edf4c5717de196c16f449c596
+
+pkgname = qtesseract5-git
