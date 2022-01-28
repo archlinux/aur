@@ -1,4 +1,4 @@
-# Maintainer: Charles Vejnar
+# Maintainer: Charles Vejnar <first name [dot] last name [at] gmail [dot] com>
 
 pkgname=python-pyfaidx
 pkgver=0.6.3.1
@@ -8,7 +8,7 @@ arch=("any")
 url="https://pypi.python.org/pypi/pyfaidx"
 license=("MIT")
 depends=("python")
-makedepends=("python-setuptools")
+makedepends=("python-setuptools" "python-setuptools-scm")
 source=("https://github.com/mdshw5/pyfaidx/archive/v$pkgver.tar.gz")
 sha1sums=("326771de48bdee2ee7f9254e309a9fa8facb65a9")
 
