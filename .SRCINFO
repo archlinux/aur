@@ -1,22 +1,20 @@
 pkgbase = vaping
-	pkgdesc = A healthy alternative to SmokePing
-	pkgver = 1.3.0
+	pkgdesc = python-smokeping alternative
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/20c/vaping
 	arch = any
 	license = Apache
-	makedepends = python-setuptools
-	depends = python
-	depends = python-click
-	depends = python-gevent
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-install
 	depends = python-pid
 	depends = python-daemon
 	depends = python-whichcraft
 	depends = python-munge
+	depends = python-confu
 	depends = python-pluginmgr
-	depends = python-subprocess32
-	source = vaping-1.3.0.tar.gz::https://github.com/20c/vaping/archive/1.3.0.tar.gz
-	sha256sums = 1d3b166d376a40ce9b582878feaf804ff38a492d8358d1a1934fceddd33b493c
+	source = vaping-1.4.3.tar.gz::https://github.com/20c/vaping/archive/1.4.3.tar.gz
+	sha256sums = d23eddcdbb7b2cd63219dd689fb89bcfb2039a3bbf57e9ee74bcc2db0003e35c
 
 pkgname = vaping
-
