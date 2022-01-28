@@ -1,7 +1,7 @@
 pkgbase = deconz
 	pkgdesc = A generic ZigBee monitoring and control tool
 	pkgver = 2.13.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dresden-elektronik.de
 	arch = x86_64
 	arch = armv6h
@@ -14,6 +14,7 @@ pkgbase = deconz
 	depends = libpng
 	depends = qt5-base
 	depends = qt5-serialport
+	depends = qt5-declarative
 	depends = qt5-websockets
 	depends = sqlite
 	source_x86_64 = deconz-2.13.04-x86_64.deb::https://deconz.dresden-elektronik.de/ubuntu/beta/deconz-2.13.04-qt5.deb

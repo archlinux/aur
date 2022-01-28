@@ -3,7 +3,7 @@
 pkgname=deconz
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgver=2.13.04
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic ZigBee monitoring and control tool"
 url="https://www.dresden-elektronik.de"
 license=('custom:"Copyright (c) dresden elektronik ingenieurtechnik GmbH"')
@@ -13,6 +13,7 @@ depends=('hicolor-icon-theme'
          'libpng'
          'qt5-base'
          'qt5-serialport'
+	 'qt5-declarative'
          'qt5-websockets'
          'sqlite')
 makedepends=('xz')
