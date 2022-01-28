@@ -24,8 +24,6 @@ depends=(
   'python-notify2'
   'python-cheetah3'
   'python-sabyenc3'
-  'python-jaraco'
-  'python-jaraco.context'
   'sqlite'
   'unrar'
   'unzip'
