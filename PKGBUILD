@@ -3,14 +3,14 @@
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
 pkgver=1.3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
 license=('ZLIB' 'custom')
 depends=('zlib' 'gcc-libs')
 makedepends=('mesa' 'clang' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libgl')
-source=("https://github.com/assaultcube/AC/archive/refs/tags/v${pkgver}.tar.gz"
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/assaultcube/AC/archive/refs/tags/v${pkgver}.tar.gz"
         'assaultcube'
         'assaultcube-server'
         'assaultcube.desktop'
@@ -34,6 +34,7 @@ prepare() {
 	cd "${_srcdir}"
 	sed -i 's/libSDL-1.2/libSDL-2.0/' 'check_install.sh'
 	sed -i 's|CUBE_OPTIONFILE=-Cconfig/servercmdline.txt|CUBE_OPTIONFILE=-C/etc/assaultcube/servercmdline.txt|' 'server.sh'
+	sed -i 's|//#define PRODUCTION|#define PRODUCTION|' 'source/src/cube.h'
 	rm -rf 'source/include'
 	cd 'source/src'
 	sed -i "s/CXXFLAGS= -O3/CXXFLAGS= ${_cxxflags} -O3/" 'Makefile'
