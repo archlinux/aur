@@ -72,15 +72,25 @@ pre_remove() {
 }
 
 post_install () {
-  echo "Enabling ivpn-service.service..."
-  systemctl enable --now ivpn-service
+  if has_systemd ; then
+    echo "[+] Enabling ivpn-service.service..."
+    systemctl enable --now ivpn-service
+  else
+    echo "[!] WARNING! systemd not detected. Please start ivpn-service manually."
+    return 1
+  fi
 }
 
 
 post_upgrade () {
-  echo "Restarting ivpn-service.service..."
-  systemctl daemon-reload
-  systemctl restart ivpn-service
+  if has_systemd ; then
+    echo "[+] Restarting ivpn-service.service..."
+    systemctl daemon-reload
+    systemctl restart ivpn-service
+  else
+    echo "[!] WARNING! systemd not detected. Please restart ivpn-service manually."
+    return 1
+  fi
 }
 
 post_remove() {
