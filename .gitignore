@@ -1,0 +1,4 @@
+Cider/
+pkg/
+src/
+*.pkg.tar.zst
