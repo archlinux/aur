@@ -35,7 +35,7 @@ sha256sums=('SKIP'
             'a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576'
             'eb422aca8b3dd71282aa432bdf66eaac0272a9ac5a91b332fde5f6fb9e885852'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
-            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
+            '4c931121009985e7d3f73928c9db88508eedd974a7741e635bb290e3a2cd75db')
 
 pkgver() {
   cd "$srcdir/element-web"
