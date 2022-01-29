@@ -1,50 +1,38 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gst-plugins-intel-msdk
-_srcname=gstreamer-media-SDK
 pkgver=1.3.3.rc9
-_rc="${pkgver##*.}"
-_srcver="${pkgver/.${_rc}/-${_rc}}"
-pkgrel=2
+pkgrel=3
 pkgdesc='GStreamer plugins for Intel Media SDK (MSDK)'
 arch=('x86_64')
 url='https://github.com/intel/gstreamer-media-SDK/'
 license=('LGPL2.1')
-depends=(
-    # official repositories:
-        'gcc-libs' 'libsystemd' 'gstreamer' 'gst-plugins-base-libs'
-        'gst-plugins-bad' 'glib2' 'libdrm' 'libva' 'libgl' 'wayland'
-        'libxrandr' 'libxcb' 'libxkbcommon'
-    # AUR:
-        'intel-media-sdk'
-)
+depends=('gcc-libs' 'libsystemd' 'gstreamer' 'gst-plugins-base-libs'
+         'gst-plugins-bad' 'glib2' 'intel-media-sdk' 'libdrm' 'libva'
+         'libgl' 'wayland' 'libxrandr' 'libxcb' 'libxkbcommon')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/intel/gstreamer-media-SDK/archive/v${pkgver%.${_rc}*}-${_rc}.tar.gz"
-        'gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch'
-        'gst-plugins-intel-msdk-fix-libdrm-include-directory.patch'
-        'gst-plugins-intel-msdk-fix-link-and-install.patch')
+options=('!lto')
+source=("https://github.com/intel/gstreamer-media-SDK/archive/v${pkgver/.rc/-rc}/${pkgname}-${pkgver}.tar.gz"
+        '010-gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch'
+        '020-gst-plugins-intel-msdk-fix-libdrm-include-directory.patch'
+        '030-gst-plugins-intel-msdk-fix-link-and-install.patch'
+        '040-gst-plugins-intel-msdk-fix-for-gst-plugins-bad-1.18.patch'::'https://github.com/intel/gstreamer-media-SDK/commit/56a6e15db043f98c40366f01adf1f4b3f0fba2eb.patch')
 sha256sums=('a83351dbd62f3dd1621b2013a11b3e7e52d0d98dc0c1ac9a191ac92819071fe3'
-            '9fd317b93395faa95eae10bb9bf77e1828d942b83f5b4ba768144c8a23f3cbec'
-            'b55a8a8785ce2292c2792ffc814f004e8bd05b8d70e4e14a2fd93924901c020e'
-            '01101e5c68e8b199004d23550b59f6481286d4f4660739098f4a389eaca8734b')
+            '084dc93746b5a861540e72af6d5d02ee23f08480859e5231f6d6080e556014d5'
+            'cf2adc3643e7ada0d0c0f096cc303daa131eb75a272b16a36b95c4753fa293ef'
+            '09756c986dda896a58ac0438531dd22686298a10ff450703830a79396197fd3b'
+            'ec25afeb0008989e04cba225bad67a8db5d0e034b97257c0e0a85813867ad23d')
 
 prepare() {
-    cd "${_srcname}-${_srcver}"
-    
-    mkdir -p build
-    
-    patch -Np1 -i "${srcdir}/gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch"
-    patch -Np1 -i "${srcdir}/gst-plugins-intel-msdk-fix-libdrm-include-directory.patch"
-    patch -Np1 -i "${srcdir}/gst-plugins-intel-msdk-fix-link-and-install.patch"
+    patch -d "gstreamer-media-SDK-${pkgver/.rc/-rc}" -Np1 -i "${srcdir}/010-gst-plugins-intel-msdk-fix-intel-media-sdk-directories.patch"
+    patch -d "gstreamer-media-SDK-${pkgver/.rc/-rc}" -Np1 -i "${srcdir}/020-gst-plugins-intel-msdk-fix-libdrm-include-directory.patch"
+    patch -d "gstreamer-media-SDK-${pkgver/.rc/-rc}" -Np1 -i "${srcdir}/030-gst-plugins-intel-msdk-fix-link-and-install.patch"
+    patch -d "gstreamer-media-SDK-${pkgver/.rc/-rc}" -Np1 -i "${srcdir}/040-gst-plugins-intel-msdk-fix-for-gst-plugins-bad-1.18.patch"
 }
 
 build() {
-    cd "${_srcname}-${_srcver}"
-    
-    cd build
-    
-    cmake \
-        -DCMAKE_COLOR_MAKEFILE:BOOL='ON' \
+    cmake -B build -S "gstreamer-media-SDK-${pkgver/.rc/-rc}" \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DMFX_DECODER='ON' \
         -DUSE_HEVC_DECODER='ON' \
@@ -66,14 +54,10 @@ build() {
         -DMFX_SINK_BIN='ON' \
         -DWITH_MSS_2016='OFF' \
         -DMFX_VC1_PARSER='ON' \
-        -Wno-dev \
-        ..
-        
-    make
+        -Wno-dev
+    make -C build
 }
 
 package() {
-    cd "${_srcname}-${_srcver}/build"
-    
-    make DESTDIR="$pkgdir" install
+    make -C build DESTDIR="$pkgdir" install
 }

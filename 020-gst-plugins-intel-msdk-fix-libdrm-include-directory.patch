@@ -1,0 +1,11 @@
+--- a/gst-libs/mfx/egl/gstmfxtexture_egl.c
++++ b/gst-libs/mfx/egl/gstmfxtexture_egl.c
+@@ -22,7 +22,7 @@
+ 
+ #include "sysdeps.h"
+ 
+-#include <drm/drm_fourcc.h>
++#include <libdrm/drm_fourcc.h>
+ #include "gstmfxtexture_egl.h"
+ #include "gstmfxutils_egl.h"
+ #include "gstmfxsurface_vaapi.h"
