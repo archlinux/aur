@@ -1,7 +1,7 @@
 # Maintainer: yrws <yrws@yrws.xyz>
 _name='morgenrot'
 pkgname="${_name}-git"
-pkgver='v0.2.0'
+pkgver='v0.2.1'
 pkgrel=1
 pkgdesc='morgenrot calculates sunrise and sunset times'
 arch=('any')
@@ -22,6 +22,4 @@ package() {
 	cd "${_name}"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 	install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-
-	echo "YOU MAY NEED TO EDIT THE CONFIGURATION WITH YOUR COORDINATES AT ~/.config/morgenrot/config.toml"
 }

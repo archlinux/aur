@@ -1,6 +1,6 @@
 pkgbase = morgenrot-git
 	pkgdesc = morgenrot calculates sunrise and sunset times
-	pkgver = v0.2.0
+	pkgver = v0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/yrws/morgenrot
 	arch = any
