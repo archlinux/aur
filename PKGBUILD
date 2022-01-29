@@ -1,6 +1,6 @@
 # Maintainer: Gertjan Halkes <arch at ghalkes dot nl>
 pkgname=libt3window
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A library for creating window-based terminal programs."
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('e5543581b28bed8d4d0f7509267d1983')
+md5sums=('a2d6d282b033ccc164e1e9615e5800f9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = libt3window
 	pkgdesc = A library for creating window-based terminal programs.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = http://os.ghalkes.nl/t3/libt3window.html
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = libt3window
 	depends = ncurses
 	options = !libtool
 	source = http://os.ghalkes.nl/dist/libt3window-0.3.2.tar.bz2
-	md5sums = e5543581b28bed8d4d0f7509267d1983
+	md5sums = a2d6d282b033ccc164e1e9615e5800f9
 
 pkgname = libt3window
 
