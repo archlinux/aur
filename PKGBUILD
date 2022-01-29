@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=sheldon
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="A fast and configurable shell plugin manager"
 arch=('x86_64')
@@ -9,7 +9,8 @@ url="https://sheldon.cli.rs"
 license=('Apache' 'MIT')
 depends=('curl')
 makedepends=('git' 'rust' 'mdbook-linkcheck')
-_commit='dca03f43aa9f1188c98697a77c15a1e16cc3a2c3'
+options=('!lto')
+_commit='31c6df8f7da1d9aed7b46d75bc6c0fd8a0616c54'
 source=("git+https://github.com/rossmacarthur/sheldon.git#commit=$_commit")
 b2sums=('SKIP')
 
@@ -49,4 +50,8 @@ package() {
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" *.md
+
+  # completions
+  install -vDm644 completions/sheldon.bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+  install -vDm644 completions/sheldon.zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 }

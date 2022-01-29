@@ -1,6 +1,6 @@
 pkgbase = sheldon
 	pkgdesc = A fast and configurable shell plugin manager
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://sheldon.cli.rs
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = sheldon
 	makedepends = rust
 	makedepends = mdbook-linkcheck
 	depends = curl
-	source = git+https://github.com/rossmacarthur/sheldon.git#commit=dca03f43aa9f1188c98697a77c15a1e16cc3a2c3
+	options = !lto
+	source = git+https://github.com/rossmacarthur/sheldon.git#commit=31c6df8f7da1d9aed7b46d75bc6c0fd8a0616c54
 	b2sums = SKIP
 
 pkgname = sheldon
