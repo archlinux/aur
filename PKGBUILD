@@ -1,23 +1,25 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=dcaenc-git
-pkgver=44.68ed0d6
+pkgver=3.0.g9b89d76
 pkgrel=1
-pkgdesc="A Free Software (LGPL-licensed) encoder for the DTS Coherent Acoustics audio format."
-arch=(x86_64 i686)
-url="http://aepatrakov.narod.ru/dcaenc/"
+pkgdesc='A Free Software (LGPL-licensed) encoder for the DTS Coherent Acoustics audio format. (GIT version)'
+arch=('x86_64')
+url='https://gitlab.com/patrakov/dcaenc'
 license=(LGPL)
-depends=(alsa-lib)
-makedepends=(git autoconf)
-provides=(dcaenc)
-conflicts=(dcaenc)
-options=(!libtool)
-source=("git+https://gitlab.com/patrakov/dcaenc.git")
+depends=('alsa-lib')
+makedepends=('git')
+provides=('libdcaenc.so'
+          "dcaenc=${pkgver}"
+          )
+conflicts=('dcaenc')
+source=('git+https://gitlab.com/patrakov/dcaenc.git')
 sha512sums=('SKIP')
 
 pkgver() {
   cd dcaenc
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git describe --long --tags | tr - . | tr -d v)
 }
 
 build() {
@@ -37,5 +39,3 @@ package() {
   cd dcaenc
   make DESTDIR="${pkgdir}/" install
 }
-
-# vim:set ts=2 sw=2 et:
