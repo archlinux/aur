@@ -1,7 +1,7 @@
 # Maintainer: childofunix at gmail dot com
 
 pkgname="rmm-git"
-pkgver=1.0.4.r1.g7df18bc
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="RimWorld Mod Manager"
 arch=("any")
