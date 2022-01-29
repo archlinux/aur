@@ -1,6 +1,6 @@
 pkgbase = sonarqube
 	pkgdesc = An open source platform for continuous inspection of code quality
-	pkgver = 9.2.3.50713
+	pkgver = 9.2.4.50792
 	pkgrel = 1
 	url = http://www.sonarqube.org/
 	install = sonarqube.install
@@ -15,7 +15,7 @@ pkgbase = sonarqube
 	options = !strip
 	backup = etc/webapps/sonarqube/sonar.properties
 	backup = etc/webapps/sonarqube/wrapper.conf
-	source = https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.2.3.50713.zip
+	source = https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.2.4.50792.zip
 	source = sonarqube.service
 	source = sonarqube-tmpfile.conf
 	source = sonarqube-user.conf
