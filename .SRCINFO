@@ -9,7 +9,7 @@ pkgbase = openh264-git
 	license = BSD
 	makedepends = git
 	makedepends = nasm
-	provides = libh264.so
+	provides = libopenh264.so
 	provides = openh264=2.2.0.r5154.33c65463
 	conflicts = openh264
 	source = git+https://github.com/cisco/openh264.git

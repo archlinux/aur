@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('git'
              'nasm'
              )
-provides=('libh264.so'
+provides=('libopenh264.so'
           "openh264=${pkgver}")
 conflicts=('openh264')
 source=('git+https://github.com/cisco/openh264.git')
