@@ -65,10 +65,10 @@ package() {
     chmod +x "${pkgdir}/usr/bin/o3de"
 
     # Extract .ico and install icons
-    icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o "${pkgdir}"
+    icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o .
     iter=1
     for size in 256 128 64 48 32 16; do
-        install -Dm644 "${pkgdir}/product_icon_${iter}_${size}x${size}x32.png" \
+        install -Dm644 "product_icon_${iter}_${size}x${size}x32.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/o3de.png"
         ((iter++))
     done
