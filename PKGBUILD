@@ -10,8 +10,8 @@
 shopt -s extglob
 
 pkgbase=python-git
-pkgname=(python-git python-tests-git)
-pkgver=3.11.0a0.r110186.42d5a4fc3b3
+pkgname=(python-git)
+pkgver=3.11.0a0.r112016.b04dfbbe4bd
 pkgrel=1
 _pybasever=3.11
 pkgdesc="Next generation of the python high-level scripting language"

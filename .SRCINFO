@@ -1,6 +1,6 @@
 pkgbase = python-git
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.11.0a0.r110186.42d5a4fc3b3
+	pkgver = 3.11.0a0.r112016.b04dfbbe4bd
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -31,7 +31,3 @@ pkgname = python-git
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-
-pkgname = python-tests-git
-	pkgdesc = Regression tests packages for Python
-	depends = python-git
