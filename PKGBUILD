@@ -3,8 +3,8 @@
 _pkgbase=discordrp-mpris
 # _name=${_pkgbase#python-}
 pkgname="${_pkgbase}-git"
-pkgver=0.2.1.r11.g4b62bcd
-pkgrel=2
+pkgver=0.3.2.r0.g52e6c6a
+pkgrel=1
 pkgdesc="Discord Rich Presence based on mpris2 media players"
 arch=(any)
 url="https://github.com/FichteFoll/discordrp-mpris"
