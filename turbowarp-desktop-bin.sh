@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /usr/share/turbowarp-desktop/app.asar "$@"
+exec electron16 /usr/share/turbowarp-desktop/app.asar "$@"
