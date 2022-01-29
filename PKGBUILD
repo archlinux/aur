@@ -2,7 +2,7 @@
 
 pkgname=python-vbml
 _pkgname=vbml
-pkgver=1.1
+pkgver=1.1.post1
 pkgrel=1
 pkgdesc='Sofisticated object oriented regex-based text parser'
 url=https://github.com/tesseradecade/vbml
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=(python python-typing_extensions)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('6926402c79793147daf70ce2c866b086f482eaf6e54369f17d3754b4b414d2f5')
+sha256sums=('59e852b35b2c4d3f8e7d927ab2e0a9dde753f3427ab9a61aca7ed2f4d3986f3c')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
