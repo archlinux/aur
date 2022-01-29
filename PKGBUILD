@@ -1,6 +1,6 @@
 #Maintainer: weearc <q19981121@163.com>
 pkgname=cosbrowser
-pkgver=2.5.5
+pkgver=2.8.3
 pkgrel=1
 epoch=
 pkgdesc="腾讯云COS工具"
@@ -11,7 +11,7 @@ groups=()
 depends=(
 	 'gtk3'
 	 'libxcb'
-	 'electron4'
+	 'electron11'
 	 'libappindicator-gtk2'
 	 'gconf'
 	 'libnotify'
@@ -28,12 +28,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(
-	"https://cos5.cloud.tencent.com/cosbrowser/releases/cosbrowser-latest-linux.zip"
-	"https://raw.githubusercontent.com/tencentyun/qcloud-documents/master/product/管理与支持/政策与规范/腾讯云隐私声明.md")
+source=("https://cos5.cloud.tencent.com/cosbrowser/releases/cosbrowser-latest-linux.zip")
 noextract=()
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 prepare() {
@@ -67,9 +64,7 @@ Categories=Network;FileTransfer;" > ${pkgdir}/usr/share/applications/$pkgname.de
 	mkdir ${pkgdir}/opt/$pkgname
 	install -Dm644 ${srcdir}/squashfs-root/resources/app.asar ${pkgdir}/opt/$pkgname/app.asar
 	
-	mkdir ${pkgdir}/usr/share/licenses/tencent
-	install -Dm644 "腾讯云隐私声明.md" "${pkgdir}/usr/share/licenses/tencent/腾讯云隐私声明.md"
-	
+		
 	for i in 16 22 24 32 36 48 64 72 96 128 256
 	do
         mkdir -p ${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps
