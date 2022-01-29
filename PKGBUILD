@@ -1,6 +1,6 @@
 pkgname=infinitywallet
-pkgver=1.2.1beta
-pkgrel=10
+pkgver=1.4.0beta
+pkgrel=11
 pkgdesc="Digital asset wallet"
 arch=('x86_64')
 url="https://infinitywallet.io"

@@ -1,7 +1,7 @@
 pkgbase = infinitywallet
 	pkgdesc = Digital asset wallet
-	pkgver = 1.2.1beta
-	pkgrel = 10
+	pkgver = 1.4.0beta
+	pkgrel = 11
 	url = https://infinitywallet.io
 	install = infinitywallet.install
 	arch = x86_64
