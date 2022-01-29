@@ -2,8 +2,8 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0.1422.8b80296
+pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories main branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
@@ -12,17 +12,17 @@ depends=('gtk3' 'nss')
 makedepends=('git' 'npm' 'yarn')
 optdepends=('libnotify: Playback notifications')
 source=(
-  "git+https://github.com/CiderApp/${_pkgname}.git"
-  "Cider.desktop"
+    "git+https://github.com/CiderApp/${_pkgname}.git"
+    "Cider.desktop"
 )
 sha256sums=('SKIP'
-            '30d7e8a6d4c90dc5a2f9e009728f9d8ae4de08c6ad7b25c6e7f5509b1bab6fe0')
+            '8a8d3aebe1b415fd71d49db1e6d4cfd5470c69c8999ccda20d38b531d0583507')
 
-pkgver() {
-	cd "$srcdir/$_pkgname"
-    var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
-    echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+    pkgver() {
+        cd "$srcdir/$_pkgname"
+        var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
+        echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+    }
 
 build() {
     cd "${srcdir}/${_pkgname}"
@@ -31,16 +31,19 @@ build() {
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
+        yarn build
         yarn electron-builder build --armv7l --linux dir
     elif [[ ${CARCH} == "i686" ]]; then
+        yarn build
         yarn electron-builder build --ia32 --linux dir
     elif [[ ${CARCH} == "x86_64" ]]; then
+        yarn build 
         yarn electron-builder build --x64 --linux dir
     fi
 
     echo "Building : Install Build Dependencies | Build | [Done]"
 }
- 
+
 package() {
     cd "${srcdir}/${_pkgname}"
 
