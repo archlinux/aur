@@ -3,7 +3,7 @@
 # Contributer : Guinux <nuxgui@gmail.com>
 
 pkgname=mhwd-nvidia-470xx
-pkgver=470.86
+pkgver=470.94
 pkgrel=1
 pkgdesc="mhwd-nvidia-470xx PCI ID database"
 arch=("any")
