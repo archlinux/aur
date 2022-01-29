@@ -1,7 +1,7 @@
 pkgbase = r-rmarkdown
 	pkgdesc = Dynamic Documents for R
 	pkgver = 2.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=rmarkdown
 	arch = any
 	license = GPL3

@@ -8,7 +8,7 @@ _cranname=rmarkdown
 _cranver=2.11
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic Documents for R"
 arch=("any")
 url="https://cran.r-project.org/package=${_cranname}"
