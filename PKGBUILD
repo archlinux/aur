@@ -1,7 +1,7 @@
 # Maintainer: Christian Boxdörfer <christian.boxdoerfer@posteo.de>
 pkgname=fsearch
 _gitname=fsearch
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A fast graphical file search utility."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'icu' 'pcre')
 makedepends=('git' 'meson')
 conflicts=('fsearch-git')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/cboxdoerfer/fsearch/archive/$pkgver.tar.gz")
-sha256sums=('64a9471b98f83c7f61582fbc063f28f0b1a226803b6d53195d3f996df3d492d5')
+sha256sums=('f80e10922812169e8437476d5fbe6d05249997c49b98f991d382a6d5566551b4')
 
 build() {
     arch-meson $pkgname-$pkgver build
