@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xdg-launch-git
-pkgver=1.11.r1.g97cf9d0
+pkgver=1.12.r1.g26f7127
 pkgrel=1
 pkgdesc="A command line XDG compliant launcher"
 arch=('i686' 'x86_64')
@@ -17,24 +17,25 @@ source=("${pkgname}::git+https://github.com/bbidulock/xdg-launch")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  git describe --long --tags | sed -r 's,([^-]*-g),r\1,;s,-,.,g'
+  cd $pkgname
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {
-  cd ${pkgname}
+  cd $pkgname
   ./autogen.sh
 }
 
 build() {
-  cd ${pkgname}
+  cd $pkgname
   ./configure
+  # Fight unused direct deps
+  sed -i -e "s| -shared | $LDFLAGS\0 |g" -e "s|    if test \"\$export_dynamic\" = yes && test -n \"\$export_dynamic_flag_spec\"; then|      func_append compile_command \" $LDFLAGS\"\n      func_append finalize_command \" $LDFLAGS\"\n\0|" libtool
   make
 }
 
 package() {
-  cd ${pkgname}
-  make DESTDIR="${pkgdir}" install
+  make -C $pkgname DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
