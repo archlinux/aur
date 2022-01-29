@@ -165,8 +165,8 @@ package_pipewire-common-jack-git() {
   depends=(sh pipewire-session-manager pipewire-common-git
            libpipewire-$_ver.so)
   optdepends=('jack-example-tools: for official JACK example-clients and tools')
-  provides=(jack libjack.so libjackserver.so libjacknet.so)
-  conflicts=(jack jack2)
+  provides=(pipewire-jack jack libjack.so libjackserver.so libjacknet.so)
+  conflicts=(pipewire-jack jack jack2)
 
   mv jack/* "$pkgdir"
 
