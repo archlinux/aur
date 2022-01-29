@@ -2,7 +2,7 @@
 # Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
 
 pkgname=openh264-git
-pkgver=1.9.0.r4916.c81d7f67
+pkgver=2.2.0.r5154.33c65463
 pkgrel=1
 pkgdesc="Open Source H.264 Codec"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('git'
              'nasm'
              )
-provides=('openh264')
+provides=("openh264=${pkgver}")
 conflicts=('openh264')
 source=('git+https://github.com/cisco/openh264.git')
 sha256sums=('SKIP')
