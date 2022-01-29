@@ -3,8 +3,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_version=2.1+607+g153f7e4e
-_url=https://download.jitsi.org/stable/jitsi-videobridge2_2.1-607-g153f7e4e-1_all.deb
+_version=2.1+617+ga8b39c3f
+_url=https://download.jitsi.org/stable/jitsi-videobridge2_2.1-617-ga8b39c3f-1_all.deb
 
 _pkgbase=${_basename}-${_pkgname}
 _debname=${_basename}-${_pkgname}2
@@ -69,7 +69,7 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('28488fdd02fe64a86d8fbcdb4f24d6236bb478de3c6af018cc9ff7d0ef1477a3'
+sha256sums=('0bb47e1c96736bd5f3fe595223424cefc7d9a4a1db2be4d4cc87c4206d71df5e'
             'ecf266d0fe026ced8121a0491ee560fed4e9e586ff510c8e9b2f21ce505f0a2d'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
             '5d78e8eec07c6aae84a1f1c0922f951217741ccc6f1a50ed7ef966c665bbf291'
