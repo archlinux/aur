@@ -1,7 +1,7 @@
 pkgbase = php-gearman
 	pkgdesc = PHP wrapper to libgearman
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/php/pecl-networking-gearman
 	arch = x86_64
 	arch = i686
@@ -10,7 +10,8 @@ pkgbase = php-gearman
 	depends = gearman
 	backup = etc/php/conf.d/gearman.ini
 	source = https://github.com/php/pecl-networking-gearman/archive/refs/tags/gearman-2.1.0.tar.gz
+	source = 8.1.patch
 	sha512sums = 99545525095ebe5073617e2748c652ee75cfacd5d166ac65f9e69998dea8cd7fbc06542b78779ba5b0ce1f9e5d57de5be653cf90c387c825c24798559b038397
+	sha512sums = 648973154534c59389746ecb721a54bfee95d73727fdfe9ad5adbf9b40cd52ad9ab6f1574ed2250d5462f079d1d7784a9eaf80c231368734b79bbfb7fb4c2820
 
 pkgname = php-gearman
-
