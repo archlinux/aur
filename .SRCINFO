@@ -1,10 +1,10 @@
 pkgbase = extrattor
 	pkgdesc = A simple bash wrapper to manage one or more archives from the terminal
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Mirko-r/extrattor
-	arch = x86_64
+	arch = any
 	license = GPL-3.0
 	depends = unarj
 	depends = unace
