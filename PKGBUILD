@@ -31,6 +31,12 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
 source=("git+https://gitlab.freedesktop.org/pipewire/${_pkgbase}.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd $_pkgbase
+  # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
+  sed -e '/LD_LIBRARY_PATH/d' -i pipewire-jack/src/pw-jack.in
+}
+
 pkgver() {
   cd $_pkgbase
   git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
