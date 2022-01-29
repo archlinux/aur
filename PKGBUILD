@@ -2,7 +2,7 @@
 
 pkgname=searxng-git
 pkgver=1.0.0+r1588+g1b03db4c
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="https://searxng.github.io/searxng/"
@@ -12,19 +12,25 @@ depends=(
         'uwsgi-ng'
         'uwsgi-ng-plugin-python'
         'python-certifi'
+        'python-babel'
+        'python-flask-babel'
         'python-flask'
-        'python-flask-babel'        
+        'python-jinja'       
         'python-lxml'
         'python-pygments'
         'python-dateutil'        
         'python-yaml'
+        'python-httpx'
         'python-h2'
+        'python-brotli'
+	'python-uvloop'
         'python-httpx-socks'
         'python-async-timeout'
         'python-langdetect'
-	'python-uvloop'
         'python-setproctitle'
-	'python-brotli')
+        'python-redis'
+        'python-mistletoe'
+        'python-typing_extensions')
 conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
 _giturl="https://github.com/searxng/searxng"
