@@ -4,14 +4,15 @@
 pkgname=openh264-git
 pkgver=2.2.0.r5154.33c65463
 pkgrel=1
-pkgdesc="Open Source H.264 Codec"
+pkgdesc='OpenH264 is a codec library which supports H.264 encoding and decoding. (GIT version)'
 arch=('x86_64' 'armv6h' 'armv7h')
 url='http://www.openh264.org'
 license=('BSD')
 makedepends=('git'
              'nasm'
              )
-provides=("openh264=${pkgver}")
+provides=('libh264.so'
+          "openh264=${pkgver}")
 conflicts=('openh264')
 source=('git+https://github.com/cisco/openh264.git')
 sha256sums=('SKIP')

@@ -1,5 +1,5 @@
 pkgbase = openh264-git
-	pkgdesc = Open Source H.264 Codec
+	pkgdesc = OpenH264 is a codec library which supports H.264 encoding and decoding. (GIT version)
 	pkgver = 2.2.0.r5154.33c65463
 	pkgrel = 1
 	url = http://www.openh264.org
@@ -9,6 +9,7 @@ pkgbase = openh264-git
 	license = BSD
 	makedepends = git
 	makedepends = nasm
+	provides = libh264.so
 	provides = openh264=2.2.0.r5154.33c65463
 	conflicts = openh264
 	source = git+https://github.com/cisco/openh264.git
