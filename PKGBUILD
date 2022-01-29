@@ -1,20 +1,20 @@
 # Contributor: Kristian Setälä <kristian.setala@gmail.com>
 
 pkgname=tagainijisho
-pkgver=1.0.3
+pkgver=1.1.90
 pkgrel=1
 pkgdesc="A Free Japanese dictionary and study assistant"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://www.tagaini.net/"
 license=('GPL3')
-depends=('qt4>=4.7' 'sqlite3>=3.7.9')
+depends=('qt5-base>=5.15')
 makedepends=('cmake>=2.8.1' 'desktop-file-utils')
 source=(https://github.com/Gnurou/tagainijisho/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('e3aef7b1a3e4a38e0f144dd98fdcb680')
+md5sums=('e6704078571db9584745ef4747105ef8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  CFLAGS=`echo $CFLAGS | sed 's/-ffast-math//'` cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DQT_QMAKE_EXECUTABLE=qmake-qt4 . || return 1
+  CFLAGS=`echo $CFLAGS | sed 's/-ffast-math//'` cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr . || return 1
   make $MAKEFLAGS || return 1
 }
 
