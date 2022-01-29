@@ -4,17 +4,24 @@
 
 pkgname=code-git
 pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - git latest'
-_electron=electron
-pkgver=1.58.0.r84354.g67ff594cca4
+# Important: Remember to check https://github.com/microsoft/vscode/wiki/How-to-Contribute#prerequisites for target node version
+# NodeJS versioning cheatsheet:
+#   - carbon: 8
+#   - dubnium: 10
+#   - erbium: 12
+#   - fermium: 14
+# Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc for target electron version
+_electron=electron13
+pkgver=1.64.0.r92385.ga8539362921
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url='https://github.com/microsoft/vscode'
 license=('MIT')
-depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
+depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-fermium')
+makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs-lts-fermium')
 conflicts=('visual-studio-code-git')
 provides=('visual-studio-code-git')
 
@@ -24,8 +31,8 @@ source=("git+https://github.com/Microsoft/vscode"
         "product_json.diff"
         "code-liveshare.diff")
 sha512sums=('SKIP'
-            'a97cbc79d76d2dad2ced74d66fa57b9a0aa3d82767d420b520bbaaf007c03ac60d61134668895ab4a8bd38951974c42afc59c03105ccc892742b34fee9b2c509'
-            '9bd93ec7ba946c005d3a12ea71ae2903593d17d3e4dcf55b4a5b612ebc82237338f0aaec59613eb77f355b0116aeb31320d0d32cd993233f140479ced44dfdbf'
+            '300efb54f372131f7fd3d9dba2abe9e3b1185afe598b659fa5a370850b68e5d2bca514405555f0d04935feef5070a6e20b00536874e209169fbb9a059bb3697d'
+            'cdbf1c3ed96c608ccb2cb349f8f550fc5937ea88e725ad6712f9a13292c9a3335e43f81d235753ae054fcdc4e52bf0bfef28b7a3afdab1a3fc97481339587c3c'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
             'a9f2f3e07f8ffe9def036cb2aa6d587444ea1cf9d9e1b29637b3d86ccf98e3ee2c50d219405155449c06654f753a296a820b11bdab48928baf25043217f149a0')
 
@@ -107,22 +114,13 @@ prepare() {
         src/vs/platform/environment/node/environmentService.ts
 }
 
-build() {
-    # https://github.com/mapbox/node-sqlite3/issues/1044
-    mkdir -p path
-    ln -sf /usr/bin/python2 path/python
-    export PATH="$PWD/path:$PATH"
-
-    cd "${srcdir}/vscode"
-
-    yarn install --arch=${_vscode_arch}
-
+_memlimit_gulp() {
     # The default memory limit may be too low for current versions of node
     # to successfully build vscode.  Set mem_limit=<value> on the makepkg
     # command line if the default still doesn't work for your system.
     _mem_limit="--max_old_space_size=$mem_limit"
 
-    if ! /usr/bin/node $_mem_limit /usr/bin/gulp vscode-linux-${_vscode_arch}-min
+    if ! /usr/bin/node $_mem_limit /usr/bin/gulp "$@"
     then
         echo
         echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
@@ -133,6 +131,17 @@ build() {
     fi
 }
 
+build() {
+    cd "${srcdir}/vscode"
+
+    yarn install --arch=${_vscode_arch}
+
+    _memlimit_gulp compile-build
+    _memlimit_gulp compile-extension-media
+    _memlimit_gulp compile-extensions-build
+    _memlimit_gulp vscode-linux-${_vscode_arch}-min
+}
+
 package() {
     install -dm 755 "${pkgdir}/usr/lib/${pkgname}"
     cp -r --no-preserve=ownership --preserve=mode \
@@ -141,7 +150,7 @@ package() {
 
     # Replace statically included binary with system copy
     ln -sf /usr/bin/rg \
-            "${pkgdir}/usr/lib/${pkgname}/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
+            "${pkgdir}/usr/lib/${pkgname}/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg"
 
     # Put the startup script in /usr/bin
     install -Dm 755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
