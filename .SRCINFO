@@ -1,0 +1,13 @@
+pkgbase = moonvulkan
+	pkgdesc = Lua bindings for Vulkan
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/stetre/moonvulkan/
+	arch = x86_64
+	license = MIT
+	depends = lua
+	depends = vulkan-icd-loader
+	source = https://github.com/stetre/moonvulkan/archive/v0.9.tar.gz
+	sha256sums = e56da6f4f487649ca51e0f7139aaf1dbbf450f74dc6abade80cd04ec8fbae8bf
+
+pkgname = moonvulkan
