@@ -1,18 +1,18 @@
 pkgbase = r-tinytex
 	pkgdesc = Helper Functions to Install and Maintain 'TeX Live', and Compile 'LaTeX' Documents
-	pkgver = 0.35
+	pkgver = 0.36
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tinytex
 	arch = any
 	license = MIT
 	license = custom
 	depends = r
-	depends = r-xfun>=0.23
+	depends = r-xfun>=0.29
 	optdepends = r-textit
 	optdepends = r-rstudioapi
-	source = https://cran.r-project.org/src/contrib/tinytex_0.35.tar.gz
+	source = https://cran.r-project.org/src/contrib/tinytex_0.36.tar.gz
 	source = https://cran.r-project.org/web/packages/tinytex/LICENSE
-	sha256sums = d36397f677d1699337374cbbe415a6cc351023ed01b224c9d751e8e62619cf12
+	sha256sums = 65e6c1b981686573dd406e97b9639224cc2640d55a59d6381360449f10763b78
 	sha256sums = f58c2f5b0f10b231d9cea9bc4ea0d849cd4279a21d03257be8dc9fd9452fad37
 
 pkgname = r-tinytex

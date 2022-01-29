@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=tinytex
-_cranver=0.35
+_cranver=0.36
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,11 +12,11 @@ pkgdesc="Helper Functions to Install and Maintain 'TeX Live', and Compile 'LaTeX
 arch=("any")
 url="https://cran.r-project.org/package=${_cranname}"
 license=("MIT" "custom")
-depends=("r" "r-xfun>=0.23")
+depends=("r" "r-xfun>=0.29")
 # makedepends=()
 optdepends=("r-textit" "r-rstudioapi")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz" "https://cran.r-project.org/web/packages/tinytex/LICENSE")
-sha256sums=('d36397f677d1699337374cbbe415a6cc351023ed01b224c9d751e8e62619cf12'
+sha256sums=('65e6c1b981686573dd406e97b9639224cc2640d55a59d6381360449f10763b78'
             'f58c2f5b0f10b231d9cea9bc4ea0d849cd4279a21d03257be8dc9fd9452fad37')
 
 build() {
