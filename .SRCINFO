@@ -6,7 +6,7 @@ pkgbase = r-rmarkdown
 	arch = any
 	license = GPL3
 	depends = r>=3.0.0
-	depends = pandoc>=1.12.3
+	depends = pandoc>=1.14
 	depends = r-knitr>=1.22
 	depends = r-yaml>=2.1.19
 	depends = r-htmltools>=0.3.5
@@ -14,13 +14,13 @@ pkgbase = r-rmarkdown
 	depends = r-base64enc
 	depends = r-jsonlite
 	depends = r-mime
-	depends = r-tinytex>=0.11
-	depends = r-xfun>=0.15
+	depends = r-tinytex>=0.31
+	depends = r-xfun>=0.21
 	depends = r-stringr>=1.2.0
 	depends = r-jquerylib
-	optdepends = r-shiny>=0.11
+	optdepends = r-shiny>=1.6.0
 	optdepends = r-tufte
-	optdepends = r-testthat
+	optdepends = r-testthat>=3.0.0
 	optdepends = r-digest
 	optdepends = r-dygraphs
 	optdepends = r-tibble

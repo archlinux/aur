@@ -13,9 +13,9 @@ pkgdesc="Dynamic Documents for R"
 arch=("any")
 url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL3")
-depends=("r>=3.0.0" "pandoc>=1.12.3" "r-knitr>=1.22" "r-yaml>=2.1.19" "r-htmltools>=0.3.5" "r-evaluate>=0.13" "r-base64enc" "r-jsonlite" "r-mime" "r-tinytex>=0.11" "r-xfun>=0.15" "r-stringr>=1.2.0" "r-jquerylib")
+depends=("r>=3.0.0" "pandoc>=1.14" "r-knitr>=1.22" "r-yaml>=2.1.19" "r-htmltools>=0.3.5" "r-evaluate>=0.13" "r-base64enc" "r-jsonlite" "r-mime" "r-tinytex>=0.31" "r-xfun>=0.21" "r-stringr>=1.2.0" "r-jquerylib")
 # makedepends=()
-optdepends=("r-shiny>=0.11" "r-tufte" "r-testthat" "r-digest" "r-dygraphs" "r-tibble" "r-fs" "r-pkgdown" "r-rsconnect")
+optdepends=("r-shiny>=1.6.0" "r-tufte" "r-testthat>=3.0.0" "r-digest" "r-dygraphs" "r-tibble" "r-fs" "r-pkgdown" "r-rsconnect")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=('9371255300e7ea4cd936978ad2ca3d205d8605e09f4913cb0d4725005a7a9775')
 
