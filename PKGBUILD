@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://github.com/devsnd/$_name/archive/$pkgver.tar.gz")
-md5sums=('219224beced322bb4f912c446bd23cc5')
+md5sums=('183731563cf2fe9e104be86595e937ae')
 validpgpkeys=()
 
 check() {

@@ -9,6 +9,6 @@ pkgbase = python-tinytag
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/devsnd/tinytag/archive/1.6.0.tar.gz
-	md5sums = 219224beced322bb4f912c446bd23cc5
+	md5sums = 183731563cf2fe9e104be86595e937ae
 
 pkgname = python-tinytag
