@@ -1,0 +1,13 @@
+pkgbase = bdf2psf-pre0.2
+	pkgdesc = Bitmap font conversion utility with a very long history (pre-2006 source)
+	pkgver = 2005
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	depends = perl
+	provides = bdf2psf
+	conflicts = bdf2psf
+	source = bdf2psf.tar.zstd
+	sha512sums = b267abce37bcb23f9f78b79921ded8ea12e85cbb9b44d6e4b4fa0fba979ccea0bb9bba97cc405214f37938fdb1292feedb9fac6108413f2dc5f345563c47999a
+
+pkgname = bdf2psf-pre0.2
