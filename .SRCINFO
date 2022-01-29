@@ -46,7 +46,7 @@ pkgbase = texlive-full
 	conflicts = texlive-langjapanese
 	conflicts = texlive-langkorean
 	options = !strip
-	source = http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+	source = https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 	sha256sums = SKIP
 
 pkgname = texlive-full

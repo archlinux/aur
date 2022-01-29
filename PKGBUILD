@@ -9,9 +9,9 @@ url="http://www.tug.org/texlive/"
 arch=("x86_64")
 license=("GPL")
 makedepends=('rsync')
-provides=('texlive-bin' $(pacman -Sgq texlive-most texlive-lang))
-conflicts=('texlive-bin' 'git-latexdiff' $(pacman -Sgq texlive-most texlive-lang))
-source=("http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz")
+provides=('texlive-bin' 'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean')
+conflicts=('texlive-bin' 'git-latexdiff' 'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean')
+source=("https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz")
 sha256sums=('SKIP')
 #PKGEXT='.pkg.tar'
 options=(!strip)
@@ -19,7 +19,7 @@ options=(!strip)
 # You can choose a mirror and rsync directory here.
 # _syncdir works as a local CTAN mirror (about 4.5GiB) for faster installation
 
-_mirror='mirrors.bfsu.edu.cn/CTAN/systems/texlive/tlnet/'
+_mirror='rsync.dante.ctan.org/CTAN'
 _syncdir="CTAN/tlnet"
 
 pkgver(){
@@ -40,7 +40,8 @@ prepare(){
     
     # syncing repository
     mkdir -p ${_syncdir}
-    rsync -a --delete rsync://${_mirror}  ${_syncdir}
+    msg2 "Syncing local mirror"
+    rsync -av --delete --info=progress2 --info=name0 rsync://${_mirror}  ${_syncdir}
     
 }
 
@@ -91,5 +92,9 @@ package() {
     # remove profile file and installation log, and wrong man link.
     rm -rf ${pkgdir}/usr/bin/man
     rm -vf "${pkgdir}/opt/texlive/${_year}/tlpkg/texlive.profile"
+    
+    msg2 "Removing files for Windows"
+    rm -rf ${pkgdir}/opt/texlive/${_year}/texmf-dist/scripts/context/stubs/{win64,mswin}/*
+    find -H ${pkgdir} -name "*.bat" -print0 | xargs -0 rm -rf
 }
 # vim:set ts=2 sw=2 et:
