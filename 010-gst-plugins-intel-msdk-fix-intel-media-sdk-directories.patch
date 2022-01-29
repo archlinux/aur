@@ -1,6 +1,5 @@
-diff -Naurp a/cmake/FindMediaSDK.cmake b/cmake/FindMediaSDK.cmake
---- a/cmake/FindMediaSDK.cmake	2018-07-23 18:57:29.000000000 +0000
-+++ b/cmake/FindMediaSDK.cmake	2018-07-23 19:00:23.049123164 +0000
+--- a/cmake/FindMediaSDK.cmake
++++ b/cmake/FindMediaSDK.cmake
 @@ -16,8 +16,8 @@ function(FindMediaSDK)
      else()
        message(FATAL_ERROR "No MediaSDK distribution is found.")
