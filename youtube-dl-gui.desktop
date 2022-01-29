@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Youtube-dl GUI
+Comment=A cross-platform GUI for youtube-dl
+Exec=youtube-dl-gui
+Icon=youtube-dl-gui
+Terminal=false
+Categories=AudioVideo;Audio;Video;Player;Utility;
+Keywords=Youtube;Download;Video;Audio;
+StartupNotify=true
+

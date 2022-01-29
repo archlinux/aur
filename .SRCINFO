@@ -1,0 +1,13 @@
+pkgbase = youtube-dl-gui
+pkgname = youtube-dl-gui
+pkgdesc = A cross-platform GUI for youtube-dl made in Electron and node.js
+pkgver = 2.4.0
+pkgrel = 1
+url = https://github.com/jely2002/youtube-dl-gui
+arch = x86_64
+license = AGPL v3.0
+depends = nodejs
+depends = npm
+source = https://github.com/jely2002/youtube-dl-gui/archive/refs/tags/v2.4.0.tar.gz
+md5sums = f4d2e5faaeb47cfa3c1294be80fb8f49
+
