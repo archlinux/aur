@@ -2,6 +2,7 @@ pkgbase = primemodule
 	pkgdesc = C++ header-only library, binary and FFI library for factorizing huge (up to 2^63-1) numbers (optimized for huge semiprimes).
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/danog/PrimeModule-ext
 	arch = any
 	license = GPL
 	source = https://github.com/danog/PrimeModule-ext/archive/refs/tags/1.0.0.tar.gz

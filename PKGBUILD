@@ -9,6 +9,7 @@ pkgver=1.0.0
 pkgrel=1
 arch=('any')
 license=('GPL')
+url="https://github.com/danog/PrimeModule-ext"
 
 source=("https://github.com/$_repouser/$_reponame/archive/refs/tags/${pkgver}.tar.gz")
 sha512sums=('69f1961c5d25ce4fa2074544951e55ad7585a0c36e03fe880e15926c794cd4942bdd5253cc39421b278af24b962a7f9f4813cb454ebfde4d5cd5f9c3e7770860')
