@@ -7,7 +7,7 @@
 _electron=electron
 pkgbase=element-desktop-git-greentext
 pkgname=(element-{desktop,web}-git-greentext)
-pkgver=1.9.9.r28.gcfa97212f+greentext
+pkgver=1.9.9.r29.g7078373fb+greentext
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
