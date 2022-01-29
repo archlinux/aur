@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+app_folder_current_version=1
+app_folder="$HOME/.boscaceoil"
+export WINEDLLOVERRIDES="mscoree,mshtml="
+export WINEARCH=win64
+export WINEPREFIX="$app_folder/wine"
+
+
+
+if [ ! -d "$app_folder" ] ; then
+  mkdir -p "$WINEPREFIX"
+fi
+
+ 
+wine start /d "/usr/share/boscaceoil/" "BoscaCeoil.exe" "$@"
+

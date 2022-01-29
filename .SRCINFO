@@ -1,0 +1,22 @@
+pkgbase = boscaceoil
+	pkgdesc = Bosca Ceoil is a free, easy to use tool for creating music!
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://boscaceoil.net/
+	arch = x86_64
+	license = custom
+	makedepends = icoutils
+	depends = wine
+	depends = lib32-alsa-plugins
+	depends = lib32-libpulse
+	depends = lib32-openal
+	source = boscaceoil_win_v2.zip::http://www.boscaceoil.net/downloads/boscaceoil_win_v2.zip
+	source = boscaceoil
+	source = boscaceoil.desktop
+	source = LICENSE
+	sha512sums = 73fa4bd00b85920197221ba0fb1dfc5412c98d6a7a6eebe8e4c46289a2846edfaede0feadd5e7b020c09b716206ca641e33b465c9968c4cbb6eb998b93593cc2
+	sha512sums = 6004c38f7d95b084aaad6d66c59a0b9056dc500d8e11db315b6cf6b8fae6ea56e84c38ef59528961ca156d8d7a99de1a55c3c0f2b0f40752e5997c8dd141f11b
+	sha512sums = 504c4c050e86639d839d809b2b4d84fe4f4e4cee38bd1c2c1bea275902c8440cd1b0cb994090d9a72980887e14e006b95596260fffda03945de0acae16a91891
+	sha512sums = 06cf0662a4ac8bc8fe8b4cae13a244d03536239fec9839b5b67f64aeda8e3268e7d01d65acf401a45ba8415da31c6acc9c8d9bc725390f8ab640242a5253d5c8
+
+pkgname = boscaceoil

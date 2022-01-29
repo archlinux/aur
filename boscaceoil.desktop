@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bosca Ceoil
+Exec=/usr/bin/boscaceoil %F
+Comment=Bosca Ceoil is a free, easy to use tool for creating music!
+Type=Application
+StartupNotify=true
+Icon=boscaceoil
+Categories=Music;
+Terminal=false
