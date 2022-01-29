@@ -1,7 +1,7 @@
 pkgbase = axon-launcher
 	pkgdesc = Axon, a WPILib tool
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/axon/introduction.html
 	install = axon-launcher.install
 	arch = x86_64

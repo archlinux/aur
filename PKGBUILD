@@ -19,7 +19,6 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	# Was unable to fix license
-	#install -D -m644 "${pkgdir}/opt/Axon/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/Axon/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
