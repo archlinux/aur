@@ -1,6 +1,6 @@
 pkgbase = libreoffice-extension-hwp2odt
 	pkgdesc = LibreOffice extension that import hwp file and present in OpenDocumentText format
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/k2webtech/hwp2odt
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = libreoffice-extension-hwp2odt
 	license = custom
 	depends = libreoffice
 	noextract = Hwp2Odt.oxt
-	source = https://github.com/k2webtech/hwp2odt/releases/download/v0.3.7/Hwp2Odt.oxt
-	sha512sums = 75d73acb417d20181d706ced16f0dbba7a18c80737e03f71cd3b44d752c1d1169a2cd083fccd1be5ef310cab0cff98538149ef6a7e7f91340e3500d45a25ce58
+	source = https://github.com/k2webtech/hwp2odt/releases/download/v0.3.8/Hwp2Odt.oxt
+	sha512sums = afcae6e5487750a71e6b6990bdca776f52ed3c5d84f5879a751666fc9b6fe0611ba4d12c79dc5fbd66fe67ae560eaf77d4aaf46ef9c43ce3bcef4f3497e96e8a
 
 pkgname = libreoffice-extension-hwp2odt
