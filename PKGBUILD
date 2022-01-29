@@ -1,9 +1,9 @@
-# Maintainer: Ralph Zhou <1694487365@qq.com>
+# Maintainer: Ralph Zhou <ralph-zhou@qq.com>
 
 pkgname=lizzie-improve
 _pkgname=lizzie
-pkgver=20211117
-_pkgver=2.4.6.1
+pkgver=20220129
+_pkgver=2.4.7
 pkgrel=1
 pkgdesc="Analysis interface for KataGo/Leela Zero, more features added by yzy"
 arch=('x86_64')
@@ -13,15 +13,15 @@ depends=('bash' 'java-runtime' 'unzip')
 makedepends=('git')
 provides=('lizzie')
 conflicts=('lizzie')
-source=("https://hub.fastgit.org/yzyray/lizzieyzy/releases/download/2.4.6.1/2021-11-17-Mac+Linux64.zip"
+source=("https://github.com/yzyray/lizzieyzy/releases/download/2.4.7/2022-01-29-Mac+Linux64.zip"
         "lizzie.sh"
         "lizzie.desktop"
         "config.txt")
-sha256sums=('ded204c40f966db741c98000fbbcba267a65eaf4e91d53db101510b9f102b6fc'
+sha256sums=('0489f0365e664a150402b1c18f4227500b161b672bec2f9ec5e0f1b73131b2eb'
         'SKIP'
         'SKIP'
         'SKIP')
-_zipname=2021-11-17-Mac+Linux64
+_zipname=2022-01-29-Mac+Linux64
 prepare(){
     unzip -o "$_zipname.zip"
 }
