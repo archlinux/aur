@@ -55,6 +55,7 @@ pkgname = element-desktop-greentext
 	provides = element-desktop-git
 	conflicts = element-desktop
 	conflicts = element-desktop-git
+	conflicts = element-desktop-git-greentext
 	replaces = riot-desktop
 	backup = etc/element/config.json
 
@@ -64,5 +65,6 @@ pkgname = element-web-greentext
 	provides = element-web-git
 	conflicts = element-web
 	conflicts = element-web-git
+	conflicts = element-web-git-greentext
 	replaces = riot-web
 	replaces = vector-web

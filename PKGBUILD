@@ -107,7 +107,7 @@ package_element-web-greentext() {
   pkgdesc+="web version."
   replaces=(riot-web vector-web)
   provides=(element-web{,-git})
-  conflicts=(element-web{,-git})
+  conflicts=(element-web{,-git,-git-greentext})
 
   cd -- "element-web-${pkgver}"
 
@@ -130,7 +130,7 @@ package_element-desktop-greentext() {
   replaces=(riot-desktop)
   depends=("element-web" ${_electron} sqlcipher)
   provides=(element-desktop{,-git})
-  conflicts=(element-desktop{,-git})
+  conflicts=(element-desktop{,-git,-git-greentext})
   backup=("etc/element/config.json")
 
   cd -- "element-desktop-${pkgver}"
