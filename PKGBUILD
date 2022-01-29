@@ -4,7 +4,7 @@
 pkgname=qqmusic-bin
 _pkgname=qqmusic
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="tencent qq music"
 arch=("x86_64")
 url="https://y.qq.com/"
@@ -26,5 +26,6 @@ package(){
     sed -i '3c Exec=qqmusic %U' qqmusic.desktop
     sed -i 'N;2aName[zh_CN]=QQ音乐\nKeywords=qqmusic' qqmusic.desktop
     chmod g-w -R ${pkgdir}
+    sed -e 's/\xA4\x8B\x7A\xB9\x8D\xCF\x54\xAE/\xA4\x8B\x7A\xB9\x85\xEF\x54\xAE/' -i ${pkgdir}/opt/qqmusic/resources/app.asar
 }
  
