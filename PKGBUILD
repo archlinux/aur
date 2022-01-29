@@ -1,6 +1,6 @@
 # Maintainer: Nimai Patel <nimai.m.patel@gmail.com>
 pkgname=brn-git
-pkgver=r20.cae3221
+pkgver=r21.f5ff86c
 pkgrel=1
 epoch=
 pkgdesc="Text editor based bulk rename utility."
