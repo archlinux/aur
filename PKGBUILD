@@ -2,10 +2,10 @@
 
 _is_for=chrootuid
 _pkgname=chrootuid-doc
-group=('chrootuid')
+groups=('chrootuid')
 pkgname="${_pkgname}"
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="Documentation for 'chrootuid'."
 url="http://ftp.porcupine.org/pub/security/index.html"

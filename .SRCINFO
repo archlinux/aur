@@ -1,9 +1,10 @@
 pkgbase = chrootuid-doc
 	pkgdesc = Documentation for 'chrootuid'.
 	pkgver = 1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ftp.porcupine.org/pub/security/index.html
 	arch = any
+	groups = chrootuid
 	license = BSD
 	optdepends = chrootuid: For the actual software this documentation is for (including manpage).
 	source = README::ftp://ftp.porcupine.org/pub/security/chrootuid1.3.README
