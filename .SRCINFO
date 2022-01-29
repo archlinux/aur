@@ -1,19 +1,16 @@
 pkgbase = dcaenc-git
-	pkgdesc = A Free Software (LGPL-licensed) encoder for the DTS Coherent Acoustics audio format.
-	pkgver = 44.68ed0d6
+	pkgdesc = A Free Software (LGPL-licensed) encoder for the DTS Coherent Acoustics audio format. (GIT version)
+	pkgver = 3.0.g9b89d76
 	pkgrel = 1
-	url = http://aepatrakov.narod.ru/dcaenc/
+	url = https://gitlab.com/patrakov/dcaenc
 	arch = x86_64
-	arch = i686
 	license = LGPL
 	makedepends = git
-	makedepends = autoconf
 	depends = alsa-lib
-	provides = dcaenc
+	provides = libdcaenc.so
+	provides = dcaenc=3.0.g9b89d76
 	conflicts = dcaenc
-	options = !libtool
 	source = git+https://gitlab.com/patrakov/dcaenc.git
 	sha512sums = SKIP
 
 pkgname = dcaenc-git
-
