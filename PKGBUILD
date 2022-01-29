@@ -3,7 +3,7 @@
 pkgname=auracle-git
 _pkgname="${pkgname%-git}"
 pkgver=r366.8739929
-pkgrel=3
+pkgrel=4
 pkgdesc='A flexible client for the AUR'
 arch=('x86_64' 'i686')
 url="https://github.com/falconindy/auracle.git"
@@ -14,11 +14,11 @@ checkdepends=('python' 'fakechroot' 'gtest')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/falconindy/auracle.git"
-        "abseil-fix.patch::https://github.com/inglor/auracle/commit/587880dce84f47b9a01e3d53ccaeee11ba580d64.patch"
-        "static-fmt.patch::https://github.com/inglor/auracle/commit/18ab2549a8a656a670bdc17233abd5a7708c50ee.patch")
+        "0001-Update-abseil-cpp-to-LTS-20211102.0-version.patch"
+        "0002-Force-fmt-dependency-to-static.patch")
 b2sums=('SKIP'
-        '060a16cb5e3f8c244cfb12203ae0b356596fe255e0a56aee2fc6a140ac6ba7a28ed4da5e16fa43eb248ecedd577c29ab19b9455b657c3a039cbdd276c78aaec9'
-        'f735c89485d8682b9dee25c1b96152d44005b8bf78f683015c65dd93cc3802177fbf8a4fa94587958157ec175260417da101a1436f7e1c4106bc2e4c21974a70')
+        'b3b08d114328e09dc1a045733bfea7dcc2235eb4f18fe930d572ebb28a436cdea738acca3cc5d22b71ca47a74437b57f4790a8fc3fea7574fccfb2ccc7a594ed'
+        '9972eecdded08cb18b402c9ff8fa483a401ee13d1760de3094d9f8494d829f6ed6f75b66393b22c51e3dc98290d863b49d9c52dab17699d88d6a26b02e55fac5')
 
 pkgver() {
   cd "$_pkgname"
@@ -29,8 +29,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  patch -Np1 < "$srcdir/abseil-fix.patch"
-  patch -Np1 < "$srcdir/static-fmt.patch"
+  patch -Np1 < "${srcdir}/0001-Update-abseil-cpp-to-LTS-20211102.0-version.patch"
+  patch -Np1 < "${srcdir}/0002-Force-fmt-dependency-to-static.patch"
 }
 
 build() {
