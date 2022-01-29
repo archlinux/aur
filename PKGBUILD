@@ -1,6 +1,9 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
-pkgname='toit'
-pkgver='0.11.1'
+pkgname=toit
+_tag="v0.15.1"
+_repo="https://github.com/toitlang/toit.git"
+_commit=83084098ebda2dea7bde61c460a6c49bbf6d546c
+pkgver="${_tag#v}"
 pkgrel=1
 pkgdesc="Toit programming language SDK"
 arch=('x86_64')
@@ -8,35 +11,38 @@ url="https://toitlang.org"
 license=('LGPL')
 depends=('gcc-libs')
 makedepends=(
+	'git'
 	'cmake'
 	'ninja'
 	'go'
 )
-source=("https://github.com/toitlang/toit/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e923d4e42fb7356d3d22ea054521cbb8f33985d3ea3d1c19b18cec39b0b47dd0')
+source=("git+$_repo#commit=$_commit")
+noextract=()
+md5sums=('SKIP')
 
 prepare() {
-	cd "$pkgname-$pkgver"
-	cd third_party
-	git clone https://github.com/toitware/esp-idf.git
-	cd esp-idf
-	git checkout patch-head-4.3-3
-	git submodule update .
-	# We only need the mbedtls component, so don't bother doing a full recursive init.
+	cd "$srcdir/${pkgname%-git}"
+
+	# Initial the top-level modules but not nested ones.
+	git submodule update --init .
+
+	cd third_party/esp-idf
+	# We only need mbedtls of the esp-idf submodule to build the host tools.
+	# Don't bother initializing all the other components.
 	git submodule update --init components/mbedtls
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	IDF_PATH=third_party/esp-idf make -j1 tools
+	cd "$srcdir/${pkgname%-git}"
+	make -j1 all
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	IDF_PATH=third_party/esp-idf make DESTDIR="$pkgdir/" install
+	cd "$srcdir/${pkgname%-git}"
+	make DESTDIR="$pkgdir/" install
 	mkdir -p "$pkgdir/usr/bin"
-	ln -s "/opt/toit-sdk/bin/toitvm" "$pkgdir/usr/bin"
-	ln -s "/opt/toit-sdk/bin/toitc" "$pkgdir/usr/bin"
-	ln -s "/opt/toit-sdk/bin/toitpkg" "$pkgdir/usr/bin"
-	ln -s "/opt/toit-sdk/bin/toitlsp" "$pkgdir/usr/bin"
+	ln -s "/opt/toit-sdk/bin/toit.run" "$pkgdir/usr/bin"
+	ln -s "/opt/toit-sdk/bin/toit.compile" "$pkgdir/usr/bin"
+	ln -s "/opt/toit-sdk/bin/toit.pkg" "$pkgdir/usr/bin"
+	ln -s "/opt/toit-sdk/bin/toit.lsp" "$pkgdir/usr/bin"
 }
