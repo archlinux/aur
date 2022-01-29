@@ -1,6 +1,6 @@
 pkgbase = chimera
 	pkgdesc = Configure and manage games in Steam
-	pkgver = 0.12.6
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/chimeraos/chimera
 	arch = any
@@ -37,6 +37,7 @@ pkgbase = chimera
 	depends = ttf-dejavu
 	depends = wyvern
 	depends = innoextract
+	depends = mesa-utils
 	optdepends = libretro-mame-git
 	optdepends = libretro-stella2014-git
 	optdepends = libretro-opera-git
@@ -45,7 +46,7 @@ pkgbase = chimera
 	provides = steam-buddy
 	conflicts = steam-tweaks
 	conflicts = steam-buddy
-	source = chimera-0.12.6.tar.gz::https://github.com/chimeraos/chimera/archive/0.12.6.tar.gz
-	md5sums = b5cf431dbfae4b200d5bf149d6bc338c
+	source = chimera-0.13.0.tar.gz::https://github.com/chimeraos/chimera/archive/0.13.0.tar.gz
+	md5sums = 7db2c8aaab1073d53d77bc262ed7a357
 
 pkgname = chimera
