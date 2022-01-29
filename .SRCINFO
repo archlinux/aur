@@ -1,6 +1,6 @@
 pkgbase = smplayer-svn
 	pkgdesc = Media player with built-in codecs that can play virtually all video and audio formats
-	pkgver = 19.5.0.r9225M
+	pkgver = 21.10.0.rc34af9e16
 	pkgrel = 1
 	url = https://www.smplayer.info/
 	arch = x86_64
@@ -20,8 +20,7 @@ pkgbase = smplayer-svn
 	optdepends = mpv: alternative modern backend
 	provides = smplayer
 	conflicts = smplayer
-	source = smplayer-svn::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/
+	source = smplayer-svn::git+https://github.com/smplayer-dev/smplayer.git
 	sha256sums = SKIP
 
 pkgname = smplayer-svn
-

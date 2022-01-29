@@ -2,7 +2,7 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-svn
-pkgver=19.5.0.r9225M
+pkgver=21.10.0.rc34af9e16
 pkgrel=1
 pkgdesc='Media player with built-in codecs that can play virtually all video and audio formats'
 arch=('x86_64')
@@ -18,12 +18,12 @@ optdepends=('smplayer-themes-svn: icon themes collection'
             'mpv: alternative modern backend')
 provides=('smplayer')
 conflicts=('smplayer')
-source=($pkgname::svn+https://subversion.assembla.com/svn/smplayer/smplayer/trunk/)
+source=($pkgname::git+https://github.com/smplayer-dev/smplayer.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo $(grep -m1 'Version' smplayer.spec | cut -d " " -f9).r$(svnversion)
+  echo $(grep -m1 'Version' smplayer.spec | cut -d " " -f9).r$(git rev-parse --short HEAD) 
 }
 
 prepare() {
