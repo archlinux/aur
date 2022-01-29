@@ -1,9 +1,11 @@
 # Maintainer: dreieck
 
+_is_for=chrootuid
 _pkgname=chrootuid-doc
+group=('chrootuid')
 pkgname="${_pkgname}"
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Documentation for 'chrootuid'."
 url="http://ftp.porcupine.org/pub/security/index.html"
@@ -21,6 +23,6 @@ sha256sums=(
 )
 
 package() {
-  install -D -v -m644 "${srcdir}/README" "${pkgdir}/usr/share/doc/${_pkgname}/README.txt"
+  install -D -v -m644 "${srcdir}/README" "${pkgdir}/usr/share/doc/${_is_for}/README.txt"
   install -D -v -m644 "${srcdir}/chrootuid_license" "${pkgdir}/usr/share/licenses/${pkgname}/license"
 }
