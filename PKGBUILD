@@ -2,7 +2,7 @@
 
 pkgname=python-miepython
 pkgdesc='Mie scattering of light off perfect spheres'
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 arch=('any')
 url='https://miepython.readthedocs.io/'
@@ -10,6 +10,7 @@ license=('MIT')
 
 depends=('python-matplotlib' 'python-numba' 'python-numpy')
 optdepends=(
+  'jupyter-notebook: to run the included example notebooks'
   'python-scipy: to run the included examples'
 )
 checkdepends=('jupyter-nbconvert' 'jupyter-nbformat' 'python-pytest' 'python-scipy')
@@ -18,10 +19,17 @@ makedepends=('python-setuptools')
 _pyname=miepython
 source=(
   "$_pyname-$pkgver.tar.gz::https://github.com/scottprahl/$_pyname/archive/v$pkgver.tar.gz"
+  'install_data.patch'
 )
 sha256sums=(
-  '3ac8dd0fe67c97dfb07e6237d771d67fa48f354793838ef8a22da5618aa19bf8'
+  '17682fa74fdf4b6927cc7775452c5692ed51932b085c18210211257318c93740'
+  'ffcfec40dcd66351e840aa4c20c3682897da1f52a0258f81632036859a87967e'
 )
+
+prepare() {
+  cd "$_pyname-$pkgver"
+  patch -p0 -i "$srcdir/install_data.patch"
+}
 
 build() {
   cd "$_pyname-$pkgver"
