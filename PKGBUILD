@@ -4,7 +4,7 @@ _wayland=false
 _branch=dev
 _pkgname=espanso
 pkgname=${_pkgname}-git
-pkgver=2.0.0.r53.g8f291f4
+pkgver=2.0.0.r216.gcd9f26c
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -19,6 +19,7 @@ sha512sums=('SKIP')
 
 if [ "$_wayland" == "true" ]; then  # setcap "cap_dac_override+p" after install; See https://espanso.org/docs/next/install/linux/#adding-the-required-capabilities
   install="${pkgname}-wayland.install"
+  depends+=("wl-clipboard")
 fi
 
 pkgver() {
