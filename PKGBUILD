@@ -3,12 +3,12 @@
 # Contributor: FRC1721
 pkgname=axon-launcher
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Axon, a WPILib tool"
 arch=('x86_64')
 url="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/axon/introduction.html"
 license=('WPIlib')
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'tuxedo-control-center' 'util-linux-libs' 'xdg-utils' 'docker')
+depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'util-linux-libs' 'xdg-utils' 'docker')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/wpilibsuite/Axon/releases/download/v0.1.0/launcher_0.1.0_amd64.deb")

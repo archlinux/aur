@@ -1,7 +1,7 @@
 pkgbase = axon-launcher
 	pkgdesc = Axon, a WPILib tool
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/axon/introduction.html
 	install = axon-launcher.install
 	arch = x86_64
@@ -39,7 +39,6 @@ pkgbase = axon-launcher
 	depends = nspr
 	depends = nss
 	depends = pango
-	depends = tuxedo-control-center
 	depends = util-linux-libs
 	depends = xdg-utils
 	depends = docker
