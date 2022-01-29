@@ -1,6 +1,6 @@
 pkgbase = photobroom-git
 	pkgdesc = Photos managing tool
-	pkgver = v1.5.2.r213.g9211861b9
+	pkgver = v1.5.2.r324.gded3fb85d
 	pkgrel = 1
 	url = https://github.com/Kicer86/photobroom
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = photobroom-git
 	conflicts = photobroom
 	source = photobroom-git::git+https://github.com/Kicer86/photobroom.git#branch=master
 	source = cmake_modules::git+https://github.com/Kicer86/cmake_modules.git#commit=b1e3891453826887411c952315227d5c91e204b6
-	source = kwidgetsaddons::git+https://invent.kde.org/frameworks/kwidgetsaddons.git#commit=a2adad286075e4033bbba14ce0a3798a256622ac
+	source = qml-colorpicker::git+https://github.com/rshest/qml-colorpicker.git#commit=5967b3e38033794f54d66c57a03f9a356df0dc03
 	source = face_recognition_models::git+https://github.com/ageitgey/face_recognition_models.git#commit=e67de717267507d1e9246de95692eb8be736ab61
 	source = github_api::git+https://github.com/Kicer86/github_api.git#commit=61267f15d558819bab7218c353a03d0d449774f9
 	md5sums = SKIP
