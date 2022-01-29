@@ -1,12 +1,11 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=xtrkcad-hg
-pkgver=r2159
+pkgver=r4008
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('webkitgtk2>=2.4.11-16')
 makedepends=('cmake' 'mercurial' 'gettext')
 conflicts=('xtrkcad')
 provides=('xtrkcad')

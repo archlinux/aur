@@ -1,6 +1,6 @@
 pkgbase = xtrkcad-hg
 	pkgdesc = CAD program for designing model railroad layouts.
-	pkgver = r2159
+	pkgver = r4008
 	pkgrel = 1
 	url = http://www.xtrkcad.org/
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = xtrkcad-hg
 	makedepends = cmake
 	makedepends = mercurial
 	makedepends = gettext
-	depends = webkitgtk2>=2.4.11-16
 	provides = xtrkcad
 	conflicts = xtrkcad
 	source = hg+http://hg.code.sf.net/p/xtrkcad-fork/xtrkcad
 	sha512sums = SKIP
 
 pkgname = xtrkcad-hg
-
