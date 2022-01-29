@@ -1,15 +1,22 @@
 # Maintainer: kXuan <kxuanobj at gmail dot com>
 
 pkgname=protoc-gen-grpc-web
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=0
 pkgdesc='Protobuf gRPC compiler for Web Clients'
 arch=('x86_64')
 url='https://github.com/grpc/grpc-web'
 license=('Apache2')
 depends=('protobuf>=3')
-source=("https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz")
-sha512sums=('8023d32550df88d3cdd510211bcb58afc8c002e131f0d30720a7e8783e388709ebcf84277be255e3292578d8d93d0f6c5d6d3e062ac2eb2ae0d0a31eb201df8e')
+source=("https://github.com/grpc/grpc-web/archive/${pkgver}.tar.gz" "0001-remove-harmful-static-flag.patch")
+sha512sums=('1034b46107b4b528d0983be4fadae26e645fbeb5d15c0024dbb460d1a3258dc84f6181a06c81e55ab3032edd83b744c2f4b12a4882ea4f915db80d1c264453c2'
+            '8318175b047a74ee4b5ff51739bbe9cc83f86e842221f53d502d9287154fc28d03ae682922e399e2a8b38dc26ab016d61d1e2ac868f71d2e265e28aaf3c58d49')
+
+prepare() {
+    for i in *.patch; do
+        patch -p1 -d "grpc-web-${pkgver}" <"$i"
+    done
+}
 
 build() {
     cd "grpc-web-${pkgver}"
