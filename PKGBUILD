@@ -1,8 +1,8 @@
 # Maintainer: a821
 
 pkgname=litecoin-daemon
-pkgver=0.18.1
-pkgrel=2
+pkgver=0.21.1
+pkgrel=1
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('openssl' 'boost-libs' 'libevent' 'miniupnpc' 'zeromq' 'db4.8')
 makedepends=('boost')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v${pkgver}.tar.gz"
         "Fix-build-with-Boost-1.77.0.patch")
-sha256sums=('2d67cba11adc5890b9698ccddeb68dd3c2ff6af19bf3ed0f1c719348b914042f'
+sha256sums=('8f9c77c291c7824154d2dd7821b833ba51789ba4bab2af9d142e596f2acd899d'
             '0eb6bb4bb1c82560b063da9e0c2d0404df90637ab13b5db4a75f7959e29bfa44')
 
 prepare() {
