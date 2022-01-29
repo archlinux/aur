@@ -1,6 +1,6 @@
 pkgbase = osu-lazer-git
 	pkgdesc = An open source, free-to-win rhythm game
-	pkgver = 2021.416.0.r73.e227c076e5
+	pkgver = 2022.128.0.r33.8883505eed
 	pkgrel = 1
 	url = https://github.com/ppy/osu
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = osu-lazer-git
 	arch = aarch64
 	license = MIT
 	makedepends = git
-	makedepends = dotnet-sdk>=5
-	depends = dotnet-runtime>=5
+	makedepends = dotnet-sdk-5.0
+	depends = dotnet-runtime-5.0
 	depends = ffmpeg
 	depends = libgl
 	provides = osu-lazer
@@ -28,4 +28,3 @@ pkgbase = osu-lazer-git
 	sha256sums = fa5c5ebf1546e855103db2f97721448cb60c3cdf85c370e266c8a6eb0094e1b5
 
 pkgname = osu-lazer-git
-
