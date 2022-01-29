@@ -1,0 +1,17 @@
+pkgbase = dotto-git
+	pkgver = 0
+	pkgrel = 0
+	url = https://github.com/LibreSprite/Dotto
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = git
+	depends = sdl2
+	depends = freetype2
+	depends = libjpeg-turbo
+	depends = sdl2_image
+	depends = lua
+	source = git+https://github.com/LibreSprite/Dotto.git
+	sha256sums = SKIP
+
+pkgname = dotto-git
