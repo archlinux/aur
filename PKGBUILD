@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=4.4.r101737.g896395bbcf
+pkgver=5.1.r105398.g2f323b1978
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -61,7 +61,7 @@ depends=(
   speex
   srt
   v4l-utils
-  vmaf
+  vmaf-git
   xz
   zlib
 )
@@ -83,12 +83,12 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        '010-ffmpeg-fix-vmaf-model-path.patch')
+        '010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch')
 sha256sums=('SKIP'
-            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50')
+            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e')
 
 prepare() {
-    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
 }
 
 pkgver() {
