@@ -7,7 +7,7 @@ _major=5.16
 _minor=3
 _clr=1118
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=("WIREGUARD-MODULE")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=35750
+_clear_version=35760
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 
 source=("Manifest.kernel-native.${_clear_version}::https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
@@ -78,5 +78,5 @@ package() {
     msg2 "Fixing permissions..."
     chmod -Rc u=rwX,go=rX "$pkgdir"
 }
-b2sums=('d19fafcfc90184463d2a75f077aa07902451a6676656b30678779e69401a1e810a91b81a96951e02953d3ec5c2ab161b8288e30eb6cc03408000d8b3c40d7e00'
-        'd459b7e2c42f1e0a012463af537fc8b14161aa1a112f153ca362198a3543b8ac640a67d78bc5ead27bef8fc2907884700de731246c7e14df1c11105167358d21')
+b2sums=('16abccad885c6e708233dd100d62bc947e4484344075837504f86c48b54b3397c0c44f6161d6d026e3ef5bfda53e8b43f75f6c1c203a7489e555439219a7f47f'
+        'b9d8e249a8166505a7c5e2fa1a187b9996015e52159a9be465a364528a3a50a3d5b751616fd2d6e97295a03c42476690855758566b99655f7dbd531fc292a2c9')
