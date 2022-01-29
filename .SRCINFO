@@ -1,0 +1,18 @@
+pkgbase = tiledb
+	pkgdesc = The Universal Storage Engine
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://tiledb.com/
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = gcc
+	depends = cmake
+	depends = lz4
+	depends = bzip2
+	depends = zstd
+	depends = zlib
+	source = tiledb-2.6.2.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.6.2.tar.gz
+	sha256sums = 6974dd4e53edabda75cc8fa6b5772c71d6adb3eaafa76397e0542b3606f6f783
+
+pkgname = tiledb
