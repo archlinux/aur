@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('dose')
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Traffic light/signal/semaphore GUI for test driven development (TDD)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python-watchdog' 'python-colorama' 'python-docutils'
          'python-wxpython')
 options=(!emptydirs)
-sha256sums=('e2e69fbbe656862065aee13cb63aea2a7aeb95df0af7c4137f88f0ccfa11502d')
+sha256sums=('c611399f7de2236b7f4e6b8e559eff6b44bf8643877403d2bf7001a3f7879a0e')
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 check() {
