@@ -1,7 +1,7 @@
 pkgbase = python2-lxml
 	pkgdesc = Python2 binding for the libxml2 and libxslt libraries
-	pkgver = 4.6.3
-	pkgrel = 3
+	pkgver = 4.7.1
+	pkgrel = 1
 	url = https://lxml.de/
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = python2-lxml
 	makedepends = cython2
 	depends = python2
 	depends = libxslt
-	source = https://github.com/lxml/lxml/archive/lxml-4.6.3.tar.gz
-	sha512sums = 50e42d6269dc45b4c0ab3285c49307f8bee87fcc4b9e0f531e1ee37bcf83c5938b7e361f906a3158fac8df89a79b932dd64a8839455e45f45f3a5f0ba73ff6a5
+	source = https://github.com/lxml/lxml/archive/lxml-4.7.1.tar.gz
+	sha512sums = 33c88ff07152437a09268f3348ada97549686b5a59e2135631991ecc79ad02f35c20aae5d8363d2795bf058b05ef70fa6fbb56b081308cd89b073e176f4872d9
 
 pkgname = python2-lxml
