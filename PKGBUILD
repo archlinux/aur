@@ -13,5 +13,5 @@ md5sums=('SKIP')
 
 package() {
 	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/usr/bin" install
 }
