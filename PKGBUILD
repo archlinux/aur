@@ -3,8 +3,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=24357
-pkgrel=2
+pkgver=24831
+pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -34,12 +34,15 @@ build() {
 	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
         -DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE \
-	-DQT_PREFIX:PATH="/usr" -DWANT_SVNVERSION:BOOL=YES
+	-DQT_PREFIX:PATH="/usr" \
+	-DWANT_SVNVERSION:BOOL=YES \
+	-DWANT_CPP17:BOOL=YES \
+	
   make
 }
 
 package () {
-  cd "$srcdir"/$_svnmod/Scribus
+  cd $_svnmod/Scribus
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
   install -Dm644 scribus.desktop "$pkgdir"/usr/share/applications/scribus.desktop
