@@ -1,6 +1,6 @@
 pkgbase = moonraker-git
 	pkgdesc = HTTP frontend for Klipper 3D printer firmware
-	pkgver = r1092.f5ceefb
+	pkgver = r1125.13591d0
 	pkgrel = 1
 	url = https://github.com/Arksine/moonraker
 	arch = any
@@ -18,7 +18,10 @@ pkgbase = moonraker-git
 	depends = python-paho-mqtt
 	depends = python-pycurl
 	depends = python-zeroconf
+	depends = python-jinja
+	depends = python-dbus-next
 	depends = libgpiod
+	optdepends = polkit: enable service and machine control through moonraker
 	optdepends = python-preprocess-cancellation: enables exclude object processing
 	provides = moonraker
 	conflicts = moonraker
@@ -26,11 +29,15 @@ pkgbase = moonraker-git
 	source = git+https://github.com/Arksine/moonraker.git#branch=master
 	source = moonraker.conf
 	source = moonraker.service
+	source = moonraker.rules
+	source = sysusers.conf
 	source = tmpfiles.conf
 	source = moonraker-klipper.cfg
 	sha256sums = SKIP
-	sha256sums = 54d34777723232425240da5b75a04e73d25c459cc42ea3f01ecfebab0d232f34
-	sha256sums = 079711d571f950a5dc7dc3b48d59e3f13947db92a22753936e2e2f5c828fbee6
+	sha256sums = 644da0c92412a48e4c612a12a678f981da1be9cfa1d73f2443680c6cfbbebe77
+	sha256sums = b47549a8b888018b03bf41c9b6ccabf8c9e15d3b00a98bd21af85e9b4ec77f5c
+	sha256sums = cef040e973a9bb697659d1506a37a5f829551d5cc96e3f81ff588d5bd67cf1d0
+	sha256sums = 549309fd129c8c665a5aed2d4229c20e5a9927f4fbdc937e0982db4785b9ee0d
 	sha256sums = 7b908a1c3e0b56523d27db5283e2f546f93051fe855cc949635fafa37ba2f416
 	sha256sums = caa868a447ab94bd3e5f86cdf70e5deeb17b233077d94a424a682dfe49349a96
 

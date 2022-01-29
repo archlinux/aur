@@ -1,6 +1,6 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=moonraker-git
-pkgver=r1092.f5ceefb
+pkgver=r1125.13591d0
 pkgrel=1
 pkgdesc="HTTP frontend for Klipper 3D printer firmware"
 arch=(any)
@@ -18,16 +18,21 @@ depends=(klipper
          python-paho-mqtt
          python-pycurl
          python-zeroconf
+         python-jinja
+         python-dbus-next
          libgpiod)
 makedepends=(git)
-optdepends=("python-preprocess-cancellation: enables exclude object processing")
+optdepends=("polkit: enable service and machine control through moonraker"
+            "python-preprocess-cancellation: enables exclude object processing")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/klipper/moonraker.conf')
-source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.conf' 'moonraker.service' 'tmpfiles.conf' 'moonraker-klipper.cfg')
+source=('git+https://github.com/Arksine/moonraker.git#branch=master' 'moonraker.conf' 'moonraker.service' 'moonraker.rules' 'sysusers.conf' 'tmpfiles.conf' 'moonraker-klipper.cfg')
 sha256sums=('SKIP'
-            '54d34777723232425240da5b75a04e73d25c459cc42ea3f01ecfebab0d232f34'
-            '079711d571f950a5dc7dc3b48d59e3f13947db92a22753936e2e2f5c828fbee6'
+            '644da0c92412a48e4c612a12a678f981da1be9cfa1d73f2443680c6cfbbebe77'
+            'b47549a8b888018b03bf41c9b6ccabf8c9e15d3b00a98bd21af85e9b4ec77f5c'
+            'cef040e973a9bb697659d1506a37a5f829551d5cc96e3f81ff588d5bd67cf1d0'
+            '549309fd129c8c665a5aed2d4229c20e5a9927f4fbdc937e0982db4785b9ee0d'
             '7b908a1c3e0b56523d27db5283e2f546f93051fe855cc949635fafa37ba2f416'
             'caa868a447ab94bd3e5f86cdf70e5deeb17b233077d94a424a682dfe49349a96')
 
@@ -48,8 +53,13 @@ package() {
 
   install -Dm644 "$srcdir/moonraker.conf" "$pkgdir/etc/klipper/moonraker.conf"
   install -Dm644 "$srcdir/moonraker.service" "$pkgdir/usr/lib/systemd/system/moonraker.service"
+  install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/moonraker.conf"
   install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/moonraker.conf"
   install -Dm644 "$srcdir/moonraker-klipper.cfg" "$pkgdir/usr/share/doc/moonraker/moonraker-klipper.cfg"
+
+  # match directory owner/group and mode from [extra]/polkit
+  install -d -o root -g 102 -m 0750 "$pkgdir"/usr/share/polkit-1/rules.d
+  install -Dm644 "$srcdir/moonraker.rules" "$pkgdir/usr/share/polkit-1/rules.d/moonraker.rules"
 
   install -dm755 "$pkgdir/opt/moonraker"
   GLOBIGNORE=.git cp -r * "$pkgdir/opt/moonraker"

@@ -1,0 +1,30 @@
+// Allow Moonraker User to manage systemd units, reboot and shutdown
+// the system
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.freedesktop.systemd1.manage-units" ||
+         action.id == "org.freedesktop.login1.power-off" ||
+         action.id == "org.freedesktop.login1.power-off-multiple-sessions" ||
+         action.id == "org.freedesktop.login1.reboot" ||
+         action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+         action.id.startsWith("org.freedesktop.packagekit.")) &&
+        subject.user == "klipper") {
+        // Only allow processes with the "moonraker-admin" supplementary group
+        // access
+        try {
+            // more concise, but probably slightly slower:
+            /*var groups = polkit.spawn(["ps", "-o", "supgrp=", subject.pid.toString()]).split(",");
+            if (groups.indexOf("moonraker-admin") > -1) {
+                return polkit.Result.YES;
+            }*/
+
+            var gid = polkit.spawn(["getent", "group", "moonraker-admin"]).split(":")[2];
+            var cmdpath = "/proc/" + subject.pid.toString() + "/status";
+            var groups = polkit.spawn(["grep", "^Groups:", cmdpath]).split(" ");
+            if (groups.indexOf(gid) > -1) {
+                return polkit.Result.YES;
+            }
+        } catch (error) {
+            return polkit.Result.NOT_HANDLED;
+        }
+    }
+});
