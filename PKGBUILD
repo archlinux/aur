@@ -9,18 +9,17 @@
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
 _electron=electron13
-pkgbase=element.io
 pkgname=(element-{desktop,web}-greentext)
 pkgver=1.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
 makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
 optdepends=('darkhttpd: using element-web without electron')
-provides=(element-desktop{,-git} element-web{,-git})
-conflicts=(element-desktop{,-git} element-web{,-git})
+provides=(element-{desktop,web})
+conflicts=(element-{desktop,web}{,-git})
 _url="https://github.com/vector-im/element"
 source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-web-${pkgver}.tar.gz.asc::${_url}-web/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
@@ -106,7 +105,7 @@ build() {
 package_element-web-greentext() {
   pkgdesc+="web version."
   replaces=(riot-web vector-web)
-  provides=(element-web{,-git})
+  provides=(element-web)
   conflicts=(element-web{,-git,-git-greentext})
 
   cd -- "element-web-${pkgver}"
@@ -129,7 +128,7 @@ package_element-desktop-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
   depends=("element-web" ${_electron} sqlcipher)
-  provides=(element-desktop{,-git})
+  provides=(element-desktop)
   conflicts=(element-desktop{,-git,-git-greentext})
   backup=("etc/element/config.json")
 
