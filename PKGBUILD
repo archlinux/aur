@@ -1,8 +1,8 @@
 # Maintainer: xaque <xaque at duck dot com>
 
 pkgname=o3de-bin
-pkgver=2111.1
-_engver=21.11
+pkgver=2111.2
+_engver=21.11.2
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine'
 arch=('x86_64')
@@ -21,17 +21,18 @@ source=("open-3d-engine.desktop"
         "LICENSE_MIT.txt::https://raw.githubusercontent.com/o3de/o3de/development/LICENSE_MIT.TXT"
         "LICENSE_APACHE2.txt::https://raw.githubusercontent.com/o3de/o3de/development/LICENSE_APACHE2.TXT")
 sha256sums=('SKIP'
-            'c3b3df32b0a09ac4a67a27f6c0848c55000d3097461ccbfdcb4eced47e6cca7c'
+            'edb19e05943d3143dc904d6966dcf3caf11a01c953c0767d4f9af6d3fbc34e28'
             'f27d4324d7fe38ed228e4e0218d5e988ecaf73e550210df4b897f99146def037'
             'SKIP'
             'SKIP'
             'SKIP')
 
-prepare() {
-    echo -n "    Verifying PGP for ${pkgname}-${pkgver}-x86_64.deb ..."
-    gpgv --keyring "./${pkgname}-${pkgver}-releases.gpg" "${pkgname}-${pkgver}-x86_64.deb" >/dev/null 2>&1
-    echo " Passed"
-}
+# Latest release doesn't include _gpgbuilder or a Release file...
+# prepare() {
+#     echo -n "    Verifying PGP for ${pkgname}-${pkgver}-x86_64.deb ..."
+#     gpgv --keyring "./${pkgname}-${pkgver}-releases.gpg" "${pkgname}-${pkgver}-x86_64.deb" >/dev/null 2>&1
+#     echo " Passed"
+# }
 
 package() {
     echo -n "    Extracting data to /opt/O3DE ."
@@ -88,6 +89,6 @@ package() {
         _user=root
         _group=root
     fi
-	chown -R ${_user}:${_group} ${pkgdir}/opt/O3DE/${_engver}
+    chown -R ${_user}:${_group} ${pkgdir}/opt/O3DE/${_engver}
     chmod --reference /opt "${pkgdir}"/opt
 }
