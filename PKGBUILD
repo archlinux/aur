@@ -1,13 +1,17 @@
 # Maintainer: tatsumoto <tatsu at autistici.org>
+# Contributor: Bruno Pagani <archange@archlinux.org>
+# Contributor: Steef Hegeman <mail@steefhegeman.com>
+# Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
+# Contributor: Julian Schacher <jspp@posteo.net>
 # Contributor: Anthony Wang <ta180m@pm.me>
 # Contributor: teutat3s <teutates@mailbox.org>
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_electron=electron
-pkgbase=element-desktop-git-greentext
-pkgname=(element-{desktop,web}-git-greentext)
-pkgver=1.9.9.r29.g7078373fb+greentext
+_electron=electron13
+pkgbase=element.io
+pkgname=(element-{desktop,web}-greentext)
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
@@ -17,9 +21,11 @@ makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
 optdepends=('darkhttpd: using element-web without electron')
 provides=(element-desktop{,-git} element-web{,-git})
 conflicts=(element-desktop{,-git} element-web{,-git})
-_giturl="git+https://github.com/vector-im"
-source=("element-web::${_giturl}/element-web.git"
-        "element-desktop::${_giturl}/element-desktop.git"
+_url="https://github.com/vector-im/element"
+source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
+        element-web-${pkgver}.tar.gz.asc::${_url}-web/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
+        element-desktop-${pkgver}.tar.gz::${_url}-desktop/archive/v${pkgver}.tar.gz
+        element-desktop-${pkgver}.tar.gz.asc::${_url}-desktop/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
         custom-emoji.json
         autolaunch.patch
         io.element.Element.desktop
@@ -27,7 +33,9 @@ source=("element-web::${_giturl}/element-web.git"
         element-config.json
         element-web.sh
         element-desktop.sh)
-sha256sums=('SKIP'
+sha256sums=('0c6b7d848cae8d28cd11973f5d5f3eb81761f0044beb9b3d300bc3418e47709b'
+            'SKIP'
+            '1ecb82883ea3ff803b155bb89a96b44feccd91ca9c873bc549cd28834a99dbe2'
             'SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
@@ -35,24 +43,14 @@ sha256sums=('SKIP'
             'a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576'
             'eb422aca8b3dd71282aa432bdf66eaac0272a9ac5a91b332fde5f6fb9e885852'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
-            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
-
-pkgver() {
-  cd "$srcdir/element-web"
-
-  ( set -o pipefail
-    # cutting off 'v' prefix that presents in the git tag
-    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    echo '+greentext'
-  ) | tr -d '\n'
-}
+            '4c931121009985e7d3f73928c9db88508eedd974a7741e635bb290e3a2cd75db')
+validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
 
 prepare() {
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" element-desktop.sh
 
-  cd -- "$srcdir/element-web"
+  cd -- "element-web-${pkgver}"
   yarn install --no-fund
 
   # Custom reactions by @q:glowers.club
@@ -83,41 +81,42 @@ with open(emoji_file, "w") as ef:
      list-style: none;
      width: 38px;' || true
 
-  cd -- "$srcdir/element-desktop"
-  patch -p1 < "$srcdir/autolaunch.patch"
+  cd -- "$srcdir/element-desktop-${pkgver}"
+  patch -p1 < ../autolaunch.patch
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
+  sed -i 's|"electron": "13.5"|"electron": "13.6.7"|' package.json
   sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
-  cd "$srcdir/element-web/node_modules/matrix-react-sdk"
+  cd -- "$srcdir/element-web-${pkgver}/node_modules/matrix-react-sdk"
   patch -p1 --forward < "$srcdir/greentext.patch" || true
   yarn reskindex
 }
 
 build() {
-  cd "$srcdir/element-web"
-  yarn build --offline
+  cd -- "element-web-${pkgver}"
+  VERSION=${pkgver} yarn build --offline
 
-  cd "$srcdir/element-desktop"
+  cd -- ../"element-desktop-${pkgver}"
   yarn run build:native
   yarn run build
 }
 
-package_element-web-git-greentext() {
+package_element-web-greentext() {
   pkgdesc+="web version."
   replaces=(riot-web vector-web)
   provides=(element-web{,-git})
   conflicts=(element-web{,-git})
 
-  cd element-web
+  cd -- "element-web-${pkgver}"
 
   install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/element
 
   cp -r webapp/* "${pkgdir}"/usr/share/webapps/element/
   install -Dm644 config.sample.json -t "${pkgdir}"/etc/webapps/element/
   ln -s /etc/webapps/element/config.json "${pkgdir}"/usr/share/webapps/element/
-  echo "$pkgver" > "$pkgdir/usr/share/webapps/element/version"
+  echo "${pkgver}+greentext" > "$pkgdir/usr/share/webapps/element/version"
 
   # Install element web launcher
   install -Dm755 "$srcdir/element-web.sh" "$pkgdir/usr/bin/element-web"
@@ -126,7 +125,7 @@ package_element-web-git-greentext() {
   install -Dm644 "$srcdir/element-config.json" "$pkgdir/etc/webapps/element/config.sample.json"
 }
 
-package_element-desktop-git-greentext() {
+package_element-desktop-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
   depends=("element-web" ${_electron} sqlcipher)
@@ -134,7 +133,7 @@ package_element-desktop-git-greentext() {
   conflicts=(element-desktop{,-git})
   backup=("etc/element/config.json")
 
-  cd element-desktop
+  cd -- "element-desktop-${pkgver}"
 
   install -d "${pkgdir}"{/usr/lib/element/,/etc/webapps/element}
 
@@ -148,10 +147,10 @@ package_element-desktop-git-greentext() {
 
   # Required extras
   install -Dm644 ../io.element.Element.desktop -t "${pkgdir}"/usr/share/applications/
-  install -Dm755 ../element-desktop.sh "$pkgdir/usr/bin/element-desktop"
+  install -Dm755 ../element-desktop.sh "${pkgdir}/usr/bin/element-desktop"
 
   # Icons
-  install -Dm644 ../element-web/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
+  install -Dm644 ../element-web-${pkgver}/res/themes/element/img/logos/element-logo.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/io.element.Element.svg
   for i in 16 24 48 64 96 128 256 512; do
     install -Dm644 build/icons/${i}x${i}.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/io.element.Element.png
   done
