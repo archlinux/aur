@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lemmy
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="A link aggregator for the fediverse"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=(
   'pict-rs: for image hosting backend'
 )
 options=('!lto')
-_commit='f53902ecff3f8267dd3b39d252bee2bf4cf16f9e'
+_commit='8c98eb201feb014036d7a567dedaa7511a5d1eec'
 source=("$pkgname::git+https://github.com/LemmyNet/lemmy.git#commit=$_commit")
 b2sums=('SKIP')
 
