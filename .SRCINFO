@@ -8,7 +8,6 @@ pkgbase = context
 	license = GPL
 	provides = context
 	provides = context-lmtx
-	conflicts = texlive-bin
 	replaces = context-bin
 	source = http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip
 	sha256sums = SKIP

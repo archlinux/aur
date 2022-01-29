@@ -11,7 +11,7 @@ license=(GPL)
 depends=()
 replaces=(context-bin)
 provides=(${_pkgname} ${_pkgname}-lmtx)
-conflicts=(texlive-bin)
+conflicts=()
 optdepends=()
 source=("http://lmtx.pragma-ade.nl/install-lmtx/context-linux-64.zip")
 sha256sums=(SKIP)
@@ -29,7 +29,7 @@ package() {
 
   install -d "$context"
   cp -r texmf texmf-context "$context"
-  install -Dt "${pkgdir}/usr/bin" texmf-linux-64/bin/*
+  install -Dt "${pkgdir}/usr/local/bin" texmf-linux-64/bin/*
 }
 
 pkgver() {
