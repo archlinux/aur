@@ -19,7 +19,7 @@ elif [[ "$CARCH" == "i686" ]] ; then
 fi
 
 source=(
-  "https://download.brother.com/welcome/dlf105163/dcpt220pdrv-$pkgver-$pkgrel.i386.rpm"
+	"https://download.brother.com/welcome/dlf105163/dcpt220pdrv-$pkgver-$pkgrel.i386.rpm"
 )
 
 sha256sums=(
@@ -30,6 +30,6 @@ package()
 {
 	install -d $pkgdir/usr/bin
 	install -d $pkgdir/var/spool/lpd
-	install -Dm755 "$srcdir"/usr/bin/brprintconf_dcpt220 "$pkgdir"/usr/bin/
+	# install -Dm755 "$srcdir"/usr/bin/brprintconf_dcpt220 "$pkgdir"/usr/bin/
 	cp -R $srcdir/opt $pkgdir/opt
 }
