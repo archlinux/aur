@@ -1,12 +1,48 @@
-## v1.5.2.dev
+## v1.5.3.dev
+
+#### Changed:
+
+* The Dock icon no longer appears while the app is launching in macOS.
+* The Dock icon no longer appears when clicking on a desktop notification on macOS.
+* Clicking on a desktop notification will now show the file or folder which triggered the
+  notification. Previously, only clicking on the "Show" button of the notification
+  would open the file browser.
+* Removed update notifications by the CLI.
+* Proper symlink handling: Remote items which are symlinks will now be synced as symlinks
+  instead of empty files. Local symlinks will no longer be followed during indexing or
+  silently ignored when syncing. Instead, attempting to upload a symlink will raise an
+  error because uploading symlinks is not currently supported by the public Dropbox API.
 
 #### Fixed:
 
-* Fixes an issue where the output of CLI commands would get truncated to 80 chars when
-  piped to another command and not attached to an interactive stream such as a terminal.
-* Improve handling of OSErrors when determining the ctime of a local file.
-* Python 3.10 compatibility of Linux (Qt) GUI, thanks to @raffaem.
+* Fixes a crash of the `maestral activity` CLI command when run from the macOS App Bundle
+  due to a missing packaged library.
+* Fixes an issue which prevented the `maestral gui` command from working with the macOS
+  app bundle.
+* Fixes an issue where moving a local file to overwrite another file, for example with mv
+  in the terminal, could generate an incorrect conflicting copy during upload sync.
+* Properly handle when the local Dropbox directory is renamed by changing the casing only
+  on case-insensitive file systems such as APFS on macOS.
+* Fixes an issue which could result in sync errors not being cleared after the successful
+  sync of an item under some circumstances.
+* Relative passed to `maestral move-dir` are now interpreted relative to the working
+  directory where the command is run instead of the working directory of the sync daemon.
+
+## v1.5.2
+
+#### Changed:
+
+* Improved dialog flow on Linux when the local Dropbox folder is missing.
+* Improved error handling when determining the change time (ctime) of a local file fails.
+
+#### Fixed:
+
+* Fixes an issue where the output of CLI commands would get truncated to 80 characters
+  when piped to another command and not attached to an interactive stream such as a
+  terminal.
+* Fixes Python 3.10 compatibility of Linux (Qt) GUI, thanks to @raffaem.
 * Fixes an issue where the CLI fails to install on Apple Silicon Macs.
+* Fixes a startup loop of the Linux GUI when the local Dropbox folder is missing.
 
 ## v1.5.1
 
