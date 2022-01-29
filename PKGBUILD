@@ -1,16 +1,16 @@
+# Maintainer: Lari Tikkanen <lartza@outlook.com>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Sébastien Luttringer
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: mickael9 <mickael9 at gmail dot com>
 # Contributor: TingPing <tingping@tingping.se>
-# Maintainer: Lari Tikkanen <lartza@outlook.com>
 
 _gitname=znc
 pkgname=znc-git
-pkgver=1.7.0.r54.g0f137953
+pkgver=1.8.2.r170.g9be0cae1
 pkgrel=1
 pkgdesc='An IRC bouncer with modules & scripts support'
-url='http://znc.in/'
+url='https://wiki.znc.in/ZNC'
 license=('Apache')
 arch=('i686' 'x86_64')
 provides=('znc')

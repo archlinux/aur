@@ -1,8 +1,8 @@
 pkgbase = znc-git
 	pkgdesc = An IRC bouncer with modules & scripts support
-	pkgver = 1.7.0.r54.g0f137953
+	pkgver = 1.8.2.r170.g9be0cae1
 	pkgrel = 1
-	url = http://znc.in/
+	url = https://wiki.znc.in/ZNC
 	install = znc-git.install
 	arch = i686
 	arch = x86_64
@@ -35,4 +35,3 @@ pkgbase = znc-git
 	sha256sums = 8cd1b5b011c706fea9dc0c70d4daa75a53bf0966d6e96a3fce3a541777aa2771
 
 pkgname = znc-git
-

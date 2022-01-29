@@ -2,19 +2,15 @@
 
 # arg 1:  the new package version
 post_install() {
-  echo '==> Use `sudo -u znc znc --makeconf` to generate your first config'
+  echo '==> Use `sudo -u znc znc --datadir=/var/lib/znc --makeconf` to generate your first config'
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 post_upgrade() {
-  if [[ -d /var/lib/znc/configs ]]; then
-    echo '==> Migrating /var/lib/znc to /var/lib/znc/.znc'
-    mkdir -m700 /var/lib/znc/.znc
-    chown znc:znc /var/lib/znc/.znc
-
-    find /var/lib/znc/ -maxdepth 1 -mindepth 1 -not -name '.znc' -exec mv -t /var/lib/znc/.znc {} \;
+  if [[ -d /var/lib/znc/.znc ]]; then
+    echo '==> Migrating /var/lib/znc/.znc to /var/lib/znc'
+    mv /var/lib/znc/.znc/* /var/lib/znc/
+    rmdir /var/lib/znc/.znc
   fi
 }
-
-# vim:set ts=2 sw=2 ft=sh et:
