@@ -10,6 +10,7 @@ pkgname=(pipewire-full-git
          pipewire-full-jack-git
          pipewire-full-pulse-git
          pipewire-full-v4l2-git
+         pipewire-full-x11-bell-git
          pipewire-full-zeroconf-git
          gst-plugin-pipewire-full-git
          pipewire-full-jack-client-git
@@ -17,7 +18,7 @@ pkgname=(pipewire-full-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
          )
-pkgver=0.3.43.r151.g2e1a08ed
+pkgver=0.3.44.r25.g115875dc
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -52,6 +53,8 @@ build() {
     -D libcamera=disabled \
     -D sdl2=disabled \
     -D session-managers=[] \
+    -D jack-devel=true \
+    -D libjack-path=/usr/lib \
     -D vulkan=enabled \
     -D ffmpeg=enabled \
     -D udevrulesdir=/usr/lib/udev/rules.d
@@ -76,18 +79,20 @@ _ver=${pkgver:0:3}
 
 package_pipewire-full-git() {
   license+=(LGPL)
-  depends=(rtkit libx11 libdbus-1.so libncursesw.so libreadline.so
+  depends=(rtkit libdbus-1.so libncursesw.so libreadline.so
            libsndfile.so libudev.so libasound.so libsystemd.so
            libwebrtc_audio_processing.so libusb-1.0.so
            libbluetooth.so libsbc.so libldacBT_{enc,abr}.so
            libfreeaptx.so libfdk-aac.so
-           liblilv-0.so libcanberra.so)
+           liblilv-0.so)
   optdepends=('pipewire-session-manager: Session manager'
               'pipewire-full-docs-git: Documentation'
               'pipewire-full-alsa-git: ALSA configuration'
               'pipewire-full-jack-git: JACK support'
               'pipewire-full-jack-client-git: JACK device/client'
               'pipewire-full-pulse-git: PulseAudio replacement'
+              'pipewire-full-v4l2-git: V4L2 interceptor'
+              'pipewire-full-x11-bell-git: X11 bell'
               'pipewire-full-zeroconf-git: Zeroconf support'
               'pipewire-full-roc-git: ROC support'
               'gst-plugin-pipewire-full-git: GStreamer support'
@@ -109,7 +114,10 @@ package_pipewire-full-git() {
 
   _pick docs usr/share/doc
 
-  _pick jack usr/bin/pw-jack usr/lib/pipewire-$_ver/jack
+  _pick jack usr/bin/pw-jack
+  _pick jack usr/include/jack
+  _pick jack usr/lib/libjack*
+  _pick jack usr/lib/pkgconfig/jack.pc
   _pick jack usr/share/man/man1/pw-jack.1
   _pick jack usr/share/pipewire/jack.conf
 
@@ -119,6 +127,8 @@ package_pipewire-full-git() {
   _pick pulse usr/lib/systemd/user/pipewire-pulse.*
 
   _pick v4l2 usr/bin/pw-v4l2 usr/lib/pipewire-$_ver/v4l2
+
+  _pick x11-bell usr/lib/pipewire-$_ver/libpipewire-module-x11-bell.so
 
   _pick zeroconf usr/lib/pipewire-$_ver/libpipewire-module-{raop,zeroconf}-discover.so
 
@@ -147,7 +157,7 @@ package_pipewire-full-docs-git() {
 
 package_pipewire-full-alsa-git() {
   pkgdesc+=" - ALSA configuration"
-  depends=(pipewire-full-git pipewire-session-manager)
+  depends=(pipewire-session-manager pipewire-full-git)
   provides=(pipewire-alsa pulseaudio-alsa)
   conflicts=(pipewire-alsa)
 
@@ -162,10 +172,11 @@ package_pipewire-full-alsa-git() {
 package_pipewire-full-jack-git() {
   pkgdesc+=" - JACK support"
   license+=(GPL2)
-  depends=(pipewire-session-manager pipewire-full-git
+  depends=(sh pipewire-session-manager pipewire-full-git
            libpipewire-$_ver.so)
-  provides=(pipewire-jack)
-  conflicts=(pipewire-jack)
+  optdepends=('jack-example-tools: for official JACK example-clients and tools')
+  provides=(jack libjack.so libjackserver.so libjacknet.so)
+  conflicts=(jack jack2)
 
   mv jack/* "$pkgdir"
 
@@ -201,6 +212,18 @@ package_pipewire-full-v4l2-git() {
   conflicts=(pipewire-v4l2)
 
   mv v4l2/* "$pkgdir"
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
+}
+
+package_pipewire-full-x11-bell-git() {
+  pkgdesc+=" - X11 bell"
+  depends=(sh libx11 pipewire-full-git
+           libpipewire-$_ver.so libcanberra.so)
+  provides=(pipewire-x11-bell)
+  conflicts=(pipewire-x11-bell)
+
+  mv x11-bell/* "$pkgdir"
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 }
