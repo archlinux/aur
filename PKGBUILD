@@ -4,7 +4,7 @@
 pkgname=qt5-webchannel
 _qtver=5.15.2
 pkgver=5.15.2+kde+r5
-pkgrel=1
+pkgrel=2
 _commit=fa8b07105b5e274daaa8adcc129fa4aa0447f9f7
 arch=('x86_64')
 url='https://www.qt.io'
@@ -16,6 +16,7 @@ groups=('qt' 'qt5')
 _pkgfqn=qtwebchannel
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
+options=(debug)
 
 pkgver() {
   cd $_pkgfqn
