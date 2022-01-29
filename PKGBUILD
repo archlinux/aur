@@ -1,9 +1,10 @@
 # Maintainer: tatsumoto <tatsu at autistici.org>
-# Contributor: ta180m <ta180m@pm.me>
+# Contributor: Anthony Wang <ta180m@pm.me>
 # Contributor: teutat3s <teutates@mailbox.org>
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
+_electron=electron
 pkgbase=element-desktop-git-greentext
 pkgname=(element-{desktop,web}-git-greentext)
 pkgver=1.9.9.r28.gcfa97212f+greentext
@@ -12,7 +13,7 @@ pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
-makedepends=(npm git yarn python rust sqlcipher electron nodejs-lts-fermium)
+makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
 optdepends=('darkhttpd: using element-web without electron')
 provides=(element-desktop{,-git} element-web{,-git})
 conflicts=(element-desktop{,-git} element-web{,-git})
@@ -35,7 +36,6 @@ sha256sums=('SKIP'
             'eb422aca8b3dd71282aa432bdf66eaac0272a9ac5a91b332fde5f6fb9e885852'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
-_electron=electron
 
 pkgver() {
   cd "$srcdir/element-web"
@@ -87,7 +87,7 @@ with open(emoji_file, "w") as ef:
   patch -p1 < "$srcdir/autolaunch.patch"
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
-  sed -i 's|"https://packages.riot.im/desktop/update/"|null|' element.io/release/config.json
+  sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
   cd "$srcdir/element-web/node_modules/matrix-react-sdk"
