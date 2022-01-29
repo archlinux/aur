@@ -1,8 +1,8 @@
 pkgbase = xdg-utils-symlink-fix
-	pkgdesc = Command line tools that assist applications with a variety of desktop integration tasks (symlink fix)
+	pkgdesc = xdg-utils replacement which respects mimeapps.list being a symlink
 	pkgver = 1.1.3+21+gb937642
-	pkgrel = 1
-	url = https://www.freedesktop.org/wiki/Software/xdg-utils/
+	pkgrel = 2
+	url = https://gitlab.freedesktop.org/xdg/xdg-utils/-/merge_requests/49
 	arch = any
 	license = MIT
 	makedepends = docbook-xsl
