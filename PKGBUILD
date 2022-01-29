@@ -1,4 +1,5 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andreas Hauser <andy-aur@splashground.de>
 
 _langs=(afr amh ara asm aze aze_cyrl bel ben bod bos bre bul cat ceb ces
@@ -12,15 +13,18 @@ tel tgk tgl tha tir ton tur uig ukr urd uzb uzb_cyrl vie yid yor)
 
 pkgbase=tesseract-data
 pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-${l}; done))
+_pkgname=tessdata
 epoch=2
 pkgver=4.1.0
-pkgrel=1
-pkgdesc="An OCR programm"
+pkgrel=2
+pkgdesc='Tesseract OCR data'
 arch=(any)
-url="https://github.com/tesseract-ocr/tessdata"
-license=("APACHE")
-depends=()
-source=($pkgbase-$pkgver.tar.gz::https://github.com/tesseract-ocr/tessdata/archive/$pkgver.tar.gz)
+url="https://github.com/tesseract-ocr/$_pkgname"
+license=(Apache)
+depends=(tesseract)
+groups=($pkgbase)
+_archive="$_pkgname-$pkgver"
+source=("$url/archive/$pkgver/$_archive.tar.gz")
 sha256sums=('990fffb9b7a9b52dc9a2d053a9ef6852ca2b72bd8dfb22988b0b990a700fd3c7')
 
 build() {
@@ -31,13 +35,9 @@ build() {
 for l in ${_langs[@]}; do
     eval "
 package_tesseract-data-${l}(){
-    pkgdesc=\"Tesseract OCR data ($l)\"
-    depends=('tesseract')
-    groups=('tesseract-data')
-
-    mkdir -p \$pkgdir/usr/share/tessdata
-    cp \$srcdir/tessdata-$pkgver/${l}.* \$pkgdir/usr/share/tessdata/
-    find \$pkgdir/usr/share/tessdata -type f -exec chmod 0644 {} \;
+	pkgdesc+=' ($l)'
+	cd '$_archive'
+	install -Dm0644 -t \"\$pkgdir/usr/share/$_pkgname/\" $l.*
 }
     "
 done
