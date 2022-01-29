@@ -1,0 +1,14 @@
+pkgbase = fiber-cli
+	pkgdesc = Fiber Command Line Interface
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/gofiber/cli
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/gofiber/cli/archive/refs/tags/v0.0.9.tar.gz
+	sha256sums = 727b26230584908affc45d2fb94e5786fd749f558e98cf956c1238bf18e4d73e
+
+pkgname = fiber-cli
