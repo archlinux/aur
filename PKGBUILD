@@ -2,7 +2,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=libt3widget
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A C++ terminal dialog toolkit."
 arch=('x86_64' 'i686')
@@ -20,7 +20,7 @@ install=''
 changelog=
 source=("http://os.ghalkes.nl/dist/$pkgname-$pkgver.tar.bz2")
 noextract=()
-md5sums=('9f99670096687c3a73c30ec1b0058aa2')
+md5sums=('d1d8eab7b1f23f05c885a55b42626f90')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
