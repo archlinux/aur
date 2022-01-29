@@ -1,8 +1,8 @@
 # Maintainer: Arisu <arisuuwu32@gmail.com>
 
 pkgname="zeroc-ice-php"
-pkgver=3.7.6
-pkgrel=0
+pkgver=3.7.7
+pkgrel=1
 pkgdesc="PHP bindings for Ice RPC framework"
 arch=("i686" "x86_64")
 url="https://zeroc.com"
@@ -16,17 +16,13 @@ depends=("zeroc-ice=$pkgver" "php")
 
 source=("ice-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice/archive/v${pkgver}.tar.gz")
 
-sha256sums=('75b18697c0c74f363bd0b85943f15638736e859c26778337cbfe72d31f5cfb47')
+sha256sums=('3aef143a44a664f3101cfe02fd13356c739c922e353ef0c186895b5843a312ae')
 
 make_args=(
     "OPTIMIZE=yes"
     "ICE_HOME=/usr/" 
     "ICE_BIN_DIST=cpp"
 )
-prepare() {
-    cd ${srcdir}/ice-${pkgver}/
-    patch -p1 -i ../../redundant.patch
-}
 
 build() {
     cd ${srcdir}/ice-${pkgver}/php
