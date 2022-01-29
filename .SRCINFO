@@ -1,7 +1,7 @@
 pkgbase = sheldon
 	pkgdesc = A fast and configurable shell plugin manager
 	pkgver = 0.6.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sheldon.cli.rs
 	arch = x86_64
 	license = Apache

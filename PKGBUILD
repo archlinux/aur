@@ -2,7 +2,7 @@
 
 pkgname=sheldon
 pkgver=0.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and configurable shell plugin manager"
 arch=('x86_64')
 url="https://sheldon.cli.rs"
@@ -16,11 +16,17 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed 's/^[vV]//;s/-/+/g'
+
+  git describe --tags | sed 's/^v//'
 }
 
 prepare() {
   cd "$pkgname"
+
+  # backport fix for tests
+  git cherry-pick --no-commit 9aa06fdd5cb284daae8c48648d614e3823f3f9f3
+
+  # download dependencies
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -36,6 +42,7 @@ build() {
 
 check() {
   cd "$pkgname"
+
   cargo test --frozen --all-features
 }
 
