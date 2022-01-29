@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.16.0.r5320.6cdf843a
+pkgver=0.16.0.r5339.2c59435e
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -40,6 +40,17 @@ sha256sums=('SKIP'
             '68f1c7c550a317d8175311325b6c4809b0ec761b0badba7926eca7475d1bc27f'
             '9004f727c18129c667804fa987938c8d4a1a27ec8fed6bb2668f03284a884dcc')
 
+_builddir="build"
+_builddir_pkgver="build-pkgver"
+
+_meson_setup () {
+	arch-meson \
+		--buildtype=debug \
+		-Dwerror=false \
+		-Dexamples=false \
+		"${pkgname}" "$1"
+}
+
 prepare () {
 	(
 		cd "${pkgname}"
@@ -47,17 +58,13 @@ prepare () {
 		patch -Np1 < "${srcdir}/0002-xwayland-add-support-for-changing-global-scale-facto.patch"
 	)
 
-	arch-meson \
-		--buildtype=debug \
-		-Dwerror=false \
-		-Dexamples=false \
-		"${pkgname}" build
+	_meson_setup "${_builddir_pkgver}"
 }
 
 pkgver () {
 	(
 		set -o pipefail
-		meson introspect --projectinfo build \
+		meson introspect --projectinfo "${_builddir_pkgver}" \
 			| awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
 	)
 	cd "${pkgname}"
@@ -65,7 +72,8 @@ pkgver () {
 }
 
 build () {
-	meson compile -C build
+	_meson_setup "${_builddir}"
+	meson compile -C "${_builddir}"
 }
 
 package () {
