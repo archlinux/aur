@@ -1,0 +1,13 @@
+pkgbase = python-aiohttp-autoreload
+	pkgdesc = Makes aiohttp server autoreload on source code change.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/anti1869/aiohttp_autoreload
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/anti1869/aiohttp_autoreload/archive/master.zip
+	sha1sums = 2bfab4de574c8c298336d3138da06e3de257c214
+
+pkgname = python-aiohttp-autoreload
