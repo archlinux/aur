@@ -1,6 +1,6 @@
 # Maintainer: Gabe Banks <gabriel.t.banks@gmail.com>
 pkgname='forx'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="a command line tool for checking exchange rates between currencies, both crypto and fiat."
 arch=('x86_64')
