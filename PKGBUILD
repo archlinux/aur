@@ -18,6 +18,7 @@ makedepends=(
     "wayland-protocols"
     "libnotify"
     "scdoc"
+    "libuv"
         )
 provides=('japokwm' "$_pkgname")
 conflicts=('japokwm' "$_pkgname")

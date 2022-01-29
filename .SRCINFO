@@ -12,6 +12,7 @@ pkgbase = japokwm-git
 	makedepends = wayland-protocols
 	makedepends = libnotify
 	makedepends = scdoc
+	makedepends = libuv
 	depends = lua
 	provides = japokwm
 	provides = japokwm
