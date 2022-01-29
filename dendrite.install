@@ -1,7 +1,7 @@
 post_upgrade(){
  # notify about breaking changes
  # https://wiki.archlinux.org/title/PKGBUILD#install
- if [ "$1" != "$2" ] && [ "$2" = "0.6-1" ]; then
+ if [[ $1 != 0.6* ]] && [[ $2 == 0.6* ]]; then
   cat <<INFO
 
 Dendrite is now using configuration v2, as it moved from Kafka to NATS Jetstream.
