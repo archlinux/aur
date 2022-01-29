@@ -102,10 +102,12 @@ pkgname = pipewire-full-jack-git
 	depends = pipewire-full-git
 	depends = libpipewire-0.3.so
 	optdepends = jack-example-tools: for official JACK example-clients and tools
+	provides = pipewire-jack
 	provides = jack
 	provides = libjack.so
 	provides = libjackserver.so
 	provides = libjacknet.so
+	conflicts = pipewire-jack
 	conflicts = jack
 	conflicts = jack2
 
