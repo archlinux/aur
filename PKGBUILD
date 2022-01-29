@@ -2,7 +2,7 @@
 
 pkgname=o3de-bin
 pkgver=2111.2
-_engver=21.11.2
+_engver=21.11
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine'
 arch=('x86_64')
