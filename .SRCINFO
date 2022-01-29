@@ -1,0 +1,18 @@
+pkgbase = fairtris-git
+	pkgdesc = PC clone of the official classic Nintendo Tetris® game for the NES console, Linux fork
+	pkgver = v3.0.0.2.beta.r23.g13f5c4f
+	pkgrel = 1
+	url = https://github.com/chronoscz/Fairtris
+	arch = any
+	license = Unlicense
+	makedepends = lazarus
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	provides = fairtris
+	conflicts = fairtris
+	source = git+https://github.com/chronoscz/Fairtris
+	sha256sums = SKIP
+
+pkgname = fairtris-git
