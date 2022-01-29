@@ -1,6 +1,6 @@
 pkgbase = python-loguru
 	pkgdesc = Python logging made (stupidly) simple
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Delgan/loguru
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-loguru
 	makedepends = python-setuptools
 	depends = python
 	depends = python-colorama
-	source = python-loguru-0.5.3.tar.gz::https://github.com/Delgan/loguru/archive/0.5.3.tar.gz
-	md5sums = dc7f03e676f7bbfc8e6b5c9c1a30b7c0
+	source = python-loguru-0.6.0.tar.gz::https://github.com/Delgan/loguru/archive/0.6.0.tar.gz
+	md5sums = 10d86aa06920ab7c168906830837be58
 
 pkgname = python-loguru
-
