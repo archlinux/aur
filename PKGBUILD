@@ -8,7 +8,7 @@
 
 pkgname='osu-lazer-git'
 pkgver='2022.128.0.r33.8883505eed'
-pkgrel=1
+pkgrel=2
 pkgdesc='An open source, free-to-win rhythm game'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ppy/osu'
@@ -24,8 +24,8 @@ source=("${pkgname}::git+https://github.com/ppy/osu.git"
         "${pkgname}.xml")
 sha256sums=('SKIP'
             'c49001b8faa530300a1d33d1dddb4d8a7c671f432c0417d357a6e5e83f65a275'
-            'b13d409e96084bc024b31fd39fa98545561e9d3b0270ce3247457910dfd8298c'
-            'fa5c5ebf1546e855103db2f97721448cb60c3cdf85c370e266c8a6eb0094e1b5')
+            '0e117a17c394de80db9b9fdd526de3701d6de6ff1141e5fac57985f2573ae102'
+            'ee77425386d476f0f45d73e1ef3a0b5a2bbe8c1ad03716a5ff3e6f7afdad1458')
 
 pkgver() {
 	cd "${pkgname}"
