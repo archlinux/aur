@@ -6,7 +6,7 @@
 pkgname=('mysql57' 'libmysqlclient57' 'mysql-clients57')
 _pkgname=mysql
 pkgbase=mysql57
-pkgver=5.7.35
+pkgver=5.7.37
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition, v5.7"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('openssl' 'zlib' 'cmake' 'systemd-tools' 'systemd-libs' 'libaio'
 _boost_ver=1.59.0
 license=('GPL')
 url="https://www.mysql.com/products/community/"
-options=('!libtool')
+options=('!libtool' '!lto')
 source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar.gz"
         "http://sourceforge.net/projects/boost/files/boost/${_boost_ver}/boost_${_boost_ver//./_}.tar.gz"
         "mysqld-post.sh"
@@ -23,7 +23,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${_pkgname}-${pkgver}.tar
         "mysqld.service"
         "my-default.cnf"
         "systemd-sysusers.conf")
-sha256sums=('3b4d3d503a32e3779a386126d79586804b199b455d646c36e58cb50ea75230e9'
+sha256sums=('a99a9aa8635d2566dab764b2de56bed1730365d360e20bb27f56392ce54e18bd'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
