@@ -54,7 +54,9 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+if [ -z ${_makenconfig} ]; then
+  _makenconfig=n
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -200,7 +202,9 @@ prepare() {
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  if [ "$_makenconfig" = "y" ]; then
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  fi
 
   # save configuration for later reuse
   cat .config > "${SRCDEST}/config.last"
