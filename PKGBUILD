@@ -4,7 +4,7 @@
 pkgname=qt5-location
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -14,6 +14,7 @@ groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('984fcb09e108df49a8dac35d5ce6dffc49caafd2acb1c2f8a5173a6a21f392a0')
+options=(debug)
 
 prepare() {
   mkdir -p build
