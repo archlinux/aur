@@ -5,7 +5,6 @@ pkgbase = axon-launcher
 	url = https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/axon/introduction.html
 	install = axon-launcher.install
 	arch = x86_64
-	groups = 
 	license = WPIlib
 	depends = alsa-lib
 	depends = atk

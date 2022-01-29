@@ -8,7 +8,6 @@ pkgdesc="Axon, a WPILib tool"
 arch=('x86_64')
 url="https://docs.wpilib.org/en/stable/docs/software/wpilib-tools/axon/introduction.html"
 license=('WPIlib')
-groups=('')
 depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-file-utils' 'expat' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'tuxedo-control-center' 'util-linux-libs' 'xdg-utils' 'docker')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
