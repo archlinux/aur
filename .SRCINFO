@@ -1,6 +1,6 @@
 pkgbase = mhwd-nvidia-470xx
 	pkgdesc = mhwd-nvidia-470xx PCI ID database
-	pkgver = 470.86
+	pkgver = 470.94
 	pkgrel = 1
 	url = https://garudalinux.org/
 	arch = any
