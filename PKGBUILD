@@ -2,7 +2,7 @@
 
 pkgname=python-choicelib
 _pkgname=choicelib
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc='Choose the best library with a similar interface from the given list'
 url=https://github.com/vkbottle/choicelib
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(python-setuptools)
 depends=(python)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('fef2ed7252db1a49d3e75170f37ad0af1d76dc5bf7a748e16ebe141d463998fb')
+sha256sums=('450035a260e5621af793ea858be1f7b04e38bb50c7c40f9ef480da3c571314c7')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
