@@ -7,7 +7,7 @@
 pkgname=boscaceoil
 
 _pkgver_tag='2.0' # Git tag associated with the release where the latest archive is.
-_pkgver_suffix='.1' # Anything after $_pkgver_tag that is present in the archive name.
+_pkgver_suffix='.0' # Anything after $_pkgver_tag that is present in the archive name.
 _pkgver_upstream="$_pkgver_tag$_pkgver_suffix"
 
 pkgver="$_pkgver_upstream"

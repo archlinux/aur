@@ -1,6 +1,6 @@
 pkgbase = boscaceoil
 	pkgdesc = Bosca Ceoil is a free, easy to use tool for creating music!
-	pkgver = 2.0.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://boscaceoil.net/
 	arch = x86_64
