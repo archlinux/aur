@@ -1,0 +1,12 @@
+pkgbase = firefox-history-merger
+	pkgdesc = A CLI application to merge Firefox history and repair missing favicons
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://github.com/crazy-max/firefox-history-merger
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	source = https://github.com/crazy-max/firefox-history-merger/archive/refs/tags/2.12.0.tar.gz
+	sha512sums = 9d8ecdd5a8825a047d2fb64580749cc63b8dd09252ff2b17d5af45532a625f0663da7c49bcc911406a63362f94d553521c1ca492407acdc11c30cc615d9d54f3
+
+pkgname = firefox-history-merger
