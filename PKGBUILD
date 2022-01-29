@@ -2,7 +2,7 @@
 # Contributor: Lamelos <lamelos at gmail.com>
 
 pkgname=butane
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Human readable Butane Configs into machine readable Ignition Configs Translator"
 arch=("any")
