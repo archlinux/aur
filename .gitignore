@@ -1,6 +1,8 @@
-src/
-pkg/
-element-desktop/
-element-web/
-*.tar.xz
-*.tar.zst
+/src/
+/pkg/
+/element-desktop/
+/element-web/
+/*.tar.xz
+/*.tar.zst
+/*.tar.gz
+/*.tar.gz.asc
