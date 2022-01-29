@@ -31,5 +31,5 @@ package() {
     install -Dm644 "$pkgname.xml" "$pkgdir/usr/share/mime/packages/turbowarp-desktop.xml"
     install -Dm644 "$srcdir/$pkgname-$pkgver/resources/static/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/turbowarp-desktop.png"
     mkdir -p "$pkgdir/usr/share/turbowarp-desktop"
-    cp -r $srcdir/$pkgname-$pkgver/resources/* "$pkgdir/usr/share/turbowarp-desktop"
+    cp -r "$srcdir/$pkgname-$pkgver/resources"/* "$pkgdir/usr/share/turbowarp-desktop"
 }
