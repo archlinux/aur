@@ -1,0 +1,16 @@
+pkgbase = treefacts
+	pkgdesc = A CLI application that displays facts about trees
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Mr-Owllers/treefacts
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = curl
+	provides = treefacts
+	source = git+https://github.com/Mr-Owllers/treefacts
+	md5sums = SKIP
+
+pkgname = treefacts
