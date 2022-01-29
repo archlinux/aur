@@ -1,21 +1,16 @@
 pkgbase = pldebugger-git
 	pkgdesc = PL/pgSQL debugger server-side code
-	pkgver = REL.9_5_0.r2.g14c6caf
+	pkgver = v1.4.r0.g0b35ef2
 	pkgrel = 1
-	url = https://git.postgresql.org/gitweb/?p=pldebugger.git
+	url = https://github.com/EnterpriseDB/pldebugger
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = Artistic2.0
 	makedepends = git
-	makedepends = autoconf
-	depends = libpcap
-	depends = libjpeg
-	depends = libpng12
-	depends = giflib
+	depends = postgresql
 	options = !emptydirs
 	options = !libtool
-	source = git://git.postgresql.org/git/pldebugger.git
+	source = git+https://github.com/EnterpriseDB/pldebugger.git
 	md5sums = SKIP
 
 pkgname = pldebugger-git
-
