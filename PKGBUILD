@@ -1,6 +1,6 @@
 # Maintainer: Johan Brandhorst <johan.brandhorst at gmail dot com>
 pkgname=tinygo-bin
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 epoch=
 pkgdesc='TinyGo - Go for small spaces'
@@ -20,8 +20,8 @@ conflicts=('tinygo')
 source=("https://github.com/tinygo-org/tinygo/releases/download/v${pkgver}/tinygo${pkgver}.linux-amd64.tar.gz"
         "https://raw.githubusercontent.com/tinygo-org/tinygo/v${pkgver}/LICENSE"
 )
-sha256sums=('0a25d2deeb376d6e9fd191fbda2e30e1e9435141a3b780ba7a8f2ec53a52caf6'
-            '67e83ab613270ebd48737ce12a40daa3ae4f573fd64268fa85ae63dcd5f2bd9a')
+sha256sums=('c69039d7a1db27b49c391511d766747983795f5cd2eedbe4483bcda4c8d98809'
+            'e89302e8293d265f99268b8c136c38b242715f74e405f456344bf6508fbccf99')
 
 package() {
   install -d "${pkgdir}/usr/lib" "${pkgdir}/usr/bin"
