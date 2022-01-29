@@ -2,13 +2,18 @@
 # Contributor: Sergey Mastykov
 
 pkgname=linkchecker
-pkgver=10.0.1
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="Check websites for broken links."
 arch=('any')
 url="https://github.com/linkcheck/linkchecker"
 license=('GPL2')
-makedepends=('python-pytest')
+makedepends=(
+    'python-polib'
+    'python-pytest'
+    'python-setuptools'
+    'python-pip'  # FIXME: why?
+)
 depends=(
     'python-requests'
     'python-dnspython'
@@ -18,20 +23,16 @@ depends=(
 optdepends=(
     'python-argcomplete: For command-line completion'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/linkchecker/linkchecker/archive/v$pkgver.tar.gz")
-sha256sums=('81641ac8794d355585fa8807b525a868e7ff13a4d85d04c2aba13e2a25e71484')
+# GitHub releases are not recommended by upstream (and fail to build anyway).
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/L/LinkChecker/LinkChecker-$pkgver.tar.gz")
+sha256sums=('ea9354665341c9f1650b6bb716a64d2022635e7fa38e5e05280ba79a57c237b2')
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "LinkChecker-$pkgver"
     python setup.py build
 }
 
-# Upstream tests need to be fixed first
-#check() {
-#    cd "$pkgname-$pkgver" && python setup.py test
-#}
-
 package() {
-    cd "$pkgname-$pkgver"
+    cd "LinkChecker-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
