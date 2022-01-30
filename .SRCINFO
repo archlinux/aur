@@ -1,6 +1,6 @@
 pkgbase = bombadil-git
 	pkgdesc = A dotfile manager with templating
-	pkgver = 2.2.3.r3.gf6dae99
+	pkgver = 2.2.3.r4.gbac3b31
 	pkgrel = 1
 	url = https://github.com/oknozor/toml-bombadil
 	arch = any
