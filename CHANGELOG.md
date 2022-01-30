@@ -1,11 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.8.0] - 2022-01-22
+### Added
+- textDocument/semanticTokens/full
+  - variable semantic tokens are now split up into multiple tokens, offering a finer-grained view of what each part of it is for which should improve readability ([rcjsuen/dockerfile-language-service#100](https://github.com/rcjsuen/dockerfile-language-service/issues/100))
+
+### Fixed
+- textDocument/publishDiagnostics
+  - empty lines in heredoc content should not trigger the empty continuation line warning ([rcjsuen/dockerfile-utils#107](https://github.com/rcjsuen/dockerfile-utils/issues/107))
+
 ## [0.7.3] - 2021-12-12
 ### Fixed
 - textDocument/completion
   - fix error returned when computing completion items at the end of a COPY instruction with flags ([#258](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/258))
   - fix error returned when computing completion items at the end of a ADD instruction with flags ([#259](https://github.com/rcjsuen/dockerfile-language-server-nodejs/issues/259))
+  - fix infinite loop in ADD and COPY instructions when calculating WORKDIR suggestions for a build stage that shares its name with the image ([rcjsuen/dockerfile-language-service#99](https://github.com/rcjsuen/dockerfile-language-service/issues/99))
 - textDocument/formatting
   - ignore heredoc content when formatting ([rcjsuen/dockerfile-utils#105](https://github.com/rcjsuen/dockerfile-utils/issues/105))
 - textDocument/onTypeFormatting
@@ -657,7 +667,8 @@ All notable changes to this project will be documented in this file.
 - textDocument/formatting
 - textDocument/rangeFormatting
 
-[Unreleased]: https://github.com/rcjsuen/dockerfile-utils/compare/v0.7.3...HEAD
+[Unreleased]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.3...v0.8.0
 [0.7.3]: https://github.com/rcjsuen/dockerfile-utils/compare/v0.7.2...v0.7.3
 [0.7.2]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/rcjsuen/dockerfile-language-server-nodejs/compare/v0.7.0...v0.7.1
