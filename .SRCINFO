@@ -1,0 +1,18 @@
+pkgbase = applet-window-appmenu-git
+	pkgdesc = This is a Plasma 5 applet that shows the current window appmenu in your panels. This plasmoid is coming from Latte land but it can also support Plasma panels.
+	pkgver = v0.7.1.r2.ga673b19
+	pkgrel = 1
+	url = https://github.com/psifidotos/applet-window-appmenu.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = gettext
+	depends = kdecoration
+	source = applet-window-appmenu-git::git+https://github.com/psifidotos/applet-window-appmenu.git
+	md5sums = SKIP
+
+pkgname = applet-window-appmenu-git
