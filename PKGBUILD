@@ -1,4 +1,5 @@
 # Maintainer: Allen Zhong <moeallenz@gmail.com>
+# Contributor: Chris Darnell <cedeel@gmail.com>
 # Contributor: Sébastien Luttringer
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
@@ -6,7 +7,7 @@
 
 pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
-_pkgver=9.16.3
+_pkgver=9.16.25
 pkgver=${_pkgver//-/.}
 pkgrel=1
 url='https://www.isc.org/software/bind/'
@@ -16,7 +17,7 @@ options=('!emptydirs')
 makedepends=('libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'openssl' 'readline'
   'libidn2' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'lmdb' 'zlib' 'icu'
   'xz' 'libmaxminddb' 'libnsl' 'libuv')
-validpgpkeys=('AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38') #ISC Code Signing Key 2019 – 2020 (codesign@isc.org)
+validpgpkeys=('7E1C91AC8030A5A59D1EFAB9750F3C87723E4012') #ISC Code Signing Key 2019 – 2020 (codesign@isc.org)
 source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.xz"{,.asc}
         'tmpfiles.conf'
         'sysusers.conf'
@@ -25,7 +26,7 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.xz"{,.asc}
         'localhost.zone'
         'localhost.ip6.zone'
         '127.0.0.zone')
-sha256sums=('27ac6513de5f8d0db34b9f241da53baa15a14b2ad21338d0cde0826eaf564f7e'
+sha256sums=('9fa328850f82843ef8b7bf1ff5322cb68b110273a33f375ba41f35270f5e1ff3'
             'SKIP'
             'f0423c4ee8495da487e07e9144bec1d25f46a0cd2dfa7cfd7a761ef15bfefc98'
             '7c0acefcfcc3ae093550caed7ec90fe84bec8f7477459ffa7e71dda76bcbdb2c'
