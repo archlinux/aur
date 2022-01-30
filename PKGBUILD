@@ -7,11 +7,11 @@ pkgver=20191017024640
 pkgrel=1
 pkgdesc="Module for blockbar that prevents the block's width from changing"
 arch=("i686" "x86_64")
-url="https://gitlab.com/sambazley/blockbar-${module}"
+url="https://github.com/sambazley/blockbar-${module}"
 license=("ZLIB")
 makedepends=()
 depends=("blockbar")
-source=("git+https://gitlab.com/sambazley/blockbar-${module}.git")
+source=("git+https://github.com/sambazley/blockbar-${module}.git")
 md5sums=("SKIP")
 
 pkgver() {
