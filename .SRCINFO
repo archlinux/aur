@@ -1,17 +1,16 @@
 pkgbase = python-ansi
 	pkgdesc = ANSI cursor movement and graphics
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/tehmaze/ansi
 	arch = any
 	license = MIT
+	makedepends = python-pip
 	depends = python
+	noextract = ansi-0.3.1-py3-none-any.whl
 	options = !emptydirs
-	source = https://github.com/tehmaze/ansi/archive/ansi-0.2.0.tar.gz
-	md5sums = 4ca39529c69d1f663a0785a1602308e9
-	sha1sums = 1197085f91c4f95adf78aa02f6d03f947a19a8a9
-	sha256sums = bda257548e15d26c8a35edd00faf304c360bf1e1046ce416a9968278e356afbe
-	sha512sums = 22c69b5030f03eca9470e288c16e62042ccd02ef2e232600a4fab629354601d5da0f7c16b60dae7293c69255e5d4125298890d99dba8e5387960a5be60b92d61
-	b2sums = 436caa8e1f36e96f1844e79e3a0ff0c4099e76b25ce9f56c9d8663aeeb650f32fba75a14fe8548f557fb020e2340707272fdda4cdd3c245c903a4f801ae48413
+	source = https://files.pythonhosted.org/packages/py3/a/ansi/ansi-0.3.1-py3-none-any.whl
+	md5sums = c68753066a63e4277c701cdaf76b8ade
+	sha256sums = 885c7090434799e98efb40bbf0527b65ef7aa8348ac5c46f4676bef74a42ec63
 
 pkgname = python-ansi
