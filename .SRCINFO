@@ -1,0 +1,20 @@
+pkgbase = tonelib-metal-bin
+	pkgdesc = ToneLib Metal – Guitar amp simulator targeted at metal players
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://tonelib.net/tonelib-metal
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = glib2
+	depends = desktop-file-utils
+	depends = alsa-lib
+	depends = harfbuzz
+	depends = fribidi
+	depends = pango
+	depends = freetype2
+	optdepends = jack: JACK output
+	source = https://www.tonelib.net/download/ToneLib-Metal-amd64.deb
+	sha256sums = c2d5c5a336016d2103d8bd43587cbc8c2f2f9ce852d994399413e5b50a61ce36
+
+pkgname = tonelib-metal-bin
