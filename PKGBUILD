@@ -2,7 +2,7 @@
 pkgname=fnm-bin
 _pkgname=fnm
 pkgver=1.30.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and simple Node.js version manager, built in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Schniz/fnm"
