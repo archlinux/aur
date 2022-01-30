@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-quickui
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Vim plugin that displays a user-configurable menu bar"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f6ea5aa3ca203ee3ed325d90e8dc8772f229e773a405c9f704e857b260ff3c50')
+sha256sums=('27575bb6d26dc3e9ba1b3e34fb3bbb6178e36f8eb45684fa9e14d9e4f6df7fdd')
 
 package() {
 	cd "$pkgname-$pkgver"
