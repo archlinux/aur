@@ -1,16 +1,16 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=python-git-up
-pkgver=2.0.1
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A python implementation of git up"
 arch=('any')
 url="http://github.com/msiemens/PyGitUp"
 license=('MIT')
-depends=('python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython' 'python-click')
+depends=('python-termcolor' 'python-colorama' 'python-docopt' 'python-gitpython')
 makedepends=('python-poetry' 'python-setuptools')
 source=($pkgname-$pkgver.tar.gz::https://github.com/msiemens/PyGitUp/archive/v$pkgver.tar.gz)
-sha256sums=('8ef877445bb0720cc087c2be12ed77d7c7b13da9a22897eefc6ce6cac175ee85')
+sha256sums=('e032131e6054d8f0b464181fde89ae6a2d40cdebd884dc3cff4211e83786dd88')
 
 prepare() {
   cd "${srcdir}"/PyGitUp-$pkgver

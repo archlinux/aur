@@ -1,7 +1,7 @@
 pkgbase = python-git-up
 	pkgdesc = A python implementation of git up
-	pkgver = 2.0.1
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://github.com/msiemens/PyGitUp
 	arch = any
 	license = MIT
@@ -11,9 +11,7 @@ pkgbase = python-git-up
 	depends = python-colorama
 	depends = python-docopt
 	depends = python-gitpython
-	depends = python-click
-	source = python-git-up-2.0.1.tar.gz::https://github.com/msiemens/PyGitUp/archive/v2.0.1.tar.gz
-	sha256sums = 8ef877445bb0720cc087c2be12ed77d7c7b13da9a22897eefc6ce6cac175ee85
+	source = python-git-up-2.1.0.tar.gz::https://github.com/msiemens/PyGitUp/archive/v2.1.0.tar.gz
+	sha256sums = e032131e6054d8f0b464181fde89ae6a2d40cdebd884dc3cff4211e83786dd88
 
 pkgname = python-git-up
-
