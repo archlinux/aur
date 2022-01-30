@@ -1,7 +1,7 @@
 pkgbase = maestral-git
 	pkgdesc = Open-source Dropbox client
 	pkgver = 1.5.3.r1.gbf70c762
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral
 	arch = any
 	license = MIT
@@ -28,6 +28,8 @@ pkgbase = maestral-git
 	depends = python-systemd
 	optdepends = maestral-qt: Qt interface for the maestral daemon
 	optdepends = python-importlib-metadata: REQUIRED for python<3.8
+	provides = maestral
+	conflicts = maestral
 	source = maestral-git::git+https://github.com/SamSchott/maestral
 	source = maestral@.service
 	sha256sums = SKIP

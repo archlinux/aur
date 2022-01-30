@@ -3,7 +3,7 @@
 
 pkgname=maestral-git
 pkgver=1.5.3.r1.gbf70c762
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Dropbox client'
 arch=('any')
 url="https://github.com/SamSchott/maestral"
@@ -29,6 +29,8 @@ optdepends=(
 	'python-importlib-metadata: REQUIRED for python<3.8')
 makedepends=('git' 'python-build' 'python-install' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
+provides=('maestral')
+conflicts=('maestral')
 source=("$pkgname::git+$url"
         'maestral@.service')
 sha256sums=('SKIP'
