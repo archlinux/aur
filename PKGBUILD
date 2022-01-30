@@ -4,7 +4,7 @@
 pkgname=qt5-gamepad
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,6 +16,7 @@ groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('c77611f7898326d69176ad67a9b886f617cdedc368ec29f223d63537d25b075c')
+options=(debug)
 
 prepare() {
   mkdir -p build
