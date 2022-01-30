@@ -3,7 +3,7 @@
 
 pkgname=erlang-cl
 pkgver=1.2.4
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 pkgdesc='OpenCL binding for Erlang'
 url='https://github.com/tonyrog/cl'
@@ -16,6 +16,7 @@ b2sums=(SKIP)
 
 build() {
   cd cl
+  CFLAGS+=' -D_FORTIFY_SOURCE=2 -ffat-lto-objects -fPIE'
   rebar compile
 }
 
