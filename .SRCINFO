@@ -1,6 +1,6 @@
 pkgbase = notflix-git
-	pkgdesc = Bugswriter's tool which search magnet links and streams one with webtorrent
-	pkgver = 1.01.r0.g2eb7ba2
+	pkgdesc = Bugswriter's tool which search magnet links and streams one with peerflix.
+	pkgver = 1.02.r0.d6e51e21
 	pkgrel = 0
 	url = https://github.com/Bugswriter/notflix
 	arch = any
@@ -8,12 +8,9 @@ pkgbase = notflix-git
 	depends = bash
 	depends = grep
 	depends = coreutils
-	depends = libnotify
 	depends = curl
 	depends = sed
-	depends = mpv
-	depends = webtorrent-cli
-	optdepends = dmenu: menu system. Is actually required, but is optional because some people use dmenu without the package.
+	depends = peerflix
 	source = git+https://github.com/Bugswriter/notflix.git
 	sha256sums = SKIP
 
