@@ -1,3 +1,8 @@
+post_install() {
+/usr/bin/ctpkg grab ctpkg
+/usr/bin/ctpkg grab upg
+}
+
 pre_remove() {
 /usr/bin/ctpkg ctpm p sys ctpkg
 }
