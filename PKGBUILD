@@ -5,16 +5,14 @@
 
 pkgname=python-hupper
 pkgver=1.10.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Integrated process monitor for developing servers"
 arch=('any')
 url="https://github.com/pylons/hupper"
 license=('MIT')
-depends=('python>=3.5')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest-cov'
-              'python-pytest-runner'
-              'python-watchdog')
+depends=('python')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+checkdepends=('python-pytest' 'python-watchdog' 'python-pytest-cov')
 changelog=CHANGES.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/h/hupper/hupper-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/h/hupper/hupper-$pkgver.tar.gz.asc")
@@ -24,16 +22,17 @@ validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
 
 build() {
 	cd "hupper-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
 	cd "hupper-$pkgver"
-	python setup.py pytest -v
+	PYTHONPATH=./src pytest -x
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "hupper-$pkgver"
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-	install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
