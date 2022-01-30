@@ -1,12 +1,12 @@
 pkgbase = muscle
 	pkgdesc = Multiple sequence comparison by log-expectation
-	pkgver = 5.0.1428
+	pkgver = 5.1
 	pkgrel = 1
 	url = https://github.com/rcedgar/muscle
 	arch = i686
 	arch = x86_64
 	license = GPL
-	source = muscle-5.0.1428.tar.gz::https://github.com/rcedgar/muscle/archive/refs/tags/v5.0.1428.tar.gz
-	sha256sums = 59a8196890893e44a60f24134e8da24ee8381830a0f84e37378a3ca8be5430f5
+	source = muscle-5.1.tar.gz::https://github.com/rcedgar/muscle/archive/refs/tags/v5.1.tar.gz
+	sha256sums = 091d9f8733b92ff106c2a8eb274d1e5a57960d397a2068d8638d6002e8880dab
 
 pkgname = muscle
