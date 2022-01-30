@@ -1,0 +1,18 @@
+pkgbase = gnome-radio
+	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
+	pkgver = 14.0.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Radio
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = python
+	depends = libchamplain
+	depends = geoclue
+	depends = gst-plugins-base
+	depends = gst-plugins-bad
+	source = https://download.gnome.org/sources/gnome-radio/14.0/gnome-radio-14.0.0.tar.xz
+	sha256sums = f1e8aed63d12dd8a70d38ab6f7e518d4f8b54d4d548bc51d729cce0dd16e8efd
+
+pkgname = gnome-radio
