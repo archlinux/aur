@@ -8,6 +8,7 @@ pkgbase = c-lightning
 	makedepends = git
 	makedepends = gmp
 	makedepends = libsodium
+	makedepends = mrkd
 	makedepends = net-tools
 	makedepends = python
 	makedepends = python-mako
