@@ -2,7 +2,7 @@
 
 pkgname=0x0uploader
 pkgver=13.27a34ca
-pkgrel=1
+pkgrel=2
 pkgdesc='Uploader for the 0x0 file sharing service.'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${pkgname}"

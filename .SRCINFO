@@ -1,7 +1,7 @@
 pkgbase = 0x0uploader
 	pkgdesc = Uploader for the 0x0 file sharing service.
 	pkgver = 13.27a34ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/MorsMortium/0x0uploader
 	arch = any
 	license = GPL-3.0
