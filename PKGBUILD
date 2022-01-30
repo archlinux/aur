@@ -2,7 +2,7 @@
 
 pkgname=an-anime-game-launcher-bin
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
 conflicts=("an-anime-game-launcher")
@@ -36,7 +36,7 @@ source=(
 md5sums=(
     '9e43400cee4b747638ce21131a278e7d'
     '82d75ad72aed6c6962f203f9c6f329d3'
-    '7022b1fe2765112dae39285a286bcedb'
+    'acb9fecb5d938c4fb8e5facb0511bc23'
     'aa1d36e938b47b1f9fcff6aa5cec588b'
 )
 

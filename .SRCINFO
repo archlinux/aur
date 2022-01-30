@@ -1,6 +1,6 @@
 pkgbase = an-anime-game-launcher-bin
 	pkgdesc = An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 2
 	url = https://gitlab.com/KRypt0n_/an-anime-game-launcher
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = an-anime-game-launcher-bin
 	source = an-anime-game-launcher-bin.sh
 	md5sums = 9e43400cee4b747638ce21131a278e7d
 	md5sums = 82d75ad72aed6c6962f203f9c6f329d3
-	md5sums = 7022b1fe2765112dae39285a286bcedb
+	md5sums = acb9fecb5d938c4fb8e5facb0511bc23
 	md5sums = aa1d36e938b47b1f9fcff6aa5cec588b
 
 pkgname = an-anime-game-launcher-bin
