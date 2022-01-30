@@ -20,7 +20,7 @@ sha256sums=('96bdce4f3f7d6fc87dc8ae9855d29aaaf83b172082b65c3c56562653bbc6f9e0'
             '0bf0ff5eacc3e955a01c171cc21d8c989707ed9eee668ce176d67cfae06c8608'
             '255f1d8b0277bb9e4a3f84d09294fe34a54485b29f67220733343f37db052b94'
             '4d9052948619d22979977455d1e87e69168d1a147b4c74490e1652586fd68280'
-            'cf7861bf3f25ade776102dcfc5faebdc2411b915c82cdb15b477e0c44a9bae45')
+            '45387c39208b4e18f70059059729dfd06ed4c3393065aebd299072c6eec888ea')
 source=(
   "http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/modeling/mdt/papyrus/rcp/${_eclipsever}/${pkgver}/papyrus-${_eclipsever}-${pkgver}-linux64.tar.gz"
   "papyrus.png"
