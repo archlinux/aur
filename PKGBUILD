@@ -8,7 +8,7 @@ url='https://github.com/stetre/moonvulkan/'
 source=("https://github.com/stetre/$pkgname/archive/v$pkgver.tar.gz")
 arch=('x86_64')
 license=('MIT')
-depends=('lua5.3' 'vulkan-icd-loader')
+depends=('lua53' 'vulkan-icd-loader')
 sha256sums=('e56da6f4f487649ca51e0f7139aaf1dbbf450f74dc6abade80cd04ec8fbae8bf')
 
 build () {
