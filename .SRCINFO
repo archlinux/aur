@@ -1,16 +1,19 @@
 pkgbase = python-pyshortcuts
 	pkgdesc = Create desktop shortcuts to Python scripts
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/newville/pyshortcuts
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python-six
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
+	depends = python
 	optdepends = python-wxpython: for GUI
-	source = python-pyshortcuts-1.8.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pyshortcuts/pyshortcuts-1.8.0.tar.gz
+	source = python-pyshortcuts-1.8.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pyshortcuts/pyshortcuts-1.8.1.tar.gz
 	source = PyShortcut.desktop
-	sha256sums = 1e66467a0b7c15f42e2d616abeb2d80aa81d9e0ccca50991dc79bdb99f39d8c1
+	sha256sums = 5791056a57f5dc71225afa99838c13354ba00d05568f0e069bb59c2376cc6701
 	sha256sums = c243510caaf511a17ee62c89080dfa386a9d2de36eaa937c56de5a97c228ec82
 
 pkgname = python-pyshortcuts

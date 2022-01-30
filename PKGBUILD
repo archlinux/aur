@@ -2,29 +2,36 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=python-pyshortcuts
-_name=${pkgname#python-}
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Create desktop shortcuts to Python scripts"
 arch=('any')
 url="https://github.com/newville/pyshortcuts"
 license=('MIT')
-depends=('python-six')
-makedepends=('python-setuptools')
+depends=('python')
+makedepends=(
+	'python-setuptools-scm'
+	'python-build'
+	'python-install'
+	'python-wheel')
 optdepends=('python-wxpython: for GUI')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "PyShortcut.desktop")
-sha256sums=('1e66467a0b7c15f42e2d616abeb2d80aa81d9e0ccca50991dc79bdb99f39d8c1'
+source=(
+	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyshortcuts/pyshortcuts-$pkgver.tar.gz"
+	"PyShortcut.desktop")
+sha256sums=('5791056a57f5dc71225afa99838c13354ba00d05568f0e069bb59c2376cc6701'
             'c243510caaf511a17ee62c89080dfa386a9d2de36eaa937c56de5a97c228ec82')
 
 build() {
 	cd "pyshortcuts-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
+	# python setup.py build
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "pyshortcuts-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	# python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
