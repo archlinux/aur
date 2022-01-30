@@ -1,6 +1,6 @@
 pkgbase = nextcloud-client-git
 	pkgdesc = Nextloud client for linux
-	pkgver = 3.2.2.636e7159c
+	pkgver = 3.4.0.rc2.r181.gc69cecced
 	pkgrel = 1
 	url = https://nextcloud.com/
 	arch = i686
