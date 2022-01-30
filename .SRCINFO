@@ -1,6 +1,6 @@
 pkgbase = btrfs-assistant-git
 	pkgdesc = An application for managing BTRFS subvolumes and Snapper snapshots
-	pkgver = 0.0.1.r2.g6c63963
+	pkgver = 0.8.r4.gc0e8d89
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/btrfs-assistant
 	arch = x86_64
@@ -13,10 +13,11 @@ pkgbase = btrfs-assistant-git
 	depends = qt5-svg
 	depends = noto-fonts
 	depends = polkit
-	depends = btrfsmaintenance
 	optdepends = snapper
+	optdepends = btrfsmaintenance
 	provides = btrfs-assistant
 	conflicts = btrfs-assistant
+	backup = etc/btrfs-assistant.conf
 	source = git+https://gitlab.com/garuda-linux/applications/btrfs-assistant.git
 	md5sums = SKIP
 
