@@ -12,7 +12,6 @@ pkgbase = c-lightning
 	makedepends = net-tools
 	makedepends = python
 	makedepends = python-mako
-	makedepends = python-mistune
 	makedepends = sqlite
 	makedepends = zlib
 	optdepends = cppcheck: Static C/C++ code analysis
