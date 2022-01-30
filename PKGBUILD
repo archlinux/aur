@@ -2,12 +2,12 @@
 
 pkgname=0x0uploader
 pkgver=13.27a34ca
-pkgrel=2
+pkgrel=3
 pkgdesc='Uploader for the 0x0 file sharing service.'
 arch=('any')
 url="https://codeberg.org/MorsMortium/${pkgname}"
 license=('GPL-3.0')
-depends=('python' 'python-appdirs' 'python-pyclip' 'python-desktop-notifier')
+depends=('python' 'python-appdirs' 'python-pyclip' 'python-desktop-notifier' 'curl')
 makedepends=('git')
 sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")

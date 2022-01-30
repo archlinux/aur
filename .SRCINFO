@@ -1,7 +1,7 @@
 pkgbase = 0x0uploader
 	pkgdesc = Uploader for the 0x0 file sharing service.
 	pkgver = 13.27a34ca
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/MorsMortium/0x0uploader
 	arch = any
 	license = GPL-3.0
@@ -10,6 +10,7 @@ pkgbase = 0x0uploader
 	depends = python-appdirs
 	depends = python-pyclip
 	depends = python-desktop-notifier
+	depends = curl
 	source = 0x0uploader::git+https://codeberg.org/MorsMortium/0x0uploader.git
 	sha512sums = SKIP
 
