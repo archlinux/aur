@@ -4,7 +4,7 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=buildifier-bin
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "${pkgname%-bin}-${pkgver}::${url}/releases/download/${pkgver}/${pkgname%-bin}-linux-amd64"
   "LICENSE-${pkgver}::https://raw.githubusercontent.com/bazelbuild/buildtools/${pkgver}/LICENSE"
 )
-sha256sums=('a19126536bae9a3917a7fc4bdbbf0378371a1d1683ab2415857cf53bce9dee49'
+sha256sums=('b0b15dc1d59ec75d8720ba7ae5363cac349bad54a86866367f17808c68790b33'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 package() {
