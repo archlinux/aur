@@ -1,13 +1,16 @@
 pkgbase = python-ndim
-	pkgdesc = Compute multidimensional volumes and monomial integrals
-	pkgver = 0.1.5
-	pkgrel = 3
+	pkgdesc = Multidimensional volumes and monomial integrals
+	pkgver = 0.1.6
+	pkgrel = 1
 	url = https://github.com/nschloe/ndim
-	arch = x86_64
+	arch = any
 	license = GPL3
-	makedepends = python-setuptools
+	checkdepends = python-pytest-codeblocks
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
 	depends = python-sympy
-	source = https://files.pythonhosted.org/packages/source/n/ndim/ndim-0.1.5.tar.gz
-	sha512sums = 3b1765bf890631a678df69317148c3e0b179964dd49e59cb93f99564e7c36702de51383d9b33c6d30c778ec22917b63ab072788bb131e86778ec5af93b8a5b16
+	source = https://github.com/nschloe/ndim/archive/v0.1.6.tar.gz
+	sha512sums = a2c3d0ec48c2d90d9713289e5ed0a76c72b3ee04f5cb4f6abc74d3f1636a4ac30118e30322c70c006f4a89f8a64ef5e08a568b682112e440fe623a4b994a49f0
 
 pkgname = python-ndim
