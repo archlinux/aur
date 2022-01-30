@@ -20,8 +20,8 @@ makedepends=('cmake'
              'python'
              'git'
 )
-source=("git+https://github.com/KhronosGroup/SPIRV-Tools#tag=v${pkgver}"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers#tag=${_headers_version}"
+source=("git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v${pkgver}"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers.git#tag=${_headers_version}"
 )
 sha256sums=('SKIP'
             'SKIP'
