@@ -1,4 +1,5 @@
-# Maintainer: Tom Vincent <aur@tlvince.com>
+# Maintainer: Brenek Harrison <brenekharrison @ gmail d0t com>
+# Contributor: Tom Vincent <aur@tlvince.com>
 pkgname=friends
 _gemname=$pkgname
 pkgver=0.51
