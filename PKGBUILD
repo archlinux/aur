@@ -8,12 +8,11 @@ url="https://ruzhtw.top/pages/projects/CenterLinux/CTPM"
 depends=("fish" "sudo")
 license=("GPL-3.0 License")
 provides=("ctpkg")
-source=("https://raw.githubusercontent.com/TeaHouseLab/ctpkg/main/app")
+source=("https://cdngit.ruzhtw.top/pkghub/ctpkg")
 sha256sums=("SKIP")
+install='hooks.install'
 package() {
-	mkdir -p "${pkgdir}/usr/bin"
-	cp "${srcdir}/app" "${pkgdir}/usr/bin/ctpkg"
-	chmod +x "${pkgdir}/usr/bin/ctpkg"
+	install -m755 -D "${srcdir}/ctpkg" "${pkgdir}/usr/bin"
 	rm ../app
 	}
 

@@ -1,0 +1,8 @@
+pre_remove() {
+/usr/bin/ctpkg ctpm p sys ctpkg
+}
+
+op=$1
+shift
+
+$op "$@"
