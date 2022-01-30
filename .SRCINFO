@@ -1,6 +1,6 @@
 pkgbase = cider-canary
 	pkgdesc = Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories upcoming branch.
-	pkgver = 1.0.0.1189.7c55cde
+	pkgver = 1.1.0.1477.2efd9b7
 	pkgrel = 1
 	url = https://github.com/CiderApp/Cider.git
 	arch = armv7h
