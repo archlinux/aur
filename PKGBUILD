@@ -49,6 +49,7 @@ build() {
     --with-trashquota \
     --with-db=gdbm \
     --with-mailuser=courier --with-mailgroup=courier \
+    --build=x86_64-unknown-linux-gnu
   make
 }
 
