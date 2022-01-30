@@ -8,8 +8,9 @@
 #
 
 _pkgname=sidfactory2
-_pkgver=20210104
-_commit=fed95a77b995fc594c83d84eee073af1a396cf2b
+_pkgver=20211230
+#_commit=8a5dc723da875ba31e361f64c9de415525fd0e35
+
 
 pkg_ident="release-${_pkgver//_/-}"
 pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
@@ -30,8 +31,12 @@ makedepends=('pkgconfig' 'make' 'gcc')
 depends=('sdl2')
 optdepends=()
 conflicts=('sidfactory2')
+
+#
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Chordian/${_pkgname}/archive/${pkg_ident}.tar.gz")
-md5sums=('4ac9c5003f89caa629becf8e01f8e436')
+
+#
+sha256sums=('6e49d7164f36eabb8d64719f0f5a4683ddf937056b2cba031270080716561bb7')
 
 
 #
