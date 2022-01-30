@@ -1,5 +1,5 @@
 pkgbase = bind-rl
-	pkgver = 9.16.3
+	pkgver = 9.16.25
 	pkgrel = 1
 	url = https://www.isc.org/software/bind/
 	arch = x86_64
@@ -57,7 +57,7 @@ pkgname = bind-rl
 	depends = lmdb
 	depends = libmaxminddb
 	provides = dns-server
-	provides = bind=9.16.3
+	provides = bind=9.16.25
 	conflicts = bind
 	replaces = bind
 	backup = etc/named.conf
@@ -86,8 +86,8 @@ pkgname = bind-rl-tools
 	depends = python-ply
 	depends = libmaxminddb
 	optdepends = python: for python scripts
-	provides = dnsutils=9.16.3
-	provides = bind-tools=9.16.3
+	provides = dnsutils=9.16.25
+	provides = bind-tools=9.16.25
 	conflicts = dnsutils
 	conflicts = bind-tools
 	replaces = dnsutils
