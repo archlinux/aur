@@ -5,7 +5,7 @@ pkgver=13.6.8
 _commit=fc41c71ce0f2f156c15237bd0c792f4e0a847ff7
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
-pkgrel=2
+pkgrel=3
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -39,6 +39,7 @@ source=('git+https://github.com/electron/electron.git'
         'gn-visibility-webrtc.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'unbundle-use-char16_t-as-UCHAR_TYPE.patch'
+        'ffmpeg5.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -58,7 +59,7 @@ sha256sums=('SKIP'
             '574785a21168c3e9b7aa82630713ceb6ced12f699133db66b10fc84b7bb2c631'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-           )
+            '4f32b815349357ef1f17b36059cee588c994472b9754a194fff41ec21a93826b')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -147,6 +148,12 @@ prepare() {
   echo "Applying local patches..."
   # Fixes for building with libstdc++ instead of libc++
   patch -Np1 -i ../patches/chromium-90-ruy-include.patch
+
+  patch -Np1 -i ../ffmpeg5.patch
+  # Patches to build with ffmpeg 4.4; remove when ffmpeg 5.0 moves to stable
+  if ! pkg-config --atleast-version 59 libavformat; then
+    patch -Rp1 -i ../ffmpeg5.patch
+  fi
 
   patch -Rp1 -i ../add-clang-nomerge-attribute-to-CheckError.patch
   patch -Np1 -i ../chromium-freetype-2.11.patch
