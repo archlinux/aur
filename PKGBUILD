@@ -3,7 +3,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=('lib32-smbclient')
-pkgver=4.14.7
+pkgver=4.15.4
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=('lib32-avahi' 'lib32-gnutls' 'lib32-libcap' 'lib32-libcups'
 replaces=('lib32-libwbclient')
 provides=('lib32-libwbclient')
 source=("https://www.samba.org/samba/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('6f50353f9602aa20245eb18ceb00e7e5ec793df0974aebd5254c38f16d8f1906')
+sha256sums=('499065a589b7b9ffb8e3eb6efa8575985919a2999972afc469520a47322aec11')
 
 prepare() {
   cd samba-${pkgver}
