@@ -2,7 +2,7 @@
 # Contributor: Karol Babioch <karol at babioch dot de>
 
 pkgname=getssl
-pkgver=2.45
+pkgver=2.46
 pkgrel=1
 pkgdesc='Obtain SSL certificates from the letsencrypt.org ACME server. Suitable for automating the process on remote servers.'
 arch=('any')
