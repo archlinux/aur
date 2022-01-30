@@ -7,7 +7,7 @@
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.05.2201242"
+_wechat_devtools_ver="1.05.2201240"
 _wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
 _wechat_devtools_md5="85552bae33e98eb186c5068419efce03"
 
@@ -17,7 +17,7 @@ _install_dir="/opt/wechat-devtools"
 _node_version="v16.1.0"
 
 pkgname=wechat-devtools
-pkgver="${_wechat_devtools_ver}.1"  # 主版本号
+pkgver="${_wechat_devtools_ver}"  # 主版本号
 pkgrel=1   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version."
