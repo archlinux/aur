@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-extended-pak128.britain
-pkgver=r3890.a9dd7157c
+pkgver=r4031.3f8d1f3a1
 pkgrel=1
 pkgdesc="High resolution graphics set for Simutrans Extended, with a British theme"
 arch=('any')
@@ -10,7 +10,7 @@ license=('custom:Artistic')
 depends=('simutrans-extended-git')
 source=(http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.britain-ex-nightly.tar.gz
         license.txt)
-sha256sums=('22a97e4321c6936eb9e4a1f0b9e4e3dcb27e5b83045cb76741a15ec4956c86c7'
+sha256sums=('90fdf4cc91cd59fb5227daefc8bcee84f66632c581d47421ed3b3c400ac07f2b'
             'def758cfe51b6f16d838f777a6540163fb47f334df5a0fb86448f92a36a92017')
 
 package() {
