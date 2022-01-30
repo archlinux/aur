@@ -2,13 +2,13 @@
 
 pkgname=tagainijisho
 pkgver=1.1.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A Free Japanese dictionary and study assistant"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://www.tagaini.net/"
 license=('GPL3')
 depends=('qt5-base>=5.15')
-makedepends=('cmake>=2.8.1' 'desktop-file-utils')
+makedepends=('cmake>=2.8.1' 'desktop-file-utils' 'qt5-tools')
 source=(https://github.com/Gnurou/tagainijisho/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
 md5sums=('e6704078571db9584745ef4747105ef8')
 
