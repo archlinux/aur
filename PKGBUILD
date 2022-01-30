@@ -49,6 +49,7 @@ build() {
     --with-trashquota \
     --with-db=gdbm \
     --with-mailuser=courier --with-mailgroup=courier \
+    --with-notice=unicode --build=x86_64
   make
 }
 
