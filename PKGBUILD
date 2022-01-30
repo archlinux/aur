@@ -1,22 +1,17 @@
 # Maintainer: ArtFox3  <artfox3@gmail.com>
 pkgname="applet-window-appmenu-git"
 pkgver=v0.7.1.r2.ga673b19
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="This is a Plasma 5 applet that shows the current window appmenu in your panels. This plasmoid is coming from Latte land but it can also support Plasma panels."
 arch=('i686' 'x86_64')
 url="https://github.com/psifidotos/applet-window-appmenu.git"
 license=('GPL')
 groups=()
-makedepends=(
-  'gcc' 'git' 'extra-cmake-modules'
-)
-depends=(
-  'plasma-framework' 'gettext' 'kdecoration'
-)
-source=(
-  "$pkgname::git+$url"
-)
+makedepends=('gcc' 'git' 'extra-cmake-modules')
+depends=('plasma-framework' 'gettext' 'kdecoration')
+conflicts=('plasma5-applets-window-appmenu' 'plasma5-applets-window-appmenu')
+source=("$pkgname::git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
