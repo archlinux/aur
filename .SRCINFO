@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-turtlebot3-navigation
 	pkgdesc = ROS - The turtlebot3_navigation provides roslaunch scripts for starting the navigation.
-	pkgver = 1.2.2
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://wiki.ros.org/turtlebot3_navigation
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = ros-noetic-turtlebot3-navigation
 	depends = ros-noetic-map-server
 	depends = ros-noetic-move-base
 	depends = ros-noetic-turtlebot3-bringup
-	source = ros-noetic-turtlebot3-navigation-1.2.2.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.2.tar.gz
-	sha256sums = c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d
+	source = ros-noetic-turtlebot3-navigation-1.2.5.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.5.tar.gz
+	sha256sums = cee1be2249f18084075e4604b70463eb40a96d6f5c2e63efc7f2c501399dee3d
 
 pkgname = ros-noetic-turtlebot3-navigation
-
