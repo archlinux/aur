@@ -1,0 +1,15 @@
+diff --git a/src/dwsolv.cc b/src/dwsolv.cc
+index 6234e9f..238d72f 100644
+--- a/src/dwsolv.cc
++++ b/src/dwsolv.cc
+@@ -48,8 +48,8 @@ int sysResult;
+ int start_;
+ int my_pid_;
+ char DWcommand[256];
+-FILE *f, *fr, *fs;
+-int i, j, k, l;  // working integer set
++static FILE *f, *fr, *fs;
++static int i, j, k, l;  // working integer set
+ //
+ // common declare complete, start function
+ 

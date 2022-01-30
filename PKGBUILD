@@ -1,7 +1,7 @@
 # Maintainer: yasuo-ozu <yasuo@ozu.email>
 
 pkgname=qbsolv
-pkgver=0.2.10
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='A decomposing solver that finds a minimum value of a large quadratic unconstrained binary optimization (QUBO) problem'
 arch=('x86_64')
@@ -11,16 +11,17 @@ depends=()
 optdepends=()
 makedepends=(cmake make)
 options=()
-source=("git+https://github.com/dwavesystems/${pkgname}")
-md5sums=('SKIP')
+source=("git+https://github.com/dwavesystems/${pkgname}" "patch.patch")
+md5sums=('SKIP' 'SKIP')
 
-pkgver() {
-  cd "${pkgname}"
-  cat setup.py|sed -ne '/^\s*version='\''.*'\'',$/p' | sed -e 's/^.*'\''\(.*\)'\'',$/\1/'
-}
+# pkgver() {
+#   cd "${pkgname}"
+#   cat setup.py|sed -ne '/^\s*version='\''.*'\'',$/p' | sed -e 's/^.*'\''\(.*\)'\'',$/\1/'
+# }
 
 build() {
   cd "${pkgname}"
+  git apply ../patch.patch
   mkdir -p build
   cd build
   cmake -DQBSOLV_BUILD_CMD=ON ..
