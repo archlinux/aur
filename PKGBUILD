@@ -1,15 +1,13 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname=libusrsctp
 pkgver=0.9.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A portable SCTP userland stack"
 arch=(i686 x86_64)
 url=https://github.com/sctplab/usrsctp
 license=(custom)
 depends=(glibc)
 makedepends=(automake autoconf)
-conflicts=(libusrsctp-git)
-provides=(libusrsctp-git)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('7b28706449f9365ba9750fd39925e7171516a1e3145d123ec69a12486637ae2393ad4c587b056403298dc13c149f0b01a262cbe4852abca42e425d7680c77ee3')
 
