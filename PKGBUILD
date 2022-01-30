@@ -8,8 +8,8 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=2021.09.2+382
-pkgver=2021.09.2%2B382
+pkgver=2022.02.0.preview.392
+pkgver_url=2022.02.0-preview-392
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('f3dd882395ad8fad8ab263284608d50f56eb758a76a9d2a9b7968100c5efe4b0')
+sha256sums_x86_64=('64571acba0e4efe49e05984dc8bc308644f4e8a8cb2bb3354a245015a18c2218')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
@@ -38,7 +38,7 @@ package() {
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
-  cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
+  cd "$pkgdir/usr/lib/rstudio/bin/quarto/bin/"
   ln -sf /usr/bin/pandoc ./
   ln -sf /usr/bin/pandoc-citeproc ./
 
