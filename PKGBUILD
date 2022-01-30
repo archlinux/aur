@@ -7,7 +7,7 @@ pkgname=${_pkgname}-bin
 pkgver=4.5.12
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Terraria Server administration modification that runs on the open source TerrariaAPI."
 arch=("x86_64" "aarch64")
 url="https://github.com/Pryaxis/TShock"
@@ -34,6 +34,7 @@ sha512sums=('8257cbe6cdd2e66d0388e866e54f0c9935da05f720c57ea43e3176295581bf41c0a
 	'SKIP'
 )
 
+install="tshock.install"
 backup=("etc/conf.d/${_pkgname}/default.conf")
 
 package() {

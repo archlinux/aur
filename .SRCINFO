@@ -1,9 +1,10 @@
 pkgbase = tshock-bin
 	pkgdesc = A Terraria Server administration modification that runs on the open source TerrariaAPI.
 	pkgver = 4.5.12
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Pryaxis/TShock
+	install = tshock.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
