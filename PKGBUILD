@@ -58,7 +58,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/flameshot-org/flameshot"
 license=('GPL')
 depends=(qt5-base hicolor-icon-theme qt5-svg)
-makedepends=(qt5-tools git cmake)
+makedepends=(qt5-tools git cmake kguiaddons)
 optdepends=('xdg-desktop-portal: To make Sway and wlroots work'
             'xdg-desktop-portal-wlr: To make Sway and wlroots work'
             'grim: To make Sway and wlroots work')
@@ -87,9 +87,10 @@ build() {
 
   # Replace the version number in the cmake with the combination of versions above
   sed "s/${NORMAL_VERSION_PATTERN}/${NORMAL_VERSION_PATTERN}_${ROLLING_VERSION_PATTERN}/" CMakeLists.txt
+  cmake -S ./ \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DUSE_WAYLAND_CLIPBOARD=1
 
-
-  cmake -DCMAKE_INSTALL_PREFIX=/usr
   make -j$(nproc --ignore 1)
 }
 
