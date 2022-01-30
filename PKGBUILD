@@ -10,7 +10,7 @@ url="http://xpisar.wz.cz/ctstream"  #https://src.fedoraproject.org/rpms/ctstream
 license=('GPL3')
 depends=('perl' 'perl-libwww' 'perl-xml-xpath' 'perl-json')
 source=(http://xpisar.wz.cz/$pkgname/$pkgname-$pkgver{,.asc})
-validpgpkeys=('4B528393E6A3B0DFB2EF3A6412C9C5C767C6FAA2')
+validpgpkeys=('E3F42FCE156830A80358E6E94FD1AEC3365AF7BF') #Petr Pisar
 sha256sums=('44de49df2fb68faf155b65c97194fdec40c45afbabd1c4a4ab5e445fc88a36bb'
             'SKIP')
 
