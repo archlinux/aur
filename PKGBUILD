@@ -4,7 +4,7 @@
 pkgname=qt5-websockets
 _qtver=5.15.2
 pkgver=5.15.2+kde+r7
-pkgrel=1
+pkgrel=2
 _commit=b13b56904b76e96ea52d0efe56395acc94b17d96
 arch=('x86_64')
 url='https://www.qt.io'
@@ -17,6 +17,7 @@ groups=('qt' 'qt5')
 _pkgfqn=qtwebsockets
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
+options=(debug)
 
 pkgver() {
   cd $_pkgfqn
