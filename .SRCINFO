@@ -1,6 +1,6 @@
 pkgbase = musique-git
 	pkgdesc = A finely crafted music player
-	pkgver = 1.7.r9.g96afcad
+	pkgver = 1.10.1.r5.g686016b
 	pkgrel = 1
 	url = https://flavio.tordini.org/musique
 	arch = x86_64
@@ -11,15 +11,12 @@ pkgbase = musique-git
 	depends = taglib
 	depends = mpv
 	source = git+https://github.com/flaviotordini/musique.git
-	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/musique-missing-header.patch
 	source = git+https://github.com/flaviotordini/http.git
 	source = git+https://github.com/flaviotordini/idle.git
 	source = git+https://github.com/flaviotordini/media.git
 	sha256sums = SKIP
-	sha256sums = 13ff6edfa5fd8f407be0bdc3eabfbc0a513cd15f9b88f9707bde21714180aeea
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = musique-git
-
