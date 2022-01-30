@@ -14,12 +14,12 @@ source=("git+https://gitlab.com/yrws/morgenrot-cli")
 sha256sums=('SKIP')
 
 build() {
-	cd "${_name}"
+	cd "${_name}-cli"
 	make
 }
 
 package() {
-	cd "${_name}"
+	cd "${_name}-cli"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 	install -m644 -D LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
