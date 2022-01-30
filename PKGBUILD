@@ -1,12 +1,12 @@
 # Maintainer: igo95862 at yandex dot ru
 pkgname=bubblejail
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
 url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
-depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'hicolor-icon-theme' 'python-pyqt5' 'desktop-file-utils')
+depends=('python' 'python-xdg' 'bubblewrap' 'python-tomli' 'python-tomli-w' 'xdg-dbus-proxy' 'hicolor-icon-theme' 'python-pyqt5' 'desktop-file-utils')
 conflicts=('bubblejail-git')
 optdepends=(
 	'bash-completion: completions for bash shell'
@@ -22,7 +22,7 @@ source=(
 # Alternative if the above keyserver does not work
 # curl -s 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x5a3d06576a6a67443dfbe856f1a55e62951b2143' | gpg --import
 validpgpkeys=('5A3D06576A6A67443DFBE856F1A55E62951B2143')
-sha512sums=('533599220567254bc4b5077dccdb81895f58c5d1e620bb2ed68a846c4679b989d36b5e0f8b35fd796c1d8ceeabd74c1091d27fd7448201b2c2c4c64fd2c31340'
+sha512sums=('7691d8de054f264f6bed0844eb27854de8f36b705155ed6550aa67bdf3a068738f6e9b683d599e2a0f0d2413b20876fdbefa8fba8ab352fe6abbb4e2ce96123e'
             'SKIP')
 
 check () {
