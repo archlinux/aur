@@ -1,13 +1,13 @@
 # Maintainer: bellotto <joangarcez2100@gmail.com>
 
 pkgname=porth-gitlab
-pkgver=0.66
-pkgrel=4
+pkgver=0.56
+pkgrel=1
 pkgdesc="[Unstable/W.I.P] It's like Forth but in Python."
 arch=('x86_64')
 url="https://gitlab.com/tsoding/porth.git"
 license=('MIT')
-depends=('nasm' 'binutils' 'fasm')
+depends=('binutils' 'fasm')
 makedepends=('git' 'fasm')
 source=("git+https://gitlab.com/tsoding/porth.git")
 sha256sums=('SKIP')
