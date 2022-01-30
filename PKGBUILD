@@ -11,6 +11,7 @@ depends=(python)
 makedepends=(git)
 provides=(whoogle)
 conflicts=(whoogle)
+backup=('etc/default/whoogle')
 source=("git+$url.git"
         whoogle.service
         whoogle.conf
