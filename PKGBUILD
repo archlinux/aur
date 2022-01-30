@@ -1,33 +1,27 @@
-# Maintainer: Nikola Hadžić <nikola@firemail.cc>
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org>
+# Contributor: Nikola Hadžić <nikola@firemail.cc>
+
 pkgname=gst-plugins-rs
-pkgver=0.5.2
+pkgver=0.8.0
 pkgrel=1
-epoch=
 pkgdesc="GStreamer plugins written in Rust"
-arch=("x86_64")
-url="https://gstreamer.freedesktop.org/"
-license=("LGPL" "MIT" "Apache")
-groups=()
-depends=("gstreamer")
-makedepends=("rust" "git" "libsodium-static")
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git")
-noextract=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git")
+arch=(x86_64)
+url="https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs"
+license=(Apache LGPL2.1 MIT MPL2)
+depends=(gstreamer gtk4 dav1d libsodium libwebp)
+makedepends=(git rust meson cargo-c clang)
+source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git#tag=${pkgver}")
 sha256sums=(SKIP)
 
-prepare() {
-	cd "$srcdir/$pkgname"
-	git checkout "$pkgver"
+build() {
+  cd "${srcdir}/${pkgname}"
+  arch-meson build -D csound=disabled -D sodium=system
+  ninja -C build
 }
 
 package() {
-	cd "$srcdir/$pkgname"
-	make install DESTDIR="$pkgdir"
+  cd "${srcdir}/${pkgname}"
+  DESTDIR="${pkgdir}" meson install -C build
+  install -D LICENSE-* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
