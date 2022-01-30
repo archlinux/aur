@@ -1,13 +1,14 @@
 pkgbase = python-cfonts
 	pkgdesc = Python port of cfonts
 	pkgver = 1.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frostming/python-cfonts
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-dephell
-	makedepends = python-setuptools
+	makedepends = python-pdm-pep517
+	makedepends = python-build
+	makedepends = python-install
 	depends = python-colorama
 	source = python-cfonts-1.5.2.tar.gz::https://files.pythonhosted.org/packages/source/p/python-cfonts/python-cfonts-1.5.2.tar.gz
 	sha512sums = bbe2c9b6d4141f65ef3f93982fb7075a1ea70042f4213022ff89296bfb06c164922ea65c6828ab597fb662b0cab774eb9b84f97b55106d82def31ad2026a9dac
