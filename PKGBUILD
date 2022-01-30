@@ -29,7 +29,7 @@ build()
     cd "${srcdir}"/"${_pkgname}"/ || exit
     git checkout tags/v"${pkgver}"
     git submodule update --init --merge --recursive
-    ./configure --prefix="${pkgdir}"
+    ./configure --prefix="${pkgdir}"/usr/
     make
 }
 
@@ -42,9 +42,6 @@ package()
     # Install the software.
     cd "${srcdir}"/"${_pkgname}"/ || exit
     make DESTDIR="${pkgdir}" install
-
-    # Install the documentation.
-    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
     install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
