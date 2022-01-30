@@ -3,7 +3,7 @@
 
 pkgname=shadowsocks-rust
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
