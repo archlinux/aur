@@ -4,7 +4,7 @@ pkgbase='python-prospector'
 pkgname=('python-prospector')
 _module='prospector'
 pkgver='1.6.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python static analysis tool"
 url="http://prospector.readthedocs.io"
 depends=('python-pylint'
@@ -22,7 +22,7 @@ depends=('python-pylint'
          'python-pydocstyle'
          'python-dodgy'
          'python-toml'
-         'python-setoptconf-tpm')
+         'python-setoptconf-tmp')
 optdepends=('python-bandit: security linter'
             'python-frosted: checker'
             'mypy: optional type checking'
