@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=96.0.2
+pkgver=96.0.3
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -37,14 +37,16 @@ _arch_svn=https://git.archlinux.org/svntogit/packages.git/plain/trunk
 _common_tag="v${pkgver}-${pkgrel}"
 _settings_tag='1.4'
 install=cachy-browser.install
-source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
+source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('d32d2afa9179a78e6ed97e15e0f39e372c0d662cb9614404db15e7616da31ab8'
+sha256sums=('1a741d6fcf20e6833a90169f41d29141ea4610f58b848e06091a683af6304dea'
+            'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
             'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 prepare() {
   mkdir -p mozbuild
@@ -185,7 +187,6 @@ END
 
   #msg2  "remove search extensions (experimental)"
   #patch -Np1 -i ${_patches_dir}/search-config.patch
-
   cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
@@ -193,7 +194,6 @@ END
 
   msg2 "Assorted patches"
   patch -Np1 -i ${_patches_dir}/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
 
@@ -206,15 +206,14 @@ END
   msg2 "change some hardcoded directory strings that could lead to unnecessarily created directories"
   patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
-  msg2  "allow uBlockOrigin to run in private mode by default, without user intervention."
+  msg2 "change bus/dbus/remoting names to org.cachyos"
+  patch -Np1 -i ${_patches_dir}/dbus_name.patch
+
+  msg2 "allow uBlockOrigin to run in private mode by default, without user intervention."
   patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
 
-  # msg2 "fix an URL in 'about' dialog"
-  # patch -Np1 -i ${_patches_dir}/fix-wayland.patch
-  patch -Np1 -i ${_patches_dir}/fix-psutil.patch
-
-  #
-  #patch -Np1 -i ${_patches_dir}/use-mcpu-native-with-lto-pgo.patch
+  msg2 "add custom uBO assets (on first launch only)"
+  patch -Np1 -i ${_patches_dir}/custom-ubo-assets-bootstrap-location.patch
 
   # ui patches
 
@@ -222,13 +221,11 @@ END
   #msg2 "Enable blur in searchbar"
   #patch -Np1 -i ${_patches_dir}/searchbar.patch
 
-  # Requires to visit our FAQ, instead of telling the user to check his connection.
-  msg2 "show a warning saying that changing language is not allowed through the UI"
-  patch -Np1 -i ${_patches_dir}/ui-patches/add-language-warning.patch
-
   # Explain that we force en-US and suggest enabling history near the session restore checkbox.
   msg2 "remove references to firefox from the settings UI, change text in some of the links"
   patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
+
+  patch -Np1 -i ${_patches_dir}/ui-patches/hide-safe-browsing.patch
 
   msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
   patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
@@ -244,6 +241,12 @@ END
 
   msg2 "add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings"
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
+
+  msg2 "customized pref panel"
+  patch -Np1 -i ${_patches_dir}/librewolf-pref-pane.patch
+
+  msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
+  patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
 
   rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
   cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
