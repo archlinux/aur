@@ -2,7 +2,7 @@
 
 pkgname=whoogle
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
@@ -10,6 +10,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python python-pip)
 conflicts=($pkgname-git)
+backup=('etc/default/whoogle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benbusby/whoogle-search/archive/refs/tags/v$pkgver.tar.gz"
         $pkgname
         $pkgname.conf
