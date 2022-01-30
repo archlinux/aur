@@ -1,6 +1,6 @@
 pkgbase = tldr-page-git
 	pkgdesc = Generate tldr-pages using Go
-	pkgver = 1.5.r11.g6b33e5d
+	pkgver = 1.5.r12.gb075858
 	pkgrel = 1
 	url = https://github.com/CleanMachine1/tldr-page-creator
 	arch = any
