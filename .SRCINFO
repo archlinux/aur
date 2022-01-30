@@ -1,16 +1,16 @@
 pkgbase = packettracer
 	pkgdesc = A cross-platform visual simulation tool designed by Cisco Systems that allows users to create network topologies and imitate modern computer network
-	pkgver = 8.1.0
+	pkgver = 8.1.1
 	pkgrel = 1
 	url = https://www.netacad.com/courses/packet-tracer
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source = local://CiscoPacketTracer_810_Ubuntu_64bit.deb
+	source = local://CiscoPacketTracer_811_Ubuntu_64bit.deb
 	source = packettracer.sh
-	sha512sums = 0eb696d755771bdecff1f84616d973e8578149b1eb3272faa3f7c914be3a13165874dcedffb643dc1e7395f9df06fabc0ce3b11327ed2d358c0b6dcb14605a65
-	sha512sums = 3246843441207d66ccffd0717aa85a7bf828842c2c337d1527597bdf57cc2f9966c75c764aa22f9cb6a331e6268dd64af0da7ce4cc89725d418fc54e163230f2
+	sha512sums = 0ad6dbda9ecc4e7da26f121abacb90db3608ca6405f8b1bc0c4cf4961375a03b0ce3bd43874382709b14a3e932c4c797de4eac6fa8254980dfc4c1f6ba3e7c20
+	sha512sums = 47d575abf87ff26917ced452922ae6030b548e0deecca66397dbd4e22c032e217fcb4219b1bc783e6efa5fcbc4472dbe75b0d26f9d07de63a63d720475eb5122
 	depends = openssl>=1.0
 	depends = dbus
 	depends = icu
