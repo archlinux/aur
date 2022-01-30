@@ -14,7 +14,6 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = openssl-1.0
 	depends = postgresql-libs
 	optdepends = pandoc: markdown support
-	optdepends = pandoc-citeproc: markdown support
 	provides = rstudio-desktop=2022.02.0.preview.392
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git

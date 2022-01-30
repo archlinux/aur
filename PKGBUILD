@@ -17,8 +17,7 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r' 'hicolor-icon-theme' 'libxcomposite' 'libxslt' 'shared-mime-info' 'libxrandr' 'openssl-1.0' 'postgresql-libs')
 #makedepends=('patchelf')
-optdepends=('pandoc: markdown support'
-            'pandoc-citeproc: markdown support')
+optdepends=('pandoc: markdown support')
 conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
