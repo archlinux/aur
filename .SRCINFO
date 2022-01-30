@@ -1,6 +1,6 @@
 pkgbase = systemd-homed-containers
 	pkgver = 250.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
