@@ -4,7 +4,7 @@
 
 pkgname=cider-canary
 _pkgname=Cider
-pkgver=1.0.0.1189.7c55cde
+pkgver=1.1.0.1477.2efd9b7
 pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories upcoming branch."
 arch=("armv7h" "i686" "x86_64")
@@ -16,7 +16,7 @@ optdepends=('libnotify: Playback notifications')
 provides=('cider')
 conflicts=('cider')
 source=(
-  "git+https://github.com/CiderApp/${_pkgname}#branch=upcoming"
+  "git+https://github.com/CiderApp/${_pkgname}#branch=develop"
   "Cider.desktop"
 )
 sha256sums=('SKIP'

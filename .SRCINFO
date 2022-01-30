@@ -16,7 +16,7 @@ pkgbase = cider-canary
 	optdepends = libnotify: Playback notifications
 	provides = cider
 	conflicts = cider
-	source = git+https://github.com/CiderApp/Cider#branch=upcoming
+	source = git+https://github.com/CiderApp/Cider#branch=develop
 	source = Cider.desktop
 	sha256sums = SKIP
 	sha256sums = daa9f225b565b30f6fda10c8fa7410b9784938d1ef6a69986891abac77ef0709
