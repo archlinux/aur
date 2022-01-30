@@ -1,41 +1,36 @@
 pkgbase = maestral-git
-	pkgdesc = A light-weight and open-source Dropbox client.
-	pkgver = 1.4.4
+	pkgdesc = Open-source Dropbox client
+	pkgver = 1.5.3.r1.gbf70c762
 	pkgrel = 1
-	url = https://github.com/SamSchott/maestral-dropbox
+	url = https://github.com/SamSchott/maestral
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-benchmark
 	makedepends = git
-	makedepends = python
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
 	makedepends = python-wheel
-	depends = python>=3.9
-	depends = python-alembic>=1.3
-	depends = python-alembic<1.6
-	depends = python-click>=8.0.0
-	depends = python-desktop-notifier>=3.2.2
-	depends = python-dropbox>=10.9.0
-	depends = python-dropbox<12.0
-	depends = python-fasteners>=0.15
-	depends = python-keyring>=22
-	depends = python-keyrings-alt>=3.1.0
+	depends = python-click
+	depends = python-desktop-notifier
+	depends = python-dropbox
+	depends = python-fasteners
+	depends = python-keyring
+	depends = python-keyrings-alt
 	depends = python-packaging
-	depends = python-pathspec>=0.5.8
-	depends = python-pyro5>=5.10
-	depends = python-requests>=2.16.2
-	depends = python-sdnotify>=0.3.2
-	depends = python-survey>=3.4.3
-	depends = python-survey<4.0
-	depends = python-watchdog
-	depends = python-wheel
+	depends = python-pathspec
+	depends = python-pyro5
+	depends = python-requests
+	depends = python-sdnotify
+	depends = python-setuptools
+	depends = python-survey
+	depends = python-watchdog-git
 	depends = python-systemd
-	optdepends = maestral-qt: QT frontend for maestral
-	provides = maestral
-	conflicts = maestral
-	source = git+https://github.com/SamSchott/maestral-dropbox#branch=master
+	optdepends = maestral-qt: Qt interface for the maestral daemon
+	optdepends = python-importlib-metadata: REQUIRED for python<3.8
+	source = maestral-git::git+https://github.com/SamSchott/maestral
 	source = maestral@.service
-	md5sums = SKIP
-	md5sums = 841d7d34ae18d512e3d2fbe453702744
+	sha256sums = SKIP
+	sha256sums = 79f48787cec441c252b1fcbecbce1342bbac1de275e90fe9dfbd1b9cad2ba2c8
 
 pkgname = maestral-git
-
