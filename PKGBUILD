@@ -2,8 +2,8 @@
 # Contributors: Se7endAY, Nathan Owe <ndowens04 at gmail>
 
 pkgname=bozohttpd
-pkgver=20201014
-pkgrel=2
+pkgver=20210227
+pkgrel=1
 pkgdesc="A small and secure HTTP version 1.1 server"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.eterna.com.au/bozohttpd/"
@@ -18,7 +18,7 @@ source=("http://www.eterna.com.au/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	'sample_perl.cgi'
 	'LICENSE'
 )
-sha256sums=('5bbca7a3cf5cdadb1de2a40c41c51c8e8ded8569dd1e8f81962cca6b4c0b97ed'
+sha256sums=('23f6708be9e4f1b151718320228bf6765586965db48e2b0e5a943c4020e8adff'
             '8333eccd1c35d5001342c6130112105f1f6633ca70a7ca3c0d9ca4ccfe03db2c'
             '660240d1b3389591a0320bc7ccc0b8bcb0c8b2a533177bb0836b2f4db4569bb9'
             '11f5ea1a3a0d84bcf49418406533e4f43ce2285125f9a4194ce5e76e3f89a748'
@@ -36,6 +36,8 @@ build()
 
 	# Fix php-cgi regression
 	sed -i '591d' cgi-bozo.c
+	# Include stdint.h
+	sed -i '/.*stdbool\.h.*/a #include <stdint.h>' bozohttpd.h
 
 	make CFLAGS= LDFLAGS=-llua CPPFLAGS="-DDO_HTPASSWD -DNO_LUA_SUPPORT -DNO_BLOCKLIST_SUPPORT -D_GNU_SOURCE" CRYPTOLIBS="-lcrypto -lssl -lcrypt" || return 1
 }

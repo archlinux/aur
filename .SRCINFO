@@ -1,7 +1,7 @@
 pkgbase = bozohttpd
 	pkgdesc = A small and secure HTTP version 1.1 server
-	pkgver = 20201014
-	pkgrel = 2
+	pkgver = 20210227
+	pkgrel = 1
 	url = http://www.eterna.com.au/bozohttpd/
 	install = bozohttpd.install
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = bozohttpd
 	depends = openssl
 	depends = lua
 	optdepends = php-cgi
-	source = http://www.eterna.com.au/bozohttpd/bozohttpd-20201014.tar.bz2
+	source = http://www.eterna.com.au/bozohttpd/bozohttpd-20210227.tar.bz2
 	source = bozohttpd.service
 	source = bozohttpd_ssl.service
 	source = bozohttpd.install
 	source = sample.cgi
 	source = sample_perl.cgi
 	source = LICENSE
-	sha256sums = 5bbca7a3cf5cdadb1de2a40c41c51c8e8ded8569dd1e8f81962cca6b4c0b97ed
+	sha256sums = 23f6708be9e4f1b151718320228bf6765586965db48e2b0e5a943c4020e8adff
 	sha256sums = 8333eccd1c35d5001342c6130112105f1f6633ca70a7ca3c0d9ca4ccfe03db2c
 	sha256sums = 660240d1b3389591a0320bc7ccc0b8bcb0c8b2a533177bb0836b2f4db4569bb9
 	sha256sums = 11f5ea1a3a0d84bcf49418406533e4f43ce2285125f9a4194ce5e76e3f89a748
@@ -27,4 +27,3 @@ pkgbase = bozohttpd
 	sha256sums = 859cb6bc2ccf1864e185d32bc35ee81cb04b51e3e4c1f667fea1cf41f505e6c4
 
 pkgname = bozohttpd
-
