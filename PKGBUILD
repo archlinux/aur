@@ -28,7 +28,7 @@ build()
     cd "${srcdir}"/"${_pkgname}"/ || exit
     git checkout tags/v"${pkgver}"
     git submodule update --init --merge --recursive
-    ./configure --prefix="${pkgdir}"/usr/
+    ./configure --prefix=usr/
     make libexecdir="${pkgdir}"/usr/lib/
 }
 
