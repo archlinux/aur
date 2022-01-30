@@ -3,7 +3,7 @@
 
 pkgname=gmid-git
 _pkgname=${pkgname%-*}
-pkgver=1.7.3.r100.g34c4ca6
+pkgver=1.8.r0.ga14b9f7
 pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
@@ -22,13 +22,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$_pkgname"
-	MANDIR='usr/share/man/' ./configure PREFIX='usr/'
+	MANDIR='usr/share/man/' ./configure --prefix='usr/'
 	make
-}
-
-check() {
-	cd "$srcdir/$_pkgname"
-	make regress
 }
 
 package() {
