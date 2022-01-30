@@ -5,7 +5,7 @@ pkgbase=libreoffice-dev-i18n
 _pkgnamefmt=LibreOffice
 _pkgver=7.3.0.3
 pkgver=7.3.0.3
-pkgrel=1
+pkgrel=2
 #_basever=$( cut -f1-2 -d'.' <<< ${_LOver} )
 
 arch=('any')
@@ -139,7 +139,7 @@ _languages=(
 )
 #  'qtz          "Reserved"                     1' ## Reserved language code?
 
-validpgpkeys=('C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3') # "LibreOffice Build Team (CODE SIGNING KEY) <build@documentfoundation.org>"
+#validpgpkeys=('C2839ECAD9408FBE9531C3E9F434A1EFAFEEAEA3') # "LibreOffice Build Team (CODE SIGNING KEY) <build@documentfoundation.org>"
 
 prepare() {
   for _lang in "${_languages[@]}"; do
@@ -202,12 +202,12 @@ for _lang in "${_languages[@]}"; do
   _pkgname=libreoffice-dev-${_locale,,}
 
   pkgname+=($_pkgname)
-  source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_${_locale}.tar.gz{,.asc})
-  sha256sums+=('SKIP' 'SKIP')
+  source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_langpack_${_locale}.tar.gz) #{,.asc})
+  sha256sums+=('SKIP') # 'SKIP')
 
   if (( $_helppack )); then
-    source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_${_locale}.tar.gz{,.asc})
-    sha256sums+=('SKIP' 'SKIP')
+    source+=(${_url}/${_pkgnamefmt}_${_pkgver}_Linux_x86-64_rpm_helppack_${_locale}.tar.gz) #{,.asc})
+    sha256sums+=('SKIP') # 'SKIP')
   fi
 
   eval "package_${_pkgname}() {
