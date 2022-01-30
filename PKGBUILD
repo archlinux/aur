@@ -3,7 +3,7 @@
 pkgname=qt5-quicktimeline
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -13,6 +13,7 @@ groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('b9c247227607437acec7c7dd18ad46179d20369c9d22bdb1e9fc128dfb832a28')
+options=(debug)
 
 prepare() {
   mkdir -p build
