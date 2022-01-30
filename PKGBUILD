@@ -3,43 +3,36 @@
 # Previous Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Alexandre Demers <alexandre.f.demers@gmail.com>
 
+
 pkgname=lib32-spirv-tools
-pkgver=2021.3
+pkgver=2021.4
 pkgrel=1
+_headers_version=sdk-1.2.198.0
 pkgdesc="API and commands for processing SPIR-V modules"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/KhronosGroup/SPIRV-Tools'
 license=('Apache')
 groups=('vulkan-devel')
 depends=('lib32-gcc-libs'
-         'vulkan-tools'
          'spirv-tools'
 )
 makedepends=('cmake'
              'python'
              'git'
 )
-source=("git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v${pkgver}"
-        'git+https://github.com/KhronosGroup/SPIRV-Headers.git'
+source=("git+https://github.com/KhronosGroup/SPIRV-Tools#tag=v${pkgver}"
+        "git+https://github.com/KhronosGroup/SPIRV-Headers#tag=${_headers_version}"
 )
 sha256sums=('SKIP'
             'SKIP'
-            )
-
-prepare() {
-  mkdir -p build
-
-  alias widl=
-
-  cd "${srcdir}/SPIRV-Headers"
-  git reset --hard ae217c17809fadb232ec94b29304b4afcd417bb4
-}
+)
 
 build() {
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
+  mkdir -p build
   cd build
 
   cmake ../SPIRV-Tools \
