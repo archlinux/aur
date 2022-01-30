@@ -169,6 +169,7 @@ pkgname = systemd-libs-homed-containers
 	depends = lz4
 	depends = xz
 	depends = zstd
+	provides = systemd-libs=250.3
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
@@ -180,6 +181,7 @@ pkgname = systemd-resolvconf-homed-containers
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
 	license = LGPL2.1
 	depends = systemd
+	provides = systemd-resolvconf=250.3
 	provides = openresolv
 	provides = resolvconf
 	conflicts = systemd-resolvconf
@@ -189,5 +191,6 @@ pkgname = systemd-sysvcompat-homed-containers
 	pkgdesc = sysvinit compat for systemd
 	license = GPL2
 	depends = systemd
+	provides = systemd-sysvcompat=250.3
 	conflicts = systemd-sysvcompat
 	conflicts = sysvinit

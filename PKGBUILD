@@ -248,7 +248,7 @@ package_systemd-libs-homed-containers() {
   pkgdesc='systemd client libraries'
   depends=('glibc' 'libcap' 'libgcrypt' 'libp11-kit' 'lz4' 'xz' 'zstd')
   license=('LGPL2.1')
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  provides=("systemd-libs=$pkgver" 'libsystemd' 'libsystemd.so' 'libudev.so')
   conflicts=('systemd-libs' 'libsystemd')
   replaces=('libsystemd')
 
@@ -260,7 +260,7 @@ package_systemd-resolvconf-homed-containers() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
   license=('LGPL2.1')
   depends=('systemd')
-  provides=('openresolv' 'resolvconf')
+  provides=("systemd-resolvconf=$pkgver" 'openresolv' 'resolvconf')
   conflicts=('systemd-resolvconf' 'openresolv')
 
   install -d -m0755 "$pkgdir"/usr/bin
@@ -273,6 +273,7 @@ package_systemd-resolvconf-homed-containers() {
 package_systemd-sysvcompat-homed-containers() {
   pkgdesc='sysvinit compat for systemd'
   license=('GPL2')
+  provides=("systemd-sysvcompat=$pkgver")
   conflicts=('systemd-sysvcompat' 'sysvinit')
   depends=('systemd')
 
