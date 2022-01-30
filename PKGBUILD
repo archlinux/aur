@@ -27,14 +27,14 @@ optdepends=(
 )
 
 source=(
-    "https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/c3021cb7e2441adbd73821e2a8600ced/An_Anime_Game_Launcher.AppImage"
+    "https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/fa12b29edd78a9dcf670062376eeda54/An_Anime_Game_Launcher.AppImage"
     "icon.png"
     "an-anime-game-launcher-bin.desktop"
     "an-anime-game-launcher-bin.sh"
 )
 
 md5sums=(
-    '78b205387a2c3ba0446afd93b6f14355'
+    '9e43400cee4b747638ce21131a278e7d'
     '82d75ad72aed6c6962f203f9c6f329d3'
     '7022b1fe2765112dae39285a286bcedb'
     'aa1d36e938b47b1f9fcff6aa5cec588b'
