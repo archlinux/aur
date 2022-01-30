@@ -1,4 +1,355 @@
-Proton-6.12-GE-1 Released
+## Proton-7.1-GE-2 Released
+
+-This is a hotfix to restore WMA audio support.
+
+The FAudio author removed GStreamer support -- which is needed for WMA playback.
+
+The reason he did it is because WINE is in the process of upstreaming WMA decode support, but the problem is that decode support is not in WINE yet, and since it was removed from FAudio, no WMA audio is working.
+
+This update restores FAudio GStreamer support so that WMA audio is working again.
+
+## Proton-7.1-GE-1 Released
+
+Wine:
+
+    Add missing patch to fix Forza Horizon 5 login window not accepting mouse focus
+    Fixed Forza Horizon 5 crashing after splash screen
+
+Protonfixes:
+
+    protonfix added for Progressbar95 (thanks Benibla124)
+    protonfix Resident Evil 5 videos disabled as workaround to allow game to be playable (thanks manueliglesiasgarcia)
+    protonfixes klite verb updated version (used for persona 4 golden)
+    protonfix added to enable game drive option for Elder Scrolls Online installer. (Note -- the installer works but you have to press space at the black screen, updater and game works perfectly fine after that)
+
+DXVK:
+
+    add pending Resident Evil games patch doitsujin/dxvk#2466
+
+-wine and wine-staging updated to 7.1
+-vkd3d-proton updated to git
+-dxvk updated to git
+-FAudio updated to git
+
+## Proton-7.0rc6-GE-1 Released
+
+Protonfixes:
+
+    Update Oceanhorn protonfix (thanks Iglu47 GloriousEggroll/protonfixes#50)
+    Add wmp11 protonfix for most of the Resident Evil series (thanks manueliglesiasgarcia GloriousEggroll/protonfixes#49)
+    Remove unnecessary dotnet 4.x protonfix in most titles (thanks manueliglesiasgarcia GloriousEggroll/protonfixes#48)
+    Add protonfix for Super Meat Boy (thanks Sterophonick GloriousEggroll/protonfixes#47)
+    Add protonfix for Lord of the Rings: War in the North (thanks chelobaka GloriousEggroll/protonfixes#52)
+
+Proton:
+
+    Remove d3d10/d3d10_1 dxvk overrides (ValveSoftware@0ca077d)
+
+Wine:
+
+    Add Monster Hunter Rise patch from upstream proton (ValveSoftware/wine@40f9cba)
+    update wine to latest 7.0rc6
+    update wine-staging to latest 7.0rc6
+    Remove proton pulseaudio patches and reverts. Upstream wine has fixed the crackling audio in Cyberpunk 2077 and various other games so the reverts are no longer needed (https://bugs.winehq.org/show_bug.cgi?id=52225)
+    Add Sea of Thieves voice patches from upstream proton
+
+DXVK:
+
+    update dxvk to latest git
+
+vkd3d-proton:
+
+    update vkd3d-proton to latest git
+
+FAudio:
+
+    update faudio to latest git
+
+## Proton-7.0rc3-GE-1 Released
+
+-fixed issue with rockstar launcher stuck on connecting
+-fixed Path of Exile crash on launch
+-fixed DayZ crash on launch
+-fixed Elder Scrolls Online crash on launch
+-fixed STEEP crash
+-added protonfix for LEGO Batman 2: DC Super Heroes (thanks daddeltrotter)
+-removed deprecated styx:master of shadows protonfix (thanks manueliglesiasgarcia)
+-updated winetricks to allow removal of no longer needed proton_5 workaround for wmp11 (thanks manueliglesiasgarcia)
+-dxvk updated to latest git
+-faudio updated to latest git
+
+## Proton-7.0rc2-GE-1 Released
+
+-Biomutant video playback fix imported from proton
+-FFXIV Old launcher "Log In" button crash fix imported from proton (transgaming patch +hidewineexports no longer needed)
+-FFXIV New player cutscene playback fix imported from proton (game fully works without skipping it now yay)
+-Mass Effect Legendary Edition audio fix imported from proton (no longer needs protonfixes workaround)
+-Oceanhorn protonfix added - thanks Iglu47!
+-Arcania protonfix added - thanks manueliglesiasgarcia!
+-Gothic 4 protonfix added - thanks manueliglesiasgarcia!
+-The Bureau: XCOM Declassified esync + fsync disabled via protonfix per ValveSoftware#797 (comment) - thanks manueliglesiasgarcia!
+-Pending patch added for https://bugs.winehq.org/show_bug.cgi?id=52222 - thanks Bill and rbernon!
+-wine and wine-staging updated to 7.0rc2
+-DXVK updated to git
+-vkd3d-proton updated to git
+-faudio updated to git
+
+## Proton-6.21-GE-2 Released
+
+This is a hotfix to apply the following important revert from Valve:
+
+ValveSoftware/Proton@7ce8140
+
+Additionally, the release files for Proton-6.21-GE-1 have been removed to aide in further preventing people from accidentally launching Destiny 2 and getting themselves banned, per the above hotfix.
+
+## Proton-6.21-GE-1 Released
+
+-Proton BattlEye patches added
+-Proton CEG patches added
+-Proton Forza Horizon 5 patches added
+-Proton Guardians of the Galaxy patches added
+-Proton Fallout76 patches added
+-Proton Baldur's Gate 3 patches added
+-Proton Age of Empires IV driver nag fix patch added
+-Proton fsync patches updated to futex_waitv version
+-Fix for error when using file browser to pick a file location added (this occurred usually in applications when you tried to specify an existing file location)
+-Fix for broken mouse input in Borderlands and R6S added (was not present in 6.20, issue appeared in 6.21)
+-Fix for the beamng mouse issue updated so that it does not affect non-steam games
+-Bcrypt patches updated (steep works again, thanks openglfreak!)
+-vulkan childwindow patches updated
+-vkd3d Forza Horizon 5 patches added
+-vkd3d Guardians of the Galaxy patches added
+-vkd3d updated to latest git
+-dxvk updated to latest git
+-protonfixes uplay overlay disable function has been fixed to apply correctly when used.
+-wine mono version updated
+-protonfix added for ship graveyard simulator (and prologue, Thanks Alistair Leslie-Hughes!)
+
+Notes:
+-Fsync has been disabled on all Uplay titles -- it causes Uplay to hang on "Looking for patches" when initiationg a new prefix. Esync works fine.
+-Various Uplay titles that have a vulkan native mode (Rainbow 6 siege) need the overlay disabled in order not to crash. DX11 mode works fine.
+-For games that have a protonfix that uses the uplay overlay disable -- if creating a new prefix you will need to relaunch the game a second time. Uplay completely removes any pre-existing configurations on first launch, so any appending to the file gets removed. Upon re-launch the option will be re-appended and uplay will then see it.
+-uplay likes to hang out after the game has closed -- make sure you close it in the task manager.
+
+BattlEye games tested and working:
+
+Ark: Survival Evolved
+
+BattlEye games tested and not working:
+
+Mount & Blade: Bannerlord -- hitting this issue: ValveSoftware#3706 (comment)
+
+CEG games tested and working:
+
+Bioshock Infinite
+Just Cause 2
+Black Ops II Campaign
+Sid Meier's Civilization V
+Mafia II (Classic)
+
+CEG games tested and not working:
+
+Black Ops II Zombies Mode -- exemption occurs a few seconds after getting to main menu
+Black Ops II Multiplayer -- same issue as zombies mode
+Warhammer: Space Marine -- bugsplats
+Lara Croft and the Guardian of Light -- just hangs in the background infinitely until force killed
+
+## Proton-6.20-GE-1 Released
+
+-wine: Added fix for broken right click camera control in BeamNG.drive
+-wine: Revert some upstream commits to re-allow mfplat patches (it was disabled in wine-staging 6.20 due to patches needing a rebase)
+-wine: Add patch to fix Eve online launcher (thanks Tr4sk!)
+-wine: Add patch to workaround The Good Life video playback (thanks popsUlfr!)
+-wine: Add patch to fix Castlevania Advance Collection and a few other Konami "collection" games (thanks Raptor85!)
+-wine: rebased proton patches for 6.20
+-wine: updated to 6.20
+-protonfixes: Added vcrun2019 to Injustice 2 -- fixes multiplayer desync
+-protonfixes: Removed no-longer needed .NET installation from Batman Arkham Asylum protonfix (allows it to work again)
+-protonfixes: Added xaudio3_7 protonfix for Resident Evil 4 (fixes crash on loading from save)
+-protonfixes: Removed no-longer needed xlive override for Fallout 3 (thanks manueliglesiasgarcia!)
+-protonfixes: Added workaround that uses Proton 5.0 to install .NET into the prefix for Space Engineers (.NET installation is broken on wine 6.0+, thanks manueliglesiasgarcia! )
+-protonfixes: Added vcrun2019 to Madden NFL 21 -- fixes multiplayer desync (thanks Alexithymia2014!)
+-protonfixes: Gothic2: account for varying casing in game paths (thanks codicodi!)
+-protonfixes: Uplay overlay disabled for Assassin's Creed: Odyssey (thanks PolisanTheEasyNick!)
+-protonfixes: mfc42 override added for GT Legends (thanks otokawa-mon!)
+-proton-valve: Imported fixes for paradox launcher from proton upstream
+-proton-valve: Imported fixes for Nickelodeon All-Star brawl from proton upstream
+-proton-valve: Imported fixes for WRC8/9/10 from proton upstream
+-proton-valve: Imported fixes for Satisfactory multiplayer from proton upstream
+-proton-valve: Imported fixes for Fallout 76 crash from proton upstream
+-vkd3d-proton: Update to git
+-vkd3d-proton: DXR 1.1 is now experimentally exposed. It can be enabled with VKD3D_CONFIG=dxr11.
+-vkd3d-proton: Resizable bar now enabled automatically if available. NOTE: You may need to disable this in eGPU setups to avoid performance issues: VKD3D_CONFIG=no_upload_hvv
+-vkd3d-proton: Marvel's Avengers now playable (again)
+-dxvk: Update to git
+-faudio: Update to git
+
+## Proton-6.19-GE-2 released
+
+-Added protonfix that allows Apex Legends to run (It needed winetricks xact in order to not crash at black screen. This allows it to at least get to the character screen. Still does not allow to join match due to EAC)
+-Added protonfix that allows BeamNG.drive to run
+-Added patch that allows RaceRoom Racing Experience to run (Thanks Alistair Leslie-Hughes!)
+
+## Proton-6.19-GE-1 released
+
+-Added protonfix for Syberia black screen (runs in a window, you will want to use gamescope to upscale)
+-Added protonfix for Japanese version of Tree of Savior (we already had one for the English version, thanks Alistair Leslie-Hughes!)
+-Added patches that allow EA Desktop beta client to work (Thanks Esdras Tarsis!)
+-Removed deprecated mouse focus patches (no longer used in upstream proton) -- fixes mouse focus issues in some various games.
+-Added uuid-dev package to build environment to fix antlr build dependency (thanks Optimus22Prime!)
+-Imported proton experimental build environment updates
+-Imported proton DLSS patches/updates
+-Updated dxvk-nvapi to proton experimental version (for DLSS)
+-Updated wine and wine-staging to 6.19
+-Updated vkd3d-proton to latest git
+-Updated dxvk to latest git
+-Updated FAudio to latest git
+
+## Proton-6.18-GE-2 released
+
+-This is a hotfix, I forgot to update the mono version in the proton build environment (whoopsie). Fixes mono install request popup.
+
+## Proton-6.18-GE-1 released
+
+-hotfix added for hitman 2 and death stranding hangs (thanks Paul Goffman!)
+-patches added from proton upstream to allow deathloop to run (thanks Paul Goffman!)
+-protonfix added to allow crysis remastered to run
+-protonfix added for Sonic CD (thanks Chloe Stars!)
+-protonfix added for Bejeweled 3 (thanks Chloe Stars!)
+-steamhelper patch added so it no longer requires a large revert patch in wine (thanks openglfreak!)
+-wine + staging updated to 6.18
+-dxvk updated to git
+-vkd3d updated to git
+-faudio updated to git
+
+Notes:
+
+(1) A large amount of changes have been added in this WINE release for HID gamepad support, as noted:
+
+HID joystick enabled by default.
+
+Two additional pending upstream patches have been added on top of this for better functionality. Currently proton's SDL gamepad patches have been disabled in favor of WINE upstream's HID implementation. I did my usual test with Guilty Gear Strive and everything seems to appear OK. The test is done in the dojo, with one xbox controller and one ps5 controller -- both controllers showed up fully functional for player 1 and 2, and proper button mappings and button images showed and worked.
+
+Another note regarding GG Strive in particular with the testing:
+note you have to take some funky steps for 2 player to work in training mode (not linux specific): https://playgame.tips/how-to-play-with-a-friend-in-training
+
+I have not tested any force feedback games and am not sure if patches for that have been added. Unfortunately re-enabling the SDL patches will require a -massive- list of reverts, so for the time being as mentioned, the default HID joystick impementation is being used and proton's SDL patches disabled, at least until proton upstream rebases.
+
+(2) Deathloop seems to very much dislike alt+tabbing out. For me it would freeze the game. Other than that it appeared to be playable.
+
+## Proton-6.16-GE-1 released
+
+Nothing too crazy in this release, mainly just updating to 6.16 and other relevant submodules to latest git
+
+    FSR default sharpness changed from 5 to 2 per AMD recommendations (page 25): https://github.com/GPUOpen-Effects/FidelityFX-FSR/blob/master/docs/FidelityFX-FSR-Overview-Integration.pdf
+    protonfixes added to fix black screen in Gothic 1 and 2 -- thanks manueliglesiasgarcia!
+    protonfixes added to enable dxvk async for Final Fantaxy XIII and Tomb Raider 2013 -- thanks iWeaker4you!
+    Wine + Wine-staging updated to 6.16
+    FAudio updated to git
+    DXVK updated to git
+    VKD3D updated to git
+
+## Proton-6.15-GE-2 released
+
+-Fixed regression that broke TemTem
+-Fixed regression(s) that broke Tokyo Xanadu eX+
+-Added workaround that skips CoD Black Ops III videos (allows game to be playable).
+
+## Proton-6.15-GE-1 released
+
+NOTE: Due to the symlink updates for steam cloud saves, you will want to remove your old game prefixes so that they are properly regenerated with new symlinks. Your games may not launch otherwise:
+
+Proton Game and Prefix Launch troubleshooting:
+https://www.youtube.com/watch?v=uxWJ1xvowMk
+
+Changes:
+
+    Import proper steam cloud save fixes from upstream proton
+
+    Import Project Cars III window focus fixes from upstream proton
+
+    Import Tokyo Xanadu Xe+ ASF fixes from upstream proton
+
+    Import Guilty Gear Strive cloud save path fixes from upstream proton
+
+    Import multiple font fixes from upstream proton
+
+    Fixed crash with Hitman 2
+
+    Added workaround for FFXIV broken login button
+    Details:
+    There are two executables shipped with FFXIV for the launcher -- ffxivboot.exe and ffxivboot64.exe.
+    Each one has a 'new' launcher mode and an 'old' launcher mode. The 'old' launcher mode is what we use to login on linux,
+    however it uses mshtml and jscript by default, which break the 'Log In' button.
+    The normal way to usually get around this is to just press enter after you input your password,
+    but that can be annoying when you accidentally hit the button.
+
+    Added FFXIV frame timing configuration for DXVK to resolve some stuttering, noted here: doitsujin/dxvk#2210
+
+    Re-added missing mfplat stub that was accidentally removed from staging's mfplat patches. This re-fixes some unity games that had broken mfplat in 6.14 (Notably Power Rangers: Battle for the Grid)
+
+    Added pending upstream wine patches for Riftbreaker
+
+    Added pending upstream winelib patch (fixes https://bugs.winehq.org/show_bug.cgi?id=51596)
+
+    vkd3d patch added for Diablo II Resurrected (Note: This was added in case it fixes other games. Running non-steam games with proton is -not- supported).
+
+    Wine + Wine-staging updated to 6.15
+
+    DXVK updated to latest git (fixes Endless Legend and Borderlands 2 crashing)
+
+    vkd3d updated to latest git
+
+    Faudio updated to latest git
+
+    Rebased proton sdl joystick patchset. Removed: winebus: Make it more explicit how we are checking for duplicate devices
+
+## Proton-6.14-GE-2 released
+
+This is just a hotfix. The previous release was missing the protonfixes listed for Metro 2033 and L.A. Noire. I've updated the version as I received complaints over releasing hotfixes without changing the version.
+
+## Proton-6.14-GE-1 released
+
+-Issue with uplay services not connecting fixed from upstream wine
+-FFXIV launcher certificate popup box spam fixed from upstream wine
+-EVE Online launcher issue fixed from upstream wine
+-Added d3dx11_42 protonfix for Metro 2033 (thanks lukashoracek!)
+-Added d3dcompiler protonfix for L.A.Noire (thanks manueliglesiasgarcia!)
+-Added d3dcompiler protonfix for HighFleet (thanks Alistair Leslie-Hughes!)
+-Fixed shutil missing from protonfixes which broke set_ini_options (thanks djazz!)
+-Added Microsoft Flight Simulator 2020 fixes from proton
+-Re-added revert for 97afac469fbe012e22acc1f1045c88b1004a241f which breaks controllers in some unity games (https://bugs.winehq.org/show_bug.cgi?id=51277)
+-dxvk updated
+-vkd3d updated
+-wine and wine-staging updated to 6.14
+
+## Proton-6.13-GE-1 released
+
+-Added NOSTEAM=1 envvar for FFXIV and FFXIV trial. This allows you to run either the steam OR the standalone version in steam through proton. See the video below for in-depth details: https://youtu.be/SihRNczHn_4
+-FFXIV launcher workaround updated (previously used BrowserType, needed Browser instead)
+-Rebased proton SDL gamepad patches on top of staging. Fixes various controller mapping issues and force feedback issues
+-Steam input profiles now work again due to SDL patch update
+-Warframe 5 minute no-controller crash is properly fixed now, steamclient patch is no longer needed finally
+-Guilty Gear Strive 2 player mode works with two controllers now
+-Grand Theft Auto V save on exit is fixed
+-Swords of Legends launcher is fixed
+-Resident Evil 8 crash fixed (it was crashing after they updated the game with FSR)
+-vkd3d/dx12 resizable bar patches added. Can be enabled with VKD3D_CONFIG=upload_hvv
+-AMD FidelityFX Super Resolution (FSR) has been patched in as the fullscreen hack's upscaling backend. Works on most games (not all, there are some caveats). For basic usage in most case only WINE_FULLSCREEN_FSR=1 is needed. The default sharpening of 5 is enough without needing modification, but can be changed with WINE_FULLSCREEN_FSR_STRENGTH=# (0-5) if wanted.
+-1080p, 4k, and ultrawide input quality resolutions have been added to the FSR patch. See: https://gpuopen.com/fidelityfx-superresolution/#quality
+-Various cloud save location symlink fixes have been added:
+    My Documents -> Documents
+    Application Data -> AppData/Roaming
+    Local Settings/Application Data -> AppData/Local
+-Font fixes imported from proton upstream
+-DXVK updated
+-vkd3d updated
+-FAudio updated
+-Wine-mono updated to 6.2.2
+
+-A note on controller changes: hotplugging is still a bit wonky. If you unplug a controller then replug it, you may need to restart the game.
+
+## Proton-6.12-GE-1 Released
 
 -Necromunda "glowing" fixed
 -Cyberpunk 2077 inventory crash fixed
@@ -13,7 +364,7 @@ Proton-6.12-GE-1 Released
 -vkd3d updated to git and pending 2.4 pull requests added
 -faudio updated
 
-Proton-6.10-GE-1 Released
+## Proton-6.10-GE-1 Released
 
 -Added UE4 preinstall workaround for Necrumunda
 -Added UE4 preinstall workaround for Deliver us the Moon
@@ -30,11 +381,11 @@ Proton-6.10-GE-1 Released
 -faudio updated
 -steamclient updated with splitgate fix
 
-Proton-6.9-GE-2 Released
+## Proton-6.9-GE-2 Released
 
 This build is a hotfix for Resident Evil Village (8)
 
-Proton-6.9-GE-1 Released
+## Proton-6.9-GE-1 Released
 
 -Removed patch that was causing a lot of the RE8 crashes. Stability should be a lot better now. You may still occasionally get crashes when first opening the game, or during loading, or while changing screen resolution. Apart from that I was able to get through all of the intro cutscenes up to the playable 'van' area (trying not to spoil the game here) at the beginning on both AMD and Nvidia . Nvidia still takes a while to load the game, but it should at least be playable now.
 -vcrun2019_ge checksum has been disabled. It's downloaded from Microsoft and changes too often, resulting in regular breakage. Removing the checksum allows it to download and install regardless of if the sha sum has changed. If people are worried about it they can check the sha sum themselves in ~/.cache/winetricks/vcrun2019_ge
@@ -47,7 +398,7 @@ Proton-6.9-GE-1 Released
 -vkd3d updated to latest git
 -wine/staging updated to 6.9
 
-Proton-6.8-GE-2 Released
+## Proton-6.8-GE-2 Released
 
 -Mass Effect Legendary Edition Launcher and ME1 fixes added. All 3 games should be playable.
 -DOOM Eternal should no longer hang and resolution change should work again
@@ -62,7 +413,7 @@ Proton-6.8-GE-2 Released
 -LEGO The Lord of the Rings d3dx9_41 override added (thanks alkazar and FigoFrago!)
 
 
-Proton-6.8-GE-1 Released
+## Proton-6.8-GE-1 Released
 
 HOTFIX 2:
 -Resident Evil Village (8) now works. RE Engine intro logo audio plays static, everything else works fine.
@@ -82,7 +433,7 @@ Changelog:
 -Fixed issue with keyboard input not working if a controller is connected.
 
 
-Proton-6.5-GE-2 Released
+## Proton-6.5-GE-2 Released
 
 HOTFIX:
 -Added wine-mirror/wine@fcb37c9 to resolve start.exe issue
@@ -115,7 +466,7 @@ before one of the video clip animations completes
 -Darksiders Warmastered Edition still doesn't work
 -Grandia/Grandia II HD Remaster still crash on opening.
 
-Proton-6.5-GE-1 Released
+## Proton-6.5-GE-1 Released
 
 @GloriousEggroll GloriousEggroll released this 9 hours ago
 
@@ -146,7 +497,7 @@ Still Broken:
 -Darksiders Warmastered Edition hangs at thq nordiq intro logo
 -Grandia/Grandia II HD Remaster still crash on opening.
 
-Proton-6.4-GE-1
+## Proton-6.4-GE-1
 
 Thanks everyone for being patient with this one. There's still some media foundation related bugs and pending fixes that Derek (mfplat patchset author) is working on, but this release should be good enough to get some new games working that weren't previously (notably MK11, Injustice 2, Need for Speed), At the end of the week wine 6.5 releases so if the media foundation patches are fully resolved by then there will likely be another release. Here are the details on this release for now:
 Media Foundation changes/currently known issues:
@@ -184,7 +535,7 @@ Wine:
 
 All in all, I would say the summary of this build is if you want to play MK11 or Injustice 2, this build is for you, but if you have any games that heavily relied on Media Foundation (mfplat) prior to this, chances are they may be broken in this build. Once Derek gets WMV and MP4S2 implemented along with some cleanups the next build should work nicely regarding mfplat.
 
-Proton-6.1-GE-2
+## Proton-6.1-GE-2
 
 HOTFIX: 2/7/2021
 -removed futex2 patches, they cause warframe's launcher to freeze.
@@ -199,7 +550,7 @@ Release notes:
 -additional spatial audio patches added from experimental
 -futex2 patches added from experimental
 
-Proton-6.1-GE-1
+## Proton-6.1-GE-1
 
 Hotfix #3: 2/1/2021
 
@@ -289,7 +640,7 @@ ValveSoftware#4289
 -Black Ops III does not work
 -Grandia and Grandia II do not work
 
-Proton-6.0-GE-1
+## Proton-6.0-GE-1
 
 Game Fixes:
 
@@ -336,7 +687,7 @@ Known mfplat+quartz issues:
 -Darksiders Warmastered Edition intro+cutscenes broken currently
 
 
-Proton-5.11-GE-3-MF
+## Proton-5.11-GE-3-MF
 
 Fixes:
 -Re-enable rawinput (seems staging had it disabled in the previous build)
@@ -351,7 +702,7 @@ Fixes:
 -Added workaround for Warframe launcher rendering all black in wined3d mode (game still crashes in wined3d) - Thanks Iglu47
 -README has been overhauled. Thank you TheEvilSkeleton!
 
-Proton-5.11-GE-2-MF
+## Proton-5.11-GE-2-MF
 
 GloriousEggroll released this Jun 29, 2020
 
@@ -367,7 +718,7 @@ NOTE: If you want to allow your save games to work when using proton within lutr
 NOTE: If you want proton's media foundation to work in lutris, you need to set GST_PLUGIN_SYSTEM_PATH_1_0 and WINE_GST_REGISTRY_DIR environment variables.
 
 
-Proton-5.11-GE-1-MF
+## Proton-5.11-GE-1-MF
 
 GloriousEggroll released this Jun 26, 2020
 
@@ -413,7 +764,7 @@ Still broken:
 Marking this as release as it has a lot of regression fixes and should be quite stable, despite the ongoing media foundation work and esync/fsync being disabled.
 
 
-Proton-5.9-GE-2-MF
+## Proton-5.9-GE-2-MF
 
 GloriousEggroll released this Jun 06, 2020
 
@@ -457,7 +808,7 @@ Known issues:
 Currently I would say this should be ok to use for most games except Soul Calibur VI and Seven
 
 
-Proton-5.9-GE-1-NR
+## Proton-5.9-GE-1-NR
 
 GloriousEggroll released this on May 28, 2020
 
@@ -469,7 +820,7 @@ GloriousEggroll released this on May 28, 2020
 -PC Building Simulator no longer freezes when running 3dmark on low settings. It just skips the video.
 
 
-Proton-5.8-GE-2-MF
+## Proton-5.8-GE-2-MF
 
 GloriousEggroll released this on May 13, 2020
 
@@ -494,7 +845,7 @@ Todo:
 -Nioh videos don't play - check if MF or quartz
 
 
-Proton-5.8-GE-1-MF
+## Proton-5.8-GE-1-MF
 
 GloriousEggroll released this May 10, 2020
 
@@ -523,7 +874,7 @@ MF (Media Foundation) specific fixes:
 -Crazy Machines 3 videos fixed, should now be fully playable
 
 
-Proton-5.6-GE-2
+## Proton-5.6-GE-2
 
 GloriousEggroll released this Apr 14, 2020
 
@@ -535,7 +886,7 @@ GloriousEggroll released this Apr 14, 2020
 Normally I'd wait to release smaller changes like this, but the regression made some games basically unplayable. This should allow games to be played at least without the mouse stutter.
 
 
-Proton-5.6-GE-1
+## Proton-5.6-GE-1
 
 GloriousEggroll released this Apr 13, 2020
 
@@ -575,7 +926,7 @@ Specifically in this regard - proton normally disables 'mfplay' which allows med
 If you wish to re-disable media foundation to use this version with your other games, you can use WINEDLLOVERRIDES=mfplay=n %command% in the game's launch options.
 
 
-Proton-5.5-GE-1
+## Proton-5.5-GE-1
 
 GloriousEggroll released this Apr 5, 2020
 
@@ -607,7 +958,7 @@ Additional notes:
 Enjoy!
 
 
-Proton-5.4-GE-3
+## Proton-5.4-GE-3
 
 GloriousEggroll released this Mar 25, 2020
 
@@ -619,7 +970,7 @@ GloriousEggroll released this Mar 25, 2020
 -proton controller patches have been disabled (again) in favor of standard wine+wine-staging's, after reports of 'ghost' input and/or periodic input loss. SDL patches are still in applied.
 
 
-Proton-5.4-GE-2
+## Proton-5.4-GE-2
 
 GloriousEggroll released this Mar 22, 2020
 
@@ -650,7 +1001,7 @@ rgl_showIntelStartupWarning 0
 rgl_showNvidiaStartupWarning 0
 
 
-Proton-5.4-GE-1
+## Proton-5.4-GE-1
 
 GloriousEggroll released this Mar 16, 2020
 
@@ -673,7 +1024,7 @@ Known issues:
 -Borderlands 3 does not work with vkd3d yet
 
 
-Proton-5.2-GE-2
+## Proton-5.2-GE-2
 
 GloriousEggroll released this Feb 23, 2020
 
@@ -684,14 +1035,14 @@ This is a pre-release to fix Fallout New Vegas from crashing on main menu.
 -wine 5.2 updated to latest git
 
 
-Proton-5.2-GE-1
+## Proton-5.2-GE-1
 
 GloriousEggroll released this Feb 19, 2020
 
 This is a pre-release to fix the Warframe Launcher bug introduced in 2/18's update.
 
 
-Proton-5.1-GE-2
+## Proton-5.1-GE-2
 
 GloriousEggroll released this Feb 17, 2020
 
@@ -715,7 +1066,7 @@ Known issues:
 -MK11 hanging at launch (again)
 
 
-Proton-5.1-GE-1
+## Proton-5.1-GE-1
 
 GloriousEggroll released this Feb 10, 2020
 
@@ -740,7 +1091,7 @@ Known issues:
 -Please note, vkd3d is very new and still does not work for DirectX 12 on all games.
 
 
-Proton-5.0-GE-1
+## Proton-5.0-GE-1
 
 GloriousEggroll released this Jan 30, 2020
 
