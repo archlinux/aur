@@ -28,7 +28,7 @@ build()
 {
     cd "${srcdir}"/"${_pkgname}"/ || exit
     git submodule update --init --merge --recursive
-    ./configure
+    ./configure --prefix="${pkgdir}"
     make
 }
 
