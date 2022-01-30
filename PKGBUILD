@@ -11,7 +11,7 @@ arch=("any")
 url="https://github.com/pantor/${pkgname}"
 license=("MIT")
 depends=("nlohmann-json")
-makedepends=("cmake" "gcc" "make")
+makedepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("e628d994762dcdaa9a97f63a9b8b73d9af51af0ffa5acea6bdbba0aceaf8ee25")
 
