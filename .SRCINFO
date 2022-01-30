@@ -1,6 +1,6 @@
 pkgbase = hotwire-rs
-	pkgdesc = A GTK application that leverages Wireshark and tshark to capture traffic for analysis
-	pkgver = 0.2.0
+	pkgdesc = GTK application that leverages Wireshark and tshark to capture traffic for analysis
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/emmanueltouzery/hotwire
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hotwire-rs
 	depends = gtk3
 	depends = tcpdump
 	depends = wireguard-tools
-	source = hotwire-rs-0.2.0.tar.gz::https://github.com/emmanueltouzery/hotwire/archive/v0.2.0.tar.gz
-	sha256sums = b8b19ffe61f3d3ff635699c35dc76f7ccb62be5d51f56817e52452a540a73a87
+	source = hotwire-rs-0.2.1.tar.gz::https://github.com/emmanueltouzery/hotwire/archive/v0.2.1.tar.gz
+	sha256sums = ef1fbb37216aae7174586a27b73e53ee50cc30545563a47b007dfbbe1095102c
 
 pkgname = hotwire-rs
