@@ -4,7 +4,7 @@
 pkgname=qt5-lottie
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -16,6 +16,7 @@ groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('cec6095ab8f714e609d2ad3ea8c4fd819461ce8793adc42abe37d0f6dc432517')
+options=(debug)
 
 prepare() {
   mkdir -p build
