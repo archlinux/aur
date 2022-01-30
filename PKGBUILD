@@ -2,7 +2,7 @@
 # Contributor: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=('cmake'
 optdepends=('gxmessage: crash dialog (GNOME)'
             'kdialog: crash dialog (KDE)'
             'xorg-xmessage: crash dialog (other)')
-source=("Raze::git+https://github.com/coelckers/Raze#tag=1,4,0"
+source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
         '0001-Fix-file-paths.patch'
         'raze.desktop')
 sha256sums=('SKIP'
