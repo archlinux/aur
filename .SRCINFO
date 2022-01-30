@@ -1,4 +1,4 @@
-pkgbase = gandi-live-dns
+pkgbase = gandi-live-dns-rust
 	pkgdesc = Automatically updates your IP address for Gandi's Live DNS.
 	pkgver = 1.0.1
 	pkgrel = 1
@@ -18,13 +18,13 @@ pkgbase = gandi-live-dns
 	sha256sums = 7ae1a8fa18e0ef41aa42c94b4a364fdab0a6c9520cbea486f8c9c7f5da22e88f
 	sha256sums = cd3b1ab682d421e8b9f230d9f44c07a9afe54ce12e55a2990fcbe606e4ccb9a3
 	sha256sums = a0e652bf8fd879dcbb96488322cac572346fa9a1dbbc2cac08b94b12d9629128
-	source_x86_64 = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns.1.0.1.linux-x86_64.tar.xz
+	source_x86_64 = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns-rust.1.0.1.linux-x86_64.tar.xz
 	sha256sums_x86_64 = 75afe5409f4e98b91ef5966fbf6e2bfdeaccb299c2ccd35e722606ed0779c9f0
-	source_armv6h = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns.1.0.1.linux-armv6.tar.xz
+	source_armv6h = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns-rust.1.0.1.linux-armv6.tar.xz
 	sha256sums_armv6h = cc8465bc0a8d1de0bbb1817071d5aadce5a30287e8a7f6f357180559cddbd78d
-	source_armv7h = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns.1.0.1.linux-armv7.tar.xz
+	source_armv7h = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns-rust.1.0.1.linux-armv7.tar.xz
 	sha256sums_armv7h = 95f80dd4fab25b4e6aeb4278e4b19255277000515d1ffacc03189c162b0c3b5c
-	source_aarch64 = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns.1.0.1.linux-arm64.tar.xz
+	source_aarch64 = https://github.com/SeriousBug/gandi-live-dns-rust/releases/download/1.0.1/gandi-live-dns-rust.1.0.1.linux-arm64.tar.xz
 	sha256sums_aarch64 = df5c93303707ff60a015da4548f80218978247c886152b2f59b8509826245c34
 
-pkgname = gandi-live-dns
+pkgname = gandi-live-dns-rust

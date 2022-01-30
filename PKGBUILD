@@ -1,6 +1,6 @@
 # Maintainer: Kaan Genc <kaan@bgenc.net>
 
-pkgname=gandi-live-dns
+pkgname=gandi-live-dns-rust
 pkgver=1.0.1
 _source_ver=1.0.2 # Needed to work around a packaging mishap. Remove later.
 pkgrel=1
