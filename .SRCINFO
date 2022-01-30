@@ -1,13 +1,12 @@
 pkgbase = slideextract
 	pkgdesc = Extract slides from videos.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = http://szanni.org/slideextract
 	arch = any
 	license = BSD
 	depends = opencv>=4.0
-	source = http://szanni.org/slideextract/download/slideextract-0.2.0.tar.xz
-	sha256sums = 4584ec78274f537c2de10439abca0bbc55357e81a786c44bfe4a7dd47bd628d3
+	source = http://szanni.org/slideextract/download/slideextract-0.3.0.tar.xz
+	sha256sums = ef6a304af64c934ab4dff2e63e096c19b8370b1796078241898abc0874a8bbab
 
 pkgname = slideextract
-
