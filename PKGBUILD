@@ -1,23 +1,25 @@
-# Maintainer: ccat3z <c0ldcat3z@gmail.com>
+# Maintainer: msojocs <jiyecafe@gmail.com>
+# Contributor: ccat3z <c0ldcat3z@gmail.com>
 # Contributor: bruceutut <zttt183525594@gmail.com>
 
 # 方法参考
+# https://github.com/jiyeme/wechat-devtools
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.03.2006090"
-_wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/nightly/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.03.2006090_x64.exe"
-_wechat_devtools_md5="50de8cfaa7067be07248510123b7b409"
+_wechat_devtools_ver="1.05.2201242"
+_wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
+_wechat_devtools_md5="85552bae33e98eb186c5068419efce03"
 
 _wechat_devtools_exe="wechat_devtools_${_wechat_devtools_ver}_x64.exe"
-_nwjs_ver="0.39.3"
+_nwjs_ver="0.53.1"
 _install_dir="/opt/wechat-devtools"
-_node_version="v12.6.0"
+_node_version="v16.1.0"
 
 pkgname=wechat-devtools
-pkgver=${_wechat_devtools_ver}
-pkgrel=2
-epoch=2
+pkgver="${_wechat_devtools_ver}.1"  # 主版本号
+pkgrel=1   # 次版本号release
+epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
 url="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html"
@@ -30,10 +32,12 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "fix-cli.sh"
         "fix-menu.sh"
         "rebuild-modules.sh"
+        "fix-package-name-node"
         "logo.svg")
-md5sums=(cd439b0ff868e40c9664105cd0948bc3
+md5sums=(b6f49803c51d0abacca2d1e566c7fe19
          "${_wechat_devtools_md5}"
-         1415f0460ade665a8beeb9e08ff2ee13
+         a4dd86296db9aa6b55b048b43182d74f
+         "SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
@@ -67,7 +71,7 @@ build() {
     # run fix scripts
     export NW_PACKAGE_DIR="${srcdir}/wechat_devtools/code/package.nw"
     export NW_VERSION=$_nwjs_ver
-    for script in fix-cli.sh fix-menu.sh rebuild-modules.sh; do
+    for script in fix-package-name-node fix-cli.sh fix-menu.sh rebuild-modules.sh; do
         _log "run ${script}"
         "${srcdir}/${script}"
     done

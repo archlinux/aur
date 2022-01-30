@@ -28,43 +28,62 @@ if [ ! -d "$node_modules" ]; then
     exit 1
 fi
 
-for mod in "$node_modules"/*; do
-    mod_name=$(basename "$mod")
-    echo -e "\e[1;34mrebuild $mod_name\e[0m" >&2
-    cd "${mod}"
 
-    case "$mod_name" in
-    spdlog-node|oniguruma-node|native-keymap|native-watchdog|extract-file-icon|node-pty-node)
-        [ "$dry_run" = 'y' ] && continue
-        npm install
-        ;;
-    spdlog|oniguruma|node-pty)
-        [ "$dry_run" = 'y' ] && continue
-        nw-gyp rebuild --target="${NW_VERSION}"
-        ;;
-    nodegit)
-        [ "$dry_run" = 'y' ] && continue
-        mkdir lib
-        npm install
-        npm run recompile
-        ;;
-    vscode-ripgrep)
-        [ "$dry_run" = 'y' ] && continue
-        rm -rf bin
-        npm install
-        ;;
-    vscode-windows-*|windows-*)
-        [ "$dry_run" = 'y' ] && continue
-        cd "$node_modules"
-        rm -rf "${mod}"
-        ;;
-    trash|vscode-oniguruma)
-        [ "$dry_run" = 'y' ] && continue
-        ;;
-    *)
-        echo -e "\e[1;31mcannot rebuild $mod\e[0m" >&2
-        exit 1
-        ;;
-    esac
-done
+rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-windows-ca-certs" # the module is only available in windows
+rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-windows-registry" # the module is only available in windows
+rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-windows-registry-node" # the module is only available in windows
+rm -fr "${NW_PACKAGE_DIR}/node_modules/windows-process-tree" # the module is only available in windows
 
+rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-ripgrep/bin" # redownload bin on linux
+
+rm -fr "${NW_PACKAGE_DIR}/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules/node-pty-node" # the native module is not available in windows
+
+(cd "${NW_PACKAGE_DIR}/node_modules" && find -name *.pdb | xargs -I{} rm -r {}) # remove pdb debugging file
+
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp" # remove previous hacking tmp 
+mkdir -p "${NW_PACKAGE_DIR}/node_modules_tmp"
+cp -fr "${NW_PACKAGE_DIR}/node_modules" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules" 
+
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty"
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty-node"
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/native-watchdog"
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/oniguruma-node"
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog"
+rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog-node"
+
+(npm install \
+    extract-file-icon \
+    native-keymap \
+    node-pty \
+    native-watchdog \
+    oniguruma \
+    spdlog@0.11.1 \
+    trash \
+    vscode-oniguruma \
+    vscode-ripgrep \
+    nodegit \
+    --prefix="${NW_PACKAGE_DIR}/node_modules_tmp" \
+    --registry=https://registry.npm.taobao.org \
+    --nodegit_binary_host_mirror=https://npm.taobao.org/mirrors/nodegit/v0.27.0/) # reinstall modules
+
+# rebuild
+echo "nw-gyp version: $( nw-gyp --version )"
+cd "$NW_PACKAGE_DIR/node_modules_tmp/node_modules/node-pty" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION"
+(cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty-node")
+rm -rf "${NW_PACKAGE_DIR}/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules/node-pty-node"
+cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules"
+(cp -fr "${NW_PACKAGE_DIR}/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules/node-pty-node")
+
+cd "$NW_PACKAGE_DIR/node_modules_tmp/node_modules/native-watchdog" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION"
+rm -rf "${NW_PACKAGE_DIR}/node_modules/native-watchdog" && cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/native-watchdog" "${NW_PACKAGE_DIR}/node_modules"
+
+(cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/oniguruma" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/oniguruma-node")
+(cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog-node")
+
+(cd "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules" && find -name "obj.target" | xargs -I{} rm -rf {})
+(cd "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules" && find -name "*.node" | xargs -I{} cp -rf {} ${NW_PACKAGE_DIR}/node_modules/{})
+
+mkdir -p "${NW_PACKAGE_DIR}/node_modules/vscode-ripgrep/bin"
+cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/vscode-ripgrep/bin/rg" "${NW_PACKAGE_DIR}/node_modules/vscode-ripgrep/bin/rg"
+
+rm -rf "${NW_PACKAGE_DIR}/node_modules_tmp"

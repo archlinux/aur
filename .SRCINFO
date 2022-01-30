@@ -1,7 +1,7 @@
 pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools Linux version.
-	pkgver = 1.03.2006090
-	pkgrel = 2
+	pkgver = 1.05.2201242.1
+	pkgrel = 1
 	epoch = 2
 	url = https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html
 	arch = x86_64
@@ -13,20 +13,21 @@ pkgbase = wechat-devtools
 	depends = gconf
 	depends = libxkbfile
 	options = !strip
-	source = nwjs-v0.39.3.tar.gz::https://npm.taobao.org/mirrors/nwjs/v0.39.3/nwjs-sdk-v0.39.3-linux-x64.tar.gz
-	source = wechat_devtools_1.03.2006090_x64.exe::https://dldir1.qq.com/WechatWebDev/nightly/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.03.2006090_x64.exe
+	source = nwjs-v0.53.1.tar.gz::https://npm.taobao.org/mirrors/nwjs/v0.53.1/nwjs-sdk-v0.53.1-linux-x64.tar.gz
+	source = wechat_devtools_1.05.2201242_x64.exe::https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe
 	source = wechat-devtools.desktop
 	source = fix-cli.sh
 	source = fix-menu.sh
 	source = rebuild-modules.sh
+	source = fix-package-name-node
 	source = logo.svg
-	md5sums = cd439b0ff868e40c9664105cd0948bc3
-	md5sums = 50de8cfaa7067be07248510123b7b409
-	md5sums = 1415f0460ade665a8beeb9e08ff2ee13
+	md5sums = b6f49803c51d0abacca2d1e566c7fe19
+	md5sums = 85552bae33e98eb186c5068419efce03
+	md5sums = a4dd86296db9aa6b55b048b43182d74f
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 88e0efe5d58444b3d39695d4fb16d61b
 
 pkgname = wechat-devtools
-
