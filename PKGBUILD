@@ -4,7 +4,7 @@
 pkgname=qt5-webview
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -15,6 +15,7 @@ groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('be9f46167e4977ead5ef5ecf883fdb812a4120f2436383583792f65557e481e7')
+options=(debug)
 
 prepare() {
   mkdir -p build
