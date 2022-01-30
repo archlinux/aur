@@ -1,7 +1,7 @@
 pkgbase = linode-cli
 	pkgdesc = Linode API wrapper
 	pkgver = 5.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linode/linode-cli
 	install = linode-cli.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = linode-cli
 	replaces = linode-cli-dev
 	source = linode-cli-5.15.0.tar.gz::https://github.com/linode/linode-cli/archive/5.15.0.tar.gz
 	source = no-python2.patch
-	sha256sums = 0af1721549a28f11798eec113e41c6bbd7f1653dd47ccfadf00bbbf4009a0c25
-	sha256sums = 7a3f1e454ffac21db74ad1e1b8575f4246566fb25966b89a2e30fa8215dd8c13
+	sha512sums = 1fbd27e46bde0a2feb833204932bed20e941ee21cd1a30bbb112eb108855e3dd082b54ba1ec59d47794ae1755af0f47e6460ae561078727081fc4871978961c1
+	sha512sums = ab743f3909aab35012dfe0524ec508da65ee64b54731d55eeb3655c41f6eedac10bd2791507e9754e50962376243708727e069a8b791474ee38f018e40c8b962
 
 pkgname = linode-cli
