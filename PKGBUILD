@@ -5,7 +5,7 @@ pkgver=12.2.3
 _commit=8492c10291d852071bb599fcf59d57eb2566afd8
 _chromiumver=89.0.4389.128
 _gcc_patchset=7
-pkgrel=2
+pkgrel=3
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -20,6 +20,7 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'pipewire: WebRTC desktop sharing under Wayland'
             'trash-cli: file deletion support (trash-put)'
             "xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)")
+options=('!lto') # Electron adds its own flags for ThinLTO
 source=('git+https://github.com/electron/electron.git'
         'git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#branch=main'
         "https://github.com/stha09/chromium-patches/releases/download/chromium-${_chromiumver%%.*}-patchset-${_gcc_patchset}/chromium-${_chromiumver%%.*}-patchset-${_gcc_patchset}.tar.xz"
@@ -33,6 +34,7 @@ source=('git+https://github.com/electron/electron.git'
         'chromium-harfbuzz-3.0.0.patch'
         'skia-harfbuzz-3.0.0.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
+        'ffmpeg5.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -47,6 +49,7 @@ sha256sums=('SKIP'
             '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
             'c9ed1dbadaf4be6097e25bc5577b91751799befc2d0376b143e1bd10def5754e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
+            '4f32b815349357ef1f17b36059cee588c994472b9754a194fff41ec21a93826b'
            )
 
 _system_libs=('ffmpeg'
@@ -138,6 +141,12 @@ prepare() {
   patch -Np1 -i ../patches/chromium-89-quiche-dcheck.patch
   patch -Np1 -i ../patches/chromium-89-AXTreeSerializer-include.patch
 
+  patch -Np1 -i ../ffmpeg5.patch
+  # Patches to build with ffmpeg 4.4; remove when ffmpeg 5.0 moves to stable
+  if ! pkg-config --atleast-version 59 libavformat; then
+    patch -Rp1 -i ../ffmpeg5.patch
+  fi
+
   patch -Np1 -i ../add-dependency-on-opus-in-webcodecs.patch
   patch -Np1 -i ../chromium-fix-libva-redef.patch
   patch -Np1 -i ../chromium-glibc-2.33.patch
@@ -172,6 +181,14 @@ build() {
   export CXX=clang++
   export AR=ar
   export NM=nm
+
+  CFLAGS="${CFLAGS/-fexceptions/}"
+  CXXFLAGS="${CXXFLAGS/-fexceptions/}"
+
+  # This appears to cause random segfaults when combined with ThinLTO
+  # https://bugs.archlinux.org/task/73518
+  CFLAGS=${CFLAGS/-fstack-clash-protection}
+  CXXFLAGS=${CXXFLAGS/-fstack-clash-protection}
 
   # Do not warn about unknown warning options
   CFLAGS+='   -Wno-unknown-warning-option'
