@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.0.19
+pkgver=7.1.0.22
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -34,7 +34,7 @@ makedepends=(
 )
 source=("https://download.imagemagick.org/ImageMagick/download/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('3fd79174ab0f30bc1643af3e654f1d2ffcc3a9554263981155688b4f49f7fd77'
+sha256sums=('8b02ffda73a0163a8341638b5603d955ff7258798d8d0194577ffa928cbb97a8'
             'SKIP'
             '290c6a87845b419459fb552c0e7dcd81fbeafcecc370818d442fedf4d315b7fb')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
@@ -126,7 +126,7 @@ package_imagemagick-full() {
             'libx11' 'bzip2' 'zlib' 'libltdl' 'gperftools' 'djvulibre' 'libraw'
             'graphviz' 'openexr' 'libheif' 'openjpeg2' 'libjpeg-turbo' 'xz' 'glib2' 'pango'
             'cairo' 'libpng' 'ghostscript' 'ming' 'librsvg' 'libtiff' 'libwebp' 'libwmf'
-            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libjxl'
+            'ocl-icd' 'gsfonts' 'ttf-dejavu' 'perl' 'libzip' 'libjxl'
         # AUR:
             'dmalloc' 'flif' 'libfpx' 'libumem-git'
     )
@@ -142,9 +142,6 @@ package_imagemagick-full() {
     rm "$pkgdir"/usr/lib/*.la
     mv "${pkgdir}/usr/share/doc" .
     install -D -m644 "ImageMagick-${pkgver%.*}-${pkgver##*.}"/{LICENSE,NOTICE} -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    
-    # harden security policy: https://bugs.archlinux.org/task/62785
-    sed -e '/<\/policymap>/i \ \ <policy domain="delegate" rights="none" pattern="gs" \/>' -i "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
 }
 
 package_imagemagick-full-doc() {
