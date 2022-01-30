@@ -25,10 +25,11 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_electronDist=/usr/lib/electron13
-_electronVer="$(tail /usr/lib/electron13/version)"
+
 
 prepare() {
+  export _electronDist=/usr/lib/electron13
+  export _electronVer="$(tail /usr/lib/electron13/version)"
   cd "${srcdir}/${pkgname%-git}"
   sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g" package.json
 }
