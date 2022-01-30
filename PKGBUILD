@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=bombadil-git
-pkgver=2.2.3.r3.gf6dae99
+pkgver=2.2.3.r4.gbac3b31
 pkgrel=1
 arch=('any')
 pkgdesc='A dotfile manager with templating'
@@ -22,7 +22,7 @@ build() {
     cd $pkgname
 
     # Build the daemon and client
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
