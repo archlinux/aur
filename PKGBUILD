@@ -30,7 +30,7 @@ build()
     git checkout tags/v"${pkgver}"
     git submodule update --init --merge --recursive
     ./configure --prefix="${pkgdir}"/usr/
-    make
+    make libexecdir="${pkgdir}"/usr/lib/
 }
 
 package()
@@ -40,7 +40,7 @@ package()
 
     # Install the software.
     cd "${srcdir}"/"${_pkgname}"/ || exit
-    make DESTDIR="${pkgdir}" install
+    make DESTDIR="${pkgdir}" libexecdir="${pkgdir}"/usr/lib/ install
 
     # Install the license.
     install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
