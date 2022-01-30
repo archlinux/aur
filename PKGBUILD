@@ -2,7 +2,7 @@
 # Contributer: Alexander Görtz <aur@nyloc.de>
 
 pkgname=tex2im
-pkgver=2.0.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A simple tool that converts LaTeX formulas into high resolution pixmap graphics for inclusion in text processors or presentations."
 url="https://github.com/CD3/tex2im"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('imagemagick' 'texlive-core' 'python')
 provides=('im2tex')
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('7bb49760c4c103e09c96b980857d008345b0eb8a8fd071881076175d69c46847')
+sha256sums=('3cd69eabf1d37bd4c1fe534f6fe4a2bb27753ab903b4fdf891ba07d86b7da6f5')
 install="${pkgname}.install"
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
