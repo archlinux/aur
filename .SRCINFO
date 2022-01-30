@@ -1,19 +1,16 @@
 pkgbase = cflow
-	pkgdesc = GNU cflow - for diagramming C program flow from sources
-	pkgver = 1.6
+	pkgdesc = A C program flow analyzer.
+	pkgver = 1.7
 	pkgrel = 1
 	url = https://www.gnu.org/software/cflow/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	options = !staticlibs
-	options = libtool
-	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/cflow/cflow-1.6.tar.xz
-	source = http://ftp.gnu.org/gnu/cflow/cflow-1.6.tar.xz.sig
+	depends = glibc
+	source = http://ftp.gnu.org/gnu/cflow/cflow-1.7.tar.xz
+	source = http://ftp.gnu.org/gnu/cflow/cflow-1.7.tar.xz.sig
 	validpgpkeys = 325F650C4C2B6AD58807327A3602B07F55D0C732
-	sha256sums = d5392a6d8a63ba2f41df9f88b51f97bc0452c5262762a3c27e0412a6c03c06db
+	sha256sums = 9e278b10ea420a1ab7ecccd8335fc31fb1921e91ab99d77e33df0729e19dca3b
 	sha256sums = SKIP
 
 pkgname = cflow
-
