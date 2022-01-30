@@ -25,7 +25,6 @@ sha256sums=(
 build() {
   cd "$srcdir/${_name}-${pkgver}"
   export SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core"
-  export SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep"
   # fix wcmatch version
   # sed -i 's/wcmatch==8.2/wcmatch>=8.2/' setup.py
   python setup.py build
