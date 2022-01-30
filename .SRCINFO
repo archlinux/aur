@@ -12,7 +12,8 @@ pkgbase = bubblejail-git
 	depends = python
 	depends = python-xdg
 	depends = bubblewrap
-	depends = python-toml
+	depends = python-tomli
+	depends = python-tomli-w
 	depends = xdg-dbus-proxy
 	depends = hicolor-icon-theme
 	depends = python-pyqt5
@@ -25,4 +26,3 @@ pkgbase = bubblejail-git
 	md5sums = SKIP
 
 pkgname = bubblejail-git
-
