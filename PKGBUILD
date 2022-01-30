@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=7.0rc6-GE-1
+_srctag=7.1-GE-2
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
