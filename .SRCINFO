@@ -1,13 +1,13 @@
 pkgbase = fastrandom
 	pkgdesc = Quickly generate large amounts of cryptographically insecure pseudo-random data
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/kugland/fastrandom
 	arch = x86_64
 	license = MIT
 	checkdepends = rng-tools
 	makedepends = make
-	source = https://gitlab.com/kugland/fastrandom/-/archive/v1.0.5/fastrandom-v1.0.5.tar.gz
-	sha256sums = 1535d7370c97cc3dea82346168c2d40ad049c0f64d40b35e7b8753d2f0e54e96
+	source = https://gitlab.com/kugland/fastrandom/-/archive/v1.0.6/fastrandom-v1.0.6.tar.gz
+	sha256sums = 6a5b76ee42cdd1dad3f1c20c17a183fe680fbdb0169c7bf55abe8cadcd926a92
 
 pkgname = fastrandom
