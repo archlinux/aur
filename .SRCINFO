@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 96.0.2
-	pkgrel = 1
+	pkgver = 96.0.3
+	pkgrel = 2
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
 	arch = x86_64
@@ -56,19 +56,20 @@ pkgbase = librewolf
 	options = !lto
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/96.0.2/source/firefox-96.0.2.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0.3/source/firefox-96.0.3.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/96.0.3/source/firefox-96.0.3.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v96.0.2-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=5.2
-	source = mozilla-kde_after_unity.patch
+	source = git+https://gitlab.com/librewolf-community/browser/common.git#tag=v96.0.3-2
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=5.4
 	source = default192x192.png
-	sha256sums = d32d2afa9179a78e6ed97e15e0f39e372c0d662cb9614404db15e7616da31ab8
+	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	sha256sums = 1a741d6fcf20e6833a90169f41d29141ea4610f58b848e06091a683af6304dea
+	sha256sums = SKIP
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fe9dfd79098321faededb85550e3dc78706d60ad80678c3c49de9c1b547095bf
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
-	source_aarch64 = 96.0.2-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	source_aarch64 = 96.0.3-2_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf
