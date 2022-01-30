@@ -53,7 +53,7 @@ provides=('mplayer' 'mplayer2')
 conflicts=('mplayer' 'mplayer2')
 replaces=('mplayer' 'mplayer2')
 options=('!emptydirs')
-source=('https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.xz'
+source=('mplayer2-2.0.tar.xz::https://www.dropbox.com/s/8vv627lsfh4l9sn/mplayer2-2.0.tar.xz?dl=0'
         'git+http://repo.or.cz/mplayer2-build.git'
         'git+http://repo.or.cz/mplayer2.git'
         'libav::git://repo.or.cz/FFMpeg-mirror/mplayer-patches.git'

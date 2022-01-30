@@ -53,7 +53,7 @@ pkgbase = mplayer2-build-git
 	options = !emptydirs
 	backup = etc/mplayer/codecs.conf
 	backup = etc/mplayer/input.conf
-	source = https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.xz
+	source = mplayer2-2.0.tar.xz::https://www.dropbox.com/s/8vv627lsfh4l9sn/mplayer2-2.0.tar.xz?dl=0
 	source = git+http://repo.or.cz/mplayer2-build.git
 	source = git+http://repo.or.cz/mplayer2.git
 	source = libav::git://repo.or.cz/FFMpeg-mirror/mplayer-patches.git
@@ -87,4 +87,3 @@ pkgbase = mplayer2-build-git
 	sha256sums = 9f98ba01f9450c68c2638f2597158b5eda579d90d6673914c741f1e7dcf52260
 
 pkgname = mplayer2-build-git
-
