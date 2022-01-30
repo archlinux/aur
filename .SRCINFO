@@ -1,0 +1,13 @@
+pkgbase = geany-nord-theme
+	pkgdesc = Nord color theme for Geany.
+	pkgver = r15+96f85bd
+	pkgrel = 1
+	url = https://github.com/Betelgeuse1/NordThemeGeany
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = geany
+	source = geany-nord-theme::git+https://github.com/Betelgeuse1/NordThemeGeany#commit=96f85bd25ce3be58df186bb44f27ddc9d4387e8c
+	sha1sums = SKIP
+
+pkgname = geany-nord-theme
