@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=deheader
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='Find and optionally remove unneeded includes in C or C++ source files'
 arch=('any')
@@ -8,8 +8,8 @@ url='http://www.catb.org/~esr/deheader/'
 license=('BSD')
 depends=('python')
 source=("$url/$pkgname-$pkgver.tar.gz" 'deheader_use-system-python.patch')
-sha512sums=('611c7c71a2a5c79ca79fd0de26b53fdd10a7e4b090330c35c3f7d56737b0b3c6736a6b98ca568320a36452a157af4642912e78d02c77bd43c2ef32541f4a09ed'
-            '1f4d63ec337ed2f4672124abae2637605f88e3580205b744d82d505ab0d3cfe67988eb2f5c698d2a41b908c99ce66fe7da8b965073465b80ccadc1a9b0d2a72b')
+sha512sums=('b9dc32e37d1615f373b1e003aacc9479dc32bbead5bc537643cdd718b3a784aea3520399a3cabb02e53355b485ec23487b45e0a349f9004f57bb352a898989d5'
+            '39abe864f58994ba2c4bfe092ee15372a62ffc607ab06912d949b1187a11de5ade0eb121dd54a5cb9659ca4bf33bd8b3866b906d1c82f893a818e659b5f9b842')
 
 prepare() {
 	cd "$pkgname-$pkgver"
