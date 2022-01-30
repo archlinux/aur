@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 RemainAfterExit=yes
+Environment=GIN_MODE=release
 ExecStart=/usr/bin/headscale serve
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure

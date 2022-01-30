@@ -1,6 +1,6 @@
 pkgname=headscale
 pkgver=0.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, self-hosted implementation of the Tailscale coordination server."
 arch=('any')
 url="https://github.com/juanfont/headscale"
@@ -12,13 +12,14 @@ optdepends=(
 	'postgresql: alternative database provider'
 )
 conflicts=("${pkgname}-git")
+backup=("etc/${pkgname}/config.yaml")
 
 source=(
 	"${pkgname}-${pkgver}.tar.gz::https://github.com/juanfont/headscale/archive/refs/tags/v${pkgver}.tar.gz"
 	'headscale.service'
 )
 sha256sums=('db71f07d360731b860f3b28de2283a08722f9398b36bcb99f77ac62beb0f9827'
-            'db54439a60d6efdc812bc9d1cbe9fecc1d7134398a75f88927b561ebcb8d5cba')
+            '000457ad0cfaca8513c0f1be5b0a04beb673576e019c7184e5fb3a78e57738ab')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
