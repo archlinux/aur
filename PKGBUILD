@@ -2,7 +2,7 @@
 _name='morgenrot'
 pkgname="${_name}-git"
 pkgver='v1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='morgenrot calculates sunrise and sunset times'
 arch=('any')
 url="https://gitlab.com/yrws/morgenrot-cli"
