@@ -1,0 +1,55 @@
+From a2820a2278922c6ffd4610719a45d0c4a550bda4 Mon Sep 17 00:00:00 2001
+From: Christian Brauner <brauner@kernel.org>
+Date: Mon, 24 Jan 2022 17:34:51 +0100
+Subject: [PATCH] homed: give users larger idmappings uperward of UID_NOBODY
+
+When using systemd-homed with idmapped mounts to manage home directories
+systemd will allocate a uid for the user in the range of
+HOME_UID_MIN/60001, HOME_UID_MAX/60513. Say systemd allocated 60370 as
+the users uid. It will then create an idmapped mount with the following
+idmapping for the user's home directory:
+
+0 0 60001
+60370 60370 1
+60513 60513 5021
+
+The problem is that this will prevent users from running containers as
+nothing is mapped post UID_NOBODY. Give the users a 10m range starting
+from UID_NOBODY + 1 this is enough to run variety of isolated containers.
+
+Issues with the current approach were reported on the systemd-devel
+mailing list.
+---
+ src/home/home-util.h      | 1 +
+ src/home/homework-mount.c | 6 ++++++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/src/home/home-util.h b/src/home/home-util.h
+index 69a88000f845..4b2dc52ab64a 100644
+--- a/src/home/home-util.h
++++ b/src/home/home-util.h
+@@ -11,6 +11,7 @@
+ /* See https://systemd.io/UIDS-GIDS for details how this range fits into the rest of the world */
+ #define HOME_UID_MIN 60001
+ #define HOME_UID_MAX 60513
++#define HOME_UID_RANGE_MAX 10000000
+ 
+ /* Put some limits on disk sizes: not less than 5M, not more than 5T */
+ #define USER_DISK_SIZE_MIN (UINT64_C(5)*1024*1024)
+diff --git a/src/home/homework-mount.c b/src/home/homework-mount.c
+index 0b028dad3769..89b9cddf0949 100644
+--- a/src/home/homework-mount.c
++++ b/src/home/homework-mount.c
+@@ -209,6 +209,12 @@ static int make_userns(uid_t stored_uid, uid_t exposed_uid) {
+         if (r < 0)
+                 return log_oom();
+ 
++        /* Map HOME_UID_RANGE_MAX ids upwards of UID_NOBODY to let unprivileged
++         * users run containers and other shenanigans. */
++        r = strextendf(&text, UID_FMT " " UID_FMT " " UID_FMT "\n", UID_NOBODY + 1, UID_NOBODY + 1, HOME_UID_RANGE_MAX);
++        if (r < 0)
++                return log_oom();
++
+         /* Leave everything else unmapped, starting from UID_NOBODY itself. Specifically, this means the
+          * whole space outside of 16bit remains unmapped */
+ 
