@@ -1,13 +1,13 @@
 pkgbase = bacon
 	pkgdesc = A background rust code checker
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Canop/bacon
 	arch = x86_64
 	license = AGPL3
 	makedepends = rust
 	depends = gcc-libs
-	source = bacon-1.2.4.tar.gz::https://github.com/Canop/bacon/archive/v1.2.4.tar.gz
-	sha512sums = b273f3d348a7cca378b91d3bad7c2f7117b4b8159341adab9dc5d09e84b459981101bbd4e498b3d5cad087f45056f8f846fa05076abbdde515a87235b0bea497
+	source = bacon-1.2.5.tar.gz::https://github.com/Canop/bacon/archive/v1.2.5.tar.gz
+	sha512sums = e3121293afce03526b6f83e7e2702a166a12803baac18282f499492ea32f4e184624137bbf21ef1ae990184a9fceb976e5555223ff3624fab0f1d59fb6bc76d2
 
 pkgname = bacon
