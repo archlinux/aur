@@ -1,17 +1,15 @@
 pkgbase = usbrelay
 	pkgdesc = Control usb relay - based on hidapi
-	pkgver = 0.7.r33.gf3434b9
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/darrylb123/usbrelay
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	depends = hidapi
 	options = !strip
-	source = git://github.com/darrylb123/usbrelay.git#commit=f3434b9050076987d906a6516c31922ab0026fcc
-	md5sums = SKIP
-	sha256sums = SKIP
+	source = usbrelay-0.9.tar.gz::https://github.com/darrylb123/usbrelay/archive/0.9.tar.gz
+	md5sums = 3840adf8fd079359aafe9d27bc138ba2
+	sha256sums = 63fbc21112b8bc8b92317bf04d7682c835200472c67fdad9202836a645496259
 
 pkgname = usbrelay
-

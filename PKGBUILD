@@ -4,12 +4,12 @@ _opt_python=0
 
 _opt_debug=0
 
-_opt_git='#commit=f3434b9050076987d906a6516c31922ab0026fcc' # release 0.7 Segmentation fault
+#_opt_git='#commit=f3434b9050076987d906a6516c31922ab0026fcc' # release 0.7 Segmentation fault
 
 set -u
 pkgname='usbrelay'
 #pkgname+='-git'
-pkgver=0.7.r33.gf3434b9
+pkgver=0.9
 pkgrel=1
 pkgdesc='Control usb relay - based on hidapi'
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ if [ "${pkgver}" = '0.6' ]; then
   _srcdir="${pkgname}-0-6"
 fi
 source=("${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz")
-md5sums=('SKIP')
-sha256sums=('SKIP')
+md5sums=('3840adf8fd079359aafe9d27bc138ba2')
+sha256sums=('63fbc21112b8bc8b92317bf04d7682c835200472c67fdad9202836a645496259')
 
 if [ "${_opt_python}" -ne 0 ]; then
   depends+=('python3')
@@ -54,8 +54,8 @@ fi
 prepare() {
   set -u
   cd "${_srcdir}"
-  sed -e 's:/usr/lib64:/usr/lib:g' \
-      -e '/setup.py install/ s:$: --prefix=/usr --root=$(DESTDIR) --optimize=1:g' \
+  sed -e 's:/lib64:/lib:g' \
+      -e '#/setup.py install/ s:$: --prefix=/usr --root=$(DESTDIR) --optimize=1:g' \
     -i 'Makefile'
   make clean
   set +u
