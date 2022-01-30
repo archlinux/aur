@@ -4,7 +4,7 @@
 pkgname=gnome-radio
 pkgver=14.0.0
 pkgrel=1
-pkgdesc="Easily find live radio programs based on geographical location of radio broadcasters on the Internet"
+pkgdesc="Listen to NPO in GNOME 42 Preview of the new version of gnome-internet-radio-locator"
 arch=('x86_64')
 url="https://wiki.gnome.org/Apps/Radio"
 license=(GPL3)
