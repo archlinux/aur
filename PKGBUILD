@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-denops
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='Vim ecosystem for writing plugins in Deno'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('deno' 'vim-plugin-runtime')
 replaces=('neovim-denops')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8a9e9e5a11c3418f1a93f0bbdf23c2f1642e7d32eaae77c0dd7dbb58861a3040')
+sha256sums=('5b40663a58f8d568f3b0390500afb0643f3b1172171ed044e36a55cf19db66dc')
 
 package() {
 	cd "denops.vim-$pkgver"
