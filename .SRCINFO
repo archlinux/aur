@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-turtlebot3-gazebo
 	pkgdesc = ROS - Gazebo simulation package for the TurtleBot3
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.3.2
+	pkgrel = 1
 	url = https://wiki.ros.org/turtlebot3_gazebo
 	arch = i686
 	arch = x86_64
@@ -20,8 +20,7 @@ pkgbase = ros-noetic-turtlebot3-gazebo
 	depends = ros-noetic-nav-msgs
 	depends = ros-noetic-tf
 	depends = ros-noetic-gazebo-ros
-	source = ros-noetic-turtlebot3-gazebo-1.2.0.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3_simulations/archive/1.2.0.tar.gz
-	sha256sums = 6fbb4cf74b9777c3be3a751dd8d638df2570dd4478681b5eadf51dee32f57c5b
+	source = ros-noetic-turtlebot3-gazebo-1.3.2.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3_simulations/archive/1.3.2.tar.gz
+	sha256sums = e9ac367a0f2d9151d6496edb4c26f18efe54be5f2bc3f86e83259b098f0066bf
 
 pkgname = ros-noetic-turtlebot3-gazebo
-
