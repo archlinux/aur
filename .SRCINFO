@@ -6,6 +6,7 @@ pkgbase = nut-multimedia-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = doxygen
 	depends = glibc
 	provides = nut-multimedia
 	provides = libnut.so

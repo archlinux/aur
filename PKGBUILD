@@ -9,6 +9,7 @@ url='https://ffmpeg.org/nut.html'
 license=('GPL')
 depends=('glibc')
 makedepends=('git'
+             'doxygen'
               )
 conflicts=('nut-multimedia'
            'libnut-git'
