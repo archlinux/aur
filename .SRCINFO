@@ -1,8 +1,8 @@
 pkgbase = ros-noetic-pybind11-catkin
 	pkgdesc = ROS - The pybind11 package.
 	pkgver = 2.5.0
-	pkgrel = 1
-	url = http://www.ros.org/
+	pkgrel = 2
+	url = https://github.com/ipab-slmc/pybind11_catkin
 	arch = i686
 	arch = x86_64
 	arch = aarch64
