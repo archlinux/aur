@@ -8,7 +8,14 @@ pkgname="${_pkgname}${_major}-arm"
 #_minor='221'; _build='b11'; _hash='230deb18db3e4014bb8e3e8324f81b43'
 #_minor='231'; _build='b11'; _hash='5b13a193868b4bf28bcb45c792fce896'
 #_minor='241'; _build='b07'; _hash='1f5b5a70bf22433b84d0e960903adac8'
-_minor='251'; _build='b08'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+#_minor='251'; _build='b08'; _hash='3d5a2bb8f8d4428bbe94aed7ec7ae784'
+#_minor='261'; _build='b12'; _hash='a4634525489241b9a9e1aa73d9e118e6'
+#_minor='271'; _build='b09'; _hash='61ae65e088624f5aaa0b1d2d801acb16'
+#_minor='281'; _build='b09'; _hash='89d678f2be164786b292527658ca1605'
+#_minor='291'; _build='b10'; _hash='d7fc238d0cbf4b0dac67be84580cfb4b'
+#_minor='291'; _build='b10'; _hash='d7fc238d0cbf4b0dac67be84580cfb4b'
+#_minor='301'; _build='b09'; _hash='d3c52aa6bfa54d3ca74e617f18309292'
+_minor='311'; _build='b11'; _hash='4d5417147a92418ea8b615e228bb6935'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Development Kit LTS for ARM"
@@ -41,10 +48,10 @@ _jname="${_pkgname}${_major}"
 _jvmdir="/usr/lib/jvm/java-${_major}-${_pkgname}"
 
 if [ "$CARCH" = "aarch64" ]; then
-  _srcfil="${_pkgname}-${pkgver}-linux-arm64-vfp-hflt.tar.gz"
+  _srcfil="${_pkgname}-${pkgver}-linux-${CARCH}.tar.gz"
   _arch="aarch64"
 else
-  _srcfil="${_pkgname}-${pkgver}-linux-arm32-vfp-hflt.tar.gz"
+  _srcfil="${_pkgname}-${pkgver}-linux-arm32-vlp-hflt.tar.gz"
   _arch="arm"
 fi
 
@@ -103,9 +110,8 @@ sha256sums=('SKIP'
             '144e6651fcea08d95f3148d3a8ad17deb93fec4dd9236d37d27d7c648230b870'
             '635433e9c78ff58af65c316232ac9907d289a324428923788ea0f82ae7f8083b'
             '4c9d5ab69494b3d0d8b166fd5552aa7d587f44f804cec9e2990842ebcd1c8e1d')
-
-sha256sums_aarch64=('58baeaab7da97dd5a6b02ad2dcd77c14b3b6ba014029ee67dbc2bd5f0fa98d1b')
-sha256sums_armv7h=('f1b0c979e1b61ec52ebd5e1d0b754d7681d8623b09ac90c69718a553ef9b0cd1')
+sha256sums_aarch64=('3674ae7e6c419da2b0736a7800149a2b09d918678866234b98a28da213ba36fa')
+sha256sums_armv7h=('d0748f7197fc49a73e50320699f1de4d3d3cd269bb4bdeb7dfd0a418ccfc1788')
 
 #PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
 ## Alternative mirror, if your local one is throttled:
