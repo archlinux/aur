@@ -36,12 +36,15 @@ build()
 package()
 {
     # Assure that the directories exist.
-    mkdir -p "${pkgdir}"/usr/share/doc/"${pkgname}"/
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
     cd "${srcdir}"/"${_pkgname}"/ || exit
     make DESTDIR="${pkgdir}" install
+
+    ## The conent is put in pkg/c-lightning/usr/ which should be pkg/usr/.
+    mv "${pkgdir}"/"${pkgname}"/* "${pkgdir}"/
+    rm -r "${pkgdir:?}"/"${pkgname:?}"/
 
     # Install the license.
     install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
