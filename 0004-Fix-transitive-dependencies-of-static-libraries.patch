@@ -1,4 +1,4 @@
-From f60b0a86b113e248ba3574633856e59d35d1ea4b Mon Sep 17 00:00:00 2001
+From 72a9795f3610e10bed26b25b46ec7d12f9ad1954 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 4/8] Fix transitive dependencies (of static libraries)
@@ -8,10 +8,9 @@ corresponding find modules. This change allows adding the required
 dependencies by setting certain variables, e.g. within the toolchain file.
 
 This change also disables the upstream hack for OpenSSL's dependencies
-as it is even more hacky to hardcode the library names and the casing
-they use doesn't even work when building on GNU/Linux.
+as it is even more hacky to hardcode the library names.
 
-Change-Id: I9afee4f1a1debb482ede63421de86adf1c7c5adc
+Change-Id: I3baec612ee071eec77f756b18bbb9af87663527c
 ---
  .../3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake | 2 +-
  cmake/FindMySQL.cmake                                         | 1 +
@@ -59,19 +58,19 @@ index bdbcab9eb3..06e9af49f6 100644
 +    set_property(TARGET dbus-1 PROPERTY INTERFACE_LINK_LIBRARIES "${DBUS1_DEPENDENCIES}")
  endif()
 diff --git a/cmake/FindWrapOpenSSL.cmake b/cmake/FindWrapOpenSSL.cmake
-index 486686d338..1110116013 100644
+index 7b6dccb1d2..550c5134fb 100644
 --- a/cmake/FindWrapOpenSSL.cmake
 +++ b/cmake/FindWrapOpenSSL.cmake
 @@ -11,7 +11,7 @@ set(WrapOpenSSL_FOUND OFF)
  find_package(WrapOpenSSLHeaders ${WrapOpenSSL_FIND_VERSION})
  
- if(OpenSSL_FOUND)
+ if(TARGET OpenSSL::SSL)
 -    if(WIN32)
 +    if(WIN32 AND NOT MINGW)
          get_target_property(libType OpenSSL::Crypto TYPE)
          if(libType STREQUAL "ALIAS")
              get_target_property(writableLib OpenSSL::Crypto ALIASED_TARGET)
-@@ -26,7 +26,7 @@ if(OpenSSL_FOUND)
+@@ -26,7 +26,7 @@ if(TARGET OpenSSL::SSL)
      set(WrapOpenSSL_FOUND ON)
  
      add_library(WrapOpenSSL::WrapOpenSSL INTERFACE IMPORTED)
@@ -133,5 +132,5 @@ index d3a6a8588e..743154fc50 100644
          Qt::CorePrivate
          Qt::SqlPrivate
 -- 
-2.34.1
+2.35.0
 

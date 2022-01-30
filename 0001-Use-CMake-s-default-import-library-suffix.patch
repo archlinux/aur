@@ -1,4 +1,4 @@
-From 6d8a5f0107d7fdcc837f4737decfc44406fb8c14 Mon Sep 17 00:00:00 2001
+From 9df2dbd52b07e1964c3949c2b63970cf304c3bc7 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 22:08:10 +0100
 Subject: [PATCH 1/8] Use CMake's default import library suffix
@@ -98,7 +98,7 @@ index 24ed125f12..73ebe453d3 100644
          CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
          CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
 diff --git a/src/corelib/Qt6CoreMacros.cmake b/src/corelib/Qt6CoreMacros.cmake
-index a30e7ec9fb..8c9927a276 100644
+index 5741e05bf7..39e4b2bd9e 100644
 --- a/src/corelib/Qt6CoreMacros.cmake
 +++ b/src/corelib/Qt6CoreMacros.cmake
 @@ -495,7 +495,6 @@ function(_qt_internal_apply_win_prefix_and_suffix target)
@@ -110,5 +110,5 @@ index a30e7ec9fb..8c9927a276 100644
              get_target_property(target_type ${target} TYPE)
              if(target_type STREQUAL "STATIC_LIBRARY")
 -- 
-2.34.1
+2.35.0
 
