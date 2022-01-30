@@ -2,7 +2,7 @@
 
 pkgname=moonvulkan
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua bindings for Vulkan'
 url='https://github.com/stetre/moonvulkan/'
 source=("https://github.com/stetre/$pkgname/archive/v$pkgver.tar.gz")
