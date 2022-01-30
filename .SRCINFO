@@ -1,0 +1,27 @@
+pkgbase = c-lightning
+	pkgdesc = A Lightning Network implementation in C.
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/ElementsProject/lightning
+	arch = any
+	license = custom:BSD-MIT
+	makedepends = git
+	makedepends = gmp
+	makedepends = libsodium
+	makedepends = net-tools
+	makedepends = sqlite
+	makedepends = zlib
+	optdepends = cppcheck: Static C/C++ code analysis
+	optdepends = jq: Command-line JSON processor
+	optdepends = libsecp256k1: Optimised C library for EC operations on curve secp256k1
+	optdepends = postgresql-libs: Libraries for use with PostgreSQL
+	optdepends = shellcheck: Shell script analysis
+	optdepends = valgrind: Tool for memory management
+	provides = lightning-cli
+	provides = lightning-hsmtool
+	provides = lightningd
+	conflicts = c-lightning-git
+	source = git+https://github.com/ElementsProject/lightning.git
+	sha256sums = SKIP
+
+pkgname = c-lightning
