@@ -4,7 +4,7 @@
 pkgname=qt5-3d
 _qtver=5.15.2
 pkgver=5.15.2+kde+r39
-pkgrel=1
+pkgrel=2
 _commit=dba14d48611b9e9d59576172658779ab4a39b416
 arch=('x86_64')
 url='https://www.qt.io'
@@ -16,6 +16,7 @@ groups=('qt' 'qt5')
 _pkgfqn=qt3d
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
+options=(debug)
 
 pkgver() {
   cd $_pkgfqn
