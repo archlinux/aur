@@ -1,0 +1,17 @@
+pkgbase = bdf2psf-debian
+	pkgdesc = Bitmap font conversion utility with a very long history (pre-2006 source)
+	pkgver = 1.207
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	makedepends = grep
+	makedepends = libxml2
+	makedepends = curl
+	depends = perl
+	provides = bdf2psf
+	conflicts = bdf2psf
+	replaces = bdf2psf
+	source = http://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_1.207_all.deb
+	sha512sums = SKIP
+
+pkgname = bdf2psf-debian
