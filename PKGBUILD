@@ -8,7 +8,7 @@ pkgname=('systemd-homed-containers' 'systemd-libs-homed-containers' 'systemd-res
 _tag='d066a4f747b225d47c5f5c97a8843d30878995b8' # git rev-parse v${_tag_name}
 _tag_name=250.3
 pkgver="${_tag_name/-/}"
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -164,7 +164,7 @@ package_systemd-homed-containers() {
            'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
            'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so' 'libp11-kit'
            'libp11-kit.so' 'openssl')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev' 'systemd')
   optdepends=('libmicrohttpd: remote journald capabilities'
