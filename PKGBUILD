@@ -2,7 +2,7 @@
 
 pkgname=maliit-framework
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Core libraries of Maliit and server'
 arch=(x86_64)
 url='https://maliit.github.io/'
