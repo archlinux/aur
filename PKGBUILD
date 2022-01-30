@@ -3,12 +3,14 @@
 # shellcheck disable=SC2154
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
+_pkgname=lightning
+
 pkgname=c-lightning
 pkgver=0.10.2
 pkgrel=1
 pkgdesc="A Lightning Network implementation in C."
 arch=("any")
-url="https://github.com/ElementsProject/lightning"
+url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
 makedepends=("git" "gmp" "libsodium" "net-tools" "sqlite" "zlib")
 optdepends=("cppcheck: Static C/C++ code analysis"
@@ -24,7 +26,7 @@ sha256sums=("SKIP")
 
 build()
 {
-    cd "${srcdir}"/"${pkgname}"/ || exit
+    cd "${srcdir}"/"${_pkgname}"/ || exit
     git submodule update --init --merge --recursive
     ./configure
     make
@@ -37,12 +39,12 @@ package()
     mkdir -p "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 
     # Install the software.
-    cd "${srcdir}"/"${pkgname}"/ || exit
+    cd "${srcdir}"/"${_pkgname}"/ || exit
     make DESTDIR="${pkgdir}" install
 
     # Install the documentation.
-    install -Dm644 "${srcdir}"/"${pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
-    install -Dm644 "${srcdir}"/"${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
+    install -Dm644 "${srcdir}"/"${_pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
