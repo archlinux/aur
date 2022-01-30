@@ -1,9 +1,8 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Messages, services and actions used by MoveIt."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-msgs'
-pkgver='0.11.1'
+pkgver='0.11.2'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -35,16 +34,9 @@ ros_depends=(ros-noetic-actionlib-msgs
   ros-noetic-shape-msgs)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit_msgs-release.git"#tag=${_tag})
-# sha256sums=('cf24076ec34f836693b7818e7a36097b50581a66f98518666ebe3f7ba5ef2376')
-
-# Tarball version (faster download)
 _dir="moveit_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('9276e112a5a1862e32814b5c38babf0a39fdb88430760aefcdc4b0476ff6c9a9')
+sha256sums=('1be03f0e9c76336eae6f5c9862961f3defead35c6487d2aade12576a79651454')
 
 build() {
   # Use ROS environment variables
