@@ -6,7 +6,7 @@ _commit=f6798c5e994f9e1d7f88812ef6e5877e85b9c0eb
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=1
+pkgrel=2
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -61,6 +61,7 @@ source=('git+https://github.com/electron/electron.git'
         'replace-blacklist-with-ignorelist.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'chromium-93-ffmpeg-4.4.patch'
+        'chromium-94-ffmpeg-roll.patch'
         'chromium-93-pdfium-include.patch'
         'chromium-harfbuzz-3.0.0.patch'
         'skia-harfbuzz-3.0.0.patch'
@@ -83,10 +84,10 @@ sha256sums=('SKIP'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
+            '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
             '7c0c47f4b67d96515bcfa68ffd34d515d03f1e9e41c063459f39e4169de0324c'
             '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
-            'dae11dec5088eb1b14045d8c9862801a342609c15701d7c371e1caccf46e1ffd'
-           )
+            'dae11dec5088eb1b14045d8c9862801a342609c15701d7c371e1caccf46e1ffd')
 
 _system_libs=('ffmpeg'
               'flac'
@@ -182,7 +183,13 @@ prepare() {
   patch -Np1 -i ../patches/chromium-93-DevToolsEmbedderMessageDispatcher-include.patch
   patch -Np1 -i ../patches/chromium-93-ScopedTestDialogAutoConfirm-include.patch
 
-  patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
+  patch -Np1 -i ../chromium-94-ffmpeg-roll.patch
+  # Patches to build with ffmpeg 4.4; remove when ffmpeg 5.0 moves to stable
+  if ! pkg-config --atleast-version 59 libavformat; then
+    patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
+    patch -Rp1 -i ../chromium-94-ffmpeg-roll.patch
+  fi
+
   patch -Np1 -i ../chromium-93-pdfium-include.patch
   patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
   patch -d third_party/jinja2 -Np1 -i ../../../jinja-python-3.10.patch
