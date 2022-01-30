@@ -6,11 +6,11 @@ _commit=e1e54e9999de38a3197682b473f728b1598ebd29
 pkgrel=1
 pkgdesc="Change a MacBooks' keyboard backlight level based on current ambient light."
 arch=("x86_64")
-url="https://gitlab.com/hobarrera/malc/"
+url="https://gitlab.com/WhyNotHugo/malc/"
 license=('ISC')
 depends=('rust')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/hobarrera/$pkgname/repository/archive.tar.gz?ref=v$pkgver")
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/WhyNotHugo/$pkgname/repository/archive.tar.gz?ref=v$pkgver")
 md5sums=('SKIP')
 
 build() {
