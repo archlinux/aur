@@ -5,7 +5,7 @@
 pkgname=qt5-mqtt
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0"
 arch=(x86_64)
 url="http://qt-project.org/"
@@ -15,6 +15,7 @@ makedepends=(git)
 source=("git://code.qt.io/qt/qtmqtt.git#tag=v$_qtver")
 sha512sums=('SKIP')
 _pkgfqn=${pkgname/5-/}
+options=(debug)
 
 prepare() {
   mkdir -p build
