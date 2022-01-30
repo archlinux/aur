@@ -4,7 +4,7 @@
 pkgname=qt5-charts
 _qtver=5.15.2
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -16,6 +16,7 @@ groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
 sha256sums=('e0750e4195bd8a8b9758ab4d98d437edbe273cd3d289dd6a8f325df6d13f3d11')
+options=(debug)
 
 prepare() {
   mkdir -p build
