@@ -2,7 +2,7 @@ pkgdesc="ROS - ROS packages for the turtlebot3 simulation (meta package)"
 url='https://wiki.ros.org/turtlebot3_simulations'
 
 pkgname='ros-noetic-turtlebot3-simulations'
-pkgver='1.2.0'
+pkgver='1.3.2'
 arch=('any')
 pkgrel=1
 license=('Apache-2.0')
@@ -12,8 +12,8 @@ ros_makedepends=(
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 )
 
@@ -28,7 +28,7 @@ depends=(
 
 _dir="turtlebot3_simulations-${pkgver}/turtlebot3_simulations"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3_simulations/archive/${pkgver}.tar.gz")
-sha256sums=('6fbb4cf74b9777c3be3a751dd8d638df2570dd4478681b5eadf51dee32f57c5b')
+sha256sums=('e9ac367a0f2d9151d6496edb4c26f18efe54be5f2bc3f86e83259b098f0066bf')
 
 build() {
 	# Use ROS environment variables.
