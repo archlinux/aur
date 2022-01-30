@@ -1,22 +1,23 @@
 # Maintainer: 0x9fff00 <0x9fff00+git@protonmail.ch>
 
 _name=futurerestore
-_fork=marijuanARM
+_fork=m1stadev
 _forkpkgname=$_name-${_fork,,}
 pkgname=$_forkpkgname-git
-pkgver=r195.55db758b
+pkgver=r199.f42719c5
 pkgrel=1
-pkgdesc="iOS upgrade and downgrade tool utilizing SHSH blobs - marijuanARM's fork - git version"
+pkgdesc="iOS upgrade and downgrade tool utilizing SHSH blobs - m1stadev's fork - git version"
 arch=('x86_64')
 url="https://github.com/$_fork/$_name"
 license=('LGPL3')
-depends=('libplist' 'libzip' 'libimobiledevice' 'libfragmentzip' 'libirecovery' 'curl' 'openssl' 'zlib' 'img4tool' 'libgeneral')
+depends=('curl' 'img4tool' 'libfragmentzip' 'libgeneral' 'libimobiledevice' 'libirecovery' 'libplist' 'libzip' 'openssl' 'zlib')
 makedepends=('git')
-provides=("$_name" "$_forkpkgname")
+provides=("$_name" "$_forkpkgname" 'futurerestore-marijuanarm-git')
 conflicts=("$_name")
+replaces=('futurerestore-marijuanarm-git')
 source=("git+$url.git"
-        'git+https://github.com/tihmstar/tsschecker.git'
-        'git+https://github.com/marijuanARM/idevicerestore.git'
+        'git+https://github.com/DanTheMann15/tsschecker.git'
+        'git+https://github.com/m1stadev/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'
         'idevicerestore-0001-configure.ac-check-for-pthreads.patch')
 sha256sums=('SKIP'
