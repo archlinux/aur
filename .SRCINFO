@@ -1,0 +1,35 @@
+pkgbase = futurerestore-m1stadev-test-git
+	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - m1stadev's fork - test branch - git version
+	pkgver = r265.d2a1e87f
+	pkgrel = 1
+	url = https://github.com/m1stadev/futurerestore
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	depends = curl
+	depends = img4tool
+	depends = libfragmentzip
+	depends = libgeneral
+	depends = libimobiledevice-glue
+	depends = libimobiledevice
+	depends = libirecovery-git
+	depends = libplist
+	depends = libzip
+	depends = openssl
+	depends = zlib
+	provides = futurerestore
+	provides = futurerestore-m1stadev
+	provides = futurerestore-m1stadev-test
+	conflicts = futurerestore
+	source = git+https://github.com/m1stadev/futurerestore.git#branch=test
+	source = git+https://github.com/m1stadev/idevicerestore.git
+	source = git+https://github.com/1Conan/tsschecker.git
+	source = git+https://github.com/tihmstar/jssy.git
+	source = idevicerestore-0001-configure.ac-check-for-pthreads.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 7a1ac46309eab59763186fdb91e456bd77f703b0fe59fec968e0001349c24d78
+
+pkgname = futurerestore-m1stadev-test-git
