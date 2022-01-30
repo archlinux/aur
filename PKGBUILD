@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-scxml
-_qtver=6.2.2
+_qtver=6.2.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtscxml-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('b71d438c5e4106532cf48833116241bc48c0c4effe617770ae80e34bb77e92ed')
+sha256sums=('5a3a3fe517c7acb5c3d09abbe6546fad65353fe366433b2cff245ad61b748b4d')
 
 build() {
   source android-env ${_android_arch}
