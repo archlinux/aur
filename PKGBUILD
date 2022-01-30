@@ -8,7 +8,7 @@ pkgname=('systemd-homed-containers' 'systemd-libs-homed-containers' 'systemd-res
 _tag='d066a4f747b225d47c5f5c97a8843d30878995b8' # git rev-parse v${_tag_name}
 _tag_name=250.3
 pkgver="${_tag_name/-/}"
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -71,7 +71,7 @@ _reverts=(
 )
 
 prepare() {
-  cd "$pkgbase-stable"
+  cd "systemd-stable"
 
   # add upstream repository for cherry-picking
   git remote add -f upstream ../systemd
@@ -146,7 +146,7 @@ build() {
     -Dsbat-distro-url="https://aur.archlinux.org/packages/systemd-homed-containers/"
   )
 
-  arch-meson "$pkgbase-stable" build "${_meson_options[@]}"
+  arch-meson "systemd-stable" build "${_meson_options[@]}"
 
   ninja -C build
 }
