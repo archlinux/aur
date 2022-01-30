@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-lottie-static
-_qtver=6.2.2
+_qtver=6.2.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtlottie-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('9c2ac91b9f5dc860d211ed9f3c1e3965dbb4665ace4af735e96b6328990fd74f')
+sha256sums=('f3ccb557e841b239ead86977d94ff05888585f173b03f2f037df2b4969707be9')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
