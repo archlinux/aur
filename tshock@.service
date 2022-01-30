@@ -9,8 +9,8 @@ Group=terraria
 ExecStart=/usr/bin/tshock start %i
 ExecStop=/usr/bin/tshock stop %i
 
-# `TerrariaServer.exe` always writes to a log file named 'ServerLog.txt' in the working folder
-WorkingDirectory=/var/log/tshock/serverlog
+# `TerrariaServer.exe` always writes log files in the working folder
+WorkingDirectory=/var/lib/tshock
 
 [Install]
 WantedBy=multi-user.target

@@ -64,7 +64,7 @@ case "$1" in
         else
             echo "starting '${INSTANCE}'"
             tmux new-session -d -s "${TMUX_CONSOLE}"
-            mono --server --gc=sgen -O=all /srv/tshock/TerrariaServer.exe -port ${PORT} -logpath /var/log/tshock/${INSTANCE} -worldpath ${WORLDDIR} -world ${WORLDDIR}/${WORLD}.wld -autocreate ${SIZE}
+            mono --server --gc=sgen -O=all /srv/tshock/TerrariaServer.exe -port ${PORT} -logpath ${BASEDIR}/${INSTANCE} -worldpath ${WORLDDIR} -world ${WORLDDIR}/${WORLD}.wld -autocreate ${SIZE}
             if [ $? -gt 0 ]; then
                 echo "Could not start instance '${INSTANCE}'"
                 exit 1
