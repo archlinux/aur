@@ -1,6 +1,6 @@
 pkgbase = nordic-theme-git
-	pkgdesc = Dark Gtk3.20+ theme created using the awesome Nord color pallete.
-	pkgver = v2.1.0.r20.gacdd7e4
+	pkgdesc = Nord-derived themes for GTK and other platforms
+	pkgver = 2.1.0.r42.g81c9976
 	pkgrel = 1
 	url = https://github.com/EliverLara/Nordic
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = nordic-theme-git
 	optdepends = cantarell-fonts: tertiary font face defined
 	provides = nordic-theme
 	conflicts = nordic-theme
-	source = Nordic::git+https://github.com/EliverLara/Nordic.git
+	source = nordic-theme-git::git+https://github.com/EliverLara/Nordic
 	sha256sums = SKIP
 
 pkgname = nordic-theme-git
