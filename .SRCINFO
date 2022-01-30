@@ -1,7 +1,7 @@
 pkgbase = as-tree
 	pkgdesc = Print a list of paths as a tree of paths
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jez/as-tree
 	arch = x86_64
 	license = custom:BOML
@@ -11,4 +11,3 @@ pkgbase = as-tree
 	sha256sums = 2af03a2b200041ac5c7a20aa1cea0dcc21fb83ac9fe9a1cd63cb02adab299456
 
 pkgname = as-tree
-
