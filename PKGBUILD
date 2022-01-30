@@ -4,24 +4,28 @@
 
 pkgname=python-ansi
 _pkgname=ansi
-pkgver=0.3.1
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
 url='https://github.com/tehmaze/ansi'
 license=('MIT')
 depends=('python')
-makedepends=('python-pip')
+makedepends=(
+  'python-pip'
+  'python-typing_extensions'
+)
 wheel="${_pkgname}-$pkgver-py3-none-any.whl"
 noextract=("$wheel")
 source=(
   "https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/$wheel"
 )
+# *sums taken from PyPI
 md5sums=(
-  'c68753066a63e4277c701cdaf76b8ade'
+  '7c65af0400ca38c5b860d70dd0934601'
 )
 sha256sums=(
-  '885c7090434799e98efb40bbf0527b65ef7aa8348ac5c46f4676bef74a42ec63'
+  '8638378a838f81c34031e52410622d3c0af45379e55ba74cdca17590f35a84e8'
 )
 
 package() {
