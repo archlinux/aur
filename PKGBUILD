@@ -18,7 +18,7 @@
 }
 
 pkgname=luxcorerender
-pkgver=2.5
+pkgver=2.6
 #_rel="rc1"
 [ -n "${_rel}" ] && _pkgver=${pkgver}${_rel} && pkgver+=".${_rel}" || _pkgver=${pkgver}
 _name=LuxCore-${pkgname}_v${_pkgver}
@@ -28,38 +28,44 @@ pkgdesc="Physically correct, unbiased rendering engine."
 arch=('x86_64')
 url="https://www.luxcorerender.org/"
 license=('Apache')
-depends+=(blosc boost-libs embree glfw gtk3 openimagedenoise openimageio)
+depends+=(blosc boost-libs embree glfw gtk3 openimagedenoise openimageio openvdb openmp)
 optdepends+=("pyside2: for pyluxcoretools gui")
 makedepends+=(boost cmake doxygen git ninja pyside2-tools)
 provides=(luxrays)
 source=("https://github.com/LuxCoreRender/LuxCore/archive/${pkgname}_v${_pkgver}.tar.gz"
-        "python.patch"
-        "glfw.patch"
-        "oidn124.patch"
-        "boost107400.patch"
-        "cpplib.patch"
-        "clang.patch"
-        "fix_isnan_isinf.patch"
-        "openexr3.patch"
+        "01-glfw.patch"
+        "02-boost107400.patch"
+        "03-python.patch"
+        "04-cpplib.patch"
+        "05-clang-isnan-isinf.patch"
+        "06-openexr3.patch"
+        "07-silence-compiler-warnings.patch"
+        "08-silence-preprocessing.patch"
+        "09-openvdb.patch"
+        "10-spdlog.patch"
         )
-sha256sums=('f0d7000ee155eb30f0008ddf3a4e5eaf71b37e5aed94922a5d8131873778eb77'
-            'f639fb7e31056b6c7214e303c90fe06665572ffafc11e545f7c05128a8d85dc4'
+sha256sums=('b844989b8229bf02f3c8aa6845be6a587aa5ae55a45861591119ad0e1a195867'
             '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1'
-            'aec4cb388ed25944ef64abc8bd1dbcaa2da989ac0cf06acc026c1f82a817fa92'
             '8a8a681cce3a3ff39536cb0cbfefed8ed61887665ce1f4b101b3a222a1da50f6'
+            '7c2cf9dd881fb738e468599a4babc445cfb0a5146d3b74519449b4a1a9602c07'
             '7203f773f94d632923a992824c66741a64f07a07fad932f5623ac9a257aa73a5'
-            'ea4b15887c12931f34f01079ec3e0ff4c14d70b73b42dbc81140e7e19776bcc7'
-            '46ce376e155236acbf5f737df5e1ea50b0c7b1f18ae2398d0381d6fdbbc76fec'
-            '60c2e0a9d21cc45d72e2be3b80bfca2432552b65033fa67b69b0f94ac5abf5de')
-b2sums=('3f28029cd7d2c49437b4e5b6ba5adc201f2e4bcf409450bb2a104d970c9dad5f300e81954ea10f13774a74a7fc1a08516832614674594e3078173b53609eda82'
-        '348fa445b9ac7f738461543f8adadbb9a93dc2f75d96d0d26acbf7168290a0621224d6f11b3af77a6c6e492ae089e57770fc02a987af0748f5bb3e73b8d90f54'
+            '763b41b8fd401c584efd147616d0b4eb4d30c76a7e9072a6c6a03189147530ad'
+            '96d2bf957f7a0dfa3c25bd9345d7ca18d4fd89f7a6d3cae946eaf0d623917171'
+            '8b7083d8aeedb2adecf078e06da028120c2f8354280c7ec7424b304ab3fd29bd'
+            'f81448ae200a3bd549dd551fd6f5db9bff4bd07270bb91e57672d2b1275e938b'
+            '33bde7ca00b08ce568d07d70bf324104abe0b38f22e81531de459e98723828b4'
+            '10375ea78ab9c1454211992179368a9fa84b79700a4a2ef2b47cb2f1c908699b')
+b2sums=('ead966b0df7bb72ac9aa2aefb1e5f2dd020156a8e66f67aeff75d29606072ea7b147ddc4d6effea687baf4653e670bd3ad93fc9c7b0e7cac340cb1d5976adb14'
         '2903992389c61fc4720cde8a011d0b637de647a7c9e701609968c01a8ab904277dfb27a90179d4cfcf98382973542e59d1384580236c25f6568aaa7b6ba90528'
-        '67cf563120070fc675618bdc4da8b8b224bea42c50ac8aabbd3d6b254b4189f330d0f93678f02cd96748a1bb1560f5275ed4fb0c9b2066f67761027343da86ec'
         '04d1e78d044666720a9a099a9b95426ea06fe076354698f642a1a24df25bc27a033e6823a56cbdc21b695cba0e71446f4278c9a1474dba2cfa6aa91945950266'
+        '8539531d52cbe02edd600ae02d179888a36ef0caac806c6951a7a68404bf5575e5afc451d1f6b250b6e3970d088a25396f26a442ef01e3af98ae338a9fd1dc76'
         '1985ee3dbd596cf7ac4a3041b395792733d59c95de4226dc54ff33887db4ec4adc0ef877d294cf66da2926eb025166397fdf6ceb76bfd280932e3ecd9ae716ec'
-        'a11fa313592ce3fb3d0c59deb3bfcec4209697626e830e0b89a398a4f1a97e47c41c39ed29f164902f183dbace7232378641f3dd43e7a7bdf84e787d043c9590'
-        '9a5fa2c8233e053bae4ad277e3c4677dbe8eee654f0fdbd7545e9ae98a36f084d00c47460a036ec1d58aac73564223bd0160ee47553eda19d49bac85c9274360'
-        '7f4eab0d3f9c35ff63ca14ab5a23c863a9d940b925a0502d0ffc7ae2b3010f96b806162b1f6d885e1f8f12b39e2205ba6e57a483be2774fb8c2e4abb46b28a76')
+        'a2aae60cee2911c1fa45bdaa670cd04b552fe34624f62eaafc2ceaf648e283ed62e4bb0567dacf9733b6ef05e657514bda7a98800d735f32a15cb8fd452e150b'
+        '58e2e5f6706f17040a7674f6ae81c49e4bdac586228c51374615e7821a70cad8f508bdbd1dbb9d53db98713e5cb456c9b065512199385becdcaf7cb9bd7c1f4b'
+        '7b15d54811fd1d8ef908963abd76fe552f6149ea32e6f83eaecc6f0636d5e58ece857f86828bf650a2f762a02ca58640ff60dd0f9268666033da67be6e5e7ae1'
+        '8e35b9a826592b1a2f2adaa7400cf6cae1c43f04edec7f6a84f2a7c67b56d762685d484863c8f5b49cf55ed6c91c2d3935e851a4446415cc420104707e06201a'
+        '0b93c67f7a5c7d1a8f3e62eb94f70a5b93b1c2f7cdbce99dd5444ac52f27aa7198ed9a3172efbea382dd7a7f8aeb97fe54acecafc41bb48ac34379952867724e'
+        '798b7e21d44f8c68022b5f212f0235ef1558629db2d7356128b23736a9f97009cc85f48c77e30f5908832da46204d54444f0221675e917d3e3f85c0027c547dd')
 
 prepare() {
   for patch in "${srcdir}"/*.patch; do
