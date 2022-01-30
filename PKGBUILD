@@ -1,30 +1,33 @@
 # Maintainer: robertfoster
+# Contributor: FabioLolix
 
 pkgname=gst-plugins-rs-git
-pkgver=r3.3af6aa9
+pkgver=r1382.f44b86cd
 pkgrel=1
 pkgdesc="GStreamer plugins written in Rust"
 arch=("x86_64")
 url="https://gstreamer.freedesktop.org/"
-license=('LGPL' 'MIT' 'Apache')
-depends=('csound' 'gstreamer' 'libsodium')
+license=('LGPL' 'MIT' 'Apache' 'MPL')
+depends=('dav1d' 'gstreamer' 'gtk4' 'libsodium' 'libwebp')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('cargo-c' 'git' 'meson' 'rust')
-source=("${pkgname%-git}::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs")
+makedepends=('cargo-c' 'clang' 'git' 'meson' 'rust')
+source=("${pkgname%-git}::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git")
 
 pkgver() {
+  cd ${pkgname%-git}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
   arch-meson "${pkgname%-git}" build \
-    -D package-name="GStreamer Rust Plugins (Arch Linux)" \
-    -D package-origin="https://www.archlinux.org/"
+    -D csound=disabled \
+    -D sodium=system
   meson compile -C build
 }
 
 package() {
   DESTDIR="${pkgdir}" meson install -C build
+  install -D "${pkgname%-git}"/LICENSE-* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 sha256sums=(SKIP)
