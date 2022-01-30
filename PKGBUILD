@@ -4,9 +4,9 @@ pkgdesc="ROS - Tests for MAVROS package."
 url='https://github.com/mavlink/mavros'
 
 pkgname='ros-noetic-test-mavros'
-pkgver='0.32.2'
+pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD, GPLv3, LGPLv3')
 
 ros_makedepends=(ros-noetic-mavros-extras
@@ -35,16 +35,9 @@ ros_depends=(ros-noetic-mavros-extras
 depends=(${ros_depends[@]}
   eigen)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/test_mavros/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/mavlink/mavros-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="mavros-${pkgver}/test_mavros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8')
+sha256sums=('c7cd33fe3582c427744d251383b0befb0766ab29cd6191a3f29f6a439aa26813')
 
 build() {
   # Use ROS environment variables

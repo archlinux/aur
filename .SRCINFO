@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-test-mavros
 	pkgdesc = ROS - Tests for MAVROS package.
-	pkgver = 0.32.2
-	pkgrel = 3
+	pkgver = 1.13.0
+	pkgrel = 1
 	url = https://github.com/mavlink/mavros
 	arch = i686
 	arch = x86_64
@@ -32,8 +32,7 @@ pkgbase = ros-noetic-test-mavros
 	depends = ros-noetic-geometry-msgs
 	depends = ros-noetic-control-toolbox
 	depends = eigen
-	source = ros-noetic-test-mavros-0.32.2.tar.gz::https://github.com/mavlink/mavros/archive/0.32.2.tar.gz
-	sha256sums = d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8
+	source = ros-noetic-test-mavros-1.13.0.tar.gz::https://github.com/mavlink/mavros/archive/1.13.0.tar.gz
+	sha256sums = c7cd33fe3582c427744d251383b0befb0766ab29cd6191a3f29f6a439aa26813
 
 pkgname = ros-noetic-test-mavros
-
