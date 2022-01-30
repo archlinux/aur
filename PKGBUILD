@@ -7,7 +7,7 @@
 
 pkgname=musique-git
 pkgver=1.10.1.r5.g686016b
-pkgrel=1
+pkgrel=2
 pkgdesc="A finely crafted music player"
 arch=(x86_64)
 url="https://flavio.tordini.org/musique"
@@ -17,8 +17,14 @@ makedepends=(git qt5-tools)
 source=("git+https://github.com/flaviotordini/musique.git"
         "git+https://github.com/flaviotordini/http.git"
         "git+https://github.com/flaviotordini/idle.git"
-        "git+https://github.com/flaviotordini/media.git")
+        "git+https://github.com/flaviotordini/media.git"
+        "git+https://github.com/flaviotordini/updater.git"
+        "git+https://github.com/flaviotordini/js.git"
+        "git+https://github.com/flaviotordini/sharedcache.git")
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -36,6 +42,9 @@ prepare() {
   git config 'submodule.lib/http.url' "${srcdir}/http"
   git config 'submodule.lib/idle.url' "${srcdir}/idle"
   git config 'submodule.lib/media.url' "${srcdir}/media"
+  git config 'submodule.lib/updater.url' "${srcdir}/updater"
+  git config 'submodule.lib/js.url' "${srcdir}/js"
+  git config 'submodule.lib/sharedcache.url' "${srcdir}/sharedcache"
   git submodule update
 }
 
