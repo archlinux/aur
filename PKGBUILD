@@ -5,7 +5,7 @@
 
 _pkgname=buildtools
 pkgname=buildozer
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "0001-copy-buildozer-target-output.patch"
 )
 sha256sums=('231ec5ca8115e94c75a1f4fbada1a062b48822ca04f21f26e4cb1cd8973cd458'
-            '614c84128ddb86aab4e1f25ba2e027d32fd5c6da302ae30685b9d7973b13da1b'
+            '44a6e5acc007e197d45ac3326e7f993f0160af9a58e8777ca7701e00501c0857'
             '68ae2f6ec82afb45baf89c264438c86db35031368b061d8c92036c341f6eb3b1')
 
 prepare() {
