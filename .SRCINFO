@@ -1,11 +1,11 @@
 pkgbase = zram-s6
 	pkgdesc = Activate zram using skarnet's s6
-	pkgver = 1.0
-	pkgrel = 4
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/Senderman/s6-services
 	arch = any
 	license = GPL3
-	depends = s6-base
+	depends = s6
 	provides = init-zram
 	conflicts = init-zram
 	source = git+https://github.com/Senderman/s6-services.git
