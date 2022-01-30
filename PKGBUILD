@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
-pkgver=0.6.alpha.1375.gc6a5a87
-pkgrel=1
+pkgver=0.6.alpha.1392.g6ecebbd
+pkgrel=2
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
 url="https://github.com/lpereira/hardinfo"
@@ -17,7 +17,7 @@ optdepends=('dmidecode: Memory Devices module'
             'usbutils: USB Devices module')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-options=('debug' '!strip')
+options=('debug')
 source=('git+https://github.com/lpereira/hardinfo.git')
 sha256sums=('SKIP')
 
