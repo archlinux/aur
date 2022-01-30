@@ -25,6 +25,7 @@ sha256sums=("SKIP")
 build()
 {
     cd "${srcdir}"/"${pkgname}"/ || exit
+    git submodule update --init --merge --recursive
     ./configure
     make
 }
