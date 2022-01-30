@@ -1,6 +1,6 @@
 pkgbase = python-ossapi
 	pkgdesc = A python wrapper for the osu! api.
-	pkgver = 2.2.2
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://github.com/circleguard/ossapi
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-ossapi
 	depends = python-requests
 	depends = python-requests-oauthlib
 	conflicts = python-ossapi-git
-	source = https://github.com/circleguard/ossapi/archive/refs/tags/v2.2.2.tar.gz
-	sha256sums = d912d0ca4a714612bc398d25bb04bb64014d8604ef9756bb44e7913417031294
+	source = https://github.com/circleguard/ossapi/archive/refs/tags/v2.2.3.tar.gz
+	sha256sums = 676b0e53fae80a4a95b3e966f8606c2e1b638112e4cc3d1dedc4fc4c353159ab
 
 pkgname = python-ossapi

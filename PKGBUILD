@@ -1,7 +1,7 @@
 # Maintainer: Stella <jens300304@gmail.com>
 pkgname=python-ossapi
 url="https://github.com/circleguard/ossapi"
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A python wrapper for the osu! api."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 source=(
     "https://github.com/circleguard/ossapi/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d912d0ca4a714612bc398d25bb04bb64014d8604ef9756bb44e7913417031294')
+sha256sums=('676b0e53fae80a4a95b3e966f8606c2e1b638112e4cc3d1dedc4fc4c353159ab')
 depends=(
     'python'
     'python-requests'
