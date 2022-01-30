@@ -5,21 +5,21 @@
 
 _pkgname=buildtools
 pkgname=buildozer
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64')
 license=('Apache')
 url='https://github.com/bazelbuild/buildtools'
 makedepends=('git')
-_bazelisk_pkgver=1.8.1
+_bazelisk_pkgver=1.11.0
 source=(
   "bazelisk-bin-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-amd64"
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "0001-copy-buildozer-target-output.patch"
 )
-sha256sums=('4a7652ffe904ccb064aaa7db41c456e742e507e574f58a602edbbc32920ed79b'
-            'ae34c344514e08c23e90da0e2d6cb700fcd28e80c02e23e4d5715dddcb42f7b3'
+sha256sums=('231ec5ca8115e94c75a1f4fbada1a062b48822ca04f21f26e4cb1cd8973cd458'
+            '614c84128ddb86aab4e1f25ba2e027d32fd5c6da302ae30685b9d7973b13da1b'
             '68ae2f6ec82afb45baf89c264438c86db35031368b061d8c92036c341f6eb3b1')
 
 prepare() {
