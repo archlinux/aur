@@ -5,5 +5,3 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!drill-search
-!drill-search-gtk.desktop
