@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-git
-pkgver=2.3.r0.g1f49c84
-pkgrel=1
+pkgver=2.3.r7.g66b7cb5
+pkgrel=2
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -11,7 +11,7 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'jdsp4linux' 'jdsp4linux-gui' 'gst-plugin-jamesdsp')
 replaces=('jdsp4linux-git' 'jdsp4linux-gui-git' 'gst-plugin-jamesdsp-git')
-options=('debug' '!strip')
+options=('debug')
 source=('git+https://github.com/Audio4Linux/JDSP4Linux.git'
         'git+https://github.com/ThePBone/EELEditor.git'
         'git+https://github.com/ThePBone/GraphicEQWidget.git'
