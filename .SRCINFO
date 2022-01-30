@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-eigenpy
 	pkgdesc = ROS - Bindings between Numpy and Eigen using Boost.Python
-	pkgver = 2.3.2
+	pkgver = 2.6.9
 	pkgrel = 1
 	url = https://github.com/stack-of-tasks/eigenpy
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = ros-noetic-eigenpy
 	depends = python-numpy
 	depends = eigen
 	depends = boost
-	source = ros-noetic-eigenpy-2.3.2.tar.gz::https://github.com/ipab-slmc/eigenpy_catkin-release/archive/upstream/2.3.2.tar.gz
-	sha256sums = 36b9daa9d023284c9c755f00869dddfbf3a3e3b39fc612207806fb7977dd0a11
+	source = ros-noetic-eigenpy-2.6.9.tar.gz::https://github.com/ipab-slmc/eigenpy_catkin-release/archive/upstream/2.6.9.tar.gz
+	sha256sums = 1fdcc3ea9b37b9d16c4581247ddac3f2b020c4d75a51a8d0c5dca4bf451f8e99
 
 pkgname = ros-noetic-eigenpy
-
