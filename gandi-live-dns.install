@@ -1,0 +1,4 @@
+post_install() {
+    systemd-sysusers gandi-live-dns.conf
+    chown -R gandi-live-dns:gandi-live-dns /etc/gandi-live-dns
+}
