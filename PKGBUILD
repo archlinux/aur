@@ -4,9 +4,9 @@ mapping (SLAM)."
 url='https://wiki.ros.org/hls_lfcd_lds_driver'
 
 pkgname='ros-noetic-hls-lfcd-lds-driver'
-pkgver='1.1.0'
+pkgver='1.1.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -14,8 +14,8 @@ ros_makedepends=(
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 )
 
@@ -26,13 +26,13 @@ ros_depends=(
 )
 
 depends=(
-    'boost'
+	boost
 	${ros_depends[@]}
 )
 
 _dir="hls_lfcd_lds_driver-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/hls_lfcd_lds_driver/archive/${pkgver}.tar.gz")
-sha256sums=('02ccf80d649756cab7f92113680f9fa1fa88d599882ded5322eaa999ca21e2ae')
+sha256sums=('3176593c1bb31ced2f12cf31a784029ab270cc7f0098ffdbc556b17915c67cf2')
 
 build() {
 	# Use ROS environment variables.
