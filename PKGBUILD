@@ -5,7 +5,7 @@
 
 pkgname=io
 pkgver=2017.09.06
-pkgrel=4
+pkgrel=5
 pkgdesc='IO programming language'
 arch=(x86_64)
 url='https://iolanguage.com/'
@@ -25,13 +25,16 @@ prepare() {
 }
 
 build() {
-   cmake \
+  CFLAGS+=' -ffat-lto-objects'
+  cmake \
     -B build \
-    -S $pkgname \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_SKIP_RPATH=1
-  # ninja requires "-w dupbuild=warn" and/or -w "phonycycle=warn" and still gives an error
+    -D CMAKE_SKIP_RPATH=1 \
+    -S $pkgname
+
+  # make is used instead of ninja, because ninja results in errors,
+  # even with '-w dupbuild=warn' and/or -w 'phonycycle=warn'
   make -C build
 }
 
