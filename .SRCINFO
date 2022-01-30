@@ -1,13 +1,13 @@
 pkgbase = swayr
 	pkgdesc = Swayr is a window switcher (and more) for sway
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://git.sr.ht/~tsdh/swayr
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = gcc-libs
-	source = swayr-0.12.0.tar.gz::https://git.sr.ht/~tsdh/swayr/archive/v0.12.0.tar.gz
-	sha256sums = 1b533412523583821e5e4380a51495ed7509a8a8db702b779bd2ec744103c595
+	source = swayr-0.12.1.tar.gz::https://git.sr.ht/~tsdh/swayr/archive/v0.12.1.tar.gz
+	sha256sums = cec9abd653d2b592ab506a8039127494df501d96f42b17bf70f53b04618d7173
 
 pkgname = swayr
