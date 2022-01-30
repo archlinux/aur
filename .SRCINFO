@@ -1,18 +1,14 @@
 pkgbase = python-pywavelets
-	pkgdesc = Discrete Wavelet Transforms in Python
-	pkgver = 1.1.1
+	pkgdesc = Wavelet transform module
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/PyWavelets/pywt
+	url = https://github.com/pywavelets/pywt
 	arch = x86_64
-	arch = i686
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = cython
-	makedepends = python-numpy
-	depends = python
 	depends = python-numpy
-	source = https://github.com/PyWavelets/pywt/archive/v1.1.1.tar.gz
-	sha256sums = 50fe2aae1b6d2462cf9e9b0dcc18dbcbd0b5ed65225abb4a272ed188dbcbceb0
+	source = https://github.com/pywavelets/pywt/archive/v1.2.0.tar.gz
+	sha512sums = a999f7b316a434948ab06f33ab7aeea621b7e33bfc0907ea396da40482f896aa8688627873741cf3abf01f098b21515cffad42b4e966a431347cb5f013e78752
 
 pkgname = python-pywavelets
-
