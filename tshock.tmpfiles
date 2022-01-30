@@ -1,4 +1,4 @@
-d /srv/tshock 0755 terraria terraria -
+d /srv/tshock 0755 root root -
 d /var/lib/tshock 0755 terraria terraria -
 d /var/lib/tshock/Terraria 0755 terraria terraria -
 d /var/lib/tshock/Terraria/Worlds 0755 terraria terraria -
