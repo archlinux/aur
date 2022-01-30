@@ -78,9 +78,8 @@ _makenconfig=
 pkgbase=linux-xanmod-rog
 xanmod=5.16.3-xanmod1
 #pkgver=${xanmod//-/.}
-pkgver=5.16.4.prexan0
-#  NOTE: ^^ for custom pkgvers pick something that version sorts 'before' next .xanmodY to avoid downgrade warnings
-pkgrel=2
+pkgver=5.16.5.prexan0
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -105,8 +104,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.3-4.xz"
-        #"Linux-5.16.2.patch"
-        #"Linux-5.16.4-rc1.patch"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.4-5.xz"
+        #"Linux-5.16.5-rc1.patch"
 
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
@@ -158,6 +157,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '188e5f155f1dd66d5c636b725ee6b9c312f4aa2bdc866ce5ff5b3f2de1101cda'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'e254d82ad04c0ea3f61f62518b664cd5fe892bd04a67d99b9e038343bd496619'
+            '77c01d1c862385a6b5fc34a5b67d962114601a2515bba6376bc09e5c138d026f'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             '41b0cef536675f10fdfb69eeca2f1927653c69eb351dd92f4085ab6590485851'
