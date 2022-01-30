@@ -4,7 +4,7 @@
 pkgname=qt5-virtualkeyboard
 _qtver=5.15.2
 pkgver=5.15.2+kde+r6
-pkgrel=1
+pkgrel=2
 _commit=98d1fd864cbb6c7c012c4139118808af110fb8f0
 arch=('x86_64')
 url='https://www.qt.io'
@@ -16,6 +16,7 @@ groups=('qt' 'qt5')
 _pkgfqn=qtvirtualkeyboard
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
+options=(debug)
 
 pkgver() {
   cd $_pkgfqn
