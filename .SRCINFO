@@ -1,0 +1,15 @@
+pkgbase = bombadil-git
+	pkgdesc = A dotfile manager with templating
+	pkgver = 2.2.3.r3.gf6dae99
+	pkgrel = 1
+	url = https://github.com/oknozor/toml-bombadil
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = bombadil
+	options = !lto
+	source = bombadil-git::git://github.com/oknozor/toml-bombadil.git
+	sha256sums = SKIP
+
+pkgname = bombadil-git

@@ -1,0 +1,5 @@
+*.zst
+*.log
+*.xz
+pkg
+bombadil-git
