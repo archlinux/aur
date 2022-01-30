@@ -1,6 +1,6 @@
 pkgbase = drill-search
 	pkgdesc = Search files without indexing, but clever crawling
-	pkgver = 571+65+gb2a8b9fe
+	pkgver = 571+90+gb5ecb6a6
 	pkgrel = 1
 	url = https://drill.software
 	arch = x86_64
@@ -8,19 +8,14 @@ pkgbase = drill-search
 	makedepends = dmd
 	makedepends = dub
 	makedepends = git
-	makedepends = gtk3
-	source = git+https://github.com/yatima1460/Drill.git#commit=b2a8b9fe278cc2474f87fb1d626d70574d6aa72f
-	source = drill-search
-	source = drill-search-gtk.desktop
-	sha256sums = SKIP
-	sha256sums = b875f928546aee7855cb1db9afc8ab3f1a8a34d43de5bbd62f7076d7ba9f3917
-	sha256sums = 5bafb37baf608a3168abba2ab9ea174a1d0f0472f52d3222ea0a05957c997c50
-
-pkgname = drill-search-cli
-	pkgdesc = Search files without indexing, but clever crawling (CLI version)
 	depends = bash
-
-pkgname = drill-search-gtk
-	pkgdesc = Search files without indexing, but clever crawling (GTK version)
 	depends = gtk3
 	depends = xdg-utils
+	conflicts = drill-search-cli
+	conflicts = drill-search-gtk
+	replaces = drill-search-cli
+	replaces = drill-search-gtk
+	source = git+https://github.com/yatima1460/Drill.git#commit=b5ecb6a6a40c5c814c06d3e202c9c90efe690b47
+	sha256sums = SKIP
+
+pkgname = drill-search
