@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-turtlebot3-slam
 	pkgdesc = ROS - The turtlebot3_slam package provides roslaunch scripts for starting the SLAM
-	pkgver = 1.2.2
-	pkgrel = 2
+	pkgver = 1.2.5
+	pkgrel = 1
 	url = https://wiki.ros.org/turtlebot3_slam
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = ros-noetic-turtlebot3-slam
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-turtlebot3-bringup
-	source = ros-noetic-turtlebot3-slam-1.2.2.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.2.tar.gz
-	sha256sums = c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d
+	source = ros-noetic-turtlebot3-slam-1.2.5.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3/archive/1.2.5.tar.gz
+	sha256sums = cee1be2249f18084075e4604b70463eb40a96d6f5c2e63efc7f2c501399dee3d
 
 pkgname = ros-noetic-turtlebot3-slam
-
