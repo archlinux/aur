@@ -2,9 +2,9 @@ pkgdesc="ROS - Message and service types: custom messages and services for Turtl
 url='https://wiki.ros.org/turtlebot3_msgs'
 
 pkgname='ros-noetic-turtlebot3-msgs'
-pkgver='1.0.0'
+pkgver='1.0.1'
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('Apache-2.0')
 
 ros_makedepends=(
@@ -14,8 +14,8 @@ ros_makedepends=(
 )
 
 makedepends=(
-	'cmake'
-	'ros-build-tools'
+	cmake
+	ros-build-tools
 	${ros_makedepends[@]}
 )
 
@@ -30,7 +30,7 @@ depends=(
 
 _dir="turtlebot3_msgs-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3_msgs/archive/${pkgver}.tar.gz")
-sha256sums=('61d1389c9a135b9aa922cf19c69347f3abfe4f2c893bd2e59aaff7dff71020e8')
+sha256sums=('ceb420aa45509dfbe5e97e25d647105a5417d09918d575164117de66012a0bd9')
 
 build() {
 	# Use ROS environment variables.

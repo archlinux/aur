@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-turtlebot3-msgs
 	pkgdesc = ROS - Message and service types: custom messages and services for TurtleBot3 packages
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://wiki.ros.org/turtlebot3_msgs
 	arch = any
 	license = Apache-2.0
@@ -12,8 +12,7 @@ pkgbase = ros-noetic-turtlebot3-msgs
 	makedepends = ros-noetic-message-runtime
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-message-runtime
-	source = ros-noetic-turtlebot3-msgs-1.0.0.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3_msgs/archive/1.0.0.tar.gz
-	sha256sums = 61d1389c9a135b9aa922cf19c69347f3abfe4f2c893bd2e59aaff7dff71020e8
+	source = ros-noetic-turtlebot3-msgs-1.0.1.tar.gz::https://github.com/ROBOTIS-GIT/turtlebot3_msgs/archive/1.0.1.tar.gz
+	sha256sums = ceb420aa45509dfbe5e97e25d647105a5417d09918d575164117de66012a0bd9
 
 pkgname = ros-noetic-turtlebot3-msgs
-
