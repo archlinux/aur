@@ -13,7 +13,7 @@ pkgbase = applet-window-appmenu-git
 	depends = gettext
 	depends = kdecoration
 	conflicts = plasma5-applets-window-appmenu
-	conflicts = plasma5-applets-window-appmenu
+	conflicts = plasma5-applets-window-appmenu-git
 	source = applet-window-appmenu-git::git+https://github.com/psifidotos/applet-window-appmenu.git
 	md5sums = SKIP
 
