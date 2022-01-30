@@ -2,8 +2,8 @@
 
 pkgname=bdf2psf-debian
 pkgver=1.207
-pkgrel=1
-pkgdesc='Bitmap font conversion utility with a very long history (pre-2006 source)'
+pkgrel=2
+pkgdesc='Bitmap font conversion utility with a very long history (Debian source)'
 makedepends=('grep' 'libxml2' 'curl')
 depends=('perl')
 provides=('bdf2psf')

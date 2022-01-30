@@ -1,7 +1,7 @@
 pkgbase = bdf2psf-debian
-	pkgdesc = Bitmap font conversion utility with a very long history (pre-2006 source)
+	pkgdesc = Bitmap font conversion utility with a very long history (Debian source)
 	pkgver = 1.207
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL2
 	makedepends = grep
