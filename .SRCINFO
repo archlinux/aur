@@ -2,7 +2,7 @@ pkgbase = blockbar-git
 	pkgdesc = Blocks based status bar for X window managers
 	pkgver = 20191017234655
 	pkgrel = 1
-	url = https://gitlab.com/sambazley/blockbar
+	url = https://github.com/sambazley/blockbar
 	install = blockbar.install
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = blockbar-git
 	depends = libxrandr
 	depends = ujson-git
 	provides = blockbar
-	source = git+https://gitlab.com/sambazley/blockbar.git
+	source = git+https://github.com/sambazley/blockbar.git
 	md5sums = SKIP
 
 pkgname = blockbar-git
-
