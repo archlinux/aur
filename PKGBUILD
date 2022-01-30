@@ -6,7 +6,7 @@ _binname=vanta
 _svcname=vanta-agent
 
 pkgname=vanta-agent
-pkgver=2.0.3
+pkgver=2.0.8
 pkgrel=4
 pkgdesc="Vanta agent"
 arch=('x86_64')
