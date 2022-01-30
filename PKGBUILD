@@ -2,7 +2,7 @@ pkgdesc="ROS - Core libraries used by MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-core'
-pkgver='1.1.1'
+pkgver='1.1.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -19,18 +19,19 @@ makedepends=(
 )
 
 ros_depends=(
-    ros-noetic-eigen-conversions
     ros-noetic-eigen-stl-containers
     ros-noetic-geometric-shapes
     ros-noetic-geometry-msgs
     ros-noetic-kdl-parser
+    ros-noetic-urdf
     ros-noetic-moveit-msgs
     ros-noetic-octomap
     ros-noetic-octomap-msgs
+    ros-noetic-pybind11-catkin
     ros-noetic-random-numbers
-    ros-noetic-rosconsole
     ros-noetic-roslib
     ros-noetic-rostime
+    ros-noetic-rosconsole
     ros-noetic-sensor-msgs
     ros-noetic-shape-msgs
     ros-noetic-srdfdom
@@ -38,17 +39,20 @@ ros_depends=(
     ros-noetic-tf2-eigen
     ros-noetic-tf2-geometry-msgs
     ros-noetic-trajectory-msgs
-    ros-noetic-urdf
     ros-noetic-visualization-msgs
     ros-noetic-xmlrpcpp
+    ros-noetic-pluginlib
+    ros-noetic-tf2-kdl
 )
 
 depends=(
     assimp
     boost
-    console-bridge
     eigen
+    bullet
+    python
     fcl
+    console-bridge
     urdfdom
     urdfdom-headers
     ${ros_depends[@]}
@@ -56,7 +60,7 @@ depends=(
 
 _dir="moveit-${pkgver}/moveit_core"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('fdc3f9c96a0facb86bc71146493469ea9515d47639015f9cf5d848809db447a6')
+sha256sums=('69ead3c944ee707b54d035be97ae999a448400cfa01d50e2e870344c72c78d4d')
 
 build() {
     # Use ROS environment variables
