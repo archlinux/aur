@@ -1,6 +1,6 @@
 pkgbase = systemd-homed-containers
 	pkgver = 250.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
@@ -132,6 +132,7 @@ pkgname = systemd-homed-containers
 	optdepends = curl: machinectl pull-tar and pull-raw
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
+	provides = systemd=250.3
 	provides = nss-myhostname
 	provides = systemd-tools=250.3
 	provides = udev=250.3
