@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But not these files...
+!PKGBUILD
+!.SRCINFO
+!uad_gui.desktop
+!uad_gui-linux.tar.gz.sig
+!.gitignore
