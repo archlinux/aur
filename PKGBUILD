@@ -3,33 +3,36 @@
 pkgbase='python-prospector'
 pkgname=('python-prospector')
 _module='prospector'
-pkgver='1.5.1'
-pkgrel=2
+pkgver='1.6.0'
+pkgrel=1
 pkgdesc="Python static analysis tool"
 url="http://prospector.readthedocs.io"
-depends=('python-pylint-plugin-utils'
+depends=('python-pylint'
          'python-pylint-celery'
+         'python-pylint-django'
+         'python-pylint-plugin-utils'
          'python-pylint-flask'
          'python-requirements-detector'
          'python-setoptconf'
-         'python-dodgy'
          'python-yaml'
          'python-mccabe'
          'python-pyflakes'
          'python-pycodestyle'
          'python-pep8-naming'
          'python-pydocstyle'
-         'python-pylint'
-         'python-pylint-django'
-         'python-astroid')
-optdepends=('python-pyroma: check setup.py'
-            'python-vulture: find dead code'
-            'mypy: optional type checking')
+         'python-dodgy'
+         'python-toml'
+         'python-setoptconf-tpm')
+optdepends=('python-bandit: security linter'
+            'python-frosted: checker'
+            'mypy: optional type checking'
+            'python-pyroma: check setup.py'
+            'python-vulture: find dead code')
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('851c2892cd615cfee91fd27cfaf7a5061d14daf2853aa8f012e927b98f919578')
+sha256sums=('1ca0da95a2d1a151ae578f02d6fc78300a9150af8f2c2c201097213016cc92ee')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
