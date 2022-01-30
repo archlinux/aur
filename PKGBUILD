@@ -64,7 +64,7 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.16.3
+pkgver=5.16.4
 pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -93,7 +93,7 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('69e27d11073f60f7ed28e500f52b8b86c98fd080827947bac91f59013b10a37350b22403bfbd9a705c6d0a14c4ddef0547ab61b64bcefbde46f707a5e2a10b40'
+b2sums=('f55ad08f653d0f77926369ea86019513a8de6190d40315f3377e3b48e29dca7498f2af67420b79b90d60d697621df11d5a2d9834436bc5fb563723a8ab1f0e59'
         'SKIP'
         '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
