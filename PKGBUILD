@@ -2,7 +2,7 @@
 
 pkgname=semgrep-bin
 _name=semgrep
-pkgver=0.76.2
+pkgver=0.80.0
 pkgrel=1
 pkgdesc="Fast and syntax-aware semantic code pattern search for many languages: like grep but for code"
 arch=(x86_64)
@@ -17,8 +17,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 )
 sha256sums=(
-  '99f592b75faa7be1cb60c735b56ddb213d00e83073094b9cefa957cb3b4a6a7c'
-  'f526e94c3a2d5be23557490861c5e0175f907547aa71c04e943a05c7a3fdb34d'
+  '2eecc1940a49ba0d4dc589444409d6f35aa46f7467a28e86ff3dc61870ccc5a1'
+  'b5166c96ac845b1237c829cefcb299acb7dec48361b0ad53569dacc171e5474c'
 )
 # https://github.com/returntocorp/semgrep/releases/download/v${pkgver}/semgrep-v${pkgver}-ubuntu-16.04.tgz.sha256
 
@@ -26,10 +26,10 @@ build() {
   cd "$srcdir/${_name}-${pkgver}"
   export SEMGREP_CORE_BIN="${srcdir}/semgrep-files/semgrep-core"
   export SPACEGREP_BIN="${srcdir}/semgrep-files/spacegrep"
-  # TODO: remove this when upstream update 
-  sed -i 's/wcmatch==8.2/wcmatch>=8.2/' setup.py
+  # fix wcmatch version
+  # sed -i 's/wcmatch==8.2/wcmatch>=8.2/' setup.py
   python setup.py build
-  chmod +x build/lib/semgrep/bin/{semgrep-core,spacegrep}
+  chmod +x build/lib/semgrep/bin/semgrep-core
 }
 
 package() {
