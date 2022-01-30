@@ -1,12 +1,12 @@
 pkgname=yafetch
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=0
 pkgdesc='Commandline tool to get system information'
 arch=('any')
 url="https://github.com/deepjyoti30/yaf/"
 license=('MIT')
 makedepends=('go')
-source=("https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.1.tar.gz")
+source=("https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.2.tar.gz")
 provides=("yaf")
 conflicts=("yaf-git")
 md5sums=("SKIP")
