@@ -5,8 +5,8 @@
 # Committer: Manolis Tzanidakis <manolis@archlinux.org>
 
 pkgname=courier-imap
-pkgver=5.1.4
-pkgrel=2
+pkgver=5.1.7
+pkgrel=1
 pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
@@ -23,23 +23,11 @@ source=(http://downloads.sourceforge.net/project/courier/imap/${pkgver}/${pkgnam
 	courier-imapd.service
 	courier-pop3d.service
 	courier-pop3d-ssl.service)
-sha512sums=('33e54e3b369335f5bc234c638c9bf4f68bc39dc9cb6cc5e3e3ba200f72a7b2fcdca6a4f7e35f32f494406f8757749ccf5204be93ecd2edbfabab4b6316d5957c'
+sha512sums=('15f64ea78f34d4a3af9f82a8247907324b26a8c550f5e97930548449fc2e9b649d2b5511de063cf3e449843516e681232a3197f2afb40e18be0f36fd8e05e66d'
             '3a5334b38dcae3f4caeaef0819debe6c13ead992dafb224eef7bdaee6d1c8c1faa4fb995ec79aeb71abf5ea03f05eb6d1981386b2b90058ba6fd0c2c82c34f04'
             'f293231a59f92ffb2e1835b56216ec6658cb48c97f5d2701be4d809600ee6f49f0a2678f9156f084e097d9fab8bd8de53acb9862457da313afcbf06326d75dcb'
             '20d8bab38bbb00023437c9384894471649e75b10bbcf7d3a7b3923b6453af96421c494bc5f7f83f5463a266d0d14dfb0ba0e08b01ea3e4deac24f40f5e986b2f'
             'f1bd578c7fa8af060252aea84dacbe629cf6f76895c0499d84b26e17526965d9b27584b8c0240670fd0294506ac426c99f6af1d1e1c062a82e420105b65d7433')
-
-prepare() {
-echo ""
-echo "**************************************************************************"
-echo "This message is only meant to make sure you've read the instructions in"
-echo "INSTALL file about updating from earlier versions; specifically the need"
-echo "to convert any existing maildirs to a Unicode naming scheme manually using"
-echo "maildirmake, more info in http://www.courier-mta.org/maildirmake.html."
-echo "**************************************************************************"
-echo ""
-sleep 5s
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -61,7 +49,6 @@ build() {
     --with-trashquota \
     --with-db=gdbm \
     --with-mailuser=courier --with-mailgroup=courier \
-    --with-notice=unicode
   make
 }
 
