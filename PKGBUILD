@@ -2,7 +2,7 @@
 
 pkgname=traitor-bin
 _pkgname=traitor
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Automatic Linux privesc via exploitation of low-hanging fruit.'
 arch=('x86_64')
@@ -12,10 +12,8 @@ source=(
   "${url}/releases/download/v${pkgver}/traitor-amd64"
   "${url}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=(
-  '20b948d35e9e730e5aaa00f8de01107af773b93313fed752ae63afcd45353073'
-  'eec7eef85e58898104c1df943edecdfad5a491db69247336aab45e814dfd06a0'
-)
+sha256sums=('6e08212071f8b95216a56d0a5edef8fbf23cd33f212762a236060c486f9319d0'
+            '467479a4345b96cfbb472b629724311e094c97b2c728d93614e9a559d2fb92aa')
 
 package() {
   install -Dm755 "$srcdir/traitor-amd64" "$pkgdir/usr/bin/$_pkgname"
