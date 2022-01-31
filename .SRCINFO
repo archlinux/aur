@@ -12,7 +12,7 @@ depends = libxtst
 depends = nss
 source = https://github.com/nukeop/nuclear/releases/download/nightly/nuclear-nightly.deb
 source = nuclear.desktop
-md5sums = 7edcc6f0aca9b8ec9c0638d8f121f42d
+md5sums = b4e021c7b678c66962cbfce7f12597f0
 md5sums = eb5a64f62697098c413c0fa1e1215819
 
 pkgname = nuclear-player-bin
