@@ -1,13 +1,12 @@
 pkgbase = mpck
 	pkgdesc = Reads MP3 files and tries to determine if they are correct
 	pkgver = 0.21
-	pkgrel = 1
-	url = http://checkmate.gissen.nl/
+	pkgrel = 2
+	url = https://checkmate.gissen.nl
 	arch = x86_64
 	license = GPL
 	depends = glibc
-	source = http://checkmate.gissen.nl/checkmate-0.21.tar.gz
+	source = https://checkmate.gissen.nl/checkmate-0.21.tar.gz
 	md5sums = 81d5d0b620f0fe3cc23c272021e9f23c
 
 pkgname = mpck
-
