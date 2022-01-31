@@ -1,20 +1,23 @@
 pkgbase = vcvrack-bin
 	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 1.1.6
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
 	license = GPL3
-	depends = gtk2
 	depends = alsa-lib
 	depends = libglvnd
 	optdepends = jack
+	optdepends = libpulse
 	provides = vcvrack
+	provides = vcvrack-fundamental
 	conflicts = vcvrack
-	source = https://vcvrack.com/downloads/Rack-1.1.6-lin.zip
+	conflicts = vcvrack-fundamental
+	source = https://vcvrack.com/downloads/RackFree-2.0.6-lin.zip
+	source = vcvrack.desktop
 	source = vcvrack
-	sha256sums = be610e226b33ef002baf8f58847f238537ed8e334a9f948a5a8828fb258e42c7
+	sha256sums = d006454360bb39acd1a5b9923caa690b14562a3dc9793912592694704e1b328f
+	sha256sums = 37208ccb5cdd319fce9d05aa913bc657d582b2371ef0f51b3a7e04586ac0f717
 	sha256sums = d98a5e0c8d811aa9edf0040570e5363da712d676b46e82b2c64e8aad4b876417
 
 pkgname = vcvrack-bin
-

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VCV Rack
+Comment=Modular Synthesis
+Icon=/opt/vcvrack/res/icon.png
+Exec=/usr/bin/vcvrack
+Terminal=false
+Categories=Audio;Music
+Keywords=Music
