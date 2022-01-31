@@ -1,13 +1,13 @@
 # Maintainer: Timothy Newton <timothynewton1998@gmail.com>
 pkgname=auto-rotation-hdaps-git
-pkgver=r8.746c19e
+pkgver=r9.97510cc
 pkgrel=1
 pkgdesc="This application adds auto-rotation functionality to tablet/laptop devices with Linux that have HDAPS accelerometers such as the X201 tablet Thinkpad."
 arch=("any")
 url="https://github.com/Unicornasaurous/auto_rotation_hdaps.git"
 license=("MIT")
 groups=()
-depends=("libinput" "hdapsd" "python")
+depends=("libinput" "tp_smapi" "python")
 makedepends=("git")
 optdepends=()
 provides=()

@@ -13,7 +13,7 @@ so that module persists after system reboot(very important)"
 	echo "==>Instructions: First, reboot your system. Then, invoke 
 autorotation on the command line to start the program. 
 Once you've made sure the code works with your system, 
-run the script at startup by adding it(/usr/bin/auto-rotate.py) to your DE's autostart section, 
+run the script at startup by adding it(/usr/bin/auto_rotate.py) to your DE's autostart section, 
 or add 'auto_rotate.py &' to your ~/.xinitrc file."
 }
 
