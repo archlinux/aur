@@ -1,6 +1,6 @@
 # Maintainer: nukeop <nuclear at gumblert dot tech>
 pkgname=nuclear-player-bin
-pkgver=2022131
+pkgver=2022131-d7ef2b0bd858287e647f851b9f5841b4
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
@@ -15,7 +15,7 @@ source=(
     https://github.com/nukeop/nuclear/releases/download/nightly/nuclear-nightly.deb
     nuclear.desktop
 )
-md5sums=('b4e021c7b678c66962cbfce7f12597f0'
+md5sums=('d7ef2b0bd858287e647f851b9f5841b4'
          'eb5a64f62697098c413c0fa1e1215819')
 
 package()   {
