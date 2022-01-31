@@ -1,7 +1,7 @@
 pkgbase = coin-or-qpoases
 	pkgdesc = COIN-OR QP solver with online active set strategy
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coin-or/qpOASES
 	arch = i686
 	arch = x86_64
