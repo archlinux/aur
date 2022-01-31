@@ -5,11 +5,11 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=b2f75a026f14805888a4b91d8a2e2c60a35fc1b7
-_stag_commit=0111d074e60d98cea562fed60b81e25aa276dd98
+_wine_commit=594e431e36d65e470bcbe930eb3d0f2bbca17736
+_stag_commit=f5ca8f5a0ca9e9ee9278bd3b8ca39e8c1c29870e
 
 pkgname=wine-ge-custom
-_srctag=7.0rc6-GE-1
+_srctag=7.1-GE-1 
 pkgver=${_srctag//-/.}
 pkgrel=1
 
@@ -165,13 +165,10 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
-  export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+  export CFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
+  export CXXFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-  # Disable AVX instead of using 02, same as dxvk, the rest are from Proton
-  export CFLAGS+=" -mno-avx -mno-avx2"
-  export CXXFLAGS+=" -mno-avx -mno-avx2"
   export CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
   export CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
 
@@ -201,8 +198,13 @@ build() {
 
   msg2 "Building Wine-32..."
 
+  # Disable AVX instead of using 02, for 32bit
+  export CFLAGS+=" -mno-avx -mno-avx2"
+  export CXXFLAGS+=" -mno-avx -mno-avx2"
   export CFLAGS+=" -mstackrealign"
   export CXXFLAGS+=" -mstackrealign"
+  export CROSSCFLAGS="$CFLAGS"
+  export CROSSCXXFLAGS="$CXXFLAGS"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cd "$srcdir/$pkgname-32-build"
   ../$pkgname/wine/configure \
