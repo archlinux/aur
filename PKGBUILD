@@ -1,34 +1,27 @@
 pkgname=coin-or-qpoases
-pkgver=3.1.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="COIN-OR QP solver with online active set strategy"
 arch=(i686 x86_64)
-url="https://projects.coin-or.org/qpOASES/"
+url="https://github.com/coin-or/qpOASES"
 license=(LGPL2.1)
 groups=(coin-or)
 makedepends=(cmake)
 depends=(blas lapack)
 _name=qpOASES
-source=("http://www.coin-or.org/download/source/${_name}/${_name}-$pkgver.tgz")
-sha1sums=('7e14ec6f2c2c39814e985cdeaffe002dee92e47c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/releases/$pkgver.tar.gz")
+sha256sums=('a7d153b4e23ee66bd50cdb6e84291d0084d9967a9c788a4d873440a6b10ca13b')
 
 build() {
-  cd $srcdir/${_name}-$pkgver
-  mkdir build && cd build
-
-  cmake -DCMAKE_BUILD_TYPE="Release" \
-        -DCMAKE_INSTALL_PREFIX="/usr" \
-        "$srcdir/${_name}-$pkgver"
-
-  make
+  cmake -B "build-$pkgver" -S "qpOASES-releases-$pkgver" \
+      -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake --build "build-$pkgver"
 }
 
 check() {
-  cd $srcdir/${_name}-$pkgver/build
-  ./bin/example1
+  "./build-$pkgver/bin/example1"
 }
 
 package() {
-  cd $srcdir/${_name}-$pkgver/build
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --build "build-$pkgver" -t install
 }
