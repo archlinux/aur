@@ -1,7 +1,7 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=gti-git
-pkgver=v1.0.4.5.g23f5819
+pkgver=v1.7.0.13.g69bd9a7
 pkgrel=1
 pkgdesc='A silly git launcher'
 arch=('i686' 'x86_64')
