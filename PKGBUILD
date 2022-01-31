@@ -8,12 +8,12 @@
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_electron=electron13
+_electron=electron15
 pkgname=(element-{desktop,web}-greentext)
-pkgver=1.9.9
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
-arch=(x86_64)
+arch=(any)
 url="https://element.io"
 license=(Apache)
 makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
@@ -32,9 +32,9 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-config.json
         element-web.sh
         element-desktop.sh)
-sha256sums=('0c6b7d848cae8d28cd11973f5d5f3eb81761f0044beb9b3d300bc3418e47709b'
+sha256sums=('8c8b6ee908e50a1466b92c1a8d8941ebeaf1aad1ae4828e0654394112dd56aed'
             'SKIP'
-            '1ecb82883ea3ff803b155bb89a96b44feccd91ca9c873bc549cd28834a99dbe2'
+            '6a4057c2d1cfbca383aae8ab6e71780cb513f72d6f18d38f51aaa642080d2a12'
             'SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
@@ -88,6 +88,7 @@ with open(emoji_file, "w") as ef:
   sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   yarn install --no-fund
 
+  # Patch to include greentext.
   cd -- "$srcdir/element-web-${pkgver}/node_modules/matrix-react-sdk"
   patch -p1 --forward < "$srcdir/greentext.patch" || true
   yarn reskindex
