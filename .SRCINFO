@@ -1,6 +1,6 @@
 pkgbase = virtualbox-svn
-	pkgver = 92314
-	pkgrel = 1
+	pkgver = 93465
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = x86_64
 	license = GPL
@@ -65,7 +65,6 @@ pkgbase = virtualbox-svn
 	source = 012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch
 	source = 013-Makefile.patch
 	source = 017-fix-narrowing-conversion.patch
-	source = 018-xclient.patch
 	sha256sums = SKIP
 	sha256sums = 76d98ea062fcad9e5e3fa981d046a6eb12a3e718a296544a68b66f4b65cb56db
 	sha256sums = 2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c
@@ -87,7 +86,6 @@ pkgbase = virtualbox-svn
 	sha256sums = 81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024
 	sha256sums = fb21aafdc0bc14312b9618ebd7550cb7ecf2228486a121c75a0d94bf90ba54fb
 	sha256sums = 5aac692909a0a0ec56b08bdece9e42cf7463abdca9da2f990d441ff463be6a99
-	sha256sums = cac5a573e9ed5aafb2f469c2e6fffb8cd4f389bbadba5a968c9f65be7a72fee3
 
 pkgname = virtualbox-svn
 	pkgdesc = Powerful x86 virtualization for enterprise as well as home use
