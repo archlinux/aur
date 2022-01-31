@@ -1,43 +1,26 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 
-pkgbase=python-arabic-reshaper
-pkgname=('python-arabic-reshaper' 'python2-arabic-reshaper')
-pkgver=2.1.1
+pkgname=python-arabic-reshaper
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Reconstruct Arabic sentences to be used in applications that don't support Arabic"
-makedepends=('python-setuptools' 'python2-setuptools' 'python-future' 'python2-future' 'python2-configparser')
+depends=('python-future')
+makedepends=('python-setuptools')
+optdepends=('python-fonttools')
 url="https://github.com/mpcabd/python-arabic-reshaper"
 license=('MIT')
 arch=('any')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('d1378b72ba12b1816d26710576ed0a78')
-
-prepare() {
-  cp -a $pkgname-$pkgver{,-py2}
-}
+md5sums=('c070c1e8a186fe6d723c8afb4830ceb1')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
-
-  cd "$srcdir/$pkgname-$pkgver-py2"
-  python2 setup.py build
 }
 
-package_python-arabic-reshaper() {
-  depends=('python' 'python-future' 'python-setuptools')
-  provides=('python-arabic-reshaper')
-  cd "$srcdir/python-arabic-reshaper-$pkgver"
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-package_python2-arabic-reshaper() {
-  depends=('python2' 'python2-configparser' 'python2-future' 'python2-setuptools')
-  provides=('python2-arabic-reshaper')
-  cd "$srcdir/python-arabic-reshaper-$pkgver-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-# vim:set ts=2 sw=2 et:
