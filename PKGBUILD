@@ -45,7 +45,6 @@ prepare() {
   tar xzf "$_archive"
   # https://git.altlinux.org/srpms/o/octave-fits.git?p=octave-fits.git;a=blob;f=octave-package-fits.spec;hb=HEAD#l41
   sed -i 's/D_NINT/octave::math::x_nint/g' ${_pack}-${pkgver}/src/*.cc
-  cat ${_pack}-${pkgver}/src/save_fits_image_multi_ext.cc
   tar czf "$_archive_patched" "$_pack-$pkgver"
 }
 
