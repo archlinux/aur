@@ -1,7 +1,7 @@
 pkgbase = fiber-cli
 	pkgdesc = Fiber Command Line Interface
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gofiber/cli
 	arch = any
 	license = MIT

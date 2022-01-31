@@ -2,7 +2,7 @@
 
 pkgname=fiber-cli
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Fiber Command Line Interface "
 arch=('any')
 url="https://github.com/gofiber/cli"
@@ -45,6 +45,6 @@ check() {
 package() {
     cd "cli-${pkgver}"
 
-    install -Dm755 build/fiber "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 build/fiber "$pkgdir/usr/bin/fiber"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
