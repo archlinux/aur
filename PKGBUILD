@@ -2,7 +2,7 @@
 
 pkgname=processing4-git
 pkgver=4.0b4.r65.g5fb933e29
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
@@ -13,11 +13,13 @@ depends=( 'jdk-openjdk' 'java-openjfx')
 makedepends=('ant' 'gendesk' 'rsync' 'unzip')
 options=(!strip)
 source=(disable_update_check.patch
+        get_reference_via_https.patch
         no_ffmpeg_download.patch
         no_jdk_download.patch)
 sha256sums=('35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
+            '1d549cf94d033e572050f85a59c6ba526aee2bce6b4c96e8b55764136e6c21b5'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
-            '5e0cbbaf93fd4cf104fabe82c0ff98535bdae31f70d6e92ae7851477a40456d6')
+            '5c3314d6a63955fa472aa87c6c99a9675eed3db9c589b784593c9f14432ef201')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -37,6 +39,9 @@ prepare() {
   # Don't download packages that can be provided via dependencies
   patch $pkgname/build/build.xml < no_jdk_download.patch
   patch $pkgname/build/shared/tools/MovieMaker/build.xml < no_ffmpeg_download.patch
+
+  # Ensure that reference.zip is downloaded via HTTPS
+  patch -p0 < get_reference_via_https.patch
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
