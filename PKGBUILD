@@ -63,6 +63,7 @@ package() {
 		Comment=Browse Twitch.tv and watch streams in your videoplayer of choice
 		Keywords=streamlink;twitch;streaming;
 		Categories=AudioVideo;Network;
+		StartupWMClass=streamlink-twitch-gui
 		Exec=/usr/bin/${_pkgname}
 		Icon=${_pkgname}
 	EOF
