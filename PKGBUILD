@@ -9,7 +9,8 @@ arch=("x86_64")
 url="https://www.${pkgname%%-*}.com/support/software-defined-perimeter-support"
 license=("custom" "custom:commercial")
 depends=("dnsmasq" "gtk3" "libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
-optdepends=("gnome-keyring: saves the endpoint certificate between sessions")
+optdepends=("dnsmasq: dns resolver for systems without systemd-resolved"
+            "gnome-keyring: saves the endpoint certificate between sessions")
 provides=("${pkgname}")
 options=(staticlibs !strip !emptydirs)
 source=(
