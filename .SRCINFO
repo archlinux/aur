@@ -1,6 +1,7 @@
 pkgbase = guile-redis
+	pkgdesc = Guile module for the Redis key-value data store
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://savannah.nongnu.org/projects/guile-redis
 	arch = any
 	license = GPL3

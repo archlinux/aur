@@ -2,8 +2,8 @@
 
 pkgname=guile-redis
 pkgver=2.1.2
-pkgrel=1
-pkgdesc=''
+pkgrel=2
+pkgdesc='Guile module for the Redis key-value data store'
 arch=(any)
 license=(GPL3)
 depends=('guile>=2.0.9')
