@@ -1,20 +1,26 @@
-# Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
+# Maintainer: Colin Reeder <colin@vpzom.click>
+# Contributor: Aleksandar Trifunović <akstrfn@gmail.com>
 
-pkgname=valhalla
-pkgver=3.1.0
-pkgrel=2
-pkgdesc="Routing engine for OpenStreetMap."
+pkgname=valhalla-tmp-patch
+pkgver=3.1.4
+pkgrel=1
+pkgdesc="Routing engine for OpenStreetMap. (with compilation fixes)"
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
-source=("$pkgname-$pkgver::git+${url}#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver::git+${url}#tag=$pkgver" "protobuf-ifdefs.patch")
+sha256sums=('SKIP' 'SKIP')
+provides=("valhalla")
+conflicts=("valhalla")
 
 prepare() {
   cd "$pkgname-$pkgver"
   git submodule update --init --recursive
+
+  patch -Np1 -i ../protobuf-ifdefs.patch
+
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
