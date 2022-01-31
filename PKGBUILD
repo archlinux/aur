@@ -5,17 +5,17 @@
 
 
 pkgname='emacs-mozc'
-pkgver=2.26.4610.102
-pkgrel=2
+pkgver=2.26.4632.102
+pkgrel=1
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('emacs' 'mozc>=2.26.4610.102')
+depends=('emacs' 'mozc>=2.26.4632.102')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 conflicts=('emacs-mozc-ut2' 'emacs-mozc-ut-united')
 replaces=('emacs-mozc-ut')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c914d1d")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c")
 sha256sums=('SKIP')
 
 prepare() {
@@ -27,6 +27,9 @@ prepare() {
 
     # Fix the Qt5 include path
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
+
+    # Temp fix for the Android NDK error
+    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 }
 
 build() {
