@@ -16,7 +16,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=14.0.0_r407313.15f8f3e20aa9
+pkgver=14.0.0_r413047.c703d77a61ac
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -87,6 +87,7 @@ build() {
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang" \
+        -D LLVM_LIT_ARGS="-sv --ignore-fail" \
         -Wno-dev
 
     ninja -C _build $NINJAFLAGS
@@ -134,7 +135,13 @@ package_llvm-git() {
     # OCaml bindings go to a separate package
     rm -rf "$srcdir"/ocaml.{lib,doc}
     mv "$pkgdir"/usr/lib/ocaml "$srcdir"/ocaml.lib
-    mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
+
+    if [[ -d "${pkgdir}/usr/share/doc/LLVM/llvm/ocaml-html" && ! -d "${pkgdir}/usr/share/doc/llvm/ocaml-html" ]]
+    then
+        mv "$pkgdir"/usr/share/doc/LLVM/llvm/ocaml-html "$srcdir"/ocaml.doc
+    else
+        mv "$pkgdir"/usr/share/doc/llvm/ocaml-html "$srcdir"/ocaml.doc
+    fi
     
     if [[ $CARCH == x86_64 ]]; then
         # Needed for multilib (https://bugs.archlinux.org/task/29951)
