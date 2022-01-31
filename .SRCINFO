@@ -1,6 +1,6 @@
 pkgbase = nuclear-player-bin
 pkgdesc = A free, multiplatform music player app that streams from multiple sources.
-pkgver = 2022131-d7ef2b0bd858287e647f851b9f5841b4
+pkgver = 2022131_d7ef2b0bd858287e647f851b9f5841b4
 pkgrel = 2
 url = http://nuclear.js.org
 install = nuclear-player-bin.install
