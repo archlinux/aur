@@ -8,18 +8,18 @@
 
 _pkgbase=rts5139
 pkgname=${_pkgbase}-dkms
-pkgver=1.05
-pkgrel=2
+pkgver=1.06
+pkgrel=1
 pkgdesc="Linux kernel drivers module for RTS5129/RTS5139 USB MMC card reader"
 arch=('i686' 'x86_64')
 url="http://www.realtek.com.tw/"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-source=("${_pkgbase}::git+https://github.com/aurorafossorg/rts5139.git#tag=v${pkgver}"
+source=("${_pkgbase}::git+https://github.com/ljmf00/rts5139.git#tag=v${pkgver}"
 	dkms.conf)
 sha512sums=('SKIP'
-            '4cfe8db8f5de6a81bf431a54291ee60f16b93f1928fb5c29bd157c0c896f03fca383a35b11b2e137ee711403d3692e7c9794909f3c3273916393bf7308700c6e')
+            'f2a7278201fa8c9ec06029083b7b8d5b24f2e788ca7f7c1758d3c2130934fb2fc24b42ca64b76f51a5ef69e7b4191dac12cf31d4bd925ecedcbb686062a5b476')
 
 package() {
 	sourceDir="${srcdir}/${_pkgbase}"
@@ -34,7 +34,7 @@ package() {
 	# Blacklist rtsx_pci
 	install -Dm644 "blacklist-${pkgname}.conf" "${pkgdir}/etc/modprobe.d/blacklist-${pkgname}.conf"
 	install -Dm755 "${pkgname}-suspend.sh" "${pkgdir}/usr/lib/systemd/system-sleep/${pkgname}-suspend.sh"
-	
+
 	for d in $(find . -type d)
 	do
 		install -dm755  "${installDir}/$d"
