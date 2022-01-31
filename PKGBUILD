@@ -3,12 +3,12 @@
 
 pkgname=obs-studio
 pkgver=27.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source software for live streaming and recording"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
-depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
+depends=('ffmpeg4.4' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
          'qt5-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio')
 optdepends=('libfdk-aac: FDK AAC codec support'
@@ -32,6 +32,8 @@ build() {
   cd $pkgname-$pkgver
 
   mkdir -p build; cd build
+
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
   cmake -DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_BROWSER=OFF \
