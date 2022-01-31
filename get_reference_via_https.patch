@@ -1,0 +1,24 @@
+diff -ruN processing4-git/build/build.xml processing4-git-patched/build/build.xml
+--- processing4/build/build.xml	2022-01-31 13:24:21.300634689 +0100
++++ processing4-patched/build/build.xml	2022-01-31 13:25:53.194256000 +0100
+@@ -369,7 +369,7 @@
+     </condition>
+ 
+     <!--<echo message="ref ignoreable? ${reference.ignorable}" />-->
+-    <get src="http://download.processing.org/reference.zip"
++    <get src="https://download.processing.org/reference.zip"
+          dest="../java/reference.zip"
+          ignoreerrors="${reference.ignorable}"
+          usetimestamp="true" />
+diff -ruN processing4-git/java/libraries/io/build.xml processing4-git-patched/java/libraries/io/build.xml
+--- processing4/java/libraries/io/build.xml	2022-01-31 13:24:21.483968605 +0100
++++ processing4-patched/java/libraries/io/build.xml	2022-01-31 13:25:06.487444000 +0100
+@@ -43,7 +43,7 @@
+     <replaceregexp file="library.properties" match="version = .*" replace="version = ${revision}" flags="g" />
+     <replaceregexp file="library.properties" match="prettyVersion = .*" replace="prettyVersion = ${revision}" flags="g" />
+ 
+-    <get src="http://download.processing.org/reference.zip"
++    <get src="https://download.processing.org/reference.zip"
+          dest="reference.zip"
+          usetimestamp="true" />
+     <mkdir dir="reference" />
