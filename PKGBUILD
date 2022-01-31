@@ -2,7 +2,7 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 
 pkgname=ccid
-pkgver=1.4.36
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A generic USB Chip/Smart Card Interface Devices driver'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('pcsclite' 'libusb' 'flex')
 backup=('etc/reader.conf.d/libccidtwin')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <ludovic.rousseau@free.fr>
 source=("https://ccid.apdu.fr/files/${pkgname}-${pkgver}.tar.bz2"{,.asc})
-sha256sums=('2b73ac885f1bcab819dc3578944d17406241e0c724042989cea437353b6749c1'
+sha256sums=('81549b3422469d503996d03a3aed2ef1375b359167f10d66be9e3844e729322e'
             'SKIP')
 
 build() {
