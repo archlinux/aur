@@ -2,8 +2,8 @@
 
 _name=StyLua
 pkgname=stylua
-pkgver=0.11.3
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='Code formatter for Lua'
 arch=('any')
 url=https://github.com/JohnnyMorganz/StyLua
@@ -11,7 +11,7 @@ license=('MPL2')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$url/archive/v$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('1656958c11a4d4e4a35b935d9b0f4253c50955d8f2d1a955f6c214554df60c612d9b7653009746e5ffd999a5521456cdfe2cc983a4f95ec30181d3b7a450ba20')
+b2sums=('a81eedcd6b189a4228a4f1255c0d111e0ed93eb90f111012e4a37419e21b79c962a214fe81a00a8796a8a8686891029eb4fafcb25e1a66c9c9cdb22f443a95fd')
 
 prepare() {
   cd $_name-$pkgver
