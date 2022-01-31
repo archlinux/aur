@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Add default JVM options here. You can also use JAVA_OPTS and KOBWEB_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Dkobweb.version={pkgver}"'
+
 # Add all dependency libraries to the CLASSPATH
 
 for name in /usr/share/java/kobweb/*.jar ; do

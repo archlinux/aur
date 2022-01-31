@@ -1,7 +1,7 @@
 pkgbase = kobweb
 	pkgdesc = Set up and manage your Compose for Web app
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kobweb.varabyte.com/
 	arch = any
 	license = APACHE
@@ -10,6 +10,6 @@ pkgbase = kobweb
 	source = https://github.com/varabyte/kobweb/releases/download/cli-v0.9.3/kobweb-0.9.3.tar
 	source = kobweb
 	sha256sums = 29c250205be745febeece195a738723c6fdd8ed58e6a777227e3fb8ea353f6a0
-	sha256sums = cd36e61015c81803efc978d4ec659b44d505b520a056802e7e194c2b0c28f77a
+	sha256sums = 9a7574f298111c7f1941f80f5b41745c650267d55e5a76f3e963e53dfdbebc84
 
 pkgname = kobweb
