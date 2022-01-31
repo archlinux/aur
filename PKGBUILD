@@ -2,7 +2,7 @@
 pkgname=argocd-autopilot-bin
 pkgver=v0.0.0
 pkgrel=1
-pkgdesc="Argocd autopilot binary downloaded from Github"
+pkgdesc="Argo-CD Autopilot is a tool which offers an opinionated way of installing Argo-CD and managing GitOps repositories."
 arch=(x86_64)
 url="https://github.com/argoproj-labs/argocd-autopilot"
 license=('Apache')
