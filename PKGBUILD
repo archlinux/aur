@@ -4,14 +4,14 @@
 
 pkgname=sonnet-git
 _name=${pkgname%-git}
-pkgver=v5.72.0.541.4cf1502
+pkgver=v5.90.0.671.e9fa9bc
 pkgrel=1
 pkgdesc='Spelling framework for Qt'
 arch=(x86_64)
 url='https://invent.kde.org/frameworks/sonnet'
 license=(LGPL)
-depends=('qt5-base')
-makedepends=(extra-cmake-modules qt5-tools hunspell aspell hspell git libvoikko)
+depends=(qt5-declarative qt5-base)
+makedepends=(extra-cmake-modules git qt5-tools)
 optdepends=('hunspell: spell checking via hunspell'
 	    'aspell: spell checking via aspell'
 	    'hspell: spell checking for Hebrew'
