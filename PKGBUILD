@@ -1,7 +1,13 @@
-# Maintainer: Johannes Maibaum <jmaibaum@gmail.com>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Previous maintainers:
+#   Johannes Maibaum <jmaibaum at gmail dot com>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
+
 pkgname=parzip
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line utility to pack and unpack zip archives using multiple threads."
 license=('GPL3')
 arch=('x86_64')

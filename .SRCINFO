@@ -1,7 +1,7 @@
 pkgbase = parzip
 	pkgdesc = A command line utility to pack and unpack zip archives using multiple threads.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpakkane/parzip
 	arch = x86_64
 	license = GPL3
@@ -12,4 +12,3 @@ pkgbase = parzip
 	sha256sums = 2497305ce36d3b6225d9517fa5d4c408adef3935f5f736174e218f971caeb7bb
 
 pkgname = parzip
-
