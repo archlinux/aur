@@ -3,15 +3,15 @@
 # Contributor: aksr <aksr at t-com dot me>
 
 pkgname=pyradio-git
-pkgver=0.8.9.9.r4.g8a01a7f
-pkgrel=1
+pkgver=0.8.9.12.r0.g6bafa23
+pkgrel=2
 pkgdesc="Internet radio player for the command line"
 arch=('any')
 url="http://www.coderholic.com/pyradio/"
 license=('MIT')
 depends=('python-dnspython' 'python-requests' 'python-psutil')
 optdepends=('mplayer: as backend' 'mpv: as backend' 'vlc: as backend')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-pip' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::git+https://github.com/coderholic/pyradio.git)
@@ -36,6 +36,6 @@ package() {
   install -Dm644 *{html,md} -t "$pkgdir/usr/share/doc/pyradio"
   install -Dm644 pyradio{,_rb}.1 -t "$pkgdir/usr/share/man/man1"
 
-  python setup.py install --root="$pkgdir" --optimize=1
+  PIP_CONFIG_FILE=/dev/null pip install --no-warn-script-location --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
 
