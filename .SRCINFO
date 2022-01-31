@@ -1,0 +1,12 @@
+pkgbase = luaoptions-git
+	pkgdesc = Option handling for LuaLaTeX packages
+	pkgver = r765.f5fc56b
+	pkgrel = 1
+	url = https://github.com/lualatex-tools/luaoptions
+	arch = any
+	license = MIT
+	makedepends = git
+	source = luaoptions-git::git+https://github.com/lualatex-tools/luaoptions.git
+	sha256sums = SKIP
+
+pkgname = luaoptions-git
