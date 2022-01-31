@@ -1,0 +1,13 @@
+pkgbase = python-icmplib
+	pkgdesc = Easily forge ICMP packets and make your own ping and traceroute.
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/ValentinBELYN/icmplib
+	arch = x86_64
+	license = LGPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/ValentinBELYN/icmplib/archive/refs/tags/v3.0.2.tar.gz
+	sha256sums = 82a9938f621caab5395d77011c903ef3c96925bcddce944a8857b0c8e34bc125
+
+pkgname = python-icmplib
