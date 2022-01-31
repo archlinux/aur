@@ -1,9 +1,8 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - ros_control controller manager interface for MoveIt!."
 url='https://wiki.ros.org/moveit_ros_control_interface'
 
 pkgname='ros-noetic-moveit-ros-control-interface'
-pkgver='1.0.2'
+pkgver='1.1.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -15,7 +14,7 @@ ros_makedepends=(ros-noetic-moveit-core
   ros-noetic-pluginlib
   ros-noetic-actionlib
   ros-noetic-catkin)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=(cmake ros-build-tools
   ${ros_makedepends[@]})
 
 ros_depends=(ros-noetic-moveit-core
@@ -26,16 +25,9 @@ ros_depends=(ros-noetic-moveit-core
   ros-noetic-actionlib)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_ros_control_interface/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('3247493cc3b19032030742a54d76f205e3dc03d32888d7193348da140cdcb4de')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_plugins/moveit_ros_control_interface"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
 
 build() {
   # Use ROS environment variables
