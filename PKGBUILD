@@ -4,7 +4,7 @@
 
 pkgname=python-ansi
 _pkgname=ansi
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
@@ -20,12 +20,12 @@ noextract=("$wheel")
 source=(
   "https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/$wheel"
 )
-# *sums taken from PyPI
+# *sums taken from PyPI (blake2 is truncated, and thus invalid here)
 md5sums=(
-  '7c65af0400ca38c5b860d70dd0934601'
+  '68489efd6843cd960ed38df8ae43e47a'
 )
 sha256sums=(
-  '8638378a838f81c34031e52410622d3c0af45379e55ba74cdca17590f35a84e8'
+  'b66ffd2b457d8ba255b78a22ec422f0ba129739e567bd6efee383d5a6b07e06f'
 )
 
 package() {
