@@ -8,7 +8,7 @@
 
 
 pkgname='mozc-ut-common'
-pkgver=2.26.4610.102.20220112
+pkgver=2.26.4632.102.20220112
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -17,8 +17,8 @@ license=('Apache' 'BSD' 'LGPL' 'custom')
 depends=('qt5-base')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-ut-united' 'mozc-neologd-ut+ut2')
-provides=('mozc=2.26.4610.102')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c914d1d"
+provides=('mozc=2.26.4632.102')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c"
         "https://osdn.net/downloads/users/37/37590/mozcdic-ut-20220112.tar.bz2")
 sha256sums=('SKIP'
             '0d22419db25dcbf1bccb4595414fdc78bc3ebf7088e0f076de4a91553f3db94b')
@@ -32,6 +32,9 @@ prepare() {
 
     # Fix the Qt5 include path
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
+
+    # Temp fix for the Android NDK error
+    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 
     # Add the UT dictionary
     cat ${srcdir}/mozcdic-ut-20220112/mozcdic-ut-20220112.txt >> data/dictionary_oss/dictionary00.txt
