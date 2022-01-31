@@ -1,7 +1,7 @@
 pkgbase = guile-sdl2
 	pkgdesc = Guile Scheme bindings for SDL2
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dthompson.us/projects/guile-sdl2.html
 	arch = any
 	license = LGPL3

@@ -3,7 +3,7 @@
 
 pkgname=guile-sdl2
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Guile Scheme bindings for SDL2'
 arch=(any)
 license=(LGPL3)
