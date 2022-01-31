@@ -13,6 +13,7 @@ source=("https://files.dthompson.us/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.as
 md5sums=('65e8197638f03e0ab7765e3d2b1d380a'
          'SKIP')
 validpgpkeys=( 8CCBA7F552B9CBEAE1FB29158328C7470FF1D807 )
+options=(!strip)
 
 build(){
   cd "$srcdir/$pkgname-$pkgver"
