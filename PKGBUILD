@@ -1,20 +1,25 @@
-# Maintainer: Aleksandar Trifunović <akstrfn@gmail.com>
+# Maintainer: Colin Reeder <colin@vpzom.click>
+# Contributor: Aleksandar Trifunović <akstrfn@gmail.com>
 
-pkgname=valhalla
-pkgver=3.1.0
-pkgrel=2
+_pkgname=valhalla
+pkgname=$_pkgname
+pkgver=3.1.4
+pkgrel=4
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
+depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit' 'chrono-date')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
-source=("$pkgname-$pkgver::git+${url}#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver" "protobuf-ifdefs.patch")
+sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   git submodule update --init --recursive
+
+  patch -Np1 -i ../protobuf-ifdefs.patch
+
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
@@ -27,6 +32,7 @@ prepare() {
     -DENABLE_SERVICES=On \
     -DENABLE_CCACHE=Off \
     -DENABLE_HTTP=On \
+    -DENABLE_SINGLE_FILES_WERROR=On \
     -DBUILD_SHARED_LIBS=On \
     -DENABLE_BENCHMARKS=OFF \
     -DENABLE_TESTS=OFF
@@ -34,23 +40,23 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver/build"
+  cd "$_pkgname-$pkgver/build"
   make
 }
 
 # no tests built but ctest does not fail
 check() {
-  cd "$pkgname-$pkgver/build"
+  cd "$_pkgname-$pkgver/build"
   ctest --parallel `nproc`
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   make -C build DESTDIR="$pkgdir/" install
   rm -rf "$pkgdir/usr/share/doc/"{libvalhalla-dev,libvalhalla0,python-valhalla}
 
-  install -Dm644 COPYING README.md CHANGELOG.md -t "$pkgdir/usr/share/licenses/$pkgname"
-  cp -a docs/* "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 COPYING README.md CHANGELOG.md -t "$pkgdir/usr/share/licenses/$_pkgname"
+  cp -a docs/* "$pkgdir/usr/share/doc/$_pkgname/"
 }
 
 # vim: set softtabstop=2 shiftwidth=2 expandtab:
