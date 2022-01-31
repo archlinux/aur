@@ -1,9 +1,49 @@
+2021-12-19 Josef Cacek
+  * Fixed ClassCastException in OpenPDF
+  * Windows installer contains both 64-bit and 32-bit Java versions
+
+2021-12-19 Marcos Alvarado Trasmonte
+  * Spanish translation through Weblate
+
+2021-12-19 Allan Nordhøy
+  * Norwegian Bokmål translation through Weblate
+
+2021-11-21 Miloslav Raus
+  * Drag&drop and output filename suggestion
+
+2021-11-13 Josef Cacek
+  * Add x86 Java runtime to the Windows installer (so both 32b and 64b JREs are included)
+
+2021-10-15 Jesús Alonso Abad
+* Extended L2 text options with DN (${certificate}) and custom signer name (-sn, --signer-name)
+
+2021-08-08 Josef Cacek
+  * Project moved to a new Github organization: https://github.com/intoolswetrust/
+  * The log4j dependency was remove and java.util.logging is used instead
+  * dependency updates
+
+2021-07-06 Josef Cacek
+  * use jsignpdf.home system property in the launch4j template
+  * configure Dependabot (on Github)
+
+2021-06-16 Josef Cacek
+  * Preparation for JSignPdf 2.0
+  * Move the build infrastructure from Ant to Maven
+  * Remove jsign-itxt (iText 2) and replace it by OpenPDF
+  * JSignPKCS11 security provider implemented
+
+2021-04-01 Josef Cacek (1.6.5)
+  * Bash startup script
+
+2020-11-25 Josef Cacek
+  * SunPKCS11 support for Java 9 and newer
+
 2018-09-10 Josef Cacek (1.6.4)
   * Upgrade Java runtime in Windows distributions to Java 8 (u181)
 
 2018-09-09 Dan Cvrcek
   * A new interface for remote/external crypto service providers - net.sf.jsignpdf.extcsp.IExternalCryptoProvider
-  * Integration with FoxyProxy (https://gitlab.com/cloudfoxy/foxyproxy) for (eIDAS) external signatures 
+  * Integration with FoxyProxy (https://gitlab.com/cloudfoxy/foxyproxy) for (eIDAS) external signatures
 
 2018-04-19 Josef Cacek (1.6.3)
   * Allow loading truststore specified by "javax.net.ssl.trustStore" System property
@@ -22,7 +62,7 @@
   * tsa.hashAlgorithm support in conf.properties
 
 2014-06-24 Josef Cacek
-  * jsignpdf-itxt moved directly under JSignPdf project (on github) 
+  * jsignpdf-itxt moved directly under JSignPdf project (on github)
 
 2014-06-22 Josef Cacek (1.5.4)
   * Recompiled 1.5.3 - a wrong version of jsignpdf-itxt caused non-working time-stamping

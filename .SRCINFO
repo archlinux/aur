@@ -1,7 +1,7 @@
 pkgbase = jsignpdf
 	pkgdesc = Digitally sign PDF files with X.509 certificates in GUI and CLI.
-	pkgver = 1.6.4
-	pkgrel = 2
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = http://jsignpdf.sourceforge.net/
 	changelog = changelog
 	arch = any
@@ -16,14 +16,13 @@ pkgbase = jsignpdf
 	optdepends = desktop-file-utils: MIME cache update
 	backup = usr/share/java/jsignpdf/conf/conf.properties
 	backup = usr/share/java/jsignpdf/conf/pkcs11.cfg
-	source = jsignpdf-1.6.4.zip::https://downloads.sourceforge.net/project/jsignpdf/stable/JSignPdf%201.6.4/JSignPdf-1.6.4.zip
-	source = jsignpdf_48.png::https://raw.githubusercontent.com/kwart/jsignpdf/master/doc/icon/iconverticons.com/signedpdf_48x48x32.png
-	source = jsignpdf_128.png::https://raw.githubusercontent.com/kwart/jsignpdf/master/doc/icon/iconverticons.com/signedpdf_128x128x32.png
-	source = supplementary.tar.xz
-	md5sums = a459876cba8e2d30abcf9baaf16ff986
+	source = jsignpdf-2.1.0.zip::https://downloads.sourceforge.net/project/jsignpdf/stable/JSignPdf%202.1.0/jsignpdf-2.1.0.zip
+	source = jsignpdf_48.png::https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_48x48x32.png
+	source = jsignpdf_128.png::https://raw.githubusercontent.com/intoolswetrust/jsignpdf/master/distribution/doc/icon/iconverticons.com/signedpdf_128x128x32.png
+	source = supplementary.tar.zst
+	md5sums = be5a966be3a4a303f09a42c28b9b9a22
 	md5sums = a44ef91da28d94fb949e361d19adbbd5
 	md5sums = bf2d11e38c706fe183900cce1fab0e38
-	md5sums = 0d2ebc62ed6bffa1e387fa0ba957cd2a
+	md5sums = 52a3ccd032a31311c23f7e9d2c255811
 
 pkgname = jsignpdf
-
