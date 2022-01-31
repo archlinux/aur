@@ -1,4 +1,5 @@
-# Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+# Maintainer: 
+# Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=subliminal
 pkgver=2.1.0
 pkgrel=1
@@ -22,8 +23,6 @@ depends=('python-guessit>3.0.0'
          'python-pytz>=2012c')
 makedepends=('git'
              'python-setuptools')
-provides=('subliminal-git')
-conflicts=('subliminal-git')
 source=("https://files.pythonhosted.org/packages/source/s/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('bd1193a10f2229ef04883977817930ae')
 
