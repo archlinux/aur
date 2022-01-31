@@ -18,7 +18,7 @@ if "www.bricsys.com" in file_url:
     _password = getpass.getpass()
 
     s = requests.session()
-    r = s.get("https://www.bricsys.com/protected/download.do")
+    r = s.get("https://boa.bricsys.com/protected/download.do")
     soup = BeautifulSoup(r.text, 'html.parser')
     _url = soup.find_all("form", attrs={"id":"kc-form-login"})[0]["action"]
 
@@ -34,7 +34,7 @@ if "www.bricsys.com" in file_url:
         exit(1)
 
 
-    r = s.get(f"https://www.bricsys.com/common/GetDownloadInstallsetData.json?i={version_number}&os={os_number}")
+    r = s.get(f"https://boa.bricsys.com/common/GetDownloadInstallsetData.json?i={version_number}&os={os_number}")
     rj = r.json()
     _du = rj['downloadURL']
     _i = rj['installsets'][0]['id']
@@ -45,7 +45,7 @@ if "www.bricsys.com" in file_url:
     payload = {'_csrf':_csrf, 'i':_i, 'if':_if, 'accept': 'true', 'signedUrl': _su}
 
     with open(target_file, "wb") as f:
-        r = s.post("https://www.bricsys.com/protected/download.do", headers=headers, data=payload, stream=True)
+        r = s.post("https://boa.bricsys.com/protected/download.do", headers=headers, data=payload, stream=True)
         total_length = r.headers.get('content-length')
 
         if total_length is None: # no content length header
