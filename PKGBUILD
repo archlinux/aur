@@ -10,6 +10,7 @@ depends=('guile>=2.0.9')
 url=https://savannah.nongnu.org/projects/gash/
 options=(!strip)
 source=( http://download.savannah.nongnu.org/releases/gash/gash-${pkgver}.tar.gz{,.sig} )
+validpgpkeys=( D6B0C593DA8C5EDCA44C7A58C33691F71188B004 )
 md5sums=('63e1759700bfe7844f8ed91c33a57aed'
          'SKIP')
 
