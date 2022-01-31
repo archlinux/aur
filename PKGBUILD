@@ -9,7 +9,7 @@ pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value t
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'capstone' 'mbedtls' 'libssh2'
+depends=('glfw' 'mbedtls' 'libssh2'
          'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme' 'openssl'
          'yara' 'fmt')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')

@@ -12,7 +12,6 @@ pkgbase = imhex
 	makedepends = nlohmann-json
 	makedepends = librsvg
 	depends = glfw
-	depends = capstone
 	depends = mbedtls
 	depends = libssh2
 	depends = python
