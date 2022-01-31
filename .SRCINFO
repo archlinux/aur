@@ -1,0 +1,10 @@
+pkgbase = argocd-autopilot-bin
+	pkgdesc = Argocd autopilot binary downloaded from Github
+	pkgver = v0.0.0
+	pkgrel = 1
+	url = https://github.com/argoproj-labs/argocd-autopilot
+	arch = x86_64
+	license = Apache
+	provides = argocd-autopilot
+
+pkgname = argocd-autopilot-bin
