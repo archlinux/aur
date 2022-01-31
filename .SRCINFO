@@ -1,0 +1,17 @@
+pkgbase = manafiles-git
+	pkgdesc = Config file and package tracking utility
+	pkgver = r122.2590559
+	pkgrel = 1
+	url = https://github.com/riyyi/manafiles
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = gzip
+	depends = gcc-libs
+	source = manafiles::git+https://github.com/riyyi/manafiles.git
+	sha256sums = SKIP
+
+pkgname = manafiles-git
