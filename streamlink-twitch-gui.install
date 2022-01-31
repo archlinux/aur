@@ -1,0 +1,23 @@
+_print_warning_msg() {
+	cat <<-EOF
+		### WARNING
+		# The "streamlink-twitch-gui" AUR package has been
+		# renamed to "streamlink-twitch-gui-bin".
+		#
+		# If you're seeing this message, then you have installed the old package.
+		# The version of this package, 1.13.0, will stop working at the end of February 2022.
+		# Users of Streamlink Twitch GUI will have to upgrade to 2.0.0 until then.
+		# However, the 2.0.0 release will only be available on the -bin package for now.
+		#
+		# For more infos, please see the comment at the top of the package's PKGBUILD.
+		### WARNING
+	EOF
+}
+
+pre_install() {
+	_print_warning_msg
+}
+
+pre_upgrade() {
+	_print_warning_msg
+}

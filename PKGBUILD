@@ -1,15 +1,47 @@
-# Maintainer: Sebastian Meyer <mail@bastimeyer.de>
-# Former maintainer: Ben Fox-Moore <ben.foxmoore@gmail.com>
+###########################################################
+# !!!!!!!!!!!! THIS PACKAGE HAS BEEN RENAMED !!!!!!!!!!!! #
+###########################################################
+#
+# Please install the PKGBUILD from the
+#
+#   streamlink-twitch-gui-bin
+#
+# AUR package instead.
+#
+# ----
+#
+# This message has been added as a temporary warning to
+# let users of the old package know about the name change.
+#
+# A merge request with the new package (which will move all
+# comments and votes) will be submitted shortly, once most
+# users had enough time to see this message and switch.
+#
+# Please note that during this transition period, the
+# PKGBUILD won't be changed to a build-from-source version
+# and that it also won't be upgraded to the 2.0.0 release.
+#
+# Users of Streamlink Twitch GUI will have to upgrade to
+# the 2.0.0 release until the end of February due to the
+# shutdown of Twitch's kraken API. For more information,
+# please see the changelog of the 2.0.0 release.
+#
+# Thank you!
+#
+###########################################################
+
+
+# Maintainer: Sebastian Meyer <mail@bastimeyer.de>	
 pkgname=streamlink-twitch-gui
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
 url="https://github.com/streamlink/streamlink-twitch-gui"
 license=("MIT")
 depends=("gtk3" "libxss" "nss" "streamlink")
-conflicts=("streamlink-twitch-gui-git")
 options=(!strip)
+install=streamlink-twitch-gui.install
 source_i686=("https://github.com/streamlink/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux32.tar.gz")
 source_x86_64=("https://github.com/streamlink/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-linux64.tar.gz")
 sha256sums_i686=('e8c149d05103d0da91262d5e2dff2edb4badc77f3b7cd049d420f39de573ae8d')
