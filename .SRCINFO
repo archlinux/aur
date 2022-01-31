@@ -1,6 +1,6 @@
 pkgbase = syphon-bin
 	pkgdesc = Privacy-centric Matrix client
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/syphon-org/syphon
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = syphon-bin
 	depends = jsoncpp
 	depends = sqlcipher
 	provides = syphon
-	source = https://github.com/syphon-org/syphon/releases/download/0.2.7/syphon.linux.x64.tar.gz
-	sha256sums = b4d8d5a2565c312faf25fc8e8d0e17a03aceac5fe9600dda355084178f842a8a
+	source = https://github.com/syphon-org/syphon/releases/download/0.2.8/syphon.linux.x64.0.2.8.tar.gz
+	sha256sums = 6d1cee305d3c2a18cfde46dabc4902dbf1362b11ab07d97cafeb148f277ffbeb
 
 pkgname = syphon-bin
