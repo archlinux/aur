@@ -1,32 +1,35 @@
-diff --git a/bin/apalache-mc b/bin/apalache-mc
-index 6c3ffb1b..e74305a0 100755
 --- a/bin/apalache-mc
 +++ b/bin/apalache-mc
-@@ -3,45 +3,20 @@
+@@ -3,34 +3,21 @@
  # Run the APALACHE model checker
  #
  # Igor Konnov, 2018-2019
 +#
 +# Patch for system install
 +# Ranadeep B
++
++echo "# Tool home: system"
++echo "# Package:   $JAR_DIR"
++
++JAR_DIR="/opt/apalache"
++
++JAR=`find "$JAR_DIR" -name "apalache-pkg-*-full.jar"`
  
 -DIR=`dirname $0`
 -DIR=`cd "$DIR/.."; pwd`
 -echo "# Tool home: $DIR"
 -# try to find either a release jar, or a local build
 -DISTS=`mktemp /tmp/apalache-dists.XXXX`
--find >$DISTS "$DIR" "$DIR/mod-distribution/target/" \
+-find >$DISTS "$DIR" "$DIR/target/scala-2.12" \
 -    -maxdepth 1 -name "apalache-pkg-*-full.jar"
-+echo "# Tool home: system"
-+echo "# Package:   $JAR_DIR"
- 
+-
 -case `cat $DISTS | wc -l | sed 's/[[:space:]]*//g'` in
 -    1)
 -        JAR=`head -n 1 $DISTS`
 -        echo "# Package:   $JAR"
 -        ;;
 -    0) 
--        echo "ERROR: Distribution jar not found. Did you run mvn package?"
+-        echo "ERROR: Distribution jar not found. Did you run make package?"
 -        exit 1
 -        ;;
 -    *) 
@@ -34,27 +37,15 @@ index 6c3ffb1b..e74305a0 100755
 -        cat $DISTS
 -        echo ""
 -        echo "To resolve this, run:"
--        echo "  mvn clean && mvn package"
+-        echo "  make clean package"
 -        exit 1
 -        ;;
 -esac
 -rm -f "$DISTS"
-+JAR_DIR="/opt/apalache"
- 
--# an additional lookup list for the TLA+ modules
--TLA_LIB="$DIR/src/tla"
-+JAR=`find "$JAR_DIR" -name "apalache-pkg-*-full.jar"`
- 
--# This is a temporary solution for handling TLA_PATH via a Java variable.
--# See apalache/#187.
--# Once tlaplus/#490,#493 are released, remove this workaround.
--if [ -z "$TLA_PATH" ]; then
--    TLA_PATH="$TLA_LIB"
--else
--    TLA_PATH="$TLA_LIB:$TLA_PATH"
 +if [ -z "$JAR" ]; then
 +    echo "ERROR: Distribution jar not found. Is the jar file present in \"$JAR_DIR\"?"
 +    exit 1
- fi
++fi
  
  JVM_ARGS=${JVM_ARGS:-""}
+ 

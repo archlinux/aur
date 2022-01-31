@@ -16,6 +16,6 @@ pkgbase = apalache-bin
 	source = https://github.com/informalsystems/apalache/releases/download/v0.20.0/apalache-v0.20.0.tgz
 	source = sys-install.patch
 	sha256sums = 6fc82eb9bd7b25fcc8897bdc2e19a9cd64e2cc7c8fcdd38aa7c7e88be239d285
-	sha256sums = 825557bfdd2928787480e7d21e3b8397e48080fddc3fa6656d4b910db6c58c01
+	sha256sums = 8a94836c798779dcbaebc3920fe6ef64f74a2ff0b5a247fc15ecb82a5ce4acbc
 
 pkgname = apalache-bin
