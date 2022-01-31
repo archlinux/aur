@@ -1,15 +1,14 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Components of MoveIt that use ROS."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-ros'
-pkgver='1.0.2'
+pkgver='1.1.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=(cmake ros-build-tools
   ${ros_makedepends[@]})
 
 ros_depends=(ros-noetic-moveit-ros-planning
@@ -23,16 +22,9 @@ ros_depends=(ros-noetic-moveit-ros-planning
   ros-noetic-moveit-ros-perception)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_ros/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('dc6da6a2d30b21afa74e0ea17d6eb46eba3147832849fd3e24bd29639351940c')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_ros/moveit_ros"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
 
 build() {
   # Use ROS environment variables
