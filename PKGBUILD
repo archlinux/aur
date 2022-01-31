@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fish-fzf
-pkgver=8.0
+pkgver=8.1
 pkgrel=1
 pkgdesc="fzf key-bindings into fish"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git')
 # checkdepends=('fish-fishtape')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e84da98284befa5a198ba76c9f552be342b81fee2b1652538e04092ceae9e0d5')
+sha256sums=('22b222168733351858e59ee51c0b6df28d5164b673f8dff1da90df717392f862')
 
 # check() {
 #  cd "fzf.fish-$pkgver/"
