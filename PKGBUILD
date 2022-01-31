@@ -2,7 +2,7 @@
 
 _pkgname=streamlink-twitch-gui
 pkgname="${_pkgname}-git"
-pkgver=2452.38dc24d8
+pkgver=2629.f6e65da1
 pkgrel=1
 pkgdesc="A multi platform Twitch.tv browser for Streamlink"
 arch=("i686" "x86_64")
@@ -84,6 +84,7 @@ package() {
 		Comment=Browse Twitch.tv and watch streams in your videoplayer of choice
 		Keywords=streamlink;twitch;streaming;
 		Categories=AudioVideo;Network;
+		StartupWMClass=streamlink-twitch-gui
 		Exec=/usr/bin/${_pkgname}
 		Icon=${_pkgname}
 	EOF

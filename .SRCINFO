@@ -1,6 +1,6 @@
 pkgbase = streamlink-twitch-gui-git
 	pkgdesc = A multi platform Twitch.tv browser for Streamlink
-	pkgver = 2452.38dc24d8
+	pkgver = 2629.f6e65da1
 	pkgrel = 1
 	url = https://github.com/streamlink/streamlink-twitch-gui
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = streamlink-twitch-gui-git
 	sha256sums = SKIP
 
 pkgname = streamlink-twitch-gui-git
-
