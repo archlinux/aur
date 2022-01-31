@@ -1,5 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Caleb Bassi <calebjbassi@gmail.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ytop
 pkgver=0.6.2
