@@ -5,22 +5,22 @@
 
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.26.4610.102
-pkgrel=3
+pkgver=2.26.4632.102
+pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx5' 'mozc>=2.26.4610.102')
+depends=('fcitx5' 'mozc>=2.26.4632.102')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
 optdepends=('fcitx5-configtool')
 conflicts=('fcitx-mozc' 'fcitx-mozc-ut' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
            'fcitx5-mozc' 'fcitx5-mozc-git')
-provides=('fcitx5-mozc=2.26.4610.102')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c914d1d"
+provides=('fcitx5-mozc=2.26.4632.102')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            '39cd7938da0c8a619a6359f122b5b9c101ad9baba8e7b21312b61d8478bf409e')
+            '4a868e7da5ef839472e6149c1ab463d694dc95c79b968cceb8dc1ae673bd6f1b')
 
 prepare() {
     cd ${pkgname}-git
@@ -34,6 +34,9 @@ prepare() {
 
     # Fix the Qt5 include path
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
+
+    # Temp fix for the Android NDK error
+    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 }
 
 build() {
