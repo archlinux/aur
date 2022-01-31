@@ -1,7 +1,7 @@
 # Maintainer: Adrián Arroyo Calle <adrian.arroyocalle@gmail.com>
 
 pkgname=trealla
-pkgver=1.12.0
+pkgver=1.20.31
 pkgrel=1
 pkgdesc="A compact, efficient Prolog interpreter with ISO compliant aspirations."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'readline' 'vim' 'openssl')
 makedepends=('gcc' 'make')
 source=(https://github.com/infradig/trealla/archive/v${pkgver}.tar.gz)
-sha256sums=('682cf4829c2a0e8ffc4f2f4d74005d45034070445c9770eb11135898132d6d18')
+sha256sums=('9e406075ec33c81c5fdeab960329b773801f2a2a45824f7cb5196199c3f6e011')
 
 build() {
     cd $srcdir/trealla-$pkgver
