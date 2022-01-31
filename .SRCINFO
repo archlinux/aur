@@ -1,6 +1,6 @@
 pkgbase = eclipse-clp
 	pkgdesc = Constraint Logic Programming System
-	pkgver = 7.0.48
+	pkgver = 7.0.57
 	pkgrel = 1
 	url = http://eclipseclp.org/
 	install = eclipse-clp.install
@@ -9,8 +9,7 @@ pkgbase = eclipse-clp
 	depends = tk
 	optdepends = java-runtime: jvm support
 	optdepends = rlwrap: readline support
-	source_x86_64 = http://eclipseclp.org/Distribution/Builds/7.0_48/x86_64_linux/eclipse_basic.tgz
+	source_x86_64 = http://eclipseclp.org/Distribution/Builds/7.0_57/x86_64_linux/eclipse_basic.tgz
 	md5sums_x86_64 = SKIP
 
 pkgname = eclipse-clp
-

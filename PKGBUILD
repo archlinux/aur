@@ -1,3 +1,4 @@
+# Maintainer: Adrián Arroyo Calle <adrian.arroyocalle@gmail.com>
 # Maintainer: kaptoxic
 # Maintainer: DenBrahe <denbrahe at hotmail dot com>
 # Contributor: Antonio Bonifati <antonio punto bonifati a google>
@@ -5,7 +6,7 @@
 # Contributor(s): IC-Parc, Imperial College London
 
 _major_version=7.0
-_minor_version=48
+_minor_version=57
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
