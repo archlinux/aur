@@ -5,7 +5,7 @@
 
 
 pkgname='mozc'
-pkgver=2.26.4610.102
+pkgver=2.26.4632.102
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('Apache' 'BSD' 'LGPL' 'custom')
 depends=('qt5-base')
 makedepends=('bazel' 'git' 'pkgconf' 'python-six')
 conflicts=('mozc-ut-common' 'mozc-ut' 'mozc-ut2' 'mozc-ut-united' 'mozc-neologd-ut+ut2')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=c914d1d")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c")
 sha256sums=('SKIP')
 
 prepare() {
@@ -26,6 +26,9 @@ prepare() {
 
     # Fix the Qt5 include path
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
+
+    # Temp fix for the Android NDK error
+    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 }
 
 build() {
