@@ -4,7 +4,7 @@
 
 _pkgname=youtube
 pkgname=youtubedr
-pkgver=2.7.5
+pkgver=2.7.7
 pkgrel=1
 pkgdesc="Download YouTube videos"
 arch=('x86_64')
