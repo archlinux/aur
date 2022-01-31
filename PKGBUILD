@@ -2,7 +2,7 @@
 
 _npmname=svelte-language-server
 pkgname=nodejs-${_npmname}
-pkgver=0.14.19
+pkgver=0.14.20
 pkgrel=1
 pkgdesc="A language server for Svelte."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
-sha256sums=('6ee1055774d2e2ba30f88b57386fa1dd7a9eb3a62a0ed2353dddfb07d2ed6630')
+sha256sums=('79278e9762fea4f5290799d3c83a4a7a80bdaa454ca034c62c7469ee823c90a6')
 noextract=("${_npmname}-${pkgver}.tgz")
 
 package() {
