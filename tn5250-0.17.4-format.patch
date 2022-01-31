@@ -1,0 +1,39 @@
+diff -up curses/cursesterm.c.format tn5250-0.17.4/curses/cursesterm.c
+--- curses/cursesterm.c.format	2013-12-03 16:26:11.000000000 +0100
++++ curses/cursesterm.c	2013-12-03 16:26:44.000000000 +0100
+@@ -640,9 +640,9 @@ static void curses_terminal_update(Tn525
+       if(This->data->is_xterm) {
+          if (This->data->font_132!=NULL) {
+                if (tn5250_display_width (display)>100)
+-                    printf(This->data->font_132);
++                    printf("%s",This->data->font_132);
+                else
+-                    printf(This->data->font_80);
++                    printf("%s",This->data->font_80);
+          }
+ 	 printf ("\x1b[8;%d;%dt", tn5250_display_height (display)+1,
+ 	       tn5250_display_width (display));
+diff -up lib5250/sslstream.c.format tn5250-0.17.4/lib5250/sslstream.c
+--- lib5250/sslstream.c.format	2013-12-03 16:23:27.000000000 +0100
++++ lib5250/sslstream.c	2013-12-03 16:24:01.000000000 +0100
+@@ -307,7 +307,7 @@ static void ssl_log_SB_buf(unsigned char
+ 
+    if (!tn5250_logfile)
+       return;
+-   fprintf(tn5250_logfile,ssl_getTelOpt(type=*buf++));
++   fprintf(tn5250_logfile,"%s",ssl_getTelOpt(type=*buf++));
+    switch (c=*buf++) {
+       case IS:
+ 		fputs("<IS>",tn5250_logfile);
+diff -up lib5250/telnetstr.c.format tn5250-0.17.4/lib5250/telnetstr.c
+--- lib5250/telnetstr.c.format	2013-12-03 16:25:10.000000000 +0100
++++ lib5250/telnetstr.c	2013-12-03 16:25:23.000000000 +0100
+@@ -282,7 +282,7 @@ static void log_SB_buf(unsigned char *bu
+ 
+    if (!tn5250_logfile)
+       return;
+-   fprintf(tn5250_logfile,getTelOpt(type=*buf++));
++   fprintf(tn5250_logfile,"%s",getTelOpt(type=*buf++));
+    switch (c=*buf++) {
+       case IS:
+ 		fputs("<IS>",tn5250_logfile);
