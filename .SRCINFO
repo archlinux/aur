@@ -1,7 +1,7 @@
 pkgbase = guile-gash
 	pkgdesc = POSIX-compatible shell and Guile library for parsing shell scripts.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://savannah.nongnu.org/projects/gash/
 	arch = any
 	license = GPL3

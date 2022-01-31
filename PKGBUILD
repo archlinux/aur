@@ -2,7 +2,7 @@
 
 pkgname=guile-gash
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='POSIX-compatible shell and Guile library for parsing shell scripts.'
 arch=(any)
 license=(GPL3)
