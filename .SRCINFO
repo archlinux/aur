@@ -1,13 +1,13 @@
 pkgbase = flare-game
 	pkgdesc = Fantasy action RPG using the FLARE engine
-	pkgver = 1.12
-	pkgrel = 2
+	pkgver = 1.13
+	pkgrel = 1
 	url = http://www.flarerpg.org/
 	arch = any
 	license = CCPL:cc-by-sa-3.0
 	makedepends = cmake
 	depends = flare-engine
-	source = flare-game-1.12::https://github.com/flareteam/flare-game/archive/v1.12.tar.gz
-	sha256sums = 19a909f2c6e0868baae823bb491e8840d5fb3e0454f00201de8da119772e5160
+	source = flare-game-1.13::https://github.com/flareteam/flare-game/archive/v1.13.tar.gz
+	sha256sums = a0b8d8c6bf25fc7995d4be81fa5c13f5567354717235e8227b1881e81aee64ed
 
 pkgname = flare-game
