@@ -3,7 +3,7 @@
 pkgname=zrepl-bin
 _pkgname=zrepl
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
