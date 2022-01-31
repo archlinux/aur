@@ -1,21 +1,22 @@
 pkgbase = python-tikzplotlib
 	pkgdesc = Convert matplotlib figures into TikZ/PGFPlots
-	pkgver = 0.9.17
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/nschloe/tikzplotlib
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-pandas
 	checkdepends = python-pytest-randomly
-	makedepends = python-setuptools
-	depends = python>=3.8
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-install
+	depends = python>=3.7
 	depends = python-matplotlib
 	depends = python-pillow
 	depends = python-numpy
-	source = python-tikzplotlib-0.9.17.tar.gz::https://github.com/nschloe/tikzplotlib/archive/v0.9.17.tar.gz
-	source = setup.py
-	sha256sums = a42bd1a61687f322b69c3a1e01b30678bb9bd4c11a09fc1eaa5f59cb07ea9d9a
-	sha256sums = 76189f7511a9eb8dab0ccaf022097f598fa32c3026ce2c2174ea7e7c3fccc71e
+	depends = python-webcolors
+	source = python-tikzplotlib-0.10.1.tar.gz::https://github.com/nschloe/tikzplotlib/archive/v0.10.1.tar.gz
+	sha256sums = c2875e4c0dedc617813833f00da381c607f262bcb69b2b3de717cf9f3d3c5611
 
 pkgname = python-tikzplotlib
