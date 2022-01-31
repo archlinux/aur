@@ -1,4 +1,2 @@
+# Require every item to be force added
 *
-.*
-!PKGBUILD
-!.SRCINFO

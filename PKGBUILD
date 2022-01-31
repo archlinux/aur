@@ -2,8 +2,8 @@
 # Contributor: Tom Vincent <aur@tlvince.com>
 pkgname=friends
 _gemname=$pkgname
-pkgver=0.51
-pkgrel=2
+pkgver=0.55
+pkgrel=1
 pkgdesc="Spend time with the people you care about. Introvert-tested. Extrovert-approved."
 arch=('any')
 url="https://github.com/JacobEvelyn/friends"
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('ruby')
 makedepends=('rubygems')
 source=("friends"
-        "https://rubygems.org/downloads/$_gemname-$pkgver.gem"
+        "https://rubygems.org/downloads/$pkgname-$pkgver.gem"
         "https://rubygems.org/downloads/tty-screen-0.8.1.gem"
         "https://rubygems.org/downloads/unicode_utils-1.4.0.gem"
         "https://rubygems.org/downloads/unicode-display_width-2.1.0.gem"
@@ -21,8 +21,8 @@ source=("friends"
         "https://rubygems.org/downloads/paint-2.2.1.gem"
         "https://rubygems.org/downloads/gli-2.21.0.gem"
         "https://rubygems.org/downloads/chronic-0.10.2.gem")
-noextract=("${pkgname}-${pkgver}.gem"
-           "friends"
+noextract=("friends"
+           "$pkgname-$pkgver.gem"
            "tty-screen-0.8.1.gem"
            "unicode_utils-1.4.0.gem"
            "unicode-display_width-2.1.0.gem"
@@ -33,7 +33,7 @@ noextract=("${pkgname}-${pkgver}.gem"
            "gli-2.21.0.gem"
            "chronic-0.10.2.gem")
 sha512sums=('d89e54a9099cf5f85cce7f0e0e14b9cfa0d0490611ab802ae8bc70c24a69732ab39d3799a81982fb253e69aad9fc9dd8a1228d96abf4217f0d143361e5ebd36b'
-            'df94c06366194a08f3ca68c1638aaf35006d0d1998bd8424cecdcc073529f8c41180587bb3eac47b88aa149a5c2954037ddb1af2da84ffa6a3dc953f5f5cea3b'
+            'c2c032e17e9c30fefe32cecf162fdfb8e3eaef9767502b0a919bca800e48ac866319a2b716347da0edb4b382c30bd41d53395d01a19ec1eec5f2b09771e2087a'
             '47abedf2212475c81c7f84272889b8041bcd8ee1b646d94c609fe4936b43d2be2e14194e87990ecf722a8a9be7b651dbaf5d0f2d615271b12df0c6c887c8467c'
             'c7c34ada41b76ce9d06c3451451881c914903f532a555e4353d895ae52e36dea37ff7cf5ad3254fc188270514034dcd5ccd5a68fa3d65b6e2e3ad62d02bc4237'
             '5f988de4235c5fd58d7043eb5ddee8ceb8c68dbdfed334636a9aa9deea573435fa35aa630ef4e9c5ec8c34fa25ea16770d84b71c14cc69ebf2dc33703ae8a102'
@@ -45,7 +45,7 @@ sha512sums=('d89e54a9099cf5f85cce7f0e0e14b9cfa0d0490611ab802ae8bc70c24a69732ab39
             '4efaa6453a38e62f15e7286b9b62891fdf2b4363cf8bc0b1078d22ab18863bb65db46ad523801801c76c5b751e52809a769d49743ca9369ddee2be1c526c67be')
 
 package() {
-  gem install --local --no-document --no-user-install -i "$pkgdir/usr/lib/$pkgname" $pkgname-$pkgver.gem
+  gem install --local --no-document --no-user-install --install-dir "$pkgdir/usr/lib/$pkgname" $pkgname-$pkgver.gem
   rm $pkgdir/usr/lib/$pkgname/cache/*
 
   install -Dm755 -t "$pkgdir/usr/bin" friends
