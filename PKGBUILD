@@ -2,7 +2,7 @@
 
 pkgname=lbt
 _author=gardenappl
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='Command-line tools for interacting with the LBRY network'
 arch=('any')
@@ -18,4 +18,4 @@ package() {
    install -Dm755 "${srcdir}/$pkgname-v$pkgver"/lbt -t "${pkgdir}/usr/bin/"
    install -Dm644 "${srcdir}/$pkgname-v$pkgver"/lbt-open.desktop -t "${pkgdir}/usr/share/applications/"
 }
-b2sums=('5053b18619a1606422592eea1e8f8fd2d58e76b3cfe177e6a7d0c5226850f998842ddecb66b0fa7b6c84779243e81febf0467b8e3b2b89afd63194ba5c04468e')
+b2sums=('d9db218f5919470135fa83a989aa3c2b65d78ffe379c1c41bcd6012bf8809a7850739c825488855cc14877699dfe8181a24c913df2daebd320fc75002bd3e7c0')
