@@ -6,17 +6,17 @@
 pkgname=gephgui4-git
 _pkgname=gephgui4
 _basename=gephgui
-pkgver=r109.138ce4f
+pkgver=r151.01fa274
 pkgrel=1
 pkgdesc="Geph connects you with the censorship-free Internet, even when nothing else works"
 arch=('x86_64')
-url="https://github.com/geph-official/gephgui.git#branch=geph4-alpha"
+url="https://github.com/geph-official/gephgui.git#branch=master"
 license=('custom')
-depends=('libxss' 'gdk-pixbuf2' 'geph4-binder-git' 'geph4-bridge-git' 'geph4-client-git' 'geph4-exit-git' 'geph4-vpn-helper-git')
+depends=('libxss' 'gdk-pixbuf2')
 makedepends=('npm' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/geph-official/gephgui.git#branch=geph4-alpha"
+source=("git+https://github.com/geph-official/gephgui.git#branch=master"
         "$_pkgname.desktop")
 sha512sums=('SKIP'
             'a5ffba60e91d26910c70d3d591009a10a2428bec8ba55921de3043550cc69faf466574e195fae55f6d5e2db035aca7c72a10138c3cf171975b9ebc2cdb74340f')
