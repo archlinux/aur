@@ -5,10 +5,9 @@ pkgname=php74-imagick
 app_name=imagick
 ini_name="30-${app_name}.ini"
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP 7.4 extension to create and modify images using the ImageMagick library"
 arch=('x86_64')
-url="https://github.com/mkoppanen/imagick"
 license=('PHP')
 depends=('php74' 'imagemagick' 'ttf-font')
 checkdepends=('librsvg' 'ttf-dejavu')
@@ -18,8 +17,6 @@ sha512sums=('c84408e4e4a0c46d979240e06d58d264c6bb21f3b95e3d434c8a21cd808f6c495fd
 
 prepare() {
   cd "$srcdir/$app_name-$pkgver"
-  # fix imagemagick threading issues when building against php >= 7.4
- #  patch -Np1 -i "../${pkgname}-3.4.4-imagemagick_threading.patch"
   echo ";extension=$app_name" > $ini_name
   phpize74
 }
