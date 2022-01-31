@@ -16,14 +16,13 @@ groups=('pro-audio')
 depends=('atkmm' 'cairo' 'cairomm' 'fontconfig' 'gdk-pixbuf2' 'gcc-libs'
          'glibc' 'glibmm' 'gtkmm' 'libx11' 'libxml2' 'pangomm' 'soundtouch'
          'taglib')
-makedepends=('atk' 'aubio' 'boost' 'cppunit' 'curl' 'cwiid' 'dbus' 'doxygen'
-             'fftw' 'flac' 'fluidsynth' 'freetype2' 'git' 'glib2' 'graphviz'
-             'gtk2' 'harfbuzz' 'itstool' 'libarchive' 'liblo' 'liblrdf'
-             'libltc' 'libogg' 'libpulse' 'libsamplerate' 'libsndfile'
-             'libusb' 'libwebsockets' 'lilv' 'lv2' 'pango' 'readline'
-             'rubberband' 'serd' 'sord' 'sratom' 'suil' 'vamp-plugin-sdk')
-optdepends=('cwiid: Wiimote control support'
-            'harvid: video timeline'
+makedepends=('atk' 'aubio' 'boost' 'cppunit' 'curl' 'dbus' 'doxygen' 'fftw'
+             'flac' 'fluidsynth' 'freetype2' 'git' 'glib2' 'graphviz' 'gtk2'
+             'harfbuzz' 'itstool' 'libarchive' 'liblo' 'liblrdf' 'libltc'
+             'libogg' 'libpulse' 'libsamplerate' 'libsndfile' 'libusb'
+             'libwebsockets' 'lilv' 'lv2' 'pango' 'readline' 'rubberband'
+             'serd' 'sord' 'sratom' 'suil' 'vamp-plugin-sdk')
+optdepends=('harvid: video timeline'
             'libwebsockets: WebSockets control support'
             'non-session-manager: for session management'
             'xjadeo: video monitoring')
