@@ -12,6 +12,7 @@ pkgbase = guile-sdl2
 	depends = sdl2_mixer
 	source = https://files.dthompson.us/guile-sdl2/guile-sdl2-0.7.0.tar.gz
 	source = https://files.dthompson.us/guile-sdl2/guile-sdl2-0.7.0.tar.gz.asc
+	validpgpkeys = 8CCBA7F552B9CBEAE1FB29158328C7470FF1D807
 	md5sums = 65e8197638f03e0ab7765e3d2b1d380a
 	md5sums = SKIP
 
