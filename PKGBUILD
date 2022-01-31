@@ -1,9 +1,9 @@
 # Maintainer:  mrxx <mrxx at cyberhome dot at>
-# Contributors: Se7endAY, Nathan Owe <ndowens04 at gmail>
+# Contributors: Se7endAY, Nathan Owe <ndowens04 at gmail>, tamjan <tsjk at hotmail>
 
 pkgname=bozohttpd
 pkgver=20210227
-pkgrel=1
+pkgrel=2
 pkgdesc="A small and secure HTTP version 1.1 server"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.eterna.com.au/bozohttpd/"
@@ -31,15 +31,20 @@ build()
 {
 	cd "${pkgname}-${pkgver}"
 
-	cp Makefile.boot Makefile
+	mv Makefile.boot Makefile || return 1
+
 	sed -i 's/d_namlen/d_reclen/g' bozohttpd.c
 
 	# Fix php-cgi regression
 	sed -i '591d' cgi-bozo.c
+
 	# Include stdint.h
 	sed -i '/.*stdbool\.h.*/a #include <stdint.h>' bozohttpd.h
 
-	make CFLAGS= LDFLAGS=-llua CPPFLAGS="-DDO_HTPASSWD -DNO_LUA_SUPPORT -DNO_BLOCKLIST_SUPPORT -D_GNU_SOURCE" CRYPTOLIBS="-lcrypto -lssl -lcrypt" || return 1
+	# Blocklist support is for NetBSD only, hence the addition of -DNO_BLOCKLIST_SUPPORT
+	make LARGE_CFLAGS="" LOCAL_CFLAGS="" OPT="${CFLAGS}" CPPFLAGS="${CPPFLAGS} \
+		-DNO_BLOCKLIST_SUPPORT -DDO_HTPASSWD -D_GNU_SOURCE -D_DEFAULT_SOURCE" \
+		CRYPTOLIBS="-lcrypto -lssl -lcrypt" EXTRALIBS="-llua" || return 1
 }
 
 package()

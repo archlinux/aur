@@ -1,7 +1,7 @@
 pkgbase = bozohttpd
 	pkgdesc = A small and secure HTTP version 1.1 server
 	pkgver = 20210227
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eterna.com.au/bozohttpd/
 	install = bozohttpd.install
 	arch = i686
