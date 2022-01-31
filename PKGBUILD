@@ -41,9 +41,9 @@ depends=(
     boost
 )
 
-_dir="PlotJuggler-${pkgver}"
+_dir="plotjuggler-ros-plugins-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/PlotJuggler/plotjuggler-ros-plugins/archive/${pkgver}.tar.gz")
-sha256sums=('')
+sha256sums=('45f8067e4cc1793c87665ba77b84672af40d38f2a4da25e93ba1b49ab6a6b4d5')
 
 build() {
     # Use ROS environment variables.

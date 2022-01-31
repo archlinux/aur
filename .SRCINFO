@@ -30,6 +30,6 @@ pkgbase = ros-noetic-plotjuggler-ros
 	depends = qt5-websockets
 	depends = boost
 	source = ros-noetic-plotjuggler-ros-1.6.2.tar.gz::https://github.com/PlotJuggler/plotjuggler-ros-plugins/archive/1.6.2.tar.gz
-	sha256sums = 
+	sha256sums = 45f8067e4cc1793c87665ba77b84672af40d38f2a4da25e93ba1b49ab6a6b4d5
 
 pkgname = ros-noetic-plotjuggler-ros
