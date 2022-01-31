@@ -1,16 +1,17 @@
 # Maintainer: Maksim Verkhoturov (sd32@protonmail.com)
+
 pkgname=gummy-git
-pkgver=0.1.r17.gad2f5ad
+pkgver=0.1.r19.g15a13c2
 pkgrel=1
 pkgdesc="Linux brightness/temperature manager for X11"
 arch=('x86_64')
-url="https://github.com/Fushko/gummy"
+url="https://github.com/Fushko/${pkgname%-git}"
 license=('GPL3')
 depends=('libxext' 'sdbus-cpp')
 makedepends=('git' 'cmake')
-provides=("${pkgname%-git}")
+provides=("$pkgname")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/Fushko/gummy.git')
+source=("git+$url")
 md5sums=('SKIP')
 
 pkgver() {
