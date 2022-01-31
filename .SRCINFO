@@ -8,6 +8,7 @@ pkgbase = guile-redis
 	options = !strip
 	source = https://download.savannah.gnu.org/releases/guile-redis/guile-redis-2.1.2.tar.gz
 	source = https://download.savannah.gnu.org/releases/guile-redis/guile-redis-2.1.2.tar.gz.sig
+	validpgpkeys = 7CEC5511C8D057A9EF17470C54D4CC6FFC7468F4
 	md5sums = c56f2b2b2ccd948ee6a65d1c2908103e
 	md5sums = SKIP
 
