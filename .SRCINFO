@@ -1,6 +1,6 @@
 pkgbase = ardour-git
 	pkgdesc = A multichannel hard disk recorder and digital audio workstation (git version)
-	pkgver = 6.3.r55.ga4b1277f85
+	pkgver = 7.0.pre0.r2002.g866ba8b174
 	pkgrel = 1
 	url = https://ardour.org/
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = ardour-git
 	makedepends = boost
 	makedepends = cppunit
 	makedepends = curl
-	makedepends = cwiid
 	makedepends = dbus
 	makedepends = doxygen
 	makedepends = fftw
@@ -58,7 +57,6 @@ pkgbase = ardour-git
 	depends = pangomm
 	depends = soundtouch
 	depends = taglib
-	optdepends = cwiid: Wiimote control support
 	optdepends = harvid: video timeline
 	optdepends = libwebsockets: WebSockets control support
 	optdepends = non-session-manager: for session management
@@ -68,7 +66,7 @@ pkgbase = ardour-git
 	source = ardour::git+https://github.com/Ardour/ardour.git
 	source = ardour-6.2-vendor_qm-dsp.patch
 	sha256sums = SKIP
-	sha256sums = e937d80e05fd2955b537b617793c06df23804406b5af7283821ad654fa646635
+	sha256sums = 304abc95386889aaa878ea1e57233ab08d3d22a8034a7b5bb3d23aad23a8884b
 
 pkgname = ardour-git
 	depends = atkmm
@@ -122,4 +120,3 @@ pkgname = ardour-git
 	depends = libusb-1.0.so
 	depends = libvamp-hostsdk.so
 	depends = libvamp-sdk.so
-

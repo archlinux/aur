@@ -6,7 +6,7 @@
 # Contributor: Christopher Arndt <aur at chrisarndt.de>
 
 pkgname=ardour-git
-pkgver=6.3.r55.ga4b1277f85
+pkgver=7.0.pre0.r2002.g866ba8b174
 pkgrel=1
 pkgdesc="A multichannel hard disk recorder and digital audio workstation (git version)"
 arch=('x86_64')
@@ -31,7 +31,7 @@ conflicts=('ardour')
 source=("${pkgname%-*}::git+https://github.com/Ardour/ardour.git"
         'ardour-6.2-vendor_qm-dsp.patch')
 sha256sums=('SKIP'
-            'e937d80e05fd2955b537b617793c06df23804406b5af7283821ad654fa646635')
+            '304abc95386889aaa878ea1e57233ab08d3d22a8034a7b5bb3d23aad23a8884b')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-*}"
