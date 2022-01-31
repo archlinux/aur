@@ -1,0 +1,13 @@
+pkgbase = python-ifcfg
+	pkgdesc = Python cross-platform network interface discovery (ifconfig/ipconfig/ip)
+	pkgver = 0.22
+	pkgrel = 1
+	url = https://github.com/ftao/python-ifcfg
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/ftao/python-ifcfg/archive/refs/tags/releases/0.22.tar.gz
+	sha256sums = 84e81b2e6cab210b2b64bc7cc02d6e26d5e064078866dd95cf15415cc5ffeca4
+
+pkgname = python-ifcfg
