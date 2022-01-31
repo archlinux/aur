@@ -1,11 +1,10 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - A generic, simple controller manager plugin for MoveIt."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-simple-controller-manager'
-pkgver='1.0.2'
+pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-moveit-core
@@ -14,7 +13,7 @@ ros_makedepends=(ros-noetic-moveit-core
   ros-noetic-control-msgs
   ros-noetic-actionlib
   ros-noetic-catkin)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=(cmake ros-build-tools
   ${ros_makedepends[@]})
 
 ros_depends=(ros-noetic-pluginlib
@@ -24,16 +23,9 @@ ros_depends=(ros-noetic-pluginlib
   ros-noetic-roscpp)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_simple_controller_manager/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('db9c403189e6cc2ee76b0888ea0e1b3708b5791142e4ef90254469e5e6557e8a')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_plugins/moveit_simple_controller_manager"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
 
 build() {
   # Use ROS environment variables
