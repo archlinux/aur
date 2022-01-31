@@ -1,7 +1,7 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
 	pkgver = 2022.1.28
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bottlesdevs/Bottles
 	arch = x86_64
 	license = GPL3
@@ -29,7 +29,7 @@ pkgbase = bottles
 	optdepends = lib32-vulkan-icd-loader
 	optdepends = vulkan-icd-loader
 	optdepends = gamemode
-	source = bottles-2022.1.28-trento.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2022.1.28-trento.tar.gz
-	sha256sums = 727a734e1f5f7d8c71fce8d034ca42719c1a2871ae3269088001c8d626343d20
+	source = bottles-2022.1.28-trento-2.tar.gz::https://github.com/bottlesdevs/Bottles/archive/2022.1.28-trento-2.tar.gz
+	sha256sums = d042024e9b4974c9175e7b23fd6bb3d42871213bb82266a6b1d060e3990d6477
 
 pkgname = bottles
