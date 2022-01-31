@@ -4,7 +4,7 @@
 pkgbase=pyqt5-datavisualization
 pkgname=(python-pyqt5-datavisualization)
 pkgver=5.15.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Python bindings for QtDataVisualization'
 arch=(x86_64)
 url='https://www.riverbankcomputing.com/software/pyqtdatavisualization/intro'
@@ -17,6 +17,7 @@ provides=(python-pyqtdatavisualization)
 replaces=(python-pyqtdatavisualization)
 source=(https://pypi.python.org/packages/source/P/PyQtDataVisualization/PyQtDataVisualization-$pkgver.tar.gz)
 sha256sums=('8927f8f7aa70857ef00c51e3dfbf6f83dd9f3855f416e0d531592761cbb9dc7f')
+options=(debug)
 
 build() {
   cd PyQtDataVisualization-$pkgver
