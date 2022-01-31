@@ -211,6 +211,14 @@ update() {
 		;;
 
 		2|3|4) # Update files in $esp/EFI/memtest86/
+			## Check if efi partition is mounted, if not mount it
+			if ! mount | grep "$partition" | grep -q "$esp"; then
+				echo -e "ESP ${CB}$partition${CR} is not mounted, mounting..."
+				if ! mount "$partition" "$esp"; then
+					echo -e "${CE}Fail to mount $partition on $esp. Aborted.${CR}" > /dev/stderr
+					exit $CODE_FATAL
+				fi
+			fi
 			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 		;;
 	esac

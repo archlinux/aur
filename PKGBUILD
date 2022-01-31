@@ -4,7 +4,7 @@ _realname=memtest86
 pkgname=$_realname-efi
 epoch=1
 pkgver=9.4build1000
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('any')
 url="https://www.memtest86.com"
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.zip::https://github.com/X0rg/AUR-packages/raw/master/f
 	"memtest86-efi-update.hook"
 	"memtest86-efi-remove.hook")
 sha512sums=('c5a6183e2b66fe6023a7478ddfecf94dab03e99272d916fe156f05e2edcc2e70c7cd12feff474381571213bd6b07c76b78dd54d07f2db011cbe3127dac2dc222'
-            'b2a4e8da9e5ca01ef630058232b48531fcd547b2f56aafedb2e8cca9633860cfe287302296918784f1b2cb4b621782b054484d1da713cccdf635d253cbf60260'
+            '5667c8dd6bfc927c17ac69babc263e203ad963958c7c598458771eed1aca12635184cf50ee24627ce44587d818bebb2350f9c7f61a1ff84df11063cf9c66bf67'
             '947df5f141bdb00a007a796c74f862d6ca41f74b4e5b28d1a444b4b8e538114e7f404f54420508639a77e554c2477ad324570ada0462c9fd7b058ed51e0ea8d8'
             'a8936ed4a1955d69251955b824cfdfc606c374d40509a767ee4e357e746947d5bf1bd6793e5a4224733907556375bee05c0dd27f8044604f136d84c9be365d42'
             '72220e2d5a055838bc347ac0266dd41d466d60186968b21f1782062c35f47f1fab544ad313cab9fac796e597c1f0095864ef38dbce7eee00bf53c336b38b34e6')
