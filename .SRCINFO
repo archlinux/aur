@@ -1,0 +1,12 @@
+pkgbase = huawei-wmi-dkms-kbdlight-git
+	pkgdesc = Huawei WMI laptop extras driver (feat/kbdlight branch)
+	pkgver = 3.3.r12.gc142bce
+	pkgrel = 1
+	url = https://github.com/sermart1234/Huawei-WMI
+	arch = x86_64
+	license = GPLv2
+	depends = dkms
+	source = huawei-wmi::git+https://github.com/aymanbagabas/Huawei-WMI#branch=feat/kbdlight
+	sha256sums = SKIP
+
+pkgname = huawei-wmi-dkms-kbdlight-git
