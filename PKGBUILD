@@ -1,6 +1,6 @@
 pkgname=mqttui
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname}"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=("${pkgname}")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('3ee9ef58287cf82fb73bafc590bc4a73523450a7202bdeafdf7cf2ce4558e761')
+sha256sums=('f31fc2dba7f2741d386640cd3728315afb00477d90e6950edd6ed219fdb0f4dc')
 
 build() {
   cd $pkgname-$pkgver
@@ -21,9 +21,9 @@ package() {
   cd $pkgname-$pkgver
   install -Dm755 target/release/$pkgname -t "${pkgdir}/usr/bin"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 readme.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -Dm644 "completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
-  install -Dm644 "completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
-  install -Dm644 "completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
+  install -Dm644 "target/completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}.bash"
+  install -Dm644 "target/completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm644 "target/completions/_${pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
