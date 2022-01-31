@@ -1,17 +1,17 @@
-From e7441b9ca6d56e34ca368799539ab867cb315536 Mon Sep 17 00:00:00 2001
+From beba8c5a3d44b240d5e77273d71b2d7ca61046a6 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 10 Jan 2022 15:48:20 +0100
-Subject: [PATCH 3/3] archlinux-compat: Replace mbedTLS by OpenSSL for CURL
+Subject: [PATCH 2/3] archlinux-compat: Replace mbedTLS by OpenSSL for CURL
 
 ---
- plugins/libimhex/CMakeLists.txt         |  6 ++++--
- plugins/libimhex/source/helpers/net.cpp | 20 ++++++++++++--------
+ lib/libimhex/CMakeLists.txt         |  6 ++++--
+ lib/libimhex/source/helpers/net.cpp | 20 ++++++++++++--------
  2 files changed, 16 insertions(+), 10 deletions(-)
 
-diff --git a/plugins/libimhex/CMakeLists.txt b/plugins/libimhex/CMakeLists.txt
-index d2c1bd4..56dd879 100644
---- a/plugins/libimhex/CMakeLists.txt
-+++ b/plugins/libimhex/CMakeLists.txt
+diff --git a/lib/libimhex/CMakeLists.txt b/lib/libimhex/CMakeLists.txt
+index c23cd36..55d0ab6 100644
+--- a/lib/libimhex/CMakeLists.txt
++++ b/lib/libimhex/CMakeLists.txt
 @@ -82,6 +82,7 @@ endif()
  
  
@@ -20,7 +20,7 @@ index d2c1bd4..56dd879 100644
  configurePython()
  
  pkg_search_module(MAGIC libmagic>=5.39)
-@@ -155,7 +156,7 @@ endif ()
+@@ -156,7 +157,7 @@ endif ()
  add_library(libimhex SHARED ${LIBIMHEX_SOURCES})
  set_target_properties(libimhex PROPERTIES POSITION_INDEPENDENT_CODE ON)
  
@@ -29,18 +29,18 @@ index d2c1bd4..56dd879 100644
  target_link_directories(libimhex PUBLIC ${MBEDTLS_LIBRARY_DIR} ${CAPSTONE_LIBRARY_DIRS} ${MAGIC_LIBRARY_DIRS})
  
  if (APPLE)
-@@ -163,4 +164,5 @@ if (APPLE)
+@@ -164,4 +165,5 @@ if (APPLE)
      target_link_libraries(libimhex PUBLIC ${FOUNDATION})
  endif ()
  
 -target_link_libraries(libimhex PUBLIC imgui nfd magic ${CAPSTONE_LIBRARIES} LLVMDemangle microtar ${NLOHMANN_JSON_LIBRARIES} ${YARA_LIBRARIES} ${LIBCURL_LIBRARIES} ${MBEDTLS_LIBRARIES} ${FMT_LIBRARIES} ${Python_LIBRARIES} libromfs)
 +target_link_libraries(libimhex PUBLIC imgui nfd magic ${CAPSTONE_LIBRARIES} LLVMDemangle microtar
 +    ${NLOHMANN_JSON_LIBRARIES} ${YARA_LIBRARIES} ${LIBCURL_LIBRARIES} ${MBEDTLS_LIBRARIES} ${OPENSSL_LIBRARIES} ${FMT_LIBRARIES} ${Python_LIBRARIES} libromfs)
-diff --git a/plugins/libimhex/source/helpers/net.cpp b/plugins/libimhex/source/helpers/net.cpp
-index 7b304a4..2a39bec 100644
---- a/plugins/libimhex/source/helpers/net.cpp
-+++ b/plugins/libimhex/source/helpers/net.cpp
-@@ -6,7 +6,7 @@
+diff --git a/lib/libimhex/source/helpers/net.cpp b/lib/libimhex/source/helpers/net.cpp
+index af86328..f6d8b63 100644
+--- a/lib/libimhex/source/helpers/net.cpp
++++ b/lib/libimhex/source/helpers/net.cpp
+@@ -7,7 +7,7 @@
  #include <filesystem>
  #include <cstdio>
  
@@ -49,39 +49,39 @@ index 7b304a4..2a39bec 100644
  
  #include <curl/curl.h>
  #include <nlohmann/json.hpp>
-@@ -50,15 +50,19 @@ namespace hex {
+@@ -51,15 +51,19 @@ namespace hex {
      }
  
      static CURLcode sslCtxFunction(CURL *ctx, void *sslctx, void *userdata) {
--        auto* cfg = static_cast<mbedtls_ssl_config*>(sslctx);
--
--        static mbedtls_x509_crt crt;
--        mbedtls_x509_crt_init(&crt);
+-        auto *cfg = static_cast<mbedtls_ssl_config *>(sslctx);
 +        SSL_CTX *opensslctx = static_cast<SSL_CTX*>(sslctx);
  
-         auto cacert = romfs::get("cacert.pem");
--        mbedtls_x509_crt_parse(&crt, reinterpret_cast<const u8*>(cacert.data()), cacert.size());
-+        BIO *bio = BIO_new_mem_buf(reinterpret_cast<const u8*>(cacert.data()), cacert.size());
-+
+-        static mbedtls_x509_crt crt;
+-        mbedtls_x509_crt_init(&crt);
++        auto cacert = romfs::get("cacert.pem");
++        BIO *bio = BIO_new_mem_buf(reinterpret_cast<const u8 *>(cacert.data()), cacert.size());
+ 
+-        auto cacert = romfs::get("cacert.pem").string();
+-        mbedtls_x509_crt_parse(&crt, reinterpret_cast<const u8 *>(cacert.data()), cacert.size());
 +        X509 *cert = nullptr;
 +        PEM_read_bio_X509(bio, &cert, 0, nullptr);
-+
-+        X509_STORE *store = SSL_CTX_get_cert_store(opensslctx);
-+        X509_STORE_add_cert(store, cert);
  
 -        mbedtls_ssl_conf_ca_chain(cfg, &crt, nullptr);
++        X509_STORE *store = SSL_CTX_get_cert_store(opensslctx);
++        X509_STORE_add_cert(store, cert);
++
 +        X509_free(cert);
 +        BIO_free(bio);
  
          return CURLE_OK;
      }
-@@ -243,4 +247,4 @@ namespace hex {
-         return { };
+@@ -244,4 +248,4 @@ namespace hex {
+         return {};
      }
  
 -}
 \ No newline at end of file
 +}
 -- 
-2.34.1
+2.35.1
 

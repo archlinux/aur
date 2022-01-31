@@ -3,13 +3,13 @@
 
 _pkgname=ImHex
 pkgname=${_pkgname,,}
-pkgver=1.13.2
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
 arch=('x86_64')
-depends=('glfw' 'capstone' 'mbedtls' 'libssh2' 'capstone'
+depends=('glfw' 'capstone' 'mbedtls' 'libssh2'
          'python' 'freetype2' 'file' 'gtk3' 'hicolor-icon-theme' 'openssl'
          'yara' 'fmt')
 makedepends=('git' 'cmake' 'glm' 'llvm' 'nlohmann-json' 'librsvg')
@@ -17,51 +17,55 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "nativefiledialog::git+https://github.com/btzy/nativefiledialog-extended.git"
         "xdgpp::git+https://git.sr.ht/~danyspin97/xdgpp"
         "libromfs::git+https://github.com/WerWolv/libromfs"
-        0001-warnings-fix-format-security-warnings.patch
-        0002-makepkg-Remove-external-dependencies-check.patch
-        0003-archlinux-compat-Replace-mbedTLS-by-OpenSSL-for-CURL.patch
+        "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
+        0001-makepkg-Remove-external-dependencies-check.patch
+        0002-archlinux-compat-Replace-mbedTLS-by-OpenSSL-for-CURL.patch
+        0003-Fix-capstone-include-path.patch
         imhex.desktop)
 cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '958875474'
-        '2410660081'
-        '3400210263'
+        'SKIP'
+        '3961896925'
+        '4052484622'
+        '177396866'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '8f08f1d8d63ccea33268ccb21df75649b3bbb513f862f9410c68256376aba9af'
-            '23f0266303a3b2e0f651d62799aabed1f495a7e0f10cb8b308811298a3ca9447'
-            'bf9136bcce90a25a49f71a34fca33dd19290280408666239bbea01a12201a1e8'
+            'SKIP'
+            '04bf8dca14ddf7d5e21ca5b657673e2a18b61d4209945322e8cae66d1bcc7fe3'
+            '0a618afc6ddf3a7ddb8b0c692dc6f8a34b1dd1e152b411df8d1df3b96faa3d45'
+            'd831796811e42c2c3e680fff439a3543582426bc99d4556c4ab58f4c27575242'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '92294cc844b8d53ce7bf3a3fc2e3b93f4cad0b9b7b160a33967cadd5185238f30f525ae98977035dd75e2f6df072306fbe0302cfabc6cd66bc0f413a0060fcba'
-        'f6de5713a871d5a7b5976bb8d70eb2dff355a82cc2a1088b95d90b8237ca6f80b9fb58cad6ad7d3a97e1d9207ab2418181dbf6c86ec6cbd7ca144136ee67f71c'
-        '28d4610f9daed3f9e15785be4281f918636d5b7a93bdd1cb32c0d4d52d1f76ab225234a48c5c498a04e7c1271b56e090f7d665ac160dc1bf22dcccbc591a2e83'
+        'SKIP'
+        '8bbbb346abfab740e102720ba84eca9b8b3dc7925874d4623042a2d027d6b7644592e118c4f5ade8498f3232cc9bf393da208a97492b5a5de5d02a393be1f40e'
+        '3b488502cc454f1daebe30ecf9d152da925c8416ffe6ee2d85fe74f419de8cb5f0e3f074938de13f3353f7bc1ec7036f882b6b9a549cf206dd47db4593372316'
+        'bc181d76e20b5365580da9da796d1ca955b441dc2a53bb79d81bd2a5344343b19e16b5512e188604599fc4a587d5a6b38f38aebad95b8e744794053250f395c1'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
   cd "$pkgname"
 
   git submodule init
-  for name in nativefiledialog xdgpp libromfs; do
-    git config submodule.external/$name.url "$srcdir/$name"
+  for name in nativefiledialog xdgpp libromfs capstone; do
+    git config submodule.lib/external/$name.url "$srcdir/$name"
   done
-  for name in yara/yara fmt curl capstone; do
-    git config --remove-section submodule.external/$name
+  for name in yara/yara fmt curl; do
+    git config --remove-section submodule.lib/external/$name
   done
   git submodule update
 
   git apply \
-    "$srcdir/0001-warnings-fix-format-security-warnings.patch" \
-    "$srcdir/0002-makepkg-Remove-external-dependencies-check.patch" \
-    "$srcdir/0003-archlinux-compat-Replace-mbedTLS-by-OpenSSL-for-CURL.patch"
+    "$srcdir/0001-makepkg-Remove-external-dependencies-check.patch" \
+    "$srcdir/0002-archlinux-compat-Replace-mbedTLS-by-OpenSSL-for-CURL.patch" \
+    "$srcdir/0003-Fix-capstone-include-path.patch"
 }
 
 build() {
@@ -78,9 +82,8 @@ build() {
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
     -D USE_SYSTEM_CURL=ON \
-    -D USE_SYSTEM_CAPSTONE=ON \
     -D USE_SYSTEM_NLOHMANN_JSON=ON \
-    -D USE_SYSTEM_CAPSTONE=ON \
+    -D USE_SYSTEM_CAPSTONE=OFF \
     -D PROJECT_VERSION="$pkgver"
   cmake --build build
 }
@@ -90,7 +93,7 @@ package() {
   install -Dm0755 build/imhex "$pkgdir/usr/bin/imhex"
 
   # Shared lib and plugins
-  install -Dm0755 -t "$pkgdir/usr/lib" build/plugins/libimhex/libimhex.so
+  install -Dm0755 -t "$pkgdir/usr/lib" build/lib/libimhex/libimhex.so
 
   for plugin in builtin; do
     install -Dm0755 -t "$pkgdir/usr/share/imhex/plugins" "build/plugins/$plugin/$plugin.hexplug"
@@ -98,17 +101,12 @@ package() {
 
   # Desktop file(s)
   install -Dm0644 -t "$pkgdir/usr/share/applications" imhex.desktop
-  install -Dm0644 "$pkgname/res/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/imhex.svg"
+  install -Dm0644 "$pkgname/resources/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/imhex.svg"
   for size in 32 48 64 128 256; do
     install -dm0755 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps"
     rsvg-convert -a -f png -w $size -o "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/imhex.png" \
-      "$pkgname/res/icon.svg"
+      "$pkgname/resources/icon.svg"
   done
-
-  install -Dm0644 "$pkgname/res/icon.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/imhex.svg"
-
-  # Misc files
-  install -Dm0644 -t "$pkgdir/usr/share/imhex/resources" "$pkgname/res/resources"/*
 
   # License
   install -Dm0644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
