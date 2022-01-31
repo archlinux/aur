@@ -2,7 +2,7 @@
 
 pkgname=gti-git
 pkgver=v1.7.0.13.g69bd9a7
-pkgrel=1
+pkgrel=2
 pkgdesc='A silly git launcher'
 arch=('i686' 'x86_64')
 url='http://r-wos.org/hacks/gti'
@@ -18,6 +18,11 @@ pkgver() {
   git describe --always | sed 's|-|.|g'
 }
 
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  sed '/Copyright/,$! d' README.md > "$srcdir/LICENSE"
+}
+
 build() {
   cd "$srcdir/${pkgname%-git}"
   make
@@ -25,9 +30,8 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  tail --lines=10 README.md > LICENSE
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 gti "$pkgdir/usr/bin/gti"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
