@@ -1,0 +1,10 @@
+pkgbase = ksmbd-module-meta
+	pkgdesc = Meta package providing KSMBD-MODULE for the official linux package
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = linux
+	provides = KSMBD-MODULE
+
+pkgname = ksmbd-module-meta
