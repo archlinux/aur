@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl-dev
-pkgver=r5816.b34bb8a50
+pkgver=r6183.f89d5d932
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
@@ -16,6 +16,9 @@ optdepends=('cuda: for tools, benchmarks and examples built with CUDA'
             'python-numpy: for Python bindings')
 source=("git+https://mmg-gitlab.fjfi.cvut.cz/gitlab/tnl/$_pkgname.git")
 md5sums=('SKIP')
+
+# LTO does not work with nvcc
+options+=(!lto)
 
 pkgver() {
   cd "$_pkgname"

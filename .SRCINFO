@@ -1,6 +1,6 @@
 pkgbase = tnl-git
 	pkgdesc = An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters
-	pkgver = r5816.b34bb8a50
+	pkgver = r6183.f89d5d932
 	pkgrel = 1
 	url = https://tnl-project.org/
 	arch = x86_64
@@ -24,6 +24,7 @@ pkgbase = tnl-git
 	optdepends = cuda: for tools, benchmarks and examples built with CUDA
 	optdepends = python: for Python bindings
 	optdepends = python-numpy: for Python bindings
+	options = !lto
 	source = git+https://mmg-gitlab.fjfi.cvut.cz/gitlab/tnl/tnl-dev.git
 	md5sums = SKIP
 
