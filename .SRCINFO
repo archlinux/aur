@@ -1,7 +1,7 @@
 pkgbase = octave-strings
 	pkgdesc = Additional functions for manipulation and analysis of strings
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://octave.sourceforge.io/strings
 	install = octave-strings.install
 	arch = any
