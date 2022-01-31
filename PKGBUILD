@@ -5,8 +5,12 @@
 
 pkgbase=geph4-git
 _pkgbase=geph4
-pkgname=("geph4-client-git")
-pkgver=r539.884495e
+pkgname=('geph4-binder-git'
+         'geph4-bridge-git'
+         'geph4-client-git'
+         'geph4-exit-git'
+         'geph4-vpn-helper-git')
+pkgver=r325.3fb7eb9
 pkgrel=2
 pkgdesc="A command-line Geph4 toolset"
 arch=('x86_64')
@@ -39,21 +43,67 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}"/"${_pkgbase}"/
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
-    cd "${srcdir}"
-    git clone https://github.com/geph-official/sosistab
 }
 
 build() {
     cd "${srcdir}"/"${_pkgbase}"/
-    cargo build --release
+    cargo build --release --manifest-path=geph4-binder/Cargo.toml
+    cargo build --release --manifest-path=geph4-bridge/Cargo.toml
+    cargo build --release --manifest-path=geph4-client/Cargo.toml
+    cargo build --release --manifest-path=geph4-exit/Cargo.toml
+    cargo build --release --manifest-path=geph4-vpn-helper/Cargo.toml
 }
 
-package() {
+package_geph4-binder-git() {
+    provides=('geph4-binder')
+    conflicts=('geph4-binder')
+    backup=('etc/default/geph4-binder')
     cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-binder-git/LICENSE
+    install -Dm 755 target/release/geph4-binder -t "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}"/geph4-binder.default "${pkgdir}"/etc/default/geph4-binder
+    install -Dm 644 "${srcdir}"/geph4-binder.service -t "${pkgdir}"/usr/lib/systemd/system/
+}
 
-    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4/LICENSE
+package_geph4-bridge-git() {
+    provides=('geph4-bridge')
+    conflicts=('geph4-bridge')
+    backup=('etc/default/geph4-bridge')
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-bridge-git/LICENSE
+    install -Dm 755 target/release/geph4-bridge -t "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}"/geph4-bridge.default "${pkgdir}"/etc/default/geph4-bridge
+    install -Dm 644 "${srcdir}"/geph4-bridge.service -t "${pkgdir}"/usr/lib/systemd/system/
+}
+
+package_geph4-client-git() {
+    provides=('geph4-client')
+    conflicts=('geph4-client')
+    backup=('etc/default/geph4-client')
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-client-git/LICENSE
     install -Dm 755 target/release/geph4-client -t "${pkgdir}"/usr/bin/
-    install -Dm 644 "${srcdir}"/geph4-client.default -t "${pkgdir}"/etc/default/geph4-client
+    install -Dm 644 "${srcdir}"/geph4-client.default "${pkgdir}"/etc/default/geph4-client
     install -Dm 644 "${srcdir}"/geph4-client.service -t "${pkgdir}"/usr/lib/systemd/system/
+}
+
+package_geph4-exit-git() {
+    provides=('geph4-exit')
+    conflicts=('geph4-exit')
+    backup=('etc/default/geph4-exit')
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-exit-git/LICENSE
+    install -Dm 755 target/release/geph4-exit -t "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}"/geph4-exit.default "${pkgdir}"/etc/default/geph4-exit
+    install -Dm 644 "${srcdir}"/geph4-exit.service -t "${pkgdir}"/usr/lib/systemd/system/
+}
+
+package_geph4-vpn-helper-git() {
+    depends+=('geph4-client-git')
+    provides=('geph4-vpn-helper')
+    conflicts=('geph4-vpn-helper')
+    cd "${srcdir}"/"${_pkgbase}"/
+    install -Dm 644 LICENSE.md "${pkgdir}"/usr/share/licenses/geph4-vpn-helper-git/LICENSE
+    install -Dm 755 target/release/geph4-vpn-helper -t "${pkgdir}"/usr/bin/
+    install -Dm 644 "${srcdir}"/geph4-vpn-helper.service -t "${pkgdir}"/usr/lib/systemd/system/
 }
