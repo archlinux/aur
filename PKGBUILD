@@ -1,11 +1,10 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - Generates a configuration package that makes it easy to use MoveIt!."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-setup-assistant'
-pkgver='1.0.2'
+pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-srdfdom
@@ -14,7 +13,7 @@ ros_makedepends=(ros-noetic-srdfdom
   ros-noetic-moveit-ros-planning
   ros-noetic-moveit-resources
   ros-noetic-moveit-ros-visualization)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=(cmake ros-build-tools
   ${ros_makedepends[@]}
   yaml-cpp)
 
@@ -26,16 +25,9 @@ ros_depends=(ros-noetic-srdfdom
 depends=(${ros_depends[@]}
   yaml-cpp)
 
-# Git version (e.g. for debugging)
-# _tag=release/noetic/moveit_setup_assistant/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/moveit-release.git"#tag=${_tag})
-# sha256sums=('44b21865d318f1cfb13846b72df494b6eb461f814dec78af71f9e7eb6981f537')
-
-# Tarball version (faster download)
 _dir="moveit-${pkgver}/moveit_setup_assistant"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('b8194308c57dbe34bbb729cfccb30d1113af3a54a90a2cfb49482142d1044ea4')
+sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
 
 build() {
   # Use ROS environment variables
