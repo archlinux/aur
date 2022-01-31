@@ -2,7 +2,7 @@ pkgdesc="ROS - The move_group node for MoveIt."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-ros-move-group'
-pkgver='1.0.5'
+pkgver='1.1.8'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -37,7 +37,7 @@ depends=(
 
 _dir="moveit-${pkgver}/moveit_ros/move_group"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a')
+sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
 
 build() {
     # Use ROS environment variables
