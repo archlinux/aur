@@ -1,8 +1,9 @@
 pkgbase = python-deepl
 	pkgdesc = DeepL language translation API
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deeplcom/deepl-python
+	install = deepl.install
 	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
