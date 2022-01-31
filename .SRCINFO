@@ -1,6 +1,6 @@
 pkgbase = stargate
 	pkgdesc = A digital audio workstation (DAW) with a powerful pattern-based workflow
-	pkgver = 22.01.1
+	pkgver = 22.02.1
 	pkgrel = 1
 	url = https://stargateaudio.github.io/
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = stargate
 	optdepends = ffmpeg
 	optdepends = vorbis-tools
 	optdepends = python-pyqt5: qt5 backend
-	source = https://github.com/stargateaudio/stargate/archive/refs/tags/release-22.01.1.tar.gz
-	sha256sums = f3c776a6ffa070647a339a029e7513bc2287b032cd6038e01cf7b6226eb4cceb
+	source = https://github.com/stargateaudio/stargate/archive/refs/tags/release-22.02.1.tar.gz
+	sha256sums = c29b4400f91c8db8d0f61c234f50d24a05f632bd2bf94ae5a395f1142ff6a184
 
 pkgname = stargate
