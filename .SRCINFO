@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.46.0
+	pkgver = 2.47.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = o
 	makedepends = go
 	depends = vte3
 	optdepends = asciidoctor: for writing man pages
+	optdepends = agda: for compiling Agda
 	optdepends = astyle: for formatting C#
 	optdepends = autopep8: for formatting Python
 	optdepends = brittany: for formatting Haskell
@@ -40,7 +41,7 @@ pkgbase = o
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=e8e7d6874beeacac6715a0711972bb81f83ccc83
+	source = git+https://github.com/xyproto/o#commit=9618ca29121b89079b5033901f22e050b9b9a942
 	b2sums = SKIP
 
 pkgname = o
