@@ -2,14 +2,14 @@
 # https://github.com/avbop/lyluatex-aur
 pkgbase=lyluatex-git
 pkgname=$pkgbase
-pkgver=r654.1008ec7
-pkgrel=4
+pkgver=r763.157ccf6
+pkgrel=1
 pkgdesc="Include lilypond scores in LuaLaTeX files."
 url=https://github.com/jperon/lyluatex
 arch=("any")
 license=("MIT")
 makedepends=("git")
-depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra" "lilypond")
+depends=("texlive-core" "texlive-fontsextra" "texlive-bin" "texlive-formatsextra" "texlive-latexextra" "lilypond" "luaoptions-git")
 conflicts=("texlive-music")
 source=("$pkgbase::git+https://github.com/jperon/lyluatex.git")
 sha256sums=("SKIP")
