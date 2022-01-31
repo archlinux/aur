@@ -2,14 +2,14 @@
 
 pkgname=processing4-git
 pkgver=4.0b4.r65.g5fb933e29
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
 license=(GPL LGPL)
 provides=('processing' 'processing4')
 conflicts=('processing')
-depends=( 'jdk-openjdk' 'java-openjfx')
+depends=('java-environment-openjdk=17')
 makedepends=('ant' 'gendesk' 'rsync' 'unzip')
 options=(!strip)
 source=(disable_update_check.patch
