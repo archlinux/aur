@@ -2,8 +2,8 @@
 # Contributor: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=1.4.0
-pkgrel=5
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('any')
@@ -11,22 +11,18 @@ license=('custom')
 depends=('crypto++' 'zlib' 'sqlite' 'openssl' 'curl' 'c-ares' 'freeimage' 'libsodium'
          'readline' 'libmediainfo' 'pcre' 'libuv')
 makedepends=('git' 'autoconf')
-_sdkhash="2337aca38daaca6deedd04d8ea400293503f00ff"
+_sdkhash="f6438d55fa6b1ef54eb2b8832a1da7502a56df13"
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
-    "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz"
-    "remove-dupe-am-init-automake.patch")
-sha512sums=('f2695e70a01e94e3d66e74af7d4fe9be5a1c111db96de815d94843e6cc1a623e113a7e8961aab5fc224381a829de719994cf1394c8ee9c58f59c425433557fe9'
-            'f980a2fd2b402aac74a3f739e6dbfe73372a5a5fd5aac18c9f9cdb0d70d0d1d797266bf98759c83ceba3ca587c2d01f95b91ea02dbd07313508c716e6ea9857d'
-            '7d372039346969a3518fff5b81ec68a2a44a467b4bfc3476aa5173573ab6a28cc74234f130d7363997db21ab637de81822926eecfe95ea69138ab919f7085645')
+    "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
+sha512sums=('65a07becbcbca5b7dfe0916a92fd68522f640ae3b33b1564b954ff405b72bd4565e062e018c4c4cef6dc892f2850511d7d627c195d2b8fe39e50842f7e25b3eb'
+            '8072885bf1f9b8e4de57eeac183ceaec3414289cbd7644fce64d270a98b23f2ff1825dcecb6ed50e1e8e88c92947c6128396bcf781ac72488c073ea1961ce4e9')
 
 prepare() {
   cd "MEGAcmd-${pkgver}_Linux"
 
   rm -r sdk
   ln -sf "../sdk-${_sdkhash}" sdk
-
-  patch --forward --strip=1 --input="${srcdir}/remove-dupe-am-init-automake.patch"
 }
 
 build() {
