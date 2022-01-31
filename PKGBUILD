@@ -1,7 +1,7 @@
 # Maintainer: Robin H. <robin at blckct dot io>
 
 pkgname=sonixd-appimage
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="The latest stable AppImage of Sonixd - a full-featured Subsonic API compatible cross-platform desktop client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse2')
 options=(!strip) # necessary otherwise the AppImage file in the package is truncated
 _filename=Sonixd-$pkgver.AppImage
 source=("${url}/releases/download/v${pkgver}/${_filename}")
-sha256sums=('1b7a8d76f2f4c129c6ddf6164fb7723e70258490329f6b7104c626bd198876e4')
+sha256sums=('ac63c43e78c5c30de8b6339ff569c7430fea3c006de76c154b8aee429c5e900b')
 INSTALL_PATH="/opt/${pkgname}/${_filename}"
 
 
