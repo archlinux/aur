@@ -1,6 +1,6 @@
 pkgbase = cider-git
 	pkgdesc = Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch.
-	pkgver = 1.0.0
+	pkgver = 1.1.0.1527.7a7a50b
 	pkgrel = 1
 	url = https://github.com/CiderApp/Cider.git
 	arch = armv7h
@@ -15,7 +15,7 @@ pkgbase = cider-git
 	optdepends = libnotify: Playback notifications
 	provides = cider
 	conflicts = cider
-	source = git+https://github.com/CiderApp/Cider.git
+	source = git+https://github.com/CiderApp/Cider.git#branch=develop
 	source = Cider.desktop
 	sha256sums = SKIP
 	sha256sums = 8a8d3aebe1b415fd71d49db1e6d4cfd5470c69c8999ccda20d38b531d0583507

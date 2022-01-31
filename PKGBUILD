@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.1.0.1435.6f35ab6
+pkgver=1.1.0.1527.7a7a50b
 pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
@@ -14,7 +14,7 @@ optdepends=('libnotify: Playback notifications')
 provides=('cider')
 conflicts=('cider')
 source=(
-    "git+https://github.com/CiderApp/${_pkgname}.git"
+    "git+https://github.com/CiderApp/${_pkgname}.git#branch=develop"
     "Cider.desktop"
 )
 sha256sums=('SKIP'
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    git checkout develop
+
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
     yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
 
@@ -52,9 +52,9 @@ package() {
 
     echo "Packaging : [Desktop Shortcut] | Icon | Build Files | Other Files | Done"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
     echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Done"
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-
 
     echo "Packaging : Desktop Shortcut | Icon | [Build Files] | Other Files | Done"
     install -d "$pkgdir/opt/"
