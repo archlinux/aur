@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://github.com/0x192/universal-android-debloater"
 license=('GPL3')
 depends=('android-tools' 'fontconfig' 'vulkan-icd-loader')
-provides=('universal-android-debloater-bin')
-conflicts=('universal-android-debloater-opengl-bin')
+provides=('universal-android-debloater')
+conflicts=('universal-android-debloater')
 source=("$url/releases/download/$pkgver/uad_gui-linux.tar.gz"
         "uad_gui.desktop"
         "uad_gui-linux.tar.gz.sig")
