@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david at tellus dot space>
 
 pkgname=trello-cli
-pkgver=0.3.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Trello CLI tool'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 provides=('trello')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha512sums=('53606cc12ead1b4c525e813ae1c8414d35563cd1460215f9e20dffccd106959b834e3d48bbb1051952d6ab1500f05eb7a6b75a7308f5ddf2af1adc12d10fe673')
+sha512sums=('2bb3a9373ef2d553c7cdd370953910d935b354e36bd263508e8496a0a0dad9811f10a1b092cf1f363382d82ad18dae8915270348fa67aeb30a700c56a4e759d2')
 
 package() {
   cd $srcdir
