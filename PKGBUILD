@@ -5,7 +5,7 @@
 
 pkgname=libopenshot
 pkgver=0.2.7
-pkgrel=7
+pkgrel=8
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=(x86_64)
 url="https://github.com/openshot/libopenshot"
@@ -13,7 +13,7 @@ license=(LGPL3)
 # TODO: package cppzmq and resvg
 depends=(gcc-libs glibc libmagick opencv protobuf python qt5-base
 qt5-multimedia zeromq)
-makedepends=(catch2 cmake doxygen ffmpeg jsoncpp libopenshot-audio swig
+makedepends=(catch2 cmake doxygen ffmpeg4.4 jsoncpp libopenshot-audio swig
 unittestpp x264)
 provides=(libopenshot.so)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz")
@@ -25,6 +25,7 @@ build() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   export PYTHON_LIBRARIES="/usr/lib/libpython3.so"
   export PYTHON_INCLUDE_DIRS="/usr/include/python${python_version}"
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig"
   cmake -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_BUILD_TYPE='None' \
         -DENABLE_RUBY=OFF \
