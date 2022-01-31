@@ -1,7 +1,7 @@
-From 8288cead3dc58ee1f6614f2ac4e37691b6bee23d Mon Sep 17 00:00:00 2001
+From 29b7ab56439379e00d805a93f36c81ee416100a1 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 31 Jan 2022 16:31:07 +0100
-Subject: [PATCH 3/3] Fix capstone include path.
+Subject: [PATCH 3/3] Fix capstone include path
 
 ---
  lib/libimhex/include/hex/helpers/disassembler.hpp | 6 +++---
