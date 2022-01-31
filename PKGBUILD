@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Parser for Semantic Robot Description Format (SRDF)."
 url='https://wiki.ros.org/srdfdom'
 
 pkgname='ros-noetic-srdfdom'
-pkgver='0.5.1'
+pkgver='0.6.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=5
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-noetic-urdfdom-py
@@ -14,7 +12,7 @@ ros_makedepends=(ros-noetic-urdfdom-py
   ros-noetic-catkin
   ros-noetic-cmake-modules
   ros-noetic-rostest)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=(cmake ros-build-tools
   ${ros_makedepends[@]}
   boost
   console-bridge
@@ -30,7 +28,7 @@ depends=(${ros_depends[@]}
 
 _dir="srdfdom-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/srdfdom/archive/${pkgver}.tar.gz")
-sha256sums=('98d585667906da2485dfad67af3ee5df4caab9a5cd9faf5e794c06357a87a9cf')
+sha256sums=('7217de1f53f0723840822179a765dbd41c7409d8477a4667918269ab4432a39e')
 
 build() {
   # Use ROS environment variables

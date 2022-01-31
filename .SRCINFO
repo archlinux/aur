@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-srdfdom
 	pkgdesc = ROS - Parser for Semantic Robot Description Format (SRDF).
-	pkgver = 0.5.1
-	pkgrel = 5
+	pkgver = 0.6.3
+	pkgrel = 1
 	url = https://wiki.ros.org/srdfdom
 	arch = i686
 	arch = x86_64
@@ -25,8 +25,7 @@ pkgbase = ros-noetic-srdfdom
 	depends = console-bridge
 	depends = tinyxml
 	depends = urdfdom-headers
-	source = ros-noetic-srdfdom-0.5.1.tar.gz::https://github.com/ros-planning/srdfdom/archive/0.5.1.tar.gz
-	sha256sums = 98d585667906da2485dfad67af3ee5df4caab9a5cd9faf5e794c06357a87a9cf
+	source = ros-noetic-srdfdom-0.6.3.tar.gz::https://github.com/ros-planning/srdfdom/archive/0.6.3.tar.gz
+	sha256sums = 7217de1f53f0723840822179a765dbd41c7409d8477a4667918269ab4432a39e
 
 pkgname = ros-noetic-srdfdom
-
