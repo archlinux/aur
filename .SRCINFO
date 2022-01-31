@@ -1,7 +1,7 @@
 pkgbase = kcc
 	pkgdesc = Kindle Comic Converter converts comic files or folders to ePub or Panel View MOBI
 	pkgver = 5.5.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ciromattia/kcc
 	arch = any
 	license = ISC
