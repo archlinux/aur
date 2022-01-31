@@ -17,7 +17,6 @@ sha256sums=('7e70af095a46874cdb86ee1364262bcb58094e4e47bef21cbd91e07ad7d467a7')
 build() {
 	cd "agnpy-$pkgver"
 	python -m build --wheel --skip-dependency-check --no-isolation
-	# python setup.py build
 }
 
 # check() {
@@ -29,7 +28,6 @@ package() {
 	export PYTHONHASHSEED=0
 	cd "agnpy-$pkgver"
 	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
-	# python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
