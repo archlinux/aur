@@ -2,7 +2,7 @@
 _base=perfplot
 pkgname=python-${_base}
 pkgdesc="Performance plots for Python code snippets"
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -11,7 +11,7 @@ depends=(python-matplotx python-rich)
 makedepends=(python-build python-flit-core python-install)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('983edb8598f4888031579a32c2951a5e81aadfaa8826c200de2ec6f4d07c3325b1f1dcbca06dc3ab6131904e7824b844f88579aa540707e8df4b5f202c475e80')
+sha512sums=('bb83ac9f1756108b9191daa392e8453176e3ab1d0e3a4019fcae5eab760add655bbd79d7e8ba4ba9ca28df220d3829bc8dfd627307875757fe653396ec27f03b')
 
 build() {
   cd "${_base}-${pkgver}"
