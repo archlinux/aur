@@ -5,7 +5,7 @@
 
 pkgname=gauche
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
@@ -17,7 +17,8 @@ b2sums=(SKIP)
 
 build() {
   cd $pkgname
-  export BUILD_GOSH=/usr/bin/gosh
+  BUILD_GOSH=/usr/bin/gosh
+  CFLAGS+=' -ffat-lto-objects -w'
   ./DIST gen
   ./configure --prefix=/usr --with-slib=/usr/share/slib
   make
