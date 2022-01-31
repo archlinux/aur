@@ -1,0 +1,3 @@
+#!/bin/sh
+
+GEM_HOME=/usr/lib/friends ruby /usr/lib/friends/bin/friends
