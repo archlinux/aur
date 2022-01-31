@@ -1,9 +1,9 @@
-# Maintainer: xerus <27f at pm dot me>
+# Maintainer: xeruf <27jf at pm dot me>
 
 _pkgname='synct'
 pkgname="${_pkgname}-git"
-pkgver=r2.118e94a
-pkgrel=2
+pkgver=r6.21e6e8b
+pkgrel=1
 pkgdesc='A POSIX shell client for the Syncthing REST API with personal idiosyncracies'
 arch=('any')
 url="https://github.com/xeruf/${_pkgname}"
