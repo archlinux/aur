@@ -2,7 +2,7 @@
 
 pkgname=luks-tpm2
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to manage LUKS keys sealed by a TPM 2.0"
 arch=('any')
 url="https://github.com/electrickite/${pkgname}"
@@ -20,7 +20,7 @@ optdepends=('tpm_futurepcr: To pre-compute kernel PCR values')
 source=("https://github.com/electrickite/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.hook")
 sha1sums=('3c446f7a8796abc9552c7402c03343f7a52e20f9'
-          '6156622b538d8f78d2930bc85e91d3bfee5ebfb6')
+          'e4b308b4e789d0ca9f1659b22ad0cd9193749558')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
