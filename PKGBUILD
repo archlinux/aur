@@ -1,4 +1,5 @@
 # Maintainer: Alexandre Bancel <gimmeapill at gmail dot com>
+# Contributor: Oliver Friedrich <olifriedrich at gmail dot com>
 
 pkgname='tonelib-metal-bin'
 pkgver=1.0.0
@@ -8,7 +9,7 @@ arch=('x86_64')
 filename="ToneLib-Metal-amd64.deb"
 license=('custom')
 url="https://tonelib.net/tonelib-metal"
-depends=('gtk3' 'glib2' 'desktop-file-utils' 'alsa-lib' 'harfbuzz' 'fribidi' 'pango' 'freetype2')
+depends=('gtk3' 'glib2' 'desktop-file-utils' 'fribidi' 'pango')
 optdepends=('jack: JACK output')
 source=("https://www.tonelib.net/download/${filename}")
 sha256sums=('c2d5c5a336016d2103d8bd43587cbc8c2f2f9ce852d994399413e5b50a61ce36')
