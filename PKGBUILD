@@ -1,6 +1,6 @@
 pkgname=mqttui-bin
-pkgver=0.13.0
-pkgrel=4
+pkgver=0.14.0
+pkgrel=1
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/EdJoPaTo/${pkgname/-bin/}"
@@ -14,10 +14,10 @@ source_aarch64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-a
 source_armv6h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-arm-unknown-linux-gnueabihf.tar.gz")
 source_armv7h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums_x86_64=('1b2d4f4dc6a4560a8bb905e7c6a7584e4bb1605b350b2e921aa2ec6e80216f28')
-sha256sums_aarch64=('9cb9437d9c03cfb022db7b303e2cfe775ec4bb0c0e55deb0c9228c8dae7e2e75')
-sha256sums_armv6h=('4a49d1a4484f7c3e7ba9a787dc8f63d714d0f92f68277c869dbb289dea53b485')
-sha256sums_armv7h=('7f48695ff922783046aacc65fb96ca3cd9f9a37bb922da760c51d84cc8015918')
+sha256sums_x86_64=('0798bf439fb860fcde046c251700cb8833b3c7a71503e965bd66e1c84b788e87')
+sha256sums_aarch64=('9122ce922aae9b55ee26d67ae3e553d122f646c0c7da5f7905b000538b780794')
+sha256sums_armv6h=('266e4b8e4026fa2ab5e1e66abffeba7fe5850dde1a220ee6367afc62ae09e792')
+sha256sums_armv7h=('d594c957e61175d3c8074eb4ebde20cce04667fb8f2816b1486bb41f32750ea5')
 
 package() {
   install -Dm755 "${pkgname/-bin/}" "${pkgdir}/usr/bin/${pkgname/-bin/}"
