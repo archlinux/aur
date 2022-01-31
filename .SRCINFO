@@ -1,0 +1,15 @@
+pkgbase = docker-cli-bin
+	pkgdesc = Docker - CLI utility only, installed from static binary on docker.com
+	pkgver = 20.10.12
+	pkgrel = 1
+	url = https://docs.docker.com/engine/install/binaries/#install-static-binarie
+	arch = x86_64
+	license = Apache
+	depends = glibc
+	provides = docker
+	conflicts = docker
+	conflicts = podman-docker
+	source = docker-cli-bin-20.10.12.tar.gz::https://download.docker.com/linux/static/stable/x86_64/docker-20.10.12.tgz
+	sha512sums = 90c3ab8c465bfa6fa51e9e77cf5257ff4bf139723eeb4878afbf294e71a2f2f13558840708e392ff24f8b8853c519938013d4dff8d50b17d66ca0eeb6a1b3c1a
+
+pkgname = docker-cli-bin
