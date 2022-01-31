@@ -1,8 +1,8 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=nx-software-center
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Graphical front end to manage AppImage applications built with MauiKit"
 arch=(x86_64)
 url="https://github.com/Nitrux/nx-software-center"

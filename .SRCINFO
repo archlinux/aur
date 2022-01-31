@@ -1,7 +1,7 @@
 pkgbase = nx-software-center
 	pkgdesc = Graphical front end to manage AppImage applications built with MauiKit
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/Nitrux/nx-software-center
 	arch = x86_64
 	license = LGPL2.1
@@ -12,7 +12,7 @@ pkgbase = nx-software-center
 	depends = mauikit-filebrowsing
 	depends = mauikit-imagetools
 	depends = libappimage
-	source = git+https://github.com/Nitrux/nx-software-center.git#tag=v1.0.0
+	source = git+https://github.com/Nitrux/nx-software-center.git#tag=v1.0.1
 	sha256sums = SKIP
 
 pkgname = nx-software-center
