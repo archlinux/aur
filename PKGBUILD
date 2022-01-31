@@ -1,6 +1,7 @@
-# Maintainer: Samo Turk <samo.turk@gmail.com> 
+# Old Maintainer: Samo Turk <samo.turk@gmail.com>
+# Maintainer: Hector Mtz-Seara <hseara # gmail.com>
 pkgname=rdkit
-pkgver=2019_09_3
+pkgver=2021_09_4
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64" "armv7h")
@@ -9,13 +10,15 @@ license=('BSD')
 depends=(python python-numpy python-cairocffi python-pillow boost boost-libs sqlite cairo eigen)
 makedepends=('cmake>=3.1')
 source=("https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz")
-sha256sums=('88bbc298eb6c17584471b17a34e202b1da3d59d92ea5b6b6dcda635b739f76f2')
+sha256sums=('ce192e85bbdc1dcf24d327197229099c8625ee20ef022fcbd980791fdbfc7203')
 conflicts=('rdkit-python2' 'rdkit-git')
 provides=(rdkit)
 
+
+
 build() {
   cd ${srcdir}/${pkgname}-Release_${pkgver}
-
+  sed -i 's/23ed3f833c1ae0adb141a26b4a30d73e/850b0df852f1cda4970887b540f8f333/' ${srcdir}/${pkgname}-Release_${pkgver}/Code/GraphMol/MolDraw2D/CMakeLists.txt
   mkdir -p build
   cd build
 
