@@ -3,7 +3,7 @@
 pkgname=friends
 _gemname=$pkgname
 pkgver=0.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Spend time with the people you care about. Introvert-tested. Extrovert-approved."
 arch=('any')
 url="https://github.com/JacobEvelyn/friends"
@@ -32,7 +32,7 @@ noextract=("friends"
            "paint-2.2.1.gem"
            "gli-2.21.0.gem"
            "chronic-0.10.2.gem")
-sha512sums=('d89e54a9099cf5f85cce7f0e0e14b9cfa0d0490611ab802ae8bc70c24a69732ab39d3799a81982fb253e69aad9fc9dd8a1228d96abf4217f0d143361e5ebd36b'
+sha512sums=('09297ce841b0c424c965b5098e829e6ab2af5cdec2e545b970a3e5bcd10f374588a668b78cc380aca85525bcfea232bfdeebc6eeacf10fbf0cb6ba21bb6ab8f6'
             'c2c032e17e9c30fefe32cecf162fdfb8e3eaef9767502b0a919bca800e48ac866319a2b716347da0edb4b382c30bd41d53395d01a19ec1eec5f2b09771e2087a'
             '47abedf2212475c81c7f84272889b8041bcd8ee1b646d94c609fe4936b43d2be2e14194e87990ecf722a8a9be7b651dbaf5d0f2d615271b12df0c6c887c8467c'
             'c7c34ada41b76ce9d06c3451451881c914903f532a555e4353d895ae52e36dea37ff7cf5ad3254fc188270514034dcd5ccd5a68fa3d65b6e2e3ad62d02bc4237'
