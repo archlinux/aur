@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=difftastic
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="An experimental structured diff tool that compares files based on their syntax"
 arch=("x86_64")
@@ -8,7 +8,7 @@ url="https://github.com/Wilfred/difftastic"
 license=("MIT")
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4c103094d0eed832ea02fc2452c23267c5aefb67d8de10db912d1727b7ffc56a')
+sha256sums=('05486513d836b7b2763432fbca137791e70c2ebf472db720932508466524907d')
 
 build() {
   cd "$pkgname-$pkgver"
