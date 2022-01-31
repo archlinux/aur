@@ -1,0 +1,4 @@
+#!/bin/bash
+export ELECTRON_IS_DEV=0
+exec /usr/bin/electron /usr/lib/bbg/app.asar
+

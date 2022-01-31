@@ -1,15 +1,16 @@
 # Maintainer: zzjzxq33 <wojiushixxx at 126 dot com>
 pkgname=bbg
 _pkgname=BBG
-pkgver=20211022
-pkgrel=3
+pkgver=20220123
+pkgrel=1
 epoch=
 pkgdesc="A static blog generator built with electron"
 arch=("x86_64")
 url="https://github.com/baiyang-lzy/bbg"
 license=('GPL')
 groups=()
-depends=('nss' 'gtk3')
+depends=('gtk3' 'libxcb' 'electron')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,18 +21,24 @@ options=()
 install=
 changelog=
 source=(
+	"bbg"
+	"icon.png"
 	"bbg.desktop"
-	"bbg.7z"::"https://github.com/baiyang-lzy/bbg/releases/download/${pkgver}/bbg_linux_${pkgver}.7z"
+	"app.asar"::"https://download.fastgit.org/baiyang-lzy/bbg/releases/download/${pkgver}/app.asar"
     )
 noextract=()
 sha256sums=(
+			'9bb48fe10ec7b1b669546d185a98976b822b50fbcbaf0dd5faf0c162e8346a21'
+			'b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f'
 	    'b9262d5c2b8aa65c2fade47436ebd7ea11078dc40e67216c2ea668c2a57d8668'
-            'd88add9b6682730a650c35f6d228653d8778db506ac2943f760a92fb10d81070')
+      '30bf1e3d230357cdf9ca0bbc97042cd7e231e5cf779d0b44fa28119bc4309a41')
 validpgpkeys=()
 
 package(){
-	mkdir -p ${pkgdir}/usr/bin
-	install -Dm 644 ${srcdir}/bbg-linux-x64/bbg ${pkgdir}/usr/bin/bbg
+	mkdir -p ${pkgdir}/usr/lib/${pkgname}/
+	cd ${srcdir}/
+	install -Dm 644 app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
+	install -Dm 775 ${srcdir}/bbg ${pkgdir}/usr/bin/${pkgname}
 	install -Dm 644 ${srcdir}/bbg.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	install -Dm 644 ${srcdir}/bbg-linux-x64/resources/app/icons/icon.png ${pkgdir}/usr/share/icons/${pkgname}.png
+	install -Dm 644 ${srcdir}/icon.png ${pkgdir}/usr/share/icons/${pkgname}.png
 }
