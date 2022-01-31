@@ -47,7 +47,7 @@ noextract=(
 sha256sums=('c661fb78caa9dae961800069b188f8035b36cc151fe5665c8eb59c16da7c5781'
             'bc5c2227de16bc71d16c73cafcdf071c9f6c40f715d9c5416bea66dcc5659eed'
             '0fa0e5d00d7ac0eedd55efcf19e1e7fba9b0efc5b690d8ce27536f10e4a5f830'
-            'f4a34230c80d32e8a6ac338edafc6c872eee8837684cfc2b2935d5f505db6563')
+            'b39485c4ef0abcc86cdabb771a071da573ad80a834982e9bfec353a54ae89668')
 
 build() {
   for i in ${_pkgarches[@]}; do
