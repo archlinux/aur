@@ -1,7 +1,7 @@
 pkgbase = bbg
 	pkgdesc = A static blog generator built with electron
 	pkgver = 20220123
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/baiyang-lzy/bbg
 	arch = x86_64
 	license = GPL
@@ -11,10 +11,10 @@ pkgbase = bbg
 	source = bbg
 	source = icon.png
 	source = bbg.desktop
-	source = app.asar::https://download.fastgit.org/baiyang-lzy/bbg/releases/download/20220123/app.asar
+	source = app.asar::https://github.com/baiyang-lzy/bbg/releases/download/20220123/app.asar
 	sha256sums = 9bb48fe10ec7b1b669546d185a98976b822b50fbcbaf0dd5faf0c162e8346a21
 	sha256sums = b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f
-	sha256sums = b9262d5c2b8aa65c2fade47436ebd7ea11078dc40e67216c2ea668c2a57d8668
+	sha256sums = d57c7e1126b2b168f2dd6debd2e77f069379c244b0ed7393eebffc2f2aa0d8be
 	sha256sums = 30bf1e3d230357cdf9ca0bbc97042cd7e231e5cf779d0b44fa28119bc4309a41
 
 pkgname = bbg

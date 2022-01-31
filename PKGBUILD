@@ -2,7 +2,7 @@
 pkgname=bbg
 _pkgname=BBG
 pkgver=20220123
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A static blog generator built with electron"
 arch=("x86_64")
@@ -24,13 +24,13 @@ source=(
 	"bbg"
 	"icon.png"
 	"bbg.desktop"
-	"app.asar"::"https://download.fastgit.org/baiyang-lzy/bbg/releases/download/${pkgver}/app.asar"
+	"app.asar"::"https://github.com/baiyang-lzy/bbg/releases/download/${pkgver}/app.asar"
     )
 noextract=()
 sha256sums=(
 			'9bb48fe10ec7b1b669546d185a98976b822b50fbcbaf0dd5faf0c162e8346a21'
 			'b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f'
-	    'b9262d5c2b8aa65c2fade47436ebd7ea11078dc40e67216c2ea668c2a57d8668'
+	    'd57c7e1126b2b168f2dd6debd2e77f069379c244b0ed7393eebffc2f2aa0d8be'
       '30bf1e3d230357cdf9ca0bbc97042cd7e231e5cf779d0b44fa28119bc4309a41')
 validpgpkeys=()
 
