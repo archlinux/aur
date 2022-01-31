@@ -1,7 +1,7 @@
 pkgbase = cs-firewall-bouncer
 	pkgdesc = CrowdSec firewall bouncer fetches decisions via the CrowdSec API to add them in a blocklist used by supported firewalls.
 	pkgver = 0.0.22
-	pkgrel = 3
+	pkgrel = 4
 	url = https://hub.crowdsec.net/author/crowdsecurity/bouncers/cs-firewall-bouncer
 	install = cs-firewall-bouncer.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = cs-firewall-bouncer
 	depends = iptables
 	provides = cs-firewall-bouncer
 	provides = crowdsec-firewall-bouncer
-	source = cs-firewall-bouncer-source.tgz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/refs/tags/v0.0.22.tar.gz
+	source = cs-firewall-bouncer-0.0.22-source.tgz::https://github.com/crowdsecurity/cs-firewall-bouncer/archive/refs/tags/v0.0.22.tar.gz
 	source = cs-firewall-bouncer.install
 	source = install.sh.patch
 	sha256sums = c9b6026216b1d7f76b7302c88d7491fe4bf9922cd931f37a052dcb17bcf77992
