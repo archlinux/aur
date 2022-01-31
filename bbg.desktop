@@ -8,5 +8,5 @@ Terminal=false
 Icon=/usr/share/icons/bbg.png
 Type=Application
 StartupNotify=false
-Categories=Network
+Categories=Office
 

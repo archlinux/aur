@@ -1,7 +1,7 @@
 pkgbase = bbg
 	pkgdesc = A static blog generator built with electron
 	pkgver = 20220123
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/baiyang-lzy/bbg
 	arch = x86_64
 	license = GPL
