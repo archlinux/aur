@@ -1,0 +1,12 @@
+--- a/docs/spectral_cube.rst	2022-01-28 00:59:43.000000000 +0800
++++ b/docs/spectral_cube.rst	2022-01-31 01:57:10.941416370 +0800
+@@ -173,7 +173,8 @@
+     from specutils.manipulation import spectral_slab
+ 
+     filename = "https://stsci.box.com/shared/static/28a88k1qfipo4yxc4p4d40v4axtlal8y.fits"
+-    fn = download_file(filename, cache=True)
++    try: fn = download_file(filename, cache=True)
++    except Exception: fn = "28a88k1qfipo4yxc4p4d40v4axtlal8y.fits"  # use local fits if not network when doc building
+     spec1d = Spectrum1D.read(fn)
+ 
+     # Extract H-alpha sub-cube for moment maps using spectral_slab

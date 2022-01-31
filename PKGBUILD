@@ -2,16 +2,28 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://specutils.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-gwcs' 'python-ndcube>=2.0' 'python-mpl-animators' 'graphviz')
-#checkdepends=('python-pytest-doctestplus')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('af883f8fa36a2e55d4e24284cbde7dcd')
+checkdepends=('python-pytest-astropy-header')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "https://stsci.box.com/shared/static/28a88k1qfipo4yxc4p4d40v4axtlal8y.fits"
+        'use_local_doc_fits_offline.patch')
+#https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
+md5sums=('73f44f3e67923dd8a7aa7abbf71f6b4a'
+         '6de4c8ee5659e87a302e3de595074ba5'
+         '81ee414974a5b6fc22f61e6fc7b36273')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    cp ${srcdir}/*.fits docs
+    patch -Np1 -i "${srcdir}/use_local_doc_fits_offline.patch"
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -22,16 +34,42 @@ build() {
     PYTHONPATH="../build/lib" make html
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    PYTHONPATH="build/lib" pytest "build/lib" #|| warning "Tests failed"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    # skip some tests that need lots of online data or cost lots of time
+    PYTHONPATH="build/lib" pytest "build/lib" \
+        --ignore=build/lib/specutils/io/asdf/tags/tests/test_spectra.py \
+        --ignore=build/lib/specutils/io/default_loaders/tests/test_apogee.py \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_ctypye_not_compliant[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_cos[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_cos[remote_data_path1] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_stis[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_stis[remote_data_path1] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_hst_stis[remote_data_path2] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_apstar_loader \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_manga_cube \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_manga_cube \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_manga_rss \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_spplate \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_spspec \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_compressed[gzip] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_compressed[bzip2] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_sdss_compressed[xz] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_with_rwss[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_without_rwss[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_with_rwss_guess[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::TestAAOmega2dF::test_without_rwss_guess[remote_data_path0] \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_apvisit_loader \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_chebyshev \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_legendre \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_muscles_loader \
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_subaru_pfs_loader || warning "Tests failed"
+}
 
 package_python-specutils() {
-    depends=('python>=3.7' 'python-scipy' 'python-gwcs>=0.17.0' 'python-ndcube')
-    optdepends=('python-specutils-doc: Documentation for Specutils'
-                'python-pytest-astropy: For testing')
+    depends=('python>=3.7' 'python-scipy' 'python-gwcs>=0.17.0' 'python-ndcube>=2.0')
+    optdepends=('python-specutils-doc: Documentation for Specutils')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
