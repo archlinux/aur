@@ -1,1 +1,1 @@
-u   terraria    -   "Terraria Server user"  /var/lib/tshock
+u   terraria    -   "Terraria Server user"  /var/lib/tshock    /bin/bash

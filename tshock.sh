@@ -59,12 +59,12 @@ TMUX_CONSOLE=tshock-console-${INSTANCE}
 case "$1" in
     start)
         if tmux has-session -t ${TMUX_CONSOLE} &> /dev/null ; then
-            echo "TShock instance '$INSTANCE' is already running"
+            echo "TShock instance '${INSTANCE}' is already running"
             exit 1
         else
-            echo "starting '${INSTANCE}'"
-            tmux new-session -d -s "${TMUX_CONSOLE}"
-            mono --server --gc=sgen -O=all /srv/tshock/TerrariaServer.exe -port ${PORT} -logpath ${BASEDIR}/${INSTANCE} -worldpath ${WORLDDIR} -world ${WORLDDIR}/${WORLD}.wld -autocreate ${SIZE}
+            echo "Starting '${INSTANCE}'"
+            CMD="mono --server --gc=sgen -O=all /srv/tshock/TerrariaServer.exe -port ${PORT} -logpath ${BASEDIR}/${INSTANCE} -worldpath ${WORLDDIR} -world ${WORLDDIR}/${WORLD}.wld -autocreate ${SIZE}"
+            tmux new-session -d -s "${TMUX_CONSOLE}" "${CMD}"
             if [ $? -gt 0 ]; then
                 echo "Could not start instance '${INSTANCE}'"
                 exit 1
