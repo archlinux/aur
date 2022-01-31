@@ -1,13 +1,15 @@
-# Maintainer: Christoph J. Thompson <thompsonc@protonmail.ch>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
 
 pkgname=mkpwd
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line password generator"
 arch=('i686' 'x86_64')
-url="http://www.o-schroeder.de/projects/mkpwd"
+url="https://www.o-schroeder.de/projects/mkpwd"
 license=('GPL3')
-source=("http://www.o-schroeder.de/download/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://www.o-schroeder.de/download/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('6db5032fa6e2bc3ebd499ebf2b94f8df5b3ce64760d84fda7101e951bfb5c88a')
 
 build() {
