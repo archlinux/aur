@@ -7,7 +7,7 @@ pkgname=${_pkgname}-bin
 pkgver=4.5.12
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
-pkgrel=4
+pkgrel=5
 pkgdesc="A Terraria Server administration modification that runs on the open source TerrariaAPI."
 arch=("x86_64" "aarch64")
 url="https://github.com/Pryaxis/TShock"
