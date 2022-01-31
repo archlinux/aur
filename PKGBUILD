@@ -4,7 +4,7 @@
 pkgbase=leagueoflegends-git
 pkgname=(leagueoflegends-git leagueoflegends-ge-git)
 _srcname=leagueoflegends
-pkgver=0.12.2.r5.g2c48af8
+pkgver=0.12.2.r8.g800a4da
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
 depends=('winetricks-git' 'bash' 'curl' 'openssl' 'samba' 'lib32-gnutls'
          'lib32-libldap' 'lib32-openal' 'lib32-libpulse' 'lib32-alsa-lib'
-         'lib32-unixodbc' 'lib32-vkd3d' 'vulkan-icd-loader'
+         'lib32-mpg123' 'lib32-unixodbc' 'lib32-vkd3d' 'vulkan-icd-loader'
          'lib32-vulkan-icd-loader' 'vulkan-driver' 'lib32-vulkan-driver')
 makedepends=()
 optdepends=("lib32-amdvlk: AMD Vulkan driver"
