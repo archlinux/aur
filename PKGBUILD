@@ -1,6 +1,6 @@
 # Maintainer: w1nst0n <w1nst0n at keemail dot me>
 pkgname=universal-android-debloater-opengl-bin
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. This version uses an OpenGL renderer for better compatibility with older hardware."
 arch=('x86_64')
