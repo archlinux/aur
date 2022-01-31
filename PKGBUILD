@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=drill-search
-pkgver=571+90+gb5ecb6a6
+pkgver=571+93+gbd5b6cd8
 pkgrel=1
 pkgdesc="Search files without indexing, but clever crawling"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://drill.software"
 license=('GPL2')
 depends=('bash' 'gtk3' 'xdg-utils')
 makedepends=('dmd' 'dub' 'git')
-_commit=b5ecb6a6a40c5c814c06d3e202c9c90efe690b47
+_commit=bd5b6cd802b0ede8288593598de77075d6657592
 source=("git+https://github.com/yatima1460/Drill.git#commit=$_commit")
 conflicts=("$pkgname-cli" "$pkgname-gtk")
 replaces=("$pkgname-cli" "$pkgname-gtk")
@@ -44,7 +44,7 @@ package() {
     "$pkgdir/usr/share/applications/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
   ln -s "/opt/$pkgname/$pkgname-gtk" "$pkgdir/usr/bin/"
   popd
 
