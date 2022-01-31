@@ -2,8 +2,8 @@
 
 _modname=nchan
 pkgname=nginx-mainline-mod-$_modname
-pkgver=1.2.8
-pkgrel=4
+pkgver=1.2.15
+pkgrel=1
 
 pkgdesc='nchan nginx module'
 arch=('i686' 'x86_64')
@@ -39,4 +39,4 @@ package() {
 	done
 }
 
-sha256sums=('de42e8d4fef6aef9e4c7303a7480adfe9545992470a7f6be008de7a4bb64cc98')
+sha256sums=('dbb05bec6a4cf6ad1c1a4e613a2c832669c0eb87847e70ab26bc6c590361a818')
