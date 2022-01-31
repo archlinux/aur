@@ -1,6 +1,6 @@
 # Maintainer: nukeop <nuclear at gumblert dot tech>
 pkgname=nuclear-player-bin
-pkgver=2022131_d7ef2b0bd858287e647f851b9f5841b4
+pkgver=2022131d7ef2b0bd858287e647f851b9f5841b4
 repurl=https://github.com/nukeop/nuclear
 commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
