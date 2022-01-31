@@ -1,0 +1,17 @@
+diff --git a/src/gpg/CMakeLists.txt b/src/gpg/CMakeLists.txt
+index 0ccc817..8c0586f 100644
+--- a/src/gpg/CMakeLists.txt
++++ b/src/gpg/CMakeLists.txt
+@@ -41,9 +41,9 @@ elseif (APPLE)
+                 LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+     endif ()
+ else ()
+-    find_library(libgpgme NAMES libgpgme.a)
+-    find_library(libgpg-error NAMES libgpg-error.a)
+-    find_library(libassuan NAMES libassuan.a)
++    find_library(libgpgme NAMES libgpgme.so)
++    find_library(libgpg-error NAMES libgpg-error.so)
++    find_library(libassuan NAMES libassuan.so)
+     message(STATUS "Link GPG Static Library For Unix")
+     target_link_libraries(gpg_core ${THIRD_PARTY_LIBS}
+             ${libgpgme} ${libgpg-error} ${libassuan}

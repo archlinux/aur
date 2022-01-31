@@ -1,0 +1,22 @@
+pkgbase = gpgfrontend
+	pkgdesc = OpenPGP crypto tool and gui frontend for modern GnuPG
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/saturneric/GpgFrontend
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	depends = boost
+	depends = gnupg
+	depends = gpgme
+	depends = libassuan
+	depends = libconfig
+	depends = libgpg-error
+	depends = qt5-base
+	source = https://github.com/saturneric/GpgFrontend/archive/refs/tags/v2.0.4.tar.gz
+	source = 0000-link-against-shared.patch
+	sha256sums = c904497e44d2100a20607df0117d152a9470ec552f3cc92a665797cef81ea798
+	sha256sums = 8c2dc3835057119092a72846ed6cd0c91b923b04636221acd9da49684d6eeff9
+
+pkgname = gpgfrontend
