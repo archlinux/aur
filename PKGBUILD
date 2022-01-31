@@ -64,7 +64,9 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+if [ -z ${_makenconfig} ]; then
+  _makenconfig=n
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -72,15 +74,15 @@ _makenconfig=
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.15
+pkgver=${_major}.17
 _branch=5.x
-xanmod=1
+xanmod=2
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="a55126932f41661d03f8d93b968b427f6daa2aa5" # 5.15.15
+__commit="961fd7af5a98d9a652f83e17fd41a07d8a4d2394" # 5.15.17
 
 license=(GPL2)
 makedepends=(
@@ -96,7 +98,7 @@ _srcname="linux-${pkgver}-xanmod${xanmod}"
 source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
         "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
         choose-gcc-optimization.sh
-        "https://gitlab.manjaro.org/packages/core/linux515/-/archive/${__commit}/linux513-${__commit}.tar.gz")
+        "https://gitlab.manjaro.org/packages/core/linux${_major//.}/-/archive/${__commit}/linux${_major//.}-${__commit}.tar.gz")
         #"patch-${pkgver}-xanmod${xanmod}.xz::https://sourceforge.net/projects/xanmod/files/releases/stable/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz/download"
 
 # Archlinux patches
@@ -109,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'a1bbbcae6fa04985e51304242b4908447abda1c0112f14818bc051bee531dfc2'  # xanmod
+            '10381d226a531a9faf8467a7614aec0ec5d2b48eee003aacf142769ebe0afc5d'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '26a7fc03e3252fe3004a1a78989d78a9136bdd1a8f87dd1222038373d6388d13') # manjaro
+            '061f790644a7be77645dcc7039c39abe6587aa798c8e75b6195605d426355f81') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -144,18 +146,18 @@ prepare() {
   done
   
   # Manjaro patches
-  rm ../linux515-$__commit/0103-futex.patch  # remove conflicting ones
-  rm ../linux515-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
-  rm ../linux515-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
-  rm ../linux515-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
+  rm ../linux${_major//.}-$__commit/0103-futex.patch  # remove conflicting ones
+  rm ../linux${_major//.}-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+  rm ../linux${_major//.}-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
+  rm ../linux${_major//.}-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
 
   local _patch
-  for _patch in ../linux515-$__commit/*; do
+  for _patch in ../linux${_major//.}-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
       msg2 "Applying patch: $_patch..."
-      patch -Np1 < "../linux515-$__commit/$_patch"
+      patch -Np1 < "../linux${_major//.}-$__commit/$_patch"
   done 
-  git apply -p1 < "../linux515-$__commit/0413-bootsplash.gitpatch"
+  git apply -p1 < "../linux${_major//.}-$__commit/0413-bootsplash.gitpatch"
   
   
   # Applying configuration
@@ -247,7 +249,9 @@ prepare() {
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  if [ "$_makenconfig" = "y" ]; then
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  fi
 
   # save configuration for later reuse
   cat .config > "${SRCDEST}/config.last"
