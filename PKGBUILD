@@ -2,9 +2,9 @@ pkgdesc="ROS - Planning components of MoveIt that use ROS."
 url='https://moveit.ros.org'
 
 pkgname='ros-noetic-moveit-ros-planning'
-pkgver='1.0.5'
+pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -34,6 +34,7 @@ ros_depends=(
     ros-noetic-tf2-geometry-msgs
     ros-noetic-tf2-msgs
     ros-noetic-tf2-ros
+    ros-noetic-moveit-resources-panda-moveit-config
 )
 depends=(
     ${ros_depends[@]}
@@ -41,7 +42,7 @@ depends=(
 
 _dir="moveit-${pkgver}/moveit_ros/planning"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
-sha256sums=('78f874c64156d761c77e0988ae1a4d9e492023b33664dcf1299ec6154f2bd45a')
+sha256sums=('2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969')
 
 build() {
     # Use ROS environment variables
