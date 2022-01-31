@@ -1,12 +1,12 @@
 # Maintainer: blocklisted <blocklisted at protonmail dot com>
 pkgname=windscribe-v2-bin
 pkgver=2.3.15_beta
-pkgrel=3
+pkgrel=4
 pkgdesc="Windscribe GUI tool for Linux"
 arch=('x86_64')
 url="https://windscribe.com/guides/linux"
 license=('GPL2')
-depends=('bash' 'nftables' 'systemd-resolved')
+depends=('bash' 'nftables' 'systemd')
 provides=('windscribe')
 conflicts=('windscribe-cli')
 options=('!strip')
