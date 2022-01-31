@@ -20,7 +20,7 @@
 ((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=116473.8aa389aed4f
+pkgver=117129.c1205f998c7
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -124,8 +124,6 @@ package() {
 
   #undo rpath clean in cmake_install ( faster than patching CMakeLists.txt)
   cp "$srcdir/build/bin/blender" "$pkgdir/usr/bin/blender"
-
-  mv "$pkgdir/usr/share/blender" "$pkgdir/usr/share/upbge"
 
   install -D -m755 "$srcdir"/build/bin/blenderplayer "$pkgdir"/usr/bin/blenderplayer
   install -D -m644 "$srcdir"/upbge.desktop "$pkgdir"/usr/share/applications/upbge.desktop
