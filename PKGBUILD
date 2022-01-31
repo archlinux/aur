@@ -18,7 +18,7 @@ _node_version="v16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=1   # 次版本号release
+pkgrel=2   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
@@ -71,6 +71,7 @@ build() {
     # run fix scripts
     export NW_PACKAGE_DIR="${srcdir}/wechat_devtools/code/package.nw"
     export NW_VERSION=$_nwjs_ver
+    chmod 777 "${srcdir}/fix-package-name-node"
     for script in fix-package-name-node fix-cli.sh fix-menu.sh rebuild-modules.sh; do
         _log "run ${script}"
         "${srcdir}/${script}"
