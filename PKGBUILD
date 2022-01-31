@@ -2,33 +2,25 @@
 
 pkgname=python-bme280
 _pkgname=bme280
-pkgver=0.6
-pkgrel=1
-pkgdesc="Python Driver for the BME280 Temperature/Pressure/Humidity Sensor from Bosch "
-url="https://github.com/kbrownlees/bme280"
+pkgver=0.2.4
+pkgrel=2
+pkgdesc="Interfacing a Bosch BME280 digital sensor module in Python using i2c on the Raspberry Pi"
+url="https://github.com/rm-hull/bme280"
 arch=("any")
-license=("custom")
+license=("MIT")
 depends=("python" "i2c-tools")
-conflicts=("bme280")
 makedepends=('python-setuptools')
-source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/kbrownlees/bme280/archive/v${pkgver}.tar.gz)
-sha512sums=("e33c169ef21d127b77405e9e17d26a3b6d0a6afa2340f447df2d61b063731860d7c67807fbf0c45db6bef4d027df3c15fa567d8788fa2da1780b4956f7783ca0")
+source=(${_pkgname}-${pkgver}.tar.gz::https://github.com/rm-hull/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz)
+sha512sums=('51cd7e0812ba7d07506811bd3e436487d187833fc4c9ae83b7e7b03943a49ef39eb3109957d9ee4368eb98a185d6f4888e476d4237be291cb61b5620bb11b9bb')
 
 build() {
   cd ${_pkgname}-${pkgver}
   python setup.py build
 }
 
-check() {
-  cd ${_pkgname}-${pkgver}
-  make test
-}
-
 package() {
   cd ${_pkgname}-${pkgver}
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
