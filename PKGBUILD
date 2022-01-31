@@ -1,8 +1,8 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=4.0b3.r92.g2e7b548a7
-pkgrel=2
+pkgver=4.0b4.r65.g5fb933e29
+pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
 url='https://github.com/processing/processing4'
@@ -12,16 +12,12 @@ conflicts=('processing')
 depends=( 'jdk-openjdk' 'java-openjfx')
 makedepends=('ant' 'gendesk' 'rsync' 'unzip')
 options=(!strip)
-source=('https://download.processing.org/reference.zip'
-        disable_update_check.patch
+source=(disable_update_check.patch
         no_ffmpeg_download.patch
-        no_jdk_download.patch
-        use_system_libraries.patch)
-sha256sums=('fabe7420a714f450a6b1430f13fc46f14ba52db57af360365c6a7fd96d0b642f'
-            '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
+        no_jdk_download.patch)
+sha256sums=('35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
-            '4d8bd4730a75b0288eb20230fc766523aa1cdb105bcc7ec893c7215f047bc234'
-            '15119264b6ae7b154f033261ba93535c2d1b5e2b9d849f3999dd7881cc9e49cb')
+            '5e0cbbaf93fd4cf104fabe82c0ff98535bdae31f70d6e92ae7851477a40456d6')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -38,16 +34,9 @@ prepare() {
   # Create .desktop file
   gendesk -f -n --pkgname=processing --pkgdesc="$pkgdesc" --name="Processing" --exec="processing %f" --mimetypes="text/x-processing"
 
-  # Copy reference.zip to the java directory
-  mkdir -p $pkgname/java
-  cp reference.zip $pkgname/java/
-
   # Don't download packages that can be provided via dependencies
   patch $pkgname/build/build.xml < no_jdk_download.patch
   patch $pkgname/build/shared/tools/MovieMaker/build.xml < no_ffmpeg_download.patch
-
-  # Use system libraries during build process
-  patch $pkgname/core/build.xml < use_system_libraries.patch
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
