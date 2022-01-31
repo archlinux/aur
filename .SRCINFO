@@ -1,6 +1,6 @@
 pkgbase = universal-android-debloater
 	pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices
-	pkgver = 0.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/0x192/universal-android-debloater
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = universal-android-debloater
 	depends = expat
 	depends = freetype2
 	options = !lto
-	source = universal-android-debloater-0.4.tar.gz::https://github.com/0x192/universal-android-debloater/archive/refs/tags/0.4.tar.gz
+	source = universal-android-debloater-0.4.1.tar.gz::https://github.com/0x192/universal-android-debloater/archive/refs/tags/0.4.1.tar.gz
 	source = uad_gui.desktop
 	source = uad_gui-opengl.desktop
-	sha256sums = 63d1843eb98206ea9fc55472d7cb2b85c8e70a18ce815107cd255e120155ead3
+	sha256sums = 379e6416a554b8e4ab5d88e517ce988fbcff5255e890881365f682327f91dc69
 	sha256sums = e55f259fab5e09d6e91412dbfa74859f609615606422b0e3c937cc774eaedbf3
 	sha256sums = 80227d6e877e25f650d470c0301c93fe28d1ca25d85a3dbf0c050698f84200e5
 
