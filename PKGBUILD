@@ -1,42 +1,45 @@
-# Maintainer: Terin Stock <terinjokes@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Terin Stock <terinjokes@gmail.com>
 
 pkgname=gojq
 pkgver=0.12.6
 _pkgrev=886515f
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure go implementation of jq'
-arch=('x86_64')
-url="https://github.com/itchyny/gojq"
-license=('MIT')
-makedepends=('go')
-depends=('glibc')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/itchyny/gojq/archive/v${pkgver}.tar.gz")
+url="https://github.com/itchyny/$pkgname"
+arch=(x86_64)
+license=(MIT)
+makedepends=(go)
+depends=(glibc)
+_archive="$pkgname-$pkgver"
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('46f66af22e1701dd6f3605012c6e3ccc5bf4dc2ad1a8a7f5be248cb7c6bf316c')
 
 prepare(){
-  cd "${pkgname}-${pkgver}"
-  mkdir -p build/
+	cd "$_archive"
+	mkdir -p build/
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build -ldflags="-X github.com/itchyny/gojq/cli.revision=${_pkgrev}" ./cmd/gojq
+	cd "$_archive"
+	export CGO_LDFLAGS="$LDFLAGS"
+	export CGO_CFLAGS="$CFLAGS"
+	export CGO_CPPFLAGS="$CPPFLAGS"
+	export CGO_CXXFLAGS="$CXXFLAGS"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o build \
+		-ldflags="-X ${url#*//}/cli.revision=$_pkgrev" \
+		"./cmd/$pkgname"
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
-  go test ./...
+	cd "$_archive"
+	go test ./...
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 _gojq "${pkgdir}/usr/share/zsh/site-functions/_gojq"
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$_archive"
+	install -Dm0755 -t "$pkgdir/usr/bin/" "build/$pkgname"
+	install -Dm0755 -t "$pkgdir/usr/share/zsh/site-functions/" _gojq
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
