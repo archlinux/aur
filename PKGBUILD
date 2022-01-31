@@ -26,7 +26,7 @@ depends=('kio'
 	'plasma-nano'
     'plasma-settings')
 
-makedepends=('cmake' 'extra-cmake-modules' 'git') 
+makedepends=('cmake' 'extra-cmake-modules-git' 'git') 
 optdepends=('libcec: add USB-CEC support in order to be controled by TV remotes'
             'mycroft-core: add voice control support') # Todo: test optional dependecies 
 provides=('plasma-bigscreen')
