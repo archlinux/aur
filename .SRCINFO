@@ -1,6 +1,6 @@
 pkgbase = gyro-bin
 	pkgdesc = A Zig package manager with an index, build runner, and build dependencies
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/mattnite/gyro
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = gyro-bin
 	provides = gyro
 	source = LICENSE
 	sha256sums = e8b7547024443b2fae2609708ffd1680a8f1973214f1523419fe91bd52aa8552
-	source_aarch64 = gyro-bin-0.4.1-aarch64.tar.gz::https://github.com/mattnite/gyro/releases/download/0.4.1/gyro-0.4.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 6bdd2bf37f518c1db4185edf207a50e1a150c72d7b66f1ed6a0b6699b08e2065
-	source_i686 = gyro-bin-0.4.1-i386.tar.gz::https://github.com/mattnite/gyro/releases/download/0.4.1/gyro-0.4.1-linux-i386.tar.gz
-	sha256sums_i686 = b2a28dd40f5add690af2d48e6de9636d0e4817b8b39519501a034344b0f143c9
-	source_x86_64 = gyro-bin-0.4.1-x86_64.tar.gz::https://github.com/mattnite/gyro/releases/download/0.4.1/gyro-0.4.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 06a69f91775077d1ae900ae3b89f58770a3e8f7903a5803e13fb3d1aab74f2b6
+	source_aarch64 = gyro-bin-0.5.0-aarch64.tar.gz::https://github.com/mattnite/gyro/releases/download/0.5.0/gyro-0.5.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1ec28df03b9af9323d309b6009b543df337cae05cb4a8147acd99f7b2a3f841b
+	source_i686 = gyro-bin-0.5.0-i386.tar.gz::https://github.com/mattnite/gyro/releases/download/0.5.0/gyro-0.5.0-linux-i386.tar.gz
+	sha256sums_i686 = 79940d8e41e49281647513763581bfe2820b9411ea83aeddceed424738055215
+	source_x86_64 = gyro-bin-0.5.0-x86_64.tar.gz::https://github.com/mattnite/gyro/releases/download/0.5.0/gyro-0.5.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6eee57288c6a165a294016a041681be462f5f00f05cdf56a5c6806ce5ea35599
 
 pkgname = gyro-bin
