@@ -2,7 +2,7 @@
 
 pkgname=redo-c
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An implementation of the redo build system in portable C with zero dependencies"
 arch=('x86_64')
 url="https://github.com/leahneukirchen/redo-c"
@@ -27,8 +27,7 @@ pkgver() {
 build() {
   cd "$pkgname"
 
-  # TODO add CFLAGS
-  cc -o redo redo.c "$LDFLAGS"
+  cc $CFLAGS -o redo redo.c $LDFLAGS
 }
 
 package() {
