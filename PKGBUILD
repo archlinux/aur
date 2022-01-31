@@ -23,4 +23,4 @@ package() {
     install -Dm755 "$pkgname" "$pkgdir/usr/bin/qovery"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-md5sums=('b967ba2cd628053f0300d36ed85e59b4')
+md5sums=('ba522d3b850d18a924d124654c14dc48')
