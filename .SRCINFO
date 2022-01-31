@@ -1,7 +1,7 @@
 pkgbase = libosmocore
 	pkgdesc = core libs for osmocom
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bb.osmocom.org/trac/wiki/libosmocore
 	arch = armv7h
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = libosmocore
 	makedepends = libtool
 	makedepends = git
 	makedepends = pkg-config
+	makedepends = libusb
 	depends = pcsclite
 	depends = lksctp-tools
 	depends = talloc

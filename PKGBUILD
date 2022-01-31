@@ -4,7 +4,7 @@
 
 pkgname=libosmocore
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="core libs for osmocom"
 arch=('armv7h' 'i686' 'x86_64')
 url="http://bb.osmocom.org/trac/wiki/libosmocore"
@@ -13,7 +13,7 @@ groups=()
 provides=()
 depends=('pcsclite' 'lksctp-tools' 'talloc' 'gnutls')
 optdepends=('libusb: libosmousb support')
-makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config')
+makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config' 'libusb')
 
 source=("git://git.osmocom.org/libosmocore.git#tag=$pkgver")
 md5sums=('SKIP')
