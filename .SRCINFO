@@ -1,0 +1,13 @@
+pkgbase = jetbrains-space
+	pkgdesc = An all-in-one collaboration solution for software development, instant communication, and team and project management.
+	pkgver = 2022.1.0
+	pkgrel = 1
+	url = https://jetbrains.space
+	arch = x86_64
+	license = proprietary
+	makedepends = squashfs-tools
+	noextract = h2GSR1wZNkxXqL4g6jfQichyULVb2ucl_29.snap
+	source = https://api.snapcraft.io/api/v1/snaps/download/h2GSR1wZNkxXqL4g6jfQichyULVb2ucl_29.snap
+	sha512sums = 6873526e0e9fb1e40d50bca971bd4faa7e682b1696112a6df9e76b7083e6f648c30bf0a9d8450402ca791a24a5c5155dff64a71fde7f7435509d44337fda080e
+
+pkgname = jetbrains-space
