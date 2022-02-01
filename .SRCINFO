@@ -1,13 +1,13 @@
 pkgbase = ascella-bin
 	pkgdesc = Ascella desktop app uploader
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
-	url = https://tricked.pro/ascella
+	url = https://ascella.host/docs/ascella-desktop
 	arch = x86_64
 	license = AGPL-3.0
 	provides = ascella
 	conflicts = ascella
-	source = https://github.com/Tricked-dev/ascella/releases/download/v0.4.0/ascella-0.4.0-x86_64.tar.gz
-	sha256sums = 686cc3dcfe2ed149c33061805d1e2a225e3060e6058fc896c2602e513e94f16b
+	source = https://github.com/Tricked-dev/ascella/releases/download/v0.4.2/ascella-0.4.2-x86_64.tar.gz
+	sha256sums = 3cbb4ed3b9cc91ef0732477d3aa4f8a90c7d84deae7db2425aa631d1873be847
 
 pkgname = ascella-bin
