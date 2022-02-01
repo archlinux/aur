@@ -7,6 +7,7 @@ source=('https://gitee.com/sbxlm/sbxlm/attach_files/958328/download/Sbxl4Win2202
 sha256sums=('69ae6e7a6896a1aa764eba6d8178d4a101c78d127f4f02fe19302835f17478af' '496953ce12837de3f575c913a5317996002bcbf8ba2337f697b2efe15d2e0e5e')
 optdepends=('librime-sbxlm-git' 'fcitx5-rime')
 install=$pkgname.install
+groups=(sbxlm)
 
 prepare () {
   cd $srcdir/sbxlm

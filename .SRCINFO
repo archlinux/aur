@@ -4,11 +4,12 @@ pkgbase = rime-sbxlm
 	pkgrel = 1
 	install = rime-sbxlm.install
 	arch = any
+	groups = sbxlm
 	optdepends = librime-sbxlm-git
 	optdepends = fcitx5-rime
 	source = https://gitee.com/sbxlm/sbxlm/attach_files/958328/download/Sbxl4Win220201.zip
 	source = sbxlm-init
 	sha256sums = 69ae6e7a6896a1aa764eba6d8178d4a101c78d127f4f02fe19302835f17478af
-	sha256sums = 975a919b0cd6be791672e335ff849b1cb4aaf3a6030af38aeb5789ffb5c5a017
+	sha256sums = 496953ce12837de3f575c913a5317996002bcbf8ba2337f697b2efe15d2e0e5e
 
 pkgname = rime-sbxlm
