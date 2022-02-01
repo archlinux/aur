@@ -1,6 +1,6 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 pkgname=liblxi-git
-pkgver=r148.23388f6
+pkgver=r159.09adc7f
 pkgrel=1
 pkgdesc="LXI library"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  meson --prefix=/usr --buildtype=plain . build
+  meson --prefix=/usr --buildtype=plain --wrap-mode=nofallback . build
   meson compile -C build
 }
 

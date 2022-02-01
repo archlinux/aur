@@ -1,6 +1,6 @@
 pkgbase = liblxi-git
 	pkgdesc = LXI library
-	pkgver = r148.23388f6
+	pkgver = r159.09adc7f
 	pkgrel = 1
 	url = https://github.com/lxi/liblxi
 	arch = i686
