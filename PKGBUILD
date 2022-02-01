@@ -1,6 +1,6 @@
 # Maintainer: Abir-Tx <abirtx@yandex.com>
 pkgname=alib
-pkgver=0.9.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Modern cross platform C++ header only library which features many useful utility functions"
 arch=(any)

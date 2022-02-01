@@ -1,6 +1,6 @@
 pkgbase = alib
 	pkgdesc = Modern cross platform C++ header only library which features many useful utility functions
-	pkgver = 0.9.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Abir-Tx/ALib.git
 	arch = any
@@ -11,4 +11,3 @@ pkgbase = alib
 	md5sums = SKIP
 
 pkgname = alib
-
