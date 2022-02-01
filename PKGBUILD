@@ -3,13 +3,13 @@
 
 pkgname=gojq
 pkgver=0.12.6
-_pkgrev=886515f
-pkgrel=2
+pkgrel=3
 pkgdesc='Pure go implementation of jq'
 url="https://github.com/itchyny/$pkgname"
 arch=(x86_64)
 license=(MIT)
-makedepends=(go)
+makedepends=(go
+             git)
 depends=(glibc)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
@@ -21,14 +21,16 @@ prepare(){
 }
 
 build() {
+	local _commit=$(zcat ${source[0]##*/} | git get-tar-commit-id)
 	cd "$_archive"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export CGO_CFLAGS="$CFLAGS"
 	export CGO_CPPFLAGS="$CPPFLAGS"
 	export CGO_CXXFLAGS="$CXXFLAGS"
+
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 	go build -o build \
-		-ldflags="-X ${url#*//}/cli.revision=$_pkgrev" \
+		-ldflags="-X ${url#*//}/cli.revision=${_commit:0:7}" \
 		"./cmd/$pkgname"
 }
 
