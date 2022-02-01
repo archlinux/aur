@@ -1,0 +1,59 @@
+From 36f69f6f9ca1aada7f6a9ce045e1983ab7263a0d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ma=C3=ABl=20Kerbiriou?= <m431.kerbiriou@gmail.com>
+Date: Tue, 1 Feb 2022 18:23:00 +0100
+Subject: [PATCH] fixes
+
+---
+ bntseq.c              | 8 +++++++-
+ bwakit/bwa-postalt.js | 2 +-
+ rle.h                 | 2 +-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/bntseq.c b/bntseq.c
+index 65f7e93..bf67bd4 100644
+--- a/bntseq.c
++++ b/bntseq.c
+@@ -197,7 +197,13 @@ bntseq_t *bns_restore(const char *prefix)
+ 				}
+ 				while (c != '\n' && c != EOF) c = fgetc(fp);
+ 				i = 0;
+-			} else str[i++] = c; // FIXME: potential segfault here
++			} else {
++				if (i >= 1022) {
++					fprintf(stderr, "[E::%s] sequence name longer than 1023 characters. Abort!\n", __func__);
++					exit(1);
++				}
++				str[i++] = c;
++			}
+ 		}
+ 		kh_destroy(str, h);
+ 		fclose(fp);
+diff --git a/bwakit/bwa-postalt.js b/bwakit/bwa-postalt.js
+index bfc4190..e00d3dc 100644
+--- a/bwakit/bwa-postalt.js
++++ b/bwakit/bwa-postalt.js
+@@ -283,7 +283,7 @@ function bwa_postalt(args)
+ 	// process SAM
+ 	var buf2 = [], hla = {};
+ 	file = args.length - getopt.ind >= 2? new File(args[getopt.ind+1]) : new File();
+-	while (file.readline(buf) >= 0) {
++	while (file.readline(buf) > 0) {
+ 		var m, line = buf.toString();
+ 
+ 		if (line.charAt(0) == '@') { // print and then skip the header line
+diff --git a/rle.h b/rle.h
+index 0d59484..4f8946d 100644
+--- a/rle.h
++++ b/rle.h
+@@ -30,7 +30,7 @@ extern "C" {
+  *** 43+3 codec ***
+  ******************/
+ 
+-const uint8_t rle_auxtab[8];
++extern const uint8_t rle_auxtab[8];
+ 
+ #define RLE_MIN_SPACE 18
+ #define rle_nptr(block) ((uint16_t*)(block))
+-- 
+2.35.1
+
