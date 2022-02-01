@@ -16,7 +16,7 @@ case $1 in
         "$f" &
       done
     ;;
-    toggle)
+    toggle | transition)
       if echo "$CURRENT" | grep -q "dark"; then
         exec $0 light
       else
