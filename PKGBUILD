@@ -1,11 +1,11 @@
 pkgname=buzz-git
-pkgver=.r0.19a03b8
+pkgver=.r0.0247964
 pkgrel=1
 pkgdesc="A simple system tray application for notifying about unseen e-mail "
 arch=('i686' 'x86_64')
 url="https://github.com/jonhoo/buzz"
 license=('MIT' 'Apache')
-depends=('libappindicator-gtk3' 'gtk3' 'notification-daemon')
+depends=('libappindicator-gtk3' 'gtk3' 'notification-daemon' 'llvm' 'clang' 'faenza-icon-theme' 'oxygen-icons')
 makedepends=('git' 'rust')
 source=("${pkgname}::git+https://github.com/jonhoo/buzz")
 md5sums=('SKIP')
