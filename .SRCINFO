@@ -1,8 +1,9 @@
 pkgbase = python-pinyin
-	pkgdesc = Chinese to Pinyin Python library
+	pkgdesc = Chinese to Pinyin library
 	pkgver = 0.45.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozillazg/python-pinyin
+	changelog = CHANGELOG.rst
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
