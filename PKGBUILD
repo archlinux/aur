@@ -24,7 +24,7 @@ depends=(
         'python-h2'
         'python-brotli'
 	'python-uvloop'
-        'python-httpx-socks'
+        'python-httpx-socks-ng'
         'python-async-timeout'
         'python-langdetect'
         'python-setproctitle'
