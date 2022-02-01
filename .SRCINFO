@@ -1,7 +1,7 @@
 pkgbase = ant-gtk-theme
 	pkgdesc = A flat and light theme with a modern look
 	pkgver = 1.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/EliverLara/Ant
 	arch = any
 	license = GPL
@@ -38,4 +38,3 @@ pkgbase = ant-gtk-theme
 	sha512sums = 668d80be55381fb1dbbd5a06d6e45f1a8858772d3207a762bb62dc53a2663271f29693445d5e8ff01495a13195e1eb4c513ec7633712eee21487b116ad1c3012
 
 pkgname = ant-gtk-theme
-

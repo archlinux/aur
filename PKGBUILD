@@ -1,9 +1,10 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de
+# Maintainer: Ben Poest <ben@poest.com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=ant-gtk-theme
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A flat and light theme with a modern look"
 arch=('any')
 license=('GPL')
