@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 build() {
     cd "${srcdir}/${_pkgname}"
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+    yarn install --non-interactive --immutable --cache-folder "${srcdir}/yarn-cache"
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
