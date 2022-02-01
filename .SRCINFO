@@ -1,0 +1,14 @@
+pkgbase = python-bech32
+	pkgdesc = Pieter Wuille's reference implementation for Bech32 and segwit addresses
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/fiatjaf/bech32
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	source = python-bech32::git+https://github.com/fiatjaf/bech32.git#branch=master
+	b2sums = SKIP
+
+pkgname = python-bech32
