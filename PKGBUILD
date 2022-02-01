@@ -1,36 +1,31 @@
-# Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
-pkgbase=python-pyrtlsdr-git
-_pkgbase=pyrtlsdr
-pkgname=(python-pyrtlsdr-git python2-pyrtlsdr-git)
-pkgver=r111.e1e4ccf
+# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+_base=pyrtlsdr
+pkgname=python-${_base}-git
+pkgver=r377.64835e7
 pkgrel=1
 pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
 arch=('any')
-url="https://github.com/roger-/pyrtlsdr"
+url="https://github.com/roger-/${_base}"
 license=('GPL3')
-makedepends=('git' 'python' 'python2')
-source=('git+https://github.com/roger-/pyrtlsdr.git')
-sha256sums=('SKIP')
+depends=(python rtl-sdr)
+makedepends=(git python-setuptools)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${_pkgbase}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_base}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_python-pyrtlsdr-git() {
-    depends=('python' 'rtl-sdr')
-    provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}")
-
-    cd "$srcdir/${_pkgbase}"
-    python setup.py install --root=$pkgdir
+build() {
+  cd ${_base}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python2-pyrtlsdr-git() {
-    depends=('python2' 'rtl-sdr')
-    provides=("${pkgname%-git}")
-    conflicts=("${pkgname%-git}")
-
-    cd "$srcdir/${_pkgbase}"
-    python2 setup.py install --root=$pkgdir
+package() {
+  cd ${_base}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }

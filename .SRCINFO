@@ -1,25 +1,17 @@
 pkgbase = python-pyrtlsdr-git
 	pkgdesc = A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)
-	pkgver = r111.e1e4ccf
+	pkgver = r377.64835e7
 	pkgrel = 1
 	url = https://github.com/roger-/pyrtlsdr
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python
-	makedepends = python2
-	source = git+https://github.com/roger-/pyrtlsdr.git
-	sha256sums = SKIP
-
-pkgname = python-pyrtlsdr-git
+	makedepends = python-setuptools
 	depends = python
 	depends = rtl-sdr
 	provides = python-pyrtlsdr
 	conflicts = python-pyrtlsdr
+	source = git+https://github.com/roger-/pyrtlsdr.git
+	sha512sums = SKIP
 
-pkgname = python2-pyrtlsdr-git
-	depends = python2
-	depends = rtl-sdr
-	provides = python2-pyrtlsdr
-	conflicts = python2-pyrtlsdr
-
+pkgname = python-pyrtlsdr-git
