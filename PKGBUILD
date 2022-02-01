@@ -2,7 +2,7 @@
 # Contributor: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 
 pkgname=python-agnpy
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Models Active Galactic Nuclei radiative processes"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-astropy' 'python-numpy' 'python-matplotlib' 'python-scipy')
 makedepends=('python-build' 'python-install' 'python-wheel' 'python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/a/agnpy/agnpy-$pkgver.tar.gz")
-sha256sums=('7e70af095a46874cdb86ee1364262bcb58094e4e47bef21cbd91e07ad7d467a7')
+sha256sums=('44937cac40df3bb349c752fbed35b1f66a097047450c659b39836b27b0ed174c')
 
 build() {
 	cd "agnpy-$pkgver"
