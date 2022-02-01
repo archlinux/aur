@@ -31,7 +31,7 @@ build() {
 check() {
   cd "$_name-$pkgver/Tests"
 
-  make
+  LC_ALL=en_US.UTF-8 make
 }
 
 package() {
