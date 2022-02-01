@@ -2,19 +2,19 @@
 # Contributor: Hilton Medeiros <medeiros.hilton@gmail.com>
 
 pkgname=pixelorama
-pkgver=0.9
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A free & open-source 2D sprite editor"
 arch=('i686' 'pentium4' 'x86_64')
 url="https://orama-interactive.itch.io/pixelorama"
 _url="https://github.com/Orama-Interactive/Pixelorama"
 license=('MIT')
-depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libpulse' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
+depends=('hicolor-icon-theme' 'libglvnd' 'libxcursor' 'libxi' 'libxinerama' 'libxrandr')
 makedepends=('curl' 'godot' 'unzip' 'xorg-server-xvfb')
 provides=('pixelorama')
 conflicts=('pixelorama-bin' 'pixelorama-git')
 source=("${pkgname^}-${pkgver}.tar.gz::${_url}/archive/v${pkgver}.tar.gz")
-sha512sums=('5ae5a0a621a82d09fe9970503a5848db0fd95830d631a9b433f151351c5ef9b7098603de661c8b9070c73eccfcbc107ac00767e077227e70ab95cd2c8182dbdf')
+sha512sums=('e67da1eb0cd70c50fadd486956d8e6649c8fbac75669ebb725a2cf5049ee18377d8820a9efa3460bfb2c62de1385c5c5cfc3bbd73824cc554b83f6c6441bcef2')
 
 prepare() {
   # Checks if the user's directory has the export templates
@@ -51,7 +51,7 @@ prepare() {
     rmdir templates
   fi
 
-  sed -i "s/enable_file_logging=true/enable_file_logging=false/" \
+  sed -i "/enable_file_logging/ s/true/false/" \
          "${srcdir}/${pkgname^}-${pkgver}/project.godot"
 
   echo '#!/bin/sh' > "${srcdir}/${pkgname^}-${pkgver}/Misc/Linux/${pkgname}.sh"
