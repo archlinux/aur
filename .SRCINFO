@@ -1,0 +1,19 @@
+pkgbase = waybar-battery-module-git
+	pkgdesc = Show all compatible batteries in waybar as tooltips
+	pkgver = 0.1.r12.a824895
+	pkgrel = 1
+	url = https://github.com/ErikReider/waybar-battery-module
+	arch = x86_64
+	license = GPL
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	depends = glib2>=2.50
+	depends = gobject-introspection>=1.68
+	depends = libgee>=0.20
+	optdepends = swaync-git
+	optdepends = swaysettings-git
+	source = git+https://github.com/ErikReider/waybar-battery-module
+	sha256sums = SKIP
+
+pkgname = waybar-battery-module-git
