@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
 _major=5.15
-_minor=14
-_rtver=27
+_minor=18
+_rtver=28
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -74,7 +74,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K220107v1"
+_bfq_rel="r2K220201v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-v2-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -342,11 +342,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('fe4840ae50777cfeceadf6482fff46c761059921eab6b80725f32b90da36d2a12c07bb177d59c118d6b76037c4f84225fedcb22e46eedf83f77db5b7a70085ce'
+sha512sums=('f3927c06ae1b603191fbb2153837c9b45cfbff291121df7e01af3c139116301af2d530ced01b1144b1ec3c317f156d996d98da84bb53069fd736e2c33ebd7678'
             'SKIP'
-            '7209acfec3059d93878a75e60f678334919494929d00298d7e6d3233d34188a1d81995786ecf897e7478bddd6f70a9ae6d509abf3e9d900b8e8d2f3d8f694e7b'
+            '40a3b5149b654ef49cea7cac0d3be6323f4ac288538a418300e5b56a09c9a14bd2b1bae722d86041ecd78574d2ba1eae0e528679a9005423b3ddca1bcbc7ef9f'
             'SKIP'
-            '1c60a9eef8820cfbfd1537062741f326fdc8dae709707817f12592497f12edb84a63aed8669c96e16292b998573c3b330aef758196ff04082b6db61b88fc66ea'
+            'd6878c379aad4d4f6634f10669f85a2ac035958e8012999ff52ae7697a195ef2d2d67998f29b8c9677c00388763c85c617814e673b8e741ac12d41d887f0dadf'
             '53fa9b8a6fa451a7d57846d261f9af2de24e6442d2f318dfef899580d85e9cc54fa17267803a4f064eecab8ba3739062bfdf185de0afe119a1c86fe71cf3c711'
             'fa5eabd0ec3e9661e0aab19eb20030944518ccc2cf31df889115db5b3c18a3846ae157d077ac90d8f3e4e332984c24cabcc470b9190c91e3d382ce67a3ed989c'
             '0c00b7760ed6daa5506aa032893ac76722061bb140699bd1a0ded8589d1301b3e1b857bd5ad3c344db4a35c3915902a196e67147d238857d7e0c740e109a8da1'
