@@ -5,7 +5,7 @@ _USER="freenet"
 WRAPPER_CMD="/usr/bin/java-service-wrapper"
 WRAPPER_CONF="/opt/freenet/wrapper.config"
 PIDFILE="/run/freenet/freenet.pid"
-TIMEOUT=120
+TIMEOUT=60
 #-----------------------------------------------------------------------------
 
 fail() {
@@ -15,7 +15,7 @@ fail() {
 
 check_user() {
     if [[ "$(id -un)" != "$_USER" ]]; then
-        SCRIPT_PATH="$(cd "$(dirname $0)" && pwd)/$(basename $0)"
+        SCRIPT_PATH="$(readlink -f "$0")"
         su - "$_USER" -c "${SCRIPT_PATH} $@"
         exit $?
     fi
@@ -35,27 +35,25 @@ get_wrapper_pid() {
     pgrep -u "$_USER" -f 'wrapper.name=freenet'
 }
 get_pid() {
-    pgrep -u "$_USER" -f 'jar'
+    pgrep -u "$_USER" -f 'jar.*freenet'
 }
 
 check_if_running() {
     unset pid
-    if [[ -f "$PIDFILE" ]]; then
-        if [[ -r "$PIDFILE" ]]; then
-            pid=$(cat "$PIDFILE")
+    if [[ -r "$PIDFILE" ]]; then
+        pid=$(cat "$PIDFILE")
+        if [[ ! "$pid" ]]; then
+            pid=$(get_pid)
             if [[ ! "$pid" ]]; then
-                pid=$(get_pid)
-                if [[ ! "$pid" ]]; then
-                    echo "Removing stale pid file: $PIDFILE"
-                    rm -f "$PIDFILE"
-                fi
-            else
-                [[ "$pid" -ne "$(get_pid)" ]] &&
-                    fail "\$PIDFILE $PIDFILE differs from what is actually running!"
+                echo "Removing stale pid file: $PIDFILE"
+                rm -f "$PIDFILE"
             fi
         else
-            fail "Cannot read \$PIDFILE: $PIDFILE"
+            [[ "$pid" -ne "$(get_pid)" ]] &&
+                fail "\$PIDFILE $PIDFILE differs from what is actually running!"
         fi
+    # else
+    #     echo "check_if_running: pid: $pid"
     fi
 }
 
@@ -70,18 +68,18 @@ _console() {
 
 _start() {
     if [[ ! "$pid" ]]; then
-        echo -n "Starting Freenet"
+        echo -n "Starting Freenet..."
         COMMAND_LINE+=" wrapper.daemonize=TRUE"
         eval "$COMMAND_LINE" || fail "Failed to launch the wrapper!"
         i=0
-        while [[ ! "$pid" || $i -lt $TIMEOUT ]]; do
+        while [[ ! "$pid" && $i -lt $TIMEOUT ]]; do
             echo -n "."
             sleep 1
             check_if_running
             ((i++))
         done
         [[ $(get_pid) ]] &&
-            echo " done" || fail "timeout: Failed to start wrapper!"
+            echo " ok" || fail "timeout: Failed to start wrapper!"
     else
         echo "Freenet is already running! (pid: $pid)"
     fi
@@ -94,7 +92,7 @@ _restart() {
 
 _stop() {
     if [[ "$pid" ]]; then
-        echo "Stopping Freenet, this will take a few minutes"
+        echo -n "Stopping Freenet, this could take a minute..."
         kill -TERM "$(get_wrapper_pid)" || fail "Unable to stop Freenet: kill -TERM $pid"
         i=0
         while [[ "$pid" || $i -gt $TIMEOUT ]]; do
@@ -104,9 +102,9 @@ _stop() {
             ((i++))
         done
         [[ "$pid" ]] &&
-            fail "timeout: Failed to stop wrapper! (pid: $pid)" || echo " done"
+            fail "timeout: Failed to stop wrapper! (pid: $pid)" || echo " ok"
     else
-        echo "Freenet is not running."
+        echo "Freenet is not running"
     fi
 }
 
@@ -115,7 +113,7 @@ _dump() {
         kill -QUIT "$pid" || fail "Failed to dump Freenet Service"
         echo "Thread Dump is available in wrapper.log"
     else
-        echo "Freenet is not running."
+        echo "Freenet is not running"
     fi
 }
 #-----------------------------------------------------------------------------
