@@ -1,0 +1,16 @@
+pkgbase = php81-pdo_sqlsrv
+	pkgdesc = Microsoft SQL Server PDO Drivers for PHP
+	pkgver = 5.10.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/pdo_sqlsrv
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php81
+	depends = php81-pdo
+	depends = msodbcsql
+	backup = etc/php81/conf.d/30-pdo_sqlsrv.ini
+	source = https://pecl.php.net/get/pdo_sqlsrv-5.10.0.tgz
+	sha256sums = 0446bb8bff1e82fcfd993ebd765d1dc56715a3e754453f43ce8e9fe84765112a
+
+pkgname = php81-pdo_sqlsrv
