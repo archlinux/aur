@@ -1,0 +1,62 @@
+From b329e45288c2e7fc0ef15c4e8a7b3c8dfd74a930 Mon Sep 17 00:00:00 2001
+From: Martin Kroeker <martin@ruby.chemie.uni-freiburg.de>
+Date: Sat, 1 Jan 2022 00:46:23 +0100
+Subject: [PATCH] Guard against omp_get_num_places returning zero
+
+---
+ driver/others/memory.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/driver/others/memory.c b/driver/others/memory.c
+index bd0553ca9d..0f4cbb24d4 100644
+--- a/driver/others/memory.c
++++ b/driver/others/memory.c
+@@ -232,11 +232,11 @@ int get_num_procs(void);
+ #else
+ int get_num_procs(void) {
+   static int nums = 0;
+-
++  int ret;
+ #if defined(__GLIBC_PREREQ)
+   cpu_set_t cpuset,*cpusetp;
+   size_t size;
+-  int ret;
++
+ #if !__GLIBC_PREREQ(2, 7)
+   int i;
+ #if !__GLIBC_PREREQ(2, 6)
+@@ -249,7 +249,8 @@ int get_num_procs(void) {
+ 
+ #if defined(USE_OPENMP)
+ #if _OPENMP >= 201511
+-    nums = omp_get_num_places();
++    ret = omp_get_num_places();
++    if (ret >0 ) nums = ret;
+ #endif
+     return nums;
+ #endif
+@@ -1800,11 +1801,12 @@ int get_num_procs(void);
+ int get_num_procs(void) {
+ 
+   static int nums = 0;
+-
++  int ret;
++	
+ #if defined(__GLIBC_PREREQ)
+   cpu_set_t cpuset,*cpusetp;
+   size_t size;
+-  int ret;
++
+ #if !__GLIBC_PREREQ(2, 7)
+   int i;
+ #if !__GLIBC_PREREQ(2, 6)
+@@ -1818,7 +1820,8 @@ int get_num_procs(void) {
+ #if defined(USE_OPENMP)
+ /*  if (omp_get_proc_bind() != omp_proc_bind_false) */
+ #if _OPENMP >= 201511
+-    nums = omp_get_num_places();	  
++    ret = omp_get_num_places();
++    if (ret >0 ) nums = ret;
+ #endif
+     return nums;
+ #endif
