@@ -1,0 +1,17 @@
+pkgbase = wayab-git
+	pkgdesc = Wayland animated background.
+	pkgver = r21.6d12681
+	pkgrel = 1
+	url = https://github.com/chux0519/wayab
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = wayland
+	depends = egl-wayland
+	depends = wayland-protocols
+	depends = cairo-glesv2-bin
+	provides = wayab
+	source = git+https://github.com/chux0519/wayab
+	sha256sums = SKIP
+
+pkgname = wayab-git
