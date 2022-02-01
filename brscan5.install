@@ -1,4 +1,4 @@
 post_install() {
   echo "For a network installation run the following as root:"
-  echo "brsaneconfig5 -a name=\"FRIENDLYNAME\" model=\"YOURMODELHERE\" ip=YOUR.SCANNER.IP.HERE"
+  echo "/opt/brother/scanner/brscan5/brsaneconfig5 -a name=\"FRIENDLYNAME\" model=\"YOURMODELHERE\" ip=YOUR.SCANNER.IP.HERE"
 }
