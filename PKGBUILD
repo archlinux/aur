@@ -20,12 +20,9 @@ conflicts=('gargoyle-mod')
 replaces=('gargoyle-mod')
 #groups=(inform)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/garglk/garglk/archive/${pkgver}.tar.gz" \
-	"libspeechd-dlopen.patch"
-	"gargoyle.install")
-install=${pkgname}.install
+	"libspeechd-dlopen.patch")
 sha512sums=('10b9ccc4bb6bed83780f8d7bf2d36650c8f7c4e14204fe5372e972f8d6900c69846d601670db55ec369e313a75c34ef88fd873f158729af0d4d9a6d8c5c6a1e1'
-            'd1381db41a973ccd4ae7bfccb089a48ca851a3c6a4ba8c1e07e8e195e7429b1d96d3bacec6a651aa108e8ecc17d9bc3eb78d368309cf134f80af9b699c3c2d4d'
-            '1fa602865745c1c9801178ee9b24be86215f2af4f9ee3f4f3b3c0606a87aba32a67c9c5343b481332c8fc97ff6c1a5e447f074d116c0cc5b255af35098096e6e')
+            'd1381db41a973ccd4ae7bfccb089a48ca851a3c6a4ba8c1e07e8e195e7429b1d96d3bacec6a651aa108e8ecc17d9bc3eb78d368309cf134f80af9b699c3c2d4d')
 
 prepare() {
 	cd "${srcdir}/garglk-${pkgver}"
