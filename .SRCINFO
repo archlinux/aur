@@ -1,7 +1,7 @@
 pkgbase = an-anime-game-launcher-bin
 	pkgdesc = An Launcher for a specific anime game with auto-patching, discord rpc and time tracking
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/KRypt0n_/an-anime-game-launcher
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = an-anime-game-launcher-bin
 	optdepends = vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)
 	optdepends = reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)
 	conflicts = an-anime-game-launcher
-	source = https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/6db855d1e4638dd238cb48108dfbc581/An_Anime_Game_Launcher.AppImage
+	source = An_Anime_Game_Launcher_2.1.1.AppImage::https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/6db855d1e4638dd238cb48108dfbc581/An_Anime_Game_Launcher.AppImage
 	source = icon.png
 	source = an-anime-game-launcher-bin.desktop
 	source = an-anime-game-launcher-bin.sh
