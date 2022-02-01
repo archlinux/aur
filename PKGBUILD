@@ -14,14 +14,13 @@ makedepends=("dos2unix")
 conflicts=("${pkgname}")
 # install=$pkgname.install
 # source=("https://sjp.pl/slownik/odmiany/sjp-odm-${pkgver}.zip")
-source=("http://web.archive.org/web/20210604075633/https://sjp.pl/slownik/odmiany/sjp-odm-20210427.zip")
-md5sums=('8498c4ac867f5b8a7d62f8dc35c510c1')
-sha256sums=('487baf52dca4bf34b0cf86c78be221ffc725f66cdeb406c79cad76c0440be469')
+source=("https://web.archive.org/web/20220201135244/https://sjp.pl/slownik/odmiany/sjp-odm-20211220.zip")
+sha256sums=('6be8da3a9869f12013c1836574ff8fc7661a3cc558fcb86ecf3ba52720650309')
 
 build() {
     cd "${srcdir}"
     dos2unix odm.txt
-    grep -v '^\?' odm.txt | sed 's/, /\n/g' | sort > polish
+    grep -v '^\?' odm.txt | sed 's/, /\n/g' | sort -u > polish
 }
 
 package() {
