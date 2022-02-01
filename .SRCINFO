@@ -1,0 +1,19 @@
+pkgbase = desktop-files-creator-git
+	pkgdesc = Simple app to create desktop files on GNU/Linux
+	pkgver = r20.06b887f
+	pkgrel = 1
+	url = https://github.com/alexkdeveloper/desktop-files-creator
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	depends = gtk3
+	provides = desktop-files-creator
+	conflicts = desktop-files-creator
+	source = git+https://github.com/alexkdeveloper/desktop-files-creator.git
+	b2sums = SKIP
+
+pkgname = desktop-files-creator-git
