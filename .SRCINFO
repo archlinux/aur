@@ -21,6 +21,7 @@ pkgbase = gargoyle
 	depends = libjpeg
 	depends = libpng
 	depends = zlib
+	depends = hicolor-icon-theme
 	optdepends = speech-dispatcher: Text-to-Speech
 	provides = gargoyle
 	conflicts = gargoyle-mod

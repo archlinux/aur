@@ -12,7 +12,7 @@ pkgdesc="Interactive Fiction multi-interpreter that supports all major IF format
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://ccxvii.net/gargoyle/"
 license=('GPL')
-depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib')
+depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib' 'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconfig' 'desktop-file-utils')
 optdepends=('speech-dispatcher: Text-to-Speech')
 provides=('gargoyle')
@@ -36,7 +36,9 @@ build() {
 	cd "${srcdir}/garglk-${pkgver}"
 	mkdir -p build
 	cd build
-	cmake .. -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_PREFIX=/usr
+	# the Arch package guidelines say to use
+	# /usr/lib instead of /usr/libexec.
+	cmake .. -DWITH_TTS=DYNAMIC -DCMAKE_INSTALL_LIBEXECDIR=lib -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
