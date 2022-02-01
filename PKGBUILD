@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.1.0.1527.7a7a50b
+pkgver=1.1.0.1625.566e5f2
 pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
@@ -30,7 +30,8 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-    yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+	YARN_CACHE_FOLDER="${srcdir}/yarn-cache"
+    yarn install --immutable
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
