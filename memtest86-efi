@@ -52,9 +52,22 @@ promptuser() {
 	[[ -n "$newvalue" ]] && echo "$newvalue" || echo "$defaultvalue"
 }
 
+_mount_esp() {
+	local partition="$1"
+	local esp="$2"
+
+	if ! mount | grep "$partition" | grep -q "$esp"; then
+		echo -e "ESP ${CB}$partition${CR} is not mounted, mounting..."
+		if ! mount "$partition" "$esp"; then
+			echo -e "${CE}Fail to mount $partition on $esp. Aborted.${CR}" > /dev/stderr
+			exit $CODE_FATAL
+		fi
+	fi
+}
+
 _common_install() {
-	efidir="$1"
-	efifile="$2"
+	local efidir="$1"
+	local efifile="$2"
 
 	echo -e "MemTest86 is installed into ${CB}$efidir/${CR} directory."
 	mkdir -pv "$efidir"
@@ -63,7 +76,7 @@ _common_install() {
 }
 
 _write_grub_cfg() {
-	uuid="$1"
+	local uuid="$1"
 
 	cat > "/etc/grub.d/86_memtest" <<FOE
 #!/bin/sh
@@ -125,14 +138,8 @@ install() {
 	fi
 	esp=$(promptuser "$esp")
 
-	# Check if ESP is mounted
-	if ! mount | grep "$partition" | grep -q "$esp"; then
-		echo -e "ESP ${CB}$partition${CR} is not mounted, mounting..."
-		if ! mount "$partition" "$esp"; then
-			echo -e "${CE}Fail to mount $partition on $esp. Aborted.${CR}" > /dev/stderr
-			exit $CODE_FATAL
-		fi
-	fi
+	# Check if ESP is mounted or mount it otherwise
+	_mount_esp "$partition" "$esp"
 	echo -e "The target is: ${CB}$partition${CR} (mounted on ${CB}$esp${CR}).\n"
 
 	# Get user choice
@@ -205,20 +212,15 @@ update() {
 		exit $CODE_USAGE
 	fi
 
+	# Check if ESP is mounted or mount it otherwise
+	_mount_esp "$partition" "$esp"
+
 	case $choice in
 		1) # Update files in $esp/
 			_common_install "$esp" "shell$ARCH.efi"
 		;;
 
 		2|3|4) # Update files in $esp/EFI/memtest86/
-			## Check if efi partition is mounted, if not mount it
-			if ! mount | grep "$partition" | grep -q "$esp"; then
-				echo -e "ESP ${CB}$partition${CR} is not mounted, mounting..."
-				if ! mount "$partition" "$esp"; then
-					echo -e "${CE}Fail to mount $partition on $esp. Aborted.${CR}" > /dev/stderr
-					exit $CODE_FATAL
-				fi
-			fi
 			_common_install "$esp/EFI/memtest86" "memtest$ARCH.efi"
 		;;
 	esac
@@ -231,6 +233,9 @@ remove() {
 		echo "MemTest86 is not installed in ESP: it cannot be removed." > /dev/stderr
 		exit $CODE_USAGE
 	fi
+
+	# Check if ESP is mounted or mount it otherwise
+	_mount_esp "$partition" "$esp"
 
 	case $choice in
 		1) # Remove files in $esp/
