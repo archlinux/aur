@@ -1,7 +1,7 @@
 # Contributor: Ordoban <dirk.langer@vvovgonik.de> 
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-perl-critic-pulp'
+pkgname='perl-critic-pulp'
 pkgver='99'
 pkgrel='1'
 pkgdesc="some add-on perlcritic policies"

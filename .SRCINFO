@@ -1,4 +1,4 @@
-pkgbase = perl-perl-critic-pulp
+pkgbase = perl-critic-pulp
 	pkgdesc = some add-on perlcritic policies
 	pkgver = 99
 	pkgrel = 1
@@ -18,4 +18,4 @@ pkgbase = perl-perl-critic-pulp
 	md5sums = d4eb22b458bdca8d175d6d2c2feb89a4
 	sha512sums = 11c48f61133e20c74d00002df181efb9ad825afa6441d78fd841a253e98d39c5d230196031d674c11547fb9fa3f0dc78b20f2118f128c09bfc5a217da79460b7
 
-pkgname = perl-perl-critic-pulp
+pkgname = perl-critic-pulp
