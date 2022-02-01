@@ -1,6 +1,6 @@
 pkgbase = syncthingtray-qt6
 	pkgdesc = Tray application for Syncthing (using Qt 6)
-	pkgver = 1.1.14
+	pkgver = 1.1.15
 	pkgrel = 1
 	url = https://github.com/Martchus/syncthingtray
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = syncthingtray-qt6
 	depends = xdg-utils
 	depends = qt6-webengine
 	depends = qt6-declarative
-	source = syncthingtray-1.1.14.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.1.14.tar.gz
-	sha256sums = 30197cce690e9c3128511fbf731207db958e9d861eaa8938e8c8d232c830dd35
+	source = syncthingtray-1.1.15.tar.gz::https://github.com/Martchus/syncthingtray/archive/v1.1.15.tar.gz
+	sha256sums = c46b8ad4d28bc9e6dbb703c1dee6cbb3cb423d12d2480a1793c700c3f6b5db17
 
 pkgname = syncthingtray-qt6
