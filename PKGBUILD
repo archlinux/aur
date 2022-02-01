@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc='声笔系列码基础配置，包含声笔简码和声笔拼音'
 arch=(any)
 source=('https://gitee.com/sbxlm/sbxlm/attach_files/958328/download/Sbxl4Win220201.zip' 'sbxlm-init')
-sha256sums=('69ae6e7a6896a1aa764eba6d8178d4a101c78d127f4f02fe19302835f17478af' 'b4935c29f55bad2b768339b7a79608d474caf7e2b2389eca0b7102d593e04a95')
+sha256sums=('69ae6e7a6896a1aa764eba6d8178d4a101c78d127f4f02fe19302835f17478af' '496953ce12837de3f575c913a5317996002bcbf8ba2337f697b2efe15d2e0e5e')
 optdepends=('librime-sbxlm-git' 'fcitx5-rime')
 install=$pkgname.install
 
