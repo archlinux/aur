@@ -4,7 +4,7 @@ pkgname=python-httpx-socks-ng
 _name=python-httpx-socks
 
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc='HTTP/SOCKS-proxy transports for httpx'
 arch=('any')
@@ -12,7 +12,7 @@ url="https://pypi.org/project/httpx-socks"
 license=('Apache')
 
 makedepends=('python-setuptools')
-depends=('python' 'python-python-socks' 'python-httpcore>=0.14' 'python-httpx>=0.21' 'python-httpx<0.22')
+depends=('python' 'python-python-socks' 'python-httpcore' 'python-httpx')
 optdepends=('python-async-timeout' 'python-trio' 'python-curio')
 conflicts=('python-httpx-socks')
 
