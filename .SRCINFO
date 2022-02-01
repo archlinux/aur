@@ -1,0 +1,14 @@
+pkgbase = python-debianbts
+	pkgdesc = Python library for querying Debian's Bug Tracking System
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/venthur/python-debianbts
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pysimplesoap
+	source = https://files.pythonhosted.org/packages/source/p/python-debianbts/python-debianbts-3.2.0.tar.gz
+	sha256sums = 234097d8f18c9baef91fd947f4236ac1701f5d5c07ea4603babee6de14ff7dc6
+
+pkgname = python-debianbts
