@@ -3,7 +3,7 @@
 
 pkgname=memsource-editor
 _pkg=MemsourceEditor
-pkgver=22.1.1
+pkgver=22.2.1
 pkgrel=1
 pkgdesc="A CAT translation tool, requires Memsource subscription"
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("http://download.memsource.com/production/updates/memsource-editor/linux
         "memsource"
         "license.desktop")
 
-sha256sums=('6a69e8ce1bab4cbdd113983629b3e7b6f36099fd51ecb3afd5a4098bbae32d4f'
+sha256sums=('fcf928d3a553546d4b4193f74902c9bf74567a4b9aeeaca92d8cfe644b6f7700'
             '215a02637392af7a3f0af23411c5234c9ce8cdf1ae5c0e40b97c43e5b0995a45'
             '8a40f0172dc948dfadec126b5ab9a4f983216034aa8fbf19a41b9466e6253866'
             '4802b77ffefd2cdd7526fec28a690f8dc560fef74501806b3485648dcac830fe'
@@ -68,7 +68,7 @@ package() {
     "${srcdir}/build/memsource-editor/uninstall.dat" \
     "${srcdir}/build/memsource-editor/MemsourceEditor.desktop"
 
-  cp -a ${srcdir}/build/memsource-editor ${pkgdir}/opt
+  cp -r ${srcdir}/build/memsource-editor ${pkgdir}/opt
 
   find ${pkgdir}/opt -type d | while read _item; do chmod 755 "$_item"; done
   find ${pkgdir}/opt -type f | while read _item; do chmod 644 "$_item"; done
