@@ -23,7 +23,7 @@ pkgbase = ryzom-git
 	depends = libpng
 	depends = libjpeg
 	depends = boost
-	depends = luabind-rpavlik-git
+	depends = luabind-ryzom
 	depends = libsquish
 	depends = lua
 	depends = mariadb-clients
@@ -46,4 +46,3 @@ pkgname = ryzom-client-git
 
 pkgname = ryzom-server-git
 	pkgdesc = Ryzom is a Free to Play MMORPG . This is the version to run a server
-

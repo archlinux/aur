@@ -13,7 +13,7 @@ pkgdesc="Ryzom is a Free to Play MMORPG . This version is for playing on an offi
 arch=('i686' 'x86_64')
 url="http://www.ryzom.com/"
 license=('AGPL3')
-depends=('curl' 'freetype2' 'libx11' 'mesa' 'libxxf86vm' 'openal' 'freealut' 'libogg' 'libvorbis' 'libxml2'  'libpng' 'libjpeg' 'boost'  'luabind-rpavlik-git' 'libsquish' 'lua' 'mariadb-clients' 'giflib' 'ffmpeg' 'libgsf' 'qt5-base' 'qt5-tools')
+depends=('curl' 'freetype2' 'libx11' 'mesa' 'libxxf86vm' 'openal' 'freealut' 'libogg' 'libvorbis' 'libxml2'  'libpng' 'libjpeg' 'boost'  'luabind-ryzom' 'libsquish' 'lua' 'mariadb-clients' 'giflib' 'ffmpeg' 'libgsf' 'qt5-base' 'qt5-tools')
 conflicts=('ryzom-client-latest-hg')
 groups=('ryzom')
 makedepends=('git' 'cpptest' 'cmake')
@@ -35,9 +35,7 @@ build() {
     if [ $_build_client = true ] ; then	
 	mkdir -p "$srcdir/build-client"
 	cd "$srcdir/build-client"
-	msg "client is $_build_client, building client"
 	cmake -b "$srcdir/$_git_name"  ${_CMAKE_COMMON_ARGS_ARGS[*]} ${_CMAKE_CLIENT_ARGS[*]} -DCMAKE_INSTALL_PREFIX=/usr -DRYZOM_ETC_PREFIX=/etc/ryzom -DRYZOM_SHARE_PREFIX=/usr/share/ryzom -DRYZOM_BIN_PREFIX=/usr/bin -DRYZOM_GAMES_PREFIX=/usr/bin
-	msg "Starting make, to build client"
 	make
 	
     fi
@@ -45,9 +43,7 @@ build() {
     if [ $_build_server = true ] ; then
 	mkdir -p "$srcdir/build-server"
 	cd "$srcdir/build-server"
-	msg "client is $_build_server, building server"w
 	cmake -b "$srcdir/$_git_name"  ${_CMAKE_COMMON_ARGS_ARGS[*]} ${_CMAKE_SERVER_ARGS[*]} -DCMAKE_INSTALL_PREFIX=/usr -DRYZOM_ETC_PREFIX=/etc/ryzom -DRYZOM_SHARE_PREFIX=/usr/share/ryzom -DRYZOM_BIN_PREFIX=/usr/bin -DRYZOM_GAMES_PREFIX=/usr/bin
-	msg "Starting make, to build server"   
 	make	
     fi
 }
