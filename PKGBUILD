@@ -1,18 +1,17 @@
-# Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Tom <reztho@archlinux.org>
 # Contributor: bitwave
 
-pkgbase=textadept
 pkgname=('textadept' 'textadept-gtk3' 'textadept-curses')
-pkgver=11.2
+pkgver=11.3
 pkgrel=1
 pkgdesc="A fast, minimalist, and remarkably extensible cross-platform text editor"
 arch=('i686' 'x86_64' 'aarch64')
-url="http://foicica.com/textadept/"
+url="https://github.com/orbitalquark/textadept"
 license=('MIT')
 makedepends=('gtk2' 'gtk3' 'ncurses' 'wget' 'unzip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/orbitalquark/$pkgname/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('07ca4cb64682021f3bf948d810495e23ec7761705f958e5057383e7d8e2a9a74')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgname}_$pkgver.tar.gz")
+sha256sums=('1c7a9ce9dac812aadab2c4e01cf9028f5edd67bf287931d3dd6bb7d432ac7396')
 
 prepare() {
 	cd "textadept-textadept_$pkgver/src"
@@ -20,7 +19,11 @@ prepare() {
 	## thanks lacsaP
 	sed -i '1008s/volatile//;1099s/volatile//;' scintilla/gtk/ScintillaGTKAccessible.cxx
 	## makes compile flags work again
-	sed -i 's/CFLAGS =/CFLAGS +=/g;s/CXXFLAGS =/CXXFLAGS +=/g;s/LDFLAGS =/LDFLAGS +=/g' Makefile
+	sed -i \
+		-e 's/CFLAGS =/CFLAGS +=/g' \
+		-e 's/CXXFLAGS =/CXXFLAGS +=/g' \
+		-e 's/LDFLAGS =/LDFLAGS +=/g' \
+		Makefile
 }
 
 package_textadept() {
