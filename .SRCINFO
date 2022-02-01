@@ -1,0 +1,18 @@
+pkgbase = gdmap
+	pkgdesc = Tool to inspect the used space of folders.
+	pkgver = 0.8.1
+	pkgrel = 6
+	url = http://gdmap.sourceforge.net
+	arch = x86_64
+	license = GPL
+	makedepends = gettext
+	makedepends = intltool
+	depends = gtk2
+	depends = glib2
+	depends = libxml2
+	source = https://downloads.sourceforge.net/sourceforge/gdmap/gdmap-0.8.1.tar.gz
+	source = gtk-fix.patch
+	sha256sums = a200c98004b349443f853bf611e49941403fce46f2335850913f85c710a2285b
+	sha256sums = ca88b75a030adfa37907266a12fd63d019c70f34885487f62e176741ca2af8da
+
+pkgname = gdmap
