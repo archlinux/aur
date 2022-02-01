@@ -1,8 +1,8 @@
 pkgbase = porth-gitlab
 	pkgdesc = [Unstable/W.I.P] It's like Forth but in Python.
-	pkgver = 0.56
-	pkgrel = 2
-	url = https://gitlab.com/tsoding/porth.git
+	pkgver = r1111.d55dc83
+	pkgrel = 1
+	url = https://gitlab.com/tsoding/porth
 	arch = x86_64
 	license = MIT
 	makedepends = git
