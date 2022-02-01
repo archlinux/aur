@@ -1,14 +1,13 @@
 pkgbase = passphrase
 	pkgdesc = Small, simple passphrase generator, written in Zig
-	pkgver = 1.1
-	pkgrel = 2
+	pkgver = 1.2
+	pkgrel = 1
 	url = https://git.sr.ht/~alva/passphrase
 	arch = any
 	license = MIT
-	makedepends = zig>=0.8.0
+	makedepends = zig>=0.9.0
 	makedepends = git
-	source = git+https://git.sr.ht/~alva/passphrase#tag=1.1
+	source = git+https://git.sr.ht/~alva/passphrase#tag=1.2
 	sha256sums = SKIP
 
 pkgname = passphrase
-

@@ -1,12 +1,12 @@
 # Maintainer: ugla <ugla at u8 dot is>
 pkgname=passphrase
-pkgrel=2
-pkgver=1.1
+pkgrel=1
+pkgver=1.2
 pkgdesc="Small, simple passphrase generator, written in Zig"
 arch=('any')
 url="https://git.sr.ht/~alva/${pkgname}"
 license=('MIT')
-makedepends=('zig>=0.8.0' 'git')
+makedepends=('zig>=0.9.0' 'git')
 source=(git+https://git.sr.ht/~alva/${pkgname}#tag=${pkgver})
 sha256sums=('SKIP')
 
