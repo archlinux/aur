@@ -1,14 +1,14 @@
 # Maintainer: Lucas Pape <development@lucaspape.de>
 
 _npmname=monitoring.js
-_npmver=1.1.4
+_npmver=1.1.5
 pkgname=monitoring.js
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Run commands on local/remote servers and send messages when they fail"
 arch=('i686' 'x86_64')
 install=${pkgname}.install
-depends=('nodejs' 'openssh')
+depends=('nodejs' 'openssh' 'pacman-contrib')
 makedepends=('npm')
 url="https://github.com/lucaspape/monitoring.js"
 license=('GPL3')
