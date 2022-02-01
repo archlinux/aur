@@ -2,7 +2,7 @@
 #Maintainer: Rafael Fontenelle <rafaelff at gnome dot org>
 
 pkgname="mongodb-bin"
-pkgver="5.0.5"
+pkgver="5.0.6"
 _basever="5.0"
 _basedist="focal"
 pkgrel="1"
@@ -44,13 +44,13 @@ sha256sums=('f2a79c7fcd75253ab1cb888541a0c0678bf3bb78700c79996e24a678f1e42850'
             '47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b'
             '51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac'
             '09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27')
-sha256sums_x86_64=('786133365c2e3bf6ba67355b353ab2af087a0e05400f131ff3c0110c56b2ae9f'
-                   'f2ff512fc95500035a8043ac48e3e74e5a5409c329c6137c22cbdbbbe589f909'
-                   'b63578d7f4e78c5efb77f83857b3ae5ec1d5242dcd3d552dd60326b7b6ddd512'
+sha256sums_x86_64=('3de24b61552a61ed118433890c1a37d222f819508dfae0e5dc46d30118e6c81f'
+                   '464e373cd40df29dbfdd70c38d63b3266cc18ecdfd091d3a90bad3b6bfb99e0a'
+                   'e753a04dc6bf382613bce85fcede80efa58199156204bed8065f34bb84495f17'
 )
-sha256sums_aarch64=('0d811ca4c604b91f67b24b3aeece1f0ea9c24518aae7cfdcd34c2dbf2b8caae6'
-                    '42bf51c1ee6045ab89241db6236a0ed493c36cf3d545d1c8b012b571ee8b8bfd'
-                    'e4e1444032fa5dfbd5a16d448693c5b0bb0bdebf18befe69b9a6cddbab36426b'
+sha256sums_aarch64=('f97036a6dfa630a798d648a24297a03f7c70db14ac2fd330a6913387ba1cccd9'
+                    '479e823540f0ce8a6bfcd9fe8cac821531f055959c7b73ad3cf1451c04b20f9f'
+                    'c4bc42de2c0037dc4b7ca5d27771f1057bb1a3f9d693d43aa89f4bde846ebfb7'
 )
 prepare() {
   mkdir -p output
