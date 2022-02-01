@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=libs76-hidpi-widget-git
-pkgver=r16.4a37fba
+pkgver=r17.a66eb84
 pkgrel=1
 pkgdesc="System76 HiDPI daemon widget library"
 arch=('x86_64' 'aarch64')
@@ -28,8 +28,8 @@ build() {
   cd "$srcdir/hidpi-widget"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
-  cargo build --frozen --release --manifest-path ffi/Cargo.toml
+  cargo build --release
+  cargo build --release --manifest-path ffi/Cargo.toml
   cargo run -p tools --bin pkgconfig -- \
     s76_hidpi_widget /usr/lib /usr/include
 }

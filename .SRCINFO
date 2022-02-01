@@ -1,6 +1,6 @@
 pkgbase = libs76-hidpi-widget-git
 	pkgdesc = System76 HiDPI daemon widget library
-	pkgver = r16.4a37fba
+	pkgver = r17.a66eb84
 	pkgrel = 1
 	url = https://github.com/pop-os/hidpi-widget
 	arch = x86_64
