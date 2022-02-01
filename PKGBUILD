@@ -1,21 +1,19 @@
 # Maintainer: Mike Cuche <cuche AT mailbox.org>
 
 pkgname=dosbox-x
-pkgver=0.83.21
+pkgver=0.83.22
 pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
 license=(GPL)
-depends=(fluidsynth libxkbfile libpng libxrandr mesa ffmpeg physfs)
+depends=(fluidsynth libxkbfile libpng libxrandr mesa ffmpeg physfs libslirp libpcap)
 makedepends=(glu libpcap libslirp)
-optdepends=('openglide-git: Third-party 3dfx Glide API support'
- 'libpcap: Allows DosBox-X to connect to a network and to the internet'
- 'libslirp: Allows DosBox-X to connect to the internet (rootless solution)')
+optdepends=('openglide-git: Third-party 3dfx Glide API support')
 conflicts=(dosbox-x-git)
 source=(https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v${pkgver}.tar.gz)
 
-sha256sums=('ec13bf16a9761c755df25f8b780aee589e328bcd490ac372538f8a87846456a2')
+sha256sums=('75c5c1eb3b78701a80ad816f414640894cb0b5998a1a4d7f2af064b47a57b8c9')
 
 build() {
   cd $srcdir/dosbox-x-dosbox-x-v${pkgver}

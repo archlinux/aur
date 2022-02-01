@@ -1,6 +1,6 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
-	pkgver = 0.83.21
+	pkgver = 0.83.22
 	pkgrel = 1
 	url = http://dosbox-x.com
 	arch = i686
@@ -17,11 +17,11 @@ pkgbase = dosbox-x
 	depends = mesa
 	depends = ffmpeg
 	depends = physfs
+	depends = libslirp
+	depends = libpcap
 	optdepends = openglide-git: Third-party 3dfx Glide API support
-	optdepends = libpcap: Allows DosBox-X to connect to a network and to the internet
-	optdepends = libslirp: Allows DosBox-X to connect to the internet (rootless solution)
 	conflicts = dosbox-x-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.21.tar.gz
-	sha256sums = ec13bf16a9761c755df25f8b780aee589e328bcd490ac372538f8a87846456a2
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.83.22.tar.gz
+	sha256sums = 75c5c1eb3b78701a80ad816f414640894cb0b5998a1a4d7f2af064b47a57b8c9
 
 pkgname = dosbox-x
