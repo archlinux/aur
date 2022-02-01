@@ -1,3 +1,0 @@
-#!/bin/sh
-/usr/lib/easytax2021bl/EasyTax-Programm_2021_BL "$@"
-

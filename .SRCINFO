@@ -1,21 +1,15 @@
 pkgbase = easytax2021bl
-	pkgdesc = Baselland tax declaration software, kanton basel-landschaft.
+	pkgdesc = Baselland tax declaration software, kanton basel-landschaft, 2021.
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://www.baselland.ch/politik-und-behorden/direktionen/finanz-und-kirchendirektion/steuerverwaltung/privatperson/easytax
 	arch = any
 	license = custom
-	makedepends = java-environment>=8
 	depends = java-runtime>=8
 	depends = bash
 	source = https://msg-easytax.ch/bl/2021/EasyTax2021BL_unix_1_0.tar.gz
 	source = easytax2021bl.desktop
-	source = easytax2021bl.run
 	sha256sums = 4eaab0c3df239a5deb0ef16ccfc1363976b9bb7f77cd02b9618979b904fe9d90
 	sha256sums = dc0bf55a93ca40169b0018b5df6b1917f04d70afccb221581892a5eed94ac603
-	sha256sums = 046859e2f9e65c3f93cc021e7bbd6426345b11ee5759dd75c125cee68607a63f
 
 pkgname = easytax2021bl
-	depends = java-runtime>=8
-	depends = bash
-	depends = java-runtime
