@@ -3,7 +3,7 @@
 
 pkgname=myetherwallet
 _pkgname=MyEtherWallet
-pkgver=6.4.3
+pkgver=6.4.5
 _pkgversuffix=
 pkgrel=1
 pkgdesc='Client-side interface for interacting with the Ethereum blockchain'
@@ -15,8 +15,8 @@ source=($url/releases/download/v$pkgver$_pkgversuffix/$_pkgname-v$pkgver$_pkgver
         myetherwallet.desktop
         myetherwallet
         LICENSE)
-sha256sums=('cdfbfe734731e642e64e50393e69120b25e25f85a2c7481ce4f11c1a328fe913'
-            '8aa7aa1d3ac87a8ca4cdd282403c9a971a5b4f290f96dd0cfed62a9a3ef4fa34'
+sha256sums=('7afadec54bd0a5c706088a16f31be0db04ce21ce39b17de66805c51a6a52a309'
+            '93f3a7cb4066a45705b92fa5b4cbb64b646a67760494ab4bf6460996e0862b26'
             'b49e3bb0cded23c40820281a110d2baed5d1f7aa036635108323d0133e0e30e9'
             '814f489e4e6e0ce172513febf58d6821e7b77cd2e644152aec4888228fe41da5'
             '42039cf560b0b2b35463f33656d9639c8f9b98e9a4f57723dbab0a90a4ad8ad6')
