@@ -1,0 +1,35 @@
+From f4d8292cf67ab481a27ea88f04e2edd6dc16119e Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Fri, 3 Feb 2012 15:37:06 +0100
+Subject: [PATCH] ZipArchive: More complete fix for gcc-4.7
+
+Reverting the #ifdef changes I did last time and adding an include
+should do the trick. More testing on older platforms is needed though.
+---
+ zip/ZipArchive/stdafx.h |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/zip/ZipArchive/stdafx.h b/zip/ZipArchive/stdafx.h
+index db54a41..ddb2fd4 100644
+--- a/zip/ZipArchive/stdafx.h
++++ b/zip/ZipArchive/stdafx.h
+@@ -23,6 +23,7 @@
+ 
+ #include "_features.h"
+ #include "_platform.h"
++#include <unistd.h>
+ 
+ #if _MSC_VER > 1000
+ 	#pragma once
+@@ -67,7 +68,7 @@
+ 	#define ZIP_SIZE_TYPE DWORD
+ 	#define ZIP_ZLIB_TYPE int
+ 
+-#if !defined(_INTPTR_T_DEFINED)
++#if !defined(_INTPTR_T_DEFINED) && !defined(__GNUC__)
+ 	#if defined (__BORLANDC__)
+ 		#include <stdint.h>
+ 	#elif _MSC_VER <= 1200 || !defined _MSC_VER
+-- 
+1.7.8.4
+

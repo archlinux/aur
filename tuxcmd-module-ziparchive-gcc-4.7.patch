@@ -1,0 +1,73 @@
+From e932ebbf029a4cdb38c61a838e8f3669debd410e Mon Sep 17 00:00:00 2001
+From: Tomas Bzatek <tbzatek@redhat.com>
+Date: Tue, 31 Jan 2012 13:19:50 +0000
+Subject: ZipArchive: GCC 4.7 compatibility
+
+---
+diff --git a/zip/ZipArchive/ZipCollections_stl.h b/zip/ZipArchive/ZipCollections_stl.h
+index 8792a6e..3facaad 100644
+--- a/zip/ZipArchive/ZipCollections_stl.h
++++ b/zip/ZipArchive/ZipCollections_stl.h
+@@ -86,10 +86,10 @@ public:
+ 	}
+ 	TYPE& GetAt(size_t uIndex) {return this->at(uIndex);}
+ 	const TYPE& GetAt(size_t uIndex) const {return this->at(uIndex);} 
+-	size_t Add(const TYPE& x) {push_back(x);return GetUpperBound();}
++	size_t Add(const TYPE& x) {this->push_back(x);return GetUpperBound();}
+ 	void RemoveAll() {this->clear();}
+-	void RemoveAt(size_t uIndex) { erase(GetIterFromIndex(uIndex));}
+-	void InsertAt(size_t uIndex, const TYPE& x){insert(GetIterFromIndex(uIndex), x);}
++	void RemoveAt(size_t uIndex) { this->erase(GetIterFromIndex(uIndex));}
++	void InsertAt(size_t uIndex, const TYPE& x){this->insert(GetIterFromIndex(uIndex), x);}
+ 
+ 	TYPE& operator[](size_t uIndex)
+ 	{
+@@ -114,8 +114,8 @@ public:
+ 	typedef typename std::list<TYPE>::iterator iterator;
+ 	typedef typename std::list<TYPE>::const_iterator const_iterator;
+ 	size_t GetCount() const {return this->size();}
+-	void AddTail(const TYPE& x){push_back(x);}
+-	void AddHead(const TYPE& x){push_front(x);}
++	void AddTail(const TYPE& x){this->push_back(x);}
++	void AddHead(const TYPE& x){this->push_front(x);}
+ 	void RemoveHead() {this->pop_front();}
+ 	void RemoveTail() {this->pop_back();}
+ 	void RemoveAll() {this->clear();}
+@@ -131,7 +131,7 @@ public:
+ 	TYPE& GetPrev(iterator& pos) { return *pos--;}
+ 	TYPE GetPrev(iterator& pos) const{ return *pos--;}
+ 	iterator Find(TYPE& x) { return std::find(this->begin(), this->end(), x);}
+-	void RemoveAt(iterator& pos) { erase(pos);}
++	void RemoveAt(iterator& pos) { this->erase(pos);}
+ 	bool IteratorValid(const_iterator &iter) const
+ 	{
+ 		return iter != this->end();
+@@ -167,11 +167,11 @@ public:
+ 	typedef typename  std::map<KEY,VALUE, std::less<KEY>, std::allocator<std::pair<const KEY, VALUE> > >::value_type v_type;
+ 	void SetAt( KEY key, VALUE newValue)
+ 	{
+-		insert(v_type(key, newValue));
++		this->insert(v_type(key, newValue));
+ 	}
+ 	ZBOOL RemoveKey( KEY key )
+ 	{
+-		return erase(key) != 0;
++		return this->erase(key) != 0;
+ 	}
+ 	ZBOOL Lookup( KEY key, VALUE& rValue ) const
+ 	{
+diff --git a/zip/ZipArchive/stdafx.h b/zip/ZipArchive/stdafx.h
+index 9d96081..db54a41 100644
+--- a/zip/ZipArchive/stdafx.h
++++ b/zip/ZipArchive/stdafx.h
+@@ -67,7 +67,7 @@
+ 	#define ZIP_SIZE_TYPE DWORD
+ 	#define ZIP_ZLIB_TYPE int
+ 
+-#if !defined(_INTPTR_T_DEFINED) && !defined(__GNUC__)
++#if !defined(_INTPTR_T_DEFINED)
+ 	#if defined (__BORLANDC__)
+ 		#include <stdint.h>
+ 	#elif _MSC_VER <= 1200 || !defined _MSC_VER
+--
+cgit v0.9.0.2

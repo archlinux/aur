@@ -1,0 +1,11 @@
+--- tuxcmd-modules-0.6.70/libarchive/libarchive.c.orig	2011-11-20 12:49:20.348256064 +0000
++++ tuxcmd-modules-0.6.70/libarchive/libarchive.c	2011-11-20 12:50:10.253257075 +0000
+@@ -141,7 +141,7 @@
+ 
+   module_info->ID = g_strdup ("libarchive_plugin");
+   module_info->Name = g_strdup ("libarchive plugin");
+-  module_info->About = g_strdup_printf ("version %s, build date: %s\nusing %s\n", VERSION, BUILD_DATE, ARCHIVE_LIBRARY_VERSION);
++  module_info->About = g_strdup_printf ("version %s, build date: %s\nusing %s\n", VERSION, BUILD_DATE, archive_version_string());
+   module_info->Copyright = g_strdup ("Plugin Copyright (C) 2008-2009 Tomáš Bžatek\nlibarchive sources Copyright (c) 2003-2007 Tim Kientzle");
+ 
+   return module_info;

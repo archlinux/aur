@@ -1,0 +1,11 @@
+--- tuxcmd-modules-0.6.70/gvfs/gvfs.c.orig	2011-11-20 14:07:03.990300572 +0000
++++ tuxcmd-modules-0.6.70/gvfs/gvfs.c	2011-11-20 14:07:19.440300466 +0000
+@@ -25,7 +25,7 @@
+ #include <errno.h>
+ 
+ #include <gio/gio.h>
+-#include <glib/gtypes.h>
++#include <glib.h>
+ 
+ #include "vfs_types.h"
+ 
