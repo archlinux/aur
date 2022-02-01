@@ -1,26 +1,25 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-cfclient
-pkgver=2021.6.1
-pkgrel=2
+pkgver=2022.1
+pkgrel=1
 pkgdesc='Host applications and library for Crazyflie written in Python.'
 arch=('any')
 url='https://github.com/bitcraze/crazyflie-clients-python'
 license=('GPL-2.0')
 depends=(python python-cflib python-appdirs python-pyzmq python-pyqtgraph
-         python-pyaml python-quamash python-qtm python-numpy python-vispy
-         python-pyserial python-pyqt5)
+         python-pyaml python-asyncqt python-qtm python-numpy python-vispy
+         python-pyserial python-pyqt5 python-pyqt5-sip)
 optdepends=(crazyflie-udev crazyradio-udev)
-makedepends=(python python-setuptools python-cx_freeze)
+makedepends=(python python-setuptools python-cx-freeze)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bitcraze/crazyflie-clients-python/archive/$pkgver.tar.gz")
-sha256sums=('f0df15f48bf0c638cbf50ade479fb7c243d8ca5b015128b0a95c26fbc02c5462')
+sha256sums=('4476daf4a6cfd25e218305af641c269d6ab6457a8ed56b2d7cdd0f3f117660cc')
 
 _pkgname=crazyflie-clients-python
 
 prepare() {
     sed -i "s/= get_version()/= \"${pkgver}\"/g" ${srcdir}/${_pkgname}-${pkgver}/setup.py
-    sed -i "s/~/>/g" ${srcdir}/${_pkgname}-${pkgver}/setup.py
-    sed -i "20i'bin_path_includes': ['/usr/lib/python3.9/site-packages/cx_Freeze/bases']," ${srcdir}/${_pkgname}-${pkgver}/setup.py
+    sed -i "20i'bin_path_includes': ['/usr/lib/python3.10/site-packages/cx_Freeze/bases']," ${srcdir}/${_pkgname}-${pkgver}/setup.py
 }
 
 build() {
