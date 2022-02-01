@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r1620+gc82b9c68
+pkgver=1.0.0+r1636+g07f7289e
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -31,7 +31,7 @@ depends=(
         'python-redis-ng'
         'python-mistletoe-ng'
         'python-typing_extensions')
-conflicts=('searx' 'searx-git')
+conflicts=('searx' 'searx-git' 'python-httpx-socks' 'python-redis' 'python-mistletoe')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
 _giturl="https://github.com/searxng/searxng"
 _gitbranch="master"
