@@ -1,7 +1,7 @@
 pkgbase = prusa-slicer-gtk2
 	pkgdesc = G-code generator for 3D printers (built with GTK2)
 	pkgver = 2.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/prusa3d/PrusaSlicer
 	arch = x86_64
 	arch = i686
@@ -32,6 +32,8 @@ pkgbase = prusa-slicer-gtk2
 	conflicts = prusa-slicer
 	replaces = slic3r-prusa3d
 	source = https://github.com/prusa3d/PrusaSlicer/archive/version_2.4.0/prusa-slicer-gtk2-2.4.0.tar.gz
+	source = cereal-1.3.1-compat.patch
 	sha256sums = 906d0acf0d0e064ae3cbaa16ba1a2e24dd9c32ceb2121464cb4d5951c09e66c2
+	sha256sums = 352c81fc311ff1fa0c78c5ce74b9d0029d64901676ff2863e05bd6eb59a3a1df
 
 pkgname = prusa-slicer-gtk2
