@@ -1,0 +1,11 @@
+pkgbase = rime-sbxlm-sbkm
+	pkgdesc = 声笔系列码，声笔快码
+	pkgver = 220124
+	pkgrel = 1
+	arch = any
+	groups = sbxlm
+	depends = rime-sbxlm
+	source = https://gitee.com/sbxlm/sbxlm/attach_files/958329/download/SbkmPack220124.zip
+	sha256sums = c80cbf86a23ff4b244c6a5434223a609ef7a1a251649c0cd56703f2c0be95438
+
+pkgname = rime-sbxlm-sbkm
