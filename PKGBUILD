@@ -3,12 +3,12 @@
 pkgname=cni-plugins-bin
 pkgdesc="Container Networking Interface (CNI) Plugins"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7h' 'armv7l')
 url="https://www.cni.dev/"
 license=('Apache')
-conflicts=('cni' 'cni-plugins')
-provides=("cni=${pkgver}")
+conflicts=('cni-plugins')
+provides=("cni-plugins=${pkgver}")
 source=()
 sha256sums=()
 
