@@ -1,11 +1,64 @@
-From b304bc5408e9f2b02ca879089c6d0d3453f07a1d Mon Sep 17 00:00:00 2001
+From 34028bb7dfd0857335aee9c0a4d39af6d2c54de4 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Tue, 25 Jan 2022 03:00:18 -0800
-Subject: [PATCH] v5.16.3 s0ix patch 2022-01-25
+Date: Tue, 1 Feb 2022 01:39:06 -0800
+Subject: [PATCH] v5.16.5 s0ix patch 2022-02-01
 
 Squashed commit of the following:
 
-commit 5ea443ed5fb99b4a4fa3680d84800524cf8c8ce0
+commit ea664c8be33e351114d8720119ddd0f5f3130f9d
+Author: Mario Limonciello <mario.limonciello@amd.com>
+Date:   Fri Jan 28 14:35:03 2022 -0600
+
+    ACPI: PM: Revert "Only mark EC GPE for wakeup on Intel systems"
+
+    Testing on various upcoming OEM systems shows commit 7b167c4cb48e ("ACPI:
+    PM: Only mark EC GPE for wakeup on Intel systems") was short
+    sighted and the symptoms were indicative of other problems. Some OEMs
+    do have the dedicated GPIOs for the power button but also rely upon
+    an interrupt to the EC SCI to let the lid work.
+
+    The original commit showed spurious activity on Lenovo systems:
+         * On both Lenovo T14 and P14s the keyboard wakeup doesn't work, and
+           sometimes the power button event doesn't work.
+
+    This was confirmed on my end at that time.
+
+    However further development in the kernel showed that the issue was
+    actually the IRQ for the GPIO controller was also shared with the EC SCI.
+    This was actually fixed by commit 2d54067fcd23 ("pinctrl: amd: Fix
+    wakeups when IRQ is shared with SCI").
+
+    The original commit also showed problems with AC adapter:
+         * On HP 635 G7 detaching or attaching AC during suspend will cause
+           the system not to wakeup
+         * On Asus vivobook to prevent detaching AC causing resume problems
+         * On Lenovo 14ARE05 to prevent detaching AC causing resume problems
+         * On HP ENVY x360  to prevent detaching AC causing resume problems
+
+    Detaching AC adapter causing problems appears to have been a problem
+    because the EC SCI went off to notify the OS of the power adapter change
+    but the SCI was ignored and there was no other way to wake up this system
+    since GPIO controller wasn't properly enabled.  The wakeups were fixed by
+    enabling the GPIO controller in commit acd47b9f28e5 ("pinctrl: amd: Handle
+    wake-up interrupt").
+
+    I've confirmed on a variety of OEM notebooks with the following test
+    1) echo 1 | sudo tee /sys/power/pm_debug_messages
+    2) sudo systemctl suspend
+    3) unplug AC adapter, make sure system is still asleep
+    4) wake system from lid (which is provided by ACPI SCI on some of them)
+    5) dmesg
+       a) see the EC GPE dispatched, timekeeping for X seconds (matching ~time
+          until AC adapter plug out)
+       b) see timekeeping for Y seconds until woke (matching ~time from AC
+          adapter until lid event)
+    6) Look at /sys/kernel/debug/amd_pmc/s0ix_stats
+       "Time (in us) in S0i3" = X + Y - firmware processing time
+
+    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+    Tested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
+
+commit e3219ec6a0a52d400dbb78dfcc919f0881e625d5
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jan 20 11:44:39 2022 -0600
 
@@ -23,7 +76,7 @@ Date:   Thu Jan 20 11:44:39 2022 -0600
     Link: https://patchwork.freedesktop.org/patch/469993/
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit eee47dd38d08ddd658edf1a59dfb77b759f98778
+commit 79455bfa73afb98aafbf1c3f8e8fc1db1eeecfc2
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -42,7 +95,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit d0abe9fe91000dd97ed7695b42d4d9fd6953149f
+commit 488b95d5909a32226f40b3ad6c3785939ccc6609
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -55,13 +108,13 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit d49a43a7795b26842b495de26537f873eab4b7e4
+commit e59eb4486721ed0d343e424ce011fd077be8833e
 Author: Julian Sikorski <belegdol+github@gmail.com>
 Date:   Fri Nov 19 17:52:36 2021 +0100
 
     GFXOFF check patch by Lijo Lazar
 
-commit 9ebb97c9270c70966120ac3027d65a37a732baf7
+commit 9958345a9b27cd6e6f4ac6eab2fcb3e0039250c7
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -74,13 +127,13 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 ---
- drivers/acpi/x86/s2idle.c                 |   6 +
+ drivers/acpi/x86/s2idle.c                 |  18 ++-
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   5 +-
  drivers/platform/x86/amd-pmc.c            | 185 +++++++++++++++++++---
- 3 files changed, 175 insertions(+), 21 deletions(-)
+ 3 files changed, 179 insertions(+), 29 deletions(-)
 
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
-index 1c48358b43ba..0b65d4623214 100644
+index 1c48358b43ba..374aa2e8203f 100644
 --- a/drivers/acpi/x86/s2idle.c
 +++ b/drivers/acpi/x86/s2idle.c
 @@ -309,6 +309,12 @@ static void lpi_check_constraints(void)
@@ -96,6 +149,26 @@ index 1c48358b43ba..0b65d4623214 100644
  		if (adev->power.state < lpi_constraints_table[i].min_dstate)
  			acpi_handle_info(handle,
  				"LPI: Constraint not met; min power state:%s current power state:%s\n",
+@@ -424,15 +430,11 @@ static int lps0_device_attach(struct acpi_device *adev,
+ 		mem_sleep_current = PM_SUSPEND_TO_IDLE;
+ 
+ 	/*
+-	 * Some Intel based LPS0 systems, like ASUS Zenbook UX430UNR/i7-8550U don't
+-	 * use intel-hid or intel-vbtn but require the EC GPE to be enabled while
+-	 * suspended for certain wakeup devices to work, so mark it as wakeup-capable.
+-	 *
+-	 * Only enable on !AMD as enabling this universally causes problems for a number
+-	 * of AMD based systems.
++	 * Some LPS0 systems, like ASUS Zenbook UX430UNR/i7-8550U, require the
++	 * EC GPE to be enabled while suspended for certain wakeup devices to
++	 * work, so mark it as wakeup-capable.
+ 	 */
+-	if (!acpi_s2idle_vendor_amd())
+-		acpi_ec_mark_gpe_for_wake();
++	acpi_ec_mark_gpe_for_wake();
+ 
+ 	return 0;
+ }
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
 index 9d7d64fdf410..37e83df92264 100644
 --- a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
@@ -431,5 +504,5 @@ index 230593ae5d6d..9b6dc15547f5 100644
  	return 0;
  }
 -- 
-2.35.0
+2.35.1
 
