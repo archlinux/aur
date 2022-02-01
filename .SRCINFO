@@ -1,6 +1,6 @@
 pkgbase = words-pl
 	pkgdesc = A ‘words’ file for Polish language
-	pkgver = 20210427
+	pkgver = 20211220
 	pkgrel = 1
 	url = https://sjp.pl/slownik/odmiany/
 	arch = any

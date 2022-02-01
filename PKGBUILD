@@ -2,7 +2,7 @@
 # TODO: check if using https://sjp.pl/slownik/ort/ won't be better idea
 
 pkgname=words-pl
-pkgver=20210427
+pkgver=20211220
 pkgrel=1
 pkgdesc="A ‘words’ file for Polish language"
 arch=("any")
