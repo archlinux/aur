@@ -1,0 +1,17 @@
+pkgbase = onivim2-bin
+	pkgdesc = Native, lightweight modal code editor.
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/santilococo/oni2
+	arch = x86_64
+	license = MIT
+	depends = glu
+	provides = onivim2
+	conflicts = onivim2
+	options = !strip
+	source = https://github.com/santilococo/oni2/releases/download/v0.5.7/AppDir.tar
+	source = https://github.com/santilococo/oni2/releases/download/v0.5.7/AppCache.tar
+	sha256sums = 7858a23451b92e4e881b0a2b2ec953dbd9d146fbbc44d7c5cf31b717d12d32b3
+	sha256sums = 76bed45212235bb9f6c4a79d88684fdde3e2b70079ba06f9033113440155d322
+
+pkgname = onivim2-bin
