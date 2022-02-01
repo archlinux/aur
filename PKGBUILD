@@ -1,11 +1,11 @@
 # Maintainer: Anthony Wang <ta180m@pm.me>
 
 pkgname=woodpecker
-pkgver=0.15.0_rc1
+pkgver=0.15.0_rc2
 _pkgver=${pkgver/_/-}
-pkgrel=3
-pkgdesc="Woodpecker is a community fork of the Drone CI system."
-arch=(any)
+pkgrel=1
+pkgdesc="A community fork of the Drone CI system."
+arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
 license=('Apache')
 makedepends=('git' 'go')
@@ -21,7 +21,7 @@ source=(
   'woodpecker.conf'
   'woodpecker-agent.conf'
 )
-sha256sums=('39769d543dddd1cc2afaaff6af8ad145447ff4c220a9969e7fb24e780bd30704'
+sha256sums=('d683dc41b5a5f6473dd266aca9017ba53ffa7d64c5ae8a541be03b6571dbf7dd'
             '18bb1cc48b42fdb9df711a73a5c1753489ff68c2790b6f24811050f1ab353ac0'
             '77d03cc1faec8ad0f313e3965b272545d3c4067c640f7cb30d80cbfcfc49720c'
             'eb2d8ee56073527b3373721f0693a7c1331ce994d1843a6d8396268face86963'
@@ -38,6 +38,20 @@ prepare() {
 build() {
   cd "$pkgname-$_pkgver"
 
+  # This package's Makefile uses the TARGETARCH variable's value to determine
+  # what is the current architecture. TARGETARCH defaults to `amd64`, which is
+  # fine for x86_64. Other possible values are `arm64` and `arm`. Currently
+  # tested values are :
+  #  - TARGETARCH amd64 when CARCH is x86_64
+  #  - TARGETARCH arm when CARCH is armv7h
+  case $CARCH in
+    x86_64) export TARGETARCH=amd64;;
+    aarch64) export TARGETARCH=arm64;;
+    armv7h) export TARGETARCH=arm;;
+    *)
+      warn "untested architecture - if needed update PKGBUILD to build on arch $CARCH";;
+  esac
+
   GOFLAGS=-trimpath make build
 }
 
@@ -53,3 +67,4 @@ package() {
 
   install -vDm755 -t "$pkgdir/usr/bin" dist/*
 }
+
