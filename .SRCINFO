@@ -1,10 +1,13 @@
 pkgbase = rime-sbxlm
+	pkgdesc = 声笔系列码基础配置，包含声笔简码和声笔拼音
 	pkgver = 20220201
 	pkgrel = 1
 	arch = any
+	optdepends = librime-sbxlm-git
+	optdepends = fcitx5-rime
 	source = https://gitee.com/sbxlm/sbxlm/attach_files/958328/download/Sbxl4Win220201.zip
 	source = sbxlm-init
 	sha256sums = 69ae6e7a6896a1aa764eba6d8178d4a101c78d127f4f02fe19302835f17478af
-	sha256sums = 60aae38f7e58fcef75f5c3e3a2fe75ec3fed6529bdea9f16c4b3e20a8148f4db
+	sha256sums = 975a919b0cd6be791672e335ff849b1cb4aaf3a6030af38aeb5789ffb5c5a017
 
 pkgname = rime-sbxlm

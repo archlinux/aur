@@ -1,4 +1,5 @@
 #!/bin/bash -e
 XDG_DATA_HOME=${XDG_DATA_HOME:-~/.local/share}
 RIME_DIR=${RIME_DIR:-$XDG_DATA_HOME/fcitx5/rime}
+mkdir -p $RIME_DIR
 tar xf /usr/share/sbxlm/sbxlm-init-userdb.tar.gz --directory="$RIME_DIR"
