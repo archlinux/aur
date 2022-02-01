@@ -2,11 +2,11 @@
 
 pkgname=android-backup-extractor
 pkgver=20220119054922_ef67572
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
-makedepends=('git' 'apache-ant')
-depends=('bcprov')
+makedepends=('git' 'apache-ant' 'java-environment=11')
+depends=('bcprov' 'java-runtime=11')
 license=('apache')
 provides=('abe')
 url="https://github.com/nelenkov/android-backup-extractor"

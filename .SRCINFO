@@ -1,13 +1,15 @@
 pkgbase = android-backup-extractor
 	pkgdesc = Utility to extract and repack Android backups created with adb backup
 	pkgver = 20220119054922_ef67572
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nelenkov/android-backup-extractor
 	arch = any
 	license = apache
 	makedepends = git
 	makedepends = apache-ant
+	makedepends = java-environment=11
 	depends = bcprov
+	depends = java-runtime=11
 	provides = abe
 	source = https://github.com/nelenkov/android-backup-extractor/archive/refs/tags/20220119054922-ef67572.tar.gz
 	sha256sums = 3f3de26b22903425d5c55b1d00fa989ee20db0a725c009a620ea8544738e146e
