@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  meson --prefix=/usr --buildtype=plain -Dgui=true . build
+  meson --prefix=/usr --buildtype=plain -Dgui=true --wrap-mode=nofallback . build
   meson compile -C build
 }
 
