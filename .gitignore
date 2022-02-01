@@ -1,0 +1,5 @@
+pkg/
+src/
+prometheus-pve-exporter-*.pkg.tar.*
+prometheus-pve-exporter-*.tar.gz
+pve.yml

@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Proxmox VE Exporter
+Documentation=https://github.com/prometheus-pve/prometheus-pve-exporter
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pve_exporter /etc/prometheus/pve.yml
+User=pve-exporter
+Group=pve-exporter
+Restart=on-failure
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
