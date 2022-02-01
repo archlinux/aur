@@ -213,18 +213,12 @@ prepare() {
   echo "-$pkgrel" > localversion.99-pkgrel
   echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
-  # xanmod release localversion
-  local _xanlver=${xanmod##*\-}
-  # pkgver localversion, chop the +clang off clang builds
-  local _localversion=${pkgver##*\.}
-  _localversion=${_localversion%\+*}
-
-  # Monkey patch: If we're applying a point release on top of Xanmod official then we'll monkey with the
-  #               localversion and use our own localversion slug to indicate this isn't an upstream kernel.
-  if [[ "$_xanlver" != "$_localversion" ]]; then
-    msg2 "(Monkey)ing with kernel, rewriting localversion $_xanlver to $_localversion ..."
-    sed -Ei "s/xanmod[0-9]+/${_localversion}/" localversion
-  fi
+  # Extract localversions and update source if needed
+  local _xanlver=${xanmod##*\-}   # strip longest match '^*\-'
+  local _pkglver=${pkgver##*\.}   # strip longest match '^*\.'
+  _pkglver=${_pkglver%\+*}        # strip shortest match '\+*$' (removes +clang tag)
+  [[ "$_xanlver" != "$_pkglver" ]] &&
+    sed -Ei "s/xanmod[0-9]+/${_pkglver}/" localversion
 
   # Apply configuration
   msg2 "Applying kernel config..."
