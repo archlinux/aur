@@ -1,24 +1,24 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Cong Gu <gucong43216@gmail.com>
 pkgname=zoltan
-pkgver=3.90
-pkgrel=2
+pkgver=3.901
+pkgrel=1
 pkgdesc="Parallel Partitioning, Load Balancing and Data-Management Services"
 arch=('x86_64')
 url="https://github.com/sandialabs/${pkgname}"
 license=(LGPL)
-depends=(scotch parmetis openmpi)
+depends=(scotch parmetis)
 conflicts=('trilinos')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('29dc42c81db36129b0a97836c9192ef7e7fc86231f2f8224a68a36642042a0d8272e791a10a5907d2e07cac691cf5fc2e7199f92a0a441d4c165eae5c7b692cf')
+sha512sums=('e7c1e65abb0592cd16c0a8c5d4b98dc14001ed0a3169a66ed5cc28dbe621fefd9da7d05a584337d546301201a4b128233e659baa7c5c00ba5b92109cb0217306')
 
 prepare() {
-  rm -rf "${srcdir}/build"
-  mkdir -p "${srcdir}/build"
+  [ -d build ] && rm -r build
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/build"
+  cd build
 
   ../Zoltan-${pkgver}/configure \
     --prefix=/usr \
