@@ -26,11 +26,11 @@ package() {
 
     install -dm755 "${pkgdir}/opt/${_pkgname}"
     install -dm755 "${pkgdir}/usr/bin/"
-    install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
     install -Dm644 Onivim2.desktop "${pkgdir}/usr/share/applications/Onivim2.desktop"
     install -Dm644 Onivim2.png "${pkgdir}/usr/share/pixmaps/Onivim2.png"
-    cp -Lr {AppRun,usr} "${pkgdir}/opt/onivim2"
-    cp -r "${srcdir}/AppCache/camomile" "${pkgdir}/opt/onivim2/usr/share"
+    cp -Lr {AppRun,usr} "${pkgdir}/opt/${_pkgname}"
+    cp -r "${srcdir}/AppCache/camomile" "${pkgdir}/opt/${_pkgname}/usr/share"
     ln -s /opt/onivim2/AppRun "${pkgdir}/usr/bin/Oni2"
     find "${pkgdir}" -type f -exec chmod 644 {} \;
     chmod 755 "${pkgdir}"/opt/onivim2/AppRun \
