@@ -5,8 +5,8 @@ pkgver=20220119054922_ef67572
 pkgrel=2
 pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
-makedepends=('git' 'apache-ant' 'java-environment=11')
-depends=('bcprov' 'java-runtime=11')
+makedepends=('git' 'apache-ant' 'java-environment>=11')
+depends=('bcprov' 'java-runtime>=11')
 license=('apache')
 provides=('abe')
 url="https://github.com/nelenkov/android-backup-extractor"
@@ -30,7 +30,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver//_/-}"
-  JAVA_HOME="/usr/lib/jvm/java-11-openjdk" ant
+  latest_version="$(archlinux-java status | grep 'java-[0-9][0-9]' | sort --reverse | head --lines 1 | sed 's/(.*)//g' | tr -d '[:space:]')"
+  JAVA_HOME="/usr/lib/jvm/${latest_version}" ant
 }
 
 package() { 
