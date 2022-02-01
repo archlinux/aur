@@ -28,7 +28,7 @@ depends=(
         'python-async-timeout'
         'python-langdetect'
         'python-setproctitle'
-        'python-redis'
+        'python-redis-ng'
         'python-mistletoe-ng'
         'python-typing_extensions')
 conflicts=('searx' 'searx-git')
