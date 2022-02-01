@@ -1,4 +1,5 @@
 /src/
 /pkg/
 /*.tgz
+/LICENSE
 /*.pkg.tar.zst
