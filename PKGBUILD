@@ -9,7 +9,7 @@ arch=(any)
 source=("https://gitee.com/sbxlm/sbxlm/attach_files/958326/download/${downloadfile}")
 sha256sums=('345b7a10be8cca7880e0b191eaa0223ad38504706793cbc76babd5344e9a56cc')
 depends=('rime-sbxlm')
-groups=(rime-sbxlm)
+groups=(sbxlm)
 
 prepare () {
   cd $srcdir
