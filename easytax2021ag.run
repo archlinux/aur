@@ -1,0 +1,5 @@
+#!/bin/sh
+# should be all what is necessary, but it does not find its config file
+# exec /usr/bin/java -jar /usr/lib/easytax2021ag/lib/ETAG21.jar "$@"
+/usr/lib/easytax2021ag/EasyTax2021_AG "$@"
+
