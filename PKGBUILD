@@ -1,7 +1,7 @@
 # Maintainer: Corey Hinshaw <coreyhinshaw(at)gmail(dot)com>
 
 pkgname=batsignal
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A lightweight battery monitor daemon"
 arch=("any")
@@ -12,7 +12,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/electrickite/${pkgname}/archive/${pkgver}.tar.gz"
   "${pkgname}.service")
 sha256sums=(
-  "d7de91f0896199185af1597405b42af9dfb26e12e029dfa37ca954b895228cbb"
+  "bf14ec376314545287b912ec3c8d6586b0794eabb528eaea657e24fe655e5b03"
   "f82fe0db1f02f4aa721d0a856680e6e3161830413088f51c1bf044b6ce5730cf")
 
 package() {
