@@ -48,5 +48,5 @@ package() {
 
 	# Install default config
 	install -dm755 "$pkgdir/etc"
-	install -m755 "$gsrcdir/garglk/garglk.ini" "$pkgdir/etc"
+	install -m644 "$gsrcdir/garglk/garglk.ini" "$pkgdir/etc"
 }
