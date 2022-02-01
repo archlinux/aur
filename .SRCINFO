@@ -1,0 +1,15 @@
+pkgbase = media-sort-bin
+	pkgdesc = Automatically organise your movies and tv series (pre-compiled)
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://github.com/jpillora/media-sort
+	arch = x86_64
+	license = MIT
+	provides = media-sort
+	conflicts = media-sort
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/jpillora/media-sort/releases/download/v2.6.2/media-sort_2.6.2_linux_amd64.gz
+	sha256sums = f7422e394d776e36c56983633ebb7ec878332cbc8b93645f4eb36e96dc0d6720
+
+pkgname = media-sort-bin
