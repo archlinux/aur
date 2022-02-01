@@ -1,6 +1,6 @@
 pkgbase = perl-prometheus-tiny
 	pkgdesc = A tiny Prometheus client
-	pkgver = 0.009
+	pkgver = 0.010
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Prometheus-Tiny
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = perl-prometheus-tiny
 	checkdepends = perl-plack
 	depends = perl
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Prometheus/Prometheus-Tiny-0.009.tar.gz
-	sha256sums = b88932901281539b372ff72669be8a4728be63c514d95a3ffb2d1948528f0ecd
+	source = http://cpan.perl.org/modules/by-module/Prometheus/Prometheus-Tiny-0.010.tar.gz
+	sha256sums = d4caa0147d18a858f939ed1961dd360e18b774faad41d62d28133321c3eac220
 
 pkgname = perl-prometheus-tiny
