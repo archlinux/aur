@@ -1,21 +1,13 @@
 pkgbase = python-progressbar33
 	pkgdesc = Text progress bar library for Python
 	pkgver = 2.4
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/progressbar33
+	pkgrel = 3
+	url = https://github.com/germangh/python-progressbar
 	arch = any
-	license = Apache
-	makedepends = python
+	license = LGPL
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-progressbar33-2.4.tar.gz::https://pypi.python.org/packages/71/fc/7c8e01f41a6e671d7b11be470eeb3d15339c75ce5559935f3f55890eec6b/progressbar33-2.4.tar.gz
-	sha256sums = 51fe0d9b3b4023db2f983eeccdfc8c9846b84db8443b9bee002c7f58f4376eff
+	depends = python
+	source = https://github.com/germangh/python-progressbar/archive/v2.4.tar.gz
+	sha512sums = 4050d5e211f5ff80f3373aefe4ef8c79db534a540e49f00ad7d2d657032c291d6048ca320e22067707c0eda87b52f53e130c50c9faa2d282a1bdead66f27531f
 
 pkgname = python-progressbar33
-	depends = python
-
-pkgname = python2-progressbar33
-	depends = python2
-
