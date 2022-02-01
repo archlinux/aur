@@ -1,6 +1,6 @@
 pkgbase = recaf-bin
 	pkgdesc = A modern Java bytecode editor
-	pkgver = 2.21.11
+	pkgver = 2.21.12
 	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = recaf-bin
 	conflicts = recaf
 	conflicts = recaf-git
 	replaces = recaf
-	noextract = recaf-2.21.11-J8-jar-with-dependencies.jar
-	source = https://github.com/Col-E/Recaf/releases/download/2.21.11/recaf-2.21.11-J8-jar-with-dependencies.jar
-	source = https://raw.githubusercontent.com/Col-E/Recaf/2.21.11/LICENSE
-	sha256sums = d5b3b481fdd43e81686b236b986242393d53dd9e623223af160e4114e617a4ea
+	noextract = recaf-2.21.12-J8-jar-with-dependencies.jar
+	source = https://github.com/Col-E/Recaf/releases/download/2.21.12/recaf-2.21.12-J8-jar-with-dependencies.jar
+	source = https://raw.githubusercontent.com/Col-E/Recaf/2.21.12/LICENSE
+	sha256sums = 523599424c776d8a2cad629cb4234833b217ef1944542919cd197916b58aa6ee
 	sha256sums = a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5
 
 pkgname = recaf-bin
