@@ -1,0 +1,19 @@
+pkgbase = sptlrx-bin
+	pkgdesc = Timesynced Spotify lyrics in your terminal.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/raitonoberu/sptlrx
+	arch = x86_64
+	arch = arm64
+	arch = i386
+	license = MIT
+	provides = sptlrx
+	conflicts = sptlrx
+	source_x86_64 = https://github.com/raitonoberu/sptlrx/releases/download/v0.1.0/sptlrx_0.1.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 50b803ab558fbcf62d1f02a1d6ebd6b3e732baa12d54fe91c88f56545c443979
+	source_arm64 = https://github.com/raitonoberu/sptlrx/releases/download/v0.1.0/sptlrx_0.1.0_Linux_arm64.tar.gz
+	sha256sums_arm64 = 28d02fa85c226f17eab73457daa6e0466c7dcc4f6672058e56f8c1e4467692ad
+	source_i386 = https://github.com/raitonoberu/sptlrx/releases/download/v0.1.0/sptlrx_0.1.0_Linux_i386.tar.gz
+	sha256sums_i386 = dc3102bdba4e19194501e74107d50864db6495f428c795b2f265e604cca3ec8e
+
+pkgname = sptlrx-bin
