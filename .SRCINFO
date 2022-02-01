@@ -14,7 +14,7 @@ pkgbase = ani-cli
 	optdepends = vlc: An alternative video player
 	optdepends = aria2: For downloading episodes
 	conflicts = ani-cli-git
-	source = https://github.com/pystardust/ani-cli/releases/download/v1.6/ani-cli
-	sha256sums = e2e6ab7d9419d81b84b2300d3f9b45044d7e50b07e6378ce78a68a100deeaf52
+	source = ani-cli-1.6.tar.gz::https://github.com/pystardust/ani-cli/archive/refs/tags/v1.6.tar.gz
+	sha256sums = b53a8ebf7bf44bc7497ad4b4247e941ca9a7a89365717d3f4a2da349bcc80e45
 
 pkgname = ani-cli

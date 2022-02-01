@@ -10,9 +10,10 @@ depends=('grep' 'sed' 'curl' 'openssl' 'jq' 'mpv')
 optdepends=('vlc: An alternative video player'
 'aria2: For downloading episodes')
 conflicts=('ani-cli-git')
-source=("https://github.com/pystardust/ani-cli/releases/download/v${pkgver}/ani-cli")
-sha256sums=('e2e6ab7d9419d81b84b2300d3f9b45044d7e50b07e6378ce78a68a100deeaf52')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pystardust/ani-cli/archive/refs/tags/v1.6.tar.gz")
+sha256sums=('b53a8ebf7bf44bc7497ad4b4247e941ca9a7a89365717d3f4a2da349bcc80e45')
 
 package() {
+	cd "$srcdir/$pkgname-$pkgver"
         install -Dm755 ./ani-cli "$pkgdir/usr/bin/ani-cli"
 }
