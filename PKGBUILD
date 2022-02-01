@@ -2,7 +2,7 @@
 
 pkgname=porth-gitlab
 pkgver=0.56
-pkgrel=1
+pkgrel=2
 pkgdesc="[Unstable/W.I.P] It's like Forth but in Python."
 arch=('x86_64')
 url="https://gitlab.com/tsoding/porth.git"
@@ -16,7 +16,8 @@ build() {
 	cd "$srcdir/${pkgname%-gitlab}"
 	fasm -m 524288 ./bootstrap/porth-linux-x86_64.fasm
 	chmod +x ./bootstrap/porth-linux-x86_64
-	./bootstrap/porth-linux-x86_64 com -t fasm-linux-x86_64 ./porth.porth
+	./bootstrap/porth-linux-x86_64 com ./porth.porth
+	./porth com ./porth.porth
 }
 
 package() {
