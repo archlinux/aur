@@ -1,37 +1,69 @@
+# Maintainer: Logan Sevcik <logan+aur@sevcik.email>
 # Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
-pkgname=shairport-sync-git
-pkgver=3.3.2.r0.gb4c54fc
+_pkgname=shairport-sync
+pkgname=$_pkgname-git
+pkgver=4.1.dev.r189.g8b483c09
 pkgrel=1
-pkgdesc="AirPlay audio player. Shairport Sync adds multi-room capability with Audio Synchronisation"
+pkgdesc="AirPlay 2 audio player with multi-room playback"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mikebrady/shairport-sync"
 license=('custom')
-depends=('openssl' 'avahi' 'libdaemon' 'autoconf' 'automake' 'libtool' 'popt' 'libconfig')
-optdepends=(	'pulseaudio: PulseAudio support'
-		'libsoxr: libsoxr-based resampling'
-		'alac-git: Apple ALAC decoder'
-		)
+makedepends=('autoconf' 'automake' 'libtool' 'xxd' 'libalac' 'mosquitto')
+depends=('openssl' 'avahi' 'popt' 'libconfig' 'nqptp' 'ffmpeg' 'libsodium' 'libplist' 'mosquitto' 'alac')
+optdepends=('pulseaudio: PulseAudio support'
+            'pipewire: PipeWire support'
+            'libsoxr: libsoxr-based resampling')
 provides=('shairport-sync')
 conflicts=('shairport-sync')
-source=("git+https://github.com/mikebrady/shairport-sync.git")
-md5sums=(SKIP)
+source=("$_pkgname::git+https://github.com/mikebrady/shairport-sync#branch=development"
+        "shairport-sync.sysusers")
+sha256sums=('SKIP'
+            'bc2d92254910996e837d1c4c7dd81eddfb96a9f5f0cb2faad9fcb0414ea79a1d')
 
-_gitname="shairport-sync"
+prepare() {
+  cd "$srcdir/$_pkgname"
+
+  sed -i 's|\sgetent| # getent|g' Makefile.am
+}
 
 pkgver() {
-	cd "$srcdir/$_gitname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$_gitname"
-	autoreconf -i -f
-	./configure --prefix=/usr --sysconfdir=/etc --with-alsa --with-pa --with-avahi --with-ssl=openssl --with-metadata --with-soxr --with-systemd
-	make
+  cd "$srcdir/$_pkgname"
+
+  autoreconf -i -f
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-alsa \
+    --with-pa \
+    --with-pw \
+    --with-jack \
+    --with-stdout \
+    --with-pipe \
+    --with-avahi \
+    --with-dns_sd \
+    --with-pkg-config \
+    --with-configfiles \
+    --with-mqtt-client \
+    --with-ssl=openssl \
+    --with-metadata \
+    --with-apple-alac \
+    --with-soxr \
+    --with-systemd \
+    --with-dbus-interface \
+    --with-airplay-2
+  make
 }
 
 package() {
-	cd "$srcdir/$_gitname"
-	install -Dm644 LICENSES "$pkgdir/usr/share/licenses/$pkgname/LICENSES"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$_pkgname"
+
+  make DESTDIR="$pkgdir" install
+  install -D -m644 "$srcdir"/shairport-sync.sysusers "$pkgdir"/usr/lib/sysusers.d/shairport-sync.conf
+  install -D -m644 LICENSES "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
