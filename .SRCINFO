@@ -1,13 +1,14 @@
 pkgbase = rancher-desktop
 	pkgdesc = Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rancherdesktop.io/
 	arch = x86_64
 	license = Apache
 	makedepends = npm
 	makedepends = nvm
 	makedepends = nodejs
+	makedepends = imagemagick
 	depends = qemu
 	optdepends = kubectl: Kubernetes control, can be downloaded from settings
 	optdepends = nerdctl-bin: Docker-compatible CLI for containerd

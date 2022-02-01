@@ -4,11 +4,11 @@
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('Apache')
 url='https://rancherdesktop.io/'
-makedepends=('npm' 'nvm' 'nodejs')
+makedepends=('npm' 'nvm' 'nodejs' 'imagemagick')
 optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
             'nerdctl-bin: Docker-compatible CLI for containerd'
             'helm: for Apps section, only useful if your deploy uses helm or plan to use it')
