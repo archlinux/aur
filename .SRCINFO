@@ -15,8 +15,8 @@ pkgbase = lib32-spirv-tools
 	makedepends = git
 	depends = lib32-gcc-libs
 	depends = spirv-tools
-	source = git+https://github.com/KhronosGroup/SPIRV-Tools#tag=v2021.4
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers#tag=sdk-1.2.198.0
+	source = git+https://github.com/KhronosGroup/SPIRV-Tools.git#tag=v2021.4
+	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#tag=sdk-1.2.198.0
 	sha256sums = SKIP
 	sha256sums = SKIP
 
