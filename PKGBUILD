@@ -30,8 +30,7 @@ build() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-	YARN_CACHE_FOLDER="${srcdir}/yarn-cache"
-    yarn install --immutable
+	yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
