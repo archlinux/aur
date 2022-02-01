@@ -1,0 +1,13 @@
+pkgbase = sysfex-git
+	pkgdesc = Another neofetch-like system information fetching tool for linux-based systems written in C++
+	pkgver = c8c29f7
+	pkgrel = 1
+	url = https://github.com/mehedirm6244/sysfex
+	arch = i386
+	arch = x86_64
+	depends = libx11
+	provides = sysfex
+	source = sysfex::git+https://github.com/mehedirm6244/sysfex.git
+	sha256sums = SKIP
+
+pkgname = sysfex-git
