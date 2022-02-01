@@ -1,0 +1,17 @@
+pkgbase = luabind-ryzom-git
+	pkgdesc = A library that helps you create bindings between C++ and Lua
+	pkgver = v0.9.r145.ga0edf58
+	pkgrel = 1
+	url = http://www.rasterbar.com/products/luabind.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = boost
+	makedepends = boost-build
+	depends = lua
+	depends = gcc-libs
+	provides = luabind
+	source = luabind::git+https://github.com/ryzom/luabind.git
+	md5sums = SKIP
+
+pkgname = luabind-ryzom-git
