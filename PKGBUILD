@@ -14,7 +14,7 @@
 _phpbase="73"
 _suffix=""
 pkgver="7.3.33"
-pkgrel="6"
+pkgrel="7"
 pkgbase="php73"
 pkgdesc="PHP 7.3.33 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
@@ -187,6 +187,11 @@ makedepends=(
     "recode"
     "aspell"
     "enchant"
+    "libvoikko"
+    "hspell"
+    "hunspell"
+    "nuspell"
+    "aspell"
     "icu"
     "curl"
     "net-snmp"
@@ -657,7 +662,6 @@ build() {
 check() {
     pushd "build-cli"
     # Check if sendmail was configured correctly (FS#47600)
-    #sapi/cli/php -n -r 'echo ini_get("sendmail_path");' | grep -q $(which sendmail)
     export REPORT_EXIT_STATUS=1
     export NO_INTERACTION=1
     export SKIP_ONLINE_TESTS=1
@@ -1117,7 +1121,7 @@ package_php73-tidy() {
 # XSL
 package_php73-xsl() {
     pkgdesc="xsl module for ${pkgbase}"
-    depends=("php${_phpbase}-xml${_suffix}=${pkgver}")
+    depends=("php${_phpbase}-xml${_suffix}=${pkgver}" "php${_phpbase}-dom${_suffix}=${pkgver}")
     depends+=('libxslt')
     _install_module xsl
 }
@@ -1290,7 +1294,7 @@ package_php73-gmp() {
 # Enchant
 package_php73-enchant() {
     pkgdesc="enchant module for ${pkgbase}"
-    depends=("${pkgbase}=${pkgver}" 'enchant')
+    depends=("${pkgbase}=${pkgver}" 'enchant' 'libvoikko' 'hspell' 'hunspell' 'nuspell' 'aspell')
     _install_module enchant
 }
 
