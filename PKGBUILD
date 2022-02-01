@@ -1,7 +1,7 @@
 # Maintainer: qier22 <qier222@outlook.com>
 
 pkgname=yesplaymusic-git
-pkgver=0.4.2_4_g8341727
+pkgver=0.4.3.36.gd15b58d
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=("x86_64" "aarch64")
@@ -22,13 +22,13 @@ optdepends=(
     'libnotify'
     'libappindicator-gtk3'
 )
-makedepends=("nodejs-lts-fermium" "yarn" "git")
+makedepends=("nodejs-lts-fermium" "yarn" "git" "libvips")
 source=("git+https://github.com/qier222/YesPlayMusic" "yesplaymusic.desktop")
 sha256sums=('SKIP'
             '54f7ea2d99239749b40fa88109f4962f913421e3954e42f7bec8264d1f8bd89d')
 pkgver(){
     cd "${srcdir}/YesPlayMusic"
-    git describe --tags | sed "s/-/_/g;s/v//"
+    git describe --tags | sed "s/-/./g;s/v//"
 }
 prepare(){
     cd "${srcdir}/YesPlayMusic"
