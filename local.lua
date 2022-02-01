@@ -41,15 +41,11 @@ normalizer =
     }
 }
 
-file_id =
+file_policy =
 {
     enable_type = true,
     enable_signature = true,
-    file_rules = file_magic,
-    file_policy =
-    {
-        { use = { verdict = 'log', enable_file_type = true, enable_file_signature = true } }
-    }
+    rules = { use = { verdict = 'log', enable_file_type = true, enable_file_signature = true } }
 }
 
 -- Enable hyperscan for IPS, AppID, HTTP inspection, pcre/regex matches
