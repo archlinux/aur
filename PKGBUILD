@@ -3,15 +3,15 @@
 pkgname=gptsync
 pkgver=0.14
 _pkgrel_debian=2
-pkgrel=7
+pkgrel=8
 pkgdesc="gptsync maintains an MBR partition table synchronised with a GPT partition table used as reference."
 arch=('i686' 'x86_64')
 depends=('gnu-efi-libs')
 makedepends=('python2' 'syslinux')
 url='https://packages.debian.org/wheezy/gptsync'
 license=('custom')
-source=("http://ftp.debian.org/debian/pool/main/r/refit/refit_${pkgver}.orig.tar.gz"
-	"http://ftp.debian.org/debian/pool/main/r/refit/refit_${pkgver}-${_pkgrel_debian}.debian.tar.gz")
+source=("https://cloudfront.debian.net/debian-archive/debian/pool/main/r/refit/refit_${pkgver}.orig.tar.gz"
+	"https://cloudfront.debian.net/debian-archive/debian/pool/main/r/refit/refit_${pkgver}-${_pkgrel_debian}.debian.tar.gz")
 sha256sums=('0101ac403c3a8c90813df20726c9e76a58515ca7d1a35a7b2ab42eaf28e25e1e'
             '5418b9d6645453ac53e831c59a255ecfe85a09038e0d5d08fc1a55cf6fb087a3')
 

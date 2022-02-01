@@ -1,7 +1,7 @@
 pkgbase = gptsync
 	pkgdesc = gptsync maintains an MBR partition table synchronised with a GPT partition table used as reference.
 	pkgver = 0.14
-	pkgrel = 7
+	pkgrel = 8
 	url = https://packages.debian.org/wheezy/gptsync
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,9 @@ pkgbase = gptsync
 	makedepends = python2
 	makedepends = syslinux
 	depends = gnu-efi-libs
-	source = http://ftp.debian.org/debian/pool/main/r/refit/refit_0.14.orig.tar.gz
-	source = http://ftp.debian.org/debian/pool/main/r/refit/refit_0.14-2.debian.tar.gz
+	source = https://cloudfront.debian.net/debian-archive/debian/pool/main/r/refit/refit_0.14.orig.tar.gz
+	source = https://cloudfront.debian.net/debian-archive/debian/pool/main/r/refit/refit_0.14-2.debian.tar.gz
 	sha256sums = 0101ac403c3a8c90813df20726c9e76a58515ca7d1a35a7b2ab42eaf28e25e1e
 	sha256sums = 5418b9d6645453ac53e831c59a255ecfe85a09038e0d5d08fc1a55cf6fb087a3
 
 pkgname = gptsync
-
