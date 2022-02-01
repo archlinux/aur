@@ -1,4 +1,5 @@
-# Maintainer:  Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
+# Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+# Contributor:  Hyacinthe Cartiaux <hyacinthe dot cartiaux at free dot fr>
 # Contributor: Raziel23 <venom23 at runbox dot com>
 # Contributor: Lukas Fleischer <archlinux at cryptocrack dot de>
 # Contributor: Geoffrey Teale <tealeg@stop-squark>
