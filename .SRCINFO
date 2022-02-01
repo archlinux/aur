@@ -1,6 +1,6 @@
 pkgbase = xclip-git
 	pkgdesc = Command line interface to the X11 clipboard
-	pkgver = r167.11cba61
+	pkgver = r173.b372f73
 	pkgrel = 3
 	url = https://github.com/astrand/xclip
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = xclip-git
 	sha256sums = SKIP
 
 pkgname = xclip-git
-
