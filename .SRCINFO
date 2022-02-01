@@ -1,0 +1,16 @@
+pkgbase = tuxcmd
+	pkgdesc = A GTK2 file manager with two panels
+	pkgver = 0.6.70
+	pkgrel = 9
+	url = http://tuxcmd.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = fpc
+	depends = gtk2
+	optdepends = tuxcmd-modules: modules for tuxcmd
+	options = !docs
+	options = !emptydirs
+	source = https://downloads.sourceforge.net/project/tuxcmd/tuxcmd/tuxcmd-dev-0.6.70/tuxcmd-0.6.70.tar.bz2
+	sha256sums = b9f924766f2b1770f5fddc2b2e79c6778b44606ea05c53c9ffd947436b0e41fb
+
+pkgname = tuxcmd
