@@ -1,4 +1,4 @@
-pkgbase = luabind-ryzom-git
+pkgbase = luabind-ryzom
 	pkgdesc = A library that helps you create bindings between C++ and Lua
 	pkgver = v0.9.r145.ga0edf58
 	pkgrel = 1

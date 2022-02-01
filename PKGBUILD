@@ -1,4 +1,4 @@
-pkgname=luabind-ryzom-git
+pkgname=luabind-ryzom
 pkgver=v0.9.r145.ga0edf58
 pkgrel=1
 provides=('luabind')
