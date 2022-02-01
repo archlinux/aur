@@ -3,7 +3,7 @@
 pkgname=easytax2021bl
 pkgver=1.0
 pkgrel=1
-pkgdesc="Aargau tax declaration software."
+pkgdesc="Baselland tax declaration software, kanton basel-landschaft."
 arch=(any)
 url="https://www.baselland.ch/politik-und-behorden/direktionen/finanz-und-kirchendirektion/steuerverwaltung/privatperson/easytax"
 license=('custom')
