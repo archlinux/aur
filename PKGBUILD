@@ -10,7 +10,6 @@ license=('GPL2+')
 url='https://packages.debian.org/stable/bdf2psf'
 source=("http://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_${pkgver}_all.deb")
 depends=('perl')
-makedepends=('grep' 'curl')
 sha512sums=('SKIP')
 
 pkgver() {
