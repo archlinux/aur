@@ -1,7 +1,7 @@
 # Maintainer : MorsMortium <morsmortium@gmail.com>
 
 pkgname=0x0uploader
-pkgver=13.27a34ca
+pkgver=20.a4a3f6c
 pkgrel=3
 pkgdesc='Uploader for the 0x0 file sharing service.'
 arch=('any')
