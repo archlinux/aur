@@ -19,7 +19,7 @@ depends=(
         'python-lxml'
         'python-pygments'
         'python-dateutil'        
-        'python-yaml'
+        'python-yaml-git'
         'python-httpx'
         'python-h2'
         'python-brotli'
@@ -31,7 +31,7 @@ depends=(
         'python-redis-ng'
         'python-mistletoe-ng'
         'python-typing_extensions')
-conflicts=('searx' 'searx-git' 'python-httpx-socks' 'python-redis' 'python-mistletoe')
+conflicts=('searx' 'searx-git' 'python-httpx-socks' 'python-redis' 'python-mistletoe' 'python-yaml')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
 _giturl="https://github.com/searxng/searxng"
 _gitbranch="master"

@@ -17,7 +17,7 @@ pkgbase = searxng-git
 	depends = python-lxml
 	depends = python-pygments
 	depends = python-dateutil
-	depends = python-yaml
+	depends = python-yaml-git
 	depends = python-httpx
 	depends = python-h2
 	depends = python-brotli
@@ -34,6 +34,7 @@ pkgbase = searxng-git
 	conflicts = python-httpx-socks
 	conflicts = python-redis
 	conflicts = python-mistletoe
+	conflicts = python-yaml
 	backup = etc/searxng/settings.yml
 	backup = etc/uwsgi/vassals/searxng.ini
 	source = git+https://github.com/searxng/searxng#branch=master
