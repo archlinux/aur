@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-tui-git
 	pkgdesc = A TUI for BitTorrent client Transmission
-	pkgver = 0.0
+	pkgver = r55.f68bea3
 	pkgrel = 1
 	url = https://github.com/Murtaza-Udaipurwala/transmission-remote-tui
 	arch = any
