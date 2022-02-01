@@ -3,7 +3,7 @@
 # -*- mode: sh -*-
 
 pkgname='mycorrhiza'
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('x86_64' 'armv7h')
@@ -14,15 +14,6 @@ makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 provides=('mycorrhiza')
 conflicts=('mycorrhiza' 'mycorrhiza-bin')
-sha256sums=(
-  '676aaabd2b725700958212aec5f4dbbaf4801605afa5c5ecf909d846af9c4712'
-)
-sha512sums=(
-  '37532f3b0a05a80ad191d318389b8410e7bcdea4bc2630a3e7fce9e2378cf3910f7345945eee18e0294c6ad45c7ccb3187a4645b08f7cbd444048530880f2688'
-)
-b2sums=(
-  '12af92cd4e1596b0e4f1a85891e57dc2acdb9dfd0b72c8f69cd355bacc03af326d4ccd427d12e7d4ba17aea48065ef1f403003c877f01e1201295dc05f5217e2'
-)
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
@@ -50,5 +41,15 @@ package() {
   install -Dm0755 "mycorrhiza" "$pkgdir/usr/bin/mycorrhiza"
   install -Dm0644 "README.md"  "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+sha256sums=(
+  '17d57dad9dc89886a5ea2a38ca99362daddab1425925cdb31b4a59e7bbfc7133'
+)
+sha512sums=(
+  '9804b19424d33b891dc67949819ff035689d305011a4a7393c148de8d747191ebed0abfb1415f07b48cad49a774f5054446de1aa9ae4579de17236376e67de1a'
+)
+b2sums=(
+  '8f1394597b41407bf97a30de6840883f919a52a558ff0487e8547f39a2aaa33c4dda7d3f51d09284b470444ae7b68aeb8ba1cd9e48bfd7208dcc1ef74c6d2d1b'
+)
 
 # eof
