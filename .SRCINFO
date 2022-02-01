@@ -1,6 +1,6 @@
 pkgbase = python-pysvn
 	pkgdesc = The Pythonic interface to Subversion
-	pkgver = 1.9.16
+	pkgver = 1.9.17
 	pkgrel = 1
 	url = https://pysvn.sourceforge.io/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = python-pysvn
 	depends = apr
 	depends = python
 	depends = subversion
-	source = https://downloads.sourceforge.net/project/pysvn/pysvn/V1.9.16/pysvn-1.9.16.tar.gz
-	sha256sums = 20fbd5ab66d38997e691f088af2b8d74be1994206afb81026198fc5424a42e0e
+	source = https://downloads.sourceforge.net/project/pysvn/pysvn/V1.9.17/pysvn-1.9.17.tar.gz
+	sha256sums = 0906b177578232b267d0102f284823e89bcbcf2dacfe958a989a41d74f0027d3
 
 pkgname = python-pysvn
