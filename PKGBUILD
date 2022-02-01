@@ -3,14 +3,14 @@
 
 _pkgname=FishFight
 pkgname=fishfight-git
-pkgver=0.3.r21.g0e27777
+pkgver=0.4.r0.g698580d
 pkgrel=1
 pkgdesc="A tactical 2D shooter game"
 arch=('x86_64')
 url="https://github.com/fishfight/FishFight"
 license=('MIT' 'Apache')
-depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib' 'sdl2')
-makedepends=('rust' 'git')
+depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib')
+makedepends=('cargo' 'git' 'cmake')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}"
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
