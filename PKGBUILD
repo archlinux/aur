@@ -1,39 +1,33 @@
-# Maintainer: Nik Rozman <admin[at]piskot[dot]si>
-# Maintainer: Windscribe Limited <hello[at]windscribe[dot]com>
-# Contributor: Nik Rozman <admin[at]piskot[dot]si>
-# Contributor: Windscribe Limited <hello[at]windscribe[dot]com>
+pkgname=gildas
 
-pkgname=windscribe-bin
-pkgver=2.3.15
+pkgver=feb22a
 pkgrel=1
-pkgdesc="Windscribe Client"
+pkgdesc='GILDAS'
 arch=('x86_64')
-url="https://windscribe.com/download"
-license=('GPL2')
-depends=('nftables' 'c-ares' 'qt5-svg' 'freetype2' 'hicolor-icon-theme' 'curl')
-conflicts=('windscribe-cli')
-provides=('windscribe')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source=("https://windscribe.com/install/desktop/linux_deb_x64/beta")
+url="https://www.iram.fr/IRAMFR/GILDAS/"
+license=('custom')
+depends=(gcc-fortran)
+optdepends=()
+
+source=("https://www.iram.fr/~gildas/dist/gildas-src-$pkgver.tar.xz")
 sha512sums=('SKIP')
+options=('!strip')
 
-package(){
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
-
-	# Correct permissions
-	chmod -R 755 "${pkgdir}"
-
-	# Point files to the correct location
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/share/applications/windscribe.desktop
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/etc/systemd/system/windscribe-helper.service
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/polkit-1/actions/com.windscribe.authhelper.policy
-
-	# Move files to correct location
-	mkdir -p "${pkgdir}/opt/windscribe"
-	mv "${pkgdir}/usr/local/windscribe" "${pkgdir}/opt/"
-
-	# Install license
-	install -D -m644 "${pkgdir}/opt/windscribe/open_source_licenses.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+	cd ${srcdir}/gildas-src-$pkgver
+	source admin/gildas-env.sh
+	make
+	make install
+	
+	target="opt/gildas-exe-$pkgver"
+  cd "$pkgdir"
+  mkdir opt
+  cp -r ${srcdir}/gildas-exe-$pkgver $target
+  
+  #Ading /etc/profile
+  mkdir -p etc/profile.d
+  echo export GAG_ROOT_DIR=/opt/gildas-exe-$pkgver >> etc/profile.d/gildas.sh
+  echo export GAG_EXEC_SYSTEM=$GAG_EXEC_SYSTEM >> etc/profile.d/gildas.sh
+  echo source /opt/gildas-exe-$pkgver/etc/bash_profile >> etc/profile.d/gildas.sh
+  chmod +x etc/profile.d/gildas.sh
 }
