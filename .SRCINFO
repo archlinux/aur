@@ -14,6 +14,6 @@ pkgbase = flare-engine
 	depends = hicolor-icon-theme
 	depends = python
 	source = flare-engine-1.13::https://github.com/flareteam/flare-engine/archive/v1.13.tar.gz
-	sha256sums = c8e572a3ff71e4bbfad284dbd2a60f0434fa5ebd0d7d0d58a096eb7a0b6b3414
+	sha256sums = 5a4094437bbaf043a318ccf9cd4ac42bc642340ac65cc2461e6c45f6c9bacdea
 
 pkgname = flare-engine
