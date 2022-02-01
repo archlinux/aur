@@ -1,8 +1,7 @@
-pkgbase = python-httpx-socks
+pkgbase = python-httpx-socks-ng
 	pkgdesc = HTTP/SOCKS-proxy transports for httpx
-	pkgver = 0.7.2
-	pkgrel = 2
-	epoch = 1
+	pkgver = 0.7.3
+	pkgrel = 1
 	url = https://pypi.org/project/httpx-socks
 	arch = any
 	license = Apache
@@ -15,7 +14,8 @@ pkgbase = python-httpx-socks
 	optdepends = python-async-timeout
 	optdepends = python-trio
 	optdepends = python-curio
-	source = httpx-socks-0.7.2.tgz::https://github.com/romis2012/httpx-socks/archive/refs/tags/v0.7.2.tar.gz
-	sha256sums = 4408e916638b014e937f16cd096741c731f8b1cb74eff5305c0ca303f419039d
+	conflicts = python-httpx-socks
+	source = https://github.com/romis2012/httpx-socks/archive/refs/tags/v0.7.3.zip
+	sha512sums = 23124013ed21cb93fcb2facd70e8178acbb5c6cc062a35257bfe167a04045c18e66e3727421dbd9a9c947d8db5770eaf78b739eef307aa5e858a41e9c6381c78
 
-pkgname = python-httpx-socks
+pkgname = python-httpx-socks-ng
