@@ -8,7 +8,7 @@ _pkgbase=nginx
 pkgbase=nginx-quic
 pkgname=(nginx-quic nginx-quic-src)
 pkgver=1.21.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, HTTP/3 QUIC branch'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -171,6 +171,8 @@ package_nginx-quic-src() {
   install -d "$pkgdir/usr/src"
   test -d "$pkgdir/usr/src/nginx" && rm -r "$pkgdir/usr/src/nginx"
   cp -r ${srcdir}/${pkgname} "$pkgdir/usr/src/nginx"
+  # Delete the .hg directory, it is huge and not needed
+  rm -r ${pkgdir}/usr/src/nginx/{.hg,.hgtags}
   # Link the 'configure' script to its location in release tarballs,
   # as this is where modules expect it
   ln -s /usr/src/nginx/auto/configure "$pkgdir/usr/src/nginx"
