@@ -1,7 +1,7 @@
 # Maintainer: David Fryer <dfryer1193@gmail.com>
 
 pkgname=nscope
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="nScope software"
 arch=('i686' 'x86_64')

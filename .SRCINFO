@@ -1,6 +1,6 @@
 pkgbase = nscope
 	pkgdesc = nScope software
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
