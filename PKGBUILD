@@ -4,7 +4,7 @@ pkgname=python-httpx-socks-ng
 _name=python-httpx-socks
 
 pkgver=0.7.3
-pkgrel=2
+pkgrel=3
 
 pkgdesc='HTTP/SOCKS-proxy transports for httpx'
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-async-timeout' 'python-trio' 'python-curio')
 conflicts=('python-httpx-socks')
 
 source=("https://github.com/romis2012/httpx-socks/archive/refs/tags/v$pkgver.zip")
-sha512sums=('23124013ed21cb93fcb2facd70e8178acbb5c6cc062a35257bfe167a04045c18e66e3727421dbd9a9c947d8db5770eaf78b739eef307aa5e858a41e9c6381c78')
+b2sums=('9e156c776ad777df1227e59060374bbff11b6c983eac7d031bf6781f09e74ffed3801c04aadcb499a20b093c904508496402673c70943b349db32d9bc42f5b3f')
 
 build() {
   cd "httpx-socks-$pkgver"
