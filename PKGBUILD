@@ -9,6 +9,7 @@ arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://github.com/chrislusf/seaweedfs"
 license=('APACHE')
 makedepends=('git' 'go')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 b2sums=('9c168392d26acd9a7e336438a2ec44f73a4ef2d27da8c494de1dfad9ff1597c45a8bdfcb475ec15651508f6bd2fe2eb0981eb2338e2270c86f34ae6aae061b3d')
 _shortcommit=5799a20
