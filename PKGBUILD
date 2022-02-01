@@ -2,7 +2,7 @@
 
 pkgname=prometheus-nut-exporter
 _pkgname=nut_exporter
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Prometheus exporter for Network UPS Tools metrics"
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('nut: for monitoring a local NUT server')
-_commit='bc355546a6498934d785aff53ee608a5ec330b6a'
+options=('!lto')
+_commit='53da4ebfcdbdfae1e4b92a5ff350dc70dc2dae31'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'systemd.service'
