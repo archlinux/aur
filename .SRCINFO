@@ -1,6 +1,6 @@
 pkgbase = restic-systemd-automatic-backup
 	pkgdesc = Automatic backups using restic + systemd timers with Backblaze B2 storage backend.
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/erikw/restic-systemd-automatic-backup
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = restic-systemd-automatic-backup
 	backup = etc/restic/b2_env.sh
 	backup = etc/restic/b2_pw.txt
 	backup = etc/restic/backup_exclude
-	source = restic-systemd-automatic-backup-3.0.1.tar.gz::https://github.com/erikw/restic-systemd-automatic-backup/archive/v3.0.1.tar.gz
-	sha256sums = b385222c901ab12e7b0e8e90b7f9e7b03844ddbf6323ad2d92197d2b1edb6ddf
+	source = restic-systemd-automatic-backup-3.0.2.tar.gz::https://github.com/erikw/restic-systemd-automatic-backup/archive/v3.0.2.tar.gz
+	sha256sums = 0f88d126b56ec1d9bed0930ca351e960ded4d94cebdad85153f57aec0df650d5
 
 pkgname = restic-systemd-automatic-backup
