@@ -3,7 +3,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=odin-dev-bin
-_pkgver=2021-11
+_pkgver=2022-01
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
@@ -17,16 +17,16 @@ conflicts=(odin)
 options=(!strip)
 source=("https://github.com/odin-lang/Odin/archive/refs/tags/dev-${_pkgver}.tar.gz")
 source_x86_64=("https://github.com/odin-lang/Odin/releases/download/dev-${_pkgver}/odin-ubuntu-amd64-dev-${_pkgver}.zip")
-sha256sums=('f4a8fac2f49eb6e8e784257950c88db34a681a2149644441b145c3b502b64a2f')
-sha256sums_x86_64=('6ad91e2659c7221f72c081cdbc4fbd9c6fb853c912ddc1b63f1ade46c67fb5c1')
+sha256sums=('44fcae303462f95b042423e93f08e096b14a55f2db1cfcf3d6b5a64f10621833')
+sha256sums_x86_64=('cd702e10367b466b251dc5a693c4bcc1cb8c2ea09dbee0ec8141ee69a6259b96')
 
 build() {
-  cd "${srcdir}/ubuntu_artifacts"
+  #cd "${srcdir}/ubuntu_artifacts"
   patchelf --replace-needed libLLVM-11.so.1 libLLVM-11.so odin
 }
 
 package() {
-  cd "${srcdir}/ubuntu_artifacts/"
+  #cd "${srcdir}/ubuntu_artifacts/"
 
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/lib/odin"
