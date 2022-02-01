@@ -20,9 +20,8 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  echo $_pkgname
   autoreconf -fi
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
