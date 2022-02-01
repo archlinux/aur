@@ -2,7 +2,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-skins
-pkgver=20210131
+pkgver=20220131
 pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
