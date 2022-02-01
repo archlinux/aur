@@ -1,0 +1,20 @@
+--- a/setup.py
++++ b/setup.py
+@@ -52,7 +52,7 @@ for line in f:
+
+
+ name = "pysvn"
+-_pysvn_soname = '_pysvn_%d_%d' % sys.version_info[:2]
++_pysvn_soname = '_pysvn'
+
+
+ class BuildExtensions(build_ext):
+@@ -91,7 +91,7 @@ class BuildExtensions(build_ext):
+         # Invoke the build system. This will generate the __init__.py and
+         # .so that we'll package.
+         os.chdir( 'Source' )
+-        os.system( sys.executable + ' setup.py configure' )
++        os.system( sys.executable + ' setup.py configure --verbose --fixed-module-name --norpath' )
+         os.system( 'make clean' )
+         os.system( 'make' )
+ 
