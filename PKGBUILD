@@ -2,7 +2,7 @@
 
 pkgname=lua-i3ipc-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.2.r0.g8f6e411
+pkgver=v1.2.r3.g7685746
 pkgrel=1
 pkgdesc="A lua library for controlling i3wm & Sway"
 arch=('any')
@@ -10,6 +10,7 @@ url="https://github.com/kraftwerk28/lua-i3ipc.git"
 license=('MIT')
 depends=('luajit')
 makedepends=('git' 'luarocks' 'tree')
+optdepends=('socat')
 source=("git+https://github.com/kraftwerk28/lua-i3ipc.git")
 sha256sums=('SKIP')
 
@@ -20,21 +21,17 @@ pkgver() {
 
 package() {
 	local luaver=5.1
-	cd "$srcdir/$_pkgname"
+	cd ${srcdir}/${_pkgname}
 	luarocks \
 		--lua-version "$luaver" \
-		--tree "$pkgdir/usr" \
+		--tree "${pkgdir}/usr/share/lua/5.1/i3ipc/_rocks" \
 		make --no-manifest \
-		$srcdir/$_pkgname/*.rockspec
-
-	# local dir="$pkgdir/usr/share/lua/$luaver/"
-	# for rock in ${rocks[@]}; do
-	# 	luarocks \
-	# 		--lua-version $luaver \
-	# 		--tree "$pkgdir/usr" \
-	# 		make --no-manifest "$rock"
-	# done
-	# mkdir -p $dir
-	# cd $dir
-	# cp -R "$srcdir/$_pkgname/i3ipc/" .
+		${srcdir}/${_pkgname}/*.rockspec
+	local dir=${pkgdir}/usr/share/lua/$luaver/
+	mkdir -p ${dir}
+	cd ${dir}
+	cp -R ${srcdir}/${_pkgname}/i3ipc/ .
+	mkdir -p ${pkgdir}/usr/bin
+	cd ${pkgdir}/usr/bin
+	cp ${srcdir}/${_pkgname}/bin/* .
 }
