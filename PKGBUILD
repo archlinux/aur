@@ -2,7 +2,7 @@
 # Contributor: ELmoussaoui Bilal <bil dot elmoussaoui at gmail.com>
 pkgname=nautilus-folder-icons
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Nautilus extension that makes changing folders icons easy!'
 arch=('x86_64')
 license=('GPL3')
@@ -15,6 +15,13 @@ conflicts=('nautilus-ext-git' 'nautilus-compare')
 _commit=b0ae536292177cbdb8c26d8fdb4981959aee3ab4
 source=("git+https://github.com/bilelmoussaoui/nautilus-folder-icons.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/$pkgname"
+
+  # Fix for 'Function does not take positional arguments'
+  sed -e '3d' -i data/meson.build
+}
 
 build() {
   arch-meson build "$pkgname" -Dfile_manager=nautilus
