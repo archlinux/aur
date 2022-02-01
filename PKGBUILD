@@ -1,7 +1,9 @@
+# Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
+
 pkgname='catt-git'
 _pkgname=catt
-pkgver=0.12.1.r7.g0519e00
-pkgrel=1
+pkgver=0.12.5.r7.g79d8e5a
+pkgrel=2
 pkgdesc='Cast All The Things - Send videos from many, many online sources to your Chromecast.'
 arch=('any')
 url="https://github.com/skorokithakis/catt"
@@ -14,7 +16,7 @@ depends=(
   'python-pychromecast>=7.5.0'
   'python-requests'
   'youtube-dl>=2020.06.06')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-dephell' 'python-setuptools')
 source=("${pkgname%-*}::git+https://github.com/skorokithakis/catt.git")
 sha256sums=('SKIP')
 provides=("catt")
@@ -23,6 +25,11 @@ conflicts=("catt")
 pkgver() {
   cd "$_pkgname"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$_pkgname"
+    dephell deps convert --from pyproject.toml --to setup.py
 }
 
 build() {
