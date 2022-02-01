@@ -10,7 +10,7 @@ license=('AGPL')
 depends=('gettext' 'gnunet')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
-sha256sums=('c79e041345186ab617af3398c236f25ddfe64ab2238e4b55b22f787184af8ff3')
+sha256sums=('94e63ea5f26721dbf01b4812e1b38c89f243b464a2af1c0e5d0d5b4d0d41dcb7')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
