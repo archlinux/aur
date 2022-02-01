@@ -1,7 +1,7 @@
 # Maintainer: mynacol <paul àt dismail _ de>
 
 pkgname=theme-switcher-git
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Switching between light and dark themes made easy"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('coreutils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('dark-theme.sh')
-sha256sums=('SKIP')
+sha256sums=('e1997a841c3a82f77d97be531db38615f92ea392b5572eb2d811b7081a3c5f79')
 
 package() {
 	cd "$srcdir"
