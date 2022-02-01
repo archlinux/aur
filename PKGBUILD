@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/mtdowling/git-rook"
 license=('MIT')
 depends=('git')
-checkdepends=('bash-bats')
 source=("$pkgname-$pkgver::https://github.com/mtdowling/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('bc1bdea1c9a9d6e4b104294f4527ef705080cc821b1e0ff5df025ba3e1d30a2a')
 
