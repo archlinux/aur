@@ -1,0 +1,7 @@
+[cni-plugins]
+source = "github"
+github = "containernetworking/plugins"
+prefix = "v"
+use_max_tag = true
+exclude_regex = ".(release|weekly|rc|alpha|beta)."
+
