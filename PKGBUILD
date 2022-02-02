@@ -1,3 +1,4 @@
+# Maintainer: Jeremy Stucki <dev@jeremystucki.ch>
 # Maintainer: soloturn@gmail.com
 
 yyyy=2021
@@ -20,10 +21,11 @@ sha256sums=(
 )
 
 package() {
-  mkdir -p "$pkgdir"/usr/{lib,share/applications}/
+  # package the software, the xdg desktop file so GUI finds it
+  # and the link in bin so commandline finds it.
+  mkdir -p "$pkgdir"/usr/{bin,lib,share/applications}/
+
   mv "$srcdir"/EasyTax${yyyy}AG/ "$pkgdir"/usr/lib/$pkgname/
   cp *.desktop "$pkgdir"/usr/share/applications/
-
-  mkdir -p "$pkgdir"/usr/bin
   ln -sf /usr/lib/${pkgname}/EasyTax* "$pkgdir"/usr/bin/$pkgname
 }
