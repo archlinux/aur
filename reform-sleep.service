@@ -1,0 +1,14 @@
+[Unit]
+Description=Reform Suspend Helper
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/reform-standby suspend
+ExecStop=/usr/sbin/reform-standby resume
+# Note: reform-standby comes with the reform-tools package.
+
+[Install]
+WantedBy=sleep.target

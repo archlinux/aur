@@ -1,0 +1,23 @@
+pkgbase = reform-tools
+	pkgdesc = MNT Reform laptop tools
+	pkgver = 1.0
+	pkgrel = 8
+	url = https://mntre.com/reform2/handbook/index.html
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = rsync
+	depends = alsa-utils
+	depends = systemd
+	depends = net-tools
+	depends = pavucontrol
+	depends = procps-ng
+	depends = busybox
+	source = reform-tools-1.0.tar.gz::https://source.mnt.re/reform/reform-debian-packages/-/archive/reform-tools-1.0-8/reform-debian-packages-reform-tools-1.0-8.tar.gz
+	source = reform-hw-setup.service
+	source = reform-sleep.service
+	sha256sums = 0770f3d260913b7fed25f2e5043749c9b1879150fa8ea8d4e9ca674b26f571cc
+
+pkgname = reform-tools

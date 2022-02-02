@@ -1,0 +1,10 @@
+[Unit]
+Description=MNT Reform Hardware Defaults Setup
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/reform-hw-setup.sh
+StandardOutput=journal
+
+[Install]
+WantedBy=sysinit.target
