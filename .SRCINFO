@@ -5,7 +5,7 @@ pkgbase = rime-sbxlm-sbxh
 	arch = any
 	groups = sbxlm
 	depends = rime-sbxlm
-	source = https://gitee.com/sbxlm/sbxlm/attach_files/958324/download/SbxhPack220128.zip
+	source = https://gitee.com/sbxlm/sbxlm/attach_files/958324/download/220128.zip
 	sha256sums = a17439f7de55d033c727e9b8835d79d4b44a92d0bfc176c15868662391de1ffa
 
 pkgname = rime-sbxlm-sbxh
