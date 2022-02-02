@@ -1,9 +1,10 @@
-# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Maintainer: Ben Poest <ben@poest.com>
+# Contributor: drakkan <nicola.murino at gmail dot com>
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname='pop-sound-theme-bin'
 pkgver='5.4.3'
-pkgrel=1
+pkgrel=2
 _timestamp=1629398560
 _commit=6615e45
 pkgdesc='System76 Pop Sound Theme'

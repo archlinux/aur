@@ -1,7 +1,7 @@
 pkgbase = pop-sound-theme-bin
 	pkgdesc = System76 Pop Sound Theme
 	pkgver = 5.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
 	license = GPL2
