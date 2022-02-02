@@ -8,7 +8,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-framerate-fix
-pkgver=97.0.4692.99
+pkgver=98.0.4758.80
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -36,9 +36,9 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         unbundle-ffmpeg-av_stream_get_first_dts.patch
         unexpire-accelerated-video-decode-flag.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('c91bae205705b367f2cfc1f72ce1ee99b2ceb5edfc584e15c60a6ab5ff01ecba'
+sha256sums=('c87266e20f860a32c48affc70a769368d1b876dbad768e3aa93ee3c335944171'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            '7af5c0a55a20c0fb496b2f4448d89203a83bb1914754d864460e55e68731ef0b'
+            '2223d8bd4b730ae55bda8ccd60ee29f3a07b7f4dad9bdc86e48bdc641d930976'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
             '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
