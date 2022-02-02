@@ -1,0 +1,13 @@
+pkgbase = webtrees-theme-justlight
+	pkgdesc = JustLight theme for webtrees
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://justcarmen.nl/modules-webtrees-2/justlight-theme/
+	arch = any
+	license = GPL3
+	depends = webtrees
+	options = !strip
+	source = webtrees-theme-justlight-2.1.1.zip::https://github.com/JustCarmen/webtrees-theme-justlight/releases/download/2.1.1/justlight-2.1.1.zip
+	sha256sums = 7b8f2289713038a626b9035b411da2bbd9f79c4ba00c5860cc5c96493fa0d316
+
+pkgname = webtrees-theme-justlight
