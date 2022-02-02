@@ -1,0 +1,13 @@
+pkgbase = graph-drawer
+	pkgdesc = Generate coordinates for graph visualisation
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/ia-projekt-zespolowy-2021-2022/graph-drawer
+	arch = x86_64
+	license = MIT
+	depends = cmake
+	noextract = graph-drawer-1.0.tar.gz
+	source = graph-drawer-1.0.tar.gz::https://github.com/kroist/graph-drawer/tarball/main
+	md5sums = SKIP
+
+pkgname = graph-drawer
