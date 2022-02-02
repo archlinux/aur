@@ -3,21 +3,22 @@
 
 pkgname=pyxplot
 pkgver=0.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Command-line graphing package with a simple interface that produces publication-quality output."
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.pyxplot.org.uk/"
 changelog=${pkgname}.changelog
 provides=('pyxplot')
-depends=('libxml2' 'texlive-latexextra' 'imagemagick' 'fftw' 'gsl' 'python2' 'cfitsio' 'ghostscript')
-makedepends=()
+depends=('libxml2' 'texlive-latexextra' 'fftw' 'gsl')
 optdepends=('python-scipy: mathematical functions'
 	    'python-numpy: mathematical functions'
             'gsl: fitting'
-            'gv: viewing PostScript files')
+            'gv: viewing PostScript files'
+	    'ghostscript: for postscript')
+makedepends=('imagemagick' 'ghostscript' 'wget' 'python2')
 source=("http://www.pyxplot.org.uk/src/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('1c592a0bc77caec445a8d72534471c01d66ca1806309e6c983847c2e0b95e689')
+sha256sums=('041074956c99d16125cf455dd57ad6908814e4abe4bfbff6125c3b10e63e5f29')
 
 build() {
   cd ${pkgname}-${pkgver}
