@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=4692.r1.41be7e25df
+pkgver=4758.r1.27cabf3dae
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -86,7 +86,7 @@ prepare() {
   
   # Exclude test fonts from build
   cd "$srcdir/pdfium/testing/"
-  sed -i '/public_deps += \[ "\/\/third_party\/test_fonts" ]/s/^/#/g' BUILD.gn
+  sed -i '/"\/\/third_party\/test_fonts",/s/^/#/g' BUILD.gn
   
 } 
 
