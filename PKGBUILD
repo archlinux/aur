@@ -1,7 +1,7 @@
 # Maintainer: aksh1618 <aakarshituppal at gmail dot com>
 pkgname=kobweb
-pkgver=0.9.3
-pkgrel=2
+pkgver=0.9.4
+pkgrel=1
 pkgdesc='Set up and manage your Compose for Web app'
 arch=('any')
 url='https://kobweb.varabyte.com/'
@@ -10,7 +10,7 @@ depends=('sh'
          'java-runtime>=8')
 source=("https://github.com/varabyte/kobweb/releases/download/cli-v${pkgver}/${pkgname}-${pkgver}.tar"
         "${pkgname}")
-sha256sums=('29c250205be745febeece195a738723c6fdd8ed58e6a777227e3fb8ea353f6a0'
+sha256sums=('936688c16e74915be21b29e61b64d914e5325a60a702d00ae7a19888aa373b1d'
             '9a7574f298111c7f1941f80f5b41745c650267d55e5a76f3e963e53dfdbebc84')
 
 package() {
