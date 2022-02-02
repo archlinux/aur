@@ -1,5 +1,5 @@
 pkgbase = clipcc-beta-bin
-	pkgdesc = ClipCC is a powerful scratch fork with plenty of extra features. This is ClipCC's beta release. Please note that beta release is unstable and some new features may not work as expected.
+	pkgdesc = This is ClipCC's beta release. Please note that beta release is unstable and some new features may not work as expected.
 	pkgver = 3.1.0_beta4
 	pkgrel = 1
 	url = https://github.com/Clipteam
@@ -19,6 +19,7 @@ pkgbase = clipcc-beta-bin
 	depends = re2
 	depends = snappy
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
+	conflicts = clipcc-bin
 	noextract = clipcc-3.1.0-beta4-win-x64.exe
 	source = https://github.com/Clipteam/clipcc-desktop/releases/download/3.1.0-beta4/clipcc-3.1.0-beta4-win-x64.exe
 	source = LICENSE
