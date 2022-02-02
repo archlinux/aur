@@ -2,7 +2,7 @@
 pkgname=strawberry-qt5-git
 pkgver=1.0.1.r41.gd2075001
 pkgrel=1
-pkgdesc="A music player aimed at audio enthusiasts and music collectors (qt5+vlc git version)"
+pkgdesc="A music player aimed at audio enthusiasts and music collectors (qt5 git version)"
 arch=(x86_64)
 url="https://strawberrymusicplayer.org/"
 license=(GPL3)
@@ -16,8 +16,7 @@ depends=(chromaprint
          libcdio
          libgpod
          libmtp
-         fftw
-	 vlc)
+         fftw)
 makedepends=(cmake
              boost
 	     git
@@ -48,7 +47,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_WITH_QT5=ON \
     -DENABLE_SPARKLE=OFF \
-    -DENABLE_VLC=ON
+    -DENABLE_VLC=OFF
 
   make
 }
