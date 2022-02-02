@@ -4,11 +4,11 @@
 
 pkgname=nrpe
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Nagios Remote Plugin Executor"
 arch=('x86_64')
 license=('GPL')
-depends=('openssl-1.0')
+depends=('openssl')
 optdepends=("monitoring-plugins: common tools for monitoring using $pkgname")
 makedepends=('procps-ng')
 install=$pkgname.install
@@ -21,10 +21,6 @@ md5sums=('42252d3c721c87ebb5e38b748f187e8d'
 
 build() {
   cd $pkgname-$pkgver
-
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  export sslbin=/usr/bin/openssl-1.0
-  export ssl_inc_dir=/usr/include/openssl-1.0/openssl
 
   ./configure \
     --prefix=/usr \
