@@ -10,7 +10,7 @@ url='https://fedoraproject.org/wiki/Games/pengupop'
 license=('GPL')
 depends=('sdl')
 source=("https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/p/pengupop-2.2.2-28.fc36.x86_64.rpm")
-sha256sums=('399eb8be430f4d435cebd6b2817bd3f784ca555e8405c378cd3cced20c2de2f3')
+sha256sums=('275c62c232b2af35b84f2e9b813878691ca45eba1561da0566e7c251f55d2cd8')
 
 package() {
   install -Dm755 usr/bin/pengupop "$pkgdir"/usr/bin/pengupop
