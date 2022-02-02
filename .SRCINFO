@@ -1,14 +1,12 @@
 pkgbase = python-hurry-filesize
 	pkgdesc = A simple Python library for human readable file sizes (or anything sized in bytes).
 	pkgver = 0.9
-	pkgrel = 5
+	pkgrel = 6
 	url = http://pypi.python.org/pypi/hurry.filesize/
 	arch = any
 	license = GPL
 	makedepends = python-pip
 	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/ee/5e/16e17bedcf54d5b618dc0771690deda77178e5c310402881c3d2d6c5f27c/hurry.filesize-0.9.tar.gz
-	md5sums = 8549ccd09bb31b5ff1e8e8c1eacc7794
 
 pkgname = python-hurry-filesize
