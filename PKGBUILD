@@ -11,6 +11,7 @@ groups=(sbxlm)
 
 prepare () {
   cd $srcdir/sbxlm
+  chmod 755 $srcdir/sbxlm
   mv symbols.yaml sbxlm-symbols.yaml
   sed -i 's/import_preset: symbols/import_preset: sbxlm-symbols/g' *.schema.yaml
 }
@@ -23,5 +24,4 @@ package() {
   tar czf $pkgdir/usr/share/sbxlm/init-userdb/$pkgname.tar.gz *.userdb
   cp -r $srcdir/sbxlm/ $pkgdir/usr/share/rime-data/
   rm -rf $pkgdir/usr/share/rime-data/*.userdb
-  chmod 755 $pkgdir/usr/share/rime-data/
 }
