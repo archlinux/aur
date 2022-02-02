@@ -1,4 +1,4 @@
-pkgbase = clipcc-bin
+pkgbase = clipcc
 	pkgdesc = ClipCC is a powerful scratch fork with plenty of extra features.
 	pkgver = 3.0.2
 	pkgrel = 1
@@ -33,4 +33,4 @@ pkgbase = clipcc-bin
 	sha256sums = 3afe472ea0ceffe52834abed6d838f88892c22bc15ef421e01a8829fc8887be0
 	sha256sums = 86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf
 
-pkgname = clipcc-bin
+pkgname = clipcc

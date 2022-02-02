@@ -1,6 +1,6 @@
 # Maintainer: EdenQwQ <lsahlm1eden@gmail.com>
 
-pkgname=clipcc-bin
+pkgname=clipcc
 _pkgname=clipcc
 pkgver=3.0.2
 pkgrel=1
