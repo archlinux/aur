@@ -10,7 +10,7 @@ pkgver=2022.1
 pkgrel=3
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://ccxvii.net/gargoyle/"
+url="https://ccxvii.net/gargoyle/"
 license=('GPL2' 'custom:BSD-2-Clause' 'custom:BSD-3-Clause' 'Artistic2.0' 'MIT' 'custom:OFL-1.1')
 depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib'
          'hicolor-icon-theme')
