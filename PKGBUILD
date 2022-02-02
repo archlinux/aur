@@ -32,7 +32,7 @@ PGO=auto
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=(foot-git foot-themes-git)
 pkgver=1.10.3
-pkgrel=1
+pkgrel=2
 conflicts=('foot')
 provides=('foot')
 arch=('x86_64' 'aarch64')
@@ -80,7 +80,7 @@ package_foot-themes-git() {
   pkgdesc="Color schemes for the foot terminal emulator"
   conflicts=(foot-themes)
   provides=(foot-themes)
-  depends=(foot)
+  depends=(foot-git)
   optdepends=()
   arch=(any)
   cd foot

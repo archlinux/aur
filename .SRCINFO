@@ -1,7 +1,7 @@
 pkgbase = foot-git
 	pkgdesc = Wayland terminal emulator - fast, lightweight and minimalistic
 	pkgver = 1.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/dnkl/foot
 	arch = x86_64
 	arch = aarch64
@@ -35,7 +35,7 @@ pkgname = foot-git
 pkgname = foot-themes-git
 	pkgdesc = Color schemes for the foot terminal emulator
 	arch = any
-	depends = foot
+	depends = foot-git
 	optdepends = 
 	provides = foot-themes
 	conflicts = foot-themes
