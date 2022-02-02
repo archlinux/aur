@@ -4,7 +4,7 @@
 ## GPG key is available for download from upstream's repo
 
 pkgname=doppler-cli
-pkgver=3.37.0
+pkgver=3.38.0
 pkgrel=1
 pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz"
   "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
-sha256sums=('3d57bd1db451557f8479883e3aae452cb8b08bd52b66ab1a8397b1771ca66f63'
+sha256sums=('9f66dfb56bd015db4f6b5caafc367d224cafe238afdf03ad70a6e6958be37e20'
             'SKIP')
 validpgpkeys=('B70BD7FCA460C4A3D0EEB965D3D593D50EE79DEC')
 
