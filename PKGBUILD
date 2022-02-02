@@ -40,5 +40,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-    cp build/drawer "$pkgdir/"
+    mkdir -p "$pkgdir/usr/bin/"
+    cp build/drawer "$pkgdir/usr/bin/"
 }
