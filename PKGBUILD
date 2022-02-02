@@ -2,8 +2,8 @@
 
 name=watchghost
 pkgname=$name-git
-pkgver=0.4.0.git_399.7215f5f
-pkgrel=1
+pkgver=0.4.0.git_512.62eca5a
+pkgrel=2
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')
