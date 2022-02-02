@@ -2,7 +2,7 @@
 _base=tiptop
 pkgname=${_base}-cli
 pkgdesc="Command-line system monitoring"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 arch=('any')
 url="https://github.com/nschloe/${_base}"
@@ -12,8 +12,8 @@ makedepends=(python-build python-flit-core python-install)
 checkdepends=(python-pytest-codeblocks)
 provides=(${_base})
 conflicts=(${_base})
-source=(${_base}-${pkgver}::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('2bf65b88d275791c5e79a5fc9801fd78e2d244b36cf1dd83706d9a28dc497b17e7538aadf16873c785b524c9d21afbf8b49cfa1ae9bd8f0e4faed76d65b03d53')
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('8ce9f8dcf515f2c20f604489ef56b3b459ac6638f29aabfb91a6207b0a8e79dbb20718c064180a5e224902b481001ec48196487213182676e0bee16856ce8e9b')
 
 build() {
   cd ${_base}-${pkgver}
