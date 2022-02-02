@@ -34,7 +34,7 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  'python-pywlroots'
+  'python-pywlroots>=0.15.5' 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
   'wlroots'

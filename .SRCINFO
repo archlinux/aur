@@ -17,7 +17,8 @@ pkgbase = qtile-git
 	checkdepends = python-dbus-next
 	checkdepends = python-gobject
 	checkdepends = python-pytest
-	checkdepends = python-pywlroots
+	checkdepends = python-pywlroots>=0.15.5
+	checkdepends = python-pywlroots<0.16.0
 	checkdepends = python-xdg
 	checkdepends = python-xvfbwrapper
 	checkdepends = wlroots
