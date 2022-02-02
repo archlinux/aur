@@ -20,6 +20,7 @@ pkgbase = clipcc-beta-bin
 	depends = snappy
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	conflicts = clipcc-bin
+	conflicts = clipcc
 	noextract = clipcc-3.1.0-beta4-win-x64.exe
 	source = https://github.com/Clipteam/clipcc-desktop/releases/download/3.1.0-beta4/clipcc-3.1.0-beta4-win-x64.exe
 	source = LICENSE
