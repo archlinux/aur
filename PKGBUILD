@@ -14,11 +14,12 @@ depends=('python'
 	'net-tools'
 	'pavucontrol'
 	'procps-ng'
-	'busybox')
+	'busybox'
+	'ircii')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://source.mnt.re/reform/reform-debian-packages/-/archive/reform-tools-1.0-8/reform-debian-packages-reform-tools-1.0-8.tar.gz"
         'reform-hw-setup.service'
-	'reform-sleep.service'
+        'reform-sleep.service'
         'motd')
 sha256sums=('0770f3d260913b7fed25f2e5043749c9b1879150fa8ea8d4e9ca674b26f571cc'
             'dd22f0111a044af4a1b03017616a20bed9863d65ffd90670d764b559daf207ed'
@@ -41,5 +42,5 @@ package() {
 
 	install -Dm644 "$srcdir"/motd -t "$pkgdir"/etc
 	install -Dm644 "$srcdir"/reform-hw-setup.service -t "$pkgdir"/usr/lib/systemd/system
-        install -Dm644 "$srcdir"/reform-sleep.service -t "$pkgdir"/usr/lib/systemd/system
+	install -Dm644 "$srcdir"/reform-sleep.service -t "$pkgdir"/usr/lib/systemd/system
 }
