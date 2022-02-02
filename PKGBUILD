@@ -39,6 +39,7 @@ package() {
 	cd reform-debian-packages-reform-tools-1.0-8/reform-tools_1.0-8
 	cp -dr --no-preserve=ownership {etc,usr} $pkgdir/
 
+	install -Dm644 "$srcdir"/motd -t "$pkgdir"/etc
 	install -Dm644 "$srcdir"/reform-hw-setup.service -t "$pkgdir"/usr/lib/systemd/system
         install -Dm644 "$srcdir"/reform-sleep.service -t "$pkgdir"/usr/lib/systemd/system
 }
