@@ -3,8 +3,8 @@
 
 pkgbase=dogecoin
 pkgname=('dogecoin-cli-bin' 'dogecoin-qt-bin' 'dogecoin-tx-bin')
-pkgver=1.14.4
-pkgrel=5
+pkgver=1.14.5
+pkgrel=1
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://dogecoin.com"
 license=('MIT')
@@ -18,10 +18,10 @@ source_aarch64=("https://github.com/$pkgbase/$pkgbase/releases/download/v$pkgver
 sha256sums=('49df5d7e132a9ec1ccce2a680cc14298391f4ee7b3e4c8f007c99f5850ed040c'
             'a69139912fd61a4e785d6b31840b70b053fbdd9f4e82bee02049f254b50968b4'
             'ea6fb939303585677397af476a4061bc21e8840da24d349e73b5d4c48843aa27')
-sha256sums_x86_64=('6266235abe4bcbd41ea57bdf42f11ef89aa69f0386e8c8846d5228af69e7fa13')
-sha256sums_i686=('6e93f5edccf528b44112f2088be3ac8f4f44151a757754da09c8c53cdd725815')
-sha256sums_armv7h=('d023b7a6dfc5d92b1635f0fa03e14c9fc787a3eae94fba0cc3aca53b62a8e9ac')
-sha256sums_aarch64=('72ee42424835cdfb4111b284c98f78919b7a9ede6f8d509b2abe31f7b3eb1f09')
+sha256sums_x86_64=('17a03f019168ec5283947ea6fbf1a073c1d185ea9edacc2b91f360e1c191428e')
+sha256sums_i686=('7e7dd731ecfb2b78d6cc50d013ebf5faceeab50c59ffa2ab7551167b1bb81f08')
+sha256sums_armv7h=('dfdcdc6bb36076e7634cc8ed89138ec0383d73ba42b3e7ecfa9279b8949bce6b')
+sha256sums_aarch64=('f3bc387f393a0d55b6f653aef24febef6cb6f352fab2cbb0bae420bddcdacd1c')
 
 package_dogecoin-qt-bin() {
 	pkgdesc="Dogecoin is a peer-to-peer network based digital currency - Qt Interface"
