@@ -7,7 +7,7 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=5.29.0beta1
+pkgver=5.31.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -22,9 +22,9 @@ source=(
   "expire-from-source-date-epoch.patch"
   "signal-desktop-wrapper.sh"
   )
-sha512sums=('3523f2036bec5df6d508ce072210792d797e2a1f0beaf79fb01d49b0776f1f5a88d8465bec9a798ddbe6dd1432867ccce65bb32f3d970019cf0f7b714d040678'
-            'b8d329605183dde34bb269e07cf27f6a543b3dce07e424ffbdd53c9bed69bc02f44c402aa25e70b20dc7bf7538fbfc00576864b5c6d40acc7c1b6d945b030f13'
-            'aeb695b7fd7d40c316955598ab17f4a3f08f99d7953b7bf4c0ddea478e934865eee5705e20cc0e2bf8061c40a3f6f8ef39b25c649edeb0b340ef7bd660d1bee7'
+sha512sums=('e185d9f2f707cdbf8accecbc120c06fe4e30d7a7248b209fafdd05c384c4c5cf8641cd0f405a7c0f468dfe37c6f1b4eb91d374f313a97954363c1a16275bba7f'
+            '70b6e5ae8552bfa96ed9a838548c4e5797160cf0f65b3760460c16009a3edae42520b618032307c5d03648178ed7d52bdfcf20083c37d361756c54aa17c76583'
+            '1154859e87d8a2d649bc23210f2dd8aa473f268166559a51a2a64fe6ae094c101121535623b05b711bd87aab1f219627e9274fa542fdb0e5fe6f34b46fd7b7df'
             '457c1bd044f4e17810a7f1b284ca38809a0c1f8fed4bdb52184a169e2996e683c4c96c1cc86a013feb7b8833557245397decdcec01dbc82bb2b12b0d80424e25')
 
 prepare() {
@@ -34,11 +34,6 @@ prepare() {
 
   # Allow higher Node versions
   sed 's#"node": "#&>=#' -i package.json
-  # Select node-gyp versions with python3 support
-  sed 's#"node-gyp": "5.0.3"#"node-gyp": "6.1.0"#' -i package.json
-  # https://github.com/sass/node-sass/pull/2841
-  # https://github.com/sass/node-sass/issues/2716
-  sed -r 's#("resolutions": \{)#"resolutions": {"node-sass/node-gyp": "^6.0.0",#' -i package.json
 
   yarn install --ignore-engines
 
@@ -59,12 +54,7 @@ package() {
 
   install -d "${pkgdir}/usr/"{lib,bin}
   cp -a release/linux-unpacked "${pkgdir}/usr/lib/${pkgname}"
-  ## temporarily use a wrapper script
-  ## https://bugs.archlinux.org/task/69980
-  ## https://github.com/NixOS/nixpkgs/pull/122926
-  #ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
-  install -Dm 755 ../signal-desktop-wrapper.sh \
-    "${pkgdir}/usr/bin/signal-desktop-beta"
+  ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
 
   chmod u+s "${pkgdir}/usr/lib/${pkgname}/chrome-sandbox"
 
