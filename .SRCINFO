@@ -1,12 +1,11 @@
 pkgbase = python-habitipy
 	pkgdesc = A set of scripts to interact with Habitica
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ASMfreaK/habitipy
 	arch = any
 	license = MIT
 	makedepends = python-pbr>=1.9
-	makedepends = python2-pbr>=1.9
 	source = https://files.pythonhosted.org/packages/source/h/habitipy/habitipy-0.3.0.tar.gz
 	source = LICENSE
 	sha256sums = 6b2d01eab4da0b2b78280ce0f670c5f7b4c249e1b0794e544fa1f2f4d07ec2a3
@@ -16,8 +15,3 @@ pkgname = python-habitipy
 	depends = python-pbr
 	depends = python-requests
 	depends = python-plumbum
-
-pkgname = python2-habitipy
-	depends = python2-pbr
-	depends = python2-requests
-	depends = python2-plumbum
