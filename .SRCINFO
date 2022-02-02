@@ -1,13 +1,15 @@
 pkgbase = tstock
 	pkgdesc = A command line tool for generating stock charts in the terminal.
 	pkgver = 2.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Gbox4/tstock
 	arch = x86_64
 	license = GPL
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
+	depends = python-requests
+	depends = python-numpy
 	provides = tstock
 	source = git+https://github.com/Gbox4/tstock
 	md5sums = SKIP

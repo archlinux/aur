@@ -1,12 +1,12 @@
 # Maintainer: Gabe Banks <gabriel.t.banks@gmail.com>
 pkgname='tstock'
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for generating stock charts in the terminal."
 arch=('x86_64')
 url="https://github.com/Gbox4/tstock"
 license=('GPL')
-depends=('python')
+depends=('python' 'python-requests' 'python-numpy')
 makedepends=('python-setuptools' 'git')
 provides=('tstock')
 source=("git+$url")
