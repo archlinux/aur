@@ -1,0 +1,12 @@
+pkgbase = python-ping
+	pkgdesc = PythonPing is simple way to ping in Python
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/pythonping/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/p/pythonping/pythonping-1.1.1.tar.gz
+	sha256sums = 0022f6cbe52762e9d596316e3bccb8a3b794355a49c0d788f7228d90f9461cfc
+
+pkgname = python-ping
