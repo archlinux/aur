@@ -1,6 +1,6 @@
 --- config.h.in
 +++ config.h.in
-@@ -395,6 +395,9 @@
+@@ -291,6 +291,9 @@
  /* Define if you want 256-color support */
  #undef USE_256_COLORS
  
@@ -12,7 +12,7 @@
  # undef _ALL_SOURCE
 --- configure
 +++ configure
-@@ -740,6 +740,7 @@
+@@ -734,6 +734,7 @@
  enable_assert
  enable_warnings
  enable_256_color
@@ -20,7 +20,7 @@
  enable_unicode3
  enable_combining
  enable_xft
-@@ -1421,6 +1422,7 @@
+@@ -1408,6 +1409,7 @@
    --enable-assert         enable assertions
    --enable-warnings       turn on g++ warnings
    --enable-256-color      enable 256-color support
@@ -28,7 +28,7 @@
    --enable-unicode3       use 21 instead of 16 bits to represent unicode characters
    --enable-combining      enable composition of base and combining characters
    --enable-xft            enable xft support on systems that have it
-@@ -5283,6 +5285,21 @@
+@@ -5129,6 +5131,21 @@
  
  fi
  
@@ -52,7 +52,7 @@
  then :
 --- configure.ac
 +++ configure.ac
-@@ -203,6 +203,16 @@
+@@ -197,6 +197,16 @@
    AC_DEFINE(USE_256_COLORS, 1, Define if you want 256-color support)
  fi
  
@@ -82,7 +82,7 @@
  
          You can specify this and then disable options you do not like by
          *following* this with the appropriate "--disable-..." arguments, or
-@@ -251,6 +251,20 @@
+@@ -239,6 +239,20 @@
  
          It also results in higher memory usage and can slow down urxvt
          dramatically when more than six fonts are in use by a terminal
@@ -129,7 +129,7 @@
        color -= minCOLOR;
  
  #if XFT
-@@ -3906,7 +3906,7 @@
+@@ -3915,7 +3915,7 @@
  {
    unsigned int i;
    short rendset;
@@ -138,7 +138,7 @@
  
    if (nargs == 0)
      {
-@@ -4012,6 +4012,20 @@
+@@ -4021,6 +4021,20 @@
              break;
  
            case 38: // set fg color, ISO 8613-6
@@ -159,7 +159,7 @@
            case 48: // set bg color, ISO 8613-6
              {
                unsigned int fgbg = arg[i] == 38 ? Color_fg : Color_bg;
-@@ -4024,6 +4038,14 @@
+@@ -4033,6 +4047,14 @@
  
                    scr_color (idx, fgbg);
                  }
@@ -176,7 +176,7 @@
                    unsigned int r = arg[i + 2];
 --- src/init.C
 +++ src/init.C
-@@ -1110,7 +1110,7 @@
+@@ -1121,7 +1121,7 @@
  
    for (i = 0; i < NRS_COLORS; i++)
      if (const char *name = rs[Rs_color + i])
@@ -185,7 +185,7 @@
  
    /*
     * get scrollBar shadow colors
-@@ -1119,13 +1119,13 @@
+@@ -1130,13 +1130,13 @@
     * from the fvwm window manager.
     */
  #ifdef RXVT_SCROLLBAR
@@ -202,7 +202,7 @@
                     rgba (
                       min ((int)rgba::MAX_CC, max (cscroll.r / 5, cscroll.r) * 7 / 5),
                       min ((int)rgba::MAX_CC, max (cscroll.g / 5, cscroll.g) * 7 / 5),
-@@ -1367,8 +1367,8 @@
+@@ -1378,8 +1378,8 @@
    window_calc (0, 0);
  
    /* sub-window placement & size in rxvt_term::resize_all_windows () */
@@ -213,7 +213,7 @@
    attributes.colormap         = cmap;
  
    top = XCreateWindow (dpy, parent,
-@@ -1465,8 +1465,8 @@
+@@ -1476,8 +1476,8 @@
                              window_vt_x, window_vt_y,
                              vt_width, vt_height,
                              0,
@@ -224,7 +224,7 @@
  
    attributes.bit_gravity = NorthWestGravity;
    XChangeWindowAttributes (dpy, vt, CWBitGravity, &attributes);
-@@ -1483,8 +1483,8 @@
+@@ -1494,8 +1494,8 @@
    vt_ev.start (display, vt);
  
    /* graphics context for the vt window */
@@ -237,7 +237,7 @@
    gc = XCreateGC (dpy, vt,
 --- src/main.C
 +++ src/main.C
-@@ -248,10 +248,10 @@
+@@ -251,10 +251,10 @@
        for (int i = 0; i < TOTAL_COLORS; i++)
          if (ISSET_PIXCOLOR (i))
            {
@@ -250,7 +250,7 @@
  #endif
            }
  
-@@ -965,8 +965,8 @@
+@@ -970,8 +970,8 @@
          }
      }
  
@@ -261,7 +261,7 @@
  
  done:
    /*TODO: handle Color_BD, scrollbar background, etc. */
-@@ -983,12 +983,12 @@
+@@ -988,12 +988,12 @@
    XColor fg, bg;
  
    (ISSET_PIXCOLOR (Color_pointer_fg)
@@ -278,7 +278,7 @@
  
    XRecolorCursor (dpy, TermWin_cursor, &fg, &bg);
  }
-@@ -1007,14 +1007,14 @@
+@@ -1012,14 +1012,14 @@
    char *env_colorfgbg;
  
    for (i = Color_Black; i <= Color_White; i++)
@@ -295,7 +295,7 @@
        {
          sprintf (bstr, "%d", i - Color_Black);
  #if HAVE_IMG
-@@ -1043,8 +1043,8 @@
+@@ -1048,8 +1048,8 @@
  void
  rxvt_term::alias_color (int dst, int src)
  {
@@ -306,7 +306,7 @@
  }
  
  #ifdef SMART_RESIZE
-@@ -1198,8 +1198,8 @@
+@@ -1203,8 +1203,8 @@
  void
  rxvt_term::im_set_color (unsigned long &fg, unsigned long &bg)
  {
@@ -344,7 +344,7 @@
        XFillRectangle (disp, d, gc, x, y, w, h);
  #endif
      }
-@@ -342,7 +342,7 @@
+@@ -343,7 +343,7 @@
  
    clear_rect (d, x, y, term->fwidth * len, term->fheight, bg);
  
@@ -353,7 +353,7 @@
  
    while (len)
      {
-@@ -1053,7 +1053,7 @@
+@@ -1065,7 +1065,7 @@
    int base = ascent; // sorry, incorrect: term->fbase;
  
    XGCValues v;
@@ -362,7 +362,7 @@
    v.font = f->fid;
  
    if (enc2b)
-@@ -1062,7 +1062,7 @@
+@@ -1074,7 +1074,7 @@
  
        if (bg == Color_bg && !slow)
          {
@@ -371,7 +371,7 @@
            XChangeGC (disp, gc, GCForeground | GCBackground | GCFont, &v);
            XDrawImageString16 (disp, d, gc, x, y + base, xc, len);
          }
-@@ -1094,7 +1094,7 @@
+@@ -1106,7 +1106,7 @@
  
        if (bg == Color_bg && !slow)
          {
@@ -380,7 +380,7 @@
            XChangeGC (disp, gc, GCForeground | GCBackground | GCFont, &v);
            XDrawImageString (disp, d, gc, x, y + base, xc, len);
          }
-@@ -1417,7 +1417,7 @@
+@@ -1528,7 +1528,7 @@
  
            if (term->bg_img
                && (bg == Color_transparent || bg == Color_bg
@@ -389,7 +389,7 @@
              {
                int src_x = x, src_y = y;
  
-@@ -1454,7 +1454,7 @@
+@@ -1565,7 +1565,7 @@
  
                if (dst)
                  {
@@ -398,7 +398,7 @@
  
                    // dst can only be set when bg >= 0
                    XRenderComposite (disp, PictOpOver, solid_color_pict, None, dst, 0, 0, 0, 0, 0, 0, w, h);
-@@ -1462,9 +1462,9 @@
+@@ -1573,9 +1573,9 @@
              }
            else
  #endif
@@ -410,7 +410,7 @@
            XCopyArea (disp, d2, d, gc, 0, 0, w, h, x, y);
          }
        else
-@@ -1473,7 +1473,7 @@
+@@ -1584,7 +1584,7 @@
    else
      {
        clear_rect (d, x, y, w, h, bg);
@@ -436,7 +436,7 @@
  #endif
 --- src/rxvt.h
 +++ src/rxvt.h
-@@ -39,7 +39,11 @@
+@@ -41,7 +41,11 @@
  #else
  typedef uint16_t text_t; // saves lots of memory
  #endif
@@ -448,7 +448,7 @@
  typedef  int32_t tlen_t;  // was int16_t, but this results in smaller code and memory use
  typedef  int32_t tlen_t_; // specifically for use in the line_t structure
  
-@@ -342,43 +346,52 @@
+@@ -351,43 +355,52 @@
  #define RS_None                 0
  
  // GET_BGATTR depends on RS_fgShift > RS_bgShift
@@ -523,7 +523,7 @@
  
  #define DEFAULT_RSTYLE  (RS_None | (Color_fg    << RS_fgShift) | (Color_bg     << RS_bgShift))
  #define OVERLAY_RSTYLE  (RS_None | (Color_Black << RS_fgShift) | (Color_Yellow << RS_bgShift))
-@@ -528,7 +541,9 @@
+@@ -538,7 +551,9 @@
  #endif
  };
  
@@ -534,7 +534,7 @@
  # define Color_Bits      9 // 0 .. maxTermCOLOR24
  #else
  # define Color_Bits      8 // 0 .. maxTermCOLOR24
-@@ -664,21 +679,21 @@
+@@ -674,21 +689,21 @@
  #define ROW(n) ROW_of (this, n)
  
  /* how to build & extract colors and attributes */
@@ -567,7 +567,7 @@
  
  #define PIXCOLOR_NAME(idx)      rs[Rs_color + (idx)]
  #define ISSET_PIXCOLOR(idx)     (!!rs[Rs_color + (idx)])
-@@ -1413,7 +1428,12 @@
+@@ -1488,7 +1503,12 @@
    void scr_swap_screen () noexcept;
    void scr_change_screen (int scrn);
    void scr_color (unsigned int color, int fgbg) noexcept;
@@ -602,7 +602,7 @@
  BOOT:
  {
    sv_setsv (get_sv ("urxvt::LIBDIR",   1), newSVpvn (LIBDIR,   sizeof (LIBDIR)   - 1));
-@@ -1105,43 +1117,43 @@
+@@ -1107,43 +1119,43 @@
          OUTPUT:
          RETVAL
  
@@ -658,7 +658,7 @@
  	CODE:
  {
          if (!IN_RANGE_EXC (new_value, 0, RS_customCount))
-@@ -1555,8 +1567,8 @@
+@@ -1563,8 +1575,8 @@
          THIS->vt_emask_perl |= emask;
          THIS->vt_select_input ();
  
@@ -669,7 +669,7 @@
  	CODE:
          RETVAL = THIS->rstyle;
          THIS->rstyle = new_rstyle;
-@@ -2043,10 +2055,10 @@
+@@ -2050,10 +2062,10 @@
          RETVAL
  
  void
@@ -682,7 +682,7 @@
  
  void
  rxvt_term::scr_bell ()
-@@ -2112,7 +2124,7 @@
+@@ -2119,7 +2131,7 @@
  }
  
  SV *
@@ -691,7 +691,7 @@
  	CODE:
  {
          overlay *o = new overlay (THIS, x, y, w, h, rstyle, border);
-@@ -2211,8 +2223,8 @@
+@@ -2218,8 +2230,8 @@
  XCreateSimpleWindow (rxvt_term *term, Window parent, int x, int y, unsigned int width, unsigned int height)
  	C_ARGS: term->dpy, (Window)parent,
                  x, y, width, height, 0,
@@ -702,7 +702,7 @@
  
  #endif
  
-@@ -2346,7 +2358,7 @@
+@@ -2353,7 +2365,7 @@
              img->reify ()
                 ->replace (img);
  

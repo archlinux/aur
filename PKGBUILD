@@ -1,8 +1,8 @@
 # Maintainer: mrdotx <klassiker@gmx.de>
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
-pkgver=9.26
-pkgrel=2
+pkgver=9.30
+pkgrel=1
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -12,6 +12,7 @@ depends=(
     'libxt'
     'perl'
     'startup-notification'
+    'libptytty'
 )
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
 provides=(
@@ -28,7 +29,7 @@ conflicts=(
     'urxvt-perls-git'
 )
 source=(
-    http://dist.schmorp.de/rxvt-unicode/Attic/$_pkgname-$pkgver.tar.bz2
+    http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
     'urxvt.desktop'
     'urxvtc.desktop'
     'urxvt-tabbed.desktop'
@@ -38,31 +39,44 @@ source=(
     'enable-wide-glyphs.patch'
     'improve-font-rendering.patch'
 )
-sha1sums=('d325d8cdea6bcb8e0b8b219b8451bf5c690b6c62'
+sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
           'cd204d608d114d39c80331efe0af0231ad6b7e18'
           'a61366659c73bd551fa99a8415bb71e033897598'
           '9883d0c31b45f8521829ea6a2041f2e9eb7abe6a'
-          '560097c0d6377461fcbe4c109f3113a6bcb38982'
-          'c5ee4a50902d8c8d278938b080464a16d2c6af56'
-          '772b62071d73c0021adf334f037b95ef13d34317')
+          'b5a239179a6da062bcc9c5a36e870387080372d2'
+          '5c11265e5c54fdc7e005aa0a3c55de3374f15a73'
+          'a62225c18458ed9d1743699ef98f41d3d157f145')
 
 prepare() {
+    ################################################################
+    #                                                              #
+    #        If you have problems with character rendering,        #
+    #           try to install libxft-bgra from the aur.           #
+    #                                                              #
+    ################################################################
+
     cd $_pkgname-$pkgver
 
-    # The repo with original 24-bit-color.patch is no longer available:
+    # the repo with original 24-bit-color.patch is no longer available:
     # https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
-    # I have rewritten the patch to work with version 9.26.
-    # If someone has a better solution, please contact me!
+    # patch rewritten to work with version ≥ 9.26
     patch -p0 -i ../24-bit-color.patch
 
-    # If you have problems with character rendering, try installing libxft-bgra from aur.
     # https://aur.archlinux.org/packages/rxvt-unicode-cvs-patched-wideglyphs
     patch -p0 -i ../enable-wide-glyphs.patch
 
-    # https://aur.archlinux.org/packages/rxvt-unicode-improve-font-rendering
+    # https://gist.githubusercontent.com/emonkak/28bbc5474697695321452b6d9bf1d0bd/raw/a888c37ae10376598e663cf989132648f89219c0/rxvt-unicode-9.22-improve-font-endering.patch
+    # patch rewritten to work with version ≥ 9.29
     patch -p0 -i ../improve-font-rendering.patch
+
+    ################################################################
+    #                                                              #
+    #  If someone has better solutions for the rewritten patches,  #
+    #                      please contact me!                      #
+    #                                                              #
+    ################################################################
 }
 
 build() {
@@ -80,7 +94,6 @@ build() {
         --enable-frills \
         --disable-iso14755 \
         --disable-keepscrolling \
-        --enable-lastlog \
         --enable-mousewheel \
         --disable-next-scroll \
         --enable-perl \
@@ -94,9 +107,7 @@ build() {
         --enable-text-blink \
         --enable-transparency \
         --enable-unicode3 \
-        --enable-utmp \
         --enable-wide-glyphs \
-        --enable-wtmp \
         --enable-xft \
         --enable-xim \
         --disable-xterm-scroll

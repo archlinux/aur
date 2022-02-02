@@ -12,7 +12,7 @@
  
 --- configure
 +++ configure
-@@ -745,6 +745,7 @@
+@@ -739,6 +739,7 @@
  enable_combining
  enable_xft
  enable_font_styles
@@ -20,7 +20,7 @@
  enable_pixbuf
  enable_startup_notification
  enable_transparency
-@@ -1427,6 +1428,7 @@
+@@ -1414,6 +1415,7 @@
    --enable-combining      enable composition of base and combining characters
    --enable-xft            enable xft support on systems that have it
    --enable-font-styles    enable bold and italic support
@@ -28,7 +28,7 @@
    --enable-pixbuf         enable integration with gdk-pixbuf for background images
    --enable-startup-notification  enable freedesktop startup notification support
    --enable-transparency   enable transparent backgrounds
-@@ -5184,6 +5186,7 @@
+@@ -5025,6 +5027,7 @@
         support_8bitctrls=no
         support_iso14755=no
         support_styles=no
@@ -36,7 +36,7 @@
         support_perl=no
         codesets=
      fi
-@@ -5212,6 +5215,7 @@
+@@ -5050,6 +5053,7 @@
         #support_8bitctrls=yes
         support_iso14755=yes
         support_styles=yes
@@ -44,7 +44,7 @@
         support_perl=yes
         codesets=all
      fi
-@@ -5336,6 +5340,14 @@
+@@ -5182,6 +5186,14 @@
  fi
  
  
@@ -59,21 +59,21 @@
  # Check whether --enable-pixbuf was given.
  if test ${enable_pixbuf+y}
  then :
-@@ -8164,6 +8176,11 @@
-   printf "%s\n" "#define HAVE_POSIX_OPENPT 1" >>confdefs.h
+@@ -7727,6 +7739,11 @@
+ printf "%s\n" "#define MOUSE_SLIP_WHEELING 1" >>confdefs.h
  
  fi
 +if test x$support_wide_glyphs = xyes; then
 +
-+$as_echo "#define ENABLE_WIDE_GLYPHS 1" >>confdefs.h
++printf "%s\n" "#define ENABLE_WIDE_GLYPHS 1" >>confdefs.h
 +
 +fi
- ac_fn_cxx_check_func "$LINENO" "isastream" "ac_cv_func_isastream"
- if test "x$ac_cv_func_isastream" = xyes
- then :
+ 
+ scrolltypes=plain
+ 
 --- configure.ac
 +++ configure.ac
-@@ -134,6 +134,7 @@
+@@ -123,6 +123,7 @@
         support_8bitctrls=no
         support_iso14755=no
         support_styles=no
@@ -81,7 +81,7 @@
         support_perl=no
         codesets=
      fi
-@@ -162,6 +163,7 @@
+@@ -148,6 +149,7 @@
         #support_8bitctrls=yes
         support_iso14755=yes
         support_styles=yes
@@ -89,7 +89,7 @@
         support_perl=yes
         codesets=all
      fi
-@@ -237,6 +239,12 @@
+@@ -231,6 +233,12 @@
      support_styles=$enableval
    fi])
  
@@ -102,7 +102,7 @@
  AC_ARG_ENABLE(pixbuf,
    [  --enable-pixbuf         enable integration with gdk-pixbuf for background images],
    [if test x$enableval = xyes -o x$enableval = xno; then
-@@ -660,6 +668,9 @@
+@@ -653,6 +661,9 @@
  if test x$support_styles = xyes; then
    AC_DEFINE(ENABLE_STYLES, 1, Define if you want bold and italic support)
  fi
@@ -134,7 +134,7 @@
              case '\t':
              case ZERO_WIDTH_CHAR:
              case NOCHAR:
-@@ -1026,8 +1027,10 @@
+@@ -1038,8 +1039,10 @@
  
    careful = xcs->lbearing < 0 || xcs->rbearing > prop->width * wcw;
  
@@ -145,9 +145,9 @@
  
    return true;
  }
-@@ -1345,12 +1348,14 @@
+@@ -1410,12 +1413,14 @@
  
-   careful = g.x > 0 || w > prop->width * wcw;
+   careful = g.x > 0 || w > cwidth;
  
 +#if !ENABLE_WIDE_GLYPHS
    if (careful && !OVERLAP_OK (w, wcw, prop))
@@ -160,17 +160,17 @@
  
    return true;
  }
-@@ -1395,6 +1400,10 @@
+@@ -1496,6 +1501,10 @@
  
            ep->glyph = glyph;
-           ep->x = x_ + (cwidth - extents.xOff >> 1);
+           ep->x = x_;
 +#if ENABLE_WIDE_GLYPHS
 +          /* Left-align to bounding box, do not overlap to the left. */
 +          max_it(ep->x, x_);
 +#endif
            ep->y = y_ + ascent;
  
-           if (extents.xOff == 0)
+           // the xft font cell might differ from the terminal font cell,
 --- src/screen.C
 +++ src/screen.C
 @@ -975,7 +975,61 @@
@@ -252,7 +252,7 @@
                // force redraw before "careful" characters to avoid pixel droppings
 --- src/xdefaults.C
 +++ src/xdefaults.C
-@@ -294,6 +294,9 @@
+@@ -298,6 +298,9 @@
  #if ENABLE_STYLES
                                      "styles,"
  #endif
