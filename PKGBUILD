@@ -11,7 +11,7 @@ groups=(sbxlm)
 prepare () {
   cd $srcdir
   tar czf $pkgname.tar.gz *.userdb
-  rm -rf *.userdb
+  rm -rf *.userdb $pkgver.zip
   sed -i 's/import_preset: symbols/import_preset: sbxlm-symbols/g' *.schema.yaml
 }
 
