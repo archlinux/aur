@@ -1,10 +1,10 @@
 # Maintainer: EdenQwQ <lsahlm1eden@gmail.com>
 
-pkgname=clipcc-bin
+pkgname=clipcc-beta-bin
 _pkgname=clipcc
 pkgver=3.1.0_beta4
 pkgrel=1
-pkgdesc="ClipCC is a powerful scratch fork with plenty of extra features."
+pkgdesc="ClipCC is a powerful scratch fork with plenty of extra features. This is ClipCC's beta release. Please note that beta release is unstable and some new features may not work as expected."
 arch=("x86_64")
 url="https://github.com/Clipteam"
 license=("AGPL3")
