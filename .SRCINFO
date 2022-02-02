@@ -1,0 +1,14 @@
+pkgbase = python-peewee-migrate
+	pkgdesc = Simple migration engine for Peewee
+	pkgver = 1.4.7
+	pkgrel = 1
+	url = https://github.com/klen/peewee_migrate
+	arch = any
+	license = BSD3
+	makedepends = python-setuptools
+	depends = python-peewee
+	options = !strip
+	source = python-peewee-migrate-1.4.7.tar.gz::https://github.com/klen/peewee_migrate/archive/1.4.7.tar.gz
+	sha256sums = 9cdead1cbd1c5aa947f18af48e98343e308f0201147d3c81d4c227c55728eecf
+
+pkgname = python-peewee-migrate
