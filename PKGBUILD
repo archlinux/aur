@@ -1,7 +1,7 @@
 _pkgname=aiohttp-jinja2
 pkgname="python-${_pkgname}"
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="jinja2 template renderer for aiohttp.web"
 url="https://github.com/aio-libs/aiohttp_jinja2/"
 arch=('any')

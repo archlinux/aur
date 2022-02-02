@@ -1,7 +1,7 @@
 pkgbase = python-aiohttp-jinja2
 	pkgdesc = jinja2 template renderer for aiohttp.web
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aio-libs/aiohttp_jinja2/
 	arch = any
 	license = APACHE 2
