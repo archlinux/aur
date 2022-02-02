@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://ccxvii.net/gargoyle/"
-license=('GPL')
+license=('GPL2' 'custom:BSD-2-Clause' 'custom:BSD-3-Clause' 'Artistic2.0' 'MIT' 'custom:OFL-1.1')
 depends=('sdl2_mixer' 'sdl2' 'freetype2' 'qt5-base' 'fontconfig' 'libjpeg' 'libpng' 'zlib' 'hicolor-icon-theme')
 makedepends=('cmake' 'pkgconfig' 'desktop-file-utils')
 optdepends=('speech-dispatcher: Text-to-Speech')
@@ -49,4 +49,11 @@ package() {
 	# Install default config
 	install -dm755 "$pkgdir/etc"
 	install -m644 "$gsrcdir/garglk/garglk.ini" "$pkgdir/etc"
+
+	# Install licenses
+	install -dm755 "$pkgdir/usr/share/licenses/${pkgname}"
+	install -m644 "$gsrcdir/License.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+	install -m644 "$gsrcdir/licenses/BSD-2-Clause.txt" "$pkgdir/usr/share/licenses/${pkgname}"
+	install -m644 "$gsrcdir/terps/advsys/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/BSD-3-Clause.txt"
+	install -m644 "$gsrcdir/licenses/Charis SIL.txt" "$pkgdir/usr/share/licenses/${pkgname}/OFL-1.1.txt"
 }
