@@ -3,13 +3,14 @@
 
 pkgname=bottles
 pkgver=2022.1.28
-pkgrel=4
+pkgrel=5
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=(
   'gtksourceview3'
+  'gtksourceview4'
   'hicolor-icon-theme' 
   'dconf' 
   'python' 
