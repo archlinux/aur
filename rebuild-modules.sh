@@ -22,36 +22,48 @@ export PATH=$TEMP_DIR:$PATH
 
 node_modules="$NW_PACKAGE_DIR/node_modules"
 dry_run="n"
+package_dir="$NW_PACKAGE_DIR"
 
 if [ ! -d "$node_modules" ]; then
     echo -e "\e[1;31m$node_modules is not exist\e[0m" >&2
     exit 1
 fi
 
+echo -e "\033[42;37m ######## 版本信息 $(date '+%Y-%m-%d %H:%M:%S') ########\033[0m"
+echo "NW VERSION: $NW_VERSION"
+echo "nw-gyp version: $( nw-gyp --version )"
+echo "node version: $(node --version )"
+echo "npm version: $(npm --version )"
 
-rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-windows-ca-certs" # the module is only available in windows
-rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-windows-registry" # the module is only available in windows
-rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-windows-registry-node" # the module is only available in windows
-rm -fr "${NW_PACKAGE_DIR}/node_modules/windows-process-tree" # the module is only available in windows
+if [[ ! -z $https_proxy || ! -z $http_proxy ]]; then
+  echo -e "\033[41;37m 警告: 你设置了代理，这有可能导致安装出现异常 \033[0m"
+fi
 
-rm -fr "${NW_PACKAGE_DIR}/node_modules/vscode-ripgrep/bin" # redownload bin on linux
+rm -fr "${package_dir}/node_modules/vscode-windows-ca-certs" # the module is only available in windows
+rm -fr "${package_dir}/node_modules/vscode-windows-registry" # the module is only available in windows
+rm -fr "${package_dir}/node_modules/vscode-windows-registry-node" # the module is only available in windows
+rm -fr "${package_dir}/node_modules/windows-process-tree" # the module is only available in windows
 
-rm -fr "${NW_PACKAGE_DIR}/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules/node-pty-node" # the native module is not available in windows
+rm -fr "${package_dir}/node_modules/vscode-ripgrep/bin" # redownload bin on linux
 
-(cd "${NW_PACKAGE_DIR}/node_modules" && find -name *.pdb | xargs -I{} rm -r {}) # remove pdb debugging file
+rm -fr "${package_dir}/node_modules/node-pty" "${package_dir}/node_modules/node-pty-node" # the native module is not available in windows
 
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp" # remove previous hacking tmp 
-mkdir -p "${NW_PACKAGE_DIR}/node_modules_tmp"
-cp -fr "${NW_PACKAGE_DIR}/node_modules" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules" 
+(cd "${package_dir}/node_modules" && find -name *.pdb | xargs -I{} rm -r {}) # remove pdb debugging file
 
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty"
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty-node"
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/native-watchdog"
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/oniguruma-node"
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog"
-rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog-node"
+rm -fr "${package_dir}/node_modules_tmp" # remove previous hacking tmp 
+mkdir -p "${package_dir}/node_modules_tmp"
+cp -fr "${package_dir}/node_modules" "${package_dir}/node_modules_tmp/node_modules" 
 
-(npm install \
+rm -fr "${package_dir}/node_modules_tmp/node_modules/node-pty"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/node-pty-node"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/native-watchdog"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/oniguruma-node"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/nodegit"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/vscode-ripgrep"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/spdlog"
+rm -fr "${package_dir}/node_modules_tmp/node_modules/spdlog-node"
+
+(cd "${package_dir}/node_modules_tmp" && npm install \
     extract-file-icon \
     native-keymap \
     node-pty \
@@ -61,29 +73,39 @@ rm -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog-node"
     trash \
     vscode-oniguruma \
     vscode-ripgrep \
+    miniprogram-compiler \
     nodegit \
-    --prefix="${NW_PACKAGE_DIR}/node_modules_tmp" \
     --registry=https://registry.npm.taobao.org \
     --nodegit_binary_host_mirror=https://npm.taobao.org/mirrors/nodegit/v0.27.0/) # reinstall modules
 
 # rebuild
-echo "nw-gyp version: $( nw-gyp --version )"
-cd "$NW_PACKAGE_DIR/node_modules_tmp/node_modules/node-pty" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION"
-(cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty-node")
-rm -rf "${NW_PACKAGE_DIR}/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules/node-pty-node"
-cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules"
-(cp -fr "${NW_PACKAGE_DIR}/node_modules/node-pty" "${NW_PACKAGE_DIR}/node_modules/node-pty-node")
+cd "$package_dir/node_modules_tmp/node_modules/node-pty" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION"
+(cp -fr "${package_dir}/node_modules_tmp/node_modules/node-pty" "${package_dir}/node_modules_tmp/node_modules/node-pty-node")
+rm -rf "${package_dir}/node_modules/node-pty" "${package_dir}/node_modules/node-pty-node"
+cp -fr "${package_dir}/node_modules_tmp/node_modules/node-pty" "${package_dir}/node_modules"
+(cp -fr "${package_dir}/node_modules/node-pty" "${package_dir}/node_modules/node-pty-node")
 
-cd "$NW_PACKAGE_DIR/node_modules_tmp/node_modules/native-watchdog" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION"
-rm -rf "${NW_PACKAGE_DIR}/node_modules/native-watchdog" && cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/native-watchdog" "${NW_PACKAGE_DIR}/node_modules"
+cd "$package_dir/node_modules_tmp/node_modules/native-watchdog" && nw-gyp rebuild --arch=x64 "--target=$NW_VERSION"
+rm -rf "${package_dir}/node_modules/native-watchdog" && cp -fr "${package_dir}/node_modules_tmp/node_modules/native-watchdog" "${package_dir}/node_modules"
 
-(cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/oniguruma" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/oniguruma-node")
-(cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog" "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/spdlog-node")
+cd "${package_dir}/node_modules_tmp/node_modules/nodegit" && rm -rf .github include src lifecycleScripts vendor utils build/vendor build/Release/.deps
+cp -fr "${package_dir}/node_modules_tmp/node_modules/nodegit" "${package_dir}/node_modules"
 
-(cd "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules" && find -name "obj.target" | xargs -I{} rm -rf {})
-(cd "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules" && find -name "*.node" | xargs -I{} cp -rf {} ${NW_PACKAGE_DIR}/node_modules/{})
+(cp -fr "${package_dir}/node_modules_tmp/node_modules/oniguruma" "${package_dir}/node_modules_tmp/node_modules/oniguruma-node")
+(cp -fr "${package_dir}/node_modules_tmp/node_modules/spdlog" "${package_dir}/node_modules_tmp/node_modules/spdlog-node")
 
-mkdir -p "${NW_PACKAGE_DIR}/node_modules/vscode-ripgrep/bin"
-cp -fr "${NW_PACKAGE_DIR}/node_modules_tmp/node_modules/vscode-ripgrep/bin/rg" "${NW_PACKAGE_DIR}/node_modules/vscode-ripgrep/bin/rg"
+(cd "${package_dir}/node_modules_tmp/node_modules" && find -name "obj.target" | xargs -I{} rm -rf {})
+(cd "${package_dir}/node_modules_tmp/node_modules" && find -name "*.node" | xargs -I{} cp -rf {} ${package_dir}/node_modules/{})
 
-rm -rf "${NW_PACKAGE_DIR}/node_modules_tmp"
+mkdir -p "${package_dir}/node_modules/vscode-ripgrep/bin"
+cp -fr "${package_dir}/node_modules_tmp/node_modules/vscode-ripgrep/bin/rg" "${package_dir}/node_modules/vscode-ripgrep/bin/rg"
+
+# wcc wcsc
+cd "${package_dir}/js/vendor/" && rm -rf "wcc.exe" "wcsc.exe"
+cp "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcc" "${package_dir}/js/vendor/wcc.exe"
+cp "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcsc" "${package_dir}/js/vendor/wcsc.exe"
+
+rm -rf "${package_dir}/node_modules_tmp"
+
+# 移除旧配置
+# rm -fr ~/.config/wechat_devtools

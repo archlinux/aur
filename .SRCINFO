@@ -1,15 +1,14 @@
 pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools Linux version.
 	pkgver = 1.05.2201240
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
-	url = https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html
+	url = https://github.com/msojocs/wechat-devtools-linux
 	arch = x86_64
 	license = unknown
 	makedepends = p7zip
 	makedepends = nvm
 	makedepends = python2
-	depends = wine
 	depends = gconf
 	depends = libxkbfile
 	options = !strip

@@ -18,13 +18,13 @@ _node_version="v16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=2   # 次版本号release
+pkgrel=3   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
-pkgdesc="WeChat Devtools Linux version."
+pkgdesc="WeChat Devtools Linux version. "
 arch=("x86_64")
-url="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/devtools.html"
+url="https://github.com/msojocs/wechat-devtools-linux"
 license=('unknown')
-depends=('wine' 'gconf' 'libxkbfile')
+depends=('gconf' 'libxkbfile')
 makedepends=('p7zip' 'nvm' 'python2')
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
@@ -62,7 +62,8 @@ build() {
 
     # prepare nw-gyp
     _log "prepare nw-gyp"
-    npm install nw-gyp -g
+    npm uninstall node-gyp -g
+    npm install nw-gyp node-gyp npm@latest -g
 
     # node bin
     _log "copy node exectuable"
