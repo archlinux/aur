@@ -24,6 +24,7 @@ validpgpkeys=('AC915EA30645D9D3D4DAE4FEB1048932DD3AAAA3')
 
 build() {
   cd "$_pkgname-$pkgver"
+  export CFLAGS="-fPIC ${CFLAGS}"
   ./configure --prefix=/usr
   make
 }
