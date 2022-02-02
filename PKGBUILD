@@ -2,13 +2,13 @@
 
 _pkgname=waybox
 pkgname=waybox-git
-pkgver=r87.114e265
-pkgrel=2
+pkgver=0.1.0.r0.g402827e
+pkgrel=1
 pkgdesc='Openbox clone on Wayland (git version)'
 url="https://github.com/wizbright/waybox"
 arch=('x86_64')
 license=('MIT')
-depends=('wlroots' 'wayland')
+depends=('wlroots>=0.15.0' 'wlroots<0.16.0' 'wayland')
 makedepends=('git' 'meson')
 conflicts=(waybox)
 provides=(waybox)
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
