@@ -1,16 +1,18 @@
 pkgbase = python-meshzoo
 	pkgdesc = A collection of meshes for canonical domains
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/nschloe/meshzoo
 	arch = x86_64
 	license = GPL3
 	checkdepends = python-pytest-codeblocks
 	checkdepends = python-matplotlib
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
 	depends = python-numpy
 	optdepends = python-matplotlib: for Matplotlib rendering in 2d
-	source = https://github.com/nschloe/meshzoo/archive/v0.9.2.tar.gz
-	sha512sums = 771fe9dc966d938f04d6a079611257cb3e5025a2e66bb7b089bf97505be6093993d4df00b5964b1a1f663c473f1ecfcf42f95d532390bc62a369924fbf2703ef
+	source = https://github.com/nschloe/meshzoo/archive/v0.9.3.tar.gz
+	sha512sums = b97159e897c59af7523dfafc2df4895cdca9045e86f2998111510dfe3de624e4474dcfce5a5f081b8a9f78b35134a421e91e4cb3c6215c077f2088d2783520f0
 
 pkgname = python-meshzoo

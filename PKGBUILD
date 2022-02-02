@@ -2,32 +2,38 @@
 _base=meshzoo
 pkgname=python-${_base}
 pkgdesc="A collection of meshes for canonical domains"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-numpy)
-makedepends=(python-setuptools)
+makedepends=(python-build python-flit-core python-install)
 checkdepends=(python-pytest-codeblocks python-matplotlib)
 optdepends=('python-matplotlib: for Matplotlib rendering in 2d')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('771fe9dc966d938f04d6a079611257cb3e5025a2e66bb7b089bf97505be6093993d4df00b5964b1a1f663c473f1ecfcf42f95d532390bc62a369924fbf2703ef')
+sha512sums=('b97159e897c59af7523dfafc2df4895cdca9045e86f2998111510dfe3de624e4474dcfce5a5f081b8a9f78b35134a421e91e4cb3c6215c077f2088d2783520f0')
 
 build() {
-  cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" build
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd "${_base}-${pkgver}"
-  python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks
+  cd ${_base}-${pkgver}
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m install --optimize=1 dist/*.whl
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks
 }
 
 package() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -c "from setuptools import setup; setup();" install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+
+  # Symlink license file
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "${site_packages}/${_base}-${pkgver}.dist-info/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
