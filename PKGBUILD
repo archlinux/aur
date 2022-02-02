@@ -5,6 +5,7 @@ _pkgname=clipcc
 pkgver=3.0.2
 pkgrel=1
 pkgdesc="ClipCC is a powerful scratch fork with plenty of extra features."
+conflicts=("clipcc-beta-bin")
 arch=("x86_64")
 url="https://github.com/Clipteam"
 license=("AGPL3")
