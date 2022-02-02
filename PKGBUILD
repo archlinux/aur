@@ -2,7 +2,7 @@
 
 pkgname=python-redis-ng
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='The Python interface to the Redis key-value store'
 arch=('any')
 url="https://github.com/redis/redis-py"

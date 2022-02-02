@@ -1,7 +1,7 @@
 pkgbase = python-redis-ng
 	pkgdesc = The Python interface to the Redis key-value store
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redis/redis-py
 	arch = any
 	license = MIT
