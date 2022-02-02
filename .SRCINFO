@@ -1,6 +1,6 @@
 pkgbase = matomo-git
 	pkgdesc = A powerful web analytics platform.
-	pkgver = 4.6.1
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/matomo-org/matomo
 	arch = any

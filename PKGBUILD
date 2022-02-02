@@ -6,7 +6,7 @@
 _pkgname=matomo
 
 pkgname=matomo-git
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="A powerful web analytics platform."
 arch=("any")
@@ -29,7 +29,6 @@ build()
     echo -e "\033[0;32mConfiguration is needed before the installation. For assistance, read the included \"README.md\".\033[0m"
 
     cd "${srcdir}"/"${_pkgname}"/ || exit
-    git checkout vue-report-generated-missing
     git checkout tags/"${pkgver}"
     git submodule update --init --merge --recursive
     composer install --no-dev
