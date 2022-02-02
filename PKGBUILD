@@ -3,13 +3,13 @@
 # report game bugs to morten@rashbox.org
 pkgname=pengupop
 pkgver=2.2.2
-pkgrel=26
+pkgrel=28
 pkgdesc="Clone of the retro arcade game Bust-a-move"
 arch=('x86_64')
 url='https://fedoraproject.org/wiki/Games/pengupop'
 license=('GPL')
 depends=('sdl')
-source=("https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/p/pengupop-2.2.2-26.fc34.x86_64.rpm")
+source=("https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/p/pengupop-2.2.2-28.fc36.x86_64.rpm")
 sha256sums=('399eb8be430f4d435cebd6b2817bd3f784ca555e8405c378cd3cced20c2de2f3')
 
 package() {
