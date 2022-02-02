@@ -1,6 +1,6 @@
 pkgbase = libctl
 	pkgdesc = A free Guile-based library implementing flexible control files for scientific simulations.
-	pkgver = 4.5.0
+	pkgver = 4.5.1
 	pkgrel = 1
 	url = http://ab-initio.mit.edu/wiki/index.php/Libctl
 	arch = i686
@@ -8,8 +8,7 @@ pkgbase = libctl
 	license = LGPL
 	depends = bash
 	options = !libtool
-	source = libctl-4.5.0.tar.gz::https://github.com/stevengj/libctl/archive/v4.5.0.tar.gz
-	sha256sums = 5124551b3c9ed9a0ca599179f5e78318b5a7a1daa06220329a3b2963c848ba03
+	source = libctl-4.5.1.tar.gz::https://github.com/stevengj/libctl/archive/v4.5.1.tar.gz
+	sha256sums = 570aa1a17e9ec059668be72c6430c3db366e6ccad0325f0a721fec3aa9e2b4fe
 
 pkgname = libctl
-
