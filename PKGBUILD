@@ -8,7 +8,7 @@
 __arch_pkg_commit="348566928ab92521329812792b77b491626e64cc"
 _gtkver=3.24.31
 
-_gtk3_classic_commit="644ddc7a02e0b83f2fe4ccd6e435f091baf30521"
+_gtk3_classic_commit="9f4410c3d84942f77fee2350b50ccb144abb80f3"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
