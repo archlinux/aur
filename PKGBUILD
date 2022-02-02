@@ -1,6 +1,6 @@
 # Maintainer: wuxb <wuxb45 at gmail dot com>
 pkgname=spdk
-pkgver=21.07
+pkgver=22.01
 pkgrel=1
 pkgdesc='spdk: headers, libs, and scripts'
 arch=('x86_64')
