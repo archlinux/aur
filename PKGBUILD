@@ -3,7 +3,7 @@
 name=watchghost
 pkgname=$name
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Your invisible but loud monitoring pet"
 arch=('any')

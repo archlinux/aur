@@ -1,7 +1,7 @@
 pkgbase = watchghost
 	pkgdesc = Your invisible but loud monitoring pet
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://gitlab.com/localg-host/watchghost/
 	install = watchghost.install
@@ -23,4 +23,3 @@ pkgbase = watchghost
 	sha256sums = 3cdc89a27ccbcc5494d7c480c400fbb4a97a299ae3acd6d273b2a22d7e18b8a4
 
 pkgname = watchghost
-
