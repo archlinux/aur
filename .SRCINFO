@@ -1,6 +1,6 @@
 pkgbase = manafiles-git
 	pkgdesc = Config file and package tracking utility
-	pkgver = r122.2590559
+	pkgver = r135.ef1fce0
 	pkgrel = 1
 	url = https://github.com/riyyi/manafiles
 	arch = i686
@@ -11,6 +11,8 @@ pkgbase = manafiles-git
 	makedepends = git
 	makedepends = gzip
 	depends = gcc-libs
+	optdepends = grep: package functionality
+	optdepends = pacman-contrib: package functionality
 	source = manafiles::git+https://github.com/riyyi/manafiles.git
 	sha256sums = SKIP
 
