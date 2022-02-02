@@ -1,0 +1,10 @@
+[Unit]
+Description=acers3fand is a script which controls your Acer Aspire S3 Ultrabook fan speed by cpu temperature
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/acers3fand
+
+[Install]
+WantedBy=multi-user.target
+
