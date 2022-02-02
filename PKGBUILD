@@ -3,7 +3,7 @@
 _base=optimesh
 pkgname=python-${_base}
 pkgdesc="Mesh optimization, mesh smoothing"
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
@@ -14,7 +14,7 @@ checkdepends=(python-pytest-codeblocks python-meshzoo python-matplotx)
 optdepends=('python-matplotlib: for Matplotlib rendering')
 provides=('optimesh' 'optimesh-info')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a748b02df6b8ced94d094d721994f32468b07bfc675298765f91a39203c68bb2612d42accc1a13dcabb99237306e6bc0937638871ce6cde1219f2a937ad2b6f0')
+sha512sums=('3ea39c3f4696fc5e26b96559a31d8906111c80619e3bfa864d80ccab5e29999481ac2df3c19eb508bea13dc0d0659e262a5e267260ef85b7b5d9da8e0a6589b0')
 
 build() {
   cd ${_base}-${pkgver}
