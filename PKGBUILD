@@ -1,11 +1,12 @@
 # Maintainer: Gomasy <nyan@gomasy.jp>
 
 pkgname=ibus-autostart
-pkgver=1
+pkgver=1.1
 pkgrel=1
 pkgdesc="iBus daemon autostart with XDG Autostart Specification"
 arch=('any')
 license=('none')
+depends=('ibus')
 
 package() {
   mkdir -p "$pkgdir/etc/xdg/autostart"

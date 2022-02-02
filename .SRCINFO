@@ -1,8 +1,9 @@
 pkgbase = ibus-autostart
 	pkgdesc = iBus daemon autostart with XDG Autostart Specification
-	pkgver = 1
+	pkgver = 1.1
 	pkgrel = 1
 	arch = any
 	license = none
+	depends = ibus
 
 pkgname = ibus-autostart
