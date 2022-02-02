@@ -1,13 +1,13 @@
 schema=sbxlm-sbfm
-downloadfile=SbfmPack220124.zip
+downloadfile=声笔飞码扩展包20220202.zip
 
 pkgname=rime-sbxlm-sbfm
-pkgver=220124
+pkgver=20220202
 pkgrel=1
 pkgdesc='声笔系列码，声笔飞码'
 arch=(any)
-source=("https://gitee.com/sbxlm/sbxlm/attach_files/958327/download/${downloadfile}")
-sha256sums=('4abf3fee3e12f3c135159e5d11f63c4948311941dd480017a9de621ccb7978e4')
+source=("https://gitee.com/sbxlm/sbxlm/attach_files/958465/download/${downloadfile}")
+sha256sums=('ee8e3367f2f86694a08327e6dffa279024fd48f9a7ca86228b48633c0e274cca')
 depends=('rime-sbxlm')
 groups=(sbxlm)
 
