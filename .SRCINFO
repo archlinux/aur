@@ -1,13 +1,24 @@
 pkgbase = maldet
-	pkgdesc = linux malware scanner designed around threats faced in shared host environments
+	pkgdesc = Linux malware scanner designed around threats faced in shared host environments
 	pkgver = 1.6.4
-	pkgrel = 7
+	pkgrel = 8
 	url = https://www.rfxn.com/projects/linux-malware-detect/
+	install = maldet.install
 	arch = any
 	license = GPL2
+	depends = inetutils
+	depends = inotify-tools
 	depends = perl
+	provides = linux-malware-detect
+	backup = etc/maldet/hookscan.conf
+	backup = etc/maldet/ignore_file_ext
+	backup = etc/maldet/ignore_inotify
+	backup = etc/maldet/ignore_paths
+	backup = etc/maldet/ignore_sigs
+	backup = etc/maldet/internals.conf
 	backup = etc/maldet/maldet.conf
+	backup = etc/maldet/monitor_paths
 	source = https://github.com/rfxn/linux-malware-detect/archive/1.6.4.tar.gz
-	md5sums = 75560119b94f558da88d5f8cc8710354
+	sha256sums = 3ad66eebd443d32dd6c811dcf2d264b78678c75ed1d40c15434180d4453e60d2
 
 pkgname = maldet

@@ -1,0 +1,9 @@
+post_install(){
+cat <<INFO
+
+Before running maldet, you will need to update signature files as root by running
+
+    maldet -u
+
+INFO
+}
