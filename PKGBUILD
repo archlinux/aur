@@ -1,48 +1,35 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Christian Rebischke <chris dot rebischke[at]archlinux[dot]org>
-
-_name=PyPDNS
-pkgbase=python-pypdns
-pkgname=('python-pypdns' 'python2-pypdns')
-pkgver=1.4.1
+_base=PyPDNS
+pkgname=python-${_base,,}
+pkgver=1.5.2
 pkgrel=1
-pkgdesc="Python API for PDNS."
-arch=('any')
-url="https://github.com/CIRCL/PyPDNS"
-license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("${_name}-${pkgver}.tar.gz::https://github.com/CIRCL/PyPDNS/archive/v${pkgver}.tar.gz")
-sha512sums=('b409bf4e44a9cdd439b7f5e1097fab8741adb1e346d5ae701037821c79ee619286841d212ad1876eff932e6c4ace7d53dee506a2a3fe6bf4e4334e3f444725a9')
-
-prepare() {
-  cp -a "${srcdir}/${_name}-${pkgver}"{,-py2}
-
-  cd "${srcdir}/${_name}-${pkgver}-py2"
-  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-         -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-      $(find . -name '*.py')
-}
+pkgdesc="Python API for PDNS"
+arch=(any)
+url="https://github.com/CIRCL/${_base}"
+license=(GPL3)
+depends=(python-requests-cache)
+makedepends=(python-build python-install python-poetry-core)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('8c8f11237541866969b096756716e945c1d007d5949f66001eb2473ee898ff75d2a7d79cecfa514c674733ae0d421c46a47a88d16e5d714898fa1e2d8009af3f')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
-
-  cd "${srcdir}/${_name}-${pkgver}-py2"
-  python2 setup.py build
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+  # from incorrectly using a parent git checkout info.
+  # https://github.com/pypa/build/issues/384#issuecomment-947675975
+  GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-package_python2-pypdns() {
-  depends=('python2')
-
-  cd "${srcdir}/${_name}-${pkgver}-py2"
-  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+check() {
+  cd ${_base}-${pkgver}/tests
+  PYTHONPATH="${srcdir}/${_base}-${pkgver}:${PYTHONPATH}" python test.py
 }
 
-package_python-pypdns() {
-  depends=('python')
-
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+package() {
+  cd ${_base}-${pkgver}
+  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set et sw=2 ts=2 tw=79:
