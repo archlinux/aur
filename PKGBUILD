@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libgcrypt
-pkgver=1.9.4
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
@@ -13,7 +13,7 @@ options=(staticlibs !buildflags !strip !emptydirs)
 source=("https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"{,.sig}
         "libgcrypt-use-correct-def-file.patch"
         "Smarter-fig2dev-detection.all.patch")
-sha1sums=('1bccc8393482fa1953323ff429c6b5ba5676eb1a'
+sha1sums=('363feb8187f6c59b6b10721af6a94558db8ec3af'
           'SKIP'
           '0f03d59dee4b967dfa80621ef4b1efea61772c16'
           '3613a5454aeaef8d264011f2bc9f2303248fb933')
