@@ -1,12 +1,12 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
-	pkgver = 4.3.956.g95558ac91
+	pkgver = 4.3.1347.ga1f58ab97
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = asciidoc
+	makedepends = asciidoctor
 	makedepends = cmake
 	makedepends = docbook-xsl
 	makedepends = git
@@ -18,8 +18,8 @@ pkgbase = awesome-git
 	depends = gdk-pixbuf2
 	depends = libxdg-basedir
 	depends = libxkbcommon-x11
-	depends = lua53
-	depends = lua53-lgi
+	depends = lua
+	depends = lua-lgi
 	depends = pango
 	depends = startup-notification
 	depends = xcb-util-cursor
@@ -39,4 +39,3 @@ pkgbase = awesome-git
 	md5sums = SKIP
 
 pkgname = awesome-git
-
