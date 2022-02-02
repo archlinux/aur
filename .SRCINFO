@@ -1,7 +1,7 @@
 pkgbase = rime-sbxlm
 	pkgdesc = 声笔系列码基础配置，包含声笔简码和声笔拼音
 	pkgver = 220202
-	pkgrel = 1
+	pkgrel = 2
 	install = rime-sbxlm.install
 	arch = any
 	groups = sbxlm
