@@ -1,7 +1,7 @@
 pkgbase = python-aioftp
 	pkgdesc = ftp client/server for asyncio
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aio-libs/aioftp
 	arch = any
 	license = Apache License Version 2.0

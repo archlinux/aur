@@ -2,7 +2,7 @@
 _project_name='aioftp'
 pkgname="python-${_project_name}"
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ftp client/server for asyncio"
 url="https://github.com/aio-libs/aioftp"
 arch=('any')
