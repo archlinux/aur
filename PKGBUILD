@@ -223,6 +223,10 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES
+            WIREGUARD-MODULE
+            KSMBD-MODULE
+            NTFS3-MODULE)
 
   cd linux-${_major}
   local kernver="$(<version)"
