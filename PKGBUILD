@@ -1,7 +1,7 @@
 # Maintainer: James Hendrie <hendrie.james@gmail.com>
 pkgname=qytdl
-pkgver=1.41
-pkgrel=2
+pkgver=1.5
+pkgrel=1
 epoch=
 pkgdesc="Basic PyQt5 frontend to Youtube-DL"
 arch=('any')
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/jahendrie/qytdl/releases/download/1.41/$pkgname-$pkgver.tar.xz")
+source=("https://github.com/jahendrie/qytdl/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('c4e18a3f0a364f3dc08041941839bb55')
+md5sums=('bb4d9d022c0d019d79057a84992da8df')
 validpgpkeys=()
 
 package() {
