@@ -1,14 +1,15 @@
 pkgbase = typography
 	pkgdesc = Tool for working with the GNOME typography design guidelines
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/design/typography
-	arch = any
+	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	depends = gtk4
-	source = https://gitlab.gnome.org/World/design/typography/-/archive/0.1.0/typography-0.1.0.tar.gz
-	sha256sums = 7990df024495c6018f066273b91ab8f6bf27e4ea2dc2f506bc18420b4ed769b0
+	depends = libadwaita
+	source = https://gitlab.gnome.org/World/design/typography/-/archive/0.2.0/typography-0.2.0.tar.gz
+	b2sums = 6efd047840ba1b0b9b231e73e0e2a0ffc10d134f152ae73181c2574192dca57fc2a33fdb8845a71cda43d1c9a27d3332f8ed42ed0676a4c6d4e0579c09ea3202
 
 pkgname = typography
