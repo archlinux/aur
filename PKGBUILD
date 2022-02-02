@@ -10,14 +10,14 @@ groups=(sbxlm)
 
 prepare () {
   cd $srcdir
-  tar czf $srcdir/$pkgname.tar.gz *.userdb
-  rm -rf *.userdb $pkgver.zip
+  tar czf $pkgname.tar.gz *.userdb
+  rm -rf *.userdb
   sed -i 's/import_preset: symbols/import_preset: sbxlm-symbols/g' *.schema.yaml
 }
 
 package() {
   mkdir -p $pkgdir/usr/share/sbxlm/init-userdb
-  cp $srcdir/$pkgname.tar.gz $pkgdir/usr/share/sbxlm/init-userdb
+  mv $srcdir/$pkgname.tar.gz $pkgdir/usr/share/sbxlm/init-userdb
   cp -r $srcdir/ $pkgdir/usr/share/rime-data/
   chmod 755 $pkgdir/usr/share/rime-data/
 }
