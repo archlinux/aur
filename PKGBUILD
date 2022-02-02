@@ -1,13 +1,13 @@
 schema=sbxlm-sbkm
-downloadfile=SbkmPack220124.zip
+downloadfile=声笔快码扩展包20220202.zip
 
 pkgname=rime-sbxlm-sbkm
-pkgver=220124
+pkgver=20220202
 pkgrel=1
 pkgdesc='声笔系列码，声笔快码'
 arch=(any)
-source=("https://gitee.com/sbxlm/sbxlm/attach_files/958329/download/${downloadfile}")
-sha256sums=('c80cbf86a23ff4b244c6a5434223a609ef7a1a251649c0cd56703f2c0be95438')
+source=("https://gitee.com/sbxlm/sbxlm/attach_files/958466/download/${downloadfile}")
+sha256sums=('8d3875d4585a6eb51cb30b45ede25e759b5819ab6efc1fda15c2f28f9a47339f')
 depends=('rime-sbxlm')
 groups=(sbxlm)
 
