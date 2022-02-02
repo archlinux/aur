@@ -1,5 +1,5 @@
 pkgbase = dotto-git
-	pkgver = r372.04c6720
+	pkgver = r372.672887f
 	pkgrel = 1
 	url = https://github.com/LibreSprite/Dotto
 	arch = x86_64
@@ -7,11 +7,12 @@ pkgbase = dotto-git
 	makedepends = make
 	makedepends = git
 	depends = sdl2
+	depends = sdl2_image
 	depends = freetype2
 	depends = libjpeg-turbo
-	depends = sdl2_image
 	depends = lua
 	depends = lcms2
+	depends = v8-r
 	source = git+https://github.com/LibreSprite/Dotto.git
 	sha256sums = SKIP
 
