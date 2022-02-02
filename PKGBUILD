@@ -1,4 +1,4 @@
-# Maintainer: Sanjay Pavan <tsppavan7@gmail.com>
+# Maintainer: Sanjay Pavan <withercubes@protonmail.com>
 
 pkgname=catppuccin-gtk-theme
 pkgver=0.1.3
