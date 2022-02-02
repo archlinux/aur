@@ -11,6 +11,7 @@ pkgbase = gourou-bin
 	depends = zlib
 	depends = libzip
 	depends = openssl
+	conflicts = gourou
 	options = !strip
 	source = https://indefero.soutade.fr/p/libgourou/downloads/get/libgourou_utils_0.5.1.tgz
 	md5sums = 3500e207aabfe591cbfde15e818d7ffe
