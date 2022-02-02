@@ -1,6 +1,6 @@
 pkgbase = gitfiend
 	pkgdesc = A Git client designed for humans
-	pkgver = 0.31.0
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://gitfiend.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gitfiend
 	depends = libappindicator-gtk3
 	depends = libsecret
 	options = !strip
-	source = https://gitfiend.com/resources/GitFiend_0.31.0_amd64.deb
-	md5sums = 57213a364dbf03a943205e514ef7f2ef
+	source = https://gitfiend.com/resources/GitFiend_0.32.0_amd64.deb
+	md5sums = cdb0575a540dc72a81db9d906017da2c
 
 pkgname = gitfiend
