@@ -1,7 +1,7 @@
 pkgbase = nvidia-utils-nvlax
 	pkgdesc = NVIDIA drivers utilities with NVENC and NvFBC patched with nvlax
 	pkgver = 510.47.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-utils.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = nvidia-utils-nvlax
 	provides = opengl-driver
 	provides = nvidia-libgl
 	conflicts = nvidia-libgl
+	conflicts = nvidia-fake-powerd
 	replaces = nvidia-libgl
 	replaces = nvidia-utils-keylase
 	options = !strip
