@@ -1,0 +1,14 @@
+pkgbase = awk-geohash-git
+	pkgdesc = AWK implementation of geohash
+	pkgver = r1.335a9d0
+	pkgrel = 1
+	url = https://github.com/esovetkin/awk-geohash
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = gawk
+	provides = geohash
+	source = git+https://github.com/esovetkin/awk-geohash.git
+	sha256sums = SKIP
+
+pkgname = awk-geohash-git
