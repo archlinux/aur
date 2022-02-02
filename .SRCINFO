@@ -15,7 +15,7 @@ pkgbase = system76-driver
 	depends = lm_sensors
 	depends = pciutils
 	depends = polkit
-	depends = python>=3.6
+	depends = python
 	depends = python-cffi
 	depends = python-dbus
 	depends = python-distro

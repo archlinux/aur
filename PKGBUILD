@@ -16,7 +16,7 @@ depends=(
   'lm_sensors'
   'pciutils'
   'polkit'
-  'python>=3.6'
+  'python'
   'python-cffi'
   'python-dbus'
   'python-distro'
