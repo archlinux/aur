@@ -3,13 +3,13 @@ _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color research"
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-matplotlib python-npx)
 makedepends=(python-build python-flit-core python-install)
-checkdepends=(python-pytest-codeblocks python-colorspacious python-scipy python-meshio python-meshzoo python-optimesh python-pygmsh) # python-perfplot | python-pyvista
+# checkdepends=(python-pytest-codeblocks python-colorspacious python-scipy python-meshio python-meshzoo python-optimesh python-pygmsh) # python-perfplot | python-pyvista
 optdepends=('python-meshio: for creation mesh'
   'python-meshzoo: for creation triangle and cube mesh'
   'python-optimesh: for triangular mesh optimization'
@@ -26,12 +26,12 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg PYTHONPATH="/usr/share/gmsh/api/python:${PYTHONPATH}" test-env/bin/python -m pytest --codeblocks -k 'not combvd and not fairchild_chen and not hung_berns and not macadam_1942 and not rit_dupont and not slice and not tools'
-}
+# check() {
+#   cd ${_base}-${pkgver}
+#   python -m venv --system-site-packages test-env
+#   test-env/bin/python -m install --optimize=1 dist/*.whl
+#   MPLBACKEND=Agg PYTHONPATH="/usr/share/gmsh/api/python:${PYTHONPATH}" test-env/bin/python -m pytest --codeblocks -k 'not combvd and not fairchild_chen and not hung_berns and not macadam_1942 and not rit_dupont and not slice and not tools'
+# }
 
 package() {
   cd ${_base}-${pkgver}
