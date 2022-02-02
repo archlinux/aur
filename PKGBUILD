@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('sc-controller'::'git+https://github.com/Ryochan7/sc-controller.git')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

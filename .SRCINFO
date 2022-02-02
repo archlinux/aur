@@ -17,6 +17,6 @@ pkgbase = sc-controller-git
 	provides = sc-controller
 	conflicts = sc-controller
 	source = sc-controller::git+https://github.com/Ryochan7/sc-controller.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = sc-controller-git
