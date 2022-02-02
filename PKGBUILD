@@ -1,12 +1,13 @@
-# Maintainer: chn <g897331845@gmail.com>
-# This PKGBUILD is picked directly from asp which is maintained by Pierre Schmitz <pierre@archlinux.de>
+# Maintainer: Robert Falkenberg <robert.falkenberg@tu-dortmund.de>
+# Contributor: chn <g897331845@gmail.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl-static
 _pkgname=openssl
-_ver=1.1.1k
+_ver=1.1.1m
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=2
+pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (with static libs)'
 arch=('x86_64')
 url='https://www.openssl.org'
@@ -21,7 +22,7 @@ provides=("openssl=$pkgver")
 conflicts=('openssl')
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc}
 	'ca-dir.patch')
-sha256sums=('892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5'
+sha256sums=('f89199be8b23ca45fc7cb9f1d8d3ee67312318286ad030f5316aca6462db6c96'
             'SKIP'
             '75aa8c2c638c8a3ebfd9fa146fc61c7ff878fc997dc6aa10d39e4b2415d669b2')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
