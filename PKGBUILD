@@ -1,6 +1,6 @@
 # Maintainer: uint2048_t
 pkgname=strawberry-qt5-git
-pkgver=0.9.3.r422.g3abdec1b
+pkgver=1.0.1.r41.gd2075001
 pkgrel=1
 pkgdesc="A music player aimed at audio enthusiasts and music collectors (qt5+vlc git version)"
 arch=(x86_64)
