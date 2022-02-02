@@ -23,7 +23,7 @@ _bldtype=Release
 # https://osdn.net/users/utuhiro/pf/utuhiro/files/
 #*************************************************************
 
-_mozcrev=c914d1dfe8b4193731b22da7ee3f53612a94269d
+#_mozcrev=c914d1dfe8b4193731b22da7ee3f53612a94269d
 _mozcver=2.26.4610.102
 _utdicdate=20220112
 _utdicver=1
@@ -31,15 +31,15 @@ _utdicver=1
 pkgbase=mozc-ut-united
 pkgname=mozc-ut-united
 true && pkgname=('mozc-ut-united')
-pkgver=${_mozcver}.${_utdicdate}
+pkgver=2.26.4610.102_20220112_2018.02.26.r231.g7329757e
 pkgrel=2
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
 makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel')
-source=("mozc::git+https://github.com/google/mozc.git#commit=${_mozcrev}" "https://osdn.net/downloads/users/37/37585/mozcdic-ut-${_utdicdate}.tar.bz2" "config-arch-new.patch" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/google/protobuf.git" "git+https://github.com/abseil/abseil-cpp.git")
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/37/37585/mozcdic-ut-${_utdicdate}.tar.bz2" "config-arch-new.patch" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/google/protobuf.git" "git+https://github.com/abseil/abseil-cpp.git" "android-fix.patch")
+sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
@@ -51,14 +51,18 @@ if [[ "$_ibus_mozc" == "yes" ]]; then
   true && pkgname+=('ibus-mozc-ut-united')
 fi
 
+pkgver() {
+  cd "${srcdir}/mozc/"
+
+  printf "%s_%s_%s" "${_mozcver}" "${_utdicdate}" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+}
+
 prepare() {
   # Enabling all dictionaries
   sed -i '/^#.*="true"/ s/^#//' ${srcdir}/mozcdic-ut-${_utdicdate}/src/make-dictionaries.sh
   
   mkdir -p mozc/src/third_party
-
   cd "${srcdir}/mozc/"
-
 
   git submodule init
   git config submodule.breakpad.url "$srcdir/breakpad"
@@ -75,6 +79,8 @@ prepare() {
 
   #fixes file include locations for ibus, and gtk along with correcting qt location on arch
   patch -d "${srcdir}/mozc/src" -i "${srcdir}/config-arch-new.patch"
+  patch -d "${srcdir}/mozc/src" -i "${srcdir}/android-fix.patch"
+
 }
 
 build() {

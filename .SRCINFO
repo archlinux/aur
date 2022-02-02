@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
-	pkgver = 2.26.4610.102.20220112
+	pkgver = 2.26.4610.102_20220112_2018.02.26.r231.g7329757e
 	pkgrel = 2
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = mozc-ut-united
 	makedepends = bazel
 	depends = qt5-base
 	depends = zinnia
-	source = mozc::git+https://github.com/google/mozc.git#commit=c914d1dfe8b4193731b22da7ee3f53612a94269d
+	source = mozc::git+https://github.com/google/mozc.git
 	source = https://osdn.net/downloads/users/37/37585/mozcdic-ut-20220112.tar.bz2
 	source = config-arch-new.patch
 	source = git+https://chromium.googlesource.com/breakpad/breakpad
@@ -26,6 +26,8 @@ pkgbase = mozc-ut-united
 	source = git+https://github.com/open-source-parsers/jsoncpp.git
 	source = git+https://github.com/google/protobuf.git
 	source = git+https://github.com/abseil/abseil-cpp.git
+	source = android-fix.patch
+	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
 	sha1sums = SKIP
