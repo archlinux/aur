@@ -1,13 +1,12 @@
 pkgbase = python-imolecule
 	pkgdesc = View molecules in the IPython notebook
-	pkgver = 0.1.14
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/patrickfuller/imolecule/
 	arch = any
 	license = GPL
 	depends = python
-	source = https://files.pythonhosted.org/packages/5c/5c/50620b1c0cec515aca6889d187d9773e56d9313d2d2552e19407df9c3342/imolecule-0.1.14.tar.gz
-	md5sums = d32dea7677750cb1b98ecb1a124bcf24
+	source = https://files.pythonhosted.org/packages/8b/b1/2d1caed44e366d844499fc40220079c46fd9a53d0c01093d82aee48275aa/imolecule-0.2.2.tar.gz
+	md5sums = 0ea55ed3e3feea25812c35e40ef0cd06
 
 pkgname = python-imolecule
-
