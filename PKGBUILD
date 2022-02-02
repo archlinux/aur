@@ -38,6 +38,7 @@ prepare() {
 build() {
 	cd "$srcdir/$_pkgname-$_ver"
 
+	export CFLAGS="-fPIC ${CFLAGS}"
 	# mark stack as non-executable: http://bugs.archlinux.org/task/12434
 	./Configure --prefix=/usr --openssldir=/etc/ssl --libdir=lib \
 		shared no-ssl3-method enable-ec_nistp_64_gcc_128 linux-x86_64 \
