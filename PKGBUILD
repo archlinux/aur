@@ -3,7 +3,7 @@
 pkgname=clipcc-beta-bin
 _pkgname=clipcc
 pkgver=3.1.0_beta4
-pkgrel=2
+pkgrel=3
 pkgdesc="This is ClipCC's beta release. Please note that beta release is unstable and some new features may not work as expected."
 conflicts=("clipcc-bin" "clipcc")
 arch=("x86_64")
