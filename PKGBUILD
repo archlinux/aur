@@ -1,4 +1,5 @@
 # Maintainer: Jeremy Stucki <dev@jeremystucki.ch>
+# Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 # Maintainer: soloturn@gmail.com
 
 yyyy=2021
