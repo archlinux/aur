@@ -7,7 +7,7 @@
 
 pkgname=gargoyle
 pkgver=2022.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Fiction multi-interpreter that supports all major IF formats."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://ccxvii.net/gargoyle/"
