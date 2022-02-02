@@ -1,11 +1,11 @@
 pkgbase = atomicwallet
 	pkgdesc = Atomic Wallet is a decentralized Cryptocurrency wallet that supports more than 500 coins and tokens, providing simplicity, safety, and convenience for its users.
-	pkgver = 2.37.0
+	pkgver = 2.38.0
 	pkgrel = 1
 	url = https://atomicwallet.io
 	arch = x86_64
 	license = unknown
-	source = https://get.atomicwallet.io/download/atomicwallet-2.37.0-187.rpm
-	sha256sums = 686febc50d0b2c041e176e08dec1897451f8074ae0ec8da81e5d4605162980f3
+	source = https://get.atomicwallet.io/download/atomicwallet-2.38.0-189.rpm
+	sha256sums = fd3497c82141ef79f4060f826bd49a6560337a1fe5880b0ad67c56458a2f31c1
 
 pkgname = atomicwallet
