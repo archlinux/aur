@@ -2,8 +2,8 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
@@ -11,31 +11,46 @@ license=('GPL3')
 depends=('glib2' 'gtk3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
 makedepends=('flutter' 'clang' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2a706dc839d030b1031d2139bb50efc137f1671461a338efceb5a049941f1a70')
+sha256sums=('6bdde4c81964b8f041380a11db947790d109771c366f37a9fbfe47f58ab09359')
+
+# Check Flutter configuration
+flutter="flutter --suppress-analytics"
+flutter_channel=$($flutter config --version | head -n1 | awk '{print $5}')
+$flutter config | grep -qE '^\s*enable-linux-desktop: true\b' || flutter_set_linux=y
+flutter_set_linux="$?"
 
 prepare() {
-  flutter="flutter --suppress-analytics"
+  # Switch to Beta channel if necessary
+  if [ "$flutter_channel" != "beta" ]; then
+    $flutter channel beta
+    $flutter upgrade
+  fi
+
+  # Enable linux-desktop builds if necessary
+  if [ "$flutter_set_linux" != "y" ];then
+    $flutter config --enable-linux-desktop
+  fi
 
   cd "$pkgname-$pkgver"
   $flutter clean
   $flutter pub get
 }
 
-
-
 build() {
-  flutter="flutter --suppress-analytics"
-
-  # Check if linux-desktop build is enabled, if not enable it for this build
-  $flutter config | grep -qE '^\s*enable-linux-desktop: true\b' || flutter_set_linux=y
-  flutter_set_linux="$?"
-  [ "$flutter_set_linux" == "y" ] || $flutter config --enable-linux-desktop
-
   cd "$pkgname-$pkgver"
   $flutter build linux
+}
 
+check() {
   # Cleanup
-  [ "$flutter_set_linux" == "y" ] || $flutter config --no-enable-linux-desktop
+  if [ "$flutter_channel" != "beta" ]; then
+    $flutter channel "$flutter_channel"
+    $flutter upgrade
+  fi
+
+  if [ "$flutter_set_linux" != "y" ];then
+    $flutter config --no-enable-linux-desktop
+  fi
 }
 
 package() {
