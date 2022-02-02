@@ -4,7 +4,7 @@ pkgname=('yaru-colors-gtk-theme-git'
          'yaru-colors-icon-theme-git'
          'yaru-colors-wallpapers-git')
 pkgbase='yaru-colors-gtk-theme-git'
-pkgver=21.04.r6.gdbcbbff1
+pkgver=21.10.3ubuntu5.r1.gcb79ae7c
 pkgrel=1
 pkgdesc="A fork of Ubuntu's Yaru theme - in different colors"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL3')
 url="https://github.com/Jannomag/Yaru-Colors"
 makedepends=('git')
 options=('!strip')
-source=('git+https://github.com/Jannomag/Yaru-Colors.git')
+source=('git+https://github.com/Jannomag/Yaru-Colors.git#branch=what-if-21.10')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package_yaru-colors-gtk-theme-git() {
-  depends=('gtk3' 'gnome-themes-extra')
+  depends=('gnome-themes-extra')
   optdepends=('gdk-pixbuf2: GTK2 support'
               'gtk-engine-murrine: GTK2 support'
               'yaru-colors-wallpapers: Matching wallpapers'
