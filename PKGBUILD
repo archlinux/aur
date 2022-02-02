@@ -1,4 +1,4 @@
-# Maintainer: Sanjay Pavan <tsppavan7@gmail.com>
+# Maintainer: Sanjay Pavan <withercubes@protonmail.com>
 
 pkgname='nsxiv-git'
 _pkgname=nsxiv
