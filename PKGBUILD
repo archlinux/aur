@@ -7,6 +7,7 @@ pkgdesc="iBus daemon autostart with XDG Autostart Specification"
 arch=('any')
 license=('none')
 depends=('ibus')
+conflicts=('ibus-autostart-kimpanel')
 
 package() {
   mkdir -p "$pkgdir/etc/xdg/autostart"
