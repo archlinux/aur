@@ -5,15 +5,15 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="2e881c9916dd4babb5f9922fb07dce2345b3cb4b"
-_gtkver=3.24.30
+__arch_pkg_commit="348566928ab92521329812792b77b491626e64cc"
+_gtkver=3.24.31
 
-_gtk3_classic_commit="b6ade1bee1c9c0cb3682a8dd4e5e92a28fee540b"
+_gtk3_classic_commit="644ddc7a02e0b83f2fe4ccd6e435f091baf30521"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
 pkgver=${_gtkver}
-pkgrel=2
+pkgrel=1
 pkgdesc="GTK3 patched to provide a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends)
@@ -30,7 +30,7 @@ makedepends=(
 	adwaita-icon-theme cantarell-fonts
 
 	lib32-atk lib32-cairo lib32-libxcursor lib32-libxinerama lib32-libxrandr lib32-libxi
-	lib32-libepoxy lib32-gdk-pixbuf2 lib32-fribidi lib32-libxcomposite lib32-libxdamage 
+	lib32-libepoxy lib32-gdk-pixbuf2 lib32-fribidi lib32-libxcomposite lib32-libxdamage
 	lib32-pango lib32-at-spi2-atk lib32-wayland lib32-libxkbcommon lib32-json-glib
 	lib32-librsvg lib32-mesa lib32-libcups lib32-krb5 lib32-e2fsprogs
 )
@@ -42,7 +42,7 @@ source=(
 	settings.ini
 )
 sha256sums=('SKIP'
-            'ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9'
+            '423c3e7fdb4c459ee889e35fd4d71fd2623562541c1041b11c07e5ad1ff10bf9'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
@@ -117,7 +117,7 @@ package_lib32-gtk3-classic()
 	pkgdesc="GTK3 patched to provide a more classic experience (32-bit)"
 	depends=(
 		lib32-atk lib32-cairo lib32-libxcursor lib32-libxinerama lib32-libxrandr lib32-libxi
-		lib32-libepoxy lib32-gdk-pixbuf2 lib32-fribidi lib32-libxcomposite lib32-libxdamage 
+		lib32-libepoxy lib32-gdk-pixbuf2 lib32-fribidi lib32-libxcomposite lib32-libxdamage
 		lib32-pango lib32-at-spi2-atk lib32-wayland lib32-libxkbcommon lib32-json-glib
 		lib32-librsvg lib32-mesa lib32-libcups lib32-krb5 lib32-e2fsprogs
 		"gtk3-classic>=$pkgver"

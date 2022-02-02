@@ -1,7 +1,7 @@
 pkgbase = gtk3-classic
 	pkgdesc = GTK3 patched to provide a more classic experience
-	pkgver = 3.24.30
-	pkgrel = 2
+	pkgver = 3.24.31
+	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
 	arch = x86_64
@@ -59,9 +59,9 @@ pkgbase = gtk3-classic
 	makedepends = lib32-libcups
 	makedepends = lib32-krb5
 	makedepends = lib32-e2fsprogs
-	provides = gtk3=3.24.30
-	provides = gtk3-typeahead=3.24.30
-	provides = gtk3-mushrooms=3.24.30
+	provides = gtk3=3.24.31
+	provides = gtk3-typeahead=3.24.31
+	provides = gtk3-mushrooms=3.24.31
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -69,12 +69,12 @@ pkgbase = gtk3-classic
 	conflicts = gtk3
 	conflicts = gtk3-typeahead
 	conflicts = gtk3-print-backends
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=b6ade1bee1c9c0cb3682a8dd4e5e92a28fee540b
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.30.tar.xz
-	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/2e881c9916dd4babb5f9922fb07dce2345b3cb4b/trunk/gtk-query-immodules-3.0.hook
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=644ddc7a02e0b83f2fe4ccd6e435f091baf30521
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.31.tar.xz
+	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/348566928ab92521329812792b77b491626e64cc/trunk/gtk-query-immodules-3.0.hook
 	source = settings.ini
 	sha256sums = SKIP
-	sha256sums = ba75bfff320ad1f4cfbee92ba813ec336322cc3c660d406aad014b07087a3ba9
+	sha256sums = 423c3e7fdb4c459ee889e35fd4d71fd2623562541c1041b11c07e5ad1ff10bf9
 	sha256sums = a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229
 	sha256sums = 01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202
 
@@ -130,6 +130,6 @@ pkgname = lib32-gtk3-classic
 	depends = lib32-libcups
 	depends = lib32-krb5
 	depends = lib32-e2fsprogs
-	depends = gtk3-classic>=3.24.30
-	provides = lib32-gtk3=3.24.30
+	depends = gtk3-classic>=3.24.31
+	provides = lib32-gtk3=3.24.31
 	conflicts = lib32-gtk3
