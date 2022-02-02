@@ -1,7 +1,8 @@
-# Maintainer: Alex Mekkering <amekkering at gmail dot com>
+# Maintainer: Michael Riegert <michael at eowyn net>
+# Contributor: Alex Mekkering <amekkering at gmail dot com>
 
 pkgname=libavresample
-pkgver=4.3.1
+pkgver=4.4.1
 pkgrel=1
 pkgdesc="libavresample from the ffmpeg package because it's been excluded due to deprecation"
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
