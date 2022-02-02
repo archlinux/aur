@@ -37,8 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         sql-make-VirtualCursor-standard-layout-type.patch
         chromium-93-ffmpeg-4.4.patch
         unbundle-ffmpeg-av_stream_get_first_dts.patch
-        use-oauth2-client-switches-as-default.patch
-        unexpire-accelerated-video-decode-flag.patch)
+        use-oauth2-client-switches-as-default.patch)
 sha256sums=('c87266e20f860a32c48affc70a769368d1b876dbad768e3aa93ee3c335944171'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'f561145514e9d30a696a82f6a6a4eca06e664b58d7cda30dad9afb2cef341a4d'
@@ -48,8 +47,7 @@ sha256sums=('c87266e20f860a32c48affc70a769368d1b876dbad768e3aa93ee3c335944171'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
             '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
             '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
-            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
-            '81bb556ad01bbf3ea696f68e0a266b55b8271ad6def947e82afb31d4e9a5369a')
+            'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -125,14 +123,11 @@ prepare() {
     # Fix build with older ffmpeg
     patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
 
-  # Substitute the custom function 'av_stream_get_first_dts' for ffmpeg 4.4;
-  # drop this for ffmpeg 5.0 which is patched to include the above function.
-  # https://crbug.com/1251779
-  patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
+    # Substitute the custom function 'av_stream_get_first_dts' for ffmpeg 4.4;
+    # drop this for ffmpeg 5.0 which is patched to include the above function.
+    # https://crbug.com/1251779
+    patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
   fi
-
-  # https://crbug.com/1207478
-  patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
 
   # Upstream fixes
   patch -Np1 -F3 -i ../downgrade-duplicate-peer-error-to-dvlog.patch
