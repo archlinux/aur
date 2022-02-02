@@ -3,6 +3,7 @@ pkgbase = reform-tools
 	pkgver = 1.0
 	pkgrel = 8
 	url = https://mntre.com/reform2/handbook/index.html
+	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = git
