@@ -12,16 +12,16 @@ groups=(sbxlm)
 prepare () {
   cd $srcdir/sbxlm
   mv symbols.yaml sbxlm-symbols.yaml
-  tar czf $srcdir/$pkgname.tar.gz *.userdb
-  rm -rf *.userdb
   sed -i 's/import_preset: symbols/import_preset: sbxlm-symbols/g' *.schema.yaml
 }
 
 package() {
   mkdir -p $pkgdir/usr/share/sbxlm/init-userdb
   mkdir -p $pkgdir/usr/bin
-  cp $srcdir/$pkgname.tar.gz $pkgdir/usr/share/sbxlm/init-userdb
-  cp -r $srcdir/sbxlm/ $pkgdir/usr/share/rime-data/
   cp sbxlm-init $pkgdir/usr/bin
+  cd $srcdir/sbxlm
+  tar czf $pkgdir/usr/share/sbxlm/init-userdb/$pkgname.tar.gz *.userdb
+  cp -r $srcdir/sbxlm/ $pkgdir/usr/share/rime-data/
+  rm -rf $pkgdir/usr/share/rime-data/*.userdb
   chmod 755 $pkgdir/usr/share/rime-data/
 }
