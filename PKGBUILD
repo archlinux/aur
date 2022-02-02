@@ -8,7 +8,7 @@ url="https://gitlab.com/ia-projekt-zespolowy-2021-2022/local-dns"
 license=('GPL')
 depends=('python>=3' 'python-dnslib' 'python-hosts>=1.0' 'libcrafter-git')
 makedepends=('git' 'make' 'gcc>=10' 'autoconf')
-source=("git+$url#branch=master")
+source=("git+$url#branch=main")
 md5sums=('SKIP')
 
 
