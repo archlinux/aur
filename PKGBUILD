@@ -2,13 +2,13 @@
 
 pkgname=acers3fand
 pkgver=r20.10b6ff0
-pkgrel=1
+pkgrel=2
 pkgdesc='A script which controls your Acer Aspire S3 Ultrabook fan speed by cpu temperature'
 url='https://github.com/enyone/acers3fand'
 arch=(x86_64)
 
 makedepends=('git')
-depends=('perl')
+depends=('perl' 'dmidecode')
 optdepends=(
     'systemd: system and service manager to support acers3fand running automatically'
 )
