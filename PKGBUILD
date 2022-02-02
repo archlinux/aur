@@ -1,32 +1,33 @@
-# Contributor: Johannes Dewender   arch at JonnyJD dot net
+# Maintainer: Ben Westover <kwestover.kw@gmail.com>
+
 pkgname=reportbug
-pkgver=7.1.4
+pkgver=11.3.0
 pkgrel=1
-pkgdesc="report bugs in the Debian distribution + python modules"
+pkgdesc="A tool designed to make the reporting of bugs in Debian and derived distributions relatively painless"
 arch=('any')
-url="http://packages.debian.org/sid/reportbug"
-license=('MIT')
-depends=('python-debian' 'python-debianbts' 'python-requests' 'apt'
-'sensible-utils')
-provides=("python-reportbug=$pkgver")
+url="https://salsa.debian.org/reportbug-team/reportbug"
+license=('custom')
+depends=('python' 'python-debian' 'python-debianbts' 'python-apt' 'apt' 'sensible-utils')
+makedepends=('python-setuptools')
 conflicts=('python-reportbug')
-options=(!emptydirs)
-backup=('etc/reportbug.conf')
-source=(http://ftp.debian.org/debian/pool/main/r/$pkgname/${pkgname}_$pkgver.tar.bz2)
-sha256sums=('3a4f0366ee7885408a07c24e6067d4e6ed6990ba6d57494226c916dc43fe27c8')
+provides=('python-reportbug')
+source=("https://salsa.debian.org/$pkgname-team/$pkgname/-/archive/$pkgver/$pkgname-${pkgver}.tar.gz"
+        "LICENSE" # Extracted from debian/copyright in the source tree
+        )
+sha256sums=('6f820023355ecf1afca7b49e4ea0b66f6ecafe422b30601e4c7c22e1da56fe34'
+            '604ec308937cc86922cd5c64baaf0e63ccbc87b8d8d3a6c1c5b0f2e47182b273')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py build
+	cd $pkgname-$pkgver
+	python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  mkdir -p $pkgdir/usr/share/man/man1/ $pkgdir/usr/share/man/man5/
-  install -m644 -t $pkgdir/usr/share/man/man1/ man/*.1
-  install -m644 -t $pkgdir/usr/share/man/man5/ man/*.5
-  install -Dm644 conf/reportbug.conf $pkgdir/etc/reportbug.conf
+	cd $pkgname-$pkgver
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	mkdir -p $pkgdir/usr/share/man/man1 $pkgdir/usr/share/man/man5
+	install -m644 -t $pkgdir/usr/share/man/man1/ man/*.1
+	install -m644 -t $pkgdir/usr/share/man/man5/ man/*.5
+	install -Dm644 conf/reportbug.conf $pkgdir/etc/reportbug.conf
+	install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
