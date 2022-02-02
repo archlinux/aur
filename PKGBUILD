@@ -2,7 +2,7 @@
 
 pkgbase=falco
 pkgname=(falco falco-dkms)
-pkgver=0.30.0
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Cloud native runtime security. Build from source (unstable)."
 arch=(x86_64)
