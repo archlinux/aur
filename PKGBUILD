@@ -11,7 +11,7 @@ _ldap=default
 
 _pkgname=atheme-services
 pkgname=atheme
-_pkgver="7.2.11"
+_pkgver="7.2.12"
 pkgrel=1
 pkgver="${_pkgver//-/_}"
 pkgdesc="IRC services"
@@ -36,7 +36,7 @@ install=atheme.install
 source=("https://github.com/atheme/atheme/releases/download/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.xz"
         "atheme.service"
 )
-sha256sums=('f6b346a4328778f8236f492fa23fdc96cd2acebad4cfd30d6d7b04c583b49b32'
+sha256sums=('600d5ba0e25d80307818021fd9b85e49b07f245932b3c8e04e16fe312dd60fba'
             'ee9ad7658434451184872c21c7fd38196d22d1dfb6b1f37bcfaf8c363d50296f')
 
 build() {
