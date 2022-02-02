@@ -6,7 +6,7 @@
 
 pkgname="maldet"
 pkgver=1.6.4
-pkgrel=8
+pkgrel=9
 pkgdesc="Linux malware scanner designed around threats faced in shared host environments"
 url="https://www.rfxn.com/projects/linux-malware-detect/"
 license=("GPL2")
@@ -135,7 +135,6 @@ package(){
  rm "$pkgdir/usr/share/maldet/internals/internals.conf"
  rm "$pkgdir/usr/share/maldet/maldet"
  rm "$pkgdir/usr/share/maldet/maldet.1"
- rm "$pkgdir/usr/share/maldet/maldet.1.gz"
  rm "$pkgdir/usr/share/maldet/modsec.sh"
  rm "$pkgdir/usr/share/maldet/monitor_paths"
  rm -r "$pkgdir/usr/share/maldet/service"
