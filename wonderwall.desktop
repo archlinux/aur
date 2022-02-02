@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+GenericName=Wallpaper manager & Downloader
+Name=Wonderwall
+Name[en_US]=Wonderwall
+Name[en_IN]=Wonderwall
+Type=Application
+Icon=wonderwall
+Keywords=wallpaper;desktop;background
+Exec=wonderwall %F
+Categories=Utility;Settings;
+Terminal=false
+StartupNotify=false
