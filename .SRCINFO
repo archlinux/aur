@@ -1,6 +1,6 @@
 pkgbase = anylogic-ple
 	pkgdesc = AnyLogic Personal Learning Edition - for beginners and students
-	pkgver = 8.7.7
+	pkgver = 8.7.9
 	pkgrel = 1
 	url = https://www.anylogic.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = anylogic-ple
 	provides = anylogic
 	conflicts = anylogic
 	options = !strip
-	source = https://files.anylogic.com/anylogic-ple-8.7.7.linux.x86_64.tgz.bin
-	sha256sums = 5dbc860ba72b2687cc3bc9bceb7b44c1f96b309389c7606fa5d657fc565323e4
+	source = https://files.anylogic.com/anylogic-ple-8.7.9.linux.x86_64.tgz.bin
+	sha256sums = 229e7c3a879dac62a76d847f1df54e919331f7d1d80fb6d2a43bf37823c9b2a4
 
 pkgname = anylogic-ple
