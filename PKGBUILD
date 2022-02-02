@@ -1,19 +1,22 @@
 pkgname=nali-go
-pkgver=0.3.1
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='An offline tool for querying IP geographic information and CDN provider.'
 arch=('x86_64')
 url="https://github.com/zu1k/nali"
 license=('MIT')
-makedepends=('go')
-source=("https://github.com/zu1k/nali/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('033c4b451b7a450212d8d81459f6557091cc69cd231d0b5c99870ca3c6273980')
+makedepends=("go>=2:1.18beta")
+source=("https://github.com/zu1k/nali/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('0b2a19c44bd6ad268703efc9f8532c85a6bfb027043d69c9560cf0a65ee997a3')
 
 build() {
   cd "$srcdir/nali-$pkgver"
-  go build \
+   go build \
     -trimpath \
-    -ldflags "-X \"github.com/zu1k/nali/constant.Version=$pkgver\" -extldflags $LDFLAGS" \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -X \"github.com/zu1k/nali/constant.Version=$pkgver\" -extldflags $LDFLAGS" \
     -o $pkgname .
 }
 
