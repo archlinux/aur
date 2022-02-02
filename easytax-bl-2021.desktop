@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=EasyTax 2021 BL
+Exec=/bin/sh "/usr/bin/easytax-bl-2021"
+Categories=Office;
+
