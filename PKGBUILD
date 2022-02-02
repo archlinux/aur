@@ -3,13 +3,14 @@
 # Run 'makepkg -i' and hope for best :)
 
 pkgname=sc-controller-git
-pkgver=v0.4.8.1.r22.e026fc17
+pkgver=v0.4.8.6.r14.3ce2d23c
 pkgrel=1
 pkgdesc='User-mode driver and GTK3 based GUI for Steam Controller'
 arch=('any')
 url='https://github.com/Ryochan7/sc-controller'
 license=('GPL2')
 depends=('gtk3' 'python-gobject' 'python-cairo' 'python-pylibacl' 'python-evdev' 'xorg-xinput')
+optdepends=('gtk-layer-shell: wayland OSD support')
 makedepends=('python-setuptools' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
