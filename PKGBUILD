@@ -7,16 +7,15 @@ arch=('x86_64' 'aarch64')
 url="https://mntre.com/reform2/handbook/index.html"
 license=('GPL3')
 depends=('python'
-	'python-psutil'
-	'rsync'
-	'alsa-utils'
-	'systemd'
-	'net-tools'
-	'pavucontrol'
-	'procps-ng'
-	'busybox'
-	'ircii')
+         'python-psutil'
+         'rsync'
+         'alsa-utils'
+         'systemd'
+         'procps-ng'
+         'busybox')
 makedepends=('git')
+optdepends=('ircii'
+            'pavucontrol')
 source=("$pkgname-$pkgver.tar.gz::https://source.mnt.re/reform/reform-debian-packages/-/archive/reform-tools-1.0-8/reform-debian-packages-reform-tools-1.0-8.tar.gz"
         'reform-hw-setup.service'
         'reform-sleep.service'
