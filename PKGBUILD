@@ -5,9 +5,9 @@ pkgname=scratch3
 conflicts=("scratch3-bin")
 
 pkgver=3.28.0
-pkgrel=1
-_electronDist=electron13
-_electronVersion=13.6.8
+pkgrel=2
+_electronDist=electron15
+_electronVersion=15.3.6
 
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
@@ -44,7 +44,7 @@ esac
 ## To find them out, start installation like usual.
 ## If it succeeds, fine. If not, in the output of the build,
 ## look for this kind of line, at the end of the (failed) build:
-##   • packaging  platform=linux arch=????? electron=13.x.y appOutDir=dist/linux-?????-unpacked
+##   • packaging  platform=linux arch=????? electron=15.x.y appOutDir=dist/linux-?????-unpacked
 ## In any case, please report to the maintainer, thanks.
 
 prepare() {
@@ -56,8 +56,6 @@ prepare() {
    sed -i "s|13.x.y|$_electronVersion|" electron-builder-yaml.patch
 
 #  Copy patch files to be able to compile on Linux platform
-#  and with electron version (13.6.x) instead of default version (15.3.1)
-#  due to issue (https://github.com/electron/electron/issues/31152).
    cp package-json.patch scratch-desktop-${pkgver}/
    cp electron-builder-yaml.patch scratch-desktop-${pkgver}/
    cp index-js.patch scratch-desktop-${pkgver}/src/main/
