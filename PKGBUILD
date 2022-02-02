@@ -9,6 +9,7 @@ pkgdesc='A spreadsheet program based on SC'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://github.com/andmarti1424/sc-im'
 depends=(libxml2 libzip)
+makedepends=(git)
 optdepends=('libxlsxwriter: export to xlsx. Requires rebuild of sc-im'
             'gnuplot: create graphs')
 license=('BSD')
