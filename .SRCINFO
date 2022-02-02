@@ -1,14 +1,16 @@
 pkgbase = python-npx
 	pkgdesc = Some useful extensions for NumPy
-	pkgver = 0.0.25
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/nschloe/npx
 	arch = x86_64
 	license = custom:BSD-3-clause
 	checkdepends = python-pytest-codeblocks
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
 	depends = python-numpy
-	source = https://github.com/nschloe/npx/archive/v0.0.25.tar.gz
-	sha512sums = 6e061784b9143aec20384ef8ea716b5d0ba780b4e79eef58009d66be78c17aadc018414122bfa39a8dc28401587db0de58aff998a8c0f7246cbbf8ac60976131
+	source = https://github.com/nschloe/npx/archive/v0.1.0.tar.gz
+	sha512sums = db62459ff27a7631d7197849e4f0ae7854e7eb4f7cf9f9613a6c760357e43bd064852df7ff02753c0dc8a8eb7f03cba4dad7b6f4fa0785aa3c38de1e7eaca197
 
 pkgname = python-npx
