@@ -14,12 +14,16 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
+build() {
   cd "$pkgname"
   rm -rf build
   mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
+}
+
+package() {
+  cd "$pkgname/build"
   make DESTDIR="$pkgdir/" install
 }
