@@ -13,7 +13,7 @@ pkgbase = localdns-git
 	depends = python-dnslib
 	depends = python-hosts>=1.0
 	depends = libcrafter-git
-	source = git+https://gitlab.com/ia-projekt-zespolowy-2021-2022/local-dns#branch=master
+	source = git+https://gitlab.com/ia-projekt-zespolowy-2021-2022/local-dns#branch=main
 	md5sums = SKIP
 
 pkgname = localdns-git
