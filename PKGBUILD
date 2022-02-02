@@ -19,7 +19,9 @@ makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://source.mnt.re/reform/reform-debian-packages/-/archive/reform-tools-1.0-8/reform-debian-packages-reform-tools-1.0-8.tar.gz"
         'reform-hw-setup.service'
 	'reform-sleep.service')
-sha256sums=('0770f3d260913b7fed25f2e5043749c9b1879150fa8ea8d4e9ca674b26f571cc')
+sha256sums=('0770f3d260913b7fed25f2e5043749c9b1879150fa8ea8d4e9ca674b26f571cc'
+            'dd22f0111a044af4a1b03017616a20bed9863d65ffd90670d764b559daf207ed'
+            '85a325247a4946c44fe01537756a0730a570c693944dda0f782c1d236adb419e')
 
 prepare() {
 	cd reform-debian-packages-reform-tools-1.0-8/reform-tools_1.0-8

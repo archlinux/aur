@@ -19,5 +19,7 @@ pkgbase = reform-tools
 	source = reform-hw-setup.service
 	source = reform-sleep.service
 	sha256sums = 0770f3d260913b7fed25f2e5043749c9b1879150fa8ea8d4e9ca674b26f571cc
+	sha256sums = dd22f0111a044af4a1b03017616a20bed9863d65ffd90670d764b559daf207ed
+	sha256sums = 85a325247a4946c44fe01537756a0730a570c693944dda0f782c1d236adb419e
 
 pkgname = reform-tools
