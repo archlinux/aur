@@ -1,6 +1,6 @@
 pkgbase = image-roll-bin
 	pkgdesc = GTK image viewer with basic image manipulation tools
-	pkgver = 1.4.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/weclaw1/image-roll
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = image-roll-bin
 	depends = gtk3
 	provides = image-roll
 	conflicts = image-roll
-	source = image-roll-1.4.1.deb::https://github.com/weclaw1/image-roll/releases/download/1.4.1/image-roll_1.4.1_amd64.deb
-	sha256sums = 061148d7edce9fd4a526d8117c944d9874ba753f9e3da5c605a63c0c6d6dad8b
+	source = image-roll-1.5.0.deb::https://github.com/weclaw1/image-roll/releases/download/1.5.0/image-roll_1.5.0_amd64.deb
+	sha256sums = 1c64a464bee49a643c97dd4e0394c9b27c277e2e79d3885f4218b1162be2e128
 
 pkgname = image-roll-bin
