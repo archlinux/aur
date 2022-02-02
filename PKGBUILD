@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.1.0.r7.g74d1bdf
-pkgrel=2
+pkgver=1.1.0.r8.g1d031d9
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
@@ -46,6 +46,7 @@ package_pop-launcher-git() {
 package_pop-shell-plugin-system76-power-git() {
   pkgdesc="System76 Power scripts for the launcher"
   depends=('gnome-shell-extension-pop-shell' 'system76-power')
+  provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}" 'pop-launcher-system76-power')
   replaces=('pop-launcher-system76-power-git')
 
