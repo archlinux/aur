@@ -1,0 +1,13 @@
+pkgbase = vim-graphql
+	pkgdesc = Vim syntax, file detection, and indentation plugin for GraphQL queries
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/jparise/vim-graphql
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	depends = vim
+	source = https://github.com/jparise/vim-graphql/archive/v1.4.tar.gz
+	sha512sums = 784212b9e8e6c85d491cfd5850bde9e9bfa720fc087336801080406ce63b6806d28eb39c8f42e8da46aa0011a27d201355c7da27f23985948f6caa40f8f4eb2b
+
+pkgname = vim-graphql
