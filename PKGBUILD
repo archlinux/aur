@@ -15,9 +15,13 @@ source=("https://github.com/BullShark/$_pkgname/releases/download/$pkgver-$pkgre
 sha256sums=('33bc0a2df9f2e0f3b260bd9dd55c452df6033bbf434cbbffbab3667b76214204')
 
 package() {
-  mkdir -p $pkgdir/etc/JRobo
-	cp -a $srcdir/etc/JRobo/Config.json $pkgdir/etc/JRobo/Config.json
 
+  mkdir -p $pkgdir/etc/JRobo
+  
+  if [[ ! -f "$FILE" ]]; then
+    cp -a $srcdir/etc/JRobo/Config.json $pkgdir/etc/JRobo/Config.json
+  fi
+	
   mkdir -p $pkgdir/usr/lib
 	cp -a $srcdir/usr/lib/JRobo.jar $pkgdir/usr/lib/JRobo.jar
 
