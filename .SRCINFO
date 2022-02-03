@@ -1,7 +1,7 @@
 pkgbase = ab-av1
 	pkgdesc = AV1 encoding tool with fast VMAF sampling.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexheretic/ab-av1
 	arch = x86_64
 	license = Apache-2.0
