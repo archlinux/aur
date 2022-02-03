@@ -4,44 +4,23 @@
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com
 pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
-pkgver=0.6.1.r36.ge2a9b97
-_gitver=e2a9b979d3fb92967c7a6a8221e674eb7e55c813
+pkgver=0.6.3
 _vdrapi=2.6.0
-pkgrel=6
-pkgdesc="implementation of the VTP (Video Transfer Protocol)"
-url="http://projects.vdr-developer.org/projects/show/plg-streamdev"
+pkgrel=1
+pkgdesc="Implementation of the VTP (Video Transfer Protocol)"
+url="https://github.com/vdr-projects/vdr-plugin-streamdev"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
-makedepends=('git')
 _plugname=${pkgbase//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-streamdev.git#commit=$_gitver"
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-streamdev/archive/refs/tags/$pkgver.tar.gz"
         "50-$_plugname-server.conf")
-md5sums=('SKIP'
-         '8c352d8ee7401eeb34fe5ab82e791a21')
 
-pkgver() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  _last_release=0.6.1
-  _last_release_commit=40704cdcbc012e15e9e814d8fe64303f13988f56
-
-  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
-  if [ $_count -gt 0 ]; then
-    printf "%s.r%s.g%s" $_last_release \
-      $_count \
-      `git rev-parse --short HEAD`
-  else
-    printf "%s" $_last_release
-  fi
-}
-
-prepare() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
-  sed -i 's/cDevice::SetCurrentChannel(CurrentChannel);/cDevice::SetCurrentChannel(CurrentChannel->Number());/' server/connectionVTP.c
-}
+sha256sums=('a678653dfb2641bc9dea9a1bd3b2400f3edbe697953364cf597f76d93cfaea2c'
+            'cec0056ca0f140f773f443396ea5f95632f077c4a653a4c5b753ec4937ca3e72')
 
 build() {
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make -j1
 }
 
@@ -50,7 +29,7 @@ package_vdr-streamdev-client() {
   replaces=('vdr-streamdev')
   conflicts=('vdr-streamdev')
   backup=("etc/vdr/conf.avail/50-$_plugname-client.conf")
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install-client
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
@@ -63,7 +42,7 @@ package_vdr-streamdev-server() {
   conflicts=('vdr-streamdev')
   backup=("etc/vdr/conf.avail/50-$_plugname-server.conf"
           'var/lib/vdr/plugins/streamdev-server/streamdevhosts.conf')
-  cd "${srcdir}/vdr-plugin-$_plugname"
+  cd "${srcdir}/vdr-plugin-$_plugname-$pkgver"
   make DESTDIR="$pkgdir" install-server
 
   install -Dm644 streamdev-server/streamdevhosts.conf "$pkgdir/var/lib/vdr/plugins/streamdev-server/streamdevhosts.conf"
