@@ -1,13 +1,14 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=desktop-files-creator-git
-pkgver=r20.06b887f
+pkgver=r30.08b06ab
 pkgrel=1
 pkgdesc='Simple app to create desktop files on GNU/Linux'
 url="https://github.com/alexkdeveloper/${pkgname%-git}"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('gtk3')
+checkdepends=('appstream-glib')
 makedepends=('vala' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -24,7 +25,10 @@ build() {
 	meson compile -C build
 }
 
-#skip check because it returns appstream-related error
+check() {
+	#skip appstream test because it returns error
+	meson test 'Validate desktop file' 'Validate schema file' -C build --print-errorlogs
+}
 
 package() {
 	meson install -C build --destdir "$pkgdir"
