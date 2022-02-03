@@ -1,7 +1,7 @@
 # Maintainer: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 _pkgname=spotiflyer
 pkgname="${_pkgname}-bin"
-pkgver=3.5.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Kotlin multiplatform music downloader, supports Spotify/Gaana/Youtube Music/Jio Saavn."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=("java-runtime")
 source=("${_pkgname}-$pkgver.jar::$url/releases/download/v$pkgver/SpotiFlyer-linux-x64-$pkgver.jar"
         "${pkgname}.desktop")
-sha256sums=('96e6910743268c60ae7f5bda1f0b407b9660a8909b50bc003cd8cd73d21f1570'
+sha256sums=('02bb892b7957beb0100c60907ba4a9820029b64f470fcba15aab923d2b635b8b'
             '824d39c2d43a3f339140dbc3f8af430055a7a07ca324ec140c7be424c2ad90a3')
 
 package() {
