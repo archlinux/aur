@@ -3,7 +3,7 @@
 # Contributor: xduugu
 
 pkgbase=linux-firmware-git
-pkgver=20220119.0c6a7b3
+pkgver=20220124.eb8ea1b
 pkgrel=1
 pkgname=(linux-firmware-whence-git linux-firmware-git amd-ucode-git
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-git
@@ -16,9 +16,11 @@ makedepends=('git')
 options=(!strip)
 #branch=main
 source=("${pkgbase}::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git?signed"
-         0001-Add-support-for-compressing-firmware-in-copy-firmware.patch)
+         0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
+         allow-inplace-rebuild.patch)
 sha256sums=('SKIP'
-            '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7')
+            '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7'
+            '33a486fc036ec2d2e99799550b61eab395e2dd27b0e02e52e0bd8b9f3810d003')
 validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@fedoraproject.org>
 
 _pick() {
@@ -36,6 +38,7 @@ prepare() {
 
   # add firmware compression support - patch taken from Fedora
   patch -Np1 -i ../0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
+  patch -Np1 -i ../allow-inplace-rebuild.patch
 }
 
 pkgver() {
@@ -63,6 +66,7 @@ build() {
 package_linux-firmware-whence-git() {
   conflicts=("${pkgname%-git}" 'linux-firmware<=20211216.f682ecb')
   provides=("${pkgname%-git}=$pkgver")
+  pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
   cd "$pkgbase"
   install -Dt "${pkgdir}/usr/share/licenses/${pkgname%-git}" -m644 WHENCE
 }
