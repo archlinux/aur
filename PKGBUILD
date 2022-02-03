@@ -3,7 +3,7 @@
 # Contributor: redtide <redtid3 at gmail dot com>
 
 pkgname=lite-xl
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64' 'aarch64')
@@ -14,13 +14,13 @@ makedepends=('meson')
 conflicts=("lite")
 provides=("lite")
 # Comment to build non-jit version
-_commit=afaed9efefb8652c42e4eee6eed45ffc64e0341c
+_commit=bd36b44d615304b26e32fd11dc8b0f788fa795bf
 if [ "$_commit" = "" ]; then
     source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-    md5sums=('10feea8f7c86dc1c29038eabcc429f53')
+    md5sums=('d7e0b2141a67725f75e93d45bd2d53f7')
 else
     source=("$pkgname-$_commit.tar.gz::https://github.com/lite-xl/lite-xl/archive/${_commit}.zip")
-    md5sums=('25beaf9fd70c148ae5fdf263635721bc')
+    md5sums=('69a59c34ce201ec9071732b0f994a11c')
 fi
 
 build() {
