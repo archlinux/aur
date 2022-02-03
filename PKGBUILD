@@ -1,29 +1,28 @@
 # Maintainer : Ashwin Vishnu <y4d71nsar@relay.firefox.com>
-_name=micromamba
-pkgname=micromamba-bin
-pkgver=0.19.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+_base=mamba
+pkgname=micro${_base}-bin
+pkgver=0.20.0
 pkgrel=1
-pkgdesc="Tiny version of mamba, the fast conda package installer."
-arch=("x86_64")
-url="https://github.com/mamba-org/mamba"
-license=("BSD")
-source=("${_name}-${pkgver}.tar.bz2::https://api.anaconda.org/download/conda-forge/${_name}/${pkgver}/linux-64/${_name}-${pkgver}-0.tar.bz2")
+pkgdesc="Tiny version of mamba, the fast conda package installer"
+arch=('x86_64')
+url="https://github.com/${_base}-org/${_base}"
+license=('custom:BSD-3-clause')
+source=("${pkgname%-bin}-${pkgver}.tar.bz2::https://api.anaconda.org/download/conda-forge/${pkgname%-bin}/${pkgver}/linux-64/${pkgname%-bin}-${pkgver}-0.tar.bz2")
 options=(strip)
-depends=("glibc")
-provides=("${_name}")
-conflicts=("${_name}")
-sha256sums=('a176ea7d3c43f98a8a4fd7b85f1f288be845f81aa9cb5686d65c7506b4cc80f3')
+depends=(glibc)
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+sha512sums=('a78934cfcde4307eb145986da678033c298c2b9bba06714c74706ce08acc459e4cc8b9d6e3fd6c79c46fc08aacb9e3102f39b1afc402298e02b5bf7497cf193e')
 
 check() {
-	export PREFIX="${srcdir}"
-	export PATH="$PREFIX/bin:$PATH"
-	msg2 "Testing with ${PREFIX}/bin/${_name}"
-	bash info/test/run_test.sh
+  export PREFIX="${srcdir}"
+  export PATH="${PREFIX}/bin:${PATH}"
+  echo "Testing with ${PREFIX}/bin/${pkgname%-bin}"
+  bash info/test/run_test.sh
 }
 
 package() {
-	install -Dm775 bin/${_name} "${pkgdir}/usr/bin/${_name}"
-
-	msg2 "Installing license"
-	install -Dm644 info/licenses/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm775 "bin/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -Dm 644 info/licenses/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
