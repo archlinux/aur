@@ -1,10 +1,14 @@
 pkgbase = irccd-hg
 	pkgdesc = A flexible, fast IRC bot
-	pkgver = 1080.84d567d1c641
+	pkgver = 1147.cbc5dfb0b029
 	pkgrel = 1
 	url = http://projects.malikania.fr/irccd/
 	arch = x86_64
 	license = custom:ISC
+	makedepends = bison
+	makedepends = cmake
+	makedepends = curl
+	makedepends = flex
 	makedepends = mercurial
 	makedepends = openssl
 	provides = irccd

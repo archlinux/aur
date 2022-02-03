@@ -19,25 +19,25 @@
 # THE SOFTWARE.
 
 pkgname=irccd-hg
-pkgver=1080.84d567d1c641
+pkgver=1147.cbc5dfb0b029
 pkgrel=1
 epoch=
-pkgdesc="A flexible, fast IRC bot"
+pkgdesc='A flexible, fast IRC bot'
 arch=('x86_64')
 url='http://projects.malikania.fr/irccd/'
 license=('custom:ISC')
 groups=()
 depends=()
-makedepends=('mercurial' 'openssl')
+makedepends=('bison' 'cmake' 'curl' 'flex' 'mercurial' 'openssl')
 checkdepends=()
 optdepends=()
 provides=('irccd')
 conflicts=('irccd')
 replaces=()
-backup=("etc/irccd.conf")
+backup=('etc/irccd.conf')
 options=()
 changelog=
-source=("$pkgname"::"hg+http://hg.malikania.fr/irccd" 'irccd-sysusers.conf')
+source=("$pkgname"::'hg+http://hg.malikania.fr/irccd' 'irccd-sysusers.conf')
 noextract=()
 md5sums=('SKIP'
          '9a2172be1a0b56ee719048cb0b4ee594')
@@ -48,16 +48,24 @@ pkgver() {
 }
 
 build() {
-	mkdir "$srcdir/$pkgname/build"
-	cd "$srcdir/$pkgname/build"
-	
-	make ETCDIR=/etc PREFIX=/usr VARDIR=/var -C .. all plugins
+	cmake -S "$pkgname" -B build \
+	      -DCMAKE_INSTALL_PREFIX='/usr' \
+	      -DIRCCD_WITH_SYSTEMD=On
+	cmake --build build
+}
+
+check() {
+	cd build
+	ctest --output-on-failure
 }
 
 package() {
-	cd "$srcdir/$pkgname/build"
-	make ETCDIR=/etc PREFIX=/usr DESTDIR="$pkgdir" USER=irccd GROUP=irccd -C .. install install-plugins install-systemd
-	
-	mv $pkgdir/etc/irccd.conf{.sample,}
+	DESTDIR="$pkgdir" cmake --install build
+
+	mkdir -p $pkgdir/usr/share/licenses/$pkgname
+	cp "$pkgname"/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
+
+	# Copy default config files and sysusers
+	install -D -m 0644 "$pkgdir/usr/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
 	install -D -m 0644 "$srcdir/irccd-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/irccd.conf"
 }
