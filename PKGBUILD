@@ -1,6 +1,6 @@
 # Maintainer: snafu
-pkgname=env-modules-tcl
-pkgver=4.7.0
+pkgname=(env-modules-tcl)
+pkgver=5.0.1
 pkgrel=1
 epoch=
 pkgdesc="Provides for an easy dynamic modification of a user's environment via modulefile."
@@ -21,7 +21,7 @@ changelog=
 source=("https://sourceforge.net/projects/modules/files/Modules/modules-$pkgver/modules-$pkgver.tar.gz")
 noextract=()
 validpgpkeys=()
-md5sums=('24e39071a94b52cd6d09d65601519ebf')
+md5sums=('e44f0f1c25b712c238e40e65e0df82a5')
 
 # Install locations:
 install_prefix=/usr
@@ -38,13 +38,13 @@ build() {
         --prefix="" \
         --bindir=/usr/bin \
         --libdir=/usr/lib \
-        --libexecdir=/usr/lib/env-modules \
+        --libexecdir=/usr/libexec \
         --etcdir=/etc \
         --initdir=/etc/modules/init \
-        --with-moduleshome=/etc/modules \
+        --with-initconf-in=initdir \
         --datarootdir=/usr/share \
         --mandir=/usr/share/man \
-        --docdir=/usr/share/doc \
+        --docdir=/usr/share/doc/$pkgname-$pkgver \
         --vimdatadir=/usr/share/vim/vimfiles \
         --modulefilesdir=/etc/modules/modulefiles \
         --disable-set-binpath \
