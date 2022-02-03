@@ -1,0 +1,22 @@
+--- old/gourou/Makefile	2022-02-02 20:45:46.640408873 -0400
++++ new/gourou/Makefile	2022-02-02 20:42:39.285247010 -0400
+@@ -4,8 +4,8 @@
+ 
+ UPDFPARSERLIB = ./lib/updfparser/libupdfparser.a
+ 
+-CXXFLAGS=-Wall -fPIC -I./include -I./lib -I./lib/pugixml/src/ -I./lib/updfparser/include
+-LDFLAGS = $(UPDFPARSERLIB)
++CXXFLAGS=-Wall -fPIC -I./include -I./lib -I./lib/updfparser/include
++LDFLAGS = $(UPDFPARSERLIB) `pkg-config --libs pugixml`
+ 
+ BUILD_STATIC ?= 0
+ BUILD_SHARED ?= 1
+@@ -36,7 +36,7 @@
+ SRCEXT      := cpp
+ OBJEXT      := o
+ 
+-SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/bytearray.cpp src/pugixml.cpp
++SOURCES      = src/libgourou.cpp src/user.cpp src/device.cpp src/fulfillment_item.cpp src/bytearray.cpp
+ OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
+ 
+ all: lib obj $(TARGETS)
