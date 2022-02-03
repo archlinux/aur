@@ -11,7 +11,7 @@ url="https://indefero.soutade.fr/p/libgourou"
 depends=(glibc gcc-libs qt5-base zlib libzip openssl pugixml)
 conflicts=(gourou-bin)
 options=(!strip)
-source=(make.patch "gourou::git://soutade.fr/libgourou.git#tag=v$pkgver" "base64::git://gist.github.com/f0fd86b6c73063283afe550bc5d77594.git" "updfparser::git://soutade.fr/updfparser.git")
+source=(make.patch "gourou::git://soutade.fr/libgourou.git#tag=v$pkgver" "base64::git://gist.github.com/f0fd86b6c73063283afe550bc5d77594.git" "updfparser::git://soutade.fr/updfparser.git#commit=47143308ca253a6ae108b10a6ae5e7852bdd2c5d")
 md5sums=(b1a33163659f7c0e782d7a19a304a012 SKIP SKIP SKIP)
 
 prepare() {
