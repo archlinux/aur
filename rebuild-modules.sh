@@ -29,6 +29,7 @@ if [ ! -d "$node_modules" ]; then
     exit 1
 fi
 
+# 以下原封复制
 echo -e "\033[42;37m ######## 版本信息 $(date '+%Y-%m-%d %H:%M:%S') ########\033[0m"
 echo "NW VERSION: $NW_VERSION"
 echo "nw-gyp version: $( nw-gyp --version )"
@@ -101,9 +102,19 @@ mkdir -p "${package_dir}/node_modules/vscode-ripgrep/bin"
 cp -fr "${package_dir}/node_modules_tmp/node_modules/vscode-ripgrep/bin/rg" "${package_dir}/node_modules/vscode-ripgrep/bin/rg"
 
 # wcc wcsc
+# 预览编译
 cd "${package_dir}/js/vendor/" && rm -rf "wcc.exe" "wcsc.exe"
 cp "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcc" "${package_dir}/js/vendor/wcc.exe"
 cp "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcsc" "${package_dir}/js/vendor/wcsc.exe"
+# 可视化编译
+(cd "${package_dir}/node_modules/" \
+&& rm -rf wcc wcsc \
+&& mkdir -p "wcc/bin/linux" "wcsc/bin/linux" \
+&& cp -r "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcc" "wcc/bin/linux/wcc" \
+&& cp -r "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcsc" "wcsc/bin/linux/wcsc" \
+&& cp -r "${srcdir}/compiler/wcc_node"/* "wcc" \
+&& cp -r "${srcdir}/compiler/wcsc_node"/* "wcsc"
+)
 
 rm -rf "${package_dir}/node_modules_tmp"
 

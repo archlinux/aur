@@ -4,5 +4,6 @@ nwjs*.tar.gz
 pkg/
 src/
 
+compiler.tar.xz
 wechat-devtools-*.pkg.tar.xz
 wechat-devtools-*.pkg.tar.zst

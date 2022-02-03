@@ -18,7 +18,7 @@ _node_version="v16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=3   # 次版本号release
+pkgrel=4   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version. "
 arch=("x86_64")
@@ -33,7 +33,8 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "fix-menu.sh"
         "rebuild-modules.sh"
         "fix-package-name-node"
-        "logo.svg")
+        "logo.svg"
+        "compiler.tar.xz::https://download.fastgit.org/msojocs/wechat-devtools-linux/releases/download/v0.6/compiler.tar.xz")
 md5sums=(b6f49803c51d0abacca2d1e566c7fe19
          "${_wechat_devtools_md5}"
          a4dd86296db9aa6b55b048b43182d74f
@@ -41,7 +42,8 @@ md5sums=(b6f49803c51d0abacca2d1e566c7fe19
          "SKIP"
          "SKIP"
          "SKIP"
-         88e0efe5d58444b3d39695d4fb16d61b)
+         88e0efe5d58444b3d39695d4fb16d61b
+         c638ccefe09941372903c08ce70420c3)
 options=('!strip')
 
 prepare() {
@@ -72,6 +74,7 @@ build() {
     # run fix scripts
     export NW_PACKAGE_DIR="${srcdir}/wechat_devtools/code/package.nw"
     export NW_VERSION=$_nwjs_ver
+    export srcdir=$srcdir
     chmod 777 "${srcdir}/fix-package-name-node"
     for script in fix-package-name-node fix-cli.sh fix-menu.sh rebuild-modules.sh; do
         _log "run ${script}"
