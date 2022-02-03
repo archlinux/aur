@@ -2,7 +2,7 @@
 
 _pkgname=lupa
 pkgname="python-${_pkgname}-luajit"
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Python wrapper around LuaJIT"
 url="https://github.com/scoder/lupa"
@@ -13,7 +13,7 @@ makedepends=('cython' 'python-setuptools')
 provides=('python-lupa')
 conflicts=('python-lupa')
 source=("https://pypi.python.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a3e11d806ca02cf72e490ec1974f8b96a14a1091895c9dccebe0b8d52dd82e8e')
+sha256sums=('e2511b27f381f6fdb66ef40dcc518215038197431b241935678dfc3d51178231')
 
 
 build() {
