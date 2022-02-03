@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SOLR_LOGS_DIR="${SOLR_LOGS_DIR:-$HOME/.autopsy/solr_logs}"
+TSK_HOME="${TSK_HOME:-/bin}"
+export SOLR_LOGS_DIR
+export TSK_HOME
+
+/opt/autopsy/bin/autopsy
