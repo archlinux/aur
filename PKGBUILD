@@ -1,47 +1,43 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: 0b100100 <0b100100 at protonmail dot ch>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Baurzhan Muftakhidinov <baurthefirst@gmail.com>
 # Contributor: Pablo Lezaeta <prflr88@gmail.com>
 
-_pkgname=orage
-pkgname=${_pkgname}-git
-pkgver=4.12.1.r319.g11aa2e5f
+pkgname=orage-git
+pkgver=4.12.1.r546.g9474e560
 pkgrel=1
 pkgdesc="A simple calendar application with reminders for Xfce"
 arch=("i686" "x86_64")
 license=('GPL2')
-url="http://www.xfce.org"
-groups=('xfce4-git')
-depends=('hicolor-icon-theme' 'xfce4-panel-git' 'libnotify')
-makedepends=('git' 'intltool' 'pkgconfig' 'xfce4-dev-tools-git')
+url="https://docs.xfce.org/apps/orage/start"
+groups=('xfce4-goodies')
+depends=('xfce4-panel' 'libnotify' 'dbus-glib' 'libical')
+makedepends=('git' 'xfce4-dev-tools')
 provides=("orage")
 conflicts=("orage")
-source=("${_pkgname}::git://git.xfce.org/apps/$_pkgname")
-md5sums=('SKIP')
+source=("${pkgname%-git}::git+https://gitlab.xfce.org/apps/${pkgname%-git}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgname}"
-    git describe --long | sed 's/^orage-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-
-  cd "${_pkgname}"
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1512302
-  patch -Np1 -i ../../libical3.patch
-
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/^orage-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    
-    cd "${srcdir}/${_pkgname}"
-    
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib  \
-    --localstatedir=/var --disable-static --enable-debug=minimum \
-   --enable-maintainer-mode
+  cd "${pkgname%-git}"
+  ./autogen.sh \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --libexecdir=/usr/lib/xfce4 \
+    --localstatedir=/var \
+    --disable-static \
+    --disable-debug
   make
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}"
+  cd "${pkgname%-git}"
   make DESTDIR="${pkgdir}" install
 }
+
+# vim:set ts=2 sw=2 et:
