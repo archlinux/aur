@@ -2,10 +2,11 @@
 
 pkgname=catppuccin-gtk-theme
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='GTK theme for catppuccin. Warm dark theme for the masses!'
 arch=('any')
 license=('GPL3')
+depends=('gtk-engine-murrine' 'gnome-themes-extra')
 url='https://github.com/catppuccin/gtk'
 source=("https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-dark-compact-hdpi.zip"
         "https://github.com/catppuccin/gtk/releases/download/update_27_01_22/Catppuccin-dark-compact-xhdpi.zip"
