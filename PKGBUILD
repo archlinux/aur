@@ -17,7 +17,7 @@ optdepends=('kvantum-qt6-git: Qt6 component for Kvantum theme engine'
             'breeze-enhanced-git: Made to match various themes of the Kvantum widget style')
 conflicts=('kvantum')
 replaces=('kvantum')
-provides=('kvantum-git')
+provides=('kvantum')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
