@@ -11,7 +11,8 @@ license=('CCPL'
          'MIT'
          'LGPL'
          )
-depends=('qt5-websockets'
+depends=('qt6-5compat'
+         'qt6-websockets'
          'vapoursynth'
          )
 makedepends=('git'
