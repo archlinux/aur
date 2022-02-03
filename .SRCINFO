@@ -1,7 +1,7 @@
 pkgbase = yaru-colors-gtk-theme-git
 	pkgdesc = A fork of Ubuntu's Yaru theme - in different colors
 	pkgver = 21.10.3ubuntu5.r1.gcb79ae7c
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Jannomag/Yaru-Colors
 	arch = any
 	license = GPL3
@@ -14,7 +14,6 @@ pkgbase = yaru-colors-gtk-theme-git
 	provides = yaru-colors-gtk-theme
 	conflicts = yaru-colors-gtk-theme
 	conflicts = yaru-colors-icon-theme
-	conflicts = yaru-gnome-shell-theme
 	conflicts = yaru-gtk-theme
 	conflicts = yaru-gtksourceview-theme
 	conflicts = yaru-icon-theme
