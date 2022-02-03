@@ -13,7 +13,6 @@ depends=('python' 'python-urwid' 'python-docopt')
 makedepends=('python-setuptools' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=("https://pypi.python.org/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('SKIP')
 source=("$_pkgname::git://github.com/AnthonyDiGirolamo/todotxt-machine")
 
