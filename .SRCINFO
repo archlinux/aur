@@ -1,6 +1,6 @@
 pkgbase = outfieldr
 	pkgdesc = TLDR client in zig
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://gitlab.com/ve-nt/outfieldr
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = outfieldr
 	makedepends = zig
 	provides = tldr
 	conflicts = tldr
-	source = git+https://gitlab.com/ve-nt/outfieldr.git#tag=1.0.0
+	source = git+https://gitlab.com/ve-nt/outfieldr.git#tag=1.0.2
 	source = git+https://github.com/truemedian/zfetch.git
 	source = git+https://github.com/Hejsil/zig-clap.git#branch=zig-master
 	source = zig-tar::git+https://github.com/mattnite/tar.git

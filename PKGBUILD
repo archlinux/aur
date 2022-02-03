@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=outfieldr
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='TLDR client in zig'
 arch=('x86_64')
@@ -19,16 +19,14 @@ source=(
 	'git+https://github.com/alexnask/iguanaTLS.git'
 	'git+https://github.com/truemedian/hzzp.git'
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 prepare() {
 	cd "$pkgname"
