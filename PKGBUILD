@@ -2,7 +2,7 @@
 
 _pkgbase=nginx
 pkgname=nginx-mainline-pushstream
-pkgver=1.21.5
+pkgver=1.21.6
 pushstreamver=0.5.5
 pkgrel=1
 pkgdesc='NGINX mainline with Push Stream module'
@@ -23,12 +23,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
         https://github.com/wandenberg/nginx-push-stream-module/archive/$pushstreamver.tar.gz)
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-md5sums=('55783f98814279d5036cb0feb4a062b7'
-         'ba2e3b08ce0f0fff7cced624d0ecf7cc'
-         '6a01fb17af86f03707c8ae60f98a2dc2'
-         '9bb5237a93c957130aaf7033ed3c0989')
-sha512sums=('e9eb80f230131ad1bb8e2bd0cede5eb7be40c4ed2564e26abcc5e7bfdde9a724e7257245d4b0ce7130e80ee4034e38f80c3bc09d8f5c7dadefc7a371dd8d77b4'
+sha512sums=('10b0cdd13b26687104bf11e6b850fd851e9d8881bdf67f72c062d956e661da4d70482e6ec3123405b324ad7ed821a8bcc67b742dce9f59e972407fa437ddcad4'
             'be2858613d9cca85d80e7b894e9d5fa7892cbddd7a677d2d2f68f419d75fdc1f6802de8014f43ce063b116afd4ff17369873a6adea2dd58ac6f94e617de66fec'
             '9232342c0914575ce438c5a8ee7e1c25b0befb457a2934e9cb77d1fe9a103634ea403b57bc0ef0cd6cf72248aee5e5584282cea611bc79198aeac9a65d8df5d7'
             '012223e41188ab129391360175314b598ef37cb39cac2c4a9c840a499f269630a4c888ce87e7880a5a1700347d800481fe93c2adc56646839ab417162a644334')
