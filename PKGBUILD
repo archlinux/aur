@@ -18,6 +18,7 @@ depends=('boost-libs' 'capnproto' 'opencc' 'yaml-cpp' 'leveldb' 'librime-data' '
 makedepends=('cmake' 'boost' 'git' 'gtest' 'ninja')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+groups=(sbxlm)
 source=("0001-fix-build.patch"
         "git://github.com/sbxlmdsl/librime.git"
         "https://github.com/lotem/librime-octagram/archive/$_octagramcommit/librime-octagram-$_octagramcommit.tar.gz"
