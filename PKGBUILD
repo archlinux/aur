@@ -13,7 +13,13 @@ pkgdesc='Geographic Information System (GIS) that supports vector, raster & data
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt5-tools' 'qt5-script' 'qtkeychain' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'proj' 'geos' 'sqlite' 'python-pyqt5' 'python-gdal' 'python-owslib' 'python-future' 'python-sip' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments' 'qwtpolar' 'expat' 'python-qscintilla-qt5' 'spatialindex' 'gsl' 'libzip' 'sip4' 'exiv2' 'qt5-xmlpatterns' 'ocl-icd' 'protobuf')
+depends=('exiv2' 'expat' 'geos' 'gsl' 'libzip' 'ocl-icd' 'proj' 'protobuf' 'pyqt-builder'
+         'python-future' 'python-gdal' 'python-jinja' 'python-numpy' 'python-owslib'
+	 'python-psycopg2' 'python-pygments' 'python-pyqt5' 'python-qscintilla-qt5'
+         'python-yaml'
+	 'qca-qt5'
+	 'qt5-3d' 'qt5-script' 'qt5-serialport' 'qt5-tools' 'qt5-webkit' 'qt5-xmlpatterns'
+	 'qtkeychain' 'qwtpolar' 'sip' 'spatialindex' 'sqlite')
 
 makedepends=('git' 'cmake' 'txt2tags')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
@@ -59,12 +65,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DENABLE_TESTS=FALSE \
-    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE,QWTPOLAR}=FALSE \
-    -DWITH_GEOREFERENCER=TRUE \
     -DWITH_3D=TRUE
 #    -DWITH_SERVER=TRUE
 
-  make
+  cmake --build .
 }
 
 package() {
