@@ -20,7 +20,7 @@ optdepends=('glfw: to use system GLFW libraries'
             'visualvm: Profiling support'
             'xorg-xrandr: for older minecraft versions'
 )
-source=("PolyMC::git+https://github.com/PolyMC/PolyMC#tag=1.0.6"
+source=("PolyMC::git+https://github.com/PolyMC/PolyMC#tag=${pkgver}"
         "git+https://github.com/MultiMC/libnbtplusplus#commit=dc72a20b7efd304d12af2025223fad07b4b78464"
         "git+https://github.com/PolyMC/quazip#commit=c9ef32de19bceb58d236f5c22382698deaec69fd")
 
@@ -61,4 +61,3 @@ package() {
   install -D "${srcdir}/PolyMC/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
   install -D "${srcdir}/PolyMC/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
 }
-
