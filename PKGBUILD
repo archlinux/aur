@@ -3,11 +3,11 @@ pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons-git
 _pkgname=xde-icons
 pkgver=1.7.r1.gd93cd9c
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=(CCPL:by-sa)
 url="http://github.com/bbidulock/xde-icons"
-groups=('xde')
+groups=('xde-git')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}" 'ayatana-indicator-session')
 depends=('hicolor-icon-theme' 'mist-icon-theme')
