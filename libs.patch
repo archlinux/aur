@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,14 +4,13 @@
+ # This file is public domain as declared by Sturm Mabie.
+ # 
+ 
+-CC=gcc
++CC=cc
+ PROG=stag
+-CURSES=-lncurses -lmenu -lform 
++CURSES=-lncurses -lmenu -lform
+ CURSESW=-lncursesw -lmenuw -lformw -D_CURSESW_WIDE
+ FILES=ui.c stag.c tagger.c strlcpy.c strlcat.c basename.c dirname.c kb.c
+-CFLAGS+=-ansi -pedantic -Wall -D_BSD_SOURCE
+-CPPFLAGS+=-I/usr/local/include `taglib-config --cflags`
+-LDFLAGS+=-L/usr/local/lib `taglib-config --libs` -ltag_c -lstdc++ 
++CPPFLAGS+=-I/usr/include `taglib-config --cflags`
++LDFLAGS+=-L/usr/lib `taglib-config --libs` -ltag_c -lstdc++
+ 
+ wide:
+ 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(CURSESW) $(FILES) -o $(PROG)
