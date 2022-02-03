@@ -6,7 +6,7 @@
 
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="An email, contacts and calendar server"
 arch=('x86_64' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-$
         "cyrus-imapd.sysusers.conf"
         "cyrus-imapd.tmpfiles.conf")
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
-sha512sums=('4d7d14e222bc1e97b2d8188804139c4c477de66cb621caba475b57533739ee59d88504d4f47735bb6a6b3c9097dbec382ecfa2c678f978791b9a6956a3cd91d6'
+sha512sums=('5c4db2a0c26d2323332c1ba67f7b207acfad15f0442f20c6c8a205b5423498465524398315946213c8168bc7eba1fd9f7dc573a91efac6708bfbaf2cb57e9276'
             'SKIP'
             '61ea7c6079ffd32bc99b07911088e772cb0ddb0757b4673f9335b0f00e79934b77af67f6d3bbed68e9446ea4b50c7a07abcca363b2b767331136ccbe34852b6b'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
@@ -44,6 +44,8 @@ build() {
   export PERL_MM_OPT="NO_PACKLIST=true NO_PERLLOCAL=true"
   # libchardet's pkgconf flags are broken, so we have to specify them manually
   export LIBCHARDET_CFLAGS="-I/usr/include/chardet"
+  # Work around Cyrus bug #3562
+  export CFLAGS="${CFLAGS} -fno-toplevel-reorder"
   # Work around Cyrus bug #2629
   export LDFLAGS="${LDFLAGS/,--as-needed}"
 
