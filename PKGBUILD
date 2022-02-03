@@ -1,29 +1,28 @@
-# Maintainer: Ronan Pigott <rpigott@berkeley.edu>
+# Maintainer:   Sian1468 <setthawut DOT a AT protonmail DOT com>
+# Contributor:  Ronan Pigott <rpigott@berkeley.edu>
 
 pkgname='mpv-discordrpc'
-pkgver=1.4.1
+pkgver=1.4.1_UNKNOWN
+_releasever=${pkgver//_/-}
 pkgrel=1
 pkgdesc='Discord Rich Presence integration for mpv Media Player'
 url='https://github.com/cniw/mpv-discordRPC'
 arch=('any')
 license=('MIT')
-makedepends=('sed')
-depends=('discord-rpc-api' 'python-pypresence')
-source=("https://github.com/cniw/mpv-discordRPC/releases/download/v1.4.1/mpv-discordRPC-${pkgver}-linux.zip")
-md5sums=('4c2a749fb3e7f9b627448737851e742a')
+depends=('mpv>=0.34.1' 'libdiscord-rpc.so')
+source=("$url/releases/download/v$_releasever/$pkgname-$_releasever-linux.zip")
+sha256sums=('336d17ecd414c1df150eede032a80bc473d334bae7e6e74706eb43c1323651fe')
 
 package() {
-
-  # arch mpv from 'community' not linked against luajit so using the lua backed isn't very sensible
-  sed '1 s/lua-discordRPC/pypresence/' -i "${srcdir}/mpv_discordRPC.conf" # use pypresence backend
-  sed '11 s/lua-discordRPC/pypresence/' -i "${srcdir}/mpv-discordRPC.lua" # use pypresence backend
-  
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dt "${pkgdir}/etc/mpv/scripts/" -m644 "${srcdir}/mpv-discordRPC_pypresence.py"
-  install -Dt "${pkgdir}/etc/mpv/scripts/" -m644 "${srcdir}/status-line.lua"
-  install -Dt "${pkgdir}/etc/mpv/scripts/" -m644 "${srcdir}/mpv-discordRPC.lua"
-  install -Dt "${pkgdir}/etc/mpv/scripts/" -m644 "${srcdir}/mpv-discordRPC_catalogs.lua"
-  install -Dt "${pkgdir}/etc/mpv/script-opts/" -m644 "${srcdir}/mpv_discordRPC.conf"
+  cd ${srcdir}
+  mkdir -p ${pkgdir}/etc/mpv/scripts/mpv-discordRPC/
+  mkdir -p ${pkgdir}/etc/mpv/script-opts/
+  install -Dm644 "status-line.lua" "${pkgdir}/etc/mpv/scripts/"
+  install -Dm644 "mpv_discordRPC.conf" "${pkgdir}/etc/mpv/script-opts/"
+  install -Dm644 "mpv-discordRPC/lua-discordRPC.lua" "${pkgdir}/etc/mpv/scripts/mpv-discordRPC/"
+  install -Dm644 "mpv-discordRPC/catalogs.lua" "${pkgdir}/etc/mpv/scripts/mpv-discordRPC/"
+  install -Dm644 "mpv-discordRPC/main.lua" "${pkgdir}/etc/mpv/scripts/mpv-discordRPC/"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim: set ts=2 sw=2 et:
