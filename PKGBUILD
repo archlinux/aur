@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scalapack
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.0
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="subset of scalable LAPACK routines redesigned for distributed memory MIMD parallel computers."
 url="http://www.netlib.org/scalapack/"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'gcc-fortran')
 provides=('blacs')
 install=${pkgname}.install
 source=(http://www.netlib.org/scalapack/$pkgname-$pkgver.tgz http://www.netlib.org/scalapack/manpages.tgz Makefile example1.f)
-sha256sums=('61d9216cf81d246944720cfce96255878a3f85dec13b9351f1fa0fd6768220a6'
+sha256sums=('40b9406c20735a9a3009d863318cb8d3e496fb073d201c5463df810e01ab2a57'
             'a745c9f367d65e3c7611c126597a4681094b002552e47b621964d30a966aac7b'
             '5f7e81c1c76fc010677fd446bfc689c7f6af1a22a51093e8790e8a615159c541'
             'd9904ecb69f318c4782c0bd39ff2bff511af31960a2383a9d42d6620a266ea70')
