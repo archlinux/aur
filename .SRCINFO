@@ -1,24 +1,28 @@
 pkgbase = python-pyramid
-	pkgdesc = A very general open source Python web framework.
+	pkgdesc = Open source Python web framework
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Pylons/pyramid
 	arch = any
 	license = custom:RPL
+	checkdepends = python-pytest
 	makedepends = python-webtest
 	makedepends = python-zope-component
 	makedepends = python-nose
 	makedepends = python-virtualenv
 	makedepends = python-repoze.lru
 	makedepends = python-setuptools
-	depends = python-hupper>=1.5
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
+	depends = python-hupper
 	depends = python-plaster
 	depends = python-plaster-pastedeploy
-	depends = python-translationstring>=0.4
-	depends = python-venusian>=1.0
-	depends = python-webob>=1.8.3
-	depends = python-zope-deprecation>=3.5.0
-	depends = python-zope-interface>=3.8.0
+	depends = python-translationstring
+	depends = python-venusian
+	depends = python-webob
+	depends = python-zope-deprecation
+	depends = python-zope-interface
 	optdepends = python-pyramid-debugtoolbar: development mode
 	optdepends = python-pastedeploy: pserve/pcreate
 	optdepends = python-chameleon: pserve/pcreate
