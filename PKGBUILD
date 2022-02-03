@@ -1,16 +1,36 @@
 # Maintainer: Mark Wagie <mark.wagie at tutanota dot com>
 # Contributor: toluschr <toluschr at protonmail dot com>
-pkgname=('yaru-colors-gtk-theme-git'
-         'yaru-colors-icon-theme-git'
-         'yaru-colors-wallpapers-git')
-pkgbase='yaru-colors-gtk-theme-git'
+pkgname=yaru-colors-gtk-theme-git
 pkgver=21.10.3ubuntu5.r1.gcb79ae7c
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of Ubuntu's Yaru theme - in different colors"
 arch=('any')
 license=('GPL3')
 url="https://github.com/Jannomag/Yaru-Colors"
-makedepends=('git')
+depends=('gnome-themes-extra')
+makedepends=('git' 'meson' 'sassc')
+optdepends=('gdk-pixbuf2: GTK2 support'
+            'gtk-engine-murrine: GTK2 support')
+provides=("${pkgname%-git}"
+          'yaru-colors-icon-theme'
+          'yaru-gnome-shell-theme'
+          'yaru-gtk-theme'
+          'yaru-gtksourceview-theme'
+          'yaru-icon-theme'
+          'yaru-metacity-theme'
+          'yaru-sound-theme'
+          'yaru-unity-theme'
+          'yaru-xfwm4-theme')
+conflicts=("${pkgname%-git}"
+          'yaru-colors-icon-theme'
+          'yaru-gnome-shell-theme'
+          'yaru-gtk-theme'
+          'yaru-gtksourceview-theme'
+          'yaru-icon-theme'
+          'yaru-metacity-theme'
+          'yaru-sound-theme'
+          'yaru-unity-theme'
+          'yaru-xfwm4-theme')
 options=('!strip')
 source=('git+https://github.com/Jannomag/Yaru-Colors.git#branch=what-if-21.10')
 sha256sums=('SKIP')
@@ -20,36 +40,11 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/snap//'
 }
 
-package_yaru-colors-gtk-theme-git() {
-  depends=('gnome-themes-extra')
-  optdepends=('gdk-pixbuf2: GTK2 support'
-              'gtk-engine-murrine: GTK2 support'
-              'yaru-colors-wallpapers: Matching wallpapers'
-              'yaru-colors-icon-theme: Matching icon theme'
-              'yaru-sound-theme: Matching sound theme')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
-
-  cd "$srcdir/Yaru-Colors"
-  install -d "$pkgdir/usr/share/themes"
-  cp -a Themes/* "$pkgdir/usr/share/themes"
+build() {
+  arch-meson Yaru-Colors build
+  meson compile -C build
 }
 
-package_yaru-colors-icon-theme-git() {
-  depends=('yaru-icon-theme')
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
-
-  cd "$srcdir/Yaru-Colors"
-  install -d "$pkgdir/usr/share/icons"
-  cp -a Icons/* "$pkgdir/usr/share/icons"
-}
-
-package_yaru-colors-wallpapers-git() {
-  provides=("${pkgname%-git}")
-  conflicts=("${pkgname%-git}")
-
-  cd "$srcdir/Yaru-Colors"
-  install -d "$pkgdir/usr/share/backgrounds/yaru-colors"
-  cp -a Wallpapers/* "$pkgdir/usr/share/backgrounds/yaru-colors"
+package() {
+  meson install -C build --destdir "$pkgdir"
 }

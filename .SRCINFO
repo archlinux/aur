@@ -1,30 +1,38 @@
 pkgbase = yaru-colors-gtk-theme-git
 	pkgdesc = A fork of Ubuntu's Yaru theme - in different colors
 	pkgver = 21.10.3ubuntu5.r1.gcb79ae7c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jannomag/Yaru-Colors
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = meson
+	makedepends = sassc
+	depends = gnome-themes-extra
+	optdepends = gdk-pixbuf2: GTK2 support
+	optdepends = gtk-engine-murrine: GTK2 support
+	provides = yaru-colors-gtk-theme
+	provides = yaru-colors-icon-theme
+	provides = yaru-gnome-shell-theme
+	provides = yaru-gtk-theme
+	provides = yaru-gtksourceview-theme
+	provides = yaru-icon-theme
+	provides = yaru-metacity-theme
+	provides = yaru-sound-theme
+	provides = yaru-unity-theme
+	provides = yaru-xfwm4-theme
+	conflicts = yaru-colors-gtk-theme
+	conflicts = yaru-colors-icon-theme
+	conflicts = yaru-gnome-shell-theme
+	conflicts = yaru-gtk-theme
+	conflicts = yaru-gtksourceview-theme
+	conflicts = yaru-icon-theme
+	conflicts = yaru-metacity-theme
+	conflicts = yaru-sound-theme
+	conflicts = yaru-unity-theme
+	conflicts = yaru-xfwm4-theme
 	options = !strip
 	source = git+https://github.com/Jannomag/Yaru-Colors.git#branch=what-if-21.10
 	sha256sums = SKIP
 
 pkgname = yaru-colors-gtk-theme-git
-	depends = gnome-themes-extra
-	optdepends = gdk-pixbuf2: GTK2 support
-	optdepends = gtk-engine-murrine: GTK2 support
-	optdepends = yaru-colors-wallpapers: Matching wallpapers
-	optdepends = yaru-colors-icon-theme: Matching icon theme
-	optdepends = yaru-sound-theme: Matching sound theme
-	provides = yaru-colors-gtk-theme
-	conflicts = yaru-colors-gtk-theme
-
-pkgname = yaru-colors-icon-theme-git
-	depends = yaru-icon-theme
-	provides = yaru-colors-icon-theme
-	conflicts = yaru-colors-icon-theme
-
-pkgname = yaru-colors-wallpapers-git
-	provides = yaru-colors-wallpapers
-	conflicts = yaru-colors-wallpapers
