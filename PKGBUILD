@@ -2,7 +2,7 @@
 # Contributor: toluschr <toluschr at protonmail dot com>
 pkgname=yaru-colors-gtk-theme-git
 pkgver=21.10.3ubuntu5.r1.gcb79ae7c
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of Ubuntu's Yaru theme - in different colors"
 arch=('any')
 license=('GPL3')
@@ -11,16 +11,7 @@ depends=('gnome-themes-extra')
 makedepends=('git' 'meson' 'sassc')
 optdepends=('gdk-pixbuf2: GTK2 support'
             'gtk-engine-murrine: GTK2 support')
-provides=("${pkgname%-git}"
-          'yaru-colors-icon-theme'
-          'yaru-gnome-shell-theme'
-          'yaru-gtk-theme'
-          'yaru-gtksourceview-theme'
-          'yaru-icon-theme'
-          'yaru-metacity-theme'
-          'yaru-sound-theme'
-          'yaru-unity-theme'
-          'yaru-xfwm4-theme')
+provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}"
           'yaru-colors-icon-theme'
           'yaru-gnome-shell-theme'
