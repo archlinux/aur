@@ -137,6 +137,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17: ASUS ROG laptop custom fan curve support
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
+        # Audio fixup for the Zephyrus M16 (GU603H)
+        "ALSA-hda-realtek-Add-quirk-for-ASUS-M16-GU603H.patch"
+
         # mediatek mt7921 bt/wifi patches
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
         "1-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-Foxconn.patch"
@@ -168,6 +171,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
+            '3bdfbd0f053aba9f8875d3cfa7763765762bbfeab579f52a62f3ea0e436fe546'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'
             'cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b'
