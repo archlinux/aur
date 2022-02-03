@@ -1,14 +1,14 @@
 pkgbase = python-magic-ahupp
 	pkgdesc = A python wrapper for libmagic
-	pkgver = 0.4.24
-	pkgrel = 2
+	pkgver = 0.4.25
+	pkgrel = 1
 	url = https://github.com/ahupp/python-magic
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	provides = python-magic
-	source = https://github.com/ahupp/python-magic/archive/0.4.24.tar.gz
-	sha256sums = 48b70b62caa8b911c8c79a1d06ab618037f00d09ac891b7490d0d890ff6e0632
+	source = https://github.com/ahupp/python-magic/archive/0.4.25.tar.gz
+	sha256sums = 0c1f483995067ffff268103f8bb6860d2f42aa3a5a9b906eaf34bcce1de36329
 
 pkgname = python-magic-ahupp
