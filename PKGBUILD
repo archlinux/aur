@@ -6,14 +6,14 @@ pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
 pkgver=1.10.2
 _pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml' 'libuv'
-         'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
+         'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
          'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
@@ -63,6 +63,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         fix_c10.patch
+        ffmpeg4.4.patch
         66219.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -109,6 +110,7 @@ sha256sums=('SKIP'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
             '4d0d7da4a3fb099ed75f3007559fad04ac96eed87c523b274fb3bb6020e6b9b8'
+            '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9'
             'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee')
 options=(!lto)
 
@@ -196,6 +198,9 @@ prepare() {
 
   # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
   sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
+
+  # build against ffmpeg4.4
+  patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
 
   cd "${srcdir}"
 
