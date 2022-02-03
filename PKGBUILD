@@ -1,7 +1,9 @@
 # Maintainer: Dwayne Bent <dbb@dbb.io>
 pkgname=systemd-cron
-pkgver=1.5.17
-pkgrel=2
+pkgver=1.5.18
+# VERSION is actually 1.5.18 but tag is 1.15.18
+_tagver=1.15.18
+pkgrel=1
 pkgdesc='systemd units to run cron scripts'
 arch=(any)
 url='https://github.com/systemd-cron/systemd-cron'
@@ -10,14 +12,14 @@ depends=('systemd>=229' 'run-parts' 'python')
 optdepends=('smtp-forwarder: sending emails')
 provides=('cron')
 conflicts=('cron')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/systemd-cron/${pkgname}/archive/v${_tagver}.tar.gz"
         'sysusers.conf')
 install=${pkgname}.install
-sha256sums=('847132a4517f03cf94253f275f006956d8c97a3506db450d33cbd36a25e3bf73'
+sha256sums=('424bd63a21113b25e9dfef36e358168708720eb4016bf1efe4ab8b204cbc4a10'
             '9260221879cca05d4c82cd12deb88759c8d9148e106f4b9891700849cef5c41b')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_tagver}"
 
     ./configure --prefix=/usr --confdir=/etc \
         --enable-minutely --enable-quarterly --enable-semi_annually --enable-yearly \
@@ -26,7 +28,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}-${_tagver}"
 
     make DESTDIR="${pkgdir}" install
 
