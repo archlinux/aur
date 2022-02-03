@@ -5,12 +5,17 @@ _pkgname="${_pkgbase}-levels"
 pkgname="${_pkgname}-git"
 _pkgver=latest
 pkgver=1.2+10+r531.20220201.8596a68
-pkgrel=1
-pkgdesc='Provides the levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower), to be played individually and to be loaded into the level editor.'
-arch=('any')
+pkgrel=3
+pkgdesc='Provides the upstream levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower), to be played individually and to be loaded into the level editor.'
+arch=(
+  'i686'
+  'x86_64'
+)
 url="https://gitlab.com/roever/toppler/"
 license=('GPL3')
-depends=()
+depends=(
+  'sdl2_image'
+)
 makedepends=(
   'git'
   'libpng'
@@ -62,7 +67,7 @@ build() {
 
   cd "${srcdir}/${_pkgbase}/datafile/levels"
 
-  # Create single mission per tower -- to be able to play them directly
+  # Create single mission per tower -- to be able to play them directly.
   find [a-zA-Z]* -maxdepth 0 -type d | while read _mission; do
     find "${_mission}" -maxdepth 1 -mindepth 1 -type f | while read _tower; do
       _towerfile="$(basename "${_tower}")"
@@ -79,6 +84,7 @@ package() {
   for _mission in *.ttm; do
     install -D -m644 -v "${_mission}" "${pkgdir}/usr/share/toppler/${_mission}"
   done
+  install -D -m755 -v "${srcdir}/${_pkgbase}/_build/tools/cremission" "${pkgdir}/usr/share/doc/${_pkgbase}/levels/cremission"
   find [a-zA-Z]* -maxdepth 0 -type d | while read _mission; do
     find "${_mission}" -maxdepth 1 -mindepth 1 -type f | while read _tower; do
       install -D -m644 -v "${_tower}" "${pkgdir}/usr/share/doc/${_pkgbase}/levels/${_mission}/$(basename ${_tower})"
