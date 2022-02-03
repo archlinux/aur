@@ -11,7 +11,6 @@ pkgbase = dxvk-mingw
 	makedepends = git
 	makedepends = mingw-w64-gcc
 	depends = vulkan-icd-loader
-	depends = wine>=4.0rc1
 	depends = lib32-vulkan-icd-loader
 	depends = bash
 	provides = dxvk
