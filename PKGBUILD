@@ -1,5 +1,5 @@
 pkgname="md-git"
-pkgver="1.9"
+pkgver="1.10"
 pkgrel="2"
 pkgdesc="Simple MarkDown Reader"
 
@@ -34,7 +34,7 @@ build () {
 	cd "md"
 
 	make mk
-	make 
+	make build
 }
 
 package() {

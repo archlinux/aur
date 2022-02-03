@@ -1,6 +1,6 @@
 pkgbase = md-git
 	pkgdesc = Simple MarkDown Reader
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 2
 	url = https://github.com/Noah-Arcouette/md.git
 	arch = x86_64
