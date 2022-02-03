@@ -1,0 +1,15 @@
+pkgbase = auryn
+	pkgdesc = AUR Helper Installer
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = sed
+	depends = which
+	depends = jq
+	depends = curl
+	source = auryn.sh
+	md5sums = e67b5fd9450ecfe6fc440fbbedf50551
+
+pkgname = auryn
