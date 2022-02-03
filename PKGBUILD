@@ -3,7 +3,7 @@
 pkgname=mandown-git
 pkgver=r58.fd52093
 pkgrel=1
-pkgdesc="Command line application and Python library to download and convert comics from various sources"
+pkgdesc="Comic downloader and EPUB/CBZ converter command line application and Python library"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
