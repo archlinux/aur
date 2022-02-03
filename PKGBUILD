@@ -10,10 +10,9 @@ arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
 license=('GPL3')
 groups=('qt')
-depends=('kvantum-qt5-git' 'qt6-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'kwindowsystem')
+depends=('kvantum-qt5-git>=1.0.0.r20' 'qt6-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'kwindowsystem')
 makedepends=('cmake' 'qt6-tools' 'git')
-conflicts=('kvantum-qt5')
-provides=('kvantum-qt6')
+provides=('kvantum-qt6-git')
 source=("git+${url}.git")
 md5sums=('SKIP')
 

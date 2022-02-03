@@ -9,13 +9,12 @@ pkgbase = kvantum-qt6-git
 	makedepends = cmake
 	makedepends = qt6-tools
 	makedepends = git
-	depends = kvantum-qt5-git
+	depends = kvantum-qt5-git>=1.0.0.r20
 	depends = qt6-svg
 	depends = qt5-x11extras
 	depends = hicolor-icon-theme
 	depends = kwindowsystem
-	provides = kvantum-qt6
-	conflicts = kvantum-qt5
+	provides = kvantum-qt6-git
 	source = git+https://github.com/tsujan/Kvantum.git
 	md5sums = SKIP
 
