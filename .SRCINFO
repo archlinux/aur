@@ -18,7 +18,7 @@ pkgbase = valhalla-tmp-patch
 	depends = libspatialite
 	provides = valhalla
 	conflicts = valhalla
-	source = valhalla-tmp-patch-3.1.4::git+https://github.com/valhalla/valhalla#tag=3.1.4
+	source = valhalla-3.1.4::git+https://github.com/valhalla/valhalla#tag=3.1.4
 	source = protobuf-ifdefs.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
