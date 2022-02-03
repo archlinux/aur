@@ -1,6 +1,6 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
-# previous maintariner did not leave his email
+# previous maintainer did not leave his email
 
 pkgname=haskell-pandoc-crossref-bin
 _pkgname=pandoc-crossref
