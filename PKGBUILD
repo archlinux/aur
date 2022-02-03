@@ -2,7 +2,7 @@
 # Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=devpi-server
-pkgver=6.3.1
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Python PyPi staging server and release tool"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://doc.devpi.net/"
 license=('MIT')
 groups=('devpi')
 depends=(
-  'python>=3.6'
+  'python>=3.7'
   'python-py'
   'python-argon2_cffi'
   'python-appdirs'
@@ -26,7 +26,7 @@ depends=(
   'python-ruamel-yaml'
   'python-waitress'
   'python-strictyaml')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
 optdepends=('devpi-client')
 changelog=CHANGELOG
 source=(
@@ -34,14 +34,14 @@ source=(
   'devpi-server.service'
   'devpi-server.sysusers'
   'devpi-server.tmpfiles')
-sha256sums=('e133dc6974d65664e4cc62eb5bdeea577a3b27748ebdf9c83eb98b4c5ac551e9'
+sha256sums=('ff2d973a3d2caa8ad0938e68162c482ef128ab02efa4c2d7c9b7425c37f8eb23'
             '1ebfe9edc2bf0f368162f15540e48a8e046db0023b5da23e98daf43f0e075a95'
             '4327d0e72b277ef7b05dfb4b3bac6ab4c70d55a96c9ad114a90ebb00c954bd48'
             'bcd2321ff41bebcf08392ca02dbfaa0ac2693eba3432f0e5793ff384753ce0f1')
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
@@ -49,8 +49,9 @@ package() {
   install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
+  export PYTHONHASHSEED=0
   cd "$pkgname-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 README.rst AUTHORS -t "$pkgdir/usr/share/doc/$pkgname/"
 }
