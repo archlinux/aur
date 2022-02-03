@@ -1,14 +1,14 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=jet
-pkgver=2.13.0
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="A CLI tool designed to make working with Codeship Pro faster and easier"
 arch=('x86_64')
 url="https://codeship.com"
 license=('custom: commercial')
 source_x86_64=(https://s3.amazonaws.com/codeship-jet-releases/${pkgver}/jet-linux_amd64_${pkgver}.tar.gz)
-md5sums_x86_64=('641df6086902caa9f306d4afd8e3d23e')
+md5sums_x86_64=('c44f97de74009354d0bbb1381ac96ed8')
 package() {
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${pkgdir}/opt/${pkgname}"
