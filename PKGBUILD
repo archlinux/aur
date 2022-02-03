@@ -4,10 +4,10 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron13
+_electron=electron15
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.9.8.sc.1.r1.c4e17a1
+pkgver=1.9.8.sc.1.r6.7a96f32
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -16,6 +16,7 @@ license=(Apache)
 conflicts=(schildichat-desktop schildichat-desktop-bin)
 provides=(schildichat-desktop=${pkgver})
 makedepends=(npm git yarn python rust sqlcipher ${_electron} nvm)
+depends=(sqlcipher ${_electron})
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#branch=sc
         git+https://github.com/SchildiChat/matrix-js-sdk.git
         git+https://github.com/SchildiChat/matrix-react-sdk.git
@@ -31,7 +32,7 @@ sha256sums=('SKIP'
             'SKIP'
             'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
             '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'
-            'f928d6473446800cbbfea66945ffca5c953127a6c8b7d091fa32c31ef880905f')
+            'd4ae02a9ee2d8f2ede579594d667c36e513b4a74fa6d96562e917788efe6fe7a')
 
 pkgver() {
   cd ${_pkgname}
