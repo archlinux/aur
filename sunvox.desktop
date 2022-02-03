@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sunvox
+GenericName=Modular Synthesizer / Tracker
+Comment=Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker).
+Exec=sunvox %f
+Icon=sunvox
+Terminal=false
+StartupNotify=false
+MimeType=application/x-sunvox-project;application/x-sunvox-instrument;
+Categories=Audio;AudioVideo;Music;Sequencer;

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="application/x-sunvox-project">
+    <comment>Sunvox project file</comment>
+    <magic>
+      <match type="string" offset="0" value="SVOX\0\0\0VERS\t"/>
+    </magic>
+    <glob pattern="*.sunvox"/>
+  </mime-type>
+  <mime-type type="application/x-sunvox-instrument">
+    <comment>Sunvox instrument module</comment>
+    <magic>
+      <match type="string" offset="0" value="SSYN\0\0\0VERS\t"/>
+    </magic>
+    <glob pattern="*.sunsynth"/>
+  </mime-type>
+</mime-info>
