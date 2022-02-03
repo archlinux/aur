@@ -2,7 +2,7 @@
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons-git
 _pkgname=xde-icons
-pkgver=1.6.r1.g5aa72fa
+pkgver=1.7.r1.gd93cd9c
 pkgrel=1
 arch=('any')
 license=(CCPL:by-sa)
@@ -17,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed -E 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,-,.,g'
 }
 
 prepare() {
@@ -32,8 +32,7 @@ build() {
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+  make -C $pkgname DESTDIR="$pkgdir" install
   rm -f "$pkgdir/usr/share/icons/hicolor/32x32/apps/arch-logo.png"
   rm -f "$pkgdir/usr/share/icons/hicolor/scalable/apps/arch-logo.svg"
   rm -f "$pkgdir/usr/share/pixmaps/arch-logo.svg"

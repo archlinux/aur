@@ -1,6 +1,6 @@
 pkgbase = xde-icons-git
 	pkgdesc = Icons for the X Desktop Environment (XDE)
-	pkgver = 1.6.r1.g5aa72fa
+	pkgver = 1.7.r1.gd93cd9c
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-icons
 	arch = any
@@ -10,11 +10,10 @@ pkgbase = xde-icons-git
 	makedepends = git
 	depends = hicolor-icon-theme
 	depends = mist-icon-theme
-	provides = xde-icons=1.6-1
+	provides = xde-icons=1.7-1
 	conflicts = xde-icons
 	conflicts = ayatana-indicator-session
 	source = xde-icons-git::git://github.com/bbidulock/xde-icons.git
 	md5sums = SKIP
 
 pkgname = xde-icons-git
-
