@@ -1,6 +1,6 @@
 pkgname=podman-remote
-pkgver=3.4.2
-pkgrel=19
+pkgver=3.4.4
+pkgrel=1
 conflicts=('podman')
 provides=('podman')
 pkgdesc='Remote client for managing podman containers.'
