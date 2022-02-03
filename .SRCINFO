@@ -1,5 +1,5 @@
 pkgbase = kvantum-qt6-git
-	pkgdesc = Qt6 part of the Kvantum theme engine
+	pkgdesc = Qt6 component of the Kvantum theme engine
 	pkgver = 1.0.0.r20.gafc4ad0a
 	pkgrel = 1
 	url = https://github.com/tsujan/Kvantum
@@ -15,7 +15,7 @@ pkgbase = kvantum-qt6-git
 	depends = hicolor-icon-theme
 	depends = kwindowsystem
 	provides = kvantum-qt6
-	conflicts = kvantum
+	conflicts = kvantum-qt5
 	source = git+https://github.com/tsujan/Kvantum.git
 	md5sums = SKIP
 
