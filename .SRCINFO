@@ -1,11 +1,11 @@
 pkgbase = mizu-bin
 	pkgdesc = A simple-yet-powerful API traffic viewer for Kubernetes enabling you to view all API communication between microservices to help your debug and troubleshoot regressions.
-	pkgver = 0.22.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/up9inc/mizu
 	arch = x86_64
 	license = Apache
-	source = https://github.com/up9inc/mizu/releases/download/0.22.0/mizu_linux_amd64
+	source = https://github.com/up9inc/mizu/releases/download/0.25.0/mizu_linux_amd64
 	sha256sums = 70e86c8d4bdf2f569827f131454ecd5f7f7526543bc204379be889ae1792205b
 
 pkgname = mizu-bin
