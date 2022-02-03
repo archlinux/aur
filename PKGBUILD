@@ -1,4 +1,4 @@
-# irccd packaging script for ArchLinux - Copyright (c) 2013-2018 Pierre Choffet
+# irccd packaging script for ArchLinux - Copyright (c) 2013-2022 Pierre Choffet
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -19,56 +19,45 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=2.2.0
+pkgver=4.0.0
 pkgrel=1
 epoch=
-pkgdesc="IRC client daemon"
+pkgdesc='A flexible, fast IRC bot'
 arch=('x86_64')
-url="http://projects.malikania.fr/irccd/"
+url='http://projects.malikania.fr/irccd/'
 license=('custom:ISC')
 groups=()
 depends=()
-makedepends=('cmake' 'openssl')
+makedepends=('mercurial' 'openssl')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=('irccd-hg')
 replaces=()
-backup=("etc/irccd.conf" "etc/irccdctl.conf")
+backup=('etc/irccd.conf')
 options=()
-changelog="ChangeLog"
-source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
+changelog=
+source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz" 'irccd-sysusers.conf')
 noextract=()
-md5sums=('98fe4ff67a174467e12791cd97dfb807')
+md5sums=('f8818c1a3414621b3d2cfb080d915bf5'
+         '9a2172be1a0b56ee719048cb0b4ee594')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	mkdir -p _build
-	cd _build
-	cmake .. \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DCMAKE_INSTALL_PREFIX='/' \
-	-DWITH_BINDIR='usr/bin' \
-	-DWITH_CONFDIR='etc' \
-	-DWITH_MANDIR='usr/share/man' \
-	-DWITH_DOCDIR='usr/share/doc/irccd' \
-	-DWITH_PLUGINDIR='usr/share/irccd/plugins'
+	mkdir "$srcdir/$pkgname-$pkgver/build"
+	cd "$srcdir/$pkgname-$pkgver/build"
+	
+	cmake -DCMAKE_INSTALL_PREFIX='/usr' -DIRCCD_WITH_SYSTEMD=On ..
 	make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver/_build
+	cd "$srcdir/$pkgname-$pkgver/build"
 	make DESTDIR="$pkgdir" install
 
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname
 	cp ../LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
-	# Copy systemd unit
-	mkdir -p $pkgdir/usr/lib/systemd/system/
-	sed 's/@PATH@/\/usr\/bin\/irccd/' contrib/irccd.service > $pkgdir/usr/lib/systemd/system/irccd.service
-	sed -i 's/Type=forking/Type=simple/' $pkgdir/usr/lib/systemd/system/irccd.service
-
-	# Copy default config files
-	mv $pkgdir/etc/irccd.conf.sample $pkgdir/etc/irccd.conf
-	mv $pkgdir/etc/irccdctl.conf.sample $pkgdir/etc/irccdctl.conf
+	# Copy default config files and sysusers
+	install -D -m 0644 "$pkgdir/usr/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
+	install -D -m 0644 "$srcdir/irccd-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/irccd.conf"
 }
