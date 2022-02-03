@@ -1,7 +1,7 @@
 pkgbase = woodpecker
 	pkgdesc = A community fork of the Drone CI system.
 	pkgver = 0.15.0_rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://woodpecker-ci.org/
 	arch = x86_64
 	arch = armv7h
@@ -9,6 +9,7 @@ pkgbase = woodpecker
 	license = Apache
 	makedepends = git
 	makedepends = go
+	makedepends = yarn
 	depends = glibc
 	optdepends = docker: Docker backend
 	backup = etc/woodpecker.conf

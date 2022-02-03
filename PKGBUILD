@@ -3,12 +3,12 @@
 pkgname=woodpecker
 pkgver=0.15.0_rc2
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A community fork of the Drone CI system."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
 license=('Apache')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'yarn')
 depends=('glibc')
 optdepends=('docker: Docker backend')
 backup=(etc/woodpecker.conf etc/woodpecker-agent.conf)
