@@ -1,18 +1,18 @@
 pkgbase = xde-helpers-git
 	pkgdesc = XDE .desktop entry helpers
-	pkgver = 1.8.r1.g7978efbf
-	pkgrel = 1
+	pkgver = 1.8.r2.ga4da723d
+	pkgrel = 2
 	url = http://github.com/bbidulock/xde-helpers
 	install = xde-helpers.install
 	arch = any
-	groups = xde
+	groups = xde-git
 	license = GPL
 	makedepends = git
 	depends = xde-icons
 	depends = xdg-utils
 	depends = gxmessage-gtk2
 	depends = desktop-file-utils
-	provides = xde-helpers=1.8.r1.g7978efbf
+	provides = xde-helpers=1.8.r2.ga4da723d
 	conflicts = xde-helpers
 	source = xde-helpers-git::git+https://github.com/bbidulock/xde-helpers.git
 	md5sums = SKIP
