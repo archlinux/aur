@@ -1,0 +1,8 @@
+post_install() {
+cat <<End-of-message
+
+Copy /usr/share/i3-extra-workspace-git/hotkeys.conf.example into ~/.config/i3/hotkeys.conf and include to the main i3 config.
+Or use your very own hotkeys.
+
+End-of-message
+}
