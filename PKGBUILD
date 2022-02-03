@@ -1,20 +1,18 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mergestat
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="Query git repositories with SQL"
 arch=('x86_64')
 url="https://app.mergestat.com/w/public"
 license=('MIT')
 depends=('libgit2')
 makedepends=('git' 'go')
-checkdepends=()
-optdepends=()
 options=('!lto')
-_commit='7d127251a0e268fb7bf20e44fe500b3917cf1a91'
+_commit='4d10da58cdc3f770846192c734645fd0add03f05'
 source=("$pkgname::git+https://github.com/mergestat/mergestat.git#commit=$_commit")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
