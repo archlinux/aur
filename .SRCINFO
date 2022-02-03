@@ -1,0 +1,12 @@
+pkgbase = oui
+	pkgdesc = MAC Address CLI Toolkit
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/thatmattlove/oui
+	arch = x86_64
+	license = custom:The Clear BSD License
+	makedepends = go
+	source = https://github.com/thatmattlove/oui/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = b3cb775c8ea6bf48b3b2bebcae7bb6c072620f11cdcf1b1092bae8fa15989e82
+
+pkgname = oui
