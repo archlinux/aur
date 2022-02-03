@@ -1,15 +1,15 @@
 pkgbase = feem
 	pkgdesc = Share Files in LAN. OFFLINE! No Cloud. No Servers. No Limits.
-	pkgver = 4.3.0
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://www.feem.io/
 	arch = x86_64
 	license = custom
+	makedepends = p7zip
 	depends = qt5-webkit
 	depends = hicolor-icon-theme
 	optdepends = gstreamer: multimedia support
-	source = https://f000.backblazeb2.com/file/feemdownloads/Feem_v4.3.0_For_Linux.AppImage
-	sha256sums = 69d243207bf482f94c16ae22ba10060221b2b74332141d9edc080397b75d68e8
+	source = https://f000.backblazeb2.com/file/feemdownloads/Feem-4.4.2-x86_64.AppImage
+	sha256sums = 3934df10fae0b93fc975ffdda462e82022252ea7c684114628cbce28cb775e8a
 
 pkgname = feem
-
