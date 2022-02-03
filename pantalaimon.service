@@ -1,0 +1,12 @@
+[Unit]
+Description=pantalaimon daemon
+After=network.target
+
+[Service]
+Restart=on-failure
+RestartSec=3
+ExecStart=/usr/bin/pantalaimon
+
+[Install]
+WantedBy=default.target
+
