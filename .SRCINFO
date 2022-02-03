@@ -1,0 +1,16 @@
+pkgbase = vim-jinja-syntax-git
+	pkgdesc = Vim syntax, file detection, and indentation plugin for Jinja templates
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/Glench/Vim-Jinja2-Syntax
+	arch = any
+	groups = vim-plugins
+	license = BSD
+	makedepends = git
+	depends = vim
+	provides = vim-jinja-syntax
+	conflicts = vim-jinja-syntax
+	source = vim-jinja-syntax-git::git+https://github.com/Glench/Vim-Jinja2-Syntax
+	sha512sums = SKIP
+
+pkgname = vim-jinja-syntax-git
