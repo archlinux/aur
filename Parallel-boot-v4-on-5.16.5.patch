@@ -1,0 +1,1397 @@
+From 5b52fad276ef34b2eff47a20c521e5f3c20095ae Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Wed, 2 Feb 2022 18:29:02 -0800
+Subject: [PATCH] Parallel boot v4 on 5.16.5
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Squashed commit of the following:
+
+commit 53847d0664891222c70a07ce0418a083e8c90dc2
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:28 2022 +0000
+
+    x86/smpboot: Serialize topology updates for secondary bringup
+
+    If we bring up secondaries in parallel they might get confused unless we
+    impose some ordering here:
+
+    [    1.360149] x86: Booting SMP configuration:
+    [    1.360221] .... node  #0, CPUs:        #1  #2  #3  #4  #5  #6  #7  #8  #9 #10 #11 #12 #13 #14 #15 #16 #17 #18 #19 #20 #21 #22 #23
+    [    1.366225] .... node  #1, CPUs:   #24 #25 #26 #27 #28 #29 #30 #31 #32 #33 #34 #35 #36 #37 #38 #39 #40 #41 #42 #43 #44 #45 #46 #47
+    [    1.370219] .... node  #0, CPUs:   #48 #49 #50 #51 #52 #53 #54 #55 #56 #57 #58 #59 #60 #61 #62 #63 #64 #65 #66 #67 #68 #69 #70 #71
+    [    1.378226] .... node  #1, CPUs:   #72 #73 #74 #75 #76 #77 #78 #79 #80 #81 #82 #83 #84 #85 #86 #87 #88 #89 #90 #91 #92 #93 #94 #95
+    [    1.382037] Brought 96 CPUs to x86/cpu:kick in 72232606 cycles
+    [    0.104104] smpboot: CPU 26 Converting physical 0 to logical die 1
+    [    0.104104] smpboot: CPU 27 Converting physical 1 to logical package 2
+    [    0.104104] smpboot: CPU 24 Converting physical 1 to logical package 3
+    [    0.104104] smpboot: CPU 27 Converting physical 0 to logical die 2
+    [    0.104104] smpboot: CPU 25 Converting physical 1 to logical package 4
+    [    1.385609] Brought 96 CPUs to x86/cpu:wait-init in 9269218 cycles
+    [    1.395285] Brought CPUs online in 28930764 cycles
+    [    1.395469] smp: Brought up 2 nodes, 96 CPUs
+    [    1.395689] smpboot: Max logical packages: 2
+    [    1.396222] smpboot: Total of 96 processors activated (576000.00 BogoMIPS)
+
+    Do the full topology update in smp_store_cpu_info() under a spinlock
+    to ensure that things remain consistent.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit d235573518e82090ef2d37734121a8e995c883e6
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:27 2022 +0000
+
+    x86/mtrr: Avoid repeated save of MTRRs on boot-time CPU bringup
+
+    There's no need to repeatedly save the BSP's MTRRs for each AP we bring
+    up at boot time. And there's no need to use smp_call_function_single()
+    even for the one time we *do* want to do it.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit b3f1184384986320cd825e0dcece0e808104374c
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:26 2022 +0000
+
+    x86/smpboot: Send INIT/SIPI/SIPI to secondary CPUs in parallel
+
+    When the APs can find their own APIC ID without assistance, we can do
+    the AP bringup in parallel.
+
+    Register a CPUHP_BP_PARALLEL_DYN stage "x86/cpu:kick" which just calls
+    do_boot_cpu() to deliver INIT/SIPI/SIPI to each AP in turn before the
+    normal native_cpu_up() does the rest of the hand-holding.
+
+    The APs will then take turns through the real mode code (which has its
+    own bitlock for exclusion) until they make it to their own stack, then
+    proceed through the first few lines of start_secondary() and execute
+    these parts in parallel:
+
+     start_secondary()
+        -> cr4_init()
+        -> (some 32-bit only stuff so not in the parallel cases)
+        -> cpu_init_secondary()
+           -> cpu_init_exception_handling()
+           -> cpu_init()
+              -> wait_for_master_cpu()
+
+    At this point they wait for the BSP to set their bit in cpu_callout_mask
+    (from do_wait_cpu_initialized()), and release them to continue through
+    the rest of cpu_init() and beyond.
+
+    This reduces the time taken for bringup on my 28-thread Haswell system
+    from about 120ms to 80ms. On a socket 96-thread Skylake it takes the
+    bringup time from 500ms to 100ms.
+
+    There is more speedup to be had by doing the remaining parts in parallel
+    too — especially notify_cpu_starting() in which the AP takes itself
+    through all the stages from CPUHP_BRINGUP_CPU to CPUHP_ONLINE. But those
+    require careful auditing to ensure they are reentrant, before we can go
+    that far.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit b37c52e06de31c08e93121d94146f5b393dc8156
+Author: Thomas Gleixner <tglx@linutronix.de>
+Date:   Tue Feb 1 20:53:25 2022 +0000
+
+    x86/smpboot: Support parallel startup of secondary CPUs
+
+    To allow for parallel AP bringup, we need to avoid the use of global
+    variables for passing information to the APs, as well as preventing them
+    from all trying to use the same real-mode stack simultaneously.
+
+    So, introduce a 'lock' field in struct trampoline_header to use as a
+    simple bit-spinlock for the real-mode stack. That lock also protects
+    the global variables initial_gs, initial_stack and early_gdt_descr,
+    which can now be calculated...
+
+    So how do we calculate those addresses? Well, they they can all be found
+    from the per_cpu data for this CPU. Simples! Except... how does it know
+    what its CPU# is? OK, we export the cpuid_to_apicid[] array and it can
+    search it to find its APIC ID in there.
+
+    But now you whine at me that it doesn't even know its APIC ID? Well, if
+    it's a relatively modern CPU then the APIC ID is in CPUID leaf 0x0B so
+    we can use that. Otherwise... erm... OK, otherwise it can't have parallel
+    CPU bringup for now. We'll still use a global variable for those CPUs and
+    bring them up one at a time.
+
+    So add a global 'smpboot_control' field which either contains the APIC
+    ID, or a flag indicating that it can be found in CPUID.
+
+    This adds the 'do_parallel_bringup' flag in preparation but doesn't
+    actually enable parallel bringup yet.
+
+    [ dwmw2: Minor tweaks, write a commit message ]
+    [ seanc: Fix stray override of initial_gs in common_cpu_up() ]
+    Not-signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+    Signed-off-by: David Woodhouse <dwmw2@infradead.org>
+
+commit 606be2b20b94e6bdc3f6460ab6b3b43a05945e0b
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:24 2022 +0000
+
+    x86/smpboot: Split up native_cpu_up into separate phases and document them
+
+    There are four logical parts to what native_cpu_up() does on the BSP (or
+    on the controlling CPU for a later hotplug).
+
+    First it actually wakes the AP by sending the INIT/SIPI/SIPI sequence.
+
+    Second, it waits for the AP to make it as far as wait_for_master_cpu()
+    which sets that CPU's bit in cpu_initialized_mask, then sets the bit in
+    cpu_callout_mask to let the AP proceed through cpu_init().
+
+    Then, it waits for the AP to finish cpu_init() and get as far as the
+    smp_callin() call, which sets that CPU's bit in cpu_callin_mask.
+
+    Finally, it does the TSC synchronization and waits for the AP to actually
+    mark itself online in cpu_online_mask.
+
+    This commit should have no behavioural change, but merely splits those
+    phases out into separate functions so that future commits can make them
+    happen in parallel for all APs. And adds some comments around them on
+    both the BSP and AP code paths.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit 23152c91fb725b44fae828851b4790afa5c4bd4d
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:23 2022 +0000
+
+    x86/smpboot: Reference count on smpboot_setup_warm_reset_vector()
+
+    If we want to do parallel CPU bringup, we're going to need to set this up
+    and leave it until all CPUs are done. Might as well use the RTC spinlock
+    to protect the refcount, as we need to take it anyway.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit ee1993b226926c86cc0c51b3709c5f7c67304caf
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:22 2022 +0000
+
+    cpu/hotplug: Add dynamic parallel bringup states before CPUHP_BRINGUP_CPU
+
+    If the platform registers these states, bring all CPUs to each registered
+    state in turn, before the final bringup to CPUHP_BRINGUP_CPU. This allows
+    the architecture to parallelise the slow asynchronous tasks like sending
+    INIT/SIPI and waiting for the AP to come to life.
+
+    There is a subtlety here: even with an empty CPUHP_BP_PARALLEL_DYN step,
+    this means that *all* CPUs are brought through the prepare states and to
+    CPUHP_BP_PREPARE_DYN before any of them are taken to CPUHP_BRINGUP_CPU
+    and then are allowed to run for themselves to CPUHP_ONLINE.
+
+    So any combination of prepare/start calls which depend on A-B ordering
+    for each CPU in turn, such as the X2APIC code which used to allocate a
+    cluster mask 'just in case' and store it in a global variable in the
+    prep stage, then potentially consume that preallocated structure from
+    the AP and set the global pointer to NULL to be reallocated in
+    CPUHP_X2APIC_PREPARE for the next CPU... would explode horribly.
+
+    We believe that X2APIC was the only such case, for x86. But this is why
+    it remains an architecture opt-in. For now.
+
+    Note that the new parallel stages do *not* yet bring each AP to the
+    CPUHP_BRINGUP_CPU state. The final loop in bringup_nonboot_cpus() is
+    untouched, bringing each AP in turn from the final PARALLEL_DYN state
+    (or all the way from CPUHP_OFFLINE) to CPUHP_BRINGUP_CPU and then
+    waiting for that AP to do its own processing and reach CPUHP_ONLINE
+    before releasing the next. Parallelising that part by bringing them all
+    to CPUHP_BRINGUP_CPU and then waiting for them all is an exercise for
+    the future.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit 643906372b3f312b5cbdd0cee2fee9d29b5e18d5
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:21 2022 +0000
+
+    cpu/hotplug: Move idle_thread_get() to <linux/smpboot.h>
+
+    Instead of relying purely on the special-case wrapper in bringup_cpu()
+    to pass the idle thread to __cpu_up(), expose idle_thread_get() so that
+    the architecture code can obtain it directly when necessary.
+
+    This will be useful when the existing __cpu_up() is split into multiple
+    phases, only *one* of which will actually need the idle thread.
+
+    If the architecture code is to register its new pre-bringup states with
+    the cpuhp core, having a special-case wrapper to pass extra arguments is
+    non-trivial and it's easier just to let the arch register its function
+    pointer to be invoked with the standard API.
+
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+
+commit 286005ce58ccaee7f18e41b96e96f1a99ee9fba1
+Author: David Woodhouse <dwmw@amazon.co.uk>
+Date:   Tue Feb 1 20:53:20 2022 +0000
+
+    x86/apic/x2apic: Fix parallel handling of cluster_mask
+
+    For each CPU being brought up, the alloc_clustermask() function
+    allocates a new struct cluster_mask just in case it's needed. Then the
+    target CPU actually runs, and in init_x2apic_ldr() it either uses a
+    cluster_mask from a previous CPU in the same cluster, or consumes the
+    "spare" one and sets the global pointer to NULL.
+
+    That isn't going to parallelise stunningly well.
+
+    Ditch the global variable, let alloc_clustermask() install the struct
+    *directly* in the per_cpu data for the CPU being brought up. As an
+    optimisation, actually make it do so for *all* present CPUs in the same
+    cluster, which means only one iteration over for_each_present_cpu()
+    instead of doing so repeatedly, once for each CPU.
+
+    Now, in fact, there's no point in the 'node' or 'clusterid' members of
+    the struct cluster_mask, so just kill it and use struct cpumask instead.
+
+    This was a harmless "bug" while CPU bringup wasn't actually happening in
+    parallel. It's about to become less harmless...
+
+    Fixes: 023a611748fd5 ("x86/apic/x2apic: Simplify cluster management")
+    Signed-off-by: David Woodhouse <dwmw@amazon.co.uk>
+---
+ arch/x86/include/asm/realmode.h       |   3 +
+ arch/x86/include/asm/smp.h            |  13 +-
+ arch/x86/include/asm/topology.h       |   2 -
+ arch/x86/kernel/acpi/sleep.c          |   1 +
+ arch/x86/kernel/apic/apic.c           |   2 +-
+ arch/x86/kernel/apic/x2apic_cluster.c | 110 +++++----
+ arch/x86/kernel/cpu/common.c          |   6 +-
+ arch/x86/kernel/cpu/mtrr/mtrr.c       |   9 +
+ arch/x86/kernel/head_64.S             |  73 ++++++
+ arch/x86/kernel/smpboot.c             | 333 ++++++++++++++++++--------
+ arch/x86/realmode/init.c              |   3 +
+ arch/x86/realmode/rm/trampoline_64.S  |  14 ++
+ arch/x86/xen/smp_pv.c                 |   4 +-
+ include/linux/cpuhotplug.h            |   2 +
+ include/linux/smpboot.h               |   7 +
+ kernel/cpu.c                          |  27 ++-
+ kernel/smpboot.c                      |   2 +-
+ kernel/smpboot.h                      |   2 -
+ 18 files changed, 447 insertions(+), 166 deletions(-)
+
+diff --git a/arch/x86/include/asm/realmode.h b/arch/x86/include/asm/realmode.h
+index 331474b150f1..1693bc834163 100644
+--- a/arch/x86/include/asm/realmode.h
++++ b/arch/x86/include/asm/realmode.h
+@@ -51,6 +51,7 @@ struct trampoline_header {
+ 	u64 efer;
+ 	u32 cr4;
+ 	u32 flags;
++	u32 lock;
+ #endif
+ };
+ 
+@@ -64,6 +65,8 @@ extern unsigned long initial_stack;
+ extern unsigned long initial_vc_handler;
+ #endif
+ 
++extern u32 *trampoline_lock;
++
+ extern unsigned char real_mode_blob[];
+ extern unsigned char real_mode_relocs[];
+ 
+diff --git a/arch/x86/include/asm/smp.h b/arch/x86/include/asm/smp.h
+index 81a0211a372d..1df2951ca0bd 100644
+--- a/arch/x86/include/asm/smp.h
++++ b/arch/x86/include/asm/smp.h
+@@ -59,8 +59,6 @@ struct smp_ops {
+ };
+ 
+ /* Globals due to paravirt */
+-extern void set_cpu_sibling_map(int cpu);
+-
+ #ifdef CONFIG_SMP
+ extern struct smp_ops smp_ops;
+ 
+@@ -148,7 +146,7 @@ void native_send_call_func_single_ipi(int cpu);
+ void x86_idle_thread_init(unsigned int cpu, struct task_struct *idle);
+ 
+ void smp_store_boot_cpu_info(void);
+-void smp_store_cpu_info(int id);
++void smp_store_cpu_info(int id, bool force_single_core);
+ 
+ asmlinkage __visible void smp_reboot_interrupt(void);
+ __visible void smp_reschedule_interrupt(struct pt_regs *regs);
+@@ -196,5 +194,12 @@ extern void nmi_selftest(void);
+ #define nmi_selftest() do { } while (0)
+ #endif
+ 
+-#endif /* __ASSEMBLY__ */
++extern unsigned int smpboot_control;
++
++#endif /* !__ASSEMBLY__ */
++
++/* Control bits for startup_64 */
++#define	STARTUP_PARALLEL	0x80000000
++#define	STARTUP_SECONDARY	0x40000000
++
+ #endif /* _ASM_X86_SMP_H */
+diff --git a/arch/x86/include/asm/topology.h b/arch/x86/include/asm/topology.h
+index 2f0b6be8eaab..a4e14ae3f1e1 100644
+--- a/arch/x86/include/asm/topology.h
++++ b/arch/x86/include/asm/topology.h
+@@ -135,8 +135,6 @@ static inline int topology_max_smt_threads(void)
+ 	return __max_smt_threads;
+ }
+ 
+-int topology_update_package_map(unsigned int apicid, unsigned int cpu);
+-int topology_update_die_map(unsigned int dieid, unsigned int cpu);
+ int topology_phys_to_logical_pkg(unsigned int pkg);
+ int topology_phys_to_logical_die(unsigned int die, unsigned int cpu);
+ bool topology_is_primary_thread(unsigned int cpu);
+diff --git a/arch/x86/kernel/acpi/sleep.c b/arch/x86/kernel/acpi/sleep.c
+index 3f85fcae450c..9598ebf4f9d6 100644
+--- a/arch/x86/kernel/acpi/sleep.c
++++ b/arch/x86/kernel/acpi/sleep.c
+@@ -114,6 +114,7 @@ int x86_acpi_suspend_lowlevel(void)
+ 	early_gdt_descr.address =
+ 			(unsigned long)get_cpu_gdt_rw(smp_processor_id());
+ 	initial_gs = per_cpu_offset(smp_processor_id());
++	smpboot_control = 0;
+ #endif
+ 	initial_code = (unsigned long)wakeup_long64;
+        saved_magic = 0x123456789abcdef0L;
+diff --git a/arch/x86/kernel/apic/apic.c b/arch/x86/kernel/apic/apic.c
+index b70344bf6600..5b20e051d84c 100644
+--- a/arch/x86/kernel/apic/apic.c
++++ b/arch/x86/kernel/apic/apic.c
+@@ -2335,7 +2335,7 @@ static int nr_logical_cpuids = 1;
+ /*
+  * Used to store mapping between logical CPU IDs and APIC IDs.
+  */
+-static int cpuid_to_apicid[] = {
++int cpuid_to_apicid[] = {
+ 	[0 ... NR_CPUS - 1] = -1,
+ };
+ 
+diff --git a/arch/x86/kernel/apic/x2apic_cluster.c b/arch/x86/kernel/apic/x2apic_cluster.c
+index e696e22d0531..e116dfaf5922 100644
+--- a/arch/x86/kernel/apic/x2apic_cluster.c
++++ b/arch/x86/kernel/apic/x2apic_cluster.c
+@@ -9,11 +9,7 @@
+ 
+ #include "local.h"
+ 
+-struct cluster_mask {
+-	unsigned int	clusterid;
+-	int		node;
+-	struct cpumask	mask;
+-};
++#define apic_cluster(apicid) ((apicid) >> 4)
+ 
+ /*
+  * __x2apic_send_IPI_mask() possibly needs to read
+@@ -23,8 +19,7 @@ struct cluster_mask {
+ static u32 *x86_cpu_to_logical_apicid __read_mostly;
+ 
+ static DEFINE_PER_CPU(cpumask_var_t, ipi_mask);
+-static DEFINE_PER_CPU_READ_MOSTLY(struct cluster_mask *, cluster_masks);
+-static struct cluster_mask *cluster_hotplug_mask;
++static DEFINE_PER_CPU_READ_MOSTLY(struct cpumask *, cluster_masks);
+ 
+ static int x2apic_acpi_madt_oem_check(char *oem_id, char *oem_table_id)
+ {
+@@ -60,10 +55,10 @@ __x2apic_send_IPI_mask(const struct cpumask *mask, int vector, int apic_dest)
+ 
+ 	/* Collapse cpus in a cluster so a single IPI per cluster is sent */
+ 	for_each_cpu(cpu, tmpmsk) {
+-		struct cluster_mask *cmsk = per_cpu(cluster_masks, cpu);
++		struct cpumask *cmsk = per_cpu(cluster_masks, cpu);
+ 
+ 		dest = 0;
+-		for_each_cpu_and(clustercpu, tmpmsk, &cmsk->mask)
++		for_each_cpu_and(clustercpu, tmpmsk, cmsk)
+ 			dest |= x86_cpu_to_logical_apicid[clustercpu];
+ 
+ 		if (!dest)
+@@ -71,7 +66,7 @@ __x2apic_send_IPI_mask(const struct cpumask *mask, int vector, int apic_dest)
+ 
+ 		__x2apic_send_IPI_dest(dest, vector, APIC_DEST_LOGICAL);
+ 		/* Remove cluster CPUs from tmpmask */
+-		cpumask_andnot(tmpmsk, tmpmsk, &cmsk->mask);
++		cpumask_andnot(tmpmsk, tmpmsk, cmsk);
+ 	}
+ 
+ 	local_irq_restore(flags);
+@@ -105,55 +100,76 @@ static u32 x2apic_calc_apicid(unsigned int cpu)
+ 
+ static void init_x2apic_ldr(void)
+ {
+-	struct cluster_mask *cmsk = this_cpu_read(cluster_masks);
+-	u32 cluster, apicid = apic_read(APIC_LDR);
+-	unsigned int cpu;
++	struct cpumask *cmsk = this_cpu_read(cluster_masks);
+ 
+-	x86_cpu_to_logical_apicid[smp_processor_id()] = apicid;
++	BUG_ON(!cmsk);
+ 
+-	if (cmsk)
+-		goto update;
+-
+-	cluster = apicid >> 16;
+-	for_each_online_cpu(cpu) {
+-		cmsk = per_cpu(cluster_masks, cpu);
+-		/* Matching cluster found. Link and update it. */
+-		if (cmsk && cmsk->clusterid == cluster)
+-			goto update;
+-	}
+-	cmsk = cluster_hotplug_mask;
+-	cmsk->clusterid = cluster;
+-	cluster_hotplug_mask = NULL;
+-update:
+-	this_cpu_write(cluster_masks, cmsk);
+-	cpumask_set_cpu(smp_processor_id(), &cmsk->mask);
++	cpumask_set_cpu(smp_processor_id(), cmsk);
+ }
+ 
+-static int alloc_clustermask(unsigned int cpu, int node)
++/*
++ * As an optimisation during boot, set the cluster_mask for *all*
++ * present CPUs at once, to prevent *each* of them having to iterate
++ * over the others to find the existing cluster_mask.
++ */
++static void prefill_clustermask(struct cpumask *cmsk, u32 cluster)
+ {
++	int cpu;
++
++	for_each_present_cpu(cpu) {
++		u32 apicid = apic->cpu_present_to_apicid(cpu);
++		if (apicid != BAD_APICID && apic_cluster(apicid) == cluster) {
++			struct cpumask **cpu_cmsk = &per_cpu(cluster_masks, cpu);
++
++			BUG_ON(*cpu_cmsk && *cpu_cmsk != cmsk);
++			*cpu_cmsk = cmsk;
++		}
++	}
++}
++
++static int alloc_clustermask(unsigned int cpu, u32 cluster, int node)
++{
++	struct cpumask *cmsk = NULL;
++	unsigned int cpu_i;
++	u32 apicid;
++
+ 	if (per_cpu(cluster_masks, cpu))
+ 		return 0;
+-	/*
+-	 * If a hotplug spare mask exists, check whether it's on the right
+-	 * node. If not, free it and allocate a new one.
+-	 */
+-	if (cluster_hotplug_mask) {
+-		if (cluster_hotplug_mask->node == node)
+-			return 0;
+-		kfree(cluster_hotplug_mask);
++
++	/* For the hotplug case, don't always allocate a new one */
++	if (system_state >= SYSTEM_RUNNING) {
++		for_each_present_cpu(cpu_i) {
++			apicid = apic->cpu_present_to_apicid(cpu_i);
++			if (apicid != BAD_APICID && apic_cluster(apicid) == cluster) {
++				cmsk = per_cpu(cluster_masks, cpu_i);
++				if (cmsk)
++					break;
++			}
++		}
++	}
++	if (!cmsk) {
++		cmsk = kzalloc_node(sizeof(*cmsk), GFP_KERNEL, node);
++		if (!cmsk)
++			return -ENOMEM;
+ 	}
+ 
+-	cluster_hotplug_mask = kzalloc_node(sizeof(*cluster_hotplug_mask),
+-					    GFP_KERNEL, node);
+-	if (!cluster_hotplug_mask)
+-		return -ENOMEM;
+-	cluster_hotplug_mask->node = node;
++	per_cpu(cluster_masks, cpu) = cmsk;
++
++	if (system_state < SYSTEM_RUNNING)
++		prefill_clustermask(cmsk, cluster);
++
+ 	return 0;
+ }
+ 
+ static int x2apic_prepare_cpu(unsigned int cpu)
+ {
+-	if (alloc_clustermask(cpu, cpu_to_node(cpu)) < 0)
++	u32 phys_apicid = apic->cpu_present_to_apicid(cpu);
++	u32 cluster = apic_cluster(phys_apicid);
++	u32 logical_apicid = (cluster << 16) | (1 << (phys_apicid & 0xf));
++
++	x86_cpu_to_logical_apicid[cpu] = logical_apicid;
++
++	if (alloc_clustermask(cpu, cluster, cpu_to_node(cpu)) < 0)
+ 		return -ENOMEM;
+ 	if (!zalloc_cpumask_var(&per_cpu(ipi_mask, cpu), GFP_KERNEL))
+ 		return -ENOMEM;
+@@ -162,10 +178,10 @@ static int x2apic_prepare_cpu(unsigned int cpu)
+ 
+ static int x2apic_dead_cpu(unsigned int dead_cpu)
+ {
+-	struct cluster_mask *cmsk = per_cpu(cluster_masks, dead_cpu);
++	struct cpumask *cmsk = per_cpu(cluster_masks, dead_cpu);
+ 
+ 	if (cmsk)
+-		cpumask_clear_cpu(dead_cpu, &cmsk->mask);
++		cpumask_clear_cpu(dead_cpu, cmsk);
+ 	free_cpumask_var(per_cpu(ipi_mask, dead_cpu));
+ 	return 0;
+ }
+diff --git a/arch/x86/kernel/cpu/common.c b/arch/x86/kernel/cpu/common.c
+index 0083464de5e3..98b4697b2c9b 100644
+--- a/arch/x86/kernel/cpu/common.c
++++ b/arch/x86/kernel/cpu/common.c
+@@ -1517,7 +1517,7 @@ static void generic_identify(struct cpuinfo_x86 *c)
+  * Validate that ACPI/mptables have the same information about the
+  * effective APIC id and update the package map.
+  */
+-static void validate_apic_and_package_id(struct cpuinfo_x86 *c)
++static void validate_apic_id(struct cpuinfo_x86 *c)
+ {
+ #ifdef CONFIG_SMP
+ 	unsigned int apicid, cpu = smp_processor_id();
+@@ -1528,8 +1528,6 @@ static void validate_apic_and_package_id(struct cpuinfo_x86 *c)
+ 		pr_err(FW_BUG "CPU%u: APIC id mismatch. Firmware: %x APIC: %x\n",
+ 		       cpu, apicid, c->initial_apicid);
+ 	}
+-	BUG_ON(topology_update_package_map(c->phys_proc_id, cpu));
+-	BUG_ON(topology_update_die_map(c->cpu_die_id, cpu));
+ #else
+ 	c->logical_proc_id = 0;
+ #endif
+@@ -1716,7 +1714,7 @@ void identify_secondary_cpu(struct cpuinfo_x86 *c)
+ 	enable_sep_cpu();
+ #endif
+ 	mtrr_ap_init();
+-	validate_apic_and_package_id(c);
++	validate_apic_id(c);
+ 	x86_spec_ctrl_setup_ap();
+ 	update_srbds_msr();
+ }
+diff --git a/arch/x86/kernel/cpu/mtrr/mtrr.c b/arch/x86/kernel/cpu/mtrr/mtrr.c
+index 2746cac9d8a9..2884017586f1 100644
+--- a/arch/x86/kernel/cpu/mtrr/mtrr.c
++++ b/arch/x86/kernel/cpu/mtrr/mtrr.c
+@@ -814,11 +814,20 @@ void mtrr_ap_init(void)
+  */
+ void mtrr_save_state(void)
+ {
++	static bool mtrr_saved;
+ 	int first_cpu;
+ 
+ 	if (!mtrr_enabled())
+ 		return;
+ 
++	if (system_state < SYSTEM_RUNNING) {
++		if (!mtrr_saved) {
++			mtrr_save_fixed_ranges(NULL);
++			mtrr_saved = true;
++		}
++		return;
++	}
++
+ 	first_cpu = cpumask_first(cpu_online_mask);
+ 	smp_call_function_single(first_cpu, mtrr_save_fixed_ranges, NULL, 1);
+ }
+diff --git a/arch/x86/kernel/head_64.S b/arch/x86/kernel/head_64.S
+index d8b3ebd2bb85..733cc43d02c3 100644
+--- a/arch/x86/kernel/head_64.S
++++ b/arch/x86/kernel/head_64.S
+@@ -25,6 +25,7 @@
+ #include <asm/export.h>
+ #include <asm/nospec-branch.h>
+ #include <asm/fixmap.h>
++#include <asm/smp.h>
+ 
+ /*
+  * We are not able to switch in one step to the final KERNEL ADDRESS SPACE
+@@ -176,6 +177,66 @@ SYM_INNER_LABEL(secondary_startup_64_no_verify, SYM_L_GLOBAL)
+ 1:
+ 	UNWIND_HINT_EMPTY
+ 
++	/*
++	 * Is this the boot CPU coming up? If so everything is available
++	 * in initial_gs, initial_stack and early_gdt_descr.
++	 */
++	movl	smpboot_control(%rip), %eax
++	testl	%eax, %eax
++	jz	.Lsetup_cpu
++
++	/*
++	 * Secondary CPUs find out the offsets via the APIC ID. For parallel
++	 * boot the APIC ID is retrieved from CPUID, otherwise it's encoded
++	 * in smpboot_control:
++	 * Bit 0-29	APIC ID if STARTUP_PARALLEL flag is not set
++	 * Bit 30	STARTUP_SECONDARY flag
++	 * Bit 31	STARTUP_PARALLEL flag (use CPUID 0x0b for APIC ID)
++	 */
++	testl	$STARTUP_PARALLEL, %eax
++	jnz	.Luse_cpuid_0b
++	andl	$0x0FFFFFFF, %eax
++	jmp	.Lsetup_AP
++
++.Luse_cpuid_0b:
++	mov	$0x0B, %eax
++	xorl	%ecx, %ecx
++	cpuid
++	mov	%edx, %eax
++
++.Lsetup_AP:
++	/* EAX contains the APICID of the current CPU */
++	xorl	%ecx, %ecx
++	leaq	cpuid_to_apicid(%rip), %rbx
++
++.Lfind_cpunr:
++	cmpl	(%rbx), %eax
++	jz	.Linit_cpu_data
++	addq	$4, %rbx
++	addq	$8, %rcx
++	jmp	.Lfind_cpunr
++
++.Linit_cpu_data:
++	/* Get the per cpu offset */
++	leaq	__per_cpu_offset(%rip), %rbx
++	addq	%rcx, %rbx
++	movq	(%rbx), %rbx
++	/* Save it for GS BASE setup */
++	movq	%rbx, initial_gs(%rip)
++
++	/* Calculate the GDT address */
++	movq	$gdt_page, %rcx
++	addq	%rbx, %rcx
++	movq	%rcx, early_gdt_descr_base(%rip)
++
++	/* Find the idle task stack */
++	movq	$idle_threads, %rcx
++	addq	%rbx, %rcx
++	movq	(%rcx), %rcx
++	movq	TASK_threadsp(%rcx), %rcx
++	movq	%rcx, initial_stack(%rip)
++
++.Lsetup_cpu:
+ 	/*
+ 	 * We must switch to a new descriptor in kernel space for the GDT
+ 	 * because soon the kernel won't have access anymore to the userspace
+@@ -216,6 +277,14 @@ SYM_INNER_LABEL(secondary_startup_64_no_verify, SYM_L_GLOBAL)
+ 	 */
+ 	movq initial_stack(%rip), %rsp
+ 
++	/* Drop the realmode protection. For the boot CPU the pointer is NULL! */
++	movq	trampoline_lock(%rip), %rax
++	testq	%rax, %rax
++	jz	.Lsetup_idt
++	lock
++	btrl	$0, (%rax)
++
++.Lsetup_idt:
+ 	/* Setup and Load IDT */
+ 	pushq	%rsi
+ 	call	early_setup_idt
+@@ -347,6 +416,7 @@ SYM_DATA(initial_vc_handler,	.quad handle_vc_boot_ghcb)
+  * reliably detect the end of the stack.
+  */
+ SYM_DATA(initial_stack, .quad init_thread_union + THREAD_SIZE - FRAME_SIZE)
++SYM_DATA(trampoline_lock, .quad 0);
+ 	__FINITDATA
+ 
+ 	__INIT
+@@ -572,6 +642,9 @@ SYM_DATA_END(level1_fixmap_pgt)
+ SYM_DATA(early_gdt_descr,		.word GDT_ENTRIES*8-1)
+ SYM_DATA_LOCAL(early_gdt_descr_base,	.quad INIT_PER_CPU_VAR(gdt_page))
+ 
++	.align 16
++SYM_DATA(smpboot_control,		.long 0)
++
+ 	.align 16
+ /* This must match the first entry in level2_kernel_pgt */
+ SYM_DATA(phys_base, .quad 0x0)
+diff --git a/arch/x86/kernel/smpboot.c b/arch/x86/kernel/smpboot.c
+index 617012f4619f..147eedd93329 100644
+--- a/arch/x86/kernel/smpboot.c
++++ b/arch/x86/kernel/smpboot.c
+@@ -57,6 +57,7 @@
+ #include <linux/pgtable.h>
+ #include <linux/overflow.h>
+ #include <linux/syscore_ops.h>
++#include <linux/smpboot.h>
+ 
+ #include <asm/acpi.h>
+ #include <asm/desc.h>
+@@ -127,17 +128,22 @@ int arch_update_cpu_topology(void)
+ 	return retval;
+ }
+ 
++
++static unsigned int smpboot_warm_reset_vector_count;
++
+ static inline void smpboot_setup_warm_reset_vector(unsigned long start_eip)
+ {
+ 	unsigned long flags;
+ 
+ 	spin_lock_irqsave(&rtc_lock, flags);
+-	CMOS_WRITE(0xa, 0xf);
++	if (!smpboot_warm_reset_vector_count++) {
++		CMOS_WRITE(0xa, 0xf);
++		*((volatile unsigned short *)phys_to_virt(TRAMPOLINE_PHYS_HIGH)) =
++			start_eip >> 4;
++		*((volatile unsigned short *)phys_to_virt(TRAMPOLINE_PHYS_LOW)) =
++			start_eip & 0xf;
++	}
+ 	spin_unlock_irqrestore(&rtc_lock, flags);
+-	*((volatile unsigned short *)phys_to_virt(TRAMPOLINE_PHYS_HIGH)) =
+-							start_eip >> 4;
+-	*((volatile unsigned short *)phys_to_virt(TRAMPOLINE_PHYS_LOW)) =
+-							start_eip & 0xf;
+ }
+ 
+ static inline void smpboot_restore_warm_reset_vector(void)
+@@ -149,10 +155,12 @@ static inline void smpboot_restore_warm_reset_vector(void)
+ 	 * to default values.
+ 	 */
+ 	spin_lock_irqsave(&rtc_lock, flags);
+-	CMOS_WRITE(0, 0xf);
+-	spin_unlock_irqrestore(&rtc_lock, flags);
++	if (!--smpboot_warm_reset_vector_count) {
++		CMOS_WRITE(0, 0xf);
+ 
+-	*((volatile u32 *)phys_to_virt(TRAMPOLINE_PHYS_LOW)) = 0;
++		*((volatile u32 *)phys_to_virt(TRAMPOLINE_PHYS_LOW)) = 0;
++	}
++	spin_unlock_irqrestore(&rtc_lock, flags);
+ }
+ 
+ static void init_freq_invariance(bool secondary, bool cppc_ready);
+@@ -182,16 +190,12 @@ static void smp_callin(void)
+ 	apic_ap_setup();
+ 
+ 	/*
+-	 * Save our processor parameters. Note: this information
+-	 * is needed for clock calibration.
+-	 */
+-	smp_store_cpu_info(cpuid);
+-
+-	/*
++	 * Save our processor parameters and update topology.
++	 * Note: this information is needed for clock calibration.
+ 	 * The topology information must be up to date before
+ 	 * calibrate_delay() and notify_cpu_starting().
+ 	 */
+-	set_cpu_sibling_map(raw_smp_processor_id());
++	smp_store_cpu_info(cpuid, false);
+ 
+ 	init_freq_invariance(true, false);
+ 
+@@ -207,6 +211,10 @@ static void smp_callin(void)
+ 
+ 	wmb();
+ 
++	/*
++	 * This runs the AP through all the cpuhp states to its target
++	 * state (CPUHP_ONLINE in the case of serial bringup).
++	 */
+ 	notify_cpu_starting(cpuid);
+ 
+ 	/*
+@@ -234,17 +242,39 @@ static void notrace start_secondary(void *unused)
+ 	load_cr3(swapper_pg_dir);
+ 	__flush_tlb_all();
+ #endif
++	/*
++	 * Sync point with do_wait_cpu_initialized(). On boot, all secondary
++	 * CPUs reach this stage after receiving INIT/SIPI from do_cpu_up()
++	 * in the x86/cpu:kick cpuhp stage. At the start of cpu_init() they
++	 * will wait for do_wait_cpu_initialized() to set their bit in
++	 * smp_callout_mask to release them.
++	 */
+ 	cpu_init_secondary();
++
++	/*
++	 * Even though notify_cpu_starting() will do this, it does so too late
++	 * as the AP may already have triggered lockdep splats by then. See
++	 * commit 29368e093 ("x86/smpboot:  Move rcu_cpu_starting() earlier").
++	 */
+ 	rcu_cpu_starting(raw_smp_processor_id());
+ 	x86_cpuinit.early_percpu_clock_init();
++
++	/*
++	 * Sync point with do_wait_cpu_callin(). The AP doesn't wait here
++	 * but just sets the bit to let the controlling CPU (BSP) know that
++	 * it's got this far.
++	 */
+ 	smp_callin();
+ 
+ 	enable_start_cpu0 = 0;
+ 
+ 	/* otherwise gcc will move up smp_processor_id before the cpu_init */
+ 	barrier();
++
+ 	/*
+-	 * Check TSC synchronization with the boot CPU:
++	 * Check TSC synchronization with the boot CPU (or whichever CPU
++	 * is controlling the bringup). It will do its part of this from
++	 * do_wait_cpu_online(), making it an implicit sync point.
+ 	 */
+ 	check_tsc_sync_target();
+ 
+@@ -257,6 +287,7 @@ static void notrace start_secondary(void *unused)
+ 	 * half valid vector space.
+ 	 */
+ 	lock_vector_lock();
++	/* Sync point with do_wait_cpu_online() */
+ 	set_cpu_online(smp_processor_id(), true);
+ 	lapic_online();
+ 	unlock_vector_lock();
+@@ -333,7 +364,7 @@ EXPORT_SYMBOL(topology_phys_to_logical_die);
+  * @pkg:	The physical package id as retrieved via CPUID
+  * @cpu:	The cpu for which this is updated
+  */
+-int topology_update_package_map(unsigned int pkg, unsigned int cpu)
++static int topology_update_package_map(unsigned int pkg, unsigned int cpu)
+ {
+ 	int new;
+ 
+@@ -356,7 +387,7 @@ int topology_update_package_map(unsigned int pkg, unsigned int cpu)
+  * @die:	The die id as retrieved via CPUID
+  * @cpu:	The cpu for which this is updated
+  */
+-int topology_update_die_map(unsigned int die, unsigned int cpu)
++static int topology_update_die_map(unsigned int die, unsigned int cpu)
+ {
+ 	int new;
+ 
+@@ -387,25 +418,7 @@ void __init smp_store_boot_cpu_info(void)
+ 	c->initialized = true;
+ }
+ 
+-/*
+- * The bootstrap kernel entry code has set these up. Save them for
+- * a given CPU
+- */
+-void smp_store_cpu_info(int id)
+-{
+-	struct cpuinfo_x86 *c = &cpu_data(id);
+-
+-	/* Copy boot_cpu_data only on the first bringup */
+-	if (!c->initialized)
+-		*c = boot_cpu_data;
+-	c->cpu_index = id;
+-	/*
+-	 * During boot time, CPU0 has this setup already. Save the info when
+-	 * bringing up AP or offlined CPU0.
+-	 */
+-	identify_secondary_cpu(c);
+-	c->initialized = true;
+-}
++static arch_spinlock_t topology_lock = __ARCH_SPIN_LOCK_UNLOCKED;
+ 
+ static bool
+ topology_same_node(struct cpuinfo_x86 *c, struct cpuinfo_x86 *o)
+@@ -611,7 +624,7 @@ static struct sched_domain_topology_level x86_topology[] = {
+  */
+ static bool x86_has_numa_in_package;
+ 
+-void set_cpu_sibling_map(int cpu)
++static void set_cpu_sibling_map(int cpu)
+ {
+ 	bool has_smt = smp_num_siblings > 1;
+ 	bool has_mp = has_smt || boot_cpu_data.x86_max_cores > 1;
+@@ -690,6 +703,37 @@ void set_cpu_sibling_map(int cpu)
+ 	}
+ }
+ 
++/*
++ * The bootstrap kernel entry code has set these up. Save them for
++ * a given CPU
++ */
++void smp_store_cpu_info(int id, bool force_single_core)
++{
++	struct cpuinfo_x86 *c = &cpu_data(id);
++
++	/* Copy boot_cpu_data only on the first bringup */
++	if (!c->initialized)
++		*c = boot_cpu_data;
++	c->cpu_index = id;
++	/*
++	 * During boot time, CPU0 has this setup already. Save the info when
++	 * bringing up AP or offlined CPU0.
++	 */
++	identify_secondary_cpu(c);
++
++	arch_spin_lock(&topology_lock);
++	BUG_ON(topology_update_package_map(c->phys_proc_id, id));
++	BUG_ON(topology_update_die_map(c->cpu_die_id, id));
++	c->initialized = true;
++
++	/* For Xen PV */
++	if (force_single_core)
++		c->x86_max_cores = 1;
++
++	set_cpu_sibling_map(id);
++	arch_spin_unlock(&topology_lock);
++}
++
+ /* maps the cpu to the sched domain representing multi-core */
+ const struct cpumask *cpu_coregroup_mask(int cpu)
+ {
+@@ -780,6 +824,16 @@ static int __init cpu_init_udelay(char *str)
+ }
+ early_param("cpu_init_udelay", cpu_init_udelay);
+ 
++static bool do_parallel_bringup = true;
++
++static int __init no_parallel_bringup(char *str)
++{
++	do_parallel_bringup = false;
++
++	return 0;
++}
++early_param("no_parallel_bringup", no_parallel_bringup);
++
+ static void __init smp_quirk_init_udelay(void)
+ {
+ 	/* if cmdline changed it from default, leave it alone */
+@@ -1067,8 +1121,6 @@ int common_cpu_up(unsigned int cpu, struct task_struct *idle)
+ #ifdef CONFIG_X86_32
+ 	/* Stack for startup_32 can be just as for start_secondary onwards */
+ 	per_cpu(cpu_current_top_of_stack, cpu) = task_top_of_stack(idle);
+-#else
+-	initial_gs = per_cpu_offset(cpu);
+ #endif
+ 	return 0;
+ }
+@@ -1084,14 +1136,19 @@ static int do_boot_cpu(int apicid, int cpu, struct task_struct *idle,
+ {
+ 	/* start_ip had better be page-aligned! */
+ 	unsigned long start_ip = real_mode_header->trampoline_start;
+-
+ 	unsigned long boot_error = 0;
+-	unsigned long timeout;
+ 
+ 	idle->thread.sp = (unsigned long)task_pt_regs(idle);
+-	early_gdt_descr.address = (unsigned long)get_cpu_gdt_rw(cpu);
+ 	initial_code = (unsigned long)start_secondary;
+-	initial_stack  = idle->thread.sp;
++
++	if (IS_ENABLED(CONFIG_X86_32)) {
++		early_gdt_descr.address = (unsigned long)get_cpu_gdt_rw(cpu);
++		initial_stack  = idle->thread.sp;
++	} else if (do_parallel_bringup) {
++		smpboot_control = STARTUP_SECONDARY | STARTUP_PARALLEL;
++	} else {
++		smpboot_control = STARTUP_SECONDARY | apicid;
++	}
+ 
+ 	/* Enable the espfix hack for this CPU */
+ 	init_espfix_ap(cpu);
+@@ -1139,55 +1196,94 @@ static int do_boot_cpu(int apicid, int cpu, struct task_struct *idle,
+ 		boot_error = wakeup_cpu_via_init_nmi(cpu, start_ip, apicid,
+ 						     cpu0_nmi_registered);
+ 
+-	if (!boot_error) {
+-		/*
+-		 * Wait 10s total for first sign of life from AP
+-		 */
+-		boot_error = -1;
+-		timeout = jiffies + 10*HZ;
+-		while (time_before(jiffies, timeout)) {
+-			if (cpumask_test_cpu(cpu, cpu_initialized_mask)) {
+-				/*
+-				 * Tell AP to proceed with initialization
+-				 */
+-				cpumask_set_cpu(cpu, cpu_callout_mask);
+-				boot_error = 0;
+-				break;
+-			}
+-			schedule();
+-		}
+-	}
+-
+-	if (!boot_error) {
+-		/*
+-		 * Wait till AP completes initial initialization
+-		 */
+-		while (!cpumask_test_cpu(cpu, cpu_callin_mask)) {
+-			/*
+-			 * Allow other tasks to run while we wait for the
+-			 * AP to come online. This also gives a chance
+-			 * for the MTRR work(triggered by the AP coming online)
+-			 * to be completed in the stop machine context.
+-			 */
+-			schedule();
+-		}
+-	}
+-
+-	if (x86_platform.legacy.warm_reset) {
+-		/*
+-		 * Cleanup possible dangling ends...
+-		 */
+-		smpboot_restore_warm_reset_vector();
+-	}
+-
+ 	return boot_error;
+ }
+ 
+-int native_cpu_up(unsigned int cpu, struct task_struct *tidle)
++static int do_wait_cpu_cpumask(unsigned int cpu, const struct cpumask *mask)
++{
++	unsigned long timeout;
++
++	/*
++	 * Wait up to 10s for the CPU to report in.
++	 */
++	timeout = jiffies + 10*HZ;
++	while (time_before(jiffies, timeout)) {
++		if (cpumask_test_cpu(cpu, mask))
++			return 0;
++
++		schedule();
++	}
++	return -1;
++}
++
++/*
++ * Bringup step two: Wait for the target AP to reach cpu_init_secondary()
++ * and thus wait_for_master_cpu(), then set cpu_callout_mask to allow it
++ * to proceed.  The AP will then proceed past setting its 'callin' bit
++ * and end up waiting in check_tsc_sync_target() until we reach
++ * do_wait_cpu_online() to tend to it.
++ */
++static int do_wait_cpu_initialized(unsigned int cpu)
++{
++	/*
++	 * Wait for first sign of life from AP.
++	 */
++	if (do_wait_cpu_cpumask(cpu, cpu_initialized_mask))
++		return -1;
++
++	cpumask_set_cpu(cpu, cpu_callout_mask);
++	return 0;
++}
++
++/*
++ * Bringup step three: Wait for the target AP to reach smp_callin().
++ * The AP is not waiting for us here so we don't need to parallelise
++ * this step. Not entirely clear why we care about this, since we just
++ * proceed directly to TSC synchronization which is the next sync
++ * point with the AP anyway.
++ */
++static int do_wait_cpu_callin(unsigned int cpu)
++{
++	/*
++	 * Wait till AP completes initial initialization.
++	 */
++	return do_wait_cpu_cpumask(cpu, cpu_callin_mask);
++}
++
++/*
++ * Bringup step four: Synchronize the TSC and wait for the target AP
++ * to reach set_cpu_online() in start_secondary().
++ */
++static int do_wait_cpu_online(unsigned int cpu)
++{
++	unsigned long flags;
++
++	/*
++	 * Check TSC synchronization with the AP (keep irqs disabled
++	 * while doing so):
++	 */
++	local_irq_save(flags);
++	check_tsc_sync_source(cpu);
++	local_irq_restore(flags);
++
++	/*
++	 * Wait for the AP to mark itself online. Not entirely
++	 * clear why we care, since the generic cpuhp code will
++	 * wait for it to each CPUHP_AP_ONLINE_IDLE before going
++	 * ahead with the rest of the bringup anyway.
++	 */
++	while (!cpu_online(cpu)) {
++		cpu_relax();
++		touch_nmi_watchdog();
++	}
++
++	return 0;
++}
++
++int do_cpu_up(unsigned int cpu, struct task_struct *tidle)
+ {
+ 	int apicid = apic->cpu_present_to_apicid(cpu);
+ 	int cpu0_nmi_registered = 0;
+-	unsigned long flags;
+ 	int err, ret = 0;
+ 
+ 	lockdep_assert_irqs_enabled();
+@@ -1234,19 +1330,6 @@ int native_cpu_up(unsigned int cpu, struct task_struct *tidle)
+ 		goto unreg_nmi;
+ 	}
+ 
+-	/*
+-	 * Check TSC synchronization with the AP (keep irqs disabled
+-	 * while doing so):
+-	 */
+-	local_irq_save(flags);
+-	check_tsc_sync_source(cpu);
+-	local_irq_restore(flags);
+-
+-	while (!cpu_online(cpu)) {
+-		cpu_relax();
+-		touch_nmi_watchdog();
+-	}
+-
+ unreg_nmi:
+ 	/*
+ 	 * Clean up the nmi handler. Do this after the callin and callout sync
+@@ -1258,6 +1341,43 @@ int native_cpu_up(unsigned int cpu, struct task_struct *tidle)
+ 	return ret;
+ }
+ 
++int native_cpu_up(unsigned int cpu, struct task_struct *tidle)
++{
++	int ret;
++
++	/* If parallel AP bringup isn't enabled, perform the first steps now. */
++	if (!do_parallel_bringup) {
++		ret = do_cpu_up(cpu, tidle);
++		if (ret)
++			return ret;
++	}
++
++	ret = do_wait_cpu_initialized(cpu);
++	if (ret)
++		return ret;
++
++	ret = do_wait_cpu_callin(cpu);
++	if (ret)
++		return ret;
++
++	ret = do_wait_cpu_online(cpu);
++
++	if (x86_platform.legacy.warm_reset) {
++		/*
++		 * Cleanup possible dangling ends...
++		 */
++		smpboot_restore_warm_reset_vector();
++	}
++
++	return ret;
++}
++
++/* Bringup step one: Send INIT/SIPI to the target AP */
++static int native_cpu_kick(unsigned int cpu)
++{
++	return do_cpu_up(cpu, idle_thread_get(cpu));
++}
++
+ /**
+  * arch_disable_smp_support() - disables SMP support for x86 at runtime
+  */
+@@ -1436,6 +1556,19 @@ void __init native_smp_prepare_cpus(unsigned int max_cpus)
+ 	smp_quirk_init_udelay();
+ 
+ 	speculative_store_bypass_ht_init();
++
++	/*
++	 * We can do 64-bit AP bringup in parallel if the CPU reports its
++	 * APIC ID in CPUID leaf 0x0B. Otherwise it's too hard. And not
++	 * for SEV-ES guests because they can't use CPUID that early.
++	 */
++	if (IS_ENABLED(CONFIG_X86_32) || boot_cpu_data.cpuid_level < 0x0B ||
++	    cc_platform_has(CC_ATTR_GUEST_STATE_ENCRYPT))
++		do_parallel_bringup = false;
++
++	if (do_parallel_bringup)
++		cpuhp_setup_state_nocalls(CPUHP_BP_PARALLEL_DYN, "x86/cpu:kick",
++					  native_cpu_kick, NULL);
+ }
+ 
+ void arch_thaw_secondary_cpus_begin(void)
+diff --git a/arch/x86/realmode/init.c b/arch/x86/realmode/init.c
+index c5e29db02a46..21b9e8b55618 100644
+--- a/arch/x86/realmode/init.c
++++ b/arch/x86/realmode/init.c
+@@ -154,6 +154,9 @@ static void __init setup_real_mode(void)
+ 
+ 	trampoline_header->flags = 0;
+ 
++	trampoline_lock = &trampoline_header->lock;
++	*trampoline_lock = 0;
++
+ 	trampoline_pgd = (u64 *) __va(real_mode_header->trampoline_pgd);
+ 
+ 	/* Map the real mode stub as virtual == physical */
+diff --git a/arch/x86/realmode/rm/trampoline_64.S b/arch/x86/realmode/rm/trampoline_64.S
+index cc8391f86cdb..12a540904e80 100644
+--- a/arch/x86/realmode/rm/trampoline_64.S
++++ b/arch/x86/realmode/rm/trampoline_64.S
+@@ -49,6 +49,19 @@ SYM_CODE_START(trampoline_start)
+ 	mov	%ax, %es
+ 	mov	%ax, %ss
+ 
++	/*
++	 * Make sure only one CPU fiddles with the realmode stack
++	 */
++.Llock_rm:
++	btl	$0, tr_lock
++	jnc	2f
++	pause
++	jmp	.Llock_rm
++2:
++	lock
++	btsl	$0, tr_lock
++	jc	.Llock_rm
++
+ 	# Setup stack
+ 	movl	$rm_stack_end, %esp
+ 
+@@ -192,6 +205,7 @@ SYM_DATA_START(trampoline_header)
+ 	SYM_DATA(tr_efer,		.space 8)
+ 	SYM_DATA(tr_cr4,		.space 4)
+ 	SYM_DATA(tr_flags,		.space 4)
++	SYM_DATA(tr_lock,		.space 4)
+ SYM_DATA_END(trampoline_header)
+ 
+ #include "trampoline_common.S"
+diff --git a/arch/x86/xen/smp_pv.c b/arch/x86/xen/smp_pv.c
+index 6a8f3b53ab83..ff37dff20dc0 100644
+--- a/arch/x86/xen/smp_pv.c
++++ b/arch/x86/xen/smp_pv.c
+@@ -71,9 +71,7 @@ static void cpu_bringup(void)
+ 		xen_enable_syscall();
+ 	}
+ 	cpu = smp_processor_id();
+-	smp_store_cpu_info(cpu);
+-	cpu_data(cpu).x86_max_cores = 1;
+-	set_cpu_sibling_map(cpu);
++	smp_store_cpu_info(cpu, true);
+ 
+ 	speculative_store_bypass_ht_init();
+ 
+diff --git a/include/linux/cpuhotplug.h b/include/linux/cpuhotplug.h
+index 773c83730906..45c327538321 100644
+--- a/include/linux/cpuhotplug.h
++++ b/include/linux/cpuhotplug.h
+@@ -131,6 +131,8 @@ enum cpuhp_state {
+ 	CPUHP_MIPS_SOC_PREPARE,
+ 	CPUHP_BP_PREPARE_DYN,
+ 	CPUHP_BP_PREPARE_DYN_END		= CPUHP_BP_PREPARE_DYN + 20,
++	CPUHP_BP_PARALLEL_DYN,
++	CPUHP_BP_PARALLEL_DYN_END		= CPUHP_BP_PARALLEL_DYN + 4,
+ 	CPUHP_BRINGUP_CPU,
+ 
+ 	/*
+diff --git a/include/linux/smpboot.h b/include/linux/smpboot.h
+index 9d1bc65d226c..3862addcaa34 100644
+--- a/include/linux/smpboot.h
++++ b/include/linux/smpboot.h
+@@ -5,6 +5,13 @@
+ #include <linux/types.h>
+ 
+ struct task_struct;
++
++#ifdef CONFIG_GENERIC_SMP_IDLE_THREAD
++struct task_struct *idle_thread_get(unsigned int cpu);
++#else
++static inline struct task_struct *idle_thread_get(unsigned int cpu) { return NULL; }
++#endif
++
+ /* Cookie handed to the thread_fn*/
+ struct smpboot_thread_data;
+ 
+diff --git a/kernel/cpu.c b/kernel/cpu.c
+index 407a2568f35e..cc6f9bb91fb2 100644
+--- a/kernel/cpu.c
++++ b/kernel/cpu.c
+@@ -1469,6 +1469,24 @@ int bringup_hibernate_cpu(unsigned int sleep_cpu)
+ void bringup_nonboot_cpus(unsigned int setup_max_cpus)
+ {
+ 	unsigned int cpu;
++	int n = setup_max_cpus - num_online_cpus();
++
++	/* ∀ parallel pre-bringup state, bring N CPUs to it */
++	if (n > 0) {
++		enum cpuhp_state st = CPUHP_BP_PARALLEL_DYN;
++
++		while (st <= CPUHP_BP_PARALLEL_DYN_END &&
++		       cpuhp_hp_states[st].name) {
++			int i = n;
++
++			for_each_present_cpu(cpu) {
++				cpu_up(cpu, st);
++				if (!--i)
++					break;
++			}
++			st++;
++		}
++	}
+ 
+ 	for_each_present_cpu(cpu) {
+ 		if (num_online_cpus() >= setup_max_cpus)
+@@ -1836,6 +1854,10 @@ static int cpuhp_reserve_state(enum cpuhp_state state)
+ 		step = cpuhp_hp_states + CPUHP_BP_PREPARE_DYN;
+ 		end = CPUHP_BP_PREPARE_DYN_END;
+ 		break;
++	case CPUHP_BP_PARALLEL_DYN:
++		step = cpuhp_hp_states + CPUHP_BP_PARALLEL_DYN;
++		end = CPUHP_BP_PARALLEL_DYN_END;
++		break;
+ 	default:
+ 		return -EINVAL;
+ 	}
+@@ -1860,14 +1882,15 @@ static int cpuhp_store_callbacks(enum cpuhp_state state, const char *name,
+ 	/*
+ 	 * If name is NULL, then the state gets removed.
+ 	 *
+-	 * CPUHP_AP_ONLINE_DYN and CPUHP_BP_PREPARE_DYN are handed out on
++	 * CPUHP_AP_ONLINE_DYN and CPUHP_BP_P*_DYN are handed out on
+ 	 * the first allocation from these dynamic ranges, so the removal
+ 	 * would trigger a new allocation and clear the wrong (already
+ 	 * empty) state, leaving the callbacks of the to be cleared state
+ 	 * dangling, which causes wreckage on the next hotplug operation.
+ 	 */
+ 	if (name && (state == CPUHP_AP_ONLINE_DYN ||
+-		     state == CPUHP_BP_PREPARE_DYN)) {
++		     state == CPUHP_BP_PREPARE_DYN ||
++		     state == CPUHP_BP_PARALLEL_DYN)) {
+ 		ret = cpuhp_reserve_state(state);
+ 		if (ret < 0)
+ 			return ret;
+diff --git a/kernel/smpboot.c b/kernel/smpboot.c
+index f6bc0bc8a2aa..934e64ff4eed 100644
+--- a/kernel/smpboot.c
++++ b/kernel/smpboot.c
+@@ -25,7 +25,7 @@
+  * For the hotplug case we keep the task structs around and reuse
+  * them.
+  */
+-static DEFINE_PER_CPU(struct task_struct *, idle_threads);
++DEFINE_PER_CPU(struct task_struct *, idle_threads);
+ 
+ struct task_struct *idle_thread_get(unsigned int cpu)
+ {
+diff --git a/kernel/smpboot.h b/kernel/smpboot.h
+index 34dd3d7ba40b..60c609318ad6 100644
+--- a/kernel/smpboot.h
++++ b/kernel/smpboot.h
+@@ -5,11 +5,9 @@
+ struct task_struct;
+ 
+ #ifdef CONFIG_GENERIC_SMP_IDLE_THREAD
+-struct task_struct *idle_thread_get(unsigned int cpu);
+ void idle_thread_set_boot_cpu(void);
+ void idle_threads_init(void);
+ #else
+-static inline struct task_struct *idle_thread_get(unsigned int cpu) { return NULL; }
+ static inline void idle_thread_set_boot_cpu(void) { }
+ static inline void idle_threads_init(void) { }
+ #endif
+-- 
+2.35.1
+
