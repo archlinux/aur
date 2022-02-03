@@ -1,23 +1,27 @@
+# Maintainer: eNV25 <env252525@gmail.com>
+
+# previous maintainer did not leave his email
+
 pkgname=pandoc-crossref-bin
-pkgver=0.3.4.1
-_pandoc_pkgver=2_7_2
+pkgver=0.3.12.2
+_pandoc_pkgver=2.17.0.1
 pkgrel=1
-pkgdesc="Pandoc Cross References - executable only, without 750MB Haskell depends/makedepends"
+pkgdesc="Pandoc filter for cross-references - executable only"
 url="https://hackage.haskell.org/package/pandoc-crossref"
 license=("GPL2")
 arch=('x86_64')
 conflicts=("pandoc-crossref")
 provides=("pandoc-crossref")
-replaces=('pandoc-crossref-static' 'pandoc-crossref-lite')
-depends=('pandoc')
+replaces=("haskell-pandoc-crossref-bin" 'pandoc-crossref-static' 'pandoc-crossref-lite')
+depends=("pandoc-bin>=${_pandoc_pkgver}")
 
 source=(
-    "pandoc-crossref-${pkgver}.tar.gz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/linux-pandoc_${_pandoc_pkgver}.tar.gz"
+    "pandoc-crossref-${pkgver}.tar.xz::https://github.com/lierdakil/pandoc-crossref/releases/download/v${pkgver}/pandoc-crossref-Linux.tar.xz"
 )
-sha256sums=('6424c97656b4f9bd888cc8778fd64731f254a570632e2609a157ef21d212d4fe')
+sha256sums=('7d8c89fd2cec80b8725dc851e49d60e0526346ce93bc224c47bf10e99d292406')
 
 package() {
     cd "${srcdir}"
-    install -Dm755 pandoc-crossref "${pkgdir}/usr/bin/pandoc-crossref"
-    install -Dm644 pandoc-crossref.1 "${pkgdir}/usr/share/man/man1/pandoc-crossref.1"
+    install -Dm755 pandoc-crossref -t "${pkgdir}/usr/bin/"
+    install -Dm644 pandoc-crossref.1 -t "${pkgdir}/usr/share/man/man1/"
 }
