@@ -5,7 +5,7 @@
 # Thanks Nicholas Guriev <guriev-ns@ya.ru> for the initial patches!
 # https://github.com/mymedia2/tdesktop
 pkgname=telegram-desktop-dev
-pkgver=3.4.8
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=(x86_64)
@@ -13,9 +13,10 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 # Although not in order, keeping them in the same order of the standard package
 # for my mental sanity.
+# ffmpeg -> ffmpeg4.4 when it is out and stable
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp')
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
 optdepends=('webkit2gtk: embedded browser features'
@@ -47,7 +48,6 @@ source=(
     "kwayland::git+https://github.com/KDE/kwayland.git"
     "lib_base::git+https://github.com/desktop-app/lib_base.git"
     "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
-    "libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
     "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
     "lib_qr::git+https://github.com/desktop-app/lib_qr.git"
     "lib_rpl::git+https://github.com/desktop-app/lib_rpl.git"
@@ -70,7 +70,6 @@ source=(
     "xxHash::git+https://github.com/Cyan4973/xxHash.git"
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -136,7 +135,6 @@ prepare() {
     git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
     git config submodule.Telegram/ThirdParty/jemalloc.url "$srcdir/jemalloc"
     git config submodule.Telegram/ThirdParty/kwayland.url "$srcdir/kwayland"
-    git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
     git config submodule.Telegram/ThirdParty/nimf.url "$srcdir/nimf"
@@ -165,7 +163,10 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
 
+    # Fix https://bugs.archlinux.org/task/73220
     export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+    # Be sure to use FFmpeg 4.4, when it is stable
+    #export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
@@ -176,10 +177,20 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+    # Hack to compile for ffmpeg4.4, when it is available
+    #sed -i "s|/usr/lib/libav|/usr/lib/ffmpeg4.4/libav|g" build/build.ninja
+    #sed -i "s|/usr/lib/libsw|/usr/lib/ffmpeg4.4/libsw|g" build/build.ninja
+    #sed -i "s|-lavcodec|/usr/lib/ffmpeg4.4/libavcodec.so|g" build/build.ninja
+    #sed -i "s|-lavformat|/usr/lib/ffmpeg4.4/libavformat.so|g" build/build.ninja
+    #sed -i "s|-lavutil|/usr/lib/ffmpeg4.4/libavutil.so|g" build/build.ninja
+    #sed -i "s|-lswscale|/usr/lib/ffmpeg4.4/libswscale.so|g" build/build.ninja
+    #sed -i "s|-lswresample|/usr/lib/ffmpeg4.4/libswresample.so|g" build/build.ninja
     ninja -C build
 }
 
 package() {
     cd "$srcdir/tdesktop"
     DESTDIR="$pkgdir" ninja -C build install
+    # They botched the release and put a lot of stuff here.
+    rm -rf "$pkgdir/build"
 }

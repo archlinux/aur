@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 3.4.8
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = x86_64
@@ -36,11 +36,12 @@ pkgbase = telegram-desktop-dev
 	depends = libxrandr
 	depends = jemalloc
 	depends = abseil-cpp
+	depends = libdispatch
 	optdepends = webkit2gtk: embedded browser features
 	optdepends = xdg-desktop-portal: desktop integration
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v3.4.8
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop#tag=v3.5.0
 	source = cmake::git+https://github.com/desktop-app/cmake_helpers.git
 	source = codegen::git+https://github.com/desktop-app/codegen.git
 	source = dispatch::git+https://github.com/apple/swift-corelibs-libdispatch
@@ -55,7 +56,6 @@ pkgbase = telegram-desktop-dev
 	source = kwayland::git+https://github.com/KDE/kwayland.git
 	source = lib_base::git+https://github.com/desktop-app/lib_base.git
 	source = lib_crl::git+https://github.com/desktop-app/lib_crl.git
-	source = libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git
 	source = lib_lottie::git+https://github.com/desktop-app/lib_lottie.git
 	source = lib_qr::git+https://github.com/desktop-app/lib_qr.git
 	source = lib_rpl::git+https://github.com/desktop-app/lib_rpl.git
@@ -76,7 +76,6 @@ pkgbase = telegram-desktop-dev
 	source = tgcalls::git+https://github.com/TelegramMessenger/tgcalls.git
 	source = wayland-protocols::git+https://github.com/gitlab-freedesktop-mirrors/wayland-protocols.git
 	source = xxHash::git+https://github.com/Cyan4973/xxHash.git
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
