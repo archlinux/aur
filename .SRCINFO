@@ -16,8 +16,9 @@ pkgbase = kvantum-qt5-git
 	optdepends = kvantum-qt6-git: Qt6 component for Kvantum theme engine
 	optdepends = adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark
 	optdepends = breeze-enhanced-git: Made to match various themes of the Kvantum widget style
-	provides = kvantum-qt5
-	conflicts = kvantum-qt5
+	provides = kvantum-git
+	conflicts = kvantum
+	replaces = kvantum
 	source = git+https://github.com/tsujan/Kvantum.git
 	md5sums = SKIP
 
