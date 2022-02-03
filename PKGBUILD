@@ -3,19 +3,24 @@
 # Contributor: j605
 
 pkgname=python-pyperf
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Toolkit to run Python benchmarks'
 url='https://github.com/vstinner/pyperf'
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-sphinx')
+makedepends=(
+	'python-build'
+	'python-install'
+	'python-setuptools'
+	'python-sphinx'
+	'python-wheel')
 checkdepends=('python-psutil')
 changelog=changelog.rst
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         '001-setup.py.patch')
-sha256sums=('b86fca9733edd35709cf09fbdf4e3f093b35121e9ba9bb2a319ecf2780a04dd0'
+sha256sums=('82c67986f06b14de040608847546131056177a6cc39be21540c87a3c0fc3e009'
             '925fb3cc19ca60295ebfdccdb55d805a3f372f9597ef151f77609b520171c23e')
 
 prepare() {
@@ -25,7 +30,7 @@ prepare() {
 
 build() {
 	cd "pyperf-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 	cd doc
 	make man
 }
@@ -36,9 +41,10 @@ check() {
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "pyperf-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
-	install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-	install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm 644 doc/build/man/pyperf.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+	install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 doc/build/man/pyperf.1 -t "$pkgdir/usr/share/man/man1/"
 }

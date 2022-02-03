@@ -1,18 +1,21 @@
 pkgbase = python-pyperf
 	pkgdesc = Toolkit to run Python benchmarks
-	pkgver = 2.3.0
+	pkgver = 2.3.1
 	pkgrel = 1
 	url = https://github.com/vstinner/pyperf
 	changelog = changelog.rst
 	arch = any
 	license = MIT
 	checkdepends = python-psutil
+	makedepends = python-build
+	makedepends = python-install
 	makedepends = python-setuptools
 	makedepends = python-sphinx
+	makedepends = python-wheel
 	depends = python
-	source = python-pyperf-2.3.0.tar.gz::https://github.com/vstinner/pyperf/archive/2.3.0.tar.gz
+	source = python-pyperf-2.3.1.tar.gz::https://github.com/vstinner/pyperf/archive/2.3.1.tar.gz
 	source = 001-setup.py.patch
-	sha256sums = b86fca9733edd35709cf09fbdf4e3f093b35121e9ba9bb2a319ecf2780a04dd0
+	sha256sums = 82c67986f06b14de040608847546131056177a6cc39be21540c87a3c0fc3e009
 	sha256sums = 925fb3cc19ca60295ebfdccdb55d805a3f372f9597ef151f77609b520171c23e
 
 pkgname = python-pyperf
