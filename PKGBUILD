@@ -18,15 +18,8 @@ sha256sums=('40b9406c20735a9a3009d863318cb8d3e496fb073d201c5463df810e01ab2a57'
             '5f7e81c1c76fc010677fd446bfc689c7f6af1a22a51093e8790e8a615159c541'
             'd9904ecb69f318c4782c0bd39ff2bff511af31960a2383a9d42d6620a266ea70')
 
-prepare() {
-  cd ${pkgname}-${pkgver}
-  sed -i 's/MPI_Type_struct/MPI_Type_create_struct/g' BLACS/SRC/*.c
-  sed -i 's/MPI_Attr_get/MPI_Comm_get_attr/g' BLACS/SRC/blacs_get_.c
-}
 
 build() {
-  msg "Starting make..."
-  
   [[ -e build ]] && rm -rf build
   mkdir build 
   cd build
@@ -34,6 +27,7 @@ build() {
   cmake ../${pkgname}-${pkgver} \
 	-DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
 	-DBUILD_SHARED_LIBS=ON \
+	-DSCALAPACK_BUILD_TESTS=OFF \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
 	-DCMAKE_CXX_COMPILER=/usr/bin/mpic++ \
 	-DCMAKE_Fortran_FLAGS="$FCFLAGS -fallow-argument-mismatch" \
@@ -55,11 +49,6 @@ package(){
   # Install man pages
   install -m 755 -d "${pkgdir}"/usr/share/man/manl
   install -m 644 "${srcdir}"/MANPAGES/man/manl/*.l ${PREFIX} "${pkgdir}"/usr/share/man/manl
-
-  # Install test
-  install -m 755 -d "${pkgdir}"/usr/share/$pkgname/testing
-  install -m 755 "${srcdir}"/build/TESTING/x* "${pkgdir}"/usr/share/$pkgname/testing
-  install -m 644 "${srcdir}"/build/TESTING/*.dat "${pkgdir}"/usr/share/$pkgname/testing
 
   # Install examples
   install -m 755 -d "${pkgdir}"/usr/share/$pkgname/examples
