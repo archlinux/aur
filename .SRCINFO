@@ -1,0 +1,19 @@
+pkgbase = toppler-levels-git
+	pkgdesc = Provides the levels ("towers") of the game "toppler" as stand-alone mission files (one file mission per tower), to be played individually and to be loaded into the level editor.
+	pkgver = 1.2+10+r531.20220201.8596a68
+	pkgrel = 1
+	url = https://gitlab.com/roever/toppler/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = libpng
+	makedepends = sdl2_mixer
+	makedepends = zlib
+	optdepends = toppler: To actually play the game.
+	provides = toppler-levels=1.2+10+r531.20220201.8596a68
+	conflicts = toppler-levels
+	replaces = toppler-levels-darcs
+	source = toppler::git+https://gitlab.com/roever/toppler.git
+	sha256sums = SKIP
+
+pkgname = toppler-levels-git
