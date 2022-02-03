@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.19.0
-pkgrel=7
+pkgrel=8
 pkgdesc='QML based X11 and Wayland display manager'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'
@@ -32,6 +32,7 @@ sha256sums=('e76da1f13d5ad5e0179e3fec57543126044339405ef19c397e105e0807bd4e41'
             'bbe45a316140c145d7de67dbe95764e44a0787ad9c6bcd2f7e0694484bd79640'
             '83e4df6e1c0c23e7b38c1d523c236108eae177ba11c5d466825690845ef99fcf'
             'e9058d261138e637248b20243e3e81ff337ab669a4a25fbff387bf9558a682c6')
+options=(debug)
 
 prepare() {
   patch -d $pkgname-$pkgver -p1 < pam-faillock.patch # Port away from deprecated pam_tally2
