@@ -3,7 +3,7 @@
 ## Manually upgrade version
 
 1. Change version
-2. Generate Shasums : makepkg -g -f -p PKGBUILD 
+2. Generate Shasums : makepkg -g -f -p PKGBUILD + change shasums in PKGBUILD
 3. Generate SRCINFO : makepkg --printsrcinfo > .SRCINFO
 4. Test package :  extra-x86_64-build 
 5. Commit & Push
