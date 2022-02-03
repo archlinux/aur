@@ -18,7 +18,7 @@ package() {
 
   mkdir -p $pkgdir/etc/JRobo
   
-  if [[ ! -f "$FILE" ]]; then
+  if [[ ! -f "$pkgdir/etc/JRobo/Config.json" ]]; then
     cp -a $srcdir/etc/JRobo/Config.json $pkgdir/etc/JRobo/Config.json
   fi
 	
