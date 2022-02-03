@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 
 pkgname=dsq
-pkgver=r13.e6b0c02
+pkgver=r14.e8f58be
 pkgrel=1
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('jq')
 options=('!lto')
-_commit='e6b0c02d4a12b37db2705ecb349e33e33e366e94'
+_commit='e8f58be88202af9e7019d757e772b17ec5f17462'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
