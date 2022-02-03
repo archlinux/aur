@@ -3,15 +3,14 @@
 
 pkgname=python-plaster-pastedeploy
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A loader interface around multiple config file formats."
 arch=('any')
 url="https://github.com/pylons/plaster_pastedeploy"
 license=('MIT')
-depends=('python-plaster>=0.5'
-         'python-pastedeploy>=2.0')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest-cov' 'python-pytest-runner')
+depends=('python-plaster' 'python-pastedeploy')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+checkdepends=('python-pytest')
 changelog=CHANGES.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-$pkgver.tar.gz.asc")
@@ -21,17 +20,18 @@ validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
 
 build(){
 	cd "plaster_pastedeploy-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check(){
 	cd "plaster_pastedeploy-$pkgver"
-	python setup.py pytest -v
+	PYTHONPATH=./src pytest -x
 }
 
 package(){
+	export PYTHONHASHSEED=0
 	cd "plaster_pastedeploy-$pkgver"
-	python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }
