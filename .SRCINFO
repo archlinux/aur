@@ -8,7 +8,6 @@ pkgbase = tautulli
 	license = GPL
 	makedepends = curl
 	depends = python-setuptools
-	depends = python-pytz
 	source = tautulli-2.8.1.tar.gz::https://github.com/Tautulli/Tautulli/archive/v2.8.1.tar.gz
 	source = tautulli.tmpfiles
 	source = tautulli.service

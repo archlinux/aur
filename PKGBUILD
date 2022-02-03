@@ -15,7 +15,6 @@ makedepends=(
 )
 depends=(
   'python-setuptools'
-  'python-pytz'
 )
 install='tautulli.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v$pkgver.tar.gz"
