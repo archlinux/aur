@@ -3,7 +3,7 @@
 
 pkgname=honk-hg
 _pkgname=honk
-pkgver=1341.f74b9ce19463
+pkgver=1349.47ad620a35db
 pkgrel=2
 epoch=0
 pkgdesc="ActivityPub compatible server with web frontend. Mercurialtip."
@@ -41,15 +41,14 @@ package() {
    install -Dm644 "$srcdir/$_pkgname"/views/* -t "$_PKG_HONKDIR/views/"
    install -Dm644 "$_PKG_DOCDIR"/* -t "$_PKG_HONKDIR/docs/"
    
-#  gzip -k -f $_PKG_DOCDIR/*.{1,3,5,7,8}
   for i in {1,3,5,8}; do
-      install -Dm644 $_PKG_DOCDIR/honk.$i.gz -t ${_MANDIR}$i/
+      install -Dm644 $_PKG_DOCDIR/honk.$i -t ${_MANDIR}$i/
   done
 
-   install -Dm644 $_PKG_DOCDIR/activitypub.7.gz ${_MANDIR}7/honk_activitypub.7.gz
-   install -Dm644 $_PKG_DOCDIR/hfcs.1.gz ${_MANDIR}1/honk_hfcs.1.gz
-   install -Dm644 $_PKG_DOCDIR/intro.1.gz ${_MANDIR}1/honk_intro.1.gz
-   install -Dm644 $_PKG_DOCDIR/vim.3.gz ${_MANDIR}3/honk_vim.3.gz
+   install -Dm644 $_PKG_DOCDIR/activitypub.7 ${_MANDIR}7/honk_activitypub.7
+   install -Dm644 $_PKG_DOCDIR/hfcs.1 ${_MANDIR}1/honk_hfcs.1
+   install -Dm644 $_PKG_DOCDIR/intro.1 ${_MANDIR}1/honk_intro.1
+   install -Dm644 $_PKG_DOCDIR/vim.3 ${_MANDIR}3/honk_vim.3
 
 
    install -Dm644 "$srcdir/$_pkgname"/LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"

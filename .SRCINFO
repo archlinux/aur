@@ -1,6 +1,6 @@
 pkgbase = honk-hg
 	pkgdesc = ActivityPub compatible server with web frontend. Mercurialtip.
-	pkgver = 1341.f74b9ce19463
+	pkgver = 1349.47ad620a35db
 	pkgrel = 2
 	epoch = 0
 	url = https://humungus.tedunangst.com/r/honk
