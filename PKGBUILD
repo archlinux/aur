@@ -11,7 +11,7 @@ depends=('curl' 'ffmpeg' 'freeimage' 'freetype2' 'pugixml' 'sdl2')
 makedepends=('cmake' 'curl' 'pkgconf' 'make' 'ffmpeg' 'freeimage' 'freetype2' 'pugixml' 'sdl2')
 conflicts=('emulationstation' 'emulationstation-git')
 source=("https://gitlab.com/leonstyhre/emulationstation-de/-/archive/stable-1.2/emulationstation-de-stable-1.2.tar.gz")
-md5sums=('b32c55fd0a19fbc919e58b3e20cdcda1')
+md5sums=('662c978f3981dc18fbbd4403fe269bd8')
 
 build() {
         cmake -B emulationstation-de-stable-1.2 -S emulationstation-de-stable-1.2 .
