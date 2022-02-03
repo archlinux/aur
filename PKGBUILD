@@ -2,7 +2,7 @@
 # Contributor: Jannik Becher <becher.jannik@gmail.com>
 
 pkgname=rshell
-pkgver=0.0.30
+pkgver=0.0.31
 pkgrel=1
 pkgdesc="A remote shell for working with MicroPython boards."
 url="https://github.com/dhylands/rshell"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d2002d40d735204037d6142a6c2d51beecc763c124faaf759cabf7acd945be95')
+sha256sums=('7942b758a9ae5c6ff46516b0317f437dfce9f0721f3a3b635ebd501c9cd38fb9')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
