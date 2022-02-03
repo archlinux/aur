@@ -1,0 +1,13 @@
+pkgbase = system76-scheduler-git
+	pkgdesc = system76 userspace scheduler
+	pkgver = r22.4b77ff4
+	pkgrel = 1
+	url = https://github.com/pop-os/system76-scheduler
+	arch = x86_64
+	license = MPL-2
+	makedepends = rust
+	makedepends = make
+	source = git+https://github.com/pop-os/system76-scheduler
+	sha256sums = SKIP
+
+pkgname = system76-scheduler-git
