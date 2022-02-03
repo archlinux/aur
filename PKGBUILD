@@ -72,5 +72,6 @@ package() {
     install -Dm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
+md5sums=('5fb0f375c8a89bf1d876e74a822cdf9a')
 sha512sums=('df8f2881c54c79dd746b0b8f2f0c4b04f2901896f1a3411becf8fbf4960480e8e2ff46eda02bfc183b46be2700c129831de5b6b0f6fd569c9f2ce518710a16d2')
 b2sums=('9dadca25223e72f9d7c30c9fc907be1f457783d69f6df2e593b32701f208033697afabc1648babad5ea714b2950e9bf8d413bb215c2ba891c3ef76815cd9f65f')
