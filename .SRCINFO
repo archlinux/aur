@@ -1,0 +1,12 @@
+pkgbase = tho_old
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = non-free
+	depends = dosbox-x
+	provides = tho_old
+	conflicts = tho_old
+	source = tho_old::git+https://github.com/yjacks/tho_old.git
+	md5sums = SKIP
+
+pkgname = tho_old
