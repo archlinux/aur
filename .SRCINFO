@@ -1,6 +1,6 @@
 pkgbase = lightctl
 	pkgdesc = backlight control utility that does smooth transitions
-	pkgver = r23.a89cc36
+	pkgver = r33.e476d0d
 	pkgrel = 1
 	url = https://git.sr.ht/~whynothugo/lightctl
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = lightctl
 	license = ISC
 	makedepends = git
 	makedepends = rust
-	makedepends = dbus
 	source = git+https://git.sr.ht/~whynothugo/lightctl
 	sha256sums = SKIP
 
