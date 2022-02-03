@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Tower Toppler
+Comment=Climb the rotating towers
+Exec=toppler
+Icon=toppler
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
