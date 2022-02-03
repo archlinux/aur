@@ -1,6 +1,6 @@
 basename=libsurvive
 pkgname=$basename-git
-pkgver=2023.feca145
+pkgver=2109.30f5b7b
 pkgrel=1
 pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index."
 arch=(x86_64 i686)
@@ -31,9 +31,6 @@ prepare() {
 }
 
 build() {
-  # HACK: possible issue with -O flags and second index controller not being detected, seems to be better with only survive's own cflags
-  unset CFLAGS CXXFLAG
-
   cd $basename
   rm -rf build
 
@@ -43,7 +40,7 @@ build() {
   # This will probably require slightly more cpu power than a tuned blas implementation.
   # If running on a weak CPU, consider installing a blas implementation and using -DUSE_EIGEN=OFF.
 
-  cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_EIGEN=ON
+  cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_EIGEN=ON -DCMAKE_BUILD_TYPE=Release
   ninja -C build
 }
 
