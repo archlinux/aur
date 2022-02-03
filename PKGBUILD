@@ -1,29 +1,31 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-googlemaps
-pkgver=4.5.3
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="Python client library for Google Maps Platform"
 url="https://github.com/googlemaps/google-maps-services-python"
 arch=('any')
 license=('Apache')
 depends=('python-requests')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
 checkdepends=('python-pytest' 'python-responses')
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8574de885d5d7632a3a75e3c391de1ecddb9b56154582ea3e84b1a2c2b1ccd89')
+sha256sums=('fd70fc848940cc3db652f20557de31feeb966065c6d1ca9c8967470867119ff6')
 
 build() {
 	cd "google-maps-services-python-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
 	cd "google-maps-services-python-$pkgver"
-	pytest -c /dev/null
+	pytest -x -c /dev/null
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "google-maps-services-python-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
 }
