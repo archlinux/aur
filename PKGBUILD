@@ -2,15 +2,16 @@
 # Contributor: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=profex
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A program for Rietveld refinement of powder X-ray diffraction data."
 arch=('i686' 'x86_64')
-url="http://profex.doebelin.org"
+url="https://profex.doebelin.org"
 license=('GPL2')
 groups=('science')
-depends=(#'bgmn'
+depends=('qt6-5compat'
 	'qt6-declarative'
 	'qt6-svg')
+optdepends=('bgmn: the needed backend for the program, not required to build or start the program')
 provides=('profex')
 conflicts=('profex')
 source=("https://www.profex-xrd.org/wp-content/uploads/2022/01/${pkgname}-${pkgver}.tar.gz"
