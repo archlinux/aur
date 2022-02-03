@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=7.5.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced digital photo management application'
 arch=(x86_64)
 license=(GPL)
@@ -24,10 +24,11 @@ sha256sums=('cc143dcdba0ab138036d78cd80b29d5cfd32bceb2c3e74e46b363a661dfca780'
             'SKIP'
             'ef2601f9b2e668116a3643b4bd7ddcfc233ccfc747d813955423ca17b6a23dee')
 validpgpkeys=(D1CF2444A7858C5F2FB095B74A77747BC2386E50) # digiKam.org (digiKam project) <digikamdeveloper@gmail.com>
+options=(debug)
 
-prepare() {
-  patch -d $pkgname-$_pkgver -p1 < ffmpeg5.patch
-}
+#prepare() {
+#  patch -d $pkgname-$_pkgver -p1 < ffmpeg5.patch
+#}
 
 build() {
   cmake -B build -S $pkgname-$_pkgver \
