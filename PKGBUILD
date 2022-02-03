@@ -11,7 +11,7 @@ url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
 depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'nlopt' 'imath' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
-makedepends=('boost>=1.73.0' 'cereal>=1.3.1' 'cmake' 'eigen' 'libigl' 'ninja' 'openvdb' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'ninja' 'openvdb' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 replaces=('slic3r++')
 source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
@@ -64,7 +64,12 @@ build()
 		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev-314/bin/wx-config \
 		-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument -Wl,-rpath=/opt/wxgtk-dev-314/lib"
 
-	ninja
+	if [[ "$MAKEFLAGS" =~ -j[0123456789]+ ]] # get max parallel job from $MAKEFLAGS
+	then
+		ninja_flags="${BASH_REMATCH[0]}"
+	fi
+	echo "ninja ${ninja_flags:=}"
+	ninja ${ninja_flags:=} # ninja dose not support environment variable, see: https://github.com/ninja-build/ninja/issues/1482
 }
 
 package()

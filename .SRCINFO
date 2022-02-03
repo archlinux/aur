@@ -7,7 +7,7 @@ pkgbase = superslicer
 	arch = x86_64
 	license = AGPL3
 	makedepends = boost>=1.73.0
-	makedepends = cereal>=1.3.1
+	makedepends = cereal>=1.3.0
 	makedepends = cmake
 	makedepends = eigen
 	makedepends = libigl
