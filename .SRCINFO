@@ -1,0 +1,12 @@
+pkgbase = hancock-git
+	pkgver = 2022.02.02_40
+	pkgrel = 1
+	url = https://github.com/galenguyer/hancock
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/galenguyer/hancock
+	sha256sums = SKIP
+
+pkgname = hancock-git
