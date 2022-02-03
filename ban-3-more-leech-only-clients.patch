@@ -1,0 +1,23 @@
+From f6b87adbd852911f72d977e967e7fee9f5944379 Mon Sep 17 00:00:00 2001
+From: zscself <zscself@gmail.com>
+Date: Sat, 5 Dec 2020 18:20:43 +1100
+Subject: [PATCH] =?UTF-8?q?update:=20=E5=8A=A0=E5=85=A5=E5=8F=A6=E5=A4=96?=
+ =?UTF-8?q?=E5=87=A0=E6=AC=BE=E5=90=B8=E8=A1=80=E8=BD=AF=E4=BB=B6?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+diff -u a/libtransmission/peer-mgr.c b/libtransmission/peer-mgr.c
+--- a/libtransmission/peer-mgr.c
++++ b/libtransmission/peer-mgr.c
+@@ -4373,6 +4373,9 @@
+     bool banned = false;
+     banned |= !memcmp(peer_id+1, "SD", 2);
+     banned |= !memcmp(peer_id+1, "XL", 2);
++    banned |= !memcmp(peer_id+1, "QD", 2);
++    banned |= !memcmp(peer_id+1, "XF", 2);
++    banned |= !memcmp(peer_id+1, "BN", 2);
+     //if (banned)
+     //  tr_logAddNamedError ("Client banned.", "(Client filter)");
+     return banned;
+

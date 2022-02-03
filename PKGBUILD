@@ -4,18 +4,21 @@
 
 pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt)
+pkgdesc='patched version of transmission that bans Xunlei (a well-known leecher client)'
 pkgver=3.00
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 makedepends=(gtk3 intltool curl qt5-base libevent systemd qt5-tools libappindicator-gtk3)
 source=(https://github.com/transmission/transmission-releases/raw/master/transmission-${pkgver}.tar.xz
         ban-xunlei.patch
+        ban-3-more-leech-only-clients.patch
         transmission-noxunlei-cli.sysusers
         transmission-noxunlei-cli.tmpfiles)
 sha256sums=('9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
             'c1b21b0e2d54a0a041c602709f6f0c2dc3626e6aa04c049c1a76b2e3d0dcc89d'
+            '90d6e7fcdc84fc14546d1060880f656e5f2e9490e094c42339b74a7973be779b'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
@@ -25,6 +28,8 @@ prepare() {
 
   # Ban Xunlei (Thunder) downloader as described in blog.zscself.com/posts/66b00f02/
   patch -Np1 -i "$srcdir/ban-xunlei.patch"
+  # https://github.com/firedent/transmission/commit/f6b87adbd852911f72d977e967e7fee9f5944379
+  patch -Np1 -i "$srcdir/ban-3-more-leech-only-clients.patch"
 
   rm -f m4/glib-gettext.m4
   autoreconf -fi
