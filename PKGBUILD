@@ -1,7 +1,7 @@
 # Maintainer: Ben Goldberg <benaaron.dev>
 
 pkgname=gemgen
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A Markdown to Gemtext generator"
 arch=('x86_64' 'i686' 'arm' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~kota/gemgen/archive/v$pkgver.tar.gz")
 depends=('glibc')
 makedepends=('go' 'scdoc')
-sha256sums=('f4f17e02389fa55e1ed10e35208b2dde784b7e45b384bbc1383e32e650f58ca5')
+sha256sums=('403795f69d89d4ebac24e9a39745f07b1bbf2f6bf0d0a22031d8ecc6a01c1007')
 
 build() {
     cd "$srcdir/$pkgname-v$pkgver"
