@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('BSD')
 depends=('gcc-libs' 'glibc')
 makedepends=('git')
-source=("git://projects.vdr-developer.org/vdr-checkts.git#commit=$_gitver")
+source=("git+https://projects.vdr-developer.org/git/vdr-checkts.git#commit=$_gitver")
 md5sums=('SKIP')
 
 pkgver() {
