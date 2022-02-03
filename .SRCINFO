@@ -1,6 +1,6 @@
 pkgbase = python-optuna
 	pkgdesc = A hyperparameter optimization framework
-	pkgver = 2.6.0
+	pkgver = 2.10.0
 	pkgrel = 3
 	url = https://optuna.org
 	arch = any
@@ -15,8 +15,7 @@ pkgbase = python-optuna
 	depends = python-scipy
 	depends = python-sqlalchemy
 	depends = python-tqdm
-	source = python-optuna-2.6.0.tar.gz::https://github.com/optuna/optuna/archive/v2.6.0.tar.gz
+	source = python-optuna-2.10.0.tar.gz::https://github.com/optuna/optuna/archive/v2.10.0.tar.gz
 	md5sums = 1d9a201634795225bb183e1977563a3b
 
 pkgname = python-optuna
-
