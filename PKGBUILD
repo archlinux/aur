@@ -1,49 +1,73 @@
-# Maintainer: Johannes Kampmeyer <aur@kajoh.de>
+# Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
+# Contributor: Johannes Kampmeyer <aur@kajoh.de>
 # Contributor: Pedro Martinez-Julia <pedromj@gmail.com>
 # Contributor: Walter Dworak <preparationh67@gmail.com>
 
 pkgname=containernet-git
-pkgver=20180423
+pkgver=3.1.r388.g541b268
 pkgrel=1
-pkgdesc="Mininet with added Docker support"
-url="https://github.com/containernet/containernet/"
+pkgdesc="Mininet fork adding support for container-based emulated hosts"
+_mn_deps=('python' 'iptables' 'iproute2' 'net-tools' 'iputils' 'inetutils'
+          'iperf' 'ethtool' 'libcgroup' 'openvswitch' 'psmisc')
+depends=(${_mn_deps[@]}
+         'docker' 'python-docker' 'python-pytest' 'python-iptables-git'
+         'python-pexpect' 'python-urllib3' 'python-networkx'
+         'python-ipaddress')
+optdepends=('xorg-xhost: for X11 forwarding'
+            'socat: for X11 forwarding'
+            'xterm: required for MiniEdit'
+            'tk: required for MiniEdit')
+makedepends=('git' 'help2man' 'python-setuptools')
+arch=('x86_64')
+url="https://github.com/containernet/containernet"
 license=('custom')
-depends=('bash' 'python2' 'python2-networkx' 'net-tools' 'iputils' 'iperf' 'openvswitch' 'docker' 'python2-pytest' 'python2-urllib3' 'python-iptables' 'python2-ipaddress' 'python2-docker')
 provides=('mininet')
-optdepends=('xorg-xhost')
-makedepends=('help2man' 'python2-setuptools' 'git')
-install="${pkgname}.install"
-arch=('i686' 'x86_64')
 conflicts=('mininet')
-source=("$pkgname::git+http://github.com/containernet/containernet")
-md5sums=('SKIP')
-
-prepare () {
-	cd "$srcdir/$pkgname"
-	grep python2 Makefile && return
-	grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:g'
-	grep -rIil '#!.*python' . | xargs -n1 sed -i 's:#!/usr/bin/python:#!/usr/bin/python2:g'
-	sed 's:BINDIR = /usr/bin:BINDIR = $(DESTDIR)/usr/bin:g' -i Makefile
-	sed 's:MANDIR = /usr/share/man/man1:MANDIR = $(DESTDIR)/usr/share/man/man1:g' -i Makefile
-	sed 's:PYMN = python -B bin/mn:PYMN = python2 -B bin/mn:g' -i Makefile
-	sed 's:install $(MNEXEC) $(BINDIR):mkdir -p $(BINDIR); install $(MNEXEC) $(BINDIR):g' -i Makefile
-	sed 's:install $(MANPAGES) $(MANDIR):mkdir -p $(MANDIR);install $(MANPAGES) $(MANDIR):g' -i Makefile
-	sed 's:python setup.py:python2 setup.py install --prefix=/usr --root="$(DESTDIR)" --optimize=1:g' -i Makefile
-}
+install="${pkgname%-git}.install"
+source=("$pkgname"::'git+https://github.com/containernet/containernet'
+        'git+https://github.com/mininet/openflow')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	git log --format="%cd" --date=short -1 | sed 's/-//g'
+    cd "$srcdir/$pkgname"
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git describe --always)"
+    fi
 }
 
-build () {
-	cd "$srcdir/$pkgname"
-	python2 setup.py build
+prepare() {
+    cd "$srcdir/openflow"
+    sed '/^include debian\/automake.mk/d' -i Makefile.am
+    # Patch controller to handle more than 16 switches
+    patch -Np1 -i "$srcdir/$pkgname/util/openflow-patches/controller.patch"
+
+    cd "$srcdir/$pkgname"
+    sed 's:PREFIX ?= /usr:PREFIX ?= "$(DESTDIR)"/usr:' -i Makefile
+    sed '/^[[:space:]]*$(PYTHON) /d' -i Makefile
 }
 
-package () {
-	cd "$srcdir/$pkgname"
-	install -Dm 644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	make DESTDIR="${pkgdir}" install
+build() {
+    cd "$srcdir/openflow"
+    autoreconf --install --force
+    ./configure --prefix=/usr --sbindir=/usr/bin
+    make
+
+    cd "$srcdir/$pkgname"
+    make mnexec man
+    python setup.py build
 }
 
+package() {
+    cd "$srcdir/openflow"
+    make DESTDIR="${pkgdir}" install
+
+    cd "$srcdir/$pkgname"
+    make DESTDIR="${pkgdir}" install
+    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+    install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
+}
+
+# vim: set sw=4 ts=4 et:

@@ -1,0 +1,12 @@
+post_install() {
+	cat << EOF
+
+	Containernet requires Open vSwitch to be running in order to
+	instantiate switches. To run it, please execute the
+	following commands:
+
+	# systemctl enable ovs-vswitchd.service
+	# systemctl start ovs-vswitchd.service
+
+EOF
+}
