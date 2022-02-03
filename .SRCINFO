@@ -1,7 +1,7 @@
 pkgbase = podman-remote
 	pkgdesc = Remote client for managing podman containers.
-	pkgver = 3.4.2
-	pkgrel = 19
+	pkgver = 3.4.4
+	pkgrel = 1
 	url = https://github.com/containers/podman
 	arch = x86_64
 	license = Apache
@@ -10,7 +10,7 @@ pkgbase = podman-remote
 	makedepends = git
 	provides = podman
 	conflicts = podman
-	source = git+https://github.com/containers/podman#tag=v3.4.2?signed
+	source = git+https://github.com/containers/podman#tag=v3.4.4?signed
 	validpgpkeys = B7DBDCA456F7335E91F1C25CD3624C551D0515C4
 	validpgpkeys = 7CE1E6F8C90CB53E7E4D8F2D502E08DB0BBF8EEE
 	sha256sums = SKIP
