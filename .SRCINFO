@@ -1,7 +1,7 @@
 pkgbase = transmission-noxunlei
 	pkgdesc = patched version of transmission that bans Xunlei (a well-known leecher client)
 	pkgver = 3.00
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.transmissionbt.com/
 	arch = x86_64
 	license = MIT

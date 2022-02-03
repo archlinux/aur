@@ -6,7 +6,7 @@ pkgbase=transmission-noxunlei
 pkgname=(transmission-noxunlei-cli transmission-noxunlei-gtk transmission-noxunlei-qt)
 pkgdesc='patched version of transmission that bans Xunlei (a well-known leecher client)'
 pkgver=3.00
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
@@ -25,6 +25,9 @@ sha256sums=('9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
 prepare() {
   ln -sf transmission-$pkgver $pkgbase-$pkgver
   cd $pkgbase-$pkgver
+
+  # loqs's patch that fixes builds under autoconf 2.70+  https://bugs.archlinux.org/task/70877
+  sed -i 's/\[IT_PROG_INTLTOOL(\[/[\nIT_PROG_INTLTOOL(\[/' configure.ac
 
   # Ban Xunlei (Thunder) downloader as described in blog.zscself.com/posts/66b00f02/
   patch -Np1 -i "$srcdir/ban-xunlei.patch"
