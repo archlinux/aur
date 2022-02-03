@@ -1,11 +1,10 @@
 pkgbase = aaaaxy
 	pkgdesc = A nonlinear puzzle platformer taking place in non-Euclidean geometry
 	pkgver = 1.1.66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/divVerent/aaaaxy
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	makedepends = go
 	makedepends = graphviz
 	makedepends = imagemagick
@@ -18,9 +17,9 @@ pkgbase = aaaaxy
 	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libx11
-	source = git+https://github.com/divVerent/aaaaxy#tag=v1.0.187
-	source = git+https://github.com/gabomdq/SDL_GameControllerDB.git
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = aaaaxy-1.1.66.tar.gz::https://github.com/divVerent/aaaaxy/archive/refs/tags/v1.1.66.tar.gz
+	source = https://github.com/divVerent/aaaaxy/releases/download/v1.1.66/sdl-gamecontrollerdb-for-aaaaxy-v1.1.66.zip
+	sha256sums = cc857d2e4af46e109fdbbbea28d7207c5985ce85338095ed87a3452467ff6c7e
+	sha256sums = d0ea8cef9d972ddef3b635bfe207928c4bc649b5ea4e8757f4ad8d192b848569
 
 pkgname = aaaaxy
