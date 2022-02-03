@@ -1,7 +1,7 @@
 pkgbase = pyxplot
 	pkgdesc = Command-line graphing package with a simple interface that produces publication-quality output.
 	pkgver = 0.9.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.pyxplot.org.uk/
 	changelog = pyxplot.changelog
 	arch = i686
@@ -22,6 +22,6 @@ pkgbase = pyxplot
 	optdepends = ghostscript: for postscript
 	provides = pyxplot
 	source = http://www.pyxplot.org.uk/src/pyxplot_0.9.2.tar.gz
-	sha256sums = 041074956c99d16125cf455dd57ad6908814e4abe4bfbff6125c3b10e63e5f29
+	sha256sums = 1c592a0bc77caec445a8d72534471c01d66ca1806309e6c983847c2e0b95e689
 
 pkgname = pyxplot
