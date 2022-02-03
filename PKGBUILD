@@ -3,14 +3,14 @@
 # 
 
 pkgname=graphite-cli-git
-pkgver=0.16.2.r6.d8959c5
+pkgver=0.16.7.r5.1b26c1c7
 pkgrel=1
 pkgdesc="CLI that makes creating stacked git changes fast & intuitive"
 url=https://graphite.dev/
-license=('unknown')
+license=('AGPL3')
 arch=('any')
 depends=('nodejs' 'git')
-makedepends=('npm')
+makedepends=('npm' 'yarn' 'findutils')
 provides=('graphite-cli')
 conflicts=('graphite-cli')
 source=('git+https://github.com/screenplaydev/graphite-cli')
@@ -26,14 +26,24 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_srcname"
-    npm install --cache "$srcdir/npm-cache"
-    npm run build
-    cd ..
-    TAR=`npm pack --cache "$srcdir/npm-cache" "$srcdir/$_srcname"`
-    mv "$TAR" "graphite-cli.tgz"
+    export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+    yarn install --immutable
+    yarn run build
+    rm -r dist/scripts
+    rm -r dist/test
+    find dist -type f \( -name '*.map' -o -name '*.d.ts' \) -delete
+    # completions must be ran inside of a git repository. its own will suffice.
+    node ./dist/src/index.js completion > "$srcdir/pre-graphite-completions"
+    # make it so autocompletion works for both graphite and gt
+    sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/graphite/g' "$srcdir/pre-graphite-completions" > "$srcdir/graphite-completions"
+    sed 's/\(.\/dist\/src\/\)\{0,1\}index.js/gt/g' "$srcdir/pre-graphite-completions" > "$srcdir/gt-completions"
+    yarn pack --filename "../graphite-cli.tgz"
 }
 
 package() {
-    npm install -g --prefix "$pkgdir/usr" "$srcdir/graphite-cli.tgz" 
+    # npm is a lot better than yarn at installing global packages in a way that is friendly to packages.
+    npm install -g --no-audit --prefix "$pkgdir/usr" "$srcdir/graphite-cli.tgz"
+    install -D "$srcdir/graphite-completions" "$pkgdir/usr/share/bash-completions/graphite"
+    install -D "$srcdir/gt-completions" "$pkgdir/usr/share/bash-completions/gt"
     chown -R root:root "$pkgdir"
 }
