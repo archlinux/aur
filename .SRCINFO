@@ -1,17 +1,21 @@
 pkgbase = devpi-common
 	pkgdesc = Utilities jointly used by devpi-server and devpi-client
 	pkgver = 3.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://doc.devpi.net/
+	changelog = CHANGELOG
 	arch = any
 	groups = devpi
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
-	depends = python>=3.4
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
 	depends = python-lazy
-	depends = python-py>=1.4.20
-	depends = python-requests>=2.3.0
-	source = https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-3.6.0.tar.gz
+	depends = python-py
+	depends = python-requests
+	source = devpi-common-3.6.0.tar.gz::https://files.pythonhosted.org/packages/source/d/devpi-common/devpi-common-3.6.0.tar.gz
 	sha256sums = fc14aa6b74d4d9e27dc2e9cbff000ed9be5cd723d3ac9672e66e4e8fce797227
 
 pkgname = devpi-common
