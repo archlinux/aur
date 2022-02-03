@@ -1,4 +1,5 @@
 # Maintainer: Donald Carr <d _at_ chaos-reins.com>
+
 _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
 pkgver=r22.4b77ff4
@@ -11,6 +12,7 @@ depends=()
 makedepends=(rust make)
 source=("git+$url")
 sha256sums=('SKIP')
+install=install.sh
 
 pkgver() {
   cd ${_pkgname}
