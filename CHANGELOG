@@ -1859,3 +1859,10 @@ Thu Feb 3 04:59:41 2022 +0100
      2021-12-17 1cdff8f Bundy01 chore(locale): update es and fr po (#614)
      2021-12-14 9d29016 André Glüpker fix(search_cli): use different terminal escape sequence (see #497) (#613)
      2021-12-15 2b11ebd Felix Yan chore: doc(readme): explicitly rebuild from AUR (#611)
+
+
+Thu Feb 3 05:06:46 2022 +0100
+-------------------------------------------------
+1.10.1          Hotfix release 1.10.1
+    
+    fix(updates): add missing maintainer field
