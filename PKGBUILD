@@ -59,12 +59,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DENABLE_TESTS=FALSE \
-    -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE}=FALSE \
+    -DWITH_INTERNAL_{HTTPLIB2,JINJA2,MARKUPSAFE,OWSLIB,PYGMENTS,DATEUTIL,PYTZ,YAML,NOSE2,SIX,FUTURE,QWTPOLAR}=FALSE \
     -DWITH_GEOREFERENCER=TRUE \
     -DWITH_3D=TRUE
-#    -DWITH_SERVER=TRUE \
-#    -DWITH_GLOBE=TRUE
+#    -DWITH_SERVER=TRUE
 
   make
 }
@@ -76,7 +74,6 @@ package() {
   [[ -n "$(sed -n '/^GRASS_PREFIX:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass6: GRASS6 plugin')
   [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass: GRASS7 plugin')
   [[ "$(sed -n '/^WITH_SERVER:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('fcgi: Map Server')
-  [[ "$(sed -n '/^WITH_GLOBE:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth: Globe plugin')
 
   make DESTDIR="$pkgdir" install
 
