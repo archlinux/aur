@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=3.0.1' 'hicolor-icon-theme' 'shared-mime-info' 'openssl'
-  'libxkbcommon-x11' 'libedit' 'postgresql-libs' 'sqlite')
+  'libxkbcommon-x11' 'libedit' 'postgresql-libs' 'sqlite' 'nss')
 makedepends=()
 optdepends=(
 'clang: C/C++ and Rcpp support'
