@@ -1,8 +1,8 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=outfieldr-git
 _pkgname="${pkgname%-git}"
-pkgver=r85.76c3e58
-pkgrel=2
+pkgver=1.0.2.r1.ge1f165c
+pkgrel=1
 pkgdesc='TLDR client in zig'
 arch=('x86_64')
 url='https://gitlab.com/ve-nt/outfieldr'
@@ -20,20 +20,18 @@ source=(
 	'git+https://github.com/alexnask/iguanaTLS.git'
 	'git+https://github.com/truemedian/hzzp.git'
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
