@@ -1,6 +1,6 @@
 pkgbase = kickoff-git
 	pkgdesc = A simple and uncomplicated program launcher for wayland
-	pkgver = 102.8c42fd6
+	pkgver = 105.15b5402
 	pkgrel = 1
 	url = https://github.com/j0ru/kickoff
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kickoff-git
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = freetype2
+	makedepends = fontconfig
 	conflicts = kickoff
 	source = git+https://github.com/j0ru/kickoff.git
 	sha512sums = SKIP
