@@ -11,16 +11,12 @@ url="https://indefero.soutade.fr/p/libgourou"
 depends=(glibc gcc-libs qt5-base zlib libzip openssl)
 conflicts=(gourou-bin)
 options=(!strip)
-source=("gourou::git://soutade.fr/libgourou.git#tag=v$pkgver" "updf::git://soutade.fr/updfparser.git")
-md5sums=(SKIP SKIP)
+source=("gourou::git://soutade.fr/libgourou.git#tag=v$pkgver")
+md5sums=(SKIP)
 
 build() {
-	cd "$srcdir"/updf;
-	BUILD_STATIC=1 BUILD_SHARED=0 make all
-	cd "$srcdir"/gourou;
-	mkdir -p ./lib/updfparser/
-	ln -fs $srcdir/updf/libupdfparser.a ./lib/updfparser/
-	ln -fs $srcdir/updf/include ./lib/updfparser/
+	cd $srcdir/gourou
+
 	scripts/setup.sh
 	make all
 }
