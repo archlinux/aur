@@ -1,7 +1,9 @@
 [Desktop Entry]
-Type=Application
-Version=1.5
 Name=Logseq Desktop
-Comment=A privacy-first, open-source platform for knowledge sharing and management.
-Exec=logseq
+Exec=/usr/bin/logseq
 Terminal=false
+Type=Application
+Icon=logseq
+StartupWMClass=logseq
+Comment=A privacy-first, open-source platform for knowledge sharing and management.
+Categories=Office

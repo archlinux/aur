@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.5.4.r153.c74fc2002
+pkgver=0.5.9.r80.4356f7202
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=(
 md5sums=(
     "SKIP"
     "aad20b738ccd8965d7fd22cb5f34a6e1"
-    "3a5ebb330fd33e59f1cc56690df1995d"
+    "3e651db0ef736d3a7cfffd6b58b3ff33"
 )
 
 pkgver() {
@@ -29,10 +29,8 @@ pkgver() {
 prepare() {
     cd "${srcdir}/${pkgname}"
 
-    # this patch make the build process use system's electron
-    patch -p1 -i "${srcdir}/build.patch"
-
     # patch :parallel-build true in shadow-cljs.edn
+    patch -p1 -i "${srcdir}/build.patch"
 
     # download required js modules
     yarn install
@@ -82,6 +80,9 @@ package() {
     cd "${srcdir}/${pkgname}"
     install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm644 "LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
+    # copy xdg desktop icon
+    install -Dm644 "resources/icons/logseq.png" -t "${pkgdir}/usr/share/icons"
 
     # copy xdg desktop files
     cd "${srcdir}"
