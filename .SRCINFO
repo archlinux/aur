@@ -1,0 +1,27 @@
+pkgbase = pyabr
+	pkgdesc = Pyabr lightweight OS with Python and Qt
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://pyabr.ir
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	depends = xorg-server
+	depends = mesa
+	depends = qt5-base
+	depends = python-wheel
+	depends = python-pyqt5
+	depends = breeze
+	depends = breeze-icons
+	depends = wget
+	optdepends = xorg-xini
+	optdepends = xterm
+	optdepends = mpv
+	optdepends = chromium
+	optdepends = python-pyalsa
+	optdepends = python-pyaudio
+	optdepends = openbox
+	provides = pyabr
+	conflicts = pyabr
+
+pkgname = pyabr
