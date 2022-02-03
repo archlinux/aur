@@ -1,6 +1,6 @@
 pkgbase = return-to-the-roots-git
 	pkgdesc = Free/libre implementation of The Settlers II game engine
-	pkgver = r5113.85a6b9941
+	pkgver = v0.9.1.120.g83c6f815c
 	pkgrel = 1
 	url = https://siedler25.org/
 	install = return-to-the-roots.install
@@ -61,4 +61,3 @@ pkgbase = return-to-the-roots-git
 	sha256sums = 888a1cd55350971ec3660de79c82760be63ed40617e8ef6931c20b07bc73e1a9
 
 pkgname = return-to-the-roots-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Pierre Choffet <peuc@wanadoo.fr>
 
 pkgname=return-to-the-roots-git
-pkgver=r5113.85a6b9941
+pkgver=v0.9.1.120.g83c6f815c
 pkgrel=1
 pkgdesc="Free/libre implementation of The Settlers II game engine"
 arch=("x86_64")
@@ -28,25 +28,25 @@ source=("git+https://github.com/Return-To-The-Roots/s25client.git"
         "git+https://github.com/Return-To-The-Roots/version.git"
         "git+https://github.com/mat007/turtle.git"
         "rttr.sh" "return-to-the-roots.install")
-sha256sums=("SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP"
-            "b623d74292ca332b65290f15adb0c41994a80eb4f5d247c713a0d43775f9e8f8"
-            "888a1cd55350971ec3660de79c82760be63ed40617e8ef6931c20b07bc73e1a9")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'b623d74292ca332b65290f15adb0c41994a80eb4f5d247c713a0d43775f9e8f8'
+            '888a1cd55350971ec3660de79c82760be63ed40617e8ef6931c20b07bc73e1a9')
 
 pkgver() {
 	cd "s25client/"
-	echo "r$(git rev-list --count HEAD).$(git describe --always)"
+	git describe --long | sed 's/-/./g'
 }
 
 prepare() {

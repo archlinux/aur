@@ -1,5 +1,9 @@
+2022-02-03 Pierre Choffet <peuc@wanadoo.fr>
+	* v0.9.1.120.g83c6f815c :
+	Fix package versioning scheme after upstream changes
+
 2021-04-16 Pierre Choffet <peuc@wanadoo.fr>
-	*r5113.85a6b9941-1 :
+	* r5113.85a6b9941-1 :
 	Fix build error
 
 2020-12-02 Pierre Choffet <peuc@wanadoo.fr>
