@@ -1,13 +1,13 @@
 pkgbase = vapoursynth-plugin-vsakarin-git
-	pkgdesc = Plugin for Vapoursynth: vsakarin (GITversion)
-	pkgver = v0.92.4.g8adcefc
+	pkgdesc = Plugin for Vapoursynth: vsakarin (GIT version)
+	pkgver = v0.92.5.g67cea7d
 	pkgrel = 1
 	url = https://github.com/akarinVS/vapoursynth-plugin.git
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = meson
-	makedepends = clang+llvm-binaries=11.1.0
+	makedepends = llvm
 	depends = vapoursynth
 	provides = vapoursynth-plugin-vsakarin
 	conflicts = vapoursynth-plugin-vsakarin
