@@ -1,7 +1,7 @@
 pkgbase = gdmap
 	pkgdesc = Tool to inspect the used space of folders.
 	pkgver = 0.8.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://gdmap.sourceforge.net
 	arch = x86_64
 	license = GPL

@@ -1,9 +1,10 @@
+# Maintainer:  Mateusz Ziemła <mtizim+aur@pm.me>
 # Contributor: Jaroslv Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Roman Kyrylych <Roman.Kyrylych@gmail.com>
 
 pkgname=gdmap
 pkgver=0.8.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Tool to inspect the used space of folders."
 arch=('x86_64')
 url="http://gdmap.sourceforge.net"
@@ -25,7 +26,7 @@ build() {
   sed -i -e 's/@LIBXML_LIBS@/@LIBXML_LIBS@ -lm/g' Makefile.in
   cd ..
 
-  ./configure --prefix=/usr
+  CFLAGS=-Wno-error ./configure --prefix=/usr
   make
 }
 
