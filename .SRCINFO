@@ -1,0 +1,16 @@
+pkgbase = texlive-fonts-fontawesome
+	pkgdesc = TeX Live - Font Awesome fonts
+	pkgver = 2021.61408
+	pkgrel = 1
+	url = http://tug.org/texlive/
+	arch = any
+	license = GPL
+	depends = texlive-core
+	conflicts = texlive-fontsextra
+	options = !emptydirs
+	source = https://github.com/dkoch84/texlive-fonts-fontawesome/raw/master/texlive-fonts-fontawesome-2021.61408-src.zip
+	source = https://github.com/dkoch84/texlive-fonts-fontawesome/raw/master/texlive-fonts-fontawesome.maps
+	sha256sums = 92495ad3a2457f3c8bbbf22d9eedeb5a15c03253fda69bc1f8198096c943419d
+	sha256sums = a1fe9dd7e64687c2e684a2fcb5e6f1309a09c74804940326004a6b82a0fa611c
+
+pkgname = texlive-fonts-fontawesome
