@@ -1,7 +1,7 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary
 	pkgver = 6.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cidian.youdao.com/
 	arch = i686
 	arch = x86_64
@@ -23,10 +23,11 @@ pkgbase = youdao-dict
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
 	depends = qt5-multimedia
+	source = file://fix-windows-pos-type.patch
+	sha256sums = 886f217146232511107c16a8cfed82bc8da74e730f9d563e593543b1f33514a5
 	source_i686 = http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0_i386.tar.gz
 	sha256sums_i686 = d1ff404f1e465d6a196b566294ddfea1a1bfe4568226201b65d74236407152fc
 	source_x86_64 = http://codown.youdao.com/cidian/linux/youdao-dict-6.0.0-amd64.tar.gz
 	sha256sums_x86_64 = 556e2dadd0a737967b78ffd9ad5430660d190e4489854a309c85f81fdf7f084f
 
 pkgname = youdao-dict
-
