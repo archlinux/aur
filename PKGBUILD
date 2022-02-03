@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL3')
 depends=('xorg-server' 'mesa' 'qt5-base' 'python-wheel' 'python-pyqt5' 'breeze' 'breeze-icons' 'wget' )
 makedepends=('python-pip')
-optdepends=('xorg-xini' 'xterm' 'mpv' 'chromium' 'python-pyalsa' 'python-pyaudio' 'openbox')
+optdepends=('xterm' 'mpv' 'chromium' 'python-pyalsa' 'python-pyaudio' 'openbox')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 

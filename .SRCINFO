@@ -14,7 +14,6 @@ pkgbase = pyabr
 	depends = breeze
 	depends = breeze-icons
 	depends = wget
-	optdepends = xorg-xini
 	optdepends = xterm
 	optdepends = mpv
 	optdepends = chromium
