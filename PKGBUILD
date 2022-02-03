@@ -2,7 +2,7 @@
 
 pkgname=keyd
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
 url="https://github.com/rvaiya/$pkgname"

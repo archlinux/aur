@@ -5,7 +5,3 @@ post_install() {
 	cat /usr/share/doc/keyd/libinput/local-overrides.quirks
 	echo
 }
-
-post_upgrade() {
-	post_install
-}
