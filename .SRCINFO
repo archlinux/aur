@@ -1,7 +1,7 @@
 pkgbase = python-mando
 	pkgdesc = Python library which wraps the argparse module to help write flexible CLI applications
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mando.readthedocs.org/
 	arch = any
 	license = MIT

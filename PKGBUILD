@@ -3,7 +3,7 @@
 _name="mando"
 pkgname="python-${_name}"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library which wraps the argparse module to help write flexible CLI applications"
 arch=('any')
 url="https://${_name}.readthedocs.org/"
