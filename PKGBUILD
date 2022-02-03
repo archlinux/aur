@@ -76,9 +76,9 @@ _makenconfig=
 ### IMPORTANT: Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.16.5-xanmod1
+xanmod=5.16.7-xanmod1
 pkgver=${xanmod//-/.}
-#pkgver=5.16.5.prexan0
+#pkgver=5.16.6rc1.prexan0
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -104,7 +104,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.4-5.xz"
-        #"Linux-5.16.5-rc1.patch"
+        #"Linux-5.16.6-rc1.patch"
 
         # W/A for warning during iommu initialization
         "iommu-amd-W-A-for-warning-during-iommu-initialization.patch"
@@ -163,7 +163,7 @@ validpgpkeys=(
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            'd212b80c0460eddd72ee0d9f3bb30f227a57e0592498e97e31212e3600cb5d3f'
+            '834dd6603ec3fb0a72e3a1a97669a7198cd6921c4f355b155b3d587a8f0fcea4'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             '393ce8f52e18624b82622a162bb4b9103e976bfe9438514b693ecf74a8541c82'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
