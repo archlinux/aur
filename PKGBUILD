@@ -16,6 +16,10 @@ makedepends=(
 depends=(
   'python-setuptools'
 )
+optdepends=(
+  'python-pyopenssl: creating self signed certificates'
+  'python-pycryptodomex: encrypting notifications to iOS/Android Tautulli Remote app'
+)
 install='tautulli.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Tautulli/Tautulli/archive/v$pkgver.tar.gz"
         'tautulli.tmpfiles'
