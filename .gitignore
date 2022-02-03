@@ -2,6 +2,6 @@ pkg
 src
 mando-*.tar.gz
 python-mando-*.pkg.tar.xz
-python2-mando-*.pkg.tar.xz
+python-mando-*.src.tar.zst
 python-mando-*.src.tar.gz
 .AURINFO

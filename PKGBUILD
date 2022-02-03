@@ -2,8 +2,8 @@
 
 _name="mando"
 pkgname="python-${_name}"
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="Python library which wraps the argparse module to help write flexible CLI applications"
 arch=('any')
 url="https://${_name}.readthedocs.org/"
@@ -11,10 +11,11 @@ url="https://${_name}.readthedocs.org/"
 license=('MIT')
 depends=('python')
 optdepends=('python-sphinx: to run unit tests')
-makedepends=('python-setuptools')
+makedepends=('python-rst2ansi' 'python-setuptools')
+optdepends=('python-rst2ansi: restructuredText support')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         'LICENSE')
-sha256sums=('79feb19dc0f097daa64a1243db578e7674909b75f88ac2220f1c065c10a0d960'
+sha256sums=('5306a91109096fe2e204a1f5ae141038842193f7210a7930c8ee73ccb7ecbf62'
             '6123bc92c70372634b45af73fbae39eaa70683a66782b73b833c258c4de939eb')
 
 build() {
