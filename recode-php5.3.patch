@@ -1,0 +1,10 @@
+--- a/ext/recode/config9.m4
++++ b/ext/recode/config9.m4
+@@ -13,6 +13,6 @@
+   fi
+ 
+   if test -n "$recode_conflict"; then
+-    AC_MSG_ERROR([recode extension can not be configured together with:$recode_conflict])
++    AC_MSG_WARN([recode extension can not be configured together with:$recode_conflict])
+   fi
+ fi
