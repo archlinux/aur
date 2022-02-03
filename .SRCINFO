@@ -1,6 +1,6 @@
 pkgbase = virtualbox-ext-oracle-dev
 	pkgdesc = Oracle VM VirtualBox Extension Pack for virtualbox dev version
-	pkgver = 6.1.97.149665
+	pkgver = 6.1.97.149678
 	pkgrel = 1
 	url = https://www.virtualbox.org/
 	install = virtualbox-ext-oracle-dev.install
@@ -10,9 +10,9 @@ pkgbase = virtualbox-ext-oracle-dev
 	optdepends = rdesktop: client to connect vm via RDP
 	provides = virtualbox-ext-oracle
 	conflicts = virtualbox-ext-oracle
-	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.1.97-149665.vbox-extpack
+	noextract = Oracle_VM_VirtualBox_Extension_Pack-6.1.97-149678.vbox-extpack
 	options = !strip
-	source = https://www.virtualbox.org/download/testcase/Oracle_VM_VirtualBox_Extension_Pack-6.1.97-149665.vbox-extpack
-	sha256sums = 249f157382e1ef94e8c2737a437c5909c92f5490a3aff3f75f2d5cf7e5d1820e
+	source = https://www.virtualbox.org/download/testcase/Oracle_VM_VirtualBox_Extension_Pack-6.1.97-149678.vbox-extpack
+	sha256sums = ebaa18bcb6dd8838568037b7df69f31cdc365e92fb4e5903dcfc27a530525069
 
 pkgname = virtualbox-ext-oracle-dev
