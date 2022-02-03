@@ -1,24 +1,41 @@
-# Original Maintainer: Evan McCarthy <evan@mccarthy.mn>
-# Maintainer: neko <hi@neko.vg>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Evan McCarthy <evan@mccarthy.mn>
+# Contributor: neko <hi@neko.vg>
 
 pkgname=pounce
-pkgver=2.4
+pkgver=3.0
 pkgrel=1
-pkgdesc='A a multi-client, TLS-only IRC bouncer using a multiple-consumer ring buffer and the IRCv3.2 server-time extension to communicate with clients.'
+pkgdesc='A multi-client, TLS-only IRC bouncer'
 arch=('x86_64')
-url="https://git.causal.agency/${pkgname}/"
+url="https://git.causal.agency/pounce"
 license=('GPL3')
-depends=('libretls')
-source=("https://git.causal.agency/${pkgname}/snapshot/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3d7f95545b8b3fad435aa93d684e11be')
+depends=('libretls' 'libxcrypt')
+makedepends=('git')
+_commit='1d217a2b9e733a825c3ce4b2dc5b5e5d2ada5d4b'
+source=("git+https://git.causal.agency/pounce.git#commit=$_commit")
+b2sums=('SKIP')
 
+pkgver() {
+  cd pounce
+
+  git describe --tags
+}
+
+prepare() {
+  cd pounce
+
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/share/man
+}
 build() {
-      cd "${pkgname}-${pkgver}"
-      ./configure --prefix=/usr
-      make all
+  cd pounce
+
+  make all
 }
 
 package() {
-      cd "${pkgname}-${pkgver}"
-          make DESTDIR="$pkgdir/" install
+  cd pounce
+
+  make DESTDIR="$pkgdir" install
 }
