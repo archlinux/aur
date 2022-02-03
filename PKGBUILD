@@ -3,7 +3,7 @@
 
 pkgname=devpi-common
 pkgver=3.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Utilities jointly used by devpi-server and devpi-client"
 arch=('any')
 url="https://doc.devpi.net/"
@@ -23,7 +23,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  pytest -x
+  PYTHONPATH=./ pytest -x -c /dev/null
 }
 
 package() {

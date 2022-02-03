@@ -1,7 +1,7 @@
 pkgbase = devpi-common
 	pkgdesc = Utilities jointly used by devpi-server and devpi-client
 	pkgver = 3.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://doc.devpi.net/
 	changelog = CHANGELOG
 	arch = any
