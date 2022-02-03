@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=bamtools
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="C++ API & command-line toolkit for working with BAM data"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gcc-libs' 'zlib')
 makedepends=('cmake')
 source=($pkgname-$pkgver.tar.gz::https://github.com/pezmaster31/bamtools/archive/v$pkgver.tar.gz)
-sha512sums=('f2c761c5bf923cf2f3db3dc54e40b4781307106b9177784f930aab619bd11fae3b343f3cfd232524580d39f0526a2a2f18efcf820fe4d9c951406bdb6b953afb')
+sha256sums=('4d8b84bd07b673d0ed41031348f10ca98dd6fa6a4460f9b9668d6f1d4084dfc8')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
