@@ -1,7 +1,7 @@
 pkgbase = plex-media-player
 	pkgdesc = Next generation Plex Desktop Client
 	pkgver = 2.58.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/plexinc/plex-media-player
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = plex-media-player
 	depends = qt5-quickcontrols
 	depends = p8-platform
 	depends = protobuf
+	depends = python
 	noextract = web-client-desktop-183-045db5be50e175-4.29.2-e50e175.tar.xz
 	noextract = web-client-tv-183-045db5be50e175-4.29.6-045db5b.tar.xz
 	source = plex-media-player-2.58.1-ae73e074.tar.gz::https://github.com/plexinc/plex-media-player/archive/v2.58.1-ae73e074.tar.gz
