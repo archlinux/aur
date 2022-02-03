@@ -2,7 +2,7 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=restview
-pkgver=2.9.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="A viewer for ReStructuredText documents that renders them on the fly."
 arch=(any)
@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=(
     "https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('790097eb587c0465126dde73ca06c7a22c5007ce1be4a1de449a13c0767b32dc')
+sha256sums=('2b989610aaed2fd42da64f6cdc539cf3ee70ce370bcba872db72421ad515dd1e')
 
 
 build() {
@@ -25,4 +25,3 @@ package() {
     cd "${srcdir}"/${pkgname}-${pkgver}
     python setup.py install --skip-build --root="${pkgdir}"/ --optimize=1
 }
-

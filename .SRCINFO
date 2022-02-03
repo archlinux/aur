@@ -1,6 +1,6 @@
 pkgbase = restview
 	pkgdesc = A viewer for ReStructuredText documents that renders them on the fly.
-	pkgver = 2.9.2
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://mg.pov.lt/restview/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = restview
 	depends = python-readme-renderer
 	depends = python-setuptools
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/r/restview/restview-2.9.2.tar.gz
-	sha256sums = 790097eb587c0465126dde73ca06c7a22c5007ce1be4a1de449a13c0767b32dc
+	source = https://files.pythonhosted.org/packages/source/r/restview/restview-3.0.0.tar.gz
+	sha256sums = 2b989610aaed2fd42da64f6cdc539cf3ee70ce370bcba872db72421ad515dd1e
 
 pkgname = restview
-
