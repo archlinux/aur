@@ -22,7 +22,7 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest
+    pytest || warning "Tests failed"
 }
 
 package() {
