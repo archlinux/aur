@@ -1,6 +1,6 @@
 pkgbase = qv
 	pkgdesc = Quick Viewer for 2D data (images, renderings, sensor data, ...)
-	pkgver = 4.1
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://marlam.de/qv/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = qv
 	makedepends = cmake
 	depends = tad
 	depends = qt5-base
-	source = https://marlam.de/qv/releases/qv-4.1.tar.gz
-	sha256sums = e3f8c8e04e9a52a33b7190c59687f7a2bb2d40a0a8b325d44e3bb673b0eca850
+	source = https://marlam.de/qv/releases/qv-4.4.tar.gz
+	sha256sums = cb27779bd606ff208945c5c0e8a40f23aac8bebadc21ce334e380aa8aca0e8a7
 
 pkgname = qv
-
