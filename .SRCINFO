@@ -1,7 +1,7 @@
 pkgbase = gtk3-classic
 	pkgdesc = GTK3 patched to provide a more classic experience
 	pkgver = 3.24.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
 	arch = x86_64
@@ -69,7 +69,7 @@ pkgbase = gtk3-classic
 	conflicts = gtk3
 	conflicts = gtk3-typeahead
 	conflicts = gtk3-print-backends
-	source = git+https://github.com/lah7/gtk3-classic.git#commit=644ddc7a02e0b83f2fe4ccd6e435f091baf30521
+	source = git+https://github.com/lah7/gtk3-classic.git#commit=884d0e68d3926c2e4d3276747a97a8dbf0ff802a
 	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.31.tar.xz
 	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/348566928ab92521329812792b77b491626e64cc/trunk/gtk-query-immodules-3.0.hook
 	source = settings.ini
