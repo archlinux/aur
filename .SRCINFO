@@ -1,6 +1,6 @@
 pkgbase = aniwrapper-git
 	pkgdesc = A rofi wrapper around a modified ani-cli: a cli to browse and watch anime
-	pkgver = r212.4fb1c11
+	pkgver = r217.a726b9d
 	pkgrel = 1
 	url = https://github.com/ksyasuda/aniwrapper
 	arch = any
