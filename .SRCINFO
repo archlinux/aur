@@ -1,10 +1,10 @@
 pkgbase = xde-sounds-git
 	pkgdesc = XDG sound themes for the X Desktop Environment
 	pkgver = 1.1.r1.g6fd8bb5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbidulock/xde-sounds
 	arch = any
-	groups = xde
+	groups = xde-git
 	license = GPL
 	makedepends = git
 	makedepends = pkgconfig
@@ -13,10 +13,9 @@ pkgbase = xde-sounds-git
 	makedepends = sox
 	depends = glib2
 	depends = libcanberra
-	provides = xde-sounds=1.1-1
+	provides = xde-sounds=1.1-2
 	conflicts = xde-sounds
 	source = xde-sounds-git::git://github.com/bbidulock/xde-sounds.git
 	sha256sums = SKIP
 
 pkgname = xde-sounds-git
-
