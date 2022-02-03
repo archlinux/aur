@@ -1,6 +1,6 @@
 pkgbase = tad
 	pkgdesc = Library and tools to handle data arrays in C++
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://marlam.de/tad/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = tad
 	depends = libpng
 	depends = libtiff
 	depends = openexr
-	source = https://marlam.de/tad/releases/tad-2.2.tar.gz
-	sha256sums = c22f26a0c79267dec323e710237db20b5698e1bafac65a4715986ab9fdc37f4d
+	source = https://marlam.de/tad/releases/tad-2.3.tar.gz
+	sha256sums = b42405da920106ae8ab1fce1625e0c0c1fec201fd3f970f26d25035c7b95560f
 
 pkgname = tad
