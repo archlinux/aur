@@ -1,7 +1,7 @@
 pkgbase = obs-rendering-lag
 	pkgdesc = This plugin is intentionally add lags during video rendering
 	pkgver = 0.1.0_rc1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/rendering-lag-plugin.1365/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = obs-rendering-lag
 	license = GPL2
 	makedepends = cmake
 	depends = obs-studio
+	options = debug
 	source = obs-rendering-lag-0.1.0-rc1.tar.gz::https://github.com/norihiro/obs-rendering-lag/archive/0.1.0-rc1.tar.gz
 	sha256sums = 2bb64c82f7f11c3334935c4e5201c5f6f290490afbac3c5dd35c6e0dbe178d90
 
