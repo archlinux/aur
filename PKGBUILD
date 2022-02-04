@@ -12,7 +12,7 @@ fi
 _pluginname=tuna
 pkgname=obs-$_pluginname
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 arch=("i686" "x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
@@ -20,6 +20,7 @@ license=('GPL2')
 depends=("obs-studio" "libmpdclient" "taglib")
 makedepends=("cmake" "vlc" "git")
 conflicts=("obs-plugin-tuna-bin" "obs-plugin-tuna-git")
+options=('debug')
 source=(
   "$_pluginname::git+https://github.com/univrsal/tuna.git#tag=v$pkgver"
   "FindLibMPDClient.cmake"
@@ -46,6 +47,7 @@ prepare() {
 build() {
   cd $_pluginname
   cmake -B build\
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX='/usr' \
   -DGLOBAL_INSTALLATION=ON \
   -DCREDS="$SPOTIFY_TOKEN" \
