@@ -1,0 +1,12 @@
+. /usr/share/makepkg/util/message.sh
+colorize
+
+post_install() {
+  sed -i -e 's,.*GRUB_THEME=.*,GRUB_THEME="/usr/share/grub/themes/catppuccin/theme.txt",' /etc/default/grub
+  msg "Catppuccin theme set as default! Run 'grub-mkconfig -o /boot/grub/grub.cfg' to apply theme."
+}
+
+post_remove() {
+  sed -i -e 's,.*GRUB_THEME=.*,#GRUB_THEME="/path/to/gfxtheme",' /etc/default/grub
+  warning "Removed Catppuccin GRUB theme! Run 'grub-mkconfig -o /boot/grub/grub.cfg' to deactivate theme."
+}
