@@ -2,8 +2,8 @@
 _base=adaptmesh
 pkgname=python-${_base}
 pkgdesc="Adaptive mesh generation and refinement"
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/kinnala/${_base}"
 license=(MIT)
@@ -11,7 +11,7 @@ depends=(python-matplotlib python-scikit-fem)
 makedepends=(python-setuptools python-pip)
 checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6fc91778dcaadce5060abbf16e329256c701efa93318c0a2c0ff15251bfce6119695d7de48a9b9c328efd540e5e5101cc5fd16228f845870394f33fec2246457')
+sha512sums=('0fba25cd035178c373d8df5e53459bd50019dac8434d0370e8f79dc8fd5a3886f211b49886fd8bfcd056b588b16f97288f3b889abdb650603c8ede44465216ed')
 
 build() {
   cd "${_base}-${pkgver}"
