@@ -6,6 +6,7 @@ pkgbase = openh264
 	arch = x86_64
 	arch = i686
 	arch = aarch64
+	arch = armv7h
 	license = BSD
 	makedepends = nasm
 	depends = gcc-libs
