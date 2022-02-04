@@ -5,7 +5,7 @@ pkgname=m68k-atari-mint-gcc
 _pkgname=gcc
 _target="m68k-atari-mint"
 pkgver=4.6.4
-pkgrel=12
+pkgrel=13
 pkgdesc="The GNU Compiler Collection for the Motorola M68000 architecture"
 url="http://www.gnu.org/software/gcc/"
 arch=('i686' 'x86_64')
@@ -36,11 +36,8 @@ build() {
 
 	cd ${srcdir}/build
 
-        CFLAGS=${CFLAGS//-D_FORTIFY_SOURCE=?/}
-        export CFLAGS
-
-        CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
-        export CPPFLAGS
+	CFLAGS=${CFLAGS//-Werror=format-security/}
+	export CFLAGS
 
 	../${_pkgname}-${pkgver}/configure \
 		"--prefix=${_sysroot}" \
