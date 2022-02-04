@@ -1,6 +1,6 @@
 pkgbase = python-fedmsg
 	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://fedmsg.readthedocs.org/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-fedmsg
 	depends = python-pygments
 	depends = python-pyzmq
 	depends = python-arrow
-	source = https://github.com/fedora-infra/fedmsg/archive/1.1.1.tar.gz
-	sha256sums = 3471f5a2750d2b8742f65c5957bd22ad4a7a09cb97281eb434b938837827eebc
+	source = https://github.com/fedora-infra/fedmsg/archive/1.1.2.tar.gz
+	sha256sums = 284cfb08dfa1fff7e96d4debf0d43a66e90f92390979dafab7e9c00e838b5ff1
 
 pkgname = python-fedmsg
-

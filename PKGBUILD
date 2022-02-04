@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=python-fedmsg
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages'
 arch=(any)
@@ -11,7 +11,7 @@ depends=('python-kitchen' 'python-pygments' 'python-pyzmq' 'python-arrow')
 makedeps=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/0e/59/3a085f378b6200a6b9eb6d8f42654fb35ac181e095221796d5248372eb2f/fedmsg-0.18.2.tar.gz")
 source=("https://github.com/fedora-infra/fedmsg/archive/${pkgver}.tar.gz")
-sha256sums=('3471f5a2750d2b8742f65c5957bd22ad4a7a09cb97281eb434b938837827eebc')
+sha256sums=('284cfb08dfa1fff7e96d4debf0d43a66e90f92390979dafab7e9c00e838b5ff1')
 
 package() {
   cd "fedmsg-${pkgver}"
