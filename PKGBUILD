@@ -9,7 +9,7 @@
 
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=4.2.8
+pkgver=5.0.6
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -22,18 +22,18 @@ makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-
 checkdepends=("python-pymongo")
 backup=("etc/${pkgname}.conf")
 source=(
-  "http://downloads.${pkgname}.org/src/${pkgname}-src-r${pkgver}.tar.gz"
+  "https://fastdl.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
 )
-sha256sums=('e8880277e3910afd82c71ed61861d518f2040cbc062e00a26d53a3224284db8f'
+sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39')
 
 _scons_args=(
-  #--use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
+  --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
   --use-system-snappy
-  # --use-system-yaml # https://jira.mongodb.org/browse/SERVER-43980
+   --use-system-yaml # https://jira.mongodb.org/browse/SERVER-43980
   --use-system-zlib
   #--use-system-wiredtiger # https://jira.mongodb.org/browse/SERVER-42813 upstream broke this in 4.2.0, says in meantime not to use it
   --use-system-stemmer
@@ -43,7 +43,8 @@ _scons_args=(
   # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839 marked as fixed, but still doesn't compile.  MongoDB uses custom patches.
   # --use-system-icu      # Doesn't compile
   --use-system-tcmalloc   # in gperftools
-  # --use-system-boost    # Doesn't compile
+  --use-system-boost    # Doesn't compile
+  --use-system-zstd
   # --use-system-valgrind # Compiles, but namcap says not used
   # --use-system-sqlite   #   "
   # --use-system-mongo-c  # Doesn't compile
