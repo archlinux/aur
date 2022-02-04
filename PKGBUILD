@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=jna
-pkgver=5.9.0
+pkgver=5.10.0
 pkgrel=1
 pkgdesc="Access native libraries with pure Java code."
 arch=('any')
@@ -12,7 +12,7 @@ source=("https://repo1.maven.org/maven2/net/java/dev/jna/jna/${pkgver}/jna-${pkg
         'https://raw.githubusercontent.com/java-native-access/jna/master/AL2.0'
         'https://raw.githubusercontent.com/java-native-access/jna/master/LGPL2.1'
         )
-sha256sums=('eafcc780b445434d3c5ae7fa2fb6665de1a7560d537d2c408a8e80cd14d27161'
+sha256sums=('e335c10679f743207d822c5f7948e930319835492575a9dba6b94f8a3b96fcc8'
             '0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594'
             'eea173a556abac0370461e57e12aab266894ea6be3874c2be05fd87871f75449'
             )
