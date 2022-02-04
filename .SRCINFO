@@ -1,7 +1,7 @@
 pkgbase = obs-spectralizer
 	pkgdesc = Audio visualization for obs-studio using fftw, based on cli-visualizer
 	pkgver = 1.3.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://obsproject.com/forum/resources/spectralizer.861/
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = obs-spectralizer
 	makedepends = cmake
 	depends = obs-studio
 	depends = fftw
+	options = debug
 	source = spectralizer-1.3.4.tar.gz::https://github.com/univrsal/spectralizer/archive/v1.3.4.tar.gz
 	sha256sums = f257feff9e4da7df9e9c580a99b3c7d6052a641bb5cb1fdabc95c7c0f7db85d6
 
