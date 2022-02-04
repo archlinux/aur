@@ -2,7 +2,7 @@
 # Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=lmod
-pkgver=8.6.8
+pkgver=8.6.11
 pkgrel=1
 pkgdesc="Environment modules system based on Lua that handles MODULEPATH hierarchical problem. Supports also legacy TCL modules"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('tcsh: supported shell'
 conflicts=('lmod-git' 'env-modules')
 provides=('env-modules')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TACC/Lmod/archive/$pkgver.tar.gz")
-sha256sums=('1bca1f44169d25a1c6b35a3ff6e2f74fc60636809ba8523ad44444f9c4642dc1')
+sha256sums=('2077aa0af1959a0c7b925eba2be1fa3277e75aaf4da7da34d93583ae78445b1f')
 
 build() {
   cd "$srcdir"/Lmod-$pkgver || exit 1
