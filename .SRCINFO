@@ -6,6 +6,7 @@ pkgbase = system76-scheduler-git
 	install = install.sh
 	arch = x86_64
 	license = MPL-2
+	makedepends = git
 	makedepends = rust
 	makedepends = make
 	source = git+https://github.com/pop-os/system76-scheduler
