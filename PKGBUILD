@@ -114,16 +114,6 @@ prepare() {
     patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
   fi
 
-  # Substitute the custom function 'av_stream_get_first_dts'; will need to
-  # switch to bundled ffmpeg when we're no longer using ffmpeg 4.4 in Arch
-  # Upstream commit that made first_dts internal causing Chromium to add a
-  # custom function: https://github.com/FFmpeg/FFmpeg/commit/591b88e6787c4
-  # https://crbug.com/1251779
-  patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
-
-  # https://crbug.com/1207478
-  patch -Np0 -i ../unexpire-accelerated-video-decode-flag.patch
-
   # Upstream fixes
   patch -Np1 -F3 -i ../downgrade-duplicate-peer-error-to-dvlog.patch
   patch -Np1 -i ../fix-build-break-with-system-libdrm.patch
