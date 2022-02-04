@@ -1,17 +1,17 @@
 pkgbase = toppler
 	pkgdesc = A reimplementation of the classic jump & run game "Nebulus"
-	pkgver = 1.1.6
-	pkgrel = 4
-	url = https://sourceforge.net/projects/toppler/
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://gitlab.com/roever/toppler/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = gcc-libs
-	depends = sdl_mixer
+	depends = sdl2_mixer
 	depends = zlib
-	source = https://downloads.sourceforge.net/toppler/toppler-1.1.6.tar.gz
+	source = https://gitlab.com/roever/toppler/-/archive/v1.2/toppler-v1.2.tar.gz
 	source = toppler.desktop
-	md5sums = 9df66bf36eea79553019baf768b36cdd
+	md5sums = c9a9cd45588bfe721312ed7137b62d47
 	md5sums = 95f97271fe1f629c396d20bb4d21b924
 
 pkgname = toppler
