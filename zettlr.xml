@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="text/markdown">
+        <glob pattern="*.md"/>
+            <comment>Markdown document</comment>
+        <icon name="x-office-document" />
+    </mime-type>
+    <mime-type type="text/markdown">
+        <glob pattern="*.markdown"/>
+            <comment>Markdown document</comment>
+        <icon name="x-office-document" />
+    </mime-type>
+    <mime-type type="text/markdown">
+        <glob pattern="*.rmd"/>
+            <comment>RMarkdown document</comment>
+        <icon name="x-office-document" />
+    </mime-type>
+</mime-info>
