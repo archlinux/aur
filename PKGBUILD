@@ -9,7 +9,7 @@ url="https://github.com/miquels/webdav-server-rs"
 license=('APACHE')
 makedepends=('git' 'rust')
 depends=('pam')
-source=(git+https://github.com/miquels/webdav-server-rs 'webdav-server.service')
+source=(git+https://github.com/woshiluo/webdav-server-rs 'webdav-server.service')
 backup=('etc/webdav-server-rs/config.toml')
 
 md5sums=('SKIP'
