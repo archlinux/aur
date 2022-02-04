@@ -1,8 +1,8 @@
 # Maintainer: Srevin Saju <srevinsaju@sugarlabs.org>
 
 pkgname=archivy-git
-pkgver=v1.4.0.r4.g1183863
-pkgrel=4
+pkgver=v1.7.0.r2.g75ee46b
+pkgrel=1
 pkgdesc="A self-hosted knowledge repository, to preserve useful content to your knowledge bank."
 arch=('any')
 url="https://github.com/archivy/archivy"
@@ -13,14 +13,15 @@ depends=('python-flask' 'python-flask-wtf' 'python-wtforms'
          'python-beautifulsoup4' 'python-elasticsearch'
          'python-dotenv' 'python-frontmatter' 'python-requests'
          'python-tinydb' 'python-validators' 'python-flask-login' 'python-brotli'
-         'python-click-plugins' 'python-html2text' 'python-flask-compress')
+         'python-click-plugins' 'python-html2text' 'python-flask-compress'
+         'python-readability-lxml')
 optdepends=('elasticsearch')
-source=("git+https://github.com/archivy/archivy.git#commit=11838634e6b171ba49533f6db1230ddd1a332eab"
+source=("git+https://github.com/archivy/archivy.git#commit=75ee46be486c3196553a741c199b0d40445a71e1"
         "00-do-not-pin-requirements.patch"
-        "01-flask-v2.patch")
+        "286.patch")
 sha256sums=('SKIP'
             '538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4'
-            'f385bd52038f102653a5def0488db28003baaeb52170180d03d5276e6d8fc6cc')
+            '8748170782fb569eda458520fb6895dfe01744f3d7416c7428b5810fb032a3ee')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
@@ -28,7 +29,7 @@ conflicts=("${pkgname%-git}")
 prepare() {
     cd "$srcdir/${pkgname%-git}"
     git apply "$srcdir/00-do-not-pin-requirements.patch"
-    git apply "$srcdir/01-flask-v2.patch"
+    git apply "$srcdir/286.patch"
 }
 
 build() {

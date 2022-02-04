@@ -1,7 +1,7 @@
 pkgbase = archivy-git
 	pkgdesc = A self-hosted knowledge repository, to preserve useful content to your knowledge bank.
-	pkgver = v1.4.0.r4.g1183863
-	pkgrel = 4
+	pkgver = v1.7.0.r2.g75ee46b
+	pkgrel = 1
 	url = https://github.com/archivy/archivy
 	arch = any
 	license = MIT
@@ -24,14 +24,15 @@ pkgbase = archivy-git
 	depends = python-click-plugins
 	depends = python-html2text
 	depends = python-flask-compress
+	depends = python-readability-lxml
 	optdepends = elasticsearch
 	provides = archivy
 	conflicts = archivy
-	source = git+https://github.com/archivy/archivy.git#commit=11838634e6b171ba49533f6db1230ddd1a332eab
+	source = git+https://github.com/archivy/archivy.git#commit=75ee46be486c3196553a741c199b0d40445a71e1
 	source = 00-do-not-pin-requirements.patch
-	source = 01-flask-v2.patch
+	source = 286.patch
 	sha256sums = SKIP
 	sha256sums = 538f7d96138f421d70ed72a8f101c1095726d5ee53c19e6cd924b30ca6a7a3a4
-	sha256sums = f385bd52038f102653a5def0488db28003baaeb52170180d03d5276e6d8fc6cc
+	sha256sums = 8748170782fb569eda458520fb6895dfe01744f3d7416c7428b5810fb032a3ee
 
 pkgname = archivy-git
