@@ -5,4 +5,4 @@ TSK_HOME="${TSK_HOME:-/bin}"
 export SOLR_LOGS_DIR
 export TSK_HOME
 
-/opt/autopsy/bin/autopsy
+/opt/autopsy/bin/autopsy "$@"

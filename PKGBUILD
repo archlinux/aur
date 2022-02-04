@@ -4,7 +4,7 @@
 _pkgname=autopsy
 pkgname=${_pkgname}-bin
 pkgver=4.19.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensic tools'
 arch=(x86_64)
 url='http://www.sleuthkit.org/autopsy/'
@@ -20,7 +20,7 @@ source=(
 	autopsy)
 sha512sums=('3e63cd25559e445627207171b084c51e06192ec5808f32e8ed4881f116652c806e75c1c4339ac6fd61631ec98f6fdbd75e8d279b2f52c856baed3fe53356c4fe'
             'a7f27dfa0bdd01f216f84c032851025c047f1e0fe1b8d3aff7da7c64ad60b529fd6202a2bc21a7f834961ede2ef084c4937af53e14b77418ed9f1b06f410a54f'
-            '17dc76ffc4cc414c60f71f2fa3225fa66c34dcbd9ec9fcd6c4b228e9fbb903e918a0be14efe68516e7d3716ecdc28f3aa4b3b8b1d8b8d56fee7592d0b099ca66')
+            'd734b45fb66789337cf348b544b62afaa913300109a5d68e66c8bead11da03bb1bfd52df3488004cb494552abe374e307f01de3c22c427fb218a0dfd9b398d23')
 
 package() {
   cd "${_pkgname}-${pkgver}"
