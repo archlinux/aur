@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=streamlink-git
-pkgver=3.0.0.r0.ga90bfadc
+pkgver=3.1.1.r2.g8e5398cb
 pkgrel=1
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player (livestreamer fork)'
 arch=('any')
@@ -19,11 +19,6 @@ sha512sums=('SKIP')
 pkgver() {
   cd "${pkgname%-*}"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "${pkgname%-*}"
-  sed -i 's/websocket-client >=1.2.1,<2.0/websocket-client/g' setup.cfg
 }
 
 build() {
