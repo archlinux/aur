@@ -10,6 +10,7 @@ pkgbase = avalanchego
 	depends = gcc
 	source = https://github.com/ava-labs/avalanchego/releases/download/v1.7.4/avalanchego-linux-amd64-v1.7.4.tar.gz.sig
 	source = https://github.com/ava-labs/avalanchego/releases/download/v1.7.4/avalanchego-linux-amd64-v1.7.4.tar.gz
+	validpgpkeys = 5395BDA1129CAC3E74699D07D93080B0C0D5FE8B
 	md5sums = SKIP
 	md5sums = SKIP
 
