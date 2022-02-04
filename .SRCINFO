@@ -1,12 +1,12 @@
 pkgbase = python-asyncstdlib
 	pkgdesc = The missing toolbox for an async world
-	pkgver = 3.10.2
+	pkgver = 3.10.3
 	pkgrel = 1
 	url = https://github.com/maxfischer2781/asyncstdlib
 	arch = any
 	license = MIT
 	depends = python-typing_extensions
-	source = https://pypi.org/packages/source/a/asyncstdlib/asyncstdlib-3.10.2.tar.gz
-	sha256sums = 474a3e73db68fb5a7fd416ac08354a6f137be39f56a4bc315662f1dfd580a4fb
+	source = https://pypi.org/packages/source/a/asyncstdlib/asyncstdlib-3.10.3.tar.gz
+	sha256sums = 4d836c65769761a47795667ed72f3de6cf4a25e480959f75fd91eb8eb5edc640
 
 pkgname = python-asyncstdlib
