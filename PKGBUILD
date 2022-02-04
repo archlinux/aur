@@ -2,75 +2,78 @@
 # Contributor: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr-git
-_name=Zettlr
-pkgver=1.8.4.r27.gcbf81d8
+_pkgname=Zettlr
+pkgver=2.1.3.r55.g3d4749f
 pkgrel=1
 pkgdesc='A Markdown Editor for the 21st century'
-arch=('x86_64')
-url='https://www.zettlr.com'
-license=('GPL')
-depends=('electron'
-         'otf-crimson-text'
-         'ttf-webhostinghub-glyphs')
-makedepends=('gendesk'
-             'git'
-             'gulp'
-             'node-prune'
-             'yarn')
-optdepends=('pandoc: For exporting to various format'
-            'texlive-bin: For Latex support'
-            'ttf-lato: Display output in a more comfortable way')
+arch=(x86_64)
+url=https://www.zettlr.com
+_url="https://github.com/$_pkgname/$_pkgname"
+license=(GPL)
+depends=(electron
+         otf-crimson-text
+         pandoc
+         ttf-inconsolata
+         ttf-liberation)
+makedepends=(gendesk
+             git
+             nodejs-lts-gallium # check .github/workflows/build.yml for NODE_VERSION
+             yarn)
+optdepends=('texlive-bin: For Latex support')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+https://github.com/$_name/$_name"
-        "${pkgname%-git}.sh")
+source=("$pkgname::git+$_url.git"
+        "${pkgname%-git}.sh"
+        "${pkgname%-git}.xml")
 sha256sums=('SKIP'
-            '5e89480043eedfbc85696d078663e6dae834e23b215e2ea41ad6e1af9427e0ab')
-_mimetype=text/markdown
-_categories=Office
+            'c96a7d8e8b538896721e1657aaa7a1fc79836c50f90888f77ccea23e90230326'
+            'c3ecbb490a1d4fa5bc42f7166cc375e5629a452d25bb1d4facb5541938681292')
+
 _yarnargs="--cache-folder '$srcdir/cache' --link-folder '$srcdir/link'"
 
-pkgver() {
-    cd "$pkgname"
-    git describe --long --tags --abbrev=7 --match="v*" HEAD |
-        sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+prepare() {
+	local _electronVersion=$(electron --version | sed -e 's/^v//')
+	gendesk -q -f -n \
+		--pkgname "$pkgname" \
+		--pkgdesc "$pkgdesc" \
+		--name="$_pkgname" \
+		--categories=Office \
+		--custom StartupWMClass="$_pkgname"
+	cd "$pkgname"
+	echo -ne '#!/usr/bin/env bash\n\nexit 0' > scripts/get-pandoc.sh
+	sed -i -e '/"electron"/d' package.json
+	yarn $_yarnargs install --frozen-lockfile --ignore-scripts
+	yarn $_yarnargs add --dev --no-lockfile electron@$_electronVersion
+	yarn $_yarnargs install --pure-lockfile # postinstall script installs electron-builder deps
+	ln -sf /usr/bin/pandoc resources/pandoc-linux-x64
+	yarn $_yarnargs lang:refresh
+	yarn $_yarnargs csl:refresh
 }
 
-prepare() {
-    local _electronVersion=$(electron --version | sed -e 's/^v//')
-    gendesk -f -n --custom StartupWMClass="$_name"
-    cd "$pkgname"
-    sed -i -e '/"electron"/d;/postinstall/d' package.json
-    yarn install $_yarnargs --frozen-lockfile
-    yarn add $_yarnargs --dev --no-lockfile \
-        electron@$_electronVersion
-    ln -sf /dev/null resources/pandoc
-    yarn lang:refresh
-    yarn csl:refresh
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags --abbrev=7 --match="v*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$pkgname"
-    local NODE_ENV=''
-    yarn install $_yarnargs --pure-lockfile
-    NODE_ENV=production yarn run webpack
-    yarn reveal:build
-    # pushd source
-    # yarn install $_yarnargs --pure-lockfile
-    node-prune node_modules
-    find . -type d -name fonts -exec rm -rfv {} +
+	cd "$pkgname"
+	local NODE_ENV=''
+	yarn $_yarnargs reveal:build
+	yarn $_yarnargs "package:linux-x64"
 }
 
 package() {
-    cd "$pkgname"
-    local _destdir="usr/lib/${pkgname%-git}"
-    install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    install -dm755 "$pkgdir/$_destdir"
-    cp -r --no-preserve=ownership --preserve=mode source/* "$pkgdir/$_destdir"
-    for px in 16 24 32 48 64 96 128 256 512; do
-        install -Dm644 "resources/icons/png/${px}x$px.png" \
-            "$pkgdir/usr/share/icons/hicolor/${px}x$px/apps/${pkgname%-git}.png"
-    done
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname%-git}.desktop"
-    install -Dm644 "source/renderer/assets/img/zettlr-official-logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -Dm0755 "${source[1]}" "$pkgdir/usr/bin/${pkgname%-git}"
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" "${pkgname%-git}.desktop"
+	cd "$pkgname"
+	local _destdir="usr/lib/${pkgname%-git}"
+	install -Dm0644 -t "$pkgdir/$_destdir/resources/" \
+		"out/$_pkgname-linux-x64/resources/"{app.asar,icon.code.icns}
+	ln -sf /usr/bin/pandoc "$pkgdir/$_destdir/resources/pandoc"
+	for px in 16 24 32 48 64 96 128 256 512 1024; do
+		install -Dm0644 "resources/icons/png/${px}x${px}.png" \
+			"$pkgdir/usr/share/icons/hicolor/${px}x${px}/apps/${pkgname%-git}.png"
+	done
+    install -Dm0644 -t "$pkgdir/usr/share/mime/packages/" "../${source[2]}"
 }

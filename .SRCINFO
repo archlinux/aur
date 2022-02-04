@@ -1,27 +1,27 @@
 pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
-	pkgver = 1.8.4.r27.gcbf81d8
+	pkgver = 2.1.3.r55.g3d4749f
 	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
 	makedepends = git
-	makedepends = gulp
-	makedepends = node-prune
+	makedepends = nodejs-lts-gallium
 	makedepends = yarn
 	depends = electron
 	depends = otf-crimson-text
-	depends = ttf-webhostinghub-glyphs
-	optdepends = pandoc: For exporting to various format
+	depends = pandoc
+	depends = ttf-inconsolata
+	depends = ttf-liberation
 	optdepends = texlive-bin: For Latex support
-	optdepends = ttf-lato: Display output in a more comfortable way
-	provides = zettlr=1.8.4.r27.gcbf81d8
+	provides = zettlr=2.1.3.r55.g3d4749f
 	conflicts = zettlr
-	source = zettlr-git::git+https://github.com/Zettlr/Zettlr
+	source = zettlr-git::git+https://github.com/Zettlr/Zettlr.git
 	source = zettlr.sh
+	source = zettlr.xml
 	sha256sums = SKIP
-	sha256sums = 5e89480043eedfbc85696d078663e6dae834e23b215e2ea41ad6e1af9427e0ab
+	sha256sums = c96a7d8e8b538896721e1657aaa7a1fc79836c50f90888f77ccea23e90230326
+	sha256sums = c3ecbb490a1d4fa5bc42f7166cc375e5629a452d25bb1d4facb5541938681292
 
 pkgname = zettlr-git
-
