@@ -3,33 +3,23 @@
 
 pkgname=xfce-classiclooks
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications."
 arch=('any')
 url="https://sourceforge.net/projects/classiclooks/"
 license=(GPLv2)
 depends=(gtk-engine-murrine)
 optdepends=(lib32-gtk-engine-murrine qt5-styleplugins noto-fonts elementary-xfce-icons nemo)
-source=(https://downloads.sourceforge.net/project/classiclooks/classiclooks-${pkgver}.zip)
-sha512sums=('f416b7808d4d368915e0a431c25f62151695cd7aec4771e6873f6f1cf6ede8d65510ad4e9f746a0f253b2efa534f60f5e58dd80ae1bdf5869df66f7b84744bb2')
-conflicts=('xfce-evolution-themes')
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/JSkier21/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('b0ba8631303a338c33b34963a0e6b991514ac6012829ce968d5c0d22ad3d3ebbefbf965258fbe2070ba1b0d39f73843ff656c411ff7cec5602f348215c89cb18')
 
 package() {
-    # Set correct mode on files from zip source extraction
-    find $srcdir -type f -exec chmod 644 {} +
-    find $srcdir -type d -exec chmod 755 {} +
-
     # Prepare all theme directories for package
-    for i in $srcdir/ClassicLooks*; do
+    for i in ${srcdir}/xfce-classiclooks-$pkgver/ClassicLooks*; do
 	    if [ -d "$i" ]; then
+		    echo $i
 		    install -dm 755 "$pkgdir/usr/share/themes/${i##*/}"
-    		    cp -rp "${i##*/}" "$pkgdir/usr/share/themes/"
+    		    cp -rp "$i" "$pkgdir/usr/share/themes/"
 	    fi
     done
-
-    # Copy QT font fix over to global font conf
-    install -dm 755 "$pkgdir/etc/fonts/conf.avail/" "$pkgdir/etc/fonts/conf.d"
-
-    # Remove unnecessary TOOLS folder
-    rm -rf "$pkgdir/usr/share/themes/ClassicLooks/TOOLS"
 }

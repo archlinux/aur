@@ -1,7 +1,7 @@
 pkgbase = xfce-classiclooks
 	pkgdesc = The Xfce Evolution theme attempts to rid the Xfce desktop of visual distractions by providing a more consistent look (buttons, scrollbars, menus, etc) across older and newer applications.
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/classiclooks/
 	arch = any
 	license = GPLv2
@@ -11,8 +11,7 @@ pkgbase = xfce-classiclooks
 	optdepends = noto-fonts
 	optdepends = elementary-xfce-icons
 	optdepends = nemo
-	conflicts = xfce-evolution-themes
-	source = https://downloads.sourceforge.net/project/classiclooks/classiclooks-2.2.0.zip
-	sha512sums = f416b7808d4d368915e0a431c25f62151695cd7aec4771e6873f6f1cf6ede8d65510ad4e9f746a0f253b2efa534f60f5e58dd80ae1bdf5869df66f7b84744bb2
+	source = xfce-classiclooks-2.2.0.tar.gz::https://github.com/JSkier21/xfce-classiclooks/archive/v2.2.0.tar.gz
+	sha512sums = b0ba8631303a338c33b34963a0e6b991514ac6012829ce968d5c0d22ad3d3ebbefbf965258fbe2070ba1b0d39f73843ff656c411ff7cec5602f348215c89cb18
 
 pkgname = xfce-classiclooks
