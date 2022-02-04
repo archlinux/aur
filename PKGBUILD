@@ -2,7 +2,7 @@
 # Inspired from the PKGBUILD for vscodium-bin and code-stable-git.
 
 pkgname=vscodium-git
-pkgver=1.63.1.r22.g6a86200
+pkgver=1.64.0.r0.g2dab7cf
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest commit)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,8 +16,8 @@ microsofturl='https://github.com/microsoft/vscode.git'
 stableversionurl='https://update.code.visualstudio.com/api/update/darwin/stable/lol'
 license=('MIT')
 
-# Version of NodeJS that will be used to create the build. Sinds 1.58.0, Codium requires a version >=14 and <=17.
-_nodejs='14.16.0'
+# Version of NodeJS that will be used to create the build. Sinds 1.64.0, Codium requires version 14 >= 14.17.0.
+_nodejs='14.19.0'
 
 depends=(
     'fontconfig'
