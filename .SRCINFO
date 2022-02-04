@@ -12,7 +12,7 @@ pkgbase = seer-gdb-git
 	depends = qt5-base
 	depends = gdb
 	provides = seer-gdb
-	conflicts = seer-gdb-git
+	conflicts = seer-gdb
 	source = seer::git+https://github.com/epasveer/seer.git
 	md5sums = SKIP
 
