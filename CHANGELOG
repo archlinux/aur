@@ -1,0 +1,682 @@
+* 9.0.1 - Feb 12 2020
+
+- Fix installation issue under some conditions
+
+* 9.0.0 - Jan 16 2020
+* (8.9.9 - beta release 1)
+
+- XPath engine. See new function "getElementsByXPathExpression" on parser,
+tags, and tag collections.
+
+- Implement many XPath features, some less-used items are not yet implemented
+(will raise an exception if you try to use them)
+
+
+* 8.1.9 - ??? ?? ????
+
+- Update runTests from 3.0.4 to 3.0.5 to fix potential issue on python2 with
+missing dependencies
+
+- Add short section to the READMEs which specify package layout, note that all
+examples are written with the assumption of the top-level module (import
+AdvancedHTMLParser) has already been performed.
+
+- Strip trailing whitespace in READMEs
+
+* 8.1.8 - Jul 22 2019
+
+- Fix accidental re-release of 8.1.6 to github, bump version to signify
+
+* 8.1.7 - Jul 20 2019
+
+- Update all forms of getElementsByClassName to support multiple classes in a single call, space-separated in a string, per update to spec.
+
+
+* 8.1.6 - Jun 21 2019
+
+- Added AdvancedHTMLParser.AdvancedHTMLParser.setDoctype method, which can be used to set the doctype, or clear the doctype, from the output .getHTML will produce
+
+- Added related doctype tests, assert we parse it correctly, and that setDoctype works correctly
+
+
+* 8.1.5 - May 3 2019
+
+- Expand some docstrings, fix copyright notices
+
+- Add attribute-name validation. The base HTML parser will feed us invalid names, for example <div id="abc"; name="hello"> will feed us a name ';'.
+
+  * The standard AdvancedHTMLParser remains best-effort, and will ignore any invalid attribute names when parsing a file/string, but will raise KeyError if you use the .setAttribute method with an invalid name. This allows us to survive parsing more error-ridden files.
+
+  * ValidatingAdvancedHTMLParser will now raise a new kind of exception - InvalidAttributeNameException if an invalid attribute name is encountered during parsing.
+
+- Update tests for new validating and attribute name issues
+
+- Strip trailing whitespace from all files
+
+
+* 8.1.4 - Nov 14 2018
+
+- Expand documentation in README
+
+- Add "slim" option to formatHTML, available with either -s or --slim. This will use either the AdvancedHTMLSlimTagFormatter (if in pretty mode, default) or AdvancedHTMLSlimTagMiniFormatter (if in mini mode, -m or --mini)
+
+- Intercept control+c in formatHTML when reading from stdin and exit cleanly instead of displaying error message
+
+- Add "--version" switch to formatHTML to print the AdvancedHTMLParser suite version
+
+* 8.1.3 - Oct 16 2018
+
+- Fix python2 inheritance issue with new SlimTag formatters
+
+
+* 8.1.2 - Oct 16 2018
+
+- Add two new formatters to AdvancedHTMLParser.Formatter - AdvancedHTMLSlimTagFormatter and AdvancedHTMLSlimTagMiniFormatter
+
+  * These represent the pretty-printer and mini-printer respectively, but will omit the trailing space on start tags,
+
+    e.x.  <span id="abc" > will become <span id="abc">
+
+  * By default, self-closing tags will retain their trailing space, e.x. <hr class="bigline" />.
+    This is for xhtml compatibility so that the "/" does not become part of the previous attribute or its own attribute
+
+    This can be toggled-off by passing "slimSelfClosing=True" to either of the new formatters, and your output will be <hr class="bigline"/>
+
+- Added tests and documentation for the two new formatter types
+
+- Ensure that AdvancedHTMLMiniFormatter is exported by the AdvancedHTMLParser.__init__.py
+
+- Add both new SlimTag formatters to be exported by AdvancedHTMLParser.__init__.py
+
+- Update the version reference within the pydoc url within the READMEs to bypass caching of previous versions
+
+
+* 8.1.1 - Oct 15 2018
+
+- Add AdvancedHTMLMiniFormatter to top-module level (so from AdvancedHTMLParser import AdvancedHTMLMiniFormatter works as well as from AdvancedHTMLParser.Formatter import AdvancedHTMLMiniFormatter)
+
+- Update "formatHTML" program
+
+  * Expand --help - Now documents the options better.
+
+  * Document the previously-implemented but unadvertised --indent='    ' argument to formatHTML, to set the level-indentation
+
+  * Add "-p" or "--pretty" to toggle pretty-printer on formatHTML program (default mode)
+
+  * Add "-m" or "--mini" to toggle the mini-printer on formatHTML program (new)
+
+
+* 8.1.0 - Oct 15 2018
+
+- Fix an issue where .classNames became no longer an attribute. [ Bug report and solution validation found by github user mninc [ https://github.com/mninc] ]
+
+- Fix an issue where under certain conditions binary attributes would have a value of string 'None' (like hidden="None" instead of just hidden in the output) [ Bug report and solution validation found by github user UntoSten [ https://github.com/UntoSten ] ]
+
+- Expand unit tests to explicitly test the above two scenarios
+
+- Fixed IndexedAdvancedHTMLParser not working in some conditions due to a typo in a previous change
+
+- Added a new formatter to AdvancedHTMLParser.Formatter - AdvancedHTMLMiniFormatter which will output mini html.
+
+  This will have all non-functional whitespace removed (keeping single-spaces which take up 1 character width), and provide no indentation.
+
+  For example, the following:
+
+'''<html><head><title>Hello World</title></head>
+ <body>
+ <div>Hello world <span>And welcome to the show.</span>
+ </div>
+ </body></html>'''
+
+  If parsed and run through AdvancedHTMLMiniFormatter would come out as:
+
+'<html ><head ><title >Hello World</title></head> <body > <div >Hello world <span >And welcome to the show.</span> </div> </body></html>'
+
+retaining a space where one would not be ignored before, but removing all non-disregarded whitespace.
+
+This feature is available on an AdvancedHTMLParser.AdvancedHTMLParser object via the new method "getMiniHTML"
+
+As a reminder, "getHTML()" on a parser will retain all original whitespace,
+
+"getFormattedHTML()" with an optional "indent" parameter (default 4 spaces per line) will pretty-print your HTML
+
+and now "getMiniHTML()" will minify it.
+
+
+
+* 8.0.1 - Nov 30 2017
+
+- Support an extra validation step on __setattribute__ on an AdvancedTag (like myTag.maxLength = something). Use this for the .maxLength attribute, in order to raise an exception when there is an invalid value. Tests included.
+
+- Fix the error where we would throw an exception when trying to access AdvancedTag.maxLength after AdvancedTag.setAttribute is used to set it to an invalid value (setAttribute does NOT perform validation, and allows any arbitrary value to be set.) Tests included.
+
+
+* 8.0.0 - Nov 30 2017
+* 7.4.0 - Nov 30 2017
+
+
+NOTE: Was originally released as 7.4.0, but since it's such a major update, I updated the major to the "8" series.
+
+
+
+- Ensure that getAttribute, setAttribute, hasAttribute, 'key' in em.attributes, etc all lowercase the key. This is how the standard operates.
+
+- Add "src", "height", and "width" as linked attributes for "img" tags (so imgEm.height = '60px' will set height='60px' on an img.) As a reminder, you can always use element.setAttribute('height', '60px') whether or not a dot-alias is setup.
+
+- Add "bgcolor" and "background" as linked attributes for "body" tag ( so bodyEm.bgcolor = 'black' will set bgcolor='black' on a body tag). Again, setAttribute/getAttribute/removeAttribute always work.
+
+- Fixed pickle with an AdvancedHTMLParser.AdvancedHTMLParser and AdvancedHTMLParser.AdvancedTag. These now work flawlessly.
+
+- Implement firstChild / firstElementChild and lastChild / lastElementChild to get the first/last child block [text or AdvancedTag] (firstChild/lastChild)  or first/last child AdvancedTag (firstElementChild/lastElementChild)
+
+- Fix name of nextElementSibling and previousElementSibling ( I had named them nextSiblingElement and previousSiblingElement, as those names make more sense, but don't match the official names found in the standard ). For now, we will retain the alternate names as aliases, but they may be marked deprecated in the future
+
+- Add AdvancedTag.append (official API name) as an alias for appendBlock. It allows you to pass either a string or an AdvancedTag and adds it as a child block.
+
+- Add "innerText" property (as an alias for .text) on AdvancedTag, which will return a string representing all the text nodes which are direct children of this node. This is read-only for now, but you can use .appendText to add a new child block of text
+
+- Add "textContent" property on AdvancedTag, which will return a string of all text nodes which appear at or beneath the given node, as they would appear in the document. Basically, this is the innerHTML without any of the markup
+
+- Update READMEs to list a few more methods and properties that are available. As always, the full documentation is available as pydoc at: http://htmlpreview.github.io/?https://github.com/kata198/AdvancedHTMLParser/blob/master/doc/AdvancedHTMLParser.html?vers=7.3.3 or the "doc" directory that comes with the distribution. Several usage examples can be found throughout the "tests" directory, available in the source distribution and also online at https://github.com/kata198/AdvancedHTMLParser/tree/master/tests/AdvancedHTMLParserTests
+
+- Add a lot more unit tests covering everything in this release, and some other minor tweaks/expansions of others. As of this release, there are 2 lines of unit test code for every 3 lines of library code (including extensive comments in library code)
+
+- Add attribute links to body tag for old (pre-HTML5) attributes on body, "link", "vlink", "alink". There is also "text" but that has a name conflict right now; another reason to use get/set Attribute methods instead.
+
+- Add support for attributes which have a binary-value through dot-access, but getAttribute and the HTML attribute is a string of "true" or "false" (versus standard boolean which are signified by present-vs-not, such as "checked"). Example is "spellcheck" which supports this.
+
+- Add "spellcheck" special attribute, which is a global (Valid for all tags).
+
+- Fixup a bug where if you do "myTag.tabIndex = 'blah'" or any non-integer, firefox sets tabIndex to "0", whereas we had an "invalid" value of -1. We now match and use 0.
+
+- Fix where "select" and "option" were not inheriting all the attribute links from "input" base
+
+- Add "spellcheck" global attribute on all tags
+
+- **Major** - Add all the tag-specific attribute links as defined by w3 for all HTML4 and HTML5 tags and attributes (for example, "noWrap" on td tag, myTdTag.noWrap = True will add "nowrap" to the html representation, myTdTag.colspan = 2 will add "colspan=2" to the html representation)
+
+- Support more special conversion of values from dot-access to html attribute syntax
+
+- Make non-binary attributes which were being stripped from the html representation when ="" has a different meaning. i.e. autocomplete shoudl show up as ' autocomplete="" ' when given an empty string value.
+
+- Implement special conversions for 'crossOrigin' attribute of images and link tags.
+
+- Implement special conversions for 'autocomplete' attribute on input and forms
+
+- Add "encoding" as an alias for "enctype" on form. This is an extension firefox at least implements, though not in w3 standard.
+
+- Implement AdvancedTag.getParentElementCustomFunction which takes a lambda and returns the first parent of given node which matches (returns True)
+
+- Implement "form" attribute on several tags (such as 'input' and 'button') which returns the form to which that element belongs (parent form), or None if not within a form tag.
+
+- Implement "colSpan" attribute on 'td' to be a clamped value from 1 to 1000 (firefox limits)
+
+- Implement "rowSpan" attribute on 'td' to be a clamped value from 0 to 65534 (firefox limits)
+
+- Implement clamping on "col" tag attribute "span" (colEm.span) between 1 and 1000 (firefox limits)
+
+- Implement AdvancedTag.getPeersCustomFilter, which takes a lambda/function that gets passed an element (each "peer" of this node) and returns True if match. Returns all matching peer nodes
+
+- Handle 'cols' and 'rows' special attributes on textarea with their defined behaviour and defaults, whilst retaining the "stringy" implementation on those same attribute names if found on a 'fieldset' tag.
+
+- Add a DOMTokenList implementation. This behaves like a list, but can be constructed from a string (by stripping whitespace so that just distinct words remain, and using those as the elements). Also, str() a DOMTokenList ( .toString() in javascript terminology ) will join by " ".
+
+- Change AdvancedTag.classList to return a DOMTokenList instead of a regular list. Stringing it will give the className now, same as in javascript.
+
+- Add "sandbox" attribute of an iframe, as a DOMTokenList special attribute
+
+- Add special conversions for "kind" attribute to a "track"
+
+- Lots of additional tests and other improvements
+
+
+
+* 7.3.1 - Nov 21 2017
+
+- Update str(AdvancedTag) to give the real HTML representation (start tag,
+inner html, and end tag) versus the former implementation which was: <start
+tag> joined direct-child text nodes only </ end tag>
+
+  The old method is still available as _old__str__, and you can revert to old
+  behaviour (why would you want to?) by doing AdvancedTag.__str__ =
+  AdvancedTag._old__str__
+
+- Add toHTML/getHTML/asHTML methods to AdvancedTag which also return an HTML
+document starting at that node
+
+- Minor updates to READMEs
+
+- Measurable performance improvements, especially in tags
+
+- Improve removeAttribute / del tag.attributes['whatever'] to perform the
+special handling / linkage required when dealing with the "style" or "class" attribute
+
+- Merge in latest distrib/runTests.py from GoodTests, which among improvements for installation / ensuring GoodTests.py is present, now it is supported to easily test python2 vs python3 just by invoking runTests.py with one or the other (i.e. if you run "python2 ./runTests.py" you'll execute the test suite in python2, vs "python3 ./runTests.py" executes in python3). Previously to do this reliably you'd have to use virtualenvs.
+
+- AdvancedTag.classList now returns a COPY, so changes don't flow back to the associated tag (just like in JS api).
+
+- Unify tag classes to be stored in a single location ( private _classNames list), and wherever used it is generated from that. Prior it was stored as a string in the attributes dict, and in the _classNames list. This caused strangeness and opened the potential for disconnects. I don't much care for this hacked impl, as 'class' needs to show up or be absent from attributes, as well as work with setAttribute, removeAttribute, it is hacked on via interception. Also, digs a slightly deeper hole for attributes to be standalone (already requires a tag to work properly). Hopefully I can come up with a better impl soon, but this at least meets the goals.
+
+- Fix nextSibling and nextSiblingElement which would throw an exception (instead of return None) when called on the last element in a set of peers. Also fix the typo in the tests which would have caught this but was preventing them from running.
+
+- Remove stray pdb.set_trace() which was live in the .find method (Alternative for ORM-style filtering without having QueryableList dependency installed)
+
+- Fixup addClass / removeClass and anywhere else the class/className attribute can be inserted or modified, and ensure we properly strip the value (all leading and tailing whitespace, and reduce any in-between-words whitespace to a single space)
+
+- Allow addClass/removeClass to handle adding and removing multiple, like tag.addClass('classOne classTwo') would add both classOne and classTwo
+
+- Ensure that the "style" attribute is always linked between the tag and attributes, and that calling .setAttribute('style', '') for example doesn't leave an empty "style" attribute in html representation
+
+- Many additional unit tests
+
+
+* 7.3.0 - Nov 19 2017
+
+- Lots of fixups to "style" property:
+
+     - Properly handle that "style" tag wouldn't show up in HTML if tag
+     created without one, and only the form "myTag.style.someProperty =
+     'value'" was used.
+     - Fix where empty style="" would be on HTML if all the values removed
+     via dot-access
+     - Fix where we weren't doing a copy with "tag1.style = tag2.style", and
+     thus any changes to either style would affect both tags
+     - Fix issue where setting style to empty string twice would cause it to
+     lose the special StyleAttribute type
+     - Some performance improvements when dealing with style
+     - Add "isEmpty" method to check if a style is empty (has no values
+     set). For now we do a dict comparison between the two styles (or
+     convert a string to a StyleAttribute map and then perform the test)
+     whereas Javascript does an identity comparison (so even the same style
+     on different tags don't equal eachother, and with tag1.style =
+     "font-weight:bold", tag1.style == "font-weight: bold" would be False in
+     javascript but we return True. This may change in the future
+     - Update the "equals" on a style to be able to compare against a string
+     (see note above how this differs from the javascript ABI), so
+     myTag.style == "display: block" will now work as expected.
+     - Fix issue where assigning a tag's style to itself would cause a
+     disconnect with the HTML attribute value, i.e.  myTag.style =
+     myTag.style
+     - Properly handle other misc. situations with style that were being
+     handled wrong before
+     - Ensure we always link the HTML-displayed attribute to the underlying
+     style object attribute
+     - Add several more tests to style, many of which fail on 7.2 but now
+     pass with these changes
+     - When removing a style from a tag ( like myTag.style = somethingElse ), make sure we remove the association
+       between the old style and the tag to prevent updates on the old style from affecting the former tag
+     - Add some comments to the style section
+	 - Add "setProperty" method per JS api, which is a function call to set
+	 (name, value) for a style property, or provide value='' or value=null to
+	 remove that property
+
+- Addition of a lot of comments throughout code
+
+- Change the "style" (StyleAttribute) attribute's backref on a tag to that tag into a weak
+reference, which removes a circular reference.
+
+- Change the "_attribute" ( SpecialAttributesDict ) attribute's backref on a tag to that tag into a weak
+reference, which removes a circular reference.
+
+- Additions and modification to pydoc documentation
+
+- Minor cleanups / improvements
+
+* 7.2.3 - Sep 01 2017
+
+- Work around some issues in python2 due to its piss-poor unicode implementation ( can be seen, for example, by using &uarr; as a value in a tag ). For proper unicode support you should use python3, but this at least makes python2 more on-par with python3.
+
+* 7.2.2 - Aug 07 2017
+
+- Link through dot-access the "target" attribute on anchor "a" tags, and "selected" for option "option" tags.
+
+I.e. this code:
+
+ optionEm = document.createElement('option')
+
+ optionEm.selected = True
+
+Will mark the "selected" attribute of the option. And
+
+  someEm = document.getElementsByTagName('a')[0]
+
+  someEm.target = '_blank'
+
+Will set the "target" tag attribute on "someEm"
+
+- Make "selected" a binary attribute, so it can only hold True or False, and is just listed as "selected" on a tag, per proper html. This makes it handle the same was as "checked" attribute
+
+- Some minor cleanups to the RST readme
+
+
+* 7.2.1 Jul 13 2017
+
+- Fix some issues where style would not show up on tag, after being set
+
+
+* 7.2.0 Jun 4 2017
+
+- Add ".forms" to AdvancedHTMLParser to emulate "document.forms" - returns all
+"form" elements in a tag collection
+
+- Update removeText to only remove the FIRST occurace of text (inline
+with other javascript DOM functions). For old behaviour, see
+removeTextAll which will remove all occurances of the text.
+
+^^^ ^^^  ^^^   ^^^^ ^^^^ ^^
+**MAYBE BACKWARDS INCOMPATIBLE** - depending on usage
+
+- Add removeTextAll function to remove all occuracnes of text from text
+nodes on an element.
+
+- Change removeText to return the old block (text in that node prior to
+replace). removeTextAll returns a list of all old blocks.
+
+- Add addBlock / addBlocks functions which take generic blocks (may be a
+str, may be an AdvancedTag ). Returns the added block.
+
+- Add removeBlock / removeBlocks functions which take generic blocks
+(may be str, may be AdvancedTag). Returns the removed tag or the block
+of text prior to remove. None on removeBlock if none found, or None in
+the corrosponding element in the list return of removeBlocks
+
+- Add removeChildren function as a helper to remove multiple children.
+  Returns the children removed in a list, with a "None" if that child
+  was not present.
+
+- Add childBlocks method, to return both text nodes and tag nodes. This matches
+what childNodes does in JS DOM (childNodes in AdvancedHTMLParser only returns
+tags. Probably will be changed in a future version, such that .children
+returns a TagCollection and childNodes returns all blocks.)
+
+- Add isTextNode and isTagNode functions, to test if a block is a text node
+(str) or a tag node (AdvancedTag)
+
+- add "getChildBlocks" method which returns child blocks (same as childBlocks
+property, but not a property)
+
+- Update "insertAfter" and "insertBefore" methods:
+	1. Now support blocks (text, or node)
+	2. Now always return the child, not just when insertBefore/insertAfter was
+	NULL
+	3. Remove the actual insertion outside of the try/catch, as that error
+	should be raised (and should NEVER happen)
+	4. Cleanup documentation
+
+
+
+* 7.1.0 May 21 2017
+
+- Add createElement function on AdvancedHTMLParser, to work like
+document.createElement. Creates an element with the given tag name.
+
+- Add createElementFromHTML function to parser which returns an AdvancedTag from given HTML
+
+- Add createElementsFromHTML function to parser which supports and returns a list of parsed
+AdvancedTags (one or more).
+
+- Add createBlocksFromHTML function to parser which parses HTML and returns a
+list of blocks (either AdvancedTag objects, or text nodes (str).
+
+- Add appendInnerHTML function to AdvancedTag which works like in javascript
+	tag.innerHTML += 'someOtherHTML'
+and will parse and append any tags and/or text nodes
+
+- Significant improvements in performance on creating tags ( On average, 125%
+reduction in time to create an AdvancedTag. ) Use is also improved.
+
+- Add "body" and "head" properties to Parser.AdvancedHTMLParser - to act same
+as document.body and document.head
+
+- Add method to both Parser and AdvancedTag, "getFirstElementCustomFilter",
+which will apply a lambda/function on each tag, starting with first child and
+all children, then second child and all children, etc.
+
+This is used for finding things like "body" and "head" without needing to walk
+through the whole document. It's also desgined to find them the quickest, as
+they are very likely to be early and high-level objects in the tree.
+
+
+* 7.0.2 Apr 28 2017
+
+- Fix two typos which would result in exceptions
+- Add "href" as a standard property name for anchors (so em.href = 'abc' sets
+the href attribute)
+
+* 7.0.0 Apr 6 2017
+- Add "filter"-style functions (think ORM-style filtering, like
+name__contains='abc' or name='abc' or name__ne='something'). Supports all filter operations provided by QueryableList
+  * These have been added to AdvancedHTMLParser.AdvancedHTMLParser (as
+  filter/filterAnd and filterOr) to work on all nodes in the parser
+  * These have been added to AdvancedTag (as filter/filterAnd and filterOr)
+  which work on the tag itself and all children (and their children, and so
+  on)
+  * These have been added to TagCollection (as filter/filterAnd and filterOr)
+  that work directly on the elements contained only
+  * Also, TagCollection has filterAll/filterAllAnd and filterAllOr that work
+  directly on the containing elements, and all children of those elements (and
+  their children)
+
+ This adds QueryableList as a dependency, but setup.py can be passed "--no-deps" to skip that installation (and the filter methods will be unavailable)
+
+- Add "find" function on AdvancedHTMLParser, which supports a very very small subset of QueryableList (only equals, contains, and icontains) and can be used for "similar" functionality but without the QueryableList dependency, and only usable from the document level (AdvancedHTMLParser.AdvancedHTMLParser)
+
+- Support javascript-style assignment and access on a handful of tags (The older ones, name, id, align, etc).
+  You can now do things like:   myTag.name = 'hello'    to set the name, and    myTag.name   to access it 
+  (previously you had to use setAttribute and getAttribute for everything)
+  The names used here match what are used in HTML, and include the javascript events
+
+
+- Fix where "className" could get out of sync with "classList"/"classNames"
+- No longer treat "classname" and "class" as the same attribute, they are in fact distinct on the attribute dict, but
+  className maps to class on object-access
+
+- Support binary-style attribute set/access, (like for "hidden" property, or "checked")
+- Support attributes conditional on tag name, like "checked" on an input
+
+- Change so accessing an attribute on an AdvancedTag which is not set returns None (undefined/null), instead of raising an AttributeError
+
+- Implement "cloneNode" function from JS DOM
+- Fix TagCollection __add__ and __sub__ were working on the inline element. Moved these to __iadd__ and __isub__ (for += and -=)
+  and implemented add and subtract to work on copies
+- Add "isEqualNode" JS DOM method as equivilant to the '==' operator on AdvancedTag
+- Add "contains" JS DOM method to both AdvancedTag, TagCollection, and AdvancedHTMLParser
+- Implemented "in" operator on Parser to check if an element ( or uuid if passed) is contained
+
+- Implements "hasChild" method to see if an element is a direct child of another element
+- Implement "remove" method on an AdvancedTag, to remove it from the parent.
+
+- Some other minor DOM methods, (childElementCount)
+- Rename on AdvancedTag "attributes" to "_attributes" in preparation of implementing DOM-style named node map
+
+- Add ownerDocument to Tags which point to the document (parser), if associated with one
+
+- Added some functions for accessing the whole of uids
+
+- Proper quote-escaping within attribute values. \" isn't understood across the board, but &quot; is, so switch from former to latter.
+
+- Add DOM-style "attributes" to every AdvancedTag. This follows the horrible antiquated interface that DOM
+  uses for "attributes", created before getAttribute/setAttribute were standardized.
+  This is always available as .attributesDOM , and the dict impl always available as .attributesDict
+
+  By default, we will retain the "dict" impl, as the NamedNodeMap impl is deprecated.
+  There's a new function, toggleAttributesDOM which will change the global .attributes property to be the DOM (official) or Dict (sane and prior) impl.
+
+- Some minor cleanups, doc updates, test updates, etc
+
+
+* 6.8.0 
+- Add "getAllChildNodes" to tags, which return all the children (and all their
+children, on and so forth) of the given tag
+
+- Add "getAllNodes" to AdvancedHTMLParser.AdvancedHTMLParser - which gets the
+root nodes, all children of them, and all children all the way to the end
+
+- Add "getAllNodes" to TagCollection, which returns those nodes contained
+within, and all of their children (on and so forth)
+
+- Add "find" method to AdvancedHTMLParser.AdvancedHTMLParser, which supports filtering by attr=value style, supporting
+either single values or list of values (for ANY aka or), and some specials
+( __contains and __icontains suffixes on keys for "value contains" or
+"case-insensitive value contains") This method is only available in one place.
+7.0.0 will have a full filter implementation on the parser, tags, and tag
+collections, but will require QueryableList to be installed. This will be
+optional, and this method will remain as an incomplete version.
+
+
+* 6.7.0 Mar 14 2017
+- Fix camel-case vs dash names when using style attributes (like so em.style.paddingTop translates to 'padding-top')
+-  Implement __repr__ on AdvancedTag
+
+-  Fix __repr__ on StyleAttribute to include the class name
+-  Make style attributes compare (__eq__ and __ne__) regardless of order
+-  Allow StyleAttribute objects to be created from other StyleAttribute objects
+
+-  Implement __eq__ and __ne__ on AdvancedTag, these do identity
+comparison (same tag equals itself ONLY).
+
+- Implement __copy__ and __deepcopy__ methods on StyleAttribute and
+AdvancedTag so that tags can be copied.
+
+- Add getAttributesList and getAttributesDict on an AdvancedTag to make a copy of a list
+of values (like for attrList on AdvancedTag constructor) or a copy of a
+dict of values.
+
+-  Implement an isTagEqual method on AdvancedTag which compares the tag
+name and attributes to another tag (for testing between < and > are the
+same), non-identity comparison.
+
+- Add tests for all changes
+
+
+* 6.6.4 Oct 27 2016
+- Fix regression where "AdvancedTag.getAttribute" method would not accept a default
+(second param).
+- Fix calling ".value" on an AdvancedTag to get the "value" attribute (was
+broken by previous regression)
+
+
+* 6.6.3 Oct 03 2016
+- Fix no-value attributes not appearing in html output (like "checked" on an input). Was in attributes, but not in html output.
+
+* 6.6.2 Jul 27 2016
+- Python's HTMLParser on python3 only automatically converts charrefs
+(backwards incompatible...) -- so make it stop doing that. This allows things
+like &nbsp; and &lt; to not be converted to ' ' and '<' on python3. Added
+tests as well.
+- Cleanup imports and add comments to test cases.
+- Add fixes made to AdvancedHTMLParser in 6.6.0, relating to text outside root
+nodes into AdvancedHTMLFormatter.
+
+* 6.6.0 Jul 25 2016
+- In a multiple root node scenario, make sure getHTML returns text that falls
+between the root nodes.
+- Retain text, comments, etc that occur before and after the root node
+- Update runTests.py to be latest from GoodTests -- allows providing arguments
+to GoodTests.py (by passing them to runTests.py) and removes the need for the
+symlink in the "tests" directory (which duplicates source in the dist)
+
+* 6.5.1 Mar 23 2016
+- Merge in patch by "Tai Kedzierski" which fixes a typo in getElementsByAttr. Thanks!
+- Fix missing files in MANIFEST.in
+
+* 6.5.0 Dec 24 2015
+- Add "Validator" class and associated exceptions/tests/docs. Raises
+exceptions when the standard parser would have to make an assumption during
+parsing.
+- Fix some tests in python 3.4.3
+
+* 6.4.2 Oct 19 2015
+- Cleanup setup file
+
+* 6.4.1 Oct 15 2015
+- Fix typo in formatter in MultipleRootNode case
+- Fix encoding issue in parsing files (non-utf-8/ascii)
+- Support providing an encoding to "formatHTML"
+- When parsing, drop stray end-tags instead of crashing
+- Strip internet explorer conditionals from the document, and optionally add a
+blank <html> since that's where they usually are.
+- Take into account doctype when inserting top-node on multiple-root-node case
+
+* 6.3.0 Sep 03 2015
+- Clarify that a set is better to use for getElementsWithAttrValues as the "attrValues" portion. If used within "Parser" -- make this conversion for them,
+  as this is the most common case, and the only one-time-test case. Maybe worth splitting public and private methods to handle such microoptimizations in
+  the future
+- Support filtering on a custom function. Added "getElementsCustomFilter" to Parser, TagCollection, and AdvancedTag. With Tests.
+- Support filtering the direct members of a TagCollection, using filterCollection method. Does not transverse to children. 
+- Add AdvancedTag and TagCollection to __init__ (for "from AdvancedHTMLParser import *") 
+- Add an integer version tuple, __int_version_tuple__ for easier comparison
+- A couple micro optimizations
+- Manually cleanup doc a bit
+
+* 6.2.5 Aug 17 2015
+- Fix style and class attributes not showing up in outerHTML
+- Allow formatHTML script to read from stdin
+- Cleanup setup.py to read description from file
+- Fix MANIFEST.in
+
+* 6.2.2 Aug 17 2015
+- Enable tests that weren't running
+- Unify calling .get('key') or ['key'] for tag attributes
+- Fix using 'className' with get/set attribute
+
+* 6.2.1 Aug 10 2015
+- Add a lot more tests and  provide exception messages to assert keywords
+(supported in GoodTests)
+- Better error message when trying to set various attributes directly
+- Add "setAttributes"  method that takes a dict and allows setting many
+attributes at once
+- Added nextSibling, nextSiblingElement, previousSibling, previousSiblingElement
+- Added insertBefore and insertAfter (latter not present in HTML)
+
+* 6.1.0 Aug 5 2015
+- Fix issue where root node  would not get matched in some conditions
+- Implement some real tests using GoodTests
+- Much better handling of special attributes through a dedicated extension of
+dict
+- Ability to use "style" in the same way javascript allows, like
+element.style.position = 'absolute'
+- Various cleanups
+
+* 6.1.0 prerelease July 27 2015
+- More intuitive usage  with multiple root-level nodes (like parsing an AJAX
+request). Add `getRootNodes` function to return a list of root nodes, and
+abstracted a little magic of the previous handling of multiple root nodes.
+They always worked before, but easier to work WITH now.
+- Add "removeAttribute" function to remove an attribute
+- Implement "setStyle" "setStyles" and "getStyle" - for working with the
+"style" string. I will probably turn this into a real object extending str
+before the release, but I'm tired now and going to bed.
+
+* 6.0.1 June 27 2015
+- Add more docstrings and add pydoc documentation
+
+* 6.0.0 June 23 2015
+- Split Indexing out into new IndexedAdvancedHTMLParser class to greatly
+simplify the base class.
+- Get rid of the onlyIndex* on the default constructor of
+IndexedAdvancedHTMLParser, make all fields indexed by default, and add
+useIndex to every get* method which can be set to False to ignore the index
+- Add an indexed_example
+- Modify example to include addition of element
+- Split source into several files
+- Simplify a few sections
+- Ensure formatHTML ends with a newline
+
+* 5.0.1 June 10 2015
+ - Add AdvancedHTMLFormatter class and formatHTML Script
+ - Add getFormattedHTML to AdvancedHTMLParser
+ - Fix (invalid for html, but okay for subsections) multiple root node support
+ - Auto-set isSelfClosing on an AdvancedTag when they are created ad-hoc.
+
+* 4.0.1 June 9 2015
+ - Also add input, img, hr, br to self-closing tags and make a set
+
+* 4.0.0 June 9 2015
+ - Fix handling of entities, character refs and comments
+ - Add support for including doctype
+ - Fix issues with getHTML
+ - Implicitly close "meta" and "link" tags if they are not self-closed.
+ - Better-support self-closing tags overall
+ - Handle people who do not close child tags before closing parent
+ - Unicode support

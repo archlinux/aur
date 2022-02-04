@@ -1,37 +1,26 @@
-# Maintainer: Tim Savannah <kata198@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Tim Savannah <kata198@gmail.com>
 
-pkgname=('python-advancedhtmlparser' 'python-advancedhtmlparser-tools')
-pkgver=8.1.8
+pkgname=python-advancedhtmlparser
+pkgver=9.0.1
 pkgrel=1
-pkgdesc="Fast Indexed python HTML parser which builds a DOM node tree, providing common getElementsBy* functions for scraping, testing, modification, and formatting"
+pkgdesc="Indexed HTML parser"
 arch=('any')
-license=('LGPLv3')
+license=('LGPL3')
 url="http://github.com/kata198/AdvancedHTMLParser"
-makedepends=('python-setuptools' 'python')
-depends=('python-setuptools' 'python')
-optdepends=('python-queryablelist: Support for advanced "filter" functions')
-source=("https://github.com/kata198/AdvancedHTMLParser/archive/${pkgver}.tar.gz")
-sha512sums=("25cc038b6f0ceb1662271162e54cab9fa384d8f8c486b0ab4051e9323b55091befef2f6aff55f10529e91a0c6a06ad17ce86576a237159c8a5160cfe8ff594ad")
+depends=('python-queryablelist')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+changelog=CHANGELOG
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('9ecdfdc7ba060c2e7fa231c06d144fe4b73cd116d8030404a83386ca3de384ac')
 
 build() {
-  cd "$srcdir"/AdvancedHTMLParser-$pkgver
-  python setup.py build
+	cd "AdvancedHTMLParser-$pkgver"
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-package_python-advancedhtmlparser() {
-  cd AdvancedHTMLParser-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  # Remove tools from lib package
-  rm -Rf "$pkgdir/usr/bin"
-}
-package_python-advancedhtmlparser-tools() {
-  depends=('python-advancedhtmlparser')
-  conflicts=('python2-advancedhtmlparser-tools')
-  optdepends=()
-  cd AdvancedHTMLParser-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-
-  # Remove lib from tools package
-  rm -Rf "${pkgdir}/usr/lib"
+package() {
+	export PYTHONHASHSEED=0
+	cd "AdvancedHTMLParser-$pkgver"
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
 }
