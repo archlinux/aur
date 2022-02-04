@@ -14,6 +14,7 @@ md5sums=('34c4f8424839d73d387f8b9f55d90bfe')
 
 package() {
     cd "$pkgname-$pkgver"
+    mv calcure.py calcure
     install -Dm755 calcure "$pkgdir/usr/bin/calcure"
     install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname"
 }
