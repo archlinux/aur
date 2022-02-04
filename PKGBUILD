@@ -1,7 +1,7 @@
 # Maintainer: Christian Muehlhaeuser <muesli at gmail dot com>
 
 pkgname=wishlist
-pkgver=0.1.3
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="The SSH directory"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('6211b3781b9b575f55efb49c3c754bf4e405c4f4eef7476a7e95fff3a4a58133')
+sha256sums=('8691d6547171230cafa2d119a8224a65b9f15619c6059062b4d6b0a2b4c208fb')
 
 build() {
     local commit
