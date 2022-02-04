@@ -5,8 +5,9 @@ _version="87.1.14"
 _commit="a29e9a3"
 _chromiumver="87.0.4280.141"
 _cefver="${_version}+g${_commit}+chromium-${_chromiumver}"
-pkgver=`echo "$_cefver" | tr - _`
-pkgrel=3
+_rebuild="1" # The tarball sometime can get rebuild by OBS Project
+pkgver="${_cefver//-/_}_${_rebuild}"
+pkgrel=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("i686" "x86_64" "aarch64")
 url="https://bitbucket.org/chromiumembedded/cef"
@@ -14,10 +15,10 @@ license=("BSD")
 depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
          "at-spi2-atk" "libxkbcommon" "libcups" "mesa")
 makedepends=("cmake")
-provides=("cef-minimal-obs=$_version")
+provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
-options=('!lto')
+options=('!lto' '!strip' 'debug')
 source_x86_64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux64_minimal.tar.bz2")
 source_i686=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux32_minimal.tar.bz2")
 source_aarch64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linuxarm64_minimal.tar.bz2")
@@ -45,7 +46,9 @@ build() {
     cd "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal
 
     #The arm64 CEF set the wrong arch for the project
-    cmake -DPROJECT_ARCH=$_parch .
+    cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DPROJECT_ARCH=$_parch .
 
     make libcef_dll_wrapper
 }
