@@ -1,16 +1,16 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=jaxb-api
-pkgver=2.3.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Java Architecture for XML Binding (JAXB) API"
 arch=('x86_64')
-url="https://javaee.github.io/jaxb-v2/"
+url="https://github.com/eclipse-ee4j/jaxb-api"
 license=(EDL)
 depends=('java-runtime' 'sed')
 makedepends=('java-environment>=11' 'maven')
 source=("https://github.com/eclipse-ee4j/jaxb-api/archive/${pkgver}.tar.gz")
-sha256sums=('27c8f940f86f47cbc4e8e28a47645fde957ee0491ace4389ac4c1943077fa79e')
+sha256sums=('a0da996efbc6628a2d17aa81b4457c7c858c913d2749fa43cfe162d6ed570cae')
 _M2_REPO=$(mktemp -d)
 
 prepare() {
