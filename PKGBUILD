@@ -1,6 +1,6 @@
 # Maintainer: Dr-Incognito <v2ray.dev at gmail dot com>
 pkgname=v2ray-desktop
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A cross-platform GUI proxy client that supports Shadowsocks(R), V2Ray, and Trojan protocols (Stable Release)"
 arch=("x86_64")
