@@ -1,6 +1,6 @@
-install.run
-LICENSE.html
-LICENSE.txt
+*.run
+LICENSE
 pkg
 src
 *.tar.xz
+*.tar.zst

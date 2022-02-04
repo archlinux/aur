@@ -1,9 +1,9 @@
 # Maintainer: Nathan Robinson <nrobinson2000 at me dot com>
 
 pkgname=pvr-tex-tool-bin
-pkgver=2020.2
-_versionstr='2020_R2'
-pkgrel=9
+pkgver=2021.2
+_versionstr='2021_R2'
+pkgrel=1
 
 pkgdesc="A comprehensive texture processing and compression tool with support for PVR textures."
 url="https://www.imaginationtech.com/developers/powervr-sdk-tools/pvrtextool/"
@@ -12,12 +12,12 @@ arch=('x86_64')
 options=('!strip')
 license=('custom')
 
-source=("install.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexToolSetup-${_versionstr}.run-x64"
+source=("install_${_versionstr}.run::https://cdn.imgtec.com/sdk/OFFLINE/PVRTexToolSetup-${_versionstr}.run-x64"
 "LICENSE"
 "PVRTexTool.desktop")
 
-sha256sums=('5f6bea49943e52d2f59541efca0bce8c1f841f9a5baf1a193c94cd0e1fcb4a31'
-            'aced963c85df3e08a1a190cdb346e67bcf3621fe198a17ea99e20f787aa60e51'
+sha256sums=('64f321c5e220cef8e4bff2c282c61139031fd9ef3d1d54b1031d056863308216'
+            '837064152c1e86d030f76e9beb8da77869f8d8bc183fd8c8a26be696120b5ff4'
             '2172168dd08d1945ed750bd5ec748731e8b068afe705e956862081ec503ed86f')
 
 # discovered with namcap(1)
@@ -27,8 +27,8 @@ package() {
 _srcname=PVRTexTool
 
 # Run installer
-chmod +x "${srcdir}/install.run" 
-"${srcdir}/install.run" --prefix "${srcdir}" --mode unattended
+chmod +x "${srcdir}/install_${_versionstr}.run"
+"${srcdir}/install_${_versionstr}.run" --prefix "${srcdir}" --mode unattended
 
 # Install license
 install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
