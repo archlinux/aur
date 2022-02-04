@@ -2,7 +2,7 @@
 
 pkgname=node-spellchecker
 _npmname=spellchecker
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="node.js bindings to native spellchecker"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('7cba92d59735486a7edf79c0ed91f94374b405bd6e6a1f2ae6a041fd1350b083')
+sha256sums=('14db1e7d75c5500eac97e3ad63a2dfeb5ff30084e6b061f27b262ff24a3372d8')
 
 package() {
   local _npmdir="${pkgdir}/usr/lib/node_modules/"
