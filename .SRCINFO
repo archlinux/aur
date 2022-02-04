@@ -1,0 +1,22 @@
+pkgbase = wishlist-bin
+	pkgdesc = The SSH directory
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://charm.sh/
+	license = MIT
+	conflicts = wishlist
+	provides = wishlist
+	arch = aarch64
+	source_aarch64 = https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 823f2df7510ab951556f3c8a13a51967793a17c632129c8bb681f5ca4e3f227c
+	arch = armv7h
+	source_armv7h = https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_armv7.tar.gz
+	sha256sums_armv7h = dccde7938f9b7bfcdeaa36fd02b5f54a9bbdfe1122288c7f054fd24b6f8371f4
+	arch = i686
+	source_i686 = https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_i386.tar.gz
+	sha256sums_i686 = 7eb18e0f4229a42d85a1f1d13b737980d6ccc4ac57115f973a29f16574a22c8b
+	arch = x86_64
+	source_x86_64 = https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 66aba04ac7948e1d72a45bcd354de49379d4f7f75dc45ab5c5fcf5faf8f6ff3a
+	
+pkgname = wishlist-bin
