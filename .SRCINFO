@@ -1,15 +1,15 @@
 pkgbase = hermes-relayer-bin
 	pkgdesc = Hermes IBC Relayer
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://hermes.informal.systems/
 	arch = x86_64
 	license = Apache
 	provides = hermes-relayer
 	conflicts = hermes-relayer
-	source = https://raw.githubusercontent.com/informalsystems/ibc-rs/v0.11.0/LICENSE
+	source = https://raw.githubusercontent.com/informalsystems/ibc-rs/v0.11.1/LICENSE
 	sha256sums = 1816dfba29b8182ddffbc675e228906b2acaa338fcaada5e330065e650092689
-	source_x86_64 = https://github.com/informalsystems/ibc-rs/releases/download/v0.11.0/hermes-v0.11.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3c5ea3e3b66d305323540bef3856716f18165c76afad435dfaa0bdf6e81550d2
+	source_x86_64 = https://github.com/informalsystems/ibc-rs/releases/download/v0.11.1/hermes-v0.11.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7aba97782b7348049212efb0f690b11441b4f79c0274e91056c7b0f16dfb4530
 
 pkgname = hermes-relayer-bin
