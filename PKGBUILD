@@ -6,7 +6,8 @@ _version=${_cefver//-/_}
 _commit="95e19b8"
 _cefbranch="4638"
 _chromiumver="95.0.${_cefbranch}.69"
-pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_2"
+_rebuild="3" # The tarball sometime can get rebuild by OBS Project
+pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
 pkgrel=1
 epoch=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio beta release in /opt/cef-obs"
@@ -19,7 +20,7 @@ makedepends=("cmake")
 provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
-options=('!lto')
+options=('!lto' '!strip' 'debug')
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
 sha256sums_x86_64=("54aba14a7228bb8f2573e081d795b4161bf3568796f8729ad42a9f8ef9c6d1ec")
 
@@ -40,7 +41,9 @@ build() {
     cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
 
     #The arm64 CEF set the wrong arch for the project
-    cmake -DPROJECT_ARCH=$_parch .
+    cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DPROJECT_ARCH=$_parch .
 
     make libcef_dll_wrapper
 }
