@@ -5,14 +5,8 @@ pkgbase = python-openid-teams
 	url = https://github.com/puiterwijk/python-openid-teams/
 	arch = any
 	license = BSD
+	depends = python-openid
 	source = https://github.com/puiterwijk/python-openid-teams/archive/v1.2.tar.gz
 	sha256sums = 07bd9325135f264be2732c92194c22f6a104d0869b9eeed239c0a122ceac3c4d
 
 pkgname = python-openid-teams
-	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 3 version)
-	depends = python-openid
-
-pkgname = python2-openid-teams
-	pkgdesc = Utilities used around Fedora Infrastructure to send and receive messages (Python 2 version)
-	depends = python2-openid
-
