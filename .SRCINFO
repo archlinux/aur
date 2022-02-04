@@ -1,7 +1,7 @@
 pkgbase = ags
 	pkgdesc = Engine to run adventure/quest games
-	pkgver = 3.5.1.14
-	pkgrel = 2
+	pkgver = 3.5.1.15
+	pkgrel = 1
 	url = https://github.com/adventuregamestudio/ags
 	arch = x86_64
 	license = Artistic2.0
@@ -18,7 +18,7 @@ pkgbase = ags
 	depends = libxcursor
 	depends = libxpm
 	depends = libxxf86vm
-	source = ags-3.5.1.14.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.3.5.1.14.tar.gz
-	sha256sums = 3e9130e62ab745e7f5e0a483ef1a9d42b29e7e2661655a2945c3ce810a2818d1
+	source = ags-3.5.1.15.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.3.5.1.15.tar.gz
+	sha256sums = 495bc0201c407f697ed073f2555c57a8b0ad5920df4218202461f7f415f5ead4
 
 pkgname = ags
