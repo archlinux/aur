@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=27.2.0-rc1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
 arch=("i686" "x86_64" "aarch64")
@@ -84,6 +84,7 @@ else
 fi
 provides=("obs-studio=$pkgver" "obs-vst")
 conflicts=("obs-studio" "obs-vst")
+options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
@@ -111,7 +112,7 @@ if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
 fi
 
 if [[ $CARCH == 'x86_64' ]]; then
-  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_2")
+  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3")
   provides+=("obs-browser")
   conflicts+=("obs-linuxbrowser" "obs-browser")
   _browser=ON
@@ -131,6 +132,7 @@ build() {
   mkdir -p build; cd build
 
   cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=$_browser \
