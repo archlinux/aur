@@ -4,7 +4,7 @@
 
 pkgname=sleuthkit-java
 pkgver=4.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
@@ -24,8 +24,14 @@ build() {
 	make
 
 	# build java bindings
-	cd bindings/java
-	ant
+	(cd bindings/java;
+		ant -q dist
+	)
+
+	(cd case-uco/java;
+		ant -q
+	)
+
 }
 
 package() {
@@ -33,6 +39,7 @@ package() {
 
 	install -d "$pkgdir/usr/share/java"
 	install -Dm0644 "bindings/java/dist/sleuthkit-${pkgver}.jar" "$pkgdir/usr/share/java"
+	install -Dm0644 "case-uco/java/dist/sleuthkit-caseuco-${pkgver}.jar" "$pkgdir/usr/share/java"
 
 	install -d "$pkgdir/usr/lib"
 	install -Dm0644 "bindings/java/jni/.libs"/*.so "$pkgdir/usr/lib"

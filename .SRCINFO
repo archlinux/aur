@@ -1,7 +1,7 @@
 pkgbase = sleuthkit-java
 	pkgdesc = Java bindings for The Sleuth Kit.
 	pkgver = 4.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sleuthkit.org/sleuthkit
 	arch = x86_64
 	license = CPL,
