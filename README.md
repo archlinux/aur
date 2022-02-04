@@ -79,7 +79,7 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 * Finally, all software needs to be run. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
-tmux new-session -s c-lightning -d "lightningd --network=bitcoin --bitcoin-rpcuser=USERNAME --bitcoin-rpcpassword=PASSWORD --log-level=info --rpc-file=~/.lightning/lightning-rpc;bash -i"
+tmux new-session -s c-lightning -d "lightningd --network=bitcoin --bitcoin-rpcuser=USERNAME --bitcoin-rpcpassword=PASSWORD --log-level=info --rpc-file=/home/USERNAME/.lightning/lightning-rpc;bash -i"
 ```
 or
 ```
