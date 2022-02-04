@@ -1,6 +1,6 @@
 # Maintainer: AlessioDP <me@alessiodp.com>
 pkgname=kpmenu
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Dmenu/rofi interface for KeePass databases"
 arch=("x86_64")
@@ -15,7 +15,7 @@ optdepends=(
 	'wl-clipboard: wl-clipboard support')
 provides=("kpmenu")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AlessioDP/kpmenu/archive/v$pkgver.tar.gz")
-sha256sums=('350c2bb029ce0946187ee97aecb4a66ceb1b87c512c69220a9a6d50bde5e42bf')
+sha256sums=('2c2a686a0b5a0f2f7278873e21bca98062df873908e7c498717cd77bb727146a')
 
 prepare() {
 	export GOPATH="$srcdir"
