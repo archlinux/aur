@@ -13,9 +13,13 @@ install=$pkgname.install
 source=("https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('d23f2c574d7d3fbe9ff4fda1836efc2b2023721cf9e2182cce9b7ce99da14a43abf1fab26b5b1e70e4377daba5e7bfaf1012c08ca6af81d2f5ff126081a47f4d')
 
+prepare() {
+	cd "$pkgname-$pkgver"
+	npm ci --no-audit --progress=false --cache "$srcdir/npm-cache"
+}
+
 build() {
 	cd "$pkgname-$pkgver"
-	npm install --cache "$srcdir/npm-cache"
 	npm run-script build
 	npx electron-builder build --linux pacman
 }
