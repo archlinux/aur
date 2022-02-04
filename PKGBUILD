@@ -15,7 +15,7 @@
 # ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 
 pkgname=protonmail-bridge-nogui
-pkgver=1.8.12
+pkgver=2.1.0
 _srcname=br-"$pkgver"
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
@@ -30,7 +30,7 @@ conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcname".tar.gz"
         "bridge.service")
-sha256sums=('989e1be64d853033ead0e3ea255dd75c3d54e0c40e8db9f55b2c5649b5e4c2fd'
+sha256sums=('9c0672d2a37ccb0d754bf7282854c332851cdcc1ce37b91508618765f9291972'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
