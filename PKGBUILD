@@ -31,6 +31,8 @@ prepare() {
 
     cd "${pkgname}-${pkgver}"
     sed -i "s|childProcess.execFileSync('git', \['describe', '--tags'\]).toString().trim()|'v${pkgver}'|g" scripts/build.mjs
+    # Uncomment if you want to have the tray functionality
+    # sed -i "/if (os.platform() === 'linux' \&\& !settings.isFirstRun()) {\$/,+2d" background.ts
 
 }
 
