@@ -1,0 +1,11 @@
+[Unit]
+Description=Webdav Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/webdav-server -c /etc/webdav-server-rs/config.toml
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

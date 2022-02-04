@@ -1,0 +1,15 @@
+pkgbase = webdav-server-rs-git
+	pkgdesc = webdav server in rust
+	pkgver = 0.4.0.4.g547602e
+	pkgrel = 1
+	url = https://github.com/miquels/webdav-server-rs
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	backup = etc/webdav-server-rs/config.toml
+	source = git+https://github.com/miquels/webdav-server-rs
+	source = webdav-server.service
+	md5sums = SKIP
+	md5sums = 229822929b0b74460306fb0131b90db9
+
+pkgname = webdav-server-rs-git
