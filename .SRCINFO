@@ -10,7 +10,6 @@ pkgbase = btcpayserver
 	depends = dotnet-sdk
 	depends = nbxplorer
 	optdepends = apache: HTTP server
-	optdepends = bitcoin-cli: Needed by c-lightning
 	optdepends = c-lightning: Lightning network support
 	optdepends = certbot: Creates SSL certificates.
 	optdepends = eclair: Lightning network support
