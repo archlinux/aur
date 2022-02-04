@@ -9,7 +9,7 @@ url="https://github.com/aja-video/ntv2"
 license=("MIT")
 depends=()
 makedepends=("cmake")
-options=(debug)
+options=('debug')
 # Use commit hash for now because some Cmake fixes were merged
 source=("ntv2::git+https://github.com/aja-video/ntv2.git#commit=abf17cc1e7aadd9f3e4972774a3aba2812c51b75")
 sha256sums=("SKIP")
