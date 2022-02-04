@@ -15,9 +15,9 @@ makedepends=('cmake' 'qt5-tools' 'git')
 optdepends=('kvantum-qt6-git: Qt6 component for Kvantum theme engine'
             'adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark'
             'breeze-enhanced-git: Made to match various themes of the Kvantum widget style')
-conflicts=('kvantum')
-replaces=('kvantum')
-provides=('kvantum')
+conflicts=('kvantum-qt5')
+replaces=('kvantum-qt5')
+provides=('kvantum-qt5')
 source=("git+${url}.git")
 md5sums=('SKIP')
 
