@@ -2,14 +2,14 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=c-lightning-git
-pkgver=0.10.1.r10187.405b914dd
+pkgver=0.10.2.r10771.c0e3155bb
 pkgrel=1
 pkgdesc='A Lightning Network implementation in C'
 arch=('i686' 'x86_64')
 url='https://github.com/ElementsProject/lightning'
 license=('custom')
 depends=('gmp' 'libsodium' 'sqlite')
-makedepends=('clang' 'git' 'python-pytest')
+makedepends=('clang' 'git' 'python-pytest' 'python-mako' 'mrkd')
 source=('git+https://github.com/ElementsProject/lightning.git'
         'git+https://github.com/zserge/jsmn.git'
         'git+https://github.com/ianlancetaylor/libbacktrace.git'

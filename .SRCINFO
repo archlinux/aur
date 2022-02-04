@@ -1,6 +1,6 @@
 pkgbase = c-lightning-git
 	pkgdesc = A Lightning Network implementation in C
-	pkgver = 0.10.1.r10187.405b914dd
+	pkgver = 0.10.2.r10771.c0e3155bb
 	pkgrel = 1
 	url = https://github.com/ElementsProject/lightning
 	arch = i686
@@ -9,6 +9,8 @@ pkgbase = c-lightning-git
 	makedepends = clang
 	makedepends = git
 	makedepends = python-pytest
+	makedepends = python-mako
+	makedepends = mrkd
 	depends = gmp
 	depends = libsodium
 	depends = sqlite
