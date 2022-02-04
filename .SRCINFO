@@ -1,13 +1,13 @@
 pkgbase = mp-5
-	pkgver = 5.56
+	pkgver = 5.57
 	pkgrel = 1
 	url = https://triptico.com/software/mp.html
 	arch = x86_64
 	license = Unlicense
 	makedepends = gtk3
 	options = !makeflags
-	source = mp-5-5.56.tar.gz::https://triptico.com/download/mp-5.tar.gz
-	sha256sums = d5343d1185fe32d7acf8c6dfcf3b719da696fee29472cf3f8a81bac9757ea986
+	source = mp-5-5.57.tar.gz::https://triptico.com/download/mp-5.tar.gz
+	sha256sums = 96a91734bd5ecba8286256fd98b769b0c763eac6ee8be356f40d4e4cc8e3ce5b
 
 pkgname = mp-5-gtk
 	pkgdesc = Text editor for programmers (GTK front-end)
