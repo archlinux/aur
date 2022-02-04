@@ -1,13 +1,13 @@
 pkgbase = clickup
 	pkgdesc = Desktop app for clickup.com
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://clickup.com
 	arch = x86_64
 	license = custom
 	depends = fuse2
 	options = !strip
-	source = clickup-desktop-3.0.4-x86_64.AppImage::https://desktop.clickup.com/linux
-	sha512sums = ed2f537e3f5c1f645b30626922a9a5b6e1253f40192fbfae2ae1f8221a22f597fb3990132e7d04f7a9e70b007d65999eb3c398bd18b3b875466cf1f7bfae9502
+	source = clickup-desktop-3.0.5-x86_64.AppImage::https://desktop.clickup.com/linux
+	sha512sums = f61d36cc58497c57518329aed316c9c79bb1c46834cbda30ba897e0a54ea2a1e2faf6053a0a5cdf2f89ee94f8f8918c85bd91c3dc64c8adbe2180a640914c5c2
 
 pkgname = clickup
