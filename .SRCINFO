@@ -1,6 +1,6 @@
 pkgbase = brn-git
 	pkgdesc = Text editor based bulk rename utility.
-	pkgver = r25.72c5a0f
+	pkgver = r27.811b464
 	pkgrel = 1
 	url = https://github.com/nimaipatel/brn/
 	arch = any
