@@ -1,6 +1,6 @@
 pkgbase = obfs4proxy-bin
 	pkgdesc = The obfourscator - A Pluggable Transport Proxy Written in Go (This package is built by myself for thoes who live in countries with tor censored that cannot download the source in obfs4proxy package
-	pkgver = 0.0.11
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = obfs4proxy-bin
 	optdepends = tor: you need tor to use this package
 	conflicts = obfs4proxy
 	source = https://github.com/molaeiali/obfs4proxy-bin/raw/master/files.tar.xz
-	sha512sums = d3430109ff9fb6817b0f2f2431e7087a6e33f08256269464966edbcd783ffe0db4b88fceeb88eb9ec055732eb031c1171541a41d8c7b24dba3ab7d70d04111f2
+	sha512sums = 9b01700c89f5eb3f113bc51c9267af1f741c7254123f7b56cfb3871c915689538492871ae4d267d92c931aa8617211ec39b20bea70d298f35ddd60812c086a3c
 
 pkgname = obfs4proxy-bin
-
