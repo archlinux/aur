@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Ocelot
+GenericName=Ocelot
+Exec=ocelot
+Type=Application
+Comment=Open source workbench for working with XLIFF files in a post-editing and language review environment
+Terminal=false
+Categories=Development;Translation;Java;

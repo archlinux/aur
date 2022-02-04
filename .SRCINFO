@@ -1,0 +1,16 @@
+pkgbase = ocelot
+	pkgdesc = Open source workbench for working with XLIFF files in a post-editing and language review environment.
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/vistatec/ocelot/
+	arch = any
+	license = LGPL3
+	depends = java-runtime
+	source = https://github.com/vistatec/ocelot/releases/download/v3.0/ocelot-3.0.jar
+	source = ocelot.sh
+	source = ocelot.desktop
+	sha256sums = e4a49ab42beb01b93563447d42eba10b4a7e1f0382cc15ccf3603df329433b24
+	sha256sums = 26d1a0c6da4fcf868e8858429850043969a88330079df6e1e98ee30a3bf7a731
+	sha256sums = c4198e839a43531484e02055f4c2ea73e0c541f0832a498bcb480e3daf14401c
+
+pkgname = ocelot
