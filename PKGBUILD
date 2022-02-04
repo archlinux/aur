@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-rtspserver
-pkgver=2.1.2
+pkgver=2.2.0
 _obsver=27.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
@@ -11,20 +11,20 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake")
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/iamscottxu/obs-rtspserver/archive/v$pkgver.tar.gz"
+  "$pkgname::git+https://github.com/iamscottxu/obs-rtspserver.git#tag=v$pkgver"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
-  "7e7f95f5fe25d3b93aebf6627ba8b198ff0742175397bb2b810d69151062328d"
+  "SKIP"
   "c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e"
 )
 
 prepare() {
   cd "obs-studio-$_obsver"/plugins
 
-  cp -r "$srcdir/$pkgname-$pkgver" .
+  cp -r "$srcdir/$pkgname" .
 
-  echo "add_subdirectory($pkgname-$pkgver)" | tee -a CMakeLists.txt >/dev/null
+  echo "add_subdirectory($pkgname)" | tee -a CMakeLists.txt >/dev/null
 }
 
 # Need to compile plugin in OBS compilation process
