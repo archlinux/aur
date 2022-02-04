@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/ssiyad/pkgbuilds/
 
 pkgname=hopp-cli
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="HTTP client like cURL / HTTPie and a CLI client for https://hoppscotch.io"
 arch=('x86_64')
