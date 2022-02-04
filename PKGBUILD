@@ -4,11 +4,11 @@
 # Contributor: Vyacheslav Konovalov <echo dnlhY2hrb25vdmFsb3ZAZ21haWwuY29tCg== | base64 -d>
 
 pkgname=redis-desktop-manager
-pkgver=2021.9.1
+pkgver=2022.0
 pkgrel=1
-pkgdesc='Open source cross-platform Redis Desktop Manager based on Qt 5'
+pkgdesc='RESP.app - Open source cross-platform Redis Desktop Manager based on Qt 5'
 arch=('x86_64')
-url="https://rdm.dev"
+url="https://resp.app"
 license=('GPL3')
 depends=(
 	'qt5-base'
@@ -24,7 +24,7 @@ depends=(
 	'python')
 makedepends=('git' 'gcc' 'make' 'cmake')
 conflicts=('redis-desktop-manager-bin')
-source=("rdm::git://github.com/uglide/RedisDesktopManager.git#tag=$pkgver"
+source=("rdm::git+https://github.com/uglide/RedisDesktopManager.git#tag=$pkgver"
 	'rdm.desktop')
 sha256sums=('SKIP'
             '9ca6cfe0fc1a050552ec2fa009a2d517de3b049ff6f379f0fda849e4dbca3f68')
@@ -44,7 +44,7 @@ build() {
 	cd "$srcdir/rdm/3rdparty/brotli"
 	cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release . && make
 	cd "$srcdir/rdm/src"
-	lrelease rdm.pro
+	lrelease resp.pro
 	qmake VERSION="$pkgver" && make
 }
 
@@ -58,7 +58,7 @@ package() {
 	mkdir "$pkgdir/usr/share/applications"
 
 	install -Dm644 "$srcdir/rdm/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm755 "${_instdir}/rdm" "${_bindir}/rdm"
+	install -Dm755 "${_instdir}/resp" "${_bindir}/rdm"
 	install -Dm644 "$srcdir/rdm/src/resources/images/rdm.png" "$pkgdir/usr/share/pixmaps/rdm.png"
 	install -Dm644 "$srcdir/rdm.desktop" "$pkgdir/usr/share/applications/rdm.desktop"
 
