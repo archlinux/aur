@@ -2,7 +2,7 @@
 # Contributor: Ashwin <ashwinvis+arch_@t_Pr0t0nM4il_c0m>
 _base=fluiddyn
 pkgname=python-${_base}
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A framework for studying fluid dynamics using Python"
 arch=('any')
@@ -15,7 +15,7 @@ checkdepends=(python-pytest python-scipy ipython)
 provides=(python-${_base})
 conflicts=(python2-${_base}-hg)
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('71834e9108ba373ecf67a5874c460beba2ae781cd43e1180d36f4092ec4d0740a0c00b39dda257c02a1a1067e17a5056ba03f3c774540033fe05fb2a3782e223')
+sha512sums=('847a360fa4a23014d574272422715bad2c5bb32eae37f2c75d9a2194903720c73996d9bacfc3ab006243a746055cd8eecd2227ff0a5eb6a0f65310dc08bd5c3a')
 
 build() {
   cd "${_base}-${pkgver}"
