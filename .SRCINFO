@@ -1,5 +1,5 @@
 pkgbase = oss-browser
-	pkgdesc = ossbrowser是阿里云官方提供的OSS图形化管理工具，提供类似Windows资源管理器的功能。本文介绍如何快速安装并登录ossbrowser。
+	pkgdesc = ossbrowser是阿里云官方提供的OSS图形化管理工具，提供类似Windows资源管理器的功能
 	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/aliyun/oss-browser
@@ -8,7 +8,6 @@ pkgbase = oss-browser
 	makedepends = tar
 	depends = gconf
 	depends = unzip
-	depends = base-devel
 	source = https://gosspublic.alicdn.com/oss-browser/1.16.0/oss-browser-linux-x64.zip
 	source = oss-browser.desktop
 	sha512sums = cb9ad923e3c50def771c540aff0828f760a5ac350d29f63a8b21a415bb85c4256e444a63c309f4cdc3ef4dc7ec6f57956b7ddc4ac79dd169c8777fa4a77ef505
