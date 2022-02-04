@@ -1,21 +1,41 @@
 post_install() {
-cat << _EOF  
+cat << _EOF
 
 >>> You may want to ADJUST files in /etc/pulledpork/ directory
 
->>> Default config is set up for emergingthreats open rules
+>>> Default config is set up for:
+>>>   snort community rules, if using pulledpork 3
+>>>   emergingthreats open rules, if using pulledpork 2
 
 >>> By default rules auto-update every week if
 >>>   file /etc/snort/rules/snort.rules exists
 
 >>> To use these rules in snort, you must include snort.rules
->>> file in your snort.conf (if not already setup to be so)
+>>> file in your snort configuration (if not already setup to be so)
 
 _EOF
+  snort2_detect
 }
 
 post_upgrade() {
   if (( $(vercmp $2 0.7.3-2) < 0)); then
     systemctl --now enable pulledpork.timer
   fi
+  if (( $(vercmp $2 0.7.4) <= 0)); then
+    snort2_detect
+  fi
+}
+
+snort2_detect() {
+cat << _EOF
+
+>>> Package now uses pulledpork 3 by default.
+>>> To use pulledpork 2, create (touch) a file
+>>>   touch /etc/pulledpork/update_via_pp2
+
+_EOF
+    if snort -V  2>&1 | grep -q 'Version 2.'; then
+      echo "snort 2 detected, creating /etc/pulledpork/update_via_pp2"
+      touch /etc/pulledpork/update_via_pp2
+    fi
 }

@@ -12,8 +12,13 @@ then
 	exit 0
 fi
 
-# ulimit is needed as sometimes pulledpork.pl goes in infinite loop
-( ulimit -t 60; /usr/bin/pulledpork.pl -P -c /etc/pulledpork/pulledpork.conf )
+if [ -f "/etc/pulledpork/update_via_pp2" ]
+then
+	# ulimit is needed as sometimes pulledpork.pl goes in infinite loop
+	( ulimit -t 60; /usr/bin/pulledpork.pl -P -c /etc/pulledpork/pulledpork.conf )
+else
+	/usr/lib/pulledpork/pulledpork.py -c /etc/pulledpork/pulledpork3.conf
+fi
 
 # restart snort
 if systemctl -q is-active snort.service &>/dev/null
