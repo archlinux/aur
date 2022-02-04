@@ -1,8 +1,8 @@
 # Maintainer: Euro20179 <Euro20179@protonmail.com>
 
 pkgname=ytfzf-git
-pkgver=r1282.a257688
-pkgrel=2
+pkgver=r1286.fe43d61
+pkgrel=1
 pkgdesc="A posix script to find and watch youtube videos from the terminal. (Without API)"
 arch=('any')
 url="https://github.com/pystardust/ytfzf"
