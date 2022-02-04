@@ -12,6 +12,7 @@ url="https://github.com/btcpayserver/${pkgname}"
 license=("MIT")
 depends=("aspnet-runtime" "bitcoin-daemon" "dotnet-sdk" "nbxplorer")
 optdepends=("apache: HTTP server"
+"bitcoin-cli: Needed by c-lightning"
 "c-lightning: Lightning network support"
 "certbot: Creates SSL certificates."
 "eclair: Lightning network support"
