@@ -6,6 +6,7 @@ packages:
     - xmlada
     - git
     - unzip
+    - python-e3-testsuite
 tasks:
 - prepare: |
     git clone https://aur.archlinux.org/gprbuild.git
