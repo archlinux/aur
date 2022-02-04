@@ -1,6 +1,6 @@
 diff -ruN old/src/mbase/project/table.cpp new/src/mbase/project/table.cpp
---- old/src/mbase/project/table.cpp	2020-03-15 21:42:06.873029453 +0330
-+++ new/src/mbase/project/table.cpp	2020-03-15 21:45:19.241211612 +0330
+--- old/src/mbase/project/table.cpp	2022-02-04 22:35:45.903951084 +0330
++++ new/src/mbase/project/table.cpp	2022-02-04 22:33:44.542891731 +0330
 @@ -29,6 +29,7 @@
  #include "theme.h"
  
@@ -10,8 +10,8 @@ diff -ruN old/src/mbase/project/table.cpp new/src/mbase/project/table.cpp
  
  const char* APROJECT_VERSION = "1.2.4";
 diff -ruN old/src/mgui/editor/toolbar.cpp new/src/mgui/editor/toolbar.cpp
---- old/src/mgui/editor/toolbar.cpp	2020-03-15 21:43:22.593461317 +0330
-+++ new/src/mgui/editor/toolbar.cpp	2020-03-15 21:42:16.569751981 +0330
+--- old/src/mgui/editor/toolbar.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/editor/toolbar.cpp	2022-02-04 22:33:44.542891731 +0330
 @@ -45,6 +45,8 @@
  #include <mlib/sdk/logger.h>
  #include <mlib/range/enumerate.h>
@@ -22,8 +22,8 @@ diff -ruN old/src/mgui/editor/toolbar.cpp new/src/mgui/editor/toolbar.cpp
  {
  
 diff -ruN old/src/mgui/project/mconstructor.cpp new/src/mgui/project/mconstructor.cpp
---- old/src/mgui/project/mconstructor.cpp	2020-03-15 21:43:22.596794669 +0330
-+++ new/src/mgui/project/mconstructor.cpp	2020-03-15 21:42:16.569751981 +0330
+--- old/src/mgui/project/mconstructor.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/project/mconstructor.cpp	2022-02-04 22:33:44.542891731 +0330
 @@ -52,6 +52,8 @@
  // COPY_N_PASTE_ETALON из go-file.c, проект Gnumeric, http://projects.gnome.org/gnumeric/
  //
@@ -34,8 +34,8 @@ diff -ruN old/src/mgui/project/mconstructor.cpp new/src/mgui/project/mconstructo
  static char *
  check_program (char const *prog)
 diff -ruN old/src/mlib/filesystem.cpp new/src/mlib/filesystem.cpp
---- old/src/mlib/filesystem.cpp	2020-03-15 21:42:06.876362806 +0330
-+++ new/src/mlib/filesystem.cpp	2020-03-15 21:54:14.022647682 +0330
+--- old/src/mlib/filesystem.cpp	2022-02-04 22:35:45.907284447 +0330
++++ new/src/mlib/filesystem.cpp	2022-02-04 22:33:44.542891731 +0330
 @@ -30,6 +30,7 @@
  #if BOOST_MINOR_VERSION >= 51
  #define BOOST_FS_3 boost::filesystem
@@ -44,9 +44,44 @@ diff -ruN old/src/mlib/filesystem.cpp new/src/mlib/filesystem.cpp
  #else
  #define BOOST_FS_3 boost::filesystem3
  #include <boost/filesystem/v3/path_traits.hpp>
+diff -ruN old/src/mlib/read_stream.h new/src/mlib/read_stream.h
+--- old/src/mlib/read_stream.h	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mlib/read_stream.h	2022-02-04 22:33:44.542891731 +0330
+@@ -22,6 +22,8 @@
+ #ifndef __MLIB_READ_STREAM_H__
+ #define __MLIB_READ_STREAM_H__
+ 
++#include <boost/mpl/bool.hpp>
++
+ #include "stream.h"
+ #include "filesystem.h"
+ 
+diff -ruN old/src/mlib/regex.cpp new/src/mlib/regex.cpp
+--- old/src/mlib/regex.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mlib/regex.cpp	2022-02-04 22:33:44.542891731 +0330
+@@ -22,7 +22,7 @@
+ #include "regex.h"
+ #include "string.h"
+ 
+-#include <boost/regex.hpp>
++#include <boost/regex/v4/regex.hpp>
+ 
+ namespace re
+ {
+diff -ruN old/src/mlib/regex.h new/src/mlib/regex.h
+--- old/src/mlib/regex.h	2022-02-04 22:35:35.320525320 +0330
++++ new/src/mlib/regex.h	2022-02-04 22:34:29.913287618 +0330
+@@ -27,6 +27,7 @@
+ #include <boost/regex/v4/regbase.hpp>
+ #include <boost/regex/v4/match_flags.hpp>
+ 
++#include <boost/mpl/bool.hpp>
+ #include <mlib/ptr.h>
+ 
+ #include <string>
 diff -ruN old/src/mlib/sdk/bfs.h new/src/mlib/sdk/bfs.h
---- old/src/mlib/sdk/bfs.h	2020-03-15 21:43:22.596794669 +0330
-+++ new/src/mlib/sdk/bfs.h	2020-03-15 21:42:16.569751981 +0330
+--- old/src/mlib/sdk/bfs.h	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mlib/sdk/bfs.h	2022-02-04 22:33:44.542891731 +0330
 @@ -7,6 +7,7 @@
  //#define BOOST_FILESYSTEM_NO_DEPRECATED
  
@@ -55,3 +90,27 @@ diff -ruN old/src/mlib/sdk/bfs.h new/src/mlib/sdk/bfs.h
  #include <boost/filesystem/operations.hpp>
  #include <boost/filesystem/convenience.hpp> // fs::create_directories()
  
+diff -ruN old/src/mlib/tech.h new/src/mlib/tech.h
+--- old/src/mlib/tech.h	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mlib/tech.h	2022-02-04 22:33:44.542891731 +0330
+@@ -26,7 +26,7 @@
+ //  Технические вещи
+ // 
+ #include <boost/current_function.hpp>  // для BOOST_CURRENT_FUNCTION
+-#include <boost/detail/endian.hpp>     // для BOOST_XXX_ENDIAN
++#include <boost/predef/other/endian.h> // BOOST_ENDIAN_*_BYTE
+ #include <boost/version.hpp>           // для BOOST_MINOR_VERSION
+ 
+ // для С-шного кода в С++
+@@ -78,9 +78,9 @@
+                 long line, const char* function);
+ 
+ // endianness
+-#if defined(BOOST_BIG_ENDIAN)
++#if defined(BOOST_ENDIAN_BIG_BYTE)
+ #   define HAS_BIG_ENDIAN
+-#elif defined(BOOST_LITTLE_ENDIAN)
++#elif defined(BOOST_ENDIAN_LITTLE_BYTE)
+ #   define HAS_LITTLE_ENDIAN
+ #else
+ #   error mlib/tech.h: unknown endianness (legacy PDP arch?)

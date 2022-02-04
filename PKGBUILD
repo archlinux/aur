@@ -3,14 +3,14 @@
 
 pkgname=bombono-dvd
 pkgver=1.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="DVD authoring program with nice and clean GUI"
 arch=('i686' 'x86_64')
 url="http://www.bombono.org"
 license=('GPL')
 depends=('gtk2' 'gtkmm' 'mjpegtools' 'ffmpeg' 'libdvdread' 'dvdauthor' \
          'dvd+rw-tools' 'twolame' 'libxml++2.6' 'boost' 'enca' 'cdrkit')
-makedepends=('python2-scons')
+makedepends=('scons2')
 optdepends=('gvfs: web browser integration')
 conflicts=('bombono-dvd-git')
 source=("https://github.com/muravjov/${pkgname}/archive/${pkgver}.tar.gz"
@@ -29,7 +29,7 @@ sha256sums=('4f8c882a0c359ca8c182a627885c64aa271820eead2f9a64b34f1625c3b0a9d7'
             'b0ff83b2fad27e39dfd77d12e00c25e554fe86ee1894c2f8fbe1915a2c46dd88'
             '28be98eb36eb6422717df7048c8ee74927495e7d7829e17cb54d746befc238c4'
             '4c29e9b19ba3bcf8c42c46aaea6c1411580629e581307a91f4d085fcdaa6eab6'
-            '14687493ffe5f95c60d4397e4a9f7d7a8434159e2e4338570856b5ee3e683b50'
+            '49f61bb2db0498440ec8926c17a88a993081a583337f41c0d9fd8f1b11b0b0ac'
             'a69f51f9d5bd6ebe26c13abeece9de012d110dcec944c76efbab59b6bc0ef915'
             '72b3d6c76cbf98fb9287f7ee5b7a57b6febe2a635d50758c2451e376e3e6ca02'
             '9d56f7d16c55a506b092dbec00789e4767963d6202d3d92b79ad389393d43c69'
