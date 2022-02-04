@@ -10,6 +10,7 @@ pkgbase = honk-hg
 	license = custom:ISC
 	makedepends = go
 	makedepends = sqlite
+	makedepends = mercurial
 	depends = go
 	depends = sqlite
 	optdepends = nginx: for TLS and reverse proxying
