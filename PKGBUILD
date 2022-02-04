@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=adwaita-icon-theme-git
-pkgver=41.0.r150.gb667445fe
+pkgver=41.0.r150.gace47b4dd
 pkgrel=1
 pkgdesc='GNOME standard icons'
 arch=(any)
@@ -21,7 +21,11 @@ pkgver() {
 
 prepare() {
 	cd adwaita-icon-theme
-	git revert --no-edit 1b528b4c1b876381e2a8274cb87408ab4860a9c1
+
+	# Revert settings icons removal to keep compatibility with GNOME 41
+	git revert -n 1b528b4c1b876381e2a8274cb87408ab4860a9c1 || true
+	git checkout master -- src/symbolic/core.svg
+
 	autoreconf -fvi
 }
   
