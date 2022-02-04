@@ -1,0 +1,16 @@
+pkgbase = avalanchego
+	pkgdesc = The avalanchego binary
+	pkgver = v1.7.4
+	pkgrel = 1
+	url = https://avax.network
+	arch = x86_64
+	license = BSD 3-Clause License
+	depends = git
+	depends = go
+	depends = gcc
+	source = https://github.com/ava-labs/avalanchego/releases/download/v1.7.4/avalanchego-linux-amd64-v1.7.4.tar.gz.sig
+	source = https://github.com/ava-labs/avalanchego/releases/download/v1.7.4/avalanchego-linux-amd64-v1.7.4.tar.gz
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = avalanchego
