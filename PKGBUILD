@@ -24,13 +24,14 @@ fi
 
 pkgname=obs-face-tracker
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="This plugin provide video filters for face detection and face tracking for mainly a speaking person"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/face-tracker.1294/"
 license=("GPL2")
 depends=("obs-studio")
 makedepends=("cmake")
+options=('debug')
 source=(
   "$pkgname::git+https://github.com/norihiro/obs-face-tracker.git#tag=$pkgver"
   "libvisca-ip::git+https://github.com/norihiro/libvisca-ip.git"
@@ -67,7 +68,8 @@ prepare() {
 build() {
   cd "$pkgname"
   cmake -B build \
-  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+  -DCMAKE_INSTALL_PREFIX='/usr' \
   -DDLIB_USE_CUDA=$OBS_FT_ENABLE_CUDA
   make -C build
 }
