@@ -2,14 +2,15 @@
 
 pkgname=obs-midi
 _pkgver=0.9.3-ALPHA-3.66
-pkgver=`echo "$_pkgver" | tr - _`
-pkgrel=1
+pkgver=${_pkgver//-/_}
+pkgrel=2
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-midi.1023/"
 license=("GPL2")
 depends=("obs-studio" "jack")
 makedepends=("cmake" "git")
+options=('debug')
 source=(
   "$pkgname::git+https://github.com/cpyarger/$pkgname.git#tag=tag-$_pkgver"
   "libremidi::git+https://github.com/jcelerier/libremidi.git"
@@ -36,6 +37,7 @@ build() {
   cd $pkgname
 
   cmake -B build \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_INSTALL_PREFIX='/usr'
 
   make -C build
