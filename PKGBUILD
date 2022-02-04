@@ -2,7 +2,7 @@
 # Maintainer: (XavierCLL) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 
 pkgname=ksvnupdater
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Utility oriented to KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('git: Download Scripty and Pology'
             'openssh: ssh-agent and ssh-add. Accesing KDE repos with auth'
             'jq: Creating documentation')
 source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
-md5sums=('72d4cd1d03e6373c577147b3d48ac996')
+md5sums=('07a31e1d12412a6c3b0ed7b38f23bf56')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -33,4 +33,3 @@ package() {
   cd "$pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
 }
- 
