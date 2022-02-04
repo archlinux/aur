@@ -14,6 +14,7 @@ pkgbase = c-lightning
 	makedepends = python-mako
 	makedepends = sqlite
 	makedepends = zlib
+	depends = bitcoin-cli
 	optdepends = cppcheck: Static C/C++ code analysis
 	optdepends = jq: Command-line JSON processor
 	optdepends = libsecp256k1: Optimised C library for EC operations on curve secp256k1

@@ -12,6 +12,7 @@ pkgdesc="A Lightning Network implementation in C."
 arch=("any")
 url="https://github.com/ElementsProject/${_pkgname}"
 license=("custom:BSD-MIT")
+depends=("bitcoin-cli")
 makedepends=("git" "gmp" "libsodium" "mrkd" "net-tools" "python" "python-mako" "sqlite" "zlib")
 optdepends=("cppcheck: Static C/C++ code analysis"
 "jq: Command-line JSON processor"
