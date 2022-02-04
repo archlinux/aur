@@ -1,12 +1,12 @@
 # Maintainer: Bruno Carlin <bruno@bcarlin.net>
 pkgname=ember-language-server
 pkgver=2.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ember Language Server (ELS) implements the Language Server Protocol for Ember.js projects. "
 arch=( 'any' )
 url="https://github.com/lifeart/ember-language-server"
 license=('MIT')
-#depends=()
+depends=('nodejs')
 makedepends=('npm' 'jq')
 #checkdepends=()
 #optdepends=()
