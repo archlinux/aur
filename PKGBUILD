@@ -4,7 +4,7 @@
 _pkgname=toppler
 pkgname="${_pkgname}-git"
 pkgver=1.2+10+r531.20220201.8596a68
-pkgrel=2
+pkgrel=3
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
