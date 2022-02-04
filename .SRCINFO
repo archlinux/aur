@@ -1,11 +1,11 @@
 pkgbase = toppler
 	pkgdesc = A reimplementation of the classic jump & run game "Nebulus"
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/roever/toppler/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = gettext
 	makedepends = gimp
 	makedepends = imagemagick
@@ -16,9 +16,9 @@ pkgbase = toppler
 	optdepends = toppler-levels: The upstream levels as individual missions that can be played individually, and files that can be loaded into the level editor.
 	source = https://gitlab.com/roever/toppler/-/archive/v1.2/toppler-v1.2.tar.gz
 	source = toppler.desktop
-	source = toppler.xpm
-	md5sums = c9a9cd45588bfe721312ed7137b62d47
-	md5sums = 95f97271fe1f629c396d20bb4d21b924
-	md5sums = 204417defa762760e2d2747ca1120cf9
+	source = toppler.png
+	sha256sums = 36baba81b7a47547b489e9a5da9b086833b13fee132fd9ebdb67bfcd82ce92ca
+	sha256sums = 828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a
+	sha256sums = fff858bedef2a563cecf3379326d8fa6d7e2a18351cbbaac02ca0ae8176adedd
 
 pkgname = toppler
