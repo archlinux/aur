@@ -1,4 +1,4 @@
-# Maintainer: Kamran Mackey <kamranm1200@gmail.com>
+# Maintainer: Evelyn Marie <evelynelizabethmarie@gmail.com>
 
 pkgbase=flac-git
 pkgname=(flac-git flac-doc-git)
