@@ -4,7 +4,7 @@
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('Apache')
 url='https://rancherdesktop.io/'
@@ -12,7 +12,7 @@ makedepends=('npm' 'nvm' 'nodejs' 'imagemagick')
 optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
             'nerdctl-bin: Docker-compatible CLI for containerd'
             'helm: for Apps section, only useful if your deploy uses helm or plan to use it')
-provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl')
+provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('10b3e51f8eb1afd85fbf7e0cbac07a605ce3b2c11834248d0039ddf67d24f503')
@@ -74,4 +74,5 @@ package() {
   # Creating the symlink for better usage
   install -d "$pkgdir"/usr/bin/
   ln -sf /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
+  ln -sf /opt/${pkgname}/resources/resources/linux/lima/bin/limactl ${pkgdir}/usr/bin/limactl
 }
