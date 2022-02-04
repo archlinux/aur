@@ -1,0 +1,17 @@
+pkgbase = omnu-ice
+	pkgdesc = A cool, light blue/gray theme collection designed in Oomox
+	pkgver = 01_04_22
+	pkgrel = 1
+	url = https://www.jasong-designs.com/2022/01/01/omnu-ice-theme-collection/
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk2
+	depends = gtk-engine-murrine
+	optdepends = openbox: optional window manager theme
+	optdepends = metacity: optional window manager theme
+	optdepends = xfwm4: optional window manager theme
+	source = https://github.com/jgpws/omnu-ice/raw/main/downloads/omnu-ice-01-04-22.tar.gz
+	sha256sums = 385aeca773689dfa89056d333e3e2ea539d6682599eaccc42bc1eef9b1062a68
+
+pkgname = omnu-ice
