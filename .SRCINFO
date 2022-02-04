@@ -1,14 +1,13 @@
-pkgbase = pacsync-git
-	pkgdesc = A pacman frontend which manages packages based on a holistic view of the system
-	pkgver = 9
+pkgbase = arch-emerge-git
+	pkgdesc = A pacman frontend like Gentoo's emerge which manages packages based on a holistic view of the system
+	pkgver = 1
 	pkgrel = 1
-	url = https://gitlab.com/isd/pacsync
+	url = https://github.com/gissf1/arch-emerge
 	arch = any
 	license = custom
 	makedepends = git
-	replaces = pacsync-hg
-	source = git+https://gitlab.com/isd/pacsync
+	source = git+https://github.com/gissf1/arch-emerge
 	sha256sums = SKIP
 
-pkgname = pacsync-git
+pkgname = arch-emerge-git
 

@@ -3,4 +3,4 @@ src/
 pkg/
 
 # Git checkout:
-pacsync
+arch-emerge

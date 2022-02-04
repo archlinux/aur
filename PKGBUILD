@@ -1,35 +1,29 @@
-# Maintainer: Ian Denhardt <ian@zenhack.net>
-pkgname=pacsync-git
-pkgver=9
+# Maintainer: Brian Gisseler <gissf1@gmail.com>
+# Contributor: Ian Denhardt <ian@zenhack.net>
+pkgname=arch-emerge-git
+pkgver=r45.0af9b96
 pkgrel=1
-pkgdesc="A pacman frontend which manages packages based on a holistic view of the system"
+pkgdesc="A pacman frontend like Gentoo's emerge which manages packages based on a holistic view of the system"
 arch=('any')
-url="https://gitlab.com/isd/pacsync"
+url="https://github.com/gissf1/arch-emerge"
 license=('custom')
-source=('git+https://gitlab.com/isd/pacsync')
-replaces=('pacsync-hg')
+source=('git+https://github.com/gissf1/arch-emerge')
 makedepends=('git')
+sha256sums=('SKIP')
 
 pkgver() {
-  # We omit the leading r recommended in the VCS package guidelines, because:
-  #
-  # - Earlier versions of this package already used bare numbers, so adding
-  #   an r would cause the version number to run backwards
-  # - We can guarantee upstream will never tag a release (since the author
-  #   of this PKGBUILD is also the upstream author), so there is no need to
-  #   worry about a release appearing and messing up the versioning
-  cd "$srcdir"/pacsync
-  git rev-list --count HEAD
+  cd "$srcdir"/arch-emerge
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir"/pacsync
+  cd "$srcdir"/arch-emerge
 
-  install -Dm755 pacsync $pkgdir/usr/bin/pacsync
-  install -Dm644 pacsync.8 $pkgdir/usr/share/man/man8/pacsync.8
+  install -Dm755 emerge $pkgdir/usr/bin/emerge
+  install -Dm644 emerge.8 $pkgdir/usr/share/man/man8/emerge.8
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
-  install -dm755 $pkgdir/etc/pacsync
+  install -Dm644 README.md $pkgdir/usr/share/doc/$pkgname/README.md
+  install -Dm644 emerge.conf $pkgdir/usr/share/doc/$pkgname/emerge.conf
+  install -dm755 $pkgdir/etc/emerge
+  install -Dm644 emerge.conf $pkgdir/etc/emerge/emerge.conf
 }
-
-# vim:set ts=2 sw=2 et:
-sha256sums=('SKIP')
