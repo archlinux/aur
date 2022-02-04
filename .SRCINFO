@@ -1,6 +1,6 @@
 pkgbase = mrkd
 	pkgdesc = Write man pages using Markdown, and convert them to Roff or HTML.
-	pkgver = 0.1.6
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/refi64/mrkd
 	arch = any
@@ -8,11 +8,10 @@ pkgbase = mrkd
 	makedepends = python-setuptools
 	depends = python-pip
 	depends = python-jinja
-	depends = python-mistune
+	depends = python-mistune1
 	depends = python-plac
 	depends = python-pygments
-	source = https://files.pythonhosted.org/packages/py3/m/mrkd/mrkd-0.1.6-py3-none-any.whl
-	sha256sums = 9662b05abbb8e98c2ec5aa60296ca6dd7b39868e5b19f69195dbd1bd22880acb
+	source = https://files.pythonhosted.org/packages/py3/m/mrkd/mrkd-0.2.0-py3-none-any.whl
+	sha256sums = 4cb47bb9eb8933a34ea2f2110529f33a07abcf1da43b7e77328538b7ee6164a0
 
 pkgname = mrkd
-
