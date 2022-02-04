@@ -2,8 +2,8 @@ pkgname=manyverse-bin
 _pkgname=manyverse
 pkgdesc="A social network off the grid"
 pkgrel=0
-pkgver=0.2201.19
-_pkgver=0.2201.19-beta
+pkgver=0.2202.4
+_pkgver=0.2202.4-beta
 arch=('x86_64')
 url="https://manyver.se"
 license=('MPL2')
@@ -13,7 +13,7 @@ source=(
 	'manyverse.desktop'
 	'manyverse.sh')
 sha256sums=(
-	'49ca15de728718a6b457a9387924f38463925e1a65ea2113ceaf9c5195c461e3'
+	'2d34a6aaa373c193681bd9cb7bbc57d3506c5be2da6e6140815611a6a8a7580b'
 	'8fe2216da0a258fc9eb3bd2488a6b09ccc4c8cd753b74cba85e827d5c792998e'
 	'60fbacb296707f47c57659c78d15c68a82c5363d9c629d12f210a303a13b6379'
 	'3da5580a758dd55df3cbb4329662face1fdc594bd72618b962387dba7e9b93ce')
@@ -25,3 +25,4 @@ package() {
 	install -D -m755 "manyverse.sh" "${pkgdir}/usr/bin/manyverse"
 	install -D -m644 "manyverse.png" "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/manyverse.png"
 }
+
