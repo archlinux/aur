@@ -4,7 +4,7 @@
 _pkgname=toppler
 pkgname="${_pkgname}-git"
 pkgver=1.2+10+r531.20220201.8596a68
-pkgrel=3
+pkgrel=4
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
@@ -14,17 +14,20 @@ makedepends=('gettext' 'gimp' 'git' 'imagemagick' 'povray')
 optdepends=(
   "${_pkgname}-levels: The upstream levels as individual missions that can be played individually, and files that can be loaded into the level editor."
 )
-provides=( "${_pkgname}=${pkgver}" )
-conflicts=( "${_pkgname}" )
-replaces=( "${_pkgname}-darcs" )
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}-darcs")
 source=(
   "${_pkgname}::git+https://gitlab.com/roever/toppler.git"
-  "toppler.desktop"
-  "$_pkgname.xpm")
+  "${_pkgname}.desktop"
+  "${_pkgname}.png"  # Taken from legacy http://downloads.sourceforge.net/toppler/toppler-1.1.6.tar.gz and converted to smapper PNG.
+)
 
-sha256sums=('SKIP'
-            '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
-            '43a2f5d2010eaf2752982f39789abc2d635bc35baf66357305e51b1941807ab3')
+sha256sums=(
+  'SKIP'
+  '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
+  'fff858bedef2a563cecf3379326d8fa6d7e2a18351cbbaac02ca0ae8176adedd'
+)
 
 pkgver () {
   cd "${srcdir}/${_pkgname}"
@@ -49,8 +52,8 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
-  install -D -v -m644 "${srcdir}/toppler.desktop" "${pkgdir}/usr/share/applications/toppler.desktop"
-  install -Dm644 "$srcdir/$_pkgname.xpm" "$pkgdir/usr/share/pixmaps/$_pkgname.xpm"
+  install -D -v -m644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   for _docfile in README.md doc/*; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
