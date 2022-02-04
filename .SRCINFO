@@ -1,0 +1,17 @@
+pkgbase = omnu-ice-dark
+	pkgdesc = This Numix clone is the dark version of OmNu-Ice. It features a dark and cool color scheme.
+	pkgver = 01_04_22
+	pkgrel = 1
+	url = https://www.jasong-designs.com/2022/01/01/omnu-ice-theme-collection/
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk2
+	depends = gtk-engine-murrine
+	optdepends = openbox: optional window manager theme
+	optdepends = metacity: optional window manager theme
+	optdepends = xfwm4: optional window manager theme
+	source = https://github.com/jgpws/omnu-ice-dark/raw/main/downloads/omnu-ice-dark-01-04-22.tar.gz
+	sha256sums = fc5bd3f2d5fe9c33659d779ba0cb9a01e3d4411ad6e2cbab1d9270a228c61e18
+
+pkgname = omnu-ice-dark
