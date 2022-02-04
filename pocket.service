@@ -1,0 +1,13 @@
+[Unit]
+Description=Pocket node
+After=network-online.target nss-lookup.target
+
+[Service]
+User=pocket
+ExecStart=/usr/bin/pocket start
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.target
