@@ -5,7 +5,7 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.0.5.r35.g81fe41a0
+pkgver=1.0.5.r177.g00e12b77
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 source=("git+https://github.com/PolyMC/PolyMC"
         "git+https://github.com/MultiMC/libnbtplusplus"
-        "git+https://github.com/PolyMC/quazip")
+        "git+https://github.com/stachenov/quazip")
 
 sha256sums=('SKIP'
             'SKIP'
@@ -63,7 +63,6 @@ check() {
 package() {
   cd "${srcdir}/PolyMC/build"
   make install DESTDIR="${pkgdir}"
-  install -D "${srcdir}/PolyMC/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
   install -D "${srcdir}/PolyMC/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
 }
 
