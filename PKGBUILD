@@ -1,10 +1,11 @@
 # Maintainer: Taboon Egon <te451 -_AT_- netcourrier -_DOT_- com>
+# Contributor: relrel <relrelbachar@gmail.com>
 
 pkgname=scratch3-bin
 _pkgname=scratch3
 conflicts=("scratch3")
-pkgver=3.27.0
-pkgrel=5
+pkgver=3.28.0
+pkgrel=1
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
 url="https://scratch.mit.edu"
@@ -18,7 +19,7 @@ source=("https://downloads.scratch.mit.edu/desktop/Scratch%20$pkgver%20Setup.exe
         "${_pkgname}-icons.tar.gz"
         "${_pkgname}.xml")
 noextract=("Scratch%20$pkgver%20Setup.exe")
-sha256sums=('343135e697db089a7ce6e8736950c4693b418d7cbc41151e33a45cac4ecc89db'
+sha256sums=('03037e3e4c5227c496dfc9d905e59bb3308c8ce82aec11d545cdd75145da18a2'
             '8d7c41e0bba6db4070714002851a5d16edc08f3918ed8badb510b4ce9246da8f'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '1445107a18b05cee3db8d6cd59e57b9a0468f70d9aceffefd0a1f24196f8b2da'
