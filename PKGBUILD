@@ -4,7 +4,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.1.3
-pkgrel=13
+pkgrel=14
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -53,7 +53,7 @@ makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
   # AUR Packages
-  "cef-minimal-obs=87.1.14"
+  "cef-minimal-obs=87.1.14+ga29e9a3+chromium_87.0.4280.141_1"
 )
 # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -82,6 +82,7 @@ else
 fi
 provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
 conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
+options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
   "bind_iface.patch" # Based on https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/4219.patch
@@ -163,6 +164,7 @@ build() {
   mkdir -p build; cd build
 
   cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_BROWSER=ON \
