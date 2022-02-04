@@ -2,7 +2,7 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-git
-pkgver=15.4.r64.2699836
+pkgver=15.5.rc2.r4.382568e
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 	git config submodule.gnu-efi.url "$srcdir/rhboot-gnu-efi"
 	git submodule update
 
-	sed -e 's/-Werror //g' -i Makefile Make.defaults
+	sed -e 's/-Werror//g' -i Makefile Make.defaults
 }
 
 build() {
