@@ -1,7 +1,7 @@
 pkgbase = gnome-search-providers-jetbrains
 	pkgdesc = Add Jetbrains IDE projects to Gnome Search
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/flausch/gnome-search-providers-jetbrains
 	arch = x86_64
 	license = MPL2
