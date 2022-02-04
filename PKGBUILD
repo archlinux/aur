@@ -9,7 +9,7 @@
 _pkgbase=scons
 pkgname=scons2
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible Python-based build utility. Python2 version"
 arch=('any')
 url="https://scons.org"
@@ -18,7 +18,7 @@ conflicts=('python2-scons') # https://github.com/bartoszek/AUR-python2-scons
 provides=('python2-scons')
 depends=('python')
 makedepends+=('python-setuptools' 'python2-setuptools')
-makedepends+=('docbook2x' 'epydoc' 'fop' 'texlive-bin' 'graphviz' 'ghostscript'
+makedepends+=('docbook2x' 'fop' 'texlive-bin' 'graphviz' 'ghostscript'
 'lynx' 'python-lxml' 'texlive-latexextra')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/${_pkgbase}/${_pkgbase}/archive/${pkgver}.tar.gz")
 sha512sums=('7d597e681d00918342c64afc61410d961f0516f2e054669d3ef76fcddcbf13b4e24990bdd7c46f3f4369ad2f45ba3fe0173e33edc15e846096bbea10b23fb7c1')
