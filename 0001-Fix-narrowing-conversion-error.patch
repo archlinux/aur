@@ -1,0 +1,11 @@
+--- xplc-0.3.13/xplc/moduleloader.cpp	2005-04-27 23:38:09.000000000 +0200
++++ xplc-0.3.13/xplc/moduleloader.cpp.new	2022-02-04 23:09:50.554289277 +0100
+@@ -60,7 +60,7 @@
+     return NULL;
+   }
+ 
+-  switch(moduleinfo->version_major) {
++  switch((int)moduleinfo->version_major) {
+ #ifdef UNSTABLE
+   case -1:
+     /* nothing to do */
