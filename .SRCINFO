@@ -1,7 +1,7 @@
 pkgbase = git-credential-manager-core
 	pkgdesc = A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux
 	pkgver = 2.0.632
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/Git-Credential-Manager-Core
 	install = git-credential-manager-core.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = git-credential-manager-core
 	checkdepends = dotnet-runtime-5.0
 	makedepends = git
 	makedepends = dotnet-sdk
-	makedepends = dotnet-runtime
+	makedepends = dotnet-runtime>=6
 	makedepends = dpkg
 	provides = git-credential-manager-core
 	conflicts = git-credential-manager-core-bin

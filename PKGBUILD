@@ -2,12 +2,12 @@
 pkgbase=git-credential-manager-core
 pkgname=("$pkgbase" "${pkgbase}-extras")
 pkgver=2.0.632
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/microsoft/Git-Credential-Manager-Core"
 license=('MIT')
-makedepends=(git dotnet-sdk dotnet-runtime dpkg)
+makedepends=(git dotnet-sdk 'dotnet-runtime>=6' dpkg)
 checkdepends=(dotnet-runtime-5.0)
 provides=($pkgname)
 conflicts=("${pkgname}-bin")
