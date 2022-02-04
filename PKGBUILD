@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=1.0.0rc0.r0.7cd4cc0
+pkgver=1.0.0.r2.10d7b48
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
@@ -30,7 +30,7 @@ build() {
 check() {
 	cd "${_name%-git}"
 	cp build/lib.*/tpm2_pytss/_libtpm2_pytss.abi3.so tpm2_pytss
-	cp build/lib.*/tpm2_pytss/internal/type_mapping.py tpm2_pytss/internal
+	cp build/lib.*/tpm2_pytss/internal/{type_mapping,versions}.py tpm2_pytss/internal
 	python -B -m pytest
 }
 
