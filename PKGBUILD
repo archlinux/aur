@@ -2,7 +2,7 @@
 # Contributor: Dustin Falgout <dustin@antergos.com>
 
 pkgname=obs-service-tar_scm-git
-pkgver=0.10.28.r750
+pkgver=0.10.30.r763
 pkgrel=1
 pkgdesc="Source Service for the OpenSUSE Build Service (OBS)"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 source=("${pkgname}::git+${url}.git")
 groups=('obs')
 depends=('python'
-         'obs-build'
+         'build'
          'git'
          'python-yaml'
          'python-dateutil')
@@ -33,7 +33,7 @@ BUILDENV+=('!check')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
-    printf "%s.r%s" "$(git describe)" "$(git rev-list --count HEAD)"
+    printf "%s.r%s" "$(git describe --tags --abbrev=0)" "$(git rev-list --count HEAD)"
 }
 
 check() {
