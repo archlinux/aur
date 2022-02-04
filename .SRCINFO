@@ -1,0 +1,17 @@
+pkgbase = highlight-pointer-git
+	pkgdesc = Highlight mouse pointer/cursor using a dot
+	pkgver = 1.1.3.r0.g32bf4c6
+	pkgrel = 1
+	url = https://github.com/swillner/highlight-pointer
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	provides = highlight-pointer
+	source = highlight-pointer::git+https://github.com/swillner/highlight-pointer
+	md5sums = SKIP
+
+pkgname = highlight-pointer-git
