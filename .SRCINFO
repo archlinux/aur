@@ -1,11 +1,11 @@
 pkgbase = bakelite
 	pkgdesc = Incremental backup with strong cryptographic confidentiality baked into the data model
-	pkgver = r70.9e70abd
+	pkgver = r79.0bb9d7f
 	pkgrel = 1
 	url = https://github.com/richfelker/bakelite
 	arch = x86_64
 	license = GPL2
-	source = git+https://github.com/richfelker/bakelite.git#commit=9e70abd
+	source = git+https://github.com/richfelker/bakelite.git#branch=main
 	md5sums = SKIP
 
 pkgname = bakelite

@@ -1,14 +1,12 @@
 # Maintainer: Gnarflord <aur@gnarf.link>
 pkgname=bakelite
-pkgver=r70.9e70abd
+pkgver=r79.0bb9d7f
 pkgrel=1
 pkgdesc="Incremental backup with strong cryptographic confidentiality baked into the data model"
 arch=('x86_64')
 url="https://github.com/richfelker/bakelite"
 license=('GPL2')
-# Stuck at commit 9e70abd, as package no longer compiles as of 2021-02-04
-# See https://github.com/richfelker/bakelite/issues/2
-source=("git+https://github.com/richfelker/bakelite.git#commit=9e70abd")
+source=("git+https://github.com/richfelker/bakelite.git#branch=main")
 md5sums=("SKIP")
 
 pkgver() {
