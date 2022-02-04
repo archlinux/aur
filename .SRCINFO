@@ -1,8 +1,8 @@
 pkgbase = ultravnc-viewer-securevnc-plugin
 	pkgdesc = A plugin that provides simple, effective and securely encrypted VNC sessions for UltraVNC
 	pkgver = 2.4
-	pkgrel = 1
-	url = http://adamwalling.com/SecureVNC/
+	pkgrel = 2
+	url = https://uvnc.com/downloads/encryption-plugins/87-encryption-plugins.html
 	arch = any
 	license = LGPL
 	depends = ultravnc-viewer>=1.0.9

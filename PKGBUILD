@@ -1,10 +1,10 @@
 pkgname=ultravnc-viewer-securevnc-plugin
 _uvnc_pkgname=ultravnc-viewer
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A plugin that provides simple, effective and securely encrypted VNC sessions for UltraVNC"
 arch=('any')
-url="http://adamwalling.com/SecureVNC/"
+url="https://uvnc.com/downloads/encryption-plugins/87-encryption-plugins.html"
 license=('LGPL')
 depends=('ultravnc-viewer>=1.0.9')
 source=("https://uvnc.com/download/encryptionplugins.zip")
