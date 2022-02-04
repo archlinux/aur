@@ -7,7 +7,8 @@ pkgdesc="webdav server in rust"
 arch=('x86_64')
 url="https://github.com/miquels/webdav-server-rs"
 license=('APACHE')
-makedepends=('git')
+makedepends=('git' 'rust')
+depends=('pam')
 source=(git+https://github.com/miquels/webdav-server-rs 'webdav-server.service')
 backup=('etc/webdav-server-rs/config.toml')
 
