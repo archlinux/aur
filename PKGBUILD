@@ -6,7 +6,7 @@ pkgdesc="ossbrowser是阿里云官方提供的OSS图形化管理工具，提供�
 arch=('x86_64')
 url="https://github.com/aliyun/oss-browser"
 license=('unknown')
-depends=('gconf' 'unzip')
+depends=('gconf' 'unzip' 'base-devel')
 makedepends=('tar')
 source=(
 	"https://gosspublic.alicdn.com/oss-browser/1.16.0/oss-browser-linux-x64.zip"
