@@ -2,8 +2,8 @@
 # Contributor: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 
 pkgname=opensnitch
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -35,7 +35,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
 sha512sums=(
-    '4ddee77089320018fd0e719b6da0144473f438d1455a43b07fb72f7a9932cc293f06b03e634d3afc1e184b4eb52f4b56997e857c2019c072905ffb4c447461f3'
+    '1f6bed64493dbf39ea0114adf302a5aaddecb2c36a67ce571be989779bb8c41939886d69c673d7a2afc7e51575233dca27b1544ab56564cafd01271d4b4d6810'
 )
 
 prepare() {
