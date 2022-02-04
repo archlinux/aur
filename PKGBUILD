@@ -1,15 +1,15 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
-_pkgname=skywire
-pkgname=${_pkgname}-bin
-_projectname=skycoin
-_githuborg=${_projectname}
-pkgdesc="Skywire: Building a New Internet. Skycoin.com"
-_pkgver='0.5.1'
-_tag_ver="v${_pkgver}"
-pkgver=${_pkgver//-/.}
+pkgname=skywire-bin
+_pkgname=${pkgname/-bin}
+_githuborg=skycoin
+pkgdesc="Skywire: Decentralize the web. Skycoin.com"
+pkgver='0.6.0'
+pkgrel=1
+_rc=1
+_pkgver=${pkgver}
+_tag_ver="v${_pkgver}-rc${_rc}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgrel=35
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 makedepends=()
@@ -19,16 +19,18 @@ conflicts=( 'skywire' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
-sha256sums=('93c175835105148b1bec531a973847b9b1acadbe1a9b9aaa6c2e1c1e7cda5b9b')
-sha256sums_i686=('6c600e33593e2b4053c5d08fdeb5cedcde425f019e4fc7b2d0b3b3adb7f322f6')
-sha256sums_x86_64=('c661fb78caa9dae961800069b188f8035b36cc151fe5665c8eb59c16da7c5781')
-sha256sums_aarch64=('bc5c2227de16bc71d16c73cafcdf071c9f6c40f715d9c5416bea66dcc5659eed')
-sha256sums_armv8=('bc5c2227de16bc71d16c73cafcdf071c9f6c40f715d9c5416bea66dcc5659eed')
-sha256sums_armv7=('0fa0e5d00d7ac0eedd55efcf19e1e7fba9b0efc5b690d8ce27536f10e4a5f830')
-sha256sums_armv7l=('0fa0e5d00d7ac0eedd55efcf19e1e7fba9b0efc5b690d8ce27536f10e4a5f830')
-sha256sums_armv7h=('0fa0e5d00d7ac0eedd55efcf19e1e7fba9b0efc5b690d8ce27536f10e4a5f830')
-sha256sums_arm=('0fa0e5d00d7ac0eedd55efcf19e1e7fba9b0efc5b690d8ce27536f10e4a5f830')
-_release_url=("${url}/releases/download/${_tag_ver}/${_pkgname}-${_tag_ver}-linux")
+sha256sums=('ee0fa347bfe56aadd6c8ea86dc8e865e1b16bd0cce2429a73a91baeb713b5b08')
+sha256sums_i686=('41f2691f3dcc04aae404f26fa9a7b885dc666728245228de8758a9bb23c00f5a')
+sha256sums_x86_64=('26fca76a61727dca059a353e85dabd95517e08d5e09e3004350935e97b758c37')
+sha256sums_aarch64=('c54c1cd95930a49c5bdd08a5659cebfea8911128b3a62cecdf978827072596ca')
+sha256sums_armv8=('c54c1cd95930a49c5bdd08a5659cebfea8911128b3a62cecdf978827072596ca')
+sha256sums_armv7=('17bb4058c668004079700563ab8b85201cc26313defe92e1dc3223679261bfec')
+sha256sums_armv7l=('17bb4058c668004079700563ab8b85201cc26313defe92e1dc3223679261bfec')
+sha256sums_armv7h=('17bb4058c668004079700563ab8b85201cc26313defe92e1dc3223679261bfec')
+sha256sums_arm=('17bb4058c668004079700563ab8b85201cc26313defe92e1dc3223679261bfec')
+#https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
+_binarchive=("${_pkgname}-${_tag_ver}-linux")
+_release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
 source_armv8=( ${source_aarch64[@]} )
@@ -38,9 +40,8 @@ source_armv7l=( ${source_arm[@]} )
 source_armv7h=( ${source_arm[@]} )
 source_i686=("${_release_url}-386.tar.gz")
 
-## compress scripts archive & update checksums
+## compress scripts archive & update checksums - now in updates.sh
 #  tar -czvf skywire-scripts.tar.gz skywire-scripts && updpkgsums
-#  updpkgsums
 
 package() {
 _msg2 'creating dirs'
@@ -91,6 +92,10 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_sy
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
+
+#desktop integration
+install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
 #tls key and certificate generation
 install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
