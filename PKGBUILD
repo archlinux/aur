@@ -23,7 +23,7 @@ install=
 changelog=
 md5sums=("SKIP" "SKIP")
 noextract=()
-validpgpkeys=()
+validpgpkeys=("D93080B0C0D5FE8B")
 
 
 source=("https://github.com/ava-labs/avalanchego/releases/download/${pkgver}/avalanchego-linux-amd64-${pkgver}.tar.gz.sig" 
