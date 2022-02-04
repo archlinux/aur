@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
@@ -51,7 +51,7 @@ _pkgname=ray
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz"
         "grpc.patch"::"https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/21866.patch"
         "py310.patch"::"https://patch-diff.githubusercontent.com/raw/ray-project/ray/pull/21221.patch")
-sha256sums=('33bd1afcfe2f8d0f416e80bf21e4b36fe6f9ec74c55b034a5581553270fdf8e8'
+sha256sums=('f97d6c8d0b18c8bac20a1f87627342f517e7a8bec283243f142f734edd477a2f'
             'SKIP'
             'SKIP')
 
