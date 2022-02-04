@@ -4,13 +4,13 @@
 
 pkgname=electrumx-git
 _pkgname=electrumx
-pkgver=1.16.0.r2025.0e321d2
+pkgver=1.16.0.r2029.0256e97
 pkgrel=1
 pkgdesc="Server implementation for the Electrum wallet (git version)"
 arch=('any')
 depends=('leveldb'
          'python>=3.7'
-         'python-aiorpcx>=0.18.5' 'python-aiorpcx<0.19.0'
+         'python-aiorpcx-git>=0.22.0' 'python-aiorpcx-git<0.23.0'
          'python-attrs'
          'python-plyvel'
          'python-pylru'
