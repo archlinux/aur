@@ -2,13 +2,14 @@
 
 pkgname=libajantv2
 pkgver=16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AJA NTV2 Open Source Static Libs and Headers for building applications that only wish to statically link against"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/aja-video/ntv2"
 license=("MIT")
 depends=()
 makedepends=("cmake")
+options=(debug)
 # Use commit hash for now because some Cmake fixes were merged
 source=("ntv2::git+https://github.com/aja-video/ntv2.git#commit=abf17cc1e7aadd9f3e4972774a3aba2812c51b75")
 sha256sums=("SKIP")
@@ -23,6 +24,7 @@ prepare() {
   fi
   
   sed -i 's/Linux|Darwin/Linux/g' cmake/CommonFlags.cmake
+  sed -i 's/Debug|RelWithDebInfo/RelWithDebInfo/g' cmake/CommonFlags.cmake
 }
 
 build() {
@@ -30,6 +32,7 @@ build() {
   mkdir -p build; cd build
 
   cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DAJA_BUILD_OPENSOURCE=ON ..
 
