@@ -2,7 +2,7 @@
 
 pkgname=alire
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -62,6 +62,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   gprinstall -P alr_env -p --prefix="$pkgdir/usr"
+  # TODO: Install the bash completion under /usr/share
+  install -D scripts/alr-completion.bash "$pkgdir/usr/share/bash-completion/completions/alr"
 }
 
 # vim:set ts=2 sw=2 et:

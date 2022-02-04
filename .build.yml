@@ -5,6 +5,7 @@ packages:
     - gprbuild-bootstrap
     - xmlada
     - git
+    - unzip
 tasks:
 - prepare: |
     git clone https://aur.archlinux.org/gprbuild.git
