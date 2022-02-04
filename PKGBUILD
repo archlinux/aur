@@ -1,7 +1,7 @@
 # Maintainer: Euro20179 <Euro20179@protonmail.com>
 
 pkgname=ytfzf-git
-pkgver=r1279.355b29b
+pkgver=r1282.a257688
 pkgrel=1
 pkgdesc="A posix script to find and watch youtube videos from the terminal. (Without API)"
 arch=('any')
