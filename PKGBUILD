@@ -20,11 +20,11 @@ replaces=( "${_pkgname}-darcs" )
 source=(
   "${_pkgname}::git+https://gitlab.com/roever/toppler.git"
   "toppler.desktop"
-)
-sha256sums=(
-  'SKIP'
-  '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
-)
+  "$_pkgname.xpm")
+
+sha256sums=('SKIP'
+            '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
+            '43a2f5d2010eaf2752982f39789abc2d635bc35baf66357305e51b1941807ab3')
 
 pkgver () {
   cd "${srcdir}/${_pkgname}"
@@ -50,6 +50,7 @@ package() {
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}" install
   install -D -v -m644 "${srcdir}/toppler.desktop" "${pkgdir}/usr/share/applications/toppler.desktop"
+  install -Dm644 "$srcdir/$_pkgname.xpm" "$pkgdir/usr/share/pixmaps/$_pkgname.xpm"
   for _docfile in README.md doc/*; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
