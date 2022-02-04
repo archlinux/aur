@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+
+## 2.1.1
+
+### Fixed
+- Fixed regression introduced in 2.1.0 where setting the x, y or z value would not properly set the corresponding
+  X, Y or Z value.
+- Fixed `LasData.change_scaling` setting the header's `offsets` and/or `scales` to `None`
+  if the corresponding optionnal argument was not given to the `change_scaling` method.
+  The header will now correctly keep the corresponding value unchanged.
+
 ## 2.1.0
 
 ### Added
