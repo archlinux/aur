@@ -3,7 +3,7 @@
 
 _pkgname=xmrig-cuda
 _pkgver=6.15.1
-_mover=1
+_mover=2
 pkgname="${_pkgname/xmrig/xmrig-mo}"
 pkgver="${_pkgver}mo${_mover}"
 pkgrel=1
