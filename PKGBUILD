@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20211229
+pkgver=20220203
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
 sha256sums=('SKIP'
             'b8882d2b3cce965bd03b100fc53419ff43d8934c364136bbe63473fca0692fec'
             'bd2964654f5c346af76a5408adc76d34bf490435c4400cfa1d2340f0ad598dcd'
-            '782576ad8ff7c33f2d4dffb367509cd3590acdd357a17c432889a9f6f8b3d7a0'
+            'b8cd918c56b1435c448067e4202c36e5c3cf3fb0ff43ac4cdc590719677b5da5'
             '5c604da87c9deb3582b43efa724589080a7070a108ab0c0d00e115cb35eb4b13'
             '8df4e8076d28a1bc44f41b0129a9935da9839e8a8cb9944206757e47da561808')
 
