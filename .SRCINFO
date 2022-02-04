@@ -1,8 +1,8 @@
 pkgbase = daemonize
 	pkgdesc = Run a program as a Unix daemon
 	pkgver = 1.7.8
-	pkgrel = 2
-	url = http://github.com/bnc/daemonize/
+	pkgrel = 3
+	url = https://github.com/bmc/daemonize
 	arch = i686
 	arch = x86_64
 	arch = armv7h
