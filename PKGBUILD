@@ -3,8 +3,8 @@
 # Contributor: Pablo Olmos de Aguilera Corradini <pablo <at] glatelier (dot} org>
 # Contributor: Sander van Kasteel <info at sandervankasteel dot nl>
 pkgname=gtg-git
-pkgver=0.5.r149.ge37572b3
-pkgrel=4
+pkgver=0.5.r175.ga742165a
+pkgrel=1
 pkgdesc="Getting Things GNOME! is a personal tasks and TODO-list items organizer for GNOME"
 url="https://wiki.gnome.org/Apps/GTG"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('python-cheetah3: for the Export and print plugin'
             'pdftk: for the Export and print plugin'
             'hamster-time-tracker: send a task to the Hamster time tracking applet'
             'yelp: view user manual')
-checkdepends=('python-nose' 'python-mock')
+#checkdepends=('python-nose' 'python-mock')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/getting-things-gnome/gtg.git')
@@ -40,10 +40,10 @@ build() {
   meson compile -C build
 }
 
-check() {
-  cd "$srcdir/${pkgname%-git}"
-  python run-tests
-}
+#check() {
+#  cd "$srcdir/${pkgname%-git}"
+#  python run-tests
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
