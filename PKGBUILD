@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-about-git
-pkgver=0.4.4.r0.ge195a6a
+pkgver=0.4.5.r0.gc86e826
 pkgrel=1
 pkgdesc="Cargo plugin to generate list of all licenses for a crate (git)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
