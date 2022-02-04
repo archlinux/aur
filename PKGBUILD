@@ -20,7 +20,7 @@
 
 pkgname=irccd
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='A flexible, fast IRC bot'
 arch=('x86_64')
@@ -28,7 +28,7 @@ url='http://projects.malikania.fr/irccd/'
 license=('custom:ISC')
 groups=()
 depends=()
-makedepends=('mercurial' 'openssl')
+makedepends=('bison' 'cmake' 'curl' 'flex' 'mercurial' 'openssl')
 checkdepends=()
 optdepends=()
 provides=()
@@ -43,19 +43,22 @@ md5sums=('f8818c1a3414621b3d2cfb080d915bf5'
          '9a2172be1a0b56ee719048cb0b4ee594')
 
 build() {
-	mkdir "$srcdir/$pkgname-$pkgver/build"
-	cd "$srcdir/$pkgname-$pkgver/build"
-	
-	cmake -DCMAKE_INSTALL_PREFIX='/usr' -DIRCCD_WITH_SYSTEMD=On ..
-	make
+	cmake -S "$pkgname-$pkgver" -B build \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DIRCCD_WITH_SYSTEMD=On
+	cmake --build build
+}
+
+check() {
+	cd build
+	ctest --output-on-failure
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver/build"
-	make DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp ../LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cp "$pkgname-$pkgver"/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 	# Copy default config files and sysusers
 	install -D -m 0644 "$pkgdir/usr/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
