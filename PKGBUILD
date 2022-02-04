@@ -3,14 +3,14 @@
 
 pkgname=lib32-gegl
 _pkgbase=gegl
-pkgver=0.4.32
-_commit=5780858c2f5784084ec566890e62c160eae88727 # tags/GEGL_0_4_32
-pkgrel=3
+pkgver=0.4.34
+_commit=9aaf6b3525f3917c2d6add866afd33e4ee28510b # tags/GEGL_0_4_34
+pkgrel=1
 pkgdesc="Graph based image processing framework (32-bit)"
 arch=('x86_64')
 url="https://www.gegl.org/"
 license=('GPL3' 'LGPL3')
-depends=("gegl=$pkgver"
+depends=("gegl>=$pkgver"
          'lib32-babl' 'lib32-libspiro' 'lib32-json-glib'
          'lib32-poppler-glib'
          'lib32-libgexiv2' 'lib32-libraw' 'lib32-openexr'
