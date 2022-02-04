@@ -1,6 +1,6 @@
 # Maintainer: Jan Ypma <jan at ypmania dot nl>
 pkgname=jjazzlab-x-bin
-pkgver=3.0.2a
+pkgver=3.0.3
 pkgrel=1
 pkgdesc="A Midi-based framework dedicated to backing tracks generation"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url="https://www.jjazzlab.com/"
 license=('LGPL')
 depends=('java-environment>=8')
 source=("https://www.jjazzlab.com/pkg/JJazzLab-${pkgver}-Linux.zip" "jjazzlab-x.desktop")
-sha256sums=('fcbc75fd21472e8c6b9e3aa2e7cdaea0d7d408cd503e13f5bc6da7b50e43f0a7'
+sha256sums=('4b5f0af0df9c93b6d675f8bf7304db9eebbb384d90fae616fc6f348a96b76640'
             'ca15408fd0f11505def63f04359bc3c9745c0077a9f3b5953edc31391ee7a882')
 
 package() {
