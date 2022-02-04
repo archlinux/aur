@@ -2,16 +2,18 @@ _pkgname=osmscout-server
 _flavor=qtcontrols
 pkgname=$_pkgname-$_flavor
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "aarch64")
 url="https://github.com/rinigus/osmscout-server"
-source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver")
-sha256sums=('SKIP')
+source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver" "remove-enabled.patch")
+sha256sums=('SKIP' 'SKIP')
 depends=("mapnik" "valhalla" "libpostal" "marisa" "kyotocabinet")
 
 prepare() {
 	cd "$_pkgname-$pkgver"
 	git submodule update --init --recursive
+
+	patch -Np1 -i "$srcdir"/remove-enabled.patch
 }
 
 build() {

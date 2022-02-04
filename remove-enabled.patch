@@ -1,0 +1,12 @@
+diff --git a/gui/qml/platform.qtcontrols/MenuDrawerPL.qml b/gui/qml/platform.qtcontrols/MenuDrawerPL.qml
+index 76557d4..53a7017 100644
+--- a/gui/qml/platform.qtcontrols/MenuDrawerPL.qml
++++ b/gui/qml/platform.qtcontrols/MenuDrawerPL.qml
+@@ -31,7 +31,6 @@ Drawer {
+ 
+     property string         banner // added for compatibility
+     default property alias  content: column.data
+-    property bool           enabled: true // https://github.com/rinigus/osmscout-server/issues/374
+     property string         title // added for compatibility
+     property string         titleIcon // added for compatibility
+ 
