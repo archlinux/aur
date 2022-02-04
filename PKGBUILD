@@ -2,7 +2,7 @@
 
 pkgname=alire
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
@@ -57,6 +57,11 @@ prepare()
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   gprbuild -j0 -P alr_env -cargs -gnatws
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver/testsuite"
+  GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null ./run.py
 }
 
 package() {
