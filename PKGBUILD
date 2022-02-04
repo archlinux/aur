@@ -3,7 +3,7 @@
 
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
-pkgver=1.63.2
+pkgver=1.64.0
 pkgrel=1
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,8 +13,8 @@ url='https://github.com/VSCodium/vscodium.git'
 microsofturl='https://github.com/microsoft/vscode.git'
 license=('MIT')
 
-# Version of NodeJS that will be used to create the build. Sinds 1.58.0, Codium requires a version >=14 and <=17.
-_nodejs='14.16.0'
+# Version of NodeJS that will be used to create the build. Sinds 1.64.0, Codium requires version 14 >= 14.17.0.
+_nodejs='14.19.0'
 
 depends=(
     'fontconfig'
@@ -97,10 +97,16 @@ build() {
     # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
     export SKIP_LINUX_PACKAGES="True"
 
+    # Set a temporary NVM directory to make sure the nvm in this script does not clash with a system-wide nvm install
+    export NVM_DIR=$(mktemp -d)
+
     # Build just like Travis does: install NodeJS and run the build.sh script.
     source /usr/share/nvm/init-nvm.sh
     nvm install ${_nodejs}
     ./build.sh
+
+    # Clean up temp NVM directory
+    rm -rf "$NVM_DIR" || true
 }
 
 package() {
