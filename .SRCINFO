@@ -1,7 +1,7 @@
 pkgbase = skywire-bin
 	pkgdesc = Skywire: Decentralize the web. Skycoin.com
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = skywire-bin
 	provides = skywire
 	conflicts = skywire
 	source = skywire-scripts.tar.gz
-	sha256sums = ee0fa347bfe56aadd6c8ea86dc8e865e1b16bd0cce2429a73a91baeb713b5b08
+	sha256sums = f5084073bf5a4443c50971f56dff97a4ea61ed745dbbcdb0ddbec0ffe545ceb3
 	source_i686 = https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-386.tar.gz
 	sha256sums_i686 = 7df86755a24024290fc0bb5a0a6ddf0506c018017c7634588965f3db0ac68a4d
 	source_x86_64 = https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
