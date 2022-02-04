@@ -2,7 +2,7 @@
 
 _gemname=sshkey
 pkgname=ruby-$_gemname
-pkgver=1.9.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='SSH private and public key generator in pure Ruby'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('3015e0ad867ee409601fbb199069822dd8619dcdb19fbb1225bf34090aa4023c')
+sha256sums=('77d162e8bcd5d2a1833193c3ad7700b2c6994dad547c8e2341e4598d4bb1730d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
