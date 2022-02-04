@@ -16,5 +16,5 @@ package() {
     cd "$pkgname-$pkgver"
     mv calcure.py calcure
     install -Dm755 calcure "$pkgdir/usr/bin/calcure"
-    install -Dm644 readme.md "$pkgdir/usr/share/doc/$pkgname"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname"
 }
