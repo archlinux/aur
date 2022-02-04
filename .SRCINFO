@@ -1,19 +1,19 @@
 pkgbase = elasticsearch
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
-	pkgver = 7.10.2
-	pkgrel = 2
+	pkgver = 7.17.0
+	pkgrel = 1
 	url = https://www.elastic.co/products/elasticsearch
 	arch = x86_64
 	license = Apache
-	makedepends = java-environment=11
-	depends = java-runtime-headless<=16
+	makedepends = java-environment=17
+	depends = java-runtime-headless<=17
 	depends = systemd
 	depends = libxml2
 	backup = etc/elasticsearch/elasticsearch.yml
 	backup = etc/elasticsearch/log4j2.properties
 	backup = etc/elasticsearch/jvm.options
 	backup = etc/default/elasticsearch
-	source = elasticsearch-7.10.2.tar.gz::https://github.com/elastic/elasticsearch/archive/v7.10.2.tar.gz
+	source = elasticsearch-7.17.0.tar.gz::https://github.com/elastic/elasticsearch/archive/v7.17.0.tar.gz
 	source = elasticsearch.service
 	source = elasticsearch@.service
 	source = elasticsearch-keystore.service
@@ -23,8 +23,8 @@ pkgbase = elasticsearch
 	source = elasticsearch-tmpfile.conf
 	source = elasticsearch.default
 	source = remove-systemd-distribution-check.patch
-	source = patch-log4j-JAR-to-remove-JndiLookup-class-81629.patch
-	sha256sums = bdb7811882a0d9436ac202a947061b565aa71983c72e1c191e7373119a1cdd1c
+	source = remove-systemd-package-check.patch
+	sha256sums = 64392a523a534ed0d25439cc0998a20cf4ea74578b0e85cd0fb188421e0126a1
 	sha256sums = 9e1f68ff275ef2b5f2b93d2823efc5cc9643da696fcbe09a3ea7520ada35ffba
 	sha256sums = 8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351
 	sha256sums = bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f
@@ -34,6 +34,6 @@ pkgbase = elasticsearch
 	sha256sums = 74a772e9f73e2cecda45dcd30ade2f6114db657ed36231292bdf9a7ca04eab78
 	sha256sums = bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8
 	sha256sums = 96934e6518245a4110714c3e1c1eb7bfaf4dd0026cc917efc322f3bfa4c3b5ec
-	sha256sums = 98724575d454a49ec419eb39c53565cba5d2901eef6246d63205d02b8c6a68e2
+	sha256sums = e00c45812db63a0fa6ea4de27e8f489e38e01fafdb155e5421f5faf659c2905d
 
 pkgname = elasticsearch

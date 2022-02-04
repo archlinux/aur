@@ -4,14 +4,14 @@
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
 pkgname=elasticsearch
-pkgver=7.10.2
-pkgrel=2
+pkgver=7.17.0
+pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('Apache')
-depends=('java-runtime-headless<=16' 'systemd' 'libxml2')
-makedepends=('java-environment=11')
+depends=('java-runtime-headless<=17' 'systemd' 'libxml2')
+makedepends=('java-environment=17')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
@@ -23,9 +23,9 @@ source=(
   elasticsearch-tmpfile.conf
   elasticsearch.default
   remove-systemd-distribution-check.patch
-  patch-log4j-JAR-to-remove-JndiLookup-class-81629.patch
+  remove-systemd-package-check.patch
 )
-sha256sums=('bdb7811882a0d9436ac202a947061b565aa71983c72e1c191e7373119a1cdd1c'
+sha256sums=('64392a523a534ed0d25439cc0998a20cf4ea74578b0e85cd0fb188421e0126a1'
             '9e1f68ff275ef2b5f2b93d2823efc5cc9643da696fcbe09a3ea7520ada35ffba'
             '8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
@@ -35,7 +35,7 @@ sha256sums=('bdb7811882a0d9436ac202a947061b565aa71983c72e1c191e7373119a1cdd1c'
             '74a772e9f73e2cecda45dcd30ade2f6114db657ed36231292bdf9a7ca04eab78'
             'bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8'
             '96934e6518245a4110714c3e1c1eb7bfaf4dd0026cc917efc322f3bfa4c3b5ec'
-            '98724575d454a49ec419eb39c53565cba5d2901eef6246d63205d02b8c6a68e2')
+            'e00c45812db63a0fa6ea4de27e8f489e38e01fafdb155e5421f5faf659c2905d')
 
 backup=('etc/elasticsearch/elasticsearch.yml'
         'etc/elasticsearch/log4j2.properties'
@@ -45,16 +45,15 @@ backup=('etc/elasticsearch/elasticsearch.yml'
 prepare() {
   cd $pkgname-$pkgver
   patch -Np1 -i "$srcdir"/remove-systemd-distribution-check.patch
-  patch -Np1 -i "$srcdir"/patch-log4j-JAR-to-remove-JndiLookup-class-81629.patch
-  sed -i 's|${versions.log4j}|2.11.1|' libs/log4j/build.gradle
+  patch -Np1 -i "$srcdir"/remove-systemd-package-check.patch
 }
 
 build() {
   cd $pkgname-$pkgver
-  export PATH=/usr/lib/jvm/java-11-openjdk/bin:$PATH
+  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   export GRADLE_OPTS="-Dbuild.snapshot=false -Dlicense.key=x-pack/plugin/core/snapshot.key"
-  ./gradlew :distribution:buildSystemdModule
-  ./gradlew :distribution:archives:linux-tar:build
+  ./gradlew :modules:systemd:assemble
+  ./gradlew :distribution:archives:linux-tar:assemble
 }
 
 package() {
@@ -88,7 +87,7 @@ package() {
   install -Dm644 "$srcdir"/elasticsearch-sysctl.conf "$pkgdir"/usr/lib/sysctl.d/elasticsearch.conf
   install -Dm644 "$srcdir"/elasticsearch.default "$pkgdir"/etc/default/elasticsearch
 
-  cp -r distribution/build/outputs/systemd/modules/systemd "$pkgdir"/usr/share/elasticsearch/modules/
+  cp -r distribution/build/outputs/default/modules/systemd "$pkgdir"/usr/share/elasticsearch/modules/
 
   sed -i '2iJAVA_HOME=/usr/lib/jvm/default-runtime' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env
   sed -i 's/ES_BUNDLED_JDK=true/ES_BUNDLED_JDK=false/g' "$pkgdir"/usr/share/elasticsearch/bin/elasticsearch-env

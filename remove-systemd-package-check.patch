@@ -1,0 +1,15 @@
+diff --git a/distribution/build.gradle b/distribution/build.gradle
+index 76549a83d0b..120297684e0 100644
+--- a/distribution/build.gradle
++++ b/distribution/build.gradle
+@@ -198,10 +198,6 @@ ext.restTestExpansions = [
+ // we create the buildOssModules task above but fill it here so we can do a single
+ // loop over modules to also setup cross task dependencies and increment our modules counter
+ project.rootProject.subprojects.findAll { it.parent.path == ':modules' }.each { Project module ->
+-  if (module.name == 'systemd') {
+-    // the systemd module is only included in the package distributions
+-    return
+-  }
+   File licenses = new File(module.projectDir, 'licenses')
+   if (licenses.exists()) {
+     buildDefaultNoticeTaskProvider.configure {
