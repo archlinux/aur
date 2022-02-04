@@ -1,13 +1,13 @@
 pkgbase = python-fortranformat
-	pkgdesc = Python module to read and write data with fortran format strings.
+	pkgdesc = Mimics Fortran textual IO in Python
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/fortranformat
+	pkgrel = 2
+	url = https://github.com/brendanarnold/py-fortranformat
 	arch = any
-	license = custom:MIT
-	source = http://pypi.python.org/packages/source/f/fortranformat/fortranformat-1.1.1.tar.gz
-	source = website.html::https://pypi.python.org/pypi/fortranformat
-	sha256sums = 9b7aa2148af7a5f4f5fd955d121bd6869d44b82ac2182d459813b849aa87d831
-	sha256sums = ff4e0510a7b79f2eb9e139de93f593e9895d69a687b51911197606ebecbe8385
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/f/fortranformat/fortranformat-1.1.1.tar.gz
+	sha512sums = 39268216ea104c8ca03b7e53c3077e845f375f4a1fe7f0336a030cae7a21034fbb1d0b287ec08b012ece3e81a999dcfd50dece410b6abd4b937d81d67922853d
 
 pkgname = python-fortranformat
