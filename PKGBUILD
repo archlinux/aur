@@ -4,7 +4,7 @@
 
 pkgname=lib32-gimp
 _pkgbase=gimp
-pkgver=2.10.28
+pkgver=2.10.30
 pkgrel=1
 pkgdesc='GNU Image Manipulation Program (32-bit)'
 url="https://www.gimp.org/"
@@ -18,7 +18,7 @@ depends=('lib32-dbus-glib' 'lib32-gegl' 'lib32-glib-networking'
 makedepends=('alsa-lib' 'curl' 'ghostscript' 'intltool' 'iso-codes')
 license=('GPL' 'LGPL')
 source=("https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgbase}-${pkgver}.tar.bz2")
-sha256sums=('4f4dc22cff1ab5f026feaa2ab55e05775b3a11e198186b47bdab79cbfa078826')
+sha256sums=('88815daa76ed7d4277eeb353358bafa116cd2fcd2c861d95b95135c1d52b67dc')
 
 prepare() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
