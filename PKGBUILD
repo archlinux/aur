@@ -1,6 +1,6 @@
 # Maintainer: Leonid Vaiman <vleon1@gmail.com>
 pkgname=pycharm-community-jre-aarch64
-pkgver=2021.3.1
+pkgver=2021.3.2
 pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE with aarch64 support"
 arch=(x86_64 aarch64)
@@ -17,16 +17,16 @@ source=(
   pycharm.sh
 )
 source_aarch64=(
-  "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-11_0_13-linux-aarch64-b1751.21.tar.gz"
+  "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-11_0_13-linux-aarch64-b1751.25.tar.gz"
   fsnotifier-aarch64
 )
 sha256sums=(
-  'f5dd6e642ee65fa96d0ea8447d4a75589ce4258434222c4d9df00d1e5a46a8f5'
+  'f1ae01f471d01c6f09aab0a761c6dea9834ef584f2aaf6d6ebecdce6b55a66e8'
   'f727119ec7c8b96820e80712b1ee342de6a94ff72402e8f2d390cbff702f9b21'
   'b6f0518e59c4744ded38de63efba91205bcba406fa74944a1f3a8937566d8acc'
 )
 sha256sums_aarch64=(
-  '56309fcb763c5cc7a52fa2565866a1fcc2cddd9b515a7bce7401f7f8a8c9d2fe'
+  '221cb3e6afff5734861873da0a70bdb8186e202e6e8c0f50b22dbafd2a19ba4d'
   '8e8aecc0770fe6d7fdc78753c4ac8acc5fe28f94fc28d196fadc01a4aede348f'
 )
 
