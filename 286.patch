@@ -1,0 +1,50 @@
+From f265b71a42f753e1600c6352f3a542aa0937821c Mon Sep 17 00:00:00 2001
+From: Srevin Saju <srevinsaju@sugarlabs.org>
+Date: Fri, 4 Feb 2022 12:45:53 +0300
+Subject: [PATCH] fix: check is_relative_to based on resolved paths
+
+on Fedora 35, /home is a symlink to /var/home and hence
+archivy has trouble trying to figure out if data directory is relative
+to query_dir.
+
+Fixes the following traceback
+```
+[2022-02-04 12:35:35,253] ERROR in app: Exception on /login [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/usr/lib/python3.10/site-packages/archivy/routes.py", line 271, in login
+    return render_template("users/login.html", form=form, title="Login")
+  File "/usr/lib/python3.10/site-packages/flask/templating.py", line 146, in render_template
+    ctx.app.update_template_context(context)
+  File "/usr/lib/python3.10/site-packages/flask/app.py", line 756, in update_template_context
+    context.update(func())
+  File "/usr/lib/python3.10/site-packages/archivy/routes.py", line 32, in pass_defaults
+    dataobjs = data.get_items(load_content=False)
+  File "/usr/lib/python3.10/site-packages/archivy/data.py", line 103, in get_items
+    raise FileNotFoundError
+FileNotFoundError
+---
+ archivy/data.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/archivy/data.py b/archivy/data.py
+index 1cfe8bda..6ef0d3eb 100644
+--- a/archivy/data.py
++++ b/archivy/data.py
+@@ -21,7 +21,8 @@ def get_data_dir():
+ def is_relative_to(sub_path, parent):
+     """Implement pathlib `is_relative_to` only available in python 3.9"""
+     try:
+-        sub_path.resolve().relative_to(parent)
++        parent_path = Path(parent).resolve()
++        sub_path.resolve().relative_to(parent_path)
+         return True
+     except ValueError:
+         return False
