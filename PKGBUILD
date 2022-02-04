@@ -1,51 +1,53 @@
-# $Id: PKGBUILD 255141 2015-12-10 04:45:28Z foutrelis $
 # Maintainer: Kamran Mackey <kamranm1200@gmail.com>
 
 pkgbase=flac-git
-pkgname=('flac-git' 'flac-doc-git')
-pkgver=v1.3.3.ce6dd6b
-pkgrel=3
-arch=('x86_64' 'aarch64')
+pkgname=(flac-git flac-doc-git)
+pkgver=1.3.3.r85.gb358381a
+pkgrel=1
+arch=(x86_64 aarch64)
 url="https://xiph.org/flac/"
-license=('BSD' 'GPL')
-depends=('gcc-libs' 'libogg')
-makedepends=('nasm' 'doxygen')
-options=('!makeflags')
-source=(git://github.com/xiph/flac.git)
-sha1sums=('SKIP')
-_gitname=flac
+license=(BSD GPL)
+depends=(gcc-libs libogg)
+makedepends=(git nasm doxygen)
+source=("git+https://github.com/xiph/flac.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "flac"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
+prepare() {
+  cd "flac"
+  ./autogen.sh
 }
 
 build() {
-  cd "$_gitname"
-  ./autogen.sh
-  ./configure --prefix=/usr --disable-sse
+  cd "flac"
+  ./configure --prefix=/usr --enable-64-bit-words
   make
 }
 
 package_flac-git() {
-  pkgdesc="Free Lossless Audio Codec (git version)"
-  options=('!docs')
-  conflicts=('flac')
-  provides=('flac' 'libFLAC.so' 'libFLAC++.so')
+  pkgdesc="Free Lossless Audio Codec"
+  options=(!docs)
+  conflicts=(flac)
+  provides=(flac libFLAC.so libFLAC++.so)
 
-  cd "$_gitname"
+  cd "flac"
   make DESTDIR="${pkgdir}" install
-  install -D -m644 COPYING.Xiph "${pkgdir}/usr/share/licenses/$_gitname/LICENSE"
+  install -D -m644 COPYING.Xiph "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_flac-doc-git() {
-  pkgdesc="Developer documentation for the Free Lossless Audio Codec (git version)"
-  depends=('flac')
-  conflicts=('flac-doc')
-  provides=('flac-doc')
+  pkgdesc="Developer documentation for the Free Lossless Audio Codec"
+  arch=(any)
+  depends=(flac)
+  conflicts=(flac-doc)
+  provides=(flac-doc)
 
-  cd "$_gitname"
+  cd "flac"
   make DESTDIR="${pkgdir}" -C doc install
-  sed -i "s|$srcdir/$_gitname|/usr|" "${pkgdir}/usr/share/doc/$_gitname/FLAC.tag"
+  sed -i "s|$srcdir/flac|/usr|" "${pkgdir}/usr/share/doc/flac/FLAC.tag"
+  install -D -m644 COPYING.Xiph "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
