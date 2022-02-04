@@ -1,7 +1,7 @@
 # Maintainer: Jose Riha <jose 1711 gmail com>
 
 pkgname=python-textual
-pkgver=0.1.13
+pkgver=0.1.15
 pkgrel=1
 pkgdesc='TUI (Text User Interface) framework for Python inspired by modern web development.'
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-rich' 'python-pyfiglet')
 makedepends=('python-pip' 'python-poetry')
 source=("https://github.com/willmcgugan/textual/archive/v${pkgver}.tar.gz")
-md5sums=('fdd3012a954eba736fbd027850ce19e9')
+md5sums=('93f69fdf7f2d282820f9ea6be1d4ec7c')
 
 build() {
   cd textual-${pkgver}

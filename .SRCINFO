@@ -1,6 +1,6 @@
 pkgbase = python-textual
 	pkgdesc = TUI (Text User Interface) framework for Python inspired by modern web development.
-	pkgver = 0.1.13
+	pkgver = 0.1.15
 	pkgrel = 1
 	url = https://github.com/willmcgugan/textual
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-textual
 	makedepends = python-poetry
 	depends = python-rich
 	depends = python-pyfiglet
-	source = https://github.com/willmcgugan/textual/archive/v0.1.13.tar.gz
-	md5sums = fdd3012a954eba736fbd027850ce19e9
+	source = https://github.com/willmcgugan/textual/archive/v0.1.15.tar.gz
+	md5sums = 93f69fdf7f2d282820f9ea6be1d4ec7c
 
 pkgname = python-textual
