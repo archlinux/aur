@@ -1,0 +1,19 @@
+pkgbase = phosh-antispam
+	pkgdesc = Phosh Calls Anti-Spam
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://gitlab.com/kop316/phosh-antispam
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = gcc
+	makedepends = glib2
+	makedepends = libhandy
+	makedepends = meson
+	makedepends = docbook-xml
+	makedepends = docbook-xsl
+	depends = gnome-calls
+	source = https://gitlab.com/kop316/phosh-antispam/-/archive/2.0/phosh-antispam-2.0.tar.gz
+	sha256sums = 92ea60d8a6b3579a455853e7bd5246e53ccdd2a9b73f39bea111f31e3009ff86
+
+pkgname = phosh-antispam
