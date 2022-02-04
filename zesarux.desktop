@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Zesarux
+Comment=A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support
+Exec=/usr/bin/zesarux
+Terminal=false
+Icon=/usr/share/zesarux/zesarux.png
+Categories=Game;Emulator
+
