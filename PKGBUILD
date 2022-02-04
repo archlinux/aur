@@ -2,12 +2,12 @@
 
 pkgname=alire
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
 license=(GPL3)
-depends=(gnatcoll-core)
+depends=(gnatcoll-core unzip)
 makedepends=(git gprbuild)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v$pkgver.tar.gz"
 alire.patch
