@@ -5,7 +5,7 @@ pkgname=m68k-atari-mint-binutils
 _pkgname=binutils
 _target="m68k-atari-mint"
 pkgver=2.30
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the M68K architecture"
 url="http://www.gnu.org/software/binutils/"
 arch=('i686' 'x86_64')
@@ -25,12 +25,6 @@ prepare() {
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
-
-        CFLAGS=${CFLAGS//-D_FORTIFY_SOURCE=?/}
-        export CFLAGS
-        
-        CPPFLAGS=${CPPFLAGS//-D_FORTIFY_SOURCE=?/}
-        export CPPFLAGS
 
 	./configure \
 		"--prefix=${_sysroot}" \
