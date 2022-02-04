@@ -2,7 +2,7 @@
 pkgname=lutris-wine-git
 pkgver=0.64.r0.g588cf6b
 pkgrel=1
-pkgdesc='Lutris Wine Runner as system Wine and even better'
+pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('any')
 url='https://github.com/VHSgunzo/lutris-wine'
 license=('MIT')
