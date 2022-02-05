@@ -1,4 +1,4 @@
-# Maintainer: Térence Clastres <t dot clastres at gmail dot com>
+# Maintainer: Ben Brown <benjamb at pm dot me>
 
 pkgname=mkchromecast-git
 _gitname=mkchromecast
