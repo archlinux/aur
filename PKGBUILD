@@ -4,8 +4,8 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.10.2
-_pkgver=1.10.2
+pkgver=1.11.0rc1
+_pkgver=1.11.0-rc1
 pkgrel=2
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
@@ -19,43 +19,45 @@ makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' '
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
-        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
+        "${pkgname}::https://github.com/pytorch/pytorch#commit=7cc129e60c"
         "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
-        "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
-        "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
-        "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
-        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
+        "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
         "${pkgname}-psimd::git+https://github.com/Maratyszcza/psimd.git"
+        "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
+        "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
+        "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
+        "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
         "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
-        "${pkgname}-ideep::git+https://github.com/intel/ideep"
-        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
-        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
-        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
-        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
-        "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
+        "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
         "${pkgname}-gloo::git+https://github.com/facebookincubator/gloo"
-        "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
-        "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
-        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
+        "${pkgname}-foxi::git+https://github.com/houseroad/foxi.git"
+        "${pkgname}-ideep::git+https://github.com/intel/ideep"
+        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
+        "${pkgname}-QNNPACK::git+https://github.com/pytorch/QNNPACK"
+        "${pkgname}-six::git+https://github.com/benjaminp/six.git"
+        "${pkgname}-ARM_NEON_2_x86_SSE::git+https://github.com/intel/ARM_NEON_2_x86_SSE.git"
         "${pkgname}-sleef::git+https://github.com/shibatch/sleef"
+        "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
+        "${pkgname}-gemmlowp::git+https://github.com/google/gemmlowp.git"
         "${pkgname}-onnx-tensorrt::git+https://github.com/onnx/onnx-tensorrt"
         "${pkgname}-pocketfft::git+https://github.com/mreineck/pocketfft"
         "${pkgname}-cudnn-frontend::git+https://github.com/NVIDIA/cudnn-frontend.git"
-        "${pkgname}-benchmark::git+https://github.com/google/benchmark.git"
-        "${pkgname}-tbb::git+https://github.com/01org/tbb"
-        "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
-        "${pkgname}-fbjni::git+https://github.com/facebookincubator/fbjni.git"
-        "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
+        "${pkgname}-nccl::git+https://github.com/NVIDIA/nccl"
+        "${pkgname}-googletest::git+https://github.com/google/googletest.git"
         "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
         "${pkgname}-breakpad::git+https://github.com/driazati/breakpad.git"
-        "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
-        "${pkgname}-googletest::git+https://github.com/google/googletest.git"
         "${pkgname}-zstd::git+https://github.com/facebook/zstd.git"
+        "${pkgname}-tbb::git+https://github.com/01org/tbb"
+        "${pkgname}-fbgemm::git+https://github.com/pytorch/fbgemm"
+        "${pkgname}-tensorpipe::git+https://github.com/pytorch/tensorpipe.git"
+        "${pkgname}-kineto::git+https://github.com/pytorch/kineto"
         "${pkgname}-onnx::git+https://github.com/onnx/onnx.git"
-        "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-fmt::git+https://github.com/fmtlib/fmt.git"
+        "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
+        "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
+        "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
         https://github.com/oneapi-src/oneDNN/commit/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch
         fix_old_nnapi_lite_interpreter_config.patch
         fix-jit-frontend-nullptr-deref.patch
@@ -66,6 +68,8 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         ffmpeg4.4.patch
         66219.patch)
 sha256sums=('SKIP'
+            'b37c047f362fe21870e4ea3ca43a3f804c74054dfb93d687bce78a5aedddf4b6'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -112,7 +116,7 @@ sha256sums=('SKIP'
             '4d0d7da4a3fb099ed75f3007559fad04ac96eed87c523b274fb3bb6020e6b9b8'
             '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9'
             'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee')
-options=(!lto)
+options=('!lto')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -161,6 +165,7 @@ prepare() {
   git config submodule."third_party/kineto".url "${srcdir}/${pkgname}"-kineto
   git config submodule."third_party/pocketfft".url "${srcdir}/${pkgname}"-pocketfft
   git config submodule."third_party/breakpad".url "${srcdir}/${pkgname}"-breakpad
+  git config submodule."third_party/flatbuffers".url "${srcdir}/${pkgname}"-flatbuffers
 
   git submodule update --init --recursive
 
@@ -174,27 +179,27 @@ prepare() {
   patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
 
   # cuda 11.4.1 fix
-  patch -Np1 -i "${srcdir}/fix_c10.patch"
+  # patch -Np1 -i "${srcdir}/fix_c10.patch"
 
   # https://discuss.pytorch.org/t/about-build-android-sh-lite-and-nnapi/133581
-  patch -Np1 -i "${srcdir}/fix_old_nnapi_lite_interpreter_config.patch"
+  # patch -Np1 -i "${srcdir}/fix_old_nnapi_lite_interpreter_config.patch"
 
   # fix nullptr dereference
-  patch -Np1 -i "${srcdir}/fix-jit-frontend-nullptr-deref.patch"
+  # patch -Np1 -i "${srcdir}/fix-jit-frontend-nullptr-deref.patch"
 
   # disable vec tests
-  sed -e '/set(ATen_VEC_TEST_SRCS ${ATen_VEC_TEST_SRCS} PARENT_SCOPE)/d' -i aten/CMakeLists.txt
+  # sed -e '/set(ATen_VEC_TEST_SRCS ${ATen_VEC_TEST_SRCS} PARENT_SCOPE)/d' -i aten/CMakeLists.txt
 
   # https://github.com/pytorch/pytorch/issues/67153, https://github.com/pytorch/pytorch/pull/66219
-  patch -Np1 -i "${srcdir}/66219.patch"
+  # patch -Np1 -i "${srcdir}/66219.patch"
 
   # fix ideep/mkl-dnn
-  patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch"
+  # patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch"
 
   # remove local nccl
-  rm -rf third_party/nccl/nccl
+  # rm -rf third_party/nccl/nccl
   # also remove path from nccl module, so it's not checked
-  sed -e '/path = third_party\/nccl\/nccl/d' -i ./.gitmodules
+  # sed -e '/path = third_party\/nccl\/nccl/d' -i ./.gitmodules
 
   # fix build with google-glog 0.5 https://github.com/pytorch/pytorch/issues/58054
   sed -e '/namespace glog_internal_namespace_/d' -e 's|::glog_internal_namespace_||' -i c10/util/Logging.cpp
