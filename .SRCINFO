@@ -1,0 +1,18 @@
+pkgbase = python-pyradiodns-git
+	pkgdesc = Python library that resolves FQDN from the broadcast parameters of an audio service
+	pkgver = 0.1.r47.ga4dcfd0
+	pkgrel = 1
+	url = https://github.com/radiodns/pyradiodns
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	depends = python
+	provides = python-pyradiodns
+	provides = python-pyradiodns-git
+	conflicts = python-pyradiodns
+	source = python-pyradiodns::git+https://github.com/radiodns/pyradiodns.git
+	md5sums = SKIP
+
+pkgname = python-pyradiodns-git
