@@ -1,0 +1,24 @@
+pkgbase = odr-suite
+	pkgdesc = Opendigitalradio Suite (This is a Dummy Package for installing the suite)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	depends = odr-dabmod
+	depends = odr-dabmux
+	depends = odr-encodermanager
+	depends = odr-sourcecompanion
+	depends = odr-padenc
+	depends = odr-audioenc
+	depends = odr-radiodns-bridge
+	depends = odr-radioepg-bridge
+	depends = mmbtools-doc
+	depends = odr-mmbtools-common
+	provides = odr-suite
+
+pkgname = odr-suite
