@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ryujinx
+GenericName=任天堂 Switch 模拟器
+Comment=使用 C# 编写的实验性任天堂 Switch 模拟器
+Icon=ryujinx
+TryExec=ryujinx
+Exec=env GDK_BACKEND=x11 ryujinx %f
+Categories=Game;Emulator;GTK;
+MimeType=application/x-nx-nro;application/x-nx-nso;application/x-nx-nsp;application/x-nx-xci;
+Keywords=Switch;Nintendo;Emulator;
+Terminal=false
+StartupWMClass=Ryujinx
+PrefersNonDefaultGPU=true
