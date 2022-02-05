@@ -1,0 +1,27 @@
+pkgbase = odr-encodermanager-git
+	pkgdesc = Opendigitalradio WebGUI for ODR Encoder
+	pkgver = 5.0.0.r279.9b6cf19
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-encodermanager
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	makedepends = python-cherrypy
+	makedepends = python-jinja
+	makedepends = python-pyserial
+	makedepends = python-yaml
+	makedepends = supervisor
+	makedepends = python-pysnmp
+	depends = odr-audioenc
+	depends = odr-sourcecompanion
+	depends = odr-padenc
+	provides = odr-encodermanager
+	provides = odr-encodermanager-git
+	conflicts = odr-encodermanager
+	source = odr-encodermanager::git+https://github.com/Opendigitalradio/odr-encodermanager.git
+	md5sums = SKIP
+
+pkgname = odr-encodermanager-git
