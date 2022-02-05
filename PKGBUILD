@@ -3,7 +3,7 @@
 
 pkgname='python2-axolotl-git'
 _pkgname='python-axolotl'
-pkgver=0.1.39.r0.g37c5c55
+pkgver=0.2.3.r2.gb8d1a2e
 pkgrel=1
 pkgdesc="Python port of libaxolotl"
 url="https://github.com/tgalal/python-axolotl"
@@ -13,7 +13,7 @@ depends=('python2' 'python2-protobuf' 'python2-crypto' 'python2-axolotl-curve255
 makedepends=('python2-setuptools' 'git')
 conflicts=('python2-axolotl')
 provides=('python2-axolotl')
-source=('git://github.com/tgalal/python-axolotl')
+source=('git+https://github.com/tgalal/python-axolotl.git')
 sha512sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = python2-axolotl-git
 	pkgdesc = Python port of libaxolotl
-	pkgver = 0.1.39.r0.g37c5c55
+	pkgver = 0.2.3.r2.gb8d1a2e
 	pkgrel = 1
 	url = https://github.com/tgalal/python-axolotl
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = python2-axolotl-git
 	depends = python2-axolotl-curve25519-git
 	provides = python2-axolotl
 	conflicts = python2-axolotl
-	source = git://github.com/tgalal/python-axolotl
+	source = git+https://github.com/tgalal/python-axolotl.git
 	sha512sums = SKIP
 
 pkgname = python2-axolotl-git
-
