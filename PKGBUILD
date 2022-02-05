@@ -1,7 +1,7 @@
 # Maintainer: axzxc1236 <axzxc1236 [(@>>] users.noreply.github.com>
 pkgname=twitch-dl-bin
-pkgver=1.18.0
-pkgrel=2
+pkgver=1.18.1
+pkgrel=1
 pkgdesc="Twitch video downloader that use multiple concurrent connections"
 arch=(any)
 url="https://github.com/ihabunek/twitch-dl"
@@ -9,8 +9,8 @@ license=('GPL3')
 depends=('python' 'ffmpeg')
 provides=('twitch-dl' 'twitch-dl-bin')
 conflicts=('twitch-dl' 'twitch-dl-bin')
-source=('twitch-dl::https://github.com/ihabunek/twitch-dl/releases/download/1.18.0/twitch-dl.1.18.0.pyz')
-sha256sums=('b670f2ffdacf04d1c24669cb527d46005db364d7b9885ca15b39284852b9fe81')
+source=('twitch-dl::https://github.com/ihabunek/twitch-dl/releases/download/1.18.1/twitch-dl.1.18.1.pyz')
+sha256sums=('2bbf90a7dd6c141501076c1cec196e4bd051946496b17097028ebca1398db22b')
 noextract=('twitch-dl')
 
 package() {
