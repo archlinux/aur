@@ -98,19 +98,16 @@ prepare() {
 
   # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
   # should not break things, buuuuuuuuuut we'll see.
-  patch -Np1 -i ${_patches_dir}/dbus_name.patch
-
-  # allow uBlockOrigin to run in private mode by default, without user intervention.
-  patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
   # add custom uBO assets (on first launch only)
-  patch -Np1 -i ${_patches_dir}/custom-ubo-assets-bootstrap-location.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/custom-ubo-assets-bootstrap-location.patch
 
   # Debian patch to enable global menubar
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
   # custom patch that does not conflict with the unity patch
-  patch -Np1 -i ${_patches_dir}/mozilla-kde_after_unity.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
 
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
