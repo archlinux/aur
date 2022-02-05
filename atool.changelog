@@ -1,0 +1,31 @@
+2022-02-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* atool 0.39.0-7 dropped from [community] to AUR
+	* FS#72662 - https://bugs.archlinux.org/task/72662
+
+2016-12-10 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* atool 0.39.0-5 FS#52094
+
+2016-04-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* atool 0.39.0-4 FS#48958
+
+2014-07-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* atool 0.39.0-3 mtree rebuild
+
+2012-04-19 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* atool 0.39.0-1
+
+2012-02-21 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* atool 0.38.0-2
+	* signing package
+
+2011-08-20 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Updated to major version 0.38.0
+
+2009-08-16 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Updated to major version 0.37.0
+
+2008-10-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Updated to major version 0.36.0
+
+2008-10-05 Jaroslav Lichtblau <svetlemodry@archlinux.org>
+	* Moved to [community] repo
