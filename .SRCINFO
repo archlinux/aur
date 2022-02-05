@@ -1,0 +1,15 @@
+pkgbase = libsleef
+	pkgdesc = SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://sleef.org
+	arch = any
+	license = Boost
+	checkdepends = mpfr
+	checkdepends = openssl
+	checkdepends = fftw
+	makedepends = openmp
+	source = https://github.com/shibatch/sleef/archive/refs/tags/3.5.1.tar.gz
+	sha256sums = 415ee9b1bcc5816989d3d4d92afd0cd3f9ee89cbd5a33eb008e69751e40438ab
+
+pkgname = libsleef
