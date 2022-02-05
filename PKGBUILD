@@ -1,8 +1,8 @@
 # Maintainer: Xiaotian Wu <yetist@gmail.com>
 
 pkgname=scratch-desktop
-pkgver=3.26.0
-pkgrel=3
+pkgver=3.28.0
+pkgrel=1
 pkgdesc="Create and share your own interactive stories, games, music and art"
 url="https://scratch.mit.edu"
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('GPL')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
          'libxslt' 'minizip' 'nss' 're2' 'snappy')
 makedepends=('electron11')
-source=('https://downloads.scratch.mit.edu/desktop/Scratch%203.26.0%20Setup.exe'
+source=("scratch.exe::https://downloads.scratch.mit.edu/desktop/Scratch%20${pkgver}%20Setup.exe"
         'https://scratch.mit.edu/images/download/icon.png'
         'scratch-desktop.desktop'
         'x-scratch.xml'
 )
-sha256sums=('7ecbd1ea6561601574b2a8bca71a145b4ee98f8983e37193dabaa4c5e48b5725'
+sha256sums=('03037e3e4c5227c496dfc9d905e59bb3308c8ce82aec11d545cdd75145da18a2'
             '5efbe1a31e973d0393631e0317f68f81d213b6c55434b9f9185a47554f23ed99'
             '73d4f255aee28b9f72764a55e8711d07826e037ec624d23c8f7e7764c10475d5'
             '1090a96c91f7a47801633e077717b730d636f53bac7f8958c9fc9595ee5dba7e')
