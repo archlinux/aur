@@ -1,7 +1,7 @@
 pkgname="tldr-page-git"
 _pkgname="tldr-page-creator"
 pkgrel=1
-pkgver=1.5.r12.gb075858
+pkgver=1.6.r0.gb075858
 pkgdesc="Generate tldr-pages using Go"
 url="https://github.com/CleanMachine1/tldr-page-creator"
 source=('git+https://github.com/CleanMachine1/tldr-page-creator')
