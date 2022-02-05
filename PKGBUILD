@@ -2,13 +2,15 @@
 
 pkgname=redo-c
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An implementation of the redo build system in portable C with zero dependencies"
 arch=('x86_64')
 url="https://github.com/leahneukirchen/redo-c"
 license=('custom:CC0-1.0')
 depends=('glibc')
 makedepends=('git')
+provides=('redo')
+conflicts=('redo-sh' 'redo-jdebp' 'redo-python')
 options=('!lto')
 _commit='c19b03dc4c656109833c3af6924bfb314c9fbfdc'
 source=(

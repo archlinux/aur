@@ -1,12 +1,16 @@
 pkgbase = redo-c
 	pkgdesc = An implementation of the redo build system in portable C with zero dependencies
 	pkgver = 0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/leahneukirchen/redo-c
 	arch = x86_64
 	license = custom:CC0-1.0
 	makedepends = git
 	depends = glibc
+	provides = redo
+	conflicts = redo-sh
+	conflicts = redo-jdebp
+	conflicts = redo-python
 	options = !lto
 	source = redo-c::git+https://github.com/leahneukirchen/redo-c.git#commit=c19b03dc4c656109833c3af6924bfb314c9fbfdc
 	source = LICENSE
