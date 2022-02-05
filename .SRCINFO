@@ -1,0 +1,14 @@
+pkgbase = xcursor-box-cursor
+	pkgdesc = A minimal cursor theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/GrantMoyer/xcursor-box-cursor.git
+	arch = any
+	license = MIT
+	makedepends = python
+	makedepends = xorg-xcursorgen
+	makedepends = inkscape
+	source = git+https://gitlab.com/GrantMoyer/xcursor-box-cursor.git#tag=v1.0.0
+	sha512sums = SKIP
+
+pkgname = xcursor-box-cursor
