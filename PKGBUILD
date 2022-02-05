@@ -3,7 +3,7 @@
 _gitname=lua-pam
 pkgname=lua-pam-git
 pkgver=r12.4820711
-pkgrel=2
+pkgrel=3
 pkgdesc="A module for lua to use PAM"
 arch=(x86_64)
 url="https://github.com/RMTT/${_gitname}"

@@ -1,7 +1,7 @@
 pkgbase = lua-pam-git
 	pkgdesc = A module for lua to use PAM
 	pkgver = r12.4820711
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RMTT/lua-pam
 	install = lua-pam-git.install
 	arch = x86_64
