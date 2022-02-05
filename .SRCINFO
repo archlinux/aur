@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-hcl
+	pkgdesc = Tree-sitter grammar for the HCL language
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/MichaHoffmann/tree-sitter-hcl
+	arch = x86_64
+	groups = tree-sitter-grammars
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter
+	makedepends = npm
+	depends = glibc
+	provides = tree-sitter-hcl
+	source = https://github.com/MichaHoffmann/tree-sitter-hcl/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 77a9f76849dd749bf5c1b752173bfdde1ebf202376875e0790c9037c13a89981
+
+pkgname = tree-sitter-hcl
