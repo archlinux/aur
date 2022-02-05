@@ -1,11 +1,11 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=ab-av1
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="AV1 encoding tool with fast VMAF sampling."
 arch=('x86_64')
 url="https://github.com/alexheretic/ab-av1"
-license=('Apache-2.0')
+license=('MIT')
 depends=('svt-av1'
          'ffmpeg'
          'vmaf'
@@ -14,7 +14,7 @@ optdepends=()
 makedepends=('rust'
              'git')
 source=("https://github.com/alexheretic/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('584657e24b3bf13a71fbea33d06d08e05322c0281a6a145947759df9c5bbbcba')
+sha256sums=('6fe561789476028fd43f6d29600019fe5075c4546f0ee75c1d7bdf6d27ca24f1')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,5 +22,16 @@ build() {
 }
 
 package() {
-  install -Dm 755 "$pkgname-$pkgver"/target/release/ab-av1 -t "$pkgdir/usr/bin"
+  local bin
+  bin="$pkgname-$pkgver"/target/release/ab-av1
+
+  # generate completions
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  "$bin" print-completions bash > "$pkgdir/usr/share/bash-completion/completions/ab-av1"
+  mkdir -p "$pkgdir/usr/share/share/fish/completions"
+  "$bin" print-completions fish > "$pkgdir/usr/share/share/fish/completions/ab-av1.fish"
+  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
+  "$bin" print-completions zsh > "$pkgdir/usr/share/zsh/site-functions/_ab-av1"
+
+  install -Dm 755 "$bin" -t "$pkgdir/usr/bin"
 }
