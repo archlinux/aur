@@ -1,0 +1,19 @@
+pkgbase = python-msc-git
+	pkgdesc = Python API for DAB MSC data
+	pkgver = 1.0.1.7.r9.g816c3a0
+	pkgrel = 1
+	url = https://github.com/opendigitalradio/python-dabmsc
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	depends = python
+	depends = python-mot
+	provides = python-msc
+	provides = python-msc-git
+	conflicts = python-msc
+	source = python-msc::git+https://github.com/opendigitalradio/python-dabmsc.git
+	md5sums = SKIP
+
+pkgname = python-msc-git
