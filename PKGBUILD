@@ -36,8 +36,8 @@ source=($pkgname::svn+svn://servers.simutrans.org/simutrans/trunk
         path-for-game-data.patch
         "How to add files and paksets.md")
 sha256sums=('SKIP'
-            'f397641a2700b3378b828bc00d595de616b5f9f6c39a7d371d505c9014d9c2ba'
-            '7a76f231594641253a3100ec39fb36344b870d5dbba0adccc4aa888943219d95'
+            '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
+            'cb9fda1a99d0b54f316ba5ea5b90ec658641f9a9d3b77faf981525e12ff99188'
             '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
             
 prepare() {
