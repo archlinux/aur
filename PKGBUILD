@@ -1,7 +1,15 @@
 # Maintainer: noraj <printf %s 'YWxleGFuZHJlLnphbm5pQGV1cm9wZS5jb20='|base64 -d>
 
 pkgname=firefox-extension-arch-search
-pkgver=1.0.3
+pkgver=1.0.4
+_alpkgs_ver=1.0.1
+_alwiki_ver=1.0.2
+_alaur_ver=1.0.2
+_albugsfs_ver=1.0.1
+_albugst_ver=1.0.1
+_alforuma_ver=1.0.1
+_alforumk_ver=1.0.1
+_alman_ver=1.0.2
 pkgrel=1
 pkgdesc="A set of Web Extensions that adds ArchLinux (bug tracker, forum, packages, wiki, AUR) as a search engine to the Firefox browser."
 arch=('any')
@@ -10,23 +18,23 @@ license=('MIT')
 groups=('firefox-addons')
 depends=("firefox")
 replaces=('arch-firefox3-search' 'arch-firefox-search')
-source=("https://addons.mozilla.org/firefox/downloads/file/3658546/archlinux_aur_search-1.0.1-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3658547/archlinux_bugtracker_by_fs_search-1.0.1-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3658548/archlinux_bugtracker_by_text_search-1.0.1-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3658550/archlinux_forum_by_author_search-1.0.1-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3658551/archlinux_forum_by_keywords_search-1.0.1-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3658552/archlinux_packages_search-1.0.1-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3773793/archlinux_wiki_search-1.0.2-fx.xpi"
-        "https://addons.mozilla.org/firefox/downloads/file/3708972/archlinux_manual_pages_search-1.0.2-fx.xpi"
+source=("https://addons.mozilla.org/firefox/downloads/file/3658546/archlinux_aur_search-$_alaur_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3658547/archlinux_bugtracker_by_fs_search-$_albugsfs_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3658548/archlinux_bugtracker_by_text_search-$_albugst_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3658550/archlinux_forum_by_author_search-$_alforuma_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3658551/archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3658552/archlinux_packages_search-$_alpkgs_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3773793/archlinux_wiki_search-$_alwiki_ver-fx.xpi"
+        "https://addons.mozilla.org/firefox/downloads/file/3708972/archlinux_manual_pages_search-$_alman_ver-fx.xpi"
         "https://raw.githubusercontent.com/noraj/$pkgname/master/LICENSE")
-noextract=("archlinux_aur_search-1.0.1-fx.xpi"
-           "archlinux_bugtracker_by_fs_search-1.0.1-fx.xpi"
-           "archlinux_bugtracker_by_text_search-1.0.1-fx.xpi"
-           "archlinux_forum_by_author_search-1.0.1-fx.xpi"
-           "archlinux_forum_by_keywords_search-1.0.1-fx.xpi"
-           "archlinux_packages_search-1.0.1-fx.xpi"
-           "archlinux_wiki_search-1.0.2-fx.xpi"
-           "archlinux_manual_pages_search-1.0.2-fx.xpi")
+noextract=("archlinux_aur_search-$_alaur_ver-fx.xpi"
+           "archlinux_bugtracker_by_fs_search-$_albugsfs_ver-fx.xpi"
+           "archlinux_bugtracker_by_text_search-$_albugst_ver-fx.xpi"
+           "archlinux_forum_by_author_search-$_alforuma_ver-fx.xpi"
+           "archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi"
+           "archlinux_packages_search-$_alpkgs_ver-fx.xpi"
+           "archlinux_wiki_search-$_alwiki_ver-fx.xpi"
+           "archlinux_manual_pages_search-$_alman_ver-fx.xpi")
 b2sums=('d35be5d40e3b78c40043fc6d4aa3c652df39c57e57b4b0e97c0e5907305d62a53e5bfbba88b55ee8e92c800651c16055e78dd70a1c9462f370dba4fac92abf88'
         '972218e036ba1b4b6371e290cfc7c0e1f2282422dab54ec83dccab7db14fa8d12c401439be49a62dc223d8fbb2b09ef2f872844c4db2310ee4027c1e0ddf2cf9'
         '1cb57b7de8233c51c0e6a0f3a746c22b1ba374a6b1dfedd6b34b58631dbb3e299158ca08ba36ed2aaa93ac2b939f99a132929fad817acec5e50a06d7bb030d5c'
@@ -39,14 +47,14 @@ b2sums=('d35be5d40e3b78c40043fc6d4aa3c652df39c57e57b4b0e97c0e5907305d62a53e5bfbb
 
 package() {
 
-  install -Dm644 "archlinux_aur_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchAur@archlinux.org.xpi"
-  install -Dm644 "archlinux_bugtracker_by_fs_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchBugsFs@archlinux.org.xpi"
-  install -Dm644 "archlinux_bugtracker_by_text_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchBugsT@archlinux.org.xpi"
-  install -Dm644 "archlinux_forum_by_author_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumA@archlinux.org.xpi"
-  install -Dm644 "archlinux_forum_by_keywords_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumK@archlinux.org.xpi"
-  install -Dm644 "archlinux_packages_search-1.0.1-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchPkgs@archlinux.org.xpi"
-  install -Dm644 "archlinux_wiki_search-1.0.2-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchWiki@archlinux.org.xpi"
-  install -Dm644 "archlinux_manual_pages_search-1.0.2-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org"
+  install -Dm644 "archlinux_aur_search-$_alaur_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchAur@archlinux.org.xpi"
+  install -Dm644 "archlinux_bugtracker_by_fs_search-$_albugsfs_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchBugsFs@archlinux.org.xpi"
+  install -Dm644 "archlinux_bugtracker_by_text_search-$_albugst_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchBugsT@archlinux.org.xpi"
+  install -Dm644 "archlinux_forum_by_author_search-$_alforuma_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumA@archlinux.org.xpi"
+  install -Dm644 "archlinux_forum_by_keywords_search-$_alforumk_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchForumK@archlinux.org.xpi"
+  install -Dm644 "archlinux_packages_search-$_alpkgs_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchPkgs@archlinux.org.xpi"
+  install -Dm644 "archlinux_wiki_search-$_alwiki_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchWiki@archlinux.org.xpi"
+  install -Dm644 "archlinux_manual_pages_search-$_alman_ver-fx.xpi" "$pkgdir/usr/lib/firefox/browser/extensions/ArchMan@archlinux.org"
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
