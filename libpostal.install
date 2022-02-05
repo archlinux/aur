@@ -1,0 +1,18 @@
+post_install() {
+    echo ":: You need to download libpostal's trained data to "
+    echo "   /usr/local/share/libpostal prior using this library."
+    echo "   This can be done with the libpostal_data command, e.g.:"
+    echo "   libpostal_data download all /usr/local/share/libpostal"
+}
+
+post_upgrade() {
+    echo ":: You might want to update libpostal's trained data."
+    echo "   This can be done with the libpostal_data command, e.g.:"
+    echo "   libpostal_data download all /usr/local/share/libpostal"
+}
+
+post_remove() {
+    echo ":: You might still have libpostal's trained data located in"
+    echo "   /usr/local/share/libpostal (usually manually downloaded)"
+    echo "   You should be able to safely remove this directory."
+}

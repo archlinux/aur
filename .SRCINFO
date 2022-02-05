@@ -1,0 +1,13 @@
+pkgbase = libpostal
+	pkgdesc = A C library for parsing/normalizing street addresses around the world
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/openvenues/libpostal
+	install = libpostal.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source = https://github.com/openvenues/libpostal/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 8cc473a05126895f183f2578ca234428d8b58ab6fadf550deaacd3bd0ae46032
+
+pkgname = libpostal
