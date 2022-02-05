@@ -8,7 +8,7 @@ pkgdesc="A module for lua to use PAM"
 arch=(x86_64)
 url="https://github.com/RMTT/${_gitname}"
 license=('MIT')
-depends=(pam lua53)
+depends=(pam lua)
 makedepends=(cmake)
 provides=(lua-pam)
 install=lua-pam-git.install
@@ -22,8 +22,6 @@ pkgver() {
 
 build() {
     cd ${_gitname}
-    sed -i 's/target_link_libraries(lua_pam lua pam)/target_link_libraries(lua_pam lua5.3 pam)/' CMakeLists.txt
-    sed -i 's/lua.hpp/lua5.3\/lua.hpp/' src/main.cpp
     cmake . -B build
     make -C build
 }
