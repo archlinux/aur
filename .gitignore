@@ -1,5 +1,6 @@
 wechat_devtools*.exe
 nwjs*.tar.gz
+node*.tar.gz
 
 pkg/
 src/
