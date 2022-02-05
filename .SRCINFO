@@ -8,10 +8,9 @@ pkgbase = lua-pam-git
 	license = MIT
 	makedepends = cmake
 	depends = pam
-	depends = lua53
+	depends = lua
 	provides = lua-pam
 	source = git+https://github.com/RMTT/lua-pam.git
 	sha256sums = SKIP
 
 pkgname = lua-pam-git
-
