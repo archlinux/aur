@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=96.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -96,14 +96,31 @@ prepare() {
   echo "---- Librewolf patches"
   patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
 
+  # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
+  # should not break things, buuuuuuuuuut we'll see.
+  patch -Np1 -i ${_patches_dir}/dbus_name.patch
+
+  # allow uBlockOrigin to run in private mode by default, without user intervention.
+  patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
+
+  # add custom uBO assets (on first launch only)
+  patch -Np1 -i ${_patches_dir}/custom-ubo-assets-bootstrap-location.patch
+
   # Debian patch to enable global menubar
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
+
+  # custom patch that does not conflict with the unity patch
+  patch -Np1 -i ${_patches_dir}/mozilla-kde_after_unity.patch
 
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
 
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
+
+  # remove search extensions (experimental)
+  # patch -Np1 -i ${_patches_dir}/search-config.patch
+  cp "${srcdir}/common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   # Stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)
   patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
@@ -131,6 +148,9 @@ prepare() {
   # Pref pane - custom FireDragon svg
   patch -Np1 -i ${_patches_dir}/librewolf-ui/pref_pane.patch
   patch -Np1 -i ${_patches_dir}/misc/add_firedragon_svg.patch
+
+  # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
+  patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
 
   echo "---- Fixing build issues"
   # Needed patch to have build working
