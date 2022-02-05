@@ -2,7 +2,7 @@
 
 pkgname=cauralho-git
 _pkgname=cauralho
-pkgver=r6.144727d
+pkgver=r8.894c896
 pkgrel=1
 pkgdesc="A small tool to help with updating AUR packages installed in the system."
 arch=("any")
