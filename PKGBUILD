@@ -1,49 +1,41 @@
-# Maintainer Janosch Peters <janosch.peters at posteo dot de>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gnome-shell-extension-battery-status-git
-pkgver=6.r3.g6de2e4b
+pkgver=4.r7.g7e435e2
 pkgrel=1
-pkgdesc="A configurable lightweight battery charge indicator and autohider. Includes a few quirky display modes."
+pkgdesc="Get information about your battery status"
 arch=('any')
-url="https://github.com/milliburn/gnome-shell-extension-battery_status"
-license=('GPL')
+url="https://github.com/atareao/battery-status"
+license=('MIT')
 depends=('gnome-shell')
 makedepends=('git')
-install=gschemas.install
-source=("$pkgname::git+https://github.com/milliburn/gnome-shell-extension-battery_status.git")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://github.com/atareao/battery-status.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
-  # cutting of 'v' prefix
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/battery-status"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/battery-status"
+  gnome-extensions pack --force \
+    --extra-source=aboutpage.js \
+    --extra-source=convenience.js \
+    --extra-source=dialogwidgets.js \
+    --extra-source=piechart.js \
+    --extra-source=preferenceswidget.js \
+    --extra-source=icons
 }
 
 package() {
-  cd "$pkgname"
-  _uuid='battery_status@milliburn.github.com'
+  cd "$srcdir/battery-status"
+  _uuid='battery-status@atareao.es'
 
-  mkdir -p ${pkgdir}/usr/share/gnome-shell/extensions
+  install -d "$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+  bsdtar xvf "$_uuid.shell-extension.zip" -C "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/"
+  install -Dm644 schemas/battery-status.gschema.xml -t "$pkgdir/usr/share/glib-2.0/schemas/"
 
-  cp -r battery_status@milliburn.github.com  \
-  "${pkgdir}/usr/share/gnome-shell/extensions"
-
-  chown -R 644 ${pkgdir}/usr/share/gnome-shell/extensions/battery_status@milliburn.github.com
-
-#  install -Dm644 battery_status@milliburn.github.com/*.json \
-#    -t "${pkgdir}/usr/share/gnome-shell/exten"${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"sions/${_uuid}"
-#
-#  install -Dm644 battery_status@milliburn.github.com/*.js \
-#    -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"#
-#
-#  install -Dm644 battery_status@milliburn.github.com/*.pot \
-#    -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"#
-#
-#  install -Dm644 battery_status@milliburn.github.com/locale/de/LC_MESSAGES/* \
-#    -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/locale/de/LC_MESSAGES"
-#
-# install -Dm644 battery_status@milliburn.github.com/schemas/* \
-#    -t "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/schemas"
+  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/$_uuid/schemas/"
 }
-
-
