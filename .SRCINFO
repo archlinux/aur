@@ -1,0 +1,14 @@
+pkgbase = beaver
+	pkgdesc = Beaver is an Early AdVanced EditoR.
+	pkgver = 0.4.1
+	pkgrel = 5
+	url = http://beaver-editor.sourceforge.net/
+	arch = x86_64
+	license = GPL2
+	makedepends = intltool
+	depends = gtk2
+	depends = hicolor-icon-theme
+	source = https://sourceforge.net/projects/beaver-editor/files/0.4/beaver-0.4.1.tar.bz2
+	sha256sums = 844a327a59f2de21e48e55176d45207036837f08935c3341ea963dc62a1531e3
+
+pkgname = beaver
