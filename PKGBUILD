@@ -54,7 +54,7 @@ prepare() {
   local _patches_dir="${srcdir}/common/patches"
 
   # Prepare KDE patch
-  sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/kde/mozilla-kde.patch
+  sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
   
   # Arch patches
   echo "---- Arch patches"
@@ -63,7 +63,7 @@ prepare() {
   # KDE patches (W. Rosenauer)
   echo "---- Patching for KDE"
   patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
+  #patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
   
   # Ubuntu patches
   echo "---- Misc patches"
