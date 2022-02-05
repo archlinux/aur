@@ -8,6 +8,8 @@ pkgdesc="Hardware-based SSH/PGP agent (Trezor/Keepkey/Ledger/OnlyKey)"
 arch=('any')
 url="https://github.com/romanz/trezor-agent"
 license=("LGPL3")
+provides=('python-trezor-agent')
+conflicts=('python-trezor-agent')
 depends=(
          'python' 
          'python-docutils' 
