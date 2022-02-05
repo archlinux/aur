@@ -1,7 +1,7 @@
 pkgbase = cpc-calc
 	pkgdesc = Text calculator with support for units and conversion
 	pkgver = 1.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/probablykasper/cpc
 	arch = x86_64
 	license = MIT
