@@ -46,7 +46,8 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         distribution.ini
         mozconfig.cfg
         unity-menubar.patch
-        fix-wayland.patch)
+        fix-wayland.patch
+        0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch)
 md5sums=('SKIP'
          'SKIP'
          '10872ca39ebb8844ec753203c55bccc4'
@@ -54,7 +55,8 @@ md5sums=('SKIP'
          '1ef0f094e533a68399b96dc8080c6a6e'
          'c6963498e5ceddedb13af44efa70d86f'
          '0d7f0fe667c3e9e54f95fa51e9560eed'
-         'eb9fd90a3b18bfeebbed7e0e6056079c')
+         'eb9fd90a3b18bfeebbed7e0e6056079c'
+'SKIP')
 
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
