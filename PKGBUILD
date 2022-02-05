@@ -1,6 +1,6 @@
 # Maintainer: Ivan Maruca <ivan dot maruca at gmail dot com>
 pkgname='auryn'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='AUR Helper Installer'
 arch=('x86_64')
