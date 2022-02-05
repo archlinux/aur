@@ -1,20 +1,17 @@
 pkgbase = phreeqc
 	pkgdesc = A Computer Program for Speciation, Batch-Reaction, One-Dimensional Transport, and Inverse Geochemical Calculations
-	pkgver = 3.7.0
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = http://wwwbrr.cr.usgs.gov/projects/GWC_coupled/phreeqc/
 	install = install.sh
 	arch = x86_64
 	license = custom:CC0
 	depends = gmp
-	source = http://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.7.0-15749.tar.gz
+	source = http://water.usgs.gov/water-resources/software/PHREEQC/phreeqc-3.7.3-15968.tar.gz
 	source = install.sh
 	source = phreeqc.el
-	source = https://raw.githubusercontent.com/jaalto/project-emacs--folding-mode/master/folding.el
-	md5sums = 219c679627c28462d65fb40bbcad5e21
+	md5sums = 2e5bdca4c88f1e7ae929e6fc6bd03207
 	md5sums = 8facd6e784cd1985b2c57c092b753002
-	md5sums = 914dcb4f5e6e148d8c580346dacf97db
-	md5sums = 17b0ad8422172efda2051eefac4a33a9
+	md5sums = a35830b02368dba33419d904acfd64b4
 
 pkgname = phreeqc
-

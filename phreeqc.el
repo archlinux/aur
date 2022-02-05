@@ -1,6 +1,6 @@
 ;;; phreeqc.el --- Phreeqe code editing commands for Emacs
 
-;; Copyright (C) 2000,2015 dr. thomas baumann
+;; Copyright (C) 2000,2015,2021 dr. thomas baumann
 ;; Author: Dr. Thomas Baumann
 ;; Keywords: languages
 
