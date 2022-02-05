@@ -1,9 +1,9 @@
 # Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=ttf-archivo-narrow
-pkgver=3.000
+pkgver=3.001
 pkgrel=1
-_commit='0a98e4dd59de05b0caa3273ccb47cbd5ec2274cc'
+_commit='be3adf257a69c3bec73fb2d0819823de5dfb8658'
 pkgdesc="Grotesque sans serif typeface family from Omnibus-Type"
 arch=('any')
 url="https://github.com/Omnibus-Type/ArchivoNarrow"
@@ -17,14 +17,14 @@ source=("$url/raw/$_commit/fonts/ttf/ArchivoNarrow-Bold.ttf"
         "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBold.ttf"
         "$url/raw/$_commit/fonts/ttf/ArchivoNarrow-SemiBoldItalic.ttf"
         "$url/raw/$_commit/OFL.txt")
-sha256sums=('2653e11aa4d327ba05e7681647203d08b3eab053133a49b5cd9a6b7ec7d8528a'
-            '3a6177e7f845cf9627cfe52577a35243fdc5f95a17d15c0b4cfbee0d119f2100'
-            'bd13f7e5639dc1d15179062d48518b96022c4548858e188693dbfc5974e4f967'
-            '8e6e5cc836f3089a92c2f473c210f9bf7b8bbf858866bd651f8205039564fe3f'
-            '448f2e840aadc5921a42f6a8db81bffce1b480ea9cbe4fedce821a783c47a188'
-            '4cc05eb5d2cd6c0e1bb6bd0cd32f4409a86d8f1196175f734d0ef42003966c29'
-            '9870ca133eba3cb525b32a4215b7604ec850c0781fdca07fc22ec8760332bdb2'
-            'd8ba7fee44aba9166ad40dfc4a370084f2faaec59ac5a9eb12e1e63aac5e4822'
+sha256sums=('cc3473ff135d77b582af97b0f9f576044fc3c021eee48414abac90f38a12b0e4'
+            'a6521daa8d953d13334f7c1a65d7931fe8cf523a18d63ff2e200c9727b2e5d77'
+            '8eba12933fa76f8e98f0cae8b82d2f0d413203876ca64b6f47b8840cf75b497d'
+            '8d51fdbeb05d0465931fa645845e3c18a7aa162e5537b2c8a462a749a0e9da6b'
+            '621fb8f58d705ba3bc534d4a463eb2203be5b3b2b7e6e432f21ca32f0eb0ad97'
+            'b1877ca4479765df2d0fa5de3bb86f83c86577862d1e25290cd5398dcbb22d54'
+            '64f06fa43714cf0697b503ed4f167ac24b60f2fcaeaa5ed9358846f97dbc3b03'
+            '3e70ce2ee8668b6e239895be84c87d038474b4809512913877e9b448601d10a7'
             'a4087edf95fb2a6bd38073ad005ced611695dc9d7d8fd5d04a888ef4f9c748ea')
 
 package() {
