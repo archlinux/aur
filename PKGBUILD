@@ -2,10 +2,10 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
-pkgname=audacity-gtk4
+pkgname=audacity-systemlibs
 _pkgname=audacity
 pkgver=3.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A program that lets you manipulate digital audio waveforms - GTK 4"
 arch=(x86_64)
 url="https://www.audacityteam.org/"
@@ -14,35 +14,36 @@ depends=(
   alsa-lib
   expat
   flac
-  gtk4
+  gtk3
+  jack
+  lame
   libid3tag
   libmad
+  libogg
+  libsbsms
   libsndfile
   libsoxr
   libvorbis
   lilv
   lv2
   portaudio
+  portmidi
   portsmf
+  python-pycurl
+  serd
+  sqlite
+  sratom
   soundtouch
+  sord
   suil
   twolame
   vamp-plugin-sdk
-  zlib
+  #wxgtk3 #hoping soon 3.1.5 will be relased, so we can rid off Conan!
 )
 makedepends=(
   cmake
   conan
   ffmpeg
-  gcc
-  git
-  gst-plugins-bad-libs
-  gstreamer
-  jack
-  libnotify
-  libsoup
-  nasm
-  sdl2
 )
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
@@ -54,12 +55,13 @@ sha256sums=('fd8ecdc3d29b3be3bb5cbc01a77806dd59fbec2ad86854924c339811427f2aa1')
 
 build() {
   cd $srcdir/Audacity-$pkgver-Source
-  mkdir build && cd build
-  CC=gcc cmake \
+  mkdir -p build && cd build
+  cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxBUILD_TOOLKIT:STRING=gtk4 \
-    -Daudacity_use_wxwidgets=local \
+    -DwxBUILD_TOOLKIT:STRING=gtk3 \
+    -Daudacity_obey_system_dependencies=On \
+    #-Daudacity_use_pch=no \
     -Daudacity_use_ffmpeg:STRING=loaded \
     -Daudacity_lib_preference=system \
     ..
