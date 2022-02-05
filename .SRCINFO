@@ -1,0 +1,26 @@
+pkgbase = odr-radioepg-bridge-git
+	pkgdesc = Opendigitalradio tool for creating DAB EPG bitstream from ODR multiplex, using RadioDNS
+	pkgver = 0.1.r35.6e8d578
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-radioepg-bridge
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	depends = python-hybridspi
+	depends = odr-radiodns-bridge
+	depends = python-mot
+	depends = python-mot-epg
+	depends = python-msc
+	depends = python-isodate
+	depends = python-bitarray
+	depends = python-crcmod
+	provides = odr-radioepg-bridge
+	provides = odr-radioepg-bridge-git
+	conflicts = odr-radioepg-bridge
+	source = odr-radioepg-bridge::git+https://github.com/Opendigitalradio/odr-radioepg-bridge.git
+	md5sums = SKIP
+
+pkgname = odr-radioepg-bridge-git
