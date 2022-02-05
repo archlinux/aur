@@ -1,0 +1,11 @@
+pkgbase = metaprint-bin
+	pkgdesc = Give up on your random scripts ! Easily render any computer infos for stuff like i3, tmux, ...
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/oxodao/metaprint
+	arch = x86_64
+	license = GPL
+	source = https://github.com/oxodao/metaprint-bin/releases/download/v0.4/metaprint-bin-v0.4-linux-x86_64
+	md5sums = SKIP
+
+pkgname = metaprint-bin
