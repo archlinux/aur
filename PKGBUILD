@@ -8,17 +8,22 @@ pkgdesc="Cast Audio/Video to your Google Cast and Sonos Devices"
 arch=('any')
 url="https://mkchromecast.com"
 license=('MIT')
-depends=('gi' 'python-mutagen' 'pavucontrol' 'pulseaudio' 'python' 'python-flask' 'python-netifaces' 'python-psutil' 'python-pychromecast-git' 'python-requests' 'python-setuptools' 'python-pyqt5' 'python-yaml' 'python-werkzeug' 'sox' 'lame' 'flac' 'faac')
-makedepends=('git' 'python-setuptools' 'python-pip')
+depends=('faac' 'flac' 'lame' 'python-flask' 'python-gobject' 'python-netifaces'
+         'python-psutil')
+makedepends=('git' 'python-setuptools')
 optdepends=('alsa-utils: to cast with ALSA'
             'ffmpeg: for ffmpeg backend and/or to cast with ALSA'
             'gstreamer: for gstreamer backend'
             'nodejs: for node backend'
+            'opus-tools: for Opus content with parec/gstreamer'
             'pavucontrol: to cast with PulseAudio'
             'pulseaudio: to cast with PulseAudio'
-            'python-pyqt5: system tray menu support'
-            'python-soco: Sonos support'
-            'youtube-dl: YouTube support')
+            'python-pyqt5: for system tray menu support'
+            'python-pychromecast-git: to cast to Chromecast devices'
+            'python-soco: to cast to Sonos devices'
+            'sox: for WAV content with parec/gstreamer'
+            'vorbis-tools: for Ogg content with parec/gstreamer'
+            'youtube-dl: for streaming from YouTube')
 provides=('mkchromecast')
 conflicts=('mkchromecast')
 options=('!emptydirs')
