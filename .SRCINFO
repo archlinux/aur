@@ -1,13 +1,13 @@
 pkgbase = ghidra-extension-kaiju-bin
 	pkgdesc = Binary analysis improvements for Ghidra. Can import C++ symbols from OOAnalyer
-	pkgver = 10.0.4
+	pkgver = 10.1.1
 	pkgrel = 1
 	url = https://github.com/CERTCC/kaiju
 	arch = any
 	license = BSD
 	makedepends = unzip
 	depends = ghidra
-	source = https://github.com/CERTCC/kaiju/releases/download/ghidra-10.0.4/ghidra_10.0.4_PUBLIC_20211121_kaiju.zip
-	sha512sums = 9027b8238658c09134670e278998c274a428de56f8418d069e28b5d1aad13b7786bef8f7f6b24c183d00ee370f6d6e45367e9decfab57e0e3614e1bf82388185
+	source = https://github.com/CERTCC/kaiju/releases/download/ghidra-10.1.1/ghidra_10.1.1_PUBLIC_20220130_kaiju.zip
+	sha512sums = 16fde0520a3d78fcaab0621df24ddc6701bd79059b4ecaa6401ce380b440308fed6228c73a48cca255088ffa1920ec31dbaad0d9ae14538b9ce61b6dfade6e10
 
 pkgname = ghidra-extension-kaiju-bin
