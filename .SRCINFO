@@ -1,0 +1,14 @@
+pkgbase = kodi-addon-visualization-starburst
+	pkgdesc = StarBurst visualization for Kodi
+	pkgver = 19.0.1
+	pkgrel = 1
+	url = https://github.com/xbmc/visualization.starburst
+	arch = any
+	license = GPL2
+	makedepends = cmake
+	makedepends = kodi-dev
+	depends = kodi
+	source = https://github.com/xbmc/visualization.starburst/archive/refs/tags/19.0.1-Matrix.tar.gz
+	sha256sums = e2b3ad0473d1ae40c3ecc81f9631c7d956fd4ec3edc7ef43eaeefec242fa79e5
+
+pkgname = kodi-addon-visualization-starburst
