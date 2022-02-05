@@ -1,5 +1,5 @@
 pkgbase = ryujinx-cn
-	pkgdesc = Experimental Nintendo Switch Emulator written in C#, with Chinese translation patch
+	pkgdesc = 使用 C# 编写的实验性模拟器（汉化版）
 	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/YidaozhanYa/RyujinxCN
@@ -8,6 +8,8 @@ pkgbase = ryujinx-cn
 	license = MIT
 	makedepends = git
 	makedepends = dotnet-sdk
+	makedepends = python
+	makedepends = jq
 	depends = dotnet-runtime
 	provides = Ryujinx
 	conflicts = ryujinx-git

@@ -2,7 +2,7 @@
 pkgname=ryujinx-cn
 pkgver=1.1.16
 pkgrel=1
-pkgdesc="Experimental Nintendo Switch Emulator written in C#, with Chinese translation patch"
+pkgdesc="使用 C# 编写的实验性模拟器（汉化版）"
 arch=(x86_64)
 url="https://github.com/YidaozhanYa/RyujinxCN"
 license=('MIT')
