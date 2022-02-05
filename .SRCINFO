@@ -7,8 +7,6 @@ pkgbase = simutrans-extended-pak128.britain
 	license = custom:Artistic
 	depends = simutrans-extended-git
 	source = http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.britain-ex-nightly.tar.gz
-	source = license.txt
-	sha256sums = 90fdf4cc91cd59fb5227daefc8bcee84f66632c581d47421ed3b3c400ac07f2b
-	sha256sums = def758cfe51b6f16d838f777a6540163fb47f334df5a0fb86448f92a36a92017
+	sha256sums = SKIP
 
 pkgname = simutrans-extended-pak128.britain
