@@ -147,7 +147,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/misc/add_firedragon_svg.patch
 
   # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
-  patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
 
   echo "---- Fixing build issues"
   # Needed patch to have build working
