@@ -18,7 +18,7 @@ _node_version="16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=7   # 次版本号release
+pkgrel=8   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version. "
 arch=("x86_64")
@@ -26,6 +26,7 @@ url="https://github.com/msojocs/wechat-devtools-linux"
 license=('unknown')
 depends=('wine' 'gconf' 'libxkbfile')
 makedepends=('p7zip' 'python2')
+# compiler 用于可视化
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
@@ -36,6 +37,7 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "fix-cloudconsole.sh"
         "rebuild-modules.sh"
         "fix-package-name-node"
+        "fix-webview-manager.sh"
         "logo.svg"
         "wxvpkg_pack"
         "wxvpkg_unpack")
@@ -44,6 +46,7 @@ md5sums=(b6f49803c51d0abacca2d1e566c7fe19
          2280bfbbf29981fd5adce334f40146ff
          c638ccefe09941372903c08ce70420c3
          a4dd86296db9aa6b55b048b43182d74f
+         "SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
@@ -66,7 +69,6 @@ build() {
     # prepare node
     _log "prepare node v${_node_version}"
     export PATH="$srcdir/node-v${_node_version}-linux-x64/bin:$PATH"
-    unset npm_config_prefix
 
     # prepare nw-gyp
     _log "prepare nw-gyp"
@@ -82,7 +84,7 @@ build() {
     export NW_VERSION=$_nwjs_ver
     export srcdir=$srcdir
     
-    for script in fix-package-name-node fix-cli.sh fix-menu.sh fix-cloudconsole.sh rebuild-modules.sh; do
+    for script in fix-package-name-node fix-cli.sh fix-menu.sh fix-cloudconsole.sh fix-webview-manager.sh rebuild-modules.sh; do
         _log "run ${script}"
         "${srcdir}/${script}"
     done
