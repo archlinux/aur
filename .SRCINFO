@@ -1,0 +1,21 @@
+pkgbase = odr-radiodns-bridge-git
+	pkgdesc = Opendigitalradio tool to bridge RadioDNS applications into the OpenDigitalRadio environment
+	pkgver = 0.1.r36.387721d
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-radiodns-bridge
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	depends = python-hybridspi
+	depends = boost
+	depends = python-pyradiodns
+	provides = odr-radiodns-bridge
+	provides = odr-radiodns-bridge-git
+	conflicts = odr-radiodns-bridge
+	source = odr-radiodns-bridge::git+https://github.com/Opendigitalradio/odr-radiodns-bridge.git
+	md5sums = SKIP
+
+pkgname = odr-radiodns-bridge-git
