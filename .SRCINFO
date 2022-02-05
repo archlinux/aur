@@ -1,0 +1,13 @@
+pkgbase = ps7b_libps2000
+	pkgdesc = library for picotech oscilloscope 2000 series
+	pkgver = 3.0.80_3r3041
+	pkgrel = 1
+	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000/
+	arch = x86_64
+	license = custom
+	depends = libusb
+	options = !strip
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000/libps2000_3.0.80-3r3041_amd64.deb
+	md5sums = 30FDFAE030B2063A708009713088187C
+
+pkgname = ps7b_libps2000
