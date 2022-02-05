@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=discimagecreator
-pkgver=20211101
+pkgver=20220201
 pkgrel=1
 
 pkgdesc="This is the disc (CD, GD, DVD, HD-DVD, BD, GC/Wii, XBOX, XBOX 360) and disk (Floppy, MO, USB etc) image creation tool."
@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/saramibreak/DiscImageCreator"
 license=('Apache')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('75baf091f0b8169ec64fb472fa34efb12500ede320c1f3b64ed88e13daa12fdb')
+sha256sums=('e7dca3e97867eca047aab7425e32e27a25aa8a77e618ba2cce6bcaa463dcb731')
 
 build() {
 	cd "DiscImageCreator-${pkgver}"
