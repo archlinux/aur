@@ -31,4 +31,5 @@ build() {
 package() {
 	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
+	mv "${pkgdir}/usr/bin/common-test" "${pkgdir}/usr/bin/mmbtools-common-test"
 }
