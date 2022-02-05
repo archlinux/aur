@@ -2,7 +2,7 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.13
+pkgver=0.4.14
 pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://napari.org'
 license=('BSD')
 makedepends=(
   'python-setuptools-scm'
+  'python-dephell'
   'icoutils'
 )
 depends=(
@@ -50,9 +51,14 @@ source=(
   "${_name}.desktop"
 )
 sha256sums=(
-  '54bb85c3afbf12d1333512aa0f7bdae0d652ddbe6bede1476fc6d0e89c1c87fb'
+  '277dd9492bbdfa2cf5ae60f503abe07bcab851fe69f42bfcbf8d601965f3a92b'
   '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 provides=("${_name}")
+
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"

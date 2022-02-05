@@ -1,11 +1,12 @@
 pkgbase = napari
 	pkgdesc = Multi-dimensional image viewer for Python.
-	pkgver = 0.4.13
+	pkgver = 0.4.14
 	pkgrel = 1
 	url = https://napari.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools-scm
+	makedepends = python-dephell
 	makedepends = icoutils
 	depends = napari-console
 	depends = napari-npe2
@@ -39,9 +40,9 @@ pkgbase = napari
 	depends = python-wrapt
 	depends = qt5-python-bindings
 	provides = napari
-	source = https://files.pythonhosted.org/packages/source/n/napari/napari-0.4.13.tar.gz
+	source = https://files.pythonhosted.org/packages/source/n/napari/napari-0.4.14.tar.gz
 	source = napari.desktop
-	sha256sums = 54bb85c3afbf12d1333512aa0f7bdae0d652ddbe6bede1476fc6d0e89c1c87fb
+	sha256sums = 277dd9492bbdfa2cf5ae60f503abe07bcab851fe69f42bfcbf8d601965f3a92b
 	sha256sums = 909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6
 
 pkgname = napari
