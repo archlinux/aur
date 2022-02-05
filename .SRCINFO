@@ -1,5 +1,5 @@
 pkgbase = ps7b_libps4000
-	pkgdesc = library for picotech oscilloscope 4000 series
+	pkgdesc = Library for PicoScope 4000 series in PicoScope 7 Beta
 	pkgver = 2.1.80_2r3041
 	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps4000/
