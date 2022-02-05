@@ -1,0 +1,18 @@
+pkgbase = odr-mmbtools-doc
+	pkgdesc = Opendigitalradio Documentation
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/mmbtools-doc
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	provides = odr-mmbtools-doc
+	provides = odr-mmbtools-doc
+	conflicts = odr-mmbtools-doc
+	source = http://opendigitalradio.github.io/mmbtools-doc/mmbtools.pdf
+	md5sums = SKIP
+
+pkgname = odr-mmbtools-doc
