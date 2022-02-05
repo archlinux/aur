@@ -1,39 +1,51 @@
-# Maintainer: Nik Rozman <admin[at]piskot[dot]si>
-# Maintainer: Windscribe Limited <hello[at]windscribe[dot]com>
-# Contributor: Nik Rozman <admin[at]piskot[dot]si>
-# Contributor: Windscribe Limited <hello[at]windscribe[dot]com>
-
-pkgname=windscribe-bin
-pkgver=2.3.15
+# Maintainer: Markus Hartung <mail@hartmark.se>
+_pkgname=aura-gpu
+pkgname=aura-gpu-dkms-git
+pkgver=r11.815ee6c
 pkgrel=1
-pkgdesc="Windscribe Client"
-arch=('x86_64')
-url="https://windscribe.com/download"
-license=('GPL2')
-depends=('nftables' 'c-ares' 'qt5-svg' 'freetype2' 'hicolor-icon-theme' 'curl')
-conflicts=('windscribe-cli')
-provides=('windscribe')
-options=('!strip' '!emptydirs')
-install=${pkgname}.install
-source=("https://windscribe.com/install/desktop/linux_deb_x64/beta")
-sha512sums=('SKIP')
+pkgdesc="Kernel module to expose aura gpu so we can access it from example OpenRGB."
+arch=('i686' 'x86_64')
+url="https://github.com/hartmark/aura-gpu"
+license=('Unknown')
+depends=('dkms')
 
-package(){
-	# Extract package data
-	tar xf data.tar.xz -C "${pkgdir}"
+provides=("$_pkgname")
+source=(
+  "git+https://github.com/hartmark/aura-gpu"
+  "dkms.conf"
+)
+sha256sums=('SKIP'
+            '7f4e4f40a625d5ff9a52e47dadda3f72bd210b69502558642bccc4c335a45f12')
 
-	# Correct permissions
-	chmod -R 755 "${pkgdir}"
-
-	# Point files to the correct location
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/share/applications/windscribe.desktop
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/etc/systemd/system/windscribe-helper.service
-	sed -i 's_/usr/local/windscribe_/opt/windscribe_g' ${pkgdir}/usr/polkit-1/actions/com.windscribe.authhelper.policy
-
-	# Move files to correct location
-	mkdir -p "${pkgdir}/opt/windscribe"
-	mv "${pkgdir}/usr/local/windscribe" "${pkgdir}/opt/"
-
-	# Install license
-	install -D -m644 "${pkgdir}/opt/windscribe/open_source_licenses.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+pkgver() {
+  cd aura-gpu
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+prepare() {
+  sed -e "s/@CFLGS@//" \
+      -e "s/@VERSION@/$pkgver/" \
+      -i "$srcdir/dkms.conf"
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+
+  install -d "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/
+  cp -r ${srcdir}/${_pkgname}/* "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/
+
+  install -Dm644 ${srcdir}/dkms.conf "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
+
+  sed -e "s/@_PKGBASE@/${_pkgname}/" \
+    -e "s/@PKGVER@/${pkgver}/" \
+    -i "${pkgdir}"/usr/src/${_pkgname}-${pkgver}/dkms.conf
+
+  install -d "${pkgdir}"/etc/modules-load.d/
+  echo "${_pkgname}" > "${pkgdir}"/etc/modules-load.d/${_pkgname}.conf
+  echo "######################################################################################"
+  echo "${_pkgname} will be autoloaded on reboot, to manually load straight away type:"
+  echo "sudo modprobe ${_pkgname}"
+  echo "######################################################################################"
+}
+
+# vim:set ts=2 sw=2 et:
