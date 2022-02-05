@@ -5,7 +5,7 @@
 pkgname=sway
 pkgver=1.7
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -38,6 +38,7 @@ optdepends=(
 source=("https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz"
         "https://github.com/swaywm/sway/releases/download/$pkgver/sway-$pkgver.tar.gz.sig"
         "50-systemd-user.conf")
+options=(debug)
 sha512sums=('028cf5d504d5914bfb78d44156d6a290de660c5ed0638f4e2c56e5be76db9b0baeda035e1fa1ae23559016bd7e4312f7ff70c2fb4904df25358577c1a3d21243'
             'SKIP'
             'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
