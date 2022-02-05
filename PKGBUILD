@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('GPL')
 depends=('git' 'sed' 'which' 'jq' 'curl')
 source=('auryn.sh')
-md5sums=('e67b5fd9450ecfe6fc440fbbedf50551')
+md5sums=('ea6943a616ab181f6dced00dafe806c8')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"

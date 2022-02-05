@@ -10,6 +10,6 @@ pkgbase = auryn
 	depends = jq
 	depends = curl
 	source = auryn.sh
-	md5sums = e67b5fd9450ecfe6fc440fbbedf50551
+	md5sums = ea6943a616ab181f6dced00dafe806c8
 
 pkgname = auryn
