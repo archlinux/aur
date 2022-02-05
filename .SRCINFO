@@ -1,11 +1,11 @@
 pkgbase = cppreference-qt
 	pkgdesc = A complete reference for the features in the C++ Standard Library, for qt help.
-	pkgver = 20211127
+	pkgver = 20220201
 	pkgrel = 1
 	url = https://en.cppreference.com/w/Cppreference:Archives#Unofficial_Release
 	arch = any
 	license = CCPL:cc-by-sa
-	source = https://github.com/PeterFeicht/cppreference-doc/releases/download/v20211127/qch-book-20211127.tar.xz
-	md5sums = 7873442e1c66714105dcd55f7b353a44
+	source = https://github.com/PeterFeicht/cppreference-doc/releases/download/v20220201/qch-book-20220201.tar.xz
+	md5sums = a012d01689f970a20cd47fb804b16ca9
 
 pkgname = cppreference-qt
