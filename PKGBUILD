@@ -13,35 +13,52 @@ depends=('python' 'python-pip' 'nginx')
 makedepends=('git' 'portaudio')
 optdepends=()
 install=anki-sync-server.install
-source=('git+https://github.com/ankicommunity/anki-sync-server.git')
-md5sums=('SKIP')
+source=('git+https://github.com/ankicommunity/anki-sync-server.git'
+        'anki2.0.py'
+        'anki2.1.28.py'
+        'anki2.1.py'
+        'anki-sync-server.groff'
+        'anki-sync-server.install'
+        'anki-sync-server.service'
+        'nginx_append_config.awk'
+        'nginx_http'
+        'nginx_https')
+sha256sums=('SKIP'
+            '5f6c65418841bd638065b7c874a267898f8abb1c5c56dfd47c5908a4f9a83465'
+            'df3efb08711b0ef9be3a2e264cd54bd8d50d77576f538f499dcbfce1c4b4d9df'
+            'cc2ec96b2ec18d8b161f0c8233c1ddff58cddb59bfd05e1c5910eb7ef0ce9c93'
+            '48ed322539cff276909d8eb6d81c17c776e1f2ec6353ce6aef1b8a559271b0ad'
+            '09704f72e1d8a804d0a2de6443adbbec98431564538c95c28fed713ce219ecfb'
+            'eb6b4f2682290e341a377bee12246c076816789d8f716fdd26c7367a47408e91'
+            'e8b0bc5a03fd39423c64fc804199b258d53f2ad5327954d74d3a3be0dfe7924a'
+            '9a48034fabdf487502663149d7cfd4a59bdf0e116e681c790e0c39b23267d7cb'
+            '7638620d532a55e3423cee9ee7905941ef81fae1b024bf7960bee1b9dcd65efe')
 backup=(etc/nginx/sites-available/{anki-sync-server-http,anki-sync-server-https} usr/lib/systemd/system/anki-sync-server.service)
 
-_repo_dir_="$(basename ${source} | cut -f 1 -d '.')"
-_anki_dir_="${_repo_dir_}/src"
 _install_dir_="/opt/${pkgname%-git}"
 
 pkgver() {
-  cd "${_repo_dir_}"
+  cd "${srcdir}/anki-sync-server"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   # move plugins and systemd file to src package
-  local _plugins_="${_anki_dir_}/plugins/"
+  local _anki_dir_="${srcdir}/anki-sync-server/src"
+  local _plugins_="${_anki_dir_}/plugins"
   mkdir -p "${_plugins_}"
   mkdir -p "${_plugins_}/anki2.0/"
   mkdir -p "${_plugins_}/anki2.1/anki-sync-server"
   mkdir -p "${_plugins_}/anki2.1.28/anki-sync-server"
   mkdir -p "${_plugins_}/nginx/"
   mkdir -p "${_plugins_}/systemd/"
-  cp "../anki2.0.py" "${_plugins_}/anki2.0/anki-sync-server.py"
-  cp "../anki2.1.py" "${_plugins_}/anki2.1/anki-sync-server/__init__.py"
-  cp "../anki2.1.28.py" "${_plugins_}/anki2.1.28//anki-sync-server/__init__.py"
-  cp "../anki-sync-server.service" "${_plugins_}/systemd/"
-  cp "../nginx_http" "${_plugins_}/nginx/anki-sync-server-http"
-  cp "../nginx_https" "${_plugins_}/nginx/anki-sync-server-https"
-  cp "../nginx_append_config.awk" "${_plugins_}/nginx/append.awk"
+  cp "${srcdir}/anki2.0.py" "${_plugins_}/anki2.0/anki-sync-server.py"
+  cp "${srcdir}/anki2.1.py" "${_plugins_}/anki2.1/anki-sync-server/__init__.py"
+  cp "${srcdir}/anki2.1.28.py" "${_plugins_}/anki2.1.28//anki-sync-server/__init__.py"
+  cp "${srcdir}/anki-sync-server.service" "${_plugins_}/systemd/"
+  cp "${srcdir}/nginx_http" "${_plugins_}/nginx/anki-sync-server-http"
+  cp "${srcdir}/nginx_https" "${_plugins_}/nginx/anki-sync-server-https"
+  cp "${srcdir}/nginx_append_config.awk" "${_plugins_}/nginx/append.awk"
 
   # set plugins to use current ip address as plugins' target address
   cd "${_anki_dir_}"
@@ -68,22 +85,24 @@ prepare() {
 }
 
 package() {
+  local _anki_dir_="${srcdir}/anki-sync-server/src"
+
   # anki-sync-server package
   mkdir -p "${pkgdir}${_install_dir_}"
-  cp -R "${srcdir}/${_anki_dir_}/." "${pkgdir}${_install_dir_}"
+  cp -R "${_anki_dir_}/." "${pkgdir}${_install_dir_}"
 
   # manpage
   mkdir -p "${pkgdir}/usr/share/man/man1"
-  cp "${srcdir}/${_anki_dir_}/plugins/man/man1/anki-sync-server.1.gz" \
+  cp "${_anki_dir_}/plugins/man/man1/anki-sync-server.1.gz" \
     "${pkgdir}/usr/share/man/man1/anki-sync-server.1.gz"
 
   # nginx
   mkdir -p "${pkgdir}/etc/nginx/sites-available"
   mkdir -p "${pkgdir}/etc/nginx/sites-enabled"
-  cp "${srcdir}/${_anki_dir_}/plugins/nginx/anki-sync-server-http" "${pkgdir}/etc/nginx/sites-available"
-  cp "${srcdir}/${_anki_dir_}/plugins/nginx/anki-sync-server-https" "${pkgdir}/etc/nginx/sites-available"
+  cp "${_anki_dir_}/plugins/nginx/anki-sync-server-http" "${pkgdir}/etc/nginx/sites-available"
+  cp "${_anki_dir_}/plugins/nginx/anki-sync-server-https" "${pkgdir}/etc/nginx/sites-available"
 
   # systemd service
   mkdir -p "${pkgdir}/usr/lib/systemd/system/"
-  cp "${srcdir}/${_anki_dir_}/plugins/systemd/anki-sync-server.service" "${pkgdir}/usr/lib/systemd/system/"
+  cp "${_anki_dir_}/plugins/systemd/anki-sync-server.service" "${pkgdir}/usr/lib/systemd/system/"
 }
