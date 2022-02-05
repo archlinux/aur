@@ -1,7 +1,7 @@
 pkgbase = betterbird-de-bin
 	pkgdesc = GERMAN // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will.
 	pkgver = 91.6.0_bb26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.betterbird.eu/index.html
 	arch = x86_64
 	license = MPL2
