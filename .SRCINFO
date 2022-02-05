@@ -1,7 +1,7 @@
 pkgbase = valhalla-tmp-patch
 	pkgdesc = Routing engine for OpenStreetMap. (with compilation fixes)
 	pkgver = 3.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	license = custom:MIT
@@ -16,6 +16,7 @@ pkgbase = valhalla-tmp-patch
 	depends = python
 	depends = libspatialite
 	depends = luajit
+	depends = chrono-date
 	provides = valhalla
 	conflicts = valhalla
 	source = valhalla-3.1.4::git+https://github.com/valhalla/valhalla#tag=3.1.4
