@@ -1,5 +1,5 @@
 pkgbase = odr-mmbtools-common
-	pkgdesc = Opendigitalradio tool for connecting audio encoders to ODR-DabMux via EDI and ZeroMQ interfaces
+	pkgdesc = Opendigitalradio code test common to all ODR-mmbtools
 	pkgver = 1.0.r56.ge644365
 	pkgrel = 1
 	url = https://github.com/Opendigitalradio/odr-mmbtools-common
