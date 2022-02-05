@@ -4,12 +4,12 @@
 _pkgname=valhalla
 pkgname=$_pkgname-tmp-patch
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Routing engine for OpenStreetMap. (with compilation fixes)"
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
 license=('custom:MIT')
-depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'lua' 'libspatialite')
+depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
 source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver" "protobuf-ifdefs.patch")
 sha256sums=('SKIP' 'SKIP')
