@@ -1,8 +1,11 @@
 pkgbase = mapbox-gl-qml
 	pkgver = 1.7.7
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = aarch64
+	license = LGPL3
+	depends = mapbox-gl-native
+	depends = qt5-location
 	source = https://github.com/rinigus/mapbox-gl-qml/archive/refs/tags/1.7.7.tar.gz
 	sha256sums = a5cd3e773b6635dc0f7ad0490857a44177e8c619a47800707fb1927f1a169c7e
 
