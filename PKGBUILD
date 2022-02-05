@@ -3,7 +3,7 @@
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
 pkgname=pioneer
-pkgver=20210723
+pkgver=20220203
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64') # 'i686' untested
@@ -27,7 +27,7 @@ depends=(
 )
 makedepends=(cmake naturaldocs ninja pkgconf)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
-sha256sums=('5f5d794d3095079e629980a6a3285d83b95b97e6c9b6058c73531cd06f8d082d')
+sha256sums=('415b55bab7f011f7244348428e13006fa67a926b9be71f2c4ad24e92cfeb051c')
 
 build()
 {
