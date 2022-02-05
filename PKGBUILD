@@ -1,7 +1,7 @@
 # Maintainer: oxodao <oxodao@gmail.com>
 pkgname=metaprint-bin
-pkgver=0.4
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Give up on your random scripts ! Easily render any computer infos for stuff like i3, tmux, ..."
 arch=('x86_64')
 url="https://github.com/oxodao/metaprint"
