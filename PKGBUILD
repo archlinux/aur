@@ -4,7 +4,7 @@
 _pkgname=valhalla
 pkgname=$_pkgname-tmp-patch
 pkgver=3.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Routing engine for OpenStreetMap. (with compilation fixes)"
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
@@ -34,6 +34,7 @@ prepare() {
     -DENABLE_SERVICES=On \
     -DENABLE_CCACHE=Off \
     -DENABLE_HTTP=On \
+    -DENABLE_SINGLE_FILES_WERROR=On \
     -DBUILD_SHARED_LIBS=On \
     -DENABLE_BENCHMARKS=OFF \
     -DENABLE_TESTS=OFF
