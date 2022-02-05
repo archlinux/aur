@@ -3,7 +3,7 @@
 _name=trezor-agent
 pkgname=python-trezor-agent-git
 pkgver=v0.14.4.r6.ge4d16a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware-based SSH/PGP agent (Trezor/Keepkey/Ledger/OnlyKey)"
 arch=('any')
 url="https://github.com/romanz/trezor-agent"
