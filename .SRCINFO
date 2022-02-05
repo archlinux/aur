@@ -1,0 +1,18 @@
+pkgbase = python-mot-git
+	pkgdesc = Python API for DAB MOT applications
+	pkgver = 1.0.1.r3.gd72a533
+	pkgrel = 1
+	url = https://github.com/opendigitalradio/python-dabmot
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	depends = python
+	provides = python-mot
+	provides = python-mot-git
+	conflicts = python-mot
+	source = python-mot::git+https://github.com/opendigitalradio/python-dabmot.git
+	md5sums = SKIP
+
+pkgname = python-mot-git
