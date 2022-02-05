@@ -2,7 +2,7 @@
 
 _pkgname=xtb
 pkgname="${_pkgname}-git"
-pkgver=6.2.2.r48.d40ebcd
+pkgver=6.4.1.r286.92252bb
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/grimme-lab/xtb"
@@ -12,7 +12,7 @@ makedepends=('git' 'meson' 'ninja' 'inetutils' 'gcc-fortran')
 conflicts=("${_pkgname}")
 license=('LGPL3')
 pkgdesc="Semiempirical Extended Tight-Binding Program Package"
-source=("git+https://github.com/grimme-lab/xtb.git#branch=master")
+source=("git+https://github.com/grimme-lab/xtb.git#branch=main")
 md5sums=('SKIP')
 
 pkgver() {

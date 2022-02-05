@@ -1,6 +1,6 @@
 pkgbase = xtb-git
 	pkgdesc = Semiempirical Extended Tight-Binding Program Package
-	pkgver = 6.2.2.r48.d40ebcd
+	pkgver = 6.4.1.r286.92252bb
 	pkgrel = 1
 	url = https://github.com/grimme-lab/xtb
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xtb-git
 	depends = gcc-libs
 	provides = xtb
 	conflicts = xtb
-	source = git+https://github.com/grimme-lab/xtb.git#branch=master
+	source = git+https://github.com/grimme-lab/xtb.git#branch=main
 	md5sums = SKIP
 
 pkgname = xtb-git
