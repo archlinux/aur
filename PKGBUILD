@@ -11,7 +11,6 @@ makedepends=('rpmextract')
 depends=(
   'numactl'
   'ncurses5-compat-libs'
-  'nettle6'
   'libaio'
   'gtk3'
   'nss'

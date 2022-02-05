@@ -8,7 +8,6 @@ pkgbase = local-by-flywheel-bin
 	makedepends = rpmextract
 	depends = numactl
 	depends = ncurses5-compat-libs
-	depends = nettle6
 	depends = libaio
 	depends = gtk3
 	depends = nss
