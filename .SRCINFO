@@ -1,0 +1,20 @@
+pkgbase = odr-sourcecompanion-git
+	pkgdesc = Opendigitalradio tool for connecting audio encoders to ODR-DabMux via EDI and ZeroMQ interfaces
+	pkgver = 1.1.0.r87.e09efac
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-sourcecompanion
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	depends = zeromq
+	depends = libfdk-aac
+	provides = odr-sourcecompanion
+	provides = odr-sourcecompanion-git
+	conflicts = odr-sourcecompanion
+	source = odr-sourcecompanion::git+https://github.com/Opendigitalradio/odr-sourcecompanion.git
+	md5sums = SKIP
+
+pkgname = odr-sourcecompanion-git
