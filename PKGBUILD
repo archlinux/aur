@@ -2,14 +2,14 @@
 
 pkgname="deemix-gui-git"
 _pkgname="deemix-gui"
-pkgver=r113.46980af0b6
+pkgver=r181.174f7b999b
 pkgrel=2
 pkgdesc="A gui electron app for the deemix lib"
 arch=('x86_64')
 url="https://gitlab.com/RemixDev/$_pkgname"
 license=('gpl3')
 depends=('electron')
-makedepends=('git' 'npm')
+makedepends=('git' 'yarn')
 provides=('deemix-gui')
 source=("${_pkgname}::git+https://gitlab.com/RemixDev/$_pkgname" "deemix-webui::git+https://gitlab.com/RemixDev/deemix-webui"
         "$_pkgname.desktop" "$_pkgname.sh")
@@ -37,7 +37,8 @@ build() {
   electronDist='/usr/lib/electron'
   electronVer=$(sed s/^v// /usr/lib/electron/version)
   sed -i '/		"electron": /d' ./package.json
-  HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache" --force
+  HOME="$srcdir/.electron-gyp" yarn install-all
+  yarn predist
   ./node_modules/.bin/electron-builder build --linux --x64 --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
