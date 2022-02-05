@@ -31,8 +31,8 @@ PGO=auto
 
 pkgdesc='Wayland terminal emulator - fast, lightweight and minimalistic'
 pkgname=(foot-git foot-themes-git)
-pkgver=1.10.3
-pkgrel=2
+pkgver=1.11.0
+pkgrel=1
 conflicts=('foot')
 provides=('foot')
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ url=https://codeberg.org/dnkl/foot
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'wayland-protocols' 'tllist')  # ‘llvm’, for PGO with clang
 checkdepends=('check')
-depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'ncurses' 'fcft')
+depends=('libxkbcommon' 'wayland' 'pixman' 'fontconfig' 'libutf8proc' 'ncurses' 'fcft>=3.0.0')
 optdepends=("foot-terminfo: alternative to ncurses' terminfo, with additional non-standard capabilities"
             "foot-themes: color schemes"
             "libnotify: desktop notifications"
