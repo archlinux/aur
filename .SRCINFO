@@ -1,5 +1,5 @@
 pkgbase = forkgram
-	pkgdesc = Fork of Telegram Desktop messaging app. p
+	pkgdesc = Forkgram a fork of Telegram Desktop messaging app.
 	pkgver = 3.5.1
 	pkgrel = 1
 	url = https://github.com/Forkgram/tdesktop
