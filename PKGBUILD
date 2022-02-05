@@ -1,24 +1,22 @@
 # Maintainer: Norbert Pfeiler <norbert.pfeiler+aur ät gmail.com>
 
 pkgname=cotire
-_cotirever=1.8.1
-_cmakever=3.22
-_cmakegooduntil=3.23
-pkgver=${_cotirever}_${_cmakever}
+epoch=1
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='CMake module to speed up builds. By fully automating techniques like precompiled header usage and single compilation unit builds for C and C++'
 arch=(any)
 license=('custom')
-conflicts=("cmake>=$_cmakegooduntil") # the Modules dir changes every major release
 url='https://github.com/sakra/cotire'
-source=("https://github.com/sakra/cotire/archive/$pkgname-$_cotirever.tar.gz")
-md5sums=('1631c36ac920eb95944db9188068fccb')
+depends=('cmake>=3.22.1-2')
+source=("https://github.com/sakra/cotire/archive/$pkgname-$pkgver.tar.gz")
+sha256sums=('79b976b9e822941e3e2a3d82881c5fbcfbc971156640cb745e74f845e764f192')
 install=cotire.install
 
 package() {
-  cd "$pkgname-$pkgname-$_cotirever"
+  cd "$pkgname-$pkgname-$pkgver"
 
-  modules_dir="$pkgdir/usr/share/cmake-$_cmakever/Modules/"
+  modules_dir="$pkgdir/usr/share/cmake/Modules/"
   mkdir -p $modules_dir
   cp CMake/cotire.cmake $modules_dir
 
