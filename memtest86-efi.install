@@ -1,3 +1,57 @@
 post_install() {
 	echo -e "You can use command \033[4mmemtest86-efi --install\033[0m as root to install MemTest86 in your ESP."
 }
+
+pre_upgrade() {
+	if [[ $(vercmp "$2" "1:9.4build1000-4") -lt 0 ]]; then
+		rm /usr/share/libalpm/hooks/memtest86-efi-remove.hook
+		echo "Updating /etc/memtest86-efi/memtest86-efi.conf..."
+		echo -e "\033[4mCurrent file:\033[0m"
+		grep -v '^\s*$\|^\s*\#' /etc/memtest86-efi/memtest86-efi.conf
+
+		source /etc/memtest86-efi/memtest86-efi.conf
+		if [[ $install == 0 ]]; then
+			cat > /etc/memtest86-efi/memtest86-efi.conf <<EOF
+#
+# /etc/memtest86-efi/memtest86-efi.conf
+#
+
+MEMTEST86_PATH=/usr/share/memtest86-efi
+esp_partition=@ESP_PARTITION@
+esp_mount_path=@ESP_MOUNT_PATH@
+memtest86_esp_path=@MEMTEST86_ESP_PATH@
+memtest86_esp_bin=@MEMTEST86_ESP_BIN@
+choice=@CHOICE@
+install=0
+EOF
+		else
+			sed -i "s/^partition=/esp_partition=/" "/etc/memtest86-efi/memtest86-efi.conf"
+			sed -i "s/^esp=/esp_mount_path=/" "/etc/memtest86-efi/memtest86-efi.conf"
+			case "$(uname -m)" in
+				i686)    ARCH="ia32";;
+				x86_64)  ARCH="x64";;
+				aarch64) ARCH="aa64";;
+			esac
+			case $choice in
+				1)
+					memtest86_esp_path="/"
+					memtest86_esp_bin="shell$ARCH.efi"
+				;;
+
+				2|3|4)
+					memtest86_esp_path="/EFI/memtest86"
+					memtest86_esp_bin="memtest$ARCH.efi"
+				;;
+			esac
+			sed -i "/^esp_mount_path=.*/a memtest86_esp_path=$memtest86_esp_path" /etc/memtest86-efi/memtest86-efi.conf
+			sed -i "/^memtest86_esp_path=.*/a memtest86_esp_bin=$memtest86_esp_bin" /etc/memtest86-efi/memtest86-efi.conf
+		fi
+
+		echo -e "\033[4mNew file:\033[0m"
+		grep -v '^\s*$\|^\s*\#' /etc/memtest86-efi/memtest86-efi.conf
+	fi
+}
+
+pre_remove() {
+	/usr/bin/memtest86-efi --remove
+}

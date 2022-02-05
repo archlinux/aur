@@ -1,9 +1,0 @@
-[Trigger]
-Operation = Remove
-Type = File
-Target = usr/share/memtest86-efi/*.efi
-
-[Action]
-Description = Removing MemTest86 EFI from ESP
-When = PostTransaction
-Exec = /usr/bin/memtest86-efi --remove
