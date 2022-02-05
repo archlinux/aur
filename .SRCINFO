@@ -1,7 +1,7 @@
 pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
 	pkgver = 2.1.3.r55.g3d4749f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
@@ -9,8 +9,8 @@ pkgbase = zettlr-git
 	makedepends = git
 	makedepends = nodejs-lts-gallium
 	makedepends = yarn
+	depends = crimson-font
 	depends = electron
-	depends = otf-crimson-text
 	depends = pandoc
 	depends = ttf-inconsolata
 	depends = ttf-liberation
@@ -21,7 +21,7 @@ pkgbase = zettlr-git
 	source = zettlr.sh
 	source = zettlr.xml
 	sha256sums = SKIP
-	sha256sums = c96a7d8e8b538896721e1657aaa7a1fc79836c50f90888f77ccea23e90230326
+	sha256sums = e300f2cac217f98ab5c365dccc7581410bc296f2842d52f7f1520dd6679d20cf
 	sha256sums = c3ecbb490a1d4fa5bc42f7166cc375e5629a452d25bb1d4facb5541938681292
 
 pkgname = zettlr-git
