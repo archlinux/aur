@@ -4,7 +4,7 @@ pkgrel=1
 arch=('x86_64')
 pkgdesc="DeskCut is an extremely easy to use desktop shortcut creator app for Linux."
 url='https://github.com/NayamAmarshe/DeskCut'
-license=('GPL-2.0')
+license=('GPL-2.0 ONLY')
 makedepends=('yarn' 'asar' 'nodejs')
 source=("$pkgname::git+https://github.com/NayamAmarshe/DeskCut.git"
         "deskcut.desktop")
