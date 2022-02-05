@@ -1,0 +1,13 @@
+pkgbase = python-backports.shutil_which
+	pkgdesc = Backport of shutil.which from Python 3.3
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = https://github.com/minrk/backports.shutil_which
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = python-backports.shutil_which-3.5.2.tar.gz::https://github.com/minrk/backports.shutil_which/archive/refs/tags/3.5.2.tar.gz
+	b2sums = b78e3ddef7028dcec1f162157c021509582b2a5b8a828a9935349432cca72a2a07e123d907ab99a9c608b126d6dabae4e74adc8e62960e506de7bfb0dfeb2fd9
+
+pkgname = python-backports.shutil_which
