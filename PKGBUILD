@@ -37,17 +37,11 @@ prepare () {
 build () {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	# The original submitter used this but the project docs say to use bootstrap
-	#autoreconf -fvi
 	./bootstrap
-
     	./configure --prefix=/usr
-
-	# Works out of the box for me but the original submitter did this.
-	## -O3 breaks compilation!
-	#sed -i 's/CXXFLAGS=" -O3 -Wall"/CXXFLAGS=" -O2 -Wall"/' configure
-
-	make 
+	# Set -std=gnu++98 so the compilation doesn't fail on modern systems.
+	# Some code is insecure, but I'd rather have an equivalent binary in something like a game.
+	make CXXFLAGS="-O2 -Wno-error -pedantic -Wextra -std=gnu++98"
 }
 
 package () {
