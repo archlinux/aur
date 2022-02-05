@@ -3,7 +3,7 @@
 pkgname=ps7b_libps2000
 pkgver=3.0.80_3r3041
 pkgrel=1
-pkgdesc="library for picotech oscilloscope 2000 series"
+pkgdesc="Library for PicoScope 2000 series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps2000/"
 license=('custom')
