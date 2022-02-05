@@ -15,11 +15,8 @@ url='http://gcmd.github.io/'
 license=('GPL')
 depends=('python' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libunique3' 'gtk2')
 makedepends=('perl-xml-parser' 'itstool' 'yelp-tools')
-source=(https://download.gnome.org/sources/gnome-commander/${_pkgver}/$pkgname-$pkgver.tar.xz
-	https://gcmd.github.io/signatures/$pkgname-$pkgver.tar.xz.sig)
-sha256sums=('ed1d989f74d8ff553a5cae2be6c3180f988923edba7e8482c2b1df7da440bffd'
-            'SKIP')
-validpgpkeys=('7627E6FCECF4FC066A03B673F50A89A3ADE4C6E8')
+source=(https://download.gnome.org/sources/gnome-commander/${_pkgver}/$pkgname-$pkgver.tar.xz)
+sha256sums=('ed1d989f74d8ff553a5cae2be6c3180f988923edba7e8482c2b1df7da440bffd')
 
 build() {
   cd "$pkgname-$pkgver"
