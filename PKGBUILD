@@ -5,7 +5,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=fontconfig-git
-pkgver=2.13.93+31+gd263d40
+pkgver=2.13.96
 pkgrel=1
 pkgdesc="Library for configuring and customizing font access (from git)"
 url=https://www.freedesktop.org/wiki/Software/fontconfig/
@@ -46,7 +46,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   # Handle conf.d using the hook to avoid overwriting the symlinks on upgrade
   mkdir -p "$pkgdir/usr/share/fontconfig/conf.default"

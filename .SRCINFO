@@ -1,6 +1,6 @@
 pkgbase = fontconfig-git
 	pkgdesc = Library for configuring and customizing font access (from git)
-	pkgver = 2.13.93+31+gd263d40
+	pkgver = 2.13.96
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fontconfig/
 	install = fontconfig.install
@@ -33,4 +33,3 @@ pkgbase = fontconfig-git
 	b2sums = dfbf47c069c88da7687511356cef5bb94b7190e558a6f08390d6976fa7065ba7137ccb0a5ca1defdef655091afe74eb8a3d33fb9f3e0633409aa79f753ad276d
 
 pkgname = fontconfig-git
-
