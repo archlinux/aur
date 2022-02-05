@@ -2,8 +2,8 @@
 # Contributor: Jonas Nyrén <jonas.nyren*mindkiller.com>
 
 pkgname=sidplayfp
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="Sidplay2 fork with improved filter emulation"
 arch=('i686' 'x86_64')
 url="https://github.com/libsidplayfp/sidplayfp"
@@ -13,7 +13,7 @@ reaplces=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 conflicts=('sidplay-residfp' 'sidplay-residfp-alsa' 'sidplay-residfp-pulse')
 install=${pkgname}.install
 source=("https://downloads.sourceforge.net/project/sidplay-residfp/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.gz" "${pkgname}.install")
-sha256sums=('fb6262333abba80b4223452324ee0f3cdccdffabd88a80e441e24970ae2f6f4b'
+sha256sums=('2941857ea01a51430620e8841ba9a4ef9752633710a4fe495474985af42eafff'
             '4064bb649615a6d8825b7dcddb9880dd766169591e2643b631ef3b6c12171a33')
 
 build() {
