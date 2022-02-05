@@ -393,20 +393,22 @@ function searchPackages
 function installPackage
 {
     checkDependencies
-    cecho green -ne "Installing ${ansi_magenta}$1${ansi_green} from AUR"
-    local aur_url="https://aur.archlinux.org/rpc/?v=5&type=info&arg[]=$1"
-    local response_type=$(curl -s $aur_url | jq -r '.type')
-    if [ "$response_type" = "error" ]; then
-        local err_msg=$(curl -s $aur_url | jq '.error')
-        echo $err_msg
-        sorryBye
-    fi
-    local resultcount=$(curl -s $aur_url | jq '.resultcount')
-    if (( $resultcount == 0 )); then
-        cecho yellow -ne "Sorry but...nothing is here !"
-        exit 0
-    fi
-    git clone "https://aur.archlinux.org/$1.git" && cd $1 && makepkg -si && cd .. && sudo rm -R $1
+    for i in $@; do
+      cecho green -ne "Installing ${ansi_magenta}$i${ansi_green} from AUR"
+      local aur_url="https://aur.archlinux.org/rpc/?v=5&type=info&arg[]=$i"
+      local response_type=$(curl -s $aur_url | jq -r '.type')
+      if [ "$response_type" = "error" ]; then
+          local err_msg=$(curl -s $aur_url | jq '.error')
+          echo $err_msg
+          sorryBye
+      fi
+      local resultcount=$(curl -s $aur_url | jq '.resultcount')
+      if (( $resultcount == 0 )); then
+          cecho yellow -ne "Sorry but...nothing is here !"
+          continue
+      fi
+      git clone "https://aur.archlinux.org/$i.git" && cd $i && makepkg -si && cd .. && sudo rm -R $i
+    done
     cecho green -ne "Done ! Do what you Dream !"
 }
 
@@ -431,11 +433,13 @@ while getopts ":hS:i:ns:" options; do
         OPT_BY_NAME=true
         ;;
     s)
-        PACKAGE=${OPTARG}
+        #PACKAGE=${OPTARG}
+        PACKAGE=$(sed -r 's/-\w+//' <<< "$@")
         OPT_SEARCH=true
         ;;
     S | i)
-        PACKAGE=${OPTARG}
+        #PACKAGE=${OPTARG}
+        PACKAGE=$(sed -r 's/-\w+//' <<< "$@")
         OPT_INSTALL=true
         ;;
     \?)
