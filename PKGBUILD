@@ -1,6 +1,6 @@
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=modmanager
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A Qt-based mod manager for minecraft."
 arch=(x86_64)
