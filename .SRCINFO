@@ -1,5 +1,5 @@
 pkgbase = ryujinx-cn
-	pkgdesc = 使用 C# 编写的实验性模拟器（汉化版）
+	pkgdesc = 使用 C# 编写的实验性任天堂 Switch 模拟器（汉化版）
 	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/YidaozhanYa/RyujinxCN

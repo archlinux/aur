@@ -2,7 +2,7 @@
 pkgname=ryujinx-cn
 pkgver=1.1.16
 pkgrel=1
-pkgdesc="使用 C# 编写的实验性模拟器（汉化版）"
+pkgdesc="使用 C# 编写的实验性任天堂 Switch 模拟器（汉化版）"
 arch=(x86_64)
 url="https://github.com/YidaozhanYa/RyujinxCN"
 license=('MIT')
