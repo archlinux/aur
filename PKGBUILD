@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-xt-bin
-pkgver=1.0.0
-debver=1.0.0
+pkgver=1.0.1
+debver=1.0.1
 pkgrel=1
 pkgdesc="Surge XT Synthesizer Plugin (VST3 & LV2, original binary release)"
 arch=('x86_64')
@@ -24,4 +24,4 @@ package() {
 	tar xf data.tar
 	cp -r usr "$pkgdir/"
 }
-md5sums=('014f84f6b508c3873ca3cff936782340')
+md5sums=('7b8514cade7ef8399bd22c4b706dc330')
