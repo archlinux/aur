@@ -1,0 +1,16 @@
+pkgbase = cassowary
+	pkgdesc = Run Windows Applications inside a VM on Linux as if they are native.
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/casualsnek/cassowary
+	arch = x86_64
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pip
+	depends = python-pyqt5
+	depends = freerdp
+	source = cassowary-0.4.tar.gz::https://github.com/casualsnek/cassowary/archive/refs/tags/v0.4.tar.gz
+	sha256sums = 8f58432ee37e2f479991168a5ae898e4c9950b3b8f6f0449e21115525fa5c7c9
+
+pkgname = cassowary
