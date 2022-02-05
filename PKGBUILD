@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://github.com/python-sdbus/python-sdbus"
 license=('LGPL2.1')
 depends=('python' 'systemd-libs')
-makedepends=('git' 'python-setuptools' 'gcc')
+makedepends=('git' 'python-setuptools' 'gcc' 'pkgconf')
 source=(
     "$pkgbase"::"git+https://github.com/python-sdbus/python-sdbus"
     "python-sdbus-notifications"::"git+https://github.com/python-sdbus/python-sdbus-notifications"

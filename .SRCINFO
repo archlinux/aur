@@ -8,6 +8,7 @@ pkgbase = python-sdbus-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = gcc
+	makedepends = pkgconf
 	depends = python
 	depends = systemd-libs
 	source = python-sdbus-git::git+https://github.com/python-sdbus/python-sdbus
