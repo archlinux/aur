@@ -1,6 +1,6 @@
 # Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=rainbow
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Colorize commands output or STDIN using patterns."
 arch=(any)
@@ -12,8 +12,8 @@ makedepends=('python-setuptools'
 changelog=Changelog
 provides=('rainbow-git')
 conflicts=('rainbow-git')
-source=("https://files.pythonhosted.org/packages/source/r/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('cbf27d4ff928b32ad5550917715255e3')
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('f150efa649f13e9abbe75c6390519da109ad8fd06d62d5508d3a163a1fb2b5b9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
