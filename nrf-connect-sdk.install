@@ -1,0 +1,13 @@
+post_install(){
+    echo ">>>"  
+    echo ">>> The nRF Connect SDK have been installed to /opt/nrf-connect-sdk/"
+    echo ">>> Also some scripts and environment variables  have been added to /etc/profile.d/nrf-connect-sdk-env.sh" 
+    echo ">>>" 
+}
+
+post_remove(){
+	cd /opt/
+	if [ -d "nrf-connect-sdk" ]; then
+		rm -rf "nrf-connect-sdk"
+	fi
+}
