@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/bottlesdevs/Bottles"
 license=('GPL3')
 depends=(
-  'lib32-gnutxls'
+  'lib32-gnutls'
   'gtksourceview3'
   'gtksourceview4'
   'hicolor-icon-theme' 
