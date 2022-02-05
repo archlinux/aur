@@ -18,10 +18,8 @@ pkgbase = easena-git
 	provides = easena
 	conflicts = easea
 	source = git+https://github.com/EASEA/easea
-	source = final.patch
-	source = link.patch
+	source = fix_config.patch
 	sha256sums = SKIP
-	sha256sums = e1d4ee16c41713dce4fc9562816710e0f0782fc296cadb9755cf88ac8dc3549b
-	sha256sums = 28a91593467f9c15d8392133b2ce35fdbf5a192c6426876d73b029a37a3152e3
+	sha256sums = 0e8f5c0745a8e67dcd523d5a886f9562d72bdcb377a34af1c02d356f96251cf4
 
 pkgname = easena-git

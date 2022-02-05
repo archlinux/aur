@@ -11,10 +11,9 @@ depends=(cmake flex bison valgrind java-environment cuda r)
 makedepends=(make gcc)
 provides=(easena)
 conflicts=(easea)
-source=("git+https://github.com/EASEA/easea" final.patch link.patch)
+source=("git+https://github.com/EASEA/easea" fix_config.patch)
 sha256sums=('SKIP'
-            'e1d4ee16c41713dce4fc9562816710e0f0782fc296cadb9755cf88ac8dc3549b'
-            '28a91593467f9c15d8392133b2ce35fdbf5a192c6426876d73b029a37a3152e3')
+            '0e8f5c0745a8e67dcd523d5a886f9562d72bdcb377a34af1c02d356f96251cf4')
 
 #credits to tenacity PKGBUILD
 pkgver() {
@@ -24,8 +23,7 @@ pkgver() {
 
 prepare() {
 	cd easea
-	patch --forward --strip=1 --input="${srcdir}/final.patch"
-	patch --forward --strip=1 --input="${srcdir}/link.patch"
+	patch --forward --strip=1 --input="${srcdir}/fix_config.patch"
 	mkdir -p build
 }
 
