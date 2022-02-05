@@ -1,9 +1,9 @@
-# Maintainer: Gao xiang<hughgao01@gmail.com>
-# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
-# Maintainer: Eric Berquist <eric.berquist at gmail dot com>
+# Maintainer:  Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer:  Eric Berquist <eric.berquist at gmail dot com>
+# Contributor: Gao xiang<hughgao01@gmail.com>
 
 pkgname=gamess
-pkgver=2021R1
+pkgver=2021R2.1
 pkgrel=1
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
@@ -18,8 +18,8 @@ install=$pkgname.install
 # and put into the current directory.
 source=("local://gamess-current.tar.gz"
         "comp.patch")
-sha256sums=('61283d56ad02513bc40a729ed26566a11e8c298e560d7c4a37254ff725b7ab30'
-            'a003a611b658c9073954fb0041f077ec1a910310db73201c97829eb2654b8e43')
+sha256sums=('36a07e3567eec3b804fca41022b45588645215ccf4557d5176fb69d473b9521c'
+            '4960b568cfbcc1dce65fe0c1b67973362fed3f59aa1c9223ef1b6453bae35990')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -38,11 +38,13 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
   python bin/create-install-info.py \
-                                    --fortran_version=10.2 \
-                                    --openblas \
+                                    --fortran_version=11.1 \
+                                    --math=openblas \
                                     --mathlib_path=/usr/lib \
                                     --openmp \
                                     --libxc
+  # Fixing the result of the configuring script
+  sed -i 's/openblas/openblas-so/' install.info
   make modules -j1
   make
 }
