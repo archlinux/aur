@@ -3,22 +3,22 @@
 pkgname=picoscope7beta
 pkgver=7.0.91_1r10273
 pkgrel=1
-pkgdesc="picoscope 7 test and measurment early access"
+pkgdesc="PicoScope 7 Test and Measurment Early Access"
 arch=('x86_64')
 url="https://oem.picotech.com/p7beta/download"
 license=('custom')
 groups=()
 depends=(gtk-sharp-3 ps7b_libpicoipp ps7b_libpicocv desktop-file-utils)
-optdepends=('ps7b_libps2000: support for picoscope 2000 series'
-		'ps7b_libps2000a: support for picoscope 2000 series'
-        'ps7b_libps3000: support for picoscope 3000 series'
-        'ps7b_libps3000a: support for picoscope 3000a series'
-        'ps7b_libps4000: support for picoscope 4000 series'
-        'ps7b_libps4000a: support for picoscope 4000a series'
-        'ps7b_libps5000: support for picoscope 5000 series'
-        'ps7b_libps5000a: support for picoscope 5000a series'
-        'ps7b_libps6000: support for picoscope 6000 series'
-        'ps7b_libps6000a: support for picoscope 6000a series'
+optdepends=('ps7b_libps2000: Support for PicoScope 2000 series'
+		'ps7b_libps2000a: Support for PicoScope 2000a series'
+        'ps7b_libps3000: Support for PicoScope 3000 series'
+        'ps7b_libps3000a: Support for PicoScope 3000a series'
+        'ps7b_libps4000: Support for PicoScope 4000 series'
+        'ps7b_libps4000a: Support for PicoScope 4000a series'
+        'ps7b_libps5000: Support for PicoScope 5000 series'
+        'ps7b_libps5000a: Support for PicoScope 5000a series'
+        'ps7b_libps6000: Support for PicoScope 6000 series'
+        'ps7b_libps6000a: Support for PicoScope 6000a series'
         )
 provides=()
 conflicts=()
