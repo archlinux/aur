@@ -1,9 +1,10 @@
 # Maintainer: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
+# hint: use fc-scan to check the contents of variable fonts
 pkgbase=noto-fonts-cjk-vf
 pkgname=(noto-fonts-{cjk,{cjk-,}{hk,jp,kr,sc,tc}}-vf)
-pkgver=20220121
+pkgver=20220126
 pkgrel=1
 pkgdesc='Google Noto CJK variable fonts'
 url='https://www.google.com/get/noto/'
@@ -11,21 +12,41 @@ license=(custom:SIL)
 arch=(any)
 conflicts=(noto-fonts-cjk)
 provides=(noto-fonts-cjk)
-_commit=70dc26931fcfbed08afc8f683af108ee3027ad54
-source=("noto-cjk-${pkgver}.tar.gz::https://github.com/googlefonts/noto-cjk/archive/${_commit}.tar.gz"
+#_commit=473da44c32fec739db7e5458c81a833513cb4084
+_sanscommit=165c01b46ea533872e002e0785ff17e44f6d97d8
+_sansver=2.004  # commit/165c01b46ea533872e002e0785ff17e44f6d97d8 from 20210430
+                # release notes say that this is the same as 20210428 so suppsedly commit/4d113c550935ffcf450d4255f78c71e4284fce7d
+_serifver=2.001  # commit/473da44c32fec739db7e5458c81a833513cb4084 from 20220126
+#source=("noto-cjk-${pkgver}.tar.gz::https://github.com/googlefonts/noto-cjk/archive/${_commit}.tar.gz"
+source=("noto-cjk-sans-${_sansver}.zip::https://github.com/googlefonts/noto-cjk/releases/download/Sans2.004/01_NotoSansCJK-OTF-VF.zip"
+        "NotoSansMonoCJK-VF-${_sansver}.otf.ttc::https://github.com/googlefonts/noto-cjk/raw/${_sanscommit}/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc"
+        "noto-cjk-serif-${_serifver}.zip::https://github.com/googlefonts/noto-cjk/releases/download/Serif2.001/02_NotoSerifCJK-OTF-VF.zip"
         70-noto-{cjk,hk,jp,kr,sc,tc}.conf)
-sha256sums=('3e03522d5ee8ac0d8125eda48785c7afabbad81e20afb2e9da4403f00418535c'
+sha256sums=('c3d297e0ca1a78b1f8965b65bac9da4402185dbb02f75111f834fa9b9b290d60'
+            '3a73c225abcfd5742ab84e613b427fb5b40c9e59b70fe3d1683f9b1da96568a0'
+            'bedeb86226fefd5fd69b54ed4660415861864f879c0b7da08b1fd71ca35a78b0'
             '357e9ed6553087567ec5a28f835db5c43d3cd68a688e4677f759cca465379a32'
             '70f5ad3bd3e3d90c98c6a9ea2f3a28c2564fe18f0d7b8d78926a284cec398fd0'
             '0b5bd14a869234e50b735505e96257cd8e0851031a02735353895b7408abd313'
             '233846410004447b718545aa83a5375400d5e3a0219e79ff0ab50a430aec765b'
             '099e5f2fff526d0d38d57ce5aa0ebd92e0886aaa937f77812f85d63d3e01e53c'
             '42d6a448bae63daba8eb6123a7b5e56683536f82709ed448a0b29c12bdf18e02')
+noextract=(noto-cjk-{sans,serif}-*.zip)
 
 _langs=(hk jp kr sc tc)
 
+prepare() {
+  mkdir -p noto-cjk/{Sans,Serif}
+  bsdtar -xf noto-cjk-sans-${_sansver}.zip -C noto-cjk/Sans --exclude=../LICENSE
+  # variable mono otc is missing https://github.com/googlefonts/noto-cjk/issues/214
+  cp NotoSansMonoCJK-VF-${_sansver}.otf.ttc noto-cjk/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc
+  bsdtar -xf noto-cjk-serif-${_serifver}.zip -C noto-cjk/Serif --exclude=../LICENSE
+  bsdtar -Oxf noto-cjk-sans-${_sansver}.zip ../LICENSE  > noto-cjk/LICENSE
+}
+
 package_noto-fonts-cjk-vf(){
-  cd noto-cjk-${_commit}
+  cd noto-cjk
+# cd noto-cjk-${_commit}
 
   for _font in Sans Serif; do
     install -Dm644 \
@@ -52,7 +73,8 @@ _package_locl(){
   conflicts+=(noto-fonts-cjk-vf)
   provides+=(noto-fonts-cjk-vf)
 
-  cd noto-cjk-${_commit}
+  cd noto-cjk
+# cd noto-cjk-${_commit}
 
   for _font in Sans Serif; do
     install -Dm644 \
@@ -80,7 +102,8 @@ _package_subset(){
   conflicts+=(noto-fonts-cjk-vf)
   provides+=(noto-fonts-cjk-vf)
 
-  cd noto-cjk-${_commit}
+  cd noto-cjk
+# cd noto-cjk-${_commit}
 
   for _font in Sans Serif; do
     install -Dm644 \
