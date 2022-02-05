@@ -1,29 +1,20 @@
-# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Maintainer: JSpringYC <JSpringYC@gmail.com>
 
 pkgname=pgyvpn-bin
-_pkgname=PgyVPN
-pkgver=2.2.1
+_pkgname=PgyVisitor
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Suitable for business personnal long-distance intelligent network access"
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+arch=('x86_64')
 url="https://pgy.oray.com/download/"
-provides=(${pkgname%-bin})
-replaces=(${pkgname%-bin})
-conflicts=(${pkgname%-bin})
 license=('custom')
-install='.INSTALL'
+install=pgyvpn-bin.install
 source=('LICENSE::https://service.oray.com/question/1820.html'
-        "${pkgname%-bin}.service")
-source_x86_64=("http://dl-cdn.oray.com/pgy/linux/${_pkgname}_Ubuntu_${pkgver}_X86_64.deb")
-source_i686=("http://dl-cdn.oray.com/pgy/linux/${_pkgname}_Ubuntu_${pkgver}_i386.deb")
-source_aarch64=("http://dl-cdn.oray.com/pgy/linux/${_pkgname}_Raspbian_${pkgver}_arm64_systemd.deb")
-source_armv7h=("http://dl-cdn.oray.com/pgy/linux/${_pkgname}_Raspbian_${pkgver}_armhf_systemd.deb")
-sha256sums=('SKIP'
-            '25995cc8f865139147ced000fea52a8f4dda072addbf9e4a3b18b5c599a8be7f')
-sha256sums_x86_64=('6a274cc1066dedd1559ef0716b7f6fe7aae503d9e82471ebca42234072e41814')
-sha256sums_i686=('c1d695592944d2b5465f9567b89aeaeba3903c7458c97a7074fc938e106b3721')
-sha256sums_aarch64=('13461c523035f112f92ef3e5ceca5f9adf0bff3a1fa1c04408b98a7ac0978d95')
-sha256sums_armv7h=('3fa1f8d0e5d66cfcba8b18620311b2e6a5566daf2dd127f0346ce5fadf1096bb')
+        "${pkgname%-bin}.service"
+        "${_pkgname}_Ubuntu_${pkgver}_X86_64.deb::https://pgy.oray.com/dl/42/download?os=Ubuntu%20Linux(X86_64)")
+sha256sums=('9d4dcbc1d1777407a207834caae778a4d4388f14bc70464c3fa08d64ff247308'
+            '25995cc8f865139147ced000fea52a8f4dda072addbf9e4a3b18b5c599a8be7f'
+            '7fabd22c75ac21f5c23d4682988ddf5832315b97986acb9790370a107349d1ac')
 
 package() {
   tar -xf data.tar.*z -C ${pkgdir}
@@ -52,5 +43,3 @@ package() {
   chown -R root:root usr etc
   chmod 755 usr usr/share etc etc/oray etc/oray/pgyvpn
 }
-
-# vim: ts=2 sw=2 et:
