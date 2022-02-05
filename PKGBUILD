@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=streamdeck
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Utility to control Elgato StreamDeck on Linux"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=(hidapi)
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('b925aee256d427eebff433cd2d73d35cec960775eb9d3d842a097adc6707197a73067049045481b7ae76a2d926eeca65cb48a3996e61ecbf35b095ea13261d03')
+sha512sums=('af11eb2a91a00ba450035096feb367757bcae786105c0185bd6ea6e65c514501d97fb801ab9f4d35dfc690832e8d8b7830ea9e31666e3aed5cf801965ff9ab67')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/cmd/streamdeck"
