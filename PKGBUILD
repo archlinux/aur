@@ -1,5 +1,4 @@
-# Maintainer: Benawi Adha <echo YmVuYXdpYWRoYUBnbWFpbC5jb20K | base64 -d>
-# Contributor: Spencer Muise <smuise@spencermuise.ca>
+# Maintainer: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=epy-git
 _name=epy
