@@ -1,0 +1,18 @@
+pkgbase = python-hybridspi-git
+	pkgdesc = A Python implementation of Hybrid Radio SPI
+	pkgver = 0.1.1.31.r44.g903e6ac
+	pkgrel = 1
+	url = https://github.com/magicbadger/python-hybridspi
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	depends = python
+	provides = python-hybridspi
+	provides = python-hybridspi-git
+	conflicts = python-hybridspi
+	source = python-hybridspi::git+https://github.com/magicbadger/python-hybridspi.git
+	md5sums = SKIP
+
+pkgname = python-hybridspi-git
