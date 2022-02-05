@@ -1,0 +1,16 @@
+pkgbase = deskcut-git
+	pkgdesc = DeskCut is an extremely easy to use desktop shortcut creator app for Linux.
+	pkgver = r22.6dafd6e
+	pkgrel = 1
+	url = https://github.com/NayamAmarshe/DeskCut
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = yarn
+	makedepends = asar
+	makedepends = nodejs
+	source = deskcut-git::git+https://github.com/NayamAmarshe/DeskCut.git
+	source = deskcut.desktop
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = deskcut-git

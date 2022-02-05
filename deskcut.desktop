@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=DeskCut
+Exec=/opt/DeskCut/deskcut %U
+Terminal=false
+Type=Application
+Icon=deskcut
+StartupWMClass=DeskCut
+Comment=DeskCut is an extremely easy to use desktop shortcut creator app for Linux
+Categories=Utility;
