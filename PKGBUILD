@@ -3,7 +3,7 @@
 pkgname=ps7b_libps5000
 pkgver=2.1.80_3r3041
 pkgrel=1
-pkgdesc="library for picotech oscilloscope 5000 series"
+pkgdesc="Library for PicoScope 5000 series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps5000/"
 license=('custom')
