@@ -34,12 +34,10 @@ conflicts=('simutrans')
 source=($pkgname::svn+svn://servers.simutrans.org/simutrans/trunk
         settings-folder.patch
         path-for-game-data.patch
-        simutrans.desktop
         "How to add files and paksets.md")
 sha256sums=('SKIP'
-            '671398550f46525ef0dae338d9e1984bfc0e1ec36153e1c4163c8c35de240c7e'
-            'cb9fda1a99d0b54f316ba5ea5b90ec658641f9a9d3b77faf981525e12ff99188'
-            '7f1724f13c9c9828f5f9875657fe1248ce6ce8ab26613bb2f3adcad53cf79ffc'
+            'f397641a2700b3378b828bc00d595de616b5f9f6c39a7d371d505c9014d9c2ba'
+            '7a76f231594641253a3100ec39fb36344b870d5dbba0adccc4aa888943219d95'
             '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
             
 prepare() {
@@ -67,8 +65,8 @@ package() {
   cp -r $pkgname/build/simutrans/* "$pkgdir/usr/share/games/simutrans"
 
   #desktop file and icon
-  install -Dm644 $pkgname/simutrans.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simutrans.svg"
-  install -Dm644 simutrans.desktop "$pkgdir/usr/share/applications/simutrans.desktop"
+  install -Dm644 $pkgname/src/simutrans/simutrans.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simutrans.svg"
+  install -Dm644 $pkgname/src/simutrans/.desktop "$pkgdir/usr/share/applications/simutrans.desktop"
 
   #license
   install -Dm644 $pkgname/simutrans/license.txt "$pkgdir/usr/share/licenses/simutrans/license.txt"
