@@ -24,16 +24,13 @@ pkgver() {
 prepare() {
 	cd easea
 	patch --forward --strip=1 --input="${srcdir}/fix_config.patch"
-	mkdir -p build
 }
 
 build() {
-	cd easea/build
-	cmake ..
+	cmake .
 	make
 }
 
 package() {
-	cd easea/build
 	make DESTDIR="$pkgdir/" install
 }
