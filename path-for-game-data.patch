@@ -1,7 +1,7 @@
 Index: simmain.cc
 ===================================================================
---- simmain.cc	(revisión: 9320)
-+++ simmain.cc	(copia de trabajo)
+--- src/simutrans/simmain.cc	(revisión: 9320)
++++ src/simutrans/simmain.cc	(copia de trabajo)
 @@ -428,6 +428,11 @@
  
  	env_t::init();
