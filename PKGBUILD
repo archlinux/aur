@@ -21,5 +21,4 @@ package() {
 	chmod +x setup.sh && ./setup.sh
 	install -Dm755 ./ani-cli "$pkgdir/usr/bin/ani-cli"
 	install -Dm755 ./aniwrapper "$pkgdir/usr/bin/aniwrapper"
-	install -Dm644 ./docs/man/aniwrapper.1 "$pkgdir/usr/local/man/man1/aniwrapper.1"
 }
