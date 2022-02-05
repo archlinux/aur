@@ -3,7 +3,7 @@
 
 pkgname=maestral
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Dropbox client'
 arch=('any')
 url="https://github.com/SamSchott/maestral"
@@ -49,6 +49,7 @@ package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
 	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	chmod +x "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/maestral@.service" -t "$pkgdir/usr/lib/systemd/user/"
 }

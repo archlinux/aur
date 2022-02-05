@@ -1,7 +1,7 @@
 pkgbase = maestral
 	pkgdesc = Open-source Dropbox client
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral
 	changelog = CHANGELOG.md
 	arch = any
