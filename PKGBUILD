@@ -3,7 +3,7 @@
 
 pkgname=swaybg
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Wallpaper tool for Wayland compositors'
 arch=(x86_64)
 url='https://github.com/swaywm/swaybg'
@@ -17,6 +17,7 @@ depends=(
     'cairo'
     'gdk-pixbuf2'  # For images other than PNG
 )
+options=(debug)
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz.sig"
