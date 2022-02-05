@@ -2,11 +2,11 @@
 
 pkgname=python-birdseye
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical Python debugger which lets you view the values of all evaluated expressions"
 url="http://github.com/alexmojaki/birdseye"
 depends=(python-littleutils python-flask-humanize python-humanize python-flask-humanize python-cheap_repr python-outdated python-sqlalchemy python-cached-property python-future python-asttokens)
-makedepends=('python-setuptools-scm')
+makedepends=('python-setuptools-scm' 'python-wheel')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/b/birdseye/birdseye-${pkgver}.tar.gz")
