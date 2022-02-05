@@ -1,0 +1,19 @@
+pkgbase = odr-padenc-git
+	pkgdesc = Opendigitalradio Programme Associated Data (PAD) encoder
+	pkgver = 3.0.0.r231.49e5d8b
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-padenc
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	depends = imagemagick
+	provides = odr-padenc
+	provides = odr-padenc-git
+	conflicts = odr-padenc
+	source = odr-padenc::git+https://github.com/Opendigitalradio/odr-padenc.git
+	md5sums = SKIP
+
+pkgname = odr-padenc-git
