@@ -106,6 +106,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.4-5.xz"
         #"Linux-5.16.5-rc1.patch"
 
+        # W/A for warning during iommu initialization
+        "iommu-amd-W-A-for-warning-during-iommu-initialization.patch"
+
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
         "Bluetooth-Read-codec-capabilities-only-if-supported.patch"
@@ -162,6 +165,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
             'd212b80c0460eddd72ee0d9f3bb30f227a57e0592498e97e31212e3600cb5d3f'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
+            '393ce8f52e18624b82622a162bb4b9103e976bfe9438514b693ecf74a8541c82'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             '41b0cef536675f10fdfb69eeca2f1927653c69eb351dd92f4085ab6590485851'

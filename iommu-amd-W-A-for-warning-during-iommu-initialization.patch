@@ -1,0 +1,70 @@
+From 4a2a0f1420af5a9c869a35afee06f2db8cd2debd Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Sat, 5 Feb 2022 00:53:23 -0800
+Subject: [PATCH] iommu/amd: W/A for warning during iommu initialization v2
+
+Workaround for iommu warning introduced by upstream commit
+a8d4a37d1bb93608501d0d0545f902061152669a
+
+see LKML: https://lore.kernel.org/lkml/6cf58a4cd925726ef10481d38f9f4e8090f5023d.camel@redhat.com/
+
+------------[ cut here ]------------
+WARNING: CPU: 0 PID: 1 at amd_iommu_enable_interrupts+0x36a/0x440
+Modules linked in:
+CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.16.6-rc1-prexan0-rog-1 #1
+Hardware name: ASUSTeK COMPUTER INC. ROG Zephyrus G15 GA503QR_GA503QR/GA503QR, BIOS GA503QR.413 11/03/2021
+RIP: 0010:amd_iommu_enable_interrupts+0x36a/0x440
+Code: 89 41 18 b8 a0 86 01 00 0f 1f 84 00 00 00 00 00 48 8b 4b 38 8b 89 20 20 00 00 f7 c1 00 01 00 00 0f 85 fa fc ff ff ff c8 75 e6 <0f> 0b e9 ef fc ff ff 48 8b 7b 18 80 7f 6d 00 0f 84 81 00 00 00 be
+RSP: 0018:ffff996880087c18 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff8bfb0004a800 RCX: 0000000000000098
+RDX: 0000000000000008 RSI: ffff996880087c20 RDI: ffff9968801000f0
+RBP: ffff996880087c18 R08: ffff8bfb015eabc8 R09: 0000000000000000
+R10: 0000000000000000 R11: ffffffffffffffff R12: ffffffff7fffffff
+R13: 000fffff80000000 R14: 0000000000000000 R15: ffffffffa217af68
+FS:  0000000000000000(0000) GS:ffff8bfdde400000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 00000000bee10000 CR4: 0000000000750ef0
+PKRU: 55555554
+Call Trace:
+ <TASK>
+ ? iommu_setup+0x2a2/0x2a2
+ state_next+0x6e/0x1c9
+ ? iommu_setup+0x2a2/0x2a2
+ iommu_go_to_state+0x1f/0x33
+ amd_iommu_init+0xb/0x45
+ pci_iommu_init+0xd/0x45
+ ? iommu_setup+0x2a2/0x2a2
+ __initstub__kmod_pci_dma__271_136_pci_iommu_initrootfs+0x5/0x8
+ do_one_initcall+0xb6/0x230
+ ? parse_one+0xa8/0x2a0
+ ? parse_one+0x53/0x2a0
+ ? parse_args+0xe7/0x1e0
+ ? do_initcall_level+0x96/0x96
+ do_initcall_level+0x83/0x96
+ do_initcalls+0x44/0x6d
+ kernel_init_freeable+0x13f/0x1a0
+ ? rest_init+0xb0/0xb0
+ kernel_init+0x11/0x1b0
+ ret_from_fork+0x1f/0x30
+ </TASK>
+---[ end trace aec8e9a873f1d2d8 ]---
+---
+ drivers/iommu/amd/init.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/iommu/amd/init.c b/drivers/iommu/amd/init.c
+index b94822fc2c9f..7afdbb156288 100644
+--- a/drivers/iommu/amd/init.c
++++ b/drivers/iommu/amd/init.c
+@@ -83,7 +83,7 @@
+ #define ACPI_DEVFLAG_LINT1              0x80
+ #define ACPI_DEVFLAG_ATSDIS             0x10000000
+ 
+-#define LOOP_TIMEOUT	100000
++#define LOOP_TIMEOUT	1000000
+ /*
+  * ACPI table definitions
+  *
+-- 
+2.35.1
+
