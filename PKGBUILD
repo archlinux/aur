@@ -1,7 +1,7 @@
 # Contributor: mihai303
 
 pkgname=rpmdevtools
-pkgver=9.5
+pkgver=9.6
 pkgrel=1
 pkgdesc="RPM Development Tools"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-progressbar' 'python-requests' 'rpm-tools')
 makedepends=('bash-completion' 'help2man')
 optdepends=('unzip: for zip support in rpmdev-extract command')
 source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('b46a1d6949078f8b25056682768ed6bd50d713c33ac8a986d94ce71a162212aa')
+sha256sums=('794c97afeb6e81867497b84d2ecfd42dc8c984f59fbab8282f5396419ca7cb9e')
 
 build() {
 	cd "$pkgname-$pkgver"
