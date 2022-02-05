@@ -17,8 +17,8 @@ sha256sums=('SKIP'
 
 #credits to tenacity PKGBUILD
 pkgver() {
-  cd easea
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd easea
+	printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -27,6 +27,7 @@ prepare() {
 }
 
 build() {
+	cd easea
 	cmake .
 	make
 }
