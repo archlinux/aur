@@ -1,7 +1,7 @@
 pkgbase = python-rst2ansi
-	pkgdesc = Python library to access B2 cloud storage.
+	pkgdesc = Module rendering RST (reStructuredText) to strings suitable for a terminal.
 	pkgver = 0.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Snaipe/python-rst2ansi
 	arch = any
 	license = MIT

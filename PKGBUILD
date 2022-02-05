@@ -3,8 +3,8 @@
 pkgname=python-rst2ansi
 _pkgname=rst2ansi
 pkgver=0.1.5
-pkgrel=2
-pkgdesc='Python library to access B2 cloud storage.'
+pkgrel=3
+pkgdesc='Module rendering RST (reStructuredText) to strings suitable for a terminal.'
 arch=(any)
 url='https://github.com/Snaipe/python-rst2ansi'
 license=('MIT')
