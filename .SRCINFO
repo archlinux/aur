@@ -1,0 +1,21 @@
+pkgbase = odr-audioenc-git
+	pkgdesc = Opendigitalradio DAB and DAB+ encoder
+	pkgver = 3.1.0.r618.f932f86
+	pkgrel = 1
+	url = https://github.com/Opendigitalradio/odr-audioenc
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = ODR
+	license = GPL
+	depends = zeromq
+	depends = curl
+	depends = vlc
+	provides = odr-audioenc
+	provides = odr-audioenc-git
+	conflicts = odr-audioenc
+	source = odr-audioenc::git+https://github.com/Opendigitalradio/odr-audioenc.git
+	md5sums = SKIP
+
+pkgname = odr-audioenc-git
