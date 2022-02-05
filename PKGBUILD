@@ -3,7 +3,7 @@
 pkgname=mkchromecast-git
 _gitname=mkchromecast
 pkgver=r1214.2f112ec6
-pkgrel=2
+pkgrel=3
 pkgdesc="Cast Audio/Video to your Google Cast and Sonos Devices"
 arch=('any')
 url="https://mkchromecast.com"
@@ -30,24 +30,18 @@ source=("git+https://github.com/muammar/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${_gitname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_gitname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${_gitname}"
+  python setup.py build
 }
 
 package() {
-   cd "${_gitname}"
+  cd "${_gitname}"
+  python setup.py install --root="$pkgdir"
 
-  install -d "${pkgdir}/usr/bin/"
-  install -Dm755 "bin/${_gitname}" "${pkgdir}/usr/share/${_gitname}/${_gitname}.py"
-  ln -s "/usr/share/${_gitname}/${_gitname}.py" "${pkgdir}/usr/bin/${_gitname}"
-
-  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/${_gitname}/" mkchromecast/*.py
-  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/${_gitname}/getch/" mkchromecast/getch/*
-  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/images/" images/*.png
-  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/nodejs/" nodejs/html5-video-streamer.js
-
-  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE" LICENSE
-  install -Dm644 -t "${pkgdir}/usr/share/applications/${_gitname}.desktop" "${_gitname}.desktop"
-  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/${_gitname}.xpm" "images/${_gitname}.xpm"
-  install -Dm644 -t "${pkgdir}/usr/share/man/man1/${_gitname}.1" "man/${_gitname}.1"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/" "images/${_gitname}.xpm"
 }
