@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-ubuntu-dock
 	pkgdesc = A dock for the Gnome Shell, default Ubuntu experience
-	pkgver = 70_ubuntu1
+	pkgver = 72_ubuntu1
 	pkgrel = 1
 	url = https://github.com/micheleg/dash-to-dock/tree/ubuntu-dock
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-ubuntu-dock
 	makedepends = intltool
 	makedepends = sassc
 	depends = gnome-shell
-	source = https://github.com/micheleg/dash-to-dock/archive/ubuntu-dock-70_ubuntu1.tar.gz
-	sha256sums = 4edd91d71178e058038963ab4002c21f90f7fb748b5a409fdfea759ae79627f5
+	source = https://github.com/micheleg/dash-to-dock/archive/ubuntu-dock-72_ubuntu1.tar.gz
+	sha256sums = ba26bb23a7e29372524c3a41ec7f332aa186176fe46c1661719ac46cad34e029
 
 pkgname = gnome-shell-extension-ubuntu-dock
