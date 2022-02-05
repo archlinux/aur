@@ -23,7 +23,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
 ##############################################
-declare -r AURYN_VERSION="0.0.1"
+declare -r AURYN_VERSION="0.0.2"
 ##############################################
 # Colour constants
 declare -r \
