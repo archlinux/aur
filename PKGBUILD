@@ -1,6 +1,6 @@
 # Maintainer: Dr-Incognito <v2ray.dev at gmail dot com>
 pkgname=v2ray-desktop
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="A cross-platform GUI proxy client that supports Shadowsocks(R), V2Ray, and Trojan protocols (Stable Release)"
 arch=("x86_64")
@@ -32,7 +32,7 @@ build() {
     cd "${srcdir}/V2Ray-Desktop"
     sed -ie "s/V2RAY_USE_LOCAL_INSTALL[[:space:]]*= true/V2RAY_USE_LOCAL_INSTALL=false/" src/constants.h
     sed -i "s/Exec=%1/Exec=\/opt\/v2ray-desktop\/v2ray-desktop/" src/misc/tpl-linux-autostart.desktop
-    sed -i "s/Icon=/Icon=\/opt\/v2ray-desktop\//" src/misc/tpl-linux-autostart.desktop
+    sed -i "s/Icon=v2ray-desktop/Icon=\/opt\/v2ray-desktop\/v2ray-desktop.png/" src/misc/tpl-linux-autostart.desktop
     lrelease src/locales/zh-CN.ts
     mkdir -p build && cd build
     qmake PREFIX=/usr ../src
