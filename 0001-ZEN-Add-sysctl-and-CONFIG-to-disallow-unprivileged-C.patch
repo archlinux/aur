@@ -1,7 +1,7 @@
-From 0948f6ce6d898c598f8fe88240954e578fdc8387 Mon Sep 17 00:00:00 2001
+From 0532d2afac2ebe0cb5de82ce53492e18141a2e72 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/7] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/4] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -36,10 +36,10 @@ index 33a4240e6a6f..82213f9c4c17 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 11f8a845f259..02b7a0e455a5 100644
+index 4b7bac10c72d..40ea1367f14a 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1226,6 +1226,22 @@ config USER_NS
+@@ -1231,6 +1231,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -63,10 +63,10 @@ index 11f8a845f259..02b7a0e455a5 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 10885c649ca4..e0fe98e1afbd 100644
+index 3244cc56b697..ea4d51d3eda9 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
-@@ -98,6 +98,10 @@
+@@ -97,6 +97,10 @@
  #include <linux/io_uring.h>
  #include <linux/bpf.h>
  
@@ -77,7 +77,7 @@ index 10885c649ca4..e0fe98e1afbd 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1950,6 +1954,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1947,6 +1951,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index 10885c649ca4..e0fe98e1afbd 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3056,6 +3064,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3053,6 +3061,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -150,5 +150,5 @@ index 6b2e3ca7ee99..0253002184f1 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.34.1
+2.35.0
 
