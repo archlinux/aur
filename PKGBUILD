@@ -1,14 +1,14 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=web-eid
-pkgver=1.0.2.512
-_rls_tag=v1.0.2
+pkgver=2.0.1.555
+_rls_tag=v2.0.1
 pkgrel=1
 pkgdesc="Web eID browser extension for chromium and native application"
 arch=('x86_64')
 url="https://web-eid.eu/"
 license=('MIT')
-depends=('qt5-base' 'pcsclite')
-makedepends=('git' 'qt5-tools' 'qt5-svg' 'gtest' 'gmock')
+depends=('openssl' 'qt5-base' 'qt5-svg' 'pcsclite')
+makedepends=('git' 'qt5-tools' 'gtest' 'gmock')
 source=("$pkgname::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_rls_tag"
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "web-eid-libpcsc-cpp::git+https://github.com/web-eid/libpcsc-cpp.git"
@@ -56,10 +56,12 @@ package() {
     cd "$srcdir/$pkgname/$pkgname-build"
     make DESTDIR="$pkgdir/" install
     mkdir -p $pkgdir/usr/share/chromium/extensions
+    mkdir -p $pkgdir/opt/google/chrome/extensions
     mkdir -p $pkgdir/etc/chromium/native-messaging-hosts
     mkdir -p $pkgdir/etc/opt/chrome/native-messaging-hosts
-    ln -sf "/usr/share/chrome-token-signing/eu.webeid.json" "$pkgdir/etc/chromium/native-messaging-hosts/eu.webeid.json"
-    ln -sf "/usr/share/chrome-token-signing/eu.webeid.json" "$pkgdir/etc/opt/chrome/native-messaging-hosts/eu.webeid.json"
+    ln -sf "/usr/share/web-eid/eu.webeid.json" "$pkgdir/etc/chromium/native-messaging-hosts/eu.webeid.json"
+    ln -sf "/usr/share/web-eid/eu.webeid.json" "$pkgdir/etc/opt/chrome/native-messaging-hosts/eu.webeid.json"
     ln -sf "/usr/share/google-chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json" "$pkgdir/usr/share/chromium/extensions/ncibgoaomkmdpilpocfeponihegamlic.json"
+    ln -sf "/usr/share/google-chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json" "$pkgdir/opt/google/chrome/extensions/ncibgoaomkmdpilpocfeponihegamlic.json"
     install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/web-eid/LICENSE"
 }
