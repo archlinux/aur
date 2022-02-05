@@ -26,7 +26,6 @@ optdepends=('alsa-utils: to cast with ALSA'
             'youtube-dl: for streaming from YouTube')
 provides=('mkchromecast')
 conflicts=('mkchromecast')
-options=('!emptydirs')
 source=("git+https://github.com/muammar/${_gitname}.git")
 md5sums=('SKIP')
 
@@ -39,22 +38,16 @@ package() {
    cd "${_gitname}"
 
   install -d "${pkgdir}/usr/bin/"
-  install -d "${pkgdir}/usr/share/${_gitname}/"
-  install -d "${pkgdir}/usr/share/${_gitname}/${_gitname}/getch/"
-  install -d "${pkgdir}/usr/share/${_gitname}/images/"
-  install -d "${pkgdir}/usr/share/${_gitname}/nodejs/"
-
-  install -D -m755 bin/${_gitname} "${pkgdir}/usr/share/${_gitname}/${_gitname}.py"
+  install -Dm755 "bin/${_gitname}" "${pkgdir}/usr/share/${_gitname}/${_gitname}.py"
   ln -s "/usr/share/${_gitname}/${_gitname}.py" "${pkgdir}/usr/bin/${_gitname}"
 
-  install -D -m644 mkchromecast/*.py "${pkgdir}/usr/share/${_gitname}/${_gitname}/"
-  install -D -m644 mkchromecast/getch/* "${pkgdir}/usr/share/${_gitname}/${_gitname}/getch/"
-  install -D -m644 images/*.png "${pkgdir}/usr/share/${_gitname}/images/"
-  install -D -m644 nodejs/html5-video-streamer.js "${pkgdir}/usr/share/${_gitname}/nodejs/"
+  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/${_gitname}/" mkchromecast/*.py
+  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/${_gitname}/getch/" mkchromecast/getch/*
+  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/images/" images/*.png
+  install -Dm644 -t "${pkgdir}/usr/share/${_gitname}/nodejs/" nodejs/html5-video-streamer.js
 
-
-  install -D -m644 "man/${_gitname}.1" "${pkgdir}/usr/share/man/man1/${_gitname}.1"
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
-  install -D -m644 "images/${_gitname}.xpm" "${pkgdir}/usr/share/pixmaps/${_gitname}.xpm"
-  install -D -m644 "${_gitname}.desktop" "${pkgdir}/usr/share/applications/${_gitname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/applications/${_gitname}.desktop" "${_gitname}.desktop"
+  install -Dm644 -t "${pkgdir}/usr/share/pixmaps/${_gitname}.xpm" "images/${_gitname}.xpm"
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1/${_gitname}.1" "man/${_gitname}.1"
 }
