@@ -10,12 +10,14 @@ This is the [official] [PKGBUILD] for [FTXUI] for use on [Arch Linux] via
 
 The headers are installed to:
 ```
-/usr/include/ftxui
+/usr/include/ftxui/
 ````
-and the libraries: `libcomponent.a`, `libdom.a`, `libscreen.a` into:
+and the libraries: `ftxui-screen.a`, `ftxui-dom.a`, `ftxui-component.a` into:
 ```
-/usr/lib/ftxui
+/usr/lib/ftxui/
 ```
+
+It is recommanded to use CMake, in order to use the correct flags.
 
 You will get this message from makepkg too, don't forget to link to these
 libraries.
