@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=24831
+pkgver=24911
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('GPL' 'LGPL')
 url="http://www.scribus.net"
 depends=('hunspell' 'podofo' 'libcups' 'graphicsmagick' 'poppler'
 	 'libcdr' 'libvisio' 'libpagemaker' 'harfbuzz-icu' 'python'
-	 'qt5-declarative' 'libmspub' 'libqxp' 'hicolor-icon-theme'
-	 'libzmf' 'libfreehand')
-makedepends=('subversion' 'cmake' 'qt5-tools')
+	 'qt6-declarative' 'libmspub' 'libqxp' 'hicolor-icon-theme'
+	 'libzmf' 'libfreehand' 'qt6-base' 'qt6-5compat')
+makedepends=('subversion' 'cmake' 'qt6-tools')
 optdepends=('lib2geom: for mesh distortion')
 conflicts=('scribus')
 provides=('scribus')
@@ -31,12 +31,12 @@ build() {
   cd $_svnmod/Scribus
   cmake . -DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DWANT_GRAPHICSMAGICK:BOOL=YES \
-	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib \
+	-DCMAKE_LIBRARY_PATH:PATH=/usr/lib/qt6 \
         -DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=FALSE \
 	-DQT_PREFIX:PATH="/usr" \
 	-DWANT_SVNVERSION:BOOL=YES \
-	-DWANT_CPP17:BOOL=YES \
+	-DWANT_CPP17:BOOL=YES 
 	
   make
 }
