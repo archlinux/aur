@@ -1,10 +1,9 @@
 pkgbase = tecnoballz
 	pkgdesc = An exciting brick breaker game
 	pkgver = 0.93.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://linux.tlk.fr/games/TecnoballZ/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = GPL3
 	depends = sdl_image
 	depends = sdl_mixer
@@ -25,4 +24,3 @@ pkgbase = tecnoballz
 	md5sums = f4e4f0ff03728180f84cfa99970a117b
 
 pkgname = tecnoballz
-
