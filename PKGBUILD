@@ -2,7 +2,7 @@
 
 pkgname=mkchromecast-git
 _gitname=mkchromecast
-pkgver=r1173.2731d8d1
+pkgver=r1214.2f112ec6
 pkgrel=2
 pkgdesc="Cast Audio/Video to your Google Cast and Sonos Devices"
 arch=('any')
