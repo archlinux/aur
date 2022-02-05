@@ -1,6 +1,6 @@
 pkgbase = imgur.sh
 	pkgdesc = An Imgur uploader bash script
-	pkgver = 10
+	pkgver = 10.1
 	pkgrel = 1
 	url = https://github.com/tremby/imgur.sh
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = imgur.sh
 	optdepends = xclip: copy the URL to clipboard (or xsel)
 	conflicts = imgurbash
 	replaces = imgurbash
-	source = https://github.com/tremby/imgur.sh/archive/v10.tar.gz
-	sha256sums = 0880653acdfd7564ccb29a8ea6ef278b6993efbedd45e81d744068bdd72d282c
+	source = https://github.com/tremby/imgur.sh/archive/v10.1.tar.gz
+	sha256sums = 7cff3c68377ab0783619ee96bde4b73ed9032b1ce8f9164462f6e6718f69f814
 
 pkgname = imgur.sh
-
