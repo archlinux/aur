@@ -1,0 +1,15 @@
+pkgbase = pls
+	pkgdesc = A better ls for developers
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://pypi.org/project/pls/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-dephell
+	depends = python-yaml
+	depends = python-rich
+	source = pls::git+https://github.com/dhruvkb/pls#tag=1.6.0
+	sha512sums = SKIP
+
+pkgname = pls
