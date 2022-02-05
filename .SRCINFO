@@ -1,7 +1,7 @@
 pkgbase = mkchromecast-git
 	pkgdesc = Cast Audio/Video to your Google Cast and Sonos Devices
-	pkgver = r1214.2f112ec6
-	pkgrel = 3
+	pkgver = 0.3.8.1.r162.g2f112ec6
+	pkgrel = 1
 	url = https://mkchromecast.com
 	arch = any
 	license = MIT

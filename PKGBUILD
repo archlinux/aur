@@ -2,8 +2,8 @@
 
 pkgname=mkchromecast-git
 _gitname=mkchromecast
-pkgver=r1214.2f112ec6
-pkgrel=3
+pkgver=0.3.8.1.r162.g2f112ec6
+pkgrel=1
 pkgdesc="Cast Audio/Video to your Google Cast and Sonos Devices"
 arch=('any')
 url="https://mkchromecast.com"
@@ -31,7 +31,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 build() {
