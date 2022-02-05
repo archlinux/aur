@@ -1,6 +1,6 @@
 pkgbase = pure-maps
 	pkgver = 2.7.5
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = aarch64
 	depends = s2geometry
@@ -12,6 +12,7 @@ pkgbase = pure-maps
 	depends = nemo-qml-plugin-dbus
 	depends = python-pyotherside
 	depends = mapbox-gl-qml
+	depends = qt5-sensors
 	source = https://github.com/rinigus/pure-maps/releases/download/2.7.5/pure-maps-2.7.5.tar.gz
 	sha256sums = 8e65521d30a1b5e627d72138e77227cdc40d10fdad1d056ccb1a56522201372e
 
