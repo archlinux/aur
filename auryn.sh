@@ -23,7 +23,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.html>.
 ##############################################
-declare -r AURYN_VERSION="0.0.3"
+declare -r AURYN_VERSION="0.0.4"
 ##############################################
 # Colour constants
 declare -r \
@@ -407,7 +407,7 @@ function installPackage
           cecho yellow -ne "Sorry but...nothing is here !"
           continue
       fi
-      git clone "https://aur.archlinux.org/$i.git" && cd $i && makepkg -si && cd .. && sudo rm -R $i
+      cd /home/$USER && git clone "https://aur.archlinux.org/$i.git" && cd $i && makepkg -si && cd .. && sudo rm -R $i
     done
     cecho green -ne "Done ! Do what you Dream !"
 }
