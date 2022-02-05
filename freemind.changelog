@@ -1,0 +1,26 @@
+2014-04-21 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* freemind 1.0.1-1
+
+2014-01-14 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* freemind 1.0.0-1
+
+2013-09-29 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* freemind 0.9.0-4 - FS#36098 fix
+
+2012-02-26 Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+	* freemind 0.9.0-2 - package signed
+
+2011-02-17 Ray Rashif <schiv@archlinux.org>
+	* Upstream release 0.9.0
+	* PKGBUILD: cosmetic ammendments
+                change url; main sf site not up-to-date
+
+2010-05-30 Ray Rashif <schiv@archlinux.org>
+	* Rebuild to update package filename with architecture
+	* PKGBUILD: changed arch to "any"
+	            no pkgrel update as no content changed
+
+2009-02-15 Corrado Primier <bardo@aur.archlinux.org>
+	* Release bump: 2
+	* PKGBUILD: substituted jre dependency with java-runtime, lots of
+	cleanup

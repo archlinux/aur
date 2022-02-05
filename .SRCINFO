@@ -1,0 +1,18 @@
+pkgbase = freemind
+	pkgdesc = A Java mindmapping tool
+	pkgver = 1.0.1
+	pkgrel = 5
+	url = https://sourceforge.net/projects/freemind
+	changelog = freemind.changelog
+	arch = any
+	license = GPL
+	makedepends = libicns
+	depends = hicolor-icon-theme
+	depends = java-runtime
+	depends = libxtst
+	source = https://downloads.sourceforge.net/freemind/freemind-bin-max-1.0.1.zip
+	source = freemind.desktop
+	sha256sums = 005e815bf5d1867eadcaa89194df9952d986ace9eed0a3058c7ee6255799a60a
+	sha256sums = eac8db98257fcb8ed9c76ec340af5f3233a4783b8fe1c57ef274b9e7d2b56ed5
+
+pkgname = freemind
