@@ -1,6 +1,6 @@
 pkgname=aniwrapper-git
 _pkgname=aniwrapper
-pkgver=r226.14dee88
+pkgver=r227.2d7ed5d
 pkgrel=1
 pkgdesc="A rofi wrapper around a modified ani-cli: a cli to browse and watch anime"
 arch=('any')
@@ -21,4 +21,5 @@ package() {
 	chmod +x setup.sh && ./setup.sh
 	install -Dm755 ./ani-cli "$pkgdir/usr/bin/ani-cli"
 	install -Dm755 ./aniwrapper "$pkgdir/usr/bin/aniwrapper"
+	install -Dm644 ./docs/man/aniwrapper.1 "$pkgdir/usr/local/man/man1/aniwrapper.1"
 }
