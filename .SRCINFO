@@ -1,13 +1,13 @@
 pkgbase = cargo-sonar
 	pkgdesc = Produce Sonar-compatible format from different Rust tools
-	pkgver = 0.10.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://gitlab.com/woshilapin/cargo-sonar
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = cargo-sonar-0.10.1.tar.gz::https://gitlab.com/woshilapin/cargo-sonar/-/archive/0.10.1/cargo-sonar-0.10.1.tar.gz
-	sha256sums = 13e1118a507fb10983ae22319848126d7abda80f567402dbe96a7e5113d3791e
+	source = cargo-sonar-0.11.0.tar.gz::https://gitlab.com/woshilapin/cargo-sonar/-/archive/0.11.0/cargo-sonar-0.11.0.tar.gz
+	sha256sums = d5ff553374c13d40766ae104a4c2f22038eb355b0eb5a4c9f5b333675f8936fa
 
 pkgname = cargo-sonar
