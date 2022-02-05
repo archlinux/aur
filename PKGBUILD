@@ -4,7 +4,7 @@
 pkgname=kodi-addon-pvr-hts
 pkgbase=${pkgname}
 _gitname=pvr.hts
-pkgver=19.0.2
+pkgver=19.0.6
 
 _gitver=branch=Matrix
 pkgrel=1
