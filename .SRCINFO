@@ -1,0 +1,19 @@
+pkgbase = python-mot-epg-git
+	pkgdesc = Plugin to the python-mot library to handle DAB EPG binary encoding
+	pkgver = 1.0.3.r9.g4b84f1f
+	pkgrel = 1
+	url = https://github.com/opendigitalradio/python-mot-epg
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	depends = python
+	depends = python-mot
+	provides = python-mot-epg
+	provides = python-mot-epg-git
+	conflicts = python-mot-epg
+	source = python-mot-epg::git+https://github.com/opendigitalradio/python-mot-epg.git
+	md5sums = SKIP
+
+pkgname = python-mot-epg-git
