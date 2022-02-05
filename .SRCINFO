@@ -1,12 +1,12 @@
 pkgbase = catppuccin-grub-theme-git
 	pkgdesc = Catppuccin GRUB theme.
-	pkgver = r17.3907bdd
+	pkgver = r18.82e7552
 	pkgrel = 1
 	url = https://github.com/catppuccin/grub
 	install = catppuccin-grub-theme.install
 	arch = any
 	license = MIT
-	source = https://github.com/catppuccin/grub/archive/3907bddf16a366e56078fe3becb8402cff4cd15d.zip
-	sha256sums = 997826e92d86a3285c6336961260f5e18de7f075e3ac395adea9932f545a9c87
+	source = https://github.com/catppuccin/grub/archive/82e7552bd71451152db4e57fd9937e77a6fab25a.zip
+	sha256sums = 588b85e95b187666e1653322e869d4b626bb2df700f12f525e0d9cf80c8402ba
 
 pkgname = catppuccin-grub-theme-git
