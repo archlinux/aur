@@ -21,5 +21,5 @@ package() {
   cd "birdseye-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-birdseye/LICENSE.txt"
-  install -Dm644 README.rst "${pkgdir}/usr/share/doc/python-birdseye/README.rst
+  install -Dm644 README.rst "${pkgdir}/usr/share/doc/python-birdseye/README.rst"
 }
