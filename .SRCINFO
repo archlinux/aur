@@ -1,6 +1,6 @@
 pkgbase = thinkfan
 	pkgdesc = A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/vmatare/thinkfan
 	install = thinkfan.install
@@ -12,10 +12,10 @@ pkgbase = thinkfan
 	depends = yaml-cpp
 	optdepends = lm_sensors: hwmon support
 	backup = etc/systemd/system/thinkfan.service.d/override.conf
-	source = thinkfan-1.3.0.tar.gz::https://github.com/vmatare/thinkfan/archive/1.3.0.tar.gz
+	source = thinkfan-1.3.1.tar.gz::https://github.com/vmatare/thinkfan/archive/1.3.1.tar.gz
 	source = thinkfan.service
 	source = thinkpad_acpi.conf
-	sha256sums = ffadd3e488726c852f389f49e504c43e893b2260bf570db9a98956c4f2926c7c
+	sha256sums = 9466c8c82b7c4333b280fa66445ab26185ffbb4aada6bcb4a164eed742f8d78c
 	sha256sums = 625730e33fae251f3a1cc8259b222089fb45ada08e9cf5c816ea1cde6560e989
 	sha256sums = 28874576641b3cc1aa486e1bc9ed40eadfe8b13d6d3014016e31fedc5dc5195f
 

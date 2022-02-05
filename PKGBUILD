@@ -3,7 +3,7 @@
 # Contributor: Frederik AlkÃ¦rsig (FALKER) <havnelisten AT gmail.com>
 
 pkgname=thinkfan
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A minimalist fan control program. Supports the sysfs hwmon interface and thinkpad_acpi"
 url="https://github.com/vmatare/thinkfan"
@@ -16,7 +16,7 @@ license=('GPL')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vmatare/$pkgname/archive/$pkgver.tar.gz"
         'thinkfan.service'
         'thinkpad_acpi.conf')
-sha256sums=('ffadd3e488726c852f389f49e504c43e893b2260bf570db9a98956c4f2926c7c'
+sha256sums=('9466c8c82b7c4333b280fa66445ab26185ffbb4aada6bcb4a164eed742f8d78c'
             '625730e33fae251f3a1cc8259b222089fb45ada08e9cf5c816ea1cde6560e989'
             '28874576641b3cc1aa486e1bc9ed40eadfe8b13d6d3014016e31fedc5dc5195f')
 install=thinkfan.install
@@ -35,8 +35,8 @@ package() {
   install -d -m755 "$pkgdir"/etc/systemd/system/thinkfan.service.d
   install -D -m755 "$pkgname" "$pkgdir"/usr/bin
   install -D -m644 examples/* "$pkgdir"/usr/share/doc/"$pkgname"/examples
-  install -D -m644 src/"$pkgname".1 "$pkgdir"/usr/share/man/man1
-  install -D -m644 src/"$pkgname".conf.5 "$pkgdir"/usr/share/man/man5
+  install -D -m644 "$pkgname".1 "$pkgdir"/usr/share/man/man1
+  install -D -m644 "$pkgname".conf.5 "$pkgdir"/usr/share/man/man5
   install -D -m644 "$srcdir/$pkgname".service rcscripts/systemd/thinkfan-{sleep,wakeup}.service "$pkgdir"/usr/lib/systemd/system
   install -D -m644 rcscripts/systemd/override.conf "$pkgdir"/etc/systemd/system/thinkfan.service.d
   install -D -m644 "$srcdir"/thinkpad_acpi.conf "$pkgdir"/usr/lib/modprobe.d
