@@ -1,0 +1,19 @@
+pkgbase = nokiatool-mtk
+	pkgdesc = Simple interface Bash script to control MediaTek-based Nokia simple phones. !! Read README.md before usage. !!
+	pkgver = 20191120T132638
+	pkgrel = 1
+	url = https://gist.github.com/plugnburn/5b2582be521944f739e1
+	arch = any
+	license = custom: unknown.
+	makedepends = curl
+	depends = bash
+	source = nokiatool.sh::https://gist.github.com/plugnburn/5b2582be521944f739e1/raw/nokiatool.sh
+	source = README.md::https://gist.github.com/plugnburn/5b2582be521944f739e1/raw/README.md
+	source = nokiatool-archpackage.patch
+	source = license-dummy.txt
+	sha256sums = a6f628c0a9da2d62c08aa6450326879931eafd7a9fc9ea38d14c3dae59fbe644
+	sha256sums = dbdc81409df13c60ae404c8d0e90d1f15b7f62c56c5bb715145d377fd08858ba
+	sha256sums = 3e780ccc3c36bb27b2336b5a516d5f59c0ea3715a1651485009326b987a47435
+	sha256sums = 340b8388afef3de4eb536574d6a43afd91e3576bd1faa77d7b6c95e0dbe43bf6
+
+pkgname = nokiatool-mtk

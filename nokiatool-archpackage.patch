@@ -1,0 +1,15 @@
+--- nokiatool.sh.org	2022-02-05 17:07:46.889322592 +0100
++++ nokiatool.sh.new	2022-02-05 17:35:20.669270861 +0100
+@@ -6,2 +6,4 @@
+-MODEM='/dev/ttyUSB1' # Nokia opens two serial ports, we need the second one to send control commands
+-DRIVERINIT='modprobe usbserial vendor=0x0421 product=0x069a' # init Nokia usb2serial driver (not needed for some models if they are autodetected)
++if [ -z "${MODEM}" ]; then # The serial port to be used can be controlled by the command line; if not set, use a default:
++  read -e -i '/dev/ttyUSB1' -p 'Specify device to interact with (e.g. /dev/ttyUSB1): ' MODEM  # Nokia opens two serial ports, we usually need the second one to send control commands
++fi
++# For not auto-recognised devices something like a manual `modprobe usbserial vendor=0x0421 product=0x069a` might be needed beforehand.
+@@ -505 +507 @@
+-	$DRIVERINIT
++	# "${DRIVERINIT[@]}" # Here some initialisation commands could be placed.
+@@ -527 +529 @@
+-	sudo bash -c "$CURSCRIPT $ARGS"
++	bash -c "$CURSCRIPT $ARGS"
