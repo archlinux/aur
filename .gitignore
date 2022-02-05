@@ -1,0 +1,4 @@
+clip/
+pkg/
+src/
+*.pkg.tar.zst

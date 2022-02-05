@@ -1,0 +1,11 @@
+pkgbase = xclip-wrapper-git
+	pkgdesc = Simple xclip wrapper for those who find the syntax too confusing
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/mekb-turtle/clip
+	arch = any
+	depends = git
+	source = git+https://github.com/mekb-turtle/clip.git
+	sha256sums = SKIP
+
+pkgname = xclip-wrapper-git
