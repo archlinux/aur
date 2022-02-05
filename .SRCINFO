@@ -17,7 +17,7 @@ pkgbase = odr-suite
 	depends = odr-audioenc
 	depends = odr-radiodns-bridge
 	depends = odr-radioepg-bridge
-	depends = mmbtools-doc
+	depends = odr-mmbtools-doc
 	depends = odr-mmbtools-common
 	provides = odr-suite
 

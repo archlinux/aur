@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Opendigitalradio"
 license=('GPL')
 groups=('ODR')
-depends=('odr-dabmod' 'odr-dabmux' 'odr-encodermanager' 'odr-sourcecompanion' 'odr-padenc' 'odr-audioenc' 'odr-radiodns-bridge' 'odr-radioepg-bridge' 'mmbtools-doc' 'odr-mmbtools-common')
+depends=('odr-dabmod' 'odr-dabmux' 'odr-encodermanager' 'odr-sourcecompanion' 'odr-padenc' 'odr-audioenc' 'odr-radiodns-bridge' 'odr-radioepg-bridge' 'odr-mmbtools-doc' 'odr-mmbtools-common')
 provides=("$pkgname")
 
 package() {
