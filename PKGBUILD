@@ -8,7 +8,7 @@
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
-pkgver=12.0.0_r189756.g2c2148d8c14
+pkgver=12.0.1_r191482.f49b8d25b1ff
 _majorver=${pkgver%%.*}
 _isl_link=https://mirrors.slackware.com/slackware/slackware64-current/source/l/isl
 _isl=$(curl -s "$_isl_link/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/\.mirrorlist.*//')
@@ -17,7 +17,7 @@ pkgdesc='The GNU Compiler Collection'
 arch=($CARCH)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-makedepends=(git binutils libmpc gcc-{ada,d} Sdoxygen python git libxcrypt)
+makedepends=(git binutils libmpc gcc-{ada,d} doxygen python git libxcrypt)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
