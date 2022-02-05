@@ -1,7 +1,7 @@
 # Maintainer: Alex Butler <alexheretic@gmail.com>
 pkgname=ab-av1
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AV1 encoding tool with fast VMAF sampling."
 arch=('x86_64')
 url="https://github.com/alexheretic/ab-av1"
@@ -26,12 +26,12 @@ package() {
   bin="$pkgname-$pkgver"/target/release/ab-av1
 
   # generate completions
-  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
-  "$bin" print-completions bash > "$pkgdir/usr/share/bash-completion/completions/ab-av1"
-  mkdir -p "$pkgdir/usr/share/share/fish/completions"
-  "$bin" print-completions fish > "$pkgdir/usr/share/share/fish/completions/ab-av1.fish"
-  mkdir -p "$pkgdir/usr/share/zsh/site-functions"
-  "$bin" print-completions zsh > "$pkgdir/usr/share/zsh/site-functions/_ab-av1"
+  "$bin" print-completions "bash" > out.txt
+  install -Dm644 out.txt "$pkgdir/usr/share/bash-completion/completions/ab-av1"
+  "$bin" print-completions "fish" > out.txt
+  install -Dm644 out.txt "$pkgdir/usr/share/fish/completions/ab-av1.fish"
+  "$bin" print-completions "zsh" > out.txt
+  install -Dm644 out.txt "$pkgdir/usr/share/zsh/site-functions/_ab-av1"
 
-  install -Dm 755 "$bin" -t "$pkgdir/usr/bin"
+  install -Dm755 "$bin" -t "$pkgdir/usr/bin"
 }
