@@ -2,7 +2,7 @@
 
 pkgname=html2md
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML to Markdown converter"
 arch=('x86_64')
 url="https://github.com/suntong/html2md"
@@ -40,6 +40,15 @@ prepare() {
 
   # download dependencies
   go mod download
+
+  # ensure package displays correct version & date strings
+  local date=$(git show --no-patch --format=%cd --date=format:%Y-%m-%d)
+  local version=$(git describe --tags | sed 's/^v//')
+
+  sed -i \
+    -e "s/\" + version + \"/$version/" \
+    -e "s/ + date +/ + \"$date\" +/" \
+    html2md_cliDef.go
 }
 
 build() {
