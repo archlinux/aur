@@ -1,0 +1,50 @@
+# Rule for Pico Technology USB Oscilloscopes and Dataloggers
+#
+# Copy this file to /etc/udev/rules.d to install it.
+# Udev rules files should normally belong to root:root and
+# have permissions 0644. They are parsed in alphabetical
+# order when a device is connected (with rules parsed later
+# taking priority over those relating to the same device 
+# which have been parsed earlier). With the default
+# filename, 95-pico.rules, the device-file ownership and
+# permission rules in this file will have priority over most
+# others that may already be installed. If you are sure that 
+# this is not what you want, you can simply rename the file
+# (for example, to 05-pico.rules to give it near-minimum
+# priority).
+#
+# On older systems you may need to use udevcontrol
+# to cause udev to reread the rules files as follows if you want
+# the rule to take immediate effect without restarting udev:
+#
+# udevcontrol reload_rules
+#
+# This isn't needed on newer systems (rules files are reread 
+# automatically) but it won't do any harm either.
+#
+# The rule below matches USB devices with Pico Technology's VID: 0CE9.
+# It changes the group of the newly-created device node to "pico" and 
+# sets the file permissions to 660 (RW for the owner and group). Note
+# that the two idVendor parts (with SYSFS and ATTRS) are used by older
+# and newer udev systems to retrieve the same information: the one
+# that is not applicable will simply be ignored.
+#
+# To use this you should create a group called "pico" and add any users 
+# who need to access the pico devices to it. On a typical system you can 
+# achieve this by executing the following commands as root:
+# * To create the group:
+#
+#      addgroup pico
+#
+# * To add a user called bob to the group
+#
+#      usermod -a -G pico bob
+#
+# (the -a specifies that bob should be added to the pico group
+#  in addition to any groups of which he is currently a member)
+#
+# You will probably need to logout and login for the changes to take effect
+
+
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0ce9", MODE="664",GROUP="pico"
+
