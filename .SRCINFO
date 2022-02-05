@@ -1,12 +1,11 @@
 pkgbase = nojail
 	pkgdesc = Script to execute binaries outside firejail
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/kugland/nojail
 	arch = any
 	license = MIT
-	source = https://github.com/kugland/nojail/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 12b2f40d15671f089cf7162230acd355a8972aa584b6c2ade8a4236a3d02c211
+	source = https://github.com/kugland/nojail/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = d945a1f0afb3a91cce8aeb90738aa5d6e8d41ab28f3431af0645336d35090159
 
 pkgname = nojail
-
