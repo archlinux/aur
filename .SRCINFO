@@ -1,13 +1,13 @@
 pkgbase = reviewdog-bin
 	pkgdesc = Automated code review tool integrated with any code analysis tools regardless of programming language
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/reviewdog/reviewdog
 	arch = x86_64
 	license = MIT
 	provides = reviewdog
 	conflicts = reviewdog
-	source = reviewdog-bin-0.13.0.tar.gz::https://github.com/reviewdog/reviewdog/releases/download/v0.13.0/reviewdog_0.13.0_Linux_x86_64.tar.gz
-	sha256sums = 2993478234218448d66fa34c275f8821fbdf99d8d63b7fa6ff3e6352f9e85df2
+	source = reviewdog-bin-0.13.1.tar.gz::https://github.com/reviewdog/reviewdog/releases/download/v0.13.1/reviewdog_0.13.1_Linux_x86_64.tar.gz
+	sha256sums = 08a5a323939101195af1d420ab6be3a50ec12f58e3419e3fcd07b6871f0b9a7e
 
 pkgname = reviewdog-bin
