@@ -2,18 +2,18 @@
 
 pkgname=elpa
 PkgName=ELPA
-pkgver=2021.05.002
-_pkgver=${pkgver}_bugfix
+pkgver=2021.11.001
+_pkgver=${pkgver}
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Eigenvalue SoLvers for Petaflop-Applications"
 url="https://elpa.mpcdf.mpg.de"
 license=("LGPL3")
-depends=('scalapack')
-makedepends=('gcc-fortran' 'python' 'vim')
+depends=('scalapack' 'python-mpi4py' 'python-numpy')
+makedepends=('gcc-fortran' 'vim' 'cython')
 provides=('elpa')
 source=("$url/software/tarball-archive/Releases/$_pkgver/$pkgname-$_pkgver.tar.gz")
-sha256sums=('deabc48de5b9e4b2f073d749d335c8f354a7ce4245b643a23b7951cd6c90224b')
+sha256sums=('fb361da6c59946661b73e51538d419028f763d7cb9dacf9d8cd5c9cd3fb7802f')
 options=(!makeflags !buildflags)
 
 prepare() {
@@ -21,7 +21,7 @@ prepare() {
   export FC=mpifort
   unset FCFLAGS
 
-  # Detecting AVX compatibility
+  # Detecting vectorization compatibility
   _AVXCOMP=$( gcc -march=native -dM -E - < /dev/null \
       | egrep "AVX" | sort | tail -n 1 | awk -F'_' '{print $3}' )
   case $_AVXCOMP in
@@ -50,6 +50,8 @@ prepare() {
           echo "No advanced vectorization is enabled"
           ;;
   esac
+  # SSE is always enabled on x86_64 architecture
+  _SSE=yes
 
   # Checking CPU architecture
   if [ $CARCH == 'aarch64' ];
@@ -64,15 +66,19 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname-$_pkgver"
-   ./configure --prefix=/usr                      \
-               --enable-openmp                    \
-               --enable-sse=$_SSE                 \
-               --enable-sse-assembly=$_SSE        \
-               --enable-avx=$_AVX                 \
-               --enable-avx2=$_AVX2               \
-               --enable-avx512=$_AVX512           \
-               CFLAGS="-O2 -march=native"         \
-               FCFLAGS="-O2 -march=native"        \
+   ./configure --prefix=/usr                                         \
+               --enable-openmp                                       \
+               --enable-sse=$_SSE                                    \
+               --enable-sse-assembly=$_SSE                           \
+               --enable-avx=$_AVX                                    \
+               --enable-avx2=$_AVX2                                  \
+               --enable-avx512=$_AVX512                              \
+               --enable-autotuning                                   \
+               --enable-autotune-redistribute-matrix                 \
+               --enable-scalapack-tests                              \
+               --enable-python                                       \
+               CFLAGS="-O2 -march=native"                            \
+               FCFLAGS="-O2 -march=native -fallow-argument-mismatch" \
                LIBS='-lscalapack -lblas -llapack'
   make
 }

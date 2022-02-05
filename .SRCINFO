@@ -1,19 +1,21 @@
 pkgbase = elpa
 	pkgdesc = Eigenvalue SoLvers for Petaflop-Applications
-	pkgver = 2021.05.002
+	pkgver = 2021.11.001
 	pkgrel = 1
 	url = https://elpa.mpcdf.mpg.de
 	arch = x86_64
 	arch = aarch64
 	license = LGPL3
 	makedepends = gcc-fortran
-	makedepends = python
 	makedepends = vim
+	makedepends = cython
 	depends = scalapack
+	depends = python-mpi4py
+	depends = python-numpy
 	provides = elpa
 	options = !makeflags
 	options = !buildflags
-	source = https://elpa.mpcdf.mpg.de/software/tarball-archive/Releases/2021.05.002_bugfix/elpa-2021.05.002_bugfix.tar.gz
-	sha256sums = deabc48de5b9e4b2f073d749d335c8f354a7ce4245b643a23b7951cd6c90224b
+	source = https://elpa.mpcdf.mpg.de/software/tarball-archive/Releases/2021.11.001/elpa-2021.11.001.tar.gz
+	sha256sums = fb361da6c59946661b73e51538d419028f763d7cb9dacf9d8cd5c9cd3fb7802f
 
 pkgname = elpa
