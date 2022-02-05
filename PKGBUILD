@@ -3,7 +3,7 @@
 pkgname=ps7b_libps6000a
 pkgver=1.0.80_0r3056
 pkgrel=1
-pkgdesc="library for picotech oscilloscope 6000a series"
+pkgdesc="Library for PicoScope 6000a series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps6000a/"
 license=('custom')
