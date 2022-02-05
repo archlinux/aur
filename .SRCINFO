@@ -1,6 +1,6 @@
 pkgbase = shadow-tech
 	pkgdesc = Desktop client for Shadow Tech cloud gaming service.
-	pkgver = 5.0.1020
+	pkgver = 5.0.1073
 	pkgrel = 1
 	url = https://shadow.tech
 	install = shadow-tech.install
@@ -27,6 +27,6 @@ pkgbase = shadow-tech
 	source = shadow.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9d8583947ef29549b26e85f81abe7cc3b7c28555cf42986d6d0f831532c798bf
+	sha256sums = 33c571d0b05ada4448375e9aa604772ae6dfa0e38ef3f179476245108c9027d1
 
 pkgname = shadow-tech
