@@ -2,7 +2,7 @@
 # Maintainer: CountMurphy <spartan1086@gmail.com>
 pkgname=mediatracker-git
 __pkgname="MediaTracker"
-pkgver=r199.a8045b2
+pkgver=r238.44b0416
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/bonukai/MediaTracker.git"
