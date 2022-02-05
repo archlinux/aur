@@ -1,0 +1,12 @@
+pkgbase = autocorrect-bin
+	pkgdesc = A linter and formatter for help you improve copywriting, to correct spaces, punctuations between CJK (Chinese, Japanese, Korean).
+	pkgver = 1.5.5
+	pkgrel = 1
+	url = https://github.com/huacnlee/autocorrect
+	arch = x86_64
+	license = MIT
+	provides = autocorrect
+	source = autocorrect-bin::https://github.com/huacnlee/autocorrect/releases/download/v1.5.5/autocorrect-linux-amd64.tar.gz
+	sha256sums = dc930b23bbcf134ba6340d9c49180674ebeee47ec747ebc599bc2bd7dcde6fda
+
+pkgname = autocorrect-bin
