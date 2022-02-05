@@ -1,0 +1,5 @@
+pudb/
+src/
+pkg/
+python-pudb-git-*.pkg*
+*.log

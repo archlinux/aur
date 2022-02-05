@@ -1,20 +1,27 @@
+#  Maintainer: Blair Bonnett <blair dot bonnett at gmail>
 # Contributor: Clayton Craft <clayton@craftyguy.net>
 
 pkgname=python-pudb-git
 _pkgname=pudb
-pkgver=v2018.1.r48.g7a5fdf9
+pkgver=v2022.1.r7.gadb6276
 pkgrel=1
 pkgdesc="A full-screen, console-based Python debugger"
-url="http://pypi.python.org/pypi/pudb"
+url="https://documen.tician.de/pudb/"
 arch=('any')
 license=('MIT')
-makedepends=('python-urwid' 'python-pygments')
-depends=('python-urwid' 'python-pygments')
+depends=('python-jedi' 'python-packaging' 'python-pygments' 'python-urwid' 'python-urwid_readline')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest' 'python-pytest-mock')
+optdepends=(
+  'bpython: bpython shell'
+  'ptpython: shell based on prompt_toolkit'
+  'ipython: shell embedding IPython'
+)
 provides=('python-pudb')
 conflicts=('python-pudb')
 
 source=("git+https://github.com/inducer/pudb.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/"$_pkgname"
@@ -24,12 +31,16 @@ pkgver() {
 build() {
   cd "$srcdir"/"$_pkgname"
   python setup.py build
+}
 
+check() {
+  cd "$srcdir/$_pkgname"
+  PYTHONPATH=build/lib PYTHONDONTWRITEBYTECODE=1 pytest -v
 }
 
 package() {
   cd "$srcdir"/"$_pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --skip-build --prefix=/usr --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
