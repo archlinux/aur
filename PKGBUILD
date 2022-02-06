@@ -113,6 +113,9 @@ package() {
 
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
-  install -Dm644 LICENSE-Community.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Community.txt"
+
+  # move licenses
+  mkdir -p $pkgdir/usr/share/licenses/$pkgname
+  mv $pkgdir/usr/{LICENSE-Community.txt,MPL-2,README,THIRD-PARTY-NOTICES} $pkgdir/usr/share/licenses/$pkgname
 }
 
