@@ -2,8 +2,8 @@
 
 _plug=imagine
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r41.73be955
-pkgrel=3
+pkgver=r42.049d5d8
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173633'
@@ -47,9 +47,12 @@ prepare(){
       -e 's|"VSHelper.h"|<VSHelper.h>|g' \
       -i extra/vsxx/VapourSynth++.hpp
 
-  sed '10i#include <stdio.h>' \
-    -i src/imagine/provider/jpeg_decoder.cpp
-
+  # silence deprecation warnings
+  sed -e 's|uint8 |uint8_t |g' \
+      -e 's|uint8>|uint8_t>|g' \
+      -e 's|uint16 |uint16_t |g' \
+      -e 's|uint32 |uint32_t |g' \
+      -i src/imagine/provider/tiff_decoder.cpp
 
   echo "all:
 	  g++ -c -fPIC ${CXXFLAGS} -std=c++11 -Wno-missing-field-initializers ${CPPFLAGS} -I. -I./src/vsimagine -I./src/imagine -I./extra $(pkg-config --cflags vapoursynth) -o extra/libp2p/v210.o extra/libp2p/v210.cpp

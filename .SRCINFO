@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-imagine-git
 	pkgdesc = Plugin for Vapoursynth: imagine (GIT version)
-	pkgver = r41.73be955
-	pkgrel = 3
+	pkgver = r42.049d5d8
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=173633
 	arch = x86_64
 	license = GPL
@@ -24,4 +24,3 @@ pkgbase = vapoursynth-plugin-imagine-git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-imagine-git
-
