@@ -1,6 +1,6 @@
 pkgbase = python-limiter
 	pkgdesc = Rate-limiting thread-safe, async decorators/context-managers implementing token-bucket
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://pypi.org/projects/limiter
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-limiter
 	makedepends = python-setuptools
 	depends = python
 	depends = python-token-bucket
-	source = limiter-0.2.0.tgz::https://github.com/alexdelorenzo/limiter/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 0421c0c5f8ab646cfb18fb925096b4d4c31fb121ab8a7c2ec6a450b69b42fdbf
+	source = limiter-0.3.0.tgz::https://github.com/alexdelorenzo/limiter/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = e4ceb9f135061b6c99e4a5359877693c8112589fa66ddb42b69205537c31bf49
 
 pkgname = python-limiter
