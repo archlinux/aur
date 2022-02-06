@@ -1,7 +1,7 @@
 pkgbase = psst-git-bin
 	pkgdesc = Fast and multi-platform Spotify client with native GUI (binary git version). github.com/thebiblelover7/psst-git-bin
 	pkgver = r1.1627cd4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jpochyla/psst
 	arch = x86_64
 	license = MIT
