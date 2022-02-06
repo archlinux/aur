@@ -1,0 +1,15 @@
+pkgbase = gopsuinfo
+	pkgdesc = A gopsutil-based command to display customizable system info, intended for nwg-panel or Tint2
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/gopsuinfo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = gopsuinfo
+	conflicts = gopsuinfo-git
+	conflicts = gopsuinfo-bin
+	source = gopsuinfo-0.1.0.tar.gz::https://github.com/nwg-piotr/gopsuinfo/archive/v0.1.0.tar.gz
+	md5sums = d409a94e2735535a726a5246849a15a8
+
+pkgname = gopsuinfo
