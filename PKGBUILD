@@ -1,7 +1,7 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=dnspeep
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Spy on the DNS queries your computer is making'
 url='https://github.com/jvns/dnspeep'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libpcap')
 makedepends=('rust')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('d8e2aab4eb541f7050d07b1d9bbc23d89293698884f688914c7e6ae55dec9a11')
+sha512sums=('82dafdf415678eeff1112a0114806e9e2edb8fea6fd2b7642df2384fcb995a69c80a9674745fcd7fc1baed7a72ecf27756f3a7f0cdf494e6ff9a7e4812e24bc9')
 
 build() {
   tar xzvf v$pkgver.tar.gz
