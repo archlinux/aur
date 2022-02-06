@@ -1,0 +1,9 @@
+post_install() {
+	cat <<EOF
+
+==> Please activate the rc-local service to execute /etc/rc.local on boot.
+==> Run as root: systemctl enable rc-local.service
+==> Just put the script in "/etc/rc.local.d" and "chmod" it.
+
+EOF
+}
