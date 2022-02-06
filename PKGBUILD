@@ -14,9 +14,7 @@ depends=('vapoursynth-plugin-havsfunc-git'
          'python-more-itertools'
          )
 makedepends=('git'
-             'python-poetry'
              'python-pip'
-             'python-wheel'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -30,7 +28,7 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  poetry build -f wheel
+  pip wheel --no-deps . -w dist
 }
 
 package() {
