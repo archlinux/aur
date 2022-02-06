@@ -1,31 +1,35 @@
-# Maintainer: Kai Muenz <kai+archlinux@muenz.net>
+# Maintainer: EndlessEden <eenov1988@gmail.com>
+# Contributor: FabioLolix
+
 _pkgname=odr-audioenc
 pkgname=$_pkgname-git
-pkgver=3.1.0.r618.f932f86
+pkgver=3.1.0.r0.gf932f86
 pkgrel=1
 pkgdesc="Opendigitalradio DAB and DAB+ encoder"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Opendigitalradio/$_pkgname"
-license=('GPL')
+license=('Apache')
 groups=('ODR')
-depends=('zeromq' 'curl' 'vlc')
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=("$_pkgname" "$pkgname")
+depends=('zeromq' 'curl' 'vlc' 'gst-plugins-base-libs')
+makedepends=('git')
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "$(git describe --tags | sed 's|-|.|g' | sed 's/v//g').r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$_pkgname"
+	./bootstrap
 }
 
 build() {
 	cd "$_pkgname"
-	./bootstrap
-	./configure --prefix=/usr
+	./configure --prefix=/usr --enable-alsa --enable-jack --enable-vlc --enable-gst
 	make
 }
 
