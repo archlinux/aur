@@ -16,10 +16,8 @@ depends=('vapoursynth'
 makedepends=('git'
              'python-pip'
              )
-optdepends=('python-pytorch: CPU'
-            'python-pytorch-opt: CPU with AVX2 optimizations'
-            'python-pytorch-cuda: CUDA and CPU'
-            'python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations'
+optdepends=('python-pytorch: CPU with AVX2 optimizations'
+            'python-pytorch-cuda: CUDA with CPU with AVX2 optimizations'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -35,7 +33,6 @@ prepare() {
   cd "${_plug}/vsbasicvsrpp"
   python __main__.py
 }
-
 
 build() {
   cd "${_plug}"
