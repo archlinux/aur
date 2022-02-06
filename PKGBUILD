@@ -2,7 +2,8 @@
 # Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=joycond-git
-pkgver=r110.f9a6691
+_name=joycond
+pkgver=v0.1.0.r51.gf9a6691
 pkgrel=1
 pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver'
 arch=('x86_64' 'aarch64')
@@ -18,18 +19,18 @@ source=('git+https://github.com/DanielOgorchock/joycond.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/joycond"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_name"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/joycond"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr .
-	make
+  cd "$srcdir/$_name"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .
+  make
 }
 
 package() {
-	cd "$srcdir/joycond"
-	make DESTDIR="$pkgdir/" install
-	mv "$pkgdir/lib" "$pkgdir/usr/"
+  cd "$srcdir/$_name"
+  make DESTDIR="$pkgdir/" install
+  mv "$pkgdir/lib" "$pkgdir/usr/"
 }
