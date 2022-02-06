@@ -40,7 +40,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  python -c "import setuptools; setuptools.setup()" bdist_wheel
+  pip wheel --no-deps . -w dist
 }
 
 package() {
