@@ -1,0 +1,229 @@
+diff -ruN geometry-4.0.0/inst/@svg/svg.m octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/inst/@svg/svg.m
+--- geometry-4.0.0/inst/@svg/svg.m	2020-02-03 11:35:21.000000000 +0800
++++ octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/inst/@svg/svg.m	2021-07-08 05:18:01.000000000 +0800
+@@ -1,4 +1,4 @@
+-## Copyright (C) 2012-2019 Juan Pablo Carbajal
++## Copyright (C) 2012-2020 Juan Pablo Carbajal
+ ##
+ ## This program is free software; you can redistribute it and/or modify it under
+ ## the terms of the GNU General Public License as published by the Free Software
+@@ -61,7 +61,7 @@
+ 
+ endfunction
+ 
+-%!test
++%!xtest
+ %!  dc = svg('drawing5.svg');
+ %!  dc.getpath();
+ %!  dc.pathid();
+@@ -71,12 +71,12 @@
+ %!  ids = dc.pathid();
+ %!  dc.getpath({ids{[1 3]}});
+ 
+-%!test
++%!xtest
+ %!  dc = svg('drawing6.svg');
+ %!  ids = dc.pathid();
+ %!  P = dc.path2polygon(ids{1});
+ 
+-%!test
++%!xtest
+ %! dc = svg('drawing6.svg');
+ %! dc.plot();
+ %! dc.plot('color','r','linewidth',2);
+diff -ruN geometry-4.0.0/Makefile octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/Makefile
+--- geometry-4.0.0/Makefile	1970-01-01 08:00:00.000000000 +0800
++++ octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/Makefile	2021-07-08 05:18:01.000000000 +0800
+@@ -0,0 +1,120 @@
++## Makefile to simplify Octave Forge package maintenance tasks
++##
++## Copyright 2015-2016 Carnë Draug
++## Copyright 2015-2016 Oliver Heimlich
++## Copyright 2015-2019 Mike Miller
++##
++## Copying and distribution of this file, with or without modification,
++## are permitted in any medium without royalty provided the copyright
++## notice and this notice are preserved.  This file is offered as-is,
++## without any warranty.
++
++MKOCTFILE ?= mkoctfile
++OCTAVE    ?= octave
++SED       := sed
++SHA256SUM := sha256sum
++TAR       := tar
++
++PACKAGE := $(shell $(SED) -n -e 's/^Name: *\(\w\+\)/\1/p' DESCRIPTION)
++VERSION := $(shell $(SED) -n -e 's/^Version: *\(\w\+\)/\1/p' DESCRIPTION)
++DEPENDS := $(shell $(SED) -n -e 's/^Depends[^,]*, *\(.*\)/\1/p' DESCRIPTION | $(SED) 's/ *([^()]*)//g; s/ *, */ /g')
++
++HG           := hg
++HG_CMD        = $(HG) --config alias.$(1)=$(1) --config defaults.$(1)= $(1)
++HG_ID        := $(shell $(call HG_CMD,identify) --id | sed -e 's/+//' )
++HG_TIMESTAMP := $(firstword $(shell $(call HG_CMD,log) --rev $(HG_ID) --template '{date|hgdate}'))
++
++TAR_REPRODUCIBLE_OPTIONS := --sort=name --mtime="@$(HG_TIMESTAMP)" --owner=0 --group=0 --numeric-owner
++TAR_OPTIONS  := --format=ustar $(TAR_REPRODUCIBLE_OPTIONS)
++
++RELEASE_DIR     := $(PACKAGE)-$(VERSION)
++RELEASE_TARBALL := $(PACKAGE)-$(VERSION).tar.gz
++HTML_DIR        := $(PACKAGE)-html
++HTML_TARBALL    := $(PACKAGE)-html.tar.gz
++
++.PHONY: help dist html release install all check doctest run doc clean maintainer-clean
++
++help:
++	@echo "Targets:"
++	@echo "   dist             - Create $(RELEASE_TARBALL) for release"
++	@echo "   html             - Create $(HTML_TARBALL) for release"
++	@echo "   release          - Create both of the above and show md5sums"
++	@echo
++	@echo "   install          - Install the package in GNU Octave"
++	@echo "   all              - Build all oct files"
++	@echo "   check            - Execute package tests (w/o install)"
++	@echo "   doctest          - Execute package doc tests (w/o install)"
++	@echo "   run              - Run Octave with development in PATH (no install)"
++	@echo "   doc              - Build Texinfo package manual"
++	@echo
++	@echo "   clean            - Remove releases, html documentation, and oct files"
++	@echo "   maintainer-clean - Additionally remove all generated files"
++
++$(RELEASE_DIR): .hg/dirstate
++	@echo "Creating package version $(VERSION) release ..."
++	-rm -rf $@
++	$(call HG_CMD,archive) --exclude ".hg*" --exclude Makefile --type files --rev $(HG_ID) $@
++	chmod -R a+rX,u+w,go-w $@
++
++$(RELEASE_TARBALL): $(RELEASE_DIR)
++	$(TAR) -cf - $(TAR_OPTIONS) $< | gzip -9n > $@
++	-rm -rf $<
++
++$(HTML_DIR): install
++	@echo "Generating HTML documentation. This may take a while ..."
++	-rm -rf $@
++	$(OCTAVE) --silent \
++	  --eval 'page_screen_output (false);' \
++	  --eval 'set (0, "defaultfigurevisible", "off");' \
++	  --eval 'pkg load generate_html $(PACKAGE);' \
++	  --eval 'generate_package_html ("$(PACKAGE)", "$@", "octave-forge");'
++	chmod -R a+rX,u+w,go-w $@
++
++$(HTML_TARBALL): $(HTML_DIR)
++	$(TAR) -cf - $(TAR_OPTIONS) $< | gzip -9n > $@
++	-rm -rf $<
++
++dist: $(RELEASE_TARBALL)
++
++html: $(HTML_TARBALL)
++
++release: dist html
++	@$(SHA256SUM) $(RELEASE_TARBALL) $(HTML_TARBALL)
++	@echo "Upload @ https://sourceforge.net/p/octave/package-releases/new/"
++	#@echo "Execute: hg tag \"$(VERSION)\""
++
++install: $(RELEASE_TARBALL)
++	@echo "Installing package locally ..."
++	$(OCTAVE) --silent --eval 'pkg install $(RELEASE_TARBALL);'
++
++all:
++	cd src && $(MAKE) $@
++
++check: all
++	$(OCTAVE) --silent \
++	  --eval 'if (! isempty ("$(DEPENDS)")); pkg load $(DEPENDS); endif;' \
++	  --eval 'addpath (fullfile (pwd, "inst"));' \
++	  --eval 'addpath (fullfile (pwd, "src"));' \
++	  --eval 'runtests ("inst"); runtests ("src");'
++
++doctest: all
++	$(OCTAVE) --silent \
++	  --eval 'if (! isempty ("$(DEPENDS)")); pkg load $(DEPENDS); endif;' \
++	  --eval 'pkg load doctest;' \
++	  --eval 'addpath (fullfile (pwd, "inst"));' \
++	  --eval 'addpath (fullfile (pwd, "src"));' \
++	  --eval 'doctest ({"src", "inst"});'
++
++run: all
++	$(OCTAVE) --silent --persist \
++	  --eval 'if (! isempty ("$(DEPENDS)")); pkg load $(DEPENDS); endif;' \
++	  --eval 'addpath (fullfile (pwd, "inst"));' \
++	  --eval 'addpath (fullfile (pwd, "src"));'
++
++doc:
++
++clean:
++	-rm -rf $(RELEASE_DIR) $(RELEASE_TARBALL) $(HTML_TARBALL) $(HTML_DIR)
++	cd src && $(MAKE) $@
++
++maintainer-clean: clean
+diff -ruN geometry-4.0.0/src/martinez.cpp octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/src/martinez.cpp
+--- geometry-4.0.0/src/martinez.cpp	2020-02-03 11:35:21.000000000 +0800
++++ octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/src/martinez.cpp	2021-07-08 05:18:01.000000000 +0800
+@@ -26,7 +26,7 @@
+ 
+ // Compare two sweep events
+ // Return true means that e1 is placed at the event queue after e2, i.e,, e1 is processed by the algorithm after e2
+-bool Martinez::SweepEventComp::operator() (SweepEvent* e1, SweepEvent* e2) {
++bool Martinez::SweepEventComp::operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 	if (e1->p.x > e2->p.x) // Different x-coordinate
+ 		return true;
+ 	if (e2->p.x > e1->p.x) // Different x-coordinate
+@@ -40,7 +40,7 @@
+ }
+ 
+ // e1 and a2 are the left events of line segments (e1->p, e1->other->p) and (e2->p, e2->other->p)
+-bool Martinez::SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) {
++bool Martinez::SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 	if (e1 == e2)
+ 		return false;
+ 	if (signedArea (e1->p, e1->other->p, e2->p) != 0 || signedArea (e1->p, e1->other->p, e2->other->p) != 0) {
+diff -ruN geometry-4.0.0/src/martinez.h octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/src/martinez.h
+--- geometry-4.0.0/src/martinez.h	2020-02-03 11:35:21.000000000 +0800
++++ octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/src/martinez.h	2021-07-08 05:18:01.000000000 +0800
+@@ -38,7 +38,7 @@
+ 
+ 	struct SweepEvent;
+ 	struct SegmentComp : public binary_function<SweepEvent*, SweepEvent*, bool> { // for sorting edges in the sweep line
+-		bool operator() (SweepEvent* e1, SweepEvent* e2);
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const;
+ 	};
+ 	
+ 	struct SweepEvent {
+@@ -65,7 +65,7 @@
+ 	static void print (SweepEvent& e); // This function is intended for debugging purposes
+ 
+ 	struct SweepEventComp : public binary_function<SweepEvent*, SweepEvent*, bool> { // for sortening events
+-		bool operator() (SweepEvent* e1, SweepEvent* e2);
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const;
+ 	};
+ 
+ 	/** @brief Event Queue */
+diff -ruN geometry-4.0.0/src/polygon.cpp octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/src/polygon.cpp
+--- geometry-4.0.0/src/polygon.cpp	2020-02-03 11:35:21.000000000 +0800
++++ octave-geometry-04965cda30b5f9e51774194c67879e7336df1710/src/polygon.cpp	2021-07-08 05:18:01.000000000 +0800
+@@ -94,7 +94,7 @@
+ namespace { // start of anonymous namespace
+ 	struct SweepEvent;
+ 	struct SegmentComp : public binary_function<SweepEvent*, SweepEvent*, bool> {
+-		bool operator() (SweepEvent* e1, SweepEvent* e2);
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const;
+ 	};
+ 
+ 	struct SweepEvent {
+@@ -117,7 +117,7 @@
+ 	};
+ 
+ 	struct SweepEventComp : public binary_function<SweepEvent*, SweepEvent*, bool> {
+-		bool operator() (SweepEvent* e1, SweepEvent* e2) {
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 			if (e1->p.x < e2->p.x) // Different x coordinate
+ 				return true;
+ 			if (e2->p.x < e1->p.x) // Different x coordinate
+@@ -133,7 +133,7 @@
+ 
+ } // end of anonymous namespace
+ 
+-bool SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) {
++bool SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 	if (e1 == e2)
+ 		return false;
+ 	if (signedArea (e1->p, e1->other->p, e2->p) != 0 || signedArea (e1->p, e1->other->p, e2->other->p) != 0) {

@@ -1,7 +1,7 @@
 pkgbase = octave-geometry
 	pkgdesc = Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives.
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://octave.sourceforge.io/geometry/
 	install = octave-geometry.install
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = octave-geometry
 	license = custom
 	depends = octave>=4.2.0
 	depends = octave-matgeom>=1.0.0
-	noextract = geometry-4.0.0.zip
-	source = geometry-4.0.0.zip::https://sourceforge.net/code-snapshots/hg/o/oc/octave/geometry/octave-geometry-04965cda30b5f9e51774194c67879e7336df1710.zip
-	sha256sums = 0819f5420da98b48a8d4d61c4ab0408b26237d4da7fd77b306053e544d4c9bf9
+	source = https://downloads.sourceforge.net/octave/geometry-4.0.0.tar.gz
+	source = 4.0.0_to_tip.diff
+	sha256sums = 1ad2403c01948ebac55d67f9048f79ae28bb99802ef65376c94e981cfb49adfe
+	sha256sums = 753a384acac9f7a38c86682ca67d80a714e79cd694e7a2beba5a4606aca70e4c
 
 pkgname = octave-geometry
