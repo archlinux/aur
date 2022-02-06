@@ -10,6 +10,7 @@
 # arg 1:  the new package version
 post_install() {
 	mkdir -p /var/lib/local-aur/repo
+	mkdir -p /var/lib/local-aur/home
 	echo '{"packages": {}}' > /var/lib/local-aur/local-aur.json
 	repo-add "/var/lib/local-aur/repo/local-aur.db.tar.gz"
 
