@@ -2,11 +2,11 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=1.2.3
+pkgver=1.3.1
 pkgrel=1
-pkgdesc="截图+OCR+搜索+贴图"
+pkgdesc="识屏 · 搜索"
 arch=('x86_64')
-url="https://github.com/xushengfeng/eSearch"
+url="https://xushengfeng.github.io/eSearch-website/"
 license=('GPL3')
 groups=('')
 depends=('at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'metasploit' 'trash-cli' 'xdg-utils')
@@ -17,14 +17,14 @@ optdepends=('alsa-lib'
             'pulseaudio')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://hub.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/esearch_${pkgver}_amd64.deb")
-sha512sums=('f2c7c6369fbdc22492368febf1086aa8b00114bfb8e38696feefa60655b311ce4b56558f0bb8680ce189c8db897b41fc8312c5382c47f4cbfac2d56bb0c1857f')
+source=("https://download.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/e-search_${pkgver}_amd64.deb")
+sha512sums=('fe641648ef35d7eda0cdb671d787ee57e66f82f51acfc360273457d71979c0b022c15c7c0b135d8cc413e7109de7f29c7a90c0878748e032412271c36e76e699')
 
 package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "${pkgdir}/usr/lib/esearch/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/lib/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
