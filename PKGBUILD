@@ -52,6 +52,9 @@ build() {
     export CFLAGS="$CFLAGS -Wno-deprecated-declarations"
     export CXXFLAGS="$CXXFLAGS -Wno-deprecated-declarations"
 
+    export CC=clang
+    export CXX=clang++
+
     cmake -B build -S "$_gitname" -G Ninja -Wno-dev \
         -DBUILD_QT5=ON \
         -DCMAKE_BUILD_TYPE=Release \
