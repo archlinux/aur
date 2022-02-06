@@ -2,11 +2,11 @@
 pkgname=gdm-settings
 __pkgver='0.2-alpha'
 pkgver=${__pkgver/-/+}
-pkgrel=1
+pkgrel=2
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
-license=('GPL3')
+license=('AGPL3')
 depends=('libadwaita' 'glib2' 'python-gobject')
 makedepends=('git' 'meson')
 backup=()
