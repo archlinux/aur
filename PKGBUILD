@@ -2,37 +2,35 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=libadalang
-_upstream_ver=2021-20210518-199BE
 epoch=1
-pkgver=2021
-pkgrel=2
+pkgver=2022
+pkgrel=1
 
 pkgdesc="A high performance semantic engine for the Ada programming language."
 url="https://github.com/AdaCore/libadalang"
 arch=('i686' 'x86_64')
 license=('GPL3' 'custom')
 
-depends=("gnatcoll-gmp" "langkit")
+depends=('gnatcoll-gmp' 'langkit')
 makedepends=('gprbuild' 'python-setuptools' 'python-mako' 'python-funcy' 
              'python-e3-core' 'python-docutils' 'python-sphinx')
 
-_checksum=7a191b8dd41b28a9b93424a5aedac3c5ec76b046
-source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
-sha1sums=("$_checksum")
+source=(https://github.com/AdaCore/libadalang/archive/refs/tags/v22.0.0.tar.gz)
+sha1sums=("6ff10f106a154108f56987f834bd7ef700ec6cba")
 
 build()
 {
-  cd "$srcdir/$pkgname-$_upstream_ver-src"
+  cd "$srcdir/libadalang-22.0.0"
 
   ADA_FLAGS="$CFLAGS"
   ADA_FLAGS="${ADA_FLAGS//-Wformat}"
   ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
   python manage.py generate
-  python manage.py \
-    build \
+  python manage.py                                \
+    build                                         \
     --library-types=static,static-pic,relocatable \
-    --build-mode=prod \
+    --build-mode=prod                             \
     --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
 
   make -C dev_manual html
@@ -43,12 +41,12 @@ build()
 
 package()
 {
-  cd "$srcdir/$pkgname-$_upstream_ver-src"
+  cd "$srcdir/libadalang-22.0.0"
 
-  python manage.py \
-    install \
+  python manage.py                                \
+    install                                       \
     --library-types=static,static-pic,relocatable \
-    --build-mode=prod \
+    --build-mode=prod                             \
     "$pkgdir/usr"
 
   # Install the developers manual
