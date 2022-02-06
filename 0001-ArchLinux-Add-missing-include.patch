@@ -1,0 +1,28 @@
+From 0dde7cb8ffd551517b821fe7a69b243ec5f0338e Mon Sep 17 00:00:00 2001
+From: Joe Baldino <pedanticdm@gmx.us>
+Date: Sun, 6 Feb 2022 22:27:47 +0000
+Subject: [PATCH] [ArchLinux] Add missing include
+
+With upstream warning flags-- includes Werror-- compilation will fail
+due to a missing include. Fixed.
+
+Signed-off-by: Joe Baldino <pedanticdm@gmx.us>
+---
+ src/app/window.hh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/app/window.hh b/src/app/window.hh
+index eab5137cac42..80ca9e76fa91 100644
+--- a/src/app/window.hh
++++ b/src/app/window.hh
+@@ -68,6 +68,7 @@ SOFTWARE.
+ #include <complex>
+ #include <utility>
+ #include <fstream>
++#include <optional>
+ #include <iostream>
+ #include <sstream>
+ #include <algorithm>
+-- 
+2.35.1
+

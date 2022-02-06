@@ -1,7 +1,7 @@
 pkgbase = octavia
 	pkgdesc = octobanana's customizable text-based audio visualization interactive application
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://octobanana.com/software/octavia
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,9 @@ pkgbase = octavia
 	makedepends = cmake
 	depends = boost-libs
 	depends = sfml
-	source = octavia-0.1.2.tar.gz::https://github.com/octobanana/octavia/archive/0.1.2.tar.gz
+	source = octavia-0.1.2.tar.gz::https://github.com/octobanana/octavia/archive/refs/tags/0.1.2.tar.gz
+	source = 0001-ArchLinux-Add-missing-include.patch
 	sha256sums = abc0717312178e24780081418ee7d7578ac3b721bce7fd307853688eb4cd1674
+	sha256sums = c53aa1d86eed2c68731e03a2b8f418cf93858e51cbe7d6cab705207a77b7a933
 
 pkgname = octavia
-
