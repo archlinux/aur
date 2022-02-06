@@ -1,6 +1,6 @@
 pkgbase = mongodb
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 4.2.8
+	pkgver = 5.0.6
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = mongodb
 	makedepends = python-cheetah3
 	makedepends = python-yaml
 	makedepends = python-requests
+	makedepends = boost
+	makedepends = yaml-cpp
 	depends = curl
 	depends = libstemmer
 	depends = lsb-release
@@ -20,12 +22,13 @@ pkgbase = mongodb
 	depends = gperftools
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	backup = etc/mongodb.conf
-	source = http://downloads.mongodb.org/src/mongodb-src-r4.2.8.tar.gz
+	source = https://fastdl.mongodb.org/src/mongodb-src-r5.0.6.tar.gz
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
-	sha256sums = e8880277e3910afd82c71ed61861d518f2040cbc062e00a26d53a3224284db8f
+	source = mongodb-5.0.2-skip-no-exceptions.patch
+	sha256sums = 9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52
 	sha256sums = 3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795
 	sha256sums = b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39
+	sha256sums = SKIP
 
 pkgname = mongodb
-
