@@ -8,7 +8,8 @@ arch=('any')
 url="http://download.services.openoffice.org/contrib/dictionaries/"
 license=('LGPL')
 optdepends=('hyphen: offers hyphenation library functions')
-source=('http://download.services.openoffice.org/contrib/dictionaries/hyph_pt_PT.zip')
+#source=('http://download.services.openoffice.org/contrib/dictionaries/hyph_pt_PT.zip')
+source=('http://openoffice.cs.utah.edu/contrib/dictionaries/hyph_pt_PT.zip')
 sha256sums=('2846f6079d8965447b22c1637696be71b69bdca91f5558c0c2a2b9b3b8de8dd2')
 
 package() {
