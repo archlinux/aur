@@ -1,0 +1,15 @@
+pkgbase = otr-git
+	pkgdesc = Decode and cut video files from Online TV Recorder (OTR)
+	pkgver = r3.cdef4b8
+	pkgrel = 1
+	url = https://gitlab.com/mipimipi/otr
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = mkvtoolnix-cli
+	source = git+https://gitlab.com/mipimipi/otr.git
+	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
+	md5sums = SKIP
+
+pkgname = otr-git
