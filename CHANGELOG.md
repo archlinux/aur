@@ -1,10 +1,45 @@
 # Changelog
 
+* [1.2.0](#1-2-0)
 * [1.1.2](#1-1-2)
 * [1.1.1](#1-1-1)
 * [1.1.0](#1-1-0)
 * [1.0.1](#1-0-1)
 * [1.0.0](#1-0-0)
+
+
+## 1.2.0
+
+### Added
+
+* Configurable padding of notification text. New `fnottrc` options:
+  `padding-vertical` and `padding-horizontal`
+  (https://codeberg.org/dnkl/fnott/issues/35).
+
+
+### Changed
+
+* Default padding is now fixed at 20, instead of depending on the font
+  size. This is due to the new `padding-horizontal|vertical` options.
+
+
+### Fixed
+
+* `fnottctl actions` exiting without receiving a reply.
+* Fnott is now much better at surviving monitors being disabled and
+  re-enabled (https://codeberg.org/dnkl/fnott/issues/25).
+* Wrong font being used when the body and summary (or title and body,
+  or title and summary) is set to the same text
+  (https://codeberg.org/dnkl/fnott/issues/36).
+* Fnott no longer allocates the vertical padding space between summary
+  and body text, if the body text is empty
+  (https://codeberg.org/dnkl/fnott/issues/41).
+
+
+### Contributors
+
+* fauxmight
+* Rishabh Das
 
 
 ## 1.1.2
