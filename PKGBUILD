@@ -1,46 +1,31 @@
-# Maintainer:  jyantis <yantis@yantis.net>
-
-pkgname=python-nameparser
-pkgver=v0.3.3
+# Contributor: jyantis <yantis@yantis.net>
+_base=nameparser
+pkgname=python-${_base}
+pkgver=1.1.1
 pkgrel=1
-pkgdesc='A simple Python 2 module for parsing human names into their individual components'
-arch=('any')
-url='https://github.com/derek73/python-nameparser'
-license=('custom')
-depends=('python')
-source=('https://pypi.python.org/packages/source/n/nameparser/nameparser-0.3.3.tar.gz')
-md5sums=('eee37936846c38781b00654e59f6e372')
-makedepends=('python-setuptools')
-provides=('python-nameparser')
-conflicts=('python-nameparser')
+pkgdesc="A simple Python module for parsing human names into their individual components"
+arch=(any)
+url="https://github.com/derek73/${pkgname}"
+license=(LGPL2)
+depends=(python)
+makedepends=(python-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('d675ee39b4dec6bba59c0f246d41ec9edf939979025298643696b26987dc59f93cf8c996efb62054be4324f02b7d5461e48918b58d7333e37968bcae31c8fdbb')
 
 build() {
-  cd nameparser-0.3.3
-
-  # Patch any #!/usr/bin/python to #!/usr/bin/python
-  for file in $(find . -name '*.py' -print); do
-    sed -r -i 's_^#!.*/usr/bin/python(\s|$)_#!/usr/bin/python_' $file
-    sed -r -i 's_^#!.*/usr/bin/env(\s)*python(\s|$)_#!/usr/bin/env python_' $file
-  done
-
+  cd ${pkgname}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 check() {
-  cd nameparser-0.3.3
-  python setup.py test --verbose
+  cd ${pkgname}-${pkgver}
+  python setup.py test
 }
 
 package() {
-  cd nameparser-0.3.3
-
-  python setup.py install --root="${pkgdir}" --optimize=1
-
-  # Install License
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install Documentation
-  install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  cd ${pkgname}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.rst "${pkgdir}/usr/share/doc/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
