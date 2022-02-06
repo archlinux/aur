@@ -3,7 +3,7 @@ pkgbase=python-sphinx-togglebutton
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Toggle page content and collapse admonitions in Sphinx"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-sphinx' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('6acce8e5f2e8a83c3b4226b5c98f7b55')
+md5sums=('11839c55d8922591eb93c84c7490a312')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
