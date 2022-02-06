@@ -5,7 +5,7 @@
 pkgbase=noto-fonts-cjk-vf
 pkgname=(noto-fonts-{cjk,{cjk-,}{hk,jp,kr,sc,tc}}-vf)
 pkgver=20220126
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Noto CJK variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
@@ -57,7 +57,7 @@ package_noto-fonts-cjk-vf(){
     [ "${_font}" = "Sans" ] || continue
     install -Dm644 \
       ${_font}/Variable/OTC/Noto${_font}MonoCJK-VF.otf.ttc \
-      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}MonoCJKCJK.ttc
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}MonoCJK.ttc
   done
 
   install -Dm644 -t "$pkgdir"/usr/share/fontconfig/conf.avail/ \

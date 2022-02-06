@@ -1,7 +1,7 @@
 pkgbase = noto-fonts-cjk-vf
 	pkgdesc = Google Noto CJK variable fonts
 	pkgver = 20220126
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/get/noto/
 	arch = any
 	license = custom:SIL
