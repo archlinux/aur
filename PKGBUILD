@@ -2,7 +2,7 @@
 
 pkgname=wonderwall
 pkgver=7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="WonderWall is a Powerful Desktop Wallpaper manager for Linux and Windows Desktop"
 arch=('x86_64')
 url="https://snapcraft.io/wonderwall"
@@ -11,7 +11,6 @@ options=('!strip')
 depends=(
   'qt5-base'
   'qt5-webkit'
-  'qt5-tools'
 )
 
 makedepends=('squashfs-tools' 'jq')

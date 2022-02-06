@@ -1,7 +1,7 @@
 pkgbase = wonderwall
 	pkgdesc = WonderWall is a Powerful Desktop Wallpaper manager for Linux and Windows Desktop
 	pkgver = 7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://snapcraft.io/wonderwall
 	arch = x86_64
 	license = PROPRIETARY
@@ -9,7 +9,6 @@ pkgbase = wonderwall
 	makedepends = jq
 	depends = qt5-base
 	depends = qt5-webkit
-	depends = qt5-tools
 	options = !strip
 	source = wonderwall-7.0.squashfs::snap://api.snapcraft.io/v2/snaps/info/wonderwall
 	source = snap-dlagent.sh
