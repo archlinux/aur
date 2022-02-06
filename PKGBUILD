@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.16.4
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -47,15 +47,16 @@ build() {
   export PETSC_ARCH=${_petsc_arch}
   export PETSC_DIR=${_build_dir}
 
+  OPTFLAGS='-O3 -march=native'
   CONFOPTS="--with-shared-libraries=1 \
             --with-petsc4py=1 \
             --with-mpi-f90module-visibility=0 \
-            --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3 \
             --with-cc=$(which mpicc) --with-cxx=$(which mpicxx) --with-fc=$(which mpifort) \
             $(sh ${srcdir}/test_optdepends.sh)"
 
   echo ${CONFOPTS}
-  python ./configure --prefix=${_install_dir} ${CONFOPTS}
+  python ./configure --prefix=${_install_dir} ${CONFOPTS} \
+                     --COPTFLAGS=${OPTFLAGS} --CXXOPTFLAGS=${OPTFLAGS} --FOPTFLAGS=${OPTFLAGS}
 
   make ${MAKEFLAGS} all
   make DESTDIR=${srcdir}/tmp install
