@@ -8,7 +8,7 @@ pkgbase = octave-interval
 	groups = octave-forge
 	license = GPL3
 	makedepends = mpfr>=3.1.0
-	depends = octave>=3.8.0
+	depends = octave>=4.2.0
 	depends = mpfr>=3.1.0
 	noextract = interval-3.2.1.tar.gz
 	source = https://downloads.sourceforge.net/octave/interval-3.2.1.tar.gz

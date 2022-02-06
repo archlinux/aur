@@ -16,7 +16,7 @@ arch=(any)
 url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.8.0' 'mpfr>=3.1.0')
+depends=('octave>=4.2.0' 'mpfr>=3.1.0')
 makedepends=('mpfr>=3.1.0')
 optdepends=()
 backup=()
