@@ -1,9 +1,9 @@
 #!/bin/sh
-export XDG_DATA_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}"
+XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
+OSU_STABLE_DATA_DIRECTORY="${OSU_STABLE_DATA_DIRECTORY-${XDG_DATA_HOME}/osu-stable}"
 export WINEDEBUG="${WINEDEBUG--all}"
 export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/osu-stable}"
 export WINEARCH='win32'
-export OSU_STABLE_DATA_DIRECTORY="${OSU_STABLE_DATA_DIRECTORY-${XDG_DATA_HOME}/osu-stable}"
 
 if [ ! -d "${WINEPREFIX}" ]; then
 	echo 'Setting up the Wine prefix...'
@@ -42,7 +42,8 @@ case "$1" in
 		printf '%s {-h --help help}\t\tDisplay this help\n' "$(basename "$0")"
 		;;
 	*)
-		env vblank_mode=0 __GL_SYNC_TO_VBLANK=0 wine "${OSU_STABLE_DATA_DIRECTORY}/osu!.exe" "$@"
+		env vblank_mode="${vblank_mode-0}" __GL_SYNC_TO_VBLANK="${__GL_SYNC_TO_VBLANK-0}" \
+			wine "${OSU_STABLE_DATA_DIRECTORY}"'/osu!.exe' "$@"
 		wineserver -w
 		;;
 esac
