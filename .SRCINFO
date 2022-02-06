@@ -1,0 +1,14 @@
+pkgbase = wordle-aid
+	pkgdesc = CLI program to filter word choices to aid solving Wordle game problems
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bulletmark/wordle-aid
+	arch = any
+	license = GPL3
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python>=3.6
+	source = wordle-aid-1.0.tar.gz::https://github.com/bulletmark/wordle-aid/archive/1.0.tar.gz
+	sha1sums = 35011dd602a6b0d6eba6280ddc7edd8721cf73a7
+
+pkgname = wordle-aid
