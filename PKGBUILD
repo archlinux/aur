@@ -91,14 +91,14 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
-  mkdir -p "${pkgdir}/usr"
-
   export SCONSFLAGS="$MAKEFLAGS"
-  scons DESTDIR="${pkgdir}/usr" install-core "${_scons_args[@]}"
+  scons install-core "${_scons_args[@]}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
+
+  scons PREFIX=/usr DESTDIR="$pkgdir" install-core "${_scons_args[@]}"
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
