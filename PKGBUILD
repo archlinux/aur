@@ -22,14 +22,14 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
-  cd build
-  ../"${_plug}"/configure \
+  cd "${_plug}"
+  ./autogen.sh
+
+  cd "${srcdir}/build"
+  "../${_plug}/configure" \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
