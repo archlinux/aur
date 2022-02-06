@@ -41,7 +41,7 @@ _scons_args=(
   #--use-system-wiredtiger # https://jira.mongodb.org/browse/SERVER-42813 upstream broke this in 4.2.0, says in meantime not to use it
   --use-system-stemmer
   --use-sasl-client
-  #--ssl
+  --ssl
   --disable-warnings-as-errors
   # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839 marked as fixed, but still doesn't compile.  MongoDB uses custom patches.
   # --use-system-icu      # Doesn't compile
