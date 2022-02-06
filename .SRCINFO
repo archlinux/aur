@@ -1,18 +1,16 @@
 pkgbase = ictree
 	pkgdesc = Like tree but interactive
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NikitaIvanovV/ictree
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	makedepends = git
 	depends = glibc
 	optdepends = xsel: for copying selected item into X clipboard
-	source = git+https://github.com/NikitaIvanovV/ictree.git#tag=v0.2.2?signed
-	validpgpkeys = 701DE74D84F87EE1BC91CD216E656AC5B97B5133
-	sha512sums = SKIP
+	source = https://github.com/NikitaIvanovV/ictree/releases/download/v0.2.2/ictree-v0.2.2.tar.gz
+	sha256sums = c4576814ee8293c8eb48103f561b54ecd7ab7771ebe2e695a41328867a4234dd
 
 pkgname = ictree
