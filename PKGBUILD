@@ -2,56 +2,16 @@
 
 pkgname=wonderwall
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WonderWall is a Powerful Desktop Wallpaper manager for Linux and Windows Desktop"
 arch=('x86_64')
 url="https://snapcraft.io/wonderwall"
 license=('PROPRIETARY')
 options=('!strip')
 depends=(
-  'brotli'
-  'bzip2'
-  'double-conversion'
-  'e2fsprogs'
-  'freetype2'
-  'gcc-libs'
-  'glib2'
-  'glibc'
-  'graphite'
-  'harfbuzz'
-  'hyphen'
-  'icu'
-  'keyutils'
-  'krb5'
-  'libcap'
-  'libelf'
-  'libffi'
-  'libgcrypt'
-  'libglvnd'
-  'libgpg-error'
-  'libjpeg-turbo'
-  'libpng'
-  'libunwind'
-  'libwebp'
-  'libxau'
-  'libxcb'
-  'libxdmcp'
-  'libxml2'
-  'libxslt'
-  'lz4'
-  'md4c'
-  'openssl'
-  'orc'
-  'pcre'
-  'pcre2'
   'qt5-base'
-  'qt5-declarative'
   'qt5-webkit'
-  'sqlite'
-  'woff2'
-  'xz'
-  'zlib'
-  'zstd'
+  'qt5-tools'
 )
 
 makedepends=('squashfs-tools' 'jq')
