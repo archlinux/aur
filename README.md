@@ -11,27 +11,22 @@
 
 ### Nginx
 1. You can use any HTTP server which supports reverse proxying. Instructions are given for Nginx.
-2. `sudo nano /etc/nginx/nginx.conf` and configure your Nginx server as a reverse HTTP proxy to the BTCPayServer HTTP server. Additional headers are needed as otherwise the website will show an error that HTTPS is not used. You also need to create SSL keys.
+2. `sudo nano /etc/nginx/nginx.conf` and configure your Nginx server as a reverse HTTP proxy to the BTCPayServer HTTP server. Additional headers are needed. You also need to create SSL keys.
 ```
 http
 {
-    # Variables
-    map $scheme $proxy_x_forwarded_ssl
-    {
-        default off;
-        https   on;
-    }
-
-    map $http_upgrade $proxy_connection
-    {
-        default upgrade;
-        ""      close;
-    }
-
     # Directives
+    ## Proxy
+    proxy_http_version  1.1;
+    proxy_set_header    Host $host;
+    proxy_set_header    X-Real-IP $remote_addr;
+    proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header    X-Scheme $scheme;
+    proxy_set_header    X-Forwarded-Port $server_port;
+
     ## SSL certificate
-    ssl_certificate_key /etc/letsencrypt/live/subdomain.example.com/privkey.pem;
-    ssl_certificate     /etc/letsencrypt/live/subdomain.example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
 
     server
     {
@@ -42,15 +37,7 @@ http
         location /
         {
             # Proxy
-            proxy_pass          http://localhost:5285;
-            proxy_http_version  1.1;
-            proxy_set_header    Host $host;
-            proxy_set_header    Upgrade $http_upgrade;
-            proxy_set_header    Connection $proxy_connection;
-            proxy_set_header    X-Forwarded-For $remote_addr;
-            proxy_set_header    X-Forwarded-Proto $scheme;
-            proxy_set_header    X-Forwarded-Ssl $proxy_x_forwarded_ssl;
-            proxy_set_header    X-Forwarded-Port $server_port;
+            proxy_pass  http://localhost:23000;
         }
     }
 }
