@@ -2,63 +2,18 @@
 
 pkgname=orion-desktop
 pkgver=0.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities"
 arch=('x86_64')
 url="https://snapcraft.io/orion-desktop"
 license=('PROPRIETARY')
 options=('!strip')
 depends=(
-  'brotli'
-  'bzip2'
-  'double-conversion'
-  'e2fsprogs'
-  'freetype2'
-  'gcc-libs'
-  'glib2'
-  'glibc'
-  'graphite'
-  'gst-plugins-base-libs'
-  'gstreamer'
-  'harfbuzz'
-  'hyphen'
-  'icu'
-  'keyutils'
-  'krb5'
-  'libcap'
-  'libelf'
-  'libffi'
-  'libgcrypt'
-  'libglvnd'
-  'libgpg-error'
-  'libjpeg-turbo'
-  'libpng'
-  'libunwind'
-  'libwebp'
-  'libxau'
-  'libxcb'
-  'libxdmcp'
-  'libxml2'
-  'libxslt'
-  'lz4'
-  'md4c'
-  'openssl'
-  'orc'
-  'pcre'
-  'pcre2'
+  'nodejs-lts-erbium'
   'qt5-base'
-  'qt5-declarative'
-  'qt5-location'
-  'qt5-sensors'
-  'qt5-webchannel'
   'qt5-webkit'
-  'sqlite'
-  'woff2'
-  'xz'
-  'zlib'
-  'zstd'
+  'mpv'
 )
-
 makedepends=('squashfs-tools' 'jq')
 sha256sums=('fe8c4be513d2d88a07cdc4c7d073adf84a1a2b25c25ea8c12010456006ff1cca'
             '25f7ceaaec37eb9c287abeb839ba2036738eb363079e321c2bd410fa48301dd6'
