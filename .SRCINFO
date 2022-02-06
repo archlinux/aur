@@ -1,0 +1,21 @@
+pkgbase = thefrisbee
+	pkgdesc = Disk Management
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/thefrisbee
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = the-libs
+	source = thefrisbee-1.0::https://github.com/vicr123/theFrisbee/archive/refs/tags/v1.0.tar.gz
+	sha256sums = a1b2dc15bcb2db0851ac7a79ba424e717ca890314c2b42027fbe3e4a9a71637e
+
+pkgname = thefrisbee
+	depends = xdg-utils
+	depends = qt5-base
+	depends = the-libs
+	depends = libthefrisbee
+
+pkgname = libthefrisbee
+	depends = qt5-base
+	depends = the-libs
