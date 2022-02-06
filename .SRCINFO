@@ -1,7 +1,7 @@
 pkgbase = shadow-selinux
 	pkgdesc = Password and account management tool suite with support for shadow files and PAM - SELinux support
-	pkgver = 4.8.1
-	pkgrel = 5
+	pkgver = 4.11.1
+	pkgrel = 1
 	url = https://github.com/shadow-maint/shadow
 	install = shadow.install
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = shadow-selinux
 	depends = libxcrypt
 	depends = libcrypt.so
 	depends = libsemanage>=3.2
-	provides = shadow=4.8.1-5
-	provides = selinux-shadow=4.8.1-5
+	provides = shadow=4.11.1-1
+	provides = selinux-shadow=4.11.1-1
 	conflicts = shadow
 	conflicts = selinux-shadow
-	options = strip
+	options = !emptydirs
 	backup = etc/login.defs
 	backup = etc/pam.d/chage
 	backup = etc/pam.d/passwd
@@ -38,8 +38,8 @@ pkgbase = shadow-selinux
 	backup = etc/pam.d/chgpasswd
 	backup = etc/pam.d/groupmems
 	backup = etc/default/useradd
-	source = https://github.com/shadow-maint/shadow/releases/download/4.8.1/shadow-4.8.1.tar.xz
-	source = https://github.com/shadow-maint/shadow/releases/download/4.8.1/shadow-4.8.1.tar.xz.asc
+	source = https://github.com/shadow-maint/shadow/releases/download/v4.11.1/shadow-4.11.1.tar.xz
+	source = https://github.com/shadow-maint/shadow/releases/download/v4.11.1/shadow-4.11.1.tar.xz.asc
 	source = LICENSE
 	source = chgpasswd
 	source = chpasswd
@@ -50,9 +50,8 @@ pkgbase = shadow-selinux
 	source = shadow.timer
 	source = shadow.service
 	source = useradd.defaults
-	validpgpkeys = D5C2F9BFCA128BBA22A77218872F702C4D6E25A8
-	validpgpkeys = F1D08DB778185BF784002DFFE9FEEA06A85E3F9D
-	sha1sums = 63457a0ba58dc4e81b2663b839dc6c89d3343f12
+	validpgpkeys = 66D0387DB85D320F8408166DB175CFA98F192AF2
+	sha1sums = 9cb767b86ff2b46e880b428e817972aa07b3a67c
 	sha1sums = SKIP
 	sha1sums = 33a6cf1e44a1410e5c9726c89e5de68b78f5f922
 	sha1sums = 4ad0e059406a305c8640ed30d93c2a1f62c2f4ad
