@@ -7,7 +7,7 @@ pkgdesc="Compositor or not with a simple systray icon"
 arch=(x86_64)
 license=('GPL')
 url="https://github.com/Elrondo46/mate-fastcomposwitch/"
-depends=('python-gobject' 'mate-desktop' 'libappindicator-gtk3' 'python-notify2' 'gettext')
+depends=('git' 'python-gobject' 'mate-desktop' 'libappindicator-gtk3' 'python-notify2' 'gettext')
 source=(git://github.com/Elrondo46/mate-fastcomposwitch.git)
 md5sums=('SKIP')
 
