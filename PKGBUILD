@@ -2,7 +2,7 @@
 
 _plug=vsdpir
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.6.0.2.g0163cf3
+pkgver=1.7.1.2.g34137fa
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  python -c "import setuptools; setuptools.setup()" bdist_wheel
+  pip wheel --no-deps . -w dist
 }
 
 package() {
