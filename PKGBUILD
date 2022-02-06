@@ -3,7 +3,7 @@
 
 pkgname=crex
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Explore, test, and check regular expressions in the terminal'
 arch=('x86_64')
 url='https://octobanana.com/software/crex'
@@ -22,6 +22,9 @@ prepare() {
 }
 
 build() {
+    # -DNDEBUG prevents (assert) file paths being compiled into the binary
+    # See: https://wiki.archlinux.org/title/CMake_package_guidelines#CMake_undesired_behaviors
+    CFLAGS="${CFLAGS} -DNDEBUG" CXXFLAGS="${CXXFLAGS} -DNDEBUG" \
     cmake -B build -S "${pkgname}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
