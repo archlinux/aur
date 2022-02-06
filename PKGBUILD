@@ -14,28 +14,26 @@ pkgver=5.0.6
 pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
-url="https://www.${pkgname}.com/"
+url="https://www.mongodb.com/"
 license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
 depends=("curl" "libstemmer" "lsb-release" "snappy" "gperftools")
-optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
+optdepends=("mongodb-tools: mongoimport, mongodump, mongotop, etc")
 makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests" "boost" "yaml-cpp")
 checkdepends=("python-pymongo")
-backup=("etc/${pkgname}.conf")
-source=(
-  "https://fastdl.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
-  "${pkgname}.sysusers"
-  "${pkgname}.tmpfiles"
-  "mongodb-5.0.2-skip-no-exceptions.patch"
-  "mongodb-4.4.1-boost.patch"
-  "mongodb-5.0.2-no-compass.patch"
-)
+backup=("etc/mongodb.conf")
+source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
+		mongodb.sysusers
+		mongodb.tmpfiles
+		mongodb-5.0.2-skip-no-exceptions.patch
+		mongodb-5.0.2-no-compass.patch
+		mongodb-4.4.1-boost.patch)
 sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
-            '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
-            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
-			'SKIP'
-			'SKIP'
-			'SKIP')
+			'3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
+			'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
+			'5b81ebc3ed68b307df76277aca3226feee33a00d8bb396206bdc7a8a1f58f3e4'
+			'41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
+			'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25')
 
 _scons_args=(
   --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
@@ -97,35 +95,6 @@ build() {
   scons install-core "${_scons_args[@]}"
 }
 
-check() {
-  # Before 4.2.0, only 8 unit tests would fail under devtools, because mlock() is not available under systemd-nspawn
-  # See https://jira.mongodb.org/browse/SERVER-32773
-  # 4.2.0 uses mlock() in many more places.  At first attempt, I had 24 tests pass, and 345 skipped due to the failing test.
-  # After repeatedly re-running check() to find additional failures and increasing skipping 8 unit tests to 27, only had an extra 2 passing
-  # Disabling unit tests entirely, the db tests fail as well
-  # Also disabling the db tests, the integration tests fail as well
-  # It's not practical to re-run check() hundreds of more times to pick up a few additional tests, so they will just all be skipped through devtools
-
-  # I'd use "systemd-detect-virt" to detect systemd-nspawn, but it only succeeds running as root, saying there is "none" as builduser
-  if [[ -f /chrootbuild ]]; then
-    echo "devtools detected, skipping check() because tests fail not being able to use mlock() within systemd-nspawn"
-  else
-    cd "${srcdir}/${pkgname}-src-r${pkgver}"
-
-    export SCONSFLAGS="$MAKEFLAGS"
-
-    scons unittests "${_scons_args[@]}"
-
-    python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=unittests
-
-    scons dbtest "${_scons_args[@]}"
-    python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=dbtest
-
-    scons integration_tests "${_scons_args[@]}"
-    python "${srcdir}/${pkgname}-src-r${pkgver}/buildscripts/resmoke.py" --suites=integration_tests_replset,integration_tests_standalone --dbpathPrefix="${srcdir}"
-  fi
-}
-
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
@@ -145,7 +114,5 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
   install -Dm644 LICENSE-Community.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Community.txt"
-
-  # This script won't run on Arch. If needed, see AUR package mongodb-compass.
-  rm "${pkgdir}/usr/bin/install_compass"
 }
+

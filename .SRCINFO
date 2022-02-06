@@ -26,9 +26,13 @@ pkgbase = mongodb
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = mongodb-5.0.2-skip-no-exceptions.patch
+	source = mongodb-5.0.2-no-compass.patch
+	source = mongodb-4.4.1-boost.patch
 	sha256sums = 9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52
 	sha256sums = 3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795
 	sha256sums = b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39
-	sha256sums = SKIP
+	sha256sums = 5b81ebc3ed68b307df76277aca3226feee33a00d8bb396206bdc7a8a1f58f3e4
+	sha256sums = 41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052
+	sha256sums = d3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25
 
 pkgname = mongodb
