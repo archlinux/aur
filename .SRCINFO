@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.16.rc1.r44.g28c030d2e0c6
+	pkgver = 5.17.rc4.r51.g61bbd42060fc
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/pf-kernel/wikis/README
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = linux-pf-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.16
+	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.17
 	source = config
 	sha256sums = SKIP
-	sha256sums = 6628349f4c27b26be1863ef131cfa2a7c30a77077f0acdcad6f1c172546a9245
+	sha256sums = 119d1c1c5f5cce2f832c6191a370f5240c9dcbc74074efee37d7c2525810a91e
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules

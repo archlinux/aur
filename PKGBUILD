@@ -2,10 +2,10 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.16.rc5.r47.g1ddd437a1360
+pkgver=5.17.rc4.r51.g61bbd42060fc
 pkgrel=1
-pkgdesc="Linux pf-kernel (git version)"
-_kernel_rel=5.16
+pkgdesc='Linux pf-kernel (git version)'
+_kernel_rel=5.17
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://gitlab.com/post-factum/pf-kernel/wikis/README
@@ -17,16 +17,16 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname="${pkgbase}"
+_srcname=$pkgbase
 source=(
-  "${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=${_branch}"
+  "$_srcname::git+https://gitlab.com/post-factum/pf-kernel.git#branch=$_branch"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '6628349f4c27b26be1863ef131cfa2a7c30a77077f0acdcad6f1c172546a9245')
+            '119d1c1c5f5cce2f832c6191a370f5240c9dcbc74074efee37d7c2525810a91e')
 
 pkgver() {
-  cd "${_srcname}"
+  cd $_srcname
 
   git describe --long | sed 's/^v//;s/pf//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -111,11 +111,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  # install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
