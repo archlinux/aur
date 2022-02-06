@@ -8,8 +8,11 @@ url="https://github.com/ksyasuda/aniwrapper"
 license=('GPL3')
 depends=('aria2' 'curl' 'grep' 'mpv' 'rofi' 'sed' 'sqlite3')
 makedepends=('git')
+optdepends=('vlc: An alternative video player'
+'mplayer: An alternative video player')
 source=('aniwrapper::git+https://github.com/ksyasuda/aniwrapper.git')
 md5sums=('SKIP')
+provides=('aniwrapper' 'ani-cli')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"

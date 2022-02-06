@@ -13,6 +13,10 @@ pkgbase = aniwrapper-git
 	depends = rofi
 	depends = sed
 	depends = sqlite3
+	optdepends = vlc: An alternative video player
+	optdepends = mplayer: An alternative video player
+	provides = aniwrapper
+	provides = ani-cli
 	source = aniwrapper::git+https://github.com/ksyasuda/aniwrapper.git
 	md5sums = SKIP
 
