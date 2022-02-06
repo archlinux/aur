@@ -2,7 +2,7 @@
 # Contributor: Fabio Austin Haedicke <austin.haedicke@gmail.com>
 
 pkgname=phoronix-test-suite-git
-pkgver=10.2.1.r0.g7e8892fb1
+pkgver=10.8.0.r0.g291cb53ca
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=('python'
             'openmpi: required for universe-cli test suite')
 provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
-source=("${pkgname%-git}::git://github.com/phoronix-test-suite/phoronix-test-suite.git"
+source=("git+https://github.com/phoronix-test-suite/phoronix-test-suite.git"
         "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch")
 sha256sums=('SKIP'
             '577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d')
