@@ -5,7 +5,7 @@ _repository=https://gitlab.com/brinkervii/grapejuice.git
 _pkgver=4.14.2
 pkgname="${_pkgname}"
 pkgver="${_pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
@@ -17,6 +17,7 @@ depends=(
     'python-requests'
     'python-setuptools'
     'python-unidecode'
+    'python-click'
     'cairo'
     'gtk3'
     'gobject-introspection'
