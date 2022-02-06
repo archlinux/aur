@@ -1,7 +1,7 @@
 # Maintainer: Torge Matthies <openglfreak@googlemail.com>
 
 pkgname=winestreamproxy
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Forwards data between a Wine named pipe and a Unix domain socket."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('sh' 'wine')
 makedepends=('mingw-w64-gcc')
 backup=('etc/xdg/winestreamproxy/settings.conf')
 source=("https://github.com/openglfreak/winestreamproxy/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('afeca5f41b35dc59da8c6107bb0ceeb56baea94201ac58e75c08c1bc9674adc5')
+sha256sums=('f53d1326dcacae7be1d3992d0c2da711a61fdca7cb6f99e9275fe24b6facc029')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
