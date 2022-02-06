@@ -1,3 +1,4 @@
+# Maintainer: JustKidding <jk@vin.ovh>
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 # Maintainer: Christoph Bayer <chrbayer@criby.de>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
