@@ -7,7 +7,6 @@ pkgbase = vapoursynth-plugin-vsffdnet-git
 	license = MIT
 	makedepends = git
 	makedepends = python-pip
-	makedepends = python-wheel
 	depends = vapoursynth
 	depends = python-numpy
 	optdepends = python-pytorch: CPU

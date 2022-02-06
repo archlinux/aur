@@ -13,7 +13,6 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'python-pip'
-             'python-wheel'
              )
 optdepends=('python-pytorch: CPU'
             'python-pytorch-opt: CPU with AVX2 optimizations'
