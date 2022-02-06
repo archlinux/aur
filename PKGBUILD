@@ -1,13 +1,14 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=joycond-git
-pkgver=r102.2d3f553
+pkgver=r110.f9a6691
 pkgrel=1
 pkgdesc='Userspace daemon to combine joy-cons from the hid-joycon kernel driver'
 arch=('x86_64' 'aarch64')
 url='https://github.com/DanielOgorchock/joycond'
 license=('GPL3')
 depends=('libevdev')
+optdepends=('hid-nintendo-dkms: provides driver for pre-5.16 kernels')
 makedepends=('cmake' 'git')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")

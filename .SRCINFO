@@ -1,6 +1,6 @@
 pkgbase = joycond-git
 	pkgdesc = Userspace daemon to combine joy-cons from the hid-joycon kernel driver
-	pkgver = r102.2d3f553
+	pkgver = r110.f9a6691
 	pkgrel = 1
 	url = https://github.com/DanielOgorchock/joycond
 	install = joycond-git.install
@@ -10,6 +10,7 @@ pkgbase = joycond-git
 	makedepends = cmake
 	makedepends = git
 	depends = libevdev
+	optdepends = hid-nintendo-dkms: provides driver for pre-5.16 kernels
 	provides = joycond-git
 	conflicts = joycond-git
 	source = git+https://github.com/DanielOgorchock/joycond.git
