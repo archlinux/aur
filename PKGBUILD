@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=5.6.4
+pkgver=5.7.0
 pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
@@ -37,9 +37,9 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/502b7041f830729afe20908dc70c52d8/parallel-launcher-5.6.4.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/859e4504a1183be476e070a5f347733d/parallel-launcher-5.7.0.tar.gz')
 noextract=()
-sha256sums=('b96e6acd9bbd643b11eb4968adcbd757783bd7981f12d5edd6bae97412219ec4')
+sha256sums=('3fddafe5f7d7fc146787add3e07d024695431e1882dbdbcd6b65471e7ec7d901')
 validpgpkeys=()
 
 build() {
@@ -54,6 +54,7 @@ package() {
 	install -D data/appicon.svg $pkgdir/usr/share/parallel-launcher/appicon.svg
 	install -D bps-mime.xml $pkgdir/usr/share/parallel-launcher/bps-mime.xml
 	install -D lang/parallel-launcher.en_us.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.en_us.qm
+	install -D lang/parallel-launcher.en_gb.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.en_gb.qm
 	install -D lang/parallel-launcher.it.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.it.qm
 	install -D lang/parallel-launcher.es.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.es.qm
 	install -D lang/parallel-launcher.eo.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.eo.qm
