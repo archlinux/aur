@@ -1,6 +1,6 @@
 pkgbase = caffeine-bzr
 	pkgdesc = A easy way to control powersaving on your desktop.
-	pkgver = r675
+	pkgver = r691
 	pkgrel = 1
 	url = https://launchpad.net/caffeine
 	arch = any
@@ -25,4 +25,3 @@ pkgbase = caffeine-bzr
 	md5sums = SKIP
 
 pkgname = caffeine-bzr
-
