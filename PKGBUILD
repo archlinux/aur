@@ -1,13 +1,9 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
+
 pkgname=rkimer-git
 pkgver=r11.e87495b
 pkgrel=1
-pkgdesc=""
+pkgdesc="A lightweight speedcubing timer written in Kotlin"
 arch=('any')
 url="https://github.com/Code-Log/rkimer"
 license=('GPL3')
