@@ -1,0 +1,10 @@
+# See: http://docs.thunderhub.io/setup/ 
+
+#masterPassword: "password" # Default password unless defined in account
+#defaultNetwork: "testnet" # Default network unless defined in account
+accounts:
+  - name: "localhost"
+    serverUrl: "localhost:10009"
+    lndDir: "/var/lib/lnd"
+#   macaroon: "0201056..." # HEX or Base64 encoded macaroon
+#   certificate: "0202045c..." # HEX or Base64 encoded certificate

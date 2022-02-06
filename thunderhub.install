@@ -1,0 +1,17 @@
+post_install() {
+  echo "$thunderhub"
+}
+
+read -d '' thunderhub <<'EOF'
+###################################
+
+  Docs: http://docs.thunderhub.io/setup/
+
+####################################
+  Config:
+    /etc/thunderhub/env
+    /etc/thunderhub/config.yaml
+####################################
+    systemctl start thunderhub
+####################################
+EOF
