@@ -14,13 +14,13 @@
 
 pkgname=thunderbird-appmenu-bin
 pkgver=91.4.1
-pkgrel=8
+pkgrel=9
 _pkgrel=$pkgrel
 pkgdesc="Thunderbird-appmenu, binary version"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://aur.archlinux.org/packages/thunderbird-appmenu/"
-depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib alsa-lib
+depends=(gtk3 libxt startup-notification mime-types dbus-glib alsa-lib
          nss hunspell sqlite ttf-font icu)  # libvpx
 optdepends=('libcanberra: sound support')
 provides=("thunderbird=$pkgver")
