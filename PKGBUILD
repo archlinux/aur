@@ -1,6 +1,6 @@
 # Maintainer: fatalis <fatalis@fatalis.pw>
 pkgname=scream
-pkgver=3.8
+pkgver=3.9
 pkgrel=1
 pkgdesc='A Scream audio receiver using Pulseaudio, ALSA or stdout as audio output'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('scream-pulse' 'scream-alsa')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d338e947115ca2967e0428fe4dfa060f31ffb123d7cd391ab94b48a8a6337dc3')
+sha256sums=('0a089ddc26930bcd9014c473245282081ea7e97f3727d771816eebef998c676e')
 
 build() {
   cd "${srcdir}/scream-${pkgver}/Receivers/unix"
