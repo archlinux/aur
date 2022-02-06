@@ -2,7 +2,7 @@
 
 _plug=bm3dcuda
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R2.4.15.g9f7b3c1
+pkgver=R2.6.0.g5cc194c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,23 +24,23 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  CXXFLAGS+=" $(pkg-config --cflags vapoursynth)" cmake ../bm3dcuda \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_SKIP_RPATH=ON
+  source /etc/profile.d/cuda.sh
 
-  make
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib/vapoursynth \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DVAPOURSYNTH_INCLUDE_DIRECTORY="$(pkg-config --cflags vapoursynth | sed 's|-I||g')" \
+    -DCMAKE_CUDA_FLAGS="--threads 0 --use_fast_math -Wno-deprecated-gpu-targets" \
+    -DUSE_NVRTC_STATIC=ON
+
+  cmake --build build
 }
 
 package(){
-  install -Dm755 build/cpu_source/libbm3dcpu.so "${pkgdir}/usr/lib/vapoursynth/libbm3dcpu.so"
-  install -Dm755 build/source/libbm3dcuda.so  "${pkgdir}/usr/lib/vapoursynth/libbm3dcuda.so"
-  install -Dm755 build/rtc_source/libbm3dcuda_rtc.so "${pkgdir}/usr/lib/vapoursynth/libbm3dcuda_rtc.so"
+  DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }

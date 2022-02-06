@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bm3dcuda-git
 	pkgdesc = Plugin for Vapoursynth: bm3dcuda (GIT version)
-	pkgver = R2.4.15.g9f7b3c1
+	pkgver = R2.6.0.g5cc194c
 	pkgrel = 1
 	url = https://github.com/WolframRhodium/VapourSynth-BM3DCUDA
 	arch = x86_64
