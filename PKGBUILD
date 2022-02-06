@@ -33,7 +33,7 @@ sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
 _scons_args=(
   --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
   --use-system-snappy
-   --use-system-yaml # https://jira.mongodb.org/browse/SERVER-43980
+  --use-system-yaml # https://jira.mongodb.org/browse/SERVER-43980
   --use-system-zlib
   #--use-system-wiredtiger # https://jira.mongodb.org/browse/SERVER-42813 upstream broke this in 4.2.0, says in meantime not to use it
   --use-system-stemmer
