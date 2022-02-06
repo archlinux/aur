@@ -27,10 +27,14 @@ source=(
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
   "mongodb-5.0.2-skip-no-exceptions.patch"
+  "mongodb-4.4.1-boost.patch"
+  "mongodb-5.0.2-no-compass.patch"
 )
 sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
+			'SKIP'
+			'SKIP'
 			'SKIP')
 
 _scons_args=(
@@ -80,7 +84,10 @@ prepare() {
   # See: https://jira.mongodb.org/browse/SERVER-44038
   sed -i '/"-ggdb" if not env.TargetOSIs/d' SConstruct
 
+  # gentoo patches
   patch -Np1 -i ../mongodb-5.0.2-skip-no-exceptions.patch
+  patch -Np1 -i ../mongodb-5.0.2-no-compass.patch
+  patch -Np1 -i ../mongodb-4.4.1-boost.patch
 }
 
 build() {
