@@ -2,9 +2,9 @@
 # Helpful url: https://prowlarr.servarr.com/v1/update/develop?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
 pkgname="prowlarr-nightly"
-pkgver=0.2.0.1507
+pkgver=0.2.0.1516
 pkgrel=1
-pkgdesc="Usenet and torrent aggregator, similar to nzbhydar2 and jackett."
+pkgdesc="Usenet and torrent aggregator, similar to nzbhydra2 and jackett."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/Prowlarr/Prowlarr"
 license=('GPL3')
@@ -34,9 +34,9 @@ sha512sums=('53b19cabb99b436867f8a95d94a5c4bdd924207c22c7b9f3df153c672ee87a69c87
             '9159ceda0955f2ebc495dd470c9d6234d8534a120ab81fa58fefae94a8ecfdc8fe883fb1287bc10429e7b4f35ac59d36232d716c161a242a4bfcdff768f1b9a2'
             '6ebd6f268e5aa7446e3c77540f5c95b3237959892e8800f5f380a0f979c71ec0d6f7664c1a58f7d10a255bc21a19bad0fef8609b02b4d5e15f340e66364017d2'
             '473f38f922c1c24987bc77bb687739e3de0eed5c567407c690e0e9ac1604479bbe4f606ccb804067dbe97a100a748b4c2e05a11e30835d42e67ec65177a4f42a')
-sha512sums_x86_64=('28888695087b21161dd3f3194c31ab021e0f31509135409731689984b9a4bca651e5d97aa59bed2794c891a8ae48b566ecfdb20a26c116201ba6794c0ebda2e8')
-sha512sums_aarch64=('0da2eb1d36c66567fbda6f001fd7b36e10c1adc08d706d02cfc161b66e5cc9368962b7d14bf13d1d234948d6d64d7b0f8dec3516ee08e02919a964f9e05fea41')
-sha512sums_armv7h=('d5c72465ca384fdf5a3c94c9ff827919249e118399112aede1fb4d5e023fb5876276a9afabf3464c48e401150413695f9b5bf7ea9f6c2062e5e161afbf1ef072')
+sha512sums_x86_64=('cf41520827916679fbe2f943b30c6f84d2df768e3643ff6d5f192e8c58392e8483c8148ffb49a545393e031fb3ccdd2bf3f552d3a3cd17da267682e0ffde49b2')
+sha512sums_aarch64=('5dd89a7af1982661bdd9c66d57e823df08ae66e3b9470d8c6ccf83adf081a2e51a4014ef2682e3388308b2ab760c4603e6b8d9c6adf5009809c3553faa75b104')
+sha512sums_armv7h=('d82f276fc814f7c9805e46c77166f967da07a928ec63fdd12e67dc48d5430cf23f1ee1a4cfb1da5d23e12a98ea7ffc6b4caeb16291996177d4147c0ed48050fc')
 
 
 package() {
