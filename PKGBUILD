@@ -2,17 +2,18 @@
 
 _plug=bilateralgpu
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r6.3.g69af543
+pkgver=r8.0.g1661823
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BilateralGPU'
-license=('GPL')
+license=('MIT')
 depends=('vapoursynth'
-         'cuda'
+         'nvidia-utils'
          )
 makedepends=('git'
              'cmake'
+             'cuda'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -23,27 +24,25 @@ pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
-prepare() {
-  cd "${_plug}"
-  mkdir -p build
-}
 
 build() {
-  cd "${_plug}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CUDA_FLAGS="--threads 0 --use_fast_math -Wno-deprecated-gpu-targets" \
-    -DVAPOURSYNTH_INCLUDE_DIRECTORY=/usr/include/vapoursynth \
-    -DCMAKE_SKIP_RPATH=ON
+  source /etc/profile.d/cuda.sh
 
-  make
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib/vapoursynth \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DVAPOURSYNTH_INCLUDE_DIRECTORY="$(pkg-config --cflags vapoursynth | sed 's|-I||g')" \
+    -DCMAKE_CUDA_FLAGS="--threads 0 --use_fast_math -Wno-deprecated-gpu-targets" \
+    -DUSE_NVRTC_STATIC=ON
+
+  cmake --build build
 }
 
 package() {
-  cd "${_plug}"
-  install -Dm755 "build/source/lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
-  install -Dm755 "build/rtc_source/lib${_plug}_rtc.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}_rtc.so"
+  DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
