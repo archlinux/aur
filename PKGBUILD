@@ -2,7 +2,7 @@
 
 _plug=vsgan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.3.1.0.g3b545bf
+pkgver=1.6.4.44.ga4269a8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -12,14 +12,10 @@ depends=('vapoursynth-plugin-mvsfunc-git'
          'python-numpy'
          )
 makedepends=('git'
-             'python-build'
              'python-pip'
-             'python-wheel'
              )
-optdepends=('python-pytorch: CPU'
-            'python-pytorch-opt: CPU with AVX2 optimizations'
-            'python-pytorch-cuda: CUDA and CPU'
-            'python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations'
+optdepends=('python-pytorch: CPU with AVX2 optimizations'
+            'python-pytorch-cuda: CUDA with CPU with AVX2 optimizations'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -35,7 +31,7 @@ pkgver() {
 
 build() {
   cd "${_plug}"
-  pyproject-build -x -w
+  pip wheel --no-deps . -w dist
 }
 
 package() {
