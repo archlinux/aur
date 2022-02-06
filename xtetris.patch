@@ -1,5 +1,16 @@
---- xtetris-2.6.orig/Imakefile	1992-10-19 23:06:07.000000000 +0500
-+++ xtetris-2.6/Imakefile	2012-03-02 12:40:31.887443450 +0600
+diff -up src/xtetris-2.6/defs.h.orig src/xtetris-2.6/defs.h
+--- src/xtetris-2.6/defs.h.orig	1995-02-10 21:53:26.000000000 -0700
++++ src/xtetris-2.6/defs.h	2022-02-05 18:20:34.950000000 -0700
+@@ -1,4 +1,6 @@
++#include <stdlib.h>
+ #include <stdio.h>
++#include <unistd.h>
+ 
+ #include <X11/Xlib.h>
+ #include <X11/Intrinsic.h>
+diff -up src/xtetris-2.6/Imakefile.orig src/xtetris-2.6/Imakefile
+--- src/xtetris-2.6/Imakefile.orig	1992-10-19 12:06:07.000000000 -0600
++++ src/xtetris-2.6/Imakefile	2022-02-05 20:07:40.950000000 -0700
 @@ -1,15 +1,15 @@
  /* Search for "COLOR" if you want xtetris to run on a color monitor by 
     default */
@@ -19,16 +30,87 @@
          HEADERS = defs.h
             SRCS = main.c init.c shape.c support.c notify.c window.c score.c\
                    draw.c
-@@ -43,6 +43,6 @@
+@@ -35,14 +35,14 @@ InstallAppDefaults(Xtetris)
+ InstallMultipleFlags($(BITMAPS),BitmapDir,-m 444)
+ InstallMultipleFlags(ScoreFile,ScoreDir,$(SCOREFLAGS))
+ Xtetris.c.ad: Xtetris.ad.all
+-	xrdb -n Xtetris.ad.all -DCOLOR > Xtetris.c.ad
++	cpp -P -DCOLOR Xtetris.ad.all > Xtetris.c.ad
+ Xtetris.bw.ad: Xtetris.ad.all
+-	xrdb -n Xtetris.ad.all -UCOLOR > Xtetris.bw.ad
++	cpp -P -UCOLOR Xtetris.ad.all > Xtetris.bw.ad
+ 
+ /*  IF YOU WANT COLOR TO BE THE DEFAULT, MODIFY THE LINE BELOW TO SAY 
      "-DCOLOR". */
  
  Xtetris.ad: Xtetris.ad.all
 -	xrdb -n Xtetris.ad.all -UCOLOR > Xtetris.ad
-+	xrdb -n Xtetris.ad.all -DCOLOR > Xtetris.ad
++	cpp -P -DCOLOR Xtetris.ad.all > Xtetris.ad
  clean::
  	$(RM) Xtetris.c.ad Xtetris.bw.ad Xtetris.ad
---- xtetris-2.6.orig/Xtetris.ad.all	1995-02-11 11:38:29.000000000 +0500
-+++ xtetris-2.6/Xtetris.ad.all	2012-03-02 12:14:45.140768040 +0600
+diff -up src/xtetris-2.6/score.c.orig src/xtetris-2.6/score.c
+--- src/xtetris-2.6/score.c.orig	1992-10-19 12:44:41.000000000 -0600
++++ src/xtetris-2.6/score.c	2022-02-05 18:20:34.960000000 -0700
+@@ -24,7 +24,7 @@ update_highscore_table()
+   strcpy( padname, "                    ");
+   strncpy( padname, name, strlen(name) );	/* get padded name. */
+ 
+-  if (!resources.usescorefile) return;
++  if (!resources.usescorefile) return 0;
+   
+   /*	re-read high-score table in case someone else on the network is
+    *	playing at the same time 
+@@ -42,7 +42,7 @@ update_highscore_table()
+      *	We have a previous best score. 
+      */
+     if (high_scores[i].score >= score)
+-      return;         /* Same/worse score - no update */
++      return 0;         /* Same/worse score - no update */
+     for (j = i; j > 0; j--) /* Remove previous best */
+       high_scores[j] = high_scores[j - 1];
+   }
+@@ -77,7 +77,7 @@ read_high_scores()
+   int     i;
+   char   buf[BUFSIZ];
+   
+-  if (!resources.usescorefile) return;
++  if (!resources.usescorefile) return 0;
+   
+   if ((fp = fopen(resources.scorefile, "r")) == NULL) {
+     write_high_scores();
+@@ -85,7 +85,7 @@ read_high_scores()
+       resources.usescorefile = False;
+       fprintf( stderr, "%s: No High score file.  Use '-noscore' to avoid this message.\n",
+ 	      programname );
+-      return;
++      return 0;
+     }
+   }
+   for (i = 0; i < HIGH_TABLE_SIZE; i++) {
+@@ -114,7 +114,7 @@ write_high_scores()
+   
+   if ((fp = fopen(resources.scorefile, "w")) == NULL) {
+     fprintf(stderr, "%s: Couldn't open high score file %s\n", programname, resources.scorefile );
+-    return;
++    return 0;
+   }
+   for (i = 0; i < HIGH_TABLE_SIZE; i++)
+     fprintf( fp, "%-20s,%7d,%5d,%4d,%-12s,%-24s\n",
+diff -up src/xtetris-2.6/support.c.orig src/xtetris-2.6/support.c
+--- src/xtetris-2.6/support.c.orig	1991-08-30 18:13:34.000000000 -0600
++++ src/xtetris-2.6/support.c	2022-02-05 18:20:34.970000000 -0700
+@@ -75,7 +75,7 @@ remove_full_lines(starty)
+       XFillRectangle( XtDisplay(canvas), XtWindow(canvas), erasegc,
+ 		 0, y*resources.boxsize, resources.boxsize*UWIDTH, resources.boxsize );
+   }
+-  if (!foundfull) return;
++  if (!foundfull) return 0;
+   
+   /* Wait a bit for the user to see it. */
+       
+diff -up src/xtetris-2.6/Xtetris.ad.all.orig src/xtetris-2.6/Xtetris.ad.all
+--- src/xtetris-2.6/Xtetris.ad.all.orig	1995-02-10 23:38:29.000000000 -0700
++++ src/xtetris-2.6/Xtetris.ad.all	2022-02-05 18:20:34.980000000 -0700
 @@ -2,7 +2,7 @@
  ?.baseTranslations:		#override <Unmap>:Pause()
  *Background:			black
