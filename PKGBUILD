@@ -2,7 +2,7 @@
 
 _plug=pvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=4.0.3.1.g8bc78a0
+pkgver=4.3.0.12.g1f5e44f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -16,6 +16,7 @@ depends=('vapoursynth-plugin-havsfunc-git'
 makedepends=('git'
              'python-poetry'
              'python-pip'
+             'python-wheel'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
