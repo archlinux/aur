@@ -1,13 +1,13 @@
 pkgbase = pam_nfc-git
 	pkgdesc = nfc for pam, git version
 	pkgver = 20150407
-	pkgrel = 1
+	pkgrel = 2
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = libnfc
-	source = git://github.com/nfc-tools/pam_nfc.git
+	source = git+https://github.com/nfc-tools/pam_nfc.git
 	md5sums = SKIP
 
 pkgname = pam_nfc-git
-

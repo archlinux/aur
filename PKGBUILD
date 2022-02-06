@@ -1,14 +1,14 @@
 # Maintainer:XXXXXXXXXXXXXXXXXXXXXXXXXXX
 pkgname=pam_nfc-git
 pkgver=20150407
-pkgrel=1
+pkgrel=2
 pkgdesc="nfc for pam, git version"
 arch=(i686 x86_64)
 license=('GPL')
 #url=""
 depends=('libnfc')
-#makedepends=('libnfc')
-source=(git://github.com/nfc-tools/pam_nfc.git)
+makedepends=('git')
+source=(git+https://github.com/nfc-tools/pam_nfc.git)
 #backup=('')
 #provides=('')
 #conflicts=('')
