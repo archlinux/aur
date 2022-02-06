@@ -1,7 +1,7 @@
 # Maintainer: Euro20179 <Euro20179@protonmail.com>
 
 pkgname=ytfzf-git
-pkgver=r1286.fe43d61
+pkgver=r1294.5760d4e
 pkgrel=1
 pkgdesc="A posix script to find and watch youtube videos from the terminal. (Without API)"
 arch=('any')
@@ -31,12 +31,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-
-	install -Dm755 ytfzf "${pkgdir}/usr/bin/ytfzf"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/doc/ytfzf/LICENSE"
-	cd docs
-	install -dm0755 "${pkgdir}/usr/share/doc/ytfzf"
-	install -Dm644 man/ytfzf.1 "${pkgdir}/usr/share/man/man1/ytfzf.1.gz"
-	install -Dm644 man/ytfzf.5 "${pkgdir}/usr/share/man/man5/ytfzf.5.gz"
-	install -Dm644 conf.sh "${pkgdir}/usr/share/doc/ytfzf"
+	make PREFIX="${pkgdir}/usr" install doc
 }
