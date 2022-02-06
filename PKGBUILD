@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-settings
-pkgver=0.5
+pkgver=0.7
 pkgrel=1
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('fishui' 'fontconfig' 'freetype2' 'icu' 'kcoreaddons' 'libxcursor'
          'bluez-qt' 'bluedevil' 'libcutefish' 'qt5-quickcontrols')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/settings/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('830866aa38ea71c5bac1dd28b178237a93bcb388a8f1c1be2896eb86f43ed3c2dd1b80cca3a70c6c6cd7c729179e0d7b2ce4d6efd1e0aaac7deafcf07397058c')
+sha512sums=('aae850652163b4cab0eab5bd74af161eaaa4a1fcbbee73620acebc69ede9fd67e26ec0fd54826a17aeeb1993faf5f69878c0d0859cb387f62cf198db1937d920')
 
 build() {
   cd settings-$pkgver
