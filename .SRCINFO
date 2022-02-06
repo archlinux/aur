@@ -19,7 +19,7 @@ pkgbase = invader
 	depends = qt5-base
 	depends = qt5-multimedia
 	depends = zlib
-	source = git+https://github.com/SnowyMouse/invader.git#commit=03487702fc1ba24d91895fd1823adfc1c7ef0e21
+	source = git+https://github.com/SnowyMouse/invader.git#commit=94823300caf36698dfa34a05c1a80ada3d2178b4
 	source = git+https://github.com/SnowyMouse/riat.git
 	sha256sums = SKIP
 	sha256sums = SKIP
