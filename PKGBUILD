@@ -2,7 +2,7 @@
 
 pkgname=libvss
 epoch=1
-pkgver=21.0.0
+pkgver=22.0.0
 pkgrel=1
 
 pkgdesc="A high level string and text processing library for Ada."
@@ -13,23 +13,18 @@ license=('GPL3' 'custom')
 
 makedepends=('gprbuild')
          
-_version=2021-20210701-198AA-src
-_hash=b3b6db7b27ef26dc9006e062dd1bf7adbe47566b
-
-source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/$_hash?filename=$pkgname-$_version.tar.gz&rand=669")
-sha1sums=($_hash)
-
-_name=vss
+source=("https://github.com/AdaCore/VSS/archive/refs/heads/22.0.zip")
+sha1sums=(909c092bbe2626ce18f46ca37c55d04226335d01)
 
 build()
 {
-   cd "$srcdir/$_name-$_version"
+   cd "$srcdir/VSS-22.0"
    make all
 }
 
 package()
 {
-   cd "$srcdir/$_name-$_version"
+   cd "$srcdir/VSS-22.0"
 
    gprinstall -p --prefix="$pkgdir/usr" gnat/vss_json.gpr
    gprinstall -p --prefix="$pkgdir/usr" gnat/vss_text.gpr

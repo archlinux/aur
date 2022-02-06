@@ -1,6 +1,6 @@
 pkgbase = libvss
 	pkgdesc = A high level string and text processing library for Ada.
-	pkgver = 21.0.0
+	pkgver = 22.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/VSS
@@ -9,7 +9,7 @@ pkgbase = libvss
 	license = GPL3
 	license = custom
 	makedepends = gprbuild
-	source = libvss-21.0.0.tar.gz::https://community.download.adacore.com/v1/b3b6db7b27ef26dc9006e062dd1bf7adbe47566b?filename=libvss-2021-20210701-198AA-src.tar.gz&rand=669
-	sha1sums = b3b6db7b27ef26dc9006e062dd1bf7adbe47566b
+	source = https://github.com/AdaCore/VSS/archive/refs/heads/22.0.zip
+	sha1sums = 909c092bbe2626ce18f46ca37c55d04226335d01
 
 pkgname = libvss
