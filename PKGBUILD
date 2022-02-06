@@ -2,14 +2,18 @@
 
 _plug=ffspectrum
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.1.g0fe5160
+pkgver=r1.5.g6326b2e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Beatrice-Raws/FFTSpectrum'
 license=('GPL')
-depends=('vapoursynth')
-makedepends=('git')
+depends=('vapoursynth'
+         'fftw'
+         )
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Beatrice-Raws/FFTSpectrum.git")
@@ -20,21 +24,20 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare(){
-  cd "${_plug}"
-
-  echo "all:
-	  gcc -c -fPIC ${CXXFLAGS} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o FFTSpectrum.o FFTSpectrum.c
-	  gcc -shared -fPIC ${LDFLAGS} -o lib${_plug}.so FFTSpectrum.o" > Makefile
+prepare() {
+  mkdir -p build
 }
 
 build() {
-  make -C "${_plug}"
+  cd build
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
+  ninja
 }
 
-package() {
-  cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
+package(){
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
