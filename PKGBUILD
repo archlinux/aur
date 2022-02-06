@@ -17,7 +17,7 @@ arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
-depends=("curl" "libstemmer" "lsb-release" "snappy" "gperftools")
+depends=("curl" "libstemmer" "lsb-release" "snappy" "gperftools" "boost-libs")
 optdepends=("mongodb-tools: mongoimport, mongodump, mongotop, etc")
 makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests" "boost" "yaml-cpp")
 checkdepends=("python-pymongo")
@@ -91,8 +91,10 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
+  mkdir -p "${pkgdir}/usr"
+
   export SCONSFLAGS="$MAKEFLAGS"
-  PREFIX="${pkgdir}/usr" scons install-core "${_scons_args[@]}"
+  scons DESTDIR="${pkgdir}/usr" install-core "${_scons_args[@]}"
 }
 
 package() {

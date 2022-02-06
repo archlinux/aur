@@ -20,6 +20,7 @@ pkgbase = mongodb
 	depends = lsb-release
 	depends = snappy
 	depends = gperftools
+	depends = boost-libs
 	optdepends = mongodb-tools: mongoimport, mongodump, mongotop, etc
 	backup = etc/mongodb.conf
 	source = https://fastdl.mongodb.org/src/mongodb-src-r5.0.6.tar.gz
