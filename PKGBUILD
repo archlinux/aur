@@ -3,8 +3,8 @@
 # Maintainer: LeSnake <dev.lesnake@posteo.de>
 
 pkgname=bibox2-bin
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Offizieller Client für Westermann Schulbücher / Official Client for german school books from Westermann"
 arch=('x86_64')
 url="https://www.bibox.schule"
@@ -13,8 +13,8 @@ depends=('gnome-keyring')
 makedepends=('tar')
 optdepends=()
 conflicts=()
-source=("https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.1.0.deb")
-sha512sums=('a19ddc43c5251bed713c420a69ecaba4ee08f725b52121ee500b82e9a81705e18c55d2e80222475ba2f9334462480c637cb5301b8309f5d84c94ad6b5b613160')
+source=("https://static.bibox2.westermann.de/electron/autoUpdate/BiBox%202.0%202.3.1.deb")
+sha512sums=('6d28770a4443d04c126b3f7c3e81e1a7d4bb4c6cd61a3dd8d784ca59d48239790f09409a5ca5352f60e3011108299b399230defd295aaa074de08b9973a893ec')
 
 package(){
 	# Extract package data
