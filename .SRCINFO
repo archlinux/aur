@@ -1,7 +1,7 @@
 pkgbase = sudo-selinux
 	pkgdesc = Give certain users the ability to run some commands as root - SELinux support
-	pkgver = 1.9.8.p2
-	pkgrel = 3
+	pkgver = 1.9.9
+	pkgrel = 2
 	url = https://www.sudo.ws/sudo/
 	install = sudo.install
 	arch = x86_64
@@ -14,22 +14,24 @@ pkgbase = sudo-selinux
 	depends = libldap
 	depends = zlib
 	depends = libselinux
-	provides = sudo=1.9.8.p2-3
-	provides = selinux-sudo=1.9.8.p2-3
+	provides = sudo=1.9.9-2
+	provides = selinux-sudo=1.9.9-2
 	conflicts = sudo
 	conflicts = selinux-sudo
 	backup = etc/pam.d/sudo
 	backup = etc/sudo.conf
 	backup = etc/sudo_logsrvd.conf
 	backup = etc/sudoers
-	source = https://www.sudo.ws/sudo/dist/sudo-1.9.8p2.tar.gz
-	source = https://www.sudo.ws/sudo/dist/sudo-1.9.8p2.tar.gz.sig
+	source = https://www.sudo.ws/sudo/dist/sudo-1.9.9.tar.gz
+	source = https://www.sudo.ws/sudo/dist/sudo-1.9.9.tar.gz.sig
 	source = sudo_logsrvd.service
+	source = disable-non-interative-auth.patch
 	source = sudo.pam
 	validpgpkeys = 59D1E9CCBA2B376704FDD35BA9F4C021CEA470FB
-	sha256sums = 9e3b8b8da7def43b6e60c257abe80467205670fd0f7c081de1423c414b680f2d
+	sha256sums = 6d6ee863a3bc26c87661093a74ec63e10fd031ceba714642d21636dfe25e3e00
 	sha256sums = SKIP
 	sha256sums = 8b91733b73171827c360a3e01f4692772b78e62ceca0cf0fd4b770aba35081a1
+	sha256sums = 094387d71f6866ff85ab1cccbdf685f97c02a803eb01b41c80c52918785db85c
 	sha256sums = d1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2
 
 pkgname = sudo-selinux
