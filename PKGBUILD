@@ -12,7 +12,7 @@ _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
-license=('EUPL-1.1')
+license=('EUPL-1.2')
 depends=('nettle' 'gmp' 'libidn')
 makedepends=('cmake' 'sqlite')
 conflicts=('dnsmasq')
@@ -58,6 +58,9 @@ package() {
   install -Dm644 "$pkgname.service" "$pkgdir"/usr/lib/systemd/system/$_servicename.service
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"
   ln -s ../$_servicename.service "$pkgdir/usr/lib/systemd/system/multi-user.target.wants/$_servicename.service"
+  
+  install -dm755 "$pkgdir"/usr/share/licenses/pihole
+  install -Dm644 "$_pkgname"-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/pihole/Pi-hole-FTL
   
   # ver. 5.0 dnamasq dropin support
   ln -s ./pihole-FTL "$pkgdir/usr/bin/dnsmasq"
