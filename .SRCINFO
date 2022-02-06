@@ -1,0 +1,12 @@
+pkgbase = rkimer-git
+	pkgver = r11.e87495b
+	pkgrel = 1
+	url = https://github.com/Code-Log/rkimer
+	arch = any
+	license = GPL3
+	makedepends = jdk-openjdk
+	provides = rkimer
+	source = rkimer::git+https://github.com/Code-Log/rkimer#branch=master
+	sha256sums = SKIP
+
+pkgname = rkimer-git
