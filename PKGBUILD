@@ -2,7 +2,7 @@
 
 _plug=waifu2x-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.1.gc2316e0
+pkgver=r4.0.gc20cc47
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,7 +14,6 @@ depends=('vapoursynth'
 makedepends=('git'
              'cmake'
              'vulkan-headers'
-             'glslang'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
