@@ -92,13 +92,11 @@ build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
   export SCONSFLAGS="$MAKEFLAGS"
-  scons install-core "${_scons_args[@]}"
+  PREFIX="${pkgdir}/usr" scons install-core "${_scons_args[@]}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
-
-  scons install --prefix="${pkgdir}/usr" "${_scons_args[@]}"
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
