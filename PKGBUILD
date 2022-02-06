@@ -13,7 +13,8 @@ depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-fmtconv'
          )
 makedepends=('git'
-             'python-setuptools'
+             'python-pip'
+             'python-wheel'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -25,9 +26,14 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-package(){
+build() {
   cd "${_plug}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  pip wheel --no-deps . -w dist
+}
+
+package() {
+  cd "${_plug}"
+  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
