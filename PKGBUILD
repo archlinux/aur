@@ -1,4 +1,5 @@
-# Maintainer: Parker Reed <parker.l.reed@gmail.com>
+# Maintainer: Paragoumba <paragoumba@protonmail.com>
+# Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=joycond-git
 pkgver=r110.f9a6691
