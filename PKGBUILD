@@ -2,10 +2,10 @@
 
 pkgname=mopidy-somafm
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Mopidy extension for playing music from SomaFM"
 arch=('any')
-url="http://www.mopidy.com"
+url="https://github.com/AlexandrePTJ/mopidy-somafm"
 license=('APACHE')
 depends=(
 	'mopidy>=3.0'
