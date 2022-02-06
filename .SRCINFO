@@ -1,0 +1,18 @@
+pkgbase = inkscape-appimage
+	pkgdesc = Professional vector graphics editor (official AppImage release)
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://inkscape.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	provides = inkscape
+	conflicts = inkscape
+	noextract = freecad-1.1.2.AppImage
+	options = !strip
+	source = inkscape-1.1.2.AppImage::https://inkscape.org/gallery/item/31669/Inkscape-0a00cf5-x86_64.AppImage
+	source = inkscape.sh
+	sha256sums = b7a99b6c0ee2817706e77803643f4a6caf9e35bdec928e963c1d2ae86e5e4beb
+	sha256sums = 52214003ba59053e0faa2030d48b03c16bf540babd40ff7360928cd0145aa5de
+
+pkgname = inkscape-appimage
