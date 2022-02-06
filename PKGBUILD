@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-launcher
-pkgver=0.5
+pkgver=0.7
 pkgrel=1
 pkgdesc="CutefishOS's full-screen application launcher"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=('fishui' 'kwindowsystem' 'libcutefish')
 makedepends=('extra-cmake-modules' 'ninja' 'qt5-tools')
 source=("https://github.com/cutefishos/launcher/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('f294e64be72d244d3569415d3df4e4b7cae62a5fe00d1bdec9f33d0100fcb9740c6586ef51f37c1be87103154ccbe297f8061ac2f209234a0b8fe651b10b3782')
+sha512sums=('186c3686092318d12bff88ab432dd6a3b7e1e3824d0619a9ae24c1ac8698256b602156c38ea4853168672d60b53fb4b3cfb9d3533c09a68301d2b86cb44f9a15')
 
 build() {
   cd launcher-$pkgver
