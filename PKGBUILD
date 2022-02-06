@@ -2,28 +2,38 @@
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 
 pkgname=python-abjad-ext-rmakers
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 pkgdesc='Abjad rhythm-maker extension'
 arch=('any')
 url="https://github.com/abjad/abjad-ext-rmakers"
 license=('MIT')
 groups=('abjad')
-depends=("python-abjad=$pkgver")
-makedepends=('python-setuptools' 'git')
-source=("$pkgname-$pkgver::git+$url#tag=v$pkgver?signed")
+depends=("python-abjad>=$pkgver")
+makedepends=(
+	'git'
+	'python-setuptools'
+	'python-build'
+	'python-install'
+	'python-wheel')
+# checkdepends=('python-pytest')
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
-validpgpkeys=('EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36')
+validpgpkeys=('B76E156E7824B5040027E7C6205943F230B622B9')
 
 build() {
-	cd "$pkgname-$pkgver"
-	python setup.py build
+	cd "$pkgname"
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
+# check() {
+# 	cd "$pkgname"
+# 	pytest -x -c /dev/null abjadext
+# }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	export PYTHONHASHSEED=0
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
