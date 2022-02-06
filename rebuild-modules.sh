@@ -74,7 +74,6 @@ rm -fr "${package_dir}/node_modules_tmp/node_modules/spdlog-node"
     trash \
     vscode-oniguruma \
     vscode-ripgrep \
-    miniprogram-compiler \
     nodegit \
     --registry=https://registry.npm.taobao.org \
     --nodegit_binary_host_mirror=https://npm.taobao.org/mirrors/nodegit/v0.27.0/) # reinstall modules
@@ -100,28 +99,6 @@ cp -fr "${package_dir}/node_modules_tmp/node_modules/nodegit" "${package_dir}/no
 
 mkdir -p "${package_dir}/node_modules/vscode-ripgrep/bin"
 cp -fr "${package_dir}/node_modules_tmp/node_modules/vscode-ripgrep/bin/rg" "${package_dir}/node_modules/vscode-ripgrep/bin/rg"
-
-# wcc wcsc
-# 预览编译
-# cd "${package_dir}/js/vendor/" && rm -rf "wcc.exe"
-# cp "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcc" "${package_dir}/js/vendor/wcc.exe"
-# wcc_md5=$( md5sum wcc.exe|cut -d ' ' -f1 ) && \
-# sed -i  's/wcc.exe": ".*"/wcc.exe": "'"${wcc_md5}"'"/g' "config.json"
-# cd "${package_dir}/js/vendor/" && rm -rf "wcsc.exe"
-# cp "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcsc" "${package_dir}/js/vendor/wcsc.exe"
-# cd "${package_dir}/js/vendor" && \
-# wcsc_md5=$( md5sum wcsc.exe|cut -d ' ' -f1 ) && \
-# sed -i  's/wcsc.exe": ".*"/wcsc.exe": "'"${wcsc_md5}"'"/g' "config.json"
-
-# 可视化编译
-(cd "${package_dir}/node_modules/" \
-&& rm -rf wcc wcsc \
-&& mkdir -p "wcc/bin/linux" "wcsc/bin/linux" \
-&& cp -r "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcc" "wcc/bin/linux/wcc" \
-&& cp -r "${package_dir}/node_modules_tmp/node_modules/miniprogram-compiler/bin/linux/wcsc" "wcsc/bin/linux/wcsc" \
-&& cp -r "${srcdir}/compiler/wcc_node"/* "wcc" \
-&& cp -r "${srcdir}/compiler/wcsc_node"/* "wcsc"
-)
 
 rm -rf "${package_dir}/node_modules_tmp"
 
