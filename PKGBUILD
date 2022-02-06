@@ -7,7 +7,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.0.0
 _asyncver=a9de5a9fc12d12a2cd50e3aeffae01e6f51ddbd4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -115,14 +115,14 @@ source=(
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
     gst-orc::git+https://gitlab.freedesktop.org/gstreamer/orc.git
-    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
+    vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    vkd3d::git+https://github.com/ValveSoftware/vkd3d.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
-    vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
@@ -198,13 +198,13 @@ prepare() {
         gst-plugins-base
         gst-plugins-good
         gst-orc
-        vkd3d-valve::vkd3d-proton
+        vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
+        vkd3d
         SPIRV-Headers
         Vulkan-Headers
         Vulkan-Loader
-        vkd3d-zfigura::vkd3d
     )
 
     for submodule in "${_submodules[@]}"; do
