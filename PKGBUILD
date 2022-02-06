@@ -2,7 +2,7 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r41676
+pkgver=r41737
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=(dos2unix ffmpeg libpcap libxaw texlive-bin texlive-core xa xorg-bdf
 provides=('vice')
 replaces=('vice')
 conflicts=('vice' 'vice-sdl2' 'vice-svn-gtk3' 'vice-svn-sdl2')
-source=("${pkgname}::svn://svn.code.sf.net/p/vice-emu/code/trunk"
+source=("${pkgname}::svn://svn.code.sf.net/p/vice-emu/code/trunk#revision=41736"
 vice-org-vsid.desktop
 vice-org-x64dtv.desktop
 vice-org-x64sc.desktop
