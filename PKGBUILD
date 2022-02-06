@@ -22,21 +22,21 @@ _zlib=1.2.3
 pkgbase=xen
 pkgname=("xen" "xen-docs")
 pkgver=4.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source type-1 or baremetal hypervisor'
 arch=('x86_64')
 url='https://xenproject.org/'
 license=('GPL2')
 options=(!buildflags)
 
-# Original depends line
 makedepends=(
 	'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf'
 	'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
 	'vde2' 'lzo' 'pciutils' 'sdl2' 'systemd-libs'
+	'systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'ocaml' 'ocaml-findlib' 'fig2dev'
 ) # last line from namcap, these depends are the xen depends
-# Actual makedepends.
-makedepends+=('systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bin86' 'dev86' 'bison' 'gettext' 'flex' 'pixman' 'ocaml' 'fig2dev')
+_stubdom_makedepends=('cmake')
+_qemu_makedepends=('ninja')
 
 _source=(
 	"https://downloads.xenproject.org/release/xen/$pkgver/$pkgname-$pkgver.tar.gz"{,.sig}
@@ -54,6 +54,10 @@ validpgpkeys=('23E3222C145F4475FA8060A783FE14C957E82BD9') # Xen.org Xen tree cod
 # Follow the Xen securite mailing lists, and if a patch is applicable to our package
 # add the URL here.
 _patches=(
+	"https://xenbits.xen.org/xsa/xsa393.patch"
+	"https://xenbits.xen.org/xsa/xsa394.patch"
+	"https://xenbits.xen.org/xsa/xsa395.patch"
+
 )
 
 
@@ -84,6 +88,9 @@ _sha512sums=(
 
 
 _patch_sums=(
+	"32efed25f988579be8266a6bc80ed7c09c408519c6b6c5264b7e032849e3accc7ddea19c5879c06d7e7b27308d06e114f6e3ca4f814d53b9be9d239fb09c71f1" # xsa393.patch
+	"a0afa766e492a4dc921cd5c4c43c9ecbe87f79c07986504c8626ab7f06736147bdfa4637ea4c4abf17b9f1df31056bbcbb6c51a52e244e57467564c8ea06a52e" # xsa394.patch
+	"0aafb55b88a7feefeb0162b2722efc8ad43edcdfc7926492e1d49945eafb8dda900f7da37b2d49fd4dbc2d0c9a068ad6e47674a6df108a58842275695ed73540" # xsa395.patch
 )
 
 
@@ -97,7 +104,6 @@ _stub_sums=(
         "4928b5b82f57645be9408362706ff2c4d9baa635b21b0d41b1c82930e8c60a759b1ea4fa74d7e6c7cae1b7692d006aa5cb72df0c3b88bf049779aa2b566f9d35" # tpm_emulator-0.7.4.tar.gz
         "021b958fcd0d346c4ba761bcf0cc40f3522de6186cf5a0a6ea34a70504ce9622b1c2626fce40675bc8282cf5f5ade18473656abc38050f72f5d6480507a2106e" # zlib-1.2.3.tar.gz
 )
-
 
 # Simplify things for makepkg
 source=( "${_source[@]}" "${_patches[@]}" )
@@ -115,13 +121,17 @@ if [ "${_build_stubdom}" == "true" ]; then
 	sha512sums=("${sha512sums[@]}" "${_stub_sums[@]}")
 
 	# Add in automagic dependency in order to build vtpm and vtpmmgr stubdoms
-	makedepends+=('cmake')
+	makedepends=( "${makedepends[@]}" "${_stubdom_makedepends[@]}" )
 
 	for file in "${_stubdom_source[@]}"; do
 		noextract+=( $(basename ${file}) )
 	done
 
 	_config_stubdom='--enable-stubdom'
+
+	# make sure to build the stubdom package
+	pkgname+=("xen-stubdom")
+
 else
 	_config_stubdom='--disable-stubdom'
 fi
@@ -129,7 +139,8 @@ fi
 if [ "${_build_qemu}" == "true" ]; then
 	_config_qemu=""
 	# qemu needs ninja to build as of 4.16.0
-	makedepends+=('ninja')
+	makedepends=( "${makedepends[@]}" "${_qemu_makedepends[@]}" )
+	pkgname+=("xen-qemu-builtin")
 else
 	_config_qemu="--with-system-qemu=/usr/bin/qemu-system-x86_64"
 fi
@@ -138,7 +149,7 @@ _common_make_flags=(
   "BOOT_DIR=${_boot_dir}"
   "EFI_DIR=${_efi_dir}"
   "EFI_MOUNTPOINT=${_efi_mountpoint}"
-  'XEN_VENDORVERSION=arch'
+  "XEN_VENDORVERSION=-${pkgrel}-arch"
 )
 
 # TODO: Setup users, dirs, etc.
@@ -281,6 +292,26 @@ package_xen() {
 	rm -r "${pkgdir}/usr/share/doc"
 	rm -r "${pkgdir}/usr/share/man"
 
+	# remove potential stubdom files
+	rm -r "${pkgdir}/usr/lib/xen/boot"
+
+	# remove qemu
+	rm -r "${pkgdir}/usr/share/qemu-xen"
+	rm -r  \
+		"${pkgdir}/usr/lib/xen/include/qemu-plugin.h" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-pr-helper" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-edid" \
+		"${pkgdir}/usr/lib/xen/bin/elf2dmp" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-storage-daemon" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-nbd" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-io" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-img" \
+		"${pkgdir}/usr/lib/xen/bin/qemu-system-i386" \
+		"${pkgdir}/usr/lib/xen/libexec/virtiofsd" \
+		"${pkgdir}/usr/lib/xen/libexec/qemu-bridge-helper" \
+		"${pkgdir}/usr/lib/xen/libexec/virtfs-proxy-helper" 
+
+
 }
 
 package_xen-docs() {
@@ -289,3 +320,23 @@ package_xen-docs() {
 	cd "${pkgbase}-${pkgver}"
 	make "${_common_make_flags[@]}" DESTDIR="$pkgdir" install-docs
 }
+
+
+package_xen-stubdom() {
+	pkgdesc="Xen hypervisor stubdom files"
+	arch=("x86_64")
+	depends=("xen")
+
+	cd "${srcdir}/${pkgbase}-${pkgver}/stubdom"
+	make DESTDIR="${pkgdir}" install
+}
+
+package_xen-qemu-builtin() {
+	pkgdesc="Xen hypervisor QEMU components"
+	arch=("x86_64")
+	depends=("xen")
+
+	cd "${srcdir}/${pkgbase}-${pkgver}/tools/qemu-xen-build"
+	make DESTDIR="${pkgdir}" install
+}
+
