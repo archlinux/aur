@@ -1,7 +1,7 @@
 pkgbase = apmpkg-git-dev
 	pkgdesc = Un administrador de paquetes universal para linux como modelo: PKGBUILD de la rama develop
 	pkgver = 106.34c9bb6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kedap/apmpkg
 	arch = x86_64
 	license = Apache
@@ -13,7 +13,6 @@ pkgbase = apmpkg-git-dev
 	depends = wget
 	depends = fakeroot
 	depends = ruby-bundler
-	depends = rsync
 	conflicts = apmpkg
 	conflicts = apmpkg-dev
 	source = git+https://github.com/kedap/apmpkg
