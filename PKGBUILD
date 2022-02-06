@@ -40,11 +40,6 @@ build() {
     cargo +stable build --bin=dt-cli --release --all-features --locked
 }
 
-check() {
-    cd dt
-    cargo +stable test --bin=dt-cli --lib=dt-core --release --all-features --locked
-}
-
 package() {
     cd dt
     install -Dm755 "target/release/dt-cli" "$pkgdir/usr/bin/dt-cli"
