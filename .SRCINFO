@@ -1,0 +1,19 @@
+pkgbase = python-doxytag2zealdb
+	pkgdesc = create sqlite db for docset from a Doxygen tag file
+	pkgver = 0.3.1
+	pkgrel = 1
+	epoch = 1
+	url = http://pypi.python.org/pypi/doxytag2zealdb
+	arch = any
+	license = GPLv3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python2
+	depends = python-docopt
+	depends = python-beautifulsoup4
+	source = git+https://gitlab.com/vedvyas/doxytag2zealdb.git#tag=v0.3.1
+	source = 0001-fix-newlines-in-setup.patch
+	md5sums = SKIP
+	md5sums = fbaba4e843d7a2c11607968e8a43931c
+
+pkgname = python-doxytag2zealdb

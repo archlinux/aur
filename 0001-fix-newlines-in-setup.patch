@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index 19eefeb..ec2b60b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -16,9 +16,9 @@ setup(
+     name='doxytag2zealdb',
+     version=__version__,
+ 
+-    description='''doxytag2zealdb creates a SQLite3 database from a Doxygen tag
+-    file to enable searchable Doxygen docsets with categorized entries in tools
+-    like helm-dash, Zeal, and Dash.''',
++    description="doxytag2zealdb creates a SQLite3 database from a Doxygen tag "
++                "file to enable searchable Doxygen docsets with categorized "
++                "entries in tools like helm-dash, Zeal, and Dash.",
+     long_description=open(path.join(here, 'README.md'),
+                           encoding='utf-8').read(),
+     long_description_content_type='text/markdown',
