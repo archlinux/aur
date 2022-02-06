@@ -1,0 +1,19 @@
+pkgbase = opentaxsolver-2021-svn
+	pkgdesc = An easy-to-use text-based calculator for US Tax Forms
+	pkgver = 2021.r0
+	pkgrel = 1
+	url = http://opentaxsolver.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	groups = OTS
+	license = GPL2
+	makedepends = subversion
+	depends = gtk4
+	provides = opentaxsolver-2021
+	conflicts = opentaxsolver-2021
+	source = opentaxsolver-2021::svn://svn.code.sf.net/p/opentaxsolver/SrcCodeRepo/trunk/OTS_2021
+	md5sums = SKIP
+
+pkgname = opentaxsolver-2021-svn
