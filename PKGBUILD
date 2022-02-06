@@ -2,7 +2,7 @@
 
 _plug=vsrealesrgan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.2.0.3.g5a1bef4
+pkgver=2.0.0.0.gb66f5b1
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -15,7 +15,6 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'python-pip'
-             'python-wheel'
              )
 optdepends=('python-pytorch: CPU'
             'python-pytorch-opt: CPU with AVX2 optimizations'
@@ -39,7 +38,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  python -c "import setuptools; setuptools.setup()" bdist_wheel
+  pip wheel --no-deps . -w dist
 }
 
 package() {

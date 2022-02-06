@@ -1,13 +1,12 @@
 pkgbase = vapoursynth-plugin-vsrealesrgan-git
 	pkgdesc = Plugin for Vapoursynth: vsrealesrgan (GIT version)
-	pkgver = 1.2.0.3.g5a1bef4
+	pkgver = 2.0.0.0.gb66f5b1
 	pkgrel = 1
 	url = https://github.com/HolyWu/vs-realesrgan
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-pip
-	makedepends = python-wheel
 	depends = vapoursynth
 	depends = python-numpy
 	depends = python-tqdm
