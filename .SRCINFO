@@ -1,0 +1,14 @@
+pkgbase = mini-matrix-git
+	pkgdesc = Displays a matrix of random characters
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SkwalExe/mini-matrix.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	provides = mini-matrix
+	source = git+https://github.com/SkwalExe/mini-matrix.git
+	md5sums = SKIP
+
+pkgname = mini-matrix-git
