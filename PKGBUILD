@@ -4,7 +4,7 @@
 
 pkgname=wapiti
 
-pkgver=3.0.9
+pkgver=3.1.0
 _name="$pkgname${pkgver:0:1}"
 pkgrel=1
 
@@ -15,16 +15,17 @@ license=('GPL')
 
 makedepends=('python-setuptools' 'python-pip')
 depends=('python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-yaswfp' 'python-browser-cookie3'
-         'python-mako' 'python-python-socks' 'python-tld' 'python-httpx' 'python-httpx-socks'
-         'python-aiocache' 'python-sqlalchemy')
+         'python-mako' 'python-python-socks' 'python-tld' 'python-httpx' 'python-aiocache'
+         'python-sqlalchemy')
 optdepends=('python-requests-kerberos: Kerberos authentication'
             'python-requests-ntlm: NTLM authentication')
 
 options=('zipman')
 
 changelog=ChangeLog
-source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('bd64674b9152057bf1534ca7d7aab8cad4fccb1027813e0d0281f48823a82475')
+source=("https://github.com/$pkgname-scanner/$pkgname/releases/download/$pkgver/$_name-$pkgver.tar.gz")
+#source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$_name-$pkgver.tar.gz")
+sha256sums=('4974204e5da966c3e91946465840420c708c034a7c030c5597d3c36badf05a0f')
 
 
 prepare() { rm -rf "$_name-$pkgver/tests"; }
