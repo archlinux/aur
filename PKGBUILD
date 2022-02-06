@@ -2,16 +2,16 @@
 
 pkgname=moment-git
 _name=moment
-pkgver=v0.7.3.r5.06df9042
+pkgver=v0.7.3.r12.66afe32c
 pkgrel=1
-pkgdesc='FOSS Matrix powerclient; forked from Mirage'
-arch=('any')
+pkgdesc='A customizable, keyboard-operable Matrix client. Fork of Mirage'
+arch=('x86_64' 'i686' 'aarch64')
 url='https://mx-moment.xyz/'
 license=('LGPL3')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphicaleffects' 'qt5-imageformats' 'python' 'python-pyotherside' 'libolm' 'libjpeg-turbo' 'zlib' 'libtiff' 'libwebp' 'openjpeg2' 'libmediainfo' 'python-pillow' 'python-pymediainfo' 'python-cairosvg' 'python-aiofiles' 'python-appdirs' 'python-filetype' 'python-html-sanitizer' 'python-lxml' 'python-mistune1' 'python-blist' 'python-matrix-nio>=0.17.0' 'libxss' 'python-plyer' 'python-sortedcontainers' 'python-watchgod' 'python-redbaron' 'python-dbus' 'python-hsluv' 'python-pycryptodome' 'python-simpleaudio')
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphicaleffects' 'qt5-imageformats' 'python' 'python-pyotherside' 'libolm' 'libjpeg-turbo' 'zlib' 'libtiff' 'libwebp' 'openjpeg2' 'libmediainfo' 'python-pillow' 'python-pymediainfo' 'python-cairosvg' 'python-aiofiles' 'python-appdirs' 'python-filetype' 'python-html-sanitizer' 'python-lxml' 'python-mistune1' 'python-blist' 'python-matrix-nio' 'libxss' 'python-plyer' 'python-sortedcontainers' 'python-watchgod' 'python-redbaron' 'python-dbus' 'python-hsluv' 'python-pycryptodome' 'python-simpleaudio')
 makedepends=('cmake' 'git')
 conflicts=('moment')
-source=('git+https://gitlab.com/mx-moment/moment.git')
+source=('git+https://gitlab.com/mx-moment/moment.git#branch=dev')
 sha256sums=('SKIP')
 
 prepare() {
@@ -34,5 +34,5 @@ build() {
 
 package() {
     cd "${srcdir}/${_name}"
-    make INSTALL_ROOT="${pkgdir}" install 
+    make INSTALL_ROOT="${pkgdir}" install
 }
