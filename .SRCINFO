@@ -1,16 +1,17 @@
 pkgbase = devtools-riscv64
 	pkgdesc = Tools for Arch Linux RISC-V package maintainers
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/felixonmars/archriscv-packages
 	arch = x86_64
+	arch = riscv64
 	license = GPL
 	depends = devtools
-	depends = qemu-user-static
-	depends = binfmt-qemu-static
 	source = makepkg-riscv64.conf
 	source = pacman-extra-riscv64.conf
 	sha256sums = d0eda35a669f0015c6f6bacf146145c821dffba42de663901da08d2c35a4c148
 	sha256sums = fc933f164d21774e7a1435d9fccf87cb05f7b601e89a2ba54b899b2ce1e809df
+	depends_x86_64 = qemu-user-static
+	depends_x86_64 = binfmt-qemu-static
 
 pkgname = devtools-riscv64
