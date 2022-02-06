@@ -4,6 +4,9 @@ Type=Application
 Name=Flashpoint
 Comment=Launcher for BlueMaxima's Flashpoint 
 Icon=/usr/share/pixmaps/flashpoint.png
-Exec=/opt/flashpoint/flashpoint-launcher
+Exec=cd ~/.local/share/flashpoint && /opt/flashpoint/flashpoint-launcher
+Path=
 Actions=
 Categories=Game
+
+X-Desktop-File-Install-Version=0.26

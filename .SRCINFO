@@ -1,10 +1,11 @@
 pkgbase = flashpoint-launcher-bin
 	pkgdesc = Launcher for BlueMaxima's Flashpoint
 	pkgver = 10.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/FlashpointProject/launcher
 	arch = x86_64
 	license = MIT
+	makedepends = desktop-file-utils
 	depends = nss>=3.0
 	depends = php
 	depends = gtk3
@@ -12,11 +13,14 @@ pkgbase = flashpoint-launcher-bin
 	depends = wine
 	depends = qemu
 	depends = qemu-arch-extra
-	depends = flashpoint-data-files-installer
+	depends = p7zip
+	depends = wget
 	optdepends = flashplayer-standalone: native Flash support
 	conflicts = flashpoint-bin
 	conflicts = flashpoint-launcher-git
 	source = https://github.com/FlashpointProject/launcher/releases/download/10.1.1/Flashpoint-10.1.1_linux-amd64.deb
+	source = https://github.com/LeSnake04/aur-lesnake04-sources/raw/main/flashpoint-data-files-installer/flashpoint-install-data-files.sh
 	sha512sums = dccc405a8f059887ef5f49b94a94e00e7bd87bf6f12922ffdac301d8339ffe96f482fab53d822cd47c222e5ad4151e8abbc832615525939770229d155c21dd78
+	sha512sums = 0435c1f89439eaf08b8f72d4465a62cae4599335afe36c365327262bc6e9663215f026f33f0e41b6ce183280cd304484b07fd6d703e21bbc74d2870c629964cf
 
 pkgname = flashpoint-launcher-bin
