@@ -1,0 +1,15 @@
+pkgbase = torrent-file-editor
+	pkgdesc = Cross-platform application intended to create and edit .torrent and uTorrent .dat files.
+	pkgver = 0.3.17
+	pkgrel = 1
+	url = https://torrent-file-editor.github.io/
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = qt5-base
+	source = torrent-file-editor-0.3.17.tar.gz::https://github.com/torrent-file-editor/torrent-file-editor/archive/0621e0134014595ae11d31eb901f877857cdd130.tar.gz
+	sha256sums = 24459e74ba29a9f47e464f0d9fd8dd873a39af27ede64d1ac65da6a3c5d1fae5
+
+pkgname = torrent-file-editor
