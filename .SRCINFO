@@ -1,7 +1,7 @@
 pkgbase = langkit
 	pkgdesc = Compiler for syntactic and semantic language analysis libraries.
-	pkgver = 20210518
-	pkgrel = 2
+	pkgver = 20211103
+	pkgrel = 1
 	url = https://github.com/AdaCore/langkit/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = langkit
 	makedepends = python-mako
 	depends = gnatcoll-iconv
 	depends = python
-	source = langkit-20210518.tar.gz::https://community.download.adacore.com/v1/709e5ffa66fd8181655951e0ec8ed04e1d2977e2?filename=langkit-2021-20210518-19B8E-src.tar.gz&rand=280
-	sha1sums = 709e5ffa66fd8181655951e0ec8ed04e1d2977e2
+	source = https://github.com/AdaCore/langkit/archive/refs/tags/v22.0.0.tar.gz
+	sha1sums = 24ed555520e8789b6a0a828605e8d42eac9caf38
 
 pkgname = langkit
