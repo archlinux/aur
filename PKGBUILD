@@ -2,7 +2,7 @@
 
 _plug=vardefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r327.8d4b125
+pkgver=0.6.1.6.gc167850
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -30,8 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-#   echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 package(){
