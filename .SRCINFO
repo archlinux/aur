@@ -1,6 +1,6 @@
 pkgbase = yambar
 	pkgdesc = Modular status panel for X11 and Wayland, inspired by polybar
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://codeberg.org/dnkl/yambar
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = yambar
 	makedepends = meson
 	makedepends = scdoc
 	depends = alsa-lib
-	depends = libmpdclient
 	depends = libxcb
 	depends = xorgproto
 	depends = libyaml
@@ -22,8 +21,9 @@ pkgbase = yambar
 	depends = xcb-util-errors
 	depends = xcb-util-wm
 	depends = pixman
+	optdepends = libmpdclient: mpd module
 	provides = yambar
-	source = yambar-1.7.0.tar.gz::https://codeberg.org/dnkl/yambar/archive/1.7.0.tar.gz
-	sha256sums = 2c501a9cddec0eb9c8af606ec68169a82141b880c89bb61ed106687b70cd158c
+	source = yambar-1.8.0.tar.gz::https://codeberg.org/dnkl/yambar/archive/1.8.0.tar.gz
+	sha256sums = 51127d20613666b9924deb9afd92c48d69815c5043d2996b3f0f6e9705fcabc8
 
 pkgname = yambar
