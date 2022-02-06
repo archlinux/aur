@@ -5,18 +5,21 @@
 # Contributor: Philipp Überbacher <hollunder at gmx dot at>
 
 pkgname=qtractor-git
-pkgver=0.9.19.r0.g5de89828
+pkgver=0.9.25.r7.ga2bad068d
 pkgrel=1
 pkgdesc="Audio/MIDI multitrack sequencer"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://qtractor.sourceforge.net/"
-license=('GPL')
+license=('GPL2')
 groups=('pro-audio')
-depends=('alsa-lib' 'aubio' 'hicolor-icon-theme' 'jack' 'liblo' 'libmad' 'lilv' 'libvorbis' 'qt5-base' 'rubberband' 'suil')
-makedepends=('dssi' 'git' 'ladspa' 'libogg' 'libsamplerate' 'libsndfile' 'lv2' 'qt5-tools')
-optdepends=('dssi-vst: win32 VST support')
-provides=('qtractor')
-conflicts=('qtractor')
+depends=(hicolor-icon-theme libmad qt6-base)
+makedepends=(alsa-lib aubio cmake dssi git jack ladspa liblo libogg libsamplerate
+libsndfile libvorbis lilv lv2 qt6-tools rubberband suil vst3sdk)
+optdepends=(
+  'new-session-manager: for session management'
+  'qt6-wayland: for native wayland support'
+)
+provides=(dssi-host ladspa-host lv2-host vst-host vst3-host)
 source=("${pkgname%-*}::git+https://github.com/rncbc/qtractor.git")
 md5sums=('SKIP')
 
@@ -27,18 +30,21 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-*}"
-  make -f Makefile.git
-  ./configure --prefix=/usr \
-			  --libdir=/usr/lib
-  make
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=None \
+        -DCONFIG_QT6=ON \
+        -Wno-dev \
+        -B build \
+        -S "${pkgname%-*}"
+  make VERBOSE=1 -C build
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-*}"
-  make DESTDIR="${pkgdir}" install
-    # docs
-  install -t "${pkgdir}/usr/share/doc/${pkgname}" \
-    -vDm 644 {AUTHORS,README,README.VST,TODO}
-}
+  depends+=(libasound.so libaubio.so libjack.so liblilv-0.so liblo.so libogg.so
+  librubberband.so libsamplerate.so libsndfile.so libvorbisenc.so
+  libvorbisfile.so libvorbis.so )
 
+  make DESTDIR="${pkgdir}" install -C build
+  # docs
+  install -vDm 644 "qtractor/"{README,README.VST,README.VST3} -t "${pkgdir}/usr/share/doc/${pkgname}"
+}
