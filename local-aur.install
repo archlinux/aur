@@ -12,6 +12,7 @@ post_install() {
 	mkdir -p /var/lib/local-aur/repo
 	echo '{"packages": {}}' > /var/lib/local-aur/local-aur.json
 	repo-add "/var/lib/local-aur/repo/local-aur.db.tar.gz"
+
 	echo '' >> /etc/pacman.conf
 	echo '[local-aur]' >> /etc/pacman.conf
 	echo 'Include = /usr/share/local-aur/pacman-config' >> /etc/pacman.conf
@@ -32,6 +33,7 @@ post_install() {
 # arg 1:  the old package version
 pre_remove() {
 	rm -r /var/lib/local-aur
+
 	python -c '
 with open("/etc/pacman.conf") as f: content = f.read()
 content = content.replace("\n[local-aur]\nInclude = /usr/share/local-aur/pacman-config\n", "")
