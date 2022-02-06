@@ -3,10 +3,13 @@ chown -R hqplayer:hqplayer /var/hqplayer
 chown -R hqplayer:hqplayer /etc/hqplayer
 cd /usr/lib
 if [ ! -f "libgupnp-1.2.so.0" ]; then
-ln libgupnp-1.2.so.1 libgupnp-1.2.so.0
+ln -s libgupnp-1.2.so.1 libgupnp-1.2.so.0
 fi
 if [ ! -f "libgupnp-av-1.0.so.2" ]; then
-ln  libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
+ln -s libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
+fi
+if [ ! -f "libomp.so.5" ]; then
+ln -s libomp.so libomp.so.5
 fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
@@ -19,10 +22,13 @@ chown -R hqplayer:hqplayer /var/hqplayer
 chown -R hqplayer:hqplayer /etc/hqplayer
 cd /usr/lib
 if [ ! -f "libgupnp-1.2.so.0" ]; then
-ln libgupnp-1.2.so.1 libgupnp-1.2.so.0
+ln -s libgupnp-1.2.so.1 libgupnp-1.2.so.0
 fi
 if [ ! -f "libgupnp-av-1.0.so.2" ]; then
-ln  libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
+ln -s libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
+fi
+if [ ! -f "libomp.so.5" ]; then
+ln -s libomp.so libomp.so.5
 fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
