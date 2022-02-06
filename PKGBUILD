@@ -3,7 +3,7 @@
 # Contributor: Balló György
 # Contributor: Artem Vorotnikov <artem at vorotnikov dot me>
 pkgname=gxml
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="GObject-based XML parser and writer library"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('glib2' 'libgee' 'libxml2')
 makedepends=('gobject-introspection' 'meson' 'vala')
 source=("https://gitlab.gnome.org/GNOME/${pkgname}/-/archive/${pkgver}/gxml-${pkgver}.tar.gz")
-sha256sums=('a047e71b19a5eb159b8ffb4e0a944abf7a07544ad30a42eda9c71b410c3a8a19')
+sha256sums=('8310c44590148c304c4622a94e8f6010539e0aea1f7f64af401114f6b957b6f5')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
