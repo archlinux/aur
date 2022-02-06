@@ -14,7 +14,7 @@ source=("${url}/releases/download/v${pkgver}/MS-Office-Electron-Setup-v${pkgver}
 sha512sums=('SKIP')
 
 package() {
-    bsdtar -xf "${srcdir}/MS-Office-Electron-Setup-${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.bz2
+    bsdtar -xf "${srcdir}/MS-Office-Electron-Setup-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.bz2
     bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}
 	install -d ${pkgdir}/usr/bin/
 	ln -s /opt/MS-Office-Electron/MS-Office-Electron ${pkgdir}/usr/bin/MS-Office-Electron
