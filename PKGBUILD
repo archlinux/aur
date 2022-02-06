@@ -15,12 +15,9 @@ depends=('vapoursynth'
          )
 makedepends=('git'
              'python-pip'
-             'python-wheel'
              )
-optdepends=('python-pytorch: CPU'
-            'python-pytorch-opt: CPU with AVX2 optimizations'
-            'python-pytorch-cuda: CUDA and CPU'
-            'python-pytorch-opt-cuda: CUDA with CPU with AVX2 optimizations'
+optdepends=('python-pytorch: CPU with AVX2 optimizations'
+            'python-pytorch-cuda: CUDA with CPU with AVX2 optimizations'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -39,7 +36,7 @@ prepare() {
 
 build() {
   cd "${_plug}"
-  python -c "import setuptools; setuptools.setup()" bdist_wheel
+  pip wheel --no-deps . -w dist
 }
 
 package() {
