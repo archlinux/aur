@@ -1,0 +1,16 @@
+pkgbase = bcm2-utils-git
+	pkgdesc = Utilities for Broadcom-based cable modems
+	pkgver = 0.9.5.1.r58.g69037f2
+	pkgrel = 1
+	url = https://github.com/jclehner/bcm2-utils
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = openssl
+	depends = gcc-libs
+	provides = bcm2-utils
+	conflicts = bcm2-utils
+	source = git+https://github.com/jclehner/bcm2-utils.git
+	sha256sums = SKIP
+
+pkgname = bcm2-utils-git
