@@ -9,10 +9,11 @@ arch=('x86_64')
 url='https://github.com/WolframRhodium/VapourSynth-BM3DCUDA'
 license=('GPL')
 depends=('vapoursynth'
-         'cuda'
+         'nvidia-utils'
          )
 makedepends=('git'
              'cmake'
+             'cuda'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -39,7 +40,7 @@ build() {
   cmake --build build
 }
 
-package(){
+package() {
   DESTDIR="${pkgdir}" cmake --install build
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
