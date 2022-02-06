@@ -13,7 +13,7 @@
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
 pkgver=91.4.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
