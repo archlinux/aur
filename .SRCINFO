@@ -1,0 +1,13 @@
+pkgbase = doxygen2docset-git
+	pkgdesc = Convert doxygen output to docset format
+	pkgver = 0.1.1.r1.g915de72
+	pkgrel = 1
+	url = https://github.com/chinmaygarde/doxygen2docset
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = cmake
+	source = doxygen2docset::git+https://github.com/chinmaygarde/doxygen2docset.git#branch=master
+	md5sums = SKIP
+
+pkgname = doxygen2docset-git
