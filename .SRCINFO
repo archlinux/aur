@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-debandshit-git
 	pkgdesc = Plugin for Vapoursynth: debandshit (GIT version)
-	pkgver = r50
+	pkgver = v0.4.5.0.g84ae878
 	pkgrel = 1
 	url = https://github.com/Irrational-Encoding-Wizardry/vs-debandshit
 	arch = any
