@@ -1,21 +1,18 @@
 pkgbase = thefile
-	pkgdesc = Simple File Manager
-	pkgver = 3.1
+	pkgdesc = File Manager
+	pkgver = 4.0
 	pkgrel = 0
 	url = https://github.com/vicr123/thefile
 	arch = x86_64
-	license = GPL2
-	makedepends = git
-	makedepends = clang
-	depends = kwidgetsaddons
+	license = GPL3
+	makedepends = qt5-tools
 	depends = xdg-utils
 	depends = qt5-base
-	optdepends = jmtpfs: for MTP support
-	optdepends = ifuse: for iOS support
-	optdepends = usbmuxd: for iOS support
-	optdepends = libplist: for iOS support
-	source = thefile-3.1::git+https://github.com/vicr123/thefile#branch=master
-	md5sums = SKIP
+	depends = the-libs
+	depends = libtdesktopenvironment
+	depends = libthefrisbee
+	depends = qt5-svg
+	source = thefile-4.0::https://github.com/vicr123/thefile/archive/refs/tags/v4.0.tar.gz
+	sha256sums = 214f4751b8d194adaa25f06176849242ade9539352672655cdf5071d240b17fa
 
 pkgname = thefile
-

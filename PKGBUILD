@@ -1,30 +1,26 @@
-
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thefile
-pkgver=3.1
+pkgver=4.0
 pkgrel=0
-pkgdesc="Simple File Manager"
+pkgdesc="File Manager"
 arch=("x86_64")
 url="https://github.com/vicr123/thefile"
-license=('GPL2')
-depends=('kwidgetsaddons' 'xdg-utils' 'qt5-base')
-makedepends=('git' 'clang')
-optdepends=('jmtpfs: for MTP support'
-	    'ifuse: for iOS support'
-	    'usbmuxd: for iOS support'
-	    'libplist: for iOS support')
-source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/thefile#branch=master')
-md5sums=('SKIP')
+license=('GPL3')
+depends=('xdg-utils' 'qt5-base' 'the-libs' 'libtdesktopenvironment' 'libthefrisbee' 'qt5-svg')
+makedepends=('qt5-tools')
+source=("$pkgname-$pkgver"::"https://github.com/vicr123/thefile/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('214f4751b8d194adaa25f06176849242ade9539352672655cdf5071d240b17fa')
 
 build() {
-	cd "$pkgname-$pkgver"
-	qmake
+	cd "thefile-$pkgver"
+	mkdir -p build
+	cd build
+	qmake ../theFile.pro
 	make
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$pkgname-$pkgver/thefile" "$pkgdir/usr/bin"
-	mkdir -p "$pkgdir/usr/share/applications"
-	cp "$pkgname-$pkgver/theFile.desktop" "$pkgdir/usr/share/applications"
+	cd "thefile-$pkgver"
+	cd build
+	make install INSTALL_ROOT=$pkgdir
 }
