@@ -10,7 +10,7 @@ _wwwpkgver=5.10.1
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
-license=('EUPL-1.1')
+license=('EUPL-1.2')
 url="https://github.com/pi-hole/pi-hole"
 depends=('pi-hole-ftl>=5.0' 'bc' 'perl' 'gnu-netcat' 'inetutils' 'iproute2' 'logrotate' 'bind-tools' 'sudo' 'lsof')
 optdepends=(
