@@ -18,17 +18,19 @@ license=("custom:SSPL")
 # lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
 depends=("curl" "libstemmer" "lsb-release" "snappy" "gperftools")
 optdepends=("${pkgname}-tools: mongoimport, mongodump, mongotop, etc")
-makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests")
+makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests" "boost" "yaml-cpp")
 checkdepends=("python-pymongo")
 backup=("etc/${pkgname}.conf")
 source=(
   "https://fastdl.mongodb.org/src/mongodb-src-r${pkgver}.tar.gz"
   "${pkgname}.sysusers"
   "${pkgname}.tmpfiles"
+  "mongodb-5.0.2-skip-no-exceptions.patch"
 )
 sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
-            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39')
+            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
+			'SKIP')
 
 _scons_args=(
   --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
@@ -38,7 +40,7 @@ _scons_args=(
   #--use-system-wiredtiger # https://jira.mongodb.org/browse/SERVER-42813 upstream broke this in 4.2.0, says in meantime not to use it
   --use-system-stemmer
   --use-sasl-client
-  --ssl
+  #--ssl
   --disable-warnings-as-errors
   # --use-system-asio     # https://jira.mongodb.org/browse/SERVER-21839 marked as fixed, but still doesn't compile.  MongoDB uses custom patches.
   # --use-system-icu      # Doesn't compile
@@ -76,13 +78,15 @@ prepare() {
   # Reduces makepkg -- which fully runs check() -- build size from 259GB to 2.3GB, and time by at least 37%
   # See: https://jira.mongodb.org/browse/SERVER-44038
   sed -i '/"-ggdb" if not env.TargetOSIs/d' SConstruct
+
+  patch -Np1 -i ../mongodb-5.0.2-skip-no-exceptions.patch
 }
 
 build() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
   export SCONSFLAGS="$MAKEFLAGS"
-  scons core "${_scons_args[@]}"
+  scons install-core "${_scons_args[@]}"
 }
 
 check() {
