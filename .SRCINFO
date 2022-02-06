@@ -1,0 +1,21 @@
+pkgbase = manga-cli-git
+	pkgdesc = A Bash script for reading mangas via the terminal by scraping Mangakakalot.
+	pkgver = r7.0232392
+	pkgrel = 1
+	url = https://github.com/7USTIN/manga-cli
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = coreutils
+	depends = curl
+	depends = sed
+	depends = awk
+	depends = diffutils
+	depends = patch
+	depends = imagemagick
+	depends = zathura
+	depends = zathura-pdf-mupdf
+	source = git+https://github.com/7USTIN/manga-cli.git
+	md5sums = SKIP
+
+pkgname = manga-cli-git
