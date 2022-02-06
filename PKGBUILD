@@ -3,8 +3,8 @@
 _base=pyamg
 pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
-_gitcommit=e013dbfbc14ff8b5816fb1622f22752557421d95
-pkgver=4.2.1
+_gitcommit=e9f22184813dbc39ae51bba95b4b8aaa0b805818
+pkgver=4.2.2
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/${_base}/${_base}"
@@ -17,7 +17,8 @@ sha512sums=('SKIP')
 
 # https://bbs.archlinux.org/viewtopic.php?id=249188
 build() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
@@ -27,8 +28,7 @@ check() {
 }
 
 package() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
