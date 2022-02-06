@@ -1,0 +1,15 @@
+pkgbase = untree
+	pkgdesc = Inverts tree diagrams back to directory structures
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/codeinred/untree
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = untree::git+https://github.com/codeinred/untree#tag=v0.9.9?signed
+	validpgpkeys = C5E8A4C01F5A0F9E7E65C0FB7F67C72ED1182321
+	sha256sums = SKIP
+
+pkgname = untree
