@@ -2,7 +2,7 @@
 # Contributor: Alex Avance <aravance at gmail.com>
 
 pkgname=wine-discord-ipc-bridge-git
-pkgver=0.0.1.10.ga61da30
+pkgver=0.0.2.1.g2584e36
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/0e4ef622/wine-discord-ipc-bridge"
