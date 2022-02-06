@@ -2,7 +2,7 @@
 
 pkgname=orion-desktop
 pkgver=0.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful, lightweight, fast BitTorrent client, with beautiful user experience and fastest video and audio streaming capabilities"
 arch=('x86_64')
 url="https://snapcraft.io/orion-desktop"
