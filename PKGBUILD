@@ -14,7 +14,9 @@ url="http://gnome-look.org/content/show.php/Arch+Cursor+Theme+(simple)?content=1
 license=('GPL')
 conflicts=($_pkgnbame)
 #source=("http://xfce-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz")
-source=('http://gnome-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz')
+#source=('http://gnome-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz')
+#source=('https://www.gnome-look.org/p/999988/startdownload?file_id=1462316425&file_name=135902-ArchCursorTheme.tar.gz&file_type=application/x-gzip&file_size=47501')
+source=('135902-ArchCursorTheme.tar.gz')
 md5sums=('ac2c9e3c6ddc46b36793007e6a5eeb48')
 
 build() {
@@ -28,5 +30,4 @@ package() {
   # Install the cursor theme
   cp -rf "ArchCursorTheme" "${pkgdir}/usr/share/icons/"
 }
-
 
