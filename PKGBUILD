@@ -14,7 +14,6 @@ depends=('vapoursynth'
          'python-requests'
          )
 makedepends=('git'
-             'python-wheel'
              'python-pip'
              )
 optdepends=('python-pytorch: CPU'

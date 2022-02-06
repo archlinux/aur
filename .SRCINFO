@@ -6,7 +6,6 @@ pkgbase = vapoursynth-plugin-vsbasicvsrpp-git
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = python-wheel
 	makedepends = python-pip
 	depends = vapoursynth
 	depends = python-numpy
