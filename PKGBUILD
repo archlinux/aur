@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-office-electron-git
-pkgver=0.4.0
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
 arch=('x86_64')
@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf "${srcdir}/${pkgname%-git}/release/ms-office-electron-setup-${pkgver}-amd64.deb" -C "${srcdir}" --include data.tar.bz2
+    bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.bz2
     bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}
 	install -d ${pkgdir}/usr/bin/
 	ln -s /opt/MS-Office-Electron/MS-Office-Electron ${pkgdir}/usr/bin/MS-Office-Electron
