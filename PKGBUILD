@@ -11,7 +11,7 @@ depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
          'ttf-font' 'hicolor-icon-theme' 'glibc' 'libpulse' 'nss' 'nspr')
 makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
-             'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils')
+             'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
 _filesrev=011ca923053e61cd9449fafc435607c0c28182ca
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g4-kpe

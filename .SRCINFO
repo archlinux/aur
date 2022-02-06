@@ -28,6 +28,7 @@ pkgbase = waterfox-g4-kpe
 	makedepends = python-psutil
 	makedepends = python-zstandard
 	makedepends = pciutils
+	makedepends = git
 	depends = gtk3
 	depends = libxt
 	depends = startup-notification
