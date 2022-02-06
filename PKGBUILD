@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=curl-http3
-pkgver=7.79.1
+pkgver=7.81.0
 pkgrel=1
 pkgdesc="An URL retrieval utility and library - compiled with HTTP/3 support - binary is called curl3"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://curl.haxx.se/download/curl-$pkgver.tar.gz"{,.asc})
 validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 #source=("curl-$pkgver.zip::https://github.com/curl/curl/archive/master.zip")
 
-_quiche_ref=0.10.0
+_quiche_ref=0.12.0
 
 build(){
   rm -rf quiche
@@ -27,8 +27,8 @@ build(){
   git submodule update --init --recursive
 
   cargo build --release --features ffi,pkg-config-meta,qlog
-  mkdir deps/boringssl/src/lib
-  ln -vnf $(find target/release -name libcrypto.a -o -name libssl.a) deps/boringssl/src/lib/
+  mkdir quiche/deps/boringssl/src/lib
+  ln -vnf $(find target/release -name libcrypto.a -o -name libssl.a) quiche/deps/boringssl/src/lib/
   cd ..
  
   ## Build curl
@@ -38,7 +38,7 @@ build(){
 ## Arch Linux build flags + BoringSSL and quiche
   ./configure \
       LDFLAGS="-Wl,-rpath,${PWD}/../quiche/target/release" \
-      --with-ssl=$PWD/../quiche/deps/boringssl/src \
+      --with-ssl=$PWD/../quiche/quiche/deps/boringssl/src \
       --with-quiche=$PWD/../quiche/target/release \
       --enable-alt-svc \
       --prefix=/usr \
@@ -75,4 +75,4 @@ package() {
   # libquice is requried
   install -Dm755 quiche/target/release/libquiche.so "${pkgdir}/usr/lib/libquiche.so"
 }
-sha512sums=(0f9546285bef741f69d25f20bcd5b961d29fc88084d9f3ebe0c66a6674f4c69a531b41f8e3cc57474f528abdd90aa7981e653c339c5e8383353c36a82efaafc4             SKIP)
+sha512sums=('e3084f0fa083f7f93eac923edbfdddb5fd0a372b94673ba9d4427a2b95508898c15ecdf63b99a1c1f6cf3215e27b06cbaa2b7073df038d43b362e586f92495d3' 'SKIP')
