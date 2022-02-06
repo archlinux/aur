@@ -1,9 +1,11 @@
 pkgbase = moment-git
-	pkgdesc = FOSS Matrix powerclient; forked from Mirage
-	pkgver = v0.7.3.r5.06df9042
+	pkgdesc = A customizable, keyboard-operable Matrix client. Fork of Mirage
+	pkgver = v0.7.3.r12.66afe32c
 	pkgrel = 1
 	url = https://mx-moment.xyz/
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = LGPL3
 	makedepends = cmake
 	makedepends = git
@@ -32,7 +34,7 @@ pkgbase = moment-git
 	depends = python-lxml
 	depends = python-mistune1
 	depends = python-blist
-	depends = python-matrix-nio>=0.17.0
+	depends = python-matrix-nio
 	depends = libxss
 	depends = python-plyer
 	depends = python-sortedcontainers
@@ -43,7 +45,7 @@ pkgbase = moment-git
 	depends = python-pycryptodome
 	depends = python-simpleaudio
 	conflicts = moment
-	source = git+https://gitlab.com/mx-moment/moment.git
+	source = git+https://gitlab.com/mx-moment/moment.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = moment-git
