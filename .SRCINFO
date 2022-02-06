@@ -1,0 +1,13 @@
+pkgbase = sshs
+	pkgdesc = Terminal user interface for SSH
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/quantumsheep/sshs
+	arch = any
+	license = MIT
+	depends = go
+	depends = openssh
+	source = https://github.com/quantumsheep/sshs/archive/refs/tags/1.4.2.tar.gz
+	sha256sums = 8b102f4dfdd6cae7ed15207c04540b73c8e43358321c2409ed73ecfb1ad4b369
+
+pkgname = sshs
