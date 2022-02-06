@@ -1,4 +1,5 @@
 # Contributor: Patrik Sundberg <patrik.sundberg at gmail dot com>
+# Contributor: Xavier Baez <xavierbaez at gmail dot com>
 
 pkgname=motivewave
 pkgver=6.6.0
