@@ -9,40 +9,6 @@
 ### BTCPayServer
 1. `nano ~/.btcpayserver/Main/settings.config` and configure your database.
 
-### Nginx
-1. You can use any HTTP server which supports reverse proxying. Instructions are given for Nginx.
-2. `sudo nano /etc/nginx/nginx.conf` and configure your Nginx server as a reverse HTTP proxy to the BTCPayServer HTTP server. Additional headers are needed. You also need to create SSL keys.
-```
-http
-{
-    # Directives
-    ## Proxy
-    proxy_http_version  1.1;
-    proxy_set_header    Host $host;
-    proxy_set_header    X-Real-IP $remote_addr;
-    proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header    X-Scheme $scheme;
-    proxy_set_header    X-Forwarded-Port $server_port;
-
-    ## SSL certificate
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-    ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
-
-    server
-    {
-        listen      443 ssl;
-        listen      [::]:443 ssl;
-        server_name subdomain.example.com;
-
-        location /
-        {
-            # Proxy
-            proxy_pass  http://localhost:23000;
-        }
-    }
-}
-```
-
 ## Optional configuration
 Information on the lightning connection string can be found [here](https://github.com/btcpayserver/BTCPayServer.Lightning). Decide for one lightning implementation.
 
