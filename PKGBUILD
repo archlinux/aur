@@ -4,9 +4,9 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=openoffice-extension-languagetool
-pkgver=5.5.1
+pkgver=5.6
 pkgrel=1
-_dl_id=19176
+_dl_id=19183
 pkgdesc="An Open Source style and grammar checker (more than 30 languages)"
 arch=('any')
 url="https://languagetool.org"
@@ -16,7 +16,7 @@ depends=('openoffice-bin' 'java-runtime>=8')
 optdepends=('jre8-openjdk: java 8 or greater is required')
 source=("LanguageTool-${pkgver}.oxt::https://extensions.openoffice.org/en/download/${_dl_id}")
 noextract=("LanguageTool-${pkgver}.oxt")
-sha512sums=('bca1ea063bd06f55d1786175fdd0f0e8bf6ea4854d87a63e112ad93169da8b19c076938abb02fe650b5e88524211deedfffd2ba2c94d09be3e330bd2324c7f9e')
+sha512sums=('2856a941e71a2f357e5c89fcc3cbb5b3d49f363b0d934987824135473f9d0adc8f572101cef284b1d11ce45c2115b56add0431da24543530aa0020a98d265773')
 
 package() {
   _DESTDIR="${pkgdir}/opt/openoffice4/share/extensions/${_pkgname}/"
