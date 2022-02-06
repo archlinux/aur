@@ -1,0 +1,44 @@
+diff --git a/setup.py b/setup.py
+index 24c3353..ac5d6af 100644
+--- a/setup.py
++++ b/setup.py
+@@ -24,6 +24,7 @@ setup(
+         ]
+     },
+     install_requires=[
++        'appdirs',
+         'lark-parser>=0.7.8',
+         'pyyaml>=6.0.0'
+     ],
+diff --git a/sfzlint/spec.py b/sfzlint/spec.py
+index 8188808..e5182dc 100644
+--- a/sfzlint/spec.py
++++ b/sfzlint/spec.py
+@@ -5,6 +5,7 @@ import pickle
+ from functools import lru_cache
+ from pathlib import Path
+ from numbers import Real  # int or float
++import appdirs
+ import yaml
+ from . import validators
+ 
+@@ -198,9 +199,11 @@ def _validator(data_value):
+ 
+ 
+ def _pickled(name, fn):
+-    p_file = Path(__file__).parent / f'{name}.pickle'
++    user_cache_dir = Path(appdirs.user_cache_dir("sfzlint", "jisaacstone"))
++    p_file = user_cache_dir / f'{name}.pickle'
+     if not p_file.exists():
+         data = fn()
++        user_cache_dir.mkdir(parents=True, exist_ok=True)
+         with p_file.open('wb') as fob:
+             pickle.dump(data, fob)
+     else:
+@@ -210,5 +213,5 @@ def _pickled(name, fn):
+ 
+ 
+ # pickling as cache cuts script time by ~400ms on my system
+-opcodes = _pickled('opcides', lambda: _override(_extract()))
++opcodes = _pickled('opcodes', lambda: _override(_extract()))
+ cc_opcodes = {k for k in opcodes if 'cc' in k and 'curvecc' not in k}
