@@ -1,6 +1,6 @@
 pkgbase = com.qq.weixin.deepin
 	pkgdesc = Deepin Wine WeChat
-	pkgver = 3.2.1.154_14
+	pkgver = 3.4.0.38_4
 	pkgrel = 1
 	url = http://pc.weixin.qq.com/
 	arch = i686
@@ -42,9 +42,9 @@ pkgbase = com.qq.weixin.deepin
 	conflicts = deepin-wine-wechat
 	conflicts = deepin.com.wechat
 	conflicts = deepin.com.wechat2
-	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin.deepin/com.qq.weixin.deepin_3.2.1.154deepin14_i386.deb
+	source = https://com-store-packages.uniontech.com/appstore/pool/appstore/c/com.qq.weixin.deepin/com.qq.weixin.deepin_3.4.0.38deepin4_i386.deb
 	source = libldap24.tar.gz
-	md5sums = b48cd3c089b7c2bb7b68aba018b306b1
+	md5sums = 34e5107632fbec5cca41546ab50c209e
 	md5sums = 9f42504749b5d9936428a83c28d13aad
 
 pkgname = com.qq.weixin.deepin
