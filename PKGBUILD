@@ -1,8 +1,8 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit
-_tag="v0.15.1"
+_tag="v0.16.0"
 _repo="https://github.com/toitlang/toit.git"
-_commit=83084098ebda2dea7bde61c460a6c49bbf6d546c
+_commit=1eee31a51a699885eab396b430af7d7749d14909
 pkgver="${_tag#v}"
 pkgrel=1
 pkgdesc="Toit programming language SDK"
