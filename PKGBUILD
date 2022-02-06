@@ -2,7 +2,7 @@
 pkgname=doxygen2docset-git
 _gitname=doxygen2docset
 pkgver=0.1.1.r1.g915de72
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert doxygen output to docset format"
 arch=("any")
 url="https://github.com/chinmaygarde/doxygen2docset"
@@ -33,4 +33,12 @@ build() {
 package() {
   cd "$srcdir/$_gitname/build"
   make DESTDIR="$pkgdir" install
+
+  cd ../third_party
+  install -Dm644 "googletest/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-googletest"
+  install -Dm644 "gumbo/gumbo/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-gumbo"
+  install -Dm644 "tinyxml2/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-tinyxml2"
+
+  cd ..
+  install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
