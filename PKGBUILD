@@ -19,7 +19,7 @@ makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' '
              'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
-        "${pkgname}::https://github.com/pytorch/pytorch#commit=7cc129e60c"
+        # "${pkgname}::https://github.com/pytorch/pytorch#commit=7cc129e60c"
         "${pkgname}-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git"
         "${pkgname}-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git"
         "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
@@ -68,7 +68,6 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         ffmpeg4.4.patch
         66219.patch)
 sha256sums=('SKIP'
-            'b37c047f362fe21870e4ea3ca43a3f804c74054dfb93d687bce78a5aedddf4b6'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -219,11 +218,14 @@ prepare() {
   export ATEN_NO_TEST=ON  # do not build ATen tests
   export USE_MKLDNN=ON
   export BUILD_CUSTOM_PROTOBUF=OFF
+  export BUILD_CAFFE2=ON
+  export BUILD_CAFFE2_OPS=ON
   # export BUILD_SHARED_LIBS=OFF
   export USE_FFMPEG=ON
   export USE_GFLAGS=ON
   export USE_GLOG=ON
   export BUILD_BINARY=ON
+  export USE_OBSERVERS=ON
   export USE_OPENCV=ON
   # export USE_SYSTEM_LIBS=ON  # experimental, not all libs present in repos
   export USE_SYSTEM_NCCL=ON
