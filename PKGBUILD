@@ -1,10 +1,10 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-roms-git
 pkgver=20211223.r8.g7b67090
-pkgrel=1
+pkgrel=2
 pkgdesc='ROMs for the 86Box emulator.'
 arch=('any')
-url='https://86box.net/'
+url='https://github.com/86Box/roms'
 license=('custom')
 makedepends=('git')
 options=('!strip')
