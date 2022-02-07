@@ -2,9 +2,9 @@
 # -*- mode: sh -*-
 
 pkgname=fuzzynote
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
-_pkgdate=1625579667
+_pkgdate=1644244661
 pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
 arch=('x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
@@ -14,21 +14,6 @@ provides=('fuzzynote')
 conflicts=('fuzzynote')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Sambigeara/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-)
-md5sums=(
-  '83fd1114bc18286731cb8a4ffa92cd3c'
-)
-sha1sums=(
-  '10f6f0a78ceeefe7e3f124977cdbb9d87f317b88'
-)
-sha256sums=(
-  '5d7003c8be4126bc1f97b0b51d0b06cf229fda1667af00e274a5088f0e2f8124'
-)
-sha512sums=(
-  '96cb67d04fe98681add011e971a0ceb6f72effa1ec903ef6a76e23f213a3de1ce8228d59734d4c554812738d2d868960d222dbc419a1e2b797714d46105bbaa4'
-)
-b2sums=(
-  'ceaa5349859aedd7e27bd94384a61a175620c0707f4c9ee897be6fd15c6e18f2b114b96617ba32f413f062537cec5e3f2795b22ad617739f49653683fb239c83'
 )
 
 build() {
@@ -55,5 +40,15 @@ package() {
   install -Dm0755 bin/fzn   "$pkgdir/usr/bin/fzn"
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+sha256sums=(
+  '9fb43b5819d160b8f01ac56057af9b5cfae87c6c8927e7c8cd81589aa5166f0c'
+)
+sha512sums=(
+  '9b45b0bb40cb3d985aacdf1d273314ccb00ff0e4c063f1f5a075727e67e25857e73d429333dd1215aba6f1c2dfc718703b0a0371c599dcb0762006b19fab874d'
+)
+b2sums=(
+  '19316eb1f0c98c742524657f7d20612faec0a206d1711564b303159d2c1e52613e59cdf61f889ad0505864654b0acb9f1cf91247e430d6f603e32316230ed352'
+)
 
 # eof
