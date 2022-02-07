@@ -18,8 +18,8 @@ _merge_requests_to_use=('1441')
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=41.3
-pkgrel=2
+pkgver=41.3+4+g2405c3b3b
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -35,7 +35,7 @@ provides=(mutter mutter-781835-workaround libmutter-9.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
+_commit=2405c3b3be7e722022554fd032f30dc3918374d5  # tags/41.3^4
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 sha256sums=('SKIP'
