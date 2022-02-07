@@ -1,6 +1,6 @@
 # Maintainer: John Robinson <jbr100uk@gmail.com>
 pkgname=midish
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 epoch=1
 pkgdesc="Command line-based midi sequencer and filter"
@@ -10,7 +10,7 @@ license=('BSD')
 groups=()
 depends=(alsa-lib readline)
 source=("http://www.midish.org/$pkgname-$pkgver.tar.gz")
-md5sums=('1a0af00c13391ca92767b7ca9f569d43')
+md5sums=('cdaf8e604c483facca00015d1f0aa5e3')
 
 build() {
 	cd "$pkgname-$pkgver"
