@@ -1,0 +1,22 @@
+--- php-5.3.29-orig/sapi/apache2filter/config.m4
++++ php-5.3.29/sapi/apache2filter/config.m4
+@@ -118,7 +118,7 @@
+   esac
+ 
+   if test "$APACHE_VERSION" -lt 2004001; then
+-    APXS_MPM=`$APXS -q MPM_NAME`
++    APXS_MPM=prefork
+     if test "$APXS_MPM" != "prefork" && test "$APXS_MPM" != "peruser" && test "$APXS_MPM" != "itk"; then
+       PHP_BUILD_THREAD_SAFE
+     fi
+--- php-5.3.29-orig/sapi/apache2handler/config.m4
++++ php-5.3.29/sapi/apache2handler/config.m4
+@@ -117,7 +117,7 @@
+   esac
+ 
+   if test "$APACHE_VERSION" -lt 2004001; then
+-    APXS_MPM=`$APXS -q MPM_NAME`
++    APXS_MPM=prefork
+     if test "$APXS_MPM" != "prefork" && test "$APXS_MPM" != "peruser" && test "$APXS_MPM" != "itk"; then
+       PHP_BUILD_THREAD_SAFE
+     fi

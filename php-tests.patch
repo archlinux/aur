@@ -1,0 +1,11 @@
+--- a/run-tests.php
++++ b/run-tests.php
+@@ -813,7 +813,7 @@
+ 
+ 		junit_save_xml();
+ 
+-		if (getenv('REPORT_EXIT_STATUS') == 1 and preg_match('/FAILED(?: |$)/', implode(' ', $test_results))) {
++		if (getenv('REPORT_EXIT_STATUS') == 1 and $sum_results['FAILED']) {
+ 			exit(1);
+ 		}
+ 

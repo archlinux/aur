@@ -1,0 +1,12 @@
+--- php-5.3.29-orig/ext/phar/Makefile.frag
++++ php-5.3.29/ext/phar/Makefile.frag
+@@ -37,6 +37,6 @@
+ 
+ install-pharcmd: pharcmd
+ 	-@$(mkinstalldirs) $(INSTALL_ROOT)$(bindir)
+-	$(INSTALL) $(builddir)/phar.phar $(INSTALL_ROOT)$(bindir)
+-	-@rm -f $(INSTALL_ROOT)$(bindir)/phar
+-	$(LN_S) -f $(bindir)/phar.phar $(INSTALL_ROOT)$(bindir)/phar
++	$(INSTALL) $(builddir)/phar.phar $(INSTALL_ROOT)$(bindir)/$(program_prefix)phar$(program_suffix).phar
++	-@rm -f $(INSTALL_ROOT)$(bindir)/$(program_prefix)phar$(program_suffix)
++	$(LN_S) -f $(program_prefix)phar$(program_suffix).phar $(INSTALL_ROOT)$(bindir)/$(program_prefix)phar$(program_suffix)
