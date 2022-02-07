@@ -1,11 +1,11 @@
-From 5f5cb7674868bd88b006a7e7fe27b1ae06564fab Mon Sep 17 00:00:00 2001
+From d50bce51ef34af9715ebcb28ad69f03478b4ee60 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Sun, 6 Feb 2022 08:23:45 -0800
-Subject: [PATCH] v5.16.7 s0ix patch 2022-02-06
+Date: Tue, 8 Feb 2022 10:25:08 -0800
+Subject: [PATCH] v5.16.8 s0ix patch 2022-02-08
 
 Squashed commit of the following:
 
-commit f3c791e4c2d833bff9f2e36c65cf86dcdb0cb2be
+commit aec5daed8a9946a7d2e847cdb2336ebdd70d89ae
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Jan 28 14:35:03 2022 -0600
 
@@ -58,7 +58,7 @@ Date:   Fri Jan 28 14:35:03 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Tested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
 
-commit df72bede074bbc141844f5f51f066a6f2c458bfe
+commit f3a7dc60849c279371fb144b2ea29aa6df5af958
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 25 21:37:57 2022 -0600
 
@@ -79,7 +79,7 @@ Date:   Tue Jan 25 21:37:57 2022 -0600
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit f0ed760f67bc3e4ec923d94433ca2769f3cd3b5f
+commit eb4febbd5c43cb2d822f95c926708309611bf4c7
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 25 21:35:09 2022 -0600
 
@@ -94,7 +94,7 @@ Date:   Tue Jan 25 21:35:09 2022 -0600
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit b36b3e3beef832c2524e71d086d1e4078c2b2fb8
+commit 98337f6333bb7ceee2648320216a978b09a1e257
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 11 14:00:26 2022 -0600
 
@@ -116,7 +116,7 @@ Date:   Tue Jan 11 14:00:26 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit 53c19406a39b9b844e07a294378bbfb5a9225a03
+commit fa6c4cfdadebf7c7957c72a94bc829c5f5e3c028
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jan 20 11:44:39 2022 -0600
 
@@ -134,7 +134,7 @@ Date:   Thu Jan 20 11:44:39 2022 -0600
     Link: https://patchwork.freedesktop.org/patch/469993/
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 7fbc44f24be8f364edc4f01b6569401219e83b10
+commit 724d0555dec678ce6610ad81449870849c49218d
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Mon Jan 17 12:26:43 2022 +0100
 
@@ -148,7 +148,7 @@ Date:   Mon Jan 17 12:26:43 2022 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Link: https://lore.kernel.org/r/20220117112644.260168-1-hdegoede@redhat.com
 
-commit 5793d7813afd07e2cb45780b47bd2c869e82226f
+commit bac9becc4d8b2e8191af37286e6ec7e9d39e2037
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -167,7 +167,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit a6897921263a5e6aaebde1c0f12d5d6b1177de05
+commit d505aaeff6d4a7b9905ed8bb8ca77e0020f7e49c
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -180,13 +180,24 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 9dd91c0219edc10355db5ac1932b3f751f19cca2
-Author: Julian Sikorski <belegdol+github@gmail.com>
-Date:   Fri Nov 19 17:52:36 2021 +0100
+commit e0eac48896fb1647f26207c6d772b231e191ae38
+Author: Lijo Lazar <lijo.lazar@amd.com>
+Date:   Thu Nov 25 19:45:42 2021 +0800
 
-    GFXOFF check patch by Lijo Lazar
+    drm/amd/pm: Add warning for unexpected PG requests
 
-commit 4b88677245a652a57916571368d564bdc861a97c
+    v1: Ideally power gate/ungate requests shouldn't come when smu block is
+    uninitialized. Add a WARN message to check the origins if such a thing
+    ever happens.
+
+    v2: Use dev_WARN to log device info (Felix/Guchun).
+
+    Signed-off-by: Lijo Lazar <lijo.lazar@amd.com>
+    Reviewed-by: Guchun Chen <guchun.chen@amd.com>
+    Reviewed-by: Kevin Yang <kevinyang.wang@amd.com>
+    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
+
+commit 2c399ab88a8a3db8561cc4818d953c6501a1ffc3
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -198,152 +209,14 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
 
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
-
-commit 42b18ef79bd4f0cc6aa587960416f0b6c1237e9e
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Tue Jan 25 21:46:58 2022 -0600
-
-    drm/amd: avoid suspend on dGPUs w/ s2idle support when runtime PM enabled
-
-    commit e55a3aea418269266d84f426b3bd70794d3389c8 upstream.
-
-    dGPUs connected to Intel systems configured for suspend to idle
-    will not have the power rails cut at suspend and resetting the GPU
-    may lead to problematic behaviors.
-
-    Fixes: e25443d2765f4 ("drm/amdgpu: add a dev_pm_ops prepare callback (v2)")
-    Link: https://gitlab.freedesktop.org/drm/amd/-/issues/1879
-    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-commit 969cab85432996249fa5bd0fb381965b5c3078f0
-Author: Aun-Ali Zaidi <admin@kodeit.net>
-Date:   Sat Jan 29 05:49:55 2022 +0000
-
-    drm/amd/display: Force link_rate as LINK_RATE_RBR2 for 2018 15" Apple Retina panels
-
-    commit 30fbce374745a9c6af93c775a5ac49a97f822fda upstream.
-
-    The eDP link rate reported by the DP_MAX_LINK_RATE dpcd register (0xa) is
-    contradictory to the highest rate supported reported by
-    EDID (0xc = LINK_RATE_RBR2). The effects of this compounded with commit
-    '4a8ca46bae8a ("drm/amd/display: Default max bpc to 16 for eDP")' results
-    in no display modes being found and a dark panel.
-
-    For now, simply force the maximum supported link rate for the eDP attached
-    2018 15" Apple Retina panels.
-
-    Additionally, we must also check the firmware revision since the device ID
-    reported by the DPCD is identical to that of the more capable 16,1,
-    incorrectly quirking it. We also use said firmware check to quirk the
-    refreshed 15,1 models with Vega graphics as they use a slightly newer
-    firmware version.
-
-    Tested-by: Aun-Ali Zaidi <admin@kodeit.net>
-    Reviewed-by: Harry Wentland <harry.wentland@amd.com>
-    Signed-off-by: Aun-Ali Zaidi <admin@kodeit.net>
-    Signed-off-by: Aditya Garg <gargaditya08@live.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-    Cc: stable@vger.kernel.org
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-commit a3d3329db088eb01a471758b39f6f353ecb90a51
-Author: Paul Hsieh <paul.hsieh@amd.com>
-Date:   Fri Jan 28 22:03:57 2022 +0800
-
-    drm/amd/display: watermark latencies is not enough on DCN31
-
-    commit f5fa54f45ab41cbb1f99b1208f49554132ffb207 upstream.
-
-    [Why]
-    The original latencies were causing underflow in some modes.
-    Resolution: 2880x1620@60p when HDR enable
-
-    [How]
-    1. Replace with the up-to-date watermark values based on new measurments
-    2. Correct the ddr_wm_table name to DDR5 on DCN31
-
-    Tested-by: Daniel Wheeler <daniel.wheeler@amd.com>
-    Reviewed-by: Aric Cyr <Aric.Cyr@amd.com>
-    Acked-by: Stylon Wang <stylon.wang@amd.com>
-    Signed-off-by: Paul Hsieh <paul.hsieh@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-    Cc: stable@vger.kernel.org
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-commit 1f4332398c108054c1fc0890bffb2a1d36a3de8b
-Author: Agustin Gutierrez <agustin.gutierrez@amd.com>
-Date:   Fri Jan 28 17:51:53 2022 -0500
-
-    drm/amd/display: Update watermark values for DCN301
-
-    commit 2d8ae25d233767171942a9fba5fd8f4a620996be upstream.
-
-    [Why]
-    There is underflow / visual corruption DCN301, for high
-    bandwidth MST DSC configurations such as 2x1440p144 or 2x4k60.
-
-    [How]
-    Use up-to-date watermark values for DCN301.
-
-    Reviewed-by: Zhan Liu <zhan.liu@amd.com>
-    Signed-off-by: Agustin Gutierrez <agustin.gutierrez@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-    Cc: stable@vger.kernel.org
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-commit 09070963edf1791c16d42bbdb2ec24dd394b3259
-Author: Evan Quan <evan.quan@amd.com>
-Date:   Mon Jan 24 13:40:35 2022 +0800
-
-    drm/amd/pm: correct the MGpuFanBoost support for Beige Goby
-
-    commit 3ec5586b4699cfb75cdfa09425e11d121db40773 upstream.
-
-    The existing way cannot handle Beige Goby well as a different
-    PPTable data structure(PPTable_beige_goby_t instead of PPTable_t)
-    is used there.
-
-    Signed-off-by: Evan Quan <evan.quan@amd.com>
-    Acked-by: Alex Deucher <alexander.deucher@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-    Cc: stable@vger.kernel.org
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-commit 910123e23f56fe4c6f8854102b631ac11f52242c
-Author: Lang Yu <Lang.Yu@amd.com>
-Date:   Fri Jan 28 18:24:53 2022 +0800
-
-    drm/amdgpu: fix a potential GPU hang on cyan skillfish
-
-    commit bca52455a3c07922ee976714b00563a13a29ab15 upstream.
-
-    We observed a GPU hang when querying GMC CG state(i.e.,
-    cat amdgpu_pm_info) on cyan skillfish. Acctually, cyan
-    skillfish doesn't support any CG features.
-
-    Just prevent it from accessing GMC CG registers.
-
-    Signed-off-by: Lang Yu <Lang.Yu@amd.com>
-    Reviewed-by: Lijo Lazar <lijo.lazar@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-    Cc: stable@vger.kernel.org
-    Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- drivers/acpi/x86/s2idle.c                     |  18 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu.h           |  10 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c      |  37 +++-
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c       |  11 +-
- drivers/gpu/drm/amd/amdgpu/gmc_v10_0.c        |   3 +
- .../display/dc/clk_mgr/dcn301/vg_clk_mgr.c    |  16 +-
- .../display/dc/clk_mgr/dcn31/dcn31_clk_mgr.c  |  20 +-
- .../gpu/drm/amd/display/dc/core/dc_link_dp.c  |  20 ++
- drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c     |   5 +-
- .../amd/pm/swsmu/smu11/sienna_cichlid_ppt.c   |   6 +-
- drivers/platform/x86/amd-pmc.c                | 185 ++++++++++++++++--
- 11 files changed, 272 insertions(+), 59 deletions(-)
+ drivers/acpi/x86/s2idle.c                 |  18 ++-
+ drivers/gpu/drm/amd/amdgpu/amdgpu.h       |  10 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c  |  37 ++++-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c   |   8 +
+ drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   6 +-
+ drivers/platform/x86/amd-pmc.c            | 185 +++++++++++++++++++---
+ 6 files changed, 228 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
 index 1c48358b43ba..374aa2e8203f 100644
@@ -470,10 +343,10 @@ index 4811b0faafd9..0e12315fa0cb 100644
 +
 +#endif /* CONFIG_SUSPEND */
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index f999638a04ed..ab3851c26f71 100644
+index c811161ce9f0..ab3851c26f71 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-@@ -2236,13 +2236,20 @@ static void amdgpu_drv_delayed_reset_work_handler(struct work_struct *work)
+@@ -2236,6 +2236,7 @@ static void amdgpu_drv_delayed_reset_work_handler(struct work_struct *work)
  static int amdgpu_pmops_prepare(struct device *dev)
  {
  	struct drm_device *drm_dev = dev_get_drvdata(dev);
@@ -481,211 +354,38 @@ index f999638a04ed..ab3851c26f71 100644
  
  	/* Return a positive number here so
  	 * DPM_FLAG_SMART_SUSPEND works properly
- 	 */
+@@ -2243,6 +2244,13 @@ static int amdgpu_pmops_prepare(struct device *dev)
  	if (amdgpu_device_supports_boco(drm_dev))
--		return pm_runtime_suspended(dev) &&
--			pm_suspend_via_firmware();
-+		return pm_runtime_suspended(dev);
-+
+ 		return pm_runtime_suspended(dev);
+ 
 +	/* if we will not support s3 or s2i for the device
 +	 *  then skip suspend
 +	 */
 +	if (!amdgpu_acpi_is_s0ix_active(adev) &&
 +	    !amdgpu_acpi_is_s3_active(adev))
 +		return 1;
- 
++
  	return 0;
  }
-diff --git a/drivers/gpu/drm/amd/amdgpu/gmc_v10_0.c b/drivers/gpu/drm/amd/amdgpu/gmc_v10_0.c
-index 61ec6145bbb1..614c1362a21d 100644
---- a/drivers/gpu/drm/amd/amdgpu/gmc_v10_0.c
-+++ b/drivers/gpu/drm/amd/amdgpu/gmc_v10_0.c
-@@ -1147,6 +1147,9 @@ static void gmc_v10_0_get_clockgating_state(void *handle, u32 *flags)
- {
- 	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
  
-+	if (adev->ip_versions[GC_HWIP][0] == IP_VERSION(10, 1, 3))
-+		return;
-+
- 	adev->mmhub.funcs->get_clockgating(adev, flags);
- 
- 	if (adev->ip_versions[ATHUB_HWIP][0] >= IP_VERSION(2, 1, 0))
-diff --git a/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn301/vg_clk_mgr.c b/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn301/vg_clk_mgr.c
-index 3eee32faa208..329ce4e84b83 100644
---- a/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn301/vg_clk_mgr.c
-+++ b/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn301/vg_clk_mgr.c
-@@ -582,32 +582,32 @@ static struct wm_table lpddr5_wm_table = {
- 			.wm_inst = WM_A,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.65333,
--			.sr_exit_time_us = 7.95,
--			.sr_enter_plus_exit_time_us = 9,
-+			.sr_exit_time_us = 13.5,
-+			.sr_enter_plus_exit_time_us = 16.5,
- 			.valid = true,
- 		},
- 		{
- 			.wm_inst = WM_B,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.65333,
--			.sr_exit_time_us = 9.82,
--			.sr_enter_plus_exit_time_us = 11.196,
-+			.sr_exit_time_us = 13.5,
-+			.sr_enter_plus_exit_time_us = 16.5,
- 			.valid = true,
- 		},
- 		{
- 			.wm_inst = WM_C,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.65333,
--			.sr_exit_time_us = 9.89,
--			.sr_enter_plus_exit_time_us = 11.24,
-+			.sr_exit_time_us = 13.5,
-+			.sr_enter_plus_exit_time_us = 16.5,
- 			.valid = true,
- 		},
- 		{
- 			.wm_inst = WM_D,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.65333,
--			.sr_exit_time_us = 9.748,
--			.sr_enter_plus_exit_time_us = 11.102,
-+			.sr_exit_time_us = 13.5,
-+			.sr_enter_plus_exit_time_us = 16.5,
- 			.valid = true,
- 		},
- 	}
-diff --git a/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn31/dcn31_clk_mgr.c b/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn31/dcn31_clk_mgr.c
-index 9df38e2ee4f4..ed53dcead839 100644
---- a/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn31/dcn31_clk_mgr.c
-+++ b/drivers/gpu/drm/amd/display/dc/clk_mgr/dcn31/dcn31_clk_mgr.c
-@@ -329,38 +329,38 @@ static struct clk_bw_params dcn31_bw_params = {
- 
- };
- 
--static struct wm_table ddr4_wm_table = {
-+static struct wm_table ddr5_wm_table = {
- 	.entries = {
- 		{
- 			.wm_inst = WM_A,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.72,
--			.sr_exit_time_us = 6.09,
--			.sr_enter_plus_exit_time_us = 7.14,
-+			.sr_exit_time_us = 9,
-+			.sr_enter_plus_exit_time_us = 11,
- 			.valid = true,
- 		},
- 		{
- 			.wm_inst = WM_B,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.72,
--			.sr_exit_time_us = 10.12,
--			.sr_enter_plus_exit_time_us = 11.48,
-+			.sr_exit_time_us = 9,
-+			.sr_enter_plus_exit_time_us = 11,
- 			.valid = true,
- 		},
- 		{
- 			.wm_inst = WM_C,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.72,
--			.sr_exit_time_us = 10.12,
--			.sr_enter_plus_exit_time_us = 11.48,
-+			.sr_exit_time_us = 9,
-+			.sr_enter_plus_exit_time_us = 11,
- 			.valid = true,
- 		},
- 		{
- 			.wm_inst = WM_D,
- 			.wm_type = WM_TYPE_PSTATE_CHG,
- 			.pstate_latency_us = 11.72,
--			.sr_exit_time_us = 10.12,
--			.sr_enter_plus_exit_time_us = 11.48,
-+			.sr_exit_time_us = 9,
-+			.sr_enter_plus_exit_time_us = 11,
- 			.valid = true,
- 		},
- 	}
-@@ -688,7 +688,7 @@ void dcn31_clk_mgr_construct(
- 		if (ctx->dc_bios->integrated_info->memory_type == LpDdr5MemType) {
- 			dcn31_bw_params.wm_table = lpddr5_wm_table;
- 		} else {
--			dcn31_bw_params.wm_table = ddr4_wm_table;
-+			dcn31_bw_params.wm_table = ddr5_wm_table;
- 		}
- 		/* Saved clocks configured at boot for debug purposes */
- 		 dcn31_dump_clk_registers(&clk_mgr->base.base.boot_snapshot, &clk_mgr->base.base, &log_info);
-diff --git a/drivers/gpu/drm/amd/display/dc/core/dc_link_dp.c b/drivers/gpu/drm/amd/display/dc/core/dc_link_dp.c
-index 13bc69d6b679..ccd6cdbe46f4 100644
---- a/drivers/gpu/drm/amd/display/dc/core/dc_link_dp.c
-+++ b/drivers/gpu/drm/amd/display/dc/core/dc_link_dp.c
-@@ -4730,6 +4730,26 @@ static bool retrieve_link_cap(struct dc_link *link)
- 		dp_hw_fw_revision.ieee_fw_rev,
- 		sizeof(dp_hw_fw_revision.ieee_fw_rev));
- 
-+	/* Quirk for Apple MBP 2018 15" Retina panels: wrong DP_MAX_LINK_RATE */
-+	{
-+		uint8_t str_mbp_2018[] = { 101, 68, 21, 103, 98, 97 };
-+		uint8_t fwrev_mbp_2018[] = { 7, 4 };
-+		uint8_t fwrev_mbp_2018_vega[] = { 8, 4 };
-+
-+		/* We also check for the firmware revision as 16,1 models have an
-+		 * identical device id and are incorrectly quirked otherwise.
-+		 */
-+		if ((link->dpcd_caps.sink_dev_id == 0x0010fa) &&
-+		    !memcmp(link->dpcd_caps.sink_dev_id_str, str_mbp_2018,
-+			     sizeof(str_mbp_2018)) &&
-+		    (!memcmp(link->dpcd_caps.sink_fw_revision, fwrev_mbp_2018,
-+			     sizeof(fwrev_mbp_2018)) ||
-+		    !memcmp(link->dpcd_caps.sink_fw_revision, fwrev_mbp_2018_vega,
-+			     sizeof(fwrev_mbp_2018_vega)))) {
-+			link->reported_link_cap.link_rate = LINK_RATE_RBR2;
-+		}
-+	}
-+
- 	memset(&link->dpcd_caps.dsc_caps, '\0',
- 			sizeof(link->dpcd_caps.dsc_caps));
- 	memset(&link->dpcd_caps.fec_cap, '\0', sizeof(link->dpcd_caps.fec_cap));
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
-index 9d7d64fdf410..37e83df92264 100644
+index 9d7d64fdf410..8a05b28f7365 100644
 --- a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
 +++ b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
-@@ -277,8 +277,11 @@ static int smu_dpm_set_power_gate(void *handle,
+@@ -277,8 +277,12 @@ static int smu_dpm_set_power_gate(void *handle,
  	struct smu_context *smu = handle;
  	int ret = 0;
  
 -	if (!smu->pm_enabled || !smu->adev->pm.dpm_enabled)
 +	if (!smu->pm_enabled || !smu->adev->pm.dpm_enabled) {
-+		WARN(true, "SMU uninitialized but power %s requested for %u!\n",
-+		     gate ? "gate" : "ungate", block_type);
++		dev_WARN(smu->adev->dev,
++			 "SMU uninitialized but power %s requested for %u!\n",
++			 gate ? "gate" : "ungate", block_type);
  		return -EOPNOTSUPP;
 +	}
  
  	switch (block_type) {
  	/*
-diff --git a/drivers/gpu/drm/amd/pm/swsmu/smu11/sienna_cichlid_ppt.c b/drivers/gpu/drm/amd/pm/swsmu/smu11/sienna_cichlid_ppt.c
-index a4108025fe29..446d37320b94 100644
---- a/drivers/gpu/drm/amd/pm/swsmu/smu11/sienna_cichlid_ppt.c
-+++ b/drivers/gpu/drm/amd/pm/swsmu/smu11/sienna_cichlid_ppt.c
-@@ -3681,14 +3681,14 @@ static ssize_t sienna_cichlid_get_gpu_metrics(struct smu_context *smu,
- 
- static int sienna_cichlid_enable_mgpu_fan_boost(struct smu_context *smu)
- {
--	struct smu_table_context *table_context = &smu->smu_table;
--	PPTable_t *smc_pptable = table_context->driver_pptable;
-+	uint16_t *mgpu_fan_boost_limit_rpm;
- 
-+	GET_PPTABLE_MEMBER(MGpuFanBoostLimitRpm, &mgpu_fan_boost_limit_rpm);
- 	/*
- 	 * Skip the MGpuFanBoost setting for those ASICs
- 	 * which do not support it
- 	 */
--	if (!smc_pptable->MGpuFanBoostLimitRpm)
-+	if (*mgpu_fan_boost_limit_rpm == 0)
- 		return 0;
- 
- 	return smu_cmn_send_smc_msg_with_param(smu,
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
 index 230593ae5d6d..61cb1d05158e 100644
 --- a/drivers/platform/x86/amd-pmc.c
