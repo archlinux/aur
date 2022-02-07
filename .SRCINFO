@@ -1,13 +1,13 @@
 pkgbase = rdo
 	pkgdesc = A simple doas/sudo alternative.
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://codeberg.org/sw1tchbl4d3/rdo
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	depends = libbsd
-	source = https://codeberg.org/sw1tchbl4d3/rdo/archive/1.2.tar.gz
-	sha512sums = fb4c50b007dbca3c82b33607d3b10f1d841f325f709599325a2ce28721a977d6d0ebafed60a398d60eb09f056c69c39986170f883cd37e244e4eb2d5a106556c
+	source = https://codeberg.org/sw1tchbl4d3/rdo/archive/1.3.tar.gz
+	sha512sums = bdfefe006269a61d6387a265ec02ba8953b6014025bdb2f722e4ebf619c3002835c26d257d60890ffd616a82601dac63a2e526b6643ad7b36e257c2c1c97b72b
 
 pkgname = rdo
