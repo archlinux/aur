@@ -1,0 +1,14 @@
+pkgbase = terraform-provider-ovirt
+	pkgdesc = Terraform provider for oVirt 4.x
+	pkgver = 0.99.0
+	pkgrel = 1
+	url = https://github.com/oVirt/terraform-provider-ovirt
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	depends = glibc
+	source = terraform-provider-ovirt-0.99.0.tar.gz::https://github.com/oVirt/terraform-provider-ovirt/archive/refs/tags/v0.99.0.tar.gz
+	sha512sums = 4400d1bd199aa96e47b8d5a8715b5e07973f77a7355e970f9c38c687f020f76614f42f87cd892a355d8b058934fd86eeb71bc296fad4cf56512e797676e108ec
+	b2sums = ad2359a4aa8ccd7ee7af4dd60969f31ec8a0e878bb52679cde216f91305988564e666d4179835e561a402833ce0d93f94236b8eb2c0fef7a357e1ebedaf2cb65
+
+pkgname = terraform-provider-ovirt
