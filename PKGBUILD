@@ -1,9 +1,9 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
-# Upstream PKGBUILD (community repo):
+# Upstream PKGBUILD (telegram-desktop in community repo):
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: hexchain <i@hexchain.org>
 pkgname=telegram-desktop-userfonts
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
@@ -19,7 +19,7 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz")
-sha512sums=('5a86f8e3dd1b7fca2a615a2de86f9640f14bbf27b7e73f735dad60629ddb99bd5c951d7311f99c044ab6178a49ff997aae5e8da0f8bb6753fa7eecfb12562cef')
+sha512sums=('7b8996afc6aeba544bcd46a25dea0ea6ca0b4ef934ae4b2e8fb2717597f7d67769ddce37ba6c3e4c89bdba269bb406a18d60504dd7742a6e4d45f6e6f8a88ab8')
 
 prepare() {
     cd tdesktop-$pkgver-full
