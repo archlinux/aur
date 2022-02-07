@@ -19,6 +19,7 @@ depends=(
     'hdf5'
     'leveldb'
     'python-numpy'
+    'lmdb'
 )
 makedepends=(
     'git'
