@@ -15,7 +15,7 @@ pkgbase = irccd
 	backup = etc/irccd.conf
 	source = http://releases.malikania.fr/irccd/4.0.1/irccd-4.0.1.tar.xz
 	source = irccd-sysusers.conf
-	md5sums = f8818c1a3414621b3d2cfb080d915bf5
+	md5sums = 19c8c43fcd74708cbafc1f4b8d950f92
 	md5sums = 9a2172be1a0b56ee719048cb0b4ee594
 
 pkgname = irccd

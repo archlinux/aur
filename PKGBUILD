@@ -20,7 +20,7 @@
 
 pkgname=irccd
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='A flexible, fast IRC bot'
 arch=('x86_64')
@@ -45,6 +45,7 @@ md5sums=('19c8c43fcd74708cbafc1f4b8d950f92'
 build() {
 	cmake -S "$pkgname-$pkgver" -B build \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DCMAKE_INSTALL_SYSCONFDIR='/etc' \
 		-DIRCCD_WITH_SYSTEMD=On \
 		-DIRCCD_WITH_TESTS=Off
 	cmake --build build
@@ -57,6 +58,6 @@ package() {
 	cp "$pkgname-$pkgver"/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 	# Copy default config files and sysusers
-	install -D -m 0644 "$pkgdir/usr/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
+	install -D -m 0644 "$pkgdir/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
 	install -D -m 0644 "$srcdir/irccd-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/irccd.conf"
 }
