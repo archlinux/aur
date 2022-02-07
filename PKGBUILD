@@ -1,4 +1,5 @@
 # Maintainer: jabra98 <jabra98.gpg@gmail.com>
+# Maintainer: jabra982 <jabra98.gpg@gmail.com>
 pkgname=my_test_package_jabra
 pkgver=1
 pkgrel=1
