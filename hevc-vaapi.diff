@@ -1,8 +1,8 @@
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c b/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
-index 445c5a792..a7a96d819 100644
+index 1598d39db..9b927a9e5 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg-vaapi.c
-@@ -69,10 +69,35 @@
+@@ -72,10 +72,35 @@ struct vaapi_encoder {
  	bool initialized;
  };
  
@@ -27,9 +27,9 @@ index 445c5a792..a7a96d819 100644
 +static struct type_data hevc_type = {
 +	.id = AV_CODEC_ID_HEVC,
 +	.profile = FF_PROFILE_HEVC_MAIN,
-+	.level = 0,
++	.level = 120,
++	.rate_control = "CBR",
 +	.name = "FFMPEG VAAPI (hevc)",
-+	.rate_control = "CQP",
 +};
 +
 +static const char *vaapi_getname(void *type_data)
@@ -41,7 +41,7 @@ index 445c5a792..a7a96d819 100644
  }
  
  static inline bool valid_format(enum video_format format)
-@@ -170,15 +195,15 @@
+@@ -173,15 +198,15 @@ typedef struct {
  	bool maxrate;
  } rc_mode_t;
  
@@ -64,7 +64,7 @@ index 445c5a792..a7a96d819 100644
  	const rc_mode_t *rc_mode = RC_MODES;
  
  	while (!!rc_mode && strcmp(rc_mode->name, name) != 0)
-@@ -278,6 +303,7 @@
+@@ -281,6 +306,7 @@ static bool vaapi_update(void *data, obs_data_t *settings)
  
  	info("settings:\n"
  	     "\tdevice:       %s\n"
@@ -72,7 +72,7 @@ index 445c5a792..a7a96d819 100644
  	     "\trate_control: %s\n"
  	     "\tprofile:      %d\n"
  	     "\tlevel:        %d\n"
-@@ -288,9 +314,9 @@
+@@ -291,9 +317,9 @@ static bool vaapi_update(void *data, obs_data_t *settings)
  	     "\twidth:        %d\n"
  	     "\theight:       %d\n"
  	     "\tb-frames:     %d\n",
@@ -85,7 +85,7 @@ index 445c5a792..a7a96d819 100644
  
  	return vaapi_init_codec(enc, device);
  }
-@@ -344,9 +370,12 @@
+@@ -347,9 +373,12 @@ static void *vaapi_create(obs_data_t *settings, obs_encoder_t *encoder)
  
  	if (vaapi_codec == AV_CODEC_ID_H264) {
  		enc->vaapi = avcodec_find_encoder_by_name("h264_vaapi");
@@ -100,7 +100,7 @@ index 445c5a792..a7a96d819 100644
  
  	blog(LOG_INFO, "---------------------------------");
  
-@@ -482,7 +511,10 @@
+@@ -485,7 +514,10 @@ static bool vaapi_encode(void *data, struct encoder_frame *frame,
  		packet->data = enc->buffer.array;
  		packet->size = enc->buffer.num;
  		packet->type = OBS_ENCODER_VIDEO;
@@ -112,7 +112,7 @@ index 445c5a792..a7a96d819 100644
  		*received_packet = true;
  	} else {
  		*received_packet = false;
-@@ -503,19 +535,20 @@
+@@ -506,19 +538,20 @@ static void set_visible(obs_properties_t *ppts, const char *name, bool visible)
  	obs_property_set_visible(p, visible);
  }
  
@@ -140,8 +140,8 @@ index 445c5a792..a7a96d819 100644
  	obs_data_set_default_int(settings, "qp", 20);
  	obs_data_set_default_int(settings, "maxrate", 0);
  }
-@@ -538,9 +571,13 @@
- 	return true;
+@@ -566,9 +599,13 @@ static bool get_device_name_from_pci(struct pci_access *pacc, char *pci_slot,
+ 	return false;
  }
  
 -static obs_properties_t *vaapi_properties(void *unused)
@@ -155,7 +155,7 @@ index 445c5a792..a7a96d819 100644
  
  	obs_properties_t *props = obs_properties_create();
  	obs_property_t *list;
-@@ -561,40 +598,36 @@
+@@ -632,40 +669,63 @@ static obs_properties_t *vaapi_properties(void *unused)
  		}
  	}
  
@@ -217,6 +217,33 @@ index 445c5a792..a7a96d819 100644
 +		obs_property_list_add_int(list, "5.0", 50);
 +		obs_property_list_add_int(list, "5.1", 51);
 +		obs_property_list_add_int(list, "5.2", 52);
++	} else if (codec->id == AV_CODEC_ID_HEVC) {
++		list = obs_properties_add_list(props, "profile",
++						obs_module_text("Profile"),
++						OBS_COMBO_TYPE_LIST,
++						OBS_COMBO_FORMAT_INT);
++		obs_property_list_add_int(list, "Main",	FF_PROFILE_HEVC_MAIN);
++		obs_property_list_add_int(list, "Main10", FF_PROFILE_HEVC_MAIN_10);
++		obs_property_list_add_int(list, "Rext", FF_PROFILE_HEVC_REXT);
++
++		list = obs_properties_add_list(props, "level",
++						obs_module_text("Level"),
++						OBS_COMBO_TYPE_LIST,
++						OBS_COMBO_FORMAT_INT);
++		obs_property_list_add_int(list, "Auto", FF_LEVEL_UNKNOWN);
++		obs_property_list_add_int(list, "1", 30);
++		obs_property_list_add_int(list, "2", 60);
++		obs_property_list_add_int(list, "2.1", 63);
++		obs_property_list_add_int(list, "3", 90);
++		obs_property_list_add_int(list, "3.1", 93);
++		obs_property_list_add_int(list, "4", 120);
++		obs_property_list_add_int(list, "4.1", 123);
++		obs_property_list_add_int(list, "5", 150);
++		obs_property_list_add_int(list, "5.1", 153);
++		obs_property_list_add_int(list, "5.2", 156);
++		obs_property_list_add_int(list, "6", 180);
++		obs_property_list_add_int(list, "6.1", 183);
++		obs_property_list_add_int(list, "6.2", 186);
 +	}
 + 
 + 	list = obs_properties_add_list(props, "rate_control",
@@ -226,7 +253,7 @@ index 445c5a792..a7a96d819 100644
  	obs_property_list_add_string(list, "CBR (default)", "CBR");
  	obs_property_list_add_string(list, "CQP", "CQP");
  	obs_property_list_add_string(list, "VBR", "VBR");
-@@ -616,6 +649,7 @@
+@@ -687,6 +747,7 @@ static obs_properties_t *vaapi_properties(void *unused)
  			       obs_module_text("KeyframeIntervalSec"), 0, 20,
  			       1);
  
@@ -234,7 +261,7 @@ index 445c5a792..a7a96d819 100644
  	return props;
  }
  
-@@ -645,11 +679,26 @@
+@@ -716,11 +777,28 @@ struct obs_encoder_info vaapi_encoder_info = {
  	.create = vaapi_create,
  	.destroy = vaapi_destroy,
  	.encode = vaapi_encode,
@@ -242,9 +269,9 @@ index 445c5a792..a7a96d819 100644
 -	.get_properties = vaapi_properties,
 +	.get_defaults2 = vaapi_defaults,
 +	.get_properties2 = vaapi_properties,
- 	.get_extra_data = vaapi_extra_data,
- 	.get_sei_data = vaapi_sei_data,
- 	.get_video_info = vaapi_video_info,
++	.get_extra_data = vaapi_extra_data,
++	.get_sei_data = vaapi_sei_data,
++	.get_video_info = vaapi_video_info,
 +	.type_data = &h264_type,
 +};
 +
@@ -258,16 +285,18 @@ index 445c5a792..a7a96d819 100644
 +	.encode = vaapi_encode,
 +	.get_defaults2 = vaapi_defaults,
 +	.get_properties2 = vaapi_properties,
-+	.get_video_info = vaapi_video_info,
+ 	.get_extra_data = vaapi_extra_data,
+ 	.get_sei_data = vaapi_sei_data,
+ 	.get_video_info = vaapi_video_info,
 +	.type_data = &hevc_type,
  };
  
  #endif
 diff --git a/plugins/obs-ffmpeg/obs-ffmpeg.c b/plugins/obs-ffmpeg/obs-ffmpeg.c
-index b7a17095d..9d8397e68 100644
+index b25201572..84594f2b6 100644
 --- a/plugins/obs-ffmpeg/obs-ffmpeg.c
 +++ b/plugins/obs-ffmpeg/obs-ffmpeg.c
-@@ -35,6 +35,7 @@ extern struct obs_encoder_info nvenc_encoder_info;
+@@ -37,6 +37,7 @@ extern struct obs_encoder_info aom_av1_encoder_info;
  
  #ifdef LIBAVUTIL_VAAPI_AVAILABLE
  extern struct obs_encoder_info vaapi_encoder_info;
@@ -275,7 +304,7 @@ index b7a17095d..9d8397e68 100644
  #endif
  
  #ifndef __APPLE__
-@@ -210,9 +211,9 @@ finish:
+@@ -215,9 +216,9 @@ finish:
  #endif
  
  #ifdef LIBAVUTIL_VAAPI_AVAILABLE
@@ -287,18 +316,20 @@ index b7a17095d..9d8397e68 100644
  	return !!vaenc;
  }
  #endif
-@@ -253,10 +254,14 @@ bool obs_module_load(void)
+@@ -269,9 +270,13 @@ bool obs_module_load(void)
  		obs_register_encoder(&nvenc_encoder_info);
  	}
  #if !defined(_WIN32) && defined(LIBAVUTIL_VAAPI_AVAILABLE)
 -	if (vaapi_supported()) {
+-		blog(LOG_INFO, "FFMPEG VAAPI supported");
+-		obs_register_encoder(&vaapi_encoder_info);
 +	if (vaapi_supported("h264_vaapi")) {
- 		blog(LOG_INFO, "FFMPEG VAAPI supported");
- 		obs_register_encoder(&vaapi_encoder_info);
- 	}
++ 		blog(LOG_INFO, "FFMPEG VAAPI supported");
++ 		obs_register_encoder(&vaapi_encoder_info);
++ 	}
 +	if (vaapi_supported("hevc_vaapi")) {
 +		blog(LOG_INFO, "FFMPEG HEVC VAAPI supported");
 +		obs_register_encoder(&vaapi_hevc_encoder_info);
-+	}
+ 	}
  #endif
  #endif

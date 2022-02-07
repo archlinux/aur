@@ -1,6 +1,6 @@
 pkgbase = obs-hevc-vaapi-git
 	pkgdesc = Free and open source software for video recording and live streaming. With VAAPI HEVC support.
-	pkgver = 27.1.3.r4.g9d6ecc8be
+	pkgver = 27.2.0.rc1.14.gac8dbf67b
 	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = obs-hevc-vaapi-git
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
 	optdepends = qt5-svg: svg support
-	provides = obs-studio=27.1.3.r4.g9d6ecc8be
+	provides = obs-studio=27.2.0.rc1.14.gac8dbf67b
 	conflicts = obs-studio
 	source = obs-hevc-vaapi-git::git+https://github.com/obsproject/obs-studio.git#branch=master
 	source = git+https://github.com/Mixer/ftl-sdk.git
@@ -43,7 +43,7 @@ pkgbase = obs-hevc-vaapi-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = dfb73c250f4e1f0fda2d2c8b8416f649639ff0730e444a68f30c7761d256d066
+	sha256sums = c4322d8ec5247a7b3f95a124e9312033ceeb11fa379ee8a887f60a01b3fbd0e9
 	sha256sums = bdfbd062f080bc925588aec1989bb1df34bf779cc2fc08ac27236679cf612abd
 
 pkgname = obs-hevc-vaapi-git
