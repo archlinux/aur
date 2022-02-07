@@ -1,9 +1,9 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 _npmname=nw-gyp
-pkgname=nw-gyp # All lowercase
-pkgver=0.12.2
-pkgrel=2
+pkgname=nw-gyp
+pkgver=3.6.5
+pkgrel=1
 pkgdesc="Native addon build tool for nwjs-bin"
 arch=(any)
 url="https://github.com/rogerwang/nw-gyp"
@@ -13,7 +13,7 @@ optdepends=("nwjs-bin: webkit runtime environment")
 makedepends=('nodejs' 'npm')
 source=( "http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz" )
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('33549526941baf147d60fab412b4028158bf293a396b79c3f521bcaff9e2aa0a')
+sha256sums=('95c3ba849df9a17771a1033c635aafd4bc80ff55189d73fe25166bdd2bfb0ab4')
 
 package() {
   cd $srcdir
