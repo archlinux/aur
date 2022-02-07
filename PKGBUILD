@@ -28,6 +28,5 @@ package() {
   rm -rf "$pkgdir/opt/$pkgname/lib/runtime/"*
 
   # Symlink system JVM
-  install -d "$pkgdir/opt/$pkgname/lib/runtime/"
   ln -s "/usr/lib/jvm/java-${_jre_ver}-openjdk/"* "$pkgdir/opt/$pkgname/lib/runtime/"
 }
