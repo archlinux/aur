@@ -9,7 +9,7 @@ pkgdesc="Font depicting various open-source logos, by CtrlAltF12"
 arch=('any')
 url="https://bbs.archlinux.org/viewtopic.php?id=45256"
 license=('custom')
-depends=('fontconfig' 'xorg-font-utils')
+depends=('fontconfig' 'xorg-mkfontdir')
 install=ttf-openlogos-archupdate.install
 source=('https://github.com/jpope777/PKGBUILDs/raw/master/ttf-openlogos-archupdate/openlogos-archupdate.ttf')
 conflicts=('ttf-openlogos')
