@@ -3,8 +3,8 @@
 # Contributor: Klaus Alexander Seistrup <klaus@seistrup.dk>
 
 pkgname=nb
-pkgver=6.9.1
-pkgrel=3
+pkgver=6.9.2
+pkgrel=1
 pkgdesc="A command line note-taking, bookmarking, archiving, and knowledge base application"
 arch=('any')
 url="https://github.com/xwmx/${pkgname}"
@@ -41,7 +41,7 @@ optdepends=(
   'termpdf.py-git'
   'vifm'
 )
-sha512sums=('457adbb7217253bdd88626c16a61787f39847caac13a7c4b76ce0bdc9393c2a6707454b324063d83bd94257efe66659a7be3bb1640c88725791ee8119065bccf')
+sha512sums=('bdb1042d2438f0606a2968b9b8fd0ee13b3104ba3b1d29980cdccfd630af433c02f07fb05429b2743fc4700fc0cff99f8f05af616a70786ecaf9a101766f45e9')
 
 package() {
   cd "${pkgname}-${pkgver}"
