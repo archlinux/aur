@@ -1,16 +1,16 @@
 [Unit]
-Description=LND daemon
+Description=Lightning Terminal for LND daemon
 After=network.target
 
 [Service]
 User=litd
 Group=litd
-ExecStart=/usr/bin/lid --configfile=/etc/litd/litd.conf 
+EnvironmentFile=/etc/default/litd
+ExecStart=/usr/bin/litd $LITD_ARGS
 Restart=always
 Type=simple
 KillMode=process
 TimeoutSec=280
-Restart=always
 RestartSec=60
 SyslogIdentifier=litd
 

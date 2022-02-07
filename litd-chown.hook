@@ -2,7 +2,7 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = lnd-bin
+Target = lightning-terminal
 
 [Action]
 Description = Setting daemon user directory permissions...
