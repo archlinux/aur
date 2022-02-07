@@ -1,6 +1,6 @@
 pkgbase = wluma-git
 	pkgdesc = Automatic brightness adjustment based on screen contents and ALS
-	pkgver = 4.1.0.r0.ga942090
+	pkgver = 4.1.2.r1.g0c49755
 	pkgrel = 1
 	url = https://github.com/maximbaz/wluma
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = wluma-git
 	makedepends = systemd
 	makedepends = marked-man
 	depends = vulkan-icd-loader
-	depends = vulkan-driver
-	depends = wayland
 	depends = systemd-libs
 	depends = glibc
 	depends = gcc-libs
 	depends = v4l-utils
+	optdepends = vulkan-driver: for using capturer=wlroots in config.toml
+	optdepends = wayland: for using capturer=wlroots in config.toml
 	provides = wluma
 	conflicts = wluma
 	source = git+https://github.com/maximbaz/wluma.git
