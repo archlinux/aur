@@ -1,7 +1,7 @@
 pkgname=youtube-bin
 _pkgname=Youtube-bin
 pkgver=1.0.7
-pkgrel=3
+pkgrel=4
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -26,7 +26,7 @@ package() {
     install -dm755 "$pkgdir/opt/Youtube"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/Youtube"
-    cp -r "$pkgdir/opt/Youtube/resources/app/youtube.svg" "$pkgdir/usr/share/pixmaps"  
+    cp -r "$pkgdir/opt/Youtube/resources/app/youtubeapp.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
