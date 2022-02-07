@@ -1,7 +1,8 @@
 pkgbase = manga-cli-git
 	pkgdesc = A Bash script for reading mangas via the terminal by scraping Mangakakalot.
-	pkgver = r7.0232392
+	pkgver = r6.3a08894
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/7USTIN/manga-cli
 	arch = any
 	license = GPL3
