@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = lnd-bin
+
+[Action]
+Description = Setting daemon user directory permissions...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/chown -R litd:litd /etc/litd /var/lib/litd
