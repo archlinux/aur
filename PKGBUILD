@@ -3,7 +3,7 @@
 pkgname='rustypaste-cli'
 pkgdesc="A CLI tool for rustypaste."
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/orhun/rustypaste-cli"
 license=('MIT')
