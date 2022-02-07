@@ -1,7 +1,7 @@
 pkgbase = thunderhub
 	pkgdesc = Lightning Node Manager
 	pkgver = 0.13.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apotdevin/thunderhub
 	install = thunderhub.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = thunderhub
 	source = https://github.com/apotdevin/thunderhub/archive/refs/tags/v0.13.6.tar.gz
 	source = env
 	source = accounts.yaml
-	source = lnd.user
+	source = thunderhub.user
 	source = pacman-01-chown.hook
 	source = thunderhub.service
 	sha256sums = d3bf505e39368f746d92f5c886ff13a6c297e17244bbf67a4fcc1310f3cd9aa4

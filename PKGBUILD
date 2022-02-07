@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname="thunderhub"
 pkgver=0.13.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Node Manager"
 arch=(any)
 url="https://github.com/apotdevin/${pkgname}"
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("nodejs>=10")
 makedepends=("npm")
 optdepends=('lnd-bin')
-source=("https://github.com/apotdevin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "env" "accounts.yaml" "lnd.user" "pacman-01-chown.hook" "${pkgname}.service")
+source=("https://github.com/apotdevin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz" "env" "accounts.yaml" "${pkgname}.user" "pacman-01-chown.hook" "${pkgname}.service")
 sha256sums=(d3bf505e39368f746d92f5c886ff13a6c297e17244bbf67a4fcc1310f3cd9aa4 SKIP SKIP SKIP SKIP SKIP)
 options=('!strip')
 backup=("etc/${pkgname}/accounts.yaml" "etc/${pkgname}/env")
@@ -40,7 +40,7 @@ package() {
   install -Dm 644 "$srcdir/env" "$pkgdir/etc/${pkgname}/env"
   install -Dm 640 "$srcdir/accounts.yaml" "$pkgdir/etc/${pkgname}/accounts.yaml"
 
-  install -Dm 644 "$srcdir/lnd.user" "$pkgdir/usr/lib/sysusers.d/${pkgname}-lnd.conf"
+  install -Dm 644 "$srcdir/${pkgname}.user" "$pkgdir/usr/lib/sysusers.d/${pkgname}.conf"
   msg2 'Installing pacman hooks...'
   install -Dm 644 "$srcdir"/*.hook -t "$pkgdir/usr/share/libalpm/hooks"
 

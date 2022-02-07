@@ -10,8 +10,8 @@ read -d '' thunderhub <<'EOF'
 ####################################
   Config:
     /etc/thunderhub/env
-    /etc/thunderhub/config.yaml
-####################################
+    /etc/thunderhub/accounts.yaml
+------------------------------------
     systemctl start thunderhub
 ####################################
 EOF

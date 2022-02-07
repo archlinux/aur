@@ -8,5 +8,5 @@ Target = thunderhub
 Description = Setting daemon user directory permissions...
 Depends = coreutils
 When = PostTransaction
-Exec = /usr/bin/chown -R lnd:lnd /etc/thunderhub /var/lib/thunderhub
+Exec = /usr/bin/chown -R thub:thub /etc/thunderhub /var/lib/thunderhub
 
