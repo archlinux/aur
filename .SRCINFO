@@ -6,6 +6,6 @@ pkgbase = ppd
 	arch = x86_64
 	license = GPL3.0
 	source = https://github.com/ZaViBiS/Percentage-difference/releases/download/0.3/pd
-	md5sums = 9791a754f62ba3d76e861b52c31fe7ce
+	md5sums = 3db74550613812bcfbc230daf1aa77b3
 
 pkgname = ppd
