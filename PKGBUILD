@@ -1,13 +1,13 @@
-# Contributor: Christoph Zeiler <rabyte*gmail>
-# Contributor: dale <dale@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
-# Contributor: Helder Correia <helder.correia@netcabo.pt>
 # Maintainer: SanskritFritz (gmail)
 # Contributor: dreieck (AUR)
+# Contributor: Christoph Zeiler
+# Contributor: dale
+# Contributor: Tom Newsom
+# Contributor: Helder Correia
 
 pkgname=toppler
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
@@ -23,7 +23,7 @@ source=(
   "$pkgname.png"
   )
 sha256sums=(
-  '36baba81b7a47547b489e9a5da9b086833b13fee132fd9ebdb67bfcd82ce92ca'
+  '383f5e3a8ec880cdde073ef178ce217c98f2885c085d51fefdac46a9f99466cf'
   '828b4f8f6901e757de8cce76473caa1064b2db1375330eee370b0eff79909e9a'
   'fff858bedef2a563cecf3379326d8fa6d7e2a18351cbbaac02ca0ae8176adedd'
 )
