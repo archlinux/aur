@@ -10,7 +10,7 @@ pkgdesc="Pacman package info viewer, intended for use with fzf --preview"
 license=('GPL3')
 url='https://github.com/TheCycoONE/pacpreview'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheCycoONE/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('35775e49394be15b268e8c843dac0310')
+md5sums=('8fa10f5b681d008abcf17801c2565753')
 
 build() {
     cd "$pkgname-$pkgver"
