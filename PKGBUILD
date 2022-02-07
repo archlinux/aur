@@ -3,7 +3,7 @@ pkgbase=python-sphinx-thebe
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Integrate interactive code blocks into your documentation with Thebe and Binder"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 checkdepends=('python-sphinx')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('aabb333cf2db8454cad87cc4adfa5cdd')
+md5sums=('d9428fc80937123f7298cee2c6104e10')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
