@@ -17,6 +17,6 @@ pkgbase = perl-math-mpc
 	depends = perl-math-mpfr>=4.14
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-MPC-1.13.tar.gz
-	sha512sums = 351c00d66c72b6f3427ddd68bf726b3d1ef75cc73e7f566eb842f5c629c36852886cc77fe97867d91fa81b6810173d47afe617086bd9f6d419ac4f3c4b3f18a3
+	b2sums = cd34005af17fe9b5d7451a9815b4f6ded8984f601f8bcbbdfe43001905635f79ba84d8f8dbe147822e436e73432f069be5a29373e6ca6e05984725a906f1af33
 
 pkgname = perl-math-mpc
