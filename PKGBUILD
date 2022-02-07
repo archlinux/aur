@@ -3,8 +3,8 @@
 # Contributor: Brett Dutro <brett.dutro@gmail.com>
 
 pkgname=ashuffle-git
-pkgver=3.13.0.r2.gfccccdd
-pkgrel=2
+pkgver=3.13.3.r0.g2034f9d
+pkgrel=1
 pkgdesc="Automatic library-wide shuffle for mpd. (git)"
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -20,11 +20,9 @@ source=(
   "git+https://github.com/joshkunz/${pkgname%-git}.git"
   "git+https://github.com/abseil/abseil-cpp.git"
   "git+https://github.com/google/googletest.git"
-  "0001_add_option_to_use_system_yaml_cpp.patch"
 )
 sha256sums=(
   'SKIP' 'SKIP' 'SKIP'
-  "b2b3515daf31a886bf33119276f1b968353f5ac18e353bbc39ae05c6164d47e1"
 )
 
 pkgver() {
@@ -34,8 +32,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-
-  patch -p1 -i "${srcdir}/0001_add_option_to_use_system_yaml_cpp.patch"
 
   git submodule init
   git config submodule."subprojects/absl".url       "${srcdir}/abseil-cpp"
@@ -48,7 +44,7 @@ build() {
 
   arch-meson \
     -Dtests=enabled \
-    -Dunsupported_use_system_yaml_cpp=true \
+    -Dunsupported_use_system_yamlcpp=true \
     builddir
 
   ninja -C builddir

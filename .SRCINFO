@@ -1,7 +1,7 @@
 pkgbase = ashuffle-git
 	pkgdesc = Automatic library-wide shuffle for mpd. (git)
-	pkgver = 3.13.0.r2.gfccccdd
-	pkgrel = 2
+	pkgver = 3.13.3.r0.g2034f9d
+	pkgrel = 1
 	url = https://github.com/joshkunz/ashuffle
 	arch = x86_64
 	arch = i686
@@ -19,10 +19,8 @@ pkgbase = ashuffle-git
 	source = git+https://github.com/joshkunz/ashuffle.git
 	source = git+https://github.com/abseil/abseil-cpp.git
 	source = git+https://github.com/google/googletest.git
-	source = 0001_add_option_to_use_system_yaml_cpp.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b2b3515daf31a886bf33119276f1b968353f5ac18e353bbc39ae05c6164d47e1
 
 pkgname = ashuffle-git
