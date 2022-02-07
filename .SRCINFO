@@ -1,6 +1,6 @@
 pkgbase = pandoc-bin
 	pkgdesc = Pandoc - executable only, without 750MB Haskell depends/makedepends
-	pkgver = 2.17.0.1
+	pkgver = 2.17.1.1
 	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = pandoc-bin
 	conflicts = pandoc
 	replaces = pandoc-static
 	replaces = pandoc-lite
-	source = pandoc-bin-source-2.17.0.1.tar.gz::https://github.com/jgm/pandoc/archive/2.17.0.1.tar.gz
-	sha512sums = b47049b5b74754b66895841fbb3c0fafde8cedb9349d03b58b4895128bdc884ea3d80fc35232d93bac78567dcab672819f923400454c6797e936938c04478eb7
-	source_x86_64 = pandoc-bin-bin-2.17.0.1.tar.gz::https://github.com/jgm/pandoc/releases/download/2.17.0.1/pandoc-2.17.0.1-linux-amd64.tar.gz
-	sha512sums_x86_64 = a1b0dd01c5f6f8e418dea2cbd763f9360d375380f38922905f9fbbb0aaed92bd6ab6091e3f28b7046aaceac4a7099543d47bae31f0696967a1eaaca908274e8d
-	source_aarch64 = pandoc-bin-bin-2.17.0.1.tar.gz::https://github.com/jgm/pandoc/releases/download/2.17.0.1/pandoc-2.17.0.1-linux-arm64.tar.gz
-	sha512sums_aarch64 = cd25a2409e5fee2dfab5c5f7b30271958bfddd334f9793624220d99b61d54122784f72176c3697cd6886f6adbe5eb803cfebfd1690acabe63caa335a4919cad9
+	source = pandoc-bin-source-2.17.1.1.tar.gz::https://github.com/jgm/pandoc/archive/2.17.1.1.tar.gz
+	sha512sums = 55414229680793cba348181c0da30046b873993f05f0b66dba7d153a8212c54ab265df1b55253f89d8fe000dacb95941e98ca516c71891bba584972d262e7d9b
+	source_x86_64 = pandoc-bin-bin-2.17.1.1.tar.gz::https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-linux-amd64.tar.gz
+	sha512sums_x86_64 = 98c6eb8be9da2d0be5bc0cfc52a58d8602fb2648e1df4f1839056faa3781bd2d1d6cf9cd7b8a17d394f0d9b0d3debda63ab4bbac674f81ef88b4a5e0e6dd71c7
+	source_aarch64 = pandoc-bin-bin-2.17.1.1.tar.gz::https://github.com/jgm/pandoc/releases/download/2.17.1.1/pandoc-2.17.1.1-linux-arm64.tar.gz
+	sha512sums_aarch64 = d08a7ca8a463c029ae2b8767a43e91f4fa8f9a552a0b1319107a9d61999ad1dcc439ea559bf88fa2f429fe4512bf1c2112880f27f808a978b97b0580bfc1636c
 
 pkgname = pandoc-bin
