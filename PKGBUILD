@@ -3,14 +3,13 @@
 _name='napari'
 pkgname="${_name}"
 pkgver=0.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
 url='https://napari.org'
 license=('BSD')
 makedepends=(
   'python-setuptools-scm'
-  'python-dephell'
   'icoutils'
 )
 depends=(
@@ -57,7 +56,11 @@ provides=("${_name}")
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
-  dephell deps convert --from pyproject.toml --to setup.py
+  # for now we need this for pep517
+  cat > setup.py <<EOF
+from setuptools import setup
+setup()
+EOF
 }
 
 build() {
