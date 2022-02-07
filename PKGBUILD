@@ -1,15 +1,15 @@
 # Maintainer: ZaViBiS <igordnepr27 at gmail dot com>
 
 pkgname=ppd
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc="calculates the percentage difference between two numbers."
 url="https://github.com/ZaViBiS/Percentage-difference"
 arch=("x86_64")
 license=('GPL3.0')
-md5sums=("501e8fcb323e14e254cc106e62b39f1e")
-sha256sum=('9fc7be8876cbd9fa23e5e6e18207c1ce10a41889ecea1144d1f5d7dff77a4cf9')
-sha512sum=('721bde5ae13596a74ecd2646571d35c4ba5c5ad945158affc2df2eb72d358397ada645c330bbbc00e8a88cbcbe7fc3699bbc9ccb6bce92dd583a59eb23d12efd')
+md5sums=('9791a754f62ba3d76e861b52c31fe7ce')
+sha256sum=('7e05f87a48208c4c1384ce58e97c8b3c99e59636bc16979f7d18976aab778f7d')
+sha512sum=('9b27ce16c098b0e18c51705dd0560b389bebd52a8ec5c85a7dd88a54b0d64832e9d755110e3cdc047a2ea3d2c861d868d18d37be8fb0a9cb046e94f64a520896')
 source=("https://github.com/ZaViBiS/Percentage-difference/releases/download/$pkgver/pd")
 
 package() {
