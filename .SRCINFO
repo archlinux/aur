@@ -1,0 +1,12 @@
+pkgbase = aur-accelerate-cn
+	pkgdesc = 来自知乎sinux的文章：机智的解决arch/manjaro安装AUR软件时github下载软件包慢或不可获得的问题
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://zhuanlan.zhihu.com/p/176987140
+	arch = any
+	license = unknown
+	depends = axel
+	source = start.sh
+	md5sums = 120215840bdb5fc3ab4fc3f1c1bb1886
+
+pkgname = aur-accelerate-cn
