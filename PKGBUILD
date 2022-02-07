@@ -3,7 +3,7 @@
 pkgname=psst-git-bin
 _pkgname="psst"
 pkgver=r1.1627cd4
-pkgrel=3
+pkgrel=2
 pkgdesc="Fast and multi-platform Spotify client with native GUI (binary git version). github.com/thebiblelover7/psst-git-bin"
 arch=("x86_64")
 url="https://github.com/jpochyla/psst"
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    ( curl -Lo version.zip 'https://nightly.link/thebiblelover7/psst-git-bin/workflows/main/main/version.zip'
+    ( curl -Lo version.zip 'https://nightly.link/thebiblelover7/psst-git-bin/workflows/main/main/psst-gui.zip'
     unzip -p version.zip | cat
     )
 }
