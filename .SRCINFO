@@ -1,6 +1,6 @@
 pkgbase = sensu-agent
 	pkgdesc = Sensu Go Agent
-	pkgver = 6.6.4
+	pkgver = 6.6.5
 	pkgrel = 0
 	url = https://sensu.io
 	install = sensu-agent.install
@@ -9,10 +9,10 @@ pkgbase = sensu-agent
 	arch = armv6h
 	arch = aarch64
 	license = MIT
-	source = sensu-agent-6.6.4_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.6.4/sensu-go_6.6.4_linux_amd64.tar.gz
+	source = sensu-agent-6.6.5_x86_64.tar.gz::https://s3-us-west-2.amazonaws.com/sensu.io/sensu-go/6.6.5/sensu-go_6.6.5_linux_amd64.tar.gz
 	source = sensu-agent.service
 	source = agent.yml.example
-	sha256sums = 2b1f398b6edd69a6a3fc9dadc32483f03a31a213a200dc65ba0ef00691f53c27
+	sha256sums = 0378260923421e474f49f1b88a478c2157b6eb5eeaf6dbd1c0b76c68caca9479
 	sha256sums = 7d8ca2731fe4a07beab0566d11ed47f0c069774752a96781ac7797697b3f7cc5
 	sha256sums = c9997fa4be0879bb73b7250863ce9737b422515cf9131626075ff313b4575eed
 
