@@ -1,0 +1,7 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=SNAP Desktop
+Exec=/bin/sh "/opt/snap/bin/snap" %U
+Categories=Education;Science;Geography;
+Icon=esa-snap-desktop

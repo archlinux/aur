@@ -1,0 +1,12 @@
+# install4j response file for ESA SNAP 8.0
+deleteSnapDir=DESKTOP
+executeLauncherAction$Boolean=true
+forcePython$Boolean=false
+sys.adminRights$Boolean=true
+sys.component.RSTB$Boolean=true
+sys.component.S1TBX$Boolean=true
+sys.component.S2TBX$Boolean=true
+sys.component.S3TBX$Boolean=true
+sys.component.SNAP$Boolean=true
+sys.languageId=en
+sys.programGroupDisabled$Boolean=false

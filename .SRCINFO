@@ -1,0 +1,25 @@
+pkgbase = esa-snap-bin
+	pkgdesc = ESA SNAP Toolbox for Sentinel Satellite data
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = http://step.esa.int/main/
+	arch = x86_64
+	license = GPL3
+	depends = jre8-openjdk
+	provides = esa-snap
+	noextract = esa-snap_all_unix_8_0.sh
+	options = !strip
+	source = https://download.esa.int/step/snap/8.0/installers/esa-snap_all_unix_8_0.sh
+	source = snap-conf-optimiser.desktop
+	source = snap-desktop.desktop
+	source = response.varfile
+	md5sums = 9e5fbb15d6a0b247139d47bf7072437d
+	md5sums = cc4814b417fba1c6ce2782654b18d8b8
+	md5sums = b30e02a81cce3370eb9e04ce4caee040
+	md5sums = 171e808a3ba22fb6a522aa318a8703db
+	sha256sums = b49d6795f55bbe9ecb46f9c289ac245626243d3fcd32211b47a54b26b508798e
+	sha256sums = bc705ce50143ee597485f1dbbef0e62794c62af781c4af71db2f304b34c7ee01
+	sha256sums = 8d07671f6e94250ac333a34f1c8288f09e89428cbe9bf9c2af4a5226182cc2f9
+	sha256sums = 97f680aec00cc74ec2f202aba1e0132c461d631d705203ab613371c9c4c28f2d
+
+pkgname = esa-snap-bin
