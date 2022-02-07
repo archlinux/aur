@@ -8,6 +8,8 @@ pkgbase = python-dbusmock-git
 	makedepends = python-setuptools
 	depends = python-dbus
 	depends = python-gobject
+	provides = python-dbusmock
+	conflicts = python-dbusmock
 	source = git+https://github.com/martinpitt/python-dbusmock
 	sha512sums = SKIP
 
