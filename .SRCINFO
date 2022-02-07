@@ -1,0 +1,17 @@
+pkgbase = marble-maps-mapycz
+	pkgdesc = Maps for KDE marble by mapy.cz (Czech Republic & Slovakia (OSM-based with own additions), and Worldwide (OSM based)).
+	pkgver = 20220207.01
+	pkgrel = 1
+	epoch = 0
+	url = https://www.landesvermessung.sachsen.de/geodaten-online-3962.html
+	arch = any
+	license = custom: Public Domain, mapy.cz.
+	makedepends = zstd
+	depends = marble-common
+	options = emptydirs
+	source = marble-maps-mapycz-20220207.01.tar.zst::http://ix.io/3OYZ
+	source = COPYING.txt
+	sha256sums = 72fc7894e72b6863346ff6056842f1fb60eb35aaf7f902fbc10b0cff52293c47
+	sha256sums = a61e1170e1825cca85fb9a3bc21d00347e636e155f6def34761f8f434a962e78
+
+pkgname = marble-maps-mapycz

@@ -1,0 +1,4 @@
+* The map definitions (`.dgml`-files) are public domain.
+* The contained preview images (`preview.png`, `preview.jpeg`) and base tiles (`0/0/0.*`) are copyright by Mapy.cz (http://mapy.cz) or others, see http://mapy.cz.
+* For general terms of usage of the maps see http://mapy.cz.
+
