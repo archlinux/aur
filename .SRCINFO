@@ -1,13 +1,10 @@
 pkgbase = python-mahotas
 	pkgdesc = Computer Vision in Python
 	pkgver = 1.4.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luispedro/mahotas
 	arch = x86_64
 	license = custom
-	checkdepends = python-pytest
-	checkdepends = python-pillow
-	checkdepends = python-scipy
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python-numpy
