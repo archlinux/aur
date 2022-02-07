@@ -3,8 +3,8 @@
 
 _pkgname=toppler
 pkgname="${_pkgname}-git"
-pkgver=1.2+10+r531.20220201.8596a68
-pkgrel=4
+pkgver=1.3+r534.20220206.5e3e581
+pkgrel=2
 pkgdesc='A reimplementation of the classic jump & run game "Nebulus"'
 arch=('i686' 'x86_64')
 url="https://gitlab.com/roever/toppler/"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gcc-libs' 'sdl2_mixer' 'zlib')
 makedepends=('gettext' 'gimp' 'git' 'imagemagick' 'povray')
 optdepends=(
-  "${_pkgname}-levels: The upstream levels as individual missions that can be played individually, and files that can be loaded into the level editor."
+  "${_pkgname}-upstream-levels: The upstream levels as individual missions that can be played individually, and files that can be loaded into the level editor."
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
