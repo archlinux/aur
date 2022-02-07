@@ -10,17 +10,17 @@
 _pkgname=fftw
 pkgname=lib32-$_pkgname
 pkgver=3.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc='A library for computing the discrete Fourier transform (DFT) (32 bit)'
 arch=('x86_64')
 url='https://www.fftw.org'
 license=('GPL2')
-depends=("$_pkgname" 'lib32-gcc-libs' 'openmpi')
+depends=("$_pkgname" 'lib32-gcc-libs')
 makedepends=('cmake' 'gcc-fortran')
 provides=('libfftw3q_threads.so' 'libfftw3q_omp.so' 'libfftw3q.so'
-          'libfftw3l_threads.so' 'libfftw3l_omp.so' 'libfftw3l_mpi.so' 'libfftw3l.so'
-          'libfftw3f_threads.so' 'libfftw3f_omp.so' 'libfftw3f_mpi.so' 'libfftw3f.so'
-          'libfftw3_threads.so' 'libfftw3_omp.so' 'libfftw3_mpi.so' 'libfftw3.so')
+          'libfftw3l_threads.so' 'libfftw3l_omp.so' 'libfftw3l.so'
+          'libfftw3f_threads.so' 'libfftw3f_omp.so' 'libfftw3f.so'
+          'libfftw3_threads.so' 'libfftw3_omp.so' 'libfftw3.so')
 source=("https://www.fftw.org/$_pkgname-$pkgver.tar.gz")
 sha256sums=('56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467')
 
@@ -46,7 +46,7 @@ build() {
     --enable-shared
     --enable-threads
     --enable-openmp
-    --enable-mpi
+    #--enable-mpi
     --libdir=/usr/lib32
   )
   local _configure_single=(
@@ -79,8 +79,6 @@ build() {
     -D ENABLE_SSE2=ON
     -D ENABLE_AVX=ON
     -D ENABLE_AVX2=ON
-    -D CMAKE_CXX_FLAGS='-m32'
-    -D CMAKE_INSTALL_LIBDIR=lib32
   )
 
   # create missing FFTW3LibraryDepends.cmake
@@ -90,6 +88,9 @@ build() {
   sed -e 's|\(IMPORTED_LOCATION_NONE\).*|\1 "/usr/lib32/libfftw3.so.3"|' -i build/FFTW3LibraryDepends.cmake
 
   export F77='gfortran'
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   # use upstream default CFLAGS while keeping our -march/-mtune
   CFLAGS+=" -O3 -fomit-frame-pointer -malign-double -fstrict-aliasing -ffast-math"
 
