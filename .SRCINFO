@@ -6,11 +6,6 @@ pkgbase = python-mapproxy
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = mapproxy-1.14.0.tar.gz::https://github.com/mapproxy/mapproxy/archive/1.14.0.tar.gz
-	sha256sums = a47eeaf6211424694f9af43599f26da2546da866299a0048a2a6eb414869388c
-
-pkgname = python-mapproxy
 	depends = python
 	depends = python-pillow
 	depends = python-yaml
@@ -18,12 +13,7 @@ pkgname = python-mapproxy
 	optdepends = python-shapely: coverage feature support
 	optdepends = python-gdal: OGR datasource support
 	optdepends = python-lxml: more advanced WMS FeatureInformation support
+	source = mapproxy-1.14.0.tar.gz::https://github.com/mapproxy/mapproxy/archive/1.14.0.tar.gz
+	sha256sums = a47eeaf6211424694f9af43599f26da2546da866299a0048a2a6eb414869388c
 
-pkgname = python2-mapproxy
-	depends = python2
-	depends = python2-pillow
-	depends = python2-yaml
-	depends = python2-pyproj
-	optdepends = python2-shapely: coverage feature support
-	optdepends = python2-gdal: OGR datasource support
-	optdepends = python2-lxml: more advanced WMS FeatureInformation support
+pkgname = python-mapproxy
