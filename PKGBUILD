@@ -19,8 +19,8 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 epoch=
 pkgdesc='A flexible, fast IRC bot'
 arch=('x86_64')
@@ -39,19 +39,15 @@ options=()
 changelog=
 source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz" 'irccd-sysusers.conf')
 noextract=()
-md5sums=('f8818c1a3414621b3d2cfb080d915bf5'
+md5sums=('19c8c43fcd74708cbafc1f4b8d950f92'
          '9a2172be1a0b56ee719048cb0b4ee594')
 
 build() {
 	cmake -S "$pkgname-$pkgver" -B build \
 		-DCMAKE_INSTALL_PREFIX='/usr' \
-		-DIRCCD_WITH_SYSTEMD=On
+		-DIRCCD_WITH_SYSTEMD=On \
+		-DIRCCD_WITH_TESTS=Off
 	cmake --build build
-}
-
-check() {
-	cd build
-	ctest --output-on-failure
 }
 
 package() {
