@@ -2,13 +2,13 @@
 
 pkgname=alire
 pkgver=1.1.2
-pkgrel=6
+pkgrel=7
 pkgdesc="A catalog of ready-to-use Ada libraries plus a command-line tool (alr) to obtain, build, and incorporate them into your own projects. It aims to fulfill a similar role to Rust's cargo or OCaml's opam."
 arch=('i686' 'x86_64')
 url="https://alire.ada.dev/"
 license=(GPL3)
 depends=(gnatcoll-core unzip)
-makedepends=(git gprbuild)
+makedepends=(git gprbuild python-e3-testsuite)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alire-project/alire/archive/refs/tags/v$pkgver.tar.gz"
 alire.patch
 git+https://github.com/alire-project/xmlezout.git#commit=1fcbd0b9303d044d8f09a8ef652afa8c0400ee8b
@@ -67,7 +67,6 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   gprinstall -P alr_env -p --prefix="$pkgdir/usr"
-  # TODO: Install the bash completion under /usr/share
   install -D scripts/alr-completion.bash "$pkgdir/usr/share/bash-completion/completions/alr"
 }
 
