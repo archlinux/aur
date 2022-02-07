@@ -1,0 +1,11 @@
+[Unit]
+Description=Etherguard edgenode
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/etherguard-go -config /etc/etherguard-go/%i.yaml -mode edge
+Nice=5
+
+[Install]
+WantedBy=multi-user.target

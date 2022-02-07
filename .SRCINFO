@@ -1,0 +1,20 @@
+pkgbase = etherguard-go
+	pkgdesc = A Full Mesh Layer2 VPN based on wireguard-go
+	pkgver = 0.3.5_f1
+	pkgrel = 1
+	url = https://github.com/KusakabeSi/EtherGuard-VPN
+	arch = any
+	license = MIT
+	makedepends = go
+	optdepends = wireguard-tools: Access UAPI to provide status viewing
+	provides = etherguard
+	source = etherguard-go-0.3.5_f1.tar.gz::https://github.com/KusakabeSi/EtherGuard-VPN/archive/v0.3.5-f1.tar.gz
+	source = etherguard-super@.service
+	source = etherguard-edge@.service
+	source = gensuper.yaml.example
+	sha256sums = a31ee64ab51e115ec2e12dd553ca5b858740785b4251262dd58c42d46ea347b4
+	sha256sums = ac566753381f6b0c576d2785363a95f69099400814eee132842d9df56ebca32a
+	sha256sums = 7fd7c773a630ce46837fa6d387339edccd27ba983d6f265a2dbec017484113cb
+	sha256sums = 7adf233e5c193f170a3c0479ee7ccd34f633b8a5c9dbfabee6860171b7c9195c
+
+pkgname = etherguard-go
