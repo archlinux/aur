@@ -7,6 +7,7 @@ pkgbase = waifu2x-caffe
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = qt5-base
 	depends = cudnn
 	depends = cuda
 	depends = openblas

@@ -24,6 +24,7 @@ depends=(
 makedepends=(
     'git'
     'cmake'
+    'qt5-base'
 )
 optdepends=()
 provides=('waifu2x-caffe')
