@@ -1,21 +1,14 @@
 pkgbase = python-geneimpacts
-	pkgdesc = Compare and normalize effects from variant annotation tools (snpEff, VEP)
-	pkgver = 0.3.4
+	pkgdesc = normalize effects from variant annotation tools (snpEff, VEP)
+	pkgver = 0.3.7
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/geneimpacts
+	url = https://pypi.org/project/geneimpacts
 	arch = any
 	license = MIT
-	makedepends = python
+	checkdepends = python-nose
 	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-geneimpacts-0.3.4.tar.gz::https://pypi.python.org/packages/c9/0d/cdb5d3c45a65f33563d98838e89a6e37dad091cd10842a5c9f472503a8a3/geneimpacts-0.3.4.tar.gz
-	sha256sums = bdd841977135ea81a75f2a58d7b9bce1a13682ca0c09eab18de42309257d893f
+	depends = python
+	source = https://pypi.org/packages/source/g/geneimpacts/geneimpacts-0.3.7.tar.gz
+	sha512sums = 317f6f2122416266144d13d9e9a3623da9f15a6df85f2d329f2200389f9acfbc455ef2b9adf0ff335e3ca578ac013d8c9e49690f5e42466bea7641436dd5e0e4
 
 pkgname = python-geneimpacts
-	depends = python
-
-pkgname = python2-geneimpacts
-	depends = python2
-
