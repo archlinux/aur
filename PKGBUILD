@@ -1,14 +1,16 @@
 # Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=('espeak-ng' 'espeak-ng-espeak')
 pkgbase=espeak-ng
 pkgver=1.50
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-lingual software speech synthesizer'
 url=https://github.com/espeak-ng/espeak-ng
 arch=('x86_64')
 license=('GPL3')
 makedepends=('pcaudiolib' 'ruby-ronn-ng')
+options=(debug)
 source=("$url/archive/$pkgver/espeak-ng-$pkgver.tar.gz"
         'espeak-ng-fix-699.patch::https://github.com/espeak-ng/espeak-ng/commit/e11cd42b03d1628f7a0cf45c9406123282e25c63.patch')
 b2sums=('c64c2a474374d4b6fe13bf3a99f5dfb661923c13ebd6c0bc323e7f26d9d90945c7075cc5c8f4b51e5db3303632c8c9daca7a65a1883e09d7c3faf63dd725ea3f'
