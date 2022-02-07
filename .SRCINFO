@@ -1,0 +1,17 @@
+pkgbase = gpuvis
+	pkgdesc = GPU trace visualizer
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mikesart/gpuvis
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = freetype2
+	depends = gtk3
+	depends = rapidjson
+	depends = sdl2
+	source = https://github.com/mikesart/gpuvis/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 68061fc7afa996772d19098d4e1cfa090ce731a293ef9956dec1301daf15037e
+
+pkgname = gpuvis
