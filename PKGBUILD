@@ -3,24 +3,24 @@
 
 pkgname=python-pooch
 _pkgname=pooch
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Python library for fetching and caching data files"
 arch=('any')
 url="https://www.fatiando.org/pooch/latest/"
 license=('BSD 3-Clause')
 depends=('python-requests' 'python-packaging' 'python-appdirs')
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-pip')
-source=("https://files.pythonhosted.org/packages/b3/45/d2eaf68ab809155caef416f7281318b4b7753311ea415c9b066dac2dbf9a/pooch-${pkgver}.tar.gz")
-sha256sums=('5969b2f1defbdc405df932767e05e0b536e2771c27f1f95d7f260bc99bf13581')
+makedepends=('python-setuptools' 'python-setuptools-scm' 'python-pip' 'python-build')
+source=("https://files.pythonhosted.org/packages/0c/48/de6235d3a568156a8daf6c6d21c09ffcd3b9e0cbf4ad2cc4d34ff80527bb/pooch-1.6.0.tar.gz")
+sha256sums=('57d20ec4b10dd694d2b05bb64bc6b109c6e85a6c1405794ce87ed8b341ab3f44')
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py build
+  python -m build .
 }
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+  python -m pip install --no-deps .
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
