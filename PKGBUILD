@@ -2,8 +2,8 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.1.66
-pkgrel=2
+pkgver=1.1.112
+pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
@@ -17,8 +17,8 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 makedepends=('go' 'graphviz' 'imagemagick' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
-sha256sums=('cc857d2e4af46e109fdbbbea28d7207c5985ce85338095ed87a3452467ff6c7e'
-            'd0ea8cef9d972ddef3b635bfe207928c4bc649b5ea4e8757f4ad8d192b848569')
+sha256sums=('2f0e35923dd12202859fa2b84c4f9ecdb72f1918cfe55f2a2ed80a58a55d3214'
+            '0540a3c54bdef356558bdf7ea62347338098f744b9a7b3f92ca6872822c020b0')
 
 prepare() {
   cd "$pkgname-$pkgver"
