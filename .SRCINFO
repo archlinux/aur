@@ -7,11 +7,10 @@ pkgbase = luabind-ryzom
 	arch = x86_64
 	license = MIT
 	makedepends = boost
-	makedepends = boost-build
 	depends = lua
 	depends = gcc-libs
 	provides = luabind
 	source = luabind::git+https://github.com/ryzom/luabind.git
 	md5sums = SKIP
 
-pkgname = luabind-ryzom-git
+pkgname = luabind-ryzom
