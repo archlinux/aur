@@ -1,9 +1,10 @@
 # Maintainer: Stephen E. Baker <baker.stephen.e@gmail.com>
 
 pkgname=pacpreview
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 makedepends=('rust' 'cargo')
+optdepends=('fzf: use as a search tool')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Pacman package info viewer, intended for use with fzf --preview"
 license=('GPL3')
