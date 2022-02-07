@@ -1,28 +1,27 @@
-# Maintainer: Jenya Sovetkin <e dot sovetkin at gmail dot com>
-pkgname=rdictcc-git
-pkgver=r36.43192fc
+# Maintainer: xeruf <27jf at pm dot me>
+
+_pkgname=rdictcc
+pkgname=${_pkgname}-git
+pkgver=r44.52f6b4b
 pkgrel=1
-pkgdesc="A dictionary / word translator written in Ruby. It uses the dictionaries you can fetch from http://www.dict.cc. RDictCc has a tight integration into Emacs."
+pkgdesc="A Ruby translator using dictionary files from http://www.dict.cc, with tight Emacs integration"
 arch=('any')
-url="https://github.com/tsdh/rdictcc"
+url="https://git.sr.ht/~tsdh/${_pkgname}"
 license=('GPL3')
 depends=('ruby' 'gdbm')
 makedepends=('git')
-sha256sums=('SKIP')
-source=('git+git://github.com/tsdh/rdictcc.git')
-
-_gitroot=git://github.com/tsdh/rdictcc.git
-_gitname=rdictcc
+source=("git+${url}")
+sha512sums=(SKIP)
 
 pkgver() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
+  cd "${srcdir}/${_pkgname}"
 
   sed -i "s#-<>]/, ' ').strip.split do |w|#<>-]/, ' ').strip.split do#" rdictcc.rb
   sed -i 's#rdictcc.rb#rdictcc#g' rdictcc.rb
