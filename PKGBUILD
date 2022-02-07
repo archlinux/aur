@@ -1,35 +1,58 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-pkgname=python-awkward
-pkgver=0.15.5
-pkgrel=4
+_pkgname=awkward
+pkgname="python-${_pkgname}"
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
-url="https://github.com/scikit-hep/awkward-0.x"
+url="https://github.com/scikit-hep/awkward-array"
 license=('BSD')
-arch=('any')
+arch=('x86_64')
 depends=('python-numpy')
-makedepends=('python-setuptools' 'python-pytest-runner')
-checkdepends=('python-h5py' 'python-pandas')
-source=("${pkgname}::https://github.com/scikit-hep/awkward-0.x/archive/${pkgver}.tar.gz")
-sha512sums=('b0160a916a7bf52b46ff98b83fe7145554e6122b6b574fa76d07312fedad8044cef43e72186c4434496da99455bd947a3fce4bca8f8c591816d91e7b6a499051')
+optdepends=('cuda: CUDA support')
+makedepends=('cmake' 'git' 'python-setuptools' 'cuda')
+checkdepends=('python-pyaml' 'python-pytest' 'python-pytest-cov' 'python-pandas' 'python-numexpr' 'python-pyarrow' 'python-vector')
+source=(
+  "${pkgname}::git+https://github.com/scikit-hep/${_pkgname}-1.0#tag=${pkgver}"
+  "${pkgname}-dlpack::git+https://github.com/dmlc/dlpack.git"
+  "${pkgname}-rapidjson::git+https://github.com/Tencent/rapidjson.git"
+  "${pkgname}-pybind11::git+https://github.com/pybind/pybind11.git"
+)
+
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 get_pyver () {
     python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule init
+
+  git config submodule."pybind11".url "${srcdir}/${pkgname}"-pybind11
+  git config submodule."rapidjson".url "${srcdir}/${pkgname}"-rapidjson
+  git config submodule."dlpack".url "${srcdir}/${pkgname}"-dlpack
+
+  git submodule update --init --recursive
+}
+
 build() {
-  cd awkward-0.x-$pkgver
+  cd "${pkgname}"
   python setup.py build
 }
 
 check() {
-  cd awkward-0.x-$pkgver
-  pytest tests
+  cd "${pkgname}"
+  PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest tests
 }
 
 package() {
-  cd awkward-0.x-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  ln -s "/usr/lib/python$(get_pyver)/site-packages/awkward0" "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/awkward"
+  cd "${pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname}"/LICENSE
+  cd "${pkgdir}/usr/lib/python$(get_pyver)/site-packages"
+  # ln -s awkward1 awkward
 }
