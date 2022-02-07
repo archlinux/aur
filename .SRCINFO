@@ -1,12 +1,18 @@
 pkgbase = gpuvis-git
-	pkgver = r1649.e2c58f6
+	pkgdesc = GPU trace visualizer
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/mikesart/gpuvis
 	arch = x86_64
 	license = MIT
-	depends = cmake
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = freetype2
+	depends = gtk3
+	depends = rapidjson
+	depends = sdl2
 	source = https://github.com/mikesart/gpuvis
 	sha1sums = SKIP
 
 pkgname = gpuvis-git
-

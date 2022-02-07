@@ -1,34 +1,29 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=gpuvis-git
-pkgver=r1649.e2c58f6
+pkgver=0.1
 pkgrel=1
-pkgdesc=""
-arch=(x86_64)
+pkgdesc="GPU trace visualizer"
+arch=('x86_64')
 url="https://github.com/mikesart/gpuvis"
 license=('MIT')
-depends=('cmake')
+depends=('freetype2' 'gtk3' 'rapidjson' 'sdl2')
+makedepends=('git' 'meson' 'ninja')
 source=("git+$url")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/gpuvis
-  printf "r%d.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C gpuvis describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
-  cd "$srcdir"/gpuvis
-  mkdir -p build
-  cd build
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    ..
-  make
+  arch-meson gpuvis build
+  ninja -C build
 }
 
 package() {
-  cd "$srcdir"/gpuvis
-  install -dm755 "$pkgdir/usr/bin/"
-  install -m755 build/gpuvis "$pkgdir/usr/bin/"
+  DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 gpuvis/gpuvis.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 gpuvis/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
