@@ -1,0 +1,26 @@
+pkgname='openlara-bin'
+
+post_install() {
+
+echo '==>Instruction:'
+echo '==>STEP 1: Create empty folder "[your_folder]" and'
+echo '==>for original PC, PSX and Sega Saturn CD version owners'
+echo '==>   copy data from your CD into folder'
+echo '==>for ported android version owners'
+echo '==>   unzip data file /sdcard/obb/com.squareenix.tombraider1classic/main.42.com.squareenix.tombraider1classic.obb into "[your_folder]"'
+echo ''
+echo '==>for Steam/GOG version owners'
+echo '==>   go to ..\Steam\steamapps\common\Tomb Raider (I)\ and run dosbox.exe'
+echo '==>   enter these commands'
+echo '==>       mount C .'
+echo '==>       imgmount d ".\game.dat" -t iso -fs iso'
+echo '==>       xcopy D:\DATA\ C:\DATA\'
+echo '==>   after that you will get level files in the new "DATA" folder copy them into [your_folder]'
+echo ''
+echo '==>for advanced users'
+echo '==>   copy level and title screen files (PHD, PSX, PCX, PNG, RAW, SAT, SAD, SPR, SND, BIN) into "[your_folder]/level/1/"'
+echo '==>   copy audio files (track_*.ogg, track_*.mp3) into [your_folder]/audio/1/'
+echo ''
+echo '==>STEP 2: cd into [your_folder] and run "openlara"'
+
+}

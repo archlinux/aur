@@ -1,0 +1,19 @@
+pkgbase = openlara-bin
+	pkgdesc = Classic Tomb Raider open-source engine
+	pkgver = 8.01.21
+	pkgrel = 1
+	url = https://github.com/XProger/OpenLara
+	install = openlara-bin.install
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = libx11
+	depends = libgl
+	depends = libpulse
+	provides = openlara
+	conflicts = openlara-git
+	options = !strip
+	source = https://github.com/XProger/OpenLara/releases/download/latest/OpenLara_nix.zip
+	md5sums = ef467d23c4fd6c566e1265df75afdd02
+
+pkgname = openlara-bin
