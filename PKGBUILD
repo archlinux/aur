@@ -106,9 +106,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.4-5.xz"
         #"Linux-5.16.6-rc1.patch"
 
-        # fix: W/A for AMD iommu initialization timeout
-        "iommu-amd-Fix-loop-timeout-issue-in-iommu_ga_log_enable.patch"
-
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
         "Bluetooth-Read-codec-capabilities-only-if-supported.patch"
@@ -140,9 +137,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17: ASUS ROG laptop custom fan curve support
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
-        # Audio fixup for the Zephyrus M16 (GU603H)
-        "ALSA-hda-realtek-Add-quirk-for-ASUS-M16-GU603H.patch"
-
         # mediatek mt7921 bt/wifi patches
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
         "1-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-Foxconn.patch"
@@ -165,7 +159,6 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
             '834dd6603ec3fb0a72e3a1a97669a7198cd6921c4f355b155b3d587a8f0fcea4'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            '7b68a13653fd468725e1029951ac0eb4295aac873cb0a31f16eb65ab666279df'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             '41b0cef536675f10fdfb69eeca2f1927653c69eb351dd92f4085ab6590485851'
@@ -175,7 +168,6 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
-            '3bdfbd0f053aba9f8875d3cfa7763765762bbfeab579f52a62f3ea0e436fe546'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'
             'cc2aa580d69801aa1afb0d72ecf094fe13c797363d3d5928c868d3a389910b7b'
