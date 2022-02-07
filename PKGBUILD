@@ -9,7 +9,6 @@ url="https://github.com/orhun/rustypaste-cli"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
-options=('!lto')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('bfd5064783ca770cbbf5c07958709a37fbe5903c5c2f0dd89e170031ac4437ea')
 
@@ -20,6 +19,7 @@ prepare() {
 
 build(){
   cd "${pkgname}-${pkgver}"
+  CFLAGS+=' -ffat-lto-objects'
   env CARGO_INCREMENTAL=0 cargo build --release --locked --offline
 }
 
