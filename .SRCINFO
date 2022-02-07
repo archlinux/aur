@@ -1,19 +1,17 @@
 pkgbase = cargo-checkmate
 	pkgdesc = Perform a series of useful checks out of the box
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/nathan-at-least/cargo-checkmate
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = rust
+	depends = gcc-libs
 	depends = zlib
 	depends = openssl
 	options = !lto
-	source = cargo-checkmate-0.1.9.tar.gz::https://static.crates.io/crates/cargo-checkmate/cargo-checkmate-0.1.9.crate
-	source = LICENSE
-	sha512sums = 9fb55617a2996f43c4732d26a4280563a3dada3491c750859f00783b04e8e2276c88b3c2faba0e9f5097bafcbca0ce5ffaf6078735ae1540076443b619db3518
-	sha512sums = 551e243ac26e36a9deced2299c09ced251097d783efa9b91bba4d0928151e3af1ed8b34bb01f9a5082312e29aa71889d1d0787db2e0b21ff17912ef40ac693e9
-	b2sums = 189be11f26dbd33c5e7509498f1d201720a5abc0e3efb9485baaed601474b1a59a6e1d411b74bea85a5f0c0d14a7b59ce69d619523f4b36442540e94559f61bd
-	b2sums = 41c0f3c653eba534c8c3988550fcd90bd5c23cf1747ef80f67f2affd14ba6f2f824d825a507eb792f77e906275bbdc2efac41096d73326ddc85857a63b30abfe
+	source = cargo-checkmate::git+https://github.com/nathan-at-least/cargo-checkmate.git#commit=36bd61c0e6c4b950babec8b578805a540ba24059
+	b2sums = SKIP
 
 pkgname = cargo-checkmate
