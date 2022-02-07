@@ -1,6 +1,6 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=fan2go-git
-pkgver=0.4.1.r0.g65842cc
+pkgver=0.5.0.r0.g5193131
 pkgrel=1
 pkgdesc="A simple daemon providing dynamic fan speed control based on temperature sensors"
 arch=('x86_64')
