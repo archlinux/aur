@@ -3,8 +3,8 @@
 _pkgname=adhocspot-script
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=20190514.3
-pkgrel=2
+pkgver=20190514.3+r3.20220207.d2c8aec
+pkgrel=1
 pkgdesc="Bash script to easily configure your interface to share your internet connection and configure a DHCP and DNS and TFTP boot server to listen on it. IP, DHCP, DNS can be configured, and for WiFi interfaces also wireless mode and encryption."
 url="https://gitlab.com/dreieckli/adhocspot-script"
 arch=('any')
@@ -41,7 +41,17 @@ prepare() {
 }
 
 pkgver() {
-  "${srcdir}/${_pkgname}/adhocspot.sh" --version
+  _ver="$("${srcdir}/${_pkgname}/adhocspot.sh" --version)"
+  _rev="$(git rev-list --count HEAD)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
+  _hash="$(git rev-parse --short HEAD)"
+
+  if [ -z "${_ver}" ]; then
+    error "Version could not be determined."
+    return 1
+  else
+    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
+  fi
 }
 
 package() {
