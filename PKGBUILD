@@ -6,15 +6,16 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.7.5
+pkgver=1.8.0
 pkgrel=1
-pkgdesc="Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32"
-url="https://sourceforge.net/projects/enlightenment/"
+pkgdesc='Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32'
+url='https://sourceforge.net/projects/enlightenment/'
 arch=('x86_64')
 license=('BSD')
-depends=('lib32-libtiff' 'lib32-giflib' 'lib32-bzip2' 'lib32-freetype2' 'lib32-libxext' 'lib32-libpng' 'lib32-libid3tag' 'lib32-libjpeg-turbo' 'lib32-libwebp' "${_pkgname}")
+# this could link against lib32-libheif if exists...
+depends=('lib32-libtiff' 'lib32-giflib' 'lib32-bzip2' 'lib32-freetype2' 'lib32-libxext' 'lib32-libpng' 'lib32-libid3tag' 'lib32-libjpeg-turbo' 'lib32-libwebp' 'lib32-librsvg' 'lib32-xz' "${_pkgname}")
 source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha512sums=('6e0a79359d6cac297b7a074a75bf577c8c1e3932d9993616834ea9076a7df544fafcfa960fe8ed7468f1291533f3c828260ccb809a882dadb3f3650ba9dd3f28')
+sha512sums=('e4e4dbd58b9413d11a2ca645b7351c5b441b330d579b6d9f53db445e4d10e30cfeb77158d018ce14d37b536314f238b8ddf7366d293975709d9c11765e7c5735')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -24,7 +25,14 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   # Configure and Build
-  ./configure --prefix=/usr --sysconfdir=/etc/imlib2 --x-libraries=/usr/lib32 --enable-mmx --disable-amd64 --libdir=/usr/lib32 --libexecdir=/usr/lib32 
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc/imlib2 \
+    --x-libraries=/usr/lib32 \
+    --enable-mmx \
+    --disable-amd64 \
+    --libdir=/usr/lib32 \
+    --libexecdir=/usr/lib32 
 
   make
 }
