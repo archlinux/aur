@@ -3,7 +3,7 @@ _base=meshzoo
 pkgname=python-${_base}
 pkgdesc="A collection of meshes for canonical domains"
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -24,7 +24,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  test-env/bin/python -m pytest --codeblocks
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks
 }
 
 package() {
