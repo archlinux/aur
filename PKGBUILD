@@ -6,11 +6,12 @@ pkgrel=1
 license=('LGPL')
 url="https://gitlab.com/sequoia-pgp/ssh-agent-pks"
 arch=('x86_64')
-makedepends=(cargo)
+makedepends=(cargo git)
 source=("ssh-agent-pks::git+https://gitlab.com/sequoia-pgp/ssh-agent-pks")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 sha512sums=('SKIP')
+pkgdesc="Provides SSH Agent implementation that will delegate to PKS agent."
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
