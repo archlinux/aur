@@ -1,0 +1,12 @@
+pkgbase = my_test_package_jabra
+	pkgdesc = This is a test package
+	pkgver = 1
+	pkgrel = 1
+	url = http://example.com/
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	source = main.c
+	sha256sums = 4d53fa2d64795547156fc26d8a7a4b0f6522da905662bf08f6eb0c749a5f3904
+
+pkgname = my_test_package_jabra
