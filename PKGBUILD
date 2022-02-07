@@ -19,7 +19,7 @@ conflicts=('init-zfs-utils')
 prepare() {
     cd "${srcdir}"/zfs-${pkgver}
 
-    # pyzfs is not built, but build system tries to check for python anyway
+    # Trick the build system into thinking python3 is installed and works
     ln -sf /bin/true python3-fake
 
     # Use openrc-run as the interpreter
