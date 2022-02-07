@@ -10,7 +10,7 @@ pkgbase = geekbench4
 	depends = zlib
 	depends = gcc-libs
 	options = !strip
-	source = http://cdn.geekbench.com/Geekbench-4.4.4-Linux.tar.gz
+	source = https://cdn.geekbench.com/Geekbench-4.4.4-Linux.tar.gz
 	sha512sums = c43e1d658d361347efb012824ff0b81975ace35c866a1c2a227adeb86167292b639f19e8fe190d2f0de395f19280a99cb20342325177222f634c9e71c9226e78
 
 pkgname = geekbench4

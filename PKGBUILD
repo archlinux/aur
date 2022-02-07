@@ -12,7 +12,7 @@ arch=('i686' 'pentium4' 'x86_64')
 url="http://www.primatelabs.ca/geekbench/"
 depends=('zlib' 'gcc-libs')
 license=("custom")
-source=("http://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
+source=("https://cdn.geekbench.com/Geekbench-${pkgver}-Linux.tar.gz")
 sha512sums=('c43e1d658d361347efb012824ff0b81975ace35c866a1c2a227adeb86167292b639f19e8fe190d2f0de395f19280a99cb20342325177222f634c9e71c9226e78')
 options=('!strip')
 
