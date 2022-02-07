@@ -12,6 +12,8 @@ depends=('freetype2' 'gtk3' 'rapidjson' 'sdl2')
 makedepends=('git' 'meson' 'ninja')
 source=("git+$url")
 sha1sums=('SKIP')
+provides=(gpuvis)
+conflicts=(gpuvis)
 
 pkgver() {
   git -C gpuvis describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'

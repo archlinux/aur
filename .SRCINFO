@@ -12,6 +12,8 @@ pkgbase = gpuvis-git
 	depends = gtk3
 	depends = rapidjson
 	depends = sdl2
+	provides = gpuvis
+	conflicts = gpuvis
 	source = https://github.com/mikesart/gpuvis
 	sha1sums = SKIP
 
