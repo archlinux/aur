@@ -2,8 +2,8 @@
 
 pkgname=clipcc
 _pkgname=clipcc
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="ClipCC is a powerful scratch fork with plenty of extra features."
 conflicts=("clipcc-beta-bin" "clipcc-bin")
 arch=("x86_64")
@@ -18,7 +18,7 @@ source=("https://github.com/Clipteam/clipcc-desktop/releases/download/${pkgver//
         "${_pkgname}-icons.tar.gz"
         "${_pkgname}.xml")
 noextract=("clipcc-${pkgver//_/-}-win-x64.exe")
-sha256sums=('ba4e4b4a2e8b18bd267204d66be8671b6d8fbf16e72af2d38c33dab47cfbfb70'
+sha256sums=('1d0d07c769b09bfc409befe13bd8809f0f5e8386d0834ed8075cbae62a42ed18'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'e7240b1e4739cbbb955d7d75e852ecfe4f092d005e2af16e3f52a35e22dfa843'
             '4ed04f630047dd48a9a4f22b678cfb851711432c32815415e737f04bc7b2b1aa'
