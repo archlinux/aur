@@ -1,5 +1,5 @@
-# Maintainer: Schorsch <wsixcde+aur@gmail.com>
-# Thanks to mti@tillenius.com whose packages the ps7b packages were based on
+# Maintainer: Schorsch <wsixcde+aur at gmail dot com>
+# Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps6000a
 pkgver=1.0.80_0r3056
 pkgrel=1
