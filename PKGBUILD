@@ -1,8 +1,10 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Vitaly Drogan <vitaliy.drogan@gmail.com>
+
+# Previos maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libsecp256k1-git
-pkgver=20171221
-pkgrel=2
+pkgver=20220206
+pkgrel=1
 pkgdesc="Optimized C library for EC operations on curve secp256k1"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/bitcoin-core/secp256k1"
@@ -30,10 +32,11 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/libsecp256k1 \
     --localstatedir=/var/lib/libsecp256k1 \
-    --enable-module-recovery \
-    --enable-experimental \
     --enable-module-ecdh \
-    --enable-module-schnorr \
+    --enable-module-recovery \
+    --enable-module-extrakeys \
+    --enable-experimental \
+    --enable-module-schnorrsig \
     --disable-tests \
     --with-gnu-ld
   make
