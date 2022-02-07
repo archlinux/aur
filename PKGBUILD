@@ -8,20 +8,20 @@
 
 
 pkgname='mozc-ut-common'
-pkgver=2.26.4632.102.20220112
+pkgver=2.26.4632.102.20220206
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
 depends=('qt5-base')
-makedepends=('bazel' 'git' 'pkgconf' 'python-six')
-conflicts=('mozc' 'mozc-ut' 'mozc-ut2' 'mozc-ut-united' 'mozc-neologd-ut+ut2')
+makedepends=('bazel' 'git' 'python-six')
+conflicts=('mozc' 'mozc-ut' 'mozc-ut-united')
 provides=('mozc=2.26.4632.102')
 source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c"
-        "https://osdn.net/downloads/users/37/37590/mozcdic-ut-20220112.tar.bz2")
+        'https://osdn.net/downloads/users/37/37667/mozcdic-ut-20220206.tar.bz2')
 sha256sums=('SKIP'
-            '0d22419db25dcbf1bccb4595414fdc78bc3ebf7088e0f076de4a91553f3db94b')
+            '8235f677e420eb0ac42b22f8ff794b9692e8d249913e1a4179e466e32d9ffd01')
 
 prepare() {
     cd ${pkgname}-git
@@ -37,17 +37,17 @@ prepare() {
     sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 
     # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-20220112/mozcdic-ut-20220112.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20220206/mozcdic-ut-20220206.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
     cd ${pkgname}-git/src
 
-    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt
+    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt --copt=-fPIC
 }
 
 package() {
-    install -Dm644 mozcdic-ut-20220112/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
+    install -Dm644 mozcdic-ut-20220206/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
