@@ -20,7 +20,7 @@
 
 pkgname=irccd
 pkgver=4.0.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='A flexible, fast IRC bot'
 arch=('x86_64')
@@ -58,6 +58,6 @@ package() {
 	cp "$pkgname-$pkgver"/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 	# Copy default config files and sysusers
-	install -D -m 0644 "$pkgdir/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
+	mv "$pkgdir/etc/irccd.conf.sample" "$pkgdir/etc/irccd.conf"
 	install -D -m 0644 "$srcdir/irccd-sysusers.conf" "$pkgdir/usr/lib/sysusers.d/irccd.conf"
 }
