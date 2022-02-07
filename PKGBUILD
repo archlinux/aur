@@ -1,7 +1,7 @@
 # Maintainer: Jeffrey Zhang <zhang.lei.fly@gmail.com>
 
 _pkgname=ara
-pkgname=ansible-${_pkgname}
+pkgname=python-${_pkgname}
 pkgver=1.5.7
 pkgrel=1
 pkgdesc="ARA Records Ansible and makes it easier to understand and troubleshoot."
@@ -17,6 +17,7 @@ optdepends=(
     "python-django-rest-framework"
     "python-django-cors-headers"
     "python-django-filter"
+    # FIXME: still require following packages
     # "django-health-check"
     # "python-dynaconf"
     "python-tzlocal"
