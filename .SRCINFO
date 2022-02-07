@@ -1,0 +1,14 @@
+pkgbase = git-br
+	pkgdesc = Shows current git branches and their descriptions
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/bahmutov/git-branches
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = bash
+	optdepends = git
+	source = git-br-1.1.2.tgz::https://github.com/bahmutov/git-branches/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = 51da7e79b98edac56a706f55c8d98d0589e1a065f851bebf2b429fb0d60795f2
+
+pkgname = git-br
