@@ -1,7 +1,7 @@
 # Maintainer: Thiago Perrotta <tbperrotta@gmail.com>
 pkgname=bkt
 pkgver=0.5.1
-pkgrel=2
+pkgrel=1
 pkgdesc="A subprocess caching utility"
 arch=('x86_64')
 url="https://www.bkt.rs/"
