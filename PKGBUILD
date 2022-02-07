@@ -13,14 +13,14 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.0.99.1.r112.gc97397dc4
+pkgver=21.0.99.1.r168.g34b870da8
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
-makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'xtrans' 'libxcvt'
-             'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv'
+makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
+             'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv' 'libxcvt'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
@@ -42,13 +42,11 @@ build() {
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-  export CFLAGS="${CFLAGS/-fno-plt -fno-lto}"
-  export CXXFLAGS="${CXXFLAGS/-fno-plt -fno-lto}"
-  export LDFLAGS="${LDFLAGS/,-z,now,-fno-lto}"
+  export CFLAGS=${CFLAGS/-fno-plt}
+  export CXXFLAGS=${CXXFLAGS/-fno-plt}
+  export LDFLAGS=${LDFLAGS/,-z,now}
 
   arch-meson "${_pkgbase}" build \
-    -D vendor_name="Archlinux" \
-    -D vendor_web="https://aur.archlinux.org/xorg-server-git.git" \
     -D ipv6=true \
     -D xvfb=true \
     -D xnest=true \
@@ -57,12 +55,11 @@ build() {
     -D xephyr=true \
     -D glamor=true \
     -D udev=true \
+    -D dtrace=false \
     -D systemd_logind=true \
     -D suid_wrapper=true \
     -D xkb_dir=/usr/share/X11/xkb \
-    -D xkb_output_dir=/var/lib/xkb \
-    -D b_lto=false \
-    -D b_lundef=false
+    -D xkb_output_dir=/var/lib/xkb
 
   # Print config
   meson configure build
@@ -86,11 +83,10 @@ _install() {
 
 package_xorg-server-common-git() {
   pkgdesc="Xorg server common files (git version)"
+  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
   _pkgname='xorg-server-common'
   provides=('xorg-server-common')
   conflicts=('xorg-server-common')
-  depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
-  arch=('any')
 
   _install fakeinstall/usr/lib/xorg/protocol.txt
   _install fakeinstall/usr/share/man/man1/Xserver.1
@@ -102,25 +98,23 @@ package_xorg-server-common-git() {
 
 package_xorg-server-git() {
   pkgdesc="Xorg X server (git version)"
-  _pkgname='xorg-server'
   depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
            dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence libxcvt) # FS#52949
-
+  _pkgname='xorg-server'
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('xorg-server' 'X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
+  provides=('X-ABI-VIDEODRV_VERSION=25.2' 'X-ABI-XINPUT_VERSION=24.4' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
   conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
 
-  _install fakeinstall/usr/bin/{Xorg,gtf}
-  ln -s /usr/bin/Xorg "${pkgdir}/usr/bin/X"
+  _install fakeinstall/usr/bin/{X,Xorg,gtf}
   _install fakeinstall/usr/lib/Xorg{,.wrap}
   _install fakeinstall/usr/lib/xorg/modules/*
   _install fakeinstall/usr/share/X11/xorg.conf.d/10-quirks.conf
   _install fakeinstall/usr/share/man/man1/{Xorg,Xorg.wrap,gtf}.1
-  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,modesetting}.4
+  _install fakeinstall/usr/share/man/man4/{exa,fbdevhw,inputtestdrv,modesetting}.4
   _install fakeinstall/usr/share/man/man5/{Xwrapper.config,xorg.conf,xorg.conf.d}.5
 
   # distro specific files must be installed in /usr/share/X11/xorg.conf.d
@@ -132,12 +126,12 @@ package_xorg-server-git() {
 
 package_xorg-server-xephyr-git() {
   pkgdesc="A nested X server that runs as an X application (git version)"
-  _pkgname='xorg-server-xephyr'
-  provides=('xorg-server-xephyr')
-  conflicts=('xorg-server-xephyr')
   depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
+  _pkgname='xorg-server-xephyr'
+  provides=('xorg-server-xephyr')
+  conflicts=('xorg-server-xephyr')
 
   _install fakeinstall/usr/bin/Xephyr
   _install fakeinstall/usr/share/man/man1/Xephyr.1
@@ -148,11 +142,11 @@ package_xorg-server-xephyr-git() {
 
 package_xorg-server-xvfb-git() {
   pkgdesc="Virtual framebuffer X server (git version)"
+  depends=(libxfont2 libunwind pixman xorg-server-common-git xorg-xauth
+           libgl nettle libtirpc systemd-libs)
   _pkgname='xorg-server-xvfb'
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
-  depends=(libxfont2 libunwind pixman xorg-server-common-git xorg-xauth 
-           libgl nettle libtirpc systemd-libs)
 
   _install fakeinstall/usr/bin/Xvfb
   _install fakeinstall/usr/share/man/man1/Xvfb.1
@@ -166,10 +160,10 @@ package_xorg-server-xvfb-git() {
 
 package_xorg-server-xnest-git() {
   pkgdesc="A nested X server that runs as an X application (git version)"
+  depends=(libxfont2 libxext pixman xorg-server-common-git nettle libtirpc systemd-libs)
   _pkgname='xorg-server-xnest'
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
-  depends=(libxfont2 libxext pixman xorg-server-common-git nettle libtirpc systemd-libs)
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
@@ -180,13 +174,12 @@ package_xorg-server-xnest-git() {
 
 package_xorg-server-devel-git() {
   pkgdesc="Development files for the X.Org X server (git version)"
-  _pkgname='xorg-server-devel'
-  provides=('xorg-server-devel')
-  conflicts=('xorg-server-devel')
   depends=('xorgproto-git' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build
            'xorg-util-macros')
-  arch=('any')
+  _pkgname='xorg-server-devel'
+  provides=('xorg-server-devel')
+  conflicts=('xorg-server-devel')
 
   _install fakeinstall/usr/include/xorg/*
   _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
@@ -196,6 +189,5 @@ package_xorg-server-devel-git() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" "${_pkgbase}"/COPYING
 
   # make sure there are no files left to install
-  # rm -rf fakeinstall/usr/bin/cvt fakeinstall/usr/share/man/man1/cvt.1
-  # find fakeinstall -depth -print0 | xargs -0 rmdir
+  #find fakeinstall -depth -print0 | xargs -0 rmdir
 }
