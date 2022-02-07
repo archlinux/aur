@@ -1,8 +1,8 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 
 pkgname=tla-tools
-pkgver=1.7.1
-pkgrel=5
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Tools for the TLA+2 language (SANY, TLC, PlusCal translator and TLATeX)"
 arch=('any')
 url="http://research.microsoft.com/en-us/um/people/lamport/tla/tools.html"
@@ -24,7 +24,7 @@ source=(
   'tlc'
 )
 noextract=('tla2tools.jar')
-sha256sums=('d532ba31aafe17afba1130f92410d9257454ff7393d1eb2fe032f0c07f352da5'
+sha256sums=('fa18543e44ed5974a85bd2c60c0dc16620ae117680ea8e693d2691999ed90b22'
             '06a0cc6028cec61252896d0b1b88282efd972de1e37ea7980a5e607b55a0257e'
             'c107b10578c71793043f707ffb8ec093e650ed99af757c4b54aa0c9dc14214d0'
             '1e30d6a6908e5c5f175538f673d4ac4ef495dcd88f89eb9cf93bdeefcdcd0f2b'
