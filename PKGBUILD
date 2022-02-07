@@ -1,6 +1,6 @@
 pkgname=aniwrapper-git
 _pkgname=aniwrapper
-pkgver=r241.087fb9d
+pkgver=r246.10a6752
 pkgrel=1
 pkgdesc="A rofi wrapper around a modified ani-cli: a cli to browse and watch anime"
 arch=('any')
