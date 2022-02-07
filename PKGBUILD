@@ -2,7 +2,7 @@
 
 pkgname=python-vkbottle
 _pkgname=vkbottle
-pkgver=4.1.13
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Customizable asynchronous VK API framework'
 url=https://github.com/vkbottle/vkbottle
@@ -16,9 +16,11 @@ depends=(
 		python-pydantic
 		python-vbml
 		python-vkbottle-types
-		python-watchdog)
+		python-watchdog
+		python-aiofiles
+		python-typing_extensions)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0e1925180b42283265f0a99daa44a46f1124e07681366667226b609943f52bfb')
+sha256sums=('a41806204402175e8d8af62b2d21a94c132befc62c0c574ff2abdccd1135e96f')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
