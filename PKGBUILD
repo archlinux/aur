@@ -1,6 +1,6 @@
 # Maintainer: zehkira <(same as my name) at pm me>
 pkgname="mili"
-pkgver="v2.1.1"
+pkgver="v2.1.2"
 pkgrel=1
 pkgdesc="Minimalistic text editor made with Python and GTK"
 arch=("any")

@@ -1,6 +1,6 @@
 pkgbase = mili
 	pkgdesc = Minimalistic text editor made with Python and GTK
-	pkgver = v2.1.1
+	pkgver = v2.1.2
 	pkgrel = 1
 	url = https://gitlab.com/zehkira/mili
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mili
 	depends = python-gobject
 	depends = gtksourceview3
 	backup = etc/mili/mili.ini
-	source = https://gitlab.com/zehkira/mili/-/archive/v2.1.1/mili-v2.1.1.tar.gz
+	source = https://gitlab.com/zehkira/mili/-/archive/v2.1.2/mili-v2.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = mili
