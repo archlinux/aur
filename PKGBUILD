@@ -7,7 +7,7 @@
 
 _pkgname=brix
 pkgname=${_pkgname}-git
-pkgver=0.3.0.beta.1.r3.g059886c
+pkgver=0.3.0.beta.2.r1.g7641dba
 pkgrel=2
 pkgdesc='Brix Scaffolding System'
 arch=('i686' 'x86_64')
