@@ -201,7 +201,7 @@ prepare() {
         vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
-        vkd3d-valve:vkd3d
+        vkd3d-valve::vkd3d
         SPIRV-Headers
         Vulkan-Headers
         Vulkan-Loader
