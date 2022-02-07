@@ -1,5 +1,5 @@
-# Maintainer: Schorsch <wsixcde+aur@gmail.com>
-# Thanks to mti@tillenius.com whose packages the ps7b packages were based on
+# Maintainer: Schorsch <wsixcde+aur at gmail dot com>
+# Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libpicoipp
 pkgver=1.3.0_4r130
 pkgrel=1
