@@ -1,0 +1,13 @@
+pkgbase = ssh-agent-pks-git
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/sequoia-pgp/ssh-agent-pks
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo
+	provides = ssh-agent-pks
+	conflicts = ssh-agent-pks
+	source = ssh-agent-pks::git+https://gitlab.com/sequoia-pgp/ssh-agent-pks
+	sha512sums = SKIP
+
+pkgname = ssh-agent-pks-git
