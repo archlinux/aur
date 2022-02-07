@@ -1,0 +1,21 @@
+pkgbase = minirc-ng-git
+	pkgdesc = Minimalistic init script (ng)
+	pkgver = 1.2.a35c941
+	pkgrel = 1
+	url = https://github.com/karabaja4/minirc-ng
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = busybox
+	depends = bash
+	depends = jq
+	optdepends = systemd: udev implementation
+	conflicts = systemd-sysvcompat
+	conflicts = sysvinit
+	backup = etc/minirc.json
+	backup = etc/minirc.local
+	backup = etc/minirc.local.shutdown
+	source = git://github.com/karabaja4/minirc-ng.git
+	md5sums = SKIP
+
+pkgname = minirc-ng-git
