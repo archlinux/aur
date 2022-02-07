@@ -11,7 +11,7 @@ pkgver=6.3.8
 _geckover=2.47.2
 _monover=6.4.1
 _asyncver=1.9.2
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -123,10 +123,10 @@ source=(
     vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
+    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-    vkd3d-zfigura::git+https://repo.or.cz/vkd3d/zf.git
+    dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
@@ -206,9 +206,9 @@ prepare() {
         vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
+        vkd3d-valve::vkd3d
         SPIRV-Headers
         Vulkan-Headers
-        vkd3d-zfigura::vkd3d
     )
 
     for submodule in "${_submodules[@]}"; do
