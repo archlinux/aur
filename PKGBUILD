@@ -1,26 +1,26 @@
-# Maintainer: zhullyb <zhullyb@outlook.com>
+# Maintainer: Morgenstern <charles [at] charlesbwise [dot] com>
+# Contributor: zhullyb <zhullyb@outlook.com>
 
 pkgname=python-bsdiff4
-pkgver=1.2.0
-pkgrel=2
-pkgdesc="binary diff and patch using the BSDIFF4-format"
-url="https://github.com/ilanschnell/bsdiff4"
-depends=('python' )
-makedepends=('python' )
+_pkgname="${pkgname#python-}"
+pkgver=1.2.1
+pkgrel=1
+pkgdesc="Binary diff and patch using the BSDIFF4-format"
+url="https://github.com/ilanschnell/${_pkgname}"
+depends=('python')
 license=('BSD')
-arch=('i686' 'x86_64')
-source=("https://pypi.python.org/packages/source/b/bsdiff4/bsdiff4-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/ilanschnell/bsdiff4/master/LICENSE")
-md5sums=('a0d047e91429ce67a3b0231facf41169'
-         'SKIP')
+arch=('x86_64')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ilanschnell/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('927e162988866e9fe0dae1b0030db8bf849f5cb0de46e6d5f1a6f404a2df79174babcd13a31f401c16c5d349737d44bd801bb4218511b36dd217f4aae69c1b5d')
 
 build() {
-    cd $srcdir/bsdiff4-${pkgver}
-    python setup.py build
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd $srcdir/bsdiff4-${pkgver}
-    python setup.py install --root="$pkgdir" --optimize=1
-    install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}
+  cd "${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
