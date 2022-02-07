@@ -3,7 +3,7 @@
 pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
-pkgver=7.0.1
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="A modern streamlined music player"
 arch=('any')
@@ -49,6 +49,7 @@ optdepends=('noto-fonts-cjk: Matching font for CJK characters'
             'python-plexapi: Plex streaming'
             'python-pypresence: Discord status support'
             'python-tekore: Spotify playback control'
+            'python-pychromecast: Chromecast stream support' 
             'picard: Recommended tag editor'
             'gst-plugins-ugly: For GStreamer WMA support'
             )
@@ -82,4 +83,4 @@ package() {
     install -Dm755 "extra/tauonmb.sh" "$pkgdir/usr/bin/tauon"
 }
 
-md5sums=('6891a5020fa432104a328aedc7260d2e')
+md5sums=('59afa69f6553403273db61a8361b393c')
