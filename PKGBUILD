@@ -1,6 +1,6 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=rqlite
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="rqlite is a lightweight, distributed relational database, which uses SQLite as its storage engine"
 arch=(x86_64)
@@ -11,7 +11,7 @@ source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/$
         "${pkgname}@.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('f6cbb7935c3d2715137df39fe58efdb6a0aa7fac69b9f5a5c22258f3190c6d2c'
+sha256sums=('cd9750140cd5e0a184f75f375dbe959ced64c199d7ebc435c672f4a80462a48d'
             'dada94e4161c48609567014e4ac48dc633437fd3a569ecf400e5c056b53dc3f9'
             '8c25f88104d9a1f2598a63f3e5ee7591d2579bf58aa4bbca38e3d69f5abf44db'
             'c0132b51d5c28517545fb58ce4aa67b6e860020d662aa8317ecb6aab0264829a'
