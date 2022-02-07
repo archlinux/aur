@@ -1,15 +1,17 @@
 pkgbase = gendev
 	pkgdesc = Genesis development environment for Linux
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.7.1
+	pkgrel = 1
 	url = https://github.com/kubilus1/gendev
 	arch = any
 	license = BSD
 	depends = texinfo
 	depends = jdk8-openjdk
+	depends = llvm-libs
 	options = !strip
-	source = https://github.com/kubilus1/gendev/releases/download/0.4.0/gendev_0.4.0.txz
-	md5sums = 37e61b25baa4229aa6b6c3d79d7b7953
+	source = https://github.com/kubilus1/gendev/releases/download/0.7.1/gendev_0.7.1.txz
+	source = liblto.patch
+	md5sums = 08f79f377570871899472ef4503382d3
+	md5sums = 68a2b31d51b80cb009b10443f527c2ba
 
 pkgname = gendev
-

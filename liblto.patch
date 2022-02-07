@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text src/opt/gendev/sgdk/mkfiles/makefile.gen src/opt/gendev/sgdk/mkfiles/makefile.gen
+--- src/opt/gendev/sgdk/mkfiles/makefile.gen	2021-06-05 21:11:02.000000000 +0200
++++ src/opt/gendev/sgdk/mkfiles/makefile.gen	2022-02-07 12:53:16.737498088 +0100
+@@ -147,7 +147,7 @@
+ 	$(SIZEBND) out/rom.bin -sizealign 131072
+ 
+ out/symbol.txt: out/rom.out
+-	$(NM) --plugin=liblto_plugin-0.dll -n out/rom.out > out/symbol.txt
++	$(NM) --plugin=libLTO.so -n out/rom.out > out/symbol.txt
+ 
+ out/rom.out: out/sega.o out/cmd_ $(LIBMD)
+ 	$(CC) -B$(BIN) -n -T $(GDK)/md.ld -nostdlib out/sega.o @out/cmd_ $(LIBMD) $(LIB)/libgcc.a -o out/rom.out -Wl,--gc-sections
