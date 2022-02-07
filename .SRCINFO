@@ -1,0 +1,14 @@
+pkgbase = linker
+	pkgdesc = Open links according to content.
+	pkgver = 4.40e005b
+	pkgrel = 1
+	url = https://codeberg.org/MorsMortium/linker
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = python
+	depends = python-appdirs
+	source = linker::git+https://codeberg.org/MorsMortium/linker.git
+	sha512sums = SKIP
+
+pkgname = linker
