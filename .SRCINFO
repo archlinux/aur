@@ -1,6 +1,6 @@
 pkgbase = mqttui-git
 	pkgdesc = Subscribe to a MQTT Topic or publish something quickly from the terminal
-	pkgver = v0.13.0.r32.g46d78c4
+	pkgver = v0.14.0
 	pkgrel = 1
 	url = https://github.com/EdJoPaTo/mqttui
 	arch = x86_64

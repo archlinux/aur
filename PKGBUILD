@@ -1,6 +1,6 @@
 _pkgname=mqttui
 pkgname=mqttui-git
-pkgver=v0.13.0.r32.g46d78c4
+pkgver=v0.14.0.r1.g8729e99
 pkgrel=1
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -29,7 +29,7 @@ package() {
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
 
-  install -Dm644 "completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
-  install -Dm644 "completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-  install -Dm644 "completions/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+  install -Dm644 "target/completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}.bash"
+  install -Dm644 "target/completions/${_pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm644 "target/completions/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
 }
