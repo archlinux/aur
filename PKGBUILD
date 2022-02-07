@@ -118,7 +118,7 @@ source=(
     vkd3d-proton::git+https://github.com/HansKristian-Work/vkd3d-proton.git
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
-    vkd3d::git+https://github.com/ValveSoftware/vkd3d.git
+    vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
@@ -201,7 +201,7 @@ prepare() {
         vkd3d-proton
         OpenXR-SDK
         dxvk-nvapi
-        vkd3d
+        vkd3d-valve:vkd3d
         SPIRV-Headers
         Vulkan-Headers
         Vulkan-Loader
