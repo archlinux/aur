@@ -1,14 +1,13 @@
 pkgbase = python2-lzo
 	pkgdesc = Python bindings for the LZO data compression library
-	pkgver = 1.12
+	pkgver = 1.14
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/python-lzo
 	arch = x86_64
 	license = GPL2
-	source = https://pypi.org/packages/source/p/python-lzo/python-lzo-1.12.tar.gz
-	sha256sums = 97a8e46825e8f1abd84c2a3372bc09adae9745a5be5d3af2692cd850dac35345
+	source = https://pypi.org/packages/source/p/python-lzo/python-lzo-1.14.tar.gz
+	sha256sums = 83cbd8ecaae284735250e31d6c0ecc18ac08763fab2a8c910dc5a6910db6250c
 
 pkgname = python-lzo
 
 pkgname = python2-lzo
-
