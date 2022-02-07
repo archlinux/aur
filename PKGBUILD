@@ -1,41 +1,35 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
-
-pkgname=(python-dbusmock-git python2-dbusmock-git)
-_pkgname=python-dbusmock
-pkgver=0.17.2.r5.fae4be7
+# Contributor: Ivan Semkin (ivan at semkin dot ru)
+_base=python-dbusmock
+pkgname=${_base}-git
+pkgver=0.25.0.r8.a51ad65
 pkgrel=1
-pkgdesc='Mock D-Bus objects for tests'
+pkgdesc="Mock D-Bus objects"
 arch=(any)
-url='https://github.com/martinpitt/python-dbusmock'
+url="https://github.com/martinpitt/${_base}"
 license=(LGPL3)
-depends=()
-makedepends=()
-#checkdepends=(python-nose python2-nose)
-source=('git+https://github.com/martinpitt/python-dbusmock')
-sha256sums=('SKIP')
-
-#check() {
-#  cd "${srcdir}/${_pkgname}-${pkgver}"
-#  python setup.py test
-#  python2 setup.py test
-#}
+depends=(python-dbus python-gobject)
+makedepends=(python-setuptools)
+source=("git+${url}")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd ${_base}
   echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
 }
 
-package_python-dbusmock-git() {
-  depends=(python)
-  makedepends=(python-setuptools)
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install --optimize=1 --root="${pkgdir}/"
+build() {
+  cd ${_base}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python2-dbusmock-git() {
-  depends=(python2)
-  makedepends=(python2-setuptools)
-  cd "${srcdir}/${_pkgname}"
-  python2 setup.py install --optimize=1 --root="${pkgdir}/"
+check() {
+  cd ${_base}
+  python setup.py test
 }
-# vim:set ts=2 sw=2 et:
+
+package() {
+  cd ${_base}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}

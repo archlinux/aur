@@ -1,16 +1,14 @@
 pkgbase = python-dbusmock-git
-	pkgdesc = Mock D-Bus objects for tests
-	pkgver = 0.17.2.r5.fae4be7
+	pkgdesc = Mock D-Bus objects
+	pkgver = 0.25.0.r8.a51ad65
 	pkgrel = 1
 	url = https://github.com/martinpitt/python-dbusmock
 	arch = any
 	license = LGPL3
+	makedepends = python-setuptools
+	depends = python-dbus
+	depends = python-gobject
 	source = git+https://github.com/martinpitt/python-dbusmock
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = python-dbusmock-git
-	depends = python
-
-pkgname = python2-dbusmock-git
-	depends = python2
-
