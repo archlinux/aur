@@ -3,7 +3,7 @@
 
 pkgname=shadowsocks-rust
 pkgver=1.13.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=('any')
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -22,7 +22,7 @@ sha512sums=('cae4d06830e78c660404a5be814f1768c8ab6ab007e8629b4132b8afd6bdbd1341a
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+    cargo fetch --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
