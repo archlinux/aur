@@ -1,0 +1,4 @@
+pkg/
+src/
+epk2extract/
+*.pkg.tar.zst
