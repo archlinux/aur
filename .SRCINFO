@@ -1,6 +1,6 @@
 pkgbase = thefile
 	pkgdesc = File Manager
-	pkgver = 4.0
+	pkgver = 4.0.1
 	pkgrel = 0
 	url = https://github.com/vicr123/thefile
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = thefile
 	depends = libtdesktopenvironment
 	depends = libthefrisbee
 	depends = qt5-svg
-	source = thefile-4.0::https://github.com/vicr123/thefile/archive/refs/tags/v4.0.tar.gz
-	sha256sums = 214f4751b8d194adaa25f06176849242ade9539352672655cdf5071d240b17fa
+	source = thefile-4.0.1::https://github.com/vicr123/thefile/archive/refs/tags/v4.0.1.tar.gz
+	sha256sums = f8184a2ce92d5be72af15b5a09e6c8f1e2f0bc240751afb6d267917374fc36f8
 
 pkgname = thefile
