@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-about
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Cargo plugin to generate list of all licenses for a crate"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache' 'MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b40730557401a70bd4eb853c1958a02403a5484d8370d00101df8ebd87dafcf5')
+sha256sums=('100e50849ca53fb8a6919d91b7cd318090a4068f869812dbdc5ea6be6a2d9045')
 options=('!lto')
 
 prepare() {
