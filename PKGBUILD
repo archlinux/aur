@@ -4,11 +4,12 @@ _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
 makedepends=('python-setuptools')
-checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests' 'python-xxhash' 'root')
+checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests'
+              'python-matplotlib' 'python-hist' 'python-scikit-hep-testdata' 'python-xxhash' 'root' 'xrootd')
 depends=('python-awkward>=1.7.0' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-zstandard')
 optdepends=('xrootd: access remote files over XRootD'
             'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
@@ -32,7 +33,7 @@ check() {
       -e 's@scikit-hep.org:443/uproot/examples@scikit-hep.org:443/uproot3/examples@g' \
       -i {} \;
     # tests depend on some unpackaged deps
-    # python setup.py pytest
+    python setup.py pytest
 }
 
 package_python-uproot() {
