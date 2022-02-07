@@ -1,7 +1,7 @@
 pkgbase = sigpy
 	pkgdesc = A package for signal processing, with emphasis on iterative methods.
 	pkgver = 0.1.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mikgroup/sigpy
 	arch = any
 	license = BSD
@@ -11,6 +11,7 @@ pkgbase = sigpy
 	depends = python-numpy
 	depends = python-numba
 	depends = python-pywavelets
+	depends = python-scipy
 	optdepends = python-cupy: CUDA support
 	optdepends = python-matplotlib: plotting
 	optdepends = python-mpi4py: MPI support
