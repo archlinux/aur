@@ -3,7 +3,7 @@
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64')
 url="https://github.com/PufferPanel/PufferPanel"
@@ -23,11 +23,14 @@ b2sums=('ba9de04c7932332a4a48b04a60015cb1f35c3c85da6dce2cc9f60bff9f03617edf02c9d
         '87d5cbcd6652209913527fc595ec457659ff05c759b6b4ff4d0154e856adc2056640b4dceff9216b0a118751e24bf1b43b80ff6fe3ad74e0ce45f5c82bc59f7e')
 package() {
   export pkg=pufferpanel
-  install -D "${srcdir}/pufferpanel" "${pkgdir}/usr/bin/pufferpanel" 
-  install -D "${srcdir}/config.linux.json" "${pkgdir}/etc/pufferpanel/config.json" 
   mkdir -p ${pkgdir}/var/www/${pkg}/
-  cp -R ${srcdir}/www/* "${pkgdir}/var/www/${pkg}"
-  cp -R "${srcdir}/email/" "${pkgdir}/etc/${pkg}/"
+  mkdir -p ${pkgdir}/var/lib/${pkg}/
+  mkdir -p ${pkgdir}/var/log/${pkg}/
+  mkdir -p ${pkgdir}/etc/${pkg}/
+  cp -R --no-preserve=ownership ${srcdir}/www/* "${pkgdir}/var/www/${pkg}"
+  cp -R --no-preserve=ownership "${srcdir}/email/" "${pkgdir}/etc/${pkg}/"
+  install -Dm 755 "${srcdir}/${pkg}" "${pkgdir}/usr/bin/${pkg}" 
+  install -Dm 644 "${srcdir}/config.linux.json" "${pkgdir}/etc/${pkg}/config.json" 
   install -D "${srcdir}/pufferpanel.service" "${pkgdir}/etc/systemd/system/pufferpanel.service" 
   install -D -m 644 "${srcdir}/../pufferpanel.sysusers" "${pkgdir}/usr/lib/sysusers.d/pufferpanel.conf"
   install -D -m 644 "${srcdir}/../pufferpanel.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/pufferpanel.conf"
