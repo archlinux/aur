@@ -1,7 +1,7 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
-	pkgver = 2021
-	pkgrel = 3
+	pkgver = 2022
+	pkgrel = 1
 	url = https://github.com/AdaCore/gps
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = gnat-gps
 	depends = python2-gobject2
 	depends = python2-cairo
 	depends = python2-yaml
-	source = gnat-gps-2021-20210701-19B6B-src.tar.gz::https://community.download.adacore.com/v1/e940520a321c0aa8b624be178306147970c6b6f9?filename=gnat-gps-2021-20210701-19B6B-src.tar.gz
+	source = https://github.com/AdaCore/gnatstudio/archive/refs/heads/22.0.zip
 	source = gnatstudio-support.zip::https://github.com/charlie5/archlinux-gnatstudio-support/archive/refs/heads/main.zip
 	source = 0003-Honour-DESTDIR-in-installation-targets.patch
 	source = 0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
@@ -29,7 +29,7 @@ pkgbase = gnat-gps
 	source = patch-gtkada-search_entry.adb
 	source = site-packages.tar.gz
 	source = gps.desktop
-	sha1sums = e940520a321c0aa8b624be178306147970c6b6f9
+	sha1sums = 0780ac1b2b7df17e3d6c52a076f50d4cdd64e79c
 	sha1sums = 12fe188cc9ddcf06341d52af4dd086c9ded5afda
 	sha1sums = 4c13859aa25c5142bd5d0fde7b645217ddeccb50
 	sha1sums = 4e6cb35c4e2e74d343d0917b926c7377a81b1aba

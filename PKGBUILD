@@ -4,9 +4,8 @@
 # Contributor: Georgios Tsalikis  <aliverius somewhere near tsalikis and a net>
 
 pkgname=gnat-gps
-_upstream_ver=2021-20210701-19B6B
-pkgver=2021
-pkgrel=3
+pkgver=2022
+pkgrel=1
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -20,8 +19,7 @@ depends=("clang" "ada_language_server"
 
 makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
-_checksum=e940520a321c0aa8b624be178306147970c6b6f9
-source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz"
+source=("https://github.com/AdaCore/gnatstudio/archive/refs/heads/22.0.zip"
         gnatstudio-support.zip::https://github.com/charlie5/archlinux-gnatstudio-support/archive/refs/heads/main.zip
         0003-Honour-DESTDIR-in-installation-targets.patch
         0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
@@ -32,7 +30,7 @@ source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adac
         site-packages.tar.gz
         gps.desktop)
 
-sha1sums=("$_checksum"
+sha1sums=('0780ac1b2b7df17e3d6c52a076f50d4cdd64e79c'
           '12fe188cc9ddcf06341d52af4dd086c9ded5afda'
           '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
           '4e6cb35c4e2e74d343d0917b926c7377a81b1aba'
@@ -45,20 +43,16 @@ sha1sums=("$_checksum"
 
 prepare()
 {
-  cd "$srcdir/gps-$_upstream_ver-src"
+  cd "$srcdir/gnatstudio-22.0"
 
   patch -Np0 -i ../patch-shared.gpr.in
-  patch -Np1 -i ../patch-filter_panels.adb
-  patch -Np1 -i ../patch-gtkada-search_entry.ads
-  patch -Np1 -i ../patch-gtkada-search_entry.adb
-
   patch -p1 < "$srcdir/0003-Honour-DESTDIR-in-installation-targets.patch"
   patch -p0 < "$srcdir/0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch"
 }
 
 build() 
 {
-  cd "$srcdir/gps-$_upstream_ver-src"
+  cd "$srcdir/gnatstudio-22.0"
 
   export OS=unix
 
@@ -76,12 +70,12 @@ build()
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
 
   make -j1 OS=unix PROCESSORS=0 BUILD=Production LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.10 -gargs"
-#  make -C docs all
+#  make -C docs all     ### Docs are currently broken.
 }
 
 package() 
 {
-  cd "$srcdir/gps-$_upstream_ver-src"
+  cd "$srcdir/gnatstudio-22.0"
 
   export OS=unix
   make DESTDIR="$pkgdir/" install
@@ -99,13 +93,11 @@ package()
   # Add no longer available Python 2.7 packages.
   #
   mkdir -p "$pkgdir/usr/lib/python2.7/site-packages"
-
+ 
   pushd "$srcdir/site-packages"
-
   for file in $(find . -type f); do
     install -m 644 -D ${file} "$pkgdir/usr/lib/python2.7/site-packages"/${file#source/}
   done
-
   popd
 
   # Add the desktop config.
