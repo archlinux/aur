@@ -1,6 +1,6 @@
 pkgbase = portfolio
 	pkgdesc = Track your portfolio performance (finance)
-	pkgver = 0.56.4
+	pkgver = 0.56.5
 	pkgrel = 1
 	url = http://buchen.github.io/portfolio/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = portfolio
 	makedepends = gendesk
 	depends = java-runtime=11
 	depends = webkit2gtk
-	source = https://github.com/buchen/portfolio/archive/0.56.4.tar.gz
-	sha1sums = 17edc23bb6ec849050158be178e0f622e0c03c41
+	source = https://github.com/buchen/portfolio/archive/0.56.5.tar.gz
+	sha1sums = 6550efd997455b4e65828953578928a277136271
 
 pkgname = portfolio
