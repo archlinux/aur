@@ -1,6 +1,6 @@
 pkgname=rtl8723bu-git-dkms
 _pkgname=rtl8723bu
-pkgver=257
+pkgver=258
 pkgrel=1
 pkgdesc="Driver for RTL8723BU DKMS version"
 url="https://github.com/lwfinger/rtl8723bu"
