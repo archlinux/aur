@@ -67,7 +67,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.16.2
+pkgver=5.16.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=482dc4864b74d583f9836a187acd99ad04881045
+_arch_config_commit=64d7dee6c53daa630b162fb9e818ef5cf4a228a9
 _prjc_version=5.16
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20211114
@@ -84,22 +84,24 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
-  "${_prjc_patch}::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.16/prjc-patches-v2/0001-PRJC-for-5.16.patch"
+  "${_prjc_patch}::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.16/prjc-patches-v3/0001-PRJC-for-5.16.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/63fd7d9a3a79d4aba553f6f10189b0369f190aaf.patch"
-  "0002-${pkgbase}-${pkgver}-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/9acd6e2bc3b8f355648a081198fa22dc9c69e40b.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/12c13905beb7be316124db7f446ea43f06b4e622.patch"
+  "0002-${pkgbase}-${pkgver}-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/66a61d788b51f9ed67106ab01b86cd3b5e5be9bd.patch"
+  "0003-${pkgbase}-${pkgver}-Bluetooth-Read-codec-capabilities-only-if-supported.patch::https://github.com/archlinux/linux/commit/cb303fbd20443d40187058da7a415ebb81833489.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('6f07d9da86101ab72eadd53a9f58a4740037608a006fc622a923d4dd9578ce62cc9959711dca2e953e3fb68286f55fb14be04a4a00fc49a33c2c28bd5944532f'
+b2sums=('3b77442d05fe1550f608f8e715e99eba099270b409f2a0adf4acf5298b75c3bf4087f730174b3f4b3fc31214ccc62dd80d194e78d9b906e1fc8e06227f933225'
         'SKIP'
         '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da'
-        'f7ece87d4ddd45f7a280bb5027772b6c80e9073125ea1962718404fdec0ca9dd7ba939e929dcea341b5d205c77dc7744d85d8bfaf14a3012aa144b84294caddd'
+        '67824203200252e2378187e6ba46f92d305ac8083e843e349042a6ef5e89a7bcd8c703a6e0a9a10a5afa778aff2e22bddcb9b54b6da3379a03e24076f0e9b903'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        '6a7041f7a9b0eabd6c430d5f63f4c5c0777375657460cfd03cd697aeca6fc936f3fbd8b0d81301ab48e446310c7dd36f078e166b925647060d02adffcaa14643'
-        '8cc89bcc4f64870f84d9155a7b7d42cc36687a7ffbbada737ff1e5eb4ae7e606bfc0ed4846cc459eca5bde6654ce953393aa8d1f96558887c3a69bb0de552a61')
+        '66576d5dbfcb23e82ccccfdc6a857d002d9c312e84384745a7c59391c9f1e280ca467468396cdae42261c4986b93959a95be728ea27d7cb2962e473040c040aa'
+        '74ae1a101600a0b63e8d72e86e96fcbae4b2858d20499f2dbec7bf697505a1fe51064c87de266e9cf0dd891b091b3126cfef781a947f73c5ef6689ea56252f5b'
+        '1ab1df2200641f1337b6b4319d45bf59b963e5fcb77ece1782a5a1c001901eb3fbe8756aea2fc713d3f093010710044e8fb60d42f09525a9c3fc218f7cd08b57')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
