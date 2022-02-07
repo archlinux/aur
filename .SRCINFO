@@ -10,6 +10,7 @@ pkgbase = aniwrapper-git
 	depends = curl
 	depends = grep
 	depends = mpv
+	depends = openssl
 	depends = rofi
 	depends = sed
 	depends = sqlite3

@@ -6,7 +6,7 @@ pkgdesc="A rofi wrapper around a modified ani-cli: a cli to browse and watch ani
 arch=('any')
 url="https://github.com/ksyasuda/aniwrapper"
 license=('GPL3')
-depends=('aria2' 'curl' 'grep' 'mpv' 'rofi' 'sed' 'sqlite3')
+depends=('aria2' 'curl' 'grep' 'mpv' 'openssl' 'rofi' 'sed' 'sqlite3')
 makedepends=('git')
 optdepends=('vlc: An alternative video player'
 'mplayer: An alternative video player')
