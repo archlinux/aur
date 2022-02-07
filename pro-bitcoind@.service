@@ -1,22 +1,12 @@
-# It is not recommended to modify this file in-place, because it will
-# be overwritten during package upgrades. If you want to add further
-# options or overwrite existing ones then use
-# $ systemctl edit bitcoind.service
-# See "man systemd.service" for details.
-
-# Note that almost all daemon options could be specified in
-# /etc/bitcoin/bitcoin.conf, but keep in mind those explicitly
-# specified as arguments in ExecStart= will override those in the
-# config file.
-
 [Unit]
-Description=Prometheus Bitcoin daemon
+Description=Prometheus Bitcoin daemon on %I
 After=network.target
 
 [Service]
 ExecStart=/usr/bin/pro-bitcoind -daemon \
-                            -pid=/run/bitcoind/bitcoind.pid \
-                            -conf=/etc/bitcoin/pro-bitcoin.conf \
+                            -chain=%i
+                            -pid=/run/bitcoind-%i/bitcoind.pid \
+                            -conf=/etc/bitcoin/bitcoin.conf \
                             -datadir=/var/lib/bitcoind
 
 # Make sure the config directory is readable by the service user
@@ -27,7 +17,7 @@ ExecStartPre=/bin/chgrp bitcoin /etc/bitcoin
 ####################
 
 Type=forking
-PIDFile=/run/bitcoind/bitcoind.pid
+PIDFile=/run/bitcoind-%i/bitcoind.pid
 Restart=on-failure
 
 # Directory creation and permissions
@@ -38,7 +28,7 @@ User=bitcoin
 Group=bitcoin
 
 # /run/bitcoind
-RuntimeDirectory=bitcoind
+RuntimeDirectory=bitcoind-%i
 RuntimeDirectoryMode=0710
 
 # /etc/bitcoin
