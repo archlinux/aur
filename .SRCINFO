@@ -10,6 +10,7 @@ pkgbase = sfwbar
         depends = gtk3
         depends = json-c
         depends = gtk-layer-shell
+        depends = wayland-protocols
 	source = https://github.com/LBCrion/sfwbar/archive/v1.0_beta4.tar.gz
 	sha256sums = 49233d2772bc8cd376a829288cdee355d24e546651ad6e005b8b1cf05418e36f
 

@@ -13,6 +13,7 @@ depends=(
     'gtk3'
     'json-c'
     'gtk-layer-shell'
+    'wayland-protocols'
     )
 makedepends=(
     'meson'
