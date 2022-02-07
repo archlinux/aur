@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=libosmium
-pkgver=2.17.3
+pkgver=2.18.0
 pkgrel=1
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="https://osmcode.org/libosmium/"
@@ -19,7 +19,7 @@ optdepends=('sparsehash: sparse-mem-table index map'
 conflicts=('libosmium-git')
 provides=('libosmium')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osmcode/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ff85d55ca83d77fc41f6b7ae77f3d8d4337d299cbb4cc60c00e1f9d90d94e71b')
+sha256sums=('c05a3e95c9c811521ebad8637e90f43ab8fb053b310875acce741cc4c17d6f59')
 
 build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
