@@ -1,0 +1,13 @@
+pkgbase = pks-openpgp-card-git
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/sequoia-pgp/pks-openpgp-card
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo
+	provides = pks-openpgp-card
+	conflicts = pks-openpgp-card
+	source = pks-openpgp-card::git+https://gitlab.com/sequoia-pgp/pks-openpgp-card
+	sha512sums = SKIP
+
+pkgname = pks-openpgp-card-git
