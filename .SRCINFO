@@ -1,4 +1,4 @@
-pkgbase = discord-rpc-cli-git
+pkgbase = pkgbase
 	pkgdesc = A Discord RPC cli client written purely in Rust
 	pkgver = 1.1.0
 	pkgrel = 1
