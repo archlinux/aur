@@ -1,17 +1,15 @@
 pkgbase = supergfxctl-git
 	pkgdesc = A utility for Linux graphics switching on Intel/AMD iGPU + nVidia dGPU laptops
-	pkgver = 2.0.1.r6.2c22e67
+	pkgver = 4.0.4.r0.g7eabe91
 	pkgrel = 1
 	url = https://gitlab.com/asus-linux/supergfxctl
 	arch = x86_64
 	license = MPL2
 	makedepends = git
-	makedepends = cargo
-	depends = dbus
-	depends = systemd
+	makedepends = rust
 	provides = supergfxctl
 	conflicts = supergfxctl
 	source = git+https://gitlab.com/asus-linux/supergfxctl.git
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = supergfxctl-git
