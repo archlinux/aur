@@ -1,5 +1,5 @@
-# Maintainer: Schorsch <wsixcde+aur@gmail.com>
-# Thanks to mti@tillenius.com whose packages the ps7b packages were based on
+# Maintainer: Schorsch <wsixcde+aur at gmail dot com>
+# Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=picoscope7beta
 pkgver=7.0.91_1r10273
 pkgrel=1
