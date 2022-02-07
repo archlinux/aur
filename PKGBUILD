@@ -1,7 +1,7 @@
 # Maintainer: Nathanael Demacon <nathanael.dmc[at]outlook[dot]fr>
 
 pkgname=sshs
-pkgver="1.4.2"
+pkgver="1.5.0"
 pkgrel="1"
 pkgdesc="Terminal user interface for SSH"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/quantumsheep/sshs"
 license=('MIT')
 depends=('go' 'openssh')
 source=("https://github.com/quantumsheep/sshs/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('8b102f4dfdd6cae7ed15207c04540b73c8e43358321c2409ed73ecfb1ad4b369')
+sha256sums=('74edb1b69d83ed4de2d020e468ff7c4602a2857a821711f4454466417b069b7c')
 
 build() {
     cd "$pkgname-$pkgver"
