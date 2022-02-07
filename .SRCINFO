@@ -1,12 +1,12 @@
 pkgbase = libimobiledevice-glue-git
 	pkgdesc = Library with common code used by the libraries and tools around the libimobiledevice project
-	pkgver = r19.499a557
+	pkgver = r24.90fc383
 	pkgrel = 1
 	url = http://www.libimobiledevice.org/
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
-	depends = libplist-git
+	depends = libplist
 	provides = libimobiledevice-glue
 	source = git+https://github.com/libimobiledevice/libimobiledevice-glue
 	sha256sums = SKIP
