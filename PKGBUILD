@@ -3,10 +3,11 @@
 pkgname=pks-openpgp-card-git
 pkgver=0.1
 pkgrel=1
+pkgdesc="Provides access to OpenPGP Cards through Private Key Store protocol"
 license=('LGPL')
 url="https://gitlab.com/sequoia-pgp/pks-openpgp-card"
 arch=('x86_64')
-makedepends=(cargo)
+makedepends=(cargo git)
 source=("pks-openpgp-card::git+https://gitlab.com/sequoia-pgp/pks-openpgp-card")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
