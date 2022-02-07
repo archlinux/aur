@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('cargo' 'python')
 depends=('libxcb' 'libxkbcommon-x11')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('126b0a7bf5bd37cf4382a6c23bc4d40aaed12c36caa49dfacc183533d96d4fb6')
+sha256sums=('fc4dde578158c27bdda7e02362c05b35cb6e75b2f74f70e0867a18cb4269ee33')
 conflics=('cotp-bin')
 provides=('cotp-bin')
 
