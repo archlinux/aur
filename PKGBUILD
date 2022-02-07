@@ -9,7 +9,7 @@ url='https://github.com/replydev/cotp'
 license=('GPL3')
 makedepends=('libxcb' 'libxkbcommon-x11')
 source=("$url/releases/download/$pkgver/cotp-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('3b8f074c7dde12d4cd7d57d5c24b6dd9c8c8565a455adbf47717849c51a322d1')
+sha256sums=('bef81982ea1e38eb29eb248b22cbeb0d4727cce6f943a468c31f40884e3936d5')
 conflicts=('cotp')
 provides=('cotp')
 
