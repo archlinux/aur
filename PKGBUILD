@@ -2,7 +2,7 @@
 
 pkgname=lemon-lime
 pkgver=0.3.2.1
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ provides=("lemon-lime")
 conflicts=("lemon-lime-git")
 replaces=()
 backup=()
-options=()
+options=(debug strip)
 install=
 changelog=
 
@@ -38,20 +38,20 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-	cmake . \
-		-DCMAKE_BUILD_TYPE=Release \
+	cmake -S. -B build \
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-GNinja \
 		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
 		-DLEMON_BUILD_INFO="Build for Arch Linux" \
 		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)" \
 		-DEMBED_TRANSLATIONS=OFF \
 		-DEMBED_DOCS=OFF
-	ninja
+	ninja -C build
 
 }
 
 package() {
 	cd "$srcdir"
-	ninja install
+	ninja -C build install
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }

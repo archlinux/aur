@@ -1,7 +1,7 @@
 pkgbase = lemon-lime
 	pkgdesc = 为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus
 	pkgver = 0.3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Project-LemonLime/Project_LemonLime
 	arch = x86_64
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = lemon-lime
 	provides = lemon-lime
 	conflicts = lemon-lime-git
 	noextract = Lemon-0.3.2.1-source-all.7z
+	options = debug
+	options = strip
 	source = https://github.com/Project-LemonLime/Project_LemonLime/releases/download/0.3.2.1/Lemon-0.3.2.1-source-all.7z
 	b2sums = 9114635e62ecef591525fff8f8f361c5ae8cf766bb61d013a2ea63d3f662ee297e85f0aaa9bb2809caf4f3d199b46a32bdc4a146c49c7f6d11978a3900afafb6
 
