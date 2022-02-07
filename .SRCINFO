@@ -1,11 +1,14 @@
 pkgbase = python-mbstrdecoder
 	pkgdesc = Multi-byte character string decoder
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thombashi/mbstrdecoder
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
 	depends = python-chardet
 	source = python-mbstrdecoder-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-1.1.0.tar.gz
 	source = python-mbstrdecoder-1.1.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/m/mbstrdecoder/mbstrdecoder-1.1.0.tar.gz.asc
