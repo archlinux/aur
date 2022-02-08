@@ -1,8 +1,8 @@
-pkgbase = v2ray-git
+pkgbase = v2ray-go-git
 	pkgdesc = A set of network tools that help you to build your own computer network (git version).
-	pkgver = 4.28.2.r25.g73311d10
+	pkgver = gbbeec9e
 	pkgrel = 1
-	url = https://github.com/v2fly/v2ray-core
+	url = https://github.com/Shadowsocks-NET/v2ray-go
 	arch = x86_64
 	license = MIT
 	makedepends = go
@@ -13,8 +13,7 @@ pkgbase = v2ray-git
 	provides = v2ray
 	conflicts = v2ray
 	backup = etc/v2ray/config.json
-	source = v2ray-git::git+https://github.com/v2fly/v2ray-core.git
+	source = v2ray-go::git+https://github.com/Shadowsocks-NET/v2ray-go.git
 	sha512sums = SKIP
 
-pkgname = v2ray-git
-
+pkgname = v2ray-go-git

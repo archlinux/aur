@@ -3,19 +3,20 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: pandada8 <pandada8@gmail.com>
 
-pkgname=v2ray-git
-pkgver=4.28.2.r25.g73311d10
+pkgname=v2ray-go-git
+_pkgname=${pkgname%-git}
+pkgver=gbbeec9e
 pkgrel=1
 pkgdesc="A set of network tools that help you to build your own computer network (git version)."
 arch=(x86_64)
-url="https://github.com/v2fly/v2ray-core"
+url="https://github.com/Shadowsocks-NET/v2ray-go"
 license=(MIT)
 depends=(glibc v2ray-domain-list-community v2ray-geoip)
 makedepends=(go git)
 backup=(etc/v2ray/config.json)
 provides=(v2ray)
 conflicts=(v2ray)
-source=("$pkgname::git+$url.git")
+source=("$_pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 prepare() {
@@ -24,14 +25,14 @@ prepare() {
 }
 
 pkgver() {
-    cd "$pkgname"
+    cd "$_pkgname"
 
     # cutting off 'v' prefix that presents in the git tag
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    printf g$(git describe --always)
 }
 
 build() {
-  cd "$srcdir"/$pkgname
+  cd "$srcdir"/$_pkgname
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external"
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -41,12 +42,12 @@ build() {
 }
 
 check() {
-  cd "$srcdir"/$pkgname
-  go test -p 1 -tags json -v -timeout 30m v2ray.com/core/...
+  cd "$srcdir"/$_pkgname
+  go test -p 1 -tags json -v -timeout 30m github.com/Shadowsocks-NET/v2ray-go/v4/...
 }
 
 package() {
-  cd "$srcdir"/$pkgname
+  cd "$srcdir"/$_pkgname
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/v2ray/LICENSE
   install -Dm644 release/config/systemd/system/v2ray.service "$pkgdir"/usr/lib/systemd/system/v2ray.service
   install -Dm644 release/config/systemd/system/v2ray@.service "$pkgdir"/usr/lib/systemd/system/v2ray@.service
