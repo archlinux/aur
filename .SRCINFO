@@ -1,6 +1,6 @@
 pkgbase = python-scs
 	pkgdesc = Convex cone solver via operator splitting.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = http://github.com/cvxgrp/scs/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = python-scs
 	depends = python
 	depends = python-numpy
 	depends = python-scipy
-	source = https://pypi.org/packages/source/s/scs/scs-3.0.0.tar.gz
+	source = https://pypi.org/packages/source/s/scs/scs-3.1.0.tar.gz
 	source = LICENSE.txt
-	sha256sums = b29b6ae469041fd8e5831905dee5a10335c985e2d0e6a1c78c8a81c3bb974c2b
+	sha256sums = 1693fc9fa4f9dbec7b3e8d357fdcee8e53262997583479f5c4e2dbca39c7065a
 	sha256sums = 47d0bba3f33546d08d9dea012d70b1362d2e917553bb751183fcf046519fd868
 
 pkgname = python-scs
