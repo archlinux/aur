@@ -14,7 +14,8 @@ conflicts=('prospect-mail')
 provides=('prospect-mail')
 install="${pkgname}.install"
 source=("https://github.com/julian-alarcon/prospect-mail/releases/download/v${pkgver}/prospect-mail-${pkgver}.pacman" 'LICENSE')
-md5sums=('56e3b27b95265ac6144f660a59bc4eca')
+md5sums=('56e3b27b95265ac6144f660a59bc4eca'
+         '880ab7bab448377f481e0f4b614f2828')
 
 package() {
   cd "$srcdir"
