@@ -1,9 +1,9 @@
-# Maintainer: timescam <timmescam at duck dot com>
+# Maintainer: timescam <timescam at duck dot com>
 
 pkgname=noto-fonts-emoji-apple
 _pkgname=noto-fonts-emoji
 pkgver=15.4_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Noto emoji fonts replaced with apple branded emoji, modified form a magisk module"
 arch=(any)
 url="https://gitlab.com/timescam/noto-fonts-emoji-apple"
