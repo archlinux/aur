@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="nwg-shell meta-package and installer"
 arch=('x86_64')
@@ -9,7 +9,8 @@ license=('MIT')
 depends=('python' 'sway' 'grim' 'slurp' 'swayidle' 'swaylock' 'swappy' 'wl-clipboard' 'jq'
          'lxappearance' 'foot' 'wlsunset' 'wdisplays' 'swaync' 'python-geopy' 'python-dasbus'
          'azote' 'autotiling' 'nwg-panel' 'nwg-wrapper' 'nwg-bar' 'nwg-dock' 'nwg-drawer'
-         'nwg-menu' 'gopsuinfo' 'nwg-shell-config')
+         'nwg-menu' 'gopsuinfo' 'nwg-shell-config' 'xorg-xwayland' 'pacman-contrib'
+         'papirus-icon-theme')
 optdepends=('xorg-xwayland: for X clients'
             'libappindicator-gtk3: for tray status icon')
 makedepends=('python-setuptools' 'python-wheel')
