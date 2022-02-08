@@ -1,17 +1,15 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
-_pkgname='grub-entries'
-pkgname="${_pkgname}-git"
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+_pkgname=grub-entries
+pkgname=${_pkgname}-git
 pkgver=r4.d35ba0b
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to list grub's top-level menu entries."
+url=https://github.com/soystemd/grub-entries
 arch=(x86_64)
-url='https://github.com/soystemd/grub-entries'
 license=(GPL)
 makedepends=(git)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
 source=("git+$url.git")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"
