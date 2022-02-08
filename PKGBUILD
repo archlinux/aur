@@ -33,19 +33,21 @@ build() {
 
 package() {
     mkinfo "Extracting data.tat.xz ..."
-    tar -xpvf "${srcdir}"/data.tar.xz -C "${pkgdir}"
+    tar -xpvf "${srcdir}"/data.tar.xz
 
     mkinfo "Preparing needed directories ..."
     mkdir -pv "${pkgdir}/usr/{lib,licenses/astap}"
 
-    mkinfo "Moving binaries from /opt to /usr/lib ..."
-    mv -v "${pkgdir}"/opt/"${_pkgname}" "${pkgdir}"/usr/lib
+    mkinfo "Install binaries ..."
+    cp -rv "${srcdir}"/opt/"${_pkgname}" "${pkgdir}"/usr/lib/
+
+    mkinfo "Installing shared files ..."
+    cp -rv "${srcdir}"/usr/share "${pkgdir}"/usr
 
     mkinfo "Installing licenses ..."
     install -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt \
-            -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+        -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
     mkinfo "Removeing unneeded resources ..."
     rm -rv "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
-    rm -rv "${pkgdir}"/*.tar.gz
 }
