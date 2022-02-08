@@ -3,13 +3,13 @@
 
 _pkgname=latencyflex
 pkgname=(latencyflex-git latencyflex-wine-git)
-pkgver=r24.514fed6
+pkgver=r40.9c2836f
 pkgrel=1
 pkgdesc="Vendor and game agnostic latency reduction middleware"
 arch=('x86_64')
 url="https://github.com/ishitatsuyuki/LatencyFleX"
 license=('Apache')
-makedepends=('git' 'cmake' 'meson' 'vulkan-headers' 'vulkan-validation-layers' 'wine')
+makedepends=('git' 'cmake' 'meson' 'vulkan-headers' 'vulkan-validation-layers' 'wine' 'mingw-w64-gcc')
 source=("git+https://github.com/ishitatsuyuki/LatencyFleX.git"
         "git+https://github.com/kubo/funchook.git"
         "git+https://github.com/gdabah/distorm.git"
@@ -43,8 +43,11 @@ build() {
     meson compile -C build
     cd "$srcdir/$_vcsname/layer/wine"
     export LIBRARY_PATH="$PWD/../build/"
-    arch-meson build -D b_lto=false --cross cross-wine64.txt
-    meson compile -C build
+    # Bug: Meson leaks LDFLAGS into cross targets
+    LDFLAGS= meson --prefix=/usr build-wine64 --cross cross-wine64.txt
+    meson compile -C build-wine64
+    LDFLAGS= meson --prefix=/usr build-mingw64 --cross cross-mingw64.txt
+    meson compile -C build-mingw64
 }
 
 package_latencyflex-git() {
@@ -61,5 +64,6 @@ package_latencyflex-wine-git() {
     conflicts=('latencyflex-wine')
     install='latencyflex-wine.install'
     cd "$srcdir/$_vcsname/layer/wine"
-    DESTDIR="$pkgdir" meson install -C build --skip-subprojects
+    DESTDIR="$pkgdir" meson install -C build-wine64 --skip-subprojects
+    DESTDIR="$pkgdir" meson install -C build-mingw64 --skip-subprojects
 }
