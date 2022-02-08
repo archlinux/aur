@@ -1,6 +1,6 @@
 # Maintainer: Tobias Killer <tokidev at posteo dot de>
 pkgname=ddpolymerase
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Copy, repair and verify a file"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('coreutils' 'util-linux')
 makedepends=('cargo')
 source=("$pkgname-v$pkgver.tar.gz::https://codeberg.org/tokideveloper/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('ddd3df3792adf1f7e413855a0e8146ff1bed150490cdab828496dbfe403ad07f320295b180fbb9229aa1c5ae05e6138ff506f90822fa640d05192b9c430a7f20')
+sha512sums=('401ce5f4d4e488ef350b4185ca19d2d4d0c1be21d3db5f07838b06099ee33a17684206fb897756ee0fba081ee6abf162864aa516748b2c31693d74972eb5b1ca')
 
 prepare() {
   cd "$pkgname"

@@ -1,6 +1,6 @@
 pkgbase = ddpolymerase
 	pkgdesc = Copy, repair and verify a file
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://codeberg.org/tokideveloper/ddpolymerase
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ddpolymerase
 	makedepends = cargo
 	depends = coreutils
 	depends = util-linux
-	source = ddpolymerase-v0.1.0.tar.gz::https://codeberg.org/tokideveloper/ddpolymerase/archive/v0.1.0.tar.gz
-	sha512sums = ddd3df3792adf1f7e413855a0e8146ff1bed150490cdab828496dbfe403ad07f320295b180fbb9229aa1c5ae05e6138ff506f90822fa640d05192b9c430a7f20
+	source = ddpolymerase-v0.1.1.tar.gz::https://codeberg.org/tokideveloper/ddpolymerase/archive/v0.1.1.tar.gz
+	sha512sums = 401ce5f4d4e488ef350b4185ca19d2d4d0c1be21d3db5f07838b06099ee33a17684206fb897756ee0fba081ee6abf162864aa516748b2c31693d74972eb5b1ca
 
 pkgname = ddpolymerase
