@@ -1,7 +1,7 @@
 # Maintainer: Devin Neal <8bitZeta@protonmail.com>
 # Author: Julian Alarcon <alarconj@gmail.com>
 pkgname=prospect-mail-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Prospect Mail is an Outlook Electron desktop application for the new design."
 arch=('x86_64')
@@ -14,8 +14,7 @@ conflicts=('prospect-mail')
 provides=('prospect-mail')
 install="${pkgname}.install"
 source=("https://github.com/julian-alarcon/prospect-mail/releases/download/v${pkgver}/prospect-mail-${pkgver}.pacman" 'LICENSE')
-md5sums=('23c95170c91407d5a9b1c47eaa3fb5d8'
-         '880ab7bab448377f481e0f4b614f2828')
+md5sums=('56e3b27b95265ac6144f660a59bc4eca')
 
 package() {
   cd "$srcdir"
