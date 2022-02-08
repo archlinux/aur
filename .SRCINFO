@@ -1,11 +1,10 @@
 pkgbase = cs50-meta
 	pkgdesc = CS50 meta package defining tools and libraries required for CS50/CS50x course
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cs50
 	arch = any
 	license = GPL
-	license = MIT
 	depends = check50
 	depends = libcs50
 	depends = python-cs50
