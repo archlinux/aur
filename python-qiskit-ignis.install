@@ -1,0 +1,10 @@
+post_install() {
+    echo ""
+    echo "As of the version 0.7.0 Qiskit Ignis is deprecated"
+    echo "and has been supersceded by the Qiskit Experiments project."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
