@@ -2,8 +2,8 @@
 
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
-pkgver=4.0.0.dev10+115.gc75215e
-pkgrel=4
+pkgver=4.0.0.dev10+146.g3e7ba1af
+pkgrel=1
 arch=('any')
 license=('GPL2')
 depends=(
