@@ -1,13 +1,14 @@
 # Maintainer: Kasimir Wansing <kasimir at wansing dot org>
 pkgname=mysql2sqlite-git
 pkgver=r54.d14d22a
-pkgrel=1
+pkgrel=2
 pkgdesc="Converts MySQL dump to SQLite3 compatible dump"
 arch=("any")
 url="https://github.com/dumblob/mysql2sqlite"
 license=("MIT")
 depends=("awk")
 makedepends=("git")
+provides=("mysql2sqlite")
 source=('git+https://github.com/dumblob/mysql2sqlite.git')
 sha256sums=('SKIP')
 
