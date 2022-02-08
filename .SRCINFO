@@ -1,11 +1,9 @@
 pkgbase = paclast
 	pkgdesc = list installed pacman packages in chronological order.
 	pkgver = r5
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
-	provides = paclast
-	conflicts = paclast
 	source = paclast
 	sha256sums = ba8b0c1d478313d5fef710acb713e687e9c33e54b20269c9f246dfcc1a996d32
 
