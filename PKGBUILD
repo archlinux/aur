@@ -1,50 +1,39 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
-pkgver=7.3.2
-_wmcname=wmcommons
-_wmcver=0.1.4
-pkgrel=2
+pkgver=8.0.0
+pkgrel=1
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686)
 url="https://github.com/jzbor/moonwm"
-_wmcurl="https://github.com/jzbor/wmcommons"
 license=('MIT')
 groups=()
-depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg geoclue i3lock imagemagick libnotify light network-manager-applet notification-daemon otf-nerd-fonts-fira-code pamixer picom polkit-gnome sound-theme-freedesktop xfce4-power-manager xorg-setxkbmap xorg-xrandr xorg-xrdb xwallpaper)
-makedepends=()
+depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg imagemagick libnotify
+            notification-daemon otf-nerd-fonts-fira-code pademelon pavucontrol sound-theme-freedesktop
+            xorg-xrandr xorg-xrdb)
+makedepends=(go-md2man pkgconf)
 checkdepends=()
-optdepends=( 'lxappearance: GUI for configuring GTK and icon theme'
-    'matcha-gtk-theme: a fitting GTK theme (Matcha-dark-aliz)'
-    'numix-circle-icon-theme: an icon theme that fits nicely'
-    'redshift: night mode'
-    'scrot: integrated screenshot support'
-	'xfce4-notifyd: a good default notification-daemon')
-# ' - this is somehow required for vim syntax hl to work
+optdepends=('scrot: integrated screenshot support')
 provides=(moonwm)
 conflicts=(moonwm)
 replaces=()
 backup=()
 options=()
-source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/jzbor/moonwm/tar.gz/refs/tags/$pkgver"
-        "$_wmcname-$_wmcver.tar.gz::https://codeload.github.com/jzbor/wmcommons/tar.gz/refs/tags/$_wmcver")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('bffb6eddd092985f2c1687d97a2bd7f7baaafb4faef18acb2701bd235d2b8f4f'
-    '456ee1ab14f5f9cd5c1a35694ebf9a18a8bb4e2654bd0565810faaac352a74f0')
+sha512sums=('a1be68e30e637dec7aafb4427e5957b0a29f78c712b974cd744fb54cac95f8215bd075b55dac638c0c5899e78ef33ab5a56c66f0b48058fe38e1749269364052')
 validpgpkeys=()
 install='moonwm.install'
 
 build() {
-    cp -rv "$_wmcname-$_wmcver/src" "$pkgname-$pkgver/$_wmcname/"
-    cp -rv "$_wmcname-$_wmcver/scripts" "$pkgname-$pkgver/$_wmcname/"
 	cd "$pkgname-$pkgver"
     make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
 	cd "$pkgname-$pkgver"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install install-scripts
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/moonwm/LICENSE"
-    install -Dm644 README.md "${pkgdir}/usr/share/doc/moonwm/README.md"
+    make PREFIX=/usr DESTDIR="${pkgdir}" install-all
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/$pkgname/README.md"
 }
 
 
