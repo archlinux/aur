@@ -2,7 +2,7 @@
 
 pkgname=ada_language_server
 pkgver=22.0.0
-pkgrel=1
+pkgrel=2
 epoch=2
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -28,10 +28,10 @@ build() {
     make BUILD_MODE=prod
 }
 
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    make check
-}
+#check() {
+#    cd "$srcdir/$pkgname-$pkgver"
+#    make check
+#}
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
