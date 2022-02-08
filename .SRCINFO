@@ -1,0 +1,13 @@
+pkgbase = mysql2sqlite-git
+	pkgdesc = Converts MySQL dump to SQLite3 compatible dump
+	pkgver = r54.d14d22a
+	pkgrel = 1
+	url = https://github.com/dumblob/mysql2sqlite
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = awk
+	source = git+https://github.com/dumblob/mysql2sqlite.git
+	sha256sums = SKIP
+
+pkgname = mysql2sqlite-git
