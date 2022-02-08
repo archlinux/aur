@@ -1,7 +1,7 @@
 pkgbase = git-credential-manager-core-bin
 	pkgdesc = Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services.
 	pkgver = 2.0.632
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/Git-Credential-Manager-Core
 	install = git-credential-manager-core.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = git-credential-manager-core-bin
 	optdepends = pass: For storing credentials in a gpg file
 	provides = git-credential-manager-core
 	conflicts = git-credential-manager-core
+	noextract = gcmcore-linux_amd64.2.0.632.34631.tar.gz
 	options = !strip
 	source = https://github.com/microsoft/Git-Credential-Manager-Core/releases/download/v2.0.632/gcmcore-linux_amd64.2.0.632.34631.tar.gz
 	source = git-credential-manager-core.install
