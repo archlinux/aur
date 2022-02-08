@@ -12,6 +12,7 @@ pkgbase = vapoursynth-plugin-fsrcnn-ncnn-vulkan-git
 	depends = vapoursynth
 	depends = opencv-cuda
 	depends = vulkan-icd-loader
+	depends = glslang
 	provides = vapoursynth-plugin-fsrcnn-ncnn-vulkan
 	conflicts = vapoursynth-plugin-fsrcnn-ncnn-vulkan
 	source = fsrcnn-ncnn-vulkan::git+https://github.com/Sg4Dylan/vapoursynth-fsrcnn-ncnn-vulkan.git

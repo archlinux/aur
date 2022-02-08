@@ -11,6 +11,7 @@ license=('MIT')
 depends=('vapoursynth'
          'opencv-cuda'
          'vulkan-icd-loader'
+         'glslang'
          )
 makedepends=('git'
              'cmake'
@@ -35,8 +36,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
 
   sed -e 's|D:/ProgramData/opencv/build|/usr|g' \
       -e 's|D:/ProgramData/VulkanSDK/1.1.126.0|/usr|g' \
@@ -56,12 +55,11 @@ prepare() {
 }
 
 build() {
-  cd build
-  cmake "../${_plug}" \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake -S "${_plug}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  LC_ALL=C make
+  cmake --build build
 }
 
 package(){
