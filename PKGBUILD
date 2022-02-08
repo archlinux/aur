@@ -1,9 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dune-grid-glue
-_tarver=2.8
-_tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
-pkgver=${_tarver}.0
-pkgrel=1
+pkgver=2.8.0
+pkgrel=2
 pkgdesc="Transfer data between independent DUNE grids"
 arch=('x86_64')
 url="https://www.dune-project.org/modules/${pkgname}"
@@ -12,12 +10,14 @@ depends=('dune-grid>=2.8.0')
 makedepends=('doxygen' 'graphviz')
 optdepends=('doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software')
-source=(https://gitlab.dune-project.org/extensions/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('73340ff18e65a2b8dfd634049a456aac33bc362ffd8ea1d44d7f1aa1d4e193e1f5c9811e5bb0d4cc0f6b1aa1e327e316dde29f1741e93309ee31fd14678da4bf')
+_tar="${pkgname}/${pkgname}-${pkgver}.tar.gz"
+source=(https://www.dune-project.org/download/${_tar}{,.asc})
+sha512sums=('fd828345e2c85465ab06c1c4864ca7c7d3b50bd7a46fe86fa43f4800d37a4f5c904aef68ca86adabd4b650919ad5df30c381ca8849df63ed5ded1807d696b373' 'SKIP')
+validpgpkeys=('80E976F14A508A48E9CA3FE9BC372252CA1CF964') # Ansgar <ansgar@debian.org>
 
 build() {
   cmake \
-    -S ${pkgname}-releases-${_tarver} \
+    -S ${pkgname}-${pkgver} \
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -33,6 +33,6 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
-  install -Dm644 ${pkgname}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-${pkgver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   find "${pkgdir}" -type d -empty -delete
 }

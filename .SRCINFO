@@ -1,7 +1,7 @@
 pkgbase = dune-grid-glue
 	pkgdesc = Transfer data between independent DUNE grids
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.dune-project.org/modules/dune-grid-glue
 	arch = x86_64
 	license = LGPL3
@@ -11,7 +11,10 @@ pkgbase = dune-grid-glue
 	depends = dune-grid>=2.8.0
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
-	source = https://gitlab.dune-project.org/extensions/dune-grid-glue/-/archive/releases/2.8/dune-grid-glue-releases-2.8.tar.gz
-	sha512sums = 73340ff18e65a2b8dfd634049a456aac33bc362ffd8ea1d44d7f1aa1d4e193e1f5c9811e5bb0d4cc0f6b1aa1e327e316dde29f1741e93309ee31fd14678da4bf
+	source = https://www.dune-project.org/download/dune-grid-glue/dune-grid-glue-2.8.0.tar.gz
+	source = https://www.dune-project.org/download/dune-grid-glue/dune-grid-glue-2.8.0.tar.gz.asc
+	validpgpkeys = 80E976F14A508A48E9CA3FE9BC372252CA1CF964
+	sha512sums = fd828345e2c85465ab06c1c4864ca7c7d3b50bd7a46fe86fa43f4800d37a4f5c904aef68ca86adabd4b650919ad5df30c381ca8849df63ed5ded1807d696b373
+	sha512sums = SKIP
 
 pkgname = dune-grid-glue
