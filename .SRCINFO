@@ -1,6 +1,6 @@
 pkgbase = libremines
 	pkgdesc = A Free/Libre and Open Source Software Qt based Minesweeper game available for GNU/Linux and FreeBSD
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/Bollos00/LibreMines
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = libremines
 	depends = qt5-base
 	depends = hicolor-icon-theme
 	depends = qt5-svg
+	depends = qt5-multimedia
 	provides = libremines
 	conflicts = libremines
-	source = LibreMines-1.8.0.tar.gz::https://github.com/Bollos00/LibreMines/archive/refs/tags/v1.8.0.tar.gz
-	sha256sums = 4078e2b986c6021105c2cbfa42e2e0cfa7e407acc14266bee460dfb9328c25ab
+	source = LibreMines-1.9.0.tar.gz::https://github.com/Bollos00/LibreMines/archive/refs/tags/v1.9.0.tar.gz
+	sha256sums = 103d54caa30c107ca3e09ef0a563a394dc58d99691b5956f39a3c9ab3bcee355
 
 pkgname = libremines
