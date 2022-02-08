@@ -1,6 +1,6 @@
 pkgbase = lib32-mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 22.0.0_devel.147991.abace2b8a45
+	pkgver = 22.1.0_devel.149803.fd0e4aedeb2
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = lib32-mesa-git
 	makedepends = meson
 	makedepends = lib32-libva
 	makedepends = lib32-libxrandr
-	makedepends = lib32-llvm=13.0.0
+	makedepends = lib32-llvm=13.0.1
 	depends = mesa-git
 	depends = lib32-gcc-libs
 	depends = lib32-libdrm
@@ -30,7 +30,7 @@ pkgbase = lib32-mesa-git
 	depends = glslang
 	depends = lib32-vulkan-icd-loader
 	depends = lib32-zstd
-	depends = lib32-llvm-libs=13.0.0
+	depends = lib32-llvm-libs=13.0.1
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	provides = lib32-mesa
 	provides = lib32-vulkan-intel
