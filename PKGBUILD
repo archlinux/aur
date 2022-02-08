@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-headlines
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Adds highlights for text filetypes"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim')
 install=headlines.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9b54e4f76172ec4a8ee796cffe49c2d712ff8d0e5a1156abc5133a17dde9c863')
+sha256sums=('d891c3626300320b52eba3f567194f9778192fa43bfa345bca03583e09541e87')
 
 package() {
 	cd "headlines.nvim-$pkgver"
