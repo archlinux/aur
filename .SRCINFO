@@ -1,6 +1,6 @@
 pkgbase = libnvidia-container-tools-bin
 	pkgdesc = NVIDIA container runtime library (command-line tools)
-	pkgver = 1.4.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/NVIDIA/libnvidia-container
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libnvidia-container-tools-bin
 	depends = libnvidia-container
 	provides = libnvidia-container-tools=$pkgver
 	conflicts = libnvidia-container-tools
-	source = libnvidia-container-tools-1.4.0-1-1.x86_64.rpm::https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container-tools-1.4.0-1.x86_64.rpm
-	sha256sums = 1eee4657efc53949ed612e8b70aafb629fccde985c4fc80c8cfb26ca55ae7ccc
+	source = libnvidia-container-tools-1.8.0-1-1.x86_64.rpm::https://nvidia.github.io/libnvidia-container/centos7/x86_64/libnvidia-container-tools-1.8.0-1.x86_64.rpm
+	sha256sums = 6bf11a6dad9a2b5bba5583dc3031330800e0bbf22024bf3ab201ae0e7efcb3de
 
 pkgname = libnvidia-container-tools-bin
