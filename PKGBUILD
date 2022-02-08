@@ -45,8 +45,8 @@ package() {
     cp -rv "${srcdir}"/usr/share "${pkgdir}"/usr
 
     mkinfo "Installing licenses ..."
-    install -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt \
-        -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+    install -t "${pkgdir}/usr/share/licenses/${_pkgname}" \
+        -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
 
     mkinfo "Removeing unneeded resources ..."
     rm -rv "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
