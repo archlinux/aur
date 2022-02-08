@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# mount.ntfs : catch {,-tauto,-tntfs} NTFS mounts
+# ===============================================
+# (c) DLCB 2/11-2021
+
+exec mount -tntfs3 "$@"
