@@ -1,4 +1,4 @@
-d /etc/pufferpanel 0644 pufferpanel pufferpanel
+d /etc/pufferpanel 0755 pufferpanel pufferpanel
 Z /etc/pufferpanel - pufferpanel pufferpanel
 
 d /var/log/pufferpanel 0644 pufferpanel pufferpanel
