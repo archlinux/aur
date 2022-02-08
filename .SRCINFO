@@ -1,0 +1,16 @@
+pkgbase = midimonster
+	pkgdesc = universal control and translation tool for multi-channel absolute-value-based control and/or bus protocols
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://midimonster.net/
+	arch = x86_64
+	license = BSD
+	depends = alsa-lib
+	depends = libevdev
+	depends = lua
+	depends = jack
+	backup = etc/midimonster/midimonster.cfg
+	source = https://github.com/cbdevnet/midimonster/archive/refs/tags/v0.6.tar.gz
+	sha256sums = 69d4450e1f341975b79b248931a6d4f959f1f979f8845e4eb4ffc179b6de9ae4
+
+pkgname = midimonster
