@@ -118,6 +118,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17: UDP/IPv6 optimizations v2
         "udp-ipv6-optimisations-v2-net-next.patch"
 
+        # 5.17: AF_UNIX sockets: per-hash locks v3
+        "af_unix-Replace-unix_table_lock-with-per-hash-locks.patch"
+
         # 5.17: remove CONFIG_RCU_FAST_NO_HZ for improved latency
         "CONFIG_RCU_FAST_NO_HZ-removal-for-v5.17.patch"
 
@@ -162,6 +165,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             '56f8f93a38ed7236c2504c79645a33123ee7bdf3c0cbb97dfd90600df06be7dd'
+            'eac568d7f2b369a8a2b685fae236388c3516938000d4d6b2116b5874c4f93430'
             'e74649fb883f2c8c3703c730e45119fca7126dc0599d6bc814de6dcf5a07e7cb'
             'ad73b179ea1a309205744fbf415a7b19108e1c1b452b913894752bb717165d81'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
