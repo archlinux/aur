@@ -1,11 +1,10 @@
 pkgbase = python-tweedledum-git
 	pkgdesc = A library for synthesizing and manipulating quantum circuits
 	pkgver = r260.e73beb23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boschmitt/tweedledum
 	arch = x86_64
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = nlohmann-json

@@ -2,7 +2,7 @@
 _pkgname=tweedledum
 pkgname=python-${_pkgname}-git
 pkgver=r260.e73beb23
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for synthesizing and manipulating quantum circuits"
 arch=('x86_64')
 url="https://github.com/boschmitt/tweedledum"
@@ -13,9 +13,6 @@ makedepends=(
     'nlohmann-json'
     'python-scikit-build'
     'python-setuptools'
-)
-checkdepends=(
-    'python-pytest'
 )
 provides=('python-tweedledum')
 conflicts=('python-tweedledum')
