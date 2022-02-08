@@ -1,0 +1,25 @@
+pkgbase = python-cs50
+	pkgdesc = CS50 library for Python
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/cs50/python-cs50
+	arch = any
+	groups = cs50
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = python-sqlalchemy
+	depends = python-sqlparse
+	depends = python-termcolor
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/c/cs50/cs50-9.0.0.tar.gz
+	sha256sums = ce3950ed5ca7a3e47d95b4ac1c56ac2ca850ac4b110cc70aebd2826fdca0f188
+
+pkgname = python-cs50
+	depends = python
+	depends = python-flask
+	depends = python-sqlalchemy
+	depends = python-sqlparse
+	depends = python-termcolor
+	depends = python-wheel
