@@ -18,6 +18,8 @@ mkinfo() { echo -e "[\e[96mMKINFO\e[0m]:  \e[1m$*\e[0m"; }
 pkgver() {
     if [[ "$CARCH" == "i686" ]]; then
         echo "2022.1.17"
+    else
+        echo "${pkgver}"
     fi
 }
 
