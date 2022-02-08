@@ -24,6 +24,7 @@ makedepends=(
   'python-babel'
   'python-build'
   'python-install'
+  'python-mock'
   'python-pytest'
   'python-pytest-qt'
   'python-pytest-xvfb'

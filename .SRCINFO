@@ -9,6 +9,7 @@ pkgbase = plover-git
 	makedepends = python-babel
 	makedepends = python-build
 	makedepends = python-install
+	makedepends = python-mock
 	makedepends = python-pytest
 	makedepends = python-pytest-qt
 	makedepends = python-pytest-xvfb
