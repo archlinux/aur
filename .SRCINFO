@@ -1,0 +1,13 @@
+pkgbase = hashrat-git
+	pkgdesc = Hashing tool. Includes recursive file hashing and other features. Git version.
+	pkgver = 1.15.r0.g0b3c057
+	pkgrel = 1
+	url = https://github.com/ColumPaget/Hashrat
+	arch = any
+	license = GPL
+	provides = hashrat
+	conflicts = hashrat
+	source = git+https://github.com/ColumPaget/Hashrat
+	sha256sums = SKIP
+
+pkgname = hashrat-git
