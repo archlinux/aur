@@ -1,14 +1,15 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
-_pkgname='lfutils'
-pkgname="${_pkgname}-git"
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+_pkgname=lfutils
+pkgname=$_pkgname-git
 pkgver=r92.4d52766
 pkgrel=1
 pkgdesc='Scripts and utilities for the lf file manager.'
-arch=('x86_64')
-url='https://github.com/soystemd/lfutils'
-license=('GPL')
-makedepends=('git')
-depends=('lf')
+url=https://github.com/soystemd/lfutils
+source=("git+$url.git")
+arch=(x86_64)
+license=(GPL)
+makedepends=(git)
+depends=(lf)
 optdepends=(
 'archivemount: mounting and opening archives via lfmount'
 'ueberzug: image previews'
@@ -27,10 +28,7 @@ optdepends=(
 'odt2txt: previewing OpenDocument files'
 'transmission-cli: previewing .torrent files'
 )
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+${url}.git")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"

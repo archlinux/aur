@@ -23,8 +23,6 @@ pkgbase = lfutils-git
 	optdepends = docx2txt: previewing docx files
 	optdepends = odt2txt: previewing OpenDocument files
 	optdepends = transmission-cli: previewing .torrent files
-	provides = lfutils
-	conflicts = lfutils
 	source = git+https://github.com/soystemd/lfutils.git
 	md5sums = SKIP
 
