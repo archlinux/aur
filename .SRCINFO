@@ -1,14 +1,14 @@
 pkgbase = dynalist-desktop
 	pkgdesc = Dynalist lets you organize your ideas and tasks in simple lists. It's powerful, yet easy to use.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dynalist.io
 	arch = any
 	license = Private
 	makedepends = tar
 	makedepends = wget
 	provides = dynalist
-	source = dynalist.tar.gz::https://dynalist.io/standalone/download?file=dynalist.tar.gz
+	source = dynalist-1.0.6.tar.gz::https://dynalist.io/standalone/download?file=dynalist.tar.gz
 	source = dynalist.desktop
 	source = icon.png
 	sha512sums = 87728a3b8bfebbc1880aee9dff69416ed1ba0a9606be5ba18404c5f5fedb2bcd94fed3311aa1344092eafca04b6b11b2e740794e11936eecf5e0fa402b734513

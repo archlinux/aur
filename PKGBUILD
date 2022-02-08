@@ -3,7 +3,7 @@
 
 pkgname=dynalist-desktop
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynalist lets you organize your ideas and tasks in simple lists. It's powerful, yet easy to use."
 arch=("any")
 url="https://dynalist.io"
@@ -11,7 +11,7 @@ license=(Private)
 makedepends=("tar" "wget")
 provides=("dynalist")
 source=(
-  "dynalist.tar.gz::https://dynalist.io/standalone/download?file=dynalist.tar.gz"
+  "dynalist-${pkgver}.tar.gz::https://dynalist.io/standalone/download?file=dynalist.tar.gz"
   "dynalist.desktop"
   "icon.png"
 )
