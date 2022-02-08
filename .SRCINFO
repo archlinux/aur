@@ -1,7 +1,7 @@
 pkgbase = restic-systemd-automatic-backup
 	pkgdesc = Automatic backups using restic + systemd timers with Backblaze B2 storage backend.
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erikw/restic-systemd-automatic-backup
 	install = restic-systemd-automatic-backup.install
 	arch = any
