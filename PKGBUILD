@@ -1,18 +1,16 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
-_pkgname='opener'
-pkgname="${_pkgname}-git"
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+_pkgname=opener
+pkgname=$_pkgname-git
 pkgver=r6.ca47b12
-pkgrel=1
+pkgrel=2
 pkgdesc='mime-type and extention based file opener script.'
-arch=('x86_64')
-url='https://github.com/soystemd/opener'
-license=('GPL')
-depends=('file')
-makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+${url}.git")
-md5sums=('SKIP')
+url=https://github.com/soystemd/opener
+source=("git+$url.git")
+arch=(x86_64)
+license=(GPL)
+depends=(file)
+makedepends=(git)
+md5sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"

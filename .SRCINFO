@@ -1,14 +1,12 @@
 pkgbase = opener-git
 	pkgdesc = mime-type and extention based file opener script.
 	pkgver = r6.ca47b12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soystemd/opener
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = file
-	provides = opener
-	conflicts = opener
 	source = git+https://github.com/soystemd/opener.git
 	md5sums = SKIP
 
