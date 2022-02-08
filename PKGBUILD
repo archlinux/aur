@@ -4,11 +4,14 @@ _pkgname=marble-maps-micromacro-crimecity-demo
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20220208.01
-pkgrel=1
+pkgrel=2
 pkgdesc="Makes the map of the demo of the board game 'microMACRO Crime City' browsable in KDE marble. Select the celestial body 'MicroMacro'."
 url="https://micromacro-game.com/en/democase.html"
 arch=('any')
-license=('custom: Public Domain, Edition Spielwiese/ Pegasus Spiele.')
+license=(
+  'custom: Public Domain'
+  'custom: Edition Spielwiese/ Pegasus Spiele.'
+)
 groups=()
 depends=(
   'marble-common'
