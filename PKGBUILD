@@ -1,7 +1,7 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686 aarch64)
 url="https://github.com/jzbor/moonwm"
@@ -22,7 +22,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
 sha512sums=('a1be68e30e637dec7aafb4427e5957b0a29f78c712b974cd744fb54cac95f8215bd075b55dac638c0c5899e78ef33ab5a56c66f0b48058fe38e1749269364052')
 validpgpkeys=()
-install='moonwm.install'
 
 build() {
 	cd "$pkgname-$pkgver"

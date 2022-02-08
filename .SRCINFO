@@ -1,9 +1,8 @@
 pkgbase = moonwm
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jzbor/moonwm
-	install = moonwm.install
 	arch = x86_64
 	arch = i686
 	arch = aarch64
