@@ -1,7 +1,6 @@
 # Generated using pip2pkgbuild - https://github.com/wenLiangcan/pip2pkgbuild
 # Maintainer: loryeam <loryeam@gmail.com>
 
-pkgbase='python-backports.shutil_get_terminal_size'
 pkgname=('python-backports.shutil_get_terminal_size')
 _module='backports.shutil_get_terminal_size'
 pkgver='1.0.0'
