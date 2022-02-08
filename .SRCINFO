@@ -1,6 +1,6 @@
 pkgbase = python-uharfbuzz
 	pkgdesc = Streamlined Cython bindings for the harfbuzz shaping engine
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/harfbuzz/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = python-uharfbuzz
 	makedepends = python-setuptools-scm
 	makedepends = python-scikit-build
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/u/uharfbuzz/uharfbuzz-0.20.0.zip
-	sha256sums = 29a0c286c2f89d62b7b40277615111313cc27728d1c8773580b53239d10f93b0
+	source = https://files.pythonhosted.org/packages/source/u/uharfbuzz/uharfbuzz-0.21.0.zip
+	sha256sums = 01b9c463f876f426fdc6dffc8e7eef60d46546502d5ebc121e81dd6e003089e3
 
 pkgname = python-uharfbuzz
