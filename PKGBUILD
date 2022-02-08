@@ -2,7 +2,7 @@
 
 pkgname=python-psycopg
 _pkgname=psycopg
-pkgver=3.0.4
+pkgver=3.0.8
 pkgrel=1
 pkgdesc="A modern implementation of a PostgreSQL adapter for Python"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('cython' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-asyncio')
 source=("psycopg-$pkgver.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('484ef2e37c439d9b81e5eeaceffd947de75662abce077d7d0494ad14ed9d4a3c')
+sha256sums=('6e66aa4a4a077877e98521d7b8c7689e660fdcbc9bb5cc1c9d0d946c99b1bdfe')
 
 build(){
   cd "$_pkgname-$pkgver"

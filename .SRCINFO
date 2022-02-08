@@ -1,6 +1,6 @@
 pkgbase = python-psycopg
 	pkgdesc = A modern implementation of a PostgreSQL adapter for Python
-	pkgver = 3.0.4
+	pkgver = 3.0.8
 	pkgrel = 1
 	url = https://www.psycopg.org/psycopg3/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-psycopg
 	makedepends = cython
 	makedepends = python-setuptools
 	depends = python
-	source = psycopg-3.0.4.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/3.0.4.tar.gz
-	sha256sums = 484ef2e37c439d9b81e5eeaceffd947de75662abce077d7d0494ad14ed9d4a3c
+	source = psycopg-3.0.8.tar.gz::https://github.com/psycopg/psycopg/archive/refs/tags/3.0.8.tar.gz
+	sha256sums = 6e66aa4a4a077877e98521d7b8c7689e660fdcbc9bb5cc1c9d0d946c99b1bdfe
 
 pkgname = python-psycopg
