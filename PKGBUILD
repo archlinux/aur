@@ -3,18 +3,17 @@
 
 pkgname=python-blspy
 pkgver=1.0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Python BLS Signatures implementation'
 url='https://github.com/Chia-Network/bls-signatures'
 arch=('x86_64')
 license=('Apache')
-depends=('libsodium' 'gmp' 'pybind11')
+depends=('libsodium' 'gmp' 'python-wheel')
 makedepends=(
 	'cmake'
 	'git'
 	'python-build'
 	'python-install'
-	'python-wheel'
 	'python-setuptools-scm')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/blspy/blspy-$pkgver.tar.gz")
 sha256sums=('ea47a2990ab0877ec6f717355f2c65afed27f5082ff3b369d83ec6ce3ea29396')

@@ -1,7 +1,7 @@
 pkgbase = python-blspy
 	pkgdesc = Python BLS Signatures implementation
 	pkgver = 1.0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Chia-Network/bls-signatures
 	arch = x86_64
 	license = Apache
@@ -9,11 +9,10 @@ pkgbase = python-blspy
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-install
-	makedepends = python-wheel
 	makedepends = python-setuptools-scm
 	depends = libsodium
 	depends = gmp
-	depends = pybind11
+	depends = python-wheel
 	source = python-blspy-1.0.9.tar.gz::https://files.pythonhosted.org/packages/source/b/blspy/blspy-1.0.9.tar.gz
 	sha256sums = ea47a2990ab0877ec6f717355f2c65afed27f5082ff3b369d83ec6ce3ea29396
 
