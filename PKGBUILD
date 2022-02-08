@@ -1,6 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: dobedobedo <dobe0331 at gmail dot com>
 pkgname=('kealib')
-pkgver=1.4.12
+pkgver=1.4.14
 pkgrel=1
 pkgdesc="An HDF5 Based Raster File Format and its GDAL plugin"
 arch=('i686' 'x86_64')
@@ -9,29 +10,29 @@ license=('MIT')
 makedepends=('cmake')
 depends=('hdf5' 'gdal')
 options=(!emptydirs)
-source=("https://bitbucket.org/chchrsc/kealib/get/kealib-$pkgver.tar.bz2")
-sha256sums=('844cdef518ab3fe3b6bae4bce5c1ca46e9ac9ff453b5ca5f3ccd87b23b89d511')
-_srcpath=chchrsc-kealib-e042a597679f
+source=("https://github.com/ubarsc/kealib/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('da5d4a540b34afb61665cb7b6bf284825b51464eaf2a23ccca16955e2712cab2')
 
 build() {
-  cd "$srcdir/$_srcpath"
-  cmake -D CMAKE_INSTALL_PREFIX=/usr \
-        -D CMAKE_SKIP_RPATH=ON \
-        -D CMAKE_CXX_STANDARD=11 \
-        -D HDF5_INCLUDE_DIR=/usr/include \
+  cd "$srcdir/$pkgname-$pkgver"
+  cmake -D BUILD_SHARED_LIBS=ON \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
         -D GDAL_INCLUDE_DIR=/usr/include \
-        -D LIBKEA_WITH_GDAL=TRUE \
+        -D GDAL_LIB_PATH=/usr/lib \
+        -D HDF5_INCLUDE_DIR=/usr/include \
+        -D HD5F_LIB_PATH=/usr/lib \
+        -D HDF5_STATIC_LIBS=OFF \
+        -D KEAHDF5_STATIC_LIBS=OFF \
+        -D LIBKEA_HEADERS_DIR=../include \
+        -D LIBKEA_LIB_PATH=../src \
+        -D LIBKEA_WITH_GDAL=ON \
         .
   make
 }
 
-check() {
-  cd "$srcdir/$_srcpath"
-  make test
-}
-
 package() {
-  cd "$srcdir/$_srcpath"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
