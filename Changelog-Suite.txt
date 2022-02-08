@@ -1,10 +1,28 @@
 Changelog for AirVPN Suite
 
+Version 1.2.0 Beta 1 - 7 February 2022
+
+- [ProMIND] vpnclient.hpp: added methods openVPNInfo(), openVPNCopyright() and sslLibraryVersion()
+- [ProMIND] vpnclient.hpp: added event management (subscription, unsubscription, raising) via callback functions for all native ClientEvent::Type
+- [ProMIND] loadmod.c: added support for gz and zstd modules
+- [ProMIND] netfilter.cpp: changed firewall priority scheme into nftables, iptables-legacy, iptables, pf
+- [ProMIND] netfilter.cpp: added workaround for iptables modules in order to comply to kernel 5.15.x
+- [ProMIND] netfilter.cpp: init(): in case netlock is set to iptables, force the initial loading of system rules by adding and then immediately removing two IPv4 and IPv6 "fake rules" in order to have netlock work in distributions running under kernel 5.15.x and iptables 1.8.7
+- [ProMIND] dnsmanager.cpp: systemHasResolved() method renamed as systemHasSystemdResolved()
+- [ProMIND] dnsmanager.cpp: added systemHasResolvectl() method
+- [ProMIND] optionparser.cpp: added description and order members to OptionConfig and Option structures
+- [ProMIND] airvpntools.cpp: added automatic support and selection for AirVPN IPv6 bootstrap servers
+- [ProMIND] airvpnserverprovider.cpp: getFilteredServerList() includes all AirVPN server. Those not meeting the connection priority scheme are sent to the bottom of the list with the highest possible penalty. This is needed in case the country black list includes all of the connection priority scheme's countries
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.1.0 - 4 June 2021
 
+- [ProMIND] updated all dependencies and libraries
 - [ProMIND] vpnclient.hpp: restoreNetworkSettings() now returns a warning in case backup files are not found
 - [ProMIND] vpnclient.hpp: restoreNetworkSettings() improved restoring management with more cases/scenarios
-- [ProMIND] updated all dependencies and libraries
 
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*

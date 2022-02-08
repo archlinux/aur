@@ -4,6 +4,13 @@ post_install() {
         useradd -Um airvpn
     fi
     chown -R airvpn:airvpn /etc/airvpn
+    echo "############################################################"
+    echo "#                >>> Group airvpn created <<<              #"
+    echo "# If you want to be able to execute goldcrest as your user,#"
+    echo "# add it to the created group using:                       #"
+    echo "#                                                          #"
+    echo "# sudo usermod -aG airvpn <username>                       #"
+    echo "############################################################"
     systemctl daemon-reload
     systemctl reload dbus.service
 }
