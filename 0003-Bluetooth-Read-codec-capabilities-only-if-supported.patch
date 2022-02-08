@@ -1,7 +1,7 @@
-From db071152c6a3ebcc82426cbd2ce97d74ba3f6513 Mon Sep 17 00:00:00 2001
+From faddd54476a3492341e1f01b09940825bbabb30e Mon Sep 17 00:00:00 2001
 From: Kiran K <kiran.k@intel.com>
 Date: Tue, 5 Oct 2021 20:15:56 +0530
-Subject: [PATCH 3/4] Bluetooth: Read codec capabilities only if supported
+Subject: [PATCH 3/5] Bluetooth: Read codec capabilities only if supported
 
 Read codec capabilities only if HCI_READ_LOCAL_CODEC_CAPABILITIES
 command is supported. If capablities are not supported, then
@@ -52,5 +52,5 @@ index f0421d0edaa3..38201532f58e 100644
  					     sizeof(*cmd), cmd,
  					     HCI_CMD_TIMEOUT);
 -- 
-2.35.0
+2.35.1
 
