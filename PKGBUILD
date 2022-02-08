@@ -2,17 +2,28 @@
 
 pkgname=python-clvm
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Chia Lisp Virtual Machine"
 url='https://github.com/Chia-Network/clvm'
-arch=('x86_64' 'aarch64')
+arch=('any')
 license=('Apache')
-depends=('python' 'python-blspy>=0.9.0')
-makedepends=('python-setuptools')
-source=("git+https://github.com/Chia-Network/clvm#tag=$pkgver") # setup.py fails if .git metadata is not present
+depends=('python-blspy')
+makedepends=(
+	'git'
+	'python-build'
+	'python-install'
+	'python-setuptools-scm'
+	'python-wheel')
+source=("$pkgname::git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
+build() {
+	cd "$pkgname"
+	python -m build --wheel --skip-dependency-check --no-isolation
+}
+
 package() {
-	cd clvm
-	python setup.py install --root="$pkgdir" --optimize=1
+	export PYTHONHASHSEED=0
+	cd "$pkgname"
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
 }
