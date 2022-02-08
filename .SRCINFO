@@ -14,7 +14,7 @@ pkgbase = xash3d-fwgs-dedicated-git
 	source = xash3d-fwgs-dedicated-git::git+https://github.com/FWGS/xash3d-fwgs
 	source = xash3d_ded
 	md5sums = SKIP
-	md5sums = dc6557454056a039c433a0fa72676a64
+	md5sums = a570e8c3e4552e673c7bbb124cbf3b4f
 	makedepends_x86_64 = gcc-multilib
 	makedepends_x86_64 = lib32-gcc-libs
 
