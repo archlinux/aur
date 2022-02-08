@@ -1,13 +1,11 @@
 pkgbase = shadowsocks-rust
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/
 	pkgver = 1.13.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shadowsocks/shadowsocks-rust
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	makedepends = libsodium
-	depends = openssl
 	options = !lto
 	source = shadowsocks-rust-1.13.1.tar.gz::https://github.com/shadowsocks/shadowsocks-rust/archive/v1.13.1.tar.gz
 	source = shadowsocks-rust@.service
