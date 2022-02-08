@@ -1,0 +1,32 @@
+[Unit]
+Description=LndHub lighting node manager
+After=network.target
+
+[Service]
+User=lndhub
+Group=lndhub
+EnvironmentFile=/etc/default/lndhub
+WorkingDirectory=/var/lib/lndhub
+ExecStart=/usr/bin/npm run start
+Restart=always
+RestartSec=30
+SyslogIdentifier=lndhub
+# Hardening measures
+# Provide a private /tmp and /var/tmp.
+PrivateTmp=true
+# Mount /usr, /boot/ and /etc read-only for the process.
+ProtectSystem=full
+# Deny access to /home, /root and /run/user
+#ProtectHome=true
+# Disallow the process and all of its children to gain
+# new privileges through execve().
+NoNewPrivileges=true
+# Use a new /dev namespace only populated with API pseudo devices
+# such as /dev/null, /dev/zero and /dev/random.
+PrivateDevices=true
+# Deny the creation of writable and executable memory mappings.
+#MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target
+

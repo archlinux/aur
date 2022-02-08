@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = lndhub
+
+[Action]
+Description = Setting daemon user directory permissions...
+Depends = coreutils
+When = PostTransaction
+Exec = /usr/bin/chown -R lndhub:lndhub /var/lib/lndhub
+

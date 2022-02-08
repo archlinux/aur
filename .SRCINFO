@@ -1,0 +1,26 @@
+pkgbase = lndhub
+	pkgdesc = BlueWallet Lightning Node Manager
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/BlueWallet/LndHub
+	install = lndhub.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=10
+	depends = npm
+	optdepends = lnd-bin
+	options = !strip
+	backup = etc/default/lndhub
+	source = https://github.com/BlueWallet/LndHub/archive/refs/tags/v1.4.1.tar.gz
+	source = lndhub.env
+	source = lndhub.user
+	source = lndhub.service
+	source = lndhub.hook
+	sha256sums = 913ab417607cffdadcf33eed41171036bf63e6aac2f26c54ad19e35b2cfce0dc
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lndhub
