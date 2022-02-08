@@ -2,7 +2,7 @@
 
 pkgname=midimonster
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="universal control and translation tool for multi-channel absolute-value-based control and/or bus protocols"
 arch=('x86_64')
 url="https://midimonster.net/"
@@ -14,7 +14,6 @@ backup=("etc/${pkgname}/${pkgname}.cfg")
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	manpath
 	make PLUGINS="/usr/lib/${pkgname}" DEFAULT_CFG="/etc/${pkgname}/${pkgname}.cfg"
 }
 

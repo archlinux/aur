@@ -1,7 +1,7 @@
 pkgbase = midimonster
 	pkgdesc = universal control and translation tool for multi-channel absolute-value-based control and/or bus protocols
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://midimonster.net/
 	arch = x86_64
 	license = BSD
