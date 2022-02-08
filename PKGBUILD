@@ -4,26 +4,26 @@
 
 pkgname=python-pytablewriter
 pkgver=0.64.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library to write a table in various formats'
 arch=('any')
 url='https://github.com/thombashi/pytablewriter'
 license=('MIT')
 depends=(
-  'python>=3.6'
-  'python-dataproperty>=0.52.0'
-  'python-dataproperty<2'
-  'python-mbstrdecoder>=1.0.0'
-  'python-mbstrdecoder<2'
-  'python-pathvalidate>=2.3.0'
-  'python-pathvalidate<3'
-  'python-tabledata>=1.1.3'
-  'python-tabledata<2'
-  'python-tcolorpy>=0.0.5'
-  'python-tcolorpy<1'
-  'python-typepy>=1.2.0'
-  'python-typepy<2')
-makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+  'python-dataproperty'
+  'python-mbstrdecoder'
+  'python-pathvalidate'
+  'python-tabledata'
+  'python-tcolorpy'
+  'python-typepy')
+makedepends=(
+  'git'
+  'python-setuptools'
+  'python-build'
+  'python-install'
+  'python-wheel'
+  'python-sphinx'
+  'python-sphinx_rtd_theme')
 # checkdepends=(
 #   'python-idna'
 #   'python-pytablereader>=0.29'
@@ -37,7 +37,7 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
   cd "$pkgname"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
   cd docs
   PYTHONPATH=../ make man
 }
@@ -48,11 +48,12 @@ build() {
 # }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "$pkgname"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 docs/_build/man/pytablewriter.1 -t "$pkgdir/usr/share/man/man1/"
+  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 docs/_build/man/pytablewriter.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 # vim: ts=2 sw=2 et:
