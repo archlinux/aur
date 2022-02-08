@@ -1,8 +1,8 @@
 #Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=rpi-imager
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.7.1
+pkgrel=1
 pkgdesc="Raspberry Pi Imaging Utility"
 depends=('curl' 'libarchive' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-tools')
 optdepends=('dosfstools: SD card bootloader support')
@@ -16,8 +16,8 @@ source=(
   "remove_update_checking.patch"
 )
 
-sha256sums=('32f7fcd732ed8b707e862f51311c846b13a9dfb805cc6d901c601e2e5c2ec2d7'
-            '8569a55e3a98ea955dc95a7492e3e45db25c7e6a53660f8ba971b8fefb7b0e1e')
+sha256sums=('57c4b1d53a3c5f84fe9a653c07d9c5ea2d5941356c536d6d434d1ff6133b587d'
+            '2b6350b28f2528e9dc572d56a6ad56b2d5263fbd4f55ce8f9da13d0984a1cf20')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
