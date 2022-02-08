@@ -1,6 +1,6 @@
 pkgbase = python-sewpy-git
 	pkgdesc = Python interface to SExtractor
-	pkgver = 0.r91.g9a1be21
+	pkgver = 0.r87.g67e36b7
 	pkgrel = 1
 	url = http://sewpy.readthedocs.io/en/latest
 	arch = any
@@ -16,4 +16,3 @@ pkgbase = python-sewpy-git
 	sha256sums = SKIP
 
 pkgname = python-sewpy-git
-

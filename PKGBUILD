@@ -1,7 +1,7 @@
 # Maintainer: Maurizio D'Addona <mauritiusdadd at gmail dot com>
 
 pkgname=python-sewpy-git
-pkgver=0.r91.g9a1be21
+pkgver=0.r87.g67e36b7
 pkgrel=1
 pkgdesc="Python interface to SExtractor"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 
 pkgver() {
-  cd $_gitname
+  cd "$srcdir/sewpy"
   echo "$((git describe --abbrev=0 --tags || echo 0) | cut -f 2 -d '-').r$(git rev-list --count HEAD).$(git log -1 --format='g%h')"
 }
 
