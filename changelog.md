@@ -3061,4 +3061,14 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.4.2 add: add index_dei_cx interface
 
 1.4.3 add: add index_ii_cx interface
+
+1.4.4 add: add index_si_cx interface
+
+1.4.5 add: add index_pmi_com_cx interface
+
+1.4.6 add: add index_pmi_man_cx interface
+
+1.4.7 add: add index_pmi_ser_cx interface
+
+1.4.8 add: add sport_olympic_winter_hist interface
 ```
