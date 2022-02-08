@@ -2,15 +2,24 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 # Contributor: Florian Wittmann
 
+## This package uses git sources to build the man pages
+
 pkgname=python-typepy
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Variable runtime type checker/validator/converter'
 arch=('any')
 url='https://github.com/thombashi/typepy'
 license=('MIT')
 depends=('python-mbstrdecoder')
-makedepends=('git' 'python-setuptools' 'python-sphinx' 'python-sphinx_rtd_theme')
+makedepends=(
+  'git'
+  'python-setuptools'
+  'python-build'
+  'python-install'
+  'python-wheel'
+  'python-sphinx'
+  'python-sphinx_rtd_theme')
 optdepends=('python-dateutil' 'python-pytz')
 checkdepends=('python-pytest' 'python-tcolorpy' 'python-dateutil' 'python-pytz')
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
@@ -19,19 +28,20 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
 
 build() {
   cd "$pkgname"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
   cd docs
   PYTHONPATH=../ make man
 }
 
 check() {
   cd "$pkgname"
-  pytest -x
+  PYTHONPATH=./ pytest -x
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "$pkgname"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 docs/_build/man/typepy.1 -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
