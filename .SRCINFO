@@ -1,0 +1,86 @@
+pkgbase = ffmpeg-compat-59
+	pkgdesc = Compatibility package for ffmpeg to provide versions 59 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git
+	pkgver = 5.0
+	pkgrel = 1
+	url = http://ffmpeg.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = amf-headers
+	makedepends = avisynthplus
+	makedepends = clang
+	makedepends = ffnvcodec-headers
+	makedepends = git
+	makedepends = ladspa
+	makedepends = nasm
+	depends = alsa-lib
+	depends = aom
+	depends = bzip2
+	depends = fontconfig
+	depends = fribidi
+	depends = gmp
+	depends = gnutls
+	depends = gsm
+	depends = jack
+	depends = lame
+	depends = libass.so
+	depends = libavc1394
+	depends = libbluray.so
+	depends = libdav1d.so
+	depends = libdrm
+	depends = libfreetype.so
+	depends = libiec61883
+	depends = libmfx
+	depends = libmodplug
+	depends = libpulse
+	depends = librav1e.so
+	depends = libraw1394
+	depends = librsvg-2.so
+	depends = libsoxr
+	depends = libssh
+	depends = libtheora
+	depends = libva.so
+	depends = libva-drm.so
+	depends = libva-x11.so
+	depends = libvdpau
+	depends = libvidstab.so
+	depends = libvorbisenc.so
+	depends = libvorbis.so
+	depends = libvpx.so
+	depends = libwebp
+	depends = libx11
+	depends = libx264.so
+	depends = libx265.so
+	depends = libxcb
+	depends = libxext
+	depends = libxml2
+	depends = libxv
+	depends = libxvidcore.so
+	depends = libzimg.so
+	depends = opencore-amr
+	depends = openjpeg2
+	depends = opus
+	depends = sdl2
+	depends = speex
+	depends = srt
+	depends = svt-av1
+	depends = v4l-utils
+	depends = vmaf
+	depends = xz
+	depends = zlib
+	optdepends = avisynthplus: AviSynthPlus support
+	optdepends = intel-media-sdk: Intel QuickSync support
+	optdepends = ladspa: LADSPA filters
+	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
+	provides = libavcodec.so=59
+	provides = libavdevice.so=59
+	provides = libavfilter.so=7
+	provides = libavformat.so=59
+	provides = libavutil.so=56
+	provides = libpostproc.so=55
+	provides = libswresample.so=3
+	provides = libswscale.so=5
+	source = http://ffmpeg.org/releases/ffmpeg-5.0.tar.xz
+	sha256sums = 51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298
+
+pkgname = ffmpeg-compat-59
