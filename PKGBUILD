@@ -1,20 +1,25 @@
+# Maintainer: okhsunrog <me@gornushko.com>
 
 pkgname=throttled-git
-pkgver=0.9.2
+pkgver=r304.581038c
 pkgrel=1
 pkgdesc="Workaround for Intel throttling issues in Linux."
 arch=('any')
 url="https://github.com/erpalma/throttled"
 license=('MIT')
 depends=('python-dbus' 'python-psutil' 'python-gobject')
-conflicts=('lenovo-throttling-fix-git' 'lenovo-throttling-fix')
-replaces=('lenovo-throttling-fix')
+conflicts=('lenovo-throttling-fix-git' 'lenovo-throttling-fix' 'throttled')
+replaces=('lenovo-throttling-fix' 'throttled')
 backup=('etc/lenovo_fix.conf')
 source=("git+https://github.com/erpalma/throttled.git"
 	'throttled.service')
 sha256sums=('SKIP'
 	'SKIP')
 
+pkgver() {
+	cd "${srcdir}/throttled/"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/throttled/"
