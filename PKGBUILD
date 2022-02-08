@@ -1,7 +1,7 @@
 # Maintainer: Henil <henil2911 + aur at gmail <.> com>
 pkgname=zellij-git
 _pkgname=zellij
-pkgver=r877.810a01c
+pkgver=r1287.f62ccd2a
 _pkgver=0.1
 pkgrel=1
 epoch=
@@ -38,7 +38,7 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/zellij/README.md"
     install -Dm644 assets/man/zellij.1 "${pkgdir}/usr/share/man/man1/zellij.1"
     install -Dm644 assets/completions/zellij.bash "${pkgdir}/usr/share/bash-completion/completions/zellij"
-    install -Dm644 assets/completions/zellij.fish "${pkgdir}/usr/share/fish/completions/zellij.fish"
+    install -Dm644 assets/completions/zellij.fish "${pkgdir}/usr/share/fish/vendor_completions.d/zellij.fish"
     install -Dm644 assets/completions/_zellij "${pkgdir}/usr/share/zsh/site-functions/_zellij"
 }
 

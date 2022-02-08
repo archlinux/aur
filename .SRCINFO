@@ -1,6 +1,6 @@
 pkgbase = zellij-git
 	pkgdesc = A terminal workspace with batteries included
-	pkgver = r877.810a01c
+	pkgver = r1287.f62ccd2a
 	pkgrel = 1
 	url = https://www.github.com/zellij-org/zellij
 	arch = i686
