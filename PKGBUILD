@@ -20,7 +20,7 @@ prepare() {
     cd "${srcdir}"/zfs-${pkgver}
 
     # Trick the build system into thinking python3 is installed and works
-    ln -sf /bin/true python3-fake
+    ln -sf /bin/true fakepython3
 
     # Use openrc-run as the interpreter
     cd etc/init.d
@@ -36,7 +36,7 @@ build() {
                 --with-mounthelperdir=/usr/bin \
                 --with-udevdir=/usr/lib/udev \
                 --libexecdir=/usr/lib/zfs \
-                --with-python="$PWD/python3-fake" \
+                --with-python="$PWD/fakepython3" \
                 --enable-pyzfs=no \
                 --enable-systemd=no \
                 --enable-sysvinit=yes \
