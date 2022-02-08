@@ -1,0 +1,11 @@
+pkgbase = hashrat
+	pkgdesc = Hashing tool. Includes recursive file hashing and other features.
+	pkgver = 1.15
+	pkgrel = 1
+	url = https://github.com/ColumPaget/Hashrat
+	arch = any
+	license = GPL
+	source = https://github.com/ColumPaget/Hashrat/archive/refs/tags/v1.15.tar.gz
+	sha256sums = 833366b29da6ec8048d4f295bb3938588b5d098dcdabd96c18df9d3b8ad3ef44
+
+pkgname = hashrat
