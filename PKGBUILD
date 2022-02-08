@@ -1,6 +1,8 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
-pkgname=('python-kealib')
-_kea=1.4.12
+# Contributor: dobedobedo <dobe0331 at gmail dot com>
+_pkgname='kealib'
+pkgname=('python'-$_pkgname)
+_kea=1.4.14
 pkgver=0.1_$_kea
 pkgrel=1
 pkgdesc="Python library to access parts of kealib not exposed by GDAL"
@@ -10,17 +12,16 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=("kealib=$_kea" 'python')
 options=(!emptydirs)
-source=("https://bitbucket.org/chchrsc/kealib/get/kealib-$_kea.tar.bz2")
-sha256sums=('844cdef518ab3fe3b6bae4bce5c1ca46e9ac9ff453b5ca5f3ccd87b23b89d511')
-_srcpath=chchrsc-kealib-e042a597679f
+source=("https://github.com/ubarsc/kealib/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('da5d4a540b34afb61665cb7b6bf284825b51464eaf2a23ccca16955e2712cab2')
 
 build() {
-  cd "$srcdir/$_srcpath/python"
+  cd "$srcdir/$_pkgname-$_kea/python"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_srcpath/python"
-  python setup.py install --root="$pkgdir/" --skip-build
+  cd "$srcdir/$_pkgname-$_kea/python"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
