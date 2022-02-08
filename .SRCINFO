@@ -1,8 +1,8 @@
 pkgbase = vatsim-manager
 	pkgdesc = Installer and manager for VATSIM clients
 	pkgver = 0.2.0
-	pkgrel = 2
-	url = https://github.com/wiggleforlife/vatsim-mgr
+	pkgrel = 3
+	url = https://github.com/wiggleforlife/vatsim-manager
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake>=3.16.0
@@ -10,7 +10,7 @@ pkgbase = vatsim-manager
 	optdepends = wine: ATC and AFV client support
 	optdepends = winetricks: ATC and AFV client support
 	options = !buildflags
-	source = vatsim-manager-0.2.0.tar.gz::https://github.com/wiggleforlife/vatsim-mgr/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = decb8700ab213dd5c6893fcade608a3c70e2eec348d031235595b4a2ed78d1e7
+	source = vatsim-manager-0.2.0.tar.gz::https://github.com/wiggleforlife/vatsim-manager/archive/refs/tags/0.2.0.tar.gz
+	sha256sums = ffa6c74b487e3bb07b755010a2a4acbf9ea35fe1ae5053425e7b36eb2bc4ab80
 
 pkgname = vatsim-manager
