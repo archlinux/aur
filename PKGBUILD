@@ -1,7 +1,7 @@
-# Contributor: Rod Kay     <charlie5 on #ada at freenode.net>
+# Contributor: Rod Kay     <charlie5 on #ada at irc.libera.chat>
 
 pkgname=adacurses
-pkgver=20200711
+pkgver=20220205
 pkgrel=1
 pkgdesc="An Ada binding to the 'ncurses' C library."
 
@@ -11,10 +11,10 @@ license=('MIT')
 
 makedepends=('gcc-ada')
 
-source=('ftp://ftp.invisible-island.net/AdaCurses/current/AdaCurses-20200711.tgz'
+source=('https://invisible-mirror.net/archives/AdaCurses/current/AdaCurses-20220205.tgz'
         'adacurses.gpr.in')
 
-md5sums=('574c34b244b29717ad821ee50850d920'
+md5sums=('20bb4bcdf2cfd0ca91c1e12acca6b5ad'
          'bcf4fda38d94da5fb04325c51217d790')
 
 PREFIX=/usr
@@ -35,7 +35,7 @@ build()
 {
   cd "$srcdir/AdaCurses-$pkgver"
 
-  ./configure --prefix=/usr                                  \
+  ./configure --prefix=${PREFIX}                             \
               --with-install-prefix="$pkgdir"                \
               --with-ada-include=${PREFIX}/include/adacurses \
               --with-ada-objects=${PREFIX}/lib/adacurses     \
@@ -48,17 +48,18 @@ build()
 package() 
 {
   cd "$srcdir/AdaCurses-$pkgver"
+
+  export DESTDIR=$pkgdir
   make install
 
-  STAGEDIR=$pkgdir
-  FILESDIR=$srcdir
+  mkdir -p "${pkgdir}${PREFIX}/share/gpr"
 
-  install gen/adacurses-config \
-          ${STAGEDIR}${PREFIX}/bin/
+  sed "s|@PREFIX@|${PREFIX}|g"   \
+      "$srcdir/adacurses.gpr.in" \
+    > "${pkgdir}${PREFIX}/share/gpr/adacurses.gpr"
 
-  mkdir ${STAGEDIR}${PREFIX}/lib/gnat
-
-  sed "s|@PREFIX@|${PREFIX}|g" ${FILESDIR}/adacurses.gpr.in > \
-             ${STAGEDIR}${PREFIX}/lib/gnat/adacurses.gpr
+  # Install the license.
+  install -D -m644     \
+     "COPYING"        \
+     "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-

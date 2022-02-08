@@ -1,16 +1,15 @@
 pkgbase = adacurses
 	pkgdesc = An Ada binding to the 'ncurses' C library.
-	pkgver = 20200711
+	pkgver = 20220205
 	pkgrel = 1
 	url = https://invisible-island.net/ncurses/ncurses-Ada95.html
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = gcc-ada
-	source = ftp://ftp.invisible-island.net/AdaCurses/current/AdaCurses-20200711.tgz
+	source = https://invisible-mirror.net/archives/AdaCurses/current/AdaCurses-20220205.tgz
 	source = adacurses.gpr.in
-	md5sums = 574c34b244b29717ad821ee50850d920
+	md5sums = 20bb4bcdf2cfd0ca91c1e12acca6b5ad
 	md5sums = bcf4fda38d94da5fb04325c51217d790
 
 pkgname = adacurses
-
