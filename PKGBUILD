@@ -5,7 +5,7 @@
 # latest version obtained from this API endpoint: https://dolphin-emu.org/update/latest/beta/
 pkgbase=dolphin-emu-beta-git
 pkgname=('dolphin-emu-beta-git' 'dolphin-emu-beta-nogui-git')
-pkgver=5.0.r15445.db02b50d2e
+pkgver=5.0.r15993.5e59561637
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator - monhtly beta release'
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('cmake' 'git' 'libglvnd' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
-source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=db02b50d2ecdfbbc21e19aadc57253c353069f77')
+source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=5e595616379a694789fe749e40a27ef069f0090e')
 sha256sums=('SKIP')
 
 pkgver() {
