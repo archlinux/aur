@@ -1,45 +1,57 @@
 # Maintainer: dobedobedo <dobe0331 at gmail dot com>
 # Contributor: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
-pkgname=('python-rsgislib')
-pkgver=3.5.7
+_pkgname='rsgislib'
+pkgname=("python-$_pkgname")
+pkgver=5.0.4
 pkgrel=1
 _rsgislib="Remote Sensing and GIS collection of tools for processing datasets"
-pkgdesc="$_rsgislib including its bindings compiled for Python 3"
+pkgdesc="$_rsgislib including its Python bindings"
 arch=('i686' 'x86_64')
 url='http://www.rsgislib.org'
 license=('GPL3')
-_common_deps=('gsl' 'gdal' 'geos' 'xerces-c' 'muparser' 'cgal'
-              'hdf5-cpp-fortran' 'gmp' 'mpfr' 'kealib' 'python-numpy')
-makedepends=('cmake' 'boost' "${_common_deps[@]}")
-depends=('boost-libs' "${_common_deps[@]}")
+makedepends=('cmake' 'boost' 'python')
+depends=('hdf5' 'kealib' 'xerces-c' 'muparser' 'gsl' 'geos' 'gdal' 'cgal' 'python'
+         'boost-libs' 'python-numpy' 'python-scikit-learn' 'python-tqdm' 'python-rios')
 options=(!emptydirs)
-source=("https://bitbucket.org/petebunting/rsgislib/get/$pkgver.tar.bz2")
-sha256sums=('ee41fcad9956350a66b3cb230670d369c598a9b157e316af4efe8186435960cf')
-_srcpath=petebunting-rsgislib-4d0245e68eba
+source=("https://github.com/remotesensinginfo/rsgislib/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('6ce4c5b108231d043aa5802d783c18cf9bf7166ef852dec1c0a8924fff881021')
 
 prepare() {
-  cd "$srcdir/$_srcpath"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   # Fix the default include/lib paths
   sed -i s-/local--g CMakeLists.txt
-
-  # Root the Python bindings installation at $pkgdir
-  sed -i s_--prefix_--root="$pkgdir"'\\" \\"&'_g CMakeLists.txt
-
 }
 
 build() {
-  cd "$srcdir/$_srcpath"
+  mkdir -p "$srcdir/$_pkgname-$pkgver/build"
+  cd "$srcdir/$_pkgname-$pkgver/build"
   cmake \
-    -D CMAKE_CXX_STANDARD=11 \
+    -D Python_ROOT_DIR:FILEPATH=/usr \
+    -D Python_FIND_STRATEGY=LOCATION \
+    -D CMAKE_FIND_FRAMEWORK=NEVER \
+    -D CMAKE_PREFIX_PATH=/usr \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D BOOST_INCLUDE_DIR=/usr/include \
+    -D BOOST_LIB_PATH=/usr/lib \
+    -D GDAL_INCLUDE_DIR=/usr/include \
+    -D GDAL_LIB_PATH=/usr/lib \
+    -D HDF5_INCLUDE_DIR=/usr/include \
+    -D HDF5_LIB_PATH=/usr/lib \
+    -D GSL_INCLUDE_DIR=/usr/include \
+    -D GSL_LIB_PATH=/usr/lib \
+    -D MUPARSER_INCLUDE_DIR=/usr/include \
+    -D MUPARSER_LIB_PATH=/usr/lib \
+    -D KEA_INCLUDE_DIR=/usr/include \
+    -D KEA_LIB_PATH=/usr/lib \
+    -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_SKIP_RPATH=ON \
-    .
+    "$srcdir/$_pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/$_srcpath"
+  cd "$srcdir/$_pkgname-$pkgver/build"
   make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 "$srcdir/$_pkgname-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
