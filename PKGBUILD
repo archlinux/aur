@@ -1,15 +1,14 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn at protonmail dot ch>
-
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
 _pkgname=pcal
 pkgname=$_pkgname-calendar-git
 pkgver=r12.94deca8
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI tool to convert Georgian dates to Persian dates'
 arch=(any)
 url=https://github.com/a5hk/pcal
 license=(MIT)
 makedepends=(git)
-source=("git+${url}.git")
+source=("git+$url.git")
 md5sums=(SKIP)
 
 pkgver() {
