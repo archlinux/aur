@@ -1,0 +1,18 @@
+pkgbase = pokemon-cursor
+	pkgdesc = An unofficial opensource Pokemon cursor theme for Windows and Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ful1e5/pokemon-cursor
+	arch = any
+	license = GPL3
+	makedepends = nodejs
+	makedepends = yarn
+	makedepends = python
+	makedepends = python-pip
+	depends = libxcursor
+	depends = libx11
+	depends = libpng
+	source = git+https://github.com/ful1e5/pokemon-cursor.git#commit=022e28ce502256062864f7a3c50d0dd2806f82e8
+	md5sums = SKIP
+
+pkgname = pokemon-cursor
