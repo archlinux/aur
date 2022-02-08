@@ -6,6 +6,7 @@ pkgbase = moonwm
 	install = moonwm.install
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = go-md2man
 	makedepends = pkgconf
