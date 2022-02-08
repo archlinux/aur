@@ -3,12 +3,12 @@
 
 pkgname=rocketchat-server
 pkgver=4.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
 url="https://rocket.chat"
 license=("MIT")
-depends=("npm" "nodejs-lts-erbium" "mongodb" "graphicsmagick" "curl" "python2" "gcc")
+depends=("npm" "nodejs-lts-fermium" "mongodb" "graphicsmagick" "curl" "python2" "gcc")
 makedepends=()
 optdepends=()
 backup=("etc/rocketchat/${pkgname}.conf")

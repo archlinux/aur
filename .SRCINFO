@@ -1,13 +1,13 @@
 pkgbase = rocketchat-server
 	pkgdesc = The Ultimate Open Source WebChat Platform
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocket.chat
 	install = rocketchat-server.install
 	arch = any
 	license = MIT
 	depends = npm
-	depends = nodejs-lts-erbium
+	depends = nodejs-lts-fermium
 	depends = mongodb
 	depends = graphicsmagick
 	depends = curl
