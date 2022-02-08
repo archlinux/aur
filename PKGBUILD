@@ -74,15 +74,15 @@ fi
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.17
+pkgver=${_major}.21
 _branch=5.x
-xanmod=2
+xanmod=1
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="961fd7af5a98d9a652f83e17fd41a07d8a4d2394" # 5.15.17
+__commit="dc93cc6b2d1d0bf57ab28dccfd3ab0a9e5c32039" # 5.15.21
 
 license=(GPL2)
 makedepends=(
@@ -111,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '10381d226a531a9faf8467a7614aec0ec5d2b48eee003aacf142769ebe0afc5d'  # xanmod
+            'cc4451ab20b0bf32e82490ecf388afc796812416c992f2dc30035523fd1020fe'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '061f790644a7be77645dcc7039c39abe6587aa798c8e75b6195605d426355f81') # manjaro
+            'd141c6d85843afa6e84f1545a436aee13cea911acae7f6ea64acd77b1755e476') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -268,7 +268,10 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices'
               'bootsplash-systemd: for bootsplash functionality')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES
+            WIREGUARD-MODULE
+            KSMBD-MODULE
+            NTFS3-MODULE)
   replaces=()
   conflicts=()
 
