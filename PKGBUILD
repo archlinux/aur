@@ -36,7 +36,7 @@ package() {
     tar -xpvf "${srcdir}"/data.tar.xz
 
     mkinfo "Preparing needed directories ..."
-    mkdir -pv "${pkgdir}"/usr/{lib,licenses/"${_pkgname}"}
+    mkdir -pv "${pkgdir}"/usr/{bin,lib,licenses/"${_pkgname}"}
 
     mkinfo "Install binaries ..."
     cp -rv "${srcdir}"/opt/"${_pkgname}" "${pkgdir}"/usr/lib/
