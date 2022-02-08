@@ -3,7 +3,7 @@
 
 pkgname=nvidia-container-toolkit
 
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=2
 
 pkgdesc='NVIDIA container runtime toolkit'
@@ -18,10 +18,8 @@ replaces=('nvidia-container-runtime-hook')
 
 backup=('etc/nvidia-container-runtime/config.toml')
 
-source=(fix_cgroup.patch
-        "v${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('48a36a4b01ab64739d55c4a696bbe72f2b90a9e5abc0b9d1c4090a3016d9a1fb'
-            'f096b2db7cc837164e9739fc31680ff7c1f4135e6b7290dc68f590df3c651a02')
+source=("v${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('38372fcf9a61a10ded94364f94a936341bf6dd79a3ca165402143d657c3cf551')
 
 install=$pkgname.install
 
@@ -29,9 +27,6 @@ _srcdir="nvidia-container-toolkit-${pkgver}"
 
 build() {
   cd "${_srcdir}"
-
-  # TODO: no longer needed after v1.8.0-rc1
-  patch -Np1 -i "${srcdir}/fix_cgroup.patch"
 
   mkdir bin
 
