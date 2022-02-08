@@ -1,6 +1,6 @@
 pkgbase = phpstorm-url-handler
 	pkgdesc = Open phpstorm:// URLs in PHPStorm.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sanduhrs/phpstorm-url-handler
 	install = phpstorm-url-handler.install
@@ -12,4 +12,3 @@ pkgbase = phpstorm-url-handler
 	sha512sums = SKIP
 
 pkgname = phpstorm-url-handler
-
