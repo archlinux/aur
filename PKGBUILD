@@ -1,24 +1,26 @@
 # Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Contributor: loryeam <loryeam at gmail dot com>
 
-pkgname=python-python-magic
-pkgver=0.4.24
+pkgname=('python-python-magic')
+_module='python-magic'
+pkgver='0.4.25'
 pkgrel=1
 arch=('any')
-url="https://pypi.org/project/python-magic/"
+url="http://github.com/ahupp/python-magic"
 license=("MIT")
 pkgdesc="File type identification using libmagic"
-depends=('python')
+depends=('file' 'python')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/p/python-magic/python-magic-${pkgver}.tar.gz")
-sha256sums=('de800df9fb50f8ec5974761054a708af6e4246b03b4bdaee993f948947b0ebcf')
+source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
+sha256sums=('21f5f542aa0330f5c8a64442528542f6215c8e18d2466b399b0d9d39356d83fc')
 
-build(){
-    cd python-magic-$pkgver
+build() {
+    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
 }
 
-package(){
-    cd python-magic-$pkgver
-    python setup.py install --root="$pkgdir" --optimize=1
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+package() {
+    depends+=()
+    cd "${srcdir}/${_module}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
