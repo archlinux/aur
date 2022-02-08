@@ -1,14 +1,14 @@
 # Maintainer: Nici <NiciTheNici at protonmail dot com>
 pkgname='manga-cli-git'
 _pkgname='manga-cli'
-pkgver=r6.3a08894
+pkgver=r9.a1b7cff
 pkgrel=1
 epoch=1
-pkgdesc="A Bash script for reading mangas via the terminal by scraping Mangakakalot."
+pkgdesc="Bash script for reading mangas via the terminal by scraping manganato"
 arch=('any')
 url="https://github.com/7USTIN/manga-cli"
 license=('GPL3')
-depends=('coreutils' 'curl' 'sed' 'awk' 'diffutils' 'patch' 'imagemagick' 'zathura' 'zathura-pdf-mupdf')
+depends=('coreutils' 'curl' 'sed' 'awk' 'diffutils' 'patch' 'img2pdf' 'zathura' 'zathura-pdf-mupdf')
 makedepends=('git') 
 source=('git+https://github.com/7USTIN/manga-cli.git')
 md5sums=('SKIP')
