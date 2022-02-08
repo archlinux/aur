@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname="thunderhub"
 pkgver=0.13.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightning Node Manager"
 arch=(any)
 url="https://github.com/apotdevin/${pkgname}"

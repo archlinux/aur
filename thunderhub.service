@@ -3,8 +3,8 @@ Description=thunderhub lighting node manager
 After=network.target
 
 [Service]
-User=thunderhub
-Group=thunderhub
+User=thub
+Group=thub
 EnvironmentFile=/etc/thunderhub/env
 WorkingDirectory=/var/lib/thunderhub
 ExecStart=/usr/bin/npm run start:prod:env
