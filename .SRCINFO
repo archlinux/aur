@@ -1,0 +1,20 @@
+pkgbase = marble-maps-micromacro-crimecity-demo
+	pkgdesc = Makes the map of the demo of the board game 'microMACRO Crime City' browsable in KDE marble. Select the celestial body 'MicroMacro'.
+	pkgver = 20220208.01
+	pkgrel = 1
+	epoch = 0
+	url = https://micromacro-game.com/en/democase.html
+	arch = any
+	license = custom: Public Domain, Edition Spielwiese/ Pegasus Spiele.
+	depends = marble-common
+	options = emptydirs
+	source = micromacro-crimecity-demo.dgml
+	source = preview.png::https://micromacro-game.com/img/map/2x/4/3/5.png
+	source = base-tile.png::https://micromacro-game.com/img/map/2x/0/0/0.png
+	source = COPYING.txt
+	sha256sums = 0b8614d5291888204a94743866b7188f35d931eedcacfde51e1c90ba197021e6
+	sha256sums = 50b4292f0757a9b4fc79c66beec7a629c1df38ae6c0514e16307eb6fa22af813
+	sha256sums = 1c205eb65162771ae06d472211ffe59b4be386030d1befa05eec9f6fb9758ce1
+	sha256sums = be45b9d188a595fddbc4cd14e2cc96c3378d3dbaa17da3f57662d973ef4f62f0
+
+pkgname = marble-maps-micromacro-crimecity-demo

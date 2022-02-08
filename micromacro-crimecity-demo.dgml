@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgml xmlns="http://edu.kde.org/marble/dgml/2.0">
+  <document>
+    <head>
+      <name>MicroMacro - Crime City - DEMO</name>
+      <target>MicroMacro</target>
+      <theme>micromacro-crimecity-demo</theme>
+      <icon pixmap="preview.png"/>
+      <visible>true</visible>
+      <description><![CDATA[Browse the DEMO game map of the detective board game "MicroMacro: Crime City". Copyright: <a href="https://micromacro-game.com/">EDITION SPIELWIESE/ Pegasus Spiele</a>.]]></description>
+      <zoom>
+        <minimum> 900 </minimum>
+        <maximum> 1900 </maximum>
+        <discrete> true </discrete>
+      </zoom>
+    </head>
+    <map bgcolor="#000000">
+      <canvas/>
+      <target/>
+      <layer name="micromacro-crimecity-demo" backend="texture">
+        <texture name="map" expire="604800">
+          <sourcedir format="PNG">MicroMacro/micromacro-crimecity-demo</sourcedir>
+          <tileSize width="512" height="512"/>
+          <storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="6" mode="Custom"/>
+          <projection name="Mercator"/>
+          <downloadUrl protocol="https" host="micromacro-game.com" path="/img/map/2x/{zoomLevel}/{y}/{x}.png" query=""/>
+          <downloadPolicy usage="Browse" maximumConnections="4"/>
+          <downloadPolicy usage="Bulk" maximumConnections="2"/>
+        </texture>
+      </layer>
+    </map>
+    <settings>
+        <property name="overviewmap">
+            <value>false</value>
+            <available>true</available>
+        </property>
+        <property name="compass">
+            <value>true</value>
+            <available>true</available>
+        </property>
+        <property name="scalebar">
+            <value>true</value>
+            <available>true</available>
+        </property>
+    </settings>
+    <legend>
+    </legend>
+  </document>
+</dgml>

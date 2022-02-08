@@ -1,0 +1,3 @@
+* The map definitions (`.dgml`-files) are public domain.
+* The preview image (`preview.png`) and the base tile (`0/0/0.png`) is copyright by EDITION SPIELWIESE/ Pegasus Spiele, https://micromacro-game.com/.
+* The map data that gets downloaded by marble upon viewing that map is copyright by EDITION SPIELWIESE/ Pegasus Spiele, https://micromacro-game.com/.
