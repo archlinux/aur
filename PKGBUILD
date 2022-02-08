@@ -15,14 +15,14 @@ backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/p
 options=("!emptydirs")
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/${pkgname}_linux_${pkgver/.hotfix/+hotfix}-stable.tar.xz"
+  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${pkgver}-stable.tar.xz"
   "${pkgname}.sh"
   "${pkgname}.csh"
 )
 sha256sums=(
   "e1912964f1959e2b272bd413d68e06d86e8289f95812587e7b7f97f28767c755"
-"1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
-"7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
+  "1dea1952d386c43948b9970382c2da5b65b7870684b8ad2ad89124e873aa485a"
+  "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
 
 build() {
