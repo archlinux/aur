@@ -2,7 +2,7 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=steam++-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.6.5
+pkgver=2.6.7
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
@@ -18,8 +18,8 @@ source_aarch64=("Steam++_aarch64.7z::https://github.com/BeyondDimension/SteamToo
 source_x86_64=("Steam++_x86_64.7z::https://github.com/BeyondDimension/SteamTools/releases/download/${pkgver}/Steam++_linux_x64_v${pkgver}.7z")
 sha256sums=('9d19a6f955cc212b7bbe71cd80c36d5d8286b5f5d7b9259b3c6b63b92f15fe97'
             'e22ef2d0ecb1f4bc9226de92c4de9e282a57bb27222838637dec776f06362ac6')
-sha256sums_x86_64=('4bb4604934ec0c8e6a2bcaf17882014c89d1180ecf396c35daa3850f208d5db2')
-sha256sums_aarch64=('a40c3aa044e12ad9f5e662553b7350422f95d53559baab3fbef9fb13d79695ce')
+sha256sums_x86_64=('8c94467aa49e089728bada2b4291c91b7946f2cf8ff611209244af7163857b71')
+sha256sums_aarch64=('e693ac7ef9c5e485b53450709dd708677828a07f3620b4c18d0965382af43784')
 noextract=("Steam++_${CARCH}.7z")
 package(){
     mkdir -p "${pkgdir}/opt/steam++"
