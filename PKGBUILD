@@ -35,8 +35,8 @@ package() {
     mkinfo "Extracting data.tat.xz ..."
     tar -xpvf "${srcdir}"/data.tar.xz -C "${pkgdir}"
 
-    mkinfo "Preparing needed directoies ..."
-    mkdir -pv "${pkgdir}/usr/{lib,licenses/${_pkgname}}"
+    mkinfo "Preparing needed directories ..."
+    mkdir -pv "${pkgdir}/usr/{lib,licenses/astap}"
 
     mkinfo "Moving binaries from /opt to /usr/lib ..."
     mv -v "${pkgdir}"/opt/"${_pkgname}" "${pkgdir}"/usr/lib
