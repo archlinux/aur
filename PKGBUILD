@@ -1,7 +1,7 @@
 # Maintainer: grtcdr <ba.tahaaziz@gmail.com>
 
 pkgname=macchina
-pkgver=6.0.5
+pkgver=6.0.6
 pkgrel=1
 pkgdesc="A system information fetcher, with an (unhealthy) emphasis on performance."
 
@@ -13,7 +13,7 @@ arch=('x86_64')
 url="https://github.com/Macchina-CLI/macchina"
 license=('MIT')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('88de2c9718e071dcd9486cf1e7d87d46533100e589d99cd7b18ff43c21a8a053')
+sha256sums=('da77e1899b13e4612b5ca6a22e8e266beabc734153e7a59c7c8b82c142510435')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -25,8 +25,8 @@ package() {
    install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
 
    install -Dm 644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-   install -Dm 644 "doc/man/${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
-   install -Dm 644 "doc/man/${pkgname}.7" -t "${pkgdir}/usr/share/man/man7"
+   install -Dm 644 "doc/${pkgname}.1" -t "${pkgdir}/usr/share/man/man1"
+   install -Dm 644 "doc/${pkgname}.7" -t "${pkgdir}/usr/share/man/man7"
 
    install -d "${pkgdir}/usr/share/${pkgname}/themes"
    install -m 644 contrib/themes/* "${pkgdir}/usr/share/${pkgname}/themes"
