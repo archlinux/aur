@@ -1,0 +1,547 @@
+diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile xwpe-1.5.30a-build/Makefile
+--- xwpe-1.5.30a/Makefile	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/Makefile	1970-01-01 01:00:00.000000000 +0100
+@@ -1,156 +0,0 @@
+-# Generated automatically from Makefile.in by configure.
+-#C-Compiler (gcc if exist):
+-CC=		gcc
+-CFLAGS=		-g -O2  -I/usr/X11R6/include
+-#CFLAGS=		-g -O2 @EXTRA_CFLAGS@  -I/usr/X11R6/include
+-
+-#Source Directory:
+-srcdir=		.
+-
+-#Destination Directory
+-prefix=/usr/local
+-exec_prefix=${prefix}
+-DESTDIR=${exec_prefix}/bin
+-LIBDIR=${exec_prefix}/lib
+-XWPELIBDIR=	$(LIBDIR)/xwpe
+-MANDIR=${prefix}/man
+-
+-LIBS=-lz -lgpm  -lncurses
+-XLIBS= -L/usr/X11R6/lib  -lSM -lICE  -lX11
+-DEFS= -DCC_HAS_PROTOS=1 -DHAVE_LIBGPM=1 -DHAVE_LIBZ=1 -DHAVE_MKDTEMP=1 -DRANDLIB=1 -DPRNTCMD=\"lpr\" -DMAN_S_OPT=1  -DLIBRARY_DIR=\"$(XWPELIBDIR)\" -DSELECTION
+-INSTALL=	cp
+-LN_S=	ln -s
+-
+-# In case configure fails a description of many of the compilation options
+-# are provided below so that administrators can determine the proper flags.
+-# Please email any problems to Dennis Payne (dulsi@identicalsoftware.com)
+-
+-# Recognized defines:
+-# -DNONEWSTYLE          :Use xwpe-style of version < 1.2.0
+-# -DNO_XWINDOWS         :Don't create the X windows versions
+-# -DNOPROG              :Don't create the programming environment (Broken)
+-# -DNODEBUGGER          :Don't include debugging features (Broken)
+-# -DNOPRINTER           :No printing from within xwpe
+-# -DPRNTCMD=\"lpr\"     :Command to print is \"lpr\"
+-# -DMAN_S_OPT           :Man accepts "-s" to select section
+-# -DNO_MINUS_C_MINUS_O  :Compiler doesn't accept -o and -c on same command
+-# -DDEFPGC              :No macros for putc and getc
+-# -DDEFTPUTS            :No prototype for tputs
+-# -DNOSTRSTR            :No prototype for strstr and getcwd
+-# -DRANLIB              :Have to run ranlib after building a library
+-# -DNOSYMLINKS          :No symbolic links
+-# -DXDB                 :System has xdb not dbx
+-# -DTERMCAP             :Use termcap instead of curses
+-# -DSIMPLE_BACKUP_SUFFIX=\"\" 
+-#                       : The bak-file suffix, default is TurboC-like
+-# -DDEFAULT_ALTMASK=Mod3Mask
+-#                       :Mask to determined if alt is pressed in X
+-# -DINFO_DIR=\"/usr/local/info\"
+-#                       :Location of info directory
+-# -DLIBRARY_DIR=\"/usr/local/lib/xwpe\"
+-#                       :Location of xwpe library directory
+-# -DDEF_SHELL=\"/bin/ksh\"
+-#                       :Default shell to run
+-# -DXTERM_CMD=\"/usr/X11R6/bin/color_xterm\"
+-#                       :Define the command to execute an xterm
+-# -DXWPE_DLL            :Builds x and terminal support into libraries
+-# -DSELECTION           :Use X Selection events instead of XStoreBytes
+-
+-# Possible include paths needed:
+-# -I/usr/X11R5/include  :X include path
+-# -I/usr/5include       :System V include path
+-
+-# Possible library paths needed:
+-# -L/usr/X11R5/lib      :X library path
+-# -L/usr/5lib           :System V library path
+-
+-# Possible libraries needed:
+-# -lX11              :X library
+-# -lcurses           :Curses library
+-# -lncurses          :Ncurses library (replaces curses on newer systems)
+-# -ltermlib          :Termcap library
+-# -lcposix           :Posix Library
+-# -linet             :Network library
+-
+-OFILES=		we_main.o we_block.o we_unix.o we_e_aus.o \
+-		we_edit.o we_fl_fkt.o we_fl_unix.o we_hfkt.o \
+-		we_menue.o we_mouse.o we_opt.o we_wind.o \
+-		we_prog.o we_progn.o we_debug.o WeString.o \
+-		WeSyntax.o WeExpArr.o WeLinux.o we_gpm.o
+-X_OFILES=	we_xterm.o WeXterm.o
+-T_OFILES=	we_term.o
+-
+-CFILES=		we_main.c we_block.c we_unix.c we_e_aus.c \
+-		we_edit.c we_fl_fkt.c we_fl_unix.c we_hfkt.c \
+-		we_menue.c we_mouse.c we_opt.c we_wind.c we_term.c \
+-		we_prog.c we_progn.c we_debug.c we_xterm.c WeString.c \
+-		WeXterm.c WeSyntax.c WeExpArr.c WeLinux.c we_gpm.c
+-
+-HFILES=		attrb.h edit.h keys.h \
+-		model.h progr.h unixkeys.h unixmakr.h \
+-		Xwpe.h WeString.h WeXterm.h WeProg.h WeExpArr.h
+-
+-xwpe:	$(OFILES) $(X_OFILES) $(T_OFILES)
+-	$(CC) $(CFLAGS) $(DEFS) $(OFILES) $(X_OFILES) $(T_OFILES) \
+-	  $(LIBS) $(XLIBS) -o xwpe
+-#	$(CC) -Wl,-E $(CFLAGS) $(DEFS) $(OFILES) $(LIBS) -o xwpe
+-
+-libxwpe-x11.so:	$(X_OFILES)
+-	$(CC) -shared $(X_OFILES) $(XLIBS) -o libxwpe-x11.so
+-
+-libxwpe-term.so:	$(T_OFILES)
+-	$(CC) -shared $(T_OFILES) -o libxwpe-term.so
+-
+-#$(X_OFILES) $(T_OFILES):	$(HFILES)
+-#	$(CC) -fPIC $(CFLAGS) $(DEFS) -c $(subst .o,.c,$@)
+-
+-.c.o:	$(HFILES)
+-	$(CC) $(CFLAGS) $(DEFS) -c $<
+-
+-clean:
+-	rm -f *.o xwpe wpe we xwe libxwpe-x11.so libxwpe-term.so core *.ESV
+-
+-distclean:
+-	rm -f config.status config.cache config.log Makefile
+-
+-# Bug Note: Currently xwpe and xwe are installed even if X windows versions
+-# are not compiled.  (They will function as wpe and we respectively.)
+-install_fst:	xwpe
+-	if test ! -d $(DESTDIR); then mkdir -p $(DESTDIR); fi
+-	if test ! -d $(XWPELIBDIR); then mkdir -p $(XWPELIBDIR); fi
+-	rm -f $(DESTDIR)/wpe $(DESTDIR)/xwpe $(DESTDIR)/we $(DESTDIR)/xwe
+-	$(INSTALL) xwpe $(DESTDIR)/we
+-	chmod ugo+x $(DESTDIR)/we
+-	(cd $(DESTDIR) && $(LN_S) we xwe)
+-	(cd $(DESTDIR) && $(LN_S) we xwpe)
+-	(cd $(DESTDIR) && $(LN_S) we wpe)
+-	rm -f $(XWPELIBDIR)/help.xwpe
+-	if test ! -f $(XWPELIBDIR)/syntax_def; then  \
+-	  $(INSTALL) syntax_def $(XWPELIBDIR)/syntax_def; \
+-	  chmod ugo=r $(XWPELIBDIR)/syntax_def; fi
+-	if test ! -d $(MANDIR)/man1; then mkdir -p $(MANDIR)/man1; fi
+-	rm -f $(MANDIR)/man1/xwpe.1 $(MANDIR)/man1/xwe.1 
+-	rm -f $(MANDIR)/man1/wpe.1 $(MANDIR)/man1/we.1 
+-	$(INSTALL) xwe.1 wpe.1 we.1 $(MANDIR)/man1
+-	chmod ugo=r $(MANDIR)/man1/xwe.1 
+-	chmod ugo=r $(MANDIR)/man1/wpe.1 $(MANDIR)/man1/we.1 
+-	if test -f libxwpe-x11.so; then \
+-	  $(INSTALL) libxwpe-x11.so $(XWPELIBDIR)/libxwpe-x11.so; fi
+-	if test -f libxwpe-term.so; then \
+-	  $(INSTALL) libxwpe-term.so $(XWPELIBDIR)/libxwpe-term.so; fi
+-
+-install:	install_fst
+-	$(INSTALL) help.xwpe_eng $(XWPELIBDIR)/help.xwpe
+-	chmod ugo=r $(XWPELIBDIR)/help.xwpe
+-	$(INSTALL) help.key_eng $(XWPELIBDIR)/help.key
+-	chmod ugo=r $(XWPELIBDIR)/help.key
+-	$(INSTALL) xwpe.1_eng $(MANDIR)/man1/xwpe.1
+-	chmod ugo=r $(MANDIR)/man1/xwpe.1
+-
+-# German install uses old documention as no updated version is available
+-install_german:	install_fst
+-	$(INSTALL) old/we.help_gr $(XWPELIBDIR)/help.xwpe
+-	chmod ugo=r $(XWPELIBDIR)/help.xwpe
+-	$(INSTALL) old/xwpe.1_gr $(MANDIR)/man1/xwpe.1
+-	chmod ugo=r $(MANDIR)/man1/xwpe.1
+-
+diff '--color=auto' -u -r -N xwpe-1.5.30a/Makefile.in xwpe-1.5.30a-build/Makefile.in
+--- xwpe-1.5.30a/Makefile.in	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/Makefile.in	2022-02-08 20:33:25.219596707 +0100
+@@ -1,24 +1,33 @@
+ #C-Compiler (gcc if exist):
+-CC=		@CC@
+-CFLAGS=		@CFLAGS@ @X_CFLAGS@
++CC=@CC@
++CFLAGS=@CFLAGS@ @X_CFLAGS@
++WFLAGS=-Wno-unused-result
+ #CFLAGS=		@CFLAGS@ @EXTRA_CFLAGS@ @X_CFLAGS@
+ 
+ #Source Directory:
+-srcdir=		@srcdir@
++srcdir=@srcdir@
+ 
+ #Destination Directory
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-DESTDIR=@bindir@
++BINDIR=@bindir@
+ LIBDIR=@libdir@
+-XWPELIBDIR=	$(LIBDIR)/xwpe
+ MANDIR=@mandir@
++DATADIR=@datadir@
++XWPELIBDIR=$(LIBDIR)/xwpe
+ 
+ LIBS=@LIBS@
+ XLIBS=@X_LIBS@ @X_PRE_LIBS@ @X_EXTRA_LIBS@
+ DEFS=@DEFS@ -DLIBRARY_DIR=\"$(XWPELIBDIR)\" -DSELECTION
+-INSTALL=	cp
+-LN_S=	@LN_S@
++INSTALL=install
++INSTALLBIN=$(INSTALL) -m755
++INSTALLLIB=$(INSTALL) -m755
++INSTALLMAN=$(INSTALL) -m644
++INSTALLDOC=$(INSTALL) -m644
++INSTALLDATA=$(INSTALL) -m644
++MKDIR=$(INSTALL) -d -m755
++RM=rm -f
++LN_S=@LN_S@
+ 
+ # In case configure fails a description of many of the compilation options
+ # are provided below so that administrators can determine the proper flags.
+@@ -71,85 +80,111 @@
+ # -lcposix           :Posix Library
+ # -linet             :Network library
+ 
+-OFILES=		we_main.o we_block.o we_unix.o we_e_aus.o \
+-		we_edit.o we_fl_fkt.o we_fl_unix.o we_hfkt.o \
+-		we_menue.o we_mouse.o we_opt.o we_wind.o \
+-		we_prog.o we_progn.o we_debug.o WeString.o \
+-		WeSyntax.o WeExpArr.o WeLinux.o we_gpm.o
+-X_OFILES=	we_xterm.o WeXterm.o
+-T_OFILES=	we_term.o
+-
+-CFILES=		we_main.c we_block.c we_unix.c we_e_aus.c \
+-		we_edit.c we_fl_fkt.c we_fl_unix.c we_hfkt.c \
+-		we_menue.c we_mouse.c we_opt.c we_wind.c we_term.c \
+-		we_prog.c we_progn.c we_debug.c we_xterm.c WeString.c \
+-		WeXterm.c WeSyntax.c WeExpArr.c WeLinux.c we_gpm.c
+-
+-HFILES=		attrb.h edit.h keys.h \
+-		model.h progr.h unixkeys.h unixmakr.h \
+-		Xwpe.h WeString.h WeXterm.h WeProg.h WeExpArr.h
+-
+-xwpe:	$(OFILES) $(X_OFILES) $(T_OFILES)
+-	$(CC) $(CFLAGS) $(DEFS) $(OFILES) $(X_OFILES) $(T_OFILES) \
+-	  $(LIBS) $(XLIBS) -o xwpe
++AFILES=Makefile config.status config.cache config.log
++
++CFILES=we_main.c we_block.c we_unix.c we_e_aus.c we_edit.c we_fl_fkt.c \
++			 we_fl_unix.c we_hfkt.c we_menue.c we_mouse.c we_opt.c we_wind.c \
++			 we_term.c we_prog.c we_progn.c we_debug.c we_xterm.c WeString.c \
++			 WeXterm.c WeSyntax.c WeExpArr.c WeLinux.c we_gpm.c
++
++HFILES= attrb.h edit.h keys.h makro.h messages.h model.h options.h \
++				progr.h unixkeys.h unixmakr.h we_gpm.h we_prog.h we_xterm.h \
++				WeExpArr.h WeProg.h WeString.h WeXterm.h Xwpe.h
++
++OFILES=we_main.o we_block.o we_unix.o we_e_aus.o we_edit.o we_fl_fkt.o \
++			 we_fl_unix.o we_hfkt.o we_menue.o we_mouse.o we_opt.o we_wind.o \
++			 we_prog.o we_progn.o we_debug.o WeString.o WeSyntax.o WeExpArr.o \
++			 WeLinux.o we_gpm.o
++
++X_OFILES=we_xterm.o WeXterm.o
++T_OFILES=we_term.o
++
++WPE_OBJS=$(OFILES:.o=.wpe.o) $(T_OFILES:.o=.wpe.o)
++XWPE_OBJS=$(OFILES) $(T_OFILES) $(X_OFILES)
++
++WPE_LIBS=$(LIBS)
++XWPE_LIBS=$(LIBS) $(XLIBS)
++
++TARGETS=wpe xwpe
++
++all: $(TARGETS)
++
++wpe: DEFS+=-DNO_XWINDOWS
++wpe: $(WPE_OBJS) $(HFILES)
++	$(CC) $(CFLAGS) $(DEFS) $(WPE_OBJS) $(WPE_LIBS) -o wpe
++
++xwpe:	$(XWPE_OBJS) $(HFILES)
++	$(CC) $(CFLAGS) $(DEFS) $(XWPE_OBJS) $(XWPE_LIBS) -o xwpe
+ #	$(CC) -Wl,-E $(CFLAGS) $(DEFS) $(OFILES) $(LIBS) -o xwpe
+ 
+ libxwpe-x11.so:	$(X_OFILES)
+ 	$(CC) -shared $(X_OFILES) $(XLIBS) -o libxwpe-x11.so
+ 
+-libxwpe-term.so:	$(T_OFILES)
++libxwpe-term.so: $(T_OFILES)
+ 	$(CC) -shared $(T_OFILES) -o libxwpe-term.so
+ 
+ #$(X_OFILES) $(T_OFILES):	$(HFILES)
+ #	$(CC) -fPIC $(CFLAGS) $(DEFS) -c $(subst .o,.c,$@)
+ 
+-.c.o:	$(HFILES)
+-	$(CC) $(CFLAGS) $(DEFS) -c $<
++%.wpe.o: %.c
++	$(CC) $(CFLAGS) $(WFLAGS) $(DEFS) -c $< -o $@
++
++%.o: %.c
++	$(CC) $(CFLAGS) $(WFLAGS) $(DEFS) -c $< -o $@
++
++.PHONY: clean distclean install install_xwpe install_wpe install_data \
++	install_data_doc install_doc_de install_we install_lib
+ 
+ clean:
+-	rm -f *.o xwpe wpe we xwe libxwpe-x11.so libxwpe-term.so core *.ESV
++	$(RM) *.o $(TARGETS) we xwe libxwpe-x11.so libxwpe-term.so core *.ESV
+ 
+-distclean:
+-	rm -f config.status config.cache config.log Makefile
++distclean: clean
++	$(RM) $(AFILES)
+ 
+-# Bug Note: Currently xwpe and xwe are installed even if X windows versions
+-# are not compiled.  (They will function as wpe and we respectively.)
+-install_fst:	xwpe
+-	if test ! -d $(DESTDIR); then mkdir -p $(DESTDIR); fi
+-	if test ! -d $(XWPELIBDIR); then mkdir -p $(XWPELIBDIR); fi
+-	rm -f $(DESTDIR)/wpe $(DESTDIR)/xwpe $(DESTDIR)/we $(DESTDIR)/xwe
+-	$(INSTALL) xwpe $(DESTDIR)/we
+-	chmod ugo+x $(DESTDIR)/we
+-	(cd $(DESTDIR) && $(LN_S) we xwe)
+-	(cd $(DESTDIR) && $(LN_S) we xwpe)
+-	(cd $(DESTDIR) && $(LN_S) we wpe)
+-	rm -f $(XWPELIBDIR)/help.xwpe
+-	if test ! -f $(XWPELIBDIR)/syntax_def; then  \
+-	  $(INSTALL) syntax_def $(XWPELIBDIR)/syntax_def; \
+-	  chmod ugo=r $(XWPELIBDIR)/syntax_def; fi
+-	if test ! -d $(MANDIR)/man1; then mkdir -p $(MANDIR)/man1; fi
+-	rm -f $(MANDIR)/man1/xwpe.1 $(MANDIR)/man1/xwe.1 
+-	rm -f $(MANDIR)/man1/wpe.1 $(MANDIR)/man1/we.1 
+-	$(INSTALL) xwe.1 wpe.1 we.1 $(MANDIR)/man1
+-	chmod ugo=r $(MANDIR)/man1/xwe.1 
+-	chmod ugo=r $(MANDIR)/man1/wpe.1 $(MANDIR)/man1/we.1 
+-	if test -f libxwpe-x11.so; then \
+-	  $(INSTALL) libxwpe-x11.so $(XWPELIBDIR)/libxwpe-x11.so; fi
+-	if test -f libxwpe-term.so; then \
+-	  $(INSTALL) libxwpe-term.so $(XWPELIBDIR)/libxwpe-term.so; fi
+-
+-install:	install_fst
+-	$(INSTALL) help.xwpe_eng $(XWPELIBDIR)/help.xwpe
+-	chmod ugo=r $(XWPELIBDIR)/help.xwpe
+-	$(INSTALL) help.key_eng $(XWPELIBDIR)/help.key
+-	chmod ugo=r $(XWPELIBDIR)/help.key
+-	$(INSTALL) xwpe.1_eng $(MANDIR)/man1/xwpe.1
+-	chmod ugo=r $(MANDIR)/man1/xwpe.1
++install: install_wpe install_xwpe
++
++install_xwpe: install_data
++	$(MKDIR) $(DESTDIR)$(BINDIR)
++	$(INSTALLBIN) xwpe $(DESTDIR)$(BINDIR)
++
++install_wpe: install_data
++	$(MKDIR) $(DESTDIR)$(BINDIR)
++	$(INSTALLBIN) wpe $(DESTDIR)$(BINDIR)
++	$(MKDIR) $(DESTDIR)$(MANDIR)/man1
++	$(INSTALLMAN) wpe.1 $(DESTDIR)$(MANDIR)/man1
++
++install_data: install_data_doc
++	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
++	$(INSTALLDATA) syntax_def $(DESTDIR)$(XWPELIBDIR)
++	$(MKDIR) $(DESTDIR)$(DATADIR)/applications
++	$(INSTALLDATA) xwpe.desktop $(DESTDIR)$(DATADIR)/applications
++
++install_data_doc:
++	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
++	$(INSTALLDOC) help.xwpe_eng $(DESTDIR)$(XWPELIBDIR)/help.xwpe
++	$(INSTALLDOC) help.key_eng $(DESTDIR)$(XWPELIBDIR)/help.key
++	$(MKDIR) $(DESTDIR)$(MANDIR)/man1
++	$(INSTALLMAN) xwpe.1_eng $(DESTDIR)$(MANDIR)/man1/xwpe.1
+ 
+ # German install uses old documention as no updated version is available
+-install_german:	install_fst
+-	$(INSTALL) old/we.help_gr $(XWPELIBDIR)/help.xwpe
+-	chmod ugo=r $(XWPELIBDIR)/help.xwpe
+-	$(INSTALL) old/xwpe.1_gr $(MANDIR)/man1/xwpe.1
+-	chmod ugo=r $(MANDIR)/man1/xwpe.1
++install_doc_de:
++	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
++	$(INSTALLDOC) old/we.help_gr $(DESTDIR)$(XWPELIBDIR)/help.de.xwpe
++	$(MKDIR) $(DESTDIR)$(MANDIR)/de/man1
++	$(INSTALLMAN) old/xwpe.1_gr $(DESTDIR)$(MANDIR)/de/man1/xwpe.1
+ 
++# Bug Note: Currently xwpe and xwe are installed even if X windows versions
++# are not compiled.  (They will function as wpe and we respectively.)
++install_we: install_data_doc install_lib
++	$(MKDIR) $(DESTDIR)$(BINDIR)
++	$(INSTALLBIN) we $(DESTDIR)$(BINDIR)
++	(cd $(DESTDIR)$(BINDIR) && $(LN_S) we xwe)
++	(cd $(DESTDIR)$(BINDIR) && $(LN_S) we xwpe)
++	(cd $(DESTDIR)$(BINDIR) && $(LN_S) we wpe)
++	$(MKDIR) $(DESTDIR)$(MANDIR)/man1
++	$(INSTALLMAN) xwe.1 wpe.1 we.1 $(MANDIR)/man1
++
++install_lib:
++	$(MKDIR) $(DESTDIR)$(XWPELIBDIR)
++	$(INSTALLLIB) libxwpe-x11.so $(DESTDIR)$(XWPELIBDIR)
++	$(INSTALLLIB) libxwpe-term.so $(DESTDIR)$(XWPELIBDIR)
+diff '--color=auto' -u -r -N xwpe-1.5.30a/WeXterm.c xwpe-1.5.30a-build/WeXterm.c
+--- xwpe-1.5.30a/WeXterm.c	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/WeXterm.c	2022-02-08 18:02:51.448877901 +0100
+@@ -24,6 +24,7 @@
+ #include <X11/Xresource.h>
+ #include "Xwpe.h"
+ #include "WeXterm.h"
++#include "we_xterm.h"
+ 
+ /* needed for the time being to call old routines */
+ #include "model.h"
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_debug.c xwpe-1.5.30a-build/we_debug.c
+--- xwpe-1.5.30a/we_debug.c	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/we_debug.c	2022-02-08 16:32:57.222251853 +0100
+@@ -25,6 +25,8 @@
+ #include <term.h>
+ #endif
+ 
++#include "we_prog.h"
++
+ #define D_CBREAK -2
+ #define CTRLC CtrlC
+ #define SVLINES 12
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_fl_unix.c xwpe-1.5.30a-build/we_fl_unix.c
+--- xwpe-1.5.30a/we_fl_unix.c	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/we_fl_unix.c	2022-02-08 16:14:56.919271238 +0100
+@@ -1033,7 +1033,7 @@
+             fk_mouse(g);
+ #endif
+             e_sys_ini();
+-            printf(e_msg[ERR_EXEC], filen);
++            printf("%s %s", e_msg[ERR_EXEC], filen);
+             fflush(stdout);
+           }
+           if ((*e_u_system)(filen))
+@@ -1044,7 +1044,7 @@
+           }
+           else if(!WpeIsXwin())
+           {
+-            printf(e_msg[ERR_HITCR]);
++            printf("%s", e_msg[ERR_HITCR]);
+             fflush(stderr);
+             fflush(stdout);
+             fk_getch();
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_gpm.h xwpe-1.5.30a-build/we_gpm.h
+--- xwpe-1.5.30a/we_gpm.h	1970-01-01 01:00:00.000000000 +0100
++++ xwpe-1.5.30a-build/we_gpm.h	2022-02-08 16:28:42.107099492 +0100
+@@ -0,0 +1,6 @@
++#ifndef __WE_GPM_H
++#define __WE_GPM_H
++
++int WpeGpmMouseInit(void);
++
++#endif
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_prog.c xwpe-1.5.30a-build/we_prog.c
+--- xwpe-1.5.30a/we_prog.c	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/we_prog.c	2022-02-08 16:33:46.402080573 +0100
+@@ -17,6 +17,8 @@
+ #include <sys/wait.h>
+ #include <signal.h>
+ 
++#include "we_prog.h"
++
+ int e_run_sh(FENSTER *f);
+ int e_make_library(char *library, char *ofile, FENSTER *f);
+ int e_p_exec(int file, FENSTER *f, PIC *pic);
+@@ -1477,7 +1479,7 @@
+  ret = system(estr);
+  if (!WpeIsXwin())
+  {
+-  printf(e_msg[ERR_HITCR]);
++  printf("%s", e_msg[ERR_HITCR]);
+   fflush(stdout);
+   fk_getch();
+  }
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_prog.h xwpe-1.5.30a-build/we_prog.h
+--- xwpe-1.5.30a/we_prog.h	1970-01-01 01:00:00.000000000 +0100
++++ xwpe-1.5.30a-build/we_prog.h	2022-02-08 16:32:06.615858190 +0100
+@@ -0,0 +1,6 @@
++#ifndef __WE_PROG_H
++#define __WE_PROG_H
++
++int print_to_end_of_buffer(BUFFER *b, char *str, int wrap_limit);
++
++#endif
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_term.c xwpe-1.5.30a-build/we_term.c
+--- xwpe-1.5.30a/we_term.c	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/we_term.c	2022-02-08 17:14:39.247280269 +0100
+@@ -15,6 +15,8 @@
+ #define KEYFN 42
+ #define NSPCHR 13
+ 
++#include "we_gpm.h"
++
+ #ifndef XWPE_DLL
+ #define WpeDllInit WpeTermInit
+ #endif
+@@ -97,7 +99,11 @@
+ #endif
+ #endif
+ 
++#ifdef XWPE_DLL
+ int WpeDllInit(int *argc, char **argv)
++#else
++int WpeTermInit(int *argc, char **argv)
++#endif
+ {
+  fk_u_cursor = fk_t_cursor;
+  fk_u_locate = fk_t_locate;
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_xterm.c xwpe-1.5.30a-build/we_xterm.c
+--- xwpe-1.5.30a/we_xterm.c	2005-07-07 03:53:09.000000000 +0200
++++ xwpe-1.5.30a-build/we_xterm.c	2022-02-08 18:02:18.061217148 +0100
+@@ -15,7 +15,8 @@
+ #define WpeDllInit WpeXtermInit
+ #endif
+ 
+-int e_X_sw_color(void);
++#include "we_xterm.h"
++
+ int fk_show_cursor(void);
+ int e_ini_size(void);
+ int e_x_getch(void);
+@@ -71,7 +72,11 @@
+ 
+ extern struct mouse e_mouse;
+ 
++#ifdef XWPE_DLL
+ int WpeDllInit(int *argc, char **argv)
++#else
++int WpeXtermInit(int *argc, char **argv)
++#endif
+ {
+  e_s_u_clr = e_s_x_clr;
+  e_n_u_clr = e_n_x_clr;
+diff '--color=auto' -u -r -N xwpe-1.5.30a/we_xterm.h xwpe-1.5.30a-build/we_xterm.h
+--- xwpe-1.5.30a/we_xterm.h	1970-01-01 01:00:00.000000000 +0100
++++ xwpe-1.5.30a-build/we_xterm.h	2022-02-08 18:01:58.385927709 +0100
+@@ -0,0 +1,6 @@
++#ifndef __WE_XTERM_H
++#define __WE_XTERM_H
++
++int e_X_sw_color(void);
++
++#endif
+diff '--color=auto' -u -r -N xwpe-1.5.30a/xwpe.desktop xwpe-1.5.30a-build/xwpe.desktop
+--- xwpe-1.5.30a/xwpe.desktop	2006-04-01 18:15:23.000000000 +0200
++++ xwpe-1.5.30a-build/xwpe.desktop	2022-02-08 20:45:15.538593011 +0100
+@@ -1,8 +1,14 @@
+ [Desktop Entry]
++Version=1.0
++Type=Application
+ Name=Xwpe
++GenericName=Borland-like Text Editor
+ Comment=Xwpe Integrated Development Environment
+-Exec=xwpe
++Keywords=text;editor;ide;borland;
++Keywords[fr]=texte;éditeur;borland;
++Categories=Utility;TextEditor;IDE;Development;
++MimeType=text/plain;text/english;text/x-c;text/x-c++; text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-pascal;text/x-fortran;
++Icon=xwpe
++TryExec=xwpe
++Exec=xwpe %F
+ Terminal=false
+-Type=Application
+-Encoding=UTF-8
+-Categories=Application;IDE;Development;
