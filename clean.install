@@ -1,0 +1,11 @@
+post_install() {
+    echo " "
+    echo " Clean has been installed, but is **not** usable!"
+    echo " It needs to be setup locally, call \`clenv init'"
+    echo " to setup Clean for your account."
+    echo " "
+}
+
+post_upgrade() {
+    post_install
+}
