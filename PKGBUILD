@@ -2,7 +2,7 @@
 _pkgname=lfutils
 pkgname=$_pkgname-git
 pkgver=r92.4d52766
-pkgrel=1
+pkgrel=2
 pkgdesc='Scripts and utilities for the lf file manager.'
 url=https://github.com/soystemd/lfutils
 source=("git+$url.git")
