@@ -7,8 +7,8 @@
 # Contributor:  The Bitcoin Developers
 
 pkgname=electrum-nmc
-pkgver=3.3.11
-pkgrel=3
+pkgver=4.0.0b0
+pkgrel=1
 pkgdesc='Namecoin port of Electrum client with name support'
 
 arch=('any')
@@ -52,30 +52,29 @@ optdepends=('cython: Compilation support for all hardware wallet dependencies'
 provides=('electrum-nmc')
 conflicts=('electrum-nmc')
 
-source=("https://github.com/namecoin/electrum-nmc/archive/nc${pkgver}.tar.gz")
+source=("https://www.namecoin.org/files/electrum-nmc/electrum-nmc-${pkgver}/Electrum-NMC-${pkgver}.tar.xz")
 
-sha256sums=('8b21ba61e3792e1da592546379451f5a0d12ab30c357e2e90a1d3c5b3cd2ed67')
+sha256sums=('2b0d8b9ae00b5390dad0e7005d208dc2150b27ff687bc60b1dc7beccf5f56ba1')
 
 prepare() {
-    cd "$srcdir/electrum-nmc-nc${pkgver}/"
+    cd "$srcdir/Electrum-NMC-${pkgver}/"
     for i in dnsdialog dnssubdomaindialog; do
         pyuic5 electrum_nmc/electrum/gui/qt/forms/$i.ui --execute --output=electrum_nmc/electrum/gui/qt/forms/$i.py
         sed -i s/qvalidatedlineedit/.qvalidatedlineedit/ electrum_nmc/electrum/gui/qt/forms/$i.py
     done
-    python contrib/pull_locale
 }
 
 build() {
-    cd "$srcdir/electrum-nmc-nc${pkgver}/"
+    cd "$srcdir/Electrum-NMC-${pkgver}/"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/electrum-nmc-nc${pkgver}/"
+    cd "$srcdir/Electrum-NMC-${pkgver}/"
     python setup.py install --root="$pkgdir/" --optimize=1 --prefix=/usr
     mkdir -p "$pkgdir/usr/share/doc/$pkgname/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
     cp AUTHORS README.rst RELEASE-NOTES "$pkgdir/usr/share/doc/$pkgname/"
-    cp LICENCE LICENCE.DOGE "$pkgdir/usr/share/licenses/$pkgname/"
+    cp LICENCE "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
