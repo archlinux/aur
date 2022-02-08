@@ -1,0 +1,19 @@
+pkgbase = avr-libc-debian-git
+	pkgdesc = The C runtime library for the AVR family of microcontrollers (from debian)
+	pkgver = 2.0.0+Atmel3.6.2
+	pkgrel = 1
+	url = https://salsa.debian.org/debian/avr-libc
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = xz
+	depends = avr-gcc
+	provides = avr-libc
+	conflicts = avr-libc
+	options = !strip
+	options = libtool
+	options = staticlibs
+	source = git+https://salsa.debian.org/debian/avr-libc.git
+	md5sums = SKIP
+
+pkgname = avr-libc-debian-git
