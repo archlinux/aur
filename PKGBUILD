@@ -1,9 +1,9 @@
 pkgname=1password-beta
 
-_tarver=8.5.0-103.BETA
+_tarver=8.6.0-6.BETA
 _tar="1password-${_tarver}.x64.tar.gz"
 pkgver=${_tarver//-/_}
-pkgrel=103
+pkgrel=6
 conflicts=('1password' '1password-beta-bin')
 pkgdesc="Password manager and secure wallet"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('LicenseRef-1Password-Proprietary')
 options=(!strip)
 install="1password.install"
 source=(https://downloads.1password.com/linux/tar/beta/${CARCH}/${_tar}{,.sig})
-sha256sums=('ddc8aa317503f6e81add235e329e4b0523fe33ef4efcf3a730f2eeff9937e86f'
-            '7038768bc32581e6b24d53b59caf2b2dd435c168eea7fa7647e497c4aee493ca'
+sha256sums=('2893360fd8f0c73bbd0188156db3db29814ce2172ec8f9b1bbb1a1f3725c7e15'
+            '342d3d385eade61bfdebde2da4ff386cb3527b783b40280ba6dc5f2a7b8d996b'
 )
 validpgpkeys=('3FEF9748469ADBE15DA7CA80AC2D62742012EA22')
 
@@ -32,6 +32,14 @@ package() {
     done
     # Install desktop file
     install -Dm0644 resources/1password.desktop -t "${pkgdir}"/usr/share/applications/
+
+    # Fill in policy kit file with a list of (the first 10) human users of the system.
+    export POLICY_OWNERS
+    POLICY_OWNERS="$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1 | head -n 10 | sed 's/^/unix-user:/' | tr '\n' ' ')"
+    eval "cat <<EOF
+$(cat ./com.1password.1Password.policy.tpl)
+EOF" > ./com.1password.1Password.policy
+
     # Install system unlock PolKit policy file
     install -Dm0644 com.1password.1Password.policy -t "${pkgdir}"/usr/share/polkit-1/actions/
 
@@ -42,6 +50,11 @@ package() {
     cd "${srcdir}"
     install -dm0755 "${pkgdir}"/opt
     mv "1password-${_tarver}.x64" "${pkgdir}/opt/1Password"
+
+    # Cleanup un-needed files
+    rm "${pkgdir}"/opt/1Password/com.1password.1Password.policy "${pkgdir}"/opt/1Password/com.1password.1Password.policy.tpl "${pkgdir}"/opt/1Password/install_biometrics_policy.sh
+    rm -r "${pkgdir}"/opt/1Password/resources/icons/
+    rm "${pkgdir}"/opt/1Password/resources/1password.desktop "${pkgdir}"/opt/1Password/resources/custom_allowed_browsers
 
     # Symlink /usr/bin executable to opt
     install -dm0755 "${pkgdir}"/usr/bin
