@@ -4,11 +4,11 @@
 
 _pkgname=ncgopher
 pkgname=ncgopher-git
-pkgver=v0.2.0.r8.g7981d38
+pkgver=v0.3.0.r29.g039a67b
 pkgrel=1
-pkgdesc="A gemini and gopher console client"
+pkgdesc='A gemini and gopher console client'
 arch=('i686' 'x86_64')
-url="https://github.com/jansc/ncgopher"
+url='https://github.com/jansc/ncgopher'
 license=('BSD')
 depends=('ncurses' 'openssl' 'sqlite')
 makedepends=('git' 'rust' 'cargo')

@@ -1,6 +1,6 @@
 pkgbase = ncgopher-git
 	pkgdesc = A gemini and gopher console client
-	pkgver = v0.2.0.r8.g7981d38
+	pkgver = v0.3.0.r29.g039a67b
 	pkgrel = 1
 	url = https://github.com/jansc/ncgopher
 	arch = i686
