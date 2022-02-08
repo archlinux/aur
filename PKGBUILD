@@ -3,45 +3,37 @@
 
 pkgname=python-pytest-md-report
 _name="${pkgname#python-}"
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Pytest plugin to create a report in Markdown table format'
 arch=('any')
 url='https://github.com/thombashi/pytest-md-report'
 license=('MIT')
-depends=(
-  'python>=3.6'
-  'python-pytablewriter>=0.59.0'
-  'python-pytablewriter<1'
-  'python-pytest>=3.3.2'
-  'python-pytest<7'
-  'python-tcolorpy>=0.0.5'
-  'python-tcolorpy<1'
-  'python-typepy>=1.1.1'
-  'python-typepy<2')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest-runner' 'python-dateutil' 'python-pytz')
+depends=('python-pytablewriter' 'python-pytest' 'python-tcolorpy' 'python-typepy')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+checkdepends=('python-pytest' 'python-dateutil' 'python-pytz')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
-sha256sums=('2b8e85fce3b5f4c17128bbd9a25bbf3ada4be4281518e301a7ef0ecfdc71e965'
+sha256sums=('c129cebee45f9acb2fc26631ca5845f2d2deabbc134789f163224a347a0f9f5f'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
   cd "$_name-$pkgver"
-  python setup.py pytest
+  PYTHONPATH=./ pytest -x tests
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "$_name-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 'README.rst' -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
+  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 'README.rst' -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:

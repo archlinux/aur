@@ -1,27 +1,25 @@
 pkgbase = python-pytest-md-report
 	pkgdesc = Pytest plugin to create a report in Markdown table format
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/thombashi/pytest-md-report
 	arch = any
 	license = MIT
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-dateutil
 	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python>=3.6
-	depends = python-pytablewriter>=0.59.0
-	depends = python-pytablewriter<1
-	depends = python-pytest>=3.3.2
-	depends = python-pytest<7
-	depends = python-tcolorpy>=0.0.5
-	depends = python-tcolorpy<1
-	depends = python-typepy>=1.1.1
-	depends = python-typepy<2
-	source = python-pytest-md-report-0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.1.2.tar.gz
-	source = python-pytest-md-report-0.1.2.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.1.2.tar.gz.asc
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
+	depends = python-pytablewriter
+	depends = python-pytest
+	depends = python-tcolorpy
+	depends = python-typepy
+	source = python-pytest-md-report-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.2.0.tar.gz
+	source = python-pytest-md-report-0.2.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pytest-md-report/pytest-md-report-0.2.0.tar.gz.asc
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = 2b8e85fce3b5f4c17128bbd9a25bbf3ada4be4281518e301a7ef0ecfdc71e965
+	sha256sums = c129cebee45f9acb2fc26631ca5845f2d2deabbc134789f163224a347a0f9f5f
 	sha256sums = SKIP
 
 pkgname = python-pytest-md-report
