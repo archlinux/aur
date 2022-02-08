@@ -3,7 +3,7 @@
 _pkgname=nvidia-utils-beta
 pkgname=${_pkgname}-nvlax
 pkgver=510.47.03
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers utilities (beta version) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -18,6 +18,7 @@ optdepends=(
   "opencl-nvidia-beta=${pkgver}: OpenCL support"
 )
 conflicts=(
+  "${_pkgname}"
   'nvidia-libgl'
   'nvidia-fake-powerd'
 )
