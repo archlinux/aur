@@ -1,14 +1,12 @@
 pkgbase = vimdict-git
 	pkgdesc = Look up word definitions in vim, using dict.
 	pkgver = r4.a6e22c1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soystemd/vimdict
 	arch = x86_64
 	license = GPL
 	makedepends = git
 	depends = dictd
-	provides = vimdict
-	conflicts = vimdict
 	source = git+https://github.com/soystemd/vimdict.git
 	md5sums = SKIP
 

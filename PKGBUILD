@@ -1,18 +1,16 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
-_pkgname='vimdict'
-pkgname="${_pkgname}-git"
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+_pkgname=vimdict
+pkgname=$_pkgname-git
 pkgver=r4.a6e22c1
-pkgrel=1
+pkgrel=2
 pkgdesc='Look up word definitions in vim, using dict. '
-arch=('x86_64')
-url='https://github.com/soystemd/vimdict'
-license=('GPL')
-makedepends=('git')
-depends=('dictd')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+url=https://github.com/soystemd/vimdict
+arch=(x86_64)
+license=(GPL)
+makedepends=(git)
+depends=(dictd)
 source=("git+$url.git")
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"
