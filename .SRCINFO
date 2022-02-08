@@ -1,5 +1,5 @@
 pkgbase = python-qiskit-ignis
-	pkgdesc = Tools for quantum hardware verification, noise characterization, and error correction
+	pkgdesc = Tools for quantum hardware verification, noise characterization, and error correction (DEPRECATED)
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/Qiskit/qiskit-ignis
