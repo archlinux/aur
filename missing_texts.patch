@@ -1,0 +1,28 @@
+diff --git a/src/t4k_sdl.c b/src/t4k_sdl.c
+index bba1a53..99653f9 100644
+--- a/src/t4k_sdl.c
++++ b/src/t4k_sdl.c
+@@ -1441,17 +1441,18 @@ SDL_Surface* T4K_BlackOutline(const char* t, int size, SDL_Color* c)
+ 
+   dstrect.x = 1;
+   dstrect.y = 1;
+-  SDL_BlitSurface(white_letters, NULL, bg, &dstrect);
+-  SDL_FreeSurface(white_letters);
++  /*SDL_BlitSurface(white_letters, NULL, bg, &dstrect);
++  SDL_FreeSurface(white_letters);*/
+ 
+   /* --- Convert to the screen format for quicker blits --- */
+-  SDL_SetColorKey(bg, SDL_SRCCOLORKEY|SDL_RLEACCEL, color_key);
+-  out = SDL_DisplayFormatAlpha(bg);
++  /*SDL_SetColorKey(bg, SDL_SRCCOLORKEY|SDL_RLEACCEL, color_key);
++  out = SDL_DisplayFormatAlpha(bg);*/
+   SDL_FreeSurface(bg);
+ 
+   DEBUGMSG(debug_sdl, "\nLeaving T4K_BlackOutline(): \n");
+ 
+-  return out;
++  /*return out;*/
++  return white_letters;
+ }
+ 
+ 
