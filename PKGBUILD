@@ -4,7 +4,7 @@
 
 pkgname=t4kcommon
 pkgver=0.1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A library of code shared between tuxmath and tuxtype."
 arch=("i686" "x86_64")
 url="https://github.com/tux4kids/${pkgname}"
