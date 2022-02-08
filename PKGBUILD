@@ -2,7 +2,7 @@
 pkgname=gnome-control-center-system76
 _pkgname=${pkgname%-system76}
 pkgver=41.2
-pkgrel=2
+pkgrel=3
 pkgdesc="GNOME's main interface to configure various aspects of the desktop (with System76 patches)"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -28,15 +28,16 @@ optdepends=('system-config-printer: Printer settings'
 provides=("$_pkgname" 'firmware-manager-virtual')
 conflicts=("$_pkgname")
 _commit=babeb0ce357d55406b0ba0a4597e0513a0419de8  # tags/41.2^0
-_pop_commit=b0ac308c24521fbd8e82f74b479a99e68167d109 # 1:40.0-1ubuntu5pop0
+_pop_commit=ba839eda1c673457b30fb65ccf8f19323331e692 # master_jammy
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         'git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git'
         'git+https://gitlab.gnome.org/GNOME/libhandy.git'
-        "pop-gcc::git+https://github.com/pop-os/gnome-control-center.git#commit=$_pop_commit")
+        "pop-gcc::git+https://github.com/pop-os/gnome-control-center.git#commit=$_pop_commit?signed")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+validpgpkeys=('D3FB3AF9711C1CD12639C9F587F211AF2BE4C2FE') # Jeremy Soller (https://soller.dev) <jackpot51@gmail.com>
 
 pkgver() {
   cd $_pkgname
@@ -55,21 +56,23 @@ prepare() {
   # Install bare logos into pixmaps, not icons
   sed -i "/install_dir/s/'icons'/'pixmaps'/" panels/info-overview/meson.build
 
-  git submodule init subprojects/gvc
+  git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule set-url subprojects/libhandy "$srcdir/libhandy"
   git submodule update
 
-#  patch -Np1 -i ../pop-gcc/debian/patches/pop/'0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
+  # Pop!_OS patches
 #  patch -Np1 -i ../pop-gcc/debian/patches/pop/pop-mouse-accel.patch
 #  patch -Np1 -i ../pop-gcc/debian/patches/pop/pop-hidpi.patch
   patch -Np1 -i ../pop-gcc/debian/patches/pop/system76-firmware.patch
+  patch -Np1 -i ../pop-gcc/debian/patches/pop/'0001-mouse-Add-Disable-While-Typing-toggle-for-touchpad.patch'
+#  patch -Np1 -i ../pop-gcc/debian/patches/pop/0001-shell-Fix-bug-when-multiple-panels-use-custom-sideba.patch
+#  patch -Np1 -i ../pop-gcc/debian/patches/pop/'0001-keyboard-Pop-_OS-changes-with-support-for-multiple-b.patch'
 
   # meson: drop unused argument for i18n.merge_file()
   # https://gitlab.gnome.org/GNOME/gnome-control-center/-/commit/37b29c32cbecfd89c9c5e0169e0f2876f00ef5eb
   sed -i "/       desktop,/d" panels/firmware/meson.build
 }
-
 
 build() {
   arch-meson $_pkgname build -D documentation=true
