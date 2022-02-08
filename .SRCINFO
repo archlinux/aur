@@ -1,7 +1,7 @@
 pkgbase = prospect-mail-bin
 	pkgdesc = Prospect Mail is an Outlook Electron desktop application for the new design.
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/julian-alarcon/prospect-mail
 	install = prospect-mail-bin.install
 	arch = x86_64

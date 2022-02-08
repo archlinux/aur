@@ -2,7 +2,7 @@
 # Author: Julian Alarcon <alarconj@gmail.com>
 pkgname=prospect-mail-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Prospect Mail is an Outlook Electron desktop application for the new design."
 arch=('x86_64')
 url="https://github.com/julian-alarcon/prospect-mail"
