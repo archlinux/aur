@@ -3,12 +3,12 @@
 _name=cmsis-pack-manager
 pkgname=python-cmsis-pack-manager
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Rust and Python module for handling CMSIS Pack files"
 arch=(x86_64)
 url="https://github.com/pyocd/cmsis-pack-manager"
 license=(Apache)
-depends=(python-appdirs python-yaml)
+depends=(python-appdirs python-cffi python-yaml)
 makedepends=(cargo python-setuptools-scm python-milksnake)
 checkdepends=(python-hypothesis python-jinja python-mock python-pytest)
 # disable LTO until ring can be built with it: https://github.com/briansmith/ring/issues/1444
