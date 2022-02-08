@@ -12,23 +12,6 @@
 ##     or:  export use_numa=n use_tracers=n; makepkg -sc
 
 ##
-## Xanmod-ROG options:
-##
-## 'amd_pstate' - Setting this variable to 'n' will disable the amd-pstate driver
-##
-: "${amd_pstate:=y}"
-
-## '_O3' -  Enable compiler -O3 optimizations, set _O3 to anything to enable
-##
-_O3="${_O3:+y}"
-
-## 'makeflags_check' - If MAKEFLAGS in /etc/makepkg.conf is null or unset we'll throw a big
-##                     warning and pause long enough for the user to cancel their build
-##                     Set "makeflags_check" to n to skip this
-##
-: "${makeflags_check:=y}"
-
-##
 ## Xanmod options:
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
@@ -36,6 +19,11 @@ _O3="${_O3:+y}"
 ## Default is: 93 => x86-64-v3
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 : "${_microarchitecture:=93}"
+
+## Enable -O3 compiler optimizations, may or may not improve performance. Compilation time increases.
+## Set variable "_O3" to: n to disable (default)
+##                        y to enable
+: "${_O3:=n}"
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
@@ -48,6 +36,12 @@ _O3="${_O3:+y}"
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 : "${use_tracers:=y}"
+
+## Disable the amd_pstate cpufreq driver. Performance may be improved with the generic acpi_cpufreq driver.
+## Stock kernels will have this enabled, disabling this driver is less energy efficient.
+## Set variable "amd_pstate" to: y to enable (default)
+##                               n to disable
+: "${amd_pstate:=y}"
 
 ## Choose between GCC or CLANG config (default is GCC)
 case "${_compiler,,}" in
@@ -72,6 +66,12 @@ esac
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
+
+# 'makeflags_check' - If MAKEFLAGS in /etc/makepkg.conf is null or unset we'll throw a big
+#                     warning and pause long enough for the user to cancel their build.
+#                     Set "makeflags_check" to n to skip this
+#
+: "${makeflags_check:=y}"
 
 ### IMPORTANT: Do not edit below this line unless you know what you're doing
 
@@ -124,7 +124,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17: remove CONFIG_RCU_FAST_NO_HZ for improved latency
         "CONFIG_RCU_FAST_NO_HZ-removal-for-v5.17.patch"
 
-        # ????: Parallelize x86_64 CPU bringup (v4 patchset)
+        # 5.??: Parallelize x86_64 CPU bringup (v4 patchset)
         # see: https://lore.kernel.org/lkml/20220201205328.123066-1-dwmw2@infradead.org/
         "Parallel-boot-v4-on-5.16.5.patch"
 
@@ -140,14 +140,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17: ASUS ROG laptop custom fan curve support
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
 
-        # mediatek mt7921 bt/wifi patches
+        # mediatek mt7921 bt/wifi various hotfixes
         "mt76-mt7921-enable-VO-tx-aggregation.patch"
         "1-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-Foxconn.patch"
         "2-2-Bluetooth-btusb-Add-Mediatek-MT7921-support-for-IMC-Network.patch"
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip.patch"
         "Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chip.patch"
         "Bluetooth-btusb-Add-support-for-IMC-Networks-Mediatek-Chip-MT7921.patch"
-        # XXX: this patch could be buggy, recommended to only build mt76 as a module; see the mailing list
         "mt76-mt7921e-fix-possible-probe-failure-after-reboot.patch"
 
         # squashed s0ix enablement
