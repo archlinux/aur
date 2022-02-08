@@ -1,14 +1,13 @@
 pkgbase = python2-jcconv
 	pkgdesc = JapaneseCharacterCONVerter, interconvert hiragana, katakana, halfwidth kana
 	pkgver = 0.2.3
-	pkgrel = 1
-	url = http://github.com/taichino/jcconv
+	pkgrel = 2
+	url = https://github.com/taichino/jcconv
 	arch = any
 	license = MIT
+	makedepends = python2-setuptools
 	depends = python2
-	provides = jcconv
-	source = https://pypi.python.org/packages/source/j/jcconv/jcconv-0.2.3.tar.gz
-	md5sums = b51dc04034f9aef21c955ea6d19571d9
+	source = https://pypi.org/packages/source/j/jcconv/jcconv-0.2.3.tar.gz
+	sha512sums = 06be79f8f37fe378f2fcf4b770247c47e79e60972317c1fec7868b6dd5a0ff220d77a220523fdf4bf67c59b83ce2d2efb7810409f57dbc361a5b1ecd7e314829
 
 pkgname = python2-jcconv
-
