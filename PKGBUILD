@@ -15,7 +15,7 @@ makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 provides=('xash3d')
 conflicts=('xash3d-hlsdk' 'xash3d-git')
 source=("$pkgname::git+https://github.com/FWGS/xash3d-fwgs" xash3d)
-md5sums=('SKIP' 'efe97fe57678fac6626109037750046d')
+md5sums=('SKIP' '2d482084b4edc75846be920a3fa4b950')
 
 pkgver() {
     cd $srcdir/$pkgname

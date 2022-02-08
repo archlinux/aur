@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH+="/usr/local/lib/xash3d/"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/lib/xash3d/"
 export XASH3D_BASEDIR="$HOME/.xash3d"
 
 if [ ! -d "$XASH3D_BASEDIR" ]; then
