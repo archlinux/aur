@@ -36,7 +36,7 @@ package() {
     tar -xpvf "${srcdir}"/data.tar.xz
 
     mkinfo "Preparing needed directories ..."
-    mkdir -pv "${pkgdir}/usr/{lib,licenses/astap}"
+    mkdir -pv "${pkgdir}"/usr/{lib,licenses/"${_pkgname}"}
 
     mkinfo "Install binaries ..."
     cp -rv "${srcdir}"/opt/"${_pkgname}" "${pkgdir}"/usr/lib/
@@ -45,8 +45,8 @@ package() {
     cp -rv "${srcdir}"/usr/share "${pkgdir}"/usr
 
     mkinfo "Installing licenses ..."
-    install -t "${pkgdir}/usr/share/licenses/${_pkgname}" \
-        -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
+    install -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt \
+        -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
     mkinfo "Removeing unneeded resources ..."
     rm -rv "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
