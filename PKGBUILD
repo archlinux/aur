@@ -4,13 +4,14 @@
 _pkgname=phpstorm-url-handler
 pkgname=${_pkgname}
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open phpstorm:// URLs in PHPStorm."
 arch=('any')
 url='https://github.com/sanduhrs/phpstorm-url-handler'
 license=('GPL')
 depends=('desktop-file-utils')
 makedepends=("git")
+optdepends=('wmctrl: window focus and forground handler')
 install=${_pkgname}.install
 source=("${_pkgname}"::"git+https://github.com/sanduhrs/phpstorm-url-handler.git")
 sha512sums=('SKIP')
