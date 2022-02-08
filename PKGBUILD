@@ -1,13 +1,11 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
 pkgname=tmpcleaner
 pkgver=r9
-pkgrel=1
+pkgrel=2
 pkgdesc='simple script and cron.daily entry for cleaning old /tmp files.'
 arch=(any)
 license=(GPL)
 source=($pkgname.sh $pkgname.cron)
-provides=($pkgname)
-conflicts=($pkgname)
 
 sha256sums=('cf3147daee19e205a55255dceba3a83ed4d5cb64a35d88bf0097a45e02e9bd50'
             '18cac20919ae33e46e8d25c6e9a6305504a5cf2d41059750fe3cd0205a1d2fa1')
