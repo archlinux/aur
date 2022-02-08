@@ -2,7 +2,7 @@
 _projectname='luv'
 pkgname="ocaml-$_projectname"
 pkgver='0.5.11'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Cross-platform asynchronous I/O and system calls'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/aantron/$_projectname"
@@ -11,7 +11,7 @@ depends=('libuv' 'ocaml>=4.02.0' 'ocaml-ctypes>=0.14.0' 'ocaml-result')
 makedepends=('dune>=2.0.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('f1532990e9494d2ae9f11845a788888b0f3f176fefde5fe6eeeb694a7f82db20c679448f5ecd4bd143c608927c44638e8f0bf97fd3c5dcc38f839fbe1c22c036')
+sha512sums=('3034b70935bc1bf1f6c2b7a34b0997ebf91e08e232576c48cc6499c59f2ad611e9c69daf8670f1190d74d2e6956a79ae60aa192e5b9f9041ddd6cc8ff389a903')
 
 _sourcedirectory="$_projectname-$pkgver"
 
