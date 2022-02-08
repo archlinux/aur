@@ -1,8 +1,8 @@
-# Maintainer: timescam <rex.ky.ng at gmail dot com>
+# Maintainer: timescam <timmescam at duck dot com>
 
 pkgname=noto-fonts-emoji-apple
 _pkgname=noto-fonts-emoji
-pkgver=14.6
+pkgver=15.4_beta
 pkgrel=1
 pkgdesc="Google Noto emoji fonts replaced with apple branded emoji, modified form a magisk module"
 arch=(any)
@@ -21,3 +21,4 @@ package() {
   install -m644 "$srcdir"/$_pkgname/66-noto-color-emoji.conf -t "$pkgdir"/etc/fonts/conf.avail/
   ln -rs "$pkgdir"/etc/fonts/conf.avail/* "$pkgdir"/etc/fonts/conf.d
 }
+
