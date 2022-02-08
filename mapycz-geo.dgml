@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgml xmlns="http://edu.kde.org/marble/dgml/2.0">
+  <document>
+    <head>
+      <name>Mapy.cz - geo</name>
+      <target>earth</target>
+      <theme>mapycz-geo</theme>
+      <icon pixmap="mapycz-geo-preview.png"/>
+      <visible>true</visible>
+      <description><![CDATA[<p><i>Mapy.cz</i> -- czech and slovak detailed maps, based on OSM and proprietary data. Geologic rendering.</p>]]></description>
+      <zoom>
+        <minimum> 900 </minimum>
+        <maximum> 3700 </maximum>
+        <discrete> true </discrete>
+      </zoom>
+    </head>
+    <map bgcolor="#000000">
+      <canvas/>
+      <target/>
+      <layer name="mapycz-geo" backend="texture">
+        <!-- OpenStreetMap mapnik rendered tiles expire after seven days
+                     or 604800 seconds -->
+        <texture name="map" expire="604800">
+          <sourcedir format="PNG"> earth/mapycz-geo</sourcedir>
+          <tileSize width="256" height="256"/>
+          <storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="19" mode="Custom"/>
+          <projection name="Mercator"/>
+          <downloadUrl protocol="http" port="80" host="mapserver.mapy.cz" path="/zemepis-m/{zoomLevel}-{x}-{y}"/>
+          <downloadPolicy usage="Browse" maximumConnections="8"/>
+          <downloadPolicy usage="Bulk" maximumConnections="2"/>
+        </texture>
+        <texture name="hillshading" expire="31536000">
+          <sourcedir format="PNG"> earth/hillshading </sourcedir>
+          <projection name="Mercator"/>
+          <tileSize width="256" height="256"/>
+          <storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="19" mode="Custom"/>
+          <downloadUrl protocol="http" host="osmscout.karry.cz" path="/hillshade/tile.php" query="z={zoomLevel}&amp;x={x}&amp;y={y}"/>
+          <downloadPolicy usage="Browse" maximumConnections="6"/>
+          <downloadPolicy usage="Bulk" maximumConnections="2"/>
+          <!--<storageLayout levelZeroColumns="1" levelZeroRows="1" maximumTileLevel="17" mode="OpenStreetMap"/>-->
+          <!--<downloadUrl protocol="http" host="a.tiles.wmflabs.org" path="/hillshading/"/>
+          <downloadUrl protocol="http" host="b.tiles.wmflabs.org" path="/hillshading/"/>
+          <downloadUrl protocol="http" host="c.tiles.wmflabs.org" path="/hillshading/"/>-->
+          <!--<downloadPolicy usage="Browse" maximumConnections="20"/>
+          <downloadPolicy usage="Bulk" maximumConnections="4"/>-->
+          <blending name="AlphaBlending"/>
+        </texture>
+      </layer>
+      <layer name="naturalearth" backend="geodata">
+        <geodata name="glacier" property="ice">
+            <sourcefile> naturalearth/ne_50m_glaciated_areas.pn2 </sourcefile>
+            <brush color="#ffffff" alpha="0.9" />
+            <pen color="transparent" style="nopen"/>
+        </geodata>
+        <geodata name="antarciticiceshelves" property="ice">
+            <sourcefile> naturalearth/ne_50m_antarctic_ice_shelves_polys.pn2 </sourcefile>
+            <pen color="#5182b4" style="dashline"/>
+            <brush color="#ffffff" alpha="0.4" />
+        </geodata>
+      </layer>
+      <layer name="standardplaces" backend="geodata">
+        <geodata name="cityplacemarks">
+          <sourcefile>cityplacemarks.cache</sourcefile>
+        </geodata>
+        <geodata name="baseplacemarks">
+          <sourcefile>baseplacemarks.cache</sourcefile>
+        </geodata>
+        <geodata name="elevplacemarks">
+          <sourcefile>elevplacemarks.cache</sourcefile>
+        </geodata>
+        <geodata name="otherplacemarks">
+          <sourcefile>otherplacemarks.cache</sourcefile>
+        </geodata>
+        <geodata name="boundaryplacemarks">
+          <sourcefile>boundaryplacemarks.cache</sourcefile>
+        </geodata>
+      </layer>
+    </map>
+    <settings>
+        <group name="Places">
+            <property name="places">
+                <value>false</value>
+                <available>true</available>
+            </property>
+            <property name="cities">
+                <value>false</value>
+                <available>true</available>
+            </property>
+            <property name="land">
+                <value>false</value>
+                <available>true</available>
+            </property>
+            <property name="terrain">
+                <value>false</value>
+                <available>true</available>
+            </property>
+            <property name="otherplaces">
+                <value>false</value>
+                <available>true</available>
+            </property>
+        </group>
+        <property name="coordinate-grid">
+            <value>false</value>
+            <available>true</available>
+        </property>
+        <property name="overviewmap">
+            <value>false</value>
+            <available>true</available>
+        </property>
+        <property name="compass">
+            <value>true</value>
+            <available>true</available>
+        </property>
+        <property name="scalebar">
+            <value>true</value>
+            <available>true</available>
+        </property>
+        <group name="Surface">
+            <property name="ice">
+                <value>false</value>
+                <available>true</available>
+            </property>
+        </group>
+        <group name="Texture Layers">
+          <property name="hillshading">
+            <value>false</value>
+            <available>true</available>
+          </property>
+        </group>
+    </settings>
+    <legend>
+      <section name="coordinate-grid" checkable="true" connect="coordinate-grid" spacing="12">
+        <heading>Coordinate Grid</heading>
+      </section>
+     <section name="placemarks" spacing="12">
+        <heading>Placemarks</heading>
+        <item name="terrain" checkable="true" connect="terrain">
+            <text>Continents, Terrain</text>
+        </item>
+        <item name="cities" checkable="true" connect="cities">
+            <text>Populated Places, Countries</text>
+        </item>
+     </section>
+     <section name="ice-section" checkable="true" connect="ice" spacing="12">
+         <heading>Ice and Glaciers</heading>
+         <item name="glaciers-item">
+             <icon color="#ffffff" pixmap="bitmaps/glacier.png"/>
+             <text>Glaciers</text>
+         </item>
+         <item name="antarctic-iceshelves-item">
+             <icon color="#5182b4" pixmap="bitmaps/antarctic_shelves.png"/>
+             <text>Antarctic Iceshelves</text>
+         </item>
+     </section>
+     <section name="hillshading" checkable="true" connect="hillshading" spacing="12">
+       <heading>Hillshading</heading>
+     </section>
+    </legend>
+  </document>
+</dgml>
