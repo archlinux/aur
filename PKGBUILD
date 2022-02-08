@@ -4,7 +4,7 @@
 
 pkgname=python-ansi
 _pkgname=ansi
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='ANSI cursor movement and graphics'
 arch=('any')
@@ -22,10 +22,10 @@ source=(
 )
 # *sums taken from PyPI (blake2 is truncated, and thus invalid here)
 md5sums=(
-  '68489efd6843cd960ed38df8ae43e47a'
+  '89e3f5726409b791f790bc7d124f8608'
 )
 sha256sums=(
-  'b66ffd2b457d8ba255b78a22ec422f0ba129739e567bd6efee383d5a6b07e06f'
+  'a83f7e6e7a9a84f4cc2904e28e575516cf42cf862777649e57615d85ac76e11d'
 )
 
 package() {
