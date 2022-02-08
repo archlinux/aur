@@ -9,17 +9,17 @@
 # Contributor: Sylvester Johansson <syljo361(at)gmail(dot)org>
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
-pkgver='2.2.5'
+pkgver='2.2.6'
 pkgrel='1'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
-depends=('ocaml>=4.04.0' 'ocaml-lwt' 'ocaml-stdlib-shims')
+depends=('ocaml>=4.04.0' 'ocaml-lwt' 'ocaml-seq' 'ocaml-stdlib-shims')
 makedepends=('dune>=1.11.0' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('8f6009f9fad5832e76009ce870dd7236c804ff7e7f3e8a479371a4f72f0fc099ddaa1ec1e89eeaa11045a608597f7a3216adbd98deea9f28d274ff59cc5b121d')
+sha512sums=('4d808866dc4f9de6493a17910fafb2452398aef45cb29add54ed25e15a10ec7715bdd52d40190f618e77fe351d8bb67fbe12c1df6a6736c501792a57f6b3768a')
 
 _sourcedirectory="$_projectname-$pkgver"
 
