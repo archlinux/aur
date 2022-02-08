@@ -3,7 +3,7 @@
 # Contributor: ribbons <aur dot ribbons at codefive dot co dot uk>
 
 pkgname=python-vispy
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='A high-performance interactive 2D/3D data visualization library.'
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=('ipython: ipython-static'
             'python-wxpython: wx')
 _pkgname=vispy
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/vispy/vispy/archive/v$pkgver.tar.gz")
-sha256sums=('01a3c822bcce1c20b2b96d2dce0ed65c2bb8aeccb62a54787df0344d3ce591e4')
+sha256sums=('320241470c74c18fdd2c720d73d127e5dc0cc067893cd51277148ec1639ce453')
 
 build() {
     cd "$srcdir/${_pkgname}-${pkgver}"

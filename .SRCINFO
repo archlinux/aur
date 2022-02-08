@@ -1,6 +1,6 @@
 pkgbase = python-vispy
 	pkgdesc = A high-performance interactive 2D/3D data visualization library.
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = http://vispy.org
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-vispy
 	optdepends = pyside6: pyside6
 	optdepends = python-pysdl2: sdl2
 	optdepends = python-wxpython: wx
-	source = python-vispy-0.9.5.tar.gz::https://github.com/vispy/vispy/archive/v0.9.5.tar.gz
-	sha256sums = 01a3c822bcce1c20b2b96d2dce0ed65c2bb8aeccb62a54787df0344d3ce591e4
+	source = python-vispy-0.9.6.tar.gz::https://github.com/vispy/vispy/archive/v0.9.6.tar.gz
+	sha256sums = 320241470c74c18fdd2c720d73d127e5dc0cc067893cd51277148ec1639ce453
 
 pkgname = python-vispy
