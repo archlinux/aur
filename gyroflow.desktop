@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Gyroflow
+Comment=Video stabilization using gyroscope data
+Exec=/opt/gyroflow/Gyroflow-linux64.appimage %U
+StartupNotify=true
+Terminal=false
+Icon=chromium
+Type=Application
+Categories=Graphics;Photography;AudioVideo;
+MimeType=video/mp4;video/mpeg;

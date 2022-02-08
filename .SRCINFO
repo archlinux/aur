@@ -1,0 +1,13 @@
+pkgbase = gyroflow-appimage
+	pkgdesc = Video stabilization using gyroscope data
+	pkgver = 1.0.0rc1
+	pkgrel = 1
+	url = https://gyroflow.xyz
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/gyroflow/gyroflow/releases/download/v1.0.0-rc1/Gyroflow-linux64.AppImage
+	source = gyroflow.desktop
+	md5sums = d482266d4217dc61f7b921f5471cb8c9
+	md5sums = SKIP
+
+pkgname = gyroflow-appimage
