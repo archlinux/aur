@@ -1,7 +1,7 @@
 pkgbase = windscribe-runit
 	pkgdesc = runit service scripts for windscribe
 	pkgver = r3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aur.archlinux.org/packages/windscribe-runit
 	arch = any
 	license = GPL
