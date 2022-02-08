@@ -1,6 +1,6 @@
 pkgbase = manga-cli-git
-	pkgdesc = A Bash script for reading mangas via the terminal by scraping Mangakakalot.
-	pkgver = r6.3a08894
+	pkgdesc = Bash script for reading mangas via the terminal by scraping manganato
+	pkgver = r9.a1b7cff
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/7USTIN/manga-cli
@@ -13,7 +13,7 @@ pkgbase = manga-cli-git
 	depends = awk
 	depends = diffutils
 	depends = patch
-	depends = imagemagick
+	depends = img2pdf
 	depends = zathura
 	depends = zathura-pdf-mupdf
 	source = git+https://github.com/7USTIN/manga-cli.git
