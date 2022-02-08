@@ -15,7 +15,7 @@ backup=("opt/${pkgname}/packages/${pkgname}_test/pubspec.yaml" "opt/${pkgname}/p
 options=("!emptydirs")
 install="${pkgname}.install"
 source=(
-  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_${pkgver}-stable.tar.xz"
+  "${pkgname}-${pkgver}.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/${pkgname}_linux_${pkgver/.hotfix/+hotfix}-stable.tar.xz"
   "${pkgname}.sh"
   "${pkgname}.csh"
 )
