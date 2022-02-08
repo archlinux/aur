@@ -1,0 +1,16 @@
+post_install() {
+cat << "EOF"
+
+===========
+To get started with backups, do the following:
+
+1. Edit config files at /etc/restic/*.env.sh
+2. Enable the systemd timer with
+$ sudo systemctl enable --now restic-backup@default.timer
+
+
+See full tutorial at https://github.com/erikw/restic-systemd-automatic-backup
+===========
+
+EOF
+}
