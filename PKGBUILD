@@ -3,13 +3,12 @@
 # Contributer: Bruce Zhang
 
 pkgname=lx-music
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc='An Electron-based music player'
 arch=('any')
 url='https://github.com/lyswhut/lx-music-desktop'
 license=('Apache')
-changelog=CHANGELOG.md
 depends=('electron')
 makedepends=('asar' 'jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -17,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.desktop"
         'dev-app-update.yml'
         )
-sha256sums=('3f3b8adc8a331929676c19ffa83bd4faf04949f5d42168dff738c7ff253459b2'
+sha256sums=('260927f7922bd7f300be069a5f55590fcc2eefd59c9ba7728489310617990e29'
             '1e69184fd93f8d86d800306b99e5f630253d32de610342485ba5d4b0be018eb4'
             '9e96bfd1093d82c9cc05275953d288dff2966242ab59d8abcd9d74e90fce875e'
             'ffdd88036d10eb9780c0a26987894708720c2f486247bb3854f05fb5dd607423')
@@ -33,7 +32,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/$pkgname-desktop-$pkgver"
-	npm ci --cache npm-cache
+	npm install
 	npm run pack:dir
 }
 
