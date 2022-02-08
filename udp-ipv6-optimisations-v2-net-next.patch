@@ -1,118 +1,70 @@
-From 79f10d663fae93e54475f140e4fa7afaebbad6e8 Mon Sep 17 00:00:00 2001
+From 66b19a2485e78192b7adbdaff4acf50a381b4cd4 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Mon, 24 Jan 2022 14:19:12 -0800
-Subject: [PATCH] UDP/IPv6 Optimizations from 5.17 partial
+Date: Tue, 8 Feb 2022 00:38:03 -0800
+Subject: [PATCH] udp/ipv6 optimisations v2 net-next
 
-dropped "net: inline part of skb_csum_hwoffload_help"
+see: https://lore.kernel.org/all/cover.1643243772.git.asml.silence@gmail.com/
 
 Squashed commit of the following:
 
-commit 718d08c877b756d6d59e65f8e316d2a8fb52507c
+commit b0554f72242460dd1ed9375d672dd344bc53289d
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:47 2022 +0000
+Date:   Thu Jan 27 00:36:31 2022 +0000
 
-    net: inline sock_alloc_send_skb
+    ipv6: partially inline ipv6_fixup_options
 
-    sock_alloc_send_skb() is simple and just proxying to another function,
-    so we can inline it and cut associated overhead.
+    Inline a part of ipv6_fixup_options() to avoid extra overhead on
+    function call if opt is NULL.
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 1b13c0f6b2ef53015b6ff7cd7552ee1d4791d852
+commit 8ec11988fd67d9aeac2b61ca7a812eb9bd6ebcd8
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:45 2022 +0000
+Date:   Thu Jan 27 00:36:30 2022 +0000
 
-    skbuff: optimise alloc_skb_with_frags()
+    ipv6: optimise dst refcounting on cork init
 
-    Many users of alloc_skb_with_frags() pass zero datalen, e.g.
-    all callers sock_alloc_send_skb() including udp. Extract and inline a
-    part of it doing skb allocation. BTW, do a minor cleanup, e.g. don't
-    set errcode in advance as it can't be optimised.
+    udpv6_sendmsg() doesn't need dst after calling ip6_make_skb(), so
+    instead of taking an additional reference inside ip6_setup_cork()
+    and releasing the initial one afterwards, we can hand over a reference
+    into ip6_make_skb() saving two atomics. The only other user of
+    ip6_setup_cork() is ip6_append_data() and it requires an extra
+    dst_hold().
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 19039af5392ff357b141661157a30deda0e278a0
+commit ae1b2d225786bb7dbd26d43ab88ec85e9b5b8186
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:44 2022 +0000
+Date:   Thu Jan 27 00:36:29 2022 +0000
 
-    skbuff: drop null check from skb_zcopy
+    udp6: don't make extra copies of iflow
 
-    skb_zcopy() is used all around the networkong code with many of calls
-    sitting in generic not necessarily zerocopy paths. Many of callers
-    don't ever pass a NULL skb, however a NULL check inside skb_zcopy()
-    can't be optimised out. As with previous patch, move the check out of
-    the helper to a few places where it's needed.
+    udpv6_sendmsg() first initialises an on-stack 88B struct flowi6 and then
+    copies it into cork, which is expensive. Avoid the copy in corkless case
+    by initialising on-stack cork->fl directly.
 
-    It removes a bunch of extra ifs in non-zerocopy paths, which is nice.
-    E.g. before and after:
-
-       text    data     bss     dec     hex filename
-    8521472       0       0 8521472  820700 arch/x86/boot/bzImage
-    8521056       0       0 8521056  820560 arch/x86/boot/bzImage
-    delta=416B
+    The main part is a couple of lines under !corkreq check. The rest
+    converts fl6 variable to be a pointer.
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit e38708bca6df2266a81e9d9904b6aa069f82dbc6
+commit a75f153fa2621f89175985a0a95d02a63b5f714d
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:43 2022 +0000
+Date:   Thu Jan 27 00:36:28 2022 +0000
 
-    skbuff: drop zero check from skb_zcopy_set
-
-    Only two skb_zcopy_set() callers may pass a NULL skb, so kill the zero
-    check from inside the function, which can't be compiled out, and place
-    it where needed. It's also needed by the following patch.
-
-    Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
-
-commit fa2fc3aa86583035bdf04ba9618ce3d900af806e
-Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:42 2022 +0000
-
-    ipv6: hand dst refs to cork setup
-
-    During cork->dst setup, ip6_make_skb() gets an additional reference to
-    a passed in dst. However, udpv6_sendmsg() doesn't need dst after calling
-    ip6_make_skb(), and so we can save two additional atomics by passing
-    dst references to ip6_make_skb(). udpv6_sendmsg() is the only caller, so
-    it's enough to make sure it doesn't use dst afterwards.
-
-    Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
-
-commit d1af9ec869cb491c614d3d575a4c20968c68574a
-Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:40 2022 +0000
-
-    ipv6/udp: don't make extra copies of iflow
-
-    struct flowi takes 88 bytes and copying it is relatively expensive.
-    Currenly, udpv6_sendmsg() first initialises an on-stack struct flowi6
-    and then copies it into cork. Instead, directly initialise a flow in an
-    on-stack cork, i.e. cork->fl, so corkless udp can avoid making an extra
-    copy.
-
-    Note: moving inet_cork_full instance shouldn't grow stack too much,
-    it replaces 88 bytes for iflow with 160.
-
-    Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
-
-commit cd4acf047baf4f642db98084e64f8dd0c5806eb4
-Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:39 2022 +0000
-
-    ipv6: pass flow in ip6_make_skb together with cork
+    udp6: pass flow in ip6_make_skb together with cork
 
     Another preparation patch. inet_cork_full already contains a field for
     iflow, so we can avoid passing a separate struct iflow6 into
     __ip6_append_data() and ip6_make_skb(), and use the flow stored in
-    inet_cork_full. Make sure callers set cork->fl right, i.e. we init it in
-    ip6_append_data() and right before the only ip6_make_skb() call.
+    inet_cork_full. Make sure callers set cork->fl, i.e. we init it in
+    ip6_append_data() and before calling ip6_make_skb().
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit bb6d41b88d8b8c3f558128cd24c5ba5ce4c63ce7
+commit ec3c1cb88bebc3213b80dd1f481b052a3c2c57b2
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:38 2022 +0000
+Date:   Thu Jan 27 00:36:27 2022 +0000
 
     ipv6: pass full cork into __ip6_append_data()
 
@@ -123,51 +75,50 @@ Date:   Tue Jan 11 01:21:38 2022 +0000
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 85d3c4ad8998703ac45a0da499a94c94af4a0269
+commit 3e7579bfe38e06d2ae08b8c9401e76da53aa994d
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:37 2022 +0000
+Date:   Thu Jan 27 00:36:26 2022 +0000
 
-    ipv6: don't zero cork's flowi after use
+    ipv6: don't zero inet_cork_full::fl after use
 
-    It doesn't appear there is any reason to zero cork->fl after use, i.e.
-    in ip6_cork_release(), especially when cork struct is on-stack. Not
-    only the memset accounts to 0.3-0.5% of total cycles (perf profiling),
-    but also prevents other optimisations implemented in further patches.
-    Also, now we can remove a relatively expensive flow copy in
-    udp_v6_push_pending_frames().
+    It doesn't appear there is any reason for ip6_cork_release() to zero
+    cork->fl, it'll be fully filled on next initialisation. This 88 bytes
+    memset accounts to 0.3-0.5% of total CPU cycles.
+    It's also needed in following patches and allows to remove an extar flow
+    copy in udp_v6_push_pending_frames().
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 6b73b273db49caa17409184d8c7809a6b9dbf077
+commit df07193a1f4898b5d0d524f8efcd9ee348f72e1a
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:36 2022 +0000
+Date:   Thu Jan 27 00:36:25 2022 +0000
 
     ipv6: clean up cork setup/release
 
-    A simple cleanup of ip6_setup_cork() and ip6_cork_release() adding a
-    local variable for v6_cork->opt instead of retyping it many times. It
-    serves as a preparation patch to make further work cleaner.
+    Clean up ip6_setup_cork() and ip6_cork_release() adding a local variable
+    for v6_cork->opt. It's a preparation patch for further changes.
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 7c28067710bedcdb33bb0181f5ea119f63cf3b67
+commit da17d2b8e3b20d001a73a4ca5930bcb7b82021c1
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:35 2022 +0000
+Date:   Thu Jan 27 00:36:24 2022 +0000
 
     ipv6: remove daddr temp buffer in __ip6_make_skb
 
+    ipv6_push_nfrag_opts() doesn't change passed daddr, and so
     __ip6_make_skb() doesn't actually need to keep an on-stack copy of
-    fl6->daddr because even though ipv6_push_nfrag_opts() may return a
-    different daddr it doesn't change the one that was passed in.
-    Just set final_dst to fl6->daddr and get rid of the temp copy.
+    fl6->daddr. Set initially final_dst to fl6->daddr,
+    ipv6_push_nfrag_opts() will override it if needed, and get rid of extra
+    copies.
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 7d0c39a363fdb45a613afe4c2046859e64350de1
+commit 3803fcece05072881ff9e3371efd7b6ba27c7b1a
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:34 2022 +0000
+Date:   Thu Jan 27 00:36:23 2022 +0000
 
-    ipv6: shuffle up->pending AF_INET bits
+    udp6: shuffle up->pending AF_INET bits
 
     Corked AF_INET for ipv6 socket doesn't appear to be the hottest case,
     so move it out of the common path under up->pending check to remove
@@ -175,109 +126,48 @@ Date:   Tue Jan 11 01:21:34 2022 +0000
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 
-commit 9f7b165abbcd829766ac08f5f1c0e618074fe31c
+commit e19e4a9adfbfd016d1b582f5f71bb7092ca13000
 Author: Pavel Begunkov <asml.silence@gmail.com>
-Date:   Tue Jan 11 01:21:33 2022 +0000
+Date:   Thu Jan 27 00:36:22 2022 +0000
 
-    ipv6: optimise dst referencing
+    ipv6: optimise dst refcounting on skb init
 
-    __ip6_make_skb() initialises skb's dst by taking an additional reference
-    to cork->dst. However, cork->dst comes into the function holding a ref,
-    which will be put shortly at the end of the function in
-    ip6_cork_release().
-
-    Avoid this extra pair of get/put atomics by stealing cork->dst and
-    NULL'ing the field, ip6_cork_release() already handles zero values.
+    __ip6_make_skb() gets a cork->dst ref, hands it over to skb and shortly
+    after puts cork->dst. Save two atomics by stealing it without extra
+    referencing, ip6_cork_release() handles NULL cork->dst.
 
     Signed-off-by: Pavel Begunkov <asml.silence@gmail.com>
 ---
- include/linux/skbuff.h |  45 +++++++++++++++---
- include/net/ipv6.h     |   2 +-
- include/net/sock.h     |  10 +++-
- net/core/dev.c         |   2 +-
- net/core/skbuff.c      |  34 ++++++-------
- net/core/sock.c        |   7 ---
- net/ipv4/ip_output.c   |  10 ++--
- net/ipv4/tcp.c         |   5 +-
- net/ipv6/ip6_output.c  | 105 +++++++++++++++++++++++------------------
- net/ipv6/udp.c         | 103 +++++++++++++++++++---------------------
- 10 files changed, 180 insertions(+), 143 deletions(-)
+ include/net/ipv6.h    |  14 ++++--
+ net/ipv6/exthdrs.c    |   8 ++--
+ net/ipv6/ip6_output.c |  99 ++++++++++++++++++++++------------------
+ net/ipv6/udp.c        | 103 ++++++++++++++++++++----------------------
+ 4 files changed, 118 insertions(+), 106 deletions(-)
 
-diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index 60ab0c2fe567..4c8ce754a960 100644
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -1129,11 +1129,42 @@ static inline struct sk_buff *alloc_skb(unsigned int size,
- 	return __alloc_skb(size, priority, 0, NUMA_NO_NODE);
- }
- 
--struct sk_buff *alloc_skb_with_frags(unsigned long header_len,
--				     unsigned long data_len,
--				     int max_page_order,
--				     int *errcode,
--				     gfp_t gfp_mask);
-+struct sk_buff *alloc_skb_frags(struct sk_buff *skb,
-+				unsigned long data_len,
-+				int max_page_order,
-+				int *errcode,
-+				gfp_t gfp_mask);
-+
-+/**
-+ * alloc_skb_with_frags - allocate skb with page frags
-+ *
-+ * @header_len: size of linear part
-+ * @data_len: needed length in frags
-+ * @max_page_order: max page order desired.
-+ * @errcode: pointer to error code if any
-+ * @gfp_mask: allocation mask
-+ *
-+ * This can be used to allocate a paged skb, given a maximal order for frags.
-+ */
-+static inline struct sk_buff *alloc_skb_with_frags(unsigned long header_len,
-+						   unsigned long data_len,
-+						   int max_page_order,
-+						   int *errcode,
-+						   gfp_t gfp_mask)
-+{
-+	struct sk_buff *skb;
-+
-+	skb = alloc_skb(header_len, gfp_mask);
-+	if (unlikely(!skb)) {
-+		*errcode = -ENOBUFS;
-+		return NULL;
-+	}
-+
-+	if (!data_len)
-+		return skb;
-+	return alloc_skb_frags(skb, data_len, max_page_order, errcode, gfp_mask);
-+}
-+
- struct sk_buff *alloc_skb_for_msg(struct sk_buff *first);
- 
- /* Layout of fast clones : [skb1][skb2][fclone_ref] */
-@@ -1468,7 +1499,7 @@ static inline struct skb_shared_hwtstamps *skb_hwtstamps(struct sk_buff *skb)
- 
- static inline struct ubuf_info *skb_zcopy(struct sk_buff *skb)
- {
--	bool is_zcopy = skb && skb_shinfo(skb)->flags & SKBFL_ZEROCOPY_ENABLE;
-+	bool is_zcopy = skb_shinfo(skb)->flags & SKBFL_ZEROCOPY_ENABLE;
- 
- 	return is_zcopy ? skb_uarg(skb) : NULL;
- }
-@@ -1498,7 +1529,7 @@ static inline void skb_zcopy_init(struct sk_buff *skb, struct ubuf_info *uarg)
- static inline void skb_zcopy_set(struct sk_buff *skb, struct ubuf_info *uarg,
- 				 bool *have_ref)
- {
--	if (skb && uarg && !skb_zcopy(skb)) {
-+	if (uarg && !skb_zcopy(skb)) {
- 		if (unlikely(have_ref && *have_ref))
- 			*have_ref = false;
- 		else
 diff --git a/include/net/ipv6.h b/include/net/ipv6.h
-index c19bf51ded1d..f7f8ee43045f 100644
+index c19bf51ded1d..333ef7617436 100644
 --- a/include/net/ipv6.h
 +++ b/include/net/ipv6.h
-@@ -1018,7 +1018,7 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
+@@ -435,8 +435,16 @@ struct ipv6_txoptions *ipv6_renew_options(struct sock *sk,
+ 					  struct ipv6_txoptions *opt,
+ 					  int newtype,
+ 					  struct ipv6_opt_hdr *newopt);
+-struct ipv6_txoptions *ipv6_fixup_options(struct ipv6_txoptions *opt_space,
+-					  struct ipv6_txoptions *opt);
++struct ipv6_txoptions *__ipv6_fixup_options(struct ipv6_txoptions *opt_space,
++					    struct ipv6_txoptions *opt);
++
++static inline struct ipv6_txoptions *
++ipv6_fixup_options(struct ipv6_txoptions *opt_space, struct ipv6_txoptions *opt)
++{
++	if (!opt)
++		return NULL;
++	return __ipv6_fixup_options(opt_space, opt);
++}
+ 
+ bool ipv6_opt_accepted(const struct sock *sk, const struct sk_buff *skb,
+ 		       const struct inet6_skb_parm *opt);
+@@ -1018,7 +1026,7 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
  			     int getfrag(void *from, char *to, int offset,
  					 int len, int odd, struct sk_buff *skb),
  			     void *from, int length, int transhdrlen,
@@ -286,187 +176,42 @@ index c19bf51ded1d..f7f8ee43045f 100644
  			     struct rt6_info *rt, unsigned int flags,
  			     struct inet_cork_full *cork);
  
-diff --git a/include/net/sock.h b/include/net/sock.h
-index d47e9658da28..a8102d5930d6 100644
---- a/include/net/sock.h
-+++ b/include/net/sock.h
-@@ -1777,11 +1777,17 @@ int sock_getsockopt(struct socket *sock, int level, int op,
- 		    char __user *optval, int __user *optlen);
- int sock_gettstamp(struct socket *sock, void __user *userstamp,
- 		   bool timeval, bool time32);
--struct sk_buff *sock_alloc_send_skb(struct sock *sk, unsigned long size,
--				    int noblock, int *errcode);
- struct sk_buff *sock_alloc_send_pskb(struct sock *sk, unsigned long header_len,
- 				     unsigned long data_len, int noblock,
- 				     int *errcode, int max_page_order);
-+
-+static inline struct sk_buff *sock_alloc_send_skb(struct sock *sk,
-+						  unsigned long size,
-+						  int noblock, int *errcode)
-+{
-+	return sock_alloc_send_pskb(sk, size, 0, noblock, errcode, 0);
-+}
-+
- void *sock_kmalloc(struct sock *sk, int size, gfp_t priority);
- void sock_kfree_s(struct sock *sk, void *mem, int size);
- void sock_kzfree_s(struct sock *sk, void *mem, int size);
-diff --git a/net/core/dev.c b/net/core/dev.c
-index 2078d04c6482..e17989217b88 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -2322,7 +2322,7 @@ void dev_queue_xmit_nit(struct sk_buff *skb, struct net_device *dev)
- 	}
- out_unlock:
- 	if (pt_prev) {
--		if (!skb_orphan_frags_rx(skb2, GFP_ATOMIC))
-+		if (!skb2 || !skb_orphan_frags_rx(skb2, GFP_ATOMIC))
- 			pt_prev->func(skb2, skb->dev, pt_prev, skb->dev);
- 		else
- 			kfree_skb(skb2);
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 909db87d7383..2918c24499a6 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -890,7 +890,8 @@ EXPORT_SYMBOL(skb_dump);
-  */
- void skb_tx_error(struct sk_buff *skb)
- {
--	skb_zcopy_clear(skb, true);
-+	if (skb)
-+		skb_zcopy_clear(skb, true);
+diff --git a/net/ipv6/exthdrs.c b/net/ipv6/exthdrs.c
+index 38ece3b7b839..de3aa3db2fcb 100644
+--- a/net/ipv6/exthdrs.c
++++ b/net/ipv6/exthdrs.c
+@@ -1345,14 +1345,14 @@ ipv6_renew_options(struct sock *sk, struct ipv6_txoptions *opt,
+ 	return opt2;
  }
- EXPORT_SYMBOL(skb_tx_error);
  
-@@ -6045,40 +6046,32 @@ int skb_mpls_dec_ttl(struct sk_buff *skb)
- EXPORT_SYMBOL_GPL(skb_mpls_dec_ttl);
+-struct ipv6_txoptions *ipv6_fixup_options(struct ipv6_txoptions *opt_space,
+-					  struct ipv6_txoptions *opt)
++struct ipv6_txoptions *__ipv6_fixup_options(struct ipv6_txoptions *opt_space,
++					    struct ipv6_txoptions *opt)
+ {
+ 	/*
+ 	 * ignore the dest before srcrt unless srcrt is being included.
+ 	 * --yoshfuji
+ 	 */
+-	if (opt && opt->dst0opt && !opt->srcrt) {
++	if (opt->dst0opt && !opt->srcrt) {
+ 		if (opt_space != opt) {
+ 			memcpy(opt_space, opt, sizeof(*opt_space));
+ 			opt = opt_space;
+@@ -1363,7 +1363,7 @@ struct ipv6_txoptions *ipv6_fixup_options(struct ipv6_txoptions *opt_space,
+ 
+ 	return opt;
+ }
+-EXPORT_SYMBOL_GPL(ipv6_fixup_options);
++EXPORT_SYMBOL_GPL(__ipv6_fixup_options);
  
  /**
-- * alloc_skb_with_frags - allocate skb with page frags
-+ * alloc_skb_frags - allocate page frags for skb
-  *
-- * @header_len: size of linear part
-+ * @skb: buffer
-  * @data_len: needed length in frags
-  * @max_page_order: max page order desired.
-  * @errcode: pointer to error code if any
-  * @gfp_mask: allocation mask
-  *
-- * This can be used to allocate a paged skb, given a maximal order for frags.
-+ * This can be used to allocate pages for skb, given a maximal order for frags.
-  */
--struct sk_buff *alloc_skb_with_frags(unsigned long header_len,
--				     unsigned long data_len,
--				     int max_page_order,
--				     int *errcode,
--				     gfp_t gfp_mask)
-+struct sk_buff *alloc_skb_frags(struct sk_buff *skb,
-+				unsigned long data_len,
-+				int max_page_order,
-+				int *errcode,
-+				gfp_t gfp_mask)
- {
- 	int npages = (data_len + (PAGE_SIZE - 1)) >> PAGE_SHIFT;
- 	unsigned long chunk;
--	struct sk_buff *skb;
- 	struct page *page;
- 	int i;
- 
--	*errcode = -EMSGSIZE;
- 	/* Note this test could be relaxed, if we succeed to allocate
- 	 * high order pages...
- 	 */
--	if (npages > MAX_SKB_FRAGS)
--		return NULL;
--
--	*errcode = -ENOBUFS;
--	skb = alloc_skb(header_len, gfp_mask);
--	if (!skb)
--		return NULL;
--
-+	if (unlikely(npages > MAX_SKB_FRAGS))
-+		goto failure;
- 	skb->truesize += npages << PAGE_SHIFT;
- 
- 	for (i = 0; npages > 0; i++) {
-@@ -6112,9 +6105,10 @@ struct sk_buff *alloc_skb_with_frags(unsigned long header_len,
- 
- failure:
- 	kfree_skb(skb);
-+	*errcode = -EMSGSIZE;
- 	return NULL;
- }
--EXPORT_SYMBOL(alloc_skb_with_frags);
-+EXPORT_SYMBOL(alloc_skb_frags);
- 
- /* carve out the first off bytes from skb when off < headlen */
- static int pskb_carve_inside_header(struct sk_buff *skb, const u32 off,
-diff --git a/net/core/sock.c b/net/core/sock.c
-index 7de234693a3b..bee1669e46f3 100644
---- a/net/core/sock.c
-+++ b/net/core/sock.c
-@@ -2588,13 +2588,6 @@ struct sk_buff *sock_alloc_send_pskb(struct sock *sk, unsigned long header_len,
- }
- EXPORT_SYMBOL(sock_alloc_send_pskb);
- 
--struct sk_buff *sock_alloc_send_skb(struct sock *sk, unsigned long size,
--				    int noblock, int *errcode)
--{
--	return sock_alloc_send_pskb(sk, size, 0, noblock, errcode, 0);
--}
--EXPORT_SYMBOL(sock_alloc_send_skb);
--
- int __sock_cmsg_send(struct sock *sk, struct msghdr *msg, struct cmsghdr *cmsg,
- 		     struct sockcm_cookie *sockc)
- {
-diff --git a/net/ipv4/ip_output.c b/net/ipv4/ip_output.c
-index 9bca57ef8b83..e54899c4cb84 100644
---- a/net/ipv4/ip_output.c
-+++ b/net/ipv4/ip_output.c
-@@ -1002,16 +1002,20 @@ static int __ip_append_data(struct sock *sk,
- 		csummode = CHECKSUM_PARTIAL;
- 
- 	if (flags & MSG_ZEROCOPY && length && sock_flag(sk, SOCK_ZEROCOPY)) {
--		uarg = msg_zerocopy_realloc(sk, length, skb_zcopy(skb));
-+		if (skb)
-+			uarg = skb_zcopy(skb);
-+		extra_uref = !uarg; /* only ref on new uarg */
-+
-+		uarg = msg_zerocopy_realloc(sk, length, uarg);
- 		if (!uarg)
- 			return -ENOBUFS;
--		extra_uref = !skb_zcopy(skb);	/* only ref on new uarg */
- 		if (rt->dst.dev->features & NETIF_F_SG &&
- 		    csummode == CHECKSUM_PARTIAL) {
- 			paged = true;
- 		} else {
- 			uarg->zerocopy = 0;
--			skb_zcopy_set(skb, uarg, &extra_uref);
-+			if (skb)
-+				skb_zcopy_set(skb, uarg, &extra_uref);
- 		}
- 	}
- 
-diff --git a/net/ipv4/tcp.c b/net/ipv4/tcp.c
-index 2bb28bfd83bf..b1c2cf7cf9e7 100644
---- a/net/ipv4/tcp.c
-+++ b/net/ipv4/tcp.c
-@@ -1188,7 +1188,10 @@ int tcp_sendmsg_locked(struct sock *sk, struct msghdr *msg, size_t size)
- 
- 	if (flags & MSG_ZEROCOPY && size && sock_flag(sk, SOCK_ZEROCOPY)) {
- 		skb = tcp_write_queue_tail(sk);
--		uarg = msg_zerocopy_realloc(sk, size, skb_zcopy(skb));
-+		if (skb)
-+			uarg = skb_zcopy(skb);
-+
-+		uarg = msg_zerocopy_realloc(sk, size, uarg);
- 		if (!uarg) {
- 			err = -ENOBUFS;
- 			goto out_err;
+  * fl6_update_dst - update flowi destination address with info given
 diff --git a/net/ipv6/ip6_output.c b/net/ipv6/ip6_output.c
-index ff4e83e2a506..57436b32f29d 100644
+index ff4e83e2a506..3f1870f60c07 100644
 --- a/net/ipv6/ip6_output.c
 +++ b/net/ipv6/ip6_output.c
-@@ -1350,11 +1350,13 @@ static void ip6_append_data_mtu(unsigned int *mtu,
+@@ -1350,11 +1350,16 @@ static void ip6_append_data_mtu(unsigned int *mtu,
  
  static int ip6_setup_cork(struct sock *sk, struct inet_cork_full *cork,
  			  struct inet6_cork *v6_cork, struct ipcm6_cookie *ipc6,
@@ -478,11 +223,14 @@ index ff4e83e2a506..57436b32f29d 100644
 -	struct ipv6_txoptions *opt = ipc6->opt;
 +	struct ipv6_txoptions *nopt, *opt = ipc6->opt;
 +
++	/* callers pass dst together with a reference, set it first so
++	 * ip6_cork_release() can put it down even in case of an error.
++	 */
 +	cork->base.dst = &rt->dst;
  
  	/*
  	 * setup for corking
-@@ -1363,39 +1365,32 @@ static int ip6_setup_cork(struct sock *sk, struct inet_cork_full *cork,
+@@ -1363,39 +1368,32 @@ static int ip6_setup_cork(struct sock *sk, struct inet_cork_full *cork,
  		if (WARN_ON(v6_cork->opt))
  			return -EINVAL;
  
@@ -535,7 +283,7 @@ index ff4e83e2a506..57436b32f29d 100644
  	v6_cork->hop_limit = ipc6->hlimit;
  	v6_cork->tclass = ipc6->tclass;
  	if (rt->dst.flags & DST_XFRM_TUNNEL)
-@@ -1426,9 +1421,8 @@ static int ip6_setup_cork(struct sock *sk, struct inet_cork_full *cork,
+@@ -1426,9 +1424,8 @@ static int ip6_setup_cork(struct sock *sk, struct inet_cork_full *cork,
  }
  
  static int __ip6_append_data(struct sock *sk,
@@ -546,7 +294,7 @@ index ff4e83e2a506..57436b32f29d 100644
  			     struct inet6_cork *v6_cork,
  			     struct page_frag *pfrag,
  			     int getfrag(void *from, char *to, int offset,
-@@ -1437,6 +1431,8 @@ static int __ip6_append_data(struct sock *sk,
+@@ -1437,6 +1434,8 @@ static int __ip6_append_data(struct sock *sk,
  			     unsigned int flags, struct ipcm6_cookie *ipc6)
  {
  	struct sk_buff *skb, *skb_prev = NULL;
@@ -555,31 +303,7 @@ index ff4e83e2a506..57436b32f29d 100644
  	unsigned int maxfraglen, fragheaderlen, mtu, orig_mtu, pmtu;
  	struct ubuf_info *uarg = NULL;
  	int exthdrlen = 0;
-@@ -1517,16 +1513,20 @@ static int __ip6_append_data(struct sock *sk,
- 		csummode = CHECKSUM_PARTIAL;
- 
- 	if (flags & MSG_ZEROCOPY && length && sock_flag(sk, SOCK_ZEROCOPY)) {
--		uarg = msg_zerocopy_realloc(sk, length, skb_zcopy(skb));
-+		if (skb)
-+			uarg = skb_zcopy(skb);
-+		extra_uref = !uarg; /* only ref on new uarg */
-+
-+		uarg = msg_zerocopy_realloc(sk, length, uarg);
- 		if (!uarg)
- 			return -ENOBUFS;
--		extra_uref = !skb_zcopy(skb);	/* only ref on new uarg */
- 		if (rt->dst.dev->features & NETIF_F_SG &&
- 		    csummode == CHECKSUM_PARTIAL) {
- 			paged = true;
- 		} else {
- 			uarg->zerocopy = 0;
--			skb_zcopy_set(skb, uarg, &extra_uref);
-+			if (skb)
-+				skb_zcopy_set(skb, uarg, &extra_uref);
- 		}
- 	}
- 
-@@ -1788,34 +1788,46 @@ int ip6_append_data(struct sock *sk,
+@@ -1788,34 +1787,46 @@ int ip6_append_data(struct sock *sk,
  		/*
  		 * setup for corking
  		 */
@@ -634,7 +358,7 @@ index ff4e83e2a506..57436b32f29d 100644
  		v6_cork->opt = NULL;
  	}
  
-@@ -1824,7 +1836,6 @@ static void ip6_cork_release(struct inet_cork_full *cork,
+@@ -1824,7 +1835,6 @@ static void ip6_cork_release(struct inet_cork_full *cork,
  		cork->base.dst = NULL;
  		cork->base.flags &= ~IPCORK_ALLFRAG;
  	}
@@ -642,7 +366,7 @@ index ff4e83e2a506..57436b32f29d 100644
  }
  
  struct sk_buff *__ip6_make_skb(struct sock *sk,
-@@ -1834,7 +1845,7 @@ struct sk_buff *__ip6_make_skb(struct sock *sk,
+@@ -1834,7 +1844,7 @@ struct sk_buff *__ip6_make_skb(struct sock *sk,
  {
  	struct sk_buff *skb, *tmp_skb;
  	struct sk_buff **tail_skb;
@@ -651,7 +375,7 @@ index ff4e83e2a506..57436b32f29d 100644
  	struct ipv6_pinfo *np = inet6_sk(sk);
  	struct net *net = sock_net(sk);
  	struct ipv6hdr *hdr;
-@@ -1864,9 +1875,9 @@ struct sk_buff *__ip6_make_skb(struct sock *sk,
+@@ -1864,9 +1874,9 @@ struct sk_buff *__ip6_make_skb(struct sock *sk,
  
  	/* Allow local fragmentation. */
  	skb->ignore_df = ip6_sk_ignore_df(sk);
@@ -663,7 +387,7 @@ index ff4e83e2a506..57436b32f29d 100644
  	if (opt && opt->opt_flen)
  		ipv6_push_frag_opts(skb, opt, &proto);
  	if (opt && opt->opt_nflen)
-@@ -1886,10 +1897,9 @@ struct sk_buff *__ip6_make_skb(struct sock *sk,
+@@ -1886,10 +1896,9 @@ struct sk_buff *__ip6_make_skb(struct sock *sk,
  
  	skb->priority = sk->sk_priority;
  	skb->mark = cork->base.mark;
@@ -675,7 +399,7 @@ index ff4e83e2a506..57436b32f29d 100644
  	IP6_UPD_PO_STATS(net, rt->rt6i_idev, IPSTATS_MIB_OUT, skb->len);
  	if (proto == IPPROTO_ICMPV6) {
  		struct inet6_dev *idev = ip6_dst_idev(skb_dst(skb));
-@@ -1961,17 +1971,18 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
+@@ -1961,26 +1970,26 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
  			     int getfrag(void *from, char *to, int offset,
  					 int len, int odd, struct sk_buff *skb),
  			     void *from, int length, int transhdrlen,
@@ -698,16 +422,17 @@ index ff4e83e2a506..57436b32f29d 100644
  
  	__skb_queue_head_init(&queue);
  
-@@ -1980,7 +1991,7 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
+ 	cork->base.flags = 0;
+ 	cork->base.addr = 0;
  	cork->base.opt = NULL;
- 	cork->base.dst = NULL;
+-	cork->base.dst = NULL;
  	v6_cork.opt = NULL;
 -	err = ip6_setup_cork(sk, cork, &v6_cork, ipc6, rt, fl6);
 +	err = ip6_setup_cork(sk, cork, &v6_cork, ipc6, rt);
  	if (err) {
  		ip6_cork_release(cork, &v6_cork);
  		return ERR_PTR(err);
-@@ -1988,7 +1999,7 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
+@@ -1988,7 +1997,7 @@ struct sk_buff *ip6_make_skb(struct sock *sk,
  	if (ipc6->dontfrag < 0)
  		ipc6->dontfrag = inet6_sk(sk)->dontfrag;
  
@@ -971,5 +696,5 @@ index a0871c212741..f427f8d36aef 100644
  		goto back_from_confirm;
  	err = 0;
 -- 
-2.34.1
+2.35.1
 
