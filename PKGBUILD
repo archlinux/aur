@@ -3,18 +3,18 @@
 # Contributor: ormris ormris@ormris.com
 
 pkgname="wyrd-git"
-pkgver=20210805.45f1557
+pkgver=20220208.df61f07
 pkgrel=1
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64')
-url="https://github.com/Perdu/wyrd"
+url="https://gitlab.com/wyrd-calendar/"
 license=('GPL2')
 provides=('wyrd')
 conflicts=('wyrd')
-depends=('remind' 'ncurses' 'less')
+depends=('remind' 'ncurses' 'less' 'opam')
 makedepends=('git' 'ocaml' 'camlp4' 'python'  'autoconf')
 # doc: 'hevea' 'texlive-core' 'texlive-latexextra'
-source=("git+https://github.com/Perdu/wyrd.git")
+source=("git+https://gitlab.com/wyrd-calendar/wyrd.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -24,13 +24,14 @@ pkgver() {
 
 build() {
         cd "$srcdir/${pkgname%-git}"
-        autoconf
-        # compile documentation (removed)
-        # cd "$srcdir/${pkgname%-git}/doc/"
-	# make all
-        cd "$srcdir/${pkgname%-git}"
-	./configure --exec-prefix=/usr --prefix=/usr --sysconfdir=/etc --enable-utf8
-        make curses-clean
+        opam init -n
+        opam install -y curses
+        eval "$(opam env)"
+        # Avoid compiling doc
+        sed -i 's/$(MAKE) -C doc.*/echo "Not compiling doc"/' Makefile.in
+        sed -i 's/.*doc\/wyrd.*//' Makefile.in
+        ./prep-devtree.sh
+        ./configure --exec-prefix=/usr --prefix=/usr --sysconfdir=/etc
         make clean
 	make
 }
