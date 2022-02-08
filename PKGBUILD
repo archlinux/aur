@@ -1,18 +1,16 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
-_pkgname='pulseaudio-subscribe'
-pkgname="${_pkgname}-git"
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
+_pkgname=pulseaudio-subscribe
+pkgname=$_pkgname-git
 pkgver=r9.983b005
-pkgrel=1
+pkgrel=2
 pkgdesc='program to subscribe to pulseaudio events. useful for updating statusbars.'
-arch=('x86_64')
-url='https://github.com/soystemd/pulseaudio-subscribe'
-license=('GPL')
-depends=('libpulse')
-makedepends=('git' 'pkgconf')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("git+${url}.git")
-md5sums=('SKIP')
+url=https://github.com/soystemd/pulseaudio-subscribe
+arch=(x86_64)
+license=(GPL)
+depends=(libpulse)
+makedepends=(git pkgconf)
+source=("git+$url.git")
+md5sums=(SKIP)
 
 pkgver() {
     cd "$_pkgname"
@@ -25,7 +23,7 @@ build() {
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "$_pkgname"
     make PREFIX=/usr DESTDIR="$pkgdir" install
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
