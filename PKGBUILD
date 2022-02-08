@@ -1,21 +1,25 @@
 # Maintainer: eggy <eggyrules at gmail dot com>
 
 pkgname=mandown-git
-pkgver=r58.fd52093
+pkgver=r78.259b9e6
 pkgrel=1
 pkgdesc="Comic downloader and EPUB/CBZ converter command line application and Python library"
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
 license=("AGPL3")
-depends=("python-requests"
-	 "python-typer"
-	 "python-feedparser"
-	 "python-beautifulsoup4"
-	 "python-natsort"
-	 "python-lxml"
+depends=(
+	"python-requests"
+	"python-typer"
+	"python-feedparser"
+	"python-beautifulsoup4"
+	"python-natsort"
+	"python-lxml"
 )
 makedepends=("git" "python-setuptools" "python-dephell")
+optdepends=(
+	"python-pillow: Image processing"
+)
 provides=()
 conflicts=("mandown")
 source=("git+$url.git")
