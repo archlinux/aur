@@ -1,7 +1,7 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
 _pkgname=dictd
 pkgname=$_pkgname-runit
-pkgver=r3
+pkgver=r4
 pkgrel=1
 pkgdesc="runit service scripts for $_pkgname"
 url="https://aur.archlinux.org/packages/$pkgname"
@@ -10,7 +10,7 @@ license=(GPL)
 depends=(runit $_pkgname)
 source=($_pkgname.run $_pkgname.finish)
 sha256sums=('385133bb1030b109d85cd474be1e6a751e84ee2870813c19981f577779edaa2e'
-            '22a2152e470acbeda7059141314d270d8e727719b8cf7c43e7265480add2187d')
+            '5f3713fb8c6a611b06301353e3e3da38b4f6666da3f814a40171a89bd8ec34cc')
 
 package() {
     cd "$srcdir"
