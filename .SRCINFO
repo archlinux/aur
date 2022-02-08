@@ -1,8 +1,8 @@
 pkgbase = ada_language_server
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = 2021
+	pkgver = 22.0.0
 	pkgrel = 1
-	epoch = 1
+	epoch = 2
 	url = https://github.com/AdaCore/ada_language_server/
 	arch = x86_64
 	license = GPL3
@@ -13,9 +13,9 @@ pkgbase = ada_language_server
 	depends = libvss
 	depends = ada_spawn
 	depends = ada-libfswatch
-	source = ada_language_server-2021-20210701-19A88-src.tar.gz::https://community.download.adacore.com/v1/176c07d5fafde00cbb0b2eaebe13039da27ca135?filename=ada_language_server-2021-20210701-19A88-src.tar.gz
+	source = https://github.com/AdaCore/ada_language_server/archive/refs/tags/v22.0.0.zip
 	source = als.patch
-	sha1sums = 176c07d5fafde00cbb0b2eaebe13039da27ca135
+	sha1sums = 9ad4dd52e6553d5ace5d07eb476a299fa049be1e
 	sha1sums = a3905d1ee3a4a84fdbbb1a8f5fd1c6deb2b767ba
 
 pkgname = ada_language_server
