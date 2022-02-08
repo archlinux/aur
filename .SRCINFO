@@ -1,13 +1,14 @@
 pkgbase = git-credential-manager-core-bin
 	pkgdesc = Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services.
 	pkgver = 2.0.632
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/microsoft/Git-Credential-Manager-Core
 	install = git-credential-manager-core.install
 	arch = x86_64
 	license = MIT
 	depends = zlib
 	depends = krb5
+	depends = fontconfig
 	optdepends = kwallet: For storing credentials
 	optdepends = gnome-keyring: For storing credentials
 	optdepends = gnupg: For storing credentials in a gpg file
