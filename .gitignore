@@ -1,0 +1,5 @@
+# makepkg files
+*.tar.zst
+pkg/
+src/
+manga-cli/
