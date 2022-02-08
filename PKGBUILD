@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <aur [aT] rot13 dot io>
 pkgname=mainsail-git
 _pkgname="${pkgname%-git}"
-pkgver=r1450.b6966f05
+pkgver=r1559.c589a495
 pkgrel=1
 pkgdesc="Klipper web frontend"
 arch=(any)
@@ -28,7 +28,7 @@ build() {
   cd "$srcdir/$_pkgname"
 
   npm install --no-update-notifier --no-audit --cache "${srcdir}/npm-cache"
-  ./node_modules/.bin/vue-cli-service build
+  ./node_modules/.bin/vite build
 }
 
 package() {
