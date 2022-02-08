@@ -1,0 +1,15 @@
+pkgbase = opencu
+	pkgdesc = A minimalistic serial terminal emulator
+	pkgver = 2
+	pkgrel = 0
+	url = https://github.com/tobhe/opencu
+	arch = any
+	license = ISC
+	makedepends = cmake
+	depends = glibc
+	depends = libevent
+	provides = cu
+	source = opencu-2.tar.gz::https://github.com/tobhe/opencu/archive/v2.tar.gz
+	sha256sums = 84e74f95dd8b5e281a0220d12310988d74fd2a7e45b9a7f6e6a2432cc73e9c13
+
+pkgname = opencu
