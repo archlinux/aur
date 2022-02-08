@@ -1,6 +1,6 @@
 pkgbase = rng-rename
 	pkgdesc = A CLI tool to rename files to randomly generated strings.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/cyqsimon/rng-rename
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rng-rename
 	depends = gcc-libs
 	conflicts = rng-rename-git
 	conflicts = rng-rename-bin
-	source = rng-rename-0.3.0.tar.gz::https://github.com/cyqsimon/rng-rename/archive/v0.3.0.tar.gz
-	sha256sums = c815760d09a43df7a6f94a9274dd66dc8de6e8520bb9b7776469fbb2ddf43585
+	source = rng-rename-0.3.1.tar.gz::https://github.com/cyqsimon/rng-rename/archive/v0.3.1.tar.gz
+	sha256sums = 5a6c6afde0e4c3f85383ece7238c52397eb86ccebc9e8db6b542f50bb0a0bfad
 
 pkgname = rng-rename
