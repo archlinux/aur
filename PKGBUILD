@@ -3,7 +3,7 @@
 _pkgname=nvidia-vulkan-utils
 pkgname=${_pkgname}-nvlax
 pkgver=470.62.22
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -18,6 +18,7 @@ optdepends=(
   "opencl-nvidia-vulkan=${pkgver}: OpenCL support"
 )
 conflicts=(
+  "${_pkgname}"
   'nvidia-libgl'
 )
 provides=(

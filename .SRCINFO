@@ -1,7 +1,7 @@
 pkgbase = nvidia-vulkan-utils-nvlax
 	pkgdesc = NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax
 	pkgver = 470.62.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illnyang/nvlax/
 	install = nvidia-vulkan-utils.install
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = nvidia-vulkan-utils-nvlax
 	provides = opengl-driver
 	provides = nvidia-libgl
 	provides = nvidia-settings
+	conflicts = nvidia-vulkan-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
 	options = !strip
