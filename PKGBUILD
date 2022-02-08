@@ -1,8 +1,8 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=jdftx
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Software for joint density functional theory"
 arch=('x86_64')
 url="http://jdftx.org"
@@ -11,15 +11,15 @@ depends=('gsl' 'fftw' 'libxc' 'scalapack' 'hdf5-openmpi' 'python')
 makedepends=('cmake')
 optdepends=('cuda: NVIDIA GPU support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shankar1729/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5f65a09235927fe18b547734d3de5f623561ddef795321df088e224a737ea817')
+sha256sums=('876374efbf785d02fdf547f7cf64deedc6f5618f5449e775a4c20b28f1696e3d')
 
 prepare() {
   mkdir "$srcdir/$pkgname-$pkgver/build"
   export LIBXC_PATH=/usr
   export JDFTX_LAUNCH="mpirun -np 2"
   
-  # Enable CUDA if nvcc is in $PATH
-  if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]
+  # Enable CUDA if nvcc is available
+  if command -v nvcc &> /dev/null
   then
     export ACC=ON
     export JDFTX_SUFFIX="_gpu"
@@ -34,6 +34,7 @@ build() {
   cmake ../$pkgname \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DEnableScaLAPACK=ON \
+        -DForceScaLAPACK=ON \
         -DEnableHDF5=ON \
         -DEnableLibXC=ON \
         -DEnableMKL=OFF \
@@ -42,8 +43,7 @@ build() {
         -DLinkTimeOptimization=ON \
         -DEnableCUDA=$ACC \
         -DEnableCuSolver=$ACC \
-        -DCudaAwareMPI=$ACC \
-        -DCUDA_NVCC_FLAGS="-O3 -ccbin /opt/cuda/bin"
+        -DCudaAwareMPI=$ACC
   make
 }
 
