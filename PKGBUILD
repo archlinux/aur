@@ -2,13 +2,13 @@
 # Contributor: Alex Henrie <alexhenrie24@gmail.com>
 pkgname=ipfs-desktop
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs/$pkgname"
 license=(MIT)
 depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip nss re2 snappy libnotify libappindicator-gtk3)
-makedepends=(nodejs npm node-gyp)
+makedepends=("nodejs>=16" npm node-gyp)
 install=$pkgname.install
 source=("https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('d23f2c574d7d3fbe9ff4fda1836efc2b2023721cf9e2182cce9b7ce99da14a43abf1fab26b5b1e70e4377daba5e7bfaf1012c08ca6af81d2f5ff126081a47f4d')

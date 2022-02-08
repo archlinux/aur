@@ -1,12 +1,12 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipfs/ipfs-desktop
 	install = ipfs-desktop.install
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs
+	makedepends = nodejs>=16
 	makedepends = npm
 	makedepends = node-gyp
 	depends = c-ares
