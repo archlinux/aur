@@ -1,7 +1,7 @@
 pkgbase = terraform-provider-ovirt
 	pkgdesc = Terraform provider for oVirt 4.x
 	pkgver = 0.99.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oVirt/terraform-provider-ovirt
 	arch = x86_64
 	license = BSD
