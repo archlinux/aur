@@ -1,24 +1,24 @@
 pkgbase = python-tabledata
 	pkgdesc = Python library to represent tabular data
 	pkgver = 1.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thombashi/tabledata
 	arch = any
 	license = MIT
-	checkdepends = python-pytablewriter>=0.46
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytablewriter
+	checkdepends = python-pytest
 	checkdepends = python-dateutil
 	checkdepends = python-pytz
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	depends = python>=3.6
-	depends = python-dataproperty>=0.53.0
-	depends = python-dataproperty<1
-	depends = python-typepy>=1.2.0
-	depends = python-typepy<2
-	source = python-tabledata::git+https://github.com/thombashi/tabledata
+	depends = python-dataproperty
+	depends = python-typepy
+	source = python-tabledata::git+https://github.com/thombashi/tabledata#tag=v1.3.0?signed
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
 	sha256sums = SKIP
 
