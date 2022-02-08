@@ -1,8 +1,8 @@
 # Author: Roman Gilg <subdiff@gmail.com>
 
 pkgname=disman-kwinft
-pkgver=5.23.0
-_pkgver=0.523.0
+pkgver=5.24.0
+_pkgver=0.524.0
 pkgrel=1
 pkgdesc='Qt/C++ display management library'
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=("disman")
 conflicts=("disman")
 makedepends=(extra-cmake-modules)
 source=("https://gitlab.com/kwinft/disman/-/archive/disman@$_pkgver/disman-disman@$_pkgver.tar.gz")
-md5sums=('c55af8059b407353020f1879c25c25ab')
+md5sums=('b541330ea2a5c2e8e779635b2661c0f4')
 
 prepare() {
   tar -xvf disman-disman@$_pkgver.tar.gz

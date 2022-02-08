@@ -1,6 +1,6 @@
 pkgbase = disman-kwinft
 	pkgdesc = Qt/C++ display management library
-	pkgver = 5.23.0
+	pkgver = 5.24.0
 	pkgrel = 1
 	url = https://gitlab.com/kwinft/disman
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = disman-kwinft
 	depends = wrapland
 	provides = disman
 	conflicts = disman
-	source = https://gitlab.com/kwinft/disman/-/archive/disman@0.523.0/disman-disman@0.523.0.tar.gz
-	md5sums = c55af8059b407353020f1879c25c25ab
+	source = https://gitlab.com/kwinft/disman/-/archive/disman@0.524.0/disman-disman@0.524.0.tar.gz
+	md5sums = b541330ea2a5c2e8e779635b2661c0f4
 
 pkgname = disman-kwinft
