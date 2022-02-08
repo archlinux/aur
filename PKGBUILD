@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="nwg-shell meta-package and installer"
 arch=('x86_64')

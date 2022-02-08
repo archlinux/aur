@@ -1,6 +1,6 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package and installer
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = nwg-shell
 	depends = papirus-icon-theme
 	optdepends = xorg-xwayland: for X clients
 	optdepends = libappindicator-gtk3: for tray status icon
-	source = nwg-shell-0.0.2.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v0.0.2.tar.gz
+	source = nwg-shell-0.0.3.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v0.0.3.tar.gz
 	md5sums = SKIP
 
 pkgname = nwg-shell
