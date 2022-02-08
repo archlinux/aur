@@ -1,0 +1,14 @@
+post_install() {
+    echo ""
+    echo "As of version 0.9.0, released on 2nd April 2021,"
+    echo "Qiskit Aqua has been deprecated with its support ending and eventual"
+    echo "archival being no sooner than 3 months from that date. The function"
+    echo "provided by Qiskit Aqua is not going away rather it has being split"
+    echo "out to separate application repositories, with core algorithm and"
+    echo "operator function moving to qiskit-terra."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
