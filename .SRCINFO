@@ -1,9 +1,9 @@
 pkgbase = i3-extra-workspace-git
 	pkgdesc = Workspace-specific scratchpads (extra workspaces) for i3
-	pkgver = r5.feb0e25
+	pkgver = r6.4fc53e5
 	pkgrel = 1
 	url = https://github.com/thekondor/i3-extra-workspace
-	install = i3-extra-workspace.install
+	install = PKGBUILD.install
 	arch = any
 	license = Apache 2.0
 	makedepends = git
