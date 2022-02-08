@@ -1,8 +1,18 @@
 post_install() {
   echo 127.0.0.1 iccert.nhi.gov.tw >> /etc/hosts
   echo /etc/hosts is modified to make NHIICC work. Please review its contents if you wish.
+
+  post_upgrade
+}
+
+post_upgrade() {
+  /usr/share/NHIICC/regen-certs.sh
 }
 
 post_remove() {
   sed -i '/iccert\.nhi\.gov\.tw/d' /etc/hosts
+
+  rm -r /var/lib/nhiicc/cert
+  rm /etc/ca-certificates/trust-source/anchors/NHIRootCA.crt
+  /usr/bin/update-ca-trust
 }
