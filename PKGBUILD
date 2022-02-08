@@ -48,6 +48,13 @@ package() {
     install -Dvm644 "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt \
         -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
+    mkinfo "Modifying path to executable in desktop file ..."
+    sed -e "s|Exec=/opt/astap/astap|Exec=astap|g" \
+        -i "${pkgdir}"/usr/share/applications/*.desktop
+
     mkinfo "Removeing unneeded resources ..."
     rm -rv "${pkgdir}"/usr/lib/"${_pkgname}"/*.txt
+
+    mkinfo "Creating application symlinks to /usr/bin ..."
+    ln -sv ../lib/"${_pkgname}"/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}"
 }
