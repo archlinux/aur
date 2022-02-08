@@ -3,21 +3,21 @@
 pkgname=forkgram
 _pkgname=frk
 pkgver=3.5.1
-pkgrel=1
-pkgdesc='Forkgram a fork of Telegram Desktop messaging app.'
+pkgrel=2
+pkgdesc='Fork of Telegram Desktop messaging app.'
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/Forkgram/tdesktop"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'qt5-svg' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'libtg_owt' 'qt6-base' 'qt6-wayland' 'qt6-5compat' 'qt6-svg')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'gcc' 'abseil-cpp' 'meson'
+makedepends=('cmake' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'gcc' 'abseil-cpp' 'meson'
              'extra-cmake-modules' 'gtk3' 'webkit2gtk')
 optdepends=('gtk3: GTK environment integration'
             'webkit2gtk: embedded browser features'
             'ttf-opensans: default Open Sans font family'
             'xdg-desktop-portal: desktop integration')
-provides=("forkgram")
+provides=("telegram-desktop")
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
 source=("https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-full.tar.gz")
