@@ -1,13 +1,13 @@
 pkgbase = wl-gammarelay
 	pkgdesc = A client and daemon for changing color temperature and brightness under Wayland via keybindings.
-	pkgver = 0.0.8
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/jeremija/wl-gammarelay
 	arch = x86_64
 	license = GPL3
 	makedepends = go
 	depends = wayland
-	source = https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v0.0.8.tar.gz
-	md5sums = 7915f2f65bb4a4655ada34e2fcac555f
+	source = https://github.com/jeremija/wl-gammarelay/archive/refs/tags/v0.1.0.tar.gz
+	md5sums = ca2d2f1622f54b56a1ca33f29f35ae21
 
 pkgname = wl-gammarelay
