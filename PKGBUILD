@@ -10,14 +10,7 @@ license=('GPL3')
 url="https://github.com/labsquare/${_up_pkgname}"
 depends=('qt5-svg' 'hicolor-icon-theme')
 source=(https://github.com/labsquare/${_up_pkgname}/archive/${pkgver}.tar.gz)
-sha256sums=('d6894741fb8afc537c9f9133ceb01d65a69180ff7ef69b0399922586b33e2609')
-
-prepare() {
-  cd "${srcdir}/${_up_pkgname}-${pkgver}"
-  sed -i "s|target.path.*|target.path = ${pkgdir}/usr/bin|g" src/src.pro
-  sed -i "s|desktop.path.*|desktop.path = ${pkgdir}/usr/share/applications|g" ${pkgname}.pro
-  sed -i "s|icons.path.*|icons.path  = ${pkgdir}/usr/share/icons/hicolor/48x48/apps|g" ${pkgname}.pro
-}
+sha256sums=('ad6feada0bf9df60b6582ae095c576256e6a0952bcbaf111fe4b77bd8af4e5d0')
 
 build() {
   cd "${srcdir}/${_up_pkgname}-${pkgver}"
@@ -27,5 +20,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_up_pkgname}-${pkgver}"
-  make install
+  make INSTALL_ROOT=${pkgdir} install
 }
