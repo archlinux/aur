@@ -1,5 +1,5 @@
 # Maintainer: hr567 <hr567@hr567.me>
-pkgname=apifox-bin
+pkgname=apifox
 pkgver=1.4.22
 pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
