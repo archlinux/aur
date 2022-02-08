@@ -1,8 +1,8 @@
 pkgbase = pakku
-	pkgdesc = Pacman wrapper with AUR support
-	pkgver = 0.14
+	pkgdesc = Pacman wrapper and AUR helper with a pacman-like user interface
+	pkgver = 0.15
 	pkgrel = 1
-	url = https://github.com/kitsunyan/pakku
+	url = https://github.com/zqqw/pakku
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -10,11 +10,12 @@ pkgbase = pakku
 	arch = aarch64
 	license = GPL3
 	makedepends = nim
+	makedepends = git
+	makedepends = asciidoc
 	depends = libcurl.so
 	depends = git
 	backup = etc/pakku.conf
-	source = https://github.com/kitsunyan/pakku/releases/download/v0.14/pakku-0.14.tar.xz
-	sha256sums = 2e5e1db1651f3630a3a9f62d8341384c2d24c3573f2a2d0803d8e795990785c7
+	source = https://github.com/zqqw/pakku/archive/refs/tags/v0.15.tar.gz
+	sha256sums = 770f4344543d6072ff2b18a2c212a5c3e56e16f6c86ca4b9097eaadf54a26c73
 
 pkgname = pakku
-
