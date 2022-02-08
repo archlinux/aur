@@ -1,13 +1,11 @@
-# Maintainer: Ehsan Ghorbannezad <ehsangn@protonmail.ch>
+# Maintainer: Ehsan Ghorbannezad <ehsan at disroot dot org>
 pkgname=paclist
 pkgver=r4
-pkgrel=1
+pkgrel=2
 pkgdesc='pacman hook to make lists of installed packages.'
 arch=(any)
 license=(GPL)
 source=($pkgname.sh $pkgname.hook config)
-provides=($pkgname)
-conflicts=($pkgname)
 
 sha256sums=('b2423b71c85c00c5ffccf78dd8ed859edbbacac9f3765fa2ea6cb9662e9736a8'
             'd63dced7184b8688bcc5e414352d0e436a10f4b5dba1243644f68e7ff277228e'
