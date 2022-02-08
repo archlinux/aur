@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
 pkgname=python-eltetrado
 _name=${pkgname#python-}
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Find and classify tetrads and quadruplexes in DNA/RNA 3D structures"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python python-mmcif-pdbx python-numpy python-orjson)
 makedepends=(python-setuptools)
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('b6add2c1dbc30b05c27f9980748d9accb6e3a40d24eb7a76758b2f617dbf9fe7')
+sha256sums=('fabab3948ee07c3c91211a798a7b350d4d63a45b2ece700a7bc16fdcf2722c82')
 
 build() {
     cd "${_name}-${pkgver}"
