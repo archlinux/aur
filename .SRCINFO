@@ -1,7 +1,7 @@
 pkgbase = python-pdftopng
 	pkgdesc = A PDF to PNG conversion library (based on pdftoppm from poppler)
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/vinayak-mehta/pdftopng
 	arch = x86_64
 	license = GPL2
@@ -12,8 +12,10 @@ pkgbase = python-pdftopng
 	source = pdftopng-0.2.3.tar.gz::https://github.com/vinayak-mehta/pdftopng/archive/v0.2.3.tar.gz
 	source = https://github.com/freedesktop/poppler/raw/fcdff7bb19e2ac0fab6505f17e0c18c8faa86323/utils/numberofcharacters.h
 	source = setOverprintPreview.patch
+	source = c++17.patch
 	sha256sums = 2b0cda9b7e151d67a182bb753138309c3a6b035939577c5527a34a2c1ef96b64
 	sha256sums = 285258e387080c775e4f6f5bca652e9e707c3beac83c6625d3b840c4e13c6440
 	sha256sums = a64e9acf757f4ca2edcf6c16e11abcdf827a704dd0a66acb7c71a270fd4da0b0
+	sha256sums = 45579a1d5a5bfc984997900945c8aa51636eaa5b49b49184145a81c3ab60a9f3
 
 pkgname = python-pdftopng
