@@ -1,0 +1,87 @@
+From 0217cc6e0cf5013366105a90f5f91ccc4bab5425 Mon Sep 17 00:00:00 2001
+From: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Date: Wed, 26 Jan 2022 00:05:55 +0100
+Subject: [PATCH] xkb: fix XkbSetMap when changing a keysym without changing a
+ keytype
+
+As the comment says:
+
+"symsPerKey/mapWidths must be filled regardless of client-side flags"
+
+so we always have to call CheckKeyTypes which will notably fill mapWidths
+and nTypes. That is needed for CheckKeySyms to work since it checks the
+width. Without it, any request with XkbKeySymsMask but not
+XkbKeyTypesMask will fail because of the missing width information, for
+instance this:
+
+  XkbDescPtr xkb;
+  if (!(xkb = XkbGetMap (dpy, XkbKeyTypesMask|XkbKeySymsMask, XkbUseCoreKbd))) {
+    fprintf (stderr, "ERROR getting map\n");
+    exit(1);
+  }
+  XFlush (dpy);
+  XSync (dpy, False);
+
+  XkbMapChangesRec changes = { .changed = 0 };
+  int oneGroupType[XkbNumKbdGroups] = { XkbOneLevelIndex };
+
+  if (XkbChangeTypesOfKey(xkb, keycode, 1, XkbGroup1Mask, oneGroupType, &changes)) {
+    fprintf(stderr, "ERROR changing type of key\n");
+    exit(1);
+  }
+  XkbKeySymEntry(xkb,keycode,0,0) = keysym;
+
+  if (!XkbChangeMap(dpy,xkb,&changes)) {
+    fprintf(stderr, "ERROR changing map\n");
+    exit(1);
+  }
+
+  XkbFreeKeyboard (xkb, 0, TRUE);
+  XFlush (dpy);
+  XSync (dpy, False);
+
+This had being going under the radar since about ever until commit
+de940e06f8733d87bbb857aef85d830053442cfe ("xkb: fix key type index check
+in _XkbSetMapChecks") fixed checking the values of kt_index, which was
+previously erroneously ignoring errors and ignoring all other checks, just
+because nTypes was not set, precisely because CheckKeyTypes was not called.
+
+Note: yes, CheckKeyTypes is meant to be callable without XkbKeyTypesMask, it
+does properly check for that and just fills nTypes and mapWidths in that
+case.
+
+Signed-off-by: Samuel Thibault <samuel.thibault@ens-lyon.org>
+Signed-off-by: Laurent Carlier <lordheavym@gmail.com>
+---
+ xkb/xkb.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index bfc21de00..820cd7166 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -2511,16 +2511,15 @@ _XkbSetMapChecks(ClientPtr client, DeviceIntPtr dev, xkbSetMapReq * req,
+         }
+     }
+ 
+-    if (!(req->present & XkbKeyTypesMask)) {
+-        nTypes = xkb->map->num_types;
+-    }
+-    else if (!CheckKeyTypes(client, xkb, req, (xkbKeyTypeWireDesc **) &values,
+-			       &nTypes, mapWidths, doswap)) {
++    /* nTypes/mapWidths/symsPerKey must be filled for further tests below,
++     * regardless of client-side flags */
++
++    if (!CheckKeyTypes(client, xkb, req, (xkbKeyTypeWireDesc **) &values,
++		       &nTypes, mapWidths, doswap)) {
+ 	    client->errorValue = nTypes;
+ 	    return BadValue;
+     }
+ 
+-    /* symsPerKey/mapWidths must be filled regardless of client-side flags */
+     map = &xkb->map->key_sym_map[xkb->min_key_code];
+     for (i = xkb->min_key_code; i < xkb->max_key_code; i++, map++) {
+         register int g, ng, w;
+-- 
+2.35.1
+
