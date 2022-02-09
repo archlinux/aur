@@ -17,6 +17,7 @@ pkgbase = kwallet-secrets
 	depends = kservice
 	depends = gpgme
 	optdepends = kwalletmanager: Configuration GUI
+	optdepends = libsecret-mr94: libsecret patched for proper creation of default collection
 	provides = org.freedesktop.secrets
 	provides = kwallet
 	conflicts = kwallet

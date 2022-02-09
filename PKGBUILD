@@ -12,7 +12,8 @@ url='https://community.kde.org/Frameworks'
 license=(LGPL)
 depends=(knotifications kiconthemes kservice gpgme)
 makedepends=(extra-cmake-modules kdoctools boost doxygen qt5-tools qt5-doc)
-optdepends=('kwalletmanager: Configuration GUI')
+optdepends=('kwalletmanager: Configuration GUI'
+            'libsecret-mr94: libsecret patched for proper creation of default collection')
 provides=(org.freedesktop.secrets kwallet)
 conflicts=(kwallet)
 groups=(kf5)
