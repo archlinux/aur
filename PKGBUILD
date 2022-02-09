@@ -8,8 +8,8 @@ files=(import_off.py)
 is_flat="yes"
 
 pkgname=blender-plugin-${name}
-pkgver=v0.3.1.r2.g77d9456
-pkgrel=2
+pkgver=v0.3.1.r3.ge5c16ae
+pkgrel=1
 pkgdesc="Integrate cork boolean library into blender"
 arch=('any')
 url=${github_link}
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   [[ -n ${is_flat} && ${is_flat} == "yes" ]] && install_path=${addons} || install_path=${addons}/${name}
