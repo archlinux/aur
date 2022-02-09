@@ -3,7 +3,7 @@
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=app-icon-preview
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Tool for designing applications icons'
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ source=(
 	"git+${url}.git#tag=${pkgver}"
 	"git+https://gitlab.gnome.org/Teams/Design/HIG-app-icons.git"
 )
-sha256sums=('SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP')
 
 prepare() {
 	cd app-icon-preview
