@@ -1,0 +1,32 @@
+pkgbase = libsecret-mr94
+	pkgdesc = Library for storing and retrieving passwords and other secrets with MR #94 applied
+	pkgver = 0.20.4
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/Libsecret
+	arch = x86_64
+	license = LGPL
+	checkdepends = python-dbus
+	checkdepends = dbus-glib
+	checkdepends = python-gobject
+	checkdepends = gjs
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = valgrind
+	depends = glib2
+	depends = libgcrypt
+	optdepends = org.freedesktop.secrets: secret storage backend
+	provides = libsecret-1.so
+	provides = libsecret
+	conflicts = libsecret
+	source = git+https://gitlab.gnome.org/GNOME/libsecret.git#commit=3fe635e64efd4b8dbc9ec3548b0bc8034c7665c4
+	source = fix-test.diff
+	source = create-default-collection.patch
+	sha256sums = SKIP
+	sha256sums = 760e40ffcd3383149d62f803a900b3af1a838fb084a8403e45d0764696dd2ffe
+	sha256sums = fe8e805902fd7a98472f20f06b1231036eea6d1b644cd92758f7509b94a724f3
+
+pkgname = libsecret-mr94

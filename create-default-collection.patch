@@ -1,0 +1,30 @@
+From d620c79d83acc1bae0bbd7153a691f952b74ca31 Mon Sep 17 00:00:00 2001
+From: Slava Aseev <ptrnine@altlinux.org>
+Date: Mon, 16 Aug 2021 19:25:56 +0300
+Subject: [PATCH] Create default collection after DBus.Error.UnknownObject
+
+Some Secret Service API backend implementations (like keepassxc)
+throws UnknownObject (instead of UnknownMethod as gnome-keyring do)
+after creating an item in the non-existent
+/org/freedesktop/secrets/aliases/default.
+---
+ libsecret/secret-methods.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/libsecret/secret-methods.c b/libsecret/secret-methods.c
+index c4decf8..b9b696e 100644
+--- a/libsecret/secret-methods.c
++++ b/libsecret/secret-methods.c
+@@ -1050,7 +1050,8 @@ on_store_create (GObject *source,
+ 
+ 	if (!store->created_collection &&
+ 	    (g_error_matches (error, SECRET_ERROR, SECRET_ERROR_NO_SUCH_OBJECT) ||
+-	     g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD)) &&
++	     g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD) ||
++	     g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_OBJECT)) &&
+ 	    g_strcmp0 (store->collection_path, SECRET_ALIAS_PREFIX "default") == 0) {
+ 		properties = _secret_collection_properties_new (_("Default keyring"));
+ 		secret_service_create_collection_dbus_path (service, properties, "default",
+-- 
+GitLab
+
