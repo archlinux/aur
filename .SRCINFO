@@ -1,6 +1,6 @@
 pkgbase = cargo-cache
 	pkgdesc = Display info and prune cargo cache
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/matthiaskrgr/cargo-cache
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cargo-cache
 	license = Apache
 	makedepends = cargo
 	depends = libgit2
-	source = cargo-cache-0.8.1.tar.gz::https://github.com/matthiaskrgr/cargo-cache/archive/0.8.1.tar.gz
-	sha256sums = 39ed11a8bb62ee8e3f6e53b6d39fd82eef1a03a8858d59077f1f83abe72800a9
+	source = cargo-cache-0.8.2.tar.gz::https://github.com/matthiaskrgr/cargo-cache/archive/0.8.2.tar.gz
+	sha256sums = 49af88116cd3fc395cd319f055aa690d867f15178267c3ac7257f3b09f44214e
 
 pkgname = cargo-cache
