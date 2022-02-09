@@ -1,7 +1,7 @@
 # Maintainer: Jelle van der Waa: <jelle vdwaa nl>
 pkgname=networkmanager-dispatcher-openntpd
-pkgver=1.0
-pkgrel=6
+pkgver=1.1
+pkgrel=1
 pkgdesc="Dispatcher Script for openntpd"
 arch=(any)
 license=('MIT')
