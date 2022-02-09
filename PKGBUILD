@@ -2,7 +2,7 @@
 # Python package author: Thomas Gläßle <thomas@coldfix.de>
 _name=certbot-dns-netcup
 pkgname=python-$_name
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="netcup DNS Authenticator plugin for Certbot"
 arch=(any)
@@ -10,7 +10,7 @@ url="https://github.com/coldfix/certbot-dns-netcup"
 license=("Apache")
 makedepends=("python" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c52179526e4ebbb40a4f78aa46a469f5223d0d2c255e08e10da422a9639989fc')
+sha256sums=('d2a4e433b8e0571bc805f7ff060f9ac05014f374824c0cac6c55ea5a9af685be')
 build() {
     cd $_name-$pkgver
     python setup.py build
