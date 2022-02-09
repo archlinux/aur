@@ -1,6 +1,6 @@
 # Maintainer: Prokop Randáček <prokop@randacek.dev>
 pkgname=libucw-git
-pkgver=v6.5.12.r5.87735ccb
+pkgver=v6.5.13.r2.dcc163ae
 pkgrel=1
 pkgdesc='General purpose library for the C language'
 arch=('any')
@@ -19,8 +19,8 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	./configure PREFIX=/usr
-	make -j$(nproc)
+	./configure PREFIX=/usr -CONFIG_DOC
+	make
 }
 
 package() {
