@@ -2,7 +2,7 @@
 
 pkgname=python-diagrams
 _name=${pkgname//python-}
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="Diagram as Code for prototyping cloud system architectures"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-graphviz' 'python-jinja')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
         "resources.patch")
-sha256sums=('741251174a65e6f4686f96acd37d8f274abcd7aac670526b00ad2891bf39f862'
+sha256sums=('732caa4e61113a06b9a80965be6171c4c5858f3570b5b1f5ba52304a6eeade60'
             'a32edb9d779f786fd02632d95cdd0b22a45e3e845b3c63e8c9ab2491b6396732')
 
 prepare() {
