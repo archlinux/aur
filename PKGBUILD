@@ -4,7 +4,7 @@ name=gaffer
 git_user_name=gregzaal
 
 pkgname=blender-plugin-${name}-git
-pkgver=3.1.2.r0.gf895629
+pkgver=3.1.9.r3.g43d3b99
 pkgrel=1
 pkgdesc="Blender addon for light and hdri managament."
 arch=('any')
@@ -30,7 +30,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}

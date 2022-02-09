@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-gaffer-git
 	pkgdesc = Blender addon for light and hdri managament.
-	pkgver = 3.1.2.r0.gf895629
+	pkgver = 3.1.9.r3.g43d3b99
 	pkgrel = 1
 	url = https://blendermarket.com/products/gaffer-light-manager/
 	install = blender-plugin-gaffer-git.install
@@ -14,4 +14,3 @@ pkgbase = blender-plugin-gaffer-git
 	md5sums = f5605da2a9b5ed7f69eeebdcd057cf69
 
 pkgname = blender-plugin-gaffer-git
-
