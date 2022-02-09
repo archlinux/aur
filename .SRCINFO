@@ -1,17 +1,24 @@
 pkgbase = wyrd
 	pkgdesc = A text-based front-end to Remind.
-	pkgver = 1.4.6
-	pkgrel = 3
-	url = http://pessimization.com/software/wyrd/
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://gitlab.com/wyrd-calendar/wyrd
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
+	makedepends = git
 	makedepends = ocaml
-	makedepends = camlp4
+	makedepends = camlp5
+	makedepends = python
+	makedepends = autoconf
+	makedepends = opam
 	depends = remind
 	depends = ncurses
-	source = http://pessimization.com/software/wyrd/wyrd-1.4.6.tar.gz
-	md5sums = 2fc561482fdac4daac0cb6735d934ebe
+	depends = less
+	provides = wyrd
+	conflicts = wyrd
+	replaces = wyrd-git
+	source = https://gitlab.com/wyrd-calendar/wyrd/-/jobs/artifacts/1.5.2/raw/wyrd-1.5.2.tar.xz?job=release
+	md5sums = 2d24fb827e99f21a838723a8d1cb1c22
 
 pkgname = wyrd
-
