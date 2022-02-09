@@ -3,19 +3,20 @@
 
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
-pkgver=2.31
+pkgver=2.36
 pkgrel=1
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 arch=(x86_64)
 url=http://www.microchip.com/mplab/compilers
 license=(custom)
 depends=(gcc-libs)
-makedepends=(bitrock-unpacker)
+makedepends=(bitrock-unpacker tclkit)
+conflicts=(lib32-tclkit)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs )
 source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v${pkgver}-full-install-linux-x64-installer.run")
 
-md5sums=('3e628d7048dddd54a9247d16a6d05baa')
+md5sums=('e7be40f083398ec9d1abe2eefd26b88a')
 install=$pkgname.install
 
 _instdir="opt/microchip/xc${_number_of_bits}/v${pkgver}"
