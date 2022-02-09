@@ -1,7 +1,7 @@
 pkgbase = gtk2-libwinmenu
 	pkgdesc = Gtk+ module to hide menubar by default
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.linux.org.ru/jump-message.jsp?msgid=5606544&cid=5617512
 	install = libwinmenu.install
 	arch = i686
@@ -10,12 +10,11 @@ pkgbase = gtk2-libwinmenu
 	depends = gtk2
 	source = libwinmenu.c
 	source = Makefile
-	source = use_alt_left.patch
+	source = use_ctrl_right.patch
 	source = fix_gimp_whitelist.patch
 	md5sums = 20a2e4823e8d2baf1e33de97335a040b
 	md5sums = f90fd2c86b796a0c9d9e4a646539ec31
-	md5sums = d43683a6001d8032881f95ccf8dda5f4
+	md5sums = eb9d4660537a95689066f84b0563dbb9
 	md5sums = 9ed28c17363baffb317566877f7c8315
 
 pkgname = gtk2-libwinmenu
-
