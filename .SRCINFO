@@ -1,6 +1,6 @@
 pkgbase = cinny
 	pkgdesc = Yet another matrix client —
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://cinny.in
 	arch = any
