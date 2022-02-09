@@ -5,8 +5,8 @@ name=surface-follow
 files=(ModelingCloth TextureHack.py UVShape.py)
 
 pkgname=blender-plugin-${name}
-pkgver=r18.a7e7e18
-pkgrel=2
+pkgver=r20.f15a960
+pkgrel=1
 pkgdesc="Blender addon for binding object to deforming surfaces."
 arch=('any')
 url="https://blenderartists.org/forum/showthread.php?412706-Surface-Follow-from-2016-Blender-Conference"
@@ -22,7 +22,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}
