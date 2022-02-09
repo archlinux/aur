@@ -1,0 +1,15 @@
+pkgbase = git-branchless
+	pkgdesc = High-velocity monorepo-scale workflow for Git
+	pkgver = 0.3.9
+	pkgrel = 1
+	url = https://github.com/arxanas/git-branchless
+	arch = x86_64
+	license = GPL2
+	checkdepends = git
+	makedepends = cargo
+	depends = git
+	depends = libgit2
+	source = https://github.com/arxanas/git-branchless/archive/v0.3.9/git-branchless-0.3.9.tar.gz
+	sha256sums = eb785437ec9968b3f70472db16cf61658b5105da5fb541991546ac3ad32548af
+
+pkgname = git-branchless
