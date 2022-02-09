@@ -3,7 +3,7 @@
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.9.gacb7cc3
+pkgver=r2.1.4.g643e4b4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/sekrit-twc/${_plug}.git"
+source=("${_plug}::git+https://github.com/JeremyMahieu/${_plug}.git"
         'git+https://github.com/sekrit-twc/vsxx.git'
         )
 sha256sums=('SKIP'
@@ -30,26 +30,27 @@ pkgver() {
 prepare() {
   cd "${_plug}"
   git config submodule.vsplugin/vsxx.url "${srcdir}/vsxx"
-  git submodule update --init
+  git submodule update --init vsxx
 
   # use system vapoursynth headers
-  rm -fr vsxx/VapourSynth.h
-  rm -fr vsxx/VSScript.h
-  rm -fr vsxx/VSHelper.h
+  rm -fr vsxx/VapourSynth
 
-  sed -e 's|"VapourSynth.h"|<VapourSynth.h>|g' \
-      -e 's|"VSHelper.h"|<VSHelper.h>|g' \
-      -i vsxx/VapourSynth++.hpp
+  sed -e 's|"VapourSynth4.h"|<VapourSynth4.h>|g' \
+      -e 's|"VSHelper4.h"|<VSHelper4.h>|g' \
+      -i vsxx/VapourSynth4++.hpp
 
-  sed -e "s|-Ivsxx|& $(pkg-config --cflags vapoursynth)|g" \
-      -e '/VSScript.h/d' \
-      -e '/VapourSynth.h/d' \
-      -e '/VSHelper.h/d'\
+  sed -e 's|-Ivsxx/VapourSynth||g' \
+      -e '/VSScript4.h/d' \
+      -e '/VapourSynth4.h/d' \
+      -e '/VSHelper4.h/d' \
       -i Makefile
 }
 
 build() {
-  make -C "${_plug}" X86=1 CPPFLAGS="-DNNEDI3_WEIGHTS_PATH=\\\"\"/usr/lib/vapoursynth/nnedi3_weights.bin\"\\\""
+  CXXFLAGS+=" $(pkg-config --cflags vapoursynth)"
+  CPPFLAGS+=" -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\""
+  cd "${_plug}"
+  LC_ALL=C make V=1 X86=1
 }
 
 package(){
