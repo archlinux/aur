@@ -3,7 +3,7 @@
 _pkgname=nvidia-vulkan-utils
 pkgname=${_pkgname}-nvlax
 pkgver=470.62.22
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA drivers utilities (vulkan developer branch) with NVENC and NvFBC patched with nvlax"
 arch=('x86_64')
 license=('custom')
@@ -40,6 +40,7 @@ source=(
   "nvidia.rules"
   "${_pkg}.run::https://developer.nvidia.com/vulkan-beta-${pkgver//.}-linux"
   "nvlax::git+https://github.com/illnyang/nvlax.git#commit=b3699ad40c4dfbb9d46c53325d63ae8bf4a94d7f"
+  "nvlax_cpm.patch"
 )
 sha512sums=(
   "de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770"
@@ -47,6 +48,7 @@ sha512sums=(
   "a0ceb0a6c240cf97b21a2e46c5c212250d3ee24fecef16aca3dffb04b8350c445b9f4398274abccdb745dd0ba5132a17942c9508ce165d4f97f41ece02b0b989"
   "9e9f6a665034495bbfd438567fb9a0998adbfcc979fd1e0370d355b4f312e4c1fb5162b15e5264cc89d3aca6dcaf84ce7ebfff0885ac783dfcd8be3b99b3b96f"
   "SKIP"
+  "3188b66c6a158ac97a9200ce96d8ada5da2f39eb6eae19e710e7c0d7e3d1b9189beb92c1446fa4b0aa937d2b0c08a2fc9a3b4b3f821566a4e629478addf9d098"
 )
 
 create_links() {
@@ -65,7 +67,7 @@ prepare() {
   bsdtar -xf nvidia-persistenced-init.tar.bz2
 
   cd "$srcdir"/nvlax
-  sed -i 's/zydis#master/zydis#55dd08c210722aed81b38132f5fd4a04ec1943b5/g' CMakeLists.txt
+  patch -Np1 < "$srcdir"/nvlax_cpm.patch
 }
 
 build() {

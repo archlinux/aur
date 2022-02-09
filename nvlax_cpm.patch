@@ -1,0 +1,27 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5fa8620..ee2f230 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -16,11 +16,11 @@ project(nvlax CXX)
+ include(ExternalProject)
+ include(cmake/FetchCPM.cmake)
+ 
+-CPMAddPackage("gh:zyantific/zydis#master")
++CPMAddPackage("gh:zyantific/zydis#55dd08c210722aed81b38132f5fd4a04ec1943b5")
+ 
+ CPMAddPackage(
+         NAME LIEF_SRC
+-        GIT_TAG master
++        GIT_TAG b65e7cca03ec4cd91f1d7125e717d01635ea81ba
+         GITHUB_REPOSITORY lief-project/LIEF
+         DOWNLOAD_ONLY YES
+ )
+@@ -59,7 +59,7 @@ message(STATUS "LIEF library: ${LIEF_LIBRARIES}")
+ 
+ CPMAddPackage(
+         NAME PPK_ASSERT
+-        GIT_TAG master
++        GIT_TAG 833b8b7ea49aea540a49f07ad08bf0bae1faac32
+         GITHUB_REPOSITORY gpakosz/PPK_ASSERT
+         DOWNLOAD_ONLY YES
+ )
