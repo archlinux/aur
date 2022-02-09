@@ -1,7 +1,7 @@
 pkgbase = dvr-scan
 	pkgdesc = Tool for extracting scenes with motion from security camera/DVR footage.
-	pkgver = 1.3
-	pkgrel = 2
+	pkgver = 1.4
+	pkgrel = 1
 	url = https://github.com/Breakthrough/DVR-Scan
 	arch = any
 	license = BSD
@@ -12,7 +12,7 @@ pkgbase = dvr-scan
 	depends = python-opencv
 	depends = qt5-base
 	depends = fmt
-	source = https://github.com/Breakthrough/DVR-Scan/archive/v1.3.tar.gz
-	sha256sums = 3bf13f19d207f0d245b3154a316c32b09b798706a9467af1a38f0cde863f6f4b
+	source = https://github.com/Breakthrough/DVR-Scan/archive/v1.4.tar.gz
+	sha256sums = eefd0d39e34ec5c5ef8bb15e83e7eab75071fd6eb5eefe8900e89634d8648632
 
 pkgname = dvr-scan
