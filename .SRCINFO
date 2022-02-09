@@ -1,0 +1,27 @@
+pkgbase = sm64-port-jp-git
+	pkgdesc = A port of Super Mario 64 (JP) for modern devices
+	pkgver = irix2.r55.g733fafc
+	pkgrel = 1
+	url = https://github.com/sm64-port/sm64-port
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = python
+	makedepends = sdl2
+	provides = sm64-port-jp
+	conflicts = sm64-port-jp
+	source = git+https://github.com/sm64-port/sm64-port
+	source = file://baserom.jp.z64
+	source = sm64-port-jp.sh
+	source = sm64-port-jp.desktop
+	sha256sums = SKIP
+	sha256sums = 9cf7a80db321b07a8d461fe536c02c87b7412433953891cdec9191bfad2db317
+	sha256sums = bd5744ca3e5fdb657755995176ab1f0f101d0a50dc0221a3fd38d4d162a3533d
+	sha256sums = b0596710dc99bae4f004703766d1d767afb3f7d650ede0781cd31d6ca2f0c56a
+
+pkgname = sm64-port-jp-git
