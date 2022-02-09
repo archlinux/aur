@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-nrdb-git
+	pkgdesc = Plugin for Vapoursynth: nrdb (GIT version)
+	pkgver = v2.2.gdd2f56a
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-nrdb
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth-plugin-dfttest-git
+	depends = vapoursynth-plugin-f3kdb-git
+	provides = vapoursynth-plugin-nrdb
+	conflicts = vapoursynth-plugin-nrdb
+	source = nrdb::git+https://github.com/dubhater/vapoursynth-nrdb.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-nrdb-git
