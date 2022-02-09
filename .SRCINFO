@@ -1,6 +1,6 @@
 pkgbase = texinfo-git
 	pkgdesc = GNU documentation system for on-line information and printed output
-	pkgver = 6.7.r9221
+	pkgver = 6.8.r10106.5605c12a99
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gnu.org/software/texinfo/
@@ -27,4 +27,3 @@ pkgbase = texinfo-git
 	sha256sums = 7300f03ac56e32564fb508b0dd07839d2428a422dcf13fd3246863f7ccb1965e
 
 pkgname = texinfo-git
-

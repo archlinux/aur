@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.7.r9221
+pkgver=6.8.r10106.5605c12a99
 pkgrel=1
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
@@ -24,8 +24,8 @@ options=('libtool')
 
 pkgver() {
   cd $pkgname
-  printf "%s.r%s" \
-    $(awk -F\[ '/AC_INIT/ {print $3}' configure.ac |cut -c 1-3) $(git rev-list --count HEAD)
+  printf "%s.r%s.%s" \
+    $(awk -F\[ '/AC_INIT/ {print $3}' configure.ac |cut -c 1-3) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
@@ -38,7 +38,6 @@ prepare() {
 build() {
   cd $pkgname
   ./autogen.sh || true
-#  sed -i '5904,5914d' configure
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
