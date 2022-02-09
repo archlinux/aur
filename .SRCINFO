@@ -9,6 +9,7 @@ pkgbase = o3de-nightly-bin
 	license = MIT
 	makedepends = icoutils
 	depends = clang
+	depends = cmake
 	depends = curl
 	depends = fontconfig
 	depends = gcc-libs
