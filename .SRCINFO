@@ -1,7 +1,7 @@
 pkgbase = 86box-git
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.1.r815.g1654c8ec
-	pkgrel = 3
+	pkgver = 3.1.r821.g8dc6a086
+	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = 86box-git
 	depends = alsa-lib
 	depends = freetype2
 	depends = libpng
+	depends = libslirp
 	depends = openal
 	depends = qt6-base
 	depends = rtmidi
