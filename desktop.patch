@@ -1,0 +1,25 @@
+diff --git a/src/desktop/linux/aseprite.desktop b/src/desktop/linux/aseprite.desktop
+index e23999db8..803a1fc75 100644
+--- a/src/desktop/linux/aseprite.desktop
++++ b/src/desktop/linux/aseprite.desktop
+@@ -5,7 +5,7 @@ GenericName=Sprite Editor
+ Comment=Animated sprite editor & pixel art tool
+ Icon=aseprite
+ Categories=Graphics;2DGraphics;RasterGraphics
+-Exec=aseprite %U
++Exec=aseprite %F
+ TryExec=aseprite
+ Terminal=false
+ StartupNotify=false
+diff --git a/src/desktop/linux/mime/aseprite.xml b/src/desktop/linux/mime/aseprite.xml
+index 52b2adb92..a656cb3b1 100644
+--- a/src/desktop/linux/mime/aseprite.xml
++++ b/src/desktop/linux/mime/aseprite.xml
+@@ -7,6 +7,6 @@
+          </magic>
+          <glob pattern="*.ase"/>
+          <glob pattern="*.aseprite"/>
+-        <icon name="aseprite"/>
++        <icon name="image-x-aseprite"/>
+   </mime-type>
+ </mime-info>

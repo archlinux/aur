@@ -9,12 +9,10 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.30
-pkgrel=2
+pkgver=1.2.33
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
-url='http://www.aseprite.org/'
-license=('custom')
 url="https://www.aseprite.org/"
 license=('custom')
 depends=(# ~ Aseprite's direct dependencies ~
@@ -24,30 +22,34 @@ depends=(# ~ Aseprite's direct dependencies ~
          libexpat.so=1-64 libharfbuzz.so=0-64
          hicolor-icon-theme # For installing Aseprite's icons
          # ~ Skia deps ~
-         libgl
+         libgl libc++
          # These two are only reported by Namcap, but don't seem to be direct dependencies?
          libfontconfig.so libxcursor)
 makedepends=(# "Meta" dependencies
-             cmake ninja git python
+             cmake ninja git python clang
              # Aseprite (including e.g. LAF)
-             libxi pixman
+             libxi
              # Skia
              harfbuzz-icu)
 provides=(aseprite)
 conflicts=(aseprite)
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
-        "https://github.com/aseprite/skia/releases/download/m81-b607b32047/Skia-Linux-Release-x64.zip"
+        "https://github.com/aseprite/skia/releases/download/m96-2f1f21b8a9/Skia-Linux-Release-x64.zip"
+        desktop.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
         shared-libarchive.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2523.patch
         shared-libwebp.patch
+        shared-skia-deps.patch
         optional-pixman.patch)
 noextract=("${source[0]##*/}" "${source[1]##*/}") # Don't extract Aseprite sources or Skia at the root
-sha256sums=('9f4b098fe2327f2e9d73eb9f2aeebecad63e87ff2cf6fb6eeeee3c0778bb8874'
-            '37cb146efbffb0571a541c48acd7926ed6571cd3aa50be67f8a9b97901e26769'
+sha256sums=('c3a86005f59483fcfcedae89bf82dfc6f82bba8d5244835ca4c005beab31435b'
+            '4d1fea6e960113b80c79eb82f1e7174cefee8e9d38748178f2c615de13efc4d1'
+            '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'e42675504bfbc17655aef1dca957041095026cd3dd4e6981fb6df0a363948aa7'
-            '942aaa70bc67955e83e227f95171d8cf126526a7692074fdeef1a47d287f6242'
+            'e7662539c6279f29594a634998216643df13545202597df7f9990e00a5f0a3af'
+            'eb9f544e68b41b5cb1a9ab7a6648db51587e67e94f1a452cb5a84f3d224bf5d0'
             'c2d14f9738a96a9db3695c00ac3d14b1312b6a595b151bd56e19422c86517654')
 
 prepare() {
@@ -55,21 +57,26 @@ prepare() {
 	bsdtar -xf ${noextract[0]} -C aseprite
 	bsdtar -xf ${noextract[1]} -C skia
 
-	# Allow using shared libarchive (the bundled version prevents using the `None` build type...)
+	# Fix up Aseprite's desktop integration
+	env -C aseprite patch -tp1 <desktop.patch
+	# Allow using more shared libs
 	env -C aseprite patch -tp1 <shared-libarchive.patch
-	# Allow using shared libarchive (breaks builds otherwise...)
 	env -C aseprite patch -tp1 <shared-libwebp.patch
-	# Skip the build-time dependency on Pixman since it doesn't get used in the end
 	env -C aseprite patch -tp1 <optional-pixman.patch
+	# Their "FindSkia" module forcefully tries to use Skia's FreeType and HarfBuzz,
+	# but we don't clone those because we use the shared ones. Avoid overwriting the settings instead.
+	env -C aseprite patch -tp1 <shared-skia-deps.patch
 }
 
 build() {
 	local _skiadir="$srcdir/skia/out/Release-x64"
 	# Suppress install messages since we install to a temporary area; `install -v` will do the job
+	# Can't use shared FMT not TINYXML because of ABI incompatibilities (GCC vs Clang)
 	cmake -S aseprite -B build -G Ninja -Wno-dev -DCMAKE_INSTALL_MESSAGE=NEVER -DCMAKE_BUILD_TYPE=None \
--DENABLE_UPDATER=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
+-DENABLE_{UPDATER,SCRIPTING,WEBSOCKET}=NO -DLAF_WITH_EXAMPLES=OFF -DLAF_WITH_TESTS=OFF -DLAF_BACKEND=skia \
 -DSKIA_DIR="$srcdir/skia" -DSKIA_LIBRARY_DIR="$_skiadir" -DSKIA_LIBRARY="$_skiadir/libskia.a" \
--DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,TINYXML,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
+-DUSE_SHARED_{CMARK,CURL,GIFLIB,JPEGLIB,ZLIB,LIBPNG,PIXMAN,FREETYPE,HARFBUZZ,LIBARCHIVE,WEBP}=YES \
+-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++" \
 -DWEBP_INCLUDE_DIR="$srcdir/skia/third_party/externals/libwebp/src" \
 -DWEBP{,MUX,DEMUX}_LIBRARY= # Use Skia's already-bundled WebP library (link to no additional libs)
 	ninja -C build
@@ -85,7 +92,8 @@ package() {
 
 	# Install the binary and its `.desktop` file
 	install -vDm 755 staging/bin/aseprite "$pkgdir/usr/bin/aseprite"
-	install -vDm 644 aseprite/src/desktop/linux/aseprite.desktop "$pkgdir/usr/share/applications/aseprite.desktop"
+	install -vDm 644 aseprite/src/desktop/linux/aseprite.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -vDm 644 aseprite/src/desktop/linux/mime/aseprite.xml "${pkgdir}/usr/share/mime/packages/${_pkgname}.xml"
 	# Install the icons in the correct directory (which is not the default)
 	local _size
 	for _size in 16 32 48 64 128 256; do
