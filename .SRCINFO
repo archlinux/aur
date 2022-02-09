@@ -11,4 +11,3 @@ pkgbase = blender-plugin-gcode-reader
 	md5sums = SKIP
 
 pkgname = blender-plugin-gcode-reader
-
