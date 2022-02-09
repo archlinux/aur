@@ -1,6 +1,0 @@
-# Ignore everything, then whitelist specific files.
-*
-
-!.SRCINFO
-!.gitignore
-!PKGBUILD

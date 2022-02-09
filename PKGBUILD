@@ -1,29 +1,24 @@
-# Maintainer: Jeremy Audet <jerebear@protonmail.com>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Jeremy Audet <jerebear@protonmail.com>
 # Contributor: Mizuchi <ytj000+AUR@gmail.com>
-# Contributor: Rhinoceros <aurarchlinux@plast.id.au>
 
 pkgname=vim-undotree
 pkgver=6.1
 pkgrel=1
-pkgdesc='Display your undo history in a graph.'
-arch=(any)
+pkgdesc='Display your undo history in a graph'
+arch=('any')
 url='https://github.com/mbbill/undotree'
-license=(BSD)
-depends=(vim)
-groups=(vim-plugins)
-source=("${pkgname}.tar.gz::https://github.com/mbbill/undotree/archive/rel_${pkgver}.tar.gz")
-sha256sums=('ab55e442be0eea4e3e22a08179086866f44d604e8a8132174e7c0d1166bcf42c')
+license=('BSD')
+depends=('vim>=7.3')
+groups=('vim-plugins') # undotree.vim needs vim7.3 with patch005 applied
+source=("$pkgname.tar.gz::https://github.com/mbbill/${pkgname#vim-}/archive/rel_${pkgver}.tar.gz")
+sha512sums=('ed2831fee148b6a0cb78ea528db9b6a217da67fb74d95e00034671ecd7d0bef397077a7e96c29697d372a2bd1d0a6865e210cece57c4cccd97a0cf3e0b486ec2')
 
 package() {
-  cd "${srcdir}/undotree-rel_${pkgver}"
-  install -Dm644 autoload/undotree.vim \
-    "${pkgdir}"/usr/share/vim/vimfiles/autoload/undotree.vim
-  install -Dm644 plugin/undotree.vim \
-    "${pkgdir}"/usr/share/vim/vimfiles/plugin/undotree.vim
-  install -Dm644 syntax/undotree.vim \
-    "${pkgdir}"/usr/share/vim/vimfiles/syntax/undotree.vim
-  install -Dm644 README.md \
-    "${pkgdir}"/usr/share/doc/vim-undotree/README.md
+  cd "${pkgname#vim-}-rel_${pkgver}"
+  local _vimdir="$pkgdir/usr/share/vim/vimfiles"
+  install -Dm644 {,"$_vimdir/"}"autoload/undotree.vim"
+  install -Dm644 {,"$_vimdir/"}"plugin/undotree.vim"
+  install -Dm644 {,"$_vimdir/"}"syntax/undotree.vim"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/vim-undotree/README.md"
 }
-
-# vim:set ts=2 sw=2 et:
