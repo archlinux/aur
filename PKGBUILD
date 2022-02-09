@@ -1,12 +1,13 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
-# pkg: git
+# from: git
+
 pkgbase="openbangla-keyboard-git"
 pkgname=(
     "$pkgbase"
     "ibus-openbangla-git"
     "fcitx5-openbangla-git"
 )
-pkgver=2.0.0.r33.g6624431
+pkgver=2.0.0.r42.ge83e220
 pkgrel=1
 pkgdesc="An OpenSource, Unicode compliant Bengali Input Method"
 arch=('x86_64')
@@ -36,6 +37,7 @@ prepare() {
     git submodule init
     git config submodule."src/engine/riti".url $srcdir/riti
     git submodule update
+    git -C src/engine/riti checkout master
 }
 
 build() {
@@ -51,7 +53,7 @@ build() {
     make -C build
 }
 package_openbangla-keyboard-git() {
-    depends=('qt5-base' "openbangla-im=$pkgver" 'hicolor-icon-theme')
+    depends=('qt5-base' "openbangla-im=$pkgver" 'hicolor-icon-theme' 'zstd')
     provides=("${pkgbase%*-git}=$pkgver")
     conflicts=("${pkgbase%*-git}")
 
@@ -80,8 +82,16 @@ package_ibus-openbangla-git () {
 }
 
 package_fcitx5-openbangla-git() {
-    depends=('fcitx5' "$pkgbase=$pkgver")
+    depends=(
+        'fcitx5'
+        'gcc-libs'
+        "$pkgbase=$pkgver"
+    )
     conflicts=('fcitx5-openbangla')
+    optdepends=(
+        'fcitx5-gtk: Fcitx5 Gtk support'
+        'fcitx5-configtool: Fcitx5 Configuration Utility'
+    )
     install="fcitx5-openbangla.install"
     provides=(
         "fcitx5-openbangla=$pkgver"
