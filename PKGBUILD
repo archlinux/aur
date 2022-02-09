@@ -5,10 +5,11 @@ pkgrel=1
 pkgdesc='Dura is a background process that watches your Git repositories and commits your uncommitted changes'
 arch=(x86_64)
 url=https://github.com/tkellogg/dura
+commit=88ab59bb869b7b7d6a908d6dcbdadc5199ac92af
 license=(Apache)
 makedepends=(git cargo)
 provides=(dura)
-source=(git+$url)
+source=(git+$url#commit=$commit)
 sha512sums=('SKIP')
 
 build() {
