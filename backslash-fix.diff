@@ -1,0 +1,13 @@
+diff --git a/src/hardware/pci_bus.cpp b/src/hardware/pci_bus.cpp
+index 8e6d8b0..ab09930 100644
+--- a/src/hardware/pci_bus.cpp
++++ b/src/hardware/pci_bus.cpp
+@@ -26,7 +26,7 @@
+ #include "debug.h"
+ #include "callback.h"
+ #include "regs.h"
+-#include "..\ints\int10.h"
++#include "../ints/int10.h"
+ #include "voodoo.h"
+ 
+ 

@@ -1,0 +1,19 @@
+See https://www.vogons.org/viewtopic.php?p=849184#p849184
+diff --git a/src/hardware/voodoo_vogl.h b/src/hardware/voodoo_vogl.h
+index 34e4028..618de61 100644
+--- a/src/hardware/voodoo_vogl.h
++++ b/src/hardware/voodoo_vogl.h
+@@ -25,6 +25,13 @@
+ #endif
+ 
+ #include "SDL.h"
++#ifndef _WIN32
++	#define GL_ARB_multitexture
++	#include <GL/gl.h>
++	#undef GL_ARB_multitexture
++	#include "config.h"
++	typedef Bit32s INT32;
++#endif
+ #include "SDL_opengl.h"
+ 
+ 
