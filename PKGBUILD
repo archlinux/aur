@@ -1,5 +1,5 @@
-# Maintainer: Thomas Queiroz <thomasqueirozb@gmail.com>
-# Contributor: Sergio Schneider <spsf1964@gmail.com>
+# Maintainer: Thomas Queiroz <thomasqueirozb @ g m a i l.c o m>
+# Contributor: Sergio Schneider <spsf1964 @ g m a i l.c o m>
 
 pkgname=session-desktop-appimage
 pkgver=1.7.7
