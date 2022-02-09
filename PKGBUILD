@@ -18,25 +18,11 @@ sha256sums=('fc554353fd565c31cc82d1466f7d5e2897843d66a4a919143f8ef92cf6f1869d'
             'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
-
 prepare() {
   cd "$pkgname-$_pkgver"
 
   # Disable husky
   sed -i '/husky/d' package.json
-
-#  _ensure_local_nvm
-#  nvm install "$_nodeversion"
 }
 
 build() {
