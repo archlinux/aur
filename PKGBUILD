@@ -16,7 +16,7 @@ sha256sums=('db06e1eabcb0e81f04336324e9d032414c78a5d205d8de3193702f04e451f06c')
 
 package() {
   depends=("blender>=2.80" "luxcorerender>$pkgver")
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=)')
   install -d -m755 "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
   cp -a "${srcdir}"/BlendLuxCore-blendluxcore_v${pkgver} "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons/${_name}
   # change the search path in exporter so it finds pylux in its new location :(previous solution was much better, what happen to blendlux )
