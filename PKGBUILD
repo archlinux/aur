@@ -1,7 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zx
-pkgver=4.3.0
+pkgver=5.0.0
+_commit=7977cb5adb9545082b8edb8bfe647dedfcb98b42
 pkgrel=1
 pkgdesc='A tool for writing better scripts'
 arch=(any)
@@ -9,16 +10,16 @@ url=https://github.com/google/zx
 license=(Apache)
 depends=(nodejs)
 makedepends=(npm git)
-source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('45a5fd20a2c5e5f387ec54f41baa13c338a650a822dc9ce474123451f74cac043ca1023c77eb3f9842c03c5596e9d3ce924b6159d43ae672c7c3e46701a96df0')
+source=("git+$url.git#commit=$_commit")
+md5sums=(SKIP)
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	npm install --production
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
 	local _npmdir="$pkgdir/usr/lib/node_modules"
 	install -d "$_npmdir/$pkgname"
@@ -30,5 +31,3 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim: syntax=sh
