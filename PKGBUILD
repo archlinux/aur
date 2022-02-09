@@ -16,7 +16,7 @@ build() {
   cd "$srcdir/psychtoolbox-$pkgver"
   python setup.py build
 }
-psychtoolbox-3.0.18.2.zip
+
 package() {
   cd "$srcdir/psychtoolbox-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
