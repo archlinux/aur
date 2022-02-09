@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=96.0.3
-pkgrel=2
+pkgver=97.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -40,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('1a741d6fcf20e6833a90169f41d29141ea4610f58b848e06091a683af6304dea'
+sha256sums=('6c8a7dcb47122d033383fd62a1bcaefff0290a6c23d057898e8ff9c72749df28'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -55,6 +55,7 @@ prepare() {
 
   # Prepare KDE patch
   sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
+sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/kde/mozilla-kde.patch
   
   # Arch patches
   echo "---- Arch patches"
@@ -63,7 +64,7 @@ prepare() {
   # KDE patches (W. Rosenauer)
   echo "---- Patching for KDE"
   patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  #patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
+  patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
   
   # Ubuntu patches
   echo "---- Misc patches"
@@ -78,10 +79,10 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0025-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
+  # patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-Make-elfhack-use-toolchain.patch
+  # patch -Np1 -i ${_patches_dir}/gentoo/0026-Make-elfhack-use-toolchain.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0028-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
@@ -107,7 +108,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
   # custom patch that does not conflict with the unity patch
-  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
+  # patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
 
   # Remove Mozilla VPN ads
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
