@@ -1,0 +1,10 @@
+pkgbase = garuda-browser-settings-dummy
+	pkgdesc = A dummy package to replace garuda-browser-settings, To remove garuda browser defaults
+	pkgver = 9.9.9
+	pkgrel = 1
+	arch = any
+	license = MIT
+	provides = garuda-browser-settings
+	conflicts = garuda-browser-settings
+
+pkgname = garuda-browser-settings-dummy
