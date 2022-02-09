@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/brocode/fw"
 license=('custom:WTFPL')
 depends=('fzf' 'zlib' 'openssl')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
