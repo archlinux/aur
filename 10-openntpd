@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ -e "/run/systemd/system" ]; then
     case "$2" in
