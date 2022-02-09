@@ -6,7 +6,7 @@ pkgdesc="Dispatcher Script for openntpd"
 arch=(any)
 license=('MIT')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=('networkmanager' 'openntpd')
+depends=('networkmanager' 'openntpd' 'sh')
 source=("10-openntpd" "LICENSE")
 md5sums=('dd166c51a2bff847e4157455e15b2083'
          'bade437c691452a83923e5064da20757')
