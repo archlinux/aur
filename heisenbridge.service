@@ -1,0 +1,12 @@
+[Unit]
+Description=a bouncer-style Matrix IRC bridge
+
+[Service]
+ExecStart=python -m heisenbridge -c /etc/heisenbridge/registration.yaml
+Restart=on-failure
+User=heisenbridge
+WorkingDirectory=~
+
+
+[Install]
+WantedBy=multi-user.target

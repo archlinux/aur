@@ -1,0 +1,7 @@
+post_install() {
+	cat <<- 'EOF'
+		You may adjust the homeserver via 
+		# systemctl edit heisenbridge.service
+		if you don't use localhost:8008 as your homeserver URL
+	EOF
+}
