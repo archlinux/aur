@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=keysmith
-pkgver=21.12
+pkgver=21.02
 pkgrel=1
 pkgdesc="OTP client for Plasma Mobile and Desktop."
 arch=("any")
@@ -13,7 +13,7 @@ license=("GPL3")
 makedepends=("cmake" "extra-cmake-modules" "frameworkintegration" "kirigami2" "libsodium" "qt5-base" "qt5-quickcontrols2")
 conflicts=("keysmith-git")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=("2c6a8befbdf39593cc743c168d9a6c77d2715dcf2e652ab738c655a900487860")
+sha256sums=("1f9d1017b897d30e58bdf7e1986d65cac1c369a73c5d95a7acbb72eddf2a480c")
 
 build()
 {
