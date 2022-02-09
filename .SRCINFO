@@ -1,13 +1,13 @@
 pkgbase = larz-bin
 	pkgdesc = Archive tool for efficient decompression.
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Dirout/larz
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = larz
 	conflicts = larz
-	source = https://github.com/Dirout/larz/releases/download/v0.2.0/larz-0.2.0-x86_64.tar.gz
-	sha256sums = 00c01bb39fa81c8efda178d56cfe76a6ab7fbeeb5343b318ce75d480ecd00df9
+	source = https://github.com/Dirout/larz/releases/download/v0.3.0/larz-0.3.0-x86_64.tar.gz
+	sha256sums = abff677d845471c616b5598ff7762e4313508688dfd23e12a6bfbe3b5e0b5d9e
 
 pkgname = larz-bin
