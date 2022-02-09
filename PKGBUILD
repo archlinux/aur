@@ -1,12 +1,13 @@
 # Maintainer: Okxa <dev at okxa dot fi>
 pkgname=qddcswitch
 pkgver=1.1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Qt frontend for switching display inputs with ddcutil."
 arch=('x86_64')
 url="https://codeberg.org/Okxa/qddcswitch"
 license=('GPL3')
 depends=('qt5-base' 'ddcutil')
+makedepends=('qt5-tools')
 source=("https://codeberg.org/Okxa/qddcswitch/archive/$pkgname-$pkgver.tar.gz")
 
 build() {
