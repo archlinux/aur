@@ -1,6 +1,4 @@
 post_install() {
-  systemd-sysusers
-  chown craftbukkit:craftbukkit /srv/craftbukkit/
   cat <<EOF
   For documentation, see /usr/share/doc/craftbukkit-spigot/readme.md
 

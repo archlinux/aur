@@ -33,7 +33,8 @@ source=("BuildTools-${_buildtoolver}.jar::https://hub.spigotmc.org/jenkins/job/B
         "init-rcon.sh"
         "notify-shutdown.sh"
         "readme.md"
-        "sysusers.conf")
+        "sysusers.conf"
+        "tmpfiles.conf")
 sha256sums=('7ce7fa840d14242e40e65a03638c85ec1cb8bc97118bd76cd2c5a5e8c962948a'
             '6694a8cccb1b8da8a3ae2d05dfea693364678fc0b097f5c589b7063f9a42c392'
             'cbaaa76357925bb9e2db8ff2da31901f03c16d5a14f7c4ec05eb2cfdeba63fd7'
@@ -43,7 +44,8 @@ sha256sums=('7ce7fa840d14242e40e65a03638c85ec1cb8bc97118bd76cd2c5a5e8c962948a'
             '492c06eb11f26d3eff6742b88f2024be85eff05cf80d57a691cd3420ebdcb26c'
             '8e0e95065746d0309b60bb253879cd040b9adf76666830c28121c9610bb1e499'
             '04624c1188efb06e960503a4eec4f604114ff5ec11a63945e64ebfdb3b2c4dfb'
-            'c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575')
+            'c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575'
+            'b0d9b2592d22bd42d738002ea1509d6db93cbeef615f95b35dd8345ff971e321')
 
 pkgver() {
   _build="$(curl "https://hub.spigotmc.org/versions/$_pkgver.json" 2> /dev/null | \
@@ -81,6 +83,5 @@ package() {
   install -Dm644 "$srcdir/craftbukkit@.service" "$pkgdir/usr/lib/systemd/system/spigot@.service"
 
   install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-
-  install -dm755 "$pkgdir/srv/craftbukkit/"
+  install -Dm644 "$srcdir/tmpfiles.conf" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 }

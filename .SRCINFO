@@ -27,6 +27,7 @@ pkgbase = craftbukkit-spigot
 	source = notify-shutdown.sh
 	source = readme.md
 	source = sysusers.conf
+	source = tmpfiles.conf
 	sha256sums = 7ce7fa840d14242e40e65a03638c85ec1cb8bc97118bd76cd2c5a5e8c962948a
 	sha256sums = 6694a8cccb1b8da8a3ae2d05dfea693364678fc0b097f5c589b7063f9a42c392
 	sha256sums = cbaaa76357925bb9e2db8ff2da31901f03c16d5a14f7c4ec05eb2cfdeba63fd7
@@ -37,5 +38,6 @@ pkgbase = craftbukkit-spigot
 	sha256sums = 8e0e95065746d0309b60bb253879cd040b9adf76666830c28121c9610bb1e499
 	sha256sums = 04624c1188efb06e960503a4eec4f604114ff5ec11a63945e64ebfdb3b2c4dfb
 	sha256sums = c30b180e2e571d1f052df0b82c51f261bc4e48dbaf8806c5bc897c07e939f575
+	sha256sums = b0d9b2592d22bd42d738002ea1509d6db93cbeef615f95b35dd8345ff971e321
 
 pkgname = craftbukkit-spigot
