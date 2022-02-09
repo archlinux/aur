@@ -1,3 +1,13 @@
+2021-02-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.2.5-1:
+    [!] Fixed inadequate access verification when using proxy commands. Due to security nature of this issue, we recommend an upgrade immediately (@JustArchi, #GHSA-88ch-366c-5m89).
+  * 5.2.2.4-1:
+    It's now possible to use IPC (ASF-ui) commands and interactive console without a requirement of setting up SteamOwnerID (@JustArchi #2500).
+    Fixed SK2 regression introduced in V5.2.0.0 that broke ASF's ability to mark Steam chat messages as read (@JustArchi #2483).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
+    [Deprecation] ASF plugins that implement IBotCommand interface or use Bot.HasAccess(), Commands.Response() functionality will need slight code changes in regards to changes done as part #2501. We tried our best to keep them working as part of this release - the deprecated functionality will be removed in the next release cycle. 
 2021-01-07 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.1.5-1:
     Plugins breaking: All interface methods now return a Task instead of void, this will require from you slight code changes and a recompilation to work with this release. See my commit for rationale behind this change and more info. This was required to fix a race condition in STD (below), and I wouldn't be surprised if some of your plugins had exactly the same problem, just harder to trigger (@JustArchi).
