@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='0.6.0'
-pkgrel=5
+pkgrel=6
 _rc=2
 _pkgver=${pkgver}
 _tag_ver="v${_pkgver}-rc${_rc}"
@@ -18,8 +18,10 @@ provides=( 'skywire' )
 conflicts=( 'skywire' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
-source=("${_scripts}.tar.gz" )
-sha256sums=('cd25c47e5b155ae24a41ca1f4dd822662027b6b8a2b8bbacbaf98f746576950f')
+source=("https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
+"${_scripts}.tar.gz" )
+sha256sums=('42afb6366b877fbfe30905256cf1ec357bcc6a9e8456dfbd4935feb9bd237d1b'
+            'cd25c47e5b155ae24a41ca1f4dd822662027b6b8a2b8bbacbaf98f746576950f')
 sha256sums_i686=('c51aa91cc7170daa9f4124dcd332f70b616bc4412f7e18645543553301af7a63')
 sha256sums_x86_64=('41771efb735a209f70fe72c7039b0b8a2f8f3ea6250f13463d382ec7c5ceca12')
 sha256sums_aarch64=('13cddc46b672903340095167618a0983639bba4630d59626ffc37d470ca81b69')
@@ -86,6 +88,9 @@ _skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
 for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
+
+#install dmsghttp-config.json
+install -Dm644 ${srcdir}/dmsghttp-config.json ${pkgdir}/${_skydir}/dmsghttp-config.json
 
 #install systemd services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service

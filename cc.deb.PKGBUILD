@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=5
+pkgrel=6
 _rc=2
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
@@ -22,21 +22,22 @@ _debdeps=""
 _scripts="skywire-deb-scripts"
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
-source=(
+source=("https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
+"${_scripts}.tar.gz"
 "${_release_url}-amd64.tar.gz"
 "${_release_url}-arm64.tar.gz"
 "${_release_url}-arm.tar.gz"
-"${_scripts}.tar.gz"
 )
 noextract=(
 "${_binarchive}-amd64.tar.gz"
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}arm.tar.gz"
 )
-sha256sums=('41771efb735a209f70fe72c7039b0b8a2f8f3ea6250f13463d382ec7c5ceca12'
+sha256sums=('42afb6366b877fbfe30905256cf1ec357bcc6a9e8456dfbd4935feb9bd237d1b'
+            'a84b61364842e914d550923fd3fc005013fa1a4ecfa3d5e9f491d2c6b2182118'
+            '41771efb735a209f70fe72c7039b0b8a2f8f3ea6250f13463d382ec7c5ceca12'
             '13cddc46b672903340095167618a0983639bba4630d59626ffc37d470ca81b69'
-            '80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912'
-            'a84b61364842e914d550923fd3fc005013fa1a4ecfa3d5e9f491d2c6b2182118')
+            '80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912')
 
 build() {
   for i in ${_pkgarches[@]}; do
@@ -146,6 +147,9 @@ _msg2 'Correcting symlink names'
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-hypervisor
 #ln -rTsf ${_pkgdir}/${_skyapps}/* ${_pkgdir}/usr/bin/apps/
+
+#install dmsghttp-config.json
+install -Dm644 ${srcdir}/dmsghttp-config.json ${pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
