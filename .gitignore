@@ -1,0 +1,7 @@
+# Output of makepkg
+/pkg
+
+# Downloaded artifacts
+/src
+sigi-*.tar.gz
+sigi-*.tar.zst
