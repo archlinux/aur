@@ -1,6 +1,6 @@
 pkgbase = clockify-cli-bin
 	pkgdesc = A simple cli to manage your time entries on Clockify from terminal
-	pkgver = 0.30.1
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/lucassabreu/clockify-cli
 	arch = aarch64
@@ -8,11 +8,11 @@ pkgbase = clockify-cli-bin
 	arch = x86_64
 	license = Apache
 	provides = clockify-cli
-	source_aarch64 = clockify-cli-bin-v0.30.1.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v0.30.1/clockify-cli_0.30.1_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 03c0bbb1f41cb634f04ad31f7281e627637ee321c1d4be0d24239f433c60dd2c
-	source_i686 = clockify-cli-bin-v0.30.1.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v0.30.1/clockify-cli_0.30.1_Linux_i386.tar.gz
-	sha256sums_i686 = d275d96fe952d3a172a96729efcf2d99af78b6d5a0e2f5a26499f4858ca28be7
-	source_x86_64 = clockify-cli-bin-v0.30.1.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v0.30.1/clockify-cli_0.30.1_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 399a9427df6f03a6bf4e820ced44647e42638cc1c56877e7e6cd9990a1eb36a4
+	source_aarch64 = clockify-cli-bin-v0.31.0.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v0.31.0/clockify-cli_0.31.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = be8d4b7747625ca2f2d542913c4e3ab8037f7c188c12b9fc8860853f70ac8633
+	source_i686 = clockify-cli-bin-v0.31.0.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v0.31.0/clockify-cli_0.31.0_Linux_i386.tar.gz
+	sha256sums_i686 = 48498349a91a420b8c91a261d77c83e8ee09d5e5d9449f38cae81084356f1a2b
+	source_x86_64 = clockify-cli-bin-v0.31.0.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v0.31.0/clockify-cli_0.31.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f1c17394e4693612195e0df23d988fc73c77b7faff0d34c9e817ba9caa61c469
 
 pkgname = clockify-cli-bin
