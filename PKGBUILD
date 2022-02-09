@@ -3,7 +3,7 @@
 
 _pkgname=evolution
 pkgname=$_pkgname-git
-pkgver=3.42.0.r032.g0c4c8906ca
+pkgver=3.43.1.r052.ge7a2a728bd
 pkgrel=1
 pkgdesc="Manage your email, contacts and schedule - git version"
 arch=(i686 x86_64)
@@ -43,7 +43,7 @@ makedepends=(dconf
              networkmanager
              )
 optdepends=('highlight: text highlight plugin')
-options=('!emptydirs')
+options=('!emptydirs' 'debug' 'strip')
 url="https://wiki.gnome.org/Apps/Evolution"
 conflicts=('evolution' 'evolution-bogofilter' 'evolution-spamassassin')
 replaces=('evolution' 'evolution-bogofilter' 'evolution-spamassassin')

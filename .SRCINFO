@@ -1,6 +1,6 @@
 pkgbase = evolution-git
 	pkgdesc = Manage your email, contacts and schedule - git version
-	pkgver = 3.42.0.r032.g0c4c8906ca
+	pkgver = 3.43.1.r052.ge7a2a728bd
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evolution
 	install = evolution.install
@@ -49,6 +49,8 @@ pkgbase = evolution-git
 	replaces = evolution-bogofilter
 	replaces = evolution-spamassassin
 	options = !emptydirs
+	options = debug
+	options = strip
 	source = evolution::git+https://gitlab.gnome.org/GNOME/evolution.git
 	sha256sums = SKIP
 
