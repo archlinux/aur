@@ -9,7 +9,6 @@ url="https://vance.fish/git/libbible/"
 license=('MIT')
 depends=(sword)
 source=("$url/snapshot/$pkgname-$pkgver.tar.gz")
-sha256sums=('SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -21,3 +20,4 @@ package() {
     make DESTDIR="$pkgdir/" install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('b790706f5b4381ebc2c3f7894f4cb5ed4cfd268f51418747382f0dc79ae33ff7')
