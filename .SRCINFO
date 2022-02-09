@@ -1,13 +1,13 @@
 pkgbase = python-heatshrink2
 	pkgdesc = Compression using the Heatshrink algorithm in Python 3
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/eerimoq/pyheatshrink
 	arch = any
 	license = ISC
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.io/packages/source/h/heatshrink2/heatshrink2-0.10.0.tar.gz
-	sha256sums = 11261cea2343cfd58c52a1457a909c5da680c0f983b0088234f4fe5016408694
+	source = https://pypi.io/packages/source/h/heatshrink2/heatshrink2-0.11.0.tar.gz
+	sha256sums = c6286d1d4b92fbaeb83b0fd8b5f831c9350dcd1046e776e5aaa83d1be43835f7
 
 pkgname = python-heatshrink2

@@ -2,7 +2,7 @@
 
 pkgname=python-heatshrink2
 _pypi_pkgname=heatshrink2
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Compression using the Heatshrink algorithm in Python 3"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 depends=('python')
 optdepends=()
 source=("https://pypi.io/packages/source/h/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('11261cea2343cfd58c52a1457a909c5da680c0f983b0088234f4fe5016408694')
+sha256sums=('c6286d1d4b92fbaeb83b0fd8b5f831c9350dcd1046e776e5aaa83d1be43835f7')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
