@@ -11,9 +11,10 @@ url="https://gitlab.com/wyrd-calendar/wyrd"
 license=('GPL2')
 provides=('wyrd')
 conflicts=('wyrd')
-depends=('remind' 'ncurses' 'less' 'opam')
-makedepends=('git' 'ocaml' 'camlp5' 'python'  'autoconf')
+depends=('remind' 'ncurses' 'less')
+makedepends=('git' 'ocaml' 'camlp5' 'python' 'autoconf' 'opam')
 # doc: 'hevea' 'texlive-core' 'texlive-latexextra'
+replaces=('wyrd-git')
 source=("${url}/-/jobs/artifacts/${pkgver}/raw/wyrd-${pkgver}.tar.xz?job=release")
 md5sums=('2d24fb827e99f21a838723a8d1cb1c22')
 
