@@ -1,28 +1,36 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
-_name=contexter
 pkgname=python-contexter
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Full replacement of the contextlib standard library module'
 arch=('any')
 url=https://bitbucket.org/defnull/contexter
 license=('MIT')
 depends=('python')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        'https://bitbucket.org/defnull/contexter/raw/37184b02cfa457a2541f27ca32241ea4c75a82bc/LICENSE.txt')
-sha512sums=('85f6d0bf164bec4def05ba99a4759f1d0e0095b61015a8c429e2c249beb1407aef0294d259929043eda88f0c92dc7743fff91eda15d10700aa67a1bb117782db'
-            '8a4e46959d7522a993d636421d7fde1ffef5b4ba92ac86dd6b38cd707fed871761e18fee9e45281ddbfb39332593ee7a882291c8a5db1a714d3fb4d37bebed10')
+makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/contexter/contexter-$pkgver.tar.gz"
+        '001-setup.py.patch'
+        'LICENSE')
+sha256sums=('c730890b1a915051414a6350d8ea1cddca7d01d8f756badedb30b9bf305ea0a8'
+            'dab8e575ca79aedfe49afe7e6d78f92c6d21c7321ae408db1ae2c63ba8154827'
+            'de6c16a58caef8f4cf4c3473c9308d1ddb2d029b8a31f73cb5a944f486f05343')
+
+prepare() {
+  patch -p1 -d "contexter-$pkgver" < 001-setup.py.patch
+}
 
 build() {
-  cd $_name-$pkgver
-  python setup.py build
+  cd "contexter-$pkgver"
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
-  cd $_name-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 ../LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  export PYTHONHASHSEED=0
+  cd "contexter-$pkgver"
+  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:
