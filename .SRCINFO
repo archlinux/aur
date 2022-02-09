@@ -23,6 +23,7 @@ pkgbase = o3de-bin
 	depends = libxkbcommon-x11
 	depends = mesa
 	depends = openssl
+	depends = sdl2
 	depends = zlib
 	optdepends = ninja: Support for multiple build configurations per project
 	provides = o3de
