@@ -1,13 +1,13 @@
 pkgbase = jrobo
 	pkgdesc = Advanced IRC bot that uses its own IRC framework
-	pkgver = 2022.02.02
+	pkgver = 2022.02.09
 	pkgrel = 1
 	url = https://github.com/BullShark/JRobo
 	arch = any
 	license = GPL3
 	depends = java-runtime>=16
-	source = https://github.com/BullShark/JRobo/releases/download/2022.02.02-1/JRobo.tbz
+	source = https://github.com/BullShark/JRobo/releases/download/2022.02.09-1/JRobo.tbz
 	validpgpkeys = 031F7104E932F7BD7416E7F6D2845E1305D6E801
-	sha256sums = 33bc0a2df9f2e0f3b260bd9dd55c452df6033bbf434cbbffbab3667b76214204
+	sha256sums = 87e706fbec7326e89863b5f50aeeedc8ca9788b102b32d15c4a98e48f04d8966
 
 pkgname = jrobo

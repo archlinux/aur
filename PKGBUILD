@@ -2,7 +2,7 @@
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 pkgname=jrobo
 _pkgname=JRobo
-pkgver=2022.02.02
+pkgver=2022.02.09
 pkgrel=1
 pkgdesc='Advanced IRC bot that uses its own IRC framework'
 arch=('any')
@@ -12,16 +12,9 @@ depends=('java-runtime>=16')
 optdepends=()
 validpgpkeys=('031F7104E932F7BD7416E7F6D2845E1305D6E801')
 source=("https://github.com/BullShark/$_pkgname/releases/download/$pkgver-$pkgrel/$_pkgname.tbz")
-sha256sums=('33bc0a2df9f2e0f3b260bd9dd55c452df6033bbf434cbbffbab3667b76214204')
+sha256sums=('87e706fbec7326e89863b5f50aeeedc8ca9788b102b32d15c4a98e48f04d8966')
 
 package() {
-
-  mkdir -p $pkgdir/etc/JRobo
-  
-  if [[ ! -f "$pkgdir/etc/JRobo/Config.json" ]]; then
-    cp -a $srcdir/etc/JRobo/Config.json $pkgdir/etc/JRobo/Config.json
-  fi
-	
   mkdir -p $pkgdir/usr/lib
 	cp -a $srcdir/usr/lib/JRobo.jar $pkgdir/usr/lib/JRobo.jar
 
