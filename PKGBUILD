@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-about-git
-pkgver=0.4.6.r0.g1a85ffe
+pkgver=0.4.7.r0.g58b60df
 pkgrel=1
 pkgdesc="Cargo plugin to generate list of all licenses for a crate (git)"
 arch=('x86_64')
 url="https://github.com/EmbarkStudios/cargo-about"
 license=('Apache' 'MIT')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
