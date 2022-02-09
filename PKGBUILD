@@ -3,7 +3,7 @@
 pkgname=lib32-tclkit
 pkgver=8.6.6
 _kit_commit=cc4b5d74b6f236dc72f126d30d32bf55e9e9875f
-pkgrel=3
+pkgrel=4
 pkgdesc="single-file executable that provides a complete Tcl and Tk runtime (32 bits version)"
 arch=(x86_64)
 url="https://github.com/patthoyts/kitgen"
@@ -11,7 +11,6 @@ options=(!buildflags !makeflags !strip)
 license=(custom)
 depends=(lib32-glibc)
 makedepends=(upx ucl lib32-libx11 lib32-gcc-libs)
-provides=(tclkit)
 conflicts=(tclkit)
 
 source=("kitgen-${_kit_commit}.tar.gz::https://github.com/patthoyts/kitgen/archive/${_kit_commit}.tar.gz"

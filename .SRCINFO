@@ -1,7 +1,7 @@
 pkgbase = lib32-tclkit
 	pkgdesc = single-file executable that provides a complete Tcl and Tk runtime (32 bits version)
 	pkgver = 8.6.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/patthoyts/kitgen
 	arch = x86_64
 	license = custom
@@ -10,7 +10,6 @@ pkgbase = lib32-tclkit
 	makedepends = lib32-libx11
 	makedepends = lib32-gcc-libs
 	depends = lib32-glibc
-	provides = tclkit
 	conflicts = tclkit
 	options = !buildflags
 	options = !makeflags
@@ -25,4 +24,3 @@ pkgbase = lib32-tclkit
 	md5sums = 36c54854ce1992944eed7671f8742bad
 
 pkgname = lib32-tclkit
-
