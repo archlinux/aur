@@ -2,20 +2,20 @@
 
 pkgname=triton
 _pkgname=Triton
-pkgver=0.8.1
+pkgver=0.9
 pkgrel=1
 pkgdesc='Dynamic binary analysis framework'
 url='https://triton.quarkslab.com/'
 arch=('x86_64')
 license=('Apache')
-depends=('boost-libs' 'capstone' 'z3' 'python')
+depends=('boost-libs' 'capstone' 'z3' 'python' 'llvm')
 makedepends=('boost' 'cmake')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JonathanSalwan/${_pkgname}/archive/v${pkgver}.tar.gz)
-sha512sums=('04336327c59c6e37ccf6a05046f5ca0ece5b513f03f5c42abcfb309f8b76b14f75d0021dd09c848396ae889849edbffaa5df790e542bcfca26cc727a70c4e810')
+sha512sums=('f34cc9787837dc826e21997a86c32087b29ed9662bc8e0ac8ddb934978a64bdfd54c3d1303689be2a9dff4a0f3c9128219e04881e6c98f5e21a27ecd57489586')
 
 build() {
   cd ${_pkgname}-${pkgver}
-  cmake ./ -DPYTHON36=on -DCMAKE_INSTALL_PREFIX=/usr
+  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
