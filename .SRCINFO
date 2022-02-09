@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-frequency-boost-switch-git
+	pkgdesc = Add a toggle to enable/disable CPU frequency boost in Gnome Power Profiles menu.
+	pkgver = r5.2bce622
+	pkgrel = 1
+	url = https://gitlab.com/metal03326/gnome-frequency-boost-switch
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = zip
+	depends = gnome-shell>=1.41
+	provides = gnome-shell-extension-frequency-boost-switch
+	conflicts = gnome-shell-extension-frequency-boost-switch
+	source = git+https://gitlab.com/metal03326/gnome-frequency-boost-switch.git
+	b2sums = SKIP
+
+pkgname = gnome-shell-extension-frequency-boost-switch-git
