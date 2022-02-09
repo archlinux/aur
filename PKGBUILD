@@ -47,4 +47,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR="${pkgdir}" install
+    chmod 0750 "${pkgdir}"/usr/share/polkit-1/rules.d
 }
