@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=keysmith
-pkgver=21.02
+pkgver=22.02
 pkgrel=1
 pkgdesc="OTP client for Plasma Mobile and Desktop."
 arch=("any")
