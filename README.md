@@ -1,2 +1,0 @@
-# susfetch
-Neofetch, but sus.
