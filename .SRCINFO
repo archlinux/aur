@@ -1,6 +1,6 @@
 pkgbase = python-gdbgui
 	pkgdesc = Browser-based frontend to gdb (gnu debugger). Add breakpoints, view the stack, visualize data structures, and more in C, C++, Go, Rust, and Fortran. Run gdbgui from the terminal and a new tab will open in your browser. https://gdbgui.com
-	pkgver = 0.14.0.2
+	pkgver = 0.15.0.1
 	pkgrel = 1
 	url = https://github.com/cs01/gdbgui
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = python-gdbgui
 	depends = python-pygdbmi>=0.10.0.0
 	depends = python-gevent
 	depends = python-gevent-websocket
-	source = python-gdbgui-0.14.0.2.tar.gz::https://github.com/cs01/gdbgui/archive/v0.14.0.2.tar.gz
-	md5sums = 848c288a3141b04f58931076069ae5e1
+	source = python-gdbgui-0.15.0.1.tar.gz::https://github.com/cs01/gdbgui/archive/v0.15.0.1.tar.gz
+	md5sums = 8cb3515dd02b3e4788d4bbbaa940c4fe 
 
 pkgname = python-gdbgui
 	depends = python
