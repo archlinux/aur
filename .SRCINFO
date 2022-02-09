@@ -1,7 +1,7 @@
 pkgbase = slim-xserver-ready
 	pkgdesc = graphical login manager for X11 with xserver_ready command
 	pkgver = 1.3.6
-	pkgrel = 8
+	pkgrel = 9
 	url = http://sourceforge.net/projects/slim.berlios/
 	arch = i686
 	arch = x86_64
@@ -44,6 +44,6 @@ pkgbase = slim-xserver-ready
 	sha256sums = 5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def
 	sha256sums = a6d021e52661c74914dc1c4a08ffbd7fce63da41005bfe006e252a74c57c9b70
 	sha256sums = 03149c9f5afb4679e9421d9965ecc126c0b159636212000aca98cb674b531ca7
-	sha256sums = 86f7b11fadc70769efaa5861924d52aef86e6bcd7137073cb29f8d2b725f1648
+	sha256sums = b5ec2da4d3fa62b59efe14412347825f21ad471b6131cfd9b60aee7aff70c661
 
 pkgname = slim-xserver-ready

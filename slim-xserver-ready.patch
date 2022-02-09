@@ -27,7 +27,7 @@ diff -uprw slim-1.3.6-orig/app.cpp slim-1.3.6/app.cpp
  			pw = getpwnam("root");
  			break;
  		case Panel::Console:
-@@ -747,6 +752,28 @@ void App::Halt() {
+@@ -747,6 +752,34 @@ void App::Halt() {
  	exit(OK_EXIT);
  }
  
@@ -41,15 +41,21 @@ diff -uprw slim-1.3.6-orig/app.cpp slim-1.3.6/app.cpp
 +	};
 +#endif
 +
++	std::string cmd = cfg->getOption("stopslim_cmd");
 +	/* Write message */
-+	//LoginPanel->Message((char*)cfg->getOption("Stopping Slim").c_str());
-+	LoginPanel->Message((char*)"Stopping Slim");
++	if(!cmd.empty()) {
++		LoginPanel->Message((char*)"Stopping Slim");
++	} else {
++		LoginPanel->Message((char*)"Not stopping Slim");
++		sleep(3);
++		return;
++	}
 +	sleep(3);
 +
 +	/* Stop server and then execiute the stopslim_cmd */
 +	StopServer();
 +	RemoveLock();
-+	system(cfg->getOption("stopslim_cmd").c_str());
++	system(cmd.c_str());
 +	exit(OK_EXIT);
 +}
 +

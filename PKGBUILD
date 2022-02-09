@@ -12,10 +12,12 @@
 #   make your own sessiondir with numerically storted sessions;
 #   eg 01.desktop 02.desktop etc etc. The display names are
 #   taken from the desktop files.
+#   Added a stop-slim login and stopslim_cmd option to be
+#   used to turn off slim.
 
 pkgname=slim-xserver-ready
 pkgver=1.3.6
-pkgrel=8
+pkgrel=9
 pkgdesc="graphical login manager for X11 with xserver_ready command"
 arch=('i686' 'x86_64' 'aarch64')
 url="http://sourceforge.net/projects/slim.berlios/"
@@ -49,7 +51,7 @@ sha256sums=('21defeed175418c46d71af71fd493cd0cbffd693f9d43c2151529125859810df'
             '5bf44748b5003f2332d8b268060c400120b9100d033fa9d35468670d827f6def'
             'a6d021e52661c74914dc1c4a08ffbd7fce63da41005bfe006e252a74c57c9b70'
             '03149c9f5afb4679e9421d9965ecc126c0b159636212000aca98cb674b531ca7'
-            '86f7b11fadc70769efaa5861924d52aef86e6bcd7137073cb29f8d2b725f1648'
+            'b5ec2da4d3fa62b59efe14412347825f21ad471b6131cfd9b60aee7aff70c661'
             )
 
 prepare() {
