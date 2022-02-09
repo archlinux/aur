@@ -1,6 +1,6 @@
 pkgbase = evolution-data-server-git
 	pkgdesc = Centralized access to appointments and contacts
-	pkgver = 3.42.0.r019.g882ebf6d1
+	pkgver = 3.43.1.1.r032.g8d8a0e343
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Evolution
 	install = evolution-data-server.install
@@ -20,6 +20,8 @@ pkgbase = evolution-data-server-git
 	depends = libsignon-glib
 	provides = evolution-data-server
 	conflicts = evolution-data-server
+	options = debug
+	options = strip
 	source = evolution-data-server::git+https://gitlab.gnome.org/GNOME/evolution-data-server.git
 	sha256sums = SKIP
 
