@@ -1,24 +1,23 @@
 #!/bin/bash
 
-
-if [ -e /run/systemd/system ]; then
-        case "$2" in
-                up | vpn-up)
-                        systemctl start openntpd.service
-                ;;
-                down | vpn-down)
-                        systemctl stop openntpd.service
-                ;;
-        esac
+if [ -e "/run/systemd/system" ]; then
+    case "$2" in
+        up | vpn-up)
+            systemctl start openntpd.service
+        ;;
+        down | vpn-down)
+            systemctl stop openntpd.service
+        ;;
+    esac
 elif [ -e "/etc/rc.d/openntpd" ]; then
-          case "$2" in
-                  up | vpn-up)
-                          /etc/rc.d/openntpd start
-                  ;;
-                  down | vpn-down)
-                          /etc/rc.d/openntpd stop
-                  ;;
-          esac
+    case "$2" in
+        up | vpn-up)
+            /etc/rc.d/openntpd start
+        ;;
+        down | vpn-down)
+            /etc/rc.d/openntpd stop
+        ;;
+    esac
 else
     echo "Init system not detected, doing nothing!"
     exit 2
