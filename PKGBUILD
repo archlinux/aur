@@ -12,6 +12,6 @@ md5sums=('dd166c51a2bff847e4157455e15b2083'
          'bade437c691452a83923e5064da20757')
 
 package() {
-    install -Dm700 $srcdir/10-openntpd $pkgdir/etc/NetworkManager/dispatcher.d/10-openntpd
+    install -Dm744 $srcdir/10-openntpd $pkgdir/etc/NetworkManager/dispatcher.d/10-openntpd
     install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
