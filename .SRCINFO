@@ -1,12 +1,15 @@
 pkgbase = avisynth-plugin-lsmashsource-git
 	pkgdesc = Plugin for Avisynth: lsmashsource (GIT version)
-	pkgver = r1042.c128310
+	pkgver = v2.0.g0ba81c9
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=167435
 	arch = x86_64
-	license = LGPL
 	makedepends = git
 	makedepends = meson
+	makedepends = avisynthplus
+	makedepends = vapoursynth
+	makedepends = l-smash
+	makedepends = ffmpeg
 	depends = avisynthplus
 	depends = libavutil.so
 	depends = libavformat.so
@@ -15,8 +18,7 @@ pkgbase = avisynth-plugin-lsmashsource-git
 	depends = liblsmash.so
 	provides = avisynth-plugin-lsmashsource
 	conflicts = avisynth-plugin-lsmashsource
-	source = lsmashsource::git+https://github.com/HolyWu/L-SMASH-Works.git
+	source = lsmashsource::git+https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works.git
 	sha256sums = SKIP
 
 pkgname = avisynth-plugin-lsmashsource-git
-
