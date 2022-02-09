@@ -1,15 +1,15 @@
 pkgbase = cargo-about
 	pkgdesc = Cargo plugin to generate list of all licenses for a crate
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://github.com/EmbarkStudios/cargo-about
 	arch = x86_64
 	license = Apache
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = cargo-about-0.4.6.tar.gz::https://github.com/EmbarkStudios/cargo-about/archive/0.4.6.tar.gz
-	sha256sums = 100e50849ca53fb8a6919d91b7cd318090a4068f869812dbdc5ea6be6a2d9045
+	source = cargo-about-0.4.7.tar.gz::https://github.com/EmbarkStudios/cargo-about/archive/0.4.7.tar.gz
+	sha256sums = 186e44af7edde48e682b2670ef52ef21687629900f5220bbd3742cb2d665bb49
 
 pkgname = cargo-about
