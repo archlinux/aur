@@ -6,7 +6,7 @@ pkgdesc="Minimal CLI JS8 software"
 arch=('any')
 license=('MIT')
 url="https://github.com/rtmrtmrtmrtm/fate"
-depends=('fftw' 'libsndfile' 'portaudio')
+depends=('fftw' 'libsndfile' 'portaudio' 'liquid-dsp')
 source=($pkgname::"git+$url.git")
 
 sha256sums=('SKIP')

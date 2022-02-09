@@ -8,6 +8,7 @@ pkgbase = fate-git
 	depends = fftw
 	depends = libsndfile
 	depends = portaudio
+	depends = liquid-dsp 
 	source = fate-git::git+https://github.com/rtmrtmrtmrtm/fate.git
 	sha256sums = SKIP
 
