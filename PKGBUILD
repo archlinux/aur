@@ -15,7 +15,7 @@ makedepends=("python" "sdl2")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("git+${url}"
-		"file://baserom.${_sm64ver}.z64"
+        "file://baserom.${_sm64ver}.z64"
         "${_pkgname}.sh"
         "${_pkgname}.desktop")
 sha256sums=("SKIP"
