@@ -6,10 +6,10 @@
 # Original Packager: Viktor Drobot <linux776@gmail.com>
 pkgname=qt4-bin
 pkgver=4.8.7
-pkgrel=34
+pkgrel=35
 pkgdesc="Prebuilt binary for Qt4. Alternative for faster installing."
 arch=(x86_64)
-url="https://ftp.desolve.ru/ftp/viktor/binpkg/qt4"
+url="https://desolve.ru/archrepo/x86_64/"
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 depends=('sqlite' 'ca-certificates' 'fontconfig' 'libgl' 'libxrandr' 'libxv'
         'libxi' 'alsa-lib' 'xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils'

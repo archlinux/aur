@@ -1,8 +1,8 @@
 pkgbase = qt4-bin
 	pkgdesc = Prebuilt binary for Qt4. Alternative for faster installing.
 	pkgver = 4.8.7
-	pkgrel = 34
-	url = https://ftp.desolve.ru/ftp/viktor/binpkg/qt4
+	pkgrel = 35
+	url = https://desolve.ru/archrepo/x86_64/
 	arch = x86_64
 	license = GPL3
 	license = LGPL
@@ -26,8 +26,7 @@ pkgbase = qt4-bin
 	conflicts = qt4
 	replaces = qt<=4.8.4
 	options = !strip
-	source = https://ftp.desolve.ru/ftp/viktor/binpkg/qt4/qt4-4.8.7-34-x86_64.pkg.tar.zst
+	source = https://desolve.ru/archrepo/x86_64//qt4-4.8.7-35-x86_64.pkg.tar.zst
 	md5sums = SKIP
 
 pkgname = qt4-bin
-
