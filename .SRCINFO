@@ -1,6 +1,6 @@
 pkgbase = cdesktopenv-git
 	pkgdesc = Common Desktop Environment
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/cdesktopenv/
 	install = cdesktopenv.install
