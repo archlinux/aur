@@ -6,8 +6,8 @@ version=1.3.0
 files=(__init__.py operators.py panel.py preferences.py utils.py)
 
 pkgname=blender-plugin-${name}
-pkgver=1.3.0_r16.8eb2b18
-pkgrel=2
+pkgver=1.3.0_r35.ef7c1a2
+pkgrel=1
 pkgdesc="This Blender addon provides a set of tools for editing vertex normals. Y.A.V.N.E. can dramatically improve the visual quality of a mesh without altering geometry."
 arch=('any')
 url="https://github.com/fedackb/yavne"
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
