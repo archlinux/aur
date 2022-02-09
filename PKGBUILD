@@ -51,7 +51,7 @@ _major=5.16
 _minor=8
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,9 +72,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
          # the main kernel config files
         'config')
 
@@ -318,10 +319,11 @@ sha512sums=('66a0874eed7b2367fc0b69bee8c40a945b9e58d1a820c3e7e741bcb28774c811dea
             'SKIP'
             '2d2092e75d87100c0c4e3bd1076533c233b30cc186c96a31088a7a41540d1c648aaa764ff6fbf85b90e029771743c0234d2c8310fbd0b3ef78dd3cb38554cbc9'
             '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
-            '78e3537d8508280214dfe5d18e9cfe67c2acbc2ce22b2f2b1923457ba5fed1b075675c499a11e7a44072008a1643cc23d978a1fc2e12aab245a2284cd1dfd0a7'
-            'e15f3ff11bd829677df04fc5f72131441ebc933fa0f1b92daedb6071dfc2ebb1c5ac85a5c952df6a3d35cdf36544cd026f4fa4095256ea2a5a906e231ad8f33c'
-            '3b86c1dd1b5824f71354ac36a96273ac1ca98b18e753966cdd99e2d87d5d9037d7e6c0619db0d6be4defe6bfed9d5819146a524301b872dbf71ec635ceedaa67'
-            'afb91da3b0e1b665c8ae0d193605aa080df99a90d6284476adc09517ae7eea36ddc8a428df4fd39a082214de9c3e0aab124badd649fe61cfd6c40b98ab7ac9cb')
+            'b778cb2a026174b4f0989998101361403890ff362f6b114fe88079f6bc6f92b19587c48f6260be7b4e60440bad3ec6914f225511390e2e39b665d1d2bed71e45'
+            '95b13eb881ce1fdfa37a1322d9bde3bba54f635b06e3e8f4ef9de8e0ed6c8b11d91cd6d2f56fa38a0f7a0425c8bc02889f3d138781baed107c8ee427146f2c53'
+            'a46a2fea4b2c83e2569cdd343933bb991466752d3c28d70698b1c477134ac0db7d400e03ea569d4f2e73c3e98cc2b5760a7588faf85dc210c1f5786ad01f66ab'
+            '748cd685447336ce0d43fca04dd489176777364030c2d0d24b782123c49b01bfd8e4c672a119478be81084db1637bd590b860b92fd2fd53c6259d7f3858448ff'
+            '4920cf17838c3fc50c757218772c12e844449dd14536a9b8fc2a4dc5ddc4cf8ff8eac3b49b3295799feb590b7d65040a3cd56c28a8425c3925eef07401eeb82a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
