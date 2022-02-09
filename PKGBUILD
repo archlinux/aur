@@ -11,7 +11,6 @@ license=('MIT')
 options=(!emptydirs)
 depends=('ruby' 'ruby-nokogiri')
 makedepends=('ruby-bundler' 'ruby-rake' 'ruby-rspec')
-checkdepends=('ruby-pry')
 source=(
     "${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     remove_yard_dependency.patch
@@ -27,6 +26,8 @@ prepare() {
 
   # remove unneeded dependencies
   patch --strip=1 --input=../remove_yard_dependency.patch
+
+  sed --in-place --regexp-extended '/pry/d' "${_gemname}.gemspec" spec/spec_helper.rb
 }
 
 build() {
