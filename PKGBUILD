@@ -1,27 +1,40 @@
 # Maintainer: Olivier Biesmans <o.aurlinux@biesmans.fr>
 
 pkgname=python-tellcore-py
-pkgver=0.1.0
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Python wrapper for Telldus' home automation library."
 arch=('any')
-url="https://pypi.python.org/pypi/tellcore-py"
+url='https://github.com/erijo/tellcore-py'
 license=('GPL3')
-groups=('devel')
 depends=('python')
-makedepends=('python')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=("https://pypi.python.org/packages/source/t/${pkgname#python-}/${pkgname#python-}-${pkgver}.tar.gz")
-md5sums=('5f4f8104647dd4127f60a2d9704d588a')
+makedepends=(
+  'python-setuptools'
+  'python-build'
+  'python-install'
+  'python-wheel'
+  'python-sphinx')
+changelog=CHANGES.rst
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/tellcore-py/tellcore-py-$pkgver.tar.gz")
+sha256sums=('403d8e9d4f8ad95bda4c681f4d897c7633b48d25ee85b5bf39f30a362a49b122')
+
+build() {
+  cd "tellcore-py-$pkgver"
+  python -m build --wheel --skip-dependency-check --no-isolation
+  cd docs
+  make man
+}
+
+check() {
+  cd "tellcore-py-$pkgver"
+  python run_tests
+}
 
 package() {
-  cd "$srcdir/${pkgname#python-}-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  export PYTHONHASHSEED=0
+  cd "tellcore-py-$pkgver"
+  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 docs/_build/man/tellcore-py.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
 # vim:set ts=2 sw=2 et:
