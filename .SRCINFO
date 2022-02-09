@@ -1,0 +1,13 @@
+pkgbase = jless
+	pkgdesc = A command-line pager for JSON data.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/PaulJuliusMartinez/jless
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = jless-0.7.1.tar.gz::https://github.com/PaulJuliusMartinez/jless/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 8b36d117ac0ef52fa0261e06b88b5ae77c2ff4beeb54f2c906a57f066dc46179
+
+pkgname = jless
