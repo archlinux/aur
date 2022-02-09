@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 4.3
+	pkgver = 4.4
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -16,7 +16,7 @@ pkgbase = aurutils
 	optdepends = zsh: zsh completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: default pager
-	source = aurutils-4.3.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/4.3.tar.gz
-	sha256sums = 2a1403c25d2af7062865aa3fe110ed2f253c3ee2b2ca67c844b21a40f8b3acef
+	source = aurutils-4.4.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/4.4.tar.gz
+	sha256sums = c28278d9d256c476ef98c8ed1c2839eb5982510fe1ef98a5b790858fd9e9f240
 
 pkgname = aurutils
