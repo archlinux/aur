@@ -15,7 +15,7 @@ source=(
 install=unified-kernel-image-hooks.install
 sha256sums=('6aa273c83faf1d15664bb2c39950ffdab0c540f5ace5dd58e531f9a9de515c54'
             'c90ff05c0fb9629f09b1ab7bd672ff2a88dc6a3e6a474ac1c6d82096431c477b'
-            '1d68aad096c55357e574291fe93c2c2be6bcd3e493edd4ea15da0c12ce0f0f38')
+            '539caa2fdabd1c9e2dcd632ff97cc45d85df62fcb668c8ed8e0de8f8c6504efb')
 
 package() {
     install -m755 -D unified-kernel-image-backup.sh "$pkgdir/usr/libexec/unified-kernel-image-hooks/unified-kernel-image-backup.sh"
