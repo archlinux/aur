@@ -1,3 +1,4 @@
+# Maintainer: Slips slipfox(underscore)xyz(at)riseup(dot)net
 _pkgname=virm
 pkgname=${_pkgname}-git
 pkgver=r3.053c1a4
@@ -8,7 +9,7 @@ url="https://git.envs.net/Slips/virm"
 license=('GPL3')
 groups=()
 depends=()
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
+makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 replaces=()
