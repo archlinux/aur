@@ -1,0 +1,16 @@
+pkgbase = susfetch-git
+	pkgdesc = Neofetch, but sus
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/joshdabosh/susfetch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = neofetch
+	depends = jp2a
+	provides = susfetch
+	conflicts = susfetch
+	source = git+https://github.com/joshdabosh/susfetch.git#branch=master
+	sha256sums = SKIP
+
+pkgname = susfetch-git
