@@ -5,16 +5,15 @@ _projectname=electron
 _major=17
 _pkgname="${_projectname}${_major}"
 pkgname="${_pkgname}"-bin
-_alpha=3
-_pkgver="${_major}.0.0-alpha.${_alpha}"
+_pkgver="${_major}.0.0"
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies - binary version ${_major}"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url=https://electronjs.org/
 license=('MIT')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}" "${_projectname}=${pkgver}")
+conflicts=("${_pkgname}" "$_projectname")
 depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
          'snappy')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
@@ -39,14 +38,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('9918e8920025b21db2b8bea48537a2f30ded9d06704d2bc65562544c79f90dd1'
-                   'beb20545fddbe0c03ec51ad9667b651a6a2cea7df12e2c7fe86e40596bd9d810')
-sha256sums_i686=('88bf20358fc29707e4fc48b98c09ba419810f2872d7c3fb2053f8bd06fcf961f'
-                 '1c724973af838656f848a27b44d2955ea1eeed47f7b419a2c1e8b757390237fc')
-sha256sums_armv7h=('ab9556bf7ce88fe85b9596245465a315334f6d7efd86cc02ef5bccf885accc99'
-                   'cb04b44755995780b0000899d84642a9afafcb6c2b1be20c717c933eac7fdf3e')
-sha256sums_aarch64=('51afe35ca410b9f541160a245a7781ab1fb48bbbb32c2b85b1fa03bed157227d'
-                    '04a0b2229b02f6f92ec6a9316557add4d285b591e1582cfdf385c7ef1aadfc95')
+sha256sums_x86_64=('80b769a5e59b0ac796d6c893a846a42ca7e1cc0fc6e100311c0a07c470ea63c9'
+                   'dc74e28719a79f05dd741cda8c22c2bb164dec178c6d560af085910b37cf000b')
+sha256sums_i686=('fc0d56285a41fbad4ad4f2055f409362720627600de9a5652503bf576793ebb8'
+                 '6f6fe5fa0452e871abe82dbd25d7cf92ab7011995b3b2b15d04d8691ddc9e9de')
+sha256sums_armv7h=('472382b82d96054d390ee0dd7476371bf92766a1d796d5679e8780903f20b47a'
+                   '29b31c5e77d4d6d9e1a4340fdf08c28ae6698ea9e20d636cec8a59dc758815ef')
+sha256sums_aarch64=('103ee0f445dfadc6f2603567e3a3eddd9626b884f444773a021029ab6a072e42'
+                    'e7bf2ec09b8a7018ba417fc670a15594fb8f3e930626485f2423e9a89e2dcbd0')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
