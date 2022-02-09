@@ -1,9 +1,9 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=dfmderainbow
-pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.0.g22faeb5
-pkgrel=3
+pkgname="vapoursynth-plugin-${_plug}-git"
+pkgver=v2.1.g61bafd9
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
@@ -13,9 +13,8 @@ depends=('vapoursynth-plugin-temporalmedian-git'
          'vapoursynth-plugin-fluxsmooth-git'
          'vapoursynth-plugin-msmoosh-git'
          'vapoursynth-plugin-minideen-git'
-         )
-optdepend=('vapoursynth-plugin-mvtools-git'
-           'vapoursynth-plugin-fft3dfilter-git'
+         'vapoursynth-plugin-mvtools-git'
+         'vapoursynth-plugin-fft3dfilter-git'
            )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
