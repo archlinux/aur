@@ -1,6 +1,6 @@
 pkgbase = prey-node-client
 	pkgdesc = Remote tracking and monitoring application for laptops, smartphones, and other electronic devices
-	pkgver = 1.9.17
+	pkgver = 1.9.18
 	pkgrel = 1
 	url = https://preyproject.com/
 	install = prey-node-client.install
@@ -23,9 +23,9 @@ pkgbase = prey-node-client
 	source = prey_project
 	sha256sums = bfe1cd56443eb3e4dd49974e955ffe8ad33b5a7ec749e53cc2682bde82dceb80
 	sha256sums = 41f29d334e7671b07cfdc848b2752ccc51710471285e8ebe61c07faa0d36160d
-	source_x86_64 = https://downloads.preyproject.com/prey-client-releases/node-client/1.9.17/prey-linux-1.9.17-x64.zip
-	sha256sums_x86_64 = ff50c4bbe4a253f3e16bb5c13b34fe20da4d229d10cd550bbaaba717bbf1c643
-	source_i686 = https://downloads.preyproject.com/prey-client-releases/node-client/1.9.17/prey-linux-1.9.17-x86.zip
-	sha256sums_i686 = edb2c75b5ad025477f052c1d8d43ff4c45499d36891c7a6f6cf7354556fe2314
+	source_x86_64 = https://downloads.preyproject.com/prey-client-releases/node-client/1.9.18/prey-linux-1.9.18-x64.zip
+	sha256sums_x86_64 = dca8e1d8a4852764e1121df305f4c3dba02e3647eb1fc26cf9fa077f45d88866
+	source_i686 = https://downloads.preyproject.com/prey-client-releases/node-client/1.9.18/prey-linux-1.9.18-x86.zip
+	sha256sums_i686 = 890339bee41e2b477a677e82e8ddad704203629af633fae29c888cd9614ad628
 
 pkgname = prey-node-client
