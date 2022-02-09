@@ -9,7 +9,7 @@ license=('MIT')
 url="http://www.gnome.org/projects/NetworkManager/"
 depends=('networkmanager' 'openntpd' 'sh')
 source=("10-openntpd" "LICENSE")
-md5sums=('c8762b8a670b894c40a883c2b94a5122'
+md5sums=('88ae5da138b5273f5a24bf34c34155a1'
          'bade437c691452a83923e5064da20757')
 
 package() {

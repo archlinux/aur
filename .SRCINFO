@@ -10,7 +10,7 @@ pkgbase = networkmanager-dispatcher-openntpd
 	depends = sh
 	source = 10-openntpd
 	source = LICENSE
-	md5sums = c8762b8a670b894c40a883c2b94a5122
+	md5sums = 88ae5da138b5273f5a24bf34c34155a1
 	md5sums = bade437c691452a83923e5064da20757
 
 pkgname = networkmanager-dispatcher-openntpd

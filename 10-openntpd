@@ -6,7 +6,10 @@ if [ -e "/run/systemd/system" ]; then
             systemctl start openntpd.service
         ;;
         down | vpn-down)
-            systemctl stop openntpd.service
+            # Check if still online (e.g. because of another network connection)
+            if [ ! "$(nmcli networking connectivity)" = "full" ]; then
+                systemctl stop openntpd.service
+            fi
         ;;
     esac
 elif [ -e "/etc/rc.d/openntpd" ]; then
@@ -15,7 +18,10 @@ elif [ -e "/etc/rc.d/openntpd" ]; then
             /etc/rc.d/openntpd start
         ;;
         down | vpn-down)
-            /etc/rc.d/openntpd stop
+            # Check if still online (e.g. because of another network connection)
+            if [ ! "$(nmcli networking connectivity)" = "full" ]; then
+                /etc/rc.d/openntpd stop
+            fi
         ;;
     esac
 else
