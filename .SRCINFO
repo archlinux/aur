@@ -1,0 +1,14 @@
+pkgbase = vtm-git
+	pkgdesc = Terminal multiplexer with window manager and session sharing
+	pkgver = 0.5.9999j.r0.g186806e
+	pkgrel = 1
+	url = https://github.com/netxs-group/vtm
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/netxs-group/vtm.git
+	md5sums = SKIP
+
+pkgname = vtm-git
