@@ -2,43 +2,41 @@
 
 _plug=reduceflicker
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.8766391
+pkgver=0.0.0.VS.3.ge37d9b2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://github.com/VFR-maniac/VapourSynth-ReduceFlicker'
-license=('GPL')
-depends=('vapoursynth'
-         'fftw'
-         )
-makedepends=('git')
+url='https://github.com/AmusementClub/ReduceFlicker'
+license=('LGPL')
+depends=('vapoursynth')
+makedepends=('git'
+             'meson'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/VFR-maniac/VapourSynth-ReduceFlicker.git")
+source=("${_plug}::git+https://github.com/AmusementClub/ReduceFlicker.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags| tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags| tr - .)"
 }
 
 prepare() {
-  rm -fr "${_plug}/VapourSynth.h"
+  mkdir -p build
 }
 
 build() {
-  cd "${_plug}"
-  ./configure \
-    --prefix=/usr \
-    --extra-cxxflags="${CXXFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-    --extra-ldflags="${LDFLAGS}"
+  cd build
+    arch-meson "../${_plug}/vapoursynth" \
+    --libdir /usr/lib/vapoursynth
 
-  make
+  ninja
 }
 
 package(){
-  cd "${_plug}"
-  make DESTDIR="${pkgdir}" install
-#   install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  install -Dm644 "${_plug}/vapoursynth/readme.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 "${_plug}/vapoursynth/LICENSE.LGPLv2.1" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
