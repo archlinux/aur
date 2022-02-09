@@ -1,6 +1,6 @@
 pkgname=dura-git
 _pkgname=dura
-pkgver=0.1.0
+pkgver=v0.1.0.r26.g88ab59b
 pkgrel=1
 pkgdesc='Dura is a background process that watches your Git repositories and commits your uncommitted changes'
 arch=(x86_64)
@@ -14,6 +14,11 @@ sha512sums=('SKIP')
 build() {
   cd $_pkgname
   cargo build --locked --release
+}
+
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
