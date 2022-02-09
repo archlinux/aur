@@ -1,6 +1,6 @@
 pkgbase = wwphone
 	pkgdesc = A proprietary CTI and SIP client from wwcom
-	pkgver = 3.4.11
+	pkgver = 3.4.12
 	pkgrel = 1
 	url = https://www.wwcom.ch/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wwphone
 	depends = libappindicator-gtk3
 	depends = libpulse
 	depends = libxss
-	source = https://wwcom.ch/downloads/wwphone_3_4_11.deb
-	sha256sums = 482d362d77f2939bdf129b4a9a4659532b17445d3e8c69acee4d19dcc80740f2
+	source = https://wwcom.ch/downloads/wwphone_3_4_12.deb
+	sha256sums = d3af90842f5093b2596119fd76d3f671ada9b3f7afa597065099cfc6edd8c803
 
 pkgname = wwphone
