@@ -36,7 +36,7 @@ b2sums=('c2532a9a2586a6e8d353b99ddb2da8e77ef24367ff75577bf1194994b1268f1412caf8f
 
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd "${srcdir}"
   install -d -m755  "${pkgdir}/opt/${pkgname}"
 
