@@ -1,4 +1,5 @@
-# Maintainer: Jelle van der Waa: <jelle vdwaa nl>
+# Maintainer: mynacol <dc07d át mynacol dót xyz>
+# Contributor: Jelle van der Waa: <jelle vdwaa nl>
 pkgname=networkmanager-dispatcher-openntpd
 pkgver=1.1
 pkgrel=1
