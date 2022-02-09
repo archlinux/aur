@@ -1,7 +1,7 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
 pkgver=3.1.r815.g1654c8ec
-pkgrel=2
+pkgrel=3
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
