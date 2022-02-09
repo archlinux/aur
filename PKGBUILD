@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=app-icon-preview-git
-pkgver=3.0.0.r20.gb69145e
+pkgver=3.1.0.r3.g6225c20
 pkgrel=1
 pkgdesc='Tool for designing applications icons'
 arch=(x86_64 aarch64)
