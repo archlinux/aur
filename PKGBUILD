@@ -131,6 +131,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # see: https://lore.kernel.org/lkml/20220201205328.123066-1-dwmw2@infradead.org/
         "Parallel-boot-v4-on-5.16.5.patch"
 
+        # crypto-next: Clang auto-vectorization
+        "xor-enable-auto-vectorization-in-Clang.patch"
+
         # -- patch from Chromium developers; more accurately report battery state changes
         "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
 
@@ -172,6 +175,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'e74649fb883f2c8c3703c730e45119fca7126dc0599d6bc814de6dcf5a07e7cb'
             '81ce39928b98caf2be3cbeaf7f86305051523fea2ccad225d619bd3999d63ddf'
             'ad73b179ea1a309205744fbf415a7b19108e1c1b452b913894752bb717165d81'
+            '9fd097f24ddbc7fd3be031fb649b32645082580c0aa039c491bc5fe161c7a7ac'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
