@@ -1,6 +1,6 @@
 pkgbase = networkmanager-dispatcher-openntpd
 	pkgdesc = Dispatcher Script for openntpd
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager/
 	arch = any
