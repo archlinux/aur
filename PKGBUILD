@@ -1,7 +1,7 @@
 # Maintainer: tywyqu <tywyqu[at]hi2[dot]in>
 pkgname=storj-uplink-git
 _basename=storj
-pkgver=1.46.3
+pkgver=1.48.2
 pkgrel=1
 pkgdesc="Storj Tardigrade Uplink"
 arch=('x86_64')
