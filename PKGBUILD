@@ -7,6 +7,7 @@ pkgdesc="This library provides a simplified interface to the SWORD project."
 arch=('x86_64')
 url="https://vance.fish/git/libbible/"
 license=('MIT')
+depends=(sword)
 source=("$url/snapshot/$pkgname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 

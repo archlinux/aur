@@ -5,6 +5,7 @@ pkgbase = libbible
 	url = https://vance.fish/git/libbible/
 	arch = x86_64
 	license = MIT
+	depends = sword
 	source = https://vance.fish/git/libbible//snapshot/libbible-1.0.1.tar.gz
 	sha256sums = SKIP
 
