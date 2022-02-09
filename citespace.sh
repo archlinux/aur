@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-exec /usr/bin/java '/usr/share/java/citespace/citespace.jar' "$@" 
+exec /usr/bin/java -jar '/usr/share/java/citespace/citespace.jar' "$@" 
