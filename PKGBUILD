@@ -1,21 +1,23 @@
-# Maintainer: Fire100265 <fire100265@outlook.com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Fire100265 <fire100265@outlook.com>
 pkgname=timeshift-bin
-pkgver=20.11.1
+pkgver=21.09.1
 pkgrel=1
-url='https://github.com/teejee2008/timeshift'
-arch=('x86_64' 'aarch64' 'i386')
-license=(GPL)
-source_x86_64=(https://github.com/teejee2008/timeshift/releases/download/v$pkgver/timeshift_${pkgver}_amd64.deb)
-source_aarch64=(https://github.com/teejee2008/timeshift/releases/download/v$pkgver/timeshift_${pkgver}_arm64.deb)
-source_i386=(https://github.com/teejee2008/timeshift/releases/download/v$pkgver/timeshift_${pkgver}_i386.deb)
-pkgdesc='A backup and restore utility'
-depends=('libgee' 'vte3' 'cronie' 'cairo' 'rsync' 'btrfs-progs' 'json-glib' 'gdk-pixbuf2' 'gtk3')
-md5sums_x86_64=('c71ca96e3be09f471c4e8c93cbbbc885')
-md5sums_aarch64=('9fdc6a5d9b0ecf1bde6e5558dc0c1714')
-md5sums_i386=('133d80b40a0c1d207ebc86ac447e5c29')
-conflicts=(timeshift)
-provides=(timeshift)
+pkgdesc="A system restore utility for Linux"
+arch=('x86_64' 'aarch64')
+url="https://github.com/teejee2008/timeshift"
+license=('GPL3')
+depends=('cronie' 'gtk3' 'libgee' 'libnotify' 'libsoup' 'rsync' 'vte3' 'xapp'
+         'xorg-xhost')
+optdepends=('btrfs-progs: BTRFS support'
+            'grub-btrfs: BtrfS snapshots in grub')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_x86_64=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname%-bin}_${pkgver}-1_amd64.deb")
+source_aarch64=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname%-bin}_${pkgver}-1_arm64.deb")
+sha256sums_x86_64=('4604830442a814ca481a40059486fc629eb85283f663c133b64ba255bd7ca643')
+sha256sums_aarch64=('ee8ba8d50351e1ce0290ebc402dd011964e670115de78230e89a113b4f53c1d4')
 
 package() {
-       tar -xvf data.tar.xz -C $pkgdir
+  bsdtar -xvf data.tar.xz -C $pkgdir
 }
