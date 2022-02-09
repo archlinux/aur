@@ -6,7 +6,7 @@
 
 _name=lmms
 pkgname=lmms-git
-pkgver=1.3.0.alpha.1.r103.g89f0a98e3
+pkgver=1.3.0.alpha.1.r165.g912c0b76e
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio.'
 arch=('x86_64')
@@ -15,8 +15,9 @@ license=('GPL2')
 depends=('fftw' 'fltk' 'fluidsynth' 'lame' 'libgig' 'qt5-x11extras' 'sdl'
 'stk')
 optdepends=('pulseaudio: pulseaudio support'
-            'wine: VST plugin support')
-makedepends=('carla' 'cmake' 'doxygen' 'extra-cmake-modules' 'freetype2' 'git'
+            'wine: VST plugin support'
+            'carla: carla support')
+makedepends=('cmake' 'doxygen' 'extra-cmake-modules' 'freetype2' 'git'
 'ladspa' 'qt5-tools' 'wine' 'perl-list-moreutils' 'perl-xml-parser')
 provides=('lmms')
 conflicts=('lmms')

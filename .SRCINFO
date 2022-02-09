@@ -1,11 +1,10 @@
 pkgbase = lmms-git
 	pkgdesc = The Linux MultiMedia Studio.
-	pkgver = 1.3.0.alpha.1.r103.g89f0a98e3
+	pkgver = 1.3.0.alpha.1.r165.g912c0b76e
 	pkgrel = 1
 	url = https://lmms.io
 	arch = x86_64
 	license = GPL2
-	makedepends = carla
 	makedepends = cmake
 	makedepends = doxygen
 	makedepends = extra-cmake-modules
@@ -26,6 +25,7 @@ pkgbase = lmms-git
 	depends = stk
 	optdepends = pulseaudio: pulseaudio support
 	optdepends = wine: VST plugin support
+	optdepends = carla: carla support
 	provides = lmms
 	conflicts = lmms
 	source = git+https://github.com/lmms/lmms.git
@@ -36,4 +36,3 @@ pkgbase = lmms-git
 	sha512sums = SKIP
 
 pkgname = lmms-git
-
