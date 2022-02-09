@@ -2,16 +2,16 @@
 
 pkgname=sekiro-grub-theme-git
 _themename=sekiro
-pkgver=r1.a704748
+pkgver=r1.39c5f4d
 pkgrel=1
-pkgdesc="A GRUB Bootloader Theme with japanese style"
+pkgdesc="A GRUB2 theme with japanese style"
 url='https://github.com/semimqmo/sekiro_grub_theme'
 arch=('any')
 license=('MIT')
 depends=('grub')
 makedepends=('git')
 install="${pkgname}.install"
-source=("${pkgname}"::"git+https://github.com/semimqmo/sekiro_grub_theme")
+source=("${pkgname}"::"git+https://github.com/semimqmo/sekiro_grub_theme.git")
 md5sums=('SKIP')
 
 package() {
