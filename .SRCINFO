@@ -1,0 +1,12 @@
+pkgbase = exeter-book-hand-font
+	pkgdesc = a font set based on the calligraphic style found in the 10th-century Exeter Book
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://exeterbookhand.com
+	arch = any
+	license = OFL
+	source = https://exeterbookhand.com/EBH-v1.0.0.zip
+	sha256sums = 6787471d7766a8be31f2e601620e402ff43bafd183d626a8df75767e91052af3
+
+pkgname = otf-exeter-book-hand
+	provides = exeter-book-hand-font
