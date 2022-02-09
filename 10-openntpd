@@ -3,31 +3,19 @@
 
 if [ -e /run/systemd/system ]; then
         case "$2" in
-                up)
+                up | vpn-up)
                         systemctl start openntpd.service
                 ;;
-                vpn-up)
-                        systemctl start openntpd.service
-                ;;
-                down)
-                        systemctl stop openntpd.service
-                ;;
-                vpn-down)
+                down | vpn-down)
                         systemctl stop openntpd.service
                 ;;
         esac
 elif [ -e "/etc/rc.d/openntpd" ]; then
           case "$2" in
-                  up)
+                  up | vpn-up)
                           /etc/rc.d/openntpd start
                   ;;
-                  vpn-up)
-                          /etc/rc.d/openntpd start
-                  ;;
-                  down)
-                          /etc/rc.d/openntpd stop
-                  ;;
-                  vpn-down)
+                  down | vpn-down)
                           /etc/rc.d/openntpd stop
                   ;;
           esac
