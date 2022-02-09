@@ -9,6 +9,8 @@ pkgbase = nginx-mod-rtmp-zotanmew-git
 	depends = nginx
 	depends = openssl
 	provides = nginx-rtmp-module
+	conflicts = nginx-mod-rtmp
+	conflicts = nginx-mod-rtmp-git
 	source = http://nginx.org/download/nginx-1.20.2.tar.gz
 	source = http://nginx.org/download/nginx-1.20.2.tar.gz.asc
 	source = nginx-rtmp-module::git+https://github.com/zotanmew/nginx-rtmp-module.git#branch=dev

@@ -14,6 +14,7 @@ pkgdesc='Module for nginx that adds RTMP, HLS, and MPEG-DASH support. zotanmew f
 arch=('i686' 'x86_64')
 depends=('nginx' 'openssl')
 provides=("$_modname")
+conflicts=('nginx-mod-rtmp' 'nginx-mod-rtmp-git')
 url='https://github.com/zotanmew/nginx-rtmp-module'
 license=('BSD')
 
