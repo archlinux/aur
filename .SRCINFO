@@ -9,7 +9,7 @@ pkgbase = wgnord
 	depends = wireguard-tools
 	depends = openresolv
 	backup = var/lib/wgnord/template.conf
-	source = https://git.phire.cc/me/wgnord/archive/0.1.10.tar.gz
-	md5sums = 5d6cdd16fa67a3703a5bab5f3299e098
+	source = https://git.phire.cc/wgnord/snapshot/wgnord-0.1.10.tar.gz
+	md5sums = 3d84a9e8d3d7233c4a6fa03266355f00
 
 pkgname = wgnord
