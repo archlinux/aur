@@ -35,7 +35,7 @@ makedepends=(
     'jq'
     'libxdmcp'
     'nodejs-lts-fermium'
-    'npm6'
+    'npm'
     'python'
     'yarn'
 )

@@ -2,7 +2,7 @@ To build the package, execute the following commands:
 
 $ https://aur.archlinux.org/mrcode-git.git
 $ cd mrcode-git
-$ makepkg
+$ makepkg -sr
 
 Wait for the build to complete, then install the package:
 
