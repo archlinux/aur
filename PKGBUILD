@@ -6,7 +6,7 @@
 
 pkgdesc='A simple VTE-based terminal'
 pkgname=termite
-pkgver=16.2
+pkgver=16.3
 pkgrel=1
 url=https://github.com/aperezdc/termite
 license=(LGPL)
@@ -16,12 +16,12 @@ arch=(x86_64)
 backup=(etc/xdg/termite/config)
 validpgpkeys=(5AA3BC334FD7E3369E7C77B291C559DBE4C9123B)
 source=("${url}/releases/download/v${pkgver}/termite-${pkgver}.tar.xz"{,.asc})
-b2sums=('e9bfea6d0b25912b385e4da2e1336b9d0a3a1e43af168edff5a95e46268ebdc447a836bec01ea33a92c7ea27645da74187e241af8bf6e79626109ac63755e214'
+b2sums=('ebbb934bac2919d6adf0ebbc56699ae74feb1692a8ffa3e50a02386673d00277cffdb403fcd4cefffd6d4fcf66254cf727d78d197d0334a797c9b16cde27e159'
         'SKIP')
 
 build () {
 	rm -rf _build
-	arch-meson _build "termite-${pkgver}"
+	arch-meson _build "${pkgname}-${pkgver}"
 	meson compile -C _build
 }
 
