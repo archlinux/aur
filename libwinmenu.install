@@ -1,6 +1,0 @@
-post_install() {
-	echo "Set the following environment variable for changes to take place"
-	echo "GTK_MODULES=winmenu"
-	echo "----------------------------------------------------------------"
-	echo "Menu is toggled with Alt"
-}

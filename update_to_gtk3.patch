@@ -28,7 +28,7 @@
     fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     klass = GTK_WINDOW_GET_CLASS(fc);
  
--   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_Alt_L, 0,
-+   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_KEY_Alt_L, 0,
+-   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_Control_R, 0,
++   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_KEY_Control_R, 0,
                                  "toggle-menu-bar", 0);
  }

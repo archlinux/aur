@@ -1,0 +1,11 @@
+--- a/libwinmenu.c
++++ b/libwinmenu.c
+@@ -53,7 +53,7 @@
+ {
+    GtkWidget *fc;
+    GObjectClass *klass;
+-   const gchar *app_whitelist = "gnome-terminal, gimp, mousepad";
++   const gchar *app_whitelist = "gnome-terminal, arandr, mousepad";
+ 
+    if (strstr (app_whitelist, g_get_prgname()) != NULL)
+ 	return;

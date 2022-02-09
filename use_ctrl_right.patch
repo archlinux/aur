@@ -1,0 +1,12 @@
+--- a/libwinmenu.c
++++ b/libwinmenu.c
+@@ -77,8 +77,6 @@ gtk_module_init (gint * argc, gchar *** argv)
+    fc = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    klass = GTK_WINDOW_GET_CLASS(fc);
+ 
+-   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_m, GDK_CONTROL_MASK,
+-                                "toggle-menu-bar", 0);
+-   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_m, GDK_MOD1_MASK,
++   gtk_binding_entry_add_signal (gtk_binding_set_by_class (klass), GDK_Control_R, 0,
+                                 "toggle-menu-bar", 0);
+ }
