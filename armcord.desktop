@@ -5,4 +5,4 @@ Name=ArmCord
 Comment=Discord client for lower end ARM devices.
 Exec=armcord
 Icon=armcord
-Categories=Social;
+Categories=Internet;
