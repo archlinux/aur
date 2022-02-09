@@ -1,0 +1,12 @@
+pkgbase = zram-hibernate-git
+	pkgdesc = activate disk-based storage as swap for hibernation support when a system typically uses only zram swap
+	pkgver = r3.ae662b0
+	pkgrel = 1
+	url = https://github.com/gissf1/zram-hibernate
+	arch = any
+	license = apache
+	makedepends = git
+	source = git+https://github.com/gissf1/zram-hibernate
+	sha256sums = SKIP
+
+pkgname = zram-hibernate-git
