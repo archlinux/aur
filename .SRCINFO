@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-bin
-	pkgver = 6.0.1.sdk101
-	pkgrel = 4
+	pkgver = 6.0.2.sdk102
+	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
 	arch = armv7h
@@ -9,32 +9,32 @@ pkgbase = dotnet-core-bin
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/ede8a287-3d61-4988-a356-32ff9129079e/bdb47b6b510ed0c4f0b132f7f4ad9d5a/dotnet-sdk-6.0.101-linux-x64.tar.gz
-	sha512sums_x86_64 = ca21345400bcaceadad6327345f5364e858059cfcbc1759f05d7df7701fec26f1ead297b6928afa01e46db6f84e50770c673146a10b9ff71e4c7f7bc76fbf709
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/72888385-910d-4ef3-bae2-c08c28e42af0/59be90572fdcc10766f1baf5ac39529a/dotnet-sdk-6.0.101-linux-arm.tar.gz
-	sha512sums_armv7h = f9e212dc4cccbe665d9aac23da6bdddce4957ae4e4d407cf3f1d6da7e79784ebd408c3a59b3ecc6ceaa930b37cf01a4a91c6b38517970d49227e96e50658cc46
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/d43345e2-f0d7-4866-b56e-419071f30ebe/68debcece0276e9b25a65ec5798cf07b/dotnet-sdk-6.0.101-linux-arm64.tar.gz
-	sha512sums_aarch64 = 04cd89279f412ae6b11170d1724c6ac42bb5d4fae8352020a1f28511086dd6d6af2106dd48ebe3b39d312a21ee8925115de51979687a9161819a3a29e270a954
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/e7acb87d-ab08-4620-9050-b3e80f688d36/e93bbadc19b12f81e3a6761719f28b47/dotnet-sdk-6.0.102-linux-x64.tar.gz
+	sha512sums_x86_64 = edd79ebad3327032ea0aaa8504c14e3270050bb459b098202676776b41a3a1d282aaefd1e5e8aa09ef7f7cf7c4601c4783a57112ff6e3d427507e8eec2bfb748
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/2509d293-6a9f-4108-8fe1-10e78341c5df/18f693729320bdbb5e8d936460dd0e2b/dotnet-sdk-6.0.102-linux-arm.tar.gz
+	sha512sums_armv7h = a72a0e81c62478b0dc662ef0aaeb7f96e7dd534e90b3ac1bdab1ca98dd93a4605881dba6e9ed2315781fdf71f5b33acb1aa5e28090c7a1693405bebed5853094
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/93dd8d1e-f2af-45b1-8e86-9b8c3d58f4d2/b3fc3ef9da1db691043387fcb56f4d6f/dotnet-sdk-6.0.102-linux-arm64.tar.gz
+	sha512sums_aarch64 = 790cbf322ca8fed32eaf574f19d0bdc05656c5a88a65aa4dba8269cfce1443cd7cdeecdd3a40e353c368f055490b70592ca7f15f981a66c5b3a9517d0b09e4cb
 
 pkgname = dotnet-host-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary)
 	depends = gcc-libs
 	depends = glibc
 	provides = dotnet-host
-	provides = dotnet-host=6.0.1
+	provides = dotnet-host=6.0.2
 	conflicts = dotnet-host
 
 pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-bin
-	provides = aspnet-runtime=6.0.1
+	provides = aspnet-runtime=6.0.2
 	provides = aspnet-runtime-6.0
-	conflicts = aspnet-runtime=6.0.1
+	conflicts = aspnet-runtime=6.0.2
 	conflicts = aspnet-runtime-6.0
 
 pkgname = dotnet-runtime-bin
 	pkgdesc = The .NET Core runtime (binary)
-	depends = dotnet-host>=6.0.1
+	depends = dotnet-host>=6.0.2
 	depends = gcc-libs
 	depends = glibc
 	depends = icu
@@ -43,9 +43,9 @@ pkgname = dotnet-runtime-bin
 	depends = zlib
 	depends = openssl
 	optdepends = lttng-ust: CoreCLR tracing
-	provides = dotnet-runtime=6.0.1
+	provides = dotnet-runtime=6.0.2
 	provides = dotnet-runtime-6.0
-	conflicts = dotnet-runtime=6.0.1
+	conflicts = dotnet-runtime=6.0.2
 	conflicts = dotnet-runtime-6.0
 
 pkgname = dotnet-sdk-bin
@@ -57,10 +57,10 @@ pkgname = dotnet-sdk-bin
 	depends = netstandard-targeting-pack-bin
 	optdepends = aspnet-targeting-pack-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-bin
-	provides = dotnet-sdk=6.0.1.sdk101
+	provides = dotnet-sdk=6.0.2.sdk102
 	provides = dotnet-sdk-6.0
 	conflicts = dotnet-sdk-bin
-	conflicts = dotnet-sdk=6.0.1.sdk101
+	conflicts = dotnet-sdk=6.0.2.sdk102
 	conflicts = dotnet-sdk-6.0
 
 pkgname = netstandard-targeting-pack-bin
@@ -73,15 +73,15 @@ pkgname = netstandard-targeting-pack-bin
 pkgname = dotnet-targeting-pack-bin
 	pkgdesc = The .NET Core targeting pack (binary)
 	depends = netstandard-targeting-pack-bin
-	provides = dotnet-targeting-pack=6.0.1
+	provides = dotnet-targeting-pack=6.0.2
 	provides = dotnet-targeting-pack-6.0
-	conflicts = dotnet-targeting-pack=6.0.1
+	conflicts = dotnet-targeting-pack=6.0.2
 	conflicts = dotnet-targeting-pack-6.0
 
 pkgname = aspnet-targeting-pack-bin
 	pkgdesc = The ASP.NET Core targeting pack (binary)
 	depends = dotnet-targeting-pack-bin
-	provides = aspnet-targeting-pack=6.0.1
+	provides = aspnet-targeting-pack=6.0.2
 	provides = aspnet-targeting-pack-6.0
-	conflicts = aspnet-targeting-pack=6.0.1
+	conflicts = aspnet-targeting-pack=6.0.2
 	conflicts = aspnet-targeting-pack-6.0
