@@ -1,11 +1,10 @@
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contributor: Christer Solskogen <christer.solskogen@gmail.com>
+# Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 
 _arch=aarch64
 _kernel_arch=arm64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-linux-api-headers
-pkgver=5.10.76
+pkgver=5.15.22
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace for $_kernel_arch"
 arch=(any)
@@ -14,7 +13,7 @@ url='https://www.kernel.org'
 license=(GPL2)
 makedepends=(rsync)
 source=(https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.{xz,sign})
-sha256sums=('480a09ba1962862ff18df9453fa0df6ba11cbe19eefedeab81bf2c84f49e1890'
+sha256sums=('3544f960c4105d4d42e9bf6d2a0a1dd44a1928240a0ef45aa8e97c7b466463c3'
             'SKIP')
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -32,8 +31,6 @@ build() {
 package() {
   cd linux-$pkgver
 
-  make INSTALL_HDR_PATH="$pkgdir/usr/$_target/sys-root/usr" ARCH=$_kernel_arch V=0 headers_install
+  make INSTALL_HDR_PATH="$pkgdir/usr/$_target/sys-root/usr" ARCH=$_kernel_arch headers_install
 
-  # clean-up unnecessary files generated during install
-  find "$pkgdir" \( -name .install -or -name ..install.cmd \) -delete
 }
