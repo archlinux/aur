@@ -1,0 +1,21 @@
+pkgbase = ydotool-bin
+	pkgdesc = Generic command-line automation tool (no X!)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ReimuNotMoe/ydotool
+	install = ydotool.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	depends = libevdevplus
+	depends = libuinputplus
+	provides = ydotool
+	conflicts = ydotool
+	source = https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.0/ydotool-release-ubuntu-latest
+	source = https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.0/ydotoold-release-ubuntu-latest
+	source = 80-uinput.rules
+	sha256sums = 1af0434e65da28e2b688afcdcb983bc54436e178cbf9346611cd0239e0f2a598
+	sha256sums = b32164d2d9aea8134cab59ca719f04797c938ffce89f1868be0103da81712bbc
+	sha256sums = e092f5e7e474aec6c980c458046d0ff11b18750b53de2bf0a0aba1ca26e6d58e
+
+pkgname = ydotool-bin

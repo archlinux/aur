@@ -1,0 +1,8 @@
+post_install() {
+  echo 'Make sure your user is in the `input` group by running the following command:'
+  echo '  $ usermod -aG input $USER'
+}
+
+post_upgrade() {
+  post_install
+}
