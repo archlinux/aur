@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = boot/*-ucode.img
+
+[Action]
+Description = Updating linux initcpios for microcode in unified uefi...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mkinitcpio-install
+NeedsTargets

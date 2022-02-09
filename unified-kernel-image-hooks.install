@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+  cat <<'EOF'
+1. Enable the service:
+   systemctl enable unified-kernel-image-backup.service
+2. Add the UEFI entry:
+   (example command; replace --disk, --part, --label, and --loader as required):
+   efibootmgr -v --create --disk /dev/sda --part 1 --label 'Arch Linux (last booted kernel)' --loader '\EFI\ARCH\linux-x64-last.efi'
+3. Reboot to create the entry, or run /usr/libexec/unified-kernel-image-hooks/unified-kernel-image-backup.sh
+EOF
+}

@@ -1,0 +1,14 @@
+[Unit]
+Description=Save a backup of the currently-booted unified kernel image
+DefaultDependencies=no
+Requires=boot-complete.target
+After=local-fs.target boot-complete.target
+Conflicts=shutdown.target
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/unified-kernel-image-hooks/unified-kernel-image-backup.sh
+
+[Install]
+WantedBy=basic.target
