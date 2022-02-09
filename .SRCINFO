@@ -1,0 +1,19 @@
+pkgbase = nwg-drawer-bin
+	pkgdesc = Application drawer for sway and other wlroots-based compositors
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/nwg-drawer
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = xdg-utils
+	optdepends = foot: to open .desktop files with Terminal=true
+	optdepends = thunar: to open files and directories
+	provides = nwg-drawer
+	conflicts = nwg-drawer-git
+	conflicts = nwg-drawer
+	source = nwg-drawer-bin-0.2.7.tar.gz::https://github.com/nwg-piotr/nwg-drawer/releases/download/v0.2.7/nwg-drawer-v0.2.7_x86_64.tar.gz
+	md5sums = c6281e33fc2430d852bd325f826c2a2f
+
+pkgname = nwg-drawer-bin
