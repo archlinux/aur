@@ -2,18 +2,19 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fblog-git
-pkgver=3.1.2.r1.gac1d237
+pkgver=3.2.0.r2.g5b7769c
 pkgrel=1
 pkgdesc="Small command-line JSON log viewer (git)"
 arch=('x86_64')
 url="https://github.com/brocode/fblog"
 license=('custom:WTFPL')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -22,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
