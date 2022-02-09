@@ -1,10 +1,10 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r543.322e5c5
+pkgver=r577.5f965ac
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
-arch=("any")
+arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
 url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
 depends=()
@@ -58,7 +58,7 @@ build()
 }
 
 package() {
-    cd ${srcdir}/fastfetch
+    cd "${srcdir}/fastfetch"
 
     install -D "build/fastfetch" "${pkgdir}/usr/bin/fastfetch"
     install -D "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/fastfetch"
@@ -67,4 +67,6 @@ package() {
     for file in presets/*; do
       install -D "$file" "${pkgdir}/usr/share/fastfetch/presets/"
     done
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
