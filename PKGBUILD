@@ -3,7 +3,7 @@
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=spot
-pkgver=2.10.3
+pkgver=2.10.4
 pkgrel=1
 pkgdesc="A C++17 library for LTL, omega automata manipulation and model checking."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://spot.lrde.epita.fr/"
 license=('GPL3')
 depends=('glibc' 'sh' 'python' 'libtool')
 source=(http://www.lrde.epita.fr/dload/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('897e95486173748f2b65eecbd99a234b7f6877f2186e868da7ace5671804019f')
+sha256sums=('e8629cdb6cce83077826960cd01ece5213daaf9a283d6f62aaf69afa0623478a')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
