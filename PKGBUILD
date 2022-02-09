@@ -2,8 +2,8 @@
 # original maintainer : Fabien Devaux <fdev31@gmail.com>
 
 pkgname=blender-plugin-miratools
-pkgver=r688.6f50f8d # commit-num.commit-hash 
-pkgrel=2
+pkgver=r996.2999439 # commit-num.commit-hash 
+pkgrel=1
 pkgdesc="Modern modeling and retopology tools"
 url="https://github.com/mifth/mifthtools/wiki/Mira-Tools"
 license=("GPL")
@@ -20,9 +20,9 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons/"
   install -dm755 ${addons}/${name}
-  cp -a ${srcdir}/${pkgname}/blender/addons/* ${addons}/${name}
+  cp -a ${srcdir}/${pkgname}/blender/addons/2.8/* ${addons}/${name}
 }
 
