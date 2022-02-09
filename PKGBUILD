@@ -1,11 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# https://github.com/arxanas/git-branchless/issues/266
-BUILDENV+=(!check)
-
 pkgname=git-branchless
 pkgver=0.3.9
-pkgrel=1
+pkgrel=2
 pkgdesc='High-velocity monorepo-scale workflow for Git'
 url="https://github.com/arxanas/$pkgname"
 arch=(x86_64)
@@ -33,8 +30,9 @@ build() {
 check() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
-    export PATH_TO_GIT=$(which git)
-    cargo test --frozen --all-features
+	# https://github.com/arxanas/git-branchless/issues/266
+	export PATH_TO_GIT=$(which git) GIT_EXEC_PATH=$(git --exec-path)
+	cargo test --frozen --all-features
 }
 
 package () {
