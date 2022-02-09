@@ -1,6 +1,6 @@
 pkgbase = nodejs-markdownlint-cli
 	pkgdesc = MarkdownLint Command Line Interface
-	pkgver = 0.31.0
+	pkgver = 0.31.1
 	pkgrel = 1
 	url = https://github.com/igorshubovych/markdownlint-cli
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nodejs-markdownlint-cli
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	source = https://registry.npmjs.org/markdownlint-cli/-/markdownlint-cli-0.31.0.tgz
-	sha512sums = 502340d742367afac4a8659418ce08e9a7ba2ee6cb7b24a429e80fd4641a652112e75e8160180e9fc022f0c5d4fb9ad221e0af3322a2f756a5a87c910ee52760
+	source = https://registry.npmjs.org/markdownlint-cli/-/markdownlint-cli-0.31.1.tgz
+	sha512sums = 91e20e330427f8287b32807003e4dd93254cbb101e645106988225bf0815d19d53192e4cc4f9d1af6f5708b86437308753eb8d2868d4f951232d7f99f64962ea
 
 pkgname = nodejs-markdownlint-cli
