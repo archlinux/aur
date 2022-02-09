@@ -1,5 +1,5 @@
 # Maintainer: Jay Chu <tothesong at gmail dot com>
-# Maintainer: Grafcube <grafcube at disroot dot com>
+# Maintainer: Grafcube <grafcube at disroot dot org>
 
 _anki=anki
 _aqt=aqt
