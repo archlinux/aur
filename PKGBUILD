@@ -7,7 +7,7 @@ _pkgname=${_pkgbase}-${_sm64ver}
 pkgname=${_pkgname}-git
 pkgver=irix2.r55.g733fafc
 pkgrel=2
-pkgdesc="A port of Super Mario 64 (US) for modern devices"
+pkgdesc="A port of Super Mario 64 (${_sm64ver^^}) for modern devices"
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/sm64-port/${_pkgbase}"
 license=("unknown")
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"
-  
+
   cp baserom.${_sm64ver}.z64 "${srcdir}/${_pkgbase}"
 }
 
@@ -43,11 +43,11 @@ build() {
 
 package() {
   cd "${srcdir}"
-  
+
   # Install binary and launcher
   install -Dm0755 ${_pkgbase}/build/${_sm64ver}_pc/sm64.${_sm64ver} "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
   install -Dm0755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
-  
+
   # Install desktop entry
   install -Dm0644 ${_pkgbase}/textures/segment2/segment2.05A00.rgba16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png"
   install -Dm0644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
