@@ -5,7 +5,7 @@
 
 pkgname=nginx-mod-rtmp-zotanmew-git
 pkgver=1242.0c0b140
-pkgrel=1
+pkgrel=2
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"

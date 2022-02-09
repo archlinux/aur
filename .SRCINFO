@@ -1,7 +1,7 @@
 pkgbase = nginx-mod-rtmp-zotanmew-git
 	pkgdesc = Module for nginx that adds RTMP, HLS, and MPEG-DASH support. zotanmew fork.
 	pkgver = 1242.0c0b140
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zotanmew/nginx-rtmp-module
 	arch = i686
 	arch = x86_64
