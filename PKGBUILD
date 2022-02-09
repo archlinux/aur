@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r9068.8306bc1e2
+pkgver=r9204.4653873db
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -83,6 +83,9 @@ prepare() {
     # Disable foring a specific bazel version to build with
     rm .bazelversion
 
+    # Work around option that got removed in bazel
+    sed -i 's/--experimental_no_product_name_out_symlink//g' .bazelrc
+
     # Put translations in place.
     #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
     #ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
@@ -100,7 +103,7 @@ build() {
 
 package() {
     cd "$pkgname"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-bin/pylib/anki/anki-*.whl bazel-bin/qt/aqt/aqt-*.whl
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-dist/anki-*.whl bazel-dist/aqt-*.whl
 
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
     install -Dm644 qt/package/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
