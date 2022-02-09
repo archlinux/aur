@@ -35,7 +35,7 @@ makedepends=(
     'jq'
     'libxdmcp'
     'nodejs-lts-fermium'
-    'npm6'
+    'npm'
     'python'
     'yarn'
 )
@@ -68,7 +68,7 @@ case "$CARCH" in
 esac
 
 install_node() {
-    mkdir ~/.npm-global
+    mkdir -p ~/.npm-global
 
     npm config set prefix '~/.npm-global'
 
