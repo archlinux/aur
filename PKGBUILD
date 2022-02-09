@@ -4,7 +4,7 @@
 
 pkgname=trakt-scrobbler-git
 pkgver=1.3.2.r19.gd5b65e5
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
 arch=(any)
@@ -73,6 +73,9 @@ package()
 {
     cd "$srcdir/${pkgname%*-git}"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 "trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
+
+	# Completions
     install -Dm755 "$srcdir/${pkgname%*-git}/completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
+
+    install -Dm644 "trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
 }
