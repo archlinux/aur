@@ -1,0 +1,18 @@
+post_install() {
+  # Creates appgate user and group
+  [[ $(cat /etc/group) == *appgate* ]] || groupadd --system appgate
+  [[ $(cat /etc/passwd) == *appgate* ]] || useradd --system --shell /usr/bin/nologin --home /var/lib/appgate --gid appgate appgate
+  chown appgate:appgate /etc/appgate.conf
+  chmod 660 /etc/appgate.conf
+  install -d /var/lib/appgate -g appgate -o appgate -m770
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  # Removes appgate user and group
+  groupdel --force appgate
+  userdel --force --remove appgate
+}

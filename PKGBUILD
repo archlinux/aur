@@ -2,25 +2,33 @@
 # Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp-headless
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) headless client (It does not support 2FA.)"
 arch=("x86_64")
 url="https://www.${pkgname%%-*}.com/support/software-defined-perimeter-support"
 license=("custom" "custom:commercial")
-depends=("dnsmasq" "libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
-optdepends=("bash-completion: allows bash completion for scripts")
+depends=("libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
+optdepends=(
+  "bash-completion: allows bash completion for scripts"
+  "dnsmasq: dns resolver for systems without systemd-resolved"
+)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 backup=("etc/appgate.conf" "etc/dbus-1/system.d/appgate.conf")
 options=(staticlibs !strip !emptydirs)
+install="${pkgname}.install"
 source=(
   "https://bin.${pkgname%-*}.com/${pkgver%.*}/client/${pkgname}_${pkgver}_amd64.deb"
   "${pkgname%%-*}driver.service.patch"
+  "${pkgname%%-*}service.service.patch"
+  "10-appgate-tun.network"
 )
 sha256sums=(
-  "fa4ea0aa6c14460e8e711a52be7738a40af6fcb20b3b1c47d6c65a90b9f9ec64"
-  "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
+  "a0e378f7a19cbe71649d4cee9e88499aecfc28b26784b76843c78b6fc390b0c5"
+  "2df60df48a8659a77f05ce7270f7315eb0c2e6e1ab453f81caf08cb93fda50cc"
+  "dbb83be680e6f3f11a04835b68155eb1a0d149b8d950aafd9da6887fc017b99d"
+  "2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9"
 )
 
 prepare() {
@@ -30,6 +38,7 @@ prepare() {
   bsdtar -xf "${srcdir}/data.tar.xz" -C .
 
   patch -Np1 -i "${srcdir}/${pkgname%%-*}driver.service.patch"
+  patch -Np1 -i "${srcdir}/${pkgname%%-*}service.service.patch"
 
   # Remove unnecessary .deb related directory
   rm -rf "${srcdir}/${pkgname}/etc/init.d"
@@ -43,6 +52,10 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/systemd/system"
   install -Dm644 "${srcdir}/${pkgname}/lib/systemd/system/"* "${pkgdir}/usr/lib/systemd/system/"
   mv "${pkgdir}/usr/sbin" "${pkgdir}/usr/bin"
+
+  # Make systemd-networkd not manage tun interfaces
+  install -dm755 "${pkgdir}/usr/lib/systemd/network"
+  install -Dm644 "${srcdir}/10-appgate-tun.network" "${pkgdir}/usr/lib/systemd/network/"
 
   # Install license files
   install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname/-sdp/}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
