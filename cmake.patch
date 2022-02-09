@@ -1,0 +1,11 @@
+--- a/src/runtime/kwalletd/backend/CMakeLists.txt    2022-02-08 21:52:08.823207972 -0600
++++ b/src/runtime/kwalletd/backend/CMakeLists.txt    2022-02-08 21:53:17.571101142 -0600
+@@ -56,7 +56,7 @@
+
+ ecm_setup_version(${KF_VERSION} VARIABLE_PREFIX KWALLETBACKEND SOVERSION 5)
+
+-target_link_libraries(kwalletbackend5 Qt5::Widgets KF5::WidgetsAddons KF5::CoreAddons KF5::Notifications KF5::I18n ${LIBGCRYPT_LIBRARIES})
++target_link_libraries(kwalletbackend5 Qt${QT_MAJOR_VERSION}::Widgets KF5::WidgetsAddons KF5::CoreAddons KF5::Notifications KF5::I18n ${LIBGCRYPT_LIBRARIES})
+ if(Gpgmepp_FOUND)
+    target_link_libraries(kwalletbackend5 Gpgmepp)
+ endif(Gpgmepp_FOUND)
