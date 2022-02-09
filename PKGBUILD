@@ -4,7 +4,7 @@
 name=retopoflow
 
 pkgname=blender-plugin-${name}-git
-pkgver=2.0.2.r25.g05c5b7c
+pkgver=2.0.2.r172.g3d8b3a47
 pkgrel=1
 pkgdesc="A suite of retopology tools for Blender"
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}

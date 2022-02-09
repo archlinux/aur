@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-retopoflow-git
 	pkgdesc = A suite of retopology tools for Blender
-	pkgver = 2.0.2.r25.g05c5b7c
+	pkgver = 2.0.2.r172.g3d8b3a47
 	pkgrel = 1
 	url = https://blendermarket.com/products/retopoflow/
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = blender-plugin-retopoflow-git
 	md5sums = SKIP
 
 pkgname = blender-plugin-retopoflow-git
-
