@@ -1,0 +1,19 @@
+pkgbase = nwg-menu-bin
+	pkgdesc = MenuStart for sway and other wlroots-based compositors
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nwg-piotr/nwg-menu
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = xdg-utils
+	optdepends = foot: to open .desktop files with Terminal=true
+	optdepends = thunar: to open files and directories
+	provides = nwg-menu
+	conflicts = nwg-menu-git
+	conflicts = nwg-menu
+	source = nwg-menu-bin-0.1.1.tar.gz::https://github.com/nwg-piotr/nwg-menu/releases/download/v0.1.1/nwg-menu-v0.1.1_x86_64.tar.gz
+	md5sums = 949c053bb26a7c1f5399e8dd74a3a34f
+
+pkgname = nwg-menu-bin
