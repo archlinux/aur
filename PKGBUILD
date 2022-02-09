@@ -2,15 +2,17 @@
 # Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
 url="https://www.${pkgname%%-*}.com/support/software-defined-perimeter-support"
 license=("custom" "custom:commercial")
-depends=("dnsmasq" "gtk3" "libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
-optdepends=("dnsmasq: dns resolver for systems without systemd-resolved"
-            "gnome-keyring: saves the endpoint certificate between sessions")
+depends=("gtk3" "libsecret" "libxss" "nodejs" "nss" "python-dbus" "python-distro")
+optdepends=(
+  "gnome-keyring: saves the endpoint certificate between sessions"
+  "dnsmasq: dns resolver for systems without systemd-resolved"
+)
 provides=("${pkgname}")
 options=(staticlibs !strip !emptydirs)
 source=(
@@ -19,7 +21,7 @@ source=(
   "10-appgate-tun.network"
 )
 sha256sums=(
-  "f0aed1aa4c69c91b10dd01c621f4dc84b699efffa4d216e225d97bb9cfbebd8b"
+  "a92a38257fc98fe26479eb5920cc3cf0c2bb4b33a04fc68d6d06f2da427dd68a"
   "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
   "2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9"
 )
@@ -43,6 +45,7 @@ package() {
   # Install service files
   install -dm755 "${pkgdir}/usr/lib/systemd/system"
   install -Dm644 "${srcdir}/${pkgname}/lib/systemd/system/"* "${pkgdir}/usr/lib/systemd/system/"
+
   # Make systemd-networkd not manage tun interfaces
   install -dm755 "${pkgdir}/usr/lib/systemd/network"
   install -Dm644 "${srcdir}/10-appgate-tun.network" "${pkgdir}/usr/lib/systemd/network/"
