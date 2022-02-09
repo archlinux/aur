@@ -33,14 +33,26 @@ for patterns, opener in itertools.chain(openers.items(),{("*",):open}.items()):
     if not any(fnmatch.fnmatch(args.filename,pattern) for pattern in patterns):
         continue
     try:
-        with opener(args.filename, "rb") as fh:
-            try:
-                pickle.load(fh)
-            except pickle.UnpicklingError as e:
-                logging.error(f"{type(e).__name__}: {e}")
-                continue
+        while True:
+            reload = False
+            with opener(args.filename, "rb") as fh:
+                try:
+                    fig = pickle.load(fh)
+                except pickle.UnpicklingError as e:
+                    logging.error(f"{type(e).__name__}: {e}")
+                    break
+
+            def on_key(event):
+                global reload
+                if event.key == "r":
+                    print('reloading!')
+                    plt.close("all")
+                    reload = True
+
+            cid = fig.canvas.mpl_connect('key_press_event', on_key)
             plt.show()
-            sys.exit(0)
+            if not reload:
+                sys.exit(0)
 
     except (ValueError,TypeError) as e:
         logging.error(f"{type(e).__name__}: {e}")
