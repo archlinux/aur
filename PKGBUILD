@@ -3,7 +3,7 @@
 
 pkgname=opensnitch
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
     'go'
+    'python-grpcio'
     'python-grpcio-tools'
     'python-setuptools'
 )
