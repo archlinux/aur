@@ -1,0 +1,12 @@
+pkgbase = jfmt
+	pkgdesc = Fast JSON auto-formatter
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/scruffystuffs/jfmt.rs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = jfmt-1.2.0.tar.gz::https://github.com/scruffystuffs/jfmt.rs/archive/1.2.0.tar.gz
+	sha256sums = 5565eb158b9618944470e6e708c464e46e3dabe2b8bfd1bd2fff2b0618ca437e
+
+pkgname = jfmt
