@@ -37,7 +37,7 @@ fi
 ##                             y to enable  (stock default)
 ## Here keeps default is ok
 if [ -z ${use_numa+x} ]; then
-  use_numa=y
+  use_numa=n
 fi
 
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
@@ -84,7 +84,7 @@ _makenconfig=
 pkgbase=linux-xanmod-tt-uksm-cjktty
 replaces=("linux-xanmod-cacule-uksm-cjktty")
 _major=5.15
-pkgver=${_major}.19
+pkgver=${_major}.21
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -111,7 +111,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         choose-gcc-optimization.sh
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
-        "0003-zstd.patch::${_patches_url}/zstd-patches/0001-zstd-patches.patch"
         )
 
 validpgpkeys=(
@@ -129,11 +128,10 @@ done
 
 b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
         'SKIP'
-        '420a18758ce01e903b50df9994df607aeb7fd178f4f78d1e2e89597f0041b14770c1708471e26662d0db09bfb62958ece1c3b094a030104f38571fbe13f2d510'
+        'f965a7b314ba89bf673e64d6fe8cfe4af6b856597ab7e122b25a5d087bb8b8e0cffa33e25a600f1fd1a693e287f52ac229f3f06e9058ab1b6abc1ee719701287'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         '2b765bd1aad8086a94ec9285e4d789eacdff05fcc71013286384a51de6f6cc153cecffd4430cfc08daae4692583577b5eb07f971eb00bcd1ca796063865c20f7'
-        '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260'
-        'af67842113cb345e731b12d4709ddc127a73001e8f49f9391f4351904de82825f13e1895be092048329c46af44504e824ace4a4fa4a9af200d247eba1a12f2d2')
+        '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
