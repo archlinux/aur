@@ -16,7 +16,7 @@ sha256sums=('3e392ce1b04a97f627e22d4ebac19e0f32232ed7908a0777b80d69656b30721d')
 
 package() {
   depends=('blender')
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${_dir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 "${addons}/${_name}"
