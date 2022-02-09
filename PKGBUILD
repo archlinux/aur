@@ -2,15 +2,20 @@
 
 _plug=lsmashsource
 pkgbase="foosynth-plugin-${_plug}-git"
-pkgname=("avisynth-plugin-${_plug}-git"
-         "vapoursynth-plugin-${_plug}-git"
-         )
-pkgver=r1092.83c0251
+pkgname=("vapoursynth-plugin-${_plug}-git")
+pkgver=vA.3h.1.g4a7a981
 pkgrel=1
-pkgdesc="Plugin for Avisynth/Vapoursynth: ${_plug} (GIT version)"
+pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
+depends=('vapoursynth'
+         'libavutil.so'
+         'libavformat.so'
+         'libavcodec.so'
+         'libswscale.so'
+         'liblsmash.so'
+          )
 makedepends=('git'
              'meson'
              'avisynthplus'
@@ -18,62 +23,32 @@ makedepends=('git'
              'l-smash'
              'ffmpeg'
              )
-source=("${_plug}::git+https://github.com/AmusementClub/L-SMASH-Works.git#branch=vs-api4")
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
+source=("${_plug}::git+https://github.com/AmusementClub/L-SMASH-Works.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {
-  mkdir -p build-{avisynth,vapoursynth}
+  mkdir -p build
 
   rm -fr "${_plug}/include"
 }
 
 build() {
-  (cd build-vapoursynth
+  cd build
   arch-meson "../${_plug}/VapourSynth" \
     --buildtype=release
-  ninja
-  )
-  (cd build-avisynth
-  arch-meson "../${_plug}/AviSynth" \
-    --buildtype=release
-  ninja
-  )
-}
 
-package_avisynth-plugin-lsmashsource-git() {
-  pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
-  depends=('avisynthplus'
-           'libavutil.so'
-           'libavformat.so'
-           'libavcodec.so'
-           'libswscale.so'
-           'liblsmash.so'
-          )
-  provides=("avisynth-plugin-${_plug}")
-  conflicts=("avisynth-plugin-${_plug}")
+  ninja
 
-  DESTDIR="${pkgdir}" ninja -C build-avisynth install
-  install -Dm644 "${_plug}/VapourSynth/README" "${pkgdir}/usr/share/doc/avisynth/plugins/${_plug}/README"
 }
 
 package_vapoursynth-plugin-lsmashsource-git() {
-  pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-  depends=('vapoursynth'
-           'libavutil.so'
-           'libavformat.so'
-           'libavcodec.so'
-           'libswscale.so'
-           'liblsmash.so'
-          )
-  provides=("vapoursynth-plugin-${_plug}")
-  conflicts=("vapoursynth-plugin-${_plug}")
-
-  DESTDIR="${pkgdir}" ninja -C build-vapoursynth install
+  DESTDIR="${pkgdir}" ninja -C build install
   install -Dm644 "${_plug}/AviSynth/README" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
