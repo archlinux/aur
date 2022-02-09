@@ -8,6 +8,6 @@ pkgbase = biblereader
 	depends = gtkmm
 	depends = libbible>=1.0.1
 	source = https://vance.fish/git/biblereader//snapshot/biblereader-1.0.5.tar.gz
-	sha256sums = SKIP
+	sha256sums = ebdf5fdcac069e31f4d896c716294865a85ded8f05184909378878cf8320c959
 
 pkgname = biblereader
