@@ -3,7 +3,7 @@
 _name=certbot-dns-netcup
 pkgname=python-$_name
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="netcup DNS Authenticator plugin for Certbot"
 arch=(any)
 url="https://github.com/coldfix/certbot-dns-netcup"
