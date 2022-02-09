@@ -1,21 +1,20 @@
-pkgbase = nginx-mod-rtmp-lhaus-git
-	pkgdesc = Module for nginx that adds RTMP, HLS, and MPEG-DASH support. lhaus fork.
-	pkgver = 1207.8aa8f06
-	pkgrel = 2
-	url = https://github.com/lhaus/nginx-rtmp-module
+pkgbase = nginx-mod-rtmp-zotanmew-git
+	pkgdesc = Module for nginx that adds RTMP, HLS, and MPEG-DASH support. zotanmew fork.
+	pkgver = 1242.0c0b140
+	pkgrel = 1
+	url = https://github.com/zotanmew/nginx-rtmp-module
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = nginx
 	depends = openssl
 	provides = nginx-rtmp-module
-	source = http://nginx.org/download/nginx-1.20.0.tar.gz
-	source = http://nginx.org/download/nginx-1.20.0.tar.gz.asc
-	source = nginx-rtmp-module::git+https://github.com/lhaus/nginx-rtmp-module.git#branch=dev
+	source = http://nginx.org/download/nginx-1.20.2.tar.gz
+	source = http://nginx.org/download/nginx-1.20.2.tar.gz.asc
+	source = nginx-rtmp-module::git+https://github.com/zotanmew/nginx-rtmp-module.git#branch=dev
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = SKIP
+	sha256sums = 958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = nginx-mod-rtmp-lhaus-git
-
+pkgname = nginx-mod-rtmp-zotanmew-git

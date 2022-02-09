@@ -3,30 +3,28 @@
 # Contributor: Jakob Riepler <aur@chaosfield.at>
 # Contributor: Trevor Bergeron <aur@sec.gd>
 
-pkgname=nginx-mod-rtmp-lhaus-git
-pkgver=1207.8aa8f06
-pkgrel=2
+pkgname=nginx-mod-rtmp-zotanmew-git
+pkgver=1242.0c0b140
+pkgrel=1
 
 _modname="nginx-rtmp-module"
 _nginxver="$(/bin/nginx -v 2>&1 | grep -Eo '([[:digit:]]|\.)+')"
 
-pkgdesc='Module for nginx that adds RTMP, HLS, and MPEG-DASH support. lhaus fork.'
+pkgdesc='Module for nginx that adds RTMP, HLS, and MPEG-DASH support. zotanmew fork.'
 arch=('i686' 'x86_64')
 depends=('nginx' 'openssl')
 provides=("$_modname")
-url='https://github.com/lhaus/nginx-rtmp-module'
+url='https://github.com/zotanmew/nginx-rtmp-module'
 license=('BSD')
 
 source=(
 	"http://nginx.org/download/nginx-$_nginxver.tar.gz"
 	"http://nginx.org/download/nginx-$_nginxver.tar.gz.asc"
-	"$_modname::git+https://github.com/lhaus/nginx-rtmp-module.git#branch=dev"
+	"$_modname::git+https://github.com/zotanmew/nginx-rtmp-module.git#branch=dev"
 )
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+sha256sums=('958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42'
+            'SKIP'
+            'SKIP')
 # Maxim Dounin <mdounin@mdounin.ru>
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8')
 
