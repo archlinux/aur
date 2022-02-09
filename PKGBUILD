@@ -3,7 +3,7 @@
 _gemname='xpath'
 pkgname="ruby-${_gemname}"
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="XPath is a Ruby DSL for generating XPath expressions"
 arch=('any')
 url='https://github.com/teamcapybara/xpath'
