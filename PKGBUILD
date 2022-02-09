@@ -3,7 +3,7 @@
 # deps: pyproject
 
 pkgname=trakt-scrobbler-git
-pkgver=1.3.2.r16.gcc6bd05
+pkgver=1.3.2.r19.gd5b65e5
 pkgrel=1
 pkgdesc="Automatically scrobble TV show episodes and movies you are watching to Trakt.tv! It keeps a history of everything you've watched!"
 
@@ -45,11 +45,9 @@ conflicts=("${pkgname%*-git}")
 source=(
     "${pkgname%*-git}::git+https://github.com/iamkroot/trakt-scrobbler.git"
     "trakts-man.md"
-    "trakts.zsh"
 )
 sha256sums=('SKIP'
-            '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
-            '6b6c3f55ab153a9dc749e67acd6e091b5d1e9e35c3b51af4d2f1c687e8c8fab8')
+            '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
 
 pkgver() {
     cd ${pkgname%*-git}
@@ -76,5 +74,5 @@ package()
     cd "$srcdir/${pkgname%*-git}"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 "trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
-    install -Dm755 "$srcdir/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
+    install -Dm755 "$srcdir/${pkgname%*-git}/completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
 }
