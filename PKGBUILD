@@ -2,7 +2,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=python-httpagentparser
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Extracts OS browser information from the user agent string.'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 
 source=("https://pypi.python.org/packages/source/h/httpagentparser/httpagentparser-${pkgver}.tar.gz")
 sha256sums=(
-    'ef763d31993dd761825acee6c8b34be32b95cf1675d1c73c3cd35f9e52831b26'
+    'a190dfdc5e63b2f1c87729424b19cbc49263d6a1fb585a16ac1c9d9ce127a4bf'
 )
 package () {
     cd "${srcdir}/httpagentparser-${pkgver}"
