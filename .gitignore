@@ -1,0 +1,4 @@
+pkg/
+src/
+zsh-thefuck/
+zsh-thefuck-git-*.pkg.tar.zst
