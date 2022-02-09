@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-moveit-core
 	pkgdesc = ROS - Core libraries used by MoveIt!.
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://moveit.ros.org
 	arch = i686
@@ -46,7 +46,7 @@ pkgbase = ros-noetic-moveit-core
 	depends = ros-noetic-xmlrpcpp
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-tf2-kdl
-	source = ros-noetic-moveit-core-1.1.7.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.7.tar.gz
-	sha256sums = 69ead3c944ee707b54d035be97ae999a448400cfa01d50e2e870344c72c78d4d
+	source = ros-noetic-moveit-core-1.1.8.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.8.tar.gz
+	sha256sums = 2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969
 
 pkgname = ros-noetic-moveit-core
