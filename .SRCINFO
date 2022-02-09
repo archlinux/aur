@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-polytrim
 	pkgdesc = Blender addon for triming and cutting a mesh over geodesic path.
-	pkgver = r173.ce4f36b
+	pkgver = r350.1d654b6
 	pkgrel = 1
 	url = https://github.com/patmo141/cut_mesh
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = blender-plugin-polytrim
 	md5sums = SKIP
 
 pkgname = blender-plugin-polytrim
-
