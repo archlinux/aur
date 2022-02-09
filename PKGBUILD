@@ -3,7 +3,7 @@
 name=uvsquares
 
 pkgname=blender-plugin-${name}-git
-pkgver=r132.f6b9a98
+pkgver=r135.7086985
 pkgrel=1
 pkgdesc="Blender addon for reshaping UV selection into grid."
 arch=('any')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${srcdir}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${name}
