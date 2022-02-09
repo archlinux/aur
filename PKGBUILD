@@ -5,7 +5,7 @@
 
 _gitname=cdesktopenv
 pkgname="$_gitname"-git
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64') # Some parts of CDE are not stable on x86_64 yet.
 license=('LGPL2')
 options=(!strip !zipman)
 install="cdesktopenv.install"
-depends=(openmotif xbitmaps rpcbind mksh ncurses libxss xbitmaps libxinerama)
+depends=(openmotif xbitmaps rpcbind ksh ncurses libxss xbitmaps libxinerama libutempter rpcsvc-proto xorg-mkfontdir xorg-bdftopcf xorg-xrdb libxpm libxaw)
 makedepends=(tcl ncompress bison)
 optdepends=('xorg-fonts-100dpi: additional fonts'
             'cups: for printing support'
@@ -44,47 +44,25 @@ pkgver() {
 build() {
     cd "$srcdir/code/cde"
 
-  #sed -e '1i #define FILE_MAP_OPTIMIZE' -i programs/dtfile/Utils.c  # ?
+	./autogen.sh
+	./configure --with-gnu-ld --prefix=/usr/dt
+	make
 
-  cat >> config/cf/site.def <<EOF
-#define KornShell /bin/mksh
-#define CppCmd cpp
-#define YaccCmd bison -y
-#define HasTIRPCLib YES
-#define HasZlib YES
-#define DtLocalesToBuild
-EOF
-
-#  mkdir -p imports/x11/include
-#  ln -sf /usr/include/X11 imports/x11/include/
-  
-  (
-     export LANG=C
-     export LC_ALL=C
-     export IMAKECPP=cpp
-     make -j1 World
-  )  
-
-  sed -e "s:mkProd -D :&$pkgdir:" -i admin/IntegTools/dbTools/installCDE
 }
 
 package() {
-  echo 'DEBUG: start package'
-  cd "$srcdir/code/cde/admin/IntegTools/dbTools/"
 
-  echo 'DEBUG: installCDE'
+  cd "$srcdir/code/cde"
+
   (
     export LANG=C
     export LC_ALL=C
-    export INSTALL_LOCATION="$pkgdir/usr/dt"
-    export LOGFILES_LOCATION="$pkgdir/var/dt"
-    export CONFIGURE_LOCATION="$pkgdir/etc/dt"
-    ./installCDE -s "$srcdir/code/cde" -destdir "$pkgdir"
+    make DESTDIR="$pkgdir" install
   )
 
-  echo 'DEBUG: bit fiddling'
+  mkdir -p "$pkgdir/var/dt/"
+  cd "$pkgdir/var/dt"
 
-  cd "$pkgdir/var/dt/"
   chmod 755 .
   chown bin .
   chgrp bin .
@@ -94,7 +72,7 @@ package() {
   chown -R bin *
   chgrp -R bin *
 
-  echo 'DEBUG: mkdir'
+  mkdir -p "$pkgdir/etc/dt/"
   cd "$pkgdir/etc/dt/"
   chmod 755 .
   mkdir -p appconfig/appmanager/C
@@ -105,7 +83,6 @@ package() {
   mkdir -p config/xfonts/C
   chmod -R 755 *
 
-  echo 'DEBUG: install stanza'
   chmod a+x $srcdir/startxsession.sh
   install -m644 "$srcdir"/fonts.{alias,dir} "$pkgdir/etc/dt/config/xfonts/C/"
   
@@ -115,6 +92,7 @@ package() {
                  "$pkgdir/usr/lib/systemd/system/dtlogin.service" 
 
   install -dm755 "$pkgdir/usr/spool"
+  install -dm755 "$pkgdir/var/spool/calendar"
   install -Dm644 "$srcdir/code/cde/contrib/xinetd/cmsd" \
                  "$pkgdir/etc/xinetd.d/cmsd"
   install -Dm644 "$srcdir/code/cde/contrib/xinetd/ttdbserver" \
@@ -122,4 +100,3 @@ package() {
   install -Dm644 "$srcdir/startxsession.sh" \
 		 "$pkgdir/usr/bin/startxsession.sh"
 }
-
