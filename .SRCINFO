@@ -1,6 +1,6 @@
 pkgbase = btrbk
 	pkgdesc = Backup tool for btrfs subvolumes, taking advantage of btrfs specific capabilities to create atomic snapshots and transfer them incrementally to your backup locations
-	pkgver = 0.31.3
+	pkgver = 0.32.0
 	pkgrel = 1
 	url = https://digint.ch/btrbk
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = btrbk
 	optdepends = mbuffer: --progress support and add buffering to send-stream
 	conflicts = btrbk-git
 	options = !makeflags
-	source = https://digint.ch/download/btrbk/releases/btrbk-0.31.3.tar.xz
-	b2sums = 7f78d00815259e42bb3fd16ee48272717fe57913b7af83ca8a98f1dfd0de715cbf8b07177ea60b5b8bdcb9793ee0d5829b90b8327cd4810f6275611276a6e707
+	source = https://digint.ch/download/btrbk/releases/btrbk-0.32.0.tar.xz
+	b2sums = d9627d0f0a258bba9412b37707c3e79ca8a65870148aa27f38e615c90d0e26adfc5ecf697cc34052916127a0a26be850f5874ff52ab6cb193093d591cb05dab1
 
 pkgname = btrbk
