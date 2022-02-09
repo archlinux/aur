@@ -1,13 +1,13 @@
 pkgbase = python-ttfautohint-py
 	pkgdesc = Python wrapper for ttfautohint, a free auto-hinter for TrueType fonts
-	pkgver = 0.4.3.post1
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/fonttools/ttfautohint-py
 	arch = x86_64
 	license = MIT
 	makedepends = python-pip
 	depends = python
-	source = https://files.pythonhosted.org/packages/py2.py3/t/ttfautohint-py/ttfautohint_py-0.4.3.post1-py2.py3-none-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
-	sha256sums = 099127c38f5ccfbe42a58f2e4ac2efe5fd58e337f14c34af7417ce9d534c986e
+	source = https://files.pythonhosted.org/packages/py2.py3/t/ttfautohint-py/ttfautohint_py-0.5.0-py2.py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = f63b3944e279ceca056f77d1120c7bb6ef53a77b3bb8effb75f96be899900313
 
 pkgname = python-ttfautohint-py
