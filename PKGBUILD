@@ -15,15 +15,19 @@ options=(!strip)
 source_x86_64=(
     "armcord.tar.gz::https://github.com/smartfrigde/armcord/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
     "armcord.desktop"
+    "armcord.png"
 )
 source_aarch64=(
     "armcord.tar.gz::https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver-arm64.tar.gz"
     "armcord.desktop"
+    "armcord.png"
 )
 sha256sums_x86_64=('eb4236d4ba24351f529d1e2091600bc3476ff8b54b2347591b6cdac07ba11139'
-                   '004d097517ea3fa1420fb8b1066c197089fb79d9a2f5d52f49ea573e9277fe2f')
+                   'SKIP'
+                   'SKIP')
 sha256sums_aarch64=('eb4236d4ba24351f529d1e2091600bc3476ff8b54b2347591b6cdac07ba11139'
-                    '004d097517ea3fa1420fb8b1066c197089fb79d9a2f5d52f49ea573e9277fe2f')
+                    'SKIP'
+                    'SKIP')
 
 package() {
     # enter directory
@@ -47,4 +51,5 @@ package() {
     chmod 755 "$pkgdir"/opt/armcord/armcord
 
     install -Dm644 "${srcdir}/armcord.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/armcord.png" "${pkgdir}/usr/share/pixmaps/armcord.png"
 }

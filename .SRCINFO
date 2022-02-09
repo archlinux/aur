@@ -10,11 +10,15 @@ pkgbase = armcord-bin
 	options = !strip
 	source_x86_64 = armcord.tar.gz::https://github.com/smartfrigde/armcord/releases/download/v3.0.4/ArmCord-3.0.4.tar.gz
 	source_x86_64 = armcord.desktop
+	source_x86_64 = armcord.png
 	sha256sums_x86_64 = eb4236d4ba24351f529d1e2091600bc3476ff8b54b2347591b6cdac07ba11139
-	sha256sums_x86_64 = 004d097517ea3fa1420fb8b1066c197089fb79d9a2f5d52f49ea573e9277fe2f
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
 	source_aarch64 = armcord.tar.gz::https://github.com/ArmCord/ArmCord/releases/download/v3.0.4/ArmCord-3.0.4-arm64.tar.gz
 	source_aarch64 = armcord.desktop
+	source_aarch64 = armcord.png
 	sha256sums_aarch64 = eb4236d4ba24351f529d1e2091600bc3476ff8b54b2347591b6cdac07ba11139
-	sha256sums_aarch64 = 004d097517ea3fa1420fb8b1066c197089fb79d9a2f5d52f49ea573e9277fe2f
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
 
 pkgname = armcord-bin
