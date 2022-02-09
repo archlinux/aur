@@ -1,0 +1,13 @@
+pkgbase = libvppinfra-bin
+	pkgdesc = Vector Packet Processing -- runtime libraries
+	pkgver = 21.10.1
+	pkgrel = 1
+	url = https://fd.io/
+	arch = x86_64
+	license = Apache
+	provides = libvppinfra
+	noextract = libvppinfra-bin-21.10.1.deb
+	source = libvppinfra-bin-21.10.1.deb::https://packagecloud.io/fdio/release/packages/ubuntu/bionic/libvppinfra_21.10.1-release_amd64.deb/download.deb
+	sha256sums = b5431cc9e962c16665b7c1c5cdb7af3d996af28c85ef72ffd38dab0edb001400
+
+pkgname = libvppinfra-bin
