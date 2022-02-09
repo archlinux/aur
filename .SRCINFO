@@ -1,7 +1,7 @@
 pkgbase = elementary-planner
 	pkgdesc = Task manager with Todoist support
-	pkgver = 2.7
-	pkgrel = 2
+	pkgver = 3.0.1
+	pkgrel = 1
 	url = https://useplanner.com
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = elementary-planner
 	depends = webkit2gtk
 	provides = planner
 	conflicts = planner
-	source = planner-2.7.tar.gz::https://github.com/alainm23/planner/archive/2.7.tar.gz
-	sha256sums = cd34953867a91b2992aa4eafddc5093a695d1e6096571ade75640dddcc425d69
+	source = planner-3.0.1.tar.gz::https://github.com/alainm23/planner/archive/3.0.1.tar.gz
+	sha256sums = f962693f78f8214503ac54e57886f94e7cff821615297a7dac418fccf4d0c1f5
 
 pkgname = elementary-planner
