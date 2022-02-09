@@ -2,7 +2,7 @@
 
 _pkgname=manafiles
 pkgname=manafiles-git
-pkgver=r135.ef1fce0
+pkgver=r147.5960549
 pkgrel=1
 pkgdesc='Config file and package tracking utility'
 arch=('i686' 'x86_64' 'aarch64')
@@ -11,7 +11,8 @@ license=('MIT')
 depends=('gcc-libs')
 optdepends=('grep: package functionality'
 			'pacman-contrib: package functionality')
-makedepends=('cmake' 'git' 'gzip')
+makedepends=('cmake' 'git' 'gzip' 'nlohmann-json')
+install="${_pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
