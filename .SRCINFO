@@ -1,18 +1,18 @@
 pkgbase = citespace
 	pkgdesc = A widely used tool for visual exploration of scientific literature.
-	pkgver = 5.8.R3
-	pkgrel = 2
-	url = http://cluster.cis.drexel.edu/~cchen/citespace/
+	pkgver = 5.8.R4
+	pkgrel = 1
+	url = https://citespace.podia.com/
 	arch = any
 	license = unknown
 	makedepends = unzip
 	makedepends = imagemagick
-	depends = java-runtime
+	depends = java-runtime>=11.0.11
 	optdepends = mysql: for data cleansing
-	source = citespace-5.8.R3.zip::https://citespace.podia.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMlJnSVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--67464dd11df7de3b743fc702b937aed728071897/5.8.R3.zip
+	source = citespace-5.8.R4.7z::https://citespace.podia.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBL0E5Snc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c6240732f70f6a16a48af2eb2459e2025e6234d9/5.8.R4.7z
 	source = citespace.desktop
 	source = citespace.sh
-	sha256sums = 8d534ba008d088d2176faa741f9d8eca6ed563b49912c38450de9df3a2d11da3
+	sha256sums = 0dc9f26c7b99ba96888bd187dfd542febd7711a50bd25b07dd72ec7b43ff280d
 	sha256sums = 5256f6866d830da93fd5439d45ae8b35f45806d19e7c86830e8d2db07fa5c83d
 	sha256sums = e23977204063d4837a50f3ecc45d67afe5a1d1aa672b145ab60fed073ee3bdf9
 
