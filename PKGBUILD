@@ -25,10 +25,10 @@ build() {
         eval "$(opam env)"
         ./prep-devtree.sh
         ./configure --exec-prefix=/usr --prefix=/usr --sysconfdir=/etc
-	make wyrd
+        make wyrd
 }
 
 package() {
         cd "$srcdir/wyrd-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+        make DESTDIR="$pkgdir/" install
 }
