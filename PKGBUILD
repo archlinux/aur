@@ -1,5 +1,5 @@
 pkgname="ryzenctrl-git"
-pkgver=0.5.2.926.r0.g2f858a0
+pkgver=0.5.2.926
 pkgrel=1
 pkgdesc="Fine-tuning of power limits and frequency of APU Ryzen Mobile"
 url="https://github.com/xodj/RyzenAdjCtrl"

@@ -1,6 +1,6 @@
 pkgbase = ryzenctrl-git
 	pkgdesc = Fine-tuning of power limits and frequency of APU Ryzen Mobile
-	pkgver = 0.5.2.926.r11.ge88cfdd
+	pkgver = 0.5.2.926
 	pkgrel = 1
 	url = https://github.com/xodj/RyzenAdjCtrl
 	install = ryzenctrl-root.service.install
