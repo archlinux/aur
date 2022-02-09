@@ -1,7 +1,7 @@
 pkgbase = kwallet-secrets
 	pkgdesc = Secure and unified container for user passwords. Patched for org.freedesktop.secrets support
 	pkgver = 5.90.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://community.kde.org/Frameworks
 	arch = x86_64
 	groups = kf5
