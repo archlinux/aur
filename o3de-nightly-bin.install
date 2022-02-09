@@ -1,6 +1,6 @@
 post_install() {
 
 	# Run script to install python version local to engine
-	"${pkgdir}/opt/O3DE/21.11.2/python/get_python.sh"
+	"${pkgdir}/opt/O3DE/0.0.0.0/python/get_python.sh"
 
 }
