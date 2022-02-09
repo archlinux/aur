@@ -6,7 +6,7 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
-pkgver=2.34
+pkgver=2.35
 pkgrel=1
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM64 target"
@@ -17,7 +17,7 @@ depends=()
 makedepends=($_arch-gcc $_arch-linux-api-headers)
 options=(!strip staticlibs)
 source=(https://ftp.gnu.org/gnu/libc/glibc-$pkgver.tar.xz{,.sig})
-sha256sums=('44d26a1fe20b8853a48f470ead01e4279e869ac149b195dda4e44a195d981ab2'
+sha256sums=('5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
             'SKIP')
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8  # "Carlos O'Donell <carlos@systemhalted.org>"
               BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
