@@ -14,7 +14,7 @@ pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.16
 _basever=516
-pkgver=5.16.7
+pkgver=5.16.8
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -43,10 +43,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0101-i2c-nuvoton-nc677x-hwmon-driver.patch'
         '0105-quirk-kernel-org-bug-210681-firmware_rome_error.patch'
         # Bootsplash
-        '0301-revert-garbage-collect-fbdev-scrolling-acceleration.patch'
-        '0302-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
-        '0303-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
-        '0304-revert-fbcon-remove-soft-scrollback-code.patch'
+        '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
+        '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
+        '0303-revert-fbcon-remove-soft-scrollback-code.patch'
         '0401-bootsplash.patch'
         '0402-bootsplash.patch'
         '0403-bootsplash.patch'
@@ -63,14 +62,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
-            '4dde3c76a012cf8b9de2fc2789671602644114e5b466299fd6ffff2baf63d4d8'
-            'cb2d729cc20743014d9e3bd08facb9f5bdd19d9fa89014f415c61b4a6eb78e97'
+            '2c6fd442436ee393ae6b835a4a986fbd4bebb6d919fa2c5af0a9107cbb6a40d7'
+            '39ad13563d804a78c72492baeef149e790544b84a75cb8d000b89b12a80aa210'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'b89188b1bc3516d54965dd36def6a2af3d81379e53ff7e527bbd91f77c6f191b'
             'f0eaa81deb5428c41d2f0b09e79a2860931e4a48a368e965172150a20fa2fa62'
             '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
             '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
-            '365d4225a7db60bd064ebbc34ce0ae582a0c378ad6c4cec7960a5ae4641a6757'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '1f18c5c10a3c63e41ecd05ad34cd9f6653ba96e9f1049ce2b7bb6da2578ae710'
