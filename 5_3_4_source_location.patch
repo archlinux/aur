@@ -1,0 +1,13 @@
+diff --color --unified --recursive --text Wyrmgus-5.3.4/src/util/assert_util.h Wyrmgus-5.3.4_fix/src/util/assert_util.h
+--- Wyrmgus-5.3.4/src/util/assert_util.h	2022-02-02 00:56:57.000000000 +0300
++++ Wyrmgus-5.3.4_fix/src/util/assert_util.h	2022-02-09 12:17:11.199389421 +0300
+@@ -26,6 +26,9 @@
+ 
+ #pragma once
+ 
++#include <source_location>
++#include <string>
++
+ namespace wyrmgus {
+ 
+ inline std::string get_source_relative_filepath_string(const std::string &filepath)
