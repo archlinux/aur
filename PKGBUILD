@@ -3,8 +3,8 @@
 pkgorg='loco-3d'
 _pkgname='ndcurves'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Library for creating smooth cubic splines"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -13,27 +13,28 @@ depends=('hpp-fcl' 'eigenpy' 'pinocchio' 'python')
 optdepends=('doxygen')
 makedepends=('cmake' 'eigen')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('03f0f776af89f389b3920ce0683d72fe818b038219c3c2a25527e658ad7fef86'
+            'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
-        -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
     cmake --build "build-$pkgver"
 }
 
 check() {
-    cmake --build "build-$pkgver"
+    cmake --build "build-$pkgver" -t test
 }
 
 package_ndcurves() {
-    export DESTDIR="$pkgdir/"
-    cmake --build "build-$pkgver" -t install
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf "$pkgdir/usr/share/doc"
 }
 
 package_ndcurves-docs() {
-    export DESTDIR="$pkgdir/"
-    cmake --build "build-$pkgver" -t install
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf "$pkgdir"/usr/{lib,include,bin,"share/$_pkgname"}
 }
