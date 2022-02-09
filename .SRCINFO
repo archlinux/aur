@@ -7,6 +7,10 @@ pkgbase = python-certbot-dns-netcup
 	license = Apache
 	makedepends = python
 	makedepends = python-setuptools
+	depends = python-acme>=0.31.0
+	depends = certbot>=0.31.0
+	depends = dns-lexicon>=3.2.3
+	depends = python-zope-interface
 	source = https://files.pythonhosted.org/packages/source/c/certbot-dns-netcup/certbot-dns-netcup-1.1.1.tar.gz
 	sha256sums = d2a4e433b8e0571bc805f7ff060f9ac05014f374824c0cac6c55ea5a9af685be
 
