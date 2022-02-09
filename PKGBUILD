@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-pip')
 depends=('python' 'python-adafruit-circuitpython-busdevice')
 optdepends=('python-raspberry-gpio')
 source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
-sha256sums=('724913e4cfeaf5faba9d5f62ae7ed9ca2e407b75a724747e8d240899ca3cb564')
+sha256sums=('b1e22878dd802a4a06429861db6d7527ddb4a5cedd50ffe500c8f2cc4800b952')
 
 build() {
     cd "${srcdir}/${_pypi_pkgname}-${pkgver}"
