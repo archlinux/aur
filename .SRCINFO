@@ -1,0 +1,24 @@
+pkgbase = ryzenctrl-git
+	pkgdesc = Fine-tuning of power limits and frequency of APU Ryzen Mobile
+	pkgver = 0.5.2.926.r11.ge88cfdd
+	pkgrel = 1
+	url = https://github.com/xodj/RyzenAdjCtrl
+	install = ryzenctrl-root.service.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = ryzen_smu-dkms-git
+	depends = ryzenadj-git
+	depends = qt6-base
+	depends = qt6-svg
+	optdepends = faustus-rublag-dkms-git: (AUR) Needed for ArmoryCrate profiles support.
+	provides = ryzenctrl
+	conflicts = ryzenctrl
+	source = ryzenctrl::git+https://github.com/xodj/RyzenAdjCtrl
+	source = ryzenadj-git::git+https://github.com/FlyGoat/RyzenAdj
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ryzenctrl-git
