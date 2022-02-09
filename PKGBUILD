@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.15.5.22.realtime1
+pkgver=5.16.2.19.realtime1
 pkgrel=1
 pkgdesc='Linux RT'
 arch=(x86_64)
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            '932da4dd92694dd53e6ce0913b0297308eebe6e70950a1c0e75e42c1b856f6961d9759856a2b37c64f23930f4ea8bb75ed9cfb0b7f3ba3ff13c1ef06156bec8d')
+            'f4fc5614c4606cd12114adbec3d9444d3bf7528280c895a54ba7421a4326e7413ff6b6bd9a185fdaf4b91ed8c3d9b2b8a7c8a7a40cb9487ddd60b111521833e6')
 b2sums=('SKIP'
-        '9b370c3fda5babbf6748d80828bbb7f32c96f498d391693ac1d3b49fa26ae9da41bc2364140cf6c3054bb27dff32e1cb98e2d1ccecc11bc7c8ed7a3525620e75')
+        'fa493cfbcd0147f91c4a7d7d492a11bb56361849aa3d01a0bcf9c486f151f9048a8c3d92b0ecd3f38002e059587b2baf26afd1042ba3f9739db328f3381eb913')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
@@ -30,7 +30,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd "${pkgbase}"
+  cd $pkgbase
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -58,7 +58,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase}"
+  cd $pkgbase
   make all
   make htmldocs
 }
@@ -70,7 +70,7 @@ _package() {
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
-  cd "${pkgbase}"
+  cd $pkgbase
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -93,7 +93,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd "${pkgbase}"
+  cd $pkgbase
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -103,11 +103,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -174,7 +174,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd "${pkgbase}"
+  cd $pkgbase
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
