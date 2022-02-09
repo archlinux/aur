@@ -19,4 +19,7 @@ elif [ -e "/etc/rc.d/openntpd" ]; then
                           /etc/rc.d/openntpd stop
                   ;;
           esac
+else
+    echo "Init system not detected, doing nothing!"
+    exit 2
 fi
