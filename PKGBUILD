@@ -6,7 +6,7 @@
 # Maintainer: Your Name <josh at joshdabo dot sh>
 _pkgname="susfetch"
 pkgname=$_pkgname-git
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Neofetch, but sus"
 arch=(any)
