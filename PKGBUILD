@@ -1,6 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-BUILDENV+=(!check) # git bisect related test blowup
+# https://github.com/arxanas/git-branchless/issues/266
+BUILDENV+=(!check)
 
 pkgname=git-branchless
 pkgver=0.3.9
