@@ -6,11 +6,11 @@ _pkgname=${_pkgbase}-${_sm64ver}
 
 pkgname=${_pkgname}-git
 pkgver=irix2.r55.g733fafc
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of Super Mario 64 (US) for modern devices"
 arch=("x86_64" "i686" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
 url="https://github.com/sm64-port/${_pkgbase}"
-license=("Apache")
+license=("unknown")
 makedepends=("python" "sdl2")
 provides=(${_pkgname})
 conflicts=(${_pkgname})
