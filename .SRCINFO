@@ -1,0 +1,15 @@
+pkgbase = virm-git
+	pkgdesc = A simple bash bulk removal tool, similar to vimv
+	pkgver = r3.053c1a4
+	pkgrel = 1
+	url = https://git.envs.net/Slips/virm
+	arch = i386
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = virm
+	conflicts = virm
+	source = virm::git+https://git.envs.net/Slips/virm.git
+	sha256sums = SKIP
+
+pkgname = virm-git
