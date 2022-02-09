@@ -1,11 +1,12 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
+pkgorg='stack-of-tasks'
 pkgname=eigenpy
 pkgver=2.6.10
-pkgrel=1
+pkgrel=3
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
-url="https://github.com/stack-of-tasks/$pkgname"
+url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
 depends=('boost-libs')
 optdepends=('doxygen')
@@ -17,7 +18,9 @@ validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD' 'F182CC432A4752C7A3E4FE
 
 build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
-        -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
     cmake --build "build-$pkgver"
 }
 
