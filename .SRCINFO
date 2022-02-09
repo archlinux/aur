@@ -1,0 +1,27 @@
+pkgbase = sm64-port-us-git
+	pkgdesc = A port of Super Mario 64 (US) for modern devices
+	pkgver = irix2.r55.g733fafc
+	pkgrel = 1
+	url = https://github.com/sm64-port/sm64-port
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = python
+	makedepends = sdl2
+	provides = sm64-port-us
+	conflicts = sm64-port-us
+	source = git+https://github.com/sm64-port/sm64-port
+	source = file://baserom.us.z64
+	source = sm64-port-us.sh
+	source = sm64-port-us.desktop
+	sha256sums = SKIP
+	sha256sums = 17ce077343c6133f8c9f2d6d6d9a4ab62c8cd2aa57c40aea1f490b4c8bb21d91
+	sha256sums = e9e143a55960598b020c471dbb619f2f500d9ff63d397daf81b6f9d6ec847884
+	sha256sums = c96db419ebe12dfbabfdf1cb133a4e40a1743361cdaa791ad1d9aaf1dfc91a14
+
+pkgname = sm64-port-us-git

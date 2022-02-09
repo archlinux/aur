@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Super Mario 64 Port (US)
+GenericName=Platformer
+Comment=A port of Super Mario 64 (US) for modern devices
+Type=Application
+Terminal=false
+Exec=sm64-port-us
+Icon=sm64-port-us
+Categories=Game;Retro;Emulator;
