@@ -16,10 +16,12 @@ options=(staticlibs !strip !emptydirs)
 source=(
   "https://bin.${pkgname}.com/${pkgver%.*}/client/${pkgname}_${pkgver}_amd64.deb"
   "${pkgname%%-*}driver.service.patch"
+  "10-appgate-tun.network"
 )
 sha256sums=(
   "f0aed1aa4c69c91b10dd01c621f4dc84b699efffa4d216e225d97bb9cfbebd8b"
   "0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb"
+  "2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9"
 )
 
 prepare() {
@@ -41,6 +43,9 @@ package() {
   # Install service files
   install -dm755 "${pkgdir}/usr/lib/systemd/system"
   install -Dm644 "${srcdir}/${pkgname}/lib/systemd/system/"* "${pkgdir}/usr/lib/systemd/system/"
+  # Make systemd-networkd not manage tun interfaces
+  install -dm755 "${pkgdir}/usr/lib/systemd/network"
+  install -Dm644 "${srcdir}/10-appgate-tun.network" "${pkgdir}/usr/lib/systemd/network/"
 
   # Install license files
   install -Dm644 "${srcdir}/${pkgname}/usr/share/doc/${pkgname/-sdp/}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
