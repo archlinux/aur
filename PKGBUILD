@@ -5,7 +5,7 @@ _name=blenderseed
 #fragment="#commit=7e49329 "
 _files=(__init__.py operators.py panel.py preferences.py utils.py)
 pkgname=blender-plugin-${_name}-git
-pkgver=1.0.0.beta.r80.gd5b86f5
+pkgver=2.0.0.beta.r55.ge13f09b
 pkgrel=1
 pkgdesc="appleseed Blender integrator"
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=\.)')
+  _blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]+\.[[:digit:]]+(?=\.)')
   cd ${_name}
   addons="$pkgdir/usr/share/blender/${_blender}/scripts/addons"
   install -dm755 ${addons}/${_name}
