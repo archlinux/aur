@@ -1,6 +1,6 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=2.14.1.r31.gf86ffac
+pkgver=3.17.10003.r1.g0726283
 pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
@@ -39,6 +39,7 @@ build() {
 	cd "${srcdir}/awakened-poe-trade"
     _ensure_local_nvm
 	yarn
+    yarn make-index-files
 	yarn electron:build
 }
 
