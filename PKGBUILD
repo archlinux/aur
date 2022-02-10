@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=python-louvain
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='Louvain algorithm for community detection'
 arch=(any)
@@ -10,7 +10,7 @@ license=(BSD)
 depends=(python-networkx python-numpy)
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('2a856edfbe29952a60a5538a84bb78cca18f6884a88b9325e85a11c8dd4917eb')
+sha256sums=('b7ba2df5002fd28d3ee789a49532baad11fe648e4f2117cf0798e7520a1da56b')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
