@@ -1,6 +1,6 @@
 pkgbase = rue
 	pkgdesc = A card game about deduction, love and regret
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://darkdimension.org/games/rue.html
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = rue
 	depends = sdl2
 	depends = sdl2_mixer
 	depends = glew
-	source = rue-0.1.1.tar.gz::https://github.com/tomtsagk/rue/archive/refs/tags/v0.1.1.tar.gz
-	md5sums = dab8da06ee43588cb3545873834488b9
+	source = rue-0.2.1.tar.gz::https://github.com/tomtsagk/rue/archive/refs/tags/v0.2.1.tar.gz
+	md5sums = 3098321c87a4dc1183fc1b5b14bcfee8
 
 pkgname = rue
