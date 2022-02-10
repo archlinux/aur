@@ -1,7 +1,7 @@
 pkgbase = shellcheck-bin
-	pkgdesc = Shell script analysis tool (binary release)
+	pkgdesc = Shell script analysis tool (binary release, static)
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shellcheck.net
 	arch = x86_64
 	arch = armv6h

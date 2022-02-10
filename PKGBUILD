@@ -2,9 +2,9 @@
 
 pkgname=shellcheck-bin
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 url='https://shellcheck.net'
-pkgdesc='Shell script analysis tool (binary release)'
+pkgdesc='Shell script analysis tool (binary release, static)'
 license=(AGPL3)
 arch=(x86_64 armv6h aarch64)
 conflicts=("${pkgname%-bin}")
