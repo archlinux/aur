@@ -1,0 +1,17 @@
+pkgbase = python-ffplaylist-git
+	pkgdesc = A Python implementation of Hybrid Radio SPI
+	pkgver = 0.1.r4.g3f404ea
+	pkgrel = 1
+	url = https://github.com/gumblex/ffplaylist
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = WTFPL
+	depends = python
+	provides = python-ffplaylist
+	conflicts = python-ffplaylist
+	source = python-ffplaylist::git+https://github.com/gumblex/ffplaylist.git
+	md5sums = SKIP
+
+pkgname = python-ffplaylist-git
