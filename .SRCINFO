@@ -1,18 +1,18 @@
 pkgbase = python-taskipy
 	pkgdesc = The complementary task runner for Python
-	pkgver = 1.9.0
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://github.com/illBeRoy/taskipy
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-poetry
-	makedepends = python-pip
+	makedepends = python-install
 	depends = python
 	depends = python-toml
 	depends = python-psutil
 	depends = python-colorama
-	source = python-taskipy-1.9.0.tar.gz::https://github.com/illBeRoy/taskipy/archive/1.9.0.tar.gz
-	b2sums = 2127eb4f9d15bd6d30769322d8e7e9b441030bc784eb889d69037cb4a50b8eff788254cc4b6f8b88d0a529c48963be0185f1a4b960ee01a68d019797523a6304
+	source = python-taskipy-1.10.0.tar.gz::https://github.com/illBeRoy/taskipy/archive/1.10.0.tar.gz
+	b2sums = 61aabf75b65d2f86a62faa92b985557343dfc9d80e8018f07d84a0d4582ba17082880616985148cbe82c3bcc07657a74b4e30c6da3ea00ccd413e3e46b1633bf
 
 pkgname = python-taskipy
