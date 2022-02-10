@@ -1,9 +1,9 @@
 # Maintainer: LoupZeur <loup@loupzeur.net>
 # Maintainer: Semyon Maryasin <simeon@maryasin.name>
 pkgname=speedify
-_pkgver=11.8.0-10224
+_pkgver=11.9.0-10269
 pkgver=${_pkgver/-/.}
-pkgrel=3
+pkgrel=0
 pkgdesc="Use multiple internet connections in parallel"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://speedify.com/"
