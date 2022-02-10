@@ -2,12 +2,12 @@
 pkgname=minetest-tutorial
 _pkgname=tutorial
 _pkgauthor=Wuzzy
-pkgver=3.1.1
-_cdbrel=6785
+pkgver=3.2.0
+_cdbrel=10973
 pkgrel=1
 pkgdesc="Learn how to play Minetest."
 license=("GPLv2")
-sha256sums=('ff4ede8cd9d820bade6adf10f2404f15b3e847497dfb995ad48a43021f90c179')
+sha256sums=('f9adedd42bdf64e14a43b7219570d51473f2f092f558c0ba17329af8832eb004')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
