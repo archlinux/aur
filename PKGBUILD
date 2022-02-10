@@ -7,7 +7,7 @@ pkgdesc="Comic downloader and EPUB/CBZ converter command line application and Py
 url="https://github.com/potatoeggy/mandown"
 replaces=()
 arch=("any")
-license=("AGPL3")
+license=("LGPL3")
 depends=(
 	"python-requests"
 	"python-typer"
