@@ -1,21 +1,21 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-_pkgver=3.0.0-alpha.28
+_pkgver=3.0.0-alpha.30
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
 license=('MIT')
-depends=('electron')
+depends=('electron15')
 makedepends=('yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('fc554353fd565c31cc82d1466f7d5e2897843d66a4a919143f8ef92cf6f1869d'
-            'a1f2eb9525dd10556ffde37a4dc9e06636a81d1d9ce815d1167e48954abee1dc'
+sha256sums=('f69a3e4afacb164b6e64c11f5c8379e74cd0822ae487fea7bfdff7713b6fb8d4'
+            '73ecbbf5025251fb057557cf316c8fc39fb99047fb1a2d5e7f26ad83180d9877'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
 prepare() {
