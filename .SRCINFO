@@ -1,7 +1,7 @@
 pkgbase = o
 	pkgdesc = Text editor
 	pkgver = 2.48.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD

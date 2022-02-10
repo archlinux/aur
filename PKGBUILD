@@ -2,7 +2,7 @@
 
 pkgname=o
 pkgver=2.48.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
@@ -46,15 +46,16 @@ optdepends=('asciidoctor: for writing man pages'
 b2sums=(SKIP)
 
 build() {
-  cd $pkgname
-  go build -v -mod=vendor -trimpath -buildmode=pie \
-    -ldflags="-s -w -extldflags \"${LDFLAGS}\""
+  cd $pkgname/v2
+  go build -buildmode=pie -ldflags="-s -w -extldflags \"${LDFLAGS}\"" \
+    -mod=vendor -trimpath -o ../o -v
+  cd ..
   make gui
 }
 
 package() {
   cd $pkgname
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 o "$pkgdir/usr/bin/o"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
