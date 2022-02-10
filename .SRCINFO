@@ -1,6 +1,6 @@
 pkgbase = jdom
 	pkgdesc = Easy-to-use Java XML parser
-	pkgver = 2.0.6
+	pkgver = 2.0.6.1
 	pkgrel = 1
 	url = http://www.jdom.org/downloads/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = jdom
 	depends = java-runtime
 	provides = jdom
 	provides = jdom2
-	source = http://www.jdom.org/dist/binary/jdom-2.0.6.zip
-	md5sums = 5869015f58961bb38308f91b97c93d4d
+	source = http://www.jdom.org/dist/binary/jdom-2.0.6.1.zip
+	sha256sums = 1c870864a9f92f71920d4429ed683225f9c85541fb49eaa99341c86baec5c42f
 
 pkgname = jdom
-

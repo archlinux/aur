@@ -1,7 +1,7 @@
 # Maintainer: Xunhua Guo <xunhua.guo@gmail.com>
 
 pkgname=jdom
-pkgver=2.0.6
+pkgver=2.0.6.1
 pkgrel=1
 pkgdesc="Easy-to-use Java XML parser"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('java-runtime')
 provides=('jdom' 'jdom2')
 source=("http://www.jdom.org/dist/binary/jdom-${pkgver}.zip")
 
-md5sums=("5869015f58961bb38308f91b97c93d4d")
+sha256sums=("1c870864a9f92f71920d4429ed683225f9c85541fb49eaa99341c86baec5c42f")
 
 package() {
     install -D -m755 \
