@@ -1,12 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: aspen <aspen@aspenuwu.me>
-# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
-# Contributor: Jean Lucas <jean@4ray.co>
-# Contributor: AI5C <ai5c@ai5c.com>
-# Contributor: kaptoxic <kaptoxic at yahoo dot com>
-# Contributor: Matthew Avant <matthew dot avant at gmail dot com>
-# Contributor: Rose Ames <rose at happyspork dot com>
-
 pkgname=zulip-desktop-electron
 pkgver=5.8.1
 pkgrel=1
