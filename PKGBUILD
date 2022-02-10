@@ -4,7 +4,7 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.21rc1
-pkgrel=1
+pkgrel=2
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
@@ -27,8 +27,8 @@ prepare() {
 
 build() {
 	cd build
-	LUAJIT_INC=/usr/include/luajit-2.0 \
-	LUAJIT_LIB=/usr/lib \
+	export LUAJIT_INC=$(pkg-config luajit --variable=includedir)
+	export LUAJIT_LIB=$(pkg-config luajit --variable=includedir)
 	/usr/src/nginx/configure \
 		--with-compat \
 		--add-dynamic-module=../$_modname-nginx-module-$pkgver
