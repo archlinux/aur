@@ -2,12 +2,12 @@
 pkgname=minetest-blockbomber
 _pkgname=blockbomber
 _pkgauthor=MisterE
-pkgver=2022.01.11
-_cdbrel=10571
+pkgver=2022.01.13
+_cdbrel=10599
 pkgrel=1
 pkgdesc="Battle your friends for power-ups and be the last blocker standing! A Multiplayer Bomberman clone."
 license=("LGPLv3")
-sha256sums=('958284433667b2eb37181d399a7b8bdce0d247e1d83949265bc6793b24e15274')
+sha256sums=('25ca51e92e4121d020895bc1070f787aed31296012d58d0181e30068aa728edb')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
