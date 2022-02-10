@@ -76,9 +76,9 @@ _makenconfig=
 ### IMPORTANT: Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-rog
-xanmod=5.16.7-xanmod1
+xanmod=5.16.8-xanmod1
 #pkgver=${xanmod//-/.}
-pkgver=5.16.8.prexan0
+pkgver=5.16.9.xanmod0
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -103,8 +103,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
-        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.7-8.xz"
-        #"Linux-5.16.8-rc2.patch"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.8-9.xz"
+        #"Linux-5.16.9-rc1.patch"
 
         # hotfix: address iwlwifi crash at boot on some hardware
         "iwlwifi-fix-use-after-free.patch"
@@ -126,7 +126,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # 5.17 TCP Optimizations included in Xanmod
         # 5.17 TCP csum optimization included in Xanmod
 
-        # 5.17: UDP/IPv6 optimizations v2
+        # 5.17: UDP6 optimizations v2
         "udp-ipv6-optimisations-v2-net-next.patch"
 
         # 5.17: AF_UNIX sockets: per-hash locks v3
@@ -176,9 +176,9 @@ validpgpkeys=(
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            '834dd6603ec3fb0a72e3a1a97669a7198cd6921c4f355b155b3d587a8f0fcea4'
+            'b01152a3444c3cb580f2d3230b093aa661f72ae6c786148100f92df30a62d768'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            'bb915d4f4291cbc7893a9f61fb5e1d90d9a6b368306710ef732795365b8b0108'
+            'ca5e56e61e08a4773b810f8ef1642e3f70cbaed14b80eca46b6650ad81f805c4'
             '7b6825a43b4173750768a1a50bfd38dcbd326aec6d56cc886490d97e323b7ce9'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
