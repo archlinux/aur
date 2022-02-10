@@ -2,7 +2,7 @@
 HIDE_TRAY_ICON=0
 
 pkgname=kwin-bismuth-git
-pkgver=2.3.0.r0.gf31342f
+pkgver=2.3.0.r27.gfcd85f8
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -34,7 +34,7 @@ prepare() {
     cd "repo"
 
     git fetch -f --filter=tree:0
-    git sparse-checkout set "/package.json" "/CMakeLists.txt" "/src" "/LICENSES"
+    git sparse-checkout set "/package.json" "/CMakeLists.txt" "/src" "/LICENSES" "/external"
     git reset --hard "origin/${_branch}"
 
     if [ ${HIDE_TRAY_ICON} = 1 ]; then
@@ -48,16 +48,20 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/repo"
+    cd "${srcdir}"
 
-    cmake -S "." -B "build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DUSE_TSC=OFF
-    cmake --build "build"
+    cmake -B "build" -GNinja "repo" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DUSE_TSC=OFF \
+        -DBUILD_TESTING=false
+
+    ninja -C "build"
 }
 
 package() {
-    cd "${srcdir}/repo"
-    DESTDIR="${pkgdir}" cmake --install "build"
+    cd "${srcdir}/build"
+    DESTDIR="${pkgdir}" ninja install
 
-    cd "LICENSES"
+    cd "${srcdir}/repo/LICENSES"
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" *
 }
