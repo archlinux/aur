@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=bbg
+Comment=blog generator
+Keywords=
+Exec=/usr/bin/bbg
+TryExec=
+Terminal=false
+Icon=/usr/share/icons/bbg.png
+Type=Application
+StartupNotify=false
+Categories=Office

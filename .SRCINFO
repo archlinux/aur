@@ -1,0 +1,24 @@
+pkgbase = bbg-git
+	pkgdesc = A static blog generator built with electron
+	pkgver = 20220212.r0.d37787d
+	pkgrel = 1
+	url = https://github.com/baiyang-lzy/bbg
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = electron
+	depends = gtk3
+	depends = libxcb
+	provides = bbg
+	conflicts = bbg
+	source = bbg.sh
+	source = icon.png
+	source = bbg.desktop
+	source = bbg::git+https://github.com/baiyang-lzy/bbg.git
+	sha256sums = b24a2718e870311aa07ae4e1c106218a87042e76102023236c006558f727ea09
+	sha256sums = b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f
+	sha256sums = f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96
+	sha256sums = SKIP
+
+pkgname = bbg-git
