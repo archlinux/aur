@@ -2,12 +2,13 @@
 pkgname=gmail-desktop
 _pkgver=3.0.0-alpha.30
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
+_electronversion=15
 pkgdesc="Unofficial Gmail desktop app"
 arch=('x86_64')
 url="https://github.com/timche/gmail-desktop"
 license=('MIT')
-depends=('electron15')
+depends=("electron${_electronversion}")
 makedepends=('yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
@@ -27,8 +28,8 @@ prepare() {
 
 build() {
   cd "$pkgname-$_pkgver"
-  electronDist="/usr/lib/electron"
-  electronVer="$(sed s/^v// /usr/lib/electron/version)"
+  electronDist="/usr/lib/electron$_electronversion"
+  electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
   yarn build
