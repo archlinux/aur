@@ -2,8 +2,8 @@
 # Contributor: oozyslug <oozyslug at gmail dot com>
 
 pkgname=neovim-plug
-pkgver=0.10.0
-pkgrel=3
+pkgver=0.11.0
+pkgrel=2
 pkgdesc="A Neovim plugin manager"
 arch=('any')
 url="http://github.com/junegunn/${pkgname#neo}"
