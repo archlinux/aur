@@ -1,0 +1,32 @@
+#!/bin/bash
+# adapted from the version on ipv6.tsinghua.edu.cn
+
+REMOTE_IP6="2402:f000:1:1501:200:5efe"
+REMOTE_IP4="166.111.21.1"
+
+IFACE4=`ip route show | grep default | sed -e 's/^default.*dev \([^ ]\+\).*$/\1/'`
+echo "Interface is $IFACE4"
+IP4=`ip addr show dev $IFACE4 | grep -m 1 'inet\ ' | sed -e 's/^.*inet \([^ \\]\+\)\/.*$/\1/'`
+echo "Outbound IP is $IP4"
+
+ip tunnel list |  grep "^sit1:" > /dev/null
+if [ $? -eq 0 ]; then
+	echo "Old tunnel found! removing..."
+	ip tunnel del sit1 || exit 1
+fi
+
+echo "Adding new tunnel..."
+ip tunnel add sit1 mode sit remote $REMOTE_IP4 local $IP4
+ip link set dev sit1 up
+ip tunnel list | grep "^sit1:" > /dev/null
+if [ $? -ne 0 ]; then
+	echo "Adding tunnel failed!"
+	exit 2
+fi
+
+echo "Setting address and route..."
+set -e
+ip -6 addr add $REMOTE_IP6:$IP4/64 dev sit1
+ip -6 route add default via $REMOTE_IP6:$REMOTE_IP4 dev sit1
+
+echo "Tsinghua University ISATAP Configured."
