@@ -2,17 +2,17 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-zimports
-pkgver=0.4.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Python import rewriter"
 arch=('any')
 url="https://github.com/sqlalchemyorg/zimports"
 license=('MIT')
-depends=('python>=3.7' 'python-pyflakes' 'python-flake8-import-order')
+depends=('python>=3.7' 'python-pyflakes' 'python-flake8-import-order' 'python-tomli')
 makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f8b6d4e2b81738d5f41783c22095b2ea2d2921820fa852764b1d9ee8e8bcb9ef')
+sha256sums=('0fdedf4d796e9e4d05b4bc2a3494984a1359d9b8ab7036472ac175999f6bc5a9')
 
 build() {
 	cd "zimports-$pkgver"
