@@ -1,7 +1,7 @@
 pkgbase = thedesk
 	pkgdesc = Desktop Environment built on Qt
-	pkgver = beta4
-	pkgrel = 3
+	pkgver = rc1
+	pkgrel = 1
 	url = https://github.com/vicr123/thedesk
 	arch = x86_64
 	license = GPL3
@@ -19,8 +19,9 @@ pkgbase = thedesk
 	makedepends = libtwebservices
 	makedepends = bluez-qt
 	makedepends = qrencode
-	source = thedesk-beta4::https://github.com/vicr123/thedesk/archive/beta4.tar.gz
-	sha256sums = fba59e6a6aa9940728f6e6e5db61445f44fbcc0adfa8b2f30f3e4c7649f4ac29
+	makedepends = thefile
+	source = thedesk-rc1::https://github.com/vicr123/thedesk/archive/rc1.tar.gz
+	sha256sums = e0a8320d4d6aacb5281698edb29f07563620773d371da565f30b7722f93d4681
 
 pkgname = thedesk
 	depends = the-libs
@@ -41,11 +42,16 @@ pkgname = thedesk
 	depends = bluez-qt
 	depends = qrencode
 	depends = thedesk-xdg-utils
+	depends = xdg-desktop-portal-td
 
 pkgname = td-polkitagent
 	depends = the-libs
 	depends = polkit-qt5
 	depends = libtdesktopenvironment
+
+pkgname = xdg-desktop-portal-td
+	depends = the-libs
+	depends = thefile
 
 pkgname = thedesk-platform
 	depends = the-libs
