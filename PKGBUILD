@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fw-bin
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="Workspace productivity booster"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}"
                "$pkgname-$pkgver-LICENSE::$url/raw/v$pkgver/LICENSE"
                "$pkgname-$pkgver-README.org::$url/raw/v$pkgver/README.org")
-sha512sums_x86_64=('3d8be719388ee01ab2c94620d0f6bf4068267c59d243f9368b866d7b764548f65bdaab6d66aa2dfc0674dbe91e39ecb23a912930cb6b3076eb95d0e9d87452a6'
+sha512sums_x86_64=('4acc10bb9a11586aafd3b06c84a04e6721dae222d7b18280dfb0909afc877b1da95bfaa8e17ce305cd45562fd4b57de395620891089564de6215f326f68c233a'
                    '1b4064171fa88f41d05e3d1d1c14ceb8a5cb4cca9e6f08f7e267d7740b7d65e4765cb56f0ccf3765ee9c85654559d2d7726d71516b890b0174b68e6cc62ef421'
                    'ba10d10c63770dbcf136977eba3ba36232d38df9db66d4b5ef38be1a1cb02c8529cbf69807f043aa9d4f356b91c4d9343e8cf41720a10ae7181ce319c66c4546')
 
