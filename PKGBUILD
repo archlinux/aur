@@ -8,7 +8,7 @@ url="https://github.com/vlasakm/$pkgname"
 license=(custom)
 arch=(x86_64)
 makedepends=(meson)
-depends=(zziplib libpng zlib harfbuzz otf-latin-modern otf-latinmodern-math)
+depends=(zziplib libpng zlib otf-latin-modern otf-latinmodern-math)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 
 sha256sums=(abd300ad16e734bdbec3f4966923ee7ffcbf19729662614cf16ceecf08822f28)
