@@ -2,12 +2,12 @@
 pkgname=minetest-minegistic
 _pkgname=minegistic
 _pkgauthor=logalog
-pkgver=0.9.1
-_cdbrel=10373
+pkgver=2022.02.05
+_cdbrel=11103
 pkgrel=1
 pkgdesc="Basic game of connecting resource nodes together"
 license=("GPLv3")
-sha256sums=('d3bb113c27447b403f48b2d62389f7612b14eb0a7d2069cb848a0dc1fa9c559b')
+sha256sums=('045c5f2268864281221cfbb7d3effa2d98a539dc1cecc2f707293932f39545f1')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
