@@ -3,7 +3,7 @@
 _pkgname=faustpp
 pkgname="${_pkgname}-git"
 pkgver=r57.5197306
-pkgrel=1
+pkgrel=2
 pkgdesc="A post-processor for FAUST DSP code (git version)"
 arch=('x86_64')
 url="https://github.com/jpcima/faustpp"
