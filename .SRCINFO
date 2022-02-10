@@ -1,6 +1,6 @@
 pkgbase = stork
 	pkgdesc = Impossibly fast web search, made for static sites.
-	pkgver = 1.1.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/jameslittle230/stork
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = stork
 	makedepends = rust
 	depends = gcc-libs
 	depends = zlib
-	source = stork-1.1.0.tar.gz::https://github.com/jameslittle230/stork/archive/v1.1.0.tar.gz
-	md5sums = 3a2e29fc0fa77892595f010b326bfed4
+	source = stork-1.4.0.tar.gz::https://github.com/jameslittle230/stork/archive/v1.4.0.tar.gz
+	md5sums = 28b072e43f0e551acbf8570abb035a74
 
 pkgname = stork
-

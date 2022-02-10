@@ -1,7 +1,7 @@
 # Maintainer: Ben Oliver <ben@bfoliver.com.com>
 
 pkgname=stork
-pkgver=1.1.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Impossibly fast web search, made for static sites."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('gcc-libs' 'zlib')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('3a2e29fc0fa77892595f010b326bfed4')
+md5sums=('28b072e43f0e551acbf8570abb035a74')
 
 build() {
   cd "$pkgname-$pkgver"
