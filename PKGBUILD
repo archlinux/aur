@@ -3,7 +3,7 @@
 pkgname=power-profile-selector-git
 pkgver=0.1.r0.gc5c48da
 pkgrel=1
-pkgdesc='This systemd user service monitors your system and apply wanted new power profile.'
+pkgdesc='This systemd user service monitors your system and apply wanted power profile.'
 arch=(any)
 url=https://gitlab.gnome.org/gnumdk/power-profile-selector
 license=(GPL)
