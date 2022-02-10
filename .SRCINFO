@@ -1,11 +1,12 @@
 pkgbase = libtdesktopenvironment
 	pkgdesc = Common libraries for desktop integration for the- apps
-	pkgver = beta4
-	pkgrel = 2
+	pkgver = rc1
+	pkgrel = 1
 	url = https://github.com/vicr123/libtdesktopenvironment
 	arch = x86_64
 	license = GPL3
 	makedepends = qt5-tools
+	makedepends = git
 	depends = the-libs
 	depends = qt5-svg
 	depends = qt5-x11extras
@@ -17,8 +18,12 @@ pkgbase = libtdesktopenvironment
 	depends = libxrandr
 	depends = networkmanager-qt
 	depends = pulseaudio-qt
-	source = libtdesktopenvironment-beta4::https://github.com/vicr123/libtdesktopenvironment/archive/beta4.tar.gz
-	sha256sums = 8e251a514aadd58c44f9f04c65cd2a25d671b342b3e190f5252fd08cdc02795b
+	depends = qt5-wayland
+	source = git+https://github.com/vicr123/libtdesktopenvironment.git#tag=rc1
+	source = git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+	source = git+https://github.com/swaywm/wlr-protocols.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libtdesktopenvironment
-
