@@ -1,8 +1,8 @@
 pkgbase = python-yellowbrick
 	pkgdesc = A suite of visual analysis and diagnostic tools for machine learning
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
-	url = http://www.scikit-yb.org
+	url = https://github.com/DistrictDataLabs/yellowbrick
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
@@ -12,8 +12,7 @@ pkgbase = python-yellowbrick
 	depends = python-scikit-learn
 	depends = python-cycler
 	optdepends = python-umap-learn: UMAP Corpus Visualization with UMAPVisualizer/umap
-	source = https://files.pythonhosted.org/packages/b2/be/7b894da1794166579bf5194fa35ecc0170293691cdc22e076df47b444bc9/yellowbrick-1.2.tar.gz
-	sha256sums = 380b9775c9ad1880be55fab697a5d694823f9bc972bd7c2108553a11c7c8f252
+	source = yellowbrick-1.2.1.tar.gz::https://github.com/DistrictDataLabs/yellowbrick/archive/refs/tags/v1.2.1.tar.gz
+	sha256sums = 6c0c07485fb5cf933e1e708895bfb1bbaa87401090172584d25327e62adbfe49
 
 pkgname = python-yellowbrick
-
