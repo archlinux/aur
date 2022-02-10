@@ -1,7 +1,7 @@
 # Maintainer: Kiernan Preve <kiernanpreve@gmail.com>
 
 pkgname="8188gu"
-pkgver=r14.57c5d68
+pkgver=1.0
 pkgrel=1
 pkgdesc='Kernel driver module for Realtek RTL8188gu (device id 0bda:1a2b)'
 arch=('any')
