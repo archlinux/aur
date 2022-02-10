@@ -1,6 +1,6 @@
 pkgbase = power-profile-selector-git
 	pkgdesc = This systemd user service monitors your system and apply wanted power profile.
-	pkgver = 0.1.r0.gc5c48da
+	pkgver = 0.2.r0.gfd1c990
 	pkgrel = 1
 	url = https://gitlab.gnome.org/gnumdk/power-profile-selector
 	install = power-profile-selector.install
