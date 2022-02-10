@@ -1,17 +1,18 @@
+# Maintainer: kmille <github@androidloves.me>
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=puppet-lint
-pkgver=2.4.2
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="Check that your Puppet manifests conform to the style guide."
 arch=(any)
-url="https://github.com/rodjek/puppet-lint"
+url="https://github.com/puppetlabs/puppet-lint"
 license=('MIT')
 depends=('ruby')
 makedepends=('rubygems' 'ruby-rdoc')
 source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
 noextract=($pkgname-$pkgver.gem)
-sha256sums=('334957137b31380d5df352c722fe142767ed46520a4279a80fe7f3917b9797df')
+sha256sums=('3b41f054b1d7b4bfd041652647df8aef1eebd14d6c40b8b77920396a161b92e5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
