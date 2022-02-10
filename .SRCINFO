@@ -16,7 +16,7 @@ pkgbase = alvr
 	depends = libunwind
 	provides = alvr
 	conflicts = alvr
-	source = alvr::git+https://github.com/alvr-org/ALVR.git#tag=v17.0.0
+	source = alvr::git+https://github.com/alvr-org/ALVR.git#tag=v17.0.1
 	md5sums = SKIP
 
 pkgname = alvr

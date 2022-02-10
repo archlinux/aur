@@ -11,7 +11,7 @@ depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-_tag="v17.0.0"
+_tag="v17.0.1"
 source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=${_tag}")
 md5sums=('SKIP')
 
