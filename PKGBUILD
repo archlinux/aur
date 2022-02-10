@@ -2,8 +2,8 @@
 # Contributor: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=python-pydna
-pkgver=4.0.6
-pkgrel=2
+pkgver=4.0.7
+pkgrel=1
 pkgdesc='Data structures for double-stranded DNA & simulation of homologous recombination'
 arch=('any')
 url='https://github.com/bjornfjohansson/pydna'
@@ -23,9 +23,14 @@ optdepends=(
 	'python-scipy: gel simulation')
 makedepends=(
 	'git'
+	'python-build'
+	'python-install'
+	'python-wheel'
+	'python-sphinx'
 	'python-setuptools'
 	'python-setuptools-scm'
 	'python-pytest-runner')
+checkdepends=('python-requests-mock' 'ipython' 'python-codon-adaptation-index')
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=$pkgver")
 sha256sums=('SKIP')
@@ -37,21 +42,22 @@ sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname"
-	python setup.py build
-	## FIXME: sphinx-build cannot find pydna
+	python -m build --wheel --skip-dependency-check --no-isolation
+	## FIXME: sphinx-build cannot find pydna metadata
 	# cd docs
-	# sphinx-build -b man ./ build
+	# PYTHONPATH=../ sphinx-build -b man ./ _build/man
 }
 
 check() {
 	cd "$pkgname"
-	## FIXME: tests fail with python-prettytable=0.7.2
-	python setup.py pytest || true
+	## FIXME: certain tests fail
+	PYTHONPATH=./ pytest -x --disable-warnings || true
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
