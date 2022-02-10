@@ -2,12 +2,12 @@
 pkgname=minetest-hades-revisited
 _pkgname=hades_revisited
 _pkgauthor=Wuzzy
-pkgver=0.14.2
-_cdbrel=9850
+pkgver=0.14.3
+_cdbrel=11091
 pkgrel=1
 pkgdesc="Use your limited supplies to survive and use terraforming to create a beautiful habitable place."
 license=("LGPL2.1")
-sha256sums=('ba3267809413edf44e3eaba0807e58e975816a94bd67ab6ecec23aabc72a58d2')
+sha256sums=('34684e5c8cf12652e51aaa15a3671ac7da50ad8a0d2323713484e852ce447ca1')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
