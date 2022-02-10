@@ -1,7 +1,7 @@
 pkgbase = nwg-shell
 	pkgdesc = nwg-shell meta-package and installer
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-shell
 	arch = x86_64
 	license = MIT
@@ -15,6 +15,7 @@ pkgbase = nwg-shell
 	depends = libappindicator-gtk3
 	depends = light
 	depends = lxappearance
+	depends = network-manager-applet
 	depends = noto-fonts
 	depends = pacman-contrib
 	depends = papirus-icon-theme
