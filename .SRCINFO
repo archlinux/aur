@@ -1,14 +1,14 @@
 pkgbase = minetest-little-lady
 	pkgdesc = A Little Ladybug in a Big World
-	pkgver = 10113
+	pkgver = 10980
 	pkgrel = 1
 	url = https://content.minetest.net/packages/Just_Visiting/littlelady/
 	arch = any
 	license = MIT
 	depends = minetest-common
-	noextract = littlelady-10113.zip
+	noextract = littlelady-10980.zip
 	options = !strip
-	source = littlelady-10113.zip::https://content.minetest.net/packages/Just_Visiting/littlelady/releases/10113/download/
-	sha256sums = 6d396cafd6fedc757fc754251e137c945c68079f91c875a066a1fbe17ce9fda0
+	source = littlelady-10980.zip::https://content.minetest.net/packages/Just_Visiting/littlelady/releases/10980/download/
+	sha256sums = 5cefbe5084523a8a338495bafabbfb18fb2b3490e6873a3674b89186f4971cfc
 
 pkgname = minetest-little-lady

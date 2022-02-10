@@ -2,12 +2,12 @@
 pkgname=minetest-little-lady
 _pkgname=littlelady
 _pkgauthor=Just_Visiting
-pkgver=10113
-_cdbrel=10113
+pkgver=10980
+_cdbrel=10980
 pkgrel=1
 pkgdesc="A Little Ladybug in a Big World"
 license=("MIT")
-sha256sums=('6d396cafd6fedc757fc754251e137c945c68079f91c875a066a1fbe17ce9fda0')
+sha256sums=('5cefbe5084523a8a338495bafabbfb18fb2b3490e6873a3674b89186f4971cfc')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
