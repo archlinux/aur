@@ -1,5 +1,6 @@
+# Maintainer: Fabian Maurer <dark.shadow4@web.de>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Procyon
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Thayer Williams <thayer@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 # Contributor: Robson Peixoto
