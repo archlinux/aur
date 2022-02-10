@@ -3,7 +3,7 @@
 pkgbase=amdfand-bin
 pkgname=amdfand-bin
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="AMDGPU fan speed management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
@@ -11,7 +11,7 @@ source=( "https://github.com/Eraden/amdgpud/releases/download/v${pkgver}/amdfand
 arch=('x86_64')
 md5sums=( '71a5afb29892ca8c5be9f5b3f8e64c68')
 keywords=( 'amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
-optdepends=('amdmond' 'amdguid' 'amdvold')
+optdepends=('amdmond-bin' 'amdguid-bin' 'amdvold-bin')
 
 build() {
     cd $srcdir/
