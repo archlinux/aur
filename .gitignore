@@ -4,3 +4,4 @@ pkg
 src
 *.pkg.tar.zst
 *.pkg.tar
+*.tar.gz
