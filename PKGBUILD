@@ -2,9 +2,9 @@
 # -*- mode: sh -*-
 
 pkgname=gonano
-pkgver=0.1.16
-pkgrel=4
-_pkgdate=1622827223
+pkgver=0.1.17
+pkgrel=1
+_pkgdate=1644501572
 pkgdesc='Go language support for NANO — a digital currency'
 arch=('x86_64' 'armv7h')
 url='https://github.com/hectorchu/gonano'
@@ -15,21 +15,6 @@ provides=('gonano')
 conflicts=('gonano')
 source=(
   "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-)
-md5sums=(
-  '896636adcf8633f66c07f1b31eed8012'
-)
-sha1sums=(
-  'acef27d018b2f9b08f667670e3f05d04cf57433c'
-)
-sha256sums=(
-  '6f6d5a9ad0782d39bb7aae6f933d1b983ae595e0e05714648e79de13502a3718'
-)
-sha512sums=(
-  'c0b39ef411d163ab80fde673cc19df72d84041d3583c5b18704aa2c6707811999cc2d4ba3bf1796c4f6bdf80a8fa5b97ab1e848971fb4c76fd58832f83f5c773'
-)
-b2sums=(
-  'a555804b1053137d84b053c86e38b24f93dba22b3f2721a50747971ac29c4146cd1c013b4c6f5911f8183de27a51421eff3dab45ee1556b351b9ff0781143c37'
 )
 
 build() {
@@ -47,7 +32,7 @@ build() {
     -ldflags="-linkmode=external -X main.version=$pkgver -X main.date=$_pkgdate" \
     -mod=readonly \
     -modcacherw \
-    .
+     .
 }
 
 package() {
@@ -57,5 +42,15 @@ package() {
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+sha256sums=(
+  'f744d520a4c8f6954dbc730f60292f26cb433d643b38a911b6e2347a8c480951'
+)
+sha512sums=(
+  'e2b6743553b049311f7b451794d3e7e5c7b087bc2671cdfd3f67a07913949d2603ca50bd42485d37b11f50e7a031f985e7ed4cbd05d134d9ed067fc782942a18'
+)
+b2sums=(
+  'd0a8e6b9e553b2318ff41e0f86d0e6e06342d9b0031dcc105e66d526670f198d7a2d70e4c45ebc7e307e216cef1f29bc275d3c230c1eea2f5dfbcf1476a021ce'
+)
 
 # eof
