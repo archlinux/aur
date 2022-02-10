@@ -1,19 +1,19 @@
 # Maintainer : Eric Lesiuta <elesiuta@gmail.com>
 
 pkgname=picosnitch
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Protect your privacy, see which processes make remote network connections'
 arch=('any')
 url='https://elesiuta.github.io/picosnitch/'
 license=('GPL3')
-depends=('python-bcc' 'dbus-python' 'python-psutil' 'python-requests')
+depends=('python-bcc' 'python-dash' 'dbus-python' 'python-pandas' 'python-plotly' 'python-psutil' 'python-requests')
 makedepends=('python-setuptools')
 optdepends=()
 provides=()
 conflicts=()
 source=("picosnitch-${pkgver}.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v${pkgver}/picosnitch.tar.gz")
-sha256sums=('c357d06674b7c16d06997bd4ac88e03ef7463a2aea5910e356372c43e4436303')
+sha256sums=('0a532669ebba788e6fd45bbb6171392cdebcfe6131d4f3de0c599fdfba296fdc')
 
 build() {
     python setup.py build
