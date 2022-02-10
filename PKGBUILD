@@ -1,7 +1,7 @@
 # Maintainer: LinusDierheimer <Linus@Dierheimer.de>
 
 pkgname=mkinitcpio-firmware
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Optional firmware for the default linux kernel to get rid of the annoying 'WARNING: Possibly missing firmware for module:' messages"
 arch=("any")
@@ -9,10 +9,14 @@ url="https://aur.archlinux.org/packages/mkinitcpio-firmware"
 license=("GPL")
 depends=(
     "linux-firmware"
-    "linux-firmware-qlogic" # bfa qed qla2xxx qla1280
-    "aic94xx-firmware"      # aic94xx
-    "wd719x-firmware"       # wd719x
-    "upd72020x-fw"          # xhc_pic
+    "linux-firmware-qlogic"   # bfa qed qla2xxx qla1280
+    "linux-firmware-bnx2x"    # bnx2x
+    "linux-firmware-nfp"      # nfp
+    "linux-firmware-mellanox" # mlxsw_spectrum
+    "linux-firmware-liquidio" # liquidio
+    "aic94xx-firmware"        # aic94xx
+    "wd719x-firmware"         # wd719x
+    "upd72020x-fw"            # xhc_pic
 )
 optdepends=(
   "mkinitcpio: build the initramfs"
