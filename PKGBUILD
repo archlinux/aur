@@ -2,12 +2,12 @@
 pkgname=minetest-subway-miner
 _pkgname=subway_miner
 _pkgauthor=AFCM
-pkgver=1.4
-_cdbrel=10568
+pkgver=1.6
+_cdbrel=10900
 pkgrel=1
 pkgdesc="A Subway Surfer inspired game"
 license=("GPLv3")
-sha256sums=('e18655b5a876f2790ffa339cdcdd3b6c1d0961c63ec856fb67f854a7b26ce5a6')
+sha256sums=('7ffd3626e8746b54b6bdbc83e9c4c6999ebe419ceafce5c18593717eb5643454')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
