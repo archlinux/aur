@@ -2,9 +2,9 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libutp
-pkgver=r165.059c944
+pkgver=r99.fda9f4b
 pkgrel=1
-_commit=059c9449a104e440e4f913756a5f560dd4ae76a9
+_commit=fda9f4b3db97ccb243fcbed2ce280eb4135d705b
 pkgdesc='uTorrent Transport Protocol library'
 url='https://github.com/bittorrent/libutp'
 makedepends=(git cmake)
