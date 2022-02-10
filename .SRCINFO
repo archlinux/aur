@@ -1,0 +1,17 @@
+pkgbase = authy-electron
+	pkgdesc = Two factor authentication desktop application
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://authy.com
+	arch = x86_64
+	license = unknown
+	makedepends = squashfs-tools
+	depends = electron9
+	provides = authy
+	conflicts = authy
+	source = authy-1.9.0-7.snap::https://api.snapcraft.io/api/v1/snaps/download/H8ZpNgIoPyvmkgxOWw5MSzsXK1wRZiHn_7.snap
+	source = authy.sh
+	sha256sums = a33f5f40d4bf67ee3800f006aadfa93d396c1150b6d61e416cfad1c1d8215f81
+	sha256sums = dce87238a960dd0b308e8f19056eea50151093202a0f13f98bebfb3b903b7dac
+
+pkgname = authy-electron
