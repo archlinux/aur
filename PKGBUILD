@@ -2,41 +2,46 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termimage-git
-pkgver=1.1.0.r1.g293528716
-pkgrel=2
+pkgver=1.2.0.r0.g92ebfcf30
+pkgrel=1
 pkgdesc="Display images in your terminal (git)"
 arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
 license=('MIT')
-makedepends=('rust' 'git')
+depends=('gcc-libs')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}"
-        "$url/releases/download/v${pkgver%.r*}/${pkgname%-git}-man-v${pkgver%.r*}.tbz2")
-sha512sums=('SKIP'
-            '7e2f220b7b023f357c1ee32ac7ed2936e4b01378d8fd2bf96becedb4dd16e8bae4a7eb57790292342beb9512e915e52d782782e04aec28d6d415f6741f241c5b')
+source=("git+${url}")
+        #"$url/releases/download/v${pkgver%.r*}/${pkgname%-git}-man-v${pkgver%.r*}.tbz2")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
   cd "${pkgname%-git}"
   # TODO: Use `--locked` flag for reproducibility.
   # Tracking issue: https://github.com/nabijaczleweli/termimage/pull/16#issuecomment-729920052
-  cargo build --release
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  cd "${pkgname%-git}"
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release
+  cargo test --frozen
 }
 
 package() {
   cd "${pkgname%-git}"
   install -Dm 755 "target/release/${pkgname%-git}" -t "$pkgdir/usr/bin"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.md" -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
+  #install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.md" -t "$pkgdir/usr/share/doc/$pkgname"
+  #install -Dm 644 "../${pkgname%-git}-man-v${pkgver%.r*}/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
 }
