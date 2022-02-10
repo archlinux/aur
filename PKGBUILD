@@ -1,15 +1,15 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 # Maintainer: Buildpacks Maintainers <cncf-buildpacks-maintainers at lists dot cncf dot io>
 pkgname=pack-cli
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="CLI for building apps using Cloud Native Buildpacks"
 arch=('x86_64')
 url="https://buildpacks.io/"
 license=('Apache')
 makedepends=('go-pie')
-source=("https://github.com/buildpacks/pack/archive/v0.23.0.tar.gz")
-sha512sums=("71fe75470b30bfa5580a617b48d04131760ae8f08dbdcf6efc0766dcb2f608e0fddd9d15c3bb1622cb37c7c7e8b3c4fb85d67153d10b5b7c3088e16b4224b301")
+source=("https://github.com/buildpacks/pack/archive/v0.24.0.tar.gz")
+sha512sums=("df0f4fc41070f2d791d103de4a532e8f447b91db93034027d29c9ca14cb836e5ab69c11dc5e361a3137cd4dd429def72e99948e0dc017b92358189c3c8a84731")
 build() {
 	export GOPATH="${srcdir}/go"
 	cd "${srcdir}/pack-${pkgver}"
