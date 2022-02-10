@@ -1,0 +1,8 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: You have to initialize the security database and create a user."
+  echo "   See /usr/share/doc/firebird/README.security_database.txt"
+}
+
+# vim:set ts=2 sw=2 et:
