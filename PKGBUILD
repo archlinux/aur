@@ -6,7 +6,7 @@ _major=20
 _minor=11
 _build=105048
 pkgver=${_major}.${_minor}.${_build}
-pkgrel=2
+pkgrel=3
 pkgdesc="IDE for the Eiffel programming language (opensource edition)"
 arch=("x86_64")
 url="https://www.eiffel.org/downloads"
@@ -16,7 +16,7 @@ provides=("eiffelstudio")
 conflicts=("eiffelstudio")
 options=("staticlibs")
 source=("eiffel-studio.profile"
-	"https://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%20${_major}.${_minor}/Build_${_build}/Eiffel_${_major}.${_minor}_rev_${_build}-linux-x86-64.tar.bz2"
+	"https://www.eiffel.com/cdn/EiffelStudio/${_major}.${_minor}/${_build}/Eiffel_${_major}.${_minor}_rev_${_build}-linux-x86-64.tar.bz2"
         "eiffel-studio.desktop")
 sha256sums=('3660f50b6900cecc22e79913d502a641a3355b9353bdf4b97185e6be100bb59a'
             '90d9bcd613bc8880d076c653a6bdb204c160b611f64c05f3cdb4aed7aa97a2dd'

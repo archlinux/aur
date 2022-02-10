@@ -1,7 +1,7 @@
 pkgbase = eiffelstudio-bin
 	pkgdesc = IDE for the Eiffel programming language (opensource edition)
 	pkgver = 20.11.105048
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.eiffel.org/downloads
 	arch = x86_64
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = eiffelstudio-bin
 	conflicts = eiffelstudio
 	options = staticlibs
 	source = eiffel-studio.profile
-	source = https://downloads.sourceforge.net/project/eiffelstudio/EiffelStudio%2020.11/Build_105048/Eiffel_20.11_rev_105048-linux-x86-64.tar.bz2
+	source = https://www.eiffel.com/cdn/EiffelStudio/20.11/105048/Eiffel_20.11_rev_105048-linux-x86-64.tar.bz2
 	source = eiffel-studio.desktop
 	sha256sums = 3660f50b6900cecc22e79913d502a641a3355b9353bdf4b97185e6be100bb59a
 	sha256sums = 90d9bcd613bc8880d076c653a6bdb204c160b611f64c05f3cdb4aed7aa97a2dd
