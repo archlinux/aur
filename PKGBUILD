@@ -2,12 +2,12 @@
 pkgname=minetest-spmeter
 _pkgname=spmeter
 _pkgauthor=crabycowman123
-pkgver=0.1.1
-_cdbrel=10172
+pkgver=0.1.2
+_cdbrel=11007
 pkgrel=1
 pkgdesc="game jam submission"
 license=("AGPLv3")
-sha256sums=('3c4ad26586279ffee5dd41e4593fed9a994815dd408c677b78ed667dd38bed30')
+sha256sums=('20f63b1b02cb584ae89d07d156d2d126e3624f52a0de24130989b95ebbd88270')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
