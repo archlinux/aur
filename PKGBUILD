@@ -2,12 +2,12 @@
 pkgname=minetest-parkour
 _pkgname=parkour
 _pkgauthor=Emojiminetest
-pkgver=10197
-_cdbrel=10197
+pkgver=11037
+_cdbrel=11037
 pkgrel=1
 pkgdesc="Parkour game!"
 license=("LGPLv2.1")
-sha256sums=('7b8843be82ed5fb90d5e39d9ea411034f6219d069c5169ab79fa48ee767039c0')
+sha256sums=('167dfc3aa54379af28ee9aeeaf6514f13a7aa91f0733bbf2370d48eed44d70e0')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
