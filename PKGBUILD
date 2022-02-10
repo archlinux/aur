@@ -2,7 +2,7 @@
 _name=yellowbrick
 pkgbase=python-yellowbrick
 pkgname=('python-yellowbrick')
-pkgver=1.3
+pkgver=1.3.post1
 pkgrel=1
 pkgdesc="A suite of visual analysis and diagnostic tools for machine learning"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'python-umap-learn: UMAP Corpus Visualization with UMAPVisualizer/umap'
 )
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('467989fab1c5bbbe3802ccba6b103aefbe0b0042b6680df569d7aa8991e8739e')
+sha256sums=('c77e2e2f4897ca9b6aa68f094de0819dc3d0734012a7416e9225442830925d57')
 
 prepare() {
   cd "$srcdir/$_name-$pkgver"
