@@ -2,13 +2,13 @@
 
 _pkgname=diplib
 pkgname="${_pkgname}-git"
-pkgver=r1887.ff3429f9
+pkgver=r2125.dff4c397
 pkgrel=1
 pkgdesc='Quantitative Image Analysis in C++, MATLAB and Python'
 arch=('x86_64')
 url='http://www.diplib.org/'
 license=('Apache')
-depends=('freeglut' 'glfw' 'glew')
+depends=('freeglut' 'glfw' 'glew' 'pybind11')
 makedepends=('cmake' 'git')
 optdepends=('java-runtime=8: DIPjavaio'
             'python: PyDIP'
