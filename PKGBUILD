@@ -11,7 +11,7 @@ url="https://github.com/KierPrev/rtl8188gu"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git')
-source=("${_pkgname}::git+${url}#branch=v${_pkgver}"
+source=("https://github.com/KierPrev/rtl8188gu"
 	dkms.conf)
 sha256sums=('SKIP'
             'SKIP')
