@@ -2,34 +2,39 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termimage
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Display images in your terminal"
 arch=('x86_64')
 url="https://github.com/nabijaczleweli/termimage"
 license=('MIT')
-makedepends=('rust')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "$url/releases/download/v$pkgver/$pkgname-man-v$pkgver.tbz2")
-sha512sums=('7a0d957a34ab73ad6c3c96327e82994e9af0b333fd5555f8ccc54c336bb76312db93392468dc9ea94584b71be808581a6cf53b6fc0618af8bce57919cf6f3598'
-            '7e2f220b7b023f357c1ee32ac7ed2936e4b01378d8fd2bf96becedb4dd16e8bae4a7eb57790292342beb9512e915e52d782782e04aec28d6d415f6741f241c5b')
+depends=('gcc-libs')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+        #"$url/releases/download/v$pkgver/$pkgname-man-v$pkgver.tbz2")
+sha512sums=('10fe74c2097379113e2ad8777793a7f49d7707acac650f7b7e0505d7d61a15b524019325fabc4eaa149aa0130979ee2c49ca2549f04d99dfeb925b0f68d6fac3')
 
-build() {
+prepare() {
   cd "$pkgname-$pkgver"
   # TODO: Use `--locked` flag for reproducibility.
   # Tracking issue: https://github.com/nabijaczleweli/termimage/pull/16#issuecomment-729920052
-  cargo build --release
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release
+  cargo test --frozen
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 "../$pkgname-man-v$pkgver/$pkgname.md" -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 "../$pkgname-man-v$pkgver/$pkgname.1" -t "$pkgdir/usr/share/man/man1"
+  #install -Dm 644 "../$pkgname-man-v$pkgver/$pkgname.md" -t "$pkgdir/usr/share/doc/$pkgname"
+  #install -Dm 644 "../$pkgname-man-v$pkgver/$pkgname.1" -t "$pkgdir/usr/share/man/man1"
 }
