@@ -2,9 +2,9 @@
 # Contributor: Alex Bates <hi@imalex.xyz>
 
 _target=mips-linux-gnu
-pkgname=${_target}-binutils
+pkgname=$_target-binutils
 pkgver=2.38
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the MIPS target'
 arch=('x86_64')
 url='http://www.gnu.org/software/binutils/'
@@ -21,6 +21,12 @@ prepare() {
 build() {
   cd binutils-${pkgver}
 
+  if [ "${CARCH}" != "i686" ];
+  then
+    # enabling gold linker at i686 makes the install fail
+    enable_gold='--enable-gold'
+  fi
+
   ./configure --target=${_target} \
               --with-sysroot="/usr/${_target}" \
               --prefix='/usr' \
@@ -29,9 +35,9 @@ build() {
               --with-gnu-ld \
               --disable-nls \
               --enable-ld='default' \
+              $enable_gold \
               --enable-plugins \
               --enable-deterministic-archives \
-              --disable-werror
 
   make
 }
@@ -51,18 +57,8 @@ package() {
 
   # Remove file conflicting with host binutils and manpages for MS Windows tools
   rm "${pkgdir}"/usr/share/man/man1/${_target}-{dlltool,windres,windmc}*
-
-  # Remove conflicting files
+  rm "${pkgdir}"/usr/lib/bfd-plugins/libdep.so
 
   # Remove info documents that conflict with host version
-  rm -r "${pkgdir}/usr"/lib/bfd-plugins
   rm -r "${pkgdir}"/usr/share/info
-    
-  # Replace cross-directory hardlinks with symlinks
-  local _file
-  rm "${pkgdir}/usr/${_target}/bin"/*
-  while read -r -d '' _file
-  do
-      ln -s "../../bin/${_file##*/}" "${pkgdir}/usr/${_target}/bin/${_file##*"${_target}-"}"
-  done < <(find "${pkgdir}/usr/bin" -type f -print0)
 }
