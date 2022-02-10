@@ -9,6 +9,7 @@ pkgbase = sawfish
 	depends = libsm
 	depends = rep-gtk
 	depends = hicolor-icon-theme
+	depends = gdk-pixbuf-xlib>=2.24.0
 	options = !libtool
 	source = http://download.tuxfamily.org/sawfish/sawfish_1.13.0.tar.xz
 	source = arch_poweroff_defaults.patch
