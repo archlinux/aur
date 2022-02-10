@@ -1,7 +1,7 @@
 pkgbase = dynamic-wallpaper-editor
 	pkgdesc = Create or edit XML dynamic wallpapers ("background slideshows") for the GNOME desktop
 	pkgver = 2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maoschanz/dynamic-wallpaper-editor
 	arch = any
 	license = GPL3
