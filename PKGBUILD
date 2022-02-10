@@ -4,7 +4,7 @@
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
 pkgver=98.0.4758.80_1
-pkgrel=1
+pkgrel=2
 _pkgver=98.0.4758.80
 _pkgrel=1
 arch=('x86_64')
@@ -36,9 +36,9 @@ source=(
   "naiveproxy.service"
   "naiveproxy@.service"
   "naiveproxy.sysusers"
-  "${_clang_path}::https://commondatastorage.googleapis.com/chromium-browser-clang/${_WITH_CLANG}/${_clang_path}"
+  "${_clang_path}::https://commondatastorage.googleapis.com/chromium-browser-clang/Linux_x64/${_clang_path}"
   "${_PGO_PATH}::https://storage.googleapis.com/chromium-optimization-profiles/pgo_profiles/${_PGO_PATH}"
-  "gn-${_gn_revision}.zip::https://chrome-infra-packages.appspot.com/dl/gn/gn/${_WITH_GN}-amd64/+/${_gn_version}"
+  "gn-${_gn_revision}.zip::https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-amd64/+/${_gn_version}"
 )
 noextract=(
   "${_clang_path}"
