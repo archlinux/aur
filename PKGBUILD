@@ -1,6 +1,6 @@
 # Maintainer: Kiernan Preve <kiernanpreve@gmail.com>
 
-_pkgname=8188gu
+_pkgname=rtl8188gu
 pkgname="${_pkgname}-dkms"
 _pkgver=1.0
 pkgver=1.0

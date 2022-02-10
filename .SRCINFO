@@ -1,4 +1,4 @@
-pkgbase = 8188gu-dkms
+pkgbase = rtl8188gu-dkms
 	pkgdesc = Standalone driver for Realtek RTL8188GU
 	pkgver = 1.0
 	pkgrel = 1
@@ -9,9 +9,9 @@ pkgbase = 8188gu-dkms
 	depends = dkms
 	provides = 8188gu-dkms
 	conflicts = 8188gu-dkms
-	source = 8188gu::git+https://github.com/KierPrev/rtl8188gu#branch=v1.0
+	source = rtl8188gu::git+https://github.com/KierPrev/rtl8188gu#branch=v1.0
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = 8188gu-dkms
+pkgname = rtl8188gu-dkms
