@@ -114,6 +114,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-Read-codec-capabilities-only-if-supported.patch"
         "Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
 
+        # Revert Xanmod scheduler power efficiency removal
+        "Revert-XANMOD-fair-Remove-all-energy-efficiency-functions.patch"
+
         # amd-pstate included in Xanmod
         # multigenerational lru included in Xanmod
         # 5.17 TCP Optimizations included in Xanmod
@@ -176,6 +179,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             'a9647897e59b04cb883dcf649b3108e9397d5a6c672bc545ea0c6bb7bb30d5a9'
+            '3bb1cf422c64b4eea324b71048d0bdee04b5f9132136c6a4774e5205e45c46f1'
             '56f8f93a38ed7236c2504c79645a33123ee7bdf3c0cbb97dfd90600df06be7dd'
             'eac568d7f2b369a8a2b685fae236388c3516938000d4d6b2116b5874c4f93430'
             'e74649fb883f2c8c3703c730e45119fca7126dc0599d6bc814de6dcf5a07e7cb'
