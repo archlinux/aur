@@ -1,0 +1,22 @@
+pkgbase = python-codon-adaptation-index
+	pkgdesc = Implementation of the codon adaptation index
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/benjamin-lee/codonadaptationindex
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-sphinx
+	makedepends = python-sphinxcontrib-programoutput
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
+	depends = python-biopython
+	depends = python-click
+	depends = python-scipy
+	provides = python-CAI
+	source = python-codon-adaptation-index-1.0.2.tar.gz::https://github.com/benjamin-lee/codonadaptationindex/archive/v1.0.2.tar.gz
+	sha256sums = 1ab778e6f9b7a00f0cbaedeb4324609ae78627a2ee19a5c97cd80a964824636e
+
+pkgname = python-codon-adaptation-index
