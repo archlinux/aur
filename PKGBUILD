@@ -1,7 +1,7 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=slippi-launcher
-pkgver=2.1.12
-pkgrel=1
+pkgver='v2.1.13.r0.gebf14f6'
+pkgrel=0
 pkgdesc="The way to play Slippi Online and watch replays."
 arch=('x86_64')
 url="https://slippi.gg/"
