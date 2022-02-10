@@ -1,7 +1,7 @@
 pkgbase = whitesur-gtk-theme-nord-git
 	pkgdesc = MacOS Big Sur like theme for GNOME desktops, but just the nord colourscheme
-	pkgver = 2021.12.28.r12.g380cafd
-	pkgrel = 1
+	pkgver = 2021.12.28.r17.g3ff3f21
+	pkgrel = 2
 	url = https://github.com/vinceliuice/WhiteSur-gtk-theme
 	install = whitesur-gtk-theme-nord.install
 	arch = any

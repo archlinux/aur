@@ -1,7 +1,7 @@
 # Contrubutor: Nick Boughton <nicholasboughton at gmail dot com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=whitesur-gtk-theme-nord-git
-pkgver=2021.12.28.r12.g380cafd
+pkgver=2021.12.28.r18.g12ef7d1
 pkgrel=1
 pkgdesc="MacOS Big Sur like theme for GNOME desktops, but just the nord colourscheme"
 arch=('any')
@@ -35,9 +35,10 @@ package() {
   # https://github.com/vinceliuice/WhiteSur-gtk-theme#theres-so-many-customizations-you-can-do
   ./install.sh \
     --icon arch \
+    --theme all \
     --nord \
     --nautilus-style glassy \
-    --name NordSur \
+    --name WhiteSur-nord \
     --dest "$pkgdir/usr/share/themes"
 
   # Plank theme
