@@ -1,0 +1,21 @@
+pkgbase = power-profile-selector-git
+	pkgdesc = This systemd user service monitors your system and apply wanted new power profile.
+	pkgver = 0.1.r0.gc5c48da
+	pkgrel = 1
+	url = https://gitlab.gnome.org/gnumdk/power-profile-selector
+	install = power-profile-selector.install
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = glib2
+	depends = python-gobject
+	depends = python-psutil
+	depends = power-profiles-daemon
+	provides = power-profile-selector
+	conflicts = power-profile-selector
+	source = git+https://gitlab.gnome.org/gnumdk/power-profile-selector
+	md5sums = SKIP
+
+pkgname = power-profile-selector-git

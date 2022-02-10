@@ -1,0 +1,9 @@
+post_install() {
+    echo "Enabling org.gnumdk.PowerProfileSelector.service for all users"
+    systemctl --global enable org.gnumdk.PowerProfileSelector.service
+}
+
+pre_remove() {
+    echo "Disabling org.gnumdk.PowerProfileSelector.service for all users"
+    systemctl --global disable org.gnumdk.PowerProfileSelector.service
+}
