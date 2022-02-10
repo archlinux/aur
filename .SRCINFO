@@ -1,14 +1,14 @@
 pkgbase = minetest-mineclone5
 	pkgdesc = MineClone 2 with no release milestones, rapid delivery, merges by one approval and no MC target version limitations.
-	pkgver = 0.71.14
+	pkgver = 5.1.5
 	pkgrel = 1
 	url = https://content.minetest.net/packages/kay27/mineclone5/
 	arch = any
 	license = GPLv3
 	depends = minetest-common
-	noextract = mineclone5-0.71.14.zip
+	noextract = mineclone5-5.1.5.zip
 	options = !strip
-	source = mineclone5-0.71.14.zip::https://content.minetest.net/packages/kay27/mineclone5/releases/10467/download/
-	sha256sums = f7a1d66c83233eb28614ddd59d462d12b825f3d97ba4138f1edfd0a45280e4d7
+	source = mineclone5-5.1.5.zip::https://content.minetest.net/packages/kay27/mineclone5/releases/11126/download/
+	sha256sums = 919fa878196465dfa785fac4896e430fd1cfce09ddb217ec903fbcfb75ee6db9
 
 pkgname = minetest-mineclone5

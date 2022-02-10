@@ -2,12 +2,12 @@
 pkgname=minetest-mineclone5
 _pkgname=mineclone5
 _pkgauthor=kay27
-pkgver=0.71.14
-_cdbrel=10467
+pkgver=5.1.5
+_cdbrel=11126
 pkgrel=1
 pkgdesc="MineClone 2 with no release milestones, rapid delivery, merges by one approval and no MC target version limitations."
 license=("GPLv3")
-sha256sums=('f7a1d66c83233eb28614ddd59d462d12b825f3d97ba4138f1edfd0a45280e4d7')
+sha256sums=('919fa878196465dfa785fac4896e430fd1cfce09ddb217ec903fbcfb75ee6db9')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
