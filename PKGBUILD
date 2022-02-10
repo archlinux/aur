@@ -2,7 +2,7 @@
 # Maintainer: jtmb <packaging at technologicalwizardry dot com>
 _pkgname=PKHeX
 pkgname=pkhex-bin
-pkgver=22.02.04
+pkgver=22.02.08
 pkgrel=1
 pkgdesc="Pokémon core series save editor, programmed in C#."
 arch=(any)
@@ -17,7 +17,7 @@ source=("https://dominikbodi.de/downloads/${_pkgname}-${pkgver}.tar.gz"
 		"PKHeX.desktop"
 		"PKHeX.png")
 		
-sha256sums=('246ddbf46c7519aef7fb175fb09521f77b2f37624629498c4455aadc32beef91'
+sha256sums=('e72b6491b2cb2e42c9bdb80580a6dfb03743823f5add5d6e8fab2f2191b07ea3'
             '6a13e35459c2ace9a32e34be76f0ec637c15b7481d4c280af7f148e0fae4ec88'
             '6093975bcf0157b889a0f95321c6fc4895904d17a86c4d3bc51ede2e040d32ef'
             '688456b442d51a9cdcffeb053099f23e3333e492c5b9d9266e97da7cd077b89b')
