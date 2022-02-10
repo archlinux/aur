@@ -1,8 +1,8 @@
 pkgbase = linux-rt-lts
 	pkgdesc = Linux RT LTS
-	pkgver = 5.10.83.58.realtime1
+	pkgver = 5.15.21.30.realtime1
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.10.83.58.realtime1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.21.30.realtime1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,15 +16,15 @@ pkgbase = linux-rt-lts
 	makedepends = python-sphinx_rtd_theme
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.10.83.58.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.21.30.realtime1?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
-	sha512sums = 8dbe3ecee1f17381719a1b75d912f8feac044dd430cfc3b8e7e9b8dff69a2311de8902417c054e0bd84e4c4144d0381598046ca1fc62431855ea0dd5b37cf877
+	sha512sums = 0e578feef04cfb105b10d3cefbd9451c5151439925478c0eb61d37e2425c1b4f9db2e7c09e6bab9f322647be8a7dda0f4dc838dcc40075505afcfffd7f35f03a
 	b2sums = SKIP
-	b2sums = 0eba6489b034994ea5ad3f02eb4d348d23e6aa731422f9b2de7fe3945f1f376e5888124d54feaa76a31e1deccc4a7c9074c982b1e94b01b1a4f37b016f106466
+	b2sums = 563329ab85b006ea6dbe66be8271406c3134b3d1ced36c07b0c222525f8f2e48af2a605d4833ba7c781e0f43048574b934abbf56d45c109297981501ced279ce
 
 pkgname = linux-rt-lts
 	pkgdesc = The Linux RT LTS kernel and modules

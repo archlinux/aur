@@ -2,7 +2,7 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.10.83.58.realtime1
+pkgver=5.15.21.30.realtime1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=(x86_64)
@@ -16,9 +16,9 @@ source=(
   'config'
 )
 sha512sums=('SKIP'
-            '8dbe3ecee1f17381719a1b75d912f8feac044dd430cfc3b8e7e9b8dff69a2311de8902417c054e0bd84e4c4144d0381598046ca1fc62431855ea0dd5b37cf877')
+            '0e578feef04cfb105b10d3cefbd9451c5151439925478c0eb61d37e2425c1b4f9db2e7c09e6bab9f322647be8a7dda0f4dc838dcc40075505afcfffd7f35f03a')
 b2sums=('SKIP'
-        '0eba6489b034994ea5ad3f02eb4d348d23e6aa731422f9b2de7fe3945f1f376e5888124d54feaa76a31e1deccc4a7c9074c982b1e94b01b1a4f37b016f106466')
+        '563329ab85b006ea6dbe66be8271406c3134b3d1ced36c07b0c222525f8f2e48af2a605d4833ba7c781e0f43048574b934abbf56d45c109297981501ced279ce')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
@@ -30,7 +30,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd "${pkgbase}"
+  cd $pkgbase
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -58,7 +58,7 @@ prepare() {
 }
 
 build() {
-  cd "${pkgbase}"
+  cd $pkgbase
   make all
   make htmldocs
 }
@@ -70,7 +70,7 @@ _package() {
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
-  cd "${pkgbase}"
+  cd $pkgbase
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -93,7 +93,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd "${pkgbase}"
+  cd $pkgbase
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -117,13 +117,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -171,7 +174,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd "${pkgbase}"
+  cd $pkgbase
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
