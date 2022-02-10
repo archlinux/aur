@@ -1,7 +1,7 @@
 pkgbase = python-cmappy-git
 	pkgdesc = Tools for interacting with .gctx and .gct and other Connectivity Map resources.
 	pkgver = 3.3.0.r128.g69f51c0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmap/${_name}
 	arch = any
 	license = BSD
@@ -11,6 +11,8 @@ pkgbase = python-cmappy-git
 	depends = python-pandas
 	depends = python-h5py
 	depends = python-requests
+	provides = python-cmappy
+	conflicts = python-cmappy
 	source = cmapPy::git+https://github.com/cmap/cmapPy
 	sha512sums = SKIP
 
