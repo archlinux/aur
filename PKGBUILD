@@ -1,7 +1,7 @@
 # Maintainer: Kiernan Preve <kiernanpreve@gmail.com>
 
 _pkgname=8188gu
-pkgname="${_pkgname}-dkms-git"
+pkgname="${_pkgname}-dkms"
 _pkgver=1.0
 pkgver=1.0
 pkgrel=1

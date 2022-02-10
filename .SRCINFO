@@ -1,4 +1,4 @@
-pkgbase = 8188gu-dkms-git
+pkgbase = 8188gu-dkms
 	pkgdesc = Standalone driver for Realtek RTL8188GU
 	pkgver = 1.0
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = 8188gu-dkms-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = 8188gu-dkms-git
+pkgname = 8188gu-dkms
