@@ -1,7 +1,7 @@
 pkgbase = multi-yubikey-helper
 	pkgdesc = Helps use multiple yubikeys (as smartcards) with the same subkeys.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/jnaulty/multi-yubikey-helper
 	arch = any
 	license = No license
