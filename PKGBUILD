@@ -2,15 +2,16 @@
 
 pkgbase=amdmond-bin
 pkgname=amdmond-bin
-pkgver=1.0.8
-pkgrel=2
+pkgver=1.0.9
+pkgrel=1
 pkgdesc="AMDGPU temperature and fan speed monitoring tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 source=( "https://github.com/Eraden/amdgpud/releases/download/v${pkgver}/amdmond.tar.gz")
 arch=('x86_64')
-md5sums=( '648ce81db62476f44836448ee726f814')
+md5sums=( 'b31b27810eca232bf4bb457e14be3d1c')
 keywords=( 'amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
+optdepends=('amdfand' 'amdguid' 'amdvold')
 
 build() {
     cd $srcdir/
