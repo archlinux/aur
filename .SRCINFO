@@ -1,7 +1,7 @@
 pkgbase = gource-git
 	pkgdesc = software version control visualization
-	pkgver = 0.51.r5.g06174a1
-	pkgrel = 1
+	pkgver = 0.51.r25.g134a0a6
+	pkgrel = 2
 	url = https://gource.io/
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,15 @@ pkgbase = gource-git
 	makedepends = glm
 	makedepends = mesa
 	makedepends = git
-	depends = ftgl
 	depends = sdl2
 	depends = sdl2_image
-	depends = pcre
+	depends = pcre2
 	depends = glew
 	depends = boost-libs
-	source = gource-::git+https://github.com/acaudwell/Gource.git
+	depends = freetype2
+	source = gource::git+https://github.com/acaudwell/Gource.git
+	source = git+https://github.com/acaudwell/Core.git
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = gource-git
-

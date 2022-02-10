@@ -4,35 +4,41 @@
 # Contributor: Olivier Ramonat <olivier at ramonat dot fr>
 
 pkgname=gource-git
-pkgver=0.51.r5.g06174a1
-pkgrel=1
+pkgver=0.51.r25.g134a0a6
+pkgrel=2
 pkgdesc="software version control visualization"
 license=(GPL3)
 arch=(i686 x86_64)
 url="https://gource.io/"
-depends=(ftgl sdl2 sdl2_image pcre glew boost-libs)
+depends=(sdl2 sdl2_image pcre2 glew boost-libs freetype2 )
 makedepends=(boost glm mesa git)
-source=("${pkgname%git}::git+https://github.com/acaudwell/Gource.git")
-sha512sums=('SKIP')
+source=("${pkgname%-git}::git+https://github.com/acaudwell/Gource.git"
+        "git+https://github.com/acaudwell/Core.git")
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-  cd "${pkgname%git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/gource.//'
 }
 
 prepare(){
-  cd "${pkgname%git}"
-  ./autogen.sh
+  cd "${pkgname%-git}"
+  git submodule init
+  git config submodule.src/core.url "${srcdir}/Core"
+  git submodule update
+
+  autoreconf -f -i
 }
 
 build() {
-  cd "${pkgname%git}"
+  cd "${pkgname%-git}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgname%git}"
+  cd "${pkgname%-git}"
   make DESTDIR="$pkgdir" install
 }
 
