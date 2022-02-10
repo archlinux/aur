@@ -1,34 +1,45 @@
 pkgbase = splashtop-streamer
 	pkgdesc = Splashtop Remote Streamer. Remotely access your desktop from any device from anywhere!
-	pkgver = 2.6.2.0
+	pkgver = 3.0.4.0
 	pkgrel = 1
-	url = http://www.splashtop.com/streamer/linux
+	url = https://www.splashtop.com
 	install = splashtop-streamer.install
 	arch = x86_64
-	license = custom
-	makedepends = curl
-	makedepends = p7zip
-	depends = apr>=1.5.2
-	depends = apr-util>=1.5.4
-	depends = bash-completion>=2.7.3
+	groups = 
+	license = Proprietary
+	depends = bash-completion
+	depends = cairo>=1.2.4
 	depends = curl>=7.47.0
-	depends = dbus>=1.9.14
-	depends = dbus-glib>=0.78
-	depends = glib2>=2.12.0
-	depends = libcurl-gnutls>=7.16.2
+	depends = dbus
+	depends = dbus-glib
+	depends = desktop-file-utils
+	depends = gcc>=3.0
+	depends = gdk-pixbuf2
+	depends = glib2>=2.43.2
+	depends = gtk3>=3.5.12
+	depends = hicolor-icon-theme
+	depends = libappindicator-gtk3>=0.2.92
+	depends = libnotify>=0.7.0
+	depends = libproxy>=0.4.11
 	depends = libpulse>=0.99.1
-	depends = libutil-linux>=2.16
-	depends = libx11
-	depends = libxfixes
-	depends = libxrandr>=1.2.0
-	depends = libxtst
-	depends = mumble
-	depends = networkmanager
+	depends = libxcb>=1.3
+	depends = lshw
 	depends = pam>=0.99.7.1
-	depends = python>=2.6.1
-	depends = python2-libappindicator
-	source = https://d17kmd0va0f0mp.cloudfront.net/linux/Splashtop_Streamer_Ubuntu_v2.6.2.0_amd64.tar.gz
-	sha256sums = 6d5f6d6613e3fee39af692c35228716002894c9e9f4cc4257c360e9b0e00f68e
+	depends = systemd-libs>=217
+	depends = uriparser>=0.6.0
+	depends = util-linux-libs>=2.16
+	depends = xcb-util>=0.4.0
+	depends = xcb-util-keysyms>=0.4.0
+	depends = zlib>=1.2.0
+	depends = binutils
+	depends = libxrandr
+	depends = libxfixes
+	depends = libxtst
+	provides = splashtop-streamer
+	options = !strip
+	options = !emptydirs
+	backup = etc/dbus-1/system.d/com.splashtop.streamer.Daemon.conf
+	source = https://download.splashtop.com/linux/STB_CSRS_Ubuntu_v3.0.4.0_amd64.tar.gz
+	sha512sums = 15cca0bb9d1562d67da4dbd6a8c1a369919d77e4e132beb10f7af32e33e3b794c2fc11d664562a6872d8af8a6908a0814656baae68bcc0ca2d60383d499b9527
 
 pkgname = splashtop-streamer
-

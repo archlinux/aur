@@ -1,3 +1,6 @@
 Splashtop*
+STB*.tar.gz
+*.sig
+*.zst
 src/
 pkg/

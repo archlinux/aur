@@ -15,54 +15,75 @@ pre_install() {
 }
 
 post_install() {
-	if [ "$1" = "configure" ]; then
-		echo "[Splashtop-Streamer] Configure streamer"
-	    if [ ! -e "/etc/splashtop-streamer.conf" ]; then
-	        echo "[Splashtop-Streamer] LastConfigured=`date +%s`" > /etc/splashtop-streamer.conf
-	    fi
-		if [ ! -d "/opt/splashtop-streamer/config/" ]; then
-			mkdir /opt/splashtop-streamer/config/
-		fi
-		if [ ! -d "/opt/splashtop-streamer/dump/" ]; then
-			mkdir /opt/splashtop-streamer/dump/
-		fi
-		if [ ! -d "/opt/splashtop-streamer/log/" ]; then
-			mkdir /opt/splashtop-streamer/log/
-		fi
-		chmod a=rwx /opt/splashtop-streamer/config
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	echo "[Splashtop-Streamer] Configure streamer"
+    if [ ! -e "/etc/splashtop-streamer.conf" ]; then
+        echo "LastConfigured=`date +%s`" > /etc/splashtop-streamer.conf
+    fi
+	if [ ! -d "/opt/splashtop-streamer/config/" ]; then
+		mkdir /opt/splashtop-streamer/config/
 	fi
+	if [ ! -d "/opt/splashtop-streamer/dump/" ]; then
+		mkdir /opt/splashtop-streamer/dump/
+	fi
+	if [ ! -d "/opt/splashtop-streamer/log/" ]; then
+		mkdir /opt/splashtop-streamer/log/
+	fi
+	chmod a=rwx /opt/splashtop-streamer/config
 
 	if [ ! -f "/usr/bin/splashtop-streamer" ]; then
 		echo "[Splashtop-Streamer] Install user binary link"
 		ln -s /opt/splashtop-streamer/script/splashtop-streamer /usr/bin/splashtop-streamer
 	fi
 
-	if [ -e /etc/pam.d/common-session ]; then
-		echo "[Splashtop-Streamer] Install PAM module"
-		echo "session optional    pam_splashtop.so" >> /etc/pam.d/common-session
-		cp -f /opt/splashtop-streamer/config/pam_splashtop.so /usr/lib/x86_64-linux-gnu/security/
-	fi
+	#
+	# WORKAROUND
+	# In Ubuntu 20.04 MATE Desktop Environment, the desktop entry for "Splashtop Streamer"
+	# cannot be found in brisk-menu immediately after installed the .deb.
+	# Append an new line to /usr/share/applications/com.splashtop.streamer.desktop
+	# to trigger the brisk-menu to show "Splashtop Streamer" immediately.
+	#
+	echo "" >> /usr/share/applications/com.splashtop.streamer.desktop
 
 	if [ -e /etc/gdm3/custom.conf ];then
+		if grep -Fq "#WaylandEnable=false" /etc/gdm/custom.conf; then
+			REBOOT_REQUIRED="1"
+		fi
 		sed -i 's/#WaylandEnable=false/WaylandEnable=false/' /etc/gdm3/custom.conf
+	fi
+
+	# Allow GDM3 in wayland mode to save screeshot to disk, reboot is required
+	GDM_SETTINGS_AUTO_PATCH="0" # Experimental - disabled for now
+	if [ "$GDM_SETTINGS_AUTO_PATCH" = "1" ]; then
+		REBOOT_REQUIRED="1"
+		echo "[Splashtop-Streamer] Enable gdm to save file to disk for screenshot in wayland mode"
+		/opt/splashtop-streamer/script/gdm-disable-save-to-disk.sh false || true
 	fi
 
 	if [ -d /usr/lib/systemd/system/ ]; then
 		echo "[Splashtop-Streamer] Install streamer service"
-		cp /opt/splashtop-streamer/config/SRStreamer.service /usr/lib/systemd/system/
 		ln -s /usr/lib/systemd/system/SRStreamer.service /etc/systemd/system/SRStreamer.service
 	fi
 
 	if [ -f "/etc/systemd/system/SRStreamer.service" ]; then
 		echo "[Splashtop-Streamer] Start streamer service"
 		systemctl daemon-reload
-		systemctl restart SRStreamer.service 
-		systemctl enable /usr/lib/systemd/system/SRStreamer.service 
+		systemctl restart SRStreamer.service
+		systemctl enable /usr/lib/systemd/system/SRStreamer.service
 	fi
 
+	if [ "$REBOOT_REQUIRED" = "1" ]; then
+		echo "[SplashtopStreamer]: =============================="
+		echo "[SplashtopStreamer]: Please reboot to apply changes"
+		echo "[SplashtopStreamer]: =============================="
+	fi
+
+
+	update-desktop-database -q
 }
 
 pre_upgrade() {
+    ./upgrade-cleanup.sh
 	pre_install
 }
 
@@ -71,66 +92,53 @@ post_upgrade() {
 }
 
 pre_remove() {
+
+	if [ "$1" = "remove" ]; then
+		if [ -f /tmp/sru ]; then
+			rm /tmp/sru
+		fi
+		if [ -f "/opt/splashtop-streamer/SRUtility" ]; then
+			cp /opt/splashtop-streamer/SRUtility /tmp/sru
+		fi
+	fi
+
 	if [ -f "/etc/systemd/system/SRStreamer.service" ]; then
 		echo "[Splashtop-Streamer] Stop streamer service"
-	    systemctl disable SRStreamer.service
+		systemctl stop SRStreamer.service
+		echo "[Splashtop-Streamer] Disable streamer service"
+		systemctl disable SRStreamer.service
 		echo "[Splashtop-Streamer] Remove streamer service"
-	    rm /usr/lib/systemd/system/SRStreamer.service
-	    systemctl daemon-reload
-		pidof SRFeature | xargs kill -9
-		if [ "$(pgrep -f 'SRStreamer.pyc' | wc -w)" != 0 ]; then
-			pgrep -f SRStreamer.pyc | xargs kill -9
-		fi
+		rm /usr/lib/systemd/system/SRStreamer.service
+		systemctl daemon-reload
+		# Kill SRStreamer processes, ignore error here
+		killall -q -9 SRStreamer || true
+	fi
+
+	GDM_SETTINGS_AUTO_PATCH="0" # Experimental - disabled for now
+	if [ "$GDM_SETTINGS_AUTO_PATCH" = "1" ]; then
+		echo "[Splashtop-Streamer] Disable gdm to save file to disk"
+		/opt/splashtop-streamer/script/gdm-disable-save-to-disk.sh true || true
 	fi
 
 }
 
 post_remove() {
-	if [ "$1" = "remove" ]; then
-		if [ -f "/opt/splashtop-streamer/config/global.conf" ]; then
-			echo "[Splashtop-Streamer] Find streamer settings"
-			ServerID=`cat /opt/splashtop-streamer/config/global.conf | grep CloudServerID | awk 'BEGIN {FS="="} {print $2}'`
-			ServerVER=`cat /opt/splashtop-streamer/config/global.conf | grep CloudVersion | awk 'BEGIN {FS="="} {print $2}'`
-			ServerUUID=`cat /opt/splashtop-streamer/config/global.conf | grep ServerUUID | awk 'BEGIN {FS="="} {print $2}' | sed 's/-//g'`
-			ServerURL="https://st-v3-internal.api.splashtop.com"
-			if [ "$ServerID" = "241" ]; then
-				echo "[Splashtop-Streamer] BE-QA"
-				ServerURL="https://be-qa.api.splashtop.com"
-			fi
-
-			if [ ! -z "$ServerUUID" ]; then
-				HttpHeaderAUTH="Authorization: Basic emVyb0BzcGxhc2h0b3AuY29tOk1WZWNpdmVkZGV2aWNlVk0="
-				HttpHeaderUSER="User-Agent: SRS/"$ServerVER" splashtop2 linux"
-				HttpHeaderCONTENT="Content-Type: application/x-www-form-urlencoded"
-				Result="$(curl --silent -X DELETE -H "$HttpHeaderCONTENT" -H "$HttpHeaderAUTH" -H "$HttpHeaderUSER" $ServerURL/api/fulong/v3/unlink_srs/$ServerUUID )"
-				echo ${Result} | grep -w 20200 > /dev/null
-				if [ $? -eq 0 ]; then
-					echo "[Splashtop-Streamer] Unlink streamer success"
-				else
-					echo "[Splashtop-Streamer] Unlink streamer $ServerUUID fail"
-				fi
-			fi
-		fi
-	fi
-
-	if [ -e /etc/pam.d/common-session ]; then
-		sed -i '/session optional    pam_splashtop.so/d' /etc/pam.d/common-session
-		if [ -f "/usr/lib/x86_64-linux-gnu/security/pam_splashtop.so" ]; then
-			echo "[Splashtop-Streamer] Remove PAM module"
-			rm /usr/lib/x86_64-linux-gnu/security/pam_splashtop.so
-		fi
-	fi
-
-	if [ "$1" = "remove" ]; then
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 		if [ -d "/opt/splashtop-streamer/config/" ]; then
 			echo "[Splashtop-Streamer] Remove streamer settings"
+			if [ -f /tmp/sru ]; then
+				/tmp/sru -remove
+				rm /tmp/sru
+			fi
+
 			rm -rf /opt/splashtop-streamer/config/global.conf
-			rm -rf /opt/splashtop-streamer/log
+			rm -rf /opt/splashtop-streamer/config/region.json
 		fi
-	fi
 
+    find /home -type f | grep /.config/autostart/com.splashtop.streamer.desktop | xargs rm -f
 	rm /usr/bin/splashtop-streamer
-	rm -rf /opt/splashtop-streamer/dump
-	rm -rf /opt/splashtop-streamer/SRFeature.sock
+	rm -rf /opt/splashtop-streamer
+	rm /etc/splashtop-streamer.conf
 
+	update-desktop-database -q
 }
