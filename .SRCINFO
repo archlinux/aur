@@ -1,19 +1,15 @@
 pkgbase = nixwriter
 	pkgdesc = Create bootable Linux images with dd and from a GTK user interface
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://gitlab.com/9898287/nixwriter
 	arch = x86_64
 	license = MIT
-	makedepends = ldc
-	makedepends = dub
+	makedepends = git
+	makedepends = cargo
 	depends = gtk3
-	depends = polkit
-	depends = util-linux
 	optdepends = libnotify: notifications
-	noextract = git+https://gitlab.com/9898287/nixwriter.git
-	source = git+https://gitlab.com/9898287/nixwriter.git
+	source = git+https://gitlab.com/9898287/nixwriter.git#tag=2.0.0
 	sha256sums = SKIP
 
 pkgname = nixwriter
-
