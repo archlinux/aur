@@ -2,7 +2,7 @@
 
 pkgname=sunamu-git
 _pkgname=sunamu
-pkgver=r148.fe6dd121a0
+pkgver=r220.13f5239c01
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
 url="https://github.com/NyaomiDEV/Sunamu"
@@ -10,7 +10,7 @@ license=("MPL-2.0")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 conflicts=(sunamu sunamu-bin)
 makedepends=("git" "npm" "yarn" "node-gyp")
-depends=("electron")
+depends=("electron" "libvips")
 
 source=("${_pkgname}::git+https://github.com/NyaomiDEV/Sunamu"
         "${_pkgname}.desktop"
