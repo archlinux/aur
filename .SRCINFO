@@ -1,7 +1,7 @@
 pkgbase = octave-specfun
 	pkgdesc = Special functions including ellipitic functions, etc
 	pkgver = 1.1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://octave.sourceforge.io/specfun
 	install = octave-specfun.install
 	arch = any
