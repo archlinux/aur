@@ -2,15 +2,16 @@
 
 pkgbase=amdvold-bin
 pkgname=amdvold-bin
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="AMDGPU voltage management tool"
 url="https://github.com/Eraden/amdgpud"
 license=('MIT' 'Apache-2.0')
 source=( "https://github.com/Eraden/amdgpud/releases/download/v${pkgver}/amdvold.tar.gz")
 arch=('x86_64')
-md5sums=( '51c5acd96e493f2d17fa333f08fdc40a')
+md5sums=( 'ae905cb290faa2621d27e77b08f1085d')
 keywords=( 'amdgpu' 'controller' 'fan', 'overclocking', 'voltage')
+optdepends=('amdmond' 'amdguid' 'amdfand')
 
 build() {
     cd $srcdir/
