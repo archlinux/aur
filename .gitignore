@@ -1,0 +1,5 @@
+pkg/
+src/
+geany-code-format-*.pkg.tar.xz
+geany-code-format-*.pkg.tar.zst
+code-format-*.tar.gz
