@@ -1,0 +1,24 @@
+pkgbase = python-tensorflow-datasets
+	pkgdesc = A collection of datasets ready to use with TensorFlow, Jax, ...
+	pkgver = 4.5.2
+	pkgrel = 1
+	url = https://github.com/tensorflow/datasets
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = absl-py
+	depends = python-dill
+	depends = python-numpy
+	depends = python-promise
+	depends = python-protobuf
+	depends = python-requests
+	depends = python-six
+	depends = python-tensorflow-metadata
+	depends = python-termcolor
+	depends = python-toml
+	depends = python-tqdm
+	source = https://github.com/tensorflow/datasets/archive/v4.5.2/python-tensorflow-datasets-4.5.2.tar.gz
+	sha256sums = e0d82d4874f453233267384260d38bcd50dd8a517c16e07131147a642aba6a15
+
+pkgname = python-tensorflow-datasets
