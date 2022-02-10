@@ -9,4 +9,5 @@ pkg
 *.tar
 *.tgz
 *.xz
+*.zst
 

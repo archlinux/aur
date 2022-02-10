@@ -1,19 +1,18 @@
 
-_depmod() {
-  EXTRAMODULES=extramodules-5.12-ARCH
-  depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
-}
+# Note : pacman autoimatically performs the following tasks after package install/update/remove:
+# Update libraries with ldconfig
+# Update kernel module dependencies with depmod (provided the module is installed at aappropariate path)
 
 post_install() {
-  echo '==> You must load the riffa kernel module before using Riffa: # modprobe riffa'
-  _depmod
+  echo '==> The RIFFA driver must be enabled to be used : # modprobe riffa'
 }
 
 post_upgrade() {
-  _depmod
-  echo '==> Manually reload the riffa kernel module to use the new version.'
+  echo '==> To use the new RIFFA driver without rebooting : # rmmod riffa ; modprobe riffa'
 }
 
 post_remove() {
-  _depmod
+  echo '==> Removing the Riffa kernel module'
+  rmmod riffa
 }
+

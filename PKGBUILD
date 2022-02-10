@@ -9,7 +9,11 @@ pkgdesc='RIFFA: A Reusable Integration Framework For FPGA Accelerators'
 url='http://riffa.ucsd.edu/'
 license=('custom')
 
-makedepends=('linux-headers')
+# Note : Dependency is on currently running kernel, which the compilation based on, NOT on the kernel package installed
+_local_linux_version=$(uname -r | sed -r 's/(-arch)/.arch/')
+
+depends=("linux=$_local_linux_version")
+makedepends=("linux-headers=$_local_linux_version")
 install='riffa.install'
 
 source=(
@@ -31,9 +35,9 @@ pkgver() {
 	cd "${srcdir}/riffa"
 
 	# RIFFA version (extracted from Makefile)
-	_distver=`sed -n -e 's/^RELEASE_VER=\([0-9.a-z]*\)\s*$/\1/p' Makefile`
+	local _distver=$(sed -n -e 's/^RELEASE_VER=\([0-9.a-z]*\)\s*$/\1/p' Makefile)
 	# Date of the last git commit
-	_gitver=`git log -n 1 --date=short | sed -n -e 's/^Date:\s*\([0-9-]*\)\s*$/\1/p' | tr -d -`
+	local _gitver=$(git log -n 1 --date=short | sed -n -e 's/^Date:\s*\([0-9-]*\)\s*$/\1/p' | tr -d -)
 
 	echo $_distver.git$_gitver;
 }
@@ -60,16 +64,12 @@ build() {
 }
 
 package() {
-	# Note: Can't use the riffa provided install commands because all is hardcoded for Red Hat / Debian
-
-	_extramodules=extramodules-`uname -r | sed -e 's/\([[:digit:]]*\)\.\([[:digit:]]*\)\..*/\1.\2/g'`-ARCH
-	sed --follow-symlinks -i -e 's/^\([[:blank:]]*EXTRAMODULES=\).*$/\1'"$_extramodules"'/g' "${srcdir}/riffa.install"
 
 	install -Dm0755 "${srcdir}/99-riffa.rules" "${pkgdir}/etc/udev/rules.d/99-riffa.rules"
 
 	cd "${srcdir}/riffa/driver/linux"
 
-	install -D riffa.ko "${pkgdir}/usr/lib/modules/$_extramodules/riffa.ko"
+	install -D riffa.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/riffa/riffa.ko"
 
 	install -Dm0644 riffa.h        "${pkgdir}/usr/include/riffa.h"
 	install -Dm0644 riffa_driver.h "${pkgdir}/usr/include/riffa_driver.h"
