@@ -19,6 +19,7 @@ pkgbase = faustpp-git
 	source = git+https://github.com/martinmoene/expected-lite.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/Tencent/rapidjson.git
+	source = jinja2cpp-include-mutex.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -27,6 +28,6 @@ pkgbase = faustpp-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = 1f7125465e267aaf155db3ee3bb03d77
 
 pkgname = faustpp-git
-

@@ -1,0 +1,12 @@
+diff --git a/include/jinja2cpp/template_env.h b/include/jinja2cpp/template_env.h
+index d49859e..6766796 100644
+--- a/include/jinja2cpp/template_env.h
++++ b/include/jinja2cpp/template_env.h
+@@ -7,6 +7,7 @@
+ #include "template.h"
+ 
+ #include <shared_mutex>
++#include <mutex>
+ #include <unordered_map>
+ 
+ namespace jinja2

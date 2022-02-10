@@ -19,7 +19,8 @@ source=("${_pkgname}::git+https://github.com/jpcima/faustpp.git"
         'git+https://github.com/martinmoene/string-view-lite.git'
         'git+https://github.com/martinmoene/expected-lite.git'
         'git+https://github.com/fmtlib/fmt.git'
-        'git+https://github.com/Tencent/rapidjson.git')
+        'git+https://github.com/Tencent/rapidjson.git'
+        'jinja2cpp-include-mutex.patch')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -27,7 +28,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP')
+         'SKIP'
+         '1f7125465e267aaf155db3ee3bb03d77')
 
 
 pkgver() {
@@ -49,6 +51,11 @@ prepare() {
   git submodule set-url thirdparty/fmt "${srcdir}/fmt"
   git submodule set-url thirdparty/rapidjson "${srcdir}/rapidjson"
   git submodule update
+
+  (
+    cd thirdparty/jinja2cpp;
+    patch -p1 -r - -N -i "${srcdir}"/jinja2cpp-include-mutex.patch || :;
+  )
 }
 
 build() {
