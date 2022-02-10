@@ -4,7 +4,7 @@
 pkgbase=cheese
 pkgname=(cheese libcheese)
 pkgver=41.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd cheese
-  git tag -f 41.1 7fc2ed5cc4f52ff8e3199e491f72e4aa59fdf373  # Fixup missing tag
+  git tag -f 41.1 7fc2ed5cc4f52ff8e3199e491f72e4aa59fdf373 # Fixup misplaced tag
 }
 
 build() {
@@ -65,8 +65,8 @@ package_cheese() {
 
 package_libcheese() {
   pkgdesc="Webcam widget for Clutter and GTK"
-  depends=(clutter clutter-gtk clutter-gst gdk-pixbuf2 glib2 gtk3 gstreamer
-           gst-plugins-base-libs gst-plugins-bad-libs)
+  depends=(clutter clutter-gtk clutter-gst gdk-pixbuf2 glib2 gtk3 libcanberra
+           gstreamer gst-plugins-base-libs gst-plugins-bad-libs)
   provides=(libcheese.so libcheese-gtk.so)
   mv libs/* "$pkgdir"
 }
