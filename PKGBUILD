@@ -30,7 +30,7 @@ build() {
   cd "${pkgname%-*}-$pkgver"
   electronDist="/usr/lib/electron$_electronversion"
   electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
-  HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache" 
+  HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
   ./node_modules/.bin/tsc
   ./node_modules/.bin/electron-builder --linux --x64 --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
