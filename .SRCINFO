@@ -1,14 +1,19 @@
 pkgbase = python-tidalapi
 	pkgdesc = Unofficial API for TIDAL music streaming service.
-	pkgver = 0.6.9
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://github.com/tamland/python-tidal
+	changelog = HISTORY.rst
 	arch = any
 	license = LGPL3
-	makedepends = python-setuptools
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-setuptools
 	depends = python-requests
-	source = python-tidalapi::git+https://github.com/tamland/python-tidal#tag=v0.6.9?signed
+	source = python-tidalapi::git+https://github.com/tamland/python-tidal#tag=v0.6.10?signed
 	validpgpkeys = E09E6FC5E0472F735B7599C4BBEDD0C513635C9F
 	sha256sums = SKIP
 
