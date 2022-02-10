@@ -1,4 +1,5 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: Fabian Maurer <dark.shadow4@web.de>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 pkgname=glogg
 pkgver=1.1.4
