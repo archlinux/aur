@@ -1,19 +1,22 @@
 image: archlinux
 packages:
     - base-devel
-
-    - tcl
-    - ncompress
-
-    - openmotif
     - xbitmaps
     - rpcbind
-    - mksh
+    - ksh
+    - ncurses
     - libxss
-    - xbitmaps
     - libxinerama
-
-    - namcap
+    - libutempter
+    - rpcsvc-proto
+    - xorg-mkfontdir
+    - xorg-bdftopcf
+    - xorg-xrdb
+    - libxpm
+    - libxaw
+    - tcl
+    - ncompress
+    - bison
 #sources:
 #- git+https://git.code.sf.net/p/cdesktopenv/code
 tasks:
