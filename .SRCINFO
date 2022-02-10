@@ -12,7 +12,7 @@ pkgbase = mozjpeg
 	depends = glibc
 	depends = libpng
 	provides = libjpeg
-	provides = libjpeg.so
+	provides = libjpeg.so=8-64
 	provides = turbojpeg
 	provides = libjpeg-turbo
 	conflicts = libjpeg
@@ -23,4 +23,3 @@ pkgbase = mozjpeg
 	sha1sums = 8e9272a8ec1429638febd6897664c575bdd50ecb
 
 pkgname = mozjpeg
-

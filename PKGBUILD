@@ -16,7 +16,7 @@ makedepends=("nasm" "cmake")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha1sums=('8e9272a8ec1429638febd6897664c575bdd50ecb')
 
-provides=("libjpeg" "libjpeg.so" "turbojpeg" "libjpeg-turbo")
+provides=("libjpeg" "libjpeg.so=8-64" "turbojpeg" "libjpeg-turbo")
 conflicts=("libjpeg" "mozjpeg-git" "turbojpeg" "libjpeg-turbo")
 
 build() {
