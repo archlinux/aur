@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=17.0.0.r5.gc1f86524
+pkgver=17.0.1.r22.gcca7666b
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -23,10 +23,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_pkgname}"
 
-	# bleh
-	git cherry-pick a30b2ae138c4c689d5089bc1c95692f8356799fb
-	git tag -d "v17.0.0"
-	git tag "v17.0.0" 647124d0001d3a3014ada7bf8cf5c5dcd576b794
+	git checkout "v17"
+	git merge -X theirs -m "." master
+	git cherry-pick -X theirs -n 5a1d705eaa8bbfbdd3bca25a048f32d9943fe89a
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
