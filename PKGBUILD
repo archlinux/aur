@@ -2,12 +2,12 @@
 
 pkgname=astronciaiptv-git
 pkgver=0.0.90
-pkgrel=2
+pkgrel=3
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://gitlab.com/astroncia/iptv"
 license=('GPL3')
-depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-pandas' 'python-gobject' 'python-pydbus' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'ffmpeg')
+depends=('python' 'qt6-base' 'mpv' 'python-pyqt6' 'python-pillow' 'python-gobject' 'python-pydbus' 'python-unidecode' 'python-requests' 'python-chardet' 'python-setproctitle' 'ffmpeg')
 optdepends=('yt-dlp: YouTube channel support')
 makedepends=('make' 'git')
 provides=('astronciaiptv')
@@ -23,7 +23,6 @@ pkgver() {
 prepare() {
         cd iptv
         sed -i "s/__DEB_VERSION__/${pkgver}-git/g" usr/lib/astronciaiptv/astroncia_iptv.py
-        sed -i "s/CHECK_UPDATES_ENABLED = True/CHECK_UPDATES_ENABLED = False/" usr/lib/astronciaiptv/astroncia_iptv.py
 }
 
 build() {

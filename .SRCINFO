@@ -1,7 +1,7 @@
 pkgbase = astronciaiptv-git
 	pkgdesc = IPTV player with EPG support
 	pkgver = 0.0.90
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/astroncia/iptv
 	arch = any
 	license = GPL3
@@ -12,7 +12,6 @@ pkgbase = astronciaiptv-git
 	depends = mpv
 	depends = python-pyqt6
 	depends = python-pillow
-	depends = python-pandas
 	depends = python-gobject
 	depends = python-pydbus
 	depends = python-unidecode
