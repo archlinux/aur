@@ -11,7 +11,7 @@
 _pack=fl-core
 pkgname=octave-${_pack}
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The package contains code for basic functions in Fuzzy Logic for Octave"
 arch=(any)
 url="https://octave.sourceforge.io/${_pack}"
@@ -46,6 +46,10 @@ prepare() {
   cd "$srcdir"
   tar xzf "$_archive"
   patch -Np0 -i fl_compose.patch
+  # https://github.com/macports/macports-ports/blob/master/math/octave-fl-core/files/patch-src-fl_compose.cc.diff
+  sed -i 's/is_sparse_type/issparse/g' ${_pack}/src/fl_compose.cc
+  sed -i 's/feval/octave::feval/g' ${_pack}/src/fl_compose.cc
+  sed -i 's/SparseMatrix((int)colsB, (int)rowsA, (int)(colsB\*rowsA));/SparseMatrix((octave_idx_type)colsB, (octave_idx_type)rowsA, (octave_idx_type)(colsB\*rowsA));/g' ${_pack}/src/fl_compose.cc
   tar czf "$_archive_patched" "$_pack"
 }
 
