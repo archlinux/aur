@@ -3,7 +3,7 @@
 
 pkgname=gmid-bin
 _pkgname=${pkgname%-*}
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('gmid')
 conflicts=('gmid' 'gmid-git')
 depends=('libretls')
 source=("https://github.com/omar-polo/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver-binaries.tar.gz")
-sha256sums=('9e517a570f3fb5f68f47b9649cc3501c7c8cfbe86ca5d0447f632739a5db99e0')
+sha256sums=('7983a89f427bbdfb00ea118ff0471d8291afaa370814d7a93d6be294644592f7')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver-binaries"
