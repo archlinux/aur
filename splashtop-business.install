@@ -32,9 +32,9 @@ post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor
 	if [ "$1" = "remove" ]; then
 	    echo "uninstall - Splashtop Business"
-	    rm -rf /opt/splashtop-business/
 	fi
 
 	rm /usr/bin/splashtop-business
+	rm -rf /opt/splashtop-business/
 	update-desktop-database -q
 }
