@@ -2,7 +2,7 @@
 
 pkgname=ada_language_server
 pkgver=22.0.0
-pkgrel=2
+pkgrel=3
 epoch=2
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
