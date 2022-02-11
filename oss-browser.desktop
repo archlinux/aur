@@ -1,0 +1,12 @@
+[Desktop Entry]
+Comment[zh_CN]=OSS浏览器
+Comment=OSS Browser
+Exec=/opt/oss-browser/oss-browser
+GenericName[zh_CN]=OSS浏览器
+GenericName=OSS Browser
+Icon=/opt/oss-browser/resources/custom/icon.ico
+Name[zh_CN]=OSS浏览器
+Name=OSS Browser
+StartupNotify=true
+Terminal=false
+Type=Application
