@@ -18,7 +18,7 @@ pkgname=(pipewire-full-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
          )
-pkgver=0.3.44.r25.g115875dc
+pkgver=0.3.45.r60.ge34d9d20
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -82,6 +82,7 @@ _pick() {
 }
 
 _ver=${pkgver:0:3}
+_short_pkgver=${pkgver%%.r*}
 
 package_pipewire-full-git() {
   license+=(LGPL)
@@ -104,7 +105,7 @@ package_pipewire-full-git() {
               'gst-plugin-pipewire-full-git: GStreamer support'
               'ofono: ofono Bluetooth HFP support'
               'hsphfpd: hsphfpd Bluetooth HSP/HFP support')
-  provides=("pipewire=$pkgver" alsa-card-profiles libpipewire-$_ver.so)
+  provides=("pipewire=$_short_pkgver" alsa-card-profiles libpipewire-$_ver.so)
   conflicts=(pipewire alsa-card-profiles)
   install=pipewire.install
 
