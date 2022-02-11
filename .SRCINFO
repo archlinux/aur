@@ -1,0 +1,17 @@
+pkgbase = xpad-noone-dkms
+	pkgdesc = Xpad kernel driver replacement without Xbox One controller support
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/medusalix/xpad-noone
+	install = xpad-noone-dkms.install
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = dkms
+	optdepends = xone-dkms: Modern Xbox One gamepad driver
+	provides = xpad-noone-dkms
+	conflicts = xpad-noone-dkms
+	source = https://github.com/LINCKODE/xpad-noone/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 2ea99342f95a179d874aa0e0e38dfb2b5ae5cee9da03691c2db785bff45d10ed
+
+pkgname = xpad-noone-dkms

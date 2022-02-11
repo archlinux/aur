@@ -1,0 +1,4 @@
+pre_install() {
+    echo "> Disabling xpad driver"
+	modprobe -r xpad
+}
