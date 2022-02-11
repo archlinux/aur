@@ -1,17 +1,17 @@
 # Maintainer Kiernan Preve <kiernanpreve@gmail.com>
 
-pkgname=8188gu
+pkgname=rtl8188gu-dkms
 _pkgbase=8188gu
-pkgver=1.0.r13.g28f7303
+pkgver=1.0
 pkgrel=1
-pkgdesc="Driver for Realtek RTL8192FU chipset wireless cards"
+pkgdesc="Driver for Realtek RTL8188GU chipset wireless cards"
 arch=('x86_64')
 url="https://github.com/supertsy5/rtl8188gu"
 license=('GPL2')
 depends=('dkms' 'bc')
 makedepends=('git')
-conflicts=("${_pkgbase}")
-source=("git+https://github.com/supertsy5/rtl8188gu.git"
+conflicts=("rtl8188gu-dkms-git")
+source=("git+https://github.com/supertsy5/rtl8188gu.git#branch=master"
         'dkms.conf')
 sha256sums=('SKIP'
 	    'SKIP')

@@ -1,15 +1,15 @@
 pkgbase = rtl8188gu-dkms
-	pkgdesc = Standalone driver for Realtek RTL8188GU
+	pkgdesc = Driver for Realtek RTL8188GU chipset wireless cards
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/KierPrev/rtl8188gu
-	arch = any
+	url = https://github.com/supertsy5/rtl8188gu
+	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = dkms
-	provides = 8188gu-dkms
-	conflicts = 8188gu-dkms
-	source = rtl8188gu::git+https://github.com/KierPrev/rtl8188gu#branch=v1.0
+	depends = bc
+	conflicts = rtl8188gu-dkms-git
+	source = git+https://github.com/supertsy5/rtl8188gu.git#branch=master
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
