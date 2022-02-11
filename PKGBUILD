@@ -3,8 +3,8 @@
 
 pkgname=gnatcoll-gnatinspect
 epoch=1
-pkgver=21.0.0
-pkgrel=3
+pkgver=22.0.0
+pkgrel=1
 _repo_name=gnatcoll-db
 
 pkgdesc='GNAT Components Collection - the gnatinspect tool.'
@@ -15,8 +15,8 @@ license=('GPL3' 'custom')
 depends=('gnatcoll-readline' 'gnatcoll-xref')
 makedepends=('gprbuild')
 
-source=("$_repo_name-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('380abb79f49510b2bea461fbe3af1966cf82c3ad738791bcb870dc575583a136')
+source=("https://github.com/AdaCore/gnatcoll-db/archive/refs/tags/v22.0.0.tar.gz")
+sha256sums=('8d29e2047adac2de8bc20ae50d12fe6759428197079082d246d7f1cd480d380f')
 
 build()
 {
