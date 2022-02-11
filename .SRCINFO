@@ -1,7 +1,7 @@
 pkgbase = libadalang
 	pkgdesc = A high performance semantic engine for the Ada programming language.
 	pkgver = 2022
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/AdaCore/libadalang
 	arch = i686

@@ -4,7 +4,7 @@
 pkgname=libadalang
 epoch=1
 pkgver=2022
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A high performance semantic engine for the Ada programming language."
 url="https://github.com/AdaCore/libadalang"
