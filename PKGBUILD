@@ -2,7 +2,7 @@
 pkgname=('python-qdldl')
 _module='qdldl-python'
 pkgver=v0.1.5.post0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the QDLDL free LDL factorization routine for quasi-definite linear systems: Ax = b"
 url="https://github.com/osqp/qdldl-python"
 depends=(
@@ -10,7 +10,8 @@ depends=(
     'python-scipy'
     ) 
 makedepends=('python-setuptools'
-	     'pybind11')
+	     'pybind11'
+	     'cmake')
 provides=('python-qdldl')
 conflicts=('python-qdldl-git')
 license=('Apache')
