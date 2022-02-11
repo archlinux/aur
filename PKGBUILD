@@ -1,50 +1,60 @@
 # Maintainer: Justin Wong <jusw85 at hotmail dot com>
+# Contributor: Eldred Habert <me@eldred.fr>
 # Contributor: Benoit Favre <benoit.favre@gmail.com>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
-# Discussion: https://bbs.archlinux.org/viewtopic.php?pid=1853334#p1853334
+# Reference: https://bbs.archlinux.org/viewtopic.php?pid=1853334#p1853334
 
 pkgname=aseprite-git
 _pkgname=aseprite
-pkgver=1.2.17.r64.gf689c2c48
-pkgrel=2
+pkgver=1.2.33.r0.g845ff1778
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
-depends=('curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme')
-makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libglvnd' 'harfbuzz-icu' 'pixman' 'libxi')
+depends=('curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme' 'libglvnd')
+makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'harfbuzz-icu' 'pixman' 'libxi')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
-source=(
-        "git+https://github.com/${_pkgname}/laf.git"
-        "git+https://github.com/${_pkgname}/clip.git"
-        "git+https://github.com/${_pkgname}/flic.git"
-        "git+https://github.com/${_pkgname}/observable.git"
-        "git+https://github.com/${_pkgname}/tga.git"
-        "git+https://github.com/${_pkgname}/undo.git"
-        "git+https://github.com/${_pkgname}/benchmark.git"
-        "git+https://github.com/${_pkgname}/cmark.git"
-        "git+https://github.com/${_pkgname}/fmt.git"
-        "git+https://github.com/${_pkgname}/freetype2.git"
-        "git+https://github.com/${_pkgname}/giflib.git"
-        "git+https://github.com/${_pkgname}/harfbuzz.git"
-        "git+https://github.com/${_pkgname}/json11.git"
-        "git+https://github.com/${_pkgname}/libarchive.git"
-        "git+https://github.com/${_pkgname}/libpng.git"
-        "git+https://github.com/${_pkgname}/libwebp.git"
-        "git+https://github.com/${_pkgname}/lua"
+source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
+        'desktop.patch'
+
+        # Aseprite submodules
         "git+https://github.com/${_pkgname}/pixman.git"
         "git+https://github.com/${_pkgname}/simpleini.git"
-        "git+https://github.com/${_pkgname}/tinyexpr.git"
+        "git+https://github.com/${_pkgname}/gtest.git"
+        "git+https://github.com/${_pkgname}/libwebp.git"
+        "git+https://github.com/${_pkgname}/flic.git"
+        "git+https://github.com/${_pkgname}/freetype2.git"
         "git+https://github.com/${_pkgname}/zlib.git"
+        "git+https://github.com/${_pkgname}/libpng.git"
+        "git+https://github.com/${_pkgname}/clip.git"
+        "git+https://github.com/${_pkgname}/observable.git"
+        "git+https://github.com/${_pkgname}/undo.git"
+        "git+https://github.com/${_pkgname}/laf.git"
+        "git+https://github.com/${_pkgname}/cmark.git"
+        "git+https://github.com/${_pkgname}/harfbuzz.git"
+        "git+https://github.com/${_pkgname}/libarchive.git"
+        "git+https://github.com/${_pkgname}/json11.git"
+        "git+https://github.com/${_pkgname}/benchmark.git"
+        "git+https://github.com/${_pkgname}/giflib.git"
+        "git+https://github.com/${_pkgname}/fmt.git"
+        "git+https://github.com/${_pkgname}/tinyexpr.git"
+        "git+https://github.com/${_pkgname}/lua"
+        "git+https://github.com/${_pkgname}/tga.git"
+        "git+https://github.com/${_pkgname}/curl.git"
+        "git+https://github.com/machinezone/IXWebSocket"
+
+        # LAF submodules
         "git+https://github.com/${_pkgname}/stringencoders"
         "git+https://github.com/${_pkgname}/googletest"
-        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m96"
-        "git+https://github.com/${_pkgname}/${_pkgname}.git"
-        'desktop.patch')
-sha256sums=(
+
+        # Skia
+        "git+https://github.com/${_pkgname}/skia.git#branch=aseprite-m96")
+sha256sums=('SKIP'
+            '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -70,51 +80,8 @@ sha256sums=(
             'SKIP'
             'SKIP'
             'SKIP'
-            '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9')
-_submodules=(
-    'laf'
-    'clip'
-    'flic'
-    'observable'
-    'tga'
-    'undo'
-    'benchmark'
-    'cmark'
-    'fmt'
-    'freetype2'
-    'giflib'
-    'harfbuzz'
-    'json11'
-    'libarchive'
-    'libpng'
-    'libwebp'
-    'lua'
-    'pixman'
-    'simpleini'
-    'tinyexpr'
-    'zlib')
-_submodules_path=(
-    "laf"
-    "src/clip"
-    "src/flic"
-    "src/observable"
-    "src/tga"
-    "src/undo"
-    "third_party/benchmark"
-    "third_party/cmark"
-    "third_party/fmt"
-    "third_party/freetype2"
-    "third_party/giflib"
-    "third_party/harfbuzz"
-    "third_party/json11"
-    "third_party/libarchive"
-    "third_party/libpng"
-    "third_party/libwebp"
-    "third_party/lua"
-    "third_party/pixman"
-    "third_party/simpleini"
-    "third_party/tinyexpr"
-    "third_party/zlib")
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -122,10 +89,38 @@ pkgver() {
 }
 
 prepare() {
+    local -A submodule_paths=(
+        [third_party/pixman]=pixman
+        [third_party/simpleini]=simpleini
+        [third_party/gtest]=gtest
+        [third_party/libwebp]=libwebp
+        [src/flic]=flic
+        [third_party/freetype2]=freetype2
+        [third_party/zlib]=zlib
+        [third_party/libpng]=libpng
+        [src/clip]=clip
+        [src/observable]=observable
+        [src/undo]=undo
+        [laf]=laf
+        [third_party/cmark]=cmark
+        [third_party/harfbuzz]=harfbuzz
+        [third_party/libarchive]=libarchive
+        [third_party/json11]=json11
+        [third_party/benchmark]=benchmark
+        [third_party/giflib]=giflib
+        [third_party/fmt]=fmt
+        [third_party/tinyexpr]=tinyexpr
+        [third_party/lua]=lua
+        [src/tga]=tga
+        [third_party/curl]=curl
+        [third_party/IXWebSocket]=IXWebSocket)
+
     cd "${srcdir}/${_pkgname}"
+
     git submodule init
-    for (( i=0; i<${#_submodules[@]}; i++ )); do
-        git config submodule.${_submodules_path[$i]}.url "${srcdir}/${_submodules[$i]}"
+    local submodule
+    for submodule in "${!submodule_paths[@]}"; do
+        git config submodule.${submodule}.url "${srcdir}/${submodule_paths[$submodule]}"
     done
     git submodule update
 
