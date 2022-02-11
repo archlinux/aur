@@ -1,6 +1,6 @@
 pkgbase = mepo
 	pkgdesc = Fast, simple, and hackable OSM map viewer for Linux
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://git.sr.ht/~mil/mepo
 	arch = i686
@@ -13,12 +13,13 @@ pkgbase = mepo
 	makedepends = sdl2
 	makedepends = sdl2_image
 	makedepends = sdl2_ttf
+	makedepends = sdl2_gfx
 	depends = dmenu
 	depends = jq
 	depends = xdotool
 	depends = curl
-	source = mepo-0.2.tar.gz::https://git.sr.ht/~mil/mepo/archive/0.2.tar.gz
-	sha256sums = 413a5b96b1b6e78090ce74eac639180290624559fe072743832e27f1034ed026
-	sha512sums = 23e052b00e106598a80c357f6e565da8d8ad334efeda3873b27f86f6aa87c8979f17f3f800424fd6eabd533d6cf99b2047dcd07dd6046a004554fa287c8c0394
+	source = mepo-0.3.tar.gz::https://git.sr.ht/~mil/mepo/archive/0.3.tar.gz
+	sha256sums = c802edb9c472ab8fe20bd8995f9bba4d16396e856da0d90ad9d5ec73148b9587
+	sha512sums = 8fe6c044c139a614795b244532ac7a85de9c291e7033be68b1dd32b8882550e839a14611d2e85789842b78f1393ebf0e7793878777e78771dda44245ec82e115
 
 pkgname = mepo
