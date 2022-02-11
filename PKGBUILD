@@ -14,8 +14,7 @@ options=('!strip')
 _url="https://github.com/project-slippi/$pkgname/releases"
 _package="Slippi-Launcher-$_tagname-$arch.AppImage"
 source=("$_package::$_url/download/v$_tagname/$_package")
-# sha512sums=('0U9m0IJ3FbstFY/NsSkHwnKJ9xsZKLMY4vgLPpIY3IDesBgI3+lPe7BoJmxf0DLFACUFg9s91rXdSp3IMhSz2A==')
-sha512sums=('SKIP')
+sha512sums=('d14f66d0827715bb2d158fcdb12907c27289f71b1928b318e2f80b3e9218dc80deb01808dfe94f7bb068266c5fd032c500250583db3dd6b5dd4a9dc83214b3d8')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
