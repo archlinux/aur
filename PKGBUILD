@@ -5,7 +5,7 @@
 # https://photoview.github.io/docs/installation-manual/
 
 pkgname=photoview
-pkgver=2.3.11
+pkgver=2.3.12
 pkgrel=1
 pkgdesc="Photo gallery for self-hosted personal servers"
 arch=('x86_64')
@@ -48,7 +48,7 @@ source=(
   "$url/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}.env.patch"
 )
-sha512sums=('4d6df64e88a0f8a32d1e6edcb66b86f6c1a46eb4dea6d0bcc4b0765a8be8a20b964e2d35decceed37fd09da41f8e485318542ebdd55637bdffa174b0b37c4d5d'
+sha512sums=('3e7196f6df265abceabcfa4d4fc8f82ad2e6a3e95ae5482d6ad813dceafbee1258bece5b0e4c95ad28a710c9f85f0d2b46e42b6b2d1e10f8466dff0c6557bc93'
             'aa9b3fe32883af83c183a3cf1d0646b6140f2294c5b58d6df3cac4b1f9b89300f955f46fa125d50ccaac866ab60a752d42f547af19772159e6a2f176c0cf6369')
 
 prepare() {
