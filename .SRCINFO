@@ -1,33 +1,23 @@
 pkgbase = chipon
-	pkgver = 1.0.17
-	pkgrel = 7
+	pkgver = 1.0.18
+	pkgrel = 1
 	url = https://www.chipon-ic.com
 	arch = x86_64
 	groups = chipon
 	license = unknow
 	makedepends = unarchiver
-	source = chipon.zip::https://www.chipon-ic.com/upload/file/20210413/67c90ef0-da85-4f9c-aacd-4e1056f0d1c8.zip
+	noextract = chipon_1.0.18.zip
+	source = chipon_1.0.18.zip::https://www.chipon-ic.com/upload/file/20210728/2518367d-eca8-48d1-8173-d00a4369773c.zip
 	source = chipon.png::https://www.chipon-ic.com/images/logo.png
 	source = chipon-program32.install
 	source = chipon-driver.install
-	sha256sums = c0a4469b78618712c75802a33a06f64f8f01bec1b6629af75a85095f8f8ecbc1
+	sha256sums = e6a91b3b69933be11a8d65c491c3a10c8f589ac8bf82a069a12493918614bccf
 	sha256sums = 2879a8063a7037ca8658ffcb96c8611274decc3c0fe2a97a5918f896451b7dbd
 	sha256sums = 6a2196796a9cf54f0696a2ee3621d5b8af8bc5aa24aee40bc8f6d9309639fac8
 	sha256sums = e7ab8cea2aacbda3122e15da4c9d0833784f2c84f9b93333705e24b6056e8d34
 
 pkgname = chipon
 	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试。KungFu32 产品上位机编程软件，支持查空、读取、编程、在线编程、脱机编程、自增编程等；支持加载并查看修改 HEX 文件等操作。
-	depends = chipon-jre
-	depends = chipon-ide32
-	depends = chipon-program32
-	depends = chipon-cc32
-	depends = chipon-driver
-	depends = chipon-usart-async2
-	depends = chipon-librxtx
-	depends = chipon-rxtx-2
-
-pkgname = chipon-jre
-	pkgdesc = KungFu32 产品上位机编程软件， JRE 运行环境
 
 pkgname = chipon-ide32
 	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)，内置编译器、汇编器，支持调试
@@ -39,16 +29,3 @@ pkgname = chipon-program32
 
 pkgname = chipon-cc32
 	pkgdesc = KungFu32 系列 32 位 MCU 设计的 IDE（集成开发环境)的编译器、汇编器，支持调试
-
-pkgname = chipon-driver
-	pkgdesc = KungFu32 产品上位机编程软件的驱动（udev rules）
-	install = chipon-driver.install
-
-pkgname = chipon-usart-async2
-	pkgdesc = KungFu32 USART Demo
-
-pkgname = chipon-librxtx
-	pkgdesc = KungFu32 产品上位机编程软件，RXTX 操作库: IDE 和 PRO 软件使用编程调试器或串口实现和芯片的数据交换
-
-pkgname = chipon-rxtx-2
-	pkgdesc = KungFu32 产品上位机编程软件，RXTX jar 操作库: IDE 和 PRO 软件使用编程调试器或串口实现和芯片的数据交换
