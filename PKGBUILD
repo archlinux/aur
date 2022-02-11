@@ -2,7 +2,7 @@
 
 _pkgbase='peeweeplus'
 pkgname="python-${_pkgbase}"
-pkgver=1.17.7
+pkgver=1.18
 pkgrel=1
 pkgdesc='Practical extension of a small, expressive ORM'
 arch=('any')
@@ -11,7 +11,6 @@ license=('GPLv3')
 depends=('python' 'python-configlib' 'python-peewee' 'python-setuptools' 'python-lxml')
 optdepends=(
     'python-argon2_cffi: for Argon2Field'
-    'python-authlib: for authlib integration'
 )
 makedepends=('git' 'python-setuptools-scm')
 source=("${_pkgbase}::git+${url}.git#tag=${pkgver}")
