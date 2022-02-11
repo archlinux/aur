@@ -1,5 +1,6 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=slippi-launcher
+_tagname='2.1.13'
 pkgver='v2.1.13.r0.gebf14f6'
 pkgrel=1
 pkgdesc="The way to play Slippi Online and watch replays."
@@ -11,9 +12,9 @@ makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!strip')
 _url="https://github.com/project-slippi/$pkgname/releases"
-_package="Slippi-Launcher-$pkgver-$arch.AppImage"
-source=("$_package::$_url/download/v$pkgver/$_package")
-md5sums=('ba1055434fe11c820ad1be1ededf9dae')
+_package="Slippi-Launcher-$_tagname-$arch.AppImage"
+source=("$_package::$_url/download/v$_tagname/$_package")
+sha256sums=('0U9m0IJ3FbstFY/NsSkHwnKJ9xsZKLMY4vgLPpIY3IDesBgI3+lPe7BoJmxf0DLFACUFg9s91rXdSp3IMhSz2A==')
 
 prepare() {
 	chmod +x "$srcdir/$_package"
