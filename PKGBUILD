@@ -12,7 +12,7 @@ depends=('ignition-math>=6' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 provides=("ignition-common=$pkgver")
-conflicts=("ignition-common")
+conflicts=("")
 source=("https://github.com/ignitionrobotics/ign-common/archive/ignition-common3_${pkgver}.tar.gz")
 sha256sums=('572c9ed8741ec8ee1118edbcde2314207f85c40bbcc7673859bfa11bcdae2a71')
 
