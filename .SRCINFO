@@ -1,6 +1,6 @@
 pkgbase = gmid-git
 	pkgdesc = Fast Gemini server written with security in mind.
-	pkgver = 1.8.r0.ga14b9f7
+	pkgver = 1.8.1.r2.gc6ae256
 	pkgrel = 1
 	url = https://gmid.omarpolo.com
 	arch = x86_64
