@@ -1,7 +1,7 @@
 # Maintainer: Tab Fitts <tfitts [at] spryservers [dot] net>
 pkgname=splashtop-business
 pkgver=3.0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Splashtop Business. Remotely access your desktop from any device from anywhere!"
 arch=('x86_64')
 url="https://www.splashtop.com/business"

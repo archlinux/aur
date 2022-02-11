@@ -15,7 +15,19 @@ post_install() {
 	chmod a=rwx /opt/splashtop-business/config
 	chmod a=rwx /opt/splashtop-business/log
 
-	# create correct splashtop-business
+	if [ -f "/opt/splashtop-business/splashtop-business" ]; then
+		rm -rf /opt/splashtop-business/splashtop-business
+	fi
+
+	if [ -f "/opt/splashtop-business/splashtop-business-xenial" ]; then
+		rm -rf /opt/splashtop-business/splashtop-business-xenial
+	fi
+
+	if [ -f "/opt/splashtop-business/splashtop-business-focal" ]; then
+		mv /opt/splashtop-business/splashtop-business-focal /opt/splashtop-business/splashtop-business
+		ln -sf /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
+	fi
+
 	if [ ! -f "/usr/bin/splashtop-business" ]; then
         ln -s /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
 	fi
@@ -31,7 +43,7 @@ post_upgrade() {
 post_remove() {
 	xdg-icon-resource forceupdate --theme hicolor
 	if [ "$1" = "remove" ]; then
-	    echo "uninstall - Splashtop Business"
+	    echo "Uninstall - Splashtop Business"
 	fi
 
 	rm /usr/bin/splashtop-business
