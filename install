@@ -1,0 +1,12 @@
+post_install() {
+	echo "***********************************************************************************"
+	echo "* Please note that ATSAS is now installed under /opt/ATSAS, instead of /opt/atsas *"
+        echo "***********************************************************************************"
+}
+
+post_upgrade() {
+	echo "***********************************************************************************"
+	echo "* Please note that ATSAS is now installed under /opt/ATSAS, instead of /opt/atsas *"
+        echo "***********************************************************************************"
+}
+

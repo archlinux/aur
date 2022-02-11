@@ -1,1 +1,2 @@
-export PATH=/opt/atsas/bin:$PATH
+export ATSAS=/opt/ATSAS
+export PATH=$ATSAS/bin:$PATH
