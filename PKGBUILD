@@ -1,7 +1,7 @@
 # Maintainer Kiernan Preve <kiernanpreve@gmail.com>
 
 pkgname=rtl8188gu-dkms-git
-_pkgbase=8188gu
+_pkgbase=rtl8188gu-dkms-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="Driver for Realtek RTL8188GU chipset wireless cards"
