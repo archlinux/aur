@@ -1,6 +1,6 @@
 pkgbase = vim-suda
 	pkgdesc = Vim plugin for writing out files with sudo
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/lambdalisue/suda.vim
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = vim-suda
 	license = MIT
 	depends = vim-plugin-runtime
 	depends = sudo
-	source = vim-suda-0.3.2.tar.gz::https://github.com/lambdalisue/suda.vim/archive/v0.3.2.tar.gz
-	sha256sums = 46d48c47f4368be505ae04ffc2d0428766751b2e99cb62ad52fe80c5fb525bdb
+	source = vim-suda-0.3.3.tar.gz::https://github.com/lambdalisue/suda.vim/archive/v0.3.3.tar.gz
+	sha256sums = 275c7e9551824f28a1bdc21db3b8c6586f0dea11d525ab74f922c491edbde88d
 
 pkgname = vim-suda
