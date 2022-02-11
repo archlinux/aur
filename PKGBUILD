@@ -1,7 +1,7 @@
 # Maintainer: Valerii Huz <ghotrix at gmail dot com>
 
 pkgname=stockfish-git
-pkgver=r3393.gfe07ae4
+pkgver=r5442.gcb9c2594
 pkgrel=1
 pkgdesc="A free UCI chess engine derived from Glaurung 2.1 (git version)"
 arch=('i686' 'x86_64')
