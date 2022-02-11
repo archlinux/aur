@@ -1,0 +1,1070 @@
+Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1887
+Editor: Sung Mingi <FiestaLake@protonmail.com>
+Commit: 5f62dc8b585bbb7fe83b65ef56395a15c73e15af
+Last Updated: 02/11/22 (Mutter 41.3+4+g2405c3b3b.2)
+
+diff --git a/src/compositor/clutter-utils.c b/src/compositor/clutter-utils.c
+index 86d788562..3c7165f1e 100644
+--- a/src/compositor/clutter-utils.c
++++ b/src/compositor/clutter-utils.c
+@@ -69,8 +69,7 @@ gboolean
+ meta_actor_vertices_are_untransformed (graphene_point3d_t *verts,
+                                        float               widthf,
+                                        float               heightf,
+-                                       int                *x_origin,
+-                                       int                *y_origin)
++                                       MetaTransforms     *trans)
+ {
+   int width, height;
+   int v0x, v0y, v1x, v1y, v2x, v2y, v3x, v3y;
+@@ -90,6 +89,14 @@ meta_actor_vertices_are_untransformed (graphene_point3d_t *verts,
+   x = v0x >> 8;
+   y = v0y >> 8;
+ 
++  if (trans)
++    {
++      trans->x_origin = x;
++      trans->y_origin = y;
++      trans->x_scale = (v1x - v0x) / (float) width;
++      trans->y_scale = (v2y - v0y) / (float) height;
++    }
++
+   /* At integral coordinates? */
+   if (x * 256 != v0x || y * 256 != v0y)
+     return FALSE;
+@@ -103,11 +110,6 @@ meta_actor_vertices_are_untransformed (graphene_point3d_t *verts,
+       v3x != v1x || v3y != v2y)
+     return FALSE;
+ 
+-  if (x_origin)
+-    *x_origin = x;
+-  if (y_origin)
+-    *y_origin = y;
+-
+   return TRUE;
+ }
+ 
+@@ -137,8 +139,7 @@ meta_actor_painting_untransformed (CoglFramebuffer *fb,
+                                    int              paint_height,
+                                    int              sample_width,
+                                    int              sample_height,
+-                                   int             *x_origin,
+-                                   int             *y_origin)
++                                   MetaTransforms  *trans)
+ {
+   graphene_matrix_t modelview, projection, modelview_projection;
+   graphene_point3d_t vertices[4];
+@@ -183,6 +184,6 @@ meta_actor_painting_untransformed (CoglFramebuffer *fb,
+ 
+   return meta_actor_vertices_are_untransformed (vertices,
+                                                 sample_width, sample_height,
+-                                                x_origin, y_origin);
++                                                trans);
+ }
+ 
+diff --git a/src/compositor/clutter-utils.h b/src/compositor/clutter-utils.h
+index 8ed0e2a4d..039e61a61 100644
+--- a/src/compositor/clutter-utils.h
++++ b/src/compositor/clutter-utils.h
+@@ -23,18 +23,21 @@
+ 
+ #include "clutter/clutter.h"
+ 
++typedef struct {
++  int x_origin, y_origin;
++  float x_scale, y_scale;
++} MetaTransforms;
++
+ gboolean meta_actor_vertices_are_untransformed (graphene_point3d_t *verts,
+                                                 float               widthf,
+                                                 float               heightf,
+-                                                int                *x_origin,
+-                                                int                *y_origin);
++                                                MetaTransforms     *trans);
+ 
+ gboolean meta_actor_painting_untransformed (CoglFramebuffer *fb,
+                                             int              paint_width,
+                                             int              paint_height,
+                                             int              sample_widthf,
+                                             int              sample_heightf,
+-                                            int             *x_origin,
+-                                            int             *y_origin);
++                                            MetaTransforms  *trans);
+ 
+ #endif /* __META_CLUTTER_UTILS_H__ */
+diff --git a/src/compositor/meta-background-content.c b/src/compositor/meta-background-content.c
+index 49f5885ca..93de521d0 100644
+--- a/src/compositor/meta-background-content.c
++++ b/src/compositor/meta-background-content.c
+@@ -561,7 +561,7 @@ setup_pipeline (MetaBackgroundContent *self,
+                                          actor_pixel_rect->height,
+                                          self->texture_width,
+                                          self->texture_height,
+-                                         NULL, NULL))
++                                         NULL))
+     {
+       min_filter = COGL_PIPELINE_FILTER_NEAREST;
+       mag_filter = COGL_PIPELINE_FILTER_NEAREST;
+diff --git a/src/compositor/meta-cullable.c b/src/compositor/meta-cullable.c
+index 6f38c5e47..e306c56e2 100644
+--- a/src/compositor/meta-cullable.c
++++ b/src/compositor/meta-cullable.c
+@@ -175,7 +175,7 @@ meta_cullable_default_is_untransformed (MetaCullable *cullable)
+   clutter_actor_get_abs_allocation_vertices (CLUTTER_ACTOR (cullable), verts);
+ 
+   return meta_actor_vertices_are_untransformed (verts, width, height,
+-                                                NULL, NULL);
++                                                NULL);
+ }
+ 
+ static void
+diff --git a/src/compositor/meta-shaped-texture.c b/src/compositor/meta-shaped-texture.c
+index 1a68f3e1b..5907fd6c0 100644
+--- a/src/compositor/meta-shaped-texture.c
++++ b/src/compositor/meta-shaped-texture.c
+@@ -41,7 +41,6 @@
+ 
+ #include "cogl/cogl.h"
+ #include "compositor/clutter-utils.h"
+-#include "compositor/meta-texture-tower.h"
+ #include "compositor/region-utils.h"
+ #include "core/boxes-private.h"
+ #include "meta/meta-shaped-texture.h"
+@@ -82,8 +81,6 @@ struct _MetaShapedTexture
+ {
+   GObject parent;
+ 
+-  MetaTextureTower *paint_tower;
+-
+   CoglTexture *texture;
+   CoglTexture *mask_texture;
+   CoglSnippet *snippet;
+@@ -92,6 +89,11 @@ struct _MetaShapedTexture
+   CoglPipeline *masked_pipeline;
+   CoglPipeline *unblended_pipeline;
+ 
++  CoglTexture *mipmap_texture;
++  gboolean mipmap_texture_out_of_date;
++  CoglFramebuffer *mipmap_fb;
++  CoglPipeline *mipmap_pipeline;
++
+   gboolean is_y_inverted;
+ 
+   /* The region containing only fully opaque pixels */
+@@ -150,8 +152,6 @@ invalidate_size (MetaShapedTexture *stex)
+ static void
+ meta_shaped_texture_init (MetaShapedTexture *stex)
+ {
+-  stex->paint_tower = meta_texture_tower_new ();
+-
+   stex->buffer_scale = 1;
+   stex->texture = NULL;
+   stex->mask_texture = NULL;
+@@ -244,6 +244,13 @@ meta_shaped_texture_reset_pipelines (MetaShapedTexture *stex)
+   g_clear_pointer (&stex->unblended_pipeline, cogl_object_unref);
+ }
+ 
++static void
++free_mipmaps (MetaShapedTexture *stex)
++{
++  g_clear_object (&stex->mipmap_fb);
++  cogl_clear_object (&stex->mipmap_texture);
++}
++
+ static void
+ meta_shaped_texture_dispose (GObject *object)
+ {
+@@ -251,9 +258,8 @@ meta_shaped_texture_dispose (GObject *object)
+ 
+   g_clear_handle_id (&stex->remipmap_timeout_id, g_source_remove);
+ 
+-  if (stex->paint_tower)
+-    meta_texture_tower_free (stex->paint_tower);
+-  stex->paint_tower = NULL;
++  free_mipmaps (stex);
++  cogl_clear_object (&stex->mipmap_pipeline);
+ 
+   g_clear_pointer (&stex->texture, cogl_object_unref);
+ 
+@@ -548,13 +554,7 @@ set_cogl_texture (MetaShapedTexture *stex,
+       update_size (stex);
+     }
+ 
+-  /* NB: We don't queue a redraw of the actor here because we don't
+-   * know how much of the buffer has changed with respect to the
+-   * previous buffer. We only queue a redraw in response to surface
+-   * damage. */
+-
+-  if (stex->create_mipmaps)
+-    meta_texture_tower_set_base_texture (stex->paint_tower, cogl_tex);
++  stex->mipmap_texture_out_of_date = TRUE;
+ }
+ 
+ static gboolean
+@@ -582,11 +582,14 @@ flip_ints (int *x,
+   *y = tmp;
+ }
+ 
++static CoglTexture *
++select_texture_for_paint (MetaShapedTexture   *stex,
++                          ClutterPaintContext *paint_context);
++
+ static void
+ do_paint_content (MetaShapedTexture   *stex,
+                   ClutterPaintNode    *root_node,
+                   ClutterPaintContext *paint_context,
+-                  CoglTexture         *paint_tex,
+                   ClutterActorBox     *alloc,
+                   uint8_t              opacity)
+ {
+@@ -595,7 +598,9 @@ do_paint_content (MetaShapedTexture   *stex,
+   gboolean use_opaque_region;
+   cairo_region_t *blended_tex_region;
+   CoglContext *ctx;
+-  CoglPipelineFilter filter;
++  CoglPipelineFilter min_filter, mag_filter;
++  MetaTransforms transforms;
++  CoglTexture *paint_tex = stex->texture;
+   CoglFramebuffer *framebuffer;
+   int sample_width, sample_height;
+   gboolean debug_paint_opaque_region;
+@@ -642,10 +647,33 @@ do_paint_content (MetaShapedTexture   *stex,
+   if (meta_actor_painting_untransformed (framebuffer,
+                                          dst_width, dst_height,
+                                          sample_width, sample_height,
+-                                         NULL, NULL))
+-    filter = COGL_PIPELINE_FILTER_NEAREST;
++                                         &transforms))
++    {
++      min_filter = COGL_PIPELINE_FILTER_NEAREST;
++      mag_filter = COGL_PIPELINE_FILTER_NEAREST;
++
++      /* Back to normal desktop viewing. Save some memory */
++      free_mipmaps (stex);
++    }
+   else
+-    filter = COGL_PIPELINE_FILTER_LINEAR;
++    {
++      min_filter = COGL_PIPELINE_FILTER_LINEAR;
++      mag_filter = COGL_PIPELINE_FILTER_LINEAR;
++
++      /* If we're painting a texture below half its native resolution
++       * then mipmapping is required to avoid aliasing. If it's above
++       * half then sticking with COGL_PIPELINE_FILTER_LINEAR will look
++       * and perform better.
++       */
++      if (stex->create_mipmaps &&
++          transforms.x_scale < 0.5 &&
++          transforms.y_scale < 0.5)
++        {
++          paint_tex = select_texture_for_paint (stex, paint_context);
++          if (paint_tex == stex->mipmap_texture)
++            min_filter = COGL_PIPELINE_FILTER_LINEAR_MIPMAP_NEAREST;
++        }
++    }
+ 
+   ctx = clutter_backend_get_cogl_context (clutter_get_default_backend ());
+ 
+@@ -707,7 +735,7 @@ do_paint_content (MetaShapedTexture   *stex,
+ 
+           opaque_pipeline = get_unblended_pipeline (stex, ctx);
+           cogl_pipeline_set_layer_texture (opaque_pipeline, 0, paint_tex);
+-          cogl_pipeline_set_layer_filters (opaque_pipeline, 0, filter, filter);
++          cogl_pipeline_set_layer_filters (opaque_pipeline, 0, min_filter, mag_filter);
+ 
+           n_rects = cairo_region_num_rectangles (region);
+           for (i = 0; i < n_rects; i++)
+@@ -755,11 +783,11 @@ do_paint_content (MetaShapedTexture   *stex,
+         {
+           blended_pipeline = get_masked_pipeline (stex, ctx);
+           cogl_pipeline_set_layer_texture (blended_pipeline, 1, stex->mask_texture);
+-          cogl_pipeline_set_layer_filters (blended_pipeline, 1, filter, filter);
++          cogl_pipeline_set_layer_filters (blended_pipeline, 1, min_filter, mag_filter);
+         }
+ 
+       cogl_pipeline_set_layer_texture (blended_pipeline, 0, paint_tex);
+-      cogl_pipeline_set_layer_filters (blended_pipeline, 0, filter, filter);
++      cogl_pipeline_set_layer_filters (blended_pipeline, 0, min_filter, mag_filter);
+ 
+       CoglColor color;
+       cogl_color_init_from_4ub (&color, opacity, opacity, opacity, opacity);
+@@ -824,6 +852,94 @@ do_paint_content (MetaShapedTexture   *stex,
+   g_clear_pointer (&blended_tex_region, cairo_region_destroy);
+ }
+ 
++static void
++ensure_mipmap_texture (MetaShapedTexture *stex)
++{
++  CoglContext *ctx =
++    clutter_backend_get_cogl_context (clutter_get_default_backend ());
++  int width, height;
++
++  /* Let's avoid spending any texture memory copying the base level texture
++   * because we'll never need that one and it would have used most of the
++   * memory;
++   *    S(0) = W x H
++   *    S(n) = S(n-1) / 4
++   *    sum to infinity of S(n) = 4/3 * S(0)
++   * So subtracting S(0) means even infinite mipmap levels only need one third
++   * of the original texture's memory. Finite levels need less.
++   *
++   * The fact that mipmap level 0 of stex->mipmap_texture is half the
++   * resolution of stex->texture makes no visual difference, so long as you're
++   * never trying to view a level of detail higher than half. If you need that
++   * then just use stex->texture instead of stex->mipmap_texture, which is
++   * faster anyway.
++   */
++  width = cogl_texture_get_width (stex->texture) / 2;
++  height = cogl_texture_get_height (stex->texture) / 2;
++
++  if (!width || !height)
++    {
++      free_mipmaps (stex);
++      return;
++    }
++
++  if (!stex->mipmap_texture ||
++      cogl_texture_get_width (stex->mipmap_texture) != width ||
++      cogl_texture_get_height (stex->mipmap_texture) != height)
++    {
++      CoglOffscreen *offscreen;
++      CoglTexture2D *tex2d;
++
++      free_mipmaps (stex);
++
++      tex2d = cogl_texture_2d_new_with_size (ctx, width, height);
++      if (!tex2d)
++        return;
++
++      stex->mipmap_texture = COGL_TEXTURE (tex2d);
++
++      offscreen = cogl_offscreen_new_with_texture (stex->mipmap_texture);
++      if (!offscreen)
++        {
++          free_mipmaps (stex);
++          return;
++        }
++
++      stex->mipmap_fb = COGL_FRAMEBUFFER (offscreen);
++
++      if (!cogl_framebuffer_allocate (stex->mipmap_fb, NULL))
++        {
++          free_mipmaps (stex);
++          return;
++        }
++
++      cogl_framebuffer_orthographic (stex->mipmap_fb,
++                                     0, 0, width, height, -1.0, 1.0);
++
++      stex->mipmap_texture_out_of_date = TRUE;
++    }
++
++  if (stex->mipmap_texture_out_of_date)
++    {
++      if (!stex->mipmap_pipeline)
++        {
++          stex->mipmap_pipeline = cogl_pipeline_new (ctx);
++          cogl_pipeline_set_blend (stex->mipmap_pipeline, "RGBA = ADD (SRC_COLOR, 0)", NULL);
++          cogl_pipeline_set_layer_filters (stex->mipmap_pipeline, 0,
++                                           COGL_PIPELINE_FILTER_LINEAR,
++                                           COGL_PIPELINE_FILTER_LINEAR);
++        }
++
++      cogl_pipeline_set_layer_texture (stex->mipmap_pipeline, 0, stex->texture);
++      cogl_framebuffer_draw_textured_rectangle (stex->mipmap_fb,
++                                                stex->mipmap_pipeline,
++                                                0, 0, width, height,
++                                                0.0, 0.0, 1.0, 1.0);
++
++      stex->mipmap_texture_out_of_date = FALSE;
++    }
++}
++
+ static CoglTexture *
+ select_texture_for_paint (MetaShapedTexture   *stex,
+                           ClutterPaintContext *paint_context)
+@@ -843,8 +959,8 @@ select_texture_for_paint (MetaShapedTexture   *stex,
+       if (age >= MIN_MIPMAP_AGE_USEC ||
+           stex->fast_updates < MIN_FAST_UPDATES_BEFORE_UNMIPMAP)
+         {
+-          texture = meta_texture_tower_get_paint_texture (stex->paint_tower,
+-                                                          paint_context);
++          ensure_mipmap_texture (stex);
++          texture = stex->mipmap_texture;
+         }
+     }
+ 
+@@ -876,7 +992,6 @@ meta_shaped_texture_paint_content (ClutterContent      *content,
+ {
+   MetaShapedTexture *stex = META_SHAPED_TEXTURE (content);
+   ClutterActorBox alloc;
+-  CoglTexture *paint_tex = NULL;
+   uint8_t opacity;
+ 
+   if (stex->clip_region && cairo_region_is_empty (stex->clip_region))
+@@ -897,14 +1012,13 @@ meta_shaped_texture_paint_content (ClutterContent      *content,
+    * Setting the texture quality to high without SGIS_generate_mipmap
+    * support for TFP textures will result in fallbacks to XGetImage.
+    */
+-  paint_tex = select_texture_for_paint (stex, paint_context);
+-  if (!paint_tex)
++  if (stex->texture == NULL)
+     return;
+ 
+   opacity = clutter_actor_get_paint_opacity (actor);
+   clutter_actor_get_content_box (actor, &alloc);
+ 
+-  do_paint_content (stex, root_node, paint_context, paint_tex, &alloc, opacity);
++  do_paint_content (stex, root_node, paint_context, &alloc, opacity);
+ }
+ 
+ static gboolean
+@@ -942,10 +1056,10 @@ meta_shaped_texture_set_create_mipmaps (MetaShapedTexture *stex,
+ 
+   if (create_mipmaps != stex->create_mipmaps)
+     {
+-      CoglTexture *base_texture;
+       stex->create_mipmaps = create_mipmaps;
+-      base_texture = create_mipmaps ? stex->texture : NULL;
+-      meta_texture_tower_set_base_texture (stex->paint_tower, base_texture);
++
++      if (!stex->create_mipmaps)
++        free_mipmaps (stex);
+     }
+ }
+ 
+@@ -1074,12 +1188,7 @@ meta_shaped_texture_update_area (MetaShapedTexture     *stex,
+                                      clip);
+     }
+ 
+-  meta_texture_tower_update_area (stex->paint_tower,
+-                                  x,
+-                                  y,
+-                                  width,
+-                                  height);
+-
++  stex->mipmap_texture_out_of_date = TRUE;
+   stex->prev_invalidation = stex->last_invalidation;
+   stex->last_invalidation = g_get_monotonic_time ();
+ 
+diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
+index c2bf6696a..fcd94b86d 100644
+--- a/src/compositor/meta-surface-actor.c
++++ b/src/compositor/meta-surface-actor.c
+@@ -331,7 +331,7 @@ meta_surface_actor_is_untransformed (MetaCullable *cullable)
+   return meta_actor_vertices_are_untransformed (verts,
+                                                 width * geometry_scale,
+                                                 height * geometry_scale,
+-                                                NULL, NULL);
++                                                NULL);
+ }
+ 
+ static void
+diff --git a/src/compositor/meta-texture-tower.c b/src/compositor/meta-texture-tower.c
+deleted file mode 100644
+index 1fc4623e5..000000000
+--- a/src/compositor/meta-texture-tower.c
++++ /dev/null
+@@ -1,484 +0,0 @@
+-/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
+-/*
+- * MetaTextureTower
+- *
+- * Mipmap emulation by creation of scaled down images
+- *
+- * Copyright (C) 2009 Red Hat, Inc.
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of the
+- * License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful, but
+- * WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#include "config.h"
+-
+-#include <math.h>
+-#include <string.h>
+-
+-#include "compositor/meta-texture-tower.h"
+-
+-#ifndef M_LOG2E
+-#define M_LOG2E 1.4426950408889634074
+-#endif
+-
+-#define MAX_TEXTURE_LEVELS 12
+-
+-/* If the texture format in memory doesn't match this, then Mesa
+- * will do the conversion, so things will still work, but it might
+- * be slow depending on how efficient Mesa is. These should be the
+- * native formats unless the display is 16bpp. If conversions
+- * here are a bottleneck, investigate whether we are converting when
+- * storing window data *into* the texture before adding extra code
+- * to handle multiple texture formats.
+- */
+-#if G_BYTE_ORDER == G_LITTLE_ENDIAN
+-#define TEXTURE_FORMAT COGL_PIXEL_FORMAT_BGRA_8888_PRE
+-#else
+-#define TEXTURE_FORMAT COGL_PIXEL_FORMAT_ARGB_8888_PRE
+-#endif
+-
+-typedef struct
+-{
+-  guint16 x1;
+-  guint16 y1;
+-  guint16 x2;
+-  guint16 y2;
+-} Box;
+-
+-struct _MetaTextureTower
+-{
+-  int n_levels;
+-  CoglTexture *textures[MAX_TEXTURE_LEVELS];
+-  CoglOffscreen *fbos[MAX_TEXTURE_LEVELS];
+-  Box invalid[MAX_TEXTURE_LEVELS];
+-  CoglPipeline *pipeline_template;
+-};
+-
+-/**
+- * meta_texture_tower_new:
+- *
+- * Creates a new texture tower. The base texture has to be set with
+- * meta_texture_tower_set_base_texture() before use.
+- *
+- * Return value: the new texture tower. Free with meta_texture_tower_free()
+- */
+-MetaTextureTower *
+-meta_texture_tower_new (void)
+-{
+-  MetaTextureTower *tower;
+-
+-  tower = g_new0 (MetaTextureTower, 1);
+-
+-  return tower;
+-}
+-
+-/**
+- * meta_texture_tower_free:
+- * @tower: a #MetaTextureTower
+- *
+- * Frees a texture tower created with meta_texture_tower_new().
+- */
+-void
+-meta_texture_tower_free (MetaTextureTower *tower)
+-{
+-  g_return_if_fail (tower != NULL);
+-
+-  if (tower->pipeline_template != NULL)
+-    cogl_object_unref (tower->pipeline_template);
+-
+-  meta_texture_tower_set_base_texture (tower, NULL);
+-
+-  g_free (tower);
+-}
+-
+-/**
+- * meta_texture_tower_set_base_texture:
+- * @tower: a #MetaTextureTower
+- * @texture: the new texture used as a base for scaled down versions
+- *
+- * Sets the base texture that is the scaled texture that the
+- * scaled textures of the tower are derived from. The texture itself
+- * will be used as level 0 of the tower and will be referenced until
+- * unset or until the tower is freed.
+- */
+-void
+-meta_texture_tower_set_base_texture (MetaTextureTower *tower,
+-                                     CoglTexture      *texture)
+-{
+-  int i;
+-
+-  g_return_if_fail (tower != NULL);
+-
+-  if (texture == tower->textures[0])
+-    return;
+-
+-  if (tower->textures[0] != NULL)
+-    {
+-      for (i = 1; i < tower->n_levels; i++)
+-        {
+-          cogl_clear_object (&tower->textures[i]);
+-          g_clear_object (&tower->fbos[i]);
+-        }
+-
+-      cogl_object_unref (tower->textures[0]);
+-    }
+-
+-  tower->textures[0] = texture;
+-
+-  if (tower->textures[0] != NULL)
+-    {
+-      int width, height;
+-
+-      cogl_object_ref (tower->textures[0]);
+-
+-      width = cogl_texture_get_width (tower->textures[0]);
+-      height = cogl_texture_get_height (tower->textures[0]);
+-
+-      tower->n_levels = 1 + MAX ((int)(M_LOG2E * log (width)), (int)(M_LOG2E * log (height)));
+-      tower->n_levels = MIN(tower->n_levels, MAX_TEXTURE_LEVELS);
+-
+-      meta_texture_tower_update_area (tower, 0, 0, width, height);
+-    }
+-  else
+-    {
+-      tower->n_levels = 0;
+-    }
+-}
+-
+-/**
+- * meta_texture_tower_update_area:
+- * @tower: a #MetaTextureTower
+- * @x: X coordinate of upper left of rectangle that changed
+- * @y: Y coordinate of upper left of rectangle that changed
+- * @width: width of rectangle that changed
+- * @height: height rectangle that changed
+- *
+- * Mark a region of the base texture as having changed; the next
+- * time a scaled down version of the base texture is retrieved,
+- * the appropriate area of the scaled down texture will be updated.
+- */
+-void
+-meta_texture_tower_update_area (MetaTextureTower *tower,
+-                                int               x,
+-                                int               y,
+-                                int               width,
+-                                int               height)
+-{
+-  int texture_width, texture_height;
+-  Box invalid;
+-  int i;
+-
+-  g_return_if_fail (tower != NULL);
+-
+-  if (tower->textures[0] == NULL)
+-    return;
+-
+-  texture_width = cogl_texture_get_width (tower->textures[0]);
+-  texture_height = cogl_texture_get_height (tower->textures[0]);
+-
+-  invalid.x1 = x;
+-  invalid.y1 = y;
+-  invalid.x2 = x + width;
+-  invalid.y2 = y + height;
+-
+-  for (i = 1; i < tower->n_levels; i++)
+-    {
+-      texture_width = MAX (1, texture_width / 2);
+-      texture_height = MAX (1, texture_height / 2);
+-
+-      invalid.x1 = invalid.x1 / 2;
+-      invalid.y1 = invalid.y1 / 2;
+-      invalid.x2 = MIN (texture_width, (invalid.x2 + 1) / 2);
+-      invalid.y2 = MIN (texture_height, (invalid.y2 + 1) / 2);
+-
+-      if (tower->invalid[i].x1 == tower->invalid[i].x2 ||
+-          tower->invalid[i].y1 == tower->invalid[i].y2)
+-        {
+-          tower->invalid[i] = invalid;
+-        }
+-      else
+-        {
+-          tower->invalid[i].x1 = MIN (tower->invalid[i].x1, invalid.x1);
+-          tower->invalid[i].y1 = MIN (tower->invalid[i].y1, invalid.y1);
+-          tower->invalid[i].x2 = MAX (tower->invalid[i].x2, invalid.x2);
+-          tower->invalid[i].y2 = MAX (tower->invalid[i].y2, invalid.y2);
+-        }
+-    }
+-}
+-
+-/* It generally looks worse if we scale up a window texture by even a
+- * small amount than if we scale it down using bilinear filtering, so
+- * we always pick the *larger* adjacent level. */
+-#define LOD_BIAS (-0.49)
+-
+-/* This determines the appropriate level of detail to use when drawing the
+- * texture, in a way that corresponds to what the GL specification does
+- * when mip-mapping. This is probably fancier and slower than what we need,
+- * but we do the computation only once each time we paint a window, and
+- * its easier to just use the equations from the specification than to
+- * come up with something simpler.
+- *
+- * If window is being painted at an angle from the viewer, then we have to
+- * pick a point in the texture; we use the middle of the texture (which is
+- * why the width/height are passed in.) This is not the normal case for
+- * Meta.
+- */
+-static int
+-get_paint_level (ClutterPaintContext *paint_context,
+-                 int                  width,
+-                 int                  height)
+-{
+-  CoglFramebuffer *framebuffer;
+-  graphene_matrix_t projection, modelview, pm;
+-  float xx, xy, xw;
+-  float yx, yy, yw;
+-  float wx, wy, ww;
+-  float v[4];
+-  double viewport_width, viewport_height;
+-  double u0, v0;
+-  double xc, yc, wc;
+-  double dxdu_, dxdv_, dydu_, dydv_;
+-  double det_, det_sq;
+-  double rho_sq;
+-  double lambda;
+-
+-  /* See
+-   * http://www.opengl.org/registry/doc/glspec32.core.20090803.pdf
+-   * Section 3.8.9, p. 1.6.2. Here we have
+-   *
+-   *  u(x,y) = x_o;
+-   *  v(x,y) = y_o;
+-   *
+-   * Since we are mapping 1:1 from object coordinates into pixel
+-   * texture coordinates, the clip coordinates are:
+-   *
+-   *  (x_c)                               (x_o)        (u)
+-   *  (y_c) = (M_projection)(M_modelview) (y_o) = (PM) (v)
+-   *  (z_c)                               (z_o)        (0)
+-   *  (w_c)                               (w_o)        (1)
+-   */
+-
+-  framebuffer = clutter_paint_context_get_framebuffer (paint_context);
+-  cogl_framebuffer_get_projection_matrix (framebuffer, &projection);
+-  cogl_framebuffer_get_modelview_matrix (framebuffer, &modelview);
+-
+-  graphene_matrix_multiply (&modelview, &projection, &pm);
+-
+-  xx = graphene_matrix_get_value (&pm, 0, 0);
+-  xy = graphene_matrix_get_value (&pm, 0, 1);
+-  xw = graphene_matrix_get_value (&pm, 0, 3);
+-  yx = graphene_matrix_get_value (&pm, 1, 0);
+-  yy = graphene_matrix_get_value (&pm, 1, 1);
+-  yw = graphene_matrix_get_value (&pm, 1, 3);
+-  wx = graphene_matrix_get_value (&pm, 3, 0);
+-  wy = graphene_matrix_get_value (&pm, 3, 1);
+-  ww = graphene_matrix_get_value (&pm, 3, 3);
+-
+-  cogl_framebuffer_get_viewport4fv (framebuffer, v);
+-  viewport_width = v[2];
+-  viewport_height = v[3];
+-
+-  u0 = width / 2.;
+-  v0 = height / 2.;
+-
+-  xc = xx * u0 + yx * v0 + wx;
+-  yc = xy * u0 + yy * v0 + wy;
+-  wc = xw * u0 + yw * v0 + ww;
+-
+-  /* We'll simplify the equations below for a bit of micro-optimization.
+-   * The commented out code is the unsimplified version.
+-
+-  // Partial derivates of window coordinates:
+-  //
+-  //  x_w = 0.5 * viewport_width * x_c / w_c + viewport_center_x
+-  //  y_w = 0.5 * viewport_height * y_c / w_c + viewport_center_y
+-  //
+-  // with respect to u, v, using
+-  // d(a/b)/dx = da/dx * (1/b) - a * db/dx / (b^2)
+-
+-  dxdu = 0.5 * viewport_width * (xx - xw * (xc/wc)) / wc;
+-  dxdv = 0.5 * viewport_width * (yx - yw * (xc/wc)) / wc;
+-  dydu = 0.5 * viewport_height * (xy - xw * (yc/wc)) / wc;
+-  dydv = 0.5 * viewport_height * (yy - yw * (yc/wc)) / wc;
+-
+-  // Compute the inverse partials as the matrix inverse
+-  det = dxdu * dydv - dxdv * dydu;
+-
+-  dudx =   dydv / det;
+-  dudy = - dxdv / det;
+-  dvdx = - dydu / det;
+-  dvdy =   dvdu / det;
+-
+-  // Scale factor; maximum of the distance in texels for a change of 1 pixel
+-  // in the X direction or 1 pixel in the Y direction
+-  rho = MAX (sqrt (dudx * dudx + dvdx * dvdx), sqrt(dudy * dudy + dvdy * dvdy));
+-
+-  // Level of detail
+-  lambda = log2 (rho) + LOD_BIAS;
+-  */
+-
+-  /* dxdu * wc, etc */
+-  dxdu_ = 0.5 * viewport_width * (xx - xw * (xc/wc));
+-  dxdv_ = 0.5 * viewport_width * (yx - yw * (xc/wc));
+-  dydu_ = 0.5 * viewport_height * (xy - xw * (yc/wc));
+-  dydv_ = 0.5 * viewport_height * (yy - yw * (yc/wc));
+-
+-  /* det * wc^2 */
+-  det_ = dxdu_ * dydv_ - dxdv_ * dydu_;
+-  det_sq = det_ * det_;
+-  if (det_sq == 0.0)
+-    return -1;
+-
+-  /* (rho * det * wc)^2 */
+-  rho_sq = MAX (dydv_ * dydv_ + dydu_ * dydu_, dxdv_ * dxdv_ + dxdu_ * dxdu_);
+-  lambda = 0.5 * M_LOG2E * log (rho_sq * wc * wc / det_sq) + LOD_BIAS;
+-
+-#if 0
+-  g_print ("%g %g %g\n", 0.5 * viewport_width * xx / ww, 0.5 * viewport_height * yy / ww, lambda);
+-#endif
+-
+-  if (lambda <= 0.)
+-    return 0;
+-  else
+-    return (int)(0.5 + lambda);
+-}
+-
+-static void
+-texture_tower_create_texture (MetaTextureTower *tower,
+-                              int               level,
+-                              int               width,
+-                              int               height)
+-{
+-  tower->textures[level] = cogl_texture_new_with_size (width, height,
+-                                                       COGL_TEXTURE_NO_AUTO_MIPMAP,
+-                                                       TEXTURE_FORMAT);
+-
+-  tower->invalid[level].x1 = 0;
+-  tower->invalid[level].y1 = 0;
+-  tower->invalid[level].x2 = width;
+-  tower->invalid[level].y2 = height;
+-}
+-
+-static void
+-texture_tower_revalidate (MetaTextureTower *tower,
+-                          int               level)
+-{
+-  CoglTexture *source_texture = tower->textures[level - 1];
+-  int source_texture_width = cogl_texture_get_width (source_texture);
+-  int source_texture_height = cogl_texture_get_height (source_texture);
+-  CoglTexture *dest_texture = tower->textures[level];
+-  int dest_texture_width = cogl_texture_get_width (dest_texture);
+-  int dest_texture_height = cogl_texture_get_height (dest_texture);
+-  Box *invalid = &tower->invalid[level];
+-  CoglFramebuffer *fb;
+-  GError *catch_error = NULL;
+-  CoglPipeline *pipeline;
+-
+-  if (tower->fbos[level] == NULL)
+-    tower->fbos[level] = cogl_offscreen_new_with_texture (dest_texture);
+-
+-  fb = COGL_FRAMEBUFFER (tower->fbos[level]);
+-
+-  if (!cogl_framebuffer_allocate (fb, &catch_error))
+-    {
+-      g_error_free (catch_error);
+-      return;
+-    }
+-
+-  cogl_framebuffer_orthographic (fb, 0, 0, dest_texture_width, dest_texture_height, -1., 1.);
+-
+-  if (!tower->pipeline_template)
+-    {
+-      CoglContext *ctx =
+-        clutter_backend_get_cogl_context (clutter_get_default_backend ());
+-      tower->pipeline_template = cogl_pipeline_new (ctx);
+-      cogl_pipeline_set_blend (tower->pipeline_template, "RGBA = ADD (SRC_COLOR, 0)", NULL);
+-    }
+-
+-  pipeline = cogl_pipeline_copy (tower->pipeline_template);
+-  cogl_pipeline_set_layer_texture (pipeline, 0, tower->textures[level - 1]);
+-
+-  cogl_framebuffer_draw_textured_rectangle (fb, pipeline,
+-                                            invalid->x1, invalid->y1,
+-                                            invalid->x2, invalid->y2,
+-                                            (2. * invalid->x1) / source_texture_width,
+-                                            (2. * invalid->y1) / source_texture_height,
+-                                            (2. * invalid->x2) / source_texture_width,
+-                                            (2. * invalid->y2) / source_texture_height);
+-
+-  cogl_object_unref (pipeline);
+-
+-  tower->invalid[level].x1 = tower->invalid[level].x2 = 0;
+-  tower->invalid[level].y1 = tower->invalid[level].y2 = 0;
+-}
+-
+-/**
+- * meta_texture_tower_get_paint_texture:
+- * @tower: a #MetaTextureTower
+- * @paint_context: a #ClutterPaintContext
+- *
+- * Gets the texture from the tower that best matches the current
+- * rendering scale. (On the assumption here the texture is going to
+- * be rendered with vertex coordinates that correspond to its
+- * size in pixels, so a 200x200 texture will be rendered on the
+- * rectangle (0, 0, 200, 200).
+- *
+- * Return value: the COGL texture handle to use for painting, or
+- *  %NULL if no base texture has yet been set.
+- */
+-CoglTexture *
+-meta_texture_tower_get_paint_texture (MetaTextureTower    *tower,
+-                                      ClutterPaintContext *paint_context)
+-{
+-  int texture_width, texture_height;
+-  int level;
+-
+-  g_return_val_if_fail (tower != NULL, NULL);
+-
+-  if (tower->textures[0] == NULL)
+-    return NULL;
+-
+-  texture_width = cogl_texture_get_width (tower->textures[0]);
+-  texture_height = cogl_texture_get_height (tower->textures[0]);
+-
+-  level = get_paint_level (paint_context, texture_width, texture_height);
+-  if (level < 0) /* singular paint matrix, scaled to nothing */
+-    return NULL;
+-  level = MIN (level, tower->n_levels - 1);
+-
+-  if (tower->textures[level] == NULL ||
+-      (tower->invalid[level].x2 != tower->invalid[level].x1 &&
+-       tower->invalid[level].y2 != tower->invalid[level].y1))
+-    {
+-      int i;
+-
+-      for (i = 1; i <= level; i++)
+-       {
+-         /* Use "floor" convention here to be consistent with the NPOT texture extension */
+-         texture_width = MAX (1, texture_width / 2);
+-         texture_height = MAX (1, texture_height / 2);
+-
+-         if (tower->textures[i] == NULL)
+-           texture_tower_create_texture (tower, i, texture_width, texture_height);
+-       }
+-
+-      for (i = 1; i <= level; i++)
+-       {
+-         if (tower->invalid[level].x2 != tower->invalid[level].x1 &&
+-             tower->invalid[level].y2 != tower->invalid[level].y1)
+-           texture_tower_revalidate (tower, i);
+-       }
+-   }
+-
+-  return tower->textures[level];
+-}
+diff --git a/src/compositor/meta-texture-tower.h b/src/compositor/meta-texture-tower.h
+deleted file mode 100644
+index 1f5b37146..000000000
+--- a/src/compositor/meta-texture-tower.h
++++ /dev/null
+@@ -1,68 +0,0 @@
+-/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
+-/*
+- * MetaTextureTower
+- *
+- * Mipmap emulation by creation of scaled down images
+- *
+- * Copyright (C) 2009 Red Hat, Inc.
+- *
+- * This program is free software; you can redistribute it and/or
+- * modify it under the terms of the GNU General Public License as
+- * published by the Free Software Foundation; either version 2 of the
+- * License, or (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful, but
+- * WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- * General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, see <http://www.gnu.org/licenses/>.
+- */
+-
+-#ifndef __META_TEXTURE_TOWER_H__
+-#define __META_TEXTURE_TOWER_H__
+-
+-#include "clutter/clutter.h"
+-
+-G_BEGIN_DECLS
+-
+-/**
+- * SECTION:MetaTextureTower
+- * @short_description: mipmap emulation by creation of scaled down images
+- *
+- * A #MetaTextureTower is used to get good looking scaled down images when
+- * we can't use the GL drivers mipmap support. There are two separate reasons
+- *
+- *  - Some cards (including radeon cards <= r5xx) only support
+- *    TEXTURE_RECTANGLE_ARB and not NPOT textures. Rectangular textures
+- *    are defined not to support mipmapping.
+- *  - Even when NPOT textures are available, the combination of NPOT
+- *    textures, texture_from_pixmap, and mipmapping doesn't typically
+- *    work, since the X server doesn't allocate pixmaps in the right
+- *    layout for mipmapping.
+- *
+- * So, what we do is create the "mipmap" levels ourselves by successive
+- * power-of-two scaledowns, and when rendering pick the single texture
+- * that best matches the scale we are rendering at. (Since we aren't
+- * typically using perspective transforms, we'll frequently have a single
+- * scale for the entire texture.)
+- */
+-
+-typedef struct _MetaTextureTower MetaTextureTower;
+-
+-MetaTextureTower *meta_texture_tower_new               (void);
+-void              meta_texture_tower_free              (MetaTextureTower *tower);
+-void              meta_texture_tower_set_base_texture  (MetaTextureTower *tower,
+-                                                        CoglTexture      *texture);
+-void              meta_texture_tower_update_area       (MetaTextureTower *tower,
+-                                                        int               x,
+-                                                        int               y,
+-                                                        int               width,
+-                                                        int               height);
+-CoglTexture      *meta_texture_tower_get_paint_texture (MetaTextureTower    *tower,
+-                                                        ClutterPaintContext *paint_context);
+-
+-G_END_DECLS
+-
+-#endif /* __META_TEXTURE_TOWER_H__ */
+diff --git a/src/compositor/meta-window-group.c b/src/compositor/meta-window-group.c
+index 16ff2db09..c6af609ae 100644
+--- a/src/compositor/meta-window-group.c
++++ b/src/compositor/meta-window-group.c
+@@ -92,6 +92,7 @@ meta_window_group_paint (ClutterActor        *actor,
+     {
+       CoglFramebuffer *fb;
+       ClutterStageView *view;
++      MetaTransforms trans;
+ 
+       fb = clutter_paint_context_get_framebuffer (paint_context);
+       view = clutter_paint_context_get_stage_view (paint_context);
+@@ -102,13 +103,15 @@ meta_window_group_paint (ClutterActor        *actor,
+                                               screen_height,
+                                               screen_width,
+                                               screen_height,
+-                                              &paint_x_origin,
+-                                              &paint_y_origin) ||
++                                              &trans) ||
+           !meta_cullable_is_untransformed (META_CULLABLE (actor)))
+         {
+           parent_actor_class->paint (actor, paint_context);
+           return;
+         }
++
++      paint_x_origin = trans.x_origin;
++      paint_y_origin = trans.y_origin;
+     }
+   else
+     {
+diff --git a/src/meson.build b/src/meson.build
+index f3aebfb28..726b3ccb1 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -340,8 +340,6 @@ mutter_sources = [
+   'compositor/meta-surface-actor-x11.h',
+   'compositor/meta-sync-ring.c',
+   'compositor/meta-sync-ring.h',
+-  'compositor/meta-texture-tower.c',
+-  'compositor/meta-texture-tower.h',
+   'compositor/meta-window-actor.c',
+   'compositor/meta-window-actor-private.h',
+   'compositor/meta-window-actor-x11.c',

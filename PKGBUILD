@@ -12,14 +12,14 @@
 
 ### MERGE REQUESTS SELECTION
 
-# Merge Requests List: ('579' '1441' '1241')
-_merge_requests_to_use=('1441')
+# Merge Requests List: ('579' '1441' '1877')
+_merge_requests_to_use=('1441' '1877')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
 pkgver=41.3+4+g2405c3b3b
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -37,9 +37,11 @@ replaces=(mutter-781835-workaround)
 groups=(gnome)
 _commit=2405c3b3be7e722022554fd032f30dc3918374d5  # tags/41.3^4
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        'mr1441.patch')
+        'mr1441.patch'
+        'mr1877.patch')
 sha256sums=('SKIP'
-            '0644b481538cade728b4e2e399fb88b85f1f7e84b5b99872f4d7c225990e58b2')
+            '0644b481538cade728b4e2e399fb88b85f1f7e84b5b99872f4d7c225990e58b2'
+            '783a4b916378ba31d693ecd60aa7abf6d79c270ff464bd75d33e08c25e707c43')
 
 pkgver() {
   cd $pkgname
@@ -130,14 +132,12 @@ prepare() {
   #          Thanks @JockeTF in AUR for a quick patch.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
-
-  # Title: WIP: clutter/frame-clock: Allow update dispatch while presentation is pending
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1241
-  # Type: 1
+  # Title: compositor: Use native GL mipmapping instead of MetaTextureTower
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1877
+  # Type: 3
   # Status: 3
-  # Comment: Helps cursor movement under load on Wayland
-  pick_mr '1241'
-
+  # Comment: Fixes: #849 (Window previews in the overview are not mipmapped on HiDPI)
+  pick_mr '1877' 'mr1877.patch' 'patch'
 
 }
 
