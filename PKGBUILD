@@ -4,7 +4,7 @@
 
 # Maintainer: fffzlfk <fffzlfk@qq.com>
 
-pkgname=hex-rs-bin
+pkgname=hex-rs
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A simple command line hex viewer written in Rust."
