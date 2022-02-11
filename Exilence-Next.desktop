@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Exilence Next
+Exec=/usr/bin/exilence-next
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/exilence;

@@ -1,0 +1,19 @@
+pkgbase = exilence-next-git
+	pkgdesc = Desktop application that helps you summarize your wealth in Path of Exile
+	pkgver = 1.1.7.r2.gdb2da7ad
+	pkgrel = 1
+	url = https://github.com/viktorgullmark/exilence-next
+	arch = x86_64
+	license = CC BY-NC 3.0
+	makedepends = git
+	makedepends = npm
+	makedepends = nvm
+	provides = exilence-next-git
+	conflicts = exilence-next-git
+	options = !strip
+	source = Exilence-Next.desktop
+	source = git+https://github.com/NINNiT/exilence-next.git#branch=fix/labels-linux
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = exilence-next-git
