@@ -1,0 +1,13 @@
+pkgbase = python-geomag-todd-dembrey-git
+	pkgver = r31.421564e
+	pkgrel = 1
+	url = https://github.com/todd-dembrey/geomag
+	arch = any
+	license = LGPL
+	makedepends = git
+	provides = python-geomag
+	conflicts = python-geomag
+	source = python-geomag::git+https://github.com/todd-dembrey/geomag
+	sha1sums = SKIP
+
+pkgname = python-geomag-todd-dembrey-git
