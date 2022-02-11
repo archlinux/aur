@@ -114,6 +114,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "Bluetooth-Read-codec-capabilities-only-if-supported.patch"
         "Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
 
+        # hotfix: address btrfs autodefrag excessive utilization
+        "btrfs-fix-autodefrag-on-5.16.9.patch"
+
         # Revert Xanmod scheduler power efficiency removal
         "Revert-XANMOD-fair-Remove-all-energy-efficiency-functions.patch"
 
@@ -180,6 +183,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             'a9647897e59b04cb883dcf649b3108e9397d5a6c672bc545ea0c6bb7bb30d5a9'
+            'cd2795ab2c355eb0182cba2940712552ff46eee95b04abb41327c208f7f3e546'
             '3bb1cf422c64b4eea324b71048d0bdee04b5f9132136c6a4774e5205e45c46f1'
             '5c6c7778bc2d873657a885272956e232138b8b4935c3a3d6b11ef1619d344b20'
             '56f8f93a38ed7236c2504c79645a33123ee7bdf3c0cbb97dfd90600df06be7dd'
