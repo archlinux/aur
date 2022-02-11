@@ -1,7 +1,8 @@
-# Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
+# Maintainer: Seth Buccella <sethfb at gmail dot com>
+# Contributor: Alex Sarum <rum.274.4 at gmail dot com>
 
 pkgname=imhex-git
-pkgver=1.6.1.r20.g4328a33
+pkgver=1.14.0.r54.g0e40b8a8
 pkgrel=1
 pkgdesc="A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM"
 arch=('x86_64')
@@ -22,6 +23,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
+  git submodule update --init --recursive
   cmake -B build -DCMAKE_INSTALL_PREFIX=/usr
   make -C build
 }
