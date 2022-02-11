@@ -1,14 +1,15 @@
-# Maintainer: JinguTech <xiuluo.android at gmail dot com>
+# Maintainer: ChuJian <2474681296 at qq dot com>
+# Contributor: jingutech
 # Contributor: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.21.6
+pkgver=2.21.7
 pkgrel=1
-listen1_commit=f6c00fde3aa48cefdc2928ec81da2231e3da9957
+listen1_commit=445b3293f62ccf45b514eca35fa14c63a051810f
 pkgdesc="one for all free music in china (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
 license=('MIT')
-depends=('electron')
+depends=('electron13')
 makedepends=('npm' 'git')
 provides=('listen1')
 conflicts=('listen1')
@@ -16,13 +17,13 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git+https://github.com/listen1/listen1_chrome_extension.git#commit=$listen1_commit"
 )
-sha256sums=('e76ba5ce2b23ba9f37591f2e6141965b92c940c0237ef5d9e07e87b64a26ba31'
+sha256sums=('babe1255bf1d74c261bb6d82fb94f2128c6f1a0b52220d2bbce5817e19bb0a7e'
             'SKIP')
 
 prepare() {
 	cd "${pkgname/-/_}-$pkgver"
-	electronDist="\/usr\/lib\/electron"
-	electronVersion="tail /usr/lib/electron/version"
+	electronDist="\/usr\/lib\/electron13"
+	electronVersion="tail /usr/lib/electron13/version"
 	sed -i "s#\"productName\": \"Listen1\",/\"productName\": \"Listen1\",\"electronDist\": \"$electronDist\",\"electronVersion\": \"$electronVersion\",##" package.json
 	rmdir app/listen1_chrome_extension
 	cp -r "$srcdir/listen1_chrome_extension" app/listen1_chrome_extension
@@ -42,7 +43,7 @@ package() {
 
 	# Install start script
 	echo "#!/usr/bin/env sh
-exec electron /usr/share/listen1/app.asar" > "$srcdir/listen1.sh"
+exec /usr/lib/electron13/electron /usr/share/listen1/app.asar" > "$srcdir/listen1.sh"
 	install -Dm755 "$srcdir/listen1.sh" "$pkgdir/usr/bin/listen1"
 
 	# Install desktop file
@@ -54,7 +55,7 @@ Terminal=false
 Type=Application
 Icon=listen1
 StartupWMClass=Listen1
-X-AppImage-Version=2.21.6
+X-AppImage-Version=2.21.7
 Categories=Utility;
 X-AppImage-BuildId=1HvKDJ3EUJMJwm6YxKB8wQfQx3p
 " > "$srcdir/listen1.desktop"
