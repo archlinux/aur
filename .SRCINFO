@@ -1,11 +1,11 @@
 pkgbase = dagtoc
 	pkgdesc = A cli-tool for operating contents of pdf
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TD-Sky/dagtoc
 	arch = any
 	license = GPL3
 	source = dagtoc-2.0.0.tar.zst::https://github.com/TD-Sky/dagtoc/releases/download/v2.0.0/dagtoc-2.0.0.tar.zst
-	sha256sums = e463ae49ba1d95117b9401c8ee1d9258134f5c361f5425d156ce7243fb9ff0d7
+	sha256sums = 31bbb8255c04d01ad172e35b401227c4101edcc107d1cd8808149e55b3291814
 
 pkgname = dagtoc
