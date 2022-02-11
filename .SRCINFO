@@ -8,7 +8,6 @@ pkgbase = hex2bin-git
 	makedepends = git
 	makedepends = make
 	makedepends = cmake
-	depends = gcc
 	replaces = hex2bin
 	source = hex2bin-git::git+https://github.com/Keidan/hex2bin
 	md5sums = SKIP
