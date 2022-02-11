@@ -1,5 +1,5 @@
 pkgname=signal-backup-decode-git
-pkgver=0.2.0.r2.de0c58c
+pkgver=0.2.3.r0.31100a3
 pkgrel=1
 pkgdesc="Decode Signal Backups"
 arch=('i686' 'x86_64')
