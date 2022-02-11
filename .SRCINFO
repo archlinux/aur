@@ -1,11 +1,11 @@
-pkgbase = multi-yubikey-helper
-	pkgdesc = Helps use multiple yubikeys (as smartcards) with the same subkeys.
+pkgbase = todelete
+	pkgdesc = To delete
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/jnaulty/multi-yubikey-helper
+	url = https://github.com/jnaulty/todelete
 	arch = any
 	license = No license
-	source = git+https://github.com/jnaulty/multi-yubikey-helper.git#commit=df68e747647d8439438d10248262eb894bcdafdd
+	source = git+https://github.com/jnaulty/todelete.git#commit=df68e747647d8439438d10248262eb894bcdafdd
 	sha512sums = SKIP
 
-pkgname = multi-yubikey-helper
+pkgname = todelete

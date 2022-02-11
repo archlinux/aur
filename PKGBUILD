@@ -1,6 +1,6 @@
 # Maintainer: Hilary Jendrasiak <sylogista@sylogista.pl>
-pkgname='multi-yubikey-helper'
-pkgdesc='Helps use multiple yubikeys (as smartcards) with the same subkeys.'
+pkgname='todelete'
+pkgdesc='To delete'
 pkgver=1.0.0
 pkgrel=1
 _commit='df68e747647d8439438d10248262eb894bcdafdd'  # Temporal safety solution
