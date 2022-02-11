@@ -2,7 +2,7 @@
 pkgname=slippi-launcher
 _tagname='2.1.13'
 pkgver='v2.1.13.r0.gebf14f6'
-pkgrel=1
+pkgrel=2
 pkgdesc="The way to play Slippi Online and watch replays."
 arch=('x86_64')
 url="https://slippi.gg/"
@@ -14,6 +14,7 @@ options=('!strip')
 _url="https://github.com/project-slippi/$pkgname/releases"
 _package="Slippi-Launcher-$_tagname-$arch.AppImage"
 source=("$_package::$_url/download/v$_tagname/$_package")
+sha512sums=('0U9m0IJ3FbstFY/NsSkHwnKJ9xsZKLMY4vgLPpIY3IDesBgI3+lPe7BoJmxf0DLFACUFg9s91rXdSp3IMhSz2A==')
 sha512sums=('0U9m0IJ3FbstFY/NsSkHwnKJ9xsZKLMY4vgLPpIY3IDesBgI3+lPe7BoJmxf0DLFACUFg9s91rXdSp3IMhSz2A==')
 
 prepare() {
