@@ -13,6 +13,11 @@ install=${pkgname}.install
 source=("https://download.splashtop.com/linux/${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz")
 sha512sums=('cb788eb8e9d76c51cfa179d176426f2f76e59704864d54b5fb772196ad873ed88af42683726c41db4d00f7b1aa40c21c2ef6d47539cb429228ee381d877de180')
 
+prepare(){
+    tar xzf ${pkgname}_Ubuntu_v${pkgver}_amd64.tar.gz
+    ar -x splashtop-business_Ubuntu_amd64.deb
+}
+
 package(){
 
 	# Extract package data
