@@ -8,6 +8,7 @@ pkgbase = bbg
 	depends = gtk3
 	depends = libxcb
 	depends = electron
+	conflicts = bbg-git
 	source = bbg
 	source = icon.png
 	source = bbg.desktop
