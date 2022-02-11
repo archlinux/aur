@@ -7,8 +7,8 @@ pkgdesc="List differences between sets of Firefox config files. This tool was us
 arch=("x86_64")
 url="https://gitlab.com/stanzabird/yuediff"
 license=("MPL2")
-source=("https://gitlab.com/stanzabird/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2")
-sha256sums=("497c15088898748fdbbab9564a7bfa66098ad5864bfb0a002b4e9835262d9eda")
+source=("https://gitlab.com/stanzabird/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=("42a11e0c9f439268ec29013c4712920647095170331591080231a6e7389bbf13")
 
 build() {
   cd $pkgname-v$pkgver
