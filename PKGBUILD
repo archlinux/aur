@@ -10,7 +10,7 @@ url="https://gitlab.com/tsoding/porth"
 license=('MIT')
 depends=('binutils' 'fasm')
 makedepends=('git' 'fasm')
-source=("git+${url}.git")
+source=("git+${url}.git#commit=c3290073933bb4067339d3bc5550d4d9bf8b12c4")
 sha256sums=('SKIP')
 
 pkgver() {

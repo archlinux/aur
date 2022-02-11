@@ -9,7 +9,7 @@ pkgbase = porth-gitlab
 	makedepends = fasm
 	depends = binutils
 	depends = fasm
-	source = git+https://gitlab.com/tsoding/porth.git
+	source = git+https://gitlab.com/tsoding/porth.git#commit=c3290073933bb4067339d3bc5550d4d9bf8b12c4
 	sha256sums = SKIP
 
 pkgname = porth-gitlab
