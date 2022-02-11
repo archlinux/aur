@@ -1,6 +1,6 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname='diaspora-postgresql-git'
-pkgver=0.7.15.0.r487.g85bb022b2
+pkgver=0.7.16.0.r546.g7e889f71e
 pkgrel=1
 pkgdesc="A distributed privacy aware social network (development head) (PostgreSQL)"
 arch=('i686' 'x86_64')
