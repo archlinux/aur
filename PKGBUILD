@@ -1,68 +1,30 @@
-# Maintainer: Kiernan Preve <kiernanpreve@gmail.com>
-
-pkgname="8188gu"
-pkgver=1.0
+pkgname=8188gu
+_pkgbase=8188gu
+pkgver=1.0.r13.g28f7303
 pkgrel=1
-pkgdesc='Kernel driver module for Realtek RTL8188gu (device id 0bda:1a2b)'
-arch=('any')
-url="https://github.com/KierPrev/rtl8188gu"
-license=('GPL3')
-depends=('dkms')
-conflicts=('8188gu-dkms-git')
+pkgdesc="Driver for Realtek RTL8192FU chipset wireless cards"
+arch=('x86_64')
+url="https://github.com/supertsy5/rtl8188gu"
+license=('GPL2')
+depends=('dkms' 'bc')
 makedepends=('git')
-install="${_pkgname}-dkms.install"
-source=("$_pkgname::git+https://github.com/KierPrev/rtl8188gu.git"
-        blacklist-r8188gu.conf
-        dkms.conf)
+conflicts=("${_pkgbase}")
+source=("git+https://github.com/supertsy5/rtl8188gu.git"
+        'dkms.conf')
 sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
-
-
+	    'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname"
-  local i;for i in "${source[@]}";do
-    case $i in
-      *.patch)
-        echo "Applying patch ${i}"
-        patch -p1 -i "${srcdir}/${i}"
-    esac
-  done
-  # Disable power saving (possibly already done below?)
-  sed -i 's/^CONFIG_POWER_SAVING \= y/CONFIG_POWER_SAVING = n/' Makefile
+    cd ${srcdir}/rtl8188gu
+    printf '%s.r%s.g%s' '1.0' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir"
-
-  local install_dir="$pkgdir/usr/src/$_pkgname-$pkgver"
-
-  # Copy dkms.conf
-  install -Dm644 dkms.conf "$install_dir/dkms.conf"
-
-  # Blacklist r8188gu
-  install -Dm644 blacklist-r8188gu.conf "$pkgdir/etc/modprobe.d/r8188gu.conf"
-
-  # Set name and version
-  sed -e "s/@_PKGNAME@/$_pkgname/" -e "s/@PKGVER@/$pkgver/" -i "$install_dir/dkms.conf"
-
-  # Copy sources
-  cd "$_pkgname"
-
-  for d in $(find . -type d); do
-    install -dm755 "$install_dir/$d"
-  done
-
-  for f in $(find . -type f ! -name '.gitignore'); do
-    install -m644 "$f" "$install_dir/$f"
-  done
-
-  mkdir -p "$pkgdir/etc/modprobe.d/"
-  echo "options rtl8188gu rtw_power_mgnt=0 rtw_enusbss=0" > "$pkgdir/etc/modprobe.d/rtl8188gu.conf"
+  # Install
+  cd ${srcdir}/rtl8188gu
+  #make DESTDIR="${pkgdir}" install
+  mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+  cp -pr * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+  install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+  sed -e "s/@PKGVER@/${pkgver}/" -i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 }
