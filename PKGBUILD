@@ -3,7 +3,7 @@
 
 pkgname=nona
 pkgver=2.0
-pkgrel=3
+pkgrel=9
 pkgdesc="NONA: a bastard son of Pee-Wee. Phylogenetic Analysis Software"
 arch=('any')
 url="http://www.lillo.org.ar/phylogeny/Nona-PeeWee/readme.htm"
@@ -16,6 +16,6 @@ package() {
 	install -dm755 "$pkgdir"/usr/{bin,share/doc/$pkgname}
 	install -Dm755 ${srcdir}/piwe.doc ${pkgdir}/usr/share/doc/$pkgname/piwe.doc
 	chmod +x $srcdir/nona
-	install -Dm755 $srcdir/nona $pkgdir/usr/bin/nona
+	install -Dm755 $srcdir/nona $pkgdir/usr/bin/Nona-PeeWee 
 	
 }
