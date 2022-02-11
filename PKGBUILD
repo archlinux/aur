@@ -8,13 +8,13 @@ pkgdesc="Driver for Realtek RTL8188GU chipset wireless cards"
 arch=('x86_64')
 url="https://github.com/supertsy5/rtl8188gu"
 license=('GPL2')
-depends=('dkms' 'bc')
+depends=('dkms')
 makedepends=('git')
-conflicts=("rtl8188gu-dkms-git")
+conflicts=("rtl8188gu-dkms")
 source=("$pkgname::git+https://github.com/supertsy5/rtl8188gu.git"
         'dkms.conf')
 sha256sums=('SKIP'
-	    'SKIP')
+	    '116edfd7472ce25bb6971f22179e058e127216dea0a568bf7ddde89b01e6df98')
 
 pkgver() {
     cd ${srcdir}/rtl8188gu-dkms-git
