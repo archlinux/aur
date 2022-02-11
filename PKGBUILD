@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts510
-pkgver=5.10.99
+pkgver=5.10.100
 pkgrel=1
 pkgdesc='LTS 5.10 Linux'
 url="https://www.kernel.org/"
@@ -24,7 +24,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('00a53558aad3d8638bbe3bb69ed82a2b5b58ed3af01596bc18686cd04a790449'
+sha256sums=('d56965afc9b6a3d26d53db40ccd37fd9d15f2ca6bfd54ef6f0f8b6e92c170999'
             'SKIP'
             '80de9382be09f765b5cb1c11e21a09c99f75a0000bcc10def0542228644ea828'
             '96a72e1652314215da7140956c3abcf495cafd00811eda3cf4ce03ec5f791f1e')
