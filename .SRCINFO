@@ -1,6 +1,6 @@
 pkgbase = ictree
 	pkgdesc = Like tree but interactive
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/ictree
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ictree
 	depends = glibc
 	optdepends = xsel: for copying selected item into X clipboard
 	optdepends = wl-clipboard: for copying selected item into Wayland clipboard
-	source = https://github.com/NikitaIvanovV/ictree/releases/download/v1.0/ictree-v1.0.tar.gz
-	sha256sums = b9bebd09eb0f24ee8ece9fceabf540ac1ba852e57c47c8f80f3c99e395e6b800
+	source = https://github.com/NikitaIvanovV/ictree/releases/download/v1.0.1/ictree-v1.0.1.tar.gz
+	sha256sums = a34730ab9722ea5718282b20cbe0904048447ecc11716909e2e03bb2057683d0
 
 pkgname = ictree
