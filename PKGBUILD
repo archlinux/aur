@@ -1,3 +1,5 @@
+# Maintainer Kiernan Preve <kiernanpreve@gmail.com>
+
 pkgname=8188gu
 _pkgbase=8188gu
 pkgver=1.0.r13.g28f7303
