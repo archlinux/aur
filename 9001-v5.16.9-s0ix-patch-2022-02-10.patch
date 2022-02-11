@@ -1,11 +1,34 @@
-From d50bce51ef34af9715ebcb28ad69f03478b4ee60 Mon Sep 17 00:00:00 2001
+From a3903aacc11bc0a27f3f33edca33c0c35dd68b74 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Tue, 8 Feb 2022 10:25:08 -0800
-Subject: [PATCH] v5.16.8 s0ix patch 2022-02-08
+Date: Thu, 10 Feb 2022 22:58:04 -0800
+Subject: [PATCH] v5.16.9 s0ix patch 2022-02-10
 
 Squashed commit of the following:
 
-commit aec5daed8a9946a7d2e847cdb2336ebdd70d89ae
+commit 5072e925ecd051082828c9cf0fae8b4c3c1909b0
+Author: Rajib Mahapatra <rajib.mahapatra@amd.com>
+Date:   Thu Feb 10 19:05:07 2022 +0530
+
+    drm/amdgpu: skipping SDMA hw_init and hw_fini for S0ix.
+
+    [Why]
+    SDMA ring buffer test failed if suspend is aborted during
+    S0i3 resume.
+
+    [How]
+    If suspend is aborted for some reason during S0i3 resume
+    cycle, it follows SDMA ring test failing and errors in amdgpu
+    resume. For RN/CZN/Picasso, SMU saves and restores SDMA
+    registers during S0ix cycle. So, skipping SDMA suspend and
+    resume from driver solves the issue. This time, the system
+    is able to resume gracefully even the suspend is aborted.
+
+    v2: add changes on sdma_v4, skipping SDMA hw_init and hw_fini.
+    Signed-off-by: Rajib Mahapatra <rajib.mahapatra@amd.com>
+    Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
+
+commit f2ee879d8fd39238dc87a3d29a8d95e841318d5c
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Jan 28 14:35:03 2022 -0600
 
@@ -58,7 +81,7 @@ Date:   Fri Jan 28 14:35:03 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Tested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
 
-commit f3a7dc60849c279371fb144b2ea29aa6df5af958
+commit 332d7b5847aa09dc72d5fd03943f34ab65856096
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 25 21:37:57 2022 -0600
 
@@ -79,7 +102,7 @@ Date:   Tue Jan 25 21:37:57 2022 -0600
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit eb4febbd5c43cb2d822f95c926708309611bf4c7
+commit 6d6d94aa4f448637109c67bfc2364760f869e2a9
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 25 21:35:09 2022 -0600
 
@@ -94,7 +117,7 @@ Date:   Tue Jan 25 21:35:09 2022 -0600
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit 98337f6333bb7ceee2648320216a978b09a1e257
+commit a3ed765dde1014b1004f4dc5e2b3220ebfff114b
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 11 14:00:26 2022 -0600
 
@@ -116,7 +139,7 @@ Date:   Tue Jan 11 14:00:26 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit fa6c4cfdadebf7c7957c72a94bc829c5f5e3c028
+commit abe5d57dd69623a89b33a5bba1d1b18109d74d68
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jan 20 11:44:39 2022 -0600
 
@@ -134,7 +157,7 @@ Date:   Thu Jan 20 11:44:39 2022 -0600
     Link: https://patchwork.freedesktop.org/patch/469993/
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 724d0555dec678ce6610ad81449870849c49218d
+commit ac0719577ae975edc13f228735017b534a0c4b1c
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Mon Jan 17 12:26:43 2022 +0100
 
@@ -148,7 +171,7 @@ Date:   Mon Jan 17 12:26:43 2022 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Link: https://lore.kernel.org/r/20220117112644.260168-1-hdegoede@redhat.com
 
-commit bac9becc4d8b2e8191af37286e6ec7e9d39e2037
+commit 0164f441c22e96a2f19652818587e5a884393ca5
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -167,7 +190,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit d505aaeff6d4a7b9905ed8bb8ca77e0020f7e49c
+commit b82ac1d1e74da7c123dd24dac0310c889d7013dd
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -180,7 +203,7 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit e0eac48896fb1647f26207c6d772b231e191ae38
+commit de76df51cd51e56849a1246f6cb7d5ea64101104
 Author: Lijo Lazar <lijo.lazar@amd.com>
 Date:   Thu Nov 25 19:45:42 2021 +0800
 
@@ -197,7 +220,7 @@ Date:   Thu Nov 25 19:45:42 2021 +0800
     Reviewed-by: Kevin Yang <kevinyang.wang@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit 2c399ab88a8a3db8561cc4818d953c6501a1ffc3
+commit 7b2cf95dc97a0974289cbbb6bb2c803523a2cdd9
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -214,9 +237,10 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
  drivers/gpu/drm/amd/amdgpu/amdgpu.h       |  10 +-
  drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c  |  37 ++++-
  drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c   |   8 +
+ drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c    |   8 +
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   6 +-
  drivers/platform/x86/amd-pmc.c            | 185 +++++++++++++++++++---
- 6 files changed, 228 insertions(+), 36 deletions(-)
+ 7 files changed, 236 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
 index 1c48358b43ba..374aa2e8203f 100644
@@ -366,6 +390,32 @@ index c811161ce9f0..ab3851c26f71 100644
 +		return 1;
 +
  	return 0;
+ }
+ 
+diff --git a/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c b/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
+index e8e4749e9c79..f0638db57111 100644
+--- a/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
++++ b/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
+@@ -2057,6 +2057,10 @@ static int sdma_v4_0_suspend(void *handle)
+ {
+ 	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
+ 
++	/* SMU saves SDMA state for us */
++	if (adev->in_s0ix)
++		return 0;
++
+ 	return sdma_v4_0_hw_fini(adev);
+ }
+ 
+@@ -2064,6 +2068,10 @@ static int sdma_v4_0_resume(void *handle)
+ {
+ 	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
+ 
++	/* SMU restores SDMA state for us */
++	if (adev->in_s0ix)
++		return 0;
++
+ 	return sdma_v4_0_hw_init(adev);
  }
  
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
