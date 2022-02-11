@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r9204.4653873db
+pkgver=r9209.6c8cdc0a0
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -98,14 +98,14 @@ build() {
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-    ./scripts/build
+    ./tools/build
 }
 
 package() {
     cd "$pkgname"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-dist/anki-*.whl bazel-dist/aqt-*.whl
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .bazel/out/dist/anki-*.whl .bazel/out/dist/aqt-*.whl
 
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
-    install -Dm644 qt/package/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
-    install -Dm644 qt/package/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+    install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
 }
