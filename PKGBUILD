@@ -2,7 +2,7 @@
 
 pkgname=astronciaiptv-git
 pkgver=0.0.90
-pkgrel=3
+pkgrel=4
 pkgdesc="IPTV player with EPG support"
 arch=('any')
 url="https://gitlab.com/astroncia/iptv"
@@ -20,13 +20,9 @@ pkgver() {
         git rev-list --count HEAD
 }
 
-prepare() {
-        cd iptv
-        sed -i "s/__DEB_VERSION__/${pkgver}-git/g" usr/lib/astronciaiptv/astroncia_iptv.py
-}
-
 build() {
         cd iptv
+	sed -i "s/__DEB_VERSION__/${pkgver}-git/g" usr/lib/astronciaiptv/astroncia_iptv.py
         make
 }
 
