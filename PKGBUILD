@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=96.0.3
-pkgrel=1
+pkgver=97.0
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('1a741d6fcf20e6833a90169f41d29141ea4610f58b848e06091a683af6304dea'
+sha256sums=('6c8a7dcb47122d033383fd62a1bcaefff0290a6c23d057898e8ff9c72749df28'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -132,17 +132,28 @@ END
 
   # Gentoo patches
   msg2 "---- Gentoo patches"
-  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0025-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+
+  patch -Np1 -i ${_patches_dir}/gentoo/0001-Don-t-use-build-id.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0009-bmo-1516803-Fix-building-sandbox.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0018-Make-PGO-use-toolchain.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0020-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-Make-elfhack-use-toolchain.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0028-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0022-Fix-building-with-PGO-when-using-GCC.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0023-libaom-Use-NEON_FLAGS-instead-of-VPX_ASFLAGS-for-lib.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0024-build-Disable-Werror.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0025-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0026-Disable-FFVPX-with-VA-API.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0027-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0028-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0030-bgo-816975-fix-build-on-x86.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0031-bgo-831903-pip-dont-fail-with-optional-deps.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0032-skip-pip-check.patch
   # Use more system libs
   msg2 "---- Patching for system libs"
   patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
@@ -165,7 +176,7 @@ END
   # KDE patches (W. Rosenauer)
   msg2 "---- Patching for KDE"
   patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
+  # patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
 
   msg2 "Debian patch to enable global menubar"
   # disabled for the default build, as it seems to cause issues in some configurations
