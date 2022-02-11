@@ -2,14 +2,14 @@
 
 pkgname=lib32-mozjpeg
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='JPEG image codec with accelerated baseline decoding and superior encoding (32-bit)'
 url=https://github.com/mozilla/mozjpeg
 license=(BSD)
 arch=(x86_64)
 depends=(lib32-glibc lib32-libpng "${pkgname#lib32-}")
 makedepends=(nasm cmake git)
-provides=(lib32-libjpeg libjpeg.so libturbojpeg.so lib32-libjpeg-turbo)
+provides=(lib32-libjpeg libjpeg.so=8-32 libturbojpeg.so=0-32 lib32-libjpeg-turbo)
 conflicts=(lib32-libjpeg lib32-libjpeg-turbo)
 source=(git+"${url}".git#tag=v"${pkgver}")
 md5sums=('SKIP')
