@@ -1,0 +1,19 @@
+pkgbase = lirc-user-service
+	pkgdesc = Systemd service to run lirc as an unprivileged user for better security
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.lirc.org/html/configuration-guide.html
+	arch = any
+	license = MIT
+	depends = lirc
+	depends = systemd
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = 60-lirc.rules
+	source = override.conf
+	md5sums = d16f6232bcd98d104f1e0029761e7bf8
+	md5sums = 818c7fa6b32ab3edb56ef643450116f2
+	md5sums = cbed0097426c746550c687ae3d0310ec
+	md5sums = 4ffdd09910fc33314fbd1e3e6ff48fd6
+
+pkgname = lirc-user-service
