@@ -1,0 +1,13 @@
+pkgbase = minesweeper-cli-git
+	pkgdesc = Command Line version of MineSweeper for Unix-like systems
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/unknownblueguy6/MineSweeper
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	source = MineSweeper::git+https://github.com/unknownblueguy6/MineSweeper.git
+	md5sums = SKIP
+
+pkgname = minesweeper-cli-git
