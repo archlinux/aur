@@ -1,6 +1,6 @@
 # Maintainer: Léopold Ibghy Koprivnik <skwal.net@gmail.com>
 pkgname=mini-matrix-git
-pkgver=2.0
+pkgver=3.0
 pkgrel=1
 epoch=
 pkgdesc="Displays a matrix of random characters"
@@ -44,7 +44,7 @@ package() {
     
 }
 
-uninstall() {
+pre_remove() {
     cd mini-matrix
     make uninstall
 }
