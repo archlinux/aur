@@ -13,8 +13,8 @@
 _GUI=1
 
 pkgname=netextender
-pkgver=10.2.826
-pkgrel=2
+pkgver=10.2.835
+pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
@@ -24,9 +24,9 @@ source_i686=("https://software.sonicwall.com/NetExtender/NetExtender.Linux-${pkg
              "https://www.sonicwall.com/legal/general-product-agreement")
 source_x86_64=("https://software.sonicwall.com/NetExtender/NetExtender.Linux-${pkgver}.x86_64.tgz"
                "https://www.sonicwall.com/legal/general-product-agreement")
-sha256sums_i686=('2f37813b9e8458f8ea7f54c5f893ee66e57251aabaad31440e76512111bb6daa'
+sha256sums_i686=('e7e597a6429268f25a8e9aa92649583744af06206314b5a5e96dd1c025172ded'
                  'SKIP')
-sha256sums_x86_64=('7f2adb724d5d6ae031a70edb8714bd62ef240cc8132abdd02f00360aa6485d33'
+sha256sums_x86_64=('3640cbaf89e123d1cec19b96bf05b7523ad725907e8564f265b31206e0b167b3'
                  'SKIP')
 
 if (( $_GUI )); then
