@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=baudline_jack
 Comment=Time-frequency browser designed for scientific visualization of the spectral domain. With JACK suppport.
-Exec=baudline_jack
+Exec=baudline_jack -jack -palette /usr/share/baudline/palettes/rainbow
 Icon=baudline_jack
 Terminal=false
 Type=Application
