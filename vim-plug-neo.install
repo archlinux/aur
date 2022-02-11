@@ -1,0 +1,24 @@
+pre_install() {
+	echo "
+    >>> vim-plug supports both vim and neovim, this package installs vim-plug for neovim.
+    >>> Use 'AUR/vim-plug' package to install for vim user
+	"
+}
+
+post_install() {
+  echo "
+    >>> To use vim-plug, please check the file /usr/share/vim-plug/sample.init.vim
+    >>> update your ~/.config/nvim/init.vim file, accordingly
+  "
+}
+post_upgrade() {
+  post_install $1
+}
+
+post_remove() {
+  echo "
+    >>> Please remember to remove the modified part from your ~/.config/nvim/init.vim file
+    >>> and plugin repos from your ~/.vim/plugged directory!
+  "
+}
+

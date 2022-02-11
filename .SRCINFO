@@ -1,0 +1,18 @@
+pkgbase = vim-plug-neo
+	pkgdesc = A minimalist Vim plugin manager. (install for neovim user)
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = http://github.com/junegunn/vim-plug
+	install = vim-plug-neo.install
+	arch = any
+	license = MIT
+	depends = neovim
+	provides = vim-plug-neo
+	conflicts = neovim-plug-git
+	conflicts = neovim-plug
+	source = vim-plug-neo-0.11.0.tar.gz::http://github.com/junegunn/vim-plug/archive/0.11.0.tar.gz
+	source = sample.init.vim
+	sha256sums = b313ac61f9deffca9e6cb2dabd2cc13716d5fe8dafaab5e5c97dc2820fd50dbd
+	sha256sums = 1eecd04a72dd5556dfa2f551378839a1f1af79817565590c98fede04b5ea034f
+
+pkgname = vim-plug-neo
