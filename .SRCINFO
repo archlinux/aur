@@ -1,6 +1,6 @@
 pkgbase = python-osqp
 	pkgdesc = Python interface for OSQP (Operator Splitting QP Solver)
-	pkgver = v0.6.2.post5
+	pkgver = v0.7.9
 	pkgrel = 1
 	url = http://github.com/oxfordcontrol/osqp-python
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-osqp
 	depends = python-qdldl
 	provides = python-osqp
 	conflicts = python-osqp-git
-	source = git://github.com/oxfordcontrol/osqp-python.git#tag=v0.6.2.post0
+	source = git://github.com/oxfordcontrol/osqp-python.git#tag=v0.7.9
 	source = git://github.com/oxfordcontrol/osqp.git
 	source = git://github.com/oxfordcontrol/qdldl.git
 	sha256sums = SKIP
