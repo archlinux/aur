@@ -23,6 +23,10 @@ post_install() {
 		rm -rf /opt/splashtop-business/splashtop-business-xenial
 	fi
 
+	if [ -f "/opt/splashtop-business/splashtop-business-bionic" ]; then
+		rm -rf /opt/splashtop-business/splashtop-business-xenial
+	fi
+
 	if [ -f "/opt/splashtop-business/splashtop-business-focal" ]; then
 		mv /opt/splashtop-business/splashtop-business-focal /opt/splashtop-business/splashtop-business
 		ln -sf /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
