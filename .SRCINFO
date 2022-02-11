@@ -1,0 +1,12 @@
+pkgbase = ttf-lxgw-marker-gothic
+	pkgver = 0.003
+	pkgrel = 1
+	url = https://github.com/lxgw/LxgwMarkerGothic
+	arch = any
+	license = custom:SIL OFL
+	depends = fontconfig
+	source = https://github.com/lxgw/LxgwMarkerGothic/releases/download/v0.003/LxgwMarkerGothic-Regular.ttf
+	sha256sums = d24f2e29c8df2e3d819f7eea03fc622edf11e06e497acd6ec376678419892c8d
+
+pkgname = ttf-lxgw-marker-gothic
+	pkgdesc = LXGW Marker Gothic / 霞鹜漫黑 An open-source Chinese font derived from Tanugo 一款由 Tanugo 衍生的开源中文字体。
