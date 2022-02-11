@@ -1,54 +1,44 @@
 # Maintainer: Morgenstern <charles [at] charlesbwise [dot] com> 
 
 pkgname=python-spf-engine
-_pkgname=spf-engine
-pkgver=2.9.2
+_pkgname="${pkgname#*-}"
+pkgver=2.9.3
 _pkgver=2.9
-pkgrel=3
+pkgrel=1
 pkgdesc="SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail"
 arch=('any')
 url="https://launchpad.net/${_pkgname}"
 license=('Apache'
          'GPL2')
 depends=('python-authres'
-		 'python-pymilter'
-		 'python-pyspf>=2.0.9'
-		 'python-setuptools')
+         'python-pymilter'
+         'python-pyspf>=2.0.9'
+         'python-setuptools')
 optdepends=('postfix: Postfix integration'
-			'sendmail: Sendmail integration') 
+            'sendmail: Sendmail integration') 
 provides=('spf-engine')
 conflicts=('python-postfix-policyd-spf'
-		   'spf-engine')
+           'spf-engine')
 backup=(etc/python-policyd-spf/policyd-spf.conf
-	etc/pyspf-milter/pyspf-milter.conf)
-source=(https://launchpad.net/$_pkgname/$_pkgver/$pkgver/+download/$_pkgname-$pkgver.tar.gz{,.asc}
-		pyspf-milter.sysusers
-		pyspf-milter.conf
-		pyspf-milter.service
-		own_socketfile-bug-1856391.patch)
-sha256sums=('188a8bc78f1ddb40f1b87a0b6fe2fa78efa0b4cc5d984ff19a53724bb5c28131'
+        etc/pyspf-milter/pyspf-milter.conf)
+source=("https://launchpad.net/${_pkgname}/${_pkgver}/${pkgver}/+download/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+        pyspf-milter.sysusers
+        pyspf-milter.conf
+        pyspf-milter.service)
+sha512sums=('adde80eca38f372ad00ed7355951007b9c02ef8a52a5a4edcbf2fa9959220f1083e3e313668e9c7ad2c26144148ae8ff62ec468d79936d96b43897598254f528'
             'SKIP'
-            '1a66a9d8315d95e910f3177123a81a4320ff0c216b286571dcc0a204e6eac0a4'
-            '00f29931c8d4e76d026982cba22a7c2d0823cb82052438ec1b71df373e95a485'
-            'b9346555aa14e9beff00b522127b08b212bc4535d40591fb3d002a8c9a3f4f68'
-            '6108b155534b024b692387c73a17eae5ddf7d261cea126932049a969012f4aca')
+            '8cc1cd34e106de3b71e1072b79d8e74a4d38a5a48e9fbf00e432c83fe3d81fa7b82908f087cc51e9c268af9066364cdb86daed66579bd93239f2ceeb7b24be74'
+            'da291074a2ee69ebdf62b8411a1653da7e4898338ad448804fea587be7e1b96dbfc950a700e0be186eaee2377fb6a2df76ceba827b4377db7bed4de0202f559d'
+            'dbb83aa1dc61cf4219f6d2072c34e00416783446c630a2b09db94333f1ed97936fa8a8ecda8e497cca2f7e429f8bba0ee4e67d66753ac72e7b1d49b893aa0342')
 validpgpkeys=('E7729BFFBE85400FEEEE23B178D7DEFB9AD59AF1') # Donald Scott Kitterman <scott@kitterman.com> 
 
-prepare() {
-  mv "${_pkgname}-${pkgver}" "${pkgname}-${pkgver}"
-  cd "${pkgname}-${pkgver}"
-  # Patch to fix Bug 1856391 - remove once fixed upstream
-  # https://bugs.launchpad.net/spf-engine/+bug/1856391
-  patch --strip=1 --input="${srcdir}/own_socketfile-bug-1856391.patch"
-}
-
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1 \
 	--single-version-externally-managed --skip-build
   
@@ -60,6 +50,6 @@ package() {
 
   install -Dm0644 "${srcdir}/pyspf-milter.sysusers" "${pkgdir}/usr/lib/sysusers.d/pyspf-milter.conf"
   install -Dm0644 "${srcdir}/pyspf-milter.conf" "${pkgdir}/etc/pyspf-milter/pyspf-milter.conf"
-  install -m0644 "${srcdir}/pyspf-milter.service" "${pkgdir}/usr/lib/systemd/system"
-  install -m0644 policyd-spf.conf.commented "${pkgdir}/etc/python-policyd-spf"
+  install -m0644 "${srcdir}/pyspf-milter.service" "${pkgdir}/usr/lib/systemd/system/"
+  install -m0644 policyd-spf.conf.commented "${pkgdir}/etc/python-policyd-spf/"
 }
