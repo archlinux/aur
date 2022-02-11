@@ -1,7 +1,7 @@
 pkgname=mingw-w64-boost
 pkgver=1.78.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -26,6 +26,9 @@ prepare() {
 
   # bypass libbacktrace detection
   patch -p1 -d libs/stacktrace -i "${srcdir}"/stacktrace-cross.patch
+
+  # win7 compat
+  sed -i "s|#define BOOST_USE_WINAPI_VERSION _WIN32_WINNT|#define BOOST_USE_WINAPI_VERSION 0x0601|g" boost/winapi/config.hpp
 
   cd "${srcdir}"
   for _arch in ${_architectures}; do
