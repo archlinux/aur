@@ -1,6 +1,6 @@
 # Maintainer: Léopold Ibghy Koprivnik <skwal.net@gmail.com>
 pkgname=mini-matrix-git
-pkgver=3.0
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="Displays a matrix of random characters"
@@ -17,7 +17,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install=mini-matrix.install
 changelog=
 source=("git+$url")
 noextract=()
@@ -42,9 +42,4 @@ package() {
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     
     
-}
-
-pre_remove() {
-    cd mini-matrix
-    make uninstall
 }
