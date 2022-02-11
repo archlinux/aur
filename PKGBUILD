@@ -6,11 +6,11 @@
 # Contributor: agnotek <agnostic.sn [at]gmail.com>
 
 pkgname=telegram-desktop-bin
-pkgver=3.5.1
+pkgver=3.5.2
 pkgrel=1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=(x86_64)
-url="https://desktop.telegram.org"
+url="https://github.com/telegramdesktop/tdesktop"
 license=(GPL3)
 depends=(
 	desktop-file-utils
@@ -35,8 +35,8 @@ replaces=(telegram-bin)
 source=(
 	"$pkgname.desktop"
 	tg.protocol
-	https://github.com/telegramdesktop/tdesktop/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
-	"https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz"
+	$url/raw/master/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
+	$url/releases/download/v${pkgver}/tsetup.${pkgver}.tar.xz
 )
 
 # Checksums
@@ -49,7 +49,7 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
 	'731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6'
 	'3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090'
 	'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119'
-	'62702b3bd7c28260f7f33adde098d8306546ee39e5e5705520d63563bec3f164')
+	'd31fb3ea38cfddf5808fc60c38b916b977c85d0c5aaa83565cc6554c69d5e572')
 # Some installation information
 install="$pkgname.install"
 
