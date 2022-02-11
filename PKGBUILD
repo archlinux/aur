@@ -8,13 +8,13 @@ pkgname=java-openjdk-loom-ea-bin
 
 # loom is currently based on JDK 19
 _majorver=19
-_prerelease=2
-_buildno=58
+_prerelease=3
+_buildno=89
 _buildver=${_prerelease}_${_buildno}
 
 
 # upstream git commit
-_commit="dddab9ece9df"
+_commit="5e818ac61df0"
 # use the first 7 digits for the Arch build version
 _commit=$(echo ${_commit} | cut -c1-7)
 
@@ -24,7 +24,7 @@ pkgver=${_majorver}_${_commit}
 
 pkgrel=1
 # must stick to use epoch as the old upstream broke version comparisons
-epoch=102
+epoch=103
 
 # Virtual threads (fibers) and continuations for the JVM
 # Early-Access JVM prototype - don't use in production
@@ -52,7 +52,7 @@ provides=(
 #source=("https://download.java.net/java/early_access/loom/${_prerelease}/openjdk-${_majorver}-loom+${_prerelease}-${_buildno}_linux-x64_bin.tar.gz")
 source=("https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/${epoch}/jdk-${_majorver}-loom-linux.tar.gz")
 
-sha256sums=('3c6ed3cba885aef86f26c0cd52dcac08b42ac1b937fd345ce6a49ca6d580b60a')
+sha256sums=('fc6cc36da22a79ccbda6285a44f63d1651ae451216aa91dea9fe031ad2745a64')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=/usr/lib/jvm/${_eaname}
