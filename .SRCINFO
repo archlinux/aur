@@ -1,0 +1,22 @@
+pkgbase = oss-browser-git
+	pkgdesc = ossbrowser是阿里云官方提供的OSS图形化管理工具，提供类似Windows资源管理器的功能
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://github.com/aliyun/oss-browser
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = tar
+	depends = gconf
+	depends = git
+	depends = unzip
+	depends = fakeroot
+	depends = gtk2
+	depends = make
+	depends = nodejs
+	depends = npm
+	source = git+https://github.com/aliyun/oss-browser.git
+	source = oss-browser.desktop
+	sha512sums = SKIP
+	sha512sums = 046494233e8f6fd99bfe5b6ad458229d9a6dfc3ac90bcb1e8b0135a0193d24a8db582fab96fb6db0b439be8a72443bc8d9d1a0d07a67dad86540ab420a6dbd7c
+
+pkgname = oss-browser-git
