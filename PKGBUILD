@@ -1,7 +1,7 @@
 # Maintainer Kiernan Preve <kiernanpreve@gmail.com>
 
 pkgname=rtl8188gu-dkms-git
-pkgver=1.0  #As upstream source (to be discussed)
+pkgver=r14.23b04ff
 pkgrel=1
 pkgdesc="Driver for Realtek RTL8188GU chipset wireless cards"
 arch=('any')
@@ -18,8 +18,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd rtl8188gu
-    #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"    The upstream repo has version 1.0
-    printf "1.0"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

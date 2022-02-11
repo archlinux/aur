@@ -1,6 +1,6 @@
 pkgbase = rtl8188gu-dkms-git
 	pkgdesc = Driver for Realtek RTL8188GU chipset wireless cards
-	pkgver = 1.0
+	pkgver = r14.23b04ff
 	pkgrel = 1
 	url = https://github.com/KierPrev/rtl8188gu
 	arch = any
