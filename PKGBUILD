@@ -2,7 +2,7 @@
 
 pkgname=dk
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling window manager in the vein of dwm, bspwm, and xmonad."
 url="https://bitbucket.org/natemaia/dk"
 arch=('x86_64')

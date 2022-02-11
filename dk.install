@@ -5,9 +5,9 @@ post_install()
   Get started with dk using the example rc files:
 
     $ pacman -S sxhkd
-    $ mkdir -p ~/.config/dk ~/.config/sxhkd
+    $ mkdir -p ~/.config/dk
     $ cp /usr/share/doc/dk/dkrc \$HOME/.config/dk/
-    $ cp /usr/share/doc/dk/sxhkdrc \$HOME/.config/sxhkd/
+    $ cp /usr/share/doc/dk/sxhkdrc \$HOME/.config/dk/
 
   For more information, see man dk or
   https://bitbucket.org/natemaia/dk/src/master/README.md

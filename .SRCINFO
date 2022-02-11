@@ -1,7 +1,7 @@
 pkgbase = dk
 	pkgdesc = A tiling window manager in the vein of dwm, bspwm, and xmonad.
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/natemaia/dk
 	install = dk.install
 	arch = x86_64
