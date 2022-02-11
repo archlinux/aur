@@ -1,7 +1,7 @@
 pkgbase = libadalang-tools
 	pkgdesc = Libadalang-based tools for Ada: gnatpp, gnatmetric and gnatstub
 	pkgver = 2022
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/libadalang-tools
 	arch = i686
 	arch = x86_64
