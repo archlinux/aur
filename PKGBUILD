@@ -1,8 +1,8 @@
 # Maintainer: Markus Näther <naether.markus@gmail.com>
 pkgname=python-proxyscrape
 pkgver=0.3.0
-pkgrel=1
-pkgdesc="A type-safe dictionary class for python."
+pkgrel=2
+pkgdesc="Python library for retrieving free proxies"
 url="https://github.com/jaredlgillespie/proxyscrape"
 arch=(x86_64)
 makedepends=('git' 'python' 'python-setuptools')
