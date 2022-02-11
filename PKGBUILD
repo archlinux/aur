@@ -4,13 +4,13 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
 license=(LGPL)
 depends=(glib2 pipewire fuse2 geoclue2)
-makedepends=(python xmlto docbook-xsl git flatpak libportal)
+makedepends=(python xmlto docbook-xsl git libportal)
 checkdepends=(epiphany gedit gvfs)
 _commit=6241c5e8bfb60502ac3c7bc3babede22d35f3b1c  # tags/1.12.1^0
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
