@@ -1,6 +1,6 @@
 pkgbase = paperspace
 	pkgdesc = Paperspace Receiver
-	pkgver = 11.4.1.4096
+	pkgver = 11.9.2.4544
 	pkgrel = 1
 	url = https://www.paperspace.com/app
 	arch = x86_64
@@ -11,11 +11,13 @@ pkgbase = paperspace
 	depends = libxext
 	depends = libxcb
 	optdepends = libva: For hardware accelerated decoding
-	source = https://assets.paperspace.com/native-app/prod/linux/PaperspaceInstaller-11.4.1.4096
+	source = https://assets.paperspace.com/native-app/prod/linux/PaperspaceInstaller-11.9.2.4544
 	source = paperspace-installer-noninteractive.qs.in
 	source = paperspace.sh
-	sha256sums = a69daf2ae559334481673bddabc9ad2e60977f4aad1b51945b0f416a70df1f07
+	source = paperspace.desktop
+	sha256sums = 759aeb2e0d435be5bdd74384aa41bee2e3d5050f22c1dc47eaa846b91fbbb97d
 	sha256sums = 4dddf0c7212de5db2c51a8b212b95632bfc92d635e46a136e299308f9de8db0c
 	sha256sums = 32231f483b9ad1369936b7157d5160597014fb418b453f7216b51b9e2b074772
+	sha256sums = c0e86c830576155c38f37ce3fcca9e9f5bd813c77870092d80f364b2e90fc676
 
 pkgname = paperspace

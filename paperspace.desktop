@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Paperspace
+GenericName=Paperspace
+Comment=Paperspace
+Exec=/usr/bin/paperspace
+Icon=paperspace
+Terminal=false
+Type=Application
+Categories=Network
