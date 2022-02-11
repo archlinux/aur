@@ -1,8 +1,11 @@
 pkgbase = pure-maps
+	pkgdesc = An application for Linux to display vector and raster maps, places, routes, etc.
 	pkgver = 2.9.2
-	pkgrel = 1
+	pkgrel = 2
+	url = https://rinigus.github.io/pure-maps/
 	arch = x86_64
 	arch = aarch64
+	license = GPL3
 	depends = s2geometry
 	depends = python3
 	depends = qt5-base
