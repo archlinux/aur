@@ -5,25 +5,14 @@
 
 # Maintainer: Mohamed Emad <hulxxv@gmail.com>
 pkgname=vnstat-client
-pkgver=22.1.9
+pkgver=22.2.11
 pkgrel=1
-#epoch=
 pkgdesc="GUI Client for vnStat Network Monitor for Linux or GNU/Linux"
 arch=('x86_64')
 url="https://github.com/Hulxv/vnstat-client"
 license=('MIT')
-#groups=()
 depends=('vnstat' 'electron>=15.0.0')
-#makedepends=()
-#checkdepends=()
-#optdepends=()
-#provides=()
-#conflicts=()
-#replaces=()
-#backup=()
-#options=()
-#install=
-#changelog=
+
 __filename__=${pkgname}-${pkgver}.pacman
 source=("${url}/releases/download/v${pkgver}/${__filename__}")
 noextract=()
