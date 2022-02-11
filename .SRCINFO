@@ -1,15 +1,15 @@
 pkgbase = adwaita-dark-darose
 	pkgdesc = Adwaita theme hacked to use my custom color scheme. (Dark blues instead of greys. Works nicely with wallpaper-lightning)
 	pkgver = 3.28
-	pkgrel = 3
+	pkgrel = 4
 	url = http://darose.net/theme-adwaita-dark-darose.png
 	arch = any
 	license = GPL
 	makedepends = glib2
 	makedepends = gtk3
 	depends = gnome-themes-extra
+	optdepends = wallpaper-lightning
 	source = no-source.txt
 	md5sums = SKIP
 
 pkgname = adwaita-dark-darose
-
