@@ -1,4 +1,4 @@
-# Maintainer: Your Name <>
+# Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=minesweeper-cli-git
 pkgver=1.0.0
