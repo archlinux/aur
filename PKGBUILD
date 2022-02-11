@@ -3,7 +3,7 @@
 _pkgname=xpad-noone
 pkgname=xpad-noone-dkms
 pkgver=1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Xpad kernel driver without Xbox One controller support"
 arch=('x86_64')
 url="https://github.com/medusalix/xpad-noone"
