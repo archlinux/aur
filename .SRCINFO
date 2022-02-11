@@ -1,7 +1,7 @@
 pkgbase = twf-git
 	pkgdesc = Standalone tree view file explorer, inspired by fzf.
 	pkgver = r47.8eddca9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wvanlint/twf
 	arch = x86_64
 	makedepends = go

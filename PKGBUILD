@@ -1,7 +1,7 @@
 # Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
 pkgname=twf-git
 pkgver=r47.8eddca9
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone tree view file explorer, inspired by fzf."
 arch=('x86_64')
 url="https://github.com/wvanlint/${pkgname%-git}"
@@ -16,12 +16,8 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    export GOPATH="$srcdir/go"
-}
-
-
 build() {
+    export GOPATH="$srcdir/go"
     cd "$srcdir/$pkgname/cmd/twf"
 
     go build \
@@ -35,6 +31,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
+    export GOPATH="$srcdir/go"
     go clean -modcache
     echo $PWD
     install -Dm755 "$srcdir/$pkgname/cmd/twf/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
