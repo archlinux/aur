@@ -1,6 +1,6 @@
 pkgbase = chirurgien
 	pkgdesc = Chirurgien helps understand and manipulate file formats
-	pkgver = 1.3
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/leonardschardijn/Chirurgien
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = chirurgien
 	makedepends = meson
 	depends = gtk4
 	depends = glib2
-	source = https://github.com/leonardschardijn/Chirurgien/archive/v1.3.tar.gz
-	b2sums = 536428b81b6976410a4151d250ba67bbd3603f855000cfdef7c7a38d271208b39b84cfb956382433b48c68a9dc9a78621ed6d5bb164b5cb015e67b738491ee40
+	source = https://github.com/leonardschardijn/Chirurgien/archive/v2.0.tar.gz
+	b2sums = d8df1e187fa2fe3c02f3ee647abaab3e9b0b25ef1f491550ea3eda0c9bb354c0ddcf99a2465b11cfcc128a23a3338b2c5c76cf59e782f721d16b15e14b48be1d
 
 pkgname = chirurgien
