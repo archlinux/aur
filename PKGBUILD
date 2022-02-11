@@ -1,6 +1,6 @@
 # Maintainer: hr567 <hr567@hr567.me>
 pkgname=apifox
-pkgver=1.4.22
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="API 文档、API 调试、API Mock、API 自动化测试"
 arch=("x86_64")
@@ -11,7 +11,7 @@ source=(
 	"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
 	"apifox.desktop")
 sha256sums=(
-	'1984f0f0aa916272c223acf987a399b1e67486525a3dd7f04149a634f3477d0c'
+	'cd8d705ced5e6ee2c51da44368b50b8117a79014f080a6b119d36158b4e465e5'
 	'538bd986b582053799128254b4fcd6edfd51d096b127cf6398555664497d76b0')
 options=(!strip)
 
