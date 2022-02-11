@@ -8,9 +8,10 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=3.4.0
+# https://github.com/buildbot/buildbot/releases
+pkgver=3.4.1
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=3
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -29,12 +30,14 @@ makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
-        "python310.diff")
-sha256sums=('da729c7f4dc2e30f5a5d69e34dd629b0b3d97001b12d72aeb691bb2f0ef0efeb'
+        "python310.diff"
+        "graphql-core.diff")
+sha256sums=('16d604c0dfa7b673318e13fe2ef15199ac6f19863b0e4d4d2624705a5401720c'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
-            '7ca79a209e5f77dff01bef526d92a0ac08cf65a6ab22f32d03575c97a5b49ebd')
+            '79bff19ba26d9ae97a9fffbbd8b83b21dcfba0a933c908176562906cf7432813'
+            '9ed4f9f18f71558afc876c92206e4de213fa6a94305ad9d4d9115a041dd41b22')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -53,16 +56,21 @@ prepare() {
   # We take care about the command order manually
   sed -i '/egg_info=EggInfoCommand/d' pkg/buildbot_pkg.py
 
-  # https://github.com/buildbot/buildbot/pull/6178 removes Windows
-  # services from console scripts, while the following files still make
-  # namcap-git complain
+  sed -i '/buildbot_windows_service/d' master/setup.py
   rm -v master/buildbot/scripts/windows_service.py
+  sed -i '/buildbot_worker_windows_service/d' worker/setup.py
   rm -v worker/buildbot_worker/scripts/windows_service.py
+
+  # Don't treat warnings as errors. Arch often ships newer Python libraries than ones
+  # in upstream CI and introduces extra deprecation warnings
+  sed -i "s#warnings\\.filterwarnings\\('error'\\)##" master/buildbot/test/__init__.py
 
   # Fixes for Python 3.10 breakages:
   # https://github.com/python/cpython/pull/20236
-  # https://twistedmatrix.com/trac/ticket/10273
   patch -Np1 -i ../python310.diff
+
+  # Fix test failures with newer python-graphql-core
+  patch -Np1 -i ../graphql-core.diff
 
   cd "$srcdir"/buildbot-contrib
   patch -Np1 -i ../buildbot-contrib-systemd-common.patch
@@ -97,7 +105,8 @@ build() {
 
   ################### buildbot-docs ####################
   cd "$srcdir"/buildbot-$pkgver/master/docs
-  make clean html singlehtml
+  # Default SPHINXOPTS used in upstream Makefile treats warnings as errors and may break the build when Arch uses newer sphinx
+  make SPHINXOPTS="-j$(nproc)" clean html singlehtml
 }
 
 check() {
