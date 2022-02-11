@@ -1,25 +1,28 @@
 pkgbase = libsurvive
 	pkgdesc = Tracking system for Lighthouse and Vive based devices
-	pkgver = 0.3
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/cntools/libsurvive/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
+	makedepends = eigen
 	depends = cblas
 	depends = lapacke
 	depends = libpcap
 	depends = libusb
 	depends = libx11
+	depends = sciplot
 	depends = zlib
 	optdepends = xr-hardware: for acessing additional devices
-	source = https://github.com/cntools/libsurvive/archive/v0.3/libsurvive-0.3.tar.gz
-	source = git+https://github.com/jdavidberger/libsurvive-extras-data.git#commit=ada091a19a90742fc0042d5b094e2aee76ed12d0
-	source = 010-libsurvive-cmake-fixes.patch
-	sha256sums = ed32911962f93f70a15980f5e9b57174af1b9e6d230102faf1acf97411380d56
+	source = git+https://github.com/cntools/libsurvive.git#tag=v1.0
+	source = git+https://github.com/cntools/cnkalman.git
+	source = git+https://github.com/cntools/cnmatrix.git
+	source = git+https://github.com/jdavidberger/libsurvive-extras-data.git#commit=5cc2fc085d11ef98ad5936a745d4a42954b207ca
 	sha256sums = SKIP
-	sha256sums = 1d2e8f0cb26619af8aed59498f942070fa33ec9afa19bfde7d6beb157df83344
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = libsurvive
-

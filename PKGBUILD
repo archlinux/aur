@@ -1,32 +1,41 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=libsurvive
-pkgver=0.3
+pkgver=1.0
 pkgrel=1
 pkgdesc='Tracking system for Lighthouse and Vive based devices'
 arch=('x86_64')
 url='https://github.com/cntools/libsurvive/'
 license=('MIT')
-depends=('cblas' 'lapacke' 'libpcap' 'libusb' 'libx11' 'zlib')
+depends=('cblas' 'lapacke' 'libpcap' 'libusb' 'libx11' 'sciplot' 'zlib')
 optdepends=('xr-hardware: for acessing additional devices')
-makedepends=('git' 'cmake')
-_data_commit=ada091a19a90742fc0042d5b094e2aee76ed12d0
-source=("https://github.com/cntools/libsurvive/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "git+https://github.com/jdavidberger/libsurvive-extras-data.git#commit=${_data_commit}"
-        '010-libsurvive-cmake-fixes.patch')
-sha256sums=('ed32911962f93f70a15980f5e9b57174af1b9e6d230102faf1acf97411380d56'
+makedepends=('git' 'cmake' 'eigen')
+_data_commit=5cc2fc085d11ef98ad5936a745d4a42954b207ca
+source=("git+https://github.com/cntools/libsurvive.git#tag=v${pkgver}"
+        'git+https://github.com/cntools/cnkalman.git'
+        'git+https://github.com/cntools/cnmatrix.git'
+        "git+https://github.com/jdavidberger/libsurvive-extras-data.git#commit=${_data_commit}")
+sha256sums=('SKIP'
             'SKIP'
-            '1d2e8f0cb26619af8aed59498f942070fa33ec9afa19bfde7d6beb157df83344')
+            'SKIP'
+            'SKIP')
 
 prepare() {
     mkdir -p build/src/test_cases
     ln -s ../../../libsurvive-extras-data build/src/test_cases/libsurvive-extras-data
-    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-libsurvive-cmake-fixes.patch"
+    
+    git -C libsurvive submodule init
+    git -C libsurvive config --local submodule.libs/cnkalman.url "${srcdir}/cnkalman"
+    git -C libsurvive submodule update
+    git -C libsurvive/libs/cnkalman submodule init
+    git -C libsurvive/libs/cnkalman config --local submodule.libs/cnmatrix.url "${srcdir}/cnmatrix"
+    git -C libsurvive/libs/cnkalman submodule update
 }
 
 build() {
-    cmake -B build -S "${pkgname}-${pkgver}" \
-        -DCMAKE_BUILD_TYPE:STRING='None' \
+    # NOTE: tests fails to pass when using 'None' build type
+    cmake -B build -S libsurvive \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_TESTS:BOOL='ON' \
         -DENABLE_api_example:BOOL='OFF' \
@@ -42,8 +51,8 @@ check() {
 package() {    
     make -C build DESTDIR="$pkgdir" install
     mv "${pkgdir}/usr/bin"/{,survive-}sensors-readout
-    rm "${pkgdir}/usr/lib"/lib{minimal_opencv,mpfit}.a
-    install -D -m644 "${pkgname}-${pkgver}/useful_files/81-vive.rules" -t "${pkgdir}/usr/lib/udev/rules.d"
-    install -D -m644 "${pkgname}-${pkgver}/survive_autocomplete.sh" "${pkgdir}/usr/share/bash-completion/completions/libsurvive"
-    install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    rm -r "${pkgdir}/usr"/{include/{cnkalman,cnmatrix},lib/{lib{cnkalman,cnmatrix,mpfit}.a,pkgconfig/{cnkalman,cnmatrix}.pc}}
+    install -D -m644 libsurvive/useful_files/81-vive.rules -t "${pkgdir}/usr/lib/udev/rules.d"
+    install -D -m644 libsurvive/survive_autocomplete.sh "${pkgdir}/usr/share/bash-completion/completions/libsurvive"
+    install -D -m644 libsurvive/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
