@@ -1,0 +1,7 @@
+post_remove() {
+    cat << EOF
+
+==> This fork doesn't add any new settings to upstream Chatterino. To remove Chatterino settings and cache, delete ~/.local/share/chatterino
+
+EOF
+}
