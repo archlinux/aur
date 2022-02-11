@@ -1,6 +1,6 @@
 pkgbase = onevpl-intel-gpu
 	pkgdesc = oneVPL runtime implementation for Intel GPU (TigerLake and later)
-	pkgver = 21.3.4
+	pkgver = 22.1.0
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi/components/onevpl.html
 	arch = x86_64
@@ -9,9 +9,11 @@ pkgbase = onevpl-intel-gpu
 	depends = libdrm
 	depends = libva
 	provides = onevpl-runtime
-	source = https://github.com/oneapi-src/oneVPL-intel-gpu/archive/intel-onevpl-21.3.4/onevpl-intel-gpu-21.3.4.tar.gz
+	source = https://github.com/oneapi-src/oneVPL-intel-gpu/archive/intel-onevpl-22.1.0/onevpl-intel-gpu-22.1.0.tar.gz
 	source = 010-onevpl-intel-gpu-disable-verbose-makefile.patch
-	sha256sums = eb1c4b1fec3c3838f59bdd3d77d7056b1ff5637fdb81da198884936ee848536f
-	sha256sums = c4056b72a2c5dedb54ed19ad56cd0ff60d4dc6d8e991db3d71d18423aa19012e
+	source = 020-onevpl-intel-gpu-gcc11-fix.patch::https://github.com/oneapi-src/oneVPL-intel-gpu/commit/a8702a9eb94a306ec8f592b5fcac41c84564f7c4.patch
+	sha256sums = 730f8241cec6259228455840e817194cd12df5842f0caa3b605e7998f70ca5c1
+	sha256sums = c6b17b7026d16d02c3cab7b5081366c24021a86fa173eaee5db310691ce76879
+	sha256sums = 1d9bb5952dc818c12642544226717a097e363c096020105d3534b8ad3ee532bd
 
 pkgname = onevpl-intel-gpu
