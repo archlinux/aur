@@ -1,4 +1,4 @@
-pkgbase = hex-rs-bin
+pkgbase = hex-rs
 	pkgdesc = A simple command line hex viewer written in Rust.
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = hex-rs-bin
 	source = https://github.com/fffzlfk/hex-rs/releases/download/v0.1.0/hex-rs-0.1.0-x86_64.tar.gz
 	sha256sums = cea99c751469c99d55fcdaf589f25ad035cb670e1d043fa37a5aaa1234066fde
 
-pkgname = hex-rs-bin
+pkgname = hex-rs
