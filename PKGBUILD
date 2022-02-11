@@ -1,16 +1,16 @@
 # Maintainer: Arkylin <x@xyz.blue>
-pkgname=oss-browser
+pkgname=oss-browser-bin
 pkgver=1.16.0
 pkgrel=1
 pkgdesc="ossbrowser是阿里云官方提供的OSS图形化管理工具，提供类似Windows资源管理器的功能"
 arch=('x86_64')
 url="https://github.com/aliyun/oss-browser"
-license=('unknown')
+license=('Apache License 2.0')
 depends=('gconf' 'unzip' 'fakeroot' 'gtk2')
 makedepends=('tar')
 source=(
 	"https://gosspublic.alicdn.com/oss-browser/1.16.0/oss-browser-linux-x64.zip"
-	${pkgname}.desktop
+	oss-browser.desktop
 )
 sha512sums=(
 	'cb9ad923e3c50def771c540aff0828f760a5ac350d29f63a8b21a415bb85c4256e444a63c309f4cdc3ef4dc7ec6f57956b7ddc4ac79dd169c8777fa4a77ef505'
@@ -19,11 +19,11 @@ sha512sums=(
 
 package() {
 	msg "解压软件包..."
-	mkdir -p ${pkgdir}/opt/${pkgname}
-	unzip -d ${pkgdir}/opt/${pkgname} ${srcdir}/oss-browser-linux-x64.zip
-	cp -r ${pkgdir}/opt/${pkgname}/oss-browser-linux-x64/* ${pkgdir}/opt/${pkgname}
+	mkdir -p ${pkgdir}/opt/oss-browser
+	unzip -d ${pkgdir}/opt/oss-browser ${srcdir}/oss-browser-linux-x64.zip
+	cp -r ${pkgdir}/opt/oss-browser/oss-browser-linux-x64/* ${pkgdir}/opt/oss-browser
 	msg "创建图标..."
 	mkdir -p ${pkgdir}/usr/share/applications
-	cp -r ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications
-	rm -rf ${pkgdir}/opt/${pkgname}/oss-browser-linux-x64
+	cp -r ${srcdir}/oss-browser.desktop ${pkgdir}/usr/share/applications
+	rm -rf ${pkgdir}/opt/oss-browser/oss-browser-linux-x64
 }

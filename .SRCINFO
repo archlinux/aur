@@ -1,10 +1,10 @@
-pkgbase = oss-browser
+pkgbase = oss-browser-bin
 	pkgdesc = ossbrowser是阿里云官方提供的OSS图形化管理工具，提供类似Windows资源管理器的功能
 	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/aliyun/oss-browser
 	arch = x86_64
-	license = unknown
+	license = Apache License 2.0
 	makedepends = tar
 	depends = gconf
 	depends = unzip
@@ -15,4 +15,4 @@ pkgbase = oss-browser
 	sha512sums = cb9ad923e3c50def771c540aff0828f760a5ac350d29f63a8b21a415bb85c4256e444a63c309f4cdc3ef4dc7ec6f57956b7ddc4ac79dd169c8777fa4a77ef505
 	sha512sums = 046494233e8f6fd99bfe5b6ad458229d9a6dfc3ac90bcb1e8b0135a0193d24a8db582fab96fb6db0b439be8a72443bc8d9d1a0d07a67dad86540ab420a6dbd7c
 
-pkgname = oss-browser
+pkgname = oss-browser-bin
