@@ -2,7 +2,7 @@
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-bin)
-pkgver=1.20
+pkgver=1.30
 pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
@@ -20,15 +20,19 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
 source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz"
         )
 
-sha256sums=('f70344379c586d93c5405ed7c75a2b71ef952c5747ad587cab5fc641b65276eb')
+sha256sums=('8b03bab58ab6754a26736004d9a2a66f5753f55f70f488c7f59fd703ec674753')
 
 options=('!strip')
 
-noextract=()
+noextract=(${pkgbase}-${pkgver}.tar.xz)
 
 _install(){
      find ${@: 2} -type f -exec install -Dm$1 {}  ${pkgdir}/opt/wch/${pkgname%-bin}/{} \;
 } 
+
+prepare() {
+    tar -xf "${srcdir}/${pkgbase}-${pkgver}.tar.xz" --strip-components=1 -C "${srcdir}/"
+}
 
 package_mounriver-studio-toolchain-bin() {
     pkgdesc="This MRS Toolchain includes the tool chain for RISC-V kernel chip under Linux x64 and the debug download tool OpenOCD."
@@ -50,11 +54,15 @@ package_mounriver-studio-toolchain-openocd-bin() {
     _install 755 bin -name "openocd"
     _install 644 share
 
+    install -Dm0644 "${srcdir}/beforeinstall/50-wch.rules" "${pkgdir}/usr/lib/udev/rules.d/50-wch.rules"
+    install -Dm0644 "${srcdir}/beforeinstall/60-openocd.rules" "${pkgdir}/usr/lib/udev/rules.d/60-openocd-wch.rules"
+
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-arm" << EOF
 #!/bin/env bash
 exec /opt/wch/${pkgname%-bin}/bin/openocd -f /opt/wch/${pkgname%-bin}/bin/wch-arm.cfg "\$@"
 
 EOF
+
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/openocd-wch-riscv" << EOF
 #!/bin/env bash
 exec /opt/wch/${pkgname%-bin}/bin/openocd -f /opt/wch/${pkgname%-bin}/bin/wch-riscv.cfg "\$@"
