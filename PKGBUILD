@@ -2,9 +2,8 @@
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
 
 pkgname=gnatcoll-core
-_upstream_ver=2021-20210518-19ADF
 epoch=1
-pkgver=2021
+pkgver=2022
 pkgrel=1
 
 pkgdesc='Gnat components collection - Core packages.'
@@ -15,13 +14,12 @@ license=('GPL3' 'custom')
 depends=('libgpr')
 makedepends=('gprbuild' 'texlive-bin' 'python-sphinx' 'texlive-core' 'texlive-latexextra')
 
-_checksum=425b044d5cb112f096c7ac5ebbafb0d8e5297913
-source=("${pkgname}-${_upstream_ver}-src.tar.gz::https://community.download.adacore.com/v1/${_checksum}?filename=${pkgname}-${_upstream_ver}-src.tar.gz")
-sha1sums=("$_checksum")
+source=("https://github.com/AdaCore/gnatcoll-core/archive/refs/tags/v22.0.0.tar.gz")
+sha1sums=("ae05bbff3cf066ae0c9fe41f9dd4d29cf8644724")
 
 build()
 {
-    cd "$srcdir/$pkgname-$_upstream_ver-src"
+    cd "$srcdir/gnatcoll-core-22.0.0"
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -34,7 +32,7 @@ build()
 
 package()
 {
-    cd "$srcdir/$pkgname-$_upstream_ver-src"
+    cd "$srcdir/gnatcoll-core-22.0.0"
 
     # Make one install at a time to avoid GPRinstall reading/writing to
     # the same installed project files at the same time.

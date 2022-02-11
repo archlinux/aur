@@ -1,6 +1,6 @@
 pkgbase = gnatcoll-core
 	pkgdesc = Gnat components collection - Core packages.
-	pkgver = 2021
+	pkgver = 2022
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-core/
@@ -14,7 +14,7 @@ pkgbase = gnatcoll-core
 	makedepends = texlive-core
 	makedepends = texlive-latexextra
 	depends = libgpr
-	source = gnatcoll-core-2021-20210518-19ADF-src.tar.gz::https://community.download.adacore.com/v1/425b044d5cb112f096c7ac5ebbafb0d8e5297913?filename=gnatcoll-core-2021-20210518-19ADF-src.tar.gz
-	sha1sums = 425b044d5cb112f096c7ac5ebbafb0d8e5297913
+	source = https://github.com/AdaCore/gnatcoll-core/archive/refs/tags/v22.0.0.tar.gz
+	sha1sums = ae05bbff3cf066ae0c9fe41f9dd4d29cf8644724
 
 pkgname = gnatcoll-core
