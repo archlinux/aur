@@ -3,7 +3,7 @@
 # Contributor: ormris ormris@ormris.com
 
 pkgname="wyrd"
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=2
 pkgdesc="A text-based front-end to Remind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -16,7 +16,7 @@ makedepends=('ocaml' 'camlp5' 'python' 'autoconf')
 # doc: 'hevea' 'texlive-core' 'texlive-latexextra'
 replaces=('wyrd-git')
 source=("${url}/-/jobs/artifacts/${pkgver}/raw/wyrd-${pkgver}.tar.xz?job=release")
-md5sums=('2d24fb827e99f21a838723a8d1cb1c22')
+sha256sums=('f2469057da3e60907a6697373604c57c3ca1cbed58fac45f186f619b8752d5ff')
 
 build() {
         cd "$srcdir/wyrd-${pkgver}"

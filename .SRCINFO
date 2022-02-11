@@ -1,6 +1,6 @@
 pkgbase = wyrd
 	pkgdesc = A text-based front-end to Remind.
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 2
 	url = https://gitlab.com/wyrd-calendar/wyrd
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = wyrd
 	provides = wyrd
 	conflicts = wyrd
 	replaces = wyrd-git
-	source = https://gitlab.com/wyrd-calendar/wyrd/-/jobs/artifacts/1.5.2/raw/wyrd-1.5.2.tar.xz?job=release
-	md5sums = 2d24fb827e99f21a838723a8d1cb1c22
+	source = https://gitlab.com/wyrd-calendar/wyrd/-/jobs/artifacts/1.5.3/raw/wyrd-1.5.3.tar.xz?job=release
+	sha256sums = f2469057da3e60907a6697373604c57c3ca1cbed58fac45f186f619b8752d5ff
 
 pkgname = wyrd
