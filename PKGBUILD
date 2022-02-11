@@ -17,7 +17,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd
 pkgdesc="ROCr based OpenCL for users of applications requiring OpenCL on Vega or later - This package is intended to work along with the free amdgpu stack."
 pkgver=${major}.${minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -25,7 +25,7 @@ makedepends=('wget')
 depends=('libdrm' 'ocl-icd' 'gcc-libs' 'numactl' 'ncurses5-compat-libs')
 conflicts=('rocm-opencl-runtime')
 provides=('opencl-driver' 'rocm-core' 'hsakmt-roct-dev' 'hsa-rocr' 'hsa-rocr-dev' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 
-	'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime' 'rocm-opencl-sdk')
+	'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl' 'rocm-opencl-dev' 'rocm-opencl-runtime')
 optdepends=('clinfo' 'opencl-amd-dev')
 
 source=(
@@ -49,7 +49,6 @@ source=(
 "https://repo.radeon.com/rocm/apt/5.0/pool/main/r/rocm-opencl/rocm-opencl_2.0.0.50000-49_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.0/pool/main/r/rocm-opencl-dev/rocm-opencl-dev_2.0.0.50000-49_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.0/pool/main/r/rocm-opencl-runtime/rocm-opencl-runtime_5.0.0.50000-49_amd64.deb"
-"https://repo.radeon.com/rocm/apt/5.0/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_5.0.0.50000-49_amd64.deb"
 # ROCM DEV
 "https://repo.radeon.com/rocm/apt/5.0/pool/main/r/rocm-clang-ocl/rocm-clang-ocl_0.5.0.50000-49_amd64.deb"
 "https://repo.radeon.com/rocm/apt/5.0/pool/main/o/openmp-extras/openmp-extras_13.50.0.50000-49_amd64.deb"
@@ -90,7 +89,6 @@ sha256sums=(
 "688cf5f8500ef98ce697d437007bf0f83380c1b6eb240b158b93deca5219a200"
 "5cdeb3c8c537c0392dab84ccd4a09c8d1eeba976924ca737726ad9c3f59b117d"
 "f80bad7599ff0c26f9077fc81724d2ee3785b9b19b2d66f75eba27d3cbc956f6"
-"571f49d1117469184d8b7aae8528d4022e0e18b5140552d2abbfb59f3895c728"
 
 "151a50a7b8ff3a5fe5f8da64bfdd5ad10d0b4d7fb97190a6ff4f980078b4ddc2"
 "e9fcf1e3a4273063fdf7e37182bb3a7111f3f5daf5ed871984d95d729451b341"
@@ -138,7 +136,6 @@ package() {
 	egz "${srcdir}/rocm-opencl_2.0.0.50000-49_amd64.deb"
 	egz "${srcdir}/rocm-opencl-dev_2.0.0.50000-49_amd64.deb"
 	egz "${srcdir}/rocm-opencl-runtime_5.0.0.50000-49_amd64.deb"
-	egz "${srcdir}/rocm-opencl-sdk_5.0.0.50000-49_amd64.deb"
 	egz "${srcdir}/rocm-clang-ocl_0.5.0.50000-49_amd64.deb"
 	egz "${srcdir}/rocm-smi-lib_5.0.0.50000-49_amd64.deb"
 	egz "${srcdir}/rocm-cmake_0.6.1.50000-49_amd64.deb"
