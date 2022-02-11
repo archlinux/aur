@@ -1,28 +1,28 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=autofirma-bin
-pkgver=1.6.5
-pkgrel=5
+pkgver=1.7.1
+pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
 url='https://firmaelectronica.gob.es/'
 license=('GPL' 'custom:EUPL')
 depends=('java-runtime=11')
 conflicts=('autofirma' 'autofirma-git')
-source=("${pkgname}-${pkgver}.zip::https://sede.xunta.gal/ficheiros/autofirma/AutoFirma_Linux.zip"
+source=("${pkgname}-${pkgver}.zip::https://estaticos.redsara.es/comunes/autofirma/${pkgver//.//}/AutoFirma_Linux.zip"
         "autofirma"
         "autofirma.desktop"
         "autofirma.js"
         "autofirma.svg")
-sha256sums=('28da745ea3084ba87b56eba31bc994e60872384c893c91f3e4aad3db4967d939'
-            'd008cd566c7e7276f1887ec337c9ebfe0676ac45addd2040a9e35fc4f5d9ed64'
-            '062cf72219e592e06218e47ea2a212d6517be66f0d4c58dcd03ef18d5c39300b'
-            '428c5b7300dde7158a1a0918c8d2e8188f042dbc143d991c03f51d1c8a40efa4'
-            'f7e525586103db08a2a38ccefdef93cc02407728de8b214e53ae3dc0631bab75')
+b2sums=('d985bfa71ce1b4318a50fc4c93b1a85a388de445f8e4a18c7e616988955b94ac79e73a7fb4e3c202cf303255cb497679eaeb7b2546c08f3e3974d440e793ce12'
+        '2eca1245aa7e44228fac9fbb871b90d765402ebdfeaa476fa807e7bdaedb039353980c5fdfaf560ecc943386bbee90d4ae048b85b516b4653bf699328d10fc87'
+        'cbedb1aff6ea64e44569d4a3249bd3707a5bc2fadf956ab27f62a71198cfed3f07170f40965bbbd2b4b9a587d165fe8b6a19c3f85aa87eaf8c5897d899d9b6e8'
+        '835597fed89382057b48f01537dacc43aeef342372678fbeb6d486c6cded7ee41911b910e200e7c1c34bd1cbb0e25854e6e56dea68115bcde759b84d2d0a6147'
+        '3397abf9b38b8e187ec7a1fa59e91c974568d520a2604487aa5dda56c590756560d38d46152ed5765eb6746956265107a7ff8d448f9090dc7f75a2b74d36513b')
 
 prepare() {
   # Extract debian package
-  bsdtar -O -xf AutoFirma*/*.deb data.tar.xz | bsdtar -C "${srcdir}" -xJf -
+  bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "${srcdir}" -xJf -
 }
 
 package() {
