@@ -1,6 +1,6 @@
 pkgbase = lighthouse-ethereum-bin
 	pkgdesc = Ethereum 2.0 client
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://lighthouse.sigmaprime.io/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lighthouse-ethereum-bin
 	provides = lighthouse
 	conflicts = lighthouse
 	replaces = lighthouse
-	source = https://github.com/sigp/lighthouse/releases/download/v2.1.2/lighthouse-v2.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 3bf39e89ca3ac729ebd48cc15fc77717d690ccb0d695d93ff735645bcb7791b6
+	source = https://github.com/sigp/lighthouse/releases/download/v2.1.3/lighthouse-v2.1.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = c4b7d261fa4aab25c9e4c2956c181c3f24b2cb2bddac21e78a7988b29a3e2ad3
 
 pkgname = lighthouse-ethereum-bin
