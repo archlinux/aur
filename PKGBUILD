@@ -4,7 +4,7 @@
 # Contributor: Tom <reztho at archlinux dot org>
 
 pkgname=tuned
-pkgver=2.17.0
+pkgver=2.18.0
 pkgrel=1
 pkgdesc='Daemon that performs monitoring and adaptive configuration of devices in the system'
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('desktop-file-utils')
 backup=('etc/tuned/active_profile')
 install="${pkgname}.install"
 source=("https://github.com/redhat-performance/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0f936c4c2e90d724c4b87c2b661dad340607ccb1b0f453d06143e6b6b0d2a650')
+sha256sums=('b00c92cc21fa8595e95aba95042e7f590ea4146328491a655936a811e2590d80')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
