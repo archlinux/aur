@@ -1,7 +1,7 @@
 # Maintainer: Rod Kay   <charlie5 on #ada at freenode.net>
 
 pkgname=aunit
-pkgver=2020
+pkgver=2022
 pkgrel=1
 pkgdesc="Ada Unit Testing Framework"
 
@@ -12,10 +12,10 @@ license=('GPL V3.0')
 depends=('gcc-ada')
 makedepends=('gprbuild')
 
-source=('https://community.download.adacore.com/v1/6c8702d4a3c4a39f5da077716e44bef980377ba8?filename=aunit-2020-20200429-19B6C-src.tar.gz')
-sha1sums=('6c8702d4a3c4a39f5da077716e44bef980377ba8')
+source=('https://github.com/AdaCore/aunit/archive/refs/tags/v22.0.0.tar.gz')
+sha1sums=('3d2a87bc0260311aa7a821b4fca597a7c9b09efc')
 
-_pkg_src_dir="aunit-2020-20200429-19B6C-src"
+_pkg_src_dir="aunit-22.0.0"
 
 
 build()
