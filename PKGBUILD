@@ -1,14 +1,14 @@
 # Maintainer: David Barri <japgolly@gmail.com>
 pkgname=atomicwallet
-pkgver=2.39.2
+pkgver=2.39.3
 pkgrel=1
-_pkgver_suffix=192
+_pkgver_suffix=194
 pkgdesc="Atomic Wallet is a decentralized Cryptocurrency wallet that supports more than 500 coins and tokens, providing simplicity, safety, and convenience for its users."
 arch=('x86_64')
 url="https://atomicwallet.io"
 license=('unknown')
 source=("https://get.atomicwallet.io/download/atomicwallet-$pkgver-$_pkgver_suffix.rpm")
-sha256sums=('8b55c8b0080d337f3310ee3422c3863a2f2fe3c1f3f21994efcc300dbd795f83')
+sha256sums=('f670f3fa4789bc13dc085e5aa1679e9c7904678b7ffee86d622baf276bc900e1')
 
 package() {
   set -e
