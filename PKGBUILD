@@ -1,13 +1,13 @@
 pkgname=rest-server
-pkgdesc='Rest Server is a high performance HTTP server that implements restics REST backend API (git version).'
+pkgdesc='A high performance HTTP server that implements restics REST backend API'
 license=('BSD')
 url='https://github.com/restic/rest-server'
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/restic/rest-server/archive/v${pkgver}.tar.gz")
-sha256sums=('d109cf9e9c3f36c9c8eb6d4a2bd530c5dfcd62b11687d93034e2edc0fdecf479')
+sha256sums=('cd9b35ad2224244207a967ebbc78d84f4298d725e95c1fa9341ed95a350ea68f')
 provides=('rest-server')
 conflicts=('rest-server')
 

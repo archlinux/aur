@@ -1,6 +1,6 @@
 pkgbase = rest-server
-	pkgdesc = Rest Server is a high performance HTTP server that implements restics REST backend API (git version).
-	pkgver = 0.10.0
+	pkgdesc = A high performance HTTP server that implements restics REST backend API
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/restic/rest-server
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = rest-server
 	provides = rest-server
 	conflicts = rest-server
 	options = !strip
-	source = rest-server-0.10.0.tar.gz::https://github.com/restic/rest-server/archive/v0.10.0.tar.gz
-	sha256sums = d109cf9e9c3f36c9c8eb6d4a2bd530c5dfcd62b11687d93034e2edc0fdecf479
+	source = rest-server-0.11.0.tar.gz::https://github.com/restic/rest-server/archive/v0.11.0.tar.gz
+	sha256sums = cd9b35ad2224244207a967ebbc78d84f4298d725e95c1fa9341ed95a350ea68f
 
 pkgname = rest-server
-
