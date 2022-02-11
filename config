@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.16.8-zen1 Kernel Configuration
+# Linux/x86 5.16.9-zen1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.1.0"
 CONFIG_CC_IS_GCC=y
@@ -1117,7 +1117,11 @@ CONFIG_TIERS_PER_GEN=4
 #
 # Data Access Monitoring
 #
-# CONFIG_DAMON is not set
+CONFIG_DAMON=y
+CONFIG_DAMON_VADDR=y
+CONFIG_DAMON_PADDR=y
+CONFIG_DAMON_DBGFS=y
+CONFIG_DAMON_RECLAIM=y
 # end of Data Access Monitoring
 # end of Memory Management options
 
