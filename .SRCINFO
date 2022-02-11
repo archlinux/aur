@@ -1,6 +1,6 @@
 pkgbase = hypre
 	pkgdesc = Parallel solvers for sparse linear systems featuring multigrid methods
-	pkgver = 2.23.0
+	pkgver = 2.24.0
 	pkgrel = 1
 	url = https://github.com/hypre-space/hypre
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hypre
 	makedepends = gcc-fortran
 	depends = superlu
 	depends = superlu_dist
-	source = hypre-2.23.0::https://github.com/hypre-space/hypre/archive/v2.23.0.tar.gz
-	sha512sums = bed8426d093e2290ab443f49deffad96a64e1b3844a4236bc59af19523b16ea8bf2318db21e42ab2b8a4dd529246ba1d9a4eb0cb3bd943633569d03e6311f67f
+	source = hypre-2.24.0::https://github.com/hypre-space/hypre/archive/v2.24.0.tar.gz
+	sha512sums = 4f27e99ba2923c6394ccc3705930897430becef840415004d6fae2fa311fef5b2399265ec1211364f883b35d00933523e65888419890902bcd4e1e6942b66560
 
 pkgname = hypre
