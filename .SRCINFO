@@ -1,7 +1,7 @@
 pkgbase = opencl-amd
 	pkgdesc = ROCr based OpenCL for users of applications requiring OpenCL on Vega or later - This package is intended to work along with the free amdgpu stack.
 	pkgver = 21.50.50000.1376259
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.amd.com
 	arch = x86_64
 	license = custom:AMD

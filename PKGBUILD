@@ -17,7 +17,7 @@ amdgpu_pro="opt/amdgpu-pro/lib/x86_64-linux-gnu/"
 pkgname=opencl-amd
 pkgdesc="ROCr based OpenCL for users of applications requiring OpenCL on Vega or later - This package is intended to work along with the free amdgpu stack."
 pkgver=${major}.${minor}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -167,7 +167,7 @@ package() {
 
 	mv "${srcdir}/opt/" "${pkgdir}/"
 	ln -s "/opt/rocm-5.0.0" "$pkgdir/opt/rocm"
-	#ln -s "/opt/rocm-5.0.0/hip/bin/.hipVersion" "$pkgdir/opt/rocm-5.0/bin/.hipVersion"	
+	ln -s "/opt/rocm-5.0.0/hip/bin/.hipVersion" "$pkgdir/opt/rocm-5.0.0/bin/.hipVersion"
 
 	mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
 	cd "${pkgdir}/opt/amdgpu/share/libdrm"
