@@ -1,16 +1,16 @@
 # Maintainer: Xeonacid <h.dwwwwww at gmail dot com>
 
 pkgname=gitakc
-pkgver=0.1
-_scalaversion=3.0.0
-pkgrel=4
+pkgver=0.2
+_scalaversion=2.13.8
+pkgrel=1
 pkgdesc="A small program to use user's GitHub keys for ssh authorization."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/sequencer/gitakc"
-depends=('bash' 'java-runtime-headless')
-makedepends=('mill')
+depends=('libidn' 'curl')
+makedepends=('mill' 'clang' 'lld')
 source=("https://github.com/sequencer/gitakc/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('54672160f2278ac3b663402b4b32b5d570cef10a0d4fed49c47d85d150704add07e515d97b4e4deeb42a4b7705e29fa87b743129322be9421bb2eb21dc3f07ff')
+b2sums=('2f4e52cb6da7bf559376068031fcad1e601d5648d9b796d34a07c3bac1052ce52d31035151e759b785375a16549176271bc106a1999adb14a7c8c85a3fe723cb')
 install="gitakc.install"
 
 prepare() {
@@ -20,11 +20,11 @@ prepare() {
 
 build() {
   cd gitakc-$pkgver
-  mill -i gitakc.jvm[$_scalaversion].assembly
+  mill -i gitakc.native[$_scalaversion].nativeLink
 }
 
 package() {
   cd gitakc-$pkgver
-  install -Dm755 out/gitakc/jvm/$_scalaversion/assembly.dest/out.jar "$pkgdir"/usr/bin/gitakc
+  install -Dm755 out/gitakc/native/$_scalaversion/nativeLink.dest/out "$pkgdir"/usr/bin/gitakc
   install -Dm644 gitakc/resources/test.json "$pkgdir"/etc/gitakc.json
 }

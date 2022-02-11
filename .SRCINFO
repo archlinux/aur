@@ -1,14 +1,16 @@
 pkgbase = gitakc
 	pkgdesc = A small program to use user's GitHub keys for ssh authorization.
-	pkgver = 0.1
-	pkgrel = 4
+	pkgver = 0.2
+	pkgrel = 1
 	url = https://github.com/sequencer/gitakc
 	install = gitakc.install
-	arch = any
+	arch = x86_64
 	makedepends = mill
-	depends = bash
-	depends = java-runtime-headless
-	source = https://github.com/sequencer/gitakc/archive/refs/tags/0.1.tar.gz
-	b2sums = 54672160f2278ac3b663402b4b32b5d570cef10a0d4fed49c47d85d150704add07e515d97b4e4deeb42a4b7705e29fa87b743129322be9421bb2eb21dc3f07ff
+	makedepends = clang
+	makedepends = lld
+	depends = libidn
+	depends = curl
+	source = https://github.com/sequencer/gitakc/archive/refs/tags/0.2.tar.gz
+	b2sums = 2f4e52cb6da7bf559376068031fcad1e601d5648d9b796d34a07c3bac1052ce52d31035151e759b785375a16549176271bc106a1999adb14a7c8c85a3fe723cb
 
 pkgname = gitakc
