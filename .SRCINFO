@@ -1,7 +1,7 @@
 pkgbase = linux-firmware-uncompressed
 	pkgdesc = Firmware files for Linux (without module compression)
-	pkgver = 20220119.0c6a7b3
-	pkgrel = 2
+	pkgver = 20220209.6342082
+	pkgrel = 1
 	url = https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary
 	arch = any
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = linux-firmware-uncompressed
 	license = custom
 	makedepends = git
 	options = !strip
-	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=0c6a7b3bf728b95c8b7b95328f94335e2bb2c967?signed
+	source = git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=20220209?signed
 	source = 0001-Add-support-for-compressing-firmware-in-copy-firmware.patch
 	validpgpkeys = 4CDE8575E547BF835FE15807A31B6BD72486CFD6
 	sha256sums = SKIP
@@ -21,37 +21,37 @@ pkgname = linux-firmware-uncompressed
 	conflicts = linux-firmware
 
 pkgname = amd-ucode-uncompressed
-	pkgdesc = Microcode update image for AMD CPUs (without module compression)
+	pkgdesc = Microcode update image for AMD CPUs
 	license = custom
 	provides = amd-ucode
 	conflicts = amd-ucode
 
 pkgname = linux-firmware-nfp-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - nfp / Firmware for Netronome Flow Processors (without module compression)
+	pkgdesc = Firmware files for Linux (without module compression) - nfp / Firmware for Netronome Flow Processors
 	depends = linux-firmware-whence
 	provides = linux-firmware-nfp
 	conflicts = linux-firmware-nfp
 
 pkgname = linux-firmware-mellanox-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - mellanox / Firmware for Mellanox Spectrum switches (without module compression)
+	pkgdesc = Firmware files for Linux (without module compression) - mellanox / Firmware for Mellanox Spectrum switches
 	depends = linux-firmware-whence
 	provides = linux-firmware-mellanox
 	conflicts = linux-firmware-mellanox
 
 pkgname = linux-firmware-marvell-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - marvell / Firmware for Marvell devices (without module compression)
+	pkgdesc = Firmware files for Linux (without module compression) - marvell / Firmware for Marvell devices
 	depends = linux-firmware-whence
 	provides = linux-firmware-marvell
 	conflicts = linux-firmware-marvell
 
 pkgname = linux-firmware-qcom-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - qcom / Firmware for Qualcomm SoCs (without module compression)
+	pkgdesc = Firmware files for Linux (without module compression) - qcom / Firmware for Qualcomm SoCs
 	depends = linux-firmware-whence
 	provides = linux-firmware-qcom
 	conflicts = linux-firmware-qcom
 
 pkgname = linux-firmware-liquidio-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - liquidio / Firmware for Cavium LiquidIO server adapters (without module compression)
+	pkgdesc = Firmware files for Linux (without module compression) - liquidio / Firmware for Cavium LiquidIO server adapters
 	depends = linux-firmware-whence
 	provides = linux-firmware-liquidio
 	conflicts = linux-firmware-liquidio
@@ -63,7 +63,7 @@ pkgname = linux-firmware-qlogic-uncompressed
 	conflicts = linux-firmware-qlogic
 
 pkgname = linux-firmware-bnx2x-uncompressed
-	pkgdesc = Firmware files for Linux (without module compression) - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters (without module compression)
+	pkgdesc = Firmware files for Linux (without module compression) - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters
 	depends = linux-firmware-whence
 	provides = linux-firmware-bnx2x
 	conflicts = linux-firmware-bnx2x

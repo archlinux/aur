@@ -6,17 +6,16 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-#_tag=20211216
-_commit=0c6a7b3bf728b95c8b7b95328f94335e2bb2c967
-pkgver=20220119.0c6a7b3
-pkgrel=2
+_tag=20220209
+pkgver=20220209.6342082
+pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
 license=('GPL2' 'GPL3' 'custom')
 arch=('any')
 makedepends=('git')
 options=(!strip)
-source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=${_commit}?signed"
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#tag=${_tag}?signed"
          0001-Add-support-for-compressing-firmware-in-copy-firmware.patch)
 sha256sums=('SKIP'
             '41c73f88ac68a3aef01fd406ce6cdb87555c65e4816dab12df10740875551aa7')
@@ -72,6 +71,7 @@ build() {
 }
 
 #package_linux-firmware-whence() {
+#  pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
 #  cd "$_pkgbase"
 #  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 WHENCE
 #}
@@ -114,7 +114,7 @@ package_linux-firmware-uncompressed() {
 }
 
 package_amd-ucode-uncompressed() {
-  pkgdesc="Microcode update image for AMD CPUs (without module compression)"
+  pkgdesc="Microcode update image for AMD CPUs"
   license=(custom)
   conflicts=('amd-ucode')
   provides=('amd-ucode')
@@ -125,7 +125,7 @@ package_amd-ucode-uncompressed() {
 }
 
 package_linux-firmware-nfp-uncompressed() {
-  pkgdesc+=" - nfp / Firmware for Netronome Flow Processors (without module compression)"
+  pkgdesc+=" - nfp / Firmware for Netronome Flow Processors"
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware-nfp')
   provides=('linux-firmware-nfp')
@@ -134,7 +134,7 @@ package_linux-firmware-nfp-uncompressed() {
 }
 
 package_linux-firmware-mellanox-uncompressed() {
-  pkgdesc+=" - mellanox / Firmware for Mellanox Spectrum switches (without module compression)"
+  pkgdesc+=" - mellanox / Firmware for Mellanox Spectrum switches"
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware-mellanox')
   provides=('linux-firmware-mellanox')
@@ -143,7 +143,7 @@ package_linux-firmware-mellanox-uncompressed() {
 }
 
 package_linux-firmware-marvell-uncompressed() {
-  pkgdesc+=" - marvell / Firmware for Marvell devices (without module compression)"
+  pkgdesc+=" - marvell / Firmware for Marvell devices"
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware-marvell')
   provides=('linux-firmware-marvell')
@@ -152,7 +152,7 @@ package_linux-firmware-marvell-uncompressed() {
 }
 
 package_linux-firmware-qcom-uncompressed() {
-  pkgdesc+=" - qcom / Firmware for Qualcomm SoCs (without module compression)"
+  pkgdesc+=" - qcom / Firmware for Qualcomm SoCs"
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware-qcom')
   provides=('linux-firmware-qcom')
@@ -161,7 +161,7 @@ package_linux-firmware-qcom-uncompressed() {
 }
 
 package_linux-firmware-liquidio-uncompressed() {
-  pkgdesc+=" - liquidio / Firmware for Cavium LiquidIO server adapters (without module compression)"
+  pkgdesc+=" - liquidio / Firmware for Cavium LiquidIO server adapters"
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware-liquidio')
   provides=('linux-firmware-liquidio')
@@ -179,7 +179,7 @@ package_linux-firmware-qlogic-uncompressed() {
 }
 
 package_linux-firmware-bnx2x-uncompressed() {
-  pkgdesc+=" - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters (without module compression)"
+  pkgdesc+=" - bnx2x / Firmware for Broadcom NetXtreme II 10Gb ethernet adapters"
   depends=('linux-firmware-whence')
   conflicts=('linux-firmware-bnx2x')
   provides=('linux-firmware-bnx2x')
