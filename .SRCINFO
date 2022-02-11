@@ -1,0 +1,13 @@
+pkgbase = python-proxyscrape
+	pkgdesc = A type-safe dictionary class for python.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jaredlgillespie/proxyscrape
+	arch = x86_64
+	makedepends = git
+	makedepends = python
+	makedepends = python-setuptools
+	source = git+https://github.com/jaredlgillespie/proxyscrape.git
+	sha256sums = SKIP
+
+pkgname = python-proxyscrape
