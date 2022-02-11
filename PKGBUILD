@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Duru Can Celasun <can at dcc dot im>
 pkgname=pymdown-extensions
-pkgver=9.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="Extensions for Python Markdown"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('python-pygments: syntax highlighting')
 checkdepends=('python-pyaml' 'python-pygments' 'python-pytest-cov')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('74247f2c80f1d9e3c7242abe1c16317da36c6f26c7ad4b8a7f457f0ec20f0365')
+sha256sums=('ed8f69a18bc158f00cbf03abc536b88b6e541b7e699156501e767c48f81d8850')
 
 build() {
   cd "$pkgname-$pkgver"
