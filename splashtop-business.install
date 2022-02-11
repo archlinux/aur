@@ -1,0 +1,40 @@
+post_install() {
+	xdg-icon-resource forceupdate --theme hicolor
+
+	echo "[Splashtop-business] Configure Splashtop Business"
+
+	if [ ! -d "/opt/splashtop-business/config/" ]; then
+		mkdir -p /opt/splashtop-business/config/
+	fi
+	if [ ! -d "/opt/splashtop-business/dump/" ]; then
+		mkdir -p /opt/splashtop-business/dump/
+	fi
+	if [ ! -d "/opt/splashtop-business/log/" ]; then
+		mkdir -p /opt/splashtop-business/log/
+	fi
+	chmod a=rwx /opt/splashtop-business/config
+	chmod a=rwx /opt/splashtop-business/log
+
+	# create correct splashtop-business
+	if [ ! -f "/usr/bin/splashtop-business" ]; then
+        ln -s /opt/splashtop-business/splashtop-business /usr/bin/splashtop-business
+	fi
+
+	echo "" >> /usr/share/applications/splashtop-business.desktop
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	xdg-icon-resource forceupdate --theme hicolor
+	if [ "$1" = "remove" ]; then
+	    echo "uninstall - Splashtop Business"
+	    rm -rf /opt/splashtop-business/
+	fi
+
+	rm /usr/bin/splashtop-business
+	update-desktop-database -q
+}
