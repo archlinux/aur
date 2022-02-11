@@ -16,7 +16,7 @@ pkgname=glibc-widevine
 provides=("glibc=2.33")
 conflicts=("glibc")
 pkgver=2.33
-pkgrel=5
+pkgrel=5.1
 arch=('armv6h' 'armv7h' 'aarch64')
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
