@@ -1,0 +1,2 @@
+z /etc/mautrix-instagram/* 640 mautrix-instagram mautrix-instagram
+d /var/lib/mautrix-instagram/ 700 mautrix-instagram mautrix-instagram

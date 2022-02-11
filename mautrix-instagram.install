@@ -1,0 +1,6 @@
+post_install() {
+	cat <<- 'EOF'
+		after editing /etc/mautrix-instagram/config.yaml, generate a registration file using:
+		# python -m mautrix_instagram -b /usr/share/mautrix-instagram/example-config.yaml -c /etc/mautrix-instagram/config.yaml -r /etc/mautrix-instagram/registration.yaml -g
+	EOF
+}
