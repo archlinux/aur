@@ -19,6 +19,7 @@ makedepends=(
 	meson
 )
 optdepends=(
+    mutter
 )
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")

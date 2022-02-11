@@ -13,6 +13,7 @@ pkgbase = power-profile-selector-git
 	depends = python-gobject
 	depends = python-psutil
 	depends = power-profiles-daemon
+	optdepends = mutter
 	provides = power-profile-selector
 	conflicts = power-profile-selector
 	source = git+https://gitlab.gnome.org/gnumdk/power-profile-selector
