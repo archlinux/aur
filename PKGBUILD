@@ -1,13 +1,11 @@
-# Maintainer: Anatol Pomozov
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-# Contributor: Christer Solskogen <christer.solskogen@gmail.com>
+# Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 # Build order: aarch64-binutils -> aarch64-linux-api-headers -> aarch64-gcc-bootstrap -> aarch64-glibc -> aarch64-gcc -> aarch64-glibc (again)
 
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-glibc
 pkgver=2.35
-pkgrel=1
+pkgrel=2
 _commit=be176490b818b65b5162c332eb6b581690b16e5c
 pkgdesc="GNU C Library ARM64 target"
 arch=(any)
@@ -38,13 +36,11 @@ build() {
       --prefix=/usr \
       --host=$_target \
       --libdir=/usr/lib \
-      --with-bugurl=https://bugs.archlinux.org \
-      --enable-kernel=4.4 \
+      --with-bugurl=https://aur.archlinux.org/packages/aarch64-glibc \
+      --enable-kernel=5.10 \
       --enable-bind-now \
       --enable-stack-protector=strong \
-      --enable-stackguard-randomization \
-      --disable-timezone-tools \
-      --enable-multi-arch CFLAGS="-O2 -pipe"
+      --disable-timezone-tools CFLAGS="-O2 -pipe"
 
   make
 }
@@ -62,6 +58,6 @@ package() {
   #strip manually
   find "$pkgdir"/usr/$_target/sys-root -name '*.so' -and ! -name 'libc.so' -print0 | xargs -0 $_target-strip --strip-all
 
-  #fix missing symlink
+  #create symlink to the shared library since we don't have the static one (gcc needs this)
   ln -s libpthread.so.0 "$pkgdir"/usr/$_target/sys-root/usr/lib/libpthread.so
 }
