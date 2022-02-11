@@ -1,0 +1,15 @@
+pkgbase = bcl-git
+	pkgdesc = The Berkeley Container Library: a C++ library of distributed data structures with interfaces similar to those in STL containers.
+	pkgver = r189.a1df887
+	pkgrel = 1
+	url = https://github.com/berkeley-container-library/bcl
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = openmpi
+	provides = bcl
+	conflicts = bcl
+	source = bcl::git+https://github.com/berkeley-container-library/bcl.git
+	sha256sums = SKIP
+
+pkgname = bcl-git
