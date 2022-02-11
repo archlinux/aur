@@ -1,6 +1,6 @@
 pkgbase = pure-maps
-	pkgver = 2.7.5
-	pkgrel = 2
+	pkgver = 2.9.2
+	pkgrel = 1
 	arch = x86_64
 	arch = aarch64
 	depends = s2geometry
@@ -13,7 +13,9 @@ pkgbase = pure-maps
 	depends = python-pyotherside
 	depends = mapbox-gl-qml
 	depends = qt5-sensors
-	source = https://github.com/rinigus/pure-maps/releases/download/2.7.5/pure-maps-2.7.5.tar.gz
-	sha256sums = 8e65521d30a1b5e627d72138e77227cdc40d10fdad1d056ccb1a56522201372e
+	depends = python-gpxpy
+	depends = python-geomag
+	source = https://github.com/rinigus/pure-maps/archive/refs/tags/2.9.2.tar.gz
+	sha256sums = 789dd7fdb865bd795e8695623a9c3dcbb0e22566614f0491069571fc211d7b89
 
 pkgname = pure-maps
