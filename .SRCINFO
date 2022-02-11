@@ -1,7 +1,7 @@
 pkgbase = splashtop-business
 	pkgdesc = Splashtop Business. Remotely access your desktop from any device from anywhere!
 	pkgver = 3.0.4.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.splashtop.com/business
 	install = splashtop-business.install
 	arch = x86_64

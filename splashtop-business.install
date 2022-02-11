@@ -16,15 +16,15 @@ post_install() {
 	chmod a=rwx /opt/splashtop-business/log
 
 	if [ -f "/opt/splashtop-business/splashtop-business" ]; then
-		rm -rf /opt/splashtop-business/splashtop-business
+		rm /opt/splashtop-business/splashtop-business
 	fi
 
 	if [ -f "/opt/splashtop-business/splashtop-business-xenial" ]; then
-		rm -rf /opt/splashtop-business/splashtop-business-xenial
+		rm /opt/splashtop-business/splashtop-business-xenial
 	fi
 
 	if [ -f "/opt/splashtop-business/splashtop-business-bionic" ]; then
-		rm -rf /opt/splashtop-business/splashtop-business-xenial
+		rm /opt/splashtop-business/splashtop-business-bionic
 	fi
 
 	if [ -f "/opt/splashtop-business/splashtop-business-focal" ]; then
