@@ -2,14 +2,14 @@
 
 pkgname=sunamu-git
 _pkgname=sunamu
-pkgver=r220.13f5239c01
+pkgver=r226.3937e3f94d
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Development version)"
 url="https://github.com/NyaomiDEV/Sunamu"
 license=("MPL-2.0")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 conflicts=(sunamu sunamu-bin)
-makedepends=("git" "npm" "yarn" "node-gyp")
+makedepends=("git" "npm" "yarn" "node-gyp" "nvm")
 depends=("electron" "libvips")
 
 source=("${_pkgname}::git+https://github.com/NyaomiDEV/Sunamu"
@@ -31,6 +31,15 @@ build() {
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
   electronDist="/usr/lib/electron"
   electronVer=$(pacman -Q $(pacman -Qqo $electronDist) | cut -d " " -f2 | cut -d "-" -f1)
+
+  # use nvm but isolate it for this shell
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+  # ensure .nvmrc version is installed
+  nvm install --no-progress "$(cat "$srcdir/$_pkgname/.nvmrc")"
+
   yarn install
   yarn build:dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
