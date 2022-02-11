@@ -1,7 +1,7 @@
 # Maintainer Kiernan Preve <kiernanpreve@gmail.com>
 
 pkgname=rtl8188gu-dkms-git
-_pkgbase=rtl8188gu
+_pkgbase=rtl8188gu-dkms-git
 pkgver=1.0
 pkgrel=1
 pkgdesc="Driver for Realtek RTL8188GU chipset wireless cards"
@@ -17,13 +17,13 @@ sha256sums=('SKIP'
 	    'SKIP')
 
 pkgver() {
-    cd ${srcdir}/rtl8188gu
+    cd ${srcdir}/rtl8188gu-dkms-git
     printf '%s.r%s.g%s' '1.0' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
   # Install
-  cd ${srcdir}/rtl8188gu
+  cd ${srcdir}/rtl8188gu-dkms-git
   #make DESTDIR="${pkgdir}" install
   mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
   cp -pr * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
