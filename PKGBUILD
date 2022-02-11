@@ -15,7 +15,7 @@
 
 pkgname=cassandra
 pkgver=4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
 url='http://cassandra.apache.org/'
@@ -36,7 +36,7 @@ source=(https://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkg
         'cassandra.service'
         'cassandra-tmpfile.conf'
         'cassandra-user.conf')
-validpgpkeys=('F8B7FD00E05C932991A2CD6150EE103D162C5A55') 
+validpgpkeys=('A4C465FEA0C552561A392A61E91335D77E3E87CB') 
 sha256sums=('a1bab3d819ee56a4835b8fb3b04613a8464630abdb6347475d43095a20a5beb5'
             'SKIP'
             'bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657'
