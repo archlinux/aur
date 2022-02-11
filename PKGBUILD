@@ -1,7 +1,7 @@
 # Maintainer: zzjzxq33 <wojiushixxx at 126 dot com>
 pkgname=bbg
 _pkgname=BBG
-pkgver=20220202
+pkgver=20220213
 pkgrel=1
 epoch=
 pkgdesc="A static blog generator built with electron"
@@ -31,7 +31,7 @@ sha256sums=(
 			'9bb48fe10ec7b1b669546d185a98976b822b50fbcbaf0dd5faf0c162e8346a21'
 			'b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f'
 	    'd57c7e1126b2b168f2dd6debd2e77f069379c244b0ed7393eebffc2f2aa0d8be'
-      '766fb89ad58fd6673ab415237b81b0b6b17d35bcd154eee6866db54fc18e9b52')
+      '1c93bb7aae95997fa8b53c608ea7cca117bc534963f8ba31de5ea01d44a5bf2e')
 validpgpkeys=()
 
 package(){
