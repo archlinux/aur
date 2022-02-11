@@ -1,11 +1,11 @@
-pkgbase = todelete
+pkgbase = multi-yubikey-helper
 	pkgdesc = To delete
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/jnaulty/todelete
+	url = https://github.com/jnaulty/multi-yubikey-helper
 	arch = any
 	license = No license
-	source = git+https://github.com/jnaulty/todelete.git#commit=df68e747647d8439438d10248262eb894bcdafdd
+	source = git+https://github.com/jnaulty/multi-yubikey-helper.git#commit=df68e747647d8439438d10248262eb894bcdafdd
 	sha512sums = SKIP
 
-pkgname = todelete
+pkgname = multi-yubikey-helper

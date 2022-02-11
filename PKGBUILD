@@ -1,5 +1,5 @@
 # Maintainer: Hilary Jendrasiak <sylogista@sylogista.pl>
-pkgname='todelete'
+pkgname='multi-yubikey-helper'
 pkgdesc='To delete'
 pkgver=1.0.0
 pkgrel=1
