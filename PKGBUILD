@@ -10,7 +10,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('gtk3')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'gtk3' 'libepoxy' 'wayland' 'wayland-protocols')
 source=("${pkgname%-git}::git+$url")
 sha256sums=('SKIP')
 

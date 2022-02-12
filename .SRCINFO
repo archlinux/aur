@@ -10,6 +10,10 @@ pkgbase = wdisplays-git
 	license = GPL3
 	makedepends = git
 	makedepends = meson
+	makedepends = gtk3
+	makedepends = libepoxy
+	makedepends = wayland
+	makedepends = wayland-protocols
 	depends = gtk3
 	provides = wdisplays
 	conflicts = wdisplays
@@ -17,4 +21,3 @@ pkgbase = wdisplays-git
 	sha256sums = SKIP
 
 pkgname = wdisplays-git
-
