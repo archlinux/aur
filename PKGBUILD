@@ -4,8 +4,8 @@
 
 _pkgname=pandoc
 pkgname=$_pkgname-sile-git
-_pkgver=2.14.2
-pkgver=2.14.2.r8.gd53fe3e
+_pkgver=2.17.1.1
+pkgver=2.17.1.1.r8.gedb96f7
 pkgrel=1
 pkgdesc='Conversion between markup formats (sile fork, static build)'
 url='https://pandoc.org'
@@ -40,9 +40,9 @@ build() {
 		--install-ghc \
 		--ghc-options='-fdiagnostics-color=always' \
 		--flag 'pandoc:embed_data_files' \
-		--flag 'hslua:system-lua' \
-		--flag 'hslua:pkg-config' \
 		--fast
+		# --flag 'hslua:system-lua' \
+		# --flag 'hslua:pkg-config' \
 }
 
 package() {
