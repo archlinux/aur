@@ -2,7 +2,7 @@
 _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
@@ -11,7 +11,7 @@ depends=(python-colorio python-matplotx python-networkx python-pypng)
 makedepends=(python-build python-flit-core python-install)
 checkdepends=(python-pytest-codeblocks)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('82fd292019fe1c8f1fa967622aa853e68405d67eff815696d17cdd057aa714fa9a1c7e757301b4ef3edfbefe36278fee4b20a24315edab67a78f4415e02ffde1')
+sha512sums=('0febef68192751c9a66787351f18a91863996a72c77540579b4155159bc81419ad41133f7f10b63cf6260753c1b09a180275f80978f56111ee460803355f4c6d')
 
 build() {
   cd ${_base}-${pkgver}
