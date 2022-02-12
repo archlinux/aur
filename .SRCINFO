@@ -1,13 +1,13 @@
 pkgbase = ndpi
 	pkgdesc = Open and Extensible GPLv3 Deep Packet Inspection Library
-	pkgver = 4.0
+	pkgver = 4.2
 	pkgrel = 1
 	url = http://www.ntop.org/products/ndpi/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	conflicts = ndpi-svn
-	source = https://github.com/ntop/nDPI/archive/4.0.tar.gz
-	md5sums = 533296eb09ab27499b6881f3411aa22b
+	source = https://github.com/ntop/nDPI/archive/4.2.tar.gz
+	sha256sums = e54ce8fe13adc5d747be7553513657fae78f796e0bd459e122c280cc06ce4daf
 
 pkgname = ndpi
