@@ -1,8 +1,8 @@
 # Maintainer: robertfoster
 
 pkgname=python-rtmixer
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="Reliable low-latency audio playback and recording with Python"
 arch=(any)
 url="https://github.com/spatialaudio/python-rtmixer"
@@ -29,7 +29,7 @@ package() {
   python setup.py install --root="$pkgdir" --skip-build
 }
 
-sha256sums=('e6b8cb2c82bfd9e476a3ad9c1b4c97b559099c2d36dec07c5bf2b052773812aa'
-  '39048031099f7d72fe2175408aa5b635398dd1c604b423963bb719412f6ec5ed'
-  'c43718bf0dd28b2ec2f331228c6d0b1df1f3f310a2ca36200990062b6ce59f66'
-  'a0cdafd4f851aa0bfecadbf9464ac0f5cc63c15867e4437aab904135be1342b0')
+sha256sums=('aaadc1a2ae68a45ff332c7e62ddf1e68f2a6ab777015c249ae81940eafd27a0c'
+            '39048031099f7d72fe2175408aa5b635398dd1c604b423963bb719412f6ec5ed'
+            'c43718bf0dd28b2ec2f331228c6d0b1df1f3f310a2ca36200990062b6ce59f66'
+            'a0cdafd4f851aa0bfecadbf9464ac0f5cc63c15867e4437aab904135be1342b0')
