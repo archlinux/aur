@@ -3,12 +3,12 @@
 
 pkgname=kpar2
 pkgver=0.4.5
-pkgrel=7
+pkgrel=8
 pkgdesc="PAR2 verification and repair program for KDE4"
 arch=('x86_64')
 url='http://code.google.com/p/kpar2kde4'
 license=('GPL3')
-depends=('kdebase-runtime'
+depends=('kde-cli-tools'
          'libpar2'
          )
 makedepends=('cmake'
@@ -22,21 +22,18 @@ sha256sums=('91c4d12600e9d9346e37ac2bec98cf6331e9491d510aeda1e12b0c15e3f1324e'
             )
 
 prepare() {
-  mkdir -p build
-
   patch -d "kpar2-${pkgver}" -p0 -i "${srcdir}/kpar2.desktop.diff"
-
-  cd build
-  cmake ../"kpar2-${pkgver}" \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4
 }
 
 build() {
-  make -C build
+  cmake -S "kpar2-${pkgver}" -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DQT_QMAKE_EXECUTABLE=qmake-qt4
+
+  make
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
 }
