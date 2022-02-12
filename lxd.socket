@@ -1,5 +1,6 @@
 [Unit]
 Description=LXD - unix socket
+Documentation=man:lxd(1)
 
 [Socket]
 ListenStream=/var/lib/lxd/unix.socket
