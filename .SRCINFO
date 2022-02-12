@@ -1,0 +1,13 @@
+pkgbase = pil-squasher-git
+	pkgdesc = Convert split mdt + b%02d files into mbn file
+	pkgver = r3.843950f
+	pkgrel = 1
+	url = https://github.com/andersson/pil-squasher
+	arch = x86_64
+	license = BSD
+	provides = pil-squasher
+	conflicts = pil-squasher
+	source = git+https://github.com/andersson/pil-squasher
+	sha256sums = SKIP
+
+pkgname = pil-squasher-git
