@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/pro-bitcoind -daemon \
-                            -chain=%i
+                            -chain=%i \
                             -pid=/run/bitcoind-%i/bitcoind.pid \
                             -conf=/etc/bitcoin/bitcoin.conf \
                             -datadir=/var/lib/bitcoind

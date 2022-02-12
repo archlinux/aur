@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento @ gmail.com>
 pkgname=pro-bitcoin-git
 pkgver=v22.0.r34.gac9bdd94b
-pkgrel=2
+pkgrel=3
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://pro-bitcoin.io"
 depends=('boost' 'boost-libs' 'zeromq' 'libevent')
