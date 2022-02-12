@@ -1,0 +1,303 @@
+From aaafb65d819d741f194cba688bf7134967cdaffb Mon Sep 17 00:00:00 2001
+From: Scott B <arglebargle@arglebargle.dev>
+Date: Sat, 12 Feb 2022 12:11:14 -0800
+Subject: [PATCH] HID: asus-wmi: ROG x13 flow tablet mode support see:
+ https://github.com/IvanDovgal/asus-rog-flow-x13-tablet-mode
+
+---
+ drivers/hid/amd-sfh-hid/amd_sfh_pcie.c        |  5 ++++
+ drivers/hid/amd-sfh-hid/amd_sfh_pcie.h        |  1 +
+ .../hid_descriptor/amd_sfh_hid_desc.c         | 27 +++++++++++++++++++
+ .../hid_descriptor/amd_sfh_hid_desc.h         | 11 ++++++++
+ .../hid_descriptor/amd_sfh_hid_report_desc.h  | 19 +++++++++++++
+ drivers/platform/x86/asus-nb-wmi.c            | 16 +++++++++++
+ drivers/platform/x86/asus-wmi.c               | 18 ++++++++++++-
+ drivers/platform/x86/asus-wmi.h               |  1 +
+ 8 files changed, 97 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
+index 2503be0253d3..2304a0895072 100644
+--- a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
++++ b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.c
+@@ -26,6 +26,7 @@
+ #define ACEL_EN		BIT(0)
+ #define GYRO_EN		BIT(1)
+ #define MAGNO_EN	BIT(2)
++#define KBGUARD_EN	BIT(15)
+ #define HPD_EN		BIT(16)
+ #define ALS_EN		BIT(19)
+ 
+@@ -185,6 +186,9 @@ int amd_mp2_get_sensor_num(struct amd_mp2_dev *privdata, u8 *sensor_id)
+ 	if (HPD_EN & activestatus)
+ 		sensor_id[num_of_sensors++] = HPD_IDX;
+ 
++	if (KBGUARD_EN & activestatus)
++		sensor_id[num_of_sensors++] = KBGUARD_IDX;
++
+ 	return num_of_sensors;
+ }
+ 
+@@ -301,6 +305,7 @@ static int __maybe_unused amd_mp2_pci_suspend(struct device *dev)
+ 
+ 	for (i = 0; i < cl_data->num_hid_devices; i++) {
+ 		if (cl_data->sensor_idx[i] != HPD_IDX &&
++            cl_data->sensor_idx[i] != KBGUARD_IDX &&
+ 		    cl_data->sensor_sts[i] == SENSOR_ENABLED) {
+ 			mp2->mp2_ops->stop(mp2, cl_data->sensor_idx[i]);
+ 			status = amd_sfh_wait_for_response
+diff --git a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h
+index ae30e059f847..da41be06eb4d 100644
+--- a/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h
++++ b/drivers/hid/amd-sfh-hid/amd_sfh_pcie.h
+@@ -36,6 +36,7 @@
+ #define SENSOR_DISABLED    5
+ 
+ #define HPD_IDX		16
++#define KBGUARD_IDX	15
+ 
+ #define AMD_SFH_IDLE_LOOP	200
+ 
+diff --git a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c
+index be41f83b0289..10516f241a5b 100644
+--- a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c
++++ b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.c
+@@ -56,6 +56,11 @@ int get_report_descriptor(int sensor_idx, u8 *rep_desc)
+ 		memcpy(rep_desc, hpd_report_descriptor,
+ 		       sizeof(hpd_report_descriptor));
+ 		break;
++	case KBGUARD_IDX: /* kbguard ? */
++		memset(rep_desc, 0, sizeof(kbguard_report_descriptor));
++		memcpy(rep_desc, kbguard_report_descriptor,
++		       sizeof(kbguard_report_descriptor));
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -115,6 +120,16 @@ u32 get_descr_sz(int sensor_idx, int descriptor_name)
+ 			return sizeof(struct hpd_feature_report);
+ 		}
+ 		break;
++	case KBGUARD_IDX:
++		switch (descriptor_name) {
++		case descr_size:
++			return sizeof(kbguard_report_descriptor);
++		case input_size:
++			return sizeof(struct kbguard_input_report);
++		case feature_size:
++			return sizeof(struct kbguard_feature_report);
++		}
++		break;
+ 
+ 	default:
+ 		break;
+@@ -138,6 +153,7 @@ u8 get_feature_report(int sensor_idx, int report_id, u8 *feature_report)
+ 	struct gyro_feature_report gyro_feature;
+ 	struct magno_feature_report magno_feature;
+ 	struct hpd_feature_report hpd_feature;
++	struct kbguard_feature_report kbguard_feature;
+ 	struct als_feature_report als_feature;
+ 	u8 report_size = 0;
+ 
+@@ -185,6 +201,11 @@ u8 get_feature_report(int sensor_idx, int report_id, u8 *feature_report)
+ 		memcpy(feature_report, &hpd_feature, sizeof(hpd_feature));
+ 		report_size = sizeof(hpd_feature);
+ 		break;
++	case KBGUARD_IDX:  /* auto disable keyboard when flip out */
++		get_common_features(&kbguard_feature.common_property, report_id);
++		memcpy(feature_report, &kbguard_feature, sizeof(kbguard_feature));
++		report_size = sizeof(kbguard_feature);
++		break;
+ 
+ 	default:
+ 		break;
+@@ -209,6 +230,7 @@ u8 get_input_report(u8 current_index, int sensor_idx, int report_id, struct amd_
+ 	struct accel3_input_report acc_input;
+ 	struct gyro_input_report gyro_input;
+ 	struct hpd_input_report hpd_input;
++    struct kbguard_input_report kbguard_input;
+ 	struct als_input_report als_input;
+ 	struct hpd_status hpdstatus;
+ 	u8 report_size = 0;
+@@ -260,6 +282,11 @@ u8 get_input_report(u8 current_index, int sensor_idx, int report_id, struct amd_
+ 		report_size = sizeof(hpd_input);
+ 		memcpy(input_report, &hpd_input, sizeof(hpd_input));
+ 		break;
++    case KBGUARD_IDX: /* kb guard */
++        get_common_inputs(&kbguard_input.common_property, report_id);
++        report_size = sizeof(kbguard_input);
++        memcpy(input_report, &kbguard_input, sizeof(kbguard_input));
++        break;
+ 	default:
+ 		break;
+ 	}
+diff --git a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h
+index 70b1b7abe2c6..5a76f38b94d3 100644
+--- a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h
++++ b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_desc.h
+@@ -105,12 +105,23 @@ struct hpd_feature_report {
+ 	struct common_feature_property common_property;
+ } __packed;
+ 
++struct kbguard_feature_report {
++	struct common_feature_property common_property;
++} __packed;
++
+ struct hpd_input_report {
+ 	struct common_input_property common_property;
+ 	 /* values specific to human presence sensor */
+ 	u8 human_presence;
+ } __packed;
+ 
++struct kbguard_input_report {
++    struct common_input_property common_property;
++    /* values specific to human presence sensor */
++    u8 human_presence;
++} __packed;
++
++
+ int get_report_descriptor(int sensor_idx, u8 rep_desc[]);
+ u32 get_descr_sz(int sensor_idx, int descriptor_name);
+ u8 get_feature_report(int sensor_idx, int report_id, u8 *feature_report);
+diff --git a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h
+index 8d97ca0f9b52..ffbfc69dfaf4 100644
+--- a/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h
++++ b/drivers/hid/amd-sfh-hid/hid_descriptor/amd_sfh_hid_report_desc.h
+@@ -644,6 +644,25 @@ const u8 als_report_descriptor[] = {
+ 0xC0			/* HID end collection */
+ };
+ 
++
++static const u8 kbguard_report_descriptor[] = {
++        0x06, 0x43, 0xFF,  // Usage Page (Vendor Defined 0xFF43)
++        0x0A, 0x02, 0x02,  // Usage (0x0202)
++        0xA1, 0x01,        // Collection (Application)
++        0x85, 0x11,        //   Report ID (17)
++        0x15, 0x00,        //   Logical Minimum (0)
++        0x25, 0x01,        //   Logical Maximum (1)
++        0x35, 0x00,        //   Physical Minimum (0)
++        0x45, 0x01,        //   Physical Maximum (1)
++        0x65, 0x00,        //   Unit (None)
++        0x55, 0x00,        //   Unit Exponent (0)
++        0x75, 0x01,        //   Report Size (1)
++        0x95, 0x98,        //   Report Count (-104)
++        0x81, 0x03,        //   Input (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position)
++        0x91, 0x03,        //   Output (Const,Var,Abs,No Wrap,Linear,Preferred State,No Null Position,Non-volatile)
++        0xC1, 0x00,        // End Collection
++};
++
+ /* BIOMETRIC PRESENCE*/
+ static const u8 hpd_report_descriptor[] = {
+ 0x05, 0x20,          /* Usage page */
+diff --git a/drivers/platform/x86/asus-nb-wmi.c b/drivers/platform/x86/asus-nb-wmi.c
+index a81dc4b191b7..88be054574ce 100644
+--- a/drivers/platform/x86/asus-nb-wmi.c
++++ b/drivers/platform/x86/asus-nb-wmi.c
+@@ -123,6 +123,12 @@ static struct quirk_entry quirk_asus_use_lid_flip_devid = {
+ 	.use_lid_flip_devid = true,
+ };
+ 
++static struct quirk_entry quirk_asus_gv301qe = {
++       	.wmi_backlight_set_devstate = true,
++	.use_lid_flip_devid = true,
++	.enodev_as_tablet_mode = true,
++};
++
+ static int dmi_matched(const struct dmi_system_id *dmi)
+ {
+ 	pr_info("Identified laptop model '%s'\n", dmi->ident);
+@@ -471,6 +477,15 @@ static const struct dmi_system_id asus_quirks[] = {
+ 		},
+ 		.driver_data = &quirk_asus_use_lid_flip_devid,
+ 	},
++	{
++		.callback = dmi_matched,
++		.ident = "ASUS ROG FLOW X13",
++		.matches = {
++			DMI_MATCH(DMI_SYS_VENDOR, "ASUSTeK COMPUTER INC."),
++			DMI_MATCH(DMI_PRODUCT_NAME, "GV301QE"),
++		},
++		.driver_data = &quirk_asus_gv301qe,
++	},
+ 	{},
+ };
+ 
+@@ -578,6 +593,7 @@ static const struct key_entry asus_nb_wmi_keymap[] = {
+ 	{ KE_KEY, 0xC5, { KEY_KBDILLUMDOWN } },
+ 	{ KE_IGNORE, 0xC6, },  /* Ambient Light Sensor notification */
+ 	{ KE_KEY, 0xFA, { KEY_PROG2 } },           /* Lid flip action */
++	{ KE_KEY, 0xBD, { KEY_PROG2 } },           /* Lid flip action on rog flow laptops */
+ 	{ KE_END, 0},
+ };
+ 
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index 8f067ac4e952..3df0bb51858c 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -56,6 +56,8 @@ module_param(fnlock_default, bool, 0444);
+ 
+ #define ASUS_WMI_MGMT_GUID	"97845ED0-4E6D-11DE-8A39-0800200C9A66"
+ 
++#define ASUS_ROG_FLOW_WMI_DEVID_LID_FLIP 0x00060077 
++
+ #define NOTIFY_BRNUP_MIN		0x11
+ #define NOTIFY_BRNUP_MAX		0x1f
+ #define NOTIFY_BRNDOWN_MIN		0x20
+@@ -68,6 +70,7 @@ module_param(fnlock_default, bool, 0444);
+ #define NOTIFY_KBD_FBM			0x99
+ #define NOTIFY_KBD_TTP			0xae
+ #define NOTIFY_LID_FLIP			0xfa
++#define NOTIFY_LID_FLIP_ROG		0xbd
+ 
+ #define ASUS_WMI_FNLOCK_BIOS_DISABLED	BIT(0)
+ 
+@@ -394,6 +397,12 @@ static int asus_wmi_input_init(struct asus_wmi *asus)
+ 
+ 	if (asus->driver->quirks->use_lid_flip_devid) {
+ 		result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_LID_FLIP);
++		if (result < 0) {
++			result = asus_wmi_get_devstate_simple(asus, ASUS_ROG_FLOW_WMI_DEVID_LID_FLIP);
++		}
++		if (result == -ENODEV && asus->driver->quirks->enodev_as_tablet_mode) {
++			result = 1;
++		}
+ 		if (result < 0)
+ 			asus->driver->quirks->use_lid_flip_devid = 0;
+ 		if (result >= 0) {
+@@ -431,6 +440,13 @@ static void lid_flip_tablet_mode_get_state(struct asus_wmi *asus)
+ {
+ 	int result = asus_wmi_get_devstate_simple(asus, ASUS_WMI_DEVID_LID_FLIP);
+ 
++	if (result < 0) {
++		result = asus_wmi_get_devstate_simple(asus, ASUS_ROG_FLOW_WMI_DEVID_LID_FLIP);
++	}
++	if(result == -ENODEV && asus->driver->quirks->enodev_as_tablet_mode) {
++		result = 1;
++	}
++
+ 	if (result >= 0) {
+ 		input_report_switch(asus->inputdev, SW_TABLET_MODE, result);
+ 		input_sync(asus->inputdev);
+@@ -2540,7 +2556,7 @@ static void asus_wmi_handle_event_code(int code, struct asus_wmi *asus)
+ 		return;
+ 	}
+ 
+-	if (asus->driver->quirks->use_lid_flip_devid && code == NOTIFY_LID_FLIP) {
++	if (asus->driver->quirks->use_lid_flip_devid && (code == NOTIFY_LID_FLIP || code == NOTIFY_LID_FLIP_ROG)) {
+ 		lid_flip_tablet_mode_get_state(asus);
+ 		return;
+ 	}
+diff --git a/drivers/platform/x86/asus-wmi.h b/drivers/platform/x86/asus-wmi.h
+index b302415bf1d9..ac9023aae838 100644
+--- a/drivers/platform/x86/asus-wmi.h
++++ b/drivers/platform/x86/asus-wmi.h
+@@ -35,6 +35,7 @@ struct quirk_entry {
+ 	bool wmi_force_als_set;
+ 	bool use_kbd_dock_devid;
+ 	bool use_lid_flip_devid;
++	bool enodev_as_tablet_mode;
+ 	int wapf;
+ 	/*
+ 	 * For machines with AMD graphic chips, it will send out WMI event
+-- 
+2.35.1
+
