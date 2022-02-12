@@ -4,21 +4,19 @@ _pkgname=music-kitten
 pkgname=${_pkgname}-appimage
 pkgdesc="Use your own soundtrack in Counter-Strike: Global Offensive."
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 provides=('music-kitten')
 conflicts=('music-kitten')
 url="https://musickitten.net/"
 arch=("x86_64")
 license=("GPL3")
-source=("https://github.com/CorySanin/Kitten-for-CSGO/releases/download/v2.5.0/Music.Kitten-2.5.1.AppImage")
-sha1sums=("d867b503755e55706b43ced24f687ee95a5d515c")
-_filename=("Music.Kitten-2.5.1.AppImage")
-noextract=("$_filename")
 _appimage="$_pkgname.AppImage"
+source=("$_appimage"::"https://github.com/CorySanin/Kitten-for-CSGO/releases/download/v2.5.0/Music.Kitten-2.5.1.AppImage")
+sha1sums=("d867b503755e55706b43ced24f687ee95a5d515c")
+noextract=("$_appimage")
 options=(!strip)
 
 prepare() {
-	mv "${_filename}" "$_appimage"
 	chmod +x "$_appimage"
 	"./$_appimage" --appimage-extract
 
