@@ -1,6 +1,6 @@
 pkgbase = qqc2-breeze-style
 	pkgdesc = Breeze inspired QQC2 Style
-	pkgver = 5.23.4
+	pkgver = 5.24
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/qqc2-breeze-style
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = qqc2-breeze-style
 	depends = qt5-declarative
 	depends = qt5-quickcontrols2
 	depends = kirigami2
-	source = git+https://invent.kde.org/plasma/qqc2-breeze-style.git#commit=79a21630943ffdbb3aa8bbfd1a5328e28443ed98
+	source = git+https://invent.kde.org/plasma/qqc2-breeze-style.git#commit=d7910c79db78033d6561fecf09219c181e0db3cf
 	md5sums = SKIP
 
 pkgname = qqc2-breeze-style
