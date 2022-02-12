@@ -3,7 +3,7 @@
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 pkgname="burp-backup"
 _pkgname="burp"
-pkgver=2.2.18
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A backup and restore program that uses librsync to reduce backup size."
 arch=('i686' 'x86_64')
@@ -15,23 +15,17 @@ install="${_pkgname}.install"
 url='https://burp.grke.org/'
 
 source=(
-  "http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
+  "https://github.com/grke/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
   "burp.install"
-  "burp-server.service"
-  "burp-client.service"
-  "burp-client.timer"
-  "01-runpath_fix.patch"
   "readme-archlinux.txt"
+  "https://github.com/grke/burp/commit/1d6c931af7c11f164cf7ad3479781e8f03413496.patch"
 )
 
 sha256sums=(
-  9c0c5298d8c2995d30d4e1a63d2882662e7056ce2b0cee1f65d7d0a6775c0f81 # burp-2.2.18.tar.bz2
+  1f88d325f59c6191908d13ac764db5ee56b478fbea30244ae839383b9f9d2832 # burp-2.4.0.tar.bz2
   813b5c349f9d0ea1db2fb166531472b098a773aa3d2766d151f175ad17c40351 # burp.install
-  94e1b5f8cf61c44f84675f685279e0d3376abd61ac1e6e4f5da0dd6b922c481f # burp-server.service
-  7908970e23cfb08554cbf53da1f8f3193a6b6ee076584f797644efab8431bfe3 # burp-client.service
-  0310a26e9a0af76f847130019cb865dfa09a5e8f9899bfd6526c69e82d160bf4 # burp-client.timer
-  6a612f083f512e5293c34db10bbfa0af5c4a4ca74b2ba83fd9bfdb9435f3a69c # 01-runpath_fix.patch
   e3e633f09d03efa3f2c1e769a2e31f514466ebd97cf6bb5f1ef0761e17abec67 # readme-archlinux.txt
+  SKIP
 )
 
 backup=(
@@ -42,18 +36,16 @@ backup=(
 )
 
 prepare() {
+  patch -d "$srcdir/$_pkgname-$pkgver" -p1 < 1d6c931af7c11f164cf7ad3479781e8f03413496.patch
   cd "$srcdir/$_pkgname-$pkgver"
-  patch -Np1 -i ../01-runpath_fix.patch
 }
 
 build() {
   cd "$_pkgname-$pkgver"
   autoreconf -vif
-  # In the 2.70 version of autotools the ability exists to define "runstatedir"
-  # which will eliminate the need for the patch file. Archlinux is currently at v2.69.
-  # I.E. use "--runstatedir=/run" when 2.70 is released.
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
+              --runstatedir=/run \
               --localstatedir=/var \
               --sysconfdir=/etc/burp
   make
@@ -63,17 +55,14 @@ package() {
   cd "$_pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install-all
 
-  # Setup logrotate
-  mkdir -p "$pkgdir/etc/logrotate.d"
-  cp debian/logrotate "$pkgdir/etc/logrotate.d/burp"
-
   # Copy useful user setup files
   mkdir -p "$pkgdir/usr/share/burp/"
-  cp debian/burp.cron.d "$pkgdir/usr/share/burp/"
+  cp -r configs "$pkgdir/usr/share/burp/"
   mkdir -p "$pkgdir/usr/lib/systemd/system/"
-  cp "$srcdir/burp-server.service" "$pkgdir/usr/lib/systemd/system/"
-  cp "$srcdir/burp-client.service" "$pkgdir/usr/lib/systemd/system/"
-  cp "$srcdir/burp-client.timer" "$pkgdir/usr/lib/systemd/system/"
+  cp "systemd/burp-server.service" "$pkgdir/usr/lib/systemd/system/"
+  cp "systemd/burp-server-unprivileged.service" "$pkgdir/usr/lib/systemd/system/"
+  cp "systemd/burp-client.service" "$pkgdir/usr/lib/systemd/system/"
+  cp "systemd/burp-client.timer" "$pkgdir/usr/lib/systemd/system/"
 
   # Copy archlinux specific documentation 
   mkdir -p "$pkgdir/usr/share/doc/burp/"
