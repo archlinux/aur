@@ -1,0 +1,10 @@
+What's new in version 1.0.6-r2:
+
+    - fixed evaluation issues (eg. now if/else works when evaluated
+      indirectly)
+    - now for guish core command (eg. keywords) no implied subject is checked
+      (TODO refactor to reduce comlexity/improve performance)
+
+What's new in version 1.0.6-r3:
+
+    - fixed autotools conf issue
