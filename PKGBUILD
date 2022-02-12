@@ -51,6 +51,8 @@ depends=('wxgtk3'
           'ncurses'
           'uchardet'
           'hunspell'
+          'ctags'
+          #'universal-ctags'
           #'xterm' 'wget' 'curl'
           #'python2'
           #'python'
@@ -134,6 +136,11 @@ make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
 install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkg_name}/LICENSE"
 #install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
 #install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
+
+# universal-ctags experiment
+mv "${pkgdir}/usr/bin/codelite-ctags" "${pkgdir}/usr/bin/codelite-ctags.dist"
+ln -s /usr/bin/ctags "${pkgdir}/usr/bin/codelite-ctags"
+
 }
 
 #
