@@ -7,6 +7,7 @@ pkgbase = python-osqp
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python-pytest
+	makedepends = cmake
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-qdldl

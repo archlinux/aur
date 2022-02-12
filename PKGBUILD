@@ -11,7 +11,8 @@ depends=(
     'python-qdldl'
     ) 
 makedepends=('python-setuptools'
-	     'python-pytest')
+	     'python-pytest'
+	     'cmake')
 provides=('python-osqp')
 conflicts=('python-osqp-git')
 license=('Apache')
