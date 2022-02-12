@@ -1,0 +1,13 @@
+pkgbase = python-confusables
+	pkgdesc = A python package providing functionality for matching words that can be confused for eachother, but contain different characters
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/confusables/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/confusables/confusables-1.2.0.tar.gz
+	sha256sums = 429caad05333832e1edabb80815704cd26530514369430f913002b2ba548c38e
+
+pkgname = python-confusables
