@@ -1,16 +1,16 @@
 pkgbase = python-crds-doc
 	pkgdesc = Documentation for STScI CRDS
-	pkgver = 11.6.1
+	pkgver = 11.7.0
 	pkgrel = 1
 	url = https://hst-crds.stsci.edu/static/users_guide/index.html
 	arch = any
 	license = BSD
-	makedepends = python-crds=11.6.1
+	makedepends = python-crds=11.7.0
 	makedepends = python-sphinx-astropy
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-stsci_rtd_theme
 	makedepends = python-asdf
-	source = https://github.com/spacetelescope/crds/archive/11.6.1.tar.gz
-	md5sums = 92790b9cb38ea3239f03befb9a9a2eff
+	source = https://github.com/spacetelescope/crds/archive/11.7.0.tar.gz
+	md5sums = f74ed70619341d2e3b6cdbe1b923e2bd
 
 pkgname = python-crds-doc
