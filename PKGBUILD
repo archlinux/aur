@@ -3,7 +3,7 @@
 _pkgname="bulk-downloader-for-reddit"
 pkgname=python-bdfr
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bulk downloader for Reddit"
 arch=('any')
 url="https://github.com/aliparlakci/bulk-downloader-for-reddit"
