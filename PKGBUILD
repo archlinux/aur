@@ -3,14 +3,14 @@
 
 pkgname=man-pages-fr-git
 _gitname=manpages-l10n
-pkgver=r17156.004b4777c4
+pkgver=r17815.7dd9c5f30e
 pkgrel=1
 pkgdesc="French man pages (Git version)"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"
 license=('GPL3')
 conflicts=('man-pages-fr' 'man-pages-pacman-fr')
-depends=('man-db')
+depends=('man')
 makedepends=('po4a' 'git')
 changelog=$pkgname.changelog
 options=('!emptydirs')
