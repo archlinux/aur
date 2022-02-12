@@ -1,12 +1,12 @@
 # Maintainer: Mark Kostovetskyy <mark at sgtxd dot de >
 pkgname='ani-cli'
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli to browse and watch anime."
 arch=('any')
 url="https://github.com/pystardust/ani-cli"
 license=('GPL3')
-depends=('grep' 'sed' 'curl' 'openssl' 'jq' 'mpv')
+depends=('grep' 'sed' 'curl' 'openssl' 'mpv')
 optdepends=('vlc: An alternative video player'
 'aria2: For downloading episodes')
 conflicts=('ani-cli-git')
