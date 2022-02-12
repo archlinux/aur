@@ -2,3 +2,4 @@ src
 pkg
 *.deb
 *.pkg.*
+*.log

@@ -2,7 +2,7 @@
 # Previous maintainer: Yochai Gal <yochai gal at gmail dot com>
 
 pkgname=insync-thunar
-pkgver=3.4.2.40983
+pkgver=3.0.23.40579
 pkgrel=1
 pkgdesc="Thunar integration for insync"
 url="https://www.insynchq.com/downloads"
