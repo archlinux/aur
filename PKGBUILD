@@ -24,9 +24,9 @@ sha256sums=('56088115827ae406dcd383e3c3fdf408950f351887259e41965fe4b7929f2dbc'
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 
 prepare() {
+  mv "$srcdir/ktexteditor-$pkgver" "$srcdir/$pkgname-$pkgver"
   patch -d $pkgname-$pkgver -p1 < 804e4944.patch
   patch -d $pkgname-$pkgver -p1 < c80f935c.patch
-  mv "$srcdir/ktexteditor-$pkgver" "$srcdir/$pkgname-$pkgver"
   patch --directory="$srcdir/$pkgname-$pkgver" --forward --strip=1 --input="$srcdir/fix-replace.patch"
 }
 
