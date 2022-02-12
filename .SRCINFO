@@ -1,0 +1,14 @@
+pkgbase = imgurs
+	pkgdesc = CLI for Imgur API
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/MedzikUser/imgurs
+	arch = x86_64
+	license = BSD3
+	makedepends = git
+	makedepends = cargo
+	depends = libnotify
+	source = imgurs::git+https://github.com/MedzikUser/imgurs#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = imgurs
