@@ -8,14 +8,14 @@
 
 pkgname=v8-r
 pkgver=10.0.119
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
 url="https://v8.dev"
 license=('BSD')
 depends=('icu')
 optional=('rlwrap')
-makedepends=('git' 'lld' 'python2' 'python3')
+makedepends=('git' 'lld' 'python3')
 conflicts=('v8' 'v8-3.14' 'v8.3.14-bin' 'v8-6.7-static' 'v8-static-gyp' 'v8-static-gyp-5.4')
 provides=('v8')
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
@@ -96,17 +96,17 @@ build() {
 
   cd $srcdir/v8
 
-  msg2 "Building, this will take a while..."
+  msg2 "Building"
   ninja -C $OUTFLD
 }
 
 check() {
   cd $srcdir/v8
 
-  msg2 "Testing, this will also take a while..."
-  python2 tools/run-tests.py --no-presubmit \
-                             --outdir=$OUTFLD \
-                             --arch="x64" || true
+  msg2 "Testing"
+  tools/run-tests.py --no-presubmit \
+                     --outdir=$OUTFLD \
+                     --arch="x64" || true
 }
 
 package() {
