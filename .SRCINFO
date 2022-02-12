@@ -1,7 +1,7 @@
 pkgbase = swayimg
 	pkgdesc = Image viewer for Sway/Wayland
-	pkgver = 1.5
-	pkgrel = 2
+	pkgver = 1.6
+	pkgrel = 1
 	url = https://github.com/artemsen/swayimg
 	arch = x86_64
 	license = MIT
@@ -13,10 +13,12 @@ pkgbase = swayimg
 	depends = json-c
 	depends = hicolor-icon-theme
 	depends = libavif
+	depends = libjxl
 	depends = librsvg
 	depends = libwebp
+	depends = libexif
 	optdepends = bash-completion: Bash completions
-	source = swayimg-1.5.tar.gz::https://github.com/artemsen/swayimg/archive/v1.5.tar.gz
-	md5sums = 92cb0a35e40f896480528bfc9b9d793b
+	source = swayimg-1.6.tar.gz::https://github.com/artemsen/swayimg/archive/v1.6.tar.gz
+	md5sums = 7d4ae96122032d60e7b87320559fd389
 
 pkgname = swayimg
