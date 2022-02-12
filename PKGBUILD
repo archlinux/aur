@@ -1,13 +1,12 @@
 # Maintainer: Ícar N. S. <personal@icarns.xyz>
 pkgname=gtuber-git
-pkgver=r212.90df019
-pkgrel=1
+pkgver=r239.9b10c99
+pkgrel=2
 pkgdesc="A C library to fetch media info from websites."
 arch=(any)
 url="https://github.com/Rafostar/gtuber"
 license=('LGPL')
-# When gstreamer 1.20.x is released, depend on non-git packages.
-depends=('glib2' 'glibc' 'gobject-introspection' 'libsoup' 'gstreamer-git' 'gst-plugins-base-git' 'json-glib' 'gtk-doc')
+depends=('glib2' 'glibc' 'gobject-introspection' 'libsoup' 'gstreamer>=1.20' 'gst-plugins-base>=1.20' 'json-glib' 'gtk-doc')
 makedepends=('git' 'gcc' 'meson' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
