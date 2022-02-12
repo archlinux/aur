@@ -1,7 +1,7 @@
 pkgbase = yt-spammer-purge
 	pkgdesc = A script that allows you to filter and search for spammer comments on your channel and other's channel(s)
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ThioJoe/YT-Spammer-Purge
 	install = msg.install
 	arch = any

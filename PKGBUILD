@@ -2,7 +2,7 @@
 
 pkgname=yt-spammer-purge
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A script that allows you to filter and search for spammer comments on your channel and other's channel(s)"
 arch=('any')
 url="https://github.com/ThioJoe/YT-Spammer-Purge"
@@ -20,5 +20,6 @@ install=msg.install
 package() {
     mkdir -p "$pkgdir/usr/share"
     cp -r "$srcdir/YT-Spammer-Purge-$pkgver" "$pkgdir/usr/share/$pkgname"
+    chmod a+w "$pkgdir/usr/share/$pkgname"
     install -Dm755 yt-spammer-purge "$pkgdir/usr/bin/yt-spammer-purge"
 }
