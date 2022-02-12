@@ -5,7 +5,7 @@
 
 pkgname=gnat-gps
 pkgver=2022
-pkgrel=1
+pkgrel=2
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
