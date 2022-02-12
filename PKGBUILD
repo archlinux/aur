@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-smi-lib64
-pkgver=4.5.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='ROCm System Management Interface Library'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cmake')
 options=(!staticlibs strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-$pkgver.tar.gz")
-sha256sums=('d4a34db26852defb62817aa44f08ef96d678c63a6f33425bc9d48c18e5e37b7a')
+sha256sums=('9d0e560072f815b441528a5d6124e901570a5a04e9cff1f21329861609b37203')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 
@@ -19,7 +19,9 @@ build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
+  # build type Release fixes warnings regarding FORTIFY_SOURCE
   cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DCMAKE_BUILD_TYPE=Release \
         "$srcdir/rocm_smi_lib-rocm-$pkgver"
   make
 }
