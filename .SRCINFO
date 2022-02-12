@@ -1,0 +1,15 @@
+pkgbase = rapd
+	pkgdesc = Rust Audio Player Daemon
+	pkgver = 0.1.2
+	pkgrel = 0
+	url = https://rapd.readthedocs.io/en/latest/
+	arch = any
+	license = GPL-3.0
+	makedepends = rust
+	makedepends = cmake
+	optdepends = pulseaudio: Pulse audio playback
+	optdepends = alsa-lib: Alsa audio playback
+	source = rapd-0.1.2.tar.gz
+	sha256sums = 309afa1d0962ac63355b9ce0c440c8768da31237645a8b142c3a0309968ccf40
+
+pkgname = rapd
