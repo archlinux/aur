@@ -1,6 +1,6 @@
 pkgbase = mediarepo
 	pkgdesc = A tag based media management tool for images, videos, audio and more
-	pkgver = 0.13.4
+	pkgver = 1.0.0_rc.1
 	pkgrel = 1
 	url = https://github.com/trivernis/mediarepo-ui
 	arch = x86_64
@@ -15,14 +15,14 @@ pkgbase = mediarepo
 	makedepends = librsvg
 	makedepends = libvips
 	makedepends = clang
-	makedepends = rustup
+	makedepends = cargo
 	makedepends = yarn
 	makedepends = nodejs-lts-gallium
 	optdepends = mediarepo-daemon
 	options = !strip
-	source = mediarepo-0.13.4.tar.gz::https://github.com/Trivernis/mediarepo/archive/v0.13.4.tar.gz 
+	source = mediarepo-1.0.0_rc.1.tar.gz::https://github.com/Trivernis/mediarepo/archive/1.0.0-rc.1.tar.gz 
 	source = mediarepo.desktop
-	sha512sums = bc1587a184a6620b44951ec28784cff07d83fa08ac5af896b3f79c0792c3b3d8ff7a1ddf0287d7323af3efa745aa39e1c78157f60638291797854ce2e512f31f
+	sha512sums = d65a7c086b636457fe0104ae07b164545bfd2e679169a1a1d671a58d0216607d543e8e98851c5c63cee27f8e2bf901ca53b0731cbe8ab331ac91d115ea6650f8
 	sha512sums = be877fb4e9571ca174e1fb38eb87e4d2fd2aac95938aa19466f7f5677da1957607a75acc5c1b2c2ae0bd76d389f9958ff4e0563339233e8f33e834ba4a8d398b
 
 pkgname = mediarepo
