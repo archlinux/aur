@@ -1,32 +1,32 @@
 # Maintainer: Trivernis <trivernis+aur at protonmail dot com>
 
 pkgname=mediarepo-daemon
-pkgver=0.13.4
+pkgver=1.0.0_rc.1
 pkgrel=1
 pkgdesc='Daemon to manage a media repository'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo
 license=(GPL3)
 depends=('ffmpeg')
-provides=('mediarepo-daemon=0.13.4')
-makedepends=('clang' 'rustup')
+provides=('mediarepo-daemon=1.0.0_rc.1')
+makedepends=('clang' 'cargo')
 
 options=(!strip)
-source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/mediarepo/archive/v$pkgver.tar.gz)
-sha512sums=('bc1587a184a6620b44951ec28784cff07d83fa08ac5af896b3f79c0792c3b3d8ff7a1ddf0287d7323af3efa745aa39e1c78157f60638291797854ce2e512f31f')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/mediarepo/archive/v1.0.0-rc.1.tar.gz)
+sha512sums=('d65a7c086b636457fe0104ae07b164545bfd2e679169a1a1d671a58d0216607d543e8e98851c5c63cee27f8e2bf901ca53b0731cbe8ab331ac91d115ea6650f8')
 
 prepare() {
-  cd mediarepo-$pkgver
-  rustup default stable
+  cd mediarepo-1.0.0-rc.1/mediarepo-daemon
+  cargo fetch
 }
 
 build() {
-  cd mediarepo-$pkgver/$pkgname
-  cargo build --release --features ffmpeg
+  cd mediarepo-1.0.0-rc.1/$pkgname
+  cargo build --frozen --release --features ffmpeg
 }
 
 package() {
-  cd mediarepo-$pkgver/$pkgname/target/release
+  cd mediarepo-1.0.0-rc.1/$pkgname/target/release
 
   install -d "$pkgdir"/usr/{lib,bin}
   cp -a mediarepo-daemon "$pkgdir"/usr/lib/mediarepo-daemon
