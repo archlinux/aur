@@ -1,17 +1,17 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=fnott
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Keyboard driven and lightweight Wayland notification daemon"
 arch=('x86_64')
 url="https://codeberg.org/dnkl/fnott"
 license=('MIT')
 depends=('dbus' 'fcft' 'wlroots')
-makedepends=('git' 'meson' 'scdoc' 'wayland-protocols' 'tllist')
+makedepends=('meson' 'scdoc' 'wayland-protocols' 'tllist')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d6cfb7efcfad5e0aa95c5fd9632c638a53a0debfc17128e70922a1ba9f841470')
+sha256sums=('a4e72845cde23aff0653f9b218a32cb40ae628b3f690dc02333ea95469faf216')
 
 prepare() {
 	cd "$pkgname"
