@@ -1,0 +1,22 @@
+pkgbase = kquickchatcomponents-git
+	pkgdesc = Set of chat components for QtQuick chat apps wishing to fit in with KDE's collection of chat apps
+	pkgver = r15.f184bbc
+	pkgrel = 1
+	url = https://invent.kde.org/libraries/kquickchatcomponents
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = qt5-declarative
+	provides = kquickimageeditor
+	conflicts = kquickimageeditor
+	source = git+https://invent.kde.org/libraries/kquickchatcomponents.git
+	sha256sums = SKIP
+
+pkgname = kquickchatcomponents-git
