@@ -4,7 +4,7 @@
 
 pkgname=pulseeffects-legacy
 pkgver=4.8.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Audio Effects for Pulseaudio Applications, without pipewire"
 arch=($CARCH)
 url='https://github.com/wwmm/pulseeffects'
