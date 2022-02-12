@@ -1,7 +1,7 @@
 # Maintainer: Kyle Fuller <kyle@fuller.li>
 
 pkgname=swiftenv
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Swift Version Manager'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://swiftenv.fuller.li/'
 license=('custom')
 depends=('bash')
 source=("https://github.com/kylef/swiftenv/archive/$pkgver.tar.gz")
-sha256sums=('acf7cb5e9f6fe4429e5c58249559a6ada6e1d4328e924207cd7f540bceffe339')
+sha256sums=('4452b47c2d256c4efbfc3870cd9e1e0f1aa5c5821e5b590b97547cd10bdbc0ac')
 
 package() {
   cd "${srcdir}/swiftenv-${pkgver}"
