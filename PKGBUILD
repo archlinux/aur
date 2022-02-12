@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gmail-desktop
-_pkgver=3.0.0-alpha.31
+_pkgver=3.0.0-alpha.32
 pkgver=${_pkgver//-/.}
 pkgrel=1
 _electronversion=15
@@ -15,7 +15,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$_pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('4bbd54e4b7967f1e091dbe5c99982e5656bf38ea76c8e9e4469bc0cf19e8aaf3'
+sha256sums=('00a1c15f1e6424ccea700f46c5b72583b3dc9f55f4f12e96619c6f7f586deea1'
             '73ecbbf5025251fb057557cf316c8fc39fb99047fb1a2d5e7f26ad83180d9877'
             '8c30e207fe88455f63f4c0b2ae9087a2ca2bbeaa68b9be244c31a9ec392373c4')
 
