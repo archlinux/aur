@@ -1,0 +1,17 @@
+pkgbase = trust-dns
+	pkgdesc = Trust-DNS is a safe and secure DNS server with DNSec support. Eventually this...
+	pkgver = 0.20.4
+	pkgrel = 1
+	url = http://www.trust-dns.org/index.html
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	conflicts = bind
+	source = trust-dns-0.20.4.tar.gz::https://crates.io/api/v1/crates/trust-dns/0.20.4/download
+	sha512sums = 873e5632e3c6fa2e2c7f344c3b7c1e57a3d962cfc95d6ec42d84e6a9f38e385efbc91c01bf3ef3e18138a656ea4cbf0d23320123a6315bd08c3443d2b8443af8
+
+pkgname = trust-dns
