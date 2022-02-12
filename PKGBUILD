@@ -1,34 +1,29 @@
-# Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
+# Contributor: dreieck
+# Contributor: BlackIkeEagle
 
 pkgname=kvirtual
 pkgver=1.1.1
 _commithash='c44469b'
 _developer='didier13150'
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/KVirtual?content=150682"
 license=('GPL2')
-depends=('kdebase-runtime' 'qemu')
+depends=('kde-cli-tools' 'kdelibs' 'qemu')
 makedepends=('cmake' 'automoc4')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/$_developer/$pkgname/tarball/$_commithash")
-sha256sums=('b4c9b11add2a8174cd13ed7c5349551d0afdd1ded5a339f4310c49467bfed5ad')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/didier13150/kvirtual/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('7d52b072f2cc7604493ea92c5108cb923d5e86431c1801df3877bb3d2dfd6200')
 
-_srcfolder=$_developer-$pkgname-$_commithash
-
-prepare() {
-	mv "$_srcfolder" "$pkgname-$pkgver"
-}
 
 build() {
-	cd "$pkgname-$pkgver"
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-	make
+  cd "$pkgname-$pkgver"
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+  make
 }
 package() {
-	cd "$pkgname-$pkgver/build"
-	make DESTDIR="$pkgdir" install
+  cd "$pkgname-$pkgver/build"
+  make DESTDIR="$pkgdir" install
 }
-
