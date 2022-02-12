@@ -1,7 +1,7 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=rng-rename
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A CLI tool to rename files to randomly generated strings."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
@@ -11,7 +11,7 @@ conflicts=("rng-rename-git" "rng-rename-bin")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('dd02b779800f5ccdd1eddad05e000ad249f46dedade95e11a6659852980a72f7')
+sha256sums=('a45960fcfbf2418b87476edd303eb762108dce1adf326d92af84ad9b671bd2a4')
 
 prepare() {
   cd ${pkgname}-${pkgver}
