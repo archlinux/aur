@@ -1,0 +1,21 @@
+pkgbase = mqtt2prometheus
+	pkgdesc = Prometheus exporter that can be used to scrape topics from MQTT
+	pkgver = 06cde09
+	pkgrel = 1
+	url = https://github.com/hikhvar/mqtt2prometheus
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	source = mqtt2prometheus::git+https://github.com/hikhvar/mqtt2prometheus.git
+	source = mqtt2prometheus.service
+	source = sysusers.conf
+	sha256sums = SKIP
+	sha256sums = 86e4168f3eff691984630b47464aa0c87d3a8a94330c7d18ccc7d0aebcf8c95c
+	sha256sums = f3df0c3edd39c0e93b282f493c2a113da71ab0b07768c71db0365a60b3c267c1
+
+pkgname = mqtt2prometheus
