@@ -1,17 +1,18 @@
 pkgbase = ibus-bamboo
 	pkgdesc = A Vietnamese IME for IBus
-	pkgver = 0.8.0_RC10
+	pkgver = 0.8.1_RC1
 	pkgrel = 1
 	url = https://github.com/BambooEngine/ibus-bamboo
 	arch = any
 	license = GPL3
 	makedepends = go
+	makedepends = gtk3
 	makedepends = libx11
 	makedepends = libxtst
 	depends = ibus
 	conflicts = ibus-bamboo-git
 	conflicts = bamboo-ibus-git
-	source = ibus-bamboo-0.8.0_RC10.tar.gz::https://github.com/BambooEngine/ibus-bamboo/archive/v0.8.0-RC10.tar.gz
-	sha256sums = 12099ad06db6c6878fd642cf76b4b0c52d109a2913fa4fa567a045a7cc3d8cec
+	source = ibus-bamboo-0.8.1-RC1.tar.gz::https://github.com/BambooEngine/ibus-bamboo/archive/v0.8.1-RC1.tar.gz
+	sha256sums = 5d2a4ce58a203d0e32f8c69f9358902d14f93d33c9c67b03a449e299e53fd49b
 
 pkgname = ibus-bamboo
