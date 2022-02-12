@@ -1,0 +1,13 @@
+pkgbase = labtunnel-git
+	pkgver = r207.09a1b34
+	pkgrel = 1
+	install = labtunnel.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = openssh
+	depends = systemd
+	source = labtunnel::git+https://github.com/renxida/labtunnel.git
+	sha256sums = SKIP
+
+pkgname = labtunnel-git
