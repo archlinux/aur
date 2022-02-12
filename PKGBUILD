@@ -1,7 +1,7 @@
 _pkgbase=xmm7360-pci
 pkgbase=xmm7360-pci-git
 pkgname=(xmm7360-pci-dkms-git xmm7360-pci-utils-git)
-pkgver=r219.b28714b
+pkgver=r229.cf6625a
 pkgrel=1
 pkgdesc='Driver for the Fibocom L850-GL / Intel XMM7360 LTE modem'
 arch=('x86_64')
@@ -11,13 +11,11 @@ makedepends=(python)
 source=("git+$url"
         "dkms.conf"
         "xmm7360.service"
-        "kernel-5.15-compat.patch"
         "nodbus-exit-code.patch"
         "dns-priority.patch")
 sha256sums=('SKIP'
             '7471249a65fa1cb1c41a5a33c3a7d368d74f61ba91d4dc3e39be6afafc7ec6c0'
             '2da4f2905390604b6dd0881cf874f2ee2c3898a24f86d380d1d403b2bb74c50d'
-            '2347cbf69ad32c33eae11546865355a2fc3b0a2ae747c70057e1ca142957edf3'
             'b5e98c712fff07040426f632e45c594c288e6adb2ecda06b31e2387d6284fa82'
             '8389a09554df2e87f3b9df921e018bcb46585bde31e47699999b8576510e19f0')
 
@@ -28,7 +26,6 @@ pkgver() {
 
 prepare() {
   cd ${_pkgbase}
-  patch -p1 -i'' "${srcdir}"/kernel-5.15-compat.patch
   patch -p1 -i'' "${srcdir}"/nodbus-exit-code.patch
   patch -p1 -i'' "${srcdir}"/dns-priority.patch
 }
