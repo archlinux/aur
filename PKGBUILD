@@ -1,24 +1,22 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mpv-thumbnail-script
-pkgver=0.4.2
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A Lua script to show preview thumbnails in mpv's OSC seekbar, sans external dependencies"
 arch=('any')
-install=mpv-thumbnail-script.install
-depends=('mpv' 'ffmpeg')
-url='https://github.com/TheAMM/mpv_thumbnail_script'
+url='https://github.com/marzzzello/mpv_thumbnail_script'
 license=('GPL3')
-options=('!strip')
-source=("mpv-thumbnail-script-server.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_server.lua"
-    "mpv-thumbnail-script-client-osc.lua::https://github.com/TheAMM/mpv_thumbnail_script/releases/download/${pkgver}/mpv_thumbnail_script_client_osc.lua"
-    'mpv_thumbnail_script.conf')
-sha256sums=('ef5b1875432ff916c4c34c52f655410be24b934da56f33efdc4ebf4f1db8d489'
-      '27e71f510f3a2c2e4be25082617aca277bfd118cbbeb95035cb579d704050fbd'
-      'SKIP')
+depends=('mpv' 'ffmpeg')
+install=mpv-thumbnail-script.install
+source=("${pkgname}-server.lua::${url}/releases/download/${pkgver}/mpv_thumbnail_script_server.lua"
+    "${pkgname}-client-osc.lua::${url}/releases/download/${pkgver}/mpv_thumbnail_script_client_osc.lua")
+sha256sums=('e356324e8068721fdbbe401641561fa13392f02ed5166d873bc63cc2962941ee'
+    'dc3029757fc8357d818c4bd64882e6dd34fb5c52ecff4c3abf9cdd37d684caba')
 
 package() {
-  install -Dm644 "${srcdir}/mpv-thumbnail-script-server.lua" -t "${pkgdir}/usr/share/mpv/scripts"
-  install -Dm644 "${srcdir}/mpv-thumbnail-script-client-osc.lua" -t "${pkgdir}/usr/share/mpv/scripts"
-  install -Dm644 "${srcdir}/mpv_thumbnail_script.conf" -t "${pkgdir}/etc/mpv-thumbnail-script"
+    local scripts="${pkgdir}/usr/share/mpv/scripts"
+
+    install -Dm644 "${srcdir}/${pkgname}-server.lua" -t "$scripts"
+    install -Dm644 "${srcdir}/${pkgname}-client-osc.lua" -t "$scripts"
 }
