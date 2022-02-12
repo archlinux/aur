@@ -4,7 +4,7 @@
 
 pkgname=lando-bin
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
 arch=('x86_64')
 url="https://docs.lando.dev/"
@@ -21,9 +21,6 @@ options=(!strip)
 package(){
     # Extract package data
     tar xf data.tar.gz -C "${pkgdir}"
-
-    # Don't need extra copy of docker-compose
-    rm "${pkgdir}/usr/share/lando/bin/docker-compose"
 
     # Symlink important binary files
     mkdir -p "$pkgdir"/usr/bin
