@@ -3,13 +3,13 @@
 pkgname=man-pages-da-git
 _gitname=manpages-l10n
 pkgver=r17815.7dd9c5f30e
-pkgrel=1
+pkgrel=2
 pkgdesc="Danish man pages (Git version)"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"
 license=('GPL3')
 conflicts=('man-pages-da')
-depends=('man-db')
+depends=('man')
 makedepends=('po4a' 'git')
 options=('!emptydirs')
 source=("${_gitname}::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git")
