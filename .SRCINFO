@@ -1,11 +1,13 @@
 pkgbase = rocm-smi-lib64
 	pkgdesc = ROCm System Management Interface Library
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/rocm_smi_lib
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
+	makedepends = doxygen
+	makedepends = texlive-latexextra
 	options = !staticlibs
 	options = strip
 	source = rocm-smi-lib64-5.0.0.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-5.0.0.tar.gz
