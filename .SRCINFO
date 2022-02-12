@@ -1,7 +1,7 @@
 pkgbase = wepush
 	pkgdesc = 专注批量推送的小而美的工具
-	pkgver = 4.4.0
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://rememberber.github.io/WePush/
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = wepush
 	makedepends = maven
 	makedepends = imagemagick
 	depends = java-runtime
-	source = wepush-src-4.4.0.tar.gz::https://github.com/rememberber/WePush/archive/refs/tags/v4.4.0.tar.gz
-	sha256sums = 7bd0b2a6b5f44e63614ccf7d76bd75c39b48aebd49328c09b984115aa5bf28f1
+	source = wepush-4.5.0.tar.gz::https://github.com/rememberber/WePush/releases/download/v4.5.0/WePush-4.5.0-linux.tar.gz
+	sha256sums = 3a3817901953c758f372dfb38d339ed9da409134a74ac24a0cb56d5090ed31f5
 
 pkgname = wepush
