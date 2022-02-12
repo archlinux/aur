@@ -3,7 +3,7 @@
 
 pkgname=python-ftfy
 _name=ftfy
-pkgver=6.0.3
+pkgver=6.1.1
 pkgrel=1
 pkgdesc='Fixes some problems with Unicode text after the fact'
 url="https://github.com/LuminosoInsight/python-ftfy"
@@ -12,7 +12,7 @@ license=('MIT')
 makedepends=('python-setuptools')
 depends=('python-wcwidth')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('52231f2e63464b1dab3190ff35053704ec0a497801d3bd3c76358f20775172e98e2f145763ab6788c24480be16256562a62cd50c6f028bc91128e8c586a08af5')
+sha512sums=('29026f5ed29417a24d3ee5f31cdf00197d72bba58b44eb06dce8ef2d79e8fa798b5b10cdcd299eda01cc698405d056ed9ea617dc25cbae3f458bc15bddaa541d')
 
 build() {
   cd "$_name-$pkgver"
