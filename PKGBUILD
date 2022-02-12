@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-amd
-pkgver=4.5.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -18,37 +18,27 @@ _hipamd='https://github.com/ROCm-Developer-Tools/hipamd'
 source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-opencl-$pkgver.tar.gz::$_opencl/archive/rocm-$pkgver.tar.gz"
         "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz"
-        "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
-        'disable-testing.patch'
-        'vector_oob.patch')
-sha256sums=('c2113dc3c421b8084cd507d91b6fbc0170765a464b71fb0d96bb875df368f160'
-            '96b43f314899707810db92149caf518bdb7cf39f7c0ad86e98ad687ffb0d396d'
-            '6581916a3303a31f76454f12f86e020fb5e5c019f3dbb0780436a8f73792c4d1'
-            'b6f35b1a1d0c466b5af28e26baf646ae63267eccc4852204db1e0c7222a39ce2'
-            '3f158fb78296477db176c53a8df60b8034004c400b6c62f558c94663a5246883'
-            '8295e2d1b1d48da821f280e6a44f8376cbe73b77bd58bdceed38dbc2a100569f')
+        "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz")
+sha256sums=('ae12fcda2d955f04a51c9e794bdb0fa96539cda88b6de8e377850e68e7c2a781'
+            '2aa3a628b336461f83866c4e76225ef5338359e31f802987699d6308515ae1be'
+            '6b72faf8819628a5c109b2ade515ab9009606d10f11316f0d7e4c4c998d7f724'
+            'cbd95a577abfd7cbffee14a4848f7789a417c6e5e5a713f42eb75d7948abcdf9')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _diropencl="$(basename "$_opencl")-$(basename "${source[1]}" ".tar.gz")"
 _dirrocclr="$(basename "$_rocclr")-$(basename "${source[2]}" ".tar.gz")"
 _dirhipamd="$(basename "$_hipamd")-$(basename "${source[3]}" ".tar.gz")"
 
-prepare() {
-  cd "$_dirhipamd"
-  # Tests are broken with cmake 3.21
-  patch -Np1 -i "$srcdir/disable-testing.patch"
-  cd "$srcdir/$_dirrocclr"
-  # https://github.com/ROCm-Developer-Tools/HIP/issues/2426
-  patch -Np1 -i "$srcdir/vector_oob.patch"
-}
-
 build() {
+  # build fails if cmake and make are called from outside the build directory
   mkdir build && cd build
+  # Pass empty OFFLOAD_ARCH_STR to mitigate a problem with rocm_agent_enumerator (only needed for tests)
   cmake -Wno-dev \
   -S "$srcdir/$_dirhipamd" \
   -DHIP_COMMON_DIR="$srcdir/$_dirhip" \
   -DAMD_OPENCL_PATH="$srcdir/$_diropencl" \
   -DROCCLR_PATH="$srcdir/$_dirrocclr" \
   -DHIP_PLATFORM=amd \
+  -DOFFLOAD_ARCH_STR='' \
   -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip
 
   make
