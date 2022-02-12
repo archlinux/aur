@@ -2,7 +2,7 @@
 
 pkgname=python-taskipy
 _pkgname="${pkgname#python-}"
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="The complementary task runner for Python"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python' 'python-toml' 'python-psutil' 'python-colorama')
 makedepends=('python-build' 'python-poetry' 'python-install')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('61aabf75b65d2f86a62faa92b985557343dfc9d80e8018f07d84a0d4582ba17082880616985148cbe82c3bcc07657a74b4e30c6da3ea00ccd413e3e46b1633bf')
+b2sums=('ad392ba5522560bfd42a5541d3e2ae5f512eb33c302ab9f3772ffc9c79ddefa72fc549af292e6f54c221def6e58e36be302194f3e1d50ba1feba2edfcdc5f11f')
 
 build() {
   cd "$_pkgname-$pkgver"
