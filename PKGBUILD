@@ -1,7 +1,7 @@
 # Maintainer: Rayr https://rayr.ml/LinkInBio/
 pkgname=discord-rpc-cli-git
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord RPC cli client written purely in Rust"
 arch=(any)
 url="https://github.com/Rayrsn/Discord-RPC-cli"
@@ -16,6 +16,6 @@ build() {
 
 package() {
 	cd "Discord-RPC-cli-$pkgver"
-	install -Dm755 "target/release/Discord-RPC-cli" "$pkgdir/usr/bin/discord_rpc_cli"
+	install -Dm755 "target/release/discord-rpc-cli" "$pkgdir/usr/bin/discord-rpc-cli"
 
 }
