@@ -1,6 +1,6 @@
 # Maintainer: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-fixed-ss17
-pkgver=11.3.0
+pkgver=13.3.1
 pkgrel=1
 pkgdesc='Typeface family designed for coding, terminal use and technical documents.'
 arch=('any')
@@ -8,8 +8,8 @@ url='https://typeof.net/Iosevka/'
 license=('OFL')
 source=("https://github.com/be5invis/Iosevka/releases/download/v${pkgver}/ttf-iosevka-fixed-ss17-${pkgver}.zip"
         "${pkgname}-${pkgver}-${pkgrel}-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v${pkgver}/LICENSE.md")
-sha256sums=('80ebc24837a3a05636229908868b4edfedadee8068ca222bd413b0ad89893290'
-            '72c3d557ff41d871680652f56afd565ba6834c90eadc45a4ec15410dce1c0c80')
+sha256sums=('250a886b1091d619288e394ba950af71b014a1f6334046a55fc7d9f7717f3ea1'
+            '46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1')
 
 package() {
     install -d ${pkgdir}/usr/share/fonts/TTF/
