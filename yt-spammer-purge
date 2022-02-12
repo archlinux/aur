@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /usr/share/yt-spammer-purge
+python YTSpammerPurge.py

@@ -1,0 +1,4 @@
+post_install() {
+    echo 'You must create a client_secrets.json file as described in this guide: https://github.com/ThioJoe/YT-Spammer-Purge/wiki/Instructions:-Obtaining-an-API-Key'
+	echo 'Install client_secrets.json at /usr/bin/yt-spammer-purge/client_secrets.json'
+}
