@@ -1,6 +1,6 @@
 # Maintainer: Mateusz Janczuk <devqore@gmail.com>
 pkgname=myrdp
-pkgver=2018.2.1
+pkgver=2018.2.2
 pkgrel=1
 pkgdesc="RDP manager using freerdp. Similar to Remmina, mRemoteNG, RDCMan."
 arch=('any')
