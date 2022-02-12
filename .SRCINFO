@@ -1,13 +1,13 @@
 pkgbase = man-pages-vi-git
 	pkgdesc = Vietnamese man pages (Git version)
-	pkgver = r17547.78d381bf16
+	pkgver = r17815.7dd9c5f30e
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any
 	license = GPL3
 	makedepends = po4a
 	makedepends = git
-	depends = man-db
+	depends = man
 	conflicts = man-pages-vi
 	options = !emptydirs
 	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git

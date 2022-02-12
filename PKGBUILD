@@ -2,14 +2,14 @@
 
 pkgname=man-pages-vi-git
 _gitname=manpages-l10n
-pkgver=r17547.78d381bf16
+pkgver=r17815.7dd9c5f30e
 pkgrel=1
 pkgdesc="Vietnamese man pages (Git version)"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"
 license=('GPL3')
 conflicts=('man-pages-vi')
-depends=('man-db')
+depends=('man')
 makedepends=('po4a' 'git')
 options=('!emptydirs')
 source=("${_gitname}::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git")
