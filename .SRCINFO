@@ -1,7 +1,7 @@
 pkgbase = packageprovides
 	pkgdesc = Metapackage creator for Arch and Arch-based GNU/Linux distributions. Used to specify that a package provides anothers functionality, in case that is not specified in the repos or AUR.
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~pcitechie/PackageProvides
 	arch = any
 	license = GPL
@@ -9,6 +9,6 @@ pkgbase = packageprovides
 	makedepends = git
 	optdepends = paru: AUR dependency resolving
 	source = https://git.sr.ht/~pcitechie/PackageProvides/archive/0.1.tar.gz
-	md5sums = 4b1ce98651284e9c7676a7943189eeaa
+	md5sums = 5f61367e95dbc5363b52e57cd11c4315
 
 pkgname = packageprovides
