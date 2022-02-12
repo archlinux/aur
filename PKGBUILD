@@ -10,7 +10,7 @@
 _ubuntuver=18.04
 pkgname=acestream-engine
 pkgver=3.1.49
-pkgrel=2
+pkgrel=3
 pkgdesc="ACE Stream engine"
 arch=("x86_64")
 url="http://acestream.org"
@@ -20,7 +20,7 @@ optdepends=("pygtk: GTK+ gui support" "python2-libappindicator: GTK+ gui support
 install="acestream-engine.install"
 source=(
   "acestream-engine.service"
-  "$pkgname-$pkgver.tar.gz::http://acestream.org/downloads/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://download.acestream.media/linux/acestream_${pkgver}_ubuntu_${_ubuntuver}_x86_64.tar.gz"
 )
 sha256sums=(
   "b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0"

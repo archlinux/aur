@@ -1,7 +1,7 @@
 pkgbase = acestream-engine
 	pkgdesc = ACE Stream engine
 	pkgver = 3.1.49
-	pkgrel = 2
+	pkgrel = 3
 	url = http://acestream.org
 	install = acestream-engine.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = acestream-engine
 	optdepends = pygtk: GTK+ gui support
 	optdepends = python2-libappindicator: GTK+ gui support
 	source = acestream-engine.service
-	source = acestream-engine-3.1.49.tar.gz::http://acestream.org/downloads/linux/acestream_3.1.49_ubuntu_18.04_x86_64.tar.gz
+	source = acestream-engine-3.1.49.tar.gz::https://download.acestream.media/linux/acestream_3.1.49_ubuntu_18.04_x86_64.tar.gz
 	sha256sums = b9863a9dd3ee6d41d18475f5f539107fe81a573f45ca1cb98013441f955f1af0
 	sha256sums = d2ed7bdc38f6a47c05da730f7f6f600d48385a7455d922a2688f7112202ee19e
 
