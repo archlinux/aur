@@ -5,6 +5,7 @@ pkgver=0.1
 pkgrel=1
 pkgdesc="A countdown (timer) which uses the X On-Screen Display library"
 arch=('i686' 'x86_64')
+url="https://github.com/danitool/osd_countdown"
 source=("https://github.com/danitool/osd_countdown/archive/${pkgver}.tar.gz")
 license=('GPL2')
 depends=('xosd' 'gnu-free-fonts')
