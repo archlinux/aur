@@ -1,9 +1,9 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
-pkgver=2021.01a
+pkgver=2022.01a
 pkgrel=1
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
-arch=("any")
+arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
 license=('GPL2')
 depends=('ipython' 'vtk' 'gl2ps' 'coin-or-clp' 'cgal' 'libqglviewer'
@@ -15,35 +15,30 @@ depends=('ipython' 'vtk' 'gl2ps' 'coin-or-clp' 'cgal' 'libqglviewer'
     'gts'
     'openmpi'
     'freeglut'
+    'python-sphinx'
 )
 makedepends=(
     'mpfrc++' 'python-pygraphviz' 
     'python-mpi4py'
+    'utf8cpp'
 )
-optdepends=()
-provides=('yade')
-source=("https://gitlab.com/yade-dev/trunk/-/archive/${pkgver}/trunk-${pkgver}.tar.bz2")
-sha512sums=('b6bda1ffb56c6f03838700bca9b7576927497ea1246715d9357ad77ea3fcf62eed987d0aaf409c4bc306c900f778e90a2429515de67e9a98b58ade30dcf4b3e3')
-
+optdepends=('cuda: for GPU acceleration')
+source=("https://gitlab.com/yade-dev/trunk/-/archive/${pkgver}/trunk-${pkgver}.tar.bz2"
+$pkgname.patch
+)
+sha512sums=('b6524e9f4fb67b2728851015e3ef5a4fb52055e389ad70947b9d883965ebc7416669d95b545e933d0781c64912fcd8d0c78e294420064ef23a7fec123cdd206b'
+            'df198ef68e282f70f13a377415946090440941e3861d6e13f0544fe8fc49de58a59e3e2df9f07395942dd29154f7a3c69eb527c7decb2c0b6442ef405420aedd')
+            
+            
+_pyver=$(python -V | cut -d' ' -f2)
 prepare(){
     # Follow https://yade-dem.org/doc/installation.html#compilation
-    
-    cd "$srcdir"
-    test -d trunk || mv trunk-${pkgver} trunk 
-    test -d build || mkdir build 
-    # correct cuda and clp path
-    sed -i 's|/usr/local/cuda/lib64|/opt/cuda/lib64|g' trunk/cMake/FindCuBlas.cmake
-    sed -i "s|/usr/lib/x86_64-linux-gnu|/usr/lib|g" trunk/cMake/FindCLP.cmake
-    
-    # fix openmp not found 
-    _cmakedir=$(ls /usr/share/cmake* | grep cmake | cut -d ':' -f1)
-    for dir in $_cmakedir;
-    do
-        sed -i "N;102 a set(CMAKE_MODULE_PATH \$\{CMAKE_MODULE_PATH\} ${dir}/Modules/)" trunk/CMakeLists.txt;
-    done;
-    
-    # fix vtk 
-    sed -i 's|#if VTK_MAJOR_VERSION < 9|#if ((VTK_MAJOR_VERSION <= 8) and (VTK_MINOR_VERSION < 2)) or (VTK_MAJOR_VERSION <= 7)|g' trunk/pkg/common/Gl1_PotentialBlock.cpp
+    test -d trunk && rm -rf trunk
+    mv trunk-${pkgver} trunk 
+    test -d build || mkdir build
+    cd trunk 
+    patch --strip=1 < ../${pkgname}.patch
+    sed -i "s|(PY3_VERSIONS|(PY3_VERSIONS ${_pyver%.*}|g" CMakeLists.txt
     
 }
 
@@ -57,26 +52,30 @@ prepare(){
 build(){
     # WARNING: Package contains reference to $srcdir, but all to "$srcdir"/trunk, I think it's safe. 
     # Anyway, I still want to deal with this, but need help.
-    _nproc=$(nproc)
     cd build
     cmake ../trunk \
         -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNOSUFFIX=ON -DPYTHON_VERSION=-1 \
-        -DENABLE_SPH=ON   -DENABLE_PROFILING=ON  -DCHOLMOD_GPU=ON  -DENABLE_LIQMIGRATION=ON -DENABLE_MASK_ARBITRARY=ON -DENABLE_DEFORM=ON  -DENABLE_OAR=ON \
-        -DENABLE_MPFR=ON -DENABLE_PARTIALSAT=ON \
-        -DruntimePREFIX=/usr   -DCHUNKSIZE=1 -DOpenGL_GL_PREFERENCE=GLVND \
+        -DCHOLMOD_GPU=ON    -DENABLE_DEFORM=ON  -DENABLE_OAR=ON \
+        -DENABLE_MPFR=ON  \
+        -DruntimePREFIX=/usr    -DOpenGL_GL_PREFERENCE=GLVND \
         -DENABLE_POTENTIAL_PARTICLES=ON -DENABLE_VTK=ON \
-        -DVECTORIZE=OFF \
-        -DENABLE_USEFUL_ERRORS=ON -DENABLE_POTENTIAL_BLOCKS=ON 
-    make -j${_nproc}
+        -DFORCE_FREEGLUT_PATH=/usr/include \
+        -DENABLE_SPH=ON -DENABLE_PROFILING=ON -DENABLE_LIQMIGRATION=ON\
+        -DENABLE_MASK_ARBITRARY=ON -DENABLE_PARTIALSAT=ON \
+        -DENABLE_USEFUL_ERRORS=ON \
+        -DENABLE_POTENTIAL_BLOCKS=OFF  -DVECTORIZE=OFF 
+
+# use stock build 
+#     cmake ../trunk \
+#         -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DNOSUFFIX=ON 
+    make
 }
 
 package(){
     cd "$srcdir"/build
     make install DESTDIR="${pkgdir}"
     
-    # To pass all checks, 
-    # something wrong with the build script,
-    # add a hack here.
-    cd "${pkgdir}"/usr/lib/yade/py/yade/tests/checks/data/potentialVTKRecorders/
-    cp -f ver9/* ver8.2/
+      # need to add \x0 with length ${#srcdir}
+#     msg2 'Stripping $srcdir'
+#     find ${pkgdir}/* -type f -print0 | xargs -0 sed -i "s|${srcdir}/||g"
 }

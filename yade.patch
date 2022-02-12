@@ -1,0 +1,128 @@
+diff --color --unified --recursive --text trunk-2022.01a/cMake/FindCLP.cmake trunk/cMake/FindCLP.cmake
+--- trunk-2022.01a/cMake/FindCLP.cmake	2022-01-17 00:23:47.000000000 +0800
++++ trunk/cMake/FindCLP.cmake	2022-02-11 23:28:37.718904828 +0800
+@@ -4,16 +4,19 @@
+ 	FIND_LIBRARY(CLP_LIBRARY NAMES Clp 
+ 		PATHS
+ 		/usr/lib/x86_64-linux-gnu
++    /usr/lib
+ 	    )
+ 
+ 	FIND_LIBRARY(CLP2_LIBRARY NAMES OsiClp 
+ 		PATHS
+ 		/usr/lib/x86_64-linux-gnu
++    /usr/lib
+ 	    )
+ 
+ 	FIND_LIBRARY(CLP3_LIBRARY NAMES CoinUtils
+ 		PATHS
+ 		/usr/lib/x86_64-linux-gnu
++    /usr/lib
+ 	    )
+ 
+ 
+@@ -27,6 +30,7 @@
+ 	      CLP2_INCLUDE_DIR coinutils.pc
+ 	    PATHS
+ 	      /usr/lib/x86_64-linux-gnu/pkgconfig
++        /usr/lib/pkgconfig
+ 	    )
+     
+     IF(CLP_INCLUDE_DIR AND CLP2_INCLUDE_DIR AND CLP_LIBRARY AND CLP2_LIBRARY AND CLP3_LIBRARY)
+diff --color --unified --recursive --text trunk-2022.01a/cMake/FindCuBlas.cmake trunk/cMake/FindCuBlas.cmake
+--- trunk-2022.01a/cMake/FindCuBlas.cmake	2022-01-17 00:23:47.000000000 +0800
++++ trunk/cMake/FindCuBlas.cmake	2022-02-11 23:28:37.718904828 +0800
+@@ -4,8 +4,8 @@
+ #  CUBBLAS_LIBRARY, libraries to link against to use Cublas.
+ #  CUBLAS_FOUND, If false, do not try to use Cublas.
+ 
+-FIND_LIBRARY(CUBLAS_LIBRARY NAMES cublas libcublas PATHS /usr/local/cuda/lib64 )
+-FIND_LIBRARY(CUDART_LIBRARY NAMES cudart libcudart PATHS /usr/local/cuda/lib64 )
++FIND_LIBRARY(CUBLAS_LIBRARY NAMES cublas libcublas PATHS /usr/local/cuda/lib64 /opt/cuda/lib64 )
++FIND_LIBRARY(CUDART_LIBRARY NAMES cudart libcudart PATHS /usr/local/cuda/lib64 /opt/cuda/lib64 )
+ 
+ # handle the QUIETLY and REQUIRED arguments and set LOKI_FOUND to TRUE if
+ # all listed variables are TRUE
+diff --color --unified --recursive --text trunk-2022.01a/cMake/FindMissingVersions.cmake trunk/cMake/FindMissingVersions.cmake
+--- trunk-2022.01a/cMake/FindMissingVersions.cmake	2022-01-17 00:23:47.000000000 +0800
++++ trunk/cMake/FindMissingVersions.cmake	2022-02-11 23:28:37.718904828 +0800
+@@ -29,7 +29,7 @@
+ 
+ IF(ENABLE_GUI)
+ FIND_PACKAGE(GLUT)
+-find_path(FORCE_FREEGLUT_PATH freeglut_std.h ${GLUT_INCLUDE_DIR}/GL)
++find_path(FORCE_FREEGLUT_PATH freeglut_std.h PATHS ${GLUT_INCLUDE_DIR}/GL "/usr/include/GL")
+ message(STATUS "Found freeglut: ${FORCE_FREEGLUT_PATH}")
+ 
+ execute_process(COMMAND "/usr/bin/md5sum" "${FORCE_FREEGLUT_PATH}/freeglut_std.h"
+diff --color --unified --recursive --text trunk-2022.01a/cMake/YadePythonHelpers.cmake trunk/cMake/YadePythonHelpers.cmake
+--- trunk-2022.01a/cMake/YadePythonHelpers.cmake	2022-01-17 00:23:47.000000000 +0800
++++ trunk/cMake/YadePythonHelpers.cmake	2022-02-11 23:28:37.718904828 +0800
+@@ -140,7 +140,7 @@
+ # Did findpythoninterp found the python version we want ? Output in PYTHON_VERSION_MATCH.
+ FUNCTION(PYTHON_VERSION_MATCHES version_number)
+ 	SET(PYTHON_VERSION_MATCH FALSE PARENT_SCOPE)
+-	STRING(REGEX MATCHALL "[^\\.]" numbers_list ${version_number})
++	STRING(REGEX MATCHALL "([0-9]+).([0-9]+)" numbers_list ${version_number})
+ 	list(LENGTH numbers_list numbers_list_len)
+ 
+ 	LIST(GET numbers_list 0 major)
+diff --color --unified --recursive --text trunk-2022.01a/CMakeLists.txt trunk/CMakeLists.txt
+--- trunk-2022.01a/CMakeLists.txt	2022-01-17 00:23:47.000000000 +0800
++++ trunk/CMakeLists.txt	2022-02-11 23:28:37.718904828 +0800
+@@ -257,7 +257,7 @@
+ SET(Boost_NO_BOOST_CMAKE ON)  # solved issues on HPC/Nix, see https://github.com/YosysHQ/nextpnr/issues/322#issuecomment-536177724
+ INCLUDE(YadePythonHelpers)
+ 
+-SET(PY3_VERSIONS 3.9 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0) #append newer python versions at the beginning here.
++SET(PY3_VERSIONS 3.10 3.9 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0) #append newer python versions at the beginning here.
+ SET(PY2_VERSIONS 2.7 2.6)
+ 
+ IF (DEFINED PYTHON_EXECUTABLE)
+@@ -727,7 +727,7 @@
+      ((Boost_MINOR_VERSION EQUAL 53) OR (Boost_MINOR_VERSION GREATER 53)))
+ #===========================================================
+ IF(ENABLE_VTK)
+-  FIND_PACKAGE(VTK COMPONENTS vtkIOParallelXML vtkCommonCore vtkIOImage vtkIOXML vtkFiltersCore vtkImagingCore vtkRenderingCore vtkImagingGeneral vtkImagingHybrid vtkFiltersGeneral vtkFiltersSources)
++  FIND_PACKAGE(VTK COMPONENTS IOParallelXML CommonCore IOImage IOXML FiltersCore ImagingCore RenderingCore ImagingGeneral ImagingHybrid FiltersGeneral FiltersSources)
+   IF(VTK_FOUND)
+     INCLUDE_DIRECTORIES(${VTK_INCLUDE_DIRS})
+     LINK_DIRECTORIES( ${VTK_LIBRARY_DIRS} )
+diff --color --unified --recursive --text trunk-2022.01a/lib/triangulation/FlowBoundingSphereLinSolv.hpp trunk/lib/triangulation/FlowBoundingSphereLinSolv.hpp
+--- trunk-2022.01a/lib/triangulation/FlowBoundingSphereLinSolv.hpp	2022-01-17 00:23:47.000000000 +0800
++++ trunk/lib/triangulation/FlowBoundingSphereLinSolv.hpp	2022-02-11 23:28:37.718904828 +0800
+@@ -151,13 +151,13 @@
+ 		bool             factorExists;
+ #ifdef PFV_GPU
+ #define CHOLMOD(name) cholmod_l_##name
+-		void add_T_entry(cholmod_triplet* T, long r, long c, Real x)
++		void add_T_entry(cholmod_triplet* __T, long r, long c, Real __x)
+ 		{
+-			size_t k = T->nnz;
+-			((long*)T->i)[k] = r;
+-			((long*)T->j)[k] = c;
+-			((Real*)T->x)[k] = x;
+-			T->nnz++;
++			size_t k = __T->nnz;
++			((long*)__T->i)[k] = r;
++			((long*)__T->j)[k] = c;
++			((Real*)__T->x)[k] = __x;
++			__T->nnz++;
+ 		}
+ #else
+ #define CHOLMOD(name) cholmod_##name
+diff --color --unified --recursive --text trunk-2022.01a/py/config.py.in trunk/py/config.py.in
+--- trunk-2022.01a/py/config.py.in	2022-01-17 00:23:47.000000000 +0800
++++ trunk/py/config.py.in	2022-02-12 00:56:42.716282478 +0800
+@@ -12,7 +12,10 @@
+ if (libPATH[1:] == '{LIBRARY_OUTPUT_PATH}'): libPATH='lib'
+ 
+ libDir=os.path.abspath(prefix+'/'+libPATH+'/yade${SUFFIX}')
+-confDir=os.environ['HOME']+'/.yade${SUFFIX}'
++if "XDG_CONFIG_HOME" in os.environ.keys():
++	confDir=os.path.join(os.environ['XDG_CONFIG_HOME'],'/yade${SUFFIX}')
++else:
++	confDir=os.path.join(os.environ['HOME'],'.config','yade${SUFFIX}')
+ libstdcxx='${libstdcxx}'
+ highPrecisionBits         =${REAL_PRECISION_BITS}
+ highPrecisionDecimalPlaces=${REAL_DECIMAL_PLACES}
