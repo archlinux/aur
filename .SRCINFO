@@ -1,0 +1,26 @@
+pkgbase = death-road-to-canada-gog
+	pkgdesc = Randomly-Generated Road Trip Action-RPG
+	pkgver = 20210402
+	pkgrel = 1
+	url = http://www.deathroadtocanada.com
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	makedepends = p7zip
+	depends = glu
+	depends = sdl2_mixer
+	optdepends = firejail: sandboxing
+	options = !strip
+	source = gog://death_road_to_canada_liver_update_46139.sh
+	source = death-road-to-canada-gog
+	source = death-road-to-canada-gog.desktop
+	source = death-road-to-canada-gog.profile
+	source = 0000-start.sh.patch
+	sha512sums = 2492170d69788a9e9fbea1ade2039f0f92d88b8152ec1fb0711bd88dbcd9c0ddcd7e869e566c41057cb1035e40fab8e767960c51e42d62bda7b11fce4eccb4af
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = death-road-to-canada-gog

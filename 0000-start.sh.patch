@@ -1,0 +1,54 @@
+--- start.sh
++++ start.sh
+@@ -1,31 +1,30 @@
+-#!/bin/bash 
++#!/bin/bash
+ # GOG.com (www.gog.com)
+ # Game
+ 
+-# Initialization 
+-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" 
+-cd "${CURRENT_DIR}" 
+-source support/gog_com.shlib 
+-
+-# Game info 
+-GAME_NAME="$(get_gameinfo 1)" 
+-VERSION="$(get_gameinfo 2)" 
+-VERSION_DEV="$(get_gameinfo 3)" 
++# Initialization
++CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
++cd "${CURRENT_DIR}"
++source support/gog_com.shlib
++
++# Game info
++GAME_NAME="$(get_gameinfo 1)"
++VERSION="$(get_gameinfo 2)"
++VERSION_DEV="$(get_gameinfo 3)"
+ 
+ # Actions
+-run_game() { 
+-echo "Running ${GAME_NAME}" 
+-cd "${CURRENT_DIR}/game" 
+-chmod +x * 
+- ./"prog-linux-GOG" 
++run_game() {
++	echo "Running ${GAME_NAME}"
++	cd "${CURRENT_DIR}/game"
++	./"prog-linux-GOG"
+ 
+ }
+-default() { 
+-run_game
+-} 
++default() {
++	run_game
++}
+ 
+ # Options
+-define_option "-s" "--start" "start ${GAME_NAME}" "run_game" "$@" 
++define_option "-s" "--start" "start ${GAME_NAME}" "run_game" "$@"
+ 
+ # Defaults
+-standard_options "$@" 
+\ No newline at end of file
++standard_options "$@"

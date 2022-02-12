@@ -1,0 +1,26 @@
+#!/bin/sh
+
+pkgname="death-road-to-canada-gog"
+pkgdir="/opt/${pkgname}"
+run="${pkgdir}/start.sh"
+run_firejail="firejail --profile=/etc/firejail/death-road-to-canada-gog.profile ${run}"
+
+
+if hash firejail; then
+    echo "Firejail detected; attempting to enforce a sandbox..."
+    if [[ -f "${XDG_CONFIG_HOME}/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in ${XDG_CONFIG_HOME}/firejail/"
+        echo "Enforcing a sandbox!"
+        eval "${run_firejail}"
+    elif [[ -f "/etc/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in /etc/firejail/"
+        echo "Enforcing a sandbox!"
+        eval "${run_firejail}"
+    else
+        echo "No Firejail profile detected!"
+        echo "Skipping Firejail sandbox..."
+        eval "${run}"
+    fi
+else
+	${run}
+fi
