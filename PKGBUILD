@@ -3,7 +3,7 @@
 _pkgname=pil-squasher
 pkgname=${_pkgname}-git
 pkgver=r3.843950f
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert split mdt + b%02d files into mbn file"
 arch=('x86_64')
 url="https://github.com/andersson/pil-squasher"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	make
+	make prefix='/usr'
 }
 
 package() {
