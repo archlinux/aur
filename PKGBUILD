@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naether.markus@gmail.com>
 pkgname=rocblas
-pkgver=4.5.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
@@ -12,14 +12,14 @@ makedepends=('cmake' 'git' 'python' 'python-virtualenv' 'python-pyaml'
              'perl-file-which' 'msgpack-c' 'rocm-cmake' 'gcc-fortran')
 _rocblas='https://github.com/ROCmSoftwarePlatform/rocBLAS'
 source=("$pkgname-$pkgver.tar.gz::$_rocblas/archive/rocm-$pkgver.tar.gz")
-sha256sums=('15d725e38f91d1ff7772c4204b97c1515af58fa7b8ec2a2014b99b6d337909c4')
+sha256sums=('4b01fba937ada774f09c7ccb5e9fdc66e1a5d46c130be833e3706e6b5841b1da')
 options=(!strip)
 _dirname="$(basename "$_rocblas")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
 
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.0.x/docs/markdown/clang_options.md
   PATH="/opt/rocm/llvm/bin:${PATH}" \
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
