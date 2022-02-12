@@ -1,7 +1,7 @@
 pkgbase = kvirtual-git
 	pkgdesc = KDE4 GUI-frontend for kvm/qemu emulator
 	pkgver = 1.1.1+4+r82.20170125.d14e0c5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kde-apps.org/content/show.php/KVirtual?content=150682
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kvirtual-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = automoc4
-	depends = kdebase-runtime
+	depends = kde-cli-tools
 	depends = kdelibs
 	depends = qemu
 	provides = kvirtual=1.1.1+4+r82.20170125.d14e0c5

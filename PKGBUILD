@@ -4,12 +4,12 @@
 pkgname=kvirtual-git
 _gitname="kvirtual"
 pkgver=1.1.1+4+r82.20170125.d14e0c5
-pkgrel=2
+pkgrel=3
 pkgdesc="KDE4 GUI-frontend for kvm/qemu emulator"
 arch=('i686' 'x86_64')
 url="http://kde-apps.org/content/show.php/KVirtual?content=150682"
 license=('GPL2')
-depends=('kdebase-runtime' 'kdelibs' 'qemu')
+depends=('kde-cli-tools' 'kdelibs' 'qemu')
 makedepends=('git' 'cmake' 'automoc4')
 provides=("kvirtual=${pkgver}")
 conflicts=('kvirtual')
