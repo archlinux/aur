@@ -2,33 +2,29 @@
 # Contributor: tealeaf joss-arch@pseudonymity.net
 # Contributor: ormris ormris@ormris.com
 
-pkgname="wyrd"
-pkgver=1.5.2
-pkgrel=1
+pkgname="wyrd-git"
+pkgver=1.5.3
+pkgrel=2
 pkgdesc="A text-based front-end to Remind."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://gitlab.com/wyrd-calendar/wyrd"
 license=('GPL2')
 provides=('wyrd')
 conflicts=('wyrd')
-depends=('remind' 'ncurses' 'less')
-makedepends=('git' 'ocaml' 'camlp5' 'python' 'autoconf' 'opam')
+depends=('remind' 'ncurses' 'less' 'ocaml-curses')
+makedepends=('ocaml' 'camlp5' 'python' 'autoconf')
 # doc: 'hevea' 'texlive-core' 'texlive-latexextra'
-replaces=('wyrd-git')
 source=("${url}/-/jobs/artifacts/${pkgver}/raw/wyrd-${pkgver}.tar.xz?job=release")
-md5sums=('2d24fb827e99f21a838723a8d1cb1c22')
+sha256sums=('f2469057da3e60907a6697373604c57c3ca1cbed58fac45f186f619b8752d5ff')
 
 build() {
         cd "$srcdir/wyrd-${pkgver}"
-        opam init -n
-        opam install -y curses
-        eval "$(opam env)"
         ./prep-devtree.sh
         ./configure --exec-prefix=/usr --prefix=/usr --sysconfdir=/etc
-	make wyrd
+        make wyrd
 }
 
 package() {
         cd "$srcdir/wyrd-${pkgver}"
-	make DESTDIR="$pkgdir/" install
+        make DESTDIR="$pkgdir/" install
 }
