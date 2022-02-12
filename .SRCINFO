@@ -1,6 +1,6 @@
 pkgbase = rocthrust
 	pkgdesc = Port of the Thrust parallel algorithm library atop HIP/ROCm
-	pkgver = 4.5.2
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocthrust
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rocthrust
 	makedepends = git
 	depends = hip
 	depends = rocprim
-	source = rocthrust-4.5.2.tar.gz::https://github.com/ROCmSoftwarePlatform/rocThrust/archive/rocm-4.5.2.tar.gz
-	sha256sums = 9171a05dd7438aebd4f6a939b1b33b7e87be1a0bd52d90a171b74539885cf591
+	source = rocthrust-5.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocThrust/archive/rocm-5.0.0.tar.gz
+	sha256sums = 10b7b1be919881904d64f8084c2afe22aa00c560f8493a75dbf5df8386443ab4
 
 pkgname = rocthrust
