@@ -1,5 +1,5 @@
 pkgname=tabby-terminal
-pkgver=1.0.171
+pkgver=1.0.172
 pkgrel=1
 pkgdesc="A terminal for a modern age"
 arch=("x86_64")
@@ -14,7 +14,7 @@ source=(
     "tabby-${pkgver}-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v${pkgver}/tabby-${pkgver}-linux.pacman"
 )
 sha256sums=(
-    "3f778dadc64ebe2a716002cf73bf87f8ce834b2c649a8202de1b3299c71f446c"
+    "58b43e02601bc79fc7c7b38851f22ff263bd46c25d7539ae86f99f06f4803265"
 )
 
 package() {
