@@ -1,13 +1,13 @@
 pkgbase = man-pages-nl-git
 	pkgdesc = Dutch man pages (Git version)
-	pkgver = r17157.d3b10539e9
+	pkgver = r17815.7dd9c5f30e
 	pkgrel = 1
 	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
 	arch = any
 	license = GPL3
 	makedepends = po4a
 	makedepends = git
-	depends = man-db
+	depends = man
 	conflicts = man-pages-nl
 	options = !emptydirs
 	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
