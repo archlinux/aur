@@ -2,8 +2,8 @@
 
 _pkgname=faustpp
 pkgname="${_pkgname}-git"
-pkgver=r57.5197306
-pkgrel=2
+pkgver=r59.41795f1
+pkgrel=1
 pkgdesc="A post-processor for FAUST DSP code (git version)"
 arch=('x86_64')
 url="https://github.com/jpcima/faustpp"
@@ -19,8 +19,7 @@ source=("${_pkgname}::git+https://github.com/jpcima/faustpp.git"
         'git+https://github.com/martinmoene/string-view-lite.git'
         'git+https://github.com/martinmoene/expected-lite.git'
         'git+https://github.com/fmtlib/fmt.git'
-        'git+https://github.com/Tencent/rapidjson.git'
-        'jinja2cpp-include-mutex.patch')
+        'git+https://github.com/Tencent/rapidjson.git')
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
@@ -28,8 +27,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
-         '1f7125465e267aaf155db3ee3bb03d77')
+         'SKIP')
 
 
 pkgver() {
@@ -51,11 +49,6 @@ prepare() {
   git submodule set-url thirdparty/fmt "${srcdir}/fmt"
   git submodule set-url thirdparty/rapidjson "${srcdir}/rapidjson"
   git submodule update
-
-  (
-    cd thirdparty/jinja2cpp;
-    patch -p1 -r - -N -i "${srcdir}"/jinja2cpp-include-mutex.patch || :;
-  )
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = faustpp-git
 	pkgdesc = A post-processor for FAUST DSP code (git version)
-	pkgver = r57.5197306
-	pkgrel = 2
+	pkgver = r59.41795f1
+	pkgrel = 1
 	url = https://github.com/jpcima/faustpp
 	arch = x86_64
 	license = Boost
@@ -19,7 +19,6 @@ pkgbase = faustpp-git
 	source = git+https://github.com/martinmoene/expected-lite.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/Tencent/rapidjson.git
-	source = jinja2cpp-include-mutex.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -28,6 +27,5 @@ pkgbase = faustpp-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 1f7125465e267aaf155db3ee3bb03d77
 
 pkgname = faustpp-git
