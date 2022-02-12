@@ -3,7 +3,7 @@
 # Maintainer: Elizabeth Martin Campos <me@elizabeth.sh>
 _name=projector-installer
 pkgname=$_name
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Install, configure and run JetBrains IDEs with Projector Server on Linux or in WSL"
 arch=(any)
