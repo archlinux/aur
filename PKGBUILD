@@ -2,7 +2,7 @@
 # Maintainer: Federico Giuliani <federico.giuliani86 at gmail dot com>
 
 pkgname=airsonic-advanced-git
-pkgver=11.0.0.SNAPSHOT.20211119194245.r0.g918333a5
+pkgver=11.0.0.SNAPSHOT.20220209222511.r0.g4be8b7a7
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox. (fork of Airsonic)"
 arch=('any')
@@ -16,13 +16,11 @@ provides=(airsonic)
 conflicts=(airsonic)
 source=(git+https://github.com/airsonic-advanced/airsonic-advanced.git
         airsonic.sysusers
-        airsonic.tmpfiles
-	0001-fix-ignore-unused-declared-dependency-on-org.springf.patch)
+        airsonic.tmpfiles)
 
 sha256sums=('SKIP'
             '25af0b92b247df928db5ac8fec3fb4fa2cdc717e649729d5e0c059a5b81e058e'
-            '952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963'
-            'b92b73ddca1cbef2e2095a3a99ab2d761dcfeda2574397c212817db9c0208860')
+            '952c15c8c6b53b9c63a96eb6b2402eae42bde56dc9c6c60484cf039a03a82963')
 
 pkgver() {
   cd airsonic-advanced
@@ -31,7 +29,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/airsonic-advanced"
-    patch -Np1 -i ../0001-fix-ignore-unused-declared-dependency-on-org.springf.patch
     sed -i 's/\/var\/airsonic/\/var\/lib\/airsonic/' \
         "contrib/airsonic.service" \
         "contrib/airsonic-systemd-env"
