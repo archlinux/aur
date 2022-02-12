@@ -14,8 +14,8 @@ pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('BSD' 'custom')
-depends=('curl' 'libjpeg-turbo' 'giflib' 'tinyxml' 'libxcursor' 'fontconfig' 'hicolor-icon-theme' 'libglvnd')
-makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'harfbuzz-icu' 'pixman' 'libxi')
+depends=('libxcursor' 'fontconfig' 'hicolor-icon-theme' 'libglvnd')
+makedepends=('git' 'ninja' 'python2' 'clang' 'cmake' 'libxi')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}" "${_pkgname}-bin" "${_pkgname}-skia-bin")
 source=("git+https://github.com/${_pkgname}/${_pkgname}.git#branch=main"
@@ -127,7 +127,7 @@ prepare() {
     cd laf
     git submodule init
     git config submodule.third_party/stringencoders.url "${srcdir}/stringencoders"
-    git config submodule.third_party/googletest.url "${srcdir}/googletest" #
+    git config submodule.third_party/googletest.url "${srcdir}/googletest" # not required if LAF_WITH_TESTS=OFF
     git submodule update
 
     cd "${srcdir}/${_pkgname}"
@@ -149,24 +149,25 @@ build() {
     ninja -C out/Clang skia modules
 
     cd "${srcdir}/${_pkgname}/build"
+
+    # https://github.com/aseprite/aseprite/issues/2843
+    # -DUSE_SHARED_CMARK=ON \
+    # -DUSE_SHARED_CURL=ON \
+    # -DUSE_SHARED_GIFLIB=ON \
+    # -DUSE_SHARED_JPEGLIB=ON \
+    # -DUSE_SHARED_ZLIB=ON \
+    # -DUSE_SHARED_LIBPNG=ON \
+    # -DUSE_SHARED_TINYXML=ON \
+    # -DUSE_SHARED_PIXMAN=ON \
+    # -DUSE_SHARED_FREETYPE=ON \
+    # -DUSE_SHARED_HARFBUZZ=ON \
+
     cmake \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DLAF_BACKEND=skia \
         -DSKIA_DIR="$srcdir/skia" \
         -DSKIA_LIBRARY_DIR="$srcdir/skia/out/Clang" \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_SHARED_CURL=ON \
-        -DUSE_SHARED_JPEGLIB=ON \
-        -DUSE_SHARED_GIFLIB=ON \
-        -DUSE_SHARED_ZLIB=ON \
-        -DUSE_SHARED_LIBPNG=ON \
-        -DUSE_SHARED_TINYXML=ON \
-        -DUSE_SHARED_PIXMAN=ON \
-        -DUSE_SHARED_FREETYPE=ON \
-        -DUSE_SHARED_HARFBUZZ=ON \
-        -DWITH_WEBP_SUPPORT=ON \
-        -DENABLE_TESTS=OFF \
-        -DENABLE_BENCHMARKS=OFF \
         -DLAF_WITH_TESTS=OFF \
         -DLAF_WITH_EXAMPLES=OFF \
         -G Ninja \
@@ -182,43 +183,33 @@ package() {
     # https://github.com/aseprite/aseprite/issues/1574
     # https://github.com/aseprite/aseprite/issues/1602
 
-    rm -f "${pkgdir}"/usr/bin/bsd*
     rm -f "${pkgdir}"/usr/lib/pkgconfig/libarchive.pc
-    rm -f "${pkgdir}"/usr/share/man/man1/bsd*
 
-    rm -f "${pkgdir}"/usr/bin/img2webp
-    rm -fr "${pkgdir}"/usr/include/webp/
     rm -f "${pkgdir}"/usr/lib/libwebp*
+    rm -f "${pkgdir}"/usr/lib/pkgconfig/libwebp*
+    rm -fr "${pkgdir}"/usr/include/webp/
     rm -fr "${pkgdir}"/usr/share/WebP/
-    rm -f "${pkgdir}"/usr/share/man/man1/img2webp.1
 
-    rm -f "${pkgdir}"/usr/include/json11.hpp
     rm -f "${pkgdir}"/usr/lib/libjson11.a
     rm -f "${pkgdir}"/usr/lib/pkgconfig/json11.pc
+    rm -f "${pkgdir}"/usr/include/json11.hpp
 
-    rm -f "${pkgdir}"/usr/include/cmark*
     rm -fr "${pkgdir}"/usr/lib/cmake/cmark
     rm -f "${pkgdir}"/usr/lib/pkgconfig/libcmark.pc
     rm -f "${pkgdir}"/usr/lib/libcmark*
+    rm -f "${pkgdir}"/usr/include/cmark*
     rm -f "${pkgdir}"/usr/share/man/man1/cmark.1
     rm -f "${pkgdir}"/usr/share/man/man3/cmark.3
 
-    rm -f "${pkgdir}"/usr/bin/get_disto
-    rm -f "${pkgdir}"/usr/bin/cwebp
-    rm -f "${pkgdir}"/usr/bin/dwebp
-    rm -f "${pkgdir}"/usr/bin/gif2webp
-    rm -f "${pkgdir}"/usr/bin/vwebp
-    rm -f "${pkgdir}"/usr/bin/vwebp_sdl
-    rm -f "${pkgdir}"/usr/bin/webpinfo
-    rm -f "${pkgdir}"/usr/bin/webpmux
-    rm -f "${pkgdir}"/usr/bin/webp_quality
-    rm -f "${pkgdir}"/usr/lib/pkgconfig/libwebp*
-    rm -f "${pkgdir}"/usr/share/man/man1/cwebp.1
-    rm -f "${pkgdir}"/usr/share/man/man1/dwebp.1
-    rm -f "${pkgdir}"/usr/share/man/man1/gif2webp.1
-    rm -f "${pkgdir}"/usr/share/man/man1/vwebp.1
-    rm -f "${pkgdir}"/usr/share/man/man1/webpinfo.1
-    rm -f "${pkgdir}"/usr/share/man/man1/webpmux.1
+    rm -f "${pkgdir}"/usr/lib/libtga-lib.a
+    rm -f "${pkgdir}"/usr/include/tga.h
+
+    rm -f "${pkgdir}"/usr/lib/libcurl.a
+    rm -f "${pkgdir}"/usr/lib/pkgconfig/*
+    rm -f "${pkgdir}"/usr/lib//cmake/CURL/*
+    rm -f "${pkgdir}"/usr/include/curl/*
+    rm -f "${pkgdir}"/usr/bin/curl-config
+
 
     find "${pkgdir}" -type d -empty -delete
 
