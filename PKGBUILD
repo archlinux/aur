@@ -4,7 +4,7 @@
 _name=projector-installer
 pkgname=$_name
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Install, configure and run JetBrains IDEs with Projector Server on Linux or in WSL"
 arch=(any)
 url="https://github.com/JetBrains/projector-installer"
@@ -27,7 +27,7 @@ depends=(
 )
 
 source+=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('47e9a77e5c4bebb3cff2f0fa1f4bfba8f7cd8c05ce771ab7e4eebd238c02fbd5')
+sha256sums=('3c10512516bf3d73fe9e91a851d684a2f8a470a83cfc79ba8f6aa6a22ecea567')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
