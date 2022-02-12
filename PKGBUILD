@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=roctracer
-pkgver=4.5.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="ROCm Tracer Callback/Activity Library for Performance tracing AMD GPU's"
 arch=('x86_64')
@@ -12,14 +12,13 @@ makedepends=('cmake' 'git' 'python-argparse' 'python-cppheaderparser' 'python-pl
 options=(!staticlibs strip)
 _git='https://github.com/ROCm-Developer-Tools/roctracer'
 source=("roctracer-rocm-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('7012d18b79736dbe119161aab86f4976b78553ce0b2f4753a9386752d75d5074')
+sha256sums=('a21f4fb093cee4a806d53cbc0645d615d89db12fbde305e9eceee7e4150acdf2')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   cmake -B build -Wno-dev \
         -S "$_dirname" \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -DHIP_VDI=1
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm
 
   cd "$srcdir"
   make -C build
