@@ -3,7 +3,7 @@
 
 pkgname=kpar2
 pkgver=0.4.5
-pkgrel=8
+pkgrel=9
 pkgdesc="PAR2 verification and repair program for KDE4"
 arch=('x86_64')
 url='http://code.google.com/p/kpar2kde4'
@@ -29,12 +29,15 @@ prepare() {
 build() {
   cmake -S "kpar2-${pkgver}" -B build \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   cmake --build build
 }
 
 package() {
   DESTDIR="${pkgdir}" cmake --build build --target install
+
+  # missing bits(?)
+  install -Dm644 "kpar2-${pkgver}/src/kpar2ui.rc" "${pkgdir}/usr/share/apps/kpar2/kpar2ui.rc"
+  install -Dm644 "kpar2-${pkgver}/src/config.kcfg" "${pkgdir}/usr/share/config.kcfg/kpar2.kcfg"
 }
