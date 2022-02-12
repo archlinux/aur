@@ -2,7 +2,7 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-alpha.28.0.1
+_pkgver=1.0.0-alpha.29.0.1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
@@ -14,9 +14,8 @@ makedepends=('meson' 'cmake' 'ruby-sass' 'help2man' 'sassc')
 optdepends=('realtime-privileges: allow memory locking')
 conflicts=('zrythm-git')
 options=('debug')
-source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc})
-sha256sums=('07d12da661d78ac58b1d42f568bb2a331eb2da641cee1a2276073c44c0d5b23e'
-            'SKIP')
+source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz")
+sha256sums=('288a96b0f63097701db1e414de52510de3763ec821c3cd10ead16be271fa44fd')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 
 
