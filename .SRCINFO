@@ -1,6 +1,6 @@
 pkgbase = alligator
 	pkgdesc = Kirigami-based RSS reader
-	pkgver = 21.12
+	pkgver = 22.02
 	pkgrel = 1
 	url = https://invent.kde.org/plasma-mobile/alligator
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = alligator
 	depends = kconfig
 	depends = syndication
 	depends = kirigami2
-	source = https://download.kde.org/stable/plasma-mobile/21.12/alligator-21.12.tar.xz
-	sha256sums = 7c5a8d05f241c0ba774b6a8da11c0b04098ca34fd3fa62fd11b6055b56ba8e3c
+	source = https://download.kde.org/stable/plasma-mobile/22.02/alligator-22.02.tar.xz
+	sha256sums = ea6e7f05746ea5c246d6ac945ca7d4a925de410d62b59c5f99f6d5cc05088b37
 
 pkgname = alligator
