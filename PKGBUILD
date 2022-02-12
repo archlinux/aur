@@ -3,7 +3,7 @@
 # Maintainer: Carlos Alexandro Becker <carlos at becker dot software>
 
 pkgname='goreleaser-bin'
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Deliver Go binaries as fast and easily as possible'
 url='https://goreleaser.com'
@@ -12,17 +12,17 @@ license=('MIT')
 provides=('goreleaser')
 conflicts=('goreleaser')
 
-source_aarch64=('https://github.com/goreleaser/goreleaser/releases/download/v1.4.1/goreleaser_Linux_arm64.tar.gz')
-sha256sums_aarch64=('043e72ed4fe70959fb4d77b9c563e0afdf0ad83963879d9994a17bb2b11c2bc1')
+source_aarch64=('https://github.com/goreleaser/goreleaser/releases/download/v1.5.0/goreleaser_Linux_arm64.tar.gz')
+sha256sums_aarch64=('d17b3ed1a03c75960dfa15572ca8b239f27b9d7a7dd342a0069a41f34b927242')
 
-source_armv7h=('https://github.com/goreleaser/goreleaser/releases/download/v1.4.1/goreleaser_Linux_armv7.tar.gz')
-sha256sums_armv7h=('cb3265fa91ef3bc728a428ef4f194f6e767baea1d202939326bfa126d5f80e6b')
+source_armv7h=('https://github.com/goreleaser/goreleaser/releases/download/v1.5.0/goreleaser_Linux_armv7.tar.gz')
+sha256sums_armv7h=('217c4b511c316ab4c713928af73618e9da8dce5c0345ba1b4891626074bb615c')
 
-source_i686=('https://github.com/goreleaser/goreleaser/releases/download/v1.4.1/goreleaser_Linux_i386.tar.gz')
-sha256sums_i686=('14cf445f8e285872b58dec654a796931bb04b6d8c7e0b80ca757323669d1d519')
+source_i686=('https://github.com/goreleaser/goreleaser/releases/download/v1.5.0/goreleaser_Linux_i386.tar.gz')
+sha256sums_i686=('e89300a549c3b2b4ca2022138e74e02284608c9a5efabb5504c8e7537b050c49')
 
-source_x86_64=('https://github.com/goreleaser/goreleaser/releases/download/v1.4.1/goreleaser_Linux_x86_64.tar.gz')
-sha256sums_x86_64=('bb3457df09ababddd0cfaf636178791dda80f6bbe2535605568321a0978325ca')
+source_x86_64=('https://github.com/goreleaser/goreleaser/releases/download/v1.5.0/goreleaser_Linux_x86_64.tar.gz')
+sha256sums_x86_64=('a7bd4f76a495ed91f087dbf86fdbfa5f1bb594e86c1ec953e6b2dd46f596563b')
 
 package() {
   # bin
