@@ -1,0 +1,11 @@
+pkgbase = yubikey_switch
+	pkgdesc = Helps use multiple yubikeys (as smartcards) with the same subkeys.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SP5D/yubikey_switch
+	arch = any
+	license = GPL3
+	source = git+https://github.com/SP5D/yubikey_switch.git
+	sha512sums = SKIP
+
+pkgname = yubikey_switch
