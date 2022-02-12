@@ -1,6 +1,6 @@
 pkgbase = canokey-usbip-git
 	pkgdesc = A virtual canokey based on USB/IP
-	pkgver = r1016.2bde7c0d
+	pkgver = r1066.a88eaa87
 	pkgrel = 1
 	url = https://www.canokeys.org
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = canokey-usbip-git
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
+	optdepends = usbip: usbip support
 	source = git+https://github.com/canokeys/canokey-core.git
 	md5sums = SKIP
 
