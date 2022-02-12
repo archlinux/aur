@@ -4,46 +4,33 @@
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
 pkgver=98.0.4758.80_1
-pkgrel=2
+pkgrel=3
 _pkgver=98.0.4758.80
 _pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
-depends=("gcc-libs" "glibc" "nss")
-makedepends=("ninja" "python" "unzip")
+depends=("gcc-libs" "glibc")
+makedepends=("ninja" "gn" "llvm" "lld" "clang" "python" "unzip")
 optdepends=("ccache: Speed up compilation")
 
-
-_clang_path='clang-llvmorg-14-init-11564-g37fbf238-3.tgz'
 _PGO_PATH='chrome-linux-4758-1643195016-f5cfe4c93eff056f51290a33e603a214804dbd80.profdata'
-_gn_version='git_revision:fc295f3ac7ca4fe7acc6cb5fb052d22909ef3a8f'
-_gn_revision='39a87c0b36310bdf06b692c098f199a0d97fc810'
-
-sha256sums=(
-  "7ea663ffc7a41162bc64d06d88788bcfa2e311e2a52e767eb579b9660b7d0747"
-  "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
-  "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
-  "5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb"
-  "e79cb8f1e65b44b932b9fd98365b3771e913e7275d9e92e59eca4334c5689a28"
-  "41a0a5550852919751e885252d163b2b490a330598c64d9f721482fa928bb691"
-  "cedac495348379e73a53d1a875cbe7eb0b07b358bdbcc9f9169866a0c7473d86"
-)
-
-
 source=(
-  "${pkgname}-${_pkgver}-${_pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${_pkgver}-${_pkgrel}.tar.gz"
   "naiveproxy.service"
   "naiveproxy@.service"
   "naiveproxy.sysusers"
-  "${_clang_path}::https://commondatastorage.googleapis.com/chromium-browser-clang/Linux_x64/${_clang_path}"
+  "${pkgname}-${_pkgver}-${_pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${_pkgver}-${_pkgrel}.tar.gz"
   "${_PGO_PATH}::https://storage.googleapis.com/chromium-optimization-profiles/pgo_profiles/${_PGO_PATH}"
-  "gn-${_gn_revision}.zip::https://chrome-infra-packages.appspot.com/dl/gn/gn/linux-amd64/+/${_gn_version}"
+)
+sha256sums=(
+  "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
+  "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
+  "5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb"
+  "7ea663ffc7a41162bc64d06d88788bcfa2e311e2a52e767eb579b9660b7d0747"
+  "41a0a5550852919751e885252d163b2b490a330598c64d9f721482fa928bb691"
 )
 noextract=(
-  "${_clang_path}"
   "${_PGO_PATH}"
-  "gn-${_gn_revision}.zip"
 )
 backup=(etc/naiveproxy/config.json)
 provides=('naiveproxy')
@@ -52,20 +39,84 @@ conflicts=('naiveproxy-git' 'naiveproxy-bin')
 prepare() {
   SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}/src"
 
-  mkdir -p ${SRC_DIR}/third_party/llvm-build/Release+Asserts
-  tar xzf ${_clang_path} -C ${SRC_DIR}/third_party/llvm-build/Release+Asserts
-
   mkdir -p ${SRC_DIR}/chrome/build/pgo_profiles
   cp ${_PGO_PATH} ${SRC_DIR}/chrome/build/pgo_profiles
-
-  mkdir -p ${SRC_DIR}/gn/out
-  unzip gn-${_gn_revision}.zip -d ${SRC_DIR}/gn/out
 }
 
 build(){
   SRC_DIR="${srcdir}/${pkgname}-${_pkgver}-${_pkgrel}/src"
   pushd ${SRC_DIR}
-  ./build.sh
+
+  export TMPDIR="$PWD/tmp"
+  rm -rf "$TMPDIR"
+  mkdir -p "$TMPDIR"
+
+  out=out/Release
+  flags="
+    is_official_build=true
+    exclude_unwind_tables=true
+    enable_resource_allowlist_generation=false
+    symbol_level=0"
+
+  PYTHON=$(which python3 2>/dev/null)
+  if which ccache >/dev/null 2>&1; then
+    export CCACHE_SLOPPINESS=time_macros
+    export CCACHE_BASEDIR="$PWD"
+    export CCACHE_CPP2=yes
+    CCACHE=ccache
+  fi
+  WITH_CLANG=Linux_x64
+  WITH_PGO=linux
+  WITH_GN=linux
+
+  PGO_PATH=$(cat chrome/build/$WITH_PGO.pgo.txt)
+
+  if [ "$CCACHE" ]; then
+    flags="$flags
+      cc_wrapper=\"$CCACHE\""
+  fi
+
+  flags="$flags"'
+    is_clang=true
+    use_sysroot=false
+
+    fatal_linker_warnings=false
+    treat_warnings_as_errors=false
+
+    enable_base_tracing=false
+    use_udev=false
+    use_aura=false
+    use_ozone=false
+    use_gio=false
+    use_gtk=false
+    use_platform_icu_alternatives=true
+    use_glib=false
+
+    disable_file_support=true
+    enable_websockets=false
+    use_kerberos=false
+    enable_mdns=false
+    enable_reporting=false
+    include_transport_security_state_preload_list=false
+  '
+
+  # use system clang
+  # disable clang plugins
+  # build without afdo.prof
+  flags="$flags"'
+    clang_base_path=""
+    clang_use_chrome_plugins=false
+    clang_use_default_sample_profile=false'
+
+  rm -rf "./$out"
+  mkdir -p out
+
+  export DEPOT_TOOLS_WIN_TOOLCHAIN=0
+
+  gn gen "$out" --args="$flags $EXTRA_FLAGS" --script-executable=$PYTHON
+
+  ninja -C "$out" naive
+
   popd
 }
 
