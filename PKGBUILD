@@ -3,7 +3,7 @@
 # Contributor: Joakim Nylen (jnylen) <joakim at nylen dot nu> 
 
 pkgname=jotta-cli
-pkgver=0.13.53591
+pkgver=0.13.55213
 pkgrel=1
 pkgdesc="Jottacloud command line client to back up/share your files to/on Jottacloud."
 arch=('x86_64' 'i686' 'armv7h')
@@ -20,9 +20,9 @@ source_armv7h=("https://repo.jotta.us/archives/linux/armhf/jotta-cli-${pkgver}_l
 sha256sums=('236b77504910d1e9c2bec69bd73d49ce9e9ca21dfd26cf0c69a212fe370bbe2d'
             '2f686a82aafbb9b2168303907b2fe623fe4635ff314583dfb38ad747e0a0e450')
 
-sha256sums_x86_64=('070311babcd1f219b79f04be702caa9033a1323ab8e02b989d65ae205756e13f')
-sha256sums_i686=('c1ce23f1993fa3c46399e6bc6d1a208b3a664e032bd4780ea24aa3d7091aceff')
-sha256sums_armv7h=('eb6035200b27ddce1b3174348c414a2904dd7818ee71fcdf80ad6d826482dcaa')
+sha256sums_x86_64=('d51487e7f9c9c5e17a6ae287cb9f750ae72bbbd0eb965b5e32754a0bc0baab63')
+sha256sums_i686=('1b2b55a8f89b5cadc449ceaa588c782f306fdd04fdac3f9ee8ba809ef9800709')
+sha256sums_armv7h=('6eb8fbdd8a3286d5afffd3349500aef40e216b4866805e4181a9dc93b097a21c')
 
 package() {
     install -Dm644 "${srcdir}/usr/share/jottad/systemd/default/files/etc/systemd/system/jottad.service" \
