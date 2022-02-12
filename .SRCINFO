@@ -1,25 +1,29 @@
 pkgbase = libsolv-git
 	pkgdesc = Library for solving packages and reading repositories
-	pkgver = 0.7.20.r15.g0a5690d2
+	pkgver = 0.7.20.r25.g88bf6ce9
 	pkgrel = 1
 	url = https://github.com/openSUSE/libsolv
 	arch = x86_64
-	license = BSD
+	license = custom:BSD
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = perl
 	makedepends = python
 	makedepends = ruby
 	makedepends = swig
+	depends = bzip2
+	depends = expat
 	depends = rpm-tools
-	depends = zchunk
+	depends = xz
+	depends = zlib
+	depends = zstd
+	depends = zchunk-git
 	optdepends = perl: for perl bindings
 	optdepends = python: for python bindings
 	optdepends = ruby: for ruby bindings
-	provides = libsolv
+	provides = libsolv=0.7.20.r25.g88bf6ce9
 	conflicts = libsolv
-	source = libsolv-git::git+https://github.com/openSUSE/libsolv.git
+	source = libsolv::git+https://github.com/openSUSE/libsolv.git
 	sha256sums = SKIP
 
 pkgname = libsolv-git
