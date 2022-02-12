@@ -1,7 +1,7 @@
 #  Maintainer: jzbor <zborof@posteo.de>
 
-pkgname='buttermilk'
-pkgver=0.1.1
+pkgname=buttermilk
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A basic personal terminal emulator based on VTE'
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}")
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('120e69885ae5f00260777a335dfaaea025f6a572e739b2971970c00c42400780')
+sha512sums=('4c29abe620cbf4e466ff46cfaba09c1411244d9eb3e057ff732137716f3a02580bf9285e82d2614d61973f3beac4108c68cc9cca2cae662aa8d553961427c8a1')
 validpgpkeys=()
 
 build () {
