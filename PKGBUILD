@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.26.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Wii U emulator (via wine)."
 arch=(x86_64)
 url="https://cemu.info/"
@@ -22,7 +22,7 @@ optdepends=('wine-ge-custom: Vulkan support')
 # Sometimes, they update the zip file without changing its name, which causes the md5sum to fail.
 # If you notice this, please mark this package as out-of-date in the aur website and I'll fix it.
 
-md5sums=('0e2f22844f73513d91d0b42474bb8ff2'
+md5sums=('c8fe1395d6b1a29b6b661e312d991b47'
          '54d70005a8975812ab54fcfef53f7bde'
          '3325fba5405408c3bbf650ecfd679692'
          'e905d5c441e8d64d02c1b4adc1a58019'
@@ -44,7 +44,6 @@ package() {
   cp -R sharedFonts $pkgdir/usr/share/$pkgname
   cd cemu_$pkgver
   install -m644 Cemu.exe $pkgdir/usr/share/$pkgname
-  install -m644 keystone.dll $pkgdir/usr/share/$pkgname
   cp -R gameProfiles $pkgdir/usr/share/$pkgname
   mkdir $pkgdir/usr/share/$pkgname/mlc01
   cp -R shaderCache $pkgdir/usr/share/$pkgname
