@@ -1,22 +1,22 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: AndyRTR <andyrtr@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# based on extra/xf86-video-intel by:
+# AndyRTR <andyrtr@archlinux.org>
+# Jan de Groot <jgc@archlinux.org>
 
 pkgname=xf86-video-intel-git
-_pkgname=xf86-video-intel
-pkgver=2.99.917+909+g5ca3ac1a
+_pkgname=${pkgname%-*}
+pkgver=2.99.917+916+g31486f40
 pkgrel=1
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
 license=('custom')
-install="${_pkgname}.install"
+install=$pkgname.install
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
 depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs')
 makedepends=('xorg-server-devel' 'libx11' 'libxrender' 'libxv'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
-             'libxfont2'
              # additional for git snapshot
              'git') # 'meson' 'valgrind')
 optdepends=('libxrandr: for intel-virtual-output'
@@ -25,27 +25,28 @@ optdepends=('libxrandr: for intel-virtual-output'
             'libxtst: for intel-virtual-output'
             'libxss: for intel-virtual-output')
 replaces=('xf86-video-intel-uxa' 'xf86-video-intel-sna')
-provides=("${_pkgname}" 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
-conflicts=("${_pkgname}" 'xorg-server<1.20' 'xf86-video-intel-sna'
+provides=("$_pkgname" 'xf86-video-intel-uxa' 'xf86-video-intel-sna')
+conflicts=("$_pkgname" 'xorg-server<21.1.1'
            'xf86-video-intel-sna' 'xf86-video-intel-uxa' 'xf86-video-i810' 'xf86-video-intel-legacy')
-groups=('xorg-drivers')
-source=("${_pkgname}::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
+groups=('xorg-drivers-git')
+source=("$pkgname::git+https://gitlab.freedesktop.org/xorg/driver/${_pkgname}.git")
 sha256sums=('SKIP')
+# options=('!makeflags')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd $pkgname
   git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd $pkgname
   NOCONFIGURE=1 ./autogen.sh
 
 #  mkdir build
 }
 
 build() {
-  cd "${_pkgname}"
+  cd $pkgname
 
   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
   # With them, module fail to load with undefined symbol.
@@ -65,13 +66,13 @@ build() {
 }
 
 check() {
-  cd "${_pkgname}"
+  cd $pkgname
   make check
 #  meson test -C build
 }
 
 package() {
-  cd "${_pkgname}"
+  cd $pkgname
 
   make DESTDIR="${pkgdir}" install
 
