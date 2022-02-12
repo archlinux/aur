@@ -1,0 +1,25 @@
+From cabda7f527fb072df46a957a9972fac2164edaeb Mon Sep 17 00:00:00 2001
+From: Noel Kuntze <noel.kuntze@thermi.consulting>
+Date: Sun, 13 Feb 2022 00:35:36 +0100
+Subject: [PATCH] cmake: remove fixed setting of LUA_COMPILER to luac5.3
+
+---
+ cmake/FindLua.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/FindLua.cmake b/cmake/FindLua.cmake
+index 1f95bf9..b06f4d8 100644
+--- a/cmake/FindLua.cmake
++++ b/cmake/FindLua.cmake
+@@ -53,7 +53,7 @@ FIND_PROGRAM(LUA_EXECUTABLE
+ 
+ # Find the lua executable
+ FIND_PROGRAM(LUA_COMPILER
+-  NAMES luac5.3 ${_POSSIBLE_LUA_COMPILER}
++  NAMES ${_POSSIBLE_LUA_COMPILER}
+ )
+ 
+ # Find the lua header
+-- 
+2.35.1
+
