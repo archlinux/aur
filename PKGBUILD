@@ -1,28 +1,24 @@
-# Maintainer: Christian Schwarz <me@cschwarz.com>
-pkgbase=python-phidgets 
-pkgname=("python-phidgets" "python2-phidgets")
+# Contributor: Christian Schwarz <me@cschwarz.com>
+_base=Phidgets
+pkgname=python-${_base,,}
 pkgver=2.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Wrapper library for the Phidgets API"
-arch=('any')
-url="https://pypi.python.org/pypi/Phidgets"
-license=('custom: Creative Commons Attribution 2.5 Canada License')
-makedepends=('python-setuptools' 'python2-setuptools')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/P/Phidgets/Phidgets-$pkgver.tar.gz")
-md5sums=("70abc2edef4578842906b6a46eef9ad9")
+arch=(any)
+url="https://pypi.python.org/pypi/${_base}"
+license=('custom')
+depends=(python)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('91a6b073f75d0d96c0c8eea226c5946e1da1a157c89cb9f9e15040b59151af7421461e36e8037dd5c80fcc271bec6f93ba4d3919b303de46f13c155632fd5f63')
 
-package_python-phidgets() {
-  depends=("python")
-  cd "$srcdir/Phidgets-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python2-phidgets() {
-  depends=("python2")
-  cd "$srcdir/Phidgets-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
-
-
-# vim:set ts=2 sw=2 et:
