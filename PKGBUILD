@@ -24,6 +24,7 @@ depends=(
   'libjxl'
   'librsvg'
   'libwebp'
+  'libexif'
   )
 optdepends=('bash-completion: Bash completions')
 provides=("${_pkgname}")
@@ -45,6 +46,7 @@ build() {
     -D svg=enabled
     -D webp=enabled
     -D avif=enabled
+    -D exif=enabled
     -D bash=enabled
     -D man=true
     -D desktop=true
