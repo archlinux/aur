@@ -1,0 +1,20 @@
+pkgbase = openutau-git
+	pkgdesc = An open source UTAU successor
+	pkgver = 0.0.595
+	pkgrel = 1
+	url = https://github.com/stakira/OpenUtau
+	arch = x86_64
+	license = MIT
+	depends = dotnet-host
+	depends = dotnet-runtime-3.1
+	depends = dotnet-targeting-pack-3.1
+	depends = dotnet-sdk-3.1
+	depends = fuse2
+	depends = fuse3
+	depends = fuse-common
+	source = git+https://github.com/stakira/OpenUtau.git
+	source = OpenUtau-git.desktop
+	sha256sums = SKIP
+	sha256sums = 6c80a52ee0d8892510d6e26c998e773c99cb3459064162839913e9aa3bf9c381
+
+pkgname = openutau-git
