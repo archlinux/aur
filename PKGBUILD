@@ -14,7 +14,7 @@ optdepends=(google-chrome-beta)
 provides=(${_pkgname})
 conflicts=(chromium)
 source=("${_pkgname}_${pkgver}_linux64.zip::https://chromedriver.storage.googleapis.com/${pkgver}/${_pkgname}_linux64.zip")
-sha512sums=('de9f71cdb2598be04f806838a9ebd6683e32a3ba00d0c09e2889fd0b92db8f66b9a19296e52e56e7cd65fc09853d5bed5b4b29c62d9b570a1a83111b43c71409')
+sha512sums=('9b9549c6416340f3e199fb715ee09d3a22e296d11b4107e39c72b78eab1430ae22d5559211296d43e1ab4f489d8f4888988155f433d4ffc24e94b2e97f0bf979')
 
 package() {
     install -Dm755 -t "$pkgdir/usr/bin/" "$srcdir/${_pkgname}"
