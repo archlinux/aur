@@ -3,7 +3,7 @@
 
 _name=volar
 pkgname=volar-server
-pkgver=0.31.2
+pkgver=0.31.3
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm' 'typescript' 'yarn')
 optdepends=('typescript: for use in typescript.serverPath')
 source=("https://github.com/johnsoncodehk/volar/archive/v$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('e119999c96a28997324c958b9c3735a53b5785d7374d1a1955c6c5c26391c2811add29c140c50491c073f375277af245639def65c34a2911b4957bc17958212d')
+b2sums=('9ed8857e229c776b08fb2eef75d7b1fc3845bf35818624af7e508b67111ecc134401ec066b95e8effe80bda8c07f91af3e521d1fa3a0e095a495ed190442271e')
 
 prepare() {
   cd $_name-$pkgver
