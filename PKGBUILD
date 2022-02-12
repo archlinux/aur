@@ -14,10 +14,10 @@ depends=(
 	'thunar'
 	'thunarx-python'
 )
-source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/insync-thunar_3.0.23.40579_all.deb")
+source=("$pkgname-$pkgver.deb::http://s.insynchq.com/builds/insync-thunar_3.0.23.40579_all.deb")
 sha256sums=('18f7fd32ae78ee2681d184175d73d8c6a4f67a9500e7832df46bb777d5962b48')
 
 package() {
    tar xf data.tar.gz
-   cp -rp usr "${pkgdir}"
+   cp -rp usr "$pkgdir"
 }
