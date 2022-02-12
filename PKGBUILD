@@ -3,9 +3,9 @@
 
 pkgname=mega
 _pkgname=mega
-pkgver=11.0.10
+pkgver=11.0.11
 pkgrel=1
-pkgdesc=" Molecular Evolutionary Genetics Analysis"
+pkgdesc="Molecular Evolutionary Genetics Analysis. https://doi.org/10.1093/molbev/msy096"
 arch=('x86_64')
 url="https://megasoftware.net"
 license=('custom')
@@ -14,10 +14,9 @@ depends=(
 	'gconf'
 	'gtk2>=2.0'
 	'hicolor-icon-theme'
-	'metasploit>=2.0'
 )
-source=(""https://www.megasoftware.net/releases/mega_$pkgver-1_amd64.deb)
-sha256sums=('a792e6182579b360369e936248d583a92fa79e6c2cd17820111ec6fca3f8066f')
+source=("https://www.megasoftware.net/releases/mega_$pkgver-1_amd64.deb")
+sha256sums=('1077a28d9d910f576f76370a6e796f83de0b87088beceff8c4a501572ff146a8')
 
 package() {
 	tar -p -xf data.tar.xz -C "${pkgdir}"
