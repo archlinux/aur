@@ -1,13 +1,12 @@
 pkgbase = toggldesktop-git
 	pkgdesc = Toggl time tracking software
-	pkgver = 7.5.50.r0.gb3a38da9e
-	pkgrel = 3
+	pkgver = 7.5.454.r0.g918652058
+	pkgrel = 1
 	url = https://github.com/toggl-open-source/toggldesktop
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
 	depends = jsoncpp
 	depends = libxss
 	depends = lua
@@ -21,10 +20,9 @@ pkgbase = toggldesktop-git
 	conflicts = toggldesktop
 	conflicts = toggldesktop-bin
 	conflicts = toggl-bin
-	source = toggldesktop::git+https://github.com/toggl-open-source/toggldesktop.git
+	source = toggldesktop::git+https://github.com/toggl-open-source/toggldesktop
 	source = jsoncpp.patch
 	sha512sums = SKIP
 	sha512sums = 05813df185163e1361d99cf24291bd44bdfefeee050b56f2923fb909c2c57d532e0a459cdaea96504ed10d27004fe3ee9f3c34ec35bcc9f9f2e064cccd8cfe77
 
 pkgname = toggldesktop-git
-
