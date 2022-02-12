@@ -2,7 +2,7 @@
 
 pkgname=go-cqhttp-bin
 
-pkgver=v1.0.0_beta8_fix2
+pkgver=v1.0.0_rc1
 pkgrel=1
 
 pkgdesc="Lightweight, native cross-platform implementation of cqhttp in Golang."
@@ -19,10 +19,10 @@ source_x86_64=("${pkgname}-x86_64-${pkgver//_/-}.tar.gz::https://github.com/Mrs4
 source_armv7h=("${pkgname}-armv7h-${pkgver//_/-}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${pkgver//_/-}/go-cqhttp_linux_armv7.tar.gz")
 source_aarch64=("${pkgname}-aarch64-${pkgver//_/-}.tar.gz::https://github.com/Mrs4s/go-cqhttp/releases/download/${pkgver//_/-}/go-cqhttp_linux_arm64.tar.gz")
 
-sha512sums_i686=('c352f35fd68dd1a308dfa9e189cfd1d419adf08b98d631e3c0b92eba5e00573e6f6a4a709fe41fd6568e16a96920c2594b3ea0aa7e86b395436dcd2ac875d31b')
-sha512sums_x86_64=('a4a9d5daa74acd1119be364f330dd6c14b4c46065da34c1451f1557efc6181dbd06decbba5a320c94eab23cd22580c74b6283c9b9755859c771f3deeb5010853')
-sha512sums_armv7h=('0ccc622ed9acf82df1c8d20e720d8370c34a91f2aa28f4f3590739bb62b7600145269df36515f5daac053bd1ec9462ec355268a60241f65759bf977c3e688ddc')
-sha512sums_aarch64=('f62ac5f09ee462cdd2547c5aa5641ce2ae05cbbd28344d24e6f8b501f8b24155f55a0d66baa271413a705bf299bb0050fb42d0330b99b4031bcafbeb7aebe104')
+sha512sums_i686=('cbdad06060ffd4ad77105cdf846743b96ce42c5a862c7fa86cf0941614d7645362eede8dea7b943e9855ea6f42b967ed46fb5bf60da6e044344f1e078856d74b')
+sha512sums_x86_64=('d088950d321a5804aa9e5e658575eddfba5eeff69dee0a35ff600396f15cc28fead5e3d3581ab78c27d39f48d40fa2ec0a5e6dd360b1fbdf2a026be2fc4028fa')
+sha512sums_armv7h=('9f54f98c47137819838e0051ec5cd85748669c2cbe7690f96465056c086de6c25004c7228d78f314bad7ea5ef6c4e9a6dc436888947c0d19ccb85c43ea6a2a2f')
+sha512sums_aarch64=('15467ee2275e33f9fac77bf21cdbac7bb86553875b6f09c6f279c0d28a4eb1aeb49ade76fd251d66bbc46cdc2a054e384ae2e799c7e6c47bb382a18f3d8d755a')
 
 package() {
     cd ${srcdir}
