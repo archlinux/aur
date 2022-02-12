@@ -9,7 +9,7 @@ arch=('x86_64')
 url='http://code.google.com/p/kpar2kde4'
 license=('GPL3')
 depends=('kde-cli-tools'
-         'kdelibs4support'
+         'kdelibs'
          'libpar2'
          )
 makedepends=('cmake'
@@ -32,7 +32,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQT_QMAKE_EXECUTABLE=qmake-qt4
 
-  make
+  cmake --build build
 }
 
 package() {
