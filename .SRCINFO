@@ -1,0 +1,15 @@
+pkgbase = aliyundrive-webdav-bin
+	pkgdesc = 阿里云盘 WebDAV 服务
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/messense/aliyundrive-webdav
+	install = aliyundrive-webdav.install
+	arch = x86_64
+	license = MIT
+	provides = aliyundrive-webdav
+	options = !strip
+	options = emptydirs
+	source = https://github.com/messense/aliyundrive-webdav/releases/download/v1.2.3/aliyundrive-webdav_1.2.3_amd64.deb
+	sha256sums = b116c96d3d7db31c71988aac4785ebb41aefb16d090bae639de0c8b308babb2f
+
+pkgname = aliyundrive-webdav-bin
