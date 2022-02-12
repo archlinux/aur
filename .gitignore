@@ -1,6 +1,5 @@
-pkg/
-src/
-*.tar.*
+*
 !.SRCINFO
 !.gitignore
 !PKGBUILD
+!libxnvctrl_so.patch
