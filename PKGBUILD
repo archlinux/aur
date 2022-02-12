@@ -3,7 +3,7 @@
 
 _name=scp
 pkgname=python-$_name
-pkgver=0.13.2
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="scp module for paramiko"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('python-paramiko')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ef9d6e67c0331485d3db146bf9ee9baff8a48f3eb0e6c08276a8584b13bf34b3')
+sha256sums=('713f117413bbd616a1a7da8f07db9adcd835ce73d8585fb469ea5b5785f92e4d')
 
 build() {
   cd "${_name}-${pkgver}"
