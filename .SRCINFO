@@ -1,7 +1,7 @@
 pkgbase = gdm-plymouth-nox
 	pkgdesc = Display manager and login screen with plymouth support, but without xorg-server
 	pkgver = 41.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GDM
 	arch = x86_64
 	license = GPL
@@ -16,6 +16,7 @@ pkgbase = gdm-plymouth-nox
 	depends = gnome-session
 	depends = upower
 	depends = systemd
+	depends = libcanberra
 	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=cb49bac2fe1160094eae360f985e54073be3c49a
 	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 	sha256sums = SKIP
@@ -29,6 +30,7 @@ pkgname = gdm-plymouth-nox
 	depends = gnome-session
 	depends = upower
 	depends = systemd
+	depends = libcanberra
 	depends = libgdm-plymouth-nox
 	optdepends = fprintd: fingerprint authentication
 	provides = gdm
