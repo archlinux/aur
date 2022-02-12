@@ -1,0 +1,13 @@
+pkgbase = python-rtfunicode
+	pkgdesc = Encoder for unicode to RTF 1.5 command sequences
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://pypi.org/project/rtfunicode/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/r/rtfunicode/rtfunicode-2.0.tar.gz
+	sha256sums = 97d2e860fd4abaae2de5df1e59bb18b85ba0caebf40c53de8ddb79ec8d884401
+
+pkgname = python-rtfunicode
