@@ -3,7 +3,7 @@
 
 pkgname=beautyline
 pkgver=20220212
-pkgrel=1
+pkgrel=2
 pkgdesc="Outlined icons designed to have unified look and comprehensive coverage with the Candy icon pack (best suited to use with Sweet theme)"
 arch=('any')
 url="https://gitlab.com/garuda-linux/themes-and-settings/artwork/$pkgname"
