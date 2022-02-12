@@ -1,6 +1,6 @@
 pkgbase = openutau-git
 	pkgdesc = An open source UTAU successor
-	pkgver = 0.0.595
+	pkgver = 0.0.598
 	pkgrel = 1
 	url = https://github.com/stakira/OpenUtau
 	arch = x86_64
