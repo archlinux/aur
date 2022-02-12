@@ -1,0 +1,17 @@
+pkgbase = keymash-dkms-git
+	pkgdesc = Device driver that provides an endless supply of lowercase characters from the QWERTY home row in a cryptographically secue random order.
+	pkgver = r3.cb152fd
+	pkgrel = 1
+	url = https://git.bsd.gay/fef/keymash
+	arch = x86_64
+	license = BSD
+	license = GPL2
+	depends = dkms
+	provides = keymash-module
+	provides = keymash-dkms
+	conflicts = keymash-module
+	conflicts = keymash-dkms
+	source = git+https://git.bsd.gay/fef/keymash.git
+	sha256sums = SKIP
+
+pkgname = keymash-dkms-git
