@@ -9,6 +9,7 @@ arch=('x86_64')
 url='http://code.google.com/p/kpar2kde4'
 license=('GPL3')
 depends=('kde-cli-tools'
+         'kdelibs4support'
          'libpar2'
          )
 makedepends=('cmake'
