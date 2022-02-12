@@ -1,6 +1,6 @@
 # Maintainer: Brian Galey <bkgaley@gmail.com>
 pkgname=readosm
-pkgver=1.0.0e
+pkgver=1.1.0a
 pkgrel=1
 pkgdesc='Library to extract valid data from within an Open Street Map input file'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MPL')
 depends=('expat' 'zlib')
 options=('!libtool')
 source=("http://www.gaia-gis.it/gaia-sins/$pkgname-sources/$pkgname-$pkgver.tar.gz")
-sha256sums=('1fd839e05b411db6ba1ca6199bf3334ab9425550a58e129c07ad3c6d39299acf')
+sha256sums=('db7c051d256cec7ecd4c3775ab9bc820da5a4bf72ffd4e9f40b911d79770f145')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
