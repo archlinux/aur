@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Zoho Mail - Desktop
-Exec=/opt/zoho-mail-desktop/squashfs-root/AppRun %U
+Exec=/opt/zoho-mail-desktop/AppRun %U
 Terminal=false
 Type=Application
 Icon=zoho-mail-desktop

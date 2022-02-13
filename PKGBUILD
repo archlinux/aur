@@ -7,7 +7,7 @@
 
 pkgname=zoho-mail-desktop
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop version of your favorite mailsuite!"
 arch=('x86_64')
 license=('custom')
@@ -16,7 +16,7 @@ url="https://www.zoho.com/mail/"
 source=("https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v${pkgver}.AppImage"
         "zoho-mail-desktop.desktop")
 sha256sums=("d57b105779c2e33e6df5426bdcab05ec0db8e311adbbcd0f2bb38c982d11fcca"
-            "7be356bb7774e196b33eaeb9c2f641023c72961c00158f753777dc6135240324")
+            "SKIP")
 
 prepare() {
   chmod +x "zoho-mail-desktop-x64-v${pkgver}.AppImage"
@@ -24,8 +24,10 @@ prepare() {
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/zoho-mail-desktop"
-  cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt/zoho-mail-desktop"
+  mkdir -p "${pkgdir}/opt"
+  cp -Lr "${srcdir}/squashfs-root" "${pkgdir}/opt"
+  mv "${pkgdir}/opt/squashfs-root" "${pkgdir}/opt/zoho-mail-desktop"
+  find "${pkgdir}/opt" -type d -exec chmod +rx {} \;
 
   mkdir -p "${pkgdir}/usr/bin"
   echo '#!/usr/bin/env bash
