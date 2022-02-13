@@ -2,8 +2,8 @@
 # Contributor: roger <roger@rogerpc.com.ar>
 
 pkgname=qtile-git
-pkgver=0.20.0.r3.g9b31bce6
-pkgrel=3
+pkgver=0.20.0.r33.gc1f50739
+pkgrel=1
 pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
@@ -21,7 +21,13 @@ depends=(
   'python-xcffib'
 )
 
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'libpulse')
+makedepends=(
+  'git'
+  'python-setuptools'
+  'python-setuptools-scm'
+  'libpulse'
+  'python-pywlroots>=0.15.7' 'python-pywlroots<0.16.0'
+)
 checkdepends=(
   'dbus'
   'graphviz'
@@ -34,7 +40,7 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  'python-pywlroots>=0.15.5' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.7' 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
   'wlroots'
