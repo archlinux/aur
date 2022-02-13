@@ -5,7 +5,7 @@
 
 pkgname=gtk3-patched-filechooser-icon-view
 pkgver=3.24.31
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="GTK3 patched with dudemanguy's fork of wfr's filechooser-icon-view patch."
 arch=(x86_64)
@@ -14,9 +14,9 @@ depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          dconf libxcomposite libxdamage pango shared-mime-info at-spi2-atk
          wayland libxkbcommon adwaita-icon-theme json-glib librsvg
          desktop-file-utils mesa cantarell-fonts libcolord rest libcups
-         libcanberra fribidi iso-codes libcloudproviders tracker3
-         gtk-update-icon-cache)
-optdepends=('glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
+         fribidi iso-codes libcloudproviders tracker3 gtk-update-icon-cache)
+optdepends=('evince: Default print preview command'
+            'glib2-patched-thumbnailer: Thumbnail generation in upload dialog')
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson
              wayland-protocols)
 provides=(gtk3=$pkgver gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
