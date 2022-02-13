@@ -2,9 +2,9 @@
 
 _pluginname=virtual-cam-filter
 pkgname=obs-$_pluginname
-pkgver=0.0.4
+pkgver=0.0.5
 _obsver=27.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Adds a filter to output a source or scene to the build in virtual camera"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/virtual-cam-filter.1142/"
@@ -12,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite")
 source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=d14653284f487e5f6d74913902a28ed355ed988a"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=a66b808dd412910d3d2b1a698311c8b4759f87e9"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
