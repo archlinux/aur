@@ -1,0 +1,4 @@
+*.jar
+pkg/
+src/
+*.tar*
