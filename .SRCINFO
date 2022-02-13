@@ -19,7 +19,7 @@ pkgbase = ayatana-indicator-messages
 	depends = dconf
 	provides = indicator-messages
 	conflicts = indicator-messages
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-messages/archive/21.12.0.tar.gz
+	source = ayatana-indicator-messages-21.12.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-messages/archive/21.12.0.tar.gz
 	md5sums = 9170ef6ce1ee08d6f3d04641cc1a9938
 
 pkgname = ayatana-indicator-messages
