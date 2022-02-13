@@ -3,7 +3,7 @@
 
 # Package Information
 pkgname="mstickereditor-git"
-pkgver=0.1.1.r89.g2d2a833d
+pkgver=0.1.1.r90.ga6474043
 pkgrel=1
 pkgdesc='import sticker packs from telegram, to be used at the Maunium sticker picker for Matrix'
 license=('Apache')
@@ -15,8 +15,6 @@ arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/Lukas1818/mstickereditor'
 depends=('gcc-libs' 'rlottie' 'libwebp')
 makedepends=('cargo' 'clang' 'lld')
-provides=("mstickereditor=$epoch:$pkgver")
-conflicts=('mstickereditor')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
 
@@ -43,6 +41,9 @@ build() {
 }
 
 package() {
+	provides=("mstickereditor=${pkgver/.r*/}")
+	conflicts=("mstickereditor")
+	
 	cd "$srcdir/$pkgname"
 	
 	install -Dm755 "target/release/mstickereditor" -t "$pkgdir/usr/bin"

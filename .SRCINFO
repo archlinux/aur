@@ -1,6 +1,6 @@
 pkgbase = mstickereditor-git
 	pkgdesc = import sticker packs from telegram, to be used at the Maunium sticker picker for Matrix
-	pkgver = 0.1.1.r89.g2d2a833d
+	pkgver = 0.1.1.r90.ga6474043
 	pkgrel = 1
 	url = https://github.com/Lukas1818/mstickereditor
 	arch = aarch64
@@ -13,9 +13,9 @@ pkgbase = mstickereditor-git
 	depends = gcc-libs
 	depends = rlottie
 	depends = libwebp
-	provides = mstickereditor=:0.1.1.r89.g2d2a833d
-	conflicts = mstickereditor
 	source = mstickereditor-git::git+https://github.com/Lukas1818/mstickereditor
 	sha512sums = SKIP
 
 pkgname = mstickereditor-git
+	provides = mstickereditor=0.1.1
+	conflicts = mstickereditor
