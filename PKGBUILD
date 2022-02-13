@@ -1,36 +1,27 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Mainintainer : Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=upcmd
-pkgver=latest
-pkgrel=2
-pkgdesc="Ultimate Provisioner: the modern configuration management, build and automation tool"
+pkgver=20220112
+pkgrel=1
+license=('Apache')
+pkgdesc="Ultimate Plumber is a tool for writing Linux pipes with instant live preview"
+url="https://github.com/upcmd/up"
 arch=('x86_64')
-url='https://github.com/upcmd/up'
-license=('MPL2')
+provides=('up')
 depends=('glibc')
+provides=('upcmd')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/upcmd/up/archive/${pkgver}.tar.gz")
-sha256sums=('SKIP')
-
-prepare() {
-  cd "up-${pkgver}"
-  mkdir -p build/
-}
+source=("up-rolling-${pkgver}.tar.gz::${url}/archive/refs/tags/rolling-${pkgver}.tar.gz")
+sha256sums=('109d24eabb444ba738ac102b4af65e5900ef5635044c5c7fe15bba801503f70e')
 
 build() {
-  cd "up-${pkgver}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./app/...
+  cd "up-rolling-${pkgver}"
+  rm -rf build
+  mkdir -p ./build/linux
+  GOOS=linux GOARCH=amd64 go build -o build/linux/up app/up/*.go
 }
 
 package() {
-  cd "up-${pkgver}"
-  install -Dm755 build/up "${pkgdir}/usr/bin/upcmd"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/upcmd/LICENSE"
-  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/upcmd/"
-  install -Dm644 up.yml -t "${pkgdir}/etc/${pkgname}"
+  cd "up-rolling-${pkgver}"
+  install -Dm755 ./build/linux/up "$pkgdir/usr/bin/upcmd"
 }
