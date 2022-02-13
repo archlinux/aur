@@ -1,7 +1,7 @@
 # Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
 pkgname=mint-artwork
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Linux Mint Artwork and Resources."
 arch=("any")

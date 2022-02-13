@@ -1,5 +1,5 @@
 _update() {
-  glib-compile-schemas '/usr/share/glib-2.0/schemas/' 2>&1
+  #glib-compile-schemas '/usr/share/glib-2.0/schemas/' 2>&1
 }
 
 post_install() {

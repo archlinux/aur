@@ -1,7 +1,7 @@
 pkgbase = mint-artwork
 	pkgdesc = Linux Mint Artwork and Resources.
 	pkgver = 1.5.6
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = http://packages.linuxmint.com/pool/main/m/mint-artwork
 	install = mint-artwork.install
