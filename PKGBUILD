@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-indicator-keyboard"
 license=("GPL3")
 makedepends=("intltool" "cmake-extras" "systemd" "glib2" "libx11")
 depends=("libayatana-common>=0.9.5" "libxklavier" "hicolor-icon-theme")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("5925349e3c06de7b04b5502163cf4acb")
 
 build()

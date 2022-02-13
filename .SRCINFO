@@ -15,7 +15,7 @@ pkgbase = ayatana-indicator-keyboard
 	depends = libayatana-common>=0.9.5
 	depends = libxklavier
 	depends = hicolor-icon-theme
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/0.9.0.tar.gz
+	source = ayatana-indicator-keyboard-0.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-keyboard/archive/0.9.0.tar.gz
 	md5sums = 5925349e3c06de7b04b5502163cf4acb
 
 pkgname = ayatana-indicator-keyboard
