@@ -1,12 +1,13 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 pkgname=privateness
-_pkgname=${pkgname}
+_pkgname=privateness
+_pkgname1=skycoin
 _githuborg=NESS-Network
 _githuborg1=skycoin
 pkgdesc="NESS Core and Wallet. privateness.network. debian package"
-pkgver=0.27.1
+pkgver='0.27.1'
 _pkgver=${pkgver}
-pkgrel=5
+pkgrel=1
 _pkgrel=${pkgrel}
 arch=('x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm')
 _pkgarch=$(dpkg --print-architecture)
@@ -14,9 +15,9 @@ _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkggopath1="github.com/${_githuborg1}/${_pkgname1}"
 url="https://${_pkggopath}"
 _url1="https://${_pkggopath1}"
-makedepends=('git' 'go' 'musl' 'kernel-headers-musl' 'dpkg')
+makedepends=('git' 'go' 'musl' 'kernel-headers-musl')
 source=("git+${_url1}.git#branch=${BRANCH:-develop}"
-"git+${url}.git"
+"git+${url}.git#branch=${BRANCH:-karen}"
 "privateness.png"
 "com.privateness.Privateness.desktop")
 sha256sums=('SKIP'
@@ -25,10 +26,8 @@ sha256sums=('SKIP'
             'd2f7c042c64477ddede76734cc3316a754b70ea6c091fbc11a92e94de2b1e2d1')
 
 	prepare() {
-		#verify PKGBUILD signature
-		#gpg --verify ${srcdir}/PKGBUILD.sig ../PKGBUILD
-    mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin
-    ln -rTsf ${srcdir}/${_pkgname} ${srcdir}/go/src/${_pkggopath}
+    mkdir -p ${srcdir}/go/src/github.com/${_githuborg1}/ ${srcdir}/go/bin
+    ln -rTsf ${srcdir}/${_pkgname1} ${srcdir}/go/src/${_pkggopath1}
   }
 
 build() {
@@ -65,11 +64,9 @@ privateness -gui-dir=/opt/privateness/src/gui/static/ -launch-browser=true -enab
   echo "Depends: ${_debdeps}" >> ${srcdir}/control
   echo "Maintainer: Moses Narrow" >> ${srcdir}/control
   echo "Description: ${pkgdesc}" >> ${srcdir}/control
-
 }
 
 _buildbins() {
-
 _binname=$1
 _msg2 "building ${_binname} binary"
 	cd ${_cmddir}/${_binname}
@@ -77,7 +74,7 @@ _msg2 "building ${_binname} binary"
 }
 
 package() {
-  _debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
+  _debpkgdir="${_pkgname}-${_pkgver}-${_pkgrel}-${_pkgarch}"
   echo "${_debpkgdir}"
   _pkgdir="${pkgdir}/${_debpkgdir}"
   mkdir -p ${_pkgdir}/
@@ -102,31 +99,17 @@ package() {
   _msg2 'installing gui sources'
 	#install the web dir (UI)
 	cp -r ${_nesssrcdir}/src/gui/static ${_nessguidir}
-  _msg2 'installing scripts'
-	#install the scripts
-	#_nessscripts=$( ls --ignore=*.service ${srcdir}/${_pkgname}-scripts/ )
-	#for i in $_nessscripts; do
-	install -Dm755 ${srcdir}/ness-wallet.sh ${_nessgobin}/ness-wallet
-	ln -rTsf ${_nessgobin}/ness-wallet ${_pkgdir}/usr/bin/ness-wallet
-	chmod 755 ${_pkgdir}/usr/bin/ness-wallet
-	#done
-  #_msg2 'installing systemd services'
-  #install the system.d service
-  #  install -Dm644 ${srcdir}/${_pkgname}-scripts/${_pkgname}-node.service ${pkgdir}/usr/lib/systemd/system/${_pkgname}-node.service
   _msg2 'correcting symlink names'
 	#correct symlink names
-	cd ${pkgdir}/usr/bin/
+	cd ${_pkgdir}/usr/bin/
   mv newcoin privateness-newcoin
   mv skycoin-cli privateness-cli
   #mv address_gen privateness-address-gen
   mv cipher-testdata privateness-cipher-testdata
   mv monitor-peers privateness-monitor-peers
-  _msg2 'available binaries and scripts in /usr/bin :'
-  ls
-
+  ##########################################
   _msg2 'installing control file'
   install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
-
   _msg2 'creating the debian package'
   #create the debian package
   cd $pkgdir
