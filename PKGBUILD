@@ -3,7 +3,7 @@
 _electron=electron12
 _appname=Codex
 pkgname=codex
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='A free note-taking software for programmers and Computer Science students'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(npm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "codex.desktop"
 				"codex.js")
-sha256sums=('bbfafe111a4ff64acd9bf89e1ce82af3d41dedf77fd2961c974371c330198b31'
+sha256sums=('80155355311fd952df190759c883efd6378b63e3b4571fc140c193646297711b'
             'f812f32951d88d068fd21b6b336894ceb1c72e9a861262907525234c16cfdc13'
             'ffd97839392f7a09d22d47c0b3b000abf1061f8d4208ee4e8b93e3f200828c17')
 
