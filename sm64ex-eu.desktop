@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Super Mario 64 EX (EU)
+GenericName=Platformer
+Comment=Fork of Super Mario 64 Port (EU) with additional features
+Type=Application
+Terminal=false
+Exec=sm64ex-eu
+Icon=sm64ex-eu
+Categories=Game;Retro;Emulator;
