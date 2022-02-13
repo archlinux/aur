@@ -13,7 +13,7 @@ pkgbase = ayatana-indicator-notifications
 	makedepends = systemd
 	depends = hicolor-icon-theme
 	depends = dconf
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/0.9.0.tar.gz
+	source = ayatana-indicator-notifications-0.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-notifications/archive/0.9.0.tar.gz
 	md5sums = 866186bc29a7aaa329fed031794e1a83
 
 pkgname = ayatana-indicator-notifications
