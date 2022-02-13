@@ -6,12 +6,11 @@ _pkgname='discordrpc'
 pkgname="${_pkgname}"
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='CLI for Imgur API'
+pkgdesc='Fast Discord RPC Client written in Rust'
 arch=('x86_64')
 url="https://github.com/${_repo}"
 license=('BSD3')
 
-depends=('libnotify')
 makedepends=('cargo')
 
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_ver}.tar.gz")
