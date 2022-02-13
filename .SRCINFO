@@ -1,0 +1,16 @@
+pkgbase = customizemii-bin
+	pkgdesc = a custom channel creator for the wii
+	pkgver = 3.11
+	pkgrel = 1
+	url = https://code.google.com/archive/p/customizemii/
+	arch = any
+	license = GPL3
+	makedepends = unrar
+	depends = mono
+	noextract = CustomizeMii%203.11.rar
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/customizemii/CustomizeMii%203.11.rar
+	source = https://wiibrew.org/w/images/0/0d/CustomizeMii_Icon.png
+	sha256sums = 7e62e26f44933a071b0e30a2b21581dfdea0106011a680153ac13852aba1b919
+	sha256sums = 8e54152ac9c14192f02a6659183aa7c6196df88f5d2072fecba5d1fed5a0e458
+
+pkgname = customizemii-bin
