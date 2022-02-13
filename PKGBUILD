@@ -10,7 +10,7 @@ url="https://tari.in/www/software/libodiosacd"
 license=("GPL3")
 makedepends=("glibc")
 depends=("glibc")
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b899678721030146a7d35520fe7bc047")
 options=("!emptydirs")
 

@@ -10,8 +10,7 @@ pkgbase = libodiosacd
 	makedepends = glibc
 	depends = glibc
 	options = !emptydirs
-	source = https://github.com/tari01/libodiosacd/archive/21.8.30.tar.gz
+	source = libodiosacd-21.8.30.tar.gz::https://github.com/tari01/libodiosacd/archive/21.8.30.tar.gz
 	md5sums = b899678721030146a7d35520fe7bc047
 
 pkgname = libodiosacd
-
