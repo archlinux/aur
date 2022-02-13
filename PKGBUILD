@@ -10,6 +10,7 @@ depends=(bash gnupg tree)
 makedepends=(git make)
 optdepends=()
 provides=(pw)
+conflicts=(pw)
 source=("git+$url")
 md5sums=("SKIP")
 

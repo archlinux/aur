@@ -11,6 +11,7 @@ pkgbase = pw-git
 	depends = gnupg
 	depends = tree
 	provides = pw
+	conflicts = pw
 	source = git+https://gitlab.com/thomasjlsn/pw
 	md5sums = SKIP
 
