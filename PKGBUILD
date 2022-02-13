@@ -1,7 +1,7 @@
 # Maintainer: Cyano Hao <c@cyano.cn>
 
 pkgname=qemu-guest-kernel
-pkgver=5.15.12
+pkgver=5.15.23
 pkgrel=1
 pkgdesc="Linux kernels for QEMU/KVM guests (direct kernel boot)"
 url="https://github.com/guest-kernel/qemu"
@@ -30,7 +30,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '9a917bb710be091e5b1d05185f009b6eb67b4b668389da185e56909da2b10d06'
             '0ccbd0d29149c3752303aea276eea713cd1cb0687ea0239bdbaa20732b31e868'
-            'c40d2fd202aea75c78a4b39c365ccc687bf0f5a4df3bf2ee31fd4e162ef635d3')
+            'ea4fec562448292a233148e1685d731c5e1811d4c6a1826ebdc4a29feb69028d')
 
 prepare() {
 	cd "$srcdir/$_srcname"
@@ -62,35 +62,9 @@ _build() {
 	cp $(make -s image_name) "$srcdir/vmlinuz.$_carch"
 }
 
-_native_build() {
-	cd "$srcdir/$_srcname"
-	make mrproper
-
-	unset LLVM
-	unset CROSS_COMPILE
-
-	make defconfig
-	make kvm_guest.config
-	make filesystem.config
-	make systemd.config
-	make arch_specific.config
-
-	make
-	cp $(make -s image_name) "$srcdir/vmlinuz.$CARCH"
-}
-
 build() {
 	ARCH="x86" _carch="i686" _def_prefix="i386_" _build
-
-	if [[ $CARCH == "x86_64" ]]
-	then
-		# prefer native GNU toolchain for x32 ABI support
-		_native_build
-	else
-		# and remove the config if not available to avoid confusion
-		sed -i '/CONFIG_X86_X32/d' "$srcdir"/$_srcname/arch/x86/configs/qemu_extra.config
-		ARCH="x86" _carch="x86_64" _def_prefix="x86_64_" _build
-	fi
+	ARCH="x86" _carch="x86_64" _def_prefix="x86_64_" _build
 }
 
 package() {
