@@ -1,5 +1,5 @@
-!/restic-systemd-automatic-backup.install
+!/restic-automatic-backup-scheduler.install
 *.tar.gz
-pkg/
-restic-systemd-automatic-backup*
-src/
+/pkg/
+/restic-automatic-backup-scheduler-*
+/src/
