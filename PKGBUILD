@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("gobject-introspection" "gtk3" "python-gobject" "libayatana-appindicator" "desktop-file-utils")
 makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("01433ed4e68cab02464daf2d87256f03")
 
 build()
