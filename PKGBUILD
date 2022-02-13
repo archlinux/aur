@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-indicator-bluetooth"
 license=("GPL3")
 makedepends=("cmake-extras" "intltool" "glib2" "systemd" "vala" )
 depends=("bluez" "blueman" "libayatana-common>=0.9.5")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("bf743039c21cf7d4d9c1d22ecb0bc028")
 options=("!emptydirs")
 
