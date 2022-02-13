@@ -1,8 +1,9 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-# Contributor: Dan Beste <dan.ray.beste@gmail.com>
+# Maintainer:  Malte Jürgens <maltejur@dismail.de>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Dan Beste <dan.ray.beste@gmail.com>1
 
 pkgname=ngs-lang
-pkgver=0.2.10
+pkgver=0.2.13
 pkgrel=1
 pkgdesc='Next Generation Shell (NGS)'
 arch=('x86_64')
@@ -19,7 +20,7 @@ makedepends=('cmake'
              'peg'
              'uthash')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('361a36614a56bd7cb2cb0f4aa16addfefde478f9d2cbc1838eee3969262868c2')
+sha256sums=('7648761edb3695292d3289b91f9644c204d42269b8af697c765707ce192e45b5')
 
 prepare() {
   cd "${pkgname/-lang}-${pkgver}"

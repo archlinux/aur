@@ -1,6 +1,6 @@
 pkgbase = ngs-lang
 	pkgdesc = Next Generation Shell (NGS)
-	pkgver = 0.2.10
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = ngs-lang
 	depends = libffi
 	depends = pcre
 	provides = ngs
-	source = ngs-lang-0.2.10.tar.gz::https://github.com/ngs-lang/ngs/archive/v0.2.10.tar.gz
-	sha256sums = 361a36614a56bd7cb2cb0f4aa16addfefde478f9d2cbc1838eee3969262868c2
+	source = ngs-lang-0.2.13.tar.gz::https://github.com/ngs-lang/ngs/archive/v0.2.13.tar.gz
+	sha256sums = 7648761edb3695292d3289b91f9644c204d42269b8af697c765707ce192e45b5
 
 pkgname = ngs-lang
-
