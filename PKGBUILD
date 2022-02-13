@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-indicator-application"
 license=("GPL3")
 depends=("libayatana-appindicator" "dbus-glib")
 makedepends=("cmake-extras" "glib2" "libayatana-indicator>=0.9.0" "gtk3" "libdbusmenu-gtk3" "systemd" "intltool")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("a52ad9d5d047f27f015102d89a6791e5")
 options=("!emptydirs")
 
