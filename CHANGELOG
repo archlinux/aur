@@ -1,4 +1,9 @@
+Added sha256sums and post_upgrade
 1.5.5 - Updated to 1.5.5 Upstream
 1.5.4 - Updated to 1.5.4 Upstream
 1.5.3 - Updated to 1.5.3 Upstream
 1.5.1 - Switched to mint-backgrounds
+1.5.1 - Updated to 1.5.1
+Corrected ".SRCINFO".
+Correcting conflicts, adding "mint-sounds".
+1.4.8 - Initial PKGBUILD Creation

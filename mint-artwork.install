@@ -1,13 +1,19 @@
+_update() {
+  glib-compile-schemas '/usr/share/glib-2.0/schemas/' 2>&1
+}
+
 post_install() {
-#  touch /usr/share/backgrounds/linuxmint/default_background.jpg
-
-  glib-compile-schemas /usr/share/glib-2.0/schemas
-
+  #touch /usr/share/backgrounds/linuxmint/default_background.jpg
   #gsettings reset-recursively org.cinnamon
+  _update
 
   systemctl restart lightdm
 }
 
+post_upgrade() {
+  _update
+}
+
 post_remove() {
-  glib-compile-schemas /usr/share/glib-2.0/schemas 2>&1
+  _update
 }

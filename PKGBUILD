@@ -1,7 +1,7 @@
 # Maintainer: Odin Vex <https://aur.archlinux.org/account/OdinVex/>
 pkgname=mint-artwork
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Linux Mint Artwork and Resources."
 arch=("any")
@@ -23,6 +23,7 @@ source=("${pkgname}_${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz")
 noextract=()
 noupgrade=()
 md5sums=('0deedc6871001bc31453bb1cee75c7bd')
+sha256sums=('4fdbbdb22be1691f74981fcf4e5784692610bf8afec5006951d51728653d88e1')
 validpgpkeys=()
 
 package() {
