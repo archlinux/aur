@@ -2,12 +2,12 @@
 # Contributor: Fabio Austin Haedicke <austin.haedicke@gmail.com>
 
 pkgname=phoronix-test-suite-git
-pkgver=10.8.0.r0.g291cb53ca
+pkgver=10.8.2.r0.g59dd31383
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=(any)
 license=(GPL3)
-url="http://www.phoronix-test-suite.com/"
+url="https://www.phoronix-test-suite.com/"
 depends=(php)
 makedepends=(git)
 optdepends=('python'
@@ -19,7 +19,16 @@ optdepends=('python'
             'portaudio: required for universe-cli test suite'
             'unzip: required for universe-cli test suite'
             'mesa-demos: required for universe-cli test suite'
-            'openmpi: required for universe-cli test suite')
+            'openmpi: required for universe-cli test suite'
+            gmic
+            hugin
+            tesseract
+            ocrmypdf
+            rawtherapee
+            gegl
+            'python-mako: pts/libplacebo'
+            'clang70: pts/oneapi-level-zero'
+)
 provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
 source=("git+https://github.com/phoronix-test-suite/phoronix-test-suite.git"
