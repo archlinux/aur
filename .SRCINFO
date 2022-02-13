@@ -20,7 +20,7 @@ pkgbase = libayatana-appindicator
 	depends = libayatana-indicator>=0.9.0
 	conflicts = libayatana-appindicator-gtk3
 	replaces = libayatana-appindicator-gtk3
-	source = https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.90.tar.gz
+	source = libayatana-appindicator-0.5.90.tar.gz::https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.90.tar.gz
 	md5sums = e6cec6c1a79ce1fc968bd8f2bba7c0d4
 
 pkgname = libayatana-appindicator
