@@ -1,4 +1,4 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: Antergos Developers <dev@antergos.com>
 
 pkgname=iso-flag-png
