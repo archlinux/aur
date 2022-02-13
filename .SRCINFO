@@ -1,0 +1,17 @@
+pkgbase = dotsync
+	pkgdesc = Sync dotfiles with your Git repository
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mortymacs/dotsync
+	arch = x86_64
+	license = GPL-3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	depends = yaml-cpp
+	depends = libgit2
+	depends = fmt
+	source = dotsync-1.0.0.tar.gz::https://github.com/mortymacs/dotsync/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 05ef06ce2ef607c1648dd47215b07a4f8afe338e92943a086939325254ff2226
+
+pkgname = dotsync
