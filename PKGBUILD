@@ -1,27 +1,21 @@
 # Maintainer: Naomi Calabretta <me@arytonex.pw>
 
 pkgname=sunamu-bin
-_pkgver=v1.3.1
+_pkgver=v2.0.0
 pkgver=${_pkgver#v}
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way! (Binary version)"
 url="https://github.com/NyaomiDEV/Sunamu"
 license=("MPL-2.0")
-arch=("x86_64" "i686" "armv7h" "aarch64")
+arch=("x86_64" "aarch64")
 conflicts=(sunamu sunamu-git)
 depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip nss re2 snappy libnotify libappindicator-gtk3)
 
 source_x86_64=("sunamu.pacman::$url/releases/download/${_pkgver}/sunamu-${pkgver}.pacman")
-sha256sums_x86_64=("0fc777ace0e3a7b54b2a47fcbaa237b7b4eff04a6c4083b99b63aec84e8ef7d3")
-
-source_i686=("sunamu.pacman::$url/releases/download/${_pkgver}/sunamu-${pkgver}-i686.pacman")
-sha256sums_i686=("7e1f89dc4ae3499f3d96031dd659e1f1d7ba1edce6ac5bd4b50497dd3f26f467")
-
-source_armv7h=("sunamu.pacman::$url/releases/download/${_pkgver}/sunamu-${pkgver}-armv7l.pacman")
-sha256sums_armv7h=("a25d29ae18726453e2c594f97925b624ef60c461a5893c7b438e108cba0017f7")
+sha256sums_x86_64=("174ef4d9f31ae69b8362857ea1b9e166bfb9638dbef861095f3d556c52726937")
 
 source_aarch64=("sunamu.pacman::$url/releases/download/${_pkgver}/sunamu-${pkgver}-aarch64.pacman")
-sha256sums_aarch64=("1a786786fee32f3c96cd61eb04c6ff4596f08c68df5889d5dabc7e9899147457")
+sha256sums_aarch64=("1b9252fb6667d372b19ab7ba90f3308c8f0ab895a5bab0c49e2fbd9e5fa88899")
 
 noextract=("sunamu.pacman")
 options=(!strip)
