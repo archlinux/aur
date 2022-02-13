@@ -10,8 +10,7 @@ pkgbase = odio-sacd
 	makedepends = libodiosacd
 	depends = libodiosacd
 	options = !emptydirs
-	source = https://github.com/tari01/odio-sacd/archive/21.1.9.tar.gz
+	source = odio-sacd-21.1.9.tar.gz::https://github.com/tari01/odio-sacd/archive/21.1.9.tar.gz
 	md5sums = ec7d54425ad4aba58fa0abb932dccc35
 
 pkgname = odio-sacd
-

@@ -10,7 +10,7 @@ url="https://tari.in/www/software/odio-sacd"
 license=("GPL3")
 depends=("libodiosacd")
 makedepends=("libodiosacd")
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("ec7d54425ad4aba58fa0abb932dccc35")
 options=("!emptydirs")
 
