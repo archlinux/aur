@@ -7,7 +7,7 @@
 
 pkgname=mcomix-git
 pkgver=r1577.3cc19b4
-pkgrel=1
+pkgrel=2
 pkgdesc='A user-friendly, customizable image viewer specifically designed to handle comic books'
 arch=('any')
 url='https://sourceforge.net/projects/mcomix/'
