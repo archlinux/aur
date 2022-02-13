@@ -1,7 +1,0 @@
-post_install() {
-	echo
-	echo "NOTE: For libinput's "disable while typing" feature to work, create the following file and restart."
-	echo
-	cat /usr/share/doc/keyd/libinput/local-overrides.quirks
-	echo
-}
