@@ -10,6 +10,7 @@ pkgdesc="Control your Firefox using UNIX sockets."
 arch=('any')
 url="https://github.com/karabaja4/${_gitname}"
 license=('MIT')
+install=${pkgname}.install
 depends=('openbsd-netcat' 'nodejs')
 makedepends=('git')
 source=("https://addons.mozilla.org/firefox/downloads/file/3908096/nativecontrol-${_version}-fx.xpi"
@@ -27,6 +28,7 @@ package() {
   install -Dm644 "nativecontrol-1.2-fx.xpi" "${pkgdir}/usr/lib/firefox/browser/extensions/native_control@karabaja4.xpi"
 
   cd "${_gitname}"
+  install -Dm755 "firefox-socket-control" "${pkgdir}/usr/bin/firefox-socket-control"
   install -Dm755 "app/native_control.js" "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/native_control.js"
   install -Dm644 "app/native_control.json" "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/native_control.json"
 }
