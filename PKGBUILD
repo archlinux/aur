@@ -1,8 +1,8 @@
 # Maintainter: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=frc-toolchain
-pkgver=2021.2
-_year=2021
+pkgver=2022.1
+_year=2022
 pkgrel=1
 pkgdesc="The FIRST Robotics Competition C/C++ build system components"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/wpilibsuite/toolchain-builder'
 license=('GPL')
 options=('!strip' 'libtool' 'staticlibs' '!emptydirs')
 source=("https://github.com/wpilibsuite/roborio-toolchain/releases/download/v${pkgver//\./-}/FRC-${_year}-Linux-Toolchain-7.3.0.tar.gz")
-sha512sums=('20763a95987d8dbecf6e169f36d111c80f1d211f24d4ec10832045d3f944a01c35ad68b21f4fdf3fddc3c92ba0ffc4a9de1d1728edb54b38d853338d8bd3dff7')
+sha512sums=('ca5775cc3eed46488566b12807367a9f5c9827e631a400d7e385593f76a5323abf1a7e025c3ccbdcf77e4fd9b7bc405c34d4055ca3b81cd5a5a7822ceca473f4')
 
 package() {
   mkdir -p $pkgdir/usr
