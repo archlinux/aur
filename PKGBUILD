@@ -2,7 +2,7 @@
 pkgname='wayshot-git'
 _pkgname="wayshot"
 pkgver=1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/waycrate/wayshot"
 pkgdesc="A screenshot tool for wlroots compositors."
