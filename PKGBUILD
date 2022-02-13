@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("cups" "libayatana-indicator")
 makedepends=("intltool" "mate-common" "glib2" "gtk3" "libdbusmenu-glib" "libdbusmenu-gtk3" "libayatana-indicator" "libcups" "systemd")
 optdepends=("system-config-printer")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("d13e9aa4069f96de10482385708cd496")
 options=("!emptydirs")
 

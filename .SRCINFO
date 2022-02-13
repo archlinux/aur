@@ -20,8 +20,7 @@ pkgbase = ayatana-indicator-printers
 	depends = libayatana-indicator
 	optdepends = system-config-printer
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-printers/archive/0.9.0.tar.gz
+	source = ayatana-indicator-printers-0.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-printers/archive/0.9.0.tar.gz
 	md5sums = d13e9aa4069f96de10482385708cd496
 
 pkgname = ayatana-indicator-printers
-
