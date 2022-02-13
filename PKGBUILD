@@ -7,12 +7,12 @@
 
 pkgname=hsa-rocr
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime'
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/ROCR-Runtime.html'
 license=('custom:NCSAOSL')
-depends=('libelf' 'hsakmt-roct' 'rocm-device-libs')
+depends=('libelf' 'hsakmt-roct' 'rocm-device-libs' 'hsa-amd-aqlprofile')
 makedepends=('cmake' 'rocm-llvm' 'xxd')
 provides=("rocr-runtime=$pkgver")
 replaces=('rocr-runtime')
