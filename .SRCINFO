@@ -1,12 +1,12 @@
 pkgbase = python-casefy
 	pkgdesc = Utilities to convert the case of strings
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://pypi.org/project/casefy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/e0/a4/db0360fb2b7015401830398d9e77e2a252838f6307dc84c0205199f6f4cc/casefy-0.1.0.tar.gz
-	sha256sums = a608be48e5eade0924a0f4c4c17135c4c26286430af45a55b136d70cfe21418e
+	source = https://pypi.python.org/packages/15/8e/fa556937d382db9717b529fe4337d159579761b61543068fe1eaec4f2793/casefy-0.1.1.tar.gz
+	sha256sums = b3aa0a9b295c50132347ebc629a4bdfda7968a09ebc32d1954f4a235bbc184eb
 
 pkgname = python-casefy
