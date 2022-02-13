@@ -1,0 +1,29 @@
+From c88125e038080f890eb707c493d95eead386758a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lu=C3=ADs=20Ferreira?= <contact@lsferreira.net>
+Date: Sun, 13 Feb 2022 18:52:12 +0000
+Subject: [PATCH] php7 fix
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Luís Ferreira <contact@lsferreira.net>
+---
+ src/runtime/ArcanistRuntime.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/runtime/ArcanistRuntime.php b/src/runtime/ArcanistRuntime.php
+index 35099b2c..512ec2e4 100644
+--- a/src/runtime/ArcanistRuntime.php
++++ b/src/runtime/ArcanistRuntime.php
+@@ -208,7 +208,7 @@ final class ArcanistRuntime {
+     $bin = $arcanist_root.'/scripts/arcanist.php';
+ 
+     $err = phutil_passthru(
+-      'php -f %R -- %Ls',
++      'php7 -f %R -- %Ls',
+       $bin,
+       array_slice($argv, 1));
+ 
+-- 
+2.35.1
+
