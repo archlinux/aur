@@ -1,45 +1,30 @@
+# Maintainer: Yishen Miao <mys721tx@gmail.com>
 # Maintainer: Nathaniel Stickney <nstickney@gmail.com>
 # Contributor: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname=blast+
 pkgver=2.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
 license=('custom')
-depends=('elfutils'
-	 'zlib'
+depends=('glibc'
+         'gcc-libs'
+         'libelf'
+         'zlib'
 	 'bzip2'
 	 'lzo'
 	 'zstd'
+	 'db'
 	 'pcre'
-	 'gmp'
-	 'nettle'
-	 'krb5'
-	 'mysql'
-	 'freetype2'
-	 'python'
 	 'perl'
-	 'sqlite'
-	 'icu'
-	 'expat'
-	 'libxml2'
-	 'libxslt'
-	 'muparser'
-	 'hdf5'
-	 'giflib'
-	 'libjpeg'
-	 'libpng'
-	 'libtiff'
-	 'imagemagick'
-	 'curl'
-	 'mimetic'
-	 'lapack'
+	 'python'
 	 'lmdb'
 	 'libuv'
-	 'libssh2')
+	 'libnghttp2'
+	 'sqlite')
 makedepends=('cpio')
 # conflicts with proj on libproj.so
 conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'proj')
@@ -53,10 +38,7 @@ prepare() {
     ./configure \
         --prefix=/usr \
         --with-dll \
-        --with-mt \
-        --without-gnutls \
-        --without-boost \
-        --without-bdb
+        --with-mt
 }
 
 build() {
