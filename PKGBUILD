@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-registers
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Neovim plugin to preview the contents of the registers"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim')
 checkdepends=('neovim-plenary')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1253b7fd7f1d5d90c04c17534c7a85c899c10de186829f103ac7533dba8958c7')
+sha256sums=('64e17f7e40d6c2c1bbcf8bda04cade36c8e4b545416c6d9856e8980551030916')
 
 check() {
 	cd "registers.nvim-$pkgver"
