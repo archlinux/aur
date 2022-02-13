@@ -86,6 +86,7 @@
         "address": "",
         "apply_proxy_config": true,
         "tls_mode": 0,
+        "min_tls_version": 12,
         "force_passive_ip": "",
         "passive_ip_overrides": [],
         "client_auth_type": 0,
@@ -117,6 +118,7 @@
         "port": 0,
         "address": "",
         "enable_https": false,
+        "min_tls_version": 12,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "prefix": "",
@@ -211,12 +213,21 @@
         "enable_web_admin": true,
         "enable_web_client": true,
         "enable_https": false,
+        "min_tls_version": 12,
         "client_auth_type": 0,
         "tls_cipher_suites": [],
         "proxy_allowed": [],
         "hide_login_url": 0,
         "render_openapi": true,
-        "web_client_integrations": []
+        "web_client_integrations": [],
+        "oidc": {
+          "client_id": "",
+          "client_secret": "",
+          "config_url": "",
+          "redirect_base_url": "",
+          "username_field": "",
+          "role_field": ""
+        }
       }
     ],
     "templates_path": "/usr/share/sftpgo/templates",
@@ -247,6 +258,7 @@
     "auth_user_file": "",
     "certificate_file": "",
     "certificate_key_file": "",
+    "min_tls_version": 12,
     "tls_cipher_suites": []
   },
   "http": {
