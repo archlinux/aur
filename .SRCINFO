@@ -1,0 +1,13 @@
+pkgbase = convertwithmoss
+	pkgdesc = Converts multisamples in a specific source format to a different destination format
+	pkgver = 4.7.1
+	pkgrel = 1
+	url = http://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html
+	arch = x86_64
+	groups = pro-audio
+	license = LGPL3
+	depends = java-runtime
+	source = http://mossgrabers.de/Software/ConvertWithMoss/convertwithmoss_4.7.1-1_amd64.deb
+	sha256sums = 7914428705ee5e08f9b60a3f9d120ee20999e65bae9533a4180e758a14f2e019
+
+pkgname = convertwithmoss
