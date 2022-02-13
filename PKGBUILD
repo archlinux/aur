@@ -2,10 +2,10 @@
 
 pkgname=netflix-nativefier
 pkgver=1.0.1
-pkgrel=1
+pkgrel=0
 pkgdesc="Netflix desktop built with nativefier"
 arch=('x86_64')
-url=https://www.netflix.com
+url="https://www.netflix.com"
 license=('custom')
 depends=('gtk3' 'nss')
 makedepends=('imagemagick' 'nodejs-nativefier' 'unzip')
@@ -16,7 +16,6 @@ build() {
   cd $srcdir
   nativefier \
     --name "Netflix" \
-    --widevine \
     "$url" \
     "netflix"
 }
