@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/libayatana-common"
 license=("GPL3")
 makedepends=("cmake" "cmake-extras" "glib2" "vala" "gobject-introspection" "intltool")
 depends=("dconf")
-source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("f29cb4c209f4f622491f89cebd70d31d")
 
 build()
