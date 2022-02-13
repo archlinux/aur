@@ -60,6 +60,7 @@ package() {
 
         for size in 16x16 22x22 24x24 32x32 48x48
         do
+                install -Dm755 "mcomix/images/${size}/mcomix.png" "${_ICONDIR}/${size}/mcomix.png"
                 install -dm755 "${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
                 install -Dm644 "mcomix/images/${size}/mcomix.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/mcomix.png"
                 install -Dm644 "mime/icons/${size}/application-x-cb7.png" "${pkgdir}/usr/share/icons/hicolor/${size}/mimetypes/application-x-cb7.png"
