@@ -23,7 +23,7 @@ pkgbase = ayatana-webmail
 	depends = python-urllib3
 	conflicts = unity-mail
 	replaces = unity-mail
-	source = https://github.com/AyatanaIndicators/ayatana-webmail/archive/21.11.17.tar.gz
+	source = ayatana-webmail-21.11.17.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/21.11.17.tar.gz
 	md5sums = 62696ef144dfdae00abe3cdc730da341
 
 pkgname = ayatana-webmail
