@@ -10,6 +10,7 @@ depends=(bash gnupg tree)
 makedepends=(git make)
 optdepends=()
 provides=(pw)
+conflicts=(pw-git)
 source=("https://gitlab.com/thomasjlsn/pw/-/archive/1.0/pw-1.0.tar.gz")
 md5sums=("SKIP")
 
