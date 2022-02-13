@@ -2,7 +2,7 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
@@ -30,18 +30,18 @@ source=(
     '0011-data-Add-Microsoft-Surface-Book-3-15.patch'
     "https://github.com/linuxwacom/libwacom/releases/download/libwacom-${pkgver}/libwacom-${pkgver}.tar.xz"{,.sig}
 )
-sha256sums=('b2110eced57007d601e4ed18644f0f44ceff357aede0ee321794d214fa038881'
-            '0f43297b2248df9df0d315edb25a1f9e30e86a9a2c13d1260cf66ec7c7c42d3c'
-            '7a2886015574ddaffdbf3462255064831a03e4a6df0152d10516e1639824ab19'
-            '0cc9ae1d12bb2d72f2c465326ae94bb0ce6bd3fb85a8c21ad4d64ee386bdce22'
-            '8026b2bbf840fe8e24897a740b4cc8ee0eb807440c9cd4502750823b022eeaef'
-            '51c09e64e452d41a3a2ed98fa01a1283c51f6e3e517083baaba42af2262894fe'
-            '25d3831c5d090d9053690f6b8d683e155789d05db116b14c23a3f8604e58b2db'
-            'b9633f0c292a0f385fdd8e8a2d1fa0214e0dd5aedf18460a92230b021dcb8b07'
-            '4cd9ac66a493ec2a363154f682066aabb3c3b1f89f459addabcef3a4a00efcdf'
-            '55e2dabee35ad1d6e8df0703afdd75344a08b2e56898255e31c722eb07341b47'
-            '447507d06e842d1e83d90fa454b828e1a7a487619c57b1d62ac73bbdeb2cb4b1'
-            '4923bdf3e7b4940bd81d3e7c1b8ab1843597a1bdf1e6f627840e0c87c381fe0a'
+sha256sums=('40b6834ae423f68f68d3fbd7852aa58eafaa9adb0a29ce132f762e778954553d'
+            '17a27e9f495ce0d710aa6425bb6edfa5f4123f181754f776d06c4c4fc6f53749'
+            '55dc40c5ac58e977c5017ab98dea47a5e8791773aa331229e6afdf0d32d10841'
+            'b6abf69199222b849a499d02eed379ef265d5576787993933978a25a9af2b5be'
+            'ad7d7ae6b2deac85f6ca3b0838c5a9be28c7a535d18f2396e9a97addc214b8ec'
+            'bb07abc8e74b45531721d79d4602918b301d92dc9e74201e88aefac231cb2e3c'
+            'ec9f0bdbed0b136453cf571724cbae06fff2236da2bbf22b143c4d0f48756b20'
+            '10ebf14c928c6074e5b08498e6155fa5f13e8c15d7d69f09f5e47b9f168d5256'
+            '89225dde12a795f700d090a484a04e5da01d1d47b792bf4f7128135a70a0a66d'
+            'aaab03d55d1fcfed17ea4d6de838cab3a3774d2b8ce0070bea6647d1a211401f'
+            '8ff37ac6631be6851c6a521a1e852b182b4cdd6735206ab19056db8735920772'
+            'b900899589c4c1f83e6671a2383a3437cfa70c3a275cb266bddbbc6c4eaf71a2'
             'SKIP')
 
 prepare() {
