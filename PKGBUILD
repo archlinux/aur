@@ -2,7 +2,7 @@
 # Maintainer: Lunush
 
 pkgname=rates
-_pkgver="$(curl --silent "https://api.github.com/repos/rates/lunush/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')"
+_pkgver="$(curl --silent "https://api.github.com/repos/lunush/rates/releases/latest" | grep -Po '"tag_name": "\K.*?(?=")')"
 pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="Currency exchange rates in your terminal"
