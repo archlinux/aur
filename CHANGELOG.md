@@ -19,6 +19,20 @@ All notable changes to `src-cli` are documented in this file.
 
 ### Removed
 
+## 3.36.4
+
+### Added
+
+- A new `src batch remote` command has been added to run a batch spec on a Sourcegraph instance that has Server Side Batch Changes enabled. [#671](https://github.com/sourcegraph/src-cli/pull/671)
+
+### Changed
+
+- Migrated to [`grafana/regexp`](https://github.com/grafana/regexp) to match our usage in Sourcegraph proper. [#694](https://github.com/sourcegraph/src-cli/pull/694)
+
+### Fixed
+
+- A bug in 3.36.3 caused `src batch apply` to no longer accept a file provided with `-f`. This has been fixed. [#695](https://github.com/sourcegraph/src-cli/pull/695)
+
 ## 3.36.3
 
 ### Changed
