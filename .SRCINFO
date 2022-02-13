@@ -15,7 +15,7 @@ pkgbase = ayatana-indicator-session
 	depends = dconf
 	depends = libayatana-common>=0.9.5
 	depends = hicolor-icon-theme
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-session/archive/0.9.0.tar.gz
+	source = ayatana-indicator-session-0.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-session/archive/0.9.0.tar.gz
 	md5sums = c5d66fe1ad289e375fc3fad467df3d4f
 
 pkgname = ayatana-indicator-session
