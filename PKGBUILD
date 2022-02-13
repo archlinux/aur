@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-indicator-sound"
 license=("GPL3")
 makedepends=("cmake-extras" "intltool" "vala" "systemd" "glib2" "libxml2" "gobject-introspection")
 depends=("accountsservice" "libpulse" "libgee" "libnotify" "libayatana-common>=0.9.5")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b3db2facb96b93667f1178d7d36cfe2f")
 
 build()

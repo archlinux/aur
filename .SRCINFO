@@ -19,7 +19,7 @@ pkgbase = ayatana-indicator-sound
 	depends = libgee
 	depends = libnotify
 	depends = libayatana-common>=0.9.5
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/0.9.0.tar.gz
+	source = ayatana-indicator-sound-0.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-sound/archive/0.9.0.tar.gz
 	md5sums = b3db2facb96b93667f1178d7d36cfe2f
 
 pkgname = ayatana-indicator-sound
