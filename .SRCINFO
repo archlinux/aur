@@ -1,6 +1,6 @@
 pkgbase = sony-remote
 	pkgdesc = Sony BRAVIA TV Remote using the builtin REST API
-	pkgver = r4.a3d00a4
+	pkgver = r5.981b9cb
 	pkgrel = 1
 	url = https://github.com/AlexBMJ/SonyRemote
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=sony-remote
 gitname=SonyRemote
-pkgver=r4.a3d00a4
+pkgver=r5.981b9cb
 pkgrel=1
 pkgdesc="Sony BRAVIA TV Remote using the builtin REST API"
 arch=('any')
