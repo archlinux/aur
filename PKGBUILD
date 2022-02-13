@@ -2,7 +2,7 @@
 
 pkgname="cmake-extras-git"
 _pkgname="cmake-extras"
-pkgver="r255"
+pkgver=r283
 pkgrel=1
 pkgdesc="A collection of add-ons for the CMake build tool"
 arch=("any")
@@ -10,7 +10,7 @@ url="https://gitlab.com/ubports/core/${_pkgname}"
 license=("LGPL3")
 depends=("cmake" "python")
 makedepends=("git" "cmake")
-source=("git+https://gitlab.com/ubports/core/${_pkgname}.git")
+source=("${_pkgname}::git+https://gitlab.com/ubports/core/${_pkgname}.git")
 md5sums=("SKIP")
 options=("!emptydirs")
 provides=("${_pkgname}")
