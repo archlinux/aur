@@ -10,7 +10,7 @@ url="https://tari.in/www/software/${pkgname}"
 license=("GPL3")
 depends=("gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gst-libav" "python-beautifulsoup4" "python-psutil" "python-mutagen" "odio-edit" "neroaacenc-bin" "libodiosacd" "lsdvd")
 makedepends=("python-setuptools" "python-polib")
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("ec1468e6b05b2004726c8f1b3aa702d7")
 options=("!emptydirs")
 
