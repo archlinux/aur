@@ -8,7 +8,7 @@ arch=("any")
 url="https://gitlab.com/ubports/core/${pkgname}"
 license=("LGPL3")
 depends=("cmake" "python")
-source=("https://gitlab.com/ubports/core/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/ubports/core/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=("3f4a4f785cf34e6d201422e00e9e3ffa")
 
 build()
