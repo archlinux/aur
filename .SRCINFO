@@ -1,7 +1,7 @@
 pkgbase = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
 	pkgver = 2.26.4632.102_20220206_2018.02.26.r231.g7329757e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = mozc-ut-united
 	makedepends = clang
 	makedepends = zinnia
 	makedepends = bazel
+	makedepends = python-six
 	depends = qt5-base
 	depends = zinnia
 	source = mozc::git+https://github.com/google/mozc.git

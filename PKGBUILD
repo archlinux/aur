@@ -31,12 +31,12 @@ pkgbase=mozc-ut-united
 pkgname=mozc-ut-united
 true && pkgname=('mozc-ut-united')
 pkgver=2.26.4632.102_20220206_2018.02.26.r231.g7329757e
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mozc/"
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('BSD' 'GPL' 'custom')
-makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel')
+makedepends=('ruby' 'git' 'ninja' 'clang' 'zinnia' 'bazel' 'python-six')
 source=("mozc::git+https://github.com/google/mozc.git" "https://osdn.net/downloads/users/37/37665/mozcdic-ut-${_utdicdate}.tar.bz2" "config-arch-new.patch" "git+https://chromium.googlesource.com/breakpad/breakpad" "git+https://github.com/google/googletest.git" "git+https://chromium.googlesource.com/external/gyp" "git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git" "git+https://github.com/open-source-parsers/jsoncpp.git" "git+https://github.com/google/protobuf.git" "git+https://github.com/abseil/abseil-cpp.git" "android-fix.patch")
 sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
