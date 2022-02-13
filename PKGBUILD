@@ -1,8 +1,8 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Matt Frichtl <frichtlm@gmail.com>
 
 _cranname=Rcpp
-_cranver=1.0.7
+_cranver=1.0.8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=(r)
 optdepends=(r-tinytest r-inline r-rbenchmark r-pkgkitten)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('15e5a4732216daed16263c79fb37017c2ada84a2d4e785e3b76445d0eba3dc1d')
+sha256sums=('879f9296bc045ac4ed464578723bd37fcabbbdaa30aaaf070cf953e329f678ee')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
