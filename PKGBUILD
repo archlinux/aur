@@ -2,9 +2,9 @@
 
 pkgname=hut-git
 _pkgname=hut
-pkgver=r184.9154619
+pkgver=r200.4fac858
 pkgrel=1
-pkgdesc='A CLI tool for sr.ht'
+pkgdesc='A CLI tool for sr.ht (sourcehut)'
 arch=('x86_64')
 url='https://sr.ht/~emersion/hut'
 license=('AGPL3')
@@ -21,6 +21,11 @@ pkgver() {
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
+}
+
+check() {
+    cd "$srcdir/$_pkgname"
+    go test ./...
 }
 
 build() {
