@@ -3,12 +3,13 @@
 
 pkgname=bazel-buildtools
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
 license=('Apache')
 pkgdesc="Developer tools for working with Google's bazel buildtool."
 makedepends=("bazel" "git")
+depends=("java-runtime=11")
 
 source=("$url/archive/$pkgver.tar.gz")
 sha256sums=("7f43df3cca7bb4ea443b4159edd7a204c8d771890a69a50a190dc9543760ca21")
