@@ -29,7 +29,7 @@ Icon="/opt/RPMLauncher/data/flutter_assets/assets/images/Logo.png"
 Name=RPMLauncher
 Path=/opt/RPMLauncher
 StartupNotify=false
-Terminal=true
+Terminal=false
 Type=Application
 Version=$PKGVER" >> $pkgdir/usr/share/applications/RPMLauncher.desktop
 }
