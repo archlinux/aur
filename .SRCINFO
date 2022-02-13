@@ -1,20 +1,18 @@
 pkgbase = zenity-light
 	pkgdesc = Display graphical dialog boxes from shell scripts. Light version without WekKit2.
-	pkgver = 3.32.0+55+gd7bedff
+	pkgver = 3.41.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/zenity
 	arch = x86_64
 	license = LGPL
 	makedepends = yelp-tools
-	makedepends = autoconf-archive
+	makedepends = meson
 	makedepends = git
-	makedepends = perl
 	depends = gtk3
 	depends = libnotify
 	provides = zenity
 	conflicts = zenity
-	source = git+https://gitlab.gnome.org/GNOME/zenity.git#commit=d7bedff683df43df0604f989659df48f096f8c0e
+	source = git+https://gitlab.gnome.org/GNOME/zenity.git#commit=d8857f446b602d5fb4a41fef3d8a63507a12b72c
 	sha256sums = SKIP
 
 pkgname = zenity-light
-
