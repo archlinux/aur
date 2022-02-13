@@ -15,10 +15,37 @@ conflicts=('cloudflare-warp')
 changelog=$pkgname.changelog
 
 # in ubuntu focal: apt-get --print-uris install cloudflare-warp
-source=("https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_2_29_1_amd64_4c914fa5af_amd64.deb")
+source=(
+    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_2_29_1_amd64_4c914fa5af_amd64.deb"
+    "${pkgname}-${pkgver}-${pkgrel}-Release::https://pkg.cloudflareclient.com/dists/focal/Release"
+    "${pkgname}-${pkgver}-${pkgrel}-Release.sig::https://pkg.cloudflareclient.com/dists/focal/Release.gpg"
+    "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages"
+)
 
-md5sums=('b9489e943a4b0b97fce23ac3ff23b422')
-sha256sums=('d690f6345ce378cce25991144ab471ac3276aa11ffe64ec1fb25de1c94a2bf97')
+# If you're getting PGP validation errors, you likely need to import the cloudflare GPG key.
+# You can import it using one of the following methods:
+#
+# Using curl directly from their servers:
+#  * curl -sS https://pkg.cloudflareclient.com/pubkey.gpg  | gpg --import -
+#
+# Using MIT's keyserver:
+#  gpg --recv-keys --keyserver hkp://pgp.mit.edu C068A2B5771775193CBE1F2F6E2DD2174FA1C3BA
+#
+# Or a utility like `yay` can do this automatically for you using:
+#   yay -S --pgpfetch cloudflare-warp-bin
+#
+# which will automatically import the GPG key based on the `validpgpkeys` attribute below.
+
+validpgpkeys=('C068A2B5771775193CBE1F2F6E2DD2174FA1C3BA')
+
+md5sums=('b9489e943a4b0b97fce23ac3ff23b422'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+sha256sums=('d690f6345ce378cce25991144ab471ac3276aa11ffe64ec1fb25de1c94a2bf97'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 install=$pkgname.install
 
 # The .deb package contains the md5sums of the individual files as well -- we'll extract
@@ -47,12 +74,50 @@ build() {
                -C "${srcdir}/build/"
 }
 
-# Note that `${srcdir}/md5sums` contains the absolute path to the files on disk
-# in the src paths.
 check() {
-    echo "==> Validating packaged md5sums"
+    # Validate hashes from the PGP signed "Release" file.
+    # Based off the spotify PKGBUILD:
+    #   https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=spotify#n48
+    #
+    #
+    # First verify the hash of the Packages file:
+    #  * narrow down to rows which contain the Package files, 'main/binary-amd64/Packages'
+    #  * narrow down to rows which have 128-character hashes (sha512)
+    #  * keep only the hash
+    #  * save it in a file and run it through sha512sum
+    #
+    # Once we verified the Packages files, look up the .deb's hash in the Packages file,
+    # and verify the .deb
 
-    if ! md5sum --status --check ${srcdir}/md5sums
+    PKGHASH="${srcdir}/${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages.sha512"
+    DEBHASH="${srcdir}/${pkgname}-${pkgver}-x86_64.deb.sha512"
+    MD5SUMS="${srcdir}/md5sums"
+
+    # This grabs the Packages sha512 hash from the Release file
+    echo "$(grep -E '^\s?[a-f0-9]{128}\s+[0-9]+\s+main/binary-amd64/Packages$' ${pkgname}-${pkgver}-${pkgrel}-Release | tail -n 2 | head -n 1 | awk '{print $1}') ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages" > ${PKGHASH}
+
+    # This grabs the .deb sha5125 hash from the Packages file
+    echo "$(grep -E '(Version|SHA512)' ${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages | grep -E -A1 '2022.2.29' | tail -n1 | awk '{print $2}') ${pkgname}-${pkgver}-x86_64.deb" > ${DEBHASH}
+
+
+    echo "==> Validating package checksums"
+
+    echo "==> sha512sum: ${PKGHASH}"
+    if ! sha512sum --status --check ${PKGHASH}
+    then
+        echo "!!> SHA512 mismatch: ${PKGHASH}"
+        exit 1
+    fi
+
+    echo "==> sha512sum: ${DEBHASH}"
+    if ! sha512sum --status --check ${DEBHASH}
+    then
+        echo "!!> SHA512 mismatch: ${DEBHASH}"
+        exit 1
+    fi
+
+    echo "==> md5sum: ${MD5SUMS}"
+    if ! md5sum --status --check ${MD5SUMS}
     then
         echo "!!> Packaged md5sum mismatch!"
         exit 1
