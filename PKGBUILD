@@ -1,4 +1,4 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: $pooky Hunter <spookyh+arch@gmail.org>
 
