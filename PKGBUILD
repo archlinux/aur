@@ -2,7 +2,7 @@
 
 pkgname=agate-bin
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Very simple server for the Gemini hypertext protocol"
 arch=( 'x86_64' 'aarch64' 'armv6h' 'armv7h' )
 url="https://github.com/mbrubeck/agate"
@@ -19,7 +19,7 @@ source_armv6h=( https://github.com/mbrubeck/agate/releases/download/v${pkgver}/a
 source_armv7h=( https://github.com/mbrubeck/agate/releases/download/v${pkgver}/agate.armv7-unknown-linux-gnueabihf.gz )
 
 sha256sums=(
-  '3d521d3417774312370a74869cc612e5a5d449793d78ed3649e7acf81b2080a6'
+  'b2d37796a177586afa015056b1f525b0228d87d9defbbbf4dbb275101ef6595a'
   '2281a345cd0e70f275e7630fb585eac94938d97a80f1db12f048a7cbb0e6c253'
   '3ae91c3090f65bc95b7dee277e357061408560c468546e50f5acc6e58b3f1042'
 )
