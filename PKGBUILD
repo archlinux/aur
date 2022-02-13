@@ -3,7 +3,7 @@
 pkgname=keymash-dkms-git
 pkgver=r3.cb152fd
 pkgrel=1
-pkgdesc='Device driver that provides an endless supply of lowercase characters from the QWERTY home row in a cryptographically secue random order.'
+pkgdesc='Device driver that provides an endless supply of lowercase characters from the QWERTY home row in a cryptographically secure random order.'
 arch=('x86_64')
 url="https://git.bsd.gay/fef/keymash"
 license=('BSD' 'GPL2')
