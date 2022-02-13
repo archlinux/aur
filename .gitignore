@@ -1,2 +1,14 @@
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.txz
 *.log
-npp.*.zip
+*.log.*
+*.sig
+
+pkg/
+src/

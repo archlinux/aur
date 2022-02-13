@@ -1,10 +1,8 @@
 # Maintainer: Renato Molnar <m dot renato93 at gmail dot com>
 
-#_arch=x64
-
 pkgname=notepadpp
 _pkgname=notepad-plus-plus
-pkgver=8.1.2
+pkgver=8.3
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 arch=('x86_64')
@@ -24,11 +22,14 @@ source=(notepadpp
 sha256sums=('d4352139a459f532b807262b5b1933c98142fc772de713abc39e6073d291b200'
             'a1c34d444893d56ae165c8457260e11b729ea2afc10bb9e2690bc89e1f523238'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-            'e10c1cb87c3c1fb3d69eba24edccd4d261968edc2f5a5c3e9caf5d237124bdae'
-            '3e9a8ec74f2c41478b1b3212b44603bdab08e993fe9be5cc4d0fc443d7e8e42d')
+            '0457ccbc82978a917944283fdad7416bf6ed9d7e5dd37c5b02404168a8bad745'
+            '1a5c01fc3fbb0f0a99daef7ca25b8c6aa30f34bd52e1ac9f645c189efc173e53')
 
 noextract=("npp.${pkgver}.bin.zip"
            "npp.${pkgver}.bin.x64.zip")
+
+# If you want to package the 64bit version, you need to uncomment the following line:
+#_arch=x64
 
 if [[ "${_arch}" == x64 ]]; then
     _arch='.x64'
