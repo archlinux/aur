@@ -1,15 +1,16 @@
 pkgbase = fhc-git
 	pkgdesc = Fast HTTP Checker (git)
-	pkgver = 0.5.1.r0.ge37dedf
+	pkgver = 0.6.1.r2.g38efe67
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/fhc
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	provides = fhc
 	conflicts = fhc
+	options = !lto
 	source = git+https://github.com/Edu4rdSHL/fhc
 	sha512sums = SKIP
 

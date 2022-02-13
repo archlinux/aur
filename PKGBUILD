@@ -3,32 +3,38 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fhc-git
-pkgver=0.5.1.r0.ge37dedf
+pkgver=0.6.1.r2.g38efe67
 pkgrel=1
 pkgdesc="Fast HTTP Checker (git)"
 arch=('x86_64')
 url="https://github.com/Edu4rdSHL/fhc"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
 sha512sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --locked
+  cargo build --release --frozen
 }
 
 check() {
   cd "${pkgname%-git}"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
