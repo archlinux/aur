@@ -5,7 +5,7 @@
 
 pkgname=appleseed-git
 pkgver=2.1.0.beta.r282.g1ba62025b
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects (development vesion)."
 arch=(i686 x86_64)
@@ -45,7 +45,7 @@ pkgver() {
 
 prepare() {
   git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8,oiio_cxx_std_14,open{exr3,colorio1}}.patch
-  sed '/python37/s/37/39/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
+  sed '/python37/s/37/310/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 
 build() {
