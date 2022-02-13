@@ -5,8 +5,9 @@ cat << "EOF"
 To get started with backups, do the following:
 
 1. Edit config files at /etc/restic/*.env.sh
-2. Enable the systemd timer with
-$ sudo systemctl enable --now restic-backup@default.timer
+2. Enable systemd timers for the default profile with
+   $ sudo systemctl enable --now restic-backup@default.timer
+   $ sudo systemctl enable --now restic-check@default.timer
 
 
 See full tutorial at https://github.com/erikw/restic-automatic-backup-scheduler

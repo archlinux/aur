@@ -3,7 +3,7 @@
 
 pkgname=restic-automatic-backup-scheduler
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic backups using restic + systemd timers with Backblaze B2 storage backend."
 arch=('any')
 url="https://github.com/erikw/$pkgname"
