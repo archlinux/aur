@@ -1,7 +1,7 @@
 # Maintainer: yunmikun2 <yunmikun2@protonmail.com>
 pkgname="dbviz-git"
 _gitname=dbviz
-pkgver=1.0.0.r1.03cfe37
+pkgver=1.0.1.r4.e69c90e
 pkgrel=1
 pkgdesc="Visualize your postgresql database schema as dot graph"
 arch=('x86_64')
