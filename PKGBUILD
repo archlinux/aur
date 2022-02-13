@@ -9,7 +9,7 @@ url="http://www.mate-desktop.org/"
 license=("LGPL2.1" "GPL3")
 makedepends=("autoconf-archive" "intltool" "gtk3" "libtool" "libx11" "libxml2" "mate-common")
 depends=("mate-panel" "ayatana-ido" "libayatana-indicator")
-source=("https://github.com/mate-desktop/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mate-desktop/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=("2bbcb5eabf803459d1b930e92a8d4242")
 
 prepare()

@@ -18,7 +18,7 @@ pkgbase = mate-indicator-applet
 	depends = mate-panel
 	depends = ayatana-ido
 	depends = libayatana-indicator
-	source = https://github.com/mate-desktop/mate-indicator-applet/archive/v1.26.0.tar.gz
+	source = mate-indicator-applet-1.26.0.tar.gz::https://github.com/mate-desktop/mate-indicator-applet/archive/v1.26.0.tar.gz
 	md5sums = 2bbcb5eabf803459d1b930e92a8d4242
 
 pkgname = mate-indicator-applet
