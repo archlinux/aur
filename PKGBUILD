@@ -16,6 +16,8 @@ build() {
   cd $srcdir
   nativefier \
     --name "Netflix" \
+    --widevine \
+    -e "15.3.5" \
     "$url" \
     "netflix"
 }
