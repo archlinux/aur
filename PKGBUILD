@@ -8,12 +8,12 @@ pkgver=5.8.1.7.123.499f495
 pkgrel=1
 pkgdesc="rtl8821cu chipset driver (morrownr fork)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url="https://github.com/morrownr/8821cu"
+url="github.com/morrownr/8821cu-20210118"
 license=('GPL2')
 depends=('dkms')
 makedepends=('git' 'bc')
 conflicts=("${_pkgbase}-git" "${_pkgbase}-dkms-git")
-source=("git+https://github.com/morrownr/8821cu"
+source=("git+https://github.com/morrownr/8821cu-20210118"
         'dkms.conf')
 sha256sums=('SKIP'
 	    'a0552ddb8658b5416ae373db569f7fef9a111c9b995a85071bd89fd4cf8c804f')
