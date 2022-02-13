@@ -5,7 +5,7 @@
 ## Cannot use libtcod as dependency; statically linked
 
 pkgname=python-tcod
-pkgver=13.4.0
+pkgver=13.5.0
 pkgrel=1
 pkgdesc='High-performance Python port of libtcod'
 arch=('x86_64')

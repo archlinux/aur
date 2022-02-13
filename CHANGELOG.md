@@ -5,9 +5,20 @@ This project adheres to [Semantic Versioning](https://semver.org/) since version
 
 ## [Unreleased]
 
+## [13.5.0] - 2022-02-11
+### Added
+- `tcod.sdl.audio`, a new module exposing SDL audio devices.  This does not include an audio mixer yet.
+- `tcod.sdl.mouse`, for SDL mouse and cursor handing.
+- `Context.sdl_atlas`, which provides the relevant `SDLTilesetAtlas` when one is being used by the context.
+- Several missing features were added to `tcod.sdl.render`.
+- `Window.mouse_rect` added to SDL windows to set the mouse confinement area.
+### Changed
+- `Texture.access` and `Texture.blend_mode` properties now return enum instances.
+  You can still set `blend_mode` with `int` but Mypy will complain.
+
 ## [13.4.0] - 2022-02-04
 ### Added
-- Adds `sdl_window` and `sdl_renderer` to tcod contexts.
+- Adds `sdl_window` and `sdl_renderer` properties to tcod contexts.
 - Adds `tcod.event.add_watch` and `tcod.event.remove_watch` to handle SDL events via callback.
 - Adds the `tcod.sdl.video` module to handle SDL windows.
 - Adds the `tcod.sdl.render` module to handle SDL renderers.
