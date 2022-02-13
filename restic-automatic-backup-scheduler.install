@@ -9,7 +9,7 @@ To get started with backups, do the following:
 $ sudo systemctl enable --now restic-backup@default.timer
 
 
-See full tutorial at https://github.com/erikw/restic-systemd-automatic-backup
+See full tutorial at https://github.com/erikw/restic-automatic-backup-scheduler
 ===========
 
 EOF

@@ -1,9 +1,9 @@
-pkgbase = restic-systemd-automatic-backup
+pkgbase = restic-automatic-backup-scheduler
 	pkgdesc = Automatic backups using restic + systemd timers with Backblaze B2 storage backend.
-	pkgver = 5.1.0
+	pkgver = 6.0.0
 	pkgrel = 1
-	url = https://github.com/erikw/restic-systemd-automatic-backup
-	install = restic-systemd-automatic-backup.install
+	url = https://github.com/erikw/restic-automatic-backup-scheduler
+	install = restic-automatic-backup-scheduler.install
 	arch = any
 	license = BSD
 	license = custom
@@ -19,7 +19,7 @@ pkgbase = restic-systemd-automatic-backup
 	backup = etc/restic/b2_env.sh
 	backup = etc/restic/b2_pw.txt
 	backup = etc/restic/backup_exclude
-	source = restic-systemd-automatic-backup-5.1.0.tar.gz::https://github.com/erikw/restic-systemd-automatic-backup/archive/v5.1.0.tar.gz
-	sha256sums = 5f52884a6bfa98af35d3fa7ad1cebb3d4c47ab3e57ae87b5d19d4f75e1383544
+	source = restic-automatic-backup-scheduler-6.0.0.tar.gz::https://github.com/erikw/restic-automatic-backup-scheduler/archive/v6.0.0.tar.gz
+	sha256sums = 324be7ffbb615eee403bd6d6f5a483cd4aa09357220cc70e6981250526268aa5
 
-pkgname = restic-systemd-automatic-backup
+pkgname = restic-automatic-backup-scheduler
