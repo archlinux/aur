@@ -1,4 +1,5 @@
 # Based  on the template from https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
+# Maintainer : pbek https://aur.archlinux.org/account/pbek
 # Contributor : Anagastes
 
 pkgname=qownnotes-qt5-bin
@@ -10,11 +11,12 @@ url='https://www.qownnotes.org/'
 license=('GPL2')
 groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl' 'qt5-xmlpatterns' 'qt5-websockets' 'qt5-x11extras' 'aspell')
+conflicts=('qownnotes')
 options=(!strip)
 _appimage="QOwnNotes-x86_64.AppImage"
 source=("https://github.com/pbek/QOwnNotes/releases/download/v22.2.4/QOwnNotes-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums=('SKIP')
+sha256sums=('f63a1149b5a1858aace13a7d678188c8099bcdab95d555e5d44928a9c5857242')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -47,5 +49,3 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
-
-
