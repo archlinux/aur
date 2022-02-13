@@ -18,7 +18,7 @@ options=(!strip)
 install=
 changelog=
 source=("https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicoipp/libpicoipp_${pkgver//_/-}_amd64.deb")
-md5sums=('4EF93E7675DED6C4A7D031D6296C685E')
+md5sums=('4ef93e7675ded6c4a7d031d6296c685e')
 
 package() {
   tar -xf data.tar.xz -C "${pkgdir}"
