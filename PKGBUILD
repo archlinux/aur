@@ -4,16 +4,16 @@
 # Contributor: Jochem Kossen <j.kossen@home.nl>
 
 pkgname=evilwm
-pkgver=1.1.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Minimalist but usable window manager for the X Window System'
 arch=('x86_64' 'i686')
 url='http://evilwm.sourceforge.net'
 license=('custom')
 depends=('libxrandr')
-source=("http://www.6809.org.uk/evilwm/$pkgname-$pkgver.tar.gz"
+source=("http://www.6809.org.uk/evilwm/dl/$pkgname-$pkgver.tar.gz"
         LICENSE)
-sha256sums=('79589c296a5915ee0bae1d231e8912601fc794d9f0a9cacb6b648ff9a5f2602a'
+sha256sums=('32ecbb5c4c5462dc5ed1f315f18561a889da77fffaef7fc616808a37b1193ecb'
             '50463448057ce7e65276926e9462f5c8bd5f6c6628f2c42ad0cd8a6373d419e1')
 
 build() {
