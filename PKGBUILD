@@ -1,15 +1,14 @@
 # Maintainer: rsteube <rsteube@users.noreply.github.com>
 pkgname=carapace
-pkgver=0.8.9
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='multi-shell multi-command argument completer'
 arch=('aarch64' 'i686' 'x86_64')
 url='https://github.com/rsteube/carapace-bin'
 license=('MIT')
-provides=("${pkgname}")
-conflicts=("${pkgname}")
 makedepends=("go" "git")
-source=("git+https://github.com/rsteube/carapace-bin.git")
+source=("git+https://github.com/rsteube/carapace-bin.git#tag=v$pkgver")
+
 sha256sums=('SKIP')
 
 pkgver() {
