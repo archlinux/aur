@@ -50,6 +50,11 @@ build() {
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D KICAD_USE_OCC=ON \
+    -D KICAD_USE_EGL=OFF \
+    -D KICAD_DRC_PROTO=OFF \
+    -D KICAD_BUILD_PNS_DEBUG_TOOL=OFF \
+    -D KICAD_STEP_EXPORT_LIB=OFF \
+    -D KICAD_VERSION_EXTRA="AUR-kicad-rc" \
     -D wxWidgets_CONFIG_EXECUTABLE="$(which wx-config-gtk3)" \
     -D USE_WX_GRAPHICS_CONTEXT=ON \
     -G Ninja \
