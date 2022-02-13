@@ -5,14 +5,14 @@
 
 pkgname=nginx-mainline-mod-lua
 pkgver=0.10.20
-pkgrel=2
+pkgrel=4
 epoch=1
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
 pkgdesc='Lua script engine module for mainline nginx'
 arch=('i686' 'x86_64')
-depends=('nginx-mainline' 'nginx-mainline-mod-ndk' 'luajit' 'lua-resty-core')
+depends=('nginx-mainline' 'nginx-mainline-mod-ndk' 'luajit' 'lua-resty-core' 'pcre')
 makedepends=('nginx-mainline-src')
 url="https://github.com/openresty/lua-nginx-module"
 license=('BSD')
@@ -33,6 +33,7 @@ build() {
 	export LUAJIT_LIB=$(pkg-config luajit --variable=libdir)
 	/usr/src/nginx/configure \
 		--with-compat \
+		--with-ld-opt='-lpcre -Wl,-E'  \
 		--add-dynamic-module=../$_modname-nginx-module-$pkgver
 	make modules
 }
