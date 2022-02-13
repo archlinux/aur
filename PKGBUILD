@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=r7.5.2.beta.5.g2f7d9da7
+pkgver=7.5.3.0.1.g34e223c8
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -42,7 +42,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
-_n_parallel_build_jobs=2
+_n_parallel_build_jobs=3
 
 # pick where the opencascade is installed
 _opencascade_install_prefix="/opt/opencascade-cadquery/usr"
@@ -50,7 +50,7 @@ _opencascade_install_prefix="/opt/opencascade-cadquery/usr"
 
 pkgver() {
   cd OCP
-  git describe --long --tags | sed 's/\([^-]*-\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-\)/\1/;s/-/./g'
 }
 
 prepare(){
