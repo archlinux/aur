@@ -1,6 +1,6 @@
 pkgbase = python-cplot
 	pkgdesc = Plot complex functions
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/nschloe/cplot
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-cplot
 	depends = python-matplotx
 	depends = python-networkx
 	depends = python-pypng
-	source = https://github.com/nschloe/cplot/archive/v0.8.7.tar.gz
-	sha512sums = 0febef68192751c9a66787351f18a91863996a72c77540579b4155159bc81419ad41133f7f10b63cf6260753c1b09a180275f80978f56111ee460803355f4c6d
+	source = https://github.com/nschloe/cplot/archive/v0.8.8.tar.gz
+	sha512sums = 6b424d04cb73a805a8ac9fc0790e015c942c85e0f2b708f177275f7641637fa64523f5f87216d48e271e7424362744fba9b080bedd543cea92c51e53190bf1f2
 
 pkgname = python-cplot
