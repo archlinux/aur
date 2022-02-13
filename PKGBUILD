@@ -4,12 +4,12 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite
-pkgver=10.8.0
+pkgver=10.8.2
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=(any)
 license=(GPL3)
-url="http://www.phoronix-test-suite.com/"
+url="https://www.phoronix-test-suite.com/"
 depends=(php)
 makedepends=(git)
 optdepends=('php-gd'
