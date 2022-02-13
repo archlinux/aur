@@ -2,7 +2,7 @@
 
 pkgname=python-vkwave
 _pkgname=vkwave
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Framework for building high-performance & easy to scale projects interacting with VK's API"
 url=https://github.com/fscdev/vkwave
@@ -16,7 +16,7 @@ depends=(
 		python-aiohttp)
 optdepends=('python-aioredis: storage-redis')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b5a6a59de6891cd272de568b119392476d2e64229835eb73514a19f009e6ebcc')
+sha256sums=('e35528b488697aaefd154beaee573d2ce07ff4e20bb00484ba7a7f3ee5c39f79')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
