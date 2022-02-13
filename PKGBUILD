@@ -2,7 +2,7 @@
 
 pkgname=gucci
 pkgdesc='A simple CLI templating tool written in golang.'
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 url="https://github.com/noqcks/${pkgname}"
 license=('MIT')
@@ -10,7 +10,7 @@ arch=('x86_64')
 makedepends=('go')
 depends=('glibc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("f6822ed340b0e337e4e6e70e412140b192f33d9e7effe63d9bdb40353c4b6c1cbf4446490716056a2e7ce1413c71b3a6e4163c57c62cf2124edccc7d2a767a27")
+sha512sums=("4d1224a01ec4775bf53393e7ef03b18f7a3bddc12bb570c776231f7b7f3e16f2fa3e44f35665e8974269e730489c941524c8e1286dc52c84a8a7f96d27329074")
 
 build() {
   export GO11MODULE=on
