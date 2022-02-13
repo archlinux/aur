@@ -1,0 +1,17 @@
+pkgbase = pw
+	pkgdesc = A simple password manager
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/thomasjlsn/pw
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	depends = bash
+	depends = gnupg
+	depends = tree
+	provides = pw
+	source = https://gitlab.com/thomasjlsn/pw/-/archive/1.0/pw-1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = pw
