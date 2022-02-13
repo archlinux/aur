@@ -2,33 +2,33 @@
 # Maintainer: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Wesley Moore <wes@wezm.net>
 pkgname=mdcat
-pkgver=0.25.1
+pkgver=0.26.1
 pkgrel=1
 pkgdesc='Sophisticated Markdown rendering for the terminal'
 arch=('i686' 'x86_64')
-url="https://github.com/lunaryorn/mdcat"
+url="https://codeberg.org/flausch/mdcat"
 license=('MPL2')
 options=(!lto)
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'asciidoctor')
 optdepends=('librsvg: used to render SVG images in kitty')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('97d789b1e95c90383a79bdf0167d71d3151c9b441e52f553829d0ba4c4cc4e32')
+sha256sums=('1120c4f3b5b517075b6347dbfe76a2211a91837b4d0242c0b72cdbc19e6886dd')
 
 build() {
-  cd "$pkgname-$pkgname-$pkgver"
+  cd "$pkgname"
   rustc --version
   cargo --version
   cargo build --release --locked --target-dir=target
 }
 
 check() {
-  cd "$pkgname-$pkgname-$pkgver"
+  cd "$pkgname"
   cargo test --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgname-$pkgver"
+  cd "$pkgname"
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   # Hard link binary as mdless. When invoked as mdless mdcat will paginate
@@ -37,20 +37,20 @@ package() {
 
   # Required until https://github.com/rust-lang/cargo/issues/6790
   # Should never fail with extra-x86_64-build
-  COMPLETIONS_DIR="$(find target/release/build -type d -path "target/release/build/mdcat-*/out/completions")"
-  if [ ! "$(echo "$COMPLETIONS_DIR" | wc -l)" -eq 1 ]; then
-    >&2 echo "Error: Unexpected count of completions dirs"
+  OUT_DIR="$(find target/release/build -type d -path "target/release/build/mdcat-*/out")"
+  if [ ! "$(echo "$OUT_DIR" | wc -l)" -eq 1 ]; then
+    >&2 echo "Error: Unexpected count of out dirs"
     return 1
   fi
 
-  install -Dm644 "$COMPLETIONS_DIR/_mdcat" \
+  install -Dm644 "$OUT_DIR/_mdcat" \
     "$pkgdir/usr/share/zsh/site-functions/_mdcat"
-  install -Dm644 "$COMPLETIONS_DIR/mdcat.bash" \
+  install -Dm644 "$OUT_DIR/mdcat.bash" \
     "$pkgdir/usr/share/bash-completion/completions/mdcat"
-  install -Dm644 "$COMPLETIONS_DIR/mdcat.fish" \
+  install -Dm644 "$OUT_DIR/mdcat.fish" \
     "$pkgdir/usr/share/fish/vendor_completions.d/mdcat.fish"
 
-  MANPAGE="$COMPLETIONS_DIR/../mdcat.1"
+  MANPAGE="$OUT_DIR/mdcat.1"
   gzip -n "$MANPAGE"
   install -Dm 644 "$MANPAGE.gz" \
     "$pkgdir/usr/share/man/man1/mdcat.1.gz"
