@@ -27,20 +27,20 @@ prepare() {
     # We don't extract the usr/ subdirectory, which only contains debian changelogs
     tar -xzOf control.tar.gz ./md5sums \
         | awk '{print $1, "'"${srcdir}"'/build/" $2}' \
-        > ${srcdir}/md5sums
+        > "${srcdir}/md5sums"
 }
 
 # Prepares our source directory, all cloudflare expected output will be placed
 # in `build/`
 build() {
     # This is not stricly necessary, but it ensures we have a clean build every time.
-    if [[ -d ${srcdir}/build/ ]]
+    if [[ -d "${srcdir}/build/" ]]
     then
-        rm -rf ${srcdir}/build/
+        rm -rf "${srcdir}/build/"
     fi
 
     # We don't extract the usr/ subdirectory, which only contains debian changelogs
-    mkdir -p ${srcdir}/build/usr/ \
+    mkdir -p "${srcdir}/build/usr/" \
         && tar --extract \
                --gzip \
                --file=data.tar.gz \
@@ -62,8 +62,8 @@ check() {
 }
 
 package() {
-    mkdir ${pkgdir}/usr/ || true
-    cp -R ${srcdir}/build/{bin,lib} ${pkgdir}/usr/
+    mkdir "${pkgdir}/usr/" || true
+    cp -R "${srcdir}/build/"{bin,lib} "${pkgdir}/usr/"
 
     # Fix systemd unit
     sed -i \
