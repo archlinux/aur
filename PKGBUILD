@@ -26,7 +26,7 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'libpulse'
-  'python-pywlroots>=0.15.7' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.8' 'python-pywlroots<0.16.0'
 )
 checkdepends=(
   'dbus'
@@ -40,7 +40,7 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  'python-pywlroots>=0.15.7' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.8' 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
   'wlroots'

@@ -17,7 +17,7 @@ pkgbase = qtile-git
 	checkdepends = python-dbus-next
 	checkdepends = python-gobject
 	checkdepends = python-pytest
-	checkdepends = python-pywlroots>=0.15.7
+	checkdepends = python-pywlroots>=0.15.8
 	checkdepends = python-pywlroots<0.16.0
 	checkdepends = python-xdg
 	checkdepends = python-xvfbwrapper
@@ -29,7 +29,7 @@ pkgbase = qtile-git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = libpulse
-	makedepends = python-pywlroots>=0.15.7
+	makedepends = python-pywlroots>=0.15.8
 	makedepends = python-pywlroots<0.16.0
 	depends = gdk-pixbuf2
 	depends = glibc
