@@ -5,4 +5,3 @@ post_install() {
 	echo "See the repository's README for how to use: https://github.com/Psiphon-Labs/psiphon-tunnel-core"
 	echo
 }
-#}
