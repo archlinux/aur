@@ -1,6 +1,6 @@
 pkgbase = python-botoy
 	pkgdesc = OPQ/IOTQQ/IOTBot的一个Python开发助手
-	pkgver = 7.15
+	pkgver = 7.16
 	pkgrel = 1
 	url = https://github.com/opq-osc/botoy
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-botoy
 	depends = python-apscheduler
 	depends = python-pydantic
 	depends = python-colorama
-	source = python-botoy-7.15.tar.gz::https://github.com/xiyaowong/botoy/archive/v7.15.tar.gz
-	sha256sums = acd3ae2f2ec4bdc4a0584f81d0da1c20296455d94d15cdbde08ebe83e9d79b60
+	source = python-botoy-7.16.tar.gz::https://github.com/xiyaowong/botoy/archive/v7.16.tar.gz
+	sha256sums = e7e2cecdc416e8e3da2ad39126be1d1111c1e7e952c5a49ece7f016ee1b4594d
 
 pkgname = python-botoy
