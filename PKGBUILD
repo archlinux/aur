@@ -1,4 +1,4 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: (epsilom) Xavier Corredor <xavier.corredor.llano (a) gmail.com>
 # Contributor: Roberto Alsina <ralsina@kde.org>
 # Contributor: Tim Besard <tim.besard@gmail.com>
