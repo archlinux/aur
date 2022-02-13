@@ -92,7 +92,6 @@ pkgbase = thunderbird-appmenu
 	source = mozconfig.cfg
 	source = unity-menubar.patch
 	source = fix-wayland.patch
-	source = 0002-Bug-1745560-Add-missing-stub-for-wl_proxy_marshal_fl.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	md5sums = SKIP
 	md5sums = SKIP
@@ -102,7 +101,6 @@ pkgbase = thunderbird-appmenu
 	md5sums = c6963498e5ceddedb13af44efa70d86f
 	md5sums = 0d7f0fe667c3e9e54f95fa51e9560eed
 	md5sums = eb9fd90a3b18bfeebbed7e0e6056079c
-	md5sums = SKIP
 
 pkgname = thunderbird-appmenu
 	optdepends = libcanberra: sound support
