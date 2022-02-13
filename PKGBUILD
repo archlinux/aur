@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-indicator-datetime"
 license=("GPL3")
 makedepends=("cmake-extras" "ayatana-indicator-messages>=0.9.0" "intltool" "glib2" "libical" "properties-cpp")
 depends=("libayatana-common>=0.9.5" "evolution-data-server" "libaccounts-glib")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("b967640e73f0d7ff458e1e2cfeb1f81e")
 
 build()

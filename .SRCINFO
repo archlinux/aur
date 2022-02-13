@@ -16,7 +16,7 @@ pkgbase = ayatana-indicator-datetime
 	depends = libayatana-common>=0.9.5
 	depends = evolution-data-server
 	depends = libaccounts-glib
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/0.9.0.tar.gz
+	source = ayatana-indicator-datetime-0.9.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-datetime/archive/0.9.0.tar.gz
 	md5sums = b967640e73f0d7ff458e1e2cfeb1f81e
 
 pkgname = ayatana-indicator-datetime
