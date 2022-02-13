@@ -5,7 +5,7 @@
 
 pkgname=libmagick6
 pkgbase=imagemagick6
-_pkgver=6.9.12-38
+_pkgver=6.9.12-39
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="An image viewing/manipulation program (legacy 6.9.12-* series)"
@@ -18,10 +18,13 @@ makedepends=('ghostscript' 'openexr' 'libwmf' 'librsvg' 'libxml2' 'openjpeg2' 'l
 checkdepends=('gsfonts' 'ttf-dejavu')
 source=("https://download.imagemagick.org/ImageMagick/download/ImageMagick-$_pkgver.tar.gz"{,.asc}
         'arch-fonts.diff')
-sha256sums=('c1afc9731adfa97ec28ca42a029ba6b5042a9d1d10d67d9d539607eee05c2ca4'
+options=(debug)
+sha256sums=('839ea7078c148959597720b567673b1987563ecdd1e1ced7a25b91a2daabdbdf'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A') # Lexie Parsimoniae (ImageMagick code signing key) <lexie.parsimoniae@imagemagick.org>
+
+shopt -s extglob
 
 prepare() {
   mkdir -p binpkg/usr/lib/pkgconfig {binpkg,docpkg}/usr/share
@@ -29,7 +32,7 @@ prepare() {
   cd ImageMagick-$_pkgver
 
   # Fix up typemaps to match our packages, where possible
-  patch -Np1 -i ../arch-fonts.diff
+  patch -p1 -i ../arch-fonts.diff
 }
 
 build() {
