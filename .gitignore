@@ -1,0 +1,4 @@
+pkg/*
+src/*
+weblog_parse_*.tar.gz
+weblog_parse-*.pkg.tar.zst

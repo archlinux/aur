@@ -1,0 +1,14 @@
+pkgbase = weblog_parse
+	pkgdesc = extract specified fields from a web log file
+	pkgver = 20141202
+	pkgrel = 1
+	url = http://www.acme.com/software/weblog_parse/
+	arch = x86_64
+	arch = armv6h
+	license = BSD
+	source = https://www.acme.com/software/weblog_parse/weblog_parse_02Dec2014.tar.gz
+	source = LICENSE
+	sha256sums = c33351a58609fd01c7c62f5a1de4079268657576466dafe4ccaf0b9ecd392d59
+	sha256sums = 0340578cf6004ddd556815506165f52882342078a66f4550229fe55874bfec73
+
+pkgname = weblog_parse
