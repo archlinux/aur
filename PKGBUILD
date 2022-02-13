@@ -1,7 +1,7 @@
 # Maintainer: Gobidev <adrian[dot]groh[at]t-online[dot]de>
 
 pkgname=triplea
-pkgver=2.6.564
+pkgver=2.6.565
 pkgrel=1
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 install=${pkgname}.install
 depends=('gtk-update-icon-cache' 'java-runtime')
 source=( "https://github.com/triplea-game/triplea/releases/download/${pkgver}/${appname}.zip")
-sha256sums=('eaf17204832342d54c420dfe853f8985a6fa096123754c18871711427681595a')
+sha256sums=('2ca2d82cfaef9018ce39aa26237087a0e212c61b96a80f4ce31b811505307f53')
 
 package() {
     install -d ${pkgdir}/usr/share/${pkgname}
