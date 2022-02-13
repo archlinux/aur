@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=papirus-linux-universe
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Papirus folder icon set based on distros and the most famous icon themes in the Linux world!"
 arch=('any')
@@ -12,7 +12,7 @@ provides=('papirus-folders')
 conflicts=('papirus-folders')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Adapta-Projects/Papirus-Linux-Universe/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('2e8764a1eee5aaba97471d85c320238659f7cb74577454eb20c91dcca18b038a')
+sha256sums=('d9919a1c1902666662af6f401678a65ed51a2aa09193eb8d0f2f64d7b0e84bc6')
 
 package() {
   cd Papirus-Linux-Universe-$pkgver
