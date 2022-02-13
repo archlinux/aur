@@ -1,4 +1,6 @@
-# Maintainer: Lunush <hi@lunu.sh>
+# Please report issues with the package on GitHub or in the comments
+# Maintainer: Lunush
+
 pkgname=rates-git
 pkgver=latest
 pkgrel=1
