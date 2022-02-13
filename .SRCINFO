@@ -1,6 +1,6 @@
 pkgbase = guitarix-git
 	pkgdesc = virtual guitar amplifier for Jack/Linux
-	pkgver = 0.42.1.r18.g0789a662
+	pkgver = 0.43.1.r7.g9a1147fd
 	pkgrel = 1
 	url = https://guitarix.org
 	arch = x86_64
@@ -20,14 +20,15 @@ pkgbase = guitarix-git
 	makedepends = pkgconfig
 	depends = jack
 	depends = gtkmm3
+	depends = liblo
 	depends = liblrdf
+	depends = libsndfile
 	depends = lilv
 	depends = bluez-libs
 	depends = boost-libs
 	depends = zita-convolver
 	depends = zita-resampler
 	depends = ttf-roboto
-	depends = libsndfile
 	provides = guitarix
 	provides = libgxw.so
 	provides = libgxwmm.so
@@ -37,4 +38,3 @@ pkgbase = guitarix-git
 	md5sums = SKIP
 
 pkgname = guitarix-git
-
