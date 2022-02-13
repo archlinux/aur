@@ -1,6 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # from: github
 # what: openresty/lua-resty-lrucache
+# match! rc[0-9]*$
 
 pkgname=lua-resty-lrucache
 pkgver=0.11
