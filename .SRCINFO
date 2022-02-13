@@ -1,0 +1,27 @@
+pkgbase = sm64ex-us-git
+	pkgdesc = Fork of Super Mario 64 Port (US) with additional features
+	pkgver = r626.db9a6345
+	pkgrel = 1
+	url = https://github.com/sm64pc/sm64ex
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = python
+	depends = sdl2
+	provides = sm64ex-us
+	conflicts = sm64ex-us
+	source = git+https://github.com/sm64pc/sm64ex
+	source = file://baserom.us.z64
+	source = sm64ex-us.sh
+	source = sm64ex-us.desktop
+	sha256sums = SKIP
+	sha256sums = 17ce077343c6133f8c9f2d6d6d9a4ab62c8cd2aa57c40aea1f490b4c8bb21d91
+	sha256sums = 59183a891702fc4ecb17c85ab3a88a56c1622585dca695696121a4eedeca8ace
+	sha256sums = fedcaa4a70d88d3358b0d0899ceb25e0f313493b3ea2f52cb94f29f452fff996
+
+pkgname = sm64ex-us-git
