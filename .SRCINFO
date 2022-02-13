@@ -1,11 +1,11 @@
 pkgbase = rusolver-git
 	pkgdesc = Fast and accurate DNS resolver (git)
-	pkgver = 0.8.0.r0.gdfdc0ee
+	pkgver = 0.9.1.r0.g42dbf01
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/rusolver
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	provides = rusolver
