@@ -1,15 +1,14 @@
 pkgbase = nodejs-bunyan
 	pkgdesc = A simple and fast JSON logging module for node.js services.
-	pkgver = 2.0.4
+	pkgver = 2.0.5
 	pkgrel = 1
 	url = https://github.com/trentm/node-bunyan
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = bunyan-2.0.4.tgz
-	source = https://registry.npmjs.org/bunyan/-/bunyan-2.0.4.tgz
-	sha256sums = 941925b4d696d74ec99e2d12f19ac4522c86acb833177e9d9c0fcb4e181acb21
+	noextract = bunyan-2.0.5.tgz
+	source = https://registry.npmjs.org/bunyan/-/bunyan-2.0.5.tgz
+	sha256sums = ae158b859fe22602c35ba869e4859bb875163103701d7952e4d00aec63e6b699
 
 pkgname = nodejs-bunyan
-
