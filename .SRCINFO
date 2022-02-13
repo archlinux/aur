@@ -1,6 +1,6 @@
 pkgbase = denise-git
 	pkgdesc = Highly accurate C64/Amiga emulator - Git version
-	pkgver = v1.1.2.r55.g387e4a7
+	pkgver = v1.1.2.r91.g6eb74e4
 	pkgrel = 1
 	url = https://sourceforge.net/projects/deniseemu/
 	arch = i686
