@@ -2,7 +2,7 @@
 
 pkgbase=vim-fern
 pkgname=('vim-fern' 'neovim-fern')
-pkgver=1.40.3
+pkgver=1.40.4
 pkgrel=1
 pkgdesc="General purpose asynchronous tree viewer"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
 	'trash-cli: trash-bin functionality')
 checkdepends=('vim-themis')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('08f35d30040ec0409e1f3a315aec80075b43ff88371ff47e9cc2563d4a457f4d')
+sha256sums=('e96dd6768e6ceaeddf10b369774d428c6f0d32c9e9a00f41de9ceb7cebb44558')
 
 check() {
 	cd "fern.vim-$pkgver"
