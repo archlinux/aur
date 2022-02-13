@@ -6,14 +6,14 @@
 pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
-pkgver=5.13
+pkgver=5.14
 pkgrel=1
 _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
 url="https://github.com/pi-hole/FTL"
 license=('EUPL-1.2')
-depends=('nettle' 'gmp' 'libidn')
+depends=('nettle' 'gmp' 'libidn' 'readline')
 makedepends=('cmake' 'sqlite')
 conflicts=('dnsmasq')
 provides=('dnsmasq')
@@ -26,8 +26,8 @@ source=($pkgname-v$pkgver.tar.gz::"https://github.com/pi-hole/FTL/archive/v$pkgv
         "$pkgname.service"
         "$pkgname.db"
         "$pkgname.conf")
-sha256sums=('e9dd05aa7889f5fdd53af451bd2bd38a4df9a078f167301afb496835ee313fc0'
-            '267e2800131f8ebdf494cf06c9dfe96f7004021fbea0f2c779ccc1f7adfd9c0d'
+sha256sums=('351efed2624e82baf6ddcf76face610bfb0e9ff87f8fa3d89ad30c0f8684d264'
+            'b8bde48093ebf8429e5769eacc5351c47d5d3bd73850089b39cbec13334aac42'
             '538d2f66e30eabeeb0ac6794ac388b96ddf1830d9e988a0aaa810cb17c5c69fc'
             '39ef7bfd672ce59440bbf89e812992adc4d40091bc8d70fa24bd586381979064'
             '7f9ed05cec17c483077c0f14fecc5b7555bd4eeb0d8898a4f0c8b878fc82c9d6'
