@@ -1,0 +1,22 @@
+pkgbase = qownnotes-qt5-bin
+	pkgdesc = Plain-text file markdown note taking with Nextcloud/ownCloud integration - qt5-bin
+	pkgver = 22.2.4
+	pkgrel = 1
+	url = https://www.qownnotes.org/
+	arch = x86_64
+	groups = qownnotes
+	license = GPL2
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-declarative
+	depends = openssl
+	depends = qt5-xmlpatterns
+	depends = qt5-websockets
+	depends = qt5-x11extras
+	depends = aspell
+	noextract = QOwnNotes-x86_64.AppImage
+	options = !strip
+	source = https://github.com/pbek/QOwnNotes/releases/download/v22.2.4/QOwnNotes-x86_64.AppImage
+	sha256sums = SKIP
+
+pkgname = qownnotes-qt5-bin
