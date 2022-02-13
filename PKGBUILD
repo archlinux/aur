@@ -1,16 +1,16 @@
 # Maintainer: Jefferson Gonzalez <jgmdev@gmail.com>
 
 pkgname=php-sdl
-pkgver=2.3.0
+pkgver=2.5.0
 pkgrel=1
 pkgdesc="PHP bindings of the SDL library."
 url="https://github.com/Ponup/phpsdl"
 license=("PHP")
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=("php>=7" "sdl2")
 makedepends=("php>=7" "sdl2")
-source=("https://github.com/Ponup/php-sdl/archive/${pkgver}.tar.gz")
-md5sums=('8fe998d6333277f499e8c85387826113')
+source=("https://github.com/Ponup/php-sdl/archive/refs/tags/${pkgver}.tar.gz")
+md5sums=('8f7e7143875f2a071d614a402859250a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
