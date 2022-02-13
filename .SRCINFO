@@ -1,0 +1,17 @@
+pkgbase = snd-usb-audio-fasttrack-dkms
+	pkgdesc = snd-usb-audio module patched to fix regular xruns with M-Audio Fast Track sound cards (DKMS)
+	pkgver = 1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	conflicts = snd-usb-audio-fasttrack
+	source = dkms.conf
+	source = dkms-patchmodule.sh
+	source = snd-usb-audio-fasttrack.conf
+	md5sums = c97804de86e8ee3a460a94eee34a717c
+	md5sums = deea7306ae798e73c4e40b13c62becad
+	md5sums = c989a22b9b174462d2b0201f689e11f1
+
+pkgname = snd-usb-audio-fasttrack-dkms
