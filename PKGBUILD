@@ -7,7 +7,7 @@ _svcname=vanta-agent
 
 pkgname=vanta-agent
 pkgver=2.0.8
-pkgrel=4
+pkgrel=6
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
@@ -52,4 +52,4 @@ package() {
         echo -e "More info: https://help.vanta.com/hc/en-us/articles/360060472372-Troubleshooting-the-Vanta-Agent-on-Linux-Machines\n\n"
     fi
 }
-sha256sums=('2d25af250f3ef1656283cf42fcc6c737a052adfeda765d266b034d21226e3842')
+sha256sums=('4fae1b93708d7a6ff1df0b716211ee6a79f8f1e6b25566fb02b6dcdfdaada882')
