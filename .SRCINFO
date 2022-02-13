@@ -7,6 +7,6 @@ pkgbase = ps7b_libpicocv
 	license = custom
 	options = !strip
 	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicocv/libpicocv_1.1.27-1r153_amd64.deb
-	md5sums = 5304944CD01640E46C46A1A22D58EAF6
+	md5sums = 5304944cd01640e46c46a1a22d58eaf6
 
 pkgname = ps7b_libpicocv
