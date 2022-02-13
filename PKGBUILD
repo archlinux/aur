@@ -1,6 +1,6 @@
 # Maintainer: gileri <twiked at gmail d(0)t com>
 pkgname=libosmium-git
-pkgver=2.16.0.r13.g36c4cc2d
+pkgver=2.18.0.r0.g9c50fde4
 pkgrel=1
 pkgdesc="Fast and flexible C++ library for working with OpenStreetMap data."
 url="http://osmcode.org/libosmium/"
@@ -15,7 +15,7 @@ optdepends=('sparsehash: sparse-mem-table index map'
             'lz4: use LZ4 compression in PBF files'
             'doxygen: build Libosmium API documentation')
 conflicts=('libosmium')
-provides=('libosmium')
+provides=('libosmium=2.18.0')
 source=('libosmium::git+https://github.com/osmcode/libosmium.git')
 md5sums=('SKIP')
 
