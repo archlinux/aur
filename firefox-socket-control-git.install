@@ -1,7 +1,3 @@
 post_install() {
     printf "==> NOTE: To install the extension, you must first open and close Firefox once before being able to use it."
 }
-
-post_upgrade() {
-    post_install
-}
