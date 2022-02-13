@@ -1,12 +1,11 @@
 pkgbase = mimetex
 	pkgdesc = tex to gif converter
-	pkgver = 1.70
-	pkgrel = 4
+	pkgver = 1.76
+	pkgrel = 1
 	url = http://www.forkosh.com/mimetex.html
 	arch = x86_64
-	license = GPL
-	source = http://www.forkosh.com/mimetex.zip
-	md5sums = 94f5ca56551df61981082d1e9fbb2d65
+	license = GPL3
+	source = http://deb.debian.org/debian/pool/main/m/mimetex/mimetex_1.76.orig.tar.gz
+	sha256sums = 37edf717cc8bf3ba78cf53080ec3d5fff576653c8c7d762e05055d183582814f
 
 pkgname = mimetex
-
