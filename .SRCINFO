@@ -1,10 +1,10 @@
 pkgbase = bbg-git
 	pkgdesc = A static blog generator built with electron
-	pkgver = 20220212.r0.d37787d
+	pkgver = 20220213.r4.381d3df
 	pkgrel = 1
 	url = https://github.com/baiyang-lzy/bbg
 	arch = any
-	license = GPL3
+	license = Unlicense
 	makedepends = git
 	makedepends = npm
 	depends = electron

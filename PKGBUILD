@@ -1,11 +1,11 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg-git
-pkgver=20220212.r0.d37787d
+pkgver=20220213.r4.381d3df
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/baiyang-lzy/bbg"
-license=('GPL3')
+license=('Unlicense')
 depends=('electron' 'gtk3' 'libxcb')
 makedepends=('git' 'npm')
 provides=("${pkgname%-git}")
