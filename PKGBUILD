@@ -1,5 +1,6 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Stefano Facchini <stefano.facchini@gmail.com>
 # Contributor: Jonathan Lestrelin <zanko@daemontux.org>
@@ -7,13 +8,30 @@
 
 pkgname=spice-gtk
 pkgver=0.39
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK+ client library for SPICE"
 arch=('x86_64')
 url="https://www.spice-space.org/"
 license=('LGPL2.1')
-depends=('gtk3' 'libcacard' 'libjpeg-turbo' 'opus' 'phodav' 'usbredir' 'gst-plugins-base' 'gst-plugins-good')
-makedepends=('gobject-introspection' 'meson' 'spice-protocol' 'usbutils'  'vala')
+depends=(
+    'gst-plugins-base'
+    'gst-plugins-good'
+    'libcacard'
+    'libgtk-3.so'
+    'libjpeg.so'
+    'libopus.so'
+    'phodav'
+    'polkit'
+    'usbredir'
+)
+makedepends=(
+    'gobject-introspection'
+    'meson'
+    'spice-protocol'
+    'usbutils'
+    'vala'
+    'wayland-protocols'
+)
 provides=("spice-glib=$pkgver" "spice-gtk3=$pkgver")
 replaces=('spice-glib' 'spice-gtk3')
 source=("https://www.spice-space.org/download/gtk/$pkgname-$pkgver.tar.xz"{,.sig})
