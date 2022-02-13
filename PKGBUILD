@@ -2,19 +2,19 @@
 # Logpresso
 
 pkgname=logpresso-log4j-scan
-pkgver=2.7.2
-pkgrel=2
-pkgdesc="log4j2-scan is a single binary command-line tool for CVE-2021-44228 CVE-2021-45046 (log4j 2.15.0), CVE-2021-45105 (log4j 2.16.0), CVE-2021-44832 (log4j 2.17.0), CVE-2021-4104 (log4j 1.x), and CVE-2021-42550 (logback 0.9-1.2.7) vulnerabilities"
+pkgver=3.0.0
+pkgrel=1
 arch=('any')
-url="https://github.com/mergebase/log4j-detector"
+pkgdesc="tool for CVE-2021-44228 vuln scanning and patch. also detects CVE-2021-45046, CVE-2021-45105, CVE-2021-44832, CVE-2021-4104, CVE-2019-17571, CVE-2017-5645, CVE-2020-9488, CVE-2022-23302, CVE-2022-23305, CVE-2022-23307, CVE-2021-42550"
+url="https://github.com/logpresso/CVE-2021-44228-Scanner"
 license=('GPL3')
 optdepends=('java-runtime=11')
 
 
 source=("https://github.com/logpresso/CVE-2021-44228-Scanner/releases/download/v${pkgver}/logpresso-log4j2-scan-${pkgver}-linux.tar.gz"
         "https://github.com/logpresso/CVE-2021-44228-Scanner/releases/download/v${pkgver}/logpresso-log4j2-scan-${pkgver}.jar")
-sha256sums=('bd6b7597a840f66a07df04f33bb5b1d25cb8b12a9e7b2cc08ebe5f6281d6ed8b'
-            'e6da143d39f2dbf751e7a81fc6af5216a2819b5810f6cde0764085cefa849ee9')
+sha256sums=('4100cdd7d862bcbfab97c0324db51f51e4c08fd709db3fe9ca617e2182c6cad6'
+            'a64ca566c3cd97875f285f16710eaa1e2124a24ef97bd69b9af91d53e17c7aad')
 
 
 package() {
