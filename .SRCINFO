@@ -10,8 +10,7 @@ pkgbase = keyfault
 	makedepends = libxss
 	depends = libxss
 	options = !emptydirs
-	source = https://github.com/tari01/keyfault/archive/20.4.5.tar.gz
+	source = keyfault-20.4.5.tar.gz::https://github.com/tari01/keyfault/archive/20.4.5.tar.gz
 	md5sums = 3274224f755bff2a6e7397ac8f0311ce
 
 pkgname = keyfault
-

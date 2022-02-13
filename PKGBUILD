@@ -10,7 +10,7 @@ url="https://tari.in/www/software/keyfault"
 license=("GPL3")
 depends=("libxss")
 makedepends=("libxss")
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("3274224f755bff2a6e7397ac8f0311ce")
 options=("!emptydirs")
 
