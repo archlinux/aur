@@ -2,7 +2,7 @@
 # vim:set ts=2 sw=2 et:
 
 pkgname=lirc-user-service
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Systemd service to run lirc as an unprivileged user for better security"
 arch=(any)
@@ -20,5 +20,5 @@ package() {
   install -Dm644 override.conf "$pkgdir/etc/systemd/system/lircd.service.d/override.conf"
   install -Dm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-  install -Dm644 60-lirc.rules "$pkgdir/etc/udev/rules.d/60-lirc.rules"
+  install -Dm644 60-lirc.rules "$pkgdir/usr/lib/udev/rules.d/60-lirc.rules"
 }
