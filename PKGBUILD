@@ -5,7 +5,7 @@
 
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=dmenu-demonkingswarn-git
-pkgver=4.9_r4.2da396f
+pkgver=4.9_r2.c2477ce
 pkgrel=1
 epoch=
 pkgdesc="This is my personal build of dmenu patched for clean floating look."

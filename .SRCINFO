@@ -1,6 +1,6 @@
 pkgbase = dmenu-demonkingswarn-git
 	pkgdesc = This is my personal build of dmenu patched for clean floating look.
-	pkgver = 4.9_r4.2da396f
+	pkgver = 4.9_r2.c2477ce
 	pkgrel = 1
 	url = https://github.com/demonkingswarn/mydmenu
 	arch = x86_64
