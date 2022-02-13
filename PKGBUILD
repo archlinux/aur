@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=vector-bin
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=1
 pkgdesc='A lightweight and ultra-fast tool for building observability pipelines'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://vector.dev"
 license=('MPL')
 provides=('vector')
 source=("${pkgname}-${pkgver}.tar.gz::https://packages.timber.io/vector/${pkgver}/vector-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('60f4afce8bafba97ab971ba7cacc88f7c9617865d30a201dc6dcbbf3c41ee0e7')
+sha256sums=('7469219c0584c90248c7a9da44012284998241b160a960122b82ec4b36021bd1')
 
 package() {
   cd "${srcdir}/vector-x86_64-unknown-linux-musl"
