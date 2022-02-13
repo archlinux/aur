@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.20.0.r2430.gb23ae963d9
+pkgver=0.20.0.r3237.ga6f0f69ed6
 pkgrel=1
 epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
@@ -45,6 +45,10 @@ pyside2
 python-shiboken2
 shiboken2
 swig
+)
+checkdepends=(
+fmt 
+pugixml
 )
 optdepends=(
 'povray: ray tracing support'
