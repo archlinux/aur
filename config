@@ -1110,7 +1110,11 @@ CONFIG_SECRETMEM=y
 #
 # Data Access Monitoring
 #
-# CONFIG_DAMON is not set
+CONFIG_DAMON=y
+CONFIG_DAMON_VADDR=y
+CONFIG_DAMON_PADDR=y
+CONFIG_DAMON_DBGFS=y
+CONFIG_DAMON_RECLAIM=y
 # end of Data Access Monitoring
 # end of Memory Management options
 
