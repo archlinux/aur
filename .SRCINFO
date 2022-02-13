@@ -11,8 +11,7 @@ pkgbase = ayatana-settings
 	depends = gobject-introspection
 	depends = python-psutil
 	options = !emptydirs
-	source = https://github.com/AyatanaIndicators/ayatana-settings/archive/21.1.28.tar.gz
+	source = ayatana-settings-21.1.28.tar.gz::https://github.com/AyatanaIndicators/ayatana-settings/archive/21.1.28.tar.gz
 	md5sums = 5c48898b4dddcae29abb44e1b070a4e5
 
 pkgname = ayatana-settings
-

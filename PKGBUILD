@@ -10,7 +10,7 @@ url="https://github.com/AyatanaIndicators/ayatana-settings"
 license=("GPL3")
 depends=("gtk3" "gobject-introspection" "python-psutil")
 makedepends=("python-setuptools" "python-polib")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("5c48898b4dddcae29abb44e1b070a4e5")
 options=("!emptydirs")
 
