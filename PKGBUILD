@@ -6,7 +6,7 @@
 
 _pkgname=testng
 pkgname=java-${_pkgname}
-pkgver=7.4.0
+pkgver=7.5
 pkgrel=1
 pkgdesc='A testing framework inspired by JUnit and NUnit'
 arch=('any')
@@ -15,7 +15,7 @@ license=('Apache')
 depends=('jdk8-openjdk')
 makedepends=('gradle')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cbeust/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('759e17bcc1922512a194ed374b4401556f933e05e4b76bac8a7a5fcc0384e353')
+sha256sums=('fe99f601949f39cbc79f921a6291d59b0fa4e2f55a22c24e084325296fe486a4')
 
 prepare() {
   echo "It's recommended to build in a clean chroot"
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  install -Dm644 \
-    "$srcdir/$_pkgname-$pkgver/build/libs/$_pkgname-$pkgver.jar" \
+  cd "$srcdir/$_pkgname-$pkgver/$_pkgname/build/libs"
+  install -Dm644 $_pkgname-$pkgver-SNAPSHOT-all.jar \
     "$pkgdir/usr/share/java/$_pkgname/$_pkgname-$pkgver.jar"
 }
