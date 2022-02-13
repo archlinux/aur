@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r577.5f965ac
+pkgver=r587.cfb5d20
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -18,6 +18,7 @@ makedepends=(
   "libxcb"
   "libxrandr" # Depends on libX11, which headers are also needed
   "dconf"     # Depends on glib2, which headers are also needed
+  "dbus"
   "xfconf"
   # "rpm-tools"
 )
@@ -30,6 +31,7 @@ optdepends=(
   "libxrandr: Improved X11 support (resolution + multi monitor)"
   "glib2: Output for values that are only stored in GSettings"
   "dconf: Output for values that are only stored in DConf"
+  "dbus: Media player and song output"
   "xfconf: XFWM theme + xfce-terminal font"
   # "rpm-tools: rpm package count"
 )
