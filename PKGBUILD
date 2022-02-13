@@ -1,5 +1,5 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Manuel Hüsers <aur@huesers.de>
 # Contributor: Guillermo Garcia <ahioros@NO-SPAM.gmail.com>
 
 pkgname=plymouth-theme-arch-logo
