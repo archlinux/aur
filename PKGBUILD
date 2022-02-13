@@ -6,7 +6,7 @@
 _pkgname=polymc
 pkgname=${_pkgname}-git
 pkgver=1.0.5.r177.g00e12b77
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -63,6 +63,5 @@ check() {
 package() {
   cd "${srcdir}/PolyMC/build"
   make install DESTDIR="${pkgdir}"
-  install -D "${srcdir}/PolyMC/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
 }
 
