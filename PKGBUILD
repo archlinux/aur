@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Dave Shoreman <aur [plus] mpv-thumbnail-script at dsdev dot io>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mpv-thumbnail-script
 pkgver=0.4.7
