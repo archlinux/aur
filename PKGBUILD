@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 build(){
 	cd "$_pkgname"
 	make setup
-	make glibc
+	make 
 }
 
 package() {
