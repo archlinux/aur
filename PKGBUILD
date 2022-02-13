@@ -5,9 +5,9 @@
 pkgname=buttercup-desktop
 _pkgexename=buttercup
 pkgver=2.14.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Javascript Password Vault - Multi-Platform Desktop Application'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/buttercup/buttercup-desktop"
 license=('GPL3')
 depends=('gtk3' 'libxss' 'nss' 'libsass')
@@ -15,9 +15,11 @@ makedepends=('npm' 'sed' 'nodejs')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v$pkgver.tar.gz"
 	badge.svg
-	buttercup-desktop.desktop)
+	buttercup-desktop.desktop
+	arch_fix.patch)
 sha512sums=(
 	'2a4ea2bee95deb0aebd1a47443b30aae1c97de9f6a80a3076d67d4fd68b6ae2f5bd3ccf7b6cfdecd80c99a7b99c5aa1ac86af110cb32727aad986a43ae07f02b'
+	SKIP
 	SKIP
 	SKIP)
 prepare() {
@@ -28,11 +30,12 @@ prepare() {
   if [[ $CARCH == "i686" ]]; then
     sed -i 's/build --linux --x64/build --linux --ia32/' "$srcdir/$pkgname-$pkgver/package.json"
   fi
-  
+  patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="${srcdir}/arch_fix.patch"
 }
 build() {
   export NODE_ARCHITECTURE=x64
   cd "$srcdir/$pkgname-$pkgver"
+  npm install keytar
   npm install --cache "$srcdir/npm-cache"
   npm run build
   npm run package:linux

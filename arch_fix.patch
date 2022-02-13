@@ -1,0 +1,14 @@
+diff --unified --recursive --text a/package.json b/package.json
+--- a/package.json	2022-02-12 17:44:45.536886698 +0100
++++ b/package.json	2022-02-12 17:46:48.364179632 +0100
+@@ -78,9 +78,7 @@
+         {
+           "target": "appImage",
+           "arch": [
+-            "x64",
+-            "armv7l",
+-            "arm64"
++            "x64"
+           ]
+         }
+       ],
