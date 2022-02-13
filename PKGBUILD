@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-    	cd ${srcdir}/8821cu
+    	cd ${srcdir}/8821cu-20210118
         mkdir -p ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp -pr * ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
         cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/${_pkgbase}-${pkgver}
