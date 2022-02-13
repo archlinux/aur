@@ -1,6 +1,6 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 5.5
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = https://swift.org
 	arch = x86_64
@@ -12,8 +12,7 @@ pkgbase = swift-bin
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source = https://swift.org/builds/swift-5.5-release/centos8/swift-5.5-RELEASE/swift-5.5-RELEASE-centos8.tar.gz
-	sha256sums = a73975b707470b91d8829bb1e54a63ce3f002f7bd840acb8935f90faa0d1edc8
+	source = https://swift.org/builds/swift-5.5.3-release/centos8/swift-5.5.3-RELEASE/swift-5.5.3-RELEASE-centos8.tar.gz
+	sha256sums = 1a8ece25d18e77f961cd074851951a3f1d3e7ef0df8a9e7958342381daed0f33
 
 pkgname = swift-bin
-
