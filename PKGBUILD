@@ -2,8 +2,8 @@
 # Contributor: rustemb <rustemb at systemli dot org>
 
 pkgname=shadowsocks-rust
-pkgver=1.13.1
-pkgrel=5
+pkgver=1.13.2
+pkgrel=1
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=(x86_64)
 url='https://github.com/shadowsocks/shadowsocks-rust'
@@ -15,14 +15,14 @@ source=(
     'shadowsocks-rust@.service'
     'shadowsocks-rust-server@.service')
 
-sha512sums=('cae4d06830e78c660404a5be814f1768c8ab6ab007e8629b4132b8afd6bdbd1341ac70891c0fb33d83ba7a6aaa0e62748be5805c449562f6d72e1be4a5366ac4'
+sha512sums=('79ab55f15af3bd9ef043d8f5ca14a9636f5aae857f17bfa2918b6fd0c4688e0ed95d58aceff2c047583ee05980a661419c1af686ab2af7eeb2f5baf22e425cd5'
             '3a79d6958e61e891d208cea17b02ed5fe0318bbecc8d1bda7b8297e6ffdad186a86cf0fc55cb2904ed67bd460856f7136b6550ab493de31435df97285279d47d'
             '23a33b6e43ac5e91866c0aab8b0166790559ebdb49b3ea91393a977d2636a0c75f99544f559e0a248be1eb54e6bf8ad1cda8887a85d773a9214de16c4f223f1f')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_TARGET_DIR=target
-    cargo fetch --target "${CARCH}-unknown-linux-gnu"
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
     cargo build --frozen --release --features local-redir,local-tun,local-dns,local-http-native-tls
 }
 
