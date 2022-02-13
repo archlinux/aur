@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/karabaja4/${_gitname}"
 license=('MIT')
 install=${pkgname}.install
-depends=('openbsd-netcat' 'nodejs')
+depends=('firefox' 'openbsd-netcat' 'nodejs')
 makedepends=('git')
 source=("https://addons.mozilla.org/firefox/downloads/file/3908096/nativecontrol-${_version}-fx.xpi"
         "git://github.com/karabaja4/${_gitname}.git")
