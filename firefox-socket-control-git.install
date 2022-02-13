@@ -1,5 +1,5 @@
 post_install() {
-    printf "==> NOTE: To install the extension, you must first open and close Firefox once before being able to use it.\n"
+    printf "$(tput setaf 1)==> NOTE: To install the extension, you must first open and close Firefox *once* before being able to use it.$(tput sgr0)\n"
 }
 
 post_upgrade() {
