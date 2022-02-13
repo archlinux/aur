@@ -4,7 +4,7 @@
 
 pkgname=blast+
 pkgver=2.12.0
-pkgrel=2
+pkgrel=3
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
@@ -19,7 +19,7 @@ depends=('elfutils'
 	 'nettle'
 	 'krb5'
 	 'mysql'
-	 'freetype'
+	 'freetype2'
 	 'python'
 	 'perl'
 	 'sqlite'

@@ -1,7 +1,7 @@
 pkgbase = blast+
 	pkgdesc = BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)
 	pkgver = 2.12.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://blast.ncbi.nlm.nih.gov/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = blast+
 	depends = nettle
 	depends = krb5
 	depends = mysql
-	depends = freetype
+	depends = freetype2
 	depends = python
 	depends = perl
 	depends = sqlite
