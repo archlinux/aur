@@ -66,7 +66,7 @@ package() {
 	# set IPFS_PATH if not set by upstream already
 	sed -i  '/StateDirectory=ipfs/,/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/c StateDirectory=ipfs\nEnvironment=IPFS_PATH=\~\nExecStart=\/usr\/bin\/ipfs daemon --init --migrate' "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	# remove --init (handled by install file)
-	sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/ExecStart=\/usr\/bin\/ipfs daemon --init/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
+	sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon --init --migrate/ExecStart=\/usr\/bin\/ipfs daemon --migrate/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	# enable gc and pubsub by default (sane defaults)
 	sed -i 's/ExecStart=\/usr\/bin\/ipfs daemon/ExecStart=\/usr\/bin\/ipfs daemon --enable-gc --enable-pubsub-experiment --enable-namesys-pubsub/g' "$pkgdir/usr/lib/systemd/system/ipfs.service"
 	# increase timeouts (see #7283)
