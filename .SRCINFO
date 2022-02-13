@@ -16,8 +16,7 @@ pkgbase = odio-edit
 	depends = gst-libav
 	depends = libodiosacd
 	options = !emptydirs
-	source = https://github.com/tari01/odio-edit/archive/21.11.13.tar.gz
+	source = odio-edit-21.11.13.tar.gz::https://github.com/tari01/odio-edit/archive/21.11.13.tar.gz
 	md5sums = 0993dc9c4d6c14ce6948cc614317cba9
 
 pkgname = odio-edit
-

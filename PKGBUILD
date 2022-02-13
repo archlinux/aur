@@ -10,7 +10,7 @@ url="https://tari.in/www/software/odio-edit"
 license=("GPL3")
 depends=("gst-plugins-base" "gtk3" "dconf" "gst-libav" "libodiosacd")
 makedepends=("gst-plugins-base-libs" "gtk3" "libodiosacd")
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("0993dc9c4d6c14ce6948cc614317cba9")
 options=("!emptydirs")
 
