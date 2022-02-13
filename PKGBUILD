@@ -2,7 +2,7 @@
 
 _pkgname=geonkick
 pkgname="${_pkgname}-git"
-pkgver=2.8.1.r1148.4bdc11c
+pkgver=2.9.0.r1159.67b2102a
 pkgrel=1
 pkgdesc="A free software percussion synthesizer (git version)"
 arch=('x86_64')
@@ -31,6 +31,7 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DGKICK_VST3=ON \
     ..
   make
 }
