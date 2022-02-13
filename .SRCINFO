@@ -19,7 +19,7 @@ pkgbase = libosmium-git
 	optdepends = proj: project OSM coordinates into spatial reference systems
 	optdepends = lz4: use LZ4 compression in PBF files
 	optdepends = doxygen: build Libosmium API documentation
-	provides = libosmium=2.18.0
+	provides = libosmium=2.18.0.r0.g9c50fde4
 	conflicts = libosmium
 	source = libosmium::git+https://github.com/osmcode/libosmium.git
 	md5sums = SKIP

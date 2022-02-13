@@ -15,7 +15,7 @@ optdepends=('sparsehash: sparse-mem-table index map'
             'lz4: use LZ4 compression in PBF files'
             'doxygen: build Libosmium API documentation')
 conflicts=('libosmium')
-provides=('libosmium=2.18.0')
+provides=("libosmium=${pkgver}")
 source=('libosmium::git+https://github.com/osmcode/libosmium.git')
 md5sums=('SKIP')
 
