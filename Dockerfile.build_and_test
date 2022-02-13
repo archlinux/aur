@@ -3,7 +3,7 @@ ARG REGISTRY
 FROM "$REGISTRY/common/gitlab-helper/archlinux-yay:master"
 
 RUN (\
-    yay -Syu --noconfirm --needed gtk3 libxss nss \
+    yay -Syu --noconfirm --needed alsa-lib gtk3 libxss nss \
     && yes | yay -Scc --noconfirm \
     && sudo rm -rf /var/cache/pacman/pkg/* \
 )

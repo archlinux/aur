@@ -67,8 +67,11 @@ test-clockify-desktop:
     - namcap -m clockify-desktop*.pkg.tar.zst
     # This is not a very sophisticated test but at least checks the binary is 
     # in place and there are all shared libs found in the system
-    - ls /opt/Clockify/clockify
-    - if [[ -n $(ldd /opt/Clockify/clockify | grep "not found") ]]; then exit 1; fi
+    - |
+      if [[ -n $(ldd /opt/Clockify/clockify | grep "not found") ]]; then
+        ldd /opt/Clockify/clockify | grep "not found"
+        exit 1
+      fi
 
 deploy-clockify-desktop:
   stage: deploy
@@ -81,4 +84,3 @@ deploy-clockify-desktop:
     - echo "Uploading to AUR..."
   rules:
     - if: *on_master
-      when: manual
