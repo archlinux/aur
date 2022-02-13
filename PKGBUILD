@@ -1,4 +1,5 @@
-# Maintainer: TingPing tingping@tingping.se
+# Maintainer: Josef Vybíhal <josef.vybihal@gmail.com>
+# Previous Maintainer: TingPing tingping@tingping.se
 
 pkgname=transmission-remote-gtk-git
 pkgver=1.4.2.r66.ge44d953
@@ -25,8 +26,7 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-  #env POD2MAN=/usr/bin/core_perl/pod2man \
-    meson setup build "$_gitname" --prefix=/usr
+  meson setup build "$_gitname" --prefix=/usr
 }
 
 build() {
