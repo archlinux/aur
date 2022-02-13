@@ -1,7 +1,7 @@
 # Maintainer: kuba09 <kuba09 at pm dot me>
 pkgname=sampctl-bin
 _pkgname=sampctl
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="Collection of tools for SA-MP developers"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="https://github.com/Southclaws/sampctl"
 license=('GPL3')
 provides=('sampctl')
 
-sha512sums_i686=('3d679201afcf3306e6f047cb305d34213714f9c1628a27dda4a8ca492dbd2c32d943f1f8bd1d399957613382aaaabc1c4b30e98cca775a6a7cdaca4389f72dd9')
-sha512sums_x86_64=('52b5be8aa16407c921486543129e947d57d79df698cfb1e589fb8fcb9e9d968a602bb49f6d7116adc2669c47d3503ae26f78720e96a6b2533e43e44248b88e15')
+sha512sums_i686=('b5c05317beef115b31eac2a76eafc58ef01c086e62afca676fcae22276a38987a9020a94f9964c17d9416a36863ebe6c14d67dd3898a34ae2bf272c89400ad1b')
+sha512sums_x86_64=('e46728df2308089e2ac76fcda98be11c0c983e6b9c75b06251e63cab15b294b73aa3e2dc1abbd8dd19aa8768a9841915750f083f515ee67295182adf2cf601bd')
 
 source_i686=("https://github.com/Southclaws/${_pkgname}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_386.deb")
 source_x86_64=("https://github.com/Southclaws/${_pkgname}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_amd64.deb")
