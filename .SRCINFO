@@ -1,0 +1,18 @@
+pkgbase = canon-tr8600-series
+	pkgdesc = Printer drivers for the Cannon 8620 series
+	pkgver = 6.10
+	pkgrel = 1
+	url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/inkjet-multifunction/tr-series-inkjet/pixma-tr8620?tab=drivers_downloads
+	arch = x86_64
+	license = custom
+	makedepends = deb2targz
+	depends = popt
+	depends = libpng12
+	depends = libusb-compat
+	depends = libtiff
+	depends = libxml2
+	depends = gtk2
+	source = https://gdlp01.c-wss.com/gds/9/0100010919/01/cnijfilter2-6.10-1-deb.tar.gz
+	md5sums = 75ee391fc452b53b6016be9d03d95715
+
+pkgname = canon-tr8600-series
