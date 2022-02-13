@@ -4,21 +4,23 @@
 
 pkgname=canon-pixma-mp230-complete
 pkgver=3.80
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete stand alone driver set (printing and scanning) for Canon Pixma MP230 series"
 url="http://support-sg.canon-asia.com/contents/SG/EN/0100465901.html"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('custom')
-if [[ ${CARCH} = 'x86_64' ]]; then
-  depends=('lib32-libcups' 'lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-gtk2')
-elif [[ ${CARCH} = 'i686' ]]; then
-  depends=('libcups' 'popt' 'libpng12' 'libusb-compat' 'libtiff4' 'gtk2')
-fi
+depends=('lib32-libcups' 'lib32-popt' 'lib32-libpng12' 'lib32-libusb-compat' 'lib32-libtiff4' 'lib32-gtk2')
 makedepends=('binutils')
 source=('http://gdlp01.c-wss.com/gds/9/0100004659/01/cnijfilter-mp230series-3.80-1-deb.tar.gz'
 	'http://gdlp01.c-wss.com/gds/5/0100004695/01/scangearmp-mp230series-2.00-1-deb.tar.gz')
 sha1sums=('aa10d1483cec69f10c0c12bc524ac4f1b9c08a8f'
 	'df3a723c7e8bdce8fc5708905862aaa17fe333c0')
+
+prepare(){
+  tar -xzf cnijfilter-mp230series-3.80-1-deb.tar.gz
+  tar -xzf scangearmp-mp230series-2.00-1-deb.tar.gz
+  mkdir -p ${srcdir}/cnijfilter-mp230series-3.80-1-deb/packages/
+}
 
 package(){
 
