@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = This is the next generation of Alchemy Viewer! - Binary Project build
-	pkgver = 6.5.2.1342
-	pkgrel = 5
+	pkgver = 6.5.3.1452
+	pkgrel = 1
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
@@ -32,8 +32,8 @@ pkgbase = alchemy-next-viewer-bin
 	optdepends = nvidia-utils: NVIDIA support
 	provides = alchemy-viewer
 	options = !strip
-	source = Alchemy_Project_AgileAkita_6_5_2_1342_x86_64.tar.bz2::https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_AgileAkita/6.5.2.1342/Alchemy_Project_AgileAkita_6_5_2_1342_x86_64.tar.bz2
-	sha1sums = 3479198ce34e8d6a52f88a8627e6ab16bc72fa81
-	b2sums = c78acbfb5015a4d36e4169f8624fd8711eda0d93f0fe89e37ea570633ae00d328208380a176b499ac3bcf547bd470190f7479eb31225b62f3e858e65551f8256
+	source = Alchemy_Project_AgileAkita_6_5_3_1452_x86_64.tar.bz2::https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/Alchemy_Project_AgileAkita/6.5.3.1452/Alchemy_Project_AgileAkita_6_5_3_1452_x86_64.tar.bz2
+	sha1sums = 9fa873e32b8238998b590edefc9b97c6bb18c3d5
+	b2sums = 284c1afebdbf178bfb5e65cfc43921f7f87a2234cc8ad3f746d21d098dbb3a08c0c190e7c56e5809d68b1ad5f4b275099953a1b693314ccd006e1738d2ce2b45
 
 pkgname = alchemy-next-viewer-bin
