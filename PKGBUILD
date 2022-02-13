@@ -2,8 +2,8 @@
 # Contributor:	Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-pinyin
-pkgver=0.45.0
-pkgrel=2
+pkgver=0.46.0
+pkgrel=1
 pkgdesc="Chinese to Pinyin library"
 arch=('any')
 url='https://github.com/mozillazg/python-pinyin'
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
 changelog=CHANGELOG.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinyin/pypinyin-$pkgver.tar.gz")
-sha256sums=('776439244a20c7386425ceb37b5a69b36e1c469ca0550f4423c9900f44f5134b')
+sha256sums=('0d2e41e95dbc20a232c0f5d3850654eebbfcba303d96358d2c46592725bb989c')
 
 build() {
 	cd "pypinyin-$pkgver"

@@ -1,7 +1,7 @@
 pkgbase = python-pinyin
 	pkgdesc = Chinese to Pinyin library
-	pkgver = 0.45.0
-	pkgrel = 2
+	pkgver = 0.46.0
+	pkgrel = 1
 	url = https://github.com/mozillazg/python-pinyin
 	changelog = CHANGELOG.rst
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pinyin
 	makedepends = python-install
 	makedepends = python-wheel
 	depends = python
-	source = python-pinyin-0.45.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinyin/pypinyin-0.45.0.tar.gz
-	sha256sums = 776439244a20c7386425ceb37b5a69b36e1c469ca0550f4423c9900f44f5134b
+	source = python-pinyin-0.46.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinyin/pypinyin-0.46.0.tar.gz
+	sha256sums = 0d2e41e95dbc20a232c0f5d3850654eebbfcba303d96358d2c46592725bb989c
 
 pkgname = python-pinyin
