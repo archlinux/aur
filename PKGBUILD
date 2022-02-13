@@ -30,7 +30,7 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 pkgver() {
-	cd "$(_pkgname)"
+	cd "${_pkgname}"
 	printf "4.9_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -41,9 +41,9 @@ build() {
 
 package() {
 	cd mydmenu
-	mkdir -p $(pkgdir)/opt/$(pkgname)
-	cp -rf * $(pkgdir)/opt/$(pkgname)
-	make PREFIX=/usr DESTDIR="$(pkgver)" install
-	install -Dm644 LICENSE "$(pkgdir)/usr/share/licenses/$(pkgname)/LICENSE"
-	install -Dm644 README.md "$(pkgdir)/usr/share/README/$(pkgname)/README.md"
+	mkdir -p ${pkgdir}/opt/${pkgname}
+	cp -rf * ${pkgdir}/opt/${pkgname}
+	make PREFIX=/usr DESTDIR="${pkgver}" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/README/${pkgname}/README.md"
 }
