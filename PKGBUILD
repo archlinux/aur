@@ -11,7 +11,7 @@ license=("GPL3")
 depends=("caja" "python-caja" "python" "python-gobject" "gobject-introspection" "gtk3")
 makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
-source=("https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tari01/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("ffa8fbe1735ba950556152c08881049c")
 options=("!emptydirs")
 

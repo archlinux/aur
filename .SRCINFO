@@ -15,8 +15,7 @@ pkgbase = caja-rename
 	depends = gobject-introspection
 	depends = gtk3
 	options = !emptydirs
-	source = https://github.com/tari01/caja-rename/archive/21.11.24.tar.gz
+	source = caja-rename-21.11.24.tar.gz::https://github.com/tari01/caja-rename/archive/21.11.24.tar.gz
 	md5sums = ffa8fbe1735ba950556152c08881049c
 
 pkgname = caja-rename
-
