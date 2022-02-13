@@ -3,26 +3,26 @@
 # All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
 
 pkgname=python-binarytree
-pkgver=6.3.0
+pkgver=6.4.0
 pkgrel=1
 pkgdesc="Python library for studying binary trees"
 arch=('any')
 url="https://github.com/joowani/binarytree"
 license=('MIT')
-depends=('python-graphviz' 'python-setuptools')
-makedepends=('python-setuptools-scm')
+depends=('python-graphviz' 'python-setuptools-scm')
+makedepends=('python-build' 'python-install' 'python-wheel')
 # checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/binarytree/binarytree-$pkgver.tar.gz")
-sha256sums=('e6c10746630b097dfd891d2e1fae7514f086257fd05d1b7b939caf854501497b')
+sha256sums=('02e4d199e9bf414782a2bb8da04ad8cd66621de7d25d0756c99b5a36703fa01e')
 
 build() {
 	cd "binarytree-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
 	export PYTHONHASHSEED=0
 	cd "binarytree-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
