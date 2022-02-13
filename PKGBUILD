@@ -1,4 +1,5 @@
-# Maintainer: Mario Finelli <mario at finel dot li>
+# Maintainer: Kaan Genc <aur@kaangenc.me>
+# Contributor: Mario Finelli <mario at finel dot li>
 
 _npmname=bunyan
 pkgname=nodejs-$_npmname
