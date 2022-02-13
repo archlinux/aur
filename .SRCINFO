@@ -1,0 +1,27 @@
+pkgbase = sm64ex-jp-git
+	pkgdesc = Fork of Super Mario 64 Port (JP) with additional features
+	pkgver = r626.db9a6345
+	pkgrel = 1
+	url = https://github.com/sm64pc/sm64ex
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = python
+	depends = sdl2
+	provides = sm64ex-jp
+	conflicts = sm64ex-jp
+	source = git+https://github.com/sm64pc/sm64ex
+	source = file://baserom.jp.z64
+	source = sm64ex-jp.sh
+	source = sm64ex-jp.desktop
+	sha256sums = SKIP
+	sha256sums = 9cf7a80db321b07a8d461fe536c02c87b7412433953891cdec9191bfad2db317
+	sha256sums = 7d4642bb8c09dbc7091a82e426d1e920d1ed3e3c23d652c984df880bb9af5834
+	sha256sums = 27c4a2830342339fdf049621b84e739023d527fe9f236a373d01ecdf319a150f
+
+pkgname = sm64ex-jp-git
