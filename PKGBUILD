@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-indicator-power"
 license=("GPL3")
 makedepends=("cmake-extras" "gettext")
 depends=("glib2" "systemd" "libayatana-common>=0.9.5" "libnotify")
-source=("https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=("11216ed2bef7429f6d82fca664b5a545")
 
 build()

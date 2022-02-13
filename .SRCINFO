@@ -13,7 +13,7 @@ pkgbase = ayatana-indicator-power
 	depends = systemd
 	depends = libayatana-common>=0.9.5
 	depends = libnotify
-	source = https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/2.2.0.tar.gz
+	source = ayatana-indicator-power-2.2.0.tar.gz::https://github.com/AyatanaIndicators/ayatana-indicator-power/archive/2.2.0.tar.gz
 	md5sums = 11216ed2bef7429f6d82fca664b5a545
 
 pkgname = ayatana-indicator-power
