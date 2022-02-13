@@ -1,7 +1,7 @@
 pkgbase = sinsy-isengaara-git
 	pkgdesc = fork of sinsy made to use with qtau
 	pkgver = 0.9.6rc0.r3.g036c33a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notabug.org/isengaara/sinsy
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,8 @@ pkgbase = sinsy-isengaara-git
 	provides = sinsy-isengaara-git
 	conflicts = sinsy-isengaara-git
 	source = git+https://notabug.org/isengaara/sinsy
+	source = utaudb.patch
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = sinsy-isengaara-git

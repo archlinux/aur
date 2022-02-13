@@ -1,0 +1,12 @@
+diff --git a/src/lib/utau/UtauDB.cpp b/src/lib/utau/UtauDB.cpp
+index 93467ca..38b0a0b 100644
+--- a/src/lib/utau/UtauDB.cpp
++++ b/src/lib/utau/UtauDB.cpp
+@@ -12,6 +12,7 @@
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  */
+ #include <iostream>
++#include <algorithm>
+ #include <boost/filesystem.hpp>
+ #include "UtauDB.h"
+ #include "TextInputStream.h"
