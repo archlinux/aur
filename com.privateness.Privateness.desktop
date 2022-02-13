@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=P2P;Crypto;WWW;Network;Internet
+Exec=ness-wallet %U
+GenericName=Privateness Wallet
+Comment=Privateness wallet
+Icon=privateness
+MimeType=application/x-privateness;
+Name=Privateness
+Terminal=false
+Type=Application
+StartupNotify=false
+Keywords=vpn;p2p;www;network;internet;
