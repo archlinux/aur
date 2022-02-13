@@ -2,7 +2,7 @@
 # Contributor: Sam L. Yes <samlukeyes123 at gmail dot com>
 
 pkgname=qv2ray-git
-pkgver=3.0.0.rc1.r19.g7898f0e2
+pkgver=3.0.0.rc1.r24.g2aec20c6
 pkgrel=1
 pkgdesc="A cross platform connection manager for V2Ray and other backends"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
     "git+https://github.com/itay-grudev/SingleApplication.git"
     "git+https://github.com/cpeditor/QCodeEditor.git"
     "git+https://github.com/danielsanfr/qt-qrcode.git"
-    "git+https://github.com/xiaokangwang/v2ray-core-1.git"
+    #"git+https://github.com/xiaokangwang/v2ray-core-1.git"
     "git+https://github.com/moodyhunter/libRoutingA.git"
     "git+https://github.com/fukuchi/libqrencode.git"
 )
@@ -27,7 +27,7 @@ sha512sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'SKIP'
+    #'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -48,8 +48,8 @@ prepare() {
         3rdparty/SingleApplication \
         3rdparty/QCodeEditor \
         3rdparty/qt-qrcode \
-        src/plugins/v2ray/3rdparty/v2ray-core \
         src/plugins/routingA/core
+        #src/plugins/v2ray/3rdparty/v2ray-core \
     cd 3rdparty/qt-qrcode
     patch_gitmodules
     git submodule update --init
