@@ -1,8 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgbase=apollo-rover
-pkgname=(apollo-rover apollo-rover-fed2)
-pkgver=0.4.1
+pkgname=('apollo-rover' 'apollo-rover-fed2')
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -10,8 +9,10 @@ url='https://github.com/apollographql/rover'
 license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=('cargo')
+options=('!lto')
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f8bf221bed765447b809c85f1c3dffaf6b241362f745a80906f8e98869e11edd')
+sha256sums=('972a5e2f41def98e5fdcee5020aae46daffade0cd4e2eb49b33def15f1675166')
 
 prepare() {
 	cd "rover-$pkgver"
@@ -23,6 +24,7 @@ prepare() {
 build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+
 	cd "rover-$pkgver"
 	cargo build --frozen --release --all-features
 	cd plugins/rover-fed2
@@ -40,8 +42,8 @@ package_apollo-rover() {
 
 	cd "rover-$pkgver"
 	install -D "target/release/rover" -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 package_apollo-rover-fed2() {
@@ -51,6 +53,6 @@ package_apollo-rover-fed2() {
 
 	cd "rover-$pkgver/plugins/rover-fed2/"
 	install -D target/release/rover-fed2 -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
