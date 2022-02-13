@@ -1,4 +1,4 @@
-# Maintainer Kiernan Preve <kiernanpreve@gmail.com>
+# Maintainer: Kiernan Preve <kiernanpreve@gmail.com>
 
 pkgname=rtl8188gu-dkms-git
 pkgver=r14.23b04ff
