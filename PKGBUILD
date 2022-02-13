@@ -1,4 +1,5 @@
-# Maintainer: Ryan Gonzalez <rymg19 at gmail dot com>
+# Maintainer: Miten <admin at m1ten dot me>
+# Contributor: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
