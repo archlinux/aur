@@ -1,22 +1,53 @@
+cloudflare-warp (2022.2.29) unstable; urgency=medium
+
+  * Fixed issue with warp working on distros with v248 of systemd or newer
+  * Fixed issue with device posture application checks detecting running
+    processes
+  * Now that settings exist in the Zero Trust Dashboard the Client UI should
+    behave the same regardless of if you manually joined to a Team or if you
+    were forced to by local mdm.xml policy
+  * Fixed issue where the WARP Client might not get updated settings when it
+    initial starts
+  * Fixed issue where the Last Seen value was not updated properly in the Zero
+    Trust Dashboard while in "doh" mode
+  * Fixed issue where device name was not updated in the Zero trust Dashboard if
+    the computer name changed after initial registration
+  * Added the ability for daemon to parse mdm.xml file on Linux
+  * Shows the Zero Trust Terms of Service when user joins an organization
+
+ -- Matt Schulte <mschulte@cloudflare.com> Wed, 9 Feb 2022 14:07:00 -0800
+
+cloudflare-warp (2021.12.0) unstable; urgency=high
+
+  * Removes leaked signing key from apt key store
+  * Fixed connectivity issue when attempting to reconnect to WARP
+  * Add a background connectivity check
+  * you can now specify specific DNS servers to use for domains in Local
+    Domain fallback in the Teams Dashboard.
+
+ -- Matt Schulte <mschulte@cloudflare.com> Fri, 10 Dec 2021 14:34:00 -0700
+
 cloudflare-warp (2021.10.0) unstable; urgency=medium
 
   * Client now supports include only split tunnel rules while in Teams mode
-  * Improved overall reliability of DNS and general connectivity when in Teams modes
+  * Improved overall reliability of DNS and general connectivity when in Teams
+    modes
   * Improved logging and fixed bug where we got incomplete logs from warp-diag
   * Fixed connectivity issues some users experienced when coming out of sleep
-  * Fixed occasional registration issues when trying to join Teams organization
+  * Fixed occasional registration issues when trying to join Teams
+    organization
   * Fixed bug in restoring previous DNS settings on crash
   * Fixed bug in Linux firewall blocking certain DNS requests
   * Fixed issues in handling SIGTERM/SIGINT
 
-  -- Matt Schulte <mschulte@cloudflare.com>  Wed, 27 Oct 2021 10:13:15 -0700
+ -- Matt Schulte <mschulte@cloudflare.com>  Wed, 27 Oct 2021 10:13:15 -0700
 
 cloudflare-warp (2021.8.1) unstable; urgency=low
 
   * Minor fixes to network changes while in proxy mode
   * Minor stability fixes and improvements
 
-  -- Jeff Hiner <jhiner@cloudflare.com>  Fri, 13 Aug 2021 15:50:50 -0600
+ -- Jeff Hiner <jhiner@cloudflare.com>  Fri, 13 Aug 2021 15:50:50 -0600
 
 cloudflare-warp (2021.8.0) unstable; urgency=medium
 
@@ -26,7 +57,7 @@ cloudflare-warp (2021.8.0) unstable; urgency=medium
   * Fix an issue where the client would stop working properly after a suspend
   * Various stability improvements and other minor fixes
 
-  -- Jeff Hiner <jhiner@cloudflare.com>  Thu, 12 Aug 2021 12:24:00 -0600
+ -- Jeff Hiner <jhiner@cloudflare.com>  Thu, 12 Aug 2021 12:24:00 -0600
 
 cloudflare-warp (2021.7.1) unstable; urgency=medium
 
@@ -37,7 +68,7 @@ cloudflare-warp (2021.7.1) unstable; urgency=medium
     (Not yet supported, but doesn't drop traffic.)
   * Minor bug fixes and improvements
 
-  -- Jeff Hiner <jhiner@cloudflare.com>  Fri, 26 Jul 2021 12:11:01 -0600
+ -- Jeff Hiner <jhiner@cloudflare.com>  Fri, 26 Jul 2021 12:11:01 -0600
 
 cloudflare-warp (2021.7.0) unstable; urgency=medium
 
@@ -48,7 +79,7 @@ cloudflare-warp (2021.7.0) unstable; urgency=medium
   * Logs have been move to /var/logs/cloudflare-warp.
   * Minor bug fixes and improvements.
 
-  -- Brendan McMillion <brendan@cloudflare.com>  Fri, 9 Jul 2021 12:59:36 -0700
+ -- Brendan McMillion <brendan@cloudflare.com>  Fri, 9 Jul 2021 12:59:36 -0700
 
 cloudflare-warp (2021.6.0) unstable; urgency=medium
 
@@ -56,7 +87,7 @@ cloudflare-warp (2021.6.0) unstable; urgency=medium
   * Improves performance of DNS resolution.
   * Minor bug fixes and improvements.
 
--- Brendan McMillion <brendan@cloudflare.com>  Thu, 10 Jun 2021 12:38:41 -0700
+ -- Brendan McMillion <brendan@cloudflare.com>  Thu, 10 Jun 2021 12:38:41 -0700
 
 cloudflare-warp (2021.5.0) unstable; urgency=medium
 
