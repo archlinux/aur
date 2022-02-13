@@ -4,7 +4,7 @@
 pkgname=rtl8821cu-morrownr-dkms-git
 _pkgbase=rtl8821cu
 _pkgver="5.8.1.7"
-pkgver=5.8.1.7.123.499f495
+pkgver=5.8.1.7.1.b6ad883
 pkgrel=1
 pkgdesc="rtl8821cu chipset driver (morrownr fork)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 	    'a0552ddb8658b5416ae373db569f7fef9a111c9b995a85071bd89fd4cf8c804f')
 
 pkgver() {
-    cd ${srcdir}/8821cu
+    cd ${srcdir}/8821cu-20210118
     printf "%s" ${_pkgver} "." "$(git rev-list --count HEAD)" "." "$(git rev-parse --short HEAD)"
 
 }
