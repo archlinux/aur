@@ -1,36 +1,45 @@
 # Maintainer: Naomi Calabretta <me@arytonex.pw>
 
 pkgname=sunamu
-pkgver=1.3.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Show your currently playing song in a stylish way!"
 url="https://github.com/NyaomiDEV/Sunamu"
 license=("MPL-2.0")
 arch=("x86_64" "i686" "armv7h" "aarch64")
 conflicts=(sunamu-git sunamu-bin)
-makedepends=("git" "npm" "yarn" "node-gyp")
-depends=("electron")
+makedepends=("git" "npm" "yarn" "node-gyp" "nvm")
+depends=("electron" "libvips")
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/NyaomiDEV/Sunamu/archive/v$pkgver.tar.gz"
+source=("${pkgname}::git+https://github.com/NyaomiDEV/Sunamu#tag=v$pkgver"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=("ef01046448988d21f230f02033f87c327e7317e40b976b6d2c44f824148c1200"
+sha256sums=("SKIP"
             "61e7326922b6f1a58d894488df27264ed307e1c1e8a0bb3aea61f0fcaa9c2bd4"
             "3ec100c03e6653aeed2400109501c3209295d58e74e4dbc71dadcfad86ef910c")
 
 build() {
-  cd "$srcdir/Sunamu-$pkgver"
-  
+  cd "$srcdir/$pkgname"
+
   # use system electron version
   # see: https://wiki.archlinux.org/index.php/Electron_package_guidelines
   electronDist="/usr/lib/electron"
   electronVer=$(pacman -Q $(pacman -Qqo $electronDist) | cut -d " " -f2 | cut -d "-" -f1)
+
+  # use nvm but isolate it for this shell
+  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+  export NVM_DIR="$srcdir/.nvm"
+  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+  # ensure .nvmrc version is installed
+  nvm install --no-progress "$(cat "$srcdir/$pkgname/.nvmrc")"
+
   yarn install
   yarn build:dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package() {
-  cd "$srcdir/Sunamu-$pkgver"
+  cd "$srcdir/$pkgname"
   install -dm755 "${pkgdir}/usr/lib/$pkgname"
   dir=$(compgen -G "targets/linux*unpacked" | head -n1)
   cp -dr --no-preserve=ownership $dir/resources/* "${pkgdir}/usr/lib/$pkgname/"
