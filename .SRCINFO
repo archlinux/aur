@@ -1,0 +1,12 @@
+pkgbase = ahdumb-st
+	pkgdesc = st is a simple terminal implementation for X.
+	pkgver = 0.8.5
+	pkgrel = 4
+	url = https://github.com/AhDumb/st.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/AhDumb/st.git
+	md5sums = SKIP
+
+pkgname = ahdumb-st
