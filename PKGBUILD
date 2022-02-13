@@ -9,7 +9,7 @@ url="https://github.com/AyatanaIndicators/ayatana-ido"
 license=("LGPL2.1" "LGPL3")
 makedepends=("cmake-extras" "gobject-introspection" "vala")
 depends=("glibc" "gtk3" "glib2")
-source=("https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/$pkgname/archive/$pkgver.tar.gz")
 md5sums=("63e62f18952f874e9173285c621f62f4")
 
 build()
