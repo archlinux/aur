@@ -1,4 +1,4 @@
-# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
 # Contributor: UshakovVasilii <UshakovVasilii@yahoo.com>
 # Contributor: Charon77 <evans.jahja@yahoo.com>
 # Contributor: debdj <debd92@gmail.com>
