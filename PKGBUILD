@@ -4,12 +4,42 @@
 
 pkgname=blast+
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAST tool suite from NCBI (blastn, blastp, blastx, psiblast, etc)"
 arch=('i686' 'x86_64')
 url="http://blast.ncbi.nlm.nih.gov/"
 license=('custom')
-depends=('lmdb' 'lzo' 'pcre' 'python')
+depends=('elfutils'
+	 'zlib'
+	 'bzip2'
+	 'lzo'
+	 'zstd'
+	 'pcre'
+	 'gmp'
+	 'nettle'
+	 'krb5'
+	 'mysql'
+	 'freetype'
+	 'python'
+	 'perl'
+	 'sqlite'
+	 'icu'
+	 'expat'
+	 'libxml2'
+	 'libxslt'
+	 'muparser'
+	 'hdf5'
+	 'giflib'
+	 'libjpeg'
+	 'libpng'
+	 'libtiff'
+	 'imagemagick'
+	 'curl'
+	 'mimetic'
+	 'lapack'
+	 'lmdb'
+	 'libuv'
+	 'libssh2')
 makedepends=('cpio')
 # conflicts with proj on libproj.so
 conflicts=('blast' 'blast+-bin' 'ncbi-blast' 'proj')
