@@ -18,7 +18,7 @@ _node_version="16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=9   # 次版本号release
+pkgrel=10   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version. "
 arch=("x86_64")
@@ -75,7 +75,7 @@ build() {
     # prepare nw-gyp
     _log "prepare nw-gyp"
     npm uninstall node-gyp -g
-    npm install nw-gyp node-gyp npm@latest -g
+    npm install nw-gyp node-gyp -g
 
     # node bin
     _log "copy node exectuable"
