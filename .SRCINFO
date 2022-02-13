@@ -1,0 +1,20 @@
+pkgbase = anastasis
+	pkgdesc = Protocol and implementation to securely deposit core secrets and recover them if their original copies are lost
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://www.gnu.org/software/anastasis
+	arch = i686
+	arch = x86_64
+	license = AGPL
+	depends = jansson
+	depends = gnunet
+	depends = libgcrypt
+	depends = postgresql
+	depends = taler-exchange
+	depends = taler-merchant
+	conflicts = anastasis-git
+	conflicts = anastasis-bin
+	source = ftp://ftp.gnu.org/gnu/anastasis/anastasis-0.2.0.tar.gz
+	sha512sums = 116508ba90ca8164ed5569f7ee752fae7361778c3330b2e6869692b1997117c9999fdd2f62a39cbad156b24473737413dfed182d9559d4c284f2de7087962bff
+
+pkgname = anastasis
