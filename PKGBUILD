@@ -1,7 +1,7 @@
 # Maintainer: Bruno Antunes <sardaukar.siet@gmail.com>
 pkgname=tailscale-systray-git
 pkgver=20220214
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux port of tailscale system tray menu.'
 arch=('x86_64')
 url="https://github.com/mattn/tailscale-systray"
@@ -12,7 +12,7 @@ source=( 'tailscale-systray.desktop'
          'icon.png'
          'LICENSE'
          'git+https://github.com/mattn/tailscale-systray')
-sha256sums=( 'a218407cfc354f3fa0844007aaac38c255e60a45aad09601208d73b03f3b7ebc'
+sha256sums=( '47f2e6019aaed0bd61d6f8b096a8bd41f9e58ec4c84d16c44bb6890ff77906ce'
              'daffb052995411f5c25ac8977531bccb63a82d259817d4bd7808668fd4b5373c'
              'd467163815d58e1aa199ffb6985cdc252b7c71fb454c5b6c5860498806c56670'
              'SKIP')
