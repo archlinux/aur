@@ -1,13 +1,13 @@
 pkgbase = python2-simplejson
 	pkgdesc = Simple, fast, extensible JSON encoder/decoder for python2
 	pkgver = 3.17.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/simplejson/simplejson
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://github.com/simplejson/simplejson/archive/v3.17.6.tar.gz
-	sha512sums = 89b4bf2788468fd8959d32be6597ff73cf8b3064e71c6eacf8185e4588da0e73d4c9f762d80146b10d5ea050dd4c419c8e9393b07659b840942cc6baa5766a79
+	source = https://github.com/simplejson/simplejson/archive/refs/tags/v3.17.6.tar.gz
+	sha256sums = 5522f3113924325499f15cd8a3fe47a42dfa127a6b76c1921b51cf3c3f2a6aa6
 
 pkgname = python2-simplejson
