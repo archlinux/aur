@@ -25,7 +25,7 @@ prepare() {
 }
 
 build() {
-    cd happy-hacking-gnu/bin
+    cd "$pkgname/bin"
     cmake ..
     make
 }
