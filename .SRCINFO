@@ -2,12 +2,12 @@ pkgbase = thqm
 	pkgdesc = Control your scripts over the network.
 	pkgver = 0.1.3
 	pkgrel = 1
-	url = https://github.com/loiccoyle/thqm.rs
+	url = https://github.com/loiccoyle/thqm-rs
 	arch = any
 	license = MIT
 	makedepends = rust
 	depends = git
 	source = thqm-0.1.3.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v0.1.3.tar.gz
-	sha256sums = 20e91dabd08f2d707bc79d3bbfb43cddae32f0f5c388b3c637e5745b3998cd7e
+	sha256sums = 857a1379ffd5bb0348963d20eb1a2c1e66334b360e8f9ee8deefba430f48de42
 
 pkgname = thqm
