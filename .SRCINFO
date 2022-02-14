@@ -1,6 +1,6 @@
 pkgbase = streamdeck-ui-git
 	pkgdesc = A Linux compatible UI for the Elgato Stream Deck
-	pkgver = r270.d3cf85e
+	pkgver = r303.fdfe281
 	pkgrel = 1
 	url = https://timothycrosley.github.io/streamdeck-ui/
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = streamdeck-ui-git
 	depends = pyside2
 	depends = python-pynput
 	depends = python-elgato-streamdeck
+	optdepends = gnome-shell-extension-appindicator: tray icon support gnome-shell
 	provides = streamdeck-ui
 	source = git+https://github.com/timothycrosley/streamdeck-ui.git
 	source = 60-streamdeck.rules
