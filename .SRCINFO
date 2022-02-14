@@ -1,6 +1,6 @@
 pkgbase = pw-git
 	pkgdesc = A simple password manager
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/thomasjlsn/pw
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = pw-git
 	depends = bash
 	depends = gnupg
 	depends = tree
+	optdepends = qrencode: encoding passwords as qr codes
 	provides = pw-git
 	conflicts = pw
 	source = git+https://gitlab.com/thomasjlsn/pw
