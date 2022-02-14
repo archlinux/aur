@@ -1,9 +1,0 @@
-# Vim
-*~
-*.swp
-
-# Makepkg
-*.pkg.tar.xz
-*.tar.gz
-pkg/
-src/

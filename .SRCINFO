@@ -1,16 +1,15 @@
 pkgbase = perl-bsd-resource
-	pkgdesc = getrusage(), s/getrlimit(), s/getpriority()
+	pkgdesc = BSD process resource limit and priority functions
 	pkgver = 1.2911
-	pkgrel = 3
-	url = http://search.cpan.org/dist/BSD-Resource
+	pkgrel = 4
+	url = https://metacpan.org/dist/BSD-Resource
 	arch = x86_64
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
 	depends = perl
-	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/J/JH/JHI/BSD-Resource-1.2911.tar.gz
-	md5sums = 3a67959a30fd6e537b9d8a64d60d8692
+	source = https://www.cpan.org/modules/by-module/BSD/BSD-Resource-1.2911.tar.gz
 	sha512sums = d0032d41c7c0468ed1c6d8f57b885f6cb97a5039d754c8cb60b2067daedaf53bd15fb6561a3d0f828df16dfa5417f663b8065ba65f4fea16dc9262728b3b6b85
 
 pkgname = perl-bsd-resource
-
