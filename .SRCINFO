@@ -1,0 +1,16 @@
+pkgbase = python-nut2
+	pkgdesc = Communicate with Network UPS Tools servers from Python
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/rshipp/python-nut2
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/n/nut2/nut2-2.1.1.tar.gz
+	source = https://pypi.io/packages/source/n/nut2/nut2-2.1.1.tar.gz.asc
+	validpgpkeys = C1E446BFAC0D68828EDD98D19985DAD9D417608D
+	sha256sums = 2166e827cec2a42cab89e9616407358698ad8b258a1f515fedc5a106ffc1f092
+	sha256sums = SKIP
+
+pkgname = python-nut2

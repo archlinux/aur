@@ -1,0 +1,6 @@
+pkg/
+src/
+nut2-*.tar.gz
+nut2-*.tar.gz.asc
+python-nut2-*.pkg.tar
+python-nut2-*.pkg.tar.*
