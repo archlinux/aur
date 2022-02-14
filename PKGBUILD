@@ -1,18 +1,18 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=jfmt
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Fast JSON auto-formatter"
 arch=("x86_64")
 url="https://github.com/scruffystuffs/jfmt.rs"
 license=("MIT")
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5565eb158b9618944470e6e708c464e46e3dabe2b8bfd1bd2fff2b0618ca437e')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('3f16ced1cc35f13e4e8832f12e765c50df0948260a522bd15df1da2fcc3b85a8')
 
 build() {
   cd "$pkgname.rs-$pkgver"
-  cargo build --release --locked
+  CARGO_TARGET_DIR=target cargo build --release --locked
 }
 
 package() {
