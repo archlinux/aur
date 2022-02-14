@@ -11,8 +11,8 @@ license=('GPL')
 depends=('gtk-vnc' 'libvirt' 'spice-gtk' 'libvirt-glib' 'libgovirt' 'vte3')
 makedepends=('meson' 'intltool' 'spice-protocol' 'gobject-introspection' 'bash-completion')
 replaces=('virtviewer')
-provides=("$_pkgname" 'virtviewer')
-conflicts=("$_pkgname" 'virtviewer')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=(
     "https://virt-manager.org/download/sources/virt-viewer/virt-viewer-${pkgver}.tar.xz"{,.asc}
     "drop-header.patch")
