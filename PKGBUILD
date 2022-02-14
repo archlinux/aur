@@ -3,7 +3,7 @@
 
 pkgname=python-google-resumable-media
 _name="${pkgname#python-}"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
@@ -14,20 +14,26 @@ makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
 optdepends=(
 	'python-requests: for requests support'
 	'python-aiohttp: for aiohttp support')
-# checkdepends=('python-pytest' 'python-google-auth' 'python-requests' 'python-aiohttp')
+# checkdepends=(
+# 	'python-pytest-runner'
+# 	'python-mock'
+# 	'python-google-auth'
+# 	'python-google-cloud-testutils'
+# 	'python-requests'
+# 	'python-aiohttp')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0c8ff5335d13ee08315e72a4c786819d59d1f2266bf679dfc25403c5c5cfd8f1')
+sha256sums=('c750303924de6fe2d1826874c7ca25882378aa7f7cfc9be36069efb5caf92388')
 
 build() {
 	cd "$_name-python-$pkgver"
 	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-## requires python-google-test-utils
+# requires python-google-test-utils
 # check() {
 # 	cd "$_name-python-$pkgver"
-# 	pytest tests
+# 	python setup.py pytest
 # }
 
 package() {
