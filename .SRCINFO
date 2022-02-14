@@ -1,0 +1,26 @@
+pkgbase = virt-viewer
+	pkgdesc = A lightweight interface for interacting with the graphical display of virtualized guest OS.
+	pkgver = 11.0
+	pkgrel = 1
+	url = https://gitlab.com/virt-viewer/virt-viewer
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = intltool
+	makedepends = spice-protocol
+	makedepends = gobject-introspection
+	makedepends = bash-completion
+	depends = gtk-vnc
+	depends = libvirt
+	depends = spice-gtk
+	depends = libvirt-glib
+	depends = libgovirt
+	depends = vte3
+	replaces = virtviewer
+	source = https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz
+	source = https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz.asc
+	validpgpkeys = DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF
+	b2sums = 41914a60361f0a47a0b0b54962d228ffaec67c6b69c664bb6fe683b7074dd5e2136d2bf3528b6e1b6b785cc4e337125fe16fdd94dd603dd42e8fde543931241a
+	b2sums = SKIP
+
+pkgname = virt-viewer
