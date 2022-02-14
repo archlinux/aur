@@ -3,7 +3,7 @@ _base=meshzoo
 pkgname=python-${_base}
 pkgdesc="A collection of meshes for canonical domains"
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -30,9 +30,6 @@ check() {
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
-
-  # https://github.com/FFY00/python-install/pull/6
-  chmod +x ${pkgdir}/usr/bin/*
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")

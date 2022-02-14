@@ -1,7 +1,7 @@
 pkgbase = python-meshzoo
 	pkgdesc = A collection of meshes for canonical domains
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/meshzoo
 	arch = x86_64
 	license = GPL3
