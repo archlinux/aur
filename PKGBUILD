@@ -2,7 +2,7 @@
 
 pkgname=cxx-common
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/lifting-bits/cxx-common"
@@ -15,7 +15,7 @@ source=("https://github.com/lifting-bits/cxx-common/archive/refs/tags/v${pkgver}
 sha256sums=('c3b7825739ea353460b969ed6fc5502eaf882bf11a9a9d881c8b7bbd49e4f1de')
 
 package() {
-    export LLVM_VER=13
+    export LLVM_VER=12
     export TRIPLET=x64-linux-rel
     export VCPKG_DEFAULT_HOST_TRIPLET=$TRIPLET # https://github.com/lifting-bits/cxx-common/pull/876
 
