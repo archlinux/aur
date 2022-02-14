@@ -4,7 +4,7 @@
 
 pkgname=netdata-cloud
 _pkgbasename=netdata
-pkgver=1.33.0
+pkgver=1.33.1
 pkgrel=1
 _libmosquitto_version="v.1.6.8_Netdata-5"
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web. Cloud enabled edition"
@@ -32,7 +32,7 @@ install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/netdata/netdata/releases/download/v${pkgver}/netdata-v${pkgver}.tar.gz"
 	"https://github.com/netdata/mosquitto/archive/refs/tags/${_libmosquitto_version}.tar.gz"
         "$pkgname.sysusers")
-b2sums=('fc0feed8a93876ca7ec304d8ff95312de19f81fccb5ec564e324751488fe6bb10033c815d456238503bcefdd31ec213d61191e21a5ee6671e23183aec7f298d9'
+b2sums=('01838efcfc99ce644f04af1cde3dcbc5844cf2eaff8afb44503effd017b4dcd9ed990cd2ad6f285f81c72a0bae91586fa21c0306ad932252503ee755b949d7e3'
         '2d9344181798e22561a2ea363467e16bed3336acd6bb5a7241623f3a40cbdc6d697f94419a4ef3907120fe5dffd5462151ed66fed256998de1f27e4bede47e59'
         'af8a5fbdd3d76fbe378113ca9202a2ce0abefa4f0ad72e470bd9e4d3775d859ec9359fc1113eae80190da9d29ce1ac4476c5745c411dbaf7a0c5f12e086b9378')
 build() {
