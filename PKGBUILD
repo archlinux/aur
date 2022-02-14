@@ -6,7 +6,7 @@ pkgname=python-pytorch-rocm
 _pkgname="pytorch"
 pkgver=1.10.2
 _pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -15,8 +15,8 @@ license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
          'python-typing_extensions')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm'
-             'rocm-libs' 'miopen' 'git' 'ninja' 'pkgconfig' 'doxygen')
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm-hip-sdk'
+             'miopen' 'git' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         "${pkgname}-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git"
@@ -286,7 +286,7 @@ _package() {
 
 package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm rocm-libs miopen)
+  depends+=(rocm-hip-sdk miopen)
   replaces=(python-pytorch-opt-rocm)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
