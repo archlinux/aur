@@ -2,7 +2,7 @@
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=certbot
-pkgver=1.22.0
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -22,7 +22,7 @@ validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               'A2CFB51FA275A7286234E7B24D17C995CD9775F2'
               '20F201346BF8F3F455A73F9A780CC99432A28621'
               '86379B4F0AF371B50CD9E5FF3402831161D1D280')
-sha512sums=('630cde061df1744e588d89e7a77048400932b8f82600c1390416b52646666b4372f90bb44e18b3ac81a27c38d44c99b95dc9a46a94d19838ff86b4a642a95066'
+sha512sums=('18bb89bce0cdcec4cb181c160e4eb331bfebfc0d3fe142678be81cba30e1719364ea151e04f2ff161238a3d8f46cf7b2f4aa1ef74575cc2938249a0289328db1'
             'SKIP')
 
 build() {
