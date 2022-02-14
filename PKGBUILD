@@ -10,7 +10,7 @@ pkgname=nvidia-container-runtime
 # identical to nvidia-container-toolkit's PKGBUILD.
 
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 
 toolkit_ver=1.8.0
 
@@ -22,6 +22,7 @@ license=('APACHE')
 
 makedepends=('go')
 depends=('libseccomp' 'nvidia-container-toolkit>=1.8.0')
+options=(!lto)
 
 source=("v${pkgver}-${pkgrel}.tar.gz"::"${url}/archive/v${toolkit_ver}.tar.gz")
 sha256sums=('38372fcf9a61a10ded94364f94a936341bf6dd79a3ca165402143d657c3cf551')
@@ -36,6 +37,7 @@ build() {
   GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
   go build -v \
+    -modcacherw \
     -buildmode=pie \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
