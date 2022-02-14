@@ -1,0 +1,14 @@
+pkgbase = veikk-tablet-driver
+	pkgdesc = veikk tablet (vk640) driver for arch linux.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://gitlab.com/DemonKingSwarn/veikk-tablet-driver
+	arch = x86_64
+	arch = i686
+	license = UNKNOWN
+	makedepends = git
+	provides = veikk-tablet-driver
+	source = git+https://gitlab.com/DemonKingSwarn/veikk-tablet-driver
+	md5sums = SKIP
+
+pkgname = veikk-tablet-driver
