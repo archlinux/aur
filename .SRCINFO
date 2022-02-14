@@ -1,7 +1,7 @@
 pkgbase = gnome-control-center-system76
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop (with System76 patches)
-	pkgver = 41.2
-	pkgrel = 3
+	pkgver = 41.4
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gnome-control-center
 	arch = x86_64
 	license = GPL2
@@ -48,7 +48,7 @@ pkgbase = gnome-control-center-system76
 	provides = gnome-control-center
 	provides = firmware-manager-virtual
 	conflicts = gnome-control-center
-	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=babeb0ce357d55406b0ba0a4597e0513a0419de8
+	source = git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=d08fac3f0be63f0a4c65d26f47d3b77f8738cfab
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
 	source = git+https://gitlab.gnome.org/GNOME/libhandy.git
 	source = pop-gcc::git+https://github.com/pop-os/gnome-control-center.git#commit=ba839eda1c673457b30fb65ccf8f19323331e692?signed
