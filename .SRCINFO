@@ -16,7 +16,6 @@ pkgbase = transmission-remote-gtk-git
 	depends = curl
 	depends = libproxy
 	depends = geoip
-	depends = desktop-file-utils
 	provides = transmission-remote-gtk
 	conflicts = transmission-remote-gtk
 	options = !libtool
