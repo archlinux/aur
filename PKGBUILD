@@ -2,8 +2,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=darling-dkms
-pkgver=0.1.20210224.testing
-pkgrel=3
+pkgver=0.1.20220213
+pkgrel=1
 pkgdesc="Kernel module for Darling."
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
@@ -12,17 +12,15 @@ groups=('darling-bin')
 depends=('dkms')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/darlinghq/darling/releases/download/v0.1.20210224/darling-dkms_0.1.20210224.testing_amd64.deb")
-sha512sums_x86_64=('c949f1466ae905e4dcb7c81aaaa8482778bd4b33dea63ab9a11e1ac373b057cd75571ff952273a9c65fdf2ec3a262bd4b100b8b1bd7bfcae0e8f600f274b316c')
+source_x86_64=("https://github.com/darlinghq/darling/releases/download/v${pkgver}/darling-dkms_0.1.20220125.focal_amd64.deb")
+sha512sums_x86_64=('5896acab5d8a4f2c46ecee864c299a9e7f77e159173812ad3303fd0e893c167ba1428daea26bc522a445fea68010c94bf24646a5fe3972feffec12fe38e01a58')
 
 package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" \
-                    "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-	ln -sf "/usr/src/darling-mach-0.1/lkm/tools/tests/libMicro/OPENSOLARIS.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	ln -sf "/usr/src/darling-mach-0.1/lkm/security/conf/copyright.nai" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -D -m644 "/usr/src/darling-mach-0.1/lkm/tools/tests/libMicro/OPENSOLARIS.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "/usr/src/darling-mach-0.1/lkm/security/conf/copyright.nai" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
