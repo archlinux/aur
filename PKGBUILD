@@ -1,15 +1,15 @@
 # Maintainer: Simone Cimarelli <aquilairreale@ymail.com>
 
 pkgname=unofficial-homestuck-collection
-pkgver=1.1.0
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
 license=('custom:chrome' 'custom:electron')
 makedepends=('gendesk' 'yarn' 'electron')
-source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/V${pkgver}.tar.gz")
-sha512sums=('a9c5a9830f9e69402734d67ca9718776a45d6fdad8d512a056bb7b2f70d0e2286f21fcd49a95bec3694e29250c3b837e4ab60e27da1b8bbebb3b8a04ca351325')
+source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('1fac170feab577f8a4bfd77a6871b3bcc6cad7f700eb3602fb3f8f51c930db111728a53d411946cd425e57911b09bb4ef4b8cfe6c42cb80add842bfc1113760f')
 
 prepare() {
     gendesk -f \
@@ -22,8 +22,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    yarn install
-    yarn electron:build --dir
+    make publish
 }
 
 package() {
