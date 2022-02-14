@@ -1,13 +1,14 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=xrel-terminal-client
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A terminal client to access the xREL.to API"
 arch=("x86_64")
 url="https://github.com/hashworks/xREL-Terminal-Client"
 license=("GPL3")
 changelog=CHANGELOG
 makedepends=('go')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=("5fc87553a139ea25fc2c616045d0c99ce884bc62eaed53091a30bbcef3a3661f")
 
