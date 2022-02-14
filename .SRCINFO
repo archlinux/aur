@@ -1,0 +1,17 @@
+pkgbase = libb64-git
+pkgdesc = Base64 Encoding/Decoding Routines (github fork)
+pkgver = r49.ce864b1
+pkgrel = 1
+url = https://github.com/libb64/libb64
+arch = x86_64
+arch = armv7h
+arch = aarch64
+license = custom:Public Domain
+makedepends = git
+depends = glibc
+provides = libb64
+conflicts = libb64
+source = libb64-git::git+https://github.com/libb64/libb64.git
+sha256sums = SKIP
+
+pkgname = libb64-git
