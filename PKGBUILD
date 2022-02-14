@@ -2,21 +2,21 @@
 
 pkgname=php73-smbclient
 _extname=smbclient
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="PHP bindings for libsmbclient."
 arch=('i686' 'x86_64')
 url="https://github.com/eduardok/libsmbclient-php"
 license=('BSD')
 depends=('php73' 'smbclient')
-source=("https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
-md5sums=('c28d1d4cab164fb56626da00d7deb7b7')
+source=("php73-smbclient-${pkgver}.tar.gz::https://github.com/eduardok/libsmbclient-php/archive/${pkgver}.tar.gz")
+md5sums=('dd00ec1431149a7e627b62d659fc4ad8')
 
 build() {
   cd "libsmbclient-php-${pkgver}"
 
   phpize73
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --with-php-config=/usr/bin/php-config73
   make
 }
 
