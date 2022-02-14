@@ -2,3 +2,4 @@ src/
 pkg/
 pyStatParser/
 *.xz
+*.zst
