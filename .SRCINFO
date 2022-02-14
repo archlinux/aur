@@ -1,0 +1,15 @@
+pkgbase = guesslang
+	pkgdesc = Detect the programming language of a source code
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/yoeo/guesslang
+	arch = any
+	license = MIT
+	checkdepends = python-typing_extensions
+	makedepends = python-pytest-runner
+	makedepends = python-setuptools
+	depends = python-tensorflow
+	source = https://github.com/yoeo/guesslang/archive/refs/tags/v2.2.1.tar.gz
+	sha512sums = fceb1ac9bee2fa7d4cf19f79171baddba94c29374e5d488493e29e8ce38cde1f07a1a5d79b84477828f4d356afd59b7544b1f728e0c5a84f14c6c807d0f4c36d
+
+pkgname = guesslang
