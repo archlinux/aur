@@ -2,7 +2,7 @@
 pkgname=webkitgtk2-bin
 epoch=3
 pkgver=2.4.11
-pkgrel=24
+pkgrel=26
 pkgdesc="Legacy Web content engine for GTK+ 3 (precompiled)."
 provides=("webkitgtk2=${epoch}:${pkgver}")
 conflicts=("webkitgtk2")
