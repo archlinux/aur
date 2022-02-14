@@ -1,0 +1,14 @@
+pkgbase = python-gcld3
+	pkgdesc = CLD3 is a neural network model for language identification.
+	pkgver = 3.0.13
+	pkgrel = 1
+	url = https://github.com/google/cld3
+	arch = i686
+	arch = x86_64
+	makedepends = python-setuptools
+	depends = python
+	provides = python-gcld3
+	source = https://files.pythonhosted.org/packages/source/g/gcld3/gcld3-3.0.13.tar.gz
+	sha256sums = 47c8c779bfe7372a38564b0cd357556dc362aec81cb55b0c889059e8b952e959
+
+pkgname = python-gcld3
