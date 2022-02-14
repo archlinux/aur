@@ -1,0 +1,13 @@
+pkgbase = perl-class-inner
+	pkgdesc = A perlish implementation of Java like inner classes
+	pkgver = 0.200001
+	pkgrel = 1
+	url = https://metacpan.org/dist/Class-Inner
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = https://www.cpan.org/modules/by-module/Class/Class-Inner-0.200001.tar.gz
+	sha512sums = 308d688577ac9eeea14bd665269d4f32f5f9c4be9ac47460c0d4be4248c3eaabb9eb51e9a840a5e8dab58e35cf10c831b55321fdc5a2c83e04eec88ba2b8f905
+
+pkgname = perl-class-inner
