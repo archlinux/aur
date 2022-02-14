@@ -1,7 +1,7 @@
 pkgbase = python-tre-git
 	pkgdesc = Python module for TRE
 	pkgver = r130.9c049c8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ahomansikka/tre/tree/master
 	arch = any
 	makedepends = python-setuptools

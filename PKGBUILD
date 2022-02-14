@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-tre-git
 pkgver=r130.9c049c8
-pkgrel=2
+pkgrel=3
 pkgdesc="Python module for TRE"
 url="https://github.com/ahomansikka/tre/tree/master"
 arch=('any')
