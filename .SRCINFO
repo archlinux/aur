@@ -1,6 +1,6 @@
 pkgbase = firefox-socket-control-git
 	pkgdesc = Control your Firefox using UNIX sockets.
-	pkgver = 1.2.47f6658
+	pkgver = 1.2.462f826
 	pkgrel = 1
 	url = https://github.com/karabaja4/nativecontrol
 	install = firefox-socket-control-git.install

@@ -4,7 +4,7 @@
 _gitname=nativecontrol
 _version=1.2
 pkgname=firefox-socket-control-git
-pkgver=${_version}.47f6658
+pkgver=${_version}.462f826
 pkgrel=1
 pkgdesc="Control your Firefox using UNIX sockets."
 arch=('any')
