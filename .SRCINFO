@@ -1,0 +1,28 @@
+pkgbase = helio-workstation
+	pkgdesc = One music sequencer for all major platforms, desktop and mobile
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://helio.fm/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = vst2sdk
+	makedepends = libxrandr
+	makedepends = libxcursor
+	makedepends = libxcomposite
+	makedepends = jack
+	makedepends = asio
+	makedepends = freeglut
+	depends = curl
+	depends = freetype2
+	depends = libxinerama
+	depends = libglvnd
+	depends = alsa-lib
+	source = git+https://github.com/helio-fm/helio-workstation#tag=3.8
+	source = git+https://github.com/peterrudenko/JUCE.git
+	source = git+https://github.com/peterrudenko/hopscotch-map.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = helio-workstation
