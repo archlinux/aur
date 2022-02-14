@@ -1,22 +1,16 @@
 pkgbase = python-cmyt
-	pkgdesc = A collection of Matplotlib colormaps from the yt project
+	pkgdesc = A collection of Matplotlib colormaps from the yt project.
 	pkgver = 1.0.4
 	pkgrel = 1
-	url = https://github.com/yt-project/yt
+	url = http://yt-project.org
 	arch = any
 	license = BSD
-	makedepends = python-pip
-	depends = python
 	depends = python-colorspacious
 	depends = python-matplotlib
 	depends = python-more-itertools
 	depends = python-numpy
-	noextract = cmyt-1.0.4-py3-none-any.whl
-	source = PKGBUILD_EXTRAS
-	source = https://files.pythonhosted.org/packages/2e/b1/270a024f723fda150c1fcd441d0764760593db4115d09a462bce20ed5c13/cmyt-1.0.4-py3-none-any.whl
-	source = LICENSE
-	md5sums = d41d8cd98f00b204e9800998ecf8427e
-	md5sums = af71a9545750b8efa94dbffb6c60a189
-	md5sums = 0533ae68ec1967529a2bb9ec2b90fc41
+	options = !emptydirs
+	source = https://pypi.io/packages/source/c/cmyt/cmyt-1.0.4.tar.gz
+	sha256sums = 76b238eef0fbbbea810dda4821331a9b03f74e5e2dda9997e401c685deec1631
 
 pkgname = python-cmyt

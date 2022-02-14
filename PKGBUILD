@@ -1,139 +1,27 @@
 # Maintainer: Corentin Cadiou <contact@cphyc.me>
 
-export PIP_CONFIG_FILE=/dev/null
-export PIP_DISABLE_PIP_VERSION_CHECK=true
-
 pkgname=python-cmyt
-epoch=
+_module_name=cmyt
 pkgver=1.0.4
 pkgrel=1
-pkgdesc='A collection of Matplotlib colormaps from the yt project'
+pkgdesc="A collection of Matplotlib colormaps from the yt project."
 arch=(any)
-url=https://github.com/yt-project/yt
-license=(BSD)
-depends=(python python-colorspacious python-matplotlib python-more-itertools python-numpy)
-## EXTRA_DEPENDS ##
-makedepends=(python-pip)
-checkdepends=()
-provides=()
-conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
-source=(PKGBUILD_EXTRAS)
-md5sums=('d41d8cd98f00b204e9800998ecf8427e')
-noextract=()
-source+=(https://files.pythonhosted.org/packages/2e/b1/270a024f723fda150c1fcd441d0764760593db4115d09a462bce20ed5c13/cmyt-1.0.4-py3-none-any.whl)
-md5sums+=(af71a9545750b8efa94dbffb6c60a189)
-noextract+=(cmyt-1.0.4-py3-none-any.whl)
-source+=(LICENSE)
-md5sums+=(0533ae68ec1967529a2bb9ec2b90fc41)
+url="http://yt-project.org"
+license=('BSD')
+depends=(python-colorspacious python-matplotlib python-more-itertools python-numpy)
+makedepends=()
+optdepends=()
+options=(!emptydirs)
+source=("https://pypi.io/packages/source/c/${_module_name}/${_module_name}-${pkgver}.tar.gz")
+sha256sums=('ae5157d37e733ae55df12bad1e8aedb3eb2f3b45e829e25c83df023dcefd5926')
 
-_first_source() {
-    echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
-        tr ' ' '\n' | grep -Pv '^(PKGBUILD_EXTRAS)?$' | head -1
+build() {
+  cd "$srcdir/${_module_name}-$pkgver"
+  python setup.py build
 }
 
-_vcs="$(grep -Po '^[a-z]+(?=\+)' <<< "$(_first_source)")"
-if [[ "$_vcs" ]]; then
-    makedepends+=("$(pkgfile --quiet /usr/bin/$_vcs)")
-    provides+=("${pkgname%-$_vcs}")
-    conflicts+=("${pkgname%-$_vcs}")
-fi
-
-_is_wheel() {
-    [[ $(_first_source) =~ \.whl$ ]]
+package() {
+  cd "$srcdir/${_module_name}-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-if [[ _is_wheel &&
-      $(basename "$(_first_source)" | rev | cut -d- -f1 | rev) =~ ^manylinux ]]; then
-    options=(!strip)  # https://github.com/pypa/manylinux/issues/119
-fi
-
-_dist_name() {
-    find "$srcdir" -mindepth 1 -maxdepth 1 -type d -printf '%f
-' |
-        grep -v '^_tmpenv$'
-}
-
-if [[ $(_first_source) =~ ^git+ ]]; then
-    _pkgver() {
-        ( set -o pipefail
-          cd "$srcdir/$(_dist_name)"
-          git describe --long --tags 2>/dev/null |
-            sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-          printf "r%s.%s" \
-              "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-        )
-    }
-
-    pkgver() { _pkgver; }
-fi
-
-_build() {
-    if _is_wheel; then return; fi
-    cd "$srcdir"
-    # See Arch Wiki/PKGBUILD/license.
-    # Get the first filename that matches.
-    local test_name
-    if [[ ${license[0]} =~ ^(BSD|MIT|ZLIB|Python)$ ]]; then
-        for test_name in LICENSE LICENSE.txt license.txt COPYING COPYING.md COPYING.rst COPYING.txt COPYRIGHT; do
-            if cp "$srcdir/$(_dist_name)/$test_name" "$srcdir/LICENSE" 2>/dev/null; then
-                break
-            fi
-        done
-    fi
-    # Use the latest version of pip, as Arch's version is historically out of
-    # date(!) and newer versions do fix bugs (sometimes).
-    python -mvenv --clear --system-site-packages _tmpenv
-    _tmpenv/bin/pip --quiet install -U pip
-    # Build the wheel (which we allow to fail) only after fetching the license.
-    # In order to isolate from ~/.pydistutils.cfg, we need to set $HOME to a
-    # temporary directory, and thus first $XDG_CACHE_HOME back to its real
-    # location, so that pip inserts the wheel in the wheel cache.  We cannot
-    # use --global-option=--no-user-cfg instead because that fully disables
-    # wheels, causing a from-source build of build dependencies such as
-    # numpy/scipy.
-    XDG_CACHE_HOME="${XDG_CACHE_HOME:-"$HOME/.cache"}" HOME=_tmpenv \
-        _tmpenv/bin/pip wheel -v --no-deps --wheel-dir="$srcdir" \
-        "./$(_dist_name)" || true
-}
-
-build() { _build; }
-
-_check() {
-    # Define check(), possibly using _check as a helper, to run the tests.
-    # You may need to call `python setup.py build_ext -i` first.
-    if _is_wheel; then return; fi
-    cd "$srcdir/$(_dist_name)"
-    /usr/bin/python setup.py -q test
-}
-
-_package() {
-    cd "$srcdir"
-    # pypa/pip#3063: pip always checks for a globally installed version.
-    python -mvenv --clear --system-site-packages _tmpenv
-    _tmpenv/bin/pip install --prefix="$pkgdir/usr" \
-        --no-deps --ignore-installed --no-warn-script-location \
-        "$(ls ./*.whl 2>/dev/null || echo ./"$(_dist_name)")"
-    if [[ -d "$pkgdir/usr/bin" ]]; then  # Fix entry points.
-        for f in "$pkgdir/usr/bin/"*; do
-            if [[ $(head -n1 "$f") = "#!$(readlink -f _tmpenv)/bin/python" ]]; then
-                sed -i '1c#!/usr/bin/python' "$f"
-            fi
-        done
-    fi
-    if [[ -d "$pkgdir/usr/etc" ]]; then
-        mv "$pkgdir/usr/etc" "$pkgdir/etc"
-    fi
-    if [[ -f LICENSE ]]; then
-        install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
-}
-
-package() { _package; }
-
-. "$(dirname "$BASH_SOURCE")/PKGBUILD_EXTRAS"
-
-# Remove makedepends already in depends (which may have been listed for the
-# first build, but autodetected on the second.
-makedepends=($(printf '%s\n' "${makedepends[@]}" |
-               grep -Pwv "^($(IFS='|'; echo "${depends[*]}"))$"))
-:  # Apparently ending with makedepends assignment sometimes fails.
