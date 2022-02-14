@@ -1,0 +1,11 @@
+pkgbase = webmessage-bin
+	pkgdesc = A messaging client, meant to work with the WebMessage tweak for jailbroken iOS devices.
+	pkgver = 0.7.0
+	pkgrel = 1
+	arch = x86_64
+	provides = webmessage
+	options = !strip
+	source_x86_64 = https://github.com/sgtaziz/WebMessage/releases/download/v0.7.0/WebMessage-0.7.0.AppImage
+	sha256sums_x86_64 = 892c243b7e3e90155b8676702ebe8f104c4ee0de5743954b2b4df3d681b4741f
+
+pkgname = webmessage-bin
