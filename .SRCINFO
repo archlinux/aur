@@ -1,6 +1,6 @@
 pkgbase = tailscale-systray-git
 	pkgdesc = Linux port of tailscale system tray menu.
-	pkgver = 20211209
+	pkgver = 20220214
 	pkgrel = 1
 	url = https://github.com/mattn/tailscale-systray
 	arch = x86_64

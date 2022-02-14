@@ -1,6 +1,6 @@
 # Maintainer: Bruno Antunes <sardaukar.siet@gmail.com>
 pkgname=tailscale-systray-git
-pkgver=20211209
+pkgver=20220214
 pkgrel=1
 pkgdesc='Linux port of tailscale system tray menu.'
 arch=('x86_64')
