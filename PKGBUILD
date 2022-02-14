@@ -65,7 +65,7 @@ package()
 {
 	cd "$srcdir/SuperSlicer-$_pkgtag/build"
 
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
 
 	install -d "$pkgdir/usr/share/applications"
