@@ -1,0 +1,5 @@
+edisyn/
+edisyn-git-*.pkg.tar.*
+edisyn-git-*.src.tar.gz
+pkg/
+src/

@@ -1,0 +1,20 @@
+pkgbase = edisyn-git
+	pkgdesc = A cross-platform synthesizer patch editor library (git version)
+	pkgver = r1037.0ca5b2c
+	pkgrel = 1
+	url = https://github.com/eclab/edisyn/
+	arch = any
+	license = Apache
+	makedepends = java-environment>=11
+	depends = java-runtime>=11
+	depends = sh
+	provides = edisyn
+	conflicts = edisyn
+	source = edisyn::git+https://github.com/eclab/edisyn.git
+	source = edisyn.desktop
+	source = edisyn.sh
+	sha256sums = SKIP
+	sha256sums = 6545bfc5fb5e41d1f6917c0c40145f8168c5d205a70ad1fb6810cf57c68fb618
+	sha256sums = a198edd3de2ad4a8edc344d90fb9e999fe02ea67b7f475bfce66a97f1723c9a7
+
+pkgname = edisyn-git
