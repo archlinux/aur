@@ -11,6 +11,8 @@ pkgbase = python-cmyt
 	depends = python-numpy
 	options = !emptydirs
 	source = https://pypi.io/packages/source/c/cmyt/cmyt-1.0.4.tar.gz
-	sha256sums = 76b238eef0fbbbea810dda4821331a9b03f74e5e2dda9997e401c685deec1631
+	source = LICENSE
+	sha256sums = ae5157d37e733ae55df12bad1e8aedb3eb2f3b45e829e25c83df023dcefd5926
+	sha256sums = 6e13969520b08a454eed4e15bef8926babca14ab65f4f9936c9adc1860c00e1d
 
 pkgname = python-cmyt
