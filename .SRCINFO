@@ -1,0 +1,15 @@
+pkgbase = perl-mail-imaptalk
+	pkgdesc = IMAP client interface with lots of features
+	pkgver = 4.04
+	pkgrel = 1
+	url = https://github.com/robn/mail-imaptalk
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-authen-sasl
+	depends = perl-encode-imaputf7
+	source = https://www.cpan.org/modules/by-module/Mail/Mail-IMAPTalk-4.04.tar.gz
+	sha512sums = fa60c03958b8ca361a3a9d894e67b22cc7ae40a3b452cf7f391b962dba477ce2cf027d70a00e080f421d616644db1dc90233a48bb31490afb5c5a9151d4efcdf
+
+pkgname = perl-mail-imaptalk
