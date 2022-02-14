@@ -1,16 +1,16 @@
 # Contributor: Kristian Setälä <kristian.setala@gmail.com>
 
 pkgname=tagainijisho
-pkgver=1.1.90
-pkgrel=2
+pkgver=1.1.91
+pkgrel=1
 pkgdesc="A Free Japanese dictionary and study assistant"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-url="http://www.tagaini.net/"
+url="https://www.tagaini.net/"
 license=('GPL3')
 depends=('qt5-base>=5.15')
 makedepends=('cmake>=2.8.1' 'desktop-file-utils' 'qt5-tools')
 source=(https://github.com/Gnurou/tagainijisho/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-md5sums=('e6704078571db9584745ef4747105ef8')
+md5sums=('649dcf55ad5b5ac5a0224c8f2d2971b8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
