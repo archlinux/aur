@@ -1,7 +1,7 @@
 pkgbase = gedit-menubar
 	pkgdesc = GNOME Text Editor (Patched to show menubar)
 	pkgver = 40.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/Gedit
 	arch = x86_64
 	groups = gnome
@@ -29,8 +29,10 @@ pkgbase = gedit-menubar
 	source = git+https://gitlab.gnome.org/GNOME/gedit.git#tag=40.1
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	source = menubar.patch
+	source = data.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 7b7bbcf115ee7a755ef039676a799bd0d2a95c36f4793e484bf296823efb2c32
+	sha256sums = 8e4f7ab068bcfbc4204ed18f8ff0f42ea2d8bc3cf5a768256e55b5ebc90c0218
 
 pkgname = gedit-menubar
