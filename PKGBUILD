@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-testflo
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="A simple flow-based testing framework"
 url="https://github.com/OpenMDAO/testflo"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python-coverage')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/t/testflo/testflo-$pkgver.tar.gz")
-sha512sums=('17abb5f333c374e6d388fb52da91029df3dcbde837e7be9feab8b3009837c7963b95e87aca7ecc1b5146f2cffd8217c0d177704b3322b563069c63d4813eb174')
+sha512sums=('0c69661cd136b155425229404c742e1630c67429046190ef75c01178e4d1b7cab30421da5aa24aef5afa8e0d33f039b36bb26b4d16b52d32592ace324d1f8f02')
 
 prepare() {
   cd testflo-$pkgver
