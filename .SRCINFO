@@ -1,0 +1,13 @@
+pkgbase = pdpmake-git
+	pkgdesc = POSIX-conformant make implementation for testing makefile compatibility
+	pkgver = 1.0.0.2.ge5a9cdd
+	pkgrel = 1
+	url = https://frippery.org/make/
+	arch = any
+	license = Unlicense
+	makedepends = gcc
+	makedepends = make
+	source = git+https://github.com/rmyorston/pdpmake.git
+	sha256sums = SKIP
+
+pkgname = pdpmake-git
