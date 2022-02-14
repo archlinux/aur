@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = 7.1.GE.1
+	pkgver = 7.2.GE.2
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
@@ -150,15 +150,15 @@ pkgbase = wine-ge-custom
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=7.1
-	provides = wine-wow64=7.1
+	provides = wine=7.2
+	provides = wine-wow64=7.2
 	conflicts = wine
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=7.1-GE-1
-	source = wine::git+https://github.com/wine-mirror/wine.git#commit=594e431e36d65e470bcbe930eb3d0f2bbca17736
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=f5ca8f5a0ca9e9ee9278bd3b8ca39e8c1c29870e
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=7.2-GE-2
+	source = wine::git+https://github.com/wine-mirror/wine.git#commit=d318f43559dbb0093e22bab1aa0eb9dc01170cc2
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=68441b1d9552b1a75c45a981c0a0279d064349fb
 	source = wine-more_8x5_res.patch
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch
