@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=watchman-bin
-pkgver=2022.01.31.00
+pkgver=2022.02.14.00
 pkgrel=1
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 url="https://facebook.github.io/watchman/"
@@ -16,7 +16,7 @@ install=watchman.install
 
 # https://github.com/facebook/watchman/releases
 source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('cd539cc0ce764b39463812dbaeb9ad40e0470d0e5f466404a00bfeaaa256f05e')
+sha256sums=('415961cfb9ff12a01ef73e267555796c7e0ca2a39e4776fd26e465430267330e')
 
 prepare() {
   cd watchman-v$pkgver-linux
@@ -36,10 +36,11 @@ Path("bin/watchman").write_bytes(data)
 END
 
   patchelf \
-    --replace-needed /usr/local/lib/libgflags.so.2.2 libgflags.so.2.2 \
-    --replace-needed /usr/local/lib/libglog.so.0 libglog.so.0 \
-    --replace-needed /usr/local/lib/libsnappy.so.1 libsnappy.so.1 \
-    --replace-needed /usr/local/lib/libzstd.so.1 libzstd.so.1 \
+    --replace-needed {/usr/local/lib/,}libevent-2.1.so.7 \
+    --replace-needed {/usr/local/lib/,}libgflags.so.2.2 \
+    --replace-needed {/usr/local/lib/,}libglog.so.0 \
+    --replace-needed {/usr/local/lib/,}libsnappy.so.1 \
+    --replace-needed {/usr/local/lib/,}libzstd.so.1 \
     bin/* lib/*
 
   patchelf --set-rpath /usr/lib/watchman bin/* lib/*
