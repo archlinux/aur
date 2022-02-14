@@ -1,19 +1,22 @@
-# Maintainer : Barfin
-# Pevious Maintainer: Jack Lupino <electricalmemory83720x0@protonmail.com>
+# Maintainer: ratata
+# Pevious Maintainer: Barfin
+# Pevious Pevious Maintainer: Jack Lupino <electricalmemory83720x0@protonmail.com>
 pkgname=freezer-appimage
 pkgver='1.1.24'
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial client for Deezer (AppImage version)"
 arch=('x86_64')
 url="https://files.freezer.life"
 license=('GPL')
 depends=('zlib' 'fuse2')
 options=(!strip)
-source=("Freezer-$pkgver.AppImage::$url/0:/PC/$pkgver/Freezer-$pkgver.AppImage" "freezer.desktop" "https://i.imgur.com/ztam2vH.png")
+source=("https://archive.org/download/freezer-1.1.24/Freezer-1.1.24.AppImage" "freezer.desktop" "https://i.imgur.com/ztam2vH.png")
 noextract=("Freezer-$pkgver.AppImage")
-md5sums=('c19ca70910dc6af6b8de8da00536836e'
-         '59bc9ed8c52d157647c7f78f980ca49e'
-         '3a8057d8fe5a0aa93f04f45e3a77a352')
+sha512sums=(
+	'4649fb0f24928d900ed10205d607eb2cdc387d4ec2e6e5aa2b2e29dec5f43fc886c1965a1ee74efd36eb07827bf0c147a07cb64835489bed8957bbee3f238c13'
+	'4aea26089c8dead01bcad7eb443e7118110dfc753c93165b335e52a2de702073c6f21b3596d419a96b7cb81817e414eef8abc5e4c1c1719e56faae3696a65e56'
+	'94bb6d28e7871cfd78efef8e303f30189274f8c170e0cf482925adda42c494299dd867ba1930c3d07a5a3bb58b07fd8961f930ea6934aa08ff733960899d72c5'
+)
 
 package() {
     install -d -m755 "${pkgdir}/opt/${pkgname}"
