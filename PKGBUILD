@@ -1,25 +1,34 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 _phpversion=80
 pkgname=php${_phpversion}-apcu
-pkgver=5.1.19
+pkgver=5.1.21
 pkgrel=1
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP'
 url='https://pecl.php.net/package/APCu'
-depends=("php${_phpversion}")
-provides=("php-apcu")
+makedepends=("php${_phpversion}")
 license=('PHP')
-source=("https://pecl.php.net/get/apcu-${pkgver}.tgz")
+source=("https://pecl.php.net/get/apcu-${pkgver}.tgz"
+	"apcu.ini")
 backup=("etc/php${_phpversion}/conf.d/apcu.ini")
-sha256sums=('837fbc99d5c79efb510fafaf585ef0c06e02baf8310a7d77f93e402c93276ce0')
+sha256sums=('1033530448696ee7cadec85050f6df5135fb1330072ef2a74569392acfecfbc1'
+            '18b2d904848b185bdc7c0c6a5f7c82ec809e9ed3f137cd6d3420160f4756630f')
+
+prepare() {
+        cd "$srcdir/apcu-$pkgver"
+
+        rm tests/apc_entry_002.phpt
+}
 
 build() {
   cd "${srcdir}/apcu-${pkgver}"
 	phpize${_phpversion}
-  ./configure --config-cache \
-		--sysconfdir="/etc/php${_phpversion}" \
-		--with-php-config=/usr/bin/php-config${_phpversion} \
-		--localstatedir=/var
+  # removed parameters for testing:
+  # --config-cache 
+
+  ./configure --prefix=/usr \
+		--sysconfdir="/etc/php${_phpversion}" --localstatedir=/var \
+		--with-php-config=/usr/bin/php-config${_phpversion}
 	make
 }
 
@@ -34,10 +43,9 @@ check() {
 }
 
 package() {
+  depends=("php${_phpversion}")
   cd "${srcdir}/apcu-${pkgver}"
   make INSTALL_ROOT=${pkgdir} install
-  echo 'extension=apcu.so' > apcu.ini
-	install -D -m644 apcu.ini "${pkgdir}/etc/php${_phpversion}/conf.d/apcu.ini"
+	install -D -m644 "$srcdir/apcu.ini" "${pkgdir}/etc/php${_phpversion}/conf.d/apcu.ini"
 	install -D -m644 apc.php "${pkgdir}/usr/share/${pkgname}/apc.php"
-	install -D -m644 INSTALL "${pkgdir}/usr/share/doc/${pkgname}/install.txt"
 }
