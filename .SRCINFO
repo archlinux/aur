@@ -1,15 +1,21 @@
 pkgbase = kiibohd-configurator-bin
-	pkgdesc = Client Side Configuration & Flashing Software for Kiibohd compatible keyboards
-	pkgver = 1.0.0
+	pkgdesc = Configuration utility for Input Club keyboards
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/kiibohd/configurator
+	install = kiibohd-configurator-bin.install
 	arch = x86_64
-	license = GPL3
+	license = GPL
+	depends = fuse2
+	depends = zlib
+	depends = hicolor-icon-theme
 	depends = dfu-util
 	provides = kiibohd-configurator
-	conflicts = kiibohd-configurator
-	source = https://github.com/kiibohd/configurator/releases/download/v1.0.0/kiibohd-configurator-1.0.0-linux-x64.tar.gz
-	sha256sums = 68ee7809f21a7ac42049ddc8f86773fead48e70f46195677a7db059881b55e44
+	conflicts = kiibohd-configurator-git
+	options = !strip
+	source = kiibohd-configurator-bin--.AppImage::https://github.com/kiibohd/configurator/releases/download/v1.1.0/kiibohd-configurator-1.1.0-linux-x86_64.AppImage
+	source = 98-kiibohd.rules
+	sha256sums = c6908bae5f7e1024cd653fbcbee3a32ecd10f365f32634b103f5f883f6f851af
+	sha256sums = 570124a77f39dc4b50afac411ffb5d5717aae176641c7b371b2fcfc02ee9807a
 
 pkgname = kiibohd-configurator-bin
-

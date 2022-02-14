@@ -1,0 +1,11 @@
+post_install() {
+    # Reload udev rules
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+}
+
+post_remove() {
+    # Reload udev rules
+    sudo udevadm control --reload-rules
+    sudo udevadm trigger
+}
