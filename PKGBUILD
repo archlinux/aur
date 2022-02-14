@@ -4,7 +4,7 @@
 pkgname=nvidia-container-toolkit
 
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc='NVIDIA container runtime toolkit'
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('go')
 depends=('libnvidia-container-tools>=1.7.0')
 conflicts=('nvidia-container-runtime-hook' 'nvidia-container-runtime<2.0.0')
 replaces=('nvidia-container-runtime-hook')
+options=(!lto)
 
 backup=('etc/nvidia-container-runtime/config.toml')
 
@@ -33,6 +34,7 @@ build() {
   GO111MODULE=auto \
   GOPATH="${srcdir}/gopath" \
   go build -v \
+    -modcacherw \
     -buildmode=pie \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
