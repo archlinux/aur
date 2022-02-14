@@ -3,7 +3,7 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=vcpkg-git
-pkgver=2021.12.01.r239.gb934807c79
+pkgver=2022.02.02.r64.g8dbd66f5a7
 pkgrel=1
 pkgdesc='C++ library manager for Windows, Linux, and MacOS'
 depends=('curl' 'zip' 'unzip')
