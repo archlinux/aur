@@ -1,16 +1,22 @@
-# Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
-
+# Original maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
+# Current maintainer: Corentin Cadiou <contact@cphyc.me>
 _gitname=yt
 pkgname=python-$_gitname-git
-pkgver=3.4.1.r1921.gb89c170ba
+pkgver=4.0.0.r668.g03c41c0d9
 pkgrel=1
 pkgdesc="python package for data analysis and visualization"
-url="https://github.com/yt-project"
-arch=('i686' 'x86_64')
+url="http://yt-project.org"
+arch=(any)
 license=('BSD')
-depends=('python-h5py' 'python-numpy' 'python-matplotlib' 'python-nose' 'python-sympy')
-makedepends=('git' 'cython')
+depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt')
+makedepends=('cython')
+optdepends=(
+    'jupyter'
+    'openmp: multithred support'
+    'python-mpi4py: parallelism support'
+)
 source=("git+https://github.com/yt-project/yt")
+provides=('python-yt')
 md5sums=(SKIP)
 
 build() {

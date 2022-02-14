@@ -1,20 +1,20 @@
 pkgbase = python-yt-git
 	pkgdesc = python package for data analysis and visualization
-	pkgver = 3.4.1.r1921.gb89c170ba
+	pkgver = 4.0.0.r668.g03c41c0d9
 	pkgrel = 1
-	url = https://github.com/yt-project
-	arch = i686
-	arch = x86_64
+	url = http://yt-project.org
+	arch = any
 	license = BSD
-	makedepends = git
 	makedepends = cython
-	depends = python-h5py
 	depends = python-numpy
 	depends = python-matplotlib
-	depends = python-nose
 	depends = python-sympy
+	depends = python-unyt
+	optdepends = jupyter
+	optdepends = openmp: multithred support
+	optdepends = python-mpi4py: parallelism support
+	provides = python-yt
 	source = git+https://github.com/yt-project/yt
 	md5sums = SKIP
 
 pkgname = python-yt-git
-
