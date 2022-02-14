@@ -1,7 +1,7 @@
 pkgbase = python-morfessor
 	pkgdesc = A tool for unsupervised and semi-supervised morphological segmentation
 	pkgver = 2.0.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/aalto-speech/morfessor
 	arch = any
 	makedepends = python-setuptools
@@ -11,4 +11,3 @@ pkgbase = python-morfessor
 	sha256sums = bb3beac234341724c5f640f65803071f62373a50dba854d5a398567f9aefbab2
 
 pkgname = python-morfessor
-
