@@ -2,17 +2,17 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=remill
-pkgver=4.0.24
-pkgrel=2
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.1.4' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
+depends=('cxx-common=0.1.8' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
 makedepends=('cmake' 'ninja')
 checkdepends=()
 source=("https://github.com/lifting-bits/remill/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4e85a642e555eb365c971605333cfc1600b9f0af1976be717f04ee0b1605b51')
+sha256sums=('c0ff64165c62441fa25950036a9109350f5546dffa0d1214acab510647c71018')
 
 build() {
     vcpkg_libs='/opt/cxx-common/installed/x64-linux-rel'
@@ -40,7 +40,7 @@ package() {
     cd "$srcdir/$pkgname-$pkgver/build"
     DESTDIR="${pkgdir}" cmake --build . --target install
     sed -i "$pkgdir/usr/lib/cmake/remill/remillTargets.cmake" \
-        -e "s|$srcdir/$pkgname-$pkgver/build/lib|/usr/include/remill|g"
+        -e "s,$srcdir/$pkgname-$pkgver/build/lib,/usr/include/remill,g"
 }
 
 # vim: set sw=4 ts=4 et:
