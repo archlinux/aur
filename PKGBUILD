@@ -10,7 +10,7 @@
 
 pkgname=ros2-git
 pkgver=r230.4a36f31
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of software libraries and tools for building robot applications (Rolling Distro)"
 url="https://docs.ros.org/en/rolling/"
 arch=('any')
@@ -26,11 +26,9 @@ depends=(
 provides=(ros2)
 source=(
     "ros2::git+https://github.com/ros2/ros2#branch=master"
-    "rviz_assimp_vendor.patch"
 )
 sha256sums=(
     'SKIP'
-    "1c097a78a023956fcf877e53ca35e2949a7956045deaf5f7b049a2b237fb391c"
 )
 install=ros2-git.install
 
@@ -52,11 +50,6 @@ prepare() {
     # Clone the repos
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
-
-    # Fix some issues in the code (TODO: Gradually move to upstream)
-    ## rviz_assimp_vendor
-    git -C $srcdir/ros2/src/ros2/rviz checkout .
-    git -C $srcdir/ros2/src/ros2/rviz apply $srcdir/rviz_assimp_vendor.patch
 }
 
 build() {
