@@ -1,19 +1,34 @@
 pkgbase = darling-bin
 	pkgdesc = Darling. MacOS emulation layer for Linux
-	pkgver = 0.1.20210224.testing
-	pkgrel = 2
+	pkgver = 0.1.20220213
+	pkgrel = 1
 	url = https://github.com/darlinghq/darling
 	install = darling-bin.install
 	arch = x86_64
 	groups = darling-bin
-	license = GPL
-	depends = arm-linux-gnueabihf-glibc>=2.31
+	license = GPL3
+	depends = anaconda>=2.12.6
 	depends = darling-dkms
-	depends = fuse2
+	depends = dbus>=1.9.14
+	depends = ffmpeg-vulkan>=2:4.0
+	depends = freetype2>=2.2.1
+	depends = fuse2>=2.2
+	depends = giflib>=5.1
+	depends = glibc>=2.14
+	depends = glu
+	depends = libgl
+	depends = libglvnd
+	depends = libjpeg-turbo>=2.0
+	depends = libpulse>=0.99.1
+	depends = libtiff>=4.0.3
+	depends = libx11
+	depends = libxcursor>1.1.2
+	depends = libxext
+	depends = libxkbfile>=1.1.0
+	depends = libxrandr
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/darlinghq/darling/releases/download/v0.1.20210224/darling_0.1.20210224.testing_amd64.deb
-	sha512sums_x86_64 = 779440fd201f842542aed8695888e2a6bd9a71e4af8ac50d3f169fc66525894100315004620b203cbdc0c4de4782840ba6acc6dc373a2f905bbe79b60faa876e
+	source_x86_64 = https://github.com/darlinghq/darling/releases/download/v0.1.20220213/darling_0.1.20220125.focal_amd64.deb
+	sha512sums_x86_64 = 53776310c8457eaa2dd9103243e6f82b96c6ba029919b60a7c20a4c093347af335539b699a622c157353ef05461a1e8275d1603d6adc5aca89407ba7acfba51a
 
 pkgname = darling-bin
-

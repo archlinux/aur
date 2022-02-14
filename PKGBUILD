@@ -2,28 +2,25 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=darling-bin
-pkgver=0.1.20210224.testing
-pkgrel=2
+pkgver=0.1.20220213
+pkgrel=1
 pkgdesc="Darling. MacOS emulation layer for Linux"
 arch=('x86_64')
 url="https://github.com/darlinghq/darling"
-license=('GPL')
+license=('GPL3')
 groups=('darling-bin')
-depends=('arm-linux-gnueabihf-glibc>=2.31' 'darling-dkms' 'fuse2')
+depends=('anaconda>=2.12.6' 'darling-dkms' 'dbus>=1.9.14' 'ffmpeg-vulkan>=2:4.0' 'freetype2>=2.2.1' 'fuse2>=2.2' 'giflib>=5.1' 'glibc>=2.14' 'glu' 'libgl' 'libglvnd' 'libjpeg-turbo>=2.0' 'libpulse>=0.99.1' 'libtiff>=4.0.3' 'libx11' 'libxcursor>1.1.2' 'libxext' 'libxkbfile>=1.1.0' 'libxrandr')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://github.com/darlinghq/darling/releases/download/v0.1.20210224/darling_0.1.20210224.testing_amd64.deb")
-sha512sums_x86_64=('779440fd201f842542aed8695888e2a6bd9a71e4af8ac50d3f169fc66525894100315004620b203cbdc0c4de4782840ba6acc6dc373a2f905bbe79b60faa876e')
+source_x86_64=("https://github.com/darlinghq/darling/releases/download/v${pkgver}/darling_0.1.20220125.focal_amd64.deb")
+sha512sums_x86_64=('53776310c8457eaa2dd9103243e6f82b96c6ba029919b60a7c20a4c093347af335539b699a622c157353ef05461a1e8275d1603d6adc5aca89407ba7acfba51a')
 
 package(){
 
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/" \
-                    "${pkgdir}/usr/share/licenses/${pkgname}/"
-                    
-	ln -sf "/usr/libexec/darling/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/share/ri/2.6.0/system/Gem/SpecificationPolicy/validate_licenses-i.ri" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	ln -sf "/usr/share/doc/darling/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+	install -D -m644 "${pkgdir}/usr/libexec/darling/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/share/ri/2.6.0/system/Gem/SpecificationPolicy/validate_licenses-i.ri" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/share/doc/darling/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
