@@ -8,9 +8,8 @@ conflicts=('jdownloader')
 replaces=('jdownloader')
 url='https://jdownloader.org/'
 license=('GPL')
-depends=('java-runtime' 'wget' 'libarchive')
-optdepends=('phantomjs: needed for some remote capture solving'
-	    'ttf-dejavu')
+depends=('java-runtime' 'wget' 'libarchive' 'ttf-dejavu')
+optdepends=('phantomjs: needed for some remote capture solving')
 install='jdownloader.install'
 source=('JDownloader'
         'JDownloaderHeadless'
