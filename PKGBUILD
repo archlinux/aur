@@ -36,7 +36,7 @@ pkgver() {
 
 build() {
 	cd ani-cli
-	cp ani-cli /usr/local/bin/ani-cli 
+	mv ani-cli $HOME/.local/bin/ani-cli
 }
 
 package() {
