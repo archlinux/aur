@@ -5,14 +5,14 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2021.6
-_channel=stable
+_pkgver=2022.1
+_channel=beta
 _rel=1
 # beta
-#pkgver=${_pkgver}.${_channel}${_rel}
+pkgver=${_pkgver}.${_channel}${_rel}
 # stable
-pkgver=${_pkgver}.${_channel}
-pkgrel=2
+#pkgver=${_pkgver}.${_channel}
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -23,11 +23,12 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')
 install="${pkgname%-beta}.install"
-_commit=19a97997b188855d0ba5aedb7419683df45d93bc
+_commit=973ee47bec89df537b8ecae20235071055693ec5
 source=(
-#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed" # beta
-        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
-        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
+        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed" # beta
+#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
+#        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
+        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit" # unverified commit by mvd-ows
         "${pkgname%-beta}.sh"
        )
 sha256sums=('SKIP'
