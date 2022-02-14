@@ -16,6 +16,8 @@ license=('GPL')
 depends=('glibc' 
          'gcc-libs'
          'qt5-base'
+         'qt5-translations'
+         'qt5-svg'
          'ffmpeg'
          'qt5-multimedia'
          'qt5-quickcontrols'
