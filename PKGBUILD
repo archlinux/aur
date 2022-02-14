@@ -2,7 +2,7 @@
 
 pkgname=cemu
 pkgver=1.26.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Wii U emulator (via wine). Includes the Cemuhook plugin"
 arch=(x86_64)
 url="https://cemu.info/"
@@ -27,8 +27,8 @@ optdepends=('wine-ge-custom: Vulkan support')
 
 md5sums=('b992b4c672a1df44f4719b2a43c91910'
          '54d70005a8975812ab54fcfef53f7bde'
-         '75b7cb534c87d498caa418c4c23550d7'
-         'ea51a6ac68de998f9a34cbc209b0c2b6'
+         '604b1e18c79faeefefe252a15ba08b34'
+         '319f292de3e04b923ef4b10381c40c39'
          '266d9f45c6c75a1a7d5d80da0e97857e'
          '336a0bc0e44eede4ddf613a0eebf3bb9')
 
