@@ -3,7 +3,7 @@
 pkgname=aur-auto-vote-git
 _pkgname=${pkgname%-git}
 _reponame=bin
-pkgver=r146.bb877b8
+pkgver=r150.3a626c5
 pkgrel=1
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')

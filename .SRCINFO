@@ -1,6 +1,6 @@
 pkgbase = aur-auto-vote-git
 	pkgdesc = Automates voting on installed and uninstalled AUR packages
-	pkgver = r146.bb877b8
+	pkgver = r150.3a626c5
 	pkgrel = 1
 	url = https://github.com/cryzed/bin
 	install = aur-auto-vote-git.install
