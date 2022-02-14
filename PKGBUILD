@@ -7,21 +7,11 @@ pkgdesc="Manage the tasks you want to do every day easily "
 arch=(x86_64 i686)
 url="https://github.com/SkwalExe/dtodo"
 license=('MIT')
-depends=()
 makedepends=("git" "make")
-checkdepends=()
-optdepends=()
 provides=("dtodo")
-conflicts=()
-replaces=()
-backup=()
-options=()
 install=dtodo.install
-changelog=
 source=("git+$url")
-noextract=()
 md5sums=("SKIP")
-validpgpkeys=()
 
 pkgver() {
 	cd dtodo
@@ -41,6 +31,8 @@ build() {
 
 package() {
 	cd dtodo
+	mkdir -p ${pkgdir}/opt/${pkgname}
+        cp -rf * ${pkgdir}/opt/${pkgname}
 	install -Dm755 ./dtodo.sh "$pkgdir/usr/bin/dtodo"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
 }
