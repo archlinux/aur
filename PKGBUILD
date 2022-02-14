@@ -5,7 +5,7 @@
 
 pkgname=vte3-git
 
-pkgver=0.67.0.5.14eb34a
+pkgver=0.69.0.6.58cb92a
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('x86_64')
@@ -23,7 +23,8 @@ md5sums=("SKIP")
 
 prepare() {
   arch-meson vte build \
-      -D b_lto=false
+      -D b_lto=false \
+      -D sixel=true
 }
 
 pkgver() {

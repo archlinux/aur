@@ -1,6 +1,6 @@
 pkgbase = vte3-git
 	pkgdesc = Virtual Terminal Emulator widget for use with GTK3
-	pkgver = 0.67.0.5.14eb34a
+	pkgver = 0.69.0.6.58cb92a
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = vte3-git
 	depends = vte-common
 	depends = glibc
 	depends = pcre2
-	provides = vte3=0.67.0.5.14eb34a
+	provides = vte3=0.69.0.6.58cb92a
 	provides = vte-common
 	provides = libvte-2.91.so
 	conflicts = vte3
