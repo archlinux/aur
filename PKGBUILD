@@ -2,13 +2,13 @@
 
 pkgname=cxx-common
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Common dependency management for various Trail of Bits C++ codebases"
 arch=('x86_64')
 url="https://github.com/lifting-bits/cxx-common"
 license=('Apache')
 depends=()
-makedepends=('clang' 'lld' 'cmake' 'ninja' 'git' 'python')
+makedepends=('clang' 'lld' 'cmake' 'ninja' 'git' 'python' 'python-setuptools')
 checkdepends=()
 options=('staticlibs' '!strip')
 source=("https://github.com/lifting-bits/cxx-common/archive/refs/tags/v${pkgver}.tar.gz")
