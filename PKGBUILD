@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=5.1.r105398.g2f323b1978
+pkgver=5.1.r105626.g8e825ec3ab
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -33,6 +33,7 @@ depends=(
   libpulse
   librav1e.so
   libraw1394
+  librsvg-2.so
   libsoxr
   libssh
   libtheora
@@ -60,6 +61,7 @@ depends=(
   sdl2
   speex
   srt
+  svt-av1
   v4l-utils
   vmaf-git
   xz
@@ -74,10 +76,10 @@ makedepends=(
   ladspa
   nasm
 )
-optdepends=('avisynthplus: for reading AviSynth scripts as input'
+optdepends=('avisynthplus: for AviSynthPlus support'
             'intel-media-sdk: for Intel Quick Sync Video'
             'ladspa: for LADSPA filters'
-            'nvidia-utils: Nvidia NVDEC/NVENC support')
+            'nvidia-utils: for Nvidia NVDEC/NVENC support')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
@@ -135,10 +137,12 @@ build() {
         --enable-libopus \
         --enable-libpulse \
         --enable-librav1e \
+        --enable-librsvg \
         --enable-libsoxr \
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
+        --enable-libsvtav1 \
         --enable-libtheora \
         --enable-libv4l2 \
         --enable-libvidstab \
