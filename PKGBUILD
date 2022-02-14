@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 pkgver=5.16.2.19.realtime1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT'
 arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
