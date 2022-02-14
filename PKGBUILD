@@ -18,9 +18,7 @@ checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
-md5sums=('d41d8cd98f00b204e9800998ecf8427e'
-         'af71a9545750b8efa94dbffb6c60a189'
-         '0533ae68ec1967529a2bb9ec2b90fc41')
+md5sums=('d41d8cd98f00b204e9800998ecf8427e')
 noextract=()
 source+=(https://files.pythonhosted.org/packages/2e/b1/270a024f723fda150c1fcd441d0764760593db4115d09a462bce20ed5c13/cmyt-1.0.4-py3-none-any.whl)
 md5sums+=(af71a9545750b8efa94dbffb6c60a189)
