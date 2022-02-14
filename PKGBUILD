@@ -2,7 +2,7 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-skins
-pkgver=20220131
+pkgver=20220213
 pkgrel=1
 pkgdesc="DDraceNetwork skin database"
 arch=(any)
@@ -15,7 +15,7 @@ license=('custom:zlib'
 makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip"
         "https://raw.githubusercontent.com/ddnet/ddnet/master/data/skins/license.txt")
-sha256sums=('bb2326732bddbba5a229be175db1d44877005446ad9f05f4cb31edfbebd5ab16'
+sha256sums=('daad83ca73e86e44da63d3ade9f0ba7557587da1ff31cce52b4bcd47fe4528cc'
             '58f546c563e0d5249278fc9e7de86ef483469cf532dbb7bcb888fc5e3195bbaa')
 
 prepare() {
