@@ -1,7 +1,7 @@
 pkgbase = helio-workstation
 	pkgdesc = One music sequencer for all major platforms, desktop and mobile
 	pkgver = 3.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://helio.fm/
 	arch = x86_64
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = helio-workstation
 	makedepends = jack
 	makedepends = asio
 	makedepends = freeglut
+	makedepends = mdbook
 	depends = curl
 	depends = freetype2
 	depends = libxinerama
