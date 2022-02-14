@@ -1,11 +1,11 @@
 pkgbase = ttf-win81-fonts
 	pkgdesc = Windows 8.1 fonts
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://www.microsoft.com
 	arch = any
 	license = custom
-	source = https://avacyn.aerium.hr/stuff/win81fonts2.tar.gz
-	sha256sums = 77d3ace39014e26c39ae6f27954e489541eb23a0fbc18c374e5abe028e72bdb5
+	source = https://avacyn.aerium.hr/stuff/win81fonts.tar.gz
+	sha256sums = 3c45558508979991dffd4d61680ec4011906eef011a7313a264e7b4a9d3930d8
 
 pkgname = ttf-win81-fonts
