@@ -2,7 +2,7 @@
 
 _modname=community-maps-2
 pkgname=0ad-${_modname}
-pkgver=0.25.9
+pkgver=0.25.10
 pkgrel=1
 pkgdesc="Mod that provides maps made by players and fans of 0ad and shared in the WFG forum"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('unzip')
 #depends=('0ad')
 source=("https://github.com/0ad-matters/${_modname}/releases/download/v${pkgver}/${_modname}-${pkgver}.pyromod")
 noextract=("${source[@]##*/}")
-sha256sums=('95ec3177ab83e85c7c9c0ca5b5f7974955b594c843cc003621d7975477b4e4c3')
+sha256sums=('86437f6eeaf3fb46eb074a9fb3bd6e69964f6e61d4856b4a88d6f499fa756361')
 
 package() {
   cd "${srcdir}"
