@@ -18,7 +18,5 @@ pkgbase = python-cmyt
 	md5sums = d41d8cd98f00b204e9800998ecf8427e
 	md5sums = af71a9545750b8efa94dbffb6c60a189
 	md5sums = 0533ae68ec1967529a2bb9ec2b90fc41
-	md5sums = af71a9545750b8efa94dbffb6c60a189
-	md5sums = 0533ae68ec1967529a2bb9ec2b90fc41
 
 pkgname = python-cmyt
