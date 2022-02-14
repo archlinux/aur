@@ -2,9 +2,10 @@
 #Contributor: Dwight Schauer <dschauer@gmail.com>
 #Contributor: GdelaRey <arch at delarey dot org>
 #Maintainer: aksr <aksr at t-com dot me>
-_pkgname=THE
+_pkgname=the
 pkgname=hessling-editor-das
-pkgver=3.3RC7
+pkgver=3.3RC8
+_pkgver=3.3
 pkgrel=1
 pkgdesc="A powerful text editor modelled on the VM/CMS text editor XEDIT with the best features of Mansfield Software's Kedit."
 arch=('i686' 'x86_64')
@@ -13,13 +14,11 @@ license=('GPL')
 depends=('ncurses' 'regina-rexx-das')
 provides=('hessling-editor')
 options=(!buildflags)
-source=("http://downloads.sourceforge.net/$provides/$_pkgname-$pkgver.tar.gz")
-md5sums=('b0f94f20abd4153c08ac82b3caf8a7d3')
-sha1sums=('4a1d48632ee01279805da9bf7dbb922e1118eb34')
-sha256sums=('bba25b0f779b785c14c876eea11fd72debf104d20ba8e179ff12b06a970fc091')
+source=("http://downloads.sourceforge.net/$provides/$_pkgname-$_pkgver.tar.gz")
+sha512sums=('988c918dbb32177bfd5d28f251862060450f91a18e698bb4c19a20872738fec328b4b99c420f9755ef7401e6d3109664b6da5aa666115d6b30fdc1145d3ca1c6')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$_pkgver"
   unset CFLAGS CXXFLAGS LDFLAGS
   ./configure --with-rexx=regina --with-curses=ncurses --prefix=/usr
   make the-con
@@ -28,6 +27,5 @@ build() {
 }
 
 package(){
-  make -C "$_pkgname-$pkgver" DESTDIR=$pkgdir install
+  make -C "$_pkgname-$_pkgver" DESTDIR=$pkgdir install
 }
-

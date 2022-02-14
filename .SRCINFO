@@ -1,7 +1,7 @@
 pkgbase = hessling-editor-das
 	pkgdesc = A powerful text editor modelled on the VM/CMS text editor XEDIT with the best features of Mansfield Software's Kedit.
-	pkgver = 3.3RC1
-	pkgrel = 2
+	pkgver = 3.3RC8
+	pkgrel = 1
 	url = http://hessling-editor.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -10,14 +10,7 @@ pkgbase = hessling-editor-das
 	depends = regina-rexx-das
 	provides = hessling-editor
 	options = !buildflags
-	source = http://downloads.sourceforge.net/hessling-editor/THE-3.3RC1.tar.gz
-	source = make-install.patch
-	md5sums = e46b63e533bc458f6f701983b7f2150b
-	md5sums = e7898d1e8ac920e972f1dc7d660db1e0
-	sha1sums = a7f0957f077e836ee783d797e424de48e3142b38
-	sha1sums = 0aa2657a6375ce8a727ad36a812c613b9ac6a788
-	sha256sums = dcc1a67c0da5a009ac03e398cf683757a2d2c84081d56da2ddc073fbec48ea38
-	sha256sums = 6b4bbcb6ae2b85ebe3e95713c07ebfc4eede44363cfce89869186163e089d4cf
+	source = http://downloads.sourceforge.net/hessling-editor/the-3.3.tar.gz
+	sha512sums = 988c918dbb32177bfd5d28f251862060450f91a18e698bb4c19a20872738fec328b4b99c420f9755ef7401e6d3109664b6da5aa666115d6b30fdc1145d3ca1c6
 
 pkgname = hessling-editor-das
-
