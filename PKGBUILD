@@ -7,13 +7,13 @@
 # Original Contributor: Bob Finch <w9ya at qrparci dot net>
 
 pkgname=xastir
-pkgver=2.1.6
-pkgrel=2
+pkgver=2.1.8
+pkgrel=1
 pkgdesc="HAM RADIO - Full featured APRS Tracking/Information Reporting System"
 arch=('armv7h' 'i686' 'x86_64')
 url="http://www.xastir.org/"
 license=('GPL' 'LGPL')
-depends=('python' 'desktop-file-utils' 'openmotif' 'shapelib' 'libxpm'
+depends=('perl' 'python' 'desktop-file-utils' 'openmotif' 'shapelib' 'libxpm'
 	 'libax25' 'libxml2' 'gdal' 'graphicsmagick' 'hamradio-menus')
 optdepends=('festival: for speech systhesis')
 makedepends=('autoconf' 'automake')
@@ -52,13 +52,13 @@ package() {
 
 	chmod -s $pkgdir/usr/bin/$pkgname
 }
-md5sums=('4b367ab776a6514d85f23f6f7c463c00'
+md5sums=('3dee1a45b52bea9a2eef52bdd832341e'
          'c314946788a828d42d804670ad23e646'
          '2a06e041a0dc5f20c1427a130613d793'
          '2f8af994b7f5086d4ca2d951ced9019a'
          'e56e55a1c43038d4488fbdd429a0a755'
          '0a7269113052d3bd2711b84ff2fda9d6')
-sha256sums=('5a71af2936d4d237c779b1c3a519211f8e3cd03b9873a260c849ddc8950e1a3e'
+sha256sums=('aa88069f149dbe720276d0134282bc491e7993d8a88380c8fe2a4735ee6444fc'
             'fd7b0d60386964b8a35ec2e504238d8393f9217e32607a6ddfaeac6bde7d4f4a'
             '555ee695b83e59ebd270a001d7947bad7c5168ea319d80a3dc7842981975f6ec'
             '3452ca25072da4ccbaad2a8f07a61f1685872e1874cd6b28e5e5571f734fb47b'
