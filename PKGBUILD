@@ -2,13 +2,13 @@
 # Maintainer: Kuan-Yen Chou <kuanyenchou at gmail dot com>
 
 pkgname=remill-git
-pkgver=4.0.24.r18.gd8d3b6c7
+pkgver=4.2.0.r6.g161e0358
 pkgrel=1
 pkgdesc="Library for lifting of x86, amd64, and aarch64 machine code to LLVM bitcode"
 arch=('x86_64')
 url="https://github.com/lifting-bits/remill"
 license=('Apache')
-depends=('cxx-common=0.1.4' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
+depends=('cxx-common=0.1.8' 'lib32-glibc' 'lib32-gcc-libs' 'libunwind')
 makedepends=('cmake' 'ninja')
 checkdepends=()
 provides=('remill')
@@ -51,7 +51,7 @@ package() {
     cd "$srcdir/$pkgname/build"
     DESTDIR="${pkgdir}" cmake --build . --target install
     sed -i "$pkgdir/usr/lib/cmake/remill/remillTargets.cmake" \
-        -e "s|$srcdir/$pkgname/build/lib|/usr/include/remill|g"
+        -e "s,$srcdir/$pkgname/build/lib,/usr/include/remill,g"
 }
 
 # vim: set sw=4 ts=4 et:
