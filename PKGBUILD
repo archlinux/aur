@@ -1,11 +1,11 @@
 # Maintainer: Arley Henostroza <arllk10@gmail.com>
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 
-_svt_hevc_ver='31014e960e599f0e7769b293ed44a3ed8d3c8543'
-_svt_vp9_ver='bd6dfde9e3c862c911bbb7f02118474b16abb5c5'
+_svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
+_svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=4.5.r102796.g81bad080cd
+pkgver=5.1.r105628.g81df787b53
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -23,13 +23,13 @@ depends=(
         'twolame' 'smbclient' 'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'libwebp'
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
+        'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm'
         'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 
         'glslang-git' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9' 'spirv-tools' 'librist'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
-        'avisynthplus'
+        'avisynthplus' 'vmaf-git'
 )
 makedepends=(
     # official repositories:
@@ -42,23 +42,24 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-intel')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        '010-ffmpeg-fix-vmaf-model-path.patch'
-        "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+	"010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        #"20-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         'LICENSE')
 
 sha256sums=('SKIP'
-            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
-            'bed8df383c796bda7d3df7d1778faa459c2bdd179d2201b03de38cba962abbff'
-            'a7b8498f97ca6e04cf60d52a27f2ced6e04f945a68ad008b8def15fe8822e09d'
+            'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
+            '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
+            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    #sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    #patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
 }
 
 pkgver() {
