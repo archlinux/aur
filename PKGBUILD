@@ -78,8 +78,8 @@ _makenconfig=
 pkgbase=linux-xanmod-rog
 xanmod=5.16.8-xanmod1
 #pkgver=${xanmod//-/.}
-pkgver=5.16.9.xanmod0
-pkgrel=2
+pkgver=5.16.10.xanmod0
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -104,7 +104,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # apply incremental kernel updates ahead of official Xanmod release
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.16.1.xz"
         "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.8-9.xz"
-        #"Linux-5.16.9-rc1.patch"
+        "https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.9-10.xz"
 
         # hotfix: address iwlwifi crash at boot on some hardware
         "iwlwifi-fix-use-after-free.patch"
@@ -183,6 +183,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'b01152a3444c3cb580f2d3230b093aa661f72ae6c786148100f92df30a62d768'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
             'ca5e56e61e08a4773b810f8ef1642e3f70cbaed14b80eca46b6650ad81f805c4'
+            'd0e76ae3215e3714cad62babc9c53ac93339714ee156b1f18d3d5f991373d866'
             '7b6825a43b4173750768a1a50bfd38dcbd326aec6d56cc886490d97e323b7ce9'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
