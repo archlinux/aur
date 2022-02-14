@@ -8,12 +8,20 @@ pkgdesc="A community-developed analysis and visualization toolkit for volumetric
 arch=(any)
 url="http://yt-project.org"
 license=('BSD')
-depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-h5py' 'python-unyt')
+depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt')
 makedepends=('cython')
 optdepends=(
     'jupyter'
     'openmp: multithred support'
+    'python-astropy: reading FITS files'
+    'python-f90nml: reading RAMSES namelist files'
     'python-mpi4py: parallelism support'
+    'python-netcdf4: read netCDF-backed datasets'
+    'python-pandas: support downloading sample datasets '
+    'python-pooch: support downloading sample datasets'
+    'python-scipy: KDtree-accelerated spatial indexing'
+    'python-xarray: input/output to xarray format'
+    'python-glue: input/output to glueviz format'
 )
 options=(!emptydirs)
 source=("https://pypi.io/packages/source/y/${_module_name}/${_module_name}-${pkgver}.tar.gz")
