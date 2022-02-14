@@ -30,4 +30,6 @@ build() {
 
 package() {
     make -C httpd-$pkgver/support DESTDIR="$pkgdir" install
+    make -C httpd-$pkgver DESTDIR="$pkgdir" install-man
+
 }
