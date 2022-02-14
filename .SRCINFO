@@ -7,6 +7,7 @@ pkgbase = pdpmake-git
 	license = Unlicense
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	source = git+https://github.com/rmyorston/pdpmake.git
 	sha256sums = SKIP
 
