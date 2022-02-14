@@ -1,0 +1,12 @@
+pkgbase = chromium-extension-csgo-trader-git
+	pkgdesc = Chrome/Chromium extension for CSGO Trader - git/dev
+	pkgver = r2171.902c85da
+	pkgrel = 1
+	url = https://github.com/gergelyszabo94/csgo-trader-extension
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	source = git+https://github.com/gergelyszabo94/csgo-trader-extension.git
+	sha512sums = SKIP
+
+pkgname = chromium-extension-csgo-trader-git
