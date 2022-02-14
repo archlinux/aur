@@ -25,11 +25,6 @@ sha256sums=(
   "7ef10d753cfaac52d243549764a793f44f8284a1f4b11715ccd2fa915b026a6f"
 )
 
-build() {
-  cd "${srcdir}/${pkgname}"
-  "${srcdir}/${pkgname}/bin/${pkgname}" doctor
-}
-
 package() {
   rm -rf "${srcdir}/${pkgname}/bin/cache" "${srcdir}/${pkgname}/.pub-cache"
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
