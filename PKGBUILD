@@ -13,7 +13,15 @@ makedepends=('cython')
 optdepends=(
     'jupyter'
     'openmp: multithred support'
+    'python-astropy: reading FITS files'
+    'python-f90nml: reading RAMSES namelist files'
     'python-mpi4py: parallelism support'
+    'python-netcdf4: read netCDF-backed datasets'
+    'python-pandas: support downloading sample datasets '
+    'python-pooch: support downloading sample datasets'
+    'python-scipy: KDtree-accelerated spatial indexing'
+    'python-xarray: input/output to xarray format'
+    'python-glue: input/output to glueviz format'
 )
 source=("git+https://github.com/yt-project/yt")
 provides=('python-yt')
