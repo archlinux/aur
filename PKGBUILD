@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=leanify-git
-pkgver=0.4.3.r58.ga39681d
+pkgver=0.4.3.r193.ge3cedec
 pkgrel=1
 epoch=
 pkgdesc="A lightweight lossless file minifier/optimizer."
@@ -9,7 +9,6 @@ url="https://github.com/JayXon/Leanify"
 license=('MIT')
 categories=()
 groups=()
-depends=('')
 makedepends=('git')
 optdepends=()
 checkdepends=()
