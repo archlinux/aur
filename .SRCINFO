@@ -1,0 +1,18 @@
+pkgbase = happy-hacking-gnu
+	pkgdesc = A free, open-source alternative to the HHKB Keymap Tool provided by PFU
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.com/dom/happy-hacking-gnu
+	arch = x86_64
+	license = Unlicense
+	makedepends = gcc
+	makedepends = cmake
+	depends = systemd-libs
+	source = git+https://gitlab.com/dom/happy-hacking-gnu.git#tag=0.1.1
+	source = git+https://github.com/cofyc/argparse
+	source = git+https://github.com/libusb/hidapi
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = happy-hacking-gnu
