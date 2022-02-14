@@ -1,6 +1,6 @@
 # Maintainer: Thomas Ellison <thomasjlsn@gmail.com>
 pkgname=pw
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A simple password manager"
 arch=(any)
@@ -8,10 +8,10 @@ url="https://gitlab.com/thomasjlsn/pw"
 license=('GPL3')
 depends=(bash gnupg tree)
 makedepends=(git make)
-optdepends=()
+optdepends=("qrencode: encoding passwords as qr codes")
 provides=(pw)
 conflicts=(pw-git)
-source=("https://gitlab.com/thomasjlsn/pw/-/archive/1.1/pw-1.1.tar.gz")
+source=("https://gitlab.com/thomasjlsn/pw/-/archive/1.2/pw-1.2.tar.gz")
 md5sums=("SKIP")
 
 package() {
