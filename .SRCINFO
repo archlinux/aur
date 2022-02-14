@@ -1,13 +1,15 @@
 pkgbase = tcping-git
 	pkgdesc = a utility that does a TCP connect to the given ip/port combination
 	pkgver = 1.3.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mkirchner/tcping
 	arch = x86_64
 	license = MIT
 	depends = glibc
+	provides = tcping
+	conflicts = tcping
+	replaces = tcping
 	source = git+https://github.com/mkirchner/tcping#tag=1.3.6
 	sha512sums = SKIP
 
 pkgname = tcping-git
-
