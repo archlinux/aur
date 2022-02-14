@@ -1,7 +1,7 @@
 pkgbase = python-labml-dashboard
 	pkgdesc = Dashboard for Lab: Organize Machine Learning Experiments
 	pkgver = 0.4.87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lab-ml/dashboard
 	arch = any
 	makedepends = python-setuptools
@@ -14,4 +14,3 @@ pkgbase = python-labml-dashboard
 	sha256sums = 616d782aa958902223d949b36585d154b1b1ae9d550ba9256c3f0dd58aab3abf
 
 pkgname = python-labml-dashboard
-

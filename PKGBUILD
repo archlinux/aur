@@ -1,7 +1,7 @@
 # Maintainer: Adrien Wu <adrien.sf.wu@gmail.com>
 pkgname=python-labml-dashboard
 pkgver=0.4.87
-pkgrel=1
+pkgrel=2
 pkgdesc="Dashboard for Lab: Organize Machine Learning Experiments"
 url="https://github.com/lab-ml/dashboard"
 arch=('any')
