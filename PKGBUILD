@@ -1,12 +1,12 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=gnome-tour-git
-pkgver=40.0.r2.gf42d3f1
+pkgver=42.beta.r0.g6818d96
 pkgrel=1
 pkgdesc="A guided tour and greeter for GNOME"
 arch=(x86_64)
 url="https://gitlab.gnome.org/GNOME/${pkgname%-git}"
 license=('GPL')
-depends=('libhandy')
+depends=('libadwaita')
 makedepends=('rust' 'meson' 'git')
 checkdepends=('appstream-glib')
 provides=(${pkgname%-git})
@@ -29,5 +29,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir="$pkgdir"
 }
