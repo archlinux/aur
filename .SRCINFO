@@ -1,0 +1,14 @@
+pkgbase = protoc-gen-ts
+	pkgdesc = Aim of this protoc plugin is to make usage of protocol buffers easy in Javascript/Typescript by taking modern approaches.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/thesayyn/protoc-gen-ts
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = protoc-gen-ts-0.8.2.tgz
+	source = protoc-gen-ts-0.8.2.tgz::https://registry.npmjs.org/protoc-gen-ts/-/protoc-gen-ts-0.8.2.tgz
+	sha256sums = f25924f55265fcd96f6c97ff75dbfe7327414a9218cb1e2e406f752669beaefa
+
+pkgname = protoc-gen-ts
