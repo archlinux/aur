@@ -2,16 +2,18 @@
 _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-colorio python-matplotx python-networkx python-pypng)
 makedepends=(python-build python-flit-core python-install)
-checkdepends=(python-pytest-codeblocks)
+checkdepends=(python-pytest-codeblocks python-meshzoo)
+optdepends=('python-meshzoo: for riemann sphere plots'
+  'python-pyvista: for create an unstructured grid')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('6b424d04cb73a805a8ac9fc0790e015c942c85e0f2b708f177275f7641637fa64523f5f87216d48e271e7424362744fba9b080bedd543cea92c51e53190bf1f2')
+sha512sums=('f639d9a3c866b0381884fe85fbf942aa03cfc3058c89ee3c90b08a5b1bd957c804501d16c65fb20931a5373aa97aa00b62cf8976238a85617508d40d7adc386a')
 
 build() {
   cd ${_base}-${pkgver}
@@ -23,7 +25,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not riemann'
 }
 
 package() {
