@@ -1,6 +1,6 @@
 # Maintainer: fsyy <fossy2001 @ web.de>
 pkgname=python-elgato-streamdeck
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=2
 pkgdesc="Library to control Elgato Stream Deck devices"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python-pillow')
 makedepends=('python-setuptools')
 provides=('streamdeck')
 source=("https://github.com/abcminiuser/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('2ca02b45246b45b6aa9e7bdf78064274d55507fe551ee28aaf5d6c379ade5be5a89d0b9fd647cf81269c2f708a38f7a1ac46783211479ddc7752263f4bc5dd96')
+sha512sums=('c6a8a50e700f8bd58b0585564593a241ea3c0299714b03b32b22771652af6f75a9e4bf9118939091d2b5d03d8f0ca3d3a15689df4c7ed459c590f9c076d7abdb')
 
 build() {
 	cd "${pkgname}-${pkgver}"
