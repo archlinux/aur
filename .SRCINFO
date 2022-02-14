@@ -1,6 +1,6 @@
 pkgbase = sync-my-moodle-git
 	pkgdesc = a synchronization client for the RWTH Moodle
-	pkgver = r161.85c9c1e
+	pkgver = r183.d77957e
 	pkgrel = 1
 	url = https://github.com/Romern/syncMyMoodle
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = sync-my-moodle-git
 	depends = python>=3.6
 	depends = python-requests
 	depends = python-beautifulsoup4
-	depends = youtube-dl
+	depends = yt-dlp
 	depends = python-tqdm
 	depends = python-pdfkit
 	optdepends = python-secretstorage: For storing your password in your keyring

@@ -1,13 +1,13 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=sync-my-moodle-git
-pkgver=r161.85c9c1e
+pkgver=r183.d77957e
 pkgrel=1
 pkgdesc="a synchronization client for the RWTH Moodle"
 arch=('any')
 url="https://github.com/Romern/syncMyMoodle"
 license=('GPL3')
-depends=('python>=3.6' 'python-requests' 'python-beautifulsoup4' 'youtube-dl' 'python-tqdm' 'python-pdfkit')
+depends=('python>=3.6' 'python-requests' 'python-beautifulsoup4' 'yt-dlp' 'python-tqdm' 'python-pdfkit')
 optdepends=('python-secretstorage: For storing your password in your keyring')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/Romern/syncMyMoodle.git")
