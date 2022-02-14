@@ -9,7 +9,7 @@ pkgver=1.7_r.
 pkgrel=1
 epoch=
 pkgdesc="A cli tool to browse and watch anime."
-arch=('any')
+arch=('x86_64')
 url="https://github.com/pystardust/ani-cli"
 license=('GPL')
 groups=()
@@ -45,5 +45,4 @@ package() {
 	cp -rf * ${pkgdir}/opt/${pkgname}
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/README/${pkgname}/README.md"
-	install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/README/${pkgname}/CHANGELOG.md"
 }
