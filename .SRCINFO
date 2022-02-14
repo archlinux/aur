@@ -1,4 +1,4 @@
-pkgbase = dtodo-git
+pkgbase = dtodo
 	pkgdesc = Manage the tasks you want to do every day easily
 	pkgver = r9.85c9956
 	pkgrel = 1
@@ -10,7 +10,6 @@ pkgbase = dtodo-git
 	makedepends = git
 	makedepends = make
 	provides = dtodo
-	provides = daily-todo
 	source = git+https://github.com/SkwalExe/dtodo
 	md5sums = SKIP
 

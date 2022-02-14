@@ -1,4 +1,5 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
+pkgbase="dtodo"
 pkgname="dtodo-git"
 pkgver=r9.85c9956
 pkgrel=1
@@ -10,7 +11,7 @@ depends=()
 makedepends=("git" "make")
 checkdepends=()
 optdepends=()
-provides=("dtodo" "daily-todo")
+provides=("dtodo")
 conflicts=()
 replaces=()
 backup=()
