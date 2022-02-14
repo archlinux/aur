@@ -1,11 +1,13 @@
-#Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
-#Contributor: Dwight Schauer <dschauer@gmail.com>
-#Contributor: GdelaRey <arch at delarey dot org>
-#Maintainer: aksr <aksr at t-com dot me>
+# Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
+# Contributor: Dwight Schauer <dschauer@gmail.com>
+# Contributor: GdelaRey <arch at delarey dot org>
+# Contributor: aksr <aksr at t-com dot me>
+# Maintainer: David Hummel <david dot hummel at gmail point com>
+
 _pkgname=the
+_pkgver=3.3
 pkgname=hessling-editor-das
 pkgver=3.3RC8
-_pkgver=3.3
 pkgrel=1
 pkgdesc="A powerful text editor modelled on the VM/CMS text editor XEDIT with the best features of Mansfield Software's Kedit."
 arch=('i686' 'x86_64')
