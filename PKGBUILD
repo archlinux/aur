@@ -2,8 +2,8 @@
 _base=meshzoo
 pkgname=python-${_base}
 pkgdesc="A collection of meshes for canonical domains"
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.4
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -12,7 +12,7 @@ makedepends=(python-build python-flit-core python-install)
 checkdepends=(python-pytest-codeblocks python-matplotlib)
 optdepends=('python-matplotlib: for Matplotlib rendering in 2d')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('b97159e897c59af7523dfafc2df4895cdca9045e86f2998111510dfe3de624e4474dcfce5a5f081b8a9f78b35134a421e91e4cb3c6215c077f2088d2783520f0')
+sha512sums=('9614ab57da33d443c9708d6a7440bcb718e190e43429ace8e49cc3fe3fb03de70aacb3c0bf5b0844c1c4fb3443ee124a2d985e78d8f7c6f623592303c7803b71')
 
 build() {
   cd ${_base}-${pkgver}
