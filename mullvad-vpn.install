@@ -38,6 +38,8 @@ pre_remove() {
   systemctl stop mullvad-daemon || true
   systemctl disable mullvad-daemon || true
 
+  pkill -x "mullvad-gui" || true
+
   /opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
   /opt/Mullvad\ VPN/resources/mullvad-setup clear-history || echo "Failed to remove leftover WireGuard keys"
 }
