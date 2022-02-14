@@ -1,7 +1,7 @@
 pkgbase = ticktick
 	pkgdesc = Official desktop application for the to-do & task management cloud service.
 	pkgver = 0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ticktick.com
 	arch = x86_64
 	license = BSD-2-Clause

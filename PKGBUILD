@@ -1,7 +1,7 @@
 # Maintainer: Agustin Cisneros <agustincc@tutanota.com>
 pkgname=ticktick
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Official desktop application for the to-do & task management cloud service.'
 arch=('x86_64')
 url='https://ticktick.com'
@@ -34,7 +34,7 @@ package() {
 
   mv "${pkgdir}/opt/TickTick" "${pkgdir}/opt/ticktick"
   mkdir -p "${pkgdir}/usr/bin/"
-  ln -sf "${pkgdir}/opt/ticktick/ticktick" "${pkgdir}/usr/bin/ticktick"
+  ln -sf "/opt/ticktick/ticktick" "${pkgdir}/usr/bin/ticktick"
 
   # Install license (https://ticktick.com/about/tos)
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
