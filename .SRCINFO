@@ -1,6 +1,6 @@
 pkgbase = python-pysmt-git
 	pkgdesc = A library for SMT formulae manipulation and solving
-	pkgver = 0.9.0.r86.g131a275
+	pkgver = 0.9.0.r151.ga32cd27
 	pkgrel = 1
 	url = https://github.com/pysmt/pysmt
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = python-pysmt-git
 	md5sums = SKIP
 
 pkgname = python-pysmt-git
-

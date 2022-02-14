@@ -3,7 +3,7 @@
 pkgname=python-pysmt-git
 pkgdesc="A library for SMT formulae manipulation and solving"
 url="https://github.com/pysmt/pysmt"
-pkgver=0.9.0.r86.g131a275
+pkgver=0.9.0.r151.ga32cd27
 pkgrel=1
 arch=('any')
 depends=('python')
@@ -30,5 +30,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
 }
