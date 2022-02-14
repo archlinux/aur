@@ -6,7 +6,7 @@
 pkgbase=glibc-dso
 pkgname=(glibc-dso lib32-glibc-dso)
 pkgver=2.33
-pkgrel=9
+pkgrel=10
 arch=(x86_64)
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
@@ -43,6 +43,9 @@ md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
          '26a619a810de7d296608cc78377bc27c')
 
 prepare() {
+  echo "THIS PACKAGE IS NO LONGER WORKING DO NOT INSTALL IT"
+  exit 1
+
   mkdir -p glibc-build lib32-glibc-build
 
   [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc 
