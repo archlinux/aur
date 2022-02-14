@@ -9,7 +9,6 @@ pkgbase = jdownloader2
 	depends = java-runtime
 	depends = wget
 	depends = libarchive
-	depends = ttf-dejavu
 	optdepends = phantomjs: needed for some remote capture solving
 	conflicts = jdownloader
 	replaces = jdownloader
