@@ -2,6 +2,9 @@ all: srcinfo rebuild
 
 srcinfo: .SRCINFO
 
+install: rebuild
+	sudo pacman -U "$$(awk -F= '{k[$$1]=$$2}END{print k["pkgname"]"-"k["pkgver"]"-"k["pkgrel"]}' PKGBUILD)"-*.pkg.*
+
 rebuild: src
 	makepkg -ef
 
@@ -20,4 +23,4 @@ src: PKGBUILD
 .SRCINFO: PKGBUILD src
 	makepkg --printsrcinfo > $@
 
-.PHONY: all rebuild clean distclean srcinfo
+.PHONY: all rebuild install clean distclean srcinfo
