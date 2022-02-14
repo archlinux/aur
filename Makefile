@@ -7,9 +7,11 @@ rebuild:
 
 clean:
 	rm -f -- *.pkg.*
+	rm -rf -- pkg
 
 distclean: clean
-	rm -rf -- .SRCINFO pkg src
+	rm -f -- .SRCINFO
+	rm -rf -- src
 
 .SRCINFO: PKGBUILD
 	makepkg -o  # Update pkgver
