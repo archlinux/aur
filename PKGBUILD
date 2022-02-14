@@ -1,9 +1,10 @@
-# Maintainer: Spencer Muise <smuise@spencermuise.ca>
+# Maintainer: Benawi Adha <benawiadha@gmail.com>
+# Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=epy-git
 _name=epy
 provides=('epy')
-pkgver=2022.2.5.r238.933636a
+pkgver=2022.2.5.r1.9b75d7b
 pkgrel=1
 pkgdesc="CLI Ebook Reader"
 arch=('any')
