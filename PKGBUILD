@@ -1,15 +1,16 @@
-# Maintainer: Holodoc
+# Maintainer: Derson5
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=15
+pkgrel=16
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.'
 arch=('any')
 conflicts=('jdownloader')
 replaces=('jdownloader')
 url='https://jdownloader.org/'
 license=('GPL')
-depends=('java-runtime' 'wget' 'libarchive' 'shared-mime-info' 'desktop-file-utils' 'fontconfig' 'ttf-dejavu')
-optdepends=('phantomjs: needed for some remote capture solving')
+depends=('java-runtime' 'wget' 'libarchive' 'fontconfig')
+optdepends=('phantomjs: needed for some remote capture solving'
+	    'ttf-dejavu')
 install='jdownloader.install'
 source=('JDownloader'
         'JDownloaderHeadless'
@@ -31,7 +32,7 @@ source=('JDownloader'
         'jdownloader32.png'
         'jdownloader48.png'
         'jdownloader256.png'
-        'jdownloader.service' )
+        'jdownloader.service')
 sha256sums=('cab5904f226028fdc9384f407ceca34b4305885176fad29b08a2e8b83653a345'
             'd555c78d8110e536aee67de765ee5134d872fbb48354050f7b2f14ff5499120a'
             'dca392fad29c70eff609ec25abaefd33343c8a6c98088e0719c6746759ed0aa5'
