@@ -2,7 +2,7 @@
 
 pkgname=fsatrace
 pkgver=0.0.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Filesystem access tracer"
 arch=('x86_64')
 url="https://github.com/jacereda/fsatrace"
@@ -27,7 +27,7 @@ package() {
   cd "$pkgname-$pkgver"
 
 	install -D "$pkgname" -t "$pkgdir/usr/bin/"
-	install -Dm 755 "$pkgname.so" "$pkgdir/usr/lib/$pkgname.so"
+	install -Dm 755 "$pkgname.so" "$pkgdir/usr/bin/$pkgname.so"
 
 	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
