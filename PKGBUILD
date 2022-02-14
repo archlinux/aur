@@ -1,11 +1,11 @@
 # Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=minesweeper-cli-git
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Command Line version of MineSweeper for Unix-like systems"
 arch=('i686' 'x86_64')
-url="https://github.com/unknownblueguy6/MineSweeper"
+url="https://github.com/margual56/MineSweeper-1"
 license=('MIT')
 
 depends=()
@@ -24,6 +24,7 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${pkgname}"
+	git checkout combined
 	make
 }
 
