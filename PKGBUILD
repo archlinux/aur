@@ -11,7 +11,6 @@ license=('Apache')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=('java-runtime>=11'
-         'glibc=2.33'
          'findutils'
          'coreutils'
          'util-linux')
