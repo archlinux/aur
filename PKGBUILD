@@ -6,7 +6,7 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=1.3.0.20214
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -59,6 +59,9 @@ package(){
 
     # license
     install -Dm644 service-terms-zh ${pkgdir}/usr/share/licenses/${_pkgname}/service-terms-zh.html
+    
+    # fix chinese input in workbench
+    rm -rf ${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so.*
 
 #     ## libraries
 # 
