@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=aaaaxy
-pkgver=1.1.112
+pkgver=1.1.166
 pkgrel=1
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
@@ -17,8 +17,8 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 makedepends=('go' 'graphviz' 'imagemagick' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
-sha256sums=('2f0e35923dd12202859fa2b84c4f9ecdb72f1918cfe55f2a2ed80a58a55d3214'
-            '0540a3c54bdef356558bdf7ea62347338098f744b9a7b3f92ca6872822c020b0')
+sha256sums=('83f6fa5f49db813b4854fd7a772e6f115b378493ad8b5ae9863719b4287c9070'
+            '12bbe422b1abaebd608cc75b839d514772b7b90a50cc52e2e86fda0be6a1ba63')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -30,6 +30,7 @@ build() {
   cd "$pkgname-$pkgver"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export AAAAXY_BUILD_USE_VERSION_FILE=true
+  export AAAAXY_GENERATE_ASSETS=false
   make BUILDTYPE=release
 }
 
