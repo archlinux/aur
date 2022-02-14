@@ -2,7 +2,7 @@
 # Maintainer: Kemad Zhong <kemadz@gmail.com>
 
 pkgname=jsonfmt
-pkgver=0.2.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Like gofmt, but for JSON files."
 url="https://github.com/caarlos0/jsonfmt"
