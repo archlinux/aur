@@ -7,15 +7,15 @@
 _base=simplejson
 pkgname=python2-${_base}
 pkgver=3.17.6
-pkgrel=2
-pkgdesc='Simple, fast, extensible JSON encoder/decoder for python2'
+pkgrel=3
+pkgdesc="Simple, fast, extensible JSON encoder/decoder for python2"
 license=('MIT')
 arch=('any')
 url="https://github.com/${_base}/${_base}"
 depends=(python2)
 makedepends=(python2-setuptools)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('48b74388cd3a5cf0acf46a9aa050d628513d842297625f791c7ae07a7c9289afcb0be8d374f77af3bebd50f4c200844bc69f5b77a67220fee357cdfc0d913726')
+sha512sums=('89b4bf2788468fd8959d32be6597ff73cf8b3064e71c6eacf8185e4588da0e73d4c9f762d80146b10d5ea050dd4c419c8e9393b07659b840942cc6baa5766a79')
 
 build() {
   cd "${_base}-${pkgver}"
