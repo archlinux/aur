@@ -1,7 +1,7 @@
 # Maintainer: Derson5
 pkgname=jdownloader2
 pkgver=latest
-pkgrel=16
+pkgrel=17
 pkgdesc='Download manager, written in Java, for one-click hosting sites like Rapidshare and Megaupload. Uses its own updater.'
 arch=('any')
 conflicts=('jdownloader')
