@@ -3,8 +3,8 @@
 pkgorg='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.6.4
-pkgrel=3
+pkgver=2.6.5
+pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -13,37 +13,36 @@ depends=('hpp-fcl' 'eigenpy' 'urdfdom')
 optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('c9efbeaeb1b1768f1aa8a20a7f3209745f4b054269757a3f1cff74891754fc47'
+            'SKIP')
 validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
 
 build() {
-    mkdir -p "$pkgbase-$pkgver/build"
-    cd "$pkgbase-$pkgver/build"
-
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_WITH_COLLISION_SUPPORT=ON -DBUILD_UTILS=ON -DPYTHON_EXECUTABLE=/usr/bin/python \
+    cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DBUILD_WITH_COLLISION_SUPPORT=ON \
+        -DBUILD_UTILS=ON \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
         -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
-        ..
-    make
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    cmake --build "build-$pkgver"
 }
 
 check() {
-    cd "$pkgbase-$pkgver/build"
-    make test
+    cmake --build "build-$pkgver" -t test
 }
 
 package_pinocchio() {
-    cd "$pkgbase-$pkgver/build"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf $pkgdir/usr/share/doc
     sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/pinocchio/pinocchioTargets.cmake"
-    install -Dm644 ../COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$pkgbase-$pkgver/COPYING.LESSER" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_pinocchio-docs() {
-    cd "$pkgbase-$pkgver/build"
-    make DESTDIR="$pkgdir/" install
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf $pkgdir/usr/{lib,include,bin,"share/$_pkgname"}
-    install -Dm644 ../COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$pkgbase-$pkgver/COPYING.LESSER" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
