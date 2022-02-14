@@ -8,7 +8,7 @@ pkgdesc="python package for data analysis and visualization"
 url="http://yt-project.org"
 arch=(any)
 license=('BSD')
-depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt')
+depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt' 'python-cmyt')
 makedepends=('cython')
 optdepends=(
     'jupyter'
