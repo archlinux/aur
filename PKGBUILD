@@ -2,7 +2,7 @@
 
 pkgname=pam_exec-ssh
 pkgver=r17.c377620
-pkgrel=2
+pkgrel=3
 pkgdesc="Unlock SSH keys on login using PAM."
 arch=(any)
 url="https://github.com/x70b1/pam_exec-ssh"
@@ -14,13 +14,13 @@ noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
-  set -o pipefail
-  git describe --long 2> /dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd ${pkgname}
+    set -o pipefail
+    git describe --long 2> /dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${pkgname}
-  install -Dm755 pam_exec-ssh "${pkgdir}"/usr/bin/pam_exec-ssh
+    cd ${pkgname}
+    install -Dm755 pam_exec-ssh "${pkgdir}"/usr/bin/pam_exec-ssh
 }
