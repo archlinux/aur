@@ -5,11 +5,11 @@
 
 pkgname=elasticsearch
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
-license=('Apache')
+license=('custom:SSPL+Elastic-2.0')
 depends=('java-runtime-headless<=17' 'systemd' 'libxml2')
 makedepends=('java-environment=17')
 source=(
