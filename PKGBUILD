@@ -14,34 +14,27 @@ pkgname=()
 [ "$_build_no_opt" -eq 1 ] && pkgname+=(tensorflow-rocm python-tensorflow-rocm)
 [ "$_build_opt" -eq 1 ] && pkgname+=(tensorflow-opt-rocm python-tensorflow-opt-rocm)
 
-pkgver=2.6.0
-_pkgver=2.6.0
-pkgrel=2
+pkgver=2.8.0
+_pkgver=2.8.0
+pkgrel=1
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
 arch=('x86_64')
-depends=('c-ares' 'intel-mkl' 'onednn' 'pybind11' 'openssl-1.0' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo')
-makedepends=('bazel' 'python-numpy' 'rocm' 'rocm-libs' 'miopen' 'rccl' 'git'
+depends=('c-ares' 'intel-mkl' 'onednn' 'pybind11' 'openssl' 'lmdb' 'libpng' 'curl' 'giflib' 'icu' 'libjpeg-turbo')
+makedepends=('bazel' 'python-numpy' 'rocm-hip-sdk' 'miopen' 'rccl' 'git'
              'python-pip' 'python-wheel' 'python-setuptools' 'python-h5py'
              'python-keras-applications' 'python-keras-preprocessing'
              'cython')
 optdepends=('tensorboard: Tensorflow visualization toolkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tensorflow/tensorflow/archive/v${_pkgver}.tar.gz"
-        48935.patch
-        fix-c++17-compat.patch
-        build-against-actual-mkl.patch
-        openssl-1.1.patch)
+        fix-c++17-compat.patch)
 
-sha512sums=('d052da4b324f1b5ac9c904ac3cca270cefbf916be6e5968a6835ef3f8ea8c703a0b90be577ac5205edf248e8e6c7ee8817b6a1b383018bb77c381717c6205e05'
-            '8a0fb7e728b144656503ee54b3c90483c619adf17b2081dceb2bd6bcd1435dd64afba97526d94114d4c10fc002d2d213ae6717ad407285b18e438b05fc1ed2ad'
-            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e'
-            'e51e3f3dced121db3a09fbdaefd33555536095584b72a5eb6f302fa6fa68ab56ea45e8a847ec90ff4ba076db312c06f91ff672e08e95263c658526582494ce08'
-            'cb15e7331f62d6e77e1099055430cd026e5788f0cab202fbfad8e27c47fca9ad5e1467249683dcdaab8c76cab4dece016f8ecd0f0793adb256ff6d975f893125')
-
+sha512sums=('9cddb78c0392b7810e71917c3731f895e31c250822031ac7f498bf20435408c640b2fba4de439fa4a47c70dbff38b86e50fed2971df1f1916f23f9490241cfed'
+            'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
 
 # consolidate common dependencies to prevent mishaps
-_common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf absl-py python-h5py python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta python-flatbuffers)
+_common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf absl-py python-h5py python-keras python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta python-flatbuffers)
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -71,17 +64,6 @@ check_dir() {
 prepare() {
   # Allow any bazel version
   echo "*" > tensorflow-${_pkgver}/.bazelversion
-
-  # Tensorflow actually wants to build against a slimmed down version of Intel MKL called MKLML
-  # See https://github.com/intel/mkl-dnn/issues/102
-  # MKLML version that Tensorflow wants to use is https://github.com/intel/mkl-dnn/releases/tag/v0.21
-  # patch -Np1 -d tensorflow-${_pkgver} -i "$srcdir"/build-against-actual-mkl.patch
-
-  # https://github.com/tensorflow/tensorflow/pull/48935/files
-  patch -p1 -d tensorflow-${_pkgver} -i "$srcdir"/48935.patch
-
-  # https://bugs.archlinux.org/task/71597
-  patch -p1 -d tensorflow-${_pkgver} -i "$srcdir"/openssl-1.1.patch
 
   # Get rid of hardcoded versions. Not like we ever cared about what upstream
   # thinks about which versions should be used anyway. ;) (FS#68772)
@@ -243,7 +225,7 @@ _python_package() {
 
 package_tensorflow-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM)"
-  depends+=(rocm rocm-libs miopen rccl)
+  depends+=(rocm-hip-sdk miopen rccl)
   conflicts=(tensorflow)
   provides=(tensorflow)
 
@@ -253,7 +235,7 @@ package_tensorflow-rocm() {
 
 package_tensorflow-opt-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm rocm-libs miopen rccl)
+  depends+=(rocm-hip-sdk miopen rccl)
   conflicts=(tensorflow)
   provides=(tensorflow tensorflow-rocm)
 
@@ -263,7 +245,7 @@ package_tensorflow-opt-rocm() {
 
 package_python-tensorflow-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM)"
-  depends+=(tensorflow-rocm rocm rocm-libs miopen rccl "${_common_py_depends[@]}")
+  depends+=(tensorflow-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow)
 
@@ -273,7 +255,7 @@ package_python-tensorflow-rocm() {
 
 package_python-tensorflow-opt-rocm() {
   pkgdesc="Library for computation using data flow graphs for scalable machine learning (with ROCM and AVX2 CPU optimizations)"
-  depends+=(tensorflow-rocm rocm rocm-libs miopen rccl "${_common_py_depends[@]}")
+  depends+=(tensorflow-rocm rocm-hip-sdk miopen rccl "${_common_py_depends[@]}")
   conflicts=(python-tensorflow)
   provides=(python-tensorflow python-tensorflow-rocm)
 
