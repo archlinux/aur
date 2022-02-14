@@ -22,14 +22,16 @@ source=(
 "opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
 "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
 "opencv-lapack.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/ea851b9f93224a4c19cc3ddeafa7b733f3f138b6/opencv/repos/extra-x86_64/opencv-lapack-3.10.patch"
+"opencv-tbb.patch::https://raw.githubusercontent.com/DrAtomic/opencv-tbb-patch/main/opencv-tbb.patch"
 )
 sha256sums=('302d3fe23b09d608d14b10212ed25649d9b6c7a2f817ccb1c8005172a479dedb'
             'f8394bc68b70c57e54fc7706a4d2b7ef33e514c385f338c4cb470fe37d0dc243'
-            'SKIP'
-)
+            'f83c64f2731a39910d0d4a48898dd04e4aca5c22f746b7b0ead003992ae11199'
+            'e604f6effe0b2aacd19ad5e11544589f76ffed816036964963984ab8912266f0')
 
 prepare() {
   patch -d opencv-$pkgver -p1 < opencv-lapack.patch # Fix build with LAPACK
+  patch -d opencv-$pkgver -p1 < opencv-tbb.patch    # Fix build tbb
   mkdir -p build
 }
 
