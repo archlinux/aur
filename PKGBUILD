@@ -8,7 +8,7 @@ pkgdesc="A community-developed analysis and visualization toolkit for volumetric
 arch=(any)
 url="http://yt-project.org"
 license=('BSD')
-depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt')
+depends=('python-numpy' 'python-matplotlib' 'python-sympy' 'python-unyt' 'python-cmyt')
 makedepends=('cython')
 optdepends=(
     'jupyter'
