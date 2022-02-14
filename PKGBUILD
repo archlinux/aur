@@ -4,8 +4,8 @@
 pkgname=fpp
 _name=PathPicker
 
-pkgver=0.9.2
-pkgrel=3
+pkgver=0.9.5
+pkgrel=1
 
 pkgdesc='TUI that lets you pick paths out of its stdin and run arbitrary commands on them'
 arch=('any')
@@ -14,13 +14,13 @@ license=('MIT')
 
 depends=('python')
 
+source=("$pkgname-$pkgver.tgz::https://github.com/facebook/$_name/archive/$pkgver.tar.gz")
+sha256sums=('b0142676ed791085d619d9b3d28d28cab989ffc3b260016766841c70c97c2a52')
+
 options=('zipman')
 
-source=("$pkgname-$pkgver.tgz::https://github.com/facebook/$_name/archive/$pkgver.tar.gz")
-sha256sums=('4b3deac0100fb9405adca17a1c75e133359a6cbb1351c392276a55ef8ef40857')
 
-
-prepare() { rm -rf "$_name-$pkgver/src/__tests__"; }
+prepare() { rm -rf "$_name-$pkgver/src/tests"; }
 
 package() {
   cd "$_name-$pkgver"
