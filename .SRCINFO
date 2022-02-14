@@ -1,13 +1,12 @@
 pkgbase = kwin-scripts-forceblur
 	pkgdesc = Force-enable blur effect to user-specified windows
-	pkgver = 0.5
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/esjeon/kwin-forceblur
 	arch = any
 	license = MIT
 	depends = kwin
-	source = kwin-forceblur.tar.gz::https://github.com/esjeon/kwin-forceblur/archive/v0.5.tar.gz
-	sha256sums = ed7c2d9c36d0a4b7e8d25a533eb0efc78e4444d1d9b8a8f2f59c8a7ce80ba238
+	source = kwin-forceblur-0.6.1.tar.gz::https://github.com/esjeon/kwin-forceblur/archive/v0.6.1.tar.gz
+	sha256sums = 5c437aedef9b40ead9d26141aa9482227a0554f202e13f7b8754529587298412
 
 pkgname = kwin-scripts-forceblur
-
