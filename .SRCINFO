@@ -1,5 +1,5 @@
 pkgbase = protonmail-bridge-nokeychain
-	pkgdesc = An IMAP/SMTP bridge to a ProtonMail account
+	pkgdesc = An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)
 	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://protonmail.com/bridge/
