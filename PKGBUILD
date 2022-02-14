@@ -7,10 +7,10 @@
 _base=simplejson
 pkgname=python2-${_base}
 pkgver=3.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, extensible JSON encoder/decoder for python2'
 license=('MIT')
-arch=('x86_64')
+arch=('any')
 url="https://github.com/${_base}/${_base}"
 depends=(python2)
 makedepends=(python2-setuptools)
