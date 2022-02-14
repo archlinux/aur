@@ -156,6 +156,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
 
         # 5.17: ASUS ROG laptop custom fan curve support
         "v16-asus-wmi-Add-support-for-custom-fan-curves.patch"
+        "platform-x86-asus-wmi-Fix-regression-when-probing-for-fan-curve-control.patch"
 
         # -- ASUS ROG Flow X13 tablet mode
         "HID-asus-wmi-ROG-x13-flow-tablet-mode-support.patch"
@@ -199,6 +200,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
             '0c422d8f420c1518aab1b980c6cdb6e029a4fa9cde1fd99a63670bb105a44f36'
+            'fb8103239ac6fa53c9492b63d81cdab4ec0f7b5b1d7dfde362816be768a12a76'
             '38ec0dd8a20bae77b677eb65207c61aa4d668741d9b25aea9876d075365b26ef'
             '1ce9fd988201c4d2e48794c58acda5b768ec0fea1d29555e99d35cd2712281e4'
             '236cdadf0b1472945c0d7570caeed7b95929aabed6872319c9d0969a819689e9'

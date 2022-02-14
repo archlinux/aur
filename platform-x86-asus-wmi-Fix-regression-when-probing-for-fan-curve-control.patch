@@ -1,0 +1,40 @@
+From: Hans de Goede <hdegoede@redhat.com>
+Subject: [PATCH] platform/x86: asus-wmi: Fix regression when probing for fan curve control
+Date: Sat,  5 Feb 2022 12:28:40 +0100
+Message-Id: <20220205112840.33095-1-hdegoede@redhat.com>
+List-ID: <platform-driver-x86.vger.kernel.org>
+
+The fan curve control patches introduced a regression for at least the
+TUF FX506 and possibly other TUF series laptops that do not have support
+for fan curve control.
+
+As part of the probing process, asus_wmi_evaluate_method_buf is called
+to get the factory default fan curve . The WMI management function
+returns 0 on certain laptops to indicate lack of fan curve control
+instead of ASUS_WMI_UNSUPPORTED_METHOD. This 0 is transformed to
+-ENODATA which results in failure when probing.
+
+Fixes: 0f0ac158d28f ("platform/x86: asus-wmi: Add support for custom fan curves")
+Reported-by: Abhijeet V <abhijeetviswa@gmail.com>
+Signed-off-by: Hans de Goede <hdegoede@redhat.com>
+---
+ drivers/platform/x86/asus-wmi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/platform/x86/asus-wmi.c b/drivers/platform/x86/asus-wmi.c
+index a3b83b22a3b1..2104a2621e50 100644
+--- a/drivers/platform/x86/asus-wmi.c
++++ b/drivers/platform/x86/asus-wmi.c
+@@ -2223,7 +2223,7 @@ static int fan_curve_check_present(struct asus_wmi *asus, bool *available,
+ 
+ 	err = fan_curve_get_factory_default(asus, fan_dev);
+ 	if (err) {
+-		if (err == -ENODEV)
++		if (err == -ENODEV || err == -ENODATA)
+ 			return 0;
+ 		return err;
+ 	}
+-- 
+2.33.1
+
+
