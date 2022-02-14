@@ -1,7 +1,7 @@
 #maintainer: BrainDamage
 pkgname=helio-workstation
 pkgver=3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="One music sequencer for all major platforms, desktop and mobile"
 arch=('x86_64')
 url="https://helio.fm/"
@@ -15,8 +15,8 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule init
-  git config submodule.ThirdParty/HopscotchMap.url "$../../hopscotch-map"
-  git config submodule.ThirdParty/JUCE.url "$../../JUCE"
+  git config submodule.ThirdParty/HopscotchMap.url "../../hopscotch-map"
+  git config submodule.ThirdParty/JUCE.url "../../JUCE"
   git submodule update
 }
 
