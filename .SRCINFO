@@ -1,6 +1,6 @@
 pkgbase = cctv-viewer-git
 	pkgdesc = A simple Qt application for simultaneously viewing multiple video streams. Designed for high performance and low latency. Based on ffmpeg.
-	pkgver = 0.1
+	pkgver = 0.1.8
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/iEvgeny/cctv-viewer
@@ -28,4 +28,3 @@ pkgbase = cctv-viewer-git
 	sha1sums = SKIP
 
 pkgname = cctv-viewer-git
-
