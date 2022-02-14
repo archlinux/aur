@@ -1,0 +1,21 @@
+pkgbase = papirus-folders-doas-git
+	pkgdesc = Allows to change the color of folders (git version) w/ doas patch
+	pkgver = 1.11.0.0.g83a2225
+	pkgrel = 1
+	url = https://github.com/PapirusDevelopmentTeam/papirus-folders
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = papirus-icon-theme
+	depends = opendoas
+	provides = papirus-folders
+	conflicts = papirus-folders
+	options = !strip
+	source = papirus-folders::git+https://github.com/PapirusDevelopmentTeam/papirus-folders.git
+	source = papirus-folders.hook
+	source = doas.diff
+	sha256sums = SKIP
+	sha256sums = 5c48cde4ad155e357857f56ec2ce4d26d3e3fdd12b141e349640775481539ed9
+	sha256sums = 5451d155619be5b7992379e8d76c1766384feead3b404fad5bf4bccea6c3cd94
+
+pkgname = papirus-folders-doas-git

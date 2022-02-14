@@ -1,0 +1,36 @@
+diff --git a/papirus-folders b/papirus-folders
+index cc54dca3..4beea74e 100755
+--- a/papirus-folders
++++ b/papirus-folders
+@@ -174,8 +174,8 @@ get_real_user() {
+
+ 	if [ -n "$PKEXEC_UID" ]; then
+ 		user="$(id -nu "$PKEXEC_UID")"
+-	elif [ -n "$SUDO_USER" ]; then
+-		user="$SUDO_USER"
++	elif [ -n "$DOAS_USER" ]; then
++		user="$DOAS_USER"
+ 	else
+ 		user="$(id -nu)"
+ 	fi
+@@ -382,9 +382,8 @@ verify_privileges() {
+
+ 	verbose "This operation requires root privileges."
+
+-	if command -v sudo > /dev/null; then
+-		exec sudo USER_HOME="$USER_HOME" XDG_DATA_DIRS="$XDG_DATA_DIRS" \
+-			"$THIS_SCRIPT" "${ARGS[@]}"
++	if command -v doas > /dev/null; then
++		exec doas "$THIS_SCRIPT" "${ARGS[@]}"
+ 	else
+ 		fatal "You need to be root to run this command."
+ 	fi
+@@ -481,7 +480,7 @@ main() {
+ 	fi
+
+ 	# set USER_HOME variable instead HOME to prevent changing user's icons
+-	# when running with sudo
++	# when running with doas
+ 	[ -n "$USER_HOME" ] || USER_HOME="$(get_user_home "$(id -nu)")"
+
+ 	if [ -f "$THEME_NAME/index.theme" ]; then
