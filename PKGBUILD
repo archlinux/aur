@@ -2,7 +2,7 @@
 
 pkgname=xplayer
 pkgver=2.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple media player. X-Apps Project."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -11,13 +11,13 @@ depends=(
     'desktop-file-utils' 'iso-codes' 'yelp-xsl'
     'libpeas' 'gsettings-desktop-schemas' 'dbus-glib'
     'python-gobject' 'gst-plugins-base' 'gst-plugins-good'
-    'xapps')
+    'xapps'
+)
 makedepends=(
-    'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala' 'python-xdg'
+    'gnome-common' 'gtk-doc' 'gobject-introspection' 'vala'
     'python-pylint' 'lirc' 'zeitgeist' 'grilo')
 optdepends=(
     'gst-libav: Extra media codec support'
-    'python2-xdg: Subtitle downloader plugin'
     'lirc: Infrared remote control plugin'
     'zeitgeist: Zeitgeist interface plugin'
     'grilo: Grilo plugins'
