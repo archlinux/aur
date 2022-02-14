@@ -1,0 +1,6 @@
+/*.rpm
+/*.zst
+/opt/
+/pkg/
+/src/
+/usr/
