@@ -1,5 +1,5 @@
-pkgbase = virt-viewer
-	pkgdesc = A lightweight interface for interacting with the graphical display of virtualized guest OS.
+pkgbase = virt-viewer-no-header
+	pkgdesc = A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch drop the header bar.
 	pkgver = 11.0
 	pkgrel = 1
 	url = https://gitlab.com/virt-viewer/virt-viewer
@@ -19,8 +19,10 @@ pkgbase = virt-viewer
 	replaces = virtviewer
 	source = https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz
 	source = https://virt-manager.org/download/sources/virt-viewer/virt-viewer-11.0.tar.xz.asc
+	source = drop-header.patch
 	validpgpkeys = DAF3A6FDB26B62912D0E8E3FBE86EBB415104FDF
 	b2sums = 41914a60361f0a47a0b0b54962d228ffaec67c6b69c664bb6fe683b7074dd5e2136d2bf3528b6e1b6b785cc4e337125fe16fdd94dd603dd42e8fde543931241a
 	b2sums = SKIP
+	b2sums = 6571f7637f8328118bb4469d52a92936820ebc7a037bb9cf6e6bd257889ec43b18d4c9c952cf1d968ef4b8c4a08ea4358cec47754d869b6e59153a0f2dddf578
 
-pkgname = virt-viewer
+pkgname = virt-viewer-no-header
