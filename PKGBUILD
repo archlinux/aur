@@ -3,13 +3,13 @@ _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color research"
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-matplotlib python-npx)
 makedepends=(python-build python-flit-core python-install)
-checkdepends=(python-pytest-codeblocks python-scipy python-colorspacious python-meshio python-meshzoo python-optimesh python-pygmsh) # python-perfplot | python-pyvista
+checkdepends=(python-pytest-codeblocks python-scipy python-colorspacious python-meshio python-meshzoo python-perfplot python-pygmsh) # python-optimesh | python-pyvista
 optdepends=('python-meshio: for creation mesh'
   'python-meshzoo: for creation triangle and cube mesh'
   'python-optimesh: for triangular mesh optimization'

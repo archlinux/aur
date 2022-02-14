@@ -1,7 +1,7 @@
 pkgbase = python-colorio
 	pkgdesc = Tools for color research
 	pkgver = 0.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/colorio
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = python-colorio
 	checkdepends = python-colorspacious
 	checkdepends = python-meshio
 	checkdepends = python-meshzoo
-	checkdepends = python-optimesh
+	checkdepends = python-perfplot
 	checkdepends = python-pygmsh
 	makedepends = python-build
 	makedepends = python-flit-core
