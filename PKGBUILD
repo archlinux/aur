@@ -3,7 +3,7 @@
 _pkgname=virt-viewer
 pkgname=$_pkgname-no-header
 pkgver=11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight interface for interacting with the graphical display of virtualized guest OS. This package contains a patch drop the header bar.'
 arch=('x86_64')
 url='https://gitlab.com/virt-viewer/virt-viewer'
