@@ -1,7 +1,7 @@
 pkgbase = wllvm-git
 	pkgdesc = A wrapper script to build whole-program LLVM bitcode files
-	pkgver = r461.6d8955b
-	pkgrel = 3
+	pkgver = r486.c663442
+	pkgrel = 1
 	url = https://github.com/travitch/whole-program-llvm
 	arch = any
 	license = MIT
@@ -14,4 +14,3 @@ pkgbase = wllvm-git
 	md5sums = SKIP
 
 pkgname = wllvm-git
-
