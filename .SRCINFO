@@ -1,0 +1,12 @@
+pkgbase = func-e-bin
+	pkgdesc = func-e (pronounced funky) makes running Envoy® easy
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/tetratelabs/func-e
+	arch = x86_64
+	license = Apache
+	provides = func-e
+	source = func-e-1.1.2::https://github.com/tetratelabs/func-e/releases/download/v1.1.2/func-e_1.1.2_linux_amd64.tar.gz
+	sha256sums = eed1bac7d10c88c3568ae14caad981da6552e67b0a7e11da50989735e21fab90
+
+pkgname = func-e-bin
