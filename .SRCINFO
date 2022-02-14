@@ -1,7 +1,7 @@
 pkgbase = python-yt-git
 	pkgdesc = python package for data analysis and visualization
 	pkgver = 4.0.0.r668.g03c41c0d9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://yt-project.org
 	arch = any
 	license = BSD

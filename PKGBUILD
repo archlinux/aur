@@ -3,7 +3,7 @@
 _gitname=yt
 pkgname=python-$_gitname-git
 pkgver=4.0.0.r668.g03c41c0d9
-pkgrel=1
+pkgrel=2
 pkgdesc="python package for data analysis and visualization"
 url="http://yt-project.org"
 arch=(any)
