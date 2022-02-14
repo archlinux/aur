@@ -1,6 +1,6 @@
 pkgbase = pw
 	pkgdesc = A simple password manager
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://gitlab.com/thomasjlsn/pw
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = pw
 	depends = tree
 	provides = pw
 	conflicts = pw-git
-	source = https://gitlab.com/thomasjlsn/pw/-/archive/1.0/pw-1.0.tar.gz
+	source = https://gitlab.com/thomasjlsn/pw/-/archive/1.1/pw-1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = pw

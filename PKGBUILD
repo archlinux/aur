@@ -1,6 +1,6 @@
 # Maintainer: Thomas Ellison <thomasjlsn@gmail.com>
 pkgname=pw
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A simple password manager"
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=(git make)
 optdepends=()
 provides=(pw)
 conflicts=(pw-git)
-source=("https://gitlab.com/thomasjlsn/pw/-/archive/1.0/pw-1.0.tar.gz")
+source=("https://gitlab.com/thomasjlsn/pw/-/archive/1.1/pw-1.1.tar.gz")
 md5sums=("SKIP")
 
 package() {
