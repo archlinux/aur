@@ -4,13 +4,14 @@
 
 pkgname=swift-bin
 pkgver=5.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('libutil-linux' 'libxml2' 'python36')
+depends=('libutil-linux' 'libxml2')
 makedepends=('patchelf')
+optdepends=('python36: required for REPL')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')

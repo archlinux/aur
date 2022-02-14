@@ -1,14 +1,14 @@
 pkgbase = swift-bin
 	pkgdesc = Binary builds of the Swift programming language
 	pkgver = 5.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swift.org
 	arch = x86_64
 	license = apache
 	makedepends = patchelf
 	depends = libutil-linux
 	depends = libxml2
-	depends = python36
+	optdepends = python36: required for REPL
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
