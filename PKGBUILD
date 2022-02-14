@@ -1,8 +1,8 @@
 # Maintainer: Martin Kröning (mkroening) <m.kroening@hotmail.de>
 
 pkgname=edu-sync
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A command line application for synchronizing the contents of Moodle instances to your computer."
 arch=('x86_64')
 url="http://edu-sync.org/"
@@ -11,7 +11,7 @@ depends=('dbus')
 makedepends=('cargo')
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('132e8bf52db144b1fe60c9913c412ac0c3dc0152d1477d1602af62f5671476bd')
+sha256sums=('18e19f5ca1874ee26d4dc08422cc4cf70d8bffbb0b8d88b4cf59b9971ba0a5ce')
 
 prepare() {
     cd $pkgname-$pkgver
