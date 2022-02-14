@@ -2,13 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fq-git
-pkgver=0.0.4.r1.g47c978e4
+pkgver=0.0.5.r0.gba948219
 pkgrel=1
 pkgdesc="Tool, language and decoders for inspecting binary data (git)"
 arch=('x86_64')
 url="https://github.com/wader/fq"
 license=('MIT')
 depends=('glibc')
+checkdepends=('expect')
 makedepends=('go' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
@@ -39,7 +40,7 @@ build() {
 
 check() {
   cd "${pkgname%-git}"
-  go test ./...
+  make test
 }
 
 package() {
