@@ -1,0 +1,18 @@
+pkgbase = python-setuptools-git-versioning-git
+	pkgdesc = Use Git repo data for building a version number according to PEP 440.
+	pkgver = 1.8.1.r4.g17315dd
+	pkgrel = 1
+	url = https://github.com/dolfinus/setuptools-git-versioning
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-setuptools
+	depends = python-six
+	depends = python-toml
+	provides = python-setuptools-git-versioning
+	conflicts = python-setuptools-git-versioning
+	source = setuptools-git-versioning::git+https://github.com/dolfinus/setuptools-git-versioning
+	sha512sums = SKIP
+
+pkgname = python-setuptools-git-versioning-git
