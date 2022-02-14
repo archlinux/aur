@@ -11,7 +11,8 @@ SLF4J_JCL=/usr/share/java/slf4j/slf4j-jcl.jar
 # Binding for java.util.logging, also referred to as JDK 1.4 logging.
 SLF4J_JDK14=/usr/share/java/slf4j/slf4j-jdk14.jar
 # Binding for log4j version 1.2, a widely used logging framework.
-SLF4J_LOG4J12=/usr/share/java/slf4j/slf4j-log4j12.jar:/usr/share/java/log4j-1.2.15.jar
+SLF4J_LOG4J12=/usr/share/java/slf4j/slf4j-reload4j.jar
+SLF4J_RELOAD4J=/usr/share/java/slf4j/slf4j-reload4j.jar
 # Binding for NOP, silently discarding all logging.
 SLF4J_NOP=/usr/share/java/slf4j/slf4j-nop.jar
 # Binding for Simple  implementation, which outputs all events to System.err.
