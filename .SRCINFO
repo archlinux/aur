@@ -1,20 +1,18 @@
 pkgbase = mimejs-git
 	pkgdesc = A replacement for xdg-open written in Node.js
-	pkgver = 0.1.34645c9
+	pkgver = 0.1.fb28a58
 	pkgrel = 1
 	url = https://github.com/karabaja4/mimejs
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = nodejs-lts-fermium
 	makedepends = npm
 	depends = file
 	depends = bash
+	depends = nodejs
 	provides = xdg-utils
 	conflicts = xdg-utils
-	options = !strip
 	source = git+https://github.com/karabaja4/mimejs.git
 	md5sums = SKIP
 
 pkgname = mimejs-git
-
