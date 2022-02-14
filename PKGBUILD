@@ -1,7 +1,7 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=embridge-bin
 pkgver=3.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure channel between network applications and keys stored in hardware tokens'
 arch=(x86_64)
 url='https://embridge.emudhra.com'
@@ -18,7 +18,7 @@ package() {
     cd "${pkgdir}/opt/eMudhra/emBridge"
     find . -type f -exec chmod 644 {} \+
     find . -name '*.dll' -exec chmod 755 {} \+
-    find . -name '*.sh' -exec chmod 755 {} \+
+#    find . -name '*.sh' -exec chmod 755 {} \+
     find . -name '*.so' -exec chmod 755 {} \+
     chmod 755 createdump emBridge
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/embridge" << 'EOF'
