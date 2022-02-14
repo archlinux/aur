@@ -1,7 +1,7 @@
 # Maintainer: Anders Pedersen <silwerspawn+aur.archlinux.org@gmail.com>
 pkgname=edrawmax-bin
 pkgver=11.1.2
-pkgrel=0
+pkgrel=1
 pkgmaver=11
 pkgmaname=EdrawMax
 _pkgname_=edrawmax
@@ -9,7 +9,7 @@ epoch=
 pkgdesc="All-in-One Diagram Software"
 arch=('x86_64')
 url="https://www.edrawsoft.com/edraw-max/"
-license=('custom:"Copyright 2020 Edrawsoft. All rights reserved."')
+license=("Copyright 2020 Edrawsoft. All rights reserved.")
 groups=()
 depends=('nss' 'alsa-lib' 'qt5-svg' 'gtk3' 'qt5-sensors' 'qt5-declarative' 'curl')
 makedepends=()

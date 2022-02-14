@@ -1,10 +1,10 @@
 pkgbase = edrawmax-bin
 	pkgdesc = All-in-One Diagram Software
 	pkgver = 11.1.2
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.edrawsoft.com/edraw-max/
 	arch = x86_64
-	license = custom:"Copyright 2020 Edrawsoft. All rights reserved."
+	license = Copyright 2020 Edrawsoft. All rights reserved.
 	depends = nss
 	depends = alsa-lib
 	depends = qt5-svg
