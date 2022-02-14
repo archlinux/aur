@@ -1,4 +1,6 @@
-all: .SRCINFO rebuild
+all: srcinfo rebuild
+
+srcinfo: .SRCINFO
 
 rebuild:
 	makepkg -f
@@ -13,4 +15,4 @@ distclean: clean
 	makepkg -o  # Update pkgver
 	makepkg --printsrcinfo > $@
 
-.PHONY: all rebuild clean distclean
+.PHONY: all rebuild clean distclean srcinfo
