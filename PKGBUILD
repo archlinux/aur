@@ -3,13 +3,14 @@
 pkgname=pyqso
 _authorname=ctjacobs
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio QSO logging tool."
 arch=('any')
-url="http://christianjacobs.uk/pyqso/"
+url="https://christianjacobs.uk/pyqso/"
 license=('GPL3')
 depends=('gtk3' 'gobject-introspection' 'python-basemap' 'python-cairocffi'
-	'hamlib-git-python3' 'hamradio-menus')
+	'hamlib' 'hamradio-menus')
+optdepends=('python-cartopy' 'python-geocoder')
 #makedepends=('python-sphinx'	# for building docs)
 source=(https://github.com/${_authorname}/$pkgname/archive/v${pkgver}.tar.gz
 	$pkgname.desktop

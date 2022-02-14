@@ -1,16 +1,18 @@
 pkgbase = pyqso
 	pkgdesc = Ham Radio QSO logging tool.
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = http://christianjacobs.uk/pyqso/
+	pkgrel = 2
+	url = https://christianjacobs.uk/pyqso/
 	arch = any
 	license = GPL3
 	depends = gtk3
 	depends = gobject-introspection
 	depends = python-basemap
 	depends = python-cairocffi
-	depends = hamlib-git-python3
+	depends = hamlib
 	depends = hamradio-menus
+	optdepends = python-cartopy
+	optdepends = python-geocoder
 	source = https://github.com/ctjacobs/pyqso/archive/v1.1.0.tar.gz
 	source = pyqso.desktop
 	md5sums = 43eef19310ceaa540fea2c738a2b9e64
@@ -19,4 +21,3 @@ pkgbase = pyqso
 	sha256sums = b724c3782338cd546f78719137802384364522e398fb6c5a633442d25a2afb17
 
 pkgname = pyqso
-
