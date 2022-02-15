@@ -29,7 +29,44 @@ resources when the last call ends.
 
 ## Installation
 
+Currently, this package is only available for Arch Linux on the _Arch User Repository_.
+
+Installing the package the package:
+
+```shell
+$ git clone https://aur.archlinux.org/nvidia-exec.git
+$ cd nvidia-exec
+$ makepkg -si
+$ ...
+```
+
+You may also install the package using an AUR helper:
+
+```shell
+$ paru -Sa nvidia-exec
+$ ...
+$ # or
+$ yay -Sa nvidia-exec
+$ ...
+$ # or whatever helper you might use
+```
+
+### After the installation
+
+Once the package is installed, its systemd service must be enabled:
+
+```
+$ sudo systemctl enable nvx
+```
+
+The `nvx.service` prevents nvidia modules from loading and turn off the graphics card during boot.
+
+It is not necessary to handle files, configurations, PCI buses, etc, all that is done automatically.
+
 ### Files
+
+For other users that may want to create a package to their preferred systems, the following is where I place the files
+on Arch Linux.
 
 -   **nvx** -> _/usr/bin/nvx_ - Script that handles the gpu and run programs
 -   **nvx.service** -> _/usr/lib/systemd/system/nvx.service_ - Service that turns off gpu during boot
