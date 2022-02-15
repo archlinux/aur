@@ -1,3 +1,7 @@
+2022-02-15
+	* 4.16.0-3
+	* forgot to wrap qemu subpackage in an if
+
 2022-02-06
 	* 4.16.0-2
 	* security patches

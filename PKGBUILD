@@ -22,7 +22,7 @@ _zlib=1.2.3
 pkgbase=xen
 pkgname=("xen" "xen-docs")
 pkgver=4.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source type-1 or baremetal hypervisor'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -296,20 +296,24 @@ package_xen() {
 	rm -r "${pkgdir}/usr/lib/xen/boot"
 
 	# remove qemu
-	rm -r "${pkgdir}/usr/share/qemu-xen"
-	rm -r  \
-		"${pkgdir}/usr/lib/xen/include/qemu-plugin.h" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-pr-helper" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-edid" \
-		"${pkgdir}/usr/lib/xen/bin/elf2dmp" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-storage-daemon" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-nbd" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-io" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-img" \
-		"${pkgdir}/usr/lib/xen/bin/qemu-system-i386" \
-		"${pkgdir}/usr/lib/xen/libexec/virtiofsd" \
-		"${pkgdir}/usr/lib/xen/libexec/qemu-bridge-helper" \
-		"${pkgdir}/usr/lib/xen/libexec/virtfs-proxy-helper" 
+	if [ "${_build_qemu}" == "true" ]; then
+
+		rm -r "${pkgdir}/usr/share/qemu-xen"
+		rm -r  \
+			"${pkgdir}/usr/lib/xen/include/qemu-plugin.h" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-pr-helper" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-edid" \
+			"${pkgdir}/usr/lib/xen/bin/elf2dmp" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-storage-daemon" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-nbd" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-io" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-img" \
+			"${pkgdir}/usr/lib/xen/bin/qemu-system-i386" \
+			"${pkgdir}/usr/lib/xen/libexec/virtiofsd" \
+			"${pkgdir}/usr/lib/xen/libexec/qemu-bridge-helper" \
+			"${pkgdir}/usr/lib/xen/libexec/virtfs-proxy-helper" 
+
+	fi
 
 
 }
