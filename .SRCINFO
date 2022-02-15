@@ -1,0 +1,16 @@
+pkgbase = perl-xs-parse-sublike
+	pkgdesc = XS functions to assist in parsing C<sub>-like syntax
+	pkgver = 0.16
+	pkgrel = 1
+	url = https://metacpan.org/dist/XS-Parse-Sublike
+	arch = x86_64
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-pod
+	makedepends = perl-module-build
+	depends = perl
+	source = https://www.cpan.org/authors/id/P/PE/PEVANS/XS-Parse-Sublike-0.16.tar.gz
+	sha512sums = 66615f291b498e132fc3513a18ae7723ad19e7daa5ff1e455d467235d7078d9d546281af38f5aa55a757b1cc8835fbf1e52944f0e580e7f135a574d625ef6613
+
+pkgname = perl-xs-parse-sublike
