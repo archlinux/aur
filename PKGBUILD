@@ -8,12 +8,12 @@ pkgver=11.8.16
 pkgrel=6
 pkgdesc='MPD client'
 arch=(x86_64)
-url='https://gmpclient.org/home'
+url='https://github.com/DaveDavenport/gmpc'
 license=(GPL)
 depends=(gtk2 libmpd libsoup sqlite xdg-utils)
 makedepends=(gob2 intltool vala)
-source=("http://download.sarine.nl/Programs/$pkgname/${pkgver%.*}/$pkgname-$pkgver.tar.gz")
-sha256sums=('a69414f35396846733632ca9619921d7acda537ffd6d49bd84b444945cb76b2c')
+source=("https://github.com/DaveDavenport/gmpc/archive/refs/tags/release-$pkgver.tar.gz")
+sha256sums=('7c7e0782475be86bce48ece54e24f6762dd8c8e797fae5a38c013e4d56de64c0')
 
 prepare() {
   sed -i 's/GNOME;AudioVideo;/GTK;AudioVideo;Player;/' \
