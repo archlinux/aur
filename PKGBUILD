@@ -1,12 +1,13 @@
 # Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Fabio Loli <fabio.loli@disroot.org>
 
-_pkgname=kronos
-pkgname=$_pkgname
+pkgname=kronos
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Sega Saturn emulator'
 arch=('i686' 'x86_64' 'pentium4')
-url='https://github.com/FCare/Kronos'
+url="https://fcare.github.io"
+_repo='https://github.com/FCare/Kronos'
 license=('GPL2')
 provides=('kronos')
 depends=('freeglut'
@@ -15,24 +16,30 @@ depends=('freeglut'
          'qt5-base'
          'qt5-multimedia'
 	 'sdl2')
-makedepends=('cmake')
-source=("${_pkgname}::git+${url}#tag=${pkgver}_official_release")
+makedepends=("clang"
+	     "cmake"
+	     "git")
+source=("${pkgname}::git+${_repo}.git#tag=${pkgver}_official_release")
 md5sums=('SKIP')
 
-build() {
-    cd "${_pkgname}/yabause"
+prepare() {
+    cd "${pkgname}/yabause"
     
     if [[ -d build ]]; then
         rm -rf build
     fi
-    mkdir -p build && cd build
+    mkdir -p build
+}
+
+build() {
+    cd "${pkgname}/yabause/build"
     cmake .. \
       -DCMAKE_INSTALL_PREFIX=/usr \
-      -DYAB_USE_QT=ON
+      -DYAB_USE_QT5=ON
     make
 }
 
 package() {
-    cd "${_pkgname}/yabause/build"
+    cd "${pkgname}/yabause/build"
     make DESTDIR="$pkgdir/" install
 }

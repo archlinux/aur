@@ -1,13 +1,15 @@
 pkgbase = kronos
 	pkgdesc = Sega Saturn emulator
 	pkgver = 2.3.1
-	pkgrel = 1
-	url = https://github.com/FCare/Kronos
+	pkgrel = 2
+	url = https://fcare.github.io
 	arch = i686
 	arch = x86_64
 	arch = pentium4
 	license = GPL2
+	makedepends = clang
 	makedepends = cmake
+	makedepends = git
 	depends = freeglut
 	depends = glew
 	depends = openal
@@ -15,7 +17,7 @@ pkgbase = kronos
 	depends = qt5-multimedia
 	depends = sdl2
 	provides = kronos
-	source = kronos::git+https://github.com/FCare/Kronos#tag=2.3.1_official_release
+	source = kronos::git+https://github.com/FCare/Kronos.git#tag=2.3.1_official_release
 	md5sums = SKIP
 
 pkgname = kronos
