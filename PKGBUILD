@@ -3,8 +3,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-git
 _pkgname=xorg-xdm
-pkgver=1.1.12.r0.ga03a628
-pkgrel=2
+pkgver=1.1.12.r6.gd0fa514
+pkgrel=1
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 url="http://xorg.freedesktop.org/"
@@ -17,7 +17,7 @@ source=("$pkgname::git://anongit.freedesktop.org/git/xorg/app/xdm"
 	fixes.patch
         xdm.pam)
 sha512sums=('SKIP'
-            '9fb1c63c37c7fe8d92f9883cc4c1f0f0685076f5edadbae1b56ed01c3f74c6fd31b57b3054441f939bcb617493dbaefe741f6826c9d1e7aa94170f7acb88cb83'
+            '568d9b17caf410e4e5c3033ec4a751a75b6015bf9d20af29414aac14f0b8dffb90f2b20d83999026af5e024379c32508c2f0bdd7b685e536b8511444ab2a11cd'
             'cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}")

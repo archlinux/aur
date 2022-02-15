@@ -7,22 +7,6 @@ diff -up src/xorg-xdm-git/config/GiveConsole.orig src/xorg-xdm-git/config/GiveCo
  chown $USER /dev/console
 +exec /usr/bin/sessreg  -a -w "/var/log/wtmp" -u "/run/utmp" \
 +	-x "/etc/X11/xdm/Xservers" -l $DISPLAY -h "" $USER
-diff -up src/xorg-xdm-git/configure.ac.orig src/xorg-xdm-git/configure.ac
---- src/xorg-xdm-git/configure.ac.orig	2019-08-13 00:10:29.000000000 -0600
-+++ src/xorg-xdm-git/configure.ac	2019-08-13 00:10:30.000000000 -0600
-@@ -173,10 +173,10 @@ AC_ARG_WITH([systemd-daemon], AS_HELP_ST
- 	[Add support for systemd startup notification (default is autodetected)]),
- 	[USE_SYSTEMD_DAEMON=$withval], [USE_SYSTEMD_DAEMON=auto])
- AS_IF([test "x$USE_SYSTEMD_DAEMON" != "xno"], [
--    PKG_CHECK_MODULES([SYSTEMD_DAEMON], [libsystemd-daemon],
-+    PKG_CHECK_MODULES([SYSTEMD_DAEMON], [libsystemd],
- 	[AC_DEFINE(USE_SYSTEMD_DAEMON,1,[Use systemd startup notification])],
- 	[AS_IF([test "x$USE_SYSTEMD_DAEMON" = "xyes"],
--	    [AC_MSG_ERROR([systemd startup notification support requested, but libsystemd-daemon not found.])]
-+	    [AC_MSG_ERROR([systemd startup notification support requested, but libsystemd not found.])]
- 	)]
-     )
- ])
 diff -up src/xorg-xdm-git/config/Xservers.ws.in.orig src/xorg-xdm-git/config/Xservers.ws.in
 --- src/xorg-xdm-git/config/Xservers.ws.in.orig	2019-08-13 00:10:29.000000000 -0600
 +++ src/xorg-xdm-git/config/Xservers.ws.in	2019-08-13 00:10:31.000000000 -0600

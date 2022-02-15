@@ -1,7 +1,7 @@
 pkgbase = xorg-xdm-git
 	pkgdesc = X Display Manager
-	pkgver = 1.1.12.r0.ga03a628
-	pkgrel = 2
+	pkgver = 1.1.12.r6.gd0fa514
+	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = xorg-xdm-git
 	depends = xorg-sessreg
 	depends = libxft
 	depends = systemd
-	provides = xorg-xdm=1.1.12-2
+	provides = xorg-xdm=1.1.12-1
 	conflicts = xorg-xdm
 	options = !libtool
 	backup = etc/X11/xdm/Xaccess
@@ -32,8 +32,7 @@ pkgbase = xorg-xdm-git
 	source = fixes.patch
 	source = xdm.pam
 	sha512sums = SKIP
-	sha512sums = 9fb1c63c37c7fe8d92f9883cc4c1f0f0685076f5edadbae1b56ed01c3f74c6fd31b57b3054441f939bcb617493dbaefe741f6826c9d1e7aa94170f7acb88cb83
+	sha512sums = 568d9b17caf410e4e5c3033ec4a751a75b6015bf9d20af29414aac14f0b8dffb90f2b20d83999026af5e024379c32508c2f0bdd7b685e536b8511444ab2a11cd
 	sha512sums = cb912013a294f0801b357a43f3e5313ffa9ac5fcc493b2318843983388eb0b839c84060a97c355e12ca03f3b056644aa4a2bb8a74ed73a0f2405816b8d6efdc0
 
 pkgname = xorg-xdm-git
-
