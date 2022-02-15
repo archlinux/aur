@@ -3,7 +3,7 @@
 _pkgname=mwparserfromhell
 pkgname=python-mwparserfromhell-git
 pkgdesc="A Python parser for MediaWiki wikicode"
-pkgver=0.6.2.r1.gdcf7ba4
+pkgver=0.6.4.r1.g6665505
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/earwig/mwparserfromhell"
@@ -11,6 +11,8 @@ license=('MIT')
 depends=('python')
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner')
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver}")
 source=('git://github.com/earwig/mwparserfromhell')
 md5sums=('SKIP')
 
