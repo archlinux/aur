@@ -1,0 +1,21 @@
+pkgbase = perl-net-davtalk
+	pkgdesc = Interface to talk to DAV servers
+	pkgver = 0.20
+	pkgrel = 1
+	url = https://metacpan.org/dist/Net-DAVTalk
+	arch = any
+	license = Artistic2.0
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	depends = perl
+	depends = perl-datetime-format-iso8601
+	depends = perl-json
+	depends = perl-json-xs
+	depends = perl-tie-datauuid
+	depends = perl-uri
+	depends = perl-xml-fast
+	depends = perl-xml-spice
+	source = https://www.cpan.org/modules/by-module/Net/Net-DAVTalk-0.20.tar.gz
+	sha512sums = 3a894e96d8ee039ef870489c403ea1f8848eaed9f5c8f607571967b4d67a1492bbb1468f1a92797ba49105611b4aa95bc1db514cd652a444e5f319dd20fd23f7
+
+pkgname = perl-net-davtalk
