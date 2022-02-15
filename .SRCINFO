@@ -1,7 +1,7 @@
 pkgbase = koko-git
 	pkgdesc = Image gallery application designed for desktop and touch devices
 	pkgver = v21.05.r8.g3f9411a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/graphics/koko
 	arch = x86_64
 	arch = i686
@@ -18,8 +18,14 @@ pkgbase = koko-git
 	depends = kguiaddons
 	depends = kconfig
 	depends = knotifications
-	depends = exiv2
 	depends = kquickimageeditor
+	depends = exiv2
+	depends = kdeclarative
+	depends = kfilemetadata
+	depends = ki18n
+	depends = kio
+	depends = kdbusaddons
+	depends = qt5-location
 	source = git+https://invent.kde.org/graphics/koko.git
 	md5sums = SKIP
 

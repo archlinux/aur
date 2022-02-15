@@ -2,12 +2,13 @@
 
 pkgname=koko-git
 pkgver=v21.05.r8.g3f9411a
-pkgrel=1
+pkgrel=2
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 pkgdesc="Image gallery application designed for desktop and touch devices"
 url="https://invent.kde.org/graphics/koko"
 license=('LGPL2.1')
-depends=('kirigami2' 'kcoreaddons' 'kguiaddons' 'kconfig' 'knotifications' 'exiv2' 'kquickimageeditor')
+depends=('kirigami2' 'kcoreaddons' 'kguiaddons' 'kconfig' 'knotifications' 'kquickimageeditor'
+         'exiv2' 'kdeclarative' 'kfilemetadata' 'ki18n' 'kio' 'kdbusaddons' 'qt5-location')
 makedepends=('extra-cmake-modules' 'qt5-svg' 'qt5-tools')
 source=("git+${url}.git")
 md5sums=('SKIP')
