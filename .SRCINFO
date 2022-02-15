@@ -1,0 +1,15 @@
+pkgbase = cmake_tui
+	pkgdesc = CMake configuration via terminal user interface
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/regular-dev/cmake_tui
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = cmake
+	depends = gcc
+	depends = make
+	source = cmake_tui-1.0.0.tar.gz::https://static.crates.io/crates/cmake_tui/cmake_tui-1.0.0.crate
+	sha512sums = 34207502d386791a87c651b7568256d3ebdb85d406073a2b18ce22a15f9f567129833bf94a4cdaf03ad552f70bf5b247b1a5b8ce6203be936c4e95634b1e8ce8
+
+pkgname = cmake_tui
