@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=pomerium-bin
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc='Identity-aware access proxy'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=('pomerium.sysusers')
 source_x86_64=("pomerium-server-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/pomerium_${pkgver}-1_amd64.deb")
 source_aarch64=("pomerium-server-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/pomerium_${pkgver}-1_arm64.deb")
 sha256sums=('36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111')
-sha256sums_x86_64=('ad27d9e38ce68ea56c8311be1cd70832394b6f8ad0bf68279307cdf0d1040221')
-sha256sums_aarch64=('13cd37784094913ea18c7c94290e46089ab219f1e4ab641d871687a5ff220a5b')
+sha256sums_x86_64=('ab40a046b3eedc1db8298c5422d01f82bcc3e1c303cff3f09541e17e23999c65')
+sha256sums_aarch64=('3c00b4366e86e91213eb9c7587549eb21d6be512752533052f78ac851dafa57f')
 
 prepare() {
 	mkdir dump
