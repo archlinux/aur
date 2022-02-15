@@ -26,6 +26,7 @@ pkgbase = python-ocp
 	depends = python
 	depends = opencascade
 	depends = vtk
+	conflicts = python-ocp-git
 	source = git+https://github.com/CadQuery/OCP.git#tag=7.5.3.0
 	source = git+https://github.com/CadQuery/pywrap.git
 	sha256sums = SKIP
