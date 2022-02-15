@@ -1,0 +1,31 @@
+From 028f8eff139d305276bbcc95fedfd59700cade2e Mon Sep 17 00:00:00 2001
+From: Dario Vladovic <d.vladimyr@gmail.com>
+Date: Tue, 15 Feb 2022 04:14:34 +0000
+Subject: [PATCH] Add DESTDIR support
+
+---
+ Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 30f71f5..9366717 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,10 +14,10 @@ src/${NAME}: src/${NAME}.pl
+ 	sed -e "s|/usr/local/bin/perl|${PERL}|" $? >$@
+ 
+ install: prep
+-	mkdir -p ${PREFIX}/bin ${PREFIX}/share/man/man1
+-	install -m 755 src/${NAME} ${PREFIX}/bin/${NAME}
+-	install -m 444 doc/${NAME}.1 ${PREFIX}/share/man/man1
+-	install -m 444 conf/${NAME}.resolvers ${PREFIX}/share/${NAME}.resolvers
++	mkdir -p ${DESTDIR}${PREFIX}/bin ${DESTDIR}${PREFIX}/share/man/man1
++	install -m 755 src/${NAME} ${DESTDIR}${PREFIX}/bin/${NAME}
++	install -m 444 doc/${NAME}.1 ${DESTDIR}${PREFIX}/share/man/man1
++	install -m 444 conf/${NAME}.resolvers ${DESTDIR}${PREFIX}/share/${NAME}.resolvers
+ 
+ clean:
+ 	rm -f src/${NAME}
+-- 
+2.35.1
+
