@@ -1,0 +1,25 @@
+pkgbase = anastasis-gtk-git
+	pkgdesc = Graphical user interface for GNU Anastasis
+	pkgver = r99.7fedfde
+	pkgrel = 1
+	url = https://www.gnu.org/software/anastasis
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = anastasis
+	depends = jansson
+	depends = gnunet
+	depends = gnunet-gtk
+	depends = gtk3
+	depends = libgcrypt
+	depends = libmicrohttpd
+	depends = postgresql
+	depends = taler-exchange
+	depends = taler-merchant
+	provides = anastasis-gtk
+	conflicts = anastasis-gtk
+	conflicts = anastasis-gtk-bin
+	source = git+https://git.taler.net/anastasis-gtk.git
+	sha256sums = SKIP
+
+pkgname = anastasis-gtk-git
