@@ -2,17 +2,16 @@ diff --git a/build_files/cmake/Modules/FindEmbree.cmake b/build_files/cmake/Modu
 index 90cf23d3e13..f625efaa542 100644
 --- a/build_files/cmake/Modules/FindEmbree.cmake
 +++ b/build_files/cmake/Modules/FindEmbree.cmake
-@@ -7,6 +7,9 @@
+@@ -10,5 +10,8 @@
  #  EMBREE_ROOT_DIR, The base directory to search for Embree.
  #                        This can also be an environment variable.
  #  EMBREEFOUND, If false, do not try to use Embree.
 +#
 +# also defined, but not for general use are
 +#  EMBREE_LIBRARY, where to find the Embree library.
- 
- #=============================================================================
- # Copyright 2018 Blender Foundation.
-@@ -67,14 +70,23 @@ FOREACH(COMPONENT ${_embree_FIND_COMPONENTS})
+
+ # If EMBREE_ROOT_DIR was defined in the environment, use it.
+@@ -63,14 +66,23 @@ FOREACH(COMPONENT ${_embree_FIND_COMPONENTS})
  ENDFOREACH()
  
  
