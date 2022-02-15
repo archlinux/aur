@@ -32,8 +32,6 @@ python-jinja
 python-toml
 lief
 )
-conflicts=(python-ocp)
-provides=(python-ocp)
 source=(
 git+https://github.com/CadQuery/OCP.git#tag=${pkgver}
 git+https://github.com/CadQuery/pywrap.git
