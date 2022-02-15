@@ -23,9 +23,9 @@ pkgbase = airvpn-suite-beta-bin
 	conflicts = airvpn-suite
 	conflicts = airvpn-suite-bin
 	backup = etc/airvpn/bluetit.rc
-	source = https://eddie.website/repository/AirVPN-Suite/1.2.0-Beta1/AirVPN-Suite-x86_64-1.2.0-Beta-1.tar.gz
-	sha256sums = aacea0b19d1d325b11f21624a6965c0e2b785b7597e2a01feec9072e7d32f801
-	sha256sums_armv7l = ce1cb059d988ba26b1008de9f17a0fff9f9667c114096ce7eee0bb617f767dd8
-	sha256sums_aarch64 = 5ac28c386609b11237fb3e9c3b2591da768d50d3c9a11774308a40c63c6c996f
+	source = https://eddie.website/repository/AirVPN-Suite/1.2.0-RC1/AirVPN-Suite-x86_64-1.2.0-RC-1.tar.gz
+	sha256sums = f6444a3d20b182503e3b24fedf41a6e1d2aff9f740569eb40d25990751125162
+	sha256sums_armv7l = 9abf722925888ce326a6869d6005985d4d5a8f95bd6037f78550f822855d40b7
+	sha256sums_aarch64 = f0740d1db80917dee45924d9e263acd038111311b67cf8a53c7672f080f931ed
 
 pkgname = airvpn-suite-beta-bin

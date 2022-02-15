@@ -1,7 +1,16 @@
 Changelog for AirVPN Suite
 
+Version 1.2.0 RC 1 - 15 February 2022
+
+- [ProMIND] Updated to OpenVPN 3.7.2 AirVPN
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.0 Beta 1 - 7 February 2022
 
+- [ProMIND] Updated to OpenVPN 3.7.1 AirVPN, latest support libraries and support projects
 - [ProMIND] vpnclient.hpp: added methods openVPNInfo(), openVPNCopyright() and sslLibraryVersion()
 - [ProMIND] vpnclient.hpp: added event management (subscription, unsubscription, raising) via callback functions for all native ClientEvent::Type
 - [ProMIND] loadmod.c: added support for gz and zstd modules
