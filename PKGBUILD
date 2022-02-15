@@ -5,15 +5,15 @@
 # This file is based on original PKGBUILD of GTK3 package.
 # https://git.archlinux.org/svntogit/packages.git/plain/trunk/PKGBUILD?h=packages/gtk3
 
-__arch_pkg_commit="348566928ab92521329812792b77b491626e64cc"
+__arch_pkg_commit="e73aeb8db960eb45cc8d7b4858293b83d4887da4"
 _gtkver=3.24.31
 
-_gtk3_classic_commit="884d0e68d3926c2e4d3276747a97a8dbf0ff802a"
+_gtk3_classic_commit="221a3257c5d804520e3a26270ac2fc4673d39eb4"
 
 pkgbase=gtk3-classic
 pkgname=($pkgbase lib32-$pkgbase)
 pkgver=${_gtkver}
-pkgrel=2
+pkgrel=3
 pkgdesc="GTK3 patched to provide a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
 conflicts=(gtk3 gtk3-typeahead gtk3-print-backends)
