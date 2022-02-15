@@ -4,15 +4,18 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Contributor: Marco Melorio <marco.melorio@protonmail.com>
 # Contributor: Bakasura <bakasura@protonmail.ch>
+# Contributor: Luna Jernberg <droidbittin@gmail.com>
 
 _pkgname=libadwaita
 pkgname=$_pkgname-git
-pkgver=1.0.0+alpha.2+3+g959f434
-pkgrel=2
+pkgver=1.1.beta.r5.ge70ae74d
+pkgrel=1
 pkgdesc="Library full of GTK widgets for mobile phones"
 url="https://gitlab.gnome.org/GNOME/$_pkgname"
 license=(LGPL)
-arch=(any)
+arch=(i686
+      pentium4
+      x86_64)
 depends=(gtk4)
 makedepends=(git gobject-introspection meson sassc vala wayland-protocols)
 checkdepends=(xorg-server-xvfb)
@@ -23,7 +26,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
