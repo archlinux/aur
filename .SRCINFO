@@ -1,6 +1,6 @@
 pkgbase = fastgame-git
 	pkgdesc = Optimize system performance for games
-	pkgver = 0.0.9.r53.g43786aa
+	pkgver = 0.2.0.r0.g6a53b7c
 	pkgrel = 1
 	url = https://github.com/wwmm/fastgame
 	arch = x86_64
@@ -10,14 +10,13 @@ pkgbase = fastgame-git
 	makedepends = boost
 	makedepends = itstool
 	depends = boost-libs
-	depends = gtk3
-	depends = gtkmm3
-	depends = glibmm
-	depends = libsigc++
+	depends = gtk4
+	depends = glib2
+	depends = fmt
+	depends = libsigc++-3.0
 	provides = fastgame
 	conflicts = fastgame
 	source = git+https://github.com/wwmm/fastgame.git
 	sha512sums = SKIP
 
 pkgname = fastgame-git
-
