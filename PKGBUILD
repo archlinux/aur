@@ -3,7 +3,7 @@
 _pkgname=edisyn
 _githash="c0d6b273ad5b2ec8e06283dee150c01ae7206837"
 pkgname="${_pkgname}-bin"
-pkgver=26
+pkgver=30
 pkgrel=1
 pkgdesc="A cross-platform synthesizer patch editor library"
 arch=('i686' 'x86_64')
@@ -16,15 +16,15 @@ source=("${_pkgname}-${pkgver}.jar::https://cs.gmu.edu/~eclab/projects/${_pkgnam
         "${_pkgname}.desktop"
         "${_pkgname}.sh")
 noextract=("${_pkgname}-${pkgver}.jar")
-md5sums=('57deace01f048365260a15ef0eee1b46'
+md5sums=('198b0e672028844592c0ecc1240fa33d'
          '5022b2d274e99ca6704f4dd69e17a1cb'
-         'a6f1544c7b08354593f2c5b91258d88c')
+         '494330223b9e478085b466e3bce3df4c')
 
 package() {
   install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.jar" \
-    "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.jar"
+    "${pkgdir}/usr/share/java/${_pkgname}/${_pkgname}.jar"
   install -Dm755 "${srcdir}/${_pkgname}.sh" \
     "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/${_pkgname}.desktop" \
-    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    -t "${pkgdir}/usr/share/applications/"
 }
