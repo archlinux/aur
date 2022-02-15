@@ -1,7 +1,7 @@
 pkgbase = vym-git
 	pkgdesc = A tool to generate and manipulate maps which show your thoughts
 	pkgver = 2.8.8.r119.g0b30833
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/vym/
 	arch = x86_64
 	license = GPL
