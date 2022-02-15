@@ -1,7 +1,7 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
 	pkgver = 7.2.GE.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
 	arch = x86_64
@@ -159,6 +159,7 @@ pkgbase = wine-ge-custom
 	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=7.2-GE-2
 	source = wine::git+https://github.com/wine-mirror/wine.git#commit=d318f43559dbb0093e22bab1aa0eb9dc01170cc2
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=68441b1d9552b1a75c45a981c0a0279d064349fb
+	source = https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
 	source = wine-more_8x5_res.patch
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch
@@ -169,6 +170,7 @@ pkgbase = wine-ge-custom
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
+	sha512sums = d2ec70d61851ba43dc523898b415746b9ec0a2b0a98aa2bd0e19b4dd8afee2ab74c9bf841a80336380d79f15ddd3b9ff56362bb6a9557d4c1094a674a70ce2c8
 	sha512sums = 13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2
 	sha512sums = 30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569
 	sha512sums = 3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282

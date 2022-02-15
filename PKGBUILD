@@ -11,7 +11,7 @@ _stag_commit=68441b1d9552b1a75c45a981c0a0279d064349fb
 pkgname=wine-ge-custom
 _srctag=7.2-GE-2 
 pkgver=${_srctag//-/.}
-pkgrel=1
+pkgrel=2
 
 #_winever=${pkgver%.*}
 _winever=$pkgver
@@ -20,6 +20,7 @@ _pkgbasever=${pkgver/rc/-rc}
 source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
         wine::git+https://github.com/wine-mirror/wine.git#commit=${_wine_commit}
         wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=${_stag_commit}
+        https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
         wine-more_8x5_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
@@ -28,6 +29,7 @@ source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.gi
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
+            'd2ec70d61851ba43dc523898b415746b9ec0a2b0a98aa2bd0e19b4dd8afee2ab74c9bf841a80336380d79f15ddd3b9ff56362bb6a9557d4c1094a674a70ce2c8'
             '13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
             '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
@@ -134,6 +136,7 @@ prepare() {
   pushd $pkgname
     rm -r wine && cp -r "$srcdir"/wine wine
     rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
+    cp "$srcdir"/fsync_futex_waitv.patch patches/proton/57-fsync_futex_waitv.patch
     patches/protonprep.sh
     pushd wine
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
