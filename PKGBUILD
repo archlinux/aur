@@ -10,7 +10,7 @@
 
 _electron=electron15
 pkgname=(element-{desktop,web}-greentext)
-pkgver=1.10.1
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(any)
@@ -24,7 +24,7 @@ _url="https://github.com/vector-im/element"
 source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-web-${pkgver}.tar.gz.asc::${_url}-web/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
         element-desktop-${pkgver}.tar.gz::${_url}-desktop/archive/v${pkgver}.tar.gz
-        element-desktop-${pkgver}.tar.gz.asc::${_url}-desktop/releases/download/v${pkgver}/v${pkgver}.tar.gz.asc
+        element-desktop-${pkgver}.tar.gz.asc::${_url}-desktop/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
         custom-emoji.json
         autolaunch.patch
         io.element.Element.desktop
@@ -32,9 +32,9 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-config.json
         element-web.sh
         element-desktop.sh)
-sha256sums=('03dc51a903c06e9c13b63415f4d393392ed8e0286ae6084eba8134d55dcf55ec'
+sha256sums=('26d0b28879048eb79f9cb68163dbea42c5ecaf779418d225484d6e0cc67cb671'
             'SKIP'
-            '00945a85c58bea82d79af17389b02c2c579fe08b4a3c1239a727c0af4fc07a1f'
+            '737efb87f0d399d2d63872b463f2b07829093879cb8bc48ca547bb611a74aca4'
             'SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
