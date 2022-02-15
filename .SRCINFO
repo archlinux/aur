@@ -1,0 +1,14 @@
+pkgbase = fcron-dev
+	pkgdesc = fcron - daemon to execute scheduled task.
+	pkgver = 3.3.1
+	pkgrel = 1
+	url = http://fcron.free.fr/
+	arch = any
+	license = GPL
+	depends = make
+	depends = gcc
+	conflicts = fcron
+	source = http://fcron.free.fr/archives/fcron-3.3.1.src.tar.gz
+	sha256sums = f359daa08a63ddfb7fe2f964bb3f5c52244c25aa36f9225a3cc54d36f4681106
+
+pkgname = fcron-dev
