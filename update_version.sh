@@ -4,6 +4,9 @@
 
 set -euxo pipefail
 
+# Pull latest changes
+git pull
+
 # Get channel
 CHANNEL=$(awk -F '=' '/^_channel/{ print $2 }' PKGBUILD)
 PKG="microsoft-edge-${CHANNEL}"
