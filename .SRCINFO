@@ -1,7 +1,7 @@
 pkgbase = webex-bin
 	pkgdesc = Webex for Linux
 	pkgver = 42.2.0.21338
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.webex.com/
 	arch = x86_64
 	license = custom
@@ -16,6 +16,7 @@ pkgbase = webex-bin
 	depends = libpulse
 	depends = libsecret
 	depends = libxcb
+	depends = libxcrypt-compat
 	depends = libxkbcommon-x11
 	depends = mesa
 	depends = nspr

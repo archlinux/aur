@@ -1,7 +1,7 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
 pkgver=42.2.0.21338
-pkgrel=1
+pkgrel=2
 pkgdesc="Webex for Linux"
 arch=('x86_64')
 url="https://www.webex.com/"
@@ -17,6 +17,7 @@ depends=('alsa-lib'
          'libpulse'
          'libsecret'
          'libxcb'
+         'libxcrypt-compat'
          'libxkbcommon-x11'
          'mesa'
          'nspr'
