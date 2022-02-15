@@ -5,8 +5,8 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='0.6.0'
-pkgrel=6
-_rc=2
+pkgrel=7
+_rc=3
 _pkgver=${pkgver}
 _tag_ver="v${_pkgver}-rc${_rc}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -22,14 +22,14 @@ source=("https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-conf
 "${_scripts}.tar.gz" )
 sha256sums=('42afb6366b877fbfe30905256cf1ec357bcc6a9e8456dfbd4935feb9bd237d1b'
             'cd25c47e5b155ae24a41ca1f4dd822662027b6b8a2b8bbacbaf98f746576950f')
-sha256sums_i686=('c51aa91cc7170daa9f4124dcd332f70b616bc4412f7e18645543553301af7a63')
-sha256sums_x86_64=('41771efb735a209f70fe72c7039b0b8a2f8f3ea6250f13463d382ec7c5ceca12')
-sha256sums_aarch64=('13cddc46b672903340095167618a0983639bba4630d59626ffc37d470ca81b69')
-sha256sums_armv8=('13cddc46b672903340095167618a0983639bba4630d59626ffc37d470ca81b69')
-sha256sums_armv7=('80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912')
-sha256sums_armv7l=('80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912')
-sha256sums_armv7h=('80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912')
-sha256sums_arm=('80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912')
+sha256sums_i686=('0139cada0c181890dfd09af0e5d9e2cf35202651b9178d7fda7f120aea41601c')
+sha256sums_x86_64=('652c78caf6e0e7a9d36f29fcb04b1113dfa631881da4fe74870216f5c291f131')
+sha256sums_aarch64=('93a5789ce2f2e3135af4805d7c920932bae3612cd92bff2c60d060c2ccd3ed37')
+sha256sums_armv8=('93a5789ce2f2e3135af4805d7c920932bae3612cd92bff2c60d060c2ccd3ed37')
+sha256sums_armv7=('40f65238f4259a83ac14251577a38e8e7ab0e3759db8a4408a58788bd17e2b32')
+sha256sums_armv7l=('40f65238f4259a83ac14251577a38e8e7ab0e3759db8a4408a58788bd17e2b32')
+sha256sums_armv7h=('40f65238f4259a83ac14251577a38e8e7ab0e3759db8a4408a58788bd17e2b32')
+sha256sums_arm=('40f65238f4259a83ac14251577a38e8e7ab0e3759db8a4408a58788bd17e2b32')
 #https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")

@@ -5,8 +5,8 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=6
-_rc=2
+pkgrel=7
+_rc=3
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 _tag_ver="v${_pkgver}-rc${_rc}"
@@ -35,9 +35,9 @@ noextract=(
 )
 sha256sums=('42afb6366b877fbfe30905256cf1ec357bcc6a9e8456dfbd4935feb9bd237d1b'
             'a84b61364842e914d550923fd3fc005013fa1a4ecfa3d5e9f491d2c6b2182118'
-            '41771efb735a209f70fe72c7039b0b8a2f8f3ea6250f13463d382ec7c5ceca12'
-            '13cddc46b672903340095167618a0983639bba4630d59626ffc37d470ca81b69'
-            '80e9b1e20d95ffa3683f521750dbec14f934123a151431460f3ab11fd7dda912')
+            '652c78caf6e0e7a9d36f29fcb04b1113dfa631881da4fe74870216f5c291f131'
+            '93a5789ce2f2e3135af4805d7c920932bae3612cd92bff2c60d060c2ccd3ed37'
+            '40f65238f4259a83ac14251577a38e8e7ab0e3759db8a4408a58788bd17e2b32')
 
 build() {
   for i in ${_pkgarches[@]}; do
