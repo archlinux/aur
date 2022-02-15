@@ -3,7 +3,7 @@
 # Release Code Name: Pausch
 
 pkgname=lbry-app-bin
-pkgver=0.52.2
+pkgver=0.52.3
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 provides=('lbry' 'lbrynet')
 depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
 source=("https://github.com/lbryio/lbry-desktop/releases/download/v$pkgver/LBRY_$pkgver.deb")
-sha512sums=('f082160ff13b32db8fd56fca596718d826899f00bd7a5c7950b3f5af6d9334c7cbf039d21b201778f3d04b22e8106c3523adae39b4f33068c54652e86b8cbaea')
+sha512sums=('52264550767b835c6948973d9bb0103da9ce31946fe154b617e4c3c87d52f10a29ce4a216257b89b19c29ec990419fe9563d9e4a17815a1b5964d1109c53995b')
 
 package() {
     install -dm 755 "$pkgdir/usr/bin/"
