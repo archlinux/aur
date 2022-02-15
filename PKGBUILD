@@ -3,7 +3,7 @@
 
 pkgname=freeplane-git
 _NEXT_VERSION=1.9.x
-pkgver=1.9.x.d1e6ba16a
+pkgver=1.9.x.b78bf34db
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
