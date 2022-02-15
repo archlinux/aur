@@ -1,4 +1,4 @@
-pkgbase = satania-buddy-git
+pkgbase = pkgbase
 	pkgdesc = Virtual Satania Desktop Assistant
 	pkgver = r68.ade3a6f
 	pkgrel = 1
