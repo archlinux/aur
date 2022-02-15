@@ -1,7 +1,7 @@
-From de0c264f425311abaf91aa461d53d91a1aac6072 Mon Sep 17 00:00:00 2001
+From 9e72afecf7c3418f6c42c72e7976845d0b13059e Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 31 Jan 2022 20:20:40 +0100
-Subject: [PATCH 2/3] archlinux-compat: Remove unused mbedTLS code from libcurl
+Subject: [PATCH 2/2] archlinux-compat: Remove unused mbedTLS code from libcurl
  usage
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 2/3] archlinux-compat: Remove unused mbedTLS code from libcurl
  1 file changed, 1 insertion(+), 24 deletions(-)
 
 diff --git a/lib/libimhex/source/helpers/net.cpp b/lib/libimhex/source/helpers/net.cpp
-index af86328..9a1362e 100644
+index ee4905a9..3ab5ea12 100644
 --- a/lib/libimhex/source/helpers/net.cpp
 +++ b/lib/libimhex/source/helpers/net.cpp
 @@ -7,8 +7,6 @@
@@ -47,12 +47,12 @@ index af86328..9a1362e 100644
          curl_easy_setopt(this->m_ctx, CURLOPT_NOSIGNAL, 1L);
          curl_easy_setopt(this->m_ctx, CURLOPT_NOPROGRESS, 0L);
 -
--        #if defined(OS_WINDOWS)
--            curl_easy_setopt(this->m_ctx, CURLOPT_CAINFO, nullptr);
--            curl_easy_setopt(this->m_ctx, CURLOPT_CAPATH, nullptr);
--            curl_easy_setopt(this->m_ctx, CURLOPT_SSLCERTTYPE, "PEM");
--            curl_easy_setopt(this->m_ctx, CURLOPT_SSL_CTX_FUNCTION, sslCtxFunction);
--        #endif
+-#if defined(OS_WINDOWS)
+-        curl_easy_setopt(this->m_ctx, CURLOPT_CAINFO, nullptr);
+-        curl_easy_setopt(this->m_ctx, CURLOPT_CAPATH, nullptr);
+-        curl_easy_setopt(this->m_ctx, CURLOPT_SSLCERTTYPE, "PEM");
+-        curl_easy_setopt(this->m_ctx, CURLOPT_SSL_CTX_FUNCTION, sslCtxFunction);
+-#endif
      }
  
      std::optional<i32> Net::execute() {

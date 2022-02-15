@@ -1,18 +1,19 @@
-From 8fad54e2c1e3a978abf3c15a75014d8e5e24d226 Mon Sep 17 00:00:00 2001
+From 1a6e81cbcafb7486beabfc7be597d2370fde4448 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 10 Jan 2022 15:47:10 +0100
-Subject: [PATCH 1/3] makepkg: Remove external dependencies check
+Subject: [PATCH 1/2] makepkg: Remove external dependencies check
 
 ---
  CMakeLists.txt            |  1 -
  cmake/build_helpers.cmake | 11 -----------
- 2 files changed, 12 deletions(-)
+ lib/external/libromfs     |  2 +-
+ 3 files changed, 1 insertion(+), 13 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index ba7e9da..63268e5 100644
+index 59087df6..eb396e59 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -11,7 +11,6 @@ include("${CMAKE_SOURCE_DIR}/cmake/build_helpers.cmake")
+@@ -11,7 +11,6 @@ include("${IMHEX_BASE_FOLDER}/cmake/build_helpers.cmake")
  
  # Make sure project is configured correctly
  setDefaultBuiltTypeIfUnset()
@@ -21,16 +22,16 @@ index ba7e9da..63268e5 100644
  # List plugin names here. Project name must match folder name
  set(PLUGINS
 diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
-index 8cbbdd9..d783265 100644
+index 6dcf890d..d1f0b3a6 100644
 --- a/cmake/build_helpers.cmake
 +++ b/cmake/build_helpers.cmake
-@@ -266,14 +266,3 @@ macro(setDefaultBuiltTypeIfUnset)
+@@ -269,14 +269,3 @@ macro(setDefaultBuiltTypeIfUnset)
          set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
      endif()
  endmacro()
 -
 -macro(detectBadClone)
--    file (GLOB EXTERNAL_DIRS "external/*")
+-    file (GLOB EXTERNAL_DIRS "lib/external/*")
 -    foreach (EXTERNAL_DIR ${EXTERNAL_DIRS})
 -        file(GLOB RESULT "${EXTERNAL_DIR}/*")
 -        list(LENGTH RESULT ENTRY_COUNT)
@@ -40,6 +41,13 @@ index 8cbbdd9..d783265 100644
 -    endforeach ()
 -endmacro()
 \ No newline at end of file
+diff --git a/lib/external/libromfs b/lib/external/libromfs
+index 0842d22d..5d327344 160000
+--- a/lib/external/libromfs
++++ b/lib/external/libromfs
+@@ -1 +1 @@
+-Subproject commit 0842d22deb13e036eb1fb15df368b6cad552abfe
++Subproject commit 5d3273443a47f4a2f295cc476b5266a84e836206
 -- 
 2.35.1
 
