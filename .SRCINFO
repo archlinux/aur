@@ -1,0 +1,21 @@
+pkgbase = taler-exchange-git
+	pkgdesc = Exchange implementation
+	pkgver = r5634.8ecbdeb5
+	pkgrel = 1
+	url = https://taler.net/
+	arch = i686
+	arch = x86_64
+	groups = taler
+	license = AGPL
+	makedepends = python-jinja
+	depends = python
+	depends = gnunet
+	depends = libmicrohttpd
+	depends = postgresql
+	provides = taler-exchange
+	conflicts = taler-exchange
+	conflicts = taler-exchange-bin
+	source = git+https://git.taler.net/exchange.git/
+	sha256sums = SKIP
+
+pkgname = taler-exchange-git
