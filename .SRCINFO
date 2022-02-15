@@ -1,0 +1,15 @@
+pkgbase = wordle-git
+	pkgdesc = TUI Wordle
+	pkgver = 0.4.0.r31.gfbe80ee
+	pkgrel = 1
+	url = https://github.com/conradludgate/wordle
+	arch = x86_64
+	license = N.A.
+	makedepends = git
+	makedepends = rust
+	provides = wordle
+	conflicts = wordle
+	source = wordle::git+https://github.com/conradludgate/wordle
+	sha1sums = SKIP
+
+pkgname = wordle-git
