@@ -6,8 +6,8 @@
 
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
-pkgver=1.5.4
-pkgrel=2
+pkgver=1.5.5
+pkgrel=1
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
@@ -18,7 +18,7 @@ optdepends=('fluidsynth')
 source=(https://downloads.sourceforge.net/tuxguitar/tuxguitar-$pkgver-src.tar.gz
         tuxguitar
         tuxguitar-gtk2)
-sha256sums=('8f73c8c9a90d5df7828f9854a93068c623eec9ed27240436411552484d71503a'
+sha256sums=('2e855500d9cea6987962a851d7e3fcb144e3220b10f71fba1514913e70542398'
             'efeef39d43ecf5a87ed64abc7d8cf63a01f3c9b08bac0ea299bf959fcb7c216a'
             '39f92c0de6fcf86635dec5ac3b83613ca980fa7d24f66888fd06e5bb2c7c571f')
 
