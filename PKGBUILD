@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
 pkgver=1.1.12.r48.g027536f
-pkgrel=3
+pkgrel=4
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
