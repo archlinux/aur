@@ -109,9 +109,10 @@ check() {
   cd OCP
 
   # prevent the current environment from skewing the testing
-  unset "${!CSF@}"
-  unset "${!DRAW@}"
-  unset CASROOT
+  # comment these if using community occt package
+  #unset "${!CSF@}"
+  #unset "${!DRAW@}"
+  #unset CASROOT
 
   PYTHONPATH="$(pwd)/build_dir" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
 }
