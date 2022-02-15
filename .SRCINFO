@@ -1,14 +1,13 @@
 pkgbase = kyverno-git
 	pkgdesc = Kubernetes Native Policy Management - CLI
-	pkgver = v1.2.1.r3.g7e9b08ba
+	pkgver = 1.7.dev.r3.g5c91bb821
 	pkgrel = 1
-	url = https://github.com/nirmata/kyverno
+	url = https://github.com/kyverno/kyverno
 	arch = any
 	license = Apache
 	makedepends = make
 	makedepends = go
-	source = git+https://github.com/nirmata/kyverno
+	source = git+https://github.com/kyverno/kyverno
 	md5sums = SKIP
 
 pkgname = kyverno-git
-

@@ -3,11 +3,11 @@
 
 _pkgname=kyverno
 pkgname=$_pkgname-git
-pkgver=v1.2.1.r3.g7e9b08ba
+pkgver=1.7.dev.r3.g5c91bb821
 pkgrel=1
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('any')
-url="https://github.com/nirmata/$_pkgname"
+url="https://github.com/kyverno/$_pkgname"
 source=("git+$url")
 md5sums=('SKIP')
 license=('Apache')
