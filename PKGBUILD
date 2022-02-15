@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=mkusb
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A shell script to create ISO multiboot USB flash drives that support both legacy and EFI boot"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('bash' 'dosfstools' 'grub')
 optdepends=('dialog: required if not specifying device on command line'
             'syslinux: only required for FreeDOS')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ac4f66dc7e062cf8eb3500d990070bc32053087042e6118b53eb25a70e92aa56efbab205f0ed579e394fa191caa1f571967e6b7b4ef0e2d1ce841e201591baab')
+sha512sums=('578ca1157090dad73ed803f65f88983e5d6f77fca9491428d9c7dccc00e48cb021a3c87c52ff0f7740e4b9e5bc61e20978845bd8b92de2b969d763f4eacd839b')
 
 prepare() {
   cd "$pkgname-$pkgver"
