@@ -13,6 +13,7 @@ pkgbase = virtualjaguar-git
 	depends = sdl
 	depends = zlib
 	depends = libcdio
+	depends = glu
 	provides = virtualjaguar
 	conflicts = virtualjaguar
 	conflicts = virtualjaguar-svn
@@ -22,4 +23,3 @@ pkgbase = virtualjaguar-git
 	sha1sums = 7bbe6bf9cb1c0cd0c09a9b717021058384e07fa2
 
 pkgname = virtualjaguar-git
-
