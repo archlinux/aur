@@ -1,0 +1,14 @@
+pkgbase = mesaflash
+	pkgdesc = configuration and diagnostic tool for Mesa Electronics PCI(E)/ETH/EPP/USB/SPI boards
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/LinuxCNC/mesaflash
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libmd
+	depends = pciutils
+	source = https://github.com/LinuxCNC/mesaflash/archive/refs/tags/release/3.4.2.tar.gz
+	md5sums = 0b5d230bd901049fd9db500508329cd1
+
+pkgname = mesaflash
