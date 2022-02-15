@@ -2,27 +2,16 @@
 pkgname=nvidia-exec
 pkgver=0.0.1
 pkgrel=1
-epoch=
-pkgdesc="A script to run programs nvidia optimus setups with power management"
+pkgdesc="A script to run programs nvidia optimus setups with power management for Xorg and Wayland"
 arch=("x86_64")
 url="https://github.com/pedro00dk/nvidia-exec#readme"
 license=('GPL')
-groups=()
 depends=('nvidia' 'lshw' 'jq')
 makedepends=('git')
-checkdepends=()
-optdepends=()
-provides=($_pkgname)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+provides=()
 changelog=
 source=(git+https://github.com/pedro00dk/nvidia-exec)
-noextract=()
 md5sums=('SKIP')
-validpgpkeys=()
 
 package() {
     cd "$pkgname"
