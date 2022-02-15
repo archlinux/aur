@@ -1,7 +1,7 @@
 # Maintainer: Josh Meranda <joshmeranda@gmail.com>
 _pkgname=wrash
 pkgname=$_pkgname-git
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A minimalistic command wrapper shell"
 arch=(x86_64)

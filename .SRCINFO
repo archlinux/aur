@@ -1,6 +1,6 @@
 pkgbase = wrash-git
 	pkgdesc = A minimalistic command wrapper shell
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/joshmeranda/wrash
 	arch = x86_64
