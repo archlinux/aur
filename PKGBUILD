@@ -1,6 +1,6 @@
 # Maintainer: monkeyballs <mydick@cunny.com>
 
-pkgname="satania-buddy-git"
+pkgname="sataniabuddy-git"
 _pkgname="sataniabuddy"
 pkgver=r68.ade3a6f
 pkgrel=1
@@ -10,8 +10,8 @@ url="https://git.cianig.ga/monkeyballs/sataniabuddy"
 license=('AGPL')
 depends=("openmotif" "cairo" "xorg-server")
 makedepends=("git" "make" "gcc")
-provides=("satania-buddy")
-conflicts=("satania-buddy")
+provides=("sataniabuddy" "satania-buddy")
+conflicts=("sataniabuddy" "satania-buddy")
 options=()
 source=(git+https://git.cianig.ga/monkeyballs/sataniabuddy)
 md5sums=('SKIP')

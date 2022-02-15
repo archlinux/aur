@@ -1,4 +1,4 @@
-pkgbase = satania-buddy-git
+pkgbase = sataniabuddy-git
 	pkgdesc = Virtual Satania Desktop Assistant
 	pkgver = r68.ade3a6f
 	pkgrel = 1
@@ -12,9 +12,11 @@ pkgbase = satania-buddy-git
 	depends = openmotif
 	depends = cairo
 	depends = xorg-server
+	provides = sataniabuddy
 	provides = satania-buddy
+	conflicts = sataniabuddy
 	conflicts = satania-buddy
 	source = git+https://git.cianig.ga/monkeyballs/sataniabuddy
 	md5sums = SKIP
 
-pkgname = satania-buddy-git
+pkgname = sataniabuddy-git
