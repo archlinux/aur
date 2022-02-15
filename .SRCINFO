@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2019
 	pkgdesc = Clear Linux lts2019
 	pkgver = 5.4.179
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2019
 	arch = x86_64
 	license = GPL2
