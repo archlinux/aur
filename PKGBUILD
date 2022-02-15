@@ -1,7 +1,7 @@
 # Maintainer: Andy Bao <contact at andybao dot me>
 pkgname=onetun
 pkgdesc="Access your WireGuard network from any device, without root access or having to install WireGuard locally."
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'aarch64' 'armv7h' 'armv6h')
 url="https://github.com/aramperes/onetun"
@@ -14,7 +14,7 @@ source=(
     "example.conf"
 )
 sha256sums=(
-    'f885fd80c7054e108c38dce5882e573f9d1a2211589128c9d245d22c7907794f'
+    'aecbcdcfc24655170c8255729f0414f1b8054b9f424a1aa1116ea51a4a17e92f'
     'SKIP'
     'SKIP'
     'SKIP'
