@@ -32,5 +32,5 @@ resources when the last call ends.
 ### Files
 
 -   **nvx** -> _/usr/bin/nvx_ - Script that handles the gpu and run programs
--   **nvx.service** ->_/etc/systemd/system/nvx.service_ - Service that turns off gpu during boot
+-   **nvx.service** -> _/usr/lib/systemd/system/nvx.service_ - Service that turns off gpu during boot
 -   **modprobe.conf** -> /usr/lib/modprobe.d/nvx.conf - Blacklisted modules
