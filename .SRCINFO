@@ -1,0 +1,23 @@
+pkgbase = vym-git
+	pkgdesc = A tool to generate and manipulate maps which show your thoughts
+	pkgver = 2.8.8.r119.g0b30833
+	pkgrel = 1
+	url = https://sourceforge.net/projects/vym/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-svg
+	depends = qt5-script
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = bash
+	depends = ruby
+	provides = vym
+	conflicts = vym
+	source = vym::git://github.com/insilmaril/vym.git
+	source = vym.desktop
+	sha256sums = SKIP
+	sha256sums = e299c69c213e7aac3f5b5d0ab088132b4ec7cb63a391f272e75ed64f049d541b
+
+pkgname = vym-git
