@@ -8,7 +8,7 @@ _cefbranch="4638"
 _chromiumver="95.0.${_cefbranch}.69"
 _rebuild="3" # The tarball sometime can get rebuild by OBS Project
 pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
 arch=("x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
@@ -36,7 +36,7 @@ elif [[ $CARCH == 'aarch64' ]]; then
 fi
 
 build() {
-    cd "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal
+    cd "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}
 
     #The arm64 CEF set the wrong arch for the project
     cmake \
