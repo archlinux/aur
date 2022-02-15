@@ -1,7 +1,7 @@
 # Maintainer: Martin Hundebøll <martin@hundeboll.net>
 _pkgname=tio
 pkgname=$_pkgname-git
-pkgver=1.32.r0.g2223662
+pkgver=1.34.r0.gcbfa118
 pkgrel=1
 pkgdesc="The simple TTY terminal I/O application"
 url="http://tio.github.io"
@@ -9,7 +9,8 @@ arch=('x86_64' 'i686')
 license=('GPLv2')
 conflicts=('tio')
 provides=('tio')
-makedepends=('git')
+depends=('glibc')
+makedepends=('git' 'meson')
 source=("git+https://github.com/tio/tio.git")
 sha256sums=('SKIP')
 
@@ -20,14 +21,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  meson --prefix=/usr --buildtype=plain . build
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir" install
+  meson install -C build --destdir "$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
