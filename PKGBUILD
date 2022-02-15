@@ -4,7 +4,7 @@
 
 pkgname=gnome-shell-git
 _pkgname=gnome-shell
-pkgver=42.alpha+61+ga4797390f
+pkgver=42.beta
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
