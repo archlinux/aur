@@ -3,7 +3,7 @@
 # If anything done wrong, please contact me
 
 pkgbase="python-scikit-fuzzy"
-pkgname=("python-scikit-fuzzy" "python2-scikit-fuzzy")
+pkgname=("python-scikit-fuzzy")
 _pkgname="scikit-fuzzy"
 pkgver="0.4.2"
 pkgrel="1"
@@ -11,7 +11,7 @@ pkgdesc="A fuzzy logic toolkit for SciPy"
 arch=('any')
 url="https://github.com/scikit-fuzzy/scikit-fuzzy"
 license=('custom')
-makedepends=('python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-networkx' 'python2' 'python2-setuptools' 'python2-numpy' 'python2-scipy' 'python2-networkx')
+makedepends=('python' 'python-setuptools' 'python-numpy' 'python-scipy' 'python-networkx')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('b4041e16b0e19a171bae3e830703e55fe17c35d41d81acd0457826b5112e9df3')
 
@@ -26,20 +26,9 @@ prepare() {
 }
 
 build() {
-  msg "Building Python 2"
-  cd "$srcdir/${_pkgname}-py2-${pkgver}"
-  python2 setup.py build
-
   msg "Building Python 3"
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py build
-}
-
-package_python2-scikit-fuzzy() {
-  depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-networkx')
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 package_python-scikit-fuzzy() {
