@@ -1,6 +1,6 @@
 # Maintainer: Core_UK <mail.coreuk@gmail.com>
 
-pkgname=cider-git
+pkgname=cider-minimal
 _pkgname=Cider
 pkgver=1.1.0.2120.ad86f58
 pkgrel=1

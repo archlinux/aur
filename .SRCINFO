@@ -1,4 +1,4 @@
-pkgbase = cider-git
+pkgbase = cider-minimal
 	pkgdesc = Cider minimal. Built from normal Cider but with various features added / removed to improve the applications performance and simplicity.
 	pkgver = 1.1.0.2120.ad86f58
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = cider-git
 	sha256sums = SKIP
 	sha256sums = 8a8d3aebe1b415fd71d49db1e6d4cfd5470c69c8999ccda20d38b531d0583507
 
-pkgname = cider-git
+pkgname = cider-minimal
