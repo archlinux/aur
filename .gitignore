@@ -1,0 +1,8 @@
+*
+!alps.conf
+!alps-system.service
+!alps-themes-path.patch
+!alps-user.service
+!.gitignore
+!PKGBUILD
+!.SRCINFO

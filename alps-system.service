@@ -1,0 +1,16 @@
+[Unit]
+Description=A simple and extensible webmail
+Documentation=https://git.sr.ht/~migadu/alps/tree/master/item/docs
+After=network.target
+Wants=network-online.target
+
+[Service]
+DynamicUser=yes
+User=alps
+Group=alps
+EnvironmentFile=/etc/alps.conf
+ExecStart=/usr/bin/alps $ALPS_OPTIONS $ALPS_SERVERS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

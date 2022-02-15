@@ -1,0 +1,11 @@
+--- a/cmd/alps/main.go	2022-02-15 11:40:22.453874404 +0100
++++ b/cmd/alps/main.go	2022-02-15 11:41:53.880538359 +0100
+@@ -23,7 +23,7 @@
+ 	_ "git.sr.ht/~migadu/alps/plugins/viewtext"
+ )
+ 
+-var themesPath = "./themes"
++var themesPath = "/usr/lib/alps/themes"
+ 
+ func main() {
+ 	var (
