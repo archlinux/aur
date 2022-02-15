@@ -2,7 +2,7 @@
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 # Contributor: Ramdambo <https://github.com/Ramdambo>
 pkgname=ignition-math
-pkgver=6.9.2
+pkgver=6.10.0
 pkgrel=1
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('ignition-cmake>=2')
 optdepends=('eigen')
 conflicts=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('0b932e633d550ab2d25cd12c62b999a2ccfb141035fff1de87147e103e271f50')
+sha256sums=('9e00284cd6d51afe190165b2b44258e19bd4a28781cbacf21fd6b0bae43c16aa')
 
 depends=(
   swig
