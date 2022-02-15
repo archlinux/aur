@@ -14,7 +14,6 @@ pkgbase = dune-pdelab
 	depends = superlu
 	depends = arpackpp
 	depends = suitesparse
-	depends = dune-alugrid>=2.8.0
 	depends = parmetis
 	depends = scotch
 	optdepends = texlive-core: Type setting system
