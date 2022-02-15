@@ -1,0 +1,28 @@
+diff --unified --recursive --text c-wrapper-0.6.1/src/c-ffi.c c-wrapper-0.6.1.new/src/c-ffi.c
+--- c-wrapper-0.6.1/src/c-ffi.c	2009-08-08 16:44:50.000000000 +0200
++++ c-wrapper-0.6.1.new/src/c-ffi.c	2022-02-15 09:18:49.466627289 +0100
+@@ -347,7 +347,11 @@
+     }
+     sa = SCM_SLOT_ACCESSOR(SCM_CDR(p));
+     if (0 <= sa->slotNumber) {
+-        return SCM_FFI_TYPE_DATA(Scm_InstanceSlotRef(ctype, sa->slotNumber));
++#if GAUCHE_API_VERSION < 98
++      return SCM_FFI_TYPE_DATA(Scm_InstanceSlotRef(ctype, sa->slotNumber));
++#else  /*GAUCHE_API_VERSION >= 98*/
++      return SCM_FFI_TYPE_DATA(Scm_InstanceSlotRef(ctype, sa->slotNumber, NULL));
++#endif /*GAUCHE_API_VERSION >= 98*/
+     } else {
+         Scm_Error("wrong slot number: %d", sa->slotNumber);
+     }
+diff --unified --recursive --text c-wrapper-0.6.1/src/c-lexlib.stub c-wrapper-0.6.1.new/src/c-lexlib.stub
+--- c-wrapper-0.6.1/src/c-lexlib.stub	2009-08-08 16:44:50.000000000 +0200
++++ c-wrapper-0.6.1.new/src/c-lexlib.stub	2022-02-15 09:19:04.050003122 +0100
+@@ -40,7 +40,7 @@
+         "if (nptr == endptr) {"
+         "    SCM_RETURN(SCM_FALSE);"
+         "} else {"
+-        "    SCM_RETURN(Scm_MakeInteger64((ScmInt64) v));"
++        "    SCM_RETURN((Scm_MakeInteger64((int64_t) v)));"
+         "}"))
+ 
+ (define-cproc strtod (nptr::<const-cstring>)

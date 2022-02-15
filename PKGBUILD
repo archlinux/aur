@@ -5,7 +5,7 @@
 pkgname=gauche-c-wrapper
 _pkgname=${pkgname#gauche-}
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Gauche foreign function interface for C and Objective-C libraries.'
 url='http://www.koguro.net/prog/c-wrapper/'
 arch=('x86_64')
@@ -15,19 +15,20 @@ license=('MIT')
 
 # include any patches you want to have applied here
 source=('http://www.koguro.net/prog/c-wrapper/c-wrapper-0.6.1.tgz'
-        '01_use_installed_libffi.patch'
-        '02_multilib.patch'
-        '04_build_with_gcc5.patch'
-        '05_cflags.patch'
-        '06___glibc_macro_warning.patch'
-        '08-gen-gpd-fix.patch'
-        '09-cpp-c-ldflags.patch'
-        '10-fix-closure-alloc.patch'
-        '11_fix_jp_encoding.patch'
-        '12_float128.patch'
-        '13_local_typedef.patch'
-        '14_extend_parser.patch'
-        '15_fix_scm_reg_exec.patch')
+	'01_use_installed_libffi.patch'
+	'02_multilib.patch'
+	'04_build_with_gcc5.patch'
+	'05_cflags.patch'
+	'06___glibc_macro_warning.patch'
+	'08-gen-gpd-fix.patch'
+	'09-cpp-c-ldflags.patch'
+	'10-fix-closure-alloc.patch'
+	'11_fix_jp_encoding.patch'
+	'12_float128.patch'
+	'13_local_typedef.patch'
+	'14_extend_parser.patch'
+	'15_fix_scm_reg_exec.patch'
+	'16_gauche_0_9_11_compat.patch')
 sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           '99878b6fc5c306223e7119861b5af92362f90fd9'
           '11f45d119f2fc660ac32de724b01d47aaaf84675'
@@ -41,16 +42,17 @@ sha1sums=('3b52496fa8151a409538d361e08b05ad9de16ac2'
           '835d8befbfa7346f49fba39e2dfb74cb63a01af9'
           '46f2ae372276c51b534db5592398ef69a9264ca0'
           'c888b1aebf37adf20cc7874c31b1c8a2ba0dcd45'
-          '8239972e42afb42a1040f7274c55620901458ca8')
+          '8239972e42afb42a1040f7274c55620901458ca8'
+          '113fc320f21d0648421b8e006bd63233dfa61619')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
 
-    for filename in "${source[@]}"; 
+    for filename in "${source[@]}";
     do
-        if [[ "$filename" =~ \.patch$ ]]; then
-            patch -p1 -N -i "$srcdir/${filename##*/}"
-        fi
+	if [[ "$filename" =~ \.patch$ ]]; then
+	    patch -p1 -N -i "$srcdir/${filename##*/}"
+	fi
     done
 }
 
