@@ -2,7 +2,7 @@
 pkgname=puddy-git
 _pkgname="${pkgname%-git}"
 pkgver=r15.5ea2c39
-pkgrel=1
+pkgrel=2
 pkgdesc="Public DNS data yielder"
 arch=('any')
 url="https://github.com/jschauma/puddy"
@@ -36,5 +36,6 @@ prepare() {
 package() {
   cd "$srcdir/$_pkgname"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 

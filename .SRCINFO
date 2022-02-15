@@ -1,7 +1,7 @@
 pkgbase = puddy-git
 	pkgdesc = Public DNS data yielder
 	pkgver = r15.5ea2c39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jschauma/puddy
 	arch = any
 	license = BSD3
