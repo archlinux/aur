@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r1636+g07f7289e
+pkgver=1.0.0+r1693+g288e3086
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://searxng.github.io/searxng/"
 license=('AGPL')
 makedepends=('openssl' 'git')
 depends=(
-        'uwsgi-ng'
-        'uwsgi-ng-plugin-python'
+        'uwsgi'
+        'uwsgi-plugin-python'
         'python-certifi'
         'python-babel'
         'python-flask-babel'
@@ -19,19 +19,19 @@ depends=(
         'python-lxml'
         'python-pygments'
         'python-dateutil'        
-        'python-yaml-git'
+        'python-yaml'
         'python-httpx'
         'python-h2'
         'python-brotli'
 	'python-uvloop'
-        'python-httpx-socks-ng'
+        'python-httpx-socks'
         'python-async-timeout'
         'python-langdetect'
         'python-setproctitle'
-        'python-redis-ng'
-        'python-mistletoe-ng'
+        'python-redis'
+        'python-mistletoe'
         'python-typing_extensions')
-conflicts=('searx' 'searx-git' 'python-httpx-socks' 'python-redis' 'python-mistletoe' 'python-yaml')
+conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
 _giturl="https://github.com/searxng/searxng"
 _gitbranch="master"
