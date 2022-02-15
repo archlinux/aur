@@ -1,4 +1,4 @@
-# Maintainer: Leonardo Hernández <leohdz172@outlook.com>
+# Maintainer: Leonardo Hernández Hernández <leohdz172 [at] protonmail [dot] com>
 
 pkgname=pycritty
 pkgver=0.3.5
