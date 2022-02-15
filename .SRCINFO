@@ -1,0 +1,15 @@
+pkgbase = perl-tie-datauuid
+	pkgdesc = Tie interface to Data::UUID
+	pkgver = 1.02
+	pkgrel = 1
+	url = https://github.com/2shortplanks/tie-datauuid
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-install
+	depends = perl
+	depends = perl-data-uuid
+	source = https://www.cpan.org/modules/by-module/Tie/Tie-DataUUID-1.02.tar.gz
+	sha512sums = 72a0b021e08258ed0f134d81ad409084a621eaa1376d4c0a0c7c625de9b3a6d87b291e64a5a1e75606f103a28ddbea0a77d593791415e994890f09131870a28c
+
+pkgname = perl-tie-datauuid
