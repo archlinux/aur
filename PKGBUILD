@@ -24,7 +24,7 @@ Wants=network-online.target
 After=network-online.target
 	
 [Service]
-User=nobody
+DynamicUser=true
 Type=oneshot
 ExecStart=/usr/bin/ddns -c /etc/ddns/config.json
 TimeoutSec=180
