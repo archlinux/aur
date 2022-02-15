@@ -2,13 +2,13 @@
 # Contributor:
 
 pkgname=textsnatcher-git
-pkgver=1.0.1.r13.gdd62c6d
+pkgver=1.0.1.r34.g5faa700
 pkgrel=1
 pkgdesc='Copy Text from Images with ease, Perform OCR operations in seconds'
 arch=('x86_64')
 url="https://github.com/RajSolai/TextSnatcher"
 license=('GPL3')
-depends=('granite' 'libhandy' 'libportal' 'tesseract' 'xdg-desktop-portal')
+depends=('granite' 'libhandy' 'libportal' 'scrot' 'tesseract' 'xdg-desktop-portal')
 makedepends=('git' 'meson' 'vala')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
