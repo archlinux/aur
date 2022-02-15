@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-dlna-cygn
 	pkgdesc = Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition
-	pkgver = 0.6.4
-	pkgrel = 3
+	pkgver = 0.6.1
+	pkgrel = 1
 	url = https://github.com/Cygn/pulseaudio-dlna/
 	arch = x86_64
 	license = GPL3
@@ -32,7 +32,7 @@ pkgbase = pulseaudio-dlna-cygn
 	optdepends = sox: WAV transcoding support
 	optdepends = vorbis-tools: OGG transcoding support
 	provides = pulseaudio-dlna
-	source = pulseaudio-dlna-cygn-0.6.4.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/0.6.4.tar.gz
-	sha256sums = be4746df0a3073a4b1f9cca92bf006fc531942e3238a44f2a2bd7549c03c153d
+	source = pulseaudio-dlna-cygn-0.6.1.tar.gz::https://github.com/Cygn/pulseaudio-dlna/archive/0.6.1.tar.gz
+	sha256sums = 497743700377389ae03ffae2d8fbf8c49ed8ec219d53fd8ca7f0aea0d464b15d
 
 pkgname = pulseaudio-dlna-cygn
