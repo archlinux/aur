@@ -1,0 +1,24 @@
+pkgbase = taler-merchant-git
+	pkgdesc = Merchant logic implementation(s) and support code
+	pkgver = r3276.ccb3e0f1
+	pkgrel = 1
+	url = https://taler.net/
+	arch = i686
+	arch = x86_64
+	groups = taler
+	license = AGPL
+	license = GPL
+	license = LGPL
+	depends = jansson
+	depends = libgcrypt
+	depends = postgresql
+	depends = gnunet
+	depends = qrencode
+	depends = taler-exchange
+	provides = taler-merchant
+	conflicts = taler-merchant
+	conflicts = taler-merchant-bin
+	source = git+https://git.taler.net/merchant.git/
+	sha256sums = SKIP
+
+pkgname = taler-merchant-git
