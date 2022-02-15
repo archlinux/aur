@@ -1,6 +1,6 @@
 pkgbase = tonelib-jam-bin
 	pkgdesc = ToneLib Jam – the learning and practice software for guitar players
-	pkgver = 4.7.3
+	pkgver = 4.7.5
 	pkgrel = 1
 	url = https://tonelib.net/jam-overview/
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = tonelib-jam-bin
 	depends = freetype2
 	optdepends = jack: JACK output
 	source = https://www.tonelib.net/download/ToneLib-Jam-amd64.deb
-	sha256sums = bb815fae2528150bc49184be7bf56bfb1ce4412693ed46e68a90c7283ee3834a
+	sha256sums = 6a591da0484de7ca3d20667cb01dfd72d4e9a2e3129af827ead6eb2859de28f2
 
 pkgname = tonelib-jam-bin
