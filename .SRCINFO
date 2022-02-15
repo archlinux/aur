@@ -1,0 +1,15 @@
+pkgbase = perl-xml-spice
+	pkgdesc = Yet another XML generation module
+	pkgver = 0.05
+	pkgrel = 1
+	url = https://github.com/robn/XML-Spice
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-xml
+	depends = perl
+	depends = perl-xml-tidy-tiny
+	source = https://www.cpan.org/modules/by-module/XML/XML-Spice-0.05.tar.gz
+	sha512sums = c08bc5379f1a74144efc399539cd4910a395bd92fb5f21b913cc12c9e456c80f12201333fe1ba3a7d60745c5f07222dfbc82e50de1d42bea813c5665dae6a0ea
+
+pkgname = perl-xml-spice
