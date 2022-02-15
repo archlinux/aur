@@ -1,6 +1,6 @@
 pkgbase = python-requests-cache
 	pkgdesc = Transparent persistent cache for http://python-requests.org library
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-requests-cache
 	optdepends = python-itsdangerous: for pass trusted data to untrusted environments
 	optdepends = python-yaml: for bindings yaml support
 	optdepends = python-ujson: for JSON serializer for improved performance
-	source = requests-cache-0.9.1.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.9.1.tar.gz
-	sha512sums = 829488f68f10be8f84203d488d5dab68c477d02bc4419b49b38851693f2bd1d0ec0b86bc5d953b951b9c7d4372b2bc179f096014f69eb6356f87a2b1d025d3a0
+	source = requests-cache-0.9.2.tar.gz::https://github.com/reclosedev/requests-cache/archive/v0.9.2.tar.gz
+	sha512sums = 449dcd5924388cd8a02114e2588dfe50f0289be07ec3eaa06388298c959e69e891e51793a18ba2766d7a0ff866355e3d4950ebcd04b2349a146d342e11eb41bd
 
 pkgname = python-requests-cache
