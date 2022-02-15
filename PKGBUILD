@@ -13,6 +13,8 @@ depends=('apr' 'boost-libs' 'apr-util' 'bzip2' 'cairo' 'expat' 'fontconfig' 'fre
          'poppler' 'popt' 'potrace' 'uriparser' 'hicolor-icon-theme' 'zziplib' 'poppler-qt5' 'qt5-script' 'qt5-declarative')
 makedepends=('cmake' 'coreutils' 'fop' 'sed' 'libxslt' 'qt5-tools'  'boost')
 source=('miktex::git+https://github.com/MiKTeX/miktex.git')
+provides=(miktex texlive-bin)
+conflicts=(miktex texlive-bin)
 md5sums=('SKIP')
 options=('!buildflags')
 
