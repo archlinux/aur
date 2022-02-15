@@ -1,0 +1,9 @@
+[Unit]
+Description="Remove Nvidia GPU from kernel devices list and enable PM"
+
+[Service]
+Type=oneshot
+ExecStart=sh /home/pedro/Documents/projects/nvidia-prime-pm/s.sh off
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,176 @@
+#!/bin/bash
+
+### utility functions ###
+
+# Print json strings contaning pci bus data and their nvidia display devices.
+function _pci_devices {
+    sudo lshw -json |
+        jq -c '
+        .. |
+        objects |
+        select(.id | strings | contains("pci")) |
+        select(.children) |
+        .children |= (map(select(.id=="display")) | map(select(.vendor | strings | contains("NVIDIA")))) |
+        select(.children | length > 0)
+    '
+}
+
+# Print which processes are accessing nvidia device files.
+function _process_list {
+    lsof /dev/nvidia* | awk '{ if (NR>1) pids[$1" "$2]++ } END { for (pid in pids) { print pid } }'
+}
+
+### setup functions ###
+
+# Print "on" or "off" depending on whether the gpu is enabled or not.
+function pci_status() {
+    [ -n "$(_pci_devices)" ] && echo "on" || echo "off"
+}
+
+# Kill processes that are accessing nvidia device files.
+# $1?: any non empty string parameter will cause the function to ask confirmation before killing processes
+function process_kill {
+    echo "# kill nvidia processes"
+    PROCESSES=$(_process_list)
+    for process in $PROCESSES; do
+        NAME=$(cut -d' ' -f1 <<<"$process")
+        PID=$(cut -d' ' -f2 <<<"$process")
+        echo "-- $NAME -> pid: $PID"
+    done
+    if [ -n "$1" ]; then
+        read -r -p "-- kill all? [Y/n] " response
+        case $response in
+        n | N)
+            echo "-- aborting"
+            return
+            ;;
+        *) ;;
+        esac
+    fi
+    IFS=$'\n'
+    for process in $PROCESSES; do
+        NAME=$(cut -d' ' -f1 <<<"$process")
+        PID=$(cut -d' ' -f2 <<<"$process")
+        echo "-- kill process $NAME -> pid: $PID"
+        kill $PID
+    done
+    unset $IFS
+}
+
+# Remove gpu devices from the bus and change their pci power state to "auto".
+# The process may hand if not all processes using the gpu are stopped.
+function turn_off {
+    echo "# turn off gpu"
+    IFS=$'\n'
+    for pci in $(_pci_devices); do
+        PCI_NAME=$(echo $pci | jq '.description + " - " + .product')
+        PCI_BUS=$(echo $pci | jq --raw-output '.businfo[4:]')
+        echo "-- pci $PCI_NAME -> $PCI_BUS"
+        for device in $(echo $pci | jq -c '.children | .[]'); do
+            DEVICE_NAME=$(echo $device | jq '.description + " - " + .product')
+            DEVICE_BUS=$(echo $device | jq --raw-output '.businfo[4:]')
+            echo "   -- device remove $DEVICE_NAME -> $DEVICE_BUS"
+            sudo tee /sys/bus/pci/devices/$DEVICE_BUS/remove <<<1 >/dev/null
+        done
+        echo "   -- power control auto"
+        sudo tee /sys/bus/pci/devices/$PCI_BUS/power/control <<<auto >/dev/null
+    done
+    unset $IFS
+}
+
+# Rescan pci devices enabling gpu devices and changing their pci power state to "on".
+function turn_on {
+    echo "# turn on gpu"
+    echo "-- pci rescan and wait 1 second"
+    sudo tee /sys/bus/pci/rescan <<<1 >/dev/null
+    sleep 1
+    IFS=$'\n'
+    for pci in $(_pci_devices); do
+        PCI_NAME=$(echo $pci | jq '.description + " - " + .product')
+        PCI_BUS=$(echo $pci | jq --raw-output '.businfo[4:]')
+        echo "-- pci $PCI_NAME -> $PCI_BUS"
+        echo "   -- pci power control on and wait 1 second"
+        sudo tee /sys/bus/pci/devices/$PCI_BUS/power/control <<<on >/dev/null
+        sleep 1
+        for device in $(echo $pci | jq -c '.children | .[]'); do
+            DEVICE_NAME=$(echo $device | jq '.description + " - " + .product')
+            DEVICE_BUS=$(echo $device | jq --raw-output '.businfo[4:]')
+            echo "   -- device enable $DEVICE_NAME -> $DEVICE_BUS"
+            sudo tee /sys/bus/pci/devices/$DEVICE_BUS/power/control <<<on >/dev/null
+        done
+    done
+    unset $IFS
+}
+
+function unload_modules {
+    echo "# unload modules"
+    echo "-- some modules may fail to unload, that is normal"
+    MODULES_UNLOAD=(nvidia_drm nvidia_modeset nvidia_uvm nvidia)
+    for module in "${MODULES_UNLOAD[@]}"; do
+        echo "-- module $module"
+        sudo modprobe -r $module
+    done
+}
+
+function load_modules {
+    echo "# load modules"
+    MODULES_LOAD=(nvidia nvidia_uvm nvidia_modeset nvidia_drm)
+    for module in "${MODULES_LOAD[@]}"; do
+        echo "   -- module $module"
+        sudo modprobe $module
+    done
+}
+
+### execution functions ###
+
+function start {
+    if [ ! -f /tmp/nvx.open ]; then
+        touch /tmp/nvx.open
+    fi
+    OPEN=$(cat /tmp/nvx.open)
+    echo $((++OPEN)) >/tmp/nvx.open
+    if [ $OPEN == 1 ]; then
+        turn_on
+        load_modules
+    fi
+}
+
+function stop {
+    if [ ! -f /tmp/nvx.open ]; then
+        touch /tmp/nvx.open
+    fi
+    OPEN=$(cat /tmp/nvx.open)
+    echo $((--OPEN)) >/tmp/nvx.open
+    if [ $OPEN -lt 1 ]; then
+        rm /tmp/nvx.open
+        process_kill
+        unload_modules
+        turn_off
+    fi
+
+}
+
+if [ "$1" = "start" ]; then
+    shift
+    start
+    __NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia sudo -u $USER "$@" || true
+    stop
+elif [ "$1" = "on" ]; then
+    turn_on
+    load_modules
+elif [ "$1" = "off" ]; then
+    unload_modules
+    turn_off
+elif [ "$1" = "off-kill" ]; then
+    process_kill
+    unload_modules
+    turn_off
+elif [ "$1" = "status" ]; then
+    pci_status
+elif [ "$1" = "processes" ]; then
+    _process_list
+elif [ "$1" = "kill" ]; then
+    process_kill "confirm"
+else
+    echo "Usage: $0 [start|on|off|off-kill|status|processes|kill]"
+fi
