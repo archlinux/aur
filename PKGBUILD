@@ -1,10 +1,10 @@
 # Maintainer: nl6720 <nl6720@archlinux.org>
 
 pkgname=mediawiki-extension-checkuser
-pkgver=1.37+r3247+gadff8d49
+pkgver=1.37+r3248+g809b4a71
 pkgrel=1
 _mw='1.37'
-_commit='adff8d49ae58810ab0c2f86e965e7ed4cae0167a' # git rev-parse "REL${_mw/./_}"
+_commit='809b4a715aa2da3cbcf9b1775fb2cb929555e7d3' # git rev-parse "REL${_mw/./_}"
 pkgdesc='An extension for MediaWiki that allows a user to check which IPs are used by a given username and which usernames are used by a given IP'
 arch=('any')
 url='https://www.mediawiki.org/wiki/Extension:CheckUser'
