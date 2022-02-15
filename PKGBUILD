@@ -5,8 +5,8 @@
 pkgname=python-ipyparallel
 pkgbase=ipython-ipyparallel
 _name=${pkgname#python-}
-pkgver=8.1.0
-pkgrel=2
+pkgver=8.2.0
+pkgrel=1
 pkgdesc="Interactive Parallel Computing in Python"
 url=https://pypi.org/project/ipyparallel/
 arch=(any)
@@ -14,7 +14,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 optdepends=('openmpi: to use the MPI Launchers in ipcluster command')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('63f7e136e88f890e9802522fa5475dd81e7614ba06a8cfe4f80cc3056fdb7d73')
+sha256sums=('0fd9f64a5120980a89b64299806c12bb8df8ceea155e5200b705301eb2401e19')
 depends=('python>3.6'
 	'python-setuptools'
 	'python-entrypoints'
