@@ -1,0 +1,11 @@
+post_install() {
+  echo 'Enable service with `systemctl enable flaresolverr.service`'
+  echo 'Start service with `systemctl start flaresolverr.service`'
+  echo ''
+  echo 'If you want to run flaresolverr as a user, add the user to'
+  echo 'the flaresolverr group `usermod -a -G flaresolverr $(whoami)`'
+}
+
+post_upgrade() {
+  post_install $1
+}
