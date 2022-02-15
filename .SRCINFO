@@ -1,0 +1,24 @@
+pkgbase = perl-net-caldavtalk
+	pkgdesc = Module to talk CalDAV and give a JSON interface to the data
+	pkgver = 0.12
+	pkgrel = 1
+	url = https://metacpan.org/dist/Net-CalDAVTalk
+	arch = any
+	license = Artistic2.0
+	checkdepends = perl-test-pod
+	checkdepends = perl-test-pod-coverage
+	depends = perl
+	depends = perl-data-ical-timezone
+	depends = perl-datetime-format-ical
+	depends = perl-datetime-format-iso8601
+	depends = perl-datetime-timezone
+	depends = perl-json
+	depends = perl-json-xs
+	depends = perl-mime-types
+	depends = perl-net-davtalk
+	depends = perl-text-levenshteinxs
+	depends = perl-text-vcardfast
+	source = https://www.cpan.org/modules/by-module/Net/Net-CalDAVTalk-0.12.tar.gz
+	sha512sums = 29ec639a27f20e6573b0701b963ec851606a0a5eb612619d5640f280200885665fc73dcdcc14096f2e4336f360402e9f5b95c1e425d58c3ae388b77e765c45f8
+
+pkgname = perl-net-caldavtalk
