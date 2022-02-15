@@ -9,6 +9,7 @@ arch=('i686' 'x86_64' 'pentium4')
 url='https://github.com/FCare/Kronos'
 license=('GPL2')
 provides=('kronos')
+conflicts=('kronos')
 depends=('freeglut'
 	 'glew'
 	 'openal'
