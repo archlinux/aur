@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=h7toolpc-wine
-pkgver=2.1.2
+pkgver=2.1.3a
 pkgrel=1
 pkgdesc="Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=${pkgname}.install
 source=("${pkgname/pc-wine/PC_release}-${pkgver}.zip::http://www.armfly.com/download/H7-TOOL/${pkgname/pc-wine/PC_release}(V${pkgver}).zip"
         "icons.tar.gz"
         "${pkgname}.install")
-sha256sums=('8190c636cc7d6e7e59ae44f1e9458506867f9ff4e4057c10f12f17ef7e2887b0'
+sha256sums=('dd1ca15aadfc948f7a78569d0fbe78296b733e7a2c9d108e9abc089c004c1289'
             '6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142'
             '078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef')
 noextract=("${pkgname/pc-wine/PC_release}-${pkgver}.zip"
@@ -157,48 +157,6 @@ Categories=Development;Tool;
 Terminal=false
 Icon=${pkgname%-wine}.png
 Version=${pkgver}
-EOF
-
-    install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname/-wine/-old}" << EOF
-#!/bin/bash
-export WINEARCH=win64 WINEPREFIX="$HOME/.${pkgname%-wine}/wine"
-
-if [ ! -d "$HOME"/.${pkgname%-wine} ] ; then
-    mkdir -p "$HOME"/.${pkgname%-wine}/wine || exit 1
-
-    cp -r /${armfly}/${pkgname%-wine}/app.ini "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/Backup "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/Readback "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/ini "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/log "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/*.lua "$HOME"/.${pkgname%-wine} || exit 1
-    cp -r /${armfly}/${pkgname%-wine}/regpatch.reg "$HOME"/.${pkgname%-wine}/wine || exit 1
-
-    ln -s /${armfly}/${pkgname%-wine}/${pkgname/pc-wine/PC(PC V1.44 用于升级V2.00前的固件)}.exe "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-old} || exit 1
-    ln -s -T /${pkgdir}/${armfly}/${pkgname%-wine}/Driver "$HOME"/.${pkgname%-wine}/Driver || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/EMMC "$HOME"/.${pkgname%-wine}/EMMC || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/Help "$HOME"/.${pkgname%-wine}/Help || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/USBBus "$HOME"/.${pkgname%-wine}/USBBus || exit 1
-    ln -s -T /${armfly}/${pkgname%-wine}/ChangeLog.txt "$HOME"/.${pkgname%-wine}/ChangeLog.txt || exit 1
-
-    cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
-fi
-
-    wine "$HOME"/.${pkgname%-wine}/${pkgname/-wine/-old} -opengl"\$@"
-EOF
-
-    install -Dm0644 /dev/stdin "${pkgdir}/usr/share/applications/${pkgname/-wine/-old}.desktop" << EOF
-[Desktop Entry]
-Name=${pkgname/-wine/-old}
-Name[zh_CN]=${pkgname/-wine/-old}
-Comment=Wine H7-TOOL 旧版的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等
-#MimeType=application/x-${pkgname%-wine};
-Exec=${pkgname/-wine/-old} %f
-Type=Application
-Categories=Development;Tool;
-Terminal=false
-Icon=${pkgname%-wine}.png
-Version=1.44
 EOF
 
     install -Dm0644 /dev/stdin "${pkgdir}/etc/udev/rules.d/10-h7tool.rules" << EOF

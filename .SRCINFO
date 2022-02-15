@@ -1,6 +1,6 @@
 pkgbase = h7toolpc-wine
 	pkgdesc = Wine H7-TOOL 的 PC 上位机，支持串口、CAN、示波器、CMSIS-DAP、DS18B20、RTT Viewer、脱机烧录等
-	pkgver = 2.1.2
+	pkgver = 2.1.3a
 	pkgrel = 1
 	url = http://www.armbbs.cn/forum.php?mod=viewthread&tid=95468
 	install = h7toolpc-wine.install
@@ -15,13 +15,13 @@ pkgbase = h7toolpc-wine
 	conflicts = h7toolpc
 	conflicts = h7toolpc-bin
 	replaces = h7toolpc-bin
-	noextract = h7toolPC_release-2.1.2.zip
+	noextract = h7toolPC_release-2.1.3a.zip
 	noextract = icons.tar.gz
 	options = !strip
-	source = h7toolPC_release-2.1.2.zip::http://www.armfly.com/download/H7-TOOL/h7toolPC_release(V2.1.2).zip
+	source = h7toolPC_release-2.1.3a.zip::http://www.armfly.com/download/H7-TOOL/h7toolPC_release(V2.1.3a).zip
 	source = icons.tar.gz
 	source = h7toolpc-wine.install
-	sha256sums = 8190c636cc7d6e7e59ae44f1e9458506867f9ff4e4057c10f12f17ef7e2887b0
+	sha256sums = dd1ca15aadfc948f7a78569d0fbe78296b733e7a2c9d108e9abc089c004c1289
 	sha256sums = 6823224b5699dc17c41efdcbc8465554f007cb62cadea0aad9b67c08c5698142
 	sha256sums = 078a64b4818c65daabe24ad31ead1912ee564b15da79084fa1c7d1a004f30cef
 
