@@ -1,12 +1,12 @@
 pkgname=inkstitch
-pkgver=1.29.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="An open source machine embroidery design platform based on Inkscape"
 arch=("x86_64")
 url="https://inkstitch.org/"
 depends=("inkscape")
-source=("https://github.com/inkstitch/inkstitch/releases/download/v${pkgver}/inkstitch-v${pkgver}-linux-en_US.zip")
-sha256sums=('23db5efed402be33cf5fc0388835af43adc6813451549031424e6c37117262b2')
+source=("https://github.com/inkstitch/inkstitch/releases/download/v${pkgver}/inkstitch-${pkgver}-linux.tar.xz")
+sha256sums=('c0a431aec9b390790b9ff22e7cb8f22b24bb4ec367d2ce499e1ba255ee9ee7cd')
 license=(GPL)
 
 package() {
