@@ -1,6 +1,6 @@
 pkgbase = wiretrustee
 	pkgdesc = Connect your devices into a single secure private WireGuard®-based mesh network
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://wiretrustee.com
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = wiretrustee
 	depends = glibc
 	provides = wiretrustee
 	conflicts = wiretrustee
-	source = wiretrustee-0.3.3.tar.gz::https://github.com/wiretrustee/wiretrustee/archive/refs/tags/v0.3.3.tar.gz
+	source = wiretrustee-0.3.4.tar.gz::https://github.com/wiretrustee/wiretrustee/archive/refs/tags/v0.3.4.tar.gz
 	source = environment
 	source = wiretrustee@.service
-	sha256sums = 3811e4ccd0a5c4a370cf3180ff9f0fbf36a799d1d17535e13c4e0833a2deab43
+	sha256sums = 53cccc318be5f8a38425dd627349d2b3ae2b779e1207b1ad1a75582968d4c2da
 	sha256sums = 185d92f240e92c8d58dde91bb45d73d09ea22fc48090f30330596f12e6d265e7
 	sha256sums = 672235231a73743878d77e94827c5aba326464dae63457f94cd51708ac84ba58
 
