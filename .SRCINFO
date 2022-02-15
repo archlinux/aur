@@ -1,0 +1,14 @@
+pkgbase = libar2simplified
+	pkgdesc = Facade for libar2
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/maandree/libar2simplified
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = libblake
+	depends = libar2
+	source = libar2simplified-1.1.tar.gz::https://github.com/maandree/libar2simplified/archive/1.1.tar.gz
+	sha256sums = 2aa80e1a4e43dfa8d1f03220f5ee29049ed739e4d740c399d4ac3b9b58409cd4
+
+pkgname = libar2simplified
