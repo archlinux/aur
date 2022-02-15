@@ -1,4 +1,5 @@
 # Maintainer: Leonardo Hernández Hernández <leohdz172 [at] protonmail [dot] com>
+# Maintainer: Antonio Sarosi <sarosiantonio [at] gmail [dot] com>
 
 pkgname=pycritty
 pkgver=0.4.0
