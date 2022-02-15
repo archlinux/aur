@@ -11,11 +11,11 @@ diff --unified --recursive --text a/build.gradle b/build.gradle
  group = 'com.conveyal'
  // set version to `git describe --tags --always --first-parent`, plus '.dirty' if local changes are present.
 -version gitVersion()
-+version 'v6.4'
++version 'v6.6'
 
  java {
      sourceCompatibility = JavaVersion.VERSION_11
-@@ -93,14 +92,13 @@
+@@ -99,14 +98,13 @@
  // such as the full commit ID and branch name, rather than just the version available in the JAR manifest.
  task createVersionProperties(dependsOn: processResources) {
      doLast {

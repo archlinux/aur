@@ -2,7 +2,7 @@
 
 pkgname=java-r5
 _pkgname=${pkgname#java-}
-pkgver=6.4
+pkgver=6.6
 pkgrel=1
 
 pkgdesc="Conveyal R5 Routing Engine"
@@ -16,16 +16,14 @@ makedepends=("gradle" "git")
 
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/conveyal/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-    "01-don-t-try-to-guess-git-version_v6.4.patch"
-    "02-path-result-max-destinations_v6.4.patch"
+    "01-don-t-try-to-guess-git-version_v6.6.patch"
     "r5-backend.service"
     "r5-backend.sysusers"
 
 )
 sha512sums=(
-    "fbf418570a287aaad143cc3435c01aee1bd784e686fe68aa6292f1b46416d45aaf0527d3ad5ecf056e2ac47ab529248e443aa50a8dabcd37972293b681509d45"
-    "1f6468bc25d253f355792414269c099716869e7d3f5d12c079f8c24bad22616fc38a712ba33149b40642a10e45419510077d4f73abbd70b1aefcf410bf9f9f91"
-    "b797e4ce01b974ea4ac2f1fc13bb99b01bea9d1f9701f3149b2eac1f193c571b4b84780892f6f95ad1302012965623266344f6fd4167cb9e6c126fc2ca4a8dd8"
+    "866d682a3ac4fd79a9681f7f3db4c7761eb292ffd61ee66d63d3e89ee45607d6ff3bc0d19abfda071fb71140ecf9ebc1440566f4ff39a416c84efa409a17fd56"
+    "7d8441625313921e5644e6cd230b708600647ec3accdc7e3bf75463138e4e9b46298103668012adc32bc9e2c59c035b6bb4f53931801a089e74e99d0e39730a1"
     "bbd8b1d60359bd1f33dd4aaf94752cdd7c338e2b46cb91e6488df4f7c27f262ffda1789d010c7621652234be72c9813601bd0775f6e77bad04b8a7ef2d1d3be7"
     "322e32156c18d323c9b62f97e2a3792c151a5f7b677b291061ea0da8697fc00cc6977dbcb3f723ea492ae339508dfb543d731fa1c4f857f7efc0e470c3d1fe09"
 )
