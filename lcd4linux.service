@@ -1,0 +1,12 @@
+[Unit]
+Description=daemon for driving LCD based displays
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/lcd4linux
+User=root
+PIDFile=/var/run/lcd4linux.pid
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
