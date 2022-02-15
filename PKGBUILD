@@ -4,7 +4,7 @@ _pkgname=lnd
 pkgver=0.14.2_beta
 _pkgver="${pkgver//_/-}"
 __pkgver="${_pkgver//\./\\\.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightning Network Daemon ⚡"
 arch=('x86_64')
 url="https://github.com/lightningnetwork/lnd"
@@ -59,7 +59,9 @@ prepare() {
 
     numsigs=0
 
-    for maintainer in ${maintainers[@]}; do
+    for (( i=0; i<${#maintainers[@]}; i++ )); do
+        maintainer=${maintainers[$i]}
+        validpgpkey=${validpgpkeys[$i]}
         # Try to get the signature for this maintainer, skip if doesn't exist
         signaturefile="$srcdir/$_pkgname-manifest-$maintainer-v$_pkgver.txt.sig"
         curl -fLso "$signaturefile" \
@@ -69,12 +71,12 @@ prepare() {
         echo "[32mFound signature from $maintainer[0m"
 
         # Verify the signature
-        gpgoutput=$(gpg --status-fd=1 --verify "$signaturefile" "$manifestfile")
+        gpgoutput=$(gpg --status-fd=1 --verify "$signaturefile" "$manifestfile" || true)
 
-        # Check if fingerprint in whitelisted array
+        # Check if fingerprint matches whitelisted one
         fingerprint=$(echo "$gpgoutput" | awk '{ if ($2 == "VALIDSIG") {print $12} }')
-        if [[ ! " ${validpgpkeys[*]} " =~ " ${fingerprint} " ]]; then
-            echo "[33mSignature not from a whitelisted key, ignoring[0m"
+        if [[ ! "${validpgpkey}" = "${fingerprint}" ]]; then
+            echo "[33mNot a valid signature from the whitelisted key for this maintainer, ignoring[0m"
             continue
         fi
 
