@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r395.973b0d7
+pkgver=r457.4daa7f4
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
@@ -30,11 +30,13 @@ prepare() {
 	cd "$_pkgname"
 	git submodule update --init --recursive
 
-	git checkout thirdparty/CMakeLists.txt
-	git apply ../fix_basalt_passed_cxx_flags.patch
+	# Merged by Mateo
+	#git checkout thirdparty/CMakeLists.txt
+	#git apply ../fix_basalt_passed_cxx_flags.patch
 
-	git checkout CMakeLists.txt
-	git apply ../disable-werror.patch
+	# Merged by Mateo
+	#git checkout CMakeLists.txt
+	#git apply ../disable-werror.patch
 
 	# https://github.com/stevenlovegrove/Pangolin/issues/657
 	cd thirdparty/Pangolin
@@ -63,7 +65,7 @@ package() {
 	DESTDIR="${pkgdir}/" ninja -C build install
 
 	cp -Ra "${srcdir}/${_pkgname}"/data/monado/ "${pkgdir}"/usr/etc/basalt/
-	for i in "${pkgdir}"/usr/etc/basalt/monado/*
+	for i in "${pkgdir}"/usr/etc/basalt/monado/*.toml
 	do
 		sed -i "s#/home/mateo/Documents/apps/bsltdeps/basalt/data/#/usr/etc/basalt/#" "$i"
 	done
