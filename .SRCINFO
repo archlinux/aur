@@ -1,7 +1,7 @@
 pkgbase = elasticsearch
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
 	pkgver = 8.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.elastic.co/products/elasticsearch
 	arch = x86_64
 	license = custom:SSPL+Elastic-2.0
