@@ -6,7 +6,7 @@ _commit=aaed7594af661c3bda822869de30c066e523dd5c
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -133,6 +133,7 @@ source=(
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
+    https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
     proton-disable_lock.patch
@@ -246,6 +247,7 @@ prepare() {
         git submodule update external/Vulkan-Headers
     popd
 
+    cp "$srcdir"/fsync_futex_waitv.patch patches/proton/57-fsync_futex_waitv.patch
     ./patches/protonprep.sh
 
     pushd wine
@@ -393,6 +395,7 @@ sha256sums=('SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
+            'b121625686227bb9e51b44e1e2e762250d34b1d3f8d7750787470b1885f3a1c4'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
             '42e5382ccd6686810dc54aafe391ffb00e874923bd1937b4993ada675e8f7265'
             '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
