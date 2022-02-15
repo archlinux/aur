@@ -19,7 +19,7 @@ build() {
 package() {
 	cd ${pkgname}-${pkgver}
 	install -Dm755 qcal "$pkgdir/usr/bin/qcal"
-	install -Dm644 config-sample.json "$pkgdir"/usr/share/"${pkgname}"/config-sample.json
-	install -Dm644 README.md "$pkgdir"/usr/share/"${pkgname}"/README.md
+	install -Dm644 config-sample.json "$pkgdir"/usr/share/doc/"${pkgname}"/config-sample.json
+	install -Dm644 README.md "$pkgdir"/usr/share/doc/"${pkgname}"/README.md
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname}"/LICENSE
 }
