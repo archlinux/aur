@@ -2,15 +2,15 @@
 
 _pkgname=porth
 pkgname="${_pkgname}-gitlab"
-pkgver=0.56
-pkgrel=5
+pkgver=r1189.d409555
+pkgrel=1
 pkgdesc="[Unstable/W.I.P] It's like Forth but in Python."
 arch=('x86_64')
 url="https://gitlab.com/tsoding/porth"
 license=('MIT')
 depends=('binutils' 'fasm')
 makedepends=('git' 'fasm')
-source=("git+${url}.git#commit=c3290073933bb4067339d3bc5550d4d9bf8b12c4")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
