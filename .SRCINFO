@@ -1,5 +1,5 @@
 pkgbase = cider-git
-	pkgdesc = Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch.
+	pkgdesc = Cider minimal. Built from normal Cider but with various features added / removed to improve the applications performance and simplicity.
 	pkgver = 1.1.0.2120.ad86f58
 	pkgrel = 1
 	url = https://github.com/CiderApp/Cider.git
