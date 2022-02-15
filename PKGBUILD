@@ -1,5 +1,4 @@
 # Maintainer: Léopold Ibghy Koprivnik <skwal.net@gmail.com>
-pkgbase=mini-matrix
 pkgname=mini-matrix-git
 pkgver=1.0
 pkgrel=2
