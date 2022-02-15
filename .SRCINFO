@@ -1,6 +1,6 @@
 pkgbase = cro-chain-desktop
 	pkgdesc = Crypto.org Chain desktop wallet
-	pkgver = 0.6.7
+	pkgver = 0.6.8
 	pkgrel = 1
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = cro-chain-desktop
 	makedepends = nodejs<16
 	provides = cro-chain-desktop
 	conflicts = cro-chain-desktop-bin
-	source = chain-desktop-wallet-0.6.7.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v0.6.7.tar.gz
+	source = chain-desktop-wallet-0.6.8.tar.gz::https://github.com/crypto-com/chain-desktop-wallet/archive/refs/tags/v0.6.8.tar.gz
 	source = chain-desktop-wallet.desktop
-	sha512sums = cd44c7566378c49859dfb6d58767326c3a045565f69ad738f5e32f2ea0884d8aa4a9719036bfde71f3f580091086d79a7150bcb40b8c0d84a970e86652ce3450
+	sha512sums = 57cb7aaca0ab8f1346b289e0d5ecf4cc0348814eeb0ccab17e81e353229b4cf5af278c60727d0509636103e6a8974600b7c2a202ec09d4532f58e96265e3767c
 	sha512sums = b5e9f80e5723c252ecb0cbf8dfd3689f56f937ab44186d64fea373c51de6ba5ac91f14dd9e04d1df452a9ee2296c34e4ec44bbdb9594eb113b8ab179d274141e
 
 pkgname = cro-chain-desktop
