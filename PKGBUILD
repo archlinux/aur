@@ -2,13 +2,15 @@
 
 pkgname=rastertokpsl-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='rastertokpsl CUPS filter for Kyocera printers built from source'
 arch=('i686' 'x86_64')
-url="https://github.com/brainrom/rastertokpsl-re.git"
+url="https://github.com/brainrom/rastertokpsl-re"
 license=('Apache 2.0')
 depends=('cups')
 makedepends=('git' 'cmake')
+provides=("rastertokpsl=${pkgver}")
+conflicts=('rastertokpsl' 'rastertokpsl-fs-1040')
 source=('git+https://github.com/brainrom/rastertokpsl-re.git')
 sha256sums=('SKIP')
 
