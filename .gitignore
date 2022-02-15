@@ -1,3 +1,5 @@
 *.tar*
 pkg/
 src/
+OCP/
+pywrap/

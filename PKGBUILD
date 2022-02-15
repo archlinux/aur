@@ -1,12 +1,8 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp
-_pkgver="7.5-RC1"
-_stubs_hash=372b103b4079ffe1a54e66310ea579040892c5dd
-#TODO: add stubs
-_pywrap_hash=530890da875ca33fe954e9de285674232d3b759f
-pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgver=7.5.3.0
+pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
 url=https://github.com/CadQuery/OCP
@@ -14,74 +10,118 @@ license=('Apache')
 depends=(
 python
 opencascade
+vtk
 )
 makedepends=(
+git
 clang
-"python-joblib>=1.0.0"
-python-click python-pandas
+llvm
+python-joblib
+python-click
+python-pandas
 python-path
 pybind11
-python-setuptools
 ninja
 cmake
 python-logzero
 python-tqdm
 python-toposort
-python-cymbal
 python-schema
 rapidjson
 python-jinja
 python-toml
+lief
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CadQuery/OCP/archive/${_pkgver}.tar.gz"
-        "pywrap-${pkgver}.tar.gz::https://github.com/CadQuery/pywrap/archive/${_pywrap_hash}.tar.gz")
-sha256sums=('38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06'
-            '3d04a575d15446d12379c16f57c5c143a81611d75a2b9dd0ca73d22eac9b046d')
+conflicts=(python-ocp)
+provides=(python-ocp)
+source=(
+git+https://github.com/CadQuery/OCP.git#tag=${pkgver}
+git+https://github.com/CadQuery/pywrap.git
+)
+sha256sums=('SKIP'
+            'SKIP')
+
+# needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
+_n_parallel_build_jobs=3
+
+# pick where the opencascade is installed
+#_opencascade_install_prefix="/opt/opencascade-cadquery/usr"
+_opencascade_install_prefix="/usr"
 
 prepare(){
-  cd "OCP-${_pkgver}"
-  
-  # pywrap is a submodule so it doesn't come in with the main source tarball
-  rm -rf pywrap
-  ln -s ../pywrap-${_pywrap_hash} pywrap
+  cd OCP
+  git submodule init
+  git config submodule.pywrap.url "${srcdir}"/pywrap
+  git submodule update -q  # use the submodule commit hashes specified
 
-  # pywrap assdumes I'm using clang 8.0.0...
-  sed -i "s,rv.append(Path(prefix) / 'lib/clang/8.0.0/include/'),rv.append(Path(prefix) / 'lib/clang/$(pacman -Q clang | awk '{print $2}' | cut -f1 -d"-")/include/'),g" pywrap/bindgen/utils.py
+  sed "s,^libs_linux = .*,libs_linux = prefix_linux.glob('**/libTK*.so')," -i dump_symbols.py
 
   # don't use the opencascade headers packaged here
   # instead use the ones from the installed opencascade package
-  #rm -rf opencascade
-  #ln -s /usr/include/opencascade .
+  rm -rf opencascade
+  ln -s "${_opencascade_install_prefix}"/include/opencascade .
+
+  # ensure any opencascade at /usr isn't used here
+  sed 's|CONDA_PREFIX|_opencascade_install_prefix|g' -i FindOpenCascade.cmake pywrap/FindOpenCascade.cmake
+
+  # disable progress bars
+  cd pywrap
+  curl --silent https://patch-diff.githubusercontent.com/raw/greyltc/pywrap/pull/1.patch | patch -p1
 }
 
 build() {
-  cd "OCP-${_pkgver}"
-  export CONDA_PREFIX=/usr
-  export PYTHONPATH=pywrap
-  local _config_file=ocp.toml
-  local _output=$(python -c "import toml; print(toml.load(\"${_config_file}\")['output_folder'])")
-  python -m bindgen -n $(nproc) parse ${_config_file} out.pkl
-  python -m bindgen -n $(nproc) transform ${_config_file} out.pkl out_f.pkl
-  python -m bindgen -n $(nproc) generate ${_config_file} out_f.pkl
-  mkdir -p ${_output}
-  cp -a out*.pkl ${_output}/.
-  cmake -B build -S "${_output}" -G Ninja -DCMAKE_BUILD_TYPE=Release
-  cmake --build build -j $(nproc) -- -k 0
+  cd OCP
+
+  # get symbols
+  local _structure_needed="dummy/lib_linux/"
+  mkdir -p "${_structure_needed}"
+  ln -s "${_opencascade_install_prefix}"/lib dummy/lib_linux/.
+  msg2 "Old symbols:"
+  ls -gG --human-readable *.dat
+  rm *.dat
+  msg2 "Redumping symbols..."
+  python dump_symbols.py dummy
+  msg2 "Dump complete. New symbols:"
+  ls -gG --human-readable *.dat
+  rm -rf ${_structure_needed}
+  find -maxdepth 1 -name '*.dat' -exec ln -sf ../{} pywrap/{} \;
+
+  msg2 "Generating bindings..."
+  CONDA_PREFIX=/usr PYTHONPATH=pywrap python -m bindgen -v \
+    --clean \
+    --njobs ${_n_parallel_build_jobs} \
+    --libclang /usr/lib/libclang.so \
+    --include "$(clang -print-resource-dir)"/include \
+    --include "/usr/include/vtk" \
+    all ocp.toml
+  msg2 "Bindings generated."
+
+  msg2 "Setting up OCP build..."
+  CONDA_PREFIX=/usr cmake -B build_dir -S OCP -W no-dev -G Ninja \
+    -D CMAKE_BUILD_TYPE=None \
+    -D CMAKE_FIND_ROOT_PATH="${_opencascade_install_prefix}" \
+    -D OPENCASCADE_INCLUDE_DIR="${_opencascade_install_prefix}"/include/opencascade/
+
+  msg2 "Building OCP..."
+  cmake --build build_dir -j${_n_parallel_build_jobs}
+  msg2 "OCP built."
 }
 
 check() {
-  cd "OCP-${_pkgver}/build"
-  python -c "from OCP.gp import gp_Vec, gp_Ax1, gp_Ax3, gp_Pnt, gp_Dir, gp_Trsf, gp_GTrsf, gp, gp_XYZ"
+  cd OCP
+
+  # prevent the current environment from skewing the testing
+  unset "${!CSF@}"
+  unset "${!DRAW@}"
+  unset CASROOT
+
+  PYTHONPATH="$(pwd)/build_dir" python -c "from OCP import *; import OCP; print(OCP.__spec__)"
 }
 
 package(){
-  cd "OCP-${_pkgver}"
-  rm -rf build/CMakeFiles
+  cd OCP
 
-  # now we should figure out where site packages go and put the generated python there
-  _i_dir="${pkgdir}/$(python -c 'import sys; print(sys.path[-1])')"
-  mkdir -p "${_i_dir}"
-  cp build/OCP* "${_i_dir}/."
+  install -Dt "${pkgdir}$(python -c 'import sys; print(sys.path[-1])')" -m644 build_dir/OCP.*.so
+  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 LICENSE
 }
 
-# vim:ts=2:sw=2:et:

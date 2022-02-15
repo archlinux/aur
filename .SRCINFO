@@ -1,33 +1,36 @@
 pkgbase = python-ocp
 	pkgdesc = Python wrapper for OCCT generated using pywrap
-	pkgver = 7.5.RC1
-	pkgrel = 2
+	pkgver = 7.5.3.0
+	pkgrel = 1
 	url = https://github.com/CadQuery/OCP
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	makedepends = clang
-	makedepends = python-joblib>=1.0.0
+	makedepends = llvm
+	makedepends = python-joblib
 	makedepends = python-click
 	makedepends = python-pandas
 	makedepends = python-path
 	makedepends = pybind11
-	makedepends = python-setuptools
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = python-logzero
 	makedepends = python-tqdm
 	makedepends = python-toposort
-	makedepends = python-cymbal
 	makedepends = python-schema
 	makedepends = rapidjson
 	makedepends = python-jinja
 	makedepends = python-toml
+	makedepends = lief
 	depends = python
 	depends = opencascade
-	source = python-ocp-7.5.RC1.tar.gz::https://github.com/CadQuery/OCP/archive/7.5-RC1.tar.gz
-	source = pywrap-7.5.RC1.tar.gz::https://github.com/CadQuery/pywrap/archive/530890da875ca33fe954e9de285674232d3b759f.tar.gz
-	sha256sums = 38941daeecd374c2a070516811b66e42b5a67f4f856f3bddb4e4e1156b67ee06
-	sha256sums = 3d04a575d15446d12379c16f57c5c143a81611d75a2b9dd0ca73d22eac9b046d
+	depends = vtk
+	provides = python-ocp
+	conflicts = python-ocp
+	source = git+https://github.com/CadQuery/OCP.git#tag=7.5.3.0
+	source = git+https://github.com/CadQuery/pywrap.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = python-ocp
-
