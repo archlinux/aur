@@ -5,7 +5,7 @@
 pkgname=portainer-bin
 pkgver=2.11.0
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="A lightweight docker management UI"
 arch=('armv6h' 'armv7h' 'aarch64' 'x86_64')
 url="https://github.com/portainer/portainer"
