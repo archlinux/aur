@@ -1,50 +1,34 @@
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
 
-pkgname='perl-xml-semanticdiff'
-pkgver='1.0004'
-pkgrel='1'
-pkgdesc="Perl extension for comparing XML documents."
+pkgname=perl-xml-semanticdiff
+pkgver=1.0007
+pkgrel=1
+pkgdesc="Perl extension for comparing XML documents"
 arch=('any')
+url="https://metacpan.org/dist/XML-SemanticDiff"
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-depends=('perl-xml-parser' 'perl>=5.006')
-makedepends=()
-url='http://search.mcpan.org/dist/XML-SemanticDiff'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SH/SHLOMIF/XML-SemanticDiff-1.0004.tar.gz')
-md5sums=('0d13434cbc3eb2721b45c942ddb05d97')
-sha512sums=('f600eaf7dbeab04e772df6795620ef3591925a4bef1b57623c8a068ad9edfec9ee6f29c63c896c4b58f71b662ada8e4a7c5ac3968b2ec563eb2848598f2ef4fb')
-_distdir="XML-SemanticDiff-1.0004"
+depends=('perl' 'perl-xml-parser')
+makedepends=('perl-module-build')
+checkdepends=('perl-test-trailingspace')
+source=("https://www.cpan.org/modules/by-module/XML/XML-SemanticDiff-${pkgver}.tar.gz")
+sha512sums=('821be3c88d3df654774c282168ff7d18685ce595abd0f8358d7ddcea6f43d8f5bdd869882a74553c259e6a2ddb8bdcbc3f930497263a647711e2f3fe3c61def2')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "${srcdir}/XML-SemanticDiff-${pkgver}"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
-  )
+  perl Build.PL create_packlist=0
+  ./Build
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
-  )
+  cd "${srcdir}/XML-SemanticDiff-${pkgver}"
+
+  ./Build test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+  cd "${srcdir}/XML-SemanticDiff-${pkgver}"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  ./Build install --installdirs=vendor --destdir="${pkgdir}"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

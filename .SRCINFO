@@ -1,17 +1,16 @@
 pkgbase = perl-xml-semanticdiff
-	pkgdesc = Perl extension for comparing XML documents.
-	pkgver = 1.0004
+	pkgdesc = Perl extension for comparing XML documents
+	pkgver = 1.0007
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/XML-SemanticDiff
+	url = https://metacpan.org/dist/XML-SemanticDiff
 	arch = any
 	license = PerlArtistic
 	license = GPL
+	checkdepends = perl-test-trailingspace
+	makedepends = perl-module-build
+	depends = perl
 	depends = perl-xml-parser
-	depends = perl>=5.006
-	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/S/SH/SHLOMIF/XML-SemanticDiff-1.0004.tar.gz
-	md5sums = 0d13434cbc3eb2721b45c942ddb05d97
-	sha512sums = f600eaf7dbeab04e772df6795620ef3591925a4bef1b57623c8a068ad9edfec9ee6f29c63c896c4b58f71b662ada8e4a7c5ac3968b2ec563eb2848598f2ef4fb
+	source = https://www.cpan.org/modules/by-module/XML/XML-SemanticDiff-1.0007.tar.gz
+	sha512sums = 821be3c88d3df654774c282168ff7d18685ce595abd0f8358d7ddcea6f43d8f5bdd869882a74553c259e6a2ddb8bdcbc3f930497263a647711e2f3fe3c61def2
 
 pkgname = perl-xml-semanticdiff
-
