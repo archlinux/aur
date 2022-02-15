@@ -4,9 +4,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-pkgver=5.15.2+kde+r297
+pkgver=5.15.2+kde+r298
 pkgrel=1
-_commit=d16bf02a11953dcac01dca73e6f3778f293adefe
+_commit=17ded49c32dfb855ba996e0fdab957130c9b2620
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -23,11 +23,11 @@ provides=('qt5-base')
 groups=('qt' 'qt5')
 _pkgfqn=qtbase
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
-        qt5-base-cflags.patch
-        qt5-base-nostrip.patch)
+        qmake-cflags.patch
+        qmake-config.patch)
 sha256sums=('SKIP'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+            '4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa')
 options=(debug)
 
 pkgver() {
@@ -40,8 +40,8 @@ prepare() {
 
   git revert -n 6344955d17e17e2398720fe60c34cfc2a4a95208 # Revert version bump
 
-  patch -p1 < ../qt5-base-cflags.patch # Use system CFLAGS in qmake
-  patch -p1 < ../qt5-base-nostrip.patch # Don't strip binaries with qmake
+  patch -p1 < ../qmake-cflags.patch # Use system CFLAGS in qmake
+  patch -p1 < ../qmake-config.patch # Don't strip binaries with qmake and use -ltcg, cf. QTBUG-73834
 }
 
 build() {
