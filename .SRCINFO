@@ -1,0 +1,12 @@
+pkgbase = nailgun-git
+	pkgdesc = Command-line client, protocol and server for Java programs
+	pkgver = r270.a41d7cc
+	pkgrel = 1
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = java-environment
+	depends = java-runtime
+	source = nailgun::git+https://github.com/facebook/nailgun#branch=main
+	md5sums = SKIP
+
+pkgname = nailgun-git
