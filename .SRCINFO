@@ -1,0 +1,11 @@
+pkgbase = jtpremium
+	pkgdesc = All JT cores for MiSTer, including premium and beta content
+	pkgver = 17.g5f50840
+	pkgrel = 1
+	url = https://github.com/jotego/jtpremium
+	arch = any
+	license = GPL3
+	source = git+https://github.com/jotego/jtpremium.git#branch=main
+	sha256sums = SKIP
+
+pkgname = jtpremium
