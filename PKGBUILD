@@ -1,15 +1,16 @@
 # Maintainer: tytan652 <tytan652 at tytanium dot xyz>
 
 pkgname=cef-minimal-obs-bin
-_version="87.1.14"
-_commit="a29e9a3"
-_chromiumver="87.0.4280.141"
-_cefver="${_version}+g${_commit}+chromium-${_chromiumver}"
-_rebuild="1" # The tarball sometime can get rebuild by OBS Project
-pkgver="${_cefver//-/_}_${_rebuild}"
+_cefver="95.0.0-MediaHandler.2462"
+_version=${_cefver//-/_}
+_commit="95e19b8"
+_cefbranch="4638"
+_chromiumver="95.0.${_cefbranch}.69"
+_rebuild="3" # The tarball sometime can get rebuild by OBS Project
+pkgver="${_version}+g${_commit}+chromium_${_chromiumver}_${_rebuild}"
 pkgrel=1
 pkgdesc="Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs"
-arch=("i686" "x86_64" "aarch64")
+arch=("x86_64")
 url="https://bitbucket.org/chromiumembedded/cef"
 license=("BSD")
 depends=("nss" "alsa-lib" "pango" "libxrandr" "libxcomposite"
@@ -19,13 +20,10 @@ provides=("cef-minimal-obs=$pkgver")
 conflicts=("cef-minimal-obs")
 # Prevent people from using link time optimisation for this package because it make OBS unable to be built against it
 options=('!lto' '!strip' 'debug')
-source_x86_64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux64_minimal.tar.bz2")
-source_i686=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linux32_minimal.tar.bz2")
-source_aarch64=("https://cef-builds.spotifycdn.com/cef_binary_${_cefver}_linuxarm64_minimal.tar.bz2")
-sha256sums_x86_64=("9a34dbb60b5eb3b6eb63420df6c55408dd84be70119b0f7ba72ea384d2af4835")
-sha256sums_i686=("a214a7a180b2c1cd9b9009e23aac6462e813d9334995b7d8bbf4ecf335aa8b12")
-sha256sums_aarch64=("eb7ed49a020f06b54d4561a7d6811fa78b518035449c16a1cfd687cd3b2f6f5c")
+source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_${_cefbranch}_linux64.tar.bz2")
+sha256sums_x86_64=("54aba14a7228bb8f2573e081d795b4161bf3568796f8729ad42a9f8ef9c6d1ec")
 
+# Kept for future-proofing, OBS now provide a custom CEF with some additions only for x86_64
 if [[ $CARCH == 'x86_64' ]]; then
   _arch=64
   _parch=x86_64
@@ -36,11 +34,6 @@ elif [[ $CARCH == 'aarch64' ]]; then
   _arch=arm64
   _parch=arm64
 fi
-
-prepare() {
-    cd "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal
-    sed -i 's/-Werror/#-Werror/g' cmake/cef_variables.cmake
-}
 
 build() {
     cd "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal
@@ -55,8 +48,8 @@ build() {
 
 package() {
     mkdir -p "$pkgdir"/opt/cef-obs/
-    cp -R "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal/* "$pkgdir"/opt/cef-obs
+    cp -R "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}/* "$pkgdir"/opt/cef-obs
     rm -rf "$pkgdir"/opt/cef-obs/CMakeFiles
     rm -rf "$pkgdir"/opt/cef-obs/libcef_dll_wrapper/CMakeFiles
-    install -Dm644 "$srcdir"/cef_binary_${_cefver}_linux${_arch}_minimal/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 "$srcdir"/cef_binary_${_cefbranch}_linux${_arch}/LICENSE.txt "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
 }

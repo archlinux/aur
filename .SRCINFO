@@ -1,11 +1,9 @@
 pkgbase = cef-minimal-obs-bin
 	pkgdesc = Chromium Embedded Framework minimal release needed by OBS Studio release in /opt/cef-obs
-	pkgver = 87.1.14+ga29e9a3+chromium_87.0.4280.141_1
+	pkgver = 95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
 	pkgrel = 1
 	url = https://bitbucket.org/chromiumembedded/cef
-	arch = i686
 	arch = x86_64
-	arch = aarch64
 	license = BSD
 	makedepends = cmake
 	depends = nss
@@ -17,16 +15,12 @@ pkgbase = cef-minimal-obs-bin
 	depends = libxkbcommon
 	depends = libcups
 	depends = mesa
-	provides = cef-minimal-obs=87.1.14+ga29e9a3+chromium_87.0.4280.141_1
+	provides = cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3
 	conflicts = cef-minimal-obs
 	options = !lto
 	options = !strip
 	options = debug
-	source_i686 = https://cef-builds.spotifycdn.com/cef_binary_87.1.14+ga29e9a3+chromium-87.0.4280.141_linux32_minimal.tar.bz2
-	sha256sums_i686 = a214a7a180b2c1cd9b9009e23aac6462e813d9334995b7d8bbf4ecf335aa8b12
-	source_x86_64 = https://cef-builds.spotifycdn.com/cef_binary_87.1.14+ga29e9a3+chromium-87.0.4280.141_linux64_minimal.tar.bz2
-	sha256sums_x86_64 = 9a34dbb60b5eb3b6eb63420df6c55408dd84be70119b0f7ba72ea384d2af4835
-	source_aarch64 = https://cef-builds.spotifycdn.com/cef_binary_87.1.14+ga29e9a3+chromium-87.0.4280.141_linuxarm64_minimal.tar.bz2
-	sha256sums_aarch64 = eb7ed49a020f06b54d4561a7d6811fa78b518035449c16a1cfd687cd3b2f6f5c
+	source_x86_64 = https://cdn-fastly.obsproject.com/downloads/cef_binary_4638_linux64.tar.bz2
+	sha256sums_x86_64 = 54aba14a7228bb8f2573e081d795b4161bf3568796f8729ad42a9f8ef9c6d1ec
 
 pkgname = cef-minimal-obs-bin
