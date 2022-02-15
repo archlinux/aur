@@ -2,7 +2,6 @@
 
 pkgname=kiibohd-configurator-bin
 _shortname=kiibohd-configurator
-_appimage="${pkgname}-${pkgver}-${pkgrel}.AppImage"
 pkgver=1.1.0
 pkgrel=1
 pkgdesc='Configuration utility for Input Club keyboards'
@@ -14,6 +13,7 @@ provides=($_shortname)
 conflicts=('kiibohd-configurator-git')
 options=(!strip)
 install="${pkgname}.install"
+_appimage="${pkgname}-${pkgver}-${pkgrel}.AppImage"
 source=("${_appimage}::https://github.com/kiibohd/configurator/releases/download/v${pkgver}/${_shortname}-${pkgver}-linux-${CARCH}.AppImage"
         "98-kiibohd.rules"
 )
