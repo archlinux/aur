@@ -1,7 +1,7 @@
 pkgbase = libadwaita-git
 	pkgdesc = Library full of GTK widgets for mobile phones
 	pkgver = 1.1.beta.r5.ge70ae74d
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/libadwaita
 	arch = i686
 	arch = pentium4
