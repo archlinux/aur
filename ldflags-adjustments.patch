@@ -1,0 +1,13 @@
+diff --git a/makefile b/makefile
+index 57fa226..1e7b584 100644
+--- a/makefile
++++ b/makefile
+@@ -2,6 +2,8 @@ include config.mak
+ 
+ vpath %.cpp $(SRCDIR)
+ 
++LDFLAGS := -z relro -z now -z noexecstack $(LDFLAGS)
++
+ OBJS    = $(SRCS:%.cpp=%.cpp.o)
+ OBJCUS  = $(SRCCUS:%.cu=%.o)
+ OBJPYWS = $(PYWS:%.pyw=%.o)
