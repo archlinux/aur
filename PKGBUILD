@@ -5,8 +5,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-universal-require'
-pkgver='0.18'
-pkgrel='2'
+pkgver='0.19'
+pkgrel='1'
 pkgdesc="Perl/CPAN Module UNIVERSAL::require: require() modules from a variable"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -15,8 +15,8 @@ depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/UNIVERSAL-require'
 source=("http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/UNIVERSAL-require-$pkgver.tar.gz")
-md5sums=('2cdfd54bc7e270c77456a8e929a091b3')
-sha512sums=('4e1dbb62f850a2f3da3301e37862d03ad89106e9fd55ac8161ae56eff936948f87b9215c734c103d8031e1b712847bff86de43329f65f00e7e34ee83bb66c22d')
+md5sums=('d0fbbc0eda9bcdc4c77a0f4f1a2bffec')
+sha512sums=('065a361a7605aa2827ad14eeecea23a2238df2cc477c73ea2facd475953000d0c6f8773db886333295501e6d2602dd08e2f9a81d77b4f3a4c3926dcc57358cb2')
 _distdir="UNIVERSAL-require-$pkgver"
 
 build() {
