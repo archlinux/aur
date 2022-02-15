@@ -10,9 +10,9 @@ _popstarter_smb="https://bitbucket.org/ShaolinAssassin/popstarter-documentation-
 
 pkgname=pops-usb-setup
 pkgver=0.0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Setup a USB drive for the POPS emulator"
-arch=('any')
+arch=('x86_64' 'i686' 'pentium4')
 url="https://gitlab.com/tallero/pops-usb-setup"
 license=('AGPL3')
 depends=('python')

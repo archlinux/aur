@@ -1,9 +1,11 @@
 pkgbase = pops-usb-setup
 	pkgdesc = Setup a USB drive for the POPS emulator
 	pkgver = 0.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/tallero/pops-usb-setup
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = AGPL3
 	makedepends = git
 	makedepends = p7zip
