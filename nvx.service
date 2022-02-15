@@ -1,9 +1,9 @@
 [Unit]
-Description="Remove Nvidia GPU from kernel devices list and enable PM"
+Description="Turn off gpu during boot."
 
 [Service]
 Type=oneshot
-ExecStart=sh /home/pedro/Documents/projects/nvidia-prime-pm/s.sh off
+ExecStart=/usr/bin/nvx off
 
 [Install]
 WantedBy=multi-user.target
