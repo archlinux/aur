@@ -1,6 +1,6 @@
 pkgbase = bitwarden-chromium
 	pkgdesc = Bitwarden Chromium extension
-	pkgver = 1.56.4
+	pkgver = 1.56.6
 	pkgrel = 1
 	url = https://github.com/bitwarden/browser
 	install = bitwarden-chromium.install
@@ -10,8 +10,8 @@ pkgbase = bitwarden-chromium
 	makedepends = unzip
 	optdepends = chromium
 	optdepends = google-chrome
-	noextract = dist-chrome-1.56.4.zip
-	source = https://github.com/bitwarden/browser/releases/download/v1.56.4/dist-chrome-1.56.4.zip
-	sha512sums = af88240a4be952cd82271abfab07cfd5470b94ada4bbff888590e438c83997cb36fd6965e3d2a3b07202ff4142c011e4cc64d45164ff33fd99483a78ed1fc3a4
+	noextract = dist-chrome-1.56.6.zip
+	source = https://github.com/bitwarden/browser/releases/download/v1.56.6/dist-chrome-1.56.6.zip
+	sha512sums = b4415701409f6946f1846b0d1a30e9806088207ecc8a807f9dfb656ab5c4995fa589e936469c71894412cd48e33cf7328bbcdacdabfd21da026f2cc80b5ca1e4
 
 pkgname = bitwarden-chromium
