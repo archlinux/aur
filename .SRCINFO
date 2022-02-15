@@ -1,0 +1,20 @@
+pkgbase = perl-net-carddavtalk
+	pkgdesc = A library for talking to CardDAV servers
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/dist/Net-CardDAVTalk
+	arch = any
+	license = Artistic2.0
+	checkdepends = perl-test-pod
+	depends = perl
+	depends = perl-timedate
+	depends = perl-file-mmagic
+	depends = perl-list-moreutils
+	depends = perl-list-pairwise
+	depends = perl-net-davtalk
+	depends = perl-text-vcardfast
+	depends = perl-xml-spice
+	source = https://www.cpan.org/modules/by-module/Net/Net-CardDAVTalk-0.09.tar.gz
+	sha512sums = daf232db826e5febcd0b2fc08b0a0d3c3e3b2f748691175c56483ffbd38b9da8f4bc0afb3d405942c90e48ae531560563a504d40e39b021a4416cc20274e40db
+
+pkgname = perl-net-carddavtalk
