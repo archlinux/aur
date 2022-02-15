@@ -15,6 +15,7 @@ pkgbase = kronos-git
 	depends = qt5-multimedia
 	depends = sdl2
 	provides = kronos
+	conflicts = kronos
 	source = kronos::git+https://github.com/FCare/Kronos
 	md5sums = SKIP
 
