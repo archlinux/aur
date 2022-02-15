@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mani
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A CLI tool that helps you manage multiple repositories"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='570a9c38720c2c6a06ba1499827349936da6598c'
+_commit='ea6eea99701015b67e2ee7cf78e6e2bc8794dbf2'
 source=("$pkgname::git+https://github.com/alajmo/mani.git#commit=$_commit")
 b2sums=('SKIP')
 
