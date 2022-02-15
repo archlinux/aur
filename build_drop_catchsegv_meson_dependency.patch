@@ -1,0 +1,12 @@
+diff --git a/meson.build b/meson.build
+index 5041755492a662c8f78837ee211f73ffa8e26c11..dc7b16361afdff09abc2da3b218da6e6f7947034 100644
+--- a/meson.build
++++ b/meson.build
+@@ -333,7 +333,6 @@ if have_tests
+     ],
+     exe_wrapper: [
+       default_test_wrappers,
+-      find_program('catchsegv'),
+       find_program('xvfb-run'), '-a', '-s', '+iglx -noreset',
+     ],
+     timeout_multiplier: 10,

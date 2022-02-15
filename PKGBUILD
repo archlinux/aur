@@ -4,7 +4,7 @@
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=42.alpha+131+g27cbf7b23
+pkgver=42.beta
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -19,8 +19,14 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
-sha256sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/mutter.git"
+         "build_drop_catchsegv_meson_dependency.patch")
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+  cd $_pkgname
+  patch --strip=1 --input="$srcdir/build_drop_catchsegv_meson_dependency.patch"
+}
 
 pkgver() {
   cd $_pkgname
