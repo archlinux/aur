@@ -5,7 +5,7 @@
 
 _pkgname=ansible-lint
 pkgname=ansible-lint-git
-pkgver=5.4.0.r11.g98f79d1a
+pkgver=5.4.0.r17.g6e088b97
 pkgrel=1
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
@@ -38,5 +38,6 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   PYTHONHASHSEED=0 python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
-  install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm 644 COPYING -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm 644 docs/licenses/LICENSE*.* -t "${pkgdir}"/usr/share/licenses/${pkgname}
 }
