@@ -2,7 +2,7 @@
 # Original: hexptr <hexptr@protonmail.com>
 
 pkgname=streamdeck-ui
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=2
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('git' 'python-dephell' 'python-setuptools')
 provides=('streamdeck-ui')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/timothycrosley/streamdeck-ui/archive/refs/tags/v${pkgver}.tar.gz"
         "60-streamdeck.rules")
-sha512sums=('26c431f4c9a552d9dc79af9387b465d50a41de09d169a2d7642aef4c21e34cd6097981437c7b7a9f24b574fafa385cd4469f0a6a25a1de32b3b5a113f6a3f581'
+sha512sums=('f0b5939c026dc076729774db7c4d898347228fc6b4f2887bd8142298ba64d9dc47d8bf680968b16cd5428af6647b26c1d10446e75fd68352f9451662e843cd53'
             '690aa38c549b09c7c49d99e47dea74fc47d778881ce1947d9da37f6d1d94f8745c4724c23a702167e6d714ea9b4fd13a4414eb6945b17728eef9b5319b9a6c0f')
 
 prepare() {
