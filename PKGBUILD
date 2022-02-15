@@ -3,7 +3,7 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.78.0.alpha.758.g54b5f079
+pkgver=0.79.0.alpha.203.g89787baa0
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
@@ -23,9 +23,7 @@ md5sums=(
 
 prepare() {
   cd "$srcdir/${_pkgname}"
-  FLAGS="-Ofast"
-  git submodule update --init --recursive
-  meson setup -Dbuildtype=release -Db_lto=true -Dc_args="$FLAGS" -Dcpp_args="$FLAGS" -Db_asneeded=true -Dstrip=true -Ddefault_library=static -Dfluidsynth:enable-floats=true -Dfluidsynth:try-static-deps=true release
+  meson setup -Dbuildtype=release -Db_lto=true -Db_asneeded=true -Dstrip=true release
 }
 
 pkgver() {
@@ -38,8 +36,8 @@ build() {
   meson compile -C release
 
   # Add current commit info to the README
-  sed -i "s|%GIT_COMMIT%|$(git rev-parse master)|" docs/README.template
-  sed -i "s|%GIT_BRANCH%|master|" docs/README.template
+  sed -i "s|%GIT_COMMIT%|$(git rev-parse main)|" docs/README.template
+  sed -i "s|%GIT_BRANCH%|main|" docs/README.template
   sed -i "s|%GITHUB_REPO%|dreamer/dosbox-staging|" docs/README.template
 }
 
