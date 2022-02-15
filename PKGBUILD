@@ -54,15 +54,15 @@ package() {
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Done"
-    install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
+    install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-minimal}.png"
 
     echo "Packaging : Desktop Shortcut | Icon | [Build Files] | Other Files | Done"
     install -d "$pkgdir/opt/"
     install -d "$pkgdir/usr/bin/"
     cd ${srcdir}/${_pkgname}/dist/linux-unpacked
-    mkdir "${pkgdir}/opt/${pkgname%-git}"
-    cp -r --preserve=mode * "${pkgdir}/opt/${pkgname%-git}"
-    ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
+    mkdir "${pkgdir}/opt/${pkgname%-minimal}"
+    cp -r --preserve=mode * "${pkgdir}/opt/${pkgname%-minimal}"
+    ln -sf "/opt/${pkgname%-minimal}/${pkgname%-minimal}" "${pkgdir}/usr/bin/${pkgname%-minimal}"
 
 
     echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Done"
