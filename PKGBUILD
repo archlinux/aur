@@ -10,8 +10,8 @@
 
 pkgname=gnome-control-center-x11-scaling
 _pkgname=gnome-control-center
-pkgver=41.2
-pkgrel=3
+pkgver=41.4
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
@@ -32,7 +32,7 @@ optdepends=('system-config-printer: Printer settings'
             'openssh: remote login'
             'power-profiles-daemon: Power profiles support')
 groups=(gnome)
-_commit=babeb0ce357d55406b0ba0a4597e0513a0419de8  # tags/41.2^0
+_commit=d08fac3f0be63f0a4c65d26f47d3b77f8738cfab  # tags/41.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         "https://raw.githubusercontent.com/puxplaying/gnome-control-center-x11-scaling/10b4141256e5027b6df14eaa6659f15c523b2b8b/fractional-scaling.patch")
@@ -47,12 +47,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-
-  # Fix build with Meson 0.61.0
-  git cherry-pick -n 37b29c32cbecfd89c9c5e0169e0f2876f00ef5eb
-
-  # https://gitlab.gnome.org/GNOME/gnome-control-center/-/issues/1562
-  git cherry-pick -n 293e191e399123c91ef5d7b5c796ea0f42b8bd91
 
   # Install bare logos into pixmaps, not icons
   sed -i "/install_dir/s/'icons'/'pixmaps'/" panels/info-overview/meson.build
