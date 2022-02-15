@@ -1,7 +1,7 @@
 pkgbase = java-r5rcore
-	pkgdesc = Rapid Realistic Routing with 'R5' (java engine for R package)
+	pkgdesc = Rapid Realistic Routing with ‘R5’ (java engine for R package)
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipeaGIT/r5r
 	arch = i686
 	arch = x86_64

@@ -2,9 +2,9 @@
 
 pkgname=java-r5rcore
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 
-pkgdesc="Rapid Realistic Routing with 'R5' (java engine for R package)"
+pkgdesc="Rapid Realistic Routing with ‘R5’ (java engine for R package)"
 url="https://github.com/ipeaGIT/r5r"
 license=("MIT")
 
