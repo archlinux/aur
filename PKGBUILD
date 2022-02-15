@@ -4,7 +4,7 @@
 # Contributor: Kyle Laker <kyle+aur at laker dot email>
 
 pkgname=marp-cli
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
@@ -28,7 +28,7 @@ source=("https://registry.npmjs.org/@marp-team/$pkgname/-/$pkgname-$pkgver.tgz")
 # I may need to extract it for installing license.
 #noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('446b2e800f262d48fd95fe017247a8276058865cb02155a1685c0a6b7f7e4c85a5f6e2c8f1c7201ae82b99693411ac242555fc047fc2c27680d0be9bb75ef1db')
+b2sums=('195e9569428c2a3f565428427c95a4b399649819ee5fd0313d9fdc03a7938ec6e7a3b121331c610f0b6ea113fb15085a20a63b80d7b9f9d2ee3d78f7b6b5e6ca')
 
 package() {
     npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
