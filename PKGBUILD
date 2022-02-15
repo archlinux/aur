@@ -4,7 +4,7 @@
 
 pkgname=pulseaudio-dlna-cygn
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition'
 arch=('x86_64')
 url=https://github.com/Cygn/pulseaudio-dlna/
@@ -43,6 +43,6 @@ package() {
     cp -a "${srcdir}/${pkgname}-${pkgver}/lib" "${pkgdir}/opt/${pkgname}/"
     cp -a "${srcdir}/${pkgname}-${pkgver}/pyvenv.cfg" "${pkgdir}/opt/${pkgname}/"
     sed -i "1c\#!/opt/${pkgname}/bin/python" "${pkgdir}/opt/${pkgname}/bin/pulseaudio-dlna"
-    ln -s "${pkgdir}/opt/${pkgname}/bin/pulseaudio-dlna" "${pkgdir}/usr/bin/pulseaudio-dlna"
+    ln -s "/opt/${pkgname}/bin/pulseaudio-dlna" "${pkgdir}/usr/bin/pulseaudio-dlna"
 }
 
