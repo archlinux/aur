@@ -1,49 +1,43 @@
-# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
+# Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=libxcrypt-compat
-pkgname_=libxcrypt
-# Neither tarballs nor tags are signed, but commits are.
-_commit='8ff7a8c5019cbd50419f7d0a8cd691eb99d6b086' # git rev-parse v${pkgver}
-pkgver=4.4.26
+pkgver=4.4.28
 pkgrel=1
-pkgdesc='Compatibility library providing legacy API functions'
+pkgdesc='Modern library for one-way hashing of passwords: legacy API functions'
 arch=('x86_64')
 url='https://github.com/besser82/libxcrypt/'
 license=('GPL')
-depends=('glibc')
-makedepends=('git')
+depends=('glibc' 'libxcrypt')
 provides=('libcrypt.so.1')
-install=libxcrypt.install
+options=(!emptydirs)
 validpgpkeys=('678CE3FEE430311596DB8C16F52E98007594C21D') # Björn 'besser82' Esser
-source=("git+https://github.com/besser82/libxcrypt.git#commit=${_commit}?signed")
-sha256sums=('SKIP')
-
-prepare() {
-  cd $pkgname_
-  autoreconf -fi
-}
+source=("${url}/releases/download/v${pkgver}/${pkgname%-compat}-${pkgver}.tar.xz"{,.asc})
+sha256sums=('9e936811f9fad11dbca33ca19bd97c55c52eb3ca15901f27ade046cc79e69e87'
+            'SKIP')
 
 build() {
-  cd $pkgname_
+  cd ${pkgname%-compat}-${pkgver}
   ./configure \
     --prefix=/usr \
     --disable-static \
     --enable-hashes=strong,glibc \
-    --enable-obsolete-api=yes \
+    --enable-obsolete-api=glibc \
     --disable-failure-tokens
   make
 }
 
 check() {
-  cd $pkgname_
+  cd ${pkgname%-compat}-${pkgver}
   make check 
 }
 
 package() {
-  cd $pkgname_
+  cd ${pkgname%-compat}-${pkgver}
   make DESTDIR="$pkgdir" install
   rm "$pkgdir/usr/include/crypt.h"
   rm "$pkgdir/usr/lib/libcrypt.so"
+  rm "$pkgdir/usr/lib/libxcrypt.so"
   rm -r "$pkgdir/usr/lib/pkgconfig"
   rm -r "$pkgdir/usr/share/man"
 }
