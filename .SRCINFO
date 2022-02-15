@@ -1,4 +1,4 @@
-pkgbase = mini-matrix
+pkgbase = mini-matrix-git
 	pkgdesc = Displays a matrix of random characters
 	pkgver = 1.0
 	pkgrel = 2
