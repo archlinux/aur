@@ -1,0 +1,14 @@
+pkgbase = perl-list-pairwise
+	pkgdesc = Provides functions to map and grep lists two elements at a time
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://metacpan.org/dist/List-Pairwise
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-install
+	depends = perl
+	source = https://www.cpan.org/modules/by-module/List/List-Pairwise-1.03.tar.gz
+	sha512sums = ed90eac006dcedd3c6c21dfed9b8fb43bd353dcfa27f92b7251b4cf4255b65409eb51cd0561c5ada6efffc9f94ba53e382c52463a21aace72b4d237e00363b61
+
+pkgname = perl-list-pairwise
