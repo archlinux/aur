@@ -1,6 +1,6 @@
 pkgbase = ttf-open-relay-git
 	pkgdesc = Open-relay fonts from KreativeKorp
-	pkgver = r28.2d43db7
+	pkgver = r59.f3785dd
 	pkgrel = 1
 	url = https://github.com/kreativekorp/open-relay
 	arch = x86_64
@@ -9,4 +9,3 @@ pkgbase = ttf-open-relay-git
 	sha256sums = SKIP
 
 pkgname = ttf-open-relay-git
-

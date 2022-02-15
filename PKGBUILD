@@ -1,6 +1,6 @@
 # Maintainer: jD91mZM2 <me@krake.one>
 pkgname=ttf-open-relay-git
-pkgver=r28.2d43db7
+pkgver=r59.f3785dd
 pkgrel=1
 pkgdesc="Open-relay fonts from KreativeKorp"
 url="https://github.com/kreativekorp/open-relay"
@@ -25,6 +25,7 @@ pkgver() {
 package() {
     for D in open-relay/*; do
         if test -f "$D"; then continue; fi
+        if ! test -f "$D/OFL.txt"; then continue; fi
         install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/$D" "$D/"*.ttf
         install -Dm644 -t "$pkgdir/usr/share/licenses/$D" "$D/OFL.txt"
     done
