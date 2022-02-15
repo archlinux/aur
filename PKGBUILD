@@ -4,7 +4,7 @@
 pkgname=qqmusic-bin
 _pkgname=qqmusic
 pkgver=1.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="tencent qq music"
 arch=("x86_64")
 url="https://y.qq.com/"
@@ -16,13 +16,13 @@ source=(
     "${_pkgname}".sh
 )
 sha512sums=('1638c60fb92aee9c4bf53a6b8eea2e75b7edd366c2250106357987c3583228e98904809511c2b0216f53078c3c65ad81b6123ba72e57d14cd45afbc9f43650f8'
-            'fe457ad2b124dd85d985ab62d919550ebcd7dad102400756b1e59f748a105747a5f81e1733623ffe98743d9ac927ccebab585ebfa5550b2b0f0a0e57cab1c4b9')
+            'bd04c44159d1cdbf1a248e919802c8459a859ac29f4e3a94c04d1b32e1677fd5c0bb068a2d69778a966936d500c9e66e76ac2c435bfadff67a96ea859f1f18c2')
 
 package(){
     cd "${srcdir}"
     tar -xvf data.tar.xz -C "${pkgdir}"
     
-    install -Dm755 ${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
+    install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
     
     local desktopfile="${pkgdir}/usr/share/applications/qqmusic.desktop"
     sed -i '3c Exec=qqmusic %U' "$desktopfile"

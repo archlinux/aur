@@ -1,3 +1,2 @@
-#!/usr/bin/sh
-cd /opt/qqmusic
-./qqmusic --no-sandbox
+#!/usr/bin/env bash
+exec /opt/qqmusic/qqmusic --disable-gpu-sandbox "$@"
