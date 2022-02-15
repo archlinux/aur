@@ -4,7 +4,7 @@
 pkgname=qqmusic-bin
 _pkgname=qqmusic
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="tencent qq music"
 arch=("x86_64")
 url="https://y.qq.com/"
@@ -13,16 +13,17 @@ depends=('nss' 'libxss' 'gtk3')
 provides=("$_pkgname")
 source=(
     "qqmusic_${pkgver}_amd64.deb::https://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_${pkgver}_amd64.deb"
+    "${_pkgname}".sh
 )
-sha512sums=('1638c60fb92aee9c4bf53a6b8eea2e75b7edd366c2250106357987c3583228e98904809511c2b0216f53078c3c65ad81b6123ba72e57d14cd45afbc9f43650f8')
+sha512sums=('1638c60fb92aee9c4bf53a6b8eea2e75b7edd366c2250106357987c3583228e98904809511c2b0216f53078c3c65ad81b6123ba72e57d14cd45afbc9f43650f8'
+            'fe457ad2b124dd85d985ab62d919550ebcd7dad102400756b1e59f748a105747a5f81e1733623ffe98743d9ac927ccebab585ebfa5550b2b0f0a0e57cab1c4b9')
 
 package(){
     cd "${srcdir}"
     tar -xvf data.tar.xz -C "${pkgdir}"
     
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -s /opt/qqmusic/qqmusic "${pkgdir}/usr/bin/qqmusic"
-
+    install -Dm755 ${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
+    
     local desktopfile="${pkgdir}/usr/share/applications/qqmusic.desktop"
     sed -i '3c Exec=qqmusic %U' "$desktopfile"
     sed -i 'N;2aName[zh_CN]=QQ音乐\nKeywords=qqmusic' "$desktopfile"
