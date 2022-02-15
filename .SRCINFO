@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
-	pkgver = 2022.1.5
+	pkgver = 2022.2.2
 	pkgrel = 1
 	url = https://wiki.ros.org/mavlink
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = ros-noetic-mavlink
 	makedepends = python
 	depends = ros-noetic-catkin
 	depends = python
-	source = ros-noetic-mavlink-2022.1.5.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2022.1.5.tar.gz
-	sha256sums = 09779a7f43576cd7a9a83456e6a3be27426541e56869ad6da56de3494ffb9028
+	source = ros-noetic-mavlink-2022.2.2.tar.gz::https://github.com/mavlink/mavlink-gbp-release/archive/upstream/2022.2.2.tar.gz
+	sha256sums = 6ce56f142cfacf9f77e288019bb90301df69de799ea6e44912cf39498256cc8f
 
 pkgname = ros-noetic-mavlink
