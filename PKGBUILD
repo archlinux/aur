@@ -2,13 +2,13 @@
 
 pkgname=nxp-gui-guider
 _pkgname="Gui-Guider"
-pkgver=1.2.1
+pkgver=1.3.0
 _pkg_file_name="${_pkgname}-Setup-${pkgver}-GA.deb"
 pkgrel=1
 pkgdesc="A user-friendly graphical user interface development tool from NXP that enables the rapid development of high quality displays with the open-source LVGL graphics library"
 arch=('x86_64')
 url="https://www.nxp.com/design/software/development-software/gui-guider:GUI-GUIDER"
-license=('unknown')
+license=('custom:NXP SOFTWARE LICENSE AGREEMENT')
 options=('!strip')
 makedepends=('tar'
              'xdg-user-dirs')
@@ -27,7 +27,7 @@ if [ ! -f ${PWD}/${_pkg_file_name} ]; then
 fi
 
 source=("local://${_pkg_file_name}")
-sha256sums=('94d0fa6021bb9cd41be35ae1a2af67715dfab41ad2123a57aa385300ef4cec74')
+sha256sums=('5b7e541f86ab187bd7a76140babe54db62a82137a6ff78c227a1426fa65ddf22')
 
 build() {
   cd ${srcdir}
@@ -43,5 +43,8 @@ package() {
   # soft link
   install -dm 755 ${pkgdir}/usr/bin
   ln -sf /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
+
+  # license
+  install -Dm644 ${srcdir}/build/opt/${_pkgname}/EULA.html -t ${pkgdir}/usr/share/licenses/${pkgname}
 }
 # vim: set sw=2 ts=2 et:
