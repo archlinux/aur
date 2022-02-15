@@ -2,10 +2,9 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-cadquery
-_pkgver="V7_5_3p1"
-#_pkgver="V7_6_0"
+_pkgver="V7_6_0"
 pkgver=$(echo ${_pkgver} | sed 's,^V,,g;s,_,.,g')
-pkgrel=2
+pkgrel=1
 pkgdesc="Opencascade for python-cadquery"
 arch=(x86_64)
 url="https://dev.opencascade.org/"
@@ -29,12 +28,10 @@ rapidjson
 
 source=(
 "${pkgname}-${pkgver}.tgz::https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/${_pkgver};sf=tgz"
-vtk9.patch
 cmake.patch
 opencascade-tbb-2021.patch
 )
-sha256sums=('0425c0aac2c77935f422791ab4e29adae3f7f3443a18835d52843df21309f356'
-            'ae24da8eac8b57af8f612c872c8ec1962b6e5243758aa39c92e805223fdfe157'
+sha256sums=('e7f989d52348c3b3acb7eb4ee001bb5c2eed5250cdcceaa6ae97edc294f2cabd'
             'b3a2583fd21576d454952894f92a2a9e710015051403a3759b4a2ccbfc78a048'
             'b0c4601fd9b2905e4b3bc3ed8af1493960c80bfe10332a0c562c59786efd57a2')
 
@@ -43,9 +40,6 @@ prepare() {
 
   patch -p1 -i ../cmake.patch
   #curl https://src.fedoraproject.org/rpms/opencascade/raw/rawhide/f/opencascade-cmake.patch | patch -p1
-
-  patch -p1 -i ../vtk9.patch
-  #curl https://raw.githubusercontent.com/archlinux/svntogit-community/packages/opencascade/trunk/vtk9.patch | patch -p1
 
   # fix for tbb changes
   patch -p1 -i ../opencascade-tbb-2021.patch
