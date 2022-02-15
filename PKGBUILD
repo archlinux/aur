@@ -3,7 +3,7 @@
 
 pkgname=stenc
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="SCSI Tape Encryption Manager"
 arch=('i686' 'x86_64')
 license=('GPLv2')

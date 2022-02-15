@@ -1,8 +1,8 @@
 pkgbase = stenc
 	pkgdesc = SCSI Tape Encryption Manager
 	pkgver = 1.0.8
-	pkgrel = 1
-	url = http://stenc.sourceforge.net/
+	pkgrel = 2
+	url = https://github.com/scsitape/stenc
 	arch = i686
 	arch = x86_64
 	license = GPLv2
