@@ -1,8 +1,9 @@
-# Maintainer: Philip Goto <philip.goto@gmail.com>
+# Maintainer: Ben Poest <ben@poest.com>
+# Contributor: Philip Goto <philip.goto@gmail.com>
 
 pkgname=textpieces
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Small tool for quick text transformations such as hashes, encoding, decoding and so on'
 arch=(x86_64 aarch64)
 url='https://github.com/liferooter/textpieces'
