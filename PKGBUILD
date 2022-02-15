@@ -4,9 +4,11 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-pkgver=4.1.1
+pkgver=4.3a
 _prefix=qt-dab- # name of tarball and contents change from release to release
-_pkgver=4.11    # official versioning not compatible with pacman
+_pkgver=4.3a    # official versioning not compatible with pacman
+#_binary=${pkgname}-${_pkgver}
+_binary=${pkgname}-4.3
 pkgrel=1
 pkgdesc="Software DAB decoder for use with various SDR devices"
 arch=(x86_64)
@@ -19,14 +21,19 @@ optdepends=('airspy: Support for Airspy'
             'libad9361: Support for Pluto'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
-source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz")
-sha256sums=('8f664ae37d40d5cf1f36d2dbb48e285bbb0d62257d257622f34d617c7c009594')
+source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz"
+        "https://github.com/JvanKatwijk/qt-dab/commit/59a3761e8a2f9aba8fd6e5b471f9c6508c29f274.patch")
+sha256sums=('3fbaa2f8ea05af99b364d2d47133cc0d79738dfd3a71d96761d3fdc6e4383d28'
+            'e9e01b0df5afaee4b8cf564334f87ebd91d80725c557f3dcecc7805a54924c8d')
 
 prepare() {
 	cd "${_prefix}${pkgname}-${_pkgver}"
 
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' dab-maxi/${pkgname}.desktop
+
+	# Fix CMakeList.txt after introduction of tii-codes
+	patch -p1 < "${srcdir}/59a3761e8a2f9aba8fd6e5b471f9c6508c29f274.patch"
 }
 
 build() {
@@ -49,8 +56,8 @@ build() {
 }
 
 package() {
-	install -Dm 755 build-maxi/${pkgname}-${_pkgver} "${pkgdir}"/usr/bin/${pkgname}
+	install -Dm 755 build-maxi/${_binary} "${pkgdir}"/usr/bin/${pkgname}
 	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/dab-maxi/${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
 	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/dab-maxi/${pkgname}.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/${pkgname}.png
-	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/docs/${pkgname}.pdf "${pkgdir}"/usr/share/doc/${pkgname}/${pkgname}.pdf
+	install -Dm 644 ${_prefix}${pkgname}-${_pkgver}/docs/manual.pdf "${pkgdir}"/usr/share/doc/${pkgname}/manual.pdf
 }
