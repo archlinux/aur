@@ -5,7 +5,7 @@ pkgver=r15.5ea2c39
 pkgrel=1
 pkgdesc="Public DNS data yielder"
 arch=('any')
-url="https://github.com/jschauma/$_pkgname"
+url="https://github.com/jschauma/puddy"
 license=('BSD3')
 depends=('perl'
          'perl-io-socket-inet6'
@@ -17,7 +17,7 @@ depends=('perl'
          'perl-parallel-forkmanager'
          'perl-uri')
 makedepends=('git')
-provides=("$_pkgname")
+provides=('puddy')
 source=("git+$url.git"
         '0001-Add-DESTDIR-support.patch')
 sha512sums=('SKIP'
