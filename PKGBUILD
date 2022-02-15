@@ -3,10 +3,10 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-rc
-_pkgver=27.2.0-rc4
+_pkgver=27.2.0
 pkgver=${_pkgver//-/_}
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
