@@ -18,10 +18,10 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-    meson configure -Ddoc=true build
-}
+#prepare() {
+#	cd "$srcdir/${pkgname%-git}"
+#    meson configure -Ddoc=true .
+#}
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
