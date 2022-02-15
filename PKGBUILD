@@ -7,7 +7,8 @@ arch=('x86_64')
 url="http://pc.weixin.qq.com/"
 license=('ISC')
 options=('!strip' 'emptydirs')
-provides=('wechat' 'weixin')
+provides=('wechat')
+conflicts=('wechat-uos')
 depends=(
     'gtk3' 'nss' 'libxss' 'libnotify' 'bubblewrap' 'lsb-release'
 )
