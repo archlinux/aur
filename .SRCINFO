@@ -1,0 +1,12 @@
+pkgbase = haiku-icon-theme
+	pkgdesc = Icon theme ported from Haiku OS
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1012423
+	arch = any
+	license = MIT
+	depends = gtk-update-icon-cache
+	source = haiku-icon-theme::git+https://github.com/tallero/haiku-icon-theme
+	b2sums = SKIP
+
+pkgname = haiku-icon-theme
