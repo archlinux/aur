@@ -13,7 +13,6 @@ pkgbase = pademelon-desktop
 	depends = polkit-gnome
 	depends = xfce4-power-manager
 	depends = network-manager-applet
-	depends = firefox
 	depends = xfce4-terminal
 	depends = pcmanfm-gtk3
 	depends = arandr

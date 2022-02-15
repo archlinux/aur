@@ -15,7 +15,6 @@ depends=(
     polkit-gnome
     xfce4-power-manager
     network-manager-applet
-    firefox
     xfce4-terminal
     pcmanfm-gtk3
     arandr
