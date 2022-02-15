@@ -5,12 +5,11 @@ _url="discord/${_pkgname}"
 
 pkgname="${_pkgname}-bin"
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for interfacing your game with a locally running Discord desktop client"
 arch=("x86_64")
 url="https://github.com/${_url}"
 license=("MIT")
-makedepends=("unzip")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${url}/releases/download/v${pkgver}/discord-rpc-linux.zip"

@@ -1,11 +1,10 @@
 pkgbase = discord-rpc-bin
 	pkgdesc = Library for interfacing your game with a locally running Discord desktop client
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/discord/discord-rpc
 	arch = x86_64
 	license = MIT
-	makedepends = unzip
 	provides = discord-rpc
 	conflicts = discord-rpc
 	source = https://github.com/discord/discord-rpc/releases/download/v3.4.0/discord-rpc-linux.zip
