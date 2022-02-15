@@ -9,5 +9,5 @@ if [ $NVERSION != $CVERSION ]; then
     makepkg
     makepkg --printsrcinfo > .SRCINFO
     git commit -am "New version $NVERSION"
-    git push aur master
+    git push
 fi
