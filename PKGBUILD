@@ -9,7 +9,7 @@ url="https://github.com/pedro00dk/nvidia-exec#readme"
 license=('GPL')
 groups=()
 depends=('nvidia' 'lshw' 'jq')
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=($_pkgname)
@@ -27,6 +27,6 @@ validpgpkeys=()
 package() {
     cd "$pkgname"
     install -Dm 755 nvx "$pkgdir/usr/bin/nvx"
-    install -Dm 644 nvx.service "$pkgdir/etc/systemd/system/nvx.service"
+    install -Dm 644 nvx.service "$pkgdir/usr/lib/systemd/system/nvx.service"
     install -Dm 644 modprobe.conf "$pkgdir/usr/lib/modprobe.d/nvx.conf"
 }
