@@ -2,13 +2,13 @@
 pkgname=xorg-xdm-xlogin
 _pkgname=xorg-xdm
 pkgver=1.1.12
-pkgrel=2
+pkgrel=3
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
 url="https://github.com/bbidulock/xdm"
 license=('custom')
-depends=('libbsd' 'pam' 'libxaw' 'libxinerama' 'xorg-xrdb' 'xorg-sessreg' 'libxft' 'systemd')
+depends=('libbsd' 'pam' 'libxaw' 'libxinerama' 'xorg-xrdb' 'xorg-sessreg' 'libxft' 'systemd' 'libxcrypt')
 optdepends=('slim-xdm: for separate greeter')
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
