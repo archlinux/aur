@@ -1,0 +1,13 @@
+pkgbase = perl-news-nntpclient
+	pkgdesc = Perl 5 module to talk to NNTP (RFC977) server
+	pkgver = 0.37
+	pkgrel = 1
+	url = https://metacpan.org/dist/NNTPClient
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = https://www.cpan.org/modules/by-module/News/NNTPClient-0.37.tar.gz
+	sha512sums = 7179a4cb96ba877c7f870fa2e3edc91e3811e1db99ae5a05a0eec47febda69ecd231f4658f2253f59295262737f91f92462bc5d6a18dd2da2580f7565e976863
+
+pkgname = perl-news-nntpclient
