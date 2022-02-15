@@ -2,6 +2,7 @@ pkgbase = portainer-bin
 	pkgdesc = A lightweight docker management UI
 	pkgver = 2.11.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/portainer/portainer
 	arch = armv6h
 	arch = armv7h
