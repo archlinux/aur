@@ -3,7 +3,7 @@
 
 _major=1
 _minor=0
-_patch=4
+_patch=5
 pkgname=dnieremote-bin
 pkgver="${_major}.${_minor}.${_patch}"
 pkgrel=1
@@ -13,7 +13,7 @@ url="https://www.dnielectronico.es/"
 license=('custom')
 depends=('gtkmm3')
 source=("https://www.dnielectronico.es/descargas/Apps/DNIeRemote_${_major}.${_minor}-${_patch}_amd64.zip")
-sha256sums=('c56acb2e01a75ad00dc2e6b940f4040140f979a9446415d5932118bd3a014bee')
+b2sums=('03a1c73cb15192918a2494a087222c3d2d29a12e8ca762dbae4458b3bbcf6b0a8923122556cc54e53c483519d9a04741570ba56daf06289bfe55e1d96d9ba320')
 
 prepare() {
   # Create docfile
