@@ -1,6 +1,6 @@
 pkgbase = python-pyuavcan
 	pkgdesc = Python implementation of the UAVCAN protocol stack.
-	pkgver = 1.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://pyuavcan.readthedocs.io
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python-pyuavcan
 	optdepends = python-ruamel-yaml
 	optdepends = python-requests
 	optdepends = python-simplejson
-	source = python-pyuavcan-1.4.3::https://github.com/UAVCAN/pyuavcan/archive/1.4.3.tar.gz
-	sha256sums = d32c8f4434db693ec2cd1549baf8689182a3967bae9f35573b9aac1ba26dd452
+	source = python-pyuavcan-1.4.4::https://github.com/UAVCAN/pyuavcan/archive/1.4.4.tar.gz
+	sha256sums = 5c99ac1b64de7338f45196ebc24e165bf119c652248f46ecd0fadeede27abef5
 
 pkgname = python-pyuavcan
