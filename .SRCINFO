@@ -1,0 +1,15 @@
+pkgbase = colorstorm
+	pkgdesc = A color theme generator for editors and terminal emulators
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/benbusby/colorstorm
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = zig>=0.9.0
+	makedepends = make
+	conflicts = colorstorm-git
+	source = colorstorm-2.0.0.tar.gz::https://github.com/benbusby/colorstorm/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 9944a14eeca2759142690fec5c4bd91b243957e242a51fb59484e498fe58467c
+
+pkgname = colorstorm
