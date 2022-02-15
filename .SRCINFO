@@ -1,7 +1,7 @@
 pkgbase = rtklib-qt-git
 	pkgdesc = An Open Source Program Package for GNSS Positioning
 	pkgver = r199.ceb8106
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rtklib.com/
 	arch = x86_64
 	groups = GNSS
@@ -11,8 +11,7 @@ pkgbase = rtklib-qt-git
 	makedepends = qt5-base
 	depends = glibc
 	provides = rtklib-qt
-	source = RTKLIB::git+https://github.com/JensReimann/RTKLIB.git#branch=rtklib_2.4.3
+	source = RTKLIB::git+https://github.com/JensReimann/RTKLIB-qt.git#branch=rtklib_2.4.3_qt
 	sha256sums = SKIP
 
 pkgname = rtklib-qt-git
-
