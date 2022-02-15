@@ -3,8 +3,8 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
-pkgver=27.1.3
-pkgrel=14
+pkgver=27.2.0
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -53,7 +53,7 @@ makedepends=(
   "cmake" "git" "libfdk-aac" "swig" "luajit" "sndio" "lsb-release"
 
   # AUR Packages
-  "cef-minimal-obs=87.1.14+ga29e9a3+chromium_87.0.4280.141_1"
+  "libajantv2"
 )
 # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -71,7 +71,7 @@ optdepends=(
   "luajit: Lua scripting"
   "sndio: Sndio input client"
   "v4l2loopback-dkms: Virtual camera output"
-  #"libajantv2: AJA NTV 2 support"
+  "libajantv2: AJA NTV 2 support"
 )
 # To manage python rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
@@ -80,8 +80,8 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   optdepends+=("python>=$_pythonver: Python scripting")
 fi
-provides=("obs-studio=$pkgver" "obs-browser" "obs-vst")
-conflicts=("obs-studio" "obs-linuxbrowser" "obs-browser" "obs-vst")
+provides=("obs-studio=$pkgver" "obs-vst")
+conflicts=("obs-studio" "obs-vst")
 options=('debug')
 source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$pkgver"
@@ -92,7 +92,7 @@ source=(
 )
 sha256sums=(
   "SKIP"
-  "a43f2ad974104888ef36eef49b3e60dc26f7cfc0f48300726c861978ae5ae3ea"
+  "4dc22cc6a71f879486946032debef5789b144d1d108a678379910480601937ca"
   "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
   "SKIP"
   "SKIP"
@@ -113,47 +113,23 @@ if [[ $CARCH == 'x86_64' ]] || [[ $CARCH == 'i686' ]]; then
   optdepends+=("decklink: Blackmagic Design DeckLink support")
 fi
 
+if [[ $CARCH == 'x86_64' ]]; then
+  makedepends+=("cef-minimal-obs=95.0.0_MediaHandler.2462+g95e19b8+chromium_95.0.4638.69_3")
+  provides+=("obs-browser")
+  conflicts+=("obs-linuxbrowser" "obs-browser")
+  _browser=ON
+else
+  _browser=OFF
+fi
+
 prepare() {
   cd "$srcdir/obs-studio"
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
 
-  ## libobs/audio-monitoring: Fix PulseAudio monitoring volume for s32 format (https://github.com/obsproject/obs-studio/commit/0eed7ca98f256c1661f0c3237993a61da5c9912f)
-  git cherry-pick --no-commit 0eed7ca98f256c1661f0c3237993a61da5c9912f
-
-  ## libobs/audio-monitoring: Fix PulseAudio monitoring volume for u8 format (https://github.com/obsproject/obs-studio/commit/85f45a3ef6bbb6ca54310dc9599a86f0f7dde4b0)
-  git cherry-pick --no-commit 85f45a3ef6bbb6ca54310dc9599a86f0f7dde4b0
-
-  ## obs-ffmpeg: Fix unwritten audio-only output (https://github.com/obsproject/obs-studio/commit/499af309b51234b0e5dda81753fb655f893ce217)
-  git cherry-pick --no-commit 499af309b51234b0e5dda81753fb655f893ce217
-
-  ## pulse: fill audio monitor buffer more aggressively (https://github.com/obsproject/obs-studio/commit/5142a7685d6bbf38ed369137a6dce43e7b57852e)
-  git cherry-pick --no-commit 5142a7685d6bbf38ed369137a6dce43e7b57852e
-
-  ## obs-ffmpeg: Fix starting video packet offset in replay-buffer (https://github.com/obsproject/obs-studio/commit/2a0b9d851c878306a3d19465e597bd06f880b94e)
-  git cherry-pick --no-commit 2a0b9d851c878306a3d19465e597bd06f880b94e
-
-  ## UI: Link python when obs-scripting python is enabled (https://github.com/obsproject/obs-studio/commit/1017cd5430602f695713f191ef8f5fa9940baee6)
-  git cherry-pick --no-commit 1017cd5430602f695713f191ef8f5fa9940baee6
-
-  ## UI: Update python linkage for older compilers (https://github.com/obsproject/obs-studio/commit/293b7951ed5a22529ffb214029de9233190a6f2f)
-  git cherry-pick --no-commit 293b7951ed5a22529ffb214029de9233190a6f2f
-
-  ## obs-ffmpeg: Set DRI devices and their name persistently (https://github.com/obsproject/obs-studio/commit/4623a6b4bc4c89ceb5db684e2e7fbd57d01129aa)
-  git cherry-pick --no-commit 4623a6b4bc4c89ceb5db684e2e7fbd57d01129aa
-
-  ## libobs: Add API to get encoder frame size  (https://github.com/obsproject/obs-studio/commit/d1b87e1642ad5e485244f3594d331ce648b3353a)
-  git cherry-pick --no-commit d1b87e1642ad5e485244f3594d331ce648b3353a
-
-  ## obs-ffmpeg: Set frame_size for audio codec parameter (https://github.com/obsproject/obs-studio/commit/685f8297e406a4ef56e5be2f06268c9526c2cb3c)
-  git cherry-pick --no-commit 685f8297e406a4ef56e5be2f06268c9526c2cb3c
-
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"
-  # Add translation
-  echo -e "\r\n# Bind Network Interface PR translation" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
-  echo "Basic.Settings.Advanced.Network.BindToInterface=\"Bind to interface\"" >> "$srcdir/obs-studio"/UI/data/locale/en-US.ini
 
   ## linux-v4l2: Save device by path (https://github.com/obsproject/obs-studio/pull/3437)
   patch -Np1 < "$srcdir/v4l2_by-path.patch"
@@ -167,7 +143,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DBUILD_BROWSER=ON \
+    -DBUILD_BROWSER=$_browser \
     -DCEF_ROOT_DIR=/opt/cef-obs \
     -DOBS_VERSION_OVERRIDE="$pkgver-tytan652-$pkgrel" ..
 
