@@ -1,4 +1,4 @@
-pkgbase = wordle-git
+pkgbase = wordle-tui-git
 	pkgdesc = TUI Wordle
 	pkgver = 0.4.0.r31.gfbe80ee
 	pkgrel = 1
@@ -7,9 +7,9 @@ pkgbase = wordle-git
 	license = N.A.
 	makedepends = git
 	makedepends = rust
-	provides = wordle
-	conflicts = wordle
-	source = wordle::git+https://github.com/conradludgate/wordle
+	provides = wordle-tui
+	conflicts = wordle-tui
+	source = wordle-tui::git+https://github.com/conradludgate/wordle
 	sha1sums = SKIP
 
-pkgname = wordle-git
+pkgname = wordle-tui-git
