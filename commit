@@ -1,8 +1,0 @@
-#!/bin/sh
-if makepkg -si
-then
-    makepkg --printsrcinfo >.SRCINFO
-    git add .SRCINFO PKGBUILD
-    git commit -m "$(date +%F)"
-    git push
-fi
