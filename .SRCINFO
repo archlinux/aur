@@ -1,0 +1,21 @@
+pkgbase = fakeq-git
+	pkgdesc = fakeq is a fake qq client.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Star-caorui/fakeq
+	arch = x86_64
+	license = MIT
+	makedepends = appmenu-gtk-module
+	makedepends = libappindicator-gtk3
+	makedepends = patchelf
+	makedepends = librsvg
+	makedepends = libvips
+	makedepends = wget
+	makedepends = yarn
+	makedepends = git
+	depends = gtk3
+	depends = webkit2gtk
+	source = fakeq-git::git+https://github.com/Star-caorui/fakeq
+	sha256sums = SKIP
+
+pkgname = fakeq-git
