@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=3.1.r111173.g9df13fba69c
+pkgver=3.2.r112616.gcbdd5786404
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -56,7 +56,7 @@ sha256sums=('SKIP'
             'SKIP'
             '87c5ee85032bab83510db426ab28f7acfba893aefea2b523f2fd78f3b62c5348'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
-            'ab353b7a9fdb5e9a87fefdade6915f44660299b67446735a9720833aa45f6be8'
+            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a'
             '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b')
 
 pkgver() {
