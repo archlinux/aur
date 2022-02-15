@@ -4,7 +4,7 @@
 
 pkgname=pulseaudio-dlna-cygn
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition'
 arch=('x86_64')
 url=https://github.com/Cygn/pulseaudio-dlna/
@@ -30,7 +30,7 @@ sha256sums=('be4746df0a3073a4b1f9cca92bf006fc531942e3238a44f2a2bd7549c03c153d')
 build() {
     mv "${srcdir}/pulseaudio-dlna-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
     cd "${pkgname}-${pkgver}"
-    make PREFIX="/usr"
+    make
 }
 
 package() {
