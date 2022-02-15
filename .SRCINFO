@@ -13,9 +13,9 @@ pkgbase = cardinal.lv2-git
 	depends = libx11
 	depends = speexdsp
 	provides = cardinal
-	provides = cardinal.lv2
+	provides = cardinal-lv2
 	conflicts = cardinal
-	conflicts = cardinal.lv2
+	conflicts = cardinal-lv2
 	source = cardinal::git+https://github.com/DISTRHO/Cardinal
 	sha512sums = SKIP
 
