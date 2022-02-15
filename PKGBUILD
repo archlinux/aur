@@ -2,7 +2,7 @@
 
 pkgname=gftools
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -14,6 +14,7 @@ _py_deps=(babelfont
           fonttools
           fs # optdepends of fonttols required for [ufo]
           glyphslib
+          glyphsets
           jinja
           opentype-sanitizer
           protobuf
@@ -22,12 +23,14 @@ _py_deps=(babelfont
           pygit2
           pygithub
           requests
+          skia-pathops
           strictyaml
           tabulate
           ttfautohint-py
           unidecode
           vttlib)
 depends=(absl-py
+         hyperglot
          python
          "${_py_deps[@]/#/python-}"
          statmake)
