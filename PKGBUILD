@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-shell')
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="nwg-shell meta-package and installer"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('chromium: suggested web browser'
 makedepends=('python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-shell/archive/v"$pkgver".tar.gz")
 
-md5sums=('a4099dc612d72f51c34d752133493a62')
+md5sums=('09ad99e072fcddf7694bd19a01abe981')
 
 package() {
   cd "${pkgname}-${pkgver}"
