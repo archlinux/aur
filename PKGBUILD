@@ -1,8 +1,8 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda-edu
-pkgver=1.9.8
-pkgrel=3
+pkgver=1.9.8.03
+pkgrel=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification. (education version)"
 arch=('x86_64')
 url="http://www.gowinsemi.com.cn/faq.aspx"
@@ -11,7 +11,7 @@ license=('unknown')
 source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver}_Education.tar.gz"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('5a228caed04335351b7b5f393e36cfb91226a2a6cafbf1d7286e3072467daec6'
+sha256sums=('fda2abedc10c039aab4b5e3b227bd8495b5ce21d2e5e1f4e34265e00e72e68ac'
             '4f833de574e9c16fbe7c321bb1d7ad5be166744bc513e60ec3cae79885732ec1'
             '6f7957416ab06a8f2fe447663cfb9873fe2c6f213b6b93075bc416b02473c386')
 
