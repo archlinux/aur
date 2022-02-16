@@ -1,8 +1,8 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=nvidia-exec
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
-pkgdesc="A script to run programs nvidia optimus setups with power management for Xorg and Wayland"
+pkgdesc="Run programs in nvidia optimus setups with power management for Xorg and Wayland without log out"
 arch=("x86_64")
 url="https://github.com/pedro00dk/nvidia-exec#readme"
 license=('GPL')

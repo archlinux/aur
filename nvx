@@ -158,7 +158,8 @@ function stop {
 if [ "$1" = "start" ]; then
     shift
     start
-    __NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia sudo -u $USER "$@" || true
+    sudo --reset-timestamp
+    __NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@" || true
     stop
 elif [ "$1" = "on" ]; then
     turn_on
