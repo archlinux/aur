@@ -1,19 +1,16 @@
 pkgbase = crystalline-bin
 	pkgdesc = A Language Server Protocol implementation for Crystal.
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 0
 	url = https://github.com/elbywan/crystalline/
 	arch = x86_64
 	license = MIT
-	depends = gc
-	depends = libevent
-	depends = pcre
-	depends = libyaml
-	depends = llvm10-libs
 	provides = crystalline
 	conflicts = crystalline
-	source = crystalline.gz::https://github.com/elbywan/crystalline/releases/download/v0.3.0/crystalline_x86_64-unknown-linux-gnu.gz
-	sha512sums = a975fb2d25bb80b761e00496e0d576521f3027d97d9d9f4a2e3b8bf1494ae1e635e76069813b9850c315fb183d7dfa2503f4378a747e9f1d5960742141519960
+	noextract = LICENSE
+	source = crystalline.gz::https://github.com/elbywan/crystalline/releases/download/v0.5.0/crystalline_x86_64-unknown-linux-gnu.gz
+	source = LICENSE::https://raw.githubusercontent.com/elbywan/crystalline/master/LICENSE
+	sha512sums = 1541a7ff2af201514858c5c68a1fb17e82801554381665b98fd618fbbc493b0692b33df8bfc06a1132de2fb242e0c9cefcbd4cc02326c119423cb80548c9fa58
+	sha512sums = 81cab25a58a3e23f1548e7fcf11934cf6146af6a407292b4d043458da24803fe4c489f1f2a69d033623557eeaa2908efb26bf4750908e271b13e0406bc4203c7
 
 pkgname = crystalline-bin
-
