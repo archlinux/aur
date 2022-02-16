@@ -1,7 +1,7 @@
 pkgbase = libkeccak-musl
-	pkgdesc = Keccak-family hashing library
+	pkgdesc = Keccak-family hashing library (musl-version)
 	pkgver = 1.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maandree/libkeccak
 	arch = x86_64
 	arch = i686

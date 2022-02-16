@@ -3,8 +3,8 @@
 pkgname=libkeccak-musl
 _pkgname=libkeccak
 pkgver=1.3.1
-pkgrel=1
-pkgdesc='Keccak-family hashing library'
+pkgrel=2
+pkgdesc='Keccak-family hashing library (musl-version)'
 arch=('x86_64' 'i686')
 url='https://github.com/maandree/libkeccak'
 license=('custom:ISC')
