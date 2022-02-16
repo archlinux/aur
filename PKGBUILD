@@ -1,7 +1,7 @@
 # Maintainer: Matthieu Borde <dev at starmatt dot net>
 
 pkgname=gnome-shell-extension-babar
-pkgver=56
+pkgver=58
 pkgrel=1
 pkgdesc='GNOME shell extension that adds grid, favorites, workspaces & tasks in top panel'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/fthx/babar'
 license=('GPL3')
 depends=('gnome-shell>=3.36')
 source=("https://extensions.gnome.org/extension-data/babarfthx.v${pkgver}.shell-extension.zip")
-sha256sums=('981098ce8d27f9399e6560462326503ef701cf008396fe90c4efa05b9c9b00c3')
+sha256sums=('7256f4c30e242964da3016d2ffa602b9831cd4c3bf1898aacd486c9b828c0060')
 
 package() {
     local _uuid="babar@fthx"
