@@ -1,8 +1,8 @@
 # Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
 pkgname=xilinx-vivado-dummy
-pkgver=2018.3
-pkgrel=1
+pkgver=2020.2
+pkgrel=2
 pkgdesc="Install dependencies to prepare for manual ./xsetup installation"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -14,9 +14,13 @@ depends=('ncurses5-compat-libs'
 	       'fxload'
 	       'digilent.adept.runtime'
 	       'digilent.adept.utilities'
-	       'xterm')
+         'libxcrypt-compat'
+	       #'xterm'
+)
 provides=('vivado'
 	        'xilinx-vivado')
+
 package() {
-	echo
+  true
 }
+# vim: set sw=2 ts=2 et:
