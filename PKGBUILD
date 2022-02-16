@@ -4,7 +4,7 @@
 
 pkgname=pulseaudio-dlna-cygn
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small DLNA server which brings DLNA/UPnP support to PulseAudio, Cygn edition'
 arch=('x86_64')
 url=https://github.com/Cygn/pulseaudio-dlna/
@@ -15,7 +15,7 @@ depends=('python-chardet' 'python-dbus' 'python-docopt' 'python-gobject'
          'python-pychromecast' 'python-pyroute2' 'python-requests'
          'python-setproctitle' 'python-protobuf' 'python-setuptools'
          'python-zeroconf' 'python-urllib3' 'python-virtualenv')
-makedepends=('git' 'help2man')
+makedepends=('help2man')
 optdepends=('faac: AAC transcoding support'
             'ffmpeg: multiple formats support'
             'flac: FLAC transcoding support'
@@ -40,7 +40,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make manpage
-  python setup.py build --build-lib=build/python \
-                  install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
