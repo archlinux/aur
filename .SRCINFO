@@ -1,6 +1,6 @@
 pkgbase = ytarchive-bin
 	pkgdesc = Garbage Youtube livestream downloader
-	pkgver = 0.3.0.20211230.045002
+	pkgver = 0.3.0.20220216.055047
 	pkgrel = 1
 	url = https://github.com/Kethsar/ytarchive
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ytarchive-bin
 	depends = ffmpeg
 	provides = ytarchive
 	conflicts = ytarchive-git
-	source = ytarchive-0.3.0.20211230.045002.zip::https://github.com/Kethsar/ytarchive/releases/download/latest/ytarchive_linux_amd64.zip
-	sha256sums = 94b202964f9651521677c1eae99ee47a0e5d237f4b664139f6ba1295b7123cb9
+	source = ytarchive-0.3.0.20220216.055047.zip::https://github.com/Kethsar/ytarchive/releases/download/latest/ytarchive_linux_amd64.zip
+	sha256sums = ceea567afc97d572d045875ff44503738f95ad3ee4696e563c76d1e714b05c4d
 
 pkgname = ytarchive-bin
