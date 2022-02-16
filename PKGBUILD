@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=btcpayserver
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor."
 arch=("any")
@@ -21,7 +21,7 @@ optdepends=("apache: HTTP server"
 "postgresql: Database"
 "sqlite: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("1771569c324c5a233998460c36630d5e7cdad4bc718d417e68f50ffad901aeaf")
+sha256sums=("1420e49aa1ef9b6e0cb10587d5f725bcbfb61713a18b678fdb1d240ac7ce49da")
 
 build()
 {
