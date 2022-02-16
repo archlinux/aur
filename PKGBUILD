@@ -1,20 +1,18 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-ayatana-git
 pkgver=r36.8533b03
-pkgrel=1
-pkgdesc='Wingpanel Ayatana-Compatibility Indicator'
+pkgrel=2
+pkgdesc='Wingpanel Ayatana-Compatibility Indicator (community fork)'
 arch=('i686' 'x86_64')
-url='https://github.com/elementary/wingpanel-indicator-ayatana'
+url='https://github.com/Lafydev/wingpanel-indicator-ayatana'
 license=('GPL3')
-depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libgee'
-         'libindicator-gtk3-ubuntu'
-         'libwingpanel-2.0.so')
-makedepends=('cmake' 'git' 'gobject-introspection' 'vala')
+depends=('glib2' 'glibc' 'gtk3-ubuntu' 'indicator-application' lib{indicator-gtk3-ubuntu,{granite,wingpanel}.so})
+makedepends=('git' 'meson' 'vala' 'wingpanel')
 provides=('wingpanel-indicator-ayatana')
 conflicts=('wingpanel-indicator-ayatana')
-replaces=('wingpanel-indicator-ayatana-bzr')
-source=('git+https://github.com/elementary/wingpanel-indicator-ayatana.git')
+source=('git+https://github.com/Lafydev/wingpanel-indicator-ayatana.git')
 sha256sums=('SKIP')
 
 pkgver() {
