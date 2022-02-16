@@ -1,6 +1,6 @@
 pkgbase = php-rdkafka
 	pkgdesc = PHP-rdkafka is a thin librdkafka binding providing a working PHP 7 / PHP 8 Kafka client
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/arnaud-lb/php-rdkafka
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = php-rdkafka
 	depends = php
 	depends = librdkafka
 	backup = etc/php/conf.d/rdkafka.ini
-	source = https://pecl.php.net/get/rdkafka-5.0.0.tgz
-	md5sums = f1fd466c1775eb4288077654c1fe49cb
+	source = https://pecl.php.net/get/rdkafka-5.0.1.tgz
+	md5sums = 97d34d3dffa18a236f1a9c5c4043df67
 
 pkgname = php-rdkafka
-
