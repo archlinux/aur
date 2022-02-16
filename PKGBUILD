@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed -e 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -36,7 +36,7 @@ package() {
   depends+=(libsoup-2.4.so)
   provides+=(libgdata.so)
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
 
 # vim:set sw=2 et:
