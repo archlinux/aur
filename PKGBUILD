@@ -1,6 +1,6 @@
 # Maintainer: YidaozhanYa <yidaozhan_ya@outlook.com>
 pkgname=ryujinx-cn
-pkgver=1.1.26
+pkgver=1.1.29
 pkgrel=1
 pkgdesc="使用 C# 编写的实验性任天堂 Switch 模拟器（汉化版）"
 arch=(x86_64)
