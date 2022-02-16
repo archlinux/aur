@@ -14,8 +14,7 @@ pkgbase = cataclysm-dda-ncurses
 	conflicts = cataclysm-dda
 	conflicts = cataclysm-dda-git
 	conflicts = cataclysm-dda-ncurses-bin
-	source = cataclysm-dda-ncurses-0.E-3.tar.gz::https://github.com/CleverRaven/Cataclysm-DDA/archive/0.E-3.tar.gz
-	sha256sums = 21ac5226a996ac465842f188cadea8815eae7309fe38cf8d94de2f8ac97cd820
+	source = cataclysm-dda-ncurses-0.F-3.tar.gz::https://github.com/CleverRaven/Cataclysm-DDA/archive/0.F-3.tar.gz
+	sha256sums = 5cde334df76f80723532896a995304fd789cc7207172dd817960ffdbb46d87a4
 
 pkgname = cataclysm-dda-ncurses
-
