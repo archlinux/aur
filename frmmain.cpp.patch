@@ -1,0 +1,21 @@
+diff --git a/src/frmmain.cpp b/src/frmmain.cpp
+index ec5bf48..0339285 100644
+--- a/src/frmmain.cpp
++++ b/src/frmmain.cpp
+@@ -31,6 +31,7 @@
+ #include <QMimeData>
+ #include <QtSerialPort/QSerialPort>
+ #include <QtSerialPort/QSerialPortInfo>
++#include <QStandardPaths>
+ #include <QThread>
+ 
+ #include "frmmain.h"
+@@ -112,7 +113,7 @@ frmMain::frmMain(QWidget *parent) :
+             << "G59";
+ 
+     // Loading settings
+-    m_settingsFileName = qApp->applicationDirPath() + settings_file;
++    m_settingsFileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) + settings_file;
+     preloadSettings();
+ 
+     m_settings = new frmSettings(this);

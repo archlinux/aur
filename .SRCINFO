@@ -1,0 +1,23 @@
+pkgbase = candle2-git
+	pkgdesc = GRBL and GRBL-Advanced controller application with G-Code visualizer written in Qt - git version
+	pkgver = V2.3.r2.335c14c.22.0389946386b5da970c7968a45c81216d
+	pkgrel = 1
+	url = https://github.com/Schildkroet/Candle2.git
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	depends = qt5-serialport
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = candle2
+	conflicts = candle2
+	conflicts = candle2-bin
+	source = candle2::git+https://github.com/Schildkroet/Candle2.git
+	source = candle2.desktop
+	source = frmmain.cpp.patch
+	md5sums = SKIP
+	md5sums = 060580e207a2230c5182badf908d0bf9
+	md5sums = 5a72f06e4bfe207088d7a678415d968e
+
+pkgname = candle2-git
