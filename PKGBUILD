@@ -1,6 +1,6 @@
 pkgname=qbittorrent-enhanced-ua
-pkgver=4.4.0.10
-pkgrel=2
+pkgver=4.4.1.10
+pkgrel=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar. (Enhanced Edition with original user-agent)"
 arch=('x86_64')
 _name="qBittorrent-Enhanced-Edition"
@@ -21,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-    '7296c4ed516baaa004f78ed6ef3be8f2f932cabaf6339eb14b11aeda53907fd9'
+    '6615145de1ae717f06fb8c44e110be00b4548854c77e1d19226a23aff89b5715'
     '25310df75d7b41b55cc15c11a7a845465358a199e3d3147044404d82edeac514'
 )
 
