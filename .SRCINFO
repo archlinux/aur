@@ -1,6 +1,6 @@
 pkgbase = sshyp
 	pkgdesc = A light-weight, self-hosted, synchronized password manager
-	pkgver = 2022.01.26.fr3.4
+	pkgver = 2022.02.16.fr4.3
 	pkgrel = 1
 	url = https://github.com/rwinkhart/sshyp
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = sshyp
 	depends = nano
 	depends = xclip
 	depends = wl-clipboard
-	source = https://github.com/rwinkhart/sshyp/releases/download/v2022.01.26.fr3.4/sshyp-2022.01.26.fr3.4.tar.xz
-	sha512sums = 53c6a21c1887f54c8a41e31d3302356091dfab9497bc6fdb8b27d24dccc05802bdaf6c0fc75f9248c39ddb8251358d867b2de1fb51d697eaa0bc507bbe2a0c2d
+	source = https://github.com/rwinkhart/sshyp/releases/download/v2022.02.16.fr4.3/sshyp-2022.02.16.fr4.3.tar.xz
+	sha512sums = 76d80e2266bdbbcebda23b5f5fe8f39a88d5f5d0292929e393617880146a6d60e63e3ae46538d293dda9f9e507cc0470de9997e174c3ffea99d833c03b6ef146
 
 pkgname = sshyp
