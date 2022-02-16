@@ -1,7 +1,7 @@
 pkgbase = airsim
 	pkgdesc = Open source simulator for autonomous vehicles built on Unreal Engine / Unity, from Microsoft AI & Research
-	pkgver = 1.3.1
-	pkgrel = 2
+	pkgver = 1.7.0
+	pkgrel = 1
 	url = https://microsoft.github.io/AirSim
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,9 @@ pkgbase = airsim
 	depends = unreal-engine
 	depends = rpclib
 	depends = eigen
-	source = airsim-1.3.1::https://github.com/microsoft/AirSim/archive/v1.3.1-linux.tar.gz
+	source = airsim-1.7.0::https://github.com/microsoft/AirSim/archive/v1.7.0-linux.tar.gz
 	source = CMakeLists.patch
-	sha256sums = 6a6668aaac30b6942023cfc92cafded0d6fb7715bba1e798556705b95a1ed5c7
+	sha256sums = 77d9b9eb771883222bedd611fe52ccbef074bbb8f5fd91fd2b55388ea10647a8
 	sha256sums = 6128b8042c5394cfea443e06da3fad1ce63da84082f1f6a027906026987dfe9c
 
 pkgname = airsim
-
