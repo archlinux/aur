@@ -1,4 +1,5 @@
-# Maintainer: katt <magunasu.b97@gmail.com>
+# Maintainer: Silvio <s.i.l.v.io..f.r.i.c.k.e@gmail.com>
+# Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=shellcheck-bin
 pkgver=0.8.0
