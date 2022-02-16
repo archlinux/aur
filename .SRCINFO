@@ -1,9 +1,8 @@
 pkgbase = pyroscope-bin
 	pkgdesc = Continuous profiling platform
 	pkgver = 0.10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyroscope.io/
-	install = pyroscope.install
 	arch = x86_64
 	arch = aarch64
 	license = APACHE
