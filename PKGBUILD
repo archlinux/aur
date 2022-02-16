@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix70'); }
 
 pkgname=blender-${_blenver}-git
-pkgver=2.83.15.r11.ga925c8969d7
+pkgver=2.83.19.r1.gb84159e4410
 pkgrel=1
 pkgdesc="LTS Maintenance version of ${_branch} branch"
 changelog=blender.changelog
@@ -57,6 +57,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'python39.patch::https://git.blender.org/gitweb/gitweb.cgi/blender.git/patch/56d0df51a36fdce7ec2d1fbb7b47b1d95b591b5f'
         'openexr3.patch'
         'opencolorio1.patch'
+        'python310.patch' #back-ported commit dae445d94a7a5e1ad38719ea05e5bb0bc76ede84 6fe00939b0a471cc149ea5b3c63ca57b049b4a37
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -69,7 +70,8 @@ sha256sums=('SKIP'
             '41e745b8fb37464a83dfedc09ff2158369cec09b96fdc855b71001e16b6cbe75'
             '7ae5ac4d636934cd46213e3f29ea67013d17316e122d8f312daec288e4f90cd9'
             '4d7c2db0464287178f0663debb6e00b4e9358cd5833f2a2b025e8be3f541e997'
-            'c17cb969e67854d2c588de1590f73330cfa44efffd996430e879829b1b6c2065')
+            'c17cb969e67854d2c588de1590f73330cfa44efffd996430e879829b1b6c2065'
+            '2e081cc09600bf216298d10d752d3edf7368964dbb07cf2fde160210323d7d35')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -81,7 +83,8 @@ b2sums=('SKIP'
         '33f4b7e71153b272f0ae3b16c9eabdb65fb275c2344a6454866c660ac9bdf6da1207e75c6f9198c64c52cebeab71f816d2852425596c0cfbcfed0835e64403ff'
         '4b11df6d494644e740cfda654fbebb2988c430d18c093739724f331738099100925fd0399b94cf0a1188c4ae804081c8380424b64f35355f7cbfde6c7ee91b44'
         '3a3d31deceb2cbe838e5054f43c288a8e8d98aab0f4ae8a67b9bb361a991b355d3c8c680ce6fd6c8efd4e38b387ac3396a67eaaba70f0c4785826d33d86c0fbe'
-        '325e8fef357b953e023dd6a0f317cd10baffa27233b439560b2188671b39f7ec27c667fce9490b9cb310ba11924d35c921fb8003dad619e8542b0673c7a3eea0')
+        '325e8fef357b953e023dd6a0f317cd10baffa27233b439560b2188671b39f7ec27c667fce9490b9cb310ba11924d35c921fb8003dad619e8542b0673c7a3eea0'
+        'bfb0d78a8c97f85a08fd7167724d36a50162b89dd0587aa75e7c2e2190307c13d9df4ab4056316cac53c4200ca7ea9ad62c0ffa3712b194ed1e6c130576ab876')
 
 pkgver() {
   git -C "$srcdir"/blender describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
@@ -98,7 +101,7 @@ prepare() {
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
   ((DISABLE_EMBREE)) || git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
-  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,python39,openexr3,opencolorio1}.patch
+  git -C "$srcdir/blender" apply -v "$srcdir"/{cpp14,python3{9,10},openexr3,opencolorio1}.patch
 }
 
 build() {
