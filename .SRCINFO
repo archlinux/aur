@@ -1,10 +1,10 @@
 pkgbase = kwin-scripts-ultrawidewindows
-	pkgver = 4.1
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/lucmos/UltrawideWindows
 	arch = any
 	license = GPL-2.0
-	source = kwin-scripts-ultrawidewindows-4.1.tar.gz::https://github.com/lucmos/UltrawideWindows/archive/refs/tags/4.1.tar.gz
-	sha256sums = 59dbd042a29f207053ad0bbc9e11f068654af93bb517000e452fb29840b02dcc
+	source = kwin-scripts-ultrawidewindows-4.2.tar.gz::https://github.com/lucmos/UltrawideWindows/archive/refs/tags/4.2.tar.gz
+	sha256sums = f565d6c93edce1013127b94cb40cc14ce4fa7091b423547d920904f2303ca2c0
 
 pkgname = kwin-scripts-ultrawidewindows
