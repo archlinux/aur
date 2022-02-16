@@ -1,4 +1,5 @@
-# Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
 pkgname=xilinx-vivado-dummy
 pkgver=2020.2
@@ -8,17 +9,17 @@ url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
 license=('custom')
 depends=('ncurses5-compat-libs'
-	       'libpng12'
-	       'lib32-libpng12'
-	       'gtk2'
-	       'fxload'
-	       'digilent.adept.runtime'
-	       'digilent.adept.utilities'
+         'libpng12'
+         'lib32-libpng12'
+         'gtk2'
+         'fxload'
+         'digilent.adept.runtime'
+         'digilent.adept.utilities'
          'libxcrypt-compat'
-	       #'xterm'
+         #'xterm'
 )
 provides=('vivado'
-	        'xilinx-vivado')
+          'xilinx-vivado')
 
 package() {
   true
