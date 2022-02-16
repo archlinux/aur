@@ -1,6 +1,6 @@
 pkgbase = openrdate
 	pkgdesc = Set the system's date from a remote host
-	pkgver = 1.10.2
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/resurrecting-open-source-projects/openrdate
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = openrdate
 	makedepends = automake
 	depends = libbsd
 	conflicts = rdate
-	source = openrdate-1.10.2.tar.gz::https://github.com/resurrecting-open-source-projects/openrdate/archive/refs/tags/1.10.2.tar.gz
-	sha256sums = 602e0994deb9cd593a0194e0e0d0c7d1c6c6036f4dedf5126896ecd2aefd5746
+	source = openrdate-1.11.tar.gz::https://github.com/resurrecting-open-source-projects/openrdate/archive/refs/tags/1.11.tar.gz
+	sha256sums = 931c4ad143421e516bfd8c964a6e125ec193d5f1e524262a8a6a011181df4721
 
 pkgname = openrdate
