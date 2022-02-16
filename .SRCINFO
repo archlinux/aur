@@ -1,6 +1,6 @@
 pkgbase = xfel-git
 	pkgdesc = Tiny FEL tools for allwinner SOC, support RISC-V D1 chip.
-	pkgver = 1.2.3.r23.gfa04579
+	pkgver = 1.2.5.r0.gc5c2cd0
 	pkgrel = 1
 	url = https://github.com/xboot/xfel
 	arch = any
