@@ -1,7 +1,7 @@
 pkgbase = gnunet
 	pkgdesc = A framework for secure peer-to-peer networking
 	pkgver = 0.15.3
-	pkgrel = 9
+	pkgrel = 10
 	url = http://gnunet.org
 	install = gnunet.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = gnunet
 	makedepends = libtool
 	makedepends = opus
 	makedepends = pkgconfig
+	makedepends = postgresql
 	makedepends = python
 	depends = brotli
 	depends = gettext

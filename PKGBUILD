@@ -6,7 +6,7 @@
 
 pkgname='gnunet'
 pkgver='0.15.3'
-pkgrel=9
+pkgrel=10
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -15,7 +15,8 @@ conflicts=("${pkgname}-git" "${pkgname}-bin")
 depends=('brotli' 'gettext' 'gnurl' 'gnutls' 'iptables' 'jansson'
          'libextractor' 'libgcrypt' 'libidn2' 'libmicrohttpd' 'libsodium'
          'libtool' 'libunistring' 'nss' 'openssl' 'sqlite' 'which' 'zlib')
-makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'python')
+makedepends=('bluez-libs' 'libpulse' 'libtool' 'opus' 'pkgconfig' 'postgresql'
+             'python')
 optdepends=('bluez: for bluetooth transport'
             'gnunet-gtk: for handling the gnunet:// URI scheme'
             'libgabe: for Attribute-Based Encryption'
