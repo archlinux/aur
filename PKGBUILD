@@ -4,12 +4,13 @@
 pkgname=sunloginclient
 _pkgname=sunlogin
 pkgver=11.0.0.36662
-pkgrel=3
+pkgrel=4
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64" "aarch64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
-         'xorg-xhost')
+         'xorg-xhost'
+         'libxcrypt-compat')
 license=('custom')
 provides=('sunlogin')
 source=("runsunloginclient.service"
@@ -18,7 +19,7 @@ source_x86_64=("https://down.oray.com/${_pkgname}/linux/${pkgname}-${pkgver}-amd
 source_aarch64=("https://down.oray.com/${_pkgname}/linux/${pkgname}_${pkgver}_arm.deb")
 install="${pkgname}.install"
 sha256sums=('7f36a60d84741d817a0d0804bd39c8c7d7058144a6934b2abf0841446f4a56de'
-            'SKIP')
+            'b3da0bda5ab0d4badb2cf7723dac95a9c5f5efb89f3d3f192d78728b064d0720')
 sha256sums_x86_64=('825e05405dcdd31e87a91a0bfa961c6e954f953d6ead667715924b4703e41ef0')
 sha256sums_aarch64=('7e3d9fd33eca25e0fca07c04777d81bdc1b5832819d36b37f0773de742dcbd59')
 
