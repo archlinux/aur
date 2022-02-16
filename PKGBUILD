@@ -3,7 +3,7 @@
 
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
-pkgver=6.5.3.1452
+pkgver=6.5.3.1454
 pkgrel=1
 _releasename="Alchemy Project AgileAkita"
 _releasename_underscored="${_releasename// /_}"
@@ -29,8 +29,8 @@ optdepends=(
   'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
 source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2")
-sha1sums=('9fa873e32b8238998b590edefc9b97c6bb18c3d5')
-b2sums=('284c1afebdbf178bfb5e65cfc43921f7f87a2234cc8ad3f746d21d098dbb3a08c0c190e7c56e5809d68b1ad5f4b275099953a1b693314ccd006e1738d2ce2b45')
+sha1sums=('791e755a5dad859b7a9b1f125284d38e0f729e21')
+b2sums=('dcec836077c3cc17bcb82f7a89508d0e29bd8dbcfb2d907598dc3d9febaba36ea2773c3b4b82848f086fa78f07c4e68d6090ec351c15c5ab19420b19ef7e80a7')
 # pkgver() {
   # echo "${pkgver}"
 # }
