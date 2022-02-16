@@ -1,6 +1,6 @@
 pkgbase = file-roller-pantheon
 	pkgdesc = Archive manipulator for Pantheon
-	pkgver = 3.38.0
+	pkgver = 3.40.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/file-roller/
 	arch = i686
@@ -25,12 +25,11 @@ pkgbase = file-roller-pantheon
 	optdepends = unace: ACE archive support
 	optdepends = lrzip: lrzip archive support
 	optdepends = squashfs-tools: squashfs image support
-	provides = file-roller=3.38.0
+	provides = file-roller
 	conflicts = file-roller
-	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=25f9db9770ff5f68aeaffce2e329ef39ae47729d
+	source = git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=d5cfba5a4e86b2e8118113be410f39fc854b1df7
 	source = contracts.patch
 	sha256sums = SKIP
 	sha256sums = d559e817b16bee842bf0081fd9832e11439b83c8604a035372893c231cfe15f3
 
 pkgname = file-roller-pantheon
-

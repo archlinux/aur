@@ -2,7 +2,7 @@
 # Contributor: Adria Arrufat <adria DOT arrufat+aur AT protonmail DOT ch>
 
 pkgname=file-roller-pantheon
-pkgver=3.38.0
+pkgver=3.40.0
 pkgrel=1
 pkgdesc="Archive manipulator for Pantheon"
 url="https://gitlab.gnome.org/GNOME/file-roller/"
@@ -16,9 +16,9 @@ optdepends=('p7zip: 7z, arj, exe and encrypted zip files support'
             'lrzip: lrzip archive support'
             'squashfs-tools: squashfs image support')
 groups=(pantheon)
-provides=(file-roller="${pkgver}")
+provides=(file-roller)
 conflicts=(file-roller)
-_commit=25f9db9770ff5f68aeaffce2e329ef39ae47729d  # tags/3.38.0^0
+_commit=d5cfba5a4e86b2e8118113be410f39fc854b1df7  # tags/3.40.0^0
 source=("git+https://gitlab.gnome.org/GNOME/file-roller.git#commit=$_commit"
         "contracts.patch")
 sha256sums=('SKIP'
