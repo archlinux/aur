@@ -4,7 +4,7 @@ _pkgname='nmeasim-python'
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=1.0.0.0+r22.20210918.439faff
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python 3 GNSS/NMEA receiver simulation, with GUI.'
 arch=(
   any
@@ -35,11 +35,19 @@ conflicts=(
 replaces=()
 source=(
   "${_pkgname}::git+https://gitlab.com/nmeasim/nmeasim.git"
+  'remove_ico_from_gui.patch'
 )
 sha256sums=(
   'SKIP'
+  '87b2921cdad2d2274bfade32877737339a00c90b5caddd083230b0ec34867ed4'
 )
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  msg2 "Applying patch to remove 'icon.ico' from 'gui.py' to mitigate https://gitlab.com/nmeasim/nmeasim/-/issues/1:"
+  patch -N -p1 < "${srcdir}/remove_ico_from_gui.patch"
+}
 
 pkgver () {
   cd "${srcdir}/${_pkgname}"
