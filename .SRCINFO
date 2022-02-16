@@ -1,7 +1,7 @@
 pkgbase = k3s-bin
 	pkgdesc = Lightweight Kubernetes
-	pkgver = 1.22.5+k3s1
-	pkgrel = 2
+	pkgver = 1.23.3+k3s1
+	pkgrel = 1
 	url = https://k3s.io
 	arch = x86_64
 	arch = armv7h
@@ -13,11 +13,11 @@ pkgbase = k3s-bin
 	source = k3s.service.env
 	sha256sums = 6dae4b76712fc5ad7e515ad8a14fee0b961bfb0cd624d998ac954c233aa90ff5
 	sha256sums = 667199fa6b811dde3aef3e626e2695a566ad64c9a03d19d0c94a1f104a7612d0
-	source_x86_64 = k3s-1.22.5+k3s1-x86_64::https://github.com/rancher/k3s/releases/download/v1.22.5+k3s1/k3s
-	sha256sums_x86_64 = f18e0e17f11d3052f00ca4428bd548b6bf936bcfb71d8ad49a91154a6b5e460f
-	source_armv7h = k3s-1.22.5+k3s1-armv7h::https://github.com/rancher/k3s/releases/download/v1.22.5+k3s1/k3s-armhf
-	sha256sums_armv7h = 8d5964532a66757f65ff784491727a8c283aec176e004688e8ac40c0554dc15e
-	source_aarch64 = k3s-1.22.5+k3s1-aarch64::https://github.com/rancher/k3s/releases/download/v1.22.5+k3s1/k3s-arm64
-	sha256sums_aarch64 = 2eb878cbc660613c2b06745eaabfa97c6b6932e2822e09ab89bccf1f016a1e0a
+	source_x86_64 = k3s-1.23.3+k3s1-x86_64::https://github.com/rancher/k3s/releases/download/v1.23.3+k3s1/k3s
+	sha256sums_x86_64 = 2c74eff75d10660815e47d90d258b6edce5a817942fb0f7cfbebcb976628612f
+	source_armv7h = k3s-1.23.3+k3s1-armv7h::https://github.com/rancher/k3s/releases/download/v1.23.3+k3s1/k3s-armhf
+	sha256sums_armv7h = 671b6522dbe8acbaefa27063bc2709200391795d4743ba15361dd95b6ba9f595
+	source_aarch64 = k3s-1.23.3+k3s1-aarch64::https://github.com/rancher/k3s/releases/download/v1.23.3+k3s1/k3s-arm64
+	sha256sums_aarch64 = 0a370a4f148c2a5fdd6164f3636d3dfffbc2173f9c39476b7b6d017ae94752da
 
 pkgname = k3s-bin
