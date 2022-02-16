@@ -1,29 +1,60 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@kth.se>
 
-pkgname=libar2simplified
+pkgbase=libar2simplified
+pkgname=($pkgbase $pkgbase-doc $pkgbase-musl)
 pkgver=1.1
-pkgrel=1
-pkgdesc="Facade for libar2"
+pkgrel=2
+_pkgdesc="Facade for libar2"
+pkgdesc="${_pkgdesc}"
 arch=(i686 x86_64)
 url="https://github.com/maandree/libar2simplified"
 license=('custom:ISC')
-depends=(libblake libar2)
-checkdepends=()
-makedepends=()
-source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+depends=()
+checkdepends=(libar2 libar2-musl)
+_compiler=gcc
+makedepends=(libar2 libar2-musl ${_compiler})
+source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
 sha256sums=(2aa80e1a4e43dfa8d1f03220f5ee29049ed739e4d740c399d4ac3b9b58409cd4)
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd -- "$srcdir"
+  cp -r -- "$pkgbase-$pkgver" "$pkgbase-$pkgver-musl"
+  cd -- "$pkgbase-$pkgver"
   make PREFIX=/usr
+  cd -- "../$pkgbase-$pkgver-musl"
+  make PREFIX=/usr/lib/musl CC="musl-${_compiler} -std=c11"
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd -- "$srcdir/$pkgbase-$pkgver"
   make check
+  cd -- "../$pkgbase-$pkgver-musl"
+  make CC="musl-${_compiler} -std=c11" check
 }
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
+package_libar2simplified() {
+  pkgdesc="${_pkgdesc}"
+  depends=(libar2)
+
+  cd -- "$srcdir/$pkgbase-$pkgver"
   make PREFIX=/usr DESTDIR="$pkgdir" install
+  rm -r -- "${pkgdir}/usr/share"
+}
+
+package_libar2simplified-doc() {
+  pkgdesc="${_pkgdesc} (documentation)"
+
+  cd -- "$srcdir/$pkgbase-$pkgver"
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  rm -r -- "${pkgdir}/usr/lib"
+  rm -r -- "${pkgdir}/usr/include"
+}
+
+package_libar2simplified-musl() {
+  pkgdesc="${_pkgdesc} (musl version)"
+  depends=(libar2-musl)
+
+  cd -- "$srcdir/$pkgbase-$pkgver-musl"
+  make PREFIX=/usr/lib/musl DESTDIR="$pkgdir" install
+  rm -r -- "${pkgdir}/usr/lib/musl/share"
 }
