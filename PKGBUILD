@@ -7,7 +7,7 @@ arch=(x86_64)
 url="https://github.com/Star-caorui/fakeq"
 license=(MIT)
 depends=('gtk3' 'webkit2gtk')
-makedepends=('git' 'cargo' 'yarn' 'appmenu-gtk-module' 'libappindicator-gtk3' 'patchelf' 'librsvg' 'libvips' 'wget')
+makedepends=('git' 'cargo' 'yarn' 'libappindicator-gtk3' 'appmenu-gtk-module' 'libvips' 'wget')
 source=('fakeq-git::git+https://github.com/Star-caorui/fakeq')
 sha256sums=('SKIP')
 
