@@ -2,7 +2,7 @@
 
 pkgname=quickmedia-git
 pkgver=r1079.2030684
-pkgrel=1
+pkgrel=2
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
 arch=('x86_64')
 url="https://git.dec05eba.com/QuickMedia"
@@ -30,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 "video_player/sibs-build/$(sibs platform)/release/quickmedia-video-player" "/usr/bin/quickmedia-video-player"
+  install -Dm755 "video_player/sibs-build/$(sibs platform)/release/quickmedia-video-player" "$pkgdir/usr/bin/quickmedia-video-player"
   install -Dm755 "sibs-build/$(sibs platform)/release/quickmedia" "$pkgdir/usr/bin/quickmedia"
   ln -sf "/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
   install -Dm644 boards.json "$pkgdir/usr/share/quickmedia/boards.json"
