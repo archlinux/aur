@@ -15,9 +15,9 @@ pkgbase = candle2-git
 	conflicts = candle2-bin
 	source = candle2::git+https://github.com/Schildkroet/Candle2.git
 	source = candle2.desktop
-	source = frmmain.cpp.patch
+	source = fix.patch
 	md5sums = SKIP
 	md5sums = 060580e207a2230c5182badf908d0bf9
-	md5sums = 5a72f06e4bfe207088d7a678415d968e
+	md5sums = 22cd3b0cd9edc3a66a14e3d9210acddf
 
 pkgname = candle2-git

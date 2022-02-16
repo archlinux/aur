@@ -1,0 +1,185 @@
+diff --git a/src/frmmain.cpp b/src/frmmain.cpp
+index ec5bf48..0339285 100644
+--- a/src/frmmain.cpp
++++ b/src/frmmain.cpp
+@@ -31,6 +31,7 @@
+ #include <QMimeData>
+ #include <QtSerialPort/QSerialPort>
+ #include <QtSerialPort/QSerialPortInfo>
++#include <QStandardPaths>
+ #include <QThread>
+ 
+ #include "frmmain.h"
+@@ -112,7 +113,7 @@ frmMain::frmMain(QWidget *parent) :
+             << "G59";
+ 
+     // Loading settings
+-    m_settingsFileName = qApp->applicationDirPath() + settings_file;
++    m_settingsFileName = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) + settings_file;
+     preloadSettings();
+ 
+     m_settings = new frmSettings(this);
+diff --git a/src/frmmain_settings.cpp b/src/frmmain_settings.cpp
+index 5bbae41..0982872 100644
+--- a/src/frmmain_settings.cpp
++++ b/src/frmmain_settings.cpp
+@@ -155,10 +155,15 @@ void frmMain::loadSettings()
+     ui->cboHeightMapInterpolationType->setCurrentIndex(set.value("heightmapInterpolationType", 0).toInt());
+     ui->chkHeightMapInterpolationShow->setChecked(set.value("heightmapInterpolationShow", false).toBool());
+ 
+-    foreach (ColorPicker* pick, m_settings->colors())
+-    {
+-        pick->setColor(QColor(set.value(pick->objectName().mid(3), "black").toString()));
+-    }
++    m_settings->setToolpathNormal(QColor(set.value("ToolpathNormal", QColor(0, 0, 0)).toString()));
++    m_settings->setToolpathDrawn(QColor(set.value("ToolpathDrawn", QColor(217, 217, 217)).toString()));
++    m_settings->setToolpathHighlight(QColor(set.value("ToolpathHighlight", QColor(145, 130, 230)).toString()));
++    m_settings->setToolpathZMovement(QColor(set.value("ToolpathZMovement", QColor(255, 0, 0)).toString()));
++    m_settings->setToolpathStart(QColor(set.value("ToolpathStart", QColor(255, 0, 0)).toString()));
++    m_settings->setToolpathEnd(QColor(set.value("ToolpathEnd", QColor(0, 255, 0)).toString()));
++    m_settings->setVisualizerBackground(QColor(set.value("VisualizerBackground", QColor(255, 255, 255)).toString()));
++    m_settings->setVisualizerText(QColor(set.value("VisualizerText", QColor(0, 0, 0)).toString()));
++    m_settings->setTool(QColor(set.value("Tool", QColor(255, 153, 0)).toString()));
+ 
+     updateRecentFilesMenu();
+ 
+diff --git a/src/frmsettings.cpp b/src/frmsettings.cpp
+index 1d2605e..aa09eb2 100644
+--- a/src/frmsettings.cpp
++++ b/src/frmsettings.cpp
+@@ -597,6 +597,96 @@ void frmSettings::setUseRotaryAxis(bool value)
+     ui->chkEnableRotaryAxis->setChecked(value);
+ }
+ 
++QColor frmSettings::tool()
++{
++    return ui->clpTool->color();
++}
++
++void frmSettings::setTool(const QColor& color)
++{
++    ui->clpTool->setColor(color);
++}
++
++QColor frmSettings::visualizerBackground()
++{
++    return ui->clpVisualizerBackground->color();
++}
++
++void frmSettings::setVisualizerBackground(const QColor& color)
++{
++    ui->clpVisualizerBackground->setColor(color);
++}
++
++QColor frmSettings::visualizerText()
++{
++    return ui->clpVisualizerText->color();
++}
++
++void frmSettings::setVisualizerText(const QColor& color)
++{
++    ui->clpVisualizerText->setColor(color);
++}
++
++QColor frmSettings::toolpathNormal()
++{
++    return ui->clpToolpathNormal->color();
++}
++
++void frmSettings::setToolpathNormal(const QColor& color)
++{
++    ui->clpToolpathNormal->setColor(color);
++}
++
++QColor frmSettings::toolpathDrawn()
++{
++    return ui->clpToolpathDrawn->color();
++}
++
++void frmSettings::setToolpathDrawn(const QColor& color)
++{
++    ui->clpToolpathDrawn->setColor(color);
++}
++
++QColor frmSettings::toolpathHighlight()
++{
++    return ui->clpToolpathHighlight->color();
++}
++
++void frmSettings::setToolpathHighlight(const QColor& color)
++{
++    ui->clpToolpathHighlight->setColor(color);
++}
++
++QColor frmSettings::toolpathZMovement()
++{
++    return ui->clpToolpathZMovement->color();
++}
++
++void frmSettings::setToolpathZMovement(const QColor& color)
++{
++    ui->clpToolpathZMovement->setColor(color);
++}
++
++QColor frmSettings::toolpathStart()
++{
++    return ui->clpToolpathStart->color();
++}
++
++void frmSettings::setToolpathStart(const QColor& color)
++{
++    ui->clpToolpathStart->setColor(color);
++}
++
++QColor frmSettings::toolpathEnd()
++{
++    return ui->clpToolpathEnd->color();
++}
++
++void frmSettings::setToolpathEnd(const QColor& color)
++{
++    ui->clpToolpathEnd->setColor(color);
++}
++
+ void frmSettings::showEvent(QShowEvent *se)
+ {
+     Q_UNUSED(se)
+diff --git a/src/frmsettings.h b/src/frmsettings.h
+index 663c660..0d185c3 100644
+--- a/src/frmsettings.h
++++ b/src/frmsettings.h
+@@ -125,6 +125,34 @@ public:
+     bool UseRotaryAxis();
+     void setUseRotaryAxis(bool value);
+ 
++    QColor tool();
++    void setTool(const QColor& color);
++
++    QColor visualizerBackground();
++    void setVisualizerBackground(const QColor& color);
++
++    QColor visualizerText();
++    void setVisualizerText(const QColor& color);
++
++    QColor toolpathNormal();
++    void setToolpathNormal(const QColor& color);
++
++    QColor toolpathDrawn();
++    void setToolpathDrawn(const QColor& color);
++
++    QColor toolpathHighlight();
++    void setToolpathHighlight(const QColor& color);
++
++    QColor toolpathZMovement();
++    void setToolpathZMovement(const QColor& color);
++
++    QColor toolpathStart();
++    void setToolpathStart(const QColor& color);
++
++    QColor toolpathEnd();
++    void setToolpathEnd(const QColor& color);
++
++
+ protected:
+     void showEvent(QShowEvent *se);
+ 

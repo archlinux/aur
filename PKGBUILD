@@ -2,7 +2,7 @@
 
 pkgname=candle2-git
 pkgdesc="GRBL and GRBL-Advanced controller application with G-Code visualizer written in Qt - git version"
-pkgver=V2.3.r2.335c14c.22.0389946386b5da970c7968a45c81216d
+pkgver=V2.3.r2.335c14c.22.ff6f190c00d6fa48b408a25da739ffc3
 pkgrel=1
 arch=(x86_64 aarch64)
 url="https://github.com/Schildkroet/Candle2.git"
@@ -19,12 +19,12 @@ install=
 source=(
     "${pkgname%-git}"::'git+https://github.com/Schildkroet/Candle2.git'
     "${pkgname%-git}.desktop"
-    frmmain.cpp.patch
+    fix.patch
 )
 noextract=()
 md5sums=('SKIP'
          '060580e207a2230c5182badf908d0bf9'
-         '5a72f06e4bfe207088d7a678415d968e')
+         '22cd3b0cd9edc3a66a14e3d9210acddf')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
