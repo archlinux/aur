@@ -5,7 +5,7 @@
 #
 
 pkgname=vcd
-pkgver=220121
+pkgver=220213
 pkgrel=1
 pkgdesc="VCD file (Value Change Dump) command line viewer"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=(
        )
 
 #
-sha256sums=('621b9d23283f40bc1da50018c8f3d8d3641b720d4f4dcc6dbf9f9131660c3fed')
+sha256sums=('12b8691f96560de6528c47bd222dc638716405a3685366a49709f3a8fff2034c')
 
 
 #
