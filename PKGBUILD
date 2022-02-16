@@ -29,12 +29,13 @@ pkgname=vivado
 _srcname=Xilinx_Unified
 pkgver=2021.2
 _more_ver=1021_0703
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
 license=('custom')
 depends=('ncurses5-compat-libs'
+         'libxcrypt-compat'
          'libpng12'
          'lib32-libpng12'
          'gtk2'
@@ -44,6 +45,8 @@ depends=('ncurses5-compat-libs'
 optdepends=('fxload'
             'digilent.adept.runtime'
             'digilent.adept.utilities'
+            'matlab: Model Composer'
+            'qt4: Model Composer'
 )
 
 source=("file:///${_srcname}_${pkgver}_${_more_ver}.tar.gz"
