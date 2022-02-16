@@ -4,13 +4,13 @@
 
 _pkgname=obs-studio
 pkgname=obs-studio-ftl
-pkgver=27.1.3
+pkgver=27.2.0
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording (with FTL protocol support)"
 arch=('x86_64')
 url="https://obsproject.com"
 license=('GPL2')
-depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls'
+depends=('ffmpeg' 'jansson' 'libxinerama' 'libxkbcommon-x11' 'mbedtls' 'rnnoise' 'pciutils'
          'qt5-svg' 'curl' 'jack' 'gtk-update-icon-cache' 'pipewire' 'libxcomposite' 'ftl-sdk')
 makedepends=('cmake' 'libfdk-aac' 'x264' 'swig' 'python' 'luajit' 'sndio')
 optdepends=('libfdk-aac: FDK AAC codec support'
@@ -24,7 +24,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/jp9000/obs-studio/archive/$pkgver.tar.gz
 	fix_python_binary_loading.patch)
-md5sums=('fc9df69561e3f1b140f7234b440a02bf'
+md5sums=('2b57d1a86dee33786f36b0effa153083'
          '051b90f05e26bff99236b8fb1ad377d1')
 
 prepare() {
