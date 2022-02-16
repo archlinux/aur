@@ -4,14 +4,14 @@ _target="msp430-elf"
 pkgname=${_target}-gcc-stage1
 pkgver=11.2.0
 _islver=0.24
-pkgrel=1
+pkgrel=3
 pkgdesc="The GNU Compiler Collection bootstrap for the ${_target} target."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils>=2.25" 'libmpc' 'elfutils' 'zlib')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
-source=(http://isl.gforge.inria.fr/isl-${_islver}.tar.xz
+source=(https://libisl.sourceforge.io/isl-${_islver}.tar.xz
         ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz)
 sha256sums=('043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
             'd08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b')

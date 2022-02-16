@@ -1,7 +1,7 @@
 pkgbase = msp430-elf-gcc-stage1
 	pkgdesc = The GNU Compiler Collection bootstrap for the msp430-elf target.
 	pkgver = 11.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = msp430-elf-gcc-stage1
 	options = zipman
 	options = docs
 	options = !strip
-	source = http://isl.gforge.inria.fr/isl-0.24.tar.xz
+	source = https://libisl.sourceforge.io/isl-0.24.tar.xz
 	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-11.2.0/gcc-11.2.0.tar.xz
 	sha256sums = 043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad
 	sha256sums = d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
