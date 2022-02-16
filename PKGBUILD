@@ -18,8 +18,8 @@ _merge_requests_to_use=('1441' '1877')
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=41.3+4+g2405c3b3b
-pkgrel=2
+pkgver=41.4
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -35,7 +35,7 @@ provides=(mutter mutter-781835-workaround libmutter-9.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=2405c3b3be7e722022554fd032f30dc3918374d5  # tags/41.3^4
+_commit=83a34957046c5b6bca609fda4b68c8c5d1276d14  # tags/41.4^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1877.patch')
@@ -77,6 +77,9 @@ pick_mr() {
 
 prepare() {
   cd $pkgname
+
+  # Make tests run
+  sed -i '/catchsegv/d' meson.build
 
   git reset --hard
   git cherry-pick --abort || true
