@@ -9,7 +9,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki-git
-pkgver=r9209.6c8cdc0a0
+pkgver=r9232.d29a0beb4
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="http://ankisrs.net/"
@@ -90,6 +90,8 @@ prepare() {
     #ln -sf "$srcdir"/ankitects-anki-core-i18n-*/ rslib/ftl/repo
     #ln -sf "$srcdir"/ankitects-anki-desktop-ftl-*/ qt/ftl/repo
     #ln -sf "$srcdir"/ankitects-anki-desktop-i18n-*/ qt/po/repo
+
+    echo "build --action_env=PYO3_PYTHON=/usr/bin/python3" > "$srcdir/$pkgname/user.bazelrc"
 }
 
 build() {
