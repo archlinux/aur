@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=wakapi-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A minimalist, self-hosted WakaTime-compatible backend for coding statistics"
 arch=("x86_64")
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=(
-    "https://github.com/muety/wakapi/releases/download/${pkgver}/wakapi_linux_amd64.zip"
+    "wakapi-${pkgver}.zip::https://github.com/muety/wakapi/releases/download/${pkgver}/wakapi_linux_amd64.zip"
     "https://raw.githubusercontent.com/muety/wakapi/master/LICENSE"
 )
 sha256sums=(
@@ -33,8 +33,8 @@ noextract=()
 validpgpkeys=()
 
 package() {
-    unzip -o wakapi_linux_amd64.zip
-    install -Dm755 "wakapi" "$pkgdir/usr/bin/wakapi"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/wakapi/LICENSE"
-    install -Dm644 "config.yml" "$pkgdir/etc/wakapi/config.yml"
+    unzip -o "wakapi-${pkgver}.zip"
+    install -Dm755 "wakapi" "${pkgdir}/usr/bin/wakapi"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/wakapi/LICENSE"
+    install -Dm644 "config.yml" "${pkgdir}/etc/wakapi/config.yml"
 }
