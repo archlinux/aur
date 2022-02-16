@@ -45,12 +45,20 @@ sed -i \
     -e 's/pkgrel=.*/pkgrel=1/' \
     PKGBUILD
 
+# Preparing arch-chroot
+CHROOT=$HOME/.local/share/chroot
+if [[ ! -d "$CHROOT" ]]; then
+    mkdir -p ~/.local/share/chroot
+    mkarchroot $HOME/.local/share/chroot/root base-devel
+    arch-nspawn $HOME/.local/share/chroot/root pacman -Syu
+fi
+
 # Update .SRCINFO
-makepkg --printsrcinfo >.SRCINFO
+makechrootpkg -c -r $CHROOT -- --printsrcinfo >.SRCINFO
 
 # Start generate package
-makepkg -Acsf .
+makechrootpkg -c -r $CHROOT -- -Acsf .
 
 # Commit changes
 git add PKGBUILD .SRCINFO
-git commit -m "Update ${PKG} to v${VER}"
+git commit -s -m "Update ${PKG} to v${VER}"
