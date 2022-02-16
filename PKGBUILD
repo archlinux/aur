@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Dönszelmann <jonabent@gmail.com>
 pkgname=webdsl-git
 pkgver=r4090.56b29075
-pkgrel=2
+pkgrel=3
 pkgdesc=""
 arch=(x86_64)
 url=""
