@@ -8,8 +8,8 @@
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=2022.02.0.preview.392
-pkgver_url=2022.02.0-preview-392
+pkgver=2022.02.0.442
+pkgver_url=2022.02.0-442
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')

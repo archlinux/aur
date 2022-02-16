@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-preview-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary version from RStudio official repository)
-	pkgver = 2022.02.0.preview.392
+	pkgver = 2022.02.0.442
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	arch = x86_64
@@ -14,12 +14,12 @@ pkgbase = rstudio-desktop-preview-bin
 	depends = openssl-1.0
 	depends = postgresql-libs
 	optdepends = pandoc: markdown support
-	provides = rstudio-desktop=2022.02.0.preview.392
+	provides = rstudio-desktop=2022.02.0.442
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-bin
 	options = !strip
-	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-2022.02.0-preview-392-amd64.deb
+	source_x86_64 = https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-2022.02.0-442-amd64.deb
 	sha256sums_x86_64 = 64571acba0e4efe49e05984dc8bc308644f4e8a8cb2bb3354a245015a18c2218
 
 pkgname = rstudio-desktop-preview-bin
