@@ -1,15 +1,15 @@
 pkgbase = moosync
 	pkgdesc = A simple music player
-	pkgver = 0.0.10
-	pkgrel = 2
+	pkgver = 0.0.11
+	pkgrel = 1
 	url = https://github.com/Moosync/Moosync
 	arch = x86_64
 	license = GPL3
-	depends = electron16-bin
+	depends = electron17-bin
 	provides = moosync
-	source = moosync-0.0.10.tar::https://github.com/Moosync/Moosync/releases/download/v0.0.10/Moosync-0.0.10-linux-x64.pacman
+	source = moosync-0.0.11.tar::https://github.com/Moosync/Moosync/releases/download/v0.0.11/Moosync-0.0.11-linux-x64.pacman
 	source = moosync
-	sha256sums = 43500ff86ece6ac015ac62ccb6be4ab2d876e92c75028a639c7f206c90a0228b
+	sha256sums = 64163bcddaad5288c4613360a23ff9d8f90cfd775bfd5d4cb4166e98cf7a4c93
 	sha256sums = 4adb25b647c3dc2375bddb88548e994f341190df19b2338cbd09fcec13f2ca47
 
 pkgname = moosync
