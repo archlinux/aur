@@ -1,6 +1,6 @@
 pkgbase = moonwm-git
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
-	pkgver = 8.0.0.r1.gefd124a
+	pkgver = 8.0.0.r2.gab350ac
 	pkgrel = 1
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = moonwm-git
 	depends = xorg-xrandr
 	depends = xorg-xrdb
 	optdepends = scrot: integrated screenshot support
+	optdepends = pimenu: middleclick on desktop for pie-shaped favorites menu
 	provides = moonwm
 	conflicts = moonwm
 	source = git+https://github.com/jzbor/moonwm
