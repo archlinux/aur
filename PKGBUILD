@@ -2,7 +2,7 @@
 # Maintainer: Kindritskiy Maksym <kindritskiy.m@gmail.com>
 
 pkgname='lets-bin'
-pkgver=0.0.44
+pkgver=0.0.45
 pkgrel=1
 pkgdesc='CLI task runner for productive developers - a better alternative to make'
 url='https://lets-cli.org/'
@@ -11,8 +11,8 @@ license=('MIT')
 provides=('lets')
 conflicts=('lets')
 
-source_x86_64=('https://github.com/lets-cli/lets/releases/download/v0.0.44/lets_Linux_x86_64.tar.gz')
-sha256sums_x86_64=('72da7904ce3d014849b5c69b4e817703b0d732e399f42ae132cd3419947d201b')
+source_x86_64=('https://github.com/lets-cli/lets/releases/download/v0.0.45/lets_Linux_x86_64.tar.gz')
+sha256sums_x86_64=('39c7365e50e99c7d56ebb198a70e117de758bd092e0b8760754da076ecdcc9d7')
 
 package() {
   install -Dm755 "./lets-bin" "${pkgdir}/usr/local/bin/lets-bin"
