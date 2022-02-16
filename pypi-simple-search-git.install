@@ -1,7 +1,7 @@
 post_install() {
 	echo -e "\033[1;31m You may need to add an alias for pip: \033[0m"
   echo -e "\033[33m alias pip=\"pip-pss\" \033[0m"
-	echo -en '\033[0m'
+#	echo -en '\033[0m'
 }
 post_remove() {
 	echo -e "\033[1;31m Remember to unalias pip if you add the alias! \033[0m"
