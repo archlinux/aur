@@ -3,10 +3,10 @@
 _pkgbase='rapiddisk'
 pkgname="$_pkgbase-dkms"
 _vermajor=8
-_verminor=0
-_verrevision=1
+_verminor=1
+_verrevision=0
 pkgver=${_vermajor}.${_verminor}.${_verrevision}
-pkgrel=2
+pkgrel=1
 pkgdesc="Advanced Linux RAM Drive and Caching kernel modules"
 arch=('i686' 'x86_64')
 url="http://www.rapiddisk.org/"
@@ -17,7 +17,7 @@ depends=('dkms'
          'libmicrohttpd')
 makedeps=('jansson')
 install=${pkgname}.install
-_gitcommit=ed071a6
+_gitcommit=d4d8490
 source=("git+https://github.com/pkoutoupis/rapiddisk#commit=${_gitcommit}")
 
 md5sums=('SKIP')
