@@ -3,14 +3,14 @@
 
 pkgname=wingpanel-standalone-git
 pkgver=r654.0bb8396
-pkgrel=1
+pkgrel=2
 pkgdesc='Stylish top panel (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
 depends=(glib2 gtk3 lib{gee,granite.so,wnck3} pantheon-notifications)
-makedepends=('meson' 'libgranite.so' 'git' 'vala')
+makedepends=('meson' 'git' 'vala')
 optdepends=("pantheon-applications-menu: Application launcher"
             "wingpanel-indicator-datetime: Clock and calendar widget"
             wingpanel-indicator-{a11y,bluetooth,keyboard,network,nightlight,notifications,power,privacy,sensors,sound}": System indicator"
