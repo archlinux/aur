@@ -3,7 +3,7 @@
 # 
 
 pkgname=graphite-cli-git
-pkgver=0.16.7.r5.1b26c1c7
+pkgver=0.17.1.r1.176e173d
 pkgrel=1
 pkgdesc="CLI that makes creating stacked git changes fast & intuitive"
 url=https://graphite.dev/
