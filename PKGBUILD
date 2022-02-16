@@ -1,8 +1,11 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+
+# Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
-# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
 # NOTE: valgrind requires rebuilt with each major glibc version
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
@@ -13,43 +16,37 @@
 #  - Don't --enable-cet, x86 only
 
 pkgname=glibc-widevine
-provides=("glibc=2.33")
+provides=("glibc=2.35")
 conflicts=("glibc")
-pkgver=2.33
-pkgrel=5.1
-arch=('armv6h' 'armv7h' 'aarch64')
+pkgver=2.35
+pkgrel=2
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://www.gnu.org/software/libc'
 license=(GPL LGPL)
-makedepends=(bison git gd python)
+makedepends=(git gd python)
 optdepends=('perl: for mtrace')
-options=(!strip staticlibs !distcc)
+options=(!strip staticlibs !lto !distcc)
 #_commit=3de512be7ea6053255afed6154db9ee31d4e557a
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz{,.sig}
         locale.gen.txt
         locale-gen
         sdt.h sdt-config.h
-        bz27343.patch
-        0001-nptl_db-Support-different-libpthread-ld.so-load-orde.patch
-        0002-nptl-Check-for-compatible-GDB-in-nptl-tst-pthread-gd.patch
-        0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
-	glibc-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
-        glibc-add-support-for-SHT_RELR-sections.patch)
+        disable-clone3.diff
+        0001-sys-libs-glibc-add-support-for-SHT_RELR-sections.patch
+        0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch)
 validpgpkeys=(7273542B39962DF7B299931416792B4EA25340F8 # Carlos O'Donell
-              BC7C7372637EC10C57D7AA6579C43DFBF1CF2187 # Siddhesh Poyarekar
-              16792B4EA25340F8)
-md5sums=('390bbd889c7e8e8a7041564cb6b27cca'
-         'SKIP'
-         '07ac979b6ab5eeb778d55f041529d623'
-         '476e9113489f93b348b21e144b6a8fcf'
-         '91fec3b7e75510ae2ac42533aa2e695e'
-         '680df504c683640b02ed4a805797c0b2'
-         'cfe57018d06bf748b8ca1779980fef33'
-         '78f041fc66fee4ee372f13b00a99ff72'
-         '9e418efa189c20053e887398df2253cf'
-         '7a09f1693613897add1791e7aead19c9'
-         'fb479854d8f481302edd8f4d3a3b6179'
-         '3360d652ea425a60eae248da7d4c230d')
+              BC7C7372637EC10C57D7AA6579C43DFBF1CF2187) # Siddhesh Poyarekar
+
+b2sums=('623c728884f070cd87ffeb9203f74206197c52405ac9bc44f3dd519a3468b8e8ae2536c883e5d17d94417dbd1e91775de2e674314e4ff7424f9720026d6b7063'
+        'SKIP'
+        '46d533d25c7a2ce4ae75d452eee7ebb8e3ce4d191af9be3daa43718b78cb81d33cfd8046a117a15d87de9f5e940448c66005b0490515bf731c9e4691c53908d6'
+        '1f6d927b4972220b1c00abee5329c5d6bc01ed5bee57b20db0c7d7433292f7d666b02baf9968267f8e378b1f3bb273e8eef0ccbf22d21400ac36949d7615a474'
+        'a6a5e2f2a627cc0d13d11a82458cfd0aa75ec1c5a3c7647e5d5a3bb1d4c0770887a3909bfda1236803d5bc9801bfd6251e13483e9adf797e4725332cd0d91a0e'
+        '214e995e84b342fe7b2a7704ce011b7c7fc74c2971f98eeb3b4e677b99c860addc0a7d91b8dc0f0b8be7537782ee331999e02ba48f4ccc1c331b60f27d715678'
+        'edef5f724f68ea95c6b0127bd13a10245f548afc381b2d0a6d1d06ee9f87b7dd89c6becd35d5ae722bf838594eb870a747f67f07f46e7d63f8c8d1a43cce4a52'
+        '7da85639771d4972e913b0458906bbccf1b30143940669e1b58b0ceab2e8dffc3a6c4b641a842e63b49a9b7ff01dddc3f1296d35ab505f67b6e625e208d01a8c'
+        'b10f7479a283fdb1916f72e9d8cc9304e068d87f3805a9d2c51e748c79c9547735405e1e86a438ffe87d5ba0adece555740c221fe3bf84990c21e2737d3bb197')
 
 prepare() {
   mkdir -p glibc-build
@@ -57,23 +54,17 @@ prepare() {
   [[ -d glibc-$pkgver ]] && ln -s glibc-$pkgver glibc 
   cd glibc
 
-  # commit c3479fb7939898ec22c655c383454d6e8b982a67
-  patch -p1 -i "$srcdir"/bz27343.patch
-
-  # nptl_db: Support different libpthread/ld.so load orders (bug 27744)
-  patch -p1 -i "$srcdir"/0001-nptl_db-Support-different-libpthread-ld.so-load-orde.patch
-
-  # nptl: Check for compatible GDB in nptl/tst-pthread-gdb-attach
-  patch -p1 -i "$srcdir"/0002-nptl-Check-for-compatible-GDB-in-nptl-tst-pthread-gd.patch
-
-  # nptl: Do not build nptl/tst-pthread-gdb-attach as PIE
-  patch -p1 -i "$srcdir"/0003-nptl-Do-not-build-nptl-tst-pthread-gdb-attach-as-PIE.patch
+  # Disable clone3 syscall for now
+  # Can be removed when eletron{9,11,12} and discord are removed or patched:
+  # https://github.com/electron/electron/commit/993ecb5bdd5c57024c8718ca6203a8f924d6d574
+  # Patch src: https://patchwork.ozlabs.org/project/glibc/patch/87eebkf8ph.fsf@oldenburg.str.redhat.com/
+  patch -Np1 -i "${srcdir}"/disable-clone3.diff
 
   # sys-libs: Add support for SHT_RELR sections
-  patch -p1 -i "$srcdir"/glibc-add-support-for-SHT_RELR-sections.patch
+  patch -p1 -i "$srcdir"/0001-sys-libs-glibc-add-support-for-SHT_RELR-sections.patch
 
-  # dl-tls: libwidevinecdm 64Byte alignment
-  patch -p1 -i "$srcdir"/glibc-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
+ # dl-tls: libwidevinecdm 64Byte alignment
+  patch -p1 -i "$srcdir"/0002-tls-libwidevinecdm.so-since-4.10.2252.0-has-TLS-with.patch
 
 }
 
@@ -90,14 +81,13 @@ build() {
       --enable-stackguard-randomization
       --enable-systemtap
       --disable-profile
+      --disable-crypt
       --disable-werror
   )
 
   cd "$srcdir/glibc-build"
 
   # ALARM: Specify build host types
-  [[ $CARCH == "arm" ]] && CONFIGFLAG="--host=armv5tel-unknown-linux-gnueabi --build=armv5tel-unknown-linux-gnueabi"
-  [[ $CARCH == "armv6h" ]] && CONFIGFLAG="--host=armv6l-unknown-linux-gnueabihf --build=armv6l-unknown-linux-gnueabihf"
   [[ $CARCH == "armv7h" ]] && CONFIGFLAG="--host=armv7l-unknown-linux-gnueabihf --build=armv7l-unknown-linux-gnueabihf"
   [[ $CARCH == "aarch64" ]] && CONFIGFLAG="--host=aarch64-unknown-linux-gnu --build=aarch64-unknown-linux-gnu"
 
@@ -106,46 +96,64 @@ build() {
   echo "sbindir=/usr/bin" >> configparms
   echo "rootsbindir=/usr/bin" >> configparms
 
+  # Credits @allanmcrae
+  # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/glibc/PKGBUILD
   # remove fortify for building libraries
-  CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
-
-  #
-  CFLAGS=${CFLAGS/-fno-plt/}
-  CXXFLAGS=${CXXFLAGS/-fno-plt/}
-  LDFLAGS=${LDFLAGS/,-z,now/}
-
   CFLAGS=${CFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
-  CXXFLAGS=${CXXFLAGS/-Wp,-D_FORTIFY_SOURCE=2/}
 
   "$srcdir/glibc/configure" \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
-      ${_configure_flags[@]} \
+      "${_configure_flags[@]}" \
       $CONFIGFLAG
 
   # build libraries with fortify disabled
   echo "build-programs=no" >> configparms
-  make
+  make -O
 
   # re-enable fortify for programs
   sed -i "/build-programs=/s#no#yes#" configparms
-
-  echo "CC += -D_FORTIFY_SOURCE=2" >> configparms
-  echo "CXX += -D_FORTIFY_SOURCE=2" >> configparms
-  make
+  echo "CFLAGS += -Wp,-D_FORTIFY_SOURCE=2" >> configparms
+  make -O
 
   # build info pages manually for reprducibility
   make info
 }
 
+# Credits for skip_test() and check() @allanmcrae
+# https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/glibc/PKGBUILD
+skip_test() {
+  test=$1
+  file=$2
+  sed -i "s/\b$test\b//" $srcdir/glibc/$file
+}
+
 check() {
   cd glibc-build
 
-  # remove fortify in preparation to run test-suite
-  sed -i '/FORTIFY/d' configparms
+  # adjust/remove buildflags that cause false-positive testsuite failures
+  sed -i '/FORTIFY/d' configparms                                     # failure to build testsuite
+  sed -i 's/-Werror=format-security/-Wformat-security/' config.make   # failure to build testsuite
+  sed -i '/CFLAGS/s/-fno-plt//' config.make                           # 16 failures
+  sed -i '/CFLAGS/s/-fexceptions//' config.make                       # 1 failure
+  LDFLAGS=${LDFLAGS/,-z,now/}                                         # 10 failures
 
-  # some failures are "expected"
-  make check || true
+  # The following tests fail due to restrictions in the Arch build system
+  # The correct fix is to add the following to the systemd-nspawn call:
+  # --capability=CAP_IPC_LOCK --system-call-filter="@clock @pkey"
+  skip_test test-ntp_gettime-time64  sysdeps/unix/sysv/linux/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
+  skip_test test-ntp_gettimex-time64 sysdeps/unix/sysv/linux/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
+  skip_test tst-adjtime-time64      time/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
+  skip_test tst-clock2-time64       time/Makefile # Bart: disabled these tests because otherwise the Makefile is corrupted
+  skip_test test-errno-linux sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-ntp_gettime  sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-ntp_gettimex sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-mlock2       sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-pkey         sysdeps/unix/sysv/linux/Makefile
+  skip_test tst-adjtime      time/Makefile
+  skip_test tst-clock2       time/Makefile
+
+  make -O check || true      # do not crash on failed tests
 }
 
 package() {
@@ -182,9 +190,6 @@ package() {
   install -m644 "$srcdir/locale.gen.txt" "$pkgdir/etc/locale.gen"
   sed -e '1,3d' -e 's|/| |g' -e 's|\\| |g' -e 's|^|#|g' \
     "$srcdir/glibc/localedata/SUPPORTED" >> "$pkgdir/etc/locale.gen"
-
-  # ALARM: symlink ld-linux.so.3 for hard-float
-  [[ $CARCH == "armv6h" || $CARCH == "armv7h" ]] && ln -s /lib/ld-${pkgver}.so ${pkgdir}/usr/lib/ld-linux.so.3
 
   if check_option 'debug' n; then
     find "$pkgdir"/usr/bin -type f -executable -exec strip $STRIP_BINARIES {} + 2> /dev/null || true
