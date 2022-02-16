@@ -1,0 +1,17 @@
+pkgbase = virtualhere-client
+	pkgdesc = VirtualHere USB Client for Linux Desktop
+	pkgver = 1..0
+	pkgrel = 1
+	url = https://www.virtualhere.com/usb_server_software
+	arch = i686
+	arch = x86_64
+	license = custom
+	optdepends = avahi: systemd unit support
+	provides = virtualhere
+	conflicts = virtualhere
+	source = https://www.virtualhere.com/sites/default/files/usbclient/scripts/virtualhereclient.service
+	source = https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64
+	md5sums = 37d1c9ac1b1d9f4ecb99ea6f5b6af5dc
+	md5sums = a91b625ab6789e4df49db7b647772786
+
+pkgname = virtualhere-client
