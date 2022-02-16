@@ -1,0 +1,11 @@
+pkgbase = f36-backgrounds
+	pkgdesc = Desktop backgrounds of the Fedora 36 default theme for GNOME, KDE, Mate and Xfce desktops
+	pkgver = 36.0.0
+	pkgrel = 1
+	url = https://github.com/fedoradesign/backgrounds
+	arch = any
+	license = custom
+	source = https://github.com/fedoradesign/backgrounds/releases/download/v36.0.0/f36-backgrounds-36.0.0.tar.xz
+	b2sums = 34ed77abb18c33366a996fab34732c70810d83c9d5f5d3cd534ee0a5f9766f4c86d8fea37ae10cd91b5ea6370b5c73d18fd55030ca74093f79d268574e8d8c48
+
+pkgname = f36-backgrounds
