@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ndi-sdk
-pkgver=5.0.10.20211103.r127785
+pkgver=5.1.1.20220210.r129281
 pkgrel=1
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
@@ -16,7 +16,7 @@ options=('!strip')
 _srcfile="Install_NDI_SDK_v${pkgver}_Linux.tar.gz"
 source=("$_srcfile"::"https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_SDK_v${_majver}_Linux.tar.gz")
 noextract=("$_srcfile")
-sha256sums=('d77a956503f1288f48a08e5eabe3106af5cbaab67609752f58198ee9956a3eaf')
+sha256sums=('d572d493ae276a107a0a5dfeac8a1160ba66dca8dc689ccad053df2150dbaf1e')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"/{,icons}
