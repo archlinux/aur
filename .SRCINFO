@@ -1,12 +1,12 @@
 pkgbase = elasticsearch
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
 	pkgver = 8.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.elastic.co/products/elasticsearch
 	arch = x86_64
 	license = custom:SSPL+Elastic-2.0
 	makedepends = java-environment=17
-	depends = java-runtime-headless<=17
+	depends = java-environment=17
 	depends = systemd
 	depends = libxml2
 	backup = etc/elasticsearch/elasticsearch.yml

@@ -5,12 +5,12 @@
 
 pkgname=elasticsearch
 pkgver=8.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:SSPL+Elastic-2.0')
-depends=('java-runtime-headless<=17' 'systemd' 'libxml2')
+depends=('java-environment=17' 'systemd' 'libxml2')
 makedepends=('java-environment=17')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
@@ -67,6 +67,7 @@ package() {
   rm -r "$pkgdir"/usr/share/elasticsearch/{jdk,logs}
 
   install -dm755 "$pkgdir"/etc
+  echo 'xpack.security.enabled: false' >> "$pkgdir"/usr/share/elasticsearch/config/elasticsearch.yml
   mv "$pkgdir"/usr/share/elasticsearch/config "$pkgdir"/etc/elasticsearch
   chmod 2750 "$pkgdir"/etc/elasticsearch
 
