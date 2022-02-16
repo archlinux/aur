@@ -1,6 +1,6 @@
 pkgbase = ndi-advanced-sdk
 	pkgdesc = NewTek NDI Advanced SDK
-	pkgver = 5.0.10.20211103.r127785
+	pkgver = 5.1.1.20220210.r129281
 	pkgrel = 1
 	url = https://www.newtek.com/ndi/sdk/
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = ndi-advanced-sdk
 	conflicts = libndi-bin
 	conflicts = libndi-git
 	conflicts = ndi-sdk
-	noextract = Install_NDI_Advanced_SDK_v5.0.10.20211103.r127785_Linux.tar.gz
+	noextract = Install_NDI_Advanced_SDK_v5.1.1.20220210.r129281_Linux.tar.gz
 	options = !strip
-	source = Install_NDI_Advanced_SDK_v5.0.10.20211103.r127785_Linux.tar.gz::https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_Advanced_SDK_v5_Linux.tar.gz
-	sha256sums = 9b502f6be6267975215d77033615fe025768458cb13d14a2eafda00f83d3b2a5
+	source = Install_NDI_Advanced_SDK_v5.1.1.20220210.r129281_Linux.tar.gz::https://downloads.ndi.tv/SDK/NDI_SDK_Linux/Install_NDI_Advanced_SDK_v5_Linux.tar.gz
+	sha256sums = 6df521edcb3c8938ed13b60f98a7a6327767923dbdfd9d11c17fef1379cce4d9
 
 pkgname = ndi-advanced-sdk
