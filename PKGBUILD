@@ -11,29 +11,28 @@
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
 pkgver=5.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
 license=("custom:SSPL")
-# lsb-release::/etc/lsb-release required by src/mongo/util/processinfo_linux.cpp::getLinuxDistro()
-depends=("curl" "libstemmer" "lsb-release" "snappy" "gperftools" "boost-libs")
-optdepends=("mongodb-tools: mongoimport, mongodump, mongotop, etc")
-makedepends=("scons" "python-psutil" "python-setuptools" "python-regex" "python-cheetah3" "python-yaml" "python-requests" "boost" "yaml-cpp")
+depends=('curl' 'libstemmer' 'snappy' 'gperftools' 'boost-libs' 'pcre' 'yaml-cpp')
+makedepends=('scons' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
+optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc')
 checkdepends=("python-pymongo")
 backup=("etc/mongodb.conf")
 source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
-		mongodb.sysusers
-		mongodb.tmpfiles
-		mongodb-5.0.2-skip-no-exceptions.patch
-		mongodb-5.0.2-no-compass.patch
-		mongodb-4.4.1-boost.patch)
+        mongodb.sysusers
+        mongodb.tmpfiles
+        mongodb-5.0.2-skip-no-exceptions.patch
+        mongodb-5.0.2-no-compass.patch
+        mongodb-4.4.1-boost.patch)
 sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
-			'3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
-			'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
-			'5b81ebc3ed68b307df76277aca3226feee33a00d8bb396206bdc7a8a1f58f3e4'
-			'41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
-			'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25')
+            '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
+            'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
+            '5b81ebc3ed68b307df76277aca3226feee33a00d8bb396206bdc7a8a1f58f3e4'
+            '41b75d19ed7c4671225f08589e317295b7abee934b876859c8777916272f3052'
+            'd3bc20d0cb4b8662b5326b8a3f2215281df5aed57550fa13de465e05e2044c25')
 
 _scons_args=(
   --use-system-pcre # wait for pcre 8.44+ https://jira.mongodb.org/browse/SERVER-40836 and https://jira.mongodb.org/browse/SERVER-42990
@@ -118,4 +117,5 @@ package() {
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
   mv $pkgdir/usr/{LICENSE-Community.txt,MPL-2,README,THIRD-PARTY-NOTICES} $pkgdir/usr/share/licenses/$pkgname
 }
+# vim:set ts=2 sw=2 et:
 
