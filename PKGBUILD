@@ -2,7 +2,7 @@
 
 pkgname=thqm
 pkgdesc='Control your scripts over the network.'
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 arch=('any')
 url='https://github.com/loiccoyle/thqm-rs'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git')
 makedepends=('rust')
 source=("$pkgname-${pkgver}.tar.gz::https://github.com/loiccoyle/thqm.rs/archive/v${pkgver}.tar.gz")
-sha256sums=('857a1379ffd5bb0348963d20eb1a2c1e66334b360e8f9ee8deefba430f48de42')
+sha256sums=('bab6c67348e0aa343418adf03cb21ec07c96123851ac4211e87d9c0a52dd57b5')
 
 build() {
 	cd "$pkgname-rs-$pkgver"
