@@ -3,7 +3,7 @@
 
 pkgname=shellcheck-bin
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 url='https://shellcheck.net'
 pkgdesc='Shell script analysis tool (binary release, static)'
 license=(AGPL3)

@@ -1,7 +1,7 @@
 pkgbase = shellcheck-bin
 	pkgdesc = Shell script analysis tool (binary release, static)
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://shellcheck.net
 	arch = x86_64
 	arch = armv6h
@@ -9,6 +9,8 @@ pkgbase = shellcheck-bin
 	license = AGPL3
 	provides = shellcheck
 	conflicts = shellcheck
+	conflicts = shellcheck-git
+	conflicts = shellcheck-git-static
 	source_x86_64 = https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz
 	sha512sums_x86_64 = 89317d97adb341e627b709e86477734ce236e9fb290de8a8c41cdc62769a3225622fa609deffebeabe9edb71f5639a086f61b677947e3ec4bc07c540fcbd0973
 	source_armv6h = https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.armv6hf.tar.xz
