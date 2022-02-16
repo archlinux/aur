@@ -3,7 +3,7 @@
 
 pkgname=ksvnupdater
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility oriented to KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more."
 arch=('i686' 'x86_64')
 url="http://www.eloihr.net/ksvnupdater"
@@ -16,7 +16,8 @@ optdepends=('git: Download Scripty and Pology'
             'kdiff3: Conflict merge'
             'gettext: msginit. GNU internationalization library'
             'openssh: ssh-agent and ssh-add. Accesing KDE repos with auth'
-            'jq: Creating documentation')
+            'jq: Creating documentation'
+            'python-pyenchant: Used by pology for some test')
 source=(https://www.eloihr.net/ksvnupdater/files/ksvnupdater-$pkgver.tar.bz2)
 md5sums=('3bc7f26860183bc09dcc665e2555dd49')
 

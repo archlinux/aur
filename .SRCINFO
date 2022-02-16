@@ -1,7 +1,7 @@
 pkgbase = ksvnupdater
 	pkgdesc = Utility oriented to KDE translation teams. Through it you can have various local copies of repository, generating projects for Lokalize, checks and corrections using Pology and more.
 	pkgver = 2.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.eloihr.net/ksvnupdater
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = ksvnupdater
 	optdepends = gettext: msginit. GNU internationalization library
 	optdepends = openssh: ssh-agent and ssh-add. Accesing KDE repos with auth
 	optdepends = jq: Creating documentation
+	optdepends = python-pyenchant: Used by pology for some test
 	source = https://www.eloihr.net/ksvnupdater/files/ksvnupdater-2.2.2.tar.bz2
 	md5sums = 3bc7f26860183bc09dcc665e2555dd49
 
