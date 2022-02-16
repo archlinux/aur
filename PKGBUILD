@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.31.0-beta.7'
+_pkgver='1.31.0-beta.9'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -20,7 +20,7 @@ source=(
 	'browserslist.diff'
 
 )
-sha512sums=('7d2c374f697e57131b2beacdbcdba15637cf84c6cc6ed575f9cd44595e6bc0c3c493bccc8f436587859d063c5ef9afeb133b36ebdaa1470b8f54a5af1d823732'
+sha512sums=('c52a5756508f4cebccaf1f01a5fe0f4b78cd6311dbde024b95b58fddf7971d9aa9dedd3c9ab5ee712e7c1dc56a14730528e3b034ae4c53961778e39b2156f9ed'
             '03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
