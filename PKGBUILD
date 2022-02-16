@@ -9,7 +9,7 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=221.3427.103
+_buildver=221.4165.171
 _pkgver=2022.1
 _eap=y
 pkgver="$_pkgver.$_buildver"
@@ -27,8 +27,7 @@ conflicts=('pycharm-community-edition')
 makedepends=('cython' 'python-setuptools')  # 'python2-setuptools'
 depends=('python' 'glib2' 'dbus' 'libdbusmenu-glib')
 optdepends=('python2: Support for Python 2 language'
-			'ipython: Alternative Python shell'
-			'ipython2: Alternative Python 2 shell')
+			'ipython: Alternative Python shell')
 
 options=('!strip')
 
