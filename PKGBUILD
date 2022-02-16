@@ -1,7 +1,7 @@
 # Maintainer: @RubenKelevra
 # Contributor: Moritz Hedtke alias mohe <Moritz.Hedtke@t-online.de>
 pkgname=ipfs-cluster-bin
-pkgver=0.14.4
+pkgver=0.14.5
 pkgrel=1
 epoch=1
 pkgdesc="ipfs-cluster-service, ipfs-cluster-ctl, ipfs-cluster-follow"
@@ -12,9 +12,9 @@ license=('custom:MIT', 'APACHE')
 source=("https://dist.ipfs.io/ipfs-cluster-service/v${pkgver}/ipfs-cluster-service_v${pkgver}_linux-amd64.tar.gz"
         "https://dist.ipfs.io/ipfs-cluster-ctl/v${pkgver}/ipfs-cluster-ctl_v${pkgver}_linux-amd64.tar.gz"
         "https://dist.ipfs.io/ipfs-cluster-follow/v${pkgver}/ipfs-cluster-follow_v${pkgver}_linux-amd64.tar.gz")
-b2sums=('4a96ce06b938d8dc349227e1959c6cace380ec85a5bd159ac5413b8d3b3f9572bf5648f0bc03d3e8fbe6e86158c95e2047ea808e4d95e22067babe7a1a2b6466'
-        '10995646ac3f2d3d1f619f2c67bfad2f14c098459fd66ea2d8007b7aaac08421743a0d922ea11f640f78934e71e33654b6c98db8afcc0727df0c2e2128d7439d'
-        '6a54ade81dff08e41c504d7946de75da7403af8453de106e7b87fe1b913b9017231c6b1ee53fc1cce80d36ddaa4fb6b8cafc87e799d8a192a0dcb45adcef5b69')
+b2sums=('3b3c45874f79e21e4b102534bc3a7868cc3806de1f61d79898dc6b1cc4865260e9b3f0019094c7f8f14ea348dc97da39f5cddc60a545bdd83fbe53bc8fb0b8b8'
+        '9901e18bb11d7aebae573f52472b8142aacfc2048e7e1c5bb3e909978d4120b3cf87d6e19b09ecd8f5888b6831f2fcff878794755864c6127752304d94ed5db8'
+        'ac1fe938158caecd771f62fdd79141cdaa382483e5c22d2e523aac1da230ae96062837d1f668c4f5cb297c5697d7435ddee39f1c382d866eaf17eb1cc811859d')
 
 package() {
 	install -Dm755 ipfs-cluster-service/ipfs-cluster-service "$pkgdir/usr/bin/ipfs-cluster-service"
