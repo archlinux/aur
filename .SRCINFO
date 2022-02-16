@@ -1,6 +1,6 @@
 pkgbase = btcpayserver
 	pkgdesc = Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor.
-	pkgver = 1.4.4
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://github.com/btcpayserver/btcpayserver
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = btcpayserver
 	optdepends = nginx: HTTP server
 	optdepends = postgresql: Database
 	optdepends = sqlite: Database
-	source = btcpayserver-v1.4.4.tar.gz::https://github.com/btcpayserver/btcpayserver/archive/refs/tags/v1.4.4.tar.gz
-	sha256sums = 1771569c324c5a233998460c36630d5e7cdad4bc718d417e68f50ffad901aeaf
+	source = btcpayserver-v1.4.5.tar.gz::https://github.com/btcpayserver/btcpayserver/archive/refs/tags/v1.4.5.tar.gz
+	sha256sums = 1420e49aa1ef9b6e0cb10587d5f725bcbfb61713a18b678fdb1d240ac7ce49da
 
 pkgname = btcpayserver
