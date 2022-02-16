@@ -1,7 +1,7 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=bitburner
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitburner is a programming-based incremental game"
 arch=('x86_64')
 url="https://github.com/danielyxie/bitburner"
@@ -10,7 +10,7 @@ depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('steam: achievement support'
             'steam-native-runtime: achievement support')
-_commit=05cbc25a8fed73b9982925526940d65e55a842a1  # 1.4
+_commit=16b959338bdbf363dae42aa6e116e65491acafea  # 1.4, current master
 source=("git+$url#commit=$_commit"
         "bitburner.desktop")
 sha256sums=('SKIP'
@@ -22,6 +22,7 @@ build() {
     # Buildsteps as taken from package.sh in the repo
     npm install
     npm -C electron install
+    npm run build
 
     mkdir -p .package/dist/src/ThirdParty || true
     mkdir -p .package/src/ThirdParty || true
@@ -38,7 +39,7 @@ build() {
     cp dist/vendor.bundle.js .package/dist/vendor.bundle.js
     cp main.bundle.js .package/main.bundle.js
 
-    # cp dist/vendor.bundle.js.map .package/dist/vendor.bundle.js.map
+    cp dist/vendor.bundle.js.map .package/dist/vendor.bundle.js.map
     cp main.bundle.js.map .package/main.bundle.js.map
 
     npm exec electron-packager -- .package "$pkgname" \
