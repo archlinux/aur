@@ -1,0 +1,12 @@
+pkgbase = flyingcarpet-cli
+	pkgdesc = Wireless, encrypted file transfer over automatically configured ad hoc networking
+	pkgver = 4.1
+	pkgrel = 1
+	url = https://github.com/spieglt/FlyingCarpet
+	arch = x86_64
+	license = BSD
+	noextract = flyingCarpetLinuxCLI
+	source = https://github.com/spieglt/FlyingCarpet/releases/download/v4.1/flyingCarpetLinuxCLI
+	md5sums = 7433b0a5ae2fb405791b4532c7bee178
+
+pkgname = flyingcarpet-cli
