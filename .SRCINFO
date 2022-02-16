@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-extension-hot-edge-git
+	pkgdesc = Adds a hot edge that activates the overview to the bottom of the screen.
+	pkgver = 14
+	pkgrel = 1
+	url = https://github.com/jdoda/hotedge
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = jq
+	depends = gnome-shell>=40
+	provides = gnome-shell-extension-hot-edge
+	conflicts = gnome-shell-extension-hot-edge
+	source = gnome-shell-extension-hot-edge-git::git+https://github.com/jdoda/hotedge.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-hot-edge-git
