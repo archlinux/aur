@@ -19,8 +19,7 @@ checkdepends=(cairo)
 conflicts=(libfprint)
 provides=(libfprint=1.94.0 libfprint-2.so)
 groups=(fprint)
-_commit=d348f17397cfb821acf9953ab4ee821e2bfad81a
-source=("git+https://gitlab.freedesktop.org/Depau/libfprint.git#commit=$_commit")
+source=("git+https://gitlab.freedesktop.org/Depau/libfprint.git#branch=elanmoc2")
 sha256sums=('SKIP')
 
 pkgver() {

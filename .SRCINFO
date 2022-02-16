@@ -19,7 +19,7 @@ pkgbase = libfprint-elanmoc2-git
 	provides = libfprint=1.94.0
 	provides = libfprint-2.so
 	conflicts = libfprint
-	source = git+https://gitlab.freedesktop.org/Depau/libfprint.git#commit=d348f17397cfb821acf9953ab4ee821e2bfad81a
+	source = git+https://gitlab.freedesktop.org/Depau/libfprint.git#branch=elanmoc2
 	sha256sums = SKIP
 
 pkgname = libfprint-elanmoc2-git
