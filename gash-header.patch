@@ -1,0 +1,11 @@
+diff --git a/scripts/gash.in b/scripts/gash.in
+index f851c1d..aac384a 100644
+--- a/scripts/gash.in
++++ b/scripts/gash.in
+@@ -1,5 +1,5 @@
+ #! @GUILE@ \
+---no-auto-compile -e main -L @MODDIR@ -C @GODIR@ -L . -C . -s
++--no-auto-compile -e main -L . -C . -L @MODDIR@ -C @GODIR@ -s
+ !#
+ ;;; Gash --- Guile As SHell
+ ;;; Copyright © 2016,2017,2018 R.E.W. van Beusekom <rutger.van.beusekom@gmail.com>

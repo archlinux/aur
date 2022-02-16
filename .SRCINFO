@@ -1,16 +1,18 @@
 pkgbase = guile-gash
 	pkgdesc = POSIX-compatible shell and Guile library for parsing shell scripts.
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://savannah.nongnu.org/projects/gash/
 	arch = any
 	license = GPL3
 	depends = guile>=2.0.9
 	options = !strip
-	source = http://download.savannah.nongnu.org/releases/gash/gash-0.2.0.tar.gz
-	source = http://download.savannah.nongnu.org/releases/gash/gash-0.2.0.tar.gz.sig
+	source = http://download.savannah.nongnu.org/releases/gash/gash-0.3.0.tar.gz
+	source = http://download.savannah.nongnu.org/releases/gash/gash-0.3.0.tar.gz.sig
+	source = gash-header.patch
 	validpgpkeys = D6B0C593DA8C5EDCA44C7A58C33691F71188B004
-	md5sums = 63e1759700bfe7844f8ed91c33a57aed
+	md5sums = e45c8bcda9acc3b87154104449a3e468
 	md5sums = SKIP
+	md5sums = d98b27a988800f5b00602fdb8d2ec1f2
 
 pkgname = guile-gash
