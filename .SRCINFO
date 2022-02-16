@@ -1,0 +1,17 @@
+pkgbase = webdsl-eclipse-git
+	pkgver = r478.994489b
+	pkgrel = 1
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = jdk8-openjdk
+	makedepends = python
+	makedepends = python-pip
+	makedepends = tar
+	makedepends = desktop-file-utils
+	depends = java-runtime
+	source = webdsl-eclipse::git+https://github.com/webdsl/webdsl-editor#branch=master
+	source = webdsl-git::git+https://aur.archlinux.org/webdsl-git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = webdsl-eclipse-git
