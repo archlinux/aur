@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-session-standalone-git
-pkgver=2.3.0.r45.g498387b
-pkgrel=2
+pkgver=2.3.0.r63.ge584fed
+pkgrel=1
 pkgdesc='Session indicator for Wingpanel (without Gala dependencies)'
 arch=('x86_64')
 url='https://github.com/elementary/wingpanel-indicator-session'
@@ -11,8 +11,7 @@ license=('GPL2')
 groups=('pantheon-qq')
 depends=('accountsservice' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
          lib{{granite,wingpanel}.so,handy})
-makedepends=('git' 'gobject-introspection' 'granite' 'meson' 'vala'
-             'wingpanel')
+makedepends=('git' 'gobject-introspection' 'meson' 'vala')
 provides=('wingpanel-indicator-session')
 conflicts=('wingpanel-indicator-session')
 source=('git+https://github.com/elementary/wingpanel-indicator-session.git'
