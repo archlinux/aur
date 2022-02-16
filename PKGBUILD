@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=nautilus-ext-git-git
 pkgver=1.3.r16.g5389549
-pkgrel=7
+pkgrel=8
 pkgdesc="Nautilus extension to add important information about the current git directory"
 arch=('i686' 'x86_64')
 url="https://github.com/bilelmoussaoui/nautilus-git"
@@ -22,9 +22,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-
-  # Disable post_install, not available in meson-options
-  sed -i '37,38d' meson.build
 
   find . -type f -exec sed -i 's|python2|python|g' {} \;
 }
