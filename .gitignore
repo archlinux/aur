@@ -1,0 +1,5 @@
+*markdown*here*
+pkg/
+src/
+*.xpi
+*.pkg*
