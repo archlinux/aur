@@ -1,14 +1,14 @@
 pkgbase = nvidia-docker
 	pkgdesc = Build and run Docker containers leveraging NVIDIA GPUs
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/NVIDIA/nvidia-docker
 	arch = any
 	license = BSD
 	depends = docker
-	depends = nvidia-container-runtime>=3.8.0
-	depends = nvidia-container-toolkit>=1.8.0
-	source = https://github.com/NVIDIA/nvidia-docker/archive/v2.9.0.tar.gz
-	sha256sums = a84c1b12543eaa1c0ef1df3cf9f5ba077aa68b464a73a96b723825f6d3ca4490
+	depends = nvidia-container-runtime>=3.8.1
+	depends = nvidia-container-toolkit>=1.8.1
+	source = https://github.com/NVIDIA/nvidia-docker/archive/v2.9.1.tar.gz
+	sha256sums = 0a974c4df93bd6225e4b50ade80e0beb868928fdf6bdbca08beb7a04f70f4abd
 
 pkgname = nvidia-docker
