@@ -20,6 +20,7 @@ prepare() {
 build() {
   cd build
   cmake ../$pkgname-$pkgver \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
   # The compilation takes up a *lot* of RAM (over 10GB with 6 threads)
