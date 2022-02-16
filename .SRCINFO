@@ -1,0 +1,13 @@
+pkgbase = pypi-simple-search-git
+	pkgdesc = A stop-gap replacement for pip search.
+	pkgver = r6.0fbc935
+	pkgrel = 1
+	url = https://github.com/jeffmm/pypi-simple-search
+	install = pypi-simple-search-git.install
+	arch = any
+	depends = python-pip
+	conflicts = pip-simple-search-git
+	source = git+https://github.com/jeffmm/pypi-simple-search.git
+	sha256sums = SKIP
+
+pkgname = pypi-simple-search-git
