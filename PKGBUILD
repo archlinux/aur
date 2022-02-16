@@ -1,4 +1,6 @@
 # Maintainer: Silvio <s.i.l.v.io..f.r.i.c.k.e@gmail.com>
+# Contribute via: https://github.com/silvio/archlinux-package--shellcheck-bin
+
 # Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=shellcheck-bin
