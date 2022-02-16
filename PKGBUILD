@@ -1,10 +1,8 @@
 # Maintainer: Craggles <craggles17@gmail.com>
 # Source: https://www.virtualhere.com/client_service
-# Installs the binary and a systemd service
-# Maintainer: Craggles <craggles17@gmail.com>
 
 pkgname=virtualhere-client
-pkgver=1..0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="VirtualHere USB Client for Linux Desktop"
 arch=("i686" "x86_64")
