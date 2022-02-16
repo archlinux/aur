@@ -1,7 +1,7 @@
 # Maintainer: Joshua Haase <hahj87@gmail.com>
 # Contributor: Jonas Weber <contact@jonasw.de>
 pkgname=gpp
-pkgver=2.25
+pkgver=2.27
 pkgrel=1
 pkgdesc="A general-purpose preprocessor with customizable syntax, suitable for a wide range of preprocessing tasks"
 arch=('x86_64' 'i686' 'armv7' 'mips64el')
