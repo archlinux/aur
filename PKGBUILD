@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=adwaita-icon-theme-git
-pkgver=41.0.r175.g6e9bbd0f3
+pkgver=42.beta.r0.g7342c5411
 pkgrel=1
 pkgdesc='GNOME standard icons'
 arch=(any)
