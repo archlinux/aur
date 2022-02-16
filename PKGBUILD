@@ -4,8 +4,8 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.9.3
-pkgrel=2
+pkgver=2.9.4
+pkgrel=1
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
 license=(Apache)
@@ -77,7 +77,7 @@ makedepends=(python-setuptools-scm{,-git-archive})
 #               python-requests)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('513d0d9ee3c3123e616f760eb8556ee569121286c3e400a1fe4b3bf66e6dea29')
+sha256sums=('8c35383154309592e969dcdcb64a4aeb679a4b27d3c188335510054a6acd8fc1')
 
 prepare() {
 	cd "$_archive"
