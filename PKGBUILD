@@ -11,7 +11,7 @@ depends=('bash' 'pandoc')
 source=('git+https://codeberg.org/blau_araujo/md2term/')
 md5sums=('SKIP')
 provides=($_pkgname)
-pkgver=md2term.alpha.0.0.6.r1.g341d8d1
+pkgver=md2term.alpha.0.0.7.r0.g557d8ec
 
 pkgver() {
 	cd "$_pkgname"
