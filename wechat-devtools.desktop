@@ -3,7 +3,7 @@ Name=WeChat Devtools
 Name[zh_CN]=微信web开发者工具
 Comment=The development tools for wechat web develop
 Categories=Development;WebDevelopment;IDE;
-Exec=env APPDATA=/opt/wechat-devtools/ USERPROFILE=~ /opt/wechat-devtools/nw --load-extension=/opt/wechat-devtools/package.nw/js/ideplugin --custom-devtools-frontend=file:///opt/wechat-devtools/package.nw/js/ideplugin/inspector %U
+Exec=env APPDATA=/opt/wechat-devtools/ USERPROFILE=~ /opt/wechat-devtools/nw --load-extension=~/.config/wechat_devtools/WeappPlugin --custom-devtools-frontend=file:///opt/wechat-devtools/package.nw/js/ideplugin/inspector %U
 Path=/opt/wechat-devtools
 Icon=wechat-devtools
 Type=Application

@@ -30,16 +30,23 @@ if [ ! -d "$node_modules" ]; then
 fi
 
 # 以下原封复制
+# 代理处理
+echo "尝试取消所有代理"
+unset http_proxy
+unset HTTP_PROXY
+unset https_proxy
+unset HTTPS_PROXY
+unset socket_proxy
+unset SOCKET_PROXY
+unset all_proxy
+unset ALL_PROXY
+
 echo -e "\033[42;37m ######## 版本信息 $(date '+%Y-%m-%d %H:%M:%S') ########\033[0m"
 echo "NW VERSION: $NW_VERSION"
 echo "nw-gyp version: $( nw-gyp --version )"
 echo "node version: $(node --version )"
 echo "npm version: $(npm --version )"
 python --version
-
-if [[ ! -z $https_proxy || ! -z $http_proxy ]]; then
-  echo -e "\033[41;37m 警告: 你设置了代理，这有可能导致安装出现异常 $http_proxy, $https_proxy \033[0m"
-fi
 
 rm -fr "${package_dir}/node_modules/vscode-windows-ca-certs" # the module is only available in windows
 rm -fr "${package_dir}/node_modules/vscode-windows-registry" # the module is only available in windows

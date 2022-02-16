@@ -3,6 +3,15 @@
 package_dir="$NW_PACKAGE_DIR"
 tmp_dir=$(mktemp -d)
 
+# 修复: webview manager
+# 此bug导致以下功能异常: 
+# 1. 代码依赖分析不可用
+# 2. 拓展中的“SERVICE MARKET RECOMMENDS”功能不可用
+echo "fix: webview manager"
+sed -i 's#module.exports = createWebviewManager;#module.exports = createWebviewManager,( /** @type {any} */ (window)).createWebviewManager = createWebviewManager;#g' "$package_dir/js/libs/vseditor/webview-resource/main.js"
+
+# 修复：可视化用的wcc,wcsc
+echo "fix: wcc,wcsc"
 mkdir "$tmp_dir/node_modules"
 cd $tmp_dir && npm install miniprogram-compiler
 # wcc wcsc
