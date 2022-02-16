@@ -6,8 +6,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=41.3
-pkgrel=2
+pkgver=41.4
+pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -21,10 +21,9 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 checkdepends=(xorg-server-xvfb python-dbusmock wireplumber)
 provides=(libmutter-9.so mutter)
 conflicts=(mutter)
-groups=(gnome)
 install=mutter.install
 
-_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
+_commit=83a34957046c5b6bca609fda4b68c8c5d1276d14  # tags/41.4^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c"
@@ -72,6 +71,9 @@ prepare() {
   patch -p1 < $srcdir/rounded_corners.patch
   patch -p1 < $srcdir/shell_blur_effect.patch
   patch -p1 < $srcdir/mr1441.patch
+
+  # Make tests run
+  sed -i '/catchsegv/d' meson.build
 }
 
 build() {
