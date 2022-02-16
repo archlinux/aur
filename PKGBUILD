@@ -9,7 +9,7 @@ arch=('any')
 url=https://github.com/python/tzdata
 license=('Apache')
 depends=('python')
-makedepends=('python-build' 'python-install' 'python-setuptools' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-subtests')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('68dbe41afd01b867894bbdfd54fa03f468cfa4f0086bfb4adcd8de8f24f3ee21')
@@ -23,13 +23,13 @@ build() {
 check() {
   cd $_name-$pkgver
   python -m venv --system-site-packages test-env
-  test-env/bin/python -m install --optimize=1 dist/*.whl
+  test-env/bin/python -m installer --compile-bytecode=1 dist/*.whl
   test-env/bin/python -m pytest
 }
 
 package() {
   cd $_name-$pkgver
-  python -m install --optimize=1 --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
 
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
