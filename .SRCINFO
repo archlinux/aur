@@ -1,13 +1,15 @@
 pkgbase = 86box-roms-git
 	pkgdesc = ROMs for the 86Box emulator.
-	pkgver = 20211223.r10.gcb71dcf
-	pkgrel = 2
+	pkgver = 20220216.r0.gcb71dcf
+	pkgrel = 1
 	url = https://github.com/86Box/roms
 	arch = any
 	license = custom
 	makedepends = git
+	provides = 86box-roms
+	conflicts = 86box-roms
 	options = !strip
 	source = 86box-roms-git::git+https://github.com/86Box/roms.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = 86box-roms-git

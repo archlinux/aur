@@ -1,15 +1,17 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-roms-git
-pkgver=20211223.r10.gcb71dcf
-pkgrel=2
+pkgver=20220216.r0.gcb71dcf
+pkgrel=1
 pkgdesc='ROMs for the 86Box emulator.'
 arch=('any')
 url='https://github.com/86Box/roms'
 license=('custom')
 makedepends=('git')
 options=('!strip')
+provides=('86box-roms')
+conflicts=('86box-roms')
 source=("${pkgname}::git+https://github.com/86Box/roms.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
