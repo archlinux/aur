@@ -2,7 +2,7 @@
 # Contributor: <shlomochoina@gmail.com> 
 
 pkgname=pantheon-dock-instctl-git
-pkgver=r2179.4a0b6af
+pkgver=r2228.53b31966
 pkgrel=1
 pkgdesc='The Pantheon Dock (with instance controls)'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('bamf' 'gnome-menus' 'libgee' libgranite.so 'python')
 makedepends=('git' gnome-{common,menus} 'libdbusmenu-gtk3' 'granite' 'meson' 'vala')
 conflicts=('plank' 'pantheon-dock')
 provides=('plank' 'pantheon-dock')
-source=('pantheon-dock::git+https://github.com/elementary/dock'
+source=('pantheon-dock::git+https://github.com/elementary/dock#branch=master'
         'instance-controls.patch')
 
 sha256sums=('SKIP'
@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-  arch-meson pantheon-dock build -Dapport=false -Denable-dbusmenu=yes -Denable-barriers=yes
+  arch-meson pantheon-dock build -Denable-apport=false -Denable-dbusmenu=yes -Denable-barriers=yes
   ninja -C build
 }
 package() {
