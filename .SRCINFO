@@ -1,7 +1,7 @@
 pkgbase = md2term-git
 	pkgdesc = Markdown parser for the terminal, based on bash and pandoc
 	pkgver = md2term.alpha.0.0.7.r0.g557d8ec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/blau_araujo/md2term
 	arch = any
 	license = GPL-3.0

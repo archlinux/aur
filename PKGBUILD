@@ -5,7 +5,7 @@ _pkgname=md2term
 pkgdesc='Markdown parser for the terminal, based on bash and pandoc'
 arch=(any)
 url='https://codeberg.org/blau_araujo/md2term'
-pkgrel=1
+pkgrel=2
 license=('GPL-3.0')
 depends=('bash' 'pandoc')
 source=('git+https://codeberg.org/blau_araujo/md2term/')
@@ -22,4 +22,5 @@ package() {
 	cd "$_pkgname"
 	install -Dm755 md2term "$pkgdir/usr/bin/md2term"
 	install -Dm755 md2term.1 "$pkgdir/usr/share/man/man1/md2term.1"
+	install -Dm755 themes/dark-theme "$pkgdir/usr/share/md2term/themes/dark-theme"
 }
