@@ -8,16 +8,16 @@ pkgver=1.2.1.r7.ga6a515f
 pkgrel=1
 epoch=1
 pkgdesc="CPU frequency plugin for the Xfce4 panel (git checkout)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL2')
 url="http://goodies.xfce.org/projects/panel-plugins/xfce4-cpufreq-plugin"
 groups=('xfce4-goodies')
 depends=('xfce4-panel-git' 'hicolor-icon-theme')
-makedepends=('intltool' 'git' 'xfce4-dev-tools' 'autoconf' 'libtool')
+makedepends=('git' 'intltool' 'xfce4-dev-tools')
 provides=('xfce4-cpufreq-plugin')
 conflicts=('xfce4-cpufreq-plugin')
 options=('!libtool')
-source=('git://git.xfce.org/panel-plugins/xfce4-cpufreq-plugin')
+source=("${_gitname}::git+https://gitlab.xfce.org/panel-plugins/xfce4-cpufreq-plugin")
 sha256sums=('SKIP')
 
 pkgver() {
