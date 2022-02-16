@@ -1,6 +1,6 @@
 pkgbase = candle2-git
 	pkgdesc = GRBL and GRBL-Advanced controller application with G-Code visualizer written in Qt - git version
-	pkgver = V2.3.r2.335c14c.22.0389946386b5da970c7968a45c81216d
+	pkgver = V2.3.r2.335c14c.22.ff6f190c00d6fa48b408a25da739ffc3
 	pkgrel = 1
 	url = https://github.com/Schildkroet/Candle2.git
 	arch = x86_64
@@ -15,9 +15,7 @@ pkgbase = candle2-git
 	conflicts = candle2-bin
 	source = candle2::git+https://github.com/Schildkroet/Candle2.git
 	source = candle2.desktop
-	source = fix.patch
 	md5sums = SKIP
 	md5sums = 060580e207a2230c5182badf908d0bf9
-	md5sums = 22cd3b0cd9edc3a66a14e3d9210acddf
 
 pkgname = candle2-git
