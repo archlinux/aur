@@ -6,8 +6,8 @@ _build=b3600
 
 pkgname="${_pkgname}-appimage"
 pkgver=3.2
-pkgrel=1
-pkgdesc='Emulator of x86-base machines based on PCem.'
+pkgrel=2
+pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=(GPL2)
