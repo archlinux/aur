@@ -1,7 +1,7 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=moonwm
 pkgver=8.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="My own outstandingly named Window Manager (a dynamic window manager)"
 arch=(x86_64 i686 aarch64)
 url="https://github.com/jzbor/moonwm"
@@ -12,7 +12,8 @@ depends=(libx11 libxcb libxinerama slop xmenu  arandr dmenu ffmpeg imagemagick l
             xorg-xrandr xorg-xrdb)
 makedepends=(go-md2man pkgconf)
 checkdepends=()
-optdepends=('scrot: integrated screenshot support')
+optdepends=('scrot: integrated screenshot support'
+            'pimenu: middleclick on desktop for pie-shaped favorites menu')
 provides=(moonwm)
 conflicts=(moonwm)
 replaces=()
