@@ -1,0 +1,12 @@
+pkgbase = 86box-roms
+	pkgdesc = ROMs for the 86Box emulator.
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/86Box/roms
+	arch = any
+	license = custom
+	options = !strip
+	source = https://github.com/86Box/roms/archive/refs/tags/20220216.tar.gz
+	sha512sums = f0b9ef712d923588cf77c8b3cac9b0ce400b79307f686c24d7826a0312943b3ce0f736d16b66fd4477dbef222a95c8ba7dae09c2613b46d28276fbebc7ecd740
+
+pkgname = 86box-roms
