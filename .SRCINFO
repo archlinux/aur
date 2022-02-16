@@ -1,12 +1,13 @@
 pkgbase = osmtools
 	pkgdesc = Simple tools which are used in OpenStreetMap project
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/osm-c-tools/osmctools
 	arch = x86_64
 	license = AGPL
 	makedepends = git
 	depends = zlib
+	conflicts = osmctools
 	source = osmtools::git+https://gitlab.com/osm-c-tools/osmctools#tag=0.9
 	sha256sums = SKIP
 

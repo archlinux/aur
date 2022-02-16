@@ -3,7 +3,7 @@
 pkgbase=osmtools
 pkgname=(osmconvert osmfilter osmupdate)
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple tools which are used in OpenStreetMap project'
 arch=('x86_64')
 url='https://gitlab.com/osm-c-tools/osmctools'
@@ -12,6 +12,7 @@ depends=('zlib')
 makedepends=('git')
 source=("$pkgbase::git+$url#tag=$pkgver")
 sha256sums=('SKIP')
+conflicts=('osmctools')
 
 build() {
 	cd "$pkgbase"
