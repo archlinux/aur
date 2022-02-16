@@ -19,9 +19,9 @@ _cookie="./google_drive.cookie"
 _srcCurl=`curl \
 	-c ${_cookie} \
 	-s \
-	-L "https://drive.google.com/uc?export=download&id=${_fileId}" \
+	-L "https://drive.google.com/u/0/uc?export=download&id=${_fileId}" \
 	> /dev/null && \
-	echo "https://drive.google.com/uc?export=download&confirm=$(awk '/download/ { print $NF }' ${_cookie})&id=${_fileId}"`
+	echo "https://drive.google.com/u/0/uc?export=download&confirm=$(awk '/download/ { print $NF }' ${_cookie})&id=${_fileId}"`
 
 DLAGENTS=("https::/usr/bin/curl -Lb ${_cookie} %u -o %o")
 

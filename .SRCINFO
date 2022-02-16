@@ -9,7 +9,7 @@ pkgbase = sonic3air-bin
 	depends = sdl2
 	optdepends = discord: Discord rich presence support
 	provides = sonic3air
-	source = sonic3air_v21.09.28.0.tar.gz::https://drive.google.com/uc?export=download&confirm=0Oi9&id=1RECLmg_kziM0EuHgMc7f3rS_5uaU2N0k
+	source = sonic3air_v21.09.28.0.tar.gz::https://drive.google.com/u/0/uc?export=download&confirm=&id=1RECLmg_kziM0EuHgMc7f3rS_5uaU2N0k
 	source = sonic3air.desktop
 	source = sonic3air.sh
 	source = LICENSE.md
