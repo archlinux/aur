@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-aile-super
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 13.3.1
+	pkgver = 14.0.0
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v13.3.1/super-ttc-iosevka-aile-13.3.1.zip
-	source = ttc-iosevka-aile-super-13.3.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v13.3.1/LICENSE.md
-	sha256sums = aefad47d2eedc8fa816cac16053391136178f95779be4e42b353b1d7faee6e11
+	source = https://github.com/be5invis/Iosevka/releases/download/v14.0.0/super-ttc-iosevka-aile-14.0.0.zip
+	source = ttc-iosevka-aile-super-14.0.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v14.0.0/LICENSE.md
+	sha256sums = f5d47144dddb4ef8079c96509b381cc66b2fe6856cdc4625f7668a730c84aa02
 	sha256sums = 46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1
 
 pkgname = ttc-iosevka-aile-super
