@@ -14,8 +14,8 @@
 
 pkgname=mutter-x11-scaling
 _pkgname=mutter
-pkgver=41.3
-pkgrel=2
+pkgver=41.4
+pkgrel=1
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -30,7 +30,7 @@ checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
 provides=($_pkgname libmutter-9.so)
 groups=(gnome)
 conflicts=($_pkgname)
-_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
+_commit=83a34957046c5b6bca609fda4b68c8c5d1276d14  # tags/41.4^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/bf134596c22abbb6dc70adb7844e6d391ea4cd80/x11-Add-support-for-fractional-scaling-using-Randr.patch")
 sha256sums=('SKIP'
@@ -47,6 +47,9 @@ prepare() {
   # Add scaling support using randr under x11 (Marco Trevisan and Georg Wagner)
   git revert -n ef0f7084
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+
+  # Make tests run
+  sed -i '/catchsegv/d' meson.build
 }
 
 build() {
