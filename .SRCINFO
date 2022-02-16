@@ -1,7 +1,7 @@
 pkgbase = grub-improved-luks2-git
 	pkgdesc = GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support
-	pkgver = 2.06.r92.g246d69b7e
-	pkgrel = 6
+	pkgver = 2.06.r109.ga9c225776
+	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
 	install = grub-improved-luks2-git.install
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = grub-improved-luks2-git
 	makedepends = rsync
 	makedepends = texinfo
 	makedepends = ttf-dejavu
+	makedepends = bison
 	depends = device-mapper
 	depends = freetype2
 	depends = fuse2
