@@ -5,7 +5,7 @@
 
 pkgname=linuxtrack
 pkgver=0.99.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Software for head motion tracking on linux."
 arch=('i686' 'x86_64')
 url="https://github.com/uglyDwarf/linuxtrack"
@@ -36,7 +36,7 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
-	
+
   # Uinput module
   mkdir -p $pkgdir/etc/modules-load.d
   echo uinput >> $pkgdir/etc/modules-load.d/uinput.conf
