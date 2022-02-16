@@ -25,5 +25,5 @@ sha512sums_aarch64=('7082a5002a1ea2403cd6c24665149a0444960a66dc2002f2e38726a6ed4
 
 
 package() {
-    install -Dm755 "${pkgname%-bin}-v${pkgver}/${pkgname%-bin}" -t "${pkgdir}/usr/bin" 
+    install -Dm755 "${pkgname%-bin}-v${pkgver}/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
 }
