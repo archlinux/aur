@@ -1,14 +1,15 @@
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
+# Maintainer: Alexandre Janniaux <ajanni@videolabs.io>
 
 pkgname=medialibrary-git
-pkgver=1223.7aac382
+pkgver=4692.725ff59a
 pkgrel=1
 pkgdesc="VideoLAN Media Library"
 arch=('i686' 'x86_64')
-url="http://vlmc.org/"
+url="https://code.videolan.org/videolan/medialibrary"
 license=('GPL')
 depends=('vlc' 'libvlcpp' 'libjpeg-turbo' 'sqlite')
-makedepends=('git')
+makedepends=('git' 'meson')
 source=(
   'git+https://code.videolan.org/videolan/medialibrary.git'
 )
@@ -29,12 +30,13 @@ pkgver() {
 build() {
   cd "${srcdir}/${_gitname}"
 
-  ./bootstrap
-  ./configure --prefix=/usr
-  make
+  meson setup \
+      --prefix=/usr/ --reconfigure --buildtype release \
+      -Dtests=disabled build
+  meson compile -C build
 }
 
 package() {
   cd "${srcdir}/${_gitname}"
-  make "DESTDIR=${pkgdir}" install
+  meson install -C build --destdir="${pkgdir}"
 }
