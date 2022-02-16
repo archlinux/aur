@@ -1,0 +1,25 @@
+pkgbase = wingpanel-indicator-cpufreq-git
+	pkgdesc = CPU frequency indicator for Wingpanel
+	pkgver = r24.7dde286
+	pkgrel = 1
+	url = https://github.com/Dirli/wingpanel-indicator-cpufreq
+	arch = x86_64
+	groups = pantheon-unstable
+	license = GPL2
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	makedepends = wingpanel
+	makedepends = polkit
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgranite.so
+	depends = libwingpanel.so
+	depends = polkit
+	provides = wingpanel-indicator-cpufreq
+	conflicts = wingpanel-indicator-cpufreq
+	source = git+https://github.com/Dirli/wingpanel-indicator-cpufreq.git
+	sha256sums = SKIP
+
+pkgname = wingpanel-indicator-cpufreq-git
