@@ -1,15 +1,18 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=pls
-pkgver=1.8.2
+pkgver=1.9.3
 pkgrel=1
 pkgdesc='A better ls for developers'
 url='https://pypi.org/project/pls/'
 arch=('any')
 license=('GPL3')
 depends=(
-  'python-yaml'
   'python-rich'
+  'python-yaml'
+)
+optdepends=(
+  'nerd-fonts: icon support'
 )
 makedepends=(
   'git'
