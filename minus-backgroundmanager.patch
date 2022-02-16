@@ -27,26 +27,20 @@
 --- src/wingpanel/src/Widgets/Panel.vala	2018-06-04 19:55:35.553769970 +0900
 +++ src/wingpanel/src/Widgets/Panel.vala	2018-06-04 21:39:40.293996810 +0900
 @@ -25,7 +25,6 @@
-     private MenuBar center_menubar;
+     private Gtk.MenuBar center_menubar;
  
      private unowned Gtk.StyleContext style_context;
 -    private Gtk.CssProvider? style_provider = null;
  
-     private int _draw_y = 0;
-     public int draw_y {
-@@ -64,8 +63,6 @@
-         style_context = get_style_context ();
+     private static Gtk.CssProvider resource_provider;
+ 
+@@ -82,39 +81,6 @@
          style_context.add_class (StyleClass.PANEL);
          style_context.add_provider (resource_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
--
+ 
 -        Services.BackgroundManager.get_default ().background_state_changed.connect (update_background);
- 
-         var granite_settings = Granite.Settings.get_default ();
-         var gtk_settings = Gtk.Settings.get_default ();
-@@ -111,38 +108,6 @@
-         });
-     }
- 
+-    }
+-
 -    public override bool button_press_event (Gdk.EventButton event) {
 -        if (event.button != Gdk.BUTTON_PRIMARY) {
 -            return Gdk.EVENT_PROPAGATE;
@@ -77,16 +71,13 @@
 -
 -        var background_manager = Services.BackgroundManager.get_default ();
 -        return background_manager.begin_grab_focused_window (x, y, (int)event.button, time, state);
--    }
--
+     }
+ 
      public void cycle (bool forward) {
-         var current = popover_manager.current_indicator;
-         if (current == null) {
-@@ -263,56 +229,4 @@
-             }
+@@ -282,55 +248,4 @@
          }
      }
--
+ 
 -    private void update_background (Services.BackgroundState state, uint animation_duration) {
 -        if (style_provider == null) {
 -            style_provider = new Gtk.CssProvider ();

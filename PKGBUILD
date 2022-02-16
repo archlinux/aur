@@ -2,23 +2,22 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r637.15c0ad1
+pkgver=r654.0bb8396
 pkgrel=1
-pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
+pkgdesc='Stylish top panel (without Gala dependencies)'
 arch=('i686' 'x86_64')
 url='https://github.com/elementary/wingpanel'
 license=('GPL3')
 groups=('pantheon-qq')
 depends=(glib2 gtk3 lib{gee,granite.so,wnck3} pantheon-notifications)
 makedepends=('meson' 'libgranite.so' 'git' 'vala')
-optdepends=("pantheon-applications-menu-git: Application launcher"
-            wingpanel-indicator-{a11y,bluetooth,datetime,keyboard,network,notifications,power,session,sensors,sound}-git": Tray applet"
-            wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 tray applets"})
+optdepends=("pantheon-applications-menu: Application launcher"
+            "wingpanel-indicator-datetime: Clock and calendar widget"
+            wingpanel-indicator-{a11y,bluetooth,keyboard,network,nightlight,notifications,power,privacy,sensors,sound}": System indicator"
+            "wingpanel-indicator-session-standalone-git: Session indicator for Wingpanel (without Gala dependencies)"
+            wingpanel-indicator-{ayatana,namarupa}-git": Display Unity 7 indicators"})
 provides=(wingpanel{,-git} libwingpanel{,-2.0}.so)
-#provides=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
 conflicts=(wingpanel{,-git} libwingpanel{,-2.0}.so)
-#conflicts=(wingpanel{,{,-standalone}-bzr,-git} 'libwingpanel-2.0.so')
-replaces=('wingpanel-standalone-bzr')
 source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
@@ -26,7 +25,7 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'fix-for-openbox.patch'
         'no-mutter-typelib.patch')
 sha256sums=('SKIP'
-            '4d674f514d68c87ff5c23d0daa58a6d7e7c62c67142ebc734e88c45e940f7751'
+            '1fbc81bbb6c6ac59f7ea8761cdac0714fd2f39877dc81a0b0d6db855163d4f14'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
             '6d4c88c4b6dd13fc7ca60f2e2387f3af86d804f89591bd7826cf93a946b6f1b6'
             'aa15974b87a1000ab432bb048bc8a6ba0f36edd24e682d4e57833179c7b93f45'
