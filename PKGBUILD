@@ -3,12 +3,12 @@
 _archive_extension="tar.gz"
 pkgname=ipfs-desktop
 pkgver=0.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the InterPlanetary File System"
 arch=(x86_64)
 url="https://github.com/ipfs/$pkgname"
 license=(MIT)
-depends=(c-ares ffmpeg gtk3 http-parser libevent libxslt minizip nss re2 snappy libappindicator-gtk3)
+depends=(c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip nss re2 snappy libnotify libappindicator-gtk3)
 makedepends=("nodejs>=16" npm node-gyp)
 install=$pkgname.install
 source=("$pkgname-$pkgver.$_archive_extension::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v$pkgver.$_archive_extension")
