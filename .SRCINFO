@@ -1,6 +1,6 @@
 pkgbase = calls-git
 	pkgdesc = Phone dialer and call handler
-	pkgver = 41.0.r14.g54bac16
+	pkgver = 42.beta.1.r66.g006673a
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/calls
 	arch = x86_64
@@ -21,6 +21,6 @@ pkgbase = calls-git
 	provides = calls
 	conflicts = calls
 	source = git+https://gitlab.gnome.org/GNOME/calls.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = calls-git

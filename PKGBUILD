@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=41.0.r14.g54bac16
+pkgver=42.beta.1.r66.g006673a
 pkgrel=1
 pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
@@ -26,7 +26,7 @@ makedepends=(
 provides=(calls)
 conflicts=(calls)
 source=("git+${url}.git")
-md5sums=(SKIP)
+b2sums=(SKIP)
 
 pkgver() {
 	cd calls
@@ -34,7 +34,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson calls build -Dtests=false
+	arch-meson calls build -D tests=false
 	meson compile -C build
 }
 
