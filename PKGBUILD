@@ -4,7 +4,7 @@
 pkgbase=leagueoflegends-git
 pkgname=(leagueoflegends-git leagueoflegends-ge-git)
 _srcname=leagueoflegends
-pkgver=0.12.2.r8.g800a4da
+pkgver=0.12.3.r1.g040b76b
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
@@ -37,7 +37,6 @@ pkgver() {
 package_leagueoflegends-git() {
     depends+=('wine-lol')
     conflicts+=('leagueoflegends-ge-git')
-    replaces+=('leagueoflegends-ge-git')
 
     cd "$srcdir/$_srcname"
     make DESTDIR="$pkgdir" install
@@ -46,7 +45,6 @@ package_leagueoflegends-git() {
 package_leagueoflegends-ge-git() {
     depends+=('wine-ge-lol')
     conflicts+=('leagueoflegends-git')
-    replaces+=('leagueoflegends-git')
 
     cd "$srcdir/$_srcname"
     make DESTDIR="$pkgdir" install-ge

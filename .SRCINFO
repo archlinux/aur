@@ -1,6 +1,6 @@
 pkgbase = leagueoflegends-git
 	pkgdesc = League of Legends helper script
-	pkgver = 0.12.2.r8.g800a4da
+	pkgver = 0.12.3.r1.g040b76b
 	pkgrel = 1
 	url = https://github.com/kyechou/leagueoflegends
 	arch = any
@@ -53,7 +53,6 @@ pkgname = leagueoflegends-git
 	depends = wine-lol
 	conflicts = leagueoflegends
 	conflicts = leagueoflegends-ge-git
-	replaces = leagueoflegends-ge-git
 
 pkgname = leagueoflegends-ge-git
 	depends = winetricks-git
@@ -76,4 +75,3 @@ pkgname = leagueoflegends-ge-git
 	depends = wine-ge-lol
 	conflicts = leagueoflegends
 	conflicts = leagueoflegends-git
-	replaces = leagueoflegends-git
