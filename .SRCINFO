@@ -1,6 +1,6 @@
 pkgbase = sqlfluff
 	pkgdesc = A dialect-flexible and configurable SQL linter
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://www.sqlfluff.com
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = sqlfluff
 	depends = python-toml
 	depends = python-tqdm
 	depends = python-typing_extensions
-	source = sqlfluff-0.10.0.tar.gz::https://github.com/sqlfluff/sqlfluff/archive/0.10.0.tar.gz
-	sha512sums = b5f4f39867edb4090e47be5c7f7d9ca7609c49ac0f7250b8a7a98ece352357b5844aa1cedec15658358a6796303e3fe5eacfdebd1eff1cf3c8829454c169a128
-	b2sums = 4767d14c5caee1e189a15cb11ca7de6eec1ce8b419e350b7e646c40e299e96b59905c43b840142999a0bbaebd97a85174a1337698ea35227cf3d93691d8bde32
+	source = sqlfluff-0.10.1.tar.gz::https://github.com/sqlfluff/sqlfluff/archive/0.10.1.tar.gz
+	sha256sums = dc554be63824168b575a7be9b0c250f202f904e5bf3b90027f59e181f6190a53
+	b2sums = d796c13e4556b4e7d81f9cd59eda78153caa124251c8fd50c0dd93b24d58a578ee564125ad8a4ff118e94735e2b608da8f847a48587de60ce97aa24c648e2555
 
 pkgname = sqlfluff
