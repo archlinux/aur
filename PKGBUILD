@@ -2,7 +2,7 @@
 
 pkgname=fiji-plugin-morpholibj
 pkgver=1.5.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Collection of mathematical morphology methods and plugins for ImageJ (Fiji version)"
 url="https://imagej.net/MorphoLibJ"
 arch=("any")
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("https://github.com/ijpb/MorphoLibJ/releases/download/v${pkgver}/MorphoLibJ_-${pkgver}.jar")
 noextract=()
-md5sums=('7f8be475ccf297f04bf0360d437b5c479aca538d147e7fa4092a9b3acfa2d27a')
+sha256sums=('7f8be475ccf297f04bf0360d437b5c479aca538d147e7fa4092a9b3acfa2d27a')
 
 package() {
     install -m755 -d ${pkgdir}/opt/fiji/plugins/
