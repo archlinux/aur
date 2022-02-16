@@ -1,0 +1,32 @@
+pkgbase = 86box
+	pkgdesc = Emulator of x86-based machines based on PCem.
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://86box.net/
+	arch = pentium4
+	arch = x86_64
+	arch = arm7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake>=3.16
+	makedepends = qt6-tools
+	depends = alsa-lib
+	depends = freetype2
+	depends = libpng
+	depends = libslirp
+	depends = openal
+	depends = qt6-base
+	depends = rtmidi
+	depends = sdl2
+	optdepends = 86box-roms: ROM files
+	provides = 86box
+	conflicts = 86box
+	source = https://github.com/86Box/86Box/archive/refs/tags/v3.2.tar.gz
+	source = 86box
+	source = 86Box.desktop
+	sha256sums = 418a6d3a87cf34cb10da1828ed526c811a47dfd47127be2b65258c4458575268
+	sha256sums = c76882ed325072ff88953c6deaa398df05b46732c5b99bd58023d7f9e3c65435
+	sha256sums = 67f2aacd0e39f0fda19412fa5b9b64fab347a68ed2f4e5e7bb437833f311a5a0
+
+pkgname = 86box
