@@ -2,7 +2,7 @@
 
 pkgname=sonic3air-bin
 pkgver=v21.09.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
 arch=('x86_64')
 url='https://sonic3air.org/'
