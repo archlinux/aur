@@ -1,0 +1,13 @@
+--- cmake-modules/FindPortMidi__orig.cmake	2022-02-16 22:55:59.475034657 +0100
++++ cmake-modules/FindPortMidi.cmake	2022-02-16 23:04:41.224419310 +0100
+@@ -62,8 +62,10 @@
+     )
+     #porttime is an independent package
+     set(DISTROS_USING_PORTTIME
++        Arch
+         Debian
+         LinuxMint
++        ManjaroLinux
+         Ubuntu
+     )
+ 
