@@ -1,15 +1,12 @@
 pkgbase = nvidia-exec
 	pkgdesc = A script to run programs nvidia optimus setups with power management for Xorg and Wayland
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/pedro00dk/nvidia-exec#readme
 	arch = x86_64
 	license = GPL
-	makedepends = git
 	depends = nvidia
 	depends = lshw
 	depends = jq
-	source = git+https://github.com/pedro00dk/nvidia-exec
-	md5sums = SKIP
 
 pkgname = nvidia-exec
