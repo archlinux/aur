@@ -1,13 +1,13 @@
 pkgbase = hamclock
 	pkgdesc = Clock and world map with extra features for amateur radio (800x480 version)
-	pkgver = 2.73
+	pkgver = 2.74
 	pkgrel = 1
 	url = https://clearskyinstitute.com/ham/HamClock
 	arch = x86_64
 	license = MIT
 	depends = libx11
 	depends = libxcb
-	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v2.73.tar.gz
-	sha256sums = 39bdac59bdfade184489ace9326014b7e595ab7b8ab42103b1e4cd3cdd0c94ff
+	source = https://github.com/kj7rrv/hamclock/archive/refs/tags/v2.74.tar.gz
+	sha256sums = 6a4b8621f1f9d8882d899c0db4f22cb9d1db8b24a4d6de03be1252b399caea38
 
 pkgname = hamclock
