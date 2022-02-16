@@ -4,7 +4,7 @@
 
 pkgname=tmuxinator
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage complex tmux sessions easily"
 arch=(any)
 url="https://github.com/aziz/tmuxinator"
@@ -23,7 +23,7 @@ source=(
   "xdg.patch"
 )
 sha256sums=('3992e4a13113ebc6d1d7571c2fae05a056655ee7bfd2eba1455242e30a6dcdd8'
-            '565f40e0e314a82d5ce547333d6d912efa7c3e0bd6330892eea28319eef49316')
+            '96da8eb64998ac48f76e156ea39bda46f462f5be3e28c1dcd06decb95dff1dc9')
 
 prepare() {
   cd ${pkgname}-${pkgver}

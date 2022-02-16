@@ -42,7 +42,7 @@ index 1b02053..3f4c8f8 100644
 @@ -41,7 +41,7 @@ Gem::Specification.new do |s|
 
    s.add_dependency "erubis", "~> 2.6"
-   s.add_dependency "thor", "~> 1.0"
+   s.add_dependency "thor", "~> 1.2.1"
 -  s.add_dependency "xdg", "~> 2.2", ">= 2.2.5"
 +  s.add_dependency "xdg", ">= 4.3.0"
 
