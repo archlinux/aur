@@ -1,6 +1,6 @@
 # Maintainer: EMPTY <testerthe60@gmail.com>
 pkgname=portmaster-runit
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Portmaster runit service (does not include portmaster itself)"
 arch=("any")
