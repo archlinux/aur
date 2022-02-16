@@ -1,6 +1,6 @@
 pkgbase = nerdctl
 	pkgdesc = Docker-compatible CLI for containerd
-	pkgver = 0.16.1
+	pkgver = 0.17.0
 	pkgrel = 1
 	url = https://github.com/containerd/nerdctl
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nerdctl
 	optdepends = rootlesskit
 	optdepends = slirp4netns
 	options = !lto
-	source = nerdctl::git+https://github.com/containerd/nerdctl.git#commit=c4bd56b3aa220db037cc6c0a4e0c8cc062f2cc4c
+	source = nerdctl::git+https://github.com/containerd/nerdctl.git#commit=9ec475aeb69209b9b2a3811aee0923e2eafd1644
 	b2sums = SKIP
 
 pkgname = nerdctl
