@@ -74,12 +74,12 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=100
+_minor=101
 _srcname=linux-${_major}
-_clr=${_major}.99-50
+_clr=${_major}.100-51
 pkgbase=linux-clear-lts2020
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2020'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2020"
@@ -353,7 +353,7 @@ done
 
 sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
             'SKIP'
-            '335d5d53d49c6f9f13148bd3d50b53747eb8e239df379c46872110182f7d19bd'
+            '41db57d993915e5f48b15358f9f022c749cb7a6f4814c6cb81af43e1eb89ad36'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
