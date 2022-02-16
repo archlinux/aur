@@ -157,6 +157,8 @@ elif [ "$1" = "off-kill" ]; then
     process_kill
     unload_modules
     turn_off
+elif [ "$1" = "off-boot" ]; then
+    turn_off
 elif [ "$1" = "status" ]; then
     pci_status
 elif [ "$1" = "processes" ]; then
@@ -164,5 +166,5 @@ elif [ "$1" = "processes" ]; then
 elif [ "$1" = "kill" ]; then
     process_kill "confirm"
 else
-    echo "Usage: $0 [start|on|off|off-kill|status|processes|kill]"
+    echo "Usage: $0 [start|on|off|off-kill|off-boot|status|processes|kill]"
 fi

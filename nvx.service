@@ -3,7 +3,7 @@ Description="Turn off gpu during boot."
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/nvx off
+ExecStart=/usr/bin/nvx off-boot
 
 [Install]
 WantedBy=multi-user.target

@@ -21,6 +21,7 @@ resources when the last call ends.
 -   `nvx on` - Turn on the gpu and load the nvidia modules.
 -   `nvx off` - Turn off the gpu and unload the nvidia modules. This command may hang if there are programs using it.
 -   `nvx off-kill` - Kill processes using the gpu and turn it off (may still hang).
+-   `nvx off-boot` - Only turn off the gpu since the nvidia modules are blacklisted.
 -   `nvx status` - Print **on** or **off** to indicate the current gpu status.
 -   `nvx processes` - Print all processes using the gpu. In case `nvx off` hangs, you can list the processes and stop
     them manually, after that, the `nvx off` will complete
