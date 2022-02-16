@@ -1,0 +1,11 @@
+pkgbase = vim-rooter-git
+	pkgdesc = Changes Vim working directory to project root.
+	pkgver = r123.0415be8
+	pkgrel = 1
+	url = https://github.com/airblade/vim-rooter
+	arch = any
+	license = MIT
+	source = git+https://github.com/airblade/vim-rooter.git
+	md5sums = SKIP
+
+pkgname = vim-rooter-git
