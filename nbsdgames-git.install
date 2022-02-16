@@ -1,6 +1,5 @@
 post_install() {
     cat usr/share/doc/nbsdgames/score.txt
-    echo "You may create empty files {pp,jw,fsh,mnch,mt}_scores in this directory."
 }
 
 post_upgrade() {
@@ -8,6 +7,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-    cat usr/share/doc/nbsdgames/score.txt
+    head -n1 usr/share/doc/nbsdgames/score.txt
     echo "You may wish to delete this directory if it exists."
 }

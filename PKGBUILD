@@ -2,7 +2,7 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=4.1.r0.g0129cb4_score_patch
+pkgver=5.r1.g556b6a8_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
@@ -17,15 +17,26 @@ source=("git+https://github.com/abakh/nbsdgames.git")
 md5sums=('SKIP')
 
 
-prepare() {
+scores_dir() {
     # Configure games to store scores in ~/.local/games/nbsdgames
-    # (more appropriate for single-user systems) and save a message about it
-    savedir="$HOME/.local/games/${pkgname%%-git}"
+    # (more appropriate for single-user systems)
+    echo "$HOME/.local/games/${pkgname%%-git}"
+}
 
-    sed -i "s|/usr/games|${savedir}|" "${pkgname%%-git}/config.h"
+make_opts() {
+    echo GAMES_DIR="$pkgdir/usr/bin" MAN_DIR="$pkgdir/usr/share/man/man6" \
+        SCORES_DIR="$(scores_dir)"
+}
 
+prepare() {
+    # Fix bug in makefile
+    sed -i 's|\$(ls man)|$$(ls man)|' "${pkgname%%-git}/Makefile"
+
+    # Save a message about the changes score directory.
     cat > score.txt <<EOF
-${pkgname%%-git} was compiled to store scores in $savedir.
+${pkgname%%-git} was compiled to store scores in $(scores_dir).
+You may create the following empty files in this directory:
+$(cd ${pkgname%%-git}; make -E 'print: ; @echo $(SCORE_FILES)' print)
 EOF
 }
 
@@ -37,13 +48,9 @@ pkgver() {
 }
 
 
-build() {
-    cd "${pkgname%%-git}"
-    make
-}
-
-
 package() {
+    mkdir -p "$pkgdir/usr/bin"
+    mkdir -p "$pkgdir/usr/share/man/man6"
     mkdir -p "$pkgdir/usr/share/doc/${pkgname%%-git}"
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
 
@@ -53,18 +60,11 @@ package() {
     cp README.md "$pkgdir/usr/share/doc/${pkgname%%-git}"
     cp LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
 
-    # Install games as /usr/bin/nb* to avoid conflicts
-    mkdir -p "$pkgdir/usr/bin"
-    find . -maxdepth 1 -type f -executable | while read f
-    do
-        cp "$f" "$pkgdir/usr/bin/nb$(basename "$f")"
-    done
+    make $(make_opts) nbinstall nbmanpages
+	install -Dt "$pkgdir/usr/share/applications" nbsdgames.desktop
+	install -Dt "$pkgdir/usr/share/pixmaps" nbsdgames.svg
 
-    # Install manpages /usr/share/man/man6/nb*
-    mkdir -p "$pkgdir/usr/share/man/man6"
-    cd man
-    find . -type f | while read f
-    do
-        cp "$f" "$pkgdir/usr/share/man/man6/nb$(basename "$f")"
-    done
+    # Clean up after bugs in makefile
+    rm "$pkgdir"/usr/bin/nbsdgames.{c,desktop,svg}
+    rm "$pkgdir"/usr/bin/nbnbsdgames
 }
