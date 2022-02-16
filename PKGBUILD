@@ -7,14 +7,14 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname='osu-lazer-git'
-pkgver='2022.128.0.r33.8883505eed'
-pkgrel=2
+pkgver='2022.216.0.r2.1f9892802c'
+pkgrel=1
 pkgdesc='An open source, free-to-win rhythm game'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ppy/osu'
 license=('MIT')
-depends=('dotnet-runtime-5.0' 'ffmpeg' 'libgl')
-makedepends=('git' 'dotnet-sdk-5.0')
+depends=('dotnet-runtime-6.0' 'ffmpeg' 'libgl')
+makedepends=('git' 'dotnet-sdk-6.0')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
