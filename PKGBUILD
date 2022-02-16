@@ -8,8 +8,12 @@ url='https://shellcheck.net'
 pkgdesc='Shell script analysis tool (binary release, static)'
 license=(AGPL3)
 arch=(x86_64 armv6h aarch64)
-conflicts=("${pkgname%-bin}")
-provides=("${pkgname%-bin}")
+conflicts=(
+	"shellcheck"
+	"shellcheck-git"
+	"shellcheck-git-static"
+)
+provides=("shellcheck")
 
 source_x86_64=(https://github.com/koalaman/"${pkgname%-bin}"/releases/download/v"$pkgver"/"${pkgname%-bin}"-v"${pkgver}".linux.x86_64.tar.xz)
 source_armv6h=(https://github.com/koalaman/"${pkgname%-bin}"/releases/download/v"$pkgver"/"${pkgname%-bin}"-v"${pkgver}".linux.armv6hf.tar.xz)
