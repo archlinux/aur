@@ -1,27 +1,26 @@
 # Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
 pkgname='wayshot-git'
 _pkgname="wayshot"
-pkgver=1
-pkgrel=2
+pkgver=0.1.0.20.gb0390a5
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/waycrate/wayshot"
 pkgdesc="A screenshot tool for wlroots compositors."
 license=('BSD')
 depends=('slurp')
-makedepends=('rustup' 'make' 'git')
+makedepends=('rustup' 'git')
 conflicts=('wayshot-musl-git')
 source=("$_pkgname::git+https://github.com/waycrate/$_pkgname")
 sha256sums=('SKIP')
 
 build(){
 	cd "$_pkgname"
-	make setup
-	make 
+	cargo build --release
 }
 
 package() {
 	cd "$_pkgname"
-	install -Dm 755 ./bin/wayshot "$pkgdir/usr/bin/wayshot"
+	install -Dm 755 ./target/release/wayshot "$pkgdir/usr/bin/wayshot"
 }
 
 pkgver() {
