@@ -4,7 +4,7 @@
 
 pkgname=php-rdkafka
 _extname=rdkafka
-pkgver=5.0.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="A thin librdkafka binding providing a working PHP 7 / PHP 8 Kafka client"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('php' 'librdkafka')
 source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
-md5sums=('cec8123060a40a05e66aab4caaf8a399')
+md5sums=('9a389ab19ef240a60f4e2a74ff21c610')
 
 build() {
 	cd "$srcdir/$_extname-$pkgver"
