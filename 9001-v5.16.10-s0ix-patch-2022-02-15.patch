@@ -1,11 +1,11 @@
-From a3903aacc11bc0a27f3f33edca33c0c35dd68b74 Mon Sep 17 00:00:00 2001
+From 271de37960d6259111bd40eb85680356f3ec7fec Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Thu, 10 Feb 2022 22:58:04 -0800
-Subject: [PATCH] v5.16.9 s0ix patch 2022-02-10
+Date: Tue, 15 Feb 2022 20:28:14 -0800
+Subject: [PATCH] v5.16.10 s0ix patch 2022-02-15
 
 Squashed commit of the following:
 
-commit 5072e925ecd051082828c9cf0fae8b4c3c1909b0
+commit cf8459de2be18aba3f364e5bff52ce379cd3c5b8
 Author: Rajib Mahapatra <rajib.mahapatra@amd.com>
 Date:   Thu Feb 10 19:05:07 2022 +0530
 
@@ -28,7 +28,7 @@ Date:   Thu Feb 10 19:05:07 2022 +0530
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit f2ee879d8fd39238dc87a3d29a8d95e841318d5c
+commit a8d24bdbc8d1d5a6f6b4f04cbb4ff3d3b7e7f3ec
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Jan 28 14:35:03 2022 -0600
 
@@ -81,43 +81,7 @@ Date:   Fri Jan 28 14:35:03 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Tested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
 
-commit 332d7b5847aa09dc72d5fd03943f34ab65856096
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Tue Jan 25 21:37:57 2022 -0600
-
-    drm/amd: Only run s3 or s0ix if system is configured properly
-
-    This will cause misconfigured systems to not run the GPU suspend
-    routines.
-
-    * In APUs that are properly configured system will go into s2idle.
-    * In APUs that are intended to be S3 but user selects
-      s2idle the GPU will stay fully powered for the suspend.
-    * In APUs that are intended to be s2idle and system misconfigured
-      the GPU will stay fully powered for the suspend.
-    * In systems that are intended to be s2idle, but AMD dGPU is also
-      present, the dGPU will go through S3
-
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit 6d6d94aa4f448637109c67bfc2364760f869e2a9
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Tue Jan 25 21:35:09 2022 -0600
-
-    drm/amd: add support to check whether the system is set to s3
-
-    This will be used to help make decisions on what to do in
-    misconfigured systems.
-
-    v2: squash in semicolon fix from Stephen Rothwell
-
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit a3ed765dde1014b1004f4dc5e2b3220ebfff114b
+commit 24c381344822ce379fa17a89097253b7e37cf5f9
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 11 14:00:26 2022 -0600
 
@@ -139,7 +103,7 @@ Date:   Tue Jan 11 14:00:26 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit abe5d57dd69623a89b33a5bba1d1b18109d74d68
+commit f2ab65214054f868a16e7dbe989262f633d3cd88
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jan 20 11:44:39 2022 -0600
 
@@ -157,7 +121,7 @@ Date:   Thu Jan 20 11:44:39 2022 -0600
     Link: https://patchwork.freedesktop.org/patch/469993/
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit ac0719577ae975edc13f228735017b534a0c4b1c
+commit 2d0b191784928ecdd8740f1930875248b7f06574
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Mon Jan 17 12:26:43 2022 +0100
 
@@ -171,7 +135,7 @@ Date:   Mon Jan 17 12:26:43 2022 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Link: https://lore.kernel.org/r/20220117112644.260168-1-hdegoede@redhat.com
 
-commit 0164f441c22e96a2f19652818587e5a884393ca5
+commit deebcfcadd453098074c547ee10cf17dd64b1795
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -190,7 +154,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit b82ac1d1e74da7c123dd24dac0310c889d7013dd
+commit 6c14c1f08993eaed5b881dc46ba859de9046f3d7
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -203,7 +167,7 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit de76df51cd51e56849a1246f6cb7d5ea64101104
+commit d92af0d67a6fd206b598c87bb52ab6d0f1815a27
 Author: Lijo Lazar <lijo.lazar@amd.com>
 Date:   Thu Nov 25 19:45:42 2021 +0800
 
@@ -220,7 +184,7 @@ Date:   Thu Nov 25 19:45:42 2021 +0800
     Reviewed-by: Kevin Yang <kevinyang.wang@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit 7b2cf95dc97a0974289cbbb6bb2c803523a2cdd9
+commit 5a4e2ba710159c2bd5c3879c7b59bd35e8459224
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Fri Sep 24 12:32:06 2021 -0500
 
@@ -234,13 +198,12 @@ Date:   Fri Sep 24 12:32:06 2021 -0500
     Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 ---
  drivers/acpi/x86/s2idle.c                 |  18 ++-
- drivers/gpu/drm/amd/amdgpu/amdgpu.h       |  10 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c  |  37 ++++-
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c   |   8 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu.h       |   8 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c  |  24 ++-
  drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c    |   8 +
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   6 +-
  drivers/platform/x86/amd-pmc.c            | 185 +++++++++++++++++++---
- 7 files changed, 236 insertions(+), 36 deletions(-)
+ 6 files changed, 213 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
 index 1c48358b43ba..374aa2e8203f 100644
@@ -280,7 +243,7 @@ index 1c48358b43ba..374aa2e8203f 100644
  	return 0;
  }
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu.h b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
-index 7d67aec6f4a2..f59121ec2648 100644
+index 7d67aec6f4a2..0a5a5370a200 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu.h
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
 @@ -1406,12 +1406,10 @@ int amdgpu_acpi_smart_shift_update(struct drm_device *dev, enum amdgpu_ss ss_sta
@@ -296,47 +259,32 @@ index 7d67aec6f4a2..f59121ec2648 100644
  static inline void amdgpu_acpi_detect(void) { }
  static inline bool amdgpu_acpi_is_power_shift_control_supported(void) { return false; }
  static inline int amdgpu_acpi_power_shift_control(struct amdgpu_device *adev,
-@@ -1420,6 +1418,14 @@ static inline int amdgpu_acpi_smart_shift_update(struct drm_device *dev,
+@@ -1420,6 +1418,12 @@ static inline int amdgpu_acpi_smart_shift_update(struct drm_device *dev,
  						 enum amdgpu_ss ss_state) { return 0; }
  #endif
  
 +#if defined(CONFIG_ACPI) && defined(CONFIG_SUSPEND)
-+bool amdgpu_acpi_is_s3_active(struct amdgpu_device *adev);
 +bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev);
 +#else
 +static inline bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev) { return false; }
-+static inline bool amdgpu_acpi_is_s3_active(struct amdgpu_device *adev) { return false; }
 +#endif
 +
  int amdgpu_cs_find_mapping(struct amdgpu_cs_parser *parser,
  			   uint64_t addr, struct amdgpu_bo **bo,
  			   struct amdgpu_bo_va_mapping **mapping);
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-index 4811b0faafd9..0e12315fa0cb 100644
+index 4811b0faafd9..b19d40751802 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-@@ -1031,6 +1031,20 @@ void amdgpu_acpi_detect(void)
+@@ -1031,6 +1031,7 @@ void amdgpu_acpi_detect(void)
  	}
  }
  
 +#if IS_ENABLED(CONFIG_SUSPEND)
-+/**
-+ * amdgpu_acpi_is_s3_active
-+ *
-+ * @adev: amdgpu_device_pointer
-+ *
-+ * returns true if supported, false if not.
-+ */
-+bool amdgpu_acpi_is_s3_active(struct amdgpu_device *adev)
-+{
-+	return !(adev->flags & AMD_IS_APU) ||
-+		(pm_suspend_target_state == PM_SUSPEND_MEM);
-+}
-+
  /**
   * amdgpu_acpi_is_s0ix_active
   *
-@@ -1040,11 +1054,24 @@ void amdgpu_acpi_detect(void)
+@@ -1040,11 +1041,24 @@ void amdgpu_acpi_detect(void)
   */
  bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev)
  {
@@ -366,32 +314,6 @@ index 4811b0faafd9..0e12315fa0cb 100644
  }
 +
 +#endif /* CONFIG_SUSPEND */
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index c811161ce9f0..ab3851c26f71 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-@@ -2236,6 +2236,7 @@ static void amdgpu_drv_delayed_reset_work_handler(struct work_struct *work)
- static int amdgpu_pmops_prepare(struct device *dev)
- {
- 	struct drm_device *drm_dev = dev_get_drvdata(dev);
-+	struct amdgpu_device *adev = drm_to_adev(drm_dev);
- 
- 	/* Return a positive number here so
- 	 * DPM_FLAG_SMART_SUSPEND works properly
-@@ -2243,6 +2244,13 @@ static int amdgpu_pmops_prepare(struct device *dev)
- 	if (amdgpu_device_supports_boco(drm_dev))
- 		return pm_runtime_suspended(dev);
- 
-+	/* if we will not support s3 or s2i for the device
-+	 *  then skip suspend
-+	 */
-+	if (!amdgpu_acpi_is_s0ix_active(adev) &&
-+	    !amdgpu_acpi_is_s3_active(adev))
-+		return 1;
-+
- 	return 0;
- }
- 
 diff --git a/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c b/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
 index e8e4749e9c79..f0638db57111 100644
 --- a/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
