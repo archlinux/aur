@@ -2,8 +2,8 @@
 
 pkgname=nhiicc
 epoch=1
-pkgver=20210824.02
-pkgrel=2
+pkgver=20220110
+pkgrel=1
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
@@ -13,11 +13,11 @@ depends=(pcsclite sed openssl)
 optdepends=(
   'lib32-pcsclite: for using card readers with 32-bit driver only'
 )
-source=("https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.$pkgver.U64.gz"
+source=("https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.$pkgver.tar.gz"
         nhiicc.service
         regen-certs.sh)
 # See https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm for MD5 sums
-md5sums=('05b34bb5df19c0b8270ab37416225d78'
+md5sums=('156de24023a454f9bf779e874d83eb77'
          '82b85491957f25f22b43beffca53b9ab'
          'ba0495f8d54384ac95a93f221366049f')
 install=nhiicc.install

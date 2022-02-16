@@ -1,7 +1,7 @@
 pkgbase = nhiicc
 	pkgdesc = 台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)
-	pkgver = 20210824.02
-	pkgrel = 2
+	pkgver = 20220110
+	pkgrel = 1
 	epoch = 1
 	url = https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm
 	install = nhiicc.install
@@ -11,10 +11,10 @@ pkgbase = nhiicc
 	depends = sed
 	depends = openssl
 	optdepends = lib32-pcsclite: for using card readers with 32-bit driver only
-	source = https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.20210824.02.U64.gz
+	source = https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.20220110.tar.gz
 	source = nhiicc.service
 	source = regen-certs.sh
-	md5sums = 05b34bb5df19c0b8270ab37416225d78
+	md5sums = 156de24023a454f9bf779e874d83eb77
 	md5sums = 82b85491957f25f22b43beffca53b9ab
 	md5sums = ba0495f8d54384ac95a93f221366049f
 
