@@ -1,14 +1,14 @@
 # Maintainer: Jonathan Dönszelmann <jonabent@gmail.com>
 pkgname=webdsl-git
 pkgver=r4090.56b29075
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=(x86_64)
 url=""
 license=('Apache License 2.0')
 groups=()
 depends=('java-runtime' 'ant')
-makedepends=('java-environment' 'ant' 'wget' 'autoconf' 'automake' 'maven' 'git')
+makedepends=('java-environment' 'ant' 'wget' 'autoconf' 'automake' 'maven' 'eclipse-ecj')
 optdepends=()
 provides=()
 conflicts=()
