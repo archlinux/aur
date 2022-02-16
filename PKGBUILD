@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1076.4e101c0
+pkgver=r1079.2030684
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
 arch=('x86_64')
@@ -19,23 +19,27 @@ optdepends=(
 )
 provides=('quickmedia' 'qm')
 conflicts=('quickmedia' 'qm')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1076.4e101c0.tar.gz")
-sha512sums=('ff64f17fe3c60c4e6619a1d17dfef7561c1e55b068f31177ba2e6bfebeb7088ff1671c2661b6d5765f699d6b96fd017bfb6a6a82234b68bb21e6ef753c84fd14')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1079.2030684.tar.gz")
+sha512sums=('465cb54a4d23ff3c91aea5c39fc46c354093d96d728d2ab22f94ae9cdc7d4794ff7ae7b78e7da5a154ac41482935035fd3a4c7dfc5819feeedfc4fd0dd766b23')
 
 build() {
   cd "$srcdir"
+  sibs build --release video_player
   sibs build --release
 }
 
 package() {
   cd "$srcdir"
+  install -Dm755 "video_player/sibs-build/$(sibs platform)/release/quickmedia-video-player" "/usr/bin/quickmedia-video-player"
   install -Dm755 "sibs-build/$(sibs platform)/release/quickmedia" "$pkgdir/usr/bin/quickmedia"
   ln -sf "/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
   install -Dm644 boards.json "$pkgdir/usr/share/quickmedia/boards.json"
   install -Dm644 input.conf "$pkgdir/usr/share/quickmedia/input.conf"
+
   for file in images/* icons/* shaders/* themes/*; do
     install -Dm644 "$file" "$pkgdir/usr/share/quickmedia/$file"
   done
+
   for file in launcher/*; do
     filename=$(basename "$file")
     install -Dm644 "$file" "$pkgdir/usr/share/applications/$filename"
