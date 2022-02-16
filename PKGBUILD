@@ -1,40 +1,48 @@
 # Maintainer: Thaodan <AUR+me@thaodan.de>
 pkgname=scratchbox2
-pkgver=2.3.90+git31.r26.2b57227
+pkgver=2.3.90+git50
 pkgrel=1
-pkgdesc="https://git.sailfishos.org/mer-core/scratchbox2"
+pkgdesc=""
 arch=('x86_64' 'i686')
-url="https://git.sailfishos.org/mer-core/scratchbox2"
+url="https://github.com/sailfishos/scratchbox2"
 license=('GPL')
-depends=('perl' 'lib32-glibc' 'sh' 'lua' 'lib32-lua')
+depends=('perl' 'lib32-glibc' 'sh' 'lua' 'lib32-lua' 'lua-posix')
 optdepends=('qemu-arch-extra: arm and aarch64 support')
-source=($pkgname::git+https://git.sailfishos.org/thaodan/scratchbox2#branch=jb52528)
+#_branch=master
+_vcs_str="${_branch+#branch=}${_branch:-#tag=$pkgver}"
+_src_subdir=$pkgname${_branch+-$_branch}
+source=(
+  $_src_subdir::git+https://github.com/sailfishos/scratchbox2$_vcs_str
+)
 md5sums=('SKIP')
+
 makedepends=(
   'git'
   'lib32-gcc-libs'
 )
 
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+if [ $_branch ] ; then
+  pkgver() {
+    cd "$_src_subdir"
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  }
+fi
 
 prepare() {
-  cd $pkgname/$pkgname
+  cd $_src_subdir
   ln -sf /usr/share/autoconf/build-aux/config.guess .
   ln -sf /usr/share/autoconf/build-aux/config.sub .
 }
 build() {
-  cd $pkgname/$pkgname
+  cd $_src_subdir
   ./autogen.sh
   ./configure --prefix=/usr
-  make
+  make V=1 -j32
 }
 
 package() {
-  cd $pkgname/$pkgname
+  cd $_src_subdir
   make prefix="$pkgdir/usr" install
 
   ln -s obs-rpm-build $pkgdir/usr/share/$pkgname/modes/sdk-build
