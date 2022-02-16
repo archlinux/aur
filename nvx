@@ -2,17 +2,22 @@
 
 ### utility functions ###
 
-# Print json strings contaning pci bus data and their nvidia display devices.
+# Print JSON strings contaning PCI bus data and their nvidia display devices.
 function _pci_devices {
-    sudo lshw -json |
+    lshw \
+        -disable cpuid -disable cpuinfo -disable device-tree -disable dmi -disable ide -disable isapnp \
+        -disable memory -disable network -disable pcmcia -disable scsi -disable spd -disable usb \
+        -class bridge -class display \
+        -json \
+        2>/dev/null |
         jq -c '
-        .. |
-        objects |
-        select(.id | strings | contains("pci")) |
-        select(.children) |
-        .children |= (map(select(.id=="display")) | map(select(.vendor | strings | contains("NVIDIA")))) |
-        select(.children | length > 0)
-    '
+            .. |
+            objects |
+            select(.id | strings | contains("pci")) |
+            select(.children) |
+            .children |= (map(select(.class=="display")) | map(select(.vendor | contains("NVIDIA")))) |
+            select(.children | length > 0)
+        '
 }
 
 # Print which processes are accessing nvidia device files.
