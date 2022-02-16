@@ -2,7 +2,7 @@
 
 pkgname=o
 pkgver=2.48.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
@@ -56,10 +56,11 @@ build() {
 package() {
   cd $pkgname
   install -Dm755 o "$pkgdir/usr/bin/o"
-  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
+  ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   DESTDIR="$pkgdir" make gui-install
+  ln -sf /usr/bin/ko "$pkgdir/usr/bin/lo"
 }
