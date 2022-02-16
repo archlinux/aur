@@ -22,7 +22,7 @@ function _pci_devices {
 
 # Print which processes are accessing nvidia device files.
 function _process_list {
-    sudo lsof /dev/nvidia* | awk '{ if (NR>1) pids[$1" "$2]++ } END { for (pid in pids) { print pid } }'
+    lsof /dev/nvidia* 2>/dev/null | awk '{ if (NR>1) pids[$1" "$2]++ } END { for (pid in pids) { print pid } }'
 }
 
 ### setup functions ###
