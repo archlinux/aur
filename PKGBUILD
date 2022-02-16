@@ -12,13 +12,13 @@ _rel=1
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 #pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('cargo' 'git' 'go' 'npm')
+makedepends=('cargo' 'git' 'go' 'npm' 'libxcrypt-compat')
 provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 options=('!lto')

@@ -1,7 +1,7 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (beta channel)
 	pkgver = 2022.1.beta1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mullvad.net
 	install = mullvad-vpn.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = mullvad-vpn-beta
 	makedepends = git
 	makedepends = go
 	makedepends = npm
+	makedepends = libxcrypt-compat
 	depends = iputils
 	depends = libnotify
 	depends = libappindicator-gtk3
