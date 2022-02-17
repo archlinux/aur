@@ -2,14 +2,14 @@
 
 pkgname=ytcast-bin
 _pkgname=${pkgname%-bin}
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Cast YouTube videos to your smart TV from command-line'
 arch=('x86_64')
 url='https://github.com/MarcoLucidi01/ytcast'
 license=('MIT')
 source_x86_64=("$_pkgname-v$pkgver.tar.gz::$url/releases/download/v$pkgver/$_pkgname-v$pkgver-linux-amd64.tar.gz")
-sha256sums_x86_64=('772be1860df3fb22b22737acf176aa62c9f9616307397498bf8ae1a382ea7ee0')
+sha256sums_x86_64=('c69c65c7ebcdf695e2e41d11a4a65bf25ee8ce72fa94f9438553d0732217f76b')
 provides=("$_pkgname")
 
 package() {

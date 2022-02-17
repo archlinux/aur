@@ -1,12 +1,12 @@
 pkgbase = ytcast-bin
 	pkgdesc = Cast YouTube videos to your smart TV from command-line
-	pkgver = 1.0.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/MarcoLucidi01/ytcast
 	arch = x86_64
 	license = MIT
 	provides = ytcast
-	source_x86_64 = ytcast-v1.0.0.tar.gz::https://github.com/MarcoLucidi01/ytcast/releases/download/v1.0.0/ytcast-v1.0.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = 772be1860df3fb22b22737acf176aa62c9f9616307397498bf8ae1a382ea7ee0
+	source_x86_64 = ytcast-v1.3.0.tar.gz::https://github.com/MarcoLucidi01/ytcast/releases/download/v1.3.0/ytcast-v1.3.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = c69c65c7ebcdf695e2e41d11a4a65bf25ee8ce72fa94f9438553d0732217f76b
 
 pkgname = ytcast-bin
