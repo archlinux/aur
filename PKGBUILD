@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-    ( curl -Lo version.zip 'https://nightly.link/thebiblelover7/psst-git-bin/workflows/main/main/psst-gui.zip'
+    ( curl -Lo version.zip 'https://nightly.link/thebiblelover7/psst-git-bin/workflows/main/main/version.zip'
     unzip -p version.zip | cat
     )
 }
