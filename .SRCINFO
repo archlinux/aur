@@ -17,7 +17,7 @@ pkgbase = cryptowatch-desktop-bin
 	source = cryptowatch_desktop::https://cryptowat.ch/desktop/download/linux/0.5.0
 	source = cryptowatch.desktop
 	source = cryptowatch.png
-	sha256sums = 9b0cfeec9463b3273a46a995ef77f42dfd4a81027d37e1d20e8b10079a762553
+	sha256sums = 8c18788228e87e89d115275907c06f1cb5cc81b7b6b9e50314eda9f5cbd4b182
 	sha256sums = 542ab64620e04481b75a3f787643deab91887ceffe7423c933dc18db8a5ade8a
 	sha256sums = e4e2a8c671013a37bdc888680ce2159f2e4222746502a9b0ddc73ff199be00a7
 
