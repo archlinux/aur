@@ -1,6 +1,6 @@
 pkgbase = gnosis-safe-multisig-bin
 	pkgdesc = Gnosis Safe Multisig Desktop (Beta) for Linux, a Ethereum Multisig Wallet
-	pkgver = 3.8.4
+	pkgver = 3.17.2
 	pkgrel = 1
 	url = https://github.com/gnosis/safe-react/releases
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gnosis-safe-multisig-bin
 	depends = gtk3
 	depends = nss
 	depends = libxss
-	source = https://github.com/gnosis/safe-react/releases/download/v3.8.4/safe-react_3.8.4_amd64.deb
-	sha256sums = 699a8f219c7c84751e2818139916bf9792d6009b665730ed311d5f4d0b86e7d1
+	source = https://github.com/gnosis/safe-react/releases/download/v3.17.2-desktop/safe-react_3.17.2_amd64.deb
+	sha256sums = 65d7bb1fe2e0ce9b09ded2a7bfb67f16e4b780b99f8f9a337440639cd8069d5a
 
 pkgname = gnosis-safe-multisig-bin
