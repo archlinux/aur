@@ -2,7 +2,8 @@
 
 pkgname=o3de-nightly-bin
 # <Stable release>.<Build date>
-pkgver=2111.2.20220205
+_stablever=2111.2
+pkgver=${_stablever}_20220217
 _engver=0.0.0.0
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine (Nightly build)'
@@ -29,6 +30,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+    # Look at modified date of gpg signature to determine build date
+    echo ${_stablever}_$(date -r ${srcdir}/_gpgbuilder "+%Y%m%d")
+}
 
 prepare() {
     echo -n "    Verifying checksum for O3DE_latest.deb ..."
