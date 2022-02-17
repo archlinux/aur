@@ -1,5 +1,5 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index dc52210f..2cf1ae1c 100755
+index bfe8dd97..794eaeaa 100755
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
 @@ -62,7 +62,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -19,7 +19,7 @@ index dc52210f..2cf1ae1c 100755
  endif
  
  
-@@ -170,11 +169,12 @@ else
+@@ -170,7 +169,8 @@ else
  endif
  
  CROSSLDFLAGS   += -Wl,--file-alignment,4096
@@ -29,11 +29,6 @@ index dc52210f..2cf1ae1c 100755
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
--COMMON_FLAGS32 := -mstackrealign
-+COMMON_FLAGS32 := -mstackrealign -mno-avx
- CARGO_BUILD_ARG := --release
- 
- ##
 @@ -359,8 +359,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
@@ -235,10 +230,10 @@ index 0e18df97..2150cba8 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index bc407604..c3a7dbeb 100644
+index 4d72ac06..7b1b13b9 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
-@@ -125,8 +125,12 @@ $(2)_LIBFLAGS$(3) = $$(foreach d,$$($(2)_DEPS$(3)),-L$$($$(d)_LIBDIR$(3))) \
+@@ -119,8 +119,12 @@ $(2)_LIBFLAGS$(3) = $$(foreach d,$$($(2)_DEPS$(3)),-L$$($$(d)_LIBDIR$(3))) \
  # native version doesn't exist.
  
  $(2)_ENV$(3) = \
@@ -251,7 +246,7 @@ index bc407604..c3a7dbeb 100644
      CCACHE_BASEDIR="$$(CCACHE_BASEDIR)" \
      STRIP="$$(STRIP)" \
      AR="$$(TARGET_$(4)$(3))-ar" \
-@@ -140,7 +144,7 @@ $(2)_ENV$(3) = \
+@@ -134,7 +138,7 @@ $(2)_ENV$(3) = \
      PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_BINDIR$(3))),,:):$$(SRC)/glslang/bin:$$$$PATH" \
      LD_LIBRARY_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))),,:)$$$$LD_LIBRARY_PATH" \
      PKG_CONFIG_PATH="$$(call list-join,:,$$(foreach d,$$($(2)_DEPS$(3)),$$($$(d)_LIBDIR$(3))/pkgconfig))" \
@@ -260,7 +255,7 @@ index bc407604..c3a7dbeb 100644
      CFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3))" \
      CPPFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CPPFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3))" \
      CXXFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CXXFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3)) -std=c++17" \
-@@ -164,7 +168,7 @@ $(2)_ENV$(3) += \
+@@ -158,7 +162,7 @@ $(2)_ENV$(3) += \
      CROSSCPPFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CPPFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3))" \
      CROSSCXXFLAGS="$$($(2)_INCFLAGS$(3)) $$($(2)_CXXFLAGS) $$(COMMON_FLAGS) $$(COMMON_FLAGS$(3)) -std=c++17" \
      CROSSLDFLAGS="$$($(2)_LIBFLAGS$(3)) $$($(2)_LDFLAGS$(3)) $$($(2)_LDFLAGS) $$(CROSSLDFLAGS)" \
@@ -269,7 +264,7 @@ index bc407604..c3a7dbeb 100644
  
  endif
  
-@@ -177,14 +181,14 @@ else
+@@ -171,14 +175,14 @@ else
  install-strip = objcopy --file-alignment=4096 --strip-debug $(1) $(2)/$(notdir $(1)) && rm -f $(2)/$(notdir $(1)).debug
  endif
  
