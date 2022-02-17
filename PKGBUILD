@@ -1,4 +1,4 @@
-# Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
+# Maintainer: Buf <bot@buf.build>
 # Contributor: Alexander Menzhinsky <amenzhinsky@gmail.com>
 pkgname=buf
 pkgver=1.0.0rc12
