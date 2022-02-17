@@ -28,7 +28,7 @@ package() {
 
   # PREFIX         - where we will install built files to
   # INSTALL_PREFIX - where files on the target system will be installed to
-  # DIR_SCRIPT     - modifed as of move fron /bin to /usr/bin
+  # DIR_SCRIPT     - modified as of move fron /bin to /usr/bin
   make PREFIX="$pkgdir" INSTALL_PREFIX= DIR_SCRIPT=usr/bin install-systemd
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
