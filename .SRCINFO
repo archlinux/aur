@@ -1,7 +1,7 @@
 pkgbase = obs-time-warp-scan
 	pkgdesc = Time Warp Scan filter for OBS Studio
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/time-warp-scan.1167/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = obs-time-warp-scan
 	makedepends = cmake
 	makedepends = git
 	makedepends = libxcomposite
-	depends = obs-studio>=27.0.0
+	makedepends = ffmpeg
+	depends = obs-studio>=27.2.0
 	source = obs-time-warp-scan::git+https://github.com/exeldro/obs-time-warp-scan#commit=630637ea3a5768e99dd43c772fb0e6766406717b
-	source = obs-studio-27.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.0.tar.gz
+	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
 	sha256sums = SKIP
-	sha256sums = c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e
+	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
 
 pkgname = obs-time-warp-scan
