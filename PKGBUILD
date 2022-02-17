@@ -2,7 +2,7 @@
 
 pkgbase='sensu-go'
 pkgname=('sensu-go-agent' 'sensu-go-backend' 'sensu-go-cli')
-pkgver=6.6.5
+pkgver=6.6.6
 pkgrel=1
 arch=('x86_64')
 url='https://sensu.io'
@@ -16,7 +16,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/sensu/sensu-go/archive/
         "${pkgbase}-backend-${pkgver%.*}.yml.example::https://docs.sensu.io/sensu-go/${pkgver%.*}/files/backend.yml"
         "${pkgbase/-go/}.sysusers"
         "${pkgbase/-go/}.tmpfiles")
-sha256sums=('09f167c5596e651f90cfc50f1c9c0fe0ac68875aeff6bf076b6108f12a102bd1'
+sha256sums=('b82db6a31818cdcfcbe8cdedcb3177425a61b07e10dd2cfae29fe9261ce9a6b8'
             '2e512118a12f6e716c9279efd7d48eaa4e5e927a8a80444868808f34223e3c99'
             '57c4e7835da2d58186e8e36518dc9e0b7cee93bd018619ec2a7210bf212d0d27'
             'caa84541efca9c58a82aeb567cf2adb48fb5b4c252e41e62d41b209862169572'
