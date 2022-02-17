@@ -2,7 +2,7 @@
 
 pkgname=dosbox-x-sdl2-git
 pkgver=0.83.22.r22.g899f7e620
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
 arch=(i686 x86_64)
@@ -27,7 +27,9 @@ build() {
   export CFLAGS=${CFLAGS/-Werror=format-security/}
   export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
   ./autogen.sh
-  ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  # until bug https://github.com/joncampbell123/dosbox-x/issues/3283
+  # is fixed, disabling avcodec support
+  ./configure --enable-core-inline --enable-debug --disable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
 }
 
