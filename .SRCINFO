@@ -1,11 +1,11 @@
 pkgbase = pwninit-git
 	pkgdesc = Automate starting binary exploit challenges (git)
-	pkgver = 3.1.0.r1.g139b28b
+	pkgver = 3.2.0.r0.gdc024f3
 	pkgrel = 1
 	url = https://github.com/io12/pwninit
 	arch = x86_64
 	license = MIT
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = openssl
 	depends = xz
