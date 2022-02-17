@@ -3,7 +3,7 @@
 _plug=bestaudiosource
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r37
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?p=1896898'
@@ -19,6 +19,7 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/vapoursynth/bestaudiosource.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
