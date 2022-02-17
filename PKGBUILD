@@ -15,7 +15,7 @@ license=(GPL LGPL)
 makedepends=(git gd lib32-gcc-libs python)
 depends=('linux-api-headers>=4.10' tzdata filesystem)
 optdepends=('gd: for memusagestat')
-options=(!strip staticlibs)
+options=(!strip staticlibs !lto)
 #_commit=067fc32968b601493f4b247a3ac00caeea3f3d61
 #source=(git+https://sourceware.org/git/glibc.git#commit=$_commit
 source=(https://ftp.gnu.org/gnu/glibc/glibc-$pkgver.tar.xz
