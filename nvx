@@ -1,9 +1,9 @@
 #!/bin/bash
 
-### utility functions ###
+### query functions ###
 
 # Print json strings contaning pci bus data and their nvidia display devices.
-function _pci_devices {
+function devices {
     lshw \
         -disable cpuid -disable cpuinfo -disable device-tree -disable dmi -disable ide -disable isapnp \
         -disable memory -disable network -disable pcmcia -disable scsi -disable spd -disable usb \
@@ -20,29 +20,36 @@ function _pci_devices {
         '
 }
 
+# Print "on" or "off" depending on whether the gpu is enabled or not.
+function status {
+    [ -n "$(devices)" ] && echo "on" || echo "off"
+}
+
 # Print which processes are accessing nvidia device files.
-function _process_list {
-    lsof /dev/nvidia* 2>/dev/null | awk '{ if (NR>1) pids[$1" "$2]++ } END { for (pid in pids) { print pid } }'
+function ps_nvidia {
+    lsof /dev/nvidia* 2>/dev/null | awk '{ if (NR>1) pids[$2" "$1]++ } END { for (pid in pids) { print pid } }'
+}
+
+# Print which processes are a nvx start instance.
+function ps_nvx {
+    PS="$(ps aux)"
+    # sleep 1
+    echo "$PS" | awk '/nvx start/ { cmd=""; for (i = 5 ; i <= NF ; i++) cmd = cmd " " $i; print $0 }'
 }
 
 ### setup functions ###
 
-# Print "on" or "off" depending on whether the gpu is enabled or not.
-function pci_status {
-    [ -n "$(_pci_devices)" ] && echo "on" || echo "off"
-}
-
 # Kill processes that are accessing nvidia device files.
-function process_kill {
+function ps_nvidia_kill {
     echo "# kill processes"
-    PROCESSES=$(_process_list)
+    PROCESSES=$(ps_nvidia)
     if [ -z "$PROCESSES" ]; then
         echo "-- no processes found"
     fi
     IFS=$'\n'
     for process in $PROCESSES; do
-        NAME=$(cut -d' ' -f1 <<<"$process")
-        PID=$(cut -d' ' -f2 <<<"$process")
+        NAME=$(cut -d' ' -f2 <<<"$process")
+        PID=$(cut -d' ' -f1 <<<"$process")
         echo "-- kill process $NAME -> $PID"
         kill $PID
     done
@@ -54,7 +61,7 @@ function process_kill {
 function turn_off {
     echo "# turn off"
     IFS=$'\n'
-    for pci in $(_pci_devices); do
+    for pci in $(devices); do
         PCI_NAME=$(echo $pci | jq '.description + " - " + .product')
         PCI_BUS=$(echo $pci | jq --raw-output '.businfo[4:]')
         echo "-- pci $PCI_NAME -> $PCI_BUS"
@@ -76,7 +83,7 @@ function turn_on {
     echo "-- pci rescan"
     sudo tee /sys/bus/pci/rescan <<<1 >/dev/null
     IFS=$'\n'
-    for pci in $(_pci_devices); do
+    for pci in $(devices); do
         PCI_NAME=$(echo $pci | jq '.description + " - " + .product')
         PCI_BUS=$(echo $pci | jq --raw-output '.businfo[4:]')
         echo "-- pci $PCI_NAME -> $PCI_BUS"
@@ -114,57 +121,116 @@ function load_modules {
 
 ### execution functions ###
 
+LOCK=/tmp/nvx.lock
+
+# Check if there are any other nvx start instances running and start the gpu if not.
 function start {
-    if [ ! -f /tmp/nvx.open ]; then
-        touch /tmp/nvx.open
-    fi
-    OPEN=$(cat /tmp/nvx.open)
-    echo $((++OPEN)) >/tmp/nvx.open
-    if [ $OPEN == 1 ]; then
+    exec 3>"$LOCK"
+    flock -x 3
+    # TODO investigate
+    # when ps_nvx is piped to wc -l directly, it counts one extra line because a subprocess is spawn.
+    # I do not know where that process come from. I found out that does not happen if I write it to a file.
+    ps_nvx >"$LOCK"
+    PS=$(cat "$LOCK" | wc -l)
+    if [ "$PS" -le 1 ]; then
         turn_on
         load_modules
     fi
+    flock -u 3
 }
 
+# Check if there are any other nvx start instances running and stop the gpu if not.
 function stop {
-    if [ ! -f /tmp/nvx.open ]; then
-        touch /tmp/nvx.open
-    fi
-    OPEN=$(cat /tmp/nvx.open)
-    echo $((--OPEN)) >/tmp/nvx.open
-    if [ $OPEN -lt 1 ]; then
-        rm /tmp/nvx.open
-        process_kill
+    exec 3>"$LOCK"
+    flock -x 3
+    ps_nvx >"$LOCK"
+    PS=$(cat "$LOCK" | wc -l)
+    if [ "$PS" -le 1 ]; then
+        ps_nvidia_kill
         unload_modules
         turn_off
     fi
-
+    flock -u 3
 }
 
-if [ "$1" = "start" ]; then
+case "$1" in
+
+dev) devices | jq ;;
+status) status ;;
+ps) ps_nvidia ;;
+psx) ps_nvx ;;
+#
+kill) ps_nvidia_kill ;;
+off)
+    unload_modules
+    turn_off
+    ;;
+off-boot)
+    turn_off
+    ;;
+off-kill)
+    ps_nvidia_kill
+    unload_modules
+    turn_off
+    ;;
+on)
+    turn_on
+    load_modules
+    ;;
+#
+start)
     shift
     start
     sudo --reset-timestamp
     __NV_PRIME_RENDER_OFFLOAD=1 __VK_LAYER_NV_optimus=NVIDIA_only __GLX_VENDOR_LIBRARY_NAME=nvidia "$@" || true
     stop
-elif [ "$1" = "on" ]; then
-    turn_on
-    load_modules
-elif [ "$1" = "off" ]; then
-    unload_modules
-    turn_off
-elif [ "$1" = "off-kill" ]; then
-    process_kill
-    unload_modules
-    turn_off
-elif [ "$1" = "off-boot" ]; then
-    turn_off
-elif [ "$1" = "status" ]; then
-    pci_status
-elif [ "$1" = "processes" ]; then
-    _process_list
-elif [ "$1" = "kill" ]; then
-    process_kill "confirm"
-else
-    echo "Usage: $0 [start|on|off|off-kill|off-boot|status|processes|kill]"
-fi
+    ;;
+*)
+    echo "\
+Usage: $0 [start|on|off|off-boot|off-kill|status|ps|psx|kill|dev]
+
+-- automatic gpu management:
+    start [command]
+        Turn on the gpu, load modules if necessary, and run [command].
+        When [command] exits, the gpu is turned off if there are no other 'nvx start' processes.
+        During turn off, processes using the gpu not started with 'nvx start' are killed.
+
+-- manual gpu management
+    on
+        Turn on the gpu and load modules.
+        If the gpu is already started, it tries to turn on again it and reload all modules.
+            Effectively, it does nothing.
+
+    off
+        Unload modules and turn off the gpu.
+        If the gpu is already off, it tries to turn off again it and unload all modules.
+            Effectively, it does nothing.
+        If there are processes ugin the gpu, the turn off process might hang indefinitely.
+            Use 'nvx ps' to check with processes are running to finish them.
+            'nvx kill' can be used as well, but it might not be able to kill all processes.
+
+    off-boot
+        Same as 'off', but it does not unload modules.
+
+    off-kill
+        Same as 'off', but it also attempts to kill processes using the gpu.
+
+    status
+        Print the status of the gpu.
+
+    ps
+        Print the processes using the gpu.
+
+    psx
+        Print 'nvx start' processes.
+
+    kill
+        Attempts to kill all processes using the gpu.
+        These are the same processes reported by 'nvx ps'.
+
+    dev
+        Print the pci display devices that contain nvidia cards.
+        Only works if the gpu is on.
+    "
+    ;;
+esac
