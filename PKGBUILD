@@ -4,7 +4,7 @@ pkgname=tauon-music-box
 _pkgname=tauonmb
 _gitname=TauonMusicBox
 pkgver=7.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern streamlined music player"
 arch=('any')
 url="https://tauonmusicbox.rocks"
@@ -65,10 +65,8 @@ build() {
 package() {
     cd "$_gitname-$pkgver"
     install -Dm755 tauon.py -t "$pkgdir/opt/$pkgname"
-    install -d "$pkgdir/usr/bin"
-    ln -s "/opt/$pkgname/tauon.py" "$pkgdir/usr/bin/$_pkgname"
- 
     install -Dm644 input.txt -t "$pkgdir/opt/$pkgname"
+    
     cp -r  assets templates theme t_modules lib "$pkgdir/opt/$pkgname"
  
     for t in de es fr_FR hu id ja_JP nb_NO pt pt_BR pt_PT ru sv zh_CN; do
