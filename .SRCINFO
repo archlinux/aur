@@ -1,11 +1,11 @@
 pkgbase = openseeface-gd
 	pkgdesc = Renderer for OpenSeeFace data made with Godot 3.4
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/you-win/openseeface-gd
 	arch = x86_64
 	license = MIT
 	source = openseeface-gd-0.8.1.zip::https://github.com/you-win/openseeface-gd/releases/download/0.8.1/openseeface-gd_0.8.1_linux.zip
-	sha256sums = afc23d5cbf74b5fc1d62d29017839c16f56da31c1f01712aa896ba06fced6654
+	sha256sums = d98668164a0c12aa534500200250ba5f9adebe1d1674e2be896dcda6c9c28970
 
 pkgname = openseeface-gd
