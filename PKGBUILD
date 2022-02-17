@@ -12,14 +12,14 @@
 
 pkgname=mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, stripped down git version"
-pkgver=22.0.0_devel.148113.f7e63ec5d87
+pkgver=22.1.0_devel.150239.bc638025964
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto' 'libxml2' 'libx11'  'libvdpau' 'libva' 'elfutils' 'libxrandr'
-              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-minimal-git' 'libdrm' 'libclc')
+              'ocl-icd' 'wayland-protocols' 'meson' 'ninja' 'glslang' 'llvm-minimal-git' 'libdrm')
 # In order to keep the package simple and ease troubleshooting only use one llvm implementation
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver' 'opencl-driver')
+provides=('mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'vulkan-swrast' 'vulkan-driver' 'opengl-driver')
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver'  'vulkan-swrast' 'mesa-vdpau')
 # mixing components from different mesa versions is a bad idea, conflict with everything unique provided by extra/mesa
 url="https://www.mesa3d.org"
@@ -28,9 +28,11 @@ source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
 )
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+)
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
+)
 
 # ninja grabs all available cores and leaves almost nothing for other processes.
 # this package uses the environment variable NINJAFLAGS to allow the user to change this behaviour
@@ -82,7 +84,7 @@ build () {
        -D lmsensors=enabled \
        -D osmesa=false \
        -D shared-glapi=enabled \
-       -D gallium-opencl=icd \
+       -D gallium-opencl=disabled \
        -D valgrind=disabled \
        -D vulkan-layers=device-select,overlay \
        -D tools=[] \
@@ -96,7 +98,7 @@ build () {
 
 package() {
     depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
-                        'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git')
+                        'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'vulkan-icd-loader' 'zstd' 'llvm-libs-minimal-git')
 
     DESTDIR="${pkgdir}" ninja $NINJAFLAGS -C _build install
 
