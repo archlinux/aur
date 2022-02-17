@@ -1,7 +1,7 @@
 pkgbase = restic-automatic-backup-scheduler
 	pkgdesc = Automatic backups using restic + systemd timers with Backblaze B2 storage backend.
 	pkgver = 7.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/erikw/restic-automatic-backup-scheduler
 	install = restic-automatic-backup-scheduler.install
 	arch = any

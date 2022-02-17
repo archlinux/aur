@@ -3,7 +3,7 @@
 
 pkgname=restic-automatic-backup-scheduler
 pkgver=7.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatic backups using restic + systemd timers with Backblaze B2 storage backend."
 arch=('any')
 url="https://github.com/erikw/$pkgname"
@@ -21,11 +21,15 @@ backup+=('etc/restic/b2_env.sh' 'etc/restic/b2_pw.txt' 'etc/restic/backup_exclud
 
 package() {
   cd "$pkgname-$pkgver"
-  make PREFIX="$pkgdir" INSTALL_PREFIX= install-systemd
 
-  # We're not allowed to install to /bin, so let's move to /usr/bin
-  mv $pkgdir/bin $pkgdir/usr
-  sed -e "s|$pkgdir/bin/|$pkgdir/usr/bin/|g" -i $pkgdir/etc/restic/* $pkgdir/usr/bin/* $pkgdir/usr/lib/systemd/system/*
+  # We're not allowed to install to /bin; let's move to /usr/bin
+  sed -i -e 's|$INSTALL_PREFIX/bin|$INSTALL_PREFIX/usr/bin|g' bin/* etc/restic/* usr/lib/systemd/system/*
+  mv bin usr/
+
+  # PREFIX         - where we will install built files to
+  # INSTALL_PREFIX - where files on the target system will be installed to
+  # DIR_SCRIPT     - modifed as of move fron /bin to /usr/bin
+  make PREFIX="$pkgdir" INSTALL_PREFIX= DIR_SCRIPT=usr/bin install-systemd
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
