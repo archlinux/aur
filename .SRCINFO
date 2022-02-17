@@ -24,4 +24,4 @@ pkgname = concourse-fly-cli-git
 	conflicts = concourse-fly-bin
 	conflicts = concourse-fly-git
 	conflicts = fly-cli
-	conflicts = concourse-cli-fly
+	conflicts = concourse-fly-cli

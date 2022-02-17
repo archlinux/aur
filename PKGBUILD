@@ -63,7 +63,7 @@ package_concourse-git() {
 package_concourse-fly-cli-git() {
   pkgname=concourse-fly-cli-git
   pkgdesc="A command line interface that runs a build in a container with ATC"
-  conflicts=('concourse-fly' 'concourse-fly-bin' 'concourse-fly-git' 'fly-cli' 'concourse-cli-fly')
+  conflicts=('concourse-fly' 'concourse-fly-bin' 'concourse-fly-git' 'fly-cli' 'concourse-fly-cli')
 
   cd "${pkgbase%-git}"
   install -Dm755 "fly/fly" "${pkgdir}/usr/bin/fly"
