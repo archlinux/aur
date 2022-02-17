@@ -7,7 +7,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=5
+pkgrel=6
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -19,16 +19,22 @@ _libupnpver=1.14
 _libvpxver=1.11
 _protobufver=3.19
 _srtver=1.4.3
-_x264ver=0.163; _libx264ver=163
+_x264ver=0.164; _libx264ver=164
 _x265ver=3.5; _libx265ver=199
 depends=(
   'a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
-  'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
+  'libmatroska' 'taglib' 'libmpcdec' 'faad2' 'libmad'
   'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
   'libarchive' 'qt5-base'
   'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
   'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'wayland-protocols'
 )
+# Manjaro still on 4.4.1 and Arch use ffmpeg4.4
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  depends+=("ffmpeg<5")
+else
+  depends+=("ffmpeg4.4")
+fi
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 # For Manjaro user this feature is disabled
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -52,7 +58,7 @@ makedepends=(
   'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
   'zvbi' 'libass' 'libkate' 'libtiger'
   'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-  'lirc' 'libgoom2' 'projectm' 'chromaprint' 'dav1d'
+  'lirc' 'libgoom2' 'projectm' 'dav1d'
   'aribb24' 'aribb25' 'pcsclite' 'lua51' 'lsb-release'
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
@@ -127,7 +133,6 @@ optdepends=(
   'jack: jack audio server'
   'libsamplerate: audio Resampler'
   'libsoxr: SoX audio Resampler'
-  'chromaprint: Chromaprint audio fingerprinter'
   'lirc: lirc control'
   'libgoom2: Goom visualization'
   'projectm: ProjectM visualisation'
@@ -163,7 +168,7 @@ fi
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
-options=('!emptydirs')
+options=('debug' '!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         update-vlc-plugin-cache.hook
         vlc-3.0.11.1-srt_1.4.2.patch
@@ -227,6 +232,10 @@ build() {
   export LUA_LIBS="$(pkg-config --libs luajit)"
   export LUA_CFLAGS="$(pkg-config --cflags luajit)"
   export RCC=/usr/bin/rcc-qt5
+
+  if [[ $DISTRIB_ID != 'ManjaroLinux' ]]; then
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
+  fi
 
   ./configure \
     --prefix=/usr \
@@ -297,7 +306,7 @@ build() {
     --enable-jack \
     --enable-samplerate \
     --enable-soxr \
-    --enable-chromaprint \
+    --disable-chromaprint \
     --enable-chromecast \
     --enable-qt \
     --enable-skins2 \
@@ -328,6 +337,8 @@ build() {
     --disable-decklink \
     $GLES
 
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
