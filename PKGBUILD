@@ -2,14 +2,14 @@
 _base=islpy
 pkgname=python-${_base}
 pkgdesc="Python wrapper for isl, an integer set library"
-pkgver=2021.1
-pkgrel=4
+pkgver=2022.1
+pkgrel=1
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
-depends=(python-pytools pybind11)   # isl
-makedepends=(python-setuptools git) # barvinok boost
-checkdepends=(python-pytest)        # python-pcpp
+depends=(python-pytools python-pytest)       # isl
+makedepends=(python-setuptools pybind11 git) # barvinok boost
+# checkdepends=()                            # python-pcpp
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
 validpgpkeys=('900A958D9A0ACA58B1468F2471AA298BCA171145') # Andreas Kloeckner
 sha512sums=('SKIP')
