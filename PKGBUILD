@@ -37,7 +37,6 @@ build() {
 package() {
   install -d "$pkgdir/opt/$_pkgbin"
   cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$_pkgbin/"
-  chmod -R +rx "$pkgdir/opt/$_pkgbin"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$_pkgbin/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
