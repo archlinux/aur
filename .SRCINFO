@@ -1,0 +1,26 @@
+pkgbase = python-pysptools
+	pkgdesc = A hyperspectral imaging tools box.
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://pysptools.sourceforge.io/
+	arch = x86_64
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-learn
+	depends = python-spectral
+	depends = python-matplotlib
+	optdepends = python-cvxopt: run FCLS
+	optdepends = jupyter: if you want to use the notebook display functionality
+	optdepends = python-tabulate: use by ml module
+	optdepends = python-pandas: use by ml module
+	optdepends = python-plotnine: use by ml module
+	optdepends = python-lightgbm: use by ml module
+	optdepends = python-xgboost: use by ml module
+	source = https://files.pythonhosted.org/packages/9b/20/cef48129eff2bdcb282279138c09e6f04770a8fdcb3c1bb9a98fe4086d2d/pysptools-0.15.0.tar.gz
+	sha256sums = 923c4e1af97c490d7d9ad86d04fdf8918b63106023493e6a4cf54323e244b05e
+
+pkgname = python-pysptools
