@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -21,7 +21,7 @@ checkdepends=('python-pytest-runner' 'python-vcrpy' 'python-softlayer' 'python-b
               'python-pynamecheap' 'python-zeep' 'python-xmltodict' 'python-beautifulsoup4'
               'python-localzone' 'python-html5lib' 'python-dnspython' 'bind-tools')
 source=("https://github.com/AnalogJ/lexicon/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('4bc26018e0702345e86fa352eddff89358b34e878864e6273e89798cce81c4ef9e4ff06a1298481c8496237bb26d8d7c3286c82aac99117a49faa64ea329c307')
+sha512sums=('1b280709c868d400ddf8194cd15f96d2aed5cdb5c9609a96e2916b369227048167f4a627f8918ec31797ab0f6693190a84684e1fcae16ec48729287fcae9206c')
 
 prepare() {
   cd lexicon-$pkgver
@@ -39,7 +39,7 @@ build() {
 
 check() {
   cd lexicon-$pkgver
-  python setup.py pytest --addopts '--deselect lexicon/tests/providers/test_transip.py --deselect lexicon/tests/providers/test_oci.py'
+  python setup.py pytest --addopts '--deselect lexicon/tests/providers/test_oci.py'
 }
 
 package() {
