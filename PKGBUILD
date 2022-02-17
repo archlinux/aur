@@ -2,15 +2,15 @@
 
 pkgname=d2vwitch-git
 pkgver=v5.2.gb379384
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=173090'
 license=('LGPL2.1' 'ISC')
 depends=('vapoursynth-plugin-d2vsource-git'
-         'libavutil.so'
-         'libavformat.so'
-         'libavcodec.so'
+         'libavcodec.so=58-64'
+         'libavformat.so=58-64'
+         'libavutil.so=56-64'
          'gcc-libs'
          'qt5-base'
          'xdg-utils'
@@ -28,6 +28,7 @@ sha256sums=('SKIP'
             'ae75722403c34d53ea2e55b1b53abdfb02cdb4eaaf4e642e84bee0d26e2ab5d1'
             'c63a756f6e375ef4a6f220fcdde3f4a05f7a101c0c0dc3743ce9207730719bd5'
             )
+options=('debug')
 
 pkgver() {
   cd d2vwitch
@@ -40,6 +41,8 @@ prepare() {
 
 build() {
   cd build
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+
   arch-meson ../d2vwitch \
     --libdir /usr/lib/vapoursynth
 
