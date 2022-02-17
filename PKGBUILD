@@ -2,7 +2,7 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
 pkgver=0.3.7beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookamdcontroller"
@@ -16,6 +16,7 @@ sha256sums=('15f5a8c09a480b058b41009ef67c6f1fb702baa0f3dfe75a5984a5cc94776163')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
+  mv "$pkgdir/bin/" "$pkgdir/usr/"
 
   ln -s /usr/bin/ryzenadj "$pkgdir/usr/share/$pkgname"
 
