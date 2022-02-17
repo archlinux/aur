@@ -3,7 +3,7 @@
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
 pkgver=r128.888581d
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
@@ -25,6 +25,7 @@ pkgver() {
 
 prepare() {
 sed -i '/MODULE_SUPPORTED_DEVICE/d' $srcdir/$_pkgbase/driver/module_interface.c
+sed -i 's#include <stdarg.h>#include <linux/stdarg.h>#g' $srcdir/$_pkgbase/driver/MTAL_LKernelAPI.c
 }
 
 package() {
