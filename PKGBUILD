@@ -3,21 +3,21 @@
 _pluginname=move-transition
 pkgname=obs-$_pluginname
 pkgver=2.5.8
-_obsver=27.0.0
-pkgrel=1
+_obsver=27.2.0
+pkgrel=2
 pkgdesc="Plugin for OBS Studio to move sources to a new position during scene transition"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/move-transition.913/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=a31d239bce78e4629854a9b1019d7f4782abc1df"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
   "SKIP"
-  "c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e"
+  "c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789"
 )
 
 prepare() {
