@@ -1,0 +1,13 @@
+pkgbase = python-pygame-widgets
+	pkgdesc = A module for use with Pygame. Includes fully customisable buttons, textboxes and sliders, as well as the ability to create and run animations on these widgets.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AustL/PygameWidgets
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	conflicts = python-pygame-widgets
+	source = https://files.pythonhosted.org/packages/source/p/pygame-widgets/pygame-widgets-1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = python-pygame-widgets
