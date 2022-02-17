@@ -4,8 +4,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-dynamic-buffering
-pkgver=41.3
-pkgrel=2
+pkgver=41.4
+pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -20,13 +20,13 @@ checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
 provides=(mutter libmutter-9.so)
 conflicts=(mutter)
 groups=(gnome)
-_commit=f51ad2911419ee2ab88b5548581227a57d0fd987  # tags/41.3^0
+_commit=83a34957046c5b6bca609fda4b68c8c5d1276d14  # tags/41.4^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'backports.patch'
         'mr1441.patch')
 
 sha256sums=('SKIP'
-            '650e2d88bad9226be7cde62974b3a39a99d63156d0fe61df6bc54887481a1b51'
+            '4bfebf11fd10d2829977cb3c77491bcb9eaa7779f9fc72cdbf10cb0f56adc813'
             'cf99896763558258f489ff0e9a1e8001f716d63b06366f740e044cc72a71d3e7')
 
 pkgver() {
@@ -38,6 +38,9 @@ prepare() {
   cd "$srcdir/$pkgname"
   patch -p1 < "$srcdir/mr1441.patch"
   patch -p1 < "$srcdir/backports.patch"
+
+  # Make tests run
+  sed -i '/catchsegv/d' meson.build
 }
 
 build() {
