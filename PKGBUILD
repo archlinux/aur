@@ -10,7 +10,7 @@
 
 _electron=electron15
 pkgname=(element-{desktop,web}-greentext)
-pkgver=1.10.3
+pkgver=1.10.4
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(any)
@@ -32,14 +32,14 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-config.json
         element-web.sh
         element-desktop.sh)
-sha256sums=('26d0b28879048eb79f9cb68163dbea42c5ecaf779418d225484d6e0cc67cb671'
+sha256sums=('21036274ff3a2036d07415b193e57dde60b79abda9f2dc8d5594a879c0c5f488'
             'SKIP'
-            '737efb87f0d399d2d63872b463f2b07829093879cb8bc48ca547bb611a74aca4'
+            'b3e4e9cb39ef9fdcdb3b83b842853e2ed52944b3caf68dfc5cd5642ac985eeaa'
             'SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
-            'a3565475dc4ec1365ae2d0d52a000683386618fb49009dccd93ff3b2a0d53576'
+            '0d65ffa85e486a48e8a844fcc8c21b4eaadb28756a74566b22e44f3bdb257e2c'
             'eb422aca8b3dd71282aa432bdf66eaac0272a9ac5a91b332fde5f6fb9e885852'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
             '4c931121009985e7d3f73928c9db88508eedd974a7741e635bb290e3a2cd75db')
