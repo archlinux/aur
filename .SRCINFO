@@ -1,0 +1,15 @@
+pkgbase = daikatana-data-gog
+	pkgdesc = Daikatana data via GOG
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.gog.com/en/game/daikatana
+	arch = any
+	license = custom
+	makedepends = innoextract
+	makedepends = icoutils
+	provides = daikatana-data
+	conflicts = daikatana-data-steam
+	source = setup_daikatana_1.0_(22142).exe::gogdownloader://daikatana/en1installer0
+	sha256sums = 3ba8e369af573a142ea2689d4003f2eb441e9395d484a65f29fcb41ba95e26ec
+
+pkgname = daikatana-data-gog
