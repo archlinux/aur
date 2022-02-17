@@ -1,0 +1,23 @@
+pkgbase = python-alphashape
+	pkgdesc = Toolbox for generating n-dimensional alpha shapes.
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://alphashape.readthedocs.io/en/latest/index.html
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest
+	depends = python
+	depends = python-sphinx
+	depends = python-geopandas
+	depends = python-cartopy
+	depends = python-descartes
+	depends = python-networkx
+	depends = python-ipympl
+	depends = python-trimesh
+	depends = python-rtree
+	depends = python-click-log
+	source = https://files.pythonhosted.org/packages/2e/83/67ff905694df5b34a777123b59fdfd05998d5a31766f188aafbf5b340055/alphashape-1.3.1.tar.gz
+	sha256sums = 7a27340afc5f8ed301577acec46bb0cf2bada5410045f7289142e735ef6977ec
+
+pkgname = python-alphashape
