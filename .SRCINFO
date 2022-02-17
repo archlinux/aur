@@ -1,6 +1,6 @@
 pkgbase = python-reconchess
 	pkgdesc = ReconChess python implementation
-	pkgver = 1.6.8
+	pkgver = 1.6.9
 	pkgrel = 1
 	url = https://github.com/reconnaissanceblindchess/reconchess
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-reconchess
 	depends = python-pygame
 	depends = python-lxml
 	depends = python-requests
-	source = python-reconchess-1.6.8::https://pypi.org/packages/source/r/reconchess/reconchess-1.6.8.tar.gz
-	sha256sums = 81a317058325d955a15488c8ea0a7e0398274f18fa5ffbdf8248e48aa60f669b
+	source = python-reconchess-1.6.9::https://github.com/reconnaissanceblindchess/reconchess/archive/refs/tags/v1.6.9.tar.gz
+	sha256sums = afc7349605bb8f9ed0c794ffc097a82dd0b8b18bfc90d43b1171006695eebdeb
 
 pkgname = python-reconchess
