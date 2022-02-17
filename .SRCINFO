@@ -1,14 +1,13 @@
 pkgbase = qtscrcpy
 	pkgdesc = Android real-time screencast control tool
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barry-ran/QtScrcpy
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = android-tools
-	depends = ffmpeg
 	depends = qt5-x11extras
 	conflicts = qt-scrcpy
 	replaces = qt-scrcpy

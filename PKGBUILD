@@ -2,12 +2,12 @@
 pkgname=qtscrcpy
 _pkgname=QtScrcpy
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
 url="https://github.com/barry-ran/QtScrcpy"
 license=('Apache')
-depends=('android-tools' 'ffmpeg' 'qt5-x11extras')
+depends=('android-tools' 'qt5-x11extras')
 makedepends=('cmake' 'qt5-tools')
 conflicts=('qt-scrcpy')
 replaces=('qt-scrcpy')
@@ -25,7 +25,7 @@ prepare() {
   cd "$_pkgname-$pkgver"
 
   # Use system packages instead of static bundled tools
-  rm -rf third_party/{adb,ffmpeg}
+  rm -rf third_party/adb
 
   patch --strip=1 "$_pkgname/main.cpp" < "$srcdir/path-fix.patch"
 
