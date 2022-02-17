@@ -1,11 +1,11 @@
 pkgbase = rime-sbxlm-sbzr
 	pkgdesc = 声笔系列码，声笔自然
-	pkgver = 220128
+	pkgver = 220217
 	pkgrel = 1
 	arch = any
 	groups = sbxlm
 	depends = rime-sbxlm
-	source = https://gitee.com/sbxlm/sbxlm/attach_files/958326/download/220128.zip
+	source = https://gitee.com/sbxlm/sbxlm/attach_files/958326/download/220217.zip
 	sha256sums = 345b7a10be8cca7880e0b191eaa0223ad38504706793cbc76babd5344e9a56cc
 
 pkgname = rime-sbxlm-sbzr
