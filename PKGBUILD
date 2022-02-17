@@ -4,8 +4,8 @@
 pkgname=vdr-tvguide
 pkgver=1.3.3
 epoch=1
-_vdrapi=2.6.0
-pkgrel=4
+_vdrapi=2.6.1
+pkgrel=5
 pkgdesc="highly customizable 2D EPG viewer plugin."
 url="https://gitlab.com/kamel5/tvguide"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
