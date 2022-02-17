@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.2.r3.g42e217c9
+	pkgver = 3.2.1.r0.g22603a37
 	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
@@ -21,11 +21,12 @@ pkgbase = 86box-git
 	depends = sdl2
 	optdepends = 86box-roms-git: ROM files
 	provides = 86box
+	conflicts = 86box
 	source = 86box-git::git+https://github.com/86Box/86Box.git
 	source = 86box
 	source = 86Box.desktop
-	sha256sums = SKIP
-	sha256sums = c76882ed325072ff88953c6deaa398df05b46732c5b99bd58023d7f9e3c65435
-	sha256sums = 67f2aacd0e39f0fda19412fa5b9b64fab347a68ed2f4e5e7bb437833f311a5a0
+	sha512sums = SKIP
+	sha512sums = 3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38
+	sha512sums = 143447f38e3ddf458f469dffd37897503112100cf69d46dbe6810f5e64c32d91d87dcb46fe4447cda8d2fb91dd2f1b868ee1e43575a972280801b40cf7cfbd85
 
 pkgname = 86box-git

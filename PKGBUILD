@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.2.r3.g42e217c9
+pkgver=3.2.1.r0.g22603a37
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -9,25 +9,31 @@ license=('GPL2')
 depends=('alsa-lib' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('git' 'cmake>=3.16' 'qt6-tools')
 optdepends=('86box-roms-git: ROM files')
+provides=('86box')
+conflicts=('86box')
 source=(
     "${pkgname}::git+https://github.com/86Box/86Box.git"
     '86box'
     '86Box.desktop'
 )
-sha256sums=(
+sha512sums=(
     'SKIP'
-    'c76882ed325072ff88953c6deaa398df05b46732c5b99bd58023d7f9e3c65435'
-    '67f2aacd0e39f0fda19412fa5b9b64fab347a68ed2f4e5e7bb437833f311a5a0'
+    '3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38'
+    '143447f38e3ddf458f469dffd37897503112100cf69d46dbe6810f5e64c32d91d87dcb46fe4447cda8d2fb91dd2f1b868ee1e43575a972280801b40cf7cfbd85'
 )
-provides=('86box')
 
 pkgver() {
-  cd ${pkgname}
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd ${pkgname}
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cmake -S"${pkgname}" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSE_QT6=on -DSLIRP_EXTERNAL=on
+    if [ "$CARCH" == arm7h ] || [ "$CARCH" == aarch64 ]; then
+        NDR=on
+    else
+        NDR=off
+    fi
+    cmake -S"${pkgname}" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSE_QT6=on -DSLIRP_EXTERNAL=on -DNEW_DYNAREC=$NDR
     cmake --build build
 }
 
