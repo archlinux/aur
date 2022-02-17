@@ -6,7 +6,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt6-git'
          'avidemux-cli-git'
          )
-pkgver=2.7.9.210922.1d0187359
+pkgver=2.8.1.220217.d42b59c5b
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('x86_64')
@@ -63,6 +63,7 @@ sha256sums=('SKIP'
             'c5b5d3d7bcdf4c588a780c12fdac7791ddb0527db438c85b4c1c078507da2f0b'
             'ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db'
             )
+options=('debug')
 
 pkgver() {
   cd avidemux
@@ -71,11 +72,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build_core{,_plugins,_plugins_settings}
-  mkdir -p build_qt5{,_plugins}
-  mkdir -p build_qt6{,_plugins}
-  mkdir -p build_cli{,_plugins}
-
   cd avidemux
 
   git config submodule.i18n.url "${srcdir}/avidemux2_i18n"
@@ -88,25 +84,21 @@ prepare() {
   patch -p1 -i "${srcdir}/add_settings_pluginui_message_error.patch"
 
   patch --binary -p1 -i "${srcdir}/opus_check.patch"
-
-  # fix build with Qt6 and Vapoursynth plugin
-  sed 's|c++11|c++17|g' -i avidemux_plugins/ADM_demuxers/VapourSynth/qt4/CMakeLists.txt
 }
 
 build() {
   msg2 "Build Core Libs"
-  cd "${srcdir}/build_core"
-  cmake ../avidemux/avidemux_core \
+  cmake -B build_core -S avidemux/avidemux_core \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot" \
     -DAVIDEMUX_SOURCE_DIR="${srcdir}/avidemux"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_core
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_core
 
   msg2 "Build Core Plugins"
-  cd "${srcdir}/build_core_plugins"
-  cmake ../avidemux/avidemux_plugins \
+  cmake -B build_core_plugins -S avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=COMMON \
@@ -116,22 +108,22 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_core_plugins
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_core_plugins
 
   msg2 "Build Qt5 GUI"
-  cd "${srcdir}/build_qt5"
-  cmake ../avidemux/avidemux/qt4 \
+  cmake -B build_qt5 -S avidemux/avidemux/qt4 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DENABLE_QT5=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make -j1 DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_qt5
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_qt5
 
   msg2 "Build Qt5 GUI Plugins"
-  cd "${srcdir}/build_qt5_plugins"
-  cmake ../avidemux/avidemux_plugins \
+  cmake -B build_qt5_plugins -S avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DOpenGL_GL_PREFERENCE=GLVND \
@@ -143,22 +135,24 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_qt5_plugins
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_qt5_plugins
 
   msg2 "Build Qt6 GUI"
-  cd "${srcdir}/build_qt6"
-  CXXFLAGS+=" -fPIC" cmake ../avidemux/avidemux/qt4 \
+  CXXFLAGS+=" -fPIC" \
+  cmake -B build_qt6 -S avidemux/avidemux/qt4 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DENABLE_QT6=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make -j1 DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_qt6
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_qt6
 
   msg2 "Build Qt6 GUI Plugins"
-  cd "${srcdir}/build_qt6_plugins"
-  CXXFLAGS+=" -fPIC" cmake ../avidemux/avidemux_plugins \
+  CXXFLAGS+=" -fPIC" \
+  cmake -B build_qt6_plugins -S avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DOpenGL_GL_PREFERENCE=GLVND \
@@ -170,20 +164,20 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_qt6_plugins
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_qt6_plugins
 
   msg2 "Build CLI frontend"
-  cd "${srcdir}/build_cli"
-  cmake ../avidemux/avidemux/cli \
+  cmake -B build_cli -S avidemux/avidemux/cli \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_cli
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_cli
 
   msg2 "Build CLI plugins"
-  cd "${srcdir}/build_cli_plugins"
-  cmake ../avidemux/avidemux_plugins \
+  cmake -B build_cli_plugins -S avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DPLUGIN_UI=CLI \
@@ -193,11 +187,11 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_cli_plugins
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_cli_plugins
 
   msg2 "Build Settings"
-  cd "${srcdir}/build_core_plugins_settings"
-  cmake ../avidemux/avidemux_plugins \
+  cmake -B build_core_plugins_settings -S avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr  \
     -DPLUGIN_UI=SETTINGS \
@@ -207,7 +201,8 @@ build() {
     -DUSE_EXTERNAL_MP4V2=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
-  make DESTDIR="${srcdir}/fakeroot" install
+  cmake --build build_core_plugins_settings
+  DESTDIR="${srcdir}/fakeroot" cmake --install build_core_plugins_settings
 }
 
 package_avidemux-core-git() {
@@ -250,9 +245,9 @@ package_avidemux-core-git() {
   provides=('avidemux-core')
   conflicts=('avidemux-core')
 
-  make -C build_core DESTDIR="${pkgdir}" install
-  make -C build_core_plugins DESTDIR="${pkgdir}" install
-  make -C build_core_plugins_settings DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build_core
+  DESTDIR="${pkgdir}" cmake --install build_core_plugins
+  DESTDIR="${pkgdir}" cmake --install build_core_plugins_settings
 
   install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x264_other.so"
   install -Dm755 fakeroot/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders/libADM_ve_x265_other.so"
@@ -278,8 +273,8 @@ package_avidemux-qt5-git() {
              )
   replaces=('avidemux-qt-git')
 
-  make -C build_qt5 DESTDIR="${pkgdir}" install
-  make -C build_qt5_plugins DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build_qt5
+  DESTDIR="${pkgdir}" cmake --install build_qt5_plugins
 
   rm -fr "${pkgdir}/usr/lib/ADM_plugins6/shaderDemo"
 
@@ -309,8 +304,8 @@ package_avidemux-qt6-git() {
              'avidemux-qt'
              )
 
-  make -C build_qt6 DESTDIR="${pkgdir}" install
-  make -C build_qt6_plugins DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build_qt6
+  DESTDIR="${pkgdir}" cmake --install build_qt6_plugins
 
   rm -fr "${pkgdir}/usr/lib/ADM_plugins6/shaderDemo"
 
@@ -335,8 +330,8 @@ package_avidemux-cli-git() {
   provides=('avidemux-cli')
   conflicts=('avidemux-cli')
 
-  make -C build_cli DESTDIR="${pkgdir}" install
-  make -C build_cli_plugins DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --install build_cli
+  DESTDIR="${pkgdir}" cmake --install build_cli_plugins
 
   rm -fr "${pkgdir}/usr/lib/ADM_plugins6/videoEncoders"
 }

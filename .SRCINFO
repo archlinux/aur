@@ -1,6 +1,6 @@
 pkgbase = avidemux-git
 	pkgdesc = A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)
-	pkgver = 2.7.9.210922.1d0187359
+	pkgver = 2.8.1.220217.d42b59c5b
 	pkgrel = 1
 	url = http://www.avidemux.org
 	arch = x86_64
@@ -43,6 +43,7 @@ pkgbase = avidemux-git
 	makedepends = vapoursynth
 	makedepends = hicolor-icon-theme
 	makedepends = setconf
+	options = debug
 	source = avidemux::git+https://github.com/mean00/avidemux2.git
 	source = git+https://github.com/mean00/avidemux2_i18n.git
 	source = fix_verbose.patch
@@ -94,7 +95,7 @@ pkgname = avidemux-core-git
 
 pkgname = avidemux-qt5-git
 	pkgdesc = Qt5 GUI for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.7.9.210922.1d0187359
+	depends = avidemux-core-git=2.8.1.220217.d42b59c5b
 	depends = qt5-base
 	depends = libxv
 	depends = glu
@@ -107,7 +108,7 @@ pkgname = avidemux-qt5-git
 
 pkgname = avidemux-qt6-git
 	pkgdesc = Qt6 GUI for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.7.9.210922.1d0187359
+	depends = avidemux-core-git=2.8.1.220217.d42b59c5b
 	depends = qt6-base
 	depends = libxv
 	depends = glu
@@ -119,6 +120,6 @@ pkgname = avidemux-qt6-git
 
 pkgname = avidemux-cli-git
 	pkgdesc = CLI frontend for Avidemux. (GIT version)
-	depends = avidemux-core-git=2.7.9.210922.1d0187359
+	depends = avidemux-core-git=2.8.1.220217.d42b59c5b
 	provides = avidemux-cli
 	conflicts = avidemux-cli
