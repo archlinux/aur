@@ -1,0 +1,16 @@
+pkgbase = tuxboard-git
+	pkgdesc = Simple drawing and writing application for Linux to be used with pen tablets
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/graele84/tuxboard
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	makedepends = qt5-base
+	makedepends = qt5-svg
+	depends = qt5-base
+	conflicts = tuxboard-git
+	source = git+https://gitlab.com/graele84/tuxboard.git
+	sha256sums = SKIP
+
+pkgname = tuxboard-git
