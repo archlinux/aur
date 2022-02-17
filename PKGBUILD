@@ -4,8 +4,8 @@
 pkgname=vdr-xmltv2vdr
 pkgver=0.1.1_74_gec7bd92
 _gitver=ec7bd920d94e55f2d21bfa076b7e900b7b2b7537
-_vdrapi=2.6.0
-pkgrel=7
+_vdrapi=2.6.1
+pkgrel=8
 pkgdesc="Add epg info from epg sources into vdr"
 url="http://projects.vdr-developer.org/projects/plg-xmltv2vdr"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('pcre' 'curl' 'enca' 'libxslt' 'libzip' 'sqlite' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("git://projects.vdr-developer.org/vdr-plugin-xmltv2vdr.git#commit=$_gitver"
+source=("git+https://projects.vdr-developer.org/git/vdr-plugin-xmltv2vdr.git#commit=$_gitver"
         "xmltv2vdr_newmakefile_v2.diff"
         "xmltv2vdr_gcc721_fixes.diff"
         "50-$_plugname.conf")
