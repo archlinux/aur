@@ -1,6 +1,6 @@
 pkgbase = obs-source-switcher
 	pkgdesc = Plugin for OBS Studio to add a source that switches between a list of sources
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 2
 	url = https://obsproject.com/forum/resources/source-switcher.941/
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = obs-source-switcher
 	makedepends = cmake
 	makedepends = git
 	makedepends = libxcomposite
-	depends = obs-studio>=27.0.0
-	source = obs-source-switcher::git+https://github.com/exeldro/obs-source-switcher#commit=c462f7fe0552760cd8f1b8a8b9fc9f00530002c1
-	source = obs-studio-27.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.0.tar.gz
+	makedepends = ffmpeg
+	depends = obs-studio>=27.2.0
+	source = obs-source-switcher::git+https://github.com/exeldro/obs-source-switcher#commit=c83d7d2a497a4c7629e47508309a399a8b83aa06
+	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
 	sha256sums = SKIP
-	sha256sums = c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e
+	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
 
 pkgname = obs-source-switcher
