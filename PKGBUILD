@@ -54,7 +54,7 @@ sha256sums+=('9737a2476e3f240eafbd5dec386f7d9949c0db1f4a967449c530fdd2ea7cbfef')
 
 _pkgname=$pkgname
 pkgname+="-extra-mouse-buttons"
-pkgrel="$pkgrel.1"
+pkgrel="$pkgrel.2"
 pkgdesc+=" (with support for extra mouse buttons)"
 eval "$(declare -f prepare | sed 's/$pkgname/$_pkgname/g')"
 eval "$(declare -f build | sed 's/$pkgname/$_pkgname/g')"
@@ -63,6 +63,14 @@ eval "$(declare -f package | sed 's/$pkgname/$_pkgname/g')"
 
 eval "$(echo "orig_prepare()"; declare -f prepare | tail -n +2)"
 prepare() {
+  echo '******************************' 1>&2
+  echo '* THIS PACKAGE IS DEPRECATED *' 1>&2
+  echo '******************************' 1>&2
+  echo 'Side mouse buttons are now supported on the official Arch spice-vdagent package.' 1>&2
+  echo "Please replace $pkgname with $_pkgname." 1>&2
+  echo 'This AUR package will be deleted soon.' 1>&2
+  exit 1
+
   patch -d"$_pkgname-$pkgver" -Np1 -i "${srcdir}"/spice-extra-mouse-buttons.patch
   orig_prepare
 }
