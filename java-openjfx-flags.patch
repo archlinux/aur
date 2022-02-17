@@ -22,7 +22,7 @@ index 7a7cbc72..6705a0f3 100644
 +        "-Wno-error=cast-function-type",
          "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Werror=trampolines"] // warning flags
  
-+commonFlags.addAll(System.getenv("CFLAGS").trim().split(" "))
++commonFlags.addAll(System.getenv("CFLAGS").trim().replaceAll(" +", " ").split(" "))
 +
  if (!IS_64) {
      commonFlags += "-m32"
