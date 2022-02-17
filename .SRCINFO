@@ -1,6 +1,6 @@
 pkgbase = paru
 	pkgdesc = Feature packed AUR helper
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/morganamilo/paru
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = paru
 	optdepends = bat: colored pkgbuild printing
 	optdepends = devtools: build in chroot
 	backup = etc/paru.conf
-	source = paru-1.9.2.tar.gz::https://github.com/Morganamilo/paru/archive/v1.9.2.tar.gz
-	sha256sums = a56de8059575c28b32f39b6407e1768a238851fae96fb25469b2dea3956dd867
+	source = paru-1.9.3.tar.gz::https://github.com/Morganamilo/paru/archive/v1.9.3.tar.gz
+	sha256sums = afcbe0eb8660d5c01d7ad42ec48002cb0972397fbeffe66009e2691e0747f014
 
 pkgname = paru
