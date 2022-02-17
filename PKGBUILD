@@ -3,7 +3,7 @@
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r24
+pkgver=r28
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('vapoursynth-plugin-fmtconv-git')
 #Dirty workaround for not breaking the dependencies.
 provides=('vapoursynth-plugin-fmtconv-git')
 source=("http://ldesoras.free.fr/src/vs/${_plug}-${pkgver}.zip")
-sha256sums=('ecc9cf31e2eddb981c543451413d4b36e4cf1af9dca98f9db29681acdc567725')
+sha256sums=('90f28223927bcdacc683cbd44a7e11f44e71b8706c7bcbc6ab36b63b23c08d56')
 
 prepare() {
   cd build/unix
