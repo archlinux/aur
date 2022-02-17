@@ -9,7 +9,7 @@ license=('GPLv3')
 groups=()
 # depends=("portmaster")
 source=("$pkgname-$pkgver.tar.gz::https://codeload.github.com/0x454d505459/portmaster-runit/tar.gz/refs/tags/$pkgver")
-md5sums=("9f4b814f44d7ccb4c09f929055d256c7")
+md5sums=("SKIP")
 
 package() {
     cd "$pkgname-$pkgver"
