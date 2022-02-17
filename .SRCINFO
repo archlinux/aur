@@ -1,0 +1,11 @@
+pkgbase = ttf-opposans
+	pkgdesc = OPPO Sans is a built-in font for ColorOS 7, including Chinese and Latin.
+	pkgver = 20191011
+	pkgrel = 1
+	url = https://open.oppomobile.com/bbs/forum.php?mod=viewthread&tid=2274
+	arch = any
+	license = custom
+	source = https://static01.coloros.com/www/public/img/topic7/font-opposans.zip
+	sha256sums = 62b1fd121a13e84212fadcc801a1b397927c9d8224351f5b4b93bbcb42b3ad14
+
+pkgname = ttf-opposans
