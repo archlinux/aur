@@ -48,7 +48,7 @@ makedepends=(
 )
 source=(
   # https://github.com/openjdk/jfx/archive/refs/tags/jfx-${pkgver//.u/+}.tar.gz
-  ${pkgname}-${pkgver}.tar.gz::https://github.com/openjdk/jfx17u/archive/refs/tags/${pkgver//.u/+}.tar.gz
+  ${pkgname}-${pkgver}.tar.gz::https://github.com/openjdk/jfx${pkgver%%.*}u/archive/refs/tags/${pkgver//.u/+}.tar.gz
   gradle.properties
   java-openjfx-flags.patch
   java-openjfx-no-xlocale.patch
@@ -62,7 +62,7 @@ b2sums=('1a859d93c1710598c7b2ee20ca36250d79889fb8028877de169cf9f7e43173ee38b36b2
 
 prepare() {
   # cd jfx-${pkgver//.u/-}
-  cd jfx17u-${pkgver//.u/-}
+  cd jfx${pkgver%%.*}u-${pkgver//.u/-}
 
   ln -sf ../gradle.properties .
   patch -Np1 -i ../java-openjfx-flags.patch
@@ -73,7 +73,7 @@ prepare() {
 
 build() {
   # cd jfx-${pkgver//.u/-}
-  cd jfx17u-${pkgver//.u/-}
+  cd jfx${pkgver%%.*}u-${pkgver//.u/-}
 
   # build against ffmpeg4.4
   export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
@@ -83,7 +83,7 @@ build() {
 
 package_java-openjfx() {
   depends=(
-    java-runtime-openjdk=17
+    java-runtime-openjdk=${pkgver%%.*}
     libgl
     libx11
     libxtst
@@ -94,10 +94,10 @@ package_java-openjfx() {
     'gtk3: GTK3 support',
     'webkit2gtk: Web support'
   )
-  provides=('java-openjfx=17')
+  provides=(java-openjfx=${pkgver%%.*})
 
   # cd jfx-${pkgver//.u/-}
-  cd jfx17u-${pkgver//.u/-}
+  cd jfx${pkgver%%.*}u-${pkgver//.u/-}
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
   cp -dr --no-preserve=ownership build/sdk/lib "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/
@@ -107,7 +107,7 @@ package_java-openjfx() {
 
 package_java-openjfx-doc() {
   # cd jfx-${pkgver//.u/-}
-  cd jfx17u-${pkgver//.u/-}
+  cd jfx${pkgver%%.*}u-${pkgver//.u/-}
 
   install -dm 755 "${pkgdir}"/usr/share/{doc,licenses}
   cp -dr --no-preserve=ownership build/javadoc "${pkgdir}"/usr/share/doc/java-openjfx
@@ -116,7 +116,7 @@ package_java-openjfx-doc() {
 
 package_java-openjfx-src() {
   # cd jfx-${pkgver//.u/-}
-  cd jfx17u-${pkgver//.u/-}
+  cd jfx${pkgver%%.*}u-${pkgver//.u/-}
 
   install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-${pkgver%%.*}-openjdk,share/licenses}
   install -m 644 build/sdk/src.zip "${pkgdir}"/usr/lib/jvm/java-${pkgver%%.*}-openjdk/javafx-src.zip
