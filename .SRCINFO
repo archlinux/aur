@@ -1,7 +1,7 @@
 pkgbase = obs-transition-table
 	pkgdesc = Plugin for OBS Studio to add a Transition Table to the tools menu
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://obsproject.com/forum/resources/transition-table.1174/
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = obs-transition-table
 	makedepends = cmake
 	makedepends = git
 	makedepends = libxcomposite
-	depends = obs-studio>=27.0.0
+	makedepends = ffmpeg
+	depends = obs-studio>=27.2.0
 	source = obs-transition-table::git+https://github.com/exeldro/obs-transition-table#commit=7e6ba5cc715f724dd78582fd12651e0cf82962eb
-	source = obs-studio-27.0.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.0.0.tar.gz
+	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
 	sha256sums = SKIP
-	sha256sums = c7ea5369f4c94203a8a81b73c6372873f08ab9e5b20860691dad2c29f5dda85e
+	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
 
 pkgname = obs-transition-table
