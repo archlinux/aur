@@ -1,11 +1,12 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=pyroscope-bin
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Continuous profiling platform'
 arch=('x86_64' 'aarch64')
 url="https://pyroscope.io/"
 license=('APACHE')
+optdepends=('bcc-tools: required for ebpfspy')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 backup=("etc/${pkgname%-bin}/server.yml" "etc/default/${pkgname%-bin}")

@@ -1,11 +1,12 @@
 pkgbase = pyroscope-bin
 	pkgdesc = Continuous profiling platform
 	pkgver = 0.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pyroscope.io/
 	arch = x86_64
 	arch = aarch64
 	license = APACHE
+	optdepends = bcc-tools: required for ebpfspy
 	provides = pyroscope
 	conflicts = pyroscope
 	backup = etc/pyroscope/server.yml
