@@ -1,7 +1,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-indicator-keyboard"
-pkgver="0.9.0"
+pkgver="22.2.0"
 pkgrel="1"
 pkgdesc="Ayatana Indicator Keyboard Applet"
 arch=("i686" "x86_64" "pentium4")
@@ -10,7 +10,7 @@ license=("GPL3")
 makedepends=("intltool" "cmake-extras" "systemd" "glib2" "libx11")
 depends=("libayatana-common>=0.9.5" "libxklavier" "hicolor-icon-theme")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("5925349e3c06de7b04b5502163cf4acb")
+md5sums=("a4dec0eec622b9d9190333c447b13d2f")
 
 build()
 {
