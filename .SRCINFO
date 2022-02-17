@@ -1,7 +1,7 @@
 pkgbase = ns3
 	pkgdesc = Discrete-event network simulator for Internet systems
 	pkgver = 3.35
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nsnam.org/
 	arch = any
 	license = GPL2
