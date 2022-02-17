@@ -1,0 +1,15 @@
+pkgbase = supabase-git
+	pkgdesc = Supabase CLI
+	pkgver = r195.764c066
+	pkgrel = 1
+	url = https://github.com/supabase/cli
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	provides = supabase
+	conflicts = supabase
+	source = git+https://github.com/supabase/cli
+	sha256sums = SKIP
+
+pkgname = supabase-git
