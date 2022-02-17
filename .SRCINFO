@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 22.1.0_devel.149926.4c61c8a0b85.d41d8cd98f00b204e9800998ecf8427e
+	pkgver = 22.1.0_devel.150214.eebe298a878.d41d8cd98f00b204e9800998ecf8427e
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -62,6 +62,7 @@ pkgbase = mesa-git
 	conflicts = mesa-libgl
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = LICENSE
+	source = clover-common.patch
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
 	sha512sums = SKIP
