@@ -8,20 +8,20 @@
 
 
 pkgname='mozc-ut-common'
-pkgver=2.26.4632.102.20220206
+pkgver=2.26.4646.102.20220216
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
 depends=('qt5-base')
-makedepends=('bazel' 'git' 'python-six')
+makedepends=('bazel' 'git' 'python')
 conflicts=('mozc' 'mozc-ut' 'mozc-ut-united')
-provides=('mozc=2.26.4632.102')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c"
-        'https://osdn.net/downloads/users/37/37667/mozcdic-ut-20220206.tar.bz2')
+provides=('mozc=2.26.4646.102')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f"
+        'https://osdn.net/downloads/users/37/37724/mozcdic-ut-20220216.tar.bz2')
 sha256sums=('SKIP'
-            '8235f677e420eb0ac42b22f8ff794b9692e8d249913e1a4179e466e32d9ffd01')
+            '0fbbc3b4e561fccb43cea85a1c030ce252a5bac5abb95695a26277a8b0efdbbd')
 
 prepare() {
     cd ${pkgname}-git
@@ -37,7 +37,7 @@ prepare() {
     sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 
     # Add the UT dictionary
-    cat ${srcdir}/mozcdic-ut-20220206/mozcdic-ut-20220206.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20220216/mozcdic-ut-20220216.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -47,7 +47,7 @@ build() {
 }
 
 package() {
-    install -Dm644 mozcdic-ut-20220206/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
+    install -Dm644 mozcdic-ut-20220216/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
