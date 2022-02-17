@@ -4,14 +4,13 @@
 # Contributor: heavysink <winstonwu91 at gmail>
 
 pkgname=proton
-_srctag=6.3-8c
+_srctag=7.0-1
 _commit=
 pkgver=${_srctag//-/.}
-pkgver=6.3.8
 _geckover=2.47.2
-_monover=6.4.1
-_asyncver=1.9.2
-pkgrel=6
+_monover=7.1.2
+_asyncver=1.9.4
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -34,13 +33,16 @@ depends=(
   libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
+  lzo              lib32-lzo
+  libxkbcommon     lib32-libxkbcommon
+  faudio           lib32-faudio
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
   steam-native-runtime
 )
 
-makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
   giflib                lib32-giflib
@@ -90,7 +92,6 @@ optdepends=(
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   libva                 lib32-libva
@@ -115,7 +116,6 @@ source=(
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    FAudio::git+https://github.com/FNA-XNA/FAudio.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
@@ -124,12 +124,18 @@ source=(
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
     vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
+    Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+    gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
+    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
+    dav1d::git+https://code.videolan.org/videolan/dav1d.git
+    gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
+    wine-futex_waitv.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -143,9 +149,9 @@ noextract=(
 )
 
 _make_wrappers () {
-    #     _arch     prefix   gcc    ld             as
-    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32")
-    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64")
+    #     _arch     prefix   gcc    ld             as     strip
+    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32" "elf32-i386")
+    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64" "elf64-x86-64")
     local _opts=(_i686 _x86_64)
     declare -n _opt
     for _opt in "${_opts[@]}"; do
@@ -165,6 +171,10 @@ EOF
         install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-as <<EOF
 #!/usr/bin/bash
 /usr/bin/as ${_opt[3]} "\$@"
+EOF
+        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-strip <<EOF
+#!/usr/bin/bash
+/usr/bin/strip -F ${_opt[4]} "\$@"
 EOF
     done
 }
@@ -198,7 +208,6 @@ prepare() {
         dxvk-valve::dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
-        FAudio
         gstreamer
         gst-plugins-base
         gst-plugins-good
@@ -207,8 +216,13 @@ prepare() {
         OpenXR-SDK
         dxvk-nvapi
         vkd3d-valve::vkd3d
-        SPIRV-Headers
         Vulkan-Headers
+        SPIRV-Headers
+        Vulkan-Loader
+        gst-libav
+        ffmpeg
+        dav1d
+        gst-plugins-rs
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -236,23 +250,27 @@ prepare() {
         git submodule update external/Vulkan-Headers
     popd
 
-    pushd media-converter
+    for submodule in gst-plugins-rs media-converter; do
+    pushd $submodule
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${srcdir}"/build/.cargo
         cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
+    done
 
     pushd wine
         # From Arch Wine
         sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
+        # Fix futex_waitv on recent linux-api-headers
+        patch -p1 -i "$srcdir"/wine-futex_waitv.patch
         # Add FSR for fshack
-        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
-        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        #patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
     pushd dxvk
@@ -283,7 +301,7 @@ build() {
     cd build
     ROOTLESS_CONTAINER="" \
     ../proton/configure.sh \
-        --container-engine="" \
+        --container-engine="none" \
         --proton-sdk-image="" \
         --steam-runtime=native \
         --no-proton-sdk \
@@ -350,9 +368,9 @@ package() {
 
     cd "$_compatdir/${pkgname}/dist"
     i686-w64-mingw32-strip --strip-unneeded \
-        $(find lib/wine \( -iname fakedlls \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
+        $(find lib/wine \( -iname fakedlls -or -iname i386-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
     x86_64-w64-mingw32-strip --strip-unneeded \
-        $(find lib64/wine \( -iname fakedlls \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
+        $(find lib64/wine \( -iname fakedlls -or -iname x86_64-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
 
     local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
     i686-w64-mingw32-strip --strip-unneeded \
@@ -392,13 +410,18 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'a70c865e590058fa6fc3aa47425646405bdda27f78b9aa6d2030d2d2a8efadbb'
-            '9212a9c42ac8c9c7b9ba7378685b27e7ea0e7a8a8aaac1f3f4d37590ada3e991'
+            '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
+            'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
+            '7d989e9b29643897eaadb970d65e71140b11f4d641ef8816bd17feb9ad2ca992'
             '77214acb6ffc0648408c5e28b434b71d4c6a8c35f7795ac38565e6e0695208b2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '4abadfbcc01beb7781edadeebc6b5fadea97b0808eebf4648fd812748c730e9c'
+            'e2aa1d44f3034a81f405532abacb590f3fd03ce0a2135f9f80c8ad7763bf637b'
             '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '958f8e69bc789cc8fbe58cb6c9fc62f065692c3c165f20b0c21133ce94bad736')
