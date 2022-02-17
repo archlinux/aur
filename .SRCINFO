@@ -1,0 +1,14 @@
+pkgbase = notify-complete
+	pkgdesc = Run a command and display a system notification upon completion
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/andybug/notify-complete
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = dbus
+	source = https://github.com/andybug/notify-complete/archive/refs/tags/v0.1.0.tar.gz
+	b2sums = edf83e4bdb7049abaa1090055b7db4a01bda65dca6ba1f7027a8407c029c4b0565fc2c427c9468b1dcc85ba6fcdbd13ac1d6c9d06048b8e7c15aa583c0ee5a4b
+
+pkgname = notify-complete
