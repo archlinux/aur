@@ -1,0 +1,13 @@
+pkgbase = svix-server
+	pkgdesc = Svix webhooks server
+	pkgver = 0.47.1
+	pkgrel = 1
+	url = https://www.svix.com
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	source = svix-server::git+https://github.com/svix/svix-webhooks.git?tag=v0.47.1
+	sha512sums = SKIP
+
+pkgname = svix-server
