@@ -1,7 +1,7 @@
 # Maintainer: Andreas Tennert <mail at andreas-tennert dot de>
 pkgname='lcarsde-status-bar'
-pkgver=21.3
-pkgrel=2
+pkgver=22.1
+pkgrel=1
 pkgdesc="Menu for lcarsde to display and run installed software"
 arch=('any')
 url="https://lcarsde.github.io"
@@ -11,7 +11,7 @@ depends=('pango' 'icu' 'libxml2' 'glib2' 'harfbuzz' 'freetype2' 'gtk3')
 optdepends=('ttf-ubuntu-font-family' 'alsa-utils' 'pulseaudio')
 makedepends=('jdk-openjdk' 'ncurses5-compat-libs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lcarsde/status-bar/archive/$pkgver.tar.gz")
-md5sums=('9133f296c748a0c00395eb71d86f692f')
+md5sums=('c9082a00fa5cbf6f7a498f2e169df3ee')
 
 build() {
   cd "status-bar-$pkgver"
