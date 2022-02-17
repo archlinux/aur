@@ -2,21 +2,21 @@
 _pluginname=source-dock
 pkgname=obs-$_pluginname
 pkgver=0.3.2
-_obsver=27.1.1
-pkgrel=1
+_obsver=27.2.0
+pkgrel=2
 pkgdesc="Plugin for OBS Studio allowing you to create a Dock for a source, which lets you interact, see audio levels, change volume and control media"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-dock.1317/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=134f1f614a4382e68de265230aaddc06cc66c8b9"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
   "SKIP"
-  "2bbc0ea21138280b6d38369b259e2a383b2e0628723da191259488aa4c8625b5"
+  "c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789"
 )
 
 prepare() {
