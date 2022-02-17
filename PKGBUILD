@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.2_beta2_598.933573a
+pkgver=0.2.2_beta2_654.c7d90af
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -17,16 +17,16 @@ depends=("qt${_qt_version_major}-multimedia")
 optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
 makedepends=('cmake' 'git' "qt${_qt_version_major}-tools")
 
-if [ ${_use_mupdf} == 'ON' ]
+if [ "${_use_mupdf}" == 'ON' ]
 then
     depends+=('jbig2dec' 'openjpeg2' 'gumbo-parser')
     makedepends+=('libmupdf')
-elif [ ${_use_mupdf} == 'OFF' ]
+elif [ "${_use_mupdf}" == 'OFF' ]
 then
     license=('GPL3')
 fi
 
-if [ ${_use_poppler} == 'ON' ]
+if [ "${_use_poppler}" == 'ON' ]
 then
     depends+=("poppler-qt${_qt_version_major}")
 fi
@@ -57,7 +57,7 @@ build() {
         -DUSE_GUMBO=ON \
         -DUSE_TRANSLATIONS=ON \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \
-        -DCREATE_SHARED_LIBRARIES=OFF \
+        -DMUPDF_USE_SYSTEM_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DCMAKE_INSTALL_SYSCONFDIR='/etc'
     cmake --build "${pkgname}-${pkgver}/build"
