@@ -1,7 +1,7 @@
 pkgbase = ensembles
 	pkgdesc = A digital arranger workstation powered by FluidSynth for GNOME
 	pkgver = 0.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SubhadeepJasu/Ensembles
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = ensembles
 	depends = libhandy
 	depends = fluidsynth
 	depends = portmidi
+	depends = soundfont-ensembles
 	source = Ensembles-0.0.17.tar.gz::https://github.com/SubhadeepJasu/Ensembles/archive/refs/tags/v0.0.17.tar.gz
 	sha256sums = 4801eed59d0801e223ca8c9c7294f6128083161d09e9dc438ca345255ffc0952
 

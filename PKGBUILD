@@ -2,7 +2,7 @@
 pkgname=ensembles
 _pkgname=Ensembles
 pkgver=0.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="A digital arranger workstation powered by FluidSynth for GNOME"
 arch=('x86_64')
 url='https://github.com/SubhadeepJasu/Ensembles'
@@ -14,6 +14,7 @@ depends=(
 	'libhandy'
 	'fluidsynth'
 	'portmidi'
+	'soundfont-ensembles'
 )
 makedepends=('git' 'meson' 'ninja' 'vala')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
