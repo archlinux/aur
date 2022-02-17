@@ -1,6 +1,6 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=nvidia-exec
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Run programs in nvidia optimus setups with power management for Xorg and Wayland without log out"
 arch=("x86_64")
