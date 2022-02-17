@@ -1,0 +1,12 @@
+pkgbase = playfair-display-font
+	pkgdesc = a transitional design from when broad nib quills were replaced by pointed steel pens
+	pkgver = 1.005
+	pkgrel = 1
+	url = https://www.fontsquirrel.com/fonts/playfair-display
+	arch = any
+	license = OFL
+	source = playfair-display-1.005-1.zip::https://www.fontsquirrel.com/fonts/download/playfair-display
+	sha256sums = e3352c135c5c0175d4cd11a8293cede460f97196aec74369a05b188108b0d046
+
+pkgname = otf-playfair-display
+	provides = playfair-display-font
