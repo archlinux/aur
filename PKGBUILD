@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=libspng-git
-pkgver=0.7.0.rc3.r20.gbc38395
+pkgver=0.7.2.r4.gd981609
 pkgrel=1
 pkgdesc='C library for reading and writing PNG format files with a focus on security and ease of use'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ makedepends=(git meson)
 provides=(libspng)
 conflicts=(libspng)
 source=('git+https://gitlab.com/randy408/libspng.git')
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd libspng
