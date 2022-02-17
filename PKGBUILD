@@ -1,7 +1,7 @@
  # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
 pkgver=5.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma Mobile shell components."
 arch=('any')
 url="https://invent.kde.org/plasma/plasma-mobile"
@@ -13,6 +13,7 @@ depends=(
   powerdevil
   modemmanager-qt
   plasma-wayland-session
+  qqc2-breeze-style
 )
 optdepends=(
   'plasma-settings: Settings application for Plasma Mobile'
