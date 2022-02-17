@@ -2,7 +2,7 @@
 # Co-Maintainer: Lukas Grossar <lukasgrossar@gmail.com>
 
 pkgname=nerdctl-bin
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="Docker-compatible CLI for containerd"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/containerd/nerdctl"
 license=('Apache')
 optdepends=('containerd' 'rootlesskit' 'slirp4netns')
 source=("https://github.com/containerd/nerdctl/releases/download/v${pkgver}/nerdctl-${pkgver}-linux-amd64.tar.gz")
-sha256sums=('00abb395a6c7c19f2e0612a65e413534b6ec42e995bfbcabd59886b99ca5e43e')
+sha256sums=('4c08a6ce657ff851dd7a7b1d21c64f1c1950e35de03fa7f1853eab47fa2b2d53')
 
 package() {
   install -Dm 755 "$srcdir/nerdctl" "$pkgdir/usr/bin/nerdctl"
