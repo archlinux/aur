@@ -1,5 +1,5 @@
-# Maintainer: Todd E Johnson <todd@toddejohnson.net>
 # Maintainer: Erik Westrup <erik.westrup@gmail.com>
+# Maintainer: Todd E Johnson <todd@toddejohnson.net>
 
 pkgname=restic-automatic-backup-scheduler
 pkgver=7.3.0
@@ -14,9 +14,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/erikw/$pkgname/archive/v$pk
 install="restic-automatic-backup-scheduler.install"
 sha256sums=('df942e5ba780311cdb0ff9db6e43e4e165d73567bbc662be9a5f808e9b51ddea')
 backup=('etc/restic/backup_exclude.txt' 'etc/restic/default.env.sh' 'etc/restic/_global.env.sh' 'etc/restic/pw.txt')
-# Backup <5.0.0 conf files for whose who upgrade.
+# Backup <5.0.0 conf files for those who upgrade.
 backup+=('etc/restic/default.env' 'etc/restic/_global.env')
-# Backup <3.0.0 conf files for whose who upgrade.
+# Backup <3.0.0 conf files for those who upgrade.
 backup+=('etc/restic/b2_env.sh' 'etc/restic/b2_pw.txt' 'etc/restic/backup_exclude')
 
 package() {
