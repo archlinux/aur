@@ -1,6 +1,6 @@
 pkgbase = yafetch
 	pkgdesc = Commandline tool to get system information
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 0
 	url = https://github.com/deepjyoti30/yaf/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = yafetch
 	makedepends = go
 	provides = yaf
 	conflicts = yaf-git
-	source = https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.2.tar.gz
+	source = https://github.com/deepjyoti30/yaf/archive/refs/tags/0.0.3.tar.gz
 	md5sums = SKIP
 
 pkgname = yafetch
