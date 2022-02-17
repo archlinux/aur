@@ -1,7 +1,7 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes.
 	pkgver = 27.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
 	arch = x86_64
@@ -30,10 +30,10 @@ pkgbase = obs-studio-tytan652
 	depends = libxrandr
 	depends = nss
 	depends = at-spi2-atk
-	depends = ffmpeg-obs
 	depends = vlc-luajit
 	depends = ftl-sdk
-	depends = mbedtls<3.0.0
+	depends = ffmpeg-obs
+	depends = mbedtls
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = intel-media-driver: Hardware encoding (>= Broadwell)
 	optdepends = libva-intel-driver: Hardware encoding (<= Haswell)

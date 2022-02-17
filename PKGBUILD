@@ -4,7 +4,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -31,15 +31,21 @@ depends=(
   "libxss" "libxrandr" "nss" "at-spi2-atk"
          
   # AUR Packages
-  "ffmpeg-obs" "vlc-luajit" "ftl-sdk"
+  "vlc-luajit" "ftl-sdk"
 )
+# Manjaro still on 4.4.1
+if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+  depends+=('ffmpeg-obs')
+else
+  depends+=("ffmpeg-obs>=5")
+fi
 # To manage mbedtls rebuild easily, this will prevent you to rebuild OBS on non-updated system
 # For Manjaro user this feature is disabled
 # Also OBS will need a patch when mbedtls 3 is on the repo
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  depends+=("mbedtls<3.0.0")
+  depends+=('mbedtls')
 else
-  depends+=("mbedtls>=$_mbedtlsver" "mbedtls<3.0.0")
+  depends+=("mbedtls>=$_mbedtlsver")
 fi
 ## About vlc-luajit
 # The official VLC package will make OBS crash when a VLC source is used.
