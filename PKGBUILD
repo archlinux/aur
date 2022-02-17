@@ -2,7 +2,7 @@
 
 pkgname=sonic3air-bin
 pkgver=v21.09.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fan-made widescreen remaster of Sonic 3 & Knuckles.'
 arch=('x86_64')
 url='https://sonic3air.org/'
@@ -11,22 +11,32 @@ depends=('opengl-driver' 'sdl2')
 optdepends=('discord: Discord rich presence support')
 provides=(sonic3air)
 
+# Unfortunately Google seems to have started taking measures to crack down even
+# harder on automatically downloads, with URLs changing and limiting how many
+# users can even download the file in an arbitrary period of time.
+# So we'll just have to rely on the slower server from sonic3air.org.
+# Or you could just download it from Google Drive yourself, if the sha256 check
+# passes it should work just fine.
+
+### Old Google Drive download method, left here as reference. ###
+
 # Downloading from Google Drive like this guide:
 # https://gist.github.com/tanaikech/f0f2d122e05bf5f971611258c22c110f
 
-_fileId='1RECLmg_kziM0EuHgMc7f3rS_5uaU2N0k'
-_cookie="./google_drive.cookie"
-_srcCurl=`curl \
-	-c ${_cookie} \
-	-s \
-	-L "https://drive.google.com/u/0/uc?export=download&id=${_fileId}" \
-	> /dev/null && \
-	echo "https://drive.google.com/u/0/uc?export=download&confirm=$(awk '/download/ { print $NF }' ${_cookie})&id=${_fileId}"`
+# _fileId='1RECLmg_kziM0EuHgMc7f3rS_5uaU2N0k'
+# _cookie="./google_drive.cookie"
+# _srcCurl=`curl \
+# 	-c ${_cookie} \
+# 	-s \
+# 	-L "https://drive.google.com/u/0/uc?export=download&id=${_fileId}" \
+# 	> /dev/null && \
+# 	echo "https://drive.google.com/u/0/uc?export=download&confirm=$(awk '/download/ { print $NF }' ${_cookie})&id=${_fileId}"`
 
-DLAGENTS=("https::/usr/bin/curl -Lb ${_cookie} %u -o %o")
+# DLAGENTS=("https::/usr/bin/curl -Lb ${_cookie} %u -o %o")
 
 source=(
-	"sonic3air_${pkgver}.tar.gz::${_srcCurl}"
+	# "sonic3air_${pkgver}.tar.gz::${_srcCurl}"
+	"sonic3air_${pkgver}.tar.gz::https://sonic3air.org/sonic3air_game.tar.gz"
 	'sonic3air.desktop'
 	'sonic3air.sh'
 	'LICENSE.md'
