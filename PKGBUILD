@@ -1,7 +1,7 @@
 # Maintainer: Libor Wagner <liborw@archlinux.org>
 pkgname=trice-git
-pkgver=v0.18.4.r703.g8b91772b
-pkgrel=3
+pkgver=v0.48.0.r3.ga024079b
+pkgrel=2
 pkgdesc='Super fast and tiny embedded device C printf-like trace code and real-time PC logging'
 conflicts=('trice')
 provides=('trice')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare(){
