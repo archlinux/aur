@@ -64,6 +64,18 @@ The `nvx.service` prevents nvidia modules from loading and turn off the graphics
 
 It is not necessary to handle files, configurations, PCI buses, etc, all that is done automatically.
 
+The `nvx.service` might still fail and hang indefinitely if there are other Nvidia service daemons enabled during boot
+such as:
+
+-   `nvidia-persistenced.service`
+-   `nvidia-powerd.service`
+
+Note that the following services do not run on boot are not likely to stop `nvx` from turning off the gpu.
+
+-   `nvidia-hibernate.service`
+-   `nvidia-resume.service`
+-   `nvidia-suspend.service`
+
 ### Files
 
 For other users that may want to create a package to their preferred systems, the following is where I place the files
