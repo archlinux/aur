@@ -1,0 +1,41 @@
+[Unit]
+Description=Manage fees on lnd channels with %i
+Documentation=https://github.com/accumulator/charge-lnd/blob/master/README.md
+ConditionPathExists=/etc/default/charge-lnd-%i
+
+[Service]
+Type=oneshot
+EnvironmentFile=/etc/default/charge-lnd-%i
+ExecStart=/usr/bin/charge-lnd \
+    --lnddir $LNDDIR \
+    --grpc $GRPC \
+    --config $CONFIG \
+    $FLAGS
+
+User=charge-lnd
+Group=charge-lnd
+
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Sandboxing
+CapabilityBoundingSet=
+LockPersonality=true
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+RemoveIPC=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~add_key clone3 get_mempolicy kcmp keyctl mbind move_pages name_to_handle_at personality process_vm_readv process_vm_writev request_key set_mempolicy setns unshare userfaultfd

@@ -1,0 +1,7 @@
+[Unit]
+Documentation=https://github.com/accumulator/charge-lnd/blob/master/README.md
+
+[Timer]
+# https://www.freedesktop.org/software/systemd/man/systemd.time.html#Calendar%20Events
+OnCalendar=*-*-* 04:00:00
+RandomizedDelaySec=1h
