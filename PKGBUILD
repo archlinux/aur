@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-amd
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
@@ -19,10 +19,10 @@ source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-opencl-$pkgver.tar.gz::$_opencl/archive/rocm-$pkgver.tar.gz"
         "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz")
-sha256sums=('ae12fcda2d955f04a51c9e794bdb0fa96539cda88b6de8e377850e68e7c2a781'
-            '2aa3a628b336461f83866c4e76225ef5338359e31f802987699d6308515ae1be'
-            '6b72faf8819628a5c109b2ade515ab9009606d10f11316f0d7e4c4c998d7f724'
-            'cbd95a577abfd7cbffee14a4848f7789a417c6e5e5a713f42eb75d7948abcdf9')
+sha256sums=('508555cb068f0c35b930d8f7fc0bb42c64cc555e618434b9135d8d0257ff6977'
+            '948bd36e212ce3015540aebc5c8a1741ba7f0a8d5b0d52aba2178bbb202cff84'
+            'f7e0fdedf50b1b1378708ce02afd6194dd5df94611dec20e9a5aab95751b3959'
+            'f75389b799fc5117452ed74cb4ee2afbb6de93de4367a065851ddc74ea4f9ee3')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _diropencl="$(basename "$_opencl")-$(basename "${source[1]}" ".tar.gz")"
 _dirrocclr="$(basename "$_rocclr")-$(basename "${source[2]}" ".tar.gz")"
@@ -51,7 +51,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/opt/rocm/bin"
   local _fn
-  for _fn in hipcc hipconfig; do
+  for _fn in hipcc hipconfig hipcc.pl hipconfig.pl; do
     ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/usr/bin/$_fn"
     ln -s "/opt/rocm/hip/bin/$_fn" "$pkgdir/opt/rocm/bin/$_fn"
   done
