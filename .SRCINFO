@@ -1,28 +1,26 @@
 pkgbase = torrential-git
 	pkgdesc = Download torrents in style with this speedy, minimalist torrent client designed for Pantheon Shell
-	pkgver = 1.1.0.r15.gd950ce8
+	pkgver = 2.0.1.r0.gd17fc27
 	pkgrel = 1
 	url = https://github.com/davidmhewitt/torrential
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = cmake
-	makedepends = vala0.42
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	makedepends = dht
+	makedepends = libutp
+	makedepends = libtransmission
 	depends = libgranite.so
-	depends = libunity
+	depends = libb64
 	depends = libevent
 	depends = libnatpmp
-	depends = libb64
-	depends = dht
 	depends = miniupnpc
-	depends = libutp
 	provides = torrential
 	conflicts = torrential
-	source = git+https://github.com/davidmhewitt/torrential.git
-	source = torrential-transmission::git+https://github.com/davidmhewitt/transmission.git#branch=2.9x-torrential
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://github.com/davidmhewitt/torrential.git#branch=main
+	sha256sums = SKIP
 
 pkgname = torrential-git
-

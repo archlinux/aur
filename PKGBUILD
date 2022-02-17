@@ -2,46 +2,33 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=torrential-git
-pkgver=1.1.0.r15.gd950ce8
+pkgver=2.0.1.r0.gd17fc27
 pkgrel=1
 pkgdesc="Download torrents in style with this speedy, minimalist torrent client designed for Pantheon Shell"
 arch=(i686 x86_64)
 url="https://github.com/davidmhewitt/torrential"
 license=(GPL2)
-depends=(libgranite.so libunity libevent libnatpmp libb64 dht miniupnpc libutp)
-makedepends=(git cmake vala0.42)
+depends=(libgranite.so libb64 libevent libnatpmp miniupnpc)
+makedepends=(git meson ninja vala dht libutp libtransmission)
 provides=(torrential)
 conflicts=(torrential)
-source=("git+https://github.com/davidmhewitt/torrential.git"
-        "torrential-transmission::git+https://github.com/davidmhewitt/transmission.git#branch=2.9x-torrential")
-md5sums=('SKIP'
-         'SKIP')
+source=("git+https://github.com/davidmhewitt/torrential.git#branch=main")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${pkgname%-git}"
-  git submodule init
-  git config 'submodule.transmission.url' "${srcdir}/torrential-transmission"
-  git submodule update
-
-  install -d build
-}
-
 build() {
-  cd "${pkgname%-git}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cd "${pkgname%-git}"
+  meson build --prefix=/usr
+  ninja -C build
 }
 
 package() {
-  cd "${pkgname%-git}/build"
-  make DESTDIR="${pkgdir}" install
+  cd "${pkgname%-git}"
+  DESTDIR="${pkgdir}" ninja -C build install
   ln -s /usr/bin/com.github.davidmhewitt.torrential "$pkgdir/usr/bin/torrential"
 }
 
