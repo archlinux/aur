@@ -7,6 +7,9 @@ pkgbase = libbible
 	license = MIT
 	depends = sword
 	source = https://vance.fish/git/libbible//snapshot/libbible-1.0.1.tar.gz
+	source = https://vance.fish/git/libbible//snapshot/libbible-1.0.1.tar.gz.asc
+	validpgpkeys = 2FCF3A100A5B5C0E78E41BDB215A56B23729BC81
 	sha256sums = b790706f5b4381ebc2c3f7894f4cb5ed4cfd268f51418747382f0dc79ae33ff7
+	sha256sums = SKIP
 
 pkgname = libbible
