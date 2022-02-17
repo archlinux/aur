@@ -1,0 +1,22 @@
+pkgbase = plasma-mobile
+	pkgdesc = Plasma Mobile shell components.
+	pkgver = 5.24.1
+	pkgrel = 1
+	url = https://invent.kde.org/plasma/plasma-mobile
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = plasma-nano
+	depends = plasma-nm
+	depends = powerdevil
+	depends = modemmanager-qt
+	depends = plasma-wayland-session
+	optdepends = plasma-settings: Settings application for Plasma Mobile
+	optdepends = plasma-dialer: Phone application
+	optdepends = plasma-workspace-wallpapers: A large wallpaper selection for Plasma
+	source = https://download.kde.org/stable/plasma/5.24.1/plasma-mobile-5.24.1.tar.xz
+	sha256sums = 6e0d3aeac4c50835b33d2200ab9829c6b4e42739306c50b333a995a5a225dbc2
+
+pkgname = plasma-mobile
