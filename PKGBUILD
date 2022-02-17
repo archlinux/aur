@@ -5,13 +5,13 @@
 pkgname=kotatogram-desktop-dynamic-bin
 _pkgname=kotatogram-desktop
 pkgver=1.4.8
-pkgrel=2
+pkgrel=3
 _pkgrel=2
 pkgdesc="Kotatogram – experimental Telegram Desktop fork - Stable version, precompiled package"
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
          'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs')
