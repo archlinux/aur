@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-plugin-imagine-git
 	pkgdesc = Plugin for Vapoursynth: imagine (GIT version)
 	pkgver = r42.049d5d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.doom9.org/showthread.php?t=173633
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = ffmpeg
 	depends = vapoursynth
 	depends = libpng
 	depends = libtiff
@@ -16,6 +17,7 @@ pkgbase = vapoursynth-plugin-imagine-git
 	depends = libswscale.so
 	provides = vapoursynth-plugin-imagine
 	conflicts = vapoursynth-plugin-imagine
+	options = debug
 	source = imagine::git+https://github.com/sekrit-twc/imagine.git
 	source = git+https://github.com/sekrit-twc/libp2p.git
 	source = git+https://github.com/sekrit-twc/vsxx.git

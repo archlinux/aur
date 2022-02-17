@@ -17,7 +17,9 @@ depends=('vapoursynth'
          'libavutil.so'
          'libswscale.so'
          )
-makedepends=('git')
+makedepends=('git'
+             'ffmpeg'
+             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/sekrit-twc/imagine.git"
