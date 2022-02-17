@@ -44,6 +44,6 @@ EOF
     fi
   done
 
-  echo "No valid python version detected. Please install any python version from 3.6 - 3.9 to run OpenSeeFaceGD correctly." >> /dev/stderr
+  echo "No valid python version detected. Please install any python version from 3.6 - 3.9 to run OpenSeeFaceGD correctly." >&2
 }
 
