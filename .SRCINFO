@@ -6,7 +6,7 @@ pkgbase = pypi-simple-search-git
 	install = pypi-simple-search-git.install
 	arch = any
 	depends = python-pip
-	conflicts = pip-simple-search-git
+	conflicts = pypi-simple-search
 	source = git+https://github.com/jeffmm/pypi-simple-search.git
 	sha256sums = SKIP
 
