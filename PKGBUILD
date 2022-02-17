@@ -2,14 +2,28 @@
 
 _pkgname=gnome-remote-desktop
 pkgname=$_pkgname-git
-pkgver=41.0.2.ge284cb0
+pkgver=42.beta.0.g7ad1023
 pkgrel=1
 pkgdesc='Remote desktop daemon for GNOME using pipewire'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://wiki.gnome.org/Projects/Mutter/RemoteDesktop"
 license=('GPL2')
-depends=('cairo' 'dconf' 'freerdp' 'fuse3' 'libnotify' 'libsecret' 'libvncserver' 'pipewire')
-makedepends=('git' 'ffnvcodec-headers' 'meson')
+depends=(
+  'cairo'
+  'dconf'
+  'freerdp'
+  'fuse3'
+  'libnotify'
+  'libepoxy'
+  'libsecret'
+  'libvncserver'
+  'pipewire'
+)
+makedepends=(
+  'git'
+  'ffnvcodec-headers'
+  'meson'
+)
 optdepends=('nvidia-utils: Nvidia NVDEC/NVENC support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
