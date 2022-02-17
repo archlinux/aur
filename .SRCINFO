@@ -1,6 +1,6 @@
 pkgbase = yiolibc
 	pkgdesc = Yio Input Output C Library that aims in type-safe printf replacement
-	pkgver = v0.3.0
+	pkgver = v0.3.1
 	pkgrel = 1
 	url = https://gitlab.com/kamcuk/yio/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = yiolibc
 	makedepends = git
 	optdepends = libunistring: unicode support
 	provides = yiolibc
-	source = git+https://gitlab.com/kamcuk/yio#tag=v0.3.0
+	source = git+https://gitlab.com/kamcuk/yio#tag=v0.3.1
 	md5sums = SKIP
 
 pkgname = yiolibc

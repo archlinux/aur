@@ -2,7 +2,7 @@
 
 
 pkgname=yiolibc
-pkgver=v0.3.0
+pkgver=v0.3.1
 pkgrel=1
 pkgdesc="Yio Input Output C Library that aims in type-safe printf replacement"
 arch=(any)
