@@ -7,7 +7,7 @@
 ## "1" to enable IA32-EFI build in Arch x86_64, "0" to disable
 # _ia32_efi_in_arch_x64="1"
 
-[ -z "$GRUB_DISABLE_NLS" ] && NLS_OPT="--enable-nls" || NLS_OPT="--disable-nls"
+[ -z "$GRUB_ENABLE_NLS" ] && NLS_OPT="--disable-nls" || NLS_OPT="--enable-nls"
 
 ## "1" to enable EMU build, "0" to disable
 # _grub_emu_build="0"
@@ -21,7 +21,7 @@ _build_platforms="x86_64-efi"
 _pkgname="grub"
 pkgname="${_pkgname}-improved-luks2-git"
 pkgver=2.06.r109.ga9c225776
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU GRand Unified Bootloader (2) with Argon2 and better LUKS2 support"
 arch=('x86_64')
 url="https://www.gnu.org/software/grub/"
@@ -118,7 +118,7 @@ prepare() {
     sed 's|GNU/Linux|Linux|' -i "util/grub.d/10_linux.in"
 
     # Pull in latest language files
-    [ -z "$GRUB_DISABLE_NLS" ] && ./linguas.sh
+    [ ! -z "$GRUB_ENABLE_NLS" ] && ./linguas.sh
 
     # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open
     # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
