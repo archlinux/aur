@@ -3,7 +3,7 @@
 
 pkgname=pgtcl
 _pkgname=Pgtcl
-pkgver=2.7.7
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='Tcl client side interface to PostgreSQL (libpgtcl)'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('postgresql' 'postgresql-libs' 'tcl')
 conflicts=('pgtcl-ng')
 provides=('libpgtcl')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flightaware/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e0f831a98f1e64b004bcabd9aa9b23286eb3a3bf52406427e6b836b5a3bf422a')
+sha256sums=('1c9732a2a08c4dcfd7a691a9246ebc798a0bcaee2af73a8182a840499493ac5e')
 
 build() {
   cd "${_pkgname}-${pkgver}"
