@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vdrtva
 pkgver=0.3.7
-_vdrapi=2.6.0
-pkgrel=2
+_vdrapi=2.6.1
+pkgrel=3
 pkgdesc="Automatic 'series record' function. Written for UK Freeview"
 url="https://projects.vdr-developer.org/git/vdrtva.git"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
