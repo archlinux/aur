@@ -1,5 +1,5 @@
 pkgbase = khronos-ocl-icd-git
-	pkgver = 2022.01.04.1.gb7a648b
+	pkgver = 2022.01.04.2.gcd7d07c
 	pkgrel = 1
 	url = http://www.khronos.org/registry/cl
 	arch = x86_64
@@ -7,6 +7,8 @@ pkgbase = khronos-ocl-icd-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = opencl-headers-git
+	makedepends = lib32-gcc-libs
+	options = debug
 	source = ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git
 	sha256sums = SKIP
 
