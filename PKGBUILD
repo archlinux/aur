@@ -66,9 +66,9 @@ package() {
 
     # Script in /usr/bin to run o3de with modified env
     mkdir -p "${pkgdir}/usr/bin"
-    echo '#!/bin/sh' >"${pkgdir}/usr/bin/o3de-nightly"
-    echo "PATH=\"$PATH:/opt/O3DE/${_engver}/symbin\" CC=/opt/O3DE/${_engver}/symbin/clang-12 CXX=/opt/O3DE/${_engver}/symbin/clang++-12 /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/o3de-nightly"
-    chmod +x "${pkgdir}/usr/bin/o3de-nightly"
+    echo '#!/bin/sh' >"${pkgdir}/usr/bin/o3de"
+    echo "PATH=\""'$PATH'":/opt/O3DE/${_engver}/symbin\" CC=/opt/O3DE/${_engver}/symbin/clang-12 CXX=/opt/O3DE/${_engver}/symbin/clang++-12 /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/o3de"
+    chmod +x "${pkgdir}/usr/bin/o3de"
 
     # Extract .ico and install icons
     icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o .
