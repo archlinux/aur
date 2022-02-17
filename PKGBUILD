@@ -7,7 +7,7 @@ arch=("any")
 url="https://code.google.com/archive/p/customizemii/source/default/source"
 license=("GPL3")
 source=("https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/customizemii/source-archive.zip")
-sha256sums=("SKIP")
+sha256sums=("81ddba3a401e1360249da5b0d9988f58f47105fc4130237072e82a8929f997e6")
 
 package() {
   mkdir -p "$pkgdir/opt/customizemii"
