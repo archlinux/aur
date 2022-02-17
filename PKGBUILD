@@ -1,4 +1,4 @@
-# Maintainer: Johan Brandhorst <jbrandhorst@buf.build>
+# Maintainer: Buf <bot@buf.build>
 # Contributor: William Turner <willtur.will@gmail.com>
 pkgname=buf-bin
 pkgver=1.0.0rc12
