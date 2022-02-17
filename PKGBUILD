@@ -1,7 +1,7 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=ffmpeg-ndi
-pkgver=4.4.1
+pkgver=5.0
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with NDI restored and enabled'
 arch=(x86_64)
@@ -94,11 +94,11 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
+_tag=390d6853d0ef408007feb39c0040682c81c02751
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
-  "vmaf-model-path.patch"
-  "Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/Revert-lavd-Remove-libndi_newtek.patch?inline=false"
+  "ffmpeg-vmaf2.x.patch"
+  "master_Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false"
   "libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false"
   "libndi_newtek_dec.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false"
   "libndi_newtek_enc.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false"
@@ -106,8 +106,8 @@ source=(
 )
 sha256sums=(
   "SKIP"
-  "8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d"
-  "5a37c295d01ae02f02b366c3ba4867d27bc3ac29c1420472fbe8e4d7bca3bd4c"
+  "42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298"
+  "a5701faa71ac69c94dc0230b401203d135e48c45980926432f1190ef3218009b"
   "462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4"
   "3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca"
   "83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb"
@@ -123,10 +123,8 @@ pkgver() {
 prepare() {
   cd ffmpeg
 
-  git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-
-  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-  patch -Np1 -i "${srcdir}"/Revert-lavd-Remove-libndi_newtek.patch
+  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch
+  patch -Np1 -i "${srcdir}"/master_Revert-lavd-Remove-libndi_newtek.patch
 
   printf 'Copying libndi missing file\n'
   cp "${srcdir}"/libndi_newtek_* libavdevice/
