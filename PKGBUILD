@@ -2,33 +2,26 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsync
-pkgver=1.0.1
-_vdrapi=2.6.0
-pkgrel=14
+pkgver=1.0.2
+_vdrapi=2.6.1
+pkgrel=2
 pkgdesc="Import the EPG of a remote VDR"
-url="http://vdr.schmirler.de/"
+url="https://github.com/vdr-projects/vdr-plugin-epgsync"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 _plugname=${pkgname//vdr-/}
-source=("http://vdr.schmirler.de/$_plugname/$pkgname-$pkgver.tgz"
-        "$pkgname-vdr-2.3.2.patch")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-epgsync/archive/refs/tags/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('694024ecd7bb813d43620ded63fc3ab4'
-         '24a386237052d15ceb7c78f51e28553d')
-
-prepare() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
-  patch -p1 -i "$srcdir/$pkgname-vdr-2.3.2.patch"
-}
+sha256sums=('246a9abf9a7b3294d624f1eb9fe46453130464dfd0cd6ff8f49ace2b5272b5be')
 
 build() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_plugname}-${pkgver}"
+  cd "${srcdir}/vdr-plugin-${_plugname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
