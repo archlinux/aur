@@ -2,7 +2,7 @@
 
 pkgname=python-pynamodb
 # https://pynamodb.readthedocs.io/en/latest/release_notes.html
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="A pythonic interface to Amazon's DynamoDB"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
   'python-blinker: for signals'
 )
 source=("https://github.com/pynamodb/PynamoDB/archive/$pkgver/PynamoDB-$pkgver.tar.gz")
-sha256sums=('077bfa2915354048c6eb84cbc819dc25b8b468afb83454ad3a78a61e8acfed1a')
+sha256sums=('637f7e05eeec0fe7edbba7d1d1c5e168299e1edd87d26c7535c2cde2ff01b382')
 
 build() {
   cd PynamoDB-$pkgver
