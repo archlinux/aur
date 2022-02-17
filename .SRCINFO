@@ -5,7 +5,7 @@ pkgbase = biblereader
 	url = https://vance.fish/git/biblereader/
 	arch = x86_64
 	license = GPL
-	depends = gtkmm
+	depends = gtkmm3
 	depends = libbible>=1.0.1
 	source = https://vance.fish/git/biblereader//snapshot/biblereader-1.0.5.tar.gz
 	source = https://vance.fish/git/biblereader//snapshot/biblereader-1.0.5.tar.gz.asc

@@ -7,7 +7,7 @@ pkgdesc="GTK Frontend for libbible"
 arch=('x86_64')
 url="https://vance.fish/git/biblereader/"
 license=('GPL')
-depends=(gtkmm 'libbible>=1.0.1')
+depends=(gtkmm3 'libbible>=1.0.1')
 source=($url/snapshot/$pkgname-$pkgver.tar.gz{,.asc})
 validpgpkeys=('2FCF3A100A5B5C0E78E41BDB215A56B23729BC81') # Nathan Vance <natervance@gmail.com>
 
