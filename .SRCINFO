@@ -1,7 +1,7 @@
 pkgbase = 86box
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -19,13 +19,11 @@ pkgbase = 86box
 	depends = rtmidi
 	depends = sdl2
 	optdepends = 86box-roms: ROM files
-	provides = 86box
-	conflicts = 86box
-	source = https://github.com/86Box/86Box/archive/refs/tags/v3.2.tar.gz
+	source = https://github.com/86Box/86Box/archive/refs/tags/v3.2.1.tar.gz
 	source = 86box
 	source = 86Box.desktop
-	sha256sums = 418a6d3a87cf34cb10da1828ed526c811a47dfd47127be2b65258c4458575268
-	sha256sums = c76882ed325072ff88953c6deaa398df05b46732c5b99bd58023d7f9e3c65435
-	sha256sums = 67f2aacd0e39f0fda19412fa5b9b64fab347a68ed2f4e5e7bb437833f311a5a0
+	sha512sums = d725b9c2d2ada47e4492dd09c79af15010a03b174cf99705cf7ffbd4de39aa3a745bf5ab41e4f173e89f4c8d9c130e7540014a1824ff34bb88e634d8dc7860eb
+	sha512sums = 3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38
+	sha512sums = 143447f38e3ddf458f469dffd37897503112100cf69d46dbe6810f5e64c32d91d87dcb46fe4447cda8d2fb91dd2f1b868ee1e43575a972280801b40cf7cfbd85
 
 pkgname = 86box

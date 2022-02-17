@@ -1,8 +1,8 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box
 _pkgname=86Box
-pkgver=3.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
@@ -15,13 +15,11 @@ source=(
     '86box'
     '86Box.desktop'
 )
-sha256sums=(
-    '418a6d3a87cf34cb10da1828ed526c811a47dfd47127be2b65258c4458575268'
-    'c76882ed325072ff88953c6deaa398df05b46732c5b99bd58023d7f9e3c65435'
-    '67f2aacd0e39f0fda19412fa5b9b64fab347a68ed2f4e5e7bb437833f311a5a0'
+sha512sums=(
+    'd725b9c2d2ada47e4492dd09c79af15010a03b174cf99705cf7ffbd4de39aa3a745bf5ab41e4f173e89f4c8d9c130e7540014a1824ff34bb88e634d8dc7860eb'
+    '3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38'
+    '143447f38e3ddf458f469dffd37897503112100cf69d46dbe6810f5e64c32d91d87dcb46fe4447cda8d2fb91dd2f1b868ee1e43575a972280801b40cf7cfbd85'
 )
-provides=('86box')
-conflicts=('86box')
 
 build() {
     if [ "$CARCH" == arm7h ] || [ "$CARCH" == aarch64 ]; then
