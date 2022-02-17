@@ -11,8 +11,9 @@ pkgname=('pipewire-git'
          'pipewire-v4l2-git'
          'pipewire-roc-git'
          'pipewire-libcamera-git'
+         'pipewire-x11-bell-git'
          )
-pkgver=0.3.43.153.g4f57f3cda
+pkgver=0.3.46.3.gae14ef7a4
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -50,6 +51,7 @@ makedepends=('git'
 checkdepends=('desktop-file-utils'
               'valgrind'
               )
+options=('debug')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
 
@@ -91,12 +93,12 @@ check() {
 }
 
 _pick() {
-  local p="${1}" f d; shift
-  for f; do
-    d="${srcdir}/${p}/${f#$pkgdir/}"
-    mkdir -p "$(dirname "${d}")"
-    mv "${f}" "${d}"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "${f}")"
+  local _p="${1}" _f _d; shift
+  for _f; do
+    _d="${srcdir}/${_p}/${_f#${pkgdir}/}"
+    mkdir -p "$(dirname "${_d}")"
+    mv "${_f}" "${_d}"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "${_f}")"
   done
 }
 
@@ -119,7 +121,6 @@ package_pipewire-git() {
            'libwebrtc_audio_processing.so'
            'libusb-1.0.so'
            'liblilv-0.so'
-           'libcanberra.so'
            'libx11'
            )
   optdepends=('pipewire-docs-git: Documentation'
@@ -133,6 +134,9 @@ package_pipewire-git() {
               'pipewire-v4l2-git: V4L2 interceptor'
               'pipewire-roc-git: ROC support'
               'pipewire-libcamera-git: libcamera support'
+              'pipewire-x11-bell-git: X11 bell'
+              'realtime-privileges: realtime privileges with rt module'
+              'rtkit: realtime privileges with rtkit module'
               )
   provides=("pipewire=${pkgver}"
             "libpipewire-${_ver}.so"
@@ -146,6 +150,9 @@ package_pipewire-git() {
   install=pipewire-git.install
 
   DESTDIR="${pkgdir}" meson install -C build
+
+  # install directory for overrides
+  install -vdm 755 "${pkgdir}/etc/${pkgbase}/"
 
   (cd "${pkgdir}"
 
@@ -186,11 +193,13 @@ package_pipewire-git() {
 
   _pick camera usr/lib/spa-0.2/libcamera
 
+  _pick x11-bell "usr/lib/pipewire-${_ver}/libpipewire-module-x11-bell.so"
+
   )
 
   chrpath -d "${pkgdir}/usr/lib/pipewire-${_ver}/libpipewire-module-rtkit.so"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-docs-git() {
@@ -201,7 +210,7 @@ package_pipewire-docs-git() {
 
   mv docs/* "${pkgdir}"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-jack-git() {
@@ -209,6 +218,7 @@ package_pipewire-jack-git() {
   license+=('GPL2')  # libjackserver
   depends=('pipewire-session-manager'
            "libpipewire-${_ver}.so"
+           'sh'
            )
   backup=('usr/share/pipewire/jack.conf')
   provides=("pipewire-jack=${pkgver}"
@@ -227,7 +237,7 @@ package_pipewire-jack-git() {
 
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-jack"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-pulse-git() {
@@ -255,7 +265,7 @@ package_pipewire-pulse-git() {
 
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-pulseaudio"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-alsa-git() {
@@ -280,7 +290,7 @@ package_pipewire-alsa-git() {
 
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-alsa"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-ffmpeg-git() {
@@ -294,7 +304,7 @@ package_pipewire-ffmpeg-git() {
 
   mv ffmpeg/* "${pkgdir}"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-zeroconf-git() {
@@ -309,7 +319,7 @@ package_pipewire-zeroconf-git() {
 
   mv zeroconf/* "${pkgdir}"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-v4l2-git() {
@@ -317,13 +327,14 @@ package_pipewire-v4l2-git() {
   depends=("pipewire-git=${pkgver}"
            'pipewire-session-manager'
            "libpipewire-${_ver}.so"
+           'sh'
            )
   provides=("pipewire-v4l2=${pkgver}")
   conflicts=('pipewire-v4l2')
 
   mv v4l2/* "${pkgdir}"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-roc-git() {
@@ -337,7 +348,7 @@ package_pipewire-roc-git() {
 
   mv roc/* "${pkgdir}"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
 
 package_pipewire-libcamera-git() {
@@ -351,5 +362,19 @@ package_pipewire-libcamera-git() {
 
   mv camera/* "${pkgdir}"
 
-  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 pipewire/COPYING
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
+}
+
+package_pipewire-x11-bell-git() {
+  pkgdesc+=" - X11 bell (GIT version)"
+  depends=('libcanberra.so'
+           "libpipewire-${_ver}.so"
+           'libx11'
+           )
+  provides=("pipewire-x11-bell=${pkgver}")
+  conflicts=('pipewire-x11-bell')
+
+  mv x11-bell/* "${pkgdir}"
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
 }
