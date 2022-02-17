@@ -9,13 +9,13 @@ arch=('x86_64')
 url="https://github.com/woodruffw/kbs2"
 license=('MIT')
 depends=('libx11' 'gcc-libs')
-makedepends=('rust' 'python')
+makedepends=('cargo' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('ec6bbef7abed8343a46e3c4e19760ace9c8cac9eeaed28af692aa466fae4a6d185454e8a1f0bfffd861c37b3340b1aaf0303c68eae7b484ebe74e059f57a915e')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
