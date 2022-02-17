@@ -5,11 +5,10 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=7
-_rc=3
+pkgrel=8
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
-_tag_ver="v${_pkgver}-rc${_rc}"
+_tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('armhf' 'arm64' 'amd64')
@@ -22,7 +21,7 @@ _debdeps=""
 _scripts="skywire-deb-scripts"
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
-source=("https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
+source=(
 "${_scripts}.tar.gz"
 "${_release_url}-amd64.tar.gz"
 "${_release_url}-arm64.tar.gz"
@@ -33,15 +32,14 @@ noextract=(
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}arm.tar.gz"
 )
-sha256sums=('42afb6366b877fbfe30905256cf1ec357bcc6a9e8456dfbd4935feb9bd237d1b'
-            'a84b61364842e914d550923fd3fc005013fa1a4ecfa3d5e9f491d2c6b2182118'
-            '652c78caf6e0e7a9d36f29fcb04b1113dfa631881da4fe74870216f5c291f131'
-            '93a5789ce2f2e3135af4805d7c920932bae3612cd92bff2c60d060c2ccd3ed37'
-            '40f65238f4259a83ac14251577a38e8e7ab0e3759db8a4408a58788bd17e2b32')
+sha256sums=('a84b61364842e914d550923fd3fc005013fa1a4ecfa3d5e9f491d2c6b2182118'
+            '2358b979e9eb917ffcbaf2236051a300d0d0f684edfeec840399c09d75751aa1'
+            'bd8e28b1829bb17d6a975c2c0b93c5355ba90540a84541aa3852ea93c1445810'
+            'a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
 
 build() {
   for i in ${_pkgarches[@]}; do
-    msg2 "_pkgarch=$i"
+    _msg2 "_pkgarch=$i"
     local _pkgarch=$i
 
     _msg2 'creating the DEBIAN/control files'
@@ -62,7 +60,7 @@ build() {
 package() {
 
 for i in ${_pkgarches[@]}; do
-msg2 "_pkgarch=${i}"
+_msg2 "_pkgarch=${i}"
 local _pkgarch=${i}
 
 if [[ $_pkgarch == "amd64" ]] ; then
