@@ -93,14 +93,6 @@ package() {
     install -Dm644 LICENSE_MIT.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_MIT.txt"
     install -Dm644 LICENSE_APACHE2.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_APACHE2.txt"
 
-    # Change ownership to user
-    if [ ! "$(logname 2>&1 >/dev/null)" ]; then
-        _user=$(logname)
-        _group=$(id -g -n ${_user})
-    else
-        _user=root
-        _group=root
-    fi
-    chown -R ${_user}:${_group} ${pkgdir}/opt/O3DE/${_engver}
+    # Fix warning for mismatched /opt permissions
     chmod --reference /opt "${pkgdir}"/opt
 }
