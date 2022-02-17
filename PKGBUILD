@@ -1,8 +1,8 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocm-smi-lib64
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='ROCm System Management Interface Library'
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/rocm_smi_lib"
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cmake' 'doxygen' 'texlive-latexextra')
 options=(!staticlibs strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-$pkgver.tar.gz")
-sha256sums=('9d0e560072f815b441528a5d6124e901570a5a04e9cff1f21329861609b37203')
+sha256sums=('bf0beb092522ef06f94e7763217678ec6cba160ace1de3e1e0a61bf4ae251135')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 
