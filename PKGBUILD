@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kbs2-git
-pkgver=0.4.0.r1.gc272fdc
+pkgver=0.5.1.r1.g53058c1
 pkgrel=1
 pkgdesc="A secret manager backed by age (git)"
 arch=('x86_64')
 url="https://github.com/woodruffw/kbs2"
 license=('MIT')
 depends=('libx11' 'gcc-libs')
-makedepends=('rust' 'python' 'git')
+makedepends=('cargo' 'python' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
