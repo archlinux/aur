@@ -60,7 +60,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=4.4.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -311,6 +311,7 @@ if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
     --enable-cuda-nvcc --enable-libnpp --enable-cuvid --disable-cuda-llvm
     --nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
   )
+  provides+=(ffmpeg-cuda)
 else
   _args+=(--enable-cuda-llvm --disable-cuvid)
 fi
@@ -325,12 +326,14 @@ if [[ $FFMPEG_OBS_DECKLINK == 'ON' ]]; then
   _nonfree_enabled=ON
   makedepends+=('decklink-sdk')
   _args+=(--enable-decklink)
+  provides+=(ffmpeg-decklink)
 fi
 
 if [[ $FFMPEG_OBS_LIBFDK_AAC == 'ON' ]]; then
   _nonfree_enabled=ON
   depends+=(libfdk-aac)
   _args+=(--enable-libfdk-aac)
+  provides+=(ffmpeg-libfdk_aac)
 fi
 
 if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
@@ -349,6 +352,7 @@ if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
     '83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb'
   )
   _args+=(--enable-libndi_newtek)
+  provides+=(ffmpeg-ndi)
 fi
 
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
@@ -366,12 +370,15 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     'b7d722dfce20b73e9d5c73d55ffe041bbdc92a3c4a5c5d766b6b3040671b4052'
   )
   _args+=(--enable-libsvtvp9 --enable-libsvthevc)
+  provides+=(ffmpeg-svt-av1)
+  provides+=(ffmpeg-svt-vp9)
 fi
 
 if [[ $FFMPEG_OBS_VULKAN == 'ON' ]]; then
   depends+=(vulkan-icd-loader glslang spirv-tools)
   makedepends+=(vulkan-headers)
   _args+=(--enable-vulkan --enable-libglslang)
+  provides+=(ffmpeg-vulkan)
 fi
 
 if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
@@ -400,6 +407,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp
   )
   _args+=(--enable-avresample)
+  provides+=(ffmpeg-full)
 else
   _args+=(--disable-sndio) # sndio is not present when upstream package is built
 fi
