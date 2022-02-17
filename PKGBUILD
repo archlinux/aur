@@ -3,24 +3,23 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-
 pkgname='fcitx5-mozc-ut'
-pkgver=2.26.4632.102
+pkgver=2.26.4646.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx5' 'mozc>=2.26.4632.102')
-makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
+depends=('fcitx5' 'mozc>=2.26.4646.102')
+makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx5-configtool')
-conflicts=('fcitx-mozc' 'fcitx-mozc-ut' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-neologd-ut+ut2' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
+conflicts=('fcitx-mozc' 'fcitx-mozc-ut' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
            'fcitx5-mozc' 'fcitx5-mozc-git')
-provides=('fcitx5-mozc=2.26.4632.102')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c"
+provides=('fcitx5-mozc=2.26.4646.102')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            '4a868e7da5ef839472e6149c1ab463d694dc95c79b968cceb8dc1ae673bd6f1b')
+            '8f7065cfec2cf4999bafeb39d66dbd92a763d25786048bca9a1612a4d34b4a69')
 
 prepare() {
     cd ${pkgname}-git
@@ -42,7 +41,7 @@ prepare() {
 build() {
     cd ${pkgname}-git/src
 
-    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --compilation_mode opt
+    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --compilation_mode opt --copt=-fPIC
 }
 
 package() {
