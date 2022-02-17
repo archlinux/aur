@@ -23,7 +23,7 @@
 
 pkgname=matlab-support
 pkgver=9.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -35,6 +35,7 @@ depends=(
     'atk'
     'at-spi2-core'
     'glibc'
+    'libxcrypt-compat'
     'cairo'
     'libcap'
     'libcups'
@@ -111,3 +112,4 @@ depends=(
             msg2 'Installing desktop files'
             install -D -m644 "matlab.desktop" "${pkgdir}/usr/share/applications/matlab.desktop"
         }
+
