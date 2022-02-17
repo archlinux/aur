@@ -1,11 +1,11 @@
 pkgbase = cargo-binstall-git
 	pkgdesc = Binary installation for Rust projects (git)
-	pkgver = 0.5.0.r0.g912dc56
+	pkgver = 0.6.2.r0.g5506ffb
 	pkgrel = 1
 	url = https://github.com/ryankurte/cargo-binstall
 	arch = x86_64
 	license = GPL3
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = zlib
 	depends = openssl
