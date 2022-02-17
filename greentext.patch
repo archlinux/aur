@@ -14,7 +14,7 @@ index 3b6a202cf..3a293d538 100644
 +++ b/src/SlashCommands.tsx
 @@ -155,6 +155,28 @@ function success(promise?: Promise<any>) {
   */
- 
+
  export const Commands = [
 +    new Command({
 +        command: 'greentext',
@@ -25,11 +25,11 @@ index 3b6a202cf..3a293d538 100644
 +            const greentext = texts[0];
 +            const normalText = texts[1] || "";
 +
-+            let plainGreentext = greentext.replace(/^/g, "> ");
-+            plainGreentext = plainGreentext.replace(/(?:\r\n|\r|\n)+/g, "\n> ");
++            let plainGreentext = greentext.replace(/^/g, ">");
++            plainGreentext = plainGreentext.replace(/(?:\r\n|\r|\n)+/g, "\n>");
 +
-+            let htmlGreentext = greentext.replace(/^/g, "&gt; ");
-+            htmlGreentext = htmlGreentext.replace(/(?:\r\n|\r|\n)+/g, "<br />&gt; ");
++            let htmlGreentext = greentext.replace(/^/g, "&gt;");
++            htmlGreentext = htmlGreentext.replace(/(?:\r\n|\r|\n)+/g, "<br />&gt;");
 +
 +            return success(ContentHelpers.makeHtmlMessage(
 +                plainGreentext + "\n" + normalText,
@@ -53,6 +53,5 @@ index c192e51f9..f57e17b78 100644
      "Sends the given message as a spoiler": "Sends the given message as a spoiler",
      "Prepends ¯\\_(ツ)_/¯ to a plain-text message": "Prepends ¯\\_(ツ)_/¯ to a plain-text message",
      "Prepends (╯°□°）╯︵ ┻━┻ to a plain-text message": "Prepends (╯°□°）╯︵ ┻━┻ to a plain-text message",
--- 
+--
 2.34.1
-
