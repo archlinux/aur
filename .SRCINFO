@@ -1,7 +1,7 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
 	pkgver = 7.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tauonmusicbox.rocks
 	arch = any
 	license = GPL3
@@ -22,6 +22,7 @@ pkgbase = tauon-music-box
 	depends = python-natsort
 	depends = python-pulsectl
 	depends = python-websocket-client
+	depends = libnotify
 	depends = ffmpeg
 	depends = flac
 	depends = gst-plugins-good
