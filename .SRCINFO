@@ -1,18 +1,18 @@
 pkgbase = openbooks-bin
 	pkgdesc = Openbooks allows you to download ebooks from irc.irchighway.net quickly and easily.
-	pkgver = 4.2.0
+	pkgver = 4.3.0
 	pkgrel = 1
 	url = https://github.com/evan-buss/openbooks
 	arch = aarch64
 	arch = x86_64
 	provides = openbooks
-	source_aarch64 = openbooks::https://github.com/evan-buss/openbooks/releases/download/v4.2.0/openbooks_linux_arm
+	source_aarch64 = openbooks::https://github.com/evan-buss/openbooks/releases/download/v4.3.0/openbooks_linux_arm
 	source_aarch64 = https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md
-	sha256sums_aarch64 = b4ff6fe2036c04fbe8a394929a278b6e683ba89f7094cc88c5b14f6f0c50e18b
-	sha256sums_aarch64 = d12c572d0a0fa608fbeb8e5168b1da10129646fabcc6e1f8d1d6dcd1afe65e8d
-	source_x86_64 = openbooks::https://github.com/evan-buss/openbooks/releases/download/v4.2.0/openbooks_linux
+	sha256sums_aarch64 = ac617ed45fc644a66398747531f7840c68b825ac60ca326f9306193f937231c8
+	sha256sums_aarch64 = e3f01a7b7210b404d75ab12101eea2dbaafdf859f51a89e98fe3a2ca957f4b99
+	source_x86_64 = openbooks::https://github.com/evan-buss/openbooks/releases/download/v4.3.0/openbooks_linux
 	source_x86_64 = https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md
-	sha256sums_x86_64 = 51d1e0bba4539498ef81a062e93013ab3298c114d93a1de8aa08f4abf3b94b47
-	sha256sums_x86_64 = d12c572d0a0fa608fbeb8e5168b1da10129646fabcc6e1f8d1d6dcd1afe65e8d
+	sha256sums_x86_64 = ac617ed45fc644a66398747531f7840c68b825ac60ca326f9306193f937231c8
+	sha256sums_x86_64 = e3f01a7b7210b404d75ab12101eea2dbaafdf859f51a89e98fe3a2ca957f4b99
 
 pkgname = openbooks-bin
