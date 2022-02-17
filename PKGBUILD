@@ -3,7 +3,7 @@
 # shellcheck disable=all
 
 pkgname=shellfetch
-pkgver=2022.02.16
+pkgver=2022.02.17
 pkgrel=1
 pkgdesc="Shell System Information Fetcher"
 arch=('any')
@@ -13,10 +13,10 @@ license=('MIT')
 depends=('bash' 'xorg-xrandr' 'figlet')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('c0d3e4437b25195e9e40451596d92964809e26a49c955edc441cb5efb9337b3d')
+sha256sums=('a7484f8f89f7082557ac45091745d3d0d47ce667ff848f2561727bd671f7b8da')
 
 package() {
-  cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
