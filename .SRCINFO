@@ -1,0 +1,22 @@
+pkgbase = voicevox-appimage
+	pkgdesc = Offical Frontend for the free VOICEVOX TTS Engine
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://voicevox.hiroshiba.jp/
+	arch = x86_64
+	license = LGPLv3
+	license = custom
+	makedepends = p7zip
+	depends = glibc
+	depends = libsndfile
+	provides = voicevox
+	conflicts = voicevox
+	options = !strip
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/VOICEVOX.AppImage.7z.001
+	source = https://github.com/VOICEVOX/voicevox/releases/download/0.10.4/VOICEVOX.AppImage.7z.002
+	source = voicevox.sh
+	sha512sums = c3d5d95162bf0b9aa99b5de69f04c24e51ca8f52accd7094e95b04b0406beb0d79e020c1f8d9c8ffb77c6102d647bfadfa7a4b5df1bcf2c0a1fb2cfd5aeb4a39
+	sha512sums = 3d767a2f16363d81472c0df715a12a7826a2dc2b5ee1970373981c3fd48809c7acccd1789407f0c66f9e4944ef2b64e9aa2b78f470290e8e4c37b670a763c18a
+	sha512sums = SKIP
+
+pkgname = voicevox-appimage
