@@ -1,13 +1,13 @@
 # Maintainer: Philipp Kühn <p dot kuehn at posteo dot de>
 pkgname=sioyek-git
-pkgver=20211105
+pkgver=20220216
 pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('any')
 license=('GPL3')
 provides=('sioyek')
 url="https://github.com/ahrm/sioyek"
-depends=('qt5-base' 'qt5-3d' 'harfbuzz' 'gzip')
+depends=('qt5-base' 'qt5-3d' 'harfbuzz' 'gzip' 'libmupdf' 'zlib' 'gumbo-parser' 'openjpeg2' 'jbig2dec')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/ahrm/sioyek")
 md5sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
-	git submodule update --init --recursive
+	sed -i 's/-lmupdf-third -lmupdf-threads -lharfbuzz/-lmupdf-third -lharfbuzz -lfreetype -lgumbo -ljbig2dec -lopenjp2 -ljpeg/' pdf_viewer_build_config.pro
 	sed -i 's/\/\/#define LINUX_STANDARD_PATHS/#define LINUX_STANDARD_PATHS/' pdf_viewer/main.cpp
 }
 
