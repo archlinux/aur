@@ -9,7 +9,7 @@ pkgdesc='Crypto.org Chain desktop wallet (AppImage version)'
 license=('Apache')
 url='https://github.com/crypto-com/chain-desktop-wallet'
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 provides=('cro-chain-desktop')
 conflicts=('cro-chain-desktop')
@@ -37,7 +37,6 @@ package() {
   cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$_pkgname/"
   rm -rf "${pkgdir}/opt/${_pkgname}/usr/share"
   rm -f "${pkgdir}/opt/${_pkgname}/chain-desktop-wallet.png"
-  chmod -R +rx "$pkgdir/opt/$_pkgname"
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$_pkgname/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
