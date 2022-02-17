@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-git
-pkgver=1.0.0+763.r0.g70c1624
+pkgver=1.0.6+880.r1.g45fe3b5
 pkgrel=1
 pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
 license=('GPL')
@@ -28,6 +28,8 @@ build(){
   cd "$srcdir/RPMLauncher/"
   build_id=`git describe --tags --abbrev=0 | sed 's/[0-9]*\.[0-9]*\.[0-9]*\.//'`
   version_id=`git describe --tags --abbrev=0 | sed "s/\.$build_id//"`
+  dart pub global activate cider
+  dart pub global run cider version $version_id
   flutter build linux --dart-define="build_id=$build_id" --dart-define="version_type=debug" --dart-define="version=$version_id"
   chmod +x "$srcdir/RPMLauncher/build/linux/x64/release/bundle/RPMLauncher"
 }
