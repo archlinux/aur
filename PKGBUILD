@@ -36,7 +36,7 @@ source=("$_archive.tar.gz::$_repourl/archive/$pkgver.tar.gz"
         config_site.h)
 sha256sums=('45f6604372df3f49293749cd7c0b42cb21c4fb666c66f8ed9765de004d1eae38'
             'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
-            '2c4102f143bbe045946c417c74596475b0a875c70fa1bb5c7e12fc1f8df15a7c'
+            'cc83777a701a2ee53053624f5be0721ed977501d0dca2e075e20941d42ec0a1a'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
 prepare() {
