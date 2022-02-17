@@ -1,11 +1,22 @@
-pkgdesc="ROS - node to publish a video stream in ROS image topics."
-url='http://wiki.ros.org/video_stream_opencv'
-
+# Maintainer: Kanishk <kanishk.vishwa2001@gmail.com>
 pkgname='ros-noetic-video-stream-opencv'
 pkgver='1.1.6'
-arch=('any')
 pkgrel=2
+pkgdesc="ROS - node to publish a video stream in ROS image topics."
+arch=('any')
+url='http://wiki.ros.org/video_stream_opencv'
+
 license=('BSD')
+
+ros_depends=(ros-noetic-roscpp
+  ros-noetic-dynamic-reconfigure
+  ros-noetic-image-transport
+  ros-noetic-rospy
+  ros-noetic-camera-info-manager
+  ros-noetic-sensor-msgs
+  ros-noetic-cv-bridge
+  ros-noetic-nodelet)
+depends=(${ros_depends[@]})
 
 ros_makedepends=(ros-noetic-roscpp
   ros-noetic-dynamic-reconfigure
@@ -18,16 +29,6 @@ ros_makedepends=(ros-noetic-roscpp
   ros-noetic-nodelet)
 makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
-
-ros_depends=(ros-noetic-roscpp
-  ros-noetic-dynamic-reconfigure
-  ros-noetic-image-transport
-  ros-noetic-rospy
-  ros-noetic-camera-info-manager
-  ros-noetic-sensor-msgs
-  ros-noetic-cv-bridge
-  ros-noetic-nodelet)
-depends=(${ros_depends[@]})
 
 _dir="video_stream_opencv-release-release-noetic-video_stream_opencv"
 
