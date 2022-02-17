@@ -1,14 +1,14 @@
 pkgbase = league-mono-font
 	pkgdesc = A monospace typeface inspired by Fira Mono, Libertinus Mono, and Courier
-	pkgver = 2.220
+	pkgver = 2.300
 	pkgrel = 1
 	epoch = 1
 	url = https://www.theleagueofmoveabletype.com/league-mono
 	arch = any
 	groups = lmt-fonts
 	license = OFL
-	source = https://github.com/theleagueof/league-mono/releases/download/2.220/LeagueMono-2.220.tar.xz
-	sha256sums = 8cd84dfe693b4ffc4eb6f443576c3e90d85cb40e978596dc5aaf10f38619d58c
+	source = https://github.com/theleagueof/league-mono/releases/download/2.300/LeagueMono-2.300.tar.xz
+	sha256sums = 16bdc983aa5eb1803a3c2fbb11d15a8cfa1ce317334a61b01f0f3ab302fdcf0d
 
 pkgname = otf-league-mono
 	provides = league-mono-font
@@ -18,4 +18,3 @@ pkgname = ttf-league-mono
 
 pkgname = ttf-league-mono-variable
 	provides = league-mono-font-variable
-

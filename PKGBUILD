@@ -5,7 +5,7 @@ _name=league-mono
 _fname=LeagueMono
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
-pkgver=2.220
+pkgver=2.300
 pkgrel=1
 epoch=1
 pkgdesc='A monospace typeface inspired by Fira Mono, Libertinus Mono, and Courier'
@@ -14,7 +14,7 @@ url="https://www.theleagueofmoveabletype.com/$_name"
 license=('OFL')
 groups=('lmt-fonts')
 source=("https://github.com/theleagueof/$_name/releases/download/$pkgver/$_fname-$pkgver.tar.xz")
-sha256sums=('8cd84dfe693b4ffc4eb6f443576c3e90d85cb40e978596dc5aaf10f38619d58c')
+sha256sums=('16bdc983aa5eb1803a3c2fbb11d15a8cfa1ce317334a61b01f0f3ab302fdcf0d')
 
 package_otf-league-mono() {
     provides=("$pkgbase")
