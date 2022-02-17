@@ -1,5 +1,6 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Guillaume Alaux <guillaume@archlinux.org>
 # Contributor: William Gathoye <william + archlinux at gathoye dot be>
 # Contributor: Emanuel Couto <emanuel dot amaral dot couto at gmail dot com>
@@ -21,7 +22,7 @@ _patchver=1
 _updatever=1
 pkgver=${_majorver}.${_minorver}.${_securityver}.${_patchver}.u${_updatever}
 #pkgver=${_majorver}.u${_updatever}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX ${_majorver} client application platform (open-source implementation of JavaFX)"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
@@ -31,7 +32,7 @@ makedepends=(
   ant
   cairo
   cmake
-  ffmpeg
+  ffmpeg4.4
   freetype2
   gradle
   gdk-pixbuf2
@@ -60,7 +61,7 @@ source=(
 )
 sha256sums=('7398a87b1c1b593a2610ef84dd8b0fc31fc9a87dc5185ea4d1ef71b560920a5d'
             '2622aa35d733cc69f4421f1cd053bf425e89f93141cb52c9f016a9b425fc0cb6'
-            '26a11b7f9bdba382de16fea691d01de270e79b055f765f7475294dd69605604c'
+            'c5a39e6782c952d346935e49ea08c723cc06e0347c486459d0bdeaf097a1ce51'
             '220c63396561867a6d07ae81b6390160d8f91502587e4873998e3b7a83793a1c'
             'd7f9db86854b1cb8ab973c2ff255e51a637b9c24af30144182202d33f01a9434')
 
@@ -77,6 +78,9 @@ prepare() {
 build() {
   cd jfx-${pkgver//.u/-}
 
+  # build against ffmpeg4.4
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
+
   gradle zips
 }
 
@@ -84,7 +88,7 @@ package_java-openjfx() {
   depends=(
     alsa-lib
     cairo
-    ffmpeg
+    ffmpeg4.4
     gdk-pixbuf2
     glib2
     gtk2
