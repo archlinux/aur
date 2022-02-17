@@ -2,7 +2,7 @@
 pkgname="filius"
 pkgver="1.13.2"
 _pkgver="${pkgver}"
-pkgrel=0
+pkgrel=1
 pkgdesc="Network simulation program"
 arch=('any')
 url="http://www.lernsoftware-filius.de"
@@ -16,7 +16,7 @@ package() {
   mkdir -p $pkgdir/usr/share/filius/
   mkdir -p $pkgdir/usr/share/pixmaps/
   mkdir -p $pkgdir/usr/share/applications/
-
+  mkdir -p $pkgdir/usr/share/mime/packages/
   rm Filius.exe
   rm Filius.command
   # mv lib $pkgdir/usr/lib/filius
@@ -46,18 +46,31 @@ hw4VO3UnHMS+rGT/zG1olRgpe96YnXAQKyP2vP1zYC3wHXgPvIopKfCjFZfD4XA9NdaISNInt75F
 8ud56qf8L3SUS7sHJVXXAAAAAElFTkSuQmCC
 EOF
 
+cat > $pkgdir/usr/share/mime/packages/filius.xml << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+    <mime-type type="application/x-filius">
+        <comment>Filius file</comment>
+        <icon name="filius32"/>
+        <glob-deleteall/>
+        <glob pattern="*.fls"/>
+    </mime-type>
+</mime-info>
+EOF
+
 cat > $pkgdir/usr/share/applications/filius.desktop << EOF
 [Desktop Entry]
 Name=Filius
 Name[de]=Filius
 Comment=Learn how Computer Networks are built
 Comment[de]=Lernsoftware zu Rechnernetzen
-Exec=/usr/share/filius/filius.sh
+Exec=/usr/share/filius/filius.sh %U
 Icon=filius32
 Terminal=false
 Type=Application
 Categories=Education
 StartupNotify=false
+MimeType=application/x-filius
 EOF
 
 }
