@@ -1,0 +1,12 @@
+diff '--color=auto' -aur src.orig/wsaccel-py2/setup.py src/wsaccel-py2/setup.py
+--- src.orig/wsaccel-py2/setup.py	2022-02-18 00:09:52.501053681 +0100
++++ src/wsaccel-py2/setup.py	2022-02-18 00:10:00.177792331 +0100
+@@ -17,7 +17,7 @@
+ 
+ def cythonize(src):
+     sys.stderr.write("cythonize: %r\n" % (src,))
+-    subprocess.check_call("cython %s" % (src,), shell=True)
++    subprocess.check_call("cython2 %s" % (src,), shell=True)
+ 
+ def ensure_source(src):
+     pyx = os.path.splitext(src)[0] + '.pyx'
