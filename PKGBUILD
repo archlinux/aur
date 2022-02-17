@@ -2,11 +2,11 @@
 
 pkgname=proton-ge-custom
 _srctag=7.2-GE-2
-_commit=aaed7594af661c3bda822869de30c066e523dd5c
+_commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -105,7 +105,7 @@ makedepends=(${makedepends[@]} ${depends[@]})
 provides=('proton')
 #install=${pkgname}.install
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit}
+    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
     wine::git+https://github.com/wine-mirror/wine.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
@@ -119,9 +119,10 @@ source=(
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
     vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+    gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
@@ -130,7 +131,6 @@ source=(
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
-    gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
@@ -145,9 +145,9 @@ noextract=(
 )
 
 _make_wrappers () {
-    #     _arch     prefix   gcc    ld             as
-    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32")
-    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64")
+    #     _arch     prefix   gcc    ld             as     strip
+    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32" "elf32-i386")
+    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64" "elf64-x86-64")
     local _opts=(_i686 _x86_64)
     declare -n _opt
     for _opt in "${_opts[@]}"; do
@@ -167,6 +167,10 @@ EOF
         install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-as <<EOF
 #!/usr/bin/bash
 /usr/bin/as ${_opt[3]} "\$@"
+EOF
+        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-strip <<EOF
+#!/usr/bin/bash
+/usr/bin/strip -F ${_opt[4]} "\$@"
 EOF
     done
 }
@@ -209,9 +213,10 @@ prepare() {
         OpenXR-SDK
         dxvk-nvapi
         vkd3d-valve::vkd3d
-        SPIRV-Headers
         Vulkan-Headers
+        SPIRV-Headers
         Vulkan-Loader
+        gst-libav
         wine-staging
         ffmpeg-meson::ffmpeg
         lsteamclient-gloriouseggroll::lsteamclient
@@ -219,7 +224,6 @@ prepare() {
         protonfixes-gloriouseggroll::protonfixes
         gst-plugins-bad
         gst-plugins-ugly
-        gst-libav
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -306,24 +310,24 @@ build() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
-    export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export CFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
+    export CXXFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
+    export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
     # combination of AVX instructions and tree vectorization (implied by O3),
     # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
     # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
     # crashing with AVX regardless, but 64bit applications worked just fine.
-    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
-    # AVX2 seems to degrade performance. So disregard the above.
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    #export CFLAGS+=" -mno-avx -mno-avx2"
-    #export CXXFLAGS+=" -mno-avx -mno-avx2"
+    # AVX is "hard" disabled for 32bit in any case.
+    # AVX2 for 64bit is disabled below.
+    export CFLAGS+=" -mno-avx2"
+    export CXXFLAGS+=" -mno-avx2"
 
     export WINEESYNC=0
     export WINEFSYNC=0
@@ -397,6 +401,6 @@ sha256sums=('SKIP'
             '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
             'b121625686227bb9e51b44e1e2e762250d34b1d3f8d7750787470b1885f3a1c4'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '42e5382ccd6686810dc54aafe391ffb00e874923bd1937b4993ada675e8f7265'
+            '2c28ec06382a53efb3f56c7cc9dd9d4708afdbdee99e8d43ed01e9d4df308978'
             '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
