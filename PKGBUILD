@@ -3,8 +3,8 @@
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
 pkgver=5.0.5
-pkgrel=1
-pkgdesc="Remote Sensing and GIS collection of tools for processing datasets"
+pkgrel=2
+pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
 url='http://www.rsgislib.org'
 license=('GPL3')
@@ -21,7 +21,7 @@ optdepends=(
   'python-h5py: HDF5 files in classification, rastergis, zonalstats and '`
     `'tools.checkdatasets'
   'python-imbalanced-learn: For classification.classimblearn'
-  'python-jinja2: Required by rsgisapplycmd.py CLI command'
+  'python-jinja: Required by rsgisapplycmd.py CLI command'
   'python-lightgbm: For classification.classlightgbm'
   'python-matplotlib: Enable tools.plotting, out_plot_file parameter and '`
     `'imagecalc.specunmixing.plot_endmembers'
