@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=colloid-gtk-theme-git
-pkgver=2022.01.08.r4.g9aebfec
+pkgver=2022.01.08.r17.g7ca237a
 pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
 url="https://www.pling.com/p/1661959"
 license=('GPL3')
-makedepends=('git' 'gnome-shell' 'sassc')
+makedepends=('git' 'sassc')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'colloid-icon-theme: Matching icon theme')
 provides=("${pkgname%-git}")
