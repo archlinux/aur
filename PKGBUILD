@@ -4,8 +4,8 @@
 pkgname=vdr-duplicates
 pkgver=1.0.1
 _gitver=68739fd72beb9745b3e47b9e466311ef23a8ca97
-_vdrapi=2.6.0
-pkgrel=6
+_vdrapi=2.6.1
+pkgrel=7
 pkgdesc="Shows duplicate recordings"
 url="https://projects.vdr-developer.org/git/vdr-plugin-duplicates.git"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
