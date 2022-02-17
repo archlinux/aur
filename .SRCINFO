@@ -16,6 +16,7 @@ pkgbase = wine-lol-glibc
 	optdepends = gd: for memusagestat
 	options = !strip
 	options = staticlibs
+	options = !lto
 	source = https://ftp.gnu.org/gnu/glibc/glibc-2.35.tar.xz
 	source = wine-lol-poc1-glibc.diff::https://bugs.winehq.org/attachment.cgi?id=64482
 	md5sums = dd571c67d85d89d7f60b854a4e207423
