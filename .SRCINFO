@@ -1,6 +1,6 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
-	pkgver = 7.1.0
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://tauonmusicbox.rocks
 	arch = any
@@ -41,11 +41,10 @@ pkgbase = tauon-music-box
 	optdepends = unrar: RAR archive extraction support
 	optdepends = python-plexapi: Plex streaming
 	optdepends = python-pypresence: Discord status support
-	optdepends = python-tekore: Spotify playback control
 	optdepends = python-pychromecast: Chromecast stream support
 	optdepends = picard: Recommended tag editor
 	optdepends = gst-plugins-ugly: For GStreamer WMA support
-	source = tauon-music-box-7.1.0.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v7.1.0.tar.gz
-	md5sums = 59afa69f6553403273db61a8361b393c
+	source = tauon-music-box-7.1.1.tar.gz::https://github.com/Taiko2k/TauonMusicBox/archive/v7.1.1.tar.gz
+	md5sums = 43dd7fc52e3b749254c35581b438db43
 
 pkgname = tauon-music-box
