@@ -1,6 +1,6 @@
 pkgbase = jdk11-temurin
 	pkgdesc = Temurin 11 (OpenJDK 11 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 11.0.14.u9
+	pkgver = 11.0.14.1.u1
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk11-temurin.sh
@@ -17,18 +17,18 @@ pkgbase = jdk11-temurin
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11.0.14.u9
-	provides = jre-openjdk-headless=11.0.14.u9
+	provides = jre11-openjdk-headless=11.0.14.1.u1
+	provides = jre-openjdk-headless=11.0.14.1.u1
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11.0.14.u9
-	provides = jre-openjdk=11.0.14.u9
+	provides = jre11-openjdk=11.0.14.1.u1
+	provides = jre-openjdk=11.0.14.1.u1
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.14.u9
-	provides = jdk-openjdk=11.0.14.u9
-	provides = openjdk11-src=11.0.14.u9
-	provides = openjdk-src=11.0.14.u9
+	provides = jdk11-openjdk=11.0.14.1.u1
+	provides = jdk-openjdk=11.0.14.1.u1
+	provides = openjdk11-src=11.0.14.1.u1
+	provides = openjdk-src=11.0.14.1.u1
 	replaces = jdk11-adoptopenjdk
 	backup = etc/java-11-temurin/net.properties
 	backup = etc/java-11-temurin/logging.properties
@@ -44,11 +44,11 @@ pkgbase = jdk11-temurin
 	backup = etc/java-11-temurin/management/jmxremote.access
 	backup = etc/java-11-temurin/management/jmxremote.password.template
 	backup = etc/java-11-temurin/sound.properties
-	source = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14%2B9/OpenJDK11U-jdk_x64_linux_hotspot_11.0.14_9.tar.gz
+	source = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14.1%2B1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.14.1_1.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 1189bee178d11402a690edf3fbba0c9f2ada1d3a36ff78929d81935842ef24a9
+	sha256sums = 43fb84f8063ad9bf6b6d694a67b8f64c8827552b920ec5ce794dfe5602edffe7
 	sha256sums = 502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75
 	sha256sums = 464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df
 	sha256sums = 0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed
