@@ -1,2 +1,5 @@
 *.tar.*
 ci-*
+pkg/
+src/
+rmlint.json
