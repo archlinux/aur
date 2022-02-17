@@ -1,9 +1,9 @@
-# Maintainer: Oskar Roesler <oskar@oskar-roesler.de>
+# Maintainer: NO1
 pkgbase=boost1.69
 pkgname=('boost1.69-libs' 'boost1.69')
 pkgver=1.69.0
 _boostver=${pkgver//./_}
-pkgrel=11
+pkgrel=12
 pkgdesc='Free peer-reviewed portable C++ source libraries'
 url='https://www.boost.org/'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
@@ -17,6 +17,11 @@ build() {
    local JOBS="$(sed -e 's/.*\(-j *[0-9]\+\).*/\1/' <<< ${MAKEFLAGS})"
 
    cd boost_${_boostver}
+
+   #Fix compatibility with python 3.10
+   sed -i '0,/_Py_fopen/s//fopen/' libs/python/src/exec.cpp
+   #Revert comparing unsigned to zero fix.
+   sed -i 's/#if PTHREAD_STACK_MIN > 0/#ifdef PTHREAD_STACK_MIN/g'  boost/thread/pthread/thread_data.hpp
 
    ./bootstrap.sh \
      --with-toolset=gcc \
@@ -96,5 +101,3 @@ package_boost1.69-libs() {
    mkdir -p "${pkgdir}"/etc/ld.so.conf.d
    echo "/opt/boost1.69/lib" >  "${pkgdir}"/etc/ld.so.conf.d/boost1.69.conf
 }
-
-# vim: ts=2 sw=2 et:
