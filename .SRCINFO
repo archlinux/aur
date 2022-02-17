@@ -1,6 +1,6 @@
 pkgbase = flood-git
 	pkgdesc = Flood: A web UI for rTorrent with a Node.js backend and React frontend.
-	pkgver = 4.5.0.r6.g9283a1d3
+	pkgver = 4.7.0.r55.gce4b523d
 	pkgrel = 1
 	url = https://github.com/jesec/flood
 	install = flood.install
@@ -13,6 +13,7 @@ pkgbase = flood-git
 	provides = nodejs-flood
 	conflicts = nodejs-flood
 	backup = etc/flood/config.js
+	backup = etc/conf.d/flood
 	source = flood::git+https://github.com/jesec/flood
 	source = flood.service
 	source = flood.sysusers
@@ -27,4 +28,3 @@ pkgbase = flood-git
 	sha256sums = be0107f09eb7e7e913b435e15e0020de483dbd133ad7ea17546b90fe43656e17
 
 pkgname = flood-git
-

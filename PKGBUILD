@@ -2,7 +2,7 @@
 # Contributor: arshlinux
 pkgname=flood-git
 _pkgname=flood
-pkgver=4.5.0.r6.g9283a1d3
+pkgver=4.7.0.r55.gce4b523d
 pkgrel=1
 pkgdesc='Flood: A web UI for rTorrent with a Node.js backend and React frontend.'
 url='https://github.com/jesec/flood'
@@ -11,7 +11,8 @@ arch=('any')
 depends=('nodejs')
 makedepends=('git' 'npm')
 optdepends=('mediainfo')
-backup=('etc/flood/config.js')
+backup=('etc/flood/config.js'
+        'etc/conf.d/flood')
 provides=('nodejs-flood')
 conflicts=('nodejs-flood')
 source=("${_pkgname}::git+https://github.com/jesec/flood"
