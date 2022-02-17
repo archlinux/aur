@@ -1,5 +1,5 @@
-# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
