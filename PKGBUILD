@@ -1,13 +1,13 @@
 # Maintainer: Vincent B. <vb AT luminar.eu.org>
 pkgname=klong
-pkgver=20190926
+pkgver=20200403
 pkgrel=1
 pkgdesc="A simple array language"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="http://t3x.org/klong"
 license=("CC0")
 source=("http://t3x.org/klong/klong${pkgver}.tgz")
-md5sums=('d03ed117cc8b9fadc87c1dd68b7fe7ec')
+sha256sums=('0f349db737f375c42f0ce0fda05d3a5627fb1627d7422c5fc84680ec9a936dfd')
 
 build() {
   cd ${srcdir}/${pkgname}
@@ -16,7 +16,7 @@ build() {
 
 check() {
   cd ${srcdir}/${pkgname}
-  make test
+  KLONGPATH=. make test
 }
 
 package() {
