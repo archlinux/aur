@@ -16,6 +16,7 @@ depends=('gcc-libs'
 makedepends=('git'
             'vapoursynth'
             'avisynthplus'
+            'ffmpeg'
             )
 provides=('ffms2'
           'libffms2.so'

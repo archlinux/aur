@@ -8,6 +8,7 @@ pkgbase = ffms2-git
 	makedepends = git
 	makedepends = vapoursynth
 	makedepends = avisynthplus
+	makedepends = ffmpeg
 	depends = gcc-libs
 	depends = libavformat.so
 	depends = libavcodec.so
