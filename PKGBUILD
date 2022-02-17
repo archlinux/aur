@@ -3,19 +3,18 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-
 pkgname='ibus-mozc'
-pkgver=2.26.4632.102
+pkgver=2.26.4646.102
 pkgrel=1
 pkgdesc='Mozc module for IBus'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('ibus>=1.4.1' 'mozc>=2.26.4632.102')
-makedepends=('bazel' 'git' 'pkgconf' 'python-six' 'qt5-base')
-conflicts=('ibus-mozc-ut2' 'ibus-mozc-ut-united')
+depends=('ibus>=1.4.1' 'mozc>=2.26.4646.102')
+makedepends=('bazel' 'git' 'python' 'qt5-base')
+conflicts=('ibus-mozc-ut-united')
 replaces=('ibus-mozc-ut')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f")
 sha256sums=('SKIP')
 
 prepare() {
@@ -38,7 +37,7 @@ prepare() {
 build() {
     cd ${pkgname}-git/src
 
-    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build renderer:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --compilation_mode opt
+    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build renderer:mozc_renderer unix/ibus:ibus_mozc unix/icons --config oss_linux --compilation_mode opt --copt=-fPIC
 }
 
 package() {
