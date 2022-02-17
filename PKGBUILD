@@ -2,13 +2,13 @@
 pkgname=86box
 _pkgname=86Box
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('alsa-lib' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
-makedepends=('git' 'cmake>=3.16' 'qt6-tools')
+makedepends=('cmake>=3.16' 'qt6-tools')
 optdepends=('86box-roms: ROM files')
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -24,7 +24,12 @@ provides=('86box')
 conflicts=('86box')
 
 build() {
-    cmake -S"$_pkgname-$pkgver" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSE_QT6=on -DSLIRP_EXTERNAL=on
+    if [ "$CARCH" == arm7h ] || [ "$CARCH" == aarch64 ]; then
+        NDR=on
+    else
+        NDR=off
+    fi
+    cmake -S"$_pkgname-$pkgver" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSE_QT6=on -DSLIRP_EXTERNAL=on -DNEW_DYNAREC=$NDR
     cmake --build build
 }
 
