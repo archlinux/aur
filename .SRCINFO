@@ -1,0 +1,13 @@
+pkgbase = afltriage-git
+	pkgdesc = A tool to automatically triage crashing input files using a debugger
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/quic/AFLTriage
+	arch = x86_64
+	license = custom
+	makedepends = cargo
+	depends = gdb
+	source = git+https://github.com/quic/AFLTriage
+	sha256sums = SKIP
+
+pkgname = afltriage-git
