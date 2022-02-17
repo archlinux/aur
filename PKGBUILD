@@ -4,7 +4,7 @@
 _pkgname=cpr
 pkgname=$_pkgname-git
 _pkgauthor=omgitsaheadcrab
-pkgver=1.6.2.r90.g08a811e
+pkgver=1.7.2.r8.g4bae8a2
 pkgrel=1
 pkgdesc="C++ Requests: Curl for People"
 arch=("i686" "x86_64")
@@ -38,4 +38,5 @@ package() {
     mkdir -p "${pkgdir}/usr/include"
 	cp -r lib/libcpr* "${pkgdir}/usr/lib"
 	cp -r include/cpr "${pkgdir}/usr/include"
+    cp -r cpr_generated_includes/cpr "${pkgdir}/usr/include"
 }
