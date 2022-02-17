@@ -1,0 +1,12 @@
+pkgbase = debugger
+	pkgdesc = A tool for creating simple, terminal styled program outputs in html.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/ia-projekt-zespolowy-2021-2022/debugger
+	arch = any
+	license = MIT
+	depends = strace
+	source = debugger-master.zip::https://gitlab.com/ia-projekt-zespolowy-2021-2022/debugger/-/archive/master/debugger-master.zip
+	md5sums = SKIP
+
+pkgname = debugger
