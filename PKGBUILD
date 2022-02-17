@@ -3,7 +3,7 @@
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
 pkgver=5.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
 url='http://www.rsgislib.org'
@@ -11,12 +11,10 @@ license=('GPL3')
 makedepends=('cmake' 'boost')
 depends=('hdf5' 'kealib' 'xerces-c' 'muparser' 'gsl' 'geos' 'gdal' 'cgal'
          'boost-libs' 'python-gdal' 'python-numpy' 'python-scikit-learn'
-         'python-tqdm' 'python-rios')
+         'python-tqdm' 'python-rios' 'python-geopandas' 'python-rtree')
 optdepends=(
   'plotly-orca-appimage: For classification.plot_train_data'
   'python-alphashape: For vectorgeoms.create_alpha_shape'
-  'python-geopandas: Handle GeoJSON in vectorattrs, vectorutils and '`
-    `'classification.create_acc_pt_sets'
   'python-google-cloud-storage: Enable tools.googlecloud'
   'python-h5py: HDF5 files in classification, rastergis, zonalstats and '`
     `'tools.checkdatasets'
@@ -25,22 +23,16 @@ optdepends=(
   'python-lightgbm: For classification.classlightgbm'
   'python-matplotlib: Enable tools.plotting, out_plot_file parameter and '`
     `'imagecalc.specunmixing.plot_endmembers'
-  'python-pandas: For tools.sysprofile.plot_mem_cpu_profile, '`
-    `'classification.plot_train_data and a few functions of tools.stats'
   'python-psutil: For tools.sysprofile.create_mem_cpu_profile'
   'python-pymcr: For spec_unmix_pymcr_* functions in imagecalc.specunmixing'
   'python-pysptools: For spec_unmix_spts_* functions in imagecalc.specunmixing'
   'python-pyod: For changedetect.pxloutlierchng.find_class_pyod_outliers'
   'python-pysolar: For imagecalibration.solarangles.calc_solar_azimuth_zenith'
-  'python-rtree: For vectorgeoms.create_rtree_index/bbox_intersects_index, '`
-    `'imagecalc.calc_fill_regions_knn and vectorutils.perform_spatial_join'
   'python-scikit-image: For segmentation.skimgseg and imagecalc.leastcostpath'
   'python-scikit-optimize: Required by classification.classlightgbm and '`
     `'classification.xgboost'
   'python-scipy: For tools.stats, tools.plotting.quantile_plot, '`
     `'imageutils.spectral_smoothing and UTM/zonal mode stats'
-  'python-shapely: Required by '`
-    `'vectorutils.geopd_check_polys_wgs84_bounds_geometry'
   'python-statsmodels: Required by tmask (cloud masking) and '`
     `'robustfitoutliners in the timeseries subpackage'
   'python-tensorflow: For classification.classkeraspxl and '`
