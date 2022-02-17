@@ -1,5 +1,5 @@
 pkgname=rime-sbxlm-sbxh
-pkgver=220128
+pkgver=220217
 pkgrel=1
 pkgdesc='声笔系列码，声笔小鹤'
 arch=(any)
