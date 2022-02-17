@@ -17,31 +17,6 @@ diff -urN --color a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedi
      """A dictionary whose keys are dns.name.Name objects.
  
      In addition to being like a regular Python dictionary, this
-diff -urN --color a/lib/third_party/frozendict/__init__.py b/lib/third_party/frozendict/__init__.py
---- a/lib/third_party/frozendict/__init__.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/third_party/frozendict/__init__.py	2022-02-03 18:13:23.113987963 -0700
-@@ -3,6 +3,12 @@
- import functools
- import sys
- 
-+try:
-+  # Python 3.3 and above.
-+  collections_abc = collections.abc
-+except AttributeError:
-+  collections_abc = collections
-+
- 
- try:
-     from collections import OrderedDict
-@@ -13,7 +19,7 @@
- iteritems = getattr(dict, 'iteritems', dict.items) # py2-3 compatibility
- 
- 
--class frozendict(collections.Mapping):
-+class frozendict(collections_abc.Mapping):
-     """
-     An immutable wrapper around dictionaries that implements the complete :py:class:`collections.Mapping`
-     interface. It can be used as a drop-in replacement for dictionaries where immutability is desired.
 diff -urN --color a/lib/third_party/functools32/functools32.py b/lib/third_party/functools32/functools32.py
 --- a/lib/third_party/functools32/functools32.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/lib/third_party/functools32/functools32.py	2022-02-03 18:13:23.113987963 -0700
@@ -110,29 +85,6 @@ diff -urN --color a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.
      raise ValueError("Invalid request sent to prediction server: {}".format(
          repr(request_json)))
    if INSTANCES_KEY not in request_json:
-diff -urN --color a/lib/third_party/prompt_toolkit/styles/from_dict.py b/lib/third_party/prompt_toolkit/styles/from_dict.py
---- a/lib/third_party/prompt_toolkit/styles/from_dict.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/third_party/prompt_toolkit/styles/from_dict.py	2022-02-03 18:13:23.113987963 -0700
-@@ -6,13 +6,17 @@
- - Support for ANSI color names. (These will map directly to the 16 terminal
-   colors.)
- """
--from collections import Mapping
--
- from .base import Style, DEFAULT_ATTRS, ANSI_COLOR_NAMES
- from .defaults import DEFAULT_STYLE_EXTENSIONS
- from .utils import merge_attrs, split_token_in_parts
- from six.moves import range
- 
-+
-+try:
-+    from collections.abc import Mapping
-+except ImportError:
-+    from collections import Mapping
-+
- __all__ = (
-     'style_from_dict',
- )
 diff -urN --color a/platform/bq/bigquery_client.py b/platform/bq/bigquery_client.py
 --- a/platform/bq/bigquery_client.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/platform/bq/bigquery_client.py	2022-02-03 18:31:08.321051236 -0700
