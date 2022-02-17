@@ -1,6 +1,6 @@
 pkgbase = mozc
 	pkgdesc = The Open Source edition of Google Japanese Input
-	pkgver = 2.26.4632.102
+	pkgver = 2.26.4646.102
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -10,15 +10,12 @@ pkgbase = mozc
 	license = custom
 	makedepends = bazel
 	makedepends = git
-	makedepends = pkgconf
-	makedepends = python-six
+	makedepends = python
 	depends = qt5-base
 	conflicts = mozc-ut-common
 	conflicts = mozc-ut
-	conflicts = mozc-ut2
 	conflicts = mozc-ut-united
-	conflicts = mozc-neologd-ut+ut2
-	source = mozc-git::git+https://github.com/google/mozc.git#commit=7329757e1ad30e327c1ae823a8302c79482d6b9c
+	source = mozc-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f
 	sha256sums = SKIP
 
 pkgname = mozc
