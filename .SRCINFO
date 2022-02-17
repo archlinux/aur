@@ -1,0 +1,15 @@
+pkgbase = katfetch
+	pkgdesc = A simple, modular and hackable fetch script in Bash
+	pkgver = r70.e3f645a
+	pkgrel = 1
+	url = https://github.com/me0wing-katt0/katfetch
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = xorg-xrandr
+	depends = figlet
+	depends = bash
+	source = katfetch::git://github.com/me0wing-katt0/katfetch.git
+	md5sums = SKIP
+
+pkgname = katfetch
