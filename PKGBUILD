@@ -3,7 +3,7 @@
 pkgname=ptcollab-git
 _pkgname=ptcollab
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplayer music editor"
 arch=('x86_64' 'aarch64')
 url="https://yuxshao.github.io/ptcollab/"

@@ -1,7 +1,7 @@
 pkgbase = ptcollab-git
 	pkgdesc = Multiplayer music editor
-	pkgver = 0.5.0.r0.gcbee073
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://yuxshao.github.io/ptcollab/
 	arch = x86_64
 	arch = aarch64
