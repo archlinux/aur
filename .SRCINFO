@@ -1,0 +1,11 @@
+pkgbase = python-pip_search
+	pkgdesc = Searching thought pip when hard times strike.
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/victorgarric/pip_search
+	arch = any
+	depends = python-pip
+	source = python-pip_search-0.0.10.tar.gz::https://github.com/victorgarric/pip_search/releases/download/0.0.10/pip_search-0.0.10.tar.gz
+	sha256sums = 322e0f8c8695dbf0c07628cbc4c701cfed9575ccc4ecaa823f1d34aab4e65280
+
+pkgname = python-pip_search
