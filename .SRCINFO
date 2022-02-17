@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-mod-vod-git
 	pkgdesc = NGINX-based MP4 Repackager
-	pkgver = r1333.9d787ed
+	pkgver = r1370.fbb8982
 	pkgrel = 1
 	url = https://github.com/kaltura/nginx-vod-module
 	arch = i686
@@ -21,4 +21,3 @@ pkgbase = nginx-mainline-mod-vod-git
 	sha256sums = SKIP
 
 pkgname = nginx-mainline-mod-vod-git
-

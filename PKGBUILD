@@ -4,7 +4,7 @@
 _modname="ngx_vod"
 
 pkgname=nginx-mainline-mod-vod-git
-pkgver=r1333.9d787ed
+pkgver=r1370.fbb8982
 pkgrel=1
 pkgdesc="NGINX-based MP4 Repackager"
 arch=('i686' 'x86_64')
