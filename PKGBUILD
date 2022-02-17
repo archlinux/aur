@@ -11,7 +11,7 @@
 
 pkgname=ffmpeg-cuda
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video. Includes cuda support.'
 arch=(x86_64)
@@ -103,11 +103,11 @@ conflicts=('ffmpeg')
 _tag=390d6853d0ef408007feb39c0040682c81c02751
 source=(
   "git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
-  'vmaf-model-path.patch'
+  'ffmpeg-vmaf2.x.patch'
   'add-av_stream_get_first_dts-for-chromium.patch'
 )
 sha256sums=('SKIP'
-            '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
+            '42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298'
             '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e')
 
 pkgver() {
@@ -119,10 +119,8 @@ pkgver() {
 prepare() {
   cd ffmpeg
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-
-  # https://crbug.com/1251779
-  patch -Np1 -i "${srcdir}/add-av_stream_get_first_dts-for-chromium.patch"
+  patch -Np1 -i ../ffmpeg-vmaf2.x.patch # vmaf 2.x support
+  patch -Np1 -i ../'add-av_stream_get_first_dts-for-chromium.patch' # https://crbug.com/1251779
 }
 
 build() {
