@@ -10,6 +10,7 @@ pkgbase = restic-automatic-backup-scheduler
 	depends = restic
 	depends = bash
 	depends = systemd
+	replaces = restic-systemd-automatic-backup
 	backup = etc/restic/backup_exclude.txt
 	backup = etc/restic/default.env.sh
 	backup = etc/restic/_global.env.sh

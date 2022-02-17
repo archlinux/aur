@@ -9,6 +9,7 @@ arch=('any')
 url="https://github.com/erikw/$pkgname"
 license=('BSD' 'custom')
 depends=('restic' 'bash' 'systemd')
+replaces=('restic-systemd-automatic-backup')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/erikw/$pkgname/archive/v$pkgver.tar.gz")
 install="restic-automatic-backup-scheduler.install"
 sha256sums=('df942e5ba780311cdb0ff9db6e43e4e165d73567bbc662be9a5f808e9b51ddea')
