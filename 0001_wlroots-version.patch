@@ -1,0 +1,24 @@
+commit 6a3536cdd74ec1d73475daec166b14c03ce14a8a
+Author: Michael Weiss <dev.primeos@gmail.com>
+Date:   Fri Feb 4 21:17:05 2022 +0100
+
+    build: Relax the version constraint for wlroots to accept patch releases
+    
+    Patch releases only contain backwards compatible changes (mainly bug
+    fixes) so we want to allow them. This fixes the build with the recently
+    released wlroots 0.15.1 and uses the same version constraints as other
+    projects that depend on wlroots (e.g., Sway).
+
+diff --git a/meson.build b/meson.build
+index f950b8e..1905dda 100644
+--- a/meson.build
++++ b/meson.build
+@@ -37,7 +37,7 @@ if git.found()
+ endif
+ add_project_arguments('-DLABWC_VERSION=@0@'.format(version), language: 'c')
+ 
+-wlroots_version = ['=0.15.0']
++wlroots_version = ['>=0.15.0', '<0.16.0']
+ wlroots_proj = subproject(
+   'wlroots',
+   default_options: ['default_library=static', 'examples=false'],
