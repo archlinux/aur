@@ -1,5 +1,5 @@
 diff --git a/Makefile.in b/Makefile.in
-index 52528f5..b4a4e97 100644
+index 52528f5..b0d08c4 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -19,7 +19,7 @@ index 52528f5..b4a4e97 100644
  endif
  
  
-@@ -171,7 +170,8 @@ else
+@@ -171,11 +170,12 @@ else
  endif
  
  CROSSLDFLAGS   += -Wl,--file-alignment,4096
@@ -29,6 +29,11 @@ index 52528f5..b4a4e97 100644
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  DEBUG_FLAGS    := -gdwarf-2 -gstrict-dwarf
  COMMON_FLAGS    = $(DEBUG_FLAGS) $(OPTIMIZE_FLAGS) $(SANITY_FLAGS) -ffile-prefix-map=$(CCACHE_BASEDIR)=.
+-COMMON_FLAGS32 := -mstackrealign
++COMMON_FLAGS32 := -mstackrealign -mno-avx
+ CARGO_BUILD_ARG := --release
+ 
+ ##
 @@ -360,8 +360,8 @@ ALL_TARGETS += dist
  GOAL_TARGETS += dist
  

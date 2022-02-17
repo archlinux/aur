@@ -10,7 +10,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
 _asyncver=1.9.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -328,24 +328,24 @@ build() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
-    export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export CFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
+    export CXXFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
+    export RUSTFLAGS="-C opt-level=3 -C target-cpu=nocona"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
     # combination of AVX instructions and tree vectorization (implied by O3),
     # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
     # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
     # crashing with AVX regardless, but 64bit applications worked just fine.
-    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
-    # AVX2 seems to degrade performance. So disregard the above.
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    #export CFLAGS+=" -mno-avx -mno-avx2"
-    #export CXXFLAGS+=" -mno-avx -mno-avx2"
+    # AVX is "hard" disabled for 32bit in any case.
+    # AVX2 for 64bit is disabled below.
+    export CFLAGS+=" -mno-avx2"
+    export CXXFLAGS+=" -mno-avx2"
 
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
@@ -421,7 +421,7 @@ sha256sums=('SKIP'
             '7d989e9b29643897eaadb970d65e71140b11f4d641ef8816bd17feb9ad2ca992'
             '77214acb6ffc0648408c5e28b434b71d4c6a8c35f7795ac38565e6e0695208b2'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'e2aa1d44f3034a81f405532abacb590f3fd03ce0a2135f9f80c8ad7763bf637b'
+            'cc52ca0cc8c118476824f5abb33a54745245bdc8b09d2531180b2e258fb67237'
             '8be5e0ae9f71d686c72ac094a4eaca14ea288276195d4c0c217a4f3974fbcc70'
             '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
             '958f8e69bc789cc8fbe58cb6c9fc62f065692c3c165f20b0c21133ce94bad736')
