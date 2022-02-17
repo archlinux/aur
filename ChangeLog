@@ -310,3 +310,20 @@ New Features:
 Bug Fixes
 - We fixed an issue affecting some recurrent daily events. Depending on the timezone, it could happen that the series would end one day too early or one day too late. This was affecting CalDAV as well as Exchange calendars and has now been fixed.
 - Again talking about timezones, we fixed a problem parsing some non-standard timezones on CalDAV, which was preventing the correct visualization of these events.
+
+
+
+=== Morgen 2.4.4
+Improvements:
+- While we are finalizing our next big release (spoiler: starts with T, ends with ODOIST 🤫), here we focus on a number of smaller improvements that you have been asking for in the last few weeks 🙏🏻.
+- The event details popup now sticks to its position when the date of the event goes beyond the currently displayed time window.
+- Meetings booked with Morgen Scheduling Links now show the attendee's name first, thus making it easier for you to keep track of the person you are talking to.
+- The Quick Join button is now displayed only for calendars with read & write access - this filters out read-only calendars of your colleagues.
+ 
+Fixes:
+- We fixed a bug preventing the creation of weekly or yearly recurrent events with Exchange/O365.
+- We fixed an issue causing sometimes a lag between the creation of an event in Morgen and its propagation to the calendar provider.
+- We fixed an issue causing some Exchange delegate calendars not to be displayed.
+- We fixed an issue causing some Exchange events not to display the correct RSVP status.
+- We fixed an issue causing some all-day events from Google Calendar to be displayed at midnight instead.
+- We made several other adjustments that make us proud but are a bit too technical to be shared here ✨
