@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.3.2
+Name=BrickBench
+Comment=Map editor for LSW:TCS
+Exec=brickbench
+Terminal=false
+Icon=/opt/brickbench/lib/brickbench.png
+Type=Application
+Categories=Java;Game;Development;

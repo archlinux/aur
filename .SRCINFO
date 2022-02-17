@@ -1,0 +1,21 @@
+pkgbase = brickbench
+	pkgdesc = Map editor for Lego Star Wars: The Complete Saga
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://brickbench.opengg.dev/
+	arch = x86_64
+	license = custom
+	depends = giflib
+	depends = alsa-lib
+	depends = libjpeg-turbo
+	depends = libxtst
+	depends = lcms2
+	depends = libxrender
+	depends = libnet
+	provides = brickbench
+	source = https://github.com/BrickBench/BrickBench/releases/download/v0.3.2/brickbench-0.3.2-linux_x86_64.tar.gz
+	source = BrickBench.desktop
+	md5sums = d055cfc005524a42cac46a686940c9df
+	md5sums = 75f83ac48b5d34728f0b7e5b74a2dc34
+
+pkgname = brickbench
