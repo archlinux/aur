@@ -1,7 +1,7 @@
 pkgbase = ido-ubuntu
 	pkgdesc = Widgets and other objects used for indicators
 	pkgver = 13.10.0.17.04.20161028
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/ido
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ido-ubuntu
 	makedepends = gtk-doc
 	makedepends = vala
 	makedepends = xorg-util-macros
-	depends = gtk3
+	depends = gtk3-ubuntu
 	provides = ido
 	conflicts = ido
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/ido_13.10.0+17.04.20161028.orig.tar.gz
@@ -20,4 +20,3 @@ pkgbase = ido-ubuntu
 	sha512sums = 91d19642868a3859a860fc1a32541141472b8af46d9d2fa6983dd41ec6e0497ca6397a836a0921ba000e26be2be5b8d52ae74b0c5c29b4b73e4f6bce67f9b60d
 
 pkgname = ido-ubuntu
-

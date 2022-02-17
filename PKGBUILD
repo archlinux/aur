@@ -1,22 +1,19 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-# Maintainer: Michael Healy <horsemanoffaith@gmail.com>
-# Original Maintainer: György Balló <ballogy@freestart.hu>
+# Maintainer: Que Quotion <quequotion@bugmenot.com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Contributor: Michael Healy <horsemanoffaith@gmail.com>
+# Contributor: György Balló <ballogy@freestart.hu>
 # Contributor: thn81 <root@scrat>
-
-# vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=zesty
-# vercheck-launchpad: name=${pkgname}
 
 pkgname=ido-ubuntu
 _actual_ver=13.10.0
 _extra_ver=+17.04.20161028
 pkgver=${_actual_ver}${_extra_ver/\+/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Widgets and other objects used for indicators"
 arch=(i686 x86_64)
 url="https://launchpad.net/ido"
 license=(LGPL)
-depends=(gtk3)
+depends=(gtk3-ubuntu)
 provides=(ido)
 conflicts=(ido)
 makedepends=(gobject-introspection gtk-doc vala xorg-util-macros)
@@ -28,7 +25,7 @@ sha512sums=('867157c9e316eb5ed69ebdf1017ed86990aabf7a885ba26acab36782f0f27e10b46
 
 prepare() {
     
-    patch -p1 -i ../0001-Temporarily-disable-previous-button-drop-shadow-draw.patch
+    patch -p1 -i 0001-Temporarily-disable-previous-button-drop-shadow-draw.patch
 }
 
 build() {
