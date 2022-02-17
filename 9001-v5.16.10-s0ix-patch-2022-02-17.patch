@@ -1,11 +1,11 @@
-From 271de37960d6259111bd40eb85680356f3ec7fec Mon Sep 17 00:00:00 2001
+From 05d3b9eb053b8deb2575b5fa72ab55cb5a506371 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Tue, 15 Feb 2022 20:28:14 -0800
-Subject: [PATCH] v5.16.10 s0ix patch 2022-02-15
+Date: Thu, 17 Feb 2022 06:34:33 -0800
+Subject: [PATCH] v5.16.10 s0ix patch 2022-02-17
 
 Squashed commit of the following:
 
-commit cf8459de2be18aba3f364e5bff52ce379cd3c5b8
+commit 3998be5da29cb360b589c1293e43a9dc37d6c383
 Author: Rajib Mahapatra <rajib.mahapatra@amd.com>
 Date:   Thu Feb 10 19:05:07 2022 +0530
 
@@ -28,60 +28,7 @@ Date:   Thu Feb 10 19:05:07 2022 +0530
     Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
     Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit a8d24bdbc8d1d5a6f6b4f04cbb4ff3d3b7e7f3ec
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Fri Jan 28 14:35:03 2022 -0600
-
-    ACPI: PM: Revert "Only mark EC GPE for wakeup on Intel systems"
-
-    Testing on various upcoming OEM systems shows commit 7b167c4cb48e ("ACPI:
-    PM: Only mark EC GPE for wakeup on Intel systems") was short
-    sighted and the symptoms were indicative of other problems. Some OEMs
-    do have the dedicated GPIOs for the power button but also rely upon
-    an interrupt to the EC SCI to let the lid work.
-
-    The original commit showed spurious activity on Lenovo systems:
-         * On both Lenovo T14 and P14s the keyboard wakeup doesn't work, and
-           sometimes the power button event doesn't work.
-
-    This was confirmed on my end at that time.
-
-    However further development in the kernel showed that the issue was
-    actually the IRQ for the GPIO controller was also shared with the EC SCI.
-    This was actually fixed by commit 2d54067fcd23 ("pinctrl: amd: Fix
-    wakeups when IRQ is shared with SCI").
-
-    The original commit also showed problems with AC adapter:
-         * On HP 635 G7 detaching or attaching AC during suspend will cause
-           the system not to wakeup
-         * On Asus vivobook to prevent detaching AC causing resume problems
-         * On Lenovo 14ARE05 to prevent detaching AC causing resume problems
-         * On HP ENVY x360  to prevent detaching AC causing resume problems
-
-    Detaching AC adapter causing problems appears to have been a problem
-    because the EC SCI went off to notify the OS of the power adapter change
-    but the SCI was ignored and there was no other way to wake up this system
-    since GPIO controller wasn't properly enabled.  The wakeups were fixed by
-    enabling the GPIO controller in commit acd47b9f28e5 ("pinctrl: amd: Handle
-    wake-up interrupt").
-
-    I've confirmed on a variety of OEM notebooks with the following test
-    1) echo 1 | sudo tee /sys/power/pm_debug_messages
-    2) sudo systemctl suspend
-    3) unplug AC adapter, make sure system is still asleep
-    4) wake system from lid (which is provided by ACPI SCI on some of them)
-    5) dmesg
-       a) see the EC GPE dispatched, timekeeping for X seconds (matching ~time
-          until AC adapter plug out)
-       b) see timekeeping for Y seconds until woke (matching ~time from AC
-          adapter until lid event)
-    6) Look at /sys/kernel/debug/amd_pmc/s0ix_stats
-       "Time (in us) in S0i3" = X + Y - firmware processing time
-
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Tested-by: Kai-Heng Feng <kai.heng.feng@canonical.com>
-
-commit 24c381344822ce379fa17a89097253b7e37cf5f9
+commit 2952523c1a30d751d8de445a610310a52381152f
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Tue Jan 11 14:00:26 2022 -0600
 
@@ -103,7 +50,7 @@ Date:   Tue Jan 11 14:00:26 2022 -0600
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 
-commit f2ab65214054f868a16e7dbe989262f633d3cd88
+commit e5bb891a29ae0037169b0248d1f72b75947a1e49
 Author: Mario Limonciello <mario.limonciello@amd.com>
 Date:   Thu Jan 20 11:44:39 2022 -0600
 
@@ -121,7 +68,7 @@ Date:   Thu Jan 20 11:44:39 2022 -0600
     Link: https://patchwork.freedesktop.org/patch/469993/
     Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
 
-commit 2d0b191784928ecdd8740f1930875248b7f06574
+commit 5408afca1aebd7a772de1d55015bfa81fcf0ef2f
 Author: Hans de Goede <hdegoede@redhat.com>
 Date:   Mon Jan 17 12:26:43 2022 +0100
 
@@ -135,7 +82,7 @@ Date:   Mon Jan 17 12:26:43 2022 +0100
     Signed-off-by: Hans de Goede <hdegoede@redhat.com>
     Link: https://lore.kernel.org/r/20220117112644.260168-1-hdegoede@redhat.com
 
-commit deebcfcadd453098074c547ee10cf17dd64b1795
+commit 1137ab8b2c29e8c2e21e6cebe8266f7e453d7892
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -154,7 +101,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 6c14c1f08993eaed5b881dc46ba859de9046f3d7
+commit 014563cdf9fe0eebf7586e944ac94a9bb13c2043
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -167,7 +114,7 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit d92af0d67a6fd206b598c87bb52ab6d0f1815a27
+commit a4182b0fa24e12de590530feb36beddcdc93c20f
 Author: Lijo Lazar <lijo.lazar@amd.com>
 Date:   Thu Nov 25 19:45:42 2021 +0800
 
@@ -183,65 +130,14 @@ Date:   Thu Nov 25 19:45:42 2021 +0800
     Reviewed-by: Guchun Chen <guchun.chen@amd.com>
     Reviewed-by: Kevin Yang <kevinyang.wang@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit 5a4e2ba710159c2bd5c3879c7b59bd35e8459224
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Fri Sep 24 12:32:06 2021 -0500
-
-    ACPI: PM: s2idle: Don't report missing devices as failing constraints
-
-    ACPI tables may have entries for devices that are not physically
-    present but that can be connected.  These devices shouldn't cause
-    constraints checking to fail.
-
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Change-Id: I34f5ca978aab69ff0a0906191eec21649b19fe27
 ---
- drivers/acpi/x86/s2idle.c                 |  18 ++-
  drivers/gpu/drm/amd/amdgpu/amdgpu.h       |   8 +-
  drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c  |  24 ++-
  drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c    |   8 +
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   6 +-
  drivers/platform/x86/amd-pmc.c            | 185 +++++++++++++++++++---
- 6 files changed, 213 insertions(+), 36 deletions(-)
+ 5 files changed, 203 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
-index 1c48358b43ba..374aa2e8203f 100644
---- a/drivers/acpi/x86/s2idle.c
-+++ b/drivers/acpi/x86/s2idle.c
-@@ -309,6 +309,12 @@ static void lpi_check_constraints(void)
- 			continue;
- 		}
- 
-+		if (!acpi_get_first_physical_node(adev)) {
-+			acpi_handle_debug(handle, "LPI: Device is not physically present\n");
-+			lpi_constraints_table[i].handle = NULL;
-+			continue;
-+		}
-+
- 		if (adev->power.state < lpi_constraints_table[i].min_dstate)
- 			acpi_handle_info(handle,
- 				"LPI: Constraint not met; min power state:%s current power state:%s\n",
-@@ -424,15 +430,11 @@ static int lps0_device_attach(struct acpi_device *adev,
- 		mem_sleep_current = PM_SUSPEND_TO_IDLE;
- 
- 	/*
--	 * Some Intel based LPS0 systems, like ASUS Zenbook UX430UNR/i7-8550U don't
--	 * use intel-hid or intel-vbtn but require the EC GPE to be enabled while
--	 * suspended for certain wakeup devices to work, so mark it as wakeup-capable.
--	 *
--	 * Only enable on !AMD as enabling this universally causes problems for a number
--	 * of AMD based systems.
-+	 * Some LPS0 systems, like ASUS Zenbook UX430UNR/i7-8550U, require the
-+	 * EC GPE to be enabled while suspended for certain wakeup devices to
-+	 * work, so mark it as wakeup-capable.
- 	 */
--	if (!acpi_s2idle_vendor_amd())
--		acpi_ec_mark_gpe_for_wake();
-+	acpi_ec_mark_gpe_for_wake();
- 
- 	return 0;
- }
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu.h b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
 index 7d67aec6f4a2..0a5a5370a200 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu.h
