@@ -44,6 +44,13 @@ index 7a7cbc72..6705a0f3 100644
  LINUX.iio.lib = "javafx_iio"
  
  LINUX.prismES2 = [:]
+@@ -349,5 +354,5 @@ LINUX.media.ar = "${toolchainDir}ar"
+ LINUX.webkit = [:]
+ LINUX.webkit.compiler = compiler
+ LINUX.webkit.linker = linker
+-LINUX.webkit.ccFlags = commonFlags.flatten()
++LINUX.webkit.ccFlags = [commonFlags, "-fno-lto"].flatten()
+ LINUX.webkit.linkFlags = linkFlags.flatten()
 diff --git a/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile b/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
 index 450b55d3..f27b9479 100644
 --- a/modules/javafx.media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
