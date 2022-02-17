@@ -4,7 +4,7 @@
 
 _pkgname=awesome
 pkgname=awesome-luajit-git
-pkgver=4.3.966.g7a8fa9d27
+pkgver=4.3.1355.gbd776c980
 pkgrel=1
 pkgdesc="awesome window manager built with luajit"
 url='https://awesomewm.org/'
@@ -54,6 +54,8 @@ sha256sums=('SKIP'
             '5c5437448cc9f01be6ccbb298f5c86d0f8c4bcae23a22e6af699aff0d10f642f'
             '8f25957ef5453f825e05a63a74e24843aad945af86ddffcc0a84084ca2cf9928')
 
+_LUAJIT_VERSION=2.1
+
 pkgver() {
   cd $pkgname
   git describe | sed 's/^v//;s/-/./g'
@@ -67,7 +69,7 @@ build() {
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONFDIR=/etc \
-    -DLUA_INCLUDE_DIR=/usr/include/luajit-2.0 \
+    -DLUA_INCLUDE_DIR=/usr/include/luajit-$_LUAJIT_VERSION \
     -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so \
     -DLUA_EXECUTABLE=/usr/bin/luajit
   make

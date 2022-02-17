@@ -1,6 +1,6 @@
 pkgbase = awesome-luajit-git
 	pkgdesc = awesome window manager built with luajit
-	pkgver = 4.3.966.g7a8fa9d27
+	pkgver = 4.3.1355.gbd776c980
 	pkgrel = 1
 	url = https://awesomewm.org/
 	arch = i686
@@ -46,4 +46,3 @@ pkgbase = awesome-luajit-git
 	sha256sums = 8f25957ef5453f825e05a63a74e24843aad945af86ddffcc0a84084ca2cf9928
 
 pkgname = awesome-luajit-git
-
