@@ -10,7 +10,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
 _asyncver=1.9.4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -42,7 +42,7 @@ depends=(
   steam-native-runtime
 )
 
-makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
+makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc clang
   git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
   giflib                lib32-giflib
