@@ -1,7 +1,7 @@
 # Maintainer: Djuice <felhamed@gmail.com>
 pkgname=cryptowatch-desktop-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Charting & trading terminal for cryptocurrency markets"
 arch=('x86_64')
 
