@@ -3,10 +3,10 @@
 # Contributor: Conor Anderson <conor@conr.ca>
 
 pkgname=rstudio-desktop
-_vermajor="2021"
-_verminor="09"
-_verpatch="2"
-_versuffix="+382"
+_vermajor="2022"
+_verminor="02"
+_verpatch="0"
+_versuffix="+443"
 _gitcommit=fc9e217
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
@@ -19,28 +19,26 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp)
+depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc quarto-cli-bin yaml-cpp)
 makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access')
 provides=('rstudio-desktop')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
-source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
+source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
         "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "cran_multithread.patch"
-        "node_version.patch::https://github.com/rstudio/rstudio/commit/8188a86b226b45ae7ff35d5afa4ee5b3fa84fd76.patch")
+        "cran_multithread.patch")
 
-sha256sums=('824173fcef6380e1d3c4fce7ae56a6e0a6f3c75b601327a70ec15182581ccd81'
+sha256sums=('36234218f118f5085e417411e137791072c00380bce6a016e551e6ecb404ae4d'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
-            '1d1782bce69d699b5c2b8fa6fd380893aff244efcc595e22b42f805b45e5057b')
+            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980')
 
 noextract=("gin-${_ginver}.zip")
 
@@ -49,7 +47,6 @@ prepare() {
     local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
     sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
     patch -p1 < ${srcdir}/cran_multithread.patch
-    patch -p1 < ${srcdir}/node_version.patch
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_srcname}/src/gwt"
@@ -60,11 +57,12 @@ prepare() {
     cd "${srcdir}/${_srcname}/dependencies/common"
     _pandocver=$(grep -oP "(?<=PANDOC_VERSION=\").*(?=\"$)" install-pandoc)
     install -d pandoc/${_pandocver}
+    install -d quarto/bin
  
     ln -sfT /usr/share/myspell/dicts dictionaries
     ln -sfT /usr/share/mathjax2 mathjax-27
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
-    ln -sfT /usr/bin/pandoc-citeproc pandoc/${_pandocver}/pandoc-citeproc
+    ln -sfT /usr/bin/quarto quarto/bin/quarto
 
     # Nodejs
     install -d node/${_nodever}
@@ -78,6 +76,7 @@ prepare() {
     ln -sfT common/dictionaries dictionaries
     ln -sfT common/mathjax-27 mathjax-27
     ln -sfT common/pandoc pandoc
+    ln -sfT common/quarto quarto
 }
 
 build() {
