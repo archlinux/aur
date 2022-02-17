@@ -1,5 +1,5 @@
 [Unit]
-Description=qBittorrent-nox service
+Description=qBittorrent-nox service for user %I
 Documentation=man:qbittorrent-nox(1)
 Wants=network-online.target
 After=local-fs.target network-online.target nss-lookup.target
@@ -7,7 +7,7 @@ After=local-fs.target network-online.target nss-lookup.target
 [Service]
 Type=simple
 PrivateTmp=false
-User=qbittorrent
+User=%i
 ExecStart=/usr/bin/qbittorrent-nox
 TimeoutStopSec=1800
 AmbientCapabilities=CAP_NET_RAW
