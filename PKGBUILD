@@ -2,7 +2,7 @@
 
 pkgname="brickbench"
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Map editor for Lego Star Wars: The Complete Saga'
 arch=('x86_64')
 license=('custom')
@@ -33,5 +33,5 @@ package() {
     
     install -Dm0644 -t "${pkgdir}/usr/share/applications/" "BrickBench.desktop"
 
-    ln -sf "${pkgdir}/opt/brickbench/bin/brickbench" "${pkgdir}/usr/bin/brickbench"
+    ln -sf "/opt/brickbench/bin/brickbench" "${pkgdir}/usr/bin/brickbench"
 }

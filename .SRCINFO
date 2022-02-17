@@ -1,7 +1,7 @@
 pkgbase = brickbench
 	pkgdesc = Map editor for Lego Star Wars: The Complete Saga
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://brickbench.opengg.dev/
 	arch = x86_64
 	license = custom
