@@ -1,0 +1,11 @@
+pkgbase = ttf-abril-fatface-google-fonts
+	pkgdesc = Abril Fatface font from Google Fonts
+	pkgver = 0
+	pkgrel = 0
+	url = https://fonts.google.com/specimen/Abril+Fatface
+	arch = any
+	license = custom:OFL
+	source = https://fonts.google.com/download?family=Abril%20Fatface
+	md5sums = SKIP
+
+pkgname = ttf-abril-fatface-google-fonts
