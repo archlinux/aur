@@ -3,13 +3,13 @@
 
 pkgname=typeracer-git
 _pkgname=terminal-typeracer
-pkgver=2.0.9.r0.gd5c1c10
+pkgver=2.0.10.r0.g0be80e9
 pkgrel=1
 pkgdesc="Terminal typing speed tester (git)"
 arch=('x86_64')
 url="https://gitlab.com/ttyperacer/terminal-typeracer"
 license=('GPL3')
-depends=('openssl' 'sqlite' 'libgit2')
+depends=('sqlite' 'libgit2')
 makedepends=('cargo' 'git' 'libssh2')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
