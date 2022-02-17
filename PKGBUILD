@@ -2,27 +2,27 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 
 _pkgname=86box
-_build=b3600
+_build=b3602
 
 pkgname="${_pkgname}-appimage"
-pkgver=3.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=(GPL2)
 depends=('fuse2')
 optdepends=('86box-roms: ROM files')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 options=(!strip)
 _source="https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/86Box"
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_arm7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
-sha512sums_x86_64=('dfc7cd587b7a5588dc671d5301d54c887fed7c9dc1b714993dfd717f679e7a51d384cecb48edbfec038c8da002db4cbd82dbff02bd55499ddb6d50b78d0eca17')
-sha512sums_arm7h=('3c295965e0ad2a7623a5399952c2baf3ae9610abc07424e5bfd02274c19926a9aff4315c489dccbf209a85df988067e75d78fa20bcc1d66cba03d14b5a59fad1')
-sha512sums_aarch64=('3dcc99f1397ce50cea7d40159f6e665b225cbd2fb2cd74c14572a61a52425eaa0529319ca03327d58d773f92a97e6f556c8b0f719c868e440fe40a61e5482b67')
-provides=("86box")
-conflicts=("86box")
+sha512sums_x86_64=('a858f3988bac177483e5b3b4e38cfa40827a354f4da380a90c4c661ae648fcecbdb61e7eaa425e1a087d0627d630905fbff2280dad48f467b70f1d12818f7744')
+sha512sums_arm7h=('2314afba96b23aa76ab437929f8a65930f2105f158cf783ac4ac67a05c4f56a19ef1202b7e06c32603ce6a2c39e525736e1e5f995fba968e2a954c8922afeed7')
+sha512sums_aarch64=('731b6ca430d88a14621b7ebf17a3161744fea3975d715bee9be45cbdbb68615ae32211c86cf8f0534f771e40a98fc5e3868ac246080fcddf986f017d25562d5f')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.appimage"

@@ -1,7 +1,7 @@
 pkgbase = 86box-appimage
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.2
-	pkgrel = 2
+	pkgver = 3.2.1
+	pkgrel = 1
 	url = https://86box.net/
 	arch = x86_64
 	arch = arm7h
@@ -12,11 +12,11 @@ pkgbase = 86box-appimage
 	provides = 86box
 	conflicts = 86box
 	options = !strip
-	source_x86_64 = 86box-3.2-x86_64.appimage::https://github.com/86box/86box/releases/download/v3.2/86Box-Linux-x86_64-b3600.AppImage
-	sha512sums_x86_64 = dfc7cd587b7a5588dc671d5301d54c887fed7c9dc1b714993dfd717f679e7a51d384cecb48edbfec038c8da002db4cbd82dbff02bd55499ddb6d50b78d0eca17
-	source_arm7h = 86box-3.2-arm7h.appimage::https://github.com/86box/86box/releases/download/v3.2/86Box-NDR-Linux-arm32-b3600.AppImage
-	sha512sums_arm7h = 3c295965e0ad2a7623a5399952c2baf3ae9610abc07424e5bfd02274c19926a9aff4315c489dccbf209a85df988067e75d78fa20bcc1d66cba03d14b5a59fad1
-	source_aarch64 = 86box-3.2-aarch64.appimage::https://github.com/86box/86box/releases/download/v3.2/86Box-NDR-Linux-arm64-b3600.AppImage
-	sha512sums_aarch64 = 3dcc99f1397ce50cea7d40159f6e665b225cbd2fb2cd74c14572a61a52425eaa0529319ca03327d58d773f92a97e6f556c8b0f719c868e440fe40a61e5482b67
+	source_x86_64 = 86box-3.2.1-x86_64.appimage::https://github.com/86box/86box/releases/download/v3.2.1/86Box-Linux-x86_64-b3602.AppImage
+	sha512sums_x86_64 = a858f3988bac177483e5b3b4e38cfa40827a354f4da380a90c4c661ae648fcecbdb61e7eaa425e1a087d0627d630905fbff2280dad48f467b70f1d12818f7744
+	source_arm7h = 86box-3.2.1-arm7h.appimage::https://github.com/86box/86box/releases/download/v3.2.1/86Box-NDR-Linux-arm32-b3602.AppImage
+	sha512sums_arm7h = 2314afba96b23aa76ab437929f8a65930f2105f158cf783ac4ac67a05c4f56a19ef1202b7e06c32603ce6a2c39e525736e1e5f995fba968e2a954c8922afeed7
+	source_aarch64 = 86box-3.2.1-aarch64.appimage::https://github.com/86box/86box/releases/download/v3.2.1/86Box-NDR-Linux-arm64-b3602.AppImage
+	sha512sums_aarch64 = 731b6ca430d88a14621b7ebf17a3161744fea3975d715bee9be45cbdbb68615ae32211c86cf8f0534f771e40a98fc5e3868ac246080fcddf986f017d25562d5f
 
 pkgname = 86box-appimage
