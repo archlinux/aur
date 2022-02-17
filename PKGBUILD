@@ -19,7 +19,7 @@ _merge_requests_to_use=('1441' '1877')
 
 pkgname=mutter-performance
 pkgver=41.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -78,11 +78,11 @@ pick_mr() {
 prepare() {
   cd $pkgname
 
-  # Make tests run
-  sed -i '/catchsegv/d' meson.build
-
   git reset --hard
   git cherry-pick --abort || true
+
+  # Make tests run
+  sed -i '/catchsegv/d' meson.build
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
