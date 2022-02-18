@@ -1,3 +1,5 @@
+#!/bin/bash
+
 rm -rf /tmp/thu-isatap
 git clone https://github.com/panda2134/thu-isatap.git /tmp/thu-isatap
 cd /tmp/thu-isatap/
