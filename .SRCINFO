@@ -1,0 +1,11 @@
+pkgbase = zap-bin
+	pkgdesc = Delightful AppImage package manager
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://zap.srev.in
+	arch = x86_64
+	license = MIT
+	source = zap::https://github.com/srevinsaju/zap/releases/download/v2.2.1/zap-amd64
+	sha256sums = 4972edd5da1be5c5dd2fa14619c7068b09fd9dc31c1feea50ed564cdb14df6bc
+
+pkgname = zap-bin
