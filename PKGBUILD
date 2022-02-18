@@ -71,11 +71,11 @@ build() {
 }
 
 check() {
-  make -C build DESTDIR="${srcdir}/build/testdir" install
+  make -C build DESTDIR="${srcdir}/fakeroot" install
   cd vapoursynth
-  _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
-  LD_LIBRARY_PATH="${srcdir}/build/testdir/usr/lib" \
-  PYTHONPATH="${srcdir}/build/testdir${_site_packages}:${_site_packages}" \
+  _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')" \
+  LD_LIBRARY_PATH="${srcdir}/fakeroot/usr/lib" \
+  PYTHONPATH="${srcdir}/fakeroot${_site_packages}:${_site_packages}" \
   python -m unittest discover -s test -p "*test.py" -v
 }
 
