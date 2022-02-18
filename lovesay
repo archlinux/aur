@@ -1,0 +1,218 @@
+#!/usr/bin/env bash
+# -*-coding:utf-8 -*-
+# -------------------------------------------------------------------------
+# Path          - /usr/bin/lovesay
+# GitHub        - https://github.com/The-Repo-Club/
+# Author        - The-Repo-Club [wayne6324@gmail.com]
+# Start On      - Thu 17 February 2022, 10:14:54 pm (GMT)
+# Modified On   - Thu 17 February 2022, 10:15:00 pm (GMT)
+# -------------------------------------------------------------------------
+
+## Set Colors (copied from makepkg)
+red="\e[0;91m"
+grn="\e[0;92m"
+yel="\e[0;93m"
+blu="\e[0;94m"
+mag="\e[0;95m"
+cyn="\e[0;96m"
+wht="\e[0;97m"
+bld="\e[1;1m"
+del="\e[0;0m"
+
+readonly red grn yel blu mag cyn wht bld del
+
+#==============================================================================
+
+#=== DEFAULTS =================================================================
+
+setterm -linewrap off
+COLUMNS=$(tput cols)
+verbosity=0
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-${HOME}/.config}
+
+# Speed up script by not using unicode.
+setterm -linewrap off
+
+#==============================================================================
+
+#=== DEFAULT QUOTES ===========================================================
+
+read -rd '' quotes <<'EOF'
+# you remind me of none pizza with left beef
+# *pulls you closer* "I use arch btw"
+# The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues.
+# This script is sponsored by blankVPN. Stick around till the end to find out more about our wonderful sponser.
+# I hate when I'm on a flight and I wake up next to a water bottle next to me like oh great now I gotta be responsible for this water bottle
+# The risk I took was calculated, but man am I bad at math
+# As a felow dogecoin investor, I must ask, how do I get my money back?
+# Look at Gaga she's the creative director of Polaroid. I like some of the Gaga songs but what the fuck does she know about cameras?
+# eating is for the weak, real sigmas use photosynthesis
+# How to download more ram and storage
+# so you're telling me a shrimp fried this rice?
+# can you believe we don't have a jacuzzi? can you believe that?
+# amogus
+# Why would I choose cosmic energy over Katara?
+# Hey hey hey, this is Anthony Fantano, the internet's busiest music nerd, and today we'll be reviewing the new weezer album
+# about to eat a popeye's biscuit without a drink, wish me luck
+# 1v1 me on roblox phantom forces
+# Frank Ocean, that's all, that's the quote
+# ballin, but at what cost?
+# My Cabbages!!!
+# if going to crash: don't
+# the numbers Mason! what do they mean?!
+# young thug has better vocals than most mainstream singers, but stan twitter wouldn't let me breathe if I said that
+# certified orange boy
+# your fruit killing skills are remarkable!
+# I'm a goddamn onion, Mason!
+# Curse you, Perry the Platypus!
+# Name's Bonzu Pippinpaddleopsicopolis, the Third
+# git pull this, git pull that, how about you git pull some [insert word here] bro
+# we're sorry to announce that the VPN service from earlier turned out to be shady, but we already got their money so it's all good
+EOF
+
+#==============================================================================
+
+#=== FUNCTION =================================================================
+#        Name: get_user_quotes
+# Description: Get the users quotes and if no quotes then make one
+#==============================================================================
+
+get_user_quotes() {
+  if [[ -f "${XDG_CONFIG_HOME}/lovesay/quotes" ]]; then
+    quotesFile="${XDG_CONFIG_HOME}/lovesay/quotes"
+    verbose "lovesay: Sourced user quotes.    (${quotesFile})"
+  else
+    verbosity=1
+    quotesFile="${XDG_CONFIG_HOME}/lovesay/quotes"
+    verbose "lovesay: Sourced user quotes.    (${quotesFile})"
+
+    # The quotes file doesn't exist, create it.
+    mkdir -p "${XDG_CONFIG_HOME}/lovesay/"
+    printf '%b\n' "${quotes//# /}" >"$quotesFile"
+  fi
+}
+
+#=== FUNCTION =================================================================
+#        Name: repeat
+# Description: Repeat given char 80 times using shell function
+# Parameter 1: Message to repeat
+#==============================================================================
+repeat() {
+  printf "$1"'%.s' {1..23}
+}
+
+#=== FUNCTION =================================================================
+#        Name: msg
+# Description: Print message with a green pretag if $quiet is not set.
+# Parameter 1: Message to print.
+#==============================================================================
+
+# copied from makepkg and modified
+msg() {
+
+  local mesg=$1
+  printf "${grn}${bld}==>${del}${wht} %b${del}\n" "$mesg"
+  exit 0
+}
+
+#=== FUNCTION =================================================================
+#        Name: error
+# Description: Print message with a red pretag an ERROR
+# Parameter 1: Message to print
+#==============================================================================
+
+# copied from makepkg
+error() {
+  local mesg=$1
+  printf "${red}${bld}==> ERROR:${wht} %b${del}\n" "$mesg"
+  exit 0
+}
+
+#=== FUNCTION =================================================================
+#        Name: verbose
+# Description: Print message with a red pretag an VERBOSE
+# Parameter 1: Message to print
+#==============================================================================
+
+# copied from makepkg
+verbose() {
+  if [[ "$verbosity" -eq "1" ]] || [[ "$verbosity" -eq "2" ]]; then
+    local mesg=$1
+    shift
+    printf "${red}${bld}==> VERBOSE:${wht} %b${del}\n" "$mesg" "$@" >&2
+  fi
+}
+
+#=== FUNCTION =================================================================
+#        Name: get_quote
+# Description: Prints quote to init.
+#==============================================================================
+
+get_quote() {
+  quote=$(sort -R "$quotesFile" | head -n1)
+  printf -v display_quote "%b" "${red}♥${del} ${quote} ${red}♥${del}"
+}
+
+#=== FUNCTION =================================================================
+#        Name: get_ascii
+# Description: Prints ascii_art to init.
+#==============================================================================
+
+get_ascii() {
+  printf -v ascii_art "%b\n" "\t\t
+  ${red}   ♥ ♥   ♥ ♥${del}
+  ${cyn} ♥     ♥     ♥${del}
+  ${blu} ♥           ♥${del}
+  ${mag}   ♥       ♥${del}
+  ${grn}     ♥   ♥${del}
+  ${yel}       ♥ ${del}"
+}
+
+#=== FUNCTION =================================================================
+#        Name: get_blank
+# Description: Prints blank info to main.
+#==============================================================================
+
+get_blank() {
+  printf -v blank "%b" "\t"
+}
+
+display=(
+  'blank'
+  'blank'
+  'display_quote'
+  'blank'
+  'blank'
+  'blank'
+  'blank'
+  'blank'
+  'blank'
+  'blank'
+)
+
+#=== FUNCTION =================================================================
+#        Name: init
+# Description: Prints system information.
+#==============================================================================
+
+init() {
+  # Load default quotes.
+  eval "$quotes"
+
+  get_user_quotes
+  get_ascii
+  get_quote
+  get_blank
+
+  if [[ ! "$verbosity" -eq "2" ]]; then
+    count=0
+    while IFS= read -r Line; do
+      if [ -n "${!display[$count]}" ] && [ ! "${!display[$count]}" == "Unknown" ]; then
+        printf "%b\t%b\n" "$Line" "${!display[$count]}"
+      fi
+      count=$((count + 1))
+    done <<<"$ascii_art"
+  fi
+}
+
+init

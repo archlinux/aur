@@ -1,0 +1,14 @@
+pkgbase = lovesay
+	pkgdesc = Simple system info fetching tool
+	pkgver = 2022.02.18
+	pkgrel = 1
+	url = https://github.com/the-repo-club/lovesay
+	arch = any
+	groups = therepoclub
+	license = GPL3
+	makedepends = git
+	depends = bash
+	source = lovesay
+	sha256sums = SKIP
+
+pkgname = lovesay
