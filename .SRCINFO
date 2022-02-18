@@ -7,7 +7,7 @@ pkgbase = sonixd-appimage
 	license = GPL3
 	depends = fuse2
 	options = !strip
-	source = https://github.com/jeffvli/sonixd/releases/download/v0.13.1/Sonixd-0.13.1.AppImage
+	source = https://github.com/jeffvli/sonixd/releases/download/v0.13.1/Sonixd-0.13.1-linux.AppImage
 	sha256sums = c6487b91dd3c26dc830fe0c74a35874bfc76843a1cf772e41b8fb454bbfe8775
 
 pkgname = sonixd-appimage
