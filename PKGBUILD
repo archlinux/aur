@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-    cd $pkgname-e859f637b381e93adff283bc2b0f46079949c18b
+    cd mpz-e859f637b381e93adff283bc2b0f46079949c18b
 
     cd build
     make install INSTALL_ROOT=$pkgdir
