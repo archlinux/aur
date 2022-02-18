@@ -1,36 +1,34 @@
 #!/bin/bash -e
 
-kernels=()
-dracut_update=0
+all=0
+lines=()
 
 while read -r line; do
-    if [[ $line != 'usr/lib/modules/'+([^/])'/pkgbase' ]]; then
-		dracut_update=1 # Dracut files have been updated
-        continue 
-    fi
+	if [[ $line != */vmlinuz ]]; then
+		# triggers when it's a change to dracut files
+		all=1
+		continue
+	fi
 
-    read -r pkgbase < "/${line}"
-	kernels+=("${pkgbase}")
+	pkgbase="$(<${line%/vmlinuz}/pkgbase)"
+	install -Dm644 "${line}" "/boot/vmlinuz-${pkgbase}"
+
+	lines+=(${line})
 done
 
-if (( dracut_update )); then
-	kernels=()
-	for file in /lib/modules/*/pkgbase; do
-		if read -r pkgbase &> /dev/null < "$file"; then
-			kernels+=("${pkgbase}")
-		fi
-	done
+if (( all )); then
+	lines=(/usr/lib/modules/*/vmlinuz)
 fi
 
-for kernel in "${kernels[@]}"; do
-	path="$(grep -lE "^${kernel}\$" /usr/lib/modules/*/pkgbase)"
-	version=$(basename "${path%/pkgbase}")
-    read -r pkgbase < "$path"
+for line in "${lines[@]}"; do
+	folder="${line%/vmlinuz}"
 
-    install -Dm0644 "/${path%'/pkgbase'}/vmlinuz" "/boot/vmlinuz-${pkgbase}"
+	pkgbase="$(<${folder}/pkgbase)"
+	kver="${folder##*/}"
 
-	echo ":: Building initramfs for $kernel-$version"
-	dracut -f --no-hostonly-cmdline "/boot/initramfs-${kernel}.img" --kver "${version}"
-	echo ":: Building fallback initramfs for $kernel-$version"
-	dracut -f -N "/boot/initramfs-${kernel}-fallback.img" --kver "${version}"
+	echo ":: Building initramfs for $pkgbase ($kver)"
+	dracut --force --hostonly "/boot/initramfs-${pkgbase}.img" "${kver}"
+
+	echo ":: Building fallback initramfs for $pkgbase ($kver)"
+	dracut --force --no-hostonly "/boot/initramfs-${pkgbase}-fallback.img" "${kver}"
 done
