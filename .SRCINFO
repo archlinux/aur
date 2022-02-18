@@ -1,0 +1,16 @@
+pkgbase = ckube
+	pkgdesc = raymarch cubes in your unix terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/soybin/ckube
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = gcc
+	depends = ncurses
+	provides = ckube
+	source = git+https://github.com/soybin/ckube.git#tag=d9d1ec2122c51875da62014ae49fc3e0c989b42e
+	sha256sums = SKIP
+
+pkgname = ckube
