@@ -1,7 +1,7 @@
 pkgbase = ada_language_server-git
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
 	pkgver = r1391.d219a846
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/ada_language_server/
 	arch = x86_64
 	license = GPL3
@@ -9,6 +9,7 @@ pkgbase = ada_language_server-git
 	makedepends = gcc-ada
 	makedepends = gprbuild
 	makedepends = python-e3-testsuite
+	depends = libadalang-git
 	depends = libadalang-tools-git
 	depends = langkit-git
 	depends = libvss-git

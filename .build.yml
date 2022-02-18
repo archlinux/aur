@@ -15,7 +15,8 @@ tasks:
     makepkg -i --noconfirm
     cd ..
     yay -S --answerclean=All --noconfirm xmlada
-    yay -S gnatcoll-core-git libadalang-tools-git libvss-git ada_spawn ada-libfswatch --noconfirm
+    # Adding libadalang-git as an explicit dependency because libadalang-tools-git doesn't specify the git package
+    yay -S gnatcoll-core-git libadalang-git libadalang-tools-git libvss-git ada_spawn ada-libfswatch --noconfirm
 - build: |
     cd aur-als-git
     makepkg

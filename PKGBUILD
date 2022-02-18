@@ -2,14 +2,16 @@
 
 pkgname=ada_language_server-git
 pkgver=r1391.d219a846
-pkgrel=1
+pkgrel=2
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
 url='https://github.com/AdaCore/ada_language_server/'
 arch=('x86_64')
 license=('GPL3')
 
-depends=('libadalang-tools-git' 'langkit-git' 'libvss-git' 'ada_spawn' 'ada-libfswatch')
+# Specifying libadalang-git and langkit-git explicitly because libadalang-git
+# doesn't specify the git packages
+depends=('libadalang-git' 'libadalang-tools-git' 'langkit-git' 'libvss-git' 'ada_spawn' 'ada-libfswatch')
 makedepends=('git' 'gcc-ada' 'gprbuild' 'python-e3-testsuite')
 
 conflicts=('ada_language_server')
