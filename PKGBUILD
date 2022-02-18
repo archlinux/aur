@@ -1,5 +1,5 @@
 pkgname=unity-version-manager
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='cli utility to install and manager unity versions'
 arch=(x86_64)
@@ -8,7 +8,7 @@ license=('Apache')
 depends=(p7zip)
 makedepends=(cargo git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Larusso/unity-version-manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5c88a14c804bfb8213cea930e6c440e6844023584699ffd4432ddd2c3c73ef52')
+sha256sums=('7b6a63d5ab40ec9d3f2245a9cb4487480e741a9b5f6a71e64192c93ce4c742a6')
 
 build() {
   cd $pkgname-$pkgver
