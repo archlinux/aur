@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 pkgname=lean4
 _pkgver=4.0.0
-_pkgm=m2
+_pkgm=m3
 _pkgpver=v${_pkgver}-${_pkgm}
 pkgver=${_pkgver}.${_pkgm}
 pkgrel=1
@@ -14,6 +14,11 @@ makedepends=('cmake')
 options=()
 source=("${pkgname}-${pkgver}::git+https://github.com/leanprover/lean4.git#commit=${_pkgpver}")
 b2sums=('SKIP')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    git submodule update --init
+}
 
 build() {
     cd "${pkgname}-${pkgver}"
