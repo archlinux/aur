@@ -1,11 +1,12 @@
 pkgbase = macast-bin
 	pkgdesc = DLNA Media Renderer
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xfangfang/Macast
 	arch = x86_64
 	license = GPL3
 	depends = python
+	depends = libxcrypt-compat
 	depends = mpv
 	conflicts = macast-git
 	source = macast::https://github.com/xfangfang/Macast/releases/download/v0.7/Macast-Linux-v0.7-amd64
