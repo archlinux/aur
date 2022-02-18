@@ -2,7 +2,7 @@
 
 pkgname=dosbox-x-sdl2
 pkgver=0.83.22
-pkgrel=2
+pkgrel=3
 pkgdesc="x86 emulator with builtin DOS, with patches and more features"
 arch=(i686 x86_64 aarch64)
 url="http://dosbox-x.com"
@@ -24,7 +24,7 @@ build() {
   chmod +x configure
   # Removing support for ffmpeg encoding until ffmpeg 5.x
   # is supported. Cf bug https://github.com/joncampbell123/dosbox-x/issues/3283
-  ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
+  ./configure --enable-core-inline --enable-debug --disable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
 }
 
