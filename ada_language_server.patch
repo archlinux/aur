@@ -1,46 +1,50 @@
-diff --git a/Makefile b/Makefile
-index bab4c63..ab67d21 100644
---- a/Makefile
-+++ b/Makefile
-@@ -11,7 +11,7 @@ TD=testsuite/ada_lsp
- GPRBUILD=gprbuild -j0
+Index: ada_language_server/gnat/tester.gpr
+===================================================================
+--- ada_language_server.orig/gnat/tester.gpr
++++ ada_language_server/gnat/tester.gpr
+@@ -17,6 +17,7 @@
  
- # Installation directory
--DESTDIR=
-+DESTDIR?=
+ with "lsp_client";
+ with "gnatcoll";
++with "gtkada";
  
- # Library type
- LIBRARY_TYPE=relocatable
-@@ -38,16 +38,17 @@ ifeq ($(LIBRARY_TYPE), static)
- 		  -XXMLADA_BUILD=static \
- 		  -XGPR_BUILD=static
- else
--    LIBRARY_FLAGS=-XBUILD_MODE=$(BUILD_MODE)
-+    LIBRARY_FLAGS=-XBUILD_MODE=$(BUILD_MODE) \
-+		  -XLIBRARY_TYPE=relocatable
- endif
+ project Tester is
  
- all:
--	$(GPRBUILD) -P gnat/lsp.gpr -p $(LIBRARY_FLAGS)
--	$(GPRBUILD) -P gnat/lsp_server.gpr -p $(LIBRARY_FLAGS)
--	$(GPRBUILD) -P gnat/lsp_client.gpr -p $(LIBRARY_FLAGS)
--	$(GPRBUILD) -P gnat/spawn_tests.gpr -p $(LIBRARY_FLAGS)
--	$(GPRBUILD) -P gnat/tester.gpr -p $(LIBRARY_FLAGS)
--	$(GPRBUILD) -P gnat/codec_test.gpr -p $(LIBRARY_FLAGS)
-+	$(GPRBUILD) -P gnat/lsp.gpr -p $(LIBRARY_FLAGS) -R -cargs -pie -largs $(LDFLAGS)
-+	$(GPRBUILD) -P gnat/lsp_server.gpr -p $(LIBRARY_FLAGS) -R -cargs -pie -largs $(LDFLAGS)
-+	$(GPRBUILD) -P gnat/lsp_client.gpr -p $(LIBRARY_FLAGS) -R -cargs -pie -largs $(LDFLAGS)
-+	$(GPRBUILD) -P gnat/spawn_tests.gpr -p $(LIBRARY_FLAGS) -R -cargs -pie -largs $(LDFLAGS)
-+	$(GPRBUILD) -P gnat/tester.gpr -p $(LIBRARY_FLAGS) -R -cargs -pie -largs $(LDFLAGS)
-+	$(GPRBUILD) -P gnat/codec_test.gpr -p $(LIBRARY_FLAGS) -R -cargs -pie -largs $(LDFLAGS)
- 	mkdir -p integration/vscode/ada/$(PLATFORM)
- 	cp -f .obj/server/ada_language_server integration/vscode/ada/$(PLATFORM) ||\
- 	  cp -f .obj/server/ada_language_server.exe integration/vscode/ada/$(PLATFORM)
-diff --git a/testsuite/ada_lsp/called_by/called_by.json b/testsuite/ada_lsp/called_by/called_by.json.failed
-similarity index 100%
-rename from testsuite/ada_lsp/called_by/called_by.json
-rename to testsuite/ada_lsp/called_by/called_by.json.failed
-diff --git a/testsuite/ada_lsp/called_by_not_open/called_by_not_open.json b/testsuite/ada_lsp/called_by_not_open/called_by_not_open.json.failed
-similarity index 100%
-rename from testsuite/ada_lsp/called_by_not_open/called_by_not_open.json
-rename to testsuite/ada_lsp/called_by_not_open/called_by_not_open.json.failed
+Index: ada_language_server/Makefile
+===================================================================
+--- ada_language_server.orig/Makefile
++++ ada_language_server/Makefile
+@@ -74,7 +74,7 @@ endif
+ 
+ all: coverage-instrument
+ 	$(GPRBUILD) -P gnat/tester.gpr -p $(BUILD_FLAGS)
+-	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -p $(BUILD_FLAGS) s-memory.adb
++	$(GPRBUILD) -d -ws -c -u -P gnat/lsp_server.gpr -aP /usr/share/gpr -p $(BUILD_FLAGS) s-memory.adb
+ 	$(GPRBUILD) -P gnat/lsp_server.gpr -p $(COVERAGE_BUILD_FLAGS) \
+ 		-XVERSION=$(TRAVIS_TAG)
+ 	$(GPRBUILD) -P gnat/codec_test.gpr -p $(COVERAGE_BUILD_FLAGS)
+Index: ada_language_server/gnat/lsp_server.gpr
+===================================================================
+--- ada_language_server.orig/gnat/lsp_server.gpr
++++ ada_language_server/gnat/lsp_server.gpr
+@@ -15,7 +15,6 @@
+ -- of the license.                                                          --
+ ------------------------------------------------------------------------------
+ 
+-with "gpr2.gpr";
+ with "libadalang";
+ with "lal_tools.gpr";
+ with "ada_libfswatch.gpr";
+Index: ada_language_server/source/ada/lsp-lal_utils.adb
+===================================================================
+--- ada_language_server.orig/source/ada/lsp-lal_utils.adb
++++ ada_language_server/source/ada/lsp-lal_utils.adb
+@@ -1631,7 +1631,7 @@ package body LSP.Lal_Utils is
+             Bytes    => To_Unbounded_String (Output));
+ 
+       begin
+-         Langkit_Support.Token_Data_Handlers.Initialize (TDH, Symbols);
++         Langkit_Support.Token_Data_Handlers.Initialize (TDH, Symbols, TDH'Address);
+          Libadalang.Lexer.Extract_Tokens
+            (Input,
+             TDH         => TDH,

@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=ada_language_server-git
-pkgver=r420.3461caa
+pkgver=r1391.d219a846
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -9,13 +9,14 @@ url='https://github.com/AdaCore/ada_language_server/'
 arch=('x86_64')
 license=('GPL3')
 
-depends=('libadalang-git' 'langkit-git')
-makedepends=('git' 'gcc-ada' 'gprbuild-git' 'libadalang-git' 'langkit-git')
+depends=('libadalang-tools-git' 'langkit-git' 'libvss-git' 'ada_spawn' 'ada-libfswatch')
+makedepends=('git' 'gcc-ada' 'gprbuild' 'python-e3-testsuite')
 
-provides=('ada_language_server')
+conflicts=('ada_language_server')
 
 source=('git+https://github.com/AdaCore/ada_language_server.git' 'ada_language_server.patch')
-sha1sums=('SKIP' '4d63949aebb58dae4921f0917413d6398d769fc6')
+sha1sums=('SKIP'
+          '097a2d9e6703ef10009c0ab36391de3b44246d23')
 
 pkgver() {
     #cd "${srcdir}/${pkgname%-git}"
