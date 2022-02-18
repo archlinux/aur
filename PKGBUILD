@@ -1,5 +1,5 @@
 pkgname=mingw-w64-vtk-git
-pkgver=r80368.924cd45297e
+pkgver=r81218.8f51e3af756
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("git+https://gitlab.kitware.com/vtk/vtk.git")
 sha256sums=('SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="x86_64-w64-mingw32"
 
 pkgver () {
   cd "${srcdir}/vtk"
@@ -26,6 +26,9 @@ prepare() {
   sed -i "s|2.4.0|2.3.0|" ThirdParty/libharu/CMakeLists.txt
   sed -i "s|set(HPDF_DLL 1)|set(HPDF_DLL 0)|g" ThirdParty/libharu/CMakeLists.txt
   sed -i "27i#undef STRICT" ThirdParty/libproj/vtk_libproj.h.in
+
+  # _isatty
+  curl -L https://github.com/gsjaardema/seacas/commit/175e2ecf.patch | patch -p6 -d ThirdParty/ioss/vtkioss
 }
 
 build() {
