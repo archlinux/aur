@@ -5,6 +5,7 @@ pkgbase = python-onvif-zeep-git
 	url = https://github.com/FalkTannhaeuser/python-onvif-zeep
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-setuptools
@@ -15,4 +16,3 @@ pkgbase = python-onvif-zeep-git
 	sha512sums = SKIP
 
 pkgname = python-onvif-zeep-git
-

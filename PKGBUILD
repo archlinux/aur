@@ -12,7 +12,7 @@ provides=('python-onvif-zeep')
 depends=('python'
          'python-setuptools'
          'python-zeep')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/FalkTannhaeuser/${_gitname}")
 sha512sums=('SKIP')
 
