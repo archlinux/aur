@@ -7,7 +7,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=7
+pkgrel=8
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -58,7 +58,7 @@ makedepends=(
   'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
   'zvbi' 'libass' 'libkate' 'libtiger'
   'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-  'lirc' 'libgoom2' 'projectm' 'dav1d'
+  'lirc' 'libgoom2' 'projectm' 'chromaprint' 'dav1d'
   'aribb24' 'aribb25' 'pcsclite' 'lua51' 'lsb-release'
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
@@ -133,6 +133,7 @@ optdepends=(
   'jack: jack audio server'
   'libsamplerate: audio Resampler'
   'libsoxr: SoX audio Resampler'
+  'chromaprint: Chromaprint audio fingerprinter'
   'lirc: lirc control'
   'libgoom2: Goom visualization'
   'projectm: ProjectM visualisation'
@@ -312,7 +313,7 @@ build() {
     --enable-jack \
     --enable-samplerate \
     --enable-soxr \
-    --disable-chromaprint \
+    --enable-chromaprint \
     --enable-chromecast \
     --enable-qt \
     --enable-skins2 \
