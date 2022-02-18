@@ -1,8 +1,8 @@
 pkgbase = pyfetch-git
 	pkgdesc = Stylish and simple fetch for your terminal.
-	pkgver = r97.83bd9e8
-	pkgrel = 3
-	url = https://kreatea.ml/kreato/pyfetch
+	pkgver = r158.3e97153
+	pkgrel = 1
+	url = https://git.kreatea.space/kreato/pyfetch
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -13,8 +13,7 @@ pkgbase = pyfetch-git
 	depends = wmctrl
 	provides = pyfetch
 	conflicts = pyfetch
-	source = git+https://kreatea.ml/kreato/pyfetch.git
+	source = git+https://git.kreatea.space/kreato/pyfetch.git
 	sha256sums = SKIP
 
 pkgname = pyfetch-git
-
