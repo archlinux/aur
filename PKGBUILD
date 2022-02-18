@@ -4,7 +4,7 @@ _orgname=cosmos
 _reponame=gaia
 _pkgname=${_reponame}d
 pkgname=${_pkgname}-bin
-pkgver=6.0.0
+pkgver=6.0.2
 pkgrel=1
 pkgdesc="Cosmos SDK application for the Cosmos Hub"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("https://raw.githubusercontent.com/${_orgname}/${_reponame}/v${pkgver}/L
 source_x86_64=("${_pkgname}-v${pkgver}-linux::https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64")
 source_aarch64=("${_pkgname}-v${pkgver}-linux::https://github.com/${_orgname}/${_reponame}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64")
 sha256sums=('98bf5ef31e3c439d9d721a2b919fa285ad6a1ee607d71fb062a8b1849ae1e1fc')
-sha256sums_x86_64=('d9b4391065a338107ca240f29539d62572fe1e85a6c455576afc5e93dba7f402')
-sha256sums_aarch64=('d9b4391065a338107ca240f29539d62572fe1e85a6c455576afc5e93dba7f402')
+sha256sums_x86_64=('cccf26622594c3929e9a06f79a552ae51a4fadd58669837a8e151a89cfc4c565')
+sha256sums_aarch64=('cccf26622594c3929e9a06f79a552ae51a4fadd58669837a8e151a89cfc4c565')
 
 package() {
     install -D "${_pkgname}-v${pkgver}-linux" "$pkgdir/usr/bin/${_pkgname}"
