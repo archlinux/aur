@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R57.47.geeae2eef
+pkgver=R57.62.gd06204ca
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -45,6 +45,7 @@ sha256sums=('SKIP'
             '8e51579547d20cd7cb9618a47b3ac508423d09d76649bf038d0ab9acb850b068'
             '0356258391e190dc1d44ea01565cfe627fe44e27dad693a0a54c2483a7b223e5'
             )
+options=('debug')
 
 pkgver() {
   cd vapoursynth
@@ -70,11 +71,11 @@ build() {
 }
 
 check() {
-  (cd build; make DESTDIR="$(pwd)/testdir" install)
+  make -C build DESTDIR="${srcdir}/build/testdir" install
   cd vapoursynth
   _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
-  LD_LIBRARY_PATH=../build/testdir/usr/lib \
-  PYTHONPATH=../build/testdir${_site_packages}:${_site_packages} \
+  LD_LIBRARY_PATH="${srcdir}/build/testdir/usr/lib" \
+  PYTHONPATH="${srcdir}/build/testdir${_site_packages}:${_site_packages}" \
   python -m unittest discover -s test -p "*test.py" -v
 }
 

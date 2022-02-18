@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-git
 	pkgdesc = A video processing framework with simplicity in mind. (GIT version)
-	pkgver = R57.47.geeae2eef
+	pkgver = R57.62.gd06204ca
 	pkgrel = 1
 	url = http://www.vapoursynth.com
 	arch = x86_64
@@ -32,6 +32,7 @@ pkgbase = vapoursynth-git
 	provides = vapoursynth
 	conflicts = vapoursynth
 	conflicts = vapoursynth-plugin-miscfilters
+	options = debug
 	source = git+https://github.com/vapoursynth/vapoursynth.git
 	source = vapoursynth.xml
 	source = wtfpl.txt::http://www.wtfpl.net/txt/COPYING
