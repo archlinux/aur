@@ -1,6 +1,6 @@
 pkgname=orchis-theme
-pkgver=2021_12_13
-pkgrel=2
+pkgver=2022_02_18
+pkgrel=3
 pkgdesc="A Material Design theme for GNOME/GTK based desktop environments."
 options=(!strip)
 replaces=("${pkgname}-bin")
@@ -8,12 +8,12 @@ arch=('any')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
 url="https://github.com/vinceliuice/${pkgname}"
-source=("${pkgname}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz")
-sha256sums=('1170c2b1ce3fcb17cc534205d7e4c93bf1c5a7ae9515bf9c40ee9b5e4a788de1')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver//_/-}.tar.gz")
+sha256sums=('65ddf3ee5741f4c952a61fb7767c278ac5cba60d1b69f5ab179f07051031781c')
 
 
 package() {
 	target=$pkgdir/usr/share/themes/
 	mkdir -p $target
-	tar -xJf "Orchis-theme-${pkgver//_/-}/release/Orchis.tar.xz" -C "$target"
+	tar -xJof "Orchis-theme-${pkgver//_/-}/release/Orchis.tar.xz" -C "$target"
 }
