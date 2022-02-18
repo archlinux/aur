@@ -3,4 +3,6 @@
 *.gz
 src/
 pkg/
+*.tar.*
+*.t?z
 

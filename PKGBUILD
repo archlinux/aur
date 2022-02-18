@@ -37,7 +37,9 @@ _build_sapi_ini_cgi="etc/php53"
 _build_sapi_ini_cli="etc/php53"
 _build_sapi_ini_embed="etc/php53"
 _build_sapi_ini_fpm="etc/php53"
+_build_sapi_ini_litespeed="etc/php53"
 _build_sapi_ini_phpdbg="etc/php53"
+_build_sapi_litespeed="--with-litespeed"
 _build_shared_gd="1"
 _build_shared_json="1"
 _build_shared_libedit="0"
@@ -67,6 +69,7 @@ pkgname=(
     "php53-fpm"
     "php53-embed"
     "php53-apache"
+    "php53-litespeed"
     "php53-pear"
     "php53-pecl"
     "php53-xml"
@@ -122,6 +125,7 @@ pkgname=(
     "php53-mcrypt"
 )
 source=(
+    "make-tests.patch"
     "pear-config-patcher.php"
     "php-makefile-patcher.php"
     "php-apache.conf"
@@ -493,6 +497,7 @@ _build_sapi() {
 
     pushd "build-${_sapi}"
      ./configure ${_phpconfig} ${_commands}
+    patch -p1 -i "${srcdir}/make-tests.patch"
 
     if (($_sapi != "cli")); then
         make clean
@@ -605,6 +610,22 @@ build() {
         --disable-phpdbg \
     "
 
+    # litespeed
+    _cflags="${CFLAGS}"
+    export CFLAGS="${CFLAGS} -Wno-error=format-security"
+    _build_sapi "litespeed" "\
+        --sysconfdir=/${_build_sapi_ini_litespeed} \
+        --with-config-file-path=/${_build_sapi_ini_litespeed} \
+        --disable-all \
+        --disable-cgi \
+        --disable-cli \
+        --disable-fpm \
+        --disable-embed \
+        --disable-phpdbg \
+        ${_build_sapi_litespeed} \
+    "
+    export CFLAGS="${_cflags}"
+
     # fpm
     _build_sapi "fpm" "\
         --sysconfdir=/${_build_sapi_ini_fpm} \
@@ -634,6 +655,7 @@ build() {
         --enable-embed=shared \
         --enable-fpm \
         ${_phpextensions_fpm} \
+        ${_build_sapi_litespeed} \
     "
     fi
 
@@ -940,6 +962,30 @@ package_php53-phpdbg() {
     popd
 }
 # phpdbg sapi end
+
+# litespeed sapi
+package_php53-litespeed() {
+    _sapi="litespeed"
+    pkgdesc="LiteSpeed SAPI for ${pkgbase}"
+    depends=("${pkgbase}=${pkgver}")
+    depends+=("${_sapi_depends[@]}")
+    if ((_build_ini_per_sapi || _build_per_sapi)); then
+        pushd "build-${_sapi}"
+    else
+        pushd "build-cli"
+    fi
+    if ((_build_ini_per_sapi)); then
+        install -D -m644 "../php-${pkgver}/php.ini-production" "${pkgdir}/${_build_sapi_ini_cgi}/php.ini"
+        backup=("${_build_sapi_ini_cgi}/php.ini")
+    fi
+    case "${_phpbase}" in
+        *)
+            install -D -m755 sapi/litespeed/php "${pkgdir}/usr/bin/ls${pkgbase}"
+            ;;
+    esac
+    popd
+}
+# litespeed sapi end
 
 ###############################################################################
 # PEAR + PECL
@@ -1485,7 +1531,8 @@ package_php53-readline() {
 }
 
 
-sha256sums=('0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
+sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
+            '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
             'c4e1cf6972b2a9c7f2777a18497d83bf713cdbecabb65d3ff62ba441aebb0091'
