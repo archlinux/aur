@@ -1,0 +1,16 @@
+# ma35d1-nuwriter-git.install
+info() {
+    echo -e "MA35D1 NuWriter"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the ma35d1-nuwriter bottle..."
+    find /home -maxdepth 5 -name "ma35d1-nuwriter" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the ma35d1-nuwriter bottle..."
+    find /home -maxdepth 5 -name "ma35d1-nuwriter" -exec rm -rf {} \;
+}
