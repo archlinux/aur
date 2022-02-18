@@ -1,6 +1,6 @@
 pkgbase = balance-of-satoshis
 	pkgdesc = Commands for working with LND balances.
-	pkgver = 11.53.3
+	pkgver = 11.53.5
 	pkgrel = 1
 	url = https://github.com/alexbosworth/balanceofsatoshis
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = balance-of-satoshis
 	makedepends = npm
 	depends = nodejs>=10
 	optdepends = lnd-bin
-	noextract = balanceofsatoshis-11.53.3.tgz
+	noextract = balanceofsatoshis-11.53.5.tgz
 	options = !strip
-	source = https://registry.npmjs.org/balanceofsatoshis/-/balanceofsatoshis-11.53.3.tgz
-	sha256sums = ca48b06d7a9eb830e655b771f6a662d88c47eb5b9a3c752fa499f81f8bac7127
+	source = https://registry.npmjs.org/balanceofsatoshis/-/balanceofsatoshis-11.53.5.tgz
+	sha256sums = ec4e377dd18c52140d856c4ada2192001b7e32e13d1ef6db3c8566a46870624d
 
 pkgname = balance-of-satoshis
