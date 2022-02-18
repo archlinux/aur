@@ -1,7 +1,7 @@
 pkgbase = lib32-libxcrypt-compat
 	pkgdesc = Modern library for one-way hashing of passwords: legacy API functions (32 bit library)
 	pkgver = 4.4.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/besser82/libxcrypt/
 	arch = x86_64
 	license = GPL

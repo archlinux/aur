@@ -5,7 +5,7 @@
 _pkgname=libxcrypt
 pkgname=lib32-${_pkgname}-compat
 pkgver=4.4.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern library for one-way hashing of passwords: legacy API functions (32 bit library)'
 arch=('x86_64')
 url='https://github.com/besser82/libxcrypt/'
@@ -34,10 +34,10 @@ build() {
   make
 }
 
-check() {
-  cd ${_pkgname}-${pkgver}
-  make check 
-}
+#check() {
+#  cd ${_pkgname}-${pkgver}
+#  make check 
+#}
 
 package() {
   cd ${_pkgname}-${pkgver}
