@@ -1,12 +1,13 @@
 pkgbase = wootility-lekker-beta-appimage
 	pkgdesc = Utility for configuring Wooting keyboards (binary AppImage version)
 	pkgver = 4.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wooting.io/wootility
+	install = wooting.install
 	arch = x86_64
 	license = unknown
 	depends = fuse2
-	optdepends = xboxdrv: Analog gamepad support (input group required
+	optdepends = xboxdrv: Analog gamepad support (input group required)
 	provides = wootility
 	conflicts = wootility
 	options = !strip
