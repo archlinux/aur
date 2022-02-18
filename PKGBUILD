@@ -1,7 +1,7 @@
 # Maintainer: Raf Gemmail <rafiq+aur@dreamthought.com>
 
 pkgname=rakubrew
-pkgver=22
+pkgver=26
 pkgrel=1
 pkgdesc='Manage Raku (Formarly Perl 6+) installations in your $HOME'
 arch=('any')
@@ -14,8 +14,8 @@ makedepends=('perl-module-build-tiny')
 checkdepends=('perl-test-exception' 'perl-test-output' 'perl-test-spec'
               'perl-path-class' 'perl-io-all')
 options=('!emptydirs')
-source=("https://github.com/Raku/App-Rakubrew/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('183104f3aa6fd36f097bbf64a0194e3b74026ba6207640c56ec41bbfefc50e93fbd2af50739a2db9ed4f40cdd923de49abdab362fa1989864ae497efd6cbe064')
+source=("v$pkgver.tar.gz::https://codeload.github.com/Raku/App-Rakubrew/tar.gz/refs/tags/v${pkgver}")
+sha512sums=('cf728b07e323fcf23a535fae54623275db0d7de822248b2e94d04fe5f2960dd0bcb2e3678dac6a4c2096da3fae753d01530fc39af9abf4e7ad8b9167dbc3adec')
 
 build() {
   cd App-Rakubrew-$pkgver
