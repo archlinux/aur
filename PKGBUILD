@@ -1,8 +1,8 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgbase="dtodo"
 pkgname="dtodo-git"
-pkgver=r9.85c9956
-pkgrel=2
+pkgver=1.1
+pkgrel=3
 pkgdesc="Manage the tasks you want to do every day easily "
 arch=(x86_64 i686)
 url="https://github.com/SkwalExe/dtodo"
