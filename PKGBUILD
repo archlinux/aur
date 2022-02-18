@@ -4,7 +4,7 @@
 pkgname=discord-ptb
 _pkgname=DiscordPTB
 pkgver=0.0.29
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure. - Public Test Build"
 arch=('x86_64')
 url='https://discordapp.com'
@@ -25,6 +25,7 @@ prepare() {
   cd $_pkgname
 
   sed -i "s|Exec=.*|Exec=/usr/bin/$pkgname|" $pkgname.desktop
+  sed -i "s|StartupWMClass=.*|StartupWMClass=$pkgname|" $pkgname.desktop
   echo 'Path=/usr/bin' >> $pkgname.desktop
 }
 

@@ -1,7 +1,7 @@
 pkgbase = discord-ptb
 	pkgdesc = All-in-one voice and text chat for gamers that's free and secure. - Public Test Build
 	pkgver = 0.0.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discordapp.com
 	arch = x86_64
 	license = custom
