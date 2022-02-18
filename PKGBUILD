@@ -46,7 +46,7 @@ package_clion-eap() {
         'clang: LLVM compiler'
         'biicode: C/C++ dependency manager'
         'gtest: C++ testing'
-        'swift: Swift programming language support (Also requires the plugin)'
+        'swift-language: Swift programming language support (Also requires the plugin)'
         'python: Python 3 programming language support'
         'python2: Python 2 programming language support'
         'doxygen: Code documentation generation'
