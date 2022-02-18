@@ -1,6 +1,7 @@
 pkgbase = grrlib-git
+	pkgdesc = A C/C++ 2D/3D graphics library for Wii application developers
 	pkgver = v4.4.1.r14.gc432111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GRRLIB/GRRLIB
 	arch = x86_64
 	license = MIT
@@ -14,13 +15,11 @@ pkgbase = grrlib-git
 	sha256sums = 4deab45ed27a4e287cc3dfc9b64f87b093cf27f3995a7ca5f90c5498c91c0d1f
 
 pkgname = ppc-libpngu-git
-	pkgdesc = GRRLIB supplemental library
 	depends = devkitPPC
 	depends = ppc-libpng
 	provides = ppc-libpngu
 
 pkgname = wii-grrlib-git
-	pkgdesc = A C/C++ 2D/3D graphics library for Wii application developers
 	depends = devkitPPC
 	depends = libfat-ogc
 	depends = ppc-libpngu

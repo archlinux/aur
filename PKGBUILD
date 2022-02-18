@@ -6,7 +6,8 @@ _reponame=${_pkgbase^^}
 pkgbase=${_pkgbase}-git
 pkgname=("ppc-libpngu-git" "wii-${pkgbase}")
 pkgver=v4.4.1.r14.gc432111
-pkgrel=1
+pkgrel=2
+pkgdesc="A C/C++ 2D/3D graphics library for Wii application developers"
 arch=("x86_64")
 url="https://github.com/GRRLIB/${_reponame}"
 license=("MIT")
@@ -22,7 +23,7 @@ sha256sums=("SKIP"
 pkgver() {
   cd "${srcdir}/${_reponame}"
 
-  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+  git describe --long | sed "s/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {
@@ -46,7 +47,6 @@ build() {
 
 # NOTE: Must update function name and references manually
 package_ppc-libpngu-git() {
-  pkgdesc="GRRLIB supplemental library"
   depends=("devkitPPC" "ppc-libpng")
   provides=("ppc-libpngu")
 
@@ -62,7 +62,6 @@ package_ppc-libpngu-git() {
 
 # NOTE: Must update function name and references manually
 package_wii-grrlib-git() {
-  pkgdesc="A C/C++ 2D/3D graphics library for Wii application developers"
   depends=("devkitPPC" "libfat-ogc" "ppc-libpngu" "ppc-freetype" "ppc-libjpeg-turbo")
   provides=("wii-${_pkgbase}")
 
