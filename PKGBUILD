@@ -5,7 +5,7 @@
 pkgname=lovesay
 pkgver=2022.02.18
 pkgrel=1
-pkgdesc="Simple system info fetching tool"
+pkgdesc="Simple tool that spits out a random love message with hearts."
 arch=('any')
 groups=('therepoclub')
 url="https://github.com/the-repo-club/$pkgname"
