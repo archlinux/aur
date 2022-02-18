@@ -6,7 +6,7 @@ _minor=0
 _patch=5
 pkgname=dnieremote-bin
 pkgver="${_major}.${_minor}.${_patch}"
-pkgrel=1
+pkgrel=2
 pkgdesc="DNIeRemote enable to use the smartphone as reader for Spanish DNI"
 arch=('x86_64')
 url="https://www.dnielectronico.es/"
@@ -40,8 +40,8 @@ package() {
   # Fix libs
   mv "${pkgdir}/usr/local/lib" "${pkgdir}/usr/lib"
   rm -rf "${pkgdir}/usr/local" "${pkgdir}/usr/lib/libdnieremotepkcs11.so" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
-  ln -fsT "libdnieremotepkcs11.so.0.0.3" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
-  ln -fsT "libdnieremotepkcs11.so.0.0.3" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
+  ln -fsT "libdnieremotepkcs11.so.0.0.4" "${pkgdir}/usr/lib/libdnieremotepkcs11.so.0"
+  ln -fsT "libdnieremotepkcs11.so.0.0.4" "${pkgdir}/usr/lib/libdnieremotepkcs11.so"
 
   # Install docfile
   install -D -m644 "README.txt" "${pkgdir}/usr/share/doc/${pkgname}/README.txt"
