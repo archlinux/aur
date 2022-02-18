@@ -13,4 +13,6 @@ git push --tags
 
 updpkgsums
 makepkg --printsrcinfo > .SRCINFO
+git add .SRCINFO PKGBUILD
+git commit -m "Submitting to AUR"
 echo "Now check package checksum manually"
