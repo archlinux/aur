@@ -5,7 +5,7 @@
 # Contributor: Shivam Mehta <sm.cse at gmail dot com>
 
 pkgname=quick-lint-js
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Find bugs in JavaScript programs"
 arch=(aarch64 arm armv6h armv7h i686 pentium4 x86_64)
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz"
   "${pkgname}-${pkgver}.tar.gz.asc::https://c.quick-lint-js.com/releases/${pkgver}/source/quick-lint-js-${pkgver}.tar.gz.asc"
 )
-sha512sums=('f16a3268b31ffbc04bc06ebd6b56fe73398d5eac6ae295b3f20f03ad804a4153dd05efd893dcbb2be55e3adc6a2e1f33661ed0bbcd603a960cd9204a783122ad'
+sha512sums=('5ef9a139aeaf45163509c9cd72f6a2c3d108aecbdb265df2afabfdacf6540ff8fe00b4f17e6824014135e82b98631be8693f285628baa2ca4433418a7ca0e7be'
             'SKIP')
 # Matthew "strager" Glazar (quick-lint-js signing key) <strager.nds@gmail.com>
 validpgpkeys=(0327DE8F9CEF499851D19F6ED20BA9DCCF0E9D20)
