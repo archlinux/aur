@@ -1,7 +1,7 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=libvss-git
-pkgver=r260.b9c6570
+pkgver=r651.b8ed8a1
 pkgrel=1
 
 pkgdesc='High level string and text processing library'
@@ -11,7 +11,7 @@ license=('GPL3')
 
 makedepends=('git' 'gcc-ada' 'gprbuild')
 
-provides=('libvss')
+conflicts=('libvss')
 
 source=("git+https://github.com/AdaCore/VSS.git")
 sha1sums=('SKIP')
