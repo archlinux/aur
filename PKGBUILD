@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
-depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl' 'graphviz'
+depends=('boost' 'curl' 'freeglut' 'freeimage' 'tbb' 'libccd' 'libltdl' 'graphviz'
          'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat' 'ignition-math' 'ignition-transport'
          'ignition-cmake' 'ignition-common' 'ignition-fuel_tools-4' 'ignition-msgs' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
@@ -38,7 +38,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_pkgname}"
-	git apply ../patch
+	# git apply "${srcdir}/patch"
+	patch -p1 -i "${srcdir}/patch"
 }
 
 build() {
