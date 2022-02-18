@@ -5,6 +5,5 @@
 *.zip
 *.bz2
 *.asc
-*.log
 src/
 pkg/

@@ -3,7 +3,7 @@
 _pkgbasename=vmaf
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (32 bit)'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -17,8 +17,10 @@ makedepends=(
 #        'meson-cross-x86-linux-gnu>=1.0.4'
         'ninja'
         'nasm'
+#        'doxygen' # not needed, no docs produced
     )
-source=("${_pkgbasename}-${pkgver}.tar.gz"::"https://github.com/Netflix/${_pkgbasename}/archive/v${pkgver}.tar.gz")
+options=('!lto')
+source=("https://github.com/Netflix/${_pkgbasename}/archive/v${pkgver}/${_pkgbasename}-${pkgver}.tar.gz")
 sha256sums=('d8dcc83f8e9686e6855da4c33d8c373f1735d87294edbd86ed662ba2f2f89277')
 
 prepare() {
@@ -59,6 +61,7 @@ package_lib32-libvmaf() {
     rm -r "$pkgdir"/usr/{include,bin}
 
 #    install -D -m644 "${_pkgbasename}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    cp -dr --no-preserve='ownership' "${_pkgbasename}-${pkgver}/model" "${pkgdir}/usr/share"
 }
 
 package_lib32-vmaf() {
@@ -80,6 +83,4 @@ package_lib32-vmaf() {
     done
 
     rm -r "$pkgdir"/usr/{include,lib32}
-
-#    install -D -m644 "${_pkgbasename}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
