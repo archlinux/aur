@@ -1,6 +1,6 @@
 pkgbase = tcping-go-git
 	pkgdesc = ping over a tcp connection
-	pkgver = 0.1.1.r6.g7867893
+	pkgver = 0.1.1.r10.g84598f9
 	pkgrel = 1
 	url = https://github.com/cloverstd/tcping
 	arch = x86_64

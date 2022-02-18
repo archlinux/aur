@@ -1,6 +1,6 @@
 pkgname=tcping-go-git
 _pkgname=tcping
-pkgver=0.1.1.r6.g7867893
+pkgver=0.1.1.r10.g84598f9
 pkgrel=1
 pkgdesc='ping over a tcp connection'
 provides=('tcping' 'tcping-go')
@@ -20,10 +20,12 @@ pkgver() {
 build() {
   cd "$srcdir/tcping"
   go build \
-    -mod=vendor \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -o $_pkgname .
+      -trimpath \
+      -buildmode=pie \
+      -mod=readonly \
+      -modcacherw \
+      -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+      .
 }
 
 package() {
