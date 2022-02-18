@@ -1,17 +1,17 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper-git
-srcname=fantascene-archLinux-DDE-git
-pkgver=1.1.1.r0.g39b3ec3
+srcname=fantascene-dynamic-wallpape-git
+pkgver=1.2.8.r18.gf2b6c7b
 pkgrel=1
 pkgdesc="Deepin Desktop Environment dynamic wallpaper/ DDE 动态壁纸"
 arch=('x86_64')
-url="https://github.com/dependon/fantascene-archLinux-DDE"
+url="https://github.com/dependon/fantascene-dynamic-wallpaper"
 license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname%-git})
 #replaces=(${pkgname})
-depends=( 'qt5-tools' 'qt5-webengine' 'dtkwidget' 'dtkgui' 'mpv')
+depends=( 'qt5-tools' 'qt5-base' 'libxext' 'libx11' 'glib2' 'qt5-x11extras' 'qt5-webengine' 'gcc' 'mpv' 'ffmpeg' 'fakeroot' 'xcb-util-image')
 makedepends=('git' 'qconf')
 backup=()
 options=('!strip')
