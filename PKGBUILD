@@ -1,5 +1,5 @@
 pkgname=notify-complete
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Run a command and display a system notification upon completion"
 arch=("x86_64")
@@ -10,7 +10,7 @@ depends=(dbus)
 makedepends=(rust cargo)
 
 source=("https://github.com/andybug/notify-complete/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=("edf83e4bdb7049abaa1090055b7db4a01bda65dca6ba1f7027a8407c029c4b0565fc2c427c9468b1dcc85ba6fcdbd13ac1d6c9d06048b8e7c15aa583c0ee5a4b")
+b2sums=("2c227b6fde84b3779cae32c8ba32e3bed2eb3ce6cfea6cdfc84e804801e45b1ba25bc8a51429d7721f57d3045847f62643e86f4921e654658a36d06cafbf14bb")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
