@@ -10,7 +10,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
 _asyncver=1.9.4
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -42,9 +42,10 @@ depends=(
   steam-native-runtime
 )
 
-makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc clang
+makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
+  clang
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -68,13 +69,9 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc clang
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
-  libcups               lib32-libcups
   rust                  lib32-rust-libs
-  sane
   libgphoto2
   gsm
-  ffmpeg
-  samba
   opencl-headers
 )
 
@@ -98,12 +95,9 @@ optdepends=(
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sane
   libgphoto2
   gsm
-  ffmpeg
-  cups
-  samba           dosbox
+  dosbox
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
