@@ -1,14 +1,14 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-sdl2-git
-pkgver=0.83.22.r22.g899f7e620
-pkgrel=2
+pkgver=0.83.22.r29.g504b33a49
+pkgrel=1
 epoch=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features - sdl2 git version"
 arch=(i686 x86_64)
 url="https://dosbox-x.com/"
 license=(GPL)
-depends=(fluidsynth libxkbfile libxrandr ffmpeg sdl2_net libslirp)
+depends=(fluidsynth libxkbfile libxrandr ffmpeg4.4 sdl2_net libslirp)
 makedepends=(git glu)
 conflicts=(dosbox-x-sdl2 dosbox-x-git dosbox-x)
 install='dosbox-x.install'
@@ -22,14 +22,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/dosbox-x"
-    export LDFLAGS="${LDFLAGS//,--as-needed}"
-  # Workaround bug https://github.com/joncampbell123/dosbox-x/issues/3039
-  export CFLAGS=${CFLAGS/-Werror=format-security/}
-  export CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+   # Working around bug : https://github.com/joncampbell123/dosbox-x/issues/3283
+   sed -i 's|"$LIBS -lavcodec -lavformat -lavutil -lswscale "`pkg-config libavcodec --libs`|`pkg-config libavcodec libavformat libavutil libswscale libswresample --libs`"$LIBS"|' configure.ac
   ./autogen.sh
-  # until bug https://github.com/joncampbell123/dosbox-x/issues/3283
-  # is fixed, disabling avcodec support
-  ./configure --enable-core-inline --enable-debug --disable-avcodec --prefix=/usr --enable-sdl2
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --enable-core-inline --enable-debug --enable-avcodec --prefix=/usr --enable-sdl2
   make -j$(nproc)
 }
 
