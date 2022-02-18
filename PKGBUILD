@@ -1,22 +1,25 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@gmail.com>
 
 pkgname=tbb-combo-native-agent
-# peres -v TbbComboNativeAgentHost.exe | grep 'Product Version' | cut -f 2 -d : | sed 's# ##g'
-pkgver=1.0.0.12
-pkgrel=2
+pkgver=1.0.0.13
+pkgrel=1
 pkgdesc='Taiwan Business Bank combo native agent (臺灣企銀二合一元件)'
 arch=(any)
 url='https://ebank.tbb.com.tw/'
 license=(unknown)
-depends=(wine-winscard lib32-gnutls)
-makedepends=(p7zip gendesk)
+depends=(wine-winscard lib32-gnutls lib32-pcsclite)
+makedepends=(p7zip gendesk pev)
 source=("Install_TbbComboNativeAgentHost-$pkgver.exe"::"https://ebank.tbb.com.tw/nb3/COMPONENT/component_download?componentPath=win&trancode=ComponentDownload"
         "$pkgname")
-sha256sums=('60220263043e71cfd20d2618d6a4be8834f76fc0e251e6b96f6a46b376a68028'
+sha256sums=('cede47f11b90a296b9b33b4201a65655135572d763f3dd95648cb74f420900bb'
             'd53b1fa92ef27d426a390a6d1b56a0096bdfc37a60bc9700e79c7d982796994c')
 
 prepare() {
   7z x Install_TbbComboNativeAgentHost-$pkgver.exe
+}
+
+pkgver() {
+  peres -v TbbComboNativeAgentHost.exe | grep 'Product Version' | cut -f 2 -d : | sed 's# ##g'
 }
 
 build() {
