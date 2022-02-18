@@ -2,10 +2,10 @@
 
 _project=BeowulfOT-font
 pkgbase=${_project,,}
-pkgname=(otf-${_pkgbase%-font})
+pkgname=(otf-${pkgbase%-font})
 pkgver=2.000
 _sha='fbe23e16bc31246f66738b5d6e471c590bcf10df'
-pkgrel=1
+pkgrel=2
 pkgdesc='an updated version of the widely-used BeowulfOne font'
 arch=('any')
 url="https://github.com/psb1558/$_project"

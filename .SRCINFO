@@ -1,11 +1,12 @@
 pkgbase = beowulfot-font
 	pkgdesc = an updated version of the widely-used BeowulfOne font
 	pkgver = 2.000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/psb1558/BeowulfOT-font
 	arch = any
 	license = OFL
 	source = https://github.com/psb1558/BeowulfOT-font/archive/fbe23e16bc31246f66738b5d6e471c590bcf10df/BeowulfOT-font-fbe23e16bc31246f66738b5d6e471c590bcf10df.tar.gz
 	sha256sums = ec250918117941cf1543199a8d93fb7960d6dac622ccacb5bb4a6920296cabd9
 
-pkgname = otf-
+pkgname = otf-beowulfot
+	provides = beowulfot-font
