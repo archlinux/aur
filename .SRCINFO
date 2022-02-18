@@ -1,0 +1,19 @@
+pkgbase = nuc970-nuwriter-git
+	pkgdesc = The Nu-writer Command Tool is a linux console application consisting of functions to access storage(eg. DRAM,NAND,SPINOR,SPINAND,SD) in a NUC970 family processors
+	pkgver = 1328b10
+	pkgrel = 1
+	url = https://gitee.com/OpenNuvoton/NUC970_NuWriter_CMD
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	makedepends = automake
+	makedepends = pkgconfig
+	depends = libusb
+	provides = NUC970_NuWriter_CMD
+	conflicts = nuc970-nuwriter
+	options = !strip
+	source = nuc970-nuwriter::git+https://gitee.com/OpenNuvoton/NUC970_NuWriter_CMD.git
+	sha256sums = SKIP
+
+pkgname = nuc970-nuwriter-git
