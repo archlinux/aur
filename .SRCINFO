@@ -1,0 +1,12 @@
+pkgbase = torrc-change-bridges
+	pkgdesc = Fastly change bridges in your torrc and restart tor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gist.github.com/trickybestia/b79dc786f3a583807ad2f4ca6ccb14a0
+	arch = any
+	license = GPL3
+	depends = python
+	source = torrc-change-bridges::https://gist.githubusercontent.com/trickybestia/b79dc786f3a583807ad2f4ca6ccb14a0/raw/c7910cecd1d4d05e223c1b2fd034dec3fe0c3f29/torrc-change-bridges
+	sha256sums = cb5adf7ee516ab198b54d1ca826b45ce525b1b9eefe008ab0c8687b0a4fe9c63
+
+pkgname = torrc-change-bridges
