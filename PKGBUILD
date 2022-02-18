@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=4.4
+pkgver=5.0
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -76,27 +76,28 @@ makedepends=(
   nasm
   decklink-sdk
 )
-optdepends=(
-  'avisynthplus: AviSynthPlus support'
-  'intel-media-sdk: Intel QuickSync support'
-  'ladspa: LADSPA filters'
-  'nvidia-utils: Nvidia NVDEC/NVENC support'
-)
+optdepends=('avisynthplus: for AviSynthPlus support'
+            'intel-media-sdk: for Intel Quick Sync Video'
+            'ladspa: for LADSPA filters'
+            'nvidia-utils: for Nvidia NVDEC/NVENC support')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
-        '010-ffmpeg-fix-vmaf-model-path.patch'
+        '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '050-ffmpeg-vmaf-2.x.patch'
         'LICENSE')
-sha256sums=('06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
+sha256sums=('51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298'
             'SKIP'
-            '52778c70d9fe6e3a10941b99b96ac7749cec325dc1b9ee11ab75332b5ff68e50'
+            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
+            'eb044a095ba72ebe63de53f15952aa0100bb27ee691cf3d3a205d5a597c72a7d'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-fix-vmaf-model-path.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-vmaf-2.x.patch"
 }
 
 build() {
