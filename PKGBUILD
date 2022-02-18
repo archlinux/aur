@@ -1,7 +1,7 @@
 # Maintainer: Uumas <u@uumas.fi>
 # Contributors: Mornielome <stuff@lukasjacobs.de>, c0ldcat <firez199984@gmail.com>, KbanKiller
 pkgname=marvin
-pkgver=22.3.0
+pkgver=22.5.0
 _pkgver=$(echo $pkgver | sed 's/.[0-9]$//g')
 pkgrel=1
 pkgdesc="Intuitive applications and API for chemical sketching, visualization and data exploration"
@@ -14,7 +14,7 @@ source=("https://dl.chemaxon.com/marvin/$pkgver/$filename"
 "MarvinSketch.desktop"
 "MarvinView.desktop"
 "marvin-sketch-symbolic.svg")
-md5sums=('2490d87d11669265c1bf0a1a9d87d940'
+md5sums=('1b8d9300d59c621b950c0ba4079041ef'
          '54cb1a06e79c0e1cd980490247486df2'
          'cb6c8c35cd486844a465d408861642c0'
          'e6758f94b843b97804112fa0420ba1bb')
