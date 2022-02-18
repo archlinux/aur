@@ -1,7 +1,7 @@
 pkgbase = ntrviewer-git
 	pkgdesc = PC Viewer for NTR CFW's streaming feature
-	pkgver = r23.4af3190
-	pkgrel = 2
+	pkgver = r9.e780deb
+	pkgrel = 3
 	url = https://github.com/44670/NTRViewer
 	arch = x86_64
 	license = GPL3
@@ -10,10 +10,8 @@ pkgbase = ntrviewer-git
 	depends = sdl
 	depends = libjpeg-turbo
 	depends = ffmpeg
+	depends = sdl2
 	source = git+https://github.com/44670/NTRViewer.git
-	source = ntrviewer.patch
 	md5sums = SKIP
-	md5sums = 302594045b78df63fbc3c6e798318c5c
 
 pkgname = ntrviewer-git
-

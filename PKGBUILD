@@ -4,15 +4,14 @@ pkgname=ntrviewer-git
 _pkgname=NTRViewer
 pkgdesc=" PC Viewer for NTR CFW's streaming feature"
 url="https://github.com/44670/NTRViewer"
-pkgrel=2
-depends=('sdl' 'libjpeg-turbo' 'ffmpeg')
+pkgrel=3
+depends=('sdl' 'libjpeg-turbo' 'ffmpeg' 'sdl2')
 makedepends=('git' 'make')
 arch=('x86_64')
 license=('GPL3')
-md5sums=('SKIP'
-         '302594045b78df63fbc3c6e798318c5c')
-pkgver=r23.4af3190
-source=('git+https://github.com/44670/NTRViewer.git' 'ntrviewer.patch')
+md5sums=('SKIP')
+pkgver=r9.e780deb
+source=('git+https://github.com/44670/NTRViewer.git')
 
 pkgver() {
     cd "$_pkgname"
@@ -21,16 +20,15 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    patch -Np1 -i "${srcdir}/ntrviewer.patch"
 }
 
 build(){
     cd $_pkgname
 
-    make CONF=Release
+    make CONF=Debug
 }
 
 package(){
-    install -Dm755 "$srcdir/$_pkgname/dist/Release/GNU-Linux/ntrviewer" "$pkgdir/usr/bin/ntrviewer"
+    install -Dm755 "$srcdir/$_pkgname/dist/Debug/GNU-Linux/ntrviewer" "$pkgdir/usr/bin/ntrviewer"
 }
 
