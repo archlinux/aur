@@ -1,4 +1,4 @@
-# Cintributor: Will Handley <wh260@cam.ac.uk>
+# Contributor: Will Handley <wh260@cam.ac.uk>
 # Contributor: Leonidas Spyropoulos <artafinde at gmail dot com>
 # Contributor: staletic
 # Contributor: James Brink <brink.james@gmail.com>
@@ -37,8 +37,8 @@ _neovim="$NEOVIM_YOUCOMPLETEME"
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=vim-tabnine-git
-pkgver=r2905.e4c180a5
-pkgrel=4
+pkgver=r2911.4a042af0
+pkgrel=1
 pkgdesc='A code-completion engine for Vim with tabnine'
 arch=('x86_64')
 url='https://www.tabnine.com/'
@@ -68,6 +68,7 @@ if [[ ${_use_system_clang} == "ON" ]]; then
   sha256sums=('SKIP'
               'SKIP'
               'SKIP')
+              noextract=(TabNine.zip)
 else
   source=(git+https://github.com/tabnine/YouCompleteMe.git
           git+https://github.com/tabnine/ycmd.git
@@ -79,6 +80,7 @@ else
               'SKIP'
               '10a64c468d1dd2a384e0e5fd4eb2582fd9f1dfa706b6d2d2bb88fb0fbfc2718d'
               '9a5bee818a4995bc52e91588059bef42728d046808206bfb93977f4e3109e50c')
+  noextract=TabNine.zip
 fi
 
 pkgver() {
@@ -130,6 +132,8 @@ prepare() {
       -e 's|\(roslyn_binary_path":\).*$|\1 "/opt/omnisharp-roslyn/OmniSharp.exe",|' \
       -e 's|\(mono_binary_path":\).*$|\1 "/usr/bin/mono",|' \
       -i "${srcdir}"/YouCompleteMe/third_party/ycmd/ycmd/default_settings.json
+
+  unzip ${srcdir}/TabNine.zip -d ${srcdir}/TabNine 
 }
 
 build() {
@@ -179,8 +183,8 @@ package() {
   fi
 
   install -Ddm755 "${pkg_ycmd_dir}/third_party/tabnine/binaries/${tabnine_version}" 
-  cp -dr --no-preserve=ownership "$srcdir"/ycmd/third_party/tabnine/__init__.py "${pkg_ycmd_dir}/third_party/tabnine/"
-  install -Dm755 ${srcdir}/{TabNine,TabNine-deep-cloud,TabNine-deep-local,WD-TabNine} "${pkg_ycmd_dir}/third_party/tabnine/binaries/${tabnine_version}/"
+  cp -dr --no-preserve=ownership "${srcdir}/ycmd/third_party/tabnine/__init__.py" "${pkg_ycmd_dir}/third_party/tabnine/"
+  install -Dm755 ${srcdir}/TabNine/* "${pkg_ycmd_dir}/third_party/tabnine/binaries/${tabnine_version}/"
 
   find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' \) -exec rm -fr {} +
 
