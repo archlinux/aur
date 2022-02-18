@@ -5,6 +5,7 @@ pkgbase = pacdiff-pacman-hook-git
 	url = https://github.com/desbma/pacman-hooks
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = diffutils
 	depends = git-delta
 	depends = pacman-contrib

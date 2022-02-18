@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=pacdiff-pacman-hook-git
-pkgver=r74.c463d2d
+pkgver=r77.9e7d418
 pkgrel=1
 pkgdesc='Pacman hook to review .pacnew files automatically'
 arch=('any')
@@ -9,6 +9,7 @@ _gitname='pacman-hooks'
 url="https://github.com/desbma/${_gitname}"
 license=('GPL')
 depends=('diffutils' 'git-delta' 'pacman-contrib')
+makedepends=('git')
 conflicts=('pacman-hooks-desbma-git')
 source=("git+https://github.com/desbma/${_gitname}")
 md5sums=('SKIP')
