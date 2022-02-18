@@ -1,5 +1,5 @@
 pkgbase = ddstats-rust-git
-	pkgver = 0.6.9.r162.g15553bf
+	pkgver = 0.6.10.1
 	pkgrel = 1
 	arch = x86_64
 	makedepends = rust-nightly-bin
