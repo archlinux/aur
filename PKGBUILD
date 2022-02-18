@@ -1,40 +1,39 @@
 # Maintainer: ThaChillera ThaChillera@protonmail.com
+
+# Shamelessly copied from:
+# dolphin-emu-git by Daniel Peukert <daniel@peukert.cc>
+
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Lightning <sgsdxzy@gmail.com>
 
 # latest version obtained from this API endpoint: https://dolphin-emu.org/update/latest/beta/
-pkgbase=dolphin-emu-beta-git
-pkgname=('dolphin-emu-beta-git' 'dolphin-emu-beta-nogui-git')
-pkgver=5.0.r15993.5e59561637
+_projectname="dolphin-emu"
+_mainpkgname="$_projectname-beta"
+_noguipkgname="$_projectname-beta-nogui"
+pkgbase="$_mainpkgname-git"
+pkgname=("$_mainpkgname-git" "$_noguipkgname-git")
+pkgver=5.0.r15993.g5e59561637
 pkgrel=1
-pkgdesc='A GameCube / Wii / Triforce emulator - monhtly beta release'
+pkgdesc='A Gamecube / Wii emulator - monthly beta release'
 arch=('x86_64')
 url='http://www.dolphin-emu.org/'
-license=('GPL')
+license=('GPL2')
 depends=(
   'alsa-lib' 'bluez-libs' 'enet' 'hidapi' 'libevdev' 'libgl' 'libpng'
   'libpulse' 'libx11' 'libxi' 'libxrandr' 'lzo' 'mbedtls' 'pugixml' 'qt5-base'
   'sfml' 'zlib'
   'libavcodec.so' 'libavformat.so' 'libavutil.so' 'libcurl.so'
-  'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so' 'libxxhash.so'
+  'libminiupnpc.so' 'libswscale.so' 'libudev.so' 'libusb-1.0.so'
 )
-makedepends=('cmake' 'git' 'libglvnd' 'python')
+makedepends=('cmake' 'git' 'ninja' 'python')
 optdepends=('pulseaudio: PulseAudio backend')
-options=('!emptydirs')
-source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=5e595616379a694789fe749e40a27ef069f0090e')
+source=("$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=5e595616379a694789fe749e40a27ef069f0090e")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd dolphin-emu
-
-  git describe | sed 's/-/.r/; s/-g/./'
-}
 
 prepare() {
   # init submodules
-  cd dolphin-emu
+  cd $_projectname
   git submodule update --init
-  cd ..
 
   if [[ -d build ]]; then
     rm -rf build
@@ -42,35 +41,43 @@ prepare() {
   mkdir build
 }
 
-build() {
-  cd build
+pkgver() {
+  cd $_projectname
 
-  cmake ../dolphin-emu \
+  git describe --long --tags | sed -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+}
+
+build() {
+  cd $_projectname
+  export CXXFLAGS+=" -fpermissive"
+  cmake -S '.' -B 'build/' -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DENABLE_QT='TRUE' \
-    -DUSE_SHARED_ENET='TRUE' \
-    -DXXHASH_FOUND='TRUE'\
-    -DDISTRIBUTOR='aur.archlinux.org'
-  make
+    -DDISTRIBUTOR='aur.archlinux.org' \
+    -DUSE_SHARED_ENET=ON
+  cmake --build 'build/'
 }
 
 package_dolphin-emu-beta-git() {
-  provides=('dolphin-emu')
-  conflicts=('dolphin-emu')
+  provides=("$_projectname")
+  conflicts=("$_projectname")
 
-  make DESTDIR="${pkgdir}" -C build install
-  rm "${pkgdir}"/usr/bin/dolphin-emu-nogui
-  rm -rf "${pkgdir}"/usr/{include,lib/libdiscord-rpc.a}
+  cd $_projectname
+  DESTDIR="$pkgdir" cmake --install 'build/'
+  install -Dm644 Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
 
-  install -Dm 644 dolphin-emu/Data/51-usb-device.rules -t "${pkgdir}"/usr/lib/udev/rules.d/
+  rm -rf "$pkgdir/usr/bin/dolphin-emu-nogui"
+	rm -rf "$pkgdir/usr/include"
+	rm -rf "$pkgdir/usr/lib/libdiscord-rpc.a"
+	rm -rf "$pkgdir/usr/share/man/man6/$_noguipkgname.6"
 }
 
 package_dolphin-emu-beta-nogui-git() {
-  depends=('dolphin-emu-beta-git')
-
+  depends=("$pkgbase")
+  provides=("$_projectname-cli")
+  conflicts=("$_projectname-cli")
+  
+  cd $_projectname
   install -dm 755 "${pkgdir}"/usr/bin
   install -m 755 build/Binaries/dolphin-emu-nogui "${pkgdir}"/usr/bin/dolphin-emu-cli
 }
-
-# vim: ts=2 sw=2 et:

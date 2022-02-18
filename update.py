@@ -14,9 +14,9 @@ hashshort = hash[:10]
 with open("PKGBUILD", "r") as file:
 	pkgbuild = file.readlines()
 
-pkgbuild[7] = "pkgver=" + rev[0] + ".r" + rev[1] + "." + hashshort + "\n"
+pkgbuild[14] = "pkgver=" + rev[0] + ".r" + rev[1] + ".g" + hashshort + "\n"
 
-pkgbuild[23] = "source=('dolphin-emu::git+https://github.com/dolphin-emu/dolphin.git#commit=" + hash + "')" + "\n"
+pkgbuild[29] = "source=(\"$_projectname::git+https://github.com/dolphin-emu/dolphin.git#commit=" + hash + "\")" + "\n"
 
 with open("PKGBUILD", "w") as file:
 	file.writelines(pkgbuild)
