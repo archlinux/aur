@@ -3,7 +3,7 @@
 libyaml_version=0.2.5
 
 pkgname=zigmod
-pkgver=90
+pkgver=98
 pkgrel=1
 pkgdesc="A package manager for the Zig programming language"
 url="https://github.com/nektro/zigmod"
@@ -15,7 +15,7 @@ source=(
   "https://github.com/yaml/libyaml/releases/download/${libyaml_version}/yaml-${libyaml_version}.tar.gz"
 )
 sha256sums=(
-  'ace4625c2d95799f8caca84340f47dab3b5c9dca99c19d81b7c5887a0335fef1'
+  'd9695e3a83b56445aef14f3771329d173a599ced2a94dbc0c485ca7cf97611e1'
   'c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4'
 )
 
@@ -24,7 +24,12 @@ prepare() {
   rm -r libs/yaml
   ln -s "${srcdir}/yaml-${libyaml_version}" libs/yaml
   zig build -Dbootstrap
-  ./zig-out/bin/zigmod fetch
+  # See https://github.com/nektro/zigmod/issues/57#issuecomment-1028442152
+  # > if you use `zigmod ci` instead of `zigmod fetch`
+  # > It will pull in a working version of the dependencies that `zig build` will succeed for
+  # and https://nektro.github.io/zigmod/commands/ci.html
+  #./zig-out/bin/zigmod fetch
+  ./zig-out/bin/zigmod ci
 }
 
 build() {
