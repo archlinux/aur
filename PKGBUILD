@@ -1,6 +1,6 @@
-# Maintainer: Elijah Gregg <lovetocode999@tilde.team>
+# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
 pkgname=halmak-git
-pkgver=2.1.0.r17.g4d2a620
+pkgver=2.1.0.r20.g3647682
 pkgrel=1
 pkgdesc="The final version of the AI designed keyboard layout"
 arch=("x86_64")

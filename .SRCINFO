@@ -1,6 +1,6 @@
 pkgbase = halmak-git
 	pkgdesc = The final version of the AI designed keyboard layout
-	pkgver = 2.1.0.r17.g4d2a620
+	pkgver = 2.1.0.r20.g3647682
 	pkgrel = 1
 	url = https://github.com/MadRabbit/halmak
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = halmak-git
 	md5sums = SKIP
 
 pkgname = halmak-git
-
