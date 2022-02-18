@@ -1,13 +1,13 @@
 pkgbase = starport-bin
 	pkgdesc = The all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain
-	pkgver = 0.19.3
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://starport.com
 	arch = x86_64
 	license = Apache
 	provides = starport
 	conflicts = starport
-	source_x86_64 = https://github.com/tendermint/starport/releases/download/v0.19.3/starport_0.19.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 89b9efa37304f8543c023e3b32898091ed6be305fc994c4dce8be8af99dec6ae
+	source_x86_64 = https://github.com/tendermint/starport/releases/download/v0.19.4/starport_0.19.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7ff6b5987d69ef8540828d3828722219d88f1a55b1d130ff62ce9bc2832a6f26
 
 pkgname = starport-bin
