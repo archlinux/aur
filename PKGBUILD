@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url="https://www.natfrp.com/"
 license=('custom')
 provides=('sakura-frpc' 'natfrp')
-source=(LICENSE::'https://www.natfrp.com/policy/'
+source=(LICENSE::'https://www.natfrp.com/policy/tos'
         "frpc.ini"
         "${pkgname}c.service"
         "${pkgname}c@.service"
