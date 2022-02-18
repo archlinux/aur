@@ -49,7 +49,7 @@ package_ppc-libpngu-git() {
   pkgdesc="GRRLIB supplemental library"
   depends=("devkitPPC" "ppc-libpng")
   provides=("ppc-libpngu")
-  
+
   cd "${srcdir}/${_reponame}"
 
   # Install license
@@ -65,7 +65,7 @@ package_wii-grrlib-git() {
   pkgdesc="A C/C++ 2D/3D graphics library for Wii application developers"
   depends=("devkitPPC" "libfat-ogc" "ppc-libpngu" "ppc-freetype" "ppc-libjpeg-turbo")
   provides=("wii-${_pkgbase}")
-  
+
   cd "${srcdir}/${_reponame}"
 
   # Install license
