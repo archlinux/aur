@@ -1,0 +1,14 @@
+pkgbase = toluol
+	pkgdesc = Rust tool to make DNS queries
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://git.sr.ht/~mvforell/toluol
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = toluol
+	conflicts = toluol
+	source = toluol-1.2.3.tar.gz::https://crates.io/api/v1/crates/toluol/1.2.3/download
+	sha512sums = 57ce77eaecd4a44b73128eb755fb862c1e6f13bbe656044808d527878151cd0d74143b26d2e256c12f5682d1ca9b53db149b0352af75fe419512b906a95c08e3
+
+pkgname = toluol
