@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.1.r105398.g2f323b1978
+pkgver=5.1.r105668.gcc2b3201e7
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
         'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
         'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
         'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
-        'v4l-utils' 'vid.stab' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
+        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
         'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
@@ -25,7 +25,7 @@ depends=(
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs'
-        'xavs2' 'pocketsphinx' 'rockchip-mpp' 'lensfun-git' 'vmaf-git'
+        'xavs2' 'pocketsphinx' 'rockchip-mpp' 'lensfun-git'
 )
 makedepends=(
     # official repositories:
