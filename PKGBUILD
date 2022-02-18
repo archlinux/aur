@@ -1,12 +1,12 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=14.2.5
-_commit=f6798c5e994f9e1d7f88812ef6e5877e85b9c0eb
+pkgver=14.2.6
+_commit=38a6fb9a5387a43af3047764d3fd1c56eefd6dcd
 _chromiumver=93.0.4577.82
 _gcc_patchset=6
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
@@ -28,7 +28,8 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
-             'npm' 'pciutils' 'pipewire' 'python' 'wget' 'yarn')
+             'npm' 'pciutils' 'pipewire' 'python' 'python-httplib2'
+             'python-pyparsing' 'python-six' 'wget' 'yarn')
 # shellcheck disable=SC2034
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
@@ -60,10 +61,11 @@ source=('git+https://github.com/electron/electron.git'
         'gn-visibility-webrtc.patch'
         'replace-blacklist-with-ignorelist.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
-        'chromium-93-ffmpeg-4.4.patch'
+        'breakpad-fix-for-non-constant-SIGSTKSZ.patch'        
         'chromium-94-ffmpeg-roll.patch'
         'chromium-93-pdfium-include.patch'
         'chromium-harfbuzz-3.0.0.patch'
+        'sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch'
         'skia-harfbuzz-3.0.0.patch'
        )
 # shellcheck disable=SC2034
@@ -83,10 +85,11 @@ sha256sums=('SKIP'
             '574785a21168c3e9b7aa82630713ceb6ced12f699133db66b10fc84b7bb2c631'
             'd3344ba39b8c6ed202334ba7f441c70d81ddf8cdb15af1aa8c16e9a3a75fbb35'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
-            '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
+            'b4d28867c1fabde6c50a2cfa3f784730446c4d86e5191e0f0000fbf7b0f91ecf'
             '56acb6e743d2ab1ed9f3eb01700ade02521769978d03ac43226dec94659b3ace'
             '7c0c47f4b67d96515bcfa68ffd34d515d03f1e9e41c063459f39e4169de0324c'
             '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
+            'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
             'dae11dec5088eb1b14045d8c9862801a342609c15701d7c371e1caccf46e1ffd')
 
 _system_libs=('ffmpeg'
@@ -183,14 +186,9 @@ prepare() {
   patch -Np1 -i ../patches/chromium-93-DevToolsEmbedderMessageDispatcher-include.patch
   patch -Np1 -i ../patches/chromium-93-ScopedTestDialogAutoConfirm-include.patch
 
-  patch -Np1 -i ../chromium-94-ffmpeg-roll.patch
-  # Patches to build with ffmpeg 4.4; remove when ffmpeg 5.0 moves to stable
-  if ! pkg-config --atleast-version 59 libavformat; then
-    patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
-    patch -Rp1 -i ../chromium-94-ffmpeg-roll.patch
-  fi
-
+  patch -Np1 -d third_party/breakpad/breakpad < ../breakpad-fix-for-non-constant-SIGSTKSZ.patch
   patch -Np1 -i ../chromium-93-pdfium-include.patch
+  patch -Np1 -i ../chromium-94-ffmpeg-roll.patch
   patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
   patch -d third_party/jinja2 -Np1 -i ../../../jinja-python-3.10.patch
   patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
@@ -201,6 +199,7 @@ prepare() {
   patch -Np1 -i ../gn-visibility-mojo.patch
   patch -Np1 -i ../gn-visibility-webrtc.patch
   patch -Rp1 -i ../replace-blacklist-with-ignorelist.patch
+  patch -Np1 -i ../sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
   patch -d third_party/electron_node/tools/inspector_protocol/jinja2 \
       -Np1 -i ../../../../../../jinja-python-3.10.patch
