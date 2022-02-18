@@ -1,18 +1,18 @@
 pkgbase = perl-extutils-cchecker
 	pkgdesc = CPAN/ExtUtils::CChecker - configure-time utilities for using C headers, libraries, or OS features
-	pkgver = 0.09
-	pkgrel = 2
+	pkgver = 0.11
+	pkgrel = 1
 	url = https://metacpan.org/release/ExtUtils-CChecker
 	arch = any
 	license = PerlArtistic
 	license = GPL
 	makedepends = perl-test-exception
 	makedepends = perl-test-fatal
+	makedepends = perl-module-build
 	depends = perl
 	depends = perl-extutils-cbuilder
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/P/PE/PEVANS/ExtUtils-CChecker-0.09.tar.gz
-	md5sums = 2c7b30a367fc67851be44f9b4c98b652
+	source = http://cpan.metacpan.org/authors/id/P/PE/PEVANS/ExtUtils-CChecker-0.11.tar.gz
+	md5sums = 6c40b0aa26907aed861288808dee755c
 
 pkgname = perl-extutils-cchecker
-
