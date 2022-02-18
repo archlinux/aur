@@ -1,7 +1,7 @@
 # Maintainer: kumen
 
 pkgname="embedded-studio-arm-nordic"
-pkgver=5.60
+pkgver=5.68
 pkgrel=1
 pkgdesc="Segger Embedded Studio for ARM, Nordic version"
 arch=('x86_64' 'i686')
@@ -10,15 +10,15 @@ depends=('jlink-software-and-documentation')
 optdepends=()
 conflicts=()
 replaces=()
-url="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html#installing-ses-nordic-edition"
+url="https://developer.nordicsemi.com/nRF_Connect_SDK/doc/latest/nrf/gs_installing.html#ses-nordic-edition"
 license=('Commercial')
 options=(!strip)
 
-source_x86_64=("Setup_EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x64.tar.gz::https://dl.segger.com/files/embedded-studio/EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x64.tar.gz")
-source_i686=("Setup_EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x86.tar.gz::https://dl.segger.com/files/embedded-studio/EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x86.tar.gz")
+source_x86_64=("Setup_EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x64.tar.gz::https://dl2.segger.com/files/embedded-studio/EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x64.tar.gz")
+source_i686=("Setup_EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x86.tar.gz::https://dl2.segger.com/files/embedded-studio/EmbeddedStudio_ARM_Nordic_v${pkgver/./}_linux_x86.tar.gz")
 	
-sha256sums_x86_64=('daeb45b28493aa8910be0d716f94bb19cd97f52f8cdc8dfd534a2c47cb60203d')
-sha256sums_i686=('0006f99b8cdbcfe5884569b75a52140b43471138ce181446b0ccb9ff6ecd4185')
+sha256sums_x86_64=('bffcd895d076b191b379b142ef5f6346808761dde733ea05d73f4a89dab683a0')
+sha256sums_i686=('a7141cf6369af9050df85c305587114b88431a8c6413c7171276534a08ba4ec8')
 
 prepare(){
         # Change src path name
