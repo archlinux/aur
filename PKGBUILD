@@ -65,10 +65,18 @@ sha256sums+=('3f5129e56b5816d5e5ce0a3cc2e875cc175f1be88eed6495cc1b85b1068bcf4a')
 
 _pkgname=$pkgname
 pkgname+="-extra-mouse-buttons"
-pkgrel="$pkgrel.3"
+pkgrel="$pkgrel.4"
 pkgdesc+=" (with support for extra mouse buttons)"
 eval "$(declare -f build | sed 's/$pkgname/$_pkgname/g')"
 
 prepare() {
+  echo '******************************' 1>&2
+  echo '* THIS PACKAGE IS DEPRECATED *' 1>&2
+  echo '******************************' 1>&2
+  echo 'Side mouse buttons are now supported on the official Arch spice-gtk package.' 1>&2
+  echo "Please replace $pkgname with $_pkgname." 1>&2
+  echo 'This AUR package will be deleted soon.' 1>&2
+  exit 1
+
   patch -d"$_pkgname-$pkgver" -Np1 -i "${srcdir}"/spice-extra-mouse-buttons.patch
 }
