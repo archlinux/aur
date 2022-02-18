@@ -2,7 +2,7 @@
 
 _pkgname=ddstats-rust
 pkgname=${_pkgname}-git
-pkgver=0.6.9.r162.g15553bf
+pkgver=0.6.10.1
 pkgrel=1
 source=("${_pkgname}::git+https://github.com/lsaa/ddstats-rust")
 makedepends=('rust-nightly-bin' 'libcap' 'mold' 'clang')
