@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2022.02.0+443
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
 	arch = x86_64
@@ -49,11 +49,13 @@ pkgbase = rstudio-desktop
 	source = https://nodejs.org/dist/v14.17.5/node-v14.17.5-linux-x64.tar.gz
 	source = qt.conf
 	source = cran_multithread.patch
+	source = sigstksz_gcc11.patch
 	sha256sums = 36234218f118f5085e417411e137791072c00380bce6a016e551e6ecb404ae4d
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
 	sha256sums = 970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b
 	sha256sums = dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921
 	sha256sums = c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980
+	sha256sums = 7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82
 
 pkgname = rstudio-desktop

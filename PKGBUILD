@@ -14,7 +14,7 @@ _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=14.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -31,14 +31,16 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "cran_multithread.patch")
+        "cran_multithread.patch"
+        "sigstksz_gcc11.patch")
 
 sha256sums=('36234218f118f5085e417411e137791072c00380bce6a016e551e6ecb404ae4d'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980')
+            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
+            '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82')
 
 noextract=("gin-${_ginver}.zip")
 
@@ -47,6 +49,7 @@ prepare() {
     local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
     sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
     patch -p1 < ${srcdir}/cran_multithread.patch
+    patch -p1 < ${srcdir}/sigstksz_gcc11.patch
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_srcname}/src/gwt"
