@@ -1,14 +1,14 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=gnome-console-git
 _pkgname=console
-pkgver=0.4.0.r40.g7f370f4
-pkgrel=2
+pkgver=42.beta.r5.gbb15fa7
+pkgrel=1
 pkgdesc="A simple user-friendly terminal emulator for the GNOME desktop"
 arch=('x86_64')
 url="https://gitlab.gnome.org/GNOME/console"
 license=('GPL3')
-depends=('libgtop' 'libhandy-git' 'vte3')
+depends=('libgtop' 'libhandy-git' 'vte3-git')
 makedepends=('git' 'meson' 'sassc')
 optdepends=('libnautilus-extension')
 checkdepends=('appstream-glib')
