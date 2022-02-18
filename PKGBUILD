@@ -1,6 +1,6 @@
 # Maintainer: diced <pranaco2@gmail.com>
 pkgname='dvm'
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 conflicts=('discord' 'discord-canary' 'discord-ptb' 'discord-development' 'dvm-git')
 arch=('x86_64')
