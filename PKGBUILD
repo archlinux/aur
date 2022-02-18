@@ -1,9 +1,9 @@
 # Maintainer: diced <pranaco2@gmail.com>
 pkgname='dvm-git'
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 makedepends=('rust' 'cargo')
-conflicts=('discord' 'discord-canary' 'discord-ptb' 'discord-development')
+conflicts=('discord' 'discord-canary' 'discord-ptb' 'discord-development' 'dvm')
 arch=('x86_64')
 pkgdesc="discord version manager for linux"
 url="https://github.com/diced/dvm"
