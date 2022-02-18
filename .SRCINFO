@@ -1,14 +1,13 @@
 pkgbase = python2-pycryptodomex
 	pkgdesc = A self-contained Python package of low-level cryptographic primitives
-	pkgver = 3.10.1
+	pkgver = 3.14.1
 	pkgrel = 1
 	url = https://www.pycryptodome.org/
 	arch = x86_64
 	license = BSD
 	makedepends = python2-setuptools
 	depends = python2
-	source = https://pypi.org/packages/source/p/pycryptodomex/pycryptodomex-3.10.1.tar.gz
-	sha512sums = 0ffd37e75caf6472529bbc231c7e74290267094eb3a6013a55d32dc6e11313017bb8161bdfef6c96e911e788b837caa445a9e1fe3e17e5e0254c139378f2a5e6
+	source = https://pypi.org/packages/source/p/pycryptodomex/pycryptodomex-3.14.1.tar.gz
+	sha512sums = cd01431b9178bcb27332741097cf020859c48df83219bac9d6ffa1f52db1f112b562478260baa1aed4674e2833d6e0cd5794a43dafb09fda007fdce7a7330495
 
 pkgname = python2-pycryptodomex
-
