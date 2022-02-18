@@ -1,6 +1,6 @@
 pkgbase = electorrent-bin
 	pkgdesc = A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge
-	pkgver = 2.7.2
+	pkgver = 2.7.3
 	pkgrel = 1
 	url = https://github.com/Tympanix/Electorrent
 	arch = x86_64
@@ -8,9 +8,8 @@ pkgbase = electorrent-bin
 	makedepends = gendesk
 	provides = electorrent
 	conflicts = electorrent
-	noextract = electorrent-2.7.2.AppImage
-	source = electorrent-2.7.2.AppImage::https://github.com/tympanix/Electorrent/releases/download/v2.7.2/Electorrent-2.7.2.AppImage
-	sha256sums = 64eba9cf187a7924ec1c6585a595fccd2fd1260633980e83c371354a5d2a3283
+	noextract = electorrent-2.7.3.AppImage
+	source = electorrent-2.7.3.AppImage::https://github.com/tympanix/Electorrent/releases/download/v2.7.3/Electorrent-2.7.3.AppImage
+	sha256sums = 6d0c6e1c0023a4f99fb2af646108b2af2b037f3ddd9fd962c9a7f15a14585ab5
 
 pkgname = electorrent-bin
-

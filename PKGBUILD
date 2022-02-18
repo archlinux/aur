@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=electorrent-bin
-pkgver=2.7.2
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="A remote control client for µTorrent, qBittorrent, rTorrent, Transmission, Synology & Deluge"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('electorrent')
 makedepends=('gendesk')
 noextract=("${pkgname%-bin}-${pkgver}.AppImage")
 source=("${pkgname%-bin}-${pkgver}.AppImage::https://github.com/tympanix/Electorrent/releases/download/v${pkgver}/Electorrent-${pkgver}.AppImage")
-sha256sums=('64eba9cf187a7924ec1c6585a595fccd2fd1260633980e83c371354a5d2a3283')
+sha256sums=('6d0c6e1c0023a4f99fb2af646108b2af2b037f3ddd9fd962c9a7f15a14585ab5')
 
 package() {
   chmod 755 ./${pkgname%-bin}-${pkgver}.AppImage
