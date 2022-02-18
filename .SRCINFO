@@ -1,7 +1,7 @@
 pkgbase = dtodo
 	pkgdesc = Manage the tasks you want to do every day easily
 	pkgver = r13.d4bf518
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/SkwalExe/dtodo
 	install = dtodo.install
 	arch = x86_64
