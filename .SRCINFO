@@ -1,0 +1,17 @@
+pkgbase = ppconsul
+	pkgdesc = C++ client for Consul
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/oliora/ppconsul
+	arch = any
+	license = Boost
+	makedepends = boost>1.55
+	makedepends = cmake
+	makedepends = git
+	depends = curl>7.00
+	source = ppconsul::git+https://github.com/oliora/ppconsul#tag=v0.2.3
+	source = soversion.patch
+	sha256sums = SKIP
+	sha256sums = 481ec8de3ac3c80bc323b9dfea05d7d5564dca72c783a41812daefa817fe10d8
+
+pkgname = ppconsul

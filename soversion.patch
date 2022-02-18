@@ -1,0 +1,41 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ecc5f04..f82410c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,22 @@
+ 
+ cmake_minimum_required(VERSION 3.1)
+ 
+-project(Ppconsul VERSION 0.1)
++find_package(Git)
++if(GIT_FOUND)
++    execute_process(
++            COMMAND ${GIT_EXECUTABLE} describe --match "v[0-9]*" --abbrev=0 --tags HEAD
++            WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
++            OUTPUT_VARIABLE DESCRIBE_BUILD
++            OUTPUT_STRIP_TRAILING_WHITESPACE
++    )
++    string(REGEX REPLACE "^v" "" VERSION ${DESCRIBE_BUILD})
++else()
++    set(VERSION "0.0.0")
++endif()
++
++message(STATUS "Building version: ${VERSION}")
++
++project(Ppconsul VERSION ${VERSION})
+ 
+ include(./conan_paths.cmake OPTIONAL)
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index fc3d3b5..1318433 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -88,7 +88,7 @@ source_group(libb64 FILES ${LIBB64_SOURCES})
+ 
+ set_target_properties(${PROJECT_NAME} PROPERTIES
+     VERSION ${Ppconsul_VERSION}
+-    SOVERSION ${Ppconsul_VERSION}
++    SOVERSION "${Ppconsul_VERSION_MAJOR}.${Ppconsul_VERSION_MINOR}"
+     COMPILE_PDB_NAME ${PROJECT_NAME}
+     COMPILE_PDB_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+     FOLDER ${PROJECT_NAME}
