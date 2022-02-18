@@ -2,7 +2,7 @@
 
 # Disclaimer: This package is not from Nordic Semiconductor
 pkgname=nrf-connect-sdk
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Software development kit for Nordic Semiconductor products"
 arch=('x86_64')
@@ -88,6 +88,7 @@ sha256sums=('SKIP')
 build() {
 	#Initilize and clone other repos usinf python-west
 	cd "${srcdir}"
+	unset ZEPHYR_BASE
 	if [ -d ".west" ]; then
 		rm -rf ".west"
 	fi
