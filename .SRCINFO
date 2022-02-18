@@ -1,6 +1,6 @@
 pkgbase = mini-matrix-git
 	pkgdesc = Displays a matrix of random characters
-	pkgver = 1.0
+	pkgver = r8.f832b7d
 	pkgrel = 1
 	url = https://github.com/SkwalExe/mini-matrix.git
 	install = mini-matrix.install
