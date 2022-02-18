@@ -2,14 +2,14 @@
 # Contributor: Benjamin Hodgetts <ben@xnode.org>
 
 pkgname=vice-svn
-pkgver=r41774
+pkgver=r41777
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version"
 arch=('i686' 'x86_64')
 url="http://vice-emu.sourceforge.net"
 license=('GPL')
 depends=(glew gtk3 portaudio pciutils)
-makedepends=(dos2unix ffmpeg libpcap libxaw texlive-bin texlive-core xa xorg-bdftopcf xorg-mkfontdir python svn)
+makedepends=(dos2unix ffmpeg4.4 libpcap libxaw texlive-bin texlive-core xa xorg-bdftopcf xorg-mkfontdir python svn)
 provides=('vice')
 replaces=('vice')
 conflicts=('vice' 'vice-sdl2' 'vice-svn-gtk3' 'vice-svn-sdl2')
@@ -64,9 +64,8 @@ pkgver() {
 build() {
 	cd "${pkgname}/vice"
    	./autogen.sh 
-    	./configure --prefix=/usr --libdir=/usr/lib 
-	# Deactivating ffmpeg until ffmpeg4.4 is well detected	
-	#--enable-external-ffmpeg
+    	# Forcing use of ffmpeg 4.4.
+    	PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-external-ffmpeg
 	make
 }
 

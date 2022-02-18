@@ -1,13 +1,13 @@
 pkgbase = vice-svn
 	pkgdesc = The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - Development version
-	pkgver = r41774
+	pkgver = r41777
 	pkgrel = 1
 	url = http://vice-emu.sourceforge.net
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = dos2unix
-	makedepends = ffmpeg
+	makedepends = ffmpeg4.4
 	makedepends = libpcap
 	makedepends = libxaw
 	makedepends = texlive-bin
