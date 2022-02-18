@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname=charge-lnd
 pkgver=0.2.8
-pkgrel=4
+pkgrel=5
 pkgdesc="${pkgname} is a simple policy based fee manager for LND"
 url='https://github.com/accumulator/charge-lnd'
 depends=('python' 'python-setuptools' 'python-googleapis-common-protos' 'python-grpcio' 'python-protobuf' 'python-six' 'python-termcolor' 'python-colorama' 'python-aiorpcx')
@@ -30,4 +30,5 @@ package() {
   
   install -Dm 644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm 644 "$srcdir"/*.service -t "$pkgdir/usr/lib/systemd/system"
+  install -Dm 644 "$srcdir"/*.timer -t "$pkgdir/usr/lib/systemd/system"
 }
