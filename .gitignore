@@ -5,4 +5,5 @@ pkg/*
 *.tar.bz2
 .AURINFO
 *.t?z
+*.tar.*
 
