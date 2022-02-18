@@ -5,6 +5,7 @@ if [[ $# -ne 1 ]]; then
 fi
 
 sed -i 's/^pkgver=.*$/pkgver='"$1"'/' PKGBUILD
+git add PKGBUILD
 git commit -m "Updated to v$1"
 git tag "v$1"
 git push --all

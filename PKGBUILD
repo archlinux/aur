@@ -11,8 +11,8 @@ provides=(thu-isatap)
 conflicts=(thu-isatap)
 source=("https://github.com/panda2134/thu-isatap/raw/v$pkgver/thu-isatap"
         "https://github.com/panda2134/thu-isatap/raw/v$pkgver/thu-isatap.service")
-sha256sums=('6d5f1f30c4ef97bf5964135f3e0dd4b61364cd45113f20eb44373f71a5b56226'
-            '2be56263c9893bb109dabea296f0493ab3082c0e82b098127fd62f1daeabb26a')
+sha256sums=('755bf6b06077bd3cfed4495b8b1dd7cb05a92d35d1144f0b089d8ae621b0d03d'
+            '893132c4a68d2518d7b00f45173318261f5ddaeb203b09a0f6b9a52519343b9c')
 
 package() {
   install -D -m755 "thu-isatap" "$pkgdir/usr/bin/thu-isatap"
