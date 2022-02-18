@@ -1,0 +1,18 @@
+pkgbase = lib32-libxcrypt-compat
+	pkgdesc = Modern library for one-way hashing of passwords: legacy API functions (32 bit library)
+	pkgver = 4.4.28
+	pkgrel = 1
+	url = https://github.com/besser82/libxcrypt/
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	depends = lib32-libxcrypt
+	provides = libcrypt.so.1
+	options = !emptydirs
+	source = https://github.com/besser82/libxcrypt//releases/download/v4.4.28/libxcrypt-4.4.28.tar.xz
+	source = https://github.com/besser82/libxcrypt//releases/download/v4.4.28/libxcrypt-4.4.28.tar.xz.asc
+	validpgpkeys = 678CE3FEE430311596DB8C16F52E98007594C21D
+	sha256sums = 9e936811f9fad11dbca33ca19bd97c55c52eb3ca15901f27ade046cc79e69e87
+	sha256sums = SKIP
+
+pkgname = lib32-libxcrypt-compat
