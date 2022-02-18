@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
 pkgver=6.5.3.48028.1339287b13
-pkgrel=3
+pkgrel=4
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -17,6 +17,9 @@ optdepends=(
     'freealut: OpenAL support'
     'gamemode: Gamemode support'
     'lib32-libidn11: SLVoice support'
+    'lib32-libsndfile: SLVoice support'
+    'lib32-util-linux: SLVoice support'
+    'lib32-gstreamer0.10: SLVoice support'
     'libpulse: PulseAudio support'
     'mesa-libgl: Intel, Radeon, Nouveau support'
     'nvidia-libgl: NVIDIA support'
