@@ -6,7 +6,7 @@ epoch=
 pkgdesc="Command line tool for inspecting Parquet files"
 arch=('i686' 'x86_64')
 url="https://github.com/manojkarthick/pqrs"
-license=('MIT')
+license=('MIT' 'Apache')
 groups=()
 depends=()
 makedepends=(cargo)
@@ -44,6 +44,7 @@ check() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-MIT
 }
 
 # vim:set ts=2 sw=2 et:

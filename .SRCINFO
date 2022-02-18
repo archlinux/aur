@@ -6,6 +6,7 @@ pkgbase = pqrs
 	arch = i686
 	arch = x86_64
 	license = MIT
+	license = Apache
 	makedepends = cargo
 	source = https://github.com/manojkarthick/pqrs/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = eb6de6afd34aed8d0504d2176bbf6d5f428decc9409473b72720b426e0f8fe1b
