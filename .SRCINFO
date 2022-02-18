@@ -1,6 +1,6 @@
 pkgbase = zig-dev-bin
 	pkgdesc = A general-purpose programming language and toolchain for maintaining robust, optimal, and reusable software
-	pkgver = 20220203
+	pkgver = 20220218
 	pkgrel = 1
 	url = https://ziglang.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = zig-dev-bin
 	provides = zig
 	conflicts = zig
 	options = !strip
-	source = https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.543+cfceec15e.tar.xz
-	sha256sums = 3563e99a86384806d9d1808effcb9bb46cf23599952a0b0369f55ad22be77155
+	source = https://ziglang.org/builds/zig-linux-x86_64-0.10.0-dev.787+5aa35f62c.tar.xz
+	sha256sums = e399de60b68cffa558d3ce83a7481c415676ea15e74e404c4ec98915154e713a
 
 pkgname = zig-dev-bin
