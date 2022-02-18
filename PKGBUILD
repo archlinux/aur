@@ -4,7 +4,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
 pkgver=6.5.3.1454
-pkgrel=1
+pkgrel=2
 _releasename="Alchemy Project AgileAkita"
 _releasename_underscored="${_releasename// /_}"
 _version_underscored="${pkgver//\./_}"

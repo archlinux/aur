@@ -1,7 +1,7 @@
 pkgbase = alchemy-next-viewer-bin
 	pkgdesc = This is the next generation of Alchemy Viewer! - Binary Project build
 	pkgver = 6.5.3.1454
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.alchemyviewer.org
 	install = alchemy.install
 	arch = x86_64
