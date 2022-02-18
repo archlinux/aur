@@ -5,7 +5,7 @@
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-viewer
 pkgver=6.5.2.48000
-pkgrel=5
+pkgrel=6
 pkgdesc="This is the next generation of Alchemy Viewer!"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -17,6 +17,9 @@ optdepends=(
     'freealut: OpenAL support'
     'gamemode: Gamemode support'
     'lib32-libidn11: SLVoice support'
+    'lib32-libsndfile: SLVoice support'
+    'lib32-util-linux: SLVoice support'
+    'lib32-gstreamer0.10: SLVoice support'
     'libpulse: PulseAudio support'
     'mesa-libgl: Intel, Radeon, Nouveau support'
     'nvidia-libgl: NVIDIA support'
