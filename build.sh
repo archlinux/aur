@@ -8,6 +8,7 @@ sed -i 's/^pkgver=.*$/pkgver='"$1"'/' PKGBUILD
 git add PKGBUILD
 git commit -m "Updated to v$1"
 git tag "v$1"
-git push --all --tags
+git push
+git push --tags
 
 echo "Now run updpkgsums, and check manually"
