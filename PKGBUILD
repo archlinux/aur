@@ -364,10 +364,10 @@ if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
   depends+=('ndi-sdk')
   # Manjaro still on 4.4.1
   if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    source+=("Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false")
+    source+=("Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/4.4_Revert-lavd-Remove-libndi_newtek.patch?inline=false")
     sha256sums+=('5a37c295d01ae02f02b366c3ba4867d27bc3ac29c1420472fbe8e4d7bca3bd4c')
   else
-    source+=("Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/4.4_Revert-lavd-Remove-libndi_newtek.patch?inline=false")
+    source+=("Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false")
     sha256sums+=('a5701faa71ac69c94dc0230b401203d135e48c45980926432f1190ef3218009b')
   fi
   source+=(
