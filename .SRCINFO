@@ -1,10 +1,11 @@
 pkgbase = imgur-uploader-git
 	pkgdesc = A script that uploads an image to imgur and copies the image URL to the clipboard
-	pkgver = r31.225dba7
-	pkgrel = 3
+	pkgver = r36.3e029bf
+	pkgrel = 1
 	url = https://github.com/tangphillip/Imgur-Uploader
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = curl
 	optdepends = xsel: Copy URL to clipboard
 	optdepends = xclip: Alternative to copy URL to clipboard
@@ -13,4 +14,3 @@ pkgbase = imgur-uploader-git
 	md5sums = SKIP
 
 pkgname = imgur-uploader-git
-
