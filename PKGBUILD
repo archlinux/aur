@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-tools-git
-pkgver=1.0.1.g5cee96e
+pkgver=1.0+1+g5cee96e
 pkgrel=2
 epoch=1
 pkgdesc="Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags --long | sed -e 's/^v//' -e 's/-/./g'
+  git describe --tags --long | sed -e 's/^v//' -e 's/-/+/g'
 }
 
 package() {
