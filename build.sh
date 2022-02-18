@@ -11,4 +11,6 @@ git tag "v$1"
 git push
 git push --tags
 
-echo "Now run updpkgsums, and check manually"
+updpkgsums
+makepkg --printsrcinfo > .SRCINFO
+echo "Now check package checksum manually"
