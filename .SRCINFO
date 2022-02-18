@@ -1,14 +1,11 @@
 pkgbase = mutter-dynamic-buffering
 	pkgdesc = A window manager for GNOME (with dynamic triple/double buffering)
 	pkgver = 41.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	groups = gnome
 	license = GPL
-	checkdepends = xorg-server-xvfb
-	checkdepends = pipewire-media-session
-	checkdepends = python-dbusmock
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = egl-wayland

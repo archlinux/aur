@@ -5,7 +5,7 @@
 
 pkgname=mutter-dynamic-buffering
 pkgver=41.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -16,7 +16,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof)
-checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
+#checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
 provides=(mutter libmutter-9.so)
 conflicts=(mutter)
 groups=(gnome)
