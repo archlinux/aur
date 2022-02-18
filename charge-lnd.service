@@ -9,7 +9,7 @@ EnvironmentFile=/etc/default/charge-lnd
 ExecStart=/usr/bin/charge-lnd \
     --lnddir $LNDDIR \
     --grpc $GRPC \
-    --config $CONFIG
+    --config $CONFIG \
     $FLAGS
 
 User=charge-lnd

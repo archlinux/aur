@@ -1,7 +1,7 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname=charge-lnd
 pkgver=0.2.8
-pkgrel=5
+pkgrel=6
 pkgdesc="${pkgname} is a simple policy based fee manager for LND"
 url='https://github.com/accumulator/charge-lnd'
 depends=('python' 'python-setuptools' 'python-googleapis-common-protos' 'python-grpcio' 'python-protobuf' 'python-six' 'python-termcolor' 'python-colorama' 'python-aiorpcx')
