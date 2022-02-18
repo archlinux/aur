@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-dock')
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="GTK3-based dock for sway Wayland compositor"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('gtk3' 'gtk-layer-shell')
 optdepends=('nwg-drawer: default application launcher')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-dock/archive/v"$pkgver".tar.gz")
 
-md5sums=('ddef31be3e95c631ee19bf41cf343926')
+md5sums=('aed301044b17bf288740e10081df955d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
