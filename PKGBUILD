@@ -5,7 +5,7 @@
 _pkgname=libxcrypt
 pkgname=lib32-${_pkgname}-compat
 pkgver=4.4.28
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern library for one-way hashing of passwords: legacy API functions (32 bit library)'
 arch=('x86_64')
 url='https://github.com/besser82/libxcrypt/'
@@ -42,9 +42,6 @@ check() {
 package() {
   cd ${_pkgname}-${pkgver}
   make DESTDIR="$pkgdir" install
-  rm "$pkgdir/usr/include/crypt.h"
-  rm "$pkgdir/usr/lib32/libcrypt.so"
-  rm "$pkgdir/usr/lib32/libxcrypt.so"
-  rm -r "$pkgdir/usr/lib32/pkgconfig"
-  rm -r "$pkgdir/usr/share/man"
+  rm -r "$pkgdir"/usr/{include,share/man,lib32/pkgconfig}
+  rm "$pkgdir"/usr/lib32/lib{,x}crypt.so
 }
