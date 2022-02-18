@@ -1,0 +1,16 @@
+Index: VSS/Makefile
+===================================================================
+--- VSS.orig/Makefile
++++ VSS/Makefile
+@@ -23,8 +23,10 @@ else
+ endif
+ 
+ all:
+-	gprbuild $(GPRBUILD_FLAGS) gnat/vss_text.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
++	gprbuild $(GPRBUILD_FLAGS) gnat/vss_config.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
++	gprbuild $(GPRBUILD_FLAGS) gnat/vss_gnat.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
+ 	gprbuild $(GPRBUILD_FLAGS) gnat/vss_json.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
++	gprbuild $(GPRBUILD_FLAGS) gnat/vss_text.gpr -XVSS_BUILD_MODE=$(BUILD_MODE) -cargs $(ADAFLAGS)
+ 
+ generate:
+ 	gprbuild $(GPRBUILD_FLAGS) gnat/tools/gen_ucd.gpr

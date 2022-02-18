@@ -1,7 +1,7 @@
 pkgbase = libvss-git
 	pkgdesc = High level string and text processing library
 	pkgver = r651.b8ed8a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/VSS
 	arch = any
 	license = GPL3
@@ -10,6 +10,8 @@ pkgbase = libvss-git
 	makedepends = gprbuild
 	conflicts = libvss
 	source = git+https://github.com/AdaCore/VSS.git
+	source = vss.patch
 	sha1sums = SKIP
+	sha1sums = 8f318de8802249dac4e38ac9d198dc53fe8b1dd9
 
 pkgname = libvss-git

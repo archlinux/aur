@@ -1,0 +1,22 @@
+image: archlinux
+sources:
+    - https://git.sr.ht/~ineptattech/aur-libvss-git
+packages:
+    - gprbuild-bootstrap
+    - xmlada
+    - git
+tasks:
+- prepare: |
+    git clone https://aur.archlinux.org/gprbuild.git
+    cd gprbuild
+    makepkg
+    yay -R --noconfirm gprbuild-bootstrap
+    makepkg -i --noconfirm
+    cd ..
+    yay -S --answerclean=All --noconfirm xmlada
+- build: |
+    cd aur-libvss-git
+    makepkg
+- install: |
+    cd aur-libvss-git
+    makepkg --install --noconfirm
