@@ -2,7 +2,7 @@
 
 pkgname=sonixd-appimage
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest stable AppImage of Sonixd - a full-featured Subsonic API compatible cross-platform desktop client"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
