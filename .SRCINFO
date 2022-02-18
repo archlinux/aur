@@ -1,6 +1,6 @@
 pkgbase = nrf-connect-sdk
 	pkgdesc = Software development kit for Nordic Semiconductor products
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/nrfconnect/sdk-nrf
 	install = nrf-connect-sdk.install
@@ -66,7 +66,7 @@ pkgbase = nrf-connect-sdk
 	provides = nrf-connect-sdk
 	conflicts = nrf-connect-sdk
 	options = !strip
-	source = nrf::git+https://github.com/nrfconnect/sdk-nrf.git#tag=v1.8.0
+	source = nrf::git+https://github.com/nrfconnect/sdk-nrf.git#tag=v1.9.0
 	sha256sums = SKIP
 
 pkgname = nrf-connect-sdk
