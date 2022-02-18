@@ -1,6 +1,6 @@
 pkgbase = python-makelove-git
 	pkgdesc = A packaging tool for löve games
-	pkgver = 0.0.6.r11.g1a3de34
+	pkgver = 0.0.6.r14.g7527918
 	pkgrel = 1
 	url = https://github.com/pfirsich/makelove
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = python-makelove-git
 	md5sums = SKIP
 
 pkgname = python-makelove-git
-
