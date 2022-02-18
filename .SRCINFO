@@ -1,7 +1,7 @@
 pkgbase = charge-lnd
 	pkgdesc = charge-lnd is a simple policy based fee manager for LND
 	pkgver = 0.2.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/accumulator/charge-lnd
 	install = charge-lnd.install
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = charge-lnd
 	optdepends = lnd-bin
 	optdepends = lnd
 	backup = etc/default/charge-lnd
-	source = https://github.com/accumulator//archive/refs/tags/v0.2.8.tar.gz
+	source = https://github.com/accumulator/charge-lnd/archive/refs/tags/v0.2.8.tar.gz
 	source = charge-lnd.service
 	source = charge-lnd@.service
 	source = charge-lnd.timer
