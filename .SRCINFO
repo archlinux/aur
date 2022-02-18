@@ -1,0 +1,13 @@
+pkgbase = qgraf
+	pkgdesc = Feynman diagram generator for various types of QFT models
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://cfif.ist.utl.pt/~paulo/qgraf.html
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	depends = gcc-libs
+	source = http://anonymous:aur@qgraf.tecnico.ulisboa.pt/v3.5/qgraf-3.5.0.tgz
+	sha256sums = 09228905ffa8e6b7d07d1c17b6e20c91a16d3d66193de5271b868d759deb175a
+
+pkgname = qgraf
