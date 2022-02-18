@@ -1,14 +1,14 @@
 pkgbase = firefox-tab-unloader-for-tree-style-tab
 	pkgdesc = Tab unload options for Tree Style Tab
-	pkgver = 6.11
+	pkgver = 6.12
 	pkgrel = 1
 	url = https://github.com/Lej77/tab-unloader-for-tree-style-tab
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	noextract = tab_unloader_for_tree_style_tab-6.11-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/947990/tab_unloader_for_tree_style_tab-6.11-fx.xpi
-	sha256sums = 053ddde8e98d4b70b4fa8650fa66983722366c3cc5c78b23e685facaa22c7925
-	b2sums = fa301bb7c338594f4ce7c0942ea6966b433ff5cb98078cf902ddf4b0e1c63d8a7e2927a9efa3751f36daa81f301ac1ba74df03478f4e682bcb22fd62c959c48e
+	noextract = tab_unloader_for_tree_style_tab-6.12-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/947990/tab_unloader_for_tree_style_tab-6.12-fx.xpi
+	sha256sums = c1bc9684775643773cc299702f4bdd0b5b77d19bd25b0acbf131a037c43a7bc9
+	b2sums = 77a930a4d8e960ef4eb4b8dfd53d92ecf2cbb721d3b250bb3328f65a6dad4156862236b773ef6a4ec39570af5a855d16c2cf98d7cce3f73ee96016b2ba9d6b04
 
 pkgname = firefox-tab-unloader-for-tree-style-tab
