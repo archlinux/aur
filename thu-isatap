@@ -4,29 +4,86 @@
 REMOTE_IP6="2402:f000:1:1501:200:5efe"
 REMOTE_IP4="166.111.21.1"
 
-IFACE4=`ip route show | grep default | sed -e 's/^default.*dev \([^ ]\+\).*$/\1/'`
-echo "Interface is $IFACE4"
-IP4=`ip addr show dev $IFACE4 | grep -m 1 'inet\ ' | sed -e 's/^.*inet \([^ \\]\+\)\/.*$/\1/'`
-echo "Outbound IP is $IP4"
+VAR_RUN_FOLDER="/var/run/thu-isatap/"
+ROUTE_BACKUP="$VAR_RUN_FOLDER/ipv6-default-route.backup"
 
-ip tunnel list |  grep "^sit1:" > /dev/null
-if [ $? -eq 0 ]; then
-	echo "Old tunnel found! removing..."
-	ip tunnel del sit1 || exit 1
+stop_tunnel() {
+	if ip -6 route show default | grep -c default > /dev/null; then
+		echo "Removing any existing default IPv6 route..."
+		ip -6 route del default > /dev/null
+	fi
+
+	ip tunnel list |  grep "^sit1:" > /dev/null
+	if [ $? -eq 0 ]; then
+		echo "Removing existing TAP interface..."
+		ip tunnel del sit1 || exit 5
+	fi
+
+	if [ "$1" != "--no-restore" ] && [ -f "$ROUTE_BACKUP" ]; then
+		echo "Restoring original IPv6 default route..."
+		(cat "$ROUTE_BACKUP" | ip -6 route restore) || exit 5
+	else
+		echo "Skipping IPv6 default route restoration"
+	fi
+
+	echo "Tsinghua University ISATAP stopped."
+}
+
+start_tunnel() {
+	mkdir -p $VAR_RUN_FOLDER
+	if ip -6 route show default | grep -c default > /dev/null; then
+		echo "Making a backup of current IPv6 default route..."
+		ip -6 route save default > $ROUTE_BACKUP
+	else
+		echo "No IPv6 default route, skipping backup"
+		rm -f $ROUTE_BACKUP
+	fi
+
+	stop_tunnel --no-restore  # stop if already running
+
+	IFACE4=`ip route show | grep default | sed -e 's/^default.*dev \([^ ]\+\).*$/\1/'`
+	echo "Interface is $IFACE4"
+	IP4=`ip addr show dev $IFACE4 | grep -m 1 'inet\ ' | sed -e 's/^.*inet \([^ \\]\+\)\/.*$/\1/'`
+	echo "Outbound IPv4 address is $IP4"
+
+	echo "Adding new tunnel..."
+	ip tunnel add sit1 mode sit remote $REMOTE_IP4 local $IP4
+	ip link set dev sit1 up
+	ip tunnel list | grep "^sit1:" > /dev/null
+	if [ $? -ne 0 ]; then
+		echo "Adding tunnel failed!"
+		exit 2
+	fi
+
+	echo "Setting address and route..."
+	
+	ip -6 addr add $REMOTE_IP6:$IP4/64 dev sit1 || (echo "Setting IPv6 address failed!"; exit 3)
+	ip -6 route add default via $REMOTE_IP6:$REMOTE_IP4 dev sit1 || (echo "Setting IPv6 default route failed!"; exit 4)
+
+	echo "Tsinghua University ISATAP configured."
+}
+
+usage() {
+	echo "Usage: $0 (start | stop | restart)"
+	exit 1
+}
+
+if [[ "$#" -ne 1 ]]; then
+	usage
 fi
 
-echo "Adding new tunnel..."
-ip tunnel add sit1 mode sit remote $REMOTE_IP4 local $IP4
-ip link set dev sit1 up
-ip tunnel list | grep "^sit1:" > /dev/null
-if [ $? -ne 0 ]; then
-	echo "Adding tunnel failed!"
-	exit 2
-fi
-
-echo "Setting address and route..."
-set -e
-ip -6 addr add $REMOTE_IP6:$IP4/64 dev sit1
-ip -6 route add default via $REMOTE_IP6:$REMOTE_IP4 dev sit1
-
-echo "Tsinghua University ISATAP Configured."
+case "$1" in
+	start)
+		start_tunnel
+	;;
+	stop)
+		stop_tunnel
+	;;
+	restart)
+		stop_tunnel
+		start_tunnel
+	;;
+	*)
+		usage
+	;;
+esac
