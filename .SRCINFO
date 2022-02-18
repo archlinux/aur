@@ -1,13 +1,13 @@
 pkgbase = stylua
 	pkgdesc = Code formatter for Lua
-	pkgver = 0.12.2
+	pkgver = 0.12.3
 	pkgrel = 1
 	url = https://github.com/JohnnyMorganz/StyLua
 	arch = any
 	license = MPL2
 	makedepends = rust
 	depends = gcc-libs
-	source = https://github.com/JohnnyMorganz/StyLua/archive/v0.12.2/StyLua-0.12.2.tar.gz
-	b2sums = 54db4547f5d87dd2675edf333294e89ff99473e4b01a697868665a2d27b9f21bd21c1ff2bd9101c2bf6956156bde95b1166aaaece44a47379a471a5317f69239
+	source = https://github.com/JohnnyMorganz/StyLua/archive/v0.12.3/StyLua-0.12.3.tar.gz
+	b2sums = 2737e874da37cdcd82d676e2d9b0f242a5573da04f5ccae8edc47d804b338be8dcb76c4813c5f0d8ed079b370835c82ac7e61062b2d2215707fdcf77e5c3cd58
 
 pkgname = stylua
