@@ -1,0 +1,23 @@
+pkgbase = furnace-git
+	pkgdesc = A multi-system chiptune tracker compatible with DefleMask modules
+	pkgver = v0.5.6.r26.ga9b2102
+	pkgrel = 1
+	url = https://github.com/tildearrow/furnace
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	depends = zlib
+	depends = libsndfile
+	depends = fmt
+	depends = hicolor-icon-theme
+	provides = furnace
+	source = git+https://github.com/tildearrow/furnace.git
+	source = git+https://github.com/nukeykt/Nuked-OPN2.git
+	source = git+https://github.com/ocornut/imgui.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = furnace-git
