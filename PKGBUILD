@@ -9,6 +9,8 @@ url='https://gitlab.com/piratenetwork_mirror/pirate'
 license=('GPL2')
 provides=('pirate-qt')
 depends=('gcc-libs' 'libxcb' 'fontconfig' 'expat' 'harfbuzz' 'pcre')
+optdepends=('libappindicator-gtk3: system tray support'
+	'libnotify: desktop notification support')
 source=("https://gitlab.com/piratenetwork_mirror/pirate_compiled/-/raw/main/TreasureChest/${pkgver}/pirate-qt-ubuntu1804-v${pkgver}.deb"
 	"treasure.chest.desktop.patch")
 sha256sums=('fff587a44131ace9e132e7f645abd4265e6e10002df3139334c578b974f8c762'
