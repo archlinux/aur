@@ -1,0 +1,9 @@
+pkgbase = ddstats-rust-bin
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	source = https://github.com/lsaa/ddstats-rust/releases/download/v1/ddstats-rust-v1-linux.zip
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = ddstats-rust-bin
