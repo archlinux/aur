@@ -4,7 +4,7 @@
 
 pkgname='minisatip-git'
 pkgdesc='SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)'
-pkgver=1.0.2.r3.g5dc22e4
+pkgver=1.1.78.r0.gb5f6328
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://minisatip.org'
@@ -27,7 +27,7 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd ${srcdir}/minisatip
-	git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
