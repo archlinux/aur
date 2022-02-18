@@ -4,7 +4,7 @@
 #         Install ttf-ms-win10/-win11 before you do anything with this package
 
 pkgname=ttf-defenestration
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Shim package to satisfy 'ttf-liberation' dependencies via 'ttf-ms-win1*'; see README.md for details"
 arch=(any)
@@ -13,7 +13,7 @@ license=('BSD')
 provides=('ttf-liberation')
 conflicts=(
   'ttf-liberation'
-  'ttf-ms-fonts<=0'   # this should prevent the actual 'ttf-ms-fonts' package from being accepted
+  'ttf-ms-fonts>=0'   # this should prevent the actual 'ttf-ms-fonts' package from being accepted
   'ttf-vista-fonts'
   'ttf-win7-fonts'
   'ttf-ms-win8'
@@ -26,4 +26,6 @@ package() {
     'ttf-ms-win11: Windows 11 fonts'
   )
 }
+
+
 
