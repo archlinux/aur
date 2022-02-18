@@ -7,11 +7,11 @@ pkgrel=2
 license=('GPL')
 depends=('texlive-core')
 pkgdesc="A class for typesetting flashcards."
-url="http://ctan.org/pkg/flashcards"
+url="https://ctan.org/pkg/flashcards"
 arch=('any')
 install=texlive-flashcards.install
-source=(http://mirror.ctan.org/macros/latex/contrib/flashcards.zip)
-md5sums=('21f85c9b291a0d06e815ce09d89f4463')
+source=(https://mirror.ctan.org/macros/latex/contrib/flashcards.zip)
+sha256sums=('3a344b39e4d3f36152772458c85b32f294e18b13617ac79b18b49406ce73fc52')
 
 build ()
 {
