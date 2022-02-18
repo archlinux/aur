@@ -31,6 +31,6 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-        mkdir -p "$pkgdir/usr/local/"
-	make PREFIX="$pkgdir/usr/local/" install
+        mkdir -p "$pkgdir/usr/"
+	make PREFIX="$pkgdir/usr/" install
 }
