@@ -2,7 +2,7 @@
 # Contributor: Aris Synodinos <arissynod-gmail-com>
 
 pkgname=gazebo-git
-pkgver=r32276.2369ecd863
+pkgver=r32502.5d92404905
 pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments. Git version."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl' 'graphviz'
          'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat' 'ignition-math' 'ignition-transport'
-         'ignition-cmake' 'ignition-common' 'ignition-fuel_tools' 'ignition-msgs' 'tinyxml2' 'qwt')
+         'ignition-cmake' 'ignition-common' 'ignition-fuel_tools-4' 'ignition-msgs' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
@@ -28,12 +28,17 @@ conflicts=('gazebo')
 
 _pkgname=gazebo
 
-source=("gazebo"::"git+https://github.com/osrf/gazebo")
-sha256sums=('SKIP')
+source=("gazebo"::"git+https://github.com/osrf/gazebo" "patch"::"https://github.com/osrf/gazebo/pull/3174.patch")
+sha256sums=('SKIP' '00f342f4f62926b93ad506017561e15f2ec64bcca6a12b1184be5fa4c50f971e')
 
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${_pkgname}"
+	git apply ../patch
 }
 
 build() {
@@ -41,11 +46,10 @@ build() {
 
   mkdir -p build && cd build
 
-  cmake .. -GNinja \
-           -DCMAKE_BUILD_TYPE="Release" \
+  cmake ..  -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
-  ninja
+  make install
 }
 
 package() {
