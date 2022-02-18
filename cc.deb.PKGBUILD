@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=8
+pkgrel=9
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 _tag_ver="v${_pkgver}"
@@ -32,17 +32,16 @@ noextract=(
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}arm.tar.gz"
 )
-sha256sums=('a84b61364842e914d550923fd3fc005013fa1a4ecfa3d5e9f491d2c6b2182118'
+sha256sums=('c7e7a1c9e40cb299c8cdff1ae5a25b618bdebe225924987d6d1c760d1b97617a'
             '2358b979e9eb917ffcbaf2236051a300d0d0f684edfeec840399c09d75751aa1'
             'bd8e28b1829bb17d6a975c2c0b93c5355ba90540a84541aa3852ea93c1445810'
             'a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
 
 build() {
+  _msg2 'creating the DEBIAN/control files'
   for i in ${_pkgarches[@]}; do
     _msg2 "_pkgarch=$i"
     local _pkgarch=$i
-
-    _msg2 'creating the DEBIAN/control files'
     #create control file for the debian package
     echo "Package: skywire-bin" > ${srcdir}/${_pkgarch}.control
     echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
@@ -51,7 +50,7 @@ build() {
     echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
     #echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
     echo "Provides: ${pkgname}" >> ${srcdir}/${_pkgarch}.control
-    echo "Maintainer: the-skycoin-project" >> ${srcdir}/${_pkgarch}.control
+    echo "Maintainer: Skycoin" >> ${srcdir}/${_pkgarch}.control
     echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
 
   done
@@ -62,24 +61,18 @@ package() {
 for i in ${_pkgarches[@]}; do
 _msg2 "_pkgarch=${i}"
 local _pkgarch=${i}
-
-if [[ $_pkgarch == "amd64" ]] ; then
-  rm -rf ${srcdir}/skywire-visor ${srcdir}/skywire-cli ${srcdir}/apps
-  rm -rf ${pkgdir}/test && mkdir -p ${pkgdir}/test && cd ${pkgdir}/test
-  tar -xf ${srcdir}/${_pkgname}-${_tag_ver}-linux-amd64.tar.gz
+local _pkgarch1=${_pkgarch}
+if [[ ${_pkgarch} == "armhf" ]] ; then
+  local _pkgarch1=arm
 fi
 
-if [[ $_pkgarch == "arm64" ]] ; then
-  rm -rf ${srcdir}/skywire-visor ${srcdir}/skywire-cli ${srcdir}/apps #not sure if it will error here
-  rm -rf ${pkgdir}/test && mkdir -p ${pkgdir}/test && cd ${pkgdir}/test
-  tar -xf ${srcdir}/${_pkgname}-${_tag_ver}-linux-arm64.tar.gz
-fi
-
-if [[ $_pkgarch == "armhf" ]] ; then
-  rm -rf ${srcdir}/skywire-visor ${srcdir}/skywire-cli ${srcdir}/apps #not sure if it will error here
-  rm -rf ${pkgdir}/test && mkdir -p ${pkgdir}/test && cd ${pkgdir}/test
-  tar -xf ${srcdir}/${_pkgname}-${_tag_ver}-linux-arm.tar.gz
-fi
+local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
+[[ -f ${srcdir}/${_pkgname}-visor ]] && rm -rf ${srcdir}/${_pkgname}-visor
+[[ -f ${srcdir}/${_pkgname}-cli ]] && rm -rf ${srcdir}/${_pkgname}-cli
+[[ -d ${srcdir}/apps ]] && rm -rf ${srcdir}/apps
+[[ -d ${pkgdir}/test ]] && rm -rf ${pkgdir}/test
+mkdir -p ${pkgdir}/test && cd ${pkgdir}/test
+tar -xf ${srcdir}/${_binaryarchive}
 
 _msg2 'creating dirs'
 #set up to create a .deb package
@@ -91,60 +84,42 @@ _skyscripts="${_skydir}/scripts"
 _systemddir="etc/systemd/system"
 _skybin="${_skydir}/bin"
 [[ -d ${_pkgdir} ]] && rm -rf ${_pkgdir}
-mkdir -p ${_pkgdir}/usr/bin ${_pkgdir}/usr/bin/apps
-#tls autoconfig
-mkdir -p ${_pkgdir}/${_skydir}/ssl
-#other dirs must be created or the visor will create them at runtime with weird permissions
-mkdir -p ${_pkgdir}/${_skydir}/local
-mkdir -p ${_pkgdir}/${_skydir}/dmsgpty
-mkdir -p ${_pkgdir}/${_skydir}/${_pkgname}    #needed?
-#mkdir -p ${_pkgdir}/${_skydir}/skycache    #local package repository
-mkdir -p ${_pkgdir}/${_skydir}/transport_logs
+mkdir -p ${_pkgdir}/usr/bin
+mkdir -p ${_pkgdir}/usr/bin/apps
 mkdir -p ${_pkgdir}/${_skydir}/scripts
+#dirs that would be created by the visor at runtime
+mkdir -p ${_pkgdir}/${_skydir}/local
 
 cd $_pkgdir
-
-_msg3 'skywire-visor'
- install -Dm755 ${pkgdir}/test/${_pkgname}-visor ${_pkgdir}/${_skybin}/${_pkgname}-visor
- ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-visor
- ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
- chmod +x ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
-_msg3 'skywire-cli'
-install -Dm755 ${pkgdir}/test/${_pkgname}-cli ${_pkgdir}/${_skybin}/${_pkgname}-cli
-ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-cli ${_pkgdir}/usr/bin/${_pkgname}-cli
-chmod +x ${_pkgdir}/usr/bin/${_pkgname}-cli
+_msg2 'installing binaries'
+_binaries=("${_pkgname}-cli" "${_pkgname}-visor")
+for i in ${_binaries[@]}; do
+_msg3 "${i}"
+ install -Dm755 ${pkgdir}/test/${i} ${_pkgdir}/${_skybin}/${i}
+ ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
+done
 _msg2 'installing app binaries'
-_msg3 'skychat'
-install -Dm755 ${pkgdir}/test/apps/skychat ${_pkgdir}/${_skyapps}/skychat
-ln -rTsf ${_pkgdir}/${_skyapps}/skychat ${_pkgdir}/usr/bin/apps/skychat
-chmod +x ${_pkgdir}/usr/bin/apps/skychat
-_msg3 'skysocks'
-install -Dm755 ${pkgdir}/test/apps/skysocks ${_pkgdir}/${_skyapps}/skysocks
-ln -rTsf ${_pkgdir}/${_skyapps}/skysocks ${_pkgdir}/usr/bin/apps/skysocks
-chmod +x ${_pkgdir}/usr/bin/apps/skysocks
-_msg3 'skysocks-client'
-install -Dm755 ${pkgdir}/test/apps/skysocks-client ${_pkgdir}/${_skyapps}/skysocks-client
-ln -rTsf ${_pkgdir}/${_skyapps}/skysocks-client ${_pkgdir}/usr/bin/apps/skysocks-client
-chmod +x ${_pkgdir}/usr/bin/apps/skysocks-client
-_msg3 'vpn-client'
-install -Dm755 ${pkgdir}/test/apps/vpn-client ${_pkgdir}/${_skyapps}/vpn-client
-ln -rTsf ${_pkgdir}/${_skyapps}/vpn-client ${_pkgdir}/usr/bin/apps/vpn-client
-chmod +x ${_pkgdir}/usr/bin/apps/vpn-client
-_msg3 'vpn-server'
-install -Dm755 ${pkgdir}/test/apps/vpn-server ${_pkgdir}/${_skyapps}/vpn-server
-ln -rTsf ${_pkgdir}/${_skyapps}/vpn-server ${_pkgdir}/usr/bin/apps/vpn-server
-chmod +x ${_pkgdir}/usr/bin/apps/vpn-server
+_apps=${pkgdir}/test/apps
+_appbinaries=$( ls "${_apps}" )
+for i in ${_appbinaries}; do
+  _msg3 "${i}"
+  install -Dm755 ${_apps}/${i} ${_pkgdir}/${_skyapps}/${i}
+  ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
+done
 
 _msg2 'installing scripts'
-_skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
+_scripts1=${srcdir}/${_scripts}/${_pkgname}
+_skywirescripts=$( ls "${_scripts1}" )
 for i in ${_skywirescripts}; do
-  _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
+  _install2 ${_scripts1}/${i} ${_skyscripts}
 done
 
 _msg2 'Correcting symlink names'
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-hypervisor
-#ln -rTsf ${_pkgdir}/${_skyapps}/* ${_pkgdir}/usr/bin/apps/
+
+#make sure everything is executable
+chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
 install -Dm644 ${srcdir}/dmsghttp-config.json ${pkgdir}/${_skydir}/dmsghttp-config.json
@@ -161,16 +136,11 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.servi
 install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
 install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
-_msg2 'installing tls key and certificate generation scripts'
-#install -Dm755 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/generate-1.sh ${pkgdir}/${_skydir}/ssl/generate.sh
-install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${_pkgdir}/${_skydir}/ssl/generate.sh
-ln -rTsf ${_pkgdir}/${_skydir}/ssl/generate.sh ${_pkgdir}/usr/bin/skywire-tls-gen
-#install -Dm644 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
-install -Dm644 ${srcdir}/${_scripts}/ssl/certificate.cnf ${_pkgdir}/${_skydir}/ssl/certificate.cnf
-
 _msg2 'installing control file and install scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
+#install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
 install -Dm755 ${srcdir}/${_scripts}/postinst.sh ${_pkgdir}/DEBIAN/postinst
+install -Dm755 ${srcdir}/${_scripts}/prerm.sh ${_pkgdir}/DEBIAN/prerm
 #install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
 
 _msg2 'creating the debian package'

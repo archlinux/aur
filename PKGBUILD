@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='0.6.0'
-pkgrel=8
+pkgrel=9
 _pkgver=${pkgver}
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -45,65 +45,63 @@ source_i686=("${_release_url}-386.tar.gz")
 package() {
 _msg2 'creating dirs'
 #create directory trees or the visor might make them with weird permissions
+_pkgdir="${pkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
 _skyscripts="${_skydir}/scripts"
 _systemddir="usr/lib/systemd/system"
 _skybin="${_skydir}/bin"
-mkdir -p ${pkgdir}/usr/bin
-mkdir -p ${pkgdir}/${_skydir}/bin
-mkdir -p ${pkgdir}/${_skydir}/apps
-mkdir -p ${pkgdir}/${_skydir}/ssl
-mkdir -p ${pkgdir}/${_skydir}/local
-mkdir -p ${pkgdir}/${_skydir}/dmsgpty
-mkdir -p ${pkgdir}/${_skydir}/${_pkgname}
-mkdir -p ${pkgdir}/${_skydir}/transport_logs
-mkdir -p ${pkgdir}/${_skydir}/scripts
-
+mkdir -p ${_pkgdir}/usr/bin
+mkdir -p ${_pkgdir}/${_skydir}/bin
+mkdir -p ${_pkgdir}/${_skydir}/apps
+mkdir -p ${_pkgdir}/${_skydir}/local
+mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 _msg2 'installing binaries'
-_msg3 'skywire-visor'
-install -Dm755 ${srcdir}/${_pkgname}-visor ${pkgdir}/${_skybin}/
-ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}-visor
-ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
-_msg3 'skywire-cli'
-install -Dm755 ${srcdir}/${_pkgname}-cli ${pkgdir}/${_skybin}/
-ln -rTsf ${pkgdir}/${_skybin}/${_pkgname}-cli ${pkgdir}/usr/bin/${_pkgname}-cli
+_binaries=("${_pkgname}-cli" "${_pkgname}-visor")
+for i in ${_binaries[@]}; do
+_msg3 "${i}"
+ install -Dm755 ${srcdir}/${i} ${_pkgdir}/${_skybin}/${i}
+ ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
+done
 _msg2 'installing app binaries'
-_msg3 'skychat'
-install -Dm755 ${srcdir}/apps/skychat ${pkgdir}/${_skyapps}/
-_msg3 'skysocks'
-install -Dm755 ${srcdir}/apps/skysocks ${pkgdir}/${_skyapps}/
-_msg3 'skysocks-client'
-install -Dm755 ${srcdir}/apps/skysocks-client ${pkgdir}/${_skyapps}/
-_msg3 'vpn-client'
-install -Dm755 ${srcdir}/apps/vpn-client ${pkgdir}/${_skyapps}/
-_msg3 'vpn-server'
-install -Dm755 ${srcdir}/apps/vpn-server ${pkgdir}/${_skyapps}/
-_msg2 'installing scripts'
-_skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
-for i in ${_skywirescripts}; do
-  _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
+_apps=${srcdir}/apps
+_appbinaries=$( ls "${_apps}" )
+for i in ${_appbinaries}; do
+  _msg3 "${i}"
+  install -Dm755 ${_apps}/${i} ${_pkgdir}/${_skyapps}/${i}
+  ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
 done
 
+_msg2 'installing scripts'
+_scripts1=${srcdir}/${_scripts}/${_pkgname}
+_skywirescripts=$( ls ${_scripts1} )
+for i in ${_skywirescripts}; do
+  _install2 ${_scripts1}/${i} ${_skyscripts}
+done
+
+_msg2 'Correcting symlink names'
+ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
+ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-hypervisor
+
+#make sure everything is executable
+chmod +x ${_pkgdir}/usr/bin/*
+
 #install dmsghttp-config.json
-install -Dm644 ${srcdir}/dmsghttp-config.json ${pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 #install systemd services
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
 
 #desktop integration
-install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
-#tls key and certificate generation
-install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
-ln -rTsf ${pkgdir}/${_skydir}/ssl/generate.sh ${pkgdir}/usr/bin/${_pkgname}-tls-gen
-install -Dm644 ${srcdir}/${_scripts}/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
 }
+
 _install2() {
 _binname="${1##*/}"
 _binname="${_binname%%.*}"
