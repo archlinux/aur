@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $# -ne 1 ]]; then
-    echo "Usage: $0 <version>"; exit 1
+    echo "Usage: $0 <version without prefix v>"; exit 1
 fi
 
 sed -i 's/^pkgver=.*$/pkgver='"$1"'/' PKGBUILD
