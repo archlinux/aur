@@ -66,7 +66,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   pkgrel=7
 else
   pkgver=5.0
-  pkgrel=1
+  pkgrel=2
 fi
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
@@ -162,7 +162,7 @@ optdepends=(
   'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 provides=(
-  ffmpeg
+  "ffmpeg=$pkgver"
   libavcodec.so
   libavdevice.so
   libavfilter.so

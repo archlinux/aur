@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-obs
 	pkgdesc = Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -74,7 +74,7 @@ pkgbase = ffmpeg-obs
 	optdepends = ladspa: LADSPA filters
 	optdepends = nvidia-utils: Nvidia NVDEC/NVENC support
 	optdepends = intel-media-sdk: Intel QuickSync support
-	provides = ffmpeg
+	provides = ffmpeg=5.0
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so
