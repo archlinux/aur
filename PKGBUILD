@@ -3,7 +3,7 @@
 # Contributer: Vincent Demeester <vincent@sbr.io>
 # Contributer: Alex Ogier <alex.ogier@gmail.com>
 pkgname=ruby-build
-pkgver=20220125
+pkgver=20220218
 pkgrel=1
 _file="${pkgname}-v${pkgver}.tar.gz"
 pkgdesc="Compile and install Ruby"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('bash')
 optdepends=('git: install ruby from git')
 source=($_file::$url/archive/v$pkgver.tar.gz)
-sha512sums=('7ca3b5e2c0afb2f3d43f279d451679ea7ffd8e6e01264c515f24e4253ff6fbe031c8a234a2e93464dc9ca4bc3d769447fbe1829cf59ade2f8115638c6cec810f')
+sha512sums=('d75c1c2655cf46f8ad8f69d1ddc42ef719aacd12a230d98ed3448fed7b806dc44e075377ee609ef1f6017baa47dfea513966a3cdeaed5353838bf2eec1714823')
 
 build() {
   cd $srcdir
