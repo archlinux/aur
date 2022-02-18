@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=gweb
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 epoch=
 pkgdesc="a simple web browser written in C"
@@ -16,7 +16,7 @@ depends=("gtk3" "webkit2gtk")
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=()
+provides=('gweb')
 conflicts=()
 replaces=()
 backup=()
