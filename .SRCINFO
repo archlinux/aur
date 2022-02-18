@@ -1,7 +1,7 @@
 pkgbase = secrets
 	pkgdesc = Manage your passwords
 	pkgver = 6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/secrets
 	arch = any
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = secrets
 	depends = python-gobject
 	depends = python-pykeepass>=4.0.1
 	depends = python-pyotp>=2.4.0
+	depends = python-cairo
 	conflicts = gnome-passwordsafe
 	replaces = gnome-passwordsafe
 	source = https://gitlab.gnome.org/World/secrets/-/archive/6.2/secrets-6.2.tar.gz
