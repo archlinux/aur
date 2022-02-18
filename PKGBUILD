@@ -1,6 +1,6 @@
 # Maintainer: rockmonstr
 pkgname='katfetch'
-pkgver=r70.e3f645a
+pkgver=r90.85f71dd
 pkgrel=1
 pkgdesc="A simple, modular and hackable fetch script in Bash"
 arch=('x86_64')
