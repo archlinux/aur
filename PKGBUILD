@@ -1,28 +1,30 @@
 # Maintainer: robertfoster
 
-pkgbase=python-gpsoauth
 pkgname=python-gpsoauth
-_module='gpsoauth'
-pkgver='0.4.2rc.2'
-_ver="0.4.2-rc.2"
+pkgver='1.0.0'
 pkgrel=1
 pkgdesc="A python client library for Google Play Services OAuth."
 url="https://github.com/simon-weber/gpsoauth"
 depends=('python' 'python-requests' 'python-pycryptodomex')
-makedepends=('python-setuptools')
+makedepends=('python-poetry')
 license=('MIT')
 arch=('any')
-source=("https://github.com/simon-weber/gpsoauth/archive/${_ver}.tar.gz")
+source=("https://github.com/simon-weber/${pkgname##python-}/archive/${pkgver}.tar.gz")
 
 build() {
-    cd "${srcdir}/${_module}-${_ver}"
-    python setup.py build
+  cd "${srcdir}/${pkgname##python-}-${pkgver}"
+  poetry build --format wheel
 }
 
 package() {
-    cd "${srcdir}/${_module}-${_ver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "${srcdir}/${pkgname##python-}-${pkgver}"
+  PIP_CONFIG_FILE=/dev/null pip install \
+    --isolated \
+    --root="${pkgdir}" \
+    --ignore-installed \
+    --no-deps dist/*.whl
+
+    find "${pkgdir}" -iname "*.pyc" -exec rm {} \;
 }
 
-md5sums=('a4313519ef32e8e0ac708fa870f379fc')
-
+sha256sums=('9f8bf74e17c4c42e2c636b6ffdeb20069ed4e468eccb3411c1d680bfdd498b8f')
