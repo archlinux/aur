@@ -2,8 +2,8 @@
 
 _pkgbasename=vmaf
 pkgname=("lib32-$_pkgbasename" "lib32-lib$_pkgbasename")
-pkgver=1.5.3
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc='Perceptual video quality assessment algorithm based on multi-method fusion (32 bit)'
 arch=('x86_64')
 url='https://github.com/Netflix/vmaf/'
@@ -19,7 +19,7 @@ makedepends=(
         'nasm'
     )
 source=("${_pkgbasename}-${pkgver}.tar.gz"::"https://github.com/Netflix/${_pkgbasename}/archive/v${pkgver}.tar.gz")
-sha256sums=('440652ae417d88be083ffd9fa5967662172601e31c458a9743f6008d7150c900')
+sha256sums=('d8dcc83f8e9686e6855da4c33d8c373f1735d87294edbd86ed662ba2f2f89277')
 
 prepare() {
     mkdir -p "${_pkgbasename}-${pkgver}/libvmaf/build"
@@ -56,7 +56,7 @@ package_lib32-libvmaf() {
 
     DESTDIR="$pkgdir" ninja -v -C "build" install
     
-    rm -r "$pkgdir"/usr/{include,bin,share}
+    rm -r "$pkgdir"/usr/{include,bin}
 
 #    install -D -m644 "${_pkgbasename}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
@@ -71,7 +71,7 @@ package_lib32-vmaf() {
 
     DESTDIR="$pkgdir" ninja -v -C "${_pkgbasename}-${pkgver}/libvmaf/build" install
     
-    install -D -m755 "${_pkgbasename}-${pkgver}/libvmaf/build/tools"/vmaf_{feature,rc} -t "${pkgdir}/usr/bin"
+    install -D -m755 "${_pkgbasename}-${pkgver}/libvmaf/build/tools"/vmaf -t "${pkgdir}/usr/bin"
 
     # Use the same naming scheme as the one in the lib32-shaderc-git package for coherence
     # Arch wiki suggest to use the "-32" suffix for 32 bit executables: https://wiki.archlinux.org/index.php/32-bit_package_guidelines
@@ -79,7 +79,7 @@ package_lib32-vmaf() {
         mv "$i" "$i"-32
     done
 
-    rm -r "$pkgdir"/usr/{include,lib32,share}
+    rm -r "$pkgdir"/usr/{include,lib32}
 
 #    install -D -m644 "${_pkgbasename}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
