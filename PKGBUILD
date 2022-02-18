@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/contact>
 _pkgname=poe-overlay-community
 pkgname=${_pkgname}-bin
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="An overlay for Path of Exile. Built with Electron and Angular."
 arch=('x86_64')
@@ -16,7 +16,7 @@ backup=()
 
 options=()
 source=("poe-overlay-${pkgver}.AppImage::https://github.com/PoE-Overlay-Community/PoE-Overlay-Community-Fork/releases/download/v${pkgver}/poe-overlay-${pkgver}.AppImage")
-sha256sums=('d6158a4e3d2f4df96bdd2d0c6f0125c88eb841ea64129e33b7175df62ca4350d')
+sha256sums=('85419aa0bbdc1300aa40e062bfe746f336c8ee1aea3ac6b28087aea187905df4')
 
 prepare() {
 	chmod u+x      ${srcdir}/poe-overlay-${pkgver}.AppImage
