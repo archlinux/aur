@@ -1,18 +1,18 @@
 pkgbase = lib32-x265
 	pkgdesc = Open Source H265/HEVC video encoder. 32bit libraries.
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/multicoreware/x265_git
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	makedepends = nasm
+	makedepends = git
 	depends = x265
 	depends = lib32-gcc-libs
-	depends = lib32-numactl
+	depends = lib32-libnuma
 	provides = libx265.so
-	source = https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.5.tar.gz
-	sha256sums = e70a3335cacacbba0b3a20ec6fecd6783932288ebc8163ad74bcc9606477cae8
+	source = x265::git+https://bitbucket.org/multicoreware/x265_git.git#tag=3.5
+	sha256sums = SKIP
 
 pkgname = lib32-x265
-
