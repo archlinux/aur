@@ -1,0 +1,16 @@
+pkgbase = gengen
+	pkgdesc = "Text generator" generator
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://www.gnu.org/software/gengen/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gcc-libs
+	source = https://ftp.gnu.org/gnu/gengen/gengen-1.4.2.tar.gz
+	source = https://ftp.gnu.org/gnu/gengen/gengen-1.4.2.tar.gz.sig
+	validpgpkeys = D459FCC2041AC8FEF297D53EB4AA8C689E629EAC
+	sha256sums = f49bde616c09156cf7a91f40cb37b476fcd20fe899be15ecd194ca8ed40798e9
+	sha256sums = SKIP
+
+pkgname = gengen
