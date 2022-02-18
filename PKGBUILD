@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -64,12 +64,8 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
-  libcups               lib32-libcups
-  sane
   libgphoto2
   gsm
-  ffmpeg
-  samba
   opencl-headers
 )
 
@@ -93,12 +89,9 @@ optdepends=(
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sane
   libgphoto2
   gsm
-  ffmpeg
-  cups
-  samba           dosbox
+  dosbox
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
@@ -401,6 +394,6 @@ sha256sums=('SKIP'
             '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
             'b121625686227bb9e51b44e1e2e762250d34b1d3f8d7750787470b1885f3a1c4'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '2c28ec06382a53efb3f56c7cc9dd9d4708afdbdee99e8d43ed01e9d4df308978'
+            'cedd69b258c3e446307d3e4b22fe63d7fb9ad3736711ec998933dcc393b43ce7'
             '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
