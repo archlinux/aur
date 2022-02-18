@@ -1,15 +1,150 @@
+#!/bin/bash
+
+set -u
+
 post_install() {
-    chmod 0644 /usr/lib/systemd/system/jottad.service
+  print_first_time
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
 post_upgrade() {
-    chmod 0644 /usr/lib/systemd/system/jottad.service
-    is_active=$(systemctl is-active jottad)
-    if [ $is_active == "active" ]; then
-        systemctl --system daemon-reload
-        echo "jottad is already active - restarting jottad daemon..."
-        systemctl restart jottad
+  vercomp ${2} "0.13.55213-2"
+  if [[ "$?" == "2" ]]; then
+    print_upgrade_from_system_slice
+    if systemctl is-active jottad >/dev/null; then
+      printf "Stopping jottad system slice\n"
+      sudo systemctl daemon-reload
+      sudo systemctl stop jottad
+      printf "\n"
     fi
+    print_first_time
+  else
+    safe_restart_systemd_services
+  fi
+}
+
+pre_remove() {
+  safe_stop_systemd_services
+}
+
+print_upgrade_from_system_slice() {
+  printf "It looks like you are upgrading from a version\n"
+  printf "of jottad that runs in system slice. This version\n"
+  printf "runs in user slice and thereby datadir has changed.\n"
+  printf "Read more here: https://docs.jottacloud.com/en/articles/1461561-release-notes-for-jottacloud-cli\n\n"
+  printf "To help you migrate your settings, we provide the\n"
+  printf "script /usr/bin/migrate_jottad_settings that you\n"
+  printf "can run after you have upgraded this package.\n\n"
+}
+
+print_first_time() {
+  printf "First time use: run 'run_jottad' as your own user to\n"
+  printf "enable systemd-unit and to enable future restart on upgrade.\n\n"
+}
+
+vercomp() {
+  if [[ $1 == $2 ]]
+  then
+    return 0
+  fi
+  local IFS=.-
+  local i ver1=($1) ver2=($2)
+  for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+  do
+    ver1[i]=0
+  done
+  for ((i=0; i<${#ver1[@]}; i++))
+  do
+    if [[ -z ${ver2[i]} ]]
+    then
+      ver2[i]=0
+    fi
+    if ((10#${ver1[i]} > 10#${ver2[i]}))
+    then
+      return 1
+    fi
+    if ((10#${ver1[i]} < 10#${ver2[i]}))
+    then
+      return 2
+    fi
+  done
+  return 0
+}
+
+systemd_exec_as() {
+  user=$1
+  shift
+  user_xdg_runtime_dir="/run/user/$(id -u "$user")" || return 1
+  BASH=$(command -v bash)
+  su --login "$user" -s "$BASH" -c "XDG_RUNTIME_DIR=$user_xdg_runtime_dir $* 2> /dev/null"
+}
+
+systemd_unit_active_for() {
+  user=$1
+  service=$2
+  command -v systemctl &> /dev/null && systemd_exec_as "$user" "systemctl --user -q is-active $service"
+}
+
+SYSTEMD_RESTARTED_REDIRECTOR=
+systemd_restart_if_active() {
+  user=$1
+  service=$2
+  if systemd_unit_active_for "$user" "$service"; then
+    systemd_exec_as "$user" "systemctl --user restart $service"
+  fi
+}
+
+safe_restart_systemd_services() {
+  while read -r pid; do
+    if [ -z "$pid" ]; then
+      continue
+    fi
+
+    user="$(ps -o user= -p "$pid")"
+
+    if [ -z "$user" ]; then
+      continue
+    fi
+
+    restart_instructions="Restart jottad manually by running 'run_jottad' as $user.\n"
+
+    if ! systemd_unit_active_for "$user" "jottad.service"; then
+      printf "jottad not running via systemd for $user.\n"
+      printf "$restart_instructions"
+      continue
+    fi
+
+    printf "Autorestarting jottad via systemd for $user.\n"
+    systemd_exec_as "$user" "systemctl --user daemon-reload"
+    systemd_restart_if_active "$user" "jottad.service"
+  done <<< "$(pidof /usr/bin/jottad | tr ' ' '\n')"
+}
+
+systemd_stop_if_active() {
+  user=$1
+  service=$2
+  if systemd_unit_active_for "$user" "$service"; then
+    systemd_exec_as "$user" "systemctl --user stop $service"
+  fi
+}
+
+safe_stop_systemd_services() {
+  while read -r pid; do
+    if [ -z "$pid" ]; then
+      continue
+    fi
+
+    user="$(ps -o user= -p "$pid")"
+
+    if [ -z "$user" ]; then
+      continue
+    fi
+
+    if ! systemd_unit_active_for "$user" "jottad.service"; then
+      continue
+    fi
+
+    printf "Autostopping jottad via systemd for $user.\n"
+    systemd_exec_as "$user" "systemctl --user daemon-reload"
+    systemd_stop_if_active "$user" "jottad.service"
+  done <<< "$(pidof /usr/bin/jottad | tr ' ' '\n')"
 }
