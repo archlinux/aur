@@ -1,7 +1,7 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
 	pkgver = 0.83.22
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dosbox-x.com
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = dosbox-x
 	depends = libpng
 	depends = libxrandr
 	depends = mesa
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = physfs
 	depends = libslirp
 	depends = libpcap
