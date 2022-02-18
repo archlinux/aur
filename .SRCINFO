@@ -1,0 +1,17 @@
+pkgbase = asuka
+	pkgdesc = Gemini Project client written in Rust with NCurses
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://sr.ht/~julienxx/Asuka
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = pkg-config
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = ncurses
+	source = asuka-0.8.3.tar.gz::https://git.sr.ht/~julienxx/asuka/archive/0.8.3.tar.gz
+	sha256sums = 1305d65e07e83fe33ca102637fa27f8dafae9a9aaa436414c29532c4ed51c6ea
+
+pkgname = asuka
