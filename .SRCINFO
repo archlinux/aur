@@ -1,13 +1,14 @@
 pkgbase = lenmus
 	pkgdesc = A free program for learning music
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lenmus.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = unittestpp
 	makedepends = cmake
+	makedepends = lsb-release
 	depends = portmidi
 	depends = wxgtk3
 	depends = sqlite3
