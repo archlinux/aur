@@ -1,0 +1,16 @@
+pkgbase = gengen-git
+	pkgdesc = "Text generator" generator
+	pkgver = 1.4.3.r0.g82470d4
+	pkgrel = 1
+	url = https://www.gnu.org/software/gengen/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	provides = gengen
+	conflicts = gengen
+	source = git+https://git.savannah.gnu.org/git/gengen.git
+	sha256sums = SKIP
+
+pkgname = gengen-git
