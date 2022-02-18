@@ -1,0 +1,43 @@
+From a77f45d0c3e5c3814062566f8fd210a8fe7fb46b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
+Date: Tue, 14 Apr 2020 19:25:07 +0300
+Subject: [PATCH] avcodec: fix flawed logic
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Cannot find any codec.
+
+Regression from 21d5a1933275edb7f67d05ea62a762464e07c2cb.
+
+(cherry picked from commit 067dcd0a1974b00a92e900b0e5c976349ad13859)
+Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+---
+ modules/codec/avcodec/avcommon.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/codec/avcodec/avcommon.h b/modules/codec/avcodec/avcommon.h
+index 158c01e3201..ff5dba06c92 100644
+--- a/modules/codec/avcodec/avcommon.h
++++ b/modules/codec/avcodec/avcommon.h
+@@ -106,7 +106,7 @@ static inline void vlc_init_avformat(vlc_object_t *obj)
+ 
+     avformat_network_init();
+ 
+-#if (LIBAVFORMAT_VERSION_MICRO >= 100) && (LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(58, 9, 100))
++#if (LIBAVFORMAT_VERSION_MICRO < 100) || (LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(58, 9, 100))
+     av_register_all();
+ #endif
+ 
+@@ -123,7 +123,7 @@ static inline void vlc_init_avcodec(vlc_object_t *obj)
+ 
+     vlc_init_avutil(obj);
+ 
+-#if (LIBAVFORMAT_VERSION_MICRO >= 100) && (LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58, 10, 100))
++#if (LIBAVFORMAT_VERSION_MICRO < 100) || (LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58, 10, 100))
+     avcodec_register_all();
+ #endif
+ 
+-- 
+GitLab
+

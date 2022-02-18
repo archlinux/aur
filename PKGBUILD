@@ -7,7 +7,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=6
+pkgrel=7
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -31,9 +31,9 @@ depends=(
 )
 # Manjaro still on 4.4.1 and Arch use ffmpeg4.4
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  depends+=("ffmpeg<5")
+  depends+=("ffmpeg")
 else
-  depends+=("ffmpeg4.4")
+  depends+=("ffmpeg>=5")
 fi
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 # For Manjaro user this feature is disabled
@@ -172,11 +172,21 @@ options=('debug' '!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         update-vlc-plugin-cache.hook
         vlc-3.0.11.1-srt_1.4.2.patch
-        vlc-live-media-2021.patch)
+        vlc-live-media-2021.patch
+        pkt_timebase.patch
+        av_init_packet.patch
+        av_register_all.patch
+        fix-av_register_all-patch.patch
+        ffmpeg-5.0.patch)
 sha512sums=('35cdf191071224d0cf1b5a83c00773ff87b9e5bfcf0f5523f7edd53f75b23eda6b27bb49ffa97d69a1d176b8fe4786d959aeeb00d4380beab71c9f7e6b7c7298'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ac1d33d434aca2a0ad6e70800073deeaefc02b8fd72656b682ca833ee0cffe10dfa19a9355388700cab46ffbf9421c007d00ed04c7fa562698ff81e70db5f283'
-            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
+            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc'
+            '0d42b78255ae0bd7720fc5c9087117c2dc51f511e9c1fe1161f2cd1949f11c6fb1197be0c6aa2151fcdfaebc0034518b902bdc29414aa7b5aa339b9911584bcb'
+            'bafaa841e4e12c1e645bd6753da0c8092f57efb1c157cb1a57e87e4677518d915b10a26c70552f04384305562a5bca3788caff4e262aa01b8d2ac7c85cdc3409'
+            '714187e2d495e3f4639942ab749002efd319f992cdc1e2664736fde1b5fc8d930d963372b4e55c93a232845aa9c18cf42b9241bea5d15155a193ad17ba574f4a'
+            '638d6a4c5afc97038c01a6547edf316ead0357fb183689a387b36638f94c7b33e0197d5a260b5e06218b8d2862a099e4e9dfdec48303a0ce07b5c7f2c9c2e56c'
+            'd9c92bfddae34c680a5ba18a1858b5420096a8da459d676a9da167b4f07232b1e4fa49faffd7e489ad62d48cb33d1ddeeaba77c953a62bc838d4290b9a8b0db4')
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 source+=(
@@ -232,10 +242,6 @@ build() {
   export LUA_LIBS="$(pkg-config --libs luajit)"
   export LUA_CFLAGS="$(pkg-config --cflags luajit)"
   export RCC=/usr/bin/rcc-qt5
-
-  if [[ $DISTRIB_ID != 'ManjaroLinux' ]]; then
-    export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
-  fi
 
   ./configure \
     --prefix=/usr \
@@ -335,6 +341,7 @@ build() {
     --enable-srt \
     --enable-dav1d \
     --disable-decklink \
+    --disable-libva \
     $GLES
 
   # prevent excessive overlinking due to libtool

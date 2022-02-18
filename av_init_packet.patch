@@ -1,0 +1,291 @@
+From 37427cab7df0ec5611493a1207f69445853738ef Mon Sep 17 00:00:00 2001
+From: Ilkka Ollakka <ileoo@videolan.org>
+Date: Wed, 7 Jul 2021 12:37:58 +0000
+Subject: [PATCH] avcodec: remove use of av_init_packet as it is deprecated in
+ new ffmpeg major version
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+av_init_packet is deprecated in new major version of ffmpeg.
+
+Also use av_packet_free instead of unref.
+
+Use av_packet_clone and AVPacket * in vlc_av_packet_t.
+
+(cherry picked from commit 16fd46fa506424134beb53ec88be3eea1b42a221)
+Signed-off-by: Hugo Beauzée-Luyssen <hugo@beauzee.fr>
+---
+ modules/codec/avcodec/audio.c    | 12 +++++++-----
+ modules/codec/avcodec/encoder.c  | 25 ++++++++++++++-----------
+ modules/codec/avcodec/subtitle.c | 17 +++++++++++------
+ modules/codec/avcodec/video.c    | 30 +++++++++++++++++-------------
+ modules/demux/avformat/mux.c     | 29 +++++++++++++++++------------
+ 5 files changed, 66 insertions(+), 47 deletions(-)
+
+diff --git a/modules/codec/avcodec/audio.c b/modules/codec/avcodec/audio.c
+index eec255ae0bd..8c3fa7a2179 100644
+--- a/modules/codec/avcodec/audio.c
++++ b/modules/codec/avcodec/audio.c
+@@ -363,11 +363,13 @@ static int DecodeBlock( decoder_t *p_dec, block_t **pp_block )
+         /* Feed in the loop as buffer could have been full on first iterations */
+         if( p_block )
+         {
+-            AVPacket pkt;
+-            av_init_packet( &pkt );
+-            pkt.data = p_block->p_buffer;
+-            pkt.size = p_block->i_buffer;
+-            ret = avcodec_send_packet( ctx, &pkt );
++            AVPacket *pkt = av_packet_alloc();
++            if( !pkt )
++                goto end;
++            pkt->data = p_block->p_buffer;
++            pkt->size = p_block->i_buffer;
++            ret = avcodec_send_packet( ctx, pkt );
++            av_packet_free(&pkt);
+             if( ret == 0 ) /* Block has been consumed */
+             {
+                 /* Only set new pts from input block if it has been used,
+diff --git a/modules/codec/avcodec/encoder.c b/modules/codec/avcodec/encoder.c
+index b083d171f30..27af11a4127 100644
+--- a/modules/codec/avcodec/encoder.c
++++ b/modules/codec/avcodec/encoder.c
+@@ -1061,14 +1061,14 @@ error:
+ typedef struct
+ {
+     block_t self;
+-    AVPacket packet;
++    AVPacket *packet;
+ } vlc_av_packet_t;
+ 
+ static void vlc_av_packet_Release(block_t *block)
+ {
+     vlc_av_packet_t *b = (void *) block;
+ 
+-    av_packet_unref(&b->packet);
++    av_packet_free( &b->packet );
+     free(b);
+ }
+ 
+@@ -1089,7 +1089,7 @@ static block_t *vlc_av_packet_Wrap(AVPacket *packet, mtime_t i_length, AVCodecCo
+     block_Init( p_block, packet->data, packet->size );
+     p_block->i_nb_samples = 0;
+     p_block->pf_release = vlc_av_packet_Release;
+-    b->packet = *packet;
++    b->packet = packet;
+ 
+     p_block->i_length = i_length;
+     p_block->i_pts = packet->pts;
+@@ -1138,11 +1138,13 @@ static void check_hurry_up( encoder_sys_t *p_sys, AVFrame *frame, encoder_t *p_e
+ 
+ static block_t *encode_avframe( encoder_t *p_enc, encoder_sys_t *p_sys, AVFrame *frame )
+ {
+-    AVPacket av_pkt;
+-    av_pkt.data = NULL;
+-    av_pkt.size = 0;
++    AVPacket *av_pkt = av_packet_alloc();
+ 
+-    av_init_packet( &av_pkt );
++    if( !av_pkt )
++    {
++        av_frame_unref( frame );
++        return NULL;
++    }
+ 
+     int ret = avcodec_send_frame( p_sys->p_context, frame );
+     if( frame && ret != 0 && ret != AVERROR(EAGAIN) )
+@@ -1150,18 +1152,19 @@ static block_t *encode_avframe( encoder_t *p_enc, encoder_sys_t *p_sys, AVFrame
+         msg_Warn( p_enc, "cannot send one frame to encoder %d", ret );
+         return NULL;
+     }
+-    ret = avcodec_receive_packet( p_sys->p_context, &av_pkt );
++    ret = avcodec_receive_packet( p_sys->p_context, av_pkt );
+     if( ret != 0 && ret != AVERROR(EAGAIN) )
+     {
+         msg_Warn( p_enc, "cannot encode one frame" );
++        av_packet_free( &av_pkt );
+         return NULL;
+     }
+ 
+-    block_t *p_block = vlc_av_packet_Wrap( &av_pkt,
+-            av_pkt.duration / p_sys->p_context->time_base.den, p_sys->p_context );
++    block_t *p_block = vlc_av_packet_Wrap( av_pkt,
++            av_pkt->duration / p_sys->p_context->time_base.den, p_sys->p_context );
+     if( unlikely(p_block == NULL) )
+     {
+-        av_packet_unref( &av_pkt );
++        av_packet_free( &av_pkt );
+         return NULL;
+     }
+     return p_block;
+diff --git a/modules/codec/avcodec/subtitle.c b/modules/codec/avcodec/subtitle.c
+index 5cac6339d60..a17ba985e15 100644
+--- a/modules/codec/avcodec/subtitle.c
++++ b/modules/codec/avcodec/subtitle.c
+@@ -186,16 +186,21 @@ static subpicture_t *DecodeBlock(decoder_t *dec, block_t **block_ptr)
+     AVSubtitle subtitle;
+     memset(&subtitle, 0, sizeof(subtitle));
+ 
+-    AVPacket pkt;
+-    av_init_packet(&pkt);
+-    pkt.data = block->p_buffer;
+-    pkt.size = block->i_buffer;
+-    pkt.pts  = block->i_pts;
++    AVPacket *pkt = av_packet_alloc();
++    if(!pkt)
++    {
++        block_Release(block);
++        return NULL;
++    }
++    pkt->data = block->p_buffer;
++    pkt->size = block->i_buffer;
++    pkt->pts  = block->i_pts;
+ 
+     int has_subtitle = 0;
+     int used = avcodec_decode_subtitle2(sys->p_context,
+-                                        &subtitle, &has_subtitle, &pkt);
++                                        &subtitle, &has_subtitle, pkt);
+ 
++    av_packet_free(&pkt);
+     if (used < 0) {
+         msg_Warn(dec, "cannot decode one subtitle (%zu bytes)",
+                  block->i_buffer);
+diff --git a/modules/codec/avcodec/video.c b/modules/codec/avcodec/video.c
+index b99eb56e4a7..2b1e3ad314a 100644
+--- a/modules/codec/avcodec/video.c
++++ b/modules/codec/avcodec/video.c
+@@ -1015,14 +1015,18 @@ static picture_t *DecodeBlock( decoder_t *p_dec, block_t **pp_block, bool *error
+ 
+         if( b_has_data || b_start_drain )
+         {
+-            AVPacket pkt;
+-            av_init_packet( &pkt );
++            AVPacket *pkt = av_packet_alloc();
++            if(!pkt)
++            {
++                *error = true;
++                break;
++            }
+             if( b_has_data )
+             {
+-                pkt.data = p_block->p_buffer;
+-                pkt.size = p_block->i_buffer;
+-                pkt.pts = p_block->i_pts > VLC_TS_INVALID ? p_block->i_pts : AV_NOPTS_VALUE;
+-                pkt.dts = p_block->i_dts > VLC_TS_INVALID ? p_block->i_dts : AV_NOPTS_VALUE;
++                pkt->data = p_block->p_buffer;
++                pkt->size = p_block->i_buffer;
++                pkt->pts = p_block->i_pts > VLC_TS_INVALID ? p_block->i_pts : AV_NOPTS_VALUE;
++                pkt->dts = p_block->i_dts > VLC_TS_INVALID ? p_block->i_dts : AV_NOPTS_VALUE;
+ 
+                 /* Make sure we don't reuse the same timestamps twice */
+                 p_block->i_pts =
+@@ -1031,21 +1035,21 @@ static picture_t *DecodeBlock( decoder_t *p_dec, block_t **pp_block, bool *error
+             else /* start drain */
+             {
+                 /* Return delayed frames if codec has CODEC_CAP_DELAY */
+-                pkt.data = NULL;
+-                pkt.size = 0;
++                pkt->data = NULL;
++                pkt->size = 0;
+                 p_sys->b_draining = true;
+             }
+ 
+             if( !p_sys->palette_sent )
+             {
+-                uint8_t *pal = av_packet_new_side_data(&pkt, AV_PKT_DATA_PALETTE, AVPALETTE_SIZE);
++                uint8_t *pal = av_packet_new_side_data(pkt, AV_PKT_DATA_PALETTE, AVPALETTE_SIZE);
+                 if (pal) {
+                     memcpy(pal, p_dec->fmt_in.video.p_palette->palette, AVPALETTE_SIZE);
+                     p_sys->palette_sent = true;
+                 }
+             }
+ 
+-            ret = avcodec_send_packet(p_context, &pkt);
++            ret = avcodec_send_packet(p_context, pkt);
+             if( ret != 0 && ret != AVERROR(EAGAIN) )
+             {
+                 if (ret == AVERROR(ENOMEM) || ret == AVERROR(EINVAL))
+@@ -1053,11 +1057,11 @@ static picture_t *DecodeBlock( decoder_t *p_dec, block_t **pp_block, bool *error
+                     msg_Err(p_dec, "avcodec_send_packet critical error");
+                     *error = true;
+                 }
+-                av_packet_unref( &pkt );
++                av_packet_free( &pkt );
+                 break;
+             }
+-            i_used = ret != AVERROR(EAGAIN) ? pkt.size : 0;
+-            av_packet_unref( &pkt );
++            i_used = ret != AVERROR(EAGAIN) ? pkt->size : 0;
++            av_packet_free( &pkt );
+         }
+ 
+         AVFrame *frame = av_frame_alloc();
+diff --git a/modules/demux/avformat/mux.c b/modules/demux/avformat/mux.c
+index 48878c712b3..405a6f6933c 100644
+--- a/modules/demux/avformat/mux.c
++++ b/modules/demux/avformat/mux.c
+@@ -341,14 +341,16 @@ static int MuxBlock( sout_mux_t *p_mux, sout_input_t *p_input )
+     block_t *p_data = block_FifoGet( p_input->p_fifo );
+     int i_stream = *((int *)p_input->p_sys);
+     AVStream *p_stream = p_sys->oc->streams[i_stream];
+-    AVPacket pkt;
+-
+-    memset( &pkt, 0, sizeof(AVPacket) );
++    AVPacket *pkt = av_packet_alloc();
++    if( !pkt )
++    {
++        block_Release( p_data );
++        return VLC_EGENERIC;
++    }
+ 
+-    av_init_packet(&pkt);
+-    pkt.data = p_data->p_buffer;
+-    pkt.size = p_data->i_buffer;
+-    pkt.stream_index = i_stream;
++    pkt->data = p_data->p_buffer;
++    pkt->size = p_data->i_buffer;
++    pkt->stream_index = i_stream;
+ 
+     if( p_data->i_flags & BLOCK_FLAG_TYPE_I )
+     {
+@@ -359,29 +361,32 @@ static int MuxBlock( sout_mux_t *p_mux, sout_input_t *p_input )
+ #endif
+ 
+         p_sys->b_write_keyframe = true;
+-        pkt.flags |= AV_PKT_FLAG_KEY;
++        pkt->flags |= AV_PKT_FLAG_KEY;
+     }
+ 
+     if( p_data->i_pts > 0 )
+-        pkt.pts = p_data->i_pts * p_stream->time_base.den /
++        pkt->pts = p_data->i_pts * p_stream->time_base.den /
+             CLOCK_FREQ / p_stream->time_base.num;
+     if( p_data->i_dts > 0 )
+-        pkt.dts = p_data->i_dts * p_stream->time_base.den /
++        pkt->dts = p_data->i_dts * p_stream->time_base.den /
+             CLOCK_FREQ / p_stream->time_base.num;
+ 
+     /* this is another hack to prevent libavformat from triggering the "non monotone timestamps" check in avformat/utils.c */
+     p_stream->cur_dts = ( p_data->i_dts * p_stream->time_base.den /
+             CLOCK_FREQ / p_stream->time_base.num ) - 1;
+ 
+-    if( av_write_frame( p_sys->oc, &pkt ) < 0 )
++    if( av_write_frame( p_sys->oc, pkt ) < 0 )
+     {
+         msg_Err( p_mux, "could not write frame (pts: %"PRId64", dts: %"PRId64") "
+                  "(pkt pts: %"PRId64", dts: %"PRId64")",
+-                 p_data->i_pts, p_data->i_dts, pkt.pts, pkt.dts );
++                 p_data->i_pts, p_data->i_dts, pkt->pts, pkt->dts );
+         block_Release( p_data );
++        av_packet_unref( pkt );
+         return VLC_EGENERIC;
+     }
+ 
++
++    av_packet_unref( pkt );
+     block_Release( p_data );
+     return VLC_SUCCESS;
+ }
+-- 
+GitLab
+

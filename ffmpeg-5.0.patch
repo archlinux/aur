@@ -1,0 +1,496 @@
+From 66b647fd696b7f449b09b200f4028789c2d210a8 Mon Sep 17 00:00:00 2001
+From: Romain Vimont <rom1v@videolabs.io>
+Date: Tue, 18 Jan 2022 15:43:27 +0100
+Subject: [PATCH 1/9] avformat: adapt AVOutputFormat API constification
+
+Refs ffmpeg/56450a0ee4fdda160f4039fc2ae33edfd27765c9
+
+(cherry picked from commit d0710040f0749a74a66aa19976ab1c0edbab0b0b)
+
+The condition has been adapted from the original commit because VLC3
+supports both ffmpeg and libav contrary to VLC4.
+---
+ modules/demux/avformat/mux.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/modules/demux/avformat/mux.c b/modules/demux/avformat/mux.c
+index 0b00640bafb..e6260e36885 100644
+--- a/modules/demux/avformat/mux.c
++++ b/modules/demux/avformat/mux.c
+@@ -86,7 +86,12 @@ static int IOWriteTyped(void *opaque, uint8_t *buf, int buf_size,
+  *****************************************************************************/
+ int avformat_OpenMux( vlc_object_t *p_this )
+ {
++#if LIBAVFORMAT_VERSION_MICRO >= 100 && \
++    LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 0, 100)
++    const AVOutputFormat *file_oformat;
++#else
+     AVOutputFormat *file_oformat;
++#endif
+     sout_mux_t *p_mux = (sout_mux_t*)p_this;
+     bool dummy = !strcmp( p_mux->p_access->psz_access, "dummy");
+ 
+-- 
+GitLab
+
+
+From 591f658223bb6320ea61248976753e20a985c8dc Mon Sep 17 00:00:00 2001
+From: Romain Vimont <rom1v@videolabs.io>
+Date: Wed, 19 Jan 2022 15:00:21 +0100
+Subject: [PATCH 2/9] avformat: adapt AVInputFormat API constification
+
+Refs ffmpeg/56450a0ee4fdda160f4039fc2ae33edfd27765c9
+
+(cherry picked from commit 5069e1cc38fe25e40d8e58ddb387c92da1bef793)
+
+The condition has been adapted from the original commit because VLC3
+supports both ffmpeg and libav contrary to VLC4.
+---
+ modules/demux/avformat/demux.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/modules/demux/avformat/demux.c b/modules/demux/avformat/demux.c
+index 867b4fe0374..7b3f6adcd3a 100644
+--- a/modules/demux/avformat/demux.c
++++ b/modules/demux/avformat/demux.c
+@@ -52,6 +52,13 @@
+ 
+ # define HAVE_AVUTIL_CODEC_ATTACHMENT 1
+ 
++#if LIBAVFORMAT_VERSION_MICRO >= 100 && \
++    LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 0, 100)
++# define AVF_MAYBE_CONST const
++#else
++# define AVF_MAYBE_CONST
++#endif
++
+ struct avformat_track_s
+ {
+     es_out_id_t *p_es;
+@@ -63,7 +70,7 @@ struct avformat_track_s
+  *****************************************************************************/
+ struct demux_sys_t
+ {
+-    AVInputFormat  *fmt;
++    AVF_MAYBE_CONST AVInputFormat  *fmt;
+     AVFormatContext *ic;
+ 
+     struct avformat_track_s *tracks;
+@@ -154,7 +161,7 @@ int avformat_OpenDemux( vlc_object_t *p_this )
+     demux_t       *p_demux = (demux_t*)p_this;
+     demux_sys_t   *p_sys;
+     AVProbeData   pd = { };
+-    AVInputFormat *fmt = NULL;
++    AVF_MAYBE_CONST AVInputFormat *fmt = NULL;
+     int64_t       i_start_time = -1;
+     bool          b_can_seek;
+     char         *psz_url;
+-- 
+GitLab
+
+
+From 07e0beb5b6ecccb2cde134f3a3bd45071bce0dae Mon Sep 17 00:00:00 2001
+From: Romain Vimont <rom1v@videolabs.io>
+Date: Tue, 18 Jan 2022 15:16:39 +0100
+Subject: [PATCH 3/9] avcodec: adapt AVCodec API constification
+
+Refs ffmpeg/626535f6a169e2d821b969e0ea77125ba7482113
+
+(cherry picked from 3312a960cb5a218d47c0a23405aff6c2688f8320)
+
+The condition has been adapted from the original commit because VLC3
+supports both ffmpeg and libav contrary to VLC4.
+---
+ modules/codec/avcodec/encoder.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/modules/codec/avcodec/encoder.c b/modules/codec/avcodec/encoder.c
+index c10f44c0c28..74e6fe18224 100644
+--- a/modules/codec/avcodec/encoder.c
++++ b/modules/codec/avcodec/encoder.c
+@@ -60,6 +60,13 @@
+ 
+ #define RAW_AUDIO_FRAME_SIZE (2048)
+ 
++#if LIBAVCODEC_VERSION_MICRO >= 100 && \
++    LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(59, 0, 100)
++# define AVC_MAYBE_CONST const
++#else
++# define AVC_MAYBE_CONST
++#endif
++
+ /*****************************************************************************
+  * Local prototypes
+  *****************************************************************************/
+@@ -93,7 +100,7 @@ struct encoder_sys_t
+     /*
+      * libavcodec properties
+      */
+-    AVCodec         *p_codec;
++    AVC_MAYBE_CONST AVCodec *p_codec;
+     AVCodecContext  *p_context;
+ 
+     /*
+@@ -234,7 +241,7 @@ static const int DEFAULT_ALIGN = 0;
+ /*****************************************************************************
+  * InitVideoEnc: probe the encoder
+  *****************************************************************************/
+-static void probe_video_frame_rate( encoder_t *p_enc, AVCodecContext *p_context, AVCodec *p_codec )
++static void probe_video_frame_rate( encoder_t *p_enc, AVCodecContext *p_context, AVC_MAYBE_CONST AVCodec *p_codec )
+ {
+     /* if we don't have i_frame_rate_base, we are probing and just checking if we can find codec
+      * so set fps to requested fps if asked by user or input fps is availabled */
+@@ -296,7 +303,7 @@ int InitVideoEnc( vlc_object_t *p_this )
+     encoder_t *p_enc = (encoder_t *)p_this;
+     encoder_sys_t *p_sys;
+     AVCodecContext *p_context;
+-    AVCodec *p_codec = NULL;
++    AVC_MAYBE_CONST AVCodec *p_codec = NULL;
+     unsigned i_codec_id;
+     const char *psz_namecodec;
+     float f_val;
+-- 
+GitLab
+
+
+From abb201b79367311e43e619dcda3d4a9348da42ec Mon Sep 17 00:00:00 2001
+From: Romain Vimont <rom1v@videolabs.io>
+Date: Tue, 18 Jan 2022 15:08:38 +0100
+Subject: [PATCH 4/9] avcodec: do not use field removed in API 60
+
+AVCodecContext.thread_safe_callbacks will be removed in API 60:
+
+> Thread-unsafe get_buffer2() implementations will be invalid starting
+> with LIBAVCODEC_VERSION_MAJOR=60; in other words, libavcodec will
+> behave as if this field was always set to 1.
+
+In current FFmpeg 5.0 (API 59), we must still set the variable, and it
+is already deprecated, so we can't get rid of the deprecation warning.
+
+ffmpeg/a83098ab03a47179d54a9b9c8bcefc81b9c6aafd (deprecation)
+ffmpeg/54e5d21acabb452e5680de5db3bf7567d351d68e (doc)
+
+(cherry picked from commit 02e8981b57c647641b188f8612a6e4b1e31a660a)
+---
+ modules/codec/avcodec/video.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules/codec/avcodec/video.c b/modules/codec/avcodec/video.c
+index 2b1e3ad314a..e0137315409 100644
+--- a/modules/codec/avcodec/video.c
++++ b/modules/codec/avcodec/video.c
+@@ -573,7 +573,9 @@ int InitVideoDec( vlc_object_t *obj )
+     i_thread_count = __MIN( i_thread_count, p_codec->id == AV_CODEC_ID_HEVC ? 32 : 16 );
+     msg_Dbg( p_dec, "allowing %d thread(s) for decoding", i_thread_count );
+     p_context->thread_count = i_thread_count;
++#if LIBAVCODEC_VERSION_MAJOR < 60
+     p_context->thread_safe_callbacks = true;
++#endif
+ 
+     switch( p_codec->id )
+     {
+-- 
+GitLab
+
+
+From bd8533e0c8b50773e49be8f8b5b61a9782de386f Mon Sep 17 00:00:00 2001
+From: Romain Vimont <rom1v@videolabs.io>
+Date: Tue, 18 Jan 2022 15:06:28 +0100
+Subject: [PATCH 5/9] avcodec: fix condition to use AVFrame.pkt_pts
+
+The field AVFrame.pkt_pts was removed in lavc 56.24.0 / 57.61.100:
+
+> Decoders now export the frame timestamp as AVFrame.pts. It was
+> previously exported as AVFrame.pkt_pts, which is now deprecated.
+
+Fix the inverted deprecation check and use LIBAVCODEC_VERSION_CHECK() to
+target the exact version.
+
+Refs vlc4/991ba74b018a201cc6cc73da713fb3d62fd7ff60
+Refs ffmpeg/32c8359093d1ff4f45ed19518b449b3ac3769d27 (deprecation)
+Refs ffmpeg/6e30b35b85b81c802e52a1078ec7a3097e353c6d (removal)
+---
+ modules/codec/avcodec/video.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/codec/avcodec/video.c b/modules/codec/avcodec/video.c
+index e0137315409..adb529354d1 100644
+--- a/modules/codec/avcodec/video.c
++++ b/modules/codec/avcodec/video.c
+@@ -1116,7 +1116,7 @@ static picture_t *DecodeBlock( decoder_t *p_dec, block_t **pp_block, bool *error
+         }
+ 
+         /* Compute the PTS */
+-#ifdef FF_API_PKT_PTS
++#if LIBAVCODEC_VERSION_CHECK(57, 24, 0, 61, 100)
+         mtime_t i_pts = frame->pts;
+ #else
+         mtime_t i_pts = frame->pkt_pts;
+-- 
+GitLab
+
+
+From 781082eea3c3aea140c6725d7405cdf09124e190 Mon Sep 17 00:00:00 2001
+From: Romain Vimont <rom1v@videolabs.io>
+Date: Tue, 18 Jan 2022 15:12:26 +0100
+Subject: [PATCH 6/9] avcodec: replace removed FMT_VAAPI_VLD enum value
+
+Replace AV_PIX_FMT_VAAPI_VLD by AV_PIX_FMT_VAAPI.
+
+libav/d264c720f7b74286840719e506daba39f83b438b (deprecation)
+ffmpeg/9f8e57efe4400ca86352277873792792279c3b15 (deprecation)
+ffmpeg/ad524cb9eeb298f7a60d923094fbebb1fda7e0e3 (removal)
+---
+ modules/codec/avcodec/avcommon_compat.h | 10 ++++++++++
+ modules/codec/avcodec/va.c              |  2 +-
+ modules/codec/avcodec/vaapi.c           |  4 ++--
+ modules/codec/avcodec/video.c           |  2 +-
+ 4 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/modules/codec/avcodec/avcommon_compat.h b/modules/codec/avcodec/avcommon_compat.h
+index 8f9c12081cf..9d16b3dc47d 100644
+--- a/modules/codec/avcodec/avcommon_compat.h
++++ b/modules/codec/avcodec/avcommon_compat.h
+@@ -95,6 +95,16 @@
+ #   define AV_PIX_FMT_FLAG_HWACCEL  PIX_FMT_HWACCEL
+ #endif
+ 
++/*
++ * AV_PIX_FMT_VAAPI is not introduced in the same major version in libav and FFmpeg:
++ *  - libav:  lavu 55.8.0:    libav/d264c720f7b74286840719e506daba39f83b438b
++ *  - ffmpeg: lavu 54.31.100: ffmpeg/9f8e57efe4400ca86352277873792792279c3b15
++ */
++#if ( (LIBAVUTIL_VERSION_MICRO <  100 && LIBAVUTIL_VERSION_INT < AV_VERSION_INT( 55, 8, 0 ) ) || \
++      (LIBAVUTIL_VERSION_MICRO >= 100 && LIBAVUTIL_VERSION_INT < AV_VERSION_INT( 54, 31, 100 ) ) )
++#   define AV_PIX_FMT_VAAPI AV_PIX_FMT_VAAPI_VLD
++#endif
++
+ #endif /* HAVE_LIBAVUTIL_AVUTIL_H */
+ 
+ #if LIBAVUTIL_VERSION_MAJOR >= 55
+diff --git a/modules/codec/avcodec/va.c b/modules/codec/avcodec/va.c
+index 05831232d29..beedcc6027d 100644
+--- a/modules/codec/avcodec/va.c
++++ b/modules/codec/avcodec/va.c
+@@ -37,7 +37,7 @@ vlc_fourcc_t vlc_va_GetChroma(enum PixelFormat hwfmt, enum PixelFormat swfmt)
+      * fatal, especially not if a software format. */
+     switch (hwfmt)
+     {
+-        case AV_PIX_FMT_VAAPI_VLD:
++        case AV_PIX_FMT_VAAPI:
+             switch (swfmt)
+             {
+                 case AV_PIX_FMT_YUVJ420P:
+diff --git a/modules/codec/avcodec/vaapi.c b/modules/codec/avcodec/vaapi.c
+index 35e6c47263e..3675d2fc799 100644
+--- a/modules/codec/avcodec/vaapi.c
++++ b/modules/codec/avcodec/vaapi.c
+@@ -154,7 +154,7 @@ static void Delete(vlc_va_t *va, void **hwctx)
+ static int Create(vlc_va_t *va, AVCodecContext *ctx, enum PixelFormat pix_fmt,
+                   const es_format_t *fmt, picture_sys_t *p_sys)
+ {
+-    if (pix_fmt != AV_PIX_FMT_VAAPI_VLD || p_sys == NULL)
++    if (pix_fmt != AV_PIX_FMT_VAAPI || p_sys == NULL)
+         return VLC_EGENERIC;
+ 
+     (void) fmt;
+@@ -263,7 +263,7 @@ static void DeleteDRM(vlc_va_t *va, void **hwctx)
+ static int CreateDRM(vlc_va_t *va, AVCodecContext *ctx, enum PixelFormat pix_fmt,
+                      const es_format_t *fmt, picture_sys_t *p_sys)
+ {
+-    if (pix_fmt != AV_PIX_FMT_VAAPI_VLD || p_sys)
++    if (pix_fmt != AV_PIX_FMT_VAAPI || p_sys)
+         return VLC_EGENERIC;
+ 
+     (void) fmt;
+diff --git a/modules/codec/avcodec/video.c b/modules/codec/avcodec/video.c
+index adb529354d1..2438b440f1e 100644
+--- a/modules/codec/avcodec/video.c
++++ b/modules/codec/avcodec/video.c
+@@ -1620,7 +1620,7 @@ no_reuse:
+ #endif
+         AV_PIX_FMT_DXVA2_VLD,
+ #endif
+-        AV_PIX_FMT_VAAPI_VLD,
++        AV_PIX_FMT_VAAPI,
+ #if (LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(52, 4, 0))
+         AV_PIX_FMT_VDPAU,
+ #endif
+-- 
+GitLab
+
+
+From 6feb18dadcb6176ae5cc2b4ae57f27f65fa93fdb Mon Sep 17 00:00:00 2001
+From: Ilkka Ollakka <ileoo@videolan.org>
+Date: Fri, 18 Jun 2021 10:08:44 +0300
+Subject: [PATCH 7/9] avcodec: move picture type to use sidedata on encoding
+
+Sidedata AV_PKT_DATA_QUALITY_STATS has been present since 2015 on
+version 56.51.100. Also previous coded_frame->pict_type doesn't seem to
+be present anymore in ffmpeg master.
+
+(cherry picked from commit 8ed4f2a7a2dbc9522c3feebb39b2e4ccc7bf5d24)
+
+Refs ffmpeg/11bc79089378a5ec00547d0f85bc152afdf30dfa
+---
+ modules/codec/avcodec/encoder.c | 44 +++++++++++++++++----------------
+ 1 file changed, 23 insertions(+), 21 deletions(-)
+
+diff --git a/modules/codec/avcodec/encoder.c b/modules/codec/avcodec/encoder.c
+index 74e6fe18224..6138c641c0c 100644
+--- a/modules/codec/avcodec/encoder.c
++++ b/modules/codec/avcodec/encoder.c
+@@ -1108,6 +1108,29 @@ static block_t *vlc_av_packet_Wrap(AVPacket *packet, mtime_t i_length, AVCodecCo
+     p_block->i_pts = p_block->i_pts * CLOCK_FREQ * context->time_base.num / context->time_base.den;
+     p_block->i_dts = p_block->i_dts * CLOCK_FREQ * context->time_base.num / context->time_base.den;
+ 
++    uint8_t *av_packet_sidedata = av_packet_get_side_data(packet, AV_PKT_DATA_QUALITY_STATS, NULL);
++    if( av_packet_sidedata )
++    {
++       switch ( av_packet_sidedata[4] )
++       {
++       case AV_PICTURE_TYPE_I:
++       case AV_PICTURE_TYPE_SI:
++           p_block->i_flags |= BLOCK_FLAG_TYPE_I;
++           break;
++       case AV_PICTURE_TYPE_P:
++       case AV_PICTURE_TYPE_SP:
++           p_block->i_flags |= BLOCK_FLAG_TYPE_P;
++           break;
++       case AV_PICTURE_TYPE_B:
++       case AV_PICTURE_TYPE_BI:
++           p_block->i_flags |= BLOCK_FLAG_TYPE_B;
++           break;
++       default:
++           p_block->i_flags |= BLOCK_FLAG_TYPE_PB;
++       }
++
++    }
++
+     return p_block;
+ }
+ 
+@@ -1241,27 +1264,6 @@ static block_t *EncodeVideo( encoder_t *p_enc, picture_t *p_pict )
+ 
+     block_t *p_block = encode_avframe( p_enc, p_sys, frame );
+ 
+-    if( p_block )
+-    {
+-       switch ( p_sys->p_context->coded_frame->pict_type )
+-       {
+-       case AV_PICTURE_TYPE_I:
+-       case AV_PICTURE_TYPE_SI:
+-           p_block->i_flags |= BLOCK_FLAG_TYPE_I;
+-           break;
+-       case AV_PICTURE_TYPE_P:
+-       case AV_PICTURE_TYPE_SP:
+-           p_block->i_flags |= BLOCK_FLAG_TYPE_P;
+-           break;
+-       case AV_PICTURE_TYPE_B:
+-       case AV_PICTURE_TYPE_BI:
+-           p_block->i_flags |= BLOCK_FLAG_TYPE_B;
+-           break;
+-       default:
+-           p_block->i_flags |= BLOCK_FLAG_TYPE_PB;
+-       }
+-    }
+-
+     return p_block;
+ }
+ 
+-- 
+GitLab
+
+
+From 00bd7590f33357047b555d85d6e935feed033333 Mon Sep 17 00:00:00 2001
+From: Mehdi Sabwat <mehdisabwat@gmail.com>
+Date: Thu, 9 Apr 2020 21:59:56 +0200
+Subject: [PATCH 8/9] avformat: add support for url field in AvFormatContext
+
+Since Jan 21, 2018 filename field was deprecated in favor
+of `url` which now has no length restrictions.
+
+From doc/APIChanges:
+```
+2018-01-28 - ea3672b7d6 - lavf 58.7.100 - avformat.h
+  Deprecate AVFormatContext filename field which had limited length, use the
+  new dynamically allocated url field instead.
+```
+
+The URL field is freed by libavformat in avformat_free_context() in
+avformat_CloseMux().
+
+Signed-off-by: Alexandre Janniaux <ajanni@videolabs.io>
+(cherry picked from commit a2ce2e3a8436845378af3b1828f2bb0fa0f4a268)
+
+Refs ffmpeg/30f7021aa0be2c978aefb73894b643c9bafbf51c
+---
+ modules/demux/avformat/mux.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/modules/demux/avformat/mux.c b/modules/demux/avformat/mux.c
+index e6260e36885..adaf3404301 100644
+--- a/modules/demux/avformat/mux.c
++++ b/modules/demux/avformat/mux.c
+@@ -95,9 +95,12 @@ int avformat_OpenMux( vlc_object_t *p_this )
+     sout_mux_t *p_mux = (sout_mux_t*)p_this;
+     bool dummy = !strcmp( p_mux->p_access->psz_access, "dummy");
+ 
++#if ( (LIBAVFORMAT_VERSION_MICRO >= 100) \
++      && (LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(58, 7, 100)) )
+     if( dummy && strlen(p_mux->p_access->psz_path)
+                               >= sizeof (((AVFormatContext *)NULL)->filename) )
+         return VLC_EGENERIC;
++#endif
+ 
+     msg_Dbg( p_mux, "using %s %s", AVPROVIDER(LIBAVFORMAT), LIBAVFORMAT_IDENT );
+ 
+@@ -132,7 +135,12 @@ int avformat_OpenMux( vlc_object_t *p_this )
+     p_sys->oc->oformat = file_oformat;
+     /* If we use dummy access, let avformat write output */
+     if( dummy )
++#if ( (LIBAVFORMAT_VERSION_MICRO >= 100) \
++      && (LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(58, 7, 100)) )
++        p_sys->oc->url = av_strdup(p_mux->p_access->psz_path);
++#else
+         strcpy( p_sys->oc->filename, p_mux->p_access->psz_path );
++#endif
+ 
+     /* Create I/O wrapper */
+     p_sys->io_buffer_size = 10 * 1024 * 1024;  /* FIXME */
+-- 
+GitLab
+
+
+From 97867416201533742be3effa2abfe3c02fafd95c Mon Sep 17 00:00:00 2001
+From: Ilkka Ollakka <ileoo@videolan.org>
+Date: Fri, 18 Jun 2021 10:31:00 +0300
+Subject: [PATCH 9/9] avformat: remove pts hack on recent libavformat
+
+The field AVStream.cur_dts has been removed in libavformat 59.2.103.
+
+Refs vlc4/c2ba623f0ad425e7743fca0bdc251d5bc9289e77
+Refs ffmpeg/591b88e6787c4e678237f02a50421d101abd25c2
+---
+ modules/demux/avformat/mux.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/modules/demux/avformat/mux.c b/modules/demux/avformat/mux.c
+index adaf3404301..6069a8326e5 100644
+--- a/modules/demux/avformat/mux.c
++++ b/modules/demux/avformat/mux.c
+@@ -384,9 +384,11 @@ static int MuxBlock( sout_mux_t *p_mux, sout_input_t *p_input )
+         pkt->dts = p_data->i_dts * p_stream->time_base.den /
+             CLOCK_FREQ / p_stream->time_base.num;
+ 
++#if LIBAVFORMAT_VERSION_MICRO >= 100 && LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(59, 2, 103)
+     /* this is another hack to prevent libavformat from triggering the "non monotone timestamps" check in avformat/utils.c */
+     p_stream->cur_dts = ( p_data->i_dts * p_stream->time_base.den /
+             CLOCK_FREQ / p_stream->time_base.num ) - 1;
++#endif
+ 
+     if( av_write_frame( p_sys->oc, pkt ) < 0 )
+     {
+-- 
+GitLab
+
