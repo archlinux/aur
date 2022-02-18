@@ -1,10 +1,11 @@
 pkgbase = saleae-logic2
 	pkgdesc = Debug hardware like a pro
 	pkgver = 2.3.45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://discuss.saleae.com/c/logic-2-0-software/7
 	arch = x86_64
 	license = unknown
+	depends = libxcrypt-compat
 	provides = saleae-logic
 	provides = saleae-logic-beta
 	conflicts = saleae-logic
