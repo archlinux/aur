@@ -1,7 +1,7 @@
 pkgbase = foosynth-plugin-lsmashsource-git
 	pkgdesc = Plugin for Vapoursynth: lsmashsource (GIT version)
-	pkgver = vA.3h.1.g4a7a981
-	pkgrel = 2
+	pkgver = vA.5a.0.gebe2ad2
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=167435
 	arch = x86_64
 	license = LGPL
@@ -9,18 +9,18 @@ pkgbase = foosynth-plugin-lsmashsource-git
 	makedepends = meson
 	makedepends = vapoursynth
 	makedepends = l-smash
-	makedepends = ffmpeg4.4
+	makedepends = ffmpeg
 	depends = vapoursynth
 	depends = liblsmash.so
-	depends = libavcodec.so=58-64
-	depends = libavformat.so=58-64
-	depends = libavutil.so=56-64
-	depends = libswresample.so=3-64
-	depends = libswscale.so=5-64
+	depends = libavcodec.so
+	depends = libavformat.so
+	depends = libavutil.so
+	depends = libswresample.so
+	depends = libswscale.so
 	provides = vapoursynth-plugin-lsmashsource
 	conflicts = vapoursynth-plugin-lsmashsource
 	options = debug
-	source = lsmashsource::git+https://github.com/AmusementClub/L-SMASH-Works.git
+	source = lsmashsource::git+https://github.com/AmusementClub/L-SMASH-Works.git#branch=ffmpeg-4.5
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-lsmashsource-git
