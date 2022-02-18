@@ -1,0 +1,20 @@
+pkgbase = perl-dbix-util-schema
+	pkgdesc = Utility routines related to database schema
+	pkgver = 0.002
+	pkgrel = 1
+	url = https://metacpan.org/release/DBIx-Util-Schema
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	depends = perl-dbd-sqlite>=0
+	depends = perl-dbi>=0
+	depends = perl-file-chdir>=0
+	depends = perl-log-ger>=0.037
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/DBIx-Util-Schema-0.002.tar.gz
+	md5sums = caeebab4ef9f906bf62719b8c0d081bc
+	sha512sums = 2789583ff2f50b85caf206e3f1a9c4e1f744e6ab31e4ade326cb9bd19d1926361d062c1684a04926178976657775f1866354ae33c953bab805825d2497c7efc2
+
+pkgname = perl-dbix-util-schema
