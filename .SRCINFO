@@ -1,0 +1,23 @@
+pkgbase = gswatcher
+	pkgdesc = A simple game server browser and an administrative tool
+	pkgver = 1.6.0alpha.4
+	pkgrel = 1
+	url = https://gitlab.com/lxndr-ab/gswatcher
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = meson
+	makedepends = ninja
+	makedepends = vala
+	depends = libgee
+	depends = gtk4
+	depends = libadwaita
+	depends = duktape
+	depends = geoip
+	options = !strip
+	options = debug
+	source = https://gitlab.com/lxndr-ab/gswatcher/-/archive/1.6.0-alpha.4/gswatcher-1.6.0-alpha.4.tar.bz2
+	sha256sums = e3c71ebd6c965cb47e2e0d68930690e2a9425457f76c1c951ce591f8ec896e4b
+
+pkgname = gswatcher
