@@ -1,39 +1,40 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=xfmpc-git
-pkgver=0.2.2.r93.gde0a987
+pkgver=0.3.0.r64.gd0b3a77
 pkgrel=1
-pkgdesc="A graphical GTK+ MPD client focusing on low footprint - git checkout"
+pkgdesc='A graphical GTK+ MPD client focusing on low footprint - git checkout'
 arch=('i686' 'x86_64')
-url="http://goodies.xfce.org/projects/applications/xfmpc/"
+url='http://goodies.xfce.org/projects/applications/xfmpc/'
 license=('GPL')
 provides=('xfmpc')
 conflicts=('xfmpc')
 depends=('libxfce4ui' 'libmpd')
-makedepends=('intltool' 'vala')
-source=('git://git.xfce.org/apps/xfmpc')
+makedepends=('git' 'intltool' 'vala' 'xfce4-dev-tools')
+source=('git+https://gitlab.xfce.org/apps/xfmpc')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd xfmpc/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git rev-parse --short HEAD)"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
 build() {
 	cd xfmpc/
 
-	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.in.in
-	sed -i 's/CHARSET/UTF-8/' po/sl.po
-	sed -i 's/Timeout.add/Gtk.Timeout.add/' src/main-window.vala
-	./autogen.sh --prefix=/usr
-	# building fails with parallel processes... so we unset MAKEFLAGS and do
-	# not use -j5...
-	MAKEFLAGS="" make
+	./autogen.sh \
+		--prefix=/usr
+	make
 }
 
 package() {

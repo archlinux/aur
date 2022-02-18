@@ -1,19 +1,20 @@
 pkgbase = xfmpc-git
 	pkgdesc = A graphical GTK+ MPD client focusing on low footprint - git checkout
-	pkgver = 0.2.2.r93.gde0a987
+	pkgver = 0.3.0.r64.gd0b3a77
 	pkgrel = 1
 	url = http://goodies.xfce.org/projects/applications/xfmpc/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = intltool
 	makedepends = vala
+	makedepends = xfce4-dev-tools
 	depends = libxfce4ui
 	depends = libmpd
 	provides = xfmpc
 	conflicts = xfmpc
-	source = git://git.xfce.org/apps/xfmpc
+	source = git+https://gitlab.xfce.org/apps/xfmpc
 	sha256sums = SKIP
 
 pkgname = xfmpc-git
-
