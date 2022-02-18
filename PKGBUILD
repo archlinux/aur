@@ -4,7 +4,7 @@
 # Contributor: Mark Lee <mark at markelee dot com>
 
 pkgname=jupyterhub
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Multi-user server for Jupyter notebooks"
 url="https://jupyter.org/hub"
@@ -39,7 +39,7 @@ source=(
   'tests_use_random_ports.patch'
 )
 sha256sums=(
-  'e78e6a18ff85c0c5e2b05112952d1595055bb17938cfeaa3900b296aea066c72'
+  '89af12d857815391e8c09405ebb1e003f54b449f08388ea26499e8a00944dbc7'
   'adb4c09c668c35605d9cddc4a4171dd64ed6e74ab82da97f19b3437d26b052b9'
   'acba51024276670aabad3d3f2a1c80d4b573809ca7e7ef6594916329d842417f'
 )
@@ -57,7 +57,7 @@ build() {
   # based on the directory containing the loaded code, so we need to replace
   # it with the final installed destination.
   cd build/lib
-  python -m jupyterhub --generate-config -f "$srcdir/default_config.py" -y=true
+  python -m jupyterhub --generate-config -f "$srcdir/default_config.py" -y True
   _srcdir_esc="${srcdir////\\/}"
   sed -i -e "s/${_srcdir_esc}\/jupyterhub-$pkgver/\/usr/" "$srcdir/default_config.py"
 }
