@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-loom-ea-bin
 	pkgdesc = Java Project Loom OpenJDK 19 Early-Access Build
-	pkgver = 19_5e818ac
+	pkgver = 19_12a7aca
 	pkgrel = 1
 	epoch = 103
 	url = https://jdk.java.net/loom/
@@ -21,6 +21,6 @@ pkgbase = java-openjdk-loom-ea-bin
 	provides = java-runtime-headless=19
 	provides = java-runtime-headless-openjdk=19
 	source = https://github.com/Anlon-Burke/openjdk-loom-bin/releases/download/103/jdk-19-loom-linux.tar.gz
-	sha256sums = fc6cc36da22a79ccbda6285a44f63d1651ae451216aa91dea9fe031ad2745a64
+	sha256sums = bc3f205953e0039c844fe622f8c1ac0dea85fce787c16dede193fdd3dc72b79b
 
 pkgname = java-openjdk-loom-ea-bin
