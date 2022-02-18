@@ -1,0 +1,21 @@
+pkgbase = volatility3-git
+	pkgdesc = Advanced memory forensics framework
+	pkgver = v2.0.0.3081.a2b0bdfe
+	pkgrel = 1
+	url = https://github.com/volatilityfoundation/volatility3
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = python-yara
+	depends = python-capstone
+	depends = python-jsonschema
+	depends = python-pycryptodome
+	depends = python-pefile
+	provides = volatility
+	replaces = volatility
+	source = volatility3-git::git+https://github.com/volatilityfoundation/volatility3
+	sha256sums = SKIP
+
+pkgname = volatility3-git
