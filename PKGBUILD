@@ -1,4 +1,4 @@
-# Maintainer: Elijah Gregg <lovetocode999@tilde.team>
+# Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
 # Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
