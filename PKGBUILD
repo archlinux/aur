@@ -8,6 +8,7 @@ url="https://github.com/me0wing-katt0/katfetch"
 license=('GPL')
 depends=('xorg-xrandr' 'figlet' 'bash')
 makedepends=('git')
+optdepends=('playerctl')
 source=('katfetch::git://github.com/me0wing-katt0/katfetch.git')
 md5sums=('SKIP')
 

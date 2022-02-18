@@ -9,6 +9,7 @@ pkgbase = katfetch
 	depends = xorg-xrandr
 	depends = figlet
 	depends = bash
+	optdepends = playerctl
 	source = katfetch::git://github.com/me0wing-katt0/katfetch.git
 	md5sums = SKIP
 
