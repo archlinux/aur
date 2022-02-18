@@ -1,6 +1,6 @@
 pkgbase = secrethub-cli
 	pkgdesc = Command Line Interface for SecretHub
-	pkgver = 0.43.0
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://secrethub.io/
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = secrethub-cli
 	makedepends = go-pie
 	optdepends = xclip: Clipboard support
 	optdepends = less: Improved pagination experience
-	source = secrethub-cli::git+https://github.com/secrethub/secrethub-cli.git#tag=v0.43.0
+	source = secrethub-cli::git+https://github.com/secrethub/secrethub-cli.git#tag=v0.44.0
 	sha256sums = SKIP
 
 pkgname = secrethub-cli
-
