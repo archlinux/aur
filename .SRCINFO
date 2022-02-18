@@ -1,0 +1,13 @@
+pkgbase = asxxxx
+	pkgdesc = ASxxxx Cross Assemblers
+	pkgver = 5.40
+	pkgrel = 1
+	url = https://shop-pdp.net/ashtml/asxxxx.php
+	arch = x86_64
+	license = GPL3
+	makedepends = unzip
+	noextract = asxs5p40.zip
+	source = https://shop-pdp.net/_ftp/asxxxx/asxs5p40.zip
+	sha256sums = ac8277b85308b9fdc3e27c50557cc3ba45fe0de85ddc96c936fb25e5fd3a3e22
+
+pkgname = asxxxx
