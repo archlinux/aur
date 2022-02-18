@@ -44,7 +44,7 @@ pkgbase = gazebo-git
 	optdepends = urdfdom: Load URDF files
 	provides = gazebo
 	conflicts = gazebo
-	source = gazebo::git+https://github.com/osrf/gazebo
+	source = gazebo::https://github.com/osrf/gazebo
 	source = patch::https://github.com/osrf/gazebo/pull/3174.patch
 	sha256sums = SKIP 00f342f4f62926b93ad506017561e15f2ec64bcca6a12b1184be5fa4c50f971e
 
