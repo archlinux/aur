@@ -11,32 +11,30 @@
 
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.16.14
+pkgver=3.22.4
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
-license=(GPL)
-arch=(x86_64)
-depends=(exiv2 gsl hicolor-icon-theme libzip protobuf python-gdal python-jinja python-owslib
-         python-psycopg2 python-pygments python-qscintilla-qt5 python-sip4 python-yaml qca qt5-3d
-         qt5-imageformats qt5-serialport qt5-webkit qtkeychain qwt spatialindex opencl-icd-loader)
-makedepends=(cmake ninja fcgi python-setuptools python-six qt5-tools txt2tags sip4 opencl-clhpp)
+license=('GPL')
+arch=('x86_64')
+depends=('exiv2' 'gdal' 'gsl' 'hicolor-icon-theme' 'libzip' 'ocl-icd' 'pdal' 'protobuf'
+         'python-gdal' 'python-jinja' 'python-owslib' 'python-psycopg2' 'python-pygments'
+         'python-qscintilla-qt5' 'python-yaml' 'qca' 'qt5-3d' 'qt5-imageformats'
+         'qt5-serialport' 'qt5-webkit' 'qtkeychain-qt5' 'qwt' 'spatialindex')
+makedepends=('cmake' 'fcgi' 'ninja' 'opencl-clhpp' 'python-setuptools' 'python-six' 'qt5-tools'
+             'txt2tags' 'sip' 'pyqt-builder')
 optdepends=('fcgi: Map server'
-            'opencl-driver: packaged OpenCL driver'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
-        qgis-qwt-6.2-1.patch   # https://github.com/qgis/QGIS/commit/6f9cbde7.patch
-        qgis-qwt-6.2-2.patch)  # https://github.com/qgis/QGIS/commit/581cb406.patch
+         qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch)
+sha256sums=('80e93f55e3afaa951eac2b7298c96e92ef3ded35882fcb3c1442a3d05de3808d'
+            'c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304')
 # curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
-sha256sums=('57cfe392d39c017f8e85e48a423d1bfc1dc6ba0f88e946a07dc7e6f667dfe79a'
-            '0f61792b634355175306ddcc04b94febb8aadcc953e4e97f229b89f9b21f2450'
-            '65708439be026a881cd4f1636eb60cce562a80d98a1427ff3a51942d7b93a7ae')
 
 prepare() {
-  patch -d $_pkgname-$pkgver -p1 < qgis-qwt-6.2-1.patch # Fix build with qwt 6.2
-  patch -d $_pkgname-$pkgver -p1 < qgis-qwt-6.2-2.patch # Fix build with qwt 6.2
+  patch -d "$_pkgname-$pkgver" -p1 < qgstyle-infinite-loop.patch # Fix infinite loop
 }
 
 build() {
@@ -51,7 +49,8 @@ build() {
     -DQWTPOLAR_LIBRARY=/usr/lib/libqwt.so \
     -DQWTPOLAR_INCLUDE_DIR=/usr/include/qwt \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DQWT_POLAR_VERSION=0x060200" \
-    -DWITH_INTERNAL_QWTPOLAR=FALSE
+    -DWITH_INTERNAL_QWTPOLAR=FALSE \
+    -DWITH_PDAL=TRUE
   cmake --build build
 }
 
