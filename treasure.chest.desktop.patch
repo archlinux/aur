@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text src.orig/usr/share/applications/pirate-qt.desktop src.new/usr/share/applications/pirate-qt.desktop
+--- src.orig/usr/share/applications/pirate-qt.desktop	2022-01-18 00:29:04.000000000 -0400
++++ src.new/usr/share/applications/pirate-qt.desktop	2022-02-17 21:24:56.662284717 -0400
+@@ -2,7 +2,7 @@
+ Name=Treasure Chest
+ Comment=Full node UI wallet for Pirate
+ GenericName=TreasureChest
+-Exec=/usr/local/bin/pirate-qt %u
++Exec=/usr/bin/pirate-qt %u
+ Icon=pirate.xpm
+ Type=Application
+ StartupNotify=true
