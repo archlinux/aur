@@ -1,0 +1,16 @@
+pkgbase = gistit-bin
+	pkgdesc = Quick and easy code snippet sharing with p2p support
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/demfabris/gistit
+	arch = x86_64
+	license = Apache
+	provides = gistit-bin
+	conflicts = gistit-bin
+	conflicts = gistit-git
+	source = gistit.tar.gz::https://github.com/demfabris/gistit/releases/download/v0.2.3/gistit-musl-x86_64.tar.gz
+	source = gistit-daemon.tar.gz::https://github.com/demfabris/gistit/releases/download/v0.2.3/gistit-daemon-musl-x86_64.tar.gz
+	sha256sums = 3a5b96fda88d0341ec754e87b1bd3c4d709055f100cc5726e9ae4e26a82bcfa9
+	sha256sums = 8899df45cca8f97bfa04143216cad98634b8f29eabaa5b241ab5300fa5c30f69
+
+pkgname = gistit-bin
