@@ -1,6 +1,6 @@
 # Maintainer: panda2134 <me@panda2134.site>
 pkgname=thu-isatap
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Creating an ISATAP IPv6 tunnel to Tsinghua ISATAP Server"
 url="https://github.com/panda2134/thu-isatap"
