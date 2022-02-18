@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index 7d75ff9..ca847ce 100755
+index ad8efaf..303ab00 100755
 --- a/proton
 +++ b/proton
-@@ -1277,6 +1277,15 @@ if __name__ == "__main__":
+@@ -1359,6 +1359,15 @@ if __name__ == "__main__":
          log("No compat data path?")
          sys.exit(1)
  

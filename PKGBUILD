@@ -1,13 +1,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=6.3-20220119
+_srctag=7.0-20220218b
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=7.0.0
-_asyncver=a9de5a9fc12d12a2cd50e3aeffae01e6f51ddbd4
-pkgrel=3
+_monover=7.1.2
+_asyncver=1.9.4
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
 url="https://github.com/ValveSoftware/Proton"
@@ -30,15 +30,19 @@ depends=(
   libsm            lib32-libsm
   gcc-libs         lib32-gcc-libs
   libpcap          lib32-libpcap
+  lzo              lib32-lzo
+  libxkbcommon     lib32-libxkbcommon
+  faudio           lib32-faudio
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
   steam-native-runtime
 )
 
-makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
+makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
+  clang
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -62,13 +66,9 @@ makedepends=(autoconf ncurses bison perl fontforge flex mingw-w64-gcc
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
-  libcups               lib32-libcups
   rust                  lib32-rust-libs
-  sane
   libgphoto2
   gsm
-  ffmpeg
-  samba
   opencl-headers
 )
 
@@ -86,19 +86,15 @@ optdepends=(
   libjpeg-turbo         lib32-libjpeg-turbo
   libxcomposite         lib32-libxcomposite
   libxinerama           lib32-libxinerama
-  ncurses               lib32-ncurses
   opencl-icd-loader     lib32-opencl-icd-loader
   libxslt               lib32-libxslt
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
-  sane
   libgphoto2
   gsm
-  ffmpeg
-  cups
-  samba           dosbox
+  dosbox
 )
 
 makedepends=(${makedepends[@]} ${depends[@]})
@@ -110,7 +106,6 @@ source=(
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    FAudio::git+https://github.com/FNA-XNA/FAudio.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
@@ -119,13 +114,18 @@ source=(
     OpenXR-SDK::git+https://github.com/KhronosGroup/OpenXR-SDK.git
     dxvk-nvapi::git+https://github.com/jp7677/dxvk-nvapi.git
     vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
-    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+    SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+    gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
+    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
+    dav1d::git+https://code.videolan.org/videolan/dav1d.git
+    gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
+    wine-futex_waitv.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -138,9 +138,9 @@ noextract=(
 )
 
 _make_wrappers () {
-    #     _arch     prefix   gcc    ld             as
-    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32")
-    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64")
+    #     _arch     prefix   gcc    ld             as     strip
+    local _i686=(  "i686"   "-m32" "-melf_i386"   "--32" "elf32-i386")
+    local _x86_64=("x86_64" "-m64" "-melf_x86_64" "--64" "elf64-x86-64")
     local _opts=(_i686 _x86_64)
     declare -n _opt
     for _opt in "${_opts[@]}"; do
@@ -160,6 +160,10 @@ EOF
         install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-as <<EOF
 #!/usr/bin/bash
 /usr/bin/as ${_opt[3]} "\$@"
+EOF
+        install -Dm755 /dev/stdin wrappers/${_opt[0]}-pc-linux-gnu-strip <<EOF
+#!/usr/bin/bash
+/usr/bin/strip -F ${_opt[4]} "\$@"
 EOF
     done
 }
@@ -193,7 +197,6 @@ prepare() {
         dxvk-valve::dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
-        FAudio
         gstreamer
         gst-plugins-base
         gst-plugins-good
@@ -202,9 +205,13 @@ prepare() {
         OpenXR-SDK
         dxvk-nvapi
         vkd3d-valve::vkd3d
-        SPIRV-Headers
         Vulkan-Headers
+        SPIRV-Headers
         Vulkan-Loader
+        gst-libav
+        ffmpeg
+        dav1d
+        gst-plugins-rs
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -232,23 +239,27 @@ prepare() {
         git submodule update external/Vulkan-Headers
     popd
 
-    pushd media-converter
+    for submodule in gst-plugins-rs media-converter; do
+    pushd $submodule
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${srcdir}"/build/.cargo
         cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
     popd
+    done
 
     pushd wine
         # From Arch Wine
         sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
+        # Fix futex_waitv on recent linux-api-headers
+        patch -p1 -i "$srcdir"/wine-futex_waitv.patch
         # Add FSR for fshack
-        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
-        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        #patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
     pushd dxvk
@@ -279,7 +290,7 @@ build() {
     cd build
     ROOTLESS_CONTAINER="" \
     ../proton/configure.sh \
-        --container-engine="" \
+        --container-engine="none" \
         --proton-sdk-image="" \
         --steam-runtime=native \
         --no-proton-sdk \
@@ -306,24 +317,24 @@ build() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
-    export CXXFLAGS="-O2 -march=nocona -pipe -mtune=core-avx2"
+    export CFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
+    export CXXFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
+    export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
     # game can cause an Unhandled exception. The cause seems to be the
     # combination of AVX instructions and tree vectorization (implied by O3),
     # all tested archictures from sandybridge to haswell are affected.
-    # Disabling AVX (and AVX2 as a side-effect).
     # Since Wine 5.16 AVX is supported. Testing showed 32bit applications
     # crashing with AVX regardless, but 64bit applications worked just fine.
-    # So disable AVX only for the 32bit binaries and AVX2 for the 64bit.
-    # AVX2 seems to degrade performance. So disregard the above.
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    #export CFLAGS+=" -mno-avx -mno-avx2"
-    #export CXXFLAGS+=" -mno-avx -mno-avx2"
+    # AVX is "hard" disabled for 32bit in any case.
+    # AVX2 for 64bit is disabled below.
+    export CFLAGS+=" -mno-avx2"
+    export CXXFLAGS+=" -mno-avx2"
 
     export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
@@ -346,9 +357,9 @@ package() {
 
     cd "$_compatdir/${pkgname}/files"
     i686-w64-mingw32-strip --strip-unneeded \
-        $(find lib/wine \( -iname fakedlls \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
+        $(find lib/wine \( -iname fakedlls -or -iname i386-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
     x86_64-w64-mingw32-strip --strip-unneeded \
-        $(find lib64/wine \( -iname fakedlls \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
+        $(find lib64/wine \( -iname fakedlls -or -iname x86_64-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
 
     local _geckodir="share/wine/gecko/wine-gecko-${_geckover}"
     i686-w64-mingw32-strip --strip-unneeded \
@@ -385,12 +396,16 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3'
+            '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
             'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
+            '7d989e9b29643897eaadb970d65e71140b11f4d641ef8816bd17feb9ad2ca992'
             '62f1c2e7295801cedc7b1d8aea6ba3804ea61419cbf6a113dc700d95755ae1d9'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '86898e84a3aac4bf0b5c9185656cb463cd31df02b018d8038527c7fa7329984b'
+            'ef42c2303fd9855687a5fb0fb47a11c5bb4cf3ed7e58d48b82185c96addf6d50'
             '12a587972a101a6d0c279a3820135277097c5f3e9f5990c5741d5fb1626dc770'
-            'cfe984e2b3d65b01e2875e51b8ef8b8d6f1268dd09a88d5611655f24b46cff8d')
+            '6126f8c93d73b7309fb22c244dae645c755c1ed8759caac3edc91d81a71e8f45')
