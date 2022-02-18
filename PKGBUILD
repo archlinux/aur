@@ -1,17 +1,16 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=gengetopt-git
-pkgver=2.22.6.r0.g9d70a9b
+pkgver=2.23.r0.g0cfa550
 pkgrel=1
 pkgdesc="A tool to write command line option parsing code for C programs"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/gengetopt/"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'gengen' 'gengetopt')
 provides=('gengetopt')
 conflicts=('gengetopt')
-options=('!makeflags')
 source=("git+https://git.savannah.gnu.org/git/gengetopt.git")
 sha256sums=('SKIP')
 
@@ -25,8 +24,9 @@ pkgver() {
 build() {
   cd "gengetopt"
 
-  autoreconf -i
-  ./configure --prefix="/usr"
+  autoreconf -fi
+  ./configure \
+    --prefix="/usr"
   make
 }
 
