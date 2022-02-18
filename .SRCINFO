@@ -1,4 +1,4 @@
-pkgbase = mpz
+pkgbase = mpz-qt6
 	pkgdesc = Music player for the large local collections
 	pkgver = 1.0.19
 	pkgrel = 0
@@ -7,8 +7,8 @@ pkgbase = mpz
 	license = GPL3
 	depends = qt6-multimedia
 	depends = hicolor-icon-theme
-	provides = mpz
+	provides = mpz-qt6
 	source = mpz-1.0.19-0.zip::https://github.com/olegantonyan/mpz/archive/e859f637b381e93adff283bc2b0f46079949c18b.zip
 	sha256sums = 40483dc5b929141e9d1fc165f4ade1b9e8b2ddeb2758845f06c5209d0de3a959
 
-pkgname = mpz
+pkgname = mpz-qt6
