@@ -1,6 +1,6 @@
 pkgbase = amfora-git
 	pkgdesc = Terminal browser for the Gemini protocol
-	pkgver = 1.9.2.r13.g004851f
+	pkgver = 1.9.2.r27.gea9c7f2
 	pkgrel = 1
 	url = https://github.com/makeworld-the-better-one/amfora
 	arch = x86_64
