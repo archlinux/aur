@@ -1,20 +1,19 @@
 pkgbase = php80-imagick
 	pkgdesc = PHP 8.0 extension to create and modify images using the ImageMagick library
-	pkgver = 3.4.4
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/mkoppanen/imagick
 	arch = x86_64
 	license = PHP
-	checkdepends = librsvg
 	checkdepends = ttf-dejavu
-	depends = php80
+	makedepends = php80
+	makedepends = librsvg
 	depends = imagemagick
 	depends = ttf-font
 	backup = etc/php80/conf.d/imagick.ini
-	source = php80-imagick-3.4.4.tar.gz::https://github.com/mkoppanen/imagick/archive/c5b8086b5d96c7030e6d4e6ea9a5ef49055d8273.tar.gz
-	source = php80-imagick-3.4.4-imagemagick_threading.patch::https://github.com/Imagick/imagick/pull/296.patch
-	sha512sums = bd62bc51de3e330f63b29fc5f259893356e0aa205f6643266432f465fcca4d893931bc5822aef04643d6d27e9be906e3602126ee3f58fbed7804de691d0cb6d2
-	sha512sums = d11a08b6a6a4a5e6d9b9cf9e87a6c0bb29ba632d6318ac237fe59910d70b07ef8df5af775451c89c5a81d45e609b9aa69611ecb562bfcbda832d5f0ae1207d55
+	source = php80-imagick-3.7.0.tar.gz::https://github.com/imagick/imagick/archive/refs/tags/3.7.0.tar.gz
+	source = imagick.ini
+	sha512sums = 67cf7e76ee59dcf2fbb6230956344033022ea2b93f82fcdb949998638ce9990004948fddf13e7f4649b2115ce6f402a1eb4f95aa36a3b6a26f3f016b0e958bc3
+	sha512sums = 1463505bd6b2572e21f6bbc242c2e0bf8b881b839ac38e38c230f09b4bf4c4698cafba1a026da8f615ee2b2980ab74dc68284afd70bb732db6fb70b5efba2bfc
 
 pkgname = php80-imagick
-
