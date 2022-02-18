@@ -1,0 +1,22 @@
+pkgbase = perl-dbix-diff-schema
+	pkgdesc = Compare schema of two DBI databases
+	pkgver = 0.097
+	pkgrel = 1
+	url = https://metacpan.org/release/DBIx-Diff-Schema
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-exception>=0
+	depends = perl-dbd-sqlite>=0
+	depends = perl-dbi>=0
+	depends = perl-dbix-util-schema>=0
+	depends = perl-file-chdir>=0
+	depends = perl-log-ger>=0.037
+	depends = perl-scalar-util-numeric>=0
+	depends = perl>=5.10.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PERLANCAR/DBIx-Diff-Schema-0.097.tar.gz
+	md5sums = 63161cbeb8d30d2c8686436b651fa29f
+	sha512sums = 334608b0b128809e52737a7389880b0f8baa8f8d504c972f6ff277504bad23892b89d654c1016bad7055754411234a273b3e4239e7b5a93cab7a2e77ac0f5f14
+
+pkgname = perl-dbix-diff-schema
