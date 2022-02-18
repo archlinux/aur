@@ -5,10 +5,12 @@ pkgname=${_pkgname}-git
 pkgver=0.6.9.r162.g15553bf
 pkgrel=1
 source=("${_pkgname}::git+https://github.com/lsaa/ddstats-rust")
-makedepends=('cargo-nightly' 'libcap')
+makedepends=('rust-nightly-bin' 'libcap', 'mold', 'clang')
 arch=('x86_64')
 sha256sums=('SKIP')
 b2sums=('SKIP')
+provides=("ddstats-rust-bin")
+conflicts=("ddstats-rust-bin")
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
