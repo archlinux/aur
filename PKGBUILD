@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=sonixd
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -44,7 +44,7 @@ build() {
 	yarn build --cache-folder="$srcdir/yarn-cache"
 	yarn run --cache-folder="$srcdir/yarn-cache" \
 		electron-builder --linux --"${!CARCH}" --dir \
-		-c.electronDist=/usr/lib/electron \
+		-c.electronDist=/usr/lib/electron13 \
 		-c.electronVersion="$_ver"
 }
 

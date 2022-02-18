@@ -1,7 +1,7 @@
 pkgbase = sonixd
 	pkgdesc = A full-featured Subsonic/Jellyfin compatible desktop music player
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeffvli/sonixd
 	arch = x86_64
 	license = GPL3
