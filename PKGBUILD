@@ -1,7 +1,7 @@
 # Contributor: Noel Kuntze <noel.kuntze@thermi.consulting>
 # Maintainer: Noel Kuntze <noel.kuntze@thermi.consulting>
 pkgname=libmdbx
-pkgver=0.10.2
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="Extremely fast, compact, powerful, embedded, transactional key-value database, with permissive license."
 url="https://github.com/erthink/libmdbx"
@@ -51,5 +51,5 @@ package() {
 	make -f Makefile install DESTDIR="$pkgdir"
 }
 
-sha512sums=('3d5f127a140841db6c89815adf65fdaefc4bb1d7941bfd1922c54ba38589dd49c6d6f5cd1dcf1b042c526c848cc6900eb80ee51fd8b2c0cabfe4a34c5678663e'
+sha512sums=('2a7eb9c6b3454a21cdcb085a923a21b7474555d8e02af087d72b9720fa04af678b223d1346b3754643cec2fd8ad5990bbb821fb676b8ba5770da7dfd25e933fa'
             '5e5fef4219279b10f0d4371fcbf3e2d4a7d958eb337f9de92aebb6a7d0d6644faa65eb804f46021678997a638ac601b03d9facbbf1164b45ae9075384d300df2')
