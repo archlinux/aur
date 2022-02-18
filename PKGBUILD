@@ -6,13 +6,13 @@ pkgver='0.8'
 pkgrel='1'
 pkgdesc="Small C library and small codebase that packs an efficient parser and a configurable printer (32-bit version)"
 arch=('x86_64')
-url="http://projects.snarc.org/libjson/"
+url="https://projects.snarc.org/libjson/"
 license=('LGPL')
 depends=(lib32-glibc $_pkgbasename)
 makedepends=(gcc-multilib)
 options=(!libtool !makeflags)
-source=('http://projects.snarc.org/libjson/download/libjson-0.8.tar.gz')
-md5sums=('f8eddc87510d399a2532a9b0d74c2455')
+source=("https://projects.snarc.org/libjson/download/libjson-${pkgver}.tar.gz")
+sha256sums=('4f0e717a8edc6ede5c4d900d810165ca91f033b2863989daaeaf1b3fe5ea0ad6')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"

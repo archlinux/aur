@@ -2,7 +2,7 @@ pkgbase = lib32-libjson
 	pkgdesc = Small C library and small codebase that packs an efficient parser and a configurable printer (32-bit version)
 	pkgver = 0.8
 	pkgrel = 1
-	url = http://projects.snarc.org/libjson/
+	url = https://projects.snarc.org/libjson/
 	arch = x86_64
 	license = LGPL
 	makedepends = gcc-multilib
@@ -10,8 +10,7 @@ pkgbase = lib32-libjson
 	depends = libjson
 	options = !libtool
 	options = !makeflags
-	source = http://projects.snarc.org/libjson/download/libjson-0.8.tar.gz
-	md5sums = f8eddc87510d399a2532a9b0d74c2455
+	source = https://projects.snarc.org/libjson/download/libjson-0.8.tar.gz
+	sha256sums = 4f0e717a8edc6ede5c4d900d810165ca91f033b2863989daaeaf1b3fe5ea0ad6
 
 pkgname = lib32-libjson
-
