@@ -2,7 +2,7 @@
 
 pkgname=wegstr
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Controlling software Wegstr"
 arch=("any")
 url="https://wegstr.com/software"
@@ -22,7 +22,7 @@ package() {
 
   cp -r \
     "$srcdir/Wegstr/Linux/wegstr.jar" \
-    "$srcdir/Wegstr/Samples (g-code)" \
+    "$srcdir/Wegstr/Utils/Samples (g-code)" \
     "$pkgdir/usr/share/$pkgname"
 
   install -Dm 755 "$srcdir/wegstr" "$pkgdir/usr/bin/wegstr"
