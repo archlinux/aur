@@ -1,6 +1,7 @@
 [Unit]
 Description=Manage fees on lnd channels
 Documentation=https://github.com/accumulator/charge-lnd/blob/master/README.md
+ConditionPathExists=/etc/default/charge-lnd
 
 [Service]
 Type=oneshot
