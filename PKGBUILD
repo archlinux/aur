@@ -1,11 +1,12 @@
 # Maintainer: basxto <archlinux basxto de>
 pkgname='asxxxx'
 pkgver=5.40
-pkgrel=1
-pkgdesc='ASxxxx Cross Assemblers'
+pkgrel=2
+pkgdesc='Series of microprocessor cross assemblers for Z80, 6502, 8080, 6800, 1802 and many more'
 url='https://shop-pdp.net/ashtml/asxxxx.php'
 license=('GPL3')
 arch=('x86_64')
+depends=('glibc')
 makedepends=('unzip')
 source=("https://shop-pdp.net/_ftp/asxxxx/asxs$(echo $pkgver|tr . p).zip")
 noextract=("asxs$(echo $pkgver|tr . p).zip")
