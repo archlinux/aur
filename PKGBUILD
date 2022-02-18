@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=gpg-tui-git
-pkgver=0.8.2.r0.g3da6a99
+pkgver=0.8.3.r0.g86bad3e
 pkgrel=1
 pkgdesc="A terminal user interface for GnuPG (git)"
 arch=('x86_64')
 url="https://github.com/orhun/gpg-tui"
 license=('MIT')
 depends=('libxcb' 'libxkbcommon' 'gpgme')
-makedepends=('rust' 'python' 'git')
+makedepends=('cargo' 'python' 'git')
 optdepends=(
   'xplr: for file selection support'
   'xclip: for clipboard support on X11 (or xsel)'
@@ -29,7 +29,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   mkdir completions/
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
