@@ -13,20 +13,19 @@
 # Contributor: John Luebs <jkluebs@gmail.com>
 
 pkgname=go-beta
-epoch=2
 _pkgname=go
-pkgver=1.18beta2
+pkgver=1.18rc1
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language (Unstable version)'
 arch=(x86_64)
 url='https://golang.org/'
 license=(BSD)
-makedepends=(git go perl)
-provides=('go=2:1.18beta2')
+makedepends=(go perl)
+provides=('go=2:1.18rc1')
 conflicts=(go)
 options=(!strip staticlibs)
 source=(https://storage.googleapis.com/golang/go$pkgver.src.tar.gz)
-sha256sums=('3cb14e2c82da366f7393c988f1f3fc2c16b71a5492bd3d49d35886cdf27a9d13')
+sha256sums=('5cec7a6653008fa85f8821b33665de37be289b7a02f17f36f705a88c43980bb8')
 
 build() {
   export GOARCH=amd64
