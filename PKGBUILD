@@ -5,8 +5,8 @@ _reponame=${_pkgbase^^}
 
 pkgbase=${_pkgbase}-git
 pkgname=("ppc-libpngu-git" "wii-${pkgbase}")
-pkgver=v4.4.1.r14.gc432111
-pkgrel=2
+pkgver=4.4.1.r14.gc432111
+pkgrel=1
 pkgdesc="A C/C++ 2D/3D graphics library for Wii application developers"
 arch=("x86_64")
 url="https://github.com/GRRLIB/${_reponame}"
@@ -23,7 +23,7 @@ sha256sums=("SKIP"
 pkgver() {
   cd "${srcdir}/${_reponame}"
 
-  git describe --long | sed "s/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g"
+  git describe --long | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {

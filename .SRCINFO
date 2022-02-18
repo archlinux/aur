@@ -1,7 +1,7 @@
 pkgbase = grrlib-git
 	pkgdesc = A C/C++ 2D/3D graphics library for Wii application developers
-	pkgver = v4.4.1.r14.gc432111
-	pkgrel = 2
+	pkgver = 4.4.1.r14.gc432111
+	pkgrel = 1
 	url = https://github.com/GRRLIB/GRRLIB
 	arch = x86_64
 	license = MIT
