@@ -1,6 +1,6 @@
 pkgbase = brix-git
 	pkgdesc = Brix Scaffolding System
-	pkgver = 0.3.0.beta.2.r1.g7641dba
+	pkgver = 0.3.0.beta.2.r9.g23c2cf9
 	pkgrel = 2
 	url = https://github.com/miapolis/brix
 	arch = i686

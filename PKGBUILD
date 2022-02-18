@@ -7,7 +7,7 @@
 
 _pkgname=brix
 pkgname=${_pkgname}-git
-pkgver=0.3.0.beta.2.r1.g7641dba
+pkgver=0.3.0.beta.2.r9.g23c2cf9
 pkgrel=2
 pkgdesc='Brix Scaffolding System'
 arch=('i686' 'x86_64')
@@ -39,6 +39,4 @@ package() {
   target="target/release"
   cd $_pkgname
   install -Dm755 "$target/$_pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 "$target/build/brix-"*/out/brix.bash -t "$pkgdir/usr/share/bash-completion/completions/brix"
-  install -Dm644 "$target/build/brix-"*/out/brix.fish -t "$pkgdir/usr/share/fish/vendor_completions.d"
 }
