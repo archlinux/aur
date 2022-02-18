@@ -2,12 +2,12 @@
 pkgname=libray
 _gitname="libray"
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 url="https://notabug.org/necklace/libray"
 pkgdesc="LibRay aims to be a Libre (FLOSS) Python application for unencrypting, extracting, repackaging, and encrypting PS3 ISOs."
 arch=("any")
 license=("GPLv3")
-depends=("python" "python-pycryptodome" "python-beautifulsoup4" "python-tqdm" "python-requests")
+depends=("python" "python-pycryptodome" "python-beautifulsoup4" "python-tqdm" "python-requests" "python-html5lib")
 makedepends=("python-setuptools")
 
 source=("https://notabug.org/necklace/${_gitname}/archive/${pkgver}.tar.gz"
