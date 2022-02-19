@@ -22,7 +22,7 @@
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=0
+  _microarchitecture=13
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -74,7 +74,7 @@ fi
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.21
+pkgver=${_major}.24
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -82,7 +82,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="dc93cc6b2d1d0bf57ab28dccfd3ab0a9e5c32039" # 5.15.21
+__commit="1ebc2d445e68b5fda987a1ecdcdba20503360f21" # 5.15.24
 
 license=(GPL2)
 makedepends=(
@@ -111,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            'cc4451ab20b0bf32e82490ecf388afc796812416c992f2dc30035523fd1020fe'  # xanmod
+            'c6b8ad0f06757391bdf8bbf86e7652d6cd52bd33421364d071b648811f16701f'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            'd141c6d85843afa6e84f1545a436aee13cea911acae7f6ea64acd77b1755e476') # manjaro
+            'f0db120db90bf12913b712ea0c36bce4caaa584e396878420b432d0c3753b336') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
