@@ -1,6 +1,6 @@
 pkgbase = superpaper-git
 	pkgdesc = Cross-platform multi monitor wallpaper manager
-	pkgver = 2.1.0+23+gc8773ca
+	pkgver = 2.1.0+25+gfaba0e6
 	pkgrel = 1
 	url = https://github.com/hhannine/Superpaper
 	arch = any
@@ -13,9 +13,13 @@ pkgbase = superpaper-git
 	depends = python-system_hotkey>=1.0.2+10+9541587
 	depends = python-xpybutil
 	depends = python-numpy
-	provides = superpaper=2.1.0+23+gc8773ca
+	provides = superpaper=2.1.0+25+gfaba0e6
 	conflicts = superpaper
 	source = superpaper::git+https://github.com/hhannine/Superpaper
+	source = python3.10_List_fix.patch
+	source = wxpython_4.0.x_wx_no_attribute_PU_CONTAINS_CONTROLS.patch
 	sha256sums = SKIP
+	sha256sums = ed1be7af574a50912dfd9abe69150d386c40ef3ecc44ec4d143480e49958c19d
+	sha256sums = d37d70bcd024a43a5e9b2215bedd9545c4fc64025906b70bd084ee7071db11d7
 
 pkgname = superpaper-git

@@ -1,0 +1,12 @@
+diff -Naur ./superpaper.orig/superpaper/gui.py ./superpaper/superpaper/gui.py
+--- ./superpaper.orig/superpaper/gui.py	2022-02-18 19:26:41.396189018 -0500
++++ ./superpaper/superpaper/gui.py	2022-02-18 19:27:24.011864253 -0500
+@@ -2347,7 +2347,7 @@
+ 
+     def popup_at_button(self, button):
+         """Initialize a popup at button position."""
+-        pop = self.BezelEntryPopup(self, wx.SIMPLE_BORDER|wx.PU_CONTAINS_CONTROLS)
++        pop = self.BezelEntryPopup(self, wx.SIMPLE_BORDER) #|wx.PU_CONTAINS_CONTROLS)
+         return pop
+ 
+     def move_popup_to_button(self, pop, button):

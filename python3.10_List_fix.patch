@@ -1,0 +1,12 @@
+diff -Naur ./superpaper.orig/superpaper/wallpaper_processing.py ./superpaper/superpaper/wallpaper_processing.py
+--- ./superpaper.orig/superpaper/wallpaper_processing.py	2022-02-18 19:21:23.816609240 -0500
++++ ./superpaper/superpaper/wallpaper_processing.py	2022-02-18 19:22:10.274255190 -0500
+@@ -16,6 +16,8 @@
+ from operator import itemgetter
+ from threading import Lock, Thread, Timer
+ 
++from typing import List
++
+ from PIL import Image, ImageOps, UnidentifiedImageError
+ from screeninfo import get_monitors
+ 
