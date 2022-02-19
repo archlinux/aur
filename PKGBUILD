@@ -1,15 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Simon Allen <simon@simonallen.org>
 pkgname=ytmdesktop-git
-pkgver=1.14.0.r103.g774efc7
+pkgver=1.14.1.r7.ge469e2c
 pkgrel=2
-_electronversion=11
+#_electronversion=11
 _nodeversion=12
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0-1.0')
-depends=("electron${_electronversion}")
+#depends=("electron${_electronversion}")
+depends=('electron')
 makedepends=('git' 'nvm' 'python' 'yarn')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
@@ -21,7 +22,7 @@ source=('git+https://github.com/ytmdesktop/ytmdesktop.git#branch=development'
         "${pkgname%-git}.sh")
 sha256sums=('SKIP'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d'
-            'f2b4520a6cf549f19567ebfeb337a4cb2ff5479c1d73a684cdd3bda62f1dd641')
+            '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -47,8 +48,10 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  electronDist="/usr/lib/electron${_electronversion}"
-  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+#  electronDist="/usr/lib/electron${_electronversion}"
+#  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+  electronDist="/usr/lib/electron"
+  electronVer="$(sed s/^v// /usr/lib/electron/version)"
   _ensure_local_nvm
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
