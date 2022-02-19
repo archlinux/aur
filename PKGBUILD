@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: aspen <aspen@aspenuwu.me>
 pkgname=zulip-desktop-electron
 pkgver=5.8.1
