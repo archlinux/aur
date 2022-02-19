@@ -1,60 +1,36 @@
-From 2b724a547f7fa754173d05b198e01c2071236633 Mon Sep 17 00:00:00 2001
-From: Devin Pohl <pohl.devin@gmail.com>
-Date: Thu, 28 Oct 2021 14:57:46 -0600
-Subject: [PATCH] [PATCH] PCI: Quirk Silicon Motion SM2262/SM2263 NVMe
- controller reset
-
-This is a patch upon a patch. The initial patch has the info:
-- https://bugzilla.kernel.org/show_bug.cgi?id=202055
-- commit b5a553a6ed8385eb6cafc1f18c7f9d559850a2e1
-- Author: Alex Williamson <alex.williamson@redhat.com>
-
-Combined, this commit fixes vfio rebinding for NVME controlers that
-use SM2262 and SM2263 controlers. This will allow the vfio-pci driver
-to properly rebind when requested and allow PCIE passthrough of these
-drives.
-
-Updates have been made recently to reflect upstream work.
----
- drivers/pci/pci.c    |  2 +-
- drivers/pci/pci.h    |  1 +
- drivers/pci/quirks.c | 27 +++++++++++++++++++++++++++
- 3 files changed, 29 insertions(+), 1 deletion(-)
-
 diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index a4eb0c042ca3..8efd2abb9539 100644
+index 3d2fb394986a..68d3041766fc 100644
 --- a/drivers/pci/pci.c
 +++ b/drivers/pci/pci.c
-@@ -4995,7 +4995,7 @@ int pci_bridge_secondary_bus_reset(struct pci_dev *dev)
+@@ -5054,7 +5054,7 @@ int pci_bridge_secondary_bus_reset(struct pci_dev *dev)
  }
  EXPORT_SYMBOL_GPL(pci_bridge_secondary_bus_reset);
  
--static int pci_parent_bus_reset(struct pci_dev *dev, int probe)
-+int pci_parent_bus_reset(struct pci_dev *dev, int probe)
+-static int pci_parent_bus_reset(struct pci_dev *dev, bool probe)
++int pci_parent_bus_reset(struct pci_dev *dev, bool probe)
  {
  	struct pci_dev *pdev;
  
 diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-index 93dcdd431072..640d9d26837e 100644
+index 3d60cabde1a1..499b3877e1fe 100644
 --- a/drivers/pci/pci.h
 +++ b/drivers/pci/pci.h
-@@ -35,6 +35,7 @@ int pci_mmap_fits(struct pci_dev *pdev, int resno, struct vm_area_struct *vmai,
- 
- int pci_probe_reset_function(struct pci_dev *dev);
+@@ -36,6 +36,7 @@ int pci_mmap_fits(struct pci_dev *pdev, int resno, struct vm_area_struct *vmai,
+ bool pci_reset_supported(struct pci_dev *dev);
+ void pci_init_reset_methods(struct pci_dev *dev);
  int pci_bridge_secondary_bus_reset(struct pci_dev *dev);
-+int pci_parent_bus_reset(struct pci_dev *dev, int probe);
++int pci_parent_bus_reset(struct pci_dev *dev, bool probe);
  int pci_bus_error_reset(struct pci_dev *dev);
  
- #define PCI_PM_D2_DELAY         200	/* usec; see PCIe r4.0, sec 5.9.1 */
+ struct pci_cap_saved_data {
 diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index 8c3c1ef92171..82255ebd70ca 100644
+index 20a932690738..3148f795d2fe 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3999,6 +3999,30 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, int probe)
+@@ -4036,6 +4036,30 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, bool probe)
  	return 0;
  }
  
-+
 +/*
 + * The Silicon Motion SM2262 is an NVMe controller used by several vendors
 + * which is know to corrupt its MSI-X capability after FLR (PBA offset from
@@ -73,15 +49,16 @@ index 8c3c1ef92171..82255ebd70ca 100644
 + * are the Mushkin Pilot, HP EX920, and Western Digital Black, though it's
 + * not known if any of these override the native device ID as Intel does.
 + */
-+static int prefer_bus_reset(struct pci_dev *dev, int probe)
++static int prefer_bus_reset(struct pci_dev *dev, bool probe)
 +{
 +	return pci_parent_bus_reset(dev, probe);
 +}
 +
++
  static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
  	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF,
  		 reset_intel_82599_sfp_virtfn },
-@@ -4009,6 +4033,9 @@ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
+@@ -4046,6 +4070,9 @@ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
  	{ PCI_VENDOR_ID_SAMSUNG, 0xa804, nvme_disable_and_flr },
  	{ PCI_VENDOR_ID_INTEL, 0x0953, delay_250ms_after_flr },
  	{ PCI_VENDOR_ID_INTEL, 0x0a54, delay_250ms_after_flr },
@@ -91,6 +68,3 @@ index 8c3c1ef92171..82255ebd70ca 100644
  	{ PCI_VENDOR_ID_CHELSIO, PCI_ANY_ID,
  		reset_chelsio_generic_dev },
  	{ PCI_VENDOR_ID_HUAWEI, PCI_DEVICE_ID_HINIC_VF,
--- 
-2.33.1
-

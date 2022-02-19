@@ -1,8 +1,8 @@
 pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	pkgdesc = Linux
-	pkgver = 5.14.10.arch1
-	pkgrel = 4
-	url = https://github.com/archlinux/linux/commits/v5.14.10-arch1
+	pkgver = 5.16.4.arch1
+	pkgrel = 1
+	url = https://github.com/archlinux/linux/commits/v5.16.4-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -21,7 +21,7 @@ pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	makedepends = git
 	makedepends = initramfs
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.14.10-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.16.4-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -31,13 +31,14 @@ pkgbase = linux-x570-vfio-openrgb-sm2262+sm2263
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = cada4ca234a96e1f78da61ad29310bf076523d157ad55aadfc93465d3865c9e3
+	sha256sums = 7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5
 	sha256sums = b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77
 	sha256sums = 856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6
 	sha256sums = 37f306146b1bdf9233c544e87d0e392a8152aab679d0e4145d14f425c0438e23
 	sha256sums = e7d724ac15daf428aa1e6a03737e5c1d040892d55fda8a66897fcac9323f285c
-	sha256sums = 016715498862dcc7c29063c6b6ce9d5e4160eace594f6cb1f20de9783e077bd1
+	sha256sums = df296b890108d6d419c455dd32b37de8b974fdeeb64cc797d6094a12502abdc8
 
 pkgname = linux-x570-vfio-openrgb-sm2262+sm2263
 	pkgdesc = The Linux kernel and modules
