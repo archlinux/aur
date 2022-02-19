@@ -4,7 +4,7 @@
 pkgname=python-demjson
 _pkgname=${pkgname#python-}
 pkgver=2.2.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 7159"
 arch=('any')
 url="https://github.com/dmeranda/demjson"
@@ -14,12 +14,18 @@ makedepends=('python-setuptools')
 provides=('demjson')
 conflicts=('demjson' 'nodejs-jsonlint')
 replaces=('demjson')
-sha256sums=('31de2038a0fdd9c4c11f8bf3b13fe77bc2a128307f965c8d5fb4dc6d6f6beb79')
+sha256sums=('31de2038a0fdd9c4c11f8bf3b13fe77bc2a128307f965c8d5fb4dc6d6f6beb79'
+    'd9610935c5e7ae7256c5c8146d52602466226c746fc3ccb2b84fbed59a7aefee')
 # https://warehouse.pypa.io/api-reference/integration-guide.html#querying-pypi-for-package-urls
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+    "setup.py.patch")
 
 build() {
     cd "$_pkgname-$pkgver"
+    # Remove references to 2to3 (not supported since setuptools v58.0.0)
+    patch -p1 <"$srcdir/setup.py.patch"
+    # Run 2to3 transformations manually
+    2to3 -wn . jsonlint
     python setup.py build
 }
 
