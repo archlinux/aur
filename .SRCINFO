@@ -1,7 +1,7 @@
 pkgbase = qtile-git
 	pkgdesc = A full-featured, pure-Python tiling window manager. (git version)
 	pkgver = 0.20.0.r33.gc1f50739
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.qtile.org
 	install = qtile-git.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = qtile-git
 	checkdepends = python-dbus-next
 	checkdepends = python-gobject
 	checkdepends = python-pytest
-	checkdepends = python-pywlroots>=0.15.8
+	checkdepends = python-pywlroots>=0.15.9
 	checkdepends = python-pywlroots<0.16.0
 	checkdepends = python-xdg
 	checkdepends = python-xvfbwrapper
@@ -29,7 +29,7 @@ pkgbase = qtile-git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = libpulse
-	makedepends = python-pywlroots>=0.15.8
+	makedepends = python-pywlroots>=0.15.9
 	makedepends = python-pywlroots<0.16.0
 	depends = gdk-pixbuf2
 	depends = glibc

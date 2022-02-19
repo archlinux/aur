@@ -3,7 +3,7 @@
 
 pkgname=qtile-git
 pkgver=0.20.0.r33.gc1f50739
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
@@ -26,7 +26,7 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'libpulse'
-  'python-pywlroots>=0.15.8' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
 )
 checkdepends=(
   'dbus'
@@ -40,7 +40,7 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  'python-pywlroots>=0.15.8' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
   'wlroots'
