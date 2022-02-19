@@ -4,13 +4,13 @@ _pluginname=freeze-filter
 pkgname=obs-$_pluginname
 pkgver=0.3.2
 _obsver=27.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Filter to freeze a frame of a source"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/freeze-filter.950/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=575e7e333cf4c9dcb825a72ea4eceb5894c845fd"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
