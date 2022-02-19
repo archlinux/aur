@@ -2,16 +2,16 @@
 
 pkgname=ttf-roboto-serif
 pkgver=1.005
-pkgrel=2
-pkgdesc="A serif typeface designed to work alongside Roboto for interfaces and immersive reading, commissioned by Google from Commercial Type"
+pkgrel=3
+pkgdesc="A variable typeface family designed to create a comfortable and frictionless reading experience"
 arch=('any')
 url="https://fonts.google.com/specimen/Roboto+Serif"
 license=('custom:OFL')
 source=("https://github.com/googlefonts/roboto-serif/releases/download/v$pkgver/RobotoSerifFonts-v$pkgver.zip"
-        OFL.txt
+        "https://github.com/googlefonts/roboto-serif/raw/main/OFL.txt"
         46-roboto-serif.conf)
 sha256sums=('e074f79678fd4f80311184efa37236a96e7b1ff750a23b48214e2372da76d63d'
-            '11a687a1f230f931c4043c9c1b09239d0b1a521e19c39177925212160a6be46f'
+            'f141687500701deabdcff54626718144af27a853a66b6ba13239dbff156d1f06'
             '70da8db8df17d248a08b2b909396e2ce944f0841548ff2a897e564cafe34a1c6')
 
 package() {
