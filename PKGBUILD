@@ -4,13 +4,17 @@
 
 pkgname=unityhub
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 url="https://unity.com/"
 arch=('x86_64')
 license=('custom')
 depends=('nss' 'gtk3')
-optdepends=('libappindicator-gtk3: The DEB says this an optional dependency')
+optdepends=(
+  'libappindicator-gtk3: The DEB says this an optional dependency'
+  'gconf: Used by old editors'
+  'cpio: used for Android build support'
+)
 source=(
   "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.0.1.deb"
   'license.txt'
