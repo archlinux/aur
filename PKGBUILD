@@ -9,16 +9,16 @@ arch=(any)
 url="https://github.com/skorokithakis/$_name"
 license=(MIT)
 depends=(python)
-makedepends=(install-wheel-scripts)
-_pyarch=py2.py3
-_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/3.6/${_name::1}/$_name/$_wheel")
-sha256sums=('3aae41b75e237f2840dde274722b1070ca43d65dd24cf60344bd6d345c77cc3d')
-noextract=("$_wheel")
+makedepends=(python-build python-installer)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('8665d037ac8ad4c97bc44512de91798565b1226f7b2f59669bb7dbe9a1f87718')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
-	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

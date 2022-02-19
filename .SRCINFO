@@ -5,11 +5,10 @@ pkgbase = python-tbvaccine
 	url = https://github.com/skorokithakis/tbvaccine
 	arch = any
 	license = MIT
-	makedepends = install-wheel-scripts
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	noextract = tbvaccine-0.3.1-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/3.6/t/tbvaccine/tbvaccine-0.3.1-py2.py3-none-any.whl
-	sha256sums = 3aae41b75e237f2840dde274722b1070ca43d65dd24cf60344bd6d345c77cc3d
+	source = https://files.pythonhosted.org/packages/source/t/tbvaccine/tbvaccine-0.3.1.tar.gz
+	sha256sums = 8665d037ac8ad4c97bc44512de91798565b1226f7b2f59669bb7dbe9a1f87718
 
 pkgname = python-tbvaccine
-
