@@ -1,7 +1,7 @@
 pkgbase = sys76-kb
 	pkgdesc = RGB keyboardcontroller for System76 laptops
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bambash/sys76-kb
 	arch = x86_64
 	license = unknown
