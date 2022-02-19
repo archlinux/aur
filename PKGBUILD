@@ -10,7 +10,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/scale-to-sound.1336/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "libxcomposite" "ffmpeg"  "pciutils")
+makedepends=("cmake" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Qufyy/obs-scale-to-sound/archive/$pkgver.tar.gz"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
