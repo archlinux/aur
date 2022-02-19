@@ -5,7 +5,7 @@
 
 pkgname=libgnomecups
 pkgver=0.2.3
-pkgrel=16
+pkgrel=17
 pkgdesc='GNOME CUPS library'
 arch=('x86_64' 'i686')
 license=('LGPL' 'GPL')
@@ -27,6 +27,8 @@ prepare() {
   # Gentoo seems to have taken over the development
   patch -Np1 -i "$srcdir/gentoo1.patch"
   patch -Np1 -i "$srcdir/gentoo2.patch"
+
+  sed -i -e s:Werror:wno-error:g configure
 }
 
 build() {
