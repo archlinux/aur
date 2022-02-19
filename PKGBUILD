@@ -2,7 +2,7 @@
 
 pkgname=scanpy
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
 provides=(scanpy python-scanpy)
@@ -40,15 +40,16 @@ optdepends=(
 	'python-scanorama: Scanorama dataset integration algorithm'
 	'python-scrublet: Cell doublet detection'
 )
-makedepends=(install-wheel-scripts)
-_wheel="$pkgname-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('f8c8a07c2bce9923840a215a817d4a293e5a052791ffd2850f5f0b7cb33e21d0')
-noextract=("$_wheel")
+makedepends=(python-build python-installer)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('0c0baa6f08cec50b89b512cef3bfc7f612b215ce02c0fb49cc01c2acfbb2e9bb')
+
+build() {
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation --skip-dependency-check
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "$_wheel" -d "$site"
-	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
+	cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

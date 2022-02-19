@@ -1,11 +1,12 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/theislab/scanpy
 	arch = any
 	license = BSD
-	makedepends = install-wheel-scripts
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-anndata>=0.7.4
 	depends = python-numpy>=1.17.0
 	depends = python-matplotlib>=3.1.2
@@ -36,8 +37,7 @@ pkgbase = scanpy
 	optdepends = python-scrublet: Cell doublet detection
 	provides = scanpy
 	provides = python-scanpy
-	noextract = scanpy-1.8.2-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.8.2-py3-none-any.whl
-	sha256sums = f8c8a07c2bce9923840a215a817d4a293e5a052791ffd2850f5f0b7cb33e21d0
+	source = https://files.pythonhosted.org/packages/source/s/scanpy/scanpy-1.8.2.tar.gz
+	sha256sums = 0c0baa6f08cec50b89b512cef3bfc7f612b215ce02c0fb49cc01c2acfbb2e9bb
 
 pkgname = scanpy
