@@ -4,13 +4,13 @@ _pluginname=scrab
 pkgname=obs-$_pluginname
 pkgver=1.1
 _obsver=27.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Adds a configurable hotkey to quickly select a screen region and add it as an image source to the current scene"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/scrab.845/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname-$pkgver.tar.gz"::"https://github.com/univrsal/$_pluginname/archive/v$pkgver.tar.gz"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
