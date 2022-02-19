@@ -1,7 +1,7 @@
 pkgbase = clocker
 	pkgdesc = Tracks project hours
-	pkgver = 1.20.5
-	pkgrel = 2
+	pkgver = 1.21.0
+	pkgrel = 1
 	url = https://github.com/substack/clocker
 	arch = x86_64
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = clocker
 	makedepends = npm
 	depends = nodejs
 	replaces = nodejs-clocker
-	noextract = clocker-1.20.5.tgz
-	source = https://registry.npmjs.org/clocker/-/clocker-1.20.5.tgz
-	sha256sums = 6d7a932d0c5a16fc818f8dacdac4ff1c901a6194a219603cd956efa5eef1ca27
+	noextract = clocker-1.21.0.tgz
+	source = clocker-1.21.0.tgz::https://registry.npmjs.org/clocker/-/clocker-1.21.0.tgz
+	sha256sums = 11bc97093268ac8dc5b997ee62c5e29cfb094e6a343e53a9f934aade5936ac33
 
 pkgname = clocker
