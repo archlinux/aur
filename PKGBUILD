@@ -1,10 +1,8 @@
-# Maintainer: Gabriel Guldner <gabriel at guldner . eu>
-
-# Contributor: hashworks <mail@hashworks.net>
+# Maintainer: 3lackbyte <3lackbyte at gmail dot com>
 
 pkgname=wiki-js-git
 _pkgname=wiki-js
-pkgver=2.5.170.r23.g06325124
+pkgver=v2.5.275
 pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
@@ -26,7 +24,7 @@ sha256sums=(
 	'SKIP'
 	39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8
 	4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55
-	0924b4ae73e4787ff50f0f21eb43bb2c41e06a2cc03d841de90f95d570d0e7e3
+	e4a40d351a8f9e30163d1224ce168cdcd55ccaf0e7e8db85ad5345067c1dbcdb
 )
 
 pkgver() {
