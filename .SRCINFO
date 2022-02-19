@@ -1,0 +1,15 @@
+pkgbase = obelisk
+	pkgdesc = CLI tool for saving web page as single HTML file
+	pkgver = 0.90
+	pkgrel = 1
+	url = https://github.com/go-shiori/obelisk
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = obelisk::git+https://github.com/go-shiori/obelisk.git#commit=77069341882e2d45c15af83bec39594ae6e37520
+	b2sums = SKIP
+
+pkgname = obelisk
