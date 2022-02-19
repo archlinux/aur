@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-notify
-pkgver=1.19.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc="Notification manager for Neovim"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('neovim-telescope')
 checkdepends=('neovim-plenary')
 install=notify.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('accb5aa26672dee76d1f61e6a3380ee3eb96da9ce6bf4274de40863b256be3a8')
+sha256sums=('7f0734f56e9e0f46ad32b0aded96d029dae63b9be0f06f07130f5b492add0710')
 
 check() {
 	cd "nvim-notify-$pkgver"
