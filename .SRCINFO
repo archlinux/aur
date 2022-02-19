@@ -1,19 +1,19 @@
 pkgbase = ananicy-cpp-nosystemd
-	pkgdesc = Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage.
+	pkgdesc = Ananicy rewritten in C++ for much lower CPU and memory usage.
 	pkgver = 1.0.0.rc5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ananicy-cpp/ananicy-cpp/
 	arch = x86_64
 	arch = i386
 	arch = armv7h
 	license = GPLv3
 	makedepends = cmake
-	makedepends = git
+	makedepends = nlohmann-json
 	depends = fmt
 	depends = spdlog
-	depends = nlohmann-json
 	optdepends = ananicy-rules-git: community rules
+	conflicts = ananicy-cpp
 	source = https://gitlab.com/ananicy-cpp/ananicy-cpp/-/archive/v1.0.0-rc5/ananicy-cpp-v1.0.0-rc5.tar.gz
-	md5sums = 6d8caf9cb384e053df54d795102beb1d
+	sha256sums = 90f4b7ddb49246db2329cfdf5727c1f2caa22285dcbc5b7cdaba6bcf2c946676
 
 pkgname = ananicy-cpp-nosystemd
