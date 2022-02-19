@@ -1,0 +1,12 @@
+diff --unified --recursive --text jbig2enc-0.29.orig/pdf.py jbig2enc-0.29.new/pdf.py
+--- jbig2enc-0.29.orig/pdf.py	2017-01-30 12:27:36.000000000 -0500
++++ jbig2enc-0.29.new/pdf.py	2022-02-18 17:35:32.486793465 -0500
+@@ -162,7 +162,7 @@
+     pages.d.d['Count'] = str(len(page_objs))
+     pages.d.d['Kids'] = '[' + ' '.join([ref(x.id) for x in page_objs]) + ']'
+ 
+-  print str(doc)
++  print(str(doc))
+ 
+ 
+ def usage(script, msg):
