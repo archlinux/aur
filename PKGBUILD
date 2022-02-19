@@ -5,7 +5,7 @@
 
 pkgname=freerdp-gstfree
 pkgver=2.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=(x86_64)
 url="https://www.freerdp.com/"
@@ -43,7 +43,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_INSTALL_LIBDIR=lib
     -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_SKIP_RPATH=ON
     -DPROXY_PLUGINDIR=/usr/lib/freerdp2/server/proxy/plugins
+    -DWITH_X11=ON
+    -DWITH_WAYLAND=ON
     -DWITH_DSP_FFMPEG=ON
     -DWITH_FFMPEG=ON
     -DWITH_PULSE=ON
