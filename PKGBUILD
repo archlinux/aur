@@ -2,14 +2,13 @@
 # Contributor: Patrick Lühne <patrick-arch@luehne.de>
 
 pkgname=python-miio
-pkgver=0.5.9.2
+pkgver=0.5.10
 pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
 arch=('any')
 license=('GPL3')
 depends=(
-	'python>=3.6'
 	'python-appdirs'
 	'python-attrs'
 	'python-click'
@@ -24,32 +23,29 @@ depends=(
 	'python-zeroconf')
 optdepends=('python-android-backup-tools: Android backup extraction support')
 makedepends=(
-	'python-dephell'
-	'python-setuptools'
-	'python-pytest'
+	'python-poetry-core'
+	'python-build'
+	'python-installer'
+	'python-wheel'
 	'python-sphinx'
 	'python-sphinx-click'
 	'python-sphinx_rtd_theme'
 	'python-sphinxcontrib-apidoc')
 install=miio.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('24299524ab2b8e6bab690481f6c27a60da1e4e1e1b1d2b2696ede9972382aa925d4cf3a0f546625550cbf1e3e717a407a064e083e621eacfa0eaf08984ed54f1')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	dephell deps convert --from pyproject.toml --to setup.py
-}
+sha512sums=('5997b973ed9119b0f33ec532fbb90af81cab34e08bbcd3e23b23c0d041b57994712a026ef7f79d7ac242e8db685af4c09b833cd19eea289a5edf85f5717eed3d')
 
 build() {
 	cd "$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 	cd docs
 	PYTHONPATH=../ make man
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --optimize=1 --root="${pkgdir}" --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
 }
