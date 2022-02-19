@@ -4,13 +4,13 @@ _pluginname=media-controls
 pkgname=obs-$_pluginname
 pkgver=0.3.4
 _obsver=27.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Add Media Controls Dock to OBS"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/media-controls.1032/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=f2b7b4284ad8798db57a7e2453e9b3f7e2a408cc"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
