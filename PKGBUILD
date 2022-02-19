@@ -3,18 +3,18 @@
 
 pkgname=mpz
 pkgver=1.0.19
-pkgrel=0
+pkgrel=5
 pkgdesc='Music player for the large local collections'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"
 license=('GPL3')
 depends=('qt5-multimedia' 'qt5-x11extras' 'hicolor-icon-theme')
 provides=('mpz')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/e859f637b381e93adff283bc2b0f46079949c18b.zip")
-sha256sums=('40483dc5b929141e9d1fc165f4ade1b9e8b2ddeb2758845f06c5209d0de3a959')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/e80c52835afb0801840ddf5690f654b7aa05c58c.zip")
+sha256sums=('87d66274d1e92533adf7d25898ac28efa119fc9cc2cdd5d42444b0f13fb6e4b4')
 
 build() {
-    cd $pkgname-e859f637b381e93adff283bc2b0f46079949c18b
+    cd $pkgname-e80c52835afb0801840ddf5690f654b7aa05c58c
 
     rm -rf build
     mkdir build
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-    cd $pkgname-e859f637b381e93adff283bc2b0f46079949c18b
+    cd $pkgname-e80c52835afb0801840ddf5690f654b7aa05c58c
 
     cd build
     make install INSTALL_ROOT=$pkgdir
