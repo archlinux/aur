@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-nexus-nightly
 pkgver=@NPR_VER@
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
 arch=("x86_64")
@@ -21,6 +21,7 @@ optdepends=()
 makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
+	"nextpnr-all-nightly"
 )
 replaces=()
 source=(
@@ -50,14 +51,8 @@ build() {
 	ninja
 }
 
-check() {
-	cd "${srcdir}/nextpnr"
-	ninja -C build-nexus test
-}
-
 package() {
 	cd "${srcdir}/nextpnr"
 	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-nexus install
 	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-nexus/COPYING"
-	cd ..
 }
