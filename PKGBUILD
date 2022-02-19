@@ -1,22 +1,24 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
 license=('Apache')
 makedepends=('go')
-optdepends=('bash-completion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dim-an/cod/archive/v$pkgver.tar.gz")
 sha256sums=('3d8ed6f284afcf4c86a2164e234ab7ff40c50aa6ab0bd892e59f8dc8aef02541')
 
 prepare() {
-  # Prevent creation of a `go` directory in one's home.
-  # Sometimes this directory cannot be removed with even `rm -rf` unless
-  # one becomes root or changes the write permissions.
+  cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
-  go clean -modcache
+
+  # create directory for build output
+  mkdir -p build
+
+  # download dependencies
+  go mod download -x
 }
 
 build() {
@@ -27,13 +29,10 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "${pkgname%-git}" .
-
-  # Clean now to ensure makepkg --clean works
-  go clean -modcache
+  go build -v -o build .
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "build/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
