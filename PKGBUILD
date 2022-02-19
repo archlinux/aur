@@ -11,7 +11,7 @@ _stag_commit=68441b1d9552b1a75c45a981c0a0279d064349fb
 pkgname=wine-ge-custom
 _srctag=7.2-GE-2 
 pkgver=${_srctag//-/.}
-pkgrel=2
+pkgrel=3
 
 #_winever=${pkgver%.*}
 _winever=$pkgver
@@ -172,8 +172,8 @@ build() {
   export CXXFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
-  export CFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
-  export CXXFLAGS+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
+  export CFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
+  export CXXFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf -std=c++17"
 
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
@@ -202,10 +202,8 @@ build() {
   msg2 "Building Wine-32..."
 
   # Disable AVX instead of using 02, for 32bit
-  export CFLAGS+=" -mno-avx -mno-avx2"
-  export CXXFLAGS+=" -mno-avx -mno-avx2"
-  export CFLAGS+=" -mstackrealign"
-  export CXXFLAGS+=" -mstackrealign"
+  export CFLAGS+=" -mstackrealign -mno-avx"
+  export CXXFLAGS+=" -mstackrealign -mno-avx"
   export CROSSCFLAGS="$CFLAGS"
   export CROSSCXXFLAGS="$CXXFLAGS"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"

@@ -1,7 +1,7 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
 	pkgver = 7.2.GE.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GloriousEggroll/wine-ge-custom
 	install = wine.install
 	arch = x86_64
