@@ -5,7 +5,7 @@
 
 # Maintainer: Philipp Hug <arch@hug.cx>
 pkgname=chipsec-dkms-git
-pkgver=v1.2.5.r20.gc377a72
+pkgver=1.8.1.19.g90fc2bec
 pkgrel=1
 epoch=
 pkgdesc="Platform Security Assessment Framework"
@@ -13,12 +13,12 @@ arch=("x86_64")
 url="https://github.com/chipsec/chipsec"
 license=('GPL2')
 groups=()
-depends=('python' 'python2' 'dkms' 'nasm')
+depends=('python' 'dkms' 'nasm')
 makedepends=('git')
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=('chipsec-dkms')
+conflicts=('chipsec-dkms')
 replaces=()
 backup=()
 options=()
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/v\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
