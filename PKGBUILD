@@ -11,7 +11,7 @@
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
 _pkgmajor=2.37
-_realver=${_pkgmajor}.3
+_realver=${_pkgmajor}.4
 pkgver=${_realver/-/}
 pkgrel=1
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
@@ -34,7 +34,7 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${pkgba
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('590c592e58cd6bf38519cb467af05ce6a1ab18040e3e3418f24bcfb2f55f9776'
+sha256sums=('634e6916ad913366c3536b6468e7844769549b99a7b2bf80314de78ab5655b83'
             'SKIP'
             '53395b7e434b32e6fee25f1b6fa59330ab72c1a2f99a17c3d3fd92473379fd9a'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
@@ -55,6 +55,9 @@ prepare() {
 build() {
   cd "${pkgbase/-selinux}-${_realver}"
 
+  # Do no enable raw, as it no longer builds with linux-api-headers 5.16.8-1,
+  # which removed /usr/include/linux/raw.h
+  # cf. https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1820043.html
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
@@ -63,7 +66,6 @@ build() {
     --localstatedir=/var \
     --enable-usrdir-path \
     --enable-fs-paths-default=/usr/bin:/usr/local/bin \
-    --enable-raw \
     --enable-vipw \
     --enable-newgrp \
     --enable-chfn-chsh \
@@ -84,7 +86,7 @@ package_util-linux-selinux() {
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
            'systemd-libs' 'libsystemd.so' 'libudev.so'
            'libcap-ng' 'libxcrypt' 'libcrypt.so' 'util-linux-libs-selinux'
-           'libmagic.so' 'libncursesw.so' 'libreadline.so')
+           'libmagic.so' 'libncursesw.so')
   optdepends=('python: python bindings to libmount'
               'words: default dictionary for look')
   backup=(etc/pam.d/chfn
