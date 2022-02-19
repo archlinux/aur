@@ -1,5 +1,5 @@
 pkgbase = python-asdf-standard
-	pkgdesc = A HTTP and FTP parallel file downloader
+	pkgdesc = Standards document describing ASDF, Advanced Scientific Data Format
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://asdf-standard.readthedocs.io
