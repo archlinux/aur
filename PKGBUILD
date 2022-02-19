@@ -6,7 +6,7 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=twinkle
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc='Softphone for voice over IP and IM communication using SIP'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('ucommon' 'ccrtp' 'libxml2' 'libsndfile' 'imagemagick' 'readline'
 makedepends=('cmake' 'bison' 'flex' 'qt5-tools')
 source=("https://github.com/LubosD/twinkle/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         'G729-API.patch')
-b2sums=('52cfa4f1d31b040db46edadccc43431d04fe71036821a1ef0c5b8803bf7ccf2fcd1d15a8340e583d049c588290a85c8ee07c6738adc599d164f7f606b2f34dc1'
+b2sums=('80b2e91923b2a95d1b727cda5f8ea68c0aac421ea347e7b899a28b9908c3c5c2806a3b11cec9d46002d08c8bcf89221b3fcd56408ec68e191c1f78b67b13bbc4'
         'e86166cc48c46697f5b20bdc3fbd169dcb07214aa47d030d554fe7bd10e79748f88ca2a4a1ce359ba879c1edfe63ffed10cbba9c11b04f6171b491e14b67189c')
 
 prepare() {
