@@ -1,5 +1,5 @@
 pkgbase = proctl
-	pkgdesc = Shell System Information Fetcher
+	pkgdesc = Github Project Manager
 	pkgver = 2022.02.19
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/proctl

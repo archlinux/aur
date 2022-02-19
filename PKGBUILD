@@ -5,7 +5,7 @@
 pkgname=proctl
 pkgver=2022.02.19
 pkgrel=1
-pkgdesc="Shell System Information Fetcher"
+pkgdesc="Github Project Manager"
 arch=('any')
 groups=('therepoclub')
 url="https://github.com/The-Repo-Club/$pkgname"
