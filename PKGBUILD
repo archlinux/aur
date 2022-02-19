@@ -4,13 +4,13 @@ _pluginname=source-switcher
 pkgname=obs-$_pluginname
 pkgver=0.4.0
 _obsver=27.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for OBS Studio to add a source that switches between a list of sources"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/source-switcher.941/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=c83d7d2a497a4c7629e47508309a399a8b83aa06"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
