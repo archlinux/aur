@@ -1,0 +1,18 @@
+pkgbase = qspng-git
+	pkgdesc = Qt image plugin using libspng for fast PNG decoding
+	pkgver = r26.a68658f
+	pkgrel = 1
+	url = https://invent.kde.org/sandsmark/qspng
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = libspng
+	provides = qspng
+	conflicts = qspng
+	source = git+https://invent.kde.org/sandsmark/qspng.git
+	md5sums = SKIP
+
+pkgname = qspng-git
