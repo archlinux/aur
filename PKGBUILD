@@ -1,9 +1,9 @@
 # Contributor: Linux Gamers <linuxgamers@protonmail.com>
-_version=20220218-5f192fe62
+_version=20220219-60c527fd0
 pkgname=yuzu-mainline-bin
 provides=('yuzu' 'yuzu-cmd')
 conflicts=('yuzu' 'yuzu-git' 'yuzu-canary-git' 'yuzu-mainline-git')
-pkgver=0.922
+pkgver=0.923
 pkgrel=1
 pkgdesc="Nintendo Switch emulator - mainline branch"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${url}/releases/download/mainline-${pkgver/./-}/yuzu-linux-${_version}.
         # icon and desktop from upstream not included in sources
         "yuzu.svg"
         "yuzu.desktop")
-sha512sums=('7f202183e063f33ec5224f574426583f460cdf84150cc89ef0f98a7a52794ba8196c7dfda01c04a10edc6574c5bb24de25eee9ea2931a9dcae4b73d8c46a0cd1'
+sha512sums=('b044794004c6131e373242fa8b0f60d36c24837df3faf75e7ae8d541b6f2e005b394a2356a8394c16ac5d7186e0d7198b070f4d9be6b049f0bedc4aa3db5d6b5'
             '8e9f442436bd5f89a99c902960b51a3dd124ba17119422cca1ae792da0bcf3c757862bc88cb3d229b1f6a3b8b36c73f47f2c7266a11f91ebb38265777a2ba6b3'
             '5cb469f178e0a22f249240f8ce26027ba87ebf8b57fd584917c35eb51860a1bc49090d6abaa5d5dc1dded13f78236f15f28cd0e2697f9e509286cb573e1a20c2')
 package() {
