@@ -1,6 +1,6 @@
 pkgname=carla-bridges-win64
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="Carla Windows VST 64-Bit Bridge (Stable)"
 arch=('x86_64')
 url="http://kxstudio.sf.net/carla"
@@ -9,8 +9,9 @@ conflicts=('carla-bridges-win64' 'carla-bridges-win')
 provides=('carla-bridges-win64')
 depends=('mingw-w64-winpthreads' 'wine' 'carla')
 makedepends=('git' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'gcc-multilib')
-source=("$pkgname"::"git://github.com/falkTX/Carla.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("https://github.com/falkTX/Carla/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('70b53ed681565a59398b3626c5aff2ccd46c6fe55c6f22796408d0b851620e6f0a502b6122df10a189d7706ca9baf471bbc735c14eacf610f3257ec0409eae65')
+b2sums=('600e0d640cea1781f3288f5a92058e2417021b6831df78264d0f6b2a9546e19d3ecb175482a95655efa3cf3b26f98f456f459cda91ca976913c0fa3eab3b0a2e')
 
   _path=$PATH
   _cflags=$CFLAGS
@@ -24,6 +25,7 @@ md5sums=('SKIP')
   _win64=$WIN64
 
 build() {
+  cd "$srcdir/Carla-${pkgver}"
   export PATH=/usr/x86_64-w64-mingw32/bin:$PATH
   export AR=x86_64-w64-mingw32-ar
   export CC=x86_64-w64-mingw32-gcc
@@ -35,7 +37,6 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
   export LDFLAGS="-static"
-  cd "$srcdir/$pkgname"
   make -j$(nproc) win64 HAVE_LIBLO=false
   export PATH=$_path
   export AR=$_ar
@@ -52,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/Carla-${pkgver}"
   mkdir -p "$pkgdir/usr/lib/carla"
   cp bin/*.exe "$pkgdir/usr/lib/carla/"
   cp bin/*.dll "$pkgdir/usr/lib/carla/"
