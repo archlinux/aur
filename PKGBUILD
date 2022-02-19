@@ -3,7 +3,7 @@
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
 pkgver=1.5.0.r9.377b4c8
-pkgrel=1
+pkgrel=2
 _kver=5.15
 pkgdesc="eBPF process monitor module for opensnitch"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${_pkgname}"
-  git describe --long | sed 's/^v//;s/rc\.[0-9]*-//;s/\([^-]*-\)g/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/-rc./rc/;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
