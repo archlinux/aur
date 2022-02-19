@@ -1,7 +1,7 @@
 # Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=astrometry.net
-pkgver=0.88
+pkgver=0.89
 pkgrel=1
 pkgdesc="Automatic recognition of astronomical images"
 arch=('i686' 'x86_64')
@@ -21,7 +21,10 @@ prepare() {
 
 build() {
     cd ${pkgname}-${pkgver}
-    make SYSTEM_GSL=yes all py extra
+    make -C util config
+    make SYSTEM_GSL=yes all
+    make SYSTEM_GSL=yes py
+    make SYSTEM_GSL=yes extra
 }
 
 package() {
@@ -41,4 +44,4 @@ package() {
     rm ${pkgdir}/usr/bin/fitscopy
     rm ${pkgdir}/usr/bin/imcopy
 }
-md5sums=('6bbd5d6db9a24f019326ea37508f752a')
+md5sums=('e3ec7ddea3b0190e71024f16a89e78d1')
