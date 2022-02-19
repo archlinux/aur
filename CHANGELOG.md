@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased
+## 2.1.2
+
+### Fixed
+- Fixed `LasHeader.update` (thus fixing `LasData.update_header`) computation of x,y,z mins and maxs
+- Fixed regression introduced in 2.1.0 where changing the `header.scales` and/or `header.offsets`
+  on a `LasData` newly created  and then setting `x` `y` or `z` would produce incorrect result.
 
 ## 2.1.1
 

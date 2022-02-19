@@ -4,7 +4,7 @@
 pkgname=python-laspy
 pkgdesc="Pythonic interface for .LAS LIDAR files"
 url="https://github.com/laspy/laspy"
-pkgver=2.1.1
+pkgver=2.1.2
 _commit=d5d4361
 pkgrel=1
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
 	'python-m2r2'
 	'python-setuptools'
 	'python-build'
-	'python-install'
+	'python-installer'
 	'python-wheel'
 	'python-sphinx'
 	'python-sphinx_rtd_theme')
@@ -34,7 +34,7 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 docs/_build/man/laspy.1 -t "$pkgdir/usr/share/man/man1/"
 }
