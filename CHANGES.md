@@ -1,12 +1,20 @@
 LibCYAML: Change Log
 ====================
 
+## LibCYAML v1.3.1
+
+* **Loading**:
+  * Fixed value out-of-range detection limits for signed integers.
+
+No changes are required for client applications to upgrade.
+
+
 ## LibCYAML v1.3.0
 
 * **Saving**:
   * New flags allow control over scalar output style.
     - For example to force single or double quote style.
-* **General**
+* **General**:
   * Buildsystem changes to allow use of CPPFLAGS from the environment.
 
 No changes are required for client applications to upgrade.
