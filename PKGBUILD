@@ -1,27 +1,68 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-all-nightly
-pkgver=fd2d4a8f_20211125
+pkgver=20220219_347ba3a
 pkgrel=1
 epoch=1
-pkgdesc="nextpnr portable FPGA place and route tool - all"
-arch=("any")
+pkgdesc="nextpnr portable FPGA place and route tool - all FPGA architectures"
+arch=("x86_64")
 url="https://github.com/YosysHQ/nextpnr"
 license=("custom:ISC")
 groups=()
 options=("!strip")
 depends=(
-	"nextpnr-ice40-nightly>=fd2d4a8f_20211125"
-	"nextpnr-ecp5-nightly>=fd2d4a8f_20211125"
-	"nextpnr-nexus-nightly>=fd2d4a8f_20211125"
-	"nextpnr-generic-nightly>=fd2d4a8f_20211125"
+	"yosys-nightly"
+	"prjtrellis-nightly"
+	"icestorm-nightly"
+	"prjoxide-nightly"
+	"python"
+	"boost-libs"
+	"qt5-base"
 )
-
+optdepends=()
+makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
+	"nextpnr-ice40-nightly"
+	"nextpnr-ecp5-nightly"
+	"nexrpnr-nexus-nightly"
+	"nextpnr-generic-nightly"
+)
+replaces=()
+source=(
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=347ba3a"
+)
+sha256sums=(
+	"SKIP"
 )
 
+_PREFIX="/usr"
+prepare() {
+	cd "${srcdir}/nextpnr"
+	[ ! -d "${srcdir}/nextpnr/build-all" ] && mkdir build-all
+}
+
+build() {
+	cd "${srcdir}/nextpnr"
+	cd build-all
+		cmake -G Ninja        \
+			-DARCH=generic,ice40,ecp5,nexus \
+			-DBUILD_PYTHON=ON \
+			-DBUILD_GUI=ON    \
+			-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+			-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
+			-DUSE_OPENMP=ON	\
+			..
+	ninja
+}
+
+check() {
+	cd "${srcdir}/nextpnr"
+	ninja -C build-all test
+}
 
 package() {
-	echo "nya"
+	cd "${srcdir}/nextpnr"
+	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ecp5 install
+	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr/COPYING"
 }
