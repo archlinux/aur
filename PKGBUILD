@@ -1,6 +1,6 @@
 # Maintainer: Philipp Hug <arch@hug.cx>
 pkgname=chipsec-git
-pkgver=v1.2.5.r20.gc377a72
+pkgver=1.8.1.r19.g90fc2bec
 pkgrel=1
 epoch=
 pkgdesc="Platform Security Assessment Framework"
@@ -8,12 +8,12 @@ arch=("x86_64")
 url="https://github.com/chipsec/chipsec"
 license=('GPL2')
 groups=()
-depends=('python' 'python2' 'chipsec-dkms-git' 'python2-setuptools' 'make')
+depends=('python' 'chipsec-dkms' 'python-setuptools' 'make')
 makedepends=('git')
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=('chipsec')
+conflicts=('chipsec')
 replaces=()
 backup=()
 options=()
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	python2 setup.py build
+	python setup.py build
 }
 
 check() {
@@ -44,5 +44,5 @@ check() {
 
 package() {
 	cd "$pkgname"
-	python2 setup.py install --root="$pkgdir/"
+	python setup.py install --root="$pkgdir/"
 }
