@@ -4,7 +4,7 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.65
+pkgver=2.1.66
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -14,8 +14,8 @@ depends=('python')
 makedepends=(
 	'git'
 	'python-build'
-	'python-install'
-	'python-flit'
+	'python-installer'
+	'python-flit-core'
 	'python-sphinx')
 # checkdepends=('python-pytest-runner' 'python-pkginfo')
 changelog=CHANGES.rst
@@ -27,10 +27,7 @@ validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
 
 build() {
 	cd "$pkgname"
-	python -m build \
-		--wheel \
-		--skip-dependency-check \
-		--no-isolation
+	python -m build --wheel --skip-dependency-check --no-isolation
 	cd docs
 	make man
 }
@@ -45,9 +42,6 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m install \
-		--optimize=1 \
-		--destdir="$pkgdir/" \
-		dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }
