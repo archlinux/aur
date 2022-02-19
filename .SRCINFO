@@ -1,7 +1,7 @@
 pkgbase = ovh-ttyrec-git
 	pkgdesc = Enhanced (but compatible) version of the classic ttyrec
 	pkgver = v1.1.6.7.r1.ga13ca74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ovh/ovh-ttyrec
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,8 @@ pkgbase = ovh-ttyrec-git
 	depends = zstd
 	conflicts = ttyrec
 	source = git+https://github.com/ovh/ovh-ttyrec#branch=master
+	source = 0001-Makefile.in-remove-upstream-flags.patch
 	sha256sums = SKIP
+	sha256sums = 8a1ee5e8ab5eb0207e3ba0d3d85cc12399ee52f883c43324b21735498fedcf54
 
 pkgname = ovh-ttyrec-git
-

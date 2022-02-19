@@ -1,0 +1,51 @@
+From a8f34c2e53cc87de3b2286552ac09060c3ca6dd0 Mon Sep 17 00:00:00 2001
+From: Joe Baldino <pedanticdm@gmx.us>
+Date: Mon, 10 Jan 2022 06:17:31 +0000
+Subject: [PATCH] Makefile.in: remove upstream flags
+
+Let MAKEPKG set these.
+
+Signed-off-by: Joe Baldino <pedanticdm@gmx.us>
+---
+ Makefile.in | 4 ++--
+ configure   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 3b2a6c6f1f4b..1225e84a83cc 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -1,6 +1,6 @@
+ CC ?= %CC%
+-CFLAGS += -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -I/usr/local/include %CFLAGS% $(RPM_OPT_FLAGS)
+-LDFLAGS += -L/usr/local/lib
++CFLAGS += %CFLAGS% $(RPM_OPT_FLAGS)
++LDFLAGS +=
+ LDLIBS += %LDLIBS% %PTHREAD%
+ 
+ BINARIES = ttyrec ttyplay ttytime
+diff --git a/configure b/configure
+index 34f912ecc1d6..8cdf0ec55de9 100755
+--- a/configure
++++ b/configure
+@@ -44,7 +44,7 @@ fi
+ 
+ os=$(uname -s)
+ if [ "$os" = Linux ]; then
+-    CFLAGS="$CFLAGS -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENDED -D_GNU_SOURCE -pipe"
++    CFLAGS="$CFLAGS -D_XOPEN_SOURCE=600 -D_XOPEN_SOURCE_EXTENDED -D_GNU_SOURCE"
+ elif [ "$os" = NetBSD ]; then
+     true
+ elif [ "$os" = FreeBSD ]; then
+@@ -240,7 +240,7 @@ fi
+ echo "Checking for supported compiler options..."
+ for w in -Wall -Wextra -pedantic -Wno-unused-result -Wbad-function-cast -Wmissing-declarations \
+     -Wmissing-prototypes -Wnested-externs -Wold-style-definition -Wstrict-prototypes \
+-    -Wpointer-sign -Wmissing-parameter-type -Wold-style-declaration -Wl,--as-needed \
++    -Wpointer-sign -Wmissing-parameter-type -Wold-style-declaration \
+     -Wno-unused-command-line-argument
+ do
+     echo 'int main(void) { return 0; }' >"$srcfile.c"
+-- 
+2.35.1
+
