@@ -1,0 +1,14 @@
+pkgbase = cert-viewer
+	pkgdesc = Admin toolkit to check x509 certs
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/mgit-at/cert-viewer
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	source = https://github.com/mgit-at/cert-viewer/archive/v0.9.0/cert-viewer-0.9.0.tar.gz
+	sha256sums = f192aee928388b3bc6c78f49b43f777f51175b7331692457d6673055b85704bb
+
+pkgname = cert-viewer
