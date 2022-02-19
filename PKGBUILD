@@ -3,13 +3,11 @@
 # Maintainer of emacs-pgtk-native-comp: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 
 ################################################################################
-# The difference between this PKGBUILD and the one from `emacs-git` is that:
-# - this one builds emacs from flatwhatson's `pgtk-nativecomp` branch, which
-#   contains an up-to-date merge of masm11 and fejfighter's pgtk work with
-#   the feature/native-comp branch from the official emacs repo.
+# This PKGBUILD features:
 # - the pure-GTK3 rendering backend is enabled.
-# - the xwidgets webkit2gtk is disabled for xwidgets doesn't support pgtk.
-# - link-time optimization is enabled by default.
+# - the xwidgets is enabled (you can surf the Internet via 
+#   a modern browser(webkit) in Emacs!).
+# - link-time optimization is disabled by default.
 # - enalbe JIT and AOT compilation of emacs-lisp, which
 #   means built-in packages and your own packages are 
 #   native compiled by default.
@@ -103,8 +101,8 @@ if [[ $CLI == "YES" ]] ; then
 else
 pkgname="emacs-native-comp-git-enhanced"
 fi
-pkgver=29.0.50.153049
-pkgrel=2
+pkgver=29.0.50.154541
+pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
