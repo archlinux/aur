@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -26,6 +26,7 @@ sha256sums=('9624160ba542fb51bbd959d8c68b76f82ea324a6186d8d6d544b0efd8c9cc8ca'
 
 prepare() {
   cd "$pkgname-$pkgver"
+  export GOPATH="$srcdir/gopath"
 
   # create directory for build output
   mkdir -p build
@@ -36,6 +37,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
