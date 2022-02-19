@@ -32,7 +32,10 @@ makedepends=(# "Meta" dependencies
              # Aseprite (including e.g. LAF)
              libxi
              # Skia
-             gn harfbuzz-icu)
+             gn harfbuzz-icu
+             # TODO: Benchmark clang v gcc
+             # clang
+             )
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "git+https://github.com/aseprite/skia.git#branch=aseprite-m96"
