@@ -1,12 +1,11 @@
 pkgbase = camset
 	pkgdesc = GUI for v4l2-ctl
 	pkgver = 0.0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/azeam/camset
 	arch = any
 	license = GPL3
-	makedepends = install-wheel-scripts
-	makedepends = unzip
+	makedepends = python-installer
 	depends = python
 	depends = python-opencv
 	depends = python-gobject
