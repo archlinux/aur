@@ -3,14 +3,14 @@
 
 _pkgname=FishFight
 pkgname=fishfight-git
-pkgver=0.4.1.r9.g59c082a
+pkgver=0.4.1.r13.g187abc3
 pkgrel=1
 pkgdesc="A tactical 2D shooter game"
 arch=('x86_64')
 url="https://github.com/fishfight/FishFight"
 license=('MIT' 'Apache')
-depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib')
-makedepends=('cargo' 'git' 'cmake')
+depends=('pkg-config' 'libx11' 'libxi' 'mesa-libgl' 'alsa-lib' 'systemd-libs' 'libudev.so')
+makedepends=('cargo' 'git' 'systemd')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}"
