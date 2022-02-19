@@ -5,7 +5,7 @@ pkgver=@OXIDE_VER@
 pkgrel=1
 epoch=1
 pkgdesc="Documenting Lattice's 28nm FPGA parts"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/gatecat/prjoxide"
 license=("custom:ISC")
 groups=()
@@ -16,12 +16,10 @@ makedepends=("git" "cargo")
 conflicts=(
 	"prjoxide-git"
 )
-replaces=(
-	"prjoxide-git"
-)
+replaces=()
 source=(
-	"prjoxide::git+https://github.com/gatecat/prjoxide.git"#commit=@OXIDE_HASH@
-	"prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git"#commit=@DB_HASH@
+	"prjoxide::git+https://github.com/gatecat/prjoxide.git#commit=@OXIDE_HASH@"
+	"prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git#commit=@DB_HASH@"
 )
 sha256sums=(
 	"SKIP"
@@ -35,13 +33,11 @@ prepare() {
 	git submodule init
 	git config submodule.database.url "$srcdir/prjoxide-db"
 	git submodule update
-	cd ..
 }
 
 build() {
 	cd "${srcdir}/prjoxide/libprjoxide"
 	cargo build --release
-	cd ..
 }
 
 package() {

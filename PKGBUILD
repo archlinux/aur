@@ -1,11 +1,11 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjoxide-nightly
-pkgver=318331f_20211125
+pkgver=20220219_318331f
 pkgrel=1
 epoch=1
 pkgdesc="Documenting Lattice's 28nm FPGA parts"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/gatecat/prjoxide"
 license=("custom:ISC")
 groups=()
@@ -16,12 +16,10 @@ makedepends=("git" "cargo")
 conflicts=(
 	"prjoxide-git"
 )
-replaces=(
-	"prjoxide-git"
-)
+replaces=()
 source=(
-	"prjoxide::git+https://github.com/gatecat/prjoxide.git"#commit=318331f
-	"prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git"#commit=48cb553
+	"prjoxide::git+https://github.com/gatecat/prjoxide.git#commit=318331f"
+	"prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git#commit=48cb553"
 )
 sha256sums=(
 	"SKIP"
@@ -35,13 +33,11 @@ prepare() {
 	git submodule init
 	git config submodule.database.url "$srcdir/prjoxide-db"
 	git submodule update
-	cd ..
 }
 
 build() {
 	cd "${srcdir}/prjoxide/libprjoxide"
 	cargo build --release
-	cd ..
 }
 
 package() {
