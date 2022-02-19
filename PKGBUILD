@@ -14,7 +14,7 @@ depends=('bash' 'coreutils')
 optdepends=('git: generating default config automatically' 'fzf: -pick-license, -pick-language, -new-template flags' 'ncurses: for the colors')
 makedepends=('git')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('3332ed684d43e0a77e355d3de9537ed9bd20f1fd528bc852d0f790498436971e')
+sha256sums=('bf88ccacbd9182bbac97b216d8229622f25804970ee7b648f12b921817c6d94c')
 
 package() {
   cd "$pkgname-$pkgver"
