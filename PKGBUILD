@@ -2,12 +2,12 @@
 
 pkgname=python-kosmorrolib
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A library to compute the ephemerides'
 
 depends=('python'
          'python-skyfield>=1.21' 'python-skyfield<2.0'
-         'python-skyfield-data>=3.0.0' 'python-skyfield-data<4.0.0'
+         'python-skyfield-data>=3.0.0' 'python-skyfield-data<5.0.0'
          'python-dateutil>=2.8.0' 'python-dateutil<3.0.0'
         )
 
