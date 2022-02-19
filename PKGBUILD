@@ -2,7 +2,7 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='CLI for Globus'
 arch=('any')
@@ -14,7 +14,12 @@ depends=(
 	'python-jmespath=0.10.0'
 	'python-requests'
 	'python-cryptography')
-makedepends=('python-setuptools' 'git')
+makedepends=(
+	'git'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel')
 replaces=('python-globus-cli')
 changelog=changelog.adoc
 source=("$pkgname::git+https://github.com/globus/globus-cli#tag=$pkgver?signed")
@@ -23,10 +28,11 @@ validpgpkeys=('FC694E40DC03A8B702D96372CF7E843C41E814C9')
 
 build() {
 	cd "$pkgname"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 }

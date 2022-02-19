@@ -2,6 +2,26 @@
 
 // scriv-insert-here
 
+== 3.3.0 (2022-02-18)
+
+Enhancements:
+
+* Add Globus Search commands for managing index roles. These are
+  `globus search index role list`, `globus search index role create`, and
+  `globus search index role delete`
+
+* Added new commands for manipulating groups
+** `globus group create` creates a new group
+** `globus group show` shows group information
+** `globus group update` updates group name or description
+** `globus group delete` deletes a group
+
+Bugfixes:
+
+* Update the version of `globus-sdk` used, fixing an issue which caused
+  `globus task show --skipped-errors` and
+  `globus task show --successful-transfers` to only show partial output
+
 == 3.2.0 (2022-01-13)
 
 Enhancements:
