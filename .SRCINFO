@@ -1,6 +1,6 @@
 pkgbase = shellfetch
 	pkgdesc = Shell System Information Fetcher
-	pkgver = 2022.02.17
+	pkgver = 2022.02.19
 	pkgrel = 1
 	url = https://github.com/The-Repo-Club/shellfetch
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = shellfetch
 	depends = bash
 	depends = xorg-xrandr
 	depends = figlet
-	source = shellfetch-2022.02.17.tar.gz::https://github.com/The-Repo-Club/shellfetch/archive/2022.02.17.tar.gz
-	sha256sums = a7484f8f89f7082557ac45091745d3d0d47ce667ff848f2561727bd671f7b8da
+	depends = ncurses
+	source = shellfetch-2022.02.19.tar.gz::https://github.com/The-Repo-Club/shellfetch/archive/2022.02.19.tar.gz
+	sha256sums = 8ccb32af3d73ac39e51840b6bca551b18d858692202533743f2f3f39f878073c
 
 pkgname = shellfetch
