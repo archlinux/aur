@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -25,11 +25,13 @@ sha256sums=('9624160ba542fb51bbd959d8c68b76f82ea324a6186d8d6d544b0efd8c9cc8ca'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
 prepare() {
-  # Prevent creation of a `go` directory in one's home.
-  # Sometimes this directory cannot be removed with even `rm -rf` unless
-  # one becomes root or changes the write permissions.
-  export GOPATH="$srcdir/gopath"
-  go clean -modcache
+  cd "$pkgname-$pkgver"
+
+  # create directory for build output
+  mkdir -p build
+
+  # download dependencies
+  go mod download -x
 }
 
 build() {
@@ -39,18 +41,15 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v "./cmd/$pkgname"
+  go build -o build -v "./cmd/$pkgname"
 
   # Generate man page
   pandoc -s -t man "doc/$pkgname.1.md" -o "doc/$pkgname.1"
-
-  # Clean mod cache for makepkg -C
-  go clean -modcache
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm755 "build/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm755 "scripts/$pkgname.bash" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
   install -Dm755 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/completions"
