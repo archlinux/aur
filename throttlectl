@@ -77,7 +77,8 @@ check_backlight() {
 }
 
 throttle_nvpm() {
-  printf "nvidia-settings not found; only nvidia currently supported" || \
+  [[ -z "$(command -v nvidia-settings)" ]] && \
+    printf "nvidia-settings not found; only nvidia currently supported" || \
     DISPLAY=":0.0" nvidia-settings -a [gpu:0]/GPUPowerMizerMode="${NVPM}" > /dev/null &
 }
 
@@ -269,8 +270,7 @@ while (( "$#" )); do
           cut|off|powersave|start) NVPM="0"; SHIFT="2" ;; \
           full|on|performance|stop) NVPM="1"; SHIFT="2" ;; \
           check|status) check_nvpm; SHIFT="2" ;; esac
-      [[ -n "${NVPM}" ]] && [[ -z "$(command -v nvidia-settings)" ]] && \
-            throttle_nvpm
+      [[ -n "${NVPM}" ]] && throttle_nvpm
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset NVPM SHIFT
     ;;
