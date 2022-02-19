@@ -1,7 +1,20 @@
 post_install() {
   printf "%s" "\
-Please install at least one wayland native dmenu like backend to use tessen.
-The suggested backends are 'bemenu' and 'fuzzel'. However,
-'rofi-lbonn-wayland-git' and 'wofi' will also work.
+tessen needs at least one
+
+- pass backend (pass or gopass)
+- wayland native dmenu backend (wayland fork of rofi, fuzzel, bemenu, wofi)
+- action backend (wtype, wl-clipboard)
+
+to work. Please install the backends you prefer to use after installing tessen.
+"
+}
+
+post_upgrade() {
+  printf "%s" "\
+tessen "$1" has some breaking changes since "$2" was released. Please consult
+the man page of tessen or the CHANGELOG.md file on GitHub for more details.
+
+https://github.com/ayushnix/tessen/blob/v2.0.0/CHANGELOG.md#200---2022-02-19
 "
 }
