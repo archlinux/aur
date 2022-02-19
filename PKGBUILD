@@ -1,11 +1,11 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=icestorm-nightly
-pkgver=83b8ef9_20211125
+pkgver=20220219_8fa85d5
 pkgrel=1
 epoch=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/YosysHQ/icestorm"
 license=("custom:ISC")
 groups=()
@@ -14,9 +14,9 @@ depends=("python" "libftdi-compat")
 optdepends=()
 makedepends=("git" "make" "gcc")
 conflicts=("icestorm-git")
-replaces=("icestorm-git")
+replaces=()
 source=(
-	"icestorm::git+https://github.com/YosysHQ/icestorm.git"#commit=83b8ef9
+	"icestorm::git+https://github.com/YosysHQ/icestorm.git#commit=8fa85d5"
 )
 sha256sums=(
 	"SKIP"
@@ -25,13 +25,17 @@ sha256sums=(
 _PREFIX="/usr"
 build() {
 	cd "${srcdir}/icestorm"
-	make CXX=g++ PREFIX="${_PREFIX}" -j $(nproc)
-	cd ..
+	make CXX=g++ PREFIX="${_PREFIX}"
+
+}
+
+check() {
+	cd "${srcdir}/icestorm"
+	make CXX=g++ PREFIX="${_PREFIX}" test
 }
 
 package() {
 	cd "${srcdir}/icestorm"
 	make PREFIX="${_PREFIX}" DESTDIR="${pkgdir}" install
 	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/icestorm/LICENSE"
-	cd ..
 }
