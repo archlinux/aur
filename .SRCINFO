@@ -1,0 +1,17 @@
+pkgbase = ukey2-git
+	pkgver = r34.c2436e5
+	pkgrel = 1
+	url = https://github.com/google/ukey2
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	depends = protobuf
+	depends = abseil-cpp
+	depends = openssl
+	source = git+https://github.com/google/ukey2.git
+	source = ukey2_use_shared.patch
+	sha256sums = SKIP
+	sha256sums = 7be2c60f78fa4bbfb7c289b643a3c29284ac2d4422ed21872a67566383f93e79
+
+pkgname = ukey2-git

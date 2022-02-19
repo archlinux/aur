@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive --text ukey2.orig/src/main/cpp/src/securegcm/CMakeLists.txt ukey2.new/src/main/cpp/src/securegcm/CMakeLists.txt
+--- ukey2.orig/src/main/cpp/src/securegcm/CMakeLists.txt	2022-02-19 14:57:02.096769082 -0600
++++ ukey2.new/src/main/cpp/src/securegcm/CMakeLists.txt	2022-02-19 14:57:33.507097873 -0600
+@@ -12,7 +12,7 @@
+ # See the License for the specific language governing permissions and
+ # limitations under the License.
+ 
+-add_library(ukey2 STATIC
++add_library(ukey2
+   d2d_connection_context_v1.cc
+   d2d_crypto_ops.cc
+   java_util.cc
