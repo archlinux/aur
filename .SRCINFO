@@ -1,15 +1,15 @@
 pkgbase = python-modulegraph
 	pkgdesc = determines a dependency graph between Python modules primarily by bytecode analysis for import statements
 	pkgver = 0.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ronaldoussoren/modulegraph
 	arch = any
 	license = MIT
-	makedepends = install-wheel-scripts
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-altgraph
-	noextract = modulegraph-0.19.2-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/m/modulegraph/modulegraph-0.19.2-py2.py3-none-any.whl
-	sha256sums = 7985a8b3d97307b26e1872949973239b273602a041a3e2caedf80bc640909991
+	source = https://files.pythonhosted.org/packages/source/m/modulegraph/modulegraph-0.19.2.tar.gz
+	sha256sums = 14c59c10874001aa9c1d527f114870991c0d8dfc6baf6c7e27f885df794a8239
 
 pkgname = python-modulegraph

@@ -1,24 +1,24 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 _name=modulegraph
-pkgname=python-modulegraph
+pkgname=python-$_name
 pkgver=0.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc='determines a dependency graph between Python modules primarily by bytecode analysis for import statements'
 arch=('any')
 url="https://github.com/ronaldoussoren/$_name"
 license=(MIT)
 depends=(python python-altgraph)
-makedepends=(install-wheel-scripts)
-_pyarch=py2.py3
-_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('7985a8b3d97307b26e1872949973239b273602a041a3e2caedf80bc640909991')
-noextract=("$_wheel")
+makedepends=(python-build python-installer)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('14c59c10874001aa9c1d527f114870991c0d8dfc6baf6c7e27f885df794a8239')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
-	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
