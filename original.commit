@@ -1,0 +1,22 @@
+This is an automatically generated copy of the package, originally from https://github.com/amstan/MiSTerArch:
+commit b2dec64d905b21292f46da4087060aeafe044806
+Author: Alexandru M Stan <alex@hypertriangle.com>
+Date:   Thu Feb 10 14:58:59 2022 -0800
+
+    mister-menu and mister-bin now repackaged from newer sources
+    
+    Seems like I was confused where to grab the freshest prebuilts from MiSTer.
+    
+    Split the mister/ package into 2 where each just grabs the binary
+    from MiSTer's github.
+    
+    Seems that the old mister/mister-menu-20211112-2-armv7h.pkg.tar version
+    was deceiving, it actually contains the same file from the properly
+    labeled mister-menu/mister-menu-20210315-1-any.pkg.tar. No need to
+    "update" though, it's a noop essentially, when the mister-menu version
+    catches up it'll work just fine from there on.
+    
+    mister-bin did get a version bump to 20220206-1.
+    
+    BUG=Closes Issue #3
+    TEST=Install, reboot, systemctl status MiSTer

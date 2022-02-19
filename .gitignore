@@ -1,0 +1,13 @@
+# source files downloaded from MiSTer releases
+*.zip
+*.7z
+*.rar
+*.rbf
+
+# Ignore everything that gets build
+src/
+pkg/
+*.pkg*
+
+# aur git repos that are automatically managed
+aur/

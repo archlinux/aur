@@ -1,0 +1,11 @@
+pkgbase = mister-menu
+	pkgdesc = FPGA bitstream loaded by uboot which shows the MiSTer menu
+	pkgver = 20210315
+	pkgrel = 1
+	url = https://github.com/MiSTer-devel/Menu_MiSTer
+	arch = any
+	license = GPL
+	source = https://github.com/MiSTer-devel/Menu_MiSTer/raw/master/releases/menu_20210315.rbf
+	sha256sums = 83fd161ebf925a41a0d28ab64805d0c4f1e6b1a1927027b49376c9fe43d040d9
+
+pkgname = mister-menu
