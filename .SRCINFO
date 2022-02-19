@@ -1,0 +1,25 @@
+pkgbase = restack-bin
+	pkgdesc = Makes interactive Git rebase nicer.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/abhinav/restack
+	license = MIT
+	conflicts = restack
+	provides = restack
+	arch = aarch64
+	source_aarch64 = https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8db639b51e0f064b9f7c89b935f95da3895d9ad248313ce9ba6de43a9ff2e6f6
+	arch = armv6h
+	source_armv6h = https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_armv6.tar.gz
+	sha256sums_armv6h = 60f3b59d4b22a4e745c033aff9ce188c5ab92070705866d567e75ee1aae388c1
+	arch = armv7h
+	source_armv7h = https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_armv7.tar.gz
+	sha256sums_armv7h = 30295adedb0b2df48eaa3a2c3f9032d87c4e2945e90a2b30dc14bd8f1dba772c
+	arch = i686
+	source_i686 = https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_i386.tar.gz
+	sha256sums_i686 = 87f6cd0323e16c4be0e9656f7102b652f8c0530ae1f85e3848fc8b499881cf37
+	arch = x86_64
+	source_x86_64 = https://github.com/abhinav/restack/releases/download/v0.5.3/restack_0.5.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6eaa536690174241e70db25985c5792e5764ffb9a3a0f406ac13990674d95fda
+	
+pkgname = restack-bin
