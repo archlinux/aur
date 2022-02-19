@@ -1,0 +1,44 @@
+diff --git a/tgcalls/group/AudioStreamingPart.cpp b/tgcalls/group/AudioStreamingPart.cpp
+index f71c8c7..27d8c89 100644
+--- a/tgcalls/group/AudioStreamingPart.cpp
++++ b/tgcalls/group/AudioStreamingPart.cpp
+@@ -170,7 +170,7 @@ public:
+ 
+         _frame = av_frame_alloc();
+ 
+-        AVInputFormat *inputFormat = av_find_input_format("ogg");
++        const AVInputFormat *inputFormat = av_find_input_format("ogg");
+         if (!inputFormat) {
+             _didReadToEnd = true;
+             return;
+@@ -255,7 +255,7 @@ public:
+         }
+ 
+         if (audioCodecParameters && audioStream) {
+-            AVCodec *codec = avcodec_find_decoder(audioCodecParameters->codec_id);
++            const AVCodec *codec = avcodec_find_decoder(audioCodecParameters->codec_id);
+             if (codec) {
+                 _codecContext = avcodec_alloc_context3(codec);
+                 ret = avcodec_parameters_to_context(_codecContext, audioCodecParameters);
+diff --git a/tgcalls/group/VideoStreamingPart.cpp b/tgcalls/group/VideoStreamingPart.cpp
+index 591a523..c2b1998 100644
+--- a/tgcalls/group/VideoStreamingPart.cpp
++++ b/tgcalls/group/VideoStreamingPart.cpp
+@@ -337,7 +337,7 @@ public:
+ 
+         int ret = 0;
+ 
+-        AVInputFormat *inputFormat = av_find_input_format(container.c_str());
++        const AVInputFormat *inputFormat = av_find_input_format(container.c_str());
+         if (!inputFormat) {
+             _didReadToEnd = true;
+             return;
+@@ -380,7 +380,7 @@ public:
+         }
+ 
+         if (videoCodecParameters && videoStream) {
+-            AVCodec *codec = avcodec_find_decoder(videoCodecParameters->codec_id);
++            const AVCodec *codec = avcodec_find_decoder(videoCodecParameters->codec_id);
+             if (codec) {
+                 _codecContext = avcodec_alloc_context3(codec);
+                 ret = avcodec_parameters_to_context(_codecContext, videoCodecParameters);

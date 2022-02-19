@@ -6,8 +6,8 @@
 
 pkgname=kotatogram-dev-git
 _pkgname=kotatogram-desktop
-pkgver=k1.4.8.r174.g98f2683e5
-pkgrel=3
+pkgver=k1.4.8.r521.gd35d97355
+pkgrel=1
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Dev branch'
 arch=('x86_64')
 url="https://kotatogram.github.io"
@@ -19,7 +19,7 @@ depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-
          'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
              'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'webkit2gtk' 'unzip'
-             'yasm' 'libtg_owt')
+             'yasm' 'libtg_owt' 'meson')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin' 'kotatogram-desktop')
@@ -58,7 +58,10 @@ source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#branch=d
         "${_pkgname}-dispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git"
 
         "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
-        "block-sponsored_messages.patch")
+        "block-sponsored_messages.patch"
+        "fix_ffmpeg5_build_24044.patch"
+        "fix_tgcalls_ffmpeg5.patch"
+        )
 
 
 b2sums=('SKIP'
@@ -95,7 +98,9 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
-        '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f')
+        '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f'
+        '850eb9a923f12a58d6844f41fb6648c9873fa94f13d76f629dbd5c8e5ee4729a4bdb982dff8be846ad5e62d90cbecc99cc41d8c108e42e70b74d8304e1d3cef9'
+        'c8f9125281606c020c346ac0e021adc75c1ce64454daa4c0a8126b209f3235ede129602de5c831745ed1424457d890cf3e6ee20c886716128bb580f39f3e58a1')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -143,8 +148,11 @@ prepare() {
     git submodule update --init
 
     #patches
-    patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+    #patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
     patch -p1 < "${srcdir}/block-sponsored_messages.patch"
+    patch -p1 < "${srcdir}/fix_ffmpeg5_build_24044.patch"
+    cd "${srcdir}/${_pkgname}/Telegram/ThirdParty/tgcalls/"
+    patch -p1 < "${srcdir}/fix_tgcalls_ffmpeg5.patch"
 }
 
 build() {

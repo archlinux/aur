@@ -1,0 +1,85 @@
+From 75e40907af063d25cdb9e42ed5c8a033920ab5c8 Mon Sep 17 00:00:00 2001
+From: Nicholas Guriev <nicholas@guriev.su>
+Date: Tue, 8 Feb 2022 18:20:27 +0300
+Subject: [PATCH] Fix build against FFmpeg v5.0
+
+It has been released on January 17th. This patch keeps source compatibility
+with older versions.
+---
+ Telegram/SourceFiles/ffmpeg/ffmpeg_utility.cpp                | 2 +-
+ Telegram/SourceFiles/ffmpeg/ffmpeg_utility.h                  | 2 +-
+ Telegram/SourceFiles/media/audio/media_audio_capture.cpp      | 2 +-
+ Telegram/SourceFiles/media/audio/media_audio_ffmpeg_loader.h  | 4 ++++
+ Telegram/SourceFiles/media/streaming/media_streaming_file.cpp | 4 ++--
+ 5 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.cpp b/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.cpp
+index 866926a9ef13..a01b9fe6152f 100644
+--- a/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.cpp
++++ b/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.cpp
+@@ -154,7 +154,7 @@ void FormatDeleter::operator()(AVFormatContext *value) {
+ 	}
+ }
+ 
+-AVCodec *FindDecoder(not_null<AVCodecContext*> context) {
++const AVCodec *FindDecoder(not_null<AVCodecContext*> context) {
+ 	// Force libvpx-vp9, because we need alpha channel support.
+ 	return (context->codec_id == AV_CODEC_ID_VP9)
+ 		? avcodec_find_decoder_by_name("libvpx-vp9")
+diff --git a/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.h b/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.h
+index 401d65dc6b45..6f502dcaa88b 100644
+--- a/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.h
++++ b/Telegram/SourceFiles/ffmpeg/ffmpeg_utility.h
+@@ -158,7 +158,7 @@ using SwscalePointer = std::unique_ptr<SwsContext, SwscaleDeleter>;
+ void LogError(QLatin1String method);
+ void LogError(QLatin1String method, FFmpeg::AvErrorWrap error);
+ 
+-[[nodiscard]] AVCodec *FindDecoder(not_null<AVCodecContext*> context);
++[[nodiscard]] const AVCodec *FindDecoder(not_null<AVCodecContext*> context);
+ [[nodiscard]] crl::time PtsToTime(int64_t pts, AVRational timeBase);
+ // Used for full duration conversion.
+ [[nodiscard]] crl::time PtsToTimeCeil(int64_t pts, AVRational timeBase);
+diff --git a/Telegram/SourceFiles/media/audio/media_audio_capture.cpp b/Telegram/SourceFiles/media/audio/media_audio_capture.cpp
+index 6ce2456681b3..04c361a37d9e 100644
+--- a/Telegram/SourceFiles/media/audio/media_audio_capture.cpp
++++ b/Telegram/SourceFiles/media/audio/media_audio_capture.cpp
+@@ -147,7 +147,7 @@ struct Instance::Inner::Private {
+ 	AVIOContext *ioContext = nullptr;
+ 	AVFormatContext *fmtContext = nullptr;
+ 	AVStream *stream = nullptr;
+-	AVCodec *codec = nullptr;
++	const AVCodec *codec = nullptr;
+ 	AVCodecContext *codecContext = nullptr;
+ 	bool opened = false;
+ 	bool processing = false;
+diff --git a/Telegram/SourceFiles/media/audio/media_audio_ffmpeg_loader.h b/Telegram/SourceFiles/media/audio/media_audio_ffmpeg_loader.h
+index 83de13bad267..58c97fe49bb0 100644
+--- a/Telegram/SourceFiles/media/audio/media_audio_ffmpeg_loader.h
++++ b/Telegram/SourceFiles/media/audio/media_audio_ffmpeg_loader.h
+@@ -60,7 +60,11 @@ class AbstractFFMpegLoader : public AudioPlayerLoader {
+ 	uchar *ioBuffer = nullptr;
+ 	AVIOContext *ioContext = nullptr;
+ 	AVFormatContext *fmtContext = nullptr;
++#if LIBAVFORMAT_VERSION_MAJOR >= 59
++	const AVCodec *codec = nullptr;
++#else
+ 	AVCodec *codec = nullptr;
++#endif
+ 	int32 streamId = 0;
+ 
+ 	bool _opened = false;
+diff --git a/Telegram/SourceFiles/media/streaming/media_streaming_file.cpp b/Telegram/SourceFiles/media/streaming/media_streaming_file.cpp
+index 874cf5cd2417..3d2658c880d9 100644
+--- a/Telegram/SourceFiles/media/streaming/media_streaming_file.cpp
++++ b/Telegram/SourceFiles/media/streaming/media_streaming_file.cpp
+@@ -23,8 +23,8 @@ constexpr auto kMaxQueuedPackets = 1024;
+ 		not_null<AVStream*> stream,
+ 		Mode mode) {
+ 	return (mode == Mode::Video || mode == Mode::Inspection)
+-		&& stream->codec
+-		&& (stream->codec->codec_id == AV_CODEC_ID_VP9)
++		&& stream->codecpar
++		&& (stream->codecpar->codec_id == AV_CODEC_ID_VP9)
+ 		&& format->iformat
+ 		&& format->iformat->name
+ 		&& QString::fromLatin1(
