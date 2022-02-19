@@ -1,9 +1,9 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 pkgname=tmux-fastcopy
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='easymotion-style text copying for tmux.'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=(any)
 url="https://github.com/abhinav/tmux-fastcopy"
 license=('MIT')
 depends=('tmux')
