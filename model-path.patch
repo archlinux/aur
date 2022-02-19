@@ -1,0 +1,13 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index a935485..a24d119 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -442,7 +442,7 @@ int main(int argc, char** argv)
+     int noise = -1;
+     int scale = 2;
+     std::vector<int> tilesize;
+-    path_t model = PATHSTR("models-se");
++    path_t model = PATHSTR("/usr/share/realcugan-ncnn-vulkan/models-se");
+     std::vector<int> gpuid;
+     int jobs_load = 1;
+     std::vector<int> jobs_proc;

@@ -1,0 +1,20 @@
+pkgbase = realcugan-ncnn-vulkan-git
+	pkgdesc = ncnn implementation of Real-CUGAN converter. Runs fast on Intel / AMD / Nvidia / Apple-Silicon with Vulkan API.
+	pkgver = 20220217.r0.g6b95b75
+	pkgrel = 1
+	url = https://github.com/nihui/realcugan-ncnn-vulkan
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = glslang
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	depends = vulkan-driver
+	source = git://github.com/nihui/realcugan-ncnn-vulkan
+	source = model-path.patch
+	md5sums = SKIP
+	md5sums = 8e1edd929f5ade6af986b0eda55b5fb5
+
+pkgname = realcugan-ncnn-vulkan-git
