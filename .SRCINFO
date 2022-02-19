@@ -1,0 +1,18 @@
+pkgbase = proctl
+	pkgdesc = Shell System Information Fetcher
+	pkgver = 2022.02.19
+	pkgrel = 1
+	url = https://github.com/The-Repo-Club/proctl
+	arch = any
+	groups = therepoclub
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	optdepends = git: generating default config automatically
+	optdepends = fzf: -pick-license, -pick-language, -new-template flags
+	optdepends = ncurses: for the colors
+	source = proctl-2022.02.19.tar.gz::https://github.com/The-Repo-Club/proctl/archive/2022.02.19.tar.gz
+	sha256sums = 3332ed684d43e0a77e355d3de9537ed9bd20f1fd528bc852d0f790498436971e
+
+pkgname = proctl
