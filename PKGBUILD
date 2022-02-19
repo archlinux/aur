@@ -56,7 +56,7 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-git
-pkgver=1.1.6.r3.gd11b92d
+pkgver=1.1.6.r4.g144a9ba
 pkgrel=1
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
 arch=(any)
