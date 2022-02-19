@@ -1,6 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=mattermost-plugin-focalboard
+_plugin=focalboard
+pkgname=mattermost-plugin-$_plugin
 pkgver=0.14.0
 pkgrel=1
 pkgdesc='an open source, self-hosted alternative to Trello, Notion, and Asana'
@@ -21,5 +22,5 @@ sha256sums=('39d53c6638780d9e0ecc67ea06dbaf14ff473103868a01b4a5e2575e9c316952')
 package() {
 	local _plugins="$pkgdir/var/lib/mattermost/plugins"
 	install -dm0755 "$_plugins"
-	cp -r focalboard "$_plugins"
+	cp -r "$_plugin" "$_plugins"
 }
