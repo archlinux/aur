@@ -13,7 +13,7 @@ pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' '
 _tag='d066a4f747b225d47c5f5c97a8843d30878995b8' # git rev-parse v${_tag_name}
 _tag_name=250.3
 pkgver="${_tag_name/-/}"
-pkgrel=1
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -51,7 +51,7 @@ sha512sums=('SKIP'
             'SKIP'
             'cc0c2ffb5f7c3a7176cd68f3dddd85ca000dcc4cdf3044746a20147234adb6811800fd28a4713faa6a59bf8c02be9fd43c2d6aa6695fd1dbf03ae773a91d090c'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '5479c8ef963ff247381392907c13308b4ae3a9383c867bd4c8a318b159f23acdb4be5f4ddae0dab4665f4927d3f30166077b1d3aaa2cde6bf53d023b7abb939c'
+            '8167dd8f610fd98e3de4360cacd0020d3691cd1a989591a6db2f0d1277ce96880e64753bdbed759c6cf4b95d39b5d2415b4d9810e369e50e59655742174ff51c'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -69,6 +69,8 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
+  # bus: Use OrderedSet for introspection
+  'acac88340ace3cd631126eebb6d0390cd54e8231'
 )
 
 _reverts=(
@@ -97,17 +99,18 @@ prepare() {
 build() {
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
-    # We use these public name services, ordered by their
-    # privacy policy (hopefully):
+    # We use these public name services, ordered by their privacy policy (hopefully):
     #  * Cloudflare (https://1.1.1.1/)
-    #  * Quad9 without filtering (https://www.quad9.net/)
+    #  * Quad9 (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    1.1.1.1#cloudflare-dns.com
-    9.9.9.10#dns.quad9.net
-    8.8.8.8#dns.google
-    2606:4700:4700::1111#cloudflare-dns.com
-    2620:fe::10#dns.quad9.net
-    2001:4860:4860::8888#dns.google
+    # TODO: go back to cloudflare? Currently it is unusable with systemd-resolved...
+    #  https://community.cloudflare.com/t/ttl-for-cnames/354506
+    #'1.1.1.1#cloudflare-dns.com'
+    '9.9.9.9#dns.quad9.net'
+    '8.8.8.8#dns.google'
+    #'2606:4700:4700::1111#cloudflare-dns.com'
+    '2620:fe::9#dns.quad9.net'
+    '2001:4860:4860::8888#dns.google'
   )
 
   local _meson_options=(
@@ -151,7 +154,7 @@ build() {
 
   arch-meson "${pkgbase/-selinux}-stable" build "${_meson_options[@]}"
 
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
