@@ -1,6 +1,6 @@
 pkgbase = blacktex
 	pkgdesc = LaTex code prettifier and formatter
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/nschloe/blacktex
 	arch = any
@@ -8,11 +8,11 @@ pkgbase = blacktex
 	checkdepends = python-pytest
 	checkdepends = python-pytest-randomly
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-flit-core
-	depends = python>=3.6
+	depends = python-pylatexenc
 	optdepends = python-importlib-metadata: required for python<3.8
-	source = blacktex-0.5.3.tar.gz::https://github.com/nschloe/blacktex/archive/v0.5.3.tar.gz
-	sha256sums = 9d27bd9e92715204d931f973e468228c14385e05824b03147517cbaf358e184b
+	source = blacktex-0.6.0.tar.gz::https://github.com/nschloe/blacktex/archive/v0.6.0.tar.gz
+	sha256sums = 1f062793b39e85255e1a43fe87d6ac75170dc4145706d4d863cb115a42542aa2
 
 pkgname = blacktex
