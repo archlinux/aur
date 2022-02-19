@@ -2,3 +2,5 @@
 *.jar
 *.tar.xz
 *.tar.lrz
+*.tar.zst
+/src

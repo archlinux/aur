@@ -2,7 +2,7 @@
 # Contributor: Jonathan Schaeffer <Joschaeffer@gmail.com>
 
 pkgname=cgoban3
-pkgver=3.5.117
+pkgver=3.5.144
 pkgrel=1
 pkgdesc='A KGS client and SGF editor'
 url='https://gokgs.com/'
@@ -17,7 +17,7 @@ source=(
         'cgoban3.desktop'
         'cgoban3-edit.desktop'
        )
-sha256sums=('04a0c82e7e04ddc86cd18ca030acf50443faf350ed0a3f7da4e0062c52c6ea80'
+sha256sums=('7a137f690536dd912d0e1ffeaf71f63c33c1ad6860a0c7e011f2aae6ad3c9056'
             'f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98'
             'a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510'
             'b781072cbb5ac56c102992c92307153c14842c5d9e7a6a6bbf7e397d7b714598'
