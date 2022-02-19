@@ -2,7 +2,7 @@
 
 pkgname=opensnitch-ebpf-module-git
 _pkgname=opensnitch
-pkgver=1.5.0.r28.7e5d809
+pkgver=1.5.0.r9.377b4c8
 pkgrel=1
 _kver=5.15
 pkgdesc="eBPF process monitor module for opensnitch"
@@ -28,7 +28,9 @@ prepare() {
   cd ${srcdir}/linux-${_kver}
 
   patch tools/lib/bpf/bpf_helpers.h < ${srcdir}/${_pkgname}/ebpf_prog/file.patch
-  cp ${srcdir}/${_pkgname}/ebpf_prog/opensnitch.c ${srcdir}/${_pkgname}/ebpf_prog/Makefile samples/bpf
+  cp ${srcdir}/${_pkgname}/ebpf_prog/opensnitch.c \
+    ${srcdir}/${_pkgname}/ebpf_prog/opensnitch-dns.c \
+    ${srcdir}/${_pkgname}/ebpf_prog/Makefile samples/bpf
 
   yes "" | make oldconfig
   make prepare
@@ -41,10 +43,11 @@ build() {
 
   cd samples/bpf
   make
-  llvm-strip -g opensnitch.o
+  llvm-strip -g opensnitch.o opensnitch-dns.o
 }
 
 package() {
-  install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch.o" -t \
+  install -Dm644 "${srcdir}/linux-${_kver}/samples/bpf/opensnitch.o" \
+    "${srcdir}/linux-${_kver}/samples/bpf/opensnitch-dns.o" -t \
     "$pkgdir/etc/opensnitchd"
 }
