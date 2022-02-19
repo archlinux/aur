@@ -1,0 +1,40 @@
+--- updater.sh
++++ updater.sh
+@@ -39 +39 @@
+-PROFILE_PATH=false
++PROFILE_PATH='list'
+@@ -81,2 +80,0 @@
+-    -u           Update updater.sh and execute silently.  Do not seek confirmation.
+-    -d           Do not look for updates to updater.sh.
+@@ -96 +93,0 @@
+-    -r           Only download user.js to a temporary file and open it.
+@@ -244,2 +241 @@
+-  declare -r newfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
+-  [ -z "${newfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && return 1 # check if download failed
++  declare -r newfile="${CURRDIR}/user.js"
+@@ -249 +245 @@
+-    Available online: ${ORANGE}$(get_userjs_version "$newfile")${NC}
++    Package:          ${ORANGE}$(get_userjs_version "$newfile")${NC}
+@@ -258 +253,0 @@
+-      rm "$newfile"
+@@ -275 +270 @@
+-  mv "${newfile}" user.js
++  cp "${newfile}" user.js
+@@ -336,6 +330,0 @@
+-        u)
+-          UPDATE='yes'
+-          ;;
+-        d)
+-          UPDATE='no'
+-          ;;
+@@ -363,8 +351,0 @@
+-        r)
+-          tfile="$(download_file 'https://raw.githubusercontent.com/arkenfox/user.js/master/user.js')"
+-          [ -z "${tfile}" ] && echo -e "${RED}Error! Could not download user.js${NC}" && exit 1 # check if download failed
+-          mv "$tfile" "${tfile}.js"
+-          echo -e "${ORANGE}Warning: user.js was saved to temporary file ${tfile}.js${NC}"
+-          open_file "${tfile}.js"
+-          exit 0
+-          ;;
+@@ -385 +365,0 @@
+-update_updater "$@"
