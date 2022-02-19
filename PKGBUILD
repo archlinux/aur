@@ -4,13 +4,13 @@ _pluginname=recursion-effect
 pkgname=obs-$_pluginname
 pkgver=0.0.4
 _obsver=27.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for add recursion effect to a source using a filter"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/recursion-effect.1008/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=f114388665d30a78cf907a1f167c05aa64543a90"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
