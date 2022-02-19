@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-dev-light
 	pkgdesc = wxWidgets suite for Base and GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)
 	pkgver = 3.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -15,23 +15,15 @@ pkgbase = wxwidgets-dev-light
 	makedepends = curl
 	makedepends = libsecret
 	makedepends = libxtst
+	options = debug
 	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.5
-	source = make-abicheck-non-fatal.patch
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxgtk/trunk/wxgtk-abicheck.patch
 	source = git+https://github.com/wxWidgets/Catch.git
 	source = wxGTK-collision.patch
 	sha256sums = SKIP
-	sha256sums = 214c2d9211e3505e94008747352f5fa07203d4d9087535985a1b6084d4e40ac7
+	sha256sums = 53501db871290b71967af08b60aedb738c920a307ef9bd32dd19c30498732cf8
 	sha256sums = SKIP
 	sha256sums = 48b528acbbbbb0bc409c1efed04a0a055a5c81393ae3133c6339aee6821acfe5
-
-pkgname = wxbase-dev-light
-	pkgdesc = wxWidgets Base. Development branch (GNOME/GStreamer free!)
-	depends = expat
-	depends = curl
-	depends = libsecret
-	provides = wxbase-dev
-	conflicts = wxbase-dev
-	options = !emptydirs
 
 pkgname = wxgtk2-dev-light
 	pkgdesc = wxWidgets GTK2 Toolkit. Development branch (GNOME/GStreamer free!)
@@ -57,8 +49,14 @@ pkgname = wxgtk3-dev-light
 	options = !emptydirs
 
 pkgname = wxcommon-dev-light
-	pkgdesc = wxWidgets common. Development branch (GNOME/GStreamer free!)
-	depends = wxbase-dev-light
+	pkgdesc = wxWidgets common & base. Development branch (GNOME/GStreamer free!)
+	depends = expat
+	depends = curl
+	depends = libsecret
+	provides = wxbase-dev-light
+	provides = wxbase-dev
 	provides = wxgtk-common-dev
+	conflicts = wxbase-dev-light
+	conflicts = wxbase-dev
 	conflicts = wxgtk-common-dev
 	options = !emptydirs

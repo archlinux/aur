@@ -1,13 +1,12 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=wxwidgets-dev-light
-pkgname=('wxbase-dev-light'
-         'wxgtk2-dev-light'
+pkgname=('wxgtk2-dev-light'
          'wxgtk3-dev-light'
          'wxcommon-dev-light'
          )
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -24,15 +23,16 @@ makedepends=('git'
              'libxtst'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-        'make-abicheck-non-fatal.patch'
+        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxgtk/trunk/wxgtk-abicheck.patch'
         'git+https://github.com/wxWidgets/Catch.git'
         'wxGTK-collision.patch'
         )
 sha256sums=('SKIP'
-            '214c2d9211e3505e94008747352f5fa07203d4d9087535985a1b6084d4e40ac7'
+            '53501db871290b71967af08b60aedb738c920a307ef9bd32dd19c30498732cf8'
             'SKIP'
             '48b528acbbbbb0bc409c1efed04a0a055a5c81393ae3133c6339aee6821acfe5'
             )
+options=('debug')
 
 prepare() {
   mkdir -p build-{base,gtk{2,3}}
@@ -44,9 +44,8 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/wxGTK-collision.patch"
 
-  # C++ ABI check is too strict and breaks with GCC 5.1
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
-  patch -Np1 -i "${srcdir}/make-abicheck-non-fatal.patch"
+  # C++ ABI check is too strict
+  patch -Np1 -i "${srcdir}/wxgtk-abicheck.patch"
 }
 
 build() {
@@ -92,26 +91,6 @@ build() {
 
   make
   make -C ../wxwidgets/locale allmo
-}
-
-package_wxbase-dev-light() {
-  pkgdesc="wxWidgets Base. Development branch (GNOME/GStreamer free!)"
-  depends=('expat'
-           'curl'
-           'libsecret'
-           )
-  provides=('wxbase-dev')
-  conflicts=('wxbase-dev')
-  options=('!emptydirs')
-
-  make -C build-base DESTDIR="${pkgdir}" install
-  make -C build-gtk2 DESTDIR="${pkgdir}" locale_uninstall
-
-  mv "${pkgdir}/usr/bin/wx-config-3.1" "${pkgdir}/usr/bin/wx-config-base-3.1"
-  rm -fr "${pkgdir}/usr/include"
-  rm -fr "${pkgdir}/usr/share/bakefile"
-
-  install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxbase-dev-light/LICENSE"
 }
 
 package_wxgtk2-dev-light() {
@@ -162,19 +141,31 @@ package_wxgtk3-dev-light() {
 }
 
 package_wxcommon-dev-light() {
-  pkgdesc="wxWidgets common. Development branch (GNOME/GStreamer free!)"
-  depends=('wxbase-dev-light')
-  provides=('wxgtk-common-dev')
-  conflicts=('wxgtk-common-dev')
+  pkgdesc="wxWidgets common & base. Development branch (GNOME/GStreamer free!)"
+  depends=('expat'
+           'curl'
+           'libsecret'
+           )
+  provides=('wxbase-dev-light'
+            'wxbase-dev'
+            'wxgtk-common-dev'
+            )
+  conflicts=('wxbase-dev-light'
+             'wxbase-dev'
+             'wxgtk-common-dev'
+             )
   options=('!emptydirs')
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
   make -C build-gtk3 DESTDIR="${pkgdir}" install
   make -C build-base DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin/wx-config-3.1"
+  make -C build-gtk2 DESTDIR="${pkgdir}" uninstall_advdll uninstall_auidll uninstall_coredll uninstall_gldll uninstall_htmldll uninstall_propgriddll uninstall_qadll uninstall_ribbondll uninstall_richtextdll uninstall_stcdll uninstall_xrcdll
+  make -C build-gtk3 DESTDIR="${pkgdir}" uninstall_advdll uninstall_auidll uninstall_coredll uninstall_gldll uninstall_htmldll uninstall_propgriddll uninstall_qadll uninstall_ribbondll uninstall_richtextdll uninstall_stcdll uninstall_xrcdll
+
+  mv "${pkgdir}/usr/bin/wx-config-3.1" "${pkgdir}/usr/bin/wx-config-base-3.1"
   rm -fr "${pkgdir}/usr/bin/wxrc"
-  rm -fr "${pkgdir}/usr/lib"
+  rm -fr "${pkgdir}/usr/lib/wx/"{config,include}/gtk*
 
   install -Dm644 wxwidgets/docs/licence.txt "${pkgdir}/usr/share/licenses/wxcommon-dev-light/LICENSE"
 }
