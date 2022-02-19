@@ -12,7 +12,7 @@ pkgdesc='A free distributed version control system'
 arch=('i686' 'x86_64')
 url='http://www.monotone.ca/'
 license=('GPL')
-depends=('pcre' 'lua' 'botan1.10' 'sqlite3' 'libidn' 'zlib')
+depends=('pcre' 'lua53' 'botan1.10' 'sqlite3' 'libidn' 'zlib')
 makedepends=('boost1.69')
 source=("http://www.monotone.ca/downloads/1.1/monotone-${pkgver}.tar.bz2"
         "http://http.debian.net/debian/pool/main/m/monotone/monotone_1.1-9.debian.tar.xz"
@@ -41,9 +41,11 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   export DISABLE_NETWORK_TESTS=1
-  #export CXXFLAGS+=" -std=gnu++11"
+  export CXXFLAGS+=" -std=gnu++11"
   export CXXFLAGS+=" -I/opt/boost1.69/include"
   export LDFLAGS+=" -L/opt/boost1.69/lib"
+  export lua_CFLAGS=$(pkg-config --cflags lua53)
+  export lua_LIBS=$(pkg-config --libs lua53)
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \

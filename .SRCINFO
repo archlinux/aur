@@ -1,14 +1,14 @@
 pkgbase = monotone
 	pkgdesc = A free distributed version control system
 	pkgver = 1.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://www.monotone.ca/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = boost1.69
 	depends = pcre
-	depends = lua
+	depends = lua53
 	depends = botan1.10
 	depends = sqlite3
 	depends = libidn
