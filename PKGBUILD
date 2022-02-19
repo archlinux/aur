@@ -1,11 +1,11 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjtrellis-nightly
-pkgver=1.1_20211125
+pkgver=20220219_1.2
 pkgrel=1
 epoch=1
 pkgdesc="Documenting the Lattice ECP5 bit-stream format."
-arch=("any")
+arch=("x86_64")
 url="https://github.com/YosysHQ/prjtrellis"
 license=("")
 groups=()
@@ -19,15 +19,10 @@ conflicts=(
 	"prjtrellis-db"
 	"prjtrellis"
 )
-replaces=(
-	"prjtrellis-db-git"
-	"prjtrellis-git"
-	"prjtrellis-db"
-	"prjtrellis"
-)
+replaces=()
 source=(
-	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git"#commit=03e0070
-	"prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git"#commit=fdf4bf2
+	"prjtrellis::git+https://github.com/YosysHQ/prjtrellis.git#commit=2f06397"
+	"prjtrellis-db::git+https://github.com/YosysHQ/prjtrellis-db.git#commit=fdf4bf2"
 )
 sha256sums=(
 	"SKIP"
@@ -41,16 +36,15 @@ prepare() {
 	git config submodule.database.url "$srcdir/prjtrellis-db"
 	git submodule update
 	[ ! -d "${srcdir}/prjtrellis/libtrellis/build" ] && mkdir -p libtrellis/build
-	cd ..
+
 }
 
 build() {
 	cd "${srcdir}/prjtrellis/libtrellis"
 	cd ./build
 	cmake -G Ninja -DCMAKE_INSTALL_PREFIX=${_PREFIX} ..
-	cd ..
-	ninja -C build
-	cd ..
+	ninja
+
 }
 
 package() {
