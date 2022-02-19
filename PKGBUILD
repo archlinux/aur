@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=nancy
-pkgver=1.0.29
+pkgver=1.0.30
 pkgrel=1
 pkgdesc="Checks for vulnerabilities in Golang dependencies"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,11 +11,12 @@ depends=('glibc')
 makedepends=('go')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f0f35b8b0b325ab2d32c46373693eea5171838a746a16f275527540eb169d36c')
+sha256sums=('c9b6c3614cdb0f64882cfd0c7a403ad312cb874b99b493d7818c972af91c071c')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build
+	go mod download
 }
 
 build() {
@@ -37,5 +38,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -D build/nancy -t "$pkgdir/usr/bin/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
