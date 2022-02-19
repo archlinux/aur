@@ -34,5 +34,5 @@ package() {
 	# Fix permissions
         chown root:root -R "${pkgdir}"
         chmod -R go-w "${pkgdir}"
-	chmod -R 644 "${pkgdir}/usr/share/icons/"
+	find "${pkgdir}/usr/share/icons/" -type f -exec chmod 644 {} +
 }
