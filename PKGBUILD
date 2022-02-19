@@ -2,17 +2,17 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=waybackpy
-pkgver=3.0.3
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='CLI tool that interfaces with the Internet Archives Wayback Machine API'
 arch=('any')
 url='https://github.com/akamhy/waybackpy'
 license=('MIT')
 depends=('python-requests' 'python-click')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-waybackpy')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/w/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('8b1520c385f669b78afe3659fa0106a100032c02cd5adac7cdb315ccc756c9dc')
+sha256sums=('c33b9e6570cc380d93b641c60257791580fb1acaa6c8aa5a2c95f5187c567227')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -22,7 +22,7 @@ build() {
 package() {
   export PYTHONHASHSEED=0
   cd "$pkgname-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
