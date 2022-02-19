@@ -1,6 +1,6 @@
 pkgbase = slaunch
 	pkgdesc = Tiny helper to run applications in their own cgroups
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://git.sr.ht/~whynothugo/slaunch
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = slaunch
 	makedepends = git
 	makedepends = rust
 	depends = dbus
-	source = git+https://git.sr.ht/~whynothugo/slaunch
+	source = git+https://git.sr.ht/~whynothugo/slaunch#tag=v0.1.0
 	sha256sums = SKIP
 
 pkgname = slaunch

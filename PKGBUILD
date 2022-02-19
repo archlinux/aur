@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=slaunch
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Tiny helper to run applications in their own cgroups"
 url="https://git.sr.ht/~whynothugo/slaunch"
@@ -9,7 +9,7 @@ license=("ISC")
 arch=("x86_64" "aarch64")
 depends=("dbus")
 makedepends=("git" "rust")
-source=("git+https://git.sr.ht/~whynothugo/slaunch")
+source=("git+https://git.sr.ht/~whynothugo/slaunch#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
