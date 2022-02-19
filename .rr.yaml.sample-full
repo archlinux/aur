@@ -1,3 +1,5 @@
+version: "2.7"
+
 rpc:
   # TCP address:port for listening.
   #
