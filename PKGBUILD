@@ -5,16 +5,15 @@
 
 pkgname=freerdp-gstfree
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=(x86_64)
 url="https://www.freerdp.com/"
 license=(APACHE)
-depends=(dbus-glib glibc libcups libgssglue
-         libx11 libxcursor libxext libxdamage libxfixes libxkbcommon libxi libxinerama
-         libxkbfile libxrandr libxrender libxtst openssl pcsclite wayland)
+depends=(dbus-glib libcups libgssglue libxcursor libxdamage libxkbcommon libxinerama
+         libxkbfile libxrandr libxtst pcsclite wayland)
 makedepends=(alsa-lib cmake docbook-xsl ffmpeg git icu krb5 libjpeg-turbo libpulse
-             libusb pam systemd-libs xmlto xorgproto)
+             libusb pam systemd xmlto)
 conflicts=(freerdp)
 provides=(freerdp libfreerdp2.so libfreerdp-client2.so libfreerdp-server2
           libfreerdp-shadow2.so libfreerdp-shadow-subsystem2.so libwinpr2.so
@@ -24,6 +23,11 @@ source=("freerdp::git+https://github.com/freerdp/freerdp.git#commit=${_commit}"
         "freerdp-manpage_formatting.patch")
 sha256sums=('SKIP'
             'd51a478b4664b59227dc6b22eda06a21a1b5905cedff1817043fc8cb73468a65')
+
+pkgver() {
+  cd freerdp
+  git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
   cd freerdp
