@@ -1,16 +1,15 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Jörg Horchler <joerg@horchler.xyz>
 
-pkgname=gotask-taskfile
+pkgname=go-task
 _pkgname=task
 pkgver=3.10.0
-pkgrel=2
-pkgdesc="A task runner / simpler Make alternative written in Go. Installs as gtask to allow coexistance with taskwarrior."
+pkgrel=1
+pkgdesc="Task runner & Make alternative (Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
 url="https://github.com/go-task/task"
 license=('MIT')
-provides=("$pkgname")
-conflicts=("$pkgname")
+replaces=('gotask-taskfile')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -40,6 +39,6 @@ check() {
 package() {
   cd "$_pkgname-$pkgver"
 
-  install -Dm755 build/task "${pkgdir}/usr/bin/gtask"
+  install -Dm755 build/task "${pkgdir}/usr/bin/go-task"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
