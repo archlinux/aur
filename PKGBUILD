@@ -5,7 +5,7 @@
 
 pkgname=wtfutil
 pkgver=0.41.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
@@ -16,18 +16,19 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/wtfutil/wtf/archive/v$pkgve
 sha256sums=('e01f45aaa7a1e31ab555071763da184d611f87b1800265dc782502da9c985eaf')
 
 prepare() {
-  # Prevent creation of a `go` directory in one's home.
-  # Sometimes this directory cannot be removed with even `rm -rf` unless
-  # one becomes root or changes the write permissions.
+  cd "wtf-$pkgver"
   export GOPATH="$srcdir/gopath"
-  go clean -modcache
+
+  # download dependencies
+  go mod download -x
 }
 
 build() {
   cd "wtf-$pkgver"
+  export GOPATH="$srcdir/gopath"
   local flags="-s -w -X main.version=${pkgver} -X main.date=$(date +%FT%T%z)"
 
-  go build \
+  go build -v \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
@@ -38,10 +39,8 @@ build() {
 
 check() {
   cd "wtf-$pkgver"
+  export GOPATH="$srcdir/gopath"
   go test ./...
-
-  # Clean mod cache for makepkg -C
-  go clean -modcache
 }
 
 package() {
