@@ -20,7 +20,6 @@ sha256sums=('f097b1b978602e32fb6dc1ccd4c928b0fd9c7e7639dfddc17b36bcb945bc0c38')
 # the upstream generated binary version.
 
 package() {
-	ls -al
 	local _plugins="$pkgdir/var/lib/mattermost/plugins"
 	install -dm0755 "$_plugins"
 	cp -r "$_archive" "$_plugins"
