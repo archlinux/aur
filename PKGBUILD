@@ -2,10 +2,10 @@
 
 pkgname=pcaper
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Read pcap and assemble HTTP requests'
 arch=(any)
-url="https://github.com/gaainf/pcaper/$pkgname"
+url="https://github.com/gaainf/$pkgname"
 license=(BSD)
 depends=(
 	python
@@ -13,14 +13,16 @@ depends=(
 	'python-six>=1.11.0'
 	'python-dateutil>=2.8.0'
 )
-_wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('4aa52c95ddb0a279549f07d271940c03f79a3d06089b1f5081b4c12d60d956e2')
-noextract=("$_wheel")
+makedepends=(python-build python-installer)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('65f9aea7ec97f42fbdf10ae8a6695226fe773499ef2eb477c724f998d7972075')
+
+build() {
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "$_wheel" -d "$site"
-	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
+	cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
