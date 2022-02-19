@@ -27,14 +27,12 @@ prepare() {
   # Gentoo seems to have taken over the development
   patch -Np1 -i "$srcdir/gentoo1.patch"
   patch -Np1 -i "$srcdir/gentoo2.patch"
-
-  sed -i -e s:Werror:wno-error:g configure
 }
 
 build() {
   cd "$pkgname-$pkgver"
 
-  ./configure --prefix=/usr
+  CFLAGS=-Wno-error ./configure --prefix=/usr
   export CFLAGS="$CFLAGS -w"
   make
 }
