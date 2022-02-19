@@ -1,19 +1,22 @@
 pkgbase = tmux-fastcopy-bin
 	pkgdesc = easymotion-style text copying for tmux.
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/abhinav/tmux-fastcopy
-	arch = aarch64
-	arch = i686
-	arch = x86_64
 	license = MIT
-	provides = tmux-fastcopy
 	conflicts = tmux-fastcopy
-	source_aarch64 = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.0/tmux-fastcopy_0.7.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 8972fad60fe98cc5fddd9f7e24f1fede04151f26a0f0c96f458f5d5a9fe698d8
-	source_i686 = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.0/tmux-fastcopy_0.7.0_Linux_i386.tar.gz
-	sha256sums_i686 = 452ae72aa835639b2f608ec965f73ca18f1e882dfe7ca5df20c819d9bca987b7
-	source_x86_64 = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.0/tmux-fastcopy_0.7.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = e01a15368c5b62fb497126dfa3bdaaaa846ad10132f25c812cd189aa70506f27
-
+	provides = tmux-fastcopy
+	arch = aarch64
+	source_aarch64 = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.1/tmux-fastcopy_0.7.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 28b9c046d15c563a3686d11e32f2f9fe33c0dca64d2877d47fe8502cbf95c458
+	arch = armv6h
+	source_armv6h = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.1/tmux-fastcopy_0.7.1_Linux_armv6.tar.gz
+	sha256sums_armv6h = 19ee87a3100f2e5529deadb13b8f5828d67dc6728aeb9378903094dc251a82e7
+	arch = i686
+	source_i686 = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.1/tmux-fastcopy_0.7.1_Linux_i386.tar.gz
+	sha256sums_i686 = b46851f39b487defadfc4fecc22bba25f17e20d179699e03a1edcede0c7f3524
+	arch = x86_64
+	source_x86_64 = https://github.com/abhinav/tmux-fastcopy/releases/download/v0.7.1/tmux-fastcopy_0.7.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = bce2d89bc5b246d0305ffa07cdbbf19d4a8195437f55b81d1a741f23fc0dfd06
+	
 pkgname = tmux-fastcopy-bin
