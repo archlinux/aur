@@ -1,0 +1,14 @@
+pkgbase = lndmon-git
+	pkgdesc = lndmon monitors lnd via prometheus
+	pkgver = r126.a1fa10f
+	pkgrel = 1
+	url = https://github.com/lightninglabs/lndmon
+	arch = any
+	license = MIT
+	makedepends = go
+	optdepends = lnd-bin
+	optdepends = lnd
+	source = git+https://github.com/lightninglabs/lndmon.git
+	sha256sums = SKIP
+
+pkgname = lndmon-git
