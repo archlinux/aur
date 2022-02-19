@@ -4,13 +4,13 @@ _pluginname=time-warp-scan
 pkgname=obs-$_pluginname
 pkgver=0.1.6
 _obsver=27.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Time Warp Scan filter for OBS Studio"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/time-warp-scan.1167/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=630637ea3a5768e99dd43c772fb0e6766406717b"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
