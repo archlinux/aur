@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nuclei-gcc
-pkgver=2020.08
+pkgver=2022.01
 pkgrel=1
 pkgdesc="nuclei-gcc 是 Nuclei Studio IDE 的编译工具。"
 arch=("x86_64")
@@ -14,7 +14,7 @@ license=('unknow')
 options=(!strip)
 
 source=("https://www.nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_${pkgver}.tar.bz2")
-sha256sums=('398C25B9385B8122D2E864BF71E47B1D871F6C326C21D0AE6D3AFD2858F36041')
+sha256sums=('accc54cffd55bfd6e6da61dba3b37f4610913fccda19d7b24238c82d3fe0a98f')
 
 package() {
 	msg2 'Installing Nuclei GCC'
