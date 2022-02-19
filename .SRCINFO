@@ -1,13 +1,13 @@
 pkgbase = kopia
 	pkgdesc = A cross-platform backup-tool with encryption, deduplication, compression and cloud support.
-	pkgver = 0.10.4
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://kopia.io
 	arch = x86_64
 	license = APACHE
 	makedepends = go>=1.17
 	depends = glibc
-	source = kopia-0.10.4.tar.gz::https://github.com/kopia/kopia/archive/refs/tags/v0.10.4.tar.gz
-	sha256sums = 95921c9ea6036ede0d6007e2d630bb3cf04e21ffb65b2ce580ac9201ea569401
+	source = kopia-0.10.5.tar.gz::https://github.com/kopia/kopia/archive/refs/tags/v0.10.5.tar.gz
+	sha256sums = 3d6418e6909050204078e389fe2ecb3e6080e3185378eba243c4101cc873c770
 
 pkgname = kopia
