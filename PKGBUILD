@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=5782_5.16_r0_g8ad326b2
+pkgver=5816_5.16.2_r0_g31458c9c
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -82,7 +82,8 @@ check() {
     tests/fsck-tests/028-unaligned-super-dev-sizes \
     tests/fsck-tests/031-metadatadump-check-data-csum \
     tests/fsck-tests/033-lowmem-collission-dir-items \
-    tests/fsck-tests/037-freespacetree-repair
+    tests/fsck-tests/037-freespacetree-repair \
+    tests/fsck-tests/052-init-csum-tree
 
   make test-fsck
 
