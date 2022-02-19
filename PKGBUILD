@@ -56,7 +56,7 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-stable
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
 arch=(any)
@@ -91,10 +91,5 @@ package() {
 	git fetch --tags
 	latest_release=$(git describe --tags "$(git rev-list --tags --max-count=1)")
 	git checkout "${latest_release}"
-	install -d "${pkgdir}/opt/${pkgname}"
-	cp -Rf ./* "${pkgdir}/opt/${pkgname}"
-	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-	install -Dm755 dots -t "${pkgdir}/usr/bin/"
-	install -Dm755 dots-scripts -t "${pkgdir}/usr/bin/"
+	PKGNAME=dots sudo ./install
 }
