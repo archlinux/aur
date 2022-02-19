@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-ecp5-nightly
 pkgver=@NPR_VER@
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ecp5"
 arch=("x86_64")
@@ -21,6 +21,7 @@ optdepends=()
 makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
+	"nextpnr-all-nightly"
 )
 replaces=()
 source=(
@@ -53,5 +54,5 @@ build() {
 package() {
 	cd "${srcdir}/nextpnr"
 	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ecp5 install
-	iinstall -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-ecp5/COPYING"
+	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-ecp5/COPYING"
 }
