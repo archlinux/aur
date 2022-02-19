@@ -2,7 +2,7 @@
 
 pkgname=icestorm-nightly
 pkgver=@ICE_VER@
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation"
 arch=("x86_64")
@@ -27,11 +27,6 @@ build() {
 	cd "${srcdir}/icestorm"
 	make CXX=g++ PREFIX="${_PREFIX}"
 
-}
-
-check() {
-	cd "${srcdir}/icestorm"
-	make CXX=g++ PREFIX="${_PREFIX}" test
 }
 
 package() {
