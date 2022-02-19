@@ -2,22 +2,22 @@
 
 pkgname=scanpy-scripts
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Scripts for using scanpy from the command line'
 arch=(any)
 url='https://github.com/ebi-gene-expression-group/scanpy-scripts'
 license=(MIT)
 depends=(scanpy python-click)
-makedepends=(install-wheel-scripts)
-_pyarch=py3
-_wheel="${pkgname/-/_}-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('c3dddc6acb90cfc610fb87da9e0407b10541c904fc4d21a3850941a094604675')
-noextract=("$_wheel")
+makedepends=(python-build python-installer)
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('96eb39bedb5cd075509247d770cfd951e57f2834248bf1e6896c55e7fe2c524f')
+
+build() {
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
-	install-wheel-scripts --prefix="$pkgdir/usr" "$_wheel"
+	cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
