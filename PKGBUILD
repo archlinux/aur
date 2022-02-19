@@ -3,7 +3,7 @@
 _name=tbvaccine
 pkgname=python-$_name
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretty-print Python tracebacks'
 arch=(any)
 url="https://github.com/skorokithakis/$_name"

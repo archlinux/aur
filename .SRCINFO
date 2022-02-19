@@ -1,7 +1,7 @@
 pkgbase = python-tbvaccine
 	pkgdesc = Pretty-print Python tracebacks
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skorokithakis/tbvaccine
 	arch = any
 	license = MIT
