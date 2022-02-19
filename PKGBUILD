@@ -8,13 +8,13 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=3.0.16
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52' 'libidn'
-         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libmad'
+         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg4.4' 'faad2' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libupnp' 'libarchive' 'freetype2' 'fribidi' 'harfbuzz'
          'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'aribb24')
@@ -26,8 +26,9 @@ makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'aom' 'srt' 'dav1d'
+             'lirc' 'libgoom2' 'projectm' 'aom' 'srt' 'dav1d'
              'aribb24' 'aribb25' 'pcsclite')
+#            'chromaprint: Chromaprint audio fingerprinter'
 optdepends=('avahi: service discovery using bonjour protocol'
             'aom: AOM AV1 codec'
             'dav1d: dav1d AV1 decoder'
@@ -126,6 +127,7 @@ build() {
   # upstream does not support lua 5.3/5.4 yet: https://trac.videolan.org/vlc/ticket/25036
   export LUAC=/usr/bin/luac5.2
   export LUA_LIBS="$(pkg-config --libs lua5.2)"
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -194,7 +196,7 @@ build() {
               --enable-jack \
               --enable-samplerate \
               --enable-soxr \
-              --enable-chromaprint \
+              --disable-chromaprint \
               --enable-chromecast \
               --disable-qt \
               --disable-skins2 \
@@ -222,6 +224,9 @@ build() {
               --enable-aom \
               --enable-srt \
               --enable-dav1d
+
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
