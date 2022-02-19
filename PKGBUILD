@@ -2,7 +2,7 @@
 
 pkgname=yosys-nightly
 pkgver=20220219_1586000
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Yosys Open SYnthesis Suite, A framework for RTL synthesis"
 arch=("x86_64")
@@ -25,7 +25,6 @@ sha256sums=(
 _PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/yosys"
-	[ ! -f "${srcdir}/yosys/abc" ] && ln -s "${srcdir}/yosys-abc/" "${srcdir}/yosys/abc"
 	make config-gcc
 	cp "${srcdir}/yosys.conf" Makefile.conf
 }
