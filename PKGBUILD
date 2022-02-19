@@ -3,13 +3,13 @@ _pluginname=scene-collection-manager
 pkgname=obs-$_pluginname
 pkgver=0.0.4
 _obsver=27.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for OBS Studio to add a Scene Collection Manager"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/scene-collection-manager.1434/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=4df8e2686f094a5b0644e5962ec9cb0f87ff9faf"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
