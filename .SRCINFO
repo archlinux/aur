@@ -1,6 +1,6 @@
 pkgbase = mycorrhiza
 	pkgdesc = Filesystem and git-based wiki engine written in Go using mycomarkup
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/bouncepaw/mycorrhiza
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = mycorrhiza
 	provides = mycorrhiza
 	conflicts = mycorrhiza
 	conflicts = mycorrhiza-bin
-	source = https://github.com/bouncepaw/mycorrhiza/archive/refs/tags/v1.8.1.tar.gz
-	sha256sums = 891ac0896f590331d7071ce781007534bf74c1e768fa6c194a9b52019f0370e7
-	sha512sums = b5a41f5413b9c72dba13c47043c8e5ab38b25447a1bd04d81b4e4035d5299621fe568d021188f4ba478a32ca35889734b2cb2d29d3ee901e6818b9499ee34dde
-	b2sums = 25eb60141f63ce50ce78dd11d685d50798f0b3294f583fd853cecc4bbcd5ac98c87e85c02b0caa6d63776fa8817bc00b118e15b6ec480c5dcbbdb7b7d90705d6
+	source = https://github.com/bouncepaw/mycorrhiza/archive/refs/tags/v1.8.2.tar.gz
+	sha256sums = b89973c0bb0833040efc61d9420d9ae5eaf11aa8cffab5c91bf6e4ef97627583
+	sha512sums = fff711b48d3fc51ac9c64c0ae50a9c4f82ef2b26a65aa2060f1f459d3d8caac4f35760a9fca5a4ca4031720383aeefb16cbb8f1445079914a2129b9dae406a97
+	b2sums = 049237f2360ff794e59e8db8051b21d5d7b75ee22d49afb50ce41fd8fb91a2ab08c04381219e06f1fc9e43f5b34619864f366340344f87625d1c1c2b8bed72e1
 
 pkgname = mycorrhiza
