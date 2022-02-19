@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](https://semver.org/) since version
 
 ## [Unreleased]
 
+## [13.6.0] - 2022-02-19
+### Added
+- `BasicMixer` and `Channel` classes added to `tcod.sdl.audio`.  These handle simple audio mixing.
+- `AudioDevice.convert` added to handle simple conversions to the active devices format.
+- `tcod.sdl.audio.convert_audio` added to handle any other conversions needed.
+
 ## [13.5.0] - 2022-02-11
 ### Added
 - `tcod.sdl.audio`, a new module exposing SDL audio devices.  This does not include an audio mixer yet.
