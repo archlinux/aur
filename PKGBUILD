@@ -8,13 +8,13 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2021.6
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
 url="https://www.mullvad.net"
 license=('GPL3')
 depends=('iputils' 'libnotify' 'libappindicator-gtk3' 'nss')
-makedepends=('cargo' 'git' 'go' 'npm')
+makedepends=('cargo' 'git' 'go' 'npm' 'libxcrypt-compat')
 options=('!lto')
 install="$pkgname.install"
 _commit=19a97997b188855d0ba5aedb7419683df45d93bc
@@ -46,11 +46,18 @@ prepare() {
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
-  # Prevent creation of a `go` directory in one's home.
-  # Sometimes this directory cannot be removed with even `rm -rf` unless
-  # one becomes root or changes the write permissions.
+  pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
-  go clean -modcache
+  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
+
+  go mod download -x
+  popd
+
+  pushd gui
+  echo "Installing JavaScript dependencies..."
+  export npm_config_cache="$srcdir/npm_cache"
+  npm ci
+  popd
 }
 
 build() {
@@ -67,7 +74,6 @@ build() {
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
-  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -116,9 +122,8 @@ build() {
 
   # Build Electron GUI app
   pushd gui
-  echo "Installing JavaScript dependencies..."
-  npm ci --cache "$srcdir/npm-cache"
   echo "Packing final release artifact..."
+  export npm_config_cache="$srcdir/npm_cache"
   npm run pack:linux
   popd
 }
