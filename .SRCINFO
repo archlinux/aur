@@ -1,18 +1,21 @@
 pkgbase = python-yeelight
 	pkgdesc = Python library for controlling YeeLight RGB bulbs
-	pkgver = 0.7.8
-	pkgrel = 2
+	pkgver = 0.7.9
+	pkgrel = 1
 	url = https://gitlab.com/stavros/python-yeelight
 	changelog = CHANGELOG.md
 	arch = any
 	license = BSD
 	makedepends = git
-	makedepends = python-setuptools
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	depends = python-future
 	depends = python-ifaddr
-	source = python-yeelight::git+https://gitlab.com/stavros/python-yeelight#commit=40c09bd4?signed
+	source = python-yeelight::git+https://gitlab.com/stavros/python-yeelight#commit=8ecef2f8?signed
 	validpgpkeys = 3D2E921F15667F0FD5B3017E26EA345ECD4C2A63
 	sha256sums = SKIP
 

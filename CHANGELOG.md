@@ -3,6 +3,13 @@
 
 ## Unreleased
 
+### Features
+
+* Implement async music mode (closes #73) [Alex]
+
+
+## v0.7.8 (2021-10-15)
+
 ### Fixes
 
 * Use compact json commands. [J. Nick Koston]
