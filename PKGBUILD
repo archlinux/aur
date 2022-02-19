@@ -14,9 +14,10 @@ _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=14.17.5
+_quarto="FALSE"
 _quartover=0.9.16
 
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -25,14 +26,15 @@ depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns
 makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
-            'openssh-askpass: for a git ssh access')
+            'openssh-askpass: for a git ssh access'
+            'quarto: for Quarto projects support')
+
 provides=('rstudio-desktop')
 conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview' 'rstudio-desktop-git')
-source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
+source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs/tags/v${_vermajor}.${_verminor}.${_verpatch}${_versuffix}.tar.gz"
         "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
-        "https://s3.amazonaws.com/rstudio-buildtools/quarto/${_quartover}/quarto-${_quartover}-linux-amd64.tar.gz"
         "qt.conf"
         "cran_multithread.patch"
         "sigstksz_gcc11.patch")
@@ -41,7 +43,6 @@ sha256sums=('36234218f118f5085e417411e137791072c00380bce6a016e551e6ecb404ae4d'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
-            '2bd66bf6f448e12b129c6daebea561db3df700e295984155f409e6dcdfd22d75'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
             '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82')
@@ -69,9 +70,6 @@ prepare() {
     ln -sfT /usr/share/mathjax2 mathjax-27
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
 
-    # Quarto
-    install -d quarto/bin
-    ln -sfT "${srcdir}/quarto-${_quartover}/bin/quarto" quarto/bin/quarto
 
     # Nodejs
     install -d node/${_nodever}
@@ -85,10 +83,27 @@ prepare() {
     ln -sfT common/dictionaries dictionaries
     ln -sfT common/mathjax-27 mathjax-27
     ln -sfT common/pandoc pandoc
-    ln -sfT common/quarto quarto
 }
 
 build() {
+
+    # Quarto
+    msg "Checking if Quarto is installed..."
+
+    if (pacman -Q quarto >/dev/null) ; then
+        msg "Enabling Quarto support..."
+        _quarto="TRUE"
+        #cd "${srcdir}/${_srcname}/dependencies/common"
+        #install -d quarto/bin
+        #ln -sfT /usr/bin/quarto quarto/bin/quarto
+        cd "${srcdir}/${_srcname}/dependencies"
+        install -d quarto/bin
+        ln -sfT /usr/bin/quarto quarto/bin/quarto
+        ln -sfT /usr/bin/pandoc quarto/bin/pandoc
+    fi
+
+    cd ${srcdir}
+
     msg "Downloading and installing R packages..."
     bash "${srcdir}/${_srcname}"/dependencies/common/install-packages
 
@@ -108,6 +123,7 @@ build() {
           -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
           -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake \
           -DBoost_NO_BOOST_CMAKE=ON \
+          -DQUARTO_ENABLED=${_quarto} \
           -DRSTUDIO_USE_SYSTEM_SOCI=yes \
           -DRSTUDIO_BUNDLE_QT=FALSE
 #   make -C build
