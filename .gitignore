@@ -1,3 +1,4 @@
 bombadil-bin*
 src/
 pkg/
+*namcap.log
