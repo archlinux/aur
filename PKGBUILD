@@ -1,24 +1,21 @@
 # Maintainer: mcol <mcol@posteo.net>
 # Contributor: roger <roger@rogerpc.com.ar>
 
-pkgname=qtile-git
+pkgname=qtile-wayland-git
 pkgver=0.20.0.r33.gc1f50739
 pkgrel=2
-pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
+pkgdesc="A full-featured, pure-Python tiling window manager - Wayland deps. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
 license=('MIT')
 
-# Technically the X-related dependencies are *not* required, if the user only
-# wants to use the Wayland backend. However this would cause disruption, so
-# let's hold off on changing that for now.
 depends=(
   'gdk-pixbuf2'
   'glibc'
   'pango'
   'python-cairocffi'
-  'python-cffi'
-  'python-xcffib'
+  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
+  'xorg-xwayland'
 )
 
 makedepends=(
@@ -26,7 +23,6 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'libpulse'
-  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
 )
 checkdepends=(
   'dbus'
@@ -40,13 +36,8 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
-  'wlroots'
-  'xorg-server-xephyr'
-  'xorg-xrandr'
-  'xorg-xwayland'
 )
 optdepends=(
   'alsa-utils: volume widget'
@@ -63,8 +54,6 @@ optdepends=(
   'python-keyring: imapwidget widget'
   'python-mpd2: mpd2widget widget'
   'python-psutil: graph, net and memory widget'
-  'python-pywlroots: Wayland backend'
-  'xorg-xwayland: Wayland backend'
   'python-setproctitle: change process name to qtile'
   'python-xdg: launchbar widget'
 )
@@ -91,7 +80,7 @@ check() {
   # export MYPYPATH="$PWD:$PWD/stubs"
   # mypy-based tests are ignored until I figure out how to fix them
   # Plus they won't change from merge to package
-  pytest -vv --backend x11 --backend wayland \
+  pytest -vv --backend wayland \
     --ignore test/test_check.py --ignore test/test_migrate.py test
 }
 
@@ -101,6 +90,5 @@ package() {
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 CHANGELOG README.rst libqtile/resources/default_config.py \
     -t "${pkgdir}/usr/share/doc/$pkgname/"
-  install -vDm 644 resources/qtile.desktop -t "$pkgdir/usr/share/xsessions/"
   install -vDm 644 resources/qtile-wayland.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 }

@@ -1,9 +1,9 @@
-pkgbase = qtile-git
-	pkgdesc = A full-featured, pure-Python tiling window manager. (git version)
+pkgbase = qtile-wayland-git
+	pkgdesc = A full-featured, pure-Python tiling window manager - Wayland deps. (git version)
 	pkgver = 0.20.0.r33.gc1f50739
 	pkgrel = 2
 	url = http://www.qtile.org
-	install = qtile-git.install
+	install = qtile-wayland-git.install
 	arch = x86_64
 	license = MIT
 	checkdepends = dbus
@@ -17,26 +17,19 @@ pkgbase = qtile-git
 	checkdepends = python-dbus-next
 	checkdepends = python-gobject
 	checkdepends = python-pytest
-	checkdepends = python-pywlroots>=0.15.9
-	checkdepends = python-pywlroots<0.16.0
 	checkdepends = python-xdg
 	checkdepends = python-xvfbwrapper
-	checkdepends = wlroots
-	checkdepends = xorg-server-xephyr
-	checkdepends = xorg-xrandr
-	checkdepends = xorg-xwayland
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = libpulse
-	makedepends = python-pywlroots>=0.15.9
-	makedepends = python-pywlroots<0.16.0
 	depends = gdk-pixbuf2
 	depends = glibc
 	depends = pango
 	depends = python-cairocffi
-	depends = python-cffi
-	depends = python-xcffib
+	depends = python-pywlroots>=0.15.9
+	depends = python-pywlroots<0.16.0
+	depends = xorg-xwayland
 	optdepends = alsa-utils: volume widget
 	optdepends = canto-daemon: canto widget
 	optdepends = cmus: cmus widget
@@ -51,8 +44,6 @@ pkgbase = qtile-git
 	optdepends = python-keyring: imapwidget widget
 	optdepends = python-mpd2: mpd2widget widget
 	optdepends = python-psutil: graph, net and memory widget
-	optdepends = python-pywlroots: Wayland backend
-	optdepends = xorg-xwayland: Wayland backend
 	optdepends = python-setproctitle: change process name to qtile
 	optdepends = python-xdg: launchbar widget
 	provides = qtile
@@ -60,4 +51,4 @@ pkgbase = qtile-git
 	source = git+https://github.com/qtile/qtile
 	md5sums = SKIP
 
-pkgname = qtile-git
+pkgname = qtile-wayland-git
