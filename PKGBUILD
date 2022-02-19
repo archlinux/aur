@@ -2,46 +2,44 @@
 
 pkgorg='gepetto'
 _pkgname='example-robot-data'
-pkgname=("${_pkgname}" "${_pkgname}-docs")
-pkgver=3.12.0
-pkgrel=2
-pkgdesc="Set of robot URDFs for benchmarking and developed examples. "
+pkgname=("$_pkgname" "$_pkgname-docs")
+pkgver=3.13.1
+pkgrel=1
+pkgdesc="Set of robot URDFs for benchmarking and developed examples."
 arch=('any')
 url="https://github.com/$pkgorg/$pkgname"
 license=('BSD')
 depends=('pinocchio')
 makedepends=('cmake')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('296ab12f5b1352732b44b5a44b695f6e4969b3468026ccfedfb9e049f9d00ad5'
+            'SKIP')
 validpgpkeys=('9B1A79065D2F2B806C8A5A1C7D2ACDAF4653CF28')
 
 build() {
-    mkdir -p "$pkgbase-$pkgver/build"
-    cd "$pkgbase-$pkgver/build"
-
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib ..
-    make
+    cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    cmake --build "build-$pkgver"
 }
 
 check() {
     rm -f "$pkgbase"
     ln -s "$pkgbase-$pkgver" "$pkgbase"
-    cd "$pkgbase-$pkgver/build"
-    make test
+    cmake --build "build-$pkgver" -t test
 }
 
 package_example-robot-data() {
-    cd "$pkgbase-$pkgver/build"
-    make DESTDIR="$pkgdir/" install
-    install -D -m755 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf $pkgdir/usr/share/doc
+    install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_example-robot-data-docs() {
     depends=()
 
-    cd "$pkgbase-$pkgver/build"
-    make DESTDIR="$pkgdir/" install
-    install -D -m755 "../LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
     rm -rf $pkgdir/usr/{lib,include,"share/$_pkgname"}
+    install -Dm644 "$pkgbase-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
