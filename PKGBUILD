@@ -2,29 +2,30 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-bugsnag
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Official bugsnag error monitoring and error reporting for various python apps.'
 arch=('any')
-url='https://www.bugsnag.com/platforms/python-error-reporting'
+url='https://github.com/bugsnag/bugsnag-python'
 license=('MIT')
 depends=('python-webob')
 optdepends=(
 	'python-flask: Flask integration'
 	'python-blinker: Flask integration')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bugsnag/bugsnag-python/archive/v$pkgver.tar.gz")
-sha256sums=('9280c7b04a48ce1e60236e7168c78eb3d8cde8820b168e4801251c0c6bea761d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('c8bf852972054deed2026866c4b7b6cc6c64ae306b370c885ecf4995a72f5897')
 
 build() {
 	cd "bugsnag-python-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "bugsnag-python-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 644 UPGRADING.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 UPGRADING.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
