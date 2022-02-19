@@ -2,13 +2,13 @@
 # Thanks to <mti at tillenius dot com> whose packages the ps7b packages were based on
 pkgname=ps7b_libps3000a
 pkgver=2.1.81_6r3062
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for PicoScope 3000a series in PicoScope 7 Beta"
 arch=('x86_64')
 url="https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libps3000a/"
 license=('custom')
 groups=()
-depends=(libusb)
+depends=('libusb<=1.0.24-2')
 optdepends=()
 provides=()
 conflicts=()
