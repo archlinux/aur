@@ -7,7 +7,7 @@ pkgname=('wxgtk2-dev-light'
          )
 pkgver=3.1.5
 pkgrel=2
-pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)"
+pkgdesc="wxWidgets suite for Base, GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
 license=('custom:wxWindows')
