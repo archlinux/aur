@@ -1,13 +1,13 @@
 pkgbase = tmux-fastcopy
 	pkgdesc = easymotion-style text copying for tmux.
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/abhinav/tmux-fastcopy
 	arch = any
 	license = MIT
 	makedepends = go
 	depends = tmux
-	source = tmux-fastcopy-0.7.1.tar.gz::https://github.com/abhinav/tmux-fastcopy/archive/v0.7.1.tar.gz
-	sha256sums = 0842734f35549a2e53f325d15e55b31be77d3d66fa39e01dd08f1709793643c7
+	source = tmux-fastcopy-0.7.2.tar.gz::https://github.com/abhinav/tmux-fastcopy/archive/v0.7.2.tar.gz
+	sha256sums = d9dce33ff1d1c35284722b421664e0897f2f0696bc7da99b30b764983b95ea26
 
 pkgname = tmux-fastcopy
