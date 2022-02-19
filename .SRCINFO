@@ -1,0 +1,21 @@
+pkgbase = epodpisfs
+	pkgdesc = Electronic signing of tax and other forms for the Financial Administration of the Czech Republic
+	pkgver = 13.0
+	pkgrel = 1
+	url = https://epodpora.mfcr.cz/cs/seznam-okruhu/podpisova-aplikace-epodpisfs/podpisova-aplikace-epodpisfs-4569
+	arch = x86_64
+	license = custom
+	depends = ca-certificates
+	depends = ttf-dejavu
+	depends = freetype2
+	depends = glibc>=2.27
+	depends = libxext
+	depends = libxrender
+	depends = libxtst
+	depends = libx11
+	depends = xdg-utils
+	depends = zlib
+	source = epodpisfs-13.0_x86_64.deb::https://adisspr.mfcr.cz/dpr/adis/idpr_pub/epodpis_info/epodpisfs-ubuntu-13.0.deb
+	sha256sums = 04615fabeb0e576dc1ac5b4955b94d7f715ab27df89c11b0acc6f952ea8fdae2
+
+pkgname = epodpisfs
