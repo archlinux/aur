@@ -3,7 +3,7 @@
 
 pkgbase=freetype2-git
 pkgname=(freetype2-git freetype2-demos-git freetype2-docs-git)
-pkgver=2.11.1+p0+g3f83daeec
+pkgver=2.11.1+p110+g6c5522c6f
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -13,7 +13,7 @@ license=(GPL)
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=(zlib bzip2 sh libpng harfbuzz brotli)
-makedepends=(libx11 qt5-base meson git python-virtualenv)
+makedepends=(libx11 qt5-base meson librsvg git python-virtualenv)
 source=(git+https://gitlab.freedesktop.org/freetype/freetype.git
         git+https://gitlab.freedesktop.org/freetype/freetype-demos.git
         0001-Enable-table-validation-modules.patch
@@ -95,7 +95,7 @@ package_freetype2-git() {
 
 package_freetype2-demos-git() {
   pkgdesc="Freetype tools and demos (from git)"
-  depends=(freetype2-git libx11)
+  depends=(freetype2-git libx11 librsvg)
   optdepends=('qt5-base: ftinspect')
   provides=("freetype2-demos=$pkgver")
   conflicts=(freetype2-demos)
