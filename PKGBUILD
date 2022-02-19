@@ -6,8 +6,8 @@ _pkgname=perl-travel-status-de-iris
 pkgname="${_pkgname}-git"
 _pkgver="latest"
 epoch=1
-pkgver=1.63+r568.20220124.ga5a431d
-pkgrel=7
+pkgver=1.64+r580.20220216.g3e5575b
+pkgrel=2
 pkgdesc='Interface to IRIS-based web departure monitors (as used by DeutscheBahn)'
 url='http://finalrewind.org/projects/Travel-Status-DE-IRIS/'
 license=('PerlArtistic')
@@ -70,7 +70,9 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_perlmod}"
-  sed -i 's/Text::LevenshteinXS/Text::Levenshtein/' Build.PL lib/Travel/Status/DE/IRIS/Stations.pm.PL
+  sed -i 's/Text::LevenshteinXS/Text::Levenshtein/' Build.PL lib/Travel/Status/DE/IRIS/Stations.pm.PL # Don't know what this is for, it was here when I adopted this package.
+  # sed -i 's/GIS::Distance/Geo::Distance/' Build.PL # Patch to use Geo::Distance instead of GIS::Distance.
+  # export DB_IRIS_DEB_BUILD=1 # Also needed in order to use Geo::Distance instead of GIS::Distance.
   perl Build.PL installdirs=vendor destdir="${pkgdir}"
   ./Build
 }
@@ -83,6 +85,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_perlmod}"
+  # export DB_IRIS_DEB_BUILD=1 # Also needed in order to use Geo::Distance instead of GIS::Distance.
   ./Build install
   for _docfile in README.md Changelog; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
