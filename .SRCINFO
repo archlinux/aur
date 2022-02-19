@@ -1,0 +1,16 @@
+pkgbase = plugin-git
+	pkgdesc = Woodpecker plugin for cloning Git repositories
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://woodpecker-ci.org/docs/usage/pipeline-syntax#clone
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = openssh
+	makedepends = curl
+	makedepends = go
+	depends = glibc
+	source = plugin-git-1.1.1.tar.gz::https://github.com/woodpecker-ci/plugin-git/archive/v1.1.1.tar.gz
+	sha256sums = b3dd0a3600964d6b3c2a1b135d1e88c5a9a5d068d58b2d98c1a64d2ee02587df
+
+pkgname = plugin-git
