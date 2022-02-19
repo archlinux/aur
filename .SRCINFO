@@ -1,0 +1,17 @@
+pkgbase = mp3-tagger-appimage
+	pkgdesc = An Electron app to edit metadata of mp3 files with online search capability
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/Mohammadreza99A/mp3-tagger
+	arch = x86_64
+	arch = i686
+	license = MIT
+	depends = fuse2
+	conflicts = mp3-tagger
+	options = !strip
+	source = https://github.com/Mohammadreza99A/mp3-tagger/releases/download/v0.1.3/Mp3Tagger-0.1.3.AppImage
+	source = https://github.com/Mohammadreza99A/mp3-tagger/raw/v0.1.3/LICENSE
+	sha256sums = f02f54bff3e0701366ca36e970da91ad64bc477d2e1cb5cb3cc408f63f023932
+	sha256sums = c12e900f2ab9f0bd46d2d0151974ed36561450db63c83c46bf70934eb455a8d7
+
+pkgname = mp3-tagger-appimage
