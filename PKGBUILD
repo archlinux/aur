@@ -2,18 +2,22 @@
 _name=requests_download
 pkgname=python-$_name
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Download to a local file using requests'
-arch=('any')
+arch=(any)
 url="https://github.com/takluyver/$_name"
 license=('MIT')
 depends=(python python-requests)
-makedepends=('python-pip')
-_wheel="$_name-$pkgver-py2.py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/$_wheel")
-sha256sums=('994d9d332befae6616f562769bab163f08d6404dc7e28fb7bfed4a0a43a754ad')
-noextract=("$_wheel")
+makedepends=(python-build python-installer)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('92d895a6ca51ea51aa42bab864bddaee31b5601c7e7e1ade4c27b0eb6695d846')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	pip install --compile --no-deps --ignore-installed --root="$pkgdir" "$_wheel"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }

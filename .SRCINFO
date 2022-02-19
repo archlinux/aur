@@ -1,16 +1,15 @@
 pkgbase = python-requests_download
 	pkgdesc = Download to a local file using requests
 	pkgver = 0.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/takluyver/requests_download
 	arch = any
 	license = MIT
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-requests
-	noextract = requests_download-0.1.2-py2.py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py2.py3/r/requests_download/requests_download-0.1.2-py2.py3-none-any.whl
-	sha256sums = 994d9d332befae6616f562769bab163f08d6404dc7e28fb7bfed4a0a43a754ad
+	source = https://files.pythonhosted.org/packages/source/r/requests_download/requests_download-0.1.2.tar.gz
+	sha256sums = 92d895a6ca51ea51aa42bab864bddaee31b5601c7e7e1ade4c27b0eb6695d846
 
 pkgname = python-requests_download
-
