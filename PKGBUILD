@@ -1,22 +1,23 @@
-# Maintainer: Popolon <popolon@popolon.org>
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: Popolon <popolon@popolon.org>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Rafael Ferreira <josephgbr@archlinux.info>
 
 pkgname=libgnomeprint
 pkgver=2.18.8
-pkgrel=9
+pkgrel=10
 pkgdesc='Printing routines for GNOME'
 url='http://www.gnome.org/'
 arch=('x86_64' 'i686')
 license=('LGPL' 'GPL')
-depends=('pango' 'libart-lgpl' 'libxml2' 'libgnomecups' 'libgcrypt' 'bzip2')
+depends=('pango' 'libart-lgpl' 'libxml2' 'libgnomecups')
 makedepends=('intltool' 'pkgconfig' 'addinclude')
 replaces=('libgnomeprint-cups')
 conflicts=('libgnomeprint-cups')
 options=('!libtool')
 source=("http://ftp.gnome.org/pub/gnome/sources/$pkgname/2.18/$pkgname-$pkgver.tar.bz2"
-        "http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/gnome-base/libgnomeprint/files/libgnomeprint-2.18.8-bison3.patch"
+	"https://gitweb.gentoo.org/repo/gentoo.git/plain/gnome-base/libgnomeprint/files/libgnomeprint-2.18.8-bison3.patch?id=56bd759df1d0c750a065b8c845e93d5dfa6b549d"
         "patch-freetype-2.5.1.diff"
         "configure.in.patch")
 sha256sums=('1034ec8651051f84d2424e7a1da61c530422cc20ce5b2d9e107e1e46778d9691'
@@ -32,7 +33,8 @@ prepare() {
   addinclude "$pkgname/modules/cups/gnome-print-cups-transport.c" stdio
   autoconf
   cd "$srcdir"
-  patch -p0 -i libgnomeprint-2.18.8-bison3.patch
+  patch -p0 -i libgnomeprint-2.18.8-bison3.patch?id=56bd759df1d0c750a065b8c845e93d5dfa6b549d
+
 }
 
 build() {
@@ -45,5 +47,3 @@ build() {
 package() {
   make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
