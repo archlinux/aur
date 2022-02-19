@@ -1,0 +1,22 @@
+pkgbase = mister-bin
+	pkgdesc = Userspace binary that manages MiSTer on the ARM side, prebuilt
+	pkgver = 20220211
+	pkgrel = 1
+	url = https://github.com/MiSTer-devel/Main_MiSTer/
+	arch = armv7h
+	license = GPL
+	depends = imlib2
+	depends = bluez-libs
+	optdepends = linux-mister: MiSTer userspace probably needs custom kernel drivers
+	optdepends = mister-menu: MiSTer needs an FPGA core to talk to
+	provides = mister
+	conflicts = mister
+	source = https://github.com/MiSTer-devel/Main_MiSTer/raw/master/releases/MiSTer_20220211
+	source = mister-bin.install
+	source = MiSTer.service
+	sha256sums = a7ae558e7d93b8f16a858d602a4c1595f13ec3175ae22acce4545a76cbdad585
+	sha256sums = cab7d3dfc8b0fd15deaef00dd5931b66da3a59e721fba6f957de7f4a915b8c98
+	sha256sums = 6f9a9a14420078c5fc5afeab364aba4a0be55992e95b897b913ed76e4fbe2971
+
+pkgname = mister-bin
+	install = mister-bin.install

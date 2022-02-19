@@ -1,0 +1,6 @@
+post_install () {
+  echo "You probably want to enable the MiSTer service then reboot:"
+  echo "  systemctl enable MiSTer"
+  echo "You should also populate /media/fat with cores:"
+  echo "  sudo git clone https://github.com/MiSTer-devel/Distribution_MiSTer.git /media/fat --depth=1"
+}

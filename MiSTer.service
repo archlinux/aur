@@ -1,0 +1,10 @@
+[Unit]
+Description=Main MiSTer Binary
+After=local-fs.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/MiSTer
+
+[Install]
+WantedBy=graphical.target

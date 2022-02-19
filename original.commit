@@ -1,0 +1,13 @@
+This is an automatically generated copy of the package, originally from https://github.com/amstan/MiSTerFPGA:
+commit fb434882a482947455bdd019540b2324ef1dcdf1
+Author: Alexandru M Stan <alex@hypertriangle.com>
+Date:   Sat Feb 12 23:06:00 2022 -0800
+
+    mister-bin to 20220211-1
+    
+    Also added bluez-libs as a dependency, thanks exewintermute for the
+    tip, otherwise we get:
+    
+            Feb 12 23:02:05 MiSTer MiSTer[1335]: /usr/bin/MiSTer: error while loading shared libraries: libbluetooth.so.3: cannot open shared object file: No such file or directory
+    
+    Looks like I already had it installed due to NetworkManager.
