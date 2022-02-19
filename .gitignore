@@ -1,4 +1,4 @@
 /src/
 /pkg/
 /*.pkg.*
-/*.whl
+/*.tar.gz
