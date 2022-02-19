@@ -10,10 +10,10 @@ while read -r line; do
 		continue
 	fi
 
-	lines+=("${line%/vmlinuz}")
+	lines+=("/${line%/vmlinuz}")
 
 	pkgbase="$(<"${lines[-1]}/pkgbase")"
-	install -Dm644 "${line}" "/boot/vmlinuz-${pkgbase}"
+	install -Dm644 "/${line}" "/boot/vmlinuz-${pkgbase}"
 done
 
 if (( all )); then
