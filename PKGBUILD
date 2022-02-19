@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
 pkgver=1.13.0
-pkgrel=12
-_electronversion=10
+pkgrel=13
+#_electronversion=10
 _nodeversion=12
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0-1.0')
-depends=("electron${_electronversion}")
+#depends=("electron${_electronversion}")
+depends=('electron')
 makedepends=('git' 'nvm' 'python')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
@@ -17,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archi
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('c50172d473c43eafebd366587c690eec88961f2092d2c7b4dd2904df945ade46'
-            '324e84b82c746734f4b4af76f91e11ea4c10172277d112b49e0affa34dbb3f6a'
+            '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d')
 
 _ensure_local_nvm() {
@@ -39,8 +40,10 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  electronDist="/usr/lib/electron${_electronversion}"
-  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+#  electronDist="/usr/lib/electron${_electronversion}"
+#  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
+  electronDist="/usr/lib/electron"
+  electronVer="$(sed s/^v// /usr/lib/electron/version)"
   _ensure_local_nvm
   npm config set cache "$srcdir/npm-cache"
   npm install
