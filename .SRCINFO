@@ -1,11 +1,11 @@
 pkgbase = python-psaw
 	pkgdesc = Pushshift.io API Wrapper for reddit.com public comment/submission search
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmarx/psaw
 	arch = any
 	license = BSD
-	makedepends = install-wheel-scripts
+	makedepends = python-installer
 	depends = python
 	depends = python-requests
 	depends = python-click
