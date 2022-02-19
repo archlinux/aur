@@ -1,12 +1,12 @@
 # Maintainer: Pedro Henrique <pedro00dk@gmail.com>
 pkgname=nvidia-exec
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Run programs in nvidia optimus setups with power management for Xorg and Wayland without log out"
 arch=("x86_64")
 url="https://github.com/pedro00dk/nvidia-exec#readme"
 license=('GPL')
-depends=('nvidia' 'lshw' 'jq')
+depends=('jq' 'lshw' 'lsof' 'nvidia')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pedro00dk/nvidia-exec/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('23165c618ee0e19145c141a8b0d7227a2e9bfba48aa7341347b0e286b64cde9d')
 
