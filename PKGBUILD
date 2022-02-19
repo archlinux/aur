@@ -1,6 +1,6 @@
 # Maintainer: Peter Kaplan <peter@pkap.de>
 pkgname=lswt
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="List Wayland toplevels"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=("wayland")
 conflicts=("lswt-git")
 source=("https://git.sr.ht/~leon_plickat/lswt/archive/v$pkgver.tar.gz")
-sha256sums=('28810c124c0d017ffe41e4b91461a07692aa12a3cd49261c3297dfb0dcf2f4cf')
+sha256sums=('a1a422d996e9dbfa2d07daf5588ede280157ab0d0cc7e918d7c16999f4e14b5f')
 
 build() {
     cd "$pkgname-v$pkgver"
