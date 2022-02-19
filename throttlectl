@@ -29,17 +29,14 @@ config_help() {
 }
 
 throttle_ht() {
-  for i in /sys/devices/system/cpu/cpu*/online; do \
-    [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
-      printf "${HYPERTHREADS}" > "${i}" ; done &
-  [[ "${HYPERTHREADS}" == "1" ]] && wait
+  [[ -f /sys/devices/system/cpu/smt/control ]] && \
+    printf "${HYPERTHREADS}" > /sys/devices/system/cpu/smt/control &
 }
 
 check_ht() {
-  printf "\nHyperthreads\n/sys/devices/system/cpu/cpu*/online\n"
-  for i in /sys/devices/system/cpu/cpu*/online; do \
-    [[ $(printf "${i}" | tr -cd [:digit:]) -ge "$CORES" ]] && \
-      printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/devices/system/cpu/||g; s|/.*||g; N;s|\n|\t|'
+  [[ -f /sys/devices/system/cpu/smt/control ]] && \
+    echo -e "\nHyperthreads\n/sys/devices/system/cpu/smt/\n"\
+            "control\t$(cat /sys/devices/system/cpu/smt/control)"
 }
 
 throttle_gov() {
@@ -216,12 +213,12 @@ while (( "$#" )); do
   case "$1" in
     ht*)
       case "${1}" in \
-        ht-on) HYPERTHREADS="1" ;; \
-        ht-off) HYPERTHREADS="0" ;; esac
+        ht-on) HYPERTHREADS="on" ;; \
+        ht-off) HYPERTHREADS="off" ;; esac
       [[ -z "${HYPERTHREADS}" ]] && \
         case "${2}" in \
-          cut|off|powersave|start) HYPERTHREADS="0"; SHIFT="2" ;; \
-          full|on|performance|stop) HYPERTHREADS="1";  SHIFT="2" ;; \
+          cut|off|powersave|start) HYPERTHREADS="off"; SHIFT="2" ;; \
+          full|on|performance|stop) HYPERTHREADS="on";  SHIFT="2" ;; \
           check|status) check_ht; SHIFT="2" ;; esac
       [[ -n "${HYPERTHREADS}" ]] && throttle_ht
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
