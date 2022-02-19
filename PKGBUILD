@@ -2,14 +2,14 @@
 # contributor: yochananmarqos (thank you very much)
 pkgname=psst-git
 pkgver=r406.1627cd4
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast and multi-platform Spotify client with native GUI"
 arch=("x86_64")
 options=(!lto)
 url="https://github.com/jpochyla/psst"
 license=('MIT')
-depends=('gtk3' 'openssl')
-makedepends=('cargo' 'git')
+depends=('gtk3' 'openssl' 'alsa-lib')
+makedepends=('rustup' 'cargo' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/jpochyla/psst.git')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-
+  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
   # Add missing entries to desktop file
