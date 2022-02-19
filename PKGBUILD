@@ -3,7 +3,7 @@
 # Contributor: Quan Guo <guotsuan@gmail.com>
 
 pkgname=fpp-git
-pkgver=0.9.2.r130.ge0d5cfc
+pkgver=0.9.5.r0.g3670d02
 pkgrel=1
 pkgdesc='TUI that lets you pick paths out of its stdin and run arbitrary commands on them'
 url='https://facebook.github.io/PathPicker'

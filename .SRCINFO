@@ -1,6 +1,6 @@
 pkgbase = fpp-git
 	pkgdesc = TUI that lets you pick paths out of its stdin and run arbitrary commands on them
-	pkgver = 0.9.2.r130.ge0d5cfc
+	pkgver = 0.9.5.r0.g3670d02
 	pkgrel = 1
 	url = https://facebook.github.io/PathPicker
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = fpp-git
 	sha256sums = SKIP
 
 pkgname = fpp-git
-
