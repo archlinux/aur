@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@mailinator.com>
 
 pkgname=throttlectl
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Command-line user discretion power managment utility"
 arch=('any')
@@ -14,7 +14,7 @@ source=('throttlectl'
         'throttle-cut.service'
         'powersave'
         'performance')
-sha512sums=('224160daea80f89f4d09899e69898f828efabedf73b92d7f0509b208582ebbfb888699676a079070ba9214dad5df256f0da037de335667b6cfcda71a5d3457e2'
+sha512sums=('3c447a074a1b631d869b2fb61fe0a718cce3a82f872d147a58d7fb5eace13611e68799087e9a386fe2860fbab794f36ac787e003ec8ede27aad472840b7158d4'
             '6254e73446a91ea7945b9e4db1a1047eb2055d93aee315006857711ab21cba140da3badcf5834d2628e4799494a069647d11aa378a9bac67691df8d8b3adc12f'
             '3d487961bf86254817fd099b888d6245bbf1e57622166dc8df378d639bfb1c0fc105646038be6093183be102294394b88cde382fe961f7606b68619af4a00595'
             'd11ed5f4344f07507497e816ccd7612ffc6df70636ca5f4817a9ce6e3b190b3a17fb02c44c4bf648359f640e4c63cc0b0134968ff4d3d989ad05fa4c095b03d3')

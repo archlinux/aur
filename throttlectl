@@ -15,10 +15,7 @@ throttle_help() {
           "${0} ht {on,off} - Hyperthreads\n"\
           "${0} backlight {0,1,2} - Backlight brightness (laptops only?)\n" \
           "${0} gpu {cut,full} - GPU runtime powersaving (only Nvidia ATM)\n"\
-          "\nOptions are stackable:\n"\
-          "\n${0} powersave gov full turbo on gpu full ht on check\n"\
-          "\nComponents can be checked individually:\n"\
-          "\n${0} gov check turbo check ht check"
+          "\nAll options are stackable and take {{cut,powersave,start},{full,performace,stop},{check,status}}\n"
   exit
 }
 
@@ -195,13 +192,15 @@ check_system() {
   for i in /sys/module/*/parameters/power_save{,_controller}; do \
     printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/module/||g; s|/parameters/.*||g; s|/.*||g; N;s|\n|\t|'
 
-  printf "\nNetwork device powersaving\n/sys/class/net/{wl*,e*,*/device/power/wakeup}\n";
+  printf "\nNetwork device powersaving\n";
   [[ -n "$(command -v iw)" ]] && \
     for i in /sys/class/net/wl*; do \
-      printf " ${i}\n$(iw dev $(printf ${i} | sed 's/^.*wl/wl/') get power_save)"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
+      printf " ${i}\n$(iw dev $(printf ${i} | sed 's/^.*wl/wl/') get power_save)\n"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
+
+  printf "\nWake on {W,}LAN\n/sys/class/net/{wl*,e*,*/device/power/wakeup}\n";
   [[ -n "$(command -v ethtool)" ]] && \
     for i in /sys/class/net/e*; do \
-      printf " ${i}\n$(ethtool $(printf ${i} | sed 's/^.*e/e/') | grep Wake-on)"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
+      printf " ${i}\n$(ethtool $(printf ${i} | sed 's/^.*e/e/') | grep Wake-on)\n"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
   for i in /sys/class/net/*/device/power/wakeup; do \
     printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/net/||g; s|/device/power/wakeup||g; s|/.*||g; N;s|\n|\t|'
 
@@ -278,13 +277,13 @@ while (( "$#" )); do
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       unset NVPM SHIFT
     ;;
-    full|performance|true|1|start|cut|powersave|false|0|stop)
+    full|performance|start|cut|powersave|stop)
       case "${1}" in
-        full|performance|false|0|stop)
-          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help
-        ;;
-        cut|powersave|true|1|start)
+        cut|powersave|start)
           [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help
+        ;;
+        full|performance|stop)
+          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help
         ;;
       esac
 
