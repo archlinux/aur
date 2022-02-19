@@ -9,6 +9,7 @@ pkgbase = mediarepo-daemon
 	makedepends = clang
 	makedepends = cargo
 	makedepends = python
+	makedepends = lld
 	options = !strip
 	source = mediarepo-daemon-1.0.0_rc.3.tar.gz::https://github.com/Trivernis/mediarepo/archive/v1.0.0-rc.3.tar.gz
 	sha512sums = e1149778ada7038ae6ff0cc320687e0b40fb66ee5069f1edd68832c67605fc333a44d91d7ad2a2e22f48bfc8d0f3caec6d17a9dc894d890bf7a8e4553677d6b3
