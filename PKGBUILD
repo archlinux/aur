@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nuclei-openocd
-pkgver=0.10.0
+pkgver=2022.01
 pkgrel=1
 pkgdesc="nuclei-openocd 是 Nuclei Studio IDE 的调试工具。"
 arch=("x86_64")
@@ -13,8 +13,8 @@ url="https://www.nucleisys.com/download.php"
 license=('unknow')
 options=(!strip)
 
-source=("https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-${pkgver}-15-linux-x64.tgz")
-sha256sums=('636E48FFBA7AB4B63F28F36DB2549C09FB04CD2F876E450B8C3E39AF4E5B983F')
+source=("https://www.nucleisys.com/upload/files/toochain/openocd/nuclei-openocd-${pkgver}-linux-x64.tgz")
+sha256sums=('0c55a43a09bf6f75959fab44fcec6f785ed9c1a40f62d746089c654ea3409074')
 
 package() {
 	cd "$srcdir"
@@ -22,10 +22,10 @@ package() {
 	msg2 'Installing Nuclei OpenOCD'
 	install -dm755 "${pkgdir}/opt/nuclei/NucleiStudio/toolchain"
 
-	tar zxf "nuclei-openocd-${pkgver}-15-linux-x64.tgz"
+	tar zxf "nuclei-openocd-${pkgver}-linux-x64.tgz"
 
 	mv "Nuclei/openocd" "${pkgdir}/opt/nuclei"
-	ln -sf "/opt/nuclei/openocd/0.10.0-15" "${pkgdir}/opt/nuclei/NucleiStudio/toolchain/openocd"
+	ln -sf "/opt/nuclei/openocd/${pkgver}" "${pkgdir}/opt/nuclei/NucleiStudio/toolchain/openocd"
 }
 
 #
