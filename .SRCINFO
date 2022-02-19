@@ -1,7 +1,7 @@
 pkgbase = vysor-bin
 	pkgdesc = Mirror and control your Android device
 	pkgver = 4.1.77
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vysor.io
 	arch = x86_64
 	license = custom
