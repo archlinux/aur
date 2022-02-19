@@ -2,7 +2,7 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=1064.d443d47
+pkgver=1068.6392f38
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
@@ -13,8 +13,8 @@ license=('BSD')
 # Stretchly for now. See:
 # - https://github.com/hovancik/stretchly/issues/1048
 # - https://github.com/electron/electron/issues/32133
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
-#depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'electron')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat')
+#depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron')
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
