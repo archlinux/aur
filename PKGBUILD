@@ -20,11 +20,15 @@ sha256sums=('31de2038a0fdd9c4c11f8bf3b13fe77bc2a128307f965c8d5fb4dc6d6f6beb79'
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
     "setup.py.patch")
 
-build() {
+prepare() {
     cd "$_pkgname-$pkgver"
     # Remove references to 2to3 (not supported since setuptools v58.0.0)
     patch -p1 <"$srcdir/setup.py.patch"
-    # Run 2to3 transformations manually
+}
+
+build() {
+    cd "$_pkgname-$pkgver"
+    # Run 2to3 transformations
     2to3 -wn . jsonlint
     python setup.py build
 }
