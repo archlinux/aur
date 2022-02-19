@@ -19,6 +19,7 @@ pkgbase = guacamole-server
 	depends = openssl
 	depends = libvorbis
 	depends = libwebp
+	depends = ffmpeg4.4
 	optdepends = libssh: for ssh protocol support
 	optdepends = libvncserver: for vnc protocol support
 	optdepends = freerdp: for rdp protocol support

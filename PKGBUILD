@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
 license=('GPL3')
 replaces=('guacd' 'libguac' 'libguac-client-ssh' 'libguac-client-vnc' 'libguac-client-rdp')
-depends=('pango' 'openssl' 'libvorbis' 'libwebp')
+depends=('pango' 'openssl' 'libvorbis' 'libwebp' 'ffmpeg4.4')
 makedepends=('libpulse' 'libvorbis' 'openssl' 'libssh' 'libvncserver' 'pango' 'libtelnet')
 optdepends=('libssh: for ssh protocol support'
 'libvncserver: for vnc protocol support'
@@ -40,6 +40,7 @@ prepare() {
 
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
+	export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 	./configure --prefix=/usr --sbindir=/usr/bin --with-systemd-dir=/usr/lib/systemd/system CPPFLAGS="-Wno-error=pedantic"
 	make
 }
