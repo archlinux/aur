@@ -2,14 +2,13 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.32.0
+pkgver=2.34.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
 url="https://github.com/googleapis/python-bigquery"
 license=('Apache')
 depends=(
-	'python>=3.6'
 	'python-dateutil'
 	'python-google-api-core'
 	'python-google-cloud-core'
@@ -19,7 +18,13 @@ depends=(
 	'python-proto-plus'
 	'python-protobuf'
 	'python-requests')
-makedepends=('python-setuptools' 'python-sphinx' 'python-recommonmark')
+makedepends=(
+	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-sphinx'
+	'python-recommonmark')
 optdepends=(
 	'python-arrow: pyarrow support'
 	'python-pandas: pandas support'
@@ -28,19 +33,20 @@ optdepends=(
 	'python-snappy: fastparquet support'
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
-source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/python-bigquery/archive/v$pkgver.tar.gz")
-sha256sums=('eb1751c5e5351267cd7d97365d4efec739f0fada62173e130f8d5db85354b778')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('8852fa3e4c728928de5ee6fa413423aa828bf5ab8be66106693152e8e86e1538')
 
 build() {
 	cd "python-bigquery-$pkgver"
-	python setup.py build
+	python -m build --wheel --skip-dependency-check --no-isolation
 	cd docs
 	PYTHONPATH=../ sphinx-build -b man ./ _build
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "python-bigquery-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
