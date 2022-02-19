@@ -7,9 +7,9 @@ pkgbase = eternalmodmanager
 	license = MIT
 	makedepends = npm
 	depends = electron
-	source = https://github.com/PowerBall253/EternalModManager/archive/v1.6.5/EternalModManager-v1.6.5.tar.gz
+	source = https://github.com/PowerBall253/EternalModManager/archive/v1.6.6/EternalModManager-v1.6.6.tar.gz
 	source = eternalmodmanager
-	sha256sums = d34992b95ec4604ca7b1b20f8cf6977669a316fa38ef195993c14dbd9fe94a79
+	sha256sums = 20cb95e7eb4db1a29a49716c020123b0ec7d3872fd5e349a6b35b7ef788621d0
 	sha256sums = d500abdf9bb20e4221679abe0d85e687c371590f409b378ce30a909838db99e8
 
 pkgname = eternalmodmanager
