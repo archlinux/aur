@@ -3,8 +3,8 @@
 
 pkgname=wapm
 _pkgrepo=${pkgname}-cli
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc='WebAssembly Package Manager'
 arch=('x86_64')
 url="https://github.com/wasmerio/wapm-cli"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${_pkgrepo}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('4828aae2eed897af0bdaee9b4f235cb2c4bb9518d8589e9aade2af7a279d9785eea9f0a5ef717bbae3fd1163197c4325a062690c85919cf0a15e87fa87c871ac')
+sha512sums=('67fe92a85ccfd986f13f11207d476885c276071e27db6b80503a0d0679d3f328b50d57f37353017381c8edc913808891594466856f204007c6ee83cb41cbda95')
 
 prepare() {
   cd ${_pkgrepo}-${pkgver}
