@@ -1,11 +1,12 @@
 pkgbase = python-wheel-inspect
 	pkgdesc = Extract information from wheels
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jwodder/wheel-inspect
 	arch = any
 	license = MIT
-	makedepends = install-wheel-scripts
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-attrs
 	depends = python-entry-points-txt
@@ -13,9 +14,7 @@ pkgbase = python-wheel-inspect
 	depends = python-packaging
 	depends = python-readme-renderer
 	depends = python-wheel-filename
-	noextract = wheel_inspect-1.7.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/w/wheel-inspect/wheel_inspect-1.7.0-py3-none-any.whl
-	sha256sums = 69b34de1f4464ddfc76280c4563e4afc644de2c88e3ae6882f030afdad3d73e4
+	source = https://files.pythonhosted.org/packages/source/w/wheel-inspect/wheel-inspect-1.7.0.tar.gz
+	sha256sums = e3a930c841e1d6d233fd2d213ee6ce07e990006a32d73b0f89937b539db26af6
 
 pkgname = python-wheel-inspect
-
