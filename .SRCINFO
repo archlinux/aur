@@ -6,7 +6,7 @@ pkgbase = monotone
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = boost
+	makedepends = boost1.69
 	depends = pcre
 	depends = lua
 	depends = botan1.10
@@ -21,4 +21,3 @@ pkgbase = monotone
 	sha256sums = b23ad00a537314d939eceaa260b4535d85e2b052b4b00279e5f540d38f0d2e07
 
 pkgname = monotone
-

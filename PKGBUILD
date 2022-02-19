@@ -7,13 +7,13 @@
 
 pkgname=monotone
 pkgver=1.1
-pkgrel=7
+pkgrel=8
 pkgdesc='A free distributed version control system'
 arch=('i686' 'x86_64')
 url='http://www.monotone.ca/'
 license=('GPL')
 depends=('pcre' 'lua' 'botan1.10' 'sqlite3' 'libidn' 'zlib')
-makedepends=('boost')
+makedepends=('boost1.69')
 source=("http://www.monotone.ca/downloads/1.1/monotone-${pkgver}.tar.bz2"
         "http://http.debian.net/debian/pool/main/m/monotone/monotone_1.1-9.debian.tar.xz"
         "pcre-8.42-hack.diff")
@@ -41,6 +41,9 @@ prepare() {
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   export DISABLE_NETWORK_TESTS=1
+  #export CXXFLAGS+=" -std=gnu++11"
+  export CXXFLAGS+=" -I/opt/boost1.69/include"
+  export LDFLAGS+=" -L/opt/boost1.69/lib"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
