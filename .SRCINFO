@@ -1,15 +1,21 @@
 pkgbase = simulavr-git
-	pkgdesc = A simulator for the Atmel AVR family of microcontrollers.
-	pkgver = r890.a12e85f
-	pkgrel = 2
-	url = https://github.com/Traumflug/simulavr
+	pkgdesc = A simulator for the Atmel AVR family of microcontrollers
+	pkgver = 1.1.0.r5.g32985f7
+	pkgrel = 1
+	url = https://www.nongnu.org/simulavr/
 	arch = x86_64
-	arch = i686
 	license = GPL2
-	source = simulavr-git::git+https://github.com/Traumflug/simulavr#branch=traumflug
-	source = gtest-flags.patch
+	makedepends = cmake
+	makedepends = git
+	makedepends = help2man
+	makedepends = iverilog
+	makedepends = python
+	makedepends = swig
+	makedepends = tcl
+	makedepends = texinfo
+	provides = simulavr
+	conflicts = simulavr
+	source = simulavr-git::git+https://git.savannah.nongnu.org/git/simulavr.git
 	sha256sums = SKIP
-	sha256sums = a016162419acd85baff083d5380394da0add0b5b0297cc37ba3bddbb641b148c
 
 pkgname = simulavr-git
-

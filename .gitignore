@@ -1,5 +1,4 @@
 src
 pkg
 simulavr-git
-*pkg.tar.xz
-tags
+*pkg.tar.*
