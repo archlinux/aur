@@ -12,7 +12,7 @@ _rel=1
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
 #pkgver=${_pkgver}.${_channel}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -55,11 +55,18 @@ prepare() {
 
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 
-  # Prevent creation of a `go` directory in one's home.
-  # Sometimes this directory cannot be removed with even `rm -rf` unless
-  # one becomes root or changes the write permissions.
+  pushd wireguard/libwg
   export GOPATH="$srcdir/gopath"
-  go clean -modcache
+  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
+
+  go mod download -x
+  popd
+
+  pushd gui
+  echo "Installing JavaScript dependencies..."
+  export npm_config_cache="$srcdir/npm_cache"
+  npm ci
+  popd
 }
 
 build() {
@@ -76,7 +83,6 @@ build() {
 
   echo "Building wireguard-go..."
   pushd wireguard/libwg
-  mkdir -p "../../build/lib/$CARCH-unknown-linux-gnu"
   export GOPATH="$srcdir/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -85,9 +91,6 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
   popd
-
-  # Clean mod cache for makepkg -C
-  go clean -modcache
 
   export MULLVAD_ADD_MANIFEST="1"
 
@@ -125,9 +128,8 @@ build() {
 
   # Build Electron GUI app
   pushd gui
-  echo "Installing JavaScript dependencies..."
-  npm ci --cache "$srcdir/npm-cache"
   echo "Packing final release artifact..."
+  export npm_config_cache="$srcdir/npm_cache"
   npm run pack:linux
   popd
 }
