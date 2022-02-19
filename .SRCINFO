@@ -22,6 +22,10 @@ pkgbase = nextpnr-all-nightly
 	depends = boost-libs
 	depends = qt5-base
 	conflicts = nextpnr-git
+	conflicts = nextpnr-ice40-nightly
+	conflicts = nextpnr-ecp5-nightly
+	conflicts = nextpnr-nexus-nightly
+	conflicts = nextpnr-generic-nightly
 	options = !strip
 	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=347ba3a
 	sha256sums = SKIP

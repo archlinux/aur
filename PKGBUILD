@@ -25,7 +25,7 @@ conflicts=(
 	"nextpnr-git"
 	"nextpnr-ice40-nightly"
 	"nextpnr-ecp5-nightly"
-	"nexrpnr-nexus-nightly"
+	"nextpnr-nexus-nightly"
 	"nextpnr-generic-nightly"
 )
 replaces=()
