@@ -2,7 +2,7 @@
 
 pkgname=plex-htpc
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 _snaprev=2867-a8b910ed
 pkgdesc="Plex HTPC application for linux"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('unknown')
 makedepends=('squashfs-tools')
 depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'mpv')
 optdepends=('qt5-wayland: Wayland support')
-source=("https://downloads.plex.tv/htpc/${pkgver}.${pkgrel}/linux/plex-htpc_${pkgver}_amd64.snap" "qt.conf")
+source=("https://downloads.plex.tv/htpc/${pkgver}.${_snaprev}/linux/plex-htpc_${pkgver}_amd64.snap" "qt.conf")
 sha256sums=('594a8e451f58a87741850dadd936b423070c5f286800c36ac062ab7fcdf21d5f'
             '40d1b22236d9d2312d16563493b8c6d69134c5aa54ff6d1531243133fb46f083')
 
@@ -49,10 +49,6 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}/usr/lib/x86_64-linux-gnu/libre2.so.5.0.0" "${pkgdir}/usr/lib/${pkgname}/libre2.so.5"
 
   rm -rf "$pkgdir/opt/$pkgname"/{lib,gnome-platform,meta,data-dir,snap,usr}
-
-  install -d "${pkgdir}/usr/lib/${pkgname}/dri"
-  install -Dm644 "${srcdir}/${pkgname}/lib/dri/i965_drv_video.so" -t "${pkgdir}/usr/lib/${pkgname}/dri"
-  install -Dm644 "${srcdir}/${pkgname}/lib/dri/iHD_drv_video.so" -t "${pkgdir}/usr/lib/${pkgname}/dri"
 
   install -Dm644 "${srcdir}/qt.conf" -t "${pkgdir}/opt/${pkgname}/bin"
 
