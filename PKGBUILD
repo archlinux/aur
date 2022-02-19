@@ -4,7 +4,7 @@
 
 pkgname=jbig2enc
 pkgver=0.29
-pkgrel=2
+pkgrel=3
 pkgdesc="A JBIG2 image encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/agl/jbig2enc"
@@ -18,7 +18,7 @@ source=("https://github.com/agl/jbig2enc/archive/refs/tags/$pkgver.tar.gz"
         "jbig2enc-pdfpy.patch"
         "jbig2enc.1")
 sha256sums=('bfcf0d0448ee36046af6c776c7271cd5a644855723f0a832d1c0db4de3c21280'
-            '2614e02f9cc71d9b186ffaecf6abb4b270ad9ce43cb4d6284e9e96c4e4a44d06'
+            'a5d98fc43b2f3dc73dd1f352a439a6ae73fd085f469420aa29e47d9a4e2f40f6'
             'c940124f102695872fae02b243e0dd99c05ecfb3ecef0a476b3e903a0db69a54')
 
 
