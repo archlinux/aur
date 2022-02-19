@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-asyncrun
-pkgver=2.9.9
+pkgver=2.9.10
 pkgrel=1
 pkgdesc="Vim plugin for executing shell commands asynchronously"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('vim-plugins')
 depends=('vim-plugin-runtime')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('666685f081965ba8c0f3e8e01695ed051e8c2d04bdb689094471e6fdf5e2a1f6')
+sha256sums=('9363cac588d14d96a60507924d095aec3a0ff42d6a8ef4dcde03595fb68948b6')
 
 package() {
 	cd "asyncrun.vim-$pkgver"
