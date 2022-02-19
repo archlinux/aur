@@ -1,16 +1,15 @@
 pkgbase = python-qtico
 	pkgdesc = Tools for using cross-platform Qt icon themes
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flying-sheep/qtico
 	arch = any
 	license = GPL3
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
 	depends = python-pyqt5
-	noextract = qtico-0.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/q/qtico/qtico-0.1-py3-none-any.whl
-	sha256sums = e7215d78383ac34c0d927dcc240edb9203ef93d915d39bf8f70859f6be03d19d
+	source = https://files.pythonhosted.org/packages/source/q/qtico/qtico-0.1.tar.gz
+	sha256sums = d8d604a85a024fae69ba38149387be0df77ad6e6d4987737527804457a7af429
 
 pkgname = python-qtico
-
