@@ -1,0 +1,19 @@
+pkgbase = wii-lua-git
+	pkgdesc = Lua 5.1 for Wii
+	pkgver = 5.1.5.wii.1.r0.g9db4e93
+	pkgrel = 1
+	url = https://github.com/carstene1ns/lua51-wii
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = devkitPPC
+	depends = libogc
+	provides = wii-lua-git
+	conflicts = wii-lua-git
+	options = !strip
+	source = wii-lua::git+https://github.com/carstene1ns/lua51-wii.git
+	source = destdir.patch
+	sha256sums = SKIP
+	sha256sums = a91d768ecbe76f0d01677c184e20cb9c701589bd8a3635161baf719d3cb845d1
+
+pkgname = wii-lua-git

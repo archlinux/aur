@@ -1,0 +1,11 @@
+--- Makefile	2022-02-18 22:15:45.003740506 -0500
++++ Makefile-patch	2022-02-18 22:20:17.800367168 -0500
+@@ -9,7 +9,7 @@
+ 
+ # Where to install. The installation starts in the src and doc directories,
+ # so take care if INSTALL_TOP is not an absolute path.
+-INSTALL_TOP= $(DEVKITPRO)/libogc
++INSTALL_TOP= $(DESTDIR)$(DEVKITPRO)/libogc
+ INSTALL_INC= $(INSTALL_TOP)/include
+ INSTALL_LIB= $(INSTALL_TOP)/lib/wii
+ #
