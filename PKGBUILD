@@ -24,7 +24,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git"#commit=fd2d4a8f
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git"#commit=347ba3a
 )
 sha256sums=(
 	"SKIP"
