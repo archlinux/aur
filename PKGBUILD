@@ -4,7 +4,7 @@ pkgbase=vkd3d-git
 pkgname=('vkd3d-git'
          'lib32-vkd3d-git'
          )
-pkgver=1.2.493.g4509f08
+pkgver=1.2.799.ga4ca091
 pkgrel=1
 arch=('x86_64')
 url='https://source.winehq.org/git/vkd3d.git'
@@ -19,11 +19,14 @@ makedepends=('spirv-headers'
              'lib32-vulkan-icd-loader'
              'libxcb'
              'lib32-libxcb'
+             'ncurses'
+             'lib32-ncurses'
             )
 conflicts=('vkd3d')
 provides=('vkd3d')
-source=('git://source.winehq.org/git/vkd3d.git')
+source=('git+https://source.winehq.org/git/vkd3d.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd vkd3d
@@ -33,7 +36,7 @@ pkgver() {
 prepare() {
   mkdir -p build{32,64}
 
-  git clone "${srcdir}/vkd3d" vkd3d32
+  git clone "file://${srcdir}/vkd3d" vkd3d32
 }
 
 build() {
@@ -44,8 +47,7 @@ build() {
   cd "${srcdir}/build64"
   ../vkd3d/configure \
     --prefix=/usr \
-    --with-spirv-tools \
-    --enable-tests=no
+    --with-spirv-tools
 
   make
 
@@ -61,10 +63,14 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib32 \
     --with-spirv-tools \
-    --enable-tests=no \
     --host=i686-linux-gnu
 
   make
+}
+
+_check() {
+  make -C build64 check
+  make -C build32 check
 }
 
 package_vkd3d-git() {
@@ -72,6 +78,7 @@ package_vkd3d-git() {
   depends=('spirv-tools'
            'libvulkan.so'
            'libxcb'
+           'ncurses'
            )
   provides=('vkd3d'
             "vkd3d=${pkgver}"
@@ -86,6 +93,7 @@ package_lib32-vkd3d-git() {
            'lib32-spirv-tools'
            'libvulkan.so'
            'lib32-libxcb'
+           'lib32-ncurses'
            )
   provides=('lib32-vkd3d')
   conflicts=('lib32-vkd3d')
