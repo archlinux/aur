@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-ecp5-nightly
 pkgver=20220219_347ba3a
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for ecp5"
 arch=("x86_64")
@@ -50,13 +50,8 @@ build() {
 	ninja
 }
 
-check() {
-	cd "${srcdir}/nextpnr"
-	ninja -C build-ecp5 test
-}
-
 package() {
 	cd "${srcdir}/nextpnr"
 	DESTDIR="${pkgdir}" PREFIX="${_PREFIX}" ninja -C build-ecp5 install
-	install -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-ecp5/COPYING"
+	iinstall -Dm644 "${srcdir}/nextpnr/COPYING" "${pkgdir}${_PREFIX}/share/licenses/nextpnr-ecp5/COPYING"
 }
