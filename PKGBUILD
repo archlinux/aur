@@ -1,11 +1,11 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-nexus-nightly
-pkgver=fd2d4a8f_20211125
+pkgver=20220219_347ba3a
 pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - for nexus"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/YosysHQ/nextpnr"
 license=("custom:ISC")
 groups=()
@@ -24,7 +24,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git"#commit=fd2d4a8f
+	"nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=347ba3a"
 )
 sha256sums=(
 	"SKIP"
@@ -34,7 +34,6 @@ _PREFIX="/usr"
 prepare() {
 	cd "${srcdir}/nextpnr"
 	[ ! -d "${srcdir}/nextpnr/build-nexus" ] && mkdir build-nexus
-	cd ..
 }
 
 build() {
@@ -48,9 +47,12 @@ build() {
 			-DCMAKE_INSTALL_PREFIX=${_PREFIX} \
 			-DUSE_OPENMP=ON	\
 			..
-	cd ..
-	ninja -C build-nexus
-	cd ..
+	ninja
+}
+
+check() {
+	cd "${srcdir}/nextpnr"
+	ninja -C build-nexus test
 }
 
 package() {
