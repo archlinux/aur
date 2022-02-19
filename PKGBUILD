@@ -4,25 +4,22 @@ _pkgname=ananicy-cpp
 pkgname=ananicy-cpp-nosystemd
 _pkgver=1.0.0-rc5
 pkgver=${_pkgver//-/.}
-pkgrel=1
-pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
+pkgrel=2
+pkgdesc="Ananicy rewritten in C++ for much lower CPU and memory usage."
 url="https://gitlab.com/ananicy-cpp/ananicy-cpp/"
 license=(GPLv3)
 source=(
-	"https://gitlab.com/ananicy-cpp/${_pkgname}/-/archive/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.gz"
-	)
-md5sums=('6d8caf9cb384e053df54d795102beb1d')
+	"https://gitlab.com/ananicy-cpp/${_pkgname}/-/archive/v${_pkgver}/${_pkgname}-v${_pkgver}.tar.gz")
+sha256sums=('90f4b7ddb49246db2329cfdf5727c1f2caa22285dcbc5b7cdaba6bcf2c946676')
 arch=(x86_64 i386 armv7h)
-depends=(fmt spdlog nlohmann-json)
-makedepends=(cmake git)
+depends=(fmt spdlog)
+makedepends=(cmake nlohmann-json)
 optdepends=("ananicy-rules-git: community rules")
+conflicts=(ananicy-cpp)
 
-prepare() {
-	cd "$_pkgname-v${_pkgver}"
-
-	mkdir -p build
-	cd build
-	cmake .. \
+build() {
+	cmake -B "build" \
+        -S "$_pkgname-v${_pkgver}" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DUSE_EXTERNAL_SPDLOG=ON \
@@ -30,19 +27,9 @@ prepare() {
 		-DUSE_EXTERNAL_FMTLIB=ON \
 		-DENABLE_SYSTEMD=OFF \
 		-DVERSION=${_pkgver}
-}
-
-build() {
-	cd "$_pkgname-v${_pkgver}/build"
-
-	cmake --build .
+	cmake --build build
 }
 
 package() {
-	cd "$_pkgname-v${_pkgver}/build"
-
-	export DESTDIR="$pkgdir"
-	cmake --install .
-
-	install -m755 -d "$pkgdir/etc/ananicy.d"
+	DESTDIR="$pkgdir" cmake --install build
 }
