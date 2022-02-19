@@ -1,20 +1,20 @@
 pkgbase = discord_arch_electron
 	pkgdesc = Discord (popular voice + video app) using the system provided electron for increased security and performance
-	pkgver = 0.0.16
-	pkgrel = 2
+	pkgver = 0.0.17
+	pkgrel = 1
 	url = https://discordapp.com
 	arch = x86_64
 	license = custom
 	makedepends = asar
-	depends = electron15
+	depends = electron
 	optdepends = libpulse: Pulseaudio support
 	optdepends = xdg-utils: Open files
 	provides = discord
 	conflicts = discord
-	source = https://dl.discordapp.net/apps/linux/0.0.16/discord-0.0.16.tar.gz
+	source = https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.tar.gz
 	source = LICENSE.html::https://discordapp.com/terms
 	source = OSS-LICENSES.html::https://discordapp.com/licenses
-	sha512sums = b95ae338c5abb7c4ba20af761822fc9fb53fd0cb79da16c00ee2df0518bb860a0300e4d0ad9c49b7e1a128ad9ac6d8294b77d2ac4fb8ae9844632c2d6ae7979e
+	sha512sums = 728c760f04770b197635d1fc1a2833c707ab462708cc0bf6fb165691c1375e14e3192f3806d3719325790459b39bd3425f5942d69a53019695f02c965214a5c9
 	sha512sums = SKIP
 	sha512sums = SKIP
 
