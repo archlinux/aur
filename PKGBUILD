@@ -5,7 +5,7 @@ _svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
 _svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
 
 pkgname=ffmpeg-intel-full-git
-pkgver=5.1.r105628.g81df787b53
+pkgver=5.1.r105688.g0d34e21282
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for intel; git version) (based on dbermond package)'
 arch=('x86_64')
@@ -24,12 +24,12 @@ depends=(
         'x264'  'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2'
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm'
-        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 
+        'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'srt' 'vmaf' 
         'glslang-git' 'librabbitmq-c' 'vulkan-icd-loader' 'svt-av1' 'svt-vp9' 'spirv-tools' 'librist'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
-        'avisynthplus' 'vmaf-git'
+        'avisynthplus'
 )
 makedepends=(
     # official repositories:
