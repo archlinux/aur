@@ -24,16 +24,16 @@ sha256sums=('f95cf60a22d4e461bec9d0e72f5d3609c9a4576fb1cc45f553d0202ce2e38c88'
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
   for _f in $(< ../debian/patches/series); do
-    msg2 "Applying $_f"
+    echo "Applying $_f"
     patch -Np1 < ../debian/patches/$_f
   done
   for _f in "${source[@]}"; do
     if [[ $_f == *.@(diff|patch) ]]; then
-      msg2 "Applying $_f"
+      echo "Applying $_f"
       patch -Np1 < "$srcdir/$_f"
     fi
   done
-  msg2 "Bootstrapping autoconf"
+  echo "Bootstrapping autoconf"
   aclocal
   autoreconf --install
 }
