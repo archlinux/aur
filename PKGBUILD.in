@@ -2,7 +2,7 @@
 
 pkgname=nextpnr-all-nightly
 pkgver=@NPR_VER@
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - all FPGA architectures"
 arch=("x86_64")
@@ -54,11 +54,6 @@ build() {
 			-DUSE_OPENMP=ON	\
 			..
 	ninja
-}
-
-check() {
-	cd "${srcdir}/nextpnr"
-	ninja -C build-all test
 }
 
 package() {
