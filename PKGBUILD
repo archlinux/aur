@@ -5,7 +5,7 @@
 
 # Maintainer: Philipp Hug <arch@hug.cx>
 pkgname=chipsec-dkms-git
-pkgver=1.8.1.19.g90fc2bec
+pkgver=1.8.1.r19.g90fc2bec
 pkgrel=1
 epoch=
 pkgdesc="Platform Security Assessment Framework"
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$pkgname"
-	git describe --long --tags | sed 's/^v//;s/v\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
