@@ -2,12 +2,12 @@
 
 pkgname=db2-odbc-cli
 pkgver=11.5.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='IBM Data Server Driver for ODBC and CLI'
 arch=('x86_64')
 url='https://www.ibm.com/support/pages/db2-odbc-cli-driver-download-and-installation-information'
 license=('custom:IBM IPLA')
-depends=('audit' 'gcc-libs' 'glibc' 'icu' 'libcap-ng' 'pam' 'xz' 'zlib' 'libxml2' 'libcrypt.so.1')
+depends=('audit' 'gcc-libs' 'glibc' 'icu' 'libcap-ng' 'pam' 'xz' 'zlib' 'libxml2' 'libxcrypt-compat')
 source=("https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/linuxx64_odbc_cli.tar.gz")
 sha256sums=('64171abacfa8c27bcc09ef963d5f3340a8e351c2d4c0809c3fdda694bed195d2')
 
