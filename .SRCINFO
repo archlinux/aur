@@ -1,13 +1,12 @@
 pkgbase = cod-git
 	pkgdesc = A completion daemon for bash/zsh
-	pkgver = 0.1.0.r1.g5e815b5
-	pkgrel = 1
+	pkgver = 0.1.0.r2.gde10c9b
+	pkgrel = 2
 	url = https://github.com/dim-an/cod
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = go
-	optdepends = bash-completion
 	provides = cod
 	conflicts = cod
 	source = git+https://github.com/dim-an/cod.git

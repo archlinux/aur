@@ -1,13 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod-git
-pkgver=0.1.0.r1.g5e815b5
-pkgrel=1
+pkgver=0.1.0.r2.gde10c9b
+pkgrel=2
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
 license=('Apache')
 makedepends=('git' 'go')
-optdepends=('bash-completion')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dim-an/cod.git')
@@ -19,11 +18,14 @@ pkgver() {
 }
 
 prepare() {
-  # Prevent creation of a `go` directory in one's home.
-  # Sometimes this directory cannot be removed with even `rm -rf` unless
-  # one becomes root or changes the write permissions.
+  cd "$srcdir/${pkgname%-git}"
   export GOPATH="$srcdir/gopath"
-  go clean -modcache
+
+  # create directory for build output
+  mkdir -p build
+
+  # download dependencies
+  go mod download -x
 }
 
 build() {
@@ -34,13 +36,10 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o "${pkgname%-git}" .
-
-  # Clean now to ensure makepkg --clean works
-  go clean -modcache
+  go build -v -o build .
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  install -Dm755 "${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+  install -Dm755 "build/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 }
