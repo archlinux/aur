@@ -38,7 +38,7 @@
 +        connection_keyword='conn')
 +    def SetThrottle(self, throttle, sender=None, conn=None):
 +        self._check_polkit_privilege(sender, conn, 'com.ubuntu.indicatorcpufreqselector.setthrottle')
-+        error = subprocess.Popen(["/bin/sh", "throttle", throttle])
++        error = subprocess.Popen(["/bin/sh", "throttlectl", throttle])
 +
 +    @dbus.service.method(dbus_interface='com.ubuntu.IndicatorCpufreqSelector',
 +        in_signature='as',
@@ -47,7 +47,7 @@
 +        connection_keyword='conn')
 +    def SetGovernor(self, governor, sender=None, conn=None):
 +        self._check_polkit_privilege(sender, conn, 'com.ubuntu.indicatorcpufreqselector.setfrequencyscaling')
-+        error = subprocess.Popen(["/bin/sh", "throttle", governor])
++        error = subprocess.Popen(["/bin/sh", "throttlectl", governor])
 +
 +    @dbus.service.method(dbus_interface='com.ubuntu.IndicatorCpufreqSelector',
 +        in_signature='as',
@@ -56,7 +56,7 @@
 +        connection_keyword='conn')
 +    def SetPSTurbo(self, psturbo, sender=None, conn=None):
 +        self._check_polkit_privilege(sender, conn, 'com.ubuntu.indicatorcpufreqselector.setpsturbo')
-+        error = subprocess.Popen(["/bin/sh", "throttle", psturbo])
++        error = subprocess.Popen(["/bin/sh", "throttlectl", psturbo])
 +
 +    @dbus.service.method(dbus_interface='com.ubuntu.IndicatorCpufreqSelector',
 +        in_signature='as',
@@ -65,7 +65,7 @@
 +        connection_keyword='conn')
 +    def SetHyperthreads(self, hyperthreads, sender=None, conn=None):
 +        self._check_polkit_privilege(sender, conn, 'com.ubuntu.indicatorcpufreqselector.sethyperthreads')
-+        error = subprocess.Popen(["/bin/sh", "throttle", hyperthreads])
++        error = subprocess.Popen(["/bin/sh", "throttlectl", hyperthreads])
 +
 +    @dbus.service.method(dbus_interface='com.ubuntu.IndicatorCpufreqSelector',
 +        in_signature='as',
@@ -74,7 +74,7 @@
 +        connection_keyword='conn')
 +    def SetGPUThrottle(self, gputhrottle, sender=None, conn=None):
 +        self._check_polkit_privilege(sender, conn, 'com.ubuntu.indicatorcpufreqselector.setgputhrottle')
-+        error = subprocess.Popen(["/bin/sh", "throttle", gputhrottle])
++        error = subprocess.Popen(["/bin/sh", "throttlectl", gputhrottle])
  
      def _check_polkit_privilege(self, sender, conn, privilege):
          '''Verify that sender has a given PolicyKit privilege.
