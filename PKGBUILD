@@ -4,13 +4,13 @@ _pluginname=dir-watch-media
 pkgname=obs-$_pluginname
 pkgver=0.5.3
 _obsver=27.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Adds a filter you can add to media source to load the oldest or newest file in a directory"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/directory-watch-media.801/"
 license=("GPL2")
 depends=("obs-studio>=$_obsver")
-makedepends=("cmake" "git" "libxcomposite" "ffmpeg")
+makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
   "$pkgname::git+https://github.com/exeldro/$pkgname#commit=859eac497a3976919b4c40b04c270544ac5b26f5"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
