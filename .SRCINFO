@@ -1,16 +1,29 @@
 pkgbase = nextpnr-all-nightly
-	pkgdesc = nextpnr portable FPGA place and route tool - all
-	pkgver = fd2d4a8f_20211125
+	pkgdesc = nextpnr portable FPGA place and route tool - all FPGA architectures
+	pkgver = 20220219_347ba3a
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
-	arch = any
+	arch = x86_64
 	license = custom:ISC
-	depends = nextpnr-ice40-nightly>=fd2d4a8f_20211125
-	depends = nextpnr-ecp5-nightly>=fd2d4a8f_20211125
-	depends = nextpnr-nexus-nightly>=fd2d4a8f_20211125
-	depends = nextpnr-generic-nightly>=fd2d4a8f_20211125
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = gawk
+	makedepends = eigen
+	makedepends = boost
+	depends = yosys-nightly
+	depends = prjtrellis-nightly
+	depends = icestorm-nightly
+	depends = prjoxide-nightly
+	depends = python
+	depends = boost-libs
+	depends = qt5-base
 	conflicts = nextpnr-git
 	options = !strip
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git#commit=347ba3a
+	sha256sums = SKIP
 
 pkgname = nextpnr-all-nightly
