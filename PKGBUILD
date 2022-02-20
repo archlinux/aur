@@ -3,11 +3,11 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=python-pyfr
-pkgver=1.12.3
-_commit=b556bf7
+pkgver=1.13.0
+_commit=ddab8b0
 pkgrel=1
 pkgdesc="Framework for solving advection-diffusion type problems on streaming architectures"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/pyfr/pyfr'
 license=('BSD')
 depends=(
@@ -30,8 +30,13 @@ optdepends=(
 	'cblas: needed for OpenMP backend'
 	'openblas: alternative blas for OpenMP backend'
 	'cgns: for importing CGNS meshes')
-makedepends=('git' 'python-setuptools')
-source=("$pkgname::git+$url#commit=$_commit?signed"
+makedepends=(
+	'git'
+	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel')
+source=("$pkgname::git+$url#commit=${_commit}?signed"
         '001-remove-tests.patch')
 sha256sums=('SKIP'
             '97d817a571eed6f659b9970acf45edd3c9d12d8370d0fe3d998f10cec710b10b')
@@ -45,14 +50,15 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	python setup.py build
+	python -m build --wheel --no-isolation
 	## FIXME: sphinxcontrib-contentui and sphinxcontrib-fancybox are not in the AUR
 	# cd doc
 	# make man
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
