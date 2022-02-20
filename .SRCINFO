@@ -1,0 +1,18 @@
+pkgbase = audio_async_loopback-git
+	pkgdesc = Real-time S/PDIF PCM/AC3 capture and playback
+	pkgver = r7.75b8c97
+	pkgrel = 1
+	url = https://github.com/jakemoroni/audio_async_loopback
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = git
+	depends = libsamplerate
+	depends = libpulse
+	depends = ffmpeg
+	provides = audio_async_loopback
+	conflicts = audio_async_loopback
+	source = git+https://github.com/jakemoroni/audio_async_loopback
+	md5sums = SKIP
+
+pkgname = audio_async_loopback-git
