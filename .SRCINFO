@@ -1,17 +1,22 @@
 pkgbase = python-pycoin
 	pkgdesc = Utilities for Bitcoin and altcoin addresses and transaction manipulation
-	pkgver = 0.91.20210515
+	pkgver = 0.92.20220213
 	pkgrel = 1
 	url = https://github.com/richardkiss/pycoin
 	changelog = CHANGES
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = git
 	makedepends = python-setuptools-scm
+	makedepends = python-toml
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-sphinx
 	depends = python
-	source = python-pycoin-0.91.20210515.tar.gz::https://files.pythonhosted.org/packages/source/p/pycoin/pycoin-0.91.20210515.tar.gz
-	sha256sums = d2231a8d11b2524c26472d08cf1b76569849ab44507495d0510165ae0af4858e
+	source = python-pycoin::git+https://github.com/richardkiss/pycoin#commit=62fd46a?signed
+	validpgpkeys = 1BE03D394138A2C2E2EF64D4E0F43326DBD8AB6A
+	sha256sums = SKIP
 
 pkgname = python-pycoin

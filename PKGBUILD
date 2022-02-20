@@ -2,21 +2,30 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-pycoin
-pkgver=0.91.20210515
+pkgver=0.92.20220213
 pkgrel=1
+_commit=62fd46a
 pkgdesc="Utilities for Bitcoin and altcoin addresses and transaction manipulation"
 url="https://github.com/richardkiss/pycoin"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-setuptools-scm' 'python-sphinx')
+makedepends=(
+	'git'
+	'python-setuptools-scm'
+	'python-toml'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-sphinx')
 checkdepends=('python-pytest')
 changelog=CHANGES
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycoin/pycoin-$pkgver.tar.gz")
-sha256sums=('d2231a8d11b2524c26472d08cf1b76569849ab44507495d0510165ae0af4858e')
+source=("$pkgname::git+$url#commit=$_commit?signed")
+sha256sums=('SKIP')
+validpgpkeys=('1BE03D394138A2C2E2EF64D4E0F43326DBD8AB6A') ## Richard Kiss
 
 prepare() {
-	cd "pycoin-$pkgver"
+	cd "$pkgname"
 	sed -i \
 		-e "/'block/s/block/pycoin-block/" \
 		-e "/'ku/s/ku/pycoin-ku/" \
@@ -29,21 +38,26 @@ prepare() {
 }
 
 build() {
-	cd "pycoin-$pkgver"
-	python setup.py build
-	cd docs
-	make man
+	cd "$pkgname"
+	python -m build --wheel --no-isolation
+	## FIXME: docs do not build
+	# ( cd docs; make man )
 }
 
 check() {
-	cd "pycoin-$pkgver"
-	pytest
+	cd "$pkgname"
+	PYTHONPATH=./ pytest -x
 }
 
 package() {
-	cd "pycoin-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md CREDITS -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm 644 docs/_build/man/pycoin.1 -t "$pkgdir/usr/share/man/man1/"
+	export PYTHONHASHSEED=0
+	cd "$pkgname"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 \
+		README.md \
+		COMMAND-LINE-TOOLS.md \
+		CREDITS \
+		-t "$pkgdir/usr/share/doc/$pkgname/"
+	# install -Dm644 docs/_build/man/pycoin.1 -t "$pkgdir/usr/share/man/man1/"
 }
