@@ -1,6 +1,6 @@
 pkgbase = python-benedict
 	pkgdesc = dict subclass with keylist/keypath support, I/O shortcuts (base64, csv, json, pickle, plist, query-string, toml, xml, yaml) and many utilities.
-	pkgver = 0.24.3
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/fabiocaccamo/python-benedict
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-benedict
 	depends = python-six
 	depends = python-toml
 	depends = python-xmltodict
-	source = https://github.com/fabiocaccamo/python-benedict/archive/0.24.3.tar.gz
-	sha256sums = 8019a77bd73ae1127bcf6b79b82b6dc323cf1ae67bfb5e2ff59dbbdeb052005d
+	source = https://github.com/fabiocaccamo/python-benedict/archive/0.25.0.tar.gz
+	sha256sums = e9ec71b76b89df66b0b025e363d4a54007b75030e476036e297e95600c2c0f24
 
 pkgname = python-benedict
