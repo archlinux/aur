@@ -1,7 +1,7 @@
 # Maintainer: Otto Ahoniemi <otto@ottoahoniemi.fi>
 
 pkgname="expo-cli"
-pkgver=5.1.3
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Tools for creating, running, and deploying Universal Expo and React Native apps"
 arch=("any")
@@ -12,7 +12,7 @@ makedepends=("jq" "npm")
 optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha512sums=("e0d6c9a2b4045c68f4b11259ac36cff3630ab412e0e54995ab8aab68328c8609affa08dba31037a80743e53e625f91fb23f3e163ecd7add75a73e2e87a91bb53")
+sha512sums=("d33c99c2fee606679e10c67bbabe711edfe496ed42362b8cb936ecadb0cebd03ea0f1c8b38a950b6fb093a7f551c252df2c025c8ddb5266bbb288ea51fb7d281")
 
 package() {
   npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tar.gz"
