@@ -24,7 +24,7 @@ sha256sums=('1acdd5087cab54a099135a5623bb1960019816e2e3042b889c637901a832d3c3'
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 prepare() {
-  patch -p1 -d "sqliteschema-$pkgver" < 001-setup.py.patch
+  patch -p1 -d "sqliteschema-$pkgver" < remove-whitespace-from-description.patch
 }
 
 build() {
