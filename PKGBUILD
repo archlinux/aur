@@ -1,6 +1,6 @@
 # Maintainer: Max Jöhnk <maxjoehnk@gmail.com>
 pkgname=sidenotes-git
-pkgver=r30.6adb925
+pkgver=r57.0befa51
 pkgrel=1
 pkgdesc='Show todos from different sources in a sidebar like app'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -8,7 +8,7 @@ url="https://github.com/maxjoehnk/sidenotes"
 license=('GPL3')
 groups=()
 depends=('gtk3' 'curl')
-makedepends=('git' 'cargo-nightly')
+makedepends=('git' 'cargo')
 provides=('sidenotes')
 conflicts=()
 replaces=()
@@ -33,7 +33,6 @@ prepare() {
 build() {
 	cd "$srcdir/${pkgname%-VCS}"
 
-    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
 }
