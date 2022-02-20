@@ -3,14 +3,16 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=97.0
+pkgver=97.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse)
+         nss ttf-font libpulse)
+depends_x86_64=(ffmpeg4.4)
+depends_aarch64=(ffmpeg)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -30,9 +32,9 @@ _uploadpath_sig_aarch64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aar
 _uploadpath_sig_x86_64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums_x86_64=('68c684c0358c42bf3456c52cd7caaa148d6c469b412026f041f8c97801004b1f'
+sha256sums_x86_64=('9a9f220eabc4e83f83339e22bcd6bbb03b1e1c692ff1fbfc682193eaca76ad1f'
                    'SKIP')
-sha256sums_aarch64=('f56e917ad81aaa7cb7860724f7536f05063b3b5412b81afad2a7cfa3bccfcbb6'
+sha256sums_aarch64=('45c487a711f6b64a3e6b44afce68c3cccf12561578a9a1f816ac50837488b4a4'
                     'SKIP')
 
 package() {
