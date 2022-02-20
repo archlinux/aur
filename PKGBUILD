@@ -1,6 +1,6 @@
 pkgname=gildas
 
-pkgver=feb22a
+pkgver=feb22b
 pkgrel=1
 pkgdesc='GILDAS'
 arch=('x86_64')
