@@ -5,7 +5,7 @@
 
 # Maintainer: Moritz Sokoll <moritz@sokoll.com>
 pkgname=gweb
-pkgver=1.0.3
+pkgver=1.1.3
 pkgrel=1
 epoch=
 pkgdesc="a simple web browser written in C"
@@ -23,23 +23,23 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://gitlab.sokoll.com/moritz/gweb/-/archive/d556381795b1b755b748d5e4700c8b331d43f996/gweb-d556381795b1b755b748d5e4700c8b331d43f996.tar.gz")
+source=("https://gitlab.sokoll.com/moritz/gweb/-/archive/1a33a2b677aa315ab1b5c94da00b94c654ee3824/gweb-1a33a2b677aa315ab1b5c94da00b94c654ee3824.tar.gz")
 noextract=()
-sha256sums=("54e319b30619d465ea0cf1d10f40c989081b9cfcfbb7214ad5d787e92a04d645")
+sha256sums=("cbb911ecaaa90571c3049d487621b7c23614bb2babc7f3e46eb9fd94c32a090f")
 validpgpkeys=()
 
 prepare() {
-	cd gweb-d556381795b1b755b748d5e4700c8b331d43f996
+	cd gweb-1a33a2b677aa315ab1b5c94da00b94c654ee3824
 	./configure.sh -p "$pkgdir/usr"
 }
 
 build() {
-	cd gweb-d556381795b1b755b748d5e4700c8b331d43f996
+	cd gweb-1a33a2b677aa315ab1b5c94da00b94c654ee3824
 	make
 }
 
 package() {
-	cd gweb-d556381795b1b755b748d5e4700c8b331d43f996
+	cd gweb-1a33a2b677aa315ab1b5c94da00b94c654ee3824
 	mkdir -p "$pkgdir/usr/bin"
 	make install
 }
