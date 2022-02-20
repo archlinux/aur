@@ -1,14 +1,14 @@
 pkgbase = emacs-hexrgb
 	pkgdesc = Bookmark+ mode, which enhances vanilla Emacs bookmarks in many ways
 	pkgver = 1019
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/emacsmirror/hexrgb.git
 	arch = any
 	license = GPL3
 	makedepends = awk
 	makedepends = git
 	depends = emacs
-	source = git+https://github.com/emacsmirror/hexrgb.git#commit=90e5f07f14bdb9966648977965094c75072691d4
+	source = git+https://github.com/jousimies/hexrgb.git#commit=c14913d4b9ea78f26135af89c4cd6207e369755e
 	md5sums = SKIP
 
 pkgname = emacs-hexrgb
