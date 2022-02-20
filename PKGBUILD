@@ -1,13 +1,15 @@
+# Maintainer: xiretza <aur@xiretza.xyz>
+
 _pkgname=Surelog
 pkgname=${_pkgname,,}-git
-pkgver=r3840.a1edc64c1
+pkgver=r4293.9605843b0
 pkgrel=1
 pkgdesc="SystemVerilog 2017 Pre-processor, Parser, Elaborator, UHDM Compiler."
 arch=(x86_64)
 url="https://github.com/chipsalliance/$_pkgname"
 license=('Apache')
 depends=('antlr4-runtime' 'uhdm' 'flatbuffers')
-makedepends=('git' 'cmake' 'tcl' 'antlr4')
+makedepends=('git' 'cmake' 'tcl' 'antlr4' 'python')
 checkdepends=('gtest')
 provides=("${_pkgname,,}=$pkgver")
 conflicts=("${_pkgname,,}")
@@ -20,11 +22,11 @@ source=(
 	"0005-Build-shared-instead-of-static-library.patch"
 )
 sha256sums=('SKIP'
-            '957d4ac0d8da855d993719ae5a33ee112c01ec62cdf2411f93d945b33e4f246e'
-            'edb38cf4fbed373574e02f2e7559ee8c43ffaf75d6945ff5c0251886d18a9924'
-            'f6ce38895b3f493f45e75fe87b7604d9f0a52b56f38b320d797ba6e4c3d79969'
-            '4a14d0861cc8daa3fd192711870c02394e2def0ff662c9f846c4baf36f97f6d4'
-            '968e6832222b9eadce0bc4dc4e0e7872f26bb4bec69709771d1bd4c7b64b22ba')
+            'a5ccdcb228860b1c20a87a6143a1d4ed32afe3ee246f7585adf1d9854d748aca'
+            'c0e6fbdff015e076621f8657d7ec4978b3c346c8ae8a17479497d92d8d8d5dd2'
+            'be218b888bec744b7cd490997908eef32d5efeca02bca986d9dd83c8ca3b24b4'
+            'c079f04d70faa09ec7dc691549d9d55e924f26649cfab74fa1cdc27792f39420'
+            '8dc742b181bc9f7886b8eee2579e3ae50b96d4bebb819c4f27b03db33de538e8')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -35,11 +37,11 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 
-	patch -p1 < "$srcdir/0001-Unvendor-dependencies.patch"
-	patch -p1 < "$srcdir/0002-Don-t-build-hello-worlds.patch"
-	patch -p1 < "$srcdir/0003-Fix-installation-directories.patch"
-	patch -p1 < "$srcdir/0004-Fix-install-location-of-cmake-config-files.patch"
-	patch -p1 < "$srcdir/0005-Build-shared-instead-of-static-library.patch"
+	for f in "${source[@]}"; do
+		if [[ "$f" == *.patch ]]; then
+			patch -p1 < "$srcdir/$f"
+		fi
+	done
 }
 
 build() {
