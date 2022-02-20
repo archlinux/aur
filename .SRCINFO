@@ -1,23 +1,23 @@
 pkgbase = blacktex-git
-	pkgdesc = A LaTex code prettifier and formatter
-	pkgver = 0.5.2.r2.gb37ba68
+	pkgdesc = LaTex code prettifier and formatter
+	pkgver = 0.6.0.r0.g9df9691
 	pkgrel = 1
 	url = https://github.com/nschloe/blacktex
 	arch = any
 	license = GPL3
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	checkdepends = python-pytest-randomly
 	makedepends = git
-	makedepends = python-setuptools
-	depends = python>=3.6
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-pylatexenc
 	optdepends = python-importlib-metadata: required for python<3.8
 	provides = blacktex
 	conflicts = blacktex
 	source = blacktex-git::git+https://github.com/nschloe/blacktex?signed
-	source = setup.py
 	validpgpkeys = B0212779B9AE294D1EF7E676914F833437204C75
 	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
-	sha256sums = 843ac26c38a41abae578250bc0f9419194b320a0f67327d941037a4268f6cfe7
 
 pkgname = blacktex-git
