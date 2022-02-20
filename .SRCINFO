@@ -1,13 +1,13 @@
 pkgbase = v2ray-geoip-custom
 	pkgdesc = Custom GeoIP List for V2Ray
-	pkgver = 202202122209
+	pkgver = 202202192210
 	pkgrel = 1
 	url = https://github.com/Loyalsoldier/v2ray-rules-dat
 	arch = any
 	license = GPL3
 	provides = v2ray-geoip
 	conflicts = v2ray-geoip
-	source = geoip-202202122209.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202202122209/geoip.dat
-	sha256sums = 55fa3461a6d5afd41c9d23af7e477b545bb5a39a23ca0cebf1cbabb55c57b6eb
+	source = geoip-202202192210.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/202202192210/geoip.dat
+	sha256sums = 52ab08f19ecfab52588ad01f67729504beda0d2cbd0780f1428f070482bafdd3
 
 pkgname = v2ray-geoip-custom
