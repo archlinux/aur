@@ -1,5 +1,5 @@
 pkgbase = libstdc++5-bin
-	pkgdesc = The GNU Standard C++ Library v3. This package contains an additional runtime library for C++ programs built with the GNU compiler.
+	pkgdesc = The GNU Standard C++ Library v3.
 	pkgver = 3.3.6
 	pkgrel = 32
 	url = https://packages.debian.org/bullseye/libstdc++5
