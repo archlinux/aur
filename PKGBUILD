@@ -3,7 +3,7 @@
 pkgname=strace-with-colors
 _pkgname=strace
 pkgver=5.15
-pkgrel=1
+pkgrel=2
 pkgdesc='A diagnostic, debugging and instructional userspace tracer (with colors)'
 arch=(x86_64)
 url='https://strace.io/'
@@ -13,7 +13,7 @@ conflicts=($_pkgname)
 provides=($_pkgname)
 source=("https://github.com/strace/strace/releases/download/v$pkgver/strace-$pkgver.tar.xz"
         "$pkgname.patch")
-sha1sums=('6625b01b18c3940cd926c85e4d1feb10f162973d'
+sha1sums=('2cea29778e631838be676b451ea17ff381b673f0'
           'SKIP')
 
 prepare() {
