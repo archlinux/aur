@@ -3,11 +3,11 @@
  
 pkgname=emacs-icicles
 epoch=2
-pkgver=2022.01.26 # Taken from icicles.el
+pkgver=2022.01.26.r23741 # Taken from icicles.el
 pkgrel=1
 pkgdesc="an emacs library that enhances minibuffer completion"
 arch=('any')
-url="https://github.com/emacsmirror/icicles.git"
+url="https://www.emacswiki.org/emacs/Icicles"
 depends=('emacs-bookmarkplus' 'emacs-hexrgb')
 license=('GPL')
 _base_url=https://www.emacswiki.org/emacs/download/
@@ -53,7 +53,7 @@ sha256sums=('3a7d914ccb5f38a9489c99f1aa39e9ba00bb697d41c2ee49160ee1123065933f'
             '711f49803e9f74e4ddda7de8e470b5f83de3a0ab7c57b6d250db186701e99989')
 
 pkgver() {
-  echo $(awk '/Version/ {print $3}' icicles.el) 
+  printf %s.r%s $(awk '/Version/ {print $3}' icicles.el) $(awk '/Update / {print $4}' icicles.el)
 }
 
 build() {
