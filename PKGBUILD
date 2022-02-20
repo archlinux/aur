@@ -10,7 +10,7 @@ NJOBS=$(nproc)
 
 pkgname=fsl
 pkgver=6.0.5.1
-pkgrel=5
+pkgrel=6
 pkgdesc="A comprehensive library of analysis tools for FMRI, MRI and DTI brain imaging data"
 arch=("x86_64")
 url="http://www.fmrib.ox.ac.uk/fsl/"
@@ -80,9 +80,9 @@ build() {
         cd "${FSLDIR}"
 
         MAKEOPTIONS="-j $NJOBS" ./build extras CiftiLib-master utils znzlib NewNifti fslio giftiio miscmaths newimage libvis first_lib meshclass fslvtkio misc_tcl basisfield warpfns bint shapeModel MVdisc
-        MAKEOPTIONS="" ./build fslsurface # fslsurface does not like parallel compiling
+        MAKEOPTIONS="-j 1" ./build fslsurface # fslsurface does not like parallel compiling
         MAKEOPTIONS="-j $NJOBS" ./build libmeshutils newmesh DiscreteOpt FastPDlib MSMRegLib misc_c topup asl_mfree avwutils basil baycest bet2 bianca cluster fsl_deface eddy fabber_core fabber_models_asl fabber_models_cest fabber_models_dce fabber_models_dsc fabber_models_dualecho fabber_models_dwi fabber_models_pet fabber_models_qbold fabber_models_t1 fast4
-        MAKEOPTIONS="" ./build fdt # fdt does not like parallel compiling and has to be built after eddy with CUDA support enabled
+        MAKEOPTIONS="-j 1" ./build fdt # fdt does not like parallel compiling and has to be built after eddy with CUDA support enabled
         MAKEOPTIONS="-j $NJOBS" ./build feat5 film filmbabe first flameo flirt fnirt fslvbm fugue gps lesions mcflirt melodic misc_scripts miscvis mist mm MSM oxford_asl possum ptx2 qboot randomise siena slicetimer susan swe tbss verbena xtract
 
         # Install missing binaries, which are now Python scripts and shipped with fslpy
