@@ -2,19 +2,20 @@
 
 pkgname=python-kosmorrolib
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A library to compute the ephemerides'
 
-depends=('python'
-         'python-skyfield>=1.21' 'python-skyfield<2.0'
-         'python-skyfield-data>=3.0.0' 'python-skyfield-data<5.0.0'
-         'python-dateutil>=2.8.0' 'python-dateutil<3.0.0'
+depends=(
+        'python>=3.7.0'
+        'python-skyfield'
+        'python-skyfield-data'
+        'python-dateutil'
         )
 
 makedepends=(
-             'python-pip'
-             'python-poetry'
-            )
+        'python-pip'
+        'python-poetry'
+        )
 
 arch=('any')
 url='https://kosmorro.space/lib'
