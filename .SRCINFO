@@ -1,0 +1,26 @@
+pkgbase = nextpnr-gowin-git
+	pkgdesc = Portable FPGA place and route tool
+	pkgver = r4016.347ba3af
+	pkgrel = 1
+	url = https://github.com/YosysHQ/nextpnr
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv8
+	arch = riscv32
+	arch = riscv64
+	license = custom:ISC
+	makedepends = boost
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = git
+	makedepends = prjapicula
+	depends = boost-libs
+	depends = python
+	depends = qt5-base
+	provides = nextpnr
+	conflicts = nextpnr
+	source = nextpnr::git+https://github.com/YosysHQ/nextpnr.git
+	sha256sums = SKIP
+
+pkgname = nextpnr-gowin-git
