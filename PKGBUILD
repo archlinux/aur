@@ -1,6 +1,6 @@
 # Maintainer: KawaiDesu <zmey1992@ya.ru>
 pkgname=victoriametrics-bin
-pkgver=1.72.0
+pkgver=1.73.0
 pkgrel=1
 pkgdesc="Fast, cost-effective and scalable time series database"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$
         "victoriametrics.sysusers"
         "victoriametrics.tmpfiles"
         "victoriametrics.default")
-sha256sums=('d9398d33108f22d66884e9552fd37a1a3657e6124f9dc50760d4794db3181964'
+sha256sums=('c85b242fc3c310cb9fe7aec4881beadb8d01c5c2db288e8023b5fe6bfaeb9350'
             'c47defa8ff60515a704daeb01eedebf08e15e85bcd37217c40c7133b6302c967'
             'ad4911f772a1a52d1bd5ba4236d27a84aabbb10fc057d2906bf50f30d179d4a4'
             'e26f3359d0afc3bf0f236a9b4b05554ed9256d477ef4b4f1b013898fac7a723c'
