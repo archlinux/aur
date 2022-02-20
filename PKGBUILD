@@ -11,7 +11,7 @@ arch=(any)
 url='https://github.com/tardyp/sphinx-jinja'
 license=(MIT)
 depends=(python python-docutils python-jinja python-sphinx)
-makedepends=(git python-build python-install python-poetry-core)
+makedepends=(git python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 # tests are no longer included in PyPI source tarballs after upstream switched to poetry
 source=("git+https://github.com/tardyp/sphinx-jinja.git?signed#tag=$_tag")
@@ -42,6 +42,6 @@ check() {
 
 package() {
   cd sphinx-jinja
-  python -m install --optimize 0 1 --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
