@@ -3,9 +3,9 @@
 pkgname=gog-tangledeep-dawn-of-dragons
 _dlcparent=tangledeep
 _pkgname=tangledeep_dawn_of_dragons
-pkgver=1.4i.2
-_pkgver=1_4i_2
-_build=45967
+pkgver=1.52g
+_pkgver=1_52g
+_build=53273
 _goggame=1329980477
 pkgrel=1
 epoch=1
@@ -18,7 +18,7 @@ makedepends=('p7zip')
 source=("${_pkgname}_${_pkgver}_${_build}.sh::gog://${_pkgname}_${_pkgver}_${_build}.sh")
 # don't download anything via makepkg
 DLAGENTS+=("gog::/usr/bin/perl -E print\(\"${RED}\"\ .\ substr\(\"%u\",\ 6\)\ .\ \"\ not\ found.\ \ Check\ the\ PKGBUILD\ for\ further\ information.${ALL_OFF}\\\\n\"\)\;\ exit\ 1")
-sha256sums=('9fe5d829e0fe976040ba7afffa1b007af9af8f61cc184f8408a5e59d3c3e0669')
+sha256sums=('5d73d0d409df8ca0260d5994991248f02c6a5470da864b4a13fbab6d1eb0844c')
 noextract=("${_pkgname}_${_pkgver}_${_build}.sh")
 
 prepare() {
