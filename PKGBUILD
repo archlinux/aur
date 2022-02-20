@@ -45,7 +45,7 @@ fi
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
 ##                                y to enable  (stock default)
 if [ -z ${use_tracers+x} ]; then
-  use_tracers=y
+  use_tracers=n
 fi
 
 ## Choose between GCC and CLANG config (default is GCC)
@@ -84,7 +84,7 @@ _makenconfig=
 pkgbase=linux-xanmod-tt-uksm-cjktty
 replaces=("linux-xanmod-cacule-uksm-cjktty")
 _major=5.15
-pkgver=${_major}.21
+pkgver=${_major}.24
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
@@ -128,7 +128,7 @@ done
 
 b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
         'SKIP'
-        'f965a7b314ba89bf673e64d6fe8cfe4af6b856597ab7e122b25a5d087bb8b8e0cffa33e25a600f1fd1a693e287f52ac229f3f06e9058ab1b6abc1ee719701287'
+        'e9edadfb633ad5049a995329d82b6e8bad5f0727702d924fffe98367f03831c81cf9655f3b80121571eacb934d381e48c1ad9112ea2c2d32893fc4c6a797474a'
         '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
         '2b765bd1aad8086a94ec9285e4d789eacdff05fcc71013286384a51de6f6cc153cecffd4430cfc08daae4692583577b5eb07f971eb00bcd1ca796063865c20f7'
         '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260')
