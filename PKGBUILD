@@ -2,14 +2,14 @@
 pkgname=weechat-matrix
 pkgver=0.3.0
 _tag=ebf792a233a50d639b13e5f7c9a1c1fe988e7476 # git rev-parse "$pkgver"
-pkgrel=5
+pkgrel=6
 pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
 license=('ISC')
 depends=('python' 'python-atomicwrites' 'python-attrs' 'python-logbook' 'python-matrix-nio'
          'python-pygments' 'python-pyopenssl' 'python-webcolors' 'weechat')
-makedepends=('git' 'python-dephell' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 checkdepends=('python-hypothesis' 'python-pytest')
 optdepends=('python-aiohttp: matrix_sso_helper support'
             'python-magic: matrix_upload support'
@@ -30,7 +30,6 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
-	dephell deps convert --from pyproject.toml --to setup.py
 
 	# SSLContext.set_npn_protocols broken in Python 3.10
 	# (https://github.com/poljar/weechat-matrix/issues/308)
@@ -39,7 +38,7 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	python setup.py build
+	python -m build --wheel --no-isolation --skip-dependency-check
 }
 
 check() {
@@ -49,7 +48,7 @@ check() {
 
 package() {
 	cd "$pkgname"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm755 main.py "$pkgdir/usr/share/weechat/python/weechat-matrix.py"
 	for _script in matrix_decrypt matrix_sso_helper matrix_upload
 	do
