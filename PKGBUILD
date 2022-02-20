@@ -56,7 +56,7 @@ xfce4_pkgs=(
 )
 
 pkgname=dots-git
-pkgver=1.1.10.r0.g2137f98
+pkgver=1.1.10.r1.g78cf22d
 pkgrel=1
 pkgdesc="Dotfiles generator that allows quick configuration and managing of different tools and window managers in multiple OSs"
 arch=(any)
@@ -89,7 +89,7 @@ pkgver() {
 package() {
 	cd dotfiles || exit 1
 	PKGNAME=dots
-        PKGDIR="${pkgdir}"
-        export PKGDIR PKGNAME
-        sudo ./install
+	PKGDIR="${pkgdir}"
+	export PKGDIR PKGNAME
+	sudo ./install
 }
