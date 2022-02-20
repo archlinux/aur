@@ -1,0 +1,21 @@
+pkgbase = jujutsu-git
+	pkgdesc = An experimental, Git-compatible DVCS.
+	pkgver = 0.2.0.r917.2916cb2
+	pkgrel = 1
+	url = https://github.com/martinvonz/jj
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = cargo-nightly
+	makedepends = git
+	makedepends = jq
+	provides = jj
+	provides = jujutsu
+	conflicts = jj
+	conflicts = jujutsu
+	source = jujutsu-git::git+https://github.com/martinvonz/jj
+	sha256sums = SKIP
+
+pkgname = jujutsu-git
