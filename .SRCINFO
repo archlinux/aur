@@ -1,0 +1,18 @@
+pkgbase = tundra-git
+	pkgdesc = MyAnimeList scrobbler (git version)
+	pkgver = 0.3.0.014070
+	pkgrel = 2
+	url = https://tundra.moe
+	arch = x86_64
+	license = GPL3
+	makedepends = rust
+	depends = gtk3
+	depends = dbus
+	provides = tundra
+	conflicts = tundra
+	source = git://github.com/m4tx/tundra
+	source = https://raw.githubusercontent.com/erengy/anime-relations/master/anime-relations.txt
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = tundra-git
