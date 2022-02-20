@@ -18,12 +18,8 @@ sha256sums=('9e936811f9fad11dbca33ca19bd97c55c52eb3ca15901f27ade046cc79e69e87'
 
 build() {
   cd ${pkgname%-compat}-${pkgver}
-  # libxcrypt doesn't like nongenerick flags
-  export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions \
-          -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security \
-          -fstack-clash-protection -fcf-protection"
-  export CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
-  export LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
+  # libxcrypt doesn't like nongenerick march
+  export CFLAGS+=" -march=x86-64"
   ./configure \
     --prefix=/usr \
     --disable-static \
