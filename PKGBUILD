@@ -14,9 +14,9 @@ makedepends=('git' 'scons' 'boost')
 provides=('rlvm')
 conflicts=('rlvm')
 source=("git+https://github.com/eglaysher/rlvm.git"
-        "freetype.patch")
+        "memory.patch")
 sha256sums=('SKIP'
-            'd8977832b099a00e51f161ce97d7fa0524888f0bad7e1b6100f71f8458f16ceb')
+            'f291ccfd7481c42db5c4b5484d8345790e4e9955d3fc86bd68af6f6d0586914b')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,7 +25,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  patch -Np1 -i "$srcdir/freetype.patch"
+  patch -Np1 -i "$srcdir/memory.patch"
 }
 
 build() {

@@ -22,9 +22,8 @@ pkgbase = rlvm-git
 	provides = rlvm
 	conflicts = rlvm
 	source = git+https://github.com/eglaysher/rlvm.git
-	source = freetype.patch
+	source = memory.patch
 	sha256sums = SKIP
-	sha256sums = d8977832b099a00e51f161ce97d7fa0524888f0bad7e1b6100f71f8458f16ceb
+	sha256sums = f291ccfd7481c42db5c4b5484d8345790e4e9955d3fc86bd68af6f6d0586914b
 
 pkgname = rlvm-git
-
