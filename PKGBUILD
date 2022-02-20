@@ -4,27 +4,28 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.12
-pkgrel=7
+pkgver=2.9.13
+pkgrel=1
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
 license=(MIT)
 depends=(zlib readline ncurses xz icu)
 makedepends=(python git)
+optdepends=('python: Python bindings')
 provides=(libxml2.so)
-_commit=b48e77cf4f6fa0792c5f4b639707a2b0675e461b  # tags/v2.9.12^0
+_commit=a075d256fd9ff15590b86d981b75a50ead124fca  # tags/v2.9.13^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
-        no-fuzz.patch # Do not run fuzzing tests
+        no-fuzz.diff
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
             '37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c'
-            '163655aba312c237a234a82d64b71a65bd9d1d901e176d443e3e3ac64f3b1b32'
+            '3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
 pkgver() {
-  cd $pkgname
+  cd libxml2
   git describe --tags | sed 's/-rc/rc/;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -34,26 +35,13 @@ prepare() {
   # Use xmlconf from conformance test suite
   ln -s xmlconf build/xmlconf
 
-  cd $pkgname
+  cd libxml2
 
-  # Work around lxml API abuse
-  git cherry-pick -n 85b1792e37b131e7a51af98a37f92472e8de5f3f
-  # Fix regression in xmlNodeDumpOutputInternal
-  git cherry-pick -n 13ad8736d294536da4cbcd70a96b0a2fbf47070c
-  # Fix XPath recursion limit
-  git cherry-pick -n 3e1aad4fe584747fd7d17cc7b2863a78e2d21a77
-  # Fix whitespace when serializing empty HTML documents
-  git cherry-pick -n 92d9ab4c28842a09ca2b76d3ff2f933e01b6cd6f
+  # https://src.fedoraproject.org/rpms/libxml2/tree/rawhide
+  git apply -3 ../libxml2-2.9.8-python3-unicode-errors.patch
 
-  # Take patches from https://src.fedoraproject.org/rpms/libxml2/tree/master
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    git apply -3 "../$src"
-  done
+  # Do not run fuzzing tests
+  git apply -3 ../no-fuzz.diff
 
   autoreconf -fiv
 }
@@ -61,7 +49,7 @@ prepare() {
 build() (
   cd build
 
-  ../$pkgname/configure \
+  ../libxml2/configure \
     --prefix=/usr \
     --with-threads \
     --with-history \
@@ -70,7 +58,7 @@ build() (
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
   make
 
-  find doc -type f -exec chmod 0644 {} +
+  find doc -type f -exec chmod -c 0644 {} +
 )
 
 check() {
