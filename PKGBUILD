@@ -2,31 +2,33 @@
 _base=colour-science
 pkgname=python-${_base}
 pkgdesc="Colour Science for Python"
-pkgver=0.3.16
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 arch=('x86_64')
 url="https://www.${_base}.org"
 license=('custom:BSD-3-clause')
 depends=(python-imageio python-scipy python-six) # graphviz boost openexr libpng libtiff
-makedepends=(python-setuptools)
-checkdepends=(python-pytest python-networkx)
+makedepends=(python-build python-install python-poetry)
+checkdepends=(python-pytest python-pygraphviz python-trimesh python-networkx python-scikit-learn)
+optdepends=('python-pygraphviz: for plot automatic colour conversion graph using Graphviz'
+  'python-trimesh: for plot the section contour of given hull along given axis and origin'
+  'python-networkx: for create a graph with NetworkX')
 source=(https://github.com/${_base}/${_base//-science/}/archive/v${pkgver}.tar.gz)
-sha512sums=('64b0ac7f8bc80068157885030c54168c6987a09b93ce95a1c33a8fb7807ce262fb269c88d20f5f31c39761a66b50c1a853893fd8ee8b7d5f12f496d7c6e2d6f2')
+sha512sums=('463f161c34ad2b02e62eb2350b97440a1931f7703706c24b56733b4061893d685eaad1df2820110f4d3be9e96560a57ce15db7c184e40c601d04a3d871ad0d86')
 
 build() {
-  cd "${_base//-science/}-${pkgver}"
-  python setup.py build
+  cd ${_base//-science/}-${pkgver}
+  export PYTHONHASHSEED=0
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd "${_base//-science/}-${pkgver}"
-  python setup.py install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not nan_matrix_colour_correction_Cheung2004 and not nan_matrix_colour_correction_Finlayson2015 and not nan_matrix_colour_correction_Vandermonde and not nan_colour_correction_Cheung2004 and not nan_colour_correction_Finlayson2015 and not nan_colour_correction_Vandermonde and not read_image_Imageio and not write_image_Imageio and not read_image and not write_image and not plot_multi_functions' --ignore=${_base//-science/}/graph/tests ${_base//-science/}
+  cd ${_base//-science/}-${pkgver}
+  MPLBACKEND=Agg python -m pytest -k 'not jakob2019 and not read_image_Imageio and not write_image_Imageio and not read_image and not write_image and not PCA' #--ignore=${_base//-science/}/graph/tests
 }
 
 package() {
-  cd "${_base//-science/}-${pkgver}"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  cd ${_base//-science/}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
