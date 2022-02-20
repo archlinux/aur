@@ -1,6 +1,6 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
-	pkgver = 1.3.5
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://xushengfeng.github.io/eSearch-website/
 	install = e-search.install
@@ -29,7 +29,7 @@ pkgbase = e-search
 	optdepends = pulseaudio
 	options = !strip
 	options = !emptydirs
-	source = https://download.fastgit.org/xushengfeng/eSearch/releases/download/1.3.5/e-search_1.3.5_amd64.deb
-	sha512sums = 5c1deb1ffed7bfff5fcb487128922aee5baa0e3030ea018600a6ce8fd3ef305fb3cd6571052c79e72cc5e6af0325ca17f94e1b8f40722c8ad0dc5fe8e2b30272
+	source = https://download.fastgit.org/xushengfeng/eSearch/releases/download/1.3.6/e-search_1.3.6_amd64.deb
+	sha512sums = cb0d4456a2919d22a2ec2e4b7456318492f86d84bbd5c3aa7e9f964ee916ec8b5c82a805490f46af7a589804dd1248ac9019833d0ae72a10dbc819874df7a510
 
 pkgname = e-search
