@@ -1,6 +1,6 @@
 pkgbase = php80-redis
-	pkgdesc = An API for communicating with the Redis key-value store
-	pkgver = 5.3.2
+	pkgdesc = An API for communicating with the Redis key-value store - no igbinary
+	pkgver = 5.3.7
 	pkgrel = 1
 	url = https://github.com/phpredis/phpredis/
 	arch = x86_64
@@ -9,15 +9,12 @@ pkgbase = php80-redis
 	checkdepends = redis
 	makedepends = liblzf
 	depends = glibc
-	depends = php80-igbinary
 	optdepends = redis: use a local redis instance
-	backup = etc/php80/conf.d/redis.ini
-	source = php80-redis-5.3.2.tar.gz::https://github.com/phpredis/phpredis/archive/5.3.2.tar.gz
-	sha512sums = 0b923ad3f46395f82be7fa89e27999bf3304fbeb17188185afe34d37310afe818e07548034e42c2471ed22b8f8d664eda9b8b0a359c8e1126126d95574410e25
-	b2sums = 65366666e11eb6a579b688ac9ba6720178c0cd835cf646b0a523c4acd900e9abca5d7445cba5462df327aaa04bbe64e5506615420ac8c21be29a59d76535196e
+	backup = etc/php80/conf.d/40-redis.ini
+	source = php80-redis-5.3.7.tar.gz::https://pecl.php.net/get/redis-5.3.7.tgz
+	sha512sums = b945d5aa86d3f58e75094369b0f324e987202f104aca7d7b46ba23cfaed54d186bb66931e200dd16d2dbeea11732dd0311da4e3d7485c3b725027f7924652832
+	b2sums = 50cff3d36e189593a741ed3fe05c3558e6a0621e7ff906e4902ba39e3f7d3ae5b9bfa554480a131e32bcc0334bccbd3aa5507dc714b6d4b20ac808139c525a95
 
 pkgname = php80-redis
 	depends = glibc
-	depends = php80-igbinary
 	depends = liblzf.so
-

@@ -2,41 +2,40 @@
 
 pkgname=php80-redis
 _name=redis
-_upstream=phpredis
-pkgver=5.3.2
+_pkgname=php-redis
+pkgver=5.3.7
 pkgrel=1
-pkgdesc="An API for communicating with the Redis key-value store"
+pkgdesc="An API for communicating with the Redis key-value store - no igbinary"
 arch=('x86_64')
 url="https://github.com/phpredis/phpredis/"
 license=('PHP')
-depends=('glibc' 'php80-igbinary')
+depends=('glibc')
 makedepends=('liblzf')
 checkdepends=('lsof' 'redis')
 optdepends=('redis: use a local redis instance')
-backup=("etc/php80/conf.d/${_name}.ini")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${_upstream}/${_upstream}/archive/${pkgver}.tar.gz")
-sha512sums=('0b923ad3f46395f82be7fa89e27999bf3304fbeb17188185afe34d37310afe818e07548034e42c2471ed22b8f8d664eda9b8b0a359c8e1126126d95574410e25')
-b2sums=('65366666e11eb6a579b688ac9ba6720178c0cd835cf646b0a523c4acd900e9abca5d7445cba5462df327aaa04bbe64e5506615420ac8c21be29a59d76535196e')
+backup=("etc/php80/conf.d/40-${_name}.ini")
+source=("$pkgname-$pkgver.tar.gz::https://pecl.php.net/get/redis-${pkgver}.tgz")
+sha512sums=('b945d5aa86d3f58e75094369b0f324e987202f104aca7d7b46ba23cfaed54d186bb66931e200dd16d2dbeea11732dd0311da4e3d7485c3b725027f7924652832')
+b2sums=('50cff3d36e189593a741ed3fe05c3558e6a0621e7ff906e4902ba39e3f7d3ae5b9bfa554480a131e32bcc0334bccbd3aa5507dc714b6d4b20ac808139c525a95')
 
 prepare() {
-  mv -v "${_upstream}-${pkgver}" "$pkgname-$pkgver"
+  mv -v "$_name-$pkgver" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
   # tempfile is non-standard, Debian only
   sed -e 's/tempfile/mktemp/g' -i tests/mkring.sh
   # the kill after shutdown of redis makes it exit with status code 1
   sed -e '/kill -9/d' -i tests/mkring.sh
   # disable the extension by default
-  echo -e "; this extension requires igbinary to be activated as well\n;extension=${_name}" > "${_name}.ini"
+  echo -e "; this extension DOES NOT requires igbinary! \n;extension=${_name}" > 40-"${_name}.ini"
   phpize80
 }
 
 build() {
   cd "$pkgname-$pkgver"
   ./configure --prefix=/usr \
-              --enable-redis-igbinary \
 	      --with-php-config=/usr/bin/php-config80 \
               --enable-redis-lzf \
-              --with-liblzf=/usr/lib/
+              --with-liblzf=/usr
   make
 }
 
@@ -44,7 +43,7 @@ check() {
   # tests are partly broken:
   # https://github.com/phpredis/phpredis/issues/1593
   export TEST_PHP_EXECUTABLE=/usr/bin/php80
-  export TEST_PHP_ARGS="-d extension=igbinary -d extension=${srcdir}/${pkgname}-${pkgver}/modules/redis.so"
+  export TEST_PHP_ARGS="-d extension=${srcdir}/${pkgname}-${pkgver}/modules/redis.so"
   cd "$pkgname-$pkgver"
   tests/mkring.sh start
   $TEST_PHP_EXECUTABLE $TEST_PHP_ARGS tests/TestRedis.php --class Redis
@@ -56,7 +55,7 @@ package() {
   depends+=('liblzf.so')
   cd "$pkgname-$pkgver"
   make INSTALL_ROOT="$pkgdir/" install
-  install -vDm 644 "${_name}.ini" -t "${pkgdir}/etc/php80/conf.d/"
+  install -vDm 644 "40-${_name}.ini" -t "${pkgdir}/etc/php80/conf.d/"
   install -vDm 644 {{README,arrays,cluster}.markdown,CREDITS} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
