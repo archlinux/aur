@@ -3,7 +3,7 @@
 
 pkgname=shfmt-bin
 _pkgname=shfmt
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="Format shell programs"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -23,10 +23,10 @@ source_aarch64=("$_source_base/${_pkgname}_v${pkgver}_linux_arm64")
 noextract=("$pkgname-$pkgver.LICENSE" "$pkgname-$pkgver.$_pkgname")
 
 sha256sums=('ce63850f77649f00d1394045e2794ffb09a5596beabac51c9548edd958845d7c')
-sha256sums_x86_64=('9cc743f058ab8896ca6fa94a7f2e570b95294e8a142600f09fe832e406a88f18')
-sha256sums_i686=('ca587569a39bb9077c3fcc90f15a95f8b5083616436f47fece03eb7bf435e964')
-sha256sums_armv7h=('86a093331ef12b232697b7efa38001d544d5bc7674e5964bda012765fe4d347a')
-sha256sums_aarch64=('93852ee7d64389802a65c9e58840eebcae43c771d7dcd73d2e25b8b0b87e7966')
+sha256sums_x86_64=('713ef49db9a60a00636814a507da851b58da6b4b98a3627188fba0a61b60f9a8')
+sha256sums_i686=('107712fbbec6c90b1781b762042218bbcb43f553e7085f1de800d6a7f16d29b8')
+sha256sums_armv7h=('31efacbcb61b00d4375b193da5af4a7213cf585bb4e19b649531240a2ab9e7ff')
+sha256sums_aarch64=('b4f5d7b53012a1a7fdac5df8f13d829d82bc7ace53da4a09c532ac562589b106')
 
 package() {
   install -Dm755 "$pkgname-$pkgver.$_pkgname" "$pkgdir/usr/bin/$_pkgname"
