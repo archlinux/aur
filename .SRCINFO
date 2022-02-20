@@ -1,6 +1,6 @@
 pkgbase = jamulus
 	pkgdesc = Internet jam session software
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://jamulus.io/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = jamulus
 	depends = qt5-base
 	depends = qt5-translations
 	conflicts = jamulus-git
-	source = jamulus-3.8.1.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r3_8_1.tar.gz
-	sha1sums = cdf9edb1b551917c0e14201277abc64e7e263c0b
+	source = jamulus-3.8.2.tar.gz::https://github.com/jamulussoftware/jamulus/archive/r3_8_2.tar.gz
+	sha1sums = f1d53f904daac66c0567f0a8379797563ec88c00
 
 pkgname = jamulus
 	depends = glibc

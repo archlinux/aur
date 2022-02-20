@@ -3,7 +3,7 @@
 
 pkgname=jamulus
 _pkgname=Jamulus
-pkgver=3.8.1
+pkgver=3.8.2
 pkgrel=1
 pkgdesc="Internet jam session software"
 arch=('x86_64')
@@ -16,8 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jamulussoftware/jamulus
 
 build() {
   cd "${srcdir}/${pkgname}-r${pkgver//./_}"
-  qmake Jamulus.pro
-  make clean
+  qmake
   make
 }
 
@@ -32,4 +31,4 @@ package() {
   install -vDm 644 {ChangeLog,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
-sha1sums=('cdf9edb1b551917c0e14201277abc64e7e263c0b')
+sha1sums=('f1d53f904daac66c0567f0a8379797563ec88c00')
