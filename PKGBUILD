@@ -1,7 +1,7 @@
 # Maintainer: Jorge Pizarro-Callejas (Jorgicio) <jpizarrocallejas@gmail.com>
 pkgname=noise-suppression-for-voice-git
 _pkgname=${pkgname%-git}
-pkgver=v0.91.r8.g6922453
+pkgver=0.91.r8.g6922453
 pkgrel=1
 pkgdesc="A real-time noise suppression plugin for voice"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=(${_pkgname})
 
 pkgver() {
     cd ${_pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
