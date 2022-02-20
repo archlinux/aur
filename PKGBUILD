@@ -10,7 +10,7 @@ license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 changelog=aurutils.changelog
 install=aurutils.install
-sha256sums=('02c9c884d270306cd075fd19dee3945d9b148b5cfcd527618cf6d9778b1cfbd4')
+sha256sums=('ec0229983a33d6b45d6ab84dde08809fe324242de9807bed3658d1fcc9bded3f')
 depends=('git' 'jq' 'pacutils' 'curl' 'expect')
 optdepends=('bash-completion: bash completion'
             'zsh: zsh completion'
