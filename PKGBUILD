@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=wikibase-cli
-pkgver=15.16.4
+pkgver=15.16.6
 pkgrel=1
 pkgdesc="Command-line interface to Wikibase instances"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm')
 replaces=('nodejs-wikibase-cli')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('b502d62fcef6183836550aac32631a3e190d45f12a57404a5d961be9913e7b66')
+sha256sums=('0c9ac7ef2b73b3d5d0d5db7285e10b947f6140ae72649a8722be75b7293b90b8')
 
 package() {
   export NODE_ENV=production
