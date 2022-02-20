@@ -21,6 +21,13 @@ source=(
   "${pkgname}-${_pkgver}-${_pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${_pkgver}-${_pkgrel}.tar.gz"
   "${_PGO_PATH}::https://storage.googleapis.com/chromium-optimization-profiles/pgo_profiles/${_PGO_PATH}"
 )
+sha1sums=(
+  "4c18f44ba51d40bfd7e6ae8ecb30b8e812acb8e8"
+  "013b31ae43e309bc6560b61e8b4196f8f14f738f"
+  "3727d7da81b1480d60e593a7d6878d981b35c4f6"
+  "c2835f79e326dd5c21222b0f2bcf4e357730c110"
+  "f5cfe4c93eff056f51290a33e603a214804dbd80"
+)
 sha256sums=(
   "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
   "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
