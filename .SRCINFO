@@ -1,6 +1,6 @@
 pkgbase = gsas2-svn
 	pkgdesc = General Structure Analysis System II - refinement for powder diffraction patterns
-	pkgver = 4925
+	pkgver = 5182
 	pkgrel = 1
 	url = https://subversion.xray.aps.anl.gov/trac/pyGSAS
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = gsas2-svn
 	depends = python-numpy
 	depends = python-pillow
 	depends = python-h5py
-	depends = python-wxpython
+	depends = python-wxpython-dev
 	depends = python-numpy
 	depends = python-spglib
 	source = gsas2::svn+https://subversion.xray.aps.anl.gov/pyGSAS/trunk
