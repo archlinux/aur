@@ -2,7 +2,7 @@
 # Contributor: Jon Bergli Heier <snakebite@jvnv.net>
 pkgname=rlvm
 pkgver=0.14
-pkgrel=3
+pkgrel=4
 pkgdesc="RealLive clone for Linux and OSX"
 arch=('x86_64')
 url="http://www.rlvm.net/"
@@ -11,22 +11,29 @@ depends=('boost-libs>=1.46' 'glew' 'libmad' 'libogg' 'libvorbis' 'libpng'
          'sdl_mixer' 'sdl_image' 'sdl_ttf' 'guichan' 'gtk2')
 makedepends=('scons' 'boost')
 source=("https://github.com/eglaysher/rlvm/archive/release-$pkgver.tar.gz"
+        "https://github.com/eglaysher/rlvm/commit/373a3db1c4d3c9a4b9eb60b8bca60fa58d1687f9.patch"
+        "https://github.com/eglaysher/rlvm/commit/668863d2222b962ee8e7d9829e972ef05c990302.patch"
+        "https://github.com/eglaysher/rlvm/commit/fb627bad9129080d2070845bcebe0d7eed9a5243.patch"
         "https://github.com/eglaysher/rlvm/commit/97c808194c56ba58cabdc4730270797909b7652d.patch"
-        "luabind.patch"
-        "freetype.patch"
-        "iostream.patch")
+        "https://github.com/eglaysher/rlvm/commit/573f47fc9ddf58fdd7f4cedcec4997673e812be8.patch"
+        "memory.patch")
 sha256sums=('6d1717540b8db8aca1480ebafae3354b24e3122a77dd2ee81f4b964c7b10dcc0'
+            '00101444e8d5dc7e7bcadf0469ef98281394d3d72dca0ef00a4be084b1eb3028'
+            '84e97116bdb5f78bf81fdcaa4602978671e6c6e672002577eeeaaf1eeeb07dee'
+            'a949dc649fac6cdff44ddf7f76480de82035b979b4bf8d959ae07ab648c5589d'
             '8d2e8acf8bcb1f8fd5c78373dbea29036ccee1947a31ea99ae92af72b8ca84fd'
-            '2c17ce6af4a2e176e64a2fb10add59b8d7372677fed86f949a2ea3b702f2a54d'
-            'd8977832b099a00e51f161ce97d7fa0524888f0bad7e1b6100f71f8458f16ceb'
-            '80ee25081846981e27dcd802760a86429e9580a793bd1523e39ba99a5609c739')
+            '388f9113f229863e679c000dd5820d35f0e9de52de38a1aa041794493d7ebc3c'
+            'f291ccfd7481c42db5c4b5484d8345790e4e9955d3fc86bd68af6f6d0586914b')
 
 prepare() {
   cd "$srcdir/$pkgname-release-$pkgver"
+
+  patch -Np1 -i "$srcdir/373a3db1c4d3c9a4b9eb60b8bca60fa58d1687f9.patch"
+  patch -Np1 -i "$srcdir/668863d2222b962ee8e7d9829e972ef05c990302.patch"
+  patch -Np1 -i "$srcdir/fb627bad9129080d2070845bcebe0d7eed9a5243.patch"
   patch -Np1 -i "$srcdir/97c808194c56ba58cabdc4730270797909b7652d.patch"
-  patch -Np1 -i "$srcdir/luabind.patch"
-  patch -Np1 -i "$srcdir/freetype.patch"
-  patch -Np1 -i "$srcdir/iostream.patch"
+  patch -Np1 -i "$srcdir/573f47fc9ddf58fdd7f4cedcec4997673e812be8.patch"
+  patch -Np1 -i "$srcdir/memory.patch"
 }
 
 build() {
