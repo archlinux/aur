@@ -278,9 +278,11 @@ while (( "$#" )); do
       case "${1}" in
         cut|powersave|start)
           [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help
+          printf "0" > /etc/throttle.d/systemstate
         ;;
         full|performance|stop)
           [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help
+          printf "1" > /etc/throttle.d/systemstate
         ;;
       esac
 
