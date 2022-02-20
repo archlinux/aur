@@ -1,0 +1,13 @@
+pkgbase = akr-bin
+	pkgdesc = Akamai Krypton CLI and SSH Agent
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/akamai/akr
+	arch = x86_64
+	license = custom:Akamai
+	provides = akr
+	conflicts = akr
+	source = https://akamai.github.io/akr-pkg/debian/akr_0.1.0_amd64.deb
+	sha256sums = 2177f18581781088c16e0d1ad18fbec8703b9662961bdeeb29f705d58d12e211
+
+pkgname = akr-bin
