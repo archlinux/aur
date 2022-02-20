@@ -1,0 +1,15 @@
+pkgbase = storytel-tui-git
+	pkgdesc = Storytel client for the terminal written in Rust
+	pkgver = r19.624bd42
+	pkgrel = 1
+	url = https://github.com/javsanpar/storytel-tui
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = mpv
+	depends = git
+	provides = storytel-tui
+	source = git+https://github.com/javsanpar/storytel-tui
+	sha256sums = SKIP
+
+pkgname = storytel-tui-git
