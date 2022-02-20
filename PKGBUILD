@@ -4,14 +4,15 @@
 pkgname=tlf
 _author=Tlf
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio networked logging and contest program - CLI"
 arch=('i686' 'x86_64')
-url="https://tlf.github.com/"
+url="https://tlf.github.io/"
 license=('GPL')
-depends=('hamlib' 'xmlrpc-c' 'hamradio-menus')
-makedepends=('autoconf' 'automake' 'pkg-config')
+depends=('hamlib' 'xmlrpc-c' 'hamradio-menus' 'xfce4-terminal')
+makedepends=('autoconf' 'automake' 'pkg-config' 'glib2')
 optdepends=('cwdaemon: transmitting cw'
+	    'winkeydaemon: transmitting cw'
 	    'cty: country files'
 	    'joe: editing qsos'
 	    'xplanet: mapped qso display'
@@ -19,7 +20,6 @@ optdepends=('cwdaemon: transmitting cw'
 provides=('tlf')
 conflicts=('tlf-git')
 source=("https://github.com/$_author/$pkgname/archive/$pkgname-$pkgver.tar.gz"
-#        http://sharon.esrac.ele.tue.nl/pub/linux/ham/tlf/nrau
         $pkgname.desktop
 	$pkgname.png
         $pkgname.1)
@@ -28,7 +28,7 @@ build() {
 	cd $srcdir/$pkgname-$pkgname-$pkgver
 
 	autoreconf --install
-	./configure --prefix=/usr --enable-hamlib --enable-fldigi-xmlrpc
+	CFLAGS=-Wno-error ./configure --prefix=/usr --enable-hamlib --enable-fldigi-xmlrpc
   
 	make || return 1
 }
@@ -49,10 +49,10 @@ package() {
 	install -D -m 644 ../$pkgname.desktop $pkgdir/usr/share/applications
 }
 md5sums=('90a5525d163b5c1e923ab8be1da244e9'
-         'b83cca73cea288ed139993efceb245b5'
+         'da6983e50a0326edc4788eb925545873'
          'f148583e02660cb430f638fd8f71f452'
          'b706428f41d32bd5f4f6f671057638c0')
 sha256sums=('a5a4d0492d206fe67d324271c50c48801236a955c36edddc198289330cb17386'
-            'cc7b5bcf825ea342d126a54a778c4f837ea0da4a12101383f99282041eb5d574'
+            '42e0f46fccf340fd2e165488c9d2e92cf6f1449c6dfe4c6cc7aaff64f65b13b2'
             '0ddcde4f0dfa98540d4314660108ed49bfa0bc3d8b87cb46906dfd6f12be2497'
             '766253a6f4b1d7e0526366875a46e220d637665c3c44e551f8d3db4ed88aaf81')
