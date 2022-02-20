@@ -1,7 +1,7 @@
 _pkgname=UHDM
 pkgname=${_pkgname,,}-git
 pkgver=r1270.ad9a41e
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete modeling of the IEEE SystemVerilog Object Model"
 arch=(x86_64)
 url="https://github.com/chipsalliance/UHDM"
@@ -38,6 +38,7 @@ prepare() {
 build() {
 	cmake -B build -S "$_pkgname" \
 		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_SHARED_LIBS=on \
 		-DCMAKE_BUILD_TYPE=None
 	make -C build
 }

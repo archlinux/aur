@@ -1,7 +1,7 @@
 pkgbase = uhdm-git
 	pkgdesc = A complete modeling of the IEEE SystemVerilog Object Model
-	pkgver = r1210.5a72785
-	pkgrel = 1
+	pkgver = r1270.ad9a41e
+	pkgrel = 2
 	url = https://github.com/chipsalliance/UHDM
 	arch = x86_64
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = uhdm-git
 	makedepends = python-orderedmultidict
 	makedepends = gtest
 	depends = capnproto
-	provides = uhdm=r1210.5a72785
+	provides = uhdm=r1270.ad9a41e
 	conflicts = uhdm
 	source = git+https://github.com/chipsalliance/UHDM
 	source = 0001-Remove-unnecessary-submodules.patch
