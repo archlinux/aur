@@ -9,7 +9,7 @@
 pkgname='xampp'
 _srcver='8.1.2'
 _binver=0
-pkgrel=1
+pkgrel=2
 
 # This PKGBUILD deals with two different versioning formats: the upstream
 # format MAJOR.MINOR.REVISION-BUILD - used internally by XAMPP - and the
