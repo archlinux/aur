@@ -4,14 +4,14 @@
 
 pkgname=kicad-i18n-git
 pkgver=r1879.e89d9a8
-pkgrel=3
+pkgrel=4
 pkgdesc="Translations for KiCad source code."
 arch=('any')
 url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('kicad')
 makedepends=('cmake' 'git' 'gettext')
-source=("${pkgname}"'::git+https://gitlab.com/kicad/code/kicad-i18n.git')
+source=('git+https://gitlab.com/kicad/code/kicad-i18n.git')
 md5sums=('SKIP')
 
 pkgver() {
