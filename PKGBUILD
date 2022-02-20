@@ -25,7 +25,7 @@ package() {
   install -Dm755 {${srcdir},${pkgdir}/usr/bin}/throttlectl
   install -Dm644 {${srcdir},${pkgdir}/etc/throttle.d}/powersave
   install -Dm644 {${srcdir},${pkgdir}/etc/throttle.d}/performance
-  install -Dm644 {${srcdir},${pkgdir}/etc/throttle.d/systemstate
+  install -Dm644 {${srcdir},${pkgdir}/etc/throttle.d}/systemstate
 
   install -Dm644 {${srcdir},${pkgdir}/etc/systemd/system}/throttle-cut.service
   #install -Dm644 {${srcdir},${pkgdir}/etc/udev/rules.d}/throttle-runtime-pm.rules
