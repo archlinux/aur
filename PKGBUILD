@@ -3,14 +3,14 @@
 
 pkgname=typeracer-git
 _pkgname=terminal-typeracer
-pkgver=2.0.10.r0.g0be80e9
+pkgver=2.0.12.r1.g5c455da
 pkgrel=1
 pkgdesc="Terminal typing speed tester (git)"
 arch=('x86_64')
 url="https://gitlab.com/ttyperacer/terminal-typeracer"
 license=('GPL3')
-depends=('sqlite' 'libgit2')
-makedepends=('cargo' 'git' 'libssh2')
+depends=('zlib' 'gcc-libs')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
   cd "$_pkgname"
-  export LIBSSH2_SYS_USE_PKG_CONFIG=1
+  CFLAGS+=" -ffat-lto-objects"
   cargo build --release --frozen
 }
 
