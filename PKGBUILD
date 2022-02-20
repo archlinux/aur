@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.218
+pkgver=0.240
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -12,49 +12,59 @@ conflicts=('sdlmame'
            'sdlmamefamily-tools'
            'mame'
            )
+provides=('sdlmame')
 depends=('sdl2_ttf'
-         'lua'
-         'flac'
-         'portmidi'
-         'portaudio'
-         'libjpeg-turbo'
+         'lua53'
+         'libxi'
+         'libpulse.so'
+         'libportaudio.so'
+         'libportmidi.so'
+         'libjpeg.so'
+         'libFLAC.so'
          'fontconfig'
          'sqlite'
          'libutf8proc'
          'pugixml'
+         'hicolor-icon-theme'
          )
 makedepends=('nasm'
              'mesa'
              'glu'
              'glm'
              'wget'
-#              'asio'
+             'asio'
+             'libpulse'
+             'portmidi'
+             'portaudio'
+             'libjpeg-turbo'
+             'flac'
              'python-sphinxcontrib-svg2pdfconverter'
              'rapidjson'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'mame.sh'
-        'https://patch-diff.githubusercontent.com/raw/bkaradzic/GENie/pull/493.diff'
-        'mame.desktop::https://git.archlinux.org/svntogit/community.git/plain/trunk/mame.desktop?h=packages/mame'
-        'mame.svg::https://git.archlinux.org/svntogit/community.git/plain/trunk/mame.svg?h=packages/mame'
+        'https://raw.githubusercontent.com/archlinux/svntogit-community/packages/mame/trunk/mame.desktop'
+        'https://raw.githubusercontent.com/archlinux/svntogit-community/packages/mame/trunk/mame.svg'
         )
-sha256sums=('c855d2a53956d7ecc6b2d029747495278cd701dc785c50548f0f20ffa673b91f'
-            '441ecf30fa03c13945947f56bb577b7e12c9a6cc287097fd969eb71be0f3ae85'
-            'SKIP'
-            '6beb883c8efed5b7466d43d0658b47c3e4a9928b5d0245ed56446b230e28306b'
+sha256sums=('f5228ccd7e561e8ee6e42d85f1f1be3432f4869169a4d692e646a6959c5c8f75'
+            '4447b80208ac512764f78fce52aef159ba494db2762c04c6fd79e2aceed5307b'
+            '0e5e93f84673c2d17a1bf7a6b256cfa54ef89a086a828df19bc054c12776d821'
             '17c442c933d764175e4ce1de50a80c0c2ddd5d733caf09c3cd5e6ba697ac43f4'
             )
-
 install=sdlmame-wout-toolkits.install
-
-prepare() {
-  cd "mame-mame${pkgver/./}"
-
-  patch -d 3rdparty/genie -p1 -i "${srcdir}/493.diff"
-}
 
 build() {
   cd "mame-mame${pkgver/./}"
+
+  export CFLAGS+=" -I/usr/include/lua5.3/"
+  export CXXFLAGS+=" -I/usr/include/lua5.3/"
+
+  export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS" # FS#73202
+
+  # Hack to force linking to lua5.3
+  mkdir lib
+  ln -s /usr/lib/liblua5.3.so lib/liblua.so
+  export LDFLAGS+=" -L${PWD}/lib"
 
   make PTR64=1 \
        SSE2=1 \
@@ -66,7 +76,7 @@ build() {
        TEST=0 \
        STRIP_SYMBOLS=1 \
        VERBOSE=1 \
-       USE_SYSTEM_LIB_ASIO=0 \
+       USE_SYSTEM_LIB_ASIO=1 \
        USE_SYSTEM_LIB_EXPAT=1 \
        USE_SYSTEM_LIB_ZLIB=1 \
        USE_SYSTEM_LIB_JPEG=1 \
@@ -78,7 +88,8 @@ build() {
        USE_SYSTEM_LIB_UTF8PROC=1 \
        USE_SYSTEM_LIB_GLM=1 \
        USE_SYSTEM_LIB_RAPIDJSON=1 \
-       USE_SYSTEM_LIB_PUGIXML=1
+       USE_SYSTEM_LIB_PUGIXML=1 \
+       USE_BUNDLED_LIB_SDL2=0
 
 }
 
@@ -89,7 +100,7 @@ package() {
   install -Dm755 "${srcdir}/mame.sh" "${pkgdir}/usr/bin/mame"
 
   # Install the applications, and the UI font in /usr/share
-  install -Dm755 mame64 "${pkgdir}/usr/lib/mame/mame"
+  install -Dm755 mame "${pkgdir}/usr/lib/mame/mame"
   _apps=('castool'
          'chdman'
          'floptool'
@@ -103,7 +114,6 @@ package() {
          'regrep'
          'romcmp'
          'split'
-         'src2html'
          'srcclean'
          'testkeys'
          'unidasm'
@@ -146,5 +156,4 @@ package() {
   # install desktop file and icon
   install -Dm644 "${srcdir}/mame.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${srcdir}/mame.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-
 }
