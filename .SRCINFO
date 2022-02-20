@@ -1,17 +1,21 @@
 pkgbase = python-icecream
 	pkgdesc = Sweet and creamy print debugging
-	pkgver = 2.1.1
-	pkgrel = 2
+	pkgver = 2.1.2
+	pkgrel = 1
 	url = https://github.com/gruns/icecream
+	changelog = changelog.txt
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-colorama
 	depends = python-pygments
 	depends = python-executing
 	depends = python-asttokens
 	provides = icecream-debugging
-	source = python-icecream-2.1.1.tar.gz::https://files.pythonhosted.org/packages/source/i/icecream/icecream-2.1.1.tar.gz
-	sha256sums = 47e00e3f4e8477996e7dc420b6fa8ba53f8ced17de65320fedb5b15997b76589
+	source = python-icecream-2.1.2.tar.gz::https://files.pythonhosted.org/packages/source/i/icecream/icecream-2.1.2.tar.gz
+	sha256sums = 09300b2d1c678712410cbd47c95198eb1b580f66f311a554ccd6b9e758ece0ee
 
 pkgname = python-icecream
