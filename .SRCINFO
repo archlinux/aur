@@ -1,0 +1,20 @@
+pkgbase = libpipewire02
+	pkgdesc = Low-latency audio/video router and processor - legacy client library
+	pkgver = 0.2.7
+	pkgrel = 2
+	url = https://pipewire.org
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = alsa-lib
+	depends = dbus
+	depends = systemd
+	depends = libasound.so
+	depends = libdbus-1.so
+	depends = libudev.so
+	provides = libpipewire-0.2.so
+	source = git+https://gitlab.freedesktop.org/pipewire/pipewire.git#commit=14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
+	sha256sums = SKIP
+
+pkgname = libpipewire02
