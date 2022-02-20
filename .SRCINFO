@@ -1,6 +1,6 @@
 pkgbase = obs-teleport
 	pkgdesc = An OBS Studio plugin for an open NDI-like replacement. Pretty simple, straight forward. No NDI compatibility in any form
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/teleport.1445/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = obs-teleport
 	makedepends = go
 	depends = obs-studio
 	depends = libjpeg
-	source = obs-teleport-0.2.3.tar.gz::https://github.com/fzwoch/obs-teleport/archive/0.2.3.tar.gz
-	sha256sums = 13172dadfc15358f2cb19f1218b3c0acf209d2fe9073830e770ef898429ad746
+	source = obs-teleport-0.2.4.tar.gz::https://github.com/fzwoch/obs-teleport/archive/0.2.4.tar.gz
+	sha256sums = 81f25093ce1fdd82ee4b273e2c6ad93408be5d4e6606ef0f584c4372b80fef96
 
 pkgname = obs-teleport
