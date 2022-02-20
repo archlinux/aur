@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-powersave-git
-pkgver=r28.b0efb00
-pkgrel=1
+pkgver=r34.edf8840
+pkgrel=2
 pkgdesc='User-discretion power management utility for Wingpanel'
 arch=('x86_64')
 url='https://github.com/quequotion/wingpanel-indicator-powersave'
@@ -11,9 +11,10 @@ license=('GPL2')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3' lib{granite,wingpanel}.so 'polkit' 'throttlectl')
 makedepends=('git' 'meson' 'vala' 'wingpanel' 'polkit')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+https://github.com/quequotion/${pkgname%-git}.git")
+provides=("${pkgname%-git}" "wingpanel-indicator-cpufreq")
+conflicts=("${pkgname%-git}" "wingpanel-indicator-cpufreq")
+source=("${pkgname%-git}"::"git+file:///home/zombie/Sources/git/wingpanel-indicator-powersave")
+#source=("git+https://github.com/quequotion/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,3 +36,4 @@ package() {
 
   DESTDIR="$pkgdir" ninja -C build install
 }
+

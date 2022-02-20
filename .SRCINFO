@@ -1,7 +1,7 @@
 pkgbase = wingpanel-indicator-powersave-git
 	pkgdesc = User-discretion power management utility for Wingpanel
-	pkgver = r28.b0efb00
-	pkgrel = 1
+	pkgver = r34.edf8840
+	pkgrel = 2
 	url = https://github.com/quequotion/wingpanel-indicator-powersave
 	arch = x86_64
 	groups = pantheon-unstable
@@ -19,8 +19,10 @@ pkgbase = wingpanel-indicator-powersave-git
 	depends = polkit
 	depends = throttlectl
 	provides = wingpanel-indicator-powersave
+	provides = wingpanel-indicator-cpufreq
 	conflicts = wingpanel-indicator-powersave
-	source = git+https://github.com/quequotion/wingpanel-indicator-powersave.git
+	conflicts = wingpanel-indicator-cpufreq
+	source = wingpanel-indicator-powersave::git+file:///home/zombie/Sources/git/wingpanel-indicator-powersave
 	sha256sums = SKIP
 
 pkgname = wingpanel-indicator-powersave-git
