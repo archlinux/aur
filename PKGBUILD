@@ -1,6 +1,6 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('python-scielo-clea')
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="SciELO Publishing Schema XML document front matter metadata reader/sanitizer"
 arch=('any')
@@ -14,20 +14,13 @@ depends=('python-lxml' 'python-numpy' 'python-levenshtein'
 optdepends=('python-flask: development web server'
             'gunicorn: web server alternative')
 options=(!emptydirs)
-sha256sums=('bc51f96084970188c7f8229a7ede5c863dc20651cb3583b722fc7f8487af5d9f'
+sha256sums=('52db2cf80c4b26f9164eb8122066dfa26310e5759c8a83c27847c64a18410d13'
             'SKIP')
 source=("clea-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "Vkbh7CKQDNQzX7bW3cQVdJx.json")
 
 prepare() {
   cd "$srcdir/clea-$pkgver"
-
-  # Fix release number in package
-  sed -i s/0.4.2/0.4.3/ clea/__init__.py
-
-  # Fix invalid test
-  sed -i 's/,"article_title/,"id_without_specified_use":\["12345"\]&/' \
-    tests/json/broken_article.json
 
   # Fix incomplete test file (add the missing expected result file)
   ln -srf ../Vkbh7CKQDNQzX7bW3cQVdJx.json tests/json/
