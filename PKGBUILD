@@ -2,16 +2,16 @@
 # Contributor: benklett <b.klettbach@gmail.com>
 
 pkgname=libjpeg9
-pkgver=9d
+pkgver=9e
 pkgrel=1
 pkgdesc="JPEG image compression"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.ijg.org/"
 license=('custom')
 depends=('glibc')
 makedepends=('libtool')
 source=("http://www.ijg.org/files/jpegsrc.v${pkgver}.tar.gz")
-sha256sums=('99cb50e48a4556bc571dadd27931955ff458aae32f68c4d9c39d624693f69c32')
+sha256sums=('4077d6a6a75aeb01884f708919d25934c93305e49f7e3f36db9129320e6f4f3d')
 
 build() {
   cd "jpeg-${pkgver}"
