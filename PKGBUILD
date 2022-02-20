@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=20220125
+pkgver=20220220
 pkgrel=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
@@ -18,16 +18,18 @@ options=(!strip)
 
 # You can choose a mirror and rsync directory here.
 # _syncdir works as a local CTAN mirror (about 4.5GiB) for faster installation
+# For mainland China, use 
+# mirrors.bfsu.edu.cn/CTAN/systems/texlive/tlnet/
 
-_mirror='rsync.dante.ctan.org/CTAN'
+_mirror='rsync.dante.ctan.org/CTAN/systems/texlive/tlnet/'
 _syncdir="CTAN/tlnet"
 
 pkgver(){
-    ls  | grep -E '[0-9]+' -o
+    ls  | grep -E '[0-9]+' -o | sort -r | head -1
 }
 prepare(){
     # TeXLive release year
-    _year=$(cat ${srcdir}/install*/release-texlive.txt| grep -E '[0-9]+' -o)
+    _year=$(cat ${srcdir}/install-tl-${pkgver}/release-texlive.txt| grep -E '[0-9]+' -o)
     # creating a profile for unattened installation
     echo "selected_scheme scheme-full" > "${srcdir}/texlive.profile"
     echo "TEXDIR ${pkgdir}/opt/texlive/${_year}" >> "${srcdir}/texlive.profile"
@@ -46,7 +48,7 @@ prepare(){
 }
 
 package() {
-    _year=$(cat ${srcdir}/install*/release-texlive.txt| grep -E '[0-9]+' -o)
+    _year=$(cat ${srcdir}/install-tl-${pkgver}/release-texlive.txt| grep -E '[0-9]+' -o)
     
     # find installer path automatically.
     _installer_dir=install-tl-${pkgver}
@@ -69,7 +71,7 @@ package() {
         cd ${pkgdir}/opt/texlive/${_year}/texmf-dist/doc/man/$mann
         find . -type f,l  -print0 |sed "s|\./||g"| while read -d $'\0' man
         do 
-            ln -s "/opt/texlive/${_year}/texmf-dist/doc/$mann/${man}"  "${pkgdir}/usr/share/man/$mann/"
+            ln -s "/opt/texlive/${_year}/texmf-dist/doc/man/$mann/${man}"  "${pkgdir}/usr/share/man/$mann/"
         done
     done
     
