@@ -1,7 +1,7 @@
 # Maintainer: kik4444 <kik4444 at abv dot bg>
 
 pkgname='simple-process-tracker'
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A simple, lightweight Qt app that tracks how long user-selected processes have been running on the system'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake')
 source=("https://github.com/kik4444/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d8aebc897e82f6232790c7c476aa8bab358afaccee77977bdbd9615c627c620')
+sha256sums=('fbe9fe28ac6bddbf72abe5bba1a326c73b7698c8fc7d6fe73c8860bfae0b00f1')
 
 build() {
     mkdir "$srcdir/$pkgname-$pkgver/src/build-dir"
