@@ -1,6 +1,6 @@
 pkgbase = python-scielo-xylose
 	pkgdesc = SciELO's library to abstract a JSON from ISIS2JSON type 3 results
-	pkgver = 1.34.1
+	pkgver = 1.35.9
 	pkgrel = 1
 	url = https://github.com/scieloorg/xylose
 	arch = any
@@ -8,10 +8,7 @@ pkgbase = python-scielo-xylose
 	makedepends = python-setuptools
 	depends = python-scielo-legendarium
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/eb/98/af79056f6fd0c470bebf08c584a77c46c71ab13dc3eeeef15016d8d5d825/xylose-1.34.1.tar.gz
-	source = https://raw.githubusercontent.com/scieloorg/xylose/2050c1019c1a70b945faeea3fd9b948309db9a0f/LICENSE
-	sha256sums = 5f0b343003e90a600f4b58d9971caeee98d9cb69cce677d8c1681cd0e78753c9
-	sha256sums = 611f9cee8598e86564f391797789c08e11877534727a9b235dce210bde17cf6b
+	source = xylose-v1.35.9.tar.gz::https://github.com/scieloorg/xylose/archive/refs/tags/1.35.9.tar.gz
+	sha256sums = b8581f317ef8b11d5f964a7cc1f1d245f717433e9910211aeafef3b3f707af15
 
 pkgname = python-scielo-xylose
-
