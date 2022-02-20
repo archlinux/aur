@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/pdm-project/pdm-pep517"
 license=(MIT)
 depends=(python-cerberus python-packaging python-toml)
-makedepends=(python-build python-install)
+makedepends=(python-build python-installer)
 checkdepends=(git python-pytest python-setuptools)
 optdepends=(
   'python-setuptools: for setuptools support'
@@ -47,7 +47,7 @@ check() {
 
 package() {
   cd "$_name-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
