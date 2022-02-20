@@ -1,0 +1,12 @@
+diff --git a/mirage/xmouse.c b/mirage/xmouse.c
+index 0309676..e26cb18 100644
+--- a/mirage/xmouse.c
++++ b/mirage/xmouse.c
+@@ -39,6 +39,7 @@ static PyMethodDef methods[] =
+ {
+     {"geometry", xmouse_geometry, METH_VARARGS,
+      "Get the geometry of the window under the mouse cursor."},
++    {NULL, NULL, 0}
+ };
+ 
+ static PyModuleDef xmouse_module = {
