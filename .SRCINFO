@@ -1,0 +1,15 @@
+pkgbase = zsh-hist-git
+	pkgdesc = Edit your Zsh history, without ever leaving the command line.
+	pkgver = r55.42cd5c2
+	pkgrel = 1
+	url = https://github.com/marlonrichert/zsh-hist.git
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-hist
+	conflicts = zsh-hist
+	source = git+https://github.com/marlonrichert/zsh-hist.git
+	sha256sums = SKIP
+
+pkgname = zsh-hist-git
