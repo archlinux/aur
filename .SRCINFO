@@ -1,6 +1,6 @@
 pkgbase = kali-themes
 	pkgdesc = GTK theme included with Kali Linux
-	pkgver = 2021.4.2
+	pkgver = 2022.1.1
 	pkgrel = 1
 	url = https://gitlab.com/kalilinux/packages/kali-themes
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = kali-themes
 	options = !strip
 	options = !buildflags
 	options = !makeflags
-	source = https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2021.4.2/kali-themes-kali-2021.4.2.tar.gz
-	sha512sums = 615549252436c02d64c608c5806a9a7dd5d5b12be6f1d976004102204ad85a800814dea0e36b1a62210ef4e66e3ae8647b73fbbb5cd9ea84879022505d6b633b
+	source = https://gitlab.com/kalilinux/packages/kali-themes/-/archive/kali/2022.1.1/kali-themes-kali-2022.1.1.tar.gz
+	sha512sums = 790321edf5e9f4309c3cd7ea0b8112ad91da080cb05a171e88a51a7e38cc9a05b46c19a54a593ac4ce21957afe1c35c5f46a744df86b6566d29d79b948c3bb4a
 
 pkgname = kali-themes
