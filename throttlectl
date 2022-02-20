@@ -10,11 +10,12 @@ throttle_help() {
           "${0} {{cut,full}} - system-wide runtime powersaving\n"\
           "${0} {check} - inspect runtime powersaving\n"\
           "\nPer-component power management:\n" \
-          "${0} gov {cut,full} - CPU Governor\n"\
+          "${0} sys {cut,full} - System devices\n"\
           "${0} turbo {on,off} - Intel P-State Turbo\n"\
           "${0} ht {on,off} - Hyperthreads\n"\
-          "${0} backlight {0,1,2} - Backlight brightness (laptops only?)\n" \
+          "${0} gov {cut,full} - CPU Governor\n"\
           "${0} gpu {cut,full} - GPU runtime powersaving (only Nvidia ATM)\n"\
+          "${0} backlight {0,1,2} - Backlight brightness (laptops only?)\n" \
           "\nAll options are stackable and take {{cut,powersave,start},{full,performace,stop},{check,status}}\n"
   exit
 }
@@ -150,6 +151,9 @@ throttle_system() {
   # LEDs
   for i in /sys/class/leds/*/brightness; do \
     printf "${LEDBRIGHT}" > "${i}" & done &
+
+  # Save state for frontend
+  printf "$SYSTEM" > /etc/throttle.d/systemstate &
 }
 
 check_system() {
@@ -207,85 +211,85 @@ check_system() {
     printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/leds/||g; s|/brightness||g; s|/.*||g; N;s|\n|\t|'
 }
 
-#Find the number of physical cores (for hyperthreading control)
-CORES="$(grep "^core id" /proc/cpuinfo | sort -u | wc -l)"
-
 while (( "$#" )); do
   case "$1" in
-    ht*)
-      case "${1}" in \
-        ht-on) HYPERTHREADS="on" ;; \
-        ht-off) HYPERTHREADS="off" ;; esac
-      [[ -z "${HYPERTHREADS}" ]] && \
-        case "${2}" in \
-          cut|off|powersave|start) HYPERTHREADS="off"; SHIFT="2" ;; \
-          full|on|performance|stop) HYPERTHREADS="on";  SHIFT="2" ;; \
-          check|status) check_ht; SHIFT="2" ;; esac
-      [[ -n "${HYPERTHREADS}" ]] && throttle_ht
-      [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
-      unset HYPERTHREADS SHIFT
-    ;;
-    gov*|cpu)
-      case "${1}" in \
-        gov-full) GOVERNOR="performance" ;; \
-        gov-cut) GOVERNOR="powersave" ;; esac
-      [[ -z "${GOVERNOR}" ]] && \
-        case "${2}" in \
-          cut|off|powersave|start) GOVERNOR="powersave"; SHIFT="2" ;; \
-          full|on|performance|stop) GOVERNOR="performance"; SHIFT="2" ;; \
-          check|status) check_gov; SHIFT="2" ;; esac
-      [[ -n "${GOVERNOR}" ]] && throttle_gov
-      [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
-      unset GOVERNOR SHIFT
-    ;;
-    turbo*)
-      case "${1}" in \
-        turbo-on) XPSTURBO="0" ;; \
-        turbo-off) XPSTURBO="1" ;; esac
-      [[ -z "${XPSTURBO}" ]] && \
-        case "${2}" in \
-          cut|off|powersave|start) XPSTURBO="1"; SHIFT="2" ;; \
-          full|on|performance|stop) XPSTURBO="0"; SHIFT="2" ;; \
-          check|status) check_turbo; SHIFT="2" ;; esac
-      [[ -n "${XPSTURBO}" ]] && throttle_turbo
-      [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
-      unset XPSTURBO SHIFT
-    ;;
-    backlight)
-      case "${2}" in \
-        cut|off|0|powersave|start) BACKLIGHT="0"; SHIFT="2" ;; \
-        full|on|1|performance|stop) BACKLIGHT="1"; SHIFT="2" ;; \
-        2) BACKLIGHT="2"; SHIFT="2" ;; \
-        check|status) check_backlight; SHIFT="2" ;; esac
-      [[ -n "${BACKLIGHT}" ]] && throttle_backlight
-      [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
-      unset BACKLIGHT SHIFT
-    ;;
-    gpu*)
-      case "${1}" in \
-        gpu-full) NVPM="1" ;; \
-        gpu-cut) NVPM="0" ;; esac
-      [[ -z "${NVPM}" ]] && \
-        case "${2}" in \
-          cut|off|powersave|start) NVPM="0"; SHIFT="2" ;; \
-          full|on|performance|stop) NVPM="1"; SHIFT="2" ;; \
-          check|status) check_nvpm; SHIFT="2" ;; esac
-      [[ -n "${NVPM}" ]] && throttle_nvpm
-      [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
-      unset NVPM SHIFT
-    ;;
-    full|performance|start|cut|powersave|stop)
-      case "${1}" in
-        cut|powersave|start)
-          [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help
-          printf "0" > /etc/throttle.d/systemstate &
+    sys)
+      case "${2}" in
+        cut|off|powersave|start)
+          [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help; SYSTEM="0"
         ;;
-        full|performance|stop)
-          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help
-          printf "1" > /etc/throttle.d/systemstate &
+        full|on|performance|stop)
+          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help; SYSTEM="1"
+        ;;
+        check|status)
+          check_system
         ;;
       esac
-
+      [[ -n "$SYSTEM" ]] && throttle_system
+      shift "2"
+      unset ENERGYPERF LAPTOP DIRTYWBC NMIDOG POLICY APM AAM CONTROL AUTOSUSPEND POWERSAVE CONTROLLER \
+            WLPOWERSAVE WOLA WOLB LEDBRIGHT SYSTEM
+    ;;
+    turbo)
+      [[ -z "${XPSTURBO}" ]] && \
+        case "${2}" in \
+          cut|off|powersave|start) XPSTURBO="1" ;; \
+          full|on|performance|stop) XPSTURBO="0" ;; \
+          check|status) check_turbo ;; esac
+      [[ -n "${XPSTURBO}" ]] && throttle_turbo
+      shift "2"
+      unset XPSTURBO
+    ;;
+    ht)
+      [[ -z "${HYPERTHREADS}" ]] && \
+        case "${2}" in \
+          cut|off|powersave|start) HYPERTHREADS="off" ;; \
+          full|on|performance|stop) HYPERTHREADS="on" ;; \
+          check|status) check_ht ;; esac
+      [[ -n "${HYPERTHREADS}" ]] && throttle_ht
+      shift "2"
+      unset HYPERTHREADS
+    ;;
+    gov|cpu)
+      [[ -z "${GOVERNOR}" ]] && \
+        case "${2}" in \
+          cut|off|powersave|start) GOVERNOR="powersave" ;; \
+          full|on|performance|stop) GOVERNOR="performance" ;; \
+          check|status) check_gov ;; esac
+      [[ -n "${GOVERNOR}" ]] && throttle_gov
+      shift "2"
+      unset GOVERNOR
+    ;;
+    gpu)
+      [[ -z "${NVPM}" ]] && \
+        case "${2}" in \
+          cut|off|powersave|start) NVPM="0" ;; \
+          full|on|performance|stop) NVPM="1" ;; \
+          check|status) check_nvpm ;; esac
+      [[ -n "${NVPM}" ]] && throttle_nvpm
+      shift "2"
+      unset NVPM
+    ;;
+    backlight)
+      [[ -z "${BACKLIGHT}" ]] && \
+        case "${2}" in \
+          cut|off|0|powersave|start) BACKLIGHT="0" ;; \
+          full|on|1|performance|stop) BACKLIGHT="1" ;; \
+          2) BACKLIGHT="2" ;; \
+          check|status) check_backlight ;; esac
+      [[ -n "${BACKLIGHT}" ]] && throttle_backlight
+      shift "2"
+      unset BACKLIGHT
+    ;;
+    full|on|performance|start|cut|off|powersave|stop)
+      case "${1}" in
+        cut|off|powersave|start)
+          [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help; SYSTEM="1"
+        ;;
+        full|on|performance|stop)
+          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help; SYSTEM="0"
+        ;;
+      esac
       throttle_ht
       throttle_gov
       throttle_turbo
@@ -295,7 +299,7 @@ while (( "$#" )); do
       shift
       unset GOVERNOR XPSTURBO HYPERTHREADS ENERGYPERF BACKLIGHT LAPTOP DIRTYWBC NMIDOG \
             POLICY APM AAM CONTROL AUTOSUSPEND POWERSAVE CONTROLLER \
-            WLPOWERSAVE WOLA WOLB LEDBRIGHT NVPM
+            WLPOWERSAVE WOLA WOLB LEDBRIGHT NVPM SYSTEM
     ;;
     check|status)
       check_ht
@@ -314,5 +318,3 @@ while (( "$#" )); do
   [[ -z "${1}" ]] || wait # Hey, let's stop! :) *stops* ... YAY! =D
 
 done
-
-unset CORES
