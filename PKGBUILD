@@ -1,23 +1,26 @@
-# Maintainer: Grey Christoforo <first name at last name dot net>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=python-tesserocr
-pkgver=2.5.1
-pkgrel=1
+_name=${pkgname#python-}
+pkgver=2.5.2
+pkgrel=3
 pkgdesc="A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython"
+arch=('x86_64')
 url="https://github.com/sirfz/tesserocr"
-depends=(python leptonica tesseract)
-makedepends=(python-setuptools)
-license=(MIT)
-arch=(x86_64)
-source=("https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-${pkgver}.tar.gz")
-md5sums=('49d0701f97752dbbc1be708d559a24e6')
+license=('MIT')
+depends=('python' 'leptonica' 'tesseract')
+makedepends=('cython' 'python-setuptools')
+source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('9371dd3f6fe3238039c73bfe15bcaf21389f7e75f62bd530a30110149f39b2ae')
 
 build() {
-    cd "tesserocr-${pkgver}"
-    python setup.py build
+  cd "$_name-$pkgver"
+  python setup.py build
 }
 
 package() {
-    cd "tesserocr-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
