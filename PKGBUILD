@@ -1,8 +1,8 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=nextpnr-generic-nightly
-pkgver=20220219_347ba3a
-pkgrel=2
+pkgver=20220220_347ba3a
+pkgrel=1
 epoch=1
 pkgdesc="nextpnr portable FPGA place and route tool - generic"
 arch=("x86_64")
@@ -20,6 +20,7 @@ optdepends=()
 makedepends=("git" "gcc" "cmake" "ninja" "pkgconf" "gawk" "eigen" "boost")
 conflicts=(
 	"nextpnr-git"
+	"nextpnr-all-nightly"
 )
 replaces=()
 source=(
