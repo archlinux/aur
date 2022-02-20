@@ -1,7 +1,7 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 
 pkgname=flxmlrpc
-pkgver=0.1.4
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="XMLRPC for fldigi and other Ham Radio apps"
 arch=('i686' 'x86_64')
@@ -9,7 +9,8 @@ url="http://www.w1hkj.com/downloads/flxmlrpc/"
 license=('GPL3')
 depends=('gcc-libs')
 makedepends=('automake' 'autoconf' 'pkg-config')
-source=("http://www.w1hkj.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver::git+https://git.code.sf.net/p/fldigi/flxmlrpc#tag=v$pkgver")
+#"http://www.w1hkj.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
 
 build() {
 	cd $pkgname-$pkgver
@@ -29,5 +30,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 }
-md5sums=('7e46519ca02561088bc824085f991006')
-sha256sums=('ad72303e0da5fa179b11eb97e82e2bdf2d37241e53e8aad7266f8c30ff2ddd16')
+md5sums=('SKIP')
+sha256sums=('SKIP')
