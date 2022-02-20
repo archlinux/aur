@@ -1,31 +1,31 @@
 # Maintainer: Trivernis <trivernis+aur at protonmail dot com>
 
 pkgname=mediarepo-daemon
-pkgver=1.0.0_rc.4
+pkgver=1.0.0
 pkgrel=2
 pkgdesc='Daemon to manage a media repository'
 arch=(x86_64)
 url=https://github.com/trivernis/mediarepo
 license=(GPL3)
-provides=('mediarepo-daemon=1.0.0_rc.4')
+provides=('mediarepo-daemon=1.0.0')
 makedepends=('clang' 'cargo' 'python' 'lld')
 
 options=(!strip)
-source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/mediarepo/archive/v1.0.0-rc.4.tar.gz)
-sha512sums=('23c3688bd944b946456b824e12b8d52445eac553f7df4a3f275db69f3bafdfd88d9912b871c17b8256e13fb41f6a114b657b65230f71d52039716debe058d15c')
+source=($pkgname-$pkgver.tar.gz::https://github.com/Trivernis/mediarepo/archive/v1.0.0.tar.gz)
+sha512sums=('bd3d497760d6fe1c4ceaa11b42c9d7348078d39e6ead5566eb816fad37438ffd59c5e8edb6256a4a9f1dd757a50bb566588a2f32a533b9b8c7a748fb8c970f91')
 
 prepare() {
-  cd mediarepo-1.0.0-rc.4/$pkgname
+  cd mediarepo-1.0.0/$pkgname
   cargo fetch
 }
 
 build() {
-  cd mediarepo-1.0.0-rc.4
+  cd mediarepo-1.0.0
   python scripts/build.py daemon --install-tooling
 }
 
 package() {
-  cd mediarepo-1.0.0-rc.4/out
+  cd mediarepo-1.0.0/out
 
   install -d "$pkgdir"/usr/{lib,bin}
   cp -a mediarepo-daemon "$pkgdir"/usr/lib/mediarepo-daemon
