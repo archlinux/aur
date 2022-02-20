@@ -1,0 +1,16 @@
+pkgbase = kde-servicemenus-imagetools
+	pkgdesc = KDE service menus for image file processing
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/marco-mania/kde-servicemenus-imagetools
+	arch = any
+	license = GPL
+	depends = dolphin
+	depends = kdialog
+	depends = imagemagick
+	depends = perl-image-exiftool
+	depends = optipng
+	source = https://github.com/marco-mania/kde-servicemenus-imagetools/archive/refs/tags/v1.tar.gz
+	sha256sums = e7cb2ed79689c37652050988f397bea737e254c9248b0645cc6b81487c15fbfa
+
+pkgname = kde-servicemenus-imagetools
