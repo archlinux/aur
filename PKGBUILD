@@ -3,7 +3,7 @@
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 
 pkgname=pmbootstrap
-pkgver=1.41.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="Sophisticated chroot/build/flash tool to develop and install postmarketOS"
 arch=('any')
@@ -11,7 +11,7 @@ url='https://postmarketos.org'
 license=('GPL3')
 depends=('python-setuptools')
 source=("https://gitlab.com/postmarketOS/pmbootstrap/-/archive/$pkgver/pmbootstrap-$pkgver.tar.gz")
-sha512sums=('2447a2a03d3311e85db51b9f89c7ef92e47624b22ba418ecdf8aaf1a1d2efaa9c4dd041e297bfef6b9ff2f6cdae30c82a92c79dd8b4be29ade95fac818ab4797')
+sha512sums=('cdbc93a6fce8833c86a34a15b56ae536843373c678786f596c1dcc073d686fb0d676b7dbce3fe49a0051488ee12927d7bbc6aa31f93ffd4a6fea17c294fb49e0')
 
 build() {
   cd $pkgname-$pkgver
