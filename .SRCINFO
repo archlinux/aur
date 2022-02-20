@@ -1,0 +1,15 @@
+pkgbase = akr-git
+	pkgdesc = Akamai Krypton CLI and SSH Agent
+	pkgver = 1.0.r6.g9babada
+	pkgrel = 1
+	url = https://github.com/akamai/akr
+	arch = x86_64
+	license = custom:Akamai
+	makedepends = git
+	makedepends = cargo
+	provides = akr
+	conflicts = akr
+	source = akr::git+https://github.com/akamai/akr.git
+	md5sums = SKIP
+
+pkgname = akr-git
