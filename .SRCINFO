@@ -1,0 +1,14 @@
+pkgbase = simple-process-tracker
+	pkgdesc = A simple, lightweight Qt app that tracks how long user-selected processes have been running on the system
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/kik4444/simple-process-tracker
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-svg
+	source = https://github.com/kik4444/simple-process-tracker/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 4d8aebc897e82f6232790c7c476aa8bab358afaccee77977bdbd9615c627c620
+
+pkgname = simple-process-tracker
