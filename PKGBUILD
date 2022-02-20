@@ -6,7 +6,7 @@ pkgver=1.52g
 _pkgver=1_52g
 _build=53273
 _goggame=1703478259
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Trapped in underground villages with no memory of the world at the surface, you must survive an ever-changing labyrinth to discover what lies above."
 arch=('i686' 'pentium4' 'x86_64')
@@ -52,6 +52,9 @@ package() {
         rm -r "${pkgdir}/opt/${_pkgname}/Tangledeep_Data/Plugins/x86_64"
         install -Dm755 "${srcdir}/data/noarch/game/Tangledeep.x86" "${pkgdir}/opt/${_pkgname}/Tangledeep"
     fi
+    # install unity files
+    install -Dm755 "${srcdir}/data/noarch/game/UnityPlayer_s.debug" "${pkgdir}/opt/${_pkgname}/UnityPlayer_s.debug"
+    install -Dm644 "${srcdir}/data/noarch/game/UnityPlayer.so" "${pkgdir}/opt/${_pkgname}/UnityPlayer.so"
     # link executable in /usr/bin
     mkdir "${pkgdir}/usr/bin"
     ln -s /opt/${_pkgname}/Tangledeep "${pkgdir}/usr/bin/Tangledeep"

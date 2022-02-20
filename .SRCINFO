@@ -1,7 +1,7 @@
 pkgbase = gog-tangledeep
 	pkgdesc = Trapped in underground villages with no memory of the world at the surface, you must survive an ever-changing labyrinth to discover what lies above.
 	pkgver = 1.52g
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.gog.com/game/tangledeep
 	arch = i686
