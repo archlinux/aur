@@ -1,7 +1,7 @@
 # Maintainer: rootjdev <rootjdev@gmail.com>
 pkgname=assemblyline-bin
-pkgver=1.1.0
-pkgrel=1
+pkgver=1.2.0
+pkgrel=0
 pkgdesc="An in-memory assembler for x86. (latest stable release)"
 arch=(x86_64)
 url="https://github.com/0xAde1a1de/assemblyline.git"
@@ -19,4 +19,4 @@ package() {
   cd "${pkgname%-bin}-${pkgver}"
   make DESTDIR="$pkgdir/" install
 }
-sha256sums=('deaee9b788e085358ce820ec17f2c05ec8ded990da0045dc58d5d7fd11be4b5c')
+sha256sums=('03f5187a95074a75b4a5baeced4d1ac22ee914abef7ff8962b9d6de27177335d')
