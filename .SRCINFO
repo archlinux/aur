@@ -1,0 +1,12 @@
+pkgbase = wps-office-vero-pt-br
+	pkgdesc = Dicionário de Português do Brasil para WPS Office
+	pkgver = 3.2.15
+	pkgrel = 1
+	url = https://pt-br.libreoffice.org/projetos/vero/
+	arch = any
+	license = GPL3
+	depends = wps-office
+	source = https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBR3215AOC.oxt
+	sha256sums = 7571a3d8aaa0d5699f8b572d2fc613189876fa4fa87dcbda9a99bd63500210ee
+
+pkgname = wps-office-vero-pt-br
