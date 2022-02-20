@@ -1,25 +1,26 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libphidget
-pkgver=2.1.9.20190409
+pkgver=1.10.20220211
 pkgrel=1
+epoch=1
+url=https://www.phidgets.com
 pkgdesc="user-space access library for the Phidget devices"
+conflicts=('libphidget')
+provides=('libphidget')
 arch=('x86_64')
 license=('GPL')
 depends=('libusb')
-makedepends=('libusb')
-source=('https://www.phidgets.com/downloads/libraries/libphidget.tar.gz')
-sha256sums=('0e789912700228808519cf5c41e19f9b761da635c6bb676b147897936b23851f')
+source=("https://www.phidgets.com/downloads/${pkgname#lib}/libraries/linux/${pkgname}22/${pkgname}22-$pkgver.tar.gz")
+sha256sums=('1c5bda131f8a438967afd3213156d153e85bc9bdfe12275b24e3cf80253aae60')
 
 build() {
-   cd $pkgname-$pkgver
-   ./configure --prefix=/usr
-   make
+  cd ${pkgname}22-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-   cd $pkgname-$pkgver
+   cd ${pkgname}22-$pkgver
    make DESTDIR="$pkgdir/" install
-   install -d "$pkgdir"/usr/lib/udev/rules.d
-   install "udev/99-phidgets.rules" "$pkgdir"/usr/lib/udev/rules.d
 }
