@@ -1,6 +1,6 @@
 pkgbase = setzer
 	pkgdesc = LaTeX editor written in Python with Gtk
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/cvfosammmm/setzer
 	arch = any
@@ -14,11 +14,12 @@ pkgbase = setzer
 	depends = python-cairo
 	depends = python-gobject
 	depends = python-pdfminer
+	depends = python-pexpect
 	depends = python-pyxdg
 	depends = texlive-core
 	depends = webkit2gtk
 	depends = xdg-utils
-	source = setzer-0.4.2.tar.gz::https://github.com/cvfosammmm/setzer/archive/v0.4.2/0.4.2.tar.gz
-	sha256sums = 50b5d273120f81b1f0a7efbcc0ce1fb1623518fe18b23ded45a82e8166003d3b
+	source = setzer-0.4.4.tar.gz::https://github.com/cvfosammmm/setzer/archive/v0.4.4/0.4.4.tar.gz
+	sha256sums = 2b380c2d100970e25f851f42c354ed10e0c51de86c7b28ec1252173c22c393ce
 
 pkgname = setzer
