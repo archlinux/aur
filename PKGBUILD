@@ -1,7 +1,7 @@
 # Maintainer: Joakim Saario <saario.joakim@gmail.com>
 
 pkgname=python-respx
-pkgver=0.17.1
+pkgver=0.19.2
 pkgrel=1
 pkgdesc='Mock HTTPX with awesome request patterns and response side effects'
 arch=('any')
@@ -9,9 +9,9 @@ url='https://github.com/lundberg/respx'
 license=('BSD')
 depends=('python-httpx')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'mypy' 'python-starlette')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-starlette' 'python-trio' 'python-flask')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('3b5d2ab05eb75ee7aaeecf20435aea0f900b47d9864358c8ba14b8d575282558f802ba82078fd9be5b01987e60879eb5566ddc1f20d92f99da8a60ccb0a6826d')
+sha512sums=('99e1da094f1b4446a837fda4edfb8c0201c582d55865987c6d5301f0779057923012c7d5157d7762be4603b98ce77ed0261b9614f199ca40ad4ecf4d61b04228')
 
 build() {
     cd "${srcdir}/respx-${pkgver}"
@@ -22,8 +22,7 @@ build() {
 check() {
     cd "${srcdir}/respx-${pkgver}"
 
-    pytest -v --no-cov
-    mypy respx
+    pytest -c /dev/null -v
 }
 
 package() {
