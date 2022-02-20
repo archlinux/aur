@@ -1,29 +1,25 @@
 _pkgname=UHDM
 pkgname=${_pkgname,,}-git
-pkgver=r1173.d6edfd8
+pkgver=r1270.ad9a41e
 pkgrel=1
 pkgdesc="A complete modeling of the IEEE SystemVerilog Object Model"
 arch=(x86_64)
 url="https://github.com/chipsalliance/UHDM"
 license=('Apache')
 depends=('capnproto')
-makedepends=('git' 'cmake' 'python' 'tcl' 'gtest')
+makedepends=('git' 'cmake' 'python' 'python-orderedmultidict' 'gtest')
 provides=("${_pkgname,,}=$pkgver")
 conflicts=("${_pkgname,,}")
 source=(
 	"git+$url"
 	"0001-Remove-unnecessary-submodules.patch"
-	"0002-Don-t-try-to-_FORTIFY_SOURCE-unoptimized-files.patch"
-	"0003-Install-libuhdm.so-to-usr-lib.patch"
-	"0004-Install-capnp-file-to-usr-share.patch"
-	"0005-Make-shared-instead-of-static-library.patch"
+	"0002-Install-libuhdm.so-to-usr-lib.patch"
+	"0003-Install-capnp-file-to-usr-share.patch"
 )
 sha256sums=('SKIP'
-            '844cd92b591369a08ef951367fb99eeacac43d1306989067984045be7b02c3fc'
-            '7e6e15e7a8455bfa2c08516a620d006f0dbd643a4a8e4b1705749aaad3466666'
-            '6f2fbfcc1b263847558266e7c3f99d08354846fe8fb8ccb2fb049f16ed19b772'
-            '37add34d362a454630d202485400f59994e05886838efe3ef61a4b661073b0e0'
-            '7e40c7ea12d1c276c923bd28d5074352e7720d4072e2a57df1f85f5c1d624cd3')
+            'e58d2c3ec4b156f647b2ff8c025ef3c69da3c11bbc0cf9ed5e3469f00b036cdc'
+            '299f80979c633f2219435f5a69063489b80ece349cf69f92c2ea66e3eee0ace0'
+            '99a3ec356b42bf537099dcae1d938634380e793f22c7e6b8c73d0d5165b7b953')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -35,10 +31,8 @@ prepare() {
 	cd "$srcdir/$_pkgname"
 
 	patch -p1 < "$srcdir/0001-Remove-unnecessary-submodules.patch"
-	patch -p1 < "$srcdir/0002-Don-t-try-to-_FORTIFY_SOURCE-unoptimized-files.patch"
-	patch -p1 < "$srcdir/0003-Install-libuhdm.so-to-usr-lib.patch"
-	patch -p1 < "$srcdir/0004-Install-capnp-file-to-usr-share.patch"
-	patch -p1 < "$srcdir/0005-Make-shared-instead-of-static-library.patch"
+	patch -p1 < "$srcdir/0002-Install-libuhdm.so-to-usr-lib.patch"
+	patch -p1 < "$srcdir/0003-Install-capnp-file-to-usr-share.patch"
 }
 
 build() {
