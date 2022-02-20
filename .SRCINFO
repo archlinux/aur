@@ -12,6 +12,7 @@ pkgbase = xampp
 	makedepends = pcre
 	depends = inetutils
 	depends = net-tools
+	depends = libxcrypt-compat
 	optdepends = polkit: for launching XAMPP Manager and Control Panel from menu
 	optdepends = pygtk: for using XAMPP Control Panel
 	options = staticlibs

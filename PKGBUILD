@@ -28,7 +28,7 @@ license=('GPL')
 # compatible version.
 arch=('x86_64')
 
-depends=('inetutils' 'net-tools')
+depends=('inetutils' 'net-tools' 'libxcrypt-compat')
 optdepends=('polkit: for launching XAMPP Manager and Control Panel from menu'
             'pygtk: for using XAMPP Control Panel')
 makedepends=('sdx' 'tclkit' 'rsync' 'pcre')
