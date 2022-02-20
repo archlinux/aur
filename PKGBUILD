@@ -1,8 +1,8 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 
 pkgname=xscreensaver-dbus-screenlock
-pkgver=3
-pkgrel=2
+pkgver=4
+pkgrel=1
 pkgdesc="DE neutral integrated screen-locking with xscreensaver"
 arch=('i686' 'x86_64')
 url="http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175"
@@ -27,21 +27,22 @@ package() {
 
   #Python scripts
   install -Ddm755 "${pkgdir}/usr/bin"
-  install -m755 {${srcdir}/xscreensaver-dbus-screenlock-{freedesktop,gnome}.py,${pkgdir}/usr/bin/}
+  install -Dm755 {${srcdir}/xscreensaver-dbus-screenlock-{freedesktop,gnome}.py,${pkgdir}/usr/bin/}
 
   #Dbus services
   install -Ddm755 "${pkgdir}/usr/share/dbus-1/services"
-  install -m644 {${srcdir}/org.{freedesktop,gnome}.ScreenSaver.service,${pkgdir}/usr/share/dbus-1/services/}
+  install -Dm644 {${srcdir}/org.{freedesktop,gnome}.ScreenSaver.service,${pkgdir}/usr/share/dbus-1/services/}
 
   #XDG Startups
-  #install -Ddm755 "${pkgdir}/etc/xdg/autostart"
-  #install -m644 {${srcdir}/xscreensaver-dbus-screenlock-{freedesktop,gnome}.desktop,${pkgdir}/etc/xdg/autostart/}
+  install -Ddm755 "${pkgdir}/etc/xdg/autostart"
+  install -Dm644 {${srcdir}/xscreensaver-dbus-screenlock-{freedesktop,gnome}.desktop,${pkgdir}/etc/xdg/autostart/}
 
   #Gconf Schemas (for dependencies)
   install -Dm644 {${srcdir},${pkgdir}/usr/share/glib-2.0/schemas}/apps.light-locker.gschema.xml
 
   # Redirect stray calls to xscreensaver-command
-  install -Ddm755 "${pkgdir}/usr/bin/"
-  ln -s /usr/bin/xscreensaver-command "${pkgdir}/usr/bin/gnome-screensaver-command"
-  ln -s /usr/bin/xscreensaver-command "${pkgdir}/usr/bin/light-locker-command"
+  #install -Ddm755 "${pkgdir}/usr/bin/"
+  #ln -s /usr/bin/xscreensaver-command "${pkgdir}/usr/bin/gnome-screensaver-command"
+  #ln -s /usr/bin/xscreensaver-command "${pkgdir}/usr/bin/light-locker-command"
 }
+
