@@ -1,0 +1,15 @@
+pkgbase = ttf-klee-one
+	pkgdesc = Klee is a script font handwritten by pencil or pen.
+	pkgver = 1.000
+	pkgrel = 1
+	url = https://fontworks.co.jp/fontsearch/KleePro-M/
+	arch = any
+	license = OFL
+	source = https://github.com/fontworks-fonts/Klee/raw/8b0532731b63ad8a445ca341d8d7d941079b83ab/fonts/ttf/KleeOne-Regular.ttf
+	source = https://github.com/fontworks-fonts/Klee/raw/8b0532731b63ad8a445ca341d8d7d941079b83ab/fonts/ttf/KleeOne-SemiBold.ttf
+	source = https://github.com/fontworks-fonts/Klee/raw/8b0532731b63ad8a445ca341d8d7d941079b83ab/OFL.txt
+	sha256sums = 74cb0a6523cc22b221ceaa7b78b56cea66512ec14b4145fd0102ffe27c30d084
+	sha256sums = 9dbb25466c575f6dc8768a28845798f67fa5d47a5d20a6408c30c58d700a1044
+	sha256sums = e376b0df8e8a2345a9533db6f0a5333a1107975569ad9d1973a7ee557161ca38
+
+pkgname = ttf-klee-one
