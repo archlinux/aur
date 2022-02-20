@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=nanoemoji
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
@@ -26,7 +26,7 @@ optdepends=('resvg: Support CBDT and sbix color fonts')
 checkdepends=(python-pytest)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('5f78d25651596791dbc6593abd34ca2623b54debdd32615f380a4b5fd40e3993')
+sha256sums=('16fbd72e6df131ee2c3e883c632c9cea1a45835654d90f5282601fd3c64abaff')
 
 build() {
 	cd "$_archive"
