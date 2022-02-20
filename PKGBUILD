@@ -2,7 +2,7 @@
 
 _pkgbase='dzdsu'
 pkgname="python-${_pkgbase}"
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc='DayZ dedicated server utility.'
 arch=('any')
