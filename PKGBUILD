@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -17,7 +17,7 @@ depends=(
         'libcdio-paranoia' 'chromaprint' 'codec2' 'dav1d' 'libdc1394' 'libavc1394'
         'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme'
         'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
-        'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
+        'opencore-amr' 'openjpeg2' 'libopenmpt' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
         'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
         'svt-hevc' 'svt-av1' 'svt-vp9' 'tesseract' 'libtheora' 'twolame'
         'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264'
@@ -27,7 +27,7 @@ depends=(
         'libomxil-bellagio' 'libdrm' 'libva' 'libvdpau'
     # AUR:
         'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 
+        'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 
         'pocketsphinx' 'lensfun-git'
 )
 makedepends=(
@@ -37,7 +37,7 @@ makedepends=(
         'decklink-sdk'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
+          'libavutil.so' 'libpostproc.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full')
 conflicts=('ffmpeg')
 _svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
