@@ -1,7 +1,7 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone
-pkgver=8.20211118
-pkgrel=2
+pkgver=10.20220121
+pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64)
 url="https://git-annex.branchable.com/"
@@ -9,15 +9,21 @@ license=('GPL')
 depends=("bzip2" "file" "git" "gmp" "libffi" "lsof" "rsync" "sqlite" "xz" "zlib")
 provides=("git-annex")
 conflicts=("git-annex")
-source=("git-annex-standalone-amd64-$pkgver.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
-        "git-annex-standalone-amd64-$pkgver.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.sig")
-md5sums=('SKIP'
-         'SKIP')
+
+# Fetch info about the last release before setting the source URL
 _info_source="https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.info"
+_last_info=$(curl -s "${_info_source}")
+_last_pkgver=$(echo "${_last_info}" | awk 'NR==4')
+_last_sha256=$(echo "${_last_info}" | awk 'NR==3' | cut -d- -f 4 | cut -d. -f1)
+
+source=("git-annex-standalone-amd64-${_last_pkgver}.tar.gz::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz"
+        "git-annex-standalone-amd64-${_last_pkgver}.tar.gz.sig::https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz.sig")
+sha256sums=("${_last_sha256}"
+            'SKIP')
 validpgpkeys=("40055C6AFD2D526B2961E78F5EE1DBA789C809CB")
 
 pkgver() {
-  curl "$_info_source" | awk 'NR==4'
+  echo "${_last_pkgver}"
 }
 
 package() {
