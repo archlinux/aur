@@ -1,13 +1,14 @@
 pkgbase = emacs-bookmarkplus
 	pkgdesc = Bookmark+ package, which enhances vanilla Emacs bookmarks in many ways
-	pkgver = 2021.04.18
+	pkgver = 2021.09.19.r15072
 	pkgrel = 1
 	url = https://github.com/emacsmirror/bookmark-plus.git
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = awk
 	depends = emacs
-	source = emacs-bookmarkplus::git+https://github.com/emacsmirror/bookmark-plus.git#commit=bd56210898498be3aa4cea4777529abc92378359
+	source = emacs-bookmarkplus::git+https://github.com/emacsmirror/bookmark-plus.git#commit=d03fb70a85d952383c41ffb3728668d4f28da0a5
 	md5sums = SKIP
 
 pkgname = emacs-bookmarkplus
