@@ -1,0 +1,16 @@
+pkgbase = vim-snakemake-git
+	pkgdesc = Vim syntax for Snakemake snakefiles
+	pkgver = r18.d0015a0
+	pkgrel = 1
+	url = https://github.com/raivivek/vim-snakemake
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim
+	provides = vim-snakemake
+	conflicts = vim-snakemake
+	source = vim-snakemake::git+https://github.com/raivivek/vim-snakemake.git
+	sha256sums = SKIP
+
+pkgname = vim-snakemake-git
