@@ -1,6 +1,6 @@
 pkgbase = python-sqliteschema
 	pkgdesc = Dump table schema of a SQLite database file
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/thombashi/sqliteschema
 	arch = any
@@ -9,14 +9,18 @@ pkgbase = python-sqliteschema
 	checkdepends = python-simplesqlite
 	checkdepends = python-pytz
 	makedepends = python-setuptools
-	depends = python>=3.6
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-mbstrdecoder
 	depends = python-tabledata
 	depends = python-typepy
-	source = python-sqliteschema-1.2.1.tar.gz::https://files.pythonhosted.org/packages/source/s/sqliteschema/sqliteschema-1.2.1.tar.gz
-	source = python-sqliteschema-1.2.1.tar.gz.asc::https://files.pythonhosted.org/packages/source/s/sqliteschema/sqliteschema-1.2.1.tar.gz.asc
+	source = python-sqliteschema-1.3.0.tar.gz::https://files.pythonhosted.org/packages/source/s/sqliteschema/sqliteschema-1.3.0.tar.gz
+	source = python-sqliteschema-1.3.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/s/sqliteschema/sqliteschema-1.3.0.tar.gz.asc
+	source = remove-whitespace-from-description.patch
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
-	sha256sums = dde195bd7bc70d5841bc01dff20ec23bd43be87d760d2dfc7c7f2e5fd3808ef3
+	sha256sums = 1acdd5087cab54a099135a5623bb1960019816e2e3042b889c637901a832d3c3
 	sha256sums = SKIP
+	sha256sums = fc29d212e474ac34d25e7fadbe349298f14802325b9c293c2eb21cf53993ea1e
 
 pkgname = python-sqliteschema
