@@ -5,7 +5,7 @@ pkgver() {
   version=$(grep AC_INIT <./configure.ac | awk -F'[\\[\\]]' '{print $4}')
   printf "${version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-pkgver=1.1.0.r173.a5e219c
+pkgver=1.2.0.r177.ed6e6fd
 pkgrel=1
 pkgdesc="An in-memory assembler for x86. (main branch)"
 arch=(x86_64)
