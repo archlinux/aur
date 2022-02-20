@@ -2,7 +2,7 @@
 pkgname=libkeymap
 _pkgname=kbd
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulating kernel keymaps"
 arch=('x86_64')
 url="http://www.kbd-project.org"
@@ -34,5 +34,5 @@ check() {
 package() {
     cd ${_pkgname}
     make DESTDIR="${pkgdir}" install
-    rm -rf ${pkgdir}/usr/{bin,etc,share}
+    rm -rfv ${pkgdir}/usr/{bin,etc,share}
 }
