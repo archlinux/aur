@@ -4,9 +4,9 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.11.0rc1
-_pkgver=1.11.0-rc1
-pkgrel=2
+pkgver=1.11.0rc2
+_pkgver=1.11.0-rc2
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -205,6 +205,9 @@ prepare() {
 
   # build against ffmpeg4.4
   patch -Np1 -i "${srcdir}/ffmpeg4.4.patch"
+
+  # Backport https://github.com/driazati/breakpad/commit/605c51ed96ad44b34c457bbca320e74e194c317e for fixing build with glibc > 2.33
+  git -C third_party/breakpad cherry-pick -n 605c51ed96ad44b34c457bbca320e74e194c317e
 
   cd "${srcdir}"
 
