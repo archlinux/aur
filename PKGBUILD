@@ -7,7 +7,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt5-bin
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('peazip')
 depends=('qt5pas')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt5.x86_64.tar.gz")
-sha256sums=('149d7aa93a4272e21cf7ad01a517a1542d8385f5ce5665454da386310243fe44')
+sha256sums=('39fa078c1b9ca60bcb575fd7eee0da878a33564fac8333a85dc6007e426c9769')
 
 package() {
     local opt_dir="/opt/peazip-qt5-bin"
