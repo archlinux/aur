@@ -1,7 +1,7 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 _name=igbinary
 pkgname=php80-igbinary
-pkgver=3.1.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="A drop in replacement for the standard php serializer (PHP 8.0)"
 arch=('x86_64')
@@ -10,8 +10,8 @@ license=('BSD')
 depends=('glibc' 'php80')
 backup=("etc/php80/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('55f7fd1a6e2a422cf04e944c4c15126167c4aab6d4f5f1e6af8be6c345ec6ff0c25d7ea8c023062bdd4882484cede155ea7a598666e4616985873a32a0a272d1')
-b2sums=('62bc77d5b3ecbccb9e928e30f33a598630d3ee9f394f4e78c0978b316d4dbc29656f98773e9ff6bd6b9cd4961f4e00c6c760b1a07234849736d4e0d9e3199d5b')
+sha512sums=('1bdb60fa4ac76ef405b55b4a7e7f07c73ccc945a3fad8635934cf83a05ae554ac1a0b64c4b55229f0bd2a3269189d3266a492b064a0338fdb2bf4dfe5c3733e4')
+b2sums=('40936fb78b9f01d717daac78f8b707f902d78714e5202fbb1344042c2d30a3b723f9c5b6fd982f7a5002aab65e414ba7f9bda354fec4db82ba3f03fc09663a43')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "$pkgname-$pkgver"
@@ -31,6 +31,9 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
+  export TEST_PHP_EXECUTABLE=/usr/bin/php80
+  export TEST_PHPDBG_EXECUTABLE=/usr/bin/phpdbg80
+  #export TEST_PHP_ARGS="-d extension=${srcdir}/${pkgname}-${pkgver}/modules/igbinary.so"
   NO_INTERACTION=1 make -k test
 }
 
