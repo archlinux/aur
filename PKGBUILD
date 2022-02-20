@@ -6,12 +6,12 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.2_beta2_654.c7d90af
+pkgver=0.2.2_667.e7dec81
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
-license=('AGPL3')
+license=('AGPL3' 'GPL3')
 # depends and makedepends will be filled based on the PDF engine.
 depends=("qt${_qt_version_major}-multimedia")
 optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
@@ -36,7 +36,7 @@ source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 sha256sums=('SKIP')
 
 pkgver() {
-    printf "0.2.2_beta2_%s.%s" \
+    printf "0.2.2_%s.%s" \
         "$(git -C "${srcdir}/BeamerPresenter" rev-list --count HEAD)" \
         "$(git -C "${srcdir}/BeamerPresenter" rev-parse --short HEAD)"
 }
@@ -56,6 +56,7 @@ build() {
         -DUSE_MUJS=OFF \
         -DUSE_GUMBO=ON \
         -DUSE_TRANSLATIONS=ON \
+        -DINSTALL_LICENSE=OFF \
         -DQT_VERSION_MAJOR="${_qt_version_major}" \
         -DMUPDF_USE_SYSTEM_LIBS=ON \
         -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -65,4 +66,5 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --install "${pkgname}-${pkgver}/build"
+    install -Dm644 "${srcdir}/BeamerPresenter/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

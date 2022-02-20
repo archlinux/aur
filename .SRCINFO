@@ -1,10 +1,11 @@
 pkgbase = beamerpresenter-git
 	pkgdesc = Modular multi-screen pdf presenter (git)
-	pkgver = 0.2.2_beta2_654.c7d90af
+	pkgver = 0.2.2_667.e7dec81
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
 	arch = x86_64
 	license = AGPL3
+	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	makedepends = qt6-tools
@@ -17,7 +18,7 @@ pkgbase = beamerpresenter-git
 	optdepends = gst-plugins-good: show videos
 	optdepends = hicolor-icon-theme: action button icons
 	optdepends = qt6-svg: tool button icons
-	provides = beamerpresenter=0.2.2_beta2_654.c7d90af
+	provides = beamerpresenter=0.2.2_667.e7dec81
 	conflicts = beamerpresenter
 	backup = etc/xdg/beamerpresenter/beamerpresenter.conf
 	backup = etc/xdg/beamerpresenter/gui.json
