@@ -2,7 +2,7 @@
 
 pkgbase=libar2
 pkgname=($pkgbase $pkgbase-doc $pkgbase-musl)
-pkgver=1.1.1
+pkgver=1.2.1
 pkgrel=1
 _pkgdesc="Library for the Argon2-family of hashing functions"
 pkgdesc="${_pkgdesc}"
@@ -10,11 +10,11 @@ arch=(i686 x86_64)
 url="https://github.com/maandree/libar2"
 license=('custom:ISC')
 depends=()
-checkdepends=(glibc musl libblake libblake-musl)
+checkdepends=(glibc musl 'libblake>=3.0' 'libblake-musl>=3.0')
 _compiler=gcc
-makedepends=(glibc musl libblake libblake-musl ${_compiler})
+makedepends=(glibc musl 'libblake>=3.0' 'libblake-musl>=3.0' ${_compiler})
 source=($pkgbase-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=(56fec381cc25cd639b15d2999b6ca5a3aedbec7bcaa272afd9c3d530a7ede571)
+sha256sums=(89380fae83032c6f017394b862ca95ba0ec81ea546c69895bf7b95c9db97b8d5)
 
 build() {
   cd -- "$srcdir"
@@ -34,7 +34,7 @@ check() {
 
 package_libar2() {
   pkgdesc="${_pkgdesc}"
-  depends=(glibc libblake)
+  depends=(glibc 'libblake>=3.0')
 
   cd -- "$srcdir/$pkgbase-$pkgver"
   make PREFIX=/usr DESTDIR="$pkgdir" install
@@ -52,7 +52,7 @@ package_libar2-doc() {
 
 package_libar2-musl() {
   pkgdesc="${_pkgdesc} (musl version)"
-  depends=(musl libblake-musl)
+  depends=(musl 'libblake-musl>=3.0')
 
   cd -- "$srcdir/$pkgbase-$pkgver-musl"
   make PREFIX=/usr/lib/musl DESTDIR="$pkgdir" install

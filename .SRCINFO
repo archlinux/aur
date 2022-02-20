@@ -1,6 +1,6 @@
 pkgbase = libar2
 	pkgdesc = Library for the Argon2-family of hashing functions
-	pkgver = 1.1.1
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/maandree/libar2
 	arch = i686
@@ -8,20 +8,20 @@ pkgbase = libar2
 	license = custom:ISC
 	checkdepends = glibc
 	checkdepends = musl
-	checkdepends = libblake
-	checkdepends = libblake-musl
+	checkdepends = libblake>=3.0
+	checkdepends = libblake-musl>=3.0
 	makedepends = glibc
 	makedepends = musl
-	makedepends = libblake
-	makedepends = libblake-musl
+	makedepends = libblake>=3.0
+	makedepends = libblake-musl>=3.0
 	makedepends = gcc
-	source = libar2-1.1.1.tar.gz::https://github.com/maandree/libar2/archive/1.1.1.tar.gz
-	sha256sums = 56fec381cc25cd639b15d2999b6ca5a3aedbec7bcaa272afd9c3d530a7ede571
+	source = libar2-1.2.1.tar.gz::https://github.com/maandree/libar2/archive/1.2.1.tar.gz
+	sha256sums = 89380fae83032c6f017394b862ca95ba0ec81ea546c69895bf7b95c9db97b8d5
 
 pkgname = libar2
 	pkgdesc = Library for the Argon2-family of hashing functions
 	depends = glibc
-	depends = libblake
+	depends = libblake>=3.0
 
 pkgname = libar2-doc
 	pkgdesc = Library for the Argon2-family of hashing functions (documentation)
@@ -29,4 +29,4 @@ pkgname = libar2-doc
 pkgname = libar2-musl
 	pkgdesc = Library for the Argon2-family of hashing functions (musl version)
 	depends = musl
-	depends = libblake-musl
+	depends = libblake-musl>=3.0
