@@ -1,7 +1,7 @@
 pkgbase = python-jupyterlite
 	pkgdesc = tools for building JupyterLite sites
 	pkgver = 0.1.0a24
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jupyterlite/jupyterlite
 	arch = any
 	license = BSD
@@ -12,6 +12,9 @@ pkgbase = python-jupyterlite
 	depends = python
 	depends = python-cloudpickle
 	depends = python-doit
+	depends = python-entrypoints
+	depends = python-jupyter_core
+	depends = python-traitlets
 	source = https://files.pythonhosted.org/packages/source/j/jupyterlite/jupyterlite-0.1.0a24.tar.gz
 	sha256sums = 270f1cfa883daa7f03b0e10bd619009c6436858f8ce8e3aaa537bf34e9fbe573
 
@@ -19,3 +22,6 @@ pkgname = python-jupyterlite
 	depends = python
 	depends = python-cloudpickle
 	depends = python-doit
+	depends = python-entrypoints
+	depends = python-jupyter_core
+	depends = python-traitlets
