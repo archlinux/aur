@@ -1,6 +1,6 @@
 pkgbase = r-mockery
 	pkgdesc = Mocking Library for R
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mockery
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = r-mockery
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-r6
-	source = https://cran.r-project.org/src/contrib/mockery_0.4.2.tar.gz
-	source = R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 988e249c366ee7faf277de004084cf5ca24b5c8a8c6e3842f1b1362ce2f7ea9b
+	source = https://cran.r-project.org/src/contrib/mockery_0.4.3.tar.gz
+	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	sha256sums = 9fc9f1565c51e51b33634e9fc5328211559a561f095bc4d0fa8bd8b7533d476a
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-mockery

@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=mockery
-_cranver=0.4.2
+_cranver=0.4.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,8 +12,8 @@ license=(MIT)
 depends=(r-testthat)
 optdepends=(r-knitr r-rmarkdown r-r6)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('988e249c366ee7faf277de004084cf5ca24b5c8a8c6e3842f1b1362ce2f7ea9b'
+        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
+sha256sums=('9fc9f1565c51e51b33634e9fc5328211559a561f095bc4d0fa8bd8b7533d476a'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
@@ -31,6 +31,6 @@ package() {
 
   cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 
-  install -Dm644 R-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
   install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
