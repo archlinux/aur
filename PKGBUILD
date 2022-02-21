@@ -4,17 +4,16 @@
 
 _gwtver=2.8.2
 _ginver=2.1.2
-_nodever=14.17.5
 _gitname=rstudio
 pkgname=rstudio-desktop-git
-pkgver=1.4.1717.r1480
+pkgver=1.4.1103.r736
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
 depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp quarto-cli-bin libldap24)
-makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
+makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn nodejs)
 optdepends=('git: for git support'
             'subversion: for subversion support'
             'openssh-askpass: for a git ssh access')
@@ -23,15 +22,15 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-bin' 'rstudio-desktop-preview')
 source=("git+https://github.com/rstudio/rstudio.git"
         "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-${_ginver}.zip"
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
-        "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "cran_multithread.patch")
+        "cran_multithread.patch"
+        "nodejs-external.patch")
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
-            'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980')
+            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
+            '4a6aff2b586ddfceb7c59215e5f4a03f25b08fcc55687acaa6ae23c11d75d0e8')
 noextract=("gin-${_ginver}.zip")
 
 pkgver() {
@@ -40,6 +39,8 @@ pkgver() {
 }
 
 prepare() {
+    git -C "${srcdir}/${_gitname}" apply -v "${srcdir}"/nodejs-external.patch
+
     cd ${srcdir}/${_gitname}
     local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
     sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
@@ -60,13 +61,6 @@ prepare() {
     ln -sfT /opt/quarto quarto
     ln -sfT /usr/bin/pandoc pandoc/${_pandocver}/pandoc
     ln -sfT /usr/bin/pandoc-citeproc pandoc/${_pandocver}/pandoc-citeproc
-
-    # Nodejs
-    install -d node/${_nodever}
-    cp -r "${srcdir}/node-v${_nodever}-linux-x64/"* node/${_nodever}
-    cd "${srcdir}/${_gitname}/src/gwt/panmirror/src/editor"
-    yarn config set ignore-engines true
-    yarn install
 
     # Fix links for src/cpp/session/CMakeLists.txt
     cd "${srcdir}/${_gitname}/dependencies"

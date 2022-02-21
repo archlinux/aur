@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.4.1717.r1480
+	pkgver = 1.4.1103.r736
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
@@ -19,6 +19,7 @@ pkgbase = rstudio-desktop-git
 	makedepends = patchelf
 	makedepends = wget
 	makedepends = yarn
+	makedepends = nodejs
 	depends = r>=3.0.1
 	depends = boost-libs
 	depends = qt5-sensors
@@ -46,14 +47,14 @@ pkgbase = rstudio-desktop-git
 	source = git+https://github.com/rstudio/rstudio.git
 	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-gin/gin-2.1.2.zip
 	source = https://storage.googleapis.com/gwt-releases/gwt-2.8.2.zip
-	source = https://nodejs.org/dist/v14.17.5/node-v14.17.5-linux-x64.tar.gz
 	source = qt.conf
 	source = cran_multithread.patch
+	source = nodejs-external.patch
 	sha256sums = SKIP
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
 	sha256sums = 970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b
-	sha256sums = dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921
 	sha256sums = c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980
+	sha256sums = 4a6aff2b586ddfceb7c59215e5f4a03f25b08fcc55687acaa6ae23c11d75d0e8
 
 pkgname = rstudio-desktop-git
