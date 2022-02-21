@@ -47,7 +47,6 @@ pkgbase = blender-git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = usd_python.patch
 	source = embree.patch
-	source = openexr3.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -55,6 +54,5 @@ pkgbase = blender-git
 	sha256sums = SKIP
 	sha256sums = 333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703
 	sha256sums = d587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a
-	sha256sums = 5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b
 
 pkgname = blender-git

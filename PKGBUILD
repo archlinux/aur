@@ -20,7 +20,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 _CMAKE_FLAGS+=( -DWITH_CYCLES_NETWORK=OFF )
 
 pkgname=blender-git
-pkgver=3.2.r112632.g5b3a415a59c
+pkgver=3.2.r112750.g68586d2c183
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -48,7 +48,6 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
-        openexr3.patch #fix build against openexr:3
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -56,8 +55,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
-            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a'
-            '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b')
+            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -72,7 +70,7 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  git apply -v "${srcdir}"/{embree,usd_python,openexr3}.patch
+  git apply -v "${srcdir}"/{embree,usd_python}.patch
 }
 
 build() {
