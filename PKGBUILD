@@ -4,7 +4,7 @@
 
 pkgname=balena-etcher
 _pkgname=etcher
-pkgver=1.7.5
+pkgver=1.7.6
 pkgrel=1
 epoch=2
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
