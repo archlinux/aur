@@ -1,0 +1,18 @@
+pkgbase = xdcc-git
+	pkgdesc = xdcc file downloader
+	pkgver = 0.3.1.r1.g3a5ea97
+	pkgrel = 1
+	url = https://git.sr.ht/~dax/xdcc
+	arch = x86_64
+	arch = armv6
+	arch = armv7
+	arch = aarch64
+	license = ISC
+	makedepends = go
+	makedepends = scdoc
+	provides = xdcc
+	conflicts = xdcc
+	source = git+https://git.sr.ht/~dax/xdcc
+	sha256sums = SKIP
+
+pkgname = xdcc-git
