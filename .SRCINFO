@@ -1,7 +1,7 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
-	pkgver = 0.19.1
-	pkgrel = 3
+	pkgver = 0.19.3
+	pkgrel = 1
 	url = https://github.com/ipfs/ipfs-desktop
 	install = ipfs-desktop.install
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = ipfs-desktop
 	depends = libnotify
 	depends = libappindicator-gtk3
 	depends = libxcrypt-compat
-	source = ipfs-desktop-0.19.1.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.19.1.tar.gz
-	b2sums = df14a9571fb0e8abd339a986da4b7ea31ce58797c001ed1063323e26f6d97f06ee6b1e550b45590368488e38736f29b642cc11db36d5e496089767bd918bc6de
+	source = ipfs-desktop-0.19.3.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.19.3.tar.gz
+	b2sums = d7ec4da4ea4120d9fd8bf08485278ba2fde3009d6d5c517827128099404ccdbe526f3922add90692fb18ba36fcdd13c40a5e6a6592b83b7463cfd2218a7c63e2
 
 pkgname = ipfs-desktop
