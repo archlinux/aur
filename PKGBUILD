@@ -171,14 +171,14 @@ conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
 options=('debug' '!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
-        update-vlc-plugin-cache.hook
-        vlc-3.0.11.1-srt_1.4.2.patch
-        vlc-live-media-2021.patch
-        pkt_timebase.patch
-        av_init_packet.patch
-        av_register_all.patch
-        fix-av_register_all-patch.patch
-        ffmpeg-5.0.patch)
+        'update-vlc-plugin-cache.hook'
+        'vlc-3.0.11.1-srt_1.4.2.patch'
+        'vlc-live-media-2021.patch'
+        'pkt_timebase.patch'
+        'av_init_packet.patch'
+        'av_register_all.patch'
+        'fix-av_register_all-patch.patch'
+        'ffmpeg-5.0.patch')
 sha512sums=('35cdf191071224d0cf1b5a83c00773ff87b9e5bfcf0f5523f7edd53f75b23eda6b27bb49ffa97d69a1d176b8fe4786d959aeeb00d4380beab71c9f7e6b7c7298'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ac1d33d434aca2a0ad6e70800073deeaefc02b8fd72656b682ca833ee0cffe10dfa19a9355388700cab46ffbf9421c007d00ed04c7fa562698ff81e70db5f283'
