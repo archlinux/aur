@@ -1,35 +1,52 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=amdgpud-bin
-pkgver=1.0.8
+pkgbase=amdgpud-bin
+pkgname=('amdgpud-glow-bin' 'amdgpud-wayland-bin')
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Fan control service for AMD GPUs"
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
 license=('Apache' 'MIT')
+depends=('gcc-libs')
 provides=('amdgpud')
 conflicts=('amdgpud')
 backup=("etc/amdgpud/config.toml")
-source=("amdgpud-amdfand-$pkgver.tar.gz::$url/releases/download/v$pkgver/amdfand.tar.gz"
-        "amdgpud-amdmond-$pkgver.tar.gz::$url/releases/download/v$pkgver/amdmond.tar.gz"
-        "amdgpud-amdvold-$pkgver.tar.gz::$url/releases/download/v$pkgver/amdvold.tar.gz"
-        "README-$pkgver.md::$url/raw/v$pkgver/README.md"
-        "LICENSE-MIT-$pkgver.md::$url/raw/v$pkgver/LICENSE.md"
-        "LICENSE-APACHE-$pkgver.txt::$url/raw/v$pkgver/LICENSE.APACHE2.txt"
-        "config-$pkgver.toml::$url/raw/v$pkgver/examples/default_config.toml")
-sha256sums=('757ac4ab94d04164cb94f9b80b0b4218bb7351c3b870f84ea71d9e9d501d5b18'
-            'e221804928190d1e30066c2e6615e36b3e5d64d3d02730b98010b3f1ffdf329a'
-            '632669bbede058503e9e743dae70baaf9617327d1d12a241a71030fd5b766886'
-            '233c4ff8ddd485a307371ff71ae448299b1d4a42c48378f1b6b50df09458d7a4'
-            '5c5ddd7eda05a6c3dd056407a0a551230ef5a0a215332df907384ead4d13ffbf'
-            '5053a909abf57ac6651ebdcbcd0768bf89426de1ba0c3a49e171a63a6656a2e2'
-            'a90b8c397a4d1c9e17599b806fce7883e1f0f8b6102b97efa7dab55b682221e3')
+source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/archlinux.zip"
+				"amdgpud-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('87b0d1235a19561a48e0448852abb4351bd6f9ccf2fcba2b47123827018afc2c'
+            '3242e1d9090735fc0afe26c9753664b47ff9cd4ca9ddc440af39f78058b3180e')
 
-package() {
-	install -D amdfand amdmond amdvold -t "$pkgdir/usr/bin/"
-	install -Dm644 {amdfand,amdmond,amdvold}.service -t "$pkgdir/usr/lib/systemd/systemd/"
-	install -Dm644 "config-$pkgver.toml" "$pkgdir/etc/amdgpud/config.toml"
-	install -Dm644 "LICENSE-MIT-$pkgver.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT.md"
-	install -Dm644 "LICENSE-APACHE-$pkgver.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE.txt"
-	install -Dm644 "README-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+prepare() {
+	mkdir -p glow wayland
+	bsdtar -xf amdguid-glow.zip -C glow
+	bsdtar -xf amdguid-wayland.zip -C wayland
+}
+
+_package() {
+	install -D amdfand amdmond amdvold amdgui-helper -t "$pkgdir/usr/bin/"
+	cd "amdgpud-$pkgver"
+	install -Dm644 services/*.service -t "$pkgdir/usr/lib/systemd/systemd/"
+	install -Dm644 examples/default_config.toml "$pkgdir/etc/amdgpud/config.toml"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE.APACHE2.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+}
+
+package_amdgpud-glow-bin() {
+	pkgdesc+=' -- Xorg version'
+	provides+=('amdguid-glow')
+	conflicts+=('amdguid-wayland')
+
+	install -D glow/amdguid -t "$pkgdir/usr/bin/"
+	_package
+}
+
+package_amdgpud-wayland-bin() {
+	pkgdesc+=' -- Wayland version'
+	provides+=('amdguid-wayland')
+	conflicts+=('amdguid-glow')
+
+	install -D wayland/amdguid -t "$pkgdir/usr/bin/"
+	_package
 }
