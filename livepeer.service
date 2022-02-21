@@ -10,9 +10,8 @@ StartLimitBurst=5
 User=livepeer
 Group=livepeer
 Type=simple
-EnvironmentFile=/etc/go-livepeer/environment
 
-ExecStart=/usr/bin/livepeer $ARGS
+ExecStart=/usr/bin/livepeer /etc/go-livepeer/livepeer.conf
 
 Restart=on-failure
 RestartSec=5s
