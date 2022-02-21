@@ -30,7 +30,9 @@ pkgbase = prusa-slicer-git
 	conflicts = prusa-slicer
 	source = git+https://github.com/prusa3d/PrusaSlicer
 	source = prusa-slicer-boost-placeholders.patch
+	source = 0001-Use-namespaces-to-link-against-libcereal-1.3.1.patch
 	sha256sums = SKIP
 	sha256sums = 58cae07a418a797222f4cb10950fa2fd7afb7570519785b082cc7d7e7f407c02
+	sha256sums = 74d38c96ff7534aff64f3817579e86e9c63de08d1641118681a53dd4bbb2a6d6
 
 pkgname = prusa-slicer-git
