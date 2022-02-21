@@ -1,0 +1,19 @@
+pkgbase = python-pytest-spec
+	pkgdesc = Plugin to display pytest execution output like a specification
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/pchomik/pytest-spec
+	arch = any
+	license = GPL
+	checkdepends = python-mock
+	checkdepends = python-pytest-flake8
+	checkdepends = python-pytest-cov
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-six
+	depends = python-pytest
+	source = pytest-spec-3.2.0.tar.gz::https://github.com/pchomik/pytest-spec/archive/refs/tags/3.2.0.tar.gz
+	sha256sums = 5b906864c3c8fe4be065edd22ea14960d5cc98b65fc3e2c5ee976d6f249d28a4
+
+pkgname = python-pytest-spec
