@@ -62,7 +62,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
-_aufs_ver="20220117"
+_aufs_ver="20220221"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -316,7 +316,7 @@ done
 
 sha512sums=('2d1527623f96181c4797a8f73cb769e70321e673835113fbddd1374ca891d41b924220b8fdbaa46e2af7fc49a175e56524291b1816f4f6680128155c110f703e'
             'SKIP'
-            '91fd302b3b0eafbac581e5cd6e7d84fbc2e00daf9dd6b14382d8dce69c5e018d9e4bd4fb1f8bd82ef5610047b021227eec10e5ddd671f333404a8ae0ce6e1e3d'
+            '9e00ed68b58729378b47e97d7cc582390271c9ba4a3fa69ecba1895f701c155d09142a7b53ea040420f6d5a94c750f2e53c99564bdf24a4cf45b22d03297630c'
             '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
             'b778cb2a026174b4f0989998101361403890ff362f6b114fe88079f6bc6f92b19587c48f6260be7b4e60440bad3ec6914f225511390e2e39b665d1d2bed71e45'
             '95b13eb881ce1fdfa37a1322d9bde3bba54f635b06e3e8f4ef9de8e0ed6c8b11d91cd6d2f56fa38a0f7a0425c8bc02889f3d138781baed107c8ee427146f2c53'
