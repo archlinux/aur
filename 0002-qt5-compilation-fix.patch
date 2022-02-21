@@ -1,0 +1,18 @@
+commit f552ccb6e57c03cb06cfe1550fa45b17e0c519fc
+Author: Ilya Fedin <fedin-ilja2010@ya.ru>
+Date:   Wed Feb 2 03:47:02 2022 +0400
+
+    Use QtWidgets private include directories with Qt 5
+
+diff --git a/external/qt/CMakeLists.txt b/external/qt/CMakeLists.txt
+index 4569a4e..9b08653 100644
+--- a/external/qt/CMakeLists.txt
++++ b/external/qt/CMakeLists.txt
+@@ -27,6 +27,7 @@ if (DESKTOP_APP_USE_PACKAGED)
+     INTERFACE
+         ${Qt5Core_PRIVATE_INCLUDE_DIRS}
+         ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
++        ${Qt5Widgets_PRIVATE_INCLUDE_DIRS}
+     )
+ 
+     if (Qt5DBus_FOUND)
