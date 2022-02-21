@@ -2,9 +2,9 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=vobsub2srt-git
-pkgver=v1.0pre7.11.g0ba6e25
+pkgver=v1.0.7.gf3205f5
 pkgrel=1
-pkgdesc="Convert IDX/SUB subtitles into SRT text subtitles"
+pkgdesc="Convert IDX/SUB subtitles into SRT text subtitles. (GIT version)"
 arch=('x86_64')
 url='https://github.com/ruediger/VobSub2SRT'
 license=('GPL')
@@ -13,8 +13,9 @@ optdepends=('tesseract-data: Tesseract OCR data')
 makedepends=('cmake'
              'git'
              )
-source=('vobsub2srt::git://github.com/ruediger/VobSub2SRT.git')
+source=('vobsub2srt::git://github.com/ecdye/VobSub2SRT.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd vobsub2srt
@@ -22,21 +23,18 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
-  sed 's|-Wno-long-long|& -std=gnu++11|g' -i vobsub2srt/CMakeLists.txt
+  sed '40a#include <climits>' -i vobsub2srt/src/vobsub2srt.c++
 }
 
 build() {
-  cd build
-  cmake ../vobsub2srt \
+  cmake -S vobsub2srt -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBASH_COMPLETION_PATH=/usr/share/bash-completion/completions
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
 }
