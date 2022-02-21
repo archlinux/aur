@@ -1,6 +1,6 @@
 pkgbase = linux-drm-next-git
 	pkgdesc = Linux kernel with bleeding-edge GPU drivers
-	pkgver = 5.16.rc1.r141.gc8d265840be6
+	pkgver = 5.18.2022.02.18.r1.g0a131b69c141
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = linux-drm-next-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-drm-next-git::git://anongit.freedesktop.org/drm/drm#branch=drm-next
+	source = linux-drm-next-git::git+https://anongit.freedesktop.org/git/drm/drm#branch=drm-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586
+	sha256sums = a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31
 
 pkgname = linux-drm-next-git
 	pkgdesc = The Linux kernel with bleeding-edge GPU drivers kernel and modules

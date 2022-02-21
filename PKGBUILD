@@ -2,7 +2,7 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-drm-next-git
-pkgver=5.16.rc1.r141.gc8d265840be6
+pkgver=5.18.2022.02.18.r1.g0a131b69c141
 pkgrel=1
 pkgdesc='Linux kernel with bleeding-edge GPU drivers'
 _product="${pkgbase%-git}"
@@ -16,16 +16,18 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname="${pkgbase}"
+_srcname=$pkgbase
 source=(
-  "$_srcname::git://anongit.freedesktop.org/drm/drm#branch=${_branch}"
+  "$_srcname::git+https://anongit.freedesktop.org/git/drm/drm#branch=$_branch"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586')
+            'a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31')
 
 pkgver() {
-  git -C $_srcname describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $_srcname
+
+  git describe --long --tags | sed 's/^amd.drm.next.//;s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 export KBUILD_BUILD_HOST=archlinux
@@ -105,11 +107,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
