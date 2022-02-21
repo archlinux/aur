@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski dot protonmail dot com>
 pkgname=alvr-git
 _pkgname=${pkgname%-git}
-pkgver=17.0.1.r22.gcca7666b
+pkgver=r1879.d557aab2
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/alvr-org/ALVR"
 license=('MIT')
 groups=()
 depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
-makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
+makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers' 'jack')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::'git+https://github.com/alvr-org/ALVR.git')
@@ -17,15 +17,12 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "$srcdir/${_pkgname}"
-
-	git checkout "v17"
-	git merge -X theirs -m "." master
-	git cherry-pick -X theirs -n 5a1d705eaa8bbfbdd3bca25a048f32d9943fe89a
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
