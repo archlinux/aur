@@ -25,7 +25,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/FoxtelGo/FoxtelGo" "$pkgdir/usr/bin/foxtelgo"
+    ln -s "/opt/FoxtelGo/foxtelgo" "$pkgdir/usr/bin/foxtelgo"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/FoxtelGO.desktop" \
