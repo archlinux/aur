@@ -4,8 +4,8 @@
 
 pkgname_=mididings
 pkgname=${pkgname_}-git
-pkgver=r706.bbec99a
-pkgrel=4
+pkgver=r717.0582955
+pkgrel=1
 pkgdesc="A MIDI router and processor based on Python, supporting ALSA and JACK MIDI (python3 patched)"
 arch=('i686' 'x86_64')
 url="http://das.nasophon.de/mididings/"
@@ -19,7 +19,7 @@ optdepends=('python-dbus: to send DBUS messages'
             'python-pyinotify: to automatically restart when a script changes'
             'python-xdg: so mididings knows where to look for config files'
             'tk: for the livedings GUI')
-source=("${pkgname}::git+https://github.com/dsacre/mididings")
+source=("${pkgname}::git+https://github.com/ponderworthy/mididings")
 md5sums=('SKIP')
 
 pkgver() {
@@ -27,27 +27,19 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	# fix integer division
-	gawk -i inplace 'NR==42 { sub("/", "//") }; { print }' mididings/extra/harmonizer.py
-	# async is a reserved keyword in python3
-	gawk -i inplace '{ gsub("async", "asyncFlag") }; { print }' mididings/units/call.py
-}
-
 build() {
 	cd "${srcdir}/${pkgname}"
 	python setup.py build
+	# documentation generation not functional
+	# cd "${srcdir}/${pkgname}/doc"
+	# make
 }
 
 package() {
 	cd "${srcdir}/${pkgname}"
 	python setup.py install --skip-build --prefix=/usr --root="${pkgdir}"
 
-	# docs
-	install -d "${pkgdir}/usr/share/doc/${pkgname_}/examples"
-	install -Dm644 doc/*.* "${pkgdir}/usr/share/doc/${pkgname_}"
-
-	# examples
-	install -Dm644 doc/examples/* "${pkgdir}/usr/share/doc/${pkgname_}/examples"
+	# manual installation of raw docs
+	cd "${srcdir}/${pkgname}/doc"
+	find . -exec install -Dvm 644 {} "${pkgdir}/usr/share/doc/${pkgname_}/{}" \;
 }

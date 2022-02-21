@@ -1,7 +1,7 @@
 pkgbase = mididings-git
 	pkgdesc = A MIDI router and processor based on Python, supporting ALSA and JACK MIDI (python3 patched)
-	pkgver = r706.bbec99a
-	pkgrel = 4
+	pkgver = r717.0582955
+	pkgrel = 1
 	url = http://das.nasophon.de/mididings/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = mididings-git
 	optdepends = tk: for the livedings GUI
 	provides = mididings
 	conflicts = mididings
-	source = mididings-git::git+https://github.com/dsacre/mididings
+	source = mididings-git::git+https://github.com/ponderworthy/mididings
 	md5sums = SKIP
 
 pkgname = mididings-git
