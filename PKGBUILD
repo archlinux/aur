@@ -5,30 +5,24 @@
 
 pkgname=fldigi
 pkgver=4.1.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Digital Modem Program for Amateur Radio"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
 license=('GPL')
-depends=('cty' 'fltk' 'libsamplerate' 'libusb-compat' 'flxmlrpc'
+depends=('cty' 'fltk' 'libsamplerate' 'flxmlrpc>=1.0.1'
          'portaudio' 'libpulse' 'hamlib' 'hamradio-menus')
 optdepends=('libsndfile: sound file support'
             'pulseaudio: pulseaudio support')
-#conflicts=('asciidoc')
 source=(http://w1hkj.com/files/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
-	cd "$srcdir"
-
-	#patch -p1 < cty.patch
-	#patch -p1 < short.patch
-
-	cd $pkgname-$pkgver
+	cd "$srcdir"/$pkgname-$pkgver
 
 	./configure --prefix=/usr \
-		--enable-tls --without-flxmlrpc --without-asciidoc
+		--enable-tls --with-flxmlrpc --without-asciidoc
+#		--enable-tls --without-flxmlrpc --without-asciidoc
 #			(^^^ temporary, until flxmlrpc is updated)
-#		--enable-tls --with-flxmlrpc --without-asciidoc
 	make ASCIIDOC_ICONS_DIR=/etc/asciidoc/images/icons/
 }
 
