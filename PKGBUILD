@@ -2,8 +2,8 @@
 # Contributor: Peter Cai <peter at typeblog dot net>
 # Origin Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
 
-# dts and config for phicomm-n1 :
-# https://github.com/archlinux-jerry/pkgbuilds/blob/master/linux-phicomm-n1
+# dts for phicomm-n1 :
+# https://github.com/cattyhouse/pkgbuild-linux-phicomm-n1/
 
 # PKGBUILD: 
 # https://github.com/archlinuxarm/PKGBUILDs/blob/master/core/linux-aarch64/PKGBUILD
@@ -16,7 +16,7 @@ _srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
 pkgver=5.16.10
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -29,20 +29,18 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-	'01-aegis-crypto-gcc10.patch'
-	'02-revert-TEXT_OFFSET-deletion.patch'
-	'03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
+        '02-revert-TEXT_OFFSET-deletion.patch'
+        '03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
 
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
-         '32254701dbf13f058008217a62d713bb'
-         'b309fbb6d6e474c57f39edd0f2ed3e9b'
+         'c5fb20151ed3a9310d4e3fbf4f186b87'
+         '65caf9454fa012ef8f40587aed3f59fe'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
-         'e25f537f53ffe2850318ed541f0b3460'
          '614a77d2f4c92817ab4e5f989f9a76c9'
          '7a18066683f3351b2bbd2653db783f80'
          'e3e4c6ec04229c5df2583cbb19402bdd')
@@ -56,9 +54,6 @@ prepare() {
 
   cat "${srcdir}/config" > ./.config
 
-  # Fix latest gcc compiling errors with the aegis crypto module.
-  patch -p1 -i "${srcdir}/01-aegis-crypto-gcc10.patch"
-
   # Amlogic meson SoC TEXT_OFFSET
   # Attention: since kernel 5.10, TEXT_OFFSET support is removed entriely, but it is required for the old BSP uboot to boot the kernel, so just revert it.
   # [arm64: get rid of TEXT_OFFSET](https://github.com/torvalds/linux/commit/120dc60d0bdbadcad7460222f74c9ed15cdeb73e)
@@ -71,10 +66,6 @@ prepare() {
   target_dts="meson-gxl-s905d-phicomm-n1.dts"
   cat "${srcdir}/${target_dts}" > "./arch/arm64/boot/dts/amlogic/${target_dts}"
   
-  # Disable USB2 LPM. This works around several broken USB2 LPM implementations found in USB3 devices.
-  # https://isolated.site/2019/03/05/several-patches-im-using-for-running-linux-5-0-on-phicomm-n1/
-  sed -i '/snps,dis_u2_susphy_quirk;/a usb2-lpm-disable;' arch/arm64/boot/dts/amlogic/meson-gxl.dtsi
-
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
 
@@ -255,3 +246,5 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
+
+# vim: set sw=2 ts=2 et:
