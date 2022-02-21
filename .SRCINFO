@@ -1,7 +1,7 @@
 pkgbase = clonehero-launcher
 	pkgdesc = Launcher for Clone Hero. Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard.
 	pkgver = 0.9.488
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clonehero.net/
 	arch = x86_64
 	license = freeware-proprietary

@@ -4,7 +4,7 @@ _pkgname=clonehero-launcher
 pkgname=${_pkgname}
 pkgdesc="Launcher for Clone Hero. Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar controller, game controllers, or just your standard computer keyboard."
 pkgver=0.9.488
-pkgrel=1
+pkgrel=2
 provides=('clonehero-launcher')
 conflicts=('clonehero-launcher')
 url="https://clonehero.net/"
@@ -34,6 +34,6 @@ package() {
   install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Icons
-  install -dm755 "${pkgdir}/usr/share/"
-  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+  install -dm755 "${pkgdir}/usr/share/pixmaps"
+  cp -r --no-preserve=mode,ownership "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/clonehero-launcher.png" "${pkgdir}/usr/share/pixmaps/$_pkgname.png"
 }
