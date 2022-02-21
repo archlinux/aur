@@ -1,16 +1,4 @@
 # Python package author: Christopher Ritsen <chris.ritsen@gmail.com>
-# 
-# build() {
-#   pip install --no-deps --target="netaudio" netaudio=="$pkgver"
-# }
-# 
-# package() {
-#   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
-#   mkdir -p $pkgdir/"$sitepackages"
-#   mv $srcdir/$_name/bin $pkgdir/usr
-#   cp -r $srcdir/$_name/* $pkgdir/"$sitepackages"
-# }
-
 _name=netaudio
 _pkgdirname="${_pkgname}"
 _pkgname="python-${_name}"
