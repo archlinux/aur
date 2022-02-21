@@ -36,6 +36,9 @@ build() {
   # fix fbcondecor_ctl splash type
   sed -e 's,fbsplash_lib_init(fbspl_bootup),fbsplash_lib_init(fbspl_undef),' -i src/fbcon_decor_ctl.c
 
+  # switch fprintf to fputs
+  sed -i '696,696 s/fprintf/fputs/g' src/libfbsplash.c
+
   # fix libdir
   sed -i "s:/lib/splash/cache:/usr/lib/splash/cache:g" debian/splashutils.dirs
   sed -i "s:/lib/splash/tmp:/usr/lib/splash/tmp:g" debian/splashutils.dirs
@@ -56,7 +59,7 @@ build() {
   # fix set_event_dev call for initcpio usage (if evdev module is there)
   patch -Np2 -i "$srcdir/splash_start_initcpio.patch"
 
-  # patch to fix freetype error when compiling.
+  # patch to fix freetype error when compiling by removing static freetype.
   patch -Np1 -i "$srcdir/fbsplash-freetype-fix.patch"
 
   export LIBS="-lbz2"
