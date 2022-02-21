@@ -142,6 +142,9 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         # crypto-next: Clang auto-vectorization
         "xor-enable-auto-vectorization-in-Clang.patch"
 
+        # fs-next: allow cross-VFS reflink creation
+        "fs-allow-cross-vfsmount-reflink-dedupe.patch"
+
         # -- patch from Chromium developers; more accurately report battery state changes
         "acpi-battery-Always-read-fresh-battery-state-on-update.patch"
 
@@ -191,6 +194,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '81ce39928b98caf2be3cbeaf7f86305051523fea2ccad225d619bd3999d63ddf'
             'ad73b179ea1a309205744fbf415a7b19108e1c1b452b913894752bb717165d81'
             '9fd097f24ddbc7fd3be031fb649b32645082580c0aa039c491bc5fe161c7a7ac'
+            'b604b4e559347b19ab567fae3d1ba3f897f457566e150c8f7e4b1f2a218b8d5c'
             'f7a4bf6293912bfc4a20743e58a5a266be8c4dbe3c1862d196d3a3b45f2f7c90'
             '3d8961438b5c8110588ff0b881d472fc71a4304d306808d78a4055a4150f351e'
             '544464bf0807b324120767d55867f03014a9fda4e1804768ca341be902d7ade4'
