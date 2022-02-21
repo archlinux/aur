@@ -3,6 +3,7 @@ post_install() {
 
     systemctl daemon-reload
     systemctl --global daemon-reload
+    # systemctl --user daemon-reload
 
     systemctl preset eruption
     systemctl preset eruption-audio-proxy
@@ -21,6 +22,7 @@ post_upgrade() {
 
     systemctl daemon-reload
     systemctl --global daemon-reload
+    # systemctl --user daemon-reload
 
     systemctl try-restart eruption.service
     systemctl --global try-restart eruption-audio-proxy.service

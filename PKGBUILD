@@ -3,8 +3,8 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver=0.1.22.r186.gb99cc39
-pkgrel=3
+pkgver=0.1.22.r274.g8c2f4fa
+pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=b99cc397e057b6f2df5ea9b065c4bdd65c68fb3d')
+source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=8c2f4fa8dd876219e07c7989419e6f7914cc9f26')
 noextract=()
 sha512sums=('SKIP')
 
@@ -261,6 +261,8 @@ package() {
     install -m 644 "eruption/src/scripts/wave.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/snake.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/snake.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/domain-coloring.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/domain-coloring.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/dim-zone.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/dim-zone.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/lib/debug.lua" "$pkgdir/usr/share/eruption/scripts/lib/"
@@ -273,6 +275,7 @@ package() {
     install -m 644 "eruption/src/scripts/lib/macros/examples.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/modifiers.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/user-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
+    install -m 644 "eruption/src/scripts/lib/macros/failsafe-macros.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/macros/starcraft2.lua" "$pkgdir/usr/share/eruption/scripts/lib/macros/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/generic_keyboard.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/roccat_vulcan_1xx.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
@@ -287,6 +290,7 @@ package() {
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_burst_pro.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_aimo_remastered.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_pure_ultra.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_pro_air.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kova_aimo.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kova_2016.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_nyth.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
@@ -305,6 +309,14 @@ package() {
     install -m 644 "support/profiles/animal-breathing-1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/animal-breathing-2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/animal-breathing-3.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/audio-visualization-1.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/audio-visualization-2.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/audio-visualization-3.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/audio-visualization-4.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/audio-visualization-5.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/domain-coloring-1.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/domain-coloring-2.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/domain-coloring-3.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx2.profile" "$pkgdir/var/lib/eruption/profiles/"
@@ -323,6 +335,7 @@ package() {
     install -m 644 "support/profiles/batique.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/batique-mouse.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/checkerboard.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/blackout.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/blue-fx-swirl-perlin.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile1.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
