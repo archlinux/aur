@@ -1,15 +1,15 @@
 # Maintainer: Jeromy Altuna <jaltuna at outlook dot es>
 
 pkgname=refind-theme-nord
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Simple theme inspired to the nord palette"
+pkgdesc="Simple theme inspired by the Nord palette"
 arch=('any')
 url="https://github.com/jaltuna/refind-theme-nord"
 license=('MIT')
 depends=('refind')
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7dd33482adc9372fe10e4e549f48e9b31e934580ba29e88e20ab96de3374fb54')
+sha256sums=('0b833acb2ab9a7ae04055c3e8609fff9ec2c64d227de6950252ef4830d7d95d1')
 
 install=$pkgname.install
 
