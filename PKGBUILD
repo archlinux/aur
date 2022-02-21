@@ -1,4 +1,4 @@
-# Python package author: Christopher Ritsen <chris.ritsen@gmail.com>
+# Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
 _name='netaudio'
 pkgver=0.0.3
 
