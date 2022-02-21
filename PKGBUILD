@@ -3,13 +3,13 @@ _name=netaudio
 _pkgname="python-${_name}"
 pkgname="${_pkgname}"
 _pkgdirname="${_pkgname}"
-pkgver=v0.0.3.r1
+pkgver=v0.0.3.r3
 pkgrel=1
 pkgdesc="Control Dante network audio devices without Dante Controller"
 arch=(any)
 url=""
 license=(Unlicense)
-makedepends=("python" "python-cleo" "python-netifaces" "python-pip" "python-twisted" "python-zeroconf")
+depends=("python" "python-cleo" "python-netifaces" "python-pip" "python-twisted" "python-zeroconf")
 
 build() {
   pip install --no-deps --target="netaudio" netaudio==0.0.3

@@ -1,14 +1,14 @@
 pkgbase = python-netaudio
 	pkgdesc = Control Dante network audio devices without Dante Controller
-	pkgver = v0.0.3.r1
+	pkgver = v0.0.3.r3
 	pkgrel = 1
 	arch = any
 	license = Unlicense
-	makedepends = python
-	makedepends = python-cleo
-	makedepends = python-netifaces
-	makedepends = python-pip
-	makedepends = python-twisted
-	makedepends = python-zeroconf
+	depends = python
+	depends = python-cleo
+	depends = python-netifaces
+	depends = python-pip
+	depends = python-twisted
+	depends = python-zeroconf
 
 pkgname = python-netaudio
