@@ -3,8 +3,8 @@
 # Contributor: Rayfalling <Rayfalling@outlook.com>
 # Contributor: facekapow, rayfalling, Ducksoft
 pkgname=genie-systemd-git
-pkgver=1.44.r6.g52800cf
-pkgrel=2
+pkgver=1.44.r30.g529d8a8
+pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
@@ -25,8 +25,9 @@ pkgver() {
 
 build() {
   cd genie/binsrc
-  make -C genie
-  make -C runinwsl
+  # disable telemetry
+  DOTNET_CLI_TELEMETRY_OPTOUT=1 make -C genie
+  DOTNET_CLI_TELEMETRY_OPTOUT=1 make -C runinwsl
 }
 
 package() {
