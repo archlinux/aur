@@ -1,7 +1,7 @@
 pkgbase = zsh-hist-git
 	pkgdesc = Edit your Zsh history, without ever leaving the command line.
 	pkgver = r55.42cd5c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marlonrichert/zsh-hist.git
 	arch = any
 	license = MIT
