@@ -1,88 +1,19 @@
-From 05d3b9eb053b8deb2575b5fa72ab55cb5a506371 Mon Sep 17 00:00:00 2001
+From 90682ad69b16996c156439a80d5e095c99c55c51 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Thu, 17 Feb 2022 06:34:33 -0800
-Subject: [PATCH] v5.16.10 s0ix patch 2022-02-17
+Date: Wed, 23 Feb 2022 09:27:11 -0800
+Subject: [PATCH] v5.16.11 s0ix patch 2022-02-23
 
 Squashed commit of the following:
 
-commit 3998be5da29cb360b589c1293e43a9dc37d6c383
-Author: Rajib Mahapatra <rajib.mahapatra@amd.com>
-Date:   Thu Feb 10 19:05:07 2022 +0530
+commit c763db38d7a8d5ecc7db0d2a2227027b6c0a06e5
+Author: Scott B <arglebargle@arglebargle.dev>
+Date:   Tue Feb 22 16:29:57 2022 -0800
 
-    drm/amdgpu: skipping SDMA hw_init and hw_fini for S0ix.
+    Revert "ACPI: PM: Revert "Only mark EC GPE for wakeup on Intel systems""
 
-    [Why]
-    SDMA ring buffer test failed if suspend is aborted during
-    S0i3 resume.
+    This reverts commit e68e9863e1c0fe82f14c8ec32ff5d8d8a94dccb4.
 
-    [How]
-    If suspend is aborted for some reason during S0i3 resume
-    cycle, it follows SDMA ring test failing and errors in amdgpu
-    resume. For RN/CZN/Picasso, SMU saves and restores SDMA
-    registers during S0ix cycle. So, skipping SDMA suspend and
-    resume from driver solves the issue. This time, the system
-    is able to resume gracefully even the suspend is aborted.
-
-    v2: add changes on sdma_v4, skipping SDMA hw_init and hw_fini.
-    Signed-off-by: Rajib Mahapatra <rajib.mahapatra@amd.com>
-    Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
-    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit 2952523c1a30d751d8de445a610310a52381152f
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Tue Jan 11 14:00:26 2022 -0600
-
-    drm/amd: Warn users about potential s0ix problems
-
-    On some OEM setups users can configure the BIOS for S3 or S2idle.
-    When configured to S3 users can still choose 's2idle' in the kernel by
-    using `/sys/power/mem_sleep`.  Before commit 6dc8265f9803 ("drm/amdgpu:
-    always reset the asic in suspend (v2)"), the GPU would crash.  Now when
-    configured this way, the system should resume but will use more power.
-
-    As such, adjust the `amdpu_acpi_is_s0ix function` to warn users about
-    potential power consumption issues during their first attempt at
-    suspending.
-
-    Reported-by: Bjoren Dasse <bjoern.daase@gmail.com>
-    Link: https://gitlab.freedesktop.org/drm/amd/-/issues/1824
-    Reviewed-by: Alex Deucher <alexander.deucher@amd.com>
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-    Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
-
-commit e5bb891a29ae0037169b0248d1f72b75947a1e49
-Author: Mario Limonciello <mario.limonciello@amd.com>
-Date:   Thu Jan 20 11:44:39 2022 -0600
-
-    platform/x86: amd-pmc: Correct usage of SMU version
-
-    Yellow carp has been outputting versions like `1093.24.0`, but this
-    is supposed to be 69.24.0. That is the MSB is being interpreted
-    incorrectly.
-
-    The MSB is not part of the major version, but has generally been
-    treated that way thus far.  It's actually the program, and used to
-    distinguish between two programs from a similar family but different
-    codebase.
-
-    Link: https://patchwork.freedesktop.org/patch/469993/
-    Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
-
-commit 5408afca1aebd7a772de1d55015bfa81fcf0ef2f
-Author: Hans de Goede <hdegoede@redhat.com>
-Date:   Mon Jan 17 12:26:43 2022 +0100
-
-    platform/x86: amd-pmc: Make amd_pmc_stb_debugfs_fops static
-
-    amd_pmc_stb_debugfs_fops is not used outside of amd-pmc.c, make it
-    static.
-
-    Cc: Sanket Goswami <Sanket.Goswami@amd.com>
-    Reported-by: kernel test robot <lkp@intel.com>
-    Signed-off-by: Hans de Goede <hdegoede@redhat.com>
-    Link: https://lore.kernel.org/r/20220117112644.260168-1-hdegoede@redhat.com
-
-commit 1137ab8b2c29e8c2e21e6cebe8266f7e453d7892
+commit ea0ac4513e9be512b01ee9e6da87bb3fb05c3313
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:18 2021 +0530
 
@@ -101,7 +32,7 @@ Date:   Tue Nov 30 16:53:18 2021 +0530
     Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit 014563cdf9fe0eebf7586e944ac94a9bb13c2043
+commit 1b06ca0dcd296eaa16fd11e2d1c49878145f084e
 Author: Sanket Goswami <Sanket.Goswami@amd.com>
 Date:   Tue Nov 30 16:53:17 2021 +0530
 
@@ -114,7 +45,7 @@ Date:   Tue Nov 30 16:53:17 2021 +0530
     Suggested-by: Hans de Goede <hdegoede@redhat.com>
     Signed-off-by: Sanket Goswami <Sanket.Goswami@amd.com>
 
-commit a4182b0fa24e12de590530feb36beddcdc93c20f
+commit cc82e9d4d5647db09e305ea5495f3dabe987df68
 Author: Lijo Lazar <lijo.lazar@amd.com>
 Date:   Thu Nov 25 19:45:42 2021 +0800
 
@@ -131,111 +62,35 @@ Date:   Thu Nov 25 19:45:42 2021 +0800
     Reviewed-by: Kevin Yang <kevinyang.wang@amd.com>
     Signed-off-by: Alex Deucher <alexander.deucher@amd.com>
 ---
- drivers/gpu/drm/amd/amdgpu/amdgpu.h       |   8 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c  |  24 ++-
- drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c    |   8 +
+ drivers/acpi/x86/s2idle.c                 |  12 +-
  drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c |   6 +-
- drivers/platform/x86/amd-pmc.c            | 185 +++++++++++++++++++---
- 5 files changed, 203 insertions(+), 28 deletions(-)
+ drivers/platform/x86/amd-pmc.c            | 172 ++++++++++++++++++++--
+ 3 files changed, 170 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu.h b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
-index 7d67aec6f4a2..0a5a5370a200 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu.h
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu.h
-@@ -1406,12 +1406,10 @@ int amdgpu_acpi_smart_shift_update(struct drm_device *dev, enum amdgpu_ss ss_sta
- int amdgpu_acpi_pcie_notify_device_ready(struct amdgpu_device *adev);
+diff --git a/drivers/acpi/x86/s2idle.c b/drivers/acpi/x86/s2idle.c
+index e0185e841b2a..1c48358b43ba 100644
+--- a/drivers/acpi/x86/s2idle.c
++++ b/drivers/acpi/x86/s2idle.c
+@@ -424,11 +424,15 @@ static int lps0_device_attach(struct acpi_device *adev,
+ 		mem_sleep_current = PM_SUSPEND_TO_IDLE;
  
- void amdgpu_acpi_get_backlight_caps(struct amdgpu_dm_backlight_caps *caps);
--bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev);
- void amdgpu_acpi_detect(void);
- #else
- static inline int amdgpu_acpi_init(struct amdgpu_device *adev) { return 0; }
- static inline void amdgpu_acpi_fini(struct amdgpu_device *adev) { }
--static inline bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev) { return false; }
- static inline void amdgpu_acpi_detect(void) { }
- static inline bool amdgpu_acpi_is_power_shift_control_supported(void) { return false; }
- static inline int amdgpu_acpi_power_shift_control(struct amdgpu_device *adev,
-@@ -1420,6 +1418,12 @@ static inline int amdgpu_acpi_smart_shift_update(struct drm_device *dev,
- 						 enum amdgpu_ss ss_state) { return 0; }
- #endif
+ 	/*
+-	 * Some LPS0 systems, like ASUS Zenbook UX430UNR/i7-8550U, require the
+-	 * EC GPE to be enabled while suspended for certain wakeup devices to
+-	 * work, so mark it as wakeup-capable.
++	 * Some Intel based LPS0 systems, like ASUS Zenbook UX430UNR/i7-8550U don't
++	 * use intel-hid or intel-vbtn but require the EC GPE to be enabled while
++	 * suspended for certain wakeup devices to work, so mark it as wakeup-capable.
++	 *
++	 * Only enable on !AMD as enabling this universally causes problems for a number
++	 * of AMD based systems.
+ 	 */
+-	acpi_ec_mark_gpe_for_wake();
++	if (!acpi_s2idle_vendor_amd())
++		acpi_ec_mark_gpe_for_wake();
  
-+#if defined(CONFIG_ACPI) && defined(CONFIG_SUSPEND)
-+bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev);
-+#else
-+static inline bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev) { return false; }
-+#endif
-+
- int amdgpu_cs_find_mapping(struct amdgpu_cs_parser *parser,
- 			   uint64_t addr, struct amdgpu_bo **bo,
- 			   struct amdgpu_bo_va_mapping **mapping);
-diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-index 4811b0faafd9..b19d40751802 100644
---- a/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-+++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_acpi.c
-@@ -1031,6 +1031,7 @@ void amdgpu_acpi_detect(void)
- 	}
+ 	return 0;
  }
- 
-+#if IS_ENABLED(CONFIG_SUSPEND)
- /**
-  * amdgpu_acpi_is_s0ix_active
-  *
-@@ -1040,11 +1041,24 @@ void amdgpu_acpi_detect(void)
-  */
- bool amdgpu_acpi_is_s0ix_active(struct amdgpu_device *adev)
- {
--#if IS_ENABLED(CONFIG_AMD_PMC) && IS_ENABLED(CONFIG_SUSPEND)
--	if (acpi_gbl_FADT.flags & ACPI_FADT_LOW_POWER_S0) {
--		if (adev->flags & AMD_IS_APU)
--			return pm_suspend_target_state == PM_SUSPEND_TO_IDLE;
-+	if (!(adev->flags & AMD_IS_APU) ||
-+	    (pm_suspend_target_state != PM_SUSPEND_TO_IDLE))
-+		return false;
-+
-+	if (!(acpi_gbl_FADT.flags & ACPI_FADT_LOW_POWER_S0)) {
-+		dev_warn_once(adev->dev,
-+			      "Power consumption will be higher as BIOS has not been configured for suspend-to-idle.\n"
-+			      "To use suspend-to-idle change the sleep mode in BIOS setup.\n");
-+		return false;
- 	}
--#endif
-+
-+#if !IS_ENABLED(CONFIG_AMD_PMC)
-+	dev_warn_once(adev->dev,
-+		      "Power consumption will be higher as the kernel has not been compiled with CONFIG_AMD_PMC.\n");
- 	return false;
-+#else
-+	return true;
-+#endif /* CONFIG_AMD_PMC */
- }
-+
-+#endif /* CONFIG_SUSPEND */
-diff --git a/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c b/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
-index e8e4749e9c79..f0638db57111 100644
---- a/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
-+++ b/drivers/gpu/drm/amd/amdgpu/sdma_v4_0.c
-@@ -2057,6 +2057,10 @@ static int sdma_v4_0_suspend(void *handle)
- {
- 	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
- 
-+	/* SMU saves SDMA state for us */
-+	if (adev->in_s0ix)
-+		return 0;
-+
- 	return sdma_v4_0_hw_fini(adev);
- }
- 
-@@ -2064,6 +2068,10 @@ static int sdma_v4_0_resume(void *handle)
- {
- 	struct amdgpu_device *adev = (struct amdgpu_device *)handle;
- 
-+	/* SMU restores SDMA state for us */
-+	if (adev->in_s0ix)
-+		return 0;
-+
- 	return sdma_v4_0_hw_init(adev);
- }
- 
 diff --git a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c b/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
 index 9d7d64fdf410..8a05b28f7365 100644
 --- a/drivers/gpu/drm/amd/pm/swsmu/amdgpu_smu.c
@@ -255,7 +110,7 @@ index 9d7d64fdf410..8a05b28f7365 100644
  	switch (block_type) {
  	/*
 diff --git a/drivers/platform/x86/amd-pmc.c b/drivers/platform/x86/amd-pmc.c
-index 230593ae5d6d..61cb1d05158e 100644
+index 8c74733530e3..9b6dc15547f5 100644
 --- a/drivers/platform/x86/amd-pmc.c
 +++ b/drivers/platform/x86/amd-pmc.c
 @@ -35,6 +35,12 @@
@@ -279,17 +134,9 @@ index 230593ae5d6d..61cb1d05158e 100644
  enum amd_pmc_def {
  	MSG_TEST = 0x01,
  	MSG_OS_HINT_PCO,
-@@ -117,18 +124,26 @@ struct amd_pmc_dev {
- 	u32 cpu_id;
- 	u32 active_ips;
- /* SMU version information */
--	u16 major;
--	u16 minor;
--	u16 rev;
-+	u8 smu_program;
-+	u8 major;
-+	u8 minor;
-+	u8 rev;
+@@ -122,14 +129,21 @@ struct amd_pmc_dev {
+ 	u8 minor;
+ 	u8 rev;
  	struct device *dev;
 +	struct pci_dev *rdev;
  	struct mutex lock; /* generic mutex lock */
@@ -309,20 +156,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  
  static inline u32 amd_pmc_reg_read(struct amd_pmc_dev *dev, int reg_offset)
  {
-@@ -166,15 +181,61 @@ static int amd_pmc_get_smu_version(struct amd_pmc_dev *dev)
- 	if (rc)
- 		return rc;
- 
--	dev->major = (val >> 16) & GENMASK(15, 0);
-+	dev->smu_program = (val >> 24) & GENMASK(7, 0);
-+	dev->major = (val >> 16) & GENMASK(7, 0);
- 	dev->minor = (val >> 8) & GENMASK(7, 0);
- 	dev->rev = (val >> 0) & GENMASK(7, 0);
- 
--	dev_dbg(dev->dev, "SMU version is %u.%u.%u\n", dev->major, dev->minor, dev->rev);
-+	dev_dbg(dev->dev, "SMU program %u version is %u.%u.%u\n",
-+		dev->smu_program, dev->major, dev->minor, dev->rev);
- 
+@@ -178,6 +192,50 @@ static int amd_pmc_get_smu_version(struct amd_pmc_dev *dev)
  	return 0;
  }
  
@@ -363,7 +197,7 @@ index 230593ae5d6d..61cb1d05158e 100644
 +	return 0;
 +}
 +
-+static const struct file_operations amd_pmc_stb_debugfs_fops = {
++const struct file_operations amd_pmc_stb_debugfs_fops = {
 +	.owner = THIS_MODULE,
 +	.open = amd_pmc_stb_debugfs_open,
 +	.read = amd_pmc_stb_debugfs_read,
@@ -373,7 +207,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  static int amd_pmc_idlemask_read(struct amd_pmc_dev *pdev, struct device *dev,
  				 struct seq_file *s)
  {
-@@ -288,6 +349,10 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
+@@ -291,6 +349,10 @@ static void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
  			    &s0ix_stats_fops);
  	debugfs_create_file("amd_pmc_idlemask", 0644, dev->dbgfs_dir, dev,
  			    &amd_pmc_idlemask_fops);
@@ -384,7 +218,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  }
  #else
  static inline void amd_pmc_dbgfs_register(struct amd_pmc_dev *dev)
-@@ -484,6 +549,13 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
+@@ -487,6 +549,13 @@ static int __maybe_unused amd_pmc_suspend(struct device *dev)
  	if (rc)
  		dev_err(pdev->dev, "suspend failed\n");
  
@@ -398,7 +232,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  	return rc;
  }
  
-@@ -504,6 +576,14 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
+@@ -507,6 +576,14 @@ static int __maybe_unused amd_pmc_resume(struct device *dev)
  	/* Dump the IdleMask to see the blockers */
  	amd_pmc_idlemask_read(pdev, dev, NULL);
  
@@ -413,7 +247,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  	return 0;
  }
  
-@@ -521,6 +601,62 @@ static const struct pci_device_id pmc_pci_ids[] = {
+@@ -524,6 +601,62 @@ static const struct pci_device_id pmc_pci_ids[] = {
  	{ }
  };
  
@@ -476,7 +310,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  static int amd_pmc_probe(struct platform_device *pdev)
  {
  	struct amd_pmc_dev *dev = &pmc;
-@@ -534,22 +670,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -537,22 +670,23 @@ static int amd_pmc_probe(struct platform_device *pdev)
  
  	rdev = pci_get_domain_bus_and_slot(0, 0, PCI_DEVFN(0, 0));
  	if (!rdev || !pci_match_id(pmc_pci_ids, rdev)) {
@@ -506,7 +340,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  	}
  
  	base_addr_lo = val & AMD_PMC_BASE_ADDR_HI_MASK;
-@@ -557,24 +694,25 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -560,24 +694,25 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	err = pci_write_config_dword(rdev, AMD_PMC_SMU_INDEX_ADDRESS, AMD_PMC_BASE_ADDR_HI);
  	if (err) {
  		dev_err(dev->dev, "error writing to 0x%x\n", AMD_PMC_SMU_INDEX_ADDRESS);
@@ -539,7 +373,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  
  	mutex_init(&dev->lock);
  
-@@ -583,8 +721,10 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -586,8 +721,10 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	base_addr_hi = FCH_BASE_PHY_ADDR_HIGH;
  	fch_phys_addr = ((u64)base_addr_hi << 32 | base_addr_lo);
  	dev->fch_virt_addr = devm_ioremap(dev->dev, fch_phys_addr, FCH_SSC_MAPPING_SIZE);
@@ -552,7 +386,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  
  	/* Use SMU to get the s0i3 debug stats */
  	err = amd_pmc_setup_smu_logging(dev);
-@@ -595,6 +735,10 @@ static int amd_pmc_probe(struct platform_device *pdev)
+@@ -598,6 +735,10 @@ static int amd_pmc_probe(struct platform_device *pdev)
  	platform_set_drvdata(pdev, dev);
  	amd_pmc_dbgfs_register(dev);
  	return 0;
@@ -563,7 +397,7 @@ index 230593ae5d6d..61cb1d05158e 100644
  }
  
  static int amd_pmc_remove(struct platform_device *pdev)
-@@ -602,6 +746,7 @@ static int amd_pmc_remove(struct platform_device *pdev)
+@@ -605,6 +746,7 @@ static int amd_pmc_remove(struct platform_device *pdev)
  	struct amd_pmc_dev *dev = platform_get_drvdata(pdev);
  
  	amd_pmc_dbgfs_unregister(dev);

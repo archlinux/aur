@@ -168,7 +168,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         "mt76-mt7921e-fix-possible-probe-failure-after-reboot.patch"
 
         # squashed s0ix enablement
-        "9001-v5.16.10-s0ix-patch-2022-02-17.patch"
+        "9001-v5.16.11-s0ix-patch-2022-02-23.patch"
         )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -204,7 +204,7 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             '7dbfdd120bc155cad1879579cb9dd1185eb5e37078c8c93fef604a275a163812'
             '1444af2e125080934c67b6adb4561fd354a72ce47d3de393b24f53832ee492ac'
             '63ebf908ba2a66865a94e3a4af579d41ec15573522d3ebb07bf8ded3bc57e833'
-            'a223c097eae442eb52c93d690a18547ad3c46562e6f932725ad013a4f9db5b84')
+            'bc67bea8cb065289bfd0463dd37742b663187438c54550f790aeffa5dbb534b5')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-"$pkgbase"}
