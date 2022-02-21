@@ -1,15 +1,17 @@
 pkgbase = flwkey
 	pkgdesc = Ham Radio / Morse Code - WinKeyer CW Interface control & logbook
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/fldigi/files/flwkey/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = autoconf
+	makedepends = automake
 	makedepends = pkg-config
 	depends = fltk
 	depends = flxmlrpc
-	optdepends = hamradio-menus: XDG compliant menuing
+	depends = hamradio-menus
 	optdepends = fldigi: for digital mode interface
 	source = http://downloads.sourceforge.net/project/fldigi/flwkey/flwkey-1.2.3.tar.gz
 	source = http://downloads.sourceforge.net/project/fldigi/flwkey/flwkey-help.zip
@@ -25,4 +27,3 @@ pkgbase = flwkey
 	sha256sums = a4082631f552501f20e3369a13eeecd66dc96af88c162422a1142c13c5314d17
 
 pkgname = flwkey
-
