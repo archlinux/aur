@@ -1,12 +1,14 @@
 diff --git a/src/bracmat.c b/src/bracmat.c
-index 73af75a..045ef9e 100644
+index f9fdbda..88be5b6 100644
 --- a/src/bracmat.c
 +++ b/src/bracmat.c
-@@ -16776,7 +16776,8 @@ int mainLoop(int argc, char *argv[])
+@@ -16829,8 +16829,9 @@ int mainLoop(int argc, char *argv[])
+                 "out$\"Copyright (C) 2002 Bart Jongejan\\n"
                  "Bracmat comes with ABSOLUTELY NO WARRANTY; for details type `!w'.\\n"
                  "This is free software, and you are welcome to redistribute it\\n"
-                 "under certain conditions; type `!c' for details.\\n\\n"
+-                "under certain conditions; type `!c' for details.\\n\\n"
 -                "\\n\\n{?} get$help { tutorial }\\n{?} )        { stop }\"&"
++                "under certain conditions; type `!c' for details.\\n"
 +                "\\n{?} get$\\\"/usr/share/doc/bracmat/help\\\" { tutorial }"
 +                "\\n{?} )                                 { stop }\"&"
                  "(main=put$\"{?} \"&clk$():?SEC&((get':?!(=):(|?&clk$+-1*!SEC:?SEC&"
