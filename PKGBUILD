@@ -4,7 +4,7 @@
 
 pkgname=fbsplash
 pkgver=1.5.4.4
-pkgrel=16
+pkgrel=17
 pkgdesc="A userspace implementation of a splash screen for Linux (formerly known as gensplash)"
 arch=('x86_64')
 url="https://sourceforge.net/projects/fbsplash.berlios/"
