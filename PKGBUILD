@@ -1,3 +1,4 @@
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 # Contributor dax <dev@dax.moe>
 
 pkgname="xdcc-git"
