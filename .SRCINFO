@@ -30,7 +30,7 @@ pkgbase = freecad-linkstage3-bin
 	depends = pyside2-tools
 	depends = shiboken2
 	conflicts = freecad
-	source = https://github.com/Bonnee/freecad-build-arch/releases/download//freecad-archive.tar.gz
+	source = https://github.com/Bonnee/freecad-build-arch/releases/download/2022.02.13.edge.r17.gafe1c7fcca/freecad-archive.tar.gz
 	sha1sums = SKIP
 
 pkgname = freecad-linkstage3-bin
