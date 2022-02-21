@@ -1,7 +1,7 @@
 pkgbase = python-niapy
 	pkgdesc = Python microframework for building nature-inspired algorithms
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://NiaPy.org
 	arch = any
 	license = MIT

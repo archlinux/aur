@@ -3,10 +3,10 @@
 _base=NiaPy
 pkgname=python-${_base,,}
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python microframework for building nature-inspired algorithms"
 url="https://${_base}.org"
-arch=('any')
+arch=(any)
 license=(MIT)
 depends=(python-pandas python-matplotlib python-openpyxl)
 checkdepends=(python-pytest)
@@ -19,18 +19,18 @@ prepare() {
 }
 
 build() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 check() {
-  cd "${_base}-${pkgver}"
-  python -m pytest
+  cd ${_base}-${pkgver}
+  python -m pytest -k 'not problem_functions'
 }
 
 package() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
