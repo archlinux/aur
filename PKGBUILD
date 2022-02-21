@@ -1,10 +1,10 @@
 pkgname=foxtelgo-bin
 _pkgname=FoxtelGo-bin
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
-arch=('x86_64' 'arm7h' 'aarch64')
+arch=('x86_64')
 url="https://gitlab.com/foxtelgo/application"
 license=('GPL')
 depends=('nss' 'gtk3' 'libxss')
