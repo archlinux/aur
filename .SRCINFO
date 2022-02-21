@@ -1,13 +1,15 @@
 pkgbase = python-binarytree
 	pkgdesc = Python library for studying binary trees
 	pkgver = 6.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/joowani/binarytree
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
 	depends = python-graphviz
 	depends = python-setuptools-scm
 	source = python-binarytree-6.4.0.tar.gz::https://files.pythonhosted.org/packages/source/b/binarytree/binarytree-6.4.0.tar.gz
