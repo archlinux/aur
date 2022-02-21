@@ -1,21 +1,22 @@
-# Maintainer: Dan McCurry <dan.mccurry at linux dot com>
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
+# Contributor: Dan McCurry <dan.mccurry at linux dot com>
 # Contributor: Andreas Schreiner <andreas.schreiner@sonnenmulde.at>
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
-# PKGBUILD based off of fldigi
+# PKGBUILD based off of fldigi;
+# Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=fldigi-git
-pkgver=v4.0.1.r0.g476ff68e
-pkgrel=2
+pkgver=v4.1.20.r0.gfeddecc7
+pkgrel=3
 pkgdesc="Digital Modem Program for Amateur Radio, git version"
 arch=('i686' 'x86_64')
 url="http://w1hkj.com"
 license=('GPL')
-depends=('fltk' 'libsamplerate' 'libusb-compat')
-optdepends=('hamlib: rig control through hamlib'
+depends=('cty' 'fltk' 'libsamplerate' 'flxmlrpc>=1.0.1'
+         'portaudio' 'libpulse' 'hamlib' 'hamradio-menus')
+optdepends=(
 	'libsndfile: sound file support'
-	'portaudio: PortAudio support'
 	'pulseaudio: pulseaudio support'
-	'flxmlrpc: external flxmlrpc library support'
 	'asciidoc: build documentation with asciidoc')
 provides=('fldigi')
 conflicts=('fldigi')
@@ -35,7 +36,6 @@ prepare() {
 build() {
 	cd "$pkgname"
 	./configure --prefix=/usr
-	make ASCIIDOC_ICONS_DIR=/etc/asciidoc/images/icons/
 }
 
 check() {
