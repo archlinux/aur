@@ -8,6 +8,7 @@ pkgbase = libzookeeper-git
 	license = Apache
 	makedepends = maven
 	makedepends = autoconf
+	makedepends = automake
 	makedepends = cppunit
 	makedepends = pkgconf
 	provides = libzookeper-git
