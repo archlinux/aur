@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/up9inc/mizu"
 license=('Apache')
 source=("https://github.com/up9inc/mizu/releases/download/${pkgver}/mizu_linux_amd64")
-sha256sums=('d3801c50ceaee48d4089edfd48b66b3d7c54891b3f682bb45730c355785e1bcc')
+sha256sums=('8fb706332c57cf5ebe545a5cd45408b08b35e1c6b0656b3262ba9ebf2081b207')
 
 package() {
 	install -D -m755 mizu_linux_amd64 -T "${pkgdir}/usr/bin/mizu"
