@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tailwindcss
-pkgver=3.0.19
+pkgver=3.0.23
 pkgrel=1
 pkgdesc="Standalone version of Tailwind CLI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'nodejs-lts-gallium' 'npm')
 options=('!strip')
-_commit='2250e1bacd4a35f8fcff6925a72df7752deafd55'
+_commit='93e0fdf29f6ce312eb86e4a1fee71b89b8b7f53c'
 source=("$pkgname::git+https://github.com/tailwindlabs/tailwindcss.git#commit=$_commit")
 md5sums=('SKIP')
 

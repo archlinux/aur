@@ -1,6 +1,6 @@
 pkgbase = tailwindcss
 	pkgdesc = Standalone version of Tailwind CLI
-	pkgver = 3.0.19
+	pkgver = 3.0.23
 	pkgrel = 1
 	url = https://tailwindcss.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tailwindcss
 	makedepends = npm
 	depends = gcc-libs
 	options = !strip
-	source = tailwindcss::git+https://github.com/tailwindlabs/tailwindcss.git#commit=2250e1bacd4a35f8fcff6925a72df7752deafd55
+	source = tailwindcss::git+https://github.com/tailwindlabs/tailwindcss.git#commit=93e0fdf29f6ce312eb86e4a1fee71b89b8b7f53c
 	md5sums = SKIP
 
 pkgname = tailwindcss
