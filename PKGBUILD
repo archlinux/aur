@@ -1,15 +1,16 @@
 # Maintainer: Simone Cimarelli <aquilairreale@ymail.com>
 
 pkgname=unofficial-homestuck-collection
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
 license=('custom:chrome' 'custom:electron')
+depends=('libvips')
 makedepends=('gendesk' 'yarn' 'electron')
 source=("https://github.com/Bambosh/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('1fac170feab577f8a4bfd77a6871b3bcc6cad7f700eb3602fb3f8f51c930db111728a53d411946cd425e57911b09bb4ef4b8cfe6c42cb80add842bfc1113760f')
+sha512sums=('530f6aee01f53c92007f9b38d2d4e3587cc66ee5b27bb4684ff6503a602c5973451bd43210668f911733ae8921db4a5557ee5cdc3fc9a804e74cfa4e072a388f')
 
 prepare() {
     gendesk -f \
