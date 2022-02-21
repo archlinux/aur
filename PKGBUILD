@@ -1,14 +1,16 @@
-#maintainer: BrainDamage
+# maintainer: BrainDamage
 pkgname=helio-workstation
 pkgver=3.8
-pkgrel=4
+pkgrel=5
 pkgdesc="One music sequencer for all major platforms, desktop and mobile"
 arch=('x86_64')
 url="https://helio.fm/"
 license=('GPL3')
 depends=('curl' 'freetype2' 'libxinerama' 'libglvnd' 'alsa-lib')
-makedepends=('git' 'vst2sdk' 'libxrandr' 'libxcursor' 'libxcomposite' 'jack' 'asio' 'freeglut' 'mdbook')
-source=("git+https://github.com/helio-fm/${pkgname}#tag=${pkgver}" "git+https://github.com/peterrudenko/JUCE.git" "git+https://github.com/peterrudenko/hopscotch-map.git")
+makedepends=('git' 'libxrandr' 'libxcursor' 'libxcomposite' 'jack' 'freeglut' 'mdbook')
+source=("git+https://github.com/helio-fm/${pkgname}#tag=${pkgver}"
+  "git+https://github.com/peterrudenko/JUCE.git"
+  "git+https://github.com/peterrudenko/hopscotch-map.git")
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 #FIXME: figure out how to use native packages for juce / hopscotchmap
 
@@ -18,24 +20,26 @@ prepare() {
   git config submodule.ThirdParty/HopscotchMap.url "${srcdir}/hopscotch-map"
   git config submodule.ThirdParty/JUCE.url "${srcdir}/JUCE"
   git submodule update
+  # ugly hack since the makefile will override environment for those settings
+  sed -i 's/JucePlugin_Build_VST=0/JucePlugin_Build_VST=1/' 'Projects/LinuxMakefile/Makefile'
+  sed -i 's/JucePlugin_Build_VST3=0/JucePlugin_Build_VST3=1/' 'Projects/LinuxMakefile/Makefile'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  cd Projects/LinuxMakefile
+  cd "${srcdir}/${pkgname}/Projects/LinuxMakefile"
   CONFIG=Release64 make
-  cd "${srcdir}/${pkgname}"
-  cd Docs
-  mdbook build -d ../doc
+  cd "${srcdir}/${pkgname}/Docs"
+  mdbook build -d '../doc-build'
 }
 
 package() {
   cd "${srcdir}/${pkgname}/"
   install -Dvm755 "Projects/LinuxMakefile/build/helio" "${pkgdir}/usr/bin/helio"
-  install -Dvm755 "Projects/Deployment/Linux/Debian/x64/usr/share/applications/Helio.desktop" "${pkgdir}/usr/share/applications/Helio.desktop"
-  install -dvm755 "Projects/Deployment/Linux/Debian/x64/usr/share/icons" "${pkgdir}/usr/share/icons"
-  cp -drv --no-preserve='ownership' Projects/Deployment/Linux/Debian/x64/usr/share/icons/* "${pkgdir}/usr/share/icons/"
-  install -dvm755 doc "${pkgdir}/usr/share/doc/${pkgname}/"
-  cp -drv --no-preserve='ownership' doc/* "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dvm644 "Projects/Deployment/Linux/Debian/x64/usr/share/applications/Helio.desktop" "${pkgdir}/usr/share/applications/Helio.desktop"
+  cd "${srcdir}/${pkgname}/Projects/Deployment/Linux/Debian/x64/usr/share/icons/"
+  find . -exec install -Dvm 644 {} "${pkgdir}/usr/share/icons/{}" \;
+  #FIXME: figure out why it's built twice
+  cd "${srcdir}/${pkgname}/doc-build/doc-build"
+  find . -not -name '.gitignore' -not -name '.nojekyll' -exec install -Dvm 644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
 
