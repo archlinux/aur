@@ -1,6 +1,6 @@
 pkgbase = cargo-zigbuild
 	pkgdesc = Compile Cargo project with zig as linker
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/messense/cargo-zigbuild
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = cargo-zigbuild
 	makedepends = cargo
 	depends = gcc-libs
 	depends = zig
-	source = cargo-zigbuild-0.5.0.tar.gz::https://github.com/messense/cargo-zigbuild/archive/refs/tags/v0.5.0.tar.gz
-	cksums = 1192237814
-	sha256sums = 9d57434093e3ce834f8e903650d6aa4767bb457a2b76f660f8d7a3b247f0547c
-	b2sums = d51fef49a4f4a9a00ad9388923568574c8111daaa8490713677bf666ba1096f839e2ef6de5538decb5aaabf124951a9b59f146d343a352fd520a924ef7543feb
+	source = cargo-zigbuild-0.5.1.tar.gz::https://github.com/messense/cargo-zigbuild/archive/refs/tags/v0.5.1.tar.gz
+	cksums = 3041567017
+	sha256sums = 1a41fe43c433d2a884e95c6c72381fa92c5403792b6bcbe1742db11e3efc035b
+	b2sums = 51a3166b60c18f098d726be89f4cce34a69635289dbb3e0b42fe0525516753f0c12274e079c74bfb341fff151c3fc03840fe500881ce9581a70409789a3ad603
 
 pkgname = cargo-zigbuild
