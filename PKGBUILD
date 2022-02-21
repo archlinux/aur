@@ -2,41 +2,32 @@
 # Contributor: Snaipe
 
 pkgname=criterion
-pkgver=2.3.3
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A cross-platform C and C++ unit testing framework for the 21th century"
 arch=('x86_64')
 url="https://github.com/Snaipe/Criterion"
 license=('MIT')
-depends=('gettext' 'nanomsg' 'libcsptr')
-makedepends=('cmake')
+depends=('gettext' 'nanomsg' 'libffi' 'libgit2')
+makedepends=('meson' 'cmake')
 checkdepends=('python-cram')
-source=("https://github.com/Snaipe/Criterion/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2"
-        'do-not-specify-gdb-hostname.patch')
-sha256sums=('8c85e1fcdb9a39b82bee50394bedfe74a0c839ffff129ddfc6fb73b11adafa29'
-            'e150fdccfbe97359db380352cd66f6eb0bbddc98c2adfac2159334ba36a17dd2')
-
-prepare() {
-  cd "${pkgname}-v${pkgver}/dependencies/boxfort"
-
-  # temporary fix for https://github.com/Snaipe/Criterion/issues/301
-  patch --forward --strip=1 --input="${srcdir}/do-not-specify-gdb-hostname.patch"
-}
+source=("https://github.com/Snaipe/Criterion/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('b13bdb9e007d4d2e87a13446210630e95e3e3d92bb731951bcea4993464b9911')
 
 build() {
-  cd "${pkgname}-v${pkgver}"
-  cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr -DCTESTS=ON -S . -B build
-  cmake --build build
+  cd "${pkgname}-${pkgver}"
+  arch-meson -Db_pie=false -Db_lto=false build
+  meson compile -C build
 }
 
 check() {
-  cd "${pkgname}-v${pkgver}"
-  cmake --build build --target criterion_tests test
+  cd "${pkgname}-${pkgver}"
+  meson test -C build
 }
 
 package() {
-  cd "${pkgname}-v${pkgver}"
-  cmake --build build --target install -- DESTDIR="$pkgdir/"
+  cd "${pkgname}-${pkgver}"
+  meson install -C build --skip-subprojects --destdir "$pkgdir"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

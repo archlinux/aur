@@ -1,19 +1,18 @@
 pkgbase = criterion
 	pkgdesc = A cross-platform C and C++ unit testing framework for the 21th century
-	pkgver = 2.3.3
-	pkgrel = 3
+	pkgver = 2.4.0
+	pkgrel = 1
 	url = https://github.com/Snaipe/Criterion
 	arch = x86_64
 	license = MIT
 	checkdepends = python-cram
+	makedepends = meson
 	makedepends = cmake
 	depends = gettext
 	depends = nanomsg
-	depends = libcsptr
-	source = https://github.com/Snaipe/Criterion/releases/download/v2.3.3/criterion-v2.3.3.tar.bz2
-	source = do-not-specify-gdb-hostname.patch
-	sha256sums = 8c85e1fcdb9a39b82bee50394bedfe74a0c839ffff129ddfc6fb73b11adafa29
-	sha256sums = e150fdccfbe97359db380352cd66f6eb0bbddc98c2adfac2159334ba36a17dd2
+	depends = libffi
+	depends = libgit2
+	source = https://github.com/Snaipe/Criterion/releases/download/v2.4.0/criterion-2.4.0.tar.xz
+	sha256sums = b13bdb9e007d4d2e87a13446210630e95e3e3d92bb731951bcea4993464b9911
 
 pkgname = criterion
-
