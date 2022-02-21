@@ -2,7 +2,7 @@
 # Contributor: Kunkgg <goukun07@gmail.com>
 pkgname=shell-color-scripts
 _pkgname=shell-color-scripts
-pkgver=1.0.r39.143937f
+pkgver=1.1.r39.143937f
 pkgrel=1
 pkgdesc="A CLI for the collection of terminal color scripts. Included 52 beautiful terminal color scripts."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ validpgpkeys=()
 
 pkgver() {
   cd "${_pkgname}"
-  printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
