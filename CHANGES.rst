@@ -1,6 +1,20 @@
 Release Notes
 =============
 
+2.1.67
+------
+
+This release brings support for `--platform` arguments with a
+3-component PYVER portion. This supports working around
+`python_full_version` environment marker evaluation failures for
+`--platform` resolves by changing, for example, a platform of
+`linux_x86_64-cp-38-cp38` to `linux_x86_64-cp-3.8.10-cp38`. This is
+likely a simpler way to work around these issues than using the
+`--complete-platform` facility introduced in 2.1.66 by #1609.
+
+* Expand `--platform` syntax: support full versions. (#1614)
+  `PR #1614 <https://github.com/pantsbuild/pex/pull/1614>`_
+
 2.1.66
 ------
 
@@ -15,7 +29,7 @@ exactly as they would if run on that foreign platform as long as
 pre-built wheels are available for that foreign platform.
 
 Additionally, PEXes now know how to set a useable process name when the
-PEX contains the `psutil` distribution. See
+PEX contains the `setproctitle` distribution. See
 `here <https://pex.readthedocs.io/en/v2.1.66/recipes.html#long-running-pex-applications-and-daemons>`_
 for more information.
 
