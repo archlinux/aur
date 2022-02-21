@@ -1,0 +1,15 @@
+pkgbase = archer-dwmstat-git
+	pkgdesc = Event driven modular status-bar for dwm; written in Go & using Unix sockets for more advanced signaling.
+	pkgver = 0.7.r1dbb6e2.5
+	pkgrel = 1
+	url = https://gitlab.com/navaz-alani/archer-dwmstat.git
+	arch = x86_64
+	groups = archer
+	license = MIT
+	makedepends = go
+	provides = dwmstat
+	source = git+https://gitlab.com/navaz-alani/archer-dwmstat.git
+	validpgpkeys = 47397ED487ECE052386AD5A58239A2928E9B8850
+	sha256sums = SKIP
+
+pkgname = archer-dwmstat-git
