@@ -1,0 +1,17 @@
+pkgbase = r-fontquiver
+	pkgdesc = Set of Installed Fonts
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=fontquiver
+	arch = any
+	license = GPL3
+	checkdepends = r-htmltools
+	checkdepends = r-testthat
+	depends = r-fontbitstreamvera
+	depends = r-fontliberation
+	optdepends = r-testthat
+	optdepends = r-htmltools
+	source = https://cran.r-project.org/src/contrib/fontquiver_0.2.1.tar.gz
+	sha256sums = 95871814c2d55c03ee15a54e29aadfb840c791e1430f94127d9e1dc8608a6363
+
+pkgname = r-fontquiver
