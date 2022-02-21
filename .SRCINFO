@@ -1,0 +1,23 @@
+pkgbase = static-web-server-bin
+	pkgdesc = Static Web Server (sws): A blazing fast and asynchronous web server for static files-serving (official binary version)
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://sws.joseluisq.net
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	license = MIT
+	provides = static-web-server
+	provides = sws
+	conflicts = sws
+	source_x86_64 = static_web_server_x86_64_2.5.0.tar.gz::https://github.com/joseluisq/static-web-server/releases/download/v2.5.0/static-web-server-v2.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 685f33314584407c8055f96c067a2f4d2b0b71680ff432c2baa0e2916f9b47dd
+	source_i686 = static_web_server_i686_2.5.0.tar.gz::https://github.com/joseluisq/static-web-server/releases/download/v2.5.0/static-web-server-v2.5.0-i686-unknown-linux-gnu.tar.gz
+	sha256sums_i686 = 7a5a38ef0bfc5d1e034b3429d18ccad53dfc39ac0caf7e71d620103a9362c075
+	source_aarch64 = static_web_server_aarch64_2.5.0.tar.gz::https://github.com/joseluisq/static-web-server/releases/download/v2.5.0/static-web-server-v2.5.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1501d0a8ed5d9ae9d09f85ac143c8c72a856dfd82449f68bde4b74397b7b7a50
+
+pkgname = static-web-server-bin
