@@ -1,15 +1,14 @@
 pkgbase = libyui-git
 	pkgdesc = Libyui is a widget abstraction library providing Qt, GTK and ncurses frontends. Originally it was developed for YaST but it can be used in any independent project.
-	pkgver = 3.11.0.r36.gfc8a0be
+	pkgver = 4.2.23.r24.gb584b47f
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libyui/libyui
 	arch = x86_64
 	license = GPLv3
-	makedepends = cmake
+	makedepends = cmake>=3.21
 	provides = libyui
 	source = libyui::git+https://github.com/libyui/libyui.git
 	sha256sums = SKIP
 
 pkgname = libyui-git
-
