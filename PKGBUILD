@@ -107,7 +107,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd $_srcname
+  cd linux-${pkgver}
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -192,7 +192,7 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
+  cd linux-${pkgver}
   make all
   make htmldocs
 }
@@ -205,7 +205,7 @@ _package() {
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
-  cd $_srcname
+  cd linux-${pkgver}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -232,7 +232,7 @@ _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
 
-  cd $_srcname
+  cd linux-${pkgver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing build files..."
@@ -302,8 +302,8 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "$builddir/vmlinux"
+  #echo "Stripping vmlinux..."
+  #strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
@@ -313,7 +313,7 @@ _package-headers() {
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
-  cd $_srcname
+  cd linux-${pkgver}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
