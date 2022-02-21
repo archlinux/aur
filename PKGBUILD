@@ -1,6 +1,6 @@
 # Maintainer: Funami
 pkgname=cargo-zigbuild-bin
-pkgver=0.4.3
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A cargo subcommand to compile Cargo projects with zig as linker"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -19,10 +19,10 @@ noextract=("$pkgname-$pkgver-x86_64.tar.gz"
            "$pkgname-$pkgver-armv7h.tar.gz"
            "$pkgname-$pkgver-aarch64.tar.gz")
 sha256sums=('74c4c1ce947760824daf396d972a613459c0a4e39d1e6b7c8768a5dc1ab860b8')
-sha256sums_x86_64=('b9acacc2214c11f1dd38c811ca515e96005eb9e46a43df46d21dff273cc376ce')
-sha256sums_i686=('91bc75dabca45e9ffcaa51f6ce6e91a7f29332cd950166748a693f7473a5887a')
-sha256sums_armv7h=('08e1345a382fc1bf7fef398ca6e573e81bfd11d4e73d1c2319a6f3776c530afe')
-sha256sums_aarch64=('f687c24c7cec48afbca6d81b5cab5f8e6fb86ab4fd154451888db3a01712ab22')
+sha256sums_x86_64=('336f7512b793a89a518db229981402c9b13a96b631e7e94441c120abe79f2443')
+sha256sums_i686=('f0a6e276821ab4c144679a42a59c956c887b8007a07691f8d357bab7cf163061')
+sha256sums_armv7h=('6dac24f2300329a5ff4cc57a3a24eae601c716a4c48e84c707adbe3ba6569d05')
+sha256sums_aarch64=('16f3a76a07b5f6d9906499d9bd9bf754606f511c20854df375a9f4f1977f52a6')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver-$CARCH"
