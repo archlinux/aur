@@ -1,6 +1,6 @@
 # Maintainer: bin <bin at datacowboy dot cf>
 pkgname=ticker
-pkgver=4.4.4
+pkgver=4.5.0
 pkgrel=0
 pkgdesc='Terminal stock ticker with live updates and position tracking'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('9defe3faeb0c57dee3f7ab3b1824da2ad3343933c3fab7e933bb2626dff57783')
+b2sums=('f549b1a47ab96603cc2f01be1af33a1df7acb350e399a7d48154762ad2b680b0e5fb9b202f0dad1da19c8720b7320f2b9c53a6273b3e9d70926cec0d3b82d0d2')
 
 prepare () {
 	cd "$pkgname-$pkgver"
