@@ -1,0 +1,10 @@
+24a25
+> using AUR_Includes;
+758c759
+<                         sourceWad.AddContent(Properties.Resources.comex, 1, 1, ContentType.Normal);
+---
+>                         sourceWad.AddContent(AUR_Includes.comex_app.content, 1, 1, ContentType.Normal);
+774c775
+<                         sourceWad.AddContent(Properties.Resources.Waninkoko, 2, 2, ContentType.Normal);
+---
+>                         sourceWad.AddContent(AUR_Includes.Waninkoko_app.content, 2, 2, ContentType.Normal);

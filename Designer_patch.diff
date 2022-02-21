@@ -1,0 +1,20 @@
+132c132
+<     <Compile Include="CustomizeMii_Transmit.designer.cs">
+---
+>     <Compile Include="CustomizeMii_Transmit.Designer.cs">
+134a135,137
+>     <Compile Include="Instructions_txt.cs"/>
+>     <Compile Include="Comex_app.cs"/>
+>     <Compile Include="Waninkoko_app.cs"/>
+170,171d172
+<     <None Include="Resources\comex.app" />
+<     <None Include="Resources\Waninkoko.app" />
+184c185
+<     <Compile Include="CustomizeMii_Preview.designer.cs">
+---
+>     <Compile Include="CustomizeMii_Preview.Designer.cs">
+243c244
+< </Project>
+\ No newline at end of file
+---
+> </Project>

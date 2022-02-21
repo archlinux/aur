@@ -1,0 +1,26 @@
+pkgbase = customizemii
+	pkgdesc = a custom channel creator for the wii
+	pkgver = 3.11
+	pkgrel = 1
+	url = https://code.google.com/archive/p/customizemii/
+	arch = any
+	license = GPL3
+	depends = mono
+	conflicts = customizemii-bin
+	conflicts = customizemii-base-wads
+	source = https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/customizemii/source-archive.zip
+	source = https://wiibrew.org/w/images/0/0d/CustomizeMii_Icon.png
+	source = ByteConv.cs
+	source = Instructions_patch.diff
+	source = Resources_patch.diff
+	source = Designer_patch.diff
+	source = Loaders_patch.diff
+	sha256sums = 81ddba3a401e1360249da5b0d9988f58f47105fc4130237072e82a8929f997e6
+	sha256sums = 8e54152ac9c14192f02a6659183aa7c6196df88f5d2072fecba5d1fed5a0e458
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = customizemii

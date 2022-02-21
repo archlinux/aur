@@ -1,0 +1,16 @@
+127c127
+<   <data name="comex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+---
+>   <!--<data name="comex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+129c129
+<   </data>
+---
+>   </data>-->
+133c133
+<   <data name="Instructions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+---
+>   <!--<data name="Instructions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+138c138
+<   </data>
+---
+>   </data>-->

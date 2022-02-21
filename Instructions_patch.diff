@@ -1,0 +1,11 @@
+27a28
+> using AUR_Includes;
+135c136,141
+<             rtbInstructions.Rtf = Properties.Resources.Instructions;
+---
+>             string text = "";
+>             for (var x = 0; x < AUR_Includes.Instructions_txt.content.Length; x++) {
+>                 string y = AUR_Includes.Instructions_txt.content[x];
+>                 text = String.Concat(text, y, "\r\n");
+>             }
+>             rtbInstructions.Text = text;
