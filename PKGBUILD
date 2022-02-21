@@ -12,6 +12,7 @@ license=('GPL')
 depends=('miscsplashutils' 'freetype2' 'libjpeg' 'libpng' 'libmng' 'lcms' 'gpm') 
 optdepends=('linux-fbcondecor: enable console background images'
             'fbsplash-extras: additional functionality like daemon icons'
+            'fbset: framebuffer setup utility'
             'uswsusp-fbsplash: suspend to disk with fbsplash'
             'python: convert themes from splashy to fbsplash')
 conflicts=('fbsplash-scripts' 'initscripts-fork' 'mkinitcpio-fbsplash')
