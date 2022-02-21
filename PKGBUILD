@@ -1,15 +1,15 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 pkgname=primer3
-pkgver=2.5.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Tool to design flanking oligo nucleotides for DNA amplification"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('gcc-libs')
-url="https://github.com/$pkgname-org/$pkgname"
+url=https://github.com/primer3-org/primer3
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7581e2fa3228ef0ee1ffa427b2aa0a18fc635d561208327471daf59d1b804da0')
+sha256sums=('805cef7ef39607cd40f0f5bb8b32e35e20007153a0a55131dd430ce644c8fb9e')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver/src
