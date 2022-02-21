@@ -1,7 +1,7 @@
 pkgbase = libdecsync
 	pkgdesc = libdecsync is a multiplatform library for synchronizing using DecSync.
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/39aldo39/libdecsync
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = libdecsync
 	makedepends = jre8-openjdk
 	makedepends = ncurses5-compat-libs
 	depends = gcc-libs
+	depends = libxcrypt-compat
 	source = libdecsync-2.2.1.tar.gz::https://github.com/39aldo39/libdecsync/archive/v2.2.1.tar.gz
 	sha256sums = 3e08b35efed3bafb079aa52a8dcd51217f6602cde64accba1a10cf5c25029d45
 
