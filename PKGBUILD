@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=prusa-slicer-git
-pkgver=2.4.1.alpha0.r47.g681712093
+pkgver=2.5.0.alpha0.r43.g3a821d675
 pkgrel=1
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -10,6 +10,7 @@ license=('AGPL3')
 makedepends=(
     'cmake'
     'ninja'
+    'clang'
     'boost'
     'cereal'
     'eigen'
@@ -50,6 +51,9 @@ prepare() {
 }
 
 build() {
+    export CC=clang
+    export CXX=clang++
+
     cmake -B build -S PrusaSlicer -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
