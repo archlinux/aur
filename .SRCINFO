@@ -1,0 +1,17 @@
+pkgbase = perl-mysql-diff
+	pkgdesc = Generates a database upgrade instruction set
+	pkgver = 0.60
+	pkgrel = 1
+	url = https://metacpan.org/release/MySQL-Diff
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-slurp>=0
+	depends = perl-string-shellquote>=0
+	depends = perl>=5.006
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/E/ES/ESTRABD/MySQL-Diff-0.60.tar.gz
+	md5sums = fddcdca9728760870424d5f75c9c3cfe
+	sha512sums = 8e03ba1aca0cde812e62f174db158f8b403f675bc495a9ea430ff59a403f0c61d5c223c5fb0d71c41f5dea4908fee6eb5d8aca463a98235184cba34967932d9f
+
+pkgname = perl-mysql-diff
