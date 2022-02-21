@@ -1,7 +1,7 @@
 pkgbase = sumo
 	pkgdesc = Traffic simulation modelling road vehicles, public transport and pedestrians.
-	pkgver = 1.10.0
-	pkgrel = 2
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = http://sumo.dlr.de
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = sumo
 	depends = xerces-c
 	depends = gdal
 	depends = gl2ps
-	source = https://github.com/eclipse/sumo/archive/v1_10_0.tar.gz
+	source = https://github.com/eclipse/sumo/archive/v1_12_0.tar.gz
 	source = sumo.desktop
-	sha256sums = d2520ff9bb6fbf16d9c7342a8720f0ee1e417d7546826e034e268e4f073faf2c
+	sha256sums = 049f5f50d1d27352d868cbb4b2a4b59bc0a913ef792b619c1adf1a289b3e48a7
 	sha256sums = d9ec82a1b56ebeaf31c6382f6d903baf0767e440b640a713e587d7e09f72d213
 
 pkgname = sumo
