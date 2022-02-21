@@ -3,43 +3,39 @@
 
 pkgname=etcher-git
 _pkgname=etcher
-pkgver=1.5.120.r0.gccb08a48
+pkgver=1.7.5.r0.g7a012a92
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://etcher.io/'
 license=(Apache)
-depends=("electron>=12.0.0" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
-makedepends=("npm" "python2" "git" "jq")
+depends=("electron12" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "glib2" "polkit" "libusb")
+makedepends=("npm" "python2" "git" "jq" "patch" "nodejs<17")
 optdepends=("libnotify: for notifications")
-conflicts=(
-  "balena-etcher"
-  "etcher-bin"
-)
+provides=("$_pkgname")
 options=('!strip')
-_scripts='scripts'
 _scripts_path='scripts/resin'
 _github_balena='https://github.com/balena-io'
 source=(
-  "${_pkgname}::git+${_github_balena}/${_pkgname}"
-  "${_pkgname}-${_scripts}::git+${_github_balena}/${_scripts}"
+  "${_pkgname}::git+${_github_balena}/${_pkgname}.git"
+  "${_pkgname}-scripts::git+${_github_balena}/scripts.git"
   "${pkgname}-electron.sh"
   "${pkgname}-electron.desktop"
 )
 sha256sums=('SKIP'
             'SKIP'
-            'c8b0f3d9615a21a5f03af36ef9033e71e9c9716c1381879bd7279a7fcf95bb1f'
-            'd23e62375aa83a57bfeebbbd7bde09a7d1917deaee78c9e4d3bdf26e1a47870f')
+            '21689fc17198a9eaed04680d19c93911c3c00ddeebf2956b62342452addc482f'
+            'a770bc8be0c02580b6f9ba12b286f4ff88d9ecd3b2186073a811992d06518aa3')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "${_pkgname}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "${_pkgname}"
   git submodule init
-  git config "submodule.${_scripts_path}.url" "${srcdir}/${_pkgname}-${_scripts}"
+  git config "submodule.${_scripts_path}.url" "${srcdir}/${_pkgname}-scripts"
   git submodule update
 }
 

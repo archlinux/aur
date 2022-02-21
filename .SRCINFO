@@ -1,6 +1,6 @@
 pkgbase = etcher-git
 	pkgdesc = Flash OS images to SD cards & USB drives, safely and easily
-	pkgver = 1.5.120.r0.gccb08a48
+	pkgver = 1.7.5.r0.g7a012a92
 	pkgrel = 1
 	url = https://etcher.io/
 	arch = x86_64
@@ -12,28 +12,27 @@ pkgbase = etcher-git
 	makedepends = python2
 	makedepends = git
 	makedepends = jq
-	depends = electron>=12.0.0
+	makedepends = patch
+	makedepends = nodejs<17
+	depends = electron12
 	depends = gtk3
 	depends = libxtst
 	depends = libxss
 	depends = nss
 	depends = alsa-lib
-	depends = nodejs
 	depends = glib2
 	depends = polkit
 	depends = libusb
 	optdepends = libnotify: for notifications
-	conflicts = balena-etcher
-	conflicts = etcher-bin
+	provides = etcher
 	options = !strip
-	source = etcher::git+https://github.com/balena-io/etcher
-	source = etcher-scripts::git+https://github.com/balena-io/scripts
+	source = etcher::git+https://github.com/balena-io/etcher.git
+	source = etcher-scripts::git+https://github.com/balena-io/scripts.git
 	source = etcher-git-electron.sh
 	source = etcher-git-electron.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c8b0f3d9615a21a5f03af36ef9033e71e9c9716c1381879bd7279a7fcf95bb1f
-	sha256sums = d23e62375aa83a57bfeebbbd7bde09a7d1917deaee78c9e4d3bdf26e1a47870f
+	sha256sums = 21689fc17198a9eaed04680d19c93911c3c00ddeebf2956b62342452addc482f
+	sha256sums = a770bc8be0c02580b6f9ba12b286f4ff88d9ecd3b2186073a811992d06518aa3
 
 pkgname = etcher-git
-
