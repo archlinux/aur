@@ -9,7 +9,6 @@ pkgbase = jotta-cli
 	arch = armv7h
 	arch = aarch64
 	license = custom: Copyright Jotta AS
-	conflicts = jotta-cli-beta
 	source_x86_64 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.13.55213_amd64.deb
 	sha256sums_x86_64 = 3562346b5aa7df5eabaed549849bd4bf0f6e3e9a84c112579f5aeac20d886e47
 	source_i686 = https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_0.13.55213_i386.deb

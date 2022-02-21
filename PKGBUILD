@@ -10,7 +10,6 @@ pkgdesc='Jottacloud backup and sync. Whether you are an individual, family or bu
 url='https://www.jottacloud.com/'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 license=('custom: Copyright Jotta AS')
-conflicts=('jotta-cli-beta')
 install='jotta-cli.install'
 
 source_x86_64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_amd64.deb")
