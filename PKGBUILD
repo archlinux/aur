@@ -17,7 +17,7 @@ optdepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/frealgagu/archlinux.webkitgtk2/releases/download/${epoch}_${pkgver}-${pkgrel}/webkitgtk2-${epoch}.${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=("338b46e621b0647f63128672ce924c7bb0e26ad9e5b6bdc95dabb3f086a0b51f")
+sha256sums=("5ad70724992f26882b33ce0f3fcc6365805813d59aa1aaca1b87537a20d34481")
 
 package() {
   cp -Rfp $srcdir/usr $pkgdir/
