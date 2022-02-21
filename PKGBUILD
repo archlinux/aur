@@ -2,18 +2,18 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.9.15
+pkgver=3.11.1
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
-depends=('electron15')
+depends=('electron')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
 _nodeversion=14
 source=("git://github.com/standardnotes/desktop.git"
-        "git://github.com/standardnotes/web.git#commit=78213427fa42b3b36b3306ef2ed1686ccce68cbc"
+        "git://github.com/standardnotes/web.git#commit=e9f2dc691d46485a97453ae572563bdf0589060f"
         'webpack.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
             'SKIP'
             'a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d'
             '8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7'
-            '5afd4ed47fe7e41574d6c5817271b5a15da744fa6f727dd7afd5f13e1298d551')
+            '2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5')
 
 prepare() {
   cd $_pkgname
@@ -37,11 +37,11 @@ prepare() {
   cp .env.sample .env
 
   # Set system Electron version for ABI compatibility
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron15/version)'"#' -i package.json
+  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
 
   # workaround for TS compilation failing due to a "might be null" error.
   # this might be an ugly thing to just ignore, but, well, uh... (electron >=11/12 needs this)
-  patch -Np1 -i ${srcdir}/webpack.patch
+  # patch -Np1 -i ${srcdir}/webpack.patch
 
   if [[ $CARCH == 'aarch64' ]]; then
     export npm_config_target_arch=arm64
@@ -56,10 +56,6 @@ prepare() {
     popd
   fi
   yarn --cwd ./web run bundle:desktop
-  if [[ $CARCH == 'aarch64' ]]; then
-    sed -r 's#("keytar": ").*"#\17.7.0"#' -i app/package.json
-    sed -r 's#("electron-builder": ").*"#\122.11.1"#' -i package.json
-  fi
   yarn --cwd ./app install
   yarn install
   yarn run webpack --config webpack.prod.js
@@ -77,7 +73,7 @@ build() {
     export npm_config_host_arch=arm64
   fi
 
-  _electron_dist=/usr/lib/electron15
+  _electron_dist=/usr/lib/electron
   _electron_ver=$(cat ${_electron_dist}/version)
   case "$CARCH" in
           aarch64)
