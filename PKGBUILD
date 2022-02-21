@@ -1,28 +1,28 @@
 # Maintainer: Adrian Schmitz <zetabite.horzion@gmail.com>
 pkgname=irony-mod-manager-bin
 pkgver=1.21.119
-pkgrel=3
+pkgrel=4
 pkgdesc="A mod manager and launcher for paradox interactive games"
 arch=('x86_64')
 url="https://github.com/bcssov/IronyModManager"
 license=('MIT')
 depends=("fontconfig" "bash" "zlib" "krb5" "lttng-ust")
-source=("$pkgname-$pkgver.zip::https://github.com/bcssov/IronyModManager/releases/download/v$pkgver/linux-x64.zip"
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/bcssov/IronyModManager/releases/download/v$pkgver/linux-x64.zip"
         "$pkgname.png::https://raw.githubusercontent.com/bcssov/IronyModManager/v$pkgver/src/IronyModManager/Assets/logo.png"
         "$pkgname.desktop"
         "$pkgname.sh"
         "$pkgname.README.md"
         "disable-update.patch")
-sha256sums=('7efa18c32e07cef247d6f2d1e7bcc57bd6d5799923b55d20cff7933aa20c4bbf'
+sha256sums=('26c5bac83fd1bbb7dc131411883e45c7b6eef467d8447d54d2806214608ec43d'
             '3986b286a65add808bcd9be696501e685c4ee712b2c25139449bb282263e7e47'
             '43c8454a1d74fa0f0d2bdeae41836c5a73c079d1fb915c3fd709086d119c87a7'
             'bf522e178388d52f959348e0a0406a37ff16181b50eb848398a753cd6ebe1237'
             'acbb98b22127ec04aec858d1fd6767526eb78c6a10b3e091f040dfe503b29a8e'
             'ef031408b9cada356b2cd8513b4dc7d2e7866fac895cdb0e66361ca55a29a047')
-noextract=("$pkgname-$pkgver.zip")
+noextract=("$pkgname-$pkgver-$pkgrel.zip")
 
 prepare() {
-    mkdir -p $pkgname-$pkgver && bsdtar -xf $pkgname-$pkgver.zip -C $pkgname-$pkgver
+    mkdir -p $pkgname-$pkgver && bsdtar -xf $pkgname-$pkgver-$pkgrel.zip -C $pkgname-$pkgver
 }
 
 package() {
