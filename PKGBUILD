@@ -2,7 +2,7 @@
 
 pkgname=citespace
 pkgver=6.0.R1
-pkgrel=2
+pkgrel=3
 pkgdesc="A widely used tool for visual exploration of scientific literature."
 arch=('any')
 url="https://citespace.podia.com/"
@@ -10,11 +10,11 @@ license=('unknown')
 depends=('java-runtime>=11.0.11')
 makedepends=('unzip' 'imagemagick')
 optdepends=('mysql: for data cleansing')
-source=("${pkgname}-${pkgver}.7z::https://citespace.podia.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMm12Snc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d2da070aa50620ad4df65b37191a859c73c831c4/6.0.R1.7z"
+source=("${pkgname}-${pkgver}.zip::https://citespace.podia.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0VMS0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--31325e6e47f716286e9d75c7d85d2b0c101cb37a/6.0.R1%20Advanced.zip"
 "$pkgname".desktop
 "$pkgname".sh
 )
-sha256sums=('133974e4a5e4caacc6f7bec608cff539e650e884ec0f5386951a7f6ae54452cf'
+sha256sums=('922116a301a446d1049953a41960de026c9e2d2ff6047cdc2a126ad9ba5968dc'
             '5256f6866d830da93fd5439d45ae8b35f45806d19e7c86830e8d2db07fa5c83d'
             'e23977204063d4837a50f3ecc45d67afe5a1d1aa672b145ab60fed073ee3bdf9')
 prepare() {
