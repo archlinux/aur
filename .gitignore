@@ -1,5 +1,4 @@
-gazebo
-gazebo.install
+gazebo*
 patch
 pkg
 src

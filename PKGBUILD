@@ -10,8 +10,9 @@ url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost' 'curl' 'freeglut' 'freeimage' 'tbb' 'libccd' 'libltdl' 'graphviz'
-         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat' 'ignition-math' 'ignition-transport'
-         'ignition-cmake' 'ignition-common' 'ignition-fuel_tools-4' 'ignition-msgs' 'tinyxml2' 'qwt')
+         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat-9' 'ignition-math' 'ignition-transport-8'
+         'ignition-cmake' 'ignition-common-3' 'ignition-fuel_tools-4' 'ignition-msgs-5' 'tinyxml2' 'qwt')
+
 optdepends=('bullet: Bullet support'
             'cegui: Design custom graphical interfaces'
             'ffmpeg: Playback movies on textured surfaces'
@@ -21,7 +22,7 @@ optdepends=('bullet: Bullet support'
             'libusb: USB peripherals support'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'ninja' 'doxygen' 'ruby-ronn' 'git')
+makedepends=('cmake' 'make' 'doxygen' 'ruby-ronn' 'git')
 install="gazebo.install"
 provides=('gazebo')
 conflicts=('gazebo')
@@ -50,10 +51,9 @@ build() {
   cmake ..  -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
-  make install
 }
 
 package() {
   cd "${srcdir}/${_pkgname}/build"
-  DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" make install
 }
