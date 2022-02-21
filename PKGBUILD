@@ -66,7 +66,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   pkgrel=7
 else
   pkgver=5.0
-  pkgrel=2
+  pkgrel=3
 fi
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
@@ -330,10 +330,11 @@ _nonfree_enabled=OFF
 if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
   _nonfree_enabled=ON
   depends+=(cuda)
-  _args+=(
-    --enable-cuda-nvcc --enable-libnpp --enable-cuvid --disable-cuda-llvm
-    --nvccflags='-gencode arch=compute_52,code=sm_52 -O2'
-  )
+  _args+=(--enable-cuda-nvcc --enable-libnpp --enable-cuvid --disable-cuda-llvm)
+  # Manjaro still on 4.4.1
+  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+    _args+=(--nvccflags='-gencode arch=compute_52,code=sm_52 -O2')
+  fi
   provides+=(ffmpeg-cuda)
 else
   _args+=(--enable-cuda-llvm --disable-cuvid)
@@ -425,7 +426,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     aribb24 libbs2b libcaca celt libcdio-paranoia codec2
     'davs2' libdc1394 'flite1-patched' libgme libilbc 'libklvanc-git'
     kvazaar 'lensfun-git' 'openh264' libopenmpt librabbitmq-c rubberband
-    rtmpdump 'shine' smbclient snappy tensorflow tesseract
+    rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
     zvbi lv2 lilv libmysofa openal ocl-icd libgl
     'pocketsphinx' vapoursynth libomxil-bellagio 'rockchip-mpp'
@@ -436,22 +437,27 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libaribb24 --enable-libbs2b --enable-libcaca --enable-libcelt --enable-libcdio --enable-libcodec2
     --enable-libdavs2 --enable-libdc1394 --enable-libflite --enable-libgme --enable-libilbc --enable-libklvanc
     --enable-libkvazaar --enable-liblensfun --enable-libopenh264 --enable-libopenmpt --enable-librabbitmq --enable-librubberband
-    --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libsnappy --enable-libtensorflow --enable-libtesseract
+    --enable-librtmp --enable-libshine --enable-libsmbclient --enable-libsnappy --enable-libtesseract
     --enable-libtwolame --enable-libuavs3d --enable-libvo-amrwbenc --enable-libxavs --enable-libxavs2 --enable-libzmq
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal --enable-opencl --enable-opengl
     --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp
   )
-  _args+=(--enable-avresample)
+  # Manjaro still on 4.4.1
+  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
+    depends+=(tensorflow)
+    provides+=(libavresample.so)
+    _args+=(--enable-avresample --enable-libtensorflow)
+  fi
   provides+=(ffmpeg-full)
 else
   _args+=(--disable-sndio) # sndio is not present when upstream package is built
 fi
 
 ## Manage extra flags
-if [[ $FFMPEG_OBS_FULL == 'ON' ]] && [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
+if [[ $FFMPEG_OBS_FULL == 'ON' ]] && [[ $FFMPEG_OBS_CUDA == 'ON' ]] && [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   _args+=(--extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow')
   _args+=(--extra-ldflags='-L/opt/cuda/lib64')
-elif [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
+elif [[ $FFMPEG_OBS_FULL == 'ON' ]] && [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   _args+=(--extra-cflags='-I/usr/include/tensorflow')
 elif [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
   _args+=(--extra-cflags='-I/opt/cuda/include')
