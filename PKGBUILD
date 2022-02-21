@@ -106,9 +106,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.8-9.xz"
         #"https://cdn.kernel.org/pub/linux/kernel/v5.x/incr/patch-5.16.9-10.xz"
 
-        # hotfix: address iwlwifi crash at boot on some hardware
-        "iwlwifi-fix-use-after-free.patch"
-
         # Arch: misc hotfixes
         "Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
         "Bluetooth-Read-codec-capabilities-only-if-supported.patch"
@@ -182,11 +179,10 @@ sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
             'aa43e27dff42041c8ccd07848c474f5de8873c0a8fd720831f57f10537e0e9cd'
             '278118011d7a2eeca9971ac97b31bf0c55ab55e99c662ab9ae4717b55819c9a2'
-            '7b6825a43b4173750768a1a50bfd38dcbd326aec6d56cc886490d97e323b7ce9'
             '241f01f06849fcec462d72355ca3ab6bd34931731dec89876d785912ac532398'
             'dd01bd3f774c3a9af42b6d89f534f39c4a5f200db32cd6d4b72a29325645100e'
             'a9647897e59b04cb883dcf649b3108e9397d5a6c672bc545ea0c6bb7bb30d5a9'
-            'e6cdd36029c4d924fb2c228cd9bef656d3f5da319378fa2b1139c507a27377e7'
+            'd8ba1c49cc16eaf9ed9f18ba414cff2d5f96f8070690d42e3cc57b95b4b3c7c1'
             '3bb1cf422c64b4eea324b71048d0bdee04b5f9132136c6a4774e5205e45c46f1'
             '5c6c7778bc2d873657a885272956e232138b8b4935c3a3d6b11ef1619d344b20'
             '56f8f93a38ed7236c2504c79645a33123ee7bdf3c0cbb97dfd90600df06be7dd'

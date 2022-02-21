@@ -1,14 +1,14 @@
-From a003713f93620d14ec967dfac667042831f811fb Mon Sep 17 00:00:00 2001
+From 1f4c4df109be4d32a0132a4b5ea777c14ef9c140 Mon Sep 17 00:00:00 2001
 From: Scott B <arglebargle@arglebargle.dev>
-Date: Sat, 12 Feb 2022 19:10:16 -0800
-Subject: [PATCH] btrfs fix autodefrag on 5.16.9
+Date: Sun, 20 Feb 2022 16:54:12 -0800
+Subject: [PATCH] btrfs fix autodefrag on 5.16.11
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Squashed commit of the following:
 
-commit b737f50d14910955ab6d71083894ac0e494a2536
+commit f70af2b739bf69422d1861afc915ead50b7a4a99
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:46:13 2022 +0800
 
@@ -42,7 +42,7 @@ Date:   Fri Feb 11 14:46:13 2022 +0800
 
     Signed-off-by: Qu Wenruo <wqu@suse.com>
 
-commit db2bbd0fc8be55325391e804c3e0d7734bb63114
+commit 5ba239302f390a93c21143be59e00bfbfaf8e0d8
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:46:12 2022 +0800
 
@@ -92,7 +92,7 @@ Date:   Fri Feb 11 14:46:12 2022 +0800
     Fixes: 7b508037d4ca ("btrfs: defrag: use defrag_one_cluster() to implement btrfs_defrag_file()")
     Signed-off-by: Qu Wenruo <wqu@suse.com>
 
-commit 45179047d70a3dfda7a80dd2be3dd4e7bc189241
+commit b15e2f65ce657fb111a7631b99e1fc8a4f4bd15b
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:41:43 2022 +0800
 
@@ -114,7 +114,7 @@ Date:   Fri Feb 11 14:41:43 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Reviewed-by: Filipe Manana <fdmanana@suse.com>
 
-commit 0157f8681633be471549f516130bd33bdfc97c4a
+commit 42bf00b4ac60cd0ac7858c7101cdda6674bdd1d0
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:41:42 2022 +0800
 
@@ -135,7 +135,7 @@ Date:   Fri Feb 11 14:41:42 2022 +0800
 
     Signed-off-by: Qu Wenruo <wqu@suse.com>
 
-commit 2dd3869302f7b665ae93e56062356fd7d7278973
+commit 19e91071d8df13aeef7543aca599ecdc2ba1abc4
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:41:41 2022 +0800
 
@@ -169,7 +169,7 @@ Date:   Fri Feb 11 14:41:41 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Reviewed-by: Filipe Manana <fdmanana@suse.com>
 
-commit 2ea615905dc292ab5ac6b04963767571c017f36d
+commit e5d21acaadac2a66c8ab789a7d58fc93cb96ab45
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:41:39 2022 +0800
 
@@ -238,7 +238,7 @@ Date:   Fri Feb 11 14:41:39 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Reviewed-by: Filipe Manana <fdmanana@suse.com>
 
-commit 8037b307dcf1a27359978e8f8fcbdc996f7f7dac
+commit 5d746feb4d9b8cf0306c22d883b2615056dedeb4
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Feb 11 14:41:40 2022 +0800
 
@@ -250,7 +250,7 @@ Date:   Fri Feb 11 14:41:40 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Reviewed-by: Filipe Manana <fdmanana@suse.com>
 
-commit cd21e09dfcf96f1fc59cde04e0469c350f50ff27
+commit 2b062b44b5b62e442fc3d6853ff610f88115928c
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Jan 28 15:21:22 2022 +0800
 
@@ -284,7 +284,7 @@ Date:   Fri Jan 28 15:21:22 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit f608637a27c72ee7170c3d843980874a8d8b926b
+commit 3f94c7cf274445320cae9a3870e73e5959aa1e2f
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Jan 28 15:21:21 2022 +0800
 
@@ -346,7 +346,7 @@ Date:   Fri Jan 28 15:21:21 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 46ab5b06a9272cf77cc3cb661c80b289baa3572e
+commit 1e9dd09fccd1fbf3b2c9a01f5591a8834746085c
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Jan 28 15:21:20 2022 +0800
 
@@ -423,7 +423,7 @@ Date:   Fri Jan 28 15:21:20 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 4a091ce50cc67bc308e8c19e5a449273c431bb89
+commit a081b23af054c6a46765a7dc3507c82fe2c7279d
 Author: Sidong Yang <realwakka@gmail.com>
 Date:   Sun Feb 6 12:52:48 2022 +0000
 
@@ -445,7 +445,7 @@ Date:   Sun Feb 6 12:52:48 2022 +0000
     [ add comments ]
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit f3a0ba39249b83a8d3989d33cdac0a91869a6fb0
+commit 62d3bceb5cce760003e9989a840a3bdc071bf00b
 Author: Dāvis Mosāns <davispuh@gmail.com>
 Date:   Wed Feb 2 23:44:54 2022 +0200
 
@@ -457,7 +457,7 @@ Date:   Wed Feb 2 23:44:54 2022 +0200
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 0d2aeb0d941827f04b9a2d488ee8d006d72141db
+commit 8e085328afba8df0f10a3358a1dea796dafb2dd0
 Author: Dāvis Mosāns <davispuh@gmail.com>
 Date:   Wed Feb 2 23:44:55 2022 +0200
 
@@ -510,22 +510,7 @@ Date:   Wed Feb 2 23:44:55 2022 +0200
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit d5ae6eb3349a026ecf2103d8d8b439c399aceae6
-Author: Dāvis Mosāns <davispuh@gmail.com>
-Date:   Sat Feb 5 20:48:23 2022 +0200
-
-    btrfs: send: in case of IO error log it
-
-    Currently if we get IO error while doing send then we abort without
-    logging information about which file caused issue.  So log it to help
-    with debugging.
-
-    CC: stable@vger.kernel.org # 4.9+
-    Signed-off-by: Dāvis Mosāns <davispuh@gmail.com>
-    Reviewed-by: David Sterba <dsterba@suse.com>
-    Signed-off-by: David Sterba <dsterba@suse.com>
-
-commit 2a888a22344b2ba2b143c9c5f43eb26c1a618a10
+commit 158bdfcb4a2d0e529f7bcff9357012f9163ca1e8
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Wed Feb 2 15:26:09 2022 +0000
 
@@ -770,35 +755,7 @@ Date:   Wed Feb 2 15:26:09 2022 +0000
     [ add more link reports ]
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit f116a9dcf33ff6e7a32df162f5eb9dcbf1b29c05
-Author: Qu Wenruo <wqu@suse.com>
-Date:   Tue Feb 8 14:54:05 2022 +0800
-
-    btrfs: defrag: don't try to defrag extents which are under writeback
-
-    Once we start writeback (have called btrfs_run_delalloc_range()), we
-    allocate an extent, create an extent map point to that extent, with a
-    generation of (u64)-1, created the ordered extent and then clear the
-    DELALLOC bit from the range in the inode's io tree.
-
-    Such extent map can pass the first call of defrag_collect_targets(), as
-    its generation is (u64)-1, meets any possible minimal generation check.
-    And the range will not have DELALLOC bit, also passing the DELALLOC bit
-    check.
-
-    It will only be re-checked in the second call of
-    defrag_collect_targets(), which will wait for writeback.
-
-    But at that stage we have already spent our time waiting for some IO we
-    may or may not want to defrag.
-
-    Let's reject such extents early so we won't waste our time.
-
-    Reviewed-by: Filipe Manana <fdmanana@suse.com>
-    Signed-off-by: Qu Wenruo <wqu@suse.com>
-    Signed-off-by: David Sterba <dsterba@suse.com>
-
-commit d71b140ec0af6d566706112f650e1dbe4229275e
+commit 8e52a370b93f589cf1258c696b26b40c6c9e0bf9
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Tue Feb 8 13:31:19 2022 +0800
 
@@ -892,7 +849,7 @@ Date:   Tue Feb 8 13:31:19 2022 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 77189dcd907e11cee9cfe47659c43a366d2709d7
+commit 29c30598821b8fc66feb722705207f4d6cda06f3
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Feb 3 14:55:50 2022 +0000
 
@@ -992,7 +949,7 @@ Date:   Thu Feb 3 14:55:50 2022 +0000
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 281d08e191e30ff72bf54e95d51dabdab385ed62
+commit 325dbdea07cdca5232b215e898e6a73ec0102950
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Feb 3 14:55:49 2022 +0000
 
@@ -1020,7 +977,7 @@ Date:   Thu Feb 3 14:55:49 2022 +0000
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 825d4aa19b30da981f921145f3b5054eeadb377e
+commit 846b997655e40b79dbc5be4c84040a2fd2c256f5
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Feb 3 14:55:48 2022 +0000
 
@@ -1064,7 +1021,7 @@ Date:   Thu Feb 3 14:55:48 2022 +0000
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit fd994f33fbfd181d501d0c4c20460010b65647d7
+commit 515f8813f251f422672d998008cd8931f1c985ca
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Feb 3 14:55:47 2022 +0000
 
@@ -1098,7 +1055,7 @@ Date:   Thu Feb 3 14:55:47 2022 +0000
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit d0f358fd21dd1263e0f30e30a3a3e6d34167c9cd
+commit 838f1789cc59a7b304ec75895d728784380a013a
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Feb 3 14:55:46 2022 +0000
 
@@ -1175,7 +1132,7 @@ Date:   Thu Feb 3 14:55:46 2022 +0000
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit bd74a611238cd919b8b00b92df0ff01274ce750f
+commit ea41061f1b4a4a1be6e7aa819cf25abc733547a2
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Feb 3 14:55:45 2022 +0000
 
@@ -1213,7 +1170,7 @@ Date:   Thu Feb 3 14:55:45 2022 +0000
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 44763c4308433f228346dc50ccaff2e138862182
+commit e0d9aa6cd9948a397812ddc4625bf9caca66ad8e
 Author: David Sterba <dsterba@suse.com>
 Date:   Tue Feb 1 15:42:07 2022 +0100
 
@@ -1232,29 +1189,7 @@ Date:   Tue Feb 1 15:42:07 2022 +0100
     Reviewed-by: Johannes Thumshirn <johannes.thumshirn@wdc.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit ad2619beff22d96e8e5eea2493321bf8e636c8ef
-Author: Qu Wenruo <wqu@suse.com>
-Date:   Sun Jan 30 20:53:15 2022 +0800
-
-    btrfs: don't hold CPU for too long when defragging a file
-
-    There is a user report about "btrfs filesystem defrag" causing 120s
-    timeout problem.
-
-    For btrfs_defrag_file() it will iterate all file extents if called from
-    defrag ioctl, thus it can take a long time.
-
-    There is no reason not to release the CPU during such a long operation.
-
-    Add cond_resched() after defragged one cluster.
-
-    CC: stable@vger.kernel.org # 5.16
-    Link: https://lore.kernel.org/linux-btrfs/10e51417-2203-f0a4-2021-86c8511cc367@gmx.com
-    Signed-off-by: Qu Wenruo <wqu@suse.com>
-    Reviewed-by: David Sterba <dsterba@suse.com>
-    Signed-off-by: David Sterba <dsterba@suse.com>
-
-commit b8e35fc7e8c54515e04c39e0f5169b6bbbecaccb
+commit f24aaeb4095371b20e283565966c43df690ac3a2
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Fri Nov 5 16:45:28 2021 -0400
 
@@ -1279,7 +1214,7 @@ Date:   Fri Nov 5 16:45:28 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 8ca7b6060f9f2d0177a27afa95f2a05f61200d5e
+commit 155d4601061befa81984f937abce9b119ef4ada8
 Author: Nikolay Borisov <nborisov@suse.com>
 Date:   Tue Nov 23 09:23:42 2021 +0200
 
@@ -1292,7 +1227,7 @@ Date:   Tue Nov 23 09:23:42 2021 +0200
     Signed-off-by: Nikolay Borisov <nborisov@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit a6716a480d12e734fa98aef285887192c881da4f
+commit 8fcf868725280652370631d31431cfdbb7b5f5ee
 Author: Qu Wenruo <wqu@suse.com>
 Date:   Fri Nov 19 14:19:33 2021 +0800
 
@@ -1354,7 +1289,7 @@ Date:   Fri Nov 19 14:19:33 2021 +0800
     Signed-off-by: Qu Wenruo <wqu@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 970a8427a7f40f0d854c3317f737adfff8a11b1a
+commit 4d8e6b8ef9fc19c0925ea9843d003d867d4445b3
 Author: Nikolay Borisov <nborisov@suse.com>
 Date:   Mon Nov 22 17:16:46 2021 +0200
 
@@ -1369,7 +1304,7 @@ Date:   Mon Nov 22 17:16:46 2021 +0200
     Signed-off-by: Nikolay Borisov <nborisov@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 0afcdc42b729134e75b82309c0aa9d7aafecd1ed
+commit da97ec458d2aac88234b972119a58be4ba0f870f
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Nov 18 16:33:15 2021 -0500
 
@@ -1469,7 +1404,7 @@ Date:   Thu Nov 18 16:33:15 2021 -0500
     Signed-off-by: Josef Bacik <josef@toxicpanda.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 83ad1b0453f812c1d920b924fb134cf5f652b9c4
+commit 814a61c5659a7cfe81ac5df0dbe58d72a0bc5844
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Nov 18 16:33:14 2021 -0500
 
@@ -1491,7 +1426,7 @@ Date:   Thu Nov 18 16:33:14 2021 -0500
     Signed-off-by: Josef Bacik <josef@toxicpanda.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 8f725db7f074b5a4aa4f0029f594837733cc26eb
+commit e20c65307650e6a829397071018a005a9b7a5f3e
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:37 2021 -0400
 
@@ -1507,7 +1442,7 @@ Date:   Thu Oct 21 14:58:37 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 5a874f4000258a04be642c3299f5d9a92da7965c
+commit 43a53b248d12359e3440ed1e423012bfff28e382
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:36 2021 -0400
 
@@ -1520,7 +1455,7 @@ Date:   Thu Oct 21 14:58:36 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 812994d2c1974f82cbc2063a902f5eab66f9bef7
+commit 6cdcb36516f5e6d36e34e9b8a877fbe4de258033
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:35 2021 -0400
 
@@ -1535,7 +1470,7 @@ Date:   Thu Oct 21 14:58:35 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 91d702a4909c5ce773ee1dfbddbcfda6ed77e386
+commit 893bd29c4809ef21aa310148b359f30ec9c0dcd2
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:34 2021 -0400
 
@@ -1555,7 +1490,7 @@ Date:   Thu Oct 21 14:58:34 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 8941ae5c42f6efe176000f5cfba56dc0c9ffaabf
+commit b375c686e3fa0ce5fb0f7ec987fdef0f9c434375
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:33 2021 -0400
 
@@ -1569,7 +1504,7 @@ Date:   Thu Oct 21 14:58:33 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 3f147c1007aefff4bb64da30bc5bff65c7d1ae3c
+commit 4176f4ce3fd863ead87ddfa47e920d5021c92700
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:32 2021 -0400
 
@@ -1590,7 +1525,7 @@ Date:   Thu Oct 21 14:58:32 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 2642ad2b67d3ce7949ad3e11f8c90f788df3451b
+commit f87ceb2a3ca2919be08f0f3ba2063b81fb1f2882
 Author: Josef Bacik <josef@toxicpanda.com>
 Date:   Thu Oct 21 14:58:31 2021 -0400
 
@@ -1613,7 +1548,7 @@ Date:   Thu Oct 21 14:58:31 2021 -0400
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 25114b685786a229b9ff5b737600cb7b96dada69
+commit b7b4ee5a8e5c579cfdf75353c6debbc9b7e60067
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Mon Oct 25 17:31:54 2021 +0100
 
@@ -1631,7 +1566,7 @@ Date:   Mon Oct 25 17:31:54 2021 +0100
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 5355b15bf406d6e459b93f52bcddb574f1cf1bdb
+commit c37c3650321e859a04a85bfdaf42700cd7f36fca
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Mon Oct 25 17:31:53 2021 +0100
 
@@ -1781,7 +1716,7 @@ Date:   Mon Oct 25 17:31:53 2021 +0100
     Signed-off-by: Filipe Manana <fdmanana@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit f950abdc6082bb79f19028aa399fa6a097bb3ea0
+commit f2851ae84203ed1070be25096fc43671d72e4bb6
 Author: Nikolay Borisov <nborisov@suse.com>
 Date:   Thu Oct 14 10:03:11 2021 +0300
 
@@ -1796,7 +1731,7 @@ Date:   Thu Oct 14 10:03:11 2021 +0300
     Reviewed-by: David Sterba <dsterba@suse.com>
     Signed-off-by: David Sterba <dsterba@suse.com>
 
-commit 8ccb44f738264ebf29714410eebff6a787496d15
+commit 6a4ea54d0a5a66a6f68bb8a41c2abdaadc97da28
 Author: Filipe Manana <fdmanana@suse.com>
 Date:   Thu Oct 28 16:03:41 2021 +0100
 
@@ -1908,7 +1843,7 @@ Date:   Thu Oct 28 16:03:41 2021 +0100
  fs/btrfs/free-space-cache.h          |   2 +
  fs/btrfs/inode-item.c                |  14 +-
  fs/btrfs/inode.c                     | 172 +++----
- fs/btrfs/ioctl.c                     | 432 +++++++++++++-----
+ fs/btrfs/ioctl.c                     | 427 ++++++++++++-----
  fs/btrfs/lzo.c                       |  20 +-
  fs/btrfs/print-tree.c                |   8 +-
  fs/btrfs/props.c                     |   2 +-
@@ -1918,7 +1853,7 @@ Date:   Thu Oct 28 16:03:41 2021 +0100
  fs/btrfs/relocation.c                |   2 +-
  fs/btrfs/root-tree.c                 |   4 +-
  fs/btrfs/scrub.c                     |   2 +-
- fs/btrfs/send.c                      |  22 +-
+ fs/btrfs/send.c                      |  18 +-
  fs/btrfs/sysfs.c                     |  10 +-
  fs/btrfs/tests/extent-buffer-tests.c |  17 +-
  fs/btrfs/transaction.c               |  76 +---
@@ -1931,7 +1866,7 @@ Date:   Thu Oct 28 16:03:41 2021 +0100
  fs/btrfs/xattr.c                     |   8 +-
  include/uapi/linux/btrfs.h           |   6 +-
  include/uapi/linux/btrfs_tree.h      |   4 +-
- 41 files changed, 1242 insertions(+), 956 deletions(-)
+ 41 files changed, 1233 insertions(+), 956 deletions(-)
 
 diff --git a/fs/btrfs/backref.c b/fs/btrfs/backref.c
 index 8b090c40daf7..3b0c4bed242e 100644
@@ -3926,7 +3861,7 @@ index 39a674543461..0ed8cc6afa37 100644
  	kfree(dio_data);
  	iomap->private = NULL;
 diff --git a/fs/btrfs/ioctl.c b/fs/btrfs/ioctl.c
-index 48e03e176f31..773d44681484 100644
+index cec7163bc873..773d44681484 100644
 --- a/fs/btrfs/ioctl.c
 +++ b/fs/btrfs/ioctl.c
 @@ -986,8 +986,154 @@ static noinline int btrfs_mksnapshot(const struct path *parent,
@@ -4208,20 +4143,16 @@ index 48e03e176f31..773d44681484 100644
  		if (!em)
  			break;
  
-@@ -1181,7 +1361,11 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
+@@ -1181,7 +1361,7 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
  			goto next;
  
  		/* Skip older extent */
 -		if (em->generation < newer_than)
 +		if (em->generation < ctrl->newer_than)
-+			goto next;
-+
-+		/* This em is under writeback, no need to defrag */
-+		if (em->generation == (u64)-1)
  			goto next;
  
- 		/*
-@@ -1221,7 +1405,14 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
+ 		/* This em is under writeback, no need to defrag */
+@@ -1225,7 +1405,14 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
  			goto add;
  
  		/* Skip too large extent */
@@ -4237,7 +4168,7 @@ index 48e03e176f31..773d44681484 100644
  			goto next;
  
  		next_mergeable = defrag_check_next_extent(&inode->vfs_inode, em,
-@@ -1242,6 +1433,7 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
+@@ -1246,6 +1433,7 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
  		}
  
  add:
@@ -4245,7 +4176,7 @@ index 48e03e176f31..773d44681484 100644
  		range_len = min(extent_map_end(em), start + len) - cur;
  		/*
  		 * This one is a good target, check if it can be merged into
-@@ -1285,10 +1477,27 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
+@@ -1289,10 +1477,27 @@ static int defrag_collect_targets(struct btrfs_inode *inode,
  			kfree(entry);
  		}
  	}
@@ -4273,7 +4204,7 @@ index 48e03e176f31..773d44681484 100644
  
  /*
   * Defrag one contiguous target range.
-@@ -1342,8 +1551,8 @@ static int defrag_one_locked_target(struct btrfs_inode *inode,
+@@ -1346,8 +1551,8 @@ static int defrag_one_locked_target(struct btrfs_inode *inode,
  	return ret;
  }
  
@@ -4284,7 +4215,7 @@ index 48e03e176f31..773d44681484 100644
  {
  	struct extent_state *cached_state = NULL;
  	struct defrag_target_range *entry;
-@@ -1387,8 +1596,7 @@ static int defrag_one_range(struct btrfs_inode *inode, u64 start, u32 len,
+@@ -1391,8 +1596,7 @@ static int defrag_one_range(struct btrfs_inode *inode, u64 start, u32 len,
  	 * And this time we have extent locked already, pass @locked = true
  	 * so that we won't relock the extent range and cause deadlock.
  	 */
@@ -4294,7 +4225,7 @@ index 48e03e176f31..773d44681484 100644
  				     &target_list);
  	if (ret < 0)
  		goto unlock_extent;
-@@ -1398,6 +1606,8 @@ static int defrag_one_range(struct btrfs_inode *inode, u64 start, u32 len,
+@@ -1402,6 +1606,8 @@ static int defrag_one_range(struct btrfs_inode *inode, u64 start, u32 len,
  					       &cached_state);
  		if (ret < 0)
  			break;
@@ -4303,7 +4234,7 @@ index 48e03e176f31..773d44681484 100644
  	}
  
  	list_for_each_entry_safe(entry, tmp, &target_list, list) {
-@@ -1419,12 +1629,17 @@ static int defrag_one_range(struct btrfs_inode *inode, u64 start, u32 len,
+@@ -1423,12 +1629,17 @@ static int defrag_one_range(struct btrfs_inode *inode, u64 start, u32 len,
  	return ret;
  }
  
@@ -4325,7 +4256,7 @@ index 48e03e176f31..773d44681484 100644
  {
  	const u32 sectorsize = inode->root->fs_info->sectorsize;
  	struct defrag_target_range *entry;
-@@ -1432,9 +1647,7 @@ static int defrag_one_cluster(struct btrfs_inode *inode,
+@@ -1436,9 +1647,7 @@ static int defrag_one_cluster(struct btrfs_inode *inode,
  	LIST_HEAD(target_list);
  	int ret;
  
@@ -4336,7 +4267,7 @@ index 48e03e176f31..773d44681484 100644
  				     &target_list);
  	if (ret < 0)
  		goto out;
-@@ -1443,32 +1656,25 @@ static int defrag_one_cluster(struct btrfs_inode *inode,
+@@ -1447,32 +1656,25 @@ static int defrag_one_cluster(struct btrfs_inode *inode,
  		u32 range_len = entry->len;
  
  		/* Reached or beyond the limit */
@@ -4375,7 +4306,7 @@ index 48e03e176f31..773d44681484 100644
  	}
  out:
  	list_for_each_entry_safe(entry, tmp, &target_list, list) {
-@@ -1478,64 +1684,93 @@ static int defrag_one_cluster(struct btrfs_inode *inode,
+@@ -1482,64 +1684,93 @@ static int defrag_one_cluster(struct btrfs_inode *inode,
  	return ret;
  }
  
@@ -4495,7 +4426,7 @@ index 48e03e176f31..773d44681484 100644
  	last_byte = round_up(last_byte, fs_info->sectorsize) - 1;
  
  	/*
-@@ -1559,12 +1794,9 @@ int btrfs_defrag_file(struct inode *inode, struct file_ra_state *ra,
+@@ -1563,12 +1794,9 @@ int btrfs_defrag_file(struct inode *inode, struct file_ra_state *ra,
  		inode->i_mapping->writeback_index = start_index;
  
  	while (cur < last_byte) {
@@ -4509,7 +4440,7 @@ index 48e03e176f31..773d44681484 100644
  		if (btrfs_defrag_cancelled(fs_info)) {
  			ret = -EAGAIN;
  			break;
-@@ -1586,48 +1818,41 @@ int btrfs_defrag_file(struct inode *inode, struct file_ra_state *ra,
+@@ -1590,19 +1818,17 @@ int btrfs_defrag_file(struct inode *inode, struct file_ra_state *ra,
  			break;
  		}
  		if (do_compress)
@@ -4534,9 +4465,7 @@ index 48e03e176f31..773d44681484 100644
  		if (ret > 0) {
  			ret = 0;
  			break;
- 		}
-+		cond_resched();
- 	}
+@@ -1612,27 +1838,21 @@ int btrfs_defrag_file(struct inode *inode, struct file_ra_state *ra,
  
  	if (ra_allocated)
  		kfree(ra);
@@ -4568,7 +4497,7 @@ index 48e03e176f31..773d44681484 100644
  	}
  	if (do_compress) {
  		btrfs_inode_lock(inode, 0);
-@@ -2147,7 +2372,7 @@ static noinline int copy_to_sk(struct btrfs_path *path,
+@@ -2152,7 +2372,7 @@ static noinline int copy_to_sk(struct btrfs_path *path,
  
  	for (i = slot; i < nritems; i++) {
  		item_off = btrfs_item_ptr_offset(leaf, i);
@@ -4577,7 +4506,7 @@ index 48e03e176f31..773d44681484 100644
  
  		btrfs_item_key_to_cpu(leaf, key, i);
  		if (!key_in_sk(key, sk))
-@@ -2601,7 +2826,7 @@ static int btrfs_search_path_in_tree_user(struct user_namespace *mnt_userns,
+@@ -2606,7 +2826,7 @@ static int btrfs_search_path_in_tree_user(struct user_namespace *mnt_userns,
  	btrfs_item_key_to_cpu(leaf, &key, slot);
  
  	item_off = btrfs_item_ptr_offset(leaf, slot);
@@ -4586,7 +4515,7 @@ index 48e03e176f31..773d44681484 100644
  	/* Check if dirid in ROOT_REF corresponds to passed dirid */
  	rref = btrfs_item_ptr(leaf, slot, struct btrfs_root_ref);
  	if (args->dirid != btrfs_root_ref_dirid(leaf, rref)) {
-@@ -2803,7 +3028,7 @@ static int btrfs_ioctl_get_subvol_info(struct file *file, void __user *argp)
+@@ -2808,7 +3028,7 @@ static int btrfs_ioctl_get_subvol_info(struct file *file, void __user *argp)
  
  			item_off = btrfs_item_ptr_offset(leaf, slot)
  					+ sizeof(struct btrfs_root_ref);
@@ -4595,7 +4524,7 @@ index 48e03e176f31..773d44681484 100644
  					- sizeof(struct btrfs_root_ref);
  			read_extent_buffer(leaf, subvol_info->name,
  					   item_off, item_len);
-@@ -3148,6 +3373,7 @@ static int btrfs_ioctl_defrag(struct file *file, void __user *argp)
+@@ -3153,6 +3373,7 @@ static int btrfs_ioctl_defrag(struct file *file, void __user *argp)
  	struct inode *inode = file_inode(file);
  	struct btrfs_root *root = BTRFS_I(inode)->root;
  	struct btrfs_ioctl_defrag_range_args range = {0};
@@ -4603,7 +4532,7 @@ index 48e03e176f31..773d44681484 100644
  	int ret;
  
  	ret = mnt_want_write_file(file);
-@@ -3193,8 +3419,11 @@ static int btrfs_ioctl_defrag(struct file *file, void __user *argp)
+@@ -3198,8 +3419,11 @@ static int btrfs_ioctl_defrag(struct file *file, void __user *argp)
  			/* the rest are all set to zero by kzalloc */
  			range.len = (u64)-1;
  		}
@@ -4617,7 +4546,7 @@ index 48e03e176f31..773d44681484 100644
  		if (ret > 0)
  			ret = 0;
  		break;
-@@ -3683,7 +3912,6 @@ static noinline long btrfs_ioctl_start_sync(struct btrfs_root *root,
+@@ -3688,7 +3912,6 @@ static noinline long btrfs_ioctl_start_sync(struct btrfs_root *root,
  {
  	struct btrfs_trans_handle *trans;
  	u64 transid;
@@ -4625,7 +4554,7 @@ index 48e03e176f31..773d44681484 100644
  
  	trans = btrfs_attach_transaction_barrier(root);
  	if (IS_ERR(trans)) {
-@@ -3695,11 +3923,7 @@ static noinline long btrfs_ioctl_start_sync(struct btrfs_root *root,
+@@ -3700,11 +3923,7 @@ static noinline long btrfs_ioctl_start_sync(struct btrfs_root *root,
  		goto out;
  	}
  	transid = trans->transid;
@@ -4891,7 +4820,7 @@ index 8f6ceea33969..d175c5ab1134 100644
  	if (flags & BTRFS_EXTENT_FLAG_TREE_BLOCK) {
  		do {
 diff --git a/fs/btrfs/send.c b/fs/btrfs/send.c
-index 040324d71118..93b9fe2dca67 100644
+index 7e1159474a4e..93b9fe2dca67 100644
 --- a/fs/btrfs/send.c
 +++ b/fs/btrfs/send.c
 @@ -898,7 +898,6 @@ static int iterate_inode_ref(struct btrfs_root *root, struct btrfs_path *path,
@@ -4947,18 +4876,7 @@ index 040324d71118..93b9fe2dca67 100644
  		while (cur_offset < item_size) {
  			u64 parent;
  			u64 parent_gen;
-@@ -4983,6 +4979,10 @@ static int put_file_data(struct send_ctx *sctx, u64 offset, u32 len)
- 			lock_page(page);
- 			if (!PageUptodate(page)) {
- 				unlock_page(page);
-+				btrfs_err(fs_info,
-+			"send: IO error at offset %llu for inode %llu root %llu",
-+					page_offset(page), sctx->cur_ino,
-+					sctx->send_root->root_key.objectid);
- 				put_page(page);
- 				ret = -EIO;
- 				break;
-@@ -6566,7 +6566,7 @@ static int compare_refs(struct send_ctx *sctx, struct btrfs_path *path,
+@@ -6570,7 +6566,7 @@ static int compare_refs(struct send_ctx *sctx, struct btrfs_path *path,
  	}
  
  	leaf = path->nodes[0];
@@ -4967,7 +4885,7 @@ index 040324d71118..93b9fe2dca67 100644
  	ptr = btrfs_item_ptr_offset(leaf, path->slots[0]);
  	while (cur_offset < item_size) {
  		extref = (struct btrfs_inode_extref *)(ptr +
-@@ -6791,8 +6791,8 @@ static int tree_compare_item(struct btrfs_path *left_path,
+@@ -6795,8 +6791,8 @@ static int tree_compare_item(struct btrfs_path *left_path,
  	int len1, len2;
  	unsigned long off1, off2;
  
