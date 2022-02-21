@@ -3,15 +3,15 @@
 # Contributor: hexchain <i@hexchain.org>
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.5.2
+pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
          'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
@@ -19,23 +19,22 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        "0001-kde-theme-injection-fix.patch"
-        "0002-qt5-compilation-fix.patch")
-sha512sums=('5a86f8e3dd1b7fca2a615a2de86f9640f14bbf27b7e73f735dad60629ddb99bd5c951d7311f99c044ab6178a49ff997aae5e8da0f8bb6753fa7eecfb12562cef'
-            '1d1dc0f59430a7fb994d696d36eaa3ed618c55ff0d686748de93017c2360dd8a74f2e706c7b7d99ff162228abc1e5b322fc9bda9e4c7cf7ac205434f6858356c'
-            'bf77777eac9066a1ab5d6172018ecf3245ef5f90c8351adf25c426028a7ab548c2ef8bdaf263fc6ad927d92f28b8fc5202309671d7635aa30be8ebf1893f7c2e')
+        "0001-kde-theme-injection-fix.patch")
+sha512sums=('adb95fb37fedba6344107e4dd789b88563e24e6a01c7b944d9e5365ceccff60d774eb31a2c1e39cd200ef6de83317fe654956cfecaa1e13c7b2fdbf4c38f057e'
+            '1d1dc0f59430a7fb994d696d36eaa3ed618c55ff0d686748de93017c2360dd8a74f2e706c7b7d99ff162228abc1e5b322fc9bda9e4c7cf7ac205434f6858356c')
 
 prepare() {
     cd tdesktop-$pkgver-full
     patch -p1 < $startdir/0001-kde-theme-injection-fix.patch
-    cd cmake
-    patch -p1 < $startdir/0002-qt5-compilation-fix.patch
 }
 
 build() {
     cd tdesktop-$pkgver-full
 
+    # Fix https://bugs.archlinux.org/task/73220
     export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
     # Turns out we're allowed to use the official API key that telegram uses for their snap builds:
     # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
     # Thanks @primeos!
@@ -48,6 +47,15 @@ build() {
         -DTDESKTOP_API_ID=611335 \
         -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     # Use Qt5 for the time being until mouse is not so broken (QTBUG-99331).
+
+    # Hack to compile for ffmpeg4.4
+    sed -i "s|/usr/lib/libav|/usr/lib/ffmpeg4.4/libav|g" build/build.ninja
+    sed -i "s|/usr/lib/libsw|/usr/lib/ffmpeg4.4/libsw|g" build/build.ninja
+    sed -i "s|-lavcodec|/usr/lib/ffmpeg4.4/libavcodec.so|g" build/build.ninja
+    sed -i "s|-lavformat|/usr/lib/ffmpeg4.4/libavformat.so|g" build/build.ninja
+    sed -i "s|-lavutil|/usr/lib/ffmpeg4.4/libavutil.so|g" build/build.ninja
+    sed -i "s|-lswscale|/usr/lib/ffmpeg4.4/libswscale.so|g" build/build.ninja
+    sed -i "s|-lswresample|/usr/lib/ffmpeg4.4/libswresample.so|g" build/build.ninja
     ninja -C build
 }
 
