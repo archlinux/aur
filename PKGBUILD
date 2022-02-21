@@ -6,7 +6,7 @@ pkgname=python-pytorch-rocm
 _pkgname="pytorch"
 pkgver=1.11.0rc2
 _pkgver=1.11.0-rc2
-pkgrel=2
+pkgrel=3
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -288,7 +288,10 @@ _package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  pytorchpath="usr/lib/python${get_pyver}/site-packages/torch"
+  # pytorchpath="usr/lib/python${get_pyver}/site-packages/torch"
+  # ${get_pyver} does not return anything makepkg
+  # hardcode to 3.10 for now
+  pytorchpath="usr/lib/python3.10/site-packages/torch"
   install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
