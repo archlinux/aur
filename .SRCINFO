@@ -1,0 +1,16 @@
+pkgbase = lexend-deca-git
+	pkgdesc = Its a variable ttf typeface designed to improve reading fluency. Only Deca size.
+	pkgver = r105.57e6c14
+	pkgrel = 1
+	epoch = 1
+	url = https://lexend.com
+	arch = any
+	license = custom:OFL-1.1
+	makedepends = git
+	provides = lexend-fonts
+	conflicts = lexend-fonts
+	conflicts = lexend-fonts-git
+	source = lexend-deca-git::git+https://github.com/googlefonts/lexend
+	sha256sums = SKIP
+
+pkgname = lexend-deca-git
