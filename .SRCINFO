@@ -1,6 +1,6 @@
 pkgbase = python-netaudio
 	pkgdesc = Control Dante network audio devices without Dante Controller
-	pkgver = v0.0.3
+	pkgver = 0.0.3
 	pkgrel = 2
 	arch = any
 	license = Unlicense
