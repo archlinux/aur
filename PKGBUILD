@@ -7,7 +7,7 @@ pkgver=0.0.3
 pkgrel=2
 pkgdesc="Control Dante network audio devices without Dante Controller"
 arch=(any)
-url=""
+url="https://github.com/chris-ritsen/network-audio-controller"
 license=(Unlicense)
 depends=("python" "python-cleo" "python-netifaces" "python-pip" "python-twisted" "python-zeroconf")
 
