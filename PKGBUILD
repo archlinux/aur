@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=cargo-zigbuild
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Compile Cargo project with zig as linker"
 url="https://github.com/messense/cargo-zigbuild"
@@ -10,9 +10,9 @@ arch=('x86_64' 'i686')
 depends=('gcc-libs' 'zig')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/messense/cargo-zigbuild/archive/refs/tags/v$pkgver.tar.gz")
-cksums=('975226791')
-sha256sums=('ef10226e3b1e1d31ad8d3b1118c17e31384b9ac56d3c55c753184031404e8df8')
-b2sums=('38308353a580348f674da85d06e1bf9cb74974161772f6917b5c2de31d4e29145e1cf68b0239ce944626f003127d8733b124f1bb75cd36d0b47366abf51f865a')
+cksums=('1192237814')
+sha256sums=('9d57434093e3ce834f8e903650d6aa4767bb457a2b76f660f8d7a3b247f0547c')
+b2sums=('d51fef49a4f4a9a00ad9388923568574c8111daaa8490713677bf666ba1096f839e2ef6de5538decb5aaabf124951a9b59f146d343a352fd520a924ef7543feb')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
