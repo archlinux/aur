@@ -2,8 +2,8 @@
 # Contributor: Voronwe Sul <Voronwe.S@protonmail.com>
 
 pkgname="gikkon"
-pkgver="0.1.0"
-pkgrel=2
+pkgver="0.1.1"
+pkgrel=1
 pkgdesc="Backup tool for configs, which uses git as storage"
 arch=("any")
 url="https://github.com/bronvic/$pkgname"
@@ -20,4 +20,5 @@ build() {
 
 package() {
     make --directory="$srcdir/$pkgname-$pkgver" install
+    make --directory="$srcdir/$pkgname-$pkgver" clean
 }
