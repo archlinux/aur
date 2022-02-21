@@ -1,0 +1,11 @@
+#!/bin/sh
+curl -s checkip.amazonaws.com > /tmp/ip;
+STRLENGTH=$(echo -n $(cat /tmp/ip) | wc -m);
+LEN=1;
+if (( STRLENGTH > LEN )) ;
+then
+ cat /tmp/ip | cowsay
+ rm /tmp/ip
+else
+ echo "Defaultroute doesn't have access to DNS / internet "
+fi;
