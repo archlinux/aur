@@ -1,6 +1,7 @@
-# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Maintainer: Maciej Łoziński <maciej@robotix-lozinski.pl>
+# Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=2
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
@@ -13,13 +14,13 @@ checkdepends=('bash')
 conflicts=('ed')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 options=('!strip' 'staticlibs')
-sha256sums=('2ec78c1683a63149423661b35571ee4b74306217ab944b23f86efe7f0b216a6c')
+sha256sums=('d69d69f332cc14886177cb3bff8650bc4220828ae90836ebcd815af3a88a5045')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   rebol -qw red.r tests/hello.red
   msg2 "Compiling the Red console..."
-  rebol -qw red.r -r environment/console/console.red
+  rebol -qw red.r -r environment/console/CLI/console.red
   msg2 "Generating docs..."
   cd docs
   rebol -qw makedoc2.r red-system-specs.txt
