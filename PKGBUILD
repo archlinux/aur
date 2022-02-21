@@ -7,7 +7,7 @@
 _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
-pkgver=2.9.r11.g2a744fe
+pkgver=2.9.r24.g8ceeca8
 pkgrel=1
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
@@ -38,7 +38,8 @@ package_tomb-git() {
         'steghide: steganography'
         'dcfldd: show nice progress during massive I/O'
         'qrencode: for paper backups of keys'
-        'swish-e: file content indexer')
+        'swish-e: file content indexer'
+        'argon2: support for argon2 KDF')
 
     cd "${_name}"
     make DESTDIR="${pkgdir}" PREFIX=/usr install

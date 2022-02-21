@@ -1,6 +1,6 @@
 pkgbase = tomb-git
 	pkgdesc = simple tool to manage encrypted storage
-	pkgver = 2.9.r11.g2a744fe
+	pkgver = 2.9.r24.g8ceeca8
 	pkgrel = 1
 	url = https://www.dyne.org/software/tomb/
 	arch = any
@@ -26,6 +26,7 @@ pkgname = tomb-git
 	optdepends = dcfldd: show nice progress during massive I/O
 	optdepends = qrencode: for paper backups of keys
 	optdepends = swish-e: file content indexer
+	optdepends = argon2: support for argon2 KDF
 
 pkgname = tomb-kdf-git
 	pkgdesc = Crypto Undertaker extensions to improve password security
