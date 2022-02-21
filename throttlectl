@@ -31,8 +31,8 @@ config_help() {
 
 throttle_system() {
   # ENERGY_PERF_BIAS
-  [[ -n "$(command -v x86_energy_perf_policy)" ]] && \
-    x86_energy_perf_policy "${ENERGYPERF}" &
+  [[ -n "$(ls /sys/devices/system/cpu/cpu*/power/energy_perf_bias 2> /dev/null)" ]] && \
+    printf "${ENERGYPERF}" | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias > /dev/null 2>&1 &
 
   # Virtual Memory (Swap)
   [[ "$(sysctl -n vm.laptop_mode)" == "${LAPTOP}" ]] || \
@@ -63,14 +63,14 @@ throttle_system() {
     [[ "${CONTROL}" == "auto" ]] && \
       [[ -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" ]] && \
         continue ;  CONTROLS+="${i} "; done
-  [[ -n "${CONTROLS}" ]] && printf "${CONTROL}" | tee "${CONTROLS}" > /dev/null 2>&1 &
+  [[ -n "${CONTROLS}" ]] && printf "${CONTROL}" | tee ${CONTROLS} > /dev/null 2>&1 &
 
   # USB Autosuspend (with exceptions for devices by VID:PID)
   for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do \
     [[ "${AUTOSUSPEND}" == "1" ]] && \
       [[ -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" ]] && \
         continue ;  AUTOSUSPENDS+="${i} "; done
-  [[ -n "${AUTOSUSPENDS}" ]] && printf -- "${AUTOSUSPEND}" | tee "${AUTOSUSPENDS}" > /dev/null 2>&1 &
+  [[ -n "${AUTOSUSPENDS}" ]] && printf -- "${AUTOSUSPEND}" | tee ${AUTOSUSPENDS} > /dev/null 2>&1 &
 
   # Powersaving for modules
   [[ -n "$(ls /sys/module/*/parameters/power_save 2> /dev/null)" ]] && \
@@ -97,9 +97,9 @@ throttle_system() {
 }
 
 check_system() {
-  [[ -n "$(command -v x86_energy_perf_policy)" ]] && \
     printf "\nEnergy Perf Bias\n" && \
-    x86_energy_perf_policy -r #SUID
+  for i in /sys/devices/system/cpu/cpu*/power/energy_perf_bias; do \
+    printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/devices/system/cpu/||g; s|/.*||g; N;s|\n|\t|'
 
   echo -e "\nVirtual Memory (Swap)\n/proc/sys/vm/\n"\
           "laptop_mode\t\t\t$(cat /proc/sys/vm/laptop_mode)\n"\
