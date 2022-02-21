@@ -2,7 +2,7 @@
 
 pkgname=teamspeak
 pkgver=5.0.0beta68.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software for quality voice communication via the Internet"
 url="http://www.teamspeak.com"
 license=('custom')
