@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.2.1.r48.g01e0609a
+pkgver=3.2.1.r80.g2acddd29
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -8,7 +8,10 @@ url='https://86box.net/'
 license=('GPL2')
 depends=('alsa-lib' 'faudio' 'freetype2' 'libpng' 'libslirp' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('git' 'cmake>=3.16' 'qt6-tools')
-optdepends=('86box-roms-git: ROM files')
+optdepends=(
+    '86box-roms-git: ROM files'
+    'libpcap: Networking not limited to TCP/IP'
+)
 provides=('86box')
 conflicts=('86box')
 source=(
