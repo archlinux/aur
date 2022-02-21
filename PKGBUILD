@@ -1,5 +1,6 @@
+# Maintainer: Hekuran https://github.com/narukeh
 # Contributor: Ondřej Šponar
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lexend-deca-git
 pkgver=r105.57e6c14
