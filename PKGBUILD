@@ -3,7 +3,7 @@
 
 pkgname=wesnoth-devel
 #XXX: when changing major version (i.e. 1.15 to 1.1X) remeber to updated the occurences in build() and package()
-pkgver=1.15.18
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i486' 'i686' 'pentium4' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -38,7 +38,7 @@ source=("https://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.t
         "wesnothd-devel.service"
         "wesnoth-devel.appdata.xml")
 
-sha256sums=('71b9cb2f0e3d60632041947bc19e55646a840cf13d143d45fd1c1486bdb13fec'
+sha256sums=('881c0dd6a528b18f03a8128732141958b1a751016b81784ce4b9159e69955165'
          '3631b4c1eda6c2099e43272f2a26a8a3e897b9541a395ebeb9a1b8b3753a647d'
          '196cd09c73c6503b9caef7c47bb61d0243c10e9b15daa6b3aff437f7ad03448a'
          '98fbd8bafff165c45d0a1eb23a500108e4ce7c8ed32b9abc9bf1c3179e1d3491'
@@ -69,7 +69,7 @@ build() {
   #the option build=debug can be useful if the game crashes and you would like to report a bug
   scons jobs=4 desktop_entry=False prefix=/usr version_suffix=-devel \
   docdir=/usr/share/doc/wesnoth-devel fifodir=/run/wesnothd-devel \
-  prefsdir=.local/share/wesnoth/1.15 \
+  prefsdir=.local/share/wesnoth/1.17 \
   appdata_file=False enable_lto=True wesnoth wesnothd
 }
 
@@ -94,7 +94,7 @@ package(){
   # add suffix to manpages (IMPORTANT: .6 is the file extension!!!) and copy them in the right directory
   for filename in "$pkgdir"/usr/share/man/{,*/}man6/wesnoth{,d}.6
     do
-      mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.15.6
+      mv "$filename" $(dirname $filename)/$(basename $filename .6)-1.17.6
   done
 
   # setting dist file
