@@ -1,5 +1,5 @@
 pkgbase = linux-ck-fbcondecor
-	pkgver = 5.7.15
+	pkgver = 5.16.10
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -7,50 +7,44 @@ pkgbase = linux-ck-fbcondecor
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.15.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.7.15.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.16.10.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.16.10.tar.sign
 	source = config
-	source = enable_additional_cpu_optimizations-20200615.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20200615.tar.gz
-	source = http://ck.kolivas.org/patches/5.0/5.7/5.7-ck1/patch-5.7-ck1.xz
-	source = unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch
-	source = unfuck-ck1-fix-suspend-to-ram.patch::https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch
-	source = 0000-sphinx-workaround.patch
+	source = more-uarches-20211114.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/20211114.tar.gz
+	source = xanmod-patches-from-ck-6b08df20f31708099a7fbccf5448958b4836118f.tar.gz::https://github.com/xanmod/linux-patches/archive/6b08df20f31708099a7fbccf5448958b4836118f.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-	source = 0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-	source = 0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-	source = fix_ck1_for_5.7.14.patch
-	source = fbcondecor-5.7.patch
+	source = 0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+	source = 0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
+	source = 0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
+	source = fbcondecor-5.16.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	b2sums = d62cb30a94b62f8ef63d20aed5ad734343bda97bcfda72ea6e054622e0beaade87dcd78dee0f6288bbe4babc3e9956f926e89ba0e9c2b64b020d454daab60dc7
+	b2sums = 6394d715c765e27aafa3ef7ba34fb17522eb14c5e004b8ab54eb31b55bcb782205d516cdef5f7204739890642289cd1f2ef8ac430a7ee63698ccf3b3d7b0b118
 	b2sums = SKIP
-	b2sums = 6c58b015f662070db41cc3143ca645c410c393b9704acd4ff39ad345338cf8476929b11eedf213947016d17b4bd295af2fa96626def4b64f8de64dd27cdb8f3b
-	b2sums = c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c
-	b2sums = 29b2530e91a7c0f75c47d75361a94ec92fec398cef1b3e213e97c8f9e0ed210711c4c63ae7717f59273105a83e30397cbd5b7252cb94c06d9b328a24c70ad444
-	b2sums = 84c9438120100bb5b21122a29344b9e818514d94a31b6d57519a6e25385cb7f91a7f87c930da55c828c7a4330959a94b8a3a3d56773c46b335e1380cd00180b1
-	b2sums = 5dfb38f2096f27cf436afa6ac41d432f4e23295deb26d12146b31c57db85a8be59819f08f9c5197183c26c557b32e967edded22206c1abb9b89b83e61450ec5c
-	b2sums = b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95
-	b2sums = cfac70bc43305a6dda6b812092da4e947bf91866a24fa62ecad40727e39cf9a54cc41fae0f9d6477e1b37731e39bce12a737ea421056a650b7f14236a8b3f870
-	b2sums = 3fb9b66e85cf1a6921dab85dc831a5f1a97e61bbbec3bcfe191962e52da8481876fe6599f7884265e9a5d9773baa31ae3770e954672f75a7cf62b62fdb9b985a
-	b2sums = b7c825b9606dcb10a68a1efabfe1b8eeb8e2b0a1737fd0a263475729501095f877b00f5132c0ad3a2a9c1515572145f5dc7cbd290ded7be2abbc5210015604df
-	b2sums = 5d4275b060aac58206c5a76b554168dbcb95b2e469bdad6de78c8815d34eb970483f36a18b7343121dc70358c447d6fd66e30f64cf8c429656816aa8dd42db38
-	b2sums = 08489736213ca6180397f10cfa6e9b78697dc1ceaf8cf26a762733c41f4117d999d85d7630316da8b03e1d037d77bac943c824fccbd7b53591889279aa2a675c
+	b2sums = f7fd63b967a0cded818feb3addacdf8508566fd95c3b6e93666e95683f879d407361b92ce81ba67b0779bbd1777ba09a2c0e0c72576621db3b4bcf53829656cf
+	b2sums = 534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d
+	b2sums = 7e12da62ddc8535b044f57447e15b550dc2d1421bba4fc830dfad7b328b01f21190f63c5534b9af6a8c09f56bfb9c21014b07645569a6c7b93b950aca07ade5a
+	b2sums = 3a5138cc28ad21dd1dbe867bc90f89bc85fc4f8a778af431be04eb392e3b8b0dc2b42936a2b6e3cfc37735f5c0843e0cea7be4749dec26a2a24d6b79ef834cd4
+	b2sums = 822af62f3b8708e53579e523086594211fcf35309527451bf89bb2ef886c0ff410f88b1c568cf6dd3f6079f68e4009ce3474c8de77ecb8bb888eb58c9879589a
+	b2sums = 7d7b38b9c4e63c3465f1e7eb65199a9e57f93ae8c55132716960a9b2391436698615027ba953c33024f8da08d7fd0bfbc1ca1799f8566a55a2422f6126a627c9
+	b2sums = bca4fc5afe454e5dd8c1e8f667747a56bc5915b43b04c08753f4922087a92f545071c41d57218b52364c9030cfc077104715c7884c20e5db44a0939032d7957e
+	b2sums = b35608a55d31e2b9d08849efd3182afeacabab7e48d1fc622bc7d237e7d2db49bc8790b60bbe87b1a197ce269a2076dfbde7fa234bd5ba0b2e3fd2fce26c4008
 
 pkgname = linux-ck-fbcondecor
-	pkgdesc = The Linux-ck-fbcondecor kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler and the fbcondecor framebuffer decoration support.
+	pkgdesc = The Linux-ck-fbcondecor kernel and modules with ck's hrtimer patches and the fbcondecor framebuffer decoration support.
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck-fbcondecor=5.7.15
-	provides = linux-ck=5.7.15
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
 
 pkgname = linux-ck-fbcondecor-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck-fbcondecor kernel
 	depends = linux-ck-fbcondecor
-	provides = linux-ck-headers=5.7.15
-	provides = linux-ck-fbcondecor-headers=5.7.15
-	provides = linux-headers=5.7.15
-

@@ -18,45 +18,9 @@ _makeoldconfig=
 #
 # Note - the march=native option is unavailable by this method, use the nconfig
 # and manually select it.
-#
-#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
-#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3)
-#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10)
-#  4. AMD Barcelona (MBARCELONA)
-#  5. AMD Bobcat (MBOBCAT)
-#  6. AMD Jaguar (MJAGUAR)
-#  7. AMD Bulldozer (MBULLDOZER)
-#  8. AMD Piledriver (MPILEDRIVER)
-#  9. AMD Steamroller (MSTEAMROLLER)
-#  10. AMD Excavator (MEXCAVATOR)
-#  11. AMD Zen (MZEN)
-#  12. AMD Zen 2 (MZEN2)
-#  13. Intel P4 / older Netburst based Xeon (MPSC)
-#  14. Intel Atom (MATOM)
-#  15. Intel Core 2 (MCORE2)
-#  16. Intel Nehalem (MNEHALEM)
-#  17. Intel Westmere (MWESTMERE)
-#  18. Intel Silvermont (MSILVERMONT)
-#  19. Intel Goldmont (MGOLDMONT)
-#  20. Intel Goldmont Plus (MGOLDMONTPLUS)
-#  21. Intel Sandy Bridge (MSANDYBRIDGE)
-#  22. Intel Ivy Bridge (MIVYBRIDGE)
-#  23. Intel Haswell (MHASWELL)
-#  24. Intel Broadwell (MBROADWELL)
-#  25. Intel Skylake (MSKYLAKE)
-#  26. Intel Skylake X (MSKYLAKEX)
-#  27. Intel Cannon Lake (MCANNONLAKE)
-#  28. Intel Ice Lake (MICELAKE)
-#  29. Intel Cascade Lake (MCASCADELAKE)
-#  30. Intel Cooper Lake (MCOOPERLAKE)
-#  31. Intel Tiger Lake (MTIGERLAKE)
-#  32. Generic-x86-64 (GENERIC_CPU)
-#  33. Native optimizations autodetected by GCC (MNATIVE)
-
-_subarch=
-
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
+
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
@@ -64,62 +28,102 @@ _subarch=
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
+# Optionally select a sub architecture by number or leave blank which will
+# require user interaction during the build. Note that the generic (default)
+# option is 36.
+#
+#  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
+#  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3) (NEW)
+#  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10) (NEW)
+#  4. AMD Barcelona (MBARCELONA) (NEW)
+#  5. AMD Bobcat (MBOBCAT) (NEW)
+#  6. AMD Jaguar (MJAGUAR) (NEW)
+#  7. AMD Bulldozer (MBULLDOZER) (NEW)
+#  8. AMD Piledriver (MPILEDRIVER) (NEW)
+#  9. AMD Steamroller (MSTEAMROLLER) (NEW)
+#  10. AMD Excavator (MEXCAVATOR) (NEW)
+#  11. AMD Zen (MZEN) (NEW)
+#  12. AMD Zen 2 (MZEN2) (NEW)
+#  13. AMD Zen 3 (MZEN3) (NEW)
+#  14. Intel P4 / older Netburst based Xeon (MPSC)
+#  15. Intel Core 2 (MCORE2)
+#  16. Intel Atom (MATOM)
+#  17. Intel Nehalem (MNEHALEM) (NEW)
+#  18. Intel Westmere (MWESTMERE) (NEW)
+#  19. Intel Silvermont (MSILVERMONT) (NEW)
+#  20. Intel Goldmont (MGOLDMONT) (NEW)
+#  21. Intel Goldmont Plus (MGOLDMONTPLUS) (NEW)
+#  22. Intel Sandy Bridge (MSANDYBRIDGE) (NEW)
+#  23. Intel Ivy Bridge (MIVYBRIDGE) (NEW)
+#  24. Intel Haswell (MHASWELL) (NEW)
+#  25. Intel Broadwell (MBROADWELL) (NEW)
+#  26. Intel Skylake (MSKYLAKE) (NEW)
+#  27. Intel Skylake X (MSKYLAKEX) (NEW)
+#  28. Intel Cannon Lake (MCANNONLAKE) (NEW)
+#  29. Intel Ice Lake (MICELAKE) (NEW)
+#  30. Intel Cascade Lake (MCASCADELAKE) (NEW)
+#  31. Intel Cooper Lake (MCOOPERLAKE) (NEW)
+#  32. Intel Tiger Lake (MTIGERLAKE) (NEW)
+#  33. Intel Sapphire Rapids (MSAPPHIRERAPIDS) (NEW)
+#  34. Intel Rocket Lake (MROCKETLAKE) (NEW)
+#  35. Intel Alder Lake (MALDERLAKE) (NEW)
+#  36. Generic-x86-64 (GENERIC_CPU)
+#  37. Generic-x86-64-v2 (GENERIC_CPU2) (NEW)
+#  38. Generic-x86-64-v3 (GENERIC_CPU3) (NEW)
+#  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
+#  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
+#  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
+_subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
-
 pkgbase=linux-ck-fbcondecor
-pkgver=5.7.15
+pkgver=5.16.10
 pkgrel=1
-_ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(
-  bc kmod libelf
+  bc kmod libelf        cpio perl tar xz
 )
 options=('!strip')
-_ckpatch="patch-5.7-ck${_ckpatchversion}"
-_gcc_more_v='20200615'
+
+# https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
+# thankfully xanmod keeps the hrtimer patches up to date
+_commit=6b08df20f31708099a7fbccf5448958b4836118f
+_xan=linux-5.15.y-xanmod
+
+_gcc_more_v=20211114
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.7/5.7-ck${_ckpatchversion}/$_ckpatch.xz"
-  "unfuck-ck1.patch::https://github.com/ckolivas/linux/commit/0b69e633d6b0b08ae8547dc4099c8c0985019553.patch"
-  "unfuck-ck1-fix-suspend-to-ram.patch::https://github.com/zen-kernel/zen-kernel/commit/fb7e2cfaf61cf5f9c2336331e73296f455bd2d51.patch"
-  0000-sphinx-workaround.patch
+  "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
+  "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
-  0003-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
-  fix_ck1_for_5.7.14.patch
-  fbcondecor-5.7.patch
+  0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
+  0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
+  fbcondecor-5.16.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('d62cb30a94b62f8ef63d20aed5ad734343bda97bcfda72ea6e054622e0beaade87dcd78dee0f6288bbe4babc3e9956f926e89ba0e9c2b64b020d454daab60dc7'
+b2sums=('6394d715c765e27aafa3ef7ba34fb17522eb14c5e004b8ab54eb31b55bcb782205d516cdef5f7204739890642289cd1f2ef8ac430a7ee63698ccf3b3d7b0b118'
         'SKIP'
-        '6c58b015f662070db41cc3143ca645c410c393b9704acd4ff39ad345338cf8476929b11eedf213947016d17b4bd295af2fa96626def4b64f8de64dd27cdb8f3b'
-        'c8d0697f99fe6105815217b8ec059d8f587415ea8dd2b88a65e1087feedf697341a64cd56810fde9e7aeada79125fc8235faccc7e7b06492c099e27a8abbe99c'
-        '29b2530e91a7c0f75c47d75361a94ec92fec398cef1b3e213e97c8f9e0ed210711c4c63ae7717f59273105a83e30397cbd5b7252cb94c06d9b328a24c70ad444'
-        '84c9438120100bb5b21122a29344b9e818514d94a31b6d57519a6e25385cb7f91a7f87c930da55c828c7a4330959a94b8a3a3d56773c46b335e1380cd00180b1'
-        '5dfb38f2096f27cf436afa6ac41d432f4e23295deb26d12146b31c57db85a8be59819f08f9c5197183c26c557b32e967edded22206c1abb9b89b83e61450ec5c'
-        'b4e1377d97ad7e8144d6e55b6d43731e3271a5aec65b65ca6d81026a95f15f549b9303fb3c6f492099ca691e3f65f4cf7f0c3aa742df03b396d7f6d81813aa95'
-        'cfac70bc43305a6dda6b812092da4e947bf91866a24fa62ecad40727e39cf9a54cc41fae0f9d6477e1b37731e39bce12a737ea421056a650b7f14236a8b3f870'
-        '3fb9b66e85cf1a6921dab85dc831a5f1a97e61bbbec3bcfe191962e52da8481876fe6599f7884265e9a5d9773baa31ae3770e954672f75a7cf62b62fdb9b985a'
-        'b7c825b9606dcb10a68a1efabfe1b8eeb8e2b0a1737fd0a263475729501095f877b00f5132c0ad3a2a9c1515572145f5dc7cbd290ded7be2abbc5210015604df'
-        '5d4275b060aac58206c5a76b554168dbcb95b2e469bdad6de78c8815d34eb970483f36a18b7343121dc70358c447d6fd66e30f64cf8c429656816aa8dd42db38'
-        '08489736213ca6180397f10cfa6e9b78697dc1ceaf8cf26a762733c41f4117d999d85d7630316da8b03e1d037d77bac943c824fccbd7b53591889279aa2a675c')
+        'f7fd63b967a0cded818feb3addacdf8508566fd95c3b6e93666e95683f879d407361b92ce81ba67b0779bbd1777ba09a2c0e0c72576621db3b4bcf53829656cf'
+        '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
+        '7e12da62ddc8535b044f57447e15b550dc2d1421bba4fc830dfad7b328b01f21190f63c5534b9af6a8c09f56bfb9c21014b07645569a6c7b93b950aca07ade5a'
+        '3a5138cc28ad21dd1dbe867bc90f89bc85fc4f8a778af431be04eb392e3b8b0dc2b42936a2b6e3cfc37735f5c0843e0cea7be4749dec26a2a24d6b79ef834cd4'
+        '822af62f3b8708e53579e523086594211fcf35309527451bf89bb2ef886c0ff410f88b1c568cf6dd3f6079f68e4009ce3474c8de77ecb8bb888eb58c9879589a'
+        '7d7b38b9c4e63c3465f1e7eb65199a9e57f93ae8c55132716960a9b2391436698615027ba953c33024f8da08d7fd0bfbc1ca1799f8566a55a2422f6126a627c9'
+        'bca4fc5afe454e5dd8c1e8f667747a56bc5915b43b04c08753f4922087a92f545071c41d57218b52364c9030cfc077104715c7884c20e5db44a0939032d7957e'
+        'b35608a55d31e2b9d08849efd3182afeacabab7e48d1fc622bc7d237e7d2db49bc8790b60bbe87b1a197ce269a2076dfbde7fa234bd5ba0b2e3fd2fce26c4008')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  # changes from 5.7.13 to 5.7.14 breaks ck1
-  patch -Np1 -i fix_ck1_for_5.7.14.patch
-
   cd linux-${pkgver}
 
   echo "Setting version..."
@@ -139,43 +143,51 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
 
+  # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
+  # and can easily overwhelm a system with 32 GB of memory using a tmpfs build
+  # partition ... this was introduced by FS#66260, see:
+  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
+  scripts/config --disable CONFIG_DEBUG_INFO
+  scripts/config --disable CONFIG_CGROUP_BPF
+  scripts/config --disable CONFIG_BPF_LSM
+  scripts/config --disable CONFIG_BPF_PRELOAD
+  scripts/config --disable CONFIG_BPF_LIRC_MODE2
+  scripts/config --disable CONFIG_BPF_KPROBE_OVERRIDE
+
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
-  sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
+  scripts/config --enable CONFIG_PSI_DEFAULT_DISABLED
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
-  sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
-      -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
+  scripts/config --disable CONFIG_LATENCYTOP
+  scripts/config --disable CONFIG_SCHED_DEBUG
 
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
-  sed -i -e 's/CONFIG_KVM_WERROR=y/# CONFIG_KVM_WERROR is not set/' ./.config
+  scripts/config --disable CONFIG_KVM_WERROR
+  
+  # ck recommends 1000 Hz tick and the hrtimer patches in lieu of ck1
+  scripts/config --enable CONFIG_HZ_1000
 
-  # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../${_ckpatch}"
+  # these are ck's htrimer patches
+  echo "Patching with ck hrtimer patches..."
 
-  # disable CONFIG_DEBUG_INFO=y at build time introduced in this commit
-  # https://git.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/linux&id=663b08666b269eeeeaafbafaee07fd03389ac8d7
-  sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
-      -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
-
-  echo "Patching with ck patchset..."
-
-  # ck patchset itself
-  patch -Np1 -i ../"${_ckpatch}"
-  patch -Np1 -i ../unfuck-ck1.patch
-  patch -Np1 -i ../unfuck-ck1-fix-suspend-to-ram.patch
+  for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
+    patch -Np1 -i $i
+  done
 
 # Patch source to enable frame buffer decorations.
   msg "Patching source with fbcondecor patch."
-  patch -Np1 -i "${srcdir}/fbcondecor-5.7.patch"
+  patch -Np1 -i "${srcdir}/fbcondecor-5.16.patch"
 
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
   make olddefconfig
+  diff -u ../config .config || :
 
   # https://github.com/graysky2/kernel_gcc_patch
+  # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v10.1+_kernel_v5.7+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -206,6 +218,9 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
+
+  # uncomment if you want to build with distcc
+  ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
 }
 
 build() {
@@ -214,11 +229,12 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler and the fbcondecor framebuffer decoration support."
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer patches and the fbcondecor framebuffer decoration support."
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=("linux-ck-fbcondecor=${pkgver}" "linux-ck=${pkgver}")
+  #provides=("linux-ck-fbcondecor=${pkgver}" "linux-ck=${pkgver}")
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   #groups=('ck-generic')
 
   cd linux-${pkgver}
@@ -250,8 +266,8 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for ${pkgbase/linux/Linux} kernel"
-  depends=('linux-ck-fbcondecor') # added to keep kernel and headers packages matched
-  provides=("linux-ck-headers=${pkgver}" "linux-ck-fbcondecor-headers=${pkgver}" "linux-headers=${pkgver}")
+  depends=("$pkgbase") # added to keep kernel and headers packages matched
+#  provides=("linux-ck-headers=${pkgver}" "linux-ck-fbcondecor-headers=${pkgver}" "linux-headers=${pkgver}")
   #groups=('ck-generic')
 
   cd linux-${pkgver}
@@ -264,11 +280,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -278,13 +294,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -328,7 +347,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
