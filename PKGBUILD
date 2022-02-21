@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=ragg
-_cranver=1.2.1
+_cranver=1.2.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -17,15 +17,21 @@ depends=(
     r-systemfonts
     r-textshaping
 )
+checkdepends=(r-testthat ttf-font)
 optdepends=(r-covr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('c10b1b226d5c3c910d84afd0399d1c51b728c6119709f598a794d7bae2b4b321'
+sha256sums=('3b6151c93a79093f9e638448db8abf88a57fd7b1e1093867cc0f6b492bbf83e0'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
   mkdir -p build
   R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
+
+check() {
+  cd "${_cranname}/tests"
+  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
