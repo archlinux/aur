@@ -9,7 +9,6 @@ pkgbase = python-netaudio
 	depends = python
 	depends = python-cleo
 	depends = python-netifaces
-	depends = python-pip
 	depends = python-twisted
 	depends = python-zeroconf
 	source = https://files.pythonhosted.org/packages/e5/a7/f81b2f82d3dccb0b7ad7ddbf3619746594b8345b78c4c0adbeea6c97bb09/netaudio-0.0.3.tar.gz
