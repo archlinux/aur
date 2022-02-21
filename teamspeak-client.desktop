@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+StartupNotify=false
+Name=TeamSpeak
+Icon=teamspeak-client
+Comment=TeamSpeak Voice Communication Client
+Categories=Audio;Chat;Network;
+StartupWMClass=TeamSpeak
+MimeType=x-scheme-handler/ts3server;x-scheme-handler/teamspeak;
+Exec=teamspeak %u

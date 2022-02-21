@@ -65,18 +65,13 @@ depends=('alsa-lib'
 	'zstd')
 optdepends=('libpulse')
 arch=('x86_64')
-source=("teamspeak-client-$pkgver.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1644243684.patch")
-sha512sums=('591e97baecf031af31499c6503b9ab682abac80b3b2e80817f33281aabaefc13aa7d35ba77ac2e998e6b7f080e8e17d1aab48ef9c8d8cd3085901e8d502a961f')
+source=("teamspeak-client-$pkgver.tar.xz::http://update.teamspeak.com/linux/x64/latest/0-1644243684.patch"
+	"teamspeak-client.desktop")
+sha512sums=('591e97baecf031af31499c6503b9ab682abac80b3b2e80817f33281aabaefc13aa7d35ba77ac2e998e6b7f080e8e17d1aab48ef9c8d8cd3085901e8d502a961f'
+            '28f6cfbb842cd25d51819eccaa282aa0edd1e5b37e7eb14ef7e7e07723bd83fa7b3babc8f303021f83d3591a7d7f4db824f770c86d1b6a7326466e256cf787d0')
 # Following authorization token is hard-coded. It is not bound to any account, but without it you will get 403 Forbidden error from any request to update.teamspeak.com
 # The archive starts at offset of 200 bytes
 DLAGENTS=("http::/usr/bin/curl --basic -u teamspeak5:LFZ6Z^kvGrnX~an,\$L#4gxL3'a7/a[[&_7>at}A3ARRGY -A teamspeak.downloader/1.0 -C 200 -o %o %u")
-
-prepare() {
-  # Fix not functional desktop activator
-  # This is done automatically by built-in downloader
-  # and points to installation
-  echo "Exec=teamspeak %u" >> "$srcdir/teamspeak-client.desktop"
-}
 
 package() {
   install -d "${pkgdir}/usr/bin/"
