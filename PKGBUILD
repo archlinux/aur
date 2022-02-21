@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2367
+pkgver=1.7.2379
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -54,6 +54,8 @@ git+https://github.com/libsdl-org/SDL.git
 )
 sha256sums=(SKIP)
 
+options=(debug !strip)
+
 pkgver()
 {
   cd pcsx2
@@ -80,7 +82,7 @@ build()
   cd build
 
   cmake ../pcsx2 \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_YAML=TRUE \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
