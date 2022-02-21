@@ -1,25 +1,27 @@
+# Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
-pkgbase=datagrip
-pkgname=(datagrip datagrip-jre)
-pkgver=2021.3.4
+pkgbase=datagrip-eap
+_pkgbase=${pkgbase/-eap/}
+pkgname=(datagrip-eap datagrip-eap-jre)
+pkgver=221.4165.70
 pkgrel=1
-pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
+pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity (EAP)'
 arch=('any')
 url='https://www.jetbrains.com/datagrip/'
 license=('custom:jetbrains')
 depends=('glib2')
 conflicts=('0xdbe' '0xdbe-eap')
 options=('!strip')
-source=("https://download.jetbrains.com/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
-        jetbrains-datagrip.desktop
+source=("https://download.jetbrains.com/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz"
+        jetbrains-datagrip-eap.desktop
         LICENSE)
-b2sums=('a5ab6bae96830a6ca3dc6971a0a2af1c3b672ec1bbb5964b27db6dbecd5b3a0f84c2a87850eb849f0fd88d0f53aef4e11d42ee9c180f806f3c723e41b55e8d32'
-        '780f396da1c57c872b17e10576f2671346ad7c0442efec77369428b465befe772b5fd2c9c81a46ffe458472c2550082fb12adaf9d39b51fb41499bfb1bbca441'
+b2sums=('4cd76d4accdbf0a742676b3077e4ffbb1fff06464c5edcc0712614fb2c20fe2a2c69ca3c9a1a6892b73673869eb997241fa8c2bf9b1ddab9b44a059c39d998b6'
+        '780569cb12b9f5d2475363c7b9c28d903f5a79806aaeea634973664b7cdac0ef281519024fa784b20d7e0062bf9b69e2bca3036bca58e6ee43a475609ea42a1c'
         'dadaf0e67b598aa7a7a4bf8644943a7ee8ebf4412abb17cd307f5989e36caf9d0db529a0e717a9df5d9537b10c4b13e814b955ada6f0d445913c812b63804e77')
 
-package_datagrip() {
-  optdepends=('datagrip-jre: JetBrains custom Java Runtime (Recommended)'
+package_datagrip-eap() {
+  optdepends=('datagrip-eap-jre: JetBrains custom Java Runtime (Recommended)'
               'java-runtime: JRE - Required if datagrip-jre is not installed')
 
   install -dm755 "${pkgdir}"/opt/
@@ -30,13 +32,13 @@ package_datagrip() {
   cp -a "${srcdir}"/DataGrip-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
-  ln -s /opt/${pkgbase}/bin/${pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
+  ln -s /opt/${pkgbase}/bin/${_pkgbase}.sh "${pkgdir}"/usr/bin/${pkgbase}
   install -m644 "${srcdir}"/jetbrains-${pkgbase}.desktop "${pkgdir}"/usr/share/applications/
-  install -m644 "${pkgdir}"/opt/${pkgbase}/bin/${pkgbase}.svg "${pkgdir}"/usr/share/pixmaps/${pkgbase}.svg
+  install -m644 "${pkgdir}"/opt/${pkgbase}/bin/${_pkgbase}.svg "${pkgdir}"/usr/share/pixmaps/${pkgbase}.svg
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.txt
 }
 
-package_datagrip-jre() {
+package_datagrip-eap-jre() {
   pkgdesc='JBR (JetBrains Runtime) for DataGrip - a patched JRE'
   url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 
