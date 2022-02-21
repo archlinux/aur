@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=hotwire-rs
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="GTK application that leverages Wireshark and tshark to capture traffic for analysis"
 arch=('x86_64')
@@ -10,10 +10,11 @@ license=('MIT')
 depends=('gtk3' 'tcpdump' 'wireguard-tools')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2cc0e13677d069293b272a451c9a51ca702b34511d4206b1d99e8152ff13127e')
+sha256sums=('fbb68b545800cc334292f6f649abcb5fe19c2eeac0853715d54df0c759c711f5')
 
 prepare() {
 	cd "hotwire-$pkgver"
+	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
