@@ -9,8 +9,8 @@
 
 pkgname=rider-eap
 eapver=2022.1
-eaprelease=2
-pkgver=221.4165.164
+eaprelease=3
+pkgver=221.4501.83
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
 pkgrel=1
 epoch=1
@@ -26,7 +26,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop"
         "ResharperHost-runtime-folder.sh")
-sha256sums=('2d4b17bf1e1ac7c63abbd028d148bd6e25951191a2985252aa659c786cd41cb2'
+sha256sums=('b85fe0c81a192c29bb35a454893b82bb9c98de13082948774e76195003ee4b01'
             'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf'
             '4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d')
 
