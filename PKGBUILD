@@ -3,17 +3,16 @@
 pkgname=flrig-git
 _pkgname=flrig
 __pkgname=fldigi
-pkgver=1.3.28.r0.gb05b001
+pkgver=1.4.04.r0.g047aadb
 #.r0.gb05b001
-pkgrel=1
+pkgrel=2
 pkgdesc="Ham Radio - Xcvr control program - GIT version"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/p/fldigi/flrig/ci/master/tree/"
+url="http://www.w1hkj.com/flrig-help/index.html"
 license=('GPL')
-depends=('fltk' 'flxmlrpc')
+depends=('fltk' 'flxmlrpc>=1.0.1' 'systemd-libs' 'hamradio-menus')
 makedepends=('git' 'autoconf' 'automake' 'pkg-config')
-optdepends=('hamradio-menus: XDG compliant menuing'
-	    'fldigi: for digital mode interface')
+optdepends=('fldigi: for digital mode interface')
 provides=('flrig')
 conflicts=('flrig')
 source=("$_pkgname::git://git.code.sf.net/p/$__pkgname/$_pkgname#branch=master")
