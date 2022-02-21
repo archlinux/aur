@@ -1,6 +1,6 @@
 pkgbase = freshrss
 	pkgdesc = A free, self-hostable aggregator…
-	pkgver = 1.19.1
+	pkgver = 1.19.2
 	pkgrel = 1
 	url = http://freshrss.org/
 	install = freshrss.install
@@ -13,7 +13,7 @@ pkgbase = freshrss
 	optdepends = mysql: Database server to run FreshRSS
 	optdepends = postgresql: Database server to run FreshRSS
 	optdepends = sqlite: Database server to run FreshRSS
-	source = freshrss-1.19.1.tar.gz::https://github.com/FreshRSS/FreshRSS/archive/1.19.1.tar.gz
-	sha256sums = 32fd540e12380f755cf9e169f8bb405fcd1033b96e78460a29d00948e3a7029c
+	source = freshrss-1.19.2.tar.gz::https://github.com/FreshRSS/FreshRSS/archive/1.19.2.tar.gz
+	sha256sums = 69c81461649f41dcbc2ff8a0dadfd235cb5227ca3d32f9a2a2a35b94a4b41949
 
 pkgname = freshrss
