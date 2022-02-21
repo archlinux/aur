@@ -25,7 +25,7 @@ package() {
 
   install -Dm644 "${srcdir}/$_android/NOTICE.txt" usr/share/licenses/$pkgname/NOTICE.txt
 
-  target="opt/$_sdk/build-tools/$_ver"
+  target="opt/$_sdk/build-tools/$_ver.0.0"
   mkdir -p "$target"
   cp -r "$srcdir/$_android/"* "$target"
   chmod +Xr -R "$target"
