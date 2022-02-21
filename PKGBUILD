@@ -15,7 +15,7 @@ source_x86_64=("https://gitlab.com/foxtelgo/binaries/"$pkgver"-"$pkgrel"/-/raw/m
                 
 
 package() {
-    for dir in FoxtelGo-*/ ; do mv "${dir}" "$_pkgname" ;done
+    mv FoxtelGO-linux-x64 $_pkgname  
     cd $_pkgname
     install -dm755 "$pkgdir/opt/FoxtelGo"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
