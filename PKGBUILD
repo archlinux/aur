@@ -1,15 +1,15 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=amdgpud
-pkgver=1.0.8
-_commit=01b4299
+pkgver=1.0.9
+_commit=f757c28
 pkgrel=1
 pkgdesc="Fan control service for AMD GPUs"
 arch=('x86_64')
 url="https://github.com/eraden/amdgpud"
 license=('Apache' 'MIT')
-depends=('gcc-libs')
-makedepends=('cargo' 'git')
+depends=('gcc-libs' 'libxcb')
+makedepends=('cargo' 'cmake' 'git' 'shaderc')
 backup=("etc/$pkgname/config.toml")
 source=("$pkgname::git+$url#commit=$_commit?signed")
 sha256sums=('SKIP')
@@ -29,13 +29,15 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cd "$pkgname"
-	cargo build --release --frozen --target "$CARCH-unknown-linux-gnu" --all-features
+	cargo build --release --frozen --target "$CARCH-unknown-linux-gnu"
+	## use the line below if your system doesn't use wayland
+	# cargo build --release --frozen --target "$CARCH-unknown-linux-gnu" --no-default-features --features xorg-glium
 }
 
 check() {
 	export RUSTUP_TOOLCHAIN=stable
 	cd "$pkgname"
-	cargo test --frozen --all-features --target "$CARCH-unknown-linux-gnu"
+	cargo test --frozen --target "$CARCH-unknown-linux-gnu"
 }
 
 package() {
