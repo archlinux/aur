@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music
-pkgver=1.14.0
+pkgver=1.16.0
 pkgrel=1
 _nodeversion=14
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
@@ -14,7 +14,7 @@ optdepends=('libnotify: desktop notifications'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/th-ch/youtube-music/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('6535926ec9e52435b1082287e4870e00945dee9322f6a376c4b61e5d28c4c22b'
+sha256sums=('7b9bfa87e1e33b60125a229b4139e1fb92e749912ce3f1fc58b44facc6aa27c6'
             'a1d30cedc17ede48b7d627a3797a0918b7bd3c9062e9ed83d61f153c001c1ef8'
             '07af59376e13e5dae2e7e38fa09d734a5147d5c344b3aed84c2f3afe22b8af79')
 
