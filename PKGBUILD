@@ -20,7 +20,7 @@ _fragment=${FRAGMENT:-#branch=master}
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-develop-git
-pkgver=3.2.r112616.gcbdd5786404
+pkgver=3.2.r112750.g68586d2c183
 pkgrel=1
 pkgdesc="Development version of Blender (non-conflicting version)"
 changelog=blender.changelog
@@ -47,7 +47,6 @@ source=("git://git.blender.org/blender.git${_fragment}"
         SelectCudaComputeArch.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
-        openexr3.patch #fix build against openexr:3
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -56,8 +55,7 @@ sha256sums=('SKIP'
             'SKIP'
             '87c5ee85032bab83510db426ab28f7acfba893aefea2b523f2fd78f3b62c5348'
             '333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703'
-            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a'
-            '5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b')
+            'd587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a')
 
 pkgver() {
   blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
@@ -75,7 +73,7 @@ prepare() {
     git -C "$srcdir/blender" apply -v "${srcdir}"/SelectCudaComputeArch.patch
   fi
   ((DISABLE_USD)) || git -C "$srcdir/blender" apply -v "${srcdir}"/usd_python.patch
-  git -C "$srcdir/blender" apply -v "${srcdir}"/{embree,openexr3}.patch
+  git -C "$srcdir/blender" apply -v "${srcdir}"/embree.patch
 }
 
 build() {
