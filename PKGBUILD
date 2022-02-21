@@ -3,14 +3,14 @@
 # Contributor: Adam Nielsen <malvineous@shikadi.net>
 pkgname=smcroute
 pkgver=2.5.5
-pkgrel=2
-pkgdesc="A command line tool to manipulate the multicast routes of a UNIX kernel. It supports both IPv4 and IPv6 multicast routing."
+pkgrel=3
+pkgdesc="command line tool to manipulate kernel multicast routing"
 arch=('i686' 'x86_64')
 url="https://troglobit.com/smcroute.html"
 license=('GPL2')
 provides=('smcroute' 'mcsender')
 backup=('etc/smcroute.conf')
-depends=('libcap' 'bash')
+depends=('libcap' 'bash' 'libsystemd.so')
 source=("https://github.com/troglobit/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         'smcroute.conf'
         'smcroute.default')
