@@ -10,7 +10,7 @@ _lang=en-US
 pkgname=openoffice-bin
 _vmaj=4
 pkgver=$_vmaj.1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free and Open Productivity Suite"
 arch=('x86_64' 'i686')
 url="https://www.openoffice.org"
@@ -20,7 +20,8 @@ depends=('freetype2'
          'gtk2>=2.10.4'
          'hicolor-icon-theme'
          'desktop-file-utils'
-         'shared-mime-info')
+         'shared-mime-info'
+         'libxcrypt-compat')
 optdepends=('apr-util: adds apr support'
             'java-environment: adds java support'
             'gconf: adds additional gnome support'
@@ -28,7 +29,6 @@ optdepends=('apr-util: adds apr support'
             'mesa: for the OGLTrans extension of impress'
             'mime-types: provides /etc/mime.types'
             'nss: adds support for signed files/macros'
-            'openoffice-de-bin: adds additional German language pack'
             'python2: adds python support'
             'raptor1: adds rdf support'
             'sqlite: adds sqlite support')
