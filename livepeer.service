@@ -3,6 +3,9 @@ Description=Go-Livepeer Orchestrator and Transcoder service
 After=network.target
 Wants=network-online.target
 
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
 [Service]
 User=livepeer
 Group=livepeer
@@ -12,14 +15,8 @@ EnvironmentFile=/etc/go-livepeer/environment
 ExecStart=/usr/bin/livepeer $ARGS
 
 Restart=on-failure
-RestartSec=1
+RestartSec=5s
 
-ProtectHome=yes
-ProtectClock=yes
-PrivateDevices=yes
-ProtectHostname=yes
-NoNewPrivileges=yes
-ProtectSystem=strict
 RestrictRealtime=yes
 RestrictSUIDSGID=yes
 ProtectKernelLogs=yes
@@ -27,11 +24,8 @@ RestrictNamespaces=yes
 ProtectKernelModules=yes
 ProtectControlGroups=yes
 ProtectKernelTunables=yes
-SystemCallErrorNumber=EPERM
-ReadOnlyPaths=/etc/go-livepeer
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
-ReadWritePaths=/var/cache/livepeer /var/lib/livepeer
 
 [Install]
 WantedBy=default.target
