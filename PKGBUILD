@@ -3,12 +3,13 @@
 
 pkgname=cmst
 pkgver=2022.01.05
-pkgrel=1
+pkgrel=2
 pkgdesc="A QT based GUI front end for the connman connection manager"
 arch=('x86_64')
 url="https://github.com/andrew-bibb/cmst"
 license=('custom:MIT')
-depends=('qt5-base' 'connman' 'libxkbcommon-x11' 'hicolor-icon-theme')
+depends=('qt5-base' 'hicolor-icon-theme' 'connman')
+makedepends=('qt5-tools')
 source=("$url/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('6ddc0e3a702592ec98b80164aa2b5ad1edb66d3f8dce18a545f26a67a46dc13a')
 prepare() {
