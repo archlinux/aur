@@ -6,7 +6,7 @@ pkgname=python-pytorch-rocm
 _pkgname="pytorch"
 pkgver=1.10.2
 _pkgver=1.10.2
-pkgrel=2
+pkgrel=3
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'python-yaml' 'libuv'
          'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
          'python-typing_extensions')
-makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm-hip-sdk'
+makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm-hip-sdk' 'roctracer'
              'miopen' 'git' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
@@ -63,7 +63,8 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         use-system-libuv.patch
         fix-building-for-torchvision.patch
         fix_c10.patch
-        66219.patch)
+        66219.patch
+        https://github.com/pytorch/pytorch/commit/eb4e6ca30c2cd876007cd2dbbdea7f7803af0518.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -109,7 +110,8 @@ sha256sums=('SKIP'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
             '4d0d7da4a3fb099ed75f3007559fad04ac96eed87c523b274fb3bb6020e6b9b8'
-            'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee')
+            'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee'
+            'SKIP')
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -188,6 +190,9 @@ prepare() {
   # fix ideep/mkl-dnn
   patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch"
 
+  # fix rocm-version
+  patch -Np1 -i "${srcdir}/eb4e6ca30c2cd876007cd2dbbdea7f7803af0518.patch"
+
   # remove local nccl
   rm -rf third_party/nccl/nccl
   # also remove path from nccl module, so it's not checked
@@ -243,10 +248,6 @@ build() {
   # Apply changes needed for ROCm
   python tools/amd_build/build_amd.py
 
-  # Fix so amdip64 library ending with a dash
-  python setup.py build --cmake-only
-  sed -E -i 's#opt/rocm/hip/lib/libamdhip64\.so\.[0-9.]+-#opt/rocm/hip/lib/libamdhip64.so#' build/build.ninja
-
   # this horrible hack is necessary because the current release
   # ships inconsistent CMake which tries to build objects before
   # thier dependencies, build twice when dependencies are available
@@ -286,7 +287,7 @@ _package() {
 
 package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk miopen)
+  depends+=(rocm-hip-sdk roctracer miopen)
   replaces=(python-pytorch-opt-rocm)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
