@@ -2,7 +2,7 @@
 
 pkgname=ignition-common-3
 pkgver=3.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="https://ignitionrobotics.org/libs/common"
