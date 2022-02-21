@@ -1,4 +1,4 @@
-# Maintainer: Nxxx <nx dot tardis at gmail dot com>
+# Maintainer: Homalozoa <nx.tardis@gmail.com>
 
 pkgname=ignition-common-3
 pkgver=3.13.1
@@ -8,7 +8,7 @@ arch=('any')
 url="https://ignitionrobotics.org/libs/common"
 license=('Apache')
 groups=('development')
-depends=('ignition-math>=6' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg')
+depends=('ignition-math>=6' 'tinyxml2' 'freeimage' 'libutil-linux' 'gts' 'ffmpeg4.4')
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 provides=("ignition-common=$pkgver")

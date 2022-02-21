@@ -13,7 +13,7 @@ pkgbase = ignition-common-3
 	depends = freeimage
 	depends = libutil-linux
 	depends = gts
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	source = https://github.com/ignitionrobotics/ign-common/archive/ignition-common3_3.13.1.tar.gz
 	sha256sums = 572c9ed8741ec8ee1118edbcde2314207f85c40bbcc7673859bfa11bcdae2a71
 
