@@ -1,0 +1,19 @@
+pkgbase = moonscraper-chart-editor-bin
+	pkgdesc = Moonscraper Chart Editor is a song editor for Guitar Hero style rhythm games.
+	pkgver = 1.4.3.4
+	pkgrel = 0
+	url = https://github.com/FireFox2000000/Moonscraper-Chart-Editor
+	arch = x86_64
+	arch = i686
+	license = BSD-3-Clause
+	provides = moonscraper-chart-editor
+	conflicts = moonscraper-chart-editor
+	options = !strip
+	source = moonscraper.tar.gz::https://github.com/FireFox2000000/Moonscraper-Chart-Editor/releases/download/1.4.3.4/Moonscraper.Chart.Editor.v1.4.3.4.Linux.Universal.tar.gz
+	source = moonscraper-chart-editor.desktop::https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/1.4.3.4/aur/moonscraper-chart-editor.desktop
+	source = https://raw.githubusercontent.com/FireFox2000000/Moonscraper-Chart-Editor/1.4.3.4/LICENSE
+	sha1sums = 8d782b2b72c057cb47789007d5fe75bfdcff3113
+	sha1sums = e4c64c84730ee05b26e521537fc09fa82925fe72
+	sha1sums = 2d61750d08d43082718a1548810f76be186a9030
+
+pkgname = moonscraper-chart-editor-bin
