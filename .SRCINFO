@@ -1,7 +1,7 @@
 pkgbase = r-testit
 	pkgdesc = A Simple Package for Testing R Packages
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=testit
 	arch = any
 	license = GPL3
