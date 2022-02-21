@@ -10,7 +10,7 @@ pkgbase = foxtelgo-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = foxtelgo-git
-	source_x86_64 = https://gitlab.com/foxtelgo/binaries/1.0.3-2/-/raw/main/FoxtelGO-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/foxtelgo/binaries/1.0.3-2/-/raw/main/FoxtelGo-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = foxtelgo-bin

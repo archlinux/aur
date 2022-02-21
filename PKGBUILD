@@ -11,7 +11,7 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("foxtelgo-git")
 sha256sums_x86_64=('SKIP')
-source_x86_64=("https://gitlab.com/foxtelgo/binaries/"$pkgver"-"$pkgrel"/-/raw/main/FoxtelGO-linux-x64.tar.gz")
+source_x86_64=("https://gitlab.com/foxtelgo/binaries/"$pkgver"-"$pkgrel"/-/raw/main/FoxtelGo-linux-x64.tar.gz")
                 
 
 package() {
