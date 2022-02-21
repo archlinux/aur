@@ -7,7 +7,7 @@ arch=("any")
 url="https://code.google.com/archive/p/customizemii/"
 license=("GPL3")
 depends=("mono")
-conflicts=("customizemii-bin" "customizemii-base-wads")
+conflicts=("customizemii-bin")
 source=("https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/customizemii/source-archive.zip" "https://wiibrew.org/w/images/0/0d/CustomizeMii_Icon.png" "ByteConv.cs" "Instructions_patch.diff" "Resources_patch.diff" "Designer_patch.diff" "Loaders_patch.diff")
 sha256sums=("81ddba3a401e1360249da5b0d9988f58f47105fc4130237072e82a8929f997e6" "8e54152ac9c14192f02a6659183aa7c6196df88f5d2072fecba5d1fed5a0e458" "SKIP" "SKIP" "SKIP" "SKIP" "SKIP")
 
