@@ -1,7 +1,7 @@
 # Maintainer: Jan Schmitt <arch@smittie.de>
 _pkgname=git-team
 pkgname=git-team-git
-pkgver=1.7.0.r1.g036ae5e
+pkgver=1.7.0.r3.gdc00b41
 pkgrel=1
 epoch=
 pkgdesc="Command line interface for managing and enhancing git commit messages with co-authors."
@@ -28,7 +28,7 @@ validpgpkeys=()
 pkgver(){
     cd "${_pkgname}"
     git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-    }
+}
 
 build() {
     cd "${_pkgname}"
@@ -41,9 +41,7 @@ build() {
 
 package() {
     cd "${_pkgname}"
-    mkdir -p ${pkgdir}/opt/${pkgname}
-    cp -rf * ${pkgdir}/opt/${pkgname}
-	sudo make PREFIX=/usr DESTDIR="$pkgdir/" install
+    make prefix="$pkgdir/usr" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
