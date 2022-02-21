@@ -65,9 +65,7 @@ build() {
         -DwxWidgets_CONFIG_EXECUTABLE=$(which wx-config-gtk3) \
         -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB
 
-    # This is a trick to workaround RAM issues that kill GCC
-    ninja -C build -k0
-    ninja -C build -j2
+    ninja -C build
 }
 
 check() {
