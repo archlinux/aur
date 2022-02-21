@@ -1,13 +1,13 @@
 # Maintainer: Marius Schiffer <marius.schiffer@gmail.com>
 pkgname=fpart
-pkgver=1.2.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A tool that helps you sort file trees and pack them into bags, like dirsplit'
 arch=('x86_64')
 url='https://github.com/martymac/fpart'
 license=('custom:BSD 2-clause')
 source=("fpart-${pkgver}.tar.gz::https://github.com/martymac/fpart/archive/fpart-${pkgver}.tar.gz")
-sha256sums=('ced59d68236d960473b5d9481f3d0c083f10a7be806c33125cc490ef2c1705f8')
+sha256sums=('da4cd97365a2ebb3d0ee7e634c022eb21321ee5b6ab213d796fcbb01f28d9759')
 
 build() {
   cd fpart-fpart-$pkgver
