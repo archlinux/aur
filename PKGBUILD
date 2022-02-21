@@ -1,7 +1,7 @@
 # Maintainer: Ingo Meyer <i.meyer@fz-juelich.de>
 
 pkgname="python-gr-framework"
-pkgver="1.18.0"
+pkgver="1.19.0"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications (Python bindings)."
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gr-framework" "python" "python-numpy")
 makedepends=("python-setuptools")
 source=("https://github.com/sciapp/python-gr/releases/download/v${pkgver}/gr-${pkgver}.tar.gz")
-sha256sums=("11fb32f6cfabcfa3b4110c8f42af322ef3d5e237fff80e4f081b923e633ffda6")
+sha256sums=("25cf3ab456e2c46610eeb1f6e7d9d6fcc85ae2156a271e2d65fe9caf37e805d7")
 
 build() {
     cd "${srcdir}/gr-${pkgver}" || return
