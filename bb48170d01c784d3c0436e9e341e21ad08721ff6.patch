@@ -1,0 +1,66 @@
+From bb48170d01c784d3c0436e9e341e21ad08721ff6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?B=C5=82a=C5=BCej=20Szczygie=C5=82?= <spaz16@wp.pl>
+Date: Thu, 20 Jan 2022 19:46:32 +0100
+Subject: [PATCH] Fix compilation with FFmpeg 5.0
+
+---
+ src/modules/CUVID/CuvidDec.cpp       | 2 +-
+ src/modules/CUVID/CuvidDec.hpp       | 4 ++++
+ src/modules/FFmpeg/FFDec.cpp         | 2 +-
+ src/modules/FFmpeg/FormatContext.cpp | 2 +-
+ 4 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/src/modules/CUVID/CuvidDec.cpp b/src/modules/CUVID/CuvidDec.cpp
+index 64ae9386..f8288764 100644
+--- a/src/modules/CUVID/CuvidDec.cpp
++++ b/src/modules/CUVID/CuvidDec.cpp
+@@ -431,7 +431,7 @@ bool CuvidDec::open(StreamInfo &streamInfo)
+     if (streamInfo.codec_type != AVMEDIA_TYPE_VIDEO)
+         return false;
+ 
+-    AVCodec *avCodec = avcodec_find_decoder_by_name(streamInfo.codec_name);
++    auto avCodec = const_cast<AVCodec *>(avcodec_find_decoder_by_name(streamInfo.codec_name));
+     if (!avCodec)
+         return false;
+ 
+diff --git a/src/modules/CUVID/CuvidDec.hpp b/src/modules/CUVID/CuvidDec.hpp
+index 0efb5bd9..cce1308d 100644
+--- a/src/modules/CUVID/CuvidDec.hpp
++++ b/src/modules/CUVID/CuvidDec.hpp
+@@ -26,6 +26,10 @@
+ #include <QCoreApplication>
+ #include <QQueue>
+ 
++extern "C" {
++    #include <libavcodec/bsf.h>
++}
++
+ class CuvidHWInterop;
+ class VideoWriter;
+ 
+diff --git a/src/modules/FFmpeg/FFDec.cpp b/src/modules/FFmpeg/FFDec.cpp
+index 592f12b7..9683bcfa 100644
+--- a/src/modules/FFmpeg/FFDec.cpp
++++ b/src/modules/FFmpeg/FFDec.cpp
+@@ -70,7 +70,7 @@ void FFDec::clearFrames()
+ 
+ AVCodec *FFDec::init(StreamInfo &streamInfo)
+ {
+-    AVCodec *codec = avcodec_find_decoder_by_name(streamInfo.codec_name);
++    auto codec = const_cast< AVCodec *>(avcodec_find_decoder_by_name(streamInfo.codec_name));
+     if (codec)
+     {
+         codec_ctx = avcodec_alloc_context3(codec);
+diff --git a/src/modules/FFmpeg/FormatContext.cpp b/src/modules/FFmpeg/FormatContext.cpp
+index 88f8ccb8..e96758e3 100644
+--- a/src/modules/FFmpeg/FormatContext.cpp
++++ b/src/modules/FFmpeg/FormatContext.cpp
+@@ -687,7 +687,7 @@ bool FormatContext::open(const QString &_url, const QString &param)
+         if (scheme != "rtsp")
+         {
+             // It is needed for QMPlay2 schemes like "alsa://", "v4l2://", etc.
+-            inputFmt = av_find_input_format(scheme);
++            inputFmt = const_cast<AVInputFormat *>(av_find_input_format(scheme));
+             if (inputFmt)
+                 url = _url.right(_url.length() - scheme.length() - 3);
+         }
