@@ -3,7 +3,7 @@
 # Contributor: Maciej Sieczka <msieczka at sieczka dot org>
 
 pkgname=grass
-pkgver=7.8.6
+pkgver=8.0.0
 pkgrel=1
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
@@ -12,12 +12,12 @@ url='http://grass.osgeo.org/'
 license=('GPL')
 depends=('bzip2' 'cairo' 'fftw' 'fontconfig' 'freetype2' 'gcc-libs' 'gdal' 'geos' 'glibc' 'glu'
          'libpng' 'libtiff' 'libx11' 'libgl' 'netcdf' 'pdal' 'proj' 'python-gdal' 'python-numpy'
-         'python-pillow' 'python-wxpython' 'readline' 'zlib' 'zstd')
+         'python-pillow' 'python-wxpython-dev' 'readline' 'zlib' 'zstd')
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface'
             'sqlite: SQLite database interface')
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
-md5sums=('6a16bbefdb1f31480be82e6f352c3c10')
+sha512sums=('29bd57fb017937b0f3ad105790449704c6f12b56ffe79091f0aceed328f4da5293dd42cc3071158aad5386a51309f35a4f0b9bbd57221431e705f51880c2ce42')
 
 build() {
   cd $pkgname-$pkgver
@@ -60,5 +60,5 @@ package() {
   sed -i "s|$pkgdir||g" demolocation/.grassrc$_shortver \
                         include/Make/{Platform,Grass}.make \
                         etc/fontcap \
-                        "$pkgdir/usr/bin/grass$_shortver"
+                        "$pkgdir/usr/bin/grass"
 }
