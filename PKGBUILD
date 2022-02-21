@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r77119.f998e31db1
+pkgver=r77602.84c910c892
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+https://gitlab.kitware.com/paraview/paraview.git"
         "git+https://gitlab.kitware.com/paraview/qttesting.git")
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="x86_64-w64-mingw32"
 
 pkgver () {
   cd "${srcdir}/paraview"
