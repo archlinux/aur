@@ -1,0 +1,4 @@
+pkg/
+src/
+transfer-git/
+*.tar.zst
