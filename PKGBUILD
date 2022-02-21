@@ -2,7 +2,7 @@
 # Maintainer: Stephen Martin <hwkiller@gmail.com>
 # Contributor: Conor Anderson <conor@conr.ca>
 
-_gwtver=2.8.2
+_gwtver=2.9.0
 _ginver=2.1.2
 _gitname=rstudio
 pkgname=rstudio-desktop-git
@@ -27,7 +27,7 @@ source=("git+https://github.com/rstudio/rstudio.git"
         "nodejs-external.patch")
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
-            '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
+            '253911e3be63c19628ffef5c1082258704e7896f81b855338c6a036f524fbd42'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
             '4a6aff2b586ddfceb7c59215e5f4a03f25b08fcc55687acaa6ae23c11d75d0e8')
