@@ -1,7 +1,7 @@
 pkgbase = python-fudge
 	pkgdesc = Use fake objects (mocks, stubs, etc) to test real ones
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://farmdev.com/projects/fudge/
 	arch = any
 	license = MIT
