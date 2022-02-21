@@ -10,14 +10,14 @@
 
 _pack=mapping
 pkgname=octave-${_pack}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Simple mapping and GIS .shp .dxf and raster file functions"
 arch=(any)
 url="https://octave.sourceforge.io/${_pack}"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=3.8.0' 'octave-io>=2.2.7' 'octave-geometry>=4.0.0')
+depends=('octave>=5.2.0' 'octave-io>=2.2.7' 'octave-geometry>=4.0.0')
 makedepends=()
 optdepends=()
 backup=()
@@ -26,7 +26,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://downloads.sourceforge.net/octave/${_archive}")
 noextract=("${_archive}")
-sha512sums=('052c353b19fc852cc8f156428f71320e7ee1743bc9f5e53a9b94d9b9a1a80e971744d779e285d86746200a8c3218def17bcb7d913aa1cfb06af97e1da0e6d0fd')
+sha512sums=('1f44e65f2034708a09a249d86f97eb841c6aba85ebfdd0dee9821c41e18cf9eb7ff7ac817f36863c1c37f3067931dd42d5bae7e521bd5ea1aba61a64079693ec')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
