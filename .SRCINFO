@@ -1,14 +1,14 @@
 pkgbase = samtools
 	pkgdesc = tools for manipulating next-generation sequencing data
-	pkgver = 1.14
+	pkgver = 1.15
 	pkgrel = 1
 	url = http://www.htslib.org/
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = htslib>=1.14
+	depends = htslib>=1.15
 	optdepends = luajit: needed for r2plot.lua vcfutils.lua
-	source = samtools-1.14.tar.bz2::https://github.com/samtools/samtools/releases/download/1.14/samtools-1.14.tar.bz2
-	sha256sums = 9341dabaa98b0ea7d60fd47e42af25df43a7d3d64d8e654cdf852974546b7d74
+	source = samtools-1.15.tar.bz2::https://github.com/samtools/samtools/releases/download/1.15/samtools-1.15.tar.bz2
+	sha256sums = 35d945a5eee9817a764490870474f24e538400b0397b28f94247a5b91447215d
 
 pkgname = samtools
