@@ -2,13 +2,13 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-amd-git
+pkgver=5.18.2022.02.18.r28.gad72a74cfe7e
+pkgrel=1
 pkgdesc='Linux kernel with WIP AMDGPU material'
-pkgver=5.16.r1058192.c8d265840be6
 _product="${pkgbase%-git}"
 _branch=drm-next
-pkgrel=1
-arch=(x86_64)
 url=https://gitlab.freedesktop.org/agd5f/linux
+arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
@@ -18,18 +18,16 @@ makedepends=(
 options=('!strip')
 _srcname=linux-agd5f
 source=(
-  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=${_branch}"
+  "$_srcname::git+https://gitlab.freedesktop.org/agd5f/linux.git#branch=$_branch"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '324a9d46c2338806a0c3ce0880c8d5e85c2ef30d342af3dc96f87b54fae7a586')
+            'a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31')
 
 pkgver() {
-  cd "${_srcname}"
-  local version="$(grep \^VERSION Makefile|cut -d" " -f3)"
-  local patch="$(grep \^PATCHLEVEL Makefile|cut -d" " -f3)"
+  cd $_srcname
 
-  printf "%s.%s.r%s.%s" "${version}" "${patch}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^amd.drm.next.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 export KBUILD_BUILD_HOST=archlinux
@@ -109,11 +107,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
