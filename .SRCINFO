@@ -1,6 +1,6 @@
 pkgbase = vfu
 	pkgdesc = Versatile text-based file-manager
-	pkgver = 4.22
+	pkgver = 4.23
 	pkgrel = 1
 	url = http://cade.noxrun.com/projects/vfu
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = vfu
 	optdepends = unzip: for rx_zip
 	backup = etc/vfu.conf
 	backup = etc/vfu/vfu.conf
-	source = http://cade.noxrun.com/projects/vfu/vfu-4.22.tar.gz
-	sha256sums = 39d726cc4c24945c85cd76842053f01bdf686728dad2add6ca2f0157fa409223
+	source = http://cade.noxrun.com/projects/vfu/vfu-4.23.tar.gz
+	sha256sums = cb118813fd9b629731e96d70098319193b3415aa60e796596bacc6c482960779
 
 pkgname = vfu

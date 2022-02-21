@@ -2,7 +2,7 @@
 # Contributor: Evgeny Grablyk <evgeny.grablyk@gmail.com>
 
 pkgname=vfu
-pkgver=4.22
+pkgver=4.23
 pkgrel=1
 pkgdesc="Versatile text-based file-manager"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'ppc64le')
@@ -15,7 +15,7 @@ optdepends=('perl: for the rx_* archiving utilities'
             'unzip: for rx_zip')
 backup=('etc/vfu.conf' 'etc/vfu/vfu.conf')
 source=("http://cade.noxrun.com/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('39d726cc4c24945c85cd76842053f01bdf686728dad2add6ca2f0157fa409223')
+sha256sums=('cb118813fd9b629731e96d70098319193b3415aa60e796596bacc6c482960779')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
