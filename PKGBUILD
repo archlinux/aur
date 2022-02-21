@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple backups based on borg"
 arch=('x86_64' 'aarch64')
 url="https://apps.gnome.org/app/org.gnome.World.PikaBackup"
@@ -21,6 +21,10 @@ prepare() {
 
   # Disable update-desktop-database & gtk-update-icon-cache
   patch --strip=1 data/meson.build $srcdir/remove-install_script.patch
+
+  # Fix build for Meson 0.6.1+
+  sed -i "/    '.desktop',/d" data/meson.build
+  sed -i "/    '.metainfo.xml',/d" data/meson.build
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
