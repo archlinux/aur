@@ -12,7 +12,6 @@ pkgname="python-${_name}"
 pkgrel=3
 sha256sums=('1a577c8097ee4ca047b143f7063540e222ce565320b62f534fc9c78a944813c0')
 source=("https://files.pythonhosted.org/packages/e5/a7/f81b2f82d3dccb0b7ad7ddbf3619746594b8345b78c4c0adbeea6c97bb09/${_namever}.tar.gz")
-url="https://github.com/chris-ritsen/network-audio-controller"
 url='https://github.com/chris-ritsen/network-audio-controller'
 
 prepare() {
