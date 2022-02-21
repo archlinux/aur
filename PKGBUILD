@@ -1,7 +1,7 @@
 # Maintainer: João Vitor S. Anjos <jvanjos at protonmail dot com>
 
 pkgname=jless
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='A command-line pager for JSON data.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8b36d117ac0ef52fa0261e06b88b5ae77c2ff4beeb54f2c906a57f066dc46179')
+sha256sums=('5d776cb6488743ccdaeeffb4bfc54d84862028170cee852a8bb5c156526ed263')
 
 prepare() {
   cd ${pkgname}-${pkgver}
