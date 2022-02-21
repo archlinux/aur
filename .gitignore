@@ -1,4 +1,3 @@
-.*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
+gweb*
+pkg
+src
