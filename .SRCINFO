@@ -7,7 +7,6 @@ pkgbase = customizemii
 	license = GPL3
 	depends = mono
 	conflicts = customizemii-bin
-	conflicts = customizemii-base-wads
 	source = https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/customizemii/source-archive.zip
 	source = https://wiibrew.org/w/images/0/0d/CustomizeMii_Icon.png
 	source = ByteConv.cs
