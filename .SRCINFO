@@ -1,0 +1,16 @@
+pkgbase = kwin-effect-shaders-git
+	pkgdesc = KDE Plasma / KWin desktop effect aimed at adding post processing effects to video games.
+	pkgver = 21.r7675418
+	pkgrel = 1
+	url = https://github.com/kevinlekiller/kwin-effect-shader
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = extra-cmake-modules
+	depends = kwin
+	provides = kwin-effect-shaders
+	conflicts = kwin-effect-shaders
+	source = git+https://github.com/kevinlekiller/kwin-effect-shaders
+	md5sums = SKIP
+
+pkgname = kwin-effect-shaders-git
