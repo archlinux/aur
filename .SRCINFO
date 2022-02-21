@@ -1,6 +1,6 @@
 pkgbase = ydotool-bin
 	pkgdesc = Generic command-line automation tool (no X!)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/ReimuNotMoe/ydotool
 	install = ydotool.install
@@ -11,10 +11,10 @@ pkgbase = ydotool-bin
 	depends = libuinputplus
 	provides = ydotool
 	conflicts = ydotool
-	source = https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.0/ydotool-release-ubuntu-latest
-	source = https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.0/ydotoold-release-ubuntu-latest
+	source = https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.1/ydotool-release-ubuntu-latest
+	source = https://github.com/ReimuNotMoe/ydotool/releases/download/v1.0.1/ydotoold-release-ubuntu-latest
 	source = 80-uinput.rules
-	sha256sums = 1af0434e65da28e2b688afcdcb983bc54436e178cbf9346611cd0239e0f2a598
+	sha256sums = eed24445f42112372afcd19b9506e43a9b2e5368c8c910559ee42b61835925c3
 	sha256sums = b32164d2d9aea8134cab59ca719f04797c938ffce89f1868be0103da81712bbc
 	sha256sums = e092f5e7e474aec6c980c458046d0ff11b18750b53de2bf0a0aba1ca26e6d58e
 
