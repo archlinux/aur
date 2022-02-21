@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@mailinator.com>
 
 pkgname=throttlectl
-pkgver=8
+pkgver=9
 pkgrel=1
 pkgdesc="Command-line user discretion power managment utility"
 arch=('any')
@@ -16,7 +16,7 @@ source=('throttlectl'
         'performance'
         'systemstate'
         'powermizer')
-sha512sums=('9fd9bce15fbbce4d5f42860302fbaf96263f312e1eb21a27a2e79ce1ffd26bfe603ef97af9dd9b1420449dbe546645b51c1adb99b8502e39ed5a14150ad61460'
+sha512sums=('36a3ad795a2c0b0ce98492a903499b19982c4a75ca536955111c6613fea8242abc19ff5dcaa558bd1f38a32be9d768879b458e5dd651deaa2eea84580a43d70d'
             '6254e73446a91ea7945b9e4db1a1047eb2055d93aee315006857711ab21cba140da3badcf5834d2628e4799494a069647d11aa378a9bac67691df8d8b3adc12f'
             '926f7c787aea8c1027f331fe2e9417ba8e4f15a79f51610baafeed5d0de86d8f41da92f4460c29a5ce251e7cc110e26c2c344931af91949dc529595cc18c0f0e'
             '0d90ae4c0b9600f50ffd3e2c1a03b49d2fbdb9a2d14c8211e86463787549ada156498f68989d851952fe34660daaacc11242f5ee9e9e318f3d2a3eba0971eb53'
