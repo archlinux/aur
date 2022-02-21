@@ -1,0 +1,18 @@
+pkgbase = meeting-trigger
+	pkgdesc = Monitor apps using the Mic (on pulseaudio) to trigger automations
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/hgabreu/meeting-trigger
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = coreutils
+	depends = findutils
+	depends = grep
+	depends = pulseaudio
+	depends = sed
+	depends = run-parts
+	source = meeting-trigger::https://github.com/hgabreu/meeting-trigger/releases/download/v0.0.1/meeting-trigger-0.0.1.tgz
+	md5sums = 9b924647ddc838cddfc5763ec3476c8a
+
+pkgname = meeting-trigger
