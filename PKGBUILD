@@ -6,7 +6,7 @@ pkgname=python-pytorch-rocm
 _pkgname="pytorch"
 pkgver=1.11.0rc2
 _pkgver=1.11.0-rc2
-pkgrel=1
+pkgrel=2
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "${pkgname}-FXdiv::git+https://github.com/Maratyszcza/FXdiv.git"
         "${pkgname}-FP16::git+https://github.com/Maratyszcza/FP16.git"
         "${pkgname}-cub::git+https://github.com/NVlabs/cub.git"
-        "${pkgname}-eigen-git-mirror::git+https://github.com/eigenteam/eigen-git-mirror.git"
+        "${pkgname}-eigen::git+https://gitlab.com/libeigen/eigen.git"
         "${pkgname}-cpuinfo::git+https://github.com/pytorch/cpuinfo.git"
         "${pkgname}-enum34::git+https://github.com/PeachPy/enum34.git"
         "${pkgname}-PeachPy::git+https://github.com/Maratyszcza/PeachPy.git"
@@ -126,12 +126,18 @@ get_pyver () {
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
+  # update eigen submodule with rocm fixes
+  git submodule deinit third_party/eigen
+  git rm -f third_party/eigen
+  rm -rf .git/modules/third_party/eigen
+  git submodule add --force https://gitlab.com/libeigen/eigen.git third_party/eigen
+
   # generated using parse-submodules
   git submodule init
 
   git config submodule."third_party/pybind11".url "${srcdir}/${pkgname}"-pybind11
   git config submodule."third_party/cub".url "${srcdir}/${pkgname}"-cub
-  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen-git-mirror
+  git config submodule."third_party/eigen".url "${srcdir}/${pkgname}"-eigen
   git config submodule."third_party/googletest".url "${srcdir}/${pkgname}"-googletest
   git config submodule."third_party/benchmark".url "${srcdir}/${pkgname}"-benchmark
   git config submodule."third_party/protobuf".url "${srcdir}/${pkgname}"-protobuf
