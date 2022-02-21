@@ -9,6 +9,7 @@ pkgbase = libzookeeper-git
 	makedepends = maven
 	makedepends = autoconf
 	makedepends = cppunit
+	makedepends = pkgconf
 	provides = libzookeper-git
 	source = git+https://github.com/apache/zookeeper.git
 	sha256sums = SKIP
