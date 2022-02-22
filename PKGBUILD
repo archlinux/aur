@@ -8,8 +8,11 @@ pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
 url="https://gitlab.com/qYp/${_pkgname}"
 license=('MIT')
-depends=(gcc libxft-bgra-git)
-makedepends=(git)
+depends=(gcc )
+optdepends=(
+    'libcurl: for curl'
+    'python-lolcat: for colorfull shell headers'
+  )
 provides=(st)
 conflicts=(st)
 replaces=(st)
