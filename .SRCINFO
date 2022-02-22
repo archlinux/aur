@@ -1,7 +1,7 @@
 pkgbase = obfs4proxy-bin
 	pkgdesc = The obfourscator - A Pluggable Transport Proxy Written in Go (This package is built by myself for thoes who live in countries with tor censored that cannot download the source in obfs4proxy package
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitweb.torproject.org/pluggable-transports/obfs4.git/
 	arch = x86_64
 	license = BSD
