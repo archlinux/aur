@@ -32,9 +32,9 @@ source=(
   "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0003-intel-drm-use-max-clock.patch"
   "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0004-hp-omen-fourzone.patch"
   "https://github.com/xddxdd/pkgbuild/raw/master/linux-xanmod-lantian/0005-cjktty.patch"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0006-uksm.patch"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0006-uksm.patch"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0006-uksm.patch"
+  0006-uksm.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.16/uksm-patches/0001-UKSM-for-5.16.patch
+  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0007-vfio-pci-d3cold.patch"
+  config
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
