@@ -10,7 +10,6 @@ pkgbase = dynarmic-git
 	makedepends = cmake>=3.8
 	makedepends = fmt>=8
 	makedepends = git
-	makedepends = ninja
 	makedepends = robin-map>=0.6.2
 	makedepends = xbyak>=5.991
 	makedepends = zydis>=3.1

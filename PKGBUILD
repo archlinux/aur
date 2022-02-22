@@ -12,7 +12,6 @@ makedepends=(
 	'cmake>=3.8'
 	'fmt>=8'
 	'git'
-	'ninja'
 	'robin-map>=0.6.2'
 	'xbyak>=5.991'
 	'zydis>=3.1'
@@ -30,7 +29,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S $_pkgname -B build -G Ninja \
+	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
