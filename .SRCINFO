@@ -11,7 +11,7 @@ pkgbase = python-netaudio
 	depends = python-netifaces
 	depends = python-twisted
 	depends = python-zeroconf
-	source = https://files.pythonhosted.org/packages/d8/5b/43f8013802416109db42c55ffeb03376bf1adc827117b305ffeb851d23fe/netaudio-0.0.6.tar.gz
-	sha256sums = bdf2786147610da904ee6fa894dc9807ccb582e8cd1a0c854912d1c56a736029
+	source = https://files.pythonhosted.org/packages/ac/9c/031faf6cc26f2e4407c3c58818bb3e8e2994e14f947c7aa6f377525689f0/netaudio-0.0.7.tar.gz
+	sha256sums = cc5cf4b259ac9f336d4de773cf5d2ff096243d4c5a419c486bc2d50d7c8dc330
 
 pkgname = python-netaudio
