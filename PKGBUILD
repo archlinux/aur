@@ -4,7 +4,7 @@
 # Contributor: Vladimir Navrat <vn158 at seznam dot cz>
 
 pkgname=winscp
-pkgver=5.19.5
+pkgver=5.19.6
 pkgrel=1
 pkgdesc="Free SFTP, SCP and FTP client for Wine"
 arch=('any')
@@ -23,17 +23,17 @@ source=("http://downloads.sourceforge.net/project/winscp/WinSCP/${pkgver}/WinSCP
         "${pkgname}-128.png"
         "${pkgname}-256.png"
         "${pkgname}_default_configuration.ini")
-sha256sums=('43f8578fdf19fa27bcec858356f41357714b9cab31ae6661023983a7978fdbf4'
-'322f3f8d4a29a2e5a40c057ffadf6566ff21233b5f8367a749618e5b4d845fc9'
-'67eba469b8f34ccc2342ea54b14601f13a245af5e0d4ea574786efdd33fc285c'
-'0c28369a4b35713ade79a158b4ee0e28576561c7ba0b8766dbbc0f63d0748ea2'
-'f0be502bd349e0444f1aa39c23737fd4b886370c24723e42fca5e9b45a5f513c'
-'893ed717af8ba6610874554bbd9b423daaf747a472be93ed6794486bfbcf9065'
-'fff3a8f3eff1b2eaace0c8c5c02f7be78579325c0c035a6620595bf2dea0162d'
-'8230504efe2ff8af84ddc162e492d388aeace873c12e46ebe84c68aa9221616e'
-'695540754113cbb61ee2ce4dafd0825c3f864092e805bfbb5abc05c09d16f50d'
-'d09939d5a1c964243eae5ec574148f267b5a3032e8571aba9eca3ee8eaca307f'
-'e55a284b81e55c2dfe330fd7e002b3b6f1224253a67cdf1d34dea35a26d6d1e1')
+sha256sums=('05f3cfa4df59bff3f0a50cf78f30d8968956c75ba833cdb3c25e95c2c128944b'
+            '322f3f8d4a29a2e5a40c057ffadf6566ff21233b5f8367a749618e5b4d845fc9'
+            '67eba469b8f34ccc2342ea54b14601f13a245af5e0d4ea574786efdd33fc285c'
+            '0c28369a4b35713ade79a158b4ee0e28576561c7ba0b8766dbbc0f63d0748ea2'
+            'f0be502bd349e0444f1aa39c23737fd4b886370c24723e42fca5e9b45a5f513c'
+            '893ed717af8ba6610874554bbd9b423daaf747a472be93ed6794486bfbcf9065'
+            'fff3a8f3eff1b2eaace0c8c5c02f7be78579325c0c035a6620595bf2dea0162d'
+            '8230504efe2ff8af84ddc162e492d388aeace873c12e46ebe84c68aa9221616e'
+            '695540754113cbb61ee2ce4dafd0825c3f864092e805bfbb5abc05c09d16f50d'
+            'd09939d5a1c964243eae5ec574148f267b5a3032e8571aba9eca3ee8eaca307f'
+            'e55a284b81e55c2dfe330fd7e002b3b6f1224253a67cdf1d34dea35a26d6d1e1')
 
 package() {
   # Install binary files
