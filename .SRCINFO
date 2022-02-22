@@ -1,0 +1,15 @@
+pkgbase = maminfo-git
+	pkgdesc = Read LTO / Ultrium cartridges medium auxiliary memory attributes
+	pkgver = r3.g24a6919
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = AGPLv3
+	makedepends = git
+	depends = sg3_utils
+	source = maminfo::git+https://github.com/arogge/maminfo.git
+	source = patch
+	sha256sums = SKIP
+	sha256sums = 663a1678aef13795b3a8b4cbe844a44d275daaaef9564010b98ed64aa1cd199a
+
+pkgname = maminfo-git

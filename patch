@@ -1,0 +1,28 @@
+--- maminfo/mam-info.c	2022-02-22 19:24:17.952368118 +0100
++++ a/mam-info.c	2022-02-22 19:25:10.622833420 +0100
+@@ -17,7 +17,7 @@
+     fprintf(stderr, 
+           "LTO Medium Access Memory tool\n"
+           "Usage: \n"
+-          "lto-cm -f device [-c] [-v]\n"
++          "maminfo -f device [-c] [-v]\n"
+           " where:\n"
+           "    -f device        is a sg device                        \n"
+           "    -c               compact mode\n"
+@@ -108,7 +108,6 @@
+ {
+     int sg_fd;
+     int k,i,l;
+-    char * file_name = 0;
+     char ebuff[EBUFF_SZ];
+     char messageout[160] ;
+     int c=0;
+@@ -172,7 +171,7 @@
+  
+     if ((sg_fd = open(globalArgs.device_name, O_RDWR)) < 0) {
+         snprintf(ebuff, EBUFF_SZ,
+-                 "ERROR : opening file: %s", file_name);
++                 "ERROR : opening file: %s", globalArgs.device_name);
+         perror(ebuff);
+         return -1;
+     }
