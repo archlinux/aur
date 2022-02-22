@@ -19,7 +19,6 @@ pkgbase = yuzu
 	makedepends = libinih>=52
 	makedepends = libusb>=1.0.24
 	makedepends = lz4>=1.8
-	makedepends = ninja
 	makedepends = nlohmann-json>=3.8
 	makedepends = opus>=1.3
 	makedepends = qt5-tools>=5.15

@@ -21,7 +21,6 @@ makedepends=(
 	'libinih>=52'
 	'libusb>=1.0.24'
 	'lz4>=1.8'
-	'ninja'
 	'nlohmann-json>=3.8'
 	'opus>=1.3'
 	'qt5-tools>=5.15'
@@ -81,7 +80,7 @@ prepare() {
 }
 
 build() {
-	cmake -S yuzu-mainline -B build -G Ninja \
+	cmake -S yuzu-mainline -B build \
 		-DBUILD_REPOSITORY=yuzu-emu/yuzu-mainline \
 		-DBUILD_TAG=${pkgver/.0./-} \
 		-DCMAKE_BUILD_TYPE=None \
