@@ -18,10 +18,10 @@ makedepends=(
 	'libsamplerate'
 	'libslirp'
 	'meson'
-	'ninja'
 	'openssl'
 	'pixman'
 	'python'
+	'samurai'
 	'xxhash'
 )
 provides=("$_pkgname")
@@ -69,6 +69,7 @@ build() {
 		--audio-drv-list="sdl" \
 		--enable-slirp=system \
 		--extra-cflags="-DXBOX=1" \
+		--ninja=samu \
 		--target-list=i386-softmmu \
 		--with-git-submodules=ignore
 	make qemu-system-i386
