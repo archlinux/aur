@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+
+import subprocess
+import os
+import sys
+
+try:
+    filename = sys.argv[1].replace(".gpg", "")
+except IndexError:
+    print("No File Specified")
+    sys.exit()
+
+os.system(f"mkfifo '{filename}'")
+x = subprocess.Popen(["xfce4-terminal", "-x", "nano", filename])
+
+if os.path.exists(filename + ".gpg"):
+    os.system(f"gpg -d {filename}.gpg > {filename}")
+else:
+    pipe = open(filename, "w")
+    pipe.write("// new document")
+    pipe.close()
+    del pipe
+
+os.system(f"gpg --sign '{filename}'")
+os.system(f"rm '{filename}'")
+x.terminate()

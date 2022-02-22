@@ -1,0 +1,14 @@
+pkgbase = enano
+	pkgdesc = An editor to autosign document
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = nano
+	depends = python3
+	depends = gnupg
+	depends = xfce4-terminal
+	source = enano
+	md5sums = 8340ab644bfd4d49e47e27bab12721fe
+
+pkgname = enano
