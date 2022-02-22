@@ -1,20 +1,20 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=uresourced
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Dynamically allocate resources to the active user"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://gitlab.freedesktop.org/benzea/uresourced"
 license=('GPL')
-depends=('glib2' 'systemd')
+depends=('glib2' 'pipewire' 'systemd')
 makedepends=('meson')
 backup=("etc/$pkgname.conf")
 install="$pkgname.install"
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('35b074e80f29c2e051826bc06c577570a3beb100fbc0ec23354bc2bc28dc7911')
+sha256sums=('6d0cf3030f6aa1fd9f9beaa2d68d84d894bb9d40d7e44cfe18468354c11336ed')
 
 build() {
-  arch-meson "$pkgname-v$pkgver" build
+  arch-meson "$pkgname-v$pkgver" build -Dappmanagement='true'
   meson compile -C build
 }
 
