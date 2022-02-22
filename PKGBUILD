@@ -13,13 +13,13 @@ conflicts=('fastly')
 optdepends=('viceroy: for running service locally')
 
 source_aarch64=('https://github.com/fastly/cli/releases/download/v1.7.0/fastly_v1.7.0_linux-arm64.tar.gz')
-sha256sums_aarch64=('d0cc56e916e2a0639685cfd48cb96c3e59545c167b1488ca117dfa8311e87b7f')
+sha256sums_aarch64=('dc354d79f7d2d2c9bfd243341f04429f3cea0a29bf9574d2979103ce0a66faf9')
 
 source_i686=('https://github.com/fastly/cli/releases/download/v1.7.0/fastly_v1.7.0_linux-386.tar.gz')
-sha256sums_i686=('843fd76c34417f189199502a1ff2790a02787537c04303e804940df8704b53f1')
+sha256sums_i686=('75f123eb21efe479d73a8043a8ee58be6cc401ab1e9d54252f2b410bed4acdb1')
 
 source_x86_64=('https://github.com/fastly/cli/releases/download/v1.7.0/fastly_v1.7.0_linux-amd64.tar.gz')
-sha256sums_x86_64=('c1b109a0aaf7fecf3a4cd82119de3ea69bad06603fa524f2a6b0821ad42ec38d')
+sha256sums_x86_64=('cacde7e8b2a2a569dc9029fc755a06ba7b0cafb23c283337a47ae35a5a3c6c84')
 
 package() {
   install -Dm755 "./fastly" "${pkgdir}/usr/bin/fastly"
