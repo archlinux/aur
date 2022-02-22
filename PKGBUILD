@@ -21,7 +21,6 @@ makedepends=(
 	'git'
 	'libpng'
 	'libzip'
-	'ninja'
 	'spirv-cross'
 	'zstd'
 )
@@ -59,7 +58,7 @@ prepare() {
 }
 
 build() {
-	cmake -S ppsspp -B build -G Ninja \
+	cmake -S ppsspp -B build \
 		-DCMAKE_BUILD_TYPE=None \
 		-DLIBRETRO=ON \
 		-DUSE_SYSTEM_FFMPEG=ON \

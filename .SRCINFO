@@ -14,7 +14,6 @@ pkgbase = libretro-ppsspp-git
 	makedepends = git
 	makedepends = libpng
 	makedepends = libzip
-	makedepends = ninja
 	makedepends = spirv-cross
 	makedepends = zstd
 	depends = ffmpeg
