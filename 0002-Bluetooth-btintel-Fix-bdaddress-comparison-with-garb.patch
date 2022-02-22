@@ -1,7 +1,7 @@
-From abf563c100e1bde5fcf6262ee80f7a89c77d86cd Mon Sep 17 00:00:00 2001
+From c3c533a63f5d37736441595159a39059579b7ba7 Mon Sep 17 00:00:00 2001
 From: Kiran K <kiran.k@intel.com>
 Date: Wed, 13 Oct 2021 13:35:11 +0530
-Subject: [PATCH 2/3] Bluetooth: btintel: Fix bdaddress comparison with garbage
+Subject: [PATCH 2/5] Bluetooth: btintel: Fix bdaddress comparison with garbage
  value
 
 Intel Read Verision(TLV) data is parsed into a local structure variable
@@ -11,12 +11,14 @@ only if controller is present in boot loader mode.
 
 Signed-off-by: Kiran K <kiran.k@intel.com>
 Reviewed-by: Tedd Ho-Jeong An <tedd.an@intel.com>
+Signed-off-by: Marcel Holtmann <marcel@holtmann.org>
+(cherry picked from commit 893505319c74cf3faa45a5ed9d5338ff03b66949)
 ---
  drivers/bluetooth/btintel.c | 22 ++++++++++++++--------
  1 file changed, 14 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/bluetooth/btintel.c b/drivers/bluetooth/btintel.c
-index b11567b0fd9a..ef679b388bac 100644
+index 851a0c9b8fae..1a4f8b227eac 100644
 --- a/drivers/bluetooth/btintel.c
 +++ b/drivers/bluetooth/btintel.c
 @@ -2081,14 +2081,16 @@ static int btintel_prepare_fw_download_tlv(struct hci_dev *hdev,
@@ -56,5 +58,5 @@ index b11567b0fd9a..ef679b388bac 100644
  	err = btintel_parse_version_tlv(hdev, &ver_tlv, skb);
  	if (err) {
 -- 
-2.34.1
+2.35.1
 

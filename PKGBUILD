@@ -7,7 +7,7 @@ _srcname=linux-5.16
 _major=5.16
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=2
+_minor=10
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -31,6 +31,8 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+  0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
+  0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -38,13 +40,15 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('de28a790288a265e1268cad5fc8e2e9491511e6cf8d566dcbbfb9d047659e359a498522265ee4e47fe1e380b5706260543bcbe47f011faf82d4932db743fb9be'
+b2sums=('ef45618d83f7c8234af2edae8ae51239bc8ae3e1523e04e34d05be70d9216aa7240d398695e55818d84613695fe7ee0d804165968379183a07e550d083695333'
         'SKIP'
-        '6f07d9da86101ab72eadd53a9f58a4740037608a006fc622a923d4dd9578ce62cc9959711dca2e953e3fb68286f55fb14be04a4a00fc49a33c2c28bd5944532f'
+        '6394d715c765e27aafa3ef7ba34fb17522eb14c5e004b8ab54eb31b55bcb782205d516cdef5f7204739890642289cd1f2ef8ac430a7ee63698ccf3b3d7b0b118'
         'SKIP'
-        '3c6ff0fd8713cf5f0f0f939e45826bc83a7c4458665ae59094d83c416ae536fd8ed3370dec813d1b442ce727459150a0ef04a001cadb2c5ef7d3e2b01d5849da'
-        '8c06f840512d90c2339066677f1c64c07d1d9b7cd9a7d653fa7be1f806b0c66cb26892db662ef95cb6c27c996aef03566454699cfaa8d620dcb90c1f8f8d8276'
-        '863763c1880921c15f4d931194004461c1cb2bf195bb55ae04777694c15c01542e30d8f221d908b4fbb6a57e7b36e3260a97d67a109af3baeb53d6a85b671dd9')
+        'b837c6c0d9b5e39047ebddececa28f7fbe078b8c6d8d95028cb6bf5265f7b754415e3eed779d5bce075b1163f9b5fdd28b06f2552abf99061a436e3665aa0c8a'
+        '4531d063ee9a7c50e357a544041285965d0b2d03d1f22df06c58ef9341502e120ec712d418a403d153fae0cd3dccd31046891d7659459358176d6e29a72024f2'
+        '33c8bc77c60c4fcc16740a95e49ec9fde853d04dceb8a47b1ae0ef4d14d05d453346efd9fb96579f28990c44664728937af79c52c8da8889a3502f2ade6eee11'
+        'a5e5a53119135c5e82c0de604b8ece29716ba6452305606f009a3c8c0c990f3ec6b44d9940afa30455eb64f1f281145dcd0f72b576a0ea4520d67504a5a5f501'
+        'cbf0456551864c4064193e34a7a9abdd633901063fd709549aa579090b26e486ced264d204bc19a9d099cd157e0ab9de728c43d28a8bbf2addf9f1f320b47507')
 
 
 export KBUILD_BUILD_HOST=archlinux
