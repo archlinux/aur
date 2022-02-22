@@ -2,7 +2,7 @@
 
 pkgname=fantascene-dynamic-wallpaper
 srcname=fantascene-dynamic-wallpaper
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="动态壁纸"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPLv3')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git)
 #replaces=(${pkgname})
-depends=( 'emby-theater' 'libgl' 'glib2' 'glibc' 'gcc' 'mpv' 'ffmpeg' 'fakeroot' 'libxrender' 'libx11' 'libxext' 'libxrender' 'qt5-tools' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-x11extras' 'qt5-webengine' 'xcb-util-wm')
-makedepends=('git' 'qconf')
+depends=( 'emby-theater' 'libgl' 'glib2' 'glibc' 'gcc' 'mpv' 'ffmpeg' 'fakeroot' 'libxrender' 'libx11' 'libxext' 'libxrender' 'qt5-tools' 'qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-x11extras' 'qt5-webengine' 'xcb-util-wm' )
+makedepends=('git' 'qconf' 'pkgconfig' 'make')
 backup=()
 options=('!strip')
 #install=${pkgname}.install
