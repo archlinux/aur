@@ -1,6 +1,6 @@
 # Maintainer: Thomas McGrew <tjmcgrew@gmail.com>
 pkgname=dwrandomizer
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 epoch=
 pkgdesc="A Randomizer for Dragon Warrior for NES"
@@ -8,21 +8,18 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="http://dwrandomizer.com"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mcgrew/dwrandomizer/archive/$pkgver.tar.gz" "patch.diff")
-sha256sums=('38667f5b6a919cc374c5dc797c432693ae9e9cde0609598907a99a65e867c7f4'
-            '43e3fd5030229360217ce57bdab608c2a414ed3126b9da7082643a70dacf3275')
+sha256sums=('6b100cc6fe7877e7c4d2961ed9743eded1a7021aea8a1d616f2ba47a04031c70'
+            '32e5b51493fee5a8e0791c5e654753743b3f35b0549dad29c824471dddabd273')
 depends=('electron')
 makedepends=('emscripten' 'ed')
 
 prepare() {
     cd "$pkgname-$pkgver"
     mkdir build cli-build
+    patch -p1 < ../patch.diff
 }
 
 build() {
-#     cd "$srcdir/$pkgname-$pkgver"
-#     mv CMakeLists.txt tmp
-#     echo 'set (CMAKE_EXE_LINKER_FLAGS -Wl -O1 -z relro -z now)' > CMakeLists.txt
-#     cat tmp >> CMakeLists.txt
     cd "$srcdir/$pkgname-$pkgver/build"
     CFLAGS="${CFLAGS} -fno-stack-protector" LDFLAGS="-Wl,-O1,-z,relro,-z,now" cmake -DRELEASE=1 -DCMAKE_TOOLCHAIN_FILE=/usr/lib/emscripten/cmake/Modules/Platform/Emscripten.cmake ..
     make
@@ -34,8 +31,6 @@ build() {
 package() {
     mkdir -p $pkgdir/usr/share/dwrandomizer
     mkdir -p $pkgdir/usr/bin/
-    cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 < ../patch.diff
     cd "$srcdir/$pkgname-$pkgver/electron"
     cp -Lr * $pkgdir/usr/share/dwrandomizer
     echo -e '#!/bin/sh\n\nelectron /usr/share/dwrandomizer' > $pkgdir/usr/bin/dwrandomizer
