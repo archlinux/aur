@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/OpenMPDK/xNVMe"
 license=('APACHE')
 depends=(python-pyelftools libaio libutil-linux numactl python3)
-makedepends=(git meson ninja cunit ncurses)
+makedepends=(meson ninja cunit ncurses)
 source=("https://github.com/OpenMPDK/xNVMe/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
 

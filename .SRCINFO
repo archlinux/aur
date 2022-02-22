@@ -5,7 +5,6 @@ pkgbase = xnvme
 	url = https://github.com/OpenMPDK/xNVMe
 	arch = x86_64
 	license = APACHE
-	makedepends = git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = cunit
