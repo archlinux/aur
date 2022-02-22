@@ -24,5 +24,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  sudo make install || return 1
+  make DESTDIR="$pkgdir" install || return 1
 }
