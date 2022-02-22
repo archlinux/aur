@@ -1,7 +1,7 @@
 # Maintainer: Sam Tay <sam dot chong dot tay at gmail dot com>
 pkgname=so
 _pkgname=so
-pkgver=0.4.3
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A terminal interface for StackOverflow"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo')
 provides=('so')
 conflicts=('so-git' 'so-bin')
 source=("$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e82cb8f6d31435eec03a74d0ea4297eb28ce3ee75d4612ca5b2233c27e19c2d')
+sha256sums=('47a3cf5cef9d87dea223ef1c8fae3cf8c2ae0673d9eb4c8d73d733ce8ff45619')
 
 
 build() {
