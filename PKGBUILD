@@ -1,10 +1,11 @@
 #
-# Maintainer: Mikael Eriksson <mikael_eriksson@miffe.org>
+# Maintainer: Mikael Eriksson <mikael_eriksson at miffe dot org>
+# Maintainer: Filippo Falezza <filippo.falezza at outlook dot it> 
 #
 # Based on the linux package by:
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens at gmail dot com>
+# Maintainer: Tobias Powalowski <tpowa at archlinux dot org>
+# Maintainer: Thomas Baechler <thomas at archlinux dot org>
 
 _pkgsuffix=lantian
 pkgbase="linux-xanmod-$_pkgsuffix"
