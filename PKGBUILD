@@ -2,7 +2,7 @@
 # Contributer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=python-playwright-git
-pkgver=v1.15.0_2_2bd77c7
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
 arch=(x86_64 aarch64)
@@ -15,15 +15,15 @@ source=(${pkgname}::git+${url})
 sha256sums=('SKIP')
 pkgver() {
   cd ${srcdir}/${pkgname}
-  git describe --tags | sed "s/-/_/g;s/g//"
+  git describe --tags | sed "s/-/./g;s/v//"
 }
 package() {
   cd ${srcdir}/${pkgname}
-  pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location ${srcdir}/${pkgname}
+  pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location "${srcdir}/${pkgname}"
   python -O -m compileall "${pkgdir}"
   if [ ${CARCH} != "x86_64" ]
   then
     depends+=('nodejs')
-    sed -i "s#\$SCRIPT_PATH/node#node#" ${pkgdir}/$(python -c "import site; print(site.getsitepackages()[0])")/playwright/driver/playwright.sh
+    sed -i "s#\$SCRIPT_PATH/node#node#" "${pkgdir}/$(python -c \"import site; print(site.getsitepackages()[0])\")/playwright/driver/playwright.sh"
   fi
 }
