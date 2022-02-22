@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=dhall-toml
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Convert between Dhall and TOML"
 url="https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-toml"
@@ -10,7 +10,7 @@ arch=('x86_64')
 depends=('ghc-libs' 'dhall' 'haskell-prettyprinter' 'haskell-tomland' 'haskell-unordered-containers')
 makedepends=('ghc' 'uusi' 'haskell-doctest' 'haskell-tasty' 'haskell-tasty-hunit')
 source=("https://hackage.haskell.org/packages/archive/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('6b55ca62520ce4405ffd6eb8afb76b2df8eb5d2c086eb3a93c38a3c9298d8c08')
+sha256sums=('d027636c5492a04cfe87117fbb8a3f1e80c6145e7c05fccc2ad5eb754780f9f9')
 
 prepare() {
   cd $pkgname-$pkgver
