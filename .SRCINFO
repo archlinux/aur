@@ -1,14 +1,14 @@
 pkgbase = python-pinyin
 	pkgdesc = Chinese to Pinyin library
 	pkgver = 0.46.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozillazg/python-pinyin
 	changelog = CHANGELOG.rst
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
 	source = python-pinyin-0.46.0.tar.gz::https://files.pythonhosted.org/packages/source/p/pypinyin/pypinyin-0.46.0.tar.gz
