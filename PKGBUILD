@@ -5,7 +5,7 @@
 
 pkgbase=droidcam
 pkgname=('droidcam' 'v4l2loopback-dc-dkms')
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 epoch=1
 pkgdesc='A tool for using your android device as a wireless/usb webcam'
@@ -23,7 +23,7 @@ source=("${pkgbase}.desktop"
 sha256sums=('90dd73cf146fae0de0c11b46e97412d2aaca50ec879e1be2d793261e853dd0d3'
             '1e91f58ae83d433d32b483b14f1bb39cc245d2ace711b12c894de27dd2ea3413'
             '1d4b3ff98b4af9de77a24d1b6fad6e004deadf1f157eb800aa878ba1e7693dac'
-            '79321e89f5514467c462bed574adb2434ebe758276d3203f69e8bdf176aab8cf')
+            'a5a5601efc60ae5e60e189f9ec8c73dab5579e6fdeebdcb9b809b6befb416ecc')
 
 prepare() {
   # Generate the module loading configuration files
