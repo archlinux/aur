@@ -2,7 +2,7 @@
 # ---
 _pkgname=conciseST
 pkgname=concisest
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
@@ -23,11 +23,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
   printf "1.0.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-  cd "${_pkgname}"
-  DESTDIR="$pkgdir" make
 }
 
 package() {

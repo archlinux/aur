@@ -1,6 +1,6 @@
 pkgbase = concisest
 	pkgdesc = Concise Build of Suckless Simple Terminal
-	pkgver = 1.0.3
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://gitlab.com/qYp/conciseST
 	arch = x86_64
