@@ -1,11 +1,11 @@
 pkgbase = jubler
 	pkgdesc = Subtitle editor running on Java
 	pkgver = 7.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.jubler.org
 	arch = any
 	license = GPL2
-	depends = java-runtime>=8
+	depends = java-runtime>=17
 	optdepends = mplayer: live video preview for subtitles
 	optdepends = aspell
 	provides = jubler
