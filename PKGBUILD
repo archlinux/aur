@@ -2,7 +2,7 @@
 
 pkgname=fishui-git
 _pkgname=fishui
-pkgver=0.7.r3.g2bcb04a
+pkgver=0.8.r0.gc88702a
 pkgrel=1
 pkgdesc="GUI library based on QQC2 for Cutefish applications"
 arch=('x86_64')

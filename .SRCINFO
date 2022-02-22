@@ -1,6 +1,6 @@
 pkgbase = fishui-git
 	pkgdesc = GUI library based on QQC2 for Cutefish applications
-	pkgver = 0.7.r3.g2bcb04a
+	pkgver = 0.8.r0.gc88702a
 	pkgrel = 1
 	url = https://github.com/cutefishos/fishui
 	arch = x86_64
