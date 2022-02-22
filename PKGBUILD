@@ -2,14 +2,14 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=steam++-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.6.1_302_gb947d6cd
+pkgver=2.6.1.302.gb947d6cd
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
-depends=('dotnet-runtime>=6.0.1')
-makedepends=('git' 'dotnet-sdk>=6.0.1')
-checkdepends=('aspnet-runtime>=6.0.1')
+depends=('dotnet-runtime>=6.0.2')
+makedepends=('git' 'dotnet-sdk>=6.0.2.sdk200')
+checkdepends=('aspnet-runtime>=6.0.2')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++')
 conflicts=('steam++')
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             '8255faa817982a81ee3c12599e6ca4b10b39a21eb49b2dfd6d0ad09939a25d0b')
 pkgver(){
     cd "${srcdir}/SteamTools"
-    git describe --tags | sed "s/-/_/g;s/v//"
+    git describe --tags | sed "s/-/./g;s/v//"
 }
 prepare(){
     cd "${srcdir}/SteamTools"

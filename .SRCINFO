@@ -1,15 +1,15 @@
 pkgbase = steam++-git
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 2.6.1_302_gb947d6cd
+	pkgver = 2.6.1.302.gb947d6cd
 	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	checkdepends = aspnet-runtime>=6.0.1
+	checkdepends = aspnet-runtime>=6.0.2
 	makedepends = git
-	makedepends = dotnet-sdk>=6.0.1
-	depends = dotnet-runtime>=6.0.1
+	makedepends = dotnet-sdk>=6.0.2.sdk200
+	depends = dotnet-runtime>=6.0.2
 	optdepends = steam: need official or flatpak version of steam
 	provides = steam++
 	conflicts = steam++
