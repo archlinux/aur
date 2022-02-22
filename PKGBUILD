@@ -1,33 +1,39 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: Thomas <thomas at 6f dot io>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 pkgname=panicparse
-pkgver=2.0.1
+_pkgname=pp
+pkgver=2.2.0
 pkgrel=1
-pkgdesc="Crash your app in style (Golang)"
+pkgdesc='Parses panic stack traces, densifies and deduplicates goroutines with similar stack traces. Helps debugging crashes and deadlocks in heavily parallelized process.'
 arch=('x86_64')
 url='https://github.com/maruel/panicparse'
 license=('Apache')
-depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('15f6ecf84f7b8a64cb20f4ae4ae0f3e5669c81c25f0e29916e78d9757e6fad8b')
+sha256sums=('de6057831198a1100c5fa86802bc4c19a48b64af5ebd23d8eb67708bc8048715')
+conflicts=('pp')
+provides=('pp')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  mkdir -p build/
+  cd "$pkgname-$pkgver"
+
+  go mod download
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -o build ./...
+  cd "$pkgname-$pkgver"
+
+  go build -o bin/ -v "github.com/maruel/$pkgname/v2/cmd/$_pkgname"
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+
+  go test ./...
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm755 build/panicparse "${pkgdir}/usr/bin/panicparse"
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 -t "$pkgdir/usr/bin" "bin/$_pkgname"
 }
