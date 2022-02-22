@@ -2,7 +2,7 @@
 
 pkgname=waterfox-g4-bin
 pkgver=0.7
-pkgrel=0
+pkgrel=1
 pkgdesc="Fourth generation of customizable privacy-conscious web browser."
 arch=('x86_64')
 url="https://www.waterfox.net"
@@ -51,6 +51,16 @@ pref("app.update.auto", false);
 
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+END
+
+# Disable automatic updates and update notifications and allow only for manual update checking
+    install -Dm644 /dev/stdin "$pkgdir/opt/waterfox-g4/distribution/policies.json" <<END
+{
+    "policies": {
+        "AppAutoUpdate": false,
+        "ManualAppUpdateOnly": true
+    }
+}
 END
 
 	# Symlink the binary to /usr/bin/.

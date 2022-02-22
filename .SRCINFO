@@ -1,7 +1,7 @@
 pkgbase = waterfox-g4-bin
 	pkgdesc = Fourth generation of customizable privacy-conscious web browser.
 	pkgver = 0.7
-	pkgrel = 0
+	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
 	license = MPL
