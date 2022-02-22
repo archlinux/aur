@@ -1,0 +1,46 @@
+pkgbase = linux-xanmod-lantian
+	pkgdesc = Linux Lan Tian Custom Build
+	pkgver = 5.16.8.xanmod1
+	pkgrel = 1
+	url = https://github.com/xddxdd/pkgbuild/tree/master/linux-xanmod-lantian
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = xmlto
+	makedepends = git
+	options = !strip
+	source = linux-xanmod-lantian::git+https://github.com/xanmod/linux.git#tag=5.16.8-xanmod1
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0001-drm-i915-gvt-Add-virtual-option-ROM-emulation.patch
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0002-qcserial.patch
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0003-intel-drm-use-max-clock.patch
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0004-hp-omen-fourzone.patch
+	source = https://github.com/xddxdd/pkgbuild/raw/master/linux-xanmod-lantian/0005-cjktty.patch
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0006-uksm.patch
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0006-uksm.patch
+	source = https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0006-uksm.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = linux-xanmod-lantian
+	pkgdesc = The Linux Lan Tian Custom Build kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-xanmod-lantian-headers
+	pkgdesc = Headers and scripts for building modules for the Linux Lan Tian Custom Build kernel
