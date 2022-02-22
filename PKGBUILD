@@ -28,13 +28,13 @@ options=('!strip')
 _srcname="linux-xanmod-$_pkgsuffix"
 source=(
   "$_srcname::git+https://github.com/xanmod/linux.git#tag=$_srctag"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0001-drm-i915-gvt-Add-virtual-option-ROM-emulation.patch"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0002-qcserial.patch"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0003-intel-drm-use-max-clock.patch"
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0004-hp-omen-fourzone.patch"
-  "https://github.com/xddxdd/pkgbuild/raw/master/linux-xanmod-lantian/0005-cjktty.patch"
+  0001-drm-i915-gvt-Add-virtual-option-ROM-emulation.patch::https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0001-drm-i915-gvt-Add-virtual-option-ROM-emulation.patch
+  0002-qcserial.patch::https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0002-qcserial.patch
+  0003-intel-drm-use-max-clock.patch::https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0003-intel-drm-use-max-clock.patch
+  0004-hp-omen-fourzone.patch::https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0004-hp-omen-fourzone.patch
+  0005-cjktty.patch::https://github.com/xddxdd/pkgbuild/raw/master/linux-xanmod-lantian/0005-cjktty.patch
   0006-uksm.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/5.16/uksm-patches/0001-UKSM-for-5.16.patch
-  "https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0007-vfio-pci-d3cold.patch"
+  0007-vfio-pci-d3cold.patch::https://raw.githubusercontent.com/xddxdd/pkgbuild/master/linux-xanmod-lantian/0007-vfio-pci-d3cold.patch
   config
 )
 validpgpkeys=(
