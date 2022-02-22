@@ -19,7 +19,6 @@ makedepends=(
 	'gtk3'
 	'intltool'
 	'libnotify'
-	'ninja'
 	'pango'
 	'sqlite'
 )
@@ -34,7 +33,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S $_pkgname -B build -G Ninja \
+	cmake -S $_pkgname -B build \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Wno-dev

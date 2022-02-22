@@ -19,7 +19,6 @@ pkgbase = freetuxtv-git
 	makedepends = gtk3
 	makedepends = intltool
 	makedepends = libnotify
-	makedepends = ninja
 	makedepends = pango
 	makedepends = sqlite
 	depends = vlc
