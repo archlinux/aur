@@ -6,10 +6,10 @@ pkgbase = steam++-git
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	checkdepends = aspnet-runtime>=6.0.2
+	checkdepends = aspnet-runtime>=6.0.2.sdk200
 	makedepends = git
 	makedepends = dotnet-sdk>=6.0.2.sdk200
-	depends = dotnet-runtime>=6.0.2
+	depends = dotnet-runtime>=6.0.2.sdk200
 	optdepends = steam: need official or flatpak version of steam
 	provides = steam++
 	conflicts = steam++

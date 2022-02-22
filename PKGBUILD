@@ -7,9 +7,9 @@ pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
-depends=('dotnet-runtime>=6.0.2')
+depends=('dotnet-runtime>=6.0.2.sdk200')
 makedepends=('git' 'dotnet-sdk>=6.0.2.sdk200')
-checkdepends=('aspnet-runtime>=6.0.2')
+checkdepends=('aspnet-runtime>=6.0.2.sdk200')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++')
 conflicts=('steam++')
