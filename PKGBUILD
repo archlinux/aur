@@ -13,7 +13,7 @@ pkgbase=corefreq
 pkgname=(corefreq-client corefreq-server corefreq-dkms)
 _gitname=CoreFreq
 pkgver=1.89.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A CPU monitoring software with BIOS like functionalities"
 arch=('x86_64')
 url='https://github.com/cyring/CoreFreq'
@@ -21,14 +21,17 @@ license=('GPL2')
 depends=('dkms')
 source=(${pkgbase}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz"
         'dkms.conf'
-        'honor-archlinux-compiler-flags.patch')
+        'honor-archlinux-compiler-flags.patch'
+        '0001-Solving-compilation-with-CONFIG_SCHED_ALT-issue-322.patch')
 b2sums=('67ac254b32301e204a79575bd702ccd0a0f842643535ed4b547058abc1b221ed3c9d773c9456d166e0a6d19f9479361afe10e72e7786628522bf5216329c2f07'
         'c6d8849944f99195038ac252d010d3e3001cd1dcaee57218c4a7f58fa313aa38842e4ea991d4d9ff7d04063ebaa9900c06ff1eacfa6270341cf37fb752adc00c'
-        '3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf')
+        '3f5f9a27863412d620864e8c19e2683e3ef2103c4b95c126438330a9b532e2434664ce4860b6191552298131e434c09f5531428696dde7d70a1cb171b4f13edf'
+        '7955b3c7d03c786dd9b243e38a3daf47962dd0eea0a13289875b445c4b18d4c0e58a4046d3197eda9bed854ae2298ed4fa755dae55f1ddeb673cbaaef40863b6')
 
 prepare(){
   cd "${_gitname}-${pkgver}"
   patch -Np1 < "$srcdir/honor-archlinux-compiler-flags.patch"
+  patch -Np1 < "$srcdir/0001-Solving-compilation-with-CONFIG_SCHED_ALT-issue-322.patch"
 }
 
 build() {
