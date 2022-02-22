@@ -26,7 +26,7 @@
 ################################################################################
 
 ################################################################################
-# Assign "YES" to the variable you want enabled; empty or other value
+# Assign "YES" to the variable you want enabled; empty or any other value
 # for NO.
 #
 # Where you read experimental, replace with foobar.
@@ -34,12 +34,17 @@
 #
 ################################################################################
 CHECK=            # Run tests. May fail, this is developement after all.
+
 CLANG=            # Use clang.
-LTO=              # Enable link-time optimization. Not that experimental anymore.
-                  # Seems fixed in GCC, so I've reenabled binutils support, please
-		  # report any bug, to make it use clang by default again.
+
+LTO=              # Enable link-time optimization. Still experimental.
+
 CLI=              # CLI only binary.
 NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
+                  # Bitmap fonts only, 1337!
+
+PGTK="YES"        # Use native GTK3 build. Supports Wayland, yay!
+
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
                   # Read https://wiki.archlinux.org/index.php/X_resources
@@ -54,18 +59,19 @@ M17N=             # Enable m17n international table input support.
                   # But this gives independence if you need it.
                   # In fact, right now harfbuzz is hardwired, I have to
                   # be convinced it should be refactored.
-CAIRO="YES"       # GOOD NEWS! No longer experimental and fully supported.
-                  # This is now, along with harfbuzz, the prefered font
-                  # and text shaping engine.
-                  # If using GTK+, you'll get printing for free.
+NOCAIRO=          # Disable here.
+
 XWIDGETS="YES"    # Use GTK+ widgets pulled from webkit2gtk. Usable.
+
 DOCS_HTML=        # Generate and install html documentation.
+
 DOCS_PDF=         # Generate and install pdf documentation.
 MAGICK=           # ImageMagick 7 support. Deprecated (read the logs).
                   # ImageMagick, like flash, is a bug ridden pest that 
 		  # won't die;  yet it is useful if you know what you 
 		  #are doing.
                   # -->>If you just *believe* you need it, you don't.<<--
+
 NOGZ="YES"        # Don't compress .el files.
 FAST_BOOT="YES"   # Only native-compile the bare minimum. Intended for use with
                   # deferred compilation to native-compile on-demand at runtime.
@@ -77,10 +83,10 @@ pkgname="emacs-pgtk-native-comp-git"
 pkgver=28.0.50.146387
 pkgrel=2
 pkgdesc="GNU Emacs. Unofficial pgtk-nativecomp branch."
-arch=('x86_64' )
+arch=('x86_64')
 url="http://www.gnu.org/software/emacs/"
-license=('GPL3' )
 depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm' 'libgccjit')
+license=('GPL3')
 makedepends=('git')
 provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
@@ -141,13 +147,14 @@ fi
 
 if [[ $MAGICK == "YES" ]]; then
   depends+=( 'imagemagick'  'libjpeg-turbo' 'giflib' );
-elif [[ ! $NOX == "YES" ]]; then
+fi
+if [[ ! $NOX == "YES" ]] && [[ ! $CLI == "YES" ]]; then
   depends+=( 'libjpeg-turbo' 'giflib' );
-else
+elif [[ $CLI == "YES" ]]; then
   depends+=();
 fi
 
-if [[ $CAIRO == "YES" ]]; then
+if [[ ! $NOCAIRO == "YES" ]] && [[ ! $CLI == "YES" ]] && [[ ! $PGTK == "YES" ]] ; then
   depends+=( 'cairo' );
 fi
 
@@ -155,7 +162,7 @@ if [[ $XWIDGETS == "YES" ]]; then
   if [[ $GTK2 == "YES" ]] || [[ $LUCID == "YES" ]] || [[ $NOTKIT == "YES" ]] || [[ $CLI == "YES" ]]; then
     echo "";
     echo "";
-    echo "Xwidgets support *requires* gtk+3!!!";
+    echo "Xwidgets support **requires** GTK+3!!!";
     echo "";
     echo "";
     exit 1;
@@ -232,13 +239,15 @@ if [[ $PROFILING == "YES" ]]; then
 fi
 
 if [[ $CLI == "YES" ]]; then
-  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' );
+  _conf+=( '--without-x' '--with-x-toolkit=no' '--without-xft' '--without-lcms2' '--without-rsvg' '--without-jpeg' '--without-gif' '--without-tiff' '--without-png' );
 elif [[ $NOTKIT == "YES" ]]; then
-  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--with-xft' '--without-xaw3d' );
+  _conf+=( '--with-x-toolkit=no' '--without-toolkit-scroll-bars' '--without-xft' '--without-xaw3d' );
 elif [[ $LUCID == "YES" ]]; then
   _conf+=( '--with-x-toolkit=lucid' '--with-xft' '--with-xaw3d' );
 elif [[ $GTK2 == "YES" ]]; then
   _conf+=( '--with-x-toolkit=gtk2' '--without-gsettings' '--without-xaw3d' );
+elif [[ $PGTK == "YES" ]]; then
+  _conf+=( '--with-pgtk' '--without-xaw3d' );
 else
   _conf+=( '--with-x-toolkit=gtk3' '--without-xaw3d' );
 fi
@@ -247,12 +256,12 @@ if [[ ! $M17N == "YES" ]]; then
   _conf+=( '--without-m17n-flt' );
 fi
 
-if [[ $MAGICK == "YES" ]]; then
-  _conf+=( '--with-imagemagick');
+if [[ $NOCAIRO == "YES" || $CLI == "YES" || $NOTKIT == "YES" || $LUCID == "YES" ]]; then
+  _conf+=( '--without-cairo' );
 fi
 
-if [[ $CAIRO == "YES" ]]; then
-  _conf+=( '--with-cairo' );
+if [[ $MAGICK == "YES" ]]; then
+  _conf+=( '--with-imagemagick');
 fi
 
 if [[ $XWIDGETS == "YES" ]]; then
@@ -262,6 +271,9 @@ fi
 if [[ $NOGZ == "YES" ]]; then
   _conf+=( '--without-compress-install' );
 fi
+
+# ctags/etags may be provided by other packages, e.g, universal-ctags
+_conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 
 ################################################################################
 
@@ -307,15 +319,6 @@ package() {
   if [[ $DOCS_HTML == "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
   if [[ $DOCS_PDF == "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
-  # remove conflict with ctags package
-  mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
-
-  if [[ $NOGZ == "YES" ]]; then
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1,ctags.emacs.1};
-  else
-    mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1.gz}
-  fi
-
   # fix user/root permissions on usr/share files
   find "$pkgdir"/usr/share/emacs/ | xargs chown root:root
 
@@ -328,4 +331,4 @@ package() {
 }
 
 ################################################################################
-# vim:set ft=sh ts=2 sw=2 et:
+# vim:set ft=bash ts=2 sw=2 et:
