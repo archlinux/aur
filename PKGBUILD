@@ -5,8 +5,8 @@
 # Contributor: Angel "angvp" Velasquez <angvp[at]archlinux.com.ve> 
 
 pkgname="python-numpy-openblas"
-pkgver=1.22.0
-pkgrel=2
+pkgver=1.22.2
+pkgrel=1
 pkgdesc="Scientific tools for Python - built with openblas"
 arch=("i686" "x86_64")
 license=("custom")
@@ -19,7 +19,7 @@ makedepends=('cblas' 'lapack' 'python' 'python-setuptools' 'gcc-fortran' 'python
 checkdepends=('python-pytest')
 options=('staticlibs')
 source=("python-numpy-$pkgver.tar.gz::https://github.com/numpy/numpy/releases/download/v$pkgver/numpy-$pkgver.tar.gz")
-sha256sums=('f2be14ba396780a6f662b8ba1a24466c9cf18a6a386174f614668e58387a13d7')
+sha256sums=('093d513a460fd94f94c16193c3ef29b2d69a33e482071e3d6d6e561a700587a6')
 
 prepare() {
   # https://github.com/numpy/numpy/issues/17390
