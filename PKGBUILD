@@ -2,7 +2,7 @@
 # Contributor: Thor K. Høgås <thor that-circular-a roht dot no>
 
 pkgname='omnetpp-preview'
-pkgver=6.0pre13
+pkgver=6.0rc1
 pkgrel=1
 _pkgname='omnetpp'
 pkgdesc='OMNeT++ Discrete Event Simulator. OMNeT++ is an extensible, modular, component-based C++ simulation library and framework, primarily for building network simulators: preview version'
@@ -28,7 +28,7 @@ source=(OMNeT++.desktop
 
 sha512sums=('a5772a605592ed2db839609f8298d1d71fb9141eb1b30dac584b788414dfe49b250ba803351a3a84f90c6b89f8e09e7b129a037af17c9b94c22dff2003a5edd8'
             'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1'
-            'ccb88c39c9573ccad453104b46e354ab4c2bb771063f72fe64cb65924fca5f813d31db849f016326cf41ba3229f7c073f1fc559c98c74bdfbd54308778812f3f')
+            '1190add3007499e86fe10daa29ddbdbd56ec2aba8dce865db978414f87fd022b4c07b890fa6efe911c6cdaf8775612c7da855c84bd33544855bb4245c6b16a44')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}
