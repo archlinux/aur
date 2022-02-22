@@ -1,0 +1,20 @@
+pkgbase = fastly-bin
+	pkgdesc = A CLI for interacting with the Fastly platform
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/fastly/cli
+	license = Apache license 2.0
+	optdepends = viceroy: for running service locally
+	conflicts = fastly
+	provides = fastly
+	arch = aarch64
+	source_aarch64 = https://github.com/fastly/cli/releases/download/v1.7.0/fastly_v1.7.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = d0cc56e916e2a0639685cfd48cb96c3e59545c167b1488ca117dfa8311e87b7f
+	arch = i686
+	source_i686 = https://github.com/fastly/cli/releases/download/v1.7.0/fastly_v1.7.0_linux-386.tar.gz
+	sha256sums_i686 = 843fd76c34417f189199502a1ff2790a02787537c04303e804940df8704b53f1
+	arch = x86_64
+	source_x86_64 = https://github.com/fastly/cli/releases/download/v1.7.0/fastly_v1.7.0_linux-amd64.tar.gz
+	sha256sums_x86_64 = c1b109a0aaf7fecf3a4cd82119de3ea69bad06603fa524f2a6b0821ad42ec38d
+	
+pkgname = fastly-bin
