@@ -2,7 +2,7 @@
 
 pkgname=cutefish-screenshot-git
 _pkgname=cutefish-screenshot
-pkgver=0.5.r34.gd47f8cf
+pkgver=0.8.r22.g6976e16
 pkgrel=1
 pkgdesc="Screenshot tool for CutefishOS"
 arch=('x86_64')
