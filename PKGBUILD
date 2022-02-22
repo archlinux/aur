@@ -2,36 +2,36 @@
 
 pkgname=xmlmind-xmleditor
 _pkgname=xxe
-pkgver=9.5.1
+pkgver=10.0.0
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="IDE for editing XML files"
 license=('Custom')
 url="https://www.xmlmind.com/xmleditor"
 arch=('any')
-depends=('java-runtime>=8' 'bash' 'perl')
+depends=('java-runtime>=8' 'sh' 'perl')
 optdepends=('cups-pdf: for the ability to print into PDF-files')
 makedepends=('libicns' 'icoutils' 'gendesk')
 provides=('xxe')
 install=${_pkgname}.install
-source=("http://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip"
-        "http://www.xmlmind.com/xmleditor/_download/xxe-devdocs-${_pkgver}.zip"
+source=("https://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip"
+        "https://www.xmlmind.com/xmleditor/_download/xxe-devdocs-${_pkgver}.zip"
         "xxe.sh"
-        "xxetool.sh"
+        "xxeconvert.sh"
         "xmltool.sh"
         "csscheck.sh"
         "authvalue.sh"
-        "deployxxe.sh"
-        "xmltool.1")
-sha256sums=('46dccd4e8e826d9b6dccb886e72ac2baf08ff250f7c0103122ab0f84fad34dc0'
-            '830190d73d8d94646369332d1560933558a25c0e5043172a167e6b8850a686f6'
-            'b77a9be5922bd692af5ac80a7f1b88fe4b1e997dcdfb5d8fe6e37440c19e1fd3'
-            'c28c54c62aff121c84cfcda399ff21bd914a4e2757f29358e91c6f4865208fcf'
+        "xmltool.1"
+        "icon64x64.png")
+sha256sums=('0cd52ed3df76ee32aa7892cdc10774120553ba36665ca6d85af525a4560306a9'
+            'b0b8a50eb20dd75eb54ee6885e81c650c30696a5184899052421a395164a63a0'
+            '72d24d6216f0fe5515edb50c38566d3f1f3ce134634a0da04fbb32ac3a216452'
+            '3f04f7b1ecb934a96f15ed75e0593e545d7f820a95705710b39a2916377c57fa'
             '40fd7e5f73eaf9f05adabd29715f3dc2d78f4eeddb9440bdd3aece1341308a01'
             '541de90c98dc15d2957834611df41872837144397735c62be67924ce8af2ef84'
             '61251006be3625075958f6257d5eb5eba983115312d7df32e4449a2847c5ca7f'
-            'cda6355dfc122b862694126affd50852ae8470ff1927c3af94b1e16c33140e58'
-            'dd1efd7074aef4b28c130a781f21e34ada3f9b15673ad9df61ff77dba4930482')
+            'dd1efd7074aef4b28c130a781f21e34ada3f9b15673ad9df61ff77dba4930482'
+            '9c97b679944fa57e9aab3e3143fb23f2c4dba5e70d10127bfa99d60233a2d76f')
 
 prepare() {
   # use better icons
@@ -45,8 +45,7 @@ prepare() {
   mv xxe_2_48x48x32.png xxe_48x48x32.png
 
   # 64px
-  jar -xf xxe-perso-${_pkgver}/bin/xxe_tool.jar com/xmlmind/xmledittool/deploy/icon64x64.png
-  mv com/xmlmind/xmledittool/deploy/icon64x64.png xxe_64x64x32.png
+  mv icon64x64.png xxe_64x64x32.png
 
   # create launcher
   gendesk -f -n \
@@ -54,7 +53,7 @@ prepare() {
       --name="XXE" \
       --genericname="XML IDE" \
       --comment="Edit XML files" \
-      --exec=xxe \
+      --exec="xxe %F" \
       --startupnotify=True \
       --categories='Development;IDE;Java' \
       --mimetypes='text/xml' \
@@ -67,12 +66,11 @@ package() {
   cp -a xxe-perso-${_pkgver} "${pkgdir}"/usr/share/java/${_pkgname}
 
   # launch scripts
-  install -Dm755 xxe.sh       "${pkgdir}"/usr/bin/xxe
-  install -Dm755 xxetool.sh   "${pkgdir}"/usr/bin/xxetool
-  install -Dm755 xmltool.sh   "${pkgdir}"/usr/bin/xmltool
-  install -Dm755 csscheck.sh  "${pkgdir}"/usr/bin/csscheck
-  install -Dm755 authvalue.sh "${pkgdir}"/usr/bin/authvalue
-  install -Dm755 deployxxe.sh "${pkgdir}"/usr/bin/deployxxe
+  install -Dm755 xxe.sh        "${pkgdir}"/usr/bin/xxe
+  install -Dm755 xxeconvert.sh "${pkgdir}"/usr/bin/xxeconvert
+  install -Dm755 xmltool.sh    "${pkgdir}"/usr/bin/xmltool
+  install -Dm755 csscheck.sh   "${pkgdir}"/usr/bin/csscheck
+  install -Dm755 authvalue.sh  "${pkgdir}"/usr/bin/authvalue
 
   # place icons
   for size in 16 24 32 48 64 128 256 512; do
@@ -99,7 +97,7 @@ package() {
   find  "${pkgdir}"/usr/share/java/xxe/bin/ -name \*.bat -delete
   find  "${pkgdir}"/usr/share/java/xxe/bin/ -name \*.exe -delete
   rm    "${pkgdir}"/usr/share/java/xxe/bin/xxe.jstart
-  rm    "${pkgdir}"/usr/share/java/xxe/bin/{xxe,xxetool,xmltool,csscheck,authvalue,deployxxe}
+  rm    "${pkgdir}"/usr/share/java/xxe/bin/{xxe,xxeconvert,xmltool,authvalue}
   rm -r "${pkgdir}"/usr/share/java/xxe/bin/icon
 
   # include devdocs (optional)

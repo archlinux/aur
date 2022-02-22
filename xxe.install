@@ -16,6 +16,7 @@ post_install() {
 
 post_upgrade() {
     manual
+
     fix_scaling=$(vercmp $2 9.4.1-2 )
     if [[ $fix_scaling -le 0 ]]
     then
@@ -23,6 +24,15 @@ post_upgrade() {
         echo ">>> Options to improve the UI-scaling are now set at launch."
         echo ">>> You may want to reconsider enabliung UI-scaling if you had issues."
         echo ">>> The setting is at Options -> Preferences -> General"
+        echo ""
+    fi
+
+    major_update=$(vercmp ${1/.*} ${2/.*})
+    if [[ major_update -gt 0 ]]
+    then
+        echo ""
+        echo "Major Version Update. XXE will use a new configuration directory."
+        echo "Copy over your old one or download add-ons again."
         echo ""
     fi
 }
