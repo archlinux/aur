@@ -26,5 +26,6 @@ build() {
 package() {
    cd ${_namever}
    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-   # install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
+   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
