@@ -5,6 +5,7 @@ pkgbase = python-pip_search
 	url = https://github.com/victorgarric/pip_search
 	arch = any
 	depends = python-pip
+	depends = python-rich
 	source = python-pip_search-0.0.10.tar.gz::https://github.com/victorgarric/pip_search/releases/download/0.0.10/pip_search-0.0.10.tar.gz
 	sha256sums = 322e0f8c8695dbf0c07628cbc4c701cfed9575ccc4ecaa823f1d34aab4e65280
 
