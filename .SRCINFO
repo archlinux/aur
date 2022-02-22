@@ -1,19 +1,19 @@
 pkgbase = bunnyfetch-git
-	pkgdesc = Tiny system info fetch utility.
-	pkgver = 0.1.3.39.g22e2ab3
+	pkgdesc = Tiny system info fetch utility
+	pkgver = 0.2.0.r5.g96403ef
 	pkgrel = 1
-	url = https://github.com/Luvella/Bunnyfetch
+	url = https://github.com/Rosettea/bunnyfetch
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
+	makedepends = go
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
 	provides = bunnyfetch
 	conflicts = bunnyfetch
-	source = bunnyfetch::git+https://github.com/Luvella/Bunnyfetch.git
+	source = bunnyfetch-git::git+https://github.com/Rosettea/bunnyfetch?signed
+	validpgpkeys = 784DF7A14968C5094E16839C904FC49417B44DCD
 	sha256sums = SKIP
 
 pkgname = bunnyfetch-git
-
