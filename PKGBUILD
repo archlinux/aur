@@ -1,7 +1,7 @@
 # Maintainer: Mark Stenglein <aur@markstenglein.com>
 
 pkgname=slides
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Terminal based presentation tool'
 arch=('x86_64')
