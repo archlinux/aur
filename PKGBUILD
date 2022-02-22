@@ -1,4 +1,3 @@
-#
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=concise-keyring
