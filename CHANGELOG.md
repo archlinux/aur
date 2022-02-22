@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.7.3-1] - 2022-02-15
+
+- Bump lots of dependencies
+- Get rid of lots of dependencies (Removed over 600 lines from go.sum)
+
 ## [0.7.2-1] - 2021-11-01
 
 ### Added
