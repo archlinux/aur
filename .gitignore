@@ -6,6 +6,5 @@
 !embree.patch
 !SelectCudaComputeArch.patch
 !usd_python.patch
-!openexr3.patch
 !.SRCINFO
 !.gitignore
