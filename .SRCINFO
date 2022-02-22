@@ -1,15 +1,16 @@
 pkgbase = subsurface-libdc-git
 	pkgdesc = Library for communication with dive computers
-	pkgver = 20200507.48e46cf
-	pkgrel = 1
+	pkgver = 20220214.2794f96
+	pkgrel = 2
 	url = https://github.com/Subsurface-divelog/libdc
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	depends = bluez-libs
+	depends = libusb
 	provides = subsurface-libdc
 	conflicts = subsurface-libdc
 	source = git+https://github.com/subsurface/libdc#branch=Subsurface-DS9
 	sha256sums = SKIP
 
 pkgname = subsurface-libdc-git
-
