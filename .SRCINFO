@@ -1,0 +1,15 @@
+pkgbase = cpu8051-git
+	pkgdesc = Intel(R) 8051 Instruction Set Simulator
+	pkgver = r11.284334f
+	pkgrel = 1
+	url = https://github.com/wyvernSemi/cpu8051
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = cpu8051
+	provides = libcpu8051.so
+	conflicts = cpu8051
+	source = git+https://github.com/wyvernSemi/cpu8051.git
+	sha256sums = SKIP
+
+pkgname = cpu8051-git
