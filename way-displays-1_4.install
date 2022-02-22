@@ -1,0 +1,30 @@
+# Colored makepkg-like functions
+note() {
+    printf "${blue}==>${yellow} NOTE:${all_off} ${1}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+red="${bold}$(tput setaf 1)"
+green="${bold}$(tput setaf 2)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+
+post_install() {
+    note ""
+    note "${yellow}1.4.0 New Feature: Command Line Client${all_off}"
+    note ""
+    note "Manages the server. The active configuration and display state may be inspected, modified and written to disk."
+    note ""
+    note "e.g. Show current configuration and display state: ${green}way-displays -g${all_off}"
+    note "     Set a scale: ${green}way-displays -s SCALE \"eDP-1\" 3${all_off}"
+    note "     Persist your changes to your cfg.yaml: ${green}way-displays -w${all_off}"
+    note ""
+    note "See ${blue}man way-displays${all_off} and ${blue}way-displays --help${all_off}"
+    note ""
+}
+
+post_upgrade() {
+    post_install
+}
+
