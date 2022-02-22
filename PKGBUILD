@@ -1,7 +1,7 @@
 # Maintainer: Ali Nabipour <alinabipour01@gmail.com>
 
 pkgname=cutefish-git
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc='Cutefish desktop environment meta package'
 arch=('x86_64')
