@@ -1,8 +1,8 @@
 pkgbase = wayshot-git
 	pkgdesc = A screenshot tool for wlroots compositors.
-	pkgver = 0.1.0.38.gb618361
+	pkgver = 1.1.1.55.g4235f3c
 	pkgrel = 1
-	url = https://github.com/waycrate/wayshot
+	url = https://git.sr.ht/~shinyzenith/wayshot
 	arch = x86_64
 	license = BSD
 	makedepends = rustup

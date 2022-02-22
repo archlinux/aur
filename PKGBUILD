@@ -1,10 +1,10 @@
 # Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
 pkgname='wayshot-git'
 _pkgname="wayshot"
-pkgver=0.1.0.38.gb618361
+pkgver=1.1.1.55.g4235f3c
 pkgrel=1
 arch=('x86_64')
-url="https://github.com/waycrate/wayshot"
+url="https://git.sr.ht/~shinyzenith/wayshot"
 pkgdesc="A screenshot tool for wlroots compositors."
 license=('BSD')
 depends=('slurp')
