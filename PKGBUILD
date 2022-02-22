@@ -2,14 +2,14 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r117.g60fefc6
+pkgver=17.r127.g60c5656
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('wxgtk2' 'openal' 'sdl2' 'alsa-lib')
-makedepends=('git' 'cmake' 'ninja')
+makedepends=('git' 'ninja' 'meson')
 conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git")
 sha256sums=('SKIP')
@@ -21,12 +21,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/pcem"
-  cmake -G "Ninja" -DUSE_NETWORKING=ON -DUSE_ALSA=ON -DPLUGIN_ENGINE=ON -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .  
+  meson --buildtype release build --prefix=/usr --sysconfdir=/etc -Duse-alsa=true -Duse-plugin-engine=true -Duse-networking=true 
+  cd build
   ninja
 }
 
 package() {
-  cd "${srcdir}/pcem"
+  cd "${srcdir}/pcem/build"
   DESTDIR="$pkgdir" ninja install
 }
 
