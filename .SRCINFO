@@ -1,0 +1,13 @@
+pkgbase = r-mapproj
+	pkgdesc = Map Projections
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://cran.r-project.org/package=mapproj
+	arch = i686
+	arch = x86_64
+	license = custom:LPL
+	depends = r-maps
+	source = https://cran.r-project.org/src/contrib/mapproj_1.2.8.tar.gz
+	sha256sums = 865f108f1ee54cda38571b86cd46063a903824d9b4eabfdf75218023d08a7781
+
+pkgname = r-mapproj
