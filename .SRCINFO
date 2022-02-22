@@ -1,13 +1,12 @@
 pkgbase = rrthomas-libpaper
 	pkgdesc = Replacement for Debian's libpaper
-	pkgver = 2.0
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/rrthomas/paper
 	arch = x86_64
 	license = GPL3
 	depends = glibc
-	source = https://github.com/rrthomas/paper/archive/v2.0.tar.gz
-	sha256sums = 61a40576d0391e17dac1fbba0253967ace0ccec80bb18aa29d4ada41534fb16c
+	source = https://github.com/rrthomas/paper/archive/v2.3.tar.gz
+	sha256sums = c04c51cb7fa8361ab3b2b1ea468f984c49d09fbf2033fb2d467e14191928db1c
 
 pkgname = rrthomas-libpaper
-
