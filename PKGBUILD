@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://zydis.re/'
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'git' 'ninja' 'ruby-ronn-ng' 'zycore-c>=1.1.0')
+makedepends=('cmake' 'git' 'ruby-ronn-ng' 'zycore-c>=1.1.0')
 provides=("$_pkgname=$pkgver" 'libZydis.so')
 conflicts=("$_pkgname")
 source=("git+https://github.com/zyantific/$_pkgname.git")
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S $_pkgname -B build -G Ninja \
+	cmake -S $_pkgname -B build \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DZYDIS_BUILD_EXAMPLES=OFF \
