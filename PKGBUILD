@@ -2,7 +2,7 @@
 # Contribtor: Igor <f2404@yandex.ru>
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
-pkgver=1.9.4.r61.gfb6baad6
+pkgver=1.9.5.r1.g7a362188
 pkgrel=1
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
@@ -28,6 +28,7 @@ build() {
 
   # Build with LDC
   export DC=ldc
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto/--flto=full/')"
 
   arch-meson "${pkgname%-git}" build
   meson compile -C build
