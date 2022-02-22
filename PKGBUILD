@@ -9,7 +9,7 @@ depends=('python' 'python-requests' 'python-pycryptodomex')
 makedepends=('python-build' 'python-installer' 'python-poetry')
 license=('MIT')
 arch=('any')
-source=("https://github.com/simon-weber/${pkgname##python-}/archive/${pkgver}.tar.gz")
+source=("${pkgname##python-}-$pkgver.tar.gz::https://github.com/simon-weber/${pkgname##python-}/archive/${pkgver}.tar.gz")
 
 build() {
   cd "${srcdir}/${pkgname##python-}-${pkgver}"
