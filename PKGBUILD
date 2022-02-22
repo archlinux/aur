@@ -21,7 +21,7 @@ prepare() {
 package()	{
   cd "${srcdir}/"
   install -Dm0755 $srcdir/obfs4proxy "${pkgdir}/usr/bin/obfs4proxy"
-  install -Dm0644 $srcdir/obfs4proxy.1 "${pkgdir}/usr/share/man/man1/obfs4proxy.1"
+  install -Dm0644 $srcdir/obfs4proxy.1.gz "${pkgdir}/usr/share/man/man1/obfs4proxy.1.gz"
   install -Dm0644 $srcdir/ChangeLog "${pkgdir}/usr/share/doc/${pkgname}/ChangeLog"
   install -Dm0644 $srcdir/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
