@@ -3,7 +3,7 @@
 _pkgname=mirage
 pkgname="${_pkgname}-python3"
 pkgver=0.11.1
-pkgrel=4
+pkgrel=5
 _debian_pkgrel=1build2
 pkgdesc="A fast and simple GTK+ Image Viewer (Python3 port)"
 arch=('any')
@@ -15,16 +15,16 @@ depends=('python' 'gtk3' 'python-gobject' 'python-cairo' 'libgexiv2')
 source=("${pkgname}-${pkgver}.tar.bz2::https://gitlab.com/thomasross/${_pkgname}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
         "${pkgname}-${pkgver}.debian.tar.xz::https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/${_pkgname}/${pkgver}-${_debian_pkgrel}/${_pkgname}_${pkgver}-${_debian_pkgrel}.debian.tar.xz"
         "${pkgname}.patch"
-        "${pkgname}-fix-segfault-on-python310.patch")
+        "${pkgname}-python310-fixes.patch")
 sha256sums=('2932f7e9e6a1da7785cae2664669eff6f12ca26163afb3d1a3c8e1cc3255e5ec'
             '48b5cf3ff7d50d602ea673a424ffd659ab8813ce7dd1837b574cf39eb732c50a'
             '2de9c32689e1b0d2c559ea68b5eca4f0b37a53ddd8687b7a9c36b51c11ffee6b'
-            '8f3d30ca118c939fe5d05ac90da7faa427375167585ff246e9641499f5712804')
+            '485546cf69a018ff5580af3f8aef921fe99624034f9e1915958285f5d8524a4d')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   patch --forward --strip=1 --input="${srcdir}/${pkgname}.patch"
-  patch --forward --strip=1 --input="${srcdir}/${pkgname}-fix-segfault-on-python310.patch"
+  patch --forward --strip=1 --input="${srcdir}/${pkgname}-python310-fixes.patch"
 }
 
 build() {
