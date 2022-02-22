@@ -1,0 +1,12 @@
+pkgbase = concise-keyring
+	pkgdesc = The Concise Keyring
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://gitlab.com/qYp/concise-keyring
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://gitlab.com/qYp/concise-keyring.git
+	md5sums = SKIP
+
+pkgname = concise-keyring
