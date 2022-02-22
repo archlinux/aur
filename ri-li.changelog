@@ -1,4 +1,34 @@
+2022-02-22 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Modified and renamed the patch to fix compilation (many thanks to Michaël Lhomme)
+	Join the two changelog text files
+
 2015-08-23 Angelo "Encelo" Theodorou  <encelo@users.sourceforge.net>
 
 	* PKGBUILD :
 	Added a package() function
+
+2010-12-14 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Applying a new GCC compile patch
+
+2007-05-31 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	Using $srcdir and $pkgdir variables
+	Added x86_64 to the arch array
+	Source downloading from downloads.sourceforge.net
+	Applying a GCC 4.3 compile patch
+
+	* ChangeLog :
+	Compliant to ChangeLog.proto format
+
+2007-12-08 encelo <encelo@users.sourceforge.net>
+
+	* PKGBUILD :
+	 Description shortened
+	 Dependencies updated
+	 License and arch field added
+	 .desktop file included

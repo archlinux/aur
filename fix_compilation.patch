@@ -200,3 +200,36 @@ diff -urN Ri-li-2.0.1-orig/src//utils.cc Ri-li-2.0.1/src//utils.cc
  /*** Variables globales ***/
  /**************************/
  extern sPreference Pref;
+diff -urN Ri-li-2.0.1-orig/src/sprite.cc Ri-li-2.0.1/src/sprite.cc
+--- Ri-li-2.0.1-orig/src/sprite.cc	2022-02-22 09:50:54.077854717 +0100
++++ Ri-li-2.0.1/src/sprite.cc	2022-02-22 09:55:05.251189551 +0100
+@@ -354,7 +354,7 @@
+     // Fabrique la surface
+     Image[i]=SDL_CreateRGBSurface((Dim[i].bpp-3)*SDL_SRCALPHA,Dim[i].L,Dim[i].H,Dim[i].bpp*8,
+ 				  0xff,0xff00,0xff0000,0xff000000*(Dim[i].bpp-3));
+-    if(Image[i]<=NULL) {
++    if(Image[i]==NULL) {
+       cerr <<"Impossible de créer une Surface SDL!"<<endl;
+       return false;
+     }
+@@ -488,7 +488,7 @@
+   // Fabrique la surface
+   Image[0]=SDL_CreateRGBSurface((Dim[0].bpp-3)*SDL_SRCALPHA,Dim[0].L,Dim[0].H,Dim[0].bpp*8,
+ 				0xff,0xff00,0xff0000,0xff000000*(Dim[0].bpp-3));
+-  if(Image[0]<=NULL) {
++  if(Image[0]==NULL) {
+     cerr <<"Impossible de créer une Surface SDL!"<<endl;
+     return false;
+   }
+diff -urN Ri-li-2.0.1-orig/src/tableau.cc Ri-li-2.0.1/src/tableau.cc
+--- Ri-li-2.0.1-orig/src/tableau.cc	2022-02-22 09:50:54.077854717 +0100
++++ Ri-li-2.0.1/src/tableau.cc	2022-02-22 09:54:35.474522718 +0100
+@@ -87,7 +87,7 @@
+   
+   // Alloue la mémoire
+   Buf=new unsigned char [sizeof(s_Tableau)*N+sizeof(int)+1];
+-  if(Buf<=0) return false;
++  if(Buf==0) return false;
+ 
+   // Charge les tableaux
+   Buf[0]=N/256;
