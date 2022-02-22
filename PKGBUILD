@@ -2,12 +2,12 @@
 pkgname=minetest-xaenvironment
 _pkgname=xaenvironment
 _pkgauthor=AiTechEye
-pkgver=2022.02.10
-_cdbrel=11200
+pkgver=2022.02.22
+_cdbrel=11378
 pkgrel=1
 pkgdesc="A game that aims to contain lots of environments and things."
 license=("LGPLv2.1")
-sha256sums=('81e0ce886b1b034b99bfa15aaff3e1864024ffa904d52d3efd0ea3234ef330aa')
+sha256sums=('e65ec7cf46b3c9c37025005382c11273a189fc82829a87bfd09999c289703ba7')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"

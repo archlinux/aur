@@ -1,14 +1,14 @@
 pkgbase = minetest-xaenvironment
 	pkgdesc = A game that aims to contain lots of environments and things.
-	pkgver = 2022.02.10
+	pkgver = 2022.02.22
 	pkgrel = 1
 	url = https://content.minetest.net/packages/AiTechEye/xaenvironment/
 	arch = any
 	license = LGPLv2.1
 	depends = minetest-common
-	noextract = xaenvironment-2022.02.10.zip
+	noextract = xaenvironment-2022.02.22.zip
 	options = !strip
-	source = xaenvironment-2022.02.10.zip::https://content.minetest.net/packages/AiTechEye/xaenvironment/releases/11200/download/
-	sha256sums = 81e0ce886b1b034b99bfa15aaff3e1864024ffa904d52d3efd0ea3234ef330aa
+	source = xaenvironment-2022.02.22.zip::https://content.minetest.net/packages/AiTechEye/xaenvironment/releases/11378/download/
+	sha256sums = e65ec7cf46b3c9c37025005382c11273a189fc82829a87bfd09999c289703ba7
 
 pkgname = minetest-xaenvironment
