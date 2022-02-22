@@ -1,12 +1,12 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 # Make Arch package using OBS binaries
-# 11-Jan-2022 
+# 22-Feb-2022 
 # See http://www.c-evo.org/
 # https://build.opensuse.org/package/show/home:PeterBBB/c-evo
 
 pkgname=c-evo-nh-bin
 pkgbase=c-evo-bin
-pkgver=1.3.0.418.1
+pkgver=1.3.0.420.1
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
@@ -15,12 +15,12 @@ license=('GPL2')
 depends=('gtk2')
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-nh' 'c-evo-bin')
-source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_1.3.0.418+dfsg-1_all.deb"
-       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_1.3.0.418+dfsg-1_amd64.deb"
-        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_1.3.0.418+dfsg-1_amd64.deb")
-sha256sums=('f164f5370b334fc5afd6cf73a665db61697d80cc80c64edadb9acf8cde637fdb'
-            'f9d884b9cb6e6dc6a0af378d6aa2d6fc4a20210906f58b3fda7387e9f375e767'
-            '00f604183f9eb3e8a5172287783365220fa5b8cba31a3b3f46bdffe54483bb30')
+source=("$pkgname-$pkgver.data.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/all/c-evo-data_1.3.0.420+dfsg-1_all.deb"
+       "$pkgname-$pkgver.stdai.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-stdai_1.3.0.420+dfsg-1_amd64.deb"
+        "$pkgname-$pkgver.gtk2.deb::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_11/amd64/c-evo-gtk2_1.3.0.420+dfsg-1_amd64.deb")
+sha256sums=('49e39dbf3f29b0d10955652e1f78ee985b2305de0ba0bc137cbbe5ee4dcfea76'
+            '88c9fe71a46cdee394c7ac7fb4cba86efdf1add8da4e8fed4200579f98bfa5ce'
+            '53935cbd6c310ae895842d368e387d9aca3fdfe0ae6c885871dc23c3c9a597d9')
 
 noextract=("$pkgname-$pkgver.data.deb"
 	  "$pkgname-$pkgver.stdai.deb"
