@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=sunshine-git
-pkgver=0.11.1.751.e4c9c29
+pkgver=0.12.0.938.4a48307
 pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="https://github.com/SunshineStream/sunshine"
