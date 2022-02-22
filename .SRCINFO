@@ -1,7 +1,7 @@
 pkgbase = veracrypt-inyourlanguage
 	pkgdesc = Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.
 	pkgver = 1.25.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.veracrypt.fr
 	arch = x86_64
 	license = Apache 2.0

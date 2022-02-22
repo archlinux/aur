@@ -3,7 +3,7 @@
 pkgname='veracrypt-inyourlanguage'
 _pkgname='veracrypt'
 pkgver=1.25.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Disk encryption with strong security based on TrueCrypt 7.1a. Choose one of 40+ languages for installation.'
 url='https://www.veracrypt.fr'
 arch=('x86_64')
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd src
-  make
+  make PKG_CONFIG_PATH=/usr/lib/pkgconfig WX_CONFIG=/usr/bin/wx-config-gtk3
 }
 
 package() {
