@@ -1,6 +1,6 @@
 pkgbase = nanoemoji
 	pkgdesc = A wee tool to build color fonts
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/googlefonts/
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = nanoemoji
 	depends = python-ufo2ft
 	depends = python-ufolib2
 	optdepends = resvg: Support CBDT and sbix color fonts
-	source = https://files.pythonhosted.org/packages/source/n/nanoemoji/nanoemoji-0.12.1.tar.gz
-	sha256sums = 43ee888412cbec1e7c31dcfa9c96827b87ad1a914c3d77acf72f3684315c53fd
+	source = https://files.pythonhosted.org/packages/source/n/nanoemoji/nanoemoji-0.12.2.tar.gz
+	sha256sums = 99219b96da070cda95c80266ed11934fae780c24084721a611acda0136baa35e
 
 pkgname = nanoemoji
