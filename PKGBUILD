@@ -1,4 +1,5 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Michael Stanley <michael@stnley.io>
+# Contributer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=sct
 pkgver=1.0.0
