@@ -1,12 +1,13 @@
 pkgbase = bombadil-bin
 	pkgdesc = A dotfile template manager
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oknozor/toml-bombadil
 	install = bombadil.install
 	arch = x86_64
 	license = MIT
 	provides = bombadil
+	conflicts = bombadil-git
 	source = bombadil-bin-2.2.4.tar.gz::https://github.com/oknozor/toml-bombadil/releases/download/2.2.4/bombadil-2.2.4-x86_64-unknown-linux-musl.tar.gz
 	md5sums = 57eb7e6d30307e13862183d11a1b2027
 

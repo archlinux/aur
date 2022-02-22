@@ -1,12 +1,12 @@
 # Maintainer: Paul Delafosse <paul.delafosse@protonmail.com>
 pkgname=bombadil-bin
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A dotfile template manager"
 arch=('x86_64')
 url="https://github.com/oknozor/toml-bombadil"
 license=('MIT')
-conflicts=()
+conflicts=('bombadil-git')
 provides=('bombadil')
 depends=()
 makedepends=()
