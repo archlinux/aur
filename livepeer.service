@@ -11,7 +11,7 @@ User=livepeer
 Group=livepeer
 Type=simple
 
-ExecStart=/usr/bin/livepeer /etc/go-livepeer/livepeer.conf
+ExecStart=/usr/bin/livepeer -config /etc/go-livepeer/livepeer.conf
 
 Restart=on-failure
 RestartSec=5s
