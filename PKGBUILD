@@ -3,7 +3,7 @@
 
 _pkgname=robonomics
 pkgname=${_pkgname}-git
-pkgver=1.1.0.r1.gf82d78ee
+pkgver=1.7.0.r0.g2409420e
 pkgrel=1
 pkgdesc='Robonomics platform includes a set of open-source packages and infrastructure for Robotics, Smart Cities and Industry 4.0 developers'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('APACHE')
 makedepends=('cargo' 'git')
 provides=('robonomics')
 conflicts=('robonomics')
-source=("git+https://github.com/airalab/robonomics.git")
+source=("git+https://github.com/airalab/robonomics.git#tag=v1.7.0")
 md5sums=('SKIP')
 
 pkgver() {
