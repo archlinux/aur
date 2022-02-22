@@ -1,7 +1,7 @@
 pkgbase = navicat15-premium-cs
 	pkgdesc = Navicat Premium is a multi-connection database development tool. (Chinese Simplified)
 	pkgver = 15.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.navicat.com/en/navicat-15-highlights
 	arch = x86_64
 	license = GPL3

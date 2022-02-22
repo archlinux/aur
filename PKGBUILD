@@ -2,7 +2,7 @@
 
 pkgname=navicat15-premium-cs
 pkgver=15.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Navicat Premium is a multi-connection database development tool. (Chinese Simplified)"
 arch=(x86_64)
 url='https://www.navicat.com/en/navicat-15-highlights'
@@ -33,4 +33,7 @@ package() {
     _icon_dir=usr/share/icons/hicolor/256x256/apps
     install -d $pkgdir/$_icon_dir
     cp $_icon_dir/navicat-icon.png $pkgdir/$_icon_dir/navicat15.png
+
+    # Try fix libcrypt.so.1 not found
+    ln -s /usr/lib/libcrypt.so $_na_dir/usr/lib/libcrypt.so.1
 }
