@@ -6,7 +6,7 @@
 pkgbase=mariadb-git
 pkgname=(mariadb-libs-git mariadb-clients-git mariadb-git mytop-git)
 pkgdesc='Fast SQL database server, derived from MySQL'
-pkgver=10.7_r193394.gc5ae2c49711
+pkgver=10.9_r195162.g452672ab0e6
 pkgrel=1
 arch=($CARCH)
 license=(GPL)
@@ -27,6 +27,9 @@ pkgver() {
 
 prepare() {
   cd $pkgbase
+
+  # For some reason, it doesn't automatically checkout the default remote branch
+  git checkout 10.9
 
   # Arch Linux specific patches:
   #  * enable PrivateTmp for a little bit more security
