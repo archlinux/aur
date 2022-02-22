@@ -2,13 +2,13 @@
 
 pkgname=flxmlrpc
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XMLRPC for fldigi and other Ham Radio apps"
 arch=('i686' 'x86_64')
 url="http://www.w1hkj.com/downloads/flxmlrpc/"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('automake' 'autoconf' 'pkg-config')
+makedepends=('git' 'automake' 'autoconf' 'pkg-config')
 source=("$pkgname-$pkgver::git+https://git.code.sf.net/p/fldigi/flxmlrpc#tag=v$pkgver")
 #"http://www.w1hkj.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz")
 
