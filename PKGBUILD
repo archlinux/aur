@@ -2,14 +2,14 @@
 
 pkgbase=vim-melange
 pkgname=(vim-melange vim-melange-extras)
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Warm colorscheme for Vim and others'
 arch=('any')
 url="https://github.com/savq/melange"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('da44daba8d567ba153ab70361235ba069ccfa75fa0235091aefe6b90d8c2ef7e')
+sha256sums=('0863774145df5f6004a878a52fe86969bcea102a010a9784d9818165e25f83a4')
 
 package_vim-melange() {
 	groups=('vim-plugins')
