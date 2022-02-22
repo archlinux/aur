@@ -1,34 +1,35 @@
-# Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
+# Maintainer: 
+# Contributor: FabioLolix
+# Contributor: Simon Hauser <Simon-Hauser@outlook.de>
 # Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=spotify-tui-git
-_pkgname=spotify-tui
-pkgver=0.16.0+r2+gdf3b6c3
+pkgver=0.25.0.r15.gc4dcf6b
 pkgrel=1
-pkgdesc='Spotify client for the terminal written in Rust (git)'
+pkgdesc="Spotify client for the terminal written in Rust"
 arch=(x86_64)
-url=https://github.com/Rigellute/spotify-tui
+url="https://github.com/Rigellute/spotify-tui"
 license=(MIT)
-depends=(openssl libxcb)
-makedepends=(git cargo python)
+depends=(gcc-libs openssl)
+makedepends=(git cargo)
 provides=(spotify-tui)
 conflicts=(spotify-tui)
-source=(git+$url)
+source=("git+https://github.com/Rigellute/spotify-tui.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgname
+  cd "${pkgname%-git}"
   cargo build --locked --release
 }
 
 package() {
-  cd $_pkgname
-  install -D target/release/spt -t "$pkgdir"/usr/bin
-  install -Dm 644 README.md -t "$pkgdir"/usr/share/doc/$_pkgname
-  install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$_pkgname
+  cd "${pkgname%-git}"
+  install -D target/release/spt -t "$pkgdir/usr/bin"
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }

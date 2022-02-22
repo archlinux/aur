@@ -1,19 +1,17 @@
 pkgbase = spotify-tui-git
-	pkgdesc = Spotify client for the terminal written in Rust (git)
-	pkgver = 0.16.0+r2+gdf3b6c3
+	pkgdesc = Spotify client for the terminal written in Rust
+	pkgver = 0.25.0.r15.gc4dcf6b
 	pkgrel = 1
 	url = https://github.com/Rigellute/spotify-tui
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
-	makedepends = python
+	depends = gcc-libs
 	depends = openssl
-	depends = libxcb
 	provides = spotify-tui
 	conflicts = spotify-tui
-	source = git+https://github.com/Rigellute/spotify-tui
+	source = git+https://github.com/Rigellute/spotify-tui.git
 	sha512sums = SKIP
 
 pkgname = spotify-tui-git
-
