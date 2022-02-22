@@ -1,27 +1,28 @@
-# Maintainer AwesomeHaircut: jesusbalbastro gmail com
+# Maintainer CodeXYZ: zucyoh@gmail.com
 # Previous Maintainer: Kisuke <kisuke at kisuke dot cz>
 
 pkgname=jubler
 _AppName=Jubler
-pkgver=6.0.2
-pkgrel=2
+pkgver=7.0.3
+pkgrel=1
 pkgdesc='Subtitle editor running on Java'
 arch=('any')
 url='http://www.jubler.org'
 license=('GPL2')
 provides=('jubler')
 depends=('java-runtime>=8')
-optdepends=('mplayer: live video preview for subtitles')
-source=("https://astuteinternet.dl.sourceforge.net/project/jubler/Jubler%20Binary%20Releases/${pkgver}/${_AppName}-${pkgver}.appimage"
-	'jubler.desktop')
-sha256sums=('822dfe7cd171cbee15b88608ee76d6121f1ebe3fc1a9743a3a47eed326e5d45d'
+optdepends=('mplayer: live video preview for subtitles'
+              'aspell')
+source=("https://github.com/teras/${_AppName}/releases/download/v${pkgver}/${_AppName}-${pkgver}.x86_64.appimage"
+"jubler.desktop")
+sha256sums=('8a82d6123f8f9b5d13640bcbf6296da1af31c359e69fa4717d2450c433ba2c04'
             '56f6d1af4d5086231c2f3935d46aaa0293dbba11ecfeaa5f95609a58a9e59056')
 noextract=("${_AppName}-${pkgver}.appimage")
 
 package() {
 	cd ${srcdir}
-	chmod +x ${_AppName}-${pkgver}.appimage
-	./${_AppName}-${pkgver}.appimage --appimage-extract
+	chmod +x ${_AppName}-${pkgver}.x86_64.appimage
+	./${_AppName}-${pkgver}.x86_64.appimage --appimage-extract
 	mkdir -p ${pkgdir}/usr/share/java/${pkgname}
 	cp -R ${srcdir}/squashfs-root/lib/* ${pkgdir}/usr/share/java/${pkgname}/
 	mv ${pkgdir}/usr/share/java/${pkgname}/AppRun.jar ${pkgdir}/usr/share/java/${pkgname}/${_AppName}.jar
