@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://www.doornik.com/products.html#OxCons"
 license=('unknown')
 depends=('openmp')
-optdepends=('javaruntime' 'r'
+optdepends=('java-runtime' 'r'
 'python'
 )
 provides=(${_pkgname} oxedit)
