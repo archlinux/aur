@@ -2,20 +2,20 @@
 # Contributor: yetist <yetist@gmail.com>
 
 pkgname=lunar-calendar
-pkgver=3.0.0
-pkgrel=4
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="a gtk+ calendar widget for chinese lunar library."
 arch=("i686" "x86_64")
 url="https://github.com/yetist/lunar-calendar"
 license=('GPL2')
 depends=('gtk3' 'lunar-date')
 makedepends=('gtk-doc' 'ninja' 'meson' 'gobject-introspection' 'vala')
-source=("https://github.com/Chao-zhi/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('f3ade207cea7df9a22ac1b711d7b7afd6921a0d21c651170356d9e1720d1bffa')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/yetist/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0daf47619beb36c6a6c414e3a3aaf9efe0aa35b499ad107a547057bfe8eefbc3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    meson build -Dprefix=/usr -Denable_gtk_modules=true
+    meson build -Dprefix=/usr
     ninja -C build
 }
 
