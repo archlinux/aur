@@ -4,13 +4,13 @@
 pkgname=python-google-resumable-media
 _name="${pkgname#python-}"
 pkgver=2.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
 url="https://github.com/googleapis/google-resumable-media-python"
 license=('Apache')
 depends=('python-google-crc32c')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=(
 	'python-requests: for requests support'
 	'python-aiohttp: for aiohttp support')
@@ -39,7 +39,7 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$_name-python-$pkgver"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/$pkgname/"
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/$pkgname/"
 }
