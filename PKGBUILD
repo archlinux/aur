@@ -2,7 +2,7 @@ pkgbase='pip2pkgbuild'
 pkgname=('pip2pkgbuild' 'python2-pip2pkgbuild')
 _module='pip2pkgbuild'
 pkgver='0.3.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate PKGBUILD file for a Python module from PyPi"
 url="https://github.com/wenLiangcan/pip2pkgbuild"
 depends=()
@@ -25,13 +25,13 @@ build() {
 }
 
 package_pip2pkgbuild() {
-    depends+=('python' 'python-pip')
+    depends+=('python')
     cd "${srcdir}/${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
 
 package_python2-pip2pkgbuild() {
-    depends+=('python2' 'python2-pip')
+    depends+=('python2')
     cd "${srcdir}/${_module}-${pkgver}-python2"
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     mv "${pkgdir}/usr/bin/pip2pkgbuild"{,2}

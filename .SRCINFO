@@ -1,7 +1,7 @@
 pkgbase = pip2pkgbuild
 	pkgdesc = Generate PKGBUILD file for a Python module from PyPi
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wenLiangcan/pip2pkgbuild
 	arch = any
 	license = MIT
@@ -12,8 +12,6 @@ pkgbase = pip2pkgbuild
 
 pkgname = pip2pkgbuild
 	depends = python
-	depends = python-pip
 
 pkgname = python2-pip2pkgbuild
 	depends = python2
-	depends = python2-pip
