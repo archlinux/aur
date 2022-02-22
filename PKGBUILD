@@ -1,8 +1,8 @@
 # Maintainer: Jacek Szafarkiewicz <szafar at linux dot pl>
 
 pkgname=sunshine
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Open source implementation of NVIDIA's GameStream, as used by the NVIDIA Shield"
 url="https://github.com/SunshineStream/sunshine"
 arch=('x86_64' 'i686')
