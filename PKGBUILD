@@ -6,11 +6,11 @@
 pkgname=openblas-lapack
 _PkgName=OpenBLAS
 _pkgname=openblas
-pkgver=0.3.19
+pkgver=0.3.20
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.9.0
 _blasver=3.8.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('x86_64')
 url="http://www.openblas.net/"
@@ -20,10 +20,8 @@ makedepends=('perl' 'gcc-fortran')
 provides=('openblas' "blas=${_blasver}" "lapack=${_lapackver}" "cblas=${_blasver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
 options=(!emptydirs)
-source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz
-  3504.patch)
-sha256sums=('947f51bfe50c2a0749304fbe373e00e7637600b0a47b78a51382aeb30ca08562'
-            '972aa53d2fbbe76b46a1cd1a9e53ddfeb42968e701e0cb8894a5bc3c1072847d')
+source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
+sha256sums=('8495c9affc536253648e942908e88e097f2ec7753ede55aca52e5dead3029e3c')
 
 # Add the following line to the _config variable if you want to set the number of make jobs
 #  MAKE_NB_JOBS=2 \
@@ -31,11 +29,6 @@ _config="FC=gfortran USE_OPENMP=1 USE_THREAD=1 \
   USE_TLS=1 \
   NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 \
   MAJOR_VERSION=${_lapackver:0:1} NO_STATIC=1"
-
-prepare(){
-  cd "${_PkgName}-${pkgver}"
-  patch -p1 -i ../3504.patch
-}
 
 build(){
   cd "${srcdir}/${_PkgName}-${pkgver}"
