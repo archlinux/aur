@@ -1,0 +1,15 @@
+pkgbase = move-to-next-monitor-git
+	pkgdesc = Move windows from one monitor to the next
+	pkgver = r18.68e3ca6
+	pkgrel = 1
+	url = https://github.com/jc00ke/move-to-next-monitor
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = xdotool
+	depends = wmctrl
+	depends = xorg-xwininfo
+	source = move-to-next-monitor::git+https://github.com/jc00ke/move-to-next-monitor.git
+	md5sums = SKIP
+
+pkgname = move-to-next-monitor-git
