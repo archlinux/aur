@@ -1,0 +1,72 @@
+From ee1f8262b83dd88b30091e6e81221ff299796099 Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Thu, 16 Dec 2021 21:37:22 -0500
+Subject: [PATCH] OvmfPkg: Call PlatformInitializeConsole for GPU passthrough
+ case
+
+For GPU passthrough support we have to initialize the console after
+EfiBootManagerDispatchDeferredImages() has loaded ROMs, so call it after
+this. This was the calling order before the TCG physical presence support
+had to be moved and the console initialized earlier so user interaction
+could be supported before processing TCG physical presence opcodes.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+Tested-by: Shivanshu Goyal <shivanshu3@gmail.com>
+Acked-by: Jiewen Yao <jiewen.yao@intel.com>
+Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ OvmfPkg/Library/PlatformBootManagerLib/BdsPlatform.c      | 7 +++++++
+ OvmfPkg/Library/PlatformBootManagerLibBhyve/BdsPlatform.c | 5 +++++
+ OvmfPkg/Library/PlatformBootManagerLibGrub/BdsPlatform.c  | 5 +++++
+ 3 files changed, 17 insertions(+)
+
+diff --git a/OvmfPkg/Library/PlatformBootManagerLib/BdsPlatform.c b/OvmfPkg/Library/PlatformBootManagerLib/BdsPlatform.c
+index 5feadc51d746..0918c35f1fb7 100644
+--- a/OvmfPkg/Library/PlatformBootManagerLib/BdsPlatform.c
++++ b/OvmfPkg/Library/PlatformBootManagerLib/BdsPlatform.c
+@@ -448,6 +448,13 @@ PlatformBootManagerBeforeConsole (
+   //
+   EfiBootManagerDispatchDeferredImages ();
+ 
++  //
++  // GPU passthrough only allows Console enablement after ROM image load
++  //
++  PlatformInitializeConsole (
++    XenDetected () ? gXenPlatformConsole : gPlatformConsole
++    );
++
+   FrontPageTimeout = GetFrontPageTimeoutFromQemu ();
+   PcdStatus        = PcdSet16S (PcdPlatformBootTimeOut, FrontPageTimeout);
+   ASSERT_RETURN_ERROR (PcdStatus);
+diff --git a/OvmfPkg/Library/PlatformBootManagerLibBhyve/BdsPlatform.c b/OvmfPkg/Library/PlatformBootManagerLibBhyve/BdsPlatform.c
+index 119f24b33016..bf2701965ff2 100644
+--- a/OvmfPkg/Library/PlatformBootManagerLibBhyve/BdsPlatform.c
++++ b/OvmfPkg/Library/PlatformBootManagerLibBhyve/BdsPlatform.c
+@@ -434,6 +434,11 @@ PlatformBootManagerBeforeConsole (
+   //
+   EfiBootManagerDispatchDeferredImages ();
+ 
++  //
++  // GPU passthrough only allows Console enablement after ROM image load
++  //
++  PlatformInitializeConsole (gPlatformConsole);
++
+   PlatformRegisterOptionsAndKeys ();
+ 
+   //
+diff --git a/OvmfPkg/Library/PlatformBootManagerLibGrub/BdsPlatform.c b/OvmfPkg/Library/PlatformBootManagerLibGrub/BdsPlatform.c
+index 9c6848bbffb4..a402589206bb 100644
+--- a/OvmfPkg/Library/PlatformBootManagerLibGrub/BdsPlatform.c
++++ b/OvmfPkg/Library/PlatformBootManagerLibGrub/BdsPlatform.c
+@@ -392,6 +392,11 @@ PlatformBootManagerBeforeConsole (
+   //
+   EfiBootManagerDispatchDeferredImages ();
+ 
++  //
++  // GPU passthrough only allows Console enablement after ROM image load
++  //
++  PlatformInitializeConsole (gPlatformConsole);
++
+   Status = gRT->SetVariable (
+                   EFI_TIME_OUT_VARIABLE_NAME,
+                   &gEfiGlobalVariableGuid,
