@@ -3,7 +3,7 @@
 
 pkgname=python-pydna
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Data structures for double-stranded DNA & simulation of homologous recombination'
 arch=('any')
 url='https://github.com/bjornfjohansson/pydna'
@@ -24,7 +24,7 @@ optdepends=(
 makedepends=(
 	'git'
 	'python-build'
-	'python-install'
+	'python-installer'
 	'python-wheel'
 	'python-sphinx'
 	'python-setuptools'
@@ -35,29 +35,20 @@ changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=$pkgver")
 sha256sums=('SKIP')
 
-## FIXME: sphinx-build cannot find pydna
-# prepare() {
-# 	patch -p1 -d "$pkgname-$pkgver" < 001-python-path.patch
-# }
-
 build() {
 	cd "$pkgname"
-	python -m build --wheel --skip-dependency-check --no-isolation
-	## FIXME: sphinx-build cannot find pydna metadata
-	# cd docs
-	# PYTHONPATH=../ sphinx-build -b man ./ _build/man
+	python -m build --wheel --no-isolation
 }
 
 check() {
 	cd "$pkgname"
-	## FIXME: certain tests fail
-	PYTHONPATH=./ pytest -x --disable-warnings || true
+	PYTHONPATH=./src pytest -x --disable-warnings
 }
 
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

@@ -1,7 +1,7 @@
 pkgbase = python-pydna
 	pkgdesc = Data structures for double-stranded DNA & simulation of homologous recombination
 	pkgver = 4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bjornfjohansson/pydna
 	changelog = CHANGELOG.md
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-pydna
 	checkdepends = python-codon-adaptation-index
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-setuptools
