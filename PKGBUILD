@@ -4,8 +4,8 @@
 # Contributor: Stijn Segers <francesco dot borromini at gmail dot com>
 
 pkgname=freerdp-gstfree
-pkgver=2.5.0
-pkgrel=4
+pkgver=2.6.0
+pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=(x86_64)
 url="https://www.freerdp.com/"
@@ -18,7 +18,7 @@ conflicts=(freerdp)
 provides=(freerdp libfreerdp2.so libfreerdp-client2.so libfreerdp-server2
           libfreerdp-shadow2.so libfreerdp-shadow-subsystem2.so libwinpr2.so
           libwinpr-tools2.so libuwac0.so)
-_commit=d50aef95520df4216c638495a6049125c00742cb  # tags/2.5.0
+_commit=8a5c034d547c428c512b0a4b840d3a8a4762f989  # tags/2.6.0
 source=("freerdp::git+https://github.com/freerdp/freerdp.git#commit=${_commit}"
         "freerdp-manpage_formatting.patch")
 sha256sums=('SKIP'
@@ -33,9 +33,6 @@ prepare() {
   cd freerdp
   # fix man page formatting, https://bugs.archlinux.org/task/64814
   patch -Np1 -i ../freerdp-manpage_formatting.patch
-
-  # fix build with ffmpeg >= 5.0, https://github.com/FreeRDP/FreeRDP/pull/7578
-  git cherry-pick -n 811d94c742b33d1e6de33f7e84c794d8bae26d3a
 }
 
 build() {
