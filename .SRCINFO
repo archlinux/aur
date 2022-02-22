@@ -1,0 +1,14 @@
+pkgbase = desktop-config-git
+	pkgdesc = Graphical environment configuration tool
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/ia-projekt-zespolowy-2021-2022/desktop-config
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = make
+	depends = python
+	source = desktop-config::git+https://gitlab.com/ia-projekt-zespolowy-2021-2022/desktop-config.git
+	md5sums = SKIP
+
+pkgname = desktop-config-git
