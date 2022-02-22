@@ -13,12 +13,12 @@ pkgname=(
   dotnet-targeting-pack-preview-bin
   aspnet-targeting-pack-preview-bin
 )
-pkgver=6.0.0.sdk100+rc.2.21505.57
-_hostver=6.0.0-rc.2.21480.5
-_dotnetruntimever=6.0.0-rc.2.21480.5
-_aspnetruntimever=6.0.0-rc.2.21480.10
-_sdkver=6.0.100-rc.2.21505.57
-pkgrel=2
+pkgver=7.0.0.sdk100+preview.1.22110.4
+_hostver=7.0.0-preview.1.22076.8
+_dotnetruntimever=7.0.0-preview.1.22076.8
+_aspnetruntimever=7.0.0-preview.1.22109.13
+_sdkver=7.0.100-preview.1.22110.4
+pkgrel=1
 arch=(x86_64 armv7h aarch64)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -27,16 +27,16 @@ source=(dotnet.sh
         register-completions.bash
         register-completions.fish
         register-completions.zsh)
-source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/20283373-1d83-4879-8278-0afb7fd4035e/56f204f174743b29a656499ad0fc93c3/dotnet-sdk-6.0.100-rc.2.21505.57-linux-x64.tar.gz)
-source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/7fdc5aa4-bfcf-43fc-ae61-968f65d78f36/aac677054f246740f4d761d6e519da08/dotnet-sdk-6.0.100-rc.2.21505.57-linux-arm.tar.gz)
-source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/1e7a9f1f-6128-4581-9d72-edfe196320d3/ad3b26879ddaca8b76e16ddddd091d5d/dotnet-sdk-6.0.100-rc.2.21505.57-linux-arm64.tar.gz)
+source_x86_64=(https://download.visualstudio.microsoft.com/download/pr/1af9d3c3-a20e-400c-abe5-3d80dec7b63b/803f8dc5cf21fb28245aba71a7fdbc05/dotnet-sdk-7.0.100-preview.1.22110.4-linux-x64.tar.gz)
+source_armv7h=(https://download.visualstudio.microsoft.com/download/pr/8ee818c9-79bb-4b89-8c60-cb97cd878d43/6a59e8751a1b6f3620af51994a351f6c/dotnet-sdk-7.0.100-preview.1.22110.4-linux-arm.tar.gz)
+source_aarch64=(https://download.visualstudio.microsoft.com/download/pr/86f77277-df30-4e8f-a9c1-48fa40a117ff/a33b77e9a6bc932d3623d83ec4fe528f/dotnet-sdk-7.0.100-preview.1.22110.4-linux-arm64.tar.gz)
 sha512sums=('e61b9e3e5a2305646a616d598378230c9755c5dd5363692cc363f8f4add3807563c324dd86f3a7ae9d358c82d730608e7b293935a2b6c81c0c0f62d752a0a1cf'
             '9f977e0bd12abc0dda4d914f369c58fce502b4030cf91d4248b32242d98fe5a2bbd8446502feeb914561f310dfd3c113bb6da19bfd5dfa6233109e62d22fa966'
             '1de3f09b96c44429b026277bb135a019b7577df2dec5f695ce51d18daefe2c1736b3359ab95f2abc46f7320c445b968e5582df92bb2bcad3ac5cfc5a32d3c5b6'
             'f2be62d9cce00357b7b18ae83b976841037830b7b9ed1b67445f76e02550c904be5ab023366441199f9bb3dfd602004b0334395ffdde6c313910c1da5c39c4a3')
-sha512sums_x86_64=('0a8f85a2757f61ca7f9b8c546af4554c2aac9cdb06f6d62879a60de6f2a3d37ea7136f48896c9c85828a2d55df354e7b9b5b4dc22896c927f0c6370a5ade1b9c')
-sha512sums_armv7h=('2396998b8f21527f979b84460aee8621ca5fa275e4a1ee83b11fe9f12b42479931e56787d7dc82640d72470df185cb02d0bbc5e0e3e920bb6abb2d270051b188')
-sha512sums_aarch64=('14aa96f47f7f3520075e41753c705bdbf7f84fd7cff7cc2add1095a13e3e3c44eaaf2d822551902f05a6ad0c9acd7f7424190b7c09c397004c632eddc8acd5ac')
+sha512sums_x86_64=('54488a911172f059e3823d6bf52e1fa87305eb09e84d97f81a40e0815fc8a73a480b149023283f557a672ef0341f022b8ca16ebec92264ee16a56fac8f35e2e2')
+sha512sums_armv7h=('22c112bce0b36e46140bd17ae9379f7801f72b8b12156ae43224d3a2e9bf8ca8226653986601c6ba5cfe4e68515069d81dec935fd918634a0172418d6e7a5236')
+sha512sums_aarch64=('64b78bc4878623e5d145efc7ba3e01e5d4073bfb900eb5f200f8cca0e6828a0da62a93ca9ba781f5d3c9b7e7eadda715789fd6c7ee3cbd2058f9500893e7733e')
 
 package_dotnet-host-preview-bin() {
   pkgdesc='A generic driver for the .NET Core Command Line Interface (preview, binary)'
@@ -71,7 +71,7 @@ package_dotnet-runtime-preview-bin() {
 
   optdepends=('lttng-ust: CoreCLR tracing'
               'msquic>=1.4: HTTP/3 support with System.Net.Quic')
-  provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-6.0)
+  provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-7.0)
   conflicts=(dotnet-runtime=${_dotnetruntimever%-*})
   replaces=(dotnet-runtime-preview-bin)
 
@@ -83,7 +83,7 @@ package_dotnet-runtime-preview-bin() {
 package_aspnet-runtime-preview-bin() {
   pkgdesc='The ASP.NET Core runtime (preview, binary)'
   depends=(dotnet-runtime-preview-bin)
-  provides=(aspnet-runtime=${_aspnetruntimever%-*} aspnet-runtime-6.0)
+  provides=(aspnet-runtime=${_aspnetruntimever%-*} aspnet-runtime-7.0)
   conflicts=(aspnet-runtime=${_aspnetruntimever%-*})
   replaces=(aspnet-runtime-preview-bin)
 
@@ -101,7 +101,7 @@ package_dotnet-sdk-preview-bin() {
     netstandard-targeting-pack-2.1
   )
   optdepends=('aspnet-targeting-pack-preview-bin: Build ASP.NET Core applications')
-  provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-6.0)
+  provides=(dotnet-sdk=${_sdkver%-*} dotnet-sdk-7.0)
   conflicts=(dotnet-sdk=${_sdkver%-*})
   replaces=(dotnet-sdk-preview-bin)
 
@@ -124,7 +124,7 @@ package_dotnet-sdk-preview-bin() {
 package_dotnet-targeting-pack-preview-bin() {
   pkgdesc='The .NET Core targeting pack (preview, binary)'
   depends=(netstandard-targeting-pack-2.1)
-  provides=(dotnet-targeting-pack=${_dotnetruntimever%-*} dotnet-targeting-pack-6.0)
+  provides=(dotnet-targeting-pack=${_dotnetruntimever%-*} dotnet-targeting-pack-7.0)
   conflicts=(dotnet-targeting-pack=${_dotnetruntimever%-*})
   replaces=(dotnet-targeting-pack-preview-bin)
 
@@ -140,7 +140,7 @@ package_dotnet-targeting-pack-preview-bin() {
 package_aspnet-targeting-pack-preview-bin() {
   pkgdesc='The ASP.NET Core targeting pack (preview, binary)'
   depends=(dotnet-targeting-pack-preview-bin)
-  provides=(aspnet-targeting-pack=${_aspnetruntimever%-*} aspnet-targeting-pack-6.0)
+  provides=(aspnet-targeting-pack=${_aspnetruntimever%-*} aspnet-targeting-pack-7.0)
   conflicts=(aspnet-targeting-pack=${_aspnetruntimever%-*})
   replaces=(aspnet-targeting-pack-preview-bin)
 
