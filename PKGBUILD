@@ -19,7 +19,7 @@ source=("https://github.com/livepeer/${_pkgname}/releases/download/v${pkgver}/li
 sha256sums=('276936a0d3d3dea9fbacfc464ee1c12deddc4262c20427e0c3f9a2cfeeb1a6ac'
             'c4de4cf3034bc69b6832f22ea3e18957639e41f2ad7d4cfed6919f6e0dbf99ba'
             '82a7bc93294938bd4621f7515c29ffe01c5e9fbc795dff59b82a5ad0ded42cca'
-            '8e23107ac2c29d029c9b290a6ba32db34ef8d14291ec87df5003c52d034ef250')
+            '7e4cdda1a07d059ba5a7f04e425360148cf745aff31ce1a5c3e7d124e715b0ea')
 package() {
   install -dm750 -o8935 -g8935 "{$pkgdir}/var/lib/livepeer"
   install -dm755 -o8935 -g8935 "{$pkgdir}/var/cache/livepeer"
