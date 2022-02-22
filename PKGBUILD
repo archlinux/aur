@@ -2,9 +2,9 @@
 pkgbase=mini-matrix-git
 pkgname=mini-matrix-git
 pkgver="r8.f832b7d"
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays a matrix of random characters"
-arch=(x86_64 i686)
+arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/SkwalExe/mini-matrix.git"
 license=('MIT')
 makedepends=("git" "make")
