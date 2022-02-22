@@ -1,12 +1,12 @@
 #Maintainer: Sam Bazley <sambazley@fastmail.com>
 dev=F0
 pkgname="stm32${dev,,}-headers-git"
-pkgver=r5.7b44872c87d4
+pkgver=r7.830a0e950d42
 pkgrel=1
 pkgdesc="Headers for STM32${dev} devices"
 url=https://github.com/STMicroelectronics
 license=('apache')
-source=("git://github.com/STMicroelectronics/STM32Cube${dev}.git")
+source=("git+https://github.com/STMicroelectronics/STM32Cube${dev}.git")
 md5sums=('SKIP')
 arch=('any')
 
