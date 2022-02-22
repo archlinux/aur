@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.6.4.r10.g223c289
-pkgrel=1
+pkgver=0.7.0.r5.g4535a5c
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/${pkgname%-git}"
@@ -22,6 +22,7 @@ depends=(bc
          jq
          kindlegen
          libertinus-font
+         libgit2
          lua
          m4
          make
@@ -57,6 +58,7 @@ _python_deps=(isbnlib
 depends+=("${_lua_deps[@]/#/lua-}" "${_lua_deps[@]/#/lua53-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
+depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
              luarocks
