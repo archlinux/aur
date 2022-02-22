@@ -12,7 +12,6 @@ pkgbase = libchdr-git
 	license = BSD
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
 	depends = zlib
 	provides = libchdr=r153.5de1a59
 	provides = libchdr.so
