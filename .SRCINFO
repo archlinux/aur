@@ -1,0 +1,17 @@
+pkgbase = packer-plugin-arm-image
+	pkgdesc = Packer plugin for ARM images
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/solo-io/packer-plugin-arm-image
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	depends = glibc
+	depends = multipath-tools
+	depends = qemu-user-static
+	depends = packer
+	replaces = packer-builder-arm-image
+	source = packer-plugin-arm-image-0.2.5.tar.gz::https://github.com/solo-io/packer-plugin-arm-image/archive/v0.2.5.tar.gz
+	b2sums = d9b75dd7ff310b0037d7b56c8df27e6eea53b91f10a7f1b90d21336aaa52448974302f1e8b58fbfbd3b8b37e7d5675c0fef31f65a40a11382de8426b75c25c03
+
+pkgname = packer-plugin-arm-image
