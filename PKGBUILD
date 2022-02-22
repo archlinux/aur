@@ -7,13 +7,13 @@
 
 pkgname=monotone
 pkgver=1.1
-pkgrel=8
+pkgrel=9
 pkgdesc='A free distributed version control system'
 arch=('i686' 'x86_64')
 url='http://www.monotone.ca/'
 license=('GPL')
 depends=('pcre' 'lua53' 'botan1.10' 'sqlite3' 'libidn' 'zlib')
-makedepends=('boost1.69')
+makedepends=('boost')
 source=("http://www.monotone.ca/downloads/1.1/monotone-${pkgver}.tar.bz2"
         "http://http.debian.net/debian/pool/main/m/monotone/monotone_1.1-9.debian.tar.xz"
         "pcre-8.42-hack.diff")
@@ -33,6 +33,13 @@ prepare() {
       patch -Np1 < "$srcdir/$_f"
     fi
   done
+  echo "Replacing single-character macros"
+  find . \( -name '*.cc' -o -name '*.hh' \) -type f -print0 | \
+  xargs -0r sed -i -E '
+s,\<E( *\(),ERROR\1,g
+s,\<L( *\(),LOG\1,g
+s,\<P( *\(),PROGRESS\1,g
+s,\<W( *\(),WARNING\1,g'
   echo "Bootstrapping autoconf"
   aclocal
   autoreconf --install
@@ -42,8 +49,6 @@ build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   export DISABLE_NETWORK_TESTS=1
   export CXXFLAGS+=" -std=gnu++11"
-  export CXXFLAGS+=" -I/opt/boost1.69/include"
-  export LDFLAGS+=" -L/opt/boost1.69/lib"
   export lua_CFLAGS=$(pkg-config --cflags lua53)
   export lua_LIBS=$(pkg-config --libs lua53)
   ./configure \
