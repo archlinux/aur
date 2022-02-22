@@ -1,8 +1,8 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 
 pkgname=townsemu-git
-pkgver=1631.88718b8
-pkgrel=2
+pkgver=2113.bb81ff3
+pkgrel=1
 pkgdesc="An emulator of legendary Fujitsu FM TOWNS computer"
 arch=('i686' 'x86_64')
 url="https://github.com/captainys/TOWNSEMU"
@@ -41,7 +41,7 @@ build() {
   make
   cd ../build_gui
   cmake ../gui/src -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-  make
+  cmake --build main_gui
 }
 
 package() {
