@@ -19,6 +19,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname##python-}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 sha256sums=('9f8bf74e17c4c42e2c636b6ffdeb20069ed4e468eccb3411c1d680bfdd498b8f')
