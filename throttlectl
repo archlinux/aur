@@ -180,7 +180,7 @@ throttle_gov() {
 
 check_gov() {
   [[ -n "$(ls /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor 2> /dev/null)" ]] && \
-    printf "\nCPU Governor\n/sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor\n"
+    printf "\nCPU Governor\n/sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor\n" && \
     for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do \
       printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/bus/cpu/drivers/processor/||g; s|/.*||g; N;s|\n|\t|'
 }
@@ -199,10 +199,11 @@ check_nvpm() {
 }
 
 throttle_backlight() {
-  [[ -n "$(ls /sys/class/backlight/*/brightness 2> /dev/null)" ]] && \
+  if [[ -n "$(ls /sys/class/backlight/*/brightness 2> /dev/null)" ]]; then
     [[ "$BACKLIGHT" == "0" ]] && printf "${BACKLIGHT}" | tee /sys/class/backlight/*/brightness > /dev/null 2>&1 || \
       for i in /sys/class/backlight/*/brightness; do \
         cat "${i/%brightness/max_brightness}" > "${i}" & done &
+  fi
 }
 
 check_backlight() {
