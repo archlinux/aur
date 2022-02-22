@@ -1,0 +1,10 @@
+pkgbase = x13as-bin
+	pkgdesc = X-13ARIMA-SEATS is seasonal adjustment software by the Census Bureau.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.census.gov/data/software/x13as.About_X-13.html
+	arch = x86_64
+	source = x13as-bin-1.0.0.tar.gz::https://www2.census.gov/software/x-13arima-seats/x13as/unix-linux/program-archives/x13as_ascii-v1-1-b58.tar.gz
+	sha256sums = 698fc57c25b3855d5584306589c3d30e3f03f2f81bc67af52d19f1751550410b
+
+pkgname = x13as-bin
