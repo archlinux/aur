@@ -18,19 +18,19 @@ _node_version="16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=11   # 次版本号release
+pkgrel=12   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools Linux version. "
 arch=("x86_64")
-url="https://github.com/msojocs/wechat-devtools-linux"
+url="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html"
 license=('unknown')
-depends=('wine' 'gconf' 'libxkbfile')
+depends=('gconf' 'libxkbfile')
 makedepends=('p7zip' 'python2')
 # compiler 用于可视化
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
-        "compiler.tar.xz::https://download.fastgit.org/msojocs/wechat-devtools-linux/releases/download/v0.6/compiler.tar.xz"
+        "compiler.tar.gz::https://download.fastgit.org/msojocs/wechat-devtools-linux/releases/download/v0.14/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
         "fix-cli.sh"
@@ -41,12 +41,12 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wxvpkg_pack"
         "wxvpkg_unpack"
         "fix-other.sh")
-md5sums=(b6f49803c51d0abacca2d1e566c7fe19
+md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
          "${_wechat_devtools_md5}"
-         2280bfbbf29981fd5adce334f40146ff
-         c638ccefe09941372903c08ce70420c3
-         baf0db59fb340793854ac1ef23f68594
-         88e0efe5d58444b3d39695d4fb16d61b
+         2280bfbbf29981fd5adce334f40146ff   # nodejs
+         43cc0fabc8e37fe9cea1fff89989938a   # compiler
+         6f64dd5f4bf7a395b0241d8ac1c93ab5   # desktop
+         0f4353664123320280ea4d6bb295dce2   # svg
          "SKIP"
          "SKIP"
          "SKIP"
@@ -83,6 +83,7 @@ build() {
     export NW_PACKAGE_DIR="${srcdir}/wechat_devtools/code/package.nw"
     export NW_VERSION=$_nwjs_ver
     export srcdir=$srcdir
+    export NO_WINE=true
     
     for script in fix-package-name-node fix-cli.sh fix-other.sh fix-menu.sh fix-core.sh rebuild-modules.sh; do
         _log "run ${script}"

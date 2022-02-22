@@ -3,7 +3,7 @@ Name=WeChat Devtools
 Name[zh_CN]=微信web开发者工具
 Comment=The development tools for wechat web develop
 Categories=Development;WebDevelopment;IDE;
-Exec=env APPDATA=/opt/wechat-devtools/ USERPROFILE=~ /opt/wechat-devtools/nw --load-extension=~/.config/wechat_devtools/WeappPlugin --custom-devtools-frontend=file:///opt/wechat-devtools/package.nw/js/ideplugin/inspector %U
+Exec=env APPDATA=~/.config/wechat_devtools USERPROFILE=~ bash -c ' current=`date "+%Y-%m-%d %H:%M:%S"`; timeStamp=`date -d "$current" +%s`; if [[ -f "$APPDATA/.run_time" ]];then run_time=`cat "$APPDATA/.run_time"`; else run_time=0; fi; if [[ -f "$root_dir/package.nw/.build_time" ]];then build_time=`cat "$root_dir/package.nw/.build_time"`; else build_time=timeStamp; fi; if [[ ! $build_time < $run_time ]];then echo $timeStamp > "$APPDATA/.run_time"; rm -rf "$APPDATA/WeappCache"; rm -rf "$APPDATA/WeappVendor"; fi; /opt/wechat-devtools/nw --load-extension=~/.config/wechat_devtools/WeappPlugin --custom-devtools-frontend=file:///opt/wechat-devtools/package.nw/js/ideplugin/inspector %U'
 Path=/opt/wechat-devtools
 Icon=wechat-devtools
 Type=Application
