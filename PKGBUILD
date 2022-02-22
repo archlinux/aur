@@ -8,7 +8,7 @@ url="https://github.com/SunshineStream/sunshine"
 arch=('x86_64' 'i686')
 license=('GPL3')
 
-depends=('boost-libs' 'ffmpeg' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb' 'libxrandr' 'udev')
+depends=('boost-libs' 'ffmpeg4.4' 'openssl' 'libpulse' 'opus' 'libxtst' 'libx11' 'libxfixes' 'libevdev' 'libxcb' 'libxrandr' 'udev')
 makedepends=('git' 'cmake' 'boost' 'make')
 
 source=("$pkgname::git+https://github.com/SunshineStream/sunshine.git#tag=v$pkgver"
@@ -37,7 +37,16 @@ build() {
         -B build \
         -Wno-dev \
         -D SUNSHINE_EXECUTABLE_PATH=/usr/bin/sunshine \
-        -D SUNSHINE_ASSETS_DIR="$_assets_path"
+        -D SUNSHINE_ASSETS_DIR="$_assets_path" \
+        \
+        -D LIBAVCODEC_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
+        -D LIBAVCODEC_LIBRARIES=/usr/lib/ffmpeg4.4/libavcodec.so \
+        -D LIBAVDEVICE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
+        -D LIBAVDEVICE_LIBRARIES=/usr/lib/ffmpeg4.4/libavdevice.so \
+        -D LIBAVFORMAT_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
+        -D LIBAVFORMAT_LIBRARIES=/usr/lib/ffmpeg4.4/libavformat.so \
+        -D LIBAVUTIL_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
+        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so
 
     make -C build
 }
