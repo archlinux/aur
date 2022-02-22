@@ -2,12 +2,12 @@
 pkgname=minetest-juanchi-game
 _pkgname=juanchi
 _pkgauthor=runs
-pkgver=4.8
-_cdbrel=10437
+pkgver=4.9
+_cdbrel=11296
 pkgrel=1
 pkgdesc="A game just for fun with blocks, animals and a lot of more. "
 license=("AGPLv3")
-sha256sums=('3e7cbe10775d9b79318d43052bd23079ab9089afc39807b925be9eaf5c1b8d2b')
+sha256sums=('c77cb75a7e7048cd20ae611f7d6334199181d717d9bf1ac0ee6d33afa0563bdd')
 
 arch=("any")
 url="https://content.minetest.net/packages/${_pkgauthor}/${_pkgname}/"
