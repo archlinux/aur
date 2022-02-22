@@ -1,17 +1,23 @@
 pkgbase = python-pyscaffold
 	pkgdesc = Python project template generator with batteries included
-	pkgver = 4.1.4
+	pkgver = 4.1.5
 	pkgrel = 1
-	url = https://pyscaffold.org/
+	url = https://github.com/pyscaffold/pyscaffold
+	changelog = CHANGELOG.rst
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-virtualenv
 	makedepends = git
-	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-appdirs
 	depends = python-configupdater
-	depends = python-tomlkit
 	depends = python-packaging
+	depends = python-platformdirs
+	depends = python-tomlkit
 	optdepends = python-django: Scaffold Django projects.
 	optdepends = python-cookiecutter: Create custom scaffold templates.
 	optdepends = python-pre-commit: Use Git pre-commit hooks.
@@ -19,7 +25,7 @@ pkgbase = python-pyscaffold
 	optdepends = python-pytest: Use the integrated unit testing.
 	optdepends = python-pytest-runner: Use the integrated unit testing.
 	optdepends = python-pytest-cov: Generate a coverage report for your project.
-	source = python-pyscaffold::git+https://github.com/pyscaffold/pyscaffold/#tag=v4.1.4
+	source = python-pyscaffold::git+https://github.com/pyscaffold/pyscaffold/#tag=v4.1.5
 	sha256sums = SKIP
 
 pkgname = python-pyscaffold

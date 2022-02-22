@@ -4,17 +4,18 @@
 ## Must use git to pull sources because of python-setuptools-scm
 
 pkgname=python-pyscaffold
-pkgver=4.1.4
+pkgver=4.1.5
 pkgrel=1
 pkgdesc="Python project template generator with batteries included"
-url="https://pyscaffold.org/"
+url="https://github.com/pyscaffold/pyscaffold"
 arch=('any')
 license=('MIT')
 depends=(
 	'python-appdirs'
 	'python-configupdater'
-	'python-tomlkit'
-	'python-packaging')
+	'python-packaging'
+	'python-platformdirs'
+	'python-tomlkit')
 optdepends=(
 	'python-django: Scaffold Django projects.'
 	'python-cookiecutter: Create custom scaffold templates.'
@@ -23,23 +24,34 @@ optdepends=(
 	'python-pytest: Use the integrated unit testing.'
 	'python-pytest-runner: Use the integrated unit testing.'
 	'python-pytest-cov: Generate a coverage report for your project.')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
-# checkdepends=('python-pytest-runner')
-source=("$pkgname::git+https://github.com/pyscaffold/pyscaffold/#tag=v$pkgver")
+makedepends=(
+	'git'
+	'python-setuptools-scm'
+	'python-build'
+	'python-installer'
+	'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-virtualenv')
+changelog=CHANGELOG.rst
+source=("$pkgname::git+$url/#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
 	cd "$pkgname"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
-# check() {
-# 	cd "$pkgname"
-# 	python setup.py pytest --addopts '-c /dev/null'
-# }
+check() {
+	cd "$pkgname"
+	PYTHONPATH=./src EDITOR=nano pytest \
+		-x \
+		-c /dev/null \
+		-k 'not slow and not system' \
+		--disable-warnings
+}
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
