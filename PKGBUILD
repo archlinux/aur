@@ -2,7 +2,7 @@
 # Comaintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses-git
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=0
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -52,5 +52,5 @@ package() {
 	done
 }
 
-sha256sums=('2113bed52248b048874bceb99f10985ae46019de818fce5cda2a8756b013448b'
-            '1cd39b9258bf837e462d6816f48620274ec8ba31663429b3959ef3d4f0eb711d')
+sha256sums=('db461c6ba07a8e3735a51a1d2e706d249ae30436519f543fa5931d414019c770'
+            '51e46198d02f45d302ac7b2ebc9c0f1391cf37f329bd5aa3857c9ccde5f3dac1')
