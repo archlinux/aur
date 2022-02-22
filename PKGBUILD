@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=bombadil-git
-pkgver=2.2.3.r4.gbac3b31
+pkgver=2.2.4.r0.gc187cc6
 pkgrel=1
 arch=('any')
 pkgdesc='A dotfile manager with templating'
@@ -9,6 +9,7 @@ license=('MIT')
 options=('!lto')
 makedepends=('git' 'cargo')
 provides=('bombadil')
+conflict=('bombadil-bin')
 url='https://github.com/oknozor/toml-bombadil'
 source=("$pkgname"::"git://github.com/oknozor/toml-bombadil.git")
 sha256sums=('SKIP')
