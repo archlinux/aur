@@ -9,7 +9,7 @@ url="https://github.com/libretro/pcsx2"
 license=('LGPL3')
 groups=('libretro')
 depends=('libaio' 'libchdr' 'libgl' 'libretro-core-info' 'yaml-cpp')
-makedepends=('cmake' 'git' 'libglvnd' 'ninja' 'xxd')
+makedepends=('cmake' 'git' 'libglvnd' 'xxd')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!lto') # https://github.com/libretro/pcsx2/issues/180
@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-	cmake -S $_pkgname -B build -G Ninja \
+	cmake -S $_pkgname -B build \
 		-DARCH_FLAG="" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DDISABLE_ADVANCE_SIMD=ON \

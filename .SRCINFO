@@ -9,7 +9,6 @@ pkgbase = libretro-pcsx2-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = libglvnd
-	makedepends = ninja
 	makedepends = xxd
 	depends = libaio
 	depends = libchdr
