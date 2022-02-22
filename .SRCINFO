@@ -1,6 +1,6 @@
 pkgbase = extension-manager
 	pkgdesc = A native tool for browsing, installing, and managing GNOME Shell Extensions
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/mjakeman/extension-manager
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = extension-manager
 	depends = libadwaita
 	depends = libsoup3
 	depends = json-glib
-	source = https://github.com/mjakeman/extension-manager/archive/v0.2.2.tar.gz
-	b2sums = bd3a945761da27aa5e9c701cc78b8b0d5404a94f18f988281c152223e470752417a20c7f6b86409392ada6bfce2ea4615d32ed38f4071df2f4dc9e102d693a4d
+	source = https://github.com/mjakeman/extension-manager/archive/v0.2.3.tar.gz
+	b2sums = 3bd98f67f419c646a4a7b9d1dee656de305eff5e35124f3765d5d9c82aff7d9e7bbeea912f24c0766c95e0c497b070831ee9922747f200bbcd57470a6adcec7e
 
 pkgname = extension-manager
