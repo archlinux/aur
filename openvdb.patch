@@ -1,0 +1,71 @@
+From 63816ba1e9715a2c3c5cd22469d0ca2cbba8469b Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Tue, 14 Dec 2021 12:11:33 +0100
+Subject: [PATCH] Allow external openvdb
+
+---
+ cmake/Dependencies.cmake   |  7 +++++++
+ src/luxcore/CMakeLists.txt |  1 -
+ src/slg/CMakeLists.txt     | 13 ++++++++++---
+ 3 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+index 5bd992b0d..ec7e74bff 100644
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -160,3 +160,13 @@ ENDIF (NOT BISON_NOT_AVAILABLE)
+ IF (NOT FLEX_NOT_AVAILABLE)
+ 	find_package(FLEX)
+ ENDIF (NOT FLEX_NOT_AVAILABLE)
++
++# Find OpenVDB
++if(NOT USE_BUNDLE_OPENVDB)
++	set(CMAKE_FIND_PACKAGE_PREFER_CONFIG TRUE)
++# preserve Boost_LIBRARIES variable
++	set(save_Boost_LIBRARIES ${Boost_LIBRARIES})
++	find_package(OpenVDB REQUIRED)
++	set(Boost_LIBRARIES ${save_Boost_LIBRARIES})
++	set(CMAKE_FIND_PACKAGE_PREFER_CONFIG FALSE)
++endif()
+diff --git a/src/luxcore/CMakeLists.txt b/src/luxcore/CMakeLists.txt
+index f876fa425..d0615b6e1 100644
+--- a/src/luxcore/CMakeLists.txt
++++ b/src/luxcore/CMakeLists.txt
+@@ -175,7 +175,6 @@ set(PYLUXCORE_SRCS
+ 
+ add_library(pyluxcore MODULE ${PYLUXCORE_SRCS} ${LUXCORE_LIB_SRCS} ${LUX_PARSER_SRC})
+ 
+-include_directories(${LuxRays_SOURCE_DIR}/deps/openvdb-7.0.0)
+ include_directories(${LuxRays_SOURCE_DIR}/deps/opencolorio-2.0.0/include)
+ 
+ add_definitions(-DOPENVDB_STATICLIB ${VISIBILITY_FLAGS})
+diff --git a/src/slg/CMakeLists.txt b/src/slg/CMakeLists.txt
+index 2f1bf79cc..c41b87e9f 100644
+--- a/src/slg/CMakeLists.txt
++++ b/src/slg/CMakeLists.txt
+@@ -143,12 +143,19 @@ set(OPENVDB_SRCS
+ 
+ SOURCE_GROUP("Source Files\\OpenVDB Library" FILES ${OPENVDB_SRCS})
+ 
+-include_directories(${LuxRays_SOURCE_DIR}/deps/openvdb-7.0.0)
+-
+ # Required by OpenVDB to read ABI 3
+ #add_definitions("-D OPENVDB_USE_DEPRECATED_ABI -DOPENVDB_3_ABI_COMPATIBLE -DOPENVDB_STATICLIB -DOPENVDB_OPENEXR_STATICLIB")
+ add_definitions("-DOPENVDB_USE_BLOSC -DOPENVDB_STATICLIB -DOPENVDB_OPENEXR_STATICLIB")
+-add_library(openvdb STATIC ${OPENVDB_SRCS})
++if(USE_BUNDLE_OPENVDB)
++	add_library(openvdb STATIC ${OPENVDB_SRCS})
++	set_target_properties(openvdb INCLUDE_DIRECTORIES ${LuxRays_SOURCE_DIR}/deps/openvdb-7.0.0)
++else()
++	set(CMAKE_FIND_PACKAGE_PREFER_CONFIG TRUE)
++	find_package(OpenVDB REQUIRED)
++	set(CMAKE_FIND_PACKAGE_PREFER_CONFIG FALSE)
++	add_library(openvdb INTERFACE)
++	target_link_libraries(openvdb INTERFACE OpenVDB::openvdb)
++endif()
+ 
+ ###########################################################################
+ #
+-- 
+2.34.1
+
