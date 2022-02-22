@@ -3,7 +3,7 @@
 # Contributor: mock <nobody at nowhere dot co dot uk>
 
 pkgname=clrmamepro
-pkgver=4.044
+pkgver=4.044a
 pkgrel=1
 pkgdesc="A ROM manager for MAME."
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ makedepends=('icoutils')
 source=("https://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro"
         "clrmamepro.desktop")
-b2sums=('ac6ed358059baaee6e93f49cae7c9e6409ea3cab79a73bb4a7a174dac73c0d94284c66f4cf57bd6a5a5509228fa60ac2b0249f3d8f00e171cb7c903e3b363d19'
+b2sums=('1249cee97d7a074f3aaeee5b54c1120363d703c7b1b6967f8f1cd000e7d9feb33aa6eca1a40a3c4c2e9c3dbd5b5ab2f32838e751c89fab9664f19ed36253dc27'
         '92136aa1e3e5e98d5f5918f047e53a89d09318946fb20c8731a3ce84ff08abd00d65b4e6a098f71792da597677532e9c51cebb7b427594ea5d80260a43d7e147'
         '001f96fd4d515e3501239781be80c71e32b8e5dc9c0f42b2d50794f23ba48206ab669a6348dcd22e6c37d0fddd52758844abbad40aa536c1ad59f99861567265')
 
