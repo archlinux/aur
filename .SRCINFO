@@ -1,0 +1,16 @@
+pkgbase = klipper-estimator
+	pkgdesc = A tool for determining the time a print will take on a 3D printer running Klipper firmware
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Annex-Engineering/klipper_estimator
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = custom:MIT
+	makedepends = cargo
+	source = klipper-estimator-1.7.0.tar.gz::https://github.com/Annex-Engineering/klipper_estimator/archive/v1.7.0.tar.gz
+	sha512sums = a9238f5c405f283ff437fb4583d5aea61fa7e6f95c02e0d863a0a2bf725b39e74a5b677a808089010d19085c20a9411858b3e6e54ed9c5444781d3623a22492d
+
+pkgname = klipper-estimator
