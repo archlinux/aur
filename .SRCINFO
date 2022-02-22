@@ -1,0 +1,18 @@
+pkgbase = toml-adapt
+	pkgdesc = A very simple cli for manipulating toml files
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/firefly-cpp/toml-adapt
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry-core
+	depends = python-toml
+	depends = python-click
+	optdepends = man-db: manual pages for toml-adapt
+	source = https://github.com/firefly-cpp/toml-adapt/archive/0.2.4.tar.gz
+	sha512sums = f1ea4229e4f4f2bda90e3c7c79bb12de72c36c8f26c2ad7a2f1cea57a0ca39b263af2f1ee0b2a4fdcea3e07eeb1ca14fbcdcf95abf5aabc038d6d9da3033c8b5
+
+pkgname = toml-adapt
