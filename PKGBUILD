@@ -6,7 +6,7 @@
 pkgname=evince-no-gnome
 _pkgname=evince
 pkgver=41.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Document viewer, no gnome dependencies"
 url="https://wiki.gnome.org/Apps/Evince"
 arch=('i686' 'x86_64')
@@ -19,8 +19,10 @@ provides=("$_pkgname" libev{document,view}3.so)
 conflicts=("$_pkgname" libev{document,view}3.so)
 options=('!emptydirs')
 _commit=08780f527ac0306f527c48ea6cc77a7b2c6c5fa8  # tags/41.3^0
-source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit")
-sha256sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/evince.git#commit=$_commit"
+        "0001-meson_appstream_remove.patch")
+sha256sums=('SKIP'
+            'fd296c5eb2095ae071600896f680020d331b50901dd42c2087f30bf4a0487434')
 
 pkgver() {
   cd $_pkgname
@@ -29,6 +31,9 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  for p in ${srcdir}/*.patch; do
+      patch -Np1 -i "$p"
+  done
 }
 
 build() {
