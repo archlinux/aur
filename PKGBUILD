@@ -16,11 +16,11 @@ conflicts=('hgsreceiver-bin')
 options=('emptydirs')
 noextract=()
 
-source=("file://ZCentral_RB_20.3_Linux_Receiver_M39127-005.tar.gz")
-md5sums=('b94f87aebe0bf59602d2063d2c4658e3')
+source=("file://ZCentral_RB_20.3.1_Linux_Receiver_M39127-006.tar.gz")
+md5sums=('9760c4ff49d28b906b59634b350f8c00')
 
 prepare() {
-bsdtar xf ZCentral_RB_20.3_Linux_Receiver_M39127-005.tar.gz
+bsdtar xf ZCentral_RB_20.3.1_Linux_Receiver_M39127-006.tar.gz
 bsdtar xf ubuntu/receiver/*.tar.gz
 bsdtar xf ./*.deb
 }
