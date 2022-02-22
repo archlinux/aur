@@ -1,0 +1,14 @@
+pkgbase = powerline-kubernetes
+	pkgdesc = A Powerline segment to show Kubernetes context
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/so0k/powerline-kubernetes
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/powerline-kubernetes/powerline-kubernetes-1.2.0.tar.gz
+	sha256sums = f635f648b3e0249fe7491996c5a681ead8868b9bfa0254dde8811fe2919a9711
+
+pkgname = powerline-kubernetes
+	depends = python
