@@ -1,13 +1,13 @@
 # Maintainer: Peter Blackman <peter at pblackman dot plus dot com>
 # Build package from OBS source
-# 11-Jan-2022
+# 22-Feb-2022
 # See http://www.c-evo.org/
 # https://build.opensuse.org/package/show/home:PeterBBB/c-evo
 
 pkgname=c-evo-nh
 pkgbase=c-evo
 _shortpkgname=c-evo
-pkgver=1.3.0.418
+pkgver=1.3.0.420
 pkgrel=1
 pkgdesc="Empire Building Game, C-evo: New Horizons"
 arch=('x86_64')
@@ -18,10 +18,10 @@ depends=('gtk2')
 #options=(debug !strip)
 optdepends=('ffmpeg: Needed for sounds')
 conflicts=('c-evo' 'c-evo-bin' 'c-evo-nh-bin')
-source=("$pkgname-$pkgver.5.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg.orig.tar.xz"
-        "$pkgname-$pkgver.5.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg-1.debian.tar.xz")
-sha256sums=('317dfd485dc74569173517df63590e4ec69087584a7942d0d54c04b801d52e18'
-            '80fc74ec09ce8d863c5289b91762f1aefd880d6ee285761bb9047d4a23ba0977')
+source=("$pkgname-$pkgver.orig.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg.orig.tar.xz"
+        "$pkgname-$pkgver.debian.tar.xz::https://download.opensuse.org/repositories/home:/PeterBBB/Debian_Testing/c-evo-nh_$pkgver+dfsg-1.debian.tar.xz")
+sha256sums=('1c6c9b8728839b614d1f1fb7a77ea52f880ac00d5eaf4a263a610f45bbccbce6'
+            'bb37acbae0572e600fce964f914818bfc712b9fa0e83192f8d1f3e21ed73815d')
 
 prepare() {
   cd "${srcdir}"
