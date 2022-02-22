@@ -1,5 +1,5 @@
 post_install() {
-    id livepeer 2>/dev/null || useradd -r -U -M -s /bin/false livepeer
+    id livepeer 2>/dev/null || useradd -r -U -M -s /bin/false -d /var/lib/livepeer livepeer
     mkdir -p "/var/lib/livepeer"
     chown livepeer.livepeer /var/lib/livepeer
     echo -e "####################################################"
