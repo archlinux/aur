@@ -29,7 +29,8 @@ pkgver(){
 }
 prepare(){
     # TeXLive release year
-    _year=$(cat ${srcdir}/install-tl-${pkgver}/release-texlive.txt| grep -E '[0-9]+' -o)
+    _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
+    _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
     # creating a profile for unattened installation
     echo "selected_scheme scheme-full" > "${srcdir}/texlive.profile"
     echo "TEXDIR ${pkgdir}/opt/texlive/${_year}" >> "${srcdir}/texlive.profile"
@@ -48,10 +49,10 @@ prepare(){
 }
 
 package() {
-    _year=$(cat ${srcdir}/install-tl-${pkgver}/release-texlive.txt| grep -E '[0-9]+' -o)
-    
+    _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
+    _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
     # find installer path automatically.
-    _installer_dir=install-tl-${pkgver}
+    _installer_dir=install-tl-${_tldate}
     
     # start the installer and install
     _timestamp=$(date "+%m%d%H%M")
