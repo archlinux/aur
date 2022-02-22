@@ -1,7 +1,7 @@
 # Maintainer: Foxite <the@dirkkok.nl>
 pkgname=mkuki
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Build and sign a Unified Kernel Image'
 url='https://github.com/Foxite/mkuki'
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('719046c211b653b1d2597f6c9aa362ca2a2b191a1efa3ddf4f26d3e0f00d6daf'
 validpgpkeys=('EE05738A0F76012F5CF673DF60BD929EFA66E01F') # Foxite <the@dirkkok.nl>
 
 build() {
-	pod2man --section=1 --release="$pkgver" $pkgname.pod | gzip > $pkgname.1.gz
+	/usr/bin/core_perl/pod2man --section=1 --release="$pkgver" $pkgname.pod | gzip > $pkgname.1.gz
 }
 
 package() {

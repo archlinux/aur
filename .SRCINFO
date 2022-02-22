@@ -1,7 +1,7 @@
 pkgbase = mkuki
 	pkgdesc = Build and sign a Unified Kernel Image
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Foxite/mkuki
 	changelog = CHANGELOG
 	arch = any
