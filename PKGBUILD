@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -11,6 +11,7 @@ depends=(bc
          bcprov # pdftk optdepend is required
          entr
          epubcheck
+         fontconfig
          ghostscript
          git
          git-warp-time
@@ -21,6 +22,7 @@ depends=(bc
          jq
          kindlegen
          libertinus-font
+         libgit2
          lua
          m4
          make
@@ -56,6 +58,7 @@ _python_deps=(isbnlib
 depends+=("${_lua_deps[@]/#/lua-}" "${_lua_deps[@]/#/lua53-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
+depends+=(libgit2.so)
 makedepends=(autoconf-archive
              cargo
              luarocks
