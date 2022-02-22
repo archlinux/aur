@@ -3,7 +3,7 @@
 
 pkgbase=plasma-workspace-git
 pkgname=(plasma-workspace-git plasma-wayland-session-git)
-pkgver=5.22.80_r10328.g46c784099
+pkgver=5.24.80_r11429.g43ca3339b
 pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=($CARCH)
