@@ -16,8 +16,10 @@ provides=('sunshine')
 conflicts=("sunshine")
 
 source=("$pkgname::git+https://github.com/SunshineStream/sunshine.git"
+        "systemd-user-config.patch"
         "udev.rules")
 sha256sums=('SKIP'
+            '1642eb8672b137e94aa16e4aadde37f68bf1920dfadd1325cca480d7731f38c9'
             '5ce01689247cb01d3f119cac32c731607d99bb875dcdd39c92b547f76d2befa0')
 install=sunshine.install
 
@@ -31,6 +33,8 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     git submodule update --recursive --init
+
+    patch -p1 < ../systemd-user-config.patch
 }
 
 build() {
