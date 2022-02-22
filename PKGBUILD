@@ -1,7 +1,7 @@
 # maintainer: BrainDamage
 pkgname=helio-workstation
 pkgver=3.8
-pkgrel=5
+pkgrel=6
 pkgdesc="One music sequencer for all major platforms, desktop and mobile"
 arch=('x86_64')
 url="https://helio.fm/"
@@ -29,7 +29,7 @@ build() {
   cd "${srcdir}/${pkgname}/Projects/LinuxMakefile"
   CONFIG=Release64 make
   cd "${srcdir}/${pkgname}/Docs"
-  mdbook build -d '../doc-build'
+  mdbook build -d '../doc-build' .
 }
 
 package() {
@@ -38,8 +38,7 @@ package() {
   install -Dvm644 "Projects/Deployment/Linux/Debian/x64/usr/share/applications/Helio.desktop" "${pkgdir}/usr/share/applications/Helio.desktop"
   cd "${srcdir}/${pkgname}/Projects/Deployment/Linux/Debian/x64/usr/share/icons/"
   find . -exec install -Dvm 644 {} "${pkgdir}/usr/share/icons/{}" \;
-  #FIXME: figure out why it's built twice
-  cd "${srcdir}/${pkgname}/doc-build/doc-build"
+  cd "${srcdir}/${pkgname}/doc-build"
   find . -not -name '.gitignore' -not -name '.nojekyll' -exec install -Dvm 644 {} "${pkgdir}/usr/share/doc/${pkgname}/{}" \;
 }
 
