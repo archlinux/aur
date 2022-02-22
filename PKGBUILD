@@ -2,7 +2,7 @@
 # ---
 _pkgname=Nu1LL1nuX
 pkgname=nu1ll1nux
-pkgver=1.0.169
+pkgver=1.0.170
 pkgrel=1
 pkgdesc='ArchLinux install scripts for the Nu1LL1nuX platform.'
 arch=(x86_64)
@@ -20,10 +20,8 @@ pkgver() {
 
 package() {
     cd ${pkgname}
-    for x in Nu1LL1nuX.sh pre-install.sh .skell; do
-    mkdir -p "${pkgdir}/usr/local/bin/${_pkgname}"
+    mkdir -p "${pkgdir}/opt/${_pkgname}"
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm755 ${_pkgname}/$x -t ${pkgdir}/usr/local/bin/${_pkgname}/$x
+    install -Dm755 ${_pkgname}/* -t "${pkgdir}/opt/${_pkgname}"
     install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    done
 }
