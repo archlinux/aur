@@ -1,14 +1,14 @@
 [Unit]
-Description=Kerberos Ticket Renewal Daemon
+Description=Kerberos Ticket Acquisition Daemon
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/krenew -K30 -a -H30 -i -b -L
+Environment=KEYTAB=%h/.config/default.keytab
+ExecStart=/usr/bin/k5start -K30 -a -H30 -f $KEYTAB -b -L
 # -K30	Run forever, wake up every 30 min
 # -a	With -K, renew on every wakeup regardless of lifetime
 # -H30	With -K, renew if less than 30 min left (default 2 min)
-# -i	Don't exit if renewal fails
-# -b	Detach on startup
+# -b	Detach on startup (only if -f keytab is specified)
 # -L	Log to syslog
 # -v	Be verbose
 ExecReload=/bin/kill -s ALRM $MAINPID
