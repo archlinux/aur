@@ -15,7 +15,6 @@ sha512sums=('a891a98a703feccea10459cbb1c60095a13bdeb5a1ad51bfc9b6e691cf802a7f707
 
 prepare() {
   sed -i 's/^name = "'"${_base}"'"/name = "'"${_base,,}"'"/' ${_base}-${pkgver}/pyproject.toml
-  head ${_base}-${pkgver}/pyproject.toml
 }
 
 build() {
