@@ -1,0 +1,26 @@
+pkgbase = concisewm
+	pkgdesc = Concise Build of Suckless DWM
+	pkgver = 1.0.16
+	pkgrel = 1
+	url = https://gitlab.com/qYp/ConciseWM
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = coreutils
+	depends = gcc
+	depends = xorg-server
+	depends = xorg-xinit
+	depends = libxft-bgra-git
+	optdepends = xorg-xrandr: Allows for changing the resolution of the screen
+	optdepends = xwallpaper: Allows for setting a wallpaper
+	optdepends = lxappearance: Allows for changing the theme of the window manager
+	optdepends = xorg-xsetroot: Allows for changing the background color of the bar and WM
+	optdepends = xorg-xbacklight: Allows for changing the brightness of the screen
+	provides = concisewm
+	conflicts = dwm
+	replaces = dwm
+	backup = usr/bin/dwm.bak
+	source = git+https://gitlab.com/qYp/ConciseWM.git
+	md5sums = SKIP
+
+pkgname = concisewm
