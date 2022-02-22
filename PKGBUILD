@@ -1,6 +1,6 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
 _name='netaudio'
-pkgver=0.0.6
+pkgver=0.0.7
 
 _namever="${_name}-${pkgver}"
 arch=(any)
