@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=openelearning-bin
-pkgver=1.4.7
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A free, open-source Elearning editor for Linux"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('libxss'
          'nodejs'
          'java-runtime')
 source=("${pkgname%-bin}-${pkgver}.deb::https://www.openelearning.org/addScript/download/openelearning_${pkgver}_amd64.deb")
-sha256sums=('aa761bd2b6b3ff07d70e5912e8516c7d11538e54189c16e508c1f43eeb72ee37')
+sha256sums=('c171f1d58b94c560da08abe4e204c8711b03c473b745bafd497338ff39ab233c')
 
 package() {
   tar xvf data.tar.xz -C "${pkgdir}/"
