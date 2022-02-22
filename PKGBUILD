@@ -4,7 +4,7 @@
 
 set -u
 pkgname=liquibase
-pkgver=4.7.1
+pkgver=4.8.0
 pkgrel=1
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
@@ -16,7 +16,7 @@ _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html
 options=('!strip')
 source=("https://github.com/liquibase/liquibase/releases/download/v${pkgver}/liquibase-${pkgver}.tar.gz"
         "liquibase.profile")
-sha256sums=('70732c0643f947baf1459833cca68726b16adfac42f4f06ecd3cdcd641ca7385'
+sha256sums=('7462b6e92f7077e1858865c403d52f0dce1bd66d03b1fae907815c10825feb33'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
 package() {
   set -u
@@ -43,7 +43,10 @@ package() {
   rm -f "${pkgdir}/opt/liquibase"/{liquibase.bat,liquibase.spec}
 
   install -d "${pkgdir}/usr/share/licenses/${pkgbase}/"
-  ln -s '/opt/liquibase/LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgbase}/"
+  ln -s '/opt/liquibase/LICENSE.txt' -T "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
+
+  install -d "${pkgdir}/usr/share/bash-completion/completions/"
+  ln -s '/opt/liquibase/lib/liquibase_autocomplete.sh' -T "${pkgdir}/usr/share/bash-completion/completions/${pkgbase}"
 
   set +u
 }
