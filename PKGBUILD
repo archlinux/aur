@@ -1,4 +1,5 @@
-# Maintainer: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
+# Maintainer: Tom Fryers <https://aur.archlinux.org/account/TomFryers>
+# Contributor: Andrew Whatson <https://aur.archlinux.org/account/flatwhatson>
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 ################################################################################
