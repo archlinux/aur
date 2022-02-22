@@ -1,6 +1,6 @@
 pkgbase = mautrix-facebook-git
 	pkgdesc = A double puppeting Facebook bridge with multi-user support for Hangouts
-	pkgver = r462.2fb76cb
+	pkgver = r678.e4259c5
 	pkgrel = 1
 	url = https://github.com/tulir/mautrix-facebook
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = mautrix-facebook-git
 	depends = python-mautrix
 	depends = python-pycryptodome
 	depends = python-paho-mqtt
+	depends = python-zstandard
 	depends = python-pillow
 	depends = python-olm
 	depends = python-unpaddedbase64
@@ -35,4 +36,3 @@ pkgbase = mautrix-facebook-git
 	sha256sums = a405ddaff8d16e09caae4346b4721727c1d3e86ca3d8325c54e0180b771bc12f
 
 pkgname = mautrix-facebook-git
-

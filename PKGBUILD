@@ -2,7 +2,7 @@
 
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
-pkgver=r462.2fb76cb
+pkgver=r678.e4259c5
 pkgrel=1
 pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
@@ -19,6 +19,7 @@ depends=(python
 	     python-mautrix
 	     python-pycryptodome
 	     python-paho-mqtt
+	     python-zstandard
 
 	     python-pillow
 	     python-olm
