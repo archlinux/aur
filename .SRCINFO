@@ -1,0 +1,14 @@
+pkgbase = python-pypacker
+	pkgdesc = The fastest and simplest packet manipulation lib for Python
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://gitlab.com/mike01/pypacker
+	arch = x86_64
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-netifaces
+	source = https://gitlab.com/mike01/pypacker/-/archive/v5.1/pypacker-v5.1.tar.gz
+	sha256sums = 4d282e2533952e3d4f8aad66898e1db4d23c7cd23692415d70a5237db641e312
+
+pkgname = python-pypacker
