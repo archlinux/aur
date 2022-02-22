@@ -33,13 +33,14 @@ prepare() {
       patch -Np1 < "$srcdir/$_f"
     fi
   done
-  echo "Replacing single-character macros"
-  find . \( -name '*.cc' -o -name '*.hh' \) -type f -print0 | \
-  xargs -0r sed -i -E '
-s,\<E( *\(),ERROR\1,g
-s,\<L( *\(),LOG\1,g
-s,\<P( *\(),PROGRESS\1,g
-s,\<W( *\(),WARNING\1,g'
+  echo "Replacing single-character macros conflicting with Boost"
+  find . \( -name '*.cc' -o -name '*.hh' \) -type f -exec \
+    sed -i -E '
+      s,\<E( *\(),ERROR\1,g
+      s,\<L( *\(),LOG\1,g
+      s,\<P( *\(),PROGRESS\1,g
+      s,\<W( *\(),WARNING\1,g
+    ' {} +
   echo "Bootstrapping autoconf"
   aclocal
   autoreconf --install
