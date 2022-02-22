@@ -1,11 +1,11 @@
 pkgbase = tilix-git
 	pkgdesc = A tiling terminal emulator for Linux using GTK+ 3
-	pkgver = 1.9.4.r46.g04844c06
+	pkgver = 1.9.4.r61.gfb6baad6
 	pkgrel = 1
 	url = https://gnunn1.github.io/tilix-web
 	arch = x86_64
 	license = MPL
-	checkdepends = appstream
+	makedepends = appstream
 	makedepends = git
 	makedepends = ldc
 	makedepends = po4a
@@ -20,6 +20,7 @@ pkgbase = tilix-git
 	optdepends = vte3-notification: for desktop notifications support
 	provides = tilix
 	conflicts = tilix
+	options = !lto
 	source = git+https://github.com/gnunn1/tilix.git
 	sha256sums = SKIP
 
