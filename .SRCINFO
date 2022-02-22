@@ -1,0 +1,13 @@
+pkgbase = minq-checkupdates-aur-git
+	pkgdesc = Simple checkupdates-aur alternative since all other checkupdate-aur(s) are broken
+	pkgver = r2.52858f574f00a99eec1d9d44e1faa1ac3ba03c7d
+	pkgrel = 1
+	url = https://github.com/kuche1/minq-checkupdates-aur.git
+	arch = any
+	license = GPL
+	depends = paru
+	provides = minq-checkupdates-aur
+	source = git+https://github.com/kuche1/minq-checkupdates-aur.git
+	sha256sums = SKIP
+
+pkgname = minq-checkupdates-aur-git
