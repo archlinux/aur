@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('sdl2' 'fonts-noto-hinted' 'fonts-droid-fallback')
 source=(
   "https://github.com/koreader/koreader/releases/download/v${pkgver}/koreader-${pkgver}-amd64.deb")
-sha512sums=('811adc6a6fb4fef2ed9bb00ceb41b4c4d0cad9e024cb19021c9fad3d1f7dc06e8105fbb0f8410464576b0436e04e3c60e852db32d8c89bc14adf3a36f93223da')
+sha512sums=('0ad86ad1015f178dc41e794cd0db2adce0c33487e79b4dc948201d328c484a7167d25d3715dd6789c97f4fc2078f906975e175c86ebf56a54cc1bf5da72b33e3')
 
 build() {
   mkdir -p "${srcdir}/dpkgdir"
