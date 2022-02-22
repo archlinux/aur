@@ -1,7 +1,7 @@
 # Maintainer: Cédric Bellegarde
 
 pkgname=power-profile-selector-git
-pkgver=0.2.r0.gfd1c990
+pkgver=0.3.r0.g8e48eea
 pkgrel=1
 pkgdesc='This systemd user service monitors your system and apply wanted power profile.'
 arch=(any)
