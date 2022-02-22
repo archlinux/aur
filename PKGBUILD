@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/zyantific/$_pkgname"
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'git' 'ninja')
+makedepends=('cmake' 'git')
 checkdepends=('gtest')
 provides=("$_pkgname=$pkgver" 'libZycore.so')
 conflicts=("$_pkgname")
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-	cmake -S $_pkgname -B build -G Ninja \
+	cmake -S $_pkgname -B build \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DZYCORE_BUILD_SHARED_LIB=ON \
 		-DZYCORE_BUILD_TESTS="$CHECKFUNC" \

@@ -8,7 +8,6 @@ pkgbase = zycore-c-git
 	checkdepends = gtest
 	makedepends = cmake
 	makedepends = git
-	makedepends = ninja
 	depends = glibc
 	provides = zycore-c=1.1.0.r3.g8983325
 	provides = libZycore.so
