@@ -2,7 +2,7 @@
 pkgname=ffmpeg-nocuda
 pkgver=5.0
 gitver=n${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (without nvidias propriatary blobs)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -72,8 +72,18 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswresample.so' 'libswscale.so'
           'ffmpeg')
 conflicts=('ffmpeg')
-source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver")
-sha256sums=('SKIP')
+source=("git+https://git.ffmpeg.org/ffmpeg.git#tag=$gitver"
+	010-ffmpeg-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch
+        030-ffmpeg-Add-ability-for-ffmpeg-to-run-svt-vp9.patch
+	040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch
+	050-ffmpeg-vmaf-2.x.patch
+)
+sha256sums=('SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+'SKIP'
+)
 
 prepare() {
  cd ${srcdir}/ffmpeg
@@ -84,7 +94,8 @@ prepare() {
 
   msg2 "Patching gitsource"
   echo "Applying $patch"
-  git apply $patch || exit 2
+  #git apply $patch || exit 2
+  patch -Np1 -i $patch
  done <<< $(ls ../*.patch 2> /dev/null)
 }
 

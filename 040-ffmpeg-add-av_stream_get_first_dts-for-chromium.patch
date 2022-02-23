@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch - aur.git - AUR Package Repositories</title>
+<meta name='generator' content='cgit v1.2.3-20-gbe07'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/static/css/cgit.css'/>
+<link rel='shortcut icon' href='/static/images/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://aur.archlinux.org/cgit/aur.git/atom/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full' type='application/atom+xml'/>
+<link rel='vcs-git' href='https://aur.archlinux.org/ffmpeg-full.git/' title='aur.git Git repository'/>
+</head>
+<body>
+		<div id="archnavbar" class="anb-aur">
+			<div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Arch Linux User Repository</a></h1></div>
+			<div id="archnavbarmenu">
+				<ul id="archnavbarlist">
+					<li id="anb-home"><a href="https://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
+					<li id="anb-packages"><a href="https://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
+					<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
+					<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
+					<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and track bugs">Bugs</a></li>
+					<li id="anb-security"><a href="https://security.archlinux.org/" title="Arch Linux Security Tracker">Security</a></li>
+					<li id="anb-aur"><a href="/" title="Arch Linux User Repository">AUR</a></li>
+					<li id="anb-download"><a href="https://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
+				</ul>
+			</div>
+		</div><!-- #archnavbar -->
+<div id='cgit'><table id='header'>
+<tr>
+<td class='main'>AUR : ffmpeg-full.git</td></tr>
+<tr><td class='sub'>AUR Package Repositories | click <a href='/pkgbase/ffmpeg-full/'>here</a> to return to the package base details page</td><td class='sub right'></td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/aur.git/?h=ffmpeg-full'>summary</a><a href='/cgit/aur.git/log/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>log</a><a class='active' href='/cgit/aur.git/tree/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>tree</a><a href='/cgit/aur.git/commit/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>commit</a><a href='/cgit/aur.git/diff/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>diff</a><a href='/cgit/aur.git/stats/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/aur.git/log/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'>
+<input type='hidden' name='h' value='ffmpeg-full'/><select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='search' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/aur.git/tree/?h=ffmpeg-full'>root</a>/<a href='/cgit/aur.git/tree/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch</a></div><div class='content'>blob: fb5589800d3d3bd59a42182496fe8eb862d6c4a9 (<a href='/cgit/aur.git/plain/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch?h=ffmpeg-full'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+<a id='n29' href='#n29'>29</a>
+<a id='n30' href='#n30'>30</a>
+<a id='n31' href='#n31'>31</a>
+<a id='n32' href='#n32'>32</a>
+<a id='n33' href='#n33'>33</a>
+<a id='n34' href='#n34'>34</a>
+<a id='n35' href='#n35'>35</a>
+<a id='n36' href='#n36'>36</a>
+<a id='n37' href='#n37'>37</a>
+<a id='n38' href='#n38'>38</a>
+<a id='n39' href='#n39'>39</a>
+<a id='n40' href='#n40'>40</a>
+<a id='n41' href='#n41'>41</a>
+<a id='n42' href='#n42'>42</a>
+<a id='n43' href='#n43'>43</a>
+<a id='n44' href='#n44'>44</a>
+</pre></td>
+<td class='lines'><pre><code>From 95aab0fd83619408995720ce53d7a74790580220 Mon Sep 17 00:00:00 2001
+From: &quot;liberato&#64;chromium.org&quot; &lt;liberato&#64;chromium.org&gt;
+Date: Wed, 7 Jul 2021 19:01:22 -0700
+Subject: [PATCH] Add av_stream_get_first_dts for Chromium
+
+[foutrelis: adjust for new FFStream struct replacing AVStreamInternal]
+<span class="hl kwa">---</span>
+ libavformat/avformat.h | 4 ++++
+ libavformat/utils.c    | 7 +++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/libavformat/avformat.h b/libavformat/avformat.h
+index cd7b0d941c..b4a6dce885 100644
+<span class="hl kwa">--- a/libavformat/avformat.h</span>
+<span class="hl kwb">+++ b/libavformat/avformat.h</span>
+&#64;&#64; -1010,6 +1010,10 &#64;&#64; struct AVCodecParserContext *av_stream_get_parser(const AVStream *s);
+  */
+ int64_t    av_stream_get_end_pts(const AVStream *st);
+ 
+<span class="hl kwb">+// Chromium: We use the internal field first_dts vvv</span>
+<span class="hl kwb">+int64_t    av_stream_get_first_dts(const AVStream *st);</span>
+<span class="hl kwb">+// Chromium: We use the internal field first_dts ^^^</span>
+<span class="hl kwb">+</span>
+ #define AV_PROGRAM_RUNNING 1
+ 
+ /**
+diff --git a/libavformat/utils.c b/libavformat/utils.c
+index de7580c32d..0ef0fe530e 100644
+<span class="hl kwa">--- a/libavformat/utils.c</span>
+<span class="hl kwb">+++ b/libavformat/utils.c</span>
+&#64;&#64; -121,6 +121,13 &#64;&#64; int64_t av_stream_get_end_pts(const AVStream *st)
+         return AV_NOPTS_VALUE;
+ }
+ 
+<span class="hl kwb">+// Chromium: We use the internal field first_dts vvv</span>
+<span class="hl kwb">+int64_t av_stream_get_first_dts(const AVStream *st)</span>
+<span class="hl kwb">+{</span>
+<span class="hl kwb">+  return cffstream(st)-&gt;first_dts;</span>
+<span class="hl kwb">+}</span>
+<span class="hl kwb">+// Chromium: We use the internal field first_dts ^^^</span>
+<span class="hl kwb">+</span>
+ struct AVCodecParserContext *av_stream_get_parser(const AVStream *st)
+ {
+     return st-&gt;internal-&gt;parser;
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div id="footer">
+	<p>
+		Copyright &copy; 2004-2020 aurweb Development Team &ndash;
+		<strong>AUR packages are user produced content. Any use of the provided files is at your own risk.</strong>
+	</p>
+</div>
+</div> <!-- id=cgit -->
+</body>
+</html>
