@@ -1,0 +1,12 @@
+pkgbase = reflex-bin
+	pkgdesc = Run a command when files change
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = github.com/cespare/reflex
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = reflex-bin-0.3.1.tar.gz::https://github.com/cespare/reflex/releases/download/v0.3.1/reflex_linux_amd64.tar.gz
+	sha512sums = 48e34197049c3185c7f01524de1b1ee00505167c722943f4167f4b6dfd97956211143e31c1258edb26a3616e417792d581e64727c62ff0889aefe36ae63e0317
+
+pkgname = reflex-bin
