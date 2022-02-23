@@ -6,7 +6,7 @@ pkgver() {
   printf "${version}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 pkgver=1.2.1.r182.be2fab3
-pkgrel=1
+pkgrel=2
 pkgdesc="An in-memory assembler for x86. (main branch)"
 arch=(x86_64)
 url="https://github.com/0xAde1a1de/assemblyline.git"
