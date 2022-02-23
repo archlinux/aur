@@ -1,5 +1,5 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
-
+# ---
 _pkgname=BetterBin
 pkgname=betterbin
 pkgver=1.0.48
@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
     cd ${pkgname}
-    install -Dm776 opt/${_pkgname}/* -g wheel -o ${USER} -t "${pkgdir}/opt/${_pkgname}"
+    install -Dm775 opt/${_pkgname}/* -g wheel -o ${USER} -t "${pkgdir}/opt/${_pkgname}"
     install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
