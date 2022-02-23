@@ -15,6 +15,7 @@ pkgbase = curl-impersonate-chrome
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
+	makedepends = patch
 	depends = brotli
 	depends = nss
 	provides = curl-impersonate-chrome
