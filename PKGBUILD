@@ -1,4 +1,5 @@
-# Maintainer: Lance Chen <cyen0312@gmail.com>
+# Maintainer: Sebastian LaVine <mail@smlavine.com>
+# Contributor: Lance Chen <cyen0312@gmail.com>
 
 pkgname=jo
 pkgver=1.4
@@ -9,7 +10,6 @@ url="https://github.com/jpmens/jo"
 license=('GPL2')
 source=("https://github.com/jpmens/jo/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('24c64d2eb863900947f58f32b502c95fec8f086105fd31151b91f54b7b5256a2')
-validpgpkeys=()
 
 build() {
 	cd "$pkgname-$pkgver"
