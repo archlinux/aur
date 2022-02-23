@@ -2,15 +2,15 @@
 # Contributor: epitron <chris@ill-logic.com>
 
 pkgname=gitless
-pkgver=0.8.8.r766.g5881d92
-_tag=5881d92
+pkgver=0.8.8.r773.g07661cc
+_tag=07661cc
 pkgrel=1
 pkgdesc="A scientifically proven easier-to-use git interface"
 arch=("any")
 url="https://github.com/goldstar611/gitless"
 license=("MIT")
 depends=('python' 'git' 'python-pygit2>=1.4.0' 'python-setuptools' 'python-argcomplete')
-source=("git+https://github.com/goldstar611/gitless#tag=$_tag")
+source=("git+https://github.com/goldstar611/gitless#commit=$_tag")
 sha256sums=('SKIP')
 
 pkgver() {
