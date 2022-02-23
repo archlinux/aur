@@ -4,13 +4,13 @@
 pkgname=go-task-bin
 _pkgname=go-task
 pkgver=3.10.0
-pkgrel=1
-pkgdesc="Task runner & Make alternative (Installs as go-task to avoid conflict with taskwarrior)"
+pkgrel=2
+pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/go-task/task"
 license=('MIT')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "gotask-taskfile-bin")
 replaces=('gotask-taskfile-bin')
 
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v${pkgver}/task_linux_amd64.tar.gz")
