@@ -1,0 +1,27 @@
+From e5c5d88f95b0fe4145c9ed346b8ca98a613d7cfe Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Tue, 18 Jan 2022 16:19:32 +0000
+Subject: [PATCH] meson: drop unused argument for i18n.merge_file()
+
+Ignored in Meson < 0.60.0, deprecated since 0.60.1 and fatal since 0.61.0.
+
+data/meson.build:3:0: ERROR: Function does not take positional arguments.
+---
+ data/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index b3c7674..2a0f42c 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -1,7 +1,6 @@
+ desktop_conf = configuration_data()
+ desktop_conf.set('APP_ID', app_id)
+ desktop_file = i18n.merge_file(
+-  'desktop',
+   input: configure_file(
+     input: 'org.gnome.Solanum.desktop.in.in',
+     output: 'org.gnome.Solanum.desktop.in',
+-- 
+GitLab
+
