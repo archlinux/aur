@@ -9,7 +9,7 @@ url="https://github.com/lwthiker/curl-impersonate"
 license=('MIT')
 arch=('x86_64')
 md5sums=('SKIP')
-makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool)
+makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(brotli nss)
 provides=(curl-impersonate-chrome)
 
