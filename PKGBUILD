@@ -5,35 +5,36 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.10.beta1.r0.g69e3a6c8
+pkgver=0.5.10.beta1.r123.g1b08d2fb
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'gtk3'
-         'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr'
-         'python-pillow' 'python-requests' 'gnome-desktop' 'webkit2gtk'
-         'mesa-utils' 'python-dbus' 'python-distro' 'python-magic' 'python-lxml')
+depends=('dbus-python' 'cabextract' 'curl' 'glib2' 'gtk3' 'mesa-utils' 'p7zip'
+         'psmisc' 'python-distro' 'python-evdev' 'python-gobject' 'python-lxml'
+         'python-magic' 'python-pillow' 'python-requests' 'python-yaml' 'unzip'
+         'webkit2gtk' 'xorg-xrandr')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 optdepends=(
+  'gamemode: Allows games to request a temporary set of optimisations'
+  'gamescope: Draw the game window isolated from your desktop'
+  'gnome-desktop: Get display and resolution using GnomeDesktop'
+  'gvfs: GVFS backend'
+  'innoextract: Extract Inno Setup installers'
+  'lib32-gamemode: Allows games to request a temporary set of optimisations'
+  'lib32-glibc: for 32bit games support'
+  "lib32-mangohud: Display the games' FPS + other information"
+  'lib32-vkd3d: Vulkan 3D support'
+  'lib32-vulkan-icd-loader: Vulkan support'
+  'linux-steam-integration: start Steam with LSI'
+  "mangohud: Display the games' FPS + other information"
+  'vkd3d: Vulkan 3D support'
+  'vulkan-icd-loader: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
   'winetricks: use system winetricks'
-  'vulkan-icd-loader: Vulkan support'
-  'lib32-vulkan-icd-loader: Vulkan support'
-  'vkd3d: Vulkan 3D support'
-  'lib32-vkd3d: Vulkan 3D support'
-  'gvfs: GVFS backend'
-  'lib32-glibc: for 32bit games support'
-  'gamemode: Allows games to request a temporary set of optimisations'
-  'lib32-gamemode: Allows games to request a temporary set of optimisations'
-  "mangohud: Display the games' FPS + other information"
-  "lib32-mangohud: Display the games' FPS + other information"
-  'innoextract: Extract Inno Setup installers'
-  'xorg-xgamma: Restore gamma on game exit'
-  'gamescope: draw the game window isolated from your desktop'
-  'linux-steam-integration: start Steam with LSI')
+  'xorg-xgamma: Restore gamma on game exit')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/lutris/lutris.git')
