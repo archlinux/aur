@@ -4,7 +4,7 @@
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.107.r7.g1d29e1df
+pkgver=2.4.110.r27.g83763622
 pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
           
 pkgver() {
     cd libdrm
-    git describe --long --abbrev=8 | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=8 | sed 's/^libdrm-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
