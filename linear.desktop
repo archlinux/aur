@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Linear
+Comment=Linear - The issue tracking tool you'll enjoy using
+Exec=linear-desktop
+Icon=/usr/share/pixmaps/linear-desktop.png
+Terminal=false
+Categories=Linear;Productivity;Planning; 

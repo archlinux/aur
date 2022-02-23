@@ -1,0 +1,16 @@
+pkgbase = linear-nativefier
+	pkgdesc = linear wrapped as a desktop application through Nativefier
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://linear.app
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs-nativefier
+	makedepends = nodejs
+	source = linearicon.png
+	source = linear.desktop
+	sha256sums = 794a8e54589c5e97e87740ad7a8db8d2ad167c8bfaa032c8ee774ab3098683a2
+	sha256sums = a42995f14c1d028624f66e5274e8a428a73176fd36666ba5554a9445f6ba17a6
+
+pkgname = linear-nativefier
