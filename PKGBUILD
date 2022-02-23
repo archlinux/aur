@@ -1,4 +1,4 @@
-# Maintainer: Namkhai B. <echo bmFta2hhaS5uM0Bwcm90b25tYWlsLmNvbQo= | base64 -d>
+# Maintainer: Namkhai B. <echo hc.9mobkrof@em | rev>
 # Contributor:   Daniel Menelkir <menelkir@itroll.org>
 
 pkgname=ananicy-cpp-runit
