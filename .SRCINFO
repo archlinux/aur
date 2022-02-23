@@ -1,7 +1,7 @@
 pkgbase = python-dataproperty
 	pkgdesc = Extract properties from data
 	pkgver = 0.54.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/thombashi/DataProperty
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-dataproperty
 	checkdepends = python-pytz
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-docutils
 	makedepends = python-pygments

@@ -4,7 +4,7 @@
 
 pkgname=python-dataproperty
 pkgver=0.54.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Extract properties from data'
 arch=('any')
 url='https://github.com/thombashi/DataProperty'
@@ -13,7 +13,7 @@ depends=('python-mbstrdecoder' 'python-typepy')
 makedepends=(
   'python-setuptools'
   'python-build'
-  'python-install'
+  'python-installer'
   'python-wheel'
   'python-docutils'
   'python-pygments')
@@ -30,7 +30,7 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
   cd "DataProperty-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --no-isolation
   rst2man README.rst "$pkgname.7"
 }
 
@@ -42,7 +42,7 @@ check() {
 package() {
   export PYTHONHASHSEED=0
   cd "DataProperty-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 "$pkgname.7" -t "$pkgdir/usr/share/man/man7/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
