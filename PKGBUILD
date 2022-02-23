@@ -133,12 +133,12 @@ else
   pkgbase=linux-cachyos-rt
 fi
 _major=5.16
-_minor=4
+_minor=11
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-#_stable=${_major}.${_minor}
-_stable=${_major}
+_stable=${_major}.${_minor}
+#_stable=${_major}
 _stablerc=${_major}-${_rcver}
 _srcname=linux-${_stable}
 #_srcname=linux-${_major}
@@ -149,12 +149,9 @@ arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+makedepends=('bc' 'kmod' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'xmlto' 'git' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
 if [ -n "$_use_llvm_lto" ]; then
   depends=(clang llvm lld python)
-fi
-if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/5.16"
@@ -702,7 +699,7 @@ for _p in "${pkgname[@]}"; do
 done
 
 
-md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
+md5sums=('4a6796ff9e020abb3666d40775ab4867'
          'd67b2835b28bc538b42056585937e846'
          '6ecf0e31a09b784007c1ed4167ba66bc'
          '3cbc8878b3125172907140b12b977715'
@@ -717,8 +714,8 @@ md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
          '80920e501b9b87bfe587edff445e6efe'
          'bf010dff1d7a48191d491eba2dde1227'
          'dc8c93fde53b0eaf919fa0b663aa30fe'
-         '05a2a8f5a631a12e6a34d244734acfc5'
-         'b8de60147525240358a5aea6d809f0ed'
+         '587f3eb20dd4186e1cb76c8559e47ba3'
+         'cb2d292dfab5de8f0424e2a9023b447c'
          'd2a8951a9292e5c397b8cdd50b61a92b'
          'a05b47e1970509a27f36501534751a9b'
          'aa919239e3d1475693ce024e20ecaf80'
