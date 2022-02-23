@@ -3,7 +3,7 @@
 
 pkgname=vboot-utils
 pkgdesc='Chromium OS verified boot utilities'
-pkgver=99.14469
+pkgver=100.14526
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 arch=(i686 x86_64)
