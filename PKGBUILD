@@ -15,6 +15,7 @@ provides=(curl-impersonate-chrome)
 
 BORING_SSL_COMMIT=3a667d10e94186fd503966f5638e134fe9fb4080
 BORING_SSL_URL="https://github.com/google/boringssl/archive/${BORING_SSL_COMMIT}.zip"
+BORING_SSL_DIR="boringssl-${BORING_SSL_COMMIT}"
 NGHTTP2_VERSION=nghttp2-1.46.0
 NGHTTP2_URL=https://github.com/nghttp2/nghttp2/releases/download/v1.46.0/nghttp2-1.46.0.tar.bz2
 CURL_VERSION=curl-7.81.0
@@ -41,15 +42,15 @@ pkgver() {
 
 build_boringssl () {
   cd ${srcdir}
-  cd boringssl
+  cd ${BORING_SSL_DIR}
   mkdir -p build && cd build
   cmake -DCMAKE_POSITION_INDEPENDENT_CODE=on -GNinja ..
   ninja
   cd ${srcdir}
-  mkdir -p boringssl/build/lib
-  ln -sf ../crypto/libcrypto.a boringssl/build/lib/libcrypto.a
-  ln -sf ../ssl/libssl.a boringssl/build/lib/libssl.a
-  cp -R boringssl/include boringssl/build
+  mkdir -p ${BORING_SSL_DIR}/build/lib
+  ln -sf ../crypto/libcrypto.a ${BORING_SSL_DIR}/build/lib/libcrypto.a
+  ln -sf ../ssl/libssl.a ${BORING_SSL_DIR}/build/lib/libssl.a
+  cp -R ${BORING_SSL_DIR}/include ${BORING_SSL_DIR}/build
 }
 
 patch_nghttp2 () {
@@ -79,7 +80,7 @@ patch_curl () {
 build_curl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-openssl=${srcdir}/boringssl/build --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/boringssl/build -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
   make
   mkdir -p out
   cp src/curl out/curl-impersonate
