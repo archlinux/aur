@@ -4,7 +4,7 @@
 pkgbase=ogre-1.9
 pkgname=('ogre-1.9' 'ogre-docs-1.9')
 pkgver=1.9.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Scene-oriented, flexible 3D engine written in C++'
 arch=('x86_64')
 url='https://www.ogre3d.org'
@@ -13,7 +13,6 @@ depends=('freeimage' 'freetype2' 'libxaw' 'libxrandr' 'openexr'
          'nvidia-cg-toolkit' 'zziplib' 'sdl2' 'glu' 'tinyxml'
          'boost-libs')
 makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'python' 'swig' 'systemd')
-provides=('ogre=1.9' 'ogre-docs=1.9')
 source=("https://github.com/OGRECave/ogre/archive/v${pkgver}.tar.gz"
         "sample-comparison-operator-const-args.patch::https://github.com/OGRECave/ogre/commit/4a430a4846d1ea68f669de6b61a72934ac153f7b.patch"
         "sample-comparison-operator-const-callable.patch::https://github.com/OGRECave/ogre/commit/9b1c536b85448ea971822081c7e3c775dbb5cc47.patch"
@@ -48,10 +47,11 @@ build() {
 }
 
 package_ogre-1.9() {
+  provides=('ogre=1.9')
+  conflicts=('ogre>=1.0')
   optdepends=('cppunit: unit testing'
               'python: python bindings'
               'ogre-docs: documentation')
-
   cd ogre-${pkgver}/build
 
   make DESTDIR=${pkgdir} install
@@ -63,6 +63,8 @@ package_ogre-1.9() {
 }
 
 package_ogre-docs-1.9() {
+  provides=('ogre-docs=1.9')
+  conflicts=('ogre-docs>=1.0')
   pkgdesc="Documentation for ogre"
   depends=()
 

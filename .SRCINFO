@@ -1,7 +1,7 @@
 pkgbase = ogre-1.9
 	pkgdesc = Scene-oriented, flexible 3D engine written in C++
 	pkgver = 1.9.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.ogre3d.org
 	arch = x86_64
 	license = custom:MIT
@@ -24,8 +24,6 @@ pkgbase = ogre-1.9
 	depends = glu
 	depends = tinyxml
 	depends = boost-libs
-	provides = ogre=1.9
-	provides = ogre-docs=1.9
 	source = https://github.com/OGRECave/ogre/archive/v1.9.1.tar.gz
 	source = sample-comparison-operator-const-args.patch::https://github.com/OGRECave/ogre/commit/4a430a4846d1ea68f669de6b61a72934ac153f7b.patch
 	source = sample-comparison-operator-const-callable.patch::https://github.com/OGRECave/ogre/commit/9b1c536b85448ea971822081c7e3c775dbb5cc47.patch
@@ -37,8 +35,11 @@ pkgname = ogre-1.9
 	optdepends = cppunit: unit testing
 	optdepends = python: python bindings
 	optdepends = ogre-docs: documentation
+	provides = ogre=1.9
+	conflicts = ogre>=1.0
 
 pkgname = ogre-docs-1.9
 	pkgdesc = Documentation for ogre
 	depends = 
-
+	provides = ogre-docs=1.9
+	conflicts = ogre-docs>=1.0
