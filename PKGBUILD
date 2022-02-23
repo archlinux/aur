@@ -5,7 +5,7 @@ pkgname=('avisynthplus-git'
          'avisynthplus-docs-git'
          )
 pkgver=v3.7.1a.28.g99ac18bc
-pkgrel=1
+pkgrel=2
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
 url='http://avs-plus.net'
@@ -32,7 +32,7 @@ build() {
   cmake -S avisynthplus -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_CUDA=ON
+    -DENABLE_CUDA=OFF
 
   cmake --build build
 
