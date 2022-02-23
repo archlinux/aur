@@ -2,7 +2,7 @@
 # PRs/Issues: https://github.com/bbrks/aur-sync_gateway-community-bin
 
 pkgname=sync_gateway-community-bin
-pkgver=2.8.3
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Manages access and synchronization between Couchbase Lite and Couchbase Server - Community Edition (CE)"
 url="https://github.com/couchbase/sync_gateway"
@@ -17,7 +17,7 @@ source=(
 	'sync_gateway.service'
 )
 
-sha256sums=('f60ad9ad26aa0538fd883b78a5884e6a3858296140df1406a1dbee130acde2da'
+sha256sums=('5a412a53a68c139dfd4a81a380ffe9df1d9e9eb9009bb23c17fb677991a3301e'
             '4bc3c5843b2b6e31d954a53d43c9ecdce77faf3942b5da4ffdaba846f02dd381')
 
 prepare () {
@@ -27,7 +27,7 @@ prepare () {
 
 package() {
 	install -Dm755 "${srcdir}/opt/couchbase-sync-gateway/bin/sync_gateway" "${pkgdir}/usr/bin/sync_gateway"
-	install -Dm644 "${srcdir}/opt/couchbase-sync-gateway/examples/serviceconfig.json" "${pkgdir}/etc/sync_gateway.json"
+	install -Dm644 "${srcdir}/opt/couchbase-sync-gateway/examples/startup_config/basic.json" "${pkgdir}/etc/sync_gateway.json"
 	install -Dm644 "${srcdir}/sync_gateway.service" "${pkgdir}/usr/lib/systemd/system/sync_gateway.service"
 	install -Dm644 "${srcdir}/opt/couchbase-sync-gateway/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
