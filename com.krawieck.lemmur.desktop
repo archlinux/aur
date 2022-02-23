@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Lemmur
+GenericName=Lemmy Mobile Client
+Comment=A mobile client for lemmy
+Keywords=Lemmy;Lemmur;
+Exec=lemmur
+Type=Application
+Icon=com.krawieck.lemmur
+DBusActivatable=true
+StartupWMClass=lemmur
