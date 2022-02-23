@@ -6,7 +6,7 @@
 
 pkgname=python-typepy
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Variable runtime type checker/validator/converter'
 arch=('any')
 url='https://github.com/thombashi/typepy'
@@ -16,7 +16,7 @@ makedepends=(
   'git'
   'python-setuptools'
   'python-build'
-  'python-install'
+  'python-installer'
   'python-wheel'
   'python-sphinx'
   'python-sphinx_rtd_theme')
@@ -28,20 +28,21 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
 
 build() {
   cd "$pkgname"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  export PYTHONPATH="$PWD"
+  python -m build --wheel --no-isolation
   cd docs
-  PYTHONPATH=../ make man
+  make man
 }
 
 check() {
   cd "$pkgname"
-  PYTHONPATH=./ pytest -x
+  pytest -x
 }
 
 package() {
   export PYTHONHASHSEED=0
   cd "$pkgname"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 docs/_build/man/typepy.1 -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
