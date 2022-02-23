@@ -2,7 +2,7 @@
 
 pkgname=lua-sdl2-git
 pkgver=2.0.5.6.0
-pkgrel=2
+pkgrel=3
 _lua=5.4
 pkgdesc='Pure C binding of SDL 2.0 for Lua, master branch'
 arch=(x86_64)
@@ -18,8 +18,8 @@ sha256sums=('SKIP')
 build() {
   mkdir -p build
   cd build
-  cmake ../${pkgname/-} \
-    -DWITH_LUAVER=${_lua/./} \
+  cmake ../${pkgname/-sdl2-git/sdl2} \
+    -DWITH_LUAVER=${_lua} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_DOCSDIR="share/doc/$pkgname" \
     -G Ninja
