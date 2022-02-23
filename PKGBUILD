@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=r34.b1081c5
+pkgver=r36.767cf57
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -83,11 +83,11 @@ build_curl () {
   make
   mkdir -p out
   cp src/curl out/curl-impersonate
+  cp ${srcdir}/${browser_dir}/curl_* out/
   chmod +x out/*
 }
 
 prepare () {
-  mv boringssl-${BORING_SSL_COMMIT} boringssl
   patch_nghttp2
   patch_curl
 }
@@ -99,6 +99,8 @@ build () {
 }
 
 package () {
-  cd ${CURL_VERSION}
-  install -Dm755 out/curl-impersonate "${pkgdir}/usr/bin/${pkgname}"
+  cd ${CURL_VERSION}/out
+  sed -i "s/\$dir\/curl-impersonate/${pkgname}/g" curl_*
+  install -Dm755 curl-impersonate "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 curl_* "${pkgdir}/usr/bin/"
 }
