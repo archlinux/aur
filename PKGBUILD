@@ -1,28 +1,28 @@
-# Maintainer: Jon Eyolfson <jon@eyl.io>
+# Maintainer: louson - Louis Rannou <louis dot rannou at gresille dot org>
+# Contributor: Jon Eyolfson <jon@eyl.io>
 pkgname=emacs-rust-mode
-pkgver=r427
-pkgrel=1
+pkgver=1.0.4
+pkgrel=2
 pkgdesc="A major Emacs mode for editing Rust source code"
 arch=('any')
 url="https://github.com/rust-lang/rust-mode"
+license=('Apache')
 depends=('emacs')
-makedepends=('git')
-license=('MIT')
-source=("$pkgname"::'git://github.com/rust-lang/rust-mode.git')
-sha256sums=(SKIP)
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s" "$(git rev-list --count HEAD)"
-}
-
-build() {
-  cd "$srcdir/$pkgname"
-  emacs -batch -f batch-byte-compile rust-mode.el
-}
+install="${pkgname}.install"
+source=("https://github.com/rust-lang/rust-mode/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('e8eca03382d01a73bc00b29292d99ee2597023e0e97273e1b1969fb44f140f2e')
 
 package() {
-  install -d $pkgdir/usr/share/emacs/site-lisp
-  cd "$srcdir/$pkgname"
-  cp rust-mode.{el,elc} $pkgdir/usr/share/emacs/site-lisp
+  cd "$srcdir/rust-mode-${pkgver}"
+  for file in rust-mode.el rust-utils.el \
+	      rust-cargo.el rust-compile.el rust-playpen.el rust-rustfmt.el
+  do
+      install -Dm644 "${file}" "${pkgdir}"/usr/share/emacs/site-lisp/rust-mode/"${file}"
+  done
+}
+
+check () {
+  cd "$srcdir/rust-mode-${pkgver}"
+  make test
 }
