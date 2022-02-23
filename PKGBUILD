@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
 pkgver=r524.gbb50f635
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
@@ -27,6 +27,8 @@ package() {
   mv "$pkgdir"/usr/bin/amptest{,.plc}
   mv "$pkgdir"/usr/bin/pev{,.plc}
   install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  mkdir -p "$pkgdir"/usr/share/doc/$pkgname
+  cp -av docbook "$pkgdir"/usr/share/doc/$pkgname/docbook
 }
 
 # vim: ts=2:sw=2:et:
