@@ -1,49 +1,52 @@
---- a/bin/apalache-mc
-+++ b/bin/apalache-mc
-@@ -3,33 +3,21 @@
- # Run the APALACHE model checker
+--- a/apalache-mc
++++ b/apalache-mc
+@@ -6,30 +6,23 @@
+ # packaged produced.
  #
- # Igor Konnov, 2018-2019
+ # Igor Konnov, Shon Feder 2018-2022
 +#
 +# Patch for system install
 +# Ranadeep B
-+
-+JAR_DIR="/opt/apalache"
-+
-+echo "# Tool home: system"
-+echo "# Package:   $JAR_DIR"
  
--DIR=`dirname $0`
--DIR=`cd "$DIR/.."; pwd`
-+JAR=`find "$JAR_DIR" -name "apalache-pkg-*-full.jar"`
+ # See https://sipb.mit.edu/doc/safe-shell/
+ set -euf -o pipefail
  
--# try to find either a release jar, or a local build
--DISTS=`mktemp /tmp/apalache-dists.XXXX`
--find >$DISTS "$DIR" "$DIR/target/scala-2.12" \
--    -maxdepth 1 -name "apalache-pkg-*-full.jar"
--
--case `cat $DISTS | wc -l | sed 's/[[:space:]]*//g'` in
--    1)
--        JAR=`head -n 1 $DISTS`
--        ;;
--    0) 
--        echo "ERROR: Distribution jar not found. Did you run make package?"
--        exit 1
--        ;;
--    *) 
--        echo "Found multiple apalache packages:"
--        cat $DISTS
--        echo ""
--        echo "To resolve this, run:"
--        echo "  make clean package"
--        exit 1
--        ;;
--esac
--rm -f "$DISTS"
-+if [ -z "$JAR" ]; then
-+    echo "ERROR: Distribution jar not found. Is the jar file present in \"$JAR_DIR\"?"
-+    exit 1
-+fi
+-# The directory where the script is run from
+-# See https://stackoverflow.com/a/246128/1187277
+-SOURCE=${BASH_SOURCE[0]}
+-while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+-  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+-  SOURCE=$(readlink "$SOURCE")
+-  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+-done
+-DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
++DIR="/usr/share/java/apalache"
  
+-APALACHE_JAR=${APALACHE_JAR:-"$DIR/../lib/apalache.jar"}
++APALACHE_JAR=${APALACHE_JAR:-"${DIR}/apalache.jar"}
  JVM_ARGS=${JVM_ARGS:-""}
+ TLA_PATH=${TLA_PATH:-""}
+ 
+ if ! test -f "$APALACHE_JAR"
+ then
+-    echo "ERROR: No file found at ${APALACHE_JAR}"
+-    echo "       Ensure you have run 'make package' and are running the script from the"
+-    echo "       distribution pacakge, or else set APALACHE_JAR to point to your custom"
+-    echo "       build jar."
++    echo "ERROR: Distribution jar not found. Is the jar file present in \"$DIR\"?"
++    exit 1
+ fi
+ 
+ # Check of the heap size is already set
+@@ -48,9 +41,9 @@
+ # Check whether the CLI args contains the debug flag
+ if [[ "$*" =~ '--debug' ]]
+ then
+-    echo "# Tool home: $DIR"
++    echo "# Tool home: system"
+     echo "# Package:   $APALACHE_JAR"
+-    echo "# JVM args: $JVM_ARGS"
++    echo "# JVM args:  $JVM_ARGS"
+     echo "#"
+ fi
  
