@@ -8,9 +8,9 @@
 _base=requests-cache
 pkgname=python-${_base}
 pkgdesc="Transparent persistent cache for http://python-requests.org library"
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
-arch=('any')
+arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
 depends=(python-requests python-appdirs python-cattrs python-url-normalize)
@@ -25,10 +25,11 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-ujson: for JSON serializer for improved performance')
 checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('449dcd5924388cd8a02114e2588dfe50f0289be07ec3eaa06388298c959e69e891e51793a18ba2766d7a0ff866355e3d4950ebcd04b2349a146d342e11eb41bd')
+sha512sums=('d413fbed156bd3fca48db8b153b01a883ee72d62f6e8982d490a5378dc188c19d0b3af5e37e6f47d19ed0ba11b3c0e01489720d56df12afcf1b47088e1541221')
 
 build() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
   # from incorrectly using a parent git checkout info.
   # https://github.com/pypa/build/issues/384#issuecomment-947675975
@@ -36,13 +37,12 @@ build() {
 }
 
 check() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
   python -m pytest --ignore=tests/integration
 }
 
 package() {
-  cd "${_base}-${pkgver}"
-  export PYTHONHASHSEED=0
+  cd ${_base}-${pkgver}
   python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
