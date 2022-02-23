@@ -63,8 +63,9 @@ patch_nghttp2 () {
 build_nghttp2 () {
   cd ${srcdir}
   cd ${NGHTTP2_VERSION}
-  ./configure --prefix $(realpath .)/build/
+  ./configure --prefix ${srcdir}/${NGHTTP2_VERSION}/build
   make
+  make install
 }
 
 patch_curl () {
