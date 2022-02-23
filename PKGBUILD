@@ -1,6 +1,6 @@
 # Maintainer: Jake Stanger <mail@jstanger.dev>
 pkgname=mpd-discord-rpc-git
-pkgver=v1.3.0.r1.ca2d57b
+pkgver=v1.4.0.r1.8c2272d
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
