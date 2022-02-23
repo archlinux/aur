@@ -1,12 +1,12 @@
 pkgbase = wipeclean
 	pkgdesc = clean the console in a funny way
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JeanJouliaCode/wipeClean
 	arch = any
 	license = ISC
+	makedepends = npm
 	depends = nodejs
-	depends = npm
 	noextract = wipeclean-1.0.4.tgz
 	source = https://registry.npmjs.org/wipeclean/-/wipeclean-1.0.4.tgz
 	sha1sums = 3ae7b6682bda46c929efaebbb7fc58397250f09c

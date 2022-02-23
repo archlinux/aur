@@ -1,14 +1,15 @@
-# Maintainer: Finley Vickers <fvickers05@gmail.com>
+# Maintainer: Bango88 <fvickers05@gmail.com>
 _npmname=wipeclean
 _npmver=1.0.4
 pkgname=wipeclean
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="clean the console in a funny way"
 arch=(any)
 url="https://github.com/JeanJouliaCode/wipeClean"
 license=(ISC)
-depends=('nodejs' 'npm')
+depends=('nodejs')
+makedepends=('npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
