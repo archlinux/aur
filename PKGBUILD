@@ -2,7 +2,7 @@
 pkgname=metacall-git
 pkgver=0.5.7
 pkgrel=1
-pkgdesc='A library for providing inter-language foreign function interface calls'
+pkgdesc='A CLI for a library providing inter-language foreign function interface calls'
 arch=('x86_64')
 url='https://github.com/metacall/core'
 license=('Apache')
