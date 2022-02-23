@@ -1,9 +1,9 @@
-# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Maintainer: Kyle Sferrazza <aur@kylesferrazza.com>
 # Contributor: John Jenkins twodopeshaggy@gmail.com
 
 _npmname=speed-test
 pkgname=speed-test
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Test your internet connection speed and ping using speedtest.net from the CLI"
 arch=(any)
