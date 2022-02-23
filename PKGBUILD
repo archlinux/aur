@@ -1,7 +1,7 @@
 # Maintainer: Michael Gebetsroither <m.gebetsr@gmail.com>
 pkgname=regclient
 pkgver=0.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/regclient/regclient'
@@ -14,24 +14,27 @@ _bins=('regbot' 'regctl' 'regsync')
 build() {
   local _commit
   _commit="$(bsdcat "$pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
-  cd "$pkgname-$pkgver"
+  mkdir build/ && cd build/
   # we want "clean" go binaries
   export CGO_ENABLED=0
 
   for i in ${_bins[@]}; do
-    go build -ldflags "-s -w -extldflags -static -X github.com/regclient/regclient/cmd/$i/version.GitCommit=$_commit" \
-      -tags nolegacy -trimpath -o build ./cmd/$i
+    (
+      cd "../$pkgname-$pkgver"
+      go build -ldflags "-s -w -extldflags -static -X github.com/regclient/regclient/cmd/$i/version.GitCommit=$_commit" \
+        -tags nolegacy -trimpath -o ../build ./cmd/$i
+    )
 
-    ./build/$i completion bash >$i.bash
-    ./build/$i completion zsh >$i.zsh
+    ./$i completion bash >$i.bash
+    ./$i completion zsh >$i.zsh
   done
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd build/
   for i in ${_bins[@]}; do
-    install -Dm755 "build/$i" -t "$pkgdir/usr/bin"
+    install -Dm755 "$i" -t   "$pkgdir/usr/bin"
     install -Dm644 "$i.bash" "$pkgdir/usr/share/bash-completion/completions/$i"
-    install -Dm644 "$i.zsh" "$pkgdir/usr/share/zsh/site-functions/_$i"
+    install -Dm644 "$i.zsh"  "$pkgdir/usr/share/zsh/site-functions/_$i"
   done
 }
