@@ -1,0 +1,14 @@
+pkgbase = metacall-git
+	pkgdesc = A library for providing inter-language foreign function interface calls
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://github.com/metacall/core
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	provides = metacall
+	source = metacall-git::git+https://github.com/metacall/core
+	sha256sums = SKIP
+
+pkgname = metacall-git
