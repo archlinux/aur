@@ -1,6 +1,6 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
 pkgname=aurutils-git
-pkgver=3.2.0.r15.g5a7b21a
+pkgver=6.4.r12.g5fbc9d1
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
@@ -16,7 +16,8 @@ makedepends=('git')
 optdepends=('bash-completion: bash completion'
             'zsh: zsh completion'
             'devtools: aur-chroot'
-            'vifm: default pager')
+            'vifm: default pager'
+            'ninja: aur-sync ninja support')
 
 pkgver() {
     cd aurutils

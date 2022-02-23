@@ -1,6 +1,6 @@
 pkgbase = aurutils-git
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 3.2.0.r15.g5a7b21a
+	pkgver = 6.4.r12.g5fbc9d1
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	changelog = aurutils.changelog
@@ -16,7 +16,8 @@ pkgbase = aurutils-git
 	optdepends = zsh: zsh completion
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: default pager
-	provides = aurutils=3.2.0
+	optdepends = ninja: aur-sync ninja support
+	provides = aurutils=6.4
 	conflicts = aurutils
 	source = git+https://github.com/AladW/aurutils
 	sha256sums = SKIP
