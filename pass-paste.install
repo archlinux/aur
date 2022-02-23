@@ -1,0 +1,13 @@
+post_install() {
+  echo -e "*\n* Hint: You may need to ensure that the completion file is 'sourced' at shell invocation\n*"
+}
+
+post_upgrade() {
+  # Well, I agree that, if every package would print such hint, it would be annoying.
+  # But 1) noobs like me didn't know that feature 2) I tried some packages, but without success
+  # Let's promote this cool feature :-)
+
+  [ $1 == $2 ] && return                 # Nothing todo, looks like reinstall
+  [ "${1%-*}" == "${2%-*}" ] && return   # Still Nothing todo, looks like pkg fix only
+  echo -e "*\n* TIP! Look at the release notes what may new or is fixed: pacman -Qc pass-paste\n*"
+}

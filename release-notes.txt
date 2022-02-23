@@ -1,0 +1,17 @@
+Release notes to pass-paste version v0.8, Feb 2022
+====================================================
+Hello World!
+
+We start with 0.8 because it's feature complete, except the flaws noted at
+TODO/BUGS, See online https://github.com/loh-tar/pass-paste
+
+Version 1.0 should support Wayland and at least zsh shell completion
+
+
+Notes to patch version v0.8.1, Feb 2022
+-----------------------------------------
+a58cb89 - Suppress rare error message when bring window to front
+================================================================================
+No previous release
+--------------------------------------------------------------------------------
+The full changelog is here: https://github.com/loh-tar/pass-paste/commits/master

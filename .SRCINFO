@@ -1,0 +1,18 @@
+pkgbase = pass-paste
+	pkgdesc = An extension for pass: paste passwords by mouse without clipboard.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/loh-tar/pass-paste
+	install = pass-paste.install
+	changelog = release-notes.txt
+	arch = any
+	license = GPL
+	depends = pass
+	depends = xorg-server
+	depends = xdotool
+	depends = xorg-xwininfo
+	depends = xorg-xprop
+	source = pass-paste-0.8.1.tar.gz::https://github.com/loh-tar/pass-paste/archive/v0.8.1.tar.gz
+	sha256sums = 200835f41514b9ed730d47266a2a70ffb7c2d35f1f1a8c52293526f311fdf731
+
+pkgname = pass-paste
