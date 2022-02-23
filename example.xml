@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ices:Configuration xmlns:ices="http://www.icecast.org/projects/ices">
+ <Execution>
+  <Background>0</Background>
+  <Verbose>0</Verbose>
+  <BaseDirectory>/tmp/ices0/example</BaseDirectory>
+  <CueFile>0</CueFile>
+ </Execution>
+
+ <Playlist>
+  <File>/path/to/playlist.txt</File>
+  <Randomize>1</Randomize>
+  <Type>builtin</Type>
+  <Module>ices</Module>
+  <CrossMix>0</CrossMix>
+  <Crossfade>2</Crossfade>
+  <MinCrossfade>30</MinCrossfade>
+ </Playlist>
+
+ <Stream>
+  <Server>
+   <Hostname>127.0.0.1</Hostname>
+   <Port>4040</Port>
+   <Username>source</Username>
+   <Password>XXXXXX</Password>
+   <Protocol>http</Protocol>
+  </Server>
+  <Mountpoint>/example</Mountpoint>
+  <Name>Example</Name>
+  <Genre>Example</Genre>
+  <Description>Example</Description>
+  <URL>https://example.org/radio/example</URL>
+  <Public>0</Public>
+  <Bitrate>320</Bitrate>
+  <Reencode>0</Reencode>
+  <Samplerate>44100</Samplerate>
+  <Channels>2</Channels>
+ </Stream>
+</ices:Configuration>

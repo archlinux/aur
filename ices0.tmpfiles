@@ -1,0 +1,2 @@
+d /etc/ices0 0750 root ices0
+d /var/lib/ices0 0700 ices0 ices0

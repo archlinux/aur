@@ -1,0 +1,12 @@
+[Unit]
+Description=Ices0 %i stream
+After = icecast.service
+
+[Service]
+User=ices0
+Type=simple
+ExecStart=/usr/bin/ices0 -c /etc/ices0/%i.xml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
