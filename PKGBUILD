@@ -1,27 +1,37 @@
 # Maintainer: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
 url="https://github.com/tulir/mautrix-signal"
 license=('AGPLv3')
-depends=('python-aiohttp>=3' 'python-asyncpg>=0.20' 'python-attrs>=19.1' 'python-commonmark>=0.8' 'python-mautrix' 'python-magic>=0.4' 'python-ruamel-yaml>=0.15.35' 'signald>=0.15' 'python-yarl>=1' )
+depends=(
+'python-aiohttp'
+'python-asyncpg'
+'python-attrs'
+'python-commonmark'
+'python-mautrix'
+'python-magic'
+'python-ruamel-yaml'
+'python-yarl' 
+'signald>=0.16' )
 makedepends=('python-setuptools')
 #checkdepends
 optdepends=(
-'python-phonenumbers>=8'
+'python-aiosqlite: Support for SQLite-Database '
+'python-olm>=3: end-to-bridge encryption support'
+'python-phonenumbers: Formatted phone numbers'
 'python-pillow>=4: webp conversion and qr code login'
 'python-prometheus_client>=0.6: metrics upload'
 'python-pycryptodome>=3'
-'python-olm>=3: end-to-bridge encryption support'
 'python-qrcode>=6: qr code login'
 'python-signalstickers-client>=3'
 'python-unpaddedbase64: end-to-bridge encryption support')
 backup=("etc/${pkgname}/config.yaml")
 install="${pkgname}.install"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('68ea168db3d7a99b52f84a9d1d6f96bf914e31a5787b6d4d97923974156a09c4'
+sha256sums=('c409699ae833db52e436a136fddc6d9af1e51e2d631998b0541649147739d38f'
             '87a479c5216fa79dbe20ff776f67f5ab70ad0f9705da4b274cc662003545c4be'
             '3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
@@ -30,6 +40,10 @@ prepare() {
     mv "${srcdir}/signal-${pkgver}" "${srcdir}/${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     touch registration.yaml
+    
+    # Adapt signald paths for convenience
+    sed -i "s|~/.config/signald/avatars|/var/lib/signald/avatars|g" mautrix_signal/example-config.yaml
+    sed -i "s|~/.config/signald/data|/var/lib/signald/data|g" mautrix_signal/example-config.yaml
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
