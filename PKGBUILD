@@ -2,13 +2,13 @@
 
 pkgname=python-deepl
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DeepL language translation API"
 arch=('any')
 url="https://github.com/deeplcom/deepl-python"
 license=('MIT')
 depends=('python-requests')
-makedepends=('git' 'python-poetry-core' 'python-build' 'python-install')
+makedepends=('git' 'python-poetry-core' 'python-build' 'python-installer')
 install=deepl.install
 changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed")
@@ -17,7 +17,7 @@ validpgpkeys=('DBDC63E97C526204335805941FA7A782EC90634E') ## Daniel Jones
 
 build() {
 	cd "$pkgname"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 ## tests require a DeepL API key (paid account)
@@ -25,6 +25,6 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

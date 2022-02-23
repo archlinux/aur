@@ -1,7 +1,7 @@
 pkgbase = python-deepl
 	pkgdesc = DeepL language translation API
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deeplcom/deepl-python
 	install = deepl.install
 	changelog = CHANGELOG.md
@@ -10,7 +10,7 @@ pkgbase = python-deepl
 	makedepends = git
 	makedepends = python-poetry-core
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python-requests
 	source = python-deepl::git+https://github.com/deeplcom/deepl-python#tag=v1.4.1?signed
 	validpgpkeys = DBDC63E97C526204335805941FA7A782EC90634E
