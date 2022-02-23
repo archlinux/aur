@@ -2,12 +2,12 @@
 
 pkgname=tidal-hifi-git
 pkgrel=1
-pkgver=2.7.2.r0.g101fe96
+pkgver=2.7.2.r1.g4fbb598
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine. If the install fails use nvm to temporarily downgrade npm"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
-depends=(libxss nss gtk3)
+depends=(libxss nss gtk3 libxcrypt-compat)
 makedepends=(git)
 provides=(tidal-hifi)
 conflicts=(tidal-hifi)
