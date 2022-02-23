@@ -1,6 +1,6 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.7.r216.g94239f92
+pkgver=v1.7.r292.gf642e68e
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
@@ -72,7 +72,7 @@ build() {
 	  --disable-rtsp-server \
 	  --disable-zfec
 
-  make
+  make clean && make
 }
 
 package() {
