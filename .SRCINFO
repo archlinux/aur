@@ -1,7 +1,7 @@
 pkgbase = mautrix-googlechat
 	pkgdesc = A Matrix-Google Chat puppeting bridge.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mautrix/googlechat
 	install = mautrix-googlechat.install
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = mautrix-googlechat
 	source = mautrix-googlechat-registration
 	source = mautrix-googlechat.service
 	sha256sums = 82c2b3c5acea8a85b0753ccb9c67576b42680f37312832fee537492a9363814e
-	sha256sums = fe7b3a6b600d8ed79f55bd15cb1dab2ff52b06b7a0a33b76057d9d2adfa32249
-	sha256sums = ae59346bae9bc0601714068b236fdbfbab6a9c363fe11207d01acc8a28f1194a
+	sha256sums = f6693ed10a1d76ef94fdb37801514523ea1809cf0ea71e83c44f5832118237f9
+	sha256sums = 2117e24762e2e8731069020720afff3c6024f506cb6c68c9dd7361262fbcb0e3
 
 pkgname = mautrix-googlechat

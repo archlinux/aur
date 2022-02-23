@@ -5,4 +5,4 @@ if [[ $EUID -ne 0  ]]; then
    exit 1
 fi
 
-python -m mautrix_googlechat -c /etc/synapse/mautrix-googlechat/config.yaml -r /etc/synapse/mautrix-googlechat/registration.yaml -g
+python -m mautrix_googlechat -c /etc/mautrix-googlechat/config.yaml -r /etc/mautrix-googlechat/registration.yaml -g

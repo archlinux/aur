@@ -1,8 +1,4 @@
 post_install() {
-  echo "Update the config '/etc/synapse/mautrix-googlechat/config.yaml' to your environment"
-  echo "Generate the appservice registration with the following command"
+  echo "Generate the appservice registration.yaml with the following command"
   echo "  mautrix-googlechat-registration"
-  echo "Register the bridge by makeing the following change to homeserver.yaml"
-  echo "    app_service_config_files:"
-  echo "      - /etc/synapse/mautrix-googlechat/registration.yaml"
 }
