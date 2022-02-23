@@ -4,7 +4,7 @@
 
 pkgname=python-proto-plus
 _name=proto-plus
-pkgver=1.20.0
+pkgver=1.20.3
 pkgrel=1
 pkgdesc='A wrapper around protocol buffers.'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=(
 )
 depends=("python-protobuf")
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('1a0afd0f030a31a1874fb187ba1b8252dbf6456743a45480dcb5669cba3cd48539d4faf5c2c2ed9bc11d0424869b53ac372f9e71059902ed203123a47555ddd8')
+b2sums=('79027b4e81d9bd172264c6c118a9c69633d11474917f3230fe1ac5943bde6aebd1d9cd34fe1c7c48a9e29768540745cbf4948837f0a6186cbfacc1550b446183')
 
 build() {
 	cd "$srcdir/$_name-$pkgver" || exit
