@@ -6,14 +6,11 @@ pkgdesc='A library for providing inter-language foreign function interface calls
 arch=('x86_64')
 url='https://github.com/metacall/core'
 license=('Apache')
-#depends=("dotnet-sdk-bin", "python", "ruby") # runtime deps
 makedepends=('cmake' 'git') # Build deps
-#optdepends=()
+optdepends=('dotnet-sdk-bin', 'python', 'ruby', 'clang', 'jre-openjdk-headless', 'nodejs', 'typescript') # optional runtime deps
 provides=('metacall')
-#conflicts=()
-#replaces=()
 source=(${pkgname}::git+${url})
-sha256sums=('SKIP') #autofill using updpkgsums
+sha256sums=('SKIP')
 
 prepare() {
     echo "Set METACALL_LOADER_language=on in order to build metacall with support of a specific language."
