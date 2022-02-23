@@ -1,0 +1,15 @@
+pkgbase = oc-auxiliary-tools
+	pkgver = 20220190
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = glew
+	makedepends = glfw
+	makedepends = libxcb
+	depends = qt5-base
+	source = https://github.com/ic005k/OCAuxiliaryTools/archive/refs/tags/20220190.tar.gz
+	source = oc-auxiliary-tools.desktop
+	md5sums = 7d174b451f917349d837315b0bc7147b
+	md5sums = 609d3c45ab44be86dc3251346f2240d7
+
+pkgname = oc-auxiliary-tools
