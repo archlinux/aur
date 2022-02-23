@@ -1,7 +1,7 @@
 pkgbase = gitless
 	pkgdesc = A scientifically proven easier-to-use git interface
-	pkgver = 0.8.8.r755.g29cbb1d
-	pkgrel = 2
+	pkgver = 0.8.8.r766.g5881d92
+	pkgrel = 1
 	url = https://github.com/goldstar611/gitless
 	arch = any
 	license = MIT
@@ -10,9 +10,7 @@ pkgbase = gitless
 	depends = python-pygit2>=1.4.0
 	depends = python-setuptools
 	depends = python-argcomplete
-	source = git+https://github.com/goldstar611/gitless#tag=29cbb1d
-	source = 0001-Update-requirements.patch
+	source = git+https://github.com/goldstar611/gitless#tag=5881d92
 	sha256sums = SKIP
-	sha256sums = 9292178088444151044d90ae3b8897d54f93cf7255f21e9d6cb55d1cbe1f238c
 
 pkgname = gitless
