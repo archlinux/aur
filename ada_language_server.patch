@@ -35,16 +35,3 @@ Index: ada_language_server/gnat/lsp_server.gpr
  with "libadalang";
  with "lal_tools.gpr";
  with "ada_libfswatch.gpr";
-Index: ada_language_server/source/ada/lsp-lal_utils.adb
-===================================================================
---- ada_language_server.orig/source/ada/lsp-lal_utils.adb
-+++ ada_language_server/source/ada/lsp-lal_utils.adb
-@@ -1631,7 +1631,7 @@ package body LSP.Lal_Utils is
-             Bytes    => To_Unbounded_String (Output));
- 
-       begin
--         Langkit_Support.Token_Data_Handlers.Initialize (TDH, Symbols);
-+         Langkit_Support.Token_Data_Handlers.Initialize (TDH, Symbols, TDH'Address);
-          Libadalang.Lexer.Extract_Tokens
-            (Input,
-             TDH         => TDH,

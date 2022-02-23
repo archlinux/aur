@@ -1,8 +1,8 @@
 # Maintainer: Tim Lagnese <tim at inept tech>
 
 pkgname=ada_language_server-git
-pkgver=r1391.d219a846
-pkgrel=2
+pkgver=r1393.2dada1b8
+pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
 url='https://github.com/AdaCore/ada_language_server/'
@@ -18,7 +18,7 @@ conflicts=('ada_language_server')
 
 source=('git+https://github.com/AdaCore/ada_language_server.git' 'ada_language_server.patch')
 sha1sums=('SKIP'
-          '097a2d9e6703ef10009c0ab36391de3b44246d23')
+          '9a6abc89eea20f38236471926d068b21b3a333dd')
 
 pkgver() {
     #cd "${srcdir}/${pkgname%-git}"
@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	git apply $srcdir/ada_language_server.patch
+	git apply --reject $srcdir/ada_language_server.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = ada_language_server-git
 	pkgdesc = High performance syntactic and semantic engine for the Ada programming language
-	pkgver = r1391.d219a846
-	pkgrel = 2
+	pkgver = r1393.2dada1b8
+	pkgrel = 1
 	url = https://github.com/AdaCore/ada_language_server/
 	arch = x86_64
 	license = GPL3
@@ -19,6 +19,6 @@ pkgbase = ada_language_server-git
 	source = git+https://github.com/AdaCore/ada_language_server.git
 	source = ada_language_server.patch
 	sha1sums = SKIP
-	sha1sums = 097a2d9e6703ef10009c0ab36391de3b44246d23
+	sha1sums = 9a6abc89eea20f38236471926d068b21b3a333dd
 
 pkgname = ada_language_server-git
