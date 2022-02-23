@@ -7,7 +7,7 @@
 
 pkgname=icaclient
 pkgver=22.2.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Citrix Workspace App (a.k.a. ICAClient, Citrix Receiver)"
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.citrix.com/downloads/workspace-app/linux/workspace-app-for-linux-latest.html'
@@ -102,7 +102,10 @@ package() {
     cp "${pkgdir}$ICAROOT/nls/$lang/appsrv.template" "${pkgdir}/$ICAROOT/config/appsrv.ini"
     cp "${pkgdir}$ICAROOT/nls/$lang/wfclient.template" "${pkgdir}/$ICAROOT/config/wfclient.ini"
 
-    sed -i 's/Ceip=Enable/Ceip=Disable/g' "${pkgdir}$ICAROOT/config/module.ini"
+    sed -i \
+        -e 's/Ceip=Enable/Ceip=Disable/' \
+        -e 's/DisableHeartBeat=False/DisableHeartBeat=True/' \
+        "${pkgdir}$ICAROOT/config/module.ini"
     cd "${srcdir}"
     # install freedesktop.org files
     install -Dm644 -t "$pkgdir"/usr/share/applications citrix-{configmgr,conncenter,workspace,wfica}.desktop
