@@ -1,6 +1,6 @@
 pkgbase = python-netaudio
 	pkgdesc = Control Audinate Dante network audio devices without Dante Controller
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/chris-ritsen/network-audio-controller
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-netaudio
 	depends = python-netifaces
 	depends = python-twisted
 	depends = python-zeroconf
-	source = https://files.pythonhosted.org/packages/16/a6/16b57eff44a0aaa8278e17bb31769ed937ba746481fb30dcc3d591589cb6/netaudio-0.0.8.tar.gz
-	sha256sums = 6b2904c4b70e7ad5cc43a74637e5fdcbefb290cd5e60b316dd65cf042cb081d6
+	source = https://files.pythonhosted.org/packages/14/7b/7dfbfabc39328e6c4300de73c10c97006973e111261f0020a1ceade0fbbd/netaudio-0.0.9.tar.gz
+	sha256sums = 66539dae173311e98481763ddb42503da5f1703ad02a5ea05593cc064d62f165
 
 pkgname = python-netaudio
