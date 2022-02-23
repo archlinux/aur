@@ -1,6 +1,6 @@
 # Maintainer: Thomas Ellison <thomasjlsn@gmail.com>
 pkgname=pw-git
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="A simple password manager"
 arch=(any)
@@ -16,7 +16,7 @@ md5sums=("SKIP")
 
 pkgver() {
     cd pw
-    printf "%s.r%s.%s" "1.2" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s.r%s.%s" "1.3" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
