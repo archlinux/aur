@@ -1,0 +1,125 @@
+pre_install() {
+
+	PROCESS="/usr/lib/gosigndesktop/GoSignDesktop"
+
+	# if active, try clean stop
+	if pgrep --full --exact "$PROCESS" 1>/dev/null 2>/dev/null; then
+	  pgrep --full --exact "$PROCESS" 2>/dev/null | while IFS= read -r PROCESS_PID; do
+	    USER_UID=$(ps -p "$PROCESS_PID" -o euid= 2>/dev/null)
+	    if [ ! -z "$USER_UID" ]; then
+	      # scan displays
+	      find /tmp/.X11-unix/ -mindepth 1 -maxdepth 1 -type s 2>/dev/null | while IFS= read -r DISP; do
+	        DISPLAY_UID=$(stat --format=%u "$DISP")
+	        if [ "$USER_UID" -eq "$DISPLAY_UID" ]; then
+	          DISPLAY_IDENTIFIER=$(basename "$DISP" | tr 'X' ':')
+	          USER_NAME=$(id --user --name "$USER_UID")
+	          # set DISPLAY and send --die command as process user
+	          if [ ! -z "$DISPLAY_IDENTIFIER" ] && [ ! -z "$USER_NAME" ]; then
+	            DISPLAY="$DISPLAY_IDENTIFIER" sudo --user="$USER_NAME" "$PROCESS" --die 1>/dev/null 2>/dev/null
+	          fi
+	        fi
+	      done
+	    fi
+	  done
+	  # wait clean stop
+	  sleep 5
+	fi
+
+	# if survivors, kill
+	if pgrep --full --exact "$PROCESS" 1>/dev/null 2>/dev/null; then
+	  pkill -SIGUSR2 --full --exact "$PROCESS" 1>/dev/null 2>/dev/null
+	fi
+
+}
+
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# create HID rules
+	#if [ -d "/usr/lib/udev/rules.d/" ] && [ -w "/usr/lib/udev/rules.d/" ]; then
+	#  cat << "EOF" >/usr/lib/udev/rules.d/99-hidkey.rules 2>/dev/null
+	#
+	# HID rules
+	#
+	#SUBSYSTEM=="usb", ATTRS{idVendor}=="072f", ATTRS{idProduct}=="100d", MODE="0666"
+	#KERNEL=="hidraw*", ATTRS{idVendor}=="072f", ATTRS{idProduct}=="100d", MODE="0666"
+	#
+	#SUBSYSTEM=="usb", ATTRS{idVendor}=="25dd", ATTRS{idProduct}=="23b4", MODE="0666"
+	#KERNEL=="hidraw*", ATTRS{idVendor}=="25dd", ATTRS{idProduct}=="23b4", MODE="0666"
+	#
+	#"EOF"
+	#fi
+
+	# retrieve HOMEs base directory from defaults and copy config files and license
+	HOME_BASE=$(useradd -D | grep '^HOME=' | cut -d= -f2)
+	if [ -d "$HOME_BASE" ]; then
+	  find "$HOME_BASE" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | while IFS= read -r USER_HOME; do
+	    OLD_PROG_DIR="$USER_HOME/.dike"
+	    NEW_PROG_DIR="$USER_HOME/.gosign"
+	    if [ ! -e "$NEW_PROG_DIR" ] && [ -d "$OLD_PROG_DIR" ]; then
+	      OLD_PROG_DIR_UID=$(stat --format=%u "$OLD_PROG_DIR")
+	      OLD_PROG_DIR_GID=$(stat --format=%g "$OLD_PROG_DIR")
+	      OLD_PROG_DIR_PERM=$(stat --format=%a "$OLD_PROG_DIR")
+	      install --directory --owner="$OLD_PROG_DIR_UID" --group="$OLD_PROG_DIR_GID" --mode="$OLD_PROG_DIR_PERM" "$NEW_PROG_DIR" 1>/dev/null 2>/dev/null
+	      if [ -d "$NEW_PROG_DIR" ]; then
+	        [ -f "$OLD_PROG_DIR/dike.conf" ] && cp -p "$OLD_PROG_DIR/dike.conf" "$NEW_PROG_DIR" 1>/dev/null 2>/dev/null
+	        [ -f "$OLD_PROG_DIR/dike-r.conf" ] && cp -p "$OLD_PROG_DIR/dike-r.conf" "$NEW_PROG_DIR" 1>/dev/null 2>/dev/null
+	        [ -f "$OLD_PROG_DIR/license" ] && cp -p "$OLD_PROG_DIR/license" "$NEW_PROG_DIR" 1>/dev/null 2>/dev/null
+	      fi
+	    fi
+	  done
+	fi
+
+	update-desktop-database -q
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	PROCESS="/usr/lib/gosigndesktop/GoSignDesktop"
+
+	# if active, try clean stop
+	if pgrep --full --exact "$PROCESS" 1>/dev/null 2>/dev/null; then
+	  pgrep --full --exact "$PROCESS" 2>/dev/null | while IFS= read -r PROCESS_PID; do
+	    USER_UID=$(ps -p "$PROCESS_PID" -o euid= 2>/dev/null)
+	    if [ ! -z "$USER_UID" ]; then
+	      # scan displays
+	      find /tmp/.X11-unix/ -mindepth 1 -maxdepth 1 -type s 2>/dev/null | while IFS= read -r DISP; do
+	        DISPLAY_UID=$(stat --format=%u "$DISP")
+	        if [ "$USER_UID" -eq "$DISPLAY_UID" ]; then
+	          DISPLAY_IDENTIFIER=$(basename "$DISP" | tr 'X' ':')
+	          USER_NAME=$(id --user --name "$USER_UID")
+	          # set DISPLAY and send --die command as process user
+	          if [ ! -z "$DISPLAY_IDENTIFIER" ] && [ ! -z "$USER_NAME" ]; then
+	            DISPLAY="$DISPLAY_IDENTIFIER" sudo --user="$USER_NAME" "$PROCESS" --die 1>/dev/null 2>/dev/null
+	          fi
+	        fi
+	      done
+	    fi
+	  done
+	  # wait clean stop
+	  sleep 5
+	fi
+
+	# if survivors, kill
+	if pgrep --full --exact "$PROCESS" 1>/dev/null 2>/dev/null; then
+	  pkill -SIGUSR2 --full --exact "$PROCESS" 1>/dev/null 2>/dev/null
+	fi
+
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# remove HID rules
+	rm -f "/usr/lib/udev/rules.d/99-hidkey.rules" 1>/dev/null 2>/dev/null
+
+	update-desktop-database -q
+}
