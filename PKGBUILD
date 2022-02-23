@@ -2,7 +2,7 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver=r187.2c04058
+pkgver=r194.fda0d4e
 pkgrel=1
 pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("any")
