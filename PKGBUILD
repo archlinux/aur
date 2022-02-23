@@ -1,8 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Christoph Wurst <christoph@winzerhof-wurst.at>
 
 pkgname=krankerl
 pkgver=0.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A CLI helper to manage, package, and publish Nextcloud apps'
 arch=(x86_64)
 url="https://github.com/ChristophWurst/$pkgname"
@@ -13,8 +14,8 @@ depends=(gcc-libs
          libgit2.so)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('eeb9bf382622390693bf05bf62a479effdd791a0e2c429c6cdae427b032e64a9')
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('5480ddaab53c1b075abfbd62d31d04cb1bc3afbd1254564b06b3f850b8af3ac5')
 
 prepare() {
 	cd "$_archive"
