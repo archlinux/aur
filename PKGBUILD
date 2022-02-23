@@ -4,11 +4,11 @@
 pkgname=gitless
 pkgver=0.8.8.r755.g29cbb1d
 _tag=29cbb1d
-pkgrel=1
+pkgrel=2
 pkgdesc="A scientifically proven easier-to-use git interface"
 arch=("any")
 url="https://github.com/goldstar611/gitless"
-license=("GPL")
+license=("MIT")
 depends=('python' 'git' 'python-pygit2>=1.4.0' 'python-setuptools' 'python-argcomplete')
 source=("git+https://github.com/goldstar611/gitless#tag=$_tag"
         '0001-Update-requirements.patch')

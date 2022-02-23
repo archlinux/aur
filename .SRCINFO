@@ -1,10 +1,10 @@
 pkgbase = gitless
 	pkgdesc = A scientifically proven easier-to-use git interface
 	pkgver = 0.8.8.r755.g29cbb1d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goldstar611/gitless
 	arch = any
-	license = GPL
+	license = MIT
 	depends = python
 	depends = git
 	depends = python-pygit2>=1.4.0
