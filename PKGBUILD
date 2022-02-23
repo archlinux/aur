@@ -5,13 +5,13 @@
 
 pkgname=python-mbstrdecoder
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Multi-byte character string decoder'
 arch=('any')
 url='https://github.com/thombashi/mbstrdecoder'
 license=('MIT')
 depends=('python-chardet')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 # checkdepends=(
 # 'python-pytest' 'python-pytest-runner' 'python-pytest-md-report'
 # 'python-faker')
@@ -23,7 +23,7 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367') ## Tsuyoshi Thombashi
 
 build() {
   cd "mbstrdecoder-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 ## Cannot run tests due to circular dependencies
@@ -36,7 +36,7 @@ build() {
 package() {
   export PYTHONHASHSEED=0
   cd "mbstrdecoder-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
