@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=hipsycl-cpu
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA"
 arch=("x86_64")
@@ -11,7 +11,7 @@ provides=(hipsycl sycl)
 makedepends=(cmake)
 depends=(llvm clang python boost hipcpu openmp)
 source=("$pkgname-$pkgver::https://github.com/illuhad/hipSYCL/archive/v$pkgver.tar.gz")
-sha256sums=('0a1ae3a79c743fd826dd9d666e0b9cec8b66940756d4ab6e4961e93604dff559')
+sha256sums=('086cd259345627cd1205a2fbb96fb1f3d1c4f3a13f9520753a4f4df313445c6d')
 
 _pkgname=hipSYCL
 
