@@ -2,14 +2,14 @@
 
 pkgname=cpr
 pkgver=1.7.2
-pkgrel=1
-pkgdesc='C++ requests library by whoshuu'
+pkgrel=2
+pkgdesc='C++ Requests: Curl for People, a spiritual port of Python Requests.'
 arch=('i686' 'x86_64')
-url="https://github.com/whoshuu/cpr"
+url="https://github.com/libcpr/cpr"
 license=('MIT')
 depends=('curl')
 makedepends=('cmake')
-source=("https://github.com/whoshuu/cpr/archive/refs/tags/$pkgver.tar.gz")
+source=("https://github.com/libcpr/cpr/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('5f7f5b4a7e1dcdf5abaacc194be6c1f9')
 
 prepare() {
