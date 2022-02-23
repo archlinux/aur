@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=ComPressure
+Comment=Puzzle game about designing complex computation units powered by high pressure steam
+Icon=/usr/share/compressure/icon.png
+Exec=/usr/bin/compressure
+Categories=Game
