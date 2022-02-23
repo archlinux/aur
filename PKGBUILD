@@ -4,7 +4,7 @@ pkgver=0.2.2
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
-url="https://github.com/tulir/mautrix-signal"
+url="https://github.com/mautrix/signal"
 license=('AGPLv3')
 depends=(
 'python-aiohttp'
@@ -28,7 +28,10 @@ optdepends=(
 'python-qrcode>=6: qr code login'
 'python-signalstickers-client>=3'
 'python-unpaddedbase64: end-to-bridge encryption support')
-backup=("etc/${pkgname}/config.yaml")
+backup=(
+    "etc/${pkgname}/config.yaml"
+    "etc/${pkgname}/registration.yaml"
+    )
 install="${pkgname}.install"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
 sha256sums=('c409699ae833db52e436a136fddc6d9af1e51e2d631998b0541649147739d38f'
