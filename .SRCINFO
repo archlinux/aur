@@ -1,7 +1,7 @@
 pkgbase = lua-sdl2-git
 	pkgdesc = Pure C binding of SDL 2.0 for Lua, master branch
 	pkgver = 2.0.5.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tangent128/luasdl2
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,8 @@ pkgbase = lua-sdl2-git
 	depends = sdl2_mixer
 	depends = sdl2_net
 	depends = sdl2_ttf
+	provides = lua-sdl2
+	conflicts = lua-sdl2
 	source = git+https://github.com/Tangent128/luasdl2.git
 	sha256sums = SKIP
 
