@@ -1,6 +1,6 @@
 pkgbase = avisynthplus-git
 	pkgdesc = Avisynth+. (GIT Version)
-	pkgver = v3.7.0.69.gc54a3272
+	pkgver = v3.7.1a.28.g99ac18bc
 	pkgrel = 1
 	url = http://avs-plus.net
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = avisynthplus-git
 	makedepends = cmake
 	makedepends = python-sphinx
 	makedepends = devil
+	options = debug
 	source = avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git
-	source = https://patch-diff.githubusercontent.com/raw/AviSynth/AviSynthPlus/pull/227.diff
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = avisynthplus-git
@@ -20,5 +19,5 @@ pkgname = avisynthplus-git
 	conflicts = avisynthplus
 
 pkgname = avisynthplus-docs-git
-	pkgdesc = AviSynth+ Documentation
+	pkgdesc = AviSynth+ Documentation. (GIT Version)
 	arch = any
