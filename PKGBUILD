@@ -36,6 +36,7 @@ optdepends=(
 
 provides=('ultragrid')
 conflicts=('ultragrid')
+options=('debug')
 
 source=("${pkgname}::git+https://github.com/CESNET/UltraGrid")
 sha256sums=('SKIP')

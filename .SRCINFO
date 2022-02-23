@@ -1,6 +1,6 @@
 pkgbase = ultragrid-git
 	pkgdesc = Low-latency audio and video network transmission system (from git)
-	pkgver = v1.7.r216.g94239f92
+	pkgver = v1.7.r292.gf642e68e
 	pkgrel = 1
 	url = https://www.ultragrid.cz/
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = ultragrid-git
 	optdepends = opencv: resize filter, conference video mix
 	provides = ultragrid
 	conflicts = ultragrid
+	options = debug
 	source = ultragrid-git::git+https://github.com/CESNET/UltraGrid
 	sha256sums = SKIP
 
