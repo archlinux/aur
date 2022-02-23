@@ -1,41 +1,50 @@
-# Maintainer: mocihan <ly50247@126.com>
+# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Previous maintainer: mocihan <ly50247@126.com>
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=just-git
-_realname="${pkgname%-git}"
-pkgver=0.6.1.r1.cea4a16
+pkgver=0.9.4.r137.gfecb5e3
 pkgrel=1
-pkgdesc="A handy way to save and run project-specific commands"
-arch=("i686" "x86_64")
-url="https://github.com/casey/${_realname}"
-license=("custom:CC0")
-depends=("gcc-libs")
-makedepends=("cargo" "git")
-provides=("${_realname}")
-conflicts=("${_realname}")
-source=("${_realname}::git+https://github.com/casey/${_realname}.git")
-sha256sums=("SKIP")
+pkgdesc="Just a command runner"
+arch=('i686' 'x86_64')
+url="https://just.systems/"
+license=('custom')
+depends=('gcc-libs')
+makedepends=('git' 'rust')
+provides=('just')
+conflicts=('just')
+source=("git+https://github.com/casey/just.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
-  cd "${srcdir}/${_realname}"
-  (
-    set -o pipefail
-    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
-    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
-  )
+  cd "just"
+
+  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
+  _rev=$(git rev-list --count $_tag..HEAD)
+  _hash=$(git rev-parse --short HEAD)
+  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
-build() {
-  cd "${srcdir}/${_realname}"
-  cargo build --release
+check() {
+  cd "just"
+
+  cargo test \
+    --locked \
+    --release
 }
 
 package() {
-  cd "${srcdir}/${_realname}"
-  install -Dm755 "target/release/${_realname}" "${pkgdir}/usr/bin/${_realname}"
-  install -Dm644 "man/${_realname}.1" "${pkgdir}/usr/share/man/man1/${_realname}.1"
-  install -Dm644 README.adoc "${pkgdir}/usr/share/doc/${_realname}/README.adoc"
-  install -Dm644 GRAMMAR.md "${pkgdir}/usr/share/doc/${_realname}/GRAMMAR.md"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_realname}/LICENSE"
+  cd "just"
+
+  cargo install \
+    --no-track \
+    --locked \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/just"
+
+  install -Dm644 "man/just.1" -t "${pkgdir}/usr/share/man/man1"
+  install -Dm644 {README,GRAMMAR}.md -t "${pkgdir}/usr/share/doc/just"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/just"
 }
