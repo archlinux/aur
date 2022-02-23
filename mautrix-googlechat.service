@@ -1,0 +1,8 @@
+[Unit]
+Description=Mautrix Google Chat bridge
+
+[Service]
+ExecStart=/usr/bin/python -m mautrix_googlechat -c /etc/synapse/mautrix-googlechat/config.yaml
+
+[Install]
+WantedBy=multi-user.target
