@@ -2,26 +2,18 @@
 # Contributor: epitron <chris@ill-logic.com>
 
 pkgname=gitless
-pkgver=0.8.8.r773.g07661cc
-_tag=07661cc
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="A scientifically proven easier-to-use git interface"
 arch=("any")
 url="https://github.com/goldstar611/gitless"
 license=("MIT")
 depends=('python' 'git' 'python-pygit2>=1.4.0' 'python-setuptools' 'python-argcomplete')
-source=("git+https://github.com/goldstar611/gitless#commit=$_tag")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgname
-
-  _ver="$(cat $pkgname/cli/gl.py | grep -m1 __version__ | grep -o "[[:digit:]]*" | paste -sd'.')"
-  echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
-}
+source=("https://github.com/goldstar611/gitless/archive/$pkgver.tar.gz")
+sha256sums=('dbd2b63e18b1d12de757d22117bca21b1b5830fe241682cb35018378a6636dd4')
 
 prepare() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   
   local src
   for src in "${source[@]}"; do
@@ -34,11 +26,11 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgver
   python setup.py install --root=${pkgdir} --optimize=1 --skip-build
 }
