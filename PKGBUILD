@@ -1,8 +1,8 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 # Contributor: Dustin Falgout <dustin@falgout.us>
 pkgname='ttf-google-fonts-typewolf'
-pkgver='20211019'
-_commit='463567a2ace0017f54b005f7bc111f9823e6138e'
+pkgver='20220222'
+_commit='36f59ed45b86f74ce844292f73296788993c4072'
 pkgrel='1'
 pkgdesc="Typewolf's curated collection of the 40 best fonts from the Google Fonts project"
 arch=('any')
@@ -16,7 +16,6 @@ provides=(
 	'ttf-cardo'
 	'ttf-chivo'
 	'ttf-cormorant'
-	'ttf-crimson-text'
 	'ttf-dm-sans'
 	'ttf-eczar'
 	'ttf-fira-sans'
@@ -29,6 +28,7 @@ provides=(
 	'ttf-libre-baskerville'
 	'ttf-libre-franklin'
 	'ttf-lora'
+	'ttf-manrope'
 	'ttf-merriweather'
 	'ttf-montserrat'
 	'ttf-neuton'
@@ -73,7 +73,7 @@ _ignore=(
 	'Roboto-Italic[wdth,wght].ttf'
 )
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/google/fonts/archive/$_commit.tar.gz")
-sha512sums=('f6e7f049bb69d6dc12d5724468bcc494d8a13905089fbdf76a68ee85789c0acca273d2493740306c229fdfd90a642cb7f748eb26191a773352c6ea9f79c5b9ad')
+sha512sums=('ce2e2ec4bd5d8ca6680419874fb2cecda26b772af69bd0504b5c40e0a36531d8b0160369541ad1e863c17c20f13e7f346700e9926b39fdbcbac4e94c8ca7addb')
 
 package() {
 	cd "$srcdir/fonts-$_commit/"
