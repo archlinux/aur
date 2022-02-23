@@ -1,7 +1,7 @@
-# Maintainer: Alwyn Kik <alwyn@proteon.com>
+# Maintainer: Alwyn Kik <alwyn at kik dot pw>
 pkgname=rundeck-cli
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI tool for Rundeck'
 url="https://github.com/rundeck/rundeck-cli"
 license=('Apache')
