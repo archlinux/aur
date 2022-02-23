@@ -77,7 +77,7 @@ _lru_enable=y
 #_page_table_check=y
 
 ### Enable DAMON
-_damon=
+_damon=y
 
 ### Enable Linux Random Number Generator
 _lrng_enable=y
@@ -128,7 +128,7 @@ else
   pkgbase=linux-cachyos
 fi
 _major=5.16
-_minor=9
+_minor=11
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -139,7 +139,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux CFS scheduler Kernel by CachyOS and with some other patches and other improvements'
-pkgrel=2
+pkgrel=1
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -158,15 +158,12 @@ source=(
   #  "${_patchsource}/sched/0001-tt.patch"
   "${_patchsource}/0001-cachy.patch"
   "${_patchsource}/0001-arch-patches-v3.patch"
-  "${_patchsource}/0001-bitmap.patch"
   "${_patchsource}/0001-amdpstate.patch"
   "${_patchsource}/0001-anbox.patch"
   "${_patchsource}/0001-bbr2-patches.patch"
-  "${_patchsource}/0001-boot.patch"
   "${_patchsource}/0001-cfi.patch"
   "${_patchsource}/0001-cpu.patch"
   "${_patchsource}/0001-clearlinux.patch"
-  "${_patchsource}/misc/0010-ELF.patch"
   "${_patchsource}/0001-misc-new.patch"
   "${_patchsource}/0001-fs-patches.patch"
   "${_patchsource}/0001-lrng.patch"
@@ -402,7 +399,7 @@ prepare() {
     scripts/config --enable CONFIG_LRU_GEN
     scripts/config --set-val CONFIG_NR_LRU_GENS 7
     scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-    scripts/config --enable CONFIG_LRU_GEN_ENABLED
+    scripts/config --disable CONFIG_LRU_GEN_ENABLED
     scripts/config --disable CONFIG_LRU_GEN_STATS
   fi
 
@@ -618,7 +615,7 @@ _package-headers() {
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
   # required when DEBUG_INFO_BTF_MODULES is enabled
-#  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -691,26 +688,23 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('1660e7228ec299c187c19739d115ded97f6b1be05a24986c4c443e7c5e8b744f'
-            '655cf4835cbca6b9b028f4c7e6a8619ff50966c86c2194e97bfb4eb06485da51'
+sha256sums=('6d186158a4c44a4df438e0286ee8186f1cc9cc9d8a909d4c3e25a4f7eca8b023'
+            '626ef4ac5701827e7ded48c0af2cbd99e13a4b8501eb7d03d3398267b07a1856'
             '80b03a4c65fc49a7059c5f0c31f2b58359c0faabcc960daffd19b5d2fa025cfe'
-            'd471337542fbdab0eef9169fba9a85879847e07797153ea845bee90b7facf3fa'
-            '38e66c9722b9918f6d79876065a4dc17c20215387bab2a3722ae0b8d8b9a3d45'
-            '0345336d0a3f1b5f2da2c6689a736f59d1dfa090a2b9cd54e7e38ff451bde7ac'
+            'ce09040d772f2dcba2623b6b3267e9a58a7f67ec6efc630c1147810db847e608'
+            '438e51bd4bfdf94f332dd5c6da70d3b1f0817f86307a0874c94cd8fc6665a06b'
             '0b64f616404ed70757f423c879bf3edf51525bfdb78f7ec8f1ae21412d9e8a2a'
             'bc91fa787a28516b317fdd9e038ed2c10b61703a9848c1a9ad286e92d51c97be'
-            '8c2409c3ffc915cc3b8357c980fd6b66fb12ce122aa88f04e6f04ed43bf67cec'
             'eb57a61e3c1bf2966211f02a9ae080c3af4c7faf3f706821440e324a70d0cd20'
             '7936b61ba25f03597fd563be82c31a5756d8a82c893f69a2d569f99d375b1362'
             '915e992ed5ba2551ca648e4aa7340e9f250f6b7806287a061c1c8e40b1dc348b'
-            '6c2737225c46c8776022eede29753fea10547cfd1a0c38dcab628be7a4d7c126'
             '9601ce74ce4c5473c220687e5c16437daa6b4f0fcd7cb1d2c51c14715ab12de1'
-            'f3092e2b4f3dbf98f47708dc2b18999968fd789067dbc91c94f747a9033f6b1a'
+            '17b34ae091f31b0a4e7c3576a258f6cbba3fd9db7c7a1f16bedf831d7dd83436'
             'e2d99ace9b54021c5ef53b4b51716816172d6304f6a823b88d5b4e9a68562aef'
             '85f753cbd1936f1f118f53b83bd9ab266d08eda6a630b5821e049c15f02bcbe4'
-            '83ff3060a927c63d2ea0eaa9a2d7d7b741eff0084ecab22e758a2d7663cbfd20'
+            '7396f66133bc88f072c03b47ff2b4731b8664a197a4e6873a0fd598f1ea3369e'
             'db0d2fde8f1e994fbb4eb37c8affa3f0b339aa658f9ab5003bb2ce453a68ab95'
-            '8c2e3ce0874a23e4d8df419f79dd1d045ef349bbe1474717e9455c8197f41c4e'
+            '4cfa719610773898f75f07b741307b8bda46d5717f288dcfc09298915a2a8afe'
             '706f3b04cbce6e5e213d082694117d5fe96cdac9ccaed71e0a9f02ab62d2f431'
             'b3a46271fe16d6136bf71d1a149cfe0e0968e9c8732946d8eb7a4a91413c1ea5'
             '39a98308126050de9e250f16cfc9ae8b04fd40962ae106f1ebec59baeedae8c5'
