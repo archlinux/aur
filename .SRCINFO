@@ -1,0 +1,13 @@
+pkgbase = chipeight-git
+	pkgdesc = Work in progress Chip8 emulator.
+	pkgver = 0.1.git
+	pkgrel = 1
+	url = https://git.envs.net/laniku/chip8
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = devtools
+	depends = freeglut
+	source = https://git.envs.net/laniku/chip8/archive/master.tar.gz
+
+pkgname = chipeight-git
