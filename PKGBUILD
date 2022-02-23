@@ -1,6 +1,6 @@
 # Maintainer: Basso Daniele <daniele05 dot bass at gmail dot com>
 pkgname=oc-auxiliary-tools
-pkgver=20220190
+pkgver=20220193
 pkgrel=1
 pkgdesc=""
 arch=(x86_64)
@@ -17,7 +17,7 @@ backup=()
 options=()
 source=("https://github.com/ic005k/OCAuxiliaryTools/archive/refs/tags/$pkgver.tar.gz" "oc-auxiliary-tools.desktop")
 noextract=()
-md5sums=('7d174b451f917349d837315b0bc7147b' '609d3c45ab44be86dc3251346f2240d7') #autofill using updpkgsums
+md5sums=('4d80127040b786db7bfd39736b5dd670' '609d3c45ab44be86dc3251346f2240d7') #autofill using updpkgsums
 
 build() {
   cd "$srcdir/OCAuxiliaryTools-$pkgver"
