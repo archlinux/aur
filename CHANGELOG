@@ -1,8 +1,19 @@
+4.5.3
+-----
+
+ - Fix ThreadPool shutdown and add new parameter `ephemeral_pool` in :py:class:`pyteomics.usi.PROXIAggregator`
+   (`#67 <https://github.com/levitsky/pyteomics/pull/67>`_ by Joshua Klein).
+ - Bugfix in `pyteomics.proforma.GenericModificationResolver` (`#68 <https://github.com/levitsky/pyteomics/issues/68>`_) by Joshua Klein.
+ - New helper function :py:func:`pyteomics.fasta.decoy_entries`.
+ - New arguments `charge_carrier`, `absolute` in :py:func:`mass.calculate_mass` and
+   :py:meth:`mass.Composition.mass` (`#61 <https://github.com/levitsky/pyteomics/pull/61>`_).
+   Charge is now only handled in :py:meth:`Composition.mass` and not :py:meth:`Composition.__init__`.
+ - Bugfix in :py:mod:`pyteomics.tandem` (`#71 <https://github.com/levitsky/pyteomics/pull/71>`_ by @superrino130).
+
 4.5.2
 -----
 
  - Support Python 3.10.
-
 
 4.5.1
 -----
