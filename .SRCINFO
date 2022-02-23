@@ -1,5 +1,5 @@
 pkgbase = python-oldest-supported-numpy
-	pkgdesc = Meta-package providing oldest supported Numpy for given Python version and platform
+	pkgdesc = Meta-package providing oldest supported Numpy (in Arch repo) for given Python version
 	pkgver = 2022.1.30
 	pkgrel = 1
 	url = https://github.com/scipy/oldest-supported-numpy
