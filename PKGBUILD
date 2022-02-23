@@ -8,7 +8,7 @@ pkgdesc="A special compilation of curl that makes it impersonate Firefox"
 url="https://github.com/lwthiker/curl-impersonate"
 license=('MIT')
 arch=('x86_64')
-makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool python mercurial gyp)
+makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool python mercurial gyp patch)
 depends=(brotli nss)
 provides=(curl-impersonate-firefox)
 
