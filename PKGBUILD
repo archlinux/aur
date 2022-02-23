@@ -1,7 +1,8 @@
-# Maintainer: Vlad Frolov <frolvlad@gmail.com>
+# Maintainer: Gleb Buzin <qufiwefefwoyn@gmail.com>
+# Contributor: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=jql
-pkgver=2.9.2
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="A JSON Query Language CLI tool"
 url="https://github.com/yamafaktory/jql"
@@ -10,7 +11,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/yamafaktory/jql/archive/v${pkgver}.tar.gz)
-sha512sums=('01669f61e2238343fcaec3bfe92993295f6c529fd3381a3e5ed34b34817a0dc576f26cf3eebec7aa4ec723a5b04a5af435141f37f24c48a3b89a36f739f0e82d')
+sha512sums=('326129110c77b53d58d62317e22991c0e552ca5ce868b04cfe2a34fe4742529252083e0a58e277d28846d13f6dc62b2adf3823eeb84f9a8e84f2075707725814')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -30,5 +31,3 @@ package() {
   install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 LICENSE-MIT -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-# vim:set ts=2 sw=2 et:
