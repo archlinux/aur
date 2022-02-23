@@ -1,0 +1,12 @@
+pkgbase = grabserial-git
+	pkgdesc = Serial dump and timing program
+	pkgver = v2.1.0.r42.ga68d2f4
+	pkgrel = 1
+	url = https://github.com/tbird20d/grabserial
+	arch = any
+	license = GPL2
+	depends = python-pyserial
+	source = git+https://github.com/tbird20d/grabserial.git
+	sha256sums = SKIP
+
+pkgname = grabserial-git
