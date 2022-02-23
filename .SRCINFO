@@ -1,0 +1,17 @@
+pkgbase = prideflag
+	pkgdesc = Prideflags in your terminal!
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/CharlotteCross1998/prideflags
+	arch = any
+	license = CCAN
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	depends = sudo
+	source = https://raw.githubusercontent.com/CharlotteCross1998/prideflags/main/main.cpp
+	source = https://raw.githubusercontent.com/CharlotteCross1998/prideflags/main/Makefile
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = prideflag
