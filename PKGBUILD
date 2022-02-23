@@ -7,18 +7,18 @@ arch=('x86_64')
 url='https://github.com/metacall/core'
 license=('Apache')
 makedepends=('cmake' 'git') # Build deps
-optdepends=('dotnet-sdk-bin' 'python' 'ruby' 'clang' 'jre-openjdk-headless' 'nodejs' 'typescript') # optional runtime deps
+optdepends=('dotnet-sdk-bin: C# support' 
+            'python: Python3 support' 
+            'ruby: Ruby support' 
+            'clang: C support' 
+            'jre-openjdk-headless: JAVA support' 
+            'nodejs: NodeJS support' 
+            'typescript: TypeScript support') # optional runtime deps
 provides=('metacall')
 source=(${pkgname}::git+${url})
 sha256sums=('SKIP')
 
-prepare() {
-    echo "Set METACALL_LOADER_language=on in order to build metacall with support of a specific language."
-    echo "See https://github.com/metacall/core/blob/develop/docs/README.md#21-loaders-backends for current available loaders."
-}
-
 build() {
-    # All commented variables are still under developpement
     METACALL_LOADER_C="${METACALL_LOADER_C:=off}"
     METACALL_LOADER_CS="${METACALL_LOADER_CS:=off}"
     METACALL_LOADER_COB="${METACALL_LOADER_COB:=off}"
@@ -42,10 +42,9 @@ build() {
         -DOPTION_BUILD_LOADERS_TS=$METACALL_LOADER_TS \
         -DOPTION_BUILD_LOADERS_MOCK=off \
         -Wno-dev
-
     cmake --build build
 }
-
+# Check are not working fine for now as such they are disabled.
 #check() {
 #    cd build
 #    ctest --output-on-failure
@@ -53,6 +52,6 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" cmake --install build
-    echo "In order to have a specific language support, rebuild with a set ENVIRONNEMENT variable METACALL_LOADER_language=on"
-    echo "See https://github.com/metacall/core/blob/develop/docs/README.md#21-loaders-backends for current available loaders."
+    printf "\033[0;31m In order to have a specific language support, rebuild the environnement variable \"METACALL_LOADER_language=on\" set.\n"
+    printf "\033[0;31m See https://github.com/metacall/core/blob/develop/docs/README.md#21-loaders-backends for current available loaders.\n"
 }
