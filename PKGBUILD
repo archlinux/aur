@@ -4,7 +4,7 @@
 # Contributor: hagabaka
 
 pkgname='peazip-qt5'
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
@@ -16,24 +16,24 @@ makedepends=('lazarus')
 provides=('peazip')
 conflicts=('peazip')
 options=('!strip')
-source=("https://github.com/peazip/PeaZip/archive/refs/tags/$pkgver.tar.gz"
+source=("git+https://github.com/peazip/PeaZip.git#commit=287578d"
 "help-$pkgver.pdf::https://github.com/peazip/PeaZip/releases/download/$pkgver/peazip_help.pdf")
-sha512sums=('32fc0036ccc775295316c47f3a21f891a1876c63a00f1a701e8ab1ed988dd23ffbf8954c7db8992ff7b1ce0f48e0ccc263f6cf412948d71fa994480d249e366b'
-            '8ede5c3ecdde42dbac13c975696dc5a7f31ed5170c60667b02ef957baa2027f177f77e72c08f51ef130df7a2b33bfeff53eb11e2f64d4ec0b11dba16fee7bdd3')
+sha512sums=('SKIP'
+            'b73321e025778125ab7330f8af864f2d4115a8b35b06288791a7336a47870bcc83fdd07e2d31d9e8f30ae62c23dd004581c722c074fe56bef6ebb29d4a6ead6c')
 
 build() {
-  cd "$srcdir/PeaZip-$pkgver/peazip-sources"
+  cd "$srcdir/PeaZip/peazip-sources"
   lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt5 --build-all project_pea.lpi && [ -f pea ]
   lazbuild --lazarusdir=/usr/lib/lazarus --widgetset=qt5 --build-all project_peach.lpi && [ -f peazip ]
 }
 
 package() {
   # binary
-  install -Dm755 "$srcdir/PeaZip-$pkgver/peazip-sources/peazip" "$pkgdir/usr/lib/peazip/peazip"
-  install -Dm755 "$srcdir/PeaZip-$pkgver/peazip-sources/pea" "$pkgdir/usr/lib/peazip/pea"
+  install -Dm755 "$srcdir/PeaZip/peazip-sources/peazip" "$pkgdir/usr/lib/peazip/peazip"
+  install -Dm755 "$srcdir/PeaZip/peazip-sources/pea" "$pkgdir/usr/lib/peazip/pea"
   
   # desktop & icon
-  cd "$srcdir/PeaZip-$pkgver/peazip-sources/res/share/batch/freedesktop_integration"
+  cd "$srcdir/PeaZip/peazip-sources/res/share/batch/freedesktop_integration"
   install -Dm644 peazip{,_alt}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
   install -Dm644 peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
   install -Dm644 peazip_{add,extract}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
@@ -42,7 +42,7 @@ package() {
   # help & res
   install -d "$pkgdir/usr/share/peazip"
   install -Dm644 "$srcdir/help-$pkgver.pdf" "$pkgdir/usr/share/peazip/peazip_help.pdf"
-  cd "$srcdir/PeaZip-$pkgver/peazip-sources/res/share"
+  cd "$srcdir/PeaZip/peazip-sources/res/share"
   cp -r icons lang themes "$pkgdir/usr/share/peazip/"
   install -d "$pkgdir/usr/lib/peazip/res"
   ln -sf /usr/share/peazip "$pkgdir/usr/lib/peazip/res/share"
