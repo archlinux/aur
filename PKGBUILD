@@ -20,7 +20,7 @@ prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
     export _npver=$(python -c 'import numpy; print(numpy.__version__)')
     #sed -i '/'"${_pyver}"'/!b;n;c\numpy=='"${_npver}" oldest_supported_numpy.egg-info/requires.txt
-    sed -i "/${_pyver}/s/==.*;/==${_npver};/" setup.cfg
+    sed -i "/${_pyver}/s/==.*;/>=${_npver};/" setup.cfg
 }
 
 build() {
