@@ -1,0 +1,69 @@
+diff --git a/src/java.desktop/unix/classes/sun/font/FcFontConfiguration.java b/src/java.desktop/unix/classes/sun/font/FcFontConfiguration.java
+index 567e8bea83f..556b3b8b123 100644
+--- a/src/java.desktop/unix/classes/sun/font/FcFontConfiguration.java
++++ b/src/java.desktop/unix/classes/sun/font/FcFontConfiguration.java
+@@ -356,7 +356,28 @@ public class FcFontConfiguration extends FontConfiguration {
+             String userDir = System.getProperty("user.home");
+             String version = System.getProperty("java.version");
+             String fs = File.separator;
+-            String dir = userDir+fs+".java"+fs+"fonts"+fs+version;
++            String dir;
++            /* On Linux systems, put the font config into
++             * ${XDG_CONFIG_HOME:-$HOME/.config}/java/fonts in order to follow
++             * the XDG Base Directory Specification.
++             */
++            if (System.getProperty("os.name").equals("Linux")) {
++                /* assume homedir can be found, which the jvm already does */
++                String xdgDefaultConfigHome = System.getenv("HOME")+"/.config";
++                String xdgConfigHomeEnvVar = "XDG_CONFIG_HOME";
++                String xdgConfigDir;
++
++                String xdgSetConfigDir = System.getenv(xdgConfigHomeEnvVar);
++
++                if (xdgSetConfigDir == null)
++                    xdgConfigDir = xdgDefaultConfigHome;
++                else
++                    xdgConfigDir = xdgSetConfigDir;
++
++                dir = xdgConfigDir+"/java/fonts/"+version;
++            } else {
++                dir = userDir+fs+".java"+fs+"fonts"+fs+version;
++            }
+             String lang = SunToolkit.getStartupLocale().getLanguage();
+             String name = "fcinfo-"+fileVersion+"-"+hostname+"-"+
+                 osName+"-"+osVersion+"-"+lang+".properties";
+diff --git a/src/java.prefs/unix/classes/java/util/prefs/FileSystemPreferences.java b/src/java.prefs/unix/classes/java/util/prefs/FileSystemPreferences.java
+index 0099e1ff8df..fb589ce1a57 100644
+--- a/src/java.prefs/unix/classes/java/util/prefs/FileSystemPreferences.java
++++ b/src/java.prefs/unix/classes/java/util/prefs/FileSystemPreferences.java
+@@ -116,6 +116,30 @@ class FileSystemPreferences extends AbstractPreferences {
+                 userRootDir =
+                       new File(System.getProperty("java.util.prefs.userRoot",
+                       System.getProperty("user.home")), ".java/.userPrefs");
++                /* On Linux systems, put the userPrefs dir into
++                 * ${XDG_CONFIG_HOME:-$HOME/.config}/java/userPrefs in order to
++                 * follow the XDG Base Directory Specification.
++                 */
++                if (System.getProperty("os.name").equals("Linux")) {
++                    /* assume findable homedir, which the jvm already does */
++                    String xdgDefaultConfigHome = System.getenv("HOME") +
++                            "/.config";
++                    String xdgConfigHomeEnvVar = "XDG_CONFIG_HOME";
++                    String xdgConfigDir;
++
++                    String xdgSetConfigDir = System.getenv(xdgConfigHomeEnvVar);
++
++                    if (xdgSetConfigDir == null)
++                        xdgConfigDir = xdgDefaultConfigHome;
++                    else
++                        xdgConfigDir = xdgSetConfigDir;
++
++                    userRootDir = new File(xdgConfigDir, "java/userPrefs");
++                } else {
++                    userRootDir =
++                            new File(System.getProperty("java.util.prefs.userRoot",
++                                    System.getProperty("user.home")), ".java/.userPrefs");
++                }
+                 // Attempt to create root dir if it does not yet exist.
+                 if (!userRootDir.exists()) {
+                     if (userRootDir.mkdirs()) {
