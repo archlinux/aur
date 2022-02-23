@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A major Emacs mode for editing Rust source code"
 arch=('any')
 url="https://github.com/rust-lang/rust-mode"
-license=('Apache')
+license=('Apache', 'MIT')
 depends=('emacs')
 
 install="${pkgname}.install"
