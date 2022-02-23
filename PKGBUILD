@@ -29,8 +29,8 @@ optdepends=(
   'lib32-vkd3d: Vulkan 3D support'
   'lib32-vulkan-icd-loader: Vulkan support'
   'linux-steam-integration: start Steam with LSI'
-  'python-evdev: Controller support'
   "mangohud: Display the games' FPS + other information"
+  'python-evdev: Controller support'
   'vkd3d: Vulkan 3D support'
   'vulkan-icd-loader: Vulkan support'
   'wine: easiest way to get all the libraries missing from the Lutris runtime'
