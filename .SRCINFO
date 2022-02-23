@@ -1,0 +1,17 @@
+pkgbase = git-credential-kwallet
+	pkgdesc = Git credential helper for KWallet
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/dasbaumwolltier/git-credential-kwallet
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	makedepends = git
+	depends = kwallet
+	provides = git-credential-kwallet
+	conflicts = git-credential-kwallet
+	source = git-credential-kwallet-0.1.1.tar.gz::https://github.com/dasbaumwolltier/git-credential-kwallet/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 7cf7aeff9d843c10bf20fa9c0edf8ec07d5a9bc76d71cec4007d4365bee81332
+
+pkgname = git-credential-kwallet
