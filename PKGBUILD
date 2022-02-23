@@ -4,12 +4,13 @@
 pkgname=go-task
 _pkgname=task
 pkgver=3.10.0
-pkgrel=1
-pkgdesc="Task runner & Make alternative (Installs as go-task to avoid conflict with taskwarrior)"
+pkgrel=2
+pkgdesc="Task runner & Make alternative that runs taskfiles (Installs as go-task to avoid conflict with taskwarrior)"
 arch=('any')
 url="https://github.com/go-task/task"
 license=('MIT')
 replaces=('gotask-taskfile')
+conflicts=('gotask-taskfile')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
