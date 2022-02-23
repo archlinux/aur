@@ -2,7 +2,7 @@
 
 pkgname=python-janome
 _pkgname=janome
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Japanese morphological analysis engine written in pure Python"
 url="http://mocobeta.github.io/janome/en/"
@@ -11,7 +11,7 @@ license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/mocobeta/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('fecb9cfe2c1a0fbc55de0d1bb17472e74c1c6e1a704aa53e3eb0295d22bdd0f17c22e255201c141bc0fd79bad16a51cfc40445093db0934cff75ecbecc7f8f8c')
+sha512sums=('71b368b8d591e9133e8faf401588f1413e7deb060df1061faf4e95ac92b9129f9730cc1a391d870f027b0090a1324df4276235ae55faab1f0d3114b4e383dbe2')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}/
