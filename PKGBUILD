@@ -1,8 +1,8 @@
 pkgname=briar-desktop-bin
 _pkgname=briar-desktop
-pkgver=0.1.0.beta
-pkgrel=3
-_bin_ver=0.1.0
+pkgver=0.2.0.beta
+pkgrel=1
+_bin_ver=0.2.0
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=(any)
@@ -15,7 +15,7 @@ source=("https://desktop.briarproject.org/jars/linux/${_bin_ver}-${_build_type}/
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
         "${_pkgname}.desktop")
 noextract=("${_pkgname}-linux-${_bin_ver}-${_build_type}.jar")
-sha256sums=('7e806486381222322cf5a8c7b366c17385ad3035fe8486c370f1af7b7fcf5239'
+sha256sums=('1f31a0e0e3a1364172f8bfbf1d24bc34d4fe654fba83168d728ed0fb379ea591'
             '95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923'
             '965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669'
             '3feb96f9b9c01085170a44fdbf8bca43b1e586fe3b68dab37fb5cb9fd4ca1fa6'
