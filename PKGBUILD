@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=air
-pkgver=1.27.10
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="Live reload for Go apps"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='9a9b1f639bffed33d2d3bc66a06ccee6dea19506'
+_commit='1e895ef469967de7c1b68a8bceb22b0a1296cdc7'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
