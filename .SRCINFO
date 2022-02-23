@@ -1,5 +1,5 @@
 pkgbase = python-netaudio
-	pkgdesc = Control Audinate Dante network audio devices without Dante Controller
+	pkgdesc = List, configure, and control Audinate Dante network audio devices without Dante Controller
 	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/chris-ritsen/network-audio-controller
