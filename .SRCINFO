@@ -18,6 +18,7 @@ pkgbase = curl-impersonate-firefox
 	makedepends = python
 	makedepends = mercurial
 	makedepends = gyp
+	makedepends = patch
 	depends = brotli
 	depends = nss
 	provides = curl-impersonate-firefox
