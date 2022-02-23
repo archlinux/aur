@@ -3,7 +3,7 @@ pkgname=python-oldest-supported-numpy
 _pyname=${pkgname#python-}
 pkgver=2022.1.30
 pkgrel=1
-pkgdesc="Meta-package providing oldest supported Numpy (in Arch repo) for given Python version"
+pkgdesc="Meta-package providing oldest supported Numpy for given Python version"
 arch=('any')
 url="https://github.com/scipy/oldest-supported-numpy"
 license=('BSD')
@@ -18,9 +18,10 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
-    export _npver=$(python -c 'import numpy; print(numpy.__version__)')
+    #export _npver=$(python -c 'import numpy; print(numpy.__version__)')
     #sed -i '/'"${_pyver}"'/!b;n;c\numpy=='"${_npver}" oldest_supported_numpy.egg-info/requires.txt
-    sed -i "/${_pyver}/s/==.*;/>=${_npver};/" setup.cfg
+    #sed -i "/${_pyver}/s/==.*;/>=${_npver};/" setup.cfg
+    sed -i "/${_pyver}/s/==/>=/" setup.cfg
 }
 
 build() {
