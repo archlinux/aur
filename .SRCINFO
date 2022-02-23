@@ -1,0 +1,27 @@
+pkgbase = curl-impersonate-chrome
+	pkgdesc = A special compilation of curl that makes it impersonate Chrome
+	pkgver = r34.b1081c5
+	pkgrel = 1
+	url = https://github.com/lwthiker/curl-impersonate
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = go
+	makedepends = ninja
+	makedepends = unzip
+	makedepends = zlib
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = brotli
+	depends = nss
+	provides = curl-impersonate-chrome
+	source = git+https://github.com/lwthiker/curl-impersonate
+	source = boringssl.zip::https://github.com/google/boringssl/archive/3a667d10e94186fd503966f5638e134fe9fb4080.zip
+	source = nghttp2-1.46.0.tar.bz2::https://github.com/nghttp2/nghttp2/releases/download/v1.46.0/nghttp2-1.46.0.tar.bz2
+	source = curl-7.81.0.tar.xz::https://curl.se/download/curl-7.81.0.tar.xz
+	md5sums = SKIP
+
+pkgname = curl-impersonate-chrome
