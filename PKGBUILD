@@ -1,7 +1,7 @@
 # Maintainer: deserts <int8@foxmail.com>
 pkgname=gprojector
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive tool for exploring map projections"
 arch=("any")
 url="https://www.giss.nasa.gov/tools/gprojector/"

@@ -8,7 +8,7 @@ pkgbase = gprojector
 	groups = nasa-tools
 	license = custom
 	makedepends = unzip
-	depends = java-runtime>=8
+	depends = java-runtime>=9
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	source = https://www.giss.nasa.gov/tools/gprojector/download/G.ProjectorJ-3.0.2.zip
