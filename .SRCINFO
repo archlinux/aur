@@ -1,11 +1,14 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=sf
 	arch = i686
 	arch = x86_64
 	license = GPL-2 | MIT
+	depends = gdal
+	depends = geos
+	depends = proj
 	depends = r
 	depends = r-classint
 	depends = r-dbi
