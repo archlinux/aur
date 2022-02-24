@@ -1,22 +1,21 @@
 # Maintainer: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: AlexTimmi <codelaunch@gmail.com>
+# Contributor: Jeff Parent <jecxjo@sdf.lonestar.org>
 
 pkgname=cqrlog-bin
 pkgver=2.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced ham radio QSO logger using MariaDB - BINARY version."
 arch=('x86_64')
 url="https://www.cqrlog.com"
 license=('GPL2')
-depends=('xdg-utils' 'gtk2' 'mariadb' 'hamradio-menus')
+depends=('xdg-utils' 'gtk2' 'mariadb' 'hamlib' 'hamradio-menus')
 optdepends=('winkeydaemon: usb cw xmit'
             'cwdaemon: transmitting cw'
             'masterscp: supercheckpartial files'
             'cty: country files'
             'bigcty: contest version country files'
-            'hamlib: rig control'
             'trustedqsl: upload logs'
-            'hamradio-menus: XDG compliant menuing'
             'xplanet: gui location'
             'glabels: print qsl labels')
 provides=('cqrlog')
