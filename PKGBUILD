@@ -3,7 +3,7 @@
 
 pkgname=gitless
 pkgver=0.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="A scientifically proven easier-to-use git interface"
 arch=("any")
 url="https://github.com/goldstar611/gitless"
@@ -33,4 +33,7 @@ build() {
 package() {
   cd $pkgname-$pkgver
   python setup.py install --root=${pkgdir} --optimize=1 --skip-build
+  
+  # copy custom license:
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

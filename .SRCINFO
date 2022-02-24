@@ -1,7 +1,7 @@
 pkgbase = gitless
 	pkgdesc = A scientifically proven easier-to-use git interface
 	pkgver = 0.9.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goldstar611/gitless
 	arch = any
 	license = MIT
