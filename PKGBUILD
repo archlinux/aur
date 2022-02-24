@@ -18,7 +18,7 @@ backup=(etc/zookeeper/configuration.xsl
         etc/zookeeper/zoo.cfg)
 install=install_zookeeper.sh
 
-_apache_cgi="http://www.apache.org/dyn/closer.cgi"
+_apache_cgi="https://www.apache.org/dyn/closer.cgi"
 _closest=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
 _app_path="/${pkgname}/${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
 source=(${_closest}/${_app_path}

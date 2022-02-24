@@ -10,7 +10,7 @@ pkgbase = zookeeper
 	backup = etc/zookeeper/configuration.xsl
 	backup = etc/zookeeper/log4j.properties
 	backup = etc/zookeeper/zoo.cfg
-	source = https://downloads.apache.org///zookeeper/zookeeper-3.7.0/apache-zookeeper-3.7.0-bin.tar.gz
+	source = https://dlcdn.apache.org///zookeeper/zookeeper-3.7.0/apache-zookeeper-3.7.0-bin.tar.gz
 	source = systemd_zookeeper.service
 	source = systemd_zookeeper@.service
 	source = systemd_sysusers.d_zookeeper.conf
@@ -22,4 +22,3 @@ pkgbase = zookeeper
 	sha256sums = 99fff5b04623889b0010c74c2dc3a4be29e7770fe2c7e15da51f7442a28c6580
 
 pkgname = zookeeper
-
