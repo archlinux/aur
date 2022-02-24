@@ -7,7 +7,7 @@ arch=("any")
 url="https://www.giss.nasa.gov/tools/gprojector/"
 license=("custom")
 groups=("nasa-tools")
-depends=("java-runtime>=8"
+depends=("java-runtime>=9"
          "hicolor-icon-theme"
          "desktop-file-utils")
 makedepends=("unzip")
