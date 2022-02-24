@@ -3,7 +3,7 @@
 
 pkgname=maestral
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source Dropbox client'
 arch=('any')
 url="https://github.com/SamSchott/maestral"
@@ -27,7 +27,7 @@ depends=(
 optdepends=(
 	'maestral-qt: Qt interface for the maestral daemon'
 	'python-importlib-metadata: REQUIRED for python<3.8')
-makedepends=('python-build' 'python-install' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-benchmark')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -37,7 +37,7 @@ sha256sums=('dcf0ffabfabee9c78adb0887699debe262330230cad6f2a90fa057923bc90a36'
 
 build() {
 	cd "$pkgname-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -48,8 +48,7 @@ check() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname-$pkgver"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
-	chmod +x "$pkgdir/usr/bin/$pkgname"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "$srcdir/maestral@.service" -t "$pkgdir/usr/lib/systemd/user/"
 }
