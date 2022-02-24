@@ -1,7 +1,7 @@
 # Maintainer: Vitaly Utkin <vautkin AT teknik DOT io>
 pkgname=ovras
-pkgver=5.3.2
-pkgrel=2
+pkgver=5.4.0
+pkgrel=0
 epoch=0
 pkgdesc="Advanced settings and custom behavior for SteamVR using OpenVR (OVR)."
 arch=("x86_64")
@@ -9,16 +9,17 @@ url="https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings"
 license=("GPL")
 depends=("qt5-declarative"
          "qt5-multimedia"
+         "qt5-quickcontrols"
          "libudev0-shim"
          "mesa")
 optdepends=("dbus: media player support"
             "xorg-server: send keyboard keys"
             "pulseaudio: pulse audio support")
-source=("https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/$pkgver-1.tar.gz")
-sha256sums=("8c2d3849e22faa2a9834649bd0dc7d8dd53bc0e86f68cf61953b8211d8a9ddaf")
+source=("https://github.com/OpenVR-Advanced-Settings/OpenVR-AdvancedSettings/archive/v$pkgver.tar.gz")
+sha256sums=("b191e6499559c1f716cc3014f1ccee458684a50ea493a3f9029daaf2694ea6f5")
 
 build() {
-    cd "OpenVR-AdvancedSettings-$pkgver-1"
+    cd "OpenVR-AdvancedSettings-$pkgver"
 
     _additionalOptions=
 
@@ -54,7 +55,7 @@ build() {
 }
 
 package() {
-    cd "OpenVR-AdvancedSettings-$pkgver-1"
+    cd "OpenVR-AdvancedSettings-$pkgver"
 
     # Add .desktop file
     mkdir -p "$pkgdir/usr/share/applications"
