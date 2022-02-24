@@ -1,7 +1,4 @@
-# Maintainer: brent s. <bts[at]square-r00t[dot]net>
-# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
-# News updates for packages can be followed at https://devblog.square-r00t.net
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
+# Maintainer: Sid Pranjale <sidpranjale127@protonmail.com>
 
 #TODO: set up permissions (e.g. fortress/{progs,sounds, etc.} to be sticky-bit and writable? that way maybe at least files can be downloaded. create maps dir for all mods too.
 #TODO: change permissions for all .cfg's to 664?
@@ -11,7 +8,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=('nquake')
 pkgver=2.5
-pkgrel=12
+pkgrel=13
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
@@ -24,9 +21,13 @@ _alt_pkgver=$(echo ${pkgver} | sed -e 's/\.//g')
 
 # http://nquake.sourceforge.net/nquake.ini for list of mirrors
 #_nQ_MIRROR="http://qw.quakephil.com/nquake" # NY, US
-_nQ_MIRROR="http://quakeservers.nquake.com" # Dusseldorf, DE
+#_nQ_MIRROR="http://quakeservers.nquake.com" # Dusseldorf, DE
 #_nQ_MIRROR="http://nquake.localghost.net" # Lulea, SE
 #_nQ_MIRROR="http://fnu.nquake.com" # Uppsala, SE
+
+#nQuake moved their mirrors to GitHub, as the quakeservers link tells us, so that's what we'll use
+_nQ_MIRROR="https://github.com/nQuake/distfiles/releases/download/snapshot"
+
 
 source=("${_nQ_MIRROR}/gpl.zip"
 	"${_nQ_MIRROR}/non-gpl.zip"
@@ -35,34 +36,19 @@ source=("${_nQ_MIRROR}/gpl.zip"
 	"${_nQ_MIRROR}/addon-clanarena.zip"
 	"${_nQ_MIRROR}/addon-fortress.zip"
 	"${_nQ_MIRROR}/qsw106.zip"
-	"CC0-1.0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
-	"gpl.zip.sig"
-	"non-gpl.zip.sig"
-	"linux.zip.sig"
-	"addon-textures.zip.sig"
-	"addon-clanarena.zip.sig"
-	"addon-fortress.zip.sig"
-	"CC0-1.0.sig"
-	"qsw106.zip.sig")
+	"CC0-1.0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
 
 noextract=('qsw106.zip')
 
-sha512sums=('d37d7d869a01bd8eb71fb6815e1b376df9ccd471535233d05468a09654cf18cadc146cf956fb0187a57a478b1dc6655152f59f0c309a79cdef4edd803c5bae63'  # gpl.zip
-            'c3320070dd7de396b9e82afc7a9f53b16a85fab5cc77cb7213ea4fbc7b97653aa0526754f97caba32e3f8f7b90379815b7e6ec8ab9a4e9aab9ca789080892a88'  # non-gpl.zip
-            '32c9f96304befff3c16b3bd09f5cf7e6343516e9164599982ce4678a4cb49e15093bdd211cc16ecece98189dade93925f76623047162507706405d6e2b32d9fd'  # linux.zip
-            '693379acc3c0204b810ab31aeaaedbb6d8659fd2140e3874f463bde3af5009a161d76b1dbd2f970e151ebae1f323848a937b8209cf2172c6251578edcad1753b'  # addon-textures.zip
-            '0e6689ccb2c4c181da268b7728a73ee718eabaae463a4f97174dcaf41388464ae8cdb8d719e263d0d2cc4b4a975105950bae852074adb97914bdd1e3bad3e85e'  # addon-clanarena.zip
-            'a15cbd4ccf2a3d87e0ec9f6f6f4546e2a68a0f03a516bac47d0965bc6affaf902669db0824619634dc19698698d40ef72325da33ea2c78437c45bd19bd2c8138'  # addon-fortress.zip
-	    '32df717a4a8f121358243333c30d8d0e5d43ee04f3ee8175a894199b8932e90ebedc6b687c25207c6191dbf25363307f09f8c1dc767b58e254e015c150217384'  # qsw106.zip
+sha512sums=('15a426cda1d4dca863f258ad4b7d8c585f82b8dd88df45f29a96416b49052b7e3d7b09f39701bb69b1e681e608237c38470373f22d992b68d44143c05d6b2728'  # gpl.zip
+            '7008e971e609b58fa614baddfc870aa00c7f4c6751b2463c5e86be71ba90ac37f80777afd3355034ae83ee316336db84cfe2b0ab4f23f234ed595263b2c15ef8'  # non-gpl.zip
+            '9f9310f1d97c5e9bdd910c8a7f96d12f1f44a4b8033e6abc8e71b967bad52b024c1690fc657f6a56247b9abeca945eae41e02cc61b310d394020f5d1495531fc'  # linux.zip
+            '85ea32f0b45e68a226fad3797ef9a5e79065c3df53faadda07412aeed874dd1fb867007f64453c38bb07ccb13ceea0a8ade1892238c6948f4708ce854dcbb201'  # addon-textures.zip
+            '4a295d5a4c0d815b3cdbdebce8912bf0b2918f9f431418a201ffb6688fb8effa7a6081b547cfdff0f1979ff20b2a51e33170fa77b4337db01fcd3269b1318027'  # addon-clanarena.zip
+            '366af1dca4f2f11eb451eef64e6c0c86a539d8d748e15d25b609254383dfb995d79979478fe85d9539b747b50805ee95f1adc952067e9c0a502c834581443ac7'  # addon-fortress.zip
+	    	'e66af960477bfaad2ea3b1dfe95cc76d5cbfbadd9102cb9b5aee4599c91de8512ca6f322321882f0e7e62d55c3a4d066d54eaa7d2b57cd48df43145b06e1bfc6'  # qsw106.zip
             '1eb4436f8d58766cbe99db97e5e8c0db8a706376afd291c337de1ba7a6b066d3791dc85ad034bdd54ea336bed6e6e8e7a037d8b04b2773c9c7517b9d9921d1fa'  # CC0-1.0
-            'SKIP'  # Sigs...
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
-	    'SKIP')
+			)
 
 prepare () {
 	unzip -o -j "qsw106.zip" "ID1/PAK0.PAK"
@@ -73,11 +59,12 @@ prepare () {
 
 package () {
 ## BASE ##
+	install -d -m775 -g users /opt/quake
 	# Most of these files are in gpl.zip
-	install -d -m 0750 ${pkgdir}/opt/quake/{id1,qw,ezquake}
-	install -d -m 0750 ${pkgdir}/usr/share/nquake
-	install -d -m 0750 ${pkgdir}/usr/share/doc/nquake
-	install -d -m 0750 ${pkgdir}/usr/share/licenses/nquake
+	install -d -m 0755 ${pkgdir}/opt/quake/{id1,qw,ezquake}
+	install -d -m 0755 ${pkgdir}/usr/share/nquake
+	install -d -m 0755 ${pkgdir}/usr/share/doc/nquake
+	install -d -m 0755 ${pkgdir}/usr/share/licenses/nquake
 	install -d -m 0755 ${pkgdir}/usr/bin
 	# Fix ezquake packages.
 	install -d -m 0770 ${pkgdir}/opt/quake/ezquake/{sb/cache,temp}
@@ -107,8 +94,8 @@ package () {
 
 ## NON-FREE ##
 	# Most of these files are in non-gpl.zip
-	install -d -m 0750 ${pkgdir}/opt/quake/qw/{skins,matchinfo}
-	install -d -m 0750 ${pkgdir}/usr/share/doc/nquake
+	install -d -m 0755 ${pkgdir}/opt/quake/qw/{skins,matchinfo}
+	install -d -m 0755 ${pkgdir}/usr/share/doc/nquake
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	cp -a ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/.
 	# And the Business-End(TM). Do the thing.
@@ -128,7 +115,7 @@ package () {
 
 ## FORTRESS ##
 	# Most of these files are in addon-fortress.zip
-	install -d -m 0750 ${pkgdir}/opt/quake/
+	install -d -m 0755 ${pkgdir}/opt/quake/
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	cp -a ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/.
 	# And the Business-End(TM). Do the thing.
@@ -136,7 +123,7 @@ package () {
 
 ## ARENA ##	
 	# Most of these files are in addon-clanarena.zip
-	install -d -m 0750 ${pkgdir}/opt/quake/
+	install -d -m 0755 ${pkgdir}/opt/quake/
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	cp -a ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/.
 	# And the Business-End(TM). Do the thing.
@@ -146,10 +133,10 @@ package () {
 ## TEXTURES ##
 	# TODO: is aur/quake-qrp-textures more up-to-date than the QRP in the nQuake mirrors? If so, make that a dependency and symlink or copy.
 	# Most of these files are in addon-textures.zip
-	install -d -m 0750 ${pkgdir}/opt/quake/qw
+	install -d -m 0755 ${pkgdir}/opt/quake/qw
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	cp -a ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/.
 	# And the Business-End(TM). Do the thing.
-	cp -a ${srcdir}/qw/textures.pk3 ${pkgdir}/opt/quake/qw/.  # Textures
+	cp -a ${srcdir}/qw/textures*.pk3 ${pkgdir}/opt/quake/qw/.  # Textures. Use that wildcard there because there's multiple pk3s and I dunno which one to use. Any assistance is greatly appreciated
 	cp -a ${srcdir}/qw/readme-textures.txt ${pkgdir}/opt/quake/.  # ????
 }
