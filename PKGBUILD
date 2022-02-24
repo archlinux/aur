@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
 pkgver=r524.gbb50f635
-pkgrel=3
+pkgrel=4
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
@@ -30,8 +30,14 @@ package() {
   mkdir -p "$pkgdir"/usr/share/doc/$pkgname
   cp -av docbook "$pkgdir"/usr/share/doc/$pkgname/docbook
 
-  # Make the binaries look less scary in `ls`
-  find "$pkgdir"/usr/bin -type f -perm /u+s,g+s \
+  # Restrict binaries that send or capture arbitrary frames
+  for f in "$pkgdir"/usr/bin/e[df]??; do
+    chmod -c u-s "$f"
+  done
+
+  # Make the remaining binaries look less scary in `ls`
+  # (I'm still on the fence about making all of them :wheel-only)
+  find "$pkgdir"/usr/bin -type f -perm /u+s \
     -exec chmod -c u-s {} \; \
     -exec setcap cap_net_raw=ep {} \;
 }
