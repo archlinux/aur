@@ -6,12 +6,11 @@ pkgver=5.2.0
 _pkgrel=24
 _pkgtyp=beta
 _pkghash=c031998f5be1
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux client of Feishu (Lark) from Bytedance."
 arch=('x86_64')
 url="https://www.feishu.cn/"
 license=('unknown')
-groups=('')
 depends=('ca-certificates' 'gtk3' 'nss' 'xdg-utils')
 replaces=('bytedance-feishu-stable-bin')
 conflicts=('feishu')
@@ -34,7 +33,7 @@ package(){
   mv "${pkgdir}"/usr/share/menu/{bytedance-,}feishu.menu
   mv "${pkgdir}"/usr/share/applications/{bytedance-,}feishu.desktop
   mv "${pkgdir}"/usr/share/appdata/{bytedance-,}feishu.appdata.xml
-  mv "${pkgdir}"/usr/share/man/man1/{bytedance-feishu,feishu}.1.gz
+  mv "${pkgdir}"/usr/share/man/man1/{bytedance-,}feishu.1.gz
   mv "${pkgdir}"/usr/share/doc/{bytedance-feishu-${_pkgtyp},feishu}
 
   # Fix directory permissions
