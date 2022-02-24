@@ -2,8 +2,8 @@
 # Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=vim-airline-themes
-pkgver=r1386.63b66df
-_gitcommit=63b66df2851c0851df9e8018f62ed7208f3485de
+pkgver=r1435.97cf3e6
+_gitcommit=97cf3e6e638f936187d5f6e9b5eb1bdf0a4df256
 pkgrel=1
 pkgdesc='Themes for vim-airline'
 url='https://github.com/vim-airline/vim-airline-themes'
