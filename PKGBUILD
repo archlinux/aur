@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-ppsspp
 pkgname=$_pkgname-git
-pkgver=1.12.3.r397.gd3d87894b
+pkgver=1.12.3.r980.g3bfab6326
 pkgrel=1
 pkgdesc="Sony PlayStation Portable core"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://www.ppsspp.org/"
 license=('GPL2')
 groups=('libretro')
 depends=(
-	'ffmpeg'
+	'ffmpeg4.4' # https://github.com/hrydgard/ppsspp/issues/15308
 	'glew'
 	'glslang'
 	'libretro-core-info'
@@ -58,6 +58,7 @@ prepare() {
 }
 
 build() {
+	export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
 	cmake -S ppsspp -B build \
 		-DCMAKE_BUILD_TYPE=None \
 		-DLIBRETRO=ON \
