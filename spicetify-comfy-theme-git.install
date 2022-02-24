@@ -1,0 +1,8 @@
+post_install() {
+	echo "  -> To apply the theme, execute the following commands"
+	echo "spicetify config current_theme Comfy-spicetify
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify config extensions Comfy.js
+spicetify apply"
+	echo "==="
+}

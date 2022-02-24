@@ -1,0 +1,16 @@
+pkgbase = spicetify-comfy-theme-git
+	pkgdesc = Custom Spotify theme, built for Spicetify. Stay comfy while listening to music.
+	pkgver = r44.6935099
+	pkgrel = 1
+	url = https://github.com/NYRI4/Comfy-spicetify
+	install = spicetify-comfy-theme-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = spicetify-cli
+	provides = spicetify-comfy-theme
+	options = !strip
+	source = git+https://github.com/NYRI4/Comfy-spicetify.git
+	sha256sums = SKIP
+
+pkgname = spicetify-comfy-theme-git
