@@ -1,0 +1,15 @@
+pkgbase = bmc-git
+	pkgdesc = BMC: My bespoke, multipurpose class; designed for general use in LaTeX documents.
+	pkgver = r180.b03bc88
+	pkgrel = 1
+	url = https://github.com/tecosaur/BMC
+	install = bmc-git.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	depends = texlive-pictures
+	depends = ttf-ibm-plex
+	source = bmc-git::git+https://github.com/tecosaur/BMC.git
+	sha512sums = SKIP
+
+pkgname = bmc-git
