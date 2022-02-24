@@ -1,6 +1,6 @@
 pkgbase = sdlpal-git
 	pkgdesc = A SDL-based reimplemention of the classic Chinese-language RPG 'Xian Jian Qi Xia Zhuan'
-	pkgver = 20180228
+	pkgver = 20210211
 	pkgrel = 1
 	url = https://github.com/sdlpal/sdlpal
 	install = sdlpal.install
@@ -12,11 +12,18 @@ pkgbase = sdlpal-git
 	depends = sdl2
 	depends = xdg-utils
 	source = sdlpal::git+https://github.com/sdlpal/sdlpal.git
+	source = SDL::git+https://github.com/sdlpal/SDL.git
+	source = googletest::git+https://github.com/sdlpal/googletest.git
+	source = mingw-std-threads::git+https://github.com/sdlpal/mingw-std-threads.git
+	source = scripts::git+https://github.com/sdlpal/scripts.git
 	source = sdlpal.sh
 	source = sdlpal.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 4f3b8446705af5decf25d00b54123875b9a79ae43cf70aa641c1028c29d2d547
 	sha256sums = 47bef648b2bb5da35912d9b5bd6b4e47f0767f125465068c7b96bb437b4fb6e3
 
 pkgname = sdlpal-git
-
