@@ -1,0 +1,26 @@
+pkgbase = lua-ltdiff
+	pkgdesc = Diffing and patching for Lua tables
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/martinfelis/luatablediff
+	arch = any
+	license = MIT
+	makedepends = lua
+	makedepends = lua53
+	makedepends = lua52
+	makedepends = lua51
+	makedepends = luarocks
+	source = https://github.com/martinfelis/luatablediff/archive/refs/tags/v1.0/luatablediff-1.0.tar.gz
+	sha256sums = ef8b70bf9d9d78b3a74bad8b45fe920df30a24dc0c587441e2b87e535f0c6f6c
+
+pkgname = lua-ltdiff
+	depends = lua
+
+pkgname = lua53-ltdiff
+	depends = lua53
+
+pkgname = lua52-ltdiff
+	depends = lua52
+
+pkgname = lua51-ltdiff
+	depends = lua51
