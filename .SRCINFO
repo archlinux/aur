@@ -1,0 +1,13 @@
+pkgbase = cowsay-bin
+	pkgdesc = Cowsay implemented using Rust.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/fffzlfk/cowsay
+	arch = x86_64
+	license = MIT
+	provides = cowsay
+	conflicts = cowsay
+	source = https://github.com/fffzlfk/cowsay/releases/download/v0.1.0/cowsay-0.1.0-x86_64.tar.gz
+	sha256sums = 0b8c5681f3c81a4eeb1fc6be2d8b6b6c7fddf3b0917c09d6163c39673caeff1a
+
+pkgname = cowsay-bin
