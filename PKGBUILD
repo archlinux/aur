@@ -13,7 +13,7 @@ pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.com/"
 license=('GPL2' 'custom')
 depends=('unzip' 'ezquake')
-optdepends=('nquakesv: the nquake server')
+optdepends=('nquakesv: the nquake server' 'quake-qrp-textures: high-res textures for quake')
 arch=('any')
 install=nquake.install
 
@@ -32,7 +32,6 @@ _nQ_MIRROR="https://github.com/nQuake/distfiles/releases/download/snapshot"
 source=("${_nQ_MIRROR}/gpl.zip"
 	"${_nQ_MIRROR}/non-gpl.zip"
 	"${_nQ_MIRROR}/linux.zip"
-	"${_nQ_MIRROR}/addon-textures.zip"
 	"${_nQ_MIRROR}/addon-clanarena.zip"
 	"${_nQ_MIRROR}/addon-fortress.zip"
 	"${_nQ_MIRROR}/qsw106.zip"
@@ -43,7 +42,6 @@ noextract=('qsw106.zip')
 sha512sums=('15a426cda1d4dca863f258ad4b7d8c585f82b8dd88df45f29a96416b49052b7e3d7b09f39701bb69b1e681e608237c38470373f22d992b68d44143c05d6b2728'  # gpl.zip
             '7008e971e609b58fa614baddfc870aa00c7f4c6751b2463c5e86be71ba90ac37f80777afd3355034ae83ee316336db84cfe2b0ab4f23f234ed595263b2c15ef8'  # non-gpl.zip
             '9f9310f1d97c5e9bdd910c8a7f96d12f1f44a4b8033e6abc8e71b967bad52b024c1690fc657f6a56247b9abeca945eae41e02cc61b310d394020f5d1495531fc'  # linux.zip
-            '85ea32f0b45e68a226fad3797ef9a5e79065c3df53faadda07412aeed874dd1fb867007f64453c38bb07ccb13ceea0a8ade1892238c6948f4708ce854dcbb201'  # addon-textures.zip
             '4a295d5a4c0d815b3cdbdebce8912bf0b2918f9f431418a201ffb6688fb8effa7a6081b547cfdff0f1979ff20b2a51e33170fa77b4337db01fcd3269b1318027'  # addon-clanarena.zip
             '366af1dca4f2f11eb451eef64e6c0c86a539d8d748e15d25b609254383dfb995d79979478fe85d9539b747b50805ee95f1adc952067e9c0a502c834581443ac7'  # addon-fortress.zip
 	    	'e66af960477bfaad2ea3b1dfe95cc76d5cbfbadd9102cb9b5aee4599c91de8512ca6f322321882f0e7e62d55c3a4d066d54eaa7d2b57cd48df43145b06e1bfc6'  # qsw106.zip
@@ -137,6 +135,6 @@ package () {
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
 	cp -a ${srcdir}/CC0-1.0 ${pkgdir}/usr/share/licenses/${pkgname}/.
 	# And the Business-End(TM). Do the thing.
-	cp -a ${srcdir}/qw/textures*.pk3 ${pkgdir}/opt/quake/qw/.  # Textures. Use that wildcard there because there's multiple pk3s and I dunno which one to use. Any assistance is greatly appreciated
-	cp -a ${srcdir}/qw/readme-textures.txt ${pkgdir}/opt/quake/.  # ????
+	ln -sf /opt/quake/id1/QRP_map_textures_v.1.00.pk3 ${pkgdir}/opt/quake/qw/QRP_map_textures_v.1.00.pk3
+	ln -sf /opt/quake/id1/QRP_normalmap_textures_add-on_v.1.00.pk3 ${pkgdir}/opt/quake/qw/QRP_normalmap_textures_add-on_v.1.00.pk3
 }
