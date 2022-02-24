@@ -1,6 +1,6 @@
 pkgbase = bizhawk-monort
 	pkgdesc = A multi-system emulator on .NET. Features rerecording and tools for TASing. (Mono runtime)
-	pkgver = 2.6.2
+	pkgver = 2.8
 	pkgrel = 1
 	url = https://gitlab.com/TASVideos/BizHawk#readme
 	install = bizhawk-monort.install
@@ -12,9 +12,8 @@ pkgbase = bizhawk-monort
 	depends = mono>=6.12
 	depends = openal
 	optdepends = antimicro: to use unsupported controllers (by mapping to the keyboard)
-	provides = bizhawk=2.6.2
-	source = https://github.com/TASVideos/BizHawk/releases/download/2.6.2/BizHawk-2.6.2-linux-x64.tar.zip
-	sha512sums = 8751a2229d9e500a3f3a283ce24ae62f8f911507f5fdbe25aa41f31ac5026cf89433c89dc766864439a17531543829e4b43bc4d3b311f5a80b4df0605bbd9627
+	provides = bizhawk=2.8
+	source = https://github.com/TASVideos/BizHawk/releases/download/2.8/BizHawk-2.8-linux-x64.tar.gz
+	sha512sums = a9ffbcd914ca1843372f50de7c022107e65b8ded3bc61f04d584a7c5342ad83321a22b9f066a8872431181bcc8de605827911b0c67511c5a2d4e75910c85d1a6
 
 pkgname = bizhawk-monort
-
