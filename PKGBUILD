@@ -30,7 +30,7 @@ build() {
 }
 
 check() {
-	cmake --build build --target test
+	ctest --test-dir build
 }
 
 package() {
