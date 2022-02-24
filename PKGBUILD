@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('python')
 makedepends=(
   'python-build'
-  'python-install'
+  'python-installer'
   'python-pytest'
   'python-setuptools'
   'python-wheel'
@@ -30,7 +30,7 @@ check() {
 
 package() {
   cd "rtf_tokenize-$pkgver"
-  python -m install --destdir="$pkgdir" --optimize=1 dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
   chmod og+rX -R "$pkgdir"
 }
 
