@@ -24,7 +24,8 @@ pkgver() {
 
 build() {
 	# https://github.com/stella-emu/stella/issues/806
-	CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS" make -C stella-emu/src/libretro LTO=
+	CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+	make -C stella-emu/src/libretro LTO=
 }
 
 package() {
