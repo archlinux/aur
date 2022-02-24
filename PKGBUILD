@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
+# Maintainer: Sung Mingi <FiestaLake@protonmail.com>
 
 pkgname=libinput-gestures-git
 _pkgname=libinput-gestures
