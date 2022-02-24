@@ -3,7 +3,7 @@
 pkgname=python-plover_stroke
 pkgdesc="Helper class for working with steno strokes."
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL2')
 depends=('python')
