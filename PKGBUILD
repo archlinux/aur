@@ -3,7 +3,7 @@
 pkgname=jfrog-cli-bin
 _pkgname=jfrog-cli
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/jfrog/jfrog-cli"
@@ -27,6 +27,27 @@ sha256sums_i686=('ddf170e8f3c5b592907a432f58a1af1ebba88b2d582b0d1f7bd63b9caf6304
 sha256sums_armv7h=('8d330f8078dcc50f3f7f5feb7f3152ee8e301b798902c02379eefb2ff5e5b81a')
 sha256sums_aarch64=('3b687625e3ab095fca76a00726fa9ca1c31260e673e57aa40a6ce57a43fdec14')
 
+prepare() {
+  mkdir -p "$pkgname-$pkgver"
+  mv "$_artifact_name" "$pkgname-$pkgver/jfrog"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  chmod u+x jfrog
+  ./jfrog completion bash > jfrog.bash
+  ./jfrog completion fish > jfrog.fish
+  ./jfrog completion zsh > jfrog.zsh
+}
+
 package() {
-  install -Dm755 "$_artifact_name" "$pkgdir/usr/bin/jfrog"
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 jfrog "$pkgdir/usr/bin/jfrog"
+  ln -rs "$pkgdir/usr/bin/jfrog" "$pkgdir/usr/bin/jf"
+
+  install -Dm644 jfrog.bash "$pkgdir/usr/share/bash-completion/completions/jfrog"
+  install -Dm644 jfrog.fish "$pkgdir/usr/share/fish/vendor_completions.d/jfrog.fish"
+  install -Dm644 jfrog.zsh "$pkgdir/usr/share/zsh/site-functions/_jfrog"
 }
