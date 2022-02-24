@@ -1,0 +1,17 @@
+pkgbase = workbench-git
+	pkgdesc = Playground for GNOME development
+	pkgver = r31.9744a10
+	pkgrel = 1
+	url = https://github.com/sonnyp/Workbench
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	depends = gtk4
+	depends = glib2
+	depends = gtksourceview5
+	depends = gjs
+	depends = vte3-git
+	source = git+https://github.com/sonnyp/Workbench.git
+	b2sums = SKIP
+
+pkgname = workbench-git
