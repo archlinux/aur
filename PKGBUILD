@@ -77,7 +77,7 @@ _major=5.15
 pkgver=${_major}.25
 _branch=5.x
 xanmod=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -199,6 +199,7 @@ prepare() {
   scripts/config --enable CONFIG_ANDROID_BINDER_IPC
   scripts/config --enable CONFIG_ANDROID_BINDERFS
   scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder"
+  scripts/config --enable CONFIG_FRAMEBUFFER_CONSOLE_LEGACY_ACCELERATION
   # CONFIG_ANDROID_BINDER_IPC_SELFTEST is not set
   
   scripts/config --set-str CONFIG_DEFAULT_HOSTNAME "manjaro"
