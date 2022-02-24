@@ -3,7 +3,7 @@
 
 _dkim='dkim_verifier'
 pkgname='thunderbird-dkimverifier'
-pkgver='4.1.0'
+pkgver='4.1.1'
 pkgrel='1'
 pkgdesc='This is an add-on for Mozilla Thunderbird that verifies DKIM signatures according to the RFC 6376'
 arch=('any')
