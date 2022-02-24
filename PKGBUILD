@@ -1,14 +1,14 @@
 # Maintainer: Miles McLean <mills00013@gmail.com>
 
 pkgname=snyk
-pkgver=1.856.0
+pkgver=1.858.0
 pkgrel=1
 pkgdesc='CLI and build-time tool to find & fix known vulnerabilities in open-source dependencies'
 arch=('i686' 'x86_64')
 url='https://github.com/snyk/snyk'
 license=('apache')
 source=("${pkgname}-${pkgver}"::"https://github.com/snyk/snyk/releases/download/v${pkgver}/snyk-linux")
-sha256sums=('f8c31602bf7141de33998eecdbf6555b2e7dced1075fc369e9fdbf2982418f3e')
+sha256sums=('a4a806ee4fcfd603bd78893355c674cc5e841efb87b5641446b7072c8c5a83e7')
 noextract=("${pkgname}-${pkgver}")
 options=("!strip")
 
