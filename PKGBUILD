@@ -1,38 +1,38 @@
-# Maintai$ner: not_anonymous <nmlibertarian@gmail.com>
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: Vitaliy Berdinskikh ur6lad[at]i.ua
 # Original Submission: Bob Finch <w9ya@qrparci.net>
 
 pkgname=yfktest
 pkgver=r385.a4cabae
-pkgrel=1
+#r385.a4cabae
+pkgrel=2
 pkgdesc="Ham Radio Contesting Logger"
 arch=('any')
 url="http://fkurz.net/ham/yfktest.html"
 license=('GPL')
-depends=('perl-curses' 'hamradio-menus' 'cty' 'masterscp')
-makedepends=('subversion')
-optdepends=('hamlib: rig interfacing'
-	    'cwdaemon: transmitting cw'
-	    'winkeydaemon: usb cw xmit'
-	    'bigcty: contest version country files'
+depends=('xfce4-terminal' 'perl-curses' 'cty' 'masterscp'\
+	 'hamlib' 'winkeydaemon' 'hamradio-menus')
+makedepends=('git')
+optdepends=('cwdaemon: transmitting cw'
+	    'bigcty: country files, EVERYDAY version'
 	    'mplayer: voice keyer')
 source=("$pkgname::git+https://git.fkurz.net/yfktest/yfktest.git"
-#("$pkgname::svn://svn.fkurz.net/yfktest/trunk"
-		$pkgname.desktop
-		$pkgname.png
-		$pkgname.1)
+	 $pkgname.desktop
+	 $pkgname.png
+	 $pkgname.1)
 
 
 pkgver() {
 	cd "$srcdir/$pkgname"
+
 	printf "r%s.%s" "$(git rev-list --count HEAD)"\
 		 "$(git rev-parse --short HEAD)"
-#	printf "r%s" "$(svnversion | tr -d 'A-z')"
 }
 
 
 package() {
 	cd "$srcdir/$pkgname"
+
 	install -d $pkgdir/usr/share/$pkgname
 
 	cp -a * $pkgdir/usr/share/$pkgname
@@ -51,10 +51,10 @@ package() {
 	sed -i s:'.\/yfktest ':'yfktest ': MANUAL
 }
 md5sums=('SKIP'
-         'b8fc8f2685c87b2bf5c509ffa82d1387'
+         'abe8a35ac8cee372c002f95a74f669b4'
          '0c5fc02db4577b3b1ffcc23e5c7a2b8e'
          'a5b6724edc0adb82e53870c81dac4281')
 sha256sums=('SKIP'
-            '59d1cc347697a5f34ab465bf5d3c2437b18981d473d39e9e4a267604ac87bec8'
+            '68884be1f2e38c9f6c2c55976120c6f0c38d8ba79efee39aa2b9ac8fbc25e1fe'
             'ae4886c24e08425d7a9d6c31290924f8b328d0b2fe59b3d0c0e94ecf4d62b039'
             'c5018a263f314eca09561d8daa8f15b5de1b31f97811ca6d52a65b0b20e63409')

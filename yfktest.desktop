@@ -1,16 +1,7 @@
 [Desktop Entry]
 Name=YFKtest
-Name[en_US]=YFKtest
 Comment=Ham Radio Contest Logger
-Comment[en_US]=Ham Radio Contest Logger
-Encoding=UTF-8
-Exec=yfktest
+Exec=xfce4-terminal --geometry 80x25 -x yfktest
 Icon=yfktest
-MimeType=text/plain
-StartupNotify=true
-Terminal=true
-TerminalOptions=
 Type=Application
-Categories=Application;HamRadio;
-X-DCOP-ServiceType=none
-X-KDE-SubstituteUID=false
+Categories=HamRadio;
