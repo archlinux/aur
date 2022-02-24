@@ -1,14 +1,14 @@
 pkgbase = python-zimports
 	pkgdesc = Python import rewriter
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sqlalchemyorg/zimports
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python>=3.7
 	depends = python-pyflakes
