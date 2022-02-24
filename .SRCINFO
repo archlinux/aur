@@ -1,0 +1,13 @@
+pkgbase = python-treelog
+	pkgdesc = Logging framework that organizes messages in a tree structure
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/evalf/treelog
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-typing_extensions
+	source = https://github.com/evalf/treelog/archive/v1.0.tar.gz
+	sha512sums = 316a5784f23165b10383e354b9f798bbec4cdc532c49db068af5c418df865e2ddb64a51e87216f0389e66118d58e34d7c583b6ff4a5b95a8c03e4c6b0f71a845
+
+pkgname = python-treelog
