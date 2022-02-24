@@ -1,0 +1,16 @@
+pkgbase = dotfiles-holychicken99-git
+	pkgdesc = These are my dotfiles for i3 WM
+	pkgver = 0.1
+	pkgrel = 0.1
+	url = https://gitlab.com/holychicken99/dotfiles
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = i3-gaps
+	makedepends = polybar
+	makedepends = alacritty
+	makedepends = make
+	source = dotfiles::https://gitlab.com/holychicken99/dotfiles.git
+	md5sums = SKIP
+
+pkgname = dotfiles-holychicken99-git
