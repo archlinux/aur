@@ -9,7 +9,7 @@ _snap=iHVATX2faqAJciG5YGNM241W8fE8UvsF
 _rev_amd64=11 # snap:revision
 
 pkgname=whatpulse
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 
 pkgdesc="Measures your keyboard, mouse and application usage, network traffic and uptime."
