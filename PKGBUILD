@@ -1,7 +1,7 @@
 # Maintainer: Bao Trinh <qubidt at gmail dot com>
 
 pkgname=python-darker
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Apply black reformatting to Python files only in regions changed since a given commit'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python'
 makedepends=('python-setuptools')
 optdepends=('python-isort: for sorting import statements')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/akaihola/darker/releases/download/${pkgver}/darker-${pkgver}.tar.gz")
-sha512sums=('33ca61cc10e5ce7451c2a18a6de6b4f005d1176fe2d4c058d1eec4c8e22f687773dbc62ef6def6b09c739047511c214affba2d13b10df59d4e6afaee6fbb3242')
+sha512sums=('e41e672eb47a63d1f002c056ef7115f34b55e9afcefa334369ada445412426d0e549c795a5e70f391e1aa100a48bf3606bac6bcf89bbab46c30997055c2bc34a')
 
 build() {
   cd "darker-$pkgver"
