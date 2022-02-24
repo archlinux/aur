@@ -3,7 +3,7 @@
 pkgname=wait4x
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="Waiting for a port to enter into specify state"
+pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
 url="https://github.com/atkrad/wait4x"
 license=('Apache')
@@ -29,9 +29,9 @@ build() {
 	go build -v -ldflags "-linkmode=external -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.AppVersion=$pkgver -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.GitCommit=${_commit:0:8} -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.BuildTime=$_commit_datetime" -o "$pkgname" cmd/wait4x/main.go
 	
 	./"$pkgname" version
-	./"$pkgname" completion bash > completions/bash
-	./"$pkgname" completion zsh > completions/zsh
-	./"$pkgname" completion fish > completions/fish
+	./"$pkgname" completion bash > "$pkgname.bash"
+	./"$pkgname" completion zsh > "$pkgname.zsh"
+	./"$pkgname" completion fish > "$pkgname.fish"
 }
 
 package() {
@@ -39,7 +39,7 @@ package() {
 
 	install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
 
-	install -Dm644 completions/bash "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-	install -Dm644 completions/zsh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-	install -Dm644 completions/fish "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+	install -Dm644 "$pkgname.bash" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm644 "$pkgname.zsh" "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+	install -Dm644 "$pkgname.fish" "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
 }
