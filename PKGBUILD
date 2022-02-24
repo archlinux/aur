@@ -3,7 +3,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> ([community] package)
 
 pkgname=remmina-git
-pkgver=1.4.24.r14.gd8a0021ad
+pkgver=1.4.24.r22.ga774240d7
 pkgrel=1
 pkgdesc='A remote desktop client written in GTK+ - git checkout'
 arch=(i686 x86_64)
@@ -62,4 +62,3 @@ package() {
 
 	make DESTDIR="${pkgdir}/" install
 }
-
