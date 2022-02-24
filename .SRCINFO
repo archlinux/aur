@@ -1,6 +1,6 @@
 pkgbase = python-sklearn-onnx
 	pkgdesc = Convert scikit-learn models and pipelines to ONNX
-	pkgver = 1.10.4
+	pkgver = 1.11
 	pkgrel = 1
 	url = https://github.com/onnx/sklearn-onnx
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-sklearn-onnx
 	depends = python-protobuf
 	depends = python-scikit-learn
 	depends = python-onnxconverter-common
-	source = sklearn-onnx-1.10.4.tar.gz::https://github.com/onnx/sklearn-onnx/archive/refs/tags/1.10.4.tar.gz
-	sha256sums = 4ba094b4ba7b9d0e20acf56d4cc4663f0b8c1301742482b473362ea3e5586c9f
+	source = sklearn-onnx-1.11.tar.gz::https://github.com/onnx/sklearn-onnx/archive/refs/tags/1.11.tar.gz
+	sha256sums = 13e3725d18a9954dee664ad9407e5ac4ec1b7dbdfe968cf3ef9a12164264b87a
 
 pkgname = python-sklearn-onnx
