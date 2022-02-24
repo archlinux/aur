@@ -2,7 +2,7 @@
 # Maintainer: Maor Kadosh <qoev@protonmail.com>
 
 pkgname=gitless-git
-pkgver=619.g1ffeab0
+pkgver=3.ge32e2cc
 pkgrel=1
 pkgdesc="A scientifically proven easier-to-use git interface (git upstream)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(python-pygit2 python-setuptools)
 makedepends=(git)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=($pkgname::git://github.com/gitless-vcs/gitless.git)
+source=($pkgname::git://github.com/goldstar611/gitless.git)
 md5sums=('SKIP')  # since the sources aren't static
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = gitless-git
 	pkgdesc = A scientifically proven easier-to-use git interface (git upstream)
-	pkgver = 619.g1ffeab0
+	pkgver = 3.ge32e2cc
 	pkgrel = 1
 	url = https://gitless.com/
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = gitless-git
 	depends = python-setuptools
 	provides = gitless
 	conflicts = gitless
-	source = gitless-git::git://github.com/gitless-vcs/gitless.git
+	source = gitless-git::git://github.com/goldstar611/gitless.git
 	md5sums = SKIP
 
 pkgname = gitless-git
-
