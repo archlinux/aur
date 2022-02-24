@@ -1,0 +1,15 @@
+pkgbase = tractor
+	pkgdesc = Setup an onion routing proxy
+	pkgver = 3.12_~202108170533
+	pkgrel = 1
+	url = https://framagit.org/tractor/carburetor/
+	arch = any
+	license = GPLv3
+	makedepends = wget
+	depends = python
+	depends = python-gobject
+	depends = tor
+	source = https://launchpad.net/~tractor-team/+archive/ubuntu/tractor/+files/tractor_3.12~202108170533~ubuntu21.10.1_all.deb
+	sha256sums = a642a6f475d39cb81a212368b01a55dc1104a77feea2542ea6f7d7de441dcbef
+
+pkgname = tractor
