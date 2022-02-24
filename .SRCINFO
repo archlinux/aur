@@ -1,0 +1,20 @@
+pkgbase = mm32-jlink-pack
+	pkgdesc = JLINK Pack 支持包支持 MM32 全系列芯片，在 SEGGER JLink 6.10 及以上版本下的安装。
+	pkgver = 0.97
+	pkgrel = 1
+	url = https://www.mindmotion.com.cn/support/software/jlink_pack/
+	install = mm32-jlink-pack.install
+	arch = any
+	license = custom
+	license = Commercial
+	makedepends = libarchive
+	depends = jlink-software-and-documentation>=6.10
+	provides = MM32_JLINK_pack
+	noextract = mm32-jlink-pack-0.97.zip
+	options = !strip
+	source = mm32-jlink-pack-0.97.zip::https://www.mindmotion.com.cn/download1.aspx?itemid=152&typeid=4
+	source = mm32-jlink-pack.install
+	sha256sums = b819fe79db4e135e039ebe407318d9b1a4362bbe71720c9f42f52e4f3825770a
+	sha256sums = 783f83bea0655ec837a2c52286ccea7bc5989b183303c62dc92d86a8a6d78fa9
+
+pkgname = mm32-jlink-pack
