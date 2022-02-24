@@ -51,7 +51,7 @@ _major=5.16
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,10 +72,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0005-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0006-mt76-mt7921-reduce-log-severity-levels-for-informati.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0007-Revert-NFSv4.1-query-for-fs_location-attr-on-a-new-f.patch"
          # the main kernel config files
         'config')
 
@@ -319,10 +322,13 @@ sha512sums=('d877304a868cf29bb32d059544806314c2cd975be6132eee645d1dd54ed6e1281c4
             'SKIP'
             '2d2092e75d87100c0c4e3bd1076533c233b30cc186c96a31088a7a41540d1c648aaa764ff6fbf85b90e029771743c0234d2c8310fbd0b3ef78dd3cb38554cbc9'
             '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
-            'b778cb2a026174b4f0989998101361403890ff362f6b114fe88079f6bc6f92b19587c48f6260be7b4e60440bad3ec6914f225511390e2e39b665d1d2bed71e45'
-            '95b13eb881ce1fdfa37a1322d9bde3bba54f635b06e3e8f4ef9de8e0ed6c8b11d91cd6d2f56fa38a0f7a0425c8bc02889f3d138781baed107c8ee427146f2c53'
-            'a46a2fea4b2c83e2569cdd343933bb991466752d3c28d70698b1c477134ac0db7d400e03ea569d4f2e73c3e98cc2b5760a7588faf85dc210c1f5786ad01f66ab'
-            '748cd685447336ce0d43fca04dd489176777364030c2d0d24b782123c49b01bfd8e4c672a119478be81084db1637bd590b860b92fd2fd53c6259d7f3858448ff'
+            '860c3d6f0c1b4528e11ce3e99cb0c3acf67f8f657f1471774bd14d75bdc92a72eb33d60fc3b7fd7465b2716733a5c7ad9d07107f96f2a568505573618583d5dd'
+            'ab229799fe12a9a9b1f52ea8714abaa66085a3173f04e2d5e533b0920ba8b72e41c37ab7332db8b15b1810b9b14baf84777128de9d3495f7b438cdb5805f1a25'
+            '8b4d881cde779b016ea01f959130c2ad0f511aa09e11b7c725acdc06baf536d3ca5ff8284dfb8fd0321f04a338a6e144babfd679fed95717e47e93a787b3415a'
+            'e7c5d1bebafe300a67a3839094841c47b645653a14eb33dc9d63c29aaaed57d02ce723bd90a5bb48050f14d96b129d85f89fe74a7a13b30f99d4a0d98a1dfb55'
+            '56f7f517da01646ee9ef6a5842d2ec59fa77d8e280e34ea6aa9bba27bd5c8863b7659e1e792107be517e3ac77466ed57263bb0d5a9618cd7a2ad71b9639264d7'
+            'fe34ea8073cf29a53048be729f2ada6af38656d015061178452c6d60ab0f97f81e8d282193ba39dbba198263b3d2ff7f39ae33caded7b681600ae3391aa18a21'
+            'dbdb3daf6f309e79890bde2eb9b72e3f3fa9e55be395b2bfb6385179d48793cdd440fd757481281b081a10f1e28b172de0076a518831842b9ab444e4733df071'
             '052dccb70a1359bb941f02672e2bc6906f9a16a7d052528f165bf10071c19b8a88991de2f27948146655d312120fe37f39091d583ebfc56e35f938a4fe1e97cb')
 
 validpgpkeys=(
