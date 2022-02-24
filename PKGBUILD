@@ -23,7 +23,7 @@ makedepends=(
   'git'
   'python-babel'
   'python-build'
-  'python-install'
+  'python-installer'
   'python-mock'
   'python-pytest'
   'python-pytest-qt'
@@ -60,12 +60,10 @@ check() {
 
 package() {
   cd "$pkgname"
-  python -m install --destdir="$pkgdir" --optimize=1 dist/*.whl
+  python -m installer --destdir="$pkgdir" --compile-bytecode=1 dist/*.whl
   install -vDm644 -t "${pkgdir}/usr/share/pixmaps" plover/assets/plover.png
   install -vDm644 -t "${pkgdir}/usr/share/applications" linux/plover.desktop
   chmod og+rX -R "$pkgdir"
-  # Workaround `python-install` bug: console scripts missing execute permissions...
-  chmod +x "$pkgdir/usr/bin"/*
 }
 
 # vim:set sw=2 sts=2 et:
