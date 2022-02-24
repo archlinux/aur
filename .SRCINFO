@@ -1,7 +1,7 @@
 pkgbase = megacli
 	pkgdesc = CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards.
 	pkgver = 8.07.14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.avagotech.com/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = megacli
 	sha256sums = 9be6a8818ea1dccec65d48b86dd0cc62009dc3886229e3dce41192a241bd55c3
 
 pkgname = megacli
-

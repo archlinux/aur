@@ -2,7 +2,7 @@
 
 pkgname=megacli
 pkgver=8.07.14
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards.'
 arch=('i686' 'x86_64')
 url='http://www.avagotech.com/'
@@ -19,16 +19,10 @@ build() {
 }
 
 package() {
-  install -d "$pkgdir/opt/MegaRAID/MegaCli"
-  cp "$srcdir/opt/MegaRAID/MegaCli/"* "$pkgdir/opt/MegaRAID/MegaCli"
+  install -dm755 "$pkgdir/usr/bin"
   case "$CARCH" in
-    'i686')
-        rm "$pkgdir/opt/MegaRAID/MegaCli/MegaCli64"
-        ;;
-    'x86_64')
-        mv "$pkgdir/opt/MegaRAID/MegaCli/MegaCli64" "$pkgdir/opt/MegaRAID/MegaCli/MegaCli"
-        ;;
+    'i686')   install -Dm755 "$srcdir/opt/MegaRAID/MegaCli/MegaCli"   "$pkgdir/usr/bin/megacli" ;;
+    'x86_64') install -Dm755 "$srcdir/opt/MegaRAID/MegaCli/MegaCli64" "$pkgdir/usr/bin/megacli" ;;
   esac
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
