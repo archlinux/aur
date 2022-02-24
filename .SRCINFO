@@ -1,8 +1,8 @@
 pkgbase = tractor
-	pkgdesc = Setup an onion routing proxy
+	pkgdesc = Setup an onion routing proxy (Stable release. Based on ubuntu package)
 	pkgver = 3.12_~202108170533
 	pkgrel = 1
-	url = https://framagit.org/tractor/carburetor/
+	url = https://framagit.org/tractor/tractor/
 	arch = any
 	license = GPLv3
 	makedepends = wget
