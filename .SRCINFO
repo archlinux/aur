@@ -1,6 +1,6 @@
 pkgbase = tabby-terminal
 	pkgdesc = A terminal for a modern age
-	pkgver = 1.0.172
+	pkgver = 1.0.173
 	pkgrel = 1
 	url = https://github.com/Eugeny/tabby#readme
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tabby-terminal
 	depends = gnome-keyring
 	depends = libsecret
 	provides = tabby
-	source = tabby-1.0.172-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v1.0.172/tabby-1.0.172-linux.pacman
-	sha256sums = 58b43e02601bc79fc7c7b38851f22ff263bd46c25d7539ae86f99f06f4803265
+	source = tabby-1.0.173-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v1.0.173/tabby-1.0.173-linux.pacman
+	sha256sums = ebfd68daf6f06702c88a1b58222375ef17ee9e5cd1258bbf8af7cb1e5d1fdc06
 
 pkgname = tabby-terminal
