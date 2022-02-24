@@ -3,8 +3,8 @@
 
 pkgname=python-google-resumable-media
 _name="${pkgname#python-}"
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 pkgdesc="Utilities for Google Media Downloads and Resumable Uploads"
 arch=('any')
 url="https://github.com/googleapis/google-resumable-media-python"
@@ -23,11 +23,11 @@ optdepends=(
 # 	'python-aiohttp')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c750303924de6fe2d1826874c7ca25882378aa7f7cfc9be36069efb5caf92388')
+sha256sums=('53b87211a09046a60b40f8a1b26995536421dab4d939d3751dfaac109b0eaed7')
 
 build() {
 	cd "$_name-python-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 # requires python-google-test-utils
