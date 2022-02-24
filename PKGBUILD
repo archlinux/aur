@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://git.envs.net/laniku/chip8"
 license=('MIT')
 depends=("freeglut")
-makedepends=("base-devel" "devtools")
+makedepends=("devtools")
 source=("https://git.envs.net/laniku/chip8/archive/master.tar.gz")
 
 prepare() {
