@@ -1,0 +1,13 @@
+pkgbase = git-trim-bin
+	pkgdesc = Trims your git remote tracking branches
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/foriequal0/git-trim
+	arch = x86_64
+	license = MIT
+	depends = libgit2
+	provides = git-trim
+	source = https://github.com/foriequal0/git-trim/releases/download/v0.4.2/git-trim-linux-v0.4.2.tgz
+	sha256sums = 5f8d64dca386fbdc5807caa8f4ce77fb149bc6f6bb1b2c90b200c834a24c9534
+
+pkgname = git-trim-bin
