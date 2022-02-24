@@ -1,7 +1,7 @@
-From 4fe1df69265cb1fb1a66428fbe8dfe40c60b662d Mon Sep 17 00:00:00 2001
+From e61eba6362dd37ff51674fb1b697a73308b8cded Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/5] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/8] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -63,7 +63,7 @@ index 4b7bac10c72d..40ea1367f14a 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 3244cc56b697..ea4d51d3eda9 100644
+index 50d02e3103a5..27d39990babc 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -97,6 +97,10 @@
@@ -88,7 +88,7 @@ index 3244cc56b697..ea4d51d3eda9 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3053,6 +3061,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3052,6 +3060,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
