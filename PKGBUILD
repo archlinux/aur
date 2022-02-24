@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-dtw-python-git
-pkgver=1.1.10
+pkgver=1.1.12
 pkgrel=1
 pkgdesc="Python port of R's Comprehensive Dynamic Time Warp algorithm package"
 arch=('any')
