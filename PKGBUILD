@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname=dzr
-pkgver=220209
+pkgver=220222
 pkgrel=1
 pkgdesc="Command Line deezer.com Player"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=()
 optdepends=()
 provides=(dzr dzr-dec dzr-url)
 source=("https://github.com/yne/dzr/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("ac63cc9920daebbb8c513ecbad40302bd7ad03c27ba065ffc5c64cfbfa3d0707")
+sha256sums=("4fe0ddd8d38518843568c435417439dc29e3ac672450c1dbd84fb8de5847344f")
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
