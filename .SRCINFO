@@ -14,6 +14,7 @@ pkgbase = extrattor-git
 	depends = gzip
 	depends = unzip
 	depends = xz
+	depends = zenity
 	provides = extrattor
 	conflicts = extrattor
 	source = git+https://github.com/Mirko-r/extrattor.git
