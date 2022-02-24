@@ -14,7 +14,7 @@ pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.16
 _basever=516
-pkgver=5.16.10
+pkgver=5.16.11
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -38,8 +38,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ARCH Patches
         '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
         '0002-Btintel_Fix_bdaddress_comparison_with_garbage_value.patch'
-        '0003-Bt_Read_codec_capabilities_only_if_supported.patch'
-        '0004-Bt_fix_deadlock_for_RFCOMM_sk_state_change.patch'
         # MANJARO Patches
         '0101-i2c-nuvoton-nc677x-hwmon-driver.patch'
         '0105-quirk-kernel-org-bug-210681-firmware_rome_error.patch'
@@ -63,12 +61,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
-            'e9b145e0f2288d8de0fdd59b1bb3f95af170ed4850906bb902e4649bd8a8a0eb'
-            '39ad13563d804a78c72492baeef149e790544b84a75cb8d000b89b12a80aa210'
+            'ef7b5e4f1b043a58fcece6e3f5d9e5425db7fb2a1abddc64c5094b93931bab37'
+            'dd631bebc86803c382267fb1ba9c2b5c69c27a4a447400933a507f010944e2fe'
             '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
             'b89188b1bc3516d54965dd36def6a2af3d81379e53ff7e527bbd91f77c6f191b'
-            'f0eaa81deb5428c41d2f0b09e79a2860931e4a48a368e965172150a20fa2fa62'
-            '07d0043f86fe04e063b578f8de157cd76bd31c95cc843935142fb685d84abb21'
             '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
             '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
