@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.901
+pkgver=mainline.0.928
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -106,7 +106,7 @@ build() {
 }
 
 check() {
-	cmake --build build --target test
+	ctest --test-dir build
 }
 
 package() {
