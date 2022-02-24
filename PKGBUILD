@@ -11,7 +11,7 @@ _scalaver=2.12
 _appver=3.1.0
 pkgver=${_scalaver}_${_appver}
 _pkgver=${pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-throughput distributed messaging system'
 arch=('any')
 url='https://kafka.apache.org/'
@@ -31,7 +31,7 @@ backup=(etc/kafka/connect-console-sink.properties
         etc/kafka/tools-log4j.properties)
 install=install_kafka.sh
 
-_apache_cgi="http://www.apache.org/dyn/closer.cgi"
+_apache_cgi="https://www.apache.org/dyn/closer.cgi"
 _closest=$(curl -Li "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
 _app_path="/${pkgname}/${_appver}/${pkgname}_${_pkgver}.tgz"
 source=(${_closest}/${_app_path}
