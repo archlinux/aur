@@ -3,21 +3,21 @@
 pkgname=superslicer
 pkgver=2.3.57.11
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
-depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'nlopt' 'imath' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
+depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
 makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 replaces=('slic3r++')
-source=("https://github.com/supermerill//SuperSlicer/archive/$_pkgtag.tar.gz"
+source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0001-wxgtk3-is-broken-on-wayland.patch"
-		"0002-fix-cereal.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch")
+        "0002-fix-cereal.patch"
+        "0003-openexr3.patch")
 sha512sums=('978eb5004d788e93ea58b788fbf8fe7a7c1c515b0a138e20662c3c1973b5c72373cd14c76d25ee180095c030416b5b4429b61bb73432910fe9288897a5d7cb4d'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             '5e42f43f7b4d72c6d8d118728a8df22cc6127b3fdc0081871a43763fcaed76143bcad59a6abb56f918b94b227bb58bdd9bc06eb51f2abbc66b5725d7cc3c98d6'
@@ -33,9 +33,9 @@ prepare()
 	sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
 	# apply patches
-	patch --forward --strip=1 --input="$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
-	patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
-	patch --forward --strip=1 --input="$srcdir/0002-fix-cereal.patch"
+	patch -Np1 -i "$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
+	patch -Np1 -i "$srcdir/0002-fix-cereal.patch"
+	patch -Np1 -i "$srcdir/0003-openexr3.patch"
 
 }
 
