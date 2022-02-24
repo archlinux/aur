@@ -22,6 +22,9 @@ post_install() {
     note ""
     note "See ${blue}man way-displays${all_off} and ${blue}way-displays --help${all_off}"
     note ""
+    note "${yellow}1.4.1${all_off}"
+    note "  Minor safety improvements"
+    note ""
 }
 
 post_upgrade() {
