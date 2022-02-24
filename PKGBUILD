@@ -3,8 +3,9 @@
 
 pkgname=sunloginclient
 _pkgname=sunlogin
-pkgver=11.0.0.36662
-pkgrel=4
+_debname=SunloginClient
+pkgver=11.0.1.44968
+pkgrel=1
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64" "aarch64")
 url="https://sunlogin.oray.com"
@@ -15,13 +16,13 @@ license=('custom')
 provides=('sunlogin')
 source=("runsunloginclient.service"
         'LICENSE')
-source_x86_64=("https://down.oray.com/${_pkgname}/linux/${pkgname}-${pkgver}-amd64.deb")
-source_aarch64=("https://down.oray.com/${_pkgname}/linux/${pkgname}_${pkgver}_arm.deb")
+source_x86_64=("https://down.oray.com/${_pkgname}/linux/${_debname}_${pkgver}_amd64.deb")
+source_aarch64=("https://down.oray.com/${_pkgname}/linux/${_debname}_${pkgver}_kylin_arm.deb")
 install="${pkgname}.install"
 sha256sums=('7f36a60d84741d817a0d0804bd39c8c7d7058144a6934b2abf0841446f4a56de'
             'b3da0bda5ab0d4badb2cf7723dac95a9c5f5efb89f3d3f192d78728b064d0720')
-sha256sums_x86_64=('825e05405dcdd31e87a91a0bfa961c6e954f953d6ead667715924b4703e41ef0')
-sha256sums_aarch64=('7e3d9fd33eca25e0fca07c04777d81bdc1b5832819d36b37f0773de742dcbd59')
+sha256sums_x86_64=('e8175ed0e3deff2e04ae7d6927c3f47b9586a085b67109109ceba4ed54fd24b2')
+sha256sums_aarch64=('4d34fdea6c4ca7421acbb3ee791ea4d1470ff4fd567204f00a09042cfd547c09')
 
 build() {
   mkdir -p build
@@ -57,10 +58,10 @@ package() {
   install -Dm644 usr/share/applications/${_pkgname}.desktop -t \
                  ${pkgdir}/usr/share/applications
   # fix path
-  sed -i 's#Exec=/usr/local/sunlogin/#Exec=/usr/#g' \
-          "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  sed -i 's#Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png#Icon=sunloginclient#g' \
-          "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  sed -i -e "
+    s#Exec=/usr/local/sunlogin/#Exec=/usr/#g
+    s#Icon=/usr/local/sunlogin/res/icon/sunlogin_client.png#Icon=sunloginclient#g
+  " "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # icon
   install -Dm644 usr/local/${_pkgname}/res/icon/sunlogin_client.png \
@@ -74,15 +75,10 @@ package() {
   ln -sf "/opt/${_pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   # ugly hack
-  sed -i "s#/usr/local/sunlogin\x0#/opt/sunlogin\x0\x0\x0\x0\x0\x0\x0#g" \
-          "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
-  sed -i "s#/usr/local/sunlogin/res/icon/%s.ico\x0#/opt/sunlogin/res/icon/%s.ico\x0\x0\x0\x0\x0\x0\x0#g" \
-          "${pkgdir}/opt/${_pkgname}/bin/${pkgname}"
-
-  # replace /usr/local with /opt
-  # prefix 0x48b8, suffix 0x4889, char count(?) 0x45d0
-  sed -i "s#\x48\xB8/usr/loc\x48\x89\x45\xD0\x48\xB8al#\x48\xB8///////o\x48\x89\x45\xD0\x48\xB8pt#g" \
-         "${pkgdir}/opt/${_pkgname}/bin/oray_rundaemon"
+  sed -i "s#/usr/local/sunlogin#///////opt/sunlogin#g" \
+          "${pkgdir}/opt/${_pkgname}/bin/${pkgname}" \
+          "${pkgdir}/opt/${_pkgname}/bin/${pkgname}_desktop" \
+          "${pkgdir}/opt/${_pkgname}/bin/oray_rundaemon"
 }
 # vim: ts=2 sw=2 et: 
 
