@@ -1,0 +1,10 @@
+pkgbase = gnome-randr
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = gnome-desktop
+	source = git+https://gitlab.com/Oschowa/gnome-randr
+	sha256sums = SKIP
+
+pkgname = gnome-randr
