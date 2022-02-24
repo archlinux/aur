@@ -10,7 +10,7 @@
 _pkgsuffix=lantian
 pkgbase="linux-xanmod-$_pkgsuffix"
 
-_srctag=5.16.8-xanmod1
+_srctag=5.16.11-xanmod1
 pkgver=${_srctag//-/.}
 pkgrel=1
 
