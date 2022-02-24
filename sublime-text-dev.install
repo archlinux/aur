@@ -1,13 +1,10 @@
 post_install() {
-  # Update icon cache.
-  gtk-update-icon-cache -f '/usr/share/icons/hicolor' > /dev/null 2>&1
-
-  # Note admin after install/update on how to change th update_check setting.
   cat << _EOF
 
-  ==> sublime-text-dev install/upgrade note:
+  ==> sublime-text-dev install note:
   ------------------------------------------------------------------------------
-    This package is now used for the actual 'dev' branch of Sublime Text.
+    This package is used for the actual 'dev' branch of Sublime Text that
+    requires a license to be purchased from the Sublime Text website.
     If you want to keep using the latest stable release you should instead
     install 'sublime-text-4' or use the official repos provided by Sublime Text.
     
@@ -19,5 +16,13 @@ _EOF
 }
 
 post_upgrade() {
-  post_install
+  cat << _EOF
+
+  ==> sublime-text-dev upgrade note:
+  ------------------------------------------------------------------------------
+    To disable in-application reminders about new Sublime Text dev versions,
+    add the following setting to your User Preferences file:
+    "update_check": false
+
+_EOF
 }
