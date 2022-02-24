@@ -1,9 +1,9 @@
-# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Maintainer: MGislv <mgislv at ceppo dot xyz>
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dmidiplayer
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='MIDI file player based on Drumstick'
 arch=('x86_64')
 url='https://sourceforge.net/projects/dmidiplayer/'
@@ -19,7 +19,8 @@ build() {
 	      -DCMAKE_BUILD_TYPE=None \
 	      -DCMAKE_INSTALL_PREFIX=/usr \
 	      -DCMAKE_INSTALL_LIBDIR=lib \
-	      -DBUILD_DOCS=ON
+	      -DBUILD_DOCS=ON \
+	      -DUSE_QT=5
 	make -C build
 }
 
