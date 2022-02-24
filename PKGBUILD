@@ -7,7 +7,7 @@
 
 pkgname=signal-desktop-beta
 _pkgname=Signal-Desktop
-pkgver=5.33.0beta1
+pkgver=5.34.0beta1
 pkgrel=1
 pkgdesc='Signal Private Messenger for Linux - Beta version.'
 license=('GPL3')
@@ -15,14 +15,15 @@ conflicts=('signal-desktop-beta-bin')
 arch=('x86_64')
 url="https://signal.org"
 depends=('gtk3' 'libvips' 'libxss' 'hicolor-icon-theme')
-makedepends=('yarn' 'git' 'nodejs-lts-gallium' 'npm' 'python' 'git-lfs')
+# We need libxcrypt-compat for it to build: https://github.com/electron-userland/electron-builder-binaries/issues/47
+makedepends=('yarn' 'git' 'nodejs-lts-gallium' 'npm' 'python' 'git-lfs' 'libxcrypt-compat')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver//beta*}-beta.${pkgver##*beta}.tar.gz"
   "${pkgname}.desktop"
   "expire-from-source-date-epoch.patch"
   "signal-desktop-wrapper.sh"
   )
-sha512sums=('c9d0925216c9f30d26408cc631de6160f66797428debec4768e0b706a8836f437e02af8019746982c2418ba8a0b9e595d7db8c9f33da7cbbf4768a53d3c0e5d1'
+sha512sums=('59794b124a6863040881d18004956afb9bae8a6168ad33d09fd6fd328718d4377c3dcc23da0376c5b02e3cf7127cf6ddbc50469f07ac68fbcd115395f7fb1874'
             '70b6e5ae8552bfa96ed9a838548c4e5797160cf0f65b3760460c16009a3edae42520b618032307c5d03648178ed7d52bdfcf20083c37d361756c54aa17c76583'
             '1154859e87d8a2d649bc23210f2dd8aa473f268166559a51a2a64fe6ae094c101121535623b05b711bd87aab1f219627e9274fa542fdb0e5fe6f34b46fd7b7df'
             '457c1bd044f4e17810a7f1b284ca38809a0c1f8fed4bdb52184a169e2996e683c4c96c1cc86a013feb7b8833557245397decdcec01dbc82bb2b12b0d80424e25')
