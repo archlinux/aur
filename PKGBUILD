@@ -2,7 +2,7 @@
 
 pkgname=plover_plugins_manager
 pkgdesc="Plugins manager for Plover."
-pkgver=0.6.3
+pkgver=0.7.0
 pkgrel=4
 arch=('any')
 license=('GPL2')
@@ -29,7 +29,7 @@ makedepends=(
 url="https://github.com/benoit-pierre/plover_plugins_manager"
 _pkgdist="$pkgname-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/benoit-pierre/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('9aeebd2b8de16529638a6a5da95f0c81b3fe87cdbf731ae8c004c7f4f3c1b5df')
+sha256sums=('fe762c2d3ab2e9e026ee6f0cffe4987ce1d794196a27df81487113bef62754b5')
 
 build() {
   cd "$_pkgdist"
