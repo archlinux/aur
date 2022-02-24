@@ -1,20 +1,16 @@
 pkgbase = obs-scale-to-sound
 	pkgdesc = A plugin for OBS Studio that adds a filter which makes a source scale based on the audio levels of any audio source you choose
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/scale-to-sound.1336/
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	makedepends = cmake
-	makedepends = libxcomposite
-	makedepends = ffmpeg
-	makedepends = pciutils
-	depends = obs-studio>=27.2.0
-	source = obs-scale-to-sound-1.2.0.tar.gz::https://github.com/Qufyy/obs-scale-to-sound/archive/1.2.0.tar.gz
-	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
-	sha256sums = cca5fa64de686a64103e7e788c7c30e9455940677c5b78fbed67e187e0eb5e08
-	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789
+	depends = obs-studio
+	options = debug
+	source = obs-scale-to-sound-1.2.1.tar.gz::https://github.com/Qufyy/obs-scale-to-sound/archive/1.2.1.tar.gz
+	sha256sums = bdd72b445531835d8ac582b6f9e992519650ae9bc6f2be2d037a2e4fd9c0099c
 
 pkgname = obs-scale-to-sound
