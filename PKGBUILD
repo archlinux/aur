@@ -5,12 +5,25 @@
 
 pkgname=debops
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
 url="https://debops.org/"
 license=('GPL3')
-depends=('python' 'ansible' 'python-future' 'util-linux' 'encfs' 'gnupg')
+depends=(
+  'ansible'
+  'encfs'
+  'gnupg'
+  'python-distro'
+  'python-dotenv'
+  'python-future'
+  'python-jinja'
+  'python-pyxdg'
+  'python-toml'
+  'python-yaml'
+  'python'
+  'util-linux'
+)
 optdepends=(
   'python-dnspython: required by Ansible "dig" module'
   'python-pyopenssl: required by "openssl_*" Ansible modules'
