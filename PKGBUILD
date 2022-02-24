@@ -1,6 +1,6 @@
 # Maintainer: Lumaku <lumaku@mailbox.org>
 pkgname=python-pytorch-complex-git
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Python class for PyTorch-ComplexTensor (workaround for missing Pytorch Class)'
 arch=('any')
