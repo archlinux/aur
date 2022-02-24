@@ -2,11 +2,11 @@
 # Contributor: CodeLathe <itservices@codelathe.com>
 
 pkgname=filecloudsync
-pkgver=21.1.0.5857
+pkgver=21.3.3.7527
 pkgrel=1
 pkgdesc="FileCloud Sync for Linux: targeted for Ubuntu (12.04 and higher). Uses GTK2."
 arch=('x86_64')
-url="https://www.getfilecloud.com/additional-downloads"
+url="https://www.filecloud.com/additional-downloads"
 license=('proprietary')
 depends=('libdbusmenu-gtk2' 'libpng12' 'openssl-1.0' 'wxgtk2')
 
