@@ -29,7 +29,7 @@ _srcname="linux-xanmod-$_pkgsuffix"
 source=(
   "$_srcname::git+https://github.com/xanmod/linux.git#tag=$_srctag"
   0001-drm-i915-gvt-Add-virtual-option-ROM-emulation.patch::https://raw.githubusercontent.com/effeffe/pkgbuild/master/linux-xanmod-lantian/0001-drm-i915-gvt-Add-virtual-option-ROM-emulation.patch
-  0002-qcserial.patch::https://github.com/effeffe/pkgbuild/edit/master/linux-xanmod-lantian/0002-qcserial.patch
+  0002-qcserial.patch::https://raw.githubusercontent.com/effeffe/pkgbuild/master/linux-xanmod-lantian/0002-qcserial.patch
   0003-intel-drm-use-max-clock.patch::https://raw.githubusercontent.com/effeffe/pkgbuild/master/linux-xanmod-lantian/0003-intel-drm-use-max-clock.patch
   0004-hp-omen-fourzone.patch::https://raw.githubusercontent.com/effeffe/pkgbuild/master/linux-xanmod-lantian/0004-hp-omen-fourzone.patch
   0005-cjktty.patch::https://raw.githubusercontent.com/effeffe/pkgbuild/master/linux-xanmod-lantian/0005-cjktty.patch
