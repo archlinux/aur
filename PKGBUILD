@@ -1,19 +1,19 @@
 # Maintainer: benlypan <benlypan@gmail.com>
 
 pkgname=xf86-input-libinput-no-hires-scroll
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Generic input driver for the X.Org server based on libinput with disabling high resolution scroll"
 arch=('x86_64')
 license=('custom:MIT')
 url="http://xorg.freedesktop.org/"
 depends=('libinput')
-makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.1' 'libxi' 'libx11' 'xorgproto')
+makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=24.4' 'libxi' 'libx11' 'xorgproto')
 provides=('xf86-input-libinput')
 conflicts=('xorg-server<1.19.0' 'X-ABI-XINPUT_VERSION<24' 'X-ABI-XINPUT_VERSION>=25' 'xf86-input-libinput')
 groups=('xorg-drivers')
-source=(https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-${pkgver}.tar.bz2)
-sha512sums=('ebff9490d33fd7495df2e03203060a76b3274f0e638bc92f3d95257fac57cdb9dac308e90e54006fe9522b6de3b1f1c38fd5f0b0b75b7051e5422290f43de52d')
+source=(https://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-${pkgver}.tar.xz)
+sha512sums=('3decf694861d1aa3c02d090e66c5ed5513818cb18e9863f1790e0c8122a972230fb903705062b8291e1709db9098623f1205c63ccfb68e552e104813414589c7')
 
 build() {
   cd xf86-input-libinput-${pkgver}
