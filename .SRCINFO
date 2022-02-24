@@ -1,0 +1,20 @@
+pkgbase = python-nutils-si-git
+	pkgdesc = A collection of meshes for canonical domains
+	pkgver = 20211230
+	pkgrel = 1
+	url = https://github.com/evalf/nutils-SI
+	arch = x86_64
+	license = MIT
+	checkdepends = python-numpy
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-flit-core
+	makedepends = python-install
+	makedepends = git
+	depends = python
+	provides = python-nutils-si
+	conflicts = python-nutils-si
+	source = git+https://github.com/evalf/nutils-SI.git#branch=main
+	sha512sums = SKIP
+
+pkgname = python-nutils-si-git
