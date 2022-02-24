@@ -1,0 +1,85 @@
+diff -ruN a/api/perl/Makefile b/api/perl/Makefile
+--- a/api/perl/Makefile	2017-05-05 10:29:04.000000000 -0400
++++ b/api/perl/Makefile	2022-02-24 14:37:03.372889483 -0500
+@@ -20,5 +20,5 @@
+ all:: $($(X_MODULE)_BINARY)
+ install:: $($(X_MODULE)_BINARY)
+ 	$(Q)echo "INSTALL PERL module $^"
+-	$(Q)mkdir -p $(DESTDIR)$(libdir)/perl5/site_perl/
+-	$(Q)install $^ $(dir $^)/ExactImage.pm $(DESTDIR)$(libdir)/perl5/site_perl/
++	$(Q)mkdir -p $(DESTDIR)$(libdir)/perl5/5.30/vendor_perl/
++	$(Q)install $^ $(dir $^)/ExactImage.pm $(DESTDIR)$(libdir)/perl5/5.30/vendor_perl/
+diff -ruN a/codecs/jpeg2000.cc b/codecs/jpeg2000.cc
+--- a/codecs/jpeg2000.cc	2017-07-21 10:19:01.000000000 -0400
++++ b/codecs/jpeg2000.cc	2022-02-24 14:38:18.665809651 -0500
+@@ -67,14 +67,14 @@
+   return stream;
+ }
+ 
+-static int cpp_jas_read (jas_stream_obj_t* obj, char* buf, int cnt)
++static int cpp_jas_read (jas_stream_obj_t* obj, char* buf, unsigned int cnt)
+ {
+   std::istream* stream = (std::istream*) obj;
+   stream->read (buf, cnt);
+   return cnt;
+ }
+ 
+-static int cpp_jas_write (jas_stream_obj_t* obj, char* buf, int cnt)
++static int cpp_jas_write (jas_stream_obj_t* obj, char* buf, unsigned int cnt)
+ {
+   std::ostream* stream = (std::ostream*) obj;
+   stream->write (buf, cnt);
+diff -ruN a/gfx/X11Helper.cc b/gfx/X11Helper.cc
+--- a/gfx/X11Helper.cc	2015-07-16 10:35:10.000000000 -0400
++++ b/gfx/X11Helper.cc	2022-02-24 14:38:18.665809651 -0500
+@@ -123,7 +123,7 @@
+   XGetWindowAttributes (dpy, window, &xgwa);
+   return xgwa.visual;
+ }
+-  
++#if 0
+ Evas_Object* X11Window::CaptureIntoEvasImage (Evas* evas,
+ 					      Display* dpy,
+ 					      Window window,
+@@ -232,7 +232,7 @@
+   XDestroyImage (ximage2);
+   XDestroyImage (ximage);
+ }
+-
++#endif
+ int X11Window::screen_number (Screen *screen)
+ {
+   Display *dpy = DisplayOfScreen (screen);
+diff -ruN a/gfx/X11Helper.hh b/gfx/X11Helper.hh
+--- a/gfx/X11Helper.hh	2015-07-16 10:35:10.000000000 -0400
++++ b/gfx/X11Helper.hh	2022-02-24 14:38:18.665809651 -0500
+@@ -73,7 +73,7 @@
+   
+   static int Depth (Display* dpy, Window window);
+   static Visual* ColorVisual (Display* dpy, Window window);
+-
++#if 0
+   static Evas_Object* CaptureIntoEvasImage (Evas* evas,
+ 					    Display* dpy,
+ 					    Window window,
+@@ -83,7 +83,7 @@
+ 				    Display* dpy,
+ 				    Window window,
+ 				    int x, int y, int w, int h);
+-  
++#endif
+   static void StayOnTop (Display* dpy, Window win);
+   
+ private:
+diff -ruN a/Makefile b/Makefile
+--- a/Makefile	2016-06-18 15:35:35.000000000 -0400
++++ b/Makefile	2022-02-24 14:38:18.669142966 -0500
+@@ -48,7 +48,7 @@
+ # we have some unimplemented colorspaces in the Image::iterator :-(
+ CFLAGS += $(call cc-option,-Wno-switch -Wno-switch-enum,)
+ 
+-CXXFLAGS := $(CFLAGS) -Wno-sign-compare
++CXXFLAGS := $(CFLAGS) -Wno-sign-compare -std=gnu++98 -fpermissive
+ 
+ ifeq "$(STATIC)" "1"
+ X_EXEFLAGS += -static

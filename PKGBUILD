@@ -4,27 +4,20 @@
 
 pkgname=exact-image
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Fast image manipulation programs"
 arch=('i686' 'x86_64')
 url="http://exactcode.com/opensource/exactimage/"
 license=('GPL2')
 depends=('agg' 'jasper' 'expat' 'libtiff')
 source=("http://dl.exactcode.de/oss/exact-image/$pkgname-$pkgver.tar.bz2"
-        "$pkgname-c-98.patch"
-        "$pkgname-const.patch"
-        "$pkgname-types.patch")
+        "$pkgname-$pkgver.patch")
 sha256sums=('0694c66be5dec41377acead475de69b3d7ffb42c702402f8b713f8b44cdc2791'
-            '28509a0affb04336b16c8a8eddb19962a90f801743b76234e56e7d985df68293'
-            '2261015fbf19f48686f7c16c70295dbc71392c31426b469d45169d563dfa9e37'
-            '1a1f35db1287981065367f95b1a7e5098ecf53576176ada2653a1dabfa94264d')
+            '0fd1f388c5d947df9bf71cfc822de2f3b25121dfe76dced1af89253df93df3b9')
 
 prepare() {
 	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir"/$pkgname-c-98.patch
-	patch -p1 -i "$srcdir"/$pkgname-types.patch
-	patch -p1 -i "$srcdir"/$pkgname-const.patch
-	sed -i 's+site_perl+5.30/vendor_perl+' api/perl/Makefile
+	patch -p1 -i "$srcdir"/$pkgname-$pkgver.patch
 }
 
 build() {
