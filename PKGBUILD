@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-5
+_cranver=1.0-6
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
@@ -15,7 +15,7 @@ optdepends=("r-blob" "r-covr" "r-dplyr" "r-ggplot2" "r-knitr" "r-lwgeom" "r-maps
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("290c28fa5ea777d555e70962c59079c134f02f7bdf60259a72eea79a064a1ac4")
+sha256sums=("6b0c1a5feb2cd5d2ade7623973c3cf7af53345c082a811876ad04d0bc08db8e6")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
