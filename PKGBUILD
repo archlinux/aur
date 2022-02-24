@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=units
-_cranver=0.7-2
+_cranver=0.8-0
 pkgname=r-${_cranname,,}
 pkgdesc="Measurement Units for R Vectors"
 url="https://cran.r-project.org/package=units"
@@ -15,7 +15,7 @@ optdepends=("r-udunits2" "r-nistunits" "r-measurements" "r-xml2" "r-magrittr" "r
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("28bb0ff236abe2c25a0e330e8d9d5106")
+sha256sums=("9c46fe138e8c1c3d3a51268776412f02d09673656516148cccb71b1071beb21a")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

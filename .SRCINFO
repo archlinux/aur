@@ -1,6 +1,6 @@
 pkgbase = r-units
 	pkgdesc = Measurement Units for R Vectors
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=units
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = r-units
 	optdepends = r-testthat
 	optdepends = r-ggforce
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/units_0.7-2.tar.gz
-	md5sums = 28bb0ff236abe2c25a0e330e8d9d5106
+	source = https://cran.r-project.org/src/contrib/units_0.8-0.tar.gz
+	sha256sums = 9c46fe138e8c1c3d3a51268776412f02d09673656516148cccb71b1071beb21a
 
 pkgname = r-units
