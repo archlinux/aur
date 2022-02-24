@@ -1,13 +1,13 @@
 pkgbase = maestral-qt
 	pkgdesc = Qt interface for Maestral
 	pkgver = 1.5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SamSchott/maestral-qt
 	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = maestral>=1.5.3
 	depends = python-click
