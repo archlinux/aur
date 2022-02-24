@@ -2,7 +2,7 @@
 # Contributors: Nigel Kukard <nkukard@LBSD.net> zan <zan@420blaze.it>
 
 pkgname=obs-hevc-vaapi-git
-pkgver=27.2.0.rc1.14.gac8dbf67b
+pkgver=27.2.0.r33.g0dbae4ebe
 pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. With VAAPI HEVC support."
 arch=(i686 x86_64)
