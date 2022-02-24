@@ -2,7 +2,7 @@
 # Maintainer: Lunush
 
 pkgname=rates
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Currency exchange rates in your terminal"
 arch=("x86_64")
