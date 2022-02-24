@@ -2,7 +2,7 @@
 
 pkgname=gnome-connections-git
 _pkgname=connections
-pkgver=41.beta.r48.g3ebc58a
+pkgver=42.beta.r0.g98d9c13
 pkgrel=1
 pkgdesc="Remote desktop client for the GNOME desktop environment"
 arch=('x86_64')
@@ -14,7 +14,7 @@ checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${_pkgname%-git}"
@@ -37,11 +37,11 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs
+  meson test -C build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   # Remove unneeded development files
   rm -r "$pkgdir"/usr/include/gnome-connections/gtk-frdp \
         "$pkgdir"/usr/lib/gnome-connections/{girepository-1.0,pkgconfig} \
