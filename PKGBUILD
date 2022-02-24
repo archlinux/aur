@@ -3,7 +3,7 @@
 _pkgbase=unofficial-homestuck-collection
 pkgname="${_pkgbase}-bin"
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
@@ -14,7 +14,7 @@ provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 options=('!strip')
 source=("https://github.com/Bambosh/unofficial-homestuck-collection/releases/download/${pkgver}/unofficial-homestuck-collection-${pkgver}.tar.gz")
-sha512sums=('5665a8d0d486a8ee667212c69ba03e16f3d77314b211fa29297d8683606000692d3578e67da47e88d64b992147c1d9dac691635844e5880ac570e35312fbb3a7')
+sha512sums=('a545e3d31a196ca6a006033b6ec5451eb41d09d1c8f690c35b9f420222e78b9aba960b5ecb7676e993f70c8d779befe50a2d6189fa0f4146ac0da58bd30a4871')
 
 prepare() {
     gendesk -f \
