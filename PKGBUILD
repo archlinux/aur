@@ -1,7 +1,7 @@
 # Maintainer: ZenTauro <zentauro at riseup dot net>
 
 pkgname=conduit
-pkgver=0.2.0
+pkgver=0.3.0
 epoch=1
 pkgrel=2
 pkgdesc='A simple, fast and reliable chat server powered by matrix'
@@ -9,7 +9,7 @@ arch=(x86_64)
 url='https://conduit.rs/'
 license=(APACHE)
 depends=(gcc-libs)
-makedepends=(git rust)
+makedepends=(git rust rocksdb clang)
 backup=(etc/matrix-conduit/conduit.toml)
 optdepends=()
 source=(
