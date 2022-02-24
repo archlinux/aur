@@ -1,7 +1,7 @@
 pkgbase = rescrobbled-git
 	pkgdesc = Music scrobbler daemon using the MPRIS D-Bus interface.
-	pkgver = 0.3.0.r0.g0aff874
-	pkgrel = 1
+	pkgver = 0.5.1.r0.gf901d95
+	pkgrel = 2
 	url = https://github.com/InputUsername/rescrobbled
 	arch = x86_64
 	license = GPL3
@@ -17,4 +17,3 @@ pkgbase = rescrobbled-git
 	sha256sums = a5a9735c34c1851bfbcceddbbc3d5116fe12324281916dbb29dc7d68b89f6b74
 
 pkgname = rescrobbled-git
-
