@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=ionosctl
-pkgver=6.1.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc='IONOS Cloud CLI'
 arch=('x86_64' 'i686' 'aarch64' 'arm' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2eb7aa47b4f855e9434922863b1333e2e7b01056640611c581cfb0c7567a7573')
+sha256sums=('6f39b984a325c9c3f305fa2eb8bee52e785fabe7489875a90849f1cd597875eb')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -30,11 +30,6 @@ build() {
   for i in bash zsh fish; do
     ./"$pkgname" completion "$i" >completion."$i"
   done
-}
-
-check() {
-  cd "$pkgname-$pkgver"
-  go test ./...
 }
 
 package() {
