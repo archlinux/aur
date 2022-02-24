@@ -1,6 +1,6 @@
 # Maintainer: grialion <grialion@grial.tech>
 pkgname=rpcpp-git
-pkgver=r10.2a96ce8
+pkgver=r12.ebf294e
 pkgrel=1
 pkgdesc='RPC++ is a tool for Discord RPC (Rich Presence) to let your friends know about your Linux system'
 arch=('any')
@@ -15,11 +15,10 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-
+	( set -o pipefail
+		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 prepare() {
