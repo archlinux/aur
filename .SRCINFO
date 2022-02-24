@@ -1,0 +1,16 @@
+pkgbase = proxybound-git
+	pkgdesc = Linux applications proxifier
+	pkgver = 5.60.r1.g678b607
+	pkgrel = 1
+	url = https://github.com/cradcore/Proxybound
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	provides = proxybound
+	conflicts = proxybound
+	replaces = proxybound
+	backup = etc/proxybound.conf
+	source = git+https://github.com/cradcore/proxybound.git
+	sha512sums = SKIP
+
+pkgname = proxybound-git
