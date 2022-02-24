@@ -1,7 +1,7 @@
 pkgbase = python-requests-cache
 	pkgdesc = Transparent persistent cache for http://python-requests.org library
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reclosedev/requests-cache
 	arch = any
 	license = custom:BSD-2-clause
@@ -12,7 +12,7 @@ pkgbase = python-requests-cache
 	checkdepends = python-ujson
 	checkdepends = python-timeout-decorator
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python-requests
 	depends = python-appdirs
