@@ -1,0 +1,4 @@
+pkg
+src
+wine
+*.pkg.tar.zst 
