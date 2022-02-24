@@ -12,6 +12,7 @@ license=('GPL2')
 depends=('xdg-utils' 'gtk2' 'mariadb' 'hamlib' 'hamradio-menus')
 optdepends=('winkeydaemon: usb cw xmit'
             'cwdaemon: transmitting cw'
+	    'fldigi: RTTY and Digital modes'
             'masterscp: supercheckpartial files'
             'cty: country files'
             'bigcty: contest version country files'

@@ -12,6 +12,7 @@ pkgbase = cqrlog-bin
 	depends = hamradio-menus
 	optdepends = winkeydaemon: usb cw xmit
 	optdepends = cwdaemon: transmitting cw
+	optdepends = fldigi: RTTY and Digital modes
 	optdepends = masterscp: supercheckpartial files
 	optdepends = cty: country files
 	optdepends = bigcty: contest version country files
