@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=neovim-git
-pkgver=0.4.0.r2972.g3fbff98cf
+pkgver=0.5.0.r2185.gfdea15723f
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -48,7 +48,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --build . --target install
 
   cd "${srcdir}/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 runtime/nvim.desktop "${pkgdir}/usr/share/applications/nvim.desktop"
   install -Dm644 runtime/nvim.png "${pkgdir}/usr/share/pixmaps/nvim.png"
 
