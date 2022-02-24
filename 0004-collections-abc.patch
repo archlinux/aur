@@ -1,4 +1,4 @@
-diff -urN --color a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedict.py
+diff --git a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedict.py
 --- a/lib/third_party/dns/namedict.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/lib/third_party/dns/namedict.py	2022-02-03 18:13:23.113987963 -0700
 @@ -32,7 +32,14 @@
@@ -17,7 +17,7 @@ diff -urN --color a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedi
      """A dictionary whose keys are dns.name.Name objects.
  
      In addition to being like a regular Python dictionary, this
-diff -urN --color a/lib/third_party/functools32/functools32.py b/lib/third_party/functools32/functools32.py
+diff --git a/lib/third_party/functools32/functools32.py b/lib/third_party/functools32/functools32.py
 --- a/lib/third_party/functools32/functools32.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/lib/third_party/functools32/functools32.py	2022-02-03 18:13:23.113987963 -0700
 @@ -12,7 +12,7 @@
@@ -41,7 +41,7 @@ diff -urN --color a/lib/third_party/functools32/functools32.py b/lib/third_party
  ################################################################################
  ### OrderedDict
  ################################################################################
-diff -urN --color a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py b/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py
+diff --git a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py b/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py
 --- a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py	2022-02-03 18:13:23.113987963 -0700
 @@ -28,6 +28,13 @@
@@ -85,32 +85,7 @@ diff -urN --color a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.
      raise ValueError("Invalid request sent to prediction server: {}".format(
          repr(request_json)))
    if INSTANCES_KEY not in request_json:
-diff -urN --color a/platform/bq/bigquery_client.py b/platform/bq/bigquery_client.py
---- a/platform/bq/bigquery_client.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/platform/bq/bigquery_client.py	2022-02-03 18:31:08.321051236 -0700
-@@ -47,6 +47,12 @@
- import bq_flags
- 
- 
-+try:
-+    from collections.abc import Mapping
-+except ImportError:
-+    from collections import Mapping
-+
-+
- # A unique non-None default, for use in kwargs that need to
- # distinguish default from None.
- _DEFAULT = object()
-@@ -6758,7 +6764,7 @@
-   def __init__(self, *unused_args, **unused_kwds):
-     raise NotImplementedError('Cannot instantiate static class ApiClientHelper')
- 
--  class Reference(collections.Mapping):
-+  class Reference(Mapping):
-     """Base class for Reference objects returned by apiclient."""
-     _required_fields = frozenset()
-     _optional_fields = frozenset()
-diff -urN --color a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
+diff --git a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
 --- a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py	2022-02-03 18:13:23.113987963 -0700
 @@ -27,11 +27,17 @@
@@ -132,7 +107,7 @@ diff -urN --color a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b
  DYNAMODB_CONTEXT = Context(
      Emin=-128, Emax=126, rounding=None, prec=38,
      traps=[Clamped, Overflow, Inexact, Rounded, Underflow])
-diff -urN --color a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py b/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py
+diff --git a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py b/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py
 --- a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py	1980-01-01 01:00:00.000000000 -0700
 +++ b/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py	2022-02-03 18:13:23.113987963 -0700
 @@ -29,6 +29,13 @@
@@ -158,3 +133,19 @@ diff -urN --color a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py b
          for name in value:
              if name.startswith('_'):
                  continue
+diff --git a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
+index c316fd9..4191788 100644
+--- a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
++++ b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
+@@ -481,7 +481,10 @@ else:
+ try:
+     from collections import ChainMap
+ except ImportError: # pragma: no cover
+-    from collections import MutableMapping
++    if sys.version_info > (3, 3):
++        from collections.abc import MutableMapping
++    else:
++        from collections import MutableMapping
+
+     try:
+         from reprlib import recursive_repr as _recursive_repr
