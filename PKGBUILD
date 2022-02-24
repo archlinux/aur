@@ -2,7 +2,7 @@
 pkgname=qtscrcpy
 _pkgname=QtScrcpy
 pkgver=1.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/barry-ran/QtScrcpy"
@@ -31,6 +31,9 @@ prepare() {
 
   sed -i '/-Wno-c++17-extensions/d' "$_pkgname/CMakeLists.txt"
   sed -i 's/-Wall -Wextra -pedantic -Werror/-Wall -Wextra -pedantic/g' "$_pkgname/CMakeLists.txt"
+
+  # Not ready for Qt6 yet
+  sed -i 's/Qt6 Qt5/Qt5/g' "$_pkgname/CMakeLists.txt"
 }
 
 build() {
