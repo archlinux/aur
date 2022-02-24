@@ -1,11 +1,11 @@
 # Maintainer: Nathan Vance <natervance@gmail.com>
 
 pkgname=biblereader
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
-pkgdesc="GTK Frontend for libbible"
+pkgdesc="A GTK Frontend for libbible"
 arch=('x86_64')
-url="https://vance.fish/git/biblereader/"
+url="https://vance.fish/git/biblereader"
 license=('GPL')
 depends=(gtkmm3 'libbible>=1.0.1')
 source=($url/snapshot/$pkgname-$pkgver.tar.gz{,.asc})
@@ -21,5 +21,5 @@ package() {
     make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('ebdf5fdcac069e31f4d896c716294865a85ded8f05184909378878cf8320c959'
+sha256sums=('497d1adc2294c563e6aaff62bb6fd92cde499476dc23f4d16758eedd16c23882'
             'SKIP')
