@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=nutils-SI
 pkgname=python-${_base,,}-git
-pkgdesc="A collection of meshes for canonical domains"
+pkgdesc="Framework for physical units"
 pkgver=20211230
 pkgrel=1
 arch=('x86_64')

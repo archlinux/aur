@@ -1,5 +1,5 @@
 pkgbase = python-nutils-si-git
-	pkgdesc = A collection of meshes for canonical domains
+	pkgdesc = Framework for physical units
 	pkgver = 20211230
 	pkgrel = 1
 	url = https://github.com/evalf/nutils-SI
