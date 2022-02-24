@@ -1,13 +1,13 @@
 pkgbase = libxcrypt-compat
 	pkgdesc = Modern library for one-way hashing of passwords: legacy API functions
 	pkgver = 4.4.28
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/besser82/libxcrypt/
 	arch = x86_64
 	license = GPL
 	depends = glibc
 	depends = libxcrypt
-	provides = libcrypt.so.1
+	provides = libcrypt.so
 	options = !emptydirs
 	source = https://github.com/besser82/libxcrypt//releases/download/v4.4.28/libxcrypt-4.4.28.tar.xz
 	source = https://github.com/besser82/libxcrypt//releases/download/v4.4.28/libxcrypt-4.4.28.tar.xz.asc

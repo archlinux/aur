@@ -3,13 +3,13 @@
 
 pkgname=libxcrypt-compat
 pkgver=4.4.28
-pkgrel=2
+pkgrel=3
 pkgdesc='Modern library for one-way hashing of passwords: legacy API functions'
 arch=('x86_64')
 url='https://github.com/besser82/libxcrypt/'
 license=('GPL')
 depends=('glibc' 'libxcrypt')
-provides=('libcrypt.so.1')
+provides=('libcrypt.so')
 options=(!emptydirs)
 validpgpkeys=('678CE3FEE430311596DB8C16F52E98007594C21D') # Björn 'besser82' Esser
 source=("${url}/releases/download/v${pkgver}/${pkgname%-compat}-${pkgver}.tar.xz"{,.asc})
