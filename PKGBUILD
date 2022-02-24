@@ -1,7 +1,7 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=superdux-git
-pkgver=0.1.0.r301.dda2581+r1690.7e5e6729
+pkgver=0.1.0.r357.b5fa7ef+r1798.8073e3d3
 pkgrel=1
 pkgdesc="A Qt-based interface of SameBoy, An accuracy-focused Game Boy/Game Boy Color emulator (git build)"
 depends=('qt6-base')
@@ -31,7 +31,6 @@ prepare() {
 build() {
     cd "$srcdir"/build
     cmake ../${pkgname%-git} -G Ninja \
-        -DBUILD_QT5_VERSION=off \
         -DSAMEBOY_SOURCE_DIR="${srcdir}"/SameBoy \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
