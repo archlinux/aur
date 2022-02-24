@@ -3,7 +3,7 @@
 
 pkgname=python-tidalapi
 pkgver=0.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial API for TIDAL music streaming service.'
 arch=('any')
 url='https://github.com/tamland/python-tidal'
@@ -12,7 +12,7 @@ depends=('python-requests')
 makedepends=(
 	'git'
 	'python-build'
-	'python-install'
+	'python-installer'
 	'python-wheel'
 	'python-sphinx'
 	'python-setuptools')
@@ -23,7 +23,7 @@ validpgpkeys=('E09E6FC5E0472F735B7599C4BBEDD0C513635C9F')
 
 build() {
 	cd "$pkgname"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	cd docs
 	sphinx-build -b man . _build/man
 }
@@ -33,6 +33,6 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 docs/_build/man/tidalapi.1 -t "$pkgdir/usr/share/man/man1/"
 }
