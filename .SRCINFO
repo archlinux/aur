@@ -1,0 +1,20 @@
+pkgbase = nationstech-jlink-pack
+	pkgdesc = JLINK Pack 支持包支持 Nationstech (国民技术) 全系列芯片，在 SEGGER JLink 6.42 及以上版本下的安装。
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://bbs.21ic.com/icview-3183882-1-1.html
+	install = nationstech-jlink-pack.install
+	arch = any
+	license = custom
+	license = Commercial
+	makedepends = unzip
+	depends = jlink-software-and-documentation>=6.42
+	provides = Nationstech_JLINK_pack
+	noextract = nationstech-jlink-pack-1.0.6.zip
+	options = !strip
+	source = nationstech-jlink-pack-1.0.6.zip::https://bbs.21ic.com/forum.php?mod=attachment&aid=MTc5OTg4Mnw5YTUzMDhjZHwxNjQ1Njk2NDU4fDE3MTY4ODR8MzE4Mzg4Mg%3D%3D
+	source = nationstech-jlink-pack.install
+	sha256sums = 2fd82a41d8a77adebf777353b5bdcca37e4803685badf9a3ce12ad3c67e5a83d
+	sha256sums = fd9bcba2df02c185cefac582b404d86f2b2c4a8f4d7d8ff0a890f596af11c9ec
+
+pkgname = nationstech-jlink-pack
