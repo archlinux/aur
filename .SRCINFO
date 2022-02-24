@@ -1,6 +1,6 @@
 pkgbase = libretro-dosbox-pure-git
 	pkgdesc = MS-DOS core
-	pkgver = 0.24.r0.gd64bc25
+	pkgver = 0.26.r0.g1845cd9
 	pkgrel = 1
 	url = https://github.com/schellingb/dosbox-pure
 	arch = x86_64

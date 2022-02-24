@@ -2,7 +2,7 @@
 _reponame=dosbox-pure
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=0.24.r0.gd64bc25
+pkgver=0.26.r0.g1845cd9
 pkgrel=1
 pkgdesc="MS-DOS core"
 arch=('x86_64')
@@ -25,7 +25,8 @@ prepare() {
 	sed -E \
 		-e 's/^(\s*(CFLAGS|LDFLAGS)\s*):=/\1+=/' \
 		-e 's/-Wno-format//' \
-		-e 's/-O[23]//' \
+		-e 's/-O[0123s]//' \
+		-e '/\$\(LDFLAGS\)/s/$/ -lpthread/' \
 		-i $_reponame/Makefile
 }
 
