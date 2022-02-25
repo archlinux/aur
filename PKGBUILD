@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-deepin-gir-git
-pkgver=2.0.2.r8.g911db08
-pkgrel=15
+pkgver=3.0.0.r0.gde36694
+pkgrel=1
 pkgdesc='Generate static golang bindings for GObject'
 arch=('any')
 url="https://github.com/linuxdeepin/go-gir-generator"
@@ -13,10 +13,8 @@ checkdepends=('golang-gopkg-check.v1')
 provides=('golang-deepin-gir')
 conflicts=('golang-deepin-gir')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/go-gir-generator"
-        glib-2.63.patch)
-sha512sums=('SKIP'
-            'f39080fe660de5bf9e8d8fd7db5c9449866594c7286c013392768eeb4af9f459c0fff2956c9a07d4df772a7facd249d890930796dd7692a3a401832b4160bef6')
+source=("$pkgname::git://github.com/linuxdeepin/go-gir-generator")
+sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
@@ -25,12 +23,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  mkdir -p "$srcdir"/build/src/pkg.deepin.io
+  mkdir -p "$srcdir"/build/src/github.com/linuxdeepin/
 
   # Should be fixed upstream
-  mkdir -p out/src/pkg.deepin.io/gir/{glib-2.0,gobject-2.0,gio-2.0,gudev-1.0}
-
-  patch -p0 -i ../glib-2.63.patch
+  mkdir -p out/src/github.com/linuxdeepin/go-gir/{glib-2.0,gobject-2.0,gio-2.0,gudev-1.0}
 
   # https://github.com/linuxdeepin/developer-center/issues/955
   sed -i "s/'Can'tFind'/“Can'tFind”/" lib.in/glib-2.0/keyfile_test.go
@@ -44,13 +40,13 @@ build() {
   rm -r gogtk-demo
   make
 
-  mv out/src/pkg.deepin.io/gir "$srcdir"/build/src/pkg.deepin.io/
+  mv out/src/github.com/linuxdeepin/go-gir "$srcdir"/build/src/github.com/linuxdeepin/
 }
 
 check() {
   # https://github.com/linuxdeepin/developer-center/issues/955
   export GOPATH="$srcdir/build:/usr/share/gocode"
-  cd "$srcdir"/build/src/pkg.deepin.io/gir
+  cd "$srcdir"/build/src/github.com/linuxdeepin/go-gir
   go test -v $(go list ./...)
 
   cd "$srcdir/$pkgname"
@@ -58,6 +54,6 @@ check() {
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/gocode/src/pkg.deepin.io
-  cp -a "$srcdir"/build/src/pkg.deepin.io/gir "$pkgdir"/usr/share/gocode/src/pkg.deepin.io/
+  mkdir -p "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin
+  cp -a "$srcdir"/build/src/github.com/linuxdeepin/go-gir "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin
 }
