@@ -1,7 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=wlroots-asan-git
-pkgver=0.16.0.r5337.da2491d4
+_pkgname=wlroots
+pkgver=0.16.0.r5387.e279266f
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library (git version, with address sanitizer)'
@@ -31,7 +32,7 @@ makedepends=(
 	vulkan-headers
 	wayland-protocols
 	xorgproto)
-source=("${pkgname}::git+${url}.git")
+source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 _meson_configure() {
@@ -40,7 +41,7 @@ _meson_configure() {
 		--buildtype=debug \
 		-Dwerror=false \
 		-Dexamples=false \
-		"${pkgname}" "${_builddir}"
+		"${_pkgname}" "${_builddir}"
 }
 
 prepare () {
@@ -53,7 +54,7 @@ pkgver () {
 		meson introspect --projectinfo build-pkgver \
 		  | awk 'match($0, /"version":\s*"([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+)"/, ret) {printf "%s",ret[1]}'
 	)
-	cd "${pkgname}"
+	cd "${_pkgname}"
 	printf ".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -64,7 +65,7 @@ build () {
 
 package () {
 	DESTDIR="${pkgdir}" meson install -C build
-	install -Dm644 "${pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${_pkgname}/"LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 post_upgrade() {
