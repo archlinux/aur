@@ -1,0 +1,16 @@
+pkgbase = ttf-genjyuu-gothic
+	pkgdesc = Japanese TrueType font processed in a round gothic style based on Source Han Sans
+	pkgver = 20150607
+	pkgrel = 1
+	url = http://jikasei.me/font/genjyuu/
+	install = ttf-genjyuu-gothic.install
+	arch = any
+	license = custom:SIL Open Font License 1.1
+	source = https://ja.osdn.net/downloads/users/8/8636/genjyuugothic-20150607.7z
+	source = https://ja.osdn.net/downloads/users/8/8638/genjyuugothic-x-20150607.7z
+	source = https://ja.osdn.net/downloads/users/8/8635/genjyuugothic-l-20150607.7z
+	sha256sums = 1997876351985ac9e2ea7a7a809c91e3fdaef878ece5b830f2512c882c3e49db
+	sha256sums = 553967bdf0066069e4f687c81ded9c7d7bc1abcbd32d9177efc2bf85e7f8037a
+	sha256sums = 698007a5783e97e821b929d0e57f74446a86dece5032fe576897356586f76cbb
+
+pkgname = ttf-genjyuu-gothic
