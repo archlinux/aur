@@ -1,9 +1,0 @@
-*.gz
-*.zip
-*.tar.*
-gyp
-pkg
-src
-mozc-*
-jsr305-*
-*.patch

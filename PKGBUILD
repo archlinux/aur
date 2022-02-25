@@ -1,91 +1,97 @@
-# Maintainer: Naoya Inada <naoina@kuune.org>
+# Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 # Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/33/33029/fcitx-mozc-ut-20210925.PKGBUILD
-
-# Mozc compile option
-_bldtype=Release
-
-_mozcver=2.26.4507.102
-_fcitxver=20210822
-_iconver=20201229
-_utdicver=20210925
-pkgver=${_mozcver}.${_utdicver}
+pkgname='fcitx-mozc-ut'
+pkgver=2.26.4656.102
 pkgrel=1
-
-_pkgbase=mozc
-pkgname=fcitx-mozc-ut
-pkgdesc="Fcitx engine module for Mozc with Mozc UT Dictionary"
+pkgdesc='Mozc module for Fcitx'
 arch=('x86_64')
-url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
-license=('custom')
-depends=('mozc-ut' 'fcitx' 'qt5-base')
-makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
-conflicts=('fcitx-mozc' 'fcitx-mozc-ut2' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified')
-
-source=(
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
-  abseil-cpp-20210324.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.1.tar.gz
-  googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
-  protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-${_fcitxver}.patch
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/fcitx-mozc-icons-${_iconver}.tar.gz
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.tar.bz2
-)
-
-sha256sums=(
-  'ab35c19efbae45b1fbd86e61625d4d41ad4fb95beefdf5840bdd7ee2f7b825cd'
-  '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
-  '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
-  '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
-  'b8e69d58d66b529d3a4803075dfb6e756afe546b3959cc2e7308ecfdf6c1a664'
-  '7985e6e8c4f4f45f8d040e54715c90b54cd51bb86f6a97fa3bdb17b2137e927d'
-  '17e660687a75ae343e0276003a6cd86e1f6d96c4605252ac32f819fe9622add0'
-)
+url='https://github.com/fcitx/mozc'
+license=('Apache' 'BSD' 'LGPL' 'custom')
+depends=('fcitx' 'mozc>=2.26.4656.102')
+makedepends=('bazel' 'git' 'python' 'qt5-base')
+optdepends=('fcitx-configtool')
+provides=('fcitx-mozc=2.26.4656.102')
+conflicts=('fcitx-mozc')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=0dcb977536385e18f88e29b3ae42b07fd5f5f433"
+        "fcitx.patch")
+sha256sums=('SKIP'
+            'b934e48f1828f4ef471899bc9bf21367b45a8ab6c6dd0b9d171478040e285dff')
 
 prepare() {
-  cd mozc-${_mozcver}
-  rm -rf src/third_party
-  mkdir src/third_party
-  mv ${srcdir}/abseil-cpp-20210324.1 src/third_party/abseil-cpp
-  mv ${srcdir}/googletest-release-1.10.0 src/third_party/gtest
-  mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
-  patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
+    cd ${pkgname}-git/src
 
-  # Use libstdc++ instead of libc++
-  sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
+    git submodule update --init --recursive
+
+    # Restore the workspace to its original state
+    [[ -f BUILD.fcitx.bazel ]] && rm BUILD.fcitx.bazel
+    [[ -d unix/fcitx ]] && rm -r unix/fcitx
+    git restore .
+
+    # Patch in the out-of-source fcitx target (pulled from https://github.com/fcitx/mozc)
+    patch -Np2 -i ${srcdir}/fcitx.patch
+
+    # Fix the Qt5 include path
+    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
+
+    # Temp fix for the Android NDK error
+    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
+
+    # Load the application icon dynamically
+    sed -i -e 's|IconName=/usr/share/fcitx/mozc/icon/mozc.png|IconName=fcitx-mozc|' unix/fcitx/mozc.conf
 }
 
 build() {
-  cd mozc-${_mozcver}/src
+    cd ${pkgname}-git/src
 
-  _targets="unix/fcitx/fcitx.gyp:fcitx-mozc unix/fcitx/fcitx.gyp:gen_fcitx_mozc_i18n"
-
-  GYP_DEFINES="enable_gtk_renderer==0" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
-  python build_mozc.py build -c $_bldtype $_targets
+    export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+    bazel build unix/fcitx:fcitx-mozc.so unix/icons --config oss_linux --compilation_mode opt
 }
 
 package() {
-  cd mozc-${_mozcver}/src
-  install -d ${pkgdir}/usr/share/licenses/$pkgname/
-  install -m 644 ../LICENSE data/installer/*.html ${pkgdir}/usr/share/licenses/${pkgname}/
+    cd ${pkgname}-git/src
 
-  for mofile in out_linux/${_bldtype}/gen/unix/fcitx/po/*.mo
-  do
-    filename=`basename $mofile`
-    lang=${filename/.mo/}
-    install -D -m 644 $mofile ${pkgdir}/usr/share/locale/$lang/LC_MESSAGES/fcitx-mozc.mo
-  done
+    install -Dm644 ../LICENSE                                  ${pkgdir}/usr/share/licenses/fcitx-mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html              ${pkgdir}/usr/share/licenses/fcitx-mozc/credits_en.html
 
-  install -D -m 755 out_linux/${_bldtype}/fcitx-mozc.so ${pkgdir}/usr/lib/fcitx/fcitx-mozc.so
-  install -D -m 644 unix/fcitx/fcitx-mozc.conf ${pkgdir}/usr/share/fcitx/addon/fcitx-mozc.conf
-  install -D -m 644 unix/fcitx/mozc.conf ${pkgdir}/usr/share/fcitx/inputmethod/mozc.conf
+    install -Dm755 bazel-bin/unix/fcitx/fcitx-mozc.so          ${pkgdir}/usr/lib/fcitx/fcitx-mozc.so
+    install -Dm644 unix/fcitx/fcitx-mozc.conf                  ${pkgdir}/usr/share/fcitx/addon/mozc.conf
+    install -Dm644 unix/fcitx/mozc.conf                        ${pkgdir}/usr/share/fcitx/inputmethod/mozc.conf
 
-  install -d ${pkgdir}/usr/share/doc/${pkgname}/
-  cp {../AUTHORS,../LICENSE,../README.md} ${pkgdir}/usr/share/doc/${pkgname}/
+    for pofile in unix/fcitx/po/*.po
+    do
+        filename=`basename ${pofile}`
+        lang=${filename/.po/}
+        mofile=${pofile/.po/.mo}
+        msgfmt ${pofile} -o ${mofile}
+        install -Dm644 ${mofile} ${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/fcitx-mozc.mo
+    done
 
-  install -d ${pkgdir}/usr/share/fcitx/mozc/icon
-  install -m 644 ${srcdir}/fcitx-mozc-icons-${_iconver}/*.png ${pkgdir}/usr/share/fcitx/mozc/icon/
+    cd bazel-bin/unix
+
+    unzip -o icons.zip
+
+    install -Dm644 mozc.png                                    ${pkgdir}/usr/share/icons/hicolor/128x128/apps/org.fcitx.Fcitx.fcitx-mozc.png
+    install -Dm644 alpha_full.svg                              ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-alpha-full.svg
+    install -Dm644 alpha_half.svg                              ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-alpha-half.svg
+    install -Dm644 direct.svg                                  ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-direct.svg
+    install -Dm644 hiragana.svg                                ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-hiragana.svg
+    install -Dm644 katakana_full.svg                           ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-katakana-full.svg
+    install -Dm644 katakana_half.svg                           ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-katakana-half.svg
+    install -Dm644 outlined/dictionary.svg                     ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-dictionary.svg
+    install -Dm644 outlined/properties.svg                     ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-properties.svg
+    install -Dm644 outlined/tool.svg                           ${pkgdir}/usr/share/icons/hicolor/scalable/apps/org.fcitx.Fcitx.fcitx-mozc-tool.svg
+
+    ln -s org.fcitx.Fcitx.fcitx-mozc.png                       ${pkgdir}/usr/share/icons/hicolor/128x128/apps/fcitx-mozc.png
+    ln -s org.fcitx.Fcitx.fcitx-mozc-alpha-full.svg            ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-alpha-full.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-alpha-half.svg            ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-alpha-half.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-direct.svg                ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-direct.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-hiragana.svg              ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-hiragana.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-katakana-full.svg         ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-katakana-full.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-katakana-half.svg         ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-katakana-half.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-dictionary.svg            ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-dictionary.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-properties.svg            ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-properties.svg
+    ln -s org.fcitx.Fcitx.fcitx-mozc-tool.svg                  ${pkgdir}/usr/share/icons/hicolor/scalable/apps/fcitx-mozc-tool.svg
 }

@@ -1,0 +1,4385 @@
+diff -ruN google-mozc-git/src/BUILD.fcitx.bazel fcitx-mozc-git/src/BUILD.fcitx.bazel
+--- google-mozc-git/src/BUILD.fcitx.bazel	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/BUILD.fcitx.bazel	2022-02-25 03:10:58.944724168 +0200
+@@ -0,0 +1,27 @@
++package(
++    default_visibility = ["//visibility:public"],
++)
++
++# This rule is created from pkg-config
++#
++# packages="fcitx"
++# copts, hdrs, indludes: pkg-config --cflags $packages
++# linkopts: pkg-config --libs-only-l $packages
++
++cc_library(
++    name = "fcitx",
++    hdrs = glob([
++        "include/fcitx/**",
++        "include/fcitx-config/**",
++        "include/fcitx-utils/**",
++    ]),
++    copts = ["-pthread"],
++    includes = [
++        "include",
++    ],
++    linkopts = [
++        "-lfcitx-core",
++        "-lfcitx-config",
++        "-lfcitx-utils",
++    ],
++)
+diff -ruN google-mozc-git/src/unix/fcitx/BUILD fcitx-mozc-git/src/unix/fcitx/BUILD
+--- google-mozc-git/src/unix/fcitx/BUILD	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/BUILD	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,97 @@
++load(
++    "//:build_defs.bzl",
++    "cc_binary_mozc",
++    "cc_library_mozc",
++)
++
++package(default_visibility = ["//:__subpackages__"])
++
++cc_library_mozc(
++    name = "mozc_connection",
++    srcs = ["mozc_connection.cc"],
++    hdrs = ["mozc_connection.h"],
++    deps = [
++        ":fcitx_key_util",
++        ":surrounding_text_util",
++        "//base:port",
++        "//base:util",
++        "//client:client",
++        "//session:ime_switch_util",
++        "//protocol:commands_cc_proto",
++    ]
++)
++
++cc_library_mozc(
++    name = "fcitx_mozc",
++    srcs = [
++        "fcitx_mozc.cc",
++        "mozc_response_parser.cc",
++    ],
++    hdrs = [
++        "fcitx_mozc.h",
++        "mozc_response_parser.h",
++    ],
++    deps = [
++        ":mozc_connection",
++        ":fcitx_key_util",
++        ":surrounding_text_util",
++        "//base:base",
++        "//base:port",
++        "//base:process",
++        "//base:run_level",
++        "//base:util",
++        "//protocol:commands_cc_proto",
++        "//client:client_interface",
++    ],
++)
++
++cc_library_mozc(
++    name = "fcitx_key_util",
++    srcs = [
++        "fcitx_key_event_handler.cc",
++        "fcitx_key_translator.cc",
++    ],
++    hdrs = [
++        "fcitx_key_event_handler.h",
++        "fcitx_key_translator.h",
++    ],
++    deps = [
++        "//base:logging",
++        "//base:port",
++        "//protocol:config_cc_proto",
++        "//protocol:commands_cc_proto",
++        "@fcitx//:fcitx",
++    ],
++)
++
++cc_library_mozc(
++    name = "surrounding_text_util",
++    srcs = [
++        "surrounding_text_util.cc",
++    ],
++    hdrs = [
++        "surrounding_text_util.h",
++    ],
++    deps = [
++        "//base:util",
++        "//base:logging",
++        "//base:port",
++        "@fcitx//:fcitx",
++    ],
++)
++
++cc_binary_mozc(
++    name = "fcitx-mozc.so",
++    srcs = ["eim.cc"],
++    deps = [
++        ":fcitx_mozc",
++        "//base:init_mozc",
++        "@fcitx//:fcitx",
++    ],
++    local_defines = [
++        'LOCALEDIR=\\"/usr/share/locale\\"',
++    ],
++    linkstatic = 1,
++    linkshared = 1,
++)
++
+diff -ruN google-mozc-git/src/unix/fcitx/eim.cc fcitx-mozc-git/src/unix/fcitx/eim.cc
+--- google-mozc-git/src/unix/fcitx/eim.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/eim.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,271 @@
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include <fcitx/instance.h>
++#include <fcitx/ime.h>
++#include <fcitx/hook.h>
++#include <fcitx/module.h>
++#include <fcitx/keys.h>
++#include <fcitx-config/xdg.h>
++#include "fcitx_mozc.h"
++#include "mozc_connection.h"
++#include "mozc_response_parser.h"
++#include "base/init_mozc.h"
++
++typedef struct _FcitxMozcState {
++    mozc::fcitx::FcitxMozc* mozc;
++    int inUsageState;
++} FcitxMozcState;
++
++
++static void* FcitxMozcCreate(FcitxInstance* instance);
++static void FcitxMozcDestroy(void *arg);
++static boolean FcitxMozcInit(void *arg); /**< FcitxMozcInit */
++static void FcitxMozcResetIM(void *arg); /**< FcitxMozcResetIM */
++static void FcitxMozcReset(void *arg); /**< FcitxMozcResetIM */
++static INPUT_RETURN_VALUE FcitxMozcDoInput(void *arg, FcitxKeySym, unsigned int); /**< FcitxMozcDoInput */
++static INPUT_RETURN_VALUE FcitxMozcDoReleaseInput(void *arg, FcitxKeySym, unsigned int); /**< FcitxMozcDoInput */
++static void FcitxMozcSave(void *arg); /**< FcitxMozcSave */
++static void FcitxMozcReloadConfig(void *arg); /**< FcitxMozcReloadConfig */
++
++extern "C" {
++
++FCITX_EXPORT_API
++FcitxIMClass ime = {
++    FcitxMozcCreate,
++    FcitxMozcDestroy
++};
++FCITX_EXPORT_API
++int ABI_VERSION = FCITX_ABI_VERSION;
++
++}
++
++static inline bool CheckLayout(FcitxInstance* instance)
++{
++    char *layout = NULL, *variant = NULL;
++    FcitxModuleFunctionArg args;
++    args.args[0] = &layout;
++    args.args[1] = &variant;
++    bool layout_is_jp = false;
++    FcitxModuleInvokeFunctionByName(instance, "fcitx-xkb", 1, args);
++    if (layout && strcmp(layout, "jp") == 0)
++        layout_is_jp = true;
++
++    fcitx_utils_free(layout);
++    fcitx_utils_free(variant);
++
++
++    return layout_is_jp;
++}
++
++static void* FcitxMozcCreate(FcitxInstance* instance)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) fcitx_utils_malloc0(sizeof(FcitxMozcState));
++    bindtextdomain("fcitx-mozc", LOCALEDIR);
++    bind_textdomain_codeset("fcitx-mozc", "UTF-8");
++
++    int argc = 1;
++    char argv0[] = "fcitx_mozc";
++    char *_argv[] = {  argv0 };
++    char **argv = _argv;
++    mozc::InitMozc(argv[0], &argc, &argv);
++    mozcState->mozc = new mozc::fcitx::FcitxMozc(
++        instance,
++        mozc::fcitx::MozcConnection::CreateMozcConnection(),
++        new mozc::fcitx::MozcResponseParser
++    );
++
++    mozcState->mozc->SetCompositionMode(mozc::commands::HIRAGANA);
++
++    FcitxIMEventHook hk;
++    hk.arg = mozcState;
++    hk.func = FcitxMozcReset;
++
++    FcitxInstanceRegisterResetInputHook(instance, hk);
++
++    FcitxIMIFace iface;
++    memset(&iface, 0, sizeof(FcitxIMIFace));
++    iface.Init = FcitxMozcInit;
++    iface.ResetIM = FcitxMozcResetIM;
++    iface.DoInput = FcitxMozcDoInput;
++    iface.DoReleaseInput = FcitxMozcDoReleaseInput;
++    iface.ReloadConfig = FcitxMozcReloadConfig;
++    iface.Save = FcitxMozcSave;
++
++
++    FcitxInstanceRegisterIMv2(
++        instance,
++        mozcState,
++        "mozc",
++        "Mozc",
++        mozcState->mozc->GetIconFile("mozc.png").c_str(),
++        iface,
++        1,
++        "ja"
++    );
++
++    return mozcState;
++}
++
++static void FcitxMozcDestroy(void *arg)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) arg;
++    delete mozcState->mozc;
++    free(mozcState);
++}
++
++static const FcitxHotkey MOZC_CTRL_ALT_H[2] = {
++    {NULL, FcitxKey_H, FcitxKeyState_Ctrl_Alt},
++    {NULL, FcitxKey_None, 0}
++};
++
++INPUT_RETURN_VALUE FcitxMozcDoInput(void* arg, FcitxKeySym _sym, unsigned int _state)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) arg;
++    FcitxInstance* instance = mozcState->mozc->GetInstance();
++    FcitxInputState* input = FcitxInstanceGetInputState(mozcState->mozc->GetInstance());
++
++    if (mozcState->inUsageState) {
++        if (FcitxHotkeyIsHotKey(_sym, _state, FCITX_ESCAPE)) {
++            mozcState->inUsageState = false;
++            // send a dummy key to let server send us the candidate info back without side effect
++            mozcState->mozc->process_key_event(FcitxKey_VoidSymbol, 0, 0, CheckLayout(instance), false);
++            return IRV_DISPLAY_CANDWORDS;
++        } else {
++            return IRV_DO_NOTHING;
++        }
++    }
++
++    if (FcitxHotkeyIsHotKey(_sym, _state, MOZC_CTRL_ALT_H)) {
++        std::pair< std::string, std::string > usage = mozcState->mozc->GetUsage();
++        if (usage.first.size() != 0 || usage.second.size() != 0) {
++            mozcState->inUsageState = true;
++            FcitxCandidateWordList* candList = FcitxInputStateGetCandidateList(mozcState->mozc->GetInputState());
++
++            // clear preedit, but keep client preedit
++            FcitxMessages* preedit = FcitxInputStateGetPreedit(input);
++            FcitxMessagesSetMessageCount(preedit, 0);
++            FcitxInputStateSetShowCursor(input, false);
++
++            // clear aux
++            FcitxMessages* auxUp = FcitxInputStateGetAuxUp(input);
++            FcitxMessages* auxDown = FcitxInputStateGetAuxDown(input);
++            FcitxMessagesSetMessageCount(auxUp, 0);
++            FcitxMessagesSetMessageCount(auxDown, 0);
++
++            // clear candidate table
++            FcitxCandidateWordReset(candList);
++            FcitxCandidateWordSetPageSize(candList, 9);
++            FcitxCandidateWordSetLayoutHint(candList, CLH_Vertical);
++            FcitxCandidateWordSetChoose(candList, "\0\0\0\0\0\0\0\0\0\0");
++            FcitxMessagesAddMessageAtLast(preedit, MSG_TIPS, "%s [%s]", usage.first.c_str(), _("Press Escape to go back"));
++
++            UT_array* lines = fcitx_utils_split_string(usage.second.c_str(), '\n');
++            utarray_foreach(line, lines, char*) {
++                FcitxCandidateWord candWord;
++                candWord.callback = NULL;
++                candWord.extraType = MSG_OTHER;
++                candWord.strExtra = NULL;
++                candWord.priv = NULL;
++                candWord.strWord = strdup(*line);
++                candWord.wordType = MSG_OTHER;
++                candWord.owner = NULL;
++                FcitxCandidateWordAppend(candList, &candWord);
++            }
++            utarray_free(lines);
++            return IRV_DISPLAY_MESSAGE;
++        }
++    }
++
++    FCITX_UNUSED(_sym);
++    FCITX_UNUSED(_state);
++    FcitxKeySym sym = (FcitxKeySym) FcitxInputStateGetKeySym(input);
++    uint32 keycode = FcitxInputStateGetKeyCode(input);
++    uint32 state = FcitxInputStateGetKeyState(input);
++    bool result = mozcState->mozc->process_key_event(sym, keycode, state, CheckLayout(instance), false);
++    if (!result)
++        return IRV_TO_PROCESS;
++    else
++        return IRV_DISPLAY_CANDWORDS;
++}
++
++INPUT_RETURN_VALUE FcitxMozcDoReleaseInput(void* arg, FcitxKeySym _sym, unsigned int _state)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) arg;
++    FcitxInstance* instance = mozcState->mozc->GetInstance();
++    FcitxInputState* input = FcitxInstanceGetInputState(mozcState->mozc->GetInstance());
++    FCITX_UNUSED(_sym);
++    FCITX_UNUSED(_state);
++
++    if (mozcState->inUsageState) {
++        return IRV_DONOT_PROCESS;
++    }
++
++    FcitxKeySym sym = (FcitxKeySym) FcitxInputStateGetKeySym(input);
++    uint32 keycode = FcitxInputStateGetKeyCode(input);
++    uint32 state = FcitxInputStateGetKeyState(input);
++    bool result = mozcState->mozc->process_key_event(sym, keycode, state, CheckLayout(instance), true);
++    if (!result)
++        return IRV_TO_PROCESS;
++    else
++        return IRV_DISPLAY_CANDWORDS;
++}
++
++
++
++boolean FcitxMozcInit(void* arg)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) arg;
++    mozcState->mozc->init();
++    return true;
++}
++
++void FcitxMozcReloadConfig(void* arg)
++{
++
++}
++
++void FcitxMozcSave(void* arg)
++{
++    FCITX_UNUSED(arg);
++}
++
++void FcitxMozcResetIM(void* arg)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) arg;
++    mozcState->inUsageState = false;
++    mozcState->mozc->resetim();
++}
++
++void FcitxMozcReset(void* arg)
++{
++    FcitxMozcState* mozcState = (FcitxMozcState*) arg;
++    mozcState->mozc->reset();
++
++}
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx.gyp fcitx-mozc-git/src/unix/fcitx/fcitx.gyp
+--- google-mozc-git/src/unix/fcitx/fcitx.gyp	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx.gyp	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,111 @@
++#
++# Copyright (c) 2010-2012 fcitx Project http://code.google.com/p/fcitx/
++#
++# All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions
++# are met:
++# 1. Redistributions of source code must retain the above copyright
++#    notice, this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright
++#    notice, this list of conditions and the following disclaimer in the
++#    documentation and/or other materials provided with the distribution.
++# 3. Neither the name of authors nor the names of its contributors
++#    may be used to endorse or promote products derived from this software
++#    without specific prior written permission.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS IS'' AND
++# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE
++# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++# SUCH DAMAGE.
++#
++
++{
++  'variables': {
++    'use_fcitx%': 'YES',
++    'relative_dir': 'unix/fcitx',
++    'gen_out_dir': '<(SHARED_INTERMEDIATE_DIR)/<(relative_dir)',
++    'pkg_config_libs': [
++      'fcitx',
++      'fcitx-config',
++      'fcitx-utils',
++    ],
++    'fcitx_dep_include_dirs': [
++    ],
++    'fcitx_dependencies': [
++        '../../base/base.gyp:base',
++        '../../client/client.gyp:client',
++        '../../ipc/ipc.gyp:ipc',
++        '../../session/session_base.gyp:ime_switch_util',
++        '../../protocol/protocol.gyp:commands_proto',
++    ],
++  },
++  'conditions': [['use_fcitx=="YES"', {
++  'targets': [
++    {
++      'target_name': 'gen_fcitx_mozc_i18n',
++      'type': 'none',
++      'actions': [
++        {
++          'action_name': 'gen_fcitx_mozc_i18n',
++          'inputs': [
++            './gen_fcitx_mozc_i18n.sh'
++          ],
++          'outputs': [
++            '<(gen_out_dir)/po/zh_CN.mo',
++            '<(gen_out_dir)/po/zh_TW.mo',
++            '<(gen_out_dir)/po/ja.mo',
++            '<(gen_out_dir)/po/de.mo',
++          ],
++          'action': [
++            'sh',
++            './gen_fcitx_mozc_i18n.sh',
++            '<(gen_out_dir)/po',
++          ],
++        }],
++    },
++    {
++      'target_name': 'fcitx-mozc',
++      'product_prefix': '',
++      'type': 'loadable_module',
++      'sources': [
++        'fcitx_mozc.cc',
++        'fcitx_key_translator.cc',
++        'fcitx_key_event_handler.cc',
++        'mozc_connection.cc',
++        'mozc_response_parser.cc',
++        'surrounding_text_util.cc',
++        'eim.cc',
++      ],
++      'dependencies': [
++        '<@(fcitx_dependencies)',
++        'gen_fcitx_mozc_i18n',
++      ],
++      'cflags': [
++        '<!@(pkg-config --cflags <@(pkg_config_libs))',
++      ],
++      'include_dirs': [
++        '<@(fcitx_dep_include_dirs)',
++      ],
++      'defines': [
++        'LOCALEDIR="<!@(fcitx4-config --prefix)/share/locale/"',
++      ],
++    },
++  ],
++  }, {
++  'targets': [
++    {
++      'target_name': 'no_fcitx_dummy',
++      'type': 'none',
++    }
++  ]}
++  ]],
++}
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc
+--- google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,243 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include "unix/fcitx/fcitx_key_event_handler.h"
++
++#include <map>
++
++#include "base/logging.h"
++#include "base/singleton.h"
++
++namespace mozc {
++namespace fcitx {
++
++namespace {
++// TODO(hsumita): Removes this class, and moves |data_| into member
++// variables of KeyEventhandler.
++class AdditionalModifiersData {
++ public:
++  AdditionalModifiersData() {
++    data_[commands::KeyEvent::LEFT_ALT] = commands::KeyEvent::ALT;
++    data_[commands::KeyEvent::RIGHT_ALT] = commands::KeyEvent::ALT;
++    data_[commands::KeyEvent::LEFT_CTRL] = commands::KeyEvent::CTRL;
++    data_[commands::KeyEvent::RIGHT_CTRL] = commands::KeyEvent::CTRL;
++    data_[commands::KeyEvent::LEFT_SHIFT] = commands::KeyEvent::SHIFT;
++    data_[commands::KeyEvent::RIGHT_SHIFT] = commands::KeyEvent::SHIFT;
++  }
++  const std::map<uint32, commands::KeyEvent::ModifierKey> &data() {
++    return data_;
++  }
++
++ private:
++  std::map<uint32, commands::KeyEvent::ModifierKey> data_;
++};
++
++// TODO(hsumita): Moves this function into member functions of
++// KeyEventHandler.
++void AddAdditionalModifiers(
++    std::set<commands::KeyEvent::ModifierKey> *modifier_keys_set) {
++  DCHECK(modifier_keys_set);
++
++  const std::map<uint32, commands::KeyEvent::ModifierKey> &data =
++      Singleton<AdditionalModifiersData>::get()->data();
++
++  // Adds MODIFIER if there are (LEFT|RIGHT)_MODIFIER like LEFT_SHIFT.
++  for (std::set<commands::KeyEvent::ModifierKey>::const_iterator it =
++           modifier_keys_set->begin(); it != modifier_keys_set->end(); ++it) {
++    std::map<uint32, commands::KeyEvent::ModifierKey>::const_iterator item =
++        data.find(*it);
++    if (item != data.end()) {
++      modifier_keys_set->insert(item->second);
++    }
++  }
++}
++
++bool IsModifierToBeSentOnKeyUp(const commands::KeyEvent &key_event) {
++  if (key_event.modifier_keys_size() == 0) {
++    return false;
++  }
++
++  if (key_event.modifier_keys_size() == 1 &&
++      key_event.modifier_keys(0) == commands::KeyEvent::CAPS) {
++    return false;
++  }
++
++  return true;
++}
++}  // namespace
++
++KeyEventHandler::KeyEventHandler() : key_translator_(new KeyTranslator) {
++  Clear();
++}
++
++bool KeyEventHandler::GetKeyEvent(
++    FcitxKeySym keyval, uint32 keycode, uint32 modifiers,
++    config::Config::PreeditMethod preedit_method,
++    bool layout_is_jp, bool is_key_up, commands::KeyEvent *key) {
++  DCHECK(key);
++  key->Clear();
++
++  if (!key_translator_->Translate(
++          keyval, keycode, modifiers, preedit_method, layout_is_jp, key)) {
++    LOG(ERROR) << "Translate failed";
++    return false;
++  }
++
++  return ProcessModifiers(is_key_up, keyval, key);
++}
++
++void KeyEventHandler::Clear() {
++  is_non_modifier_key_pressed_ = false;
++  currently_pressed_modifiers_.clear();
++  modifiers_to_be_sent_.clear();
++}
++
++bool KeyEventHandler::ProcessModifiers(bool is_key_up, uint32 keyval,
++                                       commands::KeyEvent *key_event) {
++  // Manage modifier key event.
++  // Modifier key event is sent on key up if non-modifier key has not been
++  // pressed since key down of modifier keys and no modifier keys are pressed
++  // anymore.
++  // Following examples are expected behaviors.
++  //
++  // E.g.) Shift key is special. If Shift + printable key is pressed, key event
++  //       does NOT have shift modifiers. It is handled by KeyTranslator class.
++  //    <Event from ibus> <Event to server>
++  //     Shift down      | None
++  //     "a" down        | A
++  //     "a" up          | None
++  //     Shift up        | None
++  //
++  // E.g.) Usual key is sent on key down.  Modifier keys are not sent if usual
++  //       key is sent.
++  //    <Event from ibus> <Event to server>
++  //     Ctrl down       | None
++  //     "a" down        | Ctrl+a
++  //     "a" up          | None
++  //     Ctrl up         | None
++  //
++  // E.g.) Modifier key is sent on key up.
++  //    <Event from ibus> <Event to server>
++  //     Shift down      | None
++  //     Shift up        | Shift
++  //
++  // E.g.) Multiple modifier keys are sent on the last key up.
++  //    <Event from ibus> <Event to server>
++  //     Shift down      | None
++  //     Control down    | None
++  //     Shift up        | None
++  //     Control up      | Control+Shift
++  //
++  // Essentialy we cannot handle modifier key evnet perfectly because
++  // - We cannot get current keyboard status with ibus. If some modifiers
++  //   are pressed or released without focusing the target window, we
++  //   cannot handle it.
++  // E.g.)
++  //    <Event from ibus> <Event to server>
++  //     Ctrl down       | None
++  //     (focuses out, Ctrl up, focuses in)
++  //     Shift down      | None
++  //     Shift up        | None (But we should send Shift key)
++  // To avoid a inconsistent state as much as possible, we clear states
++  // when key event without modifier keys is sent.
++
++  const bool is_modifier_only =
++      !(key_event->has_key_code() || key_event->has_special_key());
++
++  // We may get only up/down key event when a user moves a focus.
++  // This code handles such situation as much as possible.
++  // This code has a bug. If we send Shift + 'a', KeyTranslator removes a shift
++  // modifier and converts 'a' to 'A'. This codes does NOT consider these
++  // situation since we don't have enough data to handle it.
++  // TODO(hsumita): Moves the logic about a handling of Shift or Caps keys from
++  // KeyTranslator to MozcEngine.
++  if (key_event->modifier_keys_size() == 0) {
++    Clear();
++  }
++
++  if (!currently_pressed_modifiers_.empty() && !is_modifier_only) {
++    is_non_modifier_key_pressed_ = true;
++  }
++  if (is_non_modifier_key_pressed_) {
++    modifiers_to_be_sent_.clear();
++  }
++
++  if (is_key_up) {
++    currently_pressed_modifiers_.erase(keyval);
++    if (!is_modifier_only) {
++      return false;
++    }
++    if (!currently_pressed_modifiers_.empty() ||
++        modifiers_to_be_sent_.empty()) {
++      is_non_modifier_key_pressed_ = false;
++      return false;
++    }
++    if (is_non_modifier_key_pressed_) {
++      return false;
++    }
++    DCHECK(!is_non_modifier_key_pressed_);
++
++    // Modifier key event fires
++    key_event->mutable_modifier_keys()->Clear();
++    for (std::set<commands::KeyEvent::ModifierKey>::const_iterator it =
++             modifiers_to_be_sent_.begin();
++         it != modifiers_to_be_sent_.end();
++         ++it) {
++      key_event->add_modifier_keys(*it);
++    }
++    modifiers_to_be_sent_.clear();
++  } else if (is_modifier_only) {
++    // TODO(hsumita): Supports a key sequence below.
++    // - Ctrl down
++    // - a down
++    // - Alt down
++    // We should add Alt key to |currently_pressed_modifiers|, but current
++    // implementation does NOT do it.
++    if (currently_pressed_modifiers_.empty() ||
++        !modifiers_to_be_sent_.empty()) {
++      for (size_t i = 0; i < key_event->modifier_keys_size(); ++i) {
++        modifiers_to_be_sent_.insert(key_event->modifier_keys(i));
++      }
++      AddAdditionalModifiers(&modifiers_to_be_sent_);
++    }
++    currently_pressed_modifiers_.insert(keyval);
++    return false;
++  }
++
++  // Clear modifier data just in case if |key| has no modifier keys.
++  if (!IsModifierToBeSentOnKeyUp(*key_event)) {
++    Clear();
++  }
++
++  return true;
++}
++
++}  // namespace ibus
++}  // namespace mozc
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h
+--- google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,79 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#ifndef MOZC_UNIX_FCITX_KEY_EVENT_HANDLER_H_
++#define MOZC_UNIX_FCITX_KEY_EVENT_HANDLER_H_
++
++#include <set>
++#include <memory>
++
++#include "base/port.h"
++#include "protocol/config.pb.h"
++#include "protocol/commands.pb.h"
++#include "unix/fcitx/fcitx_key_translator.h"
++
++namespace mozc {
++namespace fcitx {
++
++class KeyEventHandler {
++ public:
++  KeyEventHandler();
++
++  // Converts a key event came from fcitx to commands::KeyEvent. This is a
++  // stateful method. It stores modifier keys states since ibus doesn't send
++  // an enough information about the modifier keys.
++  bool GetKeyEvent(FcitxKeySym keyval, uint32 keycode, uint32 modifiers,
++                   config::Config::PreeditMethod preedit_method,
++                   bool layout_is_jp, bool is_key_up, commands::KeyEvent *key);
++
++  // Clears states.
++  void Clear();
++
++ private:
++
++  // Manages modifier keys. Returns false if it should not be sent to server.
++  bool ProcessModifiers(bool is_key_up, uint32 keyval,
++                        commands::KeyEvent *key_event);
++
++  std::unique_ptr<KeyTranslator> key_translator_;
++  // Non modifier key is pressed or not after all keys are released.
++  bool is_non_modifier_key_pressed_;
++  // Currently pressed modifier keys.  It is set of keyval.
++  std::set<uint32> currently_pressed_modifiers_;
++  // Pending modifier keys.
++  std::set<commands::KeyEvent::ModifierKey> modifiers_to_be_sent_;
++
++  DISALLOW_COPY_AND_ASSIGN(KeyEventHandler);
++};
++
++}  // namespace fcitx
++}  // namespace mozc
++
++#endif  // MOZC_UNIX_FCITX_KEY_EVENT_HANDLER_H_
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc
+--- google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,521 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include "unix/fcitx/fcitx_key_translator.h"
++
++#include "base/logging.h"
++
++namespace {
++
++const struct SpecialKeyMap {
++  uint32 from;
++  mozc::commands::KeyEvent::SpecialKey to;
++} special_key_map[] = {
++  {FcitxKey_VoidSymbol, mozc::commands::KeyEvent::NO_SPECIALKEY},
++  {FcitxKey_space, mozc::commands::KeyEvent::SPACE},
++  {FcitxKey_Return, mozc::commands::KeyEvent::ENTER},
++  {FcitxKey_Left, mozc::commands::KeyEvent::LEFT},
++  {FcitxKey_Right, mozc::commands::KeyEvent::RIGHT},
++  {FcitxKey_Up, mozc::commands::KeyEvent::UP},
++  {FcitxKey_Down, mozc::commands::KeyEvent::DOWN},
++  {FcitxKey_Escape, mozc::commands::KeyEvent::ESCAPE},
++  {FcitxKey_Delete, mozc::commands::KeyEvent::DEL},
++  {FcitxKey_BackSpace, mozc::commands::KeyEvent::BACKSPACE},
++  {FcitxKey_Insert, mozc::commands::KeyEvent::INSERT},
++  {FcitxKey_Henkan, mozc::commands::KeyEvent::HENKAN},
++  {FcitxKey_Muhenkan, mozc::commands::KeyEvent::MUHENKAN},
++  {FcitxKey_Hiragana, mozc::commands::KeyEvent::KANA},
++  {FcitxKey_Hiragana_Katakana, mozc::commands::KeyEvent::KANA},
++  {FcitxKey_Katakana, mozc::commands::KeyEvent::KATAKANA},
++  {FcitxKey_Zenkaku, mozc::commands::KeyEvent::HANKAKU},
++  {FcitxKey_Hankaku, mozc::commands::KeyEvent::HANKAKU},
++  {FcitxKey_Zenkaku_Hankaku, mozc::commands::KeyEvent::HANKAKU},
++  {FcitxKey_Eisu_toggle, mozc::commands::KeyEvent::EISU},
++  {FcitxKey_Home, mozc::commands::KeyEvent::HOME},
++  {FcitxKey_End, mozc::commands::KeyEvent::END},
++  {FcitxKey_Tab, mozc::commands::KeyEvent::TAB},
++  {FcitxKey_F1, mozc::commands::KeyEvent::F1},
++  {FcitxKey_F2, mozc::commands::KeyEvent::F2},
++  {FcitxKey_F3, mozc::commands::KeyEvent::F3},
++  {FcitxKey_F4, mozc::commands::KeyEvent::F4},
++  {FcitxKey_F5, mozc::commands::KeyEvent::F5},
++  {FcitxKey_F6, mozc::commands::KeyEvent::F6},
++  {FcitxKey_F7, mozc::commands::KeyEvent::F7},
++  {FcitxKey_F8, mozc::commands::KeyEvent::F8},
++  {FcitxKey_F9, mozc::commands::KeyEvent::F9},
++  {FcitxKey_F10, mozc::commands::KeyEvent::F10},
++  {FcitxKey_F11, mozc::commands::KeyEvent::F11},
++  {FcitxKey_F12, mozc::commands::KeyEvent::F12},
++  {FcitxKey_F13, mozc::commands::KeyEvent::F13},
++  {FcitxKey_F14, mozc::commands::KeyEvent::F14},
++  {FcitxKey_F15, mozc::commands::KeyEvent::F15},
++  {FcitxKey_F16, mozc::commands::KeyEvent::F16},
++  {FcitxKey_F17, mozc::commands::KeyEvent::F17},
++  {FcitxKey_F18, mozc::commands::KeyEvent::F18},
++  {FcitxKey_F19, mozc::commands::KeyEvent::F19},
++  {FcitxKey_F20, mozc::commands::KeyEvent::F20},
++  {FcitxKey_F21, mozc::commands::KeyEvent::F21},
++  {FcitxKey_F22, mozc::commands::KeyEvent::F22},
++  {FcitxKey_F23, mozc::commands::KeyEvent::F23},
++  {FcitxKey_F24, mozc::commands::KeyEvent::F24},
++  {FcitxKey_Page_Up, mozc::commands::KeyEvent::PAGE_UP},
++  {FcitxKey_Page_Down, mozc::commands::KeyEvent::PAGE_DOWN},
++
++  // Keypad (10-key).
++  {FcitxKey_KP_0, mozc::commands::KeyEvent::NUMPAD0},
++  {FcitxKey_KP_1, mozc::commands::KeyEvent::NUMPAD1},
++  {FcitxKey_KP_2, mozc::commands::KeyEvent::NUMPAD2},
++  {FcitxKey_KP_3, mozc::commands::KeyEvent::NUMPAD3},
++  {FcitxKey_KP_4, mozc::commands::KeyEvent::NUMPAD4},
++  {FcitxKey_KP_5, mozc::commands::KeyEvent::NUMPAD5},
++  {FcitxKey_KP_6, mozc::commands::KeyEvent::NUMPAD6},
++  {FcitxKey_KP_7, mozc::commands::KeyEvent::NUMPAD7},
++  {FcitxKey_KP_8, mozc::commands::KeyEvent::NUMPAD8},
++  {FcitxKey_KP_9, mozc::commands::KeyEvent::NUMPAD9},
++  {FcitxKey_KP_Equal, mozc::commands::KeyEvent::EQUALS},  // [=]
++  {FcitxKey_KP_Multiply, mozc::commands::KeyEvent::MULTIPLY},  // [*]
++  {FcitxKey_KP_Add, mozc::commands::KeyEvent::ADD},  // [+]
++  {FcitxKey_KP_Separator, mozc::commands::KeyEvent::SEPARATOR},  // enter
++  {FcitxKey_KP_Subtract, mozc::commands::KeyEvent::SUBTRACT},  // [-]
++  {FcitxKey_KP_Decimal, mozc::commands::KeyEvent::DECIMAL},  // [.]
++  {FcitxKey_KP_Divide, mozc::commands::KeyEvent::DIVIDE},  // [/]
++  {FcitxKey_KP_Space, mozc::commands::KeyEvent::SPACE},
++  {FcitxKey_KP_Tab, mozc::commands::KeyEvent::TAB},
++  {FcitxKey_KP_Enter, mozc::commands::KeyEvent::ENTER},
++  {FcitxKey_KP_Home, mozc::commands::KeyEvent::HOME},
++  {FcitxKey_KP_Left, mozc::commands::KeyEvent::LEFT},
++  {FcitxKey_KP_Up, mozc::commands::KeyEvent::UP},
++  {FcitxKey_KP_Right, mozc::commands::KeyEvent::RIGHT},
++  {FcitxKey_KP_Down, mozc::commands::KeyEvent::DOWN},
++  {FcitxKey_KP_Page_Up, mozc::commands::KeyEvent::PAGE_UP},
++  {FcitxKey_KP_Page_Down, mozc::commands::KeyEvent::PAGE_DOWN},
++  {FcitxKey_KP_End, mozc::commands::KeyEvent::END},
++  {FcitxKey_KP_Delete, mozc::commands::KeyEvent::DEL},
++  {FcitxKey_KP_Insert, mozc::commands::KeyEvent::INSERT},
++  {FcitxKey_Caps_Lock, mozc::commands::KeyEvent::CAPS_LOCK},
++
++  // Shift+TAB.
++  {FcitxKey_ISO_Left_Tab, mozc::commands::KeyEvent::TAB},
++
++  // TODO(mazda): Handle following keys?
++  //   - FcitxKey_Kana_Lock? FcitxKey_KEY_Kana_Shift?
++};
++
++const struct ModifierKeyMap {
++  uint32 from;
++  mozc::commands::KeyEvent::ModifierKey to;
++} modifier_key_map[] = {
++  {FcitxKey_Shift_L, mozc::commands::KeyEvent::LEFT_SHIFT},
++  {FcitxKey_Shift_R, mozc::commands::KeyEvent::RIGHT_SHIFT},
++  {FcitxKey_Control_L, mozc::commands::KeyEvent::LEFT_CTRL},
++  {FcitxKey_Control_R, mozc::commands::KeyEvent::RIGHT_CTRL},
++  {FcitxKey_Alt_L, mozc::commands::KeyEvent::LEFT_ALT},
++  {FcitxKey_Alt_R, mozc::commands::KeyEvent::RIGHT_ALT},
++  {FcitxKeyState_CapsLock, mozc::commands::KeyEvent::CAPS},
++};
++
++const struct ModifierMaskMap {
++  uint32 from;
++  mozc::commands::KeyEvent::ModifierKey to;
++} modifier_mask_map[] = {
++  {FcitxKeyState_Shift, mozc::commands::KeyEvent::SHIFT},
++  {FcitxKeyState_Ctrl, mozc::commands::KeyEvent::CTRL},
++  {FcitxKeyState_Alt, mozc::commands::KeyEvent::ALT},
++};
++
++// TODO(team): Add kana_map_dv to support Dvoraklayout.
++const struct KanaMap {
++  uint32 code;
++  const char *no_shift;
++  const char *shift;
++} kana_map_jp[] = {
++  { '1' , "\xe3\x81\xac", "\xe3\x81\xac" },  // "ぬ", "ぬ"
++  { '!' , "\xe3\x81\xac", "\xe3\x81\xac" },  // "ぬ", "ぬ"
++  { '2' , "\xe3\x81\xb5", "\xe3\x81\xb5" },  // "ふ", "ふ"
++  { '\"', "\xe3\x81\xb5", "\xe3\x81\xb5" },  // "ふ", "ふ"
++  { '3' , "\xe3\x81\x82", "\xe3\x81\x81" },  // "あ", "ぁ"
++  { '#' , "\xe3\x81\x82", "\xe3\x81\x81" },  // "あ", "ぁ"
++  { '4' , "\xe3\x81\x86", "\xe3\x81\x85" },  // "う", "ぅ"
++  { '$' , "\xe3\x81\x86", "\xe3\x81\x85" },  // "う", "ぅ"
++  { '5' , "\xe3\x81\x88", "\xe3\x81\x87" },  // "え", "ぇ"
++  { '%' , "\xe3\x81\x88", "\xe3\x81\x87" },  // "え", "ぇ"
++  { '6' , "\xe3\x81\x8a", "\xe3\x81\x89" },  // "お", "ぉ"
++  { '&' , "\xe3\x81\x8a", "\xe3\x81\x89" },  // "お", "ぉ"
++  { '7' , "\xe3\x82\x84", "\xe3\x82\x83" },  // "や", "ゃ"
++  { '\'', "\xe3\x82\x84", "\xe3\x82\x83" },  // "や", "ゃ"
++  { '8' , "\xe3\x82\x86", "\xe3\x82\x85" },  // "ゆ", "ゅ"
++  { '(' , "\xe3\x82\x86", "\xe3\x82\x85" },  // "ゆ", "ゅ"
++  { '9' , "\xe3\x82\x88", "\xe3\x82\x87" },  // "よ", "ょ"
++  { ')' , "\xe3\x82\x88", "\xe3\x82\x87" },  // "よ", "ょ"
++  { '0' , "\xe3\x82\x8f", "\xe3\x82\x92" },  // "わ", "を"
++  { '-' , "\xe3\x81\xbb", "\xe3\x81\xbb" },  // "ほ", "ほ"
++  { '=' , "\xe3\x81\xbb", "\xe3\x81\xbb" },  // "ほ", "ほ"
++  { '^' , "\xe3\x81\xb8", "\xe3\x82\x92" },  // "へ", "を"
++  { '~' , "\xe3\x81\xb8", "\xe3\x82\x92" },  // "へ", "を"
++  { '|' , "\xe3\x83\xbc", "\xe3\x83\xbc" },  // "ー", "ー"
++  { 'q' , "\xe3\x81\x9f", "\xe3\x81\x9f" },  // "た", "た"
++  { 'Q' , "\xe3\x81\x9f", "\xe3\x81\x9f" },  // "た", "た"
++  { 'w' , "\xe3\x81\xa6", "\xe3\x81\xa6" },  // "て", "て"
++  { 'W' , "\xe3\x81\xa6", "\xe3\x81\xa6" },  // "て", "て"
++  { 'e' , "\xe3\x81\x84", "\xe3\x81\x83" },  // "い", "ぃ"
++  { 'E' , "\xe3\x81\x84", "\xe3\x81\x83" },  // "い", "ぃ"
++  { 'r' , "\xe3\x81\x99", "\xe3\x81\x99" },  // "す", "す"
++  { 'R' , "\xe3\x81\x99", "\xe3\x81\x99" },  // "す", "す"
++  { 't' , "\xe3\x81\x8b", "\xe3\x81\x8b" },  // "か", "か"
++  { 'T' , "\xe3\x81\x8b", "\xe3\x81\x8b" },  // "か", "か"
++  { 'y' , "\xe3\x82\x93", "\xe3\x82\x93" },  // "ん", "ん"
++  { 'Y' , "\xe3\x82\x93", "\xe3\x82\x93" },  // "ん", "ん"
++  { 'u' , "\xe3\x81\xaa", "\xe3\x81\xaa" },  // "な", "な"
++  { 'U' , "\xe3\x81\xaa", "\xe3\x81\xaa" },  // "な", "な"
++  { 'i' , "\xe3\x81\xab", "\xe3\x81\xab" },  // "に", "に"
++  { 'I' , "\xe3\x81\xab", "\xe3\x81\xab" },  // "に", "に"
++  { 'o' , "\xe3\x82\x89", "\xe3\x82\x89" },  // "ら", "ら"
++  { 'O' , "\xe3\x82\x89", "\xe3\x82\x89" },  // "ら", "ら"
++  { 'p' , "\xe3\x81\x9b", "\xe3\x81\x9b" },  // "せ", "せ"
++  { 'P' , "\xe3\x81\x9b", "\xe3\x81\x9b" },  // "せ", "せ"
++  { '@' , "\xe3\x82\x9b", "\xe3\x82\x9b" },  // "゛", "゛"
++  { '`' , "\xe3\x82\x9b", "\xe3\x82\x9b" },  // "゛", "゛"
++  { '[' , "\xe3\x82\x9c", "\xe3\x80\x8c" },  // "゜", "「"
++  { '{' , "\xe3\x82\x9c", "\xe3\x80\x8c" },  // "゜", "「"
++  { 'a' , "\xe3\x81\xa1", "\xe3\x81\xa1" },  // "ち", "ち"
++  { 'A' , "\xe3\x81\xa1", "\xe3\x81\xa1" },  // "ち", "ち"
++  { 's' , "\xe3\x81\xa8", "\xe3\x81\xa8" },  // "と", "と"
++  { 'S' , "\xe3\x81\xa8", "\xe3\x81\xa8" },  // "と", "と"
++  { 'd' , "\xe3\x81\x97", "\xe3\x81\x97" },  // "し", "し"
++  { 'D' , "\xe3\x81\x97", "\xe3\x81\x97" },  // "し", "し"
++  { 'f' , "\xe3\x81\xaf", "\xe3\x81\xaf" },  // "は", "は"
++  { 'F' , "\xe3\x81\xaf", "\xe3\x81\xaf" },  // "は", "は"
++  { 'g' , "\xe3\x81\x8d", "\xe3\x81\x8d" },  // "き", "き"
++  { 'G' , "\xe3\x81\x8d", "\xe3\x81\x8d" },  // "き", "き"
++  { 'h' , "\xe3\x81\x8f", "\xe3\x81\x8f" },  // "く", "く"
++  { 'H' , "\xe3\x81\x8f", "\xe3\x81\x8f" },  // "く", "く"
++  { 'j' , "\xe3\x81\xbe", "\xe3\x81\xbe" },  // "ま", "ま"
++  { 'J' , "\xe3\x81\xbe", "\xe3\x81\xbe" },  // "ま", "ま"
++  { 'k' , "\xe3\x81\xae", "\xe3\x81\xae" },  // "の", "の"
++  { 'K' , "\xe3\x81\xae", "\xe3\x81\xae" },  // "の", "の"
++  { 'l' , "\xe3\x82\x8a", "\xe3\x82\x8a" },  // "り", "り"
++  { 'L' , "\xe3\x82\x8a", "\xe3\x82\x8a" },  // "り", "り"
++  { ';' , "\xe3\x82\x8c", "\xe3\x82\x8c" },  // "れ", "れ"
++  { '+' , "\xe3\x82\x8c", "\xe3\x82\x8c" },  // "れ", "れ"
++  { ':' , "\xe3\x81\x91", "\xe3\x81\x91" },  // "け", "け"
++  { '*' , "\xe3\x81\x91", "\xe3\x81\x91" },  // "け", "け"
++  { ']' , "\xe3\x82\x80", "\xe3\x80\x8d" },  // "む", "」"
++  { '}' , "\xe3\x82\x80", "\xe3\x80\x8d" },  // "む", "」"
++  { 'z' , "\xe3\x81\xa4", "\xe3\x81\xa3" },  // "つ", "っ"
++  { 'Z' , "\xe3\x81\xa4", "\xe3\x81\xa3" },  // "つ", "っ"
++  { 'x' , "\xe3\x81\x95", "\xe3\x81\x95" },  // "さ", "さ"
++  { 'X' , "\xe3\x81\x95", "\xe3\x81\x95" },  // "さ", "さ"
++  { 'c' , "\xe3\x81\x9d", "\xe3\x81\x9d" },  // "そ", "そ"
++  { 'C' , "\xe3\x81\x9d", "\xe3\x81\x9d" },  // "そ", "そ"
++  { 'v' , "\xe3\x81\xb2", "\xe3\x81\xb2" },  // "ひ", "ひ"
++  { 'V' , "\xe3\x81\xb2", "\xe3\x81\xb2" },  // "ひ", "ひ"
++  { 'b' , "\xe3\x81\x93", "\xe3\x81\x93" },  // "こ", "こ"
++  { 'B' , "\xe3\x81\x93", "\xe3\x81\x93" },  // "こ", "こ"
++  { 'n' , "\xe3\x81\xbf", "\xe3\x81\xbf" },  // "み", "み"
++  { 'N' , "\xe3\x81\xbf", "\xe3\x81\xbf" },  // "み", "み"
++  { 'm' , "\xe3\x82\x82", "\xe3\x82\x82" },  // "も", "も"
++  { 'M' , "\xe3\x82\x82", "\xe3\x82\x82" },  // "も", "も"
++  { ',' , "\xe3\x81\xad", "\xe3\x80\x81" },  // "ね", "、"
++  { '<' , "\xe3\x81\xad", "\xe3\x80\x81" },  // "ね", "、"
++  { '.' , "\xe3\x82\x8b", "\xe3\x80\x82" },  // "る", "。"
++  { '>' , "\xe3\x82\x8b", "\xe3\x80\x82" },  // "る", "。"
++  { '/' , "\xe3\x82\x81", "\xe3\x83\xbb" },  // "め", "・"
++  { '?' , "\xe3\x82\x81", "\xe3\x83\xbb" },  // "め", "・"
++  { '_' , "\xe3\x82\x8d", "\xe3\x82\x8d" },  // "ろ", "ろ"
++  // A backslash is handled in a special way because it is input by
++  // two different keys (the one next to Backslash and the one next
++  // to Right Shift).
++  { '\\', "", "" },
++}, kana_map_us[] = {
++  { '`' , "\xe3\x82\x8d", "\xe3\x82\x8d" },  // "ろ", "ろ"
++  { '~' , "\xe3\x82\x8d", "\xe3\x82\x8d" },  // "ろ", "ろ"
++  { '1' , "\xe3\x81\xac", "\xe3\x81\xac" },  // "ぬ", "ぬ"
++  { '!' , "\xe3\x81\xac", "\xe3\x81\xac" },  // "ぬ", "ぬ"
++  { '2' , "\xe3\x81\xb5", "\xe3\x81\xb5" },  // "ふ", "ふ"
++  { '@' , "\xe3\x81\xb5", "\xe3\x81\xb5" },  // "ふ", "ふ"
++  { '3' , "\xe3\x81\x82", "\xe3\x81\x81" },  // "あ", "ぁ"
++  { '#' , "\xe3\x81\x82", "\xe3\x81\x81" },  // "あ", "ぁ"
++  { '4' , "\xe3\x81\x86", "\xe3\x81\x85" },  // "う", "ぅ"
++  { '$' , "\xe3\x81\x86", "\xe3\x81\x85" },  // "う", "ぅ"
++  { '5' , "\xe3\x81\x88", "\xe3\x81\x87" },  // "え", "ぇ"
++  { '%' , "\xe3\x81\x88", "\xe3\x81\x87" },  // "え", "ぇ"
++  { '6' , "\xe3\x81\x8a", "\xe3\x81\x89" },  // "お", "ぉ"
++  { '^' , "\xe3\x81\x8a", "\xe3\x81\x89" },  // "お", "ぉ"
++  { '7' , "\xe3\x82\x84", "\xe3\x82\x83" },  // "や", "ゃ"
++  { '&' , "\xe3\x82\x84", "\xe3\x82\x83" },  // "や", "ゃ"
++  { '8' , "\xe3\x82\x86", "\xe3\x82\x85" },  // "ゆ", "ゅ"
++  { '*' , "\xe3\x82\x86", "\xe3\x82\x85" },  // "ゆ", "ゅ"
++  { '9' , "\xe3\x82\x88", "\xe3\x82\x87" },  // "よ", "ょ"
++  { '(' , "\xe3\x82\x88", "\xe3\x82\x87" },  // "よ", "ょ"
++  { '0' , "\xe3\x82\x8f", "\xe3\x82\x92" },  // "わ", "を"
++  { ')' , "\xe3\x82\x8f", "\xe3\x82\x92" },  // "わ", "を"
++  { '-' , "\xe3\x81\xbb", "\xe3\x83\xbc" },  // "ほ", "ー"
++  { '_' , "\xe3\x81\xbb", "\xe3\x83\xbc" },  // "ほ", "ー"
++  { '=' , "\xe3\x81\xb8", "\xe3\x81\xb8" },  // "へ", "へ"
++  { '+' , "\xe3\x81\xb8", "\xe3\x81\xb8" },  // "へ", "へ"
++  { 'q' , "\xe3\x81\x9f", "\xe3\x81\x9f" },  // "た", "た"
++  { 'Q' , "\xe3\x81\x9f", "\xe3\x81\x9f" },  // "た", "た"
++  { 'w' , "\xe3\x81\xa6", "\xe3\x81\xa6" },  // "て", "て"
++  { 'W' , "\xe3\x81\xa6", "\xe3\x81\xa6" },  // "て", "て"
++  { 'e' , "\xe3\x81\x84", "\xe3\x81\x83" },  // "い", "ぃ"
++  { 'E' , "\xe3\x81\x84", "\xe3\x81\x83" },  // "い", "ぃ"
++  { 'r' , "\xe3\x81\x99", "\xe3\x81\x99" },  // "す", "す"
++  { 'R' , "\xe3\x81\x99", "\xe3\x81\x99" },  // "す", "す"
++  { 't' , "\xe3\x81\x8b", "\xe3\x81\x8b" },  // "か", "か"
++  { 'T' , "\xe3\x81\x8b", "\xe3\x81\x8b" },  // "か", "か"
++  { 'y' , "\xe3\x82\x93", "\xe3\x82\x93" },  // "ん", "ん"
++  { 'Y' , "\xe3\x82\x93", "\xe3\x82\x93" },  // "ん", "ん"
++  { 'u' , "\xe3\x81\xaa", "\xe3\x81\xaa" },  // "な", "な"
++  { 'U' , "\xe3\x81\xaa", "\xe3\x81\xaa" },  // "な", "な"
++  { 'i' , "\xe3\x81\xab", "\xe3\x81\xab" },  // "に", "に"
++  { 'I' , "\xe3\x81\xab", "\xe3\x81\xab" },  // "に", "に"
++  { 'o' , "\xe3\x82\x89", "\xe3\x82\x89" },  // "ら", "ら"
++  { 'O' , "\xe3\x82\x89", "\xe3\x82\x89" },  // "ら", "ら"
++  { 'p' , "\xe3\x81\x9b", "\xe3\x81\x9b" },  // "せ", "せ"
++  { 'P' , "\xe3\x81\x9b", "\xe3\x81\x9b" },  // "せ", "せ"
++  { '[' , "\xe3\x82\x9b", "\xe3\x82\x9b" },  // "゛", "゛"
++  { '{' , "\xe3\x82\x9b", "\xe3\x82\x9b" },  // "゛", "゛"
++  { ']' , "\xe3\x82\x9c", "\xe3\x80\x8c" },  // "゜", "「"
++  { '}' , "\xe3\x82\x9c", "\xe3\x80\x8c" },  // "゜", "「"
++  { '\\', "\xe3\x82\x80", "\xe3\x80\x8d" },  // "む", "」"
++  { '|' , "\xe3\x82\x80", "\xe3\x80\x8d" },  // "む", "」"
++  { 'a' , "\xe3\x81\xa1", "\xe3\x81\xa1" },  // "ち", "ち"
++  { 'A' , "\xe3\x81\xa1", "\xe3\x81\xa1" },  // "ち", "ち"
++  { 's' , "\xe3\x81\xa8", "\xe3\x81\xa8" },  // "と", "と"
++  { 'S' , "\xe3\x81\xa8", "\xe3\x81\xa8" },  // "と", "と"
++  { 'd' , "\xe3\x81\x97", "\xe3\x81\x97" },  // "し", "し"
++  { 'D' , "\xe3\x81\x97", "\xe3\x81\x97" },  // "し", "し"
++  { 'f' , "\xe3\x81\xaf", "\xe3\x81\xaf" },  // "は", "は"
++  { 'F' , "\xe3\x81\xaf", "\xe3\x81\xaf" },  // "は", "は"
++  { 'g' , "\xe3\x81\x8d", "\xe3\x81\x8d" },  // "き", "き"
++  { 'G' , "\xe3\x81\x8d", "\xe3\x81\x8d" },  // "き", "き"
++  { 'h' , "\xe3\x81\x8f", "\xe3\x81\x8f" },  // "く", "く"
++  { 'H' , "\xe3\x81\x8f", "\xe3\x81\x8f" },  // "く", "く"
++  { 'j' , "\xe3\x81\xbe", "\xe3\x81\xbe" },  // "ま", "ま"
++  { 'J' , "\xe3\x81\xbe", "\xe3\x81\xbe" },  // "ま", "ま"
++  { 'k' , "\xe3\x81\xae", "\xe3\x81\xae" },  // "の", "の"
++  { 'K' , "\xe3\x81\xae", "\xe3\x81\xae" },  // "の", "の"
++  { 'l' , "\xe3\x82\x8a", "\xe3\x82\x8a" },  // "り", "り"
++  { 'L' , "\xe3\x82\x8a", "\xe3\x82\x8a" },  // "り", "り"
++  { ';' , "\xe3\x82\x8c", "\xe3\x82\x8c" },  // "れ", "れ"
++  { ':' , "\xe3\x82\x8c", "\xe3\x82\x8c" },  // "れ", "れ"
++  { '\'', "\xe3\x81\x91", "\xe3\x81\x91" },  // "け", "け"
++  { '\"', "\xe3\x81\x91", "\xe3\x81\x91" },  // "け", "け"
++  { 'z' , "\xe3\x81\xa4", "\xe3\x81\xa3" },  // "つ", "っ"
++  { 'Z' , "\xe3\x81\xa4", "\xe3\x81\xa3" },  // "つ", "っ"
++  { 'x' , "\xe3\x81\x95", "\xe3\x81\x95" },  // "さ", "さ"
++  { 'X' , "\xe3\x81\x95", "\xe3\x81\x95" },  // "さ", "さ"
++  { 'c' , "\xe3\x81\x9d", "\xe3\x81\x9d" },  // "そ", "そ"
++  { 'C' , "\xe3\x81\x9d", "\xe3\x81\x9d" },  // "そ", "そ"
++  { 'v' , "\xe3\x81\xb2", "\xe3\x81\xb2" },  // "ひ", "ひ"
++  { 'V' , "\xe3\x81\xb2", "\xe3\x81\xb2" },  // "ひ", "ひ"
++  { 'b' , "\xe3\x81\x93", "\xe3\x81\x93" },  // "こ", "こ"
++  { 'B' , "\xe3\x81\x93", "\xe3\x81\x93" },  // "こ", "こ"
++  { 'n' , "\xe3\x81\xbf", "\xe3\x81\xbf" },  // "み", "み"
++  { 'N' , "\xe3\x81\xbf", "\xe3\x81\xbf" },  // "み", "み"
++  { 'm' , "\xe3\x82\x82", "\xe3\x82\x82" },  // "も", "も"
++  { 'M' , "\xe3\x82\x82", "\xe3\x82\x82" },  // "も", "も"
++  { ',' , "\xe3\x81\xad", "\xe3\x80\x81" },  // "ね", "、"
++  { '<' , "\xe3\x81\xad", "\xe3\x80\x81" },  // "ね", "、"
++  { '.' , "\xe3\x82\x8b", "\xe3\x80\x82" },  // "る", "。"
++  { '>' , "\xe3\x82\x8b", "\xe3\x80\x82" },  // "る", "。"
++  { '/' , "\xe3\x82\x81", "\xe3\x83\xbb" },  // "め", "・"
++  { '?' , "\xe3\x82\x81", "\xe3\x83\xbb" },  // "め", "・"
++};
++
++}  // namespace
++
++namespace mozc {
++namespace fcitx {
++
++KeyTranslator::KeyTranslator() {
++  Init();
++}
++
++KeyTranslator::~KeyTranslator() {
++}
++
++// TODO(nona): Fix 'Shift-0' behavior b/4338394
++bool KeyTranslator::Translate(FcitxKeySym keyval,
++                              uint32 keycode,
++                              uint32 modifiers,
++                              config::Config::PreeditMethod method,
++                              bool layout_is_jp,
++                              commands::KeyEvent *out_event) const {
++  DCHECK(out_event) << "out_event is NULL";
++  out_event->Clear();
++
++  /* this is key we cannot handle, don't process it */
++  if (modifiers & FcitxKeyState_Super)
++    return false;
++
++  // Due to historical reasons, many linux ditributions set Hiragana_Katakana
++  // key as Hiragana key (which is Katkana key with shift modifier). So, we
++  // translate Hiragana_Katanaka key as Hiragana key by mapping table, and
++  // Shift + Hiragana_Katakana key as Katakana key by functionally.
++  // TODO(nona): Fix process modifier to handle right shift
++  if (IsHiraganaKatakanaKeyWithShift(keyval, keycode, modifiers)) {
++    modifiers &= ~FcitxKeyState_Shift;
++    keyval = FcitxKey_Katakana;
++  }
++  std::string kana_key_string;
++  if ((method == config::Config::KANA) && IsKanaAvailable(
++          keyval, keycode, modifiers, layout_is_jp, &kana_key_string)) {
++    out_event->set_key_code(keyval);
++    out_event->set_key_string(kana_key_string);
++  } else if (IsAscii(keyval, keycode, modifiers)) {
++    if (FcitxKeyState_CapsLock & modifiers) {
++      out_event->add_modifier_keys(commands::KeyEvent::CAPS);
++    }
++    out_event->set_key_code(keyval);
++  } else if (IsModifierKey(keyval, keycode, modifiers)) {
++    ModifierKeyMap::const_iterator i = modifier_key_map_.find(keyval);
++    DCHECK(i != modifier_key_map_.end());
++    out_event->add_modifier_keys(i->second);
++  } else if (IsSpecialKey(keyval, keycode, modifiers)) {
++    SpecialKeyMap::const_iterator i = special_key_map_.find(keyval);
++    DCHECK(i != special_key_map_.end());
++    out_event->set_special_key(i->second);
++  } else {
++    VLOG(1) << "Unknown keyval: " << keyval;
++    return false;
++  }
++
++  for (ModifierKeyMap::const_iterator i = modifier_mask_map_.begin();
++       i != modifier_mask_map_.end(); ++i) {
++    // Do not set a SHIFT modifier when |keyval| is a printable key by following
++    // the Mozc's rule.
++    if ((i->second == commands::KeyEvent::SHIFT) &&
++        IsPrintable(keyval, keycode, modifiers)) {
++      continue;
++    }
++
++    if (i->first & modifiers) {
++      out_event->add_modifier_keys(i->second);
++    }
++  }
++
++  return true;
++}
++
++void KeyTranslator::Init() {
++  for (int i = 0; i < arraysize(special_key_map); ++i) {
++    CHECK(special_key_map_.insert(std::make_pair(special_key_map[i].from,
++                                            special_key_map[i].to)).second);
++  }
++  for (int i = 0; i < arraysize(modifier_key_map); ++i) {
++    CHECK(modifier_key_map_.insert(std::make_pair(modifier_key_map[i].from,
++                                             modifier_key_map[i].to)).second);
++  }
++  for (int i = 0; i < arraysize(modifier_mask_map); ++i) {
++    CHECK(modifier_mask_map_.insert(std::make_pair(modifier_mask_map[i].from,
++                                              modifier_mask_map[i].to)).second);
++  }
++  for (int i = 0; i < arraysize(kana_map_jp); ++i) {
++    CHECK(kana_map_jp_.insert(
++        std::make_pair(kana_map_jp[i].code, std::make_pair(
++            kana_map_jp[i].no_shift, kana_map_jp[i].shift))).second);
++  }
++  for (int i = 0; i < arraysize(kana_map_us); ++i) {
++    CHECK(kana_map_us_.insert(
++        std::make_pair(kana_map_us[i].code, std::make_pair(
++            kana_map_us[i].no_shift, kana_map_us[i].shift))).second);
++  }
++}
++
++bool KeyTranslator::IsModifierKey(uint32 keyval,
++                                  uint32 keycode,
++                                  uint32 modifiers) const {
++  return modifier_key_map_.find(keyval) != modifier_key_map_.end();
++}
++
++bool KeyTranslator::IsSpecialKey(uint32 keyval,
++                                 uint32 keycode,
++                                 uint32 modifiers) const {
++  return special_key_map_.find(keyval) != special_key_map_.end();
++}
++
++bool KeyTranslator::IsHiraganaKatakanaKeyWithShift(uint32 keyval,
++                                                   uint32 keycode,
++                                                   uint32 modifiers) {
++  return ((modifiers & FcitxKeyState_Shift) && (keyval == FcitxKey_Hiragana_Katakana));
++}
++
++bool KeyTranslator::IsKanaAvailable(uint32 keyval,
++                                    uint32 keycode,
++                                    uint32 modifiers,
++                                    bool layout_is_jp,
++                                    std::string *out) const {
++  if ((modifiers & FcitxKeyState_Ctrl) || (modifiers & FcitxKeyState_Alt)) {
++    return false;
++  }
++  const KanaMap &kana_map = layout_is_jp ? kana_map_jp_ : kana_map_us_;
++  KanaMap::const_iterator iter = kana_map.find(keyval);
++  if (iter == kana_map.end()) {
++    return false;
++  }
++
++  if (out) {
++    // When a Japanese keyboard is in use, the yen-sign key and the backslash
++    // key generate the same |keyval|. In this case, we have to check |keycode|
++    // to return an appropriate string. See the following IBus issue for
++    // details: http://code.google.com/p/ibus/issues/detail?id=52
++    if (keyval == '\\' && layout_is_jp) {
++      if (keycode == 132 || keycode == 133) {
++        *out = "\xe3\x83\xbc";  // "ー"
++      } else {
++        *out = "\xe3\x82\x8d";  // "ろ"
++      }
++    } else {
++      *out = (modifiers & FcitxKeyState_Shift) ?
++          iter->second.second : iter->second.first;
++    }
++  }
++  return true;
++}
++
++// TODO(nona): resolve S-'0' problem (b/4338394).
++// TODO(nona): Current printable detection is weak. To enhance accuracy, use xkb
++// key map
++bool KeyTranslator::IsPrintable(uint32 keyval, uint32 keycode, uint32 modifiers) {
++  if ((modifiers & FcitxKeyState_Ctrl) || (modifiers & FcitxKeyState_Alt)) {
++    return false;
++  }
++  return IsAscii(keyval, keycode, modifiers);
++}
++
++bool KeyTranslator::IsAscii(uint32 keyval, uint32 keycode, uint32 modifiers) {
++  return (keyval > FcitxKey_space &&
++          // Note: Space key (0x20) is a special key in Mozc.
++          keyval <= FcitxKey_asciitilde);  // 0x7e.
++}
++
++}  // namespace ibus
++}  // namespace mozc
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h
+--- google-mozc-git/src/unix/fcitx/fcitx_key_translator.h	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,121 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#ifndef MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
++#define MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
++
++#include <map>
++#include <set>
++#include <string>
++
++#include <fcitx-config/hotkey.h>
++
++#include "base/port.h"
++#include "protocol/commands.pb.h"
++#include <fcitx/ime.h>
++
++namespace mozc {
++
++namespace fcitx {
++
++// This class is responsible for converting scim::KeyEvent object (defined in
++// /usr/include/scim-1.0/scim_event.h) to IPC input for mozc_server.
++class KeyTranslator {
++public:
++  KeyTranslator();
++  virtual ~KeyTranslator();
++
++  // Converts scim_key into Mozc key code and stores them on out_translated.
++  // scim_key must satisfy the following precondition: CanConvert(scim_key)
++  bool Translate(FcitxKeySym keyval,
++                 uint32 keycode,
++                 uint32 modifiers,
++                 mozc::config::Config::PreeditMethod method,
++                 bool layout_is_jp,
++                 mozc::commands::KeyEvent *out_event) const;
++
++private:
++  typedef std::map<uint32, commands::KeyEvent::SpecialKey> SpecialKeyMap;
++  typedef std::map<uint32, commands::KeyEvent::ModifierKey> ModifierKeyMap;
++  typedef std::map<uint32, std::pair<std::string, std::string> > KanaMap;
++
++  // Returns true iff key is modifier key such as SHIFT, ALT, or CAPSLOCK.
++  bool IsModifierKey(uint32 keyval,
++                     uint32 keycode,
++                     uint32 modifiers) const;
++
++  // Returns true iff key is special key such as ENTER, ESC, or PAGE_UP.
++  bool IsSpecialKey(uint32 keyval,
++                    uint32 keycode,
++                    uint32 modifiers) const;
++
++  // Returns true iff |keyval| is a key with a kana assigned.
++  bool IsKanaAvailable(uint32 keyval,
++                       uint32 keycode,
++                       uint32 modifiers,
++                       bool layout_is_jp,
++                       std::string *out) const;
++
++  // Returns true iff key is ASCII such as '0', 'A', or '!'.
++  static bool IsAscii(uint32 keyval,
++                      uint32 keycode,
++                      uint32 modifiers);
++
++  // Returns true iff key is printable.
++  static bool IsPrintable(uint32 keyval, uint32 keycode, uint32 modifiers);
++
++  // Returns true iff key is HiraganaKatakana with shift modifier.
++  static bool IsHiraganaKatakanaKeyWithShift(uint32 keyval,
++                                             uint32 keycode,
++                                             uint32 modifiers);
++
++  // Initializes private fields.
++  void Init();
++
++  // Stores a mapping from ibus keys to Mozc's special keys.
++  SpecialKeyMap special_key_map_;
++  // Stores a mapping from ibus modifier keys to Mozc's modifier keys.
++  ModifierKeyMap modifier_key_map_;
++  // Stores a mapping from ibus modifier masks to Mozc's modifier keys.
++  ModifierKeyMap modifier_mask_map_;
++  // Stores a mapping from ASCII to Kana character. For example, ASCII character
++  // '4' is mapped to Japanese 'Hiragana Letter U' (without Shift modifier) and
++  // 'Hiragana Letter Small U' (with Shift modifier).
++  KanaMap kana_map_jp_;  // mapping for JP keyboard.
++  KanaMap kana_map_us_;  // mapping for US keyboard.
++
++  DISALLOW_COPY_AND_ASSIGN(KeyTranslator);
++};
++
++}  // namespace fcitx
++
++}  // namespace mozc
++
++#endif  // MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.cc fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc
+--- google-mozc-git/src/unix/fcitx/fcitx_mozc.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,552 @@
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include "unix/fcitx/fcitx_mozc.h"
++
++#include <string>
++#include <fcitx/context.h>
++#include <fcitx/candidate.h>
++#include <fcitx/module.h>
++#include <fcitx-config/xdg.h>
++
++// Resolve macro naming conflict with absl.
++#undef InvokeFunction
++
++#include "base/const.h"
++#include "base/logging.h"
++#include "base/process.h"
++#include "base/util.h"
++#include "base/file_util.h"
++#include "base/system_util.h"
++#include "unix/fcitx/mozc_connection.h"
++#include "unix/fcitx/mozc_response_parser.h"
++
++#define N_(x) (x)
++
++namespace
++{
++
++static const std::string empty_string;
++
++const struct CompositionMode
++{
++    const char *icon;
++    const char *label;
++    const char *description;
++    mozc::commands::CompositionMode mode;
++} kPropCompositionModes[] =
++{
++    {
++        "mozc-direct.png",
++        "A",
++        N_("Direct"),
++        mozc::commands::DIRECT,
++    }, {
++        "mozc-hiragana.png",
++        "\xe3\x81\x82",  // Hiragana letter A in UTF-8.
++        N_("Hiragana"),
++        mozc::commands::HIRAGANA,
++    }, {
++        "mozc-katakana_full.png",
++        "\xe3\x82\xa2",  // Katakana letter A.
++        N_("Full Katakana"),
++        mozc::commands::FULL_KATAKANA,
++    }, {
++        "mozc-alpha_half.png",
++        "A",
++        N_("Half ASCII"),
++        mozc::commands::HALF_ASCII,
++    }, {
++        "mozc-alpha_full.png",
++        "\xef\xbc\xa1",  // Full width ASCII letter A.
++        N_("Full ASCII"),
++        mozc::commands::FULL_ASCII,
++    }, {
++        "mozc-katakana_half.png",
++        "\xef\xbd\xb1",  // Half width Katakana letter A.
++        N_("Half Katakana"),
++        mozc::commands::HALF_KATAKANA,
++    },
++};
++const size_t kNumCompositionModes = arraysize ( kPropCompositionModes );
++
++// This array must correspond with the CompositionMode enum in the
++// mozc/session/command.proto file.
++static_assert (
++    mozc::commands::NUM_OF_COMPOSITIONS == arraysize ( kPropCompositionModes ),
++    "number of modes must match" );
++
++}  // namespace
++
++INPUT_RETURN_VALUE FcitxMozcGetCandidateWord(void* arg, FcitxCandidateWord* candWord)
++{
++    mozc::fcitx::FcitxMozc* fcitx_mozc = (mozc::fcitx::FcitxMozc*) arg;
++    fcitx_mozc->select_candidate(candWord);
++
++    return IRV_DISPLAY_CANDWORDS;
++}
++
++
++namespace mozc
++{
++
++namespace fcitx
++{
++
++// For unittests.
++FcitxMozc::FcitxMozc ( FcitxInstance* inst,
++                       MozcConnectionInterface *connection,
++                       MozcResponseParser *parser ) :
++        instance(inst),
++        input(FcitxInstanceGetInputState(inst)),
++        connection_ ( connection ),
++        parser_ ( parser ),
++        composition_mode_ ( mozc::commands::HIRAGANA )
++{
++    // mozc::Logging::SetVerboseLevel(1);
++    VLOG ( 1 ) << "FcitxMozc created.";
++    const bool is_vertical = true;
++    parser_->set_use_annotation ( is_vertical );
++    InitializeBar();
++    InitializeMenu();
++    SetCompositionMode( mozc::commands::HIRAGANA );
++}
++
++FcitxMozc::~FcitxMozc()
++{
++    VLOG ( 1 ) << "FcitxMozc destroyed.";
++}
++
++// This function is called from SCIM framework when users press or release a
++// key.
++bool FcitxMozc::process_key_event (FcitxKeySym sym, uint32 keycode, uint32 state, bool layout_is_jp, bool is_key_up)
++{
++    std::string error;
++    mozc::commands::Output raw_response;
++    if ( !connection_->TrySendKeyEvent (
++                GetInstance(), sym, keycode, state, composition_mode_, layout_is_jp, is_key_up, &raw_response, &error ) )
++    {
++        // TODO(yusukes): Show |error|.
++        return false;  // not consumed.
++    }
++
++    return ParseResponse ( raw_response );
++}
++
++// This function is called from SCIM framework when users click the candidate
++// window.
++void FcitxMozc::select_candidate ( FcitxCandidateWord* candWord )
++{
++    int32 *id = (int32*) candWord->priv;
++
++    if ( *id == kBadCandidateId )
++    {
++        LOG ( ERROR ) << "The clicked candidate doesn't have unique ID.";
++        return;
++    }
++    VLOG ( 1 ) << "select_candidate, id=" << *id;
++
++    std::string error;
++    mozc::commands::Output raw_response;
++    if ( !connection_->TrySendClick ( *id, &raw_response, &error ) )
++    {
++        LOG ( ERROR ) << "IPC failed. error=" << error;
++        SetAuxString ( error );
++        DrawAll();
++    }
++    else
++    {
++        ParseResponse ( raw_response );
++    }
++}
++
++// This function is called from SCIM framework.
++void FcitxMozc::resetim()
++{
++    VLOG ( 1 ) << "resetim";
++    std::string error;
++    mozc::commands::Output raw_response;
++    if ( connection_->TrySendCommand (
++                mozc::commands::SessionCommand::REVERT, &raw_response, &error ) )
++    {
++        parser_->ParseResponse ( raw_response, this );
++    }
++    ClearAll();  // just in case.
++    DrawAll();
++
++}
++
++void FcitxMozc::reset()
++{
++    FcitxIM* im = FcitxInstanceGetCurrentIM(instance);
++    if (!im || strcmp(im->uniqueName, "mozc") != 0) {
++        FcitxUISetStatusVisable(instance, "mozc-tool", false);
++        FcitxUISetStatusVisable(instance, "mozc-composition-mode", false);
++    }
++    else {
++        FcitxUISetStatusVisable(instance, "mozc-tool", true);
++        FcitxUISetStatusVisable(instance, "mozc-composition-mode", true);
++        connection_->UpdatePreeditMethod();
++    }
++}
++
++bool FcitxMozc::paging(bool prev)
++{
++    VLOG ( 1 ) << "paging";
++    std::string error;
++    mozc::commands::SessionCommand::CommandType command =
++        prev ? mozc::commands::SessionCommand::CONVERT_PREV_PAGE
++             : mozc::commands::SessionCommand::CONVERT_NEXT_PAGE;
++    mozc::commands::Output raw_response;
++    if ( connection_->TrySendCommand (
++        command, &raw_response, &error ) )
++    {
++        parser_->ParseResponse ( raw_response, this );
++        return true;
++    }
++    return false;
++}
++
++// This function is called from SCIM framework when the ic gets focus.
++void FcitxMozc::init()
++{
++    VLOG ( 1 ) << "init";
++    boolean flag = true;
++    FcitxInstanceSetContext(instance, CONTEXT_DISABLE_AUTOENG, &flag);
++    FcitxInstanceSetContext(instance, CONTEXT_DISABLE_FULLWIDTH, &flag);
++    FcitxInstanceSetContext(instance, CONTEXT_DISABLE_QUICKPHRASE, &flag);
++    FcitxInstanceSetContext(instance, CONTEXT_IM_KEYBOARD_LAYOUT, "jp");
++    FcitxInstanceSetContext(instance, "CONTEXT_DISABLE_AUTO_FIRST_CANDIDATE_HIGHTLIGHT", &flag);
++
++    connection_->UpdatePreeditMethod();
++    DrawAll();
++}
++
++// This function is called when the ic loses focus.
++void FcitxMozc::focus_out()
++{
++    VLOG ( 1 ) << "focus_out";
++    std::string error;
++    mozc::commands::Output raw_response;
++    if ( connection_->TrySendCommand (
++                mozc::commands::SessionCommand::REVERT, &raw_response, &error ) )
++    {
++        parser_->ParseResponse ( raw_response, this );
++    }
++    ClearAll();  // just in case.
++    DrawAll();
++    // TODO(yusukes): Call client::SyncData() like ibus-mozc.
++}
++
++
++bool FcitxMozc::ParseResponse ( const mozc::commands::Output &raw_response )
++{
++    ClearAll();
++    const bool consumed = parser_->ParseResponse ( raw_response, this );
++    if ( !consumed )
++    {
++        VLOG ( 1 ) << "The input was not consumed by Mozc.";
++    }
++    OpenUrl();
++    DrawAll();
++    return consumed;
++}
++
++void FcitxMozc::SetResultString ( const std::string &result_string )
++{
++    FcitxInstanceCommitString(instance, FcitxInstanceGetCurrentIC(instance), result_string.c_str());
++}
++
++void FcitxMozc::SetPreeditInfo ( const PreeditInfo *preedit_info )
++{
++    preedit_info_.reset ( preedit_info );
++}
++
++void FcitxMozc::SetAuxString ( const std::string &str )
++{
++    aux_ = str;
++}
++
++void FcitxMozc::SetCompositionMode ( mozc::commands::CompositionMode mode )
++{
++    composition_mode_ = mode;
++    DCHECK(composition_mode_ < kNumCompositionModes);
++    if (composition_mode_ < kNumCompositionModes) {
++        FcitxUISetStatusString(instance,
++                               "mozc-composition-mode",
++                               _(kPropCompositionModes[composition_mode_].label),
++                               _(kPropCompositionModes[composition_mode_].description));
++    }
++}
++
++void FcitxMozc::SendCompositionMode(mozc::commands::CompositionMode mode)
++{
++    // Send the SWITCH_INPUT_MODE command.
++    std::string error;
++    mozc::commands::Output raw_response;
++    if (connection_->TrySendCompositionMode(
++            kPropCompositionModes[mode].mode, composition_mode_, &raw_response, &error)) {
++        parser_->ParseResponse(raw_response, this);
++    }
++}
++
++
++void FcitxMozc::SetUrl ( const std::string &url )
++{
++    url_ = url;
++}
++
++void FcitxMozc::ClearAll()
++{
++    SetPreeditInfo ( NULL );
++    SetAuxString ( "" );
++    FcitxCandidateWordReset(FcitxInputStateGetCandidateList(input));
++    url_.clear();
++}
++
++void FcitxMozc::DrawPreeditInfo()
++{
++    FcitxMessages* preedit = FcitxInputStateGetPreedit(input);
++    FcitxMessages* clientpreedit = FcitxInputStateGetClientPreedit(input);
++    FcitxMessagesSetMessageCount(preedit, 0);
++    FcitxMessagesSetMessageCount(clientpreedit, 0);
++    if ( preedit_info_.get() )
++    {
++        VLOG ( 1 ) << "DrawPreeditInfo: cursor=" << preedit_info_->cursor_pos;
++
++        FcitxInputContext* ic = FcitxInstanceGetCurrentIC(instance);
++        boolean supportPreedit = FcitxInstanceICSupportPreedit(instance, ic);
++
++        if (!supportPreedit)
++            FcitxInputStateSetShowCursor(input, true);
++
++        for (int i = 0; i < preedit_info_->preedit.size(); i ++) {
++            if (!supportPreedit)
++                FcitxMessagesAddMessageAtLast(preedit, preedit_info_->preedit[i].type, "%s", preedit_info_->preedit[i].str.c_str());
++            FcitxMessagesAddMessageAtLast(clientpreedit, preedit_info_->preedit[i].type, "%s", preedit_info_->preedit[i].str.c_str());
++        }
++        if (!supportPreedit)
++            FcitxInputStateSetCursorPos(input, preedit_info_->cursor_pos);
++        FcitxInputStateSetClientCursorPos(input, preedit_info_->cursor_pos);
++    }
++    else {
++        FcitxInputStateSetShowCursor(input, false);
++    }
++    if ( !aux_.empty() ) {
++        FcitxMessagesAddMessageAtLast(preedit, MSG_TIPS, "%s[%s]", preedit_info_.get() ? " " : "", aux_.c_str());
++    }
++}
++
++void FcitxMozc::DrawAux()
++{
++    FcitxMessages* auxUp = FcitxInputStateGetAuxUp(input);
++    FcitxMessages* auxDown = FcitxInputStateGetAuxDown(input);
++    FcitxMessagesSetMessageCount(auxUp, 0);
++    FcitxMessagesSetMessageCount(auxDown, 0);
++}
++
++void FcitxMozc::DrawAll()
++{
++    DrawPreeditInfo();
++    DrawAux();
++}
++
++void FcitxMozc::OpenUrl()
++{
++    if ( url_.empty() )
++    {
++        return;
++    }
++    mozc::Process::OpenBrowser ( url_ );
++    url_.clear();
++}
++
++static const char* GetCompositionIconName(void* arg)
++{
++    FcitxMozc* mozc = (FcitxMozc*) arg;
++    return mozc->GetCurrentCompositionModeIcon().c_str();
++}
++
++
++static const char* GetMozcToolIcon(void* arg)
++{
++    FcitxMozc* mozc = (FcitxMozc*) arg;
++    return mozc->GetIconFile("mozc-tool.png").c_str();
++}
++
++void FcitxMozc::InitializeBar()
++{
++    VLOG ( 1 ) << "Registering properties";
++
++    FcitxUIRegisterComplexStatus(instance, this,
++        "mozc-composition-mode",
++        _("Composition Mode"),
++        _("Composition Mode"),
++        NULL,
++        GetCompositionIconName
++    );
++
++    if ( mozc::FileUtil::FileExists ( mozc::FileUtil::JoinPath (
++                                      mozc::SystemUtil::GetServerDirectory(), mozc::kMozcTool ) ).ok() )
++    {
++        FcitxUIRegisterComplexStatus(instance, this,
++            "mozc-tool",
++            _("Tool"),
++            _("Tool"),
++            NULL,
++            GetMozcToolIcon
++        );
++    }
++    FcitxUISetStatusVisable(instance, "mozc-tool", false);
++    FcitxUISetStatusVisable(instance, "mozc-composition-mode", false);
++}
++
++boolean CompositionMenuAction(struct _FcitxUIMenu *menu, int index)
++{
++    FcitxMozc* mozc = (FcitxMozc*) menu->priv;
++    mozc->SendCompositionMode((mozc::commands::CompositionMode) index);
++    return true;
++}
++
++void UpdateCompositionMenu(struct _FcitxUIMenu *menu)
++{
++    FcitxMozc* mozc = (FcitxMozc*) menu->priv;
++    menu->mark = mozc->GetCompositionMode();
++}
++
++boolean ToolMenuAction(struct _FcitxUIMenu *menu, int index)
++{
++    std::string args;
++    switch(index) {
++        case 0:
++            args = "--mode=config_dialog";
++            break;
++        case 1:
++            args = "--mode=dictionary_tool";
++            break;
++        case 2:
++            args = "--mode=word_register_dialog";
++            break;
++        case 3:
++            args = "--mode=about_dialog";
++            break;
++    }
++    mozc::Process::SpawnMozcProcess("mozc_tool", args);
++    return true;
++}
++
++void UpdateToolMenu(struct _FcitxUIMenu *menu)
++{
++    return;
++}
++
++void FcitxMozc::InitializeMenu()
++{
++    FcitxMenuInit(&this->compositionMenu);
++    compositionMenu.name = strdup(_("Composition Mode"));
++    compositionMenu.candStatusBind = strdup("mozc-composition-mode");
++    compositionMenu.UpdateMenu = UpdateCompositionMenu;
++    compositionMenu.MenuAction = CompositionMenuAction;
++    compositionMenu.priv = this;
++    compositionMenu.isSubMenu = false;
++    int i;
++    for (i = 0; i < kNumCompositionModes; i ++)
++        FcitxMenuAddMenuItem(&compositionMenu, _(kPropCompositionModes[i].description), MENUTYPE_SIMPLE, NULL);
++
++    FcitxUIRegisterMenu(instance, &compositionMenu);
++
++    FcitxMenuInit(&this->toolMenu);
++    toolMenu.name = strdup(_("Mozc Tool"));
++    toolMenu.candStatusBind = strdup("mozc-tool");
++    toolMenu.UpdateMenu = UpdateToolMenu;
++    toolMenu.MenuAction = ToolMenuAction;
++    toolMenu.priv = this;
++    toolMenu.isSubMenu = false;
++    FcitxMenuAddMenuItem(&toolMenu, _("Configuration Tool"), MENUTYPE_SIMPLE, NULL);
++    FcitxMenuAddMenuItem(&toolMenu, _("Dictionary Tool"), MENUTYPE_SIMPLE, NULL);
++    FcitxMenuAddMenuItem(&toolMenu, _("Add Word"), MENUTYPE_SIMPLE, NULL);
++    FcitxMenuAddMenuItem(&toolMenu, _("About Mozc"), MENUTYPE_SIMPLE, NULL);
++    FcitxUIRegisterMenu(instance, &toolMenu);
++}
++
++bool FcitxMozc::SendCommand(const mozc::commands::SessionCommand& session_command, commands::Output* new_output)
++{
++    std::string error;
++    return connection_->TrySendRawCommand(session_command, new_output, &error);
++}
++
++
++FcitxInputState* FcitxMozc::GetInputState()
++{
++    return input;
++}
++
++const std::string& FcitxMozc::GetIconFile(const std::string key)
++{
++    if (iconMap.count(key)) {
++        return iconMap[key];
++    }
++
++    char* retFile;
++    FILE* fp = FcitxXDGGetFileWithPrefix("mozc/icon", key.c_str(), "r", &retFile);
++    if (fp)
++        fclose(fp);
++    if (retFile) {
++        iconMap[key] = std::string(retFile);
++        free(retFile);
++    }
++    else {
++        iconMap[key] = "";
++    }
++    return iconMap[key];
++}
++
++
++const std::string& FcitxMozc::GetCurrentCompositionModeIcon() {
++    DCHECK(composition_mode_ < kNumCompositionModes);
++    if (composition_mode_ < kNumCompositionModes) {
++        return GetIconFile(kPropCompositionModes[composition_mode_].icon);
++    }
++    return empty_string;
++}
++
++void FcitxMozc::SetUsage(const std::string& title_, const std::string& description_)
++{
++    title = title_;
++    description = description_;
++}
++
++std::pair< std::string, std::string > FcitxMozc::GetUsage()
++{
++    return make_pair(title, description);
++}
++
++}  // namespace fcitx
++
++}  // namespace mozc_unix_scim
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx-mozc.conf fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf
+--- google-mozc-git/src/unix/fcitx/fcitx-mozc.conf	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,11 @@
++[Addon]
++Name=fcitx-mozc
++GeneralName=Mozc
++Comment=Mozc support for Fcitx
++Category=InputMethod
++Enabled=True
++Library=fcitx-mozc.so
++Type=SharedLibrary
++SubConfig=
++IMRegisterMethod=ConfigFile
++LoadLocal=True
+diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h
+--- google-mozc-git/src/unix/fcitx/fcitx_mozc.h	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,176 @@
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#ifndef MOZC_UNIX_FCITX_FCITX_MOZC_H_
++#define MOZC_UNIX_FCITX_FCITX_MOZC_H_
++
++#include <memory>
++
++#include <fcitx/instance.h>
++#include <fcitx/candidate.h>
++#include <fcitx-config/hotkey.h>
++#include <libintl.h>
++
++#include "base/port.h"
++#include "base/run_level.h"
++#include "protocol/commands.pb.h"
++#include "client/client_interface.h"
++#include "mozc_connection.h"
++
++#define _(x) dgettext("fcitx-mozc", (x))
++
++INPUT_RETURN_VALUE FcitxMozcGetCandidateWord(void* arg, FcitxCandidateWord* candWord);;
++
++namespace mozc
++{
++
++namespace fcitx
++{
++const int32 kBadCandidateId = -12345;
++class IMEngineFactory;
++class MozcConnectionInterface;
++class MozcResponseParser;
++class KeyTranslator;
++
++struct PreeditItem {
++        std::string str;
++        FcitxMessageType type;
++};
++
++// Preedit string and its attributes.
++struct PreeditInfo
++{
++    uint32 cursor_pos;
++    
++    std::vector<PreeditItem> preedit;
++};
++
++class FcitxMozc
++{
++public:
++    // This constructor is used by unittests.
++    FcitxMozc ( FcitxInstance* instance,
++                MozcConnectionInterface *connection,
++                MozcResponseParser *parser );
++    virtual ~FcitxMozc();
++
++    bool process_key_event (FcitxKeySym sym, uint32 keycode, uint32 state, bool layout_is_jp, bool is_key_up);
++    void select_candidate ( FcitxCandidateWord* candWord );
++    void resetim();
++    void reset();
++    void init();
++    void focus_out();
++    bool paging(bool prev);
++
++    // Functions called by the MozcResponseParser class to update UI.
++
++    // Displays a 'result' (aka 'commit string') on FCITX UI.
++    void SetResultString ( const std::string &result_string );
++    // Displays a 'preedit' string on FCITX UI. This function takes ownership
++    // of preedit_info. If the parameter is NULL, hides the string currently
++    // displayed.
++    void SetPreeditInfo ( const PreeditInfo *preedit_info );
++    // Displays an auxiliary message (e.g., an error message, a title of
++    // candidate window). If the string is empty (""), hides the message
++    // currently being displayed.
++    void SetAuxString ( const std::string &str );
++    // Sets a current composition mode (e.g., Hankaku Katakana).
++    void SetCompositionMode ( mozc::commands::CompositionMode mode );
++    
++    void SendCompositionMode ( mozc::commands::CompositionMode mode );
++
++    // Sets the url to be opened by the default browser.
++    void SetUrl ( const std::string &url );
++
++    const std::string& GetIconFile(const std::string key);
++    
++    const std::string& GetCurrentCompositionModeIcon();
++    
++    mozc::commands::CompositionMode GetCompositionMode() { return composition_mode_; }
++    
++    FcitxInstance* GetInstance() { return instance; }
++    
++    FcitxInputState* GetInputState();
++
++    mozc::client::ClientInterface* GetClient() { return connection_->GetClient(); }
++
++    bool SendCommand(const mozc::commands::SessionCommand& session_command, mozc::commands::Output* new_output);
++
++    void SetUsage(const std::string& title, const std::string& description);
++
++    std::pair<std::string, std::string> GetUsage();
++
++    void DrawAll();
++
++private:
++    friend class FcitxMozcTest;
++
++    // Adds Mozc-specific icons to FCITX toolbar.
++    void InitializeBar();
++    
++    void InitializeMenu();
++
++    // Parses the response from mozc_server. Returns whether the server consumes
++    // the input or not (true means 'consumed').
++    bool ParseResponse ( const mozc::commands::Output &request );
++
++    void ClearAll();
++    void DrawPreeditInfo();
++    void DrawAux();
++
++    // Open url_ with a default browser.
++    void OpenUrl();
++
++    FcitxInstance* instance;
++    FcitxInputState* input;
++    const std::unique_ptr<MozcConnectionInterface> connection_;
++    const std::unique_ptr<MozcResponseParser> parser_;
++
++    // Strings and a window currently displayed on FCITX UI.
++    std::unique_ptr<const PreeditInfo> preedit_info_;
++    std::string aux_;  // error tooltip, or candidate window title.
++    std::string url_;  // URL to be opened by a browser.
++    mozc::commands::CompositionMode composition_mode_;
++    
++    std::map<std::string, std::string> iconMap;
++    
++    FcitxUIMenu compositionMenu;
++    FcitxUIMenu toolMenu;
++    std::string description;
++    std::string title;
++
++    DISALLOW_COPY_AND_ASSIGN ( FcitxMozc );
++};
++
++}  // namespace fcitx
++
++}  // namespace mozc
++
++#endif  // MOZC_UNIX_FCITX_FCITX_MOZC_H_
++
+diff -ruN google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh
+--- google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,10 @@
++#!/bin/sh
++
++objdir="$1"
++
++mkdir -p "$1"
++
++for pofile in po/*.po
++do
++    msgfmt "$pofile" -o "$1/`basename ${pofile} .po`.mo"
++done
+diff -ruN google-mozc-git/src/unix/fcitx/mozc.conf fcitx-mozc-git/src/unix/fcitx/mozc.conf
+--- google-mozc-git/src/unix/fcitx/mozc.conf	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc.conf	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,7 @@
++[InputMethod]
++UniqueName=mozc
++Name=Mozc
++IconName=/usr/share/fcitx/mozc/icon/mozc.png
++Priority=1
++LangCode=ja
++Parent=fcitx-mozc
+diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.cc fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc
+--- google-mozc-git/src/unix/fcitx/mozc_connection.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,214 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include "unix/fcitx/mozc_connection.h"
++
++#include <string>
++
++#include "base/logging.h"
++#include "base/util.h"
++#include "client/client.h"
++#include "ipc/ipc.h"
++#include "protocol/commands.pb.h"
++#include "session/ime_switch_util.h"
++#include "unix/fcitx/fcitx_key_event_handler.h"
++#include "unix/fcitx/surrounding_text_util.h"
++
++namespace mozc {
++namespace fcitx {
++
++MozcConnectionInterface::~MozcConnectionInterface() {
++}
++
++mozc::client::ClientInterface* CreateAndConfigureClient() {
++  mozc::client::ClientInterface *client = client::ClientFactory::NewClient();
++  // Currently client capability is fixed.
++  commands::Capability capability;
++  capability.set_text_deletion(commands::Capability::DELETE_PRECEDING_TEXT);
++  client->set_client_capability(capability);
++  return client;
++}
++
++MozcConnection::MozcConnection(
++    mozc::client::ServerLauncherInterface *server_launcher,
++    mozc::IPCClientFactoryInterface *client_factory)
++    : handler_(new KeyEventHandler),
++      preedit_method_(mozc::config::Config::ROMAN),
++      client_factory_(client_factory) {
++  VLOG(1) << "MozcConnection is created";
++  mozc::client::ClientInterface *client = CreateAndConfigureClient();
++  client->SetServerLauncher(server_launcher);
++  client->SetIPCClientFactory(client_factory_.get());
++  client_.reset(client);
++
++  if (client_->EnsureConnection()) {
++    UpdatePreeditMethod();
++  }
++  VLOG(1)
++      << "Current preedit method is "
++      << (preedit_method_ == mozc::config::Config::ROMAN ? "Roman" : "Kana");
++}
++
++MozcConnection::~MozcConnection() {
++  client_->SyncData();
++  VLOG(1) << "MozcConnection is destroyed";
++}
++
++void MozcConnection::UpdatePreeditMethod() {
++  mozc::config::Config config;
++  if (!client_->GetConfig(&config)) {
++    LOG(ERROR) << "GetConfig failed";
++    return;
++  }
++  preedit_method_ = config.has_preedit_method() ?
++      config.preedit_method() : config::Config::ROMAN;
++}
++
++bool MozcConnection::TrySendKeyEvent(
++    FcitxInstance* instance,
++    FcitxKeySym sym, uint32 keycode, uint32 state,
++    mozc::commands::CompositionMode composition_mode,
++    bool layout_is_jp,
++    bool is_key_up,
++    mozc::commands::Output *out,
++    std::string *out_error) const {
++  DCHECK(out);
++  DCHECK(out_error);
++
++  // Call EnsureConnection just in case MozcConnection::MozcConnection() fails
++  // to establish the server connection.
++  if (!client_->EnsureConnection()) {
++    *out_error = "EnsureConnection failed";
++    VLOG(1) << "EnsureConnection failed";
++    return false;
++  }
++
++  mozc::commands::KeyEvent event;
++  if (!handler_->GetKeyEvent(sym, keycode, state, preedit_method_, layout_is_jp, is_key_up, &event))
++      return false;
++
++  if ((composition_mode == mozc::commands::DIRECT) &&
++      !mozc::config::ImeSwitchUtil::IsDirectModeCommand(event)) {
++    VLOG(1) << "In DIRECT mode. Not consumed.";
++    return false;  // not consumed.
++  }
++
++  commands::Context context;
++  SurroundingTextInfo surrounding_text_info;
++  if (GetSurroundingText(instance,
++                         &surrounding_text_info)) {
++    context.set_preceding_text(surrounding_text_info.preceding_text);
++    context.set_following_text(surrounding_text_info.following_text);
++  }
++
++  VLOG(1) << "TrySendKeyEvent: " << std::endl << event.DebugString();
++  if (!client_->SendKeyWithContext(event, context, out)) {
++    *out_error = "SendKey failed";
++    VLOG(1) << "ERROR";
++    return false;
++  }
++  VLOG(1) << "OK: " << std::endl << out->DebugString();
++  return true;
++}
++
++bool MozcConnection::TrySendClick(int32 unique_id,
++                                  mozc::commands::Output *out,
++                                  std::string *out_error) const {
++  DCHECK(out);
++  DCHECK(out_error);
++
++  mozc::commands::SessionCommand command;
++  command.set_type(mozc::commands::SessionCommand::SELECT_CANDIDATE);
++  command.set_id(unique_id);
++  return TrySendRawCommand(command, out, out_error);
++}
++
++bool MozcConnection::TrySendCompositionMode(
++    mozc::commands::CompositionMode mode,
++    mozc::commands::CompositionMode old_mode,
++    mozc::commands::Output *out,
++    std::string *out_error) const {
++  DCHECK(out);
++  DCHECK(out_error);
++
++  mozc::commands::SessionCommand command;
++  if (mode == mozc::commands::DIRECT) {
++    command.set_type(mozc::commands::SessionCommand::TURN_OFF_IME);
++    command.set_composition_mode(old_mode);
++  } else {
++    command.set_type(mozc::commands::SessionCommand::SWITCH_INPUT_MODE);
++    command.set_composition_mode(mode);
++  }
++  return TrySendRawCommand(command, out, out_error);
++}
++
++bool MozcConnection::TrySendCommand(
++    mozc::commands::SessionCommand::CommandType type,
++    mozc::commands::Output *out,
++    std::string *out_error) const {
++  DCHECK(out);
++  DCHECK(out_error);
++
++  mozc::commands::SessionCommand command;
++  command.set_type(type);
++  return TrySendRawCommand(command, out, out_error);
++}
++
++
++
++bool MozcConnection::TrySendRawCommand(
++    const mozc::commands::SessionCommand& command,
++    mozc::commands::Output *out,
++    std::string *out_error) const {
++  VLOG(1) << "TrySendRawCommand: " << std::endl << command.DebugString();
++  if (!client_->SendCommand(command, out)) {
++    *out_error = "SendCommand failed";
++    VLOG(1) << "ERROR";
++    return false;
++  }
++  VLOG(1) << "OK: " << std::endl << out->DebugString();
++  return true;
++}
++
++mozc::client::ClientInterface* MozcConnection::GetClient()
++{
++    return client_.get();
++}
++
++MozcConnection *MozcConnection::CreateMozcConnection() {
++  mozc::client::ServerLauncher *server_launcher
++      = new mozc::client::ServerLauncher;
++
++  return new MozcConnection(server_launcher, new mozc::IPCClientFactory);
++}
++
++}  // namespace fcitx
++
++}  // namespace mozc
+diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/unix/fcitx/mozc_connection.h
+--- google-mozc-git/src/unix/fcitx/mozc_connection.h	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.h	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,154 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#ifndef MOZC_UNIX_FCITX_MOZC_CONNECTION_H_
++#define MOZC_UNIX_FCITX_MOZC_CONNECTION_H_
++
++#include <string>
++#include <memory>
++
++#include <fcitx-config/hotkey.h>
++#include <fcitx/instance.h>
++
++#include "base/port.h"
++#include "protocol/commands.pb.h"
++#include "unix/fcitx/fcitx_key_event_handler.h"
++
++namespace mozc {
++
++class IPCClientInterface;
++class IPCClientFactoryInterface;
++
++namespace client {
++class ClientInterface;
++class ServerLauncherInterface;
++}  // namespace client
++
++}  // namespace mozc
++
++namespace mozc {
++    
++namespace fcitx {
++
++class KeyTranslator;
++
++// This class is for mozc_response_parser_test.cc.
++class MozcConnectionInterface {
++ public:
++  virtual ~MozcConnectionInterface();
++
++  virtual bool TrySendKeyEvent(FcitxInstance* instance,
++                               FcitxKeySym sym, uint32 keycode, uint32 state,
++                               mozc::commands::CompositionMode composition_mode,
++                               bool layout_is_jp,
++                               bool is_key_up,
++                               mozc::commands::Output *out,
++                               std::string *out_error) const = 0;
++  virtual bool TrySendClick(int32 unique_id,
++                            mozc::commands::Output *out,
++                            std::string *out_error) const = 0;
++  virtual bool TrySendCompositionMode(mozc::commands::CompositionMode mode,
++                                      mozc::commands::CompositionMode old_mode,
++                                      mozc::commands::Output *out,
++                                      std::string *out_error) const = 0;
++  virtual bool TrySendCommand(mozc::commands::SessionCommand::CommandType type,
++                              mozc::commands::Output *out,
++                              std::string *out_error) const = 0;
++
++  virtual bool TrySendRawCommand(const mozc::commands::SessionCommand& command,
++                                 mozc::commands::Output *out,
++                                 std::string *out_error) const = 0;
++  virtual mozc::client::ClientInterface* GetClient() = 0;
++  virtual void UpdatePreeditMethod() = 0;
++};
++
++class MozcConnection : public MozcConnectionInterface {
++ public:
++  static const int kNoSession;
++
++  static MozcConnection *CreateMozcConnection();
++  virtual ~MozcConnection();
++
++  // Sends key event to the server. If the IPC succeeds, returns true and the
++  // response is stored on 'out' (and 'out_error' is not modified). If the IPC
++  // fails, returns false and the error message is stored on 'out_error'. In
++  // this case, 'out' is not modified.
++  virtual bool TrySendKeyEvent(FcitxInstance* instance,
++                               FcitxKeySym sym, uint32 keycode, uint32 state,
++                               mozc::commands::CompositionMode composition_mode,
++                               bool layout_is_jp,
++                               bool is_key_up,
++                               mozc::commands::Output *out,
++                               std::string *out_error) const;
++
++  // Sends 'mouse click on the candidate window' event to the server.
++  virtual bool TrySendClick(int32 unique_id,
++                            mozc::commands::Output *out,
++                            std::string *out_error) const;
++
++  // Sends composition mode to the server.
++  virtual bool TrySendCompositionMode(mozc::commands::CompositionMode mode,
++                                      mozc::commands::CompositionMode old_mode,
++                                      mozc::commands::Output *out,
++                                      std::string *out_error) const;
++
++  // Sends a command to the server.
++  virtual bool TrySendCommand(mozc::commands::SessionCommand::CommandType type,
++                              mozc::commands::Output *out,
++                              std::string *out_error) const;
++
++  virtual bool TrySendRawCommand(const mozc::commands::SessionCommand& command,
++                                 mozc::commands::Output *out,
++                                 std::string *out_error) const;
++
++  virtual mozc::client::ClientInterface* GetClient();
++
++  virtual void UpdatePreeditMethod();
++
++ private:
++  friend class MozcConnectionTest;
++  MozcConnection(mozc::client::ServerLauncherInterface *server_launcher,
++                 mozc::IPCClientFactoryInterface *client_factory);
++
++  const std::unique_ptr<KeyEventHandler> handler_;
++  mozc::config::Config::PreeditMethod preedit_method_;
++  // Keep definition order of client_factory_ and client_.
++  // We should delete client_ before deleting client_factory_.
++  std::unique_ptr<mozc::IPCClientFactoryInterface> client_factory_;
++  std::unique_ptr<mozc::client::ClientInterface> client_;
++
++  DISALLOW_COPY_AND_ASSIGN(MozcConnection);
++};
++
++}  // namespace fcitx
++
++}  // namespace mozc
++
++#endif  // MOZC_UNIX_SCIM_MOZC_CONNECTION_H_
+diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.cc fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc
+--- google-mozc-git/src/unix/fcitx/mozc_response_parser.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,447 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include "unix/fcitx/mozc_response_parser.h"
++
++#include <string>
++#include <vector>
++
++#include "base/logging.h"
++#include "base/util.h"
++#include "protocol/commands.pb.h"
++#include "unix/fcitx/fcitx_mozc.h"
++#include "unix/fcitx/surrounding_text_util.h"
++#include <fcitx/candidate.h>
++
++namespace {
++
++// Returns a position that determines a preedit cursor position _AND_ top-left
++// position of a candidate window. Note that we can't set these two positions
++// independently. That's a SCIM's limitation.
++uint32 GetCursorPosition(const mozc::commands::Output &response) {
++    if (!response.has_preedit()) {
++        return 0;
++    }
++    if (response.preedit().has_highlighted_position()) {
++        return response.preedit().highlighted_position();
++    }
++    return response.preedit().cursor();
++}
++
++std::string CreateDescriptionString(const std::string &description) {
++    return " [" + description + "]";
++}
++
++}  // namespace
++
++namespace mozc {
++
++namespace fcitx {
++
++MozcResponseParser::MozcResponseParser()
++        : use_annotation_(false) {
++}
++
++MozcResponseParser::~MozcResponseParser() {
++}
++
++void MozcResponseParser::UpdateDeletionRange(const mozc::commands::Output& response, FcitxMozc* fcitx_mozc) const
++{
++    if (response.has_deletion_range() &&
++        response.deletion_range().offset() <= 0 &&
++        response.deletion_range().offset() + response.deletion_range().length() >= 0) {
++        FcitxInstanceDeleteSurroundingText(fcitx_mozc->GetInstance(),
++                                           FcitxInstanceGetCurrentIC(fcitx_mozc->GetInstance()),
++                                           response.deletion_range().offset(),
++                                           response.deletion_range().length());
++    }
++}
++
++void MozcResponseParser::LaunchTool(const mozc::commands::Output& response, FcitxMozc* fcitx_mozc) const
++{
++    FCITX_UNUSED(fcitx_mozc);
++    if (response.has_launch_tool_mode()) {
++        fcitx_mozc->GetClient()->LaunchToolWithProtoBuf(response);
++    }
++}
++
++void MozcResponseParser::ExecuteCallback(const mozc::commands::Output& response, FcitxMozc* fcitx_mozc) const
++{
++    if (!response.has_callback()) {
++        return;
++    }
++
++    if (!response.callback().has_session_command()) {
++        LOG(ERROR) << "callback does not have session_command";
++        return;
++    }
++
++    const commands::SessionCommand &callback_command =
++        response.callback().session_command();
++
++    if (!callback_command.has_type()) {
++        LOG(ERROR) << "callback_command has no type";
++        return;
++    }
++
++    commands::SessionCommand session_command;
++    session_command.set_type(callback_command.type());
++
++    // TODO(nona): Make a function to handle CONVERT_REVERSE.
++    // Used by CONVERT_REVERSE and/or UNDO
++    // This value represents how many characters are selected as a relative
++    // distance of characters. Positive value represents forward text selection
++    // and negative value represents backword text selection.
++    // Note that you should not allow 0x80000000 for |relative_selected_length|
++    // because you cannot safely use |-relative_selected_length| nor
++    // |abs(relative_selected_length)| in this case due to integer overflow.
++    SurroundingTextInfo surrounding_text_info;
++
++    switch (callback_command.type()) {
++        case commands::SessionCommand::UNDO:
++            break;
++        case commands::SessionCommand::CONVERT_REVERSE: {
++
++            if (!GetSurroundingText(fcitx_mozc->GetInstance(),
++                                    &surrounding_text_info)) {
++                return;
++            }
++
++            session_command.set_text(surrounding_text_info.selection_text);
++            break;
++        }
++        default:
++            return;
++    }
++
++    commands::Output new_output;
++    if (!fcitx_mozc->SendCommand(session_command, &new_output)) {
++        LOG(ERROR) << "Callback Command Failed";
++        return;
++    }
++
++    if (callback_command.type() == commands::SessionCommand::CONVERT_REVERSE) {
++        // We need to remove selected text as a first step of reconversion.
++        commands::DeletionRange *range = new_output.mutable_deletion_range();
++        // Use DeletionRange field to remove the selected text.
++        // For forward selection (that is, |relative_selected_length > 0|), the
++        // offset should be a negative value to delete preceding text.
++        // For backward selection (that is, |relative_selected_length < 0|),
++        // IBus and/or some applications seem to expect |offset == 0| somehow.
++        const int32 offset = surrounding_text_info.relative_selected_length > 0
++            ? -surrounding_text_info.relative_selected_length  // forward selection
++            : 0;                         // backward selection
++        range->set_offset(offset);
++        range->set_length(abs(surrounding_text_info.relative_selected_length));
++    }
++
++    VLOG(1) << "New output" << new_output.DebugString();
++
++    ParseResponse(new_output, fcitx_mozc);
++}
++
++bool MozcResponseParser::ParseResponse(const mozc::commands::Output &response,
++                                       FcitxMozc *fcitx_mozc) const {
++    DCHECK(fcitx_mozc);
++    if (!fcitx_mozc) {
++        return false;
++    }
++
++    fcitx_mozc->SetUsage("", "");
++
++    UpdateDeletionRange(response, fcitx_mozc);
++
++    // We should check the mode field first since the response for a
++    // SWITCH_INPUT_MODE request only contains mode and id fields.
++    if (response.has_mode()) {
++        fcitx_mozc->SetCompositionMode(response.mode());
++    }
++
++    if (!response.consumed()) {
++        // The key was not consumed by Mozc.
++        return false;
++    }
++
++    if (response.has_result()) {
++        const mozc::commands::Result &result = response.result();
++        ParseResult(result, fcitx_mozc);
++    }
++
++    // First, determine the cursor position.
++    if (response.has_preedit()) {
++        const mozc::commands::Preedit &preedit = response.preedit();
++        ParsePreedit(preedit, GetCursorPosition(response), fcitx_mozc);
++    }
++
++    // Then show the candidate window.
++    if (response.has_candidates()) {
++        const mozc::commands::Candidates &candidates = response.candidates();
++        ParseCandidates(candidates, fcitx_mozc);
++    }
++
++    if (response.has_url()) {
++        const std::string &url = response.url();
++        fcitx_mozc->SetUrl(url);
++    }
++    LaunchTool(response, fcitx_mozc);
++    ExecuteCallback(response, fcitx_mozc);
++
++    return true;  // mozc consumed the key.
++}
++
++void MozcResponseParser::set_use_annotation(bool use_annotation) {
++    use_annotation_ = use_annotation;
++}
++
++void MozcResponseParser::ParseResult(const mozc::commands::Result &result,
++                                     FcitxMozc *fcitx_mozc) const {
++    switch (result.type()) {
++    case mozc::commands::Result::NONE: {
++        fcitx_mozc->SetAuxString("No result");  // not a fatal error.
++        break;
++    }
++    case mozc::commands::Result::STRING: {
++        fcitx_mozc->SetResultString(result.value());
++        break;
++    }
++    }
++}
++
++static boolean FcitxMozcPaging(void* arg, boolean prev)
++{
++    FcitxMozc* mozc = static_cast<FcitxMozc*>(arg);
++    return mozc->paging(prev);
++}
++
++void MozcResponseParser::ParseCandidates(
++    const mozc::commands::Candidates &candidates, FcitxMozc *fcitx_mozc) const {
++    const commands::Footer &footer = candidates.footer();
++    bool hasPrev = false;
++    bool hasNext = false;
++    if (candidates.has_footer()) {
++        std::string auxString;
++        if (footer.has_label()) {
++            // TODO(yusukes,mozc-team): label() is not localized. Currently, it's always
++            // written in Japanese (in UTF-8).
++            auxString += footer.label();
++        } else if (footer.has_sub_label()) {
++            // Windows client shows sub_label() only when label() is not specified. We
++            // follow the policy.
++            auxString += footer.sub_label();
++        }
++
++        if (footer.has_index_visible() && footer.index_visible()) {
++            // Max size of candidates is 200 so 128 is sufficient size for the buffer.
++            char index_buf[128] = {0};
++            const int result = snprintf(index_buf,
++                                        sizeof(index_buf) - 1,
++                                        "%s%d/%d",
++                                        (auxString.empty() ? "" : " "),
++                                        candidates.focused_index() + 1,
++                                        candidates.size());
++            DCHECK_GE(result, 0) << "snprintf in ComposeAuxiliaryText failed";
++            auxString += index_buf;
++
++            if (candidates.candidate_size() > 0) {
++
++                if (candidates.candidate(0).index() > 0) {
++                    hasPrev = true;
++                }
++                if (candidates.candidate(candidates.candidate_size() - 1).index() + 1 < candidates.size()) {
++                    hasNext = true;
++                }
++            }
++        }
++        fcitx_mozc->SetAuxString(auxString);
++    }
++
++    FcitxCandidateWordList* candList = FcitxInputStateGetCandidateList(fcitx_mozc->GetInputState());
++    FcitxCandidateWordReset(candList);
++    FcitxCandidateWordSetPageSize(candList, 9);
++    if (candidates.has_direction() &&
++        candidates.direction() == commands::Candidates::HORIZONTAL) {
++        FcitxCandidateWordSetLayoutHint(candList, CLH_Horizontal);
++    } else {
++        FcitxCandidateWordSetLayoutHint(candList, CLH_Vertical);
++    }
++
++    std::map<int32, std::pair<std::string, std::string> > usage_map;
++    if (candidates.has_usages()) {
++        const commands::InformationList& usages = candidates.usages();
++        for (size_t i = 0; i < usages.information().size(); ++i) {
++            const commands::Information& information = usages.information(i);
++            if (!information.has_id() || !information.has_description())
++                continue;
++            usage_map[information.id()].first = information.title();
++            usage_map[information.id()].second = information.description();
++        }
++    }
++
++#define EMPTY_STR_CHOOSE "\0\0\0\0\0\0\0\0\0\0"
++    std::vector<char> choose;
++
++    int focused_index = -1;
++    int local_index = -1;
++    if (candidates.has_focused_index()) {
++        focused_index = candidates.focused_index();
++    }
++    for (int i = 0; i < candidates.candidate_size(); ++i) {
++        const commands::Candidates::Candidate& candidate = candidates.candidate(i);
++        const uint32 index = candidate.index();
++        FcitxMessageType type;
++        if (focused_index != -1 && index == focused_index) {
++            local_index = i;
++            type = MSG_FIRSTCAND;
++        } else {
++            type = MSG_OTHER;
++        }
++        int32* id = (int32*) fcitx_utils_malloc0(sizeof(int32));
++        FcitxCandidateWord candWord;
++        candWord.callback = FcitxMozcGetCandidateWord;
++        candWord.extraType = MSG_OTHER;
++        candWord.strExtra = NULL;
++        candWord.priv = id;
++        candWord.strWord = NULL;
++        candWord.wordType = type;
++        candWord.owner = fcitx_mozc;
++
++        std::string value;
++        if (use_annotation_ &&
++                candidate.has_annotation() &&
++                candidate.annotation().has_prefix()) {
++            value = candidate.annotation().prefix();
++        }
++        value += candidate.value();
++        if (use_annotation_ &&
++                candidate.has_annotation() &&
++                candidate.annotation().has_suffix()) {
++            value += candidate.annotation().suffix();
++        }
++        if (use_annotation_ &&
++                candidate.has_annotation() &&
++                candidate.annotation().has_description()) {
++            // Display descriptions ([HALF][KATAKANA], [GREEK], [Black square], etc).
++            value += CreateDescriptionString(
++                         candidate.annotation().description());
++        }
++
++        if (use_annotation_ && focused_index != -1 && index == focused_index) {
++            local_index = i;
++            type = MSG_FIRSTCAND;
++
++            if (candidate.has_information_id()) {
++                std::map<int32, std::pair<std::string, std::string> >::iterator it =
++                    usage_map.find(candidate.information_id());
++                if (it != usage_map.end()) {
++                    fcitx_mozc->SetUsage(it->second.first, it->second.second);
++                }
++                value += CreateDescriptionString(_("Press Ctrl+Alt+H to show usages."));
++            }
++        }
++
++        if (candidate.has_annotation() &&
++            candidate.annotation().has_shortcut()) {
++            choose.push_back(candidate.annotation().shortcut().c_str()[0]);
++        }
++
++        candWord.strWord = strdup(value.c_str());
++
++        if (candidate.has_id()) {
++            const int32 cid = candidate.id();
++            DCHECK_NE(kBadCandidateId, cid) << "Unexpected id is passed.";
++            *id = cid;
++        } else {
++            // The parent node of the cascading window does not have an id since the
++            // node does not contain a candidate word.
++            *id = kBadCandidateId;
++        }
++        FcitxCandidateWordAppend(candList, &candWord);
++    }
++
++    while (choose.size() < 10) {
++        choose.push_back('\0');
++    }
++
++    if (footer.has_index_visible() && footer.index_visible())
++        FcitxCandidateWordSetChoose(candList, choose.data());
++    else
++        FcitxCandidateWordSetChoose(candList, EMPTY_STR_CHOOSE);
++    FcitxCandidateWordSetFocus(candList, local_index);
++    FcitxCandidateWordSetOverridePaging(candList, hasPrev, hasNext, FcitxMozcPaging, fcitx_mozc, NULL);
++}
++
++static int GetRawCursorPos(const char * str, int upos)
++{
++    unsigned int i;
++    int pos = 0;
++    for (i = 0; i < upos; i++) {
++        pos += fcitx_utf8_char_len(fcitx_utf8_get_nth_char((char*)str, i));
++    }
++    return pos;
++}
++
++
++void MozcResponseParser::ParsePreedit(const mozc::commands::Preedit &preedit,
++                                      uint32 position,
++                                      FcitxMozc *fcitx_mozc) const {
++    PreeditInfo *info = new PreeditInfo;
++    std::string s;
++
++    for (int i = 0; i < preedit.segment_size(); ++i) {
++        const mozc::commands::Preedit_Segment &segment = preedit.segment(i);
++        const std::string &str = segment.value();
++        FcitxMessageType type = MSG_INPUT;
++
++        switch (segment.annotation()) {
++        case mozc::commands::Preedit_Segment::NONE:
++            type = (FcitxMessageType) (MSG_INPUT | MSG_NOUNDERLINE);
++            break;
++        case mozc::commands::Preedit_Segment::UNDERLINE:
++            type = (FcitxMessageType) (MSG_TIPS);
++            break;
++        case mozc::commands::Preedit_Segment::HIGHLIGHT:
++            type = (FcitxMessageType) (MSG_CODE | MSG_NOUNDERLINE | MSG_HIGHLIGHT);
++            break;
++        }
++        s += str;
++
++        PreeditItem item;
++        item.type = type;
++        item.str = str;
++        info->preedit.push_back(item);
++    }
++    info->cursor_pos = GetRawCursorPos(s.c_str(), position);
++
++    fcitx_mozc->SetPreeditInfo(info);
++}
++
++}  // namespace fcitx
++
++}  // namespace mozc
+diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h
+--- google-mozc-git/src/unix/fcitx/mozc_response_parser.h	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,97 @@
++// Copyright 2010-2012, Google Inc.
++// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#ifndef MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
++#define MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
++
++#include "base/port.h"
++
++namespace mozc
++{
++namespace commands
++{
++
++class Candidates;
++class Input;
++class Output;
++class Preedit;
++class Result;
++
++}  // namespace commands
++}  // namespace mozc
++
++namespace mozc
++{
++
++namespace fcitx
++{
++
++class FcitxMozc;
++
++// This class parses IPC response from mozc_server (mozc::commands::Output) and
++// updates the FCITX UI.
++class MozcResponseParser
++{
++public:
++    MozcResponseParser();
++    ~MozcResponseParser();
++
++    // Parses a response from Mozc server and sets persed information on fcitx_mozc
++    // object. Returns true if response.consumed() is true. fcitx_mozc must be non
++    // NULL. This function does not take ownership of fcitx_mozc.
++    bool ParseResponse ( const mozc::commands::Output &response,
++                         FcitxMozc *fcitx_mozc ) const;
++
++    // Setter for use_annotation_. If use_annotation_ is true, ParseCandidates()
++    // uses annotation infomation.
++    void set_use_annotation ( bool use_annotation );
++
++private:
++    void UpdateDeletionRange(const mozc::commands::Output& response, FcitxMozc* fcitx_mozc) const;
++    void LaunchTool(const mozc::commands::Output& response, FcitxMozc* fcitx_mozc) const;
++    void ExecuteCallback(const mozc::commands::Output& response, FcitxMozc* fcitx_mozc) const;
++    void ParseResult ( const mozc::commands::Result &result,
++                       FcitxMozc *fcitx_mozc ) const;
++    void ParseCandidates ( const mozc::commands::Candidates &candidates,
++                           FcitxMozc *fcitx_mozc ) const;
++    void ParsePreedit ( const mozc::commands::Preedit &preedit,
++                        uint32 position,
++                        FcitxMozc *fcitx_mozc ) const;
++
++    bool use_annotation_;
++
++    DISALLOW_COPY_AND_ASSIGN ( MozcResponseParser );
++};
++
++}  // namespace fcitx
++
++}  // namespace mozc
++
++#endif  // MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
+diff -ruN google-mozc-git/src/unix/fcitx/po/ca.po fcitx-mozc-git/src/unix/fcitx/po/ca.po
+--- google-mozc-git/src/unix/fcitx/po/ca.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ca.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,80 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017
++# Walter Garcia-Fontes <walter.garcia@upf.edu>, 2017
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Catalan (http://www.transifex.com/fcitx/fcitx/language/ca/)\n"
++"Language: ca\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "Premeu Esc per tornar"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "Directe"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "Hiragana"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "Katakana complet"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "ASCII mig"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "ASCII complet"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "Mig katakana"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "Mode de composició"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "Eina"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Eina mozc"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "Eina de configuració"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "Eina de diccionari"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "Afegeix una paraula"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "Quant al mozc"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "Premeu Ctrl+Alt+H per mostrar els usos."
+diff -ruN google-mozc-git/src/unix/fcitx/po/da.po fcitx-mozc-git/src/unix/fcitx/po/da.po
+--- google-mozc-git/src/unix/fcitx/po/da.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/da.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,80 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# scootergrisen, 2017
++# scootergrisen, 2017
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Danish (http://www.transifex.com/fcitx/fcitx/language/da/)\n"
++"Language: da\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "Tryk på Escape for at gå tilbage"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "Direkte"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "Hiragana"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "Fuld Katakana"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "Halv ASCII"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "Fuld ASCII"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "Halv Katakana"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "Kompositionstilstand"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "Værktøj"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Mozc-værktøj"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "Konfigurationsværktøj"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "Ordbogsværktøj"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "Tilføj ord"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "Om Mozc"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "Tryk på Ctrl+Alt+H for at vise anvendelser."
+diff -ruN google-mozc-git/src/unix/fcitx/po/de.po fcitx-mozc-git/src/unix/fcitx/po/de.po
+--- google-mozc-git/src/unix/fcitx/po/de.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/de.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,86 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# csslayer <wengxt@gmail.com>, 2013
++# Lucius Annaeus Seneca, 2013
++# Lucius Annaeus Seneca, 2013
++# mar well <m.wellendorf@gmx.de>, 2013
++# mar well <m.wellendorf@gmx.de>, 2013
++# Seneca, 2013
++# csslayer <wengxt@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2013
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: German (http://www.transifex.com/fcitx/fcitx/language/de/)\n"
++"Language: de\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=2; plural=(n != 1);\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "ESC drücken um zurück zu kehren"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "Direkt"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "Hiragana"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "Normalbreite Katakana"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "6-Bit ASCII (Half ASCII)"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "7-Bit ASCII (Full ASCII)"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "Halbbreite Katakana"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "Kompositionsmodus"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "Werkzeug"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Mozc Werkzeug"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "Konfigurationswerkzeug"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "Wörterbuchwerkzeug"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "Wort hinzufügen"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "Über Mozc"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "Ctrl+Alt+H um die Hilfe anzuzeigen"
+diff -ruN google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot
+--- google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,78 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
++#
++#, fuzzy
++msgid ""
++msgstr ""
++"Project-Id-Version: PACKAGE VERSION\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
++"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
++"Language-Team: LANGUAGE <LL@li.org>\n"
++"Language: \n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=CHARSET\n"
++"Content-Transfer-Encoding: 8bit\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr ""
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr ""
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr ""
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr ""
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr ""
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr ""
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr ""
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr ""
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr ""
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr ""
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr ""
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr ""
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr ""
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr ""
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr ""
+diff -ruN google-mozc-git/src/unix/fcitx/po/ja.po fcitx-mozc-git/src/unix/fcitx/po/ja.po
+--- google-mozc-git/src/unix/fcitx/po/ja.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ja.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,87 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# しろう, 2013
++# あわしろいくや <ikunya@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2012-2013
++# あわしろいくや <ikunya@gmail.com>, 2013
++# あわしろいくや <ikunya@gmail.com>, 2012-2013
++# shirou - しろう <shirou.faw@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2012
++# csslayer <wengxt@gmail.com>, 2012-2013
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Japanese (http://www.transifex.com/fcitx/fcitx/language/ja/)\n"
++"Language: ja\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "Escキーを押して戻る"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "直接入力"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "ひらがな"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "全角カタカナ"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "半角英数"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "全角英数"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "半角カタカナ"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "変換モード"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "ツール"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Mozc ツール"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "設定ツール"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "辞書ツール"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "単語登録"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "Mozc について"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "Ctrl+Alt+H キーを押して用例を表示"
+diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/po/ko.po
+--- google-mozc-git/src/unix/fcitx/po/ko.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ko.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,80 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# Bon Keun Seo <scobyseo@gmail.com>, 2017
++# JungHee Lee <daemul72@gmail.com>, 2020
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Korean (http://www.transifex.com/fcitx/fcitx/language/ko/)\n"
++"Language: ko\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "돌아가려면 ESC를 누르세요"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "직접입력"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "히라가나"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "전각 가타가나"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "반각 아스키"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "전각 아스키"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "반각 가타가나"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "조합 모드"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "도구"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Mozc 도구"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "환경설정 도구"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "사전 도구"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "단어 추가"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "Mozc에 대해"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "사용법을 보려면 Ctrl+Alt+H를 누르십시오."
+diff -ruN google-mozc-git/src/unix/fcitx/po/Messages.sh fcitx-mozc-git/src/unix/fcitx/po/Messages.sh
+--- google-mozc-git/src/unix/fcitx/po/Messages.sh	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/Messages.sh	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,33 @@
++#!/bin/sh
++
++BASEDIR="../" # root of translatable sources
++PROJECT="fcitx-mozc" # project name
++BUGADDR="fcitx-dev@googlegroups.com" # MSGID-Bugs
++WDIR="`pwd`" # working dir
++
++echo "Preparing rc files"
++
++echo "Done preparing rc files"
++echo "Extracting messages"
++
++# see above on sorting
++
++find "${BASEDIR}" -name '*.cc' -o -name '*.h' -o -name '*.c' | sort > "${WDIR}/infiles.list"
++
++xgettext --from-code=UTF-8 -k_ -kN_ --msgid-bugs-address="${BUGADDR}" --files-from=infiles.list \
++    -D "${BASEDIR}" -D "${WDIR}" -o "${PROJECT}.pot" || \
++    { echo "error while calling xgettext. aborting."; exit 1; }
++echo "Done extracting messages"
++
++echo "Merging translations"
++catalogs=`find . -name '*.po'`
++for cat in $catalogs; do
++    echo "$cat"
++    msgmerge -o "$cat.new" "$cat" "${WDIR}/${PROJECT}.pot"
++    mv "$cat.new" "$cat"
++done
++
++echo "Done merging translations"
++echo "Cleaning up"
++rm "${WDIR}/infiles.list"
++echo "Done"
+diff -ruN google-mozc-git/src/unix/fcitx/po/ru.po fcitx-mozc-git/src/unix/fcitx/po/ru.po
+--- google-mozc-git/src/unix/fcitx/po/ru.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ru.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,82 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2016
++# TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2016
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Russian (http://www.transifex.com/fcitx/fcitx/language/ru/)\n"
++"Language: ru\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
++"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
++"%100>=11 && n%100<=14)? 2 : 3);\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "Нажмите  для перехода назад"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "Прямой"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "Хирагана"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "Полная катакана"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "Половинный "
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "Полный "
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "Половинная катакана"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "Режим композиции"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "Инструмент"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Инструмент Mozc"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "Инструмент настройки"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "Инструмент словаря"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "Добавить слово"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "О "
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "Нажмите Ctrl+Alt+H, чтобы показать использование."
+diff -ruN google-mozc-git/src/unix/fcitx/po/zh_CN.po fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po
+--- google-mozc-git/src/unix/fcitx/po/zh_CN.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,85 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# csslayer <wengxt@gmail.com>, 2012-2013
++# csslayer <wengxt@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2012
++# wwj402 <wwj402@gmail.com>, 2013
++# wwj402 <wwj402@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2012-2013
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Chinese (China) (http://www.transifex.com/fcitx/fcitx/"
++"language/zh_CN/)\n"
++"Language: zh_CN\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "按下 Escape 返回"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "直接键盘输入"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "平假名"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "全角片假名"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "半角 ASCII"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "全角 ASCII"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "半角片假名"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "编辑模式"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "工具"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Mozc 工具"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "配置工具"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "词典工具"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "添加单词"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "关于 Mozc"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "按下 Ctrl+Alt+H 显示用法。"
+diff -ruN google-mozc-git/src/unix/fcitx/po/zh_TW.po fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po
+--- google-mozc-git/src/unix/fcitx/po/zh_TW.po	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,84 @@
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
++# This file is distributed under the same license as the PACKAGE package.
++#
++# Translators:
++# Alisha <alisha.4m@gmail.com>, 2012
++# csslayer <wengxt@gmail.com>, 2012-2013
++# csslayer <wengxt@gmail.com>, 2013
++# csslayer <wengxt@gmail.com>, 2012
++# csslayer <wengxt@gmail.com>, 2012-2013
++msgid ""
++msgstr ""
++"Project-Id-Version: fcitx\n"
++"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
++"POT-Creation-Date: 2020-11-11 00:03-0800\n"
++"PO-Revision-Date: 2020-11-10 08:03+0000\n"
++"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"Language-Team: Chinese (Taiwan) (http://www.transifex.com/fcitx/fcitx/"
++"language/zh_TW/)\n"
++"Language: zh_TW\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++
++#: ../eim.cc:187
++msgid "Press Escape to go back"
++msgstr "按下 Escape 返回"
++
++#: ../fcitx_mozc.cc:65
++msgid "Direct"
++msgstr "直接鍵盤輸入"
++
++#: ../fcitx_mozc.cc:70
++msgid "Hiragana"
++msgstr "平假名"
++
++#: ../fcitx_mozc.cc:75
++msgid "Full Katakana"
++msgstr "全形片假名"
++
++#: ../fcitx_mozc.cc:80
++msgid "Half ASCII"
++msgstr "半形 ASCII"
++
++#: ../fcitx_mozc.cc:85
++msgid "Full ASCII"
++msgstr "全形 ASCII"
++
++#: ../fcitx_mozc.cc:90
++msgid "Half Katakana"
++msgstr "半形片假名"
++
++#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++msgid "Composition Mode"
++msgstr "編輯模式"
++
++#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++msgid "Tool"
++msgstr "工具"
++
++#: ../fcitx_mozc.cc:482
++msgid "Mozc Tool"
++msgstr "Mozc 工具"
++
++#: ../fcitx_mozc.cc:488
++msgid "Configuration Tool"
++msgstr "設定工具"
++
++#: ../fcitx_mozc.cc:489
++msgid "Dictionary Tool"
++msgstr "字典工具"
++
++#: ../fcitx_mozc.cc:490
++msgid "Add Word"
++msgstr "添加單詞"
++
++#: ../fcitx_mozc.cc:491
++msgid "About Mozc"
++msgstr "關於 Mozc"
++
++#: ../mozc_response_parser.cc:365
++msgid "Press Ctrl+Alt+H to show usages."
++msgstr "按下 Ctrl+Alt+H 顯示用法。"
+diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.cc fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc
+--- google-mozc-git/src/unix/fcitx/surrounding_text_util.cc	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,243 @@
++// Copyright 2010-2013, Google Inc.
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#include "unix/fcitx/surrounding_text_util.h"
++
++#include <limits>
++#include <string>
++#include <fcitx/instance.h>
++#include <fcitx/module/clipboard/fcitx-clipboard.h>
++
++#ifdef InvokeFunction
++#undef InvokeFunction
++#endif
++
++#include "base/port.h"
++#include "base/logging.h"
++#include "base/util.h"
++
++namespace mozc {
++namespace fcitx {
++
++bool SurroundingTextUtil::GetSafeDelta(unsigned int from, unsigned int to, int32 *delta) {
++  DCHECK(delta);
++
++  static_assert(sizeof(int64) >= sizeof(unsigned int),
++                "int64 must be sufficient to store a unsigned int value.");
++  static_assert(sizeof(int64) == sizeof(llabs(0)),
++                "|llabs(0)| must returns a 64-bit integer.");
++  const int64 kInt32AbsMax =
++      llabs(static_cast<int64>(std::numeric_limits<int32>::max()));
++  const int64 kInt32AbsMin =
++      llabs(static_cast<int64>(std::numeric_limits<int32>::min()));
++  const int64 kInt32SafeAbsMax =
++      std::min(kInt32AbsMax, kInt32AbsMin);
++
++  const int64 diff = static_cast<int64>(from) - static_cast<int64>(to);
++  if (llabs(diff) > kInt32SafeAbsMax) {
++    return false;
++  }
++
++  *delta = static_cast<int32>(diff);
++  return true;
++}
++
++namespace {
++
++// Moves |iter| with |skip_count| characters.
++// Returns false if |iter| reaches to the end before skipping
++// |skip_count| characters.
++bool Skip(ConstChar32Iterator *iter, size_t skip_count) {
++  for (size_t i = 0; i < skip_count; ++i) {
++    if (iter->Done()) {
++      return false;
++    }
++    iter->Next();
++  }
++  return true;
++}
++
++// Returns true if |prefix_iter| is the prefix of |iter|.
++// Returns false if |prefix_iter| is an empty sequence.
++// Otherwise returns false.
++// This function receives ConstChar32Iterator as pointer because
++// ConstChar32Iterator is defined as non-copyable.
++bool StartsWith(ConstChar32Iterator *iter,
++                ConstChar32Iterator *prefix_iter) {
++  if (iter->Done() || prefix_iter->Done()) {
++    return false;
++  }
++
++  while (true) {
++    if (iter->Get() != prefix_iter->Get()) {
++      return false;
++    }
++    prefix_iter->Next();
++    if (prefix_iter->Done()) {
++      return true;
++    }
++    iter->Next();
++    if (iter->Done()) {
++      return false;
++    }
++  }
++}
++
++
++// Returns true if |surrounding_text| contains |selected_text|
++// from |cursor_pos| to |*anchor_pos|.
++// Otherwise returns false.
++bool SearchAnchorPosForward(
++    const std::string &surrounding_text,
++    const std::string &selected_text,
++    size_t selected_chars_len,
++    unsigned int cursor_pos,
++    unsigned int *anchor_pos) {
++
++  ConstChar32Iterator iter(surrounding_text);
++  // Move |iter| to cursor pos.
++  if (!Skip(&iter, cursor_pos)) {
++    return false;
++  }
++
++  ConstChar32Iterator sel_iter(selected_text);
++  if (!StartsWith(&iter, &sel_iter)) {
++    return false;
++  }
++  *anchor_pos = cursor_pos + selected_chars_len;
++  return true;
++}
++
++// Returns true if |surrounding_text| contains |selected_text|
++// from |*anchor_pos| to |cursor_pos|.
++// Otherwise returns false.
++bool SearchAnchorPosBackward(
++    const std::string &surrounding_text,
++    const std::string &selected_text,
++    size_t selected_chars_len,
++    unsigned int cursor_pos,
++    unsigned int *anchor_pos) {
++  if (cursor_pos < selected_chars_len) {
++    return false;
++  }
++
++  ConstChar32Iterator iter(surrounding_text);
++  // Skip |iter| to (potential) anchor pos.
++  const unsigned int skip_count = cursor_pos - selected_chars_len;
++  DCHECK_LE(skip_count, cursor_pos);
++  if (!Skip(&iter, skip_count)) {
++    return false;
++  }
++
++  ConstChar32Iterator sel_iter(selected_text);
++  if (!StartsWith(&iter, &sel_iter)) {
++    return false;
++  }
++  *anchor_pos = cursor_pos - selected_chars_len;
++  return true;
++}
++
++}  // namespace
++
++bool SurroundingTextUtil::GetAnchorPosFromSelection(
++    const std::string &surrounding_text,
++    const std::string &selected_text,
++    unsigned int cursor_pos,
++    unsigned int *anchor_pos) {
++  DCHECK(anchor_pos);
++
++  if (surrounding_text.empty()) {
++    return false;
++  }
++
++  if (selected_text.empty()) {
++    return false;
++  }
++
++  const size_t selected_chars_len = Util::CharsLen(selected_text);
++
++  if (SearchAnchorPosForward(surrounding_text, selected_text,
++                             selected_chars_len,
++                             cursor_pos, anchor_pos)) {
++    return true;
++  }
++
++  return SearchAnchorPosBackward(surrounding_text, selected_text,
++                                 selected_chars_len,
++                                 cursor_pos, anchor_pos);
++}
++
++bool GetSurroundingText(FcitxInstance* instance,
++                        SurroundingTextInfo *info) {
++    FcitxInputContext* ic = FcitxInstanceGetCurrentIC(instance);
++    if (!ic || !(ic->contextCaps & CAPACITY_SURROUNDING_TEXT)) {
++        return false;
++    }
++
++    unsigned int cursor_pos = 0;
++    unsigned int anchor_pos = 0;
++    char* str = NULL;
++
++    if (!FcitxInstanceGetSurroundingText(instance, ic, &str, &cursor_pos, &anchor_pos)) {
++        return false;
++    }
++
++    const std::string surrounding_text(str);
++    free(str);
++
++    if (cursor_pos == anchor_pos) {
++        const char* primary = NULL;
++
++        if ((primary = FcitxClipboardGetPrimarySelection(instance, NULL)) != NULL) {
++            unsigned int new_anchor_pos = 0;
++            const std::string primary_text(primary);
++            if (SurroundingTextUtil::GetAnchorPosFromSelection(
++                surrounding_text, primary_text,
++                cursor_pos, &new_anchor_pos)) {
++                anchor_pos = new_anchor_pos;
++            }
++        }
++    }
++
++    if (!SurroundingTextUtil::GetSafeDelta(cursor_pos, anchor_pos,
++                                           &info->relative_selected_length)) {
++        LOG(ERROR) << "Too long text selection.";
++        return false;
++    }
++
++    const size_t selection_start = std::min(cursor_pos, anchor_pos);
++    const size_t selection_length = std::abs(info->relative_selected_length);
++    info->preceding_text = Util::Utf8SubString(surrounding_text, 0, selection_start);
++    info->selection_text = Util::Utf8SubString(surrounding_text, selection_start, selection_length);
++    info->following_text = Util::Utf8SubString(surrounding_text, selection_start + selection_length);
++    return true;
++}
++
++}  // namespace fcitx
++}  // namespace mozc
+diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.h fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h
+--- google-mozc-git/src/unix/fcitx/surrounding_text_util.h	1970-01-01 02:00:00.000000000 +0200
++++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h	2022-02-25 03:10:58.948057601 +0200
+@@ -0,0 +1,87 @@
++// Copyright 2010-2013, Google Inc.
++// All rights reserved.
++//
++// Redistribution and use in source and binary forms, with or without
++// modification, are permitted provided that the following conditions are
++// met:
++//
++//     * Redistributions of source code must retain the above copyright
++// notice, this list of conditions and the following disclaimer.
++//     * Redistributions in binary form must reproduce the above
++// copyright notice, this list of conditions and the following disclaimer
++// in the documentation and/or other materials provided with the
++// distribution.
++//     * Neither the name of Google Inc. nor the names of its
++// contributors may be used to endorse or promote products derived from
++// this software without specific prior written permission.
++//
++// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
++// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
++// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
++// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
++// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
++// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
++// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
++// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
++// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
++// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
++// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
++
++#ifndef MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
++#define MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
++
++#include <string>
++#include <fcitx/instance.h>
++
++#include "base/port.h"
++
++namespace mozc {
++namespace fcitx {
++
++struct SurroundingTextInfo {
++    SurroundingTextInfo()
++        : relative_selected_length(0) {}
++
++    int32 relative_selected_length;
++    std::string preceding_text;
++    std::string selection_text;
++    std::string following_text;
++};
++
++class SurroundingTextUtil {
++ public:
++  // Calculates |from| - |to| and stores the result into |delta| with
++  // checking integer overflow.
++  // Returns true when neither |abs(delta)| nor |-delta| does not cause
++  // integer overflow, that is, |delta| is in a safe range.
++  // Returns false otherwise.
++  static bool GetSafeDelta(unsigned int from, unsigned int to, int32 *delta);
++
++  // Returns true if
++  // 1. |surrounding_text| contains |selected_text|
++  //    from |cursor_pos| to |*anchor_pos|.
++  // or,
++  // 2. |surrounding_text| contains |selected_text|
++  //    from |*anchor_pos| to |cursor_pos|.
++  // with calculating |*anchor_pos|,
++  // where |cursor_pos| and |*anchor_pos| are counts of Unicode characters.
++  // When both 1) and 2) are satisfied, this function calculates
++  // |*anchor_pos| for case 1).
++  // Otherwise returns false.
++  static bool GetAnchorPosFromSelection(
++      const std::string &surrounding_text,
++      const std::string &selected_text,
++      unsigned int cursor_pos,
++      unsigned int *anchor_pos);
++
++ private:
++  DISALLOW_IMPLICIT_CONSTRUCTORS(SurroundingTextUtil);
++};
++
++bool GetSurroundingText(FcitxInstance* instance,
++                        SurroundingTextInfo *info);
++
++}  // namespace fcitx
++}  // namespace mozc
++
++#endif  // MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
+diff -ruN google-mozc-git/src/WORKSPACE.bazel fcitx-mozc-git/src/WORKSPACE.bazel
+--- google-mozc-git/src/WORKSPACE.bazel	2022-02-25 02:23:45.619278720 +0200
++++ fcitx-mozc-git/src/WORKSPACE.bazel	2022-02-25 02:25:22.830847556 +0200
+@@ -60,6 +60,22 @@
+     build_file = "BUILD.ibus.bazel",
+ )
+ 
++# Fcitx
++new_local_repository(
++    name = "fcitx",
++    # This path should be updated per the environment.
++    path = "/usr",  # For Debian
++    build_file = "BUILD.fcitx.bazel",
++)
++
++# Fcitx 5
++new_local_repository(
++    name = "fcitx5",
++    # This path should be updated per the environment.
++    path = "/usr",  # For Debian
++    build_file = "BUILD.fcitx5.bazel",
++)
++
+ # Japanese Usage Dictionary
+ new_local_repository(
+     name = "ja_usage_dict",
