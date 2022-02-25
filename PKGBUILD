@@ -4,24 +4,22 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='emacs-mozc'
-pkgver=2.26.4646.102
+pkgver=2.26.4656.102
 pkgrel=1
 pkgdesc='Mozc module for Emacs'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('emacs' 'mozc>=2.26.4646.102')
+depends=('emacs' 'mozc>=2.26.4656.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 replaces=('emacs-mozc-ut')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f")
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=0dcb977536385e18f88e29b3ae42b07fd5f5f433")
 sha256sums=('SKIP')
 
 prepare() {
-    cd ${pkgname}-git
+    cd ${pkgname}-git/src
 
     git submodule update --init --recursive
-
-    cd src
 
     # Fix the Qt5 include path
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
@@ -33,7 +31,8 @@ prepare() {
 build() {
     cd ${pkgname}-git/src
 
-    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build unix/emacs:mozc_emacs_helper --config oss_linux --compilation_mode opt --copt=-fPIC
+    export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+    bazel build unix/emacs:mozc_emacs_helper --config oss_linux --compilation_mode opt
 }
 
 package() {
