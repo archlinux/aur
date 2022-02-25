@@ -1,21 +1,19 @@
 # Maintainer: Kedap <kedap.dev@protonmail.com>
 pkgname=kali-archive-keyring
-_pkgname=kali-archive-keyring-kali-master
-pkgver=2020.2
+pkgver=2022.1
 pkgrel=1
 pkgdesc="GnuPG archive keys of the Kali archive"
 arch=('any')
 url="https://pkg.kali.org/pkg/kali-archive-keyring"
 license=('GPL')
-makedepends=('jetring')
-source=("https://gitlab.com/kalilinux/packages/${pkgname}/-/archive/kali/master/${pkgname}-kali-master.tar.gz")
-sha256sums=('c36a241cffc6f3999af05cedb8bd6f556f80abc492b75466cc6e9f7f203963b0')
+source=("https://gitlab.com/kalilinux/packages/${pkgname}/-/archive/kali/2022.1/${pkgname}-kali-${pkgver}.tar.gz")
+sha256sums=('b5c6a527945cdf1702c10e2d358ab34739c24b2ddd50f6a52173f7c250025c32')
 build() {
-	cd "$_pkgname"
+	cd "${pkgname}-kali-${pkgver}"
 	make
 }
 
 package() {
-	cd "$_pkgname"
-	make DESTDIR="$pkgdir/" install
+	cd "${pkgname}-kali-${pkgver}"
+	install -Dm 644 "${pkgname}.gpg" -t ${pkgdir}/usr/share/keyrings/
 }
