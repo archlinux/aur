@@ -12,4 +12,4 @@ pkgbase = pysingular
 	source = https://github.com/sebasguts/PySingular/archive/v0.9.7.tar.gz
 	sha512sums = 0c021427f1cbff4136fba1d3280701bd00af003362dd061acf7a607930b483ba36b2fbb085949af5e3219ad3710a5933a470165503e5e0733bcb169bc5536668
 
-pkgname = pysingular
+pkgname = python-pysingular
