@@ -3,7 +3,7 @@
 
 _pyname=fontParts
 pkgname=python-${_pyname,,}
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='The replacement for RoboFab'
 arch=(any)
@@ -19,14 +19,16 @@ _pydeps=(booleanoperations
          unicodedata2) # for fonttools[unicode]
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer}
+             python-setuptools-scm
+             python-wheel)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('a3a3926e977f82ae19e6823760b59f2338085973da1eaad5badaf969f261a737')
+sha256sums=('687b632c775cdbfb37a6917c7f3f2a140ab1c0428c64924014d941699ec501be')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -36,6 +38,6 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
