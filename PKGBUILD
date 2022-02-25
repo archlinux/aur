@@ -5,7 +5,7 @@
 _crate="cargo-doc2readme"
 pkgname="$_crate"
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from your code'
 license=('Apache')
 
@@ -14,8 +14,8 @@ arch=('aarch64' 'i686' 'x86_64')
 
 # Generic Stuff for cargo packages
 url="https://crates.io/crates/$_crate"
-depends=('gcc-libs' 'curl' 'libgit2>=1:1.3')
-makedepends=('cargo')
+depends=('gcc-libs' 'curl' 'libgit2.so=1.4')
+makedepends=('cargo' 'libgit2')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
 sha512sums=('b88ea2ba316da718984cb32f7637b4690da1c6c36849572884fb487afadd73e326acea346b3d7f746ea42cd46f786cdd5290ee26ed56fea94654e540cac5eae9')
 
