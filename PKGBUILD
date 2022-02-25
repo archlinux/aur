@@ -2,9 +2,9 @@
 
 pkgname=deepin-network-utils-git
 pkgver=5.4.9.r11.gbe2e215
-pkgrel=2
+pkgrel=1
 pkgdesc='DDE network utils'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dde-network-utils"
 license=('GPL3')
 depends=('deepin-qt-dbus-factory-git' 'gsettings-qt')
