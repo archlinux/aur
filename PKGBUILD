@@ -1,91 +1,61 @@
-# Maintainer: Naoya Inada <naoina@kuune.org>
+# Maintainer: Nocifer <apmichalopoulos at gmail dot com>
 # Contributor: UTUMI Hirosi <utuhiro78 at yahoo dot co dot jp>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
-# NOTE: This PKGBUILD is based on https://osdn.net/downloads/users/33/33029/fcitx-mozc-ut-20210925.PKGBUILD
+#NOTE: The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
-# Mozc compile option
-_bldtype=Release
-
-_mozcver=2.26.4507.102
-_fcitxver=20210822
-_utdicver=20210925
-pkgver=${_mozcver}.${_utdicver}
+pkgname='mozc-ut'
+pkgver=2.26.4656.102.20220216
 pkgrel=1
-
-_pkgbase=mozc
-pkgname=mozc-ut
-pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
+pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
-url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
-license=('custom')
+url='https://github.com/google/mozc'
+license=('Apache' 'BSD' 'LGPL' 'custom')
 depends=('qt5-base')
-makedepends=('clang' 'gyp' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'libxcb' 'glib2' 'bzip2' 'unzip')
-conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-neologd-ut' 'mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'mozc-ut-unified')
-
-source=(
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozc-${_mozcver}.tar.bz2
-  abseil-cpp-20210324.1.tar.gz::https://github.com/abseil/abseil-cpp/archive/refs/tags/20210324.1.tar.gz
-  googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
-  japanese-usage-dictionary-master.zip::https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/master.zip
-  protobuf-3.13.0.tar.gz::https://github.com/protocolbuffers/protobuf/archive/v3.13.0.tar.gz
-  https://osdn.net/users/utuhiro/pf/utuhiro/dl/mozcdic-ut-${_utdicver}.tar.bz2
-  https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
-  https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-)
-
-sha256sums=(
-  'ab35c19efbae45b1fbd86e61625d4d41ad4fb95beefdf5840bdd7ee2f7b825cd'
-  '441db7c09a0565376ecacf0085b2d4c2bbedde6115d7773551bc116212c2a8d6'
-  '9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb'
-  'e46b1c40facbc969b7a4af154dab30ab414f48a0fdbe57d199f912316977ac25'
-  '9b4ee22c250fe31b16f1a24d61467e40780a3fbb9b91c3b65be2a376ed913a1a'
-  '17e660687a75ae343e0276003a6cd86e1f6d96c4605252ac32f819fe9622add0'
-  'SKIP'
-  'SKIP'
-)
+makedepends=('bazel' 'git' 'python')
+optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
+            'fcitx-mozc-ut: Fcitx integration'
+            'ibus-mozc: IBus integration'
+            'emacs-mozc: Emacs integration')
+provides=('mozc=2.26.4656.102')
+conflicts=('mozc')
+replaces=('mozc-ut-common')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=0dcb977536385e18f88e29b3ae42b07fd5f5f433"
+        'https://osdn.net/downloads/users/37/37724/mozcdic-ut-20220216.tar.bz2')
+sha256sums=('SKIP'
+            '0fbbc3b4e561fccb43cea85a1c030ce252a5bac5abb95695a26277a8b0efdbbd')
 
 prepare() {
-  cd mozc-${_mozcver}
-  rm -rf src/third_party
-  mkdir src/third_party
-  mv ${srcdir}/abseil-cpp-20210324.1 src/third_party/abseil-cpp
-  mv ${srcdir}/googletest-release-1.10.0 src/third_party/gtest
-  mv ${srcdir}/japanese-usage-dictionary-master src/third_party/japanese_usage_dictionary
-  mv ${srcdir}/protobuf-3.13.0 src/third_party/protobuf
+    cd ${pkgname}-git/src
 
-  # Add ZIP code
-  cd src/data/dictionary_oss/
-  PYTHONPATH="${PYTHONPATH}:../../" \
-  python ../../dictionary/gen_zip_code_seed.py \
-  --zip_code=${srcdir}/KEN_ALL.CSV --jigyosyo=${srcdir}/JIGYOSYO.CSV >> dictionary09.txt
-  cd -
+    git submodule update --init --recursive
 
-  # Use libstdc++ instead of libc++
-  sed "/stdlib=libc++/d;/-lc++/d" -i src/gyp/common.gypi
+    # Fix the Qt5 include path
+    sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
 
-  # Add UT dictionary
-  cat ${srcdir}/mozcdic-ut-${_utdicver}/mozcdic*-ut-*.txt >> src/data/dictionary_oss/dictionary00.txt
+    # Temp fix for the Android NDK error
+    sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
+
+    # Append the UT dictionary
+    cat ${srcdir}/mozcdic-ut-20220216/mozcdic-ut-20220216.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
-  cd mozc-${_mozcver}/src
+    cd ${pkgname}-git/src
 
-  _targets="server/server.gyp:mozc_server gui/gui.gyp:mozc_tool"
-
-  GYP_DEFINES="enable_gtk_renderer==0" python build_mozc.py gyp --gypdir=/usr/bin --target_platform=Linux
-  python build_mozc.py build -c $_bldtype $_targets
+    export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+    bazel build server:mozc_server gui/tool:mozc_tool --config oss_linux --compilation_mode opt
 }
 
 package() {
-  cd mozc-${_mozcver}/src
-  install -D -m 755 out_linux/${_bldtype}/mozc_server ${pkgdir}/usr/lib/mozc/mozc_server
-  install -m 755 out_linux/${_bldtype}/mozc_tool ${pkgdir}/usr/lib/mozc/mozc_tool
+    install -Dm644 mozcdic-ut-20220216/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
-  install -d ${pkgdir}/usr/share/licenses/$pkgname/
-  install -m 644 ../LICENSE data/installer/*.html ${pkgdir}/usr/share/licenses/${pkgname}/
+    cd ${pkgname}-git/src
 
-  install -d ${pkgdir}/usr/share/doc/${pkgname}/
-  cp {../AUTHORS,../LICENSE,../README.md} ${pkgdir}/usr/share/doc/${pkgname}/
+    install -Dm644 ../LICENSE                                   ${pkgdir}/usr/share/licenses/mozc/LICENSE
+    install -Dm644 data/installer/credits_en.html               ${pkgdir}/usr/share/licenses/mozc/credits_en.html
+
+    install -Dm755 bazel-bin/server/mozc_server                 ${pkgdir}/usr/lib/mozc/mozc_server
+    install -Dm755 bazel-bin/gui/tool/mozc_tool                 ${pkgdir}/usr/lib/mozc/mozc_tool
 }
