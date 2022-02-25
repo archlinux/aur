@@ -25,7 +25,7 @@ package() {
     install -dm755 "$pkgdir/opt/GoogleKeep"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/GoogleKeep"
-    cp -r "$pkgdir/opt/Youtube/resources/app/googlekeep.svg" "$pkgdir/usr/share/pixmaps" 
+    cp -r "$pkgdir/opt/GoogleKeep/resources/app/googlekeep.svg" "$pkgdir/usr/share/pixmaps" 
 
 
     # Link to binary
