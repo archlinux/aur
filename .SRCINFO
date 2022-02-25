@@ -1,14 +1,14 @@
 pkgbase = python-tellcore-py
 	pkgdesc = Python wrapper for Telldus' home automation library.
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erijo/tellcore-py
 	changelog = CHANGES.rst
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-sphinx
 	depends = python

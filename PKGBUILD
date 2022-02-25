@@ -1,8 +1,9 @@
-# Maintainer: Olivier Biesmans <o.aurlinux@biesmans.fr>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Olivier Biesmans <o.aurlinux@biesmans.fr>
 
 pkgname=python-tellcore-py
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for Telldus' home automation library."
 arch=('any')
 url='https://github.com/erijo/tellcore-py'
@@ -11,7 +12,7 @@ depends=('python')
 makedepends=(
   'python-setuptools'
   'python-build'
-  'python-install'
+  'python-installer'
   'python-wheel'
   'python-sphinx')
 changelog=CHANGES.rst
@@ -20,7 +21,7 @@ sha256sums=('403d8e9d4f8ad95bda4c681f4d897c7633b48d25ee85b5bf39f30a362a49b122')
 
 build() {
   cd "tellcore-py-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --no-isolation
   cd docs
   make man
 }
@@ -33,7 +34,7 @@ check() {
 package() {
   export PYTHONHASHSEED=0
   cd "tellcore-py-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 docs/_build/man/tellcore-py.1 -t "$pkgdir/usr/share/man/man1/"
 }
 
