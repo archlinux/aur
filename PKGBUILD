@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-tools
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Tools(set-gdm-theme,gnomeconf2gdm) for theming/personlizing Gnome Login Manager (GDM)"
 arch=(any)
