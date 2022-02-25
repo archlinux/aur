@@ -1,0 +1,14 @@
+pkgbase = vv-sixel-git
+	pkgdesc = an image viewer for sixel terminals
+	pkgver = 1.8.r12.gdd2352e
+	pkgrel = 1
+	url = https://github.com/hackerb9/vv
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = imagemagick
+	source = git+https://github.com/hackerb9/vv
+	sha256sums = SKIP
+
+pkgname = vv-sixel-git
