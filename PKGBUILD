@@ -39,8 +39,6 @@ package() {
 
 	make prefix=$pkgdir/usr datadir=$pkgdir/usr/share install
 
-#	cp ../nrau $pkgdir/usr/share/$pkgname
-
 	mkdir -p $pkgdir/usr/bin
 	mv $pkgdir/usr/bin/$pkgname $pkgdir/usr/bin/$pkgname.1
 	install -D -m 755 ../$pkgname.1 $pkgdir/usr/bin/$pkgname
