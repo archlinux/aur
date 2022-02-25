@@ -1,4 +1,4 @@
-# Maintainer: MGislv <nocentinigabriele91@gmail.com>
+# Maintainer: MGislv <mgislv at ceppo dot xyz>
 # Contributor: mesmer <mesmer@fisica.if.uff.br>
 # Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: TJM <tommy.mairo@gmail.com>
@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=8.2.4106
+pkgver=8.2.4464
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -24,7 +24,7 @@ conflicts=('vim' 'gvim' 'vim-minimal' 'vim-python3')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-python3' 'vim-plugin-runtime')
 replaces=('vim' 'vim-python3' 'vim-minimal' 'gvim')
 source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha512sums=('4183fd3a5eb4a68a6199cb55846e0beb1c5145bd9103ba26e802e11e1e61ed3834c14d413cf67b8936ef165585fd19dfa54b8767a9717fb5bcdceb4785dc01c1')
+sha512sums=('dbf7e6c087dadde4d10dc71b31b3d656fb93cf35ef81815fb44dbe2527bdba4f80149a1a02de513fd63939f2def5455f39412fa1acfce7256e077ae25a3bc963')
 
 prepare() {
   cd vim-${pkgver}/src
