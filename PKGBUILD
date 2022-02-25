@@ -1,20 +1,22 @@
 # Maintainer: ml <>
 pkgname=hurl-rs
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
 url='https://github.com/Orange-OpenSource/hurl'
 license=('Apache')
-depends=('curl' 'libxml2')
-makedepends=('cargo' 'python')
+depends=('curl' 'libxml2' 'pkgconf')
+makedepends=('cargo' 'gcc' 'python')
 source=("$url"/archive/"$pkgver"/hurl-"$pkgver".tar.gz)
-sha512sums=('3533ff7500cc3448215123f961378dc13cda0e034fea33e1118958b6303693a9a141934cdb0b82ee5cff091e7c77c6dfce97a8207a46e2edecbdc619ddb9f61a')
+sha512sums=('93b10ac28bf4ef51c43028b918a101529765536b6f9fcd0a39728bc53b0fedc2df420edafc5949ecb176edc5eb34f0cc50ee4964ec2cb8ed5e048ca776480d24')
 
 build() {
   cd hurl-"$pkgver"
-  cargo build --release --locked
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
   ./ci/man.sh
+  cargo build --frozen --release --all-features
 }
 
 package() {
