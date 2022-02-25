@@ -1,6 +1,6 @@
 pkgbase = bluez-alsa-git
 	pkgdesc = Bluetooth audio ALSA backend
-	pkgver = 3.1.0.r90.g0c9d8c1
+	pkgver = 3.1.0.r97.gd5abf39
 	pkgrel = 1
 	url = https://github.com/Arkq/bluez-alsa
 	install = bluealsa.install
@@ -23,6 +23,7 @@ pkgbase = bluez-alsa-git
 	optdepends = mpg123: build with mpg123 decoding support
 	optdepends = ncurses: build with hcitop tool
 	optdepends = readline: build with bluealsa-rfcomm tool
+	optdepends = spandsp: build mSBC codec support
 	source = bluez-alsa-git::git+https://github.com/Arkq/bluez-alsa.git
 	sha512sums = SKIP
 
