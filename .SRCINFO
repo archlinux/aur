@@ -1,6 +1,6 @@
 pkgbase = tytools-git
 	pkgdesc = GUI and command-line tools to manage Teensy devices
-	pkgver = 0.9.2.r0.gf3f2a20
+	pkgver = 0.9.7.r0.gb974192
 	pkgrel = 1
 	url = http://github.com/Koromix/tytools
 	arch = x86_64
@@ -19,4 +19,3 @@ pkgbase = tytools-git
 	sha256sums = SKIP
 
 pkgname = tytools-git
-

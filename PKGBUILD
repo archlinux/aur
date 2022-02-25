@@ -1,7 +1,7 @@
 # Maintainer: Niels Martignène <niels.martignene@gmail.com>
 
 pkgname=tytools-git
-pkgver=0.9.2.r0.gf3f2a20
+pkgver=0.9.7.r0.gb974192
 pkgrel=1
 pkgdesc="GUI and command-line tools to manage Teensy devices"
 arch=('x86_64' 'i686')
@@ -37,8 +37,8 @@ package() {
     mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
     convert -resize "${size}x${size}" resources/images/tycommander.png \
       "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tycommander.png"
-    convert -resize "${size}x${size}" resources/images/tyupdater.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyupdater.png"
+    convert -resize "${size}x${size}" resources/images/tyuploader.png \
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/tyuploader.png"
   done
 
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/teensytools-git/LICENSE.txt"
