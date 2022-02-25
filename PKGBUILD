@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pangolin-desktop-git
 pkgver=dap.sigma.r25.g62fc2b74
 pkgrel=1
