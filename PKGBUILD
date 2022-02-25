@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gst-plugins-bad
-pkgver=1.18.5
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework Bad Plugins (mingw-w64)"
 arch=(any)
@@ -27,17 +27,21 @@ optdepends=(
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
-sha256sums=('a164923b94f0d08578a6fcaeaac6e0c05da788a46903a1086870e9ca45ad678e')
+sha256sums=('015b8d4d9a395ebf444d40876867a2034dd3304b3ad48bc3a0dd0c1ee71dc11d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/gst-plugins-bad-${pkgver}"
+  sed -i "s|link_args : \[noseh_link_args, '-lopencv_tracking'\],|link_args : \[noseh_link_args\],|" ext/opencv/meson.build
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
       -D package-name="GStreamer (Arch Linux)" \
-      -D package-origin="http://www.archlinux.org/" ..
+      -D package-origin="http://www.archlinux.org/" \
+      -D tests=disabled \
+      -D examples=disabled \
+      -D openexr=disabled .. 
     ninja
     popd
   done
