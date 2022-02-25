@@ -1,0 +1,14 @@
+diff -Nrup deepin-session-ui-git.orig/CMakeLists.txt deepin-session-ui-git/CMakeLists.txt
+--- deepin-session-ui-git.orig/CMakeLists.txt	2022-02-24 15:54:25.000000000 +0800
++++ deepin-session-ui-git/CMakeLists.txt	2022-02-24 15:54:36.000000000 +0800
+@@ -60,8 +60,9 @@ include_directories(
+ 
+ set(Test_Libraries
+     -lpthread
+-    -lgcov
+     -lgtest
++    -lgcov
++    --coverage
+ )
+ 
+ #----------------------------install config------------------------------
