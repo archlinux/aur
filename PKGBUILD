@@ -40,11 +40,14 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/${_gitname}"
+  sed -i "s|link_args : \[noseh_link_args, '-lopencv_tracking'\],|link_args : \[noseh_link_args\],|" ext/opencv/meson.build
   for _arch in $_architectures; do
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" \
+      -D tests=disabled \
+      -D examples=disabled \
       -D openexr=disabled ..
     ninja
     popd
