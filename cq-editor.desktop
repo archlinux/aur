@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=v0.2
+Name=CadQuery Editor
+GenericName=CQ Editor
+Comment=CadQuery GUI editor based on PyQT 
+Categories=Development;
+Exec=cq-editor
+Icon=cq-editor
+Terminal=false
+Type=Application
+Name[en_US]=CadQuery Editor
+GenericName[en_US]=CQ Editor
+Comment[en_US]=CadQuery GUI editor based on PyQT
