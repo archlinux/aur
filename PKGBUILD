@@ -1,8 +1,8 @@
-# Maintainer: Noah Vogt <noahjosua.vogt@gmail.com>
+# Maintainer: Noah Vogt <noah@noahvogt.com>
 pkgname=tibasicc-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc="TI-BASIC (de-)compiler written in C++ with a decent preprocessor"
+pkgdesc="TI-BASIC (de-)compiler written in C++ with a decent preprocessor - git version"
 arch=("x86_64")
 url="https://github.com/noahvogt/tibasicc.git"
 license=('ISC')
