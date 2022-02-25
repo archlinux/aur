@@ -1,4 +1,5 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer: 
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pangolin-desktop-bin
 pkgver=210509
 pkgrel=1
