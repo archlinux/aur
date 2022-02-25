@@ -2,7 +2,7 @@
 
 _cratename=melody_cli
 pkgname=melody
-pkgver=0.1.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A language designed to compile to and maintain a 1-1 relationship with regular expressions, while being more readable and maintainable.'
 url='https://github.com/yoav-lavi/melody'
@@ -10,8 +10,8 @@ makedepends=('cargo')
 depends=('gcc-libs')
 arch=('x86_64')
 license=('MIT')
-source=("https://github.com/yoav-lavi/melody/archive/v${pkgver}/${_cratename}-${pkgver}.tar.gz")
-sha256sums=('8fdde4b38952ff5b70507ffa36ae118c4efb0d4009ee959aa25c7ac7b06bcdd8')
+source=("https://github.com/yoav-lavi/melody/archive/v${pkgver}/v${pkgver}.tar.gz")
+sha256sums=('d74991ef8718130e1f1cf26ddd45913373257efc6bdf7c07d53bb9b93ea51825')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -27,12 +27,8 @@ build() {
 
 check() {
     cd "$pkgname-$pkgver"
-    regex=$(cargo run --frozen --all-features --package "${_cratename}" -- test/test.mdy)
-    expected='/(?:na){16}(?:\sbatman){2}/'
-    if [[ "$regex" != "$expected" ]]; then
-        echo "Expected $expected, got $regex";
-        exit 1;
-    fi
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen --all-features
 }
 
 package() {
