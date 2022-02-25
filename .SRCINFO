@@ -1,0 +1,14 @@
+pkgbase = deepin-sound-theme-git
+	pkgdesc = Deepin sound theme
+	pkgver = 15.10.6.r2.ge3aa7fb
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/deepin-sound-theme
+	arch = any
+	groups = deepin-git
+	license = GPL3
+	conflicts = deepin-artwork
+	conflicts = deepin-sound-theme
+	source = deepin-sound-theme-git::git://github.com/linuxdeepin/deepin-sound-theme/
+	sha512sums = SKIP
+
+pkgname = deepin-sound-theme-git
