@@ -1,6 +1,6 @@
 pkgbase = clrmamepro
 	pkgdesc = A ROM manager for MAME.
-	pkgver = 4.044a
+	pkgver = 4.044b
 	pkgrel = 1
 	url = https://mamedev.emulab.it/clrmamepro/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = clrmamepro
 	depends = wine
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	source = https://mamedev.emulab.it/clrmamepro/binaries/cmp4044a_32.zip
+	source = https://mamedev.emulab.it/clrmamepro/binaries/cmp4044b_32.zip
 	source = clrmamepro
 	source = clrmamepro.desktop
-	b2sums = 1249cee97d7a074f3aaeee5b54c1120363d703c7b1b6967f8f1cd000e7d9feb33aa6eca1a40a3c4c2e9c3dbd5b5ab2f32838e751c89fab9664f19ed36253dc27
+	b2sums = 2f3ca1420a86023ec0a2ec29e92eaab59f8a6deeceb01ad6782dad48f2598fa28f51dc8a0471eb61ce60c4d9ddca5ed0f5e6ff1c3d1b5b9ebafd01fcbc621ba6
 	b2sums = 92136aa1e3e5e98d5f5918f047e53a89d09318946fb20c8731a3ce84ff08abd00d65b4e6a098f71792da597677532e9c51cebb7b427594ea5d80260a43d7e147
 	b2sums = 001f96fd4d515e3501239781be80c71e32b8e5dc9c0f42b2d50794f23ba48206ab669a6348dcd22e6c37d0fddd52758844abbad40aa536c1ad59f99861567265
 
