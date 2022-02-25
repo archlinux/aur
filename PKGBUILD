@@ -16,7 +16,7 @@ pkgname=vmware-workstation15
 pkgver=15.5.7
 _buildver=17171714
 _pkgver=${pkgver}_${_buildver}
-pkgrel=6
+pkgrel=7
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -41,6 +41,7 @@ depends=(
   libaio
   pcsclite
   hicolor-icon-theme
+  libxcrypt-compat # needed for ovftool
   # needed to use Arch GTK3 library (for theme integration)
   gtk3
   gcr
