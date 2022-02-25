@@ -1,7 +1,7 @@
 pkgbase = thorko-ocserv
 	pkgdesc = OpenConnect VPN Server
 	pkgver = 1.1.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/openconnect/ocserv
 	arch = i686
 	arch = x86_64
