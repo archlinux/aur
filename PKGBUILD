@@ -2,7 +2,7 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 pkgname="cargo-doc2readme-git"
-pkgver=0.0.8.r23.g8635970
+pkgver=0.0.8.r32.gac3529c
 pkgrel=1
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from your code'
 license=('Apache')
@@ -11,8 +11,8 @@ license=('Apache')
 arch=('aarch64' 'i686' 'x86_64')
 
 url="https://github.com/msrd0/cargo-doc2readme"
-depends=('gcc-libs' 'curl' 'libgit2>=1:1.3')
-makedepends=('cargo')
+depends=('gcc-libs' 'curl' 'libgit2.so=1.4')
+makedepends=('cargo' 'libgit2')
 conflicts=('cargo-doc2readme')
 provides=('cargo-doc2readme')
 source=("$pkgname::git+$url")
