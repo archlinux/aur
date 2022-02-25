@@ -1,6 +1,6 @@
 pkgbase = pool-bin
 	pkgdesc = Lightning Pool: a non-custodial batched uniform clearing-price auction for Lightning Channel Leases (LCL). An LCL packages up inbound channel liquidity (ability to receive funds) as a fixed income asset with a maturity date expressed in blocks.
-	pkgver = 0.5.3_alpha
+	pkgver = 0.5.4_alpha
 	pkgrel = 1
 	url = https://github.com/lightninglabs/pool
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = pool-bin
 	depends = lnd
 	provides = pool
 	provides = poold
-	source = pool-linux-amd64-v0.5.3-alpha.tar.gz::https://github.com/lightninglabs/pool/releases/download/v0.5.3-alpha/pool-linux-amd64-v0.5.3-alpha.tar.gz
-	source = manifest-v0.5.3-alpha.txt.sig::https://github.com/lightninglabs/pool/releases/download/v0.5.3-alpha/manifest-v0.5.3-alpha.sig
-	source = manifest-v0.5.3-alpha.txt::https://github.com/lightninglabs/pool/releases/download/v0.5.3-alpha/manifest-v0.5.3-alpha.txt
+	source = pool-linux-amd64-v0.5.4-alpha.tar.gz::https://github.com/lightninglabs/pool/releases/download/v0.5.4-alpha/pool-linux-amd64-v0.5.4-alpha.tar.gz
+	source = manifest-v0.5.4-alpha.txt.sig::https://github.com/lightninglabs/pool/releases/download/v0.5.4-alpha/manifest-v0.5.4-alpha.sig
+	source = manifest-v0.5.4-alpha.txt::https://github.com/lightninglabs/pool/releases/download/v0.5.4-alpha/manifest-v0.5.4-alpha.txt
 	validpgpkeys = F4FC70F07310028424EFC20A8E4256593F177720
-	sha256sums = 35584b041255dd6f3ae8639f2fd5ea77c0f19f93616a730d8db9d8497c80785c
+	sha256sums = 188cf44a4155b649f2874b9954edf47eb84562e3a5161b6ce850ce37a82b5025
 	sha256sums = SKIP
-	sha256sums = 025e449c9d5de00b8dfc22df825dbbdc74eb66c4656644952ae72a731ea7f439
+	sha256sums = db5943b2d2fa5b4b934346025482b6c45e6bf22d2b80c6684f00219228e13191
 
 pkgname = pool-bin

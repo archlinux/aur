@@ -1,7 +1,7 @@
 # Maintainer: dsche-cyber  <dsche-cyber@protonmail.com>
 _pkgname=pool
 pkgname=${_pkgname}-bin
-pkgver=0.5.3_alpha
+pkgver=0.5.4_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Pool: a non-custodial batched uniform clearing-price auction for Lightning Channel Leases (LCL). An LCL packages up inbound channel liquidity (ability to receive funds) as a fixed income asset with a maturity date expressed in blocks."
@@ -18,9 +18,9 @@ manifest-v${_pkgver}.txt.sig::"${url}/releases/download/v${_pkgver}/manifest-v${
 manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkgver}.txt"
 )
 
-sha256sums=('35584b041255dd6f3ae8639f2fd5ea77c0f19f93616a730d8db9d8497c80785c'
+sha256sums=('188cf44a4155b649f2874b9954edf47eb84562e3a5161b6ce850ce37a82b5025'
             'SKIP'
-            '025e449c9d5de00b8dfc22df825dbbdc74eb66c4656644952ae72a731ea7f439')
+            'db5943b2d2fa5b4b934346025482b6c45e6bf22d2b80c6684f00219228e13191')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
