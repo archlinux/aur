@@ -1,0 +1,15 @@
+pkgbase = python-obs-websocket
+	pkgdesc = Python library to communicate with an obs-websocket server
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/Elektordi/obs-websocket-py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-websocket-client
+	source = python-obs-websocket-0.5.3.tar.gz::https://github.com/Elektordi/obs-websocket-py/archive/refs/tags/0.5.3.tar.gz
+	sha256sums = 5992ca7f0c5205d55e893f4c27e53a8efca9478b073b86a19751de35308f3e98
+
+pkgname = python-obs-websocket
