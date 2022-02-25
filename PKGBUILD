@@ -44,7 +44,8 @@ build() {
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
       -D package-name="GStreamer (Arch Linux)" \
-      -D package-origin="http://www.archlinux.org/" ..
+      -D package-origin="http://www.archlinux.org/" \
+      -D openexr=disabled ..
     ninja
     popd
   done

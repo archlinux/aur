@@ -47,4 +47,3 @@ pkgbase = mingw-w64-gst-plugins-bad-git
 	sha256sums = SKIP
 
 pkgname = mingw-w64-gst-plugins-bad-git
-
