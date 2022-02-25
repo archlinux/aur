@@ -13,8 +13,8 @@ pkgbase = deepin-wallpapers-git
 
 pkgname = deepin-wallpapers-git
 	pkgdesc = Default wallpapers for DDE
-	groups = deepin
+	groups = deepin-git
 
 pkgname = deepin-community-wallpapers-git
 	pkgdesc = Community wallpapers for DDE
-	groups = deepin-extra
+	groups = deepin-git
