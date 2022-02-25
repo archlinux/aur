@@ -16,6 +16,10 @@ sha256sums=('8b3f8d418668953b937679b211921323c4db1e431b3c3c988436bbbb053fb6f2')
 package() {
         install -Dm 755 "${pkgname}-$pkgver" "$pkgdir/usr/bin/wait4x"
 
+	install -d 755 "$pkgdir/usr/share/bash-completion/completions"
+	install -d 755 "$pkgdir/usr/share/zsh/site-functions"
+	install -d 755 "$pkgdir/usr/share/fish/vendor_completions.d"
+
 	"$pkgdir/usr/bin/wait4x" completion bash > "$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	"$pkgdir/usr/bin/wait4x" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
 	"$pkgdir/usr/bin/wait4x" completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
