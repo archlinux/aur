@@ -1,7 +1,7 @@
 pkgbase = ihatethedemonkahl
 	pkgdesc = I HATE THE DEMON KAHL!
 	pkgver = 6.6.6
-	pkgrel = 666
+	pkgrel = 6666
 	arch = x86_64
 	license = MIT
 

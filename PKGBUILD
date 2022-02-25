@@ -1,6 +1,6 @@
 pkgname="ihatethedemonkahl"
 pkgver="6.6.6"
-pkgrel="666"
+pkgrel="6666"
 pkgdesc="I HATE THE DEMON KAHL!"
 arch=("x86_64")
 license=("MIT")
