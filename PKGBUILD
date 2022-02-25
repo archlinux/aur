@@ -2,7 +2,7 @@
 _pkgname=lightning-terminal
 __pkgname=lit
 pkgname=${_pkgname}-bin
-pkgver=0.6.1_alpha
+pkgver=0.6.4_alpha
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Lightning Terminal (LiT) is a browser-based interface for managing channel liquidity."
@@ -25,9 +25,9 @@ manifest-v${_pkgver}.txt::"${url}/releases/download/v${_pkgver}/manifest-v${_pkg
 )
 
 
-sha256sums=('24abf452ee63efcd996e3b8b1b0ac6299df51841bd9551db4b3e492f200eea85'
+sha256sums=('21c5cc64e4d28bb38bfcecf3c61de7f12921e4c2d01ba04b96dab02dfb22ca06'
             'SKIP'
-            'ff10f6fa5e9d848f95b3b0dc82aa8ed170b8686ff9a333076b5418d72bf55163')
+            '4ada2caccae7b81610a4ec13bfa603a01b94f5d59a030f529a7ac31afe596e4e')
 
 # LND provides manifest signatures from several developers
 # To wit; guggero and roasbeef
