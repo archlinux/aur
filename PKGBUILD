@@ -2,14 +2,14 @@
 
 pkgname=man-pages-it-git
 _gitname=manpages-l10n
-pkgver=r17815.7dd9c5f30e
+pkgver=r17992.168bf0eb64
 pkgrel=1
 pkgdesc="Italian man pages (Git version)"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"
 license=('GPL3')
 conflicts=('man-pages-it')
-depends=('man-db')
+depends=('man')
 makedepends=('po4a' 'git')
 options=('!emptydirs')
 source=("${_gitname}::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git")
