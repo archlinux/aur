@@ -1,0 +1,21 @@
+pkgbase = r-palmerpenguins
+	pkgdesc = Palmer Archipelago (Antarctica) Penguin Data
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=palmerpenguins
+	arch = any
+	license = custom:CC0
+	depends = r
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-tibble
+	optdepends = r-ggplot2
+	optdepends = r-dplyr
+	optdepends = r-tidyr
+	optdepends = r-recipes
+	source = https://cran.r-project.org/src/contrib/palmerpenguins_0.1.0.tar.gz
+	source = palmerpenguins-LICENSE.md::https://raw.githubusercontent.com/allisonhorst/palmerpenguins/v0.1.0/LICENSE.md
+	sha256sums = fdcc58bcf1311b962e94b13d0ab3729e4b6656d21bd8f0329f07473a1b1b3360
+	sha256sums = 8e2c443dd9aea6fcd6c293dbf66935bd5ef502fc0ca9b466c773cf9316d5e04c
+
+pkgname = r-palmerpenguins
