@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=95.0.2
+pkgver=97.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=7c17f3c4df7423951b09c407183c30ba47c60cd5
+_patchrev=536158d6ee8110971fc9fc861432ae26c0d9c6a3
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -97,7 +97,6 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         # PGO/LTO GCC patches
         0024-Fix-building-with-PGO-when-using-GCC.patch
         0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-        0028-Make-elfhack-use-toolchain.patch
         # end
         # Fix CSD when globalmenu is active #8
         fix_csd_window_buttons.patch
@@ -105,13 +104,6 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         fix-wayland-build.patch
         # Fix build against current Dav1D tagged version #18
         revert_dav1d_changes.patch.xz
-        # WR/Gnome+KDE Wayland/AMD: Firefox 95 locked to 120 fps,
-        # unsmooth scrolling
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1744896
-        mozilla-bmo1744896.patch
-        # Firefox 91.4 fails to build against wayland 1.20
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1745560
-        mozilla-bmo1745560.patch
 )
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -164,7 +156,7 @@ prepare() {
   patch -Np1 -i "$srcdir"/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # reenable system sqlite
-  patch -R -p1 -i "$srcdir"/5022efe33088.patch
+  patch -p1 -i "$srcdir"/5022efe33088.patch
 
   # Force disable elfhack to fix build errors
   patch -Np1 -i "$srcdir"/build-disable-elfhack.patch
@@ -178,13 +170,6 @@ prepare() {
   # Fix build against current Dav1D tagged version
   xzcat "$srcdir"/revert_dav1d_changes.patch.xz | patch -Np1
 
-  # WR/Gnome+KDE Wayland/AMD: Firefox 95 locked to 120 fps,
-  # unsmooth scrolling
-  patch -Np1 -i "$srcdir"/mozilla-bmo1744896.patch
-
-  # Firefox 91.4 fails to build against wayland 1.20
-  patch -Np1 -i "$srcdir"/mozilla-bmo1745560.patch
-
   if [ $_pgo ] ; then
     # Fix MOZILLA#1516803
     # sandbox needs to be built with --param lto-partitions=1 when
@@ -195,7 +180,6 @@ prepare() {
     patch -Np1 -i "$srcdir"/0020-Make-PGO-use-toolchain.patch
     patch -Np1 -i "$srcdir"/0024-Fix-building-with-PGO-when-using-GCC.patch
     patch -Np1 -i "$srcdir"/0027-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-    patch -Np1 -i "$srcdir"/0028-Make-elfhack-use-toolchain.patch
 
     # add missing rule for pgo builds
     patch -Np1 -i "$srcdir"/add_missing_pgo_rule.patch
@@ -300,24 +284,21 @@ md5sums=('SKIP'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
          '1d5e9215530ef6778299b67dc6dba65e'
-         '01329185574709cb420f2c4531597d37'
+         '0eeb274bd4f1783075cfac3a5a852e3c'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         '512c6c55c637fd2fee7a5e71f38dd54c'
+         '5c1d49167ee43fb952075867605dd5f7'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          '350c258cdaeef99b4638c5181fda3ad2'
          '9e518b30cf2ff9afd0423c79d12ae7b2'
          '4fa2216039664edad586b230b05fbd0a'
          'e7994b3b78b780ebe610ba3d87247e40'
-         '00abc3976f028f8fe07111b9e687b574'
+         '548de130fc0f470bff0b6d994a0a91cd'
          'c7b492df4fbf42ffe8aea4c0afb89921'
          '316d71d9cec400890db2ee8c362e672f'
          'c6c0e47c9b517e5146a8925f442b811b'
          '943b9fe2ba474f7809a41622744f97f9'
          '31f950a94966287bfa6ccf03030781cc'
-         'a59f137deca1da83de10a122984457d7'
          'f49ac3b9f5146e33ce587e6b23eb1a86'
          '2cf74781f6b742d6b7e6f7251f49311a'
-         'd633782c58cd8b8b165e32940ec7cb46'
-         'c8593df8bc18e8cacfa4f36cdc31649f'
-         'e9ce01b511ca4e5f37278d7748b8b723')
+         '3467677cadefe358473555340f681ae6')
