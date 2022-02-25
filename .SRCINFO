@@ -1,26 +1,17 @@
 pkgbase = python-pylibmc-git
 	pkgdesc = Quick and small memcached client for Python
-	pkgver = r585.8e783a6
+	pkgver = r598.4cda09a
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/pylibmc
-	arch = i686
-	arch = x86_64
-	license = GPL
-	makedepends = gcc
-	makedepends = zlib
+	url = https://github.com/lericson/pylibmc
+	arch = any
+	license = custom:BSD-3-clause
+	makedepends = python-setuptools
 	makedepends = git
-	source = git+https://github.com/lericson/pylibmc.git
-	md5sums = SKIP
-
-pkgname = python-pylibmc-git
 	depends = python
 	depends = libmemcached
 	provides = python-pylibmc
 	conflicts = python-pylibmc
+	source = git+https://github.com/lericson/pylibmc.git
+	sha512sums = SKIP
 
-pkgname = python2-pylibmc-git
-	depends = python2
-	depends = libmemcached
-	provides = python2-pylibmc
-	conflicts = python2-pylibmc
-
+pkgname = python-pylibmc-git

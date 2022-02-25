@@ -1,43 +1,32 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
-
-pkgbase=python-pylibmc-git
-pkgname=(python-pylibmc-git python2-pylibmc-git)
-pkgver=r585.8e783a6
+_base=pylibmc
+pkgname=python-${_base}-git
+pkgver=r598.4cda09a
 pkgrel=1
-
-pkgdesc='Quick and small memcached client for Python'
-url="http://pypi.python.org/pypi/pylibmc"
-arch=("i686" "x86_64")
-license=("GPL")
-depends=()
-makedepends=('gcc' 'zlib' 'git')
-
-source=('git+https://github.com/lericson/pylibmc.git')
-
-md5sums=('SKIP')
+pkgdesc="Quick and small memcached client for Python"
+url="https://github.com/lericson/${_base}"
+arch=(any)
+license=('custom:BSD-3-clause')
+depends=(python libmemcached)
+makedepends=(python-setuptools git)
+source=(git+${url}.git)
+sha512sums=('SKIP')
+provides=(python-${_base})
+conflicts=(python-${_base})
 
 pkgver() {
-	cd pylibmc
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-
+	cd ${_base}
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_python-pylibmc-git() {
-	provides=('python-pylibmc')
-	conflicts=('python-pylibmc')
-
-	depends=('python' 'libmemcached')
-
-	cd pylibmc
-	python setup.py install --root="$pkgdir"
+build() {
+	cd ${_base}
+	export PYTHONHASHSEED=0
+	python setup.py build
 }
 
-package_python2-pylibmc-git() {
-	provides=('python2-pylibmc')
-	conflicts=('python2-pylibmc')
-
-	depends=('python2' 'libmemcached')
-
-	cd pylibmc
-	python2 setup.py install --root="$pkgdir"
+package() {
+	cd ${_base}
+	PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
