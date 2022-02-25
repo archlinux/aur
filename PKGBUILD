@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-github-linuxdeepin-go-x11-client-git
-pkgver=0.6.7.r1.g4a6f952
-pkgrel=15
+pkgver=0.6.8.r2.g9476531
+pkgrel=1
 pkgdesc='X11 protocol go language binding'
 arch=('any')
 url="https://github.com/linuxdeepin/go-x11-client"
