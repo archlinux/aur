@@ -1,0 +1,13 @@
+pkgbase = r-runit
+	pkgdesc = R Unit Test Framework
+	pkgver = 0.4.32
+	pkgrel = 1
+	url = https://cran.r-project.org/package=RUnit
+	arch = any
+	license = GPL2
+	depends = r
+	optdepends = r-xml
+	source = https://cran.r-project.org/src/contrib/RUnit_0.4.32.tar.gz
+	sha256sums = 23a393059989000734898685d0d5509ece219879713eb09083f7707f167f81f1
+
+pkgname = r-runit
