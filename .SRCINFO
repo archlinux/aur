@@ -1,0 +1,16 @@
+pkgbase = plasma5-applets-supergfxctl
+	pkgdesc = KDE Plasma plasmoid for supergfxctl
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/Jhyub/supergfxctl-plasmoid
+	arch = x86_64
+	license = MPL2
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = hicolor-icon-theme
+	depends = supergfxctl
+	source = https://gitlab.com/Jhyub/supergfxctl-plasmoid/-/archive/v1.1.0/supergfxctl-plasmoid-v1.1.0.tar.gz
+	sha256sums = 76be04a7f4dbd0615b02a6c5f230460fa8d37b056c8ae2ff5bd8520de6ea029d
+
+pkgname = plasma5-applets-supergfxctl

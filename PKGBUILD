@@ -1,0 +1,30 @@
+# Maintainer: Jhyub <jhyub06 at gmail dot com>
+
+pkgname='plasma5-applets-supergfxctl'
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="KDE Plasma plasmoid for supergfxctl"
+arch=('x86_64')
+url="https://gitlab.com/Jhyub/supergfxctl-plasmoid"
+license=('MPL2')
+depends=('plasma-framework' 'hicolor-icon-theme' 'supergfxctl')
+makedepends=('cmake' 'extra-cmake-modules')
+source=(
+    "https://gitlab.com/Jhyub/supergfxctl-plasmoid/-/archive/v$pkgver/supergfxctl-plasmoid-v$pkgver.tar.gz"
+)
+sha256sums=(
+    '76be04a7f4dbd0615b02a6c5f230460fa8d37b056c8ae2ff5bd8520de6ea029d'
+)
+
+build() {
+	cd "supergfxctl-plasmoid-v$pkgver"
+	mkdir -p build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	make
+}
+
+package() {
+	cd "supergfxctl-plasmoid-v$pkgver/build"
+	make DESTDIR="${pkgdir}/" install
+}
