@@ -1,0 +1,5 @@
+qbittorrent-git
+src
+pkg
+*.pkg.*
+*.log
