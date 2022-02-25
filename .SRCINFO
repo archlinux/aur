@@ -1,5 +1,5 @@
 pkgbase = jetbrains-openjdk-xdg
-	pkgver = 11.0.14b1993.2
+	pkgver = 11.0.14b2043.2
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = jetbrains-openjdk-xdg
 	provides = jdk-openjdk
 	provides = openjdk-src
 	provides = openjdk-doc
-	source = https://codeload.github.com/JetBrains/JetBrainsRuntime/tar.gz/refs/tags/jbr11_0_14b1993.2
+	source = https://codeload.github.com/JetBrains/JetBrainsRuntime/tar.gz/refs/tags/jbr11_0_14b2043.2
 	source = xdg-base-directory-compliant-fontconfig-and-userPrefs.patch
 	sha256sums = 6c714ce3e4e0c120e1adfa334705c49dd73d2e9bacdca68c09cec292902797ec
 	sha256sums = 413a9ddc04f2bb3f233cb96891b6a1d19c18a008b1dd643f3b995d1b1cf5079c
@@ -58,7 +58,7 @@ pkgname = jre-jetbrains-openjdk-headless-xdg
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	provides = jre11-openjdk-headless=11.0.14b1993.2-1
+	provides = jre11-openjdk-headless=11.0.14b2043.2-1
 	backup = etc/jetbrains-openjdk-xdg/logging.properties
 	backup = etc/jetbrains-openjdk-xdg/management/jmxremote.access
 	backup = etc/jetbrains-openjdk-xdg/management/jmxremote.password.template
@@ -76,7 +76,7 @@ pkgname = jre-jetbrains-openjdk-headless-xdg
 
 pkgname = jre-jetbrains-openjdk-xdg
 	pkgdesc = OpenJDK Java 11 full runtime environment - with improved Support for the XDG Base Directory Specification
-	depends = jre11-openjdk-headless=11.0.14b1993.2-1
+	depends = jre11-openjdk-headless=11.0.14b2043.2-1
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -87,11 +87,11 @@ pkgname = jre-jetbrains-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=11
 	provides = java-runtime-openjdk=11
-	provides = jre11-openjdk=11.0.14b1993.2-1
+	provides = jre11-openjdk=11.0.14b2043.2-1
 
 pkgname = jdk-jetbrains-openjdk-xdg
 	pkgdesc = OpenJDK Java 11 development kit - with improved Support for the XDG Base Directory Specification
-	depends = jre11-openjdk=11.0.14b1993.2-1
+	depends = jre11-openjdk=11.0.14b2043.2-1
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -99,4 +99,4 @@ pkgname = jdk-jetbrains-openjdk-xdg
 	depends = gcc-libs
 	provides = java-environment=11
 	provides = java-environment-openjdk=11
-	provides = jdk11-openjdk=11.0.14b1993.2-1
+	provides = jdk11-openjdk=11.0.14b2043.2-1
