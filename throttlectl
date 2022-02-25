@@ -11,7 +11,7 @@ throttle_help() {
           "${0} {check} - inspect runtime powersaving\n"\
           "\nPer-component power management:\n" \
           "${0} sys {cut,full} - System devices\n"\
-          "${0} turbo {on,off} - Intel P-State Turbo\n"\
+          "${0} turbo {on,off} - {Intel P-State Turbo, CPUFreq Boost}\n"\
           "${0} ht {on,off} - Hyperthreads\n"\
           "${0} gov {cut,full} - CPU Governor\n"\
           "${0} gpu {cut,full} - GPU runtime powersaving (only Nvidia ATM)\n"\
@@ -165,12 +165,18 @@ check_ht() {
 throttle_turbo() {
   [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]] && \
     printf "${XPSTURBO}" > /sys/devices/system/cpu/intel_pstate/no_turbo &
+  [[ -f /sys/devices/system/cpu/cpufreq/boost ]] && \
+    printf "$((XPSTURBO ^= 1))" > /sys/devices/system/cpu/cpufreq/boost &
 }
 
 check_turbo() {
   [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]] && \
     echo -e "\nDisable Intel P-State Turbo\n/sys/devices/system/cpu/intel_pstate/\n"\
             "no_turbo\t$(cat /sys/devices/system/cpu/intel_pstate/no_turbo)"
+  [[ -f /sys/devices/system/cpu/cpufreq/boost ]] && \
+    echo -e "\nDisable CPUFreq Boost\n/sys/devices/system/cpu/cpufreq/\n"\
+            "no_turbo\t$(cat /sys/devices/system/cpu/cpufreq/boost)"
+
 }
 
 throttle_gov() {
