@@ -1,0 +1,107 @@
+diff --unified --recursive --text package.orig/config-top.h package.new/config-top.h
+--- package.orig/config-top.h	2022-01-31 23:18:40.905798743 +0800
++++ package.new/config-top.h	2022-02-01 14:13:14.662868644 +0800
+@@ -88,7 +88,39 @@
+ #define KSH_COMPATIBLE_SELECT
+ 
+ /* Default interactive shell startup file. */
++#ifndef DEFAULT_BASHRC
+ #define DEFAULT_BASHRC "~/.bashrc"
++#endif
++
++/* Default .profile for login shells. */
++#ifndef DEFAULT_PROFILE
++#define DEFAULT_PROFILE "~/.profile"
++#endif
++
++/* Default .bash_profile for login shells. */
++#ifndef DEFAULT_BASH_PROFILE
++#define DEFAULT_BASH_PROFILE "~/.bash_profile"
++#endif
++
++/* Default .bash_login for login shells. */
++#ifndef DEFAULT_BASH_LOGIN
++#define DEFAULT_BASH_LOGIN "~/.bash_login"
++#endif
++
++/* Default .bash_logout for login shells. */
++#ifndef DEFAULT_BASH_LOGOUT
++#define DEFAULT_BASH_LOGOUT "~/.bash_logout"
++#endif
++
++/* Default .bash_history for bash shells. */
++#ifndef DEFAULT_BASH_HISTORY
++#define DEFAULT_BASH_HISTORY "~/.bash_history"
++#endif
++
++/* Default .sh_history for POSIX shells. */
++#ifndef DEFAULT_SH_HISTORY
++#define DEFAULT_SH_HISTORY "~/.sh_history"
++#endif
+ 
+ /* System-wide .bashrc file for interactive shells. */
+ /* #define SYS_BASHRC "/etc/bash.bashrc" */
+diff --unified --recursive --text package.orig/shell.c package.new/shell.c
+--- package.orig/shell.c	2022-01-31 23:18:40.905798743 +0800
++++ package.new/shell.c	2022-02-01 14:16:44.671736175 +0800
+@@ -194,6 +194,18 @@
+ /* The name of the .(shell)rc file. */
+ static char *bashrc_file = DEFAULT_BASHRC;
+ 
++/* The name of the .profile file. */
++static char *profile_file = DEFAULT_PROFILE;
++
++/* The name of the .bash_profile file. */
++static char *bash_profile_file = DEFAULT_BASH_PROFILE;
++
++/* The name of the .bash_login file. */
++static char *bash_login_file = DEFAULT_BASH_LOGIN;
++
++/* The name of the .bash_logout file. */
++static char *bash_logout_file = DEFAULT_BASH_LOGOUT;
++
+ /* Non-zero means to act more like the Bourne shell on startup. */
+ static int act_like_sh;
+ 
+@@ -1157,10 +1169,10 @@
+ 	  maybe_execute_file (SYS_PROFILE, 1);
+ 
+ 	  if (act_like_sh)	/* sh */
+-	    maybe_execute_file ("~/.profile", 1);
+-	  else if ((maybe_execute_file ("~/.bash_profile", 1) == 0) &&
+-		   (maybe_execute_file ("~/.bash_login", 1) == 0))	/* bash */
+-	    maybe_execute_file ("~/.profile", 1);
++	    maybe_execute_file (profile_file, 1);
++	  else if ((maybe_execute_file (bash_profile_file, 1) == 0) &&
++		   (maybe_execute_file (bash_login_file, 1) == 0))	/* bash */
++	    maybe_execute_file (profile_file, 1);
+ 	}
+ 
+       sourced_login = 1;
+@@ -1193,10 +1205,10 @@
+ 	      maybe_execute_file (SYS_PROFILE, 1);
+ 
+ 	      if (act_like_sh)	/* sh */
+-		maybe_execute_file ("~/.profile", 1);
+-	      else if ((maybe_execute_file ("~/.bash_profile", 1) == 0) &&
+-		       (maybe_execute_file ("~/.bash_login", 1) == 0))	/* bash */
+-		maybe_execute_file ("~/.profile", 1);
++		maybe_execute_file (profile_file, 1);
++	      else if ((maybe_execute_file (bash_profile_file, 1) == 0) &&
++		       (maybe_execute_file (bash_login_file, 1) == 0))	/* bash */
++		maybe_execute_file (profile_file, 1);
+ 	    }
+ 	}
+ 
+diff --unified --recursive --text package.orig/variables.c package.new/variables.c
+--- package.orig/variables.c	2022-01-31 23:18:40.912465509 +0800
++++ package.new/variables.c	2022-02-01 14:19:17.663527558 +0800
+@@ -597,7 +597,7 @@
+      that we are remembering commands on the history list. */
+   if (remember_on_history)
+     {
+-      name = bash_tilde_expand (posixly_correct ? "~/.sh_history" : "~/.bash_history", 0);
++      name = bash_tilde_expand (posixly_correct ? DEFAULT_SH_HISTORY : DEFAULT_BASH_HISTORY, 0);
+ 
+       set_if_not ("HISTFILE", name);
+       free (name);
