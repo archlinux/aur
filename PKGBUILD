@@ -4,32 +4,34 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname='fcitx5-mozc-ut'
-pkgver=2.26.4646.102
+pkgver=2.26.4656.102
 pkgrel=1
 pkgdesc='Mozc module for Fcitx5'
 arch=('x86_64')
 url='https://github.com/fcitx/mozc'
 license=('Apache' 'BSD' 'LGPL' 'custom')
-depends=('fcitx5' 'mozc>=2.26.4646.102')
+depends=('fcitx5' 'mozc>=2.26.4656.102')
 makedepends=('bazel' 'git' 'python' 'qt5-base')
 optdepends=('fcitx5-configtool')
-conflicts=('fcitx-mozc' 'fcitx-mozc-ut' 'fcitx-mozc-neologd-ut' 'fcitx-mozc-ut-unified' 'fcitx-mozc-ut-unified-full'
-           'fcitx5-mozc' 'fcitx5-mozc-git')
-provides=('fcitx5-mozc=2.26.4646.102')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f"
+provides=('fcitx5-mozc=2.26.4656.102')
+conflicts=('fcitx5-mozc')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=0dcb977536385e18f88e29b3ae42b07fd5f5f433"
         "fcitx5.patch")
 sha256sums=('SKIP'
-            '8f7065cfec2cf4999bafeb39d66dbd92a763d25786048bca9a1612a4d34b4a69')
+            '8bdcf4b3a26464d16193fac9d8f86643bd7dce23ca0e77036bb2246400fda8a7')
 
 prepare() {
-    cd ${pkgname}-git
+    cd ${pkgname}-git/src
 
     git submodule update --init --recursive
 
-    # Patch in the out-of-source fcitx5 target (pulled from https://github.com/fcitx/mozc)
-    patch -Np1 -i ${srcdir}/fcitx5.patch
+    # Restore the workspace to its original state
+    [[ -f BUILD.fcitx5.bazel ]] && rm BUILD.fcitx5.bazel
+    [[ -d unix/fcitx5 ]] && rm -r unix/fcitx5
+    git restore .
 
-    cd src
+    # Patch in the out-of-source fcitx5 target (pulled from https://github.com/fcitx/mozc)
+    patch -Np2 -i ${srcdir}/fcitx5.patch
 
     # Fix the Qt5 include path
     sed -i -e 's/x86_64-linux-gnu\/qt5/qt/' config.bzl
@@ -41,7 +43,8 @@ prepare() {
 build() {
     cd ${pkgname}-git/src
 
-    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --compilation_mode opt --copt=-fPIC
+    export JAVA_HOME='/usr/lib/jvm/java-11-openjdk/'
+    bazel build unix/fcitx5:fcitx5-mozc.so unix/icons --config oss_linux --compilation_mode opt
 }
 
 package() {

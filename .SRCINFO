@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ut
 	pkgdesc = Mozc module for Fcitx5
-	pkgver = 2.26.4646.102
+	pkgver = 2.26.4656.102
 	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
@@ -13,19 +13,13 @@ pkgbase = fcitx5-mozc-ut
 	makedepends = python
 	makedepends = qt5-base
 	depends = fcitx5
-	depends = mozc>=2.26.4646.102
+	depends = mozc>=2.26.4656.102
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=2.26.4646.102
-	conflicts = fcitx-mozc
-	conflicts = fcitx-mozc-ut
-	conflicts = fcitx-mozc-neologd-ut
-	conflicts = fcitx-mozc-ut-unified
-	conflicts = fcitx-mozc-ut-unified-full
+	provides = fcitx5-mozc=2.26.4656.102
 	conflicts = fcitx5-mozc
-	conflicts = fcitx5-mozc-git
-	source = fcitx5-mozc-ut-git::git+https://github.com/google/mozc.git#commit=cdb6ca32615805af5d2b7aa1dc5a9b300ae1b09f
+	source = fcitx5-mozc-ut-git::git+https://github.com/google/mozc.git#commit=0dcb977536385e18f88e29b3ae42b07fd5f5f433
 	source = fcitx5.patch
 	sha256sums = SKIP
-	sha256sums = 8f7065cfec2cf4999bafeb39d66dbd92a763d25786048bca9a1612a4d34b4a69
+	sha256sums = 8bdcf4b3a26464d16193fac9d8f86643bd7dce23ca0e77036bb2246400fda8a7
 
 pkgname = fcitx5-mozc-ut
