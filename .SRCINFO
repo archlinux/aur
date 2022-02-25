@@ -1,6 +1,6 @@
 pkgbase = bombardier
 	pkgdesc = Crossplatform HTTP benchmarking tool written in Go
-	pkgver = 0.2
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/codesenberg/bombardier
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = bombardier
 	makedepends = go
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/codesenberg/bombardier/archive/v0.2.tar.gz
-	sha256sums = 2ddec6bc421a8688ae388c57bf59183eacac71cb82ac2f3cfda58951cd11ae51
+	source = https://github.com/codesenberg/bombardier/releases/download/v1.2.5/bombardier-linux-amd64
+	b2sums = c517eada24bff73dd2b013734a2cd52e06980d9696c21834f4bd6524540061ee924aa27493c67fe30ed689bd7d731cc02034b98a5466307c92ad6f66a58589e8
 
 pkgname = bombardier
-

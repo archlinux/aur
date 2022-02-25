@@ -1,7 +1,7 @@
 # Maintainer: Olivier Biesmans <o.archlinux@biesmans.fr>
 
 pkgname=bombardier
-pkgver=0.2
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="Crossplatform HTTP benchmarking tool written in Go"
 arch=('x86_64' 'i686')
@@ -9,20 +9,9 @@ url="https://github.com/codesenberg/bombardier"
 license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
-source=("https://github.com/codesenberg/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('2ddec6bc421a8688ae388c57bf59183eacac71cb82ac2f3cfda58951cd11ae51')
-
-build() {
-  mkdir -p gopath/src
-  mv "$pkgname-$pkgver" "gopath/src/$pkgname"
-  GOPATH="$(pwd)/gopath" go build -o "$srcdir/build/$pkgname" "$pkgname"
-  echo $(pwd)
-}
+source=("https://github.com/codesenberg/$pkgname/releases/download/v$pkgver/bombardier-linux-amd64")
+b2sums=('c517eada24bff73dd2b013734a2cd52e06980d9696c21834f4bd6524540061ee924aa27493c67fe30ed689bd7d731cc02034b98a5466307c92ad6f66a58589e8')
 
 package() {
-  install -Dm755 "$srcdir/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/gopath/src/$pkgname/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$pkgname-linux-amd64" "$pkgdir/usr/bin/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
