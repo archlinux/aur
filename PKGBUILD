@@ -1,14 +1,14 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-pw-check-git
-pkgver=5.1.2.r5.gef201e1
-pkgrel=8
+pkgver=5.1.6.r5.g10c0e2f
+pkgrel=1
 pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/deepin-pw-check"
 license=('GPL3')
 depends=('cracklib' 'iniparser' 'pam')
-makedepends=('git' 'go' 'golang-github-linuxdeepin-go-dbus-factory-git' 'deepin-gettext-tools')
+makedepends=('git' 'go' 'golang-github-linuxdeepin-go-dbus-factory-git' 'deepin-gettext-tools-git')
 groups=('deepin-git')
 provides=('deepin-pw-check')
 conflicts=('deepin-pw-check')
