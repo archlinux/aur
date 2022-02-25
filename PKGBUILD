@@ -8,7 +8,7 @@ url="https://github.com/spapanik/yamk"
 license=('MIT')
 depends=('python-tomlkit')
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha512sums=('7b299e6e13c5025e1f72b3fb3fefb3eeb7606e6b761194b3bac6d876b987086537c6d18f584690c685a4a02452a3c2b240aff6fade6575be6dbd813a5e76a67b')
+sha256sums=('0ef2766dfa3fb23dd940d789a70dcb911c724af4db363170128bada5caa8147a')
 
 build() {
 	cd "${srcdir}"/${_pipname}-${pkgver}
