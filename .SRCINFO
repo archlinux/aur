@@ -1,0 +1,24 @@
+pkgbase = knoepfe
+	pkgdesc = Connect and control Elgato Stream Decks
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lnqs/knoepfe
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-schema
+	depends = python-appdirs
+	depends = python-docopt
+	depends = python-elgato-streamdeck
+	depends = python-pillow
+	depends = python-pulsectl-asyncio>=0.2
+	depends = python-obs-websocket
+	source = knoepfe-0.1.0.tar.gz::https://github.com/lnqs/knoepfe/archive/refs/tags/v0.1.0.tar.gz
+	source = 95-streamdeck.rules
+	sha256sums = 34a1a68d4704f4bfc7b6e50186d74184916ed89e60503cf1778661d638eb3895
+	sha256sums = 09a8e6067a8f66a742ba065724be287fa1eb96761d1d447e5a197d869a86f803
+
+pkgname = knoepfe
