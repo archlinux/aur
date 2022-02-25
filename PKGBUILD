@@ -16,7 +16,7 @@ pkgname=vmware-workstation11
 pkgver=11.1.4
 _buildver=3848939
 _pkgver=${pkgver}_${_buildver}
-pkgrel=18
+pkgrel=19
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -40,6 +40,7 @@ depends=(
   gtkmm
   libcanberra
   hicolor-icon-theme
+  libxcrypt-compat # needed for ovftool
   # needed to replace internal libs:
   fontconfig
   freetype2
