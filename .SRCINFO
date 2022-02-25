@@ -1,15 +1,19 @@
 pkgbase = papirus-folders-gui
 	pkgdesc = A graphical user interface for papirus-folders
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ItzSelenux/papirus-folders-gui
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	depends = papirus-folders
-	depends = polkit
-	depends = qt5-base
+	depends = qt6-base
+	optdepends = lxqt-policykit: option for polkit authentication agent
+	optdepends = lxsession-gtk3: option for polkit authentication agent
+	optdepends = mate-polkit: option for polkit authentication agent
+	optdepends = polkit-gnome: option for polkit authentication agent
+	optdepends = polkit-kde-agent: option for polkit authentication agent
 	source = papirus-folders-gui-1.5.tar.gz::https://github.com/ItzSelenux/papirus-folders-gui/archive/refs/tags/1.5.tar.gz
 	sha256sums = c24246fc1f8af443e9f0e8f3e8138af4ac39caaa62ed05f22438039592ed0c0a
 
