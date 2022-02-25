@@ -1,3 +1,7 @@
+post_install() {
+  setcap cap_net_bind_service=+ep /usr/bin/sftpgo
+}
+
 pre_remove() {
   systemctl stop sftpgo.service
   cat <<EOF
