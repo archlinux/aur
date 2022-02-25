@@ -1,0 +1,90 @@
+diff -Nrup deepin-control-center-git.orig/src/frame/CMakeLists.txt deepin-control-center-git/src/frame/CMakeLists.txt
+--- deepin-control-center-git.orig/src/frame/CMakeLists.txt	2022-02-24 14:28:52.000000000 +0800
++++ deepin-control-center-git/src/frame/CMakeLists.txt	2022-02-24 14:30:05.000000000 +0800
+@@ -257,35 +257,6 @@ set(WIDGETS_FILES
+ set(MODULE_FILES
+ )
+ 
+-# load authentatication
+-set(AUTHENTICATION_FILES
+-    modules/authentication/fingermodel.cpp
+-    modules/authentication/fingerworker.cpp
+-    modules/authentication/charamangermodel.cpp
+-    modules/authentication/charamangerworker.cpp
+-    modules/authentication/widgets/fingeritem.cpp
+-    modules/authentication/widgets/disclaimersitem.cpp
+-    modules/authentication/widgets/disclaimersdialog.cpp
+-    modules/authentication/widgets/fingerwidget.cpp
+-    modules/authentication/widgets/faceinfowidget.cpp
+-    window/modules/authentication/loginoptionsmodule.cpp
+-    window/modules/authentication/loginoptionswidget.cpp
+-    window/modules/authentication/fingerwidget.cpp
+-    window/modules/authentication/fingerdetailwidget.cpp
+-    window/modules/authentication/addfingedialog.cpp
+-    window/modules/authentication/faceiddetailwidget.cpp
+-    window/modules/authentication/facewidget.cpp
+-    window/modules/authentication/authenticationinfoitem.cpp
+-    window/modules/authentication/addfaceinfodialog.cpp
+-    window/modules/authentication/faceinfodialog.cpp
+-    # IRIS
+-    window/modules/authentication/irisdetailwidget.cpp
+-    window/modules/authentication/iriswidget.cpp
+-    window/modules/authentication/addirisinfodialog.cpp
+-    modules/authentication/widgets/irisinfowidget.cpp
+-    window/modules/authentication/fingedisclaimer.cpp
+-)
+-
+ # load accounts
+ set(ACCOUNTS_FILES
+                 modules/accounts/creationresult.cpp
+@@ -514,7 +485,6 @@ set(SRCS
+         ${FRAME_FILES}
+         ${WINDOW_FILES}
+         ${INTERFACES_FILES}
+-        ${AUTHENTICATION_FILES}
+         ${ACCOUNTS_FILES}
+         ${BLUETOOTH_FILES}
+         ${DATETIME_FILES}
+@@ -541,7 +511,6 @@ set(QRC
+         modules/datetime/timezone_dialog.qrc
+         modules/power/power.qrc
+         modules/systeminfo/systeminfo.qrc
+-        modules/authentication/authentication.qrc
+         modules/accounts/accounts.qrc
+         modules/bluetooth/bluetooth.qrc
+         modules/defapp/defapp.qrc
+@@ -597,7 +566,6 @@ file(GLOB DCONFIG_FILES "../../configs/d
+ dconfig_meta_files(APPID dde-control-center BASE ../../configs FILES ${DCONFIG_FILES})
+ 
+ set(DEEPIN_PW_CHECK libdeepin_pw_check.so)
+-set(SHMN_VIDEO libdareader.so)
+ 
+ function(add_build_macro macro)
+     string(TOUPPER ${macro} macro)
+diff -Nrup deepin-control-center-git.orig/src/frame/window/mainwindow.cpp deepin-control-center-git/src/frame/window/mainwindow.cpp
+--- deepin-control-center-git.orig/src/frame/window/mainwindow.cpp	2022-02-24 14:28:51.000000000 +0800
++++ deepin-control-center-git/src/frame/window/mainwindow.cpp	2022-02-24 14:30:05.000000000 +0800
+@@ -18,7 +18,6 @@
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  */
+-#include "modules/authentication/loginoptionsmodule.h"
+ #include "modules/accounts/accountsmodule.h"
+ #include "modules/bluetooth/bluetoothmodule.h"
+ #include "modules/commoninfo/commoninfomodule.h"
+@@ -312,7 +311,6 @@ void MainWindow::initAllModule(const QSt
+         return;
+ 
+     m_bInit = true;
+-    using namespace authentication;
+     using namespace sync;
+     using namespace datetime;
+     using namespace defapp;
+@@ -332,7 +330,6 @@ void MainWindow::initAllModule(const QSt
+     using namespace notification;
+ 
+     m_modules = {
+-        { new LoginOptionsModule(this), tr("Biometric Authentication")},
+         { new AccountsModule(this), tr("Accounts")},
+         //~ contents_path /cloudsync/Cloud Sync
+         { new SyncModule(this), DSysInfo::isCommunityEdition() ? "Deepin ID" : "Union ID"},
