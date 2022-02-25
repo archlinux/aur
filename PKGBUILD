@@ -18,5 +18,5 @@ pkgver() {
 package() {
   cd ${pkgname%-git}
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install ${pkgname%-git}.hpp "$pkgdir/usr/include"
+  install -Dm644 ${pkgname%-git}.hpp "$pkgdir/usr/include/${pkgname%-git}.hpp"
 }
