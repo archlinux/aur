@@ -1,39 +1,24 @@
-# Maintainer: Andrew Chen <xor.tux@gmail.com>
-
-pkgbase=python-cstruct
-pkgname=('python-cstruct' 'python2-cstruct')
-pkgver=1.8
+# Contributor: Andrew Chen <xor.tux@gmail.com>
+pkgname=python-cstruct
+pkgver=2.1
 pkgrel=1
-pkgdesc="C-style structs for Python"
-url="https://github.com/andreax79/python-cstruct"
-arch=('any')
-license=('MIT')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/c/cstruct/cstruct-$pkgver.tar.gz")
-sha256sums=('e11684fd5e8b9a44834f96dc88293cd7cf5cb393bddee4a9f83ef3f9824bb7af')
-
-prepare() {
-  cp -r cstruct-${pkgver} python2-cstruct-${pkgver}
-}
+pkgdesc="Convert C struct definitions into Python classes with methods for serializing/deserializing"
+url="https://github.com/andreax79/${pkgname}"
+arch=(any)
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c56c87d291c4aa2afcfdbcbbc19c03ec634b6fb0dcde9d516ef2a9079be2fea52a053c47cd20dfc0fe6537ac90939364da659d8eb4763069a9990681207d432c')
 
 build() {
-  cd ${srcdir}/cstruct-${pkgver}
+  cd ${pkgname}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
-
-  cd ${srcdir}/python2-cstruct-${pkgver}
-  python2 setup.py build
 }
 
-package_python-cstruct() {
-  depends=('python')
-
-  cd cstruct-${pkgver}
-  python setup.py install -O1 --root="${pkgdir}"
-}
-
-package_python2-cstruct() {
-  depends=('python2')
-
-  cd python2-cstruct-${pkgver}
-  python2 setup.py install -O1 --root="${pkgdir}"
+package() {
+  cd ${pkgname}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
