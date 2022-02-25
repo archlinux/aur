@@ -10,7 +10,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=10
+pkgrel=11
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -58,6 +58,8 @@ prepare() {
     git -C $srcdir/ros2/src/eclipse-cyclonedds/cyclonedds checkout 0.8.1
     ## yaml_cpp_vendor: fix handling of CMAKE_C[XX]_FLAGS lists
     git -C $srcdir/ros2/src/ros2/yaml_cpp_vendor checkout a00f059a79e98bd3899e8fe4261ea61da807b6ef
+    ## demos/pendulum_control
+    git -C $srcdir/ros2/src/ros2/demos cherry-pick 754612348e408675f526174c5f03786e08ad8a70
     ## ros1_bridge
     git -C $srcdir/ros2/src/ros2/ros1_bridge revert 81b7610568286ec7b390c64cf6207b362d0a6550 --no-edit
     ## rcl_logging
