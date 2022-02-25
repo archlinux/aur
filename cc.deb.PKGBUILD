@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=10
+pkgrel=11
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 _tag_ver="v${_pkgver}"
@@ -122,7 +122,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-
 chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
-install -Dm644 ${srcdir}/dmsghttp-config.json ${pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
