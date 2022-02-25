@@ -1,6 +1,6 @@
 # Maintainer: Peter Flynn <peter@flynn.network>
 pkgname=foundry-bin
-pkgver=0.1.0.r20220211
+pkgver=0.1.0.r20220225
 pkgrel=1
 pkgdesc="A blazing fast, portable and modular toolkit for Ethereum application development written in Rust"
 arch=('aarch64' 'x86_64')
