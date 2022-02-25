@@ -1,36 +1,38 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: ml <ml@visu.li>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: Roman Lisagor <rlisagor at gmail dot com>
-
+_pkgname=calico
 pkgname=calicoctl
-pkgver=3.20.1
+pkgver=3.22.0
 pkgrel=1
-pkgdesc="Calico CLI tool"
+pkgdesc='Calico CLI tool'
 arch=('x86_64')
-url="https://github.com/projectcalico/calicoctl"
-license=("Apache")
+url='https://github.com/projectcalico/calico'
+license=('Apache')
 depends=('glibc')
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/projectcalico/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('486fde1fb95f7f0ed692cb5c42bfcf5a7993ff1b02372786fceaec8b65b15201')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  mkdir -p build/
-}
+source=("$url/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
+sha256sums=('204c12a6394784861b38ad1951ef720f24dff53b5b8c56ced7b701257e4bba2b')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export GOPATH="${srcdir}"/go
-  export PATH=$PATH:$GOPATH/bin
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go build -v -o build ./...
+  _x=(
+    commands.GIT_REVISION="$(bsdcat "$_pkgname-$pkgver.tar.gz" | git get-tar-commit-id)"
+    commands.VERSION="$pkgver"
+    commands/common.VERSION="$pkgver"
+  )
+  cd "$_pkgname-$pkgver"
+  export CGO_ENABLED=1
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  mkdir -p build
+  go build -o build/ -ldflags="-linkmode=external ${_x[*]/#/-X=github.com/projectcalico/calico/calicoctl/calicoctl/}" \
+    ./calicoctl/calicoctl
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm755 build/calicoctl "${pkgdir}/usr/bin/calicoctl"
+  cd "$_pkgname-$pkgver"
+  install -Dm755 build/calicoctl "$pkgdir"/usr/bin/calicoctl
 }
