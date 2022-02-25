@@ -1,0 +1,31 @@
+pkgbase = r-dbitest
+	pkgdesc = Testing DBI Backends
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=DBItest
+	arch = any
+	license = LGPL
+	depends = r-blob
+	depends = r-callr
+	depends = r-dbi
+	depends = r-desc
+	depends = r-hms
+	depends = r-lubridate
+	depends = r-palmerpenguins
+	depends = r-r6
+	depends = r-rlang
+	depends = r-testthat
+	depends = r-withr
+	depends = r-vctrs
+	optdepends = r-clipr
+	optdepends = r-dblog
+	optdepends = r-debugme
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-rmarkdown
+	optdepends = r-rsqlite
+	source = https://cran.r-project.org/src/contrib/DBItest_1.7.2.tar.gz
+	sha256sums = b0326452263b7b01e0672ca04d8d1311880ef864d5e69a97062f086ab045a57f
+
+pkgname = r-dbitest
