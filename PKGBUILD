@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=thorko-ocserv
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/openconnect/ocserv"
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('autogen' 'libpcl' 'http-parser' 'libnl' 'libsystemd' 'protobuf-c' 'talloc' 'libseccomp' 'freeradius-client' 'libev' 'oath-toolkit' 'libwrap' 'geoip')
 makedepends=('freeradius' 'gperf' 'tcp-wrappers')
 backup=('etc/ocserv.config' 'etc/ocserv-passwd')
-source=("https://gitlab.com/openconnect/ocserv/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://gitlab.com/openconnect/ocserv/-/archive/$pkgver/ocserv-$pkgver.tar.gz")
 sha256sums=('9000ff162ae3259726fc90737548ecc1ecaad1479932c53988848d7cec89a449')
 
 prepare() {
