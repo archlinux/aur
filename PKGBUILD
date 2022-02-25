@@ -1,13 +1,13 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-session-shell-git
-pkgver=5.4.13.r94.gd5476f7
+pkgver=5.5.9.r123.gd52f772
 pkgrel=1
 pkgdesc='Deepin desktop-environment - session-shell module'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dde-session-shell"
 license=('GPL3')
-depends=('deepin-daemon-git' 'deepin-wallpapers' 'gsettings-qt' 'liblightdm-qt5' 'startdde-git')
+depends=('deepin-daemon-git' 'deepin-wallpapers-git' 'gsettings-qt' 'liblightdm-qt5' 'startdde-git')
 makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'gtest' 'gmock')
 conflicts=('deepin-session-ui<5' 'deepin-session-shell')
 provides=('lightdm-deepin-greeter' 'deepin-session-shell')
@@ -22,7 +22,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed -i '/darrowrectangle/d' CMakeLists.txt src/widgets/widgets.pri
   sed -i 's/5\.5//g' CMakeLists.txt tests/lightdm-deepin-greeter/CMakeLists.txt tests/dde-lock/CMakeLists.txt
 }
 
