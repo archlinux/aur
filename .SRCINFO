@@ -44,3 +44,4 @@ pkgname = nvidia-470xx-dkms
 	depends = nvidia-470xx-utils=470.103.01
 	depends = libglvnd
 	provides = NVIDIA-MODULE
+	conflicts = nvidia-dkms

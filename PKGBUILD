@@ -79,6 +79,7 @@ package_nvidia-470xx-dkms() {
     pkgdesc="NVIDIA drivers - module sources"
     depends=('dkms' "nvidia-470xx-utils=$pkgver" 'libglvnd')
     provides=('NVIDIA-MODULE')
+    conflicts=('nvidia-dkms')
 
     cd ${_pkg}
 
