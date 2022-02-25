@@ -1,15 +1,15 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-dock-git
-pkgver=5.4.10.r46.g8ce063e3a
+pkgver=5.5.9.r54.g49d37a6c0
 pkgrel=1
 pkgdesc='Deepin desktop-environment - dock module'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dde-dock"
 license=('GPL3')
 depends=('qt5-svg' 'deepin-daemon-git' 'deepin-qt5integration-git'
          'deepin-qt-dbus-factory-git' 'deepin-network-utils-git' 'libdbusmenu-qt5')
-makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'gtest' 'gmock' 'deepin-qt5integration-git' 'deepin-qt-dbus-factory' 'deepin-network-utils-git')
+makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'gtest' 'gmock' 'deepin-qt5integration-git' 'deepin-qt-dbus-factory' 'deepin-network-utils-git' 'libdbusmenu-qt5')
 conflicts=('deepin-dock')
 provides=('deepin-dock')
 groups=('deepin-git')
