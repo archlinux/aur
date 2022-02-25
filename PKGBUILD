@@ -1,3 +1,4 @@
+# Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=dosbox-ece
 _pkgver=4471
