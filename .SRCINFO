@@ -1,13 +1,13 @@
 pkgbase = python-clvm
 	pkgdesc = Chia Lisp Virtual Machine
 	pkgver = 0.9.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Chia-Network/clvm
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-blspy
