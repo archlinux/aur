@@ -1,32 +1,31 @@
-# Maintainer: Andrew Chen <andrew.chuanye.chen@gmail.com>
-
-pkgname=jefferson-git
-_gitname=jefferson
-pkgver=0.2.r9.g78da2e6
+# Contributor: Andrew Chen <andrew.chuanye.chen@gmail.com>
+_base=jefferson
+pkgname=${_base}-git
+pkgver=0.3.r4.ge06a617
 pkgrel=1
 pkgdesc="JFFS2 filesystem extraction tool"
-url="https://github.com/sviehb/jefferson"
-arch=('any')
-license=('MIT')
-depends=('python2' 'python2-cstruct' 'python2-pyliblzma')
-makedepends=('git')
-provides=('jefferson')
-conflicts=('jefferson')
-source=(git+https://github.com/sviehb/${_gitname}.git)
-md5sums=('SKIP')
+url="https://github.com/sviehb/${_base}"
+arch=(any)
+license=(MIT)
+depends=(python-cstruct)
+makedepends=(python-setuptools git)
+provides=(${_base})
+conflicts=(${_base})
+source=(git+${url}.git)
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  printf "%s.r%s.g%s" "$(python2 setup.py --version)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${_base}
+  git describe --long --tags | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_gitname
-  python2 setup.py build
+  cd ${_base}
+  python setup.py build
 }
 
 package() {
-  cd $_gitname
-  python2 setup.py install -O1 --root="${pkgdir}"
+  cd ${_base}
+  python setup.py install --root="${pkgdir}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
