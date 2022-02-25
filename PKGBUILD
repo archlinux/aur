@@ -1,6 +1,6 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 _base=PySingular
-pkgname=python-${_base,,}
+pkgname=${_base,,}
 pkgver=0.9.7
 pkgrel=1
 pkgdesc="A Python interface to Singular"
