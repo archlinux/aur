@@ -1,0 +1,61 @@
+--- test/policykitlistener.cpp	2022-02-23 21:39:00.000000000 +0800
++++ dde-polkit-agent/policykitlistener.cpp	2022-02-23 21:36:43.000000000 +0800
+@@ -203,7 +203,7 @@ void PolicyKitListener::completed(bool g
+     m_showInfoSuccess = false;
+ 
+     if (m_exAuth) {
+-        m_session.data()->authCtrl(AUTH_CLOSE, -1);
++        //m_session.data()->authCtrl(AUTH_CLOSE, -1);
+     }
+     finishObtainPrivilege();
+ }
+@@ -243,7 +243,7 @@ void PolicyKitListener::exAuthInfo(bool
+     m_isMfa = isMfa;
+ 
+     if (!isMfa) {
+-        m_session.data()->authCtrl(AUTH_START, -1);
++        //m_session.data()->authCtrl(AUTH_START, -1);
+     }
+ }
+ 
+@@ -271,7 +271,7 @@ void PolicyKitListener::createSessionFor
+     }
+     // We will create new session only when some user is selected
+     if (m_selectedUser.isValid()) {
+-        m_session = new Session(m_selectedUser, m_cookie, m_result, &m_details);
++        m_session = new Session(m_selectedUser, m_cookie, m_result);
+ 
+         connect(m_session.data(), &Session::request, this,
+                 &PolicyKitListener::request);
+@@ -281,10 +281,10 @@ void PolicyKitListener::createSessionFor
+                 &PolicyKitListener::showError);
+         connect(m_session.data(), &Session::showInfo, this,
+                 &PolicyKitListener::showInfo);
+-        connect(m_session.data(), &Session::exAuthStatus, this,
+-                &PolicyKitListener::exAuthStatus);
+-        connect(m_session.data(), &Session::exAuthInfo, this,
+-                &PolicyKitListener::exAuthInfo);
++//        connect(m_session.data(), &Session::exAuthStatus, this,
++//                &PolicyKitListener::exAuthStatus);
++//        connect(m_session.data(), &Session::exAuthInfo, this,
++//                &PolicyKitListener::exAuthInfo);
+ 
+         m_session->initiate();
+     }
+@@ -294,14 +294,14 @@ void PolicyKitListener::fillResult()
+ {
+     if (!m_session.isNull()) {
+         if (m_wasCancelled) {
+-            m_session.data()->result()->setCancel("aciton cancel");
++            m_session.data()->result()->setError("aciton cancel");
+         } else if (!m_gainedAuthorization) {
+             m_session.data()->result()->setError("password error");
+         }
+         m_session.data()->result()->setCompleted();
+     } else {
+         if (m_wasCancelled) {
+-            m_result->setCancel("action cancel");
++            m_result->setError("action cancel");
+         } else if (!m_gainedAuthorization) {
+             m_result->setError("password error");
+         }

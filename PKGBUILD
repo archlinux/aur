@@ -1,19 +1,21 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-git
-pkgver=5.4.3.r3.g6140269
+pkgver=5.5.3.r10.g0def9c0
 pkgrel=1
 pkgdesc='Deepin Polkit Agent'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dde-polkit-agent"
 license=('GPL3')
 depends=('deepin-qt-dbus-factory-git' 'startdde-git' 'polkit-qt5' 'dtkwidget-git')
-makedepends=('git' 'qt5-tools' 'dtkwidget-git')
+makedepends=('git' 'polkit-qt5' 'dtkcommon-git' 'dtkwidget-git' 'cmake' 'ninja')
 conflicts=('deepin-polkit-agent')
 provides=('deepin-polkit-agent')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-polkit-agent")
-sha512sums=('SKIP')
+source=("$pkgname::git://github.com/linuxdeepin/dde-polkit-agent"
+        "fix.patch")
+sha512sums=('SKIP'
+            'b02235cece90a01942cd0898cfb85c7eb8fa6f980c4e1d83cfa115baba1599ca878788b5d89338444afe8267c30b11f9279ebda98d3bbc3dd4f3fe03cd1f0572')
 
 pkgver() {
     cd $pkgname
@@ -22,18 +24,16 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  # https://github.com/linuxdeepin/developer-center/issues/1721
-  sed -i 's/bool is_deepin = true/bool is_deepin = false/' policykitlistener.cpp
-  sed -i '/setCancel/d' policykitlistener.cpp
+  patch -p1 -i ../fix.patch
 }
 
 build() {
   cd $pkgname
-  qmake-qt5 PREFIX=/usr
-  make -j$(nproc)
+  cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=/usr
+  ninja
 }
 
 package() {
   cd $pkgname
-  make INSTALL_ROOT="$pkgdir" install
+  DESTDIR="$pkgdir" ninja install
 }
