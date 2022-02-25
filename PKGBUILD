@@ -1,7 +1,7 @@
 # Maintainer: NeoTheFox <aur at repraptor.33mail.com>
 
 pkgname=git-credential-keepassxc
-pkgver=0.8.2
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="git-credential-keepassxc is a Git credential helper that allows Git (and shell scripts) to get/store logins from/to KeePassXC"
 url="https://github.com/Frederick888/git-credential-keepassxc"
@@ -9,7 +9,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('GPL3')
 source=("https://github.com/Frederick888/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5234103c89ffc8bdba36b2988362ebceac656f8f8d796bcc44af0e3ffaa144c')
+sha256sums=('6a763cb54c9bad9f38569884636887248f2b5dd5c71c2e7283dd9d1a9604a1fb')
 
 build() {
   cd "$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = git-credential-keepassxc
 	pkgdesc = git-credential-keepassxc is a Git credential helper that allows Git (and shell scripts) to get/store logins from/to KeePassXC
-	pkgver = 0.8.2
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/Frederick888/git-credential-keepassxc
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
-	source = https://github.com/Frederick888/git-credential-keepassxc/archive/refs/tags/v0.8.2.tar.gz
-	sha256sums = d5234103c89ffc8bdba36b2988362ebceac656f8f8d796bcc44af0e3ffaa144c
+	source = https://github.com/Frederick888/git-credential-keepassxc/archive/refs/tags/v0.9.1.tar.gz
+	sha256sums = 6a763cb54c9bad9f38569884636887248f2b5dd5c71c2e7283dd9d1a9604a1fb
 
 pkgname = git-credential-keepassxc
