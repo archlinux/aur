@@ -10,7 +10,7 @@ pkgbase = patternutils
 	depends = python-jinja
 	depends = python-pygments
 	depends = python-feedparser
-	source = patternutils-0.0.12.zip::https://projects.metalgamer.eu/patternutils/archive/5b70a13b82ace3a3f0a101ce480d46ca56dfd7b0.zip?subrepos=false
-	sha512sums = cdab793f7a063564ed98f3e0b63244167bc1f39a6c35dbb8361d8d701b17e1d5e4a3ca1846f65a4213264887e1d83bb12a58d6b2358b4b7a804c42617ad551e5
+	source = https://download.metalgamer.eu/patternutils/patternutils-0.0.12.tar.gz
+	sha512sums = 2d39fce29eda388436f2c11da1df8016436f0441e1c77c53aa1b7fa863e7862073629ee4dfb7d082abea0b70760c2535554fec0a0bfc6cd8674f688c6f37c771
 
 pkgname = patternutils
