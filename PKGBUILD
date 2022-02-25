@@ -2,9 +2,9 @@
 
 _pluginname=dynamic-delay
 pkgname=obs-$_pluginname
-pkgver=0.1.2
+pkgver=0.1.3
 _obsver=27.2.0
-pkgrel=4
+pkgrel=1
 pkgdesc="Filter for dynamic delaying a video source"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/dynamic-delay.1035/"
@@ -12,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=891d415726aa3c332a69b310bc7f1abc626f651f"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=33456a177f830fe63f3bc618ed606465920d072c"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
