@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gftools
-pkgver=0.8.8
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
 url="https://github.com/googlefonts/$pkgname"
@@ -34,22 +34,24 @@ depends=(absl-py
          python
          "${_py_deps[@]/#/python-}"
          statmake)
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer}
+             python-setuptools-scm
+             python-wheel)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('36127888db9edba899d72833f001729f213dff7c3aead5da03cf16586eb37544')
+sha256sums=('39f16ebdc0945f794d53ab755ea229bb1eff58f62ee92445c736ed0c3ceea0d6')
 
 prepare() {
 	cd "$_archive"
-	sed -i -e "/setup_requires/s/>=.*'/'/" setup.py
+    sed -i -e "/setup_requires/s/>=.*'/'/" setup.py
 }
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
