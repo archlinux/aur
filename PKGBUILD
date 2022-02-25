@@ -13,8 +13,7 @@ depends=('glib2' 'glibc' 'gtk3' lib{granite,wingpanel}.so 'polkit' 'throttlectl'
 makedepends=('git' 'meson' 'vala' 'wingpanel' 'polkit')
 provides=("${pkgname%-git}" "wingpanel-indicator-cpufreq")
 conflicts=("${pkgname%-git}" "wingpanel-indicator-cpufreq")
-source=("${pkgname%-git}"::"git+file:///home/zombie/Sources/git/wingpanel-indicator-powersave")
-#source=("git+https://github.com/quequotion/${pkgname%-git}.git")
+source=("git+https://github.com/quequotion/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
