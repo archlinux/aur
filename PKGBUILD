@@ -1,15 +1,15 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=5.13.12.r44.g69a670c7
+pkgver=6.0.0.r85.gf8733f93
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dde-daemon"
 license=('GPL3')
 depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api-git' 'gvfs' 'iso-codes' 'lsb-release'
          'mobile-broadband-provider-info' 'deepin-polkit-agent-git'
-         'deepin-polkit-agent-ext-gnomekeyring' 'udisks2' 'upower'
+         'deepin-polkit-agent-ext-gnomekeyring-git' 'udisks2' 'upower'
          'libxkbfile' 'accountsservice' 'deepin-desktop-base-git' 'bamf' 'pulseaudio'
          'org.freedesktop.secrets' 'noto-fonts' 'imwheel')
 makedepends=('golang-github-linuxdeepin-go-dbus-factory-git' 'golang-deepin-gir-git' 'golang-deepin-lib-git'
@@ -25,8 +25,10 @@ groups=('deepin-git')
 install="$pkgname.install"
 source=("$pkgname::git://github.com/linuxdeepin/dde-daemon"
         dde-daemon.patch
+        remove-tc.patch
         'deepin-daemon.sysusers')
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             '808c02d4fec4cbbb01119bbb10499090199e738b7dd72c28a57dde098eef6132723f3434c151f79e21d9f788c7f7bae8046573ac93ba917afe0e803fbffa6d5a')
 
@@ -37,8 +39,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  mkdir build
+  patch -p1 -i ../remove-tc.patch
   patch -p1 -i ../dde-daemon.patch
+  rm -rf system/uadp
+  rm -rf session/uadpagent
 
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
@@ -53,6 +57,7 @@ prepare() {
   go get -v github.com/godbus/dbus/prop
   go get -v github.com/Lofanmi/pinyin-golang/pinyin
   go get -v gopkg.in/yaml.v3
+  go get -v github.com/youpy/go-wav
   sed -i 's#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#' accounts/user.go
 }
 
