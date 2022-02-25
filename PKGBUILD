@@ -2,9 +2,9 @@
 
 pkgname=disomaster-git
 pkgver=5.0.7.r2.g157dd8f
-pkgrel=11
+pkgrel=1
 pkgdesc='Library to manipulate DISC burning.'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/disomaster"
 license=('GPL3')
 depends=('libisoburn')
