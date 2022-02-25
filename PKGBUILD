@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-api-git
-pkgver=5.4.9.r17.gc2516df
-pkgrel=9
+pkgver=5.5.5.r19.g1253eb6
+pkgrel=1
 pkgdesc='Golang bindings for dde-daemon'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dde-api"
 license=('GPL3')
 # alsa-utils: alsactl used in sound-theme-player
@@ -35,11 +35,12 @@ prepare() {
   cd $srcdir
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
-  mkdir -p build/src/pkg.deepin.io/dde/api
-  cp -a $pkgname/* build/src/pkg.deepin.io/dde/api/
+  mkdir -p build/src/github.com/linuxdeepin/dde/api
+  cp -a $pkgname/* build/src/github.com/linuxdeepin/dde/api/
 
   # golang-deepin-lib's dependency, remove when go packaging resumes
   go get -v github.com/cryptix/wav
+  go get -v github.com/youpy/go-wav
   go get -v github.com/disintegration/imaging
   go get -v github.com/fogleman/gg
   go get -v github.com/mattn/go-sqlite3

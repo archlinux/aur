@@ -1,10 +1,10 @@
 pkgbase = deepin-api-git
 	pkgdesc = Golang bindings for dde-daemon
-	pkgver = 5.4.9.r17.gc2516df
-	pkgrel = 9
+	pkgver = 5.5.5.r19.g1253eb6
+	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-api
 	install = deepin-api.install
-	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = git
