@@ -3,9 +3,11 @@ echo "Fix Core"
 
 package_dir="$srcdir/wechat_devtools/code/package.nw"
 tmp_dir=$(mktemp -d)
+unpack_script="$srcdir/wxvpkg_unpack"
+pack_script="$srcdir/wxvpkg_pack"
 
 # unpack 文件 到 路径
-node "$srcdir/wxvpkg_unpack" "$package_dir/core.wxvpkg" "$tmp_dir/core.wxvpkg"
+node "$unpack_script" "$package_dir/core.wxvpkg" "$tmp_dir/core.wxvpkg"
 
 #    ____  _____ ____  _        _    ____ _____    ____ ___  ____  _____ 
 #   |  _ \| ____|  _ \| |      / \  / ___| ____|  / ___/ _ \|  _ \| ____|
@@ -57,5 +59,5 @@ fi
 
 # pack 路径 到 文件
 echo "pack"
-node "$srcdir/wxvpkg_pack" "$tmp_dir/core.wxvpkg" "$package_dir/core.wxvpkg"
-rm -rf "$tmp_dir"
+node "$pack_script" "$tmp_dir/core.wxvpkg" "$package_dir/core.wxvpkg"
+rm -rf "$tmp_dir/core.wxvpkg"
