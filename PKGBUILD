@@ -2,8 +2,8 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-indicator-powersave-git
-pkgver=r34.edf8840
-pkgrel=2
+pkgver=r40.846432d
+pkgrel=1
 pkgdesc='User-discretion power management utility for Wingpanel'
 arch=('x86_64')
 url='https://github.com/quequotion/wingpanel-indicator-powersave'
