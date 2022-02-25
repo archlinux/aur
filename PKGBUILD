@@ -13,7 +13,7 @@ source=(
     "https://github.com/firebase/firebase-tools/releases/download/v${pkgver}/${pkgname/-bin/}-linux"
     "https://github.com/firebase/firebase-tools/raw/v${pkgver}/LICENSE"
 )
-md5sums=('e041668260a869c4df50aef194270c09'
+md5sums=('951950700cb3103ed0e853e41656b200'
          '6ea8f4d1de9a164d33ffe95483a58af4')
 
 package() {
