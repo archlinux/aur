@@ -4,9 +4,9 @@
 # Package Information
 _crate="cargo-duplicates"
 pkgname="$_crate"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='Cargo subcommand for displaying when different versions of a same dependency are pulled in'
+pkgdesc='Cargo subcommand for displaying when different versions of a same dependency ...'
 license=('MIT')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs' 'curl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('c7374faebdb8edef5688c10572adda76b2d1d40e3de29ac390fce9660552a656675ad5ea326c36d298351194fa29862d8cb68d59c82d9d30fa74a1fab59c0ea8')
+sha512sums=('e23a4d22d216908d831e42ae4b9854e9ae0d5db47fb2f11ff419f2182478ed901f74a31914dc10fda949d0c5597315da0d94ab0938fd5b2e8375946d4160d3ca')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
