@@ -4,25 +4,26 @@
 pkgname=tlf
 _author=Tlf
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Ham Radio networked logging and contest program - CLI"
 arch=('i686' 'x86_64')
 url="https://tlf.github.io/"
 license=('GPL')
-depends=('hamlib' 'xmlrpc-c' 'hamradio-menus' 'xfce4-terminal')
-makedepends=('autoconf' 'automake' 'pkg-config' 'glib2')
+depends=('xfce4-terminal' 'hamlib=3.3' 'xmlrpc-c' 'hamradio-menus')
+makedepends=('autoconf' 'automake' 'pkg-config')
 optdepends=('cwdaemon: transmitting cw'
 	    'winkeydaemon: transmitting cw'
 	    'cty: country files'
 	    'joe: editing qsos'
 	    'xplanet: mapped qso display'
+	    'sox: audio signal handling'
 	    'fldigi: digital modes/modem & gui/display')
 provides=('tlf')
 conflicts=('tlf-git')
 source=("https://github.com/$_author/$pkgname/archive/$pkgname-$pkgver.tar.gz"
-        $pkgname.desktop
+	$pkgname.desktop
 	$pkgname.png
-        $pkgname.1)
+	$pkgname.1)
 
 build() {
 	cd $srcdir/$pkgname-$pkgname-$pkgver
