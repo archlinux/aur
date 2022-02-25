@@ -1,13 +1,13 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
-pkgver=5.7.10.r15.g1e30e3e
-pkgrel=11
+pkgver=6.0.0.r7.g0e8fa1d
+pkgrel=1
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
 url="https://github.com/linuxdeepin/go-lib"
 license=('GPL3')
-depends=('dbus' 'libpulse' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'mobile-broadband-provider-info' 'libx11'
+depends=('dbus' 'libpulse' 'gdk-pixbuf2' 'gdk-pixbuf-xlib' 'mobile-broadband-provider-info' 'libx11' 'libcanberra'
          'golang-gopkg-alecthomas-kingpin.v2' 'golang-deepin-gir-git'
          'golang-github-linuxdeepin-go-x11-client-git' 'golang-golang-x-net' 'golang-golang-x-image')
          # 'golang-github-cryptix-wav' not packaged yet, paused until our go packaging standards formed
@@ -27,20 +27,18 @@ prepare() {
   export GO111MODULE=off
   cd $pkgname
   sed -i 's/int connect_timeout;/extern int connect_timeout;/' pulse/dde-pulse.h
-  go get -v github.com/fsnotify/fsnotify
-  go get -v github.com/godbus/dbus
-  go get -v github.com/godbus/dbus/introspect
-  go get -v github.com/godbus/dbus/prop
 }
 
 check() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
-  mkdir -p "$srcdir"/build/src/pkg.deepin.io
-  cp -a "$srcdir/$pkgname" "$srcdir"/build/src/pkg.deepin.io/lib
-  cd "$srcdir"/build/src/pkg.deepin.io/lib
+  mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
+  cp -a "$srcdir/$pkgname" "$srcdir"/build/src/github.com/linuxdeepin/go-lib
+  cd "$srcdir"/build/src/github.com/linuxdeepin/go-lib
   # TODO: make packages for them
-  go get github.com/cryptix/wav github.com/smartystreets/goconvey/convey github.com/mozillazg/go-pinyin gopkg.in/yaml.v3
+  go get -v github.com/smartystreets/goconvey/convey
+  go get -v github.com/mozillazg/go-pinyin
+  go get -v gopkg.in/yaml.v3
   # TODO: figure out why pulse tests hang
   # passwd: test needs to access /etc/passwd
   # group & timer & log & dbus: build failed
@@ -49,12 +47,13 @@ check() {
   go get -v github.com/godbus/dbus
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
+  go get -v github.com/youpy/go-wav
   go test -v $(go list ./... | grep -v -e lib/pulse -e lib/users/passwd -e lib/users/group -e lib/timer -e lib/log -e lib/dbus -e lib/shell)
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/gocode/src/pkg.deepin.io
-  cp -a "$srcdir/$pkgname" "$pkgdir"/usr/share/gocode/src/pkg.deepin.io/lib
+  mkdir -p "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin
+  cp -a "$srcdir/$pkgname" "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-lib
 
-  rm -r "$pkgdir"/usr/share/gocode/src/pkg.deepin.io/lib/debian
+  rm -r "$pkgdir"/usr/share/gocode/src/github.com/linuxdeepin/go-lib/debian
 }

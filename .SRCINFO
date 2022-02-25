@@ -1,7 +1,7 @@
 pkgbase = golang-deepin-lib-git
 	pkgdesc = A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.
-	pkgver = 5.7.10.r15.g1e30e3e
-	pkgrel = 11
+	pkgver = 6.0.0.r7.g0e8fa1d
+	pkgrel = 1
 	url = https://github.com/linuxdeepin/go-lib
 	arch = any
 	groups = deepin-git
@@ -16,6 +16,7 @@ pkgbase = golang-deepin-lib-git
 	depends = gdk-pixbuf-xlib
 	depends = mobile-broadband-provider-info
 	depends = libx11
+	depends = libcanberra
 	depends = golang-gopkg-alecthomas-kingpin.v2
 	depends = golang-deepin-gir-git
 	depends = golang-github-linuxdeepin-go-x11-client-git
