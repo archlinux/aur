@@ -8,7 +8,7 @@ pkgdesc='Fully featured and highly configurable SFTP server with optional HTTP, 
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/drakkan/${_pkgname}"
 license=('AGPLv3')
-depends=('glibc')
+depends=('libcap')
 makedepends=('gcc' 'git' 'go' 'gzip')
 optdepends=(
   "sqlite: to use SQLite provider"
