@@ -9,7 +9,7 @@ license=('APACHE')
 depends=(python-pyelftools libaio libutil-linux numactl python3)
 makedepends=(meson ninja cunit ncurses)
 source=("https://github.com/OpenMPDK/xNVMe/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('6b40c3c06a3e66547bad4c1dda1e4368')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
