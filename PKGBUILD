@@ -2,8 +2,8 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname="extrattor-git"
-pkgver=r194.fda0d4e
-pkgrel=2
+pkgver=1.4.r28.gb1828ef
+pkgrel=3
 pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("any")
 url="https://github.com/Mirko-r/extrattor"
@@ -19,10 +19,7 @@ _name='extrattor'
 
 pkgver() {
 	cd "$_name"
-	( set -o pipefail
-	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package(){
