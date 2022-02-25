@@ -1,7 +1,7 @@
 # Maintainer: Achilleas Pipinellis <axilleas archlinux.info>
 
 _npmname=svgexport
-_npmver=0.4.1
+_npmver=0.4.2
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
 pkgrel=1
@@ -37,4 +37,4 @@ package() {
   # Install license
   #install -Dm644 "${srcdir}"/package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha512sums=('a9142ec5903a813df8c4cb3ef66fc11959711714357ed2e2d4707581488e198ae9fc99bac21853644998721405cbec07286764c8b07ddf0e4c5e811c36d6dc36')
+sha512sums=('119aadeccbea3cce6023a963e21ca5956281a073e23925ab7fa47cc7783ed3323bd506fc39717314399281451a3c606864741992037cca67c344dea4e9903e08')
