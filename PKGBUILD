@@ -1,4 +1,5 @@
 # Maintainer : Achilleas Pipinellis <axilleas archlinux info>
+# Contributor: prg <prg-archlinux@xannode.com>
 # Contributor: William Giokas <1007380@gmail.com>
 # Contributor: Fernando M f[at]beford.net
 # Contributor: Ivo Benner <ivo.benner[at]web.de>
@@ -7,13 +8,13 @@
 
 pkgname=yum
 pkgver=3.4.3
-pkgrel=7
+pkgrel=8
 pkgdesc="a popular channel based package manager for RPM distros."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://yum.baseurl.org/"
 groups=('system')
-depends=('python2' 'intltool' 'urlgrabber' 'rpm-org' 'python2-pysqlite' 'yum-metadata-parser' 'python2-iniparse' 'python2-pyliblzma')
+depends=('python2' 'intltool' 'python2-urlgrabber' 'rpm-org' 'python2-pysqlite' 'yum-metadata-parser' 'python2-iniparse' 'python2-pyliblzma')
 source=("http://yum.baseurl.org/download/3.4/yum-${pkgver}.tar.gz"
         "yum.patch::https://src.fedoraproject.org/rpms/yum/raw/f21/f/yum-HEAD.patch"
         'remove-init-dir-makefile.patch')

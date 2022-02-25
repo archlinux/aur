@@ -1,7 +1,7 @@
 pkgbase = yum
 	pkgdesc = a popular channel based package manager for RPM distros.
 	pkgver = 3.4.3
-	pkgrel = 7
+	pkgrel = 8
 	url = http://yum.baseurl.org/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = yum
 	license = GPL
 	depends = python2
 	depends = intltool
-	depends = urlgrabber
+	depends = python2-urlgrabber
 	depends = rpm-org
 	depends = python2-pysqlite
 	depends = yum-metadata-parser
@@ -23,4 +23,3 @@ pkgbase = yum
 	md5sums = 14d68bd689ea76a44567bc2dd0e64cb1
 
 pkgname = yum
-
