@@ -1,0 +1,13 @@
+pkgbase = rezolus
+	pkgdesc = Systems performance telemetry
+	pkgver = 2.15.2
+	pkgrel = 1
+	url = https://github.com/twitter/rezolus
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = bcc
+	source = https://github.com/twitter/rezolus/archive/refs/tags/v2.15.2.tar.gz
+	sha256sums = 262163c46accf87cad27674abc7604d19aa1d6abdbafa8740e66a1a66d1b04c0
+
+pkgname = rezolus
