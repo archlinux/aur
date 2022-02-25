@@ -1,22 +1,15 @@
-pkgbase = pysingular
+pkgbase = python-pysingular
 	pkgdesc = A Python interface to Singular
-	pkgver = 0.9.5
+	pkgver = 0.9.7
 	pkgrel = 1
-	url = https://github.com/sebasguts/SingularPython
+	url = https://github.com/sebasguts/PySingular
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = singular
-	source = https://pypi.io/packages/source/P/PySingular/PySingular-0.9.5.tar.gz
-	md5sums = f2698b633915199fc27c9772e4688754
-
-pkgname = python2-pysingular
-	depends = python2
-	depends = singular
-
-pkgname = python-pysingular
 	depends = python
 	depends = singular
+	source = https://github.com/sebasguts/PySingular/archive/v0.9.7.tar.gz
+	sha512sums = 0c021427f1cbff4136fba1d3280701bd00af003362dd061acf7a607930b483ba36b2fbb085949af5e3219ad3710a5933a470165503e5e0733bcb169bc5536668
 
+pkgname = python-pysingular
