@@ -2,14 +2,14 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 
 pkgname=arcanist
-pkgver=2021.23
-_commit=4f70fcffa8a5393e210d64f237ffdaa256256d6a
+pkgver=2021.50
+_commit=3f08a11b10a377e15a3268c0cbc2ba4cf0c4c76a
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
 url="https://www.phacility.com/phabricator/"
 license=('Apache')
-depends=('libphutil' 'php' 'python' 'ca-certificates-utils')
+depends=('php' 'python' 'ca-certificates-utils')
 optdepends=('git: Git VCS support'
             'subversion: Subversion VCS support'
             'mercurial: Mercurial VCS support')
