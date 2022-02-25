@@ -1,7 +1,7 @@
 pkgbase = deepin-gettext-tools-git
 	pkgdesc = Deepin Gettext Tools
-	pkgver = 1.0.8.r4.g0282bcd
-	pkgrel = 18
+	pkgver = 1.0.8.r5.gc913e2d
+	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-gettext-tools
 	arch = any
 	groups = deepin-git

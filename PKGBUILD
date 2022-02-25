@@ -1,8 +1,8 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-gettext-tools-git
-pkgver=1.0.8.r4.g0282bcd
-pkgrel=18
+pkgver=1.0.8.r5.gc913e2d
+pkgrel=1
 pkgdesc='Deepin Gettext Tools'
 arch=('any')
 url="https://github.com/linuxdeepin/deepin-gettext-tools"
