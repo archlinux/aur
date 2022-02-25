@@ -3,7 +3,7 @@
 
 pkgname="extrattor-git"
 pkgver=1.4.r30.g8e1a178
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple bash wrapper to manage one or more archives from the terminal"
 arch=("any")
 url="https://github.com/Mirko-r/extrattor"
@@ -24,8 +24,11 @@ pkgver() {
 
 package(){
     echo -e "\nInstalling packages\n"
+    
     install -Dm0755 "${srcdir}/extrattor/extrattor/extrattor.sh" "${pkgdir}/usr/bin/extrattor"
     install -Dm0755 "${srcdir}/extrattor/extrattor/spinner" "${pkgdir}/usr/bin/spinner"
+    
     echo -e "\nInstalling man page\n"
+
     install -Dm0644 "${srcdir}/extrattor/extrattor/extrattor.1" "$pkgdir/usr/share/man/man1/extrattor.1"
 }
