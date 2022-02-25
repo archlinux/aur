@@ -1,7 +1,7 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=gst-plugins-openh264
 _pkgname=gst-plugins-bad
-pkgver=1.18.5
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="GStreamer open-source multimedia framework OpenH264 plugins"
 url="https://gstreamer.freedesktop.org/"
@@ -9,17 +9,11 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base-libs openh264)
 makedepends=(meson git)
-_commit=d3af58d5b31941caa26c3ded85d7a7b84a91f0cc  # tags/1.18.5^0
-source=("git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
+source=(${url}src/gst-plugins-bad/gst-plugins-bad-${pkgver}.tar.xz)
+sha256sums=('015b8d4d9a395ebf444d40876867a2034dd3304b3ad48bc3a0dd0c1ee71dc11d')
 
 build() {
-  arch-meson $_pkgname build \
+  arch-meson $_pkgname-$pkgver build \
     --auto-features=disabled \
     -D openh264=enabled \
     -D package-name="GStreamer Bad Plugins (Arch Linux)" \
