@@ -1,0 +1,13 @@
+pkgbase = ch552isptool-git
+	pkgdesc = CH552 Programming tool for Boot-loader
+	pkgver = r3.c6b2ce8
+	pkgrel = 1
+	url = https://github.com/platunus/ch552isptool.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = ch552isptool::git+https://github.com/platunus/ch552isptool.git
+	md5sums = SKIP
+
+pkgname = ch552isptool-git
