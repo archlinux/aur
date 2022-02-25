@@ -1,0 +1,16 @@
+pkgbase = terraspace-bin
+	pkgdesc = Terraspace: The Terraform Framework
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/boltops-tools/terraspace
+	install = terraspace.install
+	arch = x86_64
+	license = Apache-2.0 License
+	depends = tar
+	depends = binutils
+	source = https://apt.boltops.com/packages/terraspace/terraspace-latest.deb
+	source = terraspace.install
+	sha256sums = 25d3e8184aee913a57e1b40e6f3f08dc7b53051f565e75f47383d84e9c6493b1
+	sha256sums = 5670c1d3bc684a4b2d2d4dd4f3a098233bc8e83b5730c9b8004a855c97c6697f
+
+pkgname = terraspace-bin

@@ -1,0 +1,9 @@
+post_install() {
+	ln -s /opt/terraspace/embedded/lib/libcrypto.so /lib/libcrypt.so.1
+	ln -s /opt/terraspace/embedded/bin/terraspace /usr/bin/terraspace
+}
+
+post_remove() {
+	rm /lib/libcrypt.so.1
+	rm /usr/bin/terraspace
+}
