@@ -3,13 +3,13 @@
 
 pkgname=python-tcolorpy
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Python library to apply true color for terminal text'
 arch=('any')
 url='https://github.com/thombashi/tcolorpy'
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/tcolorpy/tcolorpy-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/t/tcolorpy/tcolorpy-$pkgver.tar.gz.asc")
@@ -19,7 +19,7 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
   cd "tcolorpy-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -30,7 +30,7 @@ check() {
 package() {
   export PYTHONHASHSEED=0
   cd "tcolorpy-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
