@@ -27,5 +27,5 @@ package(){
     install -Dm0755 "${srcdir}/extrattor/extrattor/extrattor.sh" "${pkgdir}/usr/bin/extrattor"
     install -Dm0755 "${srcdir}/extrattor/extrattor/spinner" "${pkgdir}/usr/bin/spinner"
     echo -e "\nInstalling man page\n"
-    sudo install -g 0 -o 0 -m 0644 "${srcdir}/extrattor/extrattor/extrattor" "/usr/share/man/"
+    install -Dm0644 "${srcdir}/extrattor/extrattor/extrattor.1" "$pkgdir/usr/share/man/man1/extrattor.1"
 }
