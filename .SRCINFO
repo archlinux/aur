@@ -1,0 +1,12 @@
+pkgbase = luaaa-git
+	pkgdesc = C++ to LUA binding tool in a single header file.
+	pkgver = 0.2.3.r0.g1654818
+	pkgrel = 1
+	url = https://github.com/gengyong/luaaa
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/gengyong/luaaa.git
+	sha256sums = SKIP
+
+pkgname = luaaa-git
