@@ -2,9 +2,9 @@
 
 pkgname=dtkcommon-git
 pkgver=5.5.17.r8.gfe3dd87
-pkgrel=9
+pkgrel=1
 pkgdesc='DTK common modules'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dtkcommon"
 license=('LGPL3')
 depends=()

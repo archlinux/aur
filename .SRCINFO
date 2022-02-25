@@ -1,9 +1,9 @@
 pkgbase = dtkcommon-git
 	pkgdesc = DTK common modules
 	pkgver = 5.5.17.r8.gfe3dd87
-	pkgrel = 9
+	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcommon
-	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = LGPL3
 	makedepends = git
