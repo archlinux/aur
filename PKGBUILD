@@ -2,7 +2,7 @@
 # Contributor: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt
-pkgver=2.9.0.0
+pkgver=3.0.0.0
 pkgrel=1
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64' 'armv7h')
@@ -13,7 +13,7 @@ optdepends=('jna' 'libappindicator-gtk3' 'ttf-dejavu')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-sha256sums=('bebd854c6604f377d94830d93c46f4307204af3ee9b9579b9a46f1c5d7874a2a')
+sha256sums=('cd8f848cb865c1fe40aaadd910baad0ba1bd82fcdc4452b78c1feeee109fff8e')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
@@ -49,9 +49,11 @@ package() {
 
   msg2 "Enabling IPv6..."
   sed -i 's/JAVA_PROPS="-Djava.net.preferIPv4Stack=true"/#JAVA_PROPS="-Djava.net.preferIPv4Stack=true"/' $pkgname
-  
+
   msg2 "Moving stuff in place..."
-  # Launchers
+
+  # Launcher
+  sed -i 's/\r//' $pkgname
   mv $pkgname "$pkgdir"/usr/bin/
 
   # Icon and desktop
