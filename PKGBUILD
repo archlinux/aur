@@ -4,7 +4,7 @@ pkgname=deepin-api-git
 pkgver=5.5.5.r19.g1253eb6
 pkgrel=1
 pkgdesc='Golang bindings for dde-daemon'
-arch=('aarch64')
+arch=('x86_64')
 url="https://github.com/linuxdeepin/dde-api"
 license=('GPL3')
 # alsa-utils: alsactl used in sound-theme-player
