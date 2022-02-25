@@ -1,6 +1,6 @@
 # Maintainer: Nikola Tasić <nik at 7aske dot com>
 pkgname="rgs"
-pkgver="1.13"
+pkgver="1.14"
 pkgrel=1
 pkgdesc="Batch git repository analysis tool"
 arch=('x86_64')
@@ -29,4 +29,4 @@ package() {
 	install -Dm 644 LICENSE -t $pkgdir/usr/share/licenses/${pkgname}
 }
 
-sha256sums=('d6d418d76415c00adb5e5b6dc55a4fd0bbc5709d02cb4ad2b1a11955481feece')
+sha256sums=('6494e8196f2c0b3bed7c397656336cd57772c57b593f323eb98a8271dd82694f')
