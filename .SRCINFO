@@ -1,19 +1,27 @@
 pkgbase = r-ggplot2
 	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
 	pkgver = 3.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=ggplot2
 	arch = any
 	license = MIT
-	depends = r>=3.3
+	checkdepends = r-hexbin
+	checkdepends = r-mapproj
+	checkdepends = r-quantreg
+	checkdepends = r-sf
+	checkdepends = r-sp
+	checkdepends = r-svglite
+	checkdepends = r-testthat
+	checkdepends = r-vdiffr
+	checkdepends = ttf-font
 	depends = r-digest
 	depends = r-glue
-	depends = r-gtable>=0.1.1
+	depends = r-gtable
 	depends = r-isoband
-	depends = r-rlang>=0.4.10
-	depends = r-scales>=0.5.0
+	depends = r-rlang
+	depends = r-scales
 	depends = r-tibble
-	depends = r-withr>=2.0.0
+	depends = r-withr
 	optdepends = r-covr
 	optdepends = r-ragg
 	optdepends = r-dplyr
@@ -22,7 +30,6 @@ pkgbase = r-ggplot2
 	optdepends = r-hmisc
 	optdepends = r-interp
 	optdepends = r-knitr
-	optdepends = r-lattice
 	optdepends = r-mapproj
 	optdepends = r-maps
 	optdepends = r-maptools
@@ -33,13 +40,14 @@ pkgbase = r-ggplot2
 	optdepends = r-rcolorbrewer
 	optdepends = r-rgeos
 	optdepends = r-rmarkdown
-	optdepends = r-rpart
 	optdepends = r-sf
 	optdepends = r-svglite
 	optdepends = r-testthat
 	optdepends = r-vdiffr
 	optdepends = r-xml2
 	source = https://cran.r-project.org/src/contrib/ggplot2_3.3.5.tar.gz
+	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
 	sha256sums = b075294faf3af31b18e415f260c62d6000b218770e430484fe38819bdc3224ea
+	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-ggplot2
