@@ -1,7 +1,7 @@
 # Maintainer: Tea <icepie.dev@gmail.com>
 pkgname=gnome-randr
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="This tries to reimplement the some of the functionality of 'xrandr' for the gnome desktop using mutter's dbus-api.
 It currently has not been tested with fractional scaling support."
 arch=('any')
@@ -25,7 +25,6 @@ noextract=()
 sha256sums=('SKIP')
 
 package() {
-    mkdir -p "$pkgdir/usr/bin"
-    chmod +x "${srcdir}/${pkgname}/${pkgname}.py"
-    cp "${srcdir}/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
+    cd "${srcdir}/${pkgname}"
+    install -Dm755 "${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
 }
