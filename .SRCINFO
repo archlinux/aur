@@ -1,16 +1,15 @@
 pkgbase = python-sphinx-bootstrap-theme
 	pkgdesc = Sphinx documentation theme that integrates the Bootstrap framework
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 2
 	url = http://ryan-roemer.github.io/sphinx-bootstrap-theme/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://github.com/ryan-roemer/sphinx-bootstrap-theme/archive/v0.8.0.tar.gz
-	md5sums = 80639031f95fad082f8a9e70bdc373dc
+	source = https://github.com/ryan-roemer/sphinx-bootstrap-theme/archive/v0.8.1.tar.gz
+	md5sums = 85672be189293cdf7dd7fb742958c4f7
 
 pkgname = python-sphinx-bootstrap-theme
 
 pkgname = python2-sphinx-bootstrap-theme
-

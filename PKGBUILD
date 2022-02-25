@@ -1,14 +1,14 @@
 # Maintainer: Miguel de Val-Borro <miguel dot deval at gmail dot com>
 pkgname=('python-sphinx-bootstrap-theme' 'python2-sphinx-bootstrap-theme')
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=2
 pkgdesc="Sphinx documentation theme that integrates the Bootstrap framework"
 arch=('any')
 url="http://ryan-roemer.github.io/sphinx-bootstrap-theme/"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/ryan-roemer/sphinx-bootstrap-theme/archive/v${pkgver}.tar.gz")
-md5sums=('80639031f95fad082f8a9e70bdc373dc')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/ryan-roemer/sphinx-bootstrap-theme/archive/v${pkgver}.tar.gz")
+md5sums=('85672be189293cdf7dd7fb742958c4f7')
 
 build() {
   cp -r ${srcdir}/sphinx-bootstrap-theme-${pkgver} ${srcdir}/sphinx-bootstrap-theme-${pkgver}-py2
