@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-gstreamer
-pkgver=1.18.5
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="GStreamer Multimedia Framework (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=(${url}src/gstreamer/gstreamer-${pkgver}.tar.xz)
-sha256sums=('55862232a63459bbf56abebde3085ca9aec211b478e891dacea4d6df8cafe80a')
+sha256sums=('edf4bffff85591d4fff7b21bb9ed7f0feabc123ac4a4eff29e73cbce454f9db7')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,7 +21,7 @@ build() {
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
       -D examples=disabled \
-      -D gtk_doc=disabled \
+      -D doc=disabled \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja
