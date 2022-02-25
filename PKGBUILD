@@ -2,7 +2,7 @@
 # Contributor: FabioLolix
 
 pkgname=cie-middleware-git
-pkgver=1.4.1.r2.c9c37c5
+pkgver=1.4.1.r9.922b5c8
 pkgrel=1
 pkgdesc="Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -23,6 +23,7 @@ build() {
   cd "${srcdir}/${pkgname%-git}"
   gradle -b cie-java/build.gradle standalone
   cd libcie-pkcs11/
+  unset CXXFLAGS
   meson builddir
   meson configure -Dprefix=/usr builddir
   meson compile -C builddir
