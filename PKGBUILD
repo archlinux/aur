@@ -2,8 +2,8 @@
 
 pkgname=man-pages-da-git
 _gitname=manpages-l10n
-pkgver=r17815.7dd9c5f30e
-pkgrel=2
+pkgver=r17992.168bf0eb64
+pkgrel=1
 pkgdesc="Danish man pages (Git version)"
 arch=('any')
 url="https://salsa.debian.org/manpages-l10n-team/manpages-l10n"
