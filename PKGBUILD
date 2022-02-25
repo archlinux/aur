@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.15.24
+pkgver=5.15.25
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -22,6 +22,7 @@ source=(
   0004-cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch
   0005-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch
   0006-lg-laptop_Recognize_more_models.patch
+  0007_fix_NFSv4_mount_regression.diff
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -30,15 +31,16 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('f496eb03c88731540d483837f919c083148875a7b400468237f0217b5e5ca97f'
+sha256sums=('4399ffbe524a11b3c44bff6dd858ed31417341f58513f04cb6ae15e527543879'
             'SKIP'
-            '8b13f2b6f5f08c6d17165f3268edb9247e1ab0644ee6b7c4d527fda346c69b08'
+            'e64c383073b850b45a0c1555d235a9ee61eb99e7b8bf454822ac0a8fde365800'
             '99df282c594cc269d9a5d19bb86ea887892d3654cfc53c4ce94a644cf3278423'
             'c35018601f04ae81e0a2018a8597595db6ae053158c206845399cdebb2d2b706'
             '7c7707c738983f3683d76295b496f578996b7341fa39ad334ec2833bfe4b966e'
             '420844779356286057d931e30bbe1dabb8ee52bff575845a8fbf3c34e1a1d29e'
             '3fa8a4af66d5a3b99b48ca979a247c61e81c9b2d3bcdffa9d3895a5532a420b4'
             '79266c6cc970733fd35881d9a8f0a74c25c00b4d81741b8d4bba6827c48f7c78'
+            'e9527ad81d5b1821a7b17c56cb3abaec85785563f51e448cb3c06f1c68e2966f'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
             '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6')
 
@@ -48,6 +50,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   cd $_srcname
+
+  # fix NFSv4 mounting issue regression - FS#73838 / FS#73860
+  # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=6f2836341d8a39e1e000572b10959347d7e61fd9
+  patch -Rp1 -i ../0007_fix_NFSv4_mount_regression.diff
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
