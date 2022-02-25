@@ -42,7 +42,7 @@ build() {
 
 package_deepin-wallpapers-git() {
   pkgdesc='Default wallpapers for DDE'
-  groups=('deepin')
+  groups=('deepin-git')
 
   cd $pkgbase
   install -dm755 "$pkgdir"/usr/share/wallpapers
@@ -60,7 +60,7 @@ package_deepin-wallpapers-git() {
 
 package_deepin-community-wallpapers-git() {
   pkgdesc='Community wallpapers for DDE'
-  groups=('deepin-extra')
+  groups=('deepin-git')
 
   cd $pkgbase-community
   install -dm755 "$pkgdir"/usr/share/wallpapers/deepin
