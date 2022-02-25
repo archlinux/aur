@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkgui-git
-pkgver=5.5.17.1.r11.g10df238
+pkgver=5.5.17.1.r12.ga53f411
 pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/dtkgui"
 license=('LGPL3')
 depends=('dtkcore-git' 'librsvg' 'qt5-x11extras')
