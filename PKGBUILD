@@ -12,7 +12,8 @@ arch=('any')
 url="https://gitlab.com/ia-projekt-zespolowy-2021-2022/livecd-encryption"
 license=('GPL')
 groups=()
-depends=('cryptsetup')
+depends=('arch-install-scripts' 'bash' 'cryptsetup' 'device-mapper' 'dosfstools' 'e2fsprogs' 
+'erofs-utils' 'libarchive' 'libisoburn' 'mkinitcpio' 'mtools' 'squashfs-tools')
 makedepends=('archiso' 'mkinitcpio-archiso')
 checkdepends=()
 optdepends=()
