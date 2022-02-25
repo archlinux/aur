@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 pkgname=lemonldap-ng
-pkgver=2.0.12
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="A modular WebSSO (Single Sign On) based on Apache::Session modules"
 arch=(any)
@@ -13,12 +13,15 @@ depends=('perl-apache-session' 'perl-cache-cache' 'perl-clone' 'perl-config-inif
          'perl-ldap' 'perl-plack' 'perl-regexp-assemble' 'perl-regexp-common' 'perl-soap-lite'
          'perl-string-random' 'perl-unicode-string' 'perl-uri' 'perl-libwww' 'perl-lwp-protocol-https'
          'perl-xml-simple' 'perl-xml-libxslt' 'perl-crypt-urandom' 'perl-json-xs'
-         'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick')
+         'perl-module-pluggable' 'perl-convert-base32' 'perl-text-unidecode' 'imagemagick'
+         'perl-net-ip' # missing dependency on perl-authen-radius
+         'perl-gssapi' 'perl-authen-radius'
+)
 makedepends=('uglify-js' 'python-sphinx' 'python-sphinx-bootstrap-theme')
-checkdepends=('perl-test-output' 'perl-time-fake')
+checkdepends=('perl-test-mockobject' 'perl-test-output' 'perl-time-fake')
 optdepends=('uwsgi-plugin-psgi: for running under uWSGI')
 source=("https://release.ow2.org/lemonldap/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f1719f6fb01599186143cc4c7aed688cddc60dd85d77600abb6c0b5d8b8e204e7b1deb5a510a6f53a739e089584c0b9c1fd5595b643350f593c267a040ad7e69')
+sha512sums=('1c6e37dac5bdbddcb93323dc0ac6e6b6ccd0c62a8186e4ff7f1d4a6bf824682212f315895670b314812df9dd44dd5f370de37a631efa169db2b44687c2da2c98')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,6 +41,4 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" PREFIX="/usr/share" PROD=yes install
-	chown -R http:http "$pkgdir"/usr/share/lemonldap-ng/data/{captcha,conf,notifications,psessions,sessions}
-	chmod -R 755 "$pkgdir"/usr/share/lemonldap-ng/data/{captcha,conf,notifications,psessions,sessions}
 }
