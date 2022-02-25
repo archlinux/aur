@@ -2,26 +2,57 @@
 
 pkgname=maui-shell-git
 _pkgname=${pkgname%-git}
-pkgver=r113.4bf7457
+pkgver=r146.7106577
 pkgrel=1
 pkgdesc='Maui Shell is a convergent shell for desktops, tablets, and phones.'
 url='https://github.com/Nitrux/maui-shell'
 arch=(x86_64)
 license=(GPL3)
 depends=(bluedevil
+         fontconfig
+         kactivities
+         kactivities-stats
+         karchive
          kconfig
+         kcoreaddons
+         kcrash
+         kdbusaddons
+         kdeclarative
+         kded
+         kdesu
+         kdoctools
+         kglobalaccel
          ki18n
+         kiconthemes
+         kidletime
+         kinit
          kio
+         kitemmodels
+         knotifications
+         knotifyconfig
+         kpackage
+         kpeople
+         krunner
          kservice
+         ktexteditor
+         kunitconversion
+         kwallet
+         kwayland
+         libcanberra
          mauikit-git
          mauikit-filebrowsing
+         phonon-qt5
          plasma-nm
          plasma-pa
+         polkit-qt5
+         prison
          qt5-base
          qt5-declarative
          qt5-quickcontrols2
          qt5-svg
-         qt5-wayland)
+         qt5-wayland
+         solid
+         sound-theme-freedesktop)
 makedepends=(git extra-cmake-modules)
 groups=(maui)
 provides=($_pkgname)
