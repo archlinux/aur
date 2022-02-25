@@ -11,6 +11,7 @@ makedepends=('mingw-w64-meson' 'git')
 depends=('mingw-w64-glib2' 'mingw-w64-libxml2')
 options=('!strip' '!buildflags' 'staticlibs')
 conflicts=('mingw-w64-gstreamer')
+provides=('mingw-w64-gstreamer')
 
 source=("${_gitname}::git+https://gitlab.freedesktop.org/gstreamer/${_gitname}/")
 sha256sums=('SKIP')
@@ -28,7 +29,7 @@ build() {
     mkdir -p "build-${_arch}" && pushd build-${_arch}
     ${_arch}-meson \
       -D examples=disabled \
-      -D gtk_doc=disabled \
+      -D doc=disabled \
       -D package-name="GStreamer (Arch Linux)" \
       -D package-origin="http://www.archlinux.org/" ..
     ninja 

@@ -9,6 +9,7 @@ pkgbase = mingw-w64-gstreamer-git
 	makedepends = git
 	depends = mingw-w64-glib2
 	depends = mingw-w64-libxml2
+	provides = mingw-w64-gstreamer
 	conflicts = mingw-w64-gstreamer
 	options = !strip
 	options = !buildflags
@@ -17,4 +18,3 @@ pkgbase = mingw-w64-gstreamer-git
 	sha256sums = SKIP
 
 pkgname = mingw-w64-gstreamer-git
-
