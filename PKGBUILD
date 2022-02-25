@@ -4,7 +4,7 @@
 
 pkgname=wapiti
 
-pkgver=3.1.0
+pkgver=3.1.1
 _name="$pkgname${pkgver:0:1}"
 pkgrel=1
 
@@ -25,7 +25,7 @@ options=('zipman')
 changelog=ChangeLog
 source=("https://github.com/$pkgname-scanner/$pkgname/releases/download/$pkgver/$_name-$pkgver.tar.gz")
 #source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname/$pkgname-$pkgver/$_name-$pkgver.tar.gz")
-sha256sums=('4974204e5da966c3e91946465840420c708c034a7c030c5597d3c36badf05a0f')
+sha256sums=('d51645fc9cb65a264d87ee38aa8b6733039940afcfa74446f34cd3eef182da36')
 
 
 prepare() { rm -rf "$_name-$pkgver/tests"; }
