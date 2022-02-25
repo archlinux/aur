@@ -1,7 +1,7 @@
 pkgbase = python-pytooling
 	pkgdesc = A powerful collection of arbitrary useful classes, decorators, meta-classes and exceptions
-	pkgver = 1.9.4
-	pkgrel = 2
+	pkgver = 1.9.5
+	pkgrel = 1
 	url = https://github.com/pyTooling/pyTooling
 	arch = any
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = python-pytooling
 	replaces = python-pytooling-packaging
 	replaces = python-pymetaclasses
 	replaces = python-pyexceptions
-	source = python-pytooling-1.9.4.tar.gz::https://github.com/pyTooling/pyTooling/archive/v1.9.4.tar.gz
-	sha256sums = 2429fcaf6c0c47e0af90bfd4072114cb8a3b05b631d63ea91238091e08a737a1
+	source = python-pytooling-1.9.5.tar.gz::https://github.com/pyTooling/pyTooling/archive/v1.9.5.tar.gz
+	sha256sums = 92227a63b848929a88c22948dc1c2ffbdc7b0c23be0547311c4d2af0c3809ce5
 
 pkgname = python-pytooling
