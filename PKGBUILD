@@ -9,7 +9,7 @@ license=("BSD")
 makedepends=(mingw-w64-configure git)
 depends=(mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-giflib)
 options=(staticlibs !strip !buildflags)
-_commit=9ce5843dbabcfd3f7c39ec7ceba9cbeb213cbfdf  # tags/v1.2.1^0
+_commit=b0a860891dcd4c0c2d7c6149e5cccb6eb881cc21  # tags/v1.2.2^0
 source=("git+https://chromium.googlesource.com/webm/libwebp#commit=$_commit")
 sha256sums=('SKIP')
 validpgpkeys=('6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D') # WebP release signing key

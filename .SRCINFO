@@ -14,7 +14,7 @@ pkgbase = mingw-w64-libwebp
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = git+https://chromium.googlesource.com/webm/libwebp#commit=9ce5843dbabcfd3f7c39ec7ceba9cbeb213cbfdf
+	source = git+https://chromium.googlesource.com/webm/libwebp#commit=b0a860891dcd4c0c2d7c6149e5cccb6eb881cc21
 	validpgpkeys = 6B0E6B70976DE303EDF2F601F9C3D6BDB8232B5D
 	sha256sums = SKIP
 
