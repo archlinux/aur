@@ -1,14 +1,14 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-desktop-schemas-git
-pkgver=5.9.16.r11.gbae658d
-pkgrel=10
+pkgver=5.10.2.r8.gd9e09d5
+pkgrel=1
 pkgdesc='GSettings deepin desktop-wide schemas'
 arch=('any')
 url="https://github.com/linuxdeepin/deepin-desktop-schemas"
 license=('GPL3')
-depends=('dconf' 'deepin-gtk-theme' 'deepin-icon-theme' 'deepin-sound-theme')
-makedepends=('git' 'python' 'go' 'golang-deepin-lib')
+depends=('dconf' 'deepin-gtk-theme-git' 'deepin-icon-theme-git' 'deepin-sound-theme-git')
+makedepends=('git' 'python' 'go' 'golang-deepin-lib-git')
 conflicts=('deepin-artwork-themes' 'deepin-desktop-schemas')
 provides=('deepin-desktop-schemas')
 groups=('deepin-git')
