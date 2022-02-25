@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.8.22.r50.g95661a3
-pkgrel=8
+pkgver=5.8.22.r112.ga7a2b88
+pkgrel=1
 pkgdesc="starter of deepin desktop environment"
-arch=('x86_64')
+arch=('aarch64')
 url="https://github.com/linuxdeepin/startdde"
 license=('GPL3')
 depends=('libgnome-keyring')
@@ -29,6 +29,7 @@ prepare() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
   go get -v github.com/cryptix/wav
+  go get -v github.com/youpy/go-wav
   go get -v golang.org/x/xerrors
   go get -v github.com/fsnotify/fsnotify
   go get -v github.com/godbus/dbus
@@ -39,8 +40,7 @@ prepare() {
 }
 
 build() {
-  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-
+  export GOFLAGS="-mod=readonly -modcacherw"
   cd $pkgname
   make
 }
