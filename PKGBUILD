@@ -1,7 +1,7 @@
-# Maintainer: Marco <marco at maniatek dot de>
+# Maintainer: Marco <marcomania2012 at gmail dot com>
 
 pkgname=kde-servicemenus-imagetools
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='KDE service menus for image file processing'
 arch=('any')
