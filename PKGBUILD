@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.16.2.arch1
+pkgver=5.16.4.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -113,8 +113,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '1d637eae88d6d2bfd6ca4b0af649f6f1d19f4be5c7cd0ad82d70eb16f08caa581da922af723285d0231595e04aa3f835370d7c8acdf759f53bb21cfd2c754d63'
-            '5267d3eb96e1d03850cbc2ea47d33f35f3cc15c1a009bbb13239ddb6a1e25cbfc8e30fd8ae51b1747ec140b52d26e3e29fa2fe71ab694afa20cb9ba9f232f645'
+            '78d02ef92e4f7b936318fda65fa0183158dca4365872063f12b36fd7503596b961dcd9eae339bca8381f2dca555e3e684712024e4900aebe1f9a9cd7551b73e0'
+            '1007d9b41372eb4747db4214eac90d8c079220e6d9b693649318053d184c032a8d0b4edbee851386218b91083306288f4ceeeb61b5bf89776ce3beeaee20e2ca'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
