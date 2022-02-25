@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=siyuan-appimage
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="The next generation PKM system, your digital garden"
 arch=("x86_64")
@@ -12,7 +12,7 @@ noextract=(${_pkgname})
 options=("!strip")
 provides=("siyuan")
 source=("https://download.fastgit.org/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("5fc8ff5d2ae076ddaffe272a4ced88e5b47e2d1bf7a59d34bc29eab41d0431f1e65c3d159fe5bd52e69339ef1999acb8bfcd363189387c003268923e864ef152")
+sha512sums=("d449adc42f438d927b44dd3b765314babe2695f0daafdd9db4c4e6a2f71e4ec0aa318952041272551f61c2df7571c74c56ec65bccaadd0303b8233132953aa26")
 
 _installdir=/opt/appimages
 
@@ -26,6 +26,6 @@ prepare() {
 
 package() {
     install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/siyuan.AppImage"
-    install -Dm644 "squashfs-root/resources/stage/icon.png"  "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan-appimage.png"
+    install -Dm644 "squashfs-root/resources/stage/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/siyuan-appimage.png"
     install -Dm644 "squashfs-root/siyuan.desktop" "${pkgdir}/usr/share/applications/siyuan-appimage.desktop"
 }
