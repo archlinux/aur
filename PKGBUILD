@@ -1,15 +1,15 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=rapidwright
-_pkgver=2021.2.0-beta
+_pkgver=2021.2.1-beta
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 pkgdesc="Build Customized FPGA Implementations for Vivado"
 arch=('any')
 url='http://www.rapidwright.io/'
 license=('custom')
-depends=('java-runtime' 'jython')
-makedepends=('java-environment' 'gradle')
+depends=('java-runtime=17' 'jython')
+makedepends=('java-environment=17' 'gradle')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/Xilinx/RapidWright/archive/v$_pkgver.tar.gz"
 	"rapidwright_data-${pkgver}.zip::https://github.com/Xilinx/RapidWright/releases/download/v$_pkgver/rapidwright_data.zip"
@@ -17,9 +17,9 @@ source=(
 	"invoke_rapidwright"
 )
 
-sha256sums=('7e75eb6c5fe8987001f404c67fd45ff00438c8828cf5db6bf9186f3fdae2386f'
-            '21e10518bed1192d94463804c309b09eff3ca7e5dff5e8998498eff8437ac9af'
-            'a2e6a9fb0230b6aa72c5d4732d6dce82dcb53f16194fdb64a60270500bb81a20'
+sha256sums=('e9e443722b3b247f0b92a35423d56718dedf4eec00ae2732ec3ebd94c8fdc1bb'
+            'f48c9d3b909e7d72f7407a74ad4426d69c6353249dab26ed82edd44cf92dfe52'
+            '703ed45458663159a989f3ff7f2246234be5d4c22bb990d17d02c673979d0f00'
             'a0c2f5577cd955cb81aec2839c3c060dc78c6ee48dc99406f67cc902e98f644f')
 
 prepare() {
