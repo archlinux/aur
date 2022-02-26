@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Compiz+xdotool DBus Screenlock (GNOME)
+Comment=Intercept light-locker DBus service call for compiz screensaver
+TryExec=xdotool
+Exec=compiz-screenlock-gnome.py
+NotShownIn=Gnome;Unity

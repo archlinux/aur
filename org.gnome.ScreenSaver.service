@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.gnome.ScreenSaver
+Exec=/usr/bin/compiz-screenlock-gnome.py

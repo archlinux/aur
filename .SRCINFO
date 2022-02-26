@@ -1,0 +1,29 @@
+pkgbase = compiz-cube-screensaver
+	pkgdesc = Lock screen and rotate compiz cube
+	pkgver = 1
+	pkgrel = 1
+	url = http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175
+	arch = any
+	license = GPL
+	depends = compiz
+	depends = python
+	depends = dbus
+	depends = xdotool
+	depends = xorg-xinput
+	conflicts = xscreensaver-dbus-screenlock
+	source = compiz-screenlock-freedesktop.py
+	source = compiz-screenlock-gnome.py
+	source = org.freedesktop.ScreenSaver.service
+	source = org.gnome.ScreenSaver.service
+	source = compiz-screenlock-freedesktop.desktop
+	source = compiz-screenlock-gnome.desktop
+	source = compiz-cube-screensaver
+	md5sums = e009d5e8d91e342dfaeb939fddaf4bdd
+	md5sums = 40b13abfeeaf8d669f44ca34bc836f6c
+	md5sums = fe39d0e389e764664d8fd610c59ebb91
+	md5sums = 0d1ff939325131594c8c0eb1342b3ebe
+	md5sums = 2460d93a56b4f5db5ec5d8876d12f0e9
+	md5sums = 52ed67b09a878086f41fdc250fbfcc20
+	md5sums = 4ef4564b256a445348345b14a83da601
+
+pkgname = compiz-cube-screensaver

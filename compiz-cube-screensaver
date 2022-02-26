@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#Xorg display to control
+DISPLAY=:0.0
+#Pointer, check `xinput --list`
+pointer=12
+#Compiz rotate plugin's "initiate" button
+INITIATE="$(dconf read /org/compiz/profiles/Default/plugins/rotate/initiate-button)"; [[ -z "${INITIATE}" ]] && exit
+#Start rotation left or right at random
+direction="${RANDOM}"; let "direction >>= 14"; [[ "${direction}" -eq 1 ]] && direction=90 || direction=270
+#Pixels to move XTEST mouse (rotation speed)
+step=1
+
+#Disable input devices other than pointer and XTEST
+for i in $(xinput list --id-only); do \
+  [[ "${i}" -gt "5" ]] && [[ "${i}" -ne "${pointer}" ]] && \
+    enabled="$(xinput list-props ${i} | grep "Device Enabled")" && \
+    [[ "${enabled: -1}" -eq "1" ]] && \
+      xinput disable "${i}" && \
+      disabled+=("${i}"); \
+done
+
+xdotool mousedown "${INITIATE//[!0-9]/}" &
+
+#Rotate Cube
+while [ $(xprintidle) -gt 0 ]; do \
+  xdotool mousemove_relative --polar "${direction}" "${step}" & \
+  sleep 0.0166; \
+done
+
+xdotool mouseup "${INITIATE//[!0-9]/}" &
+
+#Re-enable input devices
+for i in "${disabled[@]}"; do \
+      xinput enable "${i}" & \
+done &
