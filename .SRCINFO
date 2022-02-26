@@ -1,6 +1,6 @@
 pkgbase = flacon-git
 	pkgdesc = Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)
-	pkgver = v5.5.1.84.gc7a5cfa
+	pkgver = 8.3.0.4.g7f3dad3
 	pkgrel = 1
 	url = http://flacon.github.io
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = flacon-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = uchardet
+	depends = taglib
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
 	optdepends = faac: For AAC support
@@ -23,8 +24,8 @@ pkgbase = flacon-git
 	optdepends = wavpack: For WavPack support
 	provides = flacon
 	conflicts = flacon
+	options = debug
 	source = git+https://github.com/flacon/flacon.git
 	sha256sums = SKIP
 
 pkgname = flacon-git
-
