@@ -1,7 +1,8 @@
 # Maintainer: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
+
 _name=sptlrx
 pkgname=sptlrx-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Timesynced Spotify lyrics in your terminal."
 arch=('x86_64' 'arm64' 'i386')
@@ -13,9 +14,9 @@ _url="$url/releases/download/v$pkgver/${_name}_${pkgver}_Linux"
 source_x86_64=("${_url}_x86_64.tar.gz")
 source_arm64=("${_url}_arm64.tar.gz")
 source_i386=("${_url}_i386.tar.gz")
-sha256sums_x86_64=('50b803ab558fbcf62d1f02a1d6ebd6b3e732baa12d54fe91c88f56545c443979')
-sha256sums_arm64=('28d02fa85c226f17eab73457daa6e0466c7dcc4f6672058e56f8c1e4467692ad')
-sha256sums_i386=('dc3102bdba4e19194501e74107d50864db6495f428c795b2f265e604cca3ec8e')
+sha256sums_x86_64=('192863f615583a9f74fb7c64b5eaeee17337a8a29ebcb0756e65d77be0a8d502')
+sha256sums_arm64=('0f8f9ab5b6c2e2027eba415ef6ceb9801fe40aa8216529994afa811654b2beb4')
+sha256sums_i386=('9c980d2aef32125b22c5e9ea5be8b6f96745856c69797793f4d69a1ab1d7d927')
 
 package() {
   install -Dm755 "${_name}" "$pkgdir"/usr/bin/"${_name}"
