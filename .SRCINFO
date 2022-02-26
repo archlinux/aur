@@ -1,0 +1,17 @@
+pkgbase = headcrusher-amp-bin
+	pkgdesc = Audio Assault Analog Modeled Saturator
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://audioassault.mx/collections/plugins/products/headcrusher
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Head Crusher Amp.desktop
+	sha256sums = 893323a323a5ec22e8807970d6b08b2622eed7891c196f3123682fcc18634e95
+
+pkgname = headcrusher-amp-bin
