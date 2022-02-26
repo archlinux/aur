@@ -1,12 +1,13 @@
 pkgbase = r-dbi
 	pkgdesc = R Database Interface
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=DBI
 	arch = any
-	license = LGPL2.1
-	license = LGPL3
-	depends = r>=3.0.0
+	license = LGPL
+	checkdepends = r-rsqlite
+	checkdepends = r-testthat
+	depends = r
 	optdepends = r-blob
 	optdepends = r-covr
 	optdepends = r-dbitest
