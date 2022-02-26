@@ -15,8 +15,11 @@ tasks:
     makepkg -i --noconfirm
     cd ..
     yay -S --answerclean=All --noconfirm xmlada
-    # Adding libadalang-git as an explicit dependency because libadalang-tools-git doesn't specify the git package
-    yay -S gnatcoll-core-git libadalang-git libadalang-tools-git libvss-git ada_spawn ada-libfswatch --noconfirm
+    # Grep the dependencies from the PKGBUILD and build them. Use positive look-behind and positive look-ahead.
+    # Remove apostrophes from the match
+    # TODO: This will fail if dependencies are split over multiple lines
+    deps=$(grep --only-matching --perl-regexp "(?<=^depends=\()('\S+'\s*)+(?=\))" aur-als-git/PKGBUILD | tr --delete \')
+    yay -S $deps --noconfirm
 - build: |
     cd aur-als-git
     makepkg

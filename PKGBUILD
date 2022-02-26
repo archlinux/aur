@@ -9,10 +9,10 @@ url='https://github.com/AdaCore/ada_language_server/'
 arch=('x86_64')
 license=('GPL3')
 
-# Specifying libadalang-git and langkit-git explicitly because libadalang-git
-# doesn't specify the git packages
-depends=('libadalang-git' 'libadalang-tools-git' 'langkit-git' 'libvss-git' 'ada_spawn' 'ada-libfswatch')
-makedepends=('git' 'gcc-ada' 'gprbuild' 'python-e3-testsuite')
+# Specifying gnatcoll-core-git, langkit-git, and libadalang-git explicitly
+# because libadalang-tools-git doesn't specify the git packages
+depends=('gnatcoll-core-git' 'langkit-git' 'libadalang-git' 'libadalang-tools-git' 'libvss-git' 'ada_spawn' 'ada-libfswatch')
+makedepends=('git' 'gcc-ada' 'gprbuild-git' 'python-e3-testsuite')
 
 conflicts=('ada_language_server')
 
