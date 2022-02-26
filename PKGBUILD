@@ -7,13 +7,12 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 
 pkgname=filebot
-pkgver=4.9.4
-pkgrel=2
+pkgver=4.9.5
+pkgrel=0
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
 license=('Commercial')
-#groups=()
 depends=('jre11-openjdk' 'java11-openjfx>=11.0.10.u1' 'fontconfig' 'chromaprint')
 makedepends=()
 checkdepends=()
@@ -25,37 +24,23 @@ optdepends=('libzen: Required by libmediainfo'
 provides=('filebot')
 
 conflicts=('filebot47' 'filebot-git')
-#replaces=()
-#backup=()
-#options=()
 install=$pkgname.install
-#changelog=
-source=("https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz"
-         "filebot.sh")
+source=(
+    "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz"
+    "https://get.filebot.net/filebot/FileBot_${pkgver}/FileBot_${pkgver}-aur.tar.xz.asc"
+    "filebot.sh"
+)
 
-#noextract=()
-md5sums=('8d1bb833a598382048f9ce574dba0e73'
-         '9b7ba1e301b3f4c8b9a751d6a00414ea')
-#validpgpkeys=()
-
-#prepare() {}
-
-#build() {}
-
-#check() {}
+sha256sums=('42374d6a3f69351dec868de70591c14264b9c470ce04359e8034823f4e0e57a1'
+            '50b59c25617651b3b802ac8cdcb9a9204cfae2ce7c71d6f0dd5a3e2039f5afd4'
+            'cf902ce1b126706d7f1c4bb3bb32002ed2c12170d97b13070f8a1202a2e6b123')
+validpgpkeys=('B0976E51E5C047AD0FD051294E402EBF7C3C6A71')
 
 package() {
-  mkdir -p $pkgdir/usr/bin
-  # mkdir -p $pkgdir/usr/share/$pkgname/openjfx
-  mkdir -p $pkgdir/usr/share/$pkgname
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share/${pkgname}"
  
-  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
-  cd $srcdir
-  
-  # cp -dpr --no-preserve=ownership * "$pkgdir"
-  cp -dpr --no-preserve=ownership etc usr "$pkgdir"
-  
-  # ln -sf $srcdir/usr/share/$pkgname/bin/$pkgname.sh $pkgdir/usr/bin/$pkgname
-
+  cp -dpr --no-preserve=ownership "${srcdir}/etc" "${srcdir}/usr" "${pkgdir}"
 }
