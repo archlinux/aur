@@ -1,6 +1,6 @@
 pkgbase = sat-tmp-hg
 	pkgdesc = sat_tmp aims to temporary store files needed by Salut-a-toi (sat). These monkey patchs are not merged upstream yet. For now, only wokkel is impacted.
-	pkgver = 0.7.r79.52ba2fcda8a5
+	pkgver = 0.7.r82.5ea15a760eb4
 	pkgrel = 1
 	url = https://salut-a-toi.org/
 	arch = any
