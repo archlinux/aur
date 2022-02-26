@@ -1,7 +1,7 @@
 pkgbase = ovito
 	pkgdesc = Open Visualization Tool
-	pkgver = 3.6.0
-	pkgrel = 2
+	pkgver = 3.7.0
+	pkgrel = 1
 	url = http://www.ovito.org
 	arch = x86_64
 	license = GPL
@@ -15,13 +15,13 @@ pkgbase = ovito
 	makedepends = vulkan-icd-loader
 	makedepends = vulkan-headers
 	depends = netcdf
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = qt5-base
 	conflicts = ovito-git
-	source = https://gitlab.com/stuko/ovito/-/archive/v3.6.0/ovito-v3.6.0.tar.bz2
+	source = https://gitlab.com/stuko/ovito/-/archive/v3.7.0/ovito-v3.7.0.tar.bz2
 	source = https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png
 	source = ovito.desktop
-	sha256sums = 506ce49202433707e20a5aa335a654b6a26486a2ce954e7572950e82a7388727
+	sha256sums = 4482f7b6d527093342de98910cde1b7f7c8b9b860b1bca888c70e99020324233
 	sha256sums = 14e98851e5de9bee0c8dabd035a83450895c476c1ad9e9898e2bf0c68261e9f2
 	sha256sums = 09b16de717b1b4140678d17958dcee2ea96ff5ae3a1c75f3168a0ad17f62f4ea
 

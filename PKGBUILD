@@ -6,20 +6,20 @@
 # Contributor: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 
 pkgname=ovito
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Open Visualization Tool"
 url="http://www.ovito.org"
 arch=('x86_64')
 license=('GPL')
-depends=('netcdf' 'ffmpeg' 'qt5-base')
+depends=('netcdf' 'ffmpeg4.4' 'qt5-base')
 makedepends=('cmake' 'boost' 'qscintilla-qt5' 'qt5-svg' 'libxslt' 'git'
              'python-sphinx_rtd_theme' 'vulkan-icd-loader' 'vulkan-headers')
 conflicts=("$pkgname-git")
 source=("https://gitlab.com/stuko/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.bz2"
         "https://www.ovito.org/wp-content/uploads/logo_rgb-768x737.png"
         "ovito.desktop")
-sha256sums=('506ce49202433707e20a5aa335a654b6a26486a2ce954e7572950e82a7388727'
+sha256sums=('4482f7b6d527093342de98910cde1b7f7c8b9b860b1bca888c70e99020324233'
             '14e98851e5de9bee0c8dabd035a83450895c476c1ad9e9898e2bf0c68261e9f2'
             '09b16de717b1b4140678d17958dcee2ea96ff5ae3a1c75f3168a0ad17f62f4ea')
 
@@ -35,7 +35,9 @@ build() {
       -DOVITO_BUILD_DOCUMENTATION=ON \
       -DOVITO_QT_MAJOR_VERSION=Qt5 \
       -DOVITO_BUILD_PLUGIN_VULKAN=ON \
-      -DVulkan_INCLUDE_DIR=/usr/include
+      -DVulkan_INCLUDE_DIR=/usr/include \
+      -DFFMPEG_INCLUDE_DIR="/usr/include/ffmpeg4.4" \
+      -DFFMPEG_LIBRARY_DIR="/usr/lib/ffmpeg4.4"
   make
 }
 
