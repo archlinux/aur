@@ -1,0 +1,17 @@
+pkgbase = rvxx-amp-bin
+	pkgdesc = Audio Assault RVXX Aggressive Guitar Amplifier
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audio-assault.com/rvxx.php
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = RVXX Amp.desktop
+	sha256sums = 858a49f32dacebe3bdbdbae578b9398e97470b0311fdb00b91314da88fbd552c
+
+pkgname = rvxx-amp-bin
