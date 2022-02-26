@@ -1,14 +1,13 @@
 pkgbase = shiori-bin
 	pkgdesc = Simple bookmark manager built with Go. Pre-compiled.
-	pkgver = 1.5.0
-	pkgrel = 2
-	url = https://github.com/RadhiFadlillah/shiori
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/go-shiori/shiori
 	arch = x86_64
 	license = MIT
 	provides = shiori
 	conflicts = shiori
-	source_x86_64 = https://github.com/RadhiFadlillah/shiori/releases/download/v1.5.0/shiori-linux-amd64
-	sha1sums_x86_64 = 7eb6977d27bf2ff37e64aab7db48f480b0822285
+	source_x86_64 = https://github.com/go-shiori/shiori/releases/download/v1.5.2/shiori_1.5.2_Linux_x86_64.tar.gz
+	sha1sums_x86_64 = c94fdb72ac762b1caec793cb890f2804a24d1ca2
 
 pkgname = shiori-bin
-
