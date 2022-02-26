@@ -237,6 +237,9 @@ install=lsi-msm-snmp.install
   # Add /opt/lsi/snmp/lib to ldconf search path
   install -Dm644 "${srcdir}/ld.so.lsi-msm-snmp.conf" etc/ld.so.conf.d/lsi-msm-snmp.conf
 
+  # Install licenses
+  install -Dm644 "${srcdir}/SLA_AdvancedSoftware.pdf" "usr/share/licenses/${pkgname}/SLA_AdvancedSoftware.pdf"
+
   # Create soname links
   _create_links
 
