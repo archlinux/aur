@@ -1,0 +1,15 @@
+pkgbase = pikapika-bin
+	pkgdesc = A cross platform comic client.
+	pkgver = 1.3.9
+	pkgrel = 1
+	url = https://github.com/niuhuan/pikapika
+	arch = x86_64
+	license = MIT
+	provides = pikapika
+	conflicts = pikapika
+	noextract = pikapika-v1.3.9-linux-x86_64.AppImage
+	options = !strip
+	source = https://github.com/niuhuan/pikapika/releases/download/v1.3.9/pikapika-v1.3.9-linux-x86_64.AppImage
+	sha256sums = 8a81634e2b5b1680807cc75997f450f1b802fcfc50f79618c5e3cde2fe15b2b5
+
+pkgname = pikapika-bin
