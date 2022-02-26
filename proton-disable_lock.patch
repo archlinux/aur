@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index 910a2e1..9cc88f0 100755
+index a3e9d718..08fadbf8 100755
 --- a/proton
 +++ b/proton
-@@ -292,7 +292,6 @@ class Proton:
+@@ -345,7 +345,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
          self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -10,16 +10,19 @@ index 910a2e1..9cc88f0 100755
  
      def path(self, d):
          return self.base_dir + d
-@@ -1463,8 +1462,6 @@ if __name__ == "__main__":
+@@ -1559,11 +1558,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
 -    g_proton.cleanup_legacy_dist()
 -    g_proton.do_steampipe_fixups()
+-
+-    if g_proton.need_tarball_extraction():
+-        g_proton.extract_tarball()
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1477,7 +1474,8 @@ if __name__ == "__main__":
+@@ -1576,7 +1570,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():

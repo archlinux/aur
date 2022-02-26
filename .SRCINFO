@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build
-	pkgver = 7.2.GE.2
-	pkgrel = 4
+	pkgver = 7.3.GE.1
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = proton-ge-custom
 	makedepends = python-pip
 	makedepends = glslang
 	makedepends = vulkan-headers
+	makedepends = clang
 	makedepends = giflib
 	makedepends = lib32-giflib
 	makedepends = libpng
@@ -71,6 +72,8 @@ pkgbase = proton-ge-custom
 	makedepends = lib32-vulkan-icd-loader
 	makedepends = sdl2>=2.0.16
 	makedepends = lib32-sdl2>=2.0.16
+	makedepends = rust
+	makedepends = lib32-rust-libs
 	makedepends = libgphoto2
 	makedepends = gsm
 	makedepends = opencl-headers
@@ -106,6 +109,8 @@ pkgbase = proton-ge-custom
 	makedepends = lib32-lzo
 	makedepends = libxkbcommon
 	makedepends = lib32-libxkbcommon
+	makedepends = faudio
+	makedepends = lib32-faudio
 	makedepends = sdl2>=2.0.16
 	makedepends = lib32-sdl2>=2.0.16
 	makedepends = desktop-file-utils
@@ -144,6 +149,8 @@ pkgbase = proton-ge-custom
 	depends = lib32-lzo
 	depends = libxkbcommon
 	depends = lib32-libxkbcommon
+	depends = faudio
+	depends = lib32-faudio
 	depends = sdl2>=2.0.16
 	depends = lib32-sdl2>=2.0.16
 	depends = desktop-file-utils
@@ -198,12 +205,11 @@ pkgbase = proton-ge-custom
 	options = !staticlibs
 	options = !lto
 	options = emptydirs
-	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=7.2-GE-2
+	source = proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=7.3-GE-1
 	source = wine::git+https://github.com/wine-mirror/wine.git
 	source = dxvk::git+https://github.com/doitsujin/dxvk.git
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git
 	source = liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-	source = FAudio::git+https://github.com/FNA-XNA/FAudio.git
 	source = gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
 	source = gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
 	source = gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
@@ -216,9 +222,11 @@ pkgbase = proton-ge-custom
 	source = SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
 	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
 	source = gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
+	source = ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
+	source = dav1d::git+https://code.videolan.org/videolan/dav1d.git
+	source = gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
 	source = dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
 	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git
-	source = ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
 	source = lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
 	source = vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
 	source = protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
@@ -227,7 +235,6 @@ pkgbase = proton-ge-custom
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.tar.xz
 	source = https://github.com/madewokherd/wine-mono/releases/download/wine-mono-7.1.2/wine-mono-7.1.2-x86.tar.xz
-	source = https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
 	source = wine-more_8x5_res.patch
 	source = proton-sanitize_makefile.patch
 	source = proton-disable_lock.patch
@@ -258,13 +265,13 @@ pkgbase = proton-ge-custom
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = 8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94
 	sha256sums = b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014
 	sha256sums = 59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d
-	sha256sums = b121625686227bb9e51b44e1e2e762250d34b1d3f8d7750787470b1885f3a1c4
 	sha256sums = 9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215
-	sha256sums = cedd69b258c3e446307d3e4b22fe63d7fb9ad3736711ec998933dcc393b43ce7
-	sha256sums = 27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489
+	sha256sums = 4eb65888f4f1f56a2c5fb94f2d8138351e18c5356a1359ebbd02b098c1c9a811
+	sha256sums = 881d710e14a5ef2c98889f2338e1ba68c05961ee6132a82afb12cfc0ec7e9906
 	sha256sums = 242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2
 
 pkgname = proton-ge-custom

@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=7.2-GE-2
+_srctag=7.3-GE-1
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
-pkgrel=4
+pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -31,6 +31,7 @@ depends=(
   libpcap          lib32-libpcap
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
+  faudio           lib32-faudio
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
@@ -41,6 +42,7 @@ depends=(
 makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   git wget rsync mingw-w64-tools lld nasm meson cmake python-virtualenv python-pip
   glslang vulkan-headers
+  clang
   giflib                lib32-giflib
   libpng                lib32-libpng
   gnutls                lib32-gnutls
@@ -64,6 +66,7 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   gst-plugins-base-libs lib32-gst-plugins-base-libs
   vulkan-icd-loader     lib32-vulkan-icd-loader
   'sdl2>=2.0.16'        'lib32-sdl2>=2.0.16'
+  rust                  lib32-rust-libs
   libgphoto2
   gsm
   opencl-headers
@@ -103,7 +106,6 @@ source=(
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
-    FAudio::git+https://github.com/FNA-XNA/FAudio.git
     gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
     gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
     gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
@@ -116,9 +118,11 @@ source=(
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
+    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
+    dav1d::git+https://code.videolan.org/videolan/dav1d.git
+    gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
-    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
     lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
     vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
@@ -126,7 +130,6 @@ source=(
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
     proton-disable_lock.patch
@@ -197,7 +200,6 @@ prepare() {
         dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
-        FAudio
         gstreamer
         gst-plugins-base
         gst-plugins-good
@@ -210,8 +212,10 @@ prepare() {
         SPIRV-Headers
         Vulkan-Loader
         gst-libav
+        ffmpeg-meson::FFmpeg
+        dav1d
+        gst-plugins-rs
         wine-staging
-        ffmpeg-meson::ffmpeg
         lsteamclient-gloriouseggroll::lsteamclient
         vrclient_x64-gloriouseggroll::vrclient_x64
         protonfixes-gloriouseggroll::protonfixes
@@ -244,7 +248,16 @@ prepare() {
         git submodule update external/Vulkan-Headers
     popd
 
-    cp "$srcdir"/fsync_futex_waitv.patch patches/proton/57-fsync_futex_waitv.patch
+    for submodule in gst-plugins-rs media-converter; do
+    pushd $submodule
+        export RUSTUP_TOOLCHAIN=stable
+        export CARGO_HOME="${srcdir}"/build/.cargo
+        cargo update
+        cargo fetch --locked --target "i686-unknown-linux-gnu"
+        cargo fetch --locked --target "x86_64-unknown-linux-gnu"
+    popd
+    done
+
     ./patches/protonprep.sh
 
     pushd wine
@@ -276,7 +289,7 @@ build() {
     cd build
     ROOTLESS_CONTAINER="" \
     ../proton-ge-custom/configure.sh \
-        --container-engine="" \
+        --container-engine="none" \
         --proton-sdk-image="" \
         --steam-runtime=native \
         --no-proton-sdk \
@@ -303,9 +316,9 @@ build() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
-    export CXXFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
-    export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
+    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export RUSTFLAGS="-C opt-level=3 -C target-cpu=nocona"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
@@ -322,6 +335,7 @@ build() {
     export CFLAGS+=" -mno-avx2"
     export CXXFLAGS+=" -mno-avx2"
 
+    export RUSTUP_TOOLCHAIN=stable
     export WINEESYNC=0
     export WINEFSYNC=0
     export DISPLAY=
@@ -340,7 +354,7 @@ package() {
     mv "$_compatdir/${pkgname}"/LICENSE{,.OFL} \
         "$pkgdir/usr/share/licenses/${pkgname}"
 
-    cd "$_compatdir/${pkgname}/files"
+    cd "$_compatdir/${pkgname}/dist"
     i686-w64-mingw32-strip --strip-unneeded \
         $(find lib/wine \( -iname fakedlls -or -iname i386-windows \) -prune -false -or -iname "*.dll" -or -iname "*.exe")
     x86_64-w64-mingw32-strip --strip-unneeded \
@@ -389,11 +403,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
-            'b121625686227bb9e51b44e1e2e762250d34b1d3f8d7750787470b1885f3a1c4'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'cedd69b258c3e446307d3e4b22fe63d7fb9ad3736711ec998933dcc393b43ce7'
-            '27b75be282c5f235171569aebce80020b330d6117becdb3b1670d3124eb52489'
+            '4eb65888f4f1f56a2c5fb94f2d8138351e18c5356a1359ebbd02b098c1c9a811'
+            '881d710e14a5ef2c98889f2338e1ba68c05961ee6132a82afb12cfc0ec7e9906'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
