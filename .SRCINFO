@@ -1,11 +1,12 @@
 pkgbase = sysmontask
 	pkgdesc = System monitor with the compactness and usefulness of Windows Task Manager
 	pkgver = 1.x.x
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/KrispyCamel4u/SysMonTask
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = python-setuptools
 	depends = gtk3
 	depends = libwnck3
@@ -16,11 +17,11 @@ pkgbase = sysmontask
 	depends = python-psutil
 	optdepends = python-matplotlib: For Log Plot utility
 	optdepends = nvidia-utils: for NVIDIA GPU monitoring
-	source = sysmontask-1.x.x.tar.gz::https://github.com/KrispyCamel4u/SysMonTask/archive/v1.x.x.tar.gz
+	source = git+https://github.com/KrispyCamel4u/SysMonTask.git#commit=7c9695990cb8fe2186b6b3e62b1e14cbd25c6542
 	source = sysmontask.patch
 	source = sysmontask-pkexec
 	source = org.freedesktop.sysmontask.policy
-	sha256sums = 328ebd0fced6e9def6bc383f79fbc2d33abba547f52d3c7f952f6cbfc83a0bb5
+	sha256sums = SKIP
 	sha256sums = d2069005efc8552a96da3fb84703e8287ec5abc89f59e69fafa1d173cba0d91e
 	sha256sums = 5e6538589b0b6509a265cd67a28cb791e0f87a0ae88b9bb86cd97e6227a8d93b
 	sha256sums = fc36c4fed51fd543697fb6c9eeb3f57151e9ba2745339119950875d8888d5046
