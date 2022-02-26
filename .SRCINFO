@@ -1,7 +1,7 @@
 pkgbase = gdm-settings
 	pkgdesc = A settings app for Gnome's Login Manager (GDM)
 	pkgver = 0.3+alpha
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/realmazharhussain/gdm-settings
 	arch = any
 	license = AGPL3
@@ -9,6 +9,7 @@ pkgbase = gdm-settings
 	makedepends = git
 	makedepends = meson
 	makedepends = blueprint-compiler-git>=r128
+	makedepends = gobject-introspection
 	depends = libadwaita
 	depends = glib2
 	depends = python-gobject
