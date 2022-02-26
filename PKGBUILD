@@ -9,20 +9,18 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-cli-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=v2.2.10.520.gd4c52a37
+pkgver=2.4.2.15.g10b1a9b6
 pkgrel=1
-pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
+pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT version)"
 license=('GPL3')
 arch=('x86_64')
 url='https://github.com/eiskaltdcpp/eiskaltdcpp'
 conflicts=('eiskaltdcpp')
 options=('!emptydirs')
-source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git')
-sha256sums=('SKIP')
 makedepends=('git'
              'cmake'
              'lua'
-             'libidn'
+             'libidn2'
              'aspell'
              'attr'
              'wget'
@@ -42,51 +40,49 @@ makedepends=('git'
 #              'perl-rpc-xml'
 #              'perl-term-shellui'
              )
+source=('git+https://github.com/eiskaltdcpp/eiskaltdcpp.git')
+sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd eiskaltdcpp
-  echo "$(git describe --long --tags | tr - .)"
-}
-
-prepare() {
-  mkdir -p build
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
 
-  cd build
-  cmake ../eiskaltdcpp \
+  cmake -S eiskaltdcpp -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLUA_SCRIPT=ON \
     -DUSE_QT5=ON \
     -DUSE_QT_QML=OFF \
     -DUSE_QT_SQLITE=ON \
     -DUSE_GTK3=ON \
-    -DLUA_SCRIPT=ON \
     -DUSE_MINIUPNP=ON \
     -DUSE_ASPELL=ON \
     -DUSE_LIBNOTIFY=ON \
+    -DUSE_JS=ON \
+    -DUSE_CLI_XMLRPC=OFF \
+    -DUSE_CLI_JSONRPC=ON \
     -DWITH_LUASCRIPTS=ON \
     -DWITH_SOUNDS=ON \
     -DWITH_DEV_FILES=ON \
-    -DUSE_JS=ON \
     -DXMLRPC_DAEMON=OFF \
     -DPERL_REGEX=ON \
     -DENABLE_STACKTRACE=ON \
     -DJSONRPC_DAEMON=ON \
-    -DUSE_CLI_XMLRPC=OFF \
-    -DUSE_CLI_JSONRPC=ON \
     -DLOCAL_JSONCPP=OFF \
-    -DLOCAL_BOOST=OFF
+    -DINSTALL_QT_TRANSLATIONS=ON
 
-  make
+  cmake --build build
 }
 
 package_eiskaltdcpp-core-git() {
   pkgdesc="EiskaltDC++ Core. (GIT Version)"
   depends=('openssl'
            'lua'
-           'libidn'
+           'libidn2'
            'attr'
            'boost-libs'
            'miniupnpc'
@@ -102,7 +98,7 @@ package_eiskaltdcpp-core-git() {
              'eiskaltdcpp-daemon-git: EiskaltDC++ Daemon'
              )
 
-  make -C build/dcpp DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build/dcpp --target install
 }
 
 package_eiskaltdcpp-qt-git() {
@@ -121,7 +117,7 @@ package_eiskaltdcpp-qt-git() {
              'eiskaltdcpp-qt5'
              )
 
-  make -C build/eiskaltdcpp-qt DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-qt --target install
 }
 
 package_eiskaltdcpp-gtk-git() {
@@ -137,7 +133,7 @@ package_eiskaltdcpp-gtk-git() {
              'eiskaltdcpp-gtk3'
              )
 
-  make -C build/eiskaltdcpp-gtk DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-gtk --target install
 }
 
 package_eiskaltdcpp-daemon-git() {
@@ -148,7 +144,7 @@ package_eiskaltdcpp-daemon-git() {
   provides=('eiskaltdcpp-daemon')
   conflicts=('eiskaltdcpp-daemon')
 
-  make -C build/eiskaltdcpp-daemon DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-daemon --target install
 }
 
 package_eiskaltdcpp-cli-git() {
@@ -163,7 +159,7 @@ package_eiskaltdcpp-cli-git() {
   provides=('eiskaltdcpp-cli')
   conflicts=('eiskaltdcpp-cli')
 
-  make -C build/eiskaltdcpp-cli DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build/eiskaltdcpp-cli --target install
 }
 
 package_eiskaltdcpp-data-git() {
