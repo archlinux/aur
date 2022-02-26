@@ -1,7 +1,7 @@
 pkgbase=overtone-wpc
-pkgname=("${pkgbase}-af210-vst" "${pkgbase}-af210m-vst" "${pkgbase}-dyn500-vst" "${pkgbase}-eq500-vst" "${pkgbase}-fc70-vst" "${pkgbase}-ptc2a-vst" "${pkgbase}-ptm5a-vst" "${pkgbase}-rvb500-vst")
+pkgname=("${pkgbase}-af210-vst-bin" "${pkgbase}-af210m-vst-bin" "${pkgbase}-dyn500-vst-bin" "${pkgbase}-eq500-vst-bin" "${pkgbase}-fc70-vst-bin" "${pkgbase}-ptc2a-vst-bin" "${pkgbase}-ptm5a-vst-bin" "${pkgbase}-rvb500-vst-bin")
 pkgver=201904
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.overtonedsp.co.uk/download/download_wpc/"
 license=('EULA')
@@ -22,7 +22,7 @@ prepare () {
 }
 
 
-package_overtone-wpc-af210-vst() {
+package_overtone-wpc-af210-vst-bin() {
 	pkgdesc="OvertoneDSP AF210 - Graphical EQ (VST)"
 	cd $srcdir/OverToneWPC/AF210/Linux
 	tar -xvzf *.tar.gz
@@ -34,7 +34,7 @@ package_overtone-wpc-af210-vst() {
 	install -Dm755 AF210.so $pkgdir/usr/lib/vst/AF210.so
 }
 
-package_overtone-wpc-af210m-vst() {
+package_overtone-wpc-af210m-vst-bin() {
 	pkgdesc="OvertoneDSP AF210M - Graphical EQ (VST)"
 	cd $srcdir/OverToneWPC/AF210M/Linux
 	tar -xvzf *.tar.gz
@@ -46,7 +46,7 @@ package_overtone-wpc-af210m-vst() {
 	install -Dm755 AF210M.so $pkgdir/usr/lib/vst/AF210M.so
 }
 
-package_overtone-wpc-dyn500-vst() {
+package_overtone-wpc-dyn500-vst-bin() {
 	pkgdesc="OvertoneDSP DYN500 - Channel Dynamic Range Compressor (VST)"
 	cd $srcdir/OverToneWPC/DYN500/Linux
 	tar -xvzf *.tar.gz
@@ -58,7 +58,7 @@ package_overtone-wpc-dyn500-vst() {
 	install -Dm755 DYN500.so $pkgdir/usr/lib/vst/DYN500.so
 }
 
-package_overtone-wpc-eq500-vst() {
+package_overtone-wpc-eq500-vst-bin() {
 	pkgdesc="OvertoneDSP EQ500 - Analogue Filter Modelling Channel EQ (VST)"
 	cd $srcdir/OverToneWPC/EQ500/Linux
 	tar -xvzf *.tar.gz
@@ -70,7 +70,7 @@ package_overtone-wpc-eq500-vst() {
 	install -Dm755 EQ500.so $pkgdir/usr/lib/vst/EQ500.so
 }
 
-package_overtone-wpc-fc70-vst() {
+package_overtone-wpc-fc70-vst-bin() {
 	pkgdesc="OvertoneDSP FC70 - Vintage Compressor / Limiter Plug-in (VST)"
 	cd $srcdir/OverToneWPC/FC70/Linux
 	tar -xvzf *.tar.gz
@@ -82,7 +82,7 @@ package_overtone-wpc-fc70-vst() {
 	install -Dm755 FC70.so $pkgdir/usr/lib/vst/FC70.so
 }
 
-package_overtone-wpc-ptc2a-vst() {
+package_overtone-wpc-ptc2a-vst-bin() {
 	pkgdesc="OvertoneDSP PTC-2A - Vintage Program EQ Plug-in (VST)"
 	cd $srcdir/OverToneWPC/PTC-2A/Linux
 	tar -xvzf *.tar.gz
@@ -94,7 +94,7 @@ package_overtone-wpc-ptc2a-vst() {
 	install -Dm755 PTC-2A.so $pkgdir/usr/lib/vst/PTC-2A.so
 }
 
-package_overtone-wpc-ptm5a-vst() {
+package_overtone-wpc-ptm5a-vst-bin() {
 	pkgdesc="OvertoneDSP PTM-5A - Vintage Mid-Range EQ Plug-in (VST)"
 	cd $srcdir/OverToneWPC/PTM-5A/Linux
 	tar -xvzf *.tar.gz
@@ -106,7 +106,7 @@ package_overtone-wpc-ptm5a-vst() {
 	install -Dm755 PTM-5A.so $pkgdir/usr/lib/vst/PTM-5A.so
 }
 
-package_overtone-wpc-rvb500-vst() {
+package_overtone-wpc-rvb500-vst-bin() {
 	pkgdesc="OvertoneDSP RVB500 - Stereo Plate Reverb (VST)"
 	cd $srcdir/OverToneWPC/RVB500/Linux
 	tar -xvzf *.tar.gz
