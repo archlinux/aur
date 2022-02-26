@@ -1,0 +1,17 @@
+pkgbase = sigma-amp-bin
+	pkgdesc = Audio Assault Modern High Gain Amp Simulator
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/products/sigma
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Sigma Amp.desktop
+	sha256sums = 6f37b8041493b3063f435601aa2e930e8e74026cb69a7077f570d1ff3b065b17
+
+pkgname = sigma-amp-bin
