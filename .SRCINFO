@@ -1,0 +1,16 @@
+pkgbase = xontrib-hist-navigator
+	pkgdesc = Fish-shell like prevd and nextd for xonsh with keyboard shortcuts
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/jnoortheen/xontrib-hist-navigator
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-poetry
+	depends = python3
+	depends = xonsh
+	source = https://github.com/jnoortheen/xontrib-hist-navigator/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = xontrib-hist-navigator
