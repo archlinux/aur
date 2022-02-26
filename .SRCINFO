@@ -1,0 +1,17 @@
+pkgbase = air-impulse-loader-bin
+	pkgdesc = Audio Assault AIR Impulse Response Loader
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://audio-assault.com/air.php
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = aIR Impulse Loader.desktop
+	sha256sums = c8a64689f395a5a1736ae26af81cca5d6d1400c6291e3417d635a2fd916ef589
+
+pkgname = air-impulse-loader-bin
