@@ -2,7 +2,7 @@
 
 pkgname=spotify-snapstore
 pkgver=1.1.77.643_g3c4c6fc6
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
