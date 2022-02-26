@@ -1,6 +1,6 @@
 pkgbase = e-search-git
 	pkgdesc = 识屏 · 搜索
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://xushengfeng.github.io/eSearch-website/
 	install = e-search-git.install
@@ -22,6 +22,7 @@ pkgbase = e-search-git
 	depends = metasploit
 	depends = trash-cli
 	depends = xdg-utils
+	depends = libappindicator-gtk3
 	optdepends = alsa-lib
 	optdepends = apparmor
 	optdepends = gir1.2-gnomekeyring-1.0
@@ -29,7 +30,7 @@ pkgbase = e-search-git
 	optdepends = pulseaudio
 	options = !strip
 	options = !emptydirs
-	source = https://download.fastgit.org/xushengfeng/eSearch/releases/download/1.3.6/e-search_1.3.6_amd64.deb
-	sha512sums = cb0d4456a2919d22a2ec2e4b7456318492f86d84bbd5c3aa7e9f964ee916ec8b5c82a805490f46af7a589804dd1248ac9019833d0ae72a10dbc819874df7a510
+	source = https://download.fastgit.org/xushengfeng/eSearch/releases/download/1.3.7/e-search_1.3.7_amd64.deb
+	sha512sums = 91a68acdb15e643e7979f401935eead038092b0d64d02f502ac9906fd066c24521e5f0c3165c5f48b5fc5e3896bfdbc9271e9edaa5dd828ce6f360bf2e95c10e
 
 pkgname = e-search-git
