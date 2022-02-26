@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="ayatana-webmail"
-pkgver="21.11.17"
+pkgver="22.2.26"
 pkgrel="1"
 pkgdesc="Webmail notifications and actions for any desktop"
 arch=("any")
@@ -12,7 +12,7 @@ depends=("ayatana-indicator-messages" "hicolor-icon-theme" "dconf" "gobject-intr
 makedepends=("python-setuptools" "python-polib")
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("62696ef144dfdae00abe3cdc730da341")
+md5sums=("98ee497c3d3fa3122524c0f654163bc0")
 replaces=("unity-mail")
 conflicts=("unity-mail")
 
