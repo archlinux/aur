@@ -2,7 +2,7 @@
 
 pkgname=('libervia-media-hg')
 _realname=libervia-media
-pkgver=0.8.r82.d31fac1efcee
+pkgver=0.8.r83.8427bdf59ea7
 _version=0.8
 pkgrel=1
 url="https://salut-a-toi.org/"

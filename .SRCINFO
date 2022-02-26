@@ -1,5 +1,5 @@
 pkgbase = libervia-media-hg
-	pkgver = 0.8.r82.d31fac1efcee
+	pkgver = 0.8.r83.8427bdf59ea7
 	pkgrel = 1
 	url = https://salut-a-toi.org/
 	arch = any
