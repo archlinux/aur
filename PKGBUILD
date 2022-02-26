@@ -2,8 +2,8 @@
 
 pkgname='libervia-web-hg'
 _realname=libervia
-pkgver=0.7.0.r1451.526318c48953
-_version=0.7.0
+pkgver=0.9.0.r1492.3a34d78f2717
+_version=0.9.0
 pkgrel=1
 url="http://salut-a-toi.org/"
 arch=('any')
