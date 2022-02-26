@@ -28,7 +28,7 @@ sha256sums=(
 )
 
 package() {
-    install -Dm755 "PicGo-${pkgver}.AppImage" "${pkgdir}/opt/appimages/picgo.AppImage"
+    install -Dm755 "PicGo-${_release}.AppImage" "${pkgdir}/opt/appimages/picgo.AppImage"
     install -Dm644 "LICENSE" "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 "picgo.desktop"                    "${pkgdir}/usr/share/applications/picgo.desktop"
     install -Dm644 "picgo.png"                        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/picgo.png"
