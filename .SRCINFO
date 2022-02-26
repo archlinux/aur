@@ -1,6 +1,6 @@
 pkgbase = labelme
 	pkgdesc = Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation).
-	pkgver = 4.6.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/wkentaro/labelme
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = labelme
 	depends = python-yaml
 	optdepends = pyside2: Qt backend, at least install one Qt backend
 	optdepends = python-pyqt5: Qt backend
-	source = labelme-4.6.0.tar.gz::https://github.com/wkentaro/labelme/archive/v4.6.0.tar.gz
-	sha512sums = 320293bb2e93673af9f7f97d48f28d2ec79e6e11df8d48006f6c8f868fea3f6199149b639ddb81c9c40bc8816a1a9514a2b6dd6c262138ad3f444829c8fe3300
+	source = labelme-5.0.0.tar.gz::https://github.com/wkentaro/labelme/archive/v5.0.0.tar.gz
+	sha512sums = 48d6344a2e414a9815562d34dbad05e9ac7ccdedfe31591920af34cd56b951bffc87882e6b12fa6347d3d8d599366474b6553ce63afbb56efb4ac07118c6f497
 
 pkgname = labelme
