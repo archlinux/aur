@@ -1,6 +1,6 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=3.17.10003.r1.g0726283
+pkgver=3.17.10004.r0.g338ef94
 pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
