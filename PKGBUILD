@@ -1,12 +1,12 @@
 # Maintainer: Ícar N. S. <personal@icarns.xyz>
 pkgname=gtuber-git
 pkgver=r242.668c331
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library to fetch media info from websites."
 arch=(any)
 url="https://github.com/Rafostar/gtuber"
 license=('LGPL')
-depends=('glib2' 'glibc' 'gobject-introspection' 'libsoup3' 'gstreamer>=1.20' 'gst-plugins-base>=1.20' 'json-glib' 'gtk-doc')
+depends=('glib2' 'glibc' 'gobject-introspection' 'libsoup3' 'gstreamer>=1.20' 'gst-plugins-base>=1.20' 'json-glib' 'gtk-doc' 'libxml2')
 makedepends=('git' 'gcc' 'meson' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
