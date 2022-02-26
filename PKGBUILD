@@ -5,7 +5,7 @@
 pkgname=containers-common-git
 _pkgname=containers-common
 _gitpkgname=common
-pkgver=0.43.3_dev.r1304.g8ca8dd9
+pkgver=0.47.4+dev.r1683.ge28d5678
 pkgrel=1
 pkgdesc="Configuration files and manpages for containers (git)"
 arch=('any')
@@ -29,20 +29,26 @@ source=("git+$url"
   "git+$_baseurl/podman.git"
   "git+$_baseurl/skopeo.git"
   "git+$_baseurl/storage.git"
+  "git+$_baseurl/shortnames.git"
   'mounts.conf'
 )
 sha256sums=('SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'SKIP'
-  'ae96bbb4a2a3e10759b1506754724bff0fa05feaf16958d19c73124e6b3fed45')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'ae96bbb4a2a3e10759b1506754724bff0fa05feaf16958d19c73124e6b3fed45')
 
 pkgver() {
   cd "$srcdir/$_gitpkgname" || exit 1
   commit=$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
   ver=$(grep const version/version.go | sed -re 's|.*"(.*)"$|\1|g')
   echo "${ver//-/_}.${commit}"
+}
+
+prepare() {
+  sed -r 's/(GOMD2MAN = ).*/\1 go-md2man/' -i storage/docs/Makefile
 }
 
 build() {
@@ -66,7 +72,6 @@ build() {
   )
   (
     cd "storage" || exit 1
-    sed -r 's/(GOMD2MAN = ).*/\1 go-md2man/' -i docs/Makefile
     make docs
   )
 }
@@ -83,12 +88,13 @@ package() {
 
   (
     cd "common" || exit 1
-    # man pages and configs
-    make install PREFIX="$pkgdir"/usr
     # copy configs to other locations
     install -vDm 644 pkg/config/containers.conf -t "${pkgdir}/etc/containers/"
+    install -vDm 644 pkg/config/containers.conf -t "$pkgdir/usr/share/containers/"
     install -vDm 644 pkg/seccomp/seccomp.json -t "${pkgdir}/etc/containers/"
     install -vDm 644 pkg/seccomp/seccomp.json -t "${pkgdir}/usr/share/containers/"
+    # man pages (the makefile has a bug can't use the install target)
+    install -vDm 644 docs/*.5 -t "$pkgdir/usr/share/man/man5/"
     # license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   )
@@ -96,8 +102,8 @@ package() {
     cd "image" || exit 1
     # configs
     install -vDm 644 registries.conf -t "${pkgdir}/etc/containers/"
-    # man pages (the makefile has a bug can't use the install target)
-    install -vDm 644 docs/*.5 -t "${pkgdir}/usr/share/man/man5/"
+    # man pages
+    make install-docs DESTDIR="$pkgdir"
   )
   (
     cd "podman" || exit 1
@@ -114,7 +120,12 @@ package() {
     # configs
     install -vDm 644 storage.conf -t "${pkgdir}/etc/containers/"
     install -vDm 644 storage.conf -t "${pkgdir}/usr/share/containers/"
-    # man pages
-    make install PREFIX="$pkgdir"/usr
+    # man pages (the makefile has a bug can't use the install target)
+    install -vDm 644 docs/*.1 -t "$pkgdir/usr/share/man/man1/"
+    install -vDm 644 docs/*.5 -t "$pkgdir/usr/share/man/man5/"
+  )
+  (
+    cd "shortnames" || exit 1
+    install -vDm 644 shortnames.conf "$pkgdir/etc/containers/registries.conf.d/00-shortnames.conf"
   )
 }
