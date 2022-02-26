@@ -1,0 +1,17 @@
+pkgbase = hellbeast-amp-bin
+	pkgdesc = Audio Assault Hellish Brutal Amp Sim
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/collections/plugins/products/hellbeast
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Hellbeast Amp.desktop
+	sha256sums = 180f6fc07a692afba1b01c03b4fab2c3d186630c1028d9e72b6a7c6a2593cafb
+
+pkgname = hellbeast-amp-bin

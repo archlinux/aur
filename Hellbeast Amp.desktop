@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Comment=Audio Assault Hellish Brutal Amp Sim
+Type=Application
+Categories=AudioVideo;X-AudioEditing
+Terminal=false
+Exec="/usr/bin/Hellbeast v2 Standalone"
+Name=Hellbeast Guitar Amp
