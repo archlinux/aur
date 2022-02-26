@@ -1,0 +1,17 @@
+pkgbase = freetok-cpp-git
+	pkgdesc = A libre URL extractor for tiktok
+	pkgver = r2.78ea682
+	pkgrel = 1
+	url = https://github.com/ProgrammerIn-wonderland/freetok
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	depends = nlohmann-json
+	depends = curl
+	provides = freetok-cpp
+	conflicts = freetok-cpp
+	source = freetok-cpp-git::git+https://github.com/ProgrammerIn-wonderland/freetok
+	md5sums = SKIP
+
+pkgname = freetok-cpp-git
