@@ -1,11 +1,13 @@
-# Maintainer: pingplug < aur at pingplug dot me >
+# -*- mode: Shell-script; eval: (setq tab-width 2) -*-
+# Maintainer: Dominic Meiser < git at msrd0 dot de >
+# Contributor: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
 _commit=be91d2917d9860326cb5fd1d03ffe1042a72f6d3  # tags/3.2.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-pkgbase=mingw-w64-harfbuzz
-pkgname=('mingw-w64-harfbuzz' 'mingw-w64-harfbuzz-icu')
+pkgbase=mingw-w64-harfbuzz-static
+pkgname=('mingw-w64-harfbuzz-static' 'mingw-w64-harfbuzz-static-icu')
 pkgver=3.2.0
 pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
@@ -34,17 +36,6 @@ pkgver() {
 build() {
   cd harfbuzz
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch}-shared && pushd build-${_arch}-shared
-    ${_arch}-meson \
-      -D b_lto=false \
-      -D graphite=enabled \
-      -D tests=disabled \
-      -D docs=disabled \
-      ..
-    # fix linker selection error
-    sed -i 's|: c_LINKER|: cpp_LINKER|g' build.ninja
-    ninja
-    popd
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-meson \
       --default-library static \
@@ -62,33 +53,33 @@ build() {
   done
 }
 
-package_mingw-w64-harfbuzz() {
+package_mingw-w64-harfbuzz-static() {
+	conflicts=('mingw-w64-harfbuzz')
+	provides=("mingw-w64-harfbuzz=$pkgver")
+	
   for _arch in ${_architectures}; do
     cd "${srcdir}/harfbuzz/build-${_arch}-static"
-    DESTDIR="${pkgdir}" ninja install
-    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
     DESTDIR="${pkgdir}" ninja install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' | xargs ${_arch}-strip -g
 
     mkdir -p hb-icu/usr/${_arch}/{bin,include/harfbuzz,lib/pkgconfig}; cd hb-icu
-    mv "${pkgdir}"/usr/${_arch}/bin/libharfbuzz-icu* ./usr/${_arch}/bin
     mv "${pkgdir}"/usr/${_arch}/lib/libharfbuzz-icu* ./usr/${_arch}/lib
     mv "${pkgdir}"/usr/${_arch}/lib/pkgconfig/harfbuzz-icu.pc ./usr/${_arch}/lib/pkgconfig
     mv "${pkgdir}"/usr/${_arch}/include/harfbuzz/hb-icu.h ./usr/${_arch}/include/harfbuzz
   done
 }
 
-package_mingw-w64-harfbuzz-icu() {
+package_mingw-w64-harfbuzz-static-icu() {
   pkgdesc="OpenType text shaping engine (ICU integration, mingw-w64)"
-  depends=('mingw-w64-harfbuzz'
+  depends=('mingw-w64-harfbuzz-static'
            'mingw-w64-icu')
+	provides=("mingw-w64-harfbuzz-icu=$pkgver")
+	conflicts=('mingw-w64-harfbuzz-icu')
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}-shared"
+    cd "${srcdir}/harfbuzz/build-${_arch}-static"
     mkdir -p "${pkgdir}/usr/${_arch}"
     mv hb-icu/usr/${_arch}/* "${pkgdir}/usr/${_arch}"
   done
 }
-
-# vim:set ts=2 sw=2 et:
