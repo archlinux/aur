@@ -1,7 +1,7 @@
 pkgbase = lsi-openpegasus
 	pkgdesc = Openpegasus libs for LSI (Broadcom) Raid products
 	pkgver = 2.14.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.avagotech.com/products/server-storage
 	arch = x86_64
 	license = custom:TOG
@@ -9,10 +9,11 @@ pkgbase = lsi-openpegasus
 	makedepends = openssl
 	makedepends = net-snmp
 	makedepends = openslp
+	makedepends = libxcrypt
 	makedepends = setconf
 	depends = sqlite
 	depends = openssl
-	depends = libxcrypt
+	depends = libcrypt.so
 	source = https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz
 	source = https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.7.0-PIE.patch
 	source = https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.9.0-no-rpath.patch
@@ -29,4 +30,3 @@ pkgbase = lsi-openpegasus
 	sha256sums = deb3e52e5406419cc42d15f1a668ed291ef8337217bb5bc9cefd01ef3b804371
 
 pkgname = lsi-openpegasus
-

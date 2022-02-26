@@ -2,19 +2,20 @@
 
 pkgname=lsi-openpegasus
 pkgver=2.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Openpegasus libs for LSI (Broadcom) Raid products"
 arch=('x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
 depends=('sqlite'
          'openssl'
-         'libxcrypt'
+         'libcrypt.so'
          )
 makedepends=('icu'
              'openssl'
              'net-snmp'
              'openslp'
+             'libxcrypt'
              'setconf'
              )
 source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
@@ -36,7 +37,7 @@ sha256sums=('9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
 
 _create_links() {
   # create soname links
-  for _lib in $(find "${pkgdir}" -name '*.so*'); do
+  for _lib in $(find "${pkgdir}" -name '*.so*' -type f); do
     _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
     _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
     [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
