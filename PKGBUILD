@@ -3,7 +3,7 @@
 
 pkgname=avvie-git
 _app_id=com.github.taiko2k.avvie
-pkgver=v1.7.r6.g5d946f2
+pkgver=1.7.r6.g5d946f2
 pkgrel=1
 pkgdesc="A utility for quickly cropping images"
 arch=('any')
@@ -20,7 +20,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
