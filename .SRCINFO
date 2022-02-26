@@ -1,0 +1,17 @@
+pkgbase = bulldog-amp-bin
+	pkgdesc = Audio Assault Brute-Force Amp Sim
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/collections/plugins/products/bulldog
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = BULLDOG Amp.desktop
+	sha256sums = 056e65d5b34650081b2b03ed412bf06274c2f116768333decae4d18259480d0b
+
+pkgname = bulldog-amp-bin
