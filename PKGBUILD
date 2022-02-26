@@ -1,4 +1,4 @@
-# Maintainer:  <feofan@feofanlaptop>
+# Maintainer: Sergey Kostyaev <feo.me@ya.ru>
 pkgname=freelib-git
 pkgver=6.0.10
 pkgrel=1
