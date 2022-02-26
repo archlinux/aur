@@ -1,6 +1,6 @@
 pkgbase = python-flask-limiter
 	pkgdesc = Rate limiting for flask applications
-	pkgver = 2.0.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://flask-limiter.readthedocs.org
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-flask-limiter
 	depends = python-flask
 	depends = python-six
 	depends = python-limits
-	source = https://files.pythonhosted.org/packages/source/F/Flask-Limiter/Flask-Limiter-2.0.2.tar.gz
-	sha256sums = 7d83bb26510355409fd10f4d8fbc4b4bf6b177063f1a4ee70003f30f3288c430
+	source = https://files.pythonhosted.org/packages/source/F/Flask-Limiter/Flask-Limiter-2.1.3.tar.gz
+	sha256sums = 28c6b3c51fcbfab131e592dec7cf826ccc02dfb7cc4fe3e16c8ac21058672467
 
 pkgname = python-flask-limiter
