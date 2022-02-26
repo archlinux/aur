@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Comment=Audio Assault Reamp Studio Guitar Amplifier
+Type=Application
+Categories=AudioVideo;X-AudioEditing
+Terminal=false
+Exec="/usr/bin/ReAmp Studio Standalone"
+Name=Reamp Studio Guitar Amp

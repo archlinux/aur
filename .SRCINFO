@@ -1,0 +1,17 @@
+pkgbase = reamp-studio-bin
+	pkgdesc = Audio Assault Reamp Studio Guitar Amplifier
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://audio-assault.com/reampstudio.php
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Reamp Studio.desktop
+	sha256sums = 5aacaa1d9663f95bb8c22de9a218e3a84a22c2c97daa819eadc7f4aae6bf94fb
+
+pkgname = reamp-studio-bin
