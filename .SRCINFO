@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = 7.2_GE_2
+	pkgver = 7.3_GE_1
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
@@ -23,14 +23,14 @@ pkgbase = proton-ge-custom-bin
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
 	provides = proton
-	provides = proton-ge-custom=7.2.GE_2
+	provides = proton-ge-custom=7.3.GE_1
 	conflicts = proton-ge-custom-legacy-bin
 	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-7.2-GE-2_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/7.2-GE-2/Proton-7.2-GE-2.tar.gz
+	source = proton-ge-custom-7.3-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/7.3-GE-1/Proton-7.3-GE-1.tar.gz
 	source = supplementary.tar.zst
-	sha512sums = 2e617f978c312ef8c5db62d9e09a1e6cfb5aec6a056ff3548aace90d3bd393e6c4ed3d39271e893825e66fafa8fa5045a9a6c81009a9844b27b94ece604fdb58
+	sha512sums = a6cff92e0182ee3ce410be8958507e47758f6028c392343150b00a8f57c447e3011b1a3739f31233bb0aa83515982f4dd45c2dc53d33eb739868b2d0ce6e6893
 	sha512sums = bd680bcd8fc45ed728514be12a2728b09a48856c522f94f1903d18d1755ac15804e36964f9a840469dd3f28fb2f44b50c048fe18448ab3ff16e4abb289f51d07
 
 pkgname = proton-ge-custom-bin
