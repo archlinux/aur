@@ -3,7 +3,7 @@
 # 
 
 pkgname=graphite-cli-git
-pkgver=0.17.1.r1.176e173d
+pkgver=0.17.3.r0.cb07ae93
 pkgrel=1
 pkgdesc="CLI that makes creating stacked git changes fast & intuitive"
 url=https://graphite.dev/
@@ -13,7 +13,7 @@ depends=('nodejs' 'git')
 makedepends=('npm' 'yarn' 'findutils')
 provides=('graphite-cli')
 conflicts=('graphite-cli')
-source=('git+https://github.com/screenplaydev/graphite-cli')
+source=('git+https://github.com/withgraphite/graphite-cli')
 md5sums=('SKIP')
 
 _srcname="graphite-cli"
@@ -43,7 +43,7 @@ build() {
 package() {
     # npm is a lot better than yarn at installing global packages in a way that is friendly to packages.
     npm install -g --no-audit --prefix "$pkgdir/usr" "$srcdir/graphite-cli.tgz"
-    install -D "$srcdir/graphite-completions" "$pkgdir/usr/share/bash-completions/graphite"
-    install -D "$srcdir/gt-completions" "$pkgdir/usr/share/bash-completions/gt"
+    install -D "$srcdir/graphite-completions" "$pkgdir/usr/share/zsh/site-functions/_graphite"
+    install -D "$srcdir/gt-completions" "$pkgdir/usr/share/zsh/site-functions/_gt"
     chown -R root:root "$pkgdir"
 }
