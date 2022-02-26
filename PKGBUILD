@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://code.launchpad.net/~lightdm-team/crowd-greeter/trunk"
 license=('GPL3')
 depends=('gtk3' 'lightdm' 'glu' 'libgl')
-makedepends=('bzr' 'vala')
+makedepends=('bzr' 'vala' 'gnome-common')
 provides=(crowd-greeter{,-bzr}=$pkgver)
 source=("bzr+lp:crowd-greeter" 'new-avatar.patch')
 sha256sums=('SKIP'
