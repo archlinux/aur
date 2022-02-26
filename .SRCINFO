@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
 	pkgver = 7.3_GE_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	changelog = changelog
 	arch = x86_64
@@ -28,9 +28,9 @@ pkgbase = proton-ge-custom-bin
 	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = proton-ge-custom-7.3-GE-1_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/7.3-GE-1/Proton-7.3-GE-1.tar.gz
+	source = proton-ge-custom-7.3-GE-1_2.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/7.3-GE-1/Proton-7.3-GE-1.tar.gz
 	source = supplementary.tar.zst
 	sha512sums = a6cff92e0182ee3ce410be8958507e47758f6028c392343150b00a8f57c447e3011b1a3739f31233bb0aa83515982f4dd45c2dc53d33eb739868b2d0ce6e6893
-	sha512sums = bd680bcd8fc45ed728514be12a2728b09a48856c522f94f1903d18d1755ac15804e36964f9a840469dd3f28fb2f44b50c048fe18448ab3ff16e4abb289f51d07
+	sha512sums = 403f011e4299e3b2f7dc18b5c61729d500d07052aa9974d541fb5bce40dc59f8cd341fc77551668fc416d24f71de42b3ad39040f277cba7529b5361b548de051
 
 pkgname = proton-ge-custom-bin

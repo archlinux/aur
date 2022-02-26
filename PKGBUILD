@@ -6,7 +6,7 @@
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
 pkgver=7.3_GE_1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
@@ -46,9 +46,17 @@ url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
 sha512sums=('a6cff92e0182ee3ce410be8958507e47758f6028c392343150b00a8f57c447e3011b1a3739f31233bb0aa83515982f4dd45c2dc53d33eb739868b2d0ce6e6893'
-            'bd680bcd8fc45ed728514be12a2728b09a48856c522f94f1903d18d1755ac15804e36964f9a840469dd3f28fb2f44b50c048fe18448ab3ff16e4abb289f51d07')
+            '403f011e4299e3b2f7dc18b5c61729d500d07052aa9974d541fb5bce40dc59f8cd341fc77551668fc416d24f71de42b3ad39040f277cba7529b5361b548de051')
 
 build() {
+## remove unused: dist_lock, cleanup_legacy_dist(), need_tarball_extraction(), extract_tarball()
+patch "${_srcdir}"/proton patches/distlock-extract-defaultpfx.patch
+## use newest dist
+rm -rf "${_srcdir}/dist"/*
+bsdtar -xf "${_srcdir}"/proton_dist.tar.gz -C "${_srcdir}"/dist
+## remove artifacts
+rm "${_srcdir}"/proton_dist.tar.gz
+rm "${_srcdir}"/protonfixes/*.tar.xz
 ## setup paths
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
 ## setup naming that appears in steam compat tool list
@@ -63,6 +71,7 @@ install -d ${pkgdir}/$(dirname ${_execfile})/
 ## licenses
 mv ${_srcdir}/LICENSE ${pkgdir}/${_licensedir}/license
 mv ${_srcdir}/LICENSE.OFL ${pkgdir}/${_licensedir}/license_OFL
+mv ${_srcdir}/PATENTS.AV1 ${pkgdir}/${_licensedir}/license_AV1
 mv ${_srcdir}/protonfixes/LICENSE ${pkgdir}/${_licensedir}/license_protonfixes
 ## config files
 install --mode=0775 --group=50 ${srcdir}/configs/user_settings.py ${pkgdir}/${_protoncfg}

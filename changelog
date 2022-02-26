@@ -1,3 +1,100 @@
+
+## Proton-7.3-GE-1 Released
+
+### WINE:
+
+imported rebased fullscreen hack from proton 7.0
+imported SDL patches from proton 7.0
+imported gamepad patches from proton 7.0
+imported racing wheel/ffb patches from proton 7.0
+imported several misc. game fixes/patches from proton 7.0
+imported gamescope patches from proton 7.0
+imported updated mfplat patches from proton 7.0
+imported rebased audio patches from proton 7.0
+imported rebased mouse focus patches from proton 7.0
+imported keyboard translation patches from proton 7.0
+imported rebased font patches from proton 7.0
+imported EAC patches from proton 7.0
+imported network connectivity patches from proton 7.0
+Cities XXL fix added (Thanks Alistair Leslie-Hughes)
+updated wine + staging to git
+
+### PROTON:
+
+imported build system changes from proton 7.0
+updated gstreamer to 1.18.6
+updated dxvk to git
+updated vkd3d-proton to git
+updated dxvk-nvapi to git
+removed FAudio from build (it's part of WINE now and works with WMA decoding)
+removed jxrlib from build (it's part of WINE now)
+
+### PROTONFIXES:
+
+Added EAC disable workaround to allow Gears5 single-player to work (Thanks ga2mer)
+Added EAC disable workaround to allow Jump Force single-player to work (Thanks Nej on discord)
+Added EAC disable workaround to allow Dragonball Fighter Z single-player to work (Thanks Nej on discord)
+Added EAC disable workaround to allow Elden Ring single-player to work
+Added fix for Civ IV: Colonization (Thanks jo-oe)
+Added fix for Heavy Rain (Thanks Sterophonick)
+Added fix for Putt Putt PBS (Thanks Sterophonick)
+Removed Baldur's Gate 3 Launcher disable -- it works now. (Thanks Mershi)
+Removed video disable for Black Ops III -- they work now
+
+Some mfplat related test results:
+
+### Working:
+
+borderlands 3
+bloodstained ritual of the night
+seven: days gone
+mortal kombat 11
+monster hunter rise
+ffxiv
+soul calibur vi
+Astroneer
+American Fugutive
+Aven Colony
+Scrap Mechanic
+nier replicant
+power rangers battle for the grid
+haven
+tokyo xanadu xe+
+Resident Evil 3 remake
+call of duty: black ops III
+biomutant
+industry of titan
+mutant year zero
+
+### Broken:
+
+spyro - in-game videos play audio in wrong language
+Catherine Classic
+darksiders warmastered edition
+Devil may cry Collection
+Battlestar Galactica - Cinematic upside down.
+the good life
+
+## Proton-7.2-GE-2 Released
+
+    Hotfix: fix wine mono checksum failure
+    fshack: Add faking current resolution ability. Details here: #52 (thanks Dragomir-Ivanov)
+
+## Proton-7.2-GE-1 Released
+
+wine: updated Forza Horizon 5 wine pulseaudio crash on splash screen fix -- properly fixed now rather than reverting. (thanks Paul Goffman)
+wine: updated MK11 patch with pending upstream patch for proper TIB handler fix (thanks Paul Goffman)
+wine: updated to 7.2
+wine-staging: updated to 7.2
+wine-staging: winepulse patches updated and re-enabled (wine-staging/wine-staging@c437a01)
+dxvk-nvapi: dxvk-nvapi has been updated to latest git -- allows physx to work in games that use it when physx is installed
+dxvk: updated to latest git
+vkd3d-proton: updated to latest git
+FAudio: updated to latest git
+protonfixes: protonfix added to allow Batman Arkham Knight to use physx (thanks SveSop)
+protonfixes: protonfix added to fix Watch Dogs xaudio2_7 crash (thanks Sterophonick)
+protonfixes: winetricks updated
+
 ## Proton-7.1-GE-2 Released
 
 -This is a hotfix to restore WMA audio support.
