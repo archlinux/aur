@@ -1,6 +1,6 @@
 pkgbase = idokremote-git
 	pkgdesc = Remote for Kodi
-	pkgver = r126.c4c84e6
+	pkgver = r128.fbfde61
 	pkgrel = 1
 	url = https://gitlab.com/The3DmaN/idokremote
 	arch = any
