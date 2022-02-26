@@ -2,7 +2,7 @@
 
 pkgname=mini18n-git
 pkgver=0.2.1.r3261.b77edc86
-pkgrel=1
+pkgrel=2
 pkgdesc="A a small and non-intrusive translation library designed for small memory and non-GNU systems. (GIT version)"
 arch=('x86_64')
 url='http://wiki.yabause.org/index.php5?title=Mini18n'
@@ -12,9 +12,12 @@ makedepends=('git'
              'cmake'
              )
 conficts=('mini18n')
-provides=('mini18n')
+provides=('mini18n'
+          'libmini18n.so'
+          )
 source=('git+https://github.com/Guillaumito/yabause.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd yabause/mini18n
@@ -22,19 +25,14 @@ pkgver() {
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  cmake ../yabause/mini18n \
+  cmake -S yabause/mini18n -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
 }
