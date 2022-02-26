@@ -11,6 +11,6 @@ pkgbase = python-pywikibot
 	optdepends = python-wikitextparser: parsing MediaWiki wikicode
 	optdepends = python-stdnum: cosmetic changes for numbers
 	source = https://github.com/wikimedia/pywikibot/archive/7.0.0.tar.gz
-	sha512sums = d5573cb48b363571bcef1c62c61d5417cf3a48745aecfda44c13ef5e6d2d369128440e7df4740ba460ba39e24935f68263f7ced3cbb0de944e0503dcb91a7512
+	sha512sums = d7a2c592861e5cff4f810a6070973dea76521af0e6ee7dfff29972b10366b0c348a323b7bb95612b7f888da80d53d56b9e28003e07de06eb2071fc3568a692b5
 
 pkgname = python-pywikibot
