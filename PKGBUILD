@@ -3,8 +3,8 @@
 
 _pkgname=libcpufeatures
 pkgname="${_pkgname}-git"
-pkgver=0.6.0.19.r218.d20210707.628c50e
-pkgrel=2
+pkgver=0.6.0+68.r267.d20220222.40e1c71
+pkgrel=1
 pkgdesc="A cross-platform C library to retrieve CPU features (such as available instructions) at runtime. By google."
 url="https://github.com/google/cpu_features"
 arch=(
@@ -33,20 +33,6 @@ sha256sums=(
   'SKIP'
 )
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  _ver="$(git describe --tags | sed 's|^v||' | awk -F'-' '{print $1}')"
-  _subver="$(git describe --tags | awk -F'-' '{print $2}')"
-  _rev="$(git rev-list --count HEAD)"
-  _hash="$(git rev-parse --short HEAD)"
-  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
-  if [ -z ${_ver} ]; then
-    error "Error in ${FUNCNAME[0]}: Version information could not determined."
-    return 1
-  fi
-  printf '%s' "${_ver}.${_subver}.r${_rev}.d${_date}.${_hash}"
-}
-
 prepare() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
@@ -55,11 +41,22 @@ prepare() {
   cmake "${srcdir}/${_pkgname}" \
     -DCMAKE_INSTALL_PREFIX=/ \
     -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_GMOCK=ON \
-    -DBUILD_PIC=ON \
     -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_TESTING=OFF \
-    -DINSTALL_GTEST=ON
+    -DBUILD_TESTING=OFF
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  _ver="$(git describe --tags | sed 's|^v||' | awk -F'-' '{print $1}')"
+  _subver="$(git describe --tags | awk -F'-' '{print $2}')"
+  _rev="$(git rev-list --count HEAD)"
+  _hash="$(git rev-parse --short HEAD)"
+  _date="$(git log -n 1 --no-show-signature --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+  if [ -z ${_ver} ]; then
+    error "Error in ${FUNCNAME[0]}: Version information could not determined."
+    return 1
+  fi
+  printf '%s' "${_ver}+${_subver}.r${_rev}.d${_date}.${_hash}"
 }
 
 build() {
