@@ -3,17 +3,17 @@ pkgbase=python-pytest-doctestplus
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Pytest plugin that provides advanced features for testing example code in documentation"
 arch=('any')
 url="https://github.com/astropy/pytest-doctestplus"
 license=('BSD')
-makedepends=('python-setuptools-scm')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
 #'python-sphinx')
 checkdepends=('python-pytest-remotedata')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0722247b329b08ce2084534e185b66a5')
+md5sums=('5b8de28bddb27303480a303b171e25a3')
 
 prepare() {
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -22,7 +22,7 @@ prepare() {
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 #   cd ${srcdir}/${_pyname}-${pkgver}/tests
 #   PYTHONPATH="../build/lib" make html
 }
@@ -44,7 +44,7 @@ package_python-pytest-doctestplus() {
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 licenses/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 #package_python-pytest-doctestplus-doc() {
