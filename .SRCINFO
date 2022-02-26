@@ -1,6 +1,6 @@
 pkgbase = synology-assistant
 	pkgdesc = Synology Assistant is a desktop utility that searches for Synology servers within the local area network. It allows you to search and connect to your Synology server or set up Wake on LAN (WOL).
-	pkgver = 7.0.50029
+	pkgver = 7.0.2.50046
 	pkgrel = 1
 	url = https://www.synology.com/releaseNote/Assistant
 	install = synology-assistant.install
@@ -9,10 +9,9 @@ pkgbase = synology-assistant
 	license = unknown
 	depends = qt5-base
 	depends = libpng12
-	source_i686 = https://global.download.synology.com/download/Utility/Assistant/7.0-50029/Ubuntu/i686/synology-assistant_7.0-50029_i386.deb
-	md5sums_i686 = ab67a4f4495db34a748448db7270c898
-	source_x86_64 = https://global.download.synology.com/download/Utility/Assistant/7.0-50029/Ubuntu/x86_64/synology-assistant_7.0-50029_amd64.deb
-	md5sums_x86_64 = b5bbf2f0d7728167fcf165e86d8010a0
+	source_i686 = https://global.download.synology.com/download/Utility/Assistant/7.0.2-50046/Ubuntu/i686/synology-assistant_7.0.2-50046_i386.deb
+	md5sums_i686 = 316728bf915d5c4ac37914b8145f4e3c
+	source_x86_64 = https://global.download.synology.com/download/Utility/Assistant/7.0.2-50046/Ubuntu/x86_64/synology-assistant_7.0.2-50046_amd64.deb
+	md5sums_x86_64 = e05373cad99ba44401f623cdd117067b
 
 pkgname = synology-assistant
-
