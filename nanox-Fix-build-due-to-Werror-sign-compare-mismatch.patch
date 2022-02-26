@@ -1,0 +1,25 @@
+From e95afca8486caaf55ce74b5d0b99e498440b1067 Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Sat, 26 Feb 2022 19:05:59 +0100
+Subject: [PATCH] Fix build due to -Werror=sign-compare mismatch
+
+---
+ src/arch/unix-os/pthread.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/arch/unix-os/pthread.cpp b/src/arch/unix-os/pthread.cpp
+index 4120496..da07054 100644
+--- a/src/arch/unix-os/pthread.cpp
++++ b/src/arch/unix-os/pthread.cpp
+@@ -71,7 +71,7 @@ void PThread::start ( BaseThread * th )
+ 
+    //! \note Checking user-defined stack size
+    if ( _stackSize > 0 ) {
+-      if ( _stackSize < PTHREAD_STACK_MIN ) {
++      if ( _stackSize < static_cast<size_t>(PTHREAD_STACK_MIN) ) {
+          warning("Specified thread stack size (" << _stackSize << " bytes) too small, adjusting to " << PTHREAD_STACK_MIN << " bytes");
+          _stackSize = PTHREAD_STACK_MIN;
+       }
+-- 
+2.35.1
+
