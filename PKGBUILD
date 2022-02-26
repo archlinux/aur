@@ -2,7 +2,7 @@
 
 pkgname="ungoogled-chromium-linchrome"
 pkgver=98.0.4758.80_r950365
-pkgrel=1
+pkgrel=2
 pkgdesc="Ungoogled Chromium, A lightweight approach to removing Google web service dependency (binary version from macchrome/linchrome)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
