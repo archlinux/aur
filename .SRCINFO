@@ -1,0 +1,17 @@
+pkgbase = duality-bass-studio-bin
+	pkgdesc = Audio Assault Duality Bass Studio Bass Amplifier
+	pkgver = 1.2.5
+	pkgrel = 1
+	url = https://audio-assault.com/duality.php
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Duality Bass Studio Amp.desktop
+	sha256sums = 47c30738d4794f9534f1d7a39f3338e607da53e61a1220664dd70456969ee949
+
+pkgname = duality-bass-studio-bin

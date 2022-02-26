@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Comment=Audio Assault Duality Bass Studio Bass Amplifier
+Type=Application
+Categories=AudioVideo;X-AudioEditing
+Terminal=false
+Exec="/usr/bin/Duality Bass Studio"
+Name=Duality Bass Studio Amp
