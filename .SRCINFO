@@ -1,0 +1,18 @@
+pkgbase = python-json2tex-git
+	pkgdesc = Convert JSON for usage in LaTeX
+	pkgver = 1.0.0.r1.g5be43a7
+	pkgrel = 1
+	url = https://gitlab.com/nobodyinperson/json2tex
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer>=0.5
+	provides = json2tex
+	conflicts = python-json2tex
+	source = python-json2tex-git::git+https://gitlab.com/nobodyinperson/json2tex
+	sha256sums = SKIP
+
+pkgname = python-json2tex-git

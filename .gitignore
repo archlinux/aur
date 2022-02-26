@@ -1,0 +1,5 @@
+pkg/
+src/
+json2tex/
+*.pkg*
+*-git/
