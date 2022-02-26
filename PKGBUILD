@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=shiori
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Simple bookmark manager"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='feb150f8c6681c87d9fa0ae7a0f82e349014925c'
+_commit='560a677f50c357121741d07662877fcbdd3dd8e3'
 source=(
   "$pkgname::git+$url.git#commit=$_commit"
   'systemd.service'
