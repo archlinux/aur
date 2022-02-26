@@ -4,7 +4,7 @@
 # Contributor: Julien Machiels
 
 pkgname=waifu2x-converter-cpp-cuda-git
-pkgver=v5.3.4.2.g57520b2
+pkgver=5.3.4.2.g57520b2
 pkgrel=1
 pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ options=('debug')
 
 pkgver() {
   cd waifu2x-converter-cpp
-  echo $(git describe --long --tags | tr - .)
+  echo $(git describe --long --tags | tr - . | tr -d v)
 }
 
 prepare() {
