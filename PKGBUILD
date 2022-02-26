@@ -4,7 +4,7 @@
 pkgname=lx-music-desktop-git
 pkgdesc=一个免费的音乐查找助手
 pkgver=1.18.0.2f39808
-pkgrel=2
+pkgrel=3
 arch=(x86_64 aarch64 armv7l)
 url=https://github.com/lyswhut/lx-music-desktop
 licence=(Apache)
@@ -45,7 +45,7 @@ package(){
 	install -Dm644 "${srcdir}/lx-music-desktop.desktop" "${pkgdir}/usr/share/applications/${pkgname//-git/}.desktop"
 	for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512
 	do
-		install -Dm644 "${srcdir}/${pkgname}/resources/icons/${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/${pkgname//-git/}.png"
+		install -Dm644 "${srcdir}/${pkgname}/resources/icons/${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname//-git/}.png"
 	done
 	# Enable it when supports url sheme on Linux
 	install -Dm644 "${srcdir}/lxmusic-url.desktop" "${pkgdir}/usr/share/applications/lxmusic-url.desktop"
