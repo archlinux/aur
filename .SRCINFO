@@ -16,6 +16,7 @@ pkgbase = gcc-git
 	makedepends = binutils
 	makedepends = doxygen
 	makedepends = gcc-ada
+	makedepends = gcc-d
 	makedepends = git
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs
