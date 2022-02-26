@@ -1,0 +1,12 @@
+pkgbase = tksvg
+	pkgdesc = An extension for Tk to read SVG images based on nanosvg
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/oehhar/tksvg/
+	arch = x86_64
+	license = custom
+	depends = tk
+	source = tksvg-0.9.tar.gz::https://github.com/oehhar/tksvg/archive/refs/tags/0.9.tar.gz
+	sha512sums = f185d3574b11eefbab58a78c0f563c0f09fe1e4f6271cf7c707de78ba4f09493b3dd055a60872ed5f30448cad8c10403c9c72532669868aa1a274386da885a1f
+
+pkgname = tksvg
