@@ -1,8 +1,8 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=switchhosts-appimage
-pkgver=4.0.3
-_subpkgver="6070"
-pkgrel=2
+pkgver=4.1.1
+_subpkgver="6077"
+pkgrel=1
 pkgdesc="An App for hosts management & switching."
 arch=('x86_64')
 url="https://github.com/oldj/SwitchHosts"
@@ -15,10 +15,10 @@ conflicts=(
 options=(!strip)
 depends=("fuse2")
 source=(
-    "SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage"
+    "SwitchHosts_linux_${pkgver}.${_subpkgver}.AppImage::https://github.com/oldj/SwitchHosts/releases/download/v${pkgver}/SwitchHosts_linux_${arch}_${pkgver}.${_subpkgver}.AppImage"
     )
 sha256sums=(
-    'e2034188ee48bbd0ac6dd98ee4e17b57450dbebaedf31e5016619cf8baf4f82d'
+    'a5e85009955a238a57e06e5b1d48d6187e31f7370cda8fd1ca09cae25343edce'
     )
 
 prepare() {
