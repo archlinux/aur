@@ -2,7 +2,7 @@
 # Contributor: Matthew Murray <matt@mattmurr.xyz>
 pkgname=python-validity
 pkgver=0.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Validity fingerprint sensor driver"
 arch=(any)
 license=(MIT)
@@ -12,8 +12,15 @@ makedepends=(python-setuptools)
 conflicts=($pkgname)
 provides=($pkgname)
 url="https://github.com/uunicorn/${pkgname}"
-source=("${url}/archive/${pkgver}.tar.gz")
-md5sums=('1e7cb6079b95541dd2dd898c868ec107')
+source=("${url}/archive/${pkgver}.tar.gz"
+        "0001-update-dbus-loader-Remove-Loader-from-safe_load.patch")
+md5sums=('1e7cb6079b95541dd2dd898c868ec107'
+         'ff4cb9a27f8bc75e8a2afbc6fc897c7f')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  patch -p1 -i "$srcdir/0001-update-dbus-loader-Remove-Loader-from-safe_load.patch"
+}
 
 build() {
   cd $srcdir/$pkgname-$pkgver
