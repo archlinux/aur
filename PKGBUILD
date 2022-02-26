@@ -11,7 +11,7 @@ license=('unknown')
 depends=('python' 'python-numpy')
 makedepends=('cython' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a0bd1f0943e81b00c9a279e0d3987e0acab8b2c7a95c43d4bbb09b0feeb4530c')
+sha256sums=('5976c97f6689dc3466429dab6c8973274d230a572ee358ccad71741dce854ac2')
 
 build() {
   cd "$_name-$pkgver"
