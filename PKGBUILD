@@ -1,13 +1,12 @@
 # Maintainer: SKBotNL <skbotnl@mailfence.com>
 
-pkgname="ungoogled-chromium-linchrome"
+pkgname="ungoogled-chromium-linchrome-bin"
 pkgver=98.0.4758.80_r950365
-pkgrel=2
-pkgdesc="Ungoogled Chromium, A lightweight approach to removing Google web service dependency (binary version from macchrome/linchrome)"
+pkgrel=1
+pkgdesc="A lightweight approach to removing Google web service dependency (binary version from macchrome/linchrome)"
 arch=("x86_64")
-url="https://github.com/Eloston/ungoogled-chromium"
+url="https://github.com/macchrome/linchrome"
 license=("BSD")
-depends=("alsa-lib" "dbus" "desktop-file-utils" "ffmpeg" "flac" "fontconfig" "freetype2" "gtk3" "harfbuzz" "hicolor-icon-theme" "icu" "libcups" "libgcrypt" "libjpeg-turbo" "libpng" "libpulse" "libva" "libwebp" "libxml2" "libxslt" "libxss" "minizip" "nss" "opus" "pciutils" "re2" "snappy" "systemd" "ttf-liberation" "xdg-utils")
 optdepends=("kdialog: support for native dialogs in Plasma" "kwallet: support for storing passwords in KWallet on Plasma" "gnome-keyring: password storage backend on GNOME / Xfce" "pipewire: WebRTC desktop sharing under Wayland")
 provides=("chromium")
 conflicts=("chromium")
