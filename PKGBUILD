@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-libwebp
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
