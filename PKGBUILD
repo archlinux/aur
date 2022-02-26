@@ -13,7 +13,7 @@ conflicts=("${pkgname%-bin}")
 install="$pkgname.install"
 
 # Choose one of the mirrors from http://mirrors.thedarkmod.com/tdm_mirrors.txt
-_mirror='https://darkmod.taaaki.za.net/release'
+_mirror='http://mirror.helium.in-berlin.de/thedarkmod/release'
 
 source=("$pkgname-$pkgver-tdm_shared_stuff.zip::$_mirror/tdm_shared_stuff.zip"
         'thedarkmod.sh'
