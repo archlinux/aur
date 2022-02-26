@@ -3,7 +3,7 @@
 
 pkgname=crowd-greeter
 pkgver=r35
-pkgrel=1
+pkgrel=2
 pkgdesc='LightDM greeter that shows 3D avatars that the user can click on to login with'
 arch=('i686' 'x86_64')
 url="https://code.launchpad.net/~lightdm-team/crowd-greeter/trunk"
