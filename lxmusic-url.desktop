@@ -1,6 +1,9 @@
 [Desktop Entry]
 Type=Application
 Name=LX Music Desktop Scheme Handler
+Comment=Sheme Handler for LX Music Desktop
 Exec=lx-music-desktop %u
+Icon=lx-music-desktop.png
 StartupNotify=false
+NoDisplay=true
 MimeType=x-scheme-handler/lxmusic;
