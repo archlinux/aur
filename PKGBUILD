@@ -1,46 +1,55 @@
 # Merged with official ABS gcc PKGBUILD by João, 2021/08/03 (all respective contributors apply herein)
+# Co-Maintainer: Peter Jung & CachyOS <admin@ptr1337.dev>
 # Maintainer: João Figueiredo & chaotic-aur <islandc0der@chaotic.cx>
-# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
-# NOTE: libtool requires rebuilding with each new gcc version
+
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->glibc->binutils->gcc
+# NOTE: libtool requires rebuilt with each new gcc version
 
 # You probably don't need support for all the languages, feel free to remove the ones you don't;
 # Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
-pkgver=12.0.1_r191482.f49b8d25b1ff
+pkgver=12.0.1_r191804.gafeaaf4b352
 _majorver=${pkgver%%.*}
-_isl_link=https://mirrors.slackware.com/slackware/slackware64-current/source/l/isl
-_isl=$(curl -s "$_isl_link/?C=M;O=A" | grep "isl-.*tar\.xz" | tail -1 | sed -e 's/.*href="//' -e 's/\.mirrorlist.*//')
+_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
-arch=($CARCH)
+arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
-makedepends=(git binutils libmpc gcc-{ada,d} doxygen python git libxcrypt)
-checkdepends=(dejagnu inetutils)
-options=(!emptydirs)
-_libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
-
+makedepends=(
+  binutils
+  doxygen
+  gcc-ada
+  git
+  lib32-glibc
+  lib32-gcc-libs
+  libmpc
+  libxcrypt
+  python
+  zstd
+  isl
+)
+checkdepends=(
+  dejagnu
+  expect
+  inetutils
+  python-pytest
+  tcl
+)
+options=(!emptydirs !lto !debug)
+_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(git://gcc.gnu.org/git/gcc.git
-        $_isl_link/$_isl
         c89 c99
         gdc_phobos_path.patch
-        fs64270.patch
-        ipa-fix-bit-CPP-when-combined-with-IPA-bit-CP.patch
-        ipa-fix-ICE-in-get_default_value.patch
         gcc-ada-repro.patch
-        gcc11-Wno-format-security.patch)
+)
 sha256sums=('SKIP'
-            'SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
             'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
-            '1ef190ed4562c4db8c1196952616cd201cfdd788b65f302ac2cc4dabb4d72cee'
-            'fcb11c9bcea320afd202b031b48f8750aeaedaa4b0c5dddcd2c0a16381e927e4'
-            '42865f2af3f48140580c4ae70b6ea03b5bdca0f29654773ef0d42ce00d60ea16'
-            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f'
-            '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
+            '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
 
 pkgver() {
   cd ${pkgbase%-git}
@@ -48,10 +57,8 @@ pkgver() {
 }
 
 prepare() {
+  [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
   cd gcc
-
-  # link isl for in-tree build
-  ln -s ../${_isl%.tar.xz} isl
 
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
@@ -60,43 +67,25 @@ prepare() {
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
 
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" gcc/configure
 
   # D hacks
-  patch -p1 -i "$srcdir/gdc_phobos_path.patch"
+  patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
 
   # Reproducible gcc-ada
   patch -Np0 < "$srcdir/gcc-ada-repro.patch"
 
-  # configure.ac: When adding -Wno-format, also add -Wno-format-security
-  patch -Np0 < "$srcdir/gcc11-Wno-format-security.patch"
-
   mkdir -p "$srcdir/gcc-build"
+  mkdir -p "$srcdir/libgccjit-build"
 }
 
 build() {
-  cd gcc-build
-
-  # using -pipe causes spurious test-suite failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
-  CFLAGS=${CFLAGS/-pipe}
-  CXXFLAGS=${CXXFLAGS/-pipe}
-
-  # See https://aur.archlinux.org/pkgbase/gcc-git/#comment-822240
-  CXXFLAGS=${CXXFLAGS/-Werror=format-security}
-
-  # avoid warning _FORTIFY_SOURCE requires compiling with optimization (-O)
-  CPPFLAGS+=" -O2"
-  CPPFLAGS=${CPPFLAGS/-Werror=format-security}
-
-  "$srcdir/gcc/configure" --prefix=/usr \
+  local _confflags="--prefix=/usr \
       --libdir=/usr/lib \
       --libexecdir=/usr/lib \
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
-      --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
-      --with-isl \
       --with-linker-hash-style=gnu \
       --with-system-zlib \
       --enable-__cxa_atexit \
@@ -107,7 +96,6 @@ build() {
       --enable-default-ssp \
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
-      --enable-install-libiberty \
       --enable-linker-build-id \
       --enable-lto \
       --enable-multilib \
@@ -116,14 +104,50 @@ build() {
       --enable-threads=posix \
       --disable-libssp \
       --disable-libstdcxx-pch \
-      --disable-libunwind-exceptions \
       --disable-werror \
-      gdc_include_dir=/usr/include/dlang/gdc
+      gdc_include_dir=/usr/include/dlang/gdc"
 
-  make
+  cd gcc-build
+
+  # Credits @allanmcrae
+  # https://github.com/allanmcrae/toolchain/blob/f18604d70c5933c31b51a320978711e4e6791cf1/gcc/PKGBUILD
+  # TODO: properly deal with the build issues resulting from this
+  CFLAGS=${CFLAGS/-Werror=format-security/}
+  CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
+
+  "$srcdir/gcc/configure" \
+    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
+    --enable-bootstrap \
+    $_confflags
+
+  # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
+  make -O STAGE1_CFLAGS="-O2" \
+          BOOT_CFLAGS="$CFLAGS" \
+          BOOT_LDFLAGS="$LDFLAGS" \
+          LDFLAGS_FOR_TARGET="$LDFLAGS" \
+          profiledbootstrap
 
   # make documentation
-  make -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+  make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
+
+  # Build libgccjit separately, to avoid building all compilers with --enable-host-shared
+  # which brings a performance penalty
+  cd "${srcdir}"/libgccjit-build
+
+  "$srcdir/gcc/configure" \
+    --enable-languages=jit \
+    --disable-bootstrap \
+    --enable-host-shared \
+    $_confflags
+
+  # see https://bugs.archlinux.org/task/71777 for rationale re *FLAGS handling
+  make -O STAGE1_CFLAGS="-O2" \
+          BOOT_CFLAGS="$CFLAGS" \
+          BOOT_LDFLAGS="$LDFLAGS" \
+          LDFLAGS_FOR_TARGET="$LDFLAGS" \
+          all-gcc
+
+  cp -a gcc/libgccjit.so* ../gcc-build/gcc/
 }
 
 check() {
@@ -133,52 +157,46 @@ check() {
   sed -i '/maybe-check-target-libphobos \\/d' Makefile
 
   # do not abort on error as some are "expected"
-  make -k check || true
+  make -O -k check || true
   "$srcdir/gcc/contrib/test_summary"
 }
 
 package_gcc-libs-git() {
   pkgdesc='Runtime libraries shipped by GCC'
-  depends=(glibc)
-  options+=(!strip)
+  depends=('glibc>=2.27')
+  options=(!emptydirs !strip)
   provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
             libubsan.so libasan.so libtsan.so liblsan.so)
   conflicts=(gcc-libs)
   replaces=(gcc-multilib-git libgphobos-git)
 
-  cd gcc-build/$CHOST
-  make -C libgcc DESTDIR="$pkgdir" install-shared
+  cd gcc-build
+  make -C $CHOST/libgcc DESTDIR="$pkgdir" install-shared
   rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
-  # beautiful hack I came up with to skip libs when they're missing :)
-  # i.e. when the respective languages were disabled
-  shopt -s nullglob
   for lib in libatomic \
-             [l]ibgfortran \
-             [l]ibgo \
+             libgfortran \
+             libgo \
              libgomp \
              libitm \
              libquadmath \
              libsanitizer/{a,l,ub,t}san \
              libstdc++-v3/src \
              libvtv; do
-    make -C $lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+    make -C $CHOST/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
   done
-  shopt -u nullglob
 
-  # why ! and || instead of just &&, i hear you ask?
-  # so that $? is always 0 (unless make fails)
-  [[ ! -e libobjc ]] || make -C libobjc DESTDIR="$pkgdir" install-libs
-  make -C libstdc++-v3/po DESTDIR="$pkgdir" install
+  make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
+  make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
-  make -C libphobos DESTDIR="$pkgdir" install
+  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
   rm -rf "$pkgdir"/$_libdir/include/d/
   rm -f "$pkgdir"/usr/lib/libgphobos.spec
 
   for lib in libgomp \
              libitm \
              libquadmath; do
-    make -C $lib DESTDIR="$pkgdir" install-info
+    make -C $CHOST/$lib DESTDIR="$pkgdir" install-info
   done
 
   # remove files provided by lib32-gcc-libs
@@ -191,13 +209,13 @@ package_gcc-libs-git() {
 
 package_gcc-git() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc)
+  depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc zstd)
   groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
   provides=(gcc{,-multilib{,-git}})
   conflicts=(gcc)
   replaces=(gcc-multilib-git)
-  options+=(staticlibs)
+  options=(!emptydirs staticlibs debug)
 
   cd gcc-build
 
@@ -245,14 +263,9 @@ package_gcc-git() {
   make -C $CHOST/32/libsanitizer DESTDIR="$pkgdir" install-nodist_{saninclude,toolexeclib}HEADERS
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
-  make -C libiberty DESTDIR="$pkgdir" install
-  install -m644 libiberty/pic/libiberty.a "$pkgdir/usr/lib"
-
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-
-  # don't fail if can't remove the files (when certain languages were disabled)
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1 ||:
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info ||:
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -271,8 +284,8 @@ package_gcc-git() {
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
-  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
-  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
+  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
+  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
@@ -328,7 +341,7 @@ package_gcc-ada-git() {
   provides=(gcc-ada gcc-multilib{,-git})
   conflicts=(gcc-ada)
   replaces=(gcc-multilib-git)
-  options+=(staticlibs)
+  options=(!emptydirs staticlibs)
 
   cd gcc-build/gcc
   make DESTDIR="$pkgdir" ada.install-{common,info}
@@ -384,44 +397,42 @@ package_gcc-go-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-## This package already exists in the AUR
-# package_lib32-gcc-libs-git() {
-#   pkgdesc='32-bit runtime libraries shipped by GCC'
-#   depends=("lib32-glibc>=2.27")
-#   provides=(lib32-gcc-libs libgo.so libgfortran.so libubsan.so libasan.so)
-#   conflicts=(lib32-gcc-libs)
-#   groups=(multilib-devel-git)
-#   options=(!emptydirs !strip)
-# 
-#   cd gcc-build
-# 
-#   make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
-#   rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
-# 
-#   for lib in libatomic \
-#              libgfortran \
-#              libgo \
-#              libgomp \
-#              libitm \
-#              libquadmath \
-#              libsanitizer/{a,l,ub}san \
-#              libstdc++-v3/src \
-#              libvtv; do
-#     make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
-#   done
-# 
-#   make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
-# 
-#   make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-#   rm -f "$pkgdir"/usr/lib32/libgphobos.spec
-# 
-#   # remove files provided by gcc-libs
-#   rm -rf "$pkgdir"/usr/lib
-# 
-#   # Install Runtime Library Exception
-#   install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
-#     "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
-# }
+#package_lib32-gcc-libs-git() {
+#  pkgdesc='32-bit runtime libraries shipped by GCC'
+#  depends=('lib32-glibc>=2.27')
+#  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
+#  groups=(multilib-devel)
+#  options=(!emptydirs !strip)
+#
+#  cd gcc-build
+#
+#  make -C $CHOST/32/libgcc DESTDIR="$pkgdir" install-shared
+#  rm -f "$pkgdir/$_libdir/32/libgcc_eh.a"
+#
+#  for lib in libatomic \
+#             libgfortran \
+#             libgo \
+#             libgomp \
+#             libitm \
+#             libquadmath \
+#             libsanitizer/{a,l,ub}san \
+#             libstdc++-v3/src \
+#             libvtv; do
+#    make -C $CHOST/32/$lib DESTDIR="$pkgdir" install-toolexeclibLTLIBRARIES
+#  done
+#
+#  make -C $CHOST/32/libobjc DESTDIR="$pkgdir" install-libs
+#
+#  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
+#  rm -f "$pkgdir"/usr/lib32/libgphobos.spec
+#
+#  # remove files provided by gcc-libs
+#  rm -rf "$pkgdir"/usr/lib
+#
+#  # Install Runtime Library Exception
+#  install -Dm644 "$srcdir/gcc/COPYING.RUNTIME" \
+#    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
+#}
 
 package_gcc-d-git() {
   pkgdesc="D frontend for GCC"
@@ -443,6 +454,19 @@ package_gcc-d-git() {
 
   install -d "$pkgdir"/usr/include/dlang
   ln -s /"${_libdir}"/include/d "$pkgdir"/usr/include/dlang/gdc
+
+  # Install Runtime Library Exception
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
+    "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+package_libgccjit() {
+  pkgdesc="Just-In-Time Compilation with GCC backend"
+  depends=("gcc=$pkgver-$pkgrel")
+
+  cd gcc-build
+  make -C gcc DESTDIR="$pkgdir" jit.install-common jit.install-info
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
