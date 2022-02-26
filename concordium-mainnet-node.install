@@ -1,0 +1,13 @@
+post_install() {
+    default_file=/etc/default/concordium-mainnet-node-collector
+
+    if grep -qs __NODE_NAME__ $default_file; then
+        node_name=concordium-$(openssl rand -hex 4)
+
+        sed -i "s/__NODE_NAME__/$node_name/" $default_file
+        echo -e "\033[0;32m
+    Concordium node name set to '$node_name'
+    You can change it in $default_file
+\033[0m"
+    fi
+}
