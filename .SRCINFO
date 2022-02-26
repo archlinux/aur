@@ -1,7 +1,7 @@
 pkgbase = kstart
 	pkgdesc = Kerberos kinit supporting AFS and ticket refreshing
 	pkgver = 4.3
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.eyrie.org/~eagle/software/kstart/
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = kstart
 	sha256sums = SKIP
 	sha256sums = a496742d7cb2f00e8714d2b36da6adc09efd8a62e4892572b69b458b6e790a4e
 	sha256sums = 75ca839c4b0f452d597cb1b004c80d55614f51bb3a00b0b082fd2ca2138fc21b
-	sha256sums = 13684ab17853ddfbf5a0b438faa916cd360d2811043ece88dcf68c3d2e5a302a
+	sha256sums = 514010cea54d80d1d41fe1885dbdd49225e52192be466e88979f91bac37c8022
 
 pkgname = kstart
