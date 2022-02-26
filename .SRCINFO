@@ -1,7 +1,7 @@
 pkgbase = lsi-msm
 	pkgdesc = LSI Logic MegaRAID Storage Manager and SNMP providers
 	pkgver = 17.05.02.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.broadcom.com/products/storage
 	arch = x86_64
 	license = custom:LSI
@@ -33,6 +33,7 @@ pkgname = lsi-msm
 	depends = unixodbc
 	depends = xdg-utils
 	depends = java-environment=8
+	depends = libxcrypt-compat
 	depends = lib32-libxi
 	depends = lib32-libxft
 	depends = lib32-libpng12
