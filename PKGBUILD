@@ -1,7 +1,7 @@
 # Maintainer: Jaco Malan <jacomalan.12@gmail.com>
 
 pkgname=rkimer-git
-pkgver=r27.b521419
+pkgver=r29.e6fff47
 pkgrel=1
 pkgdesc="A lightweight speedcubing timer written in Kotlin"
 arch=('any')
@@ -26,7 +26,11 @@ build() {
 
 package() {
 	mkdir -p "$pkgdir/usr/share/java/rkimer"
+	mkdir -p "$pkgdir/usr/share/rkimer/"
+	mkdir -p "$pkgdir/usr/share/applications"
 	cp "$srcdir/rkimer/app/build/libs/rkimer.jar" "$pkgdir/usr/share/java/rkimer/rkimer.jar"
+	cp "$srcdir/rkimer/app/src/main/resources/rkimer.ico" "$pkgdir/usr/share/rkimer/rkimer.ico"
+	cp ../rkimer.desktop "$pkgdir/usr/share/applications/rkimer.desktop"
 	mkdir -p "$pkgdir/usr/bin"
 	pwd
 	cp ../rkimer.sh "$pkgdir/usr/bin/rkimer"
