@@ -1,9 +1,8 @@
 # Maintainer: Anthony Wang <ta180m@pm.me>
 
 pkgname=woodpecker
-pkgver=0.15.0_rc2
-_pkgver=${pkgver/_/-}
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="A community fork of the Drone CI system."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
@@ -13,7 +12,7 @@ depends=('glibc')
 optdepends=('docker: Docker backend')
 backup=(etc/woodpecker.conf etc/woodpecker-agent.conf)
 source=(
-  "$pkgname-$_pkgver.tar.gz::https://github.com/woodpecker-ci/$pkgname/archive/v$_pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::https://github.com/woodpecker-ci/$pkgname/archive/v$pkgver.tar.gz"
   'woodpecker.service'
   'woodpecker-agent.service'
   'tmpfiles.conf'
@@ -21,7 +20,7 @@ source=(
   'woodpecker.conf'
   'woodpecker-agent.conf'
 )
-sha256sums=('d683dc41b5a5f6473dd266aca9017ba53ffa7d64c5ae8a541be03b6571dbf7dd'
+sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4'
             '18bb1cc48b42fdb9df711a73a5c1753489ff68c2790b6f24811050f1ab353ac0'
             '77d03cc1faec8ad0f313e3965b272545d3c4067c640f7cb30d80cbfcfc49720c'
             'eb2d8ee56073527b3373721f0693a7c1331ce994d1843a6d8396268face86963'
@@ -30,13 +29,13 @@ sha256sums=('d683dc41b5a5f6473dd266aca9017ba53ffa7d64c5ae8a541be03b6571dbf7dd'
             'dc91524c6976eb4515607bfdd08e58a3c18867cd26c623146475054a2adb0f3f')
 
 prepare() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
 
-  sed -i 's/-extldflags \"-static\"//' Makefile
+  sed -i 's/ -extldflags \"-static\"//' Makefile
 }
 
 build() {
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
 
   # This package's Makefile uses the TARGETARCH variable's value to determine
   # what is the current architecture. TARGETARCH defaults to `amd64`, which is
@@ -63,7 +62,7 @@ package() {
   install -vDm600 woodpecker.conf "$pkgdir/etc/$pkgname.conf"
   install -vDm600 woodpecker-agent.conf "$pkgdir/etc/$pkgname-agent.conf"
 
-  cd "$pkgname-$_pkgver"
+  cd "$pkgname-$pkgver"
 
   install -vDm755 -t "$pkgdir/usr/bin" dist/*
 }
