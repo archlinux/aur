@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-color-picker
 pkgver=27
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple color picker for gnome shell'
 arch=(any)
 url='https://github.com/tuberry/color-picker'
@@ -17,7 +17,9 @@ package() {
 
     install --directory "$_destdir/icons"
     install --directory "$_destdir/schemas"
+    install --directory "$_destdir/locale"
     install --target-directory "$_destdir" --mode 644 metadata.json *.js *.css
     install --target-directory "$_destdir/icons" --mode 644 icons/*
     install --target-directory "$_destdir/schemas" --mode 644 schemas/*
+    cp -dr --preserve=mode,timestamp locale/* "$_destdir/locale"
 }

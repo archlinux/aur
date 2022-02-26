@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-color-picker
 	pkgdesc = Simple color picker for gnome shell
 	pkgver = 27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuberry/color-picker
 	arch = any
 	license = GPL3
