@@ -1,7 +1,7 @@
 pkgbase = lx-music-desktop-git
 	pkgdesc = 一个免费的音乐查找助手
 	pkgver = 1.18.0.2f39808
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	arch = aarch64
@@ -28,6 +28,6 @@ pkgbase = lx-music-desktop-git
 	source = lxmusic-url.desktop
 	sha256sums = SKIP
 	sha256sums = 34342d437c59c6ae352123272daa1819e275c843170bbb8b467cbbc1c4c63dac
-	sha256sums = 626d2e3b76abe7b107bc0c9a763111e07fb46c3398f38afe3337c193d35e1841
+	sha256sums = 83083f9febee2332f9d038bcf5693128f3bde17b41ed094f005265eafe1eb94f
 
 pkgname = lx-music-desktop-git
