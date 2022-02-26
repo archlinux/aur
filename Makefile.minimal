@@ -1,0 +1,32 @@
+ROOT = .
+
+include $(ROOT)/env_var.status
+include $(ROOT)/mak/config.mak
+
+DIRS = src
+
+TEST_DIRS =
+
+include $(ROOT)/mak/recurse.mak
+
+.PHONY: FORCE
+
+FORCE:
+
+minimal: FORCE
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Common -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/General -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/slp/slp_client -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Client -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Config -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Query/QueryCommon -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/CQL -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/WQL -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Query/QueryExpression -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Provider -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Repository -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/ExportServer -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Listener -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Server/ProviderRegistrationManager -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Handler -f Makefile
+	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/IndicationService -f Makefile

@@ -2,20 +2,20 @@
 
 pkgname=lsi-openpegasus
 pkgver=2.14.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Openpegasus libs for LSI (Broadcom) Raid products"
 arch=('x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
 depends=('sqlite'
          'openssl'
+         'libxcrypt'
          'libcrypt.so'
          )
 makedepends=('icu'
              'openssl'
              'net-snmp'
              'openslp'
-             'libxcrypt'
              'setconf'
              )
 source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
@@ -25,6 +25,8 @@ source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.1
         'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.14.1-build-fixes.patch'
         'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.14.1-ssl-include.patch'
         'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.14.1-openssl-1.1-fix.patch'
+        'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.14.1-build-fixes-2.patch'
+        'Makefile.minimal'
         )
 sha256sums=('9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             'e3924bdb81a4dd2cedfb9c7ba669cb01b32f4c4e16b3af4c06f9a2426a9274d1'
@@ -33,7 +35,10 @@ sha256sums=('9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             '5863314f2ff17c32bc340efd5241f809bc1372b8e2fde0b3a2e22c7ab9b64281'
             '5de02253442ef8cb3b6f744fa4dd3237b66d96911ab8badd63336a7e1d28a429'
             'deb3e52e5406419cc42d15f1a668ed291ef8337217bb5bc9cefd01ef3b804371'
+            '832be374999213a6d940e84c449a7c3566d9dda2b1c2348d7bc601bc907fc228'
+            '7cd222778cc829536ef6fb9c6fb688ac1114f6492cfa61b3881e655c5f38ac96'
             )
+options=('debug')
 
 _create_links() {
   # create soname links
@@ -55,6 +60,7 @@ prepare() {
   patch -p1 -i "${srcdir}/pegasus-2.14.1-build-fixes.patch"
   patch -p1 -i "${srcdir}/pegasus-2.14.1-ssl-include.patch"
   patch -p1 -i "${srcdir}/pegasus-2.14.1-openssl-1.1-fix.patch"
+  patch -p1 -i "${srcdir}/pegasus-2.14.1-build-fixes-2.patch"
 
   # Fix sqlite and snmp detection
   sed 's|lib64/|\$libbase/|g' -i configure
@@ -65,6 +71,8 @@ prepare() {
   # add missing z library
   sed 's|lcrypt|& -lz|g' -i mak/config-linux.mak
 
+  # silence deprecation warning (?)
+  sed 's|pthread_yield|sched_yield|g' -i src/Pegasus/Common/Threads.h
 }
 
 build() {
@@ -77,11 +85,15 @@ build() {
 
   ./configure
 
-  make -f GNUmakefile
+  cp "${srcdir}/Makefile.minimal" Makefile.minimal
+  sed 's|Makefile|Makefile.minimal|g' -i GNUmakefile
+
+  make -f GNUmakefile minimal
 }
 
 package() {
-  _pegasus_lib=('libpegclient.so.1'
+  _pegasus_lib=(
+                'libpegclient.so.1'
                 'libpegcommon.so.1'
                 'libpegconfig.so.1'
                 'libpegcql.so.1'
@@ -98,7 +110,7 @@ package() {
                 'libpegqueryexpression.so.1'
                 'libpegwql.so.1'
                 )
-  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" ${pkgdir}/usr/lib/${i}; done
+  for i in ${_pegasus_lib[@]}; do install -Dm755 "${srcdir}/pegasus/lib/${i}" "${pkgdir}/usr/lib/${i}"; done
 
   # Create soname links
   _create_links
