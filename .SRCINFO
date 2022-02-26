@@ -1,0 +1,13 @@
+pkgbase = minq-update-git-packages-git
+	pkgdesc = Updates all -git packages
+	pkgver = r2.2a4809c3f55f236433b0cedd06da8ffb3aa26639
+	pkgrel = 1
+	url = https://github.com/kuche1/minq-update-git-packages.git
+	arch = any
+	license = GPL
+	depends = paru
+	provides = minq-update-git-packages
+	source = git+https://github.com/kuche1/minq-update-git-packages.git
+	sha256sums = SKIP
+
+pkgname = minq-update-git-packages-git
