@@ -1,6 +1,6 @@
 pkgbase = throttlectl
 	pkgdesc = Command-line user discretion power managment utility
-	pkgver = 11
+	pkgver = 12
 	pkgrel = 1
 	url = https://bbs.archlinux.org/viewtopic.php?id=180762
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = throttlectl
 	source = performance
 	source = systemstate
 	source = powermizer
-	sha512sums = 454afc229e60c64e74280c0eea64e5dd838f5c428c0aa13dd47e12c6b58d4477f7b2318a085bffc0b3df6550a80fc95d11f2b45aa64235b8fbb766c31d1a88d7
+	sha512sums = e4473785ffe7621b365581e90d81b7e89d6c44ec3a4af78cbf199d17b3573aa2ce7fcba90e67f2b89836d75d23cbd66859fa41bf55d9d49bc04f8e09f13532ce
 	sha512sums = 6254e73446a91ea7945b9e4db1a1047eb2055d93aee315006857711ab21cba140da3badcf5834d2628e4799494a069647d11aa378a9bac67691df8d8b3adc12f
 	sha512sums = 926f7c787aea8c1027f331fe2e9417ba8e4f15a79f51610baafeed5d0de86d8f41da92f4460c29a5ce251e7cc110e26c2c344931af91949dc529595cc18c0f0e
 	sha512sums = 5e9318698bac00e07680e58b8e1abdf93b38895f55040b68178cce0307a84624a1a9220470286b33219f1f16160c456fa4f016682c901d0e9bb7cf6c240458e8

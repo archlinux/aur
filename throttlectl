@@ -30,6 +30,10 @@ config_help() {
 }
 
 throttle_system() {
+  # PCIe Active State Power Managment
+  [[-f /sys/module/pcie_aspm/parameters/policy ]] && \
+    printf "${PCIEASPMPOL}" > /sys/module/pcie_aspm/parameters/policy &
+
   # ENERGY_PERF_BIAS
   [[ -n "$(ls /sys/devices/system/cpu/cpu*/power/energy_perf_bias 2> /dev/null)" ]] && \
     printf "${ENERGYPERF}" | tee /sys/devices/system/cpu/cpu*/power/energy_perf_bias > /dev/null 2>&1 &
@@ -44,7 +48,7 @@ throttle_system() {
 
   # NMI watchdog
   [[ -f /proc/sys/kernel/watchdog ]] && \
-      printf "${NMIDOG}" > /proc/sys/kernel/watchdog &
+    printf "${NMIDOG}" > /proc/sys/kernel/watchdog &
 
   # SATA link power management
   [[ -n "$(ls /sys/class/scsi_host/host*/link_power_management_policy 2> /dev/null)" ]] && \
@@ -97,6 +101,10 @@ throttle_system() {
 }
 
 check_system() {
+  [[ -f /sys/module/pcie_aspm/parameters/policy ]] && \
+    echo -e "\nPCIe Active State Power Management\n"\
+            "/sys/module/pcie_aspm/parameters/policy\t$(cat /sys/module/pcie_aspm/parameters/policy)"
+
     printf "\nEnergy Perf Bias\n" && \
   for i in /sys/devices/system/cpu/cpu*/power/energy_perf_bias; do \
     printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/devices/system/cpu/||g; s|/.*||g; N;s|\n|\t|'
@@ -230,7 +238,7 @@ while (( "$#" )); do
         check|status) check_system ;; esac
       [[ -n "$SYSTEM" ]] && throttle_system; shift "2"
       unset ENERGYPERF LAPTOP DIRTYWBC NMIDOG POLICY APM AAM CONTROL AUTOSUSPEND POWERSAVE CONTROLLER \
-            WLPOWERSAVE WOLA WOLB LEDBRIGHT SYSTEM
+            WLPOWERSAVE WOLA WOLB LEDBRIGHT SYSTEM PCIEASPMPOL
     ;;
     turbo)
       [[ -z "${XPSTURBO}" ]] && \
@@ -280,13 +288,13 @@ while (( "$#" )); do
     full|on|performance|start|cut|off|powersave|stop)
       case "${1}" in \
         cut|off|powersave|start) \
-          [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help; SYSTEM="1" ;; \
+          [[ -f /etc/throttle.d/powersave ]] && . /etc/throttle.d/powersave || config_help; SYSTEM="0" ;; \
         full|on|performance|stop) \
-          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help; SYSTEM="0" ;; esac
+          [[ -f /etc/throttle.d/performance ]] && . /etc/throttle.d/performance || config_help; SYSTEM="1" ;; esac
       throttle_system; throttle_turbo; throttle_ht; throttle_gov; throttle_nvpm; throttle_backlight; shift
       unset GOVERNOR XPSTURBO HYPERTHREADS ENERGYPERF BACKLIGHT LAPTOP DIRTYWBC NMIDOG \
             POLICY APM AAM CONTROL{,S} AUTOSUSPEND{,S} POWERSAVE CONTROLLER \
-            WLPOWERSAVE WOLA WOLB LEDBRIGHT NVPM SYSTEM
+            WLPOWERSAVE WOLA WOLB LEDBRIGHT NVPM SYSTEM PCIEASPMPOL
     ;;
     check|status)
       check_system; check_turbo; check_ht; check_gov; check_nvpm; check_backlight; shift
