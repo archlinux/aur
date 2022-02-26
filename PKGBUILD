@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=kstart
 pkgver=4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Kerberos kinit supporting AFS and ticket refreshing"
 arch=(i686 x86_64)
 url="https://www.eyrie.org/~eagle/software/kstart/"
@@ -33,7 +33,7 @@ package() {
   cd "$srcdir"
   install -Dm644 krenew.service "$pkgdir"/usr/lib/systemd/user/krenew.service
   install -Dm644 kstart.service "$pkgdir"/usr/lib/systemd/user/kstart.service
-  install -Dm755 nm-dispatcher.sh "$pkgdir"/etc/NetworkManager/dispatcher.d/80-k5start
+  install -Dm755 nm-dispatcher.sh "$pkgdir"/usr/lib/NetworkManager/dispatcher.d/80-k5start
 }
 
 # vim: ts=2:sw=2:et:ft=sh
