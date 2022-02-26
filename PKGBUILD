@@ -18,4 +18,5 @@ package() {
   msg2 "Extracting the data.tar.xz..."
   bsdtar -xf data.tar.xz -C "$pkgdir/"
   install -Dm755 "${srcdir}"/element-desktop-nightly.sh "${pkgdir}"/usr/bin/element-desktop-nightly
+  sed -i 's|^Exec=.*|Exec=/usr/bin/element-desktop-nightly %U|' "${pkgdir}"/usr/share/applications/element-desktop-nightly.desktop
 }
