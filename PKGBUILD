@@ -2,7 +2,7 @@
 # Contributor:  Julien Nicoulaud <julien DOT nicoulaud AT gmail DOT com>
 
 pkgname=ffmpeg-normalize
-pkgver=1.22.6
+pkgver=1.22.7
 pkgrel=1
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ffmpeg' 'python-ffmpeg-progress-yield')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha512sums=('d6b68eb9f25d2c84daa577edb6a5af921162f2f5d2c0e918384543034493265cd00f0f7836963c193d217f56cae1bd01052f067f4ef1678be05a96bf9f2542fa')
+sha512sums=('0667e82191fd01a5563acd0c31c79a6ada2ffde879c3ea56d8a22d4c929a856e68406fd57315a66fdd870b9966c4a24281015aab1a2d5ae981129fdecd05001a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
