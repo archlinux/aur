@@ -5,7 +5,7 @@
 pkgname=picgo-appimage
 pkgver=2.3.1
 _beta=-beta.2
-_release=${_pkgver}${_beta}
+_release=${pkgver}${_beta}
 pkgrel=2
 
 pkgdesc="A simple & beautiful tool for pictures uploading built by electron-vue"
