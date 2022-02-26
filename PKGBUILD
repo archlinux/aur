@@ -2,8 +2,8 @@
 # Contributor: Johannes Löthberg <johannes@kyriasis.com>
 
 pkgname=matrix-synapse-git
-pkgver=1.50.1.r0.gfd05a3ed03
-pkgrel=2
+pkgver=1.53.0.r4.g07f82ac29b
+pkgrel=1
 
 pkgdesc="Matrix reference homeserver"
 url="https://github.com/matrix-org/synapse"
@@ -79,7 +79,6 @@ source=(
         'sysusers-synapse.conf'
         'tmpfiles-synapse.conf'
         'override-hardened.conf'
-	'0001-Revert-Pin-to-frozendict-2.1.2-11625.patch'
 )
 
 md5sums=('SKIP'
@@ -89,8 +88,7 @@ md5sums=('SKIP'
          'ea198d6265d626af4a4c143bf3df9a66'
          'ecd9f66fb57fe1a2e1e2df07a460a35b'
          'e961c9ecad84a70345a57a7e9e6d5b09'
-         'e93ce7c015b3617f71c0fe2a4879f0e5'
-         '3b60e7a9be21cd52d6c47b1d4bf3aaad')
+         'e93ce7c015b3617f71c0fe2a4879f0e5')
 
 backup=('etc/synapse/log_config.yaml')
 install=synapse.install

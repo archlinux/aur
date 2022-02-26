@@ -1,7 +1,7 @@
 pkgbase = matrix-synapse-git
 	pkgdesc = Matrix reference homeserver
-	pkgver = 1.50.1.r0.gfd05a3ed03
-	pkgrel = 2
+	pkgver = 1.52.0.r4.g6f440fd859
+	pkgrel = 1
 	url = https://github.com/matrix-org/synapse
 	install = synapse.install
 	arch = any
@@ -69,7 +69,6 @@ pkgbase = matrix-synapse-git
 	source = sysusers-synapse.conf
 	source = tmpfiles-synapse.conf
 	source = override-hardened.conf
-	source = 0001-Revert-Pin-to-frozendict-2.1.2-11625.patch
 	md5sums = SKIP
 	md5sums = 2ef84c75b422b701d60abb0f07dfa7cb
 	md5sums = 86f5af69a6123d913c97acc6e1738aa1
@@ -78,6 +77,5 @@ pkgbase = matrix-synapse-git
 	md5sums = ecd9f66fb57fe1a2e1e2df07a460a35b
 	md5sums = e961c9ecad84a70345a57a7e9e6d5b09
 	md5sums = e93ce7c015b3617f71c0fe2a4879f0e5
-	md5sums = 3b60e7a9be21cd52d6c47b1d4bf3aaad
 
 pkgname = matrix-synapse-git
