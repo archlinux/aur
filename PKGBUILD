@@ -1,11 +1,11 @@
 pkgname=webcord
-pkgver=2.2.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A Discord web-based client made with the Electron API."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
-depends=('electron')
+depends=('electron>=17')
 makedepends=('npm' 'typescript' 'git')
 conflicts=("${pkgname}")
 options=('!strip' '!emptydirs')
@@ -13,34 +13,30 @@ options=('!strip' '!emptydirs')
 _srcname="WebCord-${pkgver}"
 
 source=(
-    "${_srcname}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+    "${_srcname}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
     "package.json"
     "buildInfo.json"
     "app.desktop"
 )
 
 sha512sums=(
-    '7a874a0abb52609759a2ba85fd1a8f8bb75f30b32b9d4786a16e98ac0beddee42447267e52b76cbe41fc6dc41f4164b36bbbe8f1e844f83b79ea39f0cfbc5134'
-    '7e9cd984c15d5977bc2e85e8d62e46a5dc7347c4746e22a0d5dbbe70551172c1a7330c214ec6d07d102d0c6ad736336efb50a57bbae16e34cc0ac80aa1082ba4'
+    '92c54c9114b67aed10a87b63ac57ec8f43af52e8d50801cc77ec8c07379dfac4bb6d0fa189b97ba4c09fce4145680bf658f9ad0b21b0fc896bfb669a9d1d36c8'
+    '9761e1f579422e478fcf6546658878dbae1e4cd2fcc1e4d107d2a2730b7b6c9671e03ca049c3e8b21447b4dc48f336a01de8aebfeace25d80f0984e1211d2b4f'
     '0c81274928a1dfd2d9adb2f8a7df011bb6d178a00bb4378ff0c9ccd17c6fbc180521c76c79969cd81eac611b9636e04036de906dd5be34cadc370fd93b0d21a4'
-    'bb07c103ef15c2b12d610cfbdedc6b6ff9c3c8b3ec942a9f7cda461e9a906b49a268a9ce6a1fc0eb3783695fc8ecefac04aff4b8052bb17a19101cba340d40f0'
+    '873224ab8ad4ee1877173136726da3e14686d48426953be57d2d9d5881791a1041517982e9af9c2259b14fb2bd0b63da370995b548d769f17c85348c1a4c3c31'
 )
 
 prepare() {
     cd "${srcdir}"
-
     ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm i
 
     cd "${_srcname}"
-
     npm i --omit=dev
-
     rm -r "sources/code/build"
 }
 
 build() {
     cd "${srcdir}/${_srcname}"
-
     tsc --sourceMap false
 }
 

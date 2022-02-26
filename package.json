@@ -4,6 +4,7 @@
         "@types/marked": "^4.0.1",
         "@types/semver": "^7.3.8",
         "@types/source-map-support": "^0.5.3",
-        "electron": "^16.0.4"
+        "@types/spdx-expression-parse": "^3.0.1",
+        "electron": "^17.0.0"
     }
 }
