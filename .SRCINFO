@@ -1,0 +1,15 @@
+pkgbase = gvst-collection-bin
+	pkgdesc = GVST Plugin Suite
+	pkgver = 20210112
+	pkgrel = 1
+	url = https://www.gvst.co.uk/portpage.htm
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = glibc
+	depends = libcurl-gnutls
+
+pkgname = gvst-collection-bin
