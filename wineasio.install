@@ -1,6 +1,6 @@
 post_install() {
 echo "Your user must belong to the realtime group in order to use wineasio."
-echo "This can be done with sudo usermod -aG realtime $(whoami)"
+echo "This can be done with sudo usermod -aG realtime \$(whoami)"
 echo ""
 echo "For registering wineasio as an ASIO driver:"
 echo "For 32bit, run: regsvr32 /usr/lib32/wine/i386-windows/wineasio.dll"
