@@ -7,7 +7,7 @@
 
 pkgname=wineasio
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 
 pkgdesc="ASIO driver implementation for Wine"
 url="https://github.com/wineasio/wineasio"
@@ -28,16 +28,8 @@ sha256sums=(
 
 build() {
   cd "$pkgname-$pkgver"
-  
   make 32
-  cd build32
-  winebuild -m32 --dll --fake-module -E ../wineasio.dll.spec asio.c.o main.c.o regsvr.c.o > $pkgname.dll
-  cd ..
-
   make 64
-  cd build64
-  winebuild -m64 --dll --fake-module -E ../wineasio.dll.spec asio.c.o main.c.o regsvr.c.o > $pkgname.dll
-  cd ..
 }
 
 package() {
