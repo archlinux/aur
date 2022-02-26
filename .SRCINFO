@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-bzip2
+pkgbase = mingw-w64-bzip2-static
 	pkgdesc = A high-quality data compression program (mingw-w64)
 	pkgver = 1.0.8
 	pkgrel = 1
@@ -7,6 +7,8 @@ pkgbase = mingw-w64-bzip2
 	license = custom
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-crt
+	provides = mingw-w64-bzip2=1.0.8
+	conflicts = mingw-w64-bzip2
 	options = !strip
 	options = !buildflags
 	options = staticlibs
@@ -17,5 +19,4 @@ pkgbase = mingw-w64-bzip2
 	sha256sums = 7daaca73a46af4636843d1d13bca9cec6e38c0932142a420ad3500098a90db11
 	sha256sums = 8f8f0b65417fe892152e1f0a4f75090d2ef1845d5a611c3c94493704d53452ef
 
-pkgname = mingw-w64-bzip2
-
+pkgname = mingw-w64-bzip2-static

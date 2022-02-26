@@ -1,4 +1,8 @@
-pkgname=mingw-w64-bzip2
+# -*- mode: Shell-script; eval: (setq tab-width 2) -*-
+# Maintainer: Dominic Meiser < git at msrd0 dot de >
+# Contributor: Michel Zou < xantares09 at hotmail dot com >
+
+pkgname=mingw-w64-bzip2-static
 pkgver=1.0.8
 pkgrel=1
 pkgdesc="A high-quality data compression program (mingw-w64)"
@@ -7,6 +11,8 @@ url="http://www.sourceware.org/bzip2/"
 license=("custom")
 makedepends=(mingw-w64-configure)
 depends=(mingw-w64-crt)
+provides=("mingw-w64-bzip2=$pkgver")
+conflicts=(mingw-w64-bzip2)
 options=(!strip !buildflags staticlibs)
 source=("https://sourceware.org/pub/bzip2/bzip2-${pkgver}.tar.gz"
         "bzip2-1.0.5-autoconfiscated.patch"
@@ -29,7 +35,7 @@ build() {
   cd "$srcdir/bzip2-$pkgver" 
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    ${_arch}-configure --enable-static=yes --enable-shared=no
     make
     popd 
   done
@@ -42,7 +48,6 @@ package() {
     rm -r "$pkgdir/usr/${_arch}/share"
     rm "$pkgdir/usr/${_arch}/bin/bz"{diff,grep,more}
     rm "$pkgdir"/usr/${_arch}/bin/*.exe
-    ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
 }
