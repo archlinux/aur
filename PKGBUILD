@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
-pkgname=pantheon-monitor
+pkgname=pantheon-monitor-git
 pkgver=r91.b143db4
 pkgrel=1
 pkgdesc='Manage processes, monitor of system resources and drives.'

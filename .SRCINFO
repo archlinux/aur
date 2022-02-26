@@ -1,4 +1,4 @@
-pkgbase = pantheon-monitor
+pkgbase = pantheon-monitor-git
 	pkgdesc = Manage processes, monitor of system resources and drives.
 	pkgver = r91.b143db4
 	pkgrel = 1
@@ -29,4 +29,4 @@ pkgbase = pantheon-monitor
 	source = git+https://github.com/Dirli/pantheon-monitor.git
 	sha256sums = SKIP
 
-pkgname = pantheon-monitor
+pkgname = pantheon-monitor-git
