@@ -1,0 +1,47 @@
+pkgbase = input-leap-git
+	pkgdesc = Open-source KVM software
+	pkgver = 2.4.0+165+g420de96f
+	pkgrel = 1
+	url = https://github.com/input-leap/input-leap
+	arch = x86_64
+	license = custom:GPL2WithOpenSSLException
+	makedepends = libx11
+	makedepends = libxrandr
+	makedepends = libxext
+	makedepends = libxinerama
+	makedepends = xorgproto
+	makedepends = libxtst
+	makedepends = libxi
+	makedepends = openssl
+	makedepends = avahi
+	makedepends = qt5-base
+	makedepends = curl
+	makedepends = libsm
+	makedepends = libice
+	makedepends = git
+	makedepends = cmake
+	makedepends = gmock
+	makedepends = gtest
+	source = input-leap::git+https://github.com/input-leap/input-leap.git
+	source = gulrak-filesystem::git+https://github.com/gulrak/filesystem.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = input-leap-headless-git
+	pkgdesc = Open-source KVM software (client and server CLI binaries)
+	depends = libx11
+	depends = libxrandr
+	depends = libxext
+	depends = libxinerama
+	depends = xorgproto
+	depends = libxtst
+	depends = libxi
+	depends = openssl
+	provides = input-leap-headless=2.4.0+165+g420de96f
+
+pkgname = input-leap-git
+	pkgdesc = Open-source KVM software (GUI)
+	depends = input-leap-headless-git
+	depends = avahi
+	depends = qt5-base
+	provides = input-leap=2.4.0+165+g420de96f
