@@ -15,7 +15,7 @@ ExecReload=/bin/kill -s ALRM $MAINPID
 StandardOutput=null
 
 # Keytab to use for acquiring credentials when none are available.
-# (Mandatory; use krenew.service if you don't want this feature.)
+# (Mandatory; use krenew.service if you don't want this functionality.)
 Environment=KEYTAB=%h/.config/default.keytab
 
 # Program that will be run after every successful renewal.
