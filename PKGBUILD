@@ -9,7 +9,7 @@
 # Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
-pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d}-git)
+pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d,libgccjit}-git)
 pkgver=12.0.1_r191804.gafeaaf4b352
 _majorver=${pkgver%%.*}
 _islver=0.24
@@ -461,9 +461,9 @@ package_gcc-d-git() {
     "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-package_libgccjit() {
+package_libgccjit-git() {
   pkgdesc="Just-In-Time Compilation with GCC backend"
-  depends=("gcc=$pkgver-$pkgrel")
+  depends=("gcc-git=$pkgver-$pkgrel")
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" jit.install-common jit.install-info
