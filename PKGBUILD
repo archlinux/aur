@@ -5,7 +5,7 @@
 
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
-pkgver=2.4.0.2
+pkgver=2.6.0.2
 pkgrel=1
 pkgdesc="Microsoft Azure Linux Agent"
 arch=('any')
@@ -21,7 +21,7 @@ backup=("etc/waagent.conf")
 options=()
 changelog=
 source=("https://github.com/Azure/WALinuxAgent/archive/v${pkgver}.tar.gz")
-sha256sums=('adc5b101c47206d5caf9c32b4833fa8f5aafe38ceafd3a6be1fcd5fc4b29a612')
+sha256sums=('d68351b54db697fd7d722af096f5e7ee54a15268f766d45679490bdc2761e8e1')
 
 package() {
 	cd "$_pkgname-$pkgver"
