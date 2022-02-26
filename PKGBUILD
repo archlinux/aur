@@ -1,7 +1,7 @@
 # Maintainer: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=tulip
-pkgver=5.3.0
+pkgver=5.6.1
 pkgrel=1
 pkgdesc='Tulip is an information visualization framework dedicated to the analysis and visualization of relational data.'
 arch=( 'i686' 'x86_64' 'armv6' 'armv6h' 'arm7h' )
@@ -34,37 +34,27 @@ optdepends=(
 source=(
     "https://sourceforge.net/projects/auber/files/tulip/tulip-${pkgver}/tulip-${pkgver}_src.tar.gz"
     )
-sha256sums=('a863ee21877fe0181ef5c9fa215f27ba1b8773fc3d945e23c323d7ff0f0db60b')
-
-prepare()
-{
-    cd "${pkgname}-${pkgver}"
-
-    mkdir -p build && cd build
-    cmake \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib \
-        -DTULIP_BUILD_TESTS=ON \
-        -DBUILD_SHARED_LIBS=ON \
-        ..
-}
+sha256sums=('bcf65f3ef60d3022645107ce291c6841bef8188dea0fd102e32f8edddfb6c3bb')
 
 build()
 {
-    cd "${pkgname}-${pkgver}/build"
-    make
+    cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
+        -DTULIP_BUILD_TESTS=ON \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib
+    cmake --build "build-$pkgver"
 }
 
-check()
-{
-    cd "${pkgname}-${pkgver}/build"
-    make test
-}
+#check() {
+    #cmake --build "build-$pkgver" -t test
+    # fails with:
+    # CMake Error at …/build-5.6.1/thirdparty/sip-4.19.25/siplib/cmake_install.cmake:60 (file):
+    # file cannot create directory: /usr/lib/tulip/python/tulip/native.  Maybe
+    # need administrative privileges.
+#}
 
-package()
-{
-    cd "${pkgname}-${pkgver}/build"
-
-    make DESTDIR="${pkgdir}" install
+package() {
+    DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
 }
