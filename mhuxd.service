@@ -8,7 +8,7 @@ PIDFile=/var/lib/mhuxd/mhuxd.pid
 EnvironmentFile=/etc/conf.d/mhuxd
 # It's also necessary to make /dev/cuse accessible to our mhuxd user (in uucp group).
 ExecStartPre=+/bin/chgrp uucp /dev/cuse
-ExecStartPre=+/bin/chmod g+wx /dev/cuse
+ExecStartPre=+/bin/chmod g+rwx /dev/cuse
 ExecStart=/sbin/mhuxd -w "$MHUXD_LISTEN" -l "$MHUXD_LOG_LEVEL" $MHUXD_ADD_OPTS
 ExecReload=/bin/kill -HUP $MAINPID
 TimeoutSec=20
