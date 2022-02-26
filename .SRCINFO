@@ -1,0 +1,17 @@
+pkgbase = klank-preamp-bin
+	pkgdesc = Audio Assault Bass Preamp
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/collections/plugins/products/klank
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = KLANK Bass Preamp.desktop
+	sha256sums = 354d9caf0f5f5f1c2f3d666b17d80b19c5514230fac85db691436f9f937823c3
+
+pkgname = klank-preamp-bin

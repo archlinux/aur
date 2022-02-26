@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=AudioVideo;X-AudioEditing
+Comment[en_US]=Audio Assault Bass Preamp
+Comment=Audio Assault Bass Preamp
+Encoding=UTF-8
+Exec="/usr/bin/KLANK Standalone"
+GenericName[en_US]=
+GenericName=
+MimeType=
+Name[en_US]=KLANK Guitar Preamp
+Name=KLANK Guitar Preamp
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
