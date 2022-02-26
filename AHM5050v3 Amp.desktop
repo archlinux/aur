@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Comment=Audio Assault Dual Amp Sim
+Type=Application
+Categories=AudioVideo;X-AudioEditing
+Terminal=false
+Exec="/usr/bin/AHM 5050 v3 Standalone"
+Name=AHM5050 Guitar Amp
