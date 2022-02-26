@@ -2,7 +2,7 @@
 
 pkgname=element-desktop-nightly-bin
 pkgver=2022022601
-pkgrel=2
+pkgrel=1
 pkgdesc="All-in-one secure chat app for teams, friends and organisations (nightly .deb build)."
 arch=('x86_64')
 url="https://element.io"
