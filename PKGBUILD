@@ -20,7 +20,7 @@ source=("${url}/releases/download/v${pkgver}/${_jar}"
 sha256sums=('2e98530a4c1b14195ecad4c89ba3527e4ecee0b51482244b37f9b4bb725ba535'
             'ce97f5451bc5cc13a17c7fbc4302ff5c7d5761f7981dc85abca5005add76a84b'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
-            '2cb80b6ddf85b7697626b77d4bec0946734dc7a8306934fd58e993a5f3eeeb2c')
+            '1ef35a00f723229da2d15a062e1b589abb3f10d089a2f4801e31c03c25cb707b')
 
 noextract=("${_jar}")
 
