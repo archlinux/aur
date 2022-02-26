@@ -1,19 +1,18 @@
 pkgbase = gixy
 	pkgdesc = Nginx configuration static analyzer
 	pkgver = 0.1.20
-	pkgrel = 1
+	pkgrel = 6
 	url = https://github.com/yandex/gixy
 	arch = any
 	license = MPL2
+	makedepends = python-setuptools
 	depends = python-argparse
 	depends = python-cached-property
 	depends = python-configargparse
 	depends = python-jinja
 	depends = python-pyparsing
-	depends = python-setuptools
 	depends = python-six
 	source = https://files.pythonhosted.org/packages/source/g/gixy/gixy-0.1.20.tar.gz
 	sha512sums = e2d853c78d8dce6a46e3dffb8f27e0d975915664977526c722b33a2e3146feaf07f25d02f3d28abefecd1a0751d1687b05773a8891d0b83f7f36e81512c5395a
 
 pkgname = gixy
-
