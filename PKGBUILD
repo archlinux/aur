@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 _base=pywikibot
 pkgname=python-${_base}
-pkgver=6.6.5
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Python library that interfaces with the MediaWiki API"
 url="https://www.mediawiki.org/wiki/Manual:${_base}"
