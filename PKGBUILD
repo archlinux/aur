@@ -12,7 +12,6 @@ pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d,libgccjit}-git)
 pkgver=12.0.1_r191804.gafeaaf4b352
 _majorver=${pkgver%%.*}
-_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -40,7 +39,7 @@ checkdepends=(
   tcl
 )
 options=(!emptydirs !lto !debug)
-_libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
+_libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 source=(git://gcc.gnu.org/git/gcc.git
         c89 c99
         gdc_phobos_path.patch
@@ -285,8 +284,8 @@ package_gcc-git() {
   rm -f "$pkgdir"/usr/lib32/lib{stdc++,gcc_s}.so
 
   # byte-compile python libraries
-  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
-  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%%+*}/"
+  python -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
+  python -O -m compileall "$pkgdir/usr/share/gcc-${pkgver%_*}/"
 
   # Install Runtime Library Exception
   install -d "$pkgdir/usr/share/licenses/$pkgname/"
