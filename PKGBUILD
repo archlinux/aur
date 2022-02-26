@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gtk-gnutella
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Gnutella server/client"
 arch=('i686' 'x86_64')
@@ -14,10 +14,10 @@ license=('GPL')
 makedepends=('pkg-config')
 depends=('gtk2' 'glib2' 'desktop-file-utils')
 source=(
-	"https://github.com/gtk-gnutella/gtk-gnutella/archive/refs/tags/v1.2.1.tar.gz"
+	"https://github.com/gtk-gnutella/gtk-gnutella/archive/refs/tags/v${pkgver}.tar.gz"
 )
-md5sums=(
-	'e6298a64427cccd414e8a2a0d707006f'
+sha256sums=(
+	'e52484a28849a4d3eb064638e5116f64bac2ab3f224ab90baed7f69ea400d11d'
 )
 
 build() {
