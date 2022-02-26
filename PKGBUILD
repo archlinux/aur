@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=kstart
 pkgver=4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Kerberos kinit supporting AFS and ticket refreshing"
 arch=(i686 x86_64)
 url="https://www.eyrie.org/~eagle/software/kstart/"
@@ -10,11 +10,13 @@ depends=(krb5)
 source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
         "https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz.asc"
         "krenew.service"
-        "kstart.service")
+        "kstart.service"
+        "nm-dispatcher.sh")
 sha256sums=('9527702a48789084e314e5c08d4115129467ca7ef25983d7214c9439d31ef2a6'
             'SKIP'
             '09189067c7f7e91af3255684b94e31f7c1eb5ba3b7080eb98f7c5d1ef6cecaa9'
-            '3b39d9c9efc1dd568c14e97b060f22d52d3de90e8ce552f521aefe33ecab02df')
+            '3b39d9c9efc1dd568c14e97b060f22d52d3de90e8ce552f521aefe33ecab02df'
+            '13684ab17853ddfbf5a0b438faa916cd360d2811043ece88dcf68c3d2e5a302a')
 validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 
 build() {
@@ -26,11 +28,12 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
   cd "$srcdir"
-  install -Dm644 krenew.service "$pkgdir/usr/lib/systemd/user/krenew.service"
-  install -Dm644 kstart.service "$pkgdir/usr/lib/systemd/user/kstart.service"
+  install -Dm644 krenew.service "$pkgdir"/usr/lib/systemd/user/krenew.service
+  install -Dm644 kstart.service "$pkgdir"/usr/lib/systemd/user/kstart.service
+  install -Dm755 nm-dispatcher.sh "$pkgdir"/etc/NetworkManager/dispatcher.d/80-k5start
 }
 
 # vim: ts=2:sw=2:et:ft=sh
