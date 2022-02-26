@@ -1,0 +1,25 @@
+pkgbase = python-wayremap
+	pkgdesc = A dynamic keyboard remapper for Wayland.
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/acro5piano/wayremap
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = ipython
+	makedepends = pyright
+	makedepends = python-poetry
+	depends = python
+	depends = python
+	depends = python-uinput
+	depends = python-evdev
+	depends = python-i3ipc
+	source = https://files.pythonhosted.org/packages/source/w/wayremap/wayremap-0.0.10.tar.gz
+	sha256sums = 775c55e42359dd24b13859d0c553e030aba9c11d13fba4550aef09fbba955d6f
+
+pkgname = python-wayremap
+	depends = python
+	depends = python
+	depends = python-uinput
+	depends = python-evdev
+	depends = python-i3ipc
