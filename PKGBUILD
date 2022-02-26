@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=sby-nightly
-pkgver=20220225_02a5b71
+pkgver=20220226_02a5b71
 pkgrel=1
 epoch=1
 pkgdesc="Front-end for Yosys-based formal verification flows"
