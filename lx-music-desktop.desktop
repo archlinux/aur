@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Luo Xue Music Helper
+Name[zh_CN]=洛雪音乐助手
+Comment=A free music search helper
+Comment[zh_CN]=一个免费的音乐查找助手
+Type=Application
+Exec=lx-music-desktop
+Icon=lx-music-desktop.png
+Terminal=false
+Categories=Utility;AudioVideo;Audio;Player;Music; 

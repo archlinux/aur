@@ -1,6 +1,6 @@
 pkgbase = lx-music-desktop-git
 	pkgdesc = 一个免费的音乐查找助手
-	pkgver = 1.10.2_c538e9c
+	pkgver = 1.18.0.2f39808
 	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = lx-music-desktop-git
 	arch = armv7l
 	makedepends = npm
 	makedepends = nodejs>=14
-	makedepends = jq
 	depends = c-ares
 	depends = ffmpeg
 	depends = gtk3
@@ -25,7 +24,10 @@ pkgbase = lx-music-desktop-git
 	depends = libappindicator-gtk3
 	conflicts = lx-music-desktop
 	source = lx-music-desktop-git::git+https://github.com/lyswhut/lx-music-desktop
+	source = lx-music-desktop.desktop
+	source = lxmusic-url.desktop
 	sha256sums = SKIP
+	sha256sums = 34342d437c59c6ae352123272daa1819e275c843170bbb8b467cbbc1c4c63dac
+	sha256sums = 626d2e3b76abe7b107bc0c9a763111e07fb46c3398f38afe3337c193d35e1841
 
 pkgname = lx-music-desktop-git
-

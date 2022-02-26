@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=LX Music Desktop Scheme Handler
+Exec=lx-music-desktop %u
+StartupNotify=false
+MimeType=x-scheme-handler/lxmusic;

@@ -1,5 +1,4 @@
 pkg
 src
-lx-music-desktop*
-*.pkg.tar.*
-
+lx-music-desktop
+*.pkg.tar.zst 
