@@ -1,7 +1,7 @@
 pkgbase = synology-assistant
 	pkgdesc = Synology Assistant is a desktop utility that searches for Synology servers within the local area network. It allows you to search and connect to your Synology server or set up Wake on LAN (WOL).
-	pkgver = 7.0.2.50046
-	pkgrel = 1
+	pkgver = 7.0.2_50046
+	pkgrel = 2
 	url = https://www.synology.com/releaseNote/Assistant
 	install = synology-assistant.install
 	arch = i686
