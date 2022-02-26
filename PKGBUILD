@@ -3,20 +3,20 @@
 
 pkgname=avvie-git
 _app_id=com.github.taiko2k.avvie
-pkgver=1.0.beta1.r63.gdda3f95
-pkgrel=2
-pkgdesc="A GTK app for quick image cropping"
+pkgver=v1.7.r6.g5d946f2
+pkgrel=1
+pkgdesc="A utility for quickly cropping images"
 arch=('any')
 url="https://github.com/Taiko2k/avvie"
 license=('GPL3')
-depends=('gtk3' 'libnotify' 'python-cairo' 'python-gobject' 'python-piexif' 'python-pillow')
+depends=('gtk4' 'libadwaita' 'python-cairo' 'python-gobject' 'python-piexif' 'python-pillow')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Taiko2k/avvie.git'
         "${pkgname%-git}.sh")
-sha256sums=('SKIP'
-            '2631bd81c05d33bac91c01a2bc0bc242ad03cfdbe3eca14e434ccb4cec044b1e')
+b2sums=('SKIP'
+        '0b9462efa971eb7d5ffba08cca71bf7f2c522fdf5ccc6bcb4ca66f6aaea7eb1c84d2d2ee8e9be96a58a1f5cfdad407cf39aa0b4842d31587b1aeeff494debbe8')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
