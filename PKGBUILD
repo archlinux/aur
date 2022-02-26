@@ -6,12 +6,12 @@
 pkgname=dfhack
 pkgver=0.47.05
 _pkgver=$pkgver-r3
-pkgrel=4
+pkgrel=5
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
 license=('custom')
-depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
+depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama libxcrypt-compat)
 makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
 conflicts=('dfhack-bin' 'dfhack-git')
 
