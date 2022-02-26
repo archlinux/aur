@@ -1,3 +1,3 @@
 [D-BUS Service]
-Name=org.freedesktop.ScreenSaver
-Exec=/usr/bin/xscreensaver-dbus-screenlock-freedesktop.py
+Name=org.gnome.ScreenSaver
+Exec=/usr/bin/xscreensaver-dbus-screenlock-gnome.py
