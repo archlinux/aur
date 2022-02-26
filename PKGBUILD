@@ -2,7 +2,7 @@
 # Contributor: garion < garion @ mailoo.org >
 
 pkgname=vobsub2srt-git
-pkgver=v1.0.7.gf3205f5
+pkgver=1.0.7.gf3205f5
 pkgrel=1
 pkgdesc="Convert IDX/SUB subtitles into SRT text subtitles. (GIT version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('debug')
 
 pkgver() {
   cd vobsub2srt
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . |tr -d v)"
 }
 
 prepare() {

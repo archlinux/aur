@@ -1,6 +1,6 @@
 pkgbase = vobsub2srt-git
 	pkgdesc = Convert IDX/SUB subtitles into SRT text subtitles. (GIT version)
-	pkgver = v1.0.7.gf3205f5
+	pkgver = 1.0.7.gf3205f5
 	pkgrel = 1
 	url = https://github.com/ruediger/VobSub2SRT
 	arch = x86_64
