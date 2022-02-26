@@ -1,3 +1,17 @@
+* Sat Feb 26 2022 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.5.0-1
+  PeaZip 8.5.0 release improves the packages for macOS platform, with macOS-style keyboard
+  shortcuts, integration with macOS context menu, full support to "move to trash" deletion
+  (both from file manager, and after compression/extraction operations), and support for
+  Brotli, Zpaq, and Zstandard backends. macOS system integration is fully scriptable through
+  Automator .workflow scripts, see sample service menus in (peazip)/res/share/batch folder.
+  File manager was improved, and now allows more alternative styles (large list and large
+  details) on Linux.
+  It is now possible to optionally integrate PeaZip in Windows 11 mini-context menu from
+  .reg scripts in (peazip)/res/share/batch folder.
+  This release improves scripting, usage of layouts (files defining advanced inclusion and
+  exclusion filters, and optionally input list), and updates compression settings.
+  Updated backends: 7z 21.07, Pea 1.06, and Zstd 1.5.2.
+
 * Thu Dec 16 2021 Vladimir Svyatski <vsvyatski@yandex.ru> - 8.4.0-1
   PeaZip 8.4.0 is the first release providing experimental native packages for Darwin/macOS
   platform, built for aarch64 M1 Apple Silicon SoC, and Intel x86_64.

@@ -7,7 +7,7 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2-bin
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
 pkgdesc='PeaZip file manager and archiver (GTK 2)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=('p7zip: Command-line file archiver with high compression ratio'
 provides=('peazip')
 conflicts=('peazip-qt-bin' 'peazip-qt5' 'peazip-qt5-bin')
 source=("https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip-${pkgver}.LINUX.GTK2-1.${CARCH}.rpm")
-sha256sums=('fae19f23d2f35a3d338206d950efebd60dbb893cf636f822828d090d0998b823')
+sha256sums=('bcba40c7a234ba64a620a3e57776ac7bf639cb4f7e9f2f983dc16e1cdf34767d')
 changelog=changelog.txt
 
 prepare() {
@@ -43,6 +43,10 @@ prepare() {
   rm "${sharedPeaZip}/readme/readme_Windows.txt"
   rm "${sharedPeaZip}/batch/"*.bat
   rm -r "${sharedPeaZip}/batch/SendTo"
+  rm -r "${sharedPeaZip}/batch/Windows 11 mini context menu"
+  # macOS related stuff
+  rm "${sharedPeaZip}/readme/readme_macOS.txt"
+  rm -r "${sharedPeaZip}/batch/macOS service menus"
   # KDE 3? You must be kidding.
   rm -r "${sharedPeaZip}/batch/freedesktop_integration/KDE-servicemenus/KDE3-konqueror"
   # KDE 4 is not supported on Arch since 2015-12-12 (https://archlinux.org/news/dropping-plasma-4/)
