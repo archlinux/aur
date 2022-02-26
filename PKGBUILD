@@ -7,16 +7,16 @@
 # Contributor: robb_force <robb_force@holybuffalo.net>
 
 pkgname=yabause-qt5-git
-pkgver=0.9.15.r3257.8b1b7685
+pkgver=0.9.15.r3272.7e38821db
 pkgrel=1
 pkgdesc="A Sega Saturn emulator. Qt5 port (GIT version)"
-arch=('x86_64' 'i386')
+arch=('x86_64')
 url='http://yabause.org'
 license=('GPL')
-depends=('mini18n-git'
+depends=('libmini18n.so'
          'openal'
          'sdl2'
-         'glew'
+         'libGLEW.so'
          'freeglut'
          'libxkbcommon-x11'
          'qt5-multimedia'
@@ -26,15 +26,21 @@ makedepends=('git'
              'cmake'
              'glu'
              'doxygen'
+             'mini18n-git'
+             'glew'
              )
-conflicts=('yabause-qt' 'yabause-qt5' 'yabause-gtk' 'yabause')
+conflicts=('yabause-qt'
+           'yabause-qt5'
+           'yabause-gtk'
+           'yabause'
+           )
 provides=('yabause-qt5')
 source=('git+https://github.com/Yabause/yabause.git'
         'rwx.patch'
         )
 sha256sums=('SKIP'
-            'd29997d3249683081a2687f31e777f917093101d56815d22103aaaf22ac786b1'
-            )
+            'd29997d3249683081a2687f31e777f917093101d56815d22103aaaf22ac786b1')
+options=('debug')
 
 pkgver() {
   cd yabause/yabause
@@ -43,10 +49,8 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   cd yabause/yabause
-  patch -Np1 -i "${srcdir}/rwx.patch"
+  patch -p1 -i "${srcdir}/rwx.patch"
 
   # Install .svg icon instead .png
   cp src/logo.svg src/qt/resources/icons/yabause.svg
@@ -54,18 +58,17 @@ prepare() {
 }
 
 build() {
-  cd build
-
-  cmake ../yabause/yabause \
-    -DCMAKE_BUILD_TYPE='Release' \
+  cmake -S yabause/yabause -B build \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DYAB_PORTS=qt \
     -DYAB_NETWORK=ON \
-    -DYAB_OPTIMIZED_DMA=ON
+    -DYAB_OPTIMIZED_DMA=ON \
+    -DOpenGL_GL_PREFERENCE=GLVND
 
-  make
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
 }
