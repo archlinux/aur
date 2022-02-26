@@ -1,0 +1,16 @@
+pkgbase = xontrib-fzf-widgets
+	pkgdesc = Set of fzf widgets for xonsh
+	pkgver = r43.8af47d1
+	pkgrel = 1
+	url = https://github.com/laloch/xontrib-fzf-widgets
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python3
+	depends = xonsh
+	depends = fzf
+	source = git+https://github.com/laloch/xontrib-fzf-widgets
+	sha256sums = SKIP
+
+pkgname = xontrib-fzf-widgets
