@@ -1,8 +1,8 @@
 # Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
 pkgname='wayout-git'
 _pkgname="wayout"
-pkgver=1
-pkgrel=1
+pkgver=1.0.0.6.gea8ed0b
+pkgrel=2
 arch=('x86_64')
 url="https://git.sr.ht/~shinyzenith/wayout"
 pkgdesc="A simple output management tool for wlroots based compositors"
@@ -19,7 +19,7 @@ build(){
 
 package() {
 	cd "$_pkgname"
-	install -Dm 755 ./target/release/wayout "$pkgdir/usr/bin/wayshot"
+	install -Dm 755 ./target/release/wayout "$pkgdir/usr/bin/wayout"
 }
 
 pkgver() {
