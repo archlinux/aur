@@ -1,4 +1,5 @@
-# Maintainer: luxcem <a@luxcem.fr>
+# Maintainer: Gobidev <adrian[dot]groh[at]t-online[dot]de>
+# Contributor: luxcem <a@luxcem.fr>
 # Contributor: kpcyrd <kpcyrd[at]archlinux[dot]org>
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
