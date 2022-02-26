@@ -15,7 +15,7 @@ source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
 sha256sums=('9527702a48789084e314e5c08d4115129467ca7ef25983d7214c9439d31ef2a6'
             'SKIP'
             'a496742d7cb2f00e8714d2b36da6adc09efd8a62e4892572b69b458b6e790a4e'
-            '75ca839c4b0f452d597cb1b004c80d55614f51bb3a00b0b082fd2ca2138fc21b'
+            'c8d196d5af2187ec03ca8ab9ab88184fd6ecf7a0372ab034a1e014b379e38b16'
             '514010cea54d80d1d41fe1885dbdd49225e52192be466e88979f91bac37c8022')
 validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 
