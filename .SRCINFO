@@ -1,0 +1,17 @@
+pkgbase = blacksun-amp-bin
+	pkgdesc = Audio Assault An Extremely Versatile Amp
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://audioassault.mx/products/blacksun
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Blacksun Amp.desktop
+	sha256sums = 59120cde3f90875b18db7e27761bb3eb95dd4d0e64eecd6729e6706269a8ce89
+
+pkgname = blacksun-amp-bin
