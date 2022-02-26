@@ -3,7 +3,7 @@
 pkgname="ungoogled-chromium-linchrome"
 pkgver=98.0.4758.80_r950365
 pkgrel=1
-pkgdesc="Ungoogled Chromium, A lightweight approach to removing Google web service dependency (binary version)"
+pkgdesc="Ungoogled Chromium, A lightweight approach to removing Google web service dependency (binary version from macchrome/linchrome)"
 arch=("x86_64")
 url="https://github.com/Eloston/ungoogled-chromium"
 license=("BSD")
@@ -27,7 +27,7 @@ Name=Chromium\nGenericName=Web Browser\nExec=/usr/bin/chrome %U\nIcon=/usr/lib/c
     cp chromium.desktop $pkgdir/usr/share/applications/chromium.desktop
     cp LICENSE $pkgdir/usr/share/licenses/chromium/chromium.desktop
     cp ungoogled-chromium_${pkgver%_*}_1.vaapi_linux/* $pkgdir/usr/lib/chromium -r
-    ln -s $pkgdir/usr/lib/chromium/chromedriver $pkgdir/usr/bin/chromedriver
-    ln -s $pkgdir/usr/lib/chromium/chrome $pkgdir/usr/bin/chrome
+    ln -s /usr/lib/chromium/chromedriver $pkgdir/usr/bin/chromedriver
+    ln -s /usr/lib/chromium/chrome $pkgdir/usr/bin/chrome
     
 }
