@@ -1,7 +1,7 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
 
 pkgname=pls
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='A better ls for developers'
 url='https://pypi.org/project/pls/'
