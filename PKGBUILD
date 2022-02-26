@@ -2,7 +2,7 @@
 
 pkgname=lsi-lsa
 pkgver=007.019.006.000
-pkgrel=3
+pkgrel=4
 pkgdesc="LSI Storage Authority Software Suite"
 arch=('x86_64')
 url='https://www.broadcom.com/products/storage'
@@ -11,6 +11,7 @@ depends=('openslp'
          'lsi-openpegasus'
          'curl'
          'perl'
+         'libxcrypt-compat'
          )
 makedepends=('patchelf')
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
@@ -38,7 +39,7 @@ options=('!strip')
 
 _create_links() {
   # create soname links
-  for _lib in $(find "${pkgdir}" -name '*.so*'); do
+  for _lib in $(find "${pkgdir}" -name '*.so*' -type f); do
     _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
     _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
     [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
