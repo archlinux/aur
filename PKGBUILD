@@ -2,7 +2,7 @@
 
 pkgname=mhuxd-git
 pkgver=v0.50rc3.r99.gf11ac15
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux daemon implementing the microHam keyer protocol."
 arch=('any')
 url="https://github.com/dj5qv/mhuxd"
@@ -72,6 +72,7 @@ package() {
 	install -Dm 644 "mhuxd.service" -t "$pkgdir/usr/lib/systemd/system/"
 	install -Dm 644 "mhuxd.sysusers" "$pkgdir/usr/lib/sysusers.d/mhuxd.conf"
 	install -Dm 644 "mhuxd.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/mhuxd.conf"
+	install -Dm 644 "kernel-modules.conf" "$pkgdir/etc/modules-load.d/mhuxd.conf"
 
 	# TODO: Tighten the security a bit. No need to open all tty ports
 	# (by adding the mhuxd user to uucp group), when we can do it
