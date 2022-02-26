@@ -7,12 +7,13 @@ pkgbase = eiskaltdcpp-web-git
 	license = GPL3
 	makedepends = git
 	depends = eiskaltdcpp-daemon
+	depends = sh
 	provides = eiskaltdcpp-web
 	conflicts = eiskaltdcpp-web
 	options = !emptydirs
 	source = git+https://github.com/eiskaltdcpp/eiskaltdcpp-web
 	source = eiskaltdcpp-web.sh
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 1bf98f045ee32a021011d82eddba4787198a66b104c3183279ca1c8e71bf321b
 
 pkgname = eiskaltdcpp-web-git
