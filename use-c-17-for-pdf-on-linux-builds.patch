@@ -1,0 +1,9 @@
+--- a/src/pdf/pdf.pri	2021-04-13 19:05:29.000000000 +0200
++++ b/src/pdf/pdf.pri	2022-02-27 19:43:33.932172711 +0100
+@@ -1,3 +1,6 @@
++linux-g++* {
++    CONFIG += c++17
++}
+ 
+ HEADERS      += src/pdf/GraphicsPDFItem.h \
+                 src/pdf/PDFRenderer.h \

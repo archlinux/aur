@@ -3,7 +3,7 @@
 pkgname=openboard
 pkgver=1.6.1
 _src_folder="OpenBoard-${pkgver}"
-pkgrel=4
+pkgrel=5
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -17,14 +17,18 @@ source=("https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz"
 source+=(qchar.patch)
 source+=(quazip.patch)
 source+=(drop_ThirdParty_repo.patch)
+source+=(use-c-17-for-pdf-on-linux-builds.patch)
 sha256sums=('cf5bfb570b9ac4e61e1670c5a433f1dcaf0de1e8dbcbd544f058711690afba79'
             '64289f9d91cb25fa79fb988f19d43a542d67380fcf27668d0da1ee4ba1e705eb'
             'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
             '0a9d037336dab3dbd99652b71934a94cd1e9801650fe5e72f4dd1de1718dd4c1'
-            'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14')
+            'a6a9bc1f9c9bee0345b735fcf422245ae7946f96f6c34520dd63530a98978c14'
+            '33a1e28293a8f2e97ba9ab9be1c77bfc04d473ce477b31322b20eececad9bc2f')
 
 prepare() {
   cd "$srcdir"/$_src_folder
+  msg2 "c17"
+  patch -f -p1 < "$srcdir"/use-c-17-for-pdf-on-linux-builds.patch
   msg2 "drop_ThirdParty_repo"
   patch -f -p1 < "$srcdir"/drop_ThirdParty_repo.patch || true
   msg2 "qchar"
