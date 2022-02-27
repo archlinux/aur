@@ -1,7 +1,7 @@
 pkgbase = gxr
 	pkgdesc = glib wrapper for the OpenVR and soon the OpenXR API
 	pkgver = 0.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.freedesktop.org/xrdesktop/gxr
 	arch = i686
 	arch = x86_64

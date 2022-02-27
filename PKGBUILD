@@ -2,7 +2,7 @@
 
 pkgname=gxr
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="glib wrapper for the OpenVR and soon the OpenXR API"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/gxr"
@@ -34,6 +34,6 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gxr"
 }
