@@ -4,7 +4,7 @@
 # Contributor: Sergey Kasmy
 
 pkgname=liquidctl-git
-pkgver=1.8.1.r56.8163803
+pkgver=1.8.1.r113.df547dc
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
@@ -54,7 +54,7 @@ check() {
   mkdir -p runtime
   XDG_RUNTIME_DIR=runtime python -m pytest
 
-  python -m liquidctl.cli list --verbose
+  python -m liquidctl list --verbose
 }
 
 package() {
