@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop-ast
 	pkgdesc = RuboCop's AST extensions and NodePattern functionality
-	pkgver = 1.15.1
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://github.com/rubocop/rubocop-ast
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = ruby-rubocop-ast
 	depends = ruby
 	depends = ruby-parser
 	options = !emptydirs
-	source = https://github.com/rubocop/rubocop-ast/archive/v1.15.1/rubocop-ast-1.15.1.tar.gz
-	sha256sums = f6f812f4cfd09e3808ac639c685a8de786c22f419bf9bfd39752ed451d97f655
+	source = https://github.com/rubocop/rubocop-ast/archive/v1.16.0/rubocop-ast-1.16.0.tar.gz
+	sha256sums = 05240a63bf896ef86e3845d66c11ff7ff857c297b5fb6c88f04942720d56b86f
 
 pkgname = ruby-rubocop-ast
