@@ -24,7 +24,7 @@ prepare(){
 }
 
 build() {
-  export GOFLAGS="-gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
+  export GOFLAGS="-modcacherw -gcflags=all=-trimpath=${PWD} -asmflags=all=-trimpath=${PWD} -ldflags=-extldflags=-zrelro -ldflags=-extldflags=-znow"
   export GOPATH="$srcdir"/gopath
   unset LDFLAGS
 
