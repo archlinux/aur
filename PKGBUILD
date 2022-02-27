@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-nightthemeswitcher
 _pkgname=nightthemeswitcher-gnome-shell-extension
-pkgver=55
+pkgver=59
 pkgrel=1
 pkgdesc="Automatically toggle your light and dark themes variants"
 arch=('any')
@@ -12,7 +12,7 @@ groups=('gnome-shell-extensions')
 depends=('gnome-shell>=1:41')
 makedepends=('glib2')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
-sha512sums=('4f5608a19b0929adccc0245ec8abeff03011d40f51711c57599994950d1070a5babe4c47a2f1e02f53e39afd1ec46b70ff19c428a7804f23dc74bee2809e9ed1')
+b2sums=('40abdf32ff12eb718fdc956f67166f165d6c8855f5424128a0985dd4abf84fb2e43ca2825e38e6a8051483caa910adbec1e3ddbd6221db77ffdabe7ef90be4fd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
