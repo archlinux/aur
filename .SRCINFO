@@ -1,7 +1,7 @@
 pkgbase = alist-bin
 	pkgdesc = Another file list program that supports multiple storage
 	pkgver = 2.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Xhofe/alist
 	arch = aarch64
 	arch = arm
@@ -11,19 +11,11 @@ pkgbase = alist-bin
 	arch = x86_64
 	license = AGPL3
 	provides = alist
+	source = alist-2.1.0::git+https://github.com/Xhofe/alist#tag=v2.1.0
+	source = alist-2.1.0-web.tar.gz::https://github.com/alist-org/alist-web/releases/download/2.1.0/dist.tar.gz
 	source = alist.service
+	sha256sums = SKIP
+	sha256sums = 2bba9149988f9429270d0378750d249ab2c39d210cd3331b0b8b54ee690c39ee
 	sha256sums = 432974ff640e0830249dd28d9151092caef3e5bfec427ed270a028c5b8c50152
-	source_aarch64 = alist-2.1.0-aarch64.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-arm64.tar.gz
-	sha256sums_aarch64 = 2421692ba382902212e801db1e2b1bcc073ba03bd0db50995469f8c67317c9c2
-	source_arm = alist-2.1.0-arm.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-arm-5.tar.gz
-	sha256sums_arm = ad76cc4f53fe0babc1f9a3a5fc43d7538744796234b41479a9b95225576cb429
-	source_armv6h = alist-2.1.0-armv6h.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-arm-6.tar.gz
-	sha256sums_armv6h = 9f47b7e83cf4af21e1a24b27c7703460351e062541d71fd78a57f5b305162fdd
-	source_armv7h = alist-2.1.0-armv7h.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-arm-7.tar.gz
-	sha256sums_armv7h = 67e927bdae8fa703928b2350c12c125f29d4c4eb9278f3d99650d397543a714e
-	source_i686 = alist-2.1.0-i686.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-386.tar.gz
-	sha256sums_i686 = 9d543f2f57019b4476823c7ca38dfcd27cd1b25ad07b89fe5267158c4bc3e2ac
-	source_x86_64 = alist-2.1.0-x86_64.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-amd64.tar.gz
-	sha256sums_x86_64 = c52d35bd04ae6a99763979f290e2124e448809701530a53450d2e48f3e98d21b
 
 pkgname = alist-bin
