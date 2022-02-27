@@ -1,10 +1,10 @@
-# Maintainer: Mufeed Ali <lastweakness@tuta.io>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# ex-Maintainer: Mufeed Ali <lastweakness@tuta.io>
 
 pkgname=wordbook
-_author=fushinari
 _gitname=Wordbook
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='An offline dictionary app for GNOME'
 arch=(any)
 url=https://github.com/fushinari/Wordbook
@@ -17,23 +17,20 @@ depends=(
     python-gobject
     python-wn
 )
-makedepends=(
-    gobject-introspection
-    meson
-)
-source=("$_gitname-v$pkgver.tar.gz::https://github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('0fe8ae1c518a852dc58f0e551a9e93d836fd2089e6f42740814f9c8d18108836')
-
-prepare() {
-    cd $_gitname-$pkgver
-    cd ..
-}
+makedepends=('gobject-introspection' 'meson')
+checkdepends=('appstream-glib')
+source=("${url}/archive/${pkgver}.tar.gz")
+b2sums=('94c079dcd3ab65736c189943db18c5fabfe5dd74dcac8b99a7c32832486d1421ac1ea3305269a2195771589b15c164395fe3fd8a8cd09c0b0809a0d317232cd0')
 
 build() {
-    arch-meson $_gitname-$pkgver build
-    ninja -C build
+  arch-meson $_gitname-$pkgver build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+  meson install -C build --destdir "$pkgdir"
 }
