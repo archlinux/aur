@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-frequency-boost-switch
 _pkgname=gnome-frequency-boost-switch
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Add a toggle to enable/disable CPU frequency boost in Gnome Power Profiles menu."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gnome-shell>=1.41')
 makedepends=('zip')
 source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz)
-b2sums=('91b4e870c59877d1c66ea217de7bfe3337ca97360b74f0a15a779a10fd3d825ec97b75d08d42ecf559402123b60f2232eb49756ffa6a06199a12af78b736adf2')
+b2sums=('05988892039b3935f00bc128019f0f1980c0eaa2ac0d0762ce69b0779fadd04f8a3c6f2ebe7413a4ff05ff891915f8c5619469354f7d44565a13ce336b8ced91')
 
 build() {
   cd "$_pkgname-v$pkgver"
