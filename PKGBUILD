@@ -14,18 +14,18 @@ md5sums=("e9c45ab90307002c2943e7e34957f3f4")
 prepare() {
     export CMAKE_BUILD_PARALLEL_LEVEL=$(nproc)
     cd "$srcdir/${pkgname}-${pkgver}"
-	mkdir build
-	cd build
-	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}/build"
     cmake --build .
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}/build"
     DESTDIR="$pkgdir" cmake --install .
 }
 
