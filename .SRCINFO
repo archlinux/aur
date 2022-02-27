@@ -1,13 +1,16 @@
 pkgbase = python-myst-nb
 	pkgdesc = Parse and execute ipynb files in Sphinx
-	pkgver = 0.13.1
+	pkgver = 0.13.2
 	pkgrel = 1
 	url = https://myst-nb.readthedocs.io
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/m/myst-nb/myst-nb-0.13.1.tar.gz
-	md5sums = 4549f906c318bef20f95c500e7ee4976
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/myst-nb/myst-nb-0.13.2.tar.gz
+	md5sums = 063ffdcb077f8fe6c3f4db45f3a0a669
 
 pkgname = python-myst-nb
 	depends = python-importlib-metadata
@@ -17,6 +20,7 @@ pkgname = python-myst-nb
 	depends = python-jupyter_sphinx
 	depends = python-myst-parser
 	depends = jupyter-nbconvert<7
+	depends = jupyter-nbformat
 	depends = python-yaml
 	depends = python-sphinx-togglebutton
 	optdepends = python-pre-commit: code_style
