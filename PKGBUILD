@@ -12,7 +12,7 @@ depends=('keyutils' 'libsodium')
 makedepends=('git' 'cmake')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=(git://github.com/gdelugre/${_pkgname}.git)
+source=(git+https://github.com/gdelugre/${_pkgname}.git)
 md5sums=('SKIP')
 
 
