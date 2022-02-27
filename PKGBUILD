@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=zim-tools-git
-pkgver=3.0.0.r8.g4754843
+pkgver=3.1.0.r10.g288dce5
 pkgrel=1
 pkgdesc="Various ZIM command line tools"
 arch=('i686' 'x86_64')
@@ -44,5 +44,5 @@ check() {
 package() {
   cd "zim-tools"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 }
