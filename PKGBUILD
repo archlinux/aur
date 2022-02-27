@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hse-git
-pkgver=2.2.0.dev.r3.gd6725791
+pkgver=2.2.0.dev.r50.ge3919157
 pkgrel=1
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
@@ -45,5 +45,5 @@ check() {
 package() {
   cd "hse"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 }

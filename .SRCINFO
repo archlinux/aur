@@ -1,6 +1,6 @@
 pkgbase = hse-git
 	pkgdesc = Heterogeneous-memory storage engine
-	pkgver = 2.2.0.dev.r3.gd6725791
+	pkgver = 2.2.0.dev.r50.ge3919157
 	pkgrel = 1
 	url = https://hse-project.github.io/
 	arch = i686
