@@ -17,8 +17,8 @@ _install_dir="/opt/wechat-devtools"
 _node_version="16.1.0"
 
 pkgname=wechat-devtools
-pkgver="1.05.2201242"  # 主版本号
-pkgrel=2   # 次版本号release
+pkgver="${_wechat_devtools_ver}"  # 主版本号
+pkgrel=15   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools For Linux. "
 arch=("x86_64")
