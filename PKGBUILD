@@ -2,7 +2,7 @@
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.19.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64")
 parch=$(echo ${arch} | sed "s/x86_64/x64/")
@@ -22,6 +22,9 @@ optdepends=(
     'nftables: TUN mode required.'
     'iproute2: TUN mode required.'
     'clash-premium-tun: TUN mode required'
+)
+makedepends=('asar'
+'npm'
 )
 
 source=(

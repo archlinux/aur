@@ -1,11 +1,13 @@
 pkgbase = clash-for-windows-electron-bin
 	pkgdesc = A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron
 	pkgver = 0.19.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fndroid/clash_for_windows_pkg
 	install = clash-for-windows-bin.install
 	arch = x86_64
 	license = unknown
+	makedepends = asar
+	makedepends = npm
 	depends = electron
 	depends = clash
 	depends = clash-geoip
