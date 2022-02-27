@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=sway-systemd
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Systemd integration for Sway session"
 arch=(any)
