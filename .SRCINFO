@@ -1,17 +1,13 @@
 pkgbase = transifex-client
 	pkgdesc = The Transifex command-line tool to download and upload translations from Transifex
-	pkgver = 0.14.4
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/transifex-client
+	url = https://github.com/transifex/cli
+	install = transifex-client.install
 	arch = any
-	license = GPL2
-	depends = python-distribute
-	depends = python-urllib3
-	depends = python-six
-	depends = python-requests
-	depends = python-slugify
-	depends = python-gitpython
-	source = https://pypi.io/packages/source/t/transifex-client/transifex-client-0.14.4.tar.gz
-	sha256sums = 11dc95cefe90ebf0cef3749c8c7d85b9d389c05bd0e3389bf117685df562bd5c
+	license = Apache
+	makedepends = go
+	source = transifex-client-1.0.3.tar.gz::https://github.com/transifex/cli/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 50bec348a86cea0af6b3f22e99327312bc22f30113e0107b81d6da3f2f2a2a39
 
 pkgname = transifex-client

@@ -1,0 +1,17 @@
+post_install() {
+  true
+}
+
+post_upgrade() {
+  echo ""
+  echo "NOTE: If you just upgraded to the new go-based transifex client,"
+  echo "you may need to migrate your configuration."
+  echo ""
+  echo "See the following page for instructions:"
+  echo "https://github.com/transifex/cli#migrating-from-older-versions-of-the-client"
+  echo ""
+}
+
+post_remove() {
+  true
+}
