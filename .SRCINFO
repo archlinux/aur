@@ -1,6 +1,6 @@
 pkgbase = fuse3-git
 	pkgdesc = The reference implementation of the Linux FUSE (Filesystem in userspace) interface
-	pkgver = 3.10.4.r11.g9677eca
+	pkgver = 3.10.5.r6.g3c2ba7a
 	pkgrel = 1
 	url = https://github.com/libfuse/libfuse
 	arch = i686
