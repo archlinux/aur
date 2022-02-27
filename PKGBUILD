@@ -3,7 +3,7 @@
 _name=qtsass
 pkgname=python-$_name
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Compile SCSS files to Qt stylesheets"
 arch=('any')
 url="https://github.com/spyder-ide/qtsass"
@@ -13,8 +13,14 @@ depends=(
   'python-libsass'
 )
 makedepends=('python')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("$_name-$pkgver::git+https://github.com/spyder-ide/qtsass.git#tag=v$pkgver")
 md5sums=('SKIP')
+
+prepare() {
+  cd $srcdir/$_name-$pkgver
+  # Bug fix: "Add check for deprecated api between 2 and 3 versions"
+  git cherry-pick -n cbea8d8
+}
 
 build() {
   cd $srcdir/$_name-$pkgver
