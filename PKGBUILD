@@ -3,12 +3,12 @@ _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/kinnala/${_base}"
 license=('custom:BSD-3-clause')
 depends=(python-scipy)
-makedepends=(python-setuptools python-pip)
+makedepends=(python-setuptools python-wheel)
 checkdepends=(python-pytest python-matplotlib python-pacopy python-h5py python-meshio python-pyamg)
 optdepends=('python-meshio: for import/export any mesh format')
 source=(${url}/archive/${pkgver}.tar.gz)
@@ -22,7 +22,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not Ex23'
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not Ex23 and not saveload_cycle_tags'
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = python-scikit-fem
 	pkgdesc = Simple finite element assemblers
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kinnala/scikit-fem
 	arch = x86_64
 	license = custom:BSD-3-clause
@@ -12,7 +12,7 @@ pkgbase = python-scikit-fem
 	checkdepends = python-meshio
 	checkdepends = python-pyamg
 	makedepends = python-setuptools
-	makedepends = python-pip
+	makedepends = python-wheel
 	depends = python-scipy
 	optdepends = python-meshio: for import/export any mesh format
 	source = https://github.com/kinnala/scikit-fem/archive/5.2.0.tar.gz
