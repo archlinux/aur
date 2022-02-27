@@ -1,15 +1,15 @@
 pkgbase = r-lubridate
 	pkgdesc = Make Dealing with Dates a Little Easier
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=lubridate
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
-	depends = r>=3.2
+	license = GPL
+	checkdepends = r-testthat
+	makedepends = r-cpp11
+	depends = cctz
 	depends = r-generics
-	depends = r-cpp11>=0.2.7
 	optdepends = r-covr
 	optdepends = r-knitr
 	optdepends = r-testthat
