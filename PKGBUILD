@@ -15,7 +15,7 @@ license=('GPL3')
 provides=('jcal') 
 depends=()
 makedepends=('git')
-source=('git://github.com/persiancal/jcal.git')
+source=('git+https://github.com/persiancal/jcal.git')
 md5sums=('SKIP')
  
  
