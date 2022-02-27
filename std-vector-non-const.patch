@@ -1,0 +1,115 @@
+diff --git a/patches/chromium/feat_add_data_parameter_to_processsingleton.patch b/patches/chromium/feat_add_data_parameter_to_processsingleton.patch
+index 2bc279b5e..f15d952a2 100644
+--- a/patches/chromium/feat_add_data_parameter_to_processsingleton.patch
++++ b/patches/chromium/feat_add_data_parameter_to_processsingleton.patch
+@@ -30,7 +30,7 @@ index eec994c4252f17d9c9c41e66d5dae6509ed98a18..e538c9b76da4d4435e10cd3848438446
+        base::RepeatingCallback<bool(const base::CommandLine& command_line,
+ -                                   const base::FilePath& current_directory)>;
+ +                                   const base::FilePath& current_directory,
+-+                                   const std::vector<const uint8_t> additional_data)>;
+++                                   const std::vector<uint8_t> additional_data)>;
+  
+  #if defined(OS_WIN)
+    ProcessSingleton(const std::string& program_name,
+@@ -68,7 +68,7 @@ index a04d139f958a7aaef9b96e8c29317ccf7c97f009..e77cebd31967d28f3cb0db78e7360115
+    // |reader| is for sending back ACK message.
+    void HandleMessage(const std::string& current_dir,
+                       const std::vector<std::string>& argv,
+-+                     const std::vector<const uint8_t> additional_data,
+++                     const std::vector<uint8_t> additional_data,
+                       SocketReader* reader);
+  
+   private:
+@@ -79,7 +79,7 @@ index a04d139f958a7aaef9b96e8c29317ccf7c97f009..e77cebd31967d28f3cb0db78e7360115
+ -    const std::string& current_dir, const std::vector<std::string>& argv,
+ +    const std::string& current_dir,
+ +    const std::vector<std::string>& argv,
+-+    const std::vector<const uint8_t> additional_data,
+++    const std::vector<uint8_t> additional_data,
+      SocketReader* reader) {
+    DCHECK(ui_task_runner_->BelongsToCurrentThread());
+    DCHECK(reader);
+@@ -109,7 +109,7 @@ index a04d139f958a7aaef9b96e8c29317ccf7c97f009..e77cebd31967d28f3cb0db78e7360115
+ +  base::StringToSizeT(tokens[0], &num_args);
+ +  std::vector<std::string> command_line(tokens.begin() + 1, tokens.begin() + 1 + num_args);
+ +
+-+  std::vector<const uint8_t> additional_data;
+++  std::vector<uint8_t> additional_data;
+ +  if (tokens.size() >= 3 + num_args) {
+ +    size_t additional_data_size;
+ +    base::StringToSizeT(tokens[1 + num_args], &additional_data_size);
+@@ -118,7 +118,7 @@ index a04d139f958a7aaef9b96e8c29317ccf7c97f009..e77cebd31967d28f3cb0db78e7360115
+ +        std::string(1, kTokenDelimiter));
+ +    const uint8_t* additional_data_bits =
+ +        reinterpret_cast<const uint8_t*>(remaining_args.c_str());
+-+    additional_data = std::vector<const uint8_t>(
+++    additional_data = std::vector<uint8_t>(
+ +        additional_data_bits, additional_data_bits + additional_data_size);
+ +  }
+ +
+@@ -184,7 +184,7 @@ index 19d5659d665321da54e05cee01be7da02e0c283b..600ff701b025ba190d05bc30994e3d3e
+                        base::CommandLine* parsed_command_line,
+ -                      base::FilePath* current_directory) {
+ +                      base::FilePath* current_directory,
+-+                      std::vector<const uint8_t>* parsed_additional_data) {
+++                      std::vector<uint8_t>* parsed_additional_data) {
+    // We should have enough room for the shortest command (min_message_size)
+    // and also be a multiple of wchar_t bytes. The shortest command
+ -  // possible is L"START\0\0" (empty current directory and command line).
+@@ -225,7 +225,7 @@ index 19d5659d665321da54e05cee01be7da02e0c283b..600ff701b025ba190d05bc30994e3d3e
+ +        msg.substr(fourth_null + 1, fifth_null - fourth_null);
+ +    const uint8_t* additional_data_bytes =
+ +        reinterpret_cast<const uint8_t*>(additional_data.c_str());
+-+    *parsed_additional_data = std::vector<const uint8_t>(additional_data_bytes,
+++    *parsed_additional_data = std::vector<uint8_t>(additional_data_bytes,
+ +        additional_data_bytes + additional_data_length);
+ +
+      return true;
+@@ -239,7 +239,7 @@ index 19d5659d665321da54e05cee01be7da02e0c283b..600ff701b025ba190d05bc30994e3d3e
+    base::CommandLine parsed_command_line(base::CommandLine::NO_PROGRAM);
+    base::FilePath current_directory;
+ -  if (!ParseCommandLine(cds, &parsed_command_line, &current_directory)) {
+-+  std::vector<const uint8_t> additional_data;
+++  std::vector<uint8_t> additional_data;
+ +  if (!ParseCommandLine(cds, &parsed_command_line, &current_directory, &additional_data)) {
+      *result = TRUE;
+      return true;
+diff --git a/shell/browser/api/electron_api_app.cc b/shell/browser/api/electron_api_app.cc
+index 7328cedf9..9945a04b2 100644
+--- a/shell/browser/api/electron_api_app.cc
++++ b/shell/browser/api/electron_api_app.cc
+@@ -517,10 +517,10 @@ bool NotificationCallbackWrapper(
+     const base::RepeatingCallback<
+         void(const base::CommandLine& command_line,
+              const base::FilePath& current_directory,
+-             const std::vector<const uint8_t> additional_data)>& callback,
++             const std::vector<uint8_t> additional_data)>& callback,
+     const base::CommandLine& cmd,
+     const base::FilePath& cwd,
+-    const std::vector<const uint8_t> additional_data) {
++    const std::vector<uint8_t> additional_data) {
+   // Make sure the callback is called after app gets ready.
+   if (Browser::Get()->is_ready()) {
+     callback.Run(cmd, cwd, std::move(additional_data));
+@@ -1081,7 +1081,7 @@ std::string App::GetLocaleCountryCode() {
+ 
+ void App::OnSecondInstance(const base::CommandLine& cmd,
+                            const base::FilePath& cwd,
+-                           const std::vector<const uint8_t> additional_data) {
++                           const std::vector<uint8_t> additional_data) {
+   v8::Isolate* isolate = JavascriptEnvironment::GetIsolate();
+   v8::Locker locker(isolate);
+   v8::HandleScope handle_scope(isolate);
+diff --git a/shell/browser/api/electron_api_app.h b/shell/browser/api/electron_api_app.h
+index fd644ed95..838366041 100644
+--- a/shell/browser/api/electron_api_app.h
++++ b/shell/browser/api/electron_api_app.h
+@@ -190,7 +190,7 @@ class App : public ElectronBrowserClient::Delegate,
+   std::string GetLocaleCountryCode();
+   void OnSecondInstance(const base::CommandLine& cmd,
+                         const base::FilePath& cwd,
+-                        const std::vector<const uint8_t> additional_data);
++                        const std::vector<uint8_t> additional_data);
+   bool HasSingleInstanceLock() const;
+   bool RequestSingleInstanceLock(gin::Arguments* args);
+   void ReleaseSingleInstanceLock();
