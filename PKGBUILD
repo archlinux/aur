@@ -2,8 +2,8 @@
 _base=colorio
 pkgname=python-${_base}
 pkgdesc="Tools for color research"
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.11.2
+pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -18,7 +18,7 @@ optdepends=('python-meshio: for creation mesh'
   'python-scipy: for curve fit support'
   'vtk: for create VTK hexahedron support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('f8ea213c17f595f9aa67ac42d47c0d6476bf45066ed401d27101603593039a38a76898aee6799ee9b86d3ae36e2fddba71121834838e80f544e603d073503c04')
+sha512sums=('472a0ebe95a12f0a6e01afa8fbc1a3ee19b9a3510507655644eb4d0e7d46ce6df089e81153c9aabf41a2f2a682ea8a7ddee26ca8d7a2e4d18a04d49037f94b28')
 
 build() {
   cd ${_base}-${pkgver}
