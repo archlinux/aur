@@ -1,6 +1,6 @@
 pkgbase = canto-next-git
 	pkgdesc = News aggregator for Atom/RSS/RDF. Git version
-	pkgver = 0.9.7
+	pkgver = 0.9.8.r1.ge300077
 	pkgrel = 1
 	url = http://codezen.org/canto-ng/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = canto-next-git
 	optdepends = python-requests: Needed by inoreader plugin
 	provides = canto-daemon=0.9.7
 	conflicts = canto-daemon
-	source = git://github.com/themoken/canto-next#branch=master
+	source = git+https://github.com/themoken/canto-next#branch=master
 	md5sums = SKIP
 
 pkgname = canto-next-git
-
