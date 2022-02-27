@@ -2,7 +2,7 @@
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.19.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64")
 parch=$(echo ${arch} | sed "s/x86_64/x64/")
