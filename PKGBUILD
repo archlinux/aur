@@ -2,7 +2,7 @@
 
 pkgname=rng-rename
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to rename files to randomly generated strings."
 arch=("x86_64" "i686" "armv6h" "armv7h" "aarch64")
 url="https://github.com/cyqsimon/rng-rename"
@@ -10,8 +10,9 @@ license=("AGPL3")
 conflicts=("rng-rename-git" "rng-rename-bin")
 depends=("gcc-libs")
 makedepends=("cargo")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('97bf352531ca005b86b108cab363618ccf69b85dd81f420e3d3642d438a067f4')
+# source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/${pkgname}/${pkgname}-${pkgver}.crate")
+sha256sums=('700cfadcc34818f001ce4db82741a3349e06b6210edf285e46cd433a721dca2b')
 
 prepare() {
   cd ${pkgname}-${pkgver}
