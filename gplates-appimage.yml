@@ -1,8 +1,34 @@
 app: gplates
 ingredients:
-  dist: xenial
+  dist: focal
   sources:
-    - deb http://archive.ubuntu.com/ubuntu/ xenial main universe
+    - deb http://archive.ubuntu.com/ubuntu/ focal main universe
+  packages:
+    - cmake
+    - libglew-dev
+    - python3-dev
+    - python3-numpy
+    - libboost-dev
+    - libboost-python-dev
+    - libboost-thread-dev
+    - libboost-program-options-dev
+    - libboost-test-dev
+    - libboost-system-dev
+    - qt5-default
+    - libqt5opengl5-dev
+    - libqt5svg5-dev
+    - libqt5xmlpatterns5-dev
+    - libgdal-dev
+    - libcgal-dev
+    - libproj-dev
+    - libqwt-qt5-dev
+    - zlib1g-dev
+    - libfreetype6-dev
+    - libfontconfig1-dev
+    - libxrender-dev
+    - libice-dev
+    - libsm-dev
+    - gplates
 script:
   - # create desktop and image files
   - cat > gplates.desktop <<EOF

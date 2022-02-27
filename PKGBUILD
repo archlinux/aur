@@ -1,9 +1,9 @@
-# Maintainer: Tim Clifford <tclifford at protonmail dot com>
+# Maintainer: Tim Clifford <tim at clifford dot lol>
 
 pkgname=gplates-bin
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
-pkgdesc="GPlates - a plate tectonics program. Built as an AppImage from the Xenial deb"
+pkgdesc="GPlates - a plate tectonics program. Built as an AppImage from the .deb"
 arch=('x86_64')
 url="https://www.gplates.org"
 license=('GPL2')
@@ -14,14 +14,14 @@ source=(
   gplates-appimage.yml
   gplates.png
   https://raw.githubusercontent.com/AppImage/pkg2appimage/master/pkg2appimage
-  https://sourceforge.net/projects/gplates/files/gplates/${pkgver}/gplates-ubuntu-xenial_${pkgver}_1_amd64.deb
+  gplates_2.3.0_ubuntu-20.04-amd64.deb::https://www.earthbyte.org/download/8430
 )
 md5sums=(
   5f40760e7d3448a413354bbdcb72e529
-  2ec83c32d7c3ac889097e2835188ad58
+  6a85bf12313cd662f7cd23a05f978ca2
   4476faf94d5d8c919aeaa34aa0b2ed04
   29b5588e48f5705029ab3e954d16e40b
-  6ab1bd1d080e3a5815e2a282b33909a9
+  871ab30b353286f2e812ee22667ebb83
 )
 
 build() {
