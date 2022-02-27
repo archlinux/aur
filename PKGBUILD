@@ -2,8 +2,10 @@
 
 pkgname=spotify-snapstore
 pkgver=1.1.77.643_g3c4c6fc6
-pkgrel=2
+pkgrel=3
 pkgdesc='A proprietary music streaming service'
+conflicts=('spotify')
+provides=('spotify')
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
