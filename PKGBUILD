@@ -2,14 +2,14 @@
 
 pkgname=libajantv2
 pkgver=16.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="AJA NTV2 Open Source Static Libs and Headers for building applications that only wish to statically link against"
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/aja-video/ntv2"
 license=("MIT")
 depends=()
-makedepends=("cmake")
+makedepends=("cmake" "git")
 options=('debug')
 #source=("ntv2::git+https://github.com/aja-video/ntv2.git#tag=v$pkgver")
 source=("ntv2::git+https://github.com/aja-video/ntv2.git#commit=abf17cc1e7aadd9f3e4972774a3aba2812c51b75")
