@@ -2,8 +2,8 @@
 
 pkgname=kode-studio-bin
 _pkgname=kode-studio
-pkgver=17.9.1
-pkgrel=5
+pkgver=18.11
+pkgrel=6
 pkgdesc="Kode Studio is an IDE specifically tailored for Kha."
 arch=('x86_64')
 url="http://kha.tech/download"
