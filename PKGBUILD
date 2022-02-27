@@ -2,7 +2,7 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.0.9
+pkgver=2.1.0
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
@@ -11,7 +11,7 @@ url="https://github.com/Xhofe/alist"
 license=('AGPL3')
 provides=(${_pkgname})
 source=("${url}/releases/download/v${_pkgver}/alist-linux-amd64.tar.gz")
-sha256sums=('2ca2279d73406b71e30323d341e96687c7d7c7c0b160e6ca9b5847820cfc17f8')
+sha256sums=('c52d35bd04ae6a99763979f290e2124e448809701530a53450d2e48f3e98d21b')
 
 prepare() {
     echo """[Unit]
