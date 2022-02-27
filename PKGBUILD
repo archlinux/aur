@@ -1,14 +1,14 @@
 # Maintainer: Hilton Medeiros <medeiros.hilton@gmail.com>
 pkgname=material-maker-bin
 _pkgname=material_maker
-pkgver=0.97
+pkgver=0.98
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="A tool for procedural texture generation and 3D model painting"
 arch=('x86_64')
 url="https://rodzilla.itch.io/material-maker"
 license=('MIT')
-depends=('libpulse' 'alsa-lib' 'libxi' 'libxrandr' 'libglvnd' 'libxcursor' 'libxinerama' 'hicolor-icon-theme')
+depends=('libxi' 'libxrandr' 'libglvnd' 'libxcursor' 'libxinerama' 'hicolor-icon-theme')
 options=(!strip)
 provides=('material-maker')
 conflicts=('material-maker' 'material-maker-git')
@@ -17,11 +17,11 @@ source=(https://github.com/RodZill4/material-maker/releases/download/${pkgver}/$
         io.github.RodZill4.Material-Maker.desktop
         material-maker.png
         LICENSE)
-sha256sums=('1bfc9a6ab85dd0ef12a9958b77ecbdeffff1ce23bcfb472d3e7a16f8e0df1c17'
-            '6365bb63aa2d99ebc0d0ffec6ea780ed9af533e374f253a3655057f023d04fa2'
+sha256sums=('7394bdbcf5477f8899a73cb7bdb92f797a2735af8438cd04f8d2a0136d1b8c2a'
+            '0e88f92599e1304caec575dc13380b4a16138ac69e7be58d23b8ce84c62c1045'
             '381e6425233d0aa3786c5583a2415d0d20b828481fa93dceac1e4376481d1330'
             '72ee1a0fc59b798b8849eb9bd0cb7b67fd9ee3ff41645f90c2ca98168f3619ef'
-            'd7d038704c498e2e9fb93ad11235e3fb2e801f6b47cf081b8a3eff57f9af78e7')
+            'ac9c6450c84132fca73c423dee07c4793f72e6a2d6f6eb4701cbbd226fccd548')
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
