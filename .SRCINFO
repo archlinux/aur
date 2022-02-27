@@ -1,6 +1,6 @@
 pkgbase = gomodifytags-git
 	pkgdesc = Go tool to modify struct field tags
-	pkgver = 40.20180122
+	pkgver = 105.20210922
 	pkgrel = 1
 	url = https://github.com/fatih/gomodifytags
 	arch = i686
@@ -13,4 +13,3 @@ pkgbase = gomodifytags-git
 	md5sums = SKIP
 
 pkgname = gomodifytags-git
-

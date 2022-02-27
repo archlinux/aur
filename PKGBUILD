@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 
 pkgname=gomodifytags-git
-pkgver=40.20180122
+pkgver=105.20210922
 pkgrel=1
 pkgdesc="Go tool to modify struct field tags"
 arch=('i686' 'x86_64')
