@@ -1,8 +1,8 @@
 # Maintainer: Florian Loitsch <florian@toit.io>
 pkgname=toit
-_tag="v0.16.0"
+_tag="v1.6.7"
 _repo="https://github.com/toitlang/toit.git"
-_commit=1eee31a51a699885eab396b430af7d7749d14909
+_commit=17ad7b7b293ba81dcb65391f6f1ae4310bee44e9
 pkgver="${_tag#v}"
 pkgrel=1
 pkgdesc="Toit programming language SDK"
@@ -34,7 +34,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make -j1 all
+	TOIT_GIT_VERSION=v$pkgver make -j1 all
 }
 
 package() {
