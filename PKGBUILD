@@ -19,7 +19,7 @@ optdepends=('haxe: third-party Haxe library support'
             'android-studio: Android target IDE'
             'codeblocks: Linux target IDE'
             'eclipse-java: Java target IDE')
-source_x86_64=("https://github.com/Kode/KodeStudio/releases/download/v${pkgver}/KodeStudio-Linux.tar.gz"
+source_x86_64=("https://github.com/Kode/KodeStudio/releases/download/v${pkgver}/KodeStudio-Linux.tar.xz"
                "${_pkgname}.desktop"
                'print-version.py'
                )
