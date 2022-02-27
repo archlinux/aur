@@ -1,18 +1,16 @@
-# Maintainer: Charles L <charliehogger31@gmail.com>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+
 pkgname=uefi-run
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
-pkgdesc="Directly run UEFI applications in qemu"
+pkgdesc="Directly run UEFI applications in QEMU"
 arch=('x86_64')
 url="https://github.com/Richard-W/uefi-run"
 license=('MIT')
-makedepends=('rust')
-optdepends=('qemu: emulation binaries'
-	'ovmf: UEFI bios binaries')
-install=
-changelog=
-source=("https://github.com/Richard-W/uefi-run/archive/v${pkgver}.tar.gz")
-md5sums=('36e26fbe0a7d0b40262faa6728195441')
+depends=(qemu ovmf)
+makedepends=(rust)
+source=("$url/archive/v$pkgver.tar.gz")
+md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"

@@ -1,15 +1,14 @@
 pkgbase = uefi-run
-	pkgdesc = Directly run UEFI applications in qemu
-	pkgver = 0.3.2
+	pkgdesc = Directly run UEFI applications in QEMU
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Richard-W/uefi-run
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	optdepends = qemu: emulation binaries
-	optdepends = ovmf: UEFI bios binaries
-	source = https://github.com/Richard-W/uefi-run/archive/v0.3.2.tar.gz
-	md5sums = 36e26fbe0a7d0b40262faa6728195441
+	depends = qemu
+	depends = ovmf
+	source = https://github.com/Richard-W/uefi-run/archive/v0.4.0.tar.gz
+	md5sums = SKIP
 
 pkgname = uefi-run
-
