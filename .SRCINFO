@@ -1,11 +1,14 @@
 pkgbase = python-aiopath
 	pkgdesc = Asynchronous pathlib for Python
 	pkgver = 0.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexdelorenzo/aiopath
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-aiofile
 	depends = python-anyio
 	depends = python-typing-extensions
