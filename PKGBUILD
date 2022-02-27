@@ -5,13 +5,13 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="https://sunpy.org"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-extension-helpers' 'python-numpy')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-oldest-supported-numpy' 'python-extension-helpers' 'python-numpy')
 #'python-sunpy-sphinx-theme'
 #'python-parfive' 'python-astroquery' 'python-reproject' 'python-ruamel-yaml' 'python-jplephem' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sphinx-gallery>=0.9.0' 'python-sphinxext-opengraph'
 #'python-scikit-image' 'python-h5netcdf' 'python-sqlalchemy' 'python-lxml' 'python-zeep' 'python-drms' 'python-aioftp' 'python-asdf' 'python-cdflib' 'python-mpl-animators' 'graphviz')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('cdf78e16fab6cefbdd50d62370d6d915')
+md5sums=('cb2e3ba0dfc236ba77a713b1ef1289e9')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -105,7 +105,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
 #   export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
@@ -157,7 +157,7 @@ package_python-sunpy() {
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" {LICENSE.rst,licenses/*}
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 #package_python-sunpy-doc() {
