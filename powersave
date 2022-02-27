@@ -1,6 +1,7 @@
 HYPERTHREADS="off"
 GOVERNOR="powersave"
 XPSTURBO="1"
+PCIEASPMPOL="powersupersave"
 ENERGYPERF="15"
 BACKLIGHT="0"
 LAPTOP="5"
