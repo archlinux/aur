@@ -30,7 +30,7 @@ pkgbase = kode-studio-bin
 	source_x86_64 = kode-studio.desktop
 	source_x86_64 = print-version.py
 	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = 085056b38a51192641b9c7daac35515491c1202374369a9b1e19cdf764273c11
+	sha256sums_x86_64 = ab1b6973cbcfe32fe681d1546095fdb1f79c16c04823153928d31b7629a36b7e
 	sha256sums_x86_64 = 516503d1aa701c51cc9a89c31c97f1a01f8007641b667ab326ab5ba7c3e5e46f
 
 pkgname = kode-studio-bin
