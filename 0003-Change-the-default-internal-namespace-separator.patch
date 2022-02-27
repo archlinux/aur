@@ -1,0 +1,64 @@
+From 4425e80f74b93a590b2c99638b9c5095e6a66244 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Sl=C3=A1vek=20Banko?= <slavek.banko@axis.cz>
+Date: Thu, 24 Feb 2022 20:31:15 +0100
+Subject: [PATCH 3/3] Change the default internal namespace separator from the
+ colon to the pipe.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This solves compatibility with libexpat >= 2.4.5
+after fix the security problem CVE-2022-25236.
+
+This resolves issue #76.
+
+Signed-off-by: Slávek Banko <slavek.banko@axis.cz>
+---
+ ChangeLog             | 4 ++++
+ THANKS                | 1 +
+ src/wbxml_internals.h | 4 ++--
+ 3 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/ChangeLog b/ChangeLog
+index c22c99f..06ca9d2 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,7 @@
++  * Change the default internal namespace separator from the colon to the pipe
++    (issue #76 from Sebastian Pipping, fixed in pull request #78 from Slávek Banko).
++    This solves compatibility with libexpat >= 2.4.5 after fix the security
++    problem CVE-2022-25236.
+ 2020-04-15  Michael Bell <michael.bell@web.de>
+   * Released 0.11.7
+   * Added WBXML_INSTALL_FULL_HEADERS cmake flag to expose internal API
+
+diff --git a/THANKS b/THANKS
+index 2ec9664..51a4d0f 100644
+--- a/THANKS
++++ b/THANKS
+@@ -27,6 +27,7 @@ Renu Tyagi               (fixed some memory leaks)
+ Boaz Yaniv               (MS Visual Studio fixes)
+ Slava Monich             <slava@monich.com>
+ David Llewellyn-Jones    <david.llewellyn-jones@jolla.com>
++Slávek Banko             <slavek.banko@axis.cz>
+ 
+ If you think your name is missing here
+ then please feel free to create a ticket.
+diff --git a/src/wbxml_internals.h b/src/wbxml_internals.h
+index aa80fe2..cc21be2 100644
+--- a/src/wbxml_internals.h
++++ b/src/wbxml_internals.h
+@@ -157,8 +157,8 @@ typedef enum WBXMLWVDataType_e {
+ #endif /* WIN32 */
+ 
+ /* Separator must be the same in both cases - once as a char, once as a string */
+-#define WBXML_NAMESPACE_SEPARATOR     ':'
+-#define WBXML_NAMESPACE_SEPARATOR_STR ":"
++#define WBXML_NAMESPACE_SEPARATOR     '|'
++#define WBXML_NAMESPACE_SEPARATOR_STR "|"
+ 
+ /** @} */
+ 
+-- 
+2.35.1
+
