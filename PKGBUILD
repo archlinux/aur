@@ -2,7 +2,7 @@
 
 pkgname=hse
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous-memory storage engine"
 arch=('i686' 'x86_64')
 url="https://hse-project.github.io/"
@@ -33,5 +33,5 @@ check() {
 package() {
   cd "hse"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 }
