@@ -2,7 +2,7 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r746.g61f9ed04
+pkgver=0.3.7.r832.gd98c7071
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
@@ -79,7 +79,8 @@ check() {
 }
 
 package_libjxl-git() {
-    depends=('brotli' 'giflib' 'gperftools' 'libjpeg-turbo' 'libpng' 'openexr')
+    depends=('brotli' 'gflags' 'giflib' 'gperftools' 'highway-git' 'libjpeg-turbo'
+             'libpng' 'openexr')
     optdepends=('gdk-pixbuf2: for gdk-pixbuf loader'
                 'gimp: for gimp plugin'
                 'java-runtime: for JNI bindings')

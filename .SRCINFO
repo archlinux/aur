@@ -1,6 +1,6 @@
 pkgbase = libjxl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.3.7.r746.g61f9ed04
+	pkgver = 0.3.7.r832.gd98c7071
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
@@ -49,8 +49,10 @@ pkgbase = libjxl-git
 
 pkgname = libjxl-git
 	depends = brotli
+	depends = gflags
 	depends = giflib
 	depends = gperftools
+	depends = highway-git
 	depends = libjpeg-turbo
 	depends = libpng
 	depends = openexr
