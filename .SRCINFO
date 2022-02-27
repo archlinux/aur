@@ -1,6 +1,6 @@
 pkgbase = gist-git
 	pkgdesc = Potentially the best command line gister
-	pkgver = 5.0.0.r0.g9c04757
+	pkgver = 5.1.0.r1.gab14e27
 	pkgrel = 1
 	url = http://github.com/defunkt/gist
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = gist-git
 	optdepends = xsel: put pasted gist's url into X selection automagically
 	provides = gist
 	conflicts = gist
-	source = git://github.com/defunkt/gist.git
+	source = git+https://github.com/defunkt/gist.git
 	md5sums = SKIP
 
 pkgname = gist-git
-
