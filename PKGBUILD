@@ -15,7 +15,7 @@ pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
-depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat' 'hidapi' 'capstone')
+depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd')
@@ -85,6 +85,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
+  sed -i 's|GROUP="plugdev", ||g' contrib/60-openocd.rules
   git submodule init
   git config submodule.jimtcl.url "$srcdir/jimtcl"
   git config submodule."src/jtag.drivers/libjaylink".url "$srcdir/libjaylink"
@@ -97,19 +98,16 @@ build() {
 
   ./bootstrap
   ./configure --prefix=/usr \
-    --enable-maintainer-mode \
     --disable-werror \
     ${_features[@]/#/--enable-}
 
-  #make clean
   make
 }
 
 package() {
   cd "$srcdir/${pkgname}"
+
   make "DESTDIR=${pkgdir}" install
-  rm -rf ${srcdir}/$pkgname-build
-  rm -rf "$pkgdir/usr/share/info/dir"
-  mkdir -p "$pkgdir/usr/lib/udev/rules.d"
-  mv "$pkgdir/usr/share/$_pkgbase/contrib/60-openocd.rules" "$pkgdir/usr/lib/udev/rules.d"
+
+  install -Dm 644 contrib/60-openocd.rules "$pkgdir"/usr/lib/udev/rules.d/60-openocd.rules
 }

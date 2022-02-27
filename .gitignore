@@ -1,4 +1,8 @@
 pkg/
 src/
 *.pkg.*
+*.log
 openocd-git/
+git2cl/
+jimtcl/
+libjaylink/
