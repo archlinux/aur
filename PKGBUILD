@@ -1,37 +1,39 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 _repo='MedzikUser/imgurs'
-_ver=v0.3.0
+_ver=v0.4.0
 
-_pkgname='imgurs'
-pkgname="${_pkgname}"
-pkgver=0.3.0
+pkgname="imgurs"
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='CLI for Imgur API'
 arch=('x86_64')
 url="https://github.com/${_repo}"
 license=('BSD3')
 
-depends=('libnotify')
+depends=('libnotify' 'xsel')
 makedepends=('git' 'cargo')
 
-source=("${_pkgname}::git+${url}#tag=${_ver}")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/${_ver}.tar.gz")
 sha256sums=('SKIP')
+options=(!lto)
 
 build() {
-  cd "${_pkgname}"
-
+  cd "$srcdir/$pkgname-$pkgver"
   cargo build --release
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm 755 target/release/${_pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm 755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
 
   mkdir -p "$pkgdir"/usr/share/{bash-completion/completions,zsh/site-functions,fish/vendor_completions.d}
-  target/release/${_pkgname} completions bash > "$pkgdir"/usr/share/bash-completion/completions/${pkgname}
-  target/release/${_pkgname} completions zsh > "$pkgdir"/usr/share/zsh/site-functions/_${pkgname}
-  target/release/${_pkgname} completions fish > "$pkgdir"/usr/share/fish/vendor_completions.d/${pkgname}.fish
+  target/release/$pkgname completions bash > "$pkgdir"/usr/share/bash-completion/completions/$pkgname
+  target/release/$pkgname completions zsh > "$pkgdir"/usr/share/zsh/site-functions/_$pkgname
+  target/release/$pkgname completions fish > "$pkgdir"/usr/share/fish/vendor_completions.d/$pkgname.fish
 
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mkdir -p "$pkgdir"/usr/share/man/man1
+  target/release/$pkgname manpage | gzip > "$pkgdir"/usr/share/man/man1/$pkgname.1.gz
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
