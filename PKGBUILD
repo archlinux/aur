@@ -1,12 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=highway-git
-pkgver=0.15.0.r30.g155d91a
+pkgver=0.16.0.r7.ga8a6dd9
 pkgrel=1
 pkgdesc='A C++ library for SIMD (Single Instruction, Multiple Data) (git version)'
 arch=('x86_64')
 url='https://github.com/google/highway/'
 license=('Apache')
+depends=('gcc-libs')
 makedepends=('git' 'cmake' 'gtest')
 provides=('highway')
 conflicts=('highway')
@@ -22,6 +23,7 @@ build() {
     cmake -B build -S highway \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+        -DBUILD_SHARED_LIBS:BOOL='ON' \
         -DHWY_SYSTEM_GTEST:BOOL='ON' \
         -Wno-dev
     make -C build
