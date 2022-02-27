@@ -2,7 +2,7 @@
 
 pkgname=highway-git
 pkgver=0.16.0.r7.ga8a6dd9
-pkgrel=1
+pkgrel=2
 pkgdesc='A C++ library for SIMD (Single Instruction, Multiple Data) (git version)'
 arch=('x86_64')
 url='https://github.com/google/highway/'
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-    export CXXFLAGS+=' -ffat-lto-objects -DHWY_COMPILE_ALL_ATTAINABLE'
+    export CXXFLAGS+=' -DHWY_COMPILE_ALL_ATTAINABLE'
     cmake -B build -S highway \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
