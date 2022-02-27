@@ -1,38 +1,52 @@
-# Maintainer: Yuanji <self@gimo.me>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Yuanji <self@gimo.me>
 # Contributor: Bilal Elmoussaoui <bil.elmoussaoui@gmail.com>
-
-_pkgbase=hardcode-tray-git
-_gitname=Hardcode-Tray
-pkgname=$_pkgbase
-pkgver=4.3.r15.g46df7ea
+pkgname=hardcode-tray-git
+pkgver=4.3.r214.ga6ecf12
 pkgrel=1
-pkgdesc="Fixes Hardcoded Tray Icons"
-arch=('i686' 'x86_64')
+pkgdesc="Fixes hardcoded tray icons"
+arch=('x86_64')
 url="https://github.com/bil-elmoussaoui/Hardcode-Tray"
-license=('GPL-3.0')
-provides=("$_pkgbase")
-conflicts=("hardcode-tray-fixer-git" "hardcode-tray")
-makedepends=('ninja' 'meson' 'git')
-depends=('python' 'python-gobject' 'python-cairosvg' 'librsvg' 'gtk3' 'gobject-introspection')
-optdepends=('sni-qt-patched-git: patched qt4 sni plugin to enable icon modification' 'inkscape: to convert svg to png with inkscape')
-optdepends_x86_64=('lib32-sni-qt-patched-git: 32-bit patched qt4 sni plugin to enable icon modification')
-source=("git://github.com/bil-elmoussaoui/Hardcode-Tray")
-sha256sums=('SKIP')
+license=('GPL3')
+depends=('gtk3' 'librsvg' 'python-cairosvg' 'python-gobject')
+makedepends=('git' 'gobject-introspection' 'meson')
+optdepends=('nodejs-svgexport: option to convert svg to png'
+            'imagemagick: option to convert svg to png'
+            'inkscape: option to convert svg to png')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+https://github.com/bil-elmoussaoui/Hardcode-Tray.git"
+        "90-${pkgname%-git}.hook"
+        "hook.py")
+sha256sums=('SKIP'
+            'c16ba6a82d4fe523cb91bf472b44296db82ff301866e3bce18bb4149d0aae5ea'
+            '64a9907f74c5c04fb9f32b2b0684a3ce040d3bc2baacabb3ca1e914d70f24c81')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  sed -i 's|resources/||g' data/database/bitwarden.electron.json
 }
 
 build() {
-  cd "$srcdir/${_gitname}"
-  meson builddir --prefix=/usr
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
 
 package() {
-  cd "$srcdir/${_gitname}"
-  DESTDIR="${pkgdir}" ninja -C builddir install
+  meson install -C build --destdir "$pkgdir"
+
+  # Compile Python bytecode:
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  python -m compileall -d "$site_packages" "$pkgdir$site_packages"
+  python -O -m compileall -d "$site_packages" "$pkgdir$site_packages"
+
+  # Add pacman hook
+  # https://github.com/bilelmoussaoui/Hardcode-Tray/issues/454
+  install -Dm644 "$srcdir/90-${pkgname%-git}.hook" -t "$pkgdir/etc/pacman.d/hooks"
+  install -Dm644 "$srcdir/hook.py" -t "$pkgdir/usr/share/${pkgname%-git}"
 }

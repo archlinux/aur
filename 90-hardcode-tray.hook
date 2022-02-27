@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Updating tray icons...
+Depends = hardcode-tray-git
+When = PostTransaction
+Exec = /usr/bin/python /usr/share/hardcode-tray/hook.py
+NeedsTargets

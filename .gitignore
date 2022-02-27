@@ -1,5 +1,9 @@
-pkg/
-src/
-*.tar.gz
-*.tar.xz
-Hardcode-Tray/
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!90-hardcode-tray.hook
+!hook.py
