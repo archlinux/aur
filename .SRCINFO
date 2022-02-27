@@ -1,0 +1,18 @@
+pkgbase = vale-git
+	pkgdesc = A syntax-aware linter for prose built with speed and extensibility in mind.
+	pkgver = 2.15.2.r3.g2c52391
+	pkgrel = 1
+	url = https://github.com/errata-ai/vale
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	makedepends = go-bindata
+	makedepends = rsync
+	provides = vale
+	conflicts = vale
+	source = vale::git+https://github.com/errata-ai/vale.git#branch=v2
+	sha256sums = SKIP
+
+pkgname = vale-git
