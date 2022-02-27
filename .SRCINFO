@@ -11,7 +11,7 @@ pkgbase = lsi-lsa
 	depends = lsi-openpegasus
 	depends = curl
 	depends = perl
-	depends = libxcrypt-compat
+	depends = libcrypt.so=1
 	options = !strip
 	backup = opt/lsi/LSIStorageAuthority/installtype
 	backup = opt/lsi/LSIStorageAuthority/conf/LSA.conf

@@ -11,7 +11,7 @@ depends=('openslp'
          'lsi-openpegasus'
          'curl'
          'perl'
-         'libxcrypt-compat'
+         'libcrypt.so=1'
          )
 makedepends=('patchelf')
 DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 -b "agreement=true" -o %o %u')
