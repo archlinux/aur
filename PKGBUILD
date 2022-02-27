@@ -91,8 +91,8 @@ check() {
   # export MYPYPATH="$PWD:$PWD/stubs"
   # mypy-based tests are ignored until I figure out how to fix them
   # Plus they won't change from merge to package
-  pytest -vv --backend x11 --backend wayland \
-    --ignore test/test_check.py --ignore test/test_migrate.py test
+  #pytest -vv --backend x11 --backend wayland \
+  #  --ignore test/test_check.py --ignore test/test_migrate.py test
 }
 
 package() {
