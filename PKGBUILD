@@ -2,7 +2,7 @@
 
 _gemname=formatador
 pkgname=ruby-${_gemname}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="STDOUT text formatting"
 arch=(any)
@@ -13,7 +13,7 @@ url=https://github.com/geemus/formatador
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/geemus/formatador/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('9db18b6be79bae6748795989ad0f83df557ceaa5e759f49696b5cb8ecbbce999')
+sha256sums=('cde51ce5fbe5871628344010d3d311afdf4de279f69133146045b9834a45f2c8')
 
 build() {
   cd $_gemname-$pkgver
