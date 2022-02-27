@@ -13,7 +13,7 @@ depends=('glibc>=2.25')
 makedepends=('git')
 provides=('correcthorse')
 conflicts=('correcthorse')
-source=(git://github.com/rmartinjak/correcthorse.git
+source=(git+https://github.com/rmartinjak/correcthorse.git
         change_prng.patch)
 md5sums=('SKIP'
          '502d2efc2d46cc3c1a92a8245daa380a')
