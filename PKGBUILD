@@ -1,8 +1,8 @@
 # Maintainer: xsmile <>
 
 pkgname=ryzen-ppd
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc='Power management daemon for AMD Ryzen Mobile processors'
 arch=(any)
 url=https://github.com/xsmile/ryzen-ppd
@@ -13,7 +13,7 @@ optdepends=('acpi_call: for setting ACPI platform profiles')
 backup=(etc/ryzen-ppd.ini)
 install=ryzen-ppd.install
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha256sums=('6119af8828ecbfed23d77efc3bc78b9844908f8211bef4980a84f99aec795f20')
+sha256sums=('1ca58d82b20f088bef34fa5e3e1dde1c57f631fad72a10c688bcce2d7b89a7fb')
 
 build() {
   cd "$pkgname-$pkgver"
