@@ -2,7 +2,7 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=('libindi_3rdparty')
@@ -12,13 +12,15 @@ arch=(i686 x86_64)
 depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr gpsd)
 makedepends=(cmake boost)
 conflicts=(libqhy-git)
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=("4e71a8106fcdf6248486b18f04f4013332b0722b4942b90fbf01770d8037d3dc")
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff" "ffmpeg-5.diff")
+sha256sums=("10ed5e6c3a306bd77c8e39d40a942dd166ae623b12bcd6bd52b871b7ba8c908b" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372" "5a9881a46cf971e9cf31ebf76ae376d66f1463d2c7b8bc847eb97ff11c07f37c")
 
 
 prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
+  patch -Np1 < ${srcdir}/celestronaux-auxproto.diff
+  patch -Np1 < ${srcdir}/ffmpeg-5.diff
   find ./ -name CMakeLists.txt -exec sed -i -e 's|"\/lib|"${CMAKE_INSTALL_PREFIX}/lib|g' {} \;        # Allow installing outside of /lib
 }
 

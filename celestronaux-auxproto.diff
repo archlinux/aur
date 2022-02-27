@@ -1,0 +1,11 @@
+diff --color -ru a/indi-celestronaux/auxproto.h b/indi-celestronaux/auxproto.h
+--- a/indi-celestronaux/auxproto.h	2022-02-27 11:56:58.957641841 +0100
++++ b/indi-celestronaux/auxproto.h	2022-02-27 11:54:58.106674975 +0100
+@@ -25,6 +25,7 @@
+ 
+ #include <vector>
+ #include <stdint.h>
++#include <cstddef>
+ 
+ typedef std::vector<uint8_t> AUXBuffer;
+
