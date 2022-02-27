@@ -4,7 +4,7 @@
 
 pkgname=deadbeef
 pkgver=1.8.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
@@ -12,13 +12,13 @@ license=(GPL2 LGPL2.1 ZLIB)
 depends=(gtk3 alsa-lib jansson libdispatch)
 makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
              libx11 faad2 zlib intltool pkgconfig libpulse libzip libsamplerate
-             yasm ffmpeg clang opusfile mpg123)
+             yasm ffmpeg4.4 clang opusfile mpg123)
 optdepends=('alsa-oss: for OSS output plugin'
             'cdparanoia: for cd audio plugin'
             'curl: for last.fm, vfs_curl (shoutcast/icecast), artwork plugins'
             'dbus: for notification daemon support (OSD current song notifications)'
             'faad2: for AAC plugin'
-            'ffmpeg: for ffmpeg plugin'
+            'ffmpeg4.4: for ffmpeg plugin'
             'flac: for flac plugin'
             'imlib2: for artwork plugin'
             'libcddb: for cd audio plugin'
@@ -41,6 +41,8 @@ optdepends=('alsa-oss: for OSS output plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
 source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
 sha512sums=('399f0e70eca5e102a9e73ff03199c89c6f28f3e0da96e793316d1af83f00e71f09f6cc81a3fd0b0f0d52fe9e0195a3b9ffb0cf7e7708c3ea7085f33a5ec08b47')
+
+export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 build () {
   cd "${srcdir}/${pkgname}-${pkgver}"
