@@ -3,7 +3,7 @@ pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
 _pkgver=0_8
 pkgver=${_pkgver//_/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -38,7 +38,7 @@ prepare() {
 
 package() {
   install -Dm755 "${pkgname%-bin}.sh.in" "$pkgdir/usr/bin/${pkgname%-bin}"
-  install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/lib/${pkgname%-bin}/"
+  install -Dm755 "${pkgname%-bin}" -t "$pkgdir/usr/lib/"
   install -Dm644 "${pkgname%-bin}.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "$_id.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "$_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
