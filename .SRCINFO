@@ -1,12 +1,15 @@
 pkgbase = python-akshare
 	pkgdesc = Financial data interface library
-	pkgver = 1.4.31
+	pkgver = 1.4.50
 	pkgrel = 1
 	url = https://github.com/akfamily/akshare
 	changelog = changelog.md
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-markdown-tables
@@ -29,7 +32,7 @@ pkgbase = python-akshare
 	depends = python-tabulate
 	depends = python-decorator
 	depends = python-pyminiracer
-	source = python-akshare-1.4.31.tar.gz::https://github.com/akfamily/akshare/archive/release-v1.4.31.tar.gz
-	sha256sums = 0518c60f77528aad781851dab31118742380321417136610357694ba46e6203a
+	source = python-akshare-1.4.50.tar.gz::https://github.com/akfamily/akshare/archive/release-v1.4.50.tar.gz
+	sha256sums = 27a0e1b10eac88124942bc03c1498ed633817fcafd03ed782446b67b4aa955cc
 
 pkgname = python-akshare

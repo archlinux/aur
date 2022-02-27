@@ -2,7 +2,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python-akshare
-pkgver=1.4.31
+pkgver=1.4.50
 pkgrel=1
 pkgdesc="Financial data interface library"
 arch=('any')
@@ -29,29 +29,32 @@ depends=(
 	'python-pyminiracer')
 makedepends=(
 	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
 	'python-sphinx'
 	'python-sphinx_rtd_theme'
 	'python-sphinx-markdown-tables'
 	'python-recommonmark')
 changelog=changelog.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/release-v$pkgver.tar.gz")
-sha256sums=('0518c60f77528aad781851dab31118742380321417136610357694ba46e6203a')
+sha256sums=('27a0e1b10eac88124942bc03c1498ed633817fcafd03ed782446b67b4aa955cc')
 
 prepare() {
-	cd "akshare-$pkgver"
+	cd "akshare-release-v$pkgver"
 	sed -i "/find_packages/s/()/(exclude=['tests'])/" setup.py
 }
 
 build() {
-	cd "akshare-$pkgver"
-	python setup.py build
+	cd "akshare-release-v$pkgver"
+	python -m build --wheel --no-isolation
 	( cd docs; make man )
 }
 
 package() {
 	export PYTHONHASHSEED=0
-	cd "akshare-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "akshare-release-v$pkgver"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 docs/build/man/akshare.1 -t "$pkgdir/usr/share/man/man1/"
 }
