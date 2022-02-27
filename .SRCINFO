@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.2.1.r102.gf4587949
+	pkgver = 3.2.1.r108.g66b93597
 	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
@@ -9,7 +9,8 @@ pkgbase = 86box-git
 	arch = aarch64
 	license = GPL2
 	makedepends = git
-	makedepends = cmake>=3.16
+	makedepends = cmake>=3.21
+	makedepends = ninja
 	makedepends = qt6-tools
 	depends = alsa-lib
 	depends = faudio
@@ -23,6 +24,7 @@ pkgbase = 86box-git
 	optdepends = libpcap: Networking not limited to TCP/IP
 	provides = 86box
 	conflicts = 86box
+	options = !buildflags
 	source = 86box-git::git+https://github.com/86Box/86Box.git
 	source = 86box
 	source = 86Box.desktop

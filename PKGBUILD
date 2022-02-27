@@ -1,19 +1,20 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.2.1.r102.gf4587949
+pkgver=3.2.1.r108.g66b93597
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('alsa-lib' 'faudio' 'freetype2' 'libpng' 'libslirp' 'qt6-base' 'rtmidi' 'sdl2')
-makedepends=('git' 'cmake>=3.16' 'qt6-tools')
+makedepends=('git' 'cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=(
     '86box-roms-git: ROM files'
     'libpcap: Networking not limited to TCP/IP'
 )
 provides=('86box')
 conflicts=('86box')
+options=('!buildflags')
 source=(
     "${pkgname}::git+https://github.com/86Box/86Box.git"
     '86box'
@@ -31,12 +32,13 @@ pkgver() {
 }
 
 build() {
-    if [ "$CARCH" == arm7h ] || [ "$CARCH" == aarch64 ]; then
-        NDR=on
-    else
-        NDR=off
-    fi
-    cmake -S"${pkgname}" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSE_QT6=on -DSLIRP_EXTERNAL=on -DNEW_DYNAREC=$NDR
+    case "$CARCH" in
+        pentium4) _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
+        x86_64)   _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
+        arm7h)    _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
+        aarch64)  _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
+    esac
+    cmake -S"${pkgname}" -Bbuild --preset "$_PRESET" --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DSLIRP_EXTERNAL=on
     cmake --build build
 }
 
