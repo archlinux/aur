@@ -1,0 +1,27 @@
+pkgbase = dillo-hg
+	pkgdesc = A small, fast, FLTK-based web browser
+	pkgver = r4664.67b70f024568
+	pkgrel = 1
+	url = http://www.dillo.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = mercurial
+	depends = fltk
+	depends = libxi
+	depends = libxinerama
+	depends = openssl
+	depends = perl
+	optdepends = ttf-dejavu: Enable DejaVu Sans support
+	provides = dillo
+	conflicts = dillo
+	backup = etc/dillo/dillorc
+	backup = etc/dillo/dpidrc
+	source = hg+https://hg.dillo.org/dillo
+	source = dillo.png
+	source = dillo.desktop
+	sha256sums = SKIP
+	sha256sums = de629745e6f3a271475a501e2b94558b3deb7bf9a407bcef16426e600e1731f3
+	sha256sums = e94ead3a359c2eceb934b07af0fac4864251b9721fa7f4855331daa017b66202
+
+pkgname = dillo-hg
