@@ -1,6 +1,6 @@
 pkgbase = rocsparse
 	pkgdesc = BLAS for sparse computation on top of ROCm
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocsparse
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = rocsparse
 	makedepends = gcc-fortran
 	depends = hip
 	depends = rocprim
-	source = rocsparse-5.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.0.0.tar.gz
-	sha256sums = 6d352bf27dbed08e5115a58815aa76c59eb2008ec9dcc921aadf2efe20115d2a
+	source = rocsparse-5.0.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-5.0.1.tar.gz
+	sha256sums = b9c2c78b1c89d19a8c52d84b9a95925f92dcc51eae9a2f13b9a327cf758dd7f2
 
 pkgname = rocsparse
