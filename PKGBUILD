@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 
 pkgname=goimpl-git
-pkgver=22.20180228
+pkgver=39.20220214
 pkgrel=1
 pkgdesc="impl generates method stubs for implementing an interface."
 arch=('i686' 'x86_64')
