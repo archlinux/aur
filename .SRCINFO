@@ -1,10 +1,13 @@
 pkgbase = python-requirements-parser
 	pkgdesc = A Pip requirements file parser.
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/davidfischer/requirements-parser
 	arch = any
 	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python-future
 	depends = python-setuptools
 	depends = python-types-setuptools
