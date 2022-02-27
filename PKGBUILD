@@ -59,15 +59,8 @@ fi
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
-# Manjaro still on 4.4.1
-# Don't touch them, they will be removed once Manjaro provide FFmpeg 5
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  pkgver=4.4.1
-  pkgrel=7
-else
-  pkgver=5.0
-  pkgrel=3
-fi
+pkgver=5.0
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -173,12 +166,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-# Manjaro still on 4.4.1
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  _tag=7e0d640edf6c3eee1816b105c2f7498c4f948e74
-else
-  _tag=390d6853d0ef408007feb39c0040682c81c02751
-fi
+_tag=390d6853d0ef408007feb39c0040682c81c02751
 _deps_tag=15072cd42722d87c6b3ed1636b22e98c08575f20
 source=(
   "ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}"
@@ -197,12 +185,10 @@ sha256sums=(
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 source+=(
-  "vmaf-model-path.patch"
   "$pkgname.hook"
   "$pkgname.sh"
 )
 sha256sums+=(
-  '8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
   "39820f085e4366cfa24b7bf632d331d3bfa6e9f62f47df55892901218636a2fc"
   "195ad5f134f02666d330342d04561c12a10e0522b3ace80cd36531d4092e1e4d"
 )
@@ -331,10 +317,6 @@ if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
   _nonfree_enabled=ON
   depends+=(cuda)
   _args+=(--enable-cuda-nvcc --enable-libnpp --enable-cuvid --disable-cuda-llvm)
-  # Manjaro still on 4.4.1
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    _args+=(--nvccflags='-gencode arch=compute_52,code=sm_52 -O2')
-  fi
   provides+=(ffmpeg-cuda)
 else
   _args+=(--enable-cuda-llvm --disable-cuvid)
@@ -363,20 +345,14 @@ fi
 if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
   _nonfree_enabled=ON
   depends+=('ndi-sdk')
-  # Manjaro still on 4.4.1
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    source+=("Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/4.4_Revert-lavd-Remove-libndi_newtek.patch?inline=false")
-    sha256sums+=('5a37c295d01ae02f02b366c3ba4867d27bc3ac29c1420472fbe8e4d7bca3bd4c')
-  else
-    source+=("Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false")
-    sha256sums+=('a5701faa71ac69c94dc0230b401203d135e48c45980926432f1190ef3218009b')
-  fi
   source+=(
+    "Revert-lavd-Remove-libndi_newtek.patch::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/master_Revert-lavd-Remove-libndi_newtek.patch?inline=false"
     "libndi_newtek_common.h::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_common.h?inline=false"
     "libndi_newtek_dec.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_dec.c?inline=false"
     "libndi_newtek_enc.c::https://framagit.org/tytan652/ffmpeg-ndi-patch/-/raw/master/libavdevice/libndi_newtek_enc.c?inline=false"
   )
   sha256sums+=(
+    'a5701faa71ac69c94dc0230b401203d135e48c45980926432f1190ef3218009b'
     '462e984a7cb3d0af17b0ea0eb2a010aee2f79a3e77c2055fdfd760163dd75fa4'
     '3c6dea7583d79911e9ea198c35b1b56830b85eea84e49d63c2d5c03af5210eca'
     '83cc714edc8d1c37ffabd2ee17960d6ed91a1d019bd43d01383f84eea28e4fbb'
@@ -389,19 +365,13 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
   depends+=(svt-vp9 svt-hevc)
   _svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
   _svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
-  # Manjaro still on 4.4.1
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    source+=("019-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/n4.4-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch")
-    sha256sums+=('e737f8f0104cabb7f81755af8684bf68d03e0d262edfeae7cf65c0a32923ee96')
-  else
-    source+=("020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch")
-    sha256sums+=('efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f')
-  fi
   source+=(
+    "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
     "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
     "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
   )
   sha256sums+=(
+    'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
     '837cac5a64234f34d136d18c8f7dc14203cdea11406fdb310cef2f62504d9e0c'
     '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
   )
@@ -442,24 +412,13 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libzvbi --enable-lv2 --enable-libmysofa --enable-openal --enable-opencl --enable-opengl
     --enable-pocketsphinx --enable-vapoursynth --enable-omx --enable-rkmpp
   )
-  # Manjaro still on 4.4.1
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    depends+=(tensorflow)
-    provides+=(libavresample.so)
-    _args+=(--enable-avresample --enable-libtensorflow)
-  fi
   provides+=(ffmpeg-full)
 else
   _args+=(--disable-sndio) # sndio is not present when upstream package is built
 fi
 
 ## Manage extra flags
-if [[ $FFMPEG_OBS_FULL == 'ON' ]] && [[ $FFMPEG_OBS_CUDA == 'ON' ]] && [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  _args+=(--extra-cflags='-I/opt/cuda/include -I/usr/include/tensorflow')
-  _args+=(--extra-ldflags='-L/opt/cuda/lib64')
-elif [[ $FFMPEG_OBS_FULL == 'ON' ]] && [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  _args+=(--extra-cflags='-I/usr/include/tensorflow')
-elif [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
+if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
   _args+=(--extra-cflags='-I/opt/cuda/include')
   _args+=(--extra-ldflags='-L/opt/cuda/lib64')
 fi
@@ -477,43 +436,15 @@ prepare() {
 
   ### Arch Linux changes
 
-  # Manjaro still on 4.4.1
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    ## Change default vmaf model path to Arch defaults
-    patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-  else
-    ## https://crbug.com/1251779
-    patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
-    ## Add libvmaf 2 compatibility based on
-    # avfilter/vf_libvmaf: update filter for libvmaf v2.0.0
-    # https://github.com/FFmpeg/FFmpeg/commit/3d29724c008d8f27fecf85757152789b074e8ef9
-    patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch
-  fi
+  ## https://crbug.com/1251779
+  patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch
+  ## Add libvmaf 2 compatibility based on
+  # avfilter/vf_libvmaf: update filter for libvmaf v2.0.0
+  # https://github.com/FFmpeg/FFmpeg/commit/3d29724c008d8f27fecf85757152789b074e8ef9
+  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch
 
   ### OBS changes
 
-  # Manjaro still on 4.4.1
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    ## To fix crashes when VAAPI settings are wrong
-    # avcodec/vaapi_encode: Fix segfault upon closing uninitialized encoder
-    # https://github.com/FFmpeg/FFmpeg/commit/d1b47f3bfcc625ca1cae210fc198dcbd54381a88
-    git cherry-pick -n d1b47f3bfcc625ca1cae210fc198dcbd54381a88
-
-    ## Cherry-pick for FFmpeg from obs FFmpeg repository
-    ## This was hastly made before 27.2 beta 4 release
-    # avcodec/libsvtav1: properly enforce CQP mode when set in wrapper
-    # https://github.com/FFmpeg/FFmpeg/commit/c5f314309067dc85c165b975f53975c38e196258
-    git cherry-pick -n c5f314309067dc85c165b975f53975c38e196258
-    # avcodec/libsvtav1: Fix value range for rc mode
-    # https://github.com/FFmpeg/FFmpeg/commit/0463f5d6d56db6cc01bc88a0d77488f4ef23dfdc
-    git cherry-pick -n 0463f5d6d56db6cc01bc88a0d77488f4ef23dfdc
-    # avcodec/libsvtav1: make coded GOP type configurable
-    # https://github.com/FFmpeg/FFmpeg/commit/64e2fb3f9d89e5ad552f48e2d5beb9be7a91572a
-    git cherry-pick -n 64e2fb3f9d89e5ad552f48e2d5beb9be7a91572a
-    # avcodec/libsvtav1: Fix duplicate definition of caps_internal
-    # https://github.com/FFmpeg/FFmpeg/commit/04b89e8ae33ba74e5cb5b3b770613fa599f9cb36
-    git cherry-pick -n 04b89e8ae33ba74e5cb5b3b770613fa599f9cb36
-  fi
   ## Patch for FFmpeg from obs-deps repository
 
   # This patch applies:
@@ -525,22 +456,9 @@ prepare() {
   # https://patchwork.ffmpeg.org/project/ffmpeg/patch/20210913021204.22138-1-lq@chinaffmpeg.org/
   patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-9010.patch
 
-  # Manjaro still on 4.4.1 and librist patch need to be replaced
-  if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-    ## This patch applies:
-    #   - avformat/librist: replace deprecated functions
-    #     https://github.com/FFmpeg/FFmpeg/commit/5274f2f7f8c5e40d18b84055fbb232752bd24f2f
-    #   - avformat/librist: correctly initialize logging_settings
-    #     https://github.com/FFmpeg/FFmpeg/commit/9b15f43cf8c7976fba115da686a990377f7b5ab9
-    #   - libRIST: allow setting fifo size and fail on overflow
-    #     https://patchwork.ffmpeg.org/project/ffmpeg/patch/20211117141929.1164334-2-gijs@peskens.net/
-    patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-4.4.1-librist.patch
-
-    ## This patch applies a fix on AOM encoder
-    patch -Np1 -i "${srcdir}"/obs-deps/CI/patches/FFmpeg-4.4.1-libaomenc.patch
-  else
-    patch -Np1 -i "${srcdir}"/rist.patch
-  fi
+  # libRIST: allow setting fifo size and fail on overflow
+  # https://patchwork.ffmpeg.org/project/ffmpeg/patch/20211117141929.1164334-2-gijs@peskens.net/
+  patch -Np1 -i "${srcdir}"/rist.patch
 
   # Fix "error: unknown type name ‘bool’" made by the patch because stdbool.h is only added through librist from version 0.2.7
   sed -i '49 a #if FF_LIBRIST_VERSION < FF_LIBRIST_VERSION_42\n#include <stdbool.h>\n#endif' libavformat/librist.c
@@ -560,12 +478,7 @@ prepare() {
   if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     rm -f "libavcodec/"libsvt_{hevc,vp9}.c
     sed -E -n 's/general.texi/general_contents.texi/g' "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch" > "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    # Manjaro still on 4.4.1
-    if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-      patch -Np1 -i "${srcdir}/019-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    else
-      patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
-    fi
+    patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
   fi
