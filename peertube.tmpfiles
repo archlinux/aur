@@ -1,0 +1,14 @@
+d /var/lib/peertube/storage/avatars 700 peertube peertube
+d /var/lib/peertube/storage/bin 700 peertube peertube
+d /var/lib/peertube/storage/cache 700 peertube peertube
+d /var/lib/peertube/storage/captions 700 peertube peertube
+d /var/lib/peertube/storage/client-overrides 700 peertube peertube
+d /var/lib/peertube/storage/logs 700 peertube peertube
+d /var/lib/peertube/storage/plugins 700 peertube peertube
+d /var/lib/peertube/storage/previews 700 peertube peertube
+d /var/lib/peertube/storage/redundancy 700 peertube peertube
+d /var/lib/peertube/storage/streaming-playlists 700 peertube peertube
+d /var/lib/peertube/storage/thumbnails 700 peertube peertube
+d /var/lib/peertube/storage/tmp 700 peertube peertube
+d /var/lib/peertube/storage/torrents 700 peertube peertube
+d /var/lib/peertube/storage/videos 700 peertube peertube

@@ -1,25 +1,24 @@
 # Maintainer: Rigel Kent <sendmemail at rigelk dot eu>
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret at protonmail dot com>
 pkgname=peertube
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="ActivityPub-federated video streaming platform using P2P directly in your web browser"
 arch=("x86_64")
 url="https://joinpeertube.org/"
 license=("AGPL")
-depends=("nodejs>=12" "nodejs" "ffmpeg>=4.4.1" "postgresql" "openssl" "redis" "npm")
+depends=("nodejs>=14" "nodejs" "ffmpeg>=4.4.1" "postgresql" "openssl" "redis" "npm")
 makedepends=("yarn" "python2" "git")
 backup=("etc/peertube/production.yaml")
 options=("!strip")
-install=$pkgname.install
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz.asc"
-        "$pkgname.install"
+        "$pkgname.tmpfiles"
         "$pkgname.sysusers"
         "$pkgname")
-b2sums=('ea1b1284a4fa6bdaf3f6514958cf464a3772174317fdc63fec2def152f3ce61fa6e975cada50774d503eb0198a46678125b679c3605d1b0ea4c7cf0e39d52740'
+b2sums=('ffe2fc1911500255b4e378af3dce6740a484b28fc2ea985ddd61a130f51defdcce6b845e78945e794554991afaa1641314d8ce59427c231212835f26e436a049'
         'SKIP'
-        '325167783c83c3062ca59ef8c730598ecf9049e57ef20cab74261008f1a8520022829b6126ee9208bec50475cf42b39f5b4b8059ff7f5038c80e12d1351f2173'
+        '22c8c94f779f3d18927ff0244484d5a511b14befc73c021f7b65a4a89d6a014642c33c04ad324ec714b27d9847f6dca833243b2c4043dd9f0ff0b8b0b371b856'
         '287a1a1b8f279b4f50d02f73b8069c39c49e6d79917f912f6f57db900064b34de91af0a5c0ee2fd743d130dc07e557b582222351491b605c7f5982c03b84b4c3'
         '8c90b7433651fc7e21bb641ec1771bd9a4186b4c88502ab7a74becfe3515f0fd84e8dfccdb5e450a3580f5bc3a9722c4a9246d0233218b47307c6ac542170171')
 validpgpkeys=(C44AAD638367912CA93EDD57583A612D890159BE)
@@ -36,6 +35,7 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm 644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   install -Dm644 "$pkgname-v$pkgver/config/production.yaml.example" "$pkgdir/etc/$pkgname/production.yaml"
   sed -i  "s@/var/www/$pkgname@/var/lib/$pkgname@g" "$pkgdir/etc/$pkgname/production.yaml"
