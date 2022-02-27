@@ -2,13 +2,13 @@
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
 pkgver=2.0.2.r1.gf2e765d
-pkgrel=1
+pkgrel=2
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/git-nautilus-icons"
 license=('BSD')
 depends=('python-gobject')
-makedepends=('python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
 optdepends=('python-nautilus: Nautilus support'
             'nemo-python: Nemo support'
             'python-caja: Caja support')
@@ -27,14 +27,18 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  # Move license to proper directory
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  install -d "$pkgdir/usr/share/licenses/${pkgname%-git}"
+  mv "${pkgdir}${site_packages}/git_nautilus_icons-2.0.3.dev1+gf2e765d.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 
   # compile Python bytecode for modules outside of site-packages:
   python -m compileall -d / "$pkgdir"/usr/share
