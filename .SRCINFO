@@ -4,7 +4,7 @@ pkgbase = texlive-full
 	pkgrel = 1
 	url = http://www.tug.org/texlive/
 	arch = x86_64
-	license = GPL
+	license = custom
 	makedepends = rsync
 	depends = libxcrypt-compat
 	provides = texlive-bin
@@ -49,6 +49,8 @@ pkgbase = texlive-full
 	conflicts = texlive-langkorean
 	options = !strip
 	source = https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+	source = LICENSE::http://texlive.tug.org/texlive/LICENSE.TL
 	sha256sums = SKIP
+	sha256sums = e8f070b2d1a9bad00af9d6cb94e687f2120591d092c8dab8727249b70adc96d0
 
 pkgname = texlive-full

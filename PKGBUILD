@@ -7,13 +7,17 @@ pkgrel=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
 url="http://www.tug.org/texlive/"
 arch=("x86_64")
-license=("GPL")
+license=("custom")
 makedepends=('rsync')
 depends=('libxcrypt-compat')
 provides=('texlive-bin' 'git-latexdiff' 'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean')
 conflicts=('texlive-bin' 'git-latexdiff' 'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean')
-source=("https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz")
-sha256sums=('SKIP')
+source=("https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
+"LICENSE::http://texlive.tug.org/texlive/LICENSE.TL"
+)
+sha256sums=('SKIP'
+'e8f070b2d1a9bad00af9d6cb94e687f2120591d092c8dab8727249b70adc96d0'
+)
 #PKGEXT='.pkg.tar'
 options=(!strip)
 
@@ -50,6 +54,7 @@ prepare(){
 }
 
 package() {
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
     _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
     # find installer path automatically.
