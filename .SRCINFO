@@ -1,12 +1,13 @@
 pkgbase = python-pydicom-seg
 	pkgdesc = Python package for DICOM-SEG medical segmentation file reading and writing
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/razorx89/pydicom-seg
 	arch = any
 	license = MIT
-	makedepends = python-dephell
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python-attrs
 	depends = python-jsonschema
 	depends = python-numpy
