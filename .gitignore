@@ -1,0 +1,6 @@
+pkg/
+src/
+c2nim-*.pkg.tar.xz
+c2nim-*.pkg.tar.zst
+c2nim-*.src.tar.gz
+c2nim-*.tar.gz
