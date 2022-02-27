@@ -3,14 +3,14 @@
 # makepkg -g >>PKGBUILD
 
 pkgname=archsysback
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Archiso config for building Arch Linux Live Backup iso from your installed system"
 arch=('any')
 url="https://github.com/toxin265/archsysback"
 license=('GPL')
 groups=(system)
-depends=(archiso refind-efi nbd syslinux timeshift amd-ucode intel-ucode memtest86+ xdg-user-dirs xterm mkinitcpio-nfs-utils)
+depends=(archiso=0.46 mkinitcpio-archiso=0.46 refind-efi nbd syslinux timeshift amd-ucode intel-ucode memtest86+ xdg-user-dirs xterm mkinitcpio-nfs-utils)
 makedepends=(xz)
 provides=('archsysback')
 conflicts=('archsysback')
