@@ -3,7 +3,7 @@
 
 pkgname=biglybt
 pkgver=3.0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64' 'armv7h')
 url="https://www.biglybt.com/"
@@ -13,7 +13,7 @@ optdepends=('jna' 'libappindicator-gtk3' 'ttf-dejavu')
 options=('!strip')
 install=$pkgname.install
 source=("GitHub_BiglyBT_Installer_$pkgver.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$pkgver/GitHub_BiglyBT_Installer.sh")
-sha256sums=('cd8f848cb865c1fe40aaadd910baad0ba1bd82fcdc4452b78c1feeee109fff8e')
+sha256sums=('4a8eb8619959e77ef5579d1c297b2d9e8b71f4a247022133365be3820b87d96b')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then

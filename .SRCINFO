@@ -1,7 +1,7 @@
 pkgbase = biglybt
 	pkgdesc = Feature-filled Bittorrent client based on the Azureus project
 	pkgver = 3.0.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.biglybt.com/
 	install = biglybt.install
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = biglybt
 	optdepends = ttf-dejavu
 	options = !strip
 	source = GitHub_BiglyBT_Installer_3.0.0.0.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v3.0.0.0/GitHub_BiglyBT_Installer.sh
-	sha256sums = cd8f848cb865c1fe40aaadd910baad0ba1bd82fcdc4452b78c1feeee109fff8e
+	sha256sums = 4a8eb8619959e77ef5579d1c297b2d9e8b71f4a247022133365be3820b87d96b
 
 pkgname = biglybt
