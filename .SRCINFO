@@ -33,7 +33,7 @@ pkgname = lsi-msm
 	depends = unixodbc
 	depends = xdg-utils
 	depends = java-environment=8
-	depends = libxcrypt-compat
+	depends = libcrypt.so=1
 	depends = lib32-libxi
 	depends = lib32-libxft
 	depends = lib32-libpng12

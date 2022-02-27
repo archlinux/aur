@@ -54,7 +54,7 @@ package_lsi-msm() {
            'unixodbc'
            'xdg-utils'
            'java-environment=8'
-           'libxcrypt-compat'
+           'libcrypt.so=1'
            'lib32-libxi'
            'lib32-libxft'
            'lib32-libpng12'
