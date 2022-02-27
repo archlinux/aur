@@ -2,7 +2,7 @@
 
 pkgname=gulkan
 pkgver=0.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="GLib library for Vulkan abstraction"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/xrdesktop/gulkan"
@@ -41,6 +41,6 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/gulkan"
 }
