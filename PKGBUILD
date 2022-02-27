@@ -1,5 +1,5 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
-pkgname=ytmenu
+pkgname=ytmenu-git
 pkgver=1.4
 pkgrel=1
 epoch=

@@ -1,4 +1,4 @@
-pkgbase = ytmenu
+pkgbase = ytmenu-git
 	pkgdesc = A posix script to find and watch youtube videos from the terminal.
 	pkgver = 1.4
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = ytmenu
 	source = git+https://github.com/demonkingswarn/ytmenu
 	md5sums = SKIP
 
-pkgname = ytmenu
+pkgname = ytmenu-git
