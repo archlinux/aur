@@ -2,7 +2,7 @@
 _repo='MedzikUser/imgurs'
 _ver=v0.4.0
 
-pkgname="imgurs"
+pkgname='imgurs'
 pkgver=0.4.0
 pkgrel=1
 pkgdesc='CLI for Imgur API'
@@ -10,8 +10,11 @@ arch=('x86_64')
 url="https://github.com/${_repo}"
 license=('BSD3')
 
-depends=('libnotify' 'xsel')
 makedepends=('git' 'cargo')
+optdepends=(
+  'libnotify: Notification support'
+  'xsel: Clipboard support'
+)
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_ver}.tar.gz")
 sha256sums=('SKIP')
