@@ -51,13 +51,11 @@ build() {
 	cd "${srcdir}/${_name}"
 	mkdocs build -d bcml/assets/help
 	
-	# python setup.py build
 	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_name}"
-	# python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "${srcdir}/${_name}.desktop" "$pkgdir/usr/share/applications/${_name}.desktop"
 	install -Dm644 "${srcdir}/${_name}.png" "$pkgdir/usr/share/pixmaps/${_name}.png"
