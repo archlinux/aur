@@ -41,9 +41,7 @@ prepare()
 
 	# apply patches
 	patch -Np1 -i "$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
-	echo "iiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
 	patch -Np1 -i "$srcdir/0002-fix-cereal.patch"
-	echo "eieahie"
 	patch -Np1 -i "$srcdir/0003-openexr3.patch"
 }
 
