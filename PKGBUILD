@@ -11,7 +11,7 @@ conflicts=('xonsh' 'python-gitsome' 'gitsome')
 provides=('gitsome')
 license=('APACHE')
 arch=('any')
-source=("git://github.com/donnemartin/gitsome.git")
+source=("git+https://github.com/donnemartin/gitsome.git")
 md5sums=('SKIP')
 
 pkgver () {

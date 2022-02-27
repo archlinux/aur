@@ -22,8 +22,7 @@ pkgbase = gitsome-git
 	conflicts = xonsh
 	conflicts = python-gitsome
 	conflicts = gitsome
-	source = git://github.com/donnemartin/gitsome.git
+	source = git+https://github.com/donnemartin/gitsome.git
 	md5sums = SKIP
 
 pkgname = gitsome-git
-
