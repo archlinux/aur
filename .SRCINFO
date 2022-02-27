@@ -1,0 +1,14 @@
+pkgbase = gitmux-git
+	pkgdesc = Git in your tmux status bar
+	pkgver = r45.cd50b54
+	pkgrel = 1
+	url = https://github.com/arl/gitmux
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = tmux
+	source = git+https://github.com/arl/gitmux.git
+	md5sums = SKIP
+
+pkgname = gitmux-git
