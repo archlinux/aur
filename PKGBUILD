@@ -12,8 +12,26 @@ license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog
 provides=('proton' "proton-ge-custom=${pkgver/_/.}")
 conflicts=('proton-ge-custom-legacy-bin' 'proton-ge-custom')
+
+## dependencies
+makedepends=('patch')
 depends=('python'
-         'vulkan-icd-loader')
+         'vulkan-icd-loader'
+         'lib32-v4l-utils'
+         'lib32-flac'
+         'lib32-speex'
+         'lib32-gst-plugins-base-libs'
+         'lib32-jack2'
+         'lib32-libgudev'
+         'lib32-mpg123'
+         'lib32-libtheora'
+         'ffmpeg4.4'
+         'lib32-sdl2'
+         'lib32-openal'
+         'lib32-libva'
+         'lib32-libjpeg6-turbo'
+         'libjpeg6-turbo'
+         'gst-plugins-bad-libs')
 optdepends=('kdialog: KDE splash dialog support'
             'zenity: GNOME splash dialog support'
             'python-kivy: splash dialog support (big picture mode)'
@@ -22,7 +40,8 @@ optdepends=('kdialog: KDE splash dialog support'
             'vulkan-driver: actually have a vulkan driver installed'
             'winetricks: protonfixes backend - highly recommended'
             'wine: support for 32bit prefixes'
-            'xboxdrv: gamepad driver service')
+            'xboxdrv: gamepad driver service'
+            'lib32-libusb: wine usb support')
 
 ## makepkg options
 options=('!strip')
