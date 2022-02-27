@@ -148,7 +148,7 @@ package_python-sunpy() {
                 'python-dateutil>=2.8.0: net'
                 'python-tqdm>=4.32.1: net'
                 'python-zeep>=3.4.0: net'
-                'python-cdflib>=0.3.19: timeseries'
+                'python-cdflib>0.4.0: timeseries'
                 'python-h5netcdf>=0.8.1: timeseries'
                 'python-h5py>=3.1.0: timeseries'
                 'python-pandas>=1.0.0: timeseries')

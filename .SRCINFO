@@ -35,7 +35,7 @@ pkgname = python-sunpy
 	optdepends = python-dateutil>=2.8.0: net
 	optdepends = python-tqdm>=4.32.1: net
 	optdepends = python-zeep>=3.4.0: net
-	optdepends = python-cdflib>=0.3.19: timeseries
+	optdepends = python-cdflib>0.4.0: timeseries
 	optdepends = python-h5netcdf>=0.8.1: timeseries
 	optdepends = python-h5py>=3.1.0: timeseries
 	optdepends = python-pandas>=1.0.0: timeseries
