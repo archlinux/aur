@@ -9,7 +9,7 @@
 
 pkgname=smartmontools-svn
 _pkgname=smartmontools
-pkgver=4117
+pkgver=5337
 pkgrel=1
 pkgdesc="Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives - latest SVN version"
 url="http://smartmontools.sourceforge.net"
@@ -17,7 +17,8 @@ license=('GPL')
 arch=('i686' 'x86_64')
 depends=('bash' 'gcc-libs' 'libcap-ng')
 makedepends=('subversion')
-backup=('etc/conf.d/smartd')
+backup=('etc/smartd.conf'
+        'etc/conf.d/smartd')
 source=("$pkgname"::"svn+https://svn.code.sf.net/p/smartmontools/code/trunk/smartmontools"
         'smartd.conf')
 sha256sums=('SKIP'
@@ -40,6 +41,7 @@ build() {
               --sysconfdir=/etc \
               --with-drivedb \
               --with-libcap-ng=yes \
+              --with-smartdscriptdir=/usr/share/smartmontools \
               --with-systemdsystemunitdir=/usr/lib/systemd/system
   make
 }
