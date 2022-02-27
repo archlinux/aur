@@ -1,4 +1,5 @@
-# Maintainer: sh0rez <me@shorez.de>
+# Maintainer: Gobidev <adrian[dot]groh[at]t-online[dot]de>
+# Contributor: sh0rez <me@shorez.de>
 
 pkgname=gmailctl
 pkgver=0.10.0
