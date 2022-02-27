@@ -1,56 +1,51 @@
-# Maintainer: Ashley Whetter <(firstname) @ awhetter.co.uk>
-# Co-Maintainer: NicoHood <archlinux {cat} nicohood {dog} de>
-# PGP ID: 97312D5EB9D7AE7D0BD4307351DAE9B7C1AE9161
-# Contributor: Eothred <yngve.levinsen@gmail.com>
+# This package uses the https://github.com/ThePoorPilot/Unofficial-Spotify repository
+# to provide the latest Spotify build available.
+# Maintainer: Eduard Tolosa <edu4rdshl[at]protonmail.com>
 
 pkgname=spotify-snap
-pkgver=1.1.67.586.gbb5ef64e
-_snapid=pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7
-_revision=50
+pkgver=1.1.77.643
+_commit=g3c4c6fc6
 pkgrel=1
-pkgdesc='A proprietary music streaming service'
+pkgdesc='A proprietary music streaming service.'
 arch=('x86_64')
-conflicts=('spotify')
-provides=('spotify')
 license=('custom')
 url='https://www.spotify.com'
-depends=('gtk3' 'libcurl-gnutls' 'libsm' 'nss')
-makedepends=('squashfs-tools')
+depends=('alsa-lib>=1.0.14' 'gtk3' 'libxss' 'desktop-file-utils' 'openssl' 'nss' 'at-spi2-atk' 'libcurl-gnutls' 'libsm')
+optdepends=('ffmpeg-compat-57: Adds support for playback of local files'
+            'zenity: Adds support for importing local files'
+            'libnotify: Desktop notifications')
+options=('!strip')
+conflicts=('spotify')
+provides=('spotify')
 source=('spotify.protocol'
-        'LICENSE')
-# Get latest version info: curl -H 'Snap-Device-Series: 16' http://api.snapcraft.io/v2/snaps/info/spotify
-source_x86_64=("https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_revision}.snap")
+	"https://github.com/ThePoorPilot/Unofficial-Spotify/releases/download/${pkgver}.${_commit}/spotify-unofficial_${pkgver}.${_commit}_amd64.deb"
+        'LICENSE'
+	)
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
+            'cd83989a10c5c3a95523112c1f55051738476415e7440477075a876eb032f1c2d1ba676c013f0ec674d60c245bdd3ff65425db8a52e655c615ce5b216398ffa1'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
-sha512sums_x86_64=('f29aa4a3f3d6a72f108f350905789f12ab3ae50cf4f4828f021d3be7759b192506c9a397e45309a5ee659578b6e85de80d7d78f994af9ab631c9fb2dc527c242')
-
-prepare() {
-    cd "${srcdir}"
-    unsquashfs ${_snapid}_${_revision}.snap
-}
-
 package() {
     cd "${srcdir}"
 
-    mkdir -p "${pkgdir}/opt"
-    cp -a squashfs-root/usr/share/spotify "${pkgdir}/opt"
+    tar -xf data.tar.xz -C "${pkgdir}"
 
-    install -Dm644 "${pkgdir}"/opt/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
-    sed -i 's/\/usr\/share\/spotify\/icons\/spotify-linux-128.png/spotify/' "${pkgdir}"/usr/share/applications/spotify.desktop
+    # Enable spotify to open URLs from the webapp
+    sed -i 's/^Exec=.*/Exec=spotify --uri=%U/' "${pkgdir}"/usr/share/spotify/spotify.desktop
+
+    install -Dm644 "${pkgdir}"/usr/share/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
+    install -Dm644 "${pkgdir}"/usr/share/spotify/icons/spotify-linux-512.png "${pkgdir}"/usr/share/pixmaps/spotify-client.png
 
     for size in 22 24 32 48 64 128 256 512; do
-        install -Dm644 "${pkgdir}/opt/spotify/icons/spotify-linux-$size.png" \
+        install -Dm644 "${pkgdir}/usr/share/spotify/icons/spotify-linux-$size.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/spotify.png"
     done
 
-    # Symlink spotify binary which is located in /opt
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -sf /opt/spotify/spotify "${pkgdir}/usr/bin/spotify"
+    # Move spotify binary to its proper location
+    mkdir -p "${pkgdir}"/opt/spotify
+    mv "${pkgdir}/usr/share/spotify" "${pkgdir}/opt/"
 
-    # Remove unneeded files
-    rm -r "${pkgdir}/opt/spotify/apt-keys"
-    rm -r "${pkgdir}/opt/spotify/icons"
-    rm "${pkgdir}/opt/spotify/spotify.desktop"
+    # Symlink spotify binary which is located in /opt
+    ln -sf /opt/spotify/spotify "${pkgdir}/usr/bin/spotify"
 
     # Copy protocol file for KDE
     install -Dm644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kservices5/spotify.protocol"
@@ -62,3 +57,4 @@ package() {
     # Fix permissions
     chmod -R go-w "${pkgdir}"
 }
+
