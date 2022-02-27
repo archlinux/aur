@@ -3,19 +3,22 @@
 _name=anndata
 pkgname=python-$_name
 pkgver=0.7.8
-pkgrel=2
+pkgrel=3
 pkgdesc='A data structure for rectangular numeric data and sample/variable annotations.'
 arch=(any)
 url="https://github.com/theislab/$_name"
 license=(BSD)
 depends=(python-pandas python-scipy python-h5py python-natsort python-packaging python-xlrd)
-_wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('cc098d46662230f91e421c707590337c3e16459c494f28d80b8ff5baae54e539')
-noextract=("$_wheel")
+makedepends=(python-flit-core python-setuptools-scm python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('1efd7eb40839e0325bb066238280228a980d7dde6410793dbff2835f44a2d3ef')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation --skip-dependency-check  # xlrd < 2 not available on arch
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
