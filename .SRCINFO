@@ -1,0 +1,18 @@
+pkgbase = fribidi-git
+	pkgdesc = Implementation of the Unicode Bidirectional Algorithm
+	pkgver = 1.0.11.r8.gcffa304
+	pkgrel = 1
+	url = https://github.com/fribidi/fribidi/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	provides = fribidi
+	provides = libfribidi.so
+	conflicts = fribidi
+	source = git+https://github.com/fribidi/fribidi.git
+	sha256sums = SKIP
+
+pkgname = fribidi-git
