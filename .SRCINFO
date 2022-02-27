@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-jsxc
 	pkgdesc = XMPP chat for nextcloud
-	pkgver = 4.3.1
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/jsxc.nextcloud
 	arch = any
 	license = GPL
 	depends = nextcloud
 	options = !strip
-	source = nextcloud-app-jsxc-4.3.1.tgz::https://github.com/nextcloud/jsxc.nextcloud/releases/download/v4.3.1/ojsxc-4.3.1.tar.gz
-	sha256sums = 936b1675fd1eee41c9b31f38fb820d3b2e93fe59e4a0b6ba74aa4037a2464132
+	source = nextcloud-app-jsxc-5.0.0.tgz::https://github.com/nextcloud/jsxc.nextcloud/releases/download/v5.0.0/ojsxc-5.0.0.tar.gz
+	sha256sums = 1d9cb6348f245bcb68ec870e63b2f04c0ea43e2c4ba0a42b2ff6c7c948866bc0
 
 pkgname = nextcloud-app-jsxc
