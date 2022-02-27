@@ -3,7 +3,7 @@
 _pkgname=eispice
 pkgname=python2-eispice-git
 pkgver=0.11.6.1.8.g44c0d09
-pkgrel=1
+pkgrel=2
 pkgdesc="Clone of Berkley SPICE 3 Simulation Engine. Git version"
 url="http://www.thedigitalmachine.net/eispice.html"
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('python2-numpy' 'python2-scipy')
 conflicts=('eispice' 'python2-eispice')
 provides=('python2-eispice')
 options=('!buildflags')
-source=("git://github.com/Narrat/eispice#branch=master")
+source=("git+https://github.com/Narrat/eispice#branch=master")
 md5sums=('SKIP')
 
 
