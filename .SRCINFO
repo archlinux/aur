@@ -1,7 +1,7 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source Eurorack modular synthesizer simulator
-	pkgver = 2.0.6
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
 	license = custom
@@ -12,7 +12,6 @@ pkgbase = vcvrack
 	makedepends = cmake
 	makedepends = unzip
 	makedepends = gendesk
-	makedepends = fontconfig
 	depends = curl
 	depends = glew
 	depends = glfw
@@ -23,13 +22,9 @@ pkgbase = vcvrack
 	depends = rtaudio
 	depends = rtmidi
 	depends = speexdsp
-	depends = ttf-dejavu
-	depends = ttf-dseg
-	depends = ttf-nunito
-	depends = ttf-share
 	depends = zenity
 	depends = zstd
-	source = vcvrack-2.0.6::git+https://github.com/vcvrack/Rack.git#tag=v2.0.6
+	source = vcvrack-2.1.0::git+https://github.com/vcvrack/Rack.git#tag=v2.1.0
 	source = git+https://github.com/VCVRack/nanovg.git
 	source = git+https://github.com/memononen/nanosvg.git
 	source = git+https://github.com/AndrewBelt/osdialog.git

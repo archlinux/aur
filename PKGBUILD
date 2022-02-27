@@ -6,8 +6,8 @@
 
 _name=Rack
 pkgname=vcvrack
-pkgver=2.0.6
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Open-source Eurorack modular synthesizer simulator'
 url='https://vcvrack.com/'
 license=(custom CCPL GPL3)
@@ -23,14 +23,10 @@ depends=(
 	rtaudio
 	rtmidi
 	speexdsp
-	ttf-dejavu
-	ttf-dseg
-	ttf-nunito
-	ttf-share
 	zenity
 	zstd
 )
-makedepends=(git wget cmake unzip gendesk fontconfig)
+makedepends=(git wget cmake unzip gendesk)
 _submodule_deps=(nanovg nanosvg osdialog oui-blendish fuzzysearchdatabase filesystem pffft)
 source=(
 	"$pkgname-$pkgver::git+https://github.com/$pkgname/$_name.git#tag=v$pkgver"
@@ -64,6 +60,9 @@ prepare() {
 	# add target to only build included dependencies
 	echo 'includes: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft)' >> dep/Makefile
 
+	# recent changes to rtaudio.cpp require an unrelease version of rtaudio
+	git checkout 6ae7fe05216950e461a27e05e8b9de53ccf8247b src/rtaudio.cpp
+
 	gendesk -f -n \
 		--pkgname "$pkgname" \
 		--name "VCV $_name" \
@@ -84,12 +83,6 @@ build() {
 		-lpthread -lGL -ldl \
 		-lasound -ljack \
 		-lpulse -lpulse-simple"
-
-	# link system fonts
-	for _font in res/fonts/*.ttf; do
-		_sysfont="$(fc-match -f "%{file}" "$(basename $_font)")"
-		ln -fs "$_sysfont" "$_font"
-	done
 }
 
 package() {
