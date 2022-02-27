@@ -3,7 +3,7 @@
 
 pkgbase=manimce
 pkgname=manim
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos (community edition)."
 
@@ -12,7 +12,7 @@ license=('MIT' 'custom')
 url="https://github.com/ManimCommunity/manim"
 
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('e11ea6b8799f000845368945878fcafa84f80c06c5ee394b6532bec90d1f465e95d887b1e642302bba6f9dd424e359fe1551ba1f022667147b842295e173bf2f')
+sha512sums=('0b31e26dfa21a0e2f6ee6bef1f786a0f2c1ce2727c698d87cca7b5a8e4d8240ec4252da99bcfd14a601305ed24a6531ed8d492faaacbe4159e408c4fad643a06')
 
 conflicts=('python-manimlib')
 
@@ -34,10 +34,11 @@ depends=(
 	'python-scipy'
 	'python-setuptools'
 	'python-tqdm'
-	'python-watchdog'
+	# 'python-watchdog' uses AUR's git version while community is OOD
 	'python-networkx'
 	# Aur dependencies
 	'python-cloup'
+	'python-backports.cached_property'
 	'python-glcontext'
 	'python-isosurfaces'
 	'python-manimpango'
@@ -48,6 +49,7 @@ depends=(
 	'python-screeninfo'
 	'python-skia-pathops'
 	'python-srt'
+	'python-watchdog-git'
 )
 makedepends=(
 	'python-setuptools'
