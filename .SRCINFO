@@ -1,14 +1,14 @@
 pkgbase = novelwriter
 	pkgdesc = A markdown-like document editor for writing novels
-	pkgver = 1.5.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = https://novelwriter.io
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/n/novelWriter/novelWriter-1.5.5.tar.gz
-	sha256sums = 2ee478fedadc6f0dd8b70982343ad3c18f2b155ff55b9b57153cdf4ea85bd1dc
+	source = https://files.pythonhosted.org/packages/source/n/novelWriter/novelWriter-1.6.tar.gz
+	sha256sums = e347d6e1233ab40aa00c58cb4930349e109b44d3b2627fbd8b83c2e9670bc6cf
 
 pkgname = novelwriter
 	depends = python
