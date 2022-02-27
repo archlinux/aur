@@ -12,7 +12,7 @@ license=('GPL3')
 # Specifying gnatcoll-core-git, langkit-git, and libadalang-git explicitly
 # because libadalang-tools-git doesn't specify the git packages
 depends=('gnatcoll-core-git' 'langkit-git' 'libadalang-git' 'libadalang-tools-git' 'libvss-git' 'ada_spawn' 'ada-libfswatch')
-makedepends=('git' 'gcc-ada' 'gprbuild-git' 'python-e3-testsuite')
+makedepends=('git' 'gcc-ada' 'gprbuild' 'python-e3-testsuite')
 
 conflicts=('ada_language_server')
 
