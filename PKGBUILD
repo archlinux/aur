@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=plocate-git
-pkgver=1.1.11.r2.ga2a3c6f
+pkgver=1.1.15.r2.ge16be57
 pkgrel=1
 pkgdesc="A locate(1) based on posting lists, completely replacing mlocate with a much faster (and smaller) index"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ check() {
 package() {
   cd "plocate"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 
   chgrp 21 "$pkgdir/usr/bin/plocate"
   chmod 2755 "$pkgdir/usr/bin/plocate"
