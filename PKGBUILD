@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=picolibc-git
-pkgver=r23682.g60c127bee
+pkgver=r24542.gd980f357f
 pkgrel=1
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
@@ -40,5 +40,5 @@ build() {
 package() {
   cd "picolibc"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 }
