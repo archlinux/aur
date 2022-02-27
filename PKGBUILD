@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocprim
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Header-only library providing HIP parallel primitives'
 arch=('x86_64')
@@ -10,12 +10,12 @@ license=('MIT')
 depends=('hip')
 makedepends=('cmake' 'rocm-cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz")
-sha256sums=('0e7e7bda6a09b70a07ddd926986882df0c8d8ff3e0a34e12cb6d44f7d0a5840e')
+sha256sums=('5b50aef9e0fac8f866daacc6c7e9cb0efdf88dc180bc699fe0ab012992d7d9e2')
 _dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.0.x/docs/markdown/clang_options.md
 
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
