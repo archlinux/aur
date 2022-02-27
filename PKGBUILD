@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-git
-pkgver=rc1.2.0.2.r15.gf17ae118
+pkgver=1.3.0.r6.gc07e0752
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
