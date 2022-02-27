@@ -1,7 +1,7 @@
 # Maintainer: Salamandar <felix@piedallu.me>
 
 pkgname=prusa-slicer-git
-pkgver=2.5.0.alpha0.r43.g3a821d675
+pkgver=2.5.0.alpha0.r107.g1e9951dec
 pkgrel=1
 pkgdesc='G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)'
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
@@ -33,12 +33,10 @@ depends=(
 source=(
     "git+${url}"
     'prusa-slicer-boost-placeholders.patch'
-    '0001-Use-namespaces-to-link-against-libcereal-1.3.1.patch'
 )
 sha256sums=(
     'SKIP'
     '58cae07a418a797222f4cb10950fa2fd7afb7570519785b082cc7d7e7f407c02'
-    '74d38c96ff7534aff64f3817579e86e9c63de08d1641118681a53dd4bbb2a6d6'
 )
 conflicts=('prusa-slicer')
 
@@ -50,7 +48,6 @@ prepare() {
     cd "PrusaSlicer"
     # Fix build with Boost 1.76.0
     patch -p1 < "$srcdir/prusa-slicer-boost-placeholders.patch"
-    patch -p1 < "$srcdir/0001-Use-namespaces-to-link-against-libcereal-1.3.1.patch"
 }
 
 build() {
