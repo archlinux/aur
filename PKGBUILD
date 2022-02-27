@@ -2,7 +2,7 @@
 
 _name=scvelo
 pkgname=python-$_name
-pkgver=0.1.25
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Stochastic Single Cell RNA Velocity'
 arch=(any)
@@ -14,21 +14,23 @@ depends=(
 	'scanpy>=1.5'
 	'python-loompy>=2.0.12'
 	'python-umap-learn>=0.3.10'
-	'python-numba>=1.41.0'
+	'python-numba>=0.41.0'
 	'python-numpy>=1.17'
 	'python-scipy>=1.4.1'
 	'python-pandas>=0.23.0'
 	'python-scikit-learn>=0.21.2'
 	'python-matplotlib>=3.3.0'
 )
-_pyarch=py3
-_wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
-source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('300b9eb8dcfc123960954659f8c0221b55772bc9c5e103411397217e5d2e3b6c')
-noextract=("$_wheel")
+makedepends=(python-setuptools python-setuptools-scm python-wheel python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('ffacae961993df19034580ae748dc5bda12852e1da517b1f065ad2544850b040')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	mkdir -p "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
