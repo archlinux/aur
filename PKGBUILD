@@ -35,18 +35,18 @@ sha256sums=(
 )
 
 build() {
-  cd $pkgname
+  cd ${pkgname%-git}
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $pkgname
+  cd ${pkgname%-git}
   python -m coolero -h
   python -m coolero -v
 }
 
 package() {
-  cd $pkgname
+  cd ${pkgname%-git}
   python -m installer --destdir="$pkgdir" dist/coolero-$pkgver-*.whl
   install -D -m644 "metadata/org.coolero.Coolero.desktop" "${pkgdir}/usr/share/applications/org.coolero.Coolero.desktop"
   install -D -m644 "metadata/org.coolero.Coolero.png" "$pkgdir/usr/share/pixmaps/org.coolero.Coolero.png"
