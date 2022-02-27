@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Pappas <mitsakosgr at gmail dot com>
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
-pkgver=2.5.5
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
@@ -20,12 +20,12 @@ source=(
 sha256sums=('e0bca68c0897cbcd63bf603ad1f352c16c5fc62ee8f151daa7e793361007d242'
             '80ab03ebe936ce85b107523ae242d97905763ed30596639e1778cdea796b9e1e'
             'eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023'
-            'da84488bc1e349b78acfc3467d0b20f701bce88ab8e33f30d8627a1fe34a6e63')
+            'a4174281806aa3c9edad5030f9befbc0fd450d503ad68e91813323870c30e5c9')
 
 prepare() {
     # Workaround for https://github.com/MiniZinc/MiniZincIDE/issues/90
     cd $srcdir/MiniZincIDE-$pkgver-bundle-linux-$arch
-    patch --strip=0 --input=${srcdir}/fzn-gecode-gist-lib-path.patch
+    # patch --strip=0 --input=${srcdir}/fzn-gecode-gist-lib-path.patch
 }
 
 package() {    
@@ -37,6 +37,7 @@ package() {
     
     # Copy MiniZinc launcher
     mkdir -p $pkgdir/usr/share/applications
+    mkdir -p $pkgdir/opt/$pkgname/resources
     cp $srcdir/icon.png $pkgdir/opt/$pkgname/resources/icon.png
     cp $srcdir/minizinc-ide.desktop $pkgdir/usr/share/applications/minizinc-ide.desktop
 }
