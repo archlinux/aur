@@ -1,7 +1,7 @@
 pkgbase = opendht-git
 	pkgdesc = C++14 implementation of the Kademlia DHT (Distributed Hash Table)
-	pkgver = 2.1.9.5.r1.ga77dc855
-	pkgrel = 1
+	pkgver = 2.3.3.r2.gf590980c
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/savoirfairelinux/opendht
 	arch = x86_64
@@ -13,9 +13,10 @@ pkgbase = opendht-git
 	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = msgpack-c
+	makedepends = msgpack-cxx
 	makedepends = cmake
 	makedepends = cython
+	makedepends = python-setuptools
 	depends = gnutls
 	depends = nettle
 	depends = readline
@@ -29,4 +30,3 @@ pkgbase = opendht-git
 	sha256sums = SKIP
 
 pkgname = opendht-git
-

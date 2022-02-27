@@ -3,15 +3,15 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=opendht-git
-pkgver=2.1.9.5.r1.ga77dc855
-pkgrel=1
+pkgver=2.3.3.r2.gf590980c
+pkgrel=2
 epoch=1
 pkgdesc="C++14 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
 url="https://github.com/savoirfairelinux/opendht"
 license=(GPL3)
 depends=(gnutls nettle readline asio jsoncpp argon2)
-makedepends=(git msgpack-c cmake cython)
+makedepends=(git msgpack-cxx cmake cython python-setuptools )
 optdepends=('python: to use the Python bindings')
 provides=(opendht)
 conflicts=(opendht)
