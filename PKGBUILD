@@ -5,7 +5,7 @@
 
 # Maintainer: Tsingv <tsingv@outlook.com>
 pkgname=("omniedge-cli")
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=0
 epoch=
 pkgdesc="A reliable and painless connectivity to all your devices in one click."
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://github.com/omniedgeio/app-release/releases/download/v${pkgver}/omniedgecli-amd64.zip")
 noextract=()
-sha512sums=('e82b437dbe4911e42208f16b75cc0b5cedbd59ab0deaba4d832a4dc1510c7591f3e2984ea18fefb9e96594e87d7ec324f5f08d0e7e92e6a72fc44e129a62b5fb')
+sha512sums=('36fad9ea1fe61cabb62597e9b6f933a2571265dcb91fc13beba8d80658543d47cd59340dbac92a6e7fb1b2da1bea9996f962207bfd043a1bef995e07c1b613a2')
 validpgpkeys=()
 
 package() {
