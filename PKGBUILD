@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=neo-matrix
-pkgver=0.6
-_commit=0545f81f410faa7b68c6eff5ecde33c226b21e9e
+pkgver=0.6.1
+_commit=662445b45153d245df02cf1516dce81175a9183d
 pkgrel=1
 pkgdesc='Simulates the digital rain from "The Matrix"'
 arch=(x86_64)

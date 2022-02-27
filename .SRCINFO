@@ -1,6 +1,6 @@
 pkgbase = neo-matrix
 	pkgdesc = Simulates the digital rain from "The Matrix"
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/st3w/neo
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = neo-matrix
 	makedepends = git
 	depends = ncurses
 	optdepends = ttf-hanazono
-	source = neo-matrix::git+https://github.com/st3w/neo.git#commit=0545f81f410faa7b68c6eff5ecde33c226b21e9e
+	source = neo-matrix::git+https://github.com/st3w/neo.git#commit=662445b45153d245df02cf1516dce81175a9183d
 	md5sums = SKIP
 
 pkgname = neo-matrix
