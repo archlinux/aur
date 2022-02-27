@@ -1,12 +1,15 @@
 pkgbase = cctz
-	pkgdesc = A C++ library for translating between absolute and civil times using the rules of a time zone.
+	pkgdesc = A C++ library for translating between absolute and civil times using the rules of a time zone
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/cctz
 	arch = x86_64
 	license = Apache
+	makedepends = benchmark
+	makedepends = cmake
+	makedepends = gtest
+	depends = gcc-libs
 	source = cctz-2.3.tar.gz::https://github.com/google/cctz/archive/v2.3.tar.gz
 	sha512sums = e688ddac1bff108e8315bf94cb61483b72b0d16f601e4e1eeb0fd5c064aefe5a573eee66e8903401aa4c2be71ea9f10dd6c9a9cdf8379f5bb6073248a21a83ff
 
 pkgname = cctz
-
