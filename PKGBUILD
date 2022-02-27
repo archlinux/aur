@@ -5,8 +5,8 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.15.3'
-pkgrel=10
+pkgver='0.16.0'
+pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
 url="http://${pkgname}.org"
@@ -42,8 +42,8 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-user.conf"
         "${pkgname}-user.service")
 install="${pkgname}.install"
-validpgpkeys=('D8423BCB326C7907033929C7939E6BE1E29FC3CC')
-sha256sums=('d62669a8f41e078eaa220ce77a32f4f3f801e3099357ae8c705498fe73884ec5'
+validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
+sha256sums=('d32da6f13ff1cd8670525719ea0f79e9f76d2de7f6069860e0a77fc69a360068'
             'SKIP'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
@@ -58,7 +58,6 @@ prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	export GNUNET_PREFIX='/usr/lib'
-	autoreconf -i
 
 }
 
