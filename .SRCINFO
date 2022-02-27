@@ -1,14 +1,14 @@
 pkgbase = nodejs-clean-css-cli
 	pkgdesc = The command line interface to clean-css CSS optimizer
-	pkgver = 5.5.0
+	pkgver = 5.5.2
 	pkgrel = 1
 	url = https://github.com/jakubpawlowicz/clean-css-cli
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = clean-css-cli-5.5.0.tgz
-	source = https://registry.npmjs.org/clean-css-cli/-/clean-css-cli-5.5.0.tgz
-	sha256sums = 5b396c7e69e91f6c0fe233530cb8fc92860ab001649be7e73acb53053c3973cf
+	noextract = clean-css-cli-5.5.2.tgz
+	source = https://registry.npmjs.org/clean-css-cli/-/clean-css-cli-5.5.2.tgz
+	sha256sums = 1f59a02ccc5ed129434d0f23e9718f0ff6e5c248fcd687ee19422199220257a4
 
 pkgname = nodejs-clean-css-cli
