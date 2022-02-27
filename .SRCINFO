@@ -7,6 +7,7 @@ pkgbase = todoist-appimage
 	license = custom:Commercial
 	depends = zlib
 	depends = fuse2
+	depends = appimagelauncher
 	noextract = todoist-appimage-1.0.5.AppImage
 	options = !strip
 	source_x86_64 = todoist-appimage-1.0.5.AppImage::https://electron-dl.todoist.com/linux/Todoist-1.0.5.AppImage
