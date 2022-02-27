@@ -1,11 +1,13 @@
 pkgbase = python-single-version
 	pkgdesc = Small utility to define version string for Poetry-style Python project
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hongquan/single-version
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python-first
 	depends = python-importlib-metadata
 	source = https://pypi.org/packages/source/s/single-version/single-version-1.5.1.tar.gz
