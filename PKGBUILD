@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libjcat-git
-pkgver=0.1.8.r2.g21976eb
+pkgver=0.1.10.r3.g653893a
 pkgrel=1
 pkgdesc="Library for reading and writing Jcat files"
 arch=('i686' 'x86_64')
@@ -42,5 +42,5 @@ check() {
 package() {
   cd "libjcat"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 }
