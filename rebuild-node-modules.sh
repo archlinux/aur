@@ -1,35 +1,31 @@
-#! /bin/bash
+#!/bin/bash
+# 参数：
+# 1 ---- NW版本
 
 set -e
+root_dir=$(cd `dirname $0`/.. && pwd -P)
+package_dir="$root_dir/package.nw"
+export PATH="$root_dir/node/bin:$PATH"
 
-if [ -z "$NW_PACKAGE_DIR" ]; then
-    echo -e "\e[1;31m\$NW_PACKAGE_DIR is empty\e[0m" >&2
-    exit 1
+if [ ! -z $1 ];then
+  NW_VERSION=$1
+fi
+if [ -z $NW_VERSION ]; then
+  echo "NW 版本未指定！"
+  exit 1
 fi
 
-if [ -z "$NW_VERSION" ]; then
-    echo -e "\e[1;31m\$NW_VERSION is empty\e[0m" >&2
-    exit 1
+PY_VERSION=`python -V 2>&1|awk '{print $2}'|awk -F '.' '{print $1}'`
+if [ $PY_VERSION != 2 ]; then
+  hash python2 2>/dev/null || { echo >&2 "I require python2 but it's not installed.  Aborting."; exit 1; }
+  ln -s "$( which python2 )" "$root_dir/node/bin/python"
 fi
 
-TEMP_DIR=$(mktemp -d)
-trap "{ rm -rf $TEMP_DIR; }" EXIT
+hash nw-gyp 2>/dev/null || {
+  echo "=======请安装nw-gyp======="
+  exit 1
+}
 
-# prepare python2
-# fix https://github.com/nwjs/nw-gyp/issues/122
-ln -sf "$(which python2)" "$TEMP_DIR/python"
-export PATH=$TEMP_DIR:$PATH
-
-node_modules="$NW_PACKAGE_DIR/node_modules"
-dry_run="n"
-package_dir="$NW_PACKAGE_DIR"
-
-if [ ! -d "$node_modules" ]; then
-    echo -e "\e[1;31m$node_modules is not exist\e[0m" >&2
-    exit 1
-fi
-
-# 以下原封复制
 # 代理处理
 echo "尝试取消所有代理"
 unset http_proxy

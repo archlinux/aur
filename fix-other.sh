@@ -1,7 +1,9 @@
 #!/bin/bash
-
-package_dir="$NW_PACKAGE_DIR"
-tmp_dir=$(mktemp -d)
+set -e
+root_dir=$(cd `dirname $0`/.. && pwd -P)
+srcdir=$root_dir
+tmp_dir="$root_dir/tmp"
+package_dir="$root_dir/package.nw"
 
 # 修复: webview manager
 # 此bug导致以下功能异常: 
@@ -13,7 +15,7 @@ sed -i 's#module.exports = createWebviewManager;#module.exports = createWebviewM
 # 修复：可视化用的wcc,wcsc
 echo "fix: wcc,wcsc"
 if [[ ! -d "$tmp_dir/node_modules" ]];then
-  mkdir "$tmp_dir/node_modules"
+  mkdir -p "$tmp_dir/node_modules"
 fi
 cd $tmp_dir && npm install miniprogram-compiler
 # wcc wcsc

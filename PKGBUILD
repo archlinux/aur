@@ -18,7 +18,7 @@ _node_version="16.1.0"
 
 pkgname=wechat-devtools
 pkgver="1.05.2201242"  # 主版本号
-pkgrel=1   # 次版本号release, 一位数用0n
+pkgrel=2   # 次版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools For Linux. "
 arch=("x86_64")
@@ -36,10 +36,10 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "fix-cli.sh"
         "fix-menu.sh"
         "fix-core.sh"
-        "rebuild-modules.sh"
-        "fix-package-name-node"
-        "wxvpkg_pack"
-        "wxvpkg_unpack"
+        "rebuild-node-modules.sh"
+        "fix-package-name.js"
+        "wxvpkg_pack.js"
+        "wxvpkg_unpack.js"
         "fix-other.sh")
 md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
          "${_wechat_devtools_md5}"
@@ -58,7 +58,16 @@ md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
 options=('!strip')
 
 prepare() {
-    7z x -owechat_devtools ${_wechat_devtools_exe}
+    7z x -owechat_devtools ${_wechat_devtools_exe} code/package.nw
+    mv wechat_devtools/code/package.nw package.nw
+    rm -rf wechat_devtools
+    ls | grep node-*linux* | xargs -I{} mv {} node
+    ls | grep nwjs-*linux* | xargs -I{} mv {} nwjs
+
+    mkdir tools
+    for file in *.js *.sh; do
+        mv $file tools;
+    done
 }
 
 _log() {
@@ -68,7 +77,7 @@ _log() {
 build() {
     # prepare node
     _log "prepare node v${_node_version}"
-    export PATH="$srcdir/node-v${_node_version}-linux-x64/bin:$PATH"
+    export PATH="$srcdir/node/bin:$PATH"
 
     # prepare nw-gyp
     _log "prepare nw-gyp"
@@ -80,14 +89,14 @@ build() {
     cp "$(which node)" "${srcdir}/node.${_node_version}"
 
     # run fix scripts
-    export NW_PACKAGE_DIR="${srcdir}/wechat_devtools/code/package.nw"
+    export NW_PACKAGE_DIR="${srcdir}/package.nw"
     export NW_VERSION=$_nwjs_ver
     export srcdir=$srcdir
     export NO_WINE=true
     
-    for script in fix-package-name-node fix-cli.sh fix-other.sh fix-menu.sh fix-core.sh rebuild-modules.sh; do
+    for script in fix-package-name.js fix-cli.sh fix-other.sh fix-menu.sh fix-core.sh rebuild-node-modules.sh; do
         _log "run ${script}"
-        "${srcdir}/${script}"
+        "${srcdir}/tools/${script}"
     done
 
     # cleanup
@@ -98,8 +107,8 @@ package() {
     mkdir -p "${pkgdir}${_install_dir}"
     cd "${pkgdir}${_install_dir}"
 
-    cp -r "${srcdir}/nwjs-sdk-v${_nwjs_ver}-linux-x64/"* ./
-    cp -r "${srcdir}/wechat_devtools/code/package.nw" ./package.nw
+    cp -r "${srcdir}/nwjs/"* ./
+    cp -r "${srcdir}/package.nw" ./package.nw
     find ./package.nw -type d | xargs -I {} chmod -R a+rx {}
 
     cp ${srcdir}/node.${_node_version} node

@@ -11,12 +11,11 @@ const parseFile = function (path) {
 
     content.name = "wechat_devtools";
     // 开启调试，更新参数
-    content['chromium-args'] = content['chromium-args'].replace('--ignore-gpu-blacklist', '--ignore-gpu-blocklist') + ' --mixed-context'
+    content['chromium-args'] = content['chromium-args'].replace('--disable-devtools', '--mixed-context').replace('--ignore-gpu-blacklist', '--ignore-gpu-blocklist')
     content.window.height = content.window.width = 1000
-    fs.writeFileSync(path, JSON.stringify(content, null, 4));
+    fs.writeFileSync(path, JSON.stringify(content));
 
 };
 
-const pkgDir = process.env['NW_PACKAGE_DIR']
-parseFile(`${pkgDir}/package.json`);
-parseFile(`${pkgDir}/package-lock.json`);
+parseFile(path.resolve(__dirname, "../package.nw/package.json"));
+parseFile(path.resolve(__dirname, "../package.nw/package-lock.json"));
