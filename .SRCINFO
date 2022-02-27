@@ -1,6 +1,6 @@
 pkgbase = libinih-git
 	pkgdesc = Simple .INI file parser in C, good for embedded systems
-	pkgver = r53.r7.g4f251f0
+	pkgver = r53.r8.ga52c070
 	pkgrel = 1
 	url = https://github.com/benhoyt/inih
 	arch = i686

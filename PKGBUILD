@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libinih-git
-pkgver=r53.r7.g4f251f0
+pkgver=r53.r8.ga52c070
 pkgrel=1
 pkgdesc="Simple .INI file parser in C, good for embedded systems"
 arch=('i686' 'x86_64')
@@ -46,6 +46,6 @@ check() {
 package() {
   cd "inih"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
   install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/inih"
 }
