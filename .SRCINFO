@@ -1,7 +1,7 @@
 pkgbase = python-healpy
 	pkgdesc = Python package to manipulate healpix maps
-	pkgver = 1.15.1
-	pkgrel = 2
+	pkgver = 1.15.2
+	pkgrel = 1
 	url = http://healpy.readthedocs.io
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,10 @@ pkgbase = python-healpy
 	checkdepends = python-pytest-doctestplus
 	checkdepends = python-requests
 	makedepends = cython
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-oldest-supported-numpy
 	depends = python>=3.7
 	depends = python-numpy>=1.13
 	depends = python-scipy
@@ -18,7 +22,7 @@ pkgbase = python-healpy
 	depends = cfitsio
 	depends = healpix>=3.80
 	optdepends = python-healpy-doc: Documentation for healpy
-	source = https://files.pythonhosted.org/packages/source/h/healpy/healpy-1.15.1.tar.gz
-	md5sums = d677ca493bd7694850028ce559443e9e
+	source = https://files.pythonhosted.org/packages/source/h/healpy/healpy-1.15.2.tar.gz
+	md5sums = e9518a20effe71de73c7195ce023e76e
 
 pkgname = python-healpy
