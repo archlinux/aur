@@ -1,0 +1,11 @@
+pkgbase = codeblocks-i18n-zh_tw-git
+	pkgver = 8.ad63533
+	pkgrel = 1
+	url = https://github.com/vongola12324/Code-Blocks-Traditional-Chinese
+	arch = any
+	makedepends = git
+	depends = codeblocks
+	source = codeblocks-i18n-zh_tw-git::git+https://github.com/vongola12324/Code-Blocks-Traditional-Chinese.git
+	md5sums = SKIP
+
+pkgname = codeblocks-i18n-zh_tw-git
