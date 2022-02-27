@@ -1,7 +1,7 @@
 pkgbase = wechat-devtools
 	pkgdesc = WeChat Devtools For Linux.
-	pkgver = 1.05.2201241
-	pkgrel = 13
+	pkgver = 1.05.2201242
+	pkgrel = 1
 	epoch = 2
 	url = https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html
 	arch = x86_64
