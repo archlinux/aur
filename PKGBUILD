@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iputils-git
-pkgver=20210722.r19.g66b6307
+pkgver=20211215.r10.g854873b
 pkgrel=1
 pkgdesc="Network monitoring tools, including ping"
 arch=('i686' 'x86_64')
@@ -32,8 +32,6 @@ build() {
     --buildtype=plain \
     --prefix="/usr" \
     --sbindir="bin" \
-    -DBUILD_RARPD=true \
-    -DBUILD_TFTPD=true \
     "_build"
   meson compile -C "_build"
 }
@@ -47,7 +45,7 @@ check() {
 package() {
   cd "iputils"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/iputils"
   install -Dm644 "Documentation/LICENSE.BSD3" -t "$pkgdir/usr/share/licenses/iputils"

@@ -1,6 +1,6 @@
 pkgbase = iputils-git
 	pkgdesc = Network monitoring tools, including ping
-	pkgver = 20210722.r19.g66b6307
+	pkgver = 20211215.r10.g854873b
 	pkgrel = 1
 	url = https://github.com/iputils/iputils
 	install = iputils.install
