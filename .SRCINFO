@@ -11,8 +11,7 @@ pkgbase = rofication-git
 	provides = rofication
 	provides = notification-daemon
 	conflicts = rofication
-	source = git://github.com/DaveDavenport/Rofication.git
+	source = git+https://github.com/DaveDavenport/Rofication.git
 	md5sums = SKIP
 
 pkgname = rofication-git
-

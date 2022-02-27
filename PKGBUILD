@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python-dbus' 'python-gobject' 'python-jsonpickle')
 conflicts=('rofication')
 provides=('rofication' 'notification-daemon')
-source=("git://github.com/DaveDavenport/Rofication.git")
+source=("git+https://github.com/DaveDavenport/Rofication.git")
 md5sums=('SKIP')
 
 
