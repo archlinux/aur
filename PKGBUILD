@@ -9,13 +9,13 @@
 
 _pkgbase=openocd
 pkgname=openocd-git
-pkgver=0.10.0.r1089.g3bfe49266
+pkgver=0.11.0.r584.g103b1d68d
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
-depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat' 'hidapi' )
+depends=('libftdi' 'libftdi-compat' 'libusb' 'libusb-compat' 'hidapi' 'capstone')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd')
@@ -23,12 +23,19 @@ conflicts=('openocd')
 
 source=(
   "${pkgname}::git+https://repo.or.cz/openocd.git"
+  "git+https://github.com/msteveb/jimtcl.git"
+  "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
+  "git+https://git.savannah.nongnu.org/git/git2cl.git"
+
 )
-#	"git+http://repo.or.cz/r/git2cl.git"
-#	"git+http://repo.or.cz/r/jimtcl.git"
-#	"git+http://repo.or.cz/r/libjaylink.git"
-md5sums=('SKIP')
-sha1sums=('SKIP')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP')
 
 # Specify desired features and device support here. A list can be
 # obtained by running ./configure in the source directory.
@@ -39,6 +46,7 @@ _features=(
     at91rm9200
     bcm2835gpio
     buspirate
+    capstone
     cmsis-dap
     dummy
     ep93xx
@@ -77,6 +85,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname}"
+  git submodule init
+  git config submodule.jimtcl.url "$srcdir/jimtcl"
+  git config submodule."src/jtag.drivers/libjaylink".url "$srcdir/libjaylink"
+  git config submodule."tools/git2cl".url "$srcdir/git2cl"
+  git submodule update
 }
 
 build() {
