@@ -2,13 +2,13 @@
 # Contributor: Rafael Silva <silvagracarafael@gmail.com>
 pkgname=vizex
 pkgver=2.1.1c
-pkgrel=2
+pkgrel=3
 pkgdesc="Visualize disk space and disk usage in your UNIX\Linux terminal"
 arch=('any')
 url="https://github.com/bexxmodd/vizex"
 license=('MIT')
 depends=('python-click' 'python-colored' 'python-pandas' 'python-psutil'
-         'python-magic-ahupp' 'python-tabulate')
+         'python-magic' 'python-tabulate')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")

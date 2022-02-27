@@ -1,7 +1,7 @@
 pkgbase = vizex
 	pkgdesc = Visualize disk space and disk usage in your UNIX\Linux terminal
 	pkgver = 2.1.1c
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bexxmodd/vizex
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = vizex
 	depends = python-colored
 	depends = python-pandas
 	depends = python-psutil
-	depends = python-magic-ahupp
+	depends = python-magic
 	depends = python-tabulate
 	source = vizex-2.1.1c.tar.gz::https://github.com/bexxmodd/vizex/archive/refs/tags/v2.1.1c.tar.gz
 	sha256sums = 7081af2197a98c5b9871c62b56c8c16e19f62e022221f1759793f615481ce8f6
