@@ -19,7 +19,7 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    if (( "$(vercmp "$2" 2.1.0)" < 0 )); then
+    if (("$(vercmp "$2" 2.1.0)" < 0)); then
         cat <<-EOF
 			==> The tls certificate filenames in the default config have changed.
 			    In /var/lib/ergochat/:
@@ -31,7 +31,16 @@ post_upgrade() {
         mkcert_howto
     fi
 
-    if (( "$(vercmp "$2" 2.7.0)" < 0 )); then
+    if (("$(vercmp "$2" 2.9.1)" < 0)); then
+        cat <<-EOF
+			==> The default config and systemd service unit file have changed to realign with upstream.
+			    /etc/ergochat.conf -> /etc/ergochat/ircd.yaml
+
+			Please check and adjust your config file to complete the upgrade.
+		EOF
+    fi
+
+    if (("$(vercmp "$2" 2.7.0)" < 0)); then
         oragono_rename_info
     fi
 }
@@ -39,8 +48,8 @@ post_upgrade() {
 mkcert_howto() {
     cat <<-EOF
 		    cd /var/lib/ergochat
-		    sudo -u ergochat /usr/bin/ergochat mkcerts --conf /etc/ergochat.conf
-		    sudo -u ergochat /usr/bin/ergochat initdb --conf /etc/ergochat.conf
+		    sudo -u ergochat /usr/bin/ergochat mkcerts --conf /etc/ergochat/ircd.yaml
+		    sudo -u ergochat /usr/bin/ergochat initdb --conf /etc/ergochat/ircd.yaml
 	EOF
 }
 

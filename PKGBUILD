@@ -3,7 +3,7 @@
 
 pkgname=ergochat
 _upstream_pkgname=ergo
-pkgver=2.8.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="A modern IRC server written in Go"
 arch=('x86_64')
@@ -11,33 +11,33 @@ url="https://github.com/ergochat/ergo"
 license=('MIT')
 install=install
 depends=('glibc')
-makedepends=('go' 'git' 'ruby')
+makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver"
-    "PKGNAME.service.erb"
-    "PKGNAME.sysusers.erb"
-    "path.patch.erb"
-    "PKGNAME.tmpfiles.erb"
-    "compile-templates")
+    "config.patch"
+    "systemd-service-unit.patch"
+    "ergochat.sysusers"
+    "ergochat.tmpfiles")
 sha256sums=('SKIP'
-    '5df46fc5cb324fa362f30baf550d06e3b9d80056c047e9fe7b3db698eddb7c24'
-    'db0d2e965a2afb352afdc6062db83b657ee61c30f90df37aaf1982426e985d08'
-    'ffd050bdecfd0b010d5b8e9cfc27f775eff3a672451e0d938f1fdea507b74fa1'
-    '7e490cb211b013449041ac345175c7e540108c8149c196462f1c4bcf965d138a'
-    '8cc173f3c9693edb3575fdf648bd671bbf13f7611ed8b11addaff50145051677')
-backup=("etc/oragono.conf" "etc/$pkgname.conf")
+    '94ea647a7557002817d077d280e69a95ebce8a94d0806d84e623e44572edf0d2'
+    'cba63567bbd989c22242d25c8c9dd23a82caded310fbddc1532e551d5adea708'
+    '1912d91aff30318dfafedbdf6c786f096ff897962736bd960acf7130859cdff2'
+    '3fbd033a9a7c92859f6e26005db2ddeddda3816b0e735f7772f10c4da4df0266')
+backup=("etc/oragono.conf" "etc/$pkgname.conf" "etc/$pkgname/ircd.yaml")
 replaces=("oragono")
 conflicts=("oragono")
 provides=("oragono")
 
 prepare() {
-    cd "${srcdir}" || exit
-    ./compile-templates --pkgname="$pkgname" --pkgdesc="$pkgdesc" ../install.erb PKGNAME.service.erb PKGNAME.sysusers.erb PKGNAME.tmpfiles.erb path.patch.erb
-    cd "${srcdir}/$_upstream_pkgname" || exit
-    patch <../path.patch
+    cd "$srcdir/$_upstream_pkgname" || exit
+    patch --backup <../config.patch
+
+    cd "$srcdir/$_upstream_pkgname/distrib/systemd" || exit
+    patch --backup <../../../systemd-service-unit.patch
 }
 
 build() {
-    export GOPATH=$(pwd)/..
+    GOPATH=$(pwd)/..
+    export GOPATH
     cd "${srcdir}/$_upstream_pkgname" || exit
 
     GIT_COMMIT="$(git rev-parse HEAD 2>/dev/null)"
@@ -59,22 +59,23 @@ build() {
 }
 
 check() {
-    export GOPATH=$(pwd)/..
+    GOPATH=$(pwd)/..
+    export GOPATH
     cd "${srcdir}/$_upstream_pkgname" || exit
 
     go test ./...
 }
 
 package() {
-    install -Dm644 $pkgname.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-    install -Dm644 "$srcdir/$pkgname.tmpfiles" "${pkgdir}"/usr/lib/tmpfiles.d/$pkgname.conf
+    install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-    cd "${srcdir}/$_upstream_pkgname" || exit
+    cd "$srcdir/$_upstream_pkgname" || exit
+    install -Dm644 "distrib/systemd/$_upstream_pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -Dm755 -d "$pkgdir/usr/share/$pkgname/i18n"
     cp languages/* "$pkgdir/usr/share/$pkgname/i18n/"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
     install -Dm755 $_upstream_pkgname "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 default.yaml "$pkgdir/etc/$pkgname.conf"
+    install -Dm644 default.yaml "$pkgdir/etc/$pkgname/ircd.yaml"
     install -Dm644 $_upstream_pkgname.motd "$pkgdir/usr/share/$pkgname/default.motd"
 }
