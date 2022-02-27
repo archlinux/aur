@@ -1,0 +1,15 @@
+pkgbase = python-backports.cached_property
+	pkgdesc = Cloup (= Click + groups) contains a set of Click extensions for multiple purposes.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/penguinolog/backports.cached_property
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	source = https://github.com/penguinolog/backports.cached_property/archive/refs/tags/1.0.1.tar.gz
+	sha512sums = c6fa3bba4c450515ae3ce44a52fb9181d494569f18742bc12ac8c5315e93107d301ee59bdc4d468838ee6435e54ab46b027086a03369502858eb63204e2bce32
+
+pkgname = python-backports.cached_property
