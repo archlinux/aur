@@ -1,6 +1,6 @@
 pkgbase = ytfs-git
 	pkgdesc = FUSE based filesystem for YouTube (git version)
-	pkgver = r86.d689c7f
+	pkgver = r89.b107159
 	pkgrel = 1
 	url = https://github.com/rasguanabana/ytfs
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = ytfs-git
 	depends = python-requests
 	depends = python-fusepy
 	depends = youtube-dl
-	source = git://github.com/rasguanabana/ytfs.git
+	source = git+https://github.com/rasguanabana/ytfs.git
 	md5sums = SKIP
 
 pkgname = ytfs-git
-

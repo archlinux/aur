@@ -2,7 +2,7 @@
 
 _pkgname=ytfs
 pkgname=${_pkgname}-git
-pkgver=r86.d689c7f
+pkgver=r89.b107159
 pkgrel=1
 pkgdesc="FUSE based filesystem for YouTube (git version)"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/rasguanabana/ytfs"
 license=('MIT')
 depends=('python-requests' 'python-fusepy' 'youtube-dl')
 makedepends=('git')
-source=("git://github.com/rasguanabana/${_pkgname}.git")
+source=("git+https://github.com/rasguanabana/${_pkgname}.git")
 md5sums=('SKIP')
 
 
