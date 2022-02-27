@@ -1,6 +1,6 @@
 pkgbase = networkmanager-git
 	pkgdesc = Network Management daemon
-	pkgver = 1.33.1.r29152.g1d019308
+	pkgver = 1.37.1.r29870.g1a5b85ad
 	pkgrel = 1
 	url = http://www.gnome.org/projects/NetworkManager
 	arch = i686
