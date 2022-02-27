@@ -3,33 +3,33 @@ pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.3.20
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
 url="https://github.com/MAVENSDC/cdflib"
 license=('MIT')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 #'python-sphinx')
 #checkdepends=('python-pytest-cov')
-checkdepends=('python-astropy' 'python-attrs>=19.2.0')
+#checkdepends=('python-astropy' 'python-attrs>=19.2.0')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('51de133e7a748ea7454f76398db0ad7a')
+md5sums=('5f8d62adae897b877b91c393da1f195d')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
 #   python setup.py build_sphinx
 }
 
-check() {
-    cd ${srcdir}/${_pyname}-${pkgver}
-
-#   pytest #|| warning "Tests failed"
-    python setup.py test
-}
+#check() {
+#    cd ${srcdir}/${_pyname}-${pkgver}
+#
+#    pytest #|| warning "Tests failed"
+##   python setup.py test
+#}
 
 package_python-cdflib() {
     depends=('python>=3.6' 'python-attrs>=19.2.0' 'python-numpy')
@@ -39,7 +39,7 @@ package_python-cdflib() {
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 #package_python-cdflib-doc() {
