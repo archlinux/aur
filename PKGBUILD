@@ -2,11 +2,11 @@
 
 pkgname=botsay
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Like cowsay, but with randomly generated ASCII robots and color support'
 arch=(x86_64)
 url='https://github.com/xyproto/botsay'
-license=(MIT)
+license=(BSD)
 makedepends=(git go)
 source=("git+$url#commit=78eabcdc1a5f10a289f2066ae1dad7b644bae6d1") # tag: v1.2.5
 b2sums=(SKIP)
