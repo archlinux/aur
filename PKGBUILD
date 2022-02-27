@@ -2,7 +2,7 @@
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
 pkgver=0.19.10
-pkgrel=3
+pkgrel=4
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64")
 parch=$(echo ${arch} | sed "s/x86_64/x64/")
@@ -36,7 +36,7 @@ source=(
 sha256sums=('90d8ae93b73b970cb1901c1212ec9c0142d504135a6bb07bf1600cc00b8d3221'
             '340ee7a8c8e7da27eca9891dbc6997e7b2d87607947e8010903fb79d1fbb9da6'
             'db2e160e5d5cf82ed69d0926ac51c0eccb9efc541f89be3bb467d85be509f735'
-            'ffa059bf3e0f25075aa5efb58d51e295994a118664ac3842702071720fd75a9b')
+            '2b442597786baf78b3994be08801c366f80acc500dc210705ee5cd7a4b793951')
 
 build() {
     cd $srcdir

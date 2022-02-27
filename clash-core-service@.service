@@ -5,7 +5,7 @@ After=network-online.target nftables.service iptabels.service
 [Service]
 Type=simple
 ExecStartPre=+/usr/share/clash/setup-cgroup.sh
-ExecStart=/usr/share/bypass-proxy /home/%i/.config/clash/service/clash-core-service
+ExecStart=/usr/share/clash/bypass-proxy /home/%i/.config/clash/service/clash-core-service
 Restart=always
 RestartSec=5
 
