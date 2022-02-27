@@ -1,4 +1,5 @@
 *
 !.gitignore
 !PKGBUILD
+!vpn_cmdline.sh
 !.SRCINFO

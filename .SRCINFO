@@ -1,12 +1,15 @@
 pkgbase = motionpro
-	pkgdesc = Array Networks, MotionPro VPN, version 9.3.0.274
-	pkgver = 1.1.1
+	pkgdesc = Array Networks VPN Client for Linux (cli)
+	pkgver = 9.4.0.253
 	pkgrel = 1
 	url = https://support.arraynetworks.net/prx/001/http/supportportal.arraynetworks.net/downloads/downloads.html
 	arch = x86_64
-	license = none
-	source = https://support.arraynetworks.net/prx/001/http/supportportal.arraynetworks.net/downloads/motionpro/Linux/Ubuntu/20171228/MotionPro_Linux_Ubuntu_x86-64_1.1.1.sh
-	md5sums = a91c75ef4dfa1dc5629470c95630ca6d
+	license = unknown
+	depends = net-tools
+	depends = bash
+	source = https://support.arraynetworks.net/prx/001/http/supportportal.arraynetworks.net/downloads/pkg_9_4_0_253/vpn_cmdline_linux64_v1.0.54.zip
+	source = vpn_cmdline.sh
+	sha256sums = 673f260d8ebcbefd9b080416bf0790a2603a9aab16ffc62940cffc3dc2615925
+	sha256sums = 5754c4526d92a703accaa89cf6b114bd8d93372164949ae3d4fa7483f5d44394
 
 pkgname = motionpro
-
