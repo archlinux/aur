@@ -2,13 +2,13 @@
 pkgname=86box
 _pkgname=86Box
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('alsa-lib' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
-makedepends=('cmake>=3.16' 'qt6-tools')
+makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=('86box-roms: ROM files')
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -22,12 +22,13 @@ sha512sums=(
 )
 
 build() {
-    if [ "$CARCH" == arm7h ] || [ "$CARCH" == aarch64 ]; then
-        NDR=on
-    else
-        NDR=off
-    fi
-    cmake -S"$_pkgname-$pkgver" -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DRELEASE=on -DUSE_QT6=on -DSLIRP_EXTERNAL=on -DNEW_DYNAREC=$NDR
+    case "$CARCH" in
+        pentium4) _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-i686.cmake ;;
+        x86_64)   _PRESET=regular;    _TOOLCHAIN=cmake/flags-gcc-x86_64.cmake ;;
+        arm7h)    _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-armv7.cmake ;;
+        aarch64)  _PRESET=regularndr; _TOOLCHAIN=cmake/flags-gcc-aarch64.cmake ;;
+    esac
+    cmake -S"$_pkgname-$pkgver" -Bbuild --preset "$_PRESET" --toolchain "$_TOOLCHAIN" -DCMAKE_INSTALL_PREFIX=/usr -DUSE_QT6=on -DSLIRP_EXTERNAL=on
     cmake --build build
 }
 

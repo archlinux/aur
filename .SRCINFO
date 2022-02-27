@@ -1,14 +1,15 @@
 pkgbase = 86box
 	pkgdesc = Emulator of x86-based machines based on PCem.
 	pkgver = 3.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
 	arch = arm7h
 	arch = aarch64
 	license = GPL2
-	makedepends = cmake>=3.16
+	makedepends = cmake>=3.21
+	makedepends = ninja
 	makedepends = qt6-tools
 	depends = alsa-lib
 	depends = freetype2
