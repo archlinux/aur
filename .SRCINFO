@@ -1,0 +1,15 @@
+pkgbase = python-api4jenkins
+	pkgdesc = Python client library for Jenkins API
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/joelee2012/api4jenkins
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-certifi
+	depends = python-charset-normalizer
+	source = https://files.pythonhosted.org/packages/source/a/api4jenkins/api4jenkins-1.8.tar.gz
+	sha256sums = ed57618ce5a0618f4e25ba6fdc2df9a506ed4728aeff87192251cda308e231c2
+
+pkgname = python-api4jenkins
