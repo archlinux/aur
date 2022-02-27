@@ -11,7 +11,7 @@ url='https://github.com/pannal/Sub-Zero.bundle'
 license=('MIT')
 options=('!strip')
 depends=('python' 'plex-media-server')
-source=("git://github.com/pannal/Sub-Zero.bundle.git")
+source=("git+https://github.com/pannal/Sub-Zero.bundle.git")
 md5sums=('SKIP')
 
 pkgver() {

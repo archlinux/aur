@@ -8,8 +8,7 @@ pkgbase = plex-sub-zero-git
 	depends = python
 	depends = plex-media-server
 	options = !strip
-	source = git://github.com/pannal/Sub-Zero.bundle.git
+	source = git+https://github.com/pannal/Sub-Zero.bundle.git
 	md5sums = SKIP
 
 pkgname = plex-sub-zero-git
-
