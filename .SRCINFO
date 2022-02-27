@@ -1,23 +1,26 @@
 pkgbase = python-ginga
 	pkgdesc = A viewer for astronomical data FITS (Flexible Image Transport System) files.
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://ejeschke.github.io/ginga
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
+	checkdepends = python-pytest-astropy-header
+	checkdepends = python-astropy
 	makedepends = python-setuptools-scm
-	makedepends = python-astropy
-	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-3.2.0.tar.gz
-	md5sums = f61416dae6cf99d92b15013c70fd440b
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/g/ginga/ginga-3.3.0.tar.gz
+	md5sums = 29c9a317e59a72ab1a4141fa385d31c0
 
 pkgname = python-ginga
 	depends = python-astropy>=3.2
 	depends = python-qtpy>=1.1
-	depends = python-importlib-metadata
 	optdepends = python-scipy>=0.18.1
 	optdepends = python-pillow>=3.2.0
-	optdepends = python-matplotlib>=2.1.0
+	optdepends = python-matplotlib>=2.1
+	optdepends = python-opencv>=4.5.4.58
 	optdepends = python-piexif>=1.0.13
 	optdepends = python-beautifulsoup4>=4.3.2
 	optdepends = python-astroquery>=0.3.5

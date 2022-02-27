@@ -3,40 +3,35 @@
 
 pkgname=python-ginga
 _pyname=${pkgname#python-}
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="A viewer for astronomical data FITS (Flexible Image Transport System) files."
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://ejeschke.github.io/ginga"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-astropy')
-#checkdepends=('python-pytest')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer')
+checkdepends=('python-pytest-astropy-header' 'python-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f61416dae6cf99d92b15013c70fd440b')
-
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    sed -i -e '7,9d' -e "/unknown/c version = '${pkgver}'" conftest.py
-#}
+md5sums=('29c9a317e59a72ab1a4141fa385d31c0')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    pytest "build/lib"
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    pytest
+}
 
 package(){
-    depends=('python-astropy>=3.2' 'python-qtpy>=1.1' 'python-importlib-metadata')
+    depends=('python-astropy>=3.2' 'python-qtpy>=1.1')
     optdepends=('python-scipy>=0.18.1'
                 'python-pillow>=3.2.0'
-                'python-matplotlib>=2.1.0'
+                'python-matplotlib>=2.1'
+                'python-opencv>=4.5.4.58'
                 'python-piexif>=1.0.13'
                 'python-beautifulsoup4>=4.3.2'
                 'python-astroquery>=0.3.5'
@@ -50,5 +45,5 @@ package(){
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
