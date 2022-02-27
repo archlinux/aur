@@ -2,7 +2,7 @@
 # Contributor: David Birks <david at birks dot dev>
 
 pkgname=pluto
-pkgver=5.3.3
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="A cli tool to help discover deprecated apiVersions in Kubernetes"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(Apache)
 depends=(glibc)
 makedepends=(go pkger)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FairwindsOps/pluto/archive/v$pkgver.tar.gz")
-sha256sums=('f9d67c92cfed800ea7209cd80318ad8ad6859b3a8bbb924dd450c39f7420567a')
+sha256sums=('24b3ec06c5952c32b60d7e50ff13aa36de1766a113f00ead3ef284f586d1d457')
 
 prepare() {
   cd $pkgname-$pkgver
