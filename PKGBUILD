@@ -5,11 +5,14 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=7.3_GE_1
-pkgrel=2
+pkgver=GE_Proton7_1
+pkgrel=1
+# remove epoch after some time, maybe 3 month or so
+# we need to do this since upstream naming has changed :(
+epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
-changelog=changelog
+changelog=changelog.md
 provides=('proton' "proton-ge-custom=${pkgver/_/.}")
 conflicts=('proton-ge-custom-legacy-bin' 'proton-ge-custom')
 
@@ -17,31 +20,31 @@ conflicts=('proton-ge-custom-legacy-bin' 'proton-ge-custom')
 makedepends=('patch')
 depends=('python'
          'vulkan-icd-loader'
-         'lib32-v4l-utils'
-         'lib32-flac'
-         'lib32-speex'
-         'lib32-gst-plugins-base-libs'
-         'lib32-jack'
-         'lib32-libgudev'
-         'lib32-mpg123'
-         'lib32-libtheora'
-         'ffmpeg4.4'
-         'lib32-sdl2'
+         'lib32-libusb'
          'lib32-openal'
+         'lib32-sdl2'
+         'lib32-v4l-utils'
+         'lib32-jack'
          'lib32-libva'
-         'lib32-libjpeg6-turbo'
+         'ffmpeg4.4'
+         'lib32-speex'
+         'lib32-libtheora'
+         'gst-plugins-bad-libs'
+         'lib32-gst-plugins-base-libs'
          'libjpeg6-turbo'
-         'gst-plugins-bad-libs')
+         'lib32-libjpeg6-turbo'
+         'lib32-libgudev'
+         'lib32-flac'
+         'lib32-mpg123')
 optdepends=('kdialog: KDE splash dialog support'
             'zenity: GNOME splash dialog support'
             'python-kivy: splash dialog support (big picture mode)'
             'steam: use proton with steam like intended'
             'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
-            'vulkan-driver: actually have a vulkan driver installed'
+            'vulkan-driver: driver to be used by dxvk'
             'winetricks: protonfixes backend - highly recommended'
             'wine: support for 32bit prefixes'
-            'xboxdrv: gamepad driver service'
-            'lib32-libusb: wine usb support')
+            'xboxdrv: gamepad driver service')
 
 ## makepkg options
 options=('!strip')
@@ -49,11 +52,11 @@ options=('!strip')
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
 _pkgver=${pkgver//_/-}
-_srcdir=Proton-${_pkgver}
+_srcdir=${_pkgver}
 
 ## paths and files
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
-_licensedir=usr/share/licenses/${_pkgname}
+_licensedir=usr/share/licenses/${pkgname}
 _execfile=usr/bin/proton
 _protoncfg=${_protondir}/user_settings.py
 
@@ -62,24 +65,21 @@ backup=("${_protoncfg}")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
-source=(${_pkgname}-${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
+source=(${_pkgname}-${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
         "supplementary.tar.zst")
-sha512sums=('a6cff92e0182ee3ce410be8958507e47758f6028c392343150b00a8f57c447e3011b1a3739f31233bb0aa83515982f4dd45c2dc53d33eb739868b2d0ce6e6893'
-            '403f011e4299e3b2f7dc18b5c61729d500d07052aa9974d541fb5bce40dc59f8cd341fc77551668fc416d24f71de42b3ad39040f277cba7529b5361b548de051')
+sha512sums=('e41efb3b1ad9014a6b23a62b9372623e456db4b4546c44966b867d5ce0bbc5367d4c17046ed108179b69d27c2ee8e323a8e57698683e4ca807a23a9a5b16db41'
+            'a5cacb0d5a619fbdcf89840ad818185d123dc9627592330435f9bdde45b9ae6b740e6d72e1af1c5267687055fb04c49bef2a940b4d80cae57170ebe692fb8523')
 
 build() {
-## remove unused: dist_lock, cleanup_legacy_dist(), need_tarball_extraction(), extract_tarball()
-patch "${_srcdir}"/proton patches/distlock-extract-defaultpfx.patch
-## use newest dist
-rm -rf "${_srcdir}/dist"/*
-bsdtar -xf "${_srcdir}"/proton_dist.tar.gz -C "${_srcdir}"/dist
-## remove artifacts
-rm "${_srcdir}"/proton_dist.tar.gz
-rm "${_srcdir}"/protonfixes/*.tar.xz
-## setup paths
+## patches
+install --mode=0755 ${srcdir}/patches/tracked_files ${_srcdir}/proton_ge_tracked_files
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
-## setup naming that appears in steam compat tool list
-sed -i -r 's|"Proton-.*"|"Proton-GE"|' ${srcdir}/Proton-${_pkgver}/compatibilitytool.vdf
+sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' ${_srcdir}/compatibilitytool.vdf
+## remove artifacts
+rm "${_srcdir}"/protonfixes/*.tar.xz
+## fixes from namcap inspection
+chmod -R a+r "${_srcdir}"/protonfixes/gamefixes
+strip --preserve-dates --strip-unneeded "${_srcdir}"/dist/bin/wine*
 }
 
 package() {
@@ -97,9 +97,4 @@ install --mode=0775 --group=50 ${srcdir}/configs/user_settings.py ${pkgdir}/${_p
 ## executables
 mv ${_srcdir}/* ${pkgdir}/${_protondir}
 install --mode=0755 ${srcdir}/launchers/proton.sh ${pkgdir}/${_execfile}
-## patches
-# Setup replacement tracked_files. If used without steam, we never get this file? Used by launcher script.
-# Update from your ~/.steam/steam/steamapps/compatdata/0/tracked_files please. It gets created as soon as you start steam.
-# Check first ~/.steam/steam/steamapps/compatdata/0/version if it is the correct version of GE, though!
-install --mode=0755 ${srcdir}/patches/tracked_files ${pkgdir}/${_protondir}/proton_ge_tracked_files
 }

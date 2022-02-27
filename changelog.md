@@ -1,3 +1,36 @@
+## GE-Proton7-1 Released
+
+Why the new naming scheme?
+
+As discussed here:
+
+https://www.patreon.com/posts/63101415
+
+The base for WINE was changed from wine upstream to Proton experimental, and staging currently is not used in this new build. There are several reasons this was done, which are explained in detail in the post above.
+
+I needed a way to express that the base is all Proton7 and to reset the minor versions. Additionally, from previous discussions I've had with some other devs on official proton, they requested that I modify the name so that the GE versions were easier to differentiate, which is why the GE prefix has been moved to the front of the name.
+
+### What exactly has changed?
+
+WINE upstream repo has been changed to Proton experimental bleeding edge.
+Wine-staging is no longer used, but we keep it within the repository in case it is discovered that patches are needed from it later on.
+
+### What has remained the same from previous Proton-GE builds?
+
+mfplat implementation and continued work
+gstreamer and ffmpeg implementation
+protonfixes implementation and continued work
+Various game patches which are not included in either upstream wine or proton and continuation to add such patches
+dxvk-git and adding new patches or pending PRs as they become available
+dxvk is still patched with async
+vkd3d-proton-git and adding new patches or pending PRs as they become available
+
+### What's actually fixed in this release compared to the last one?
+
+Elden Ring EAC now works
+The crash in various Unity games is resolved
+Since we are now using proton's bleeding-edge experimental, we now have -all- of the controller and gamescope related patches. So if something is broken there -- it's an upstream proton bug.
+Fixed doubled size issue caused by both dist folder and dist tarball being included. The dist tarball is not necessary and has been removed, returning the build to its original size instead of double.
 
 ## Proton-7.3-GE-1 Released
 
