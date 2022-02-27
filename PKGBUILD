@@ -3,7 +3,7 @@
 
 pkgbase='ansible-lint-junit'
 pkgname="python-${pkgbase}"
-pkgver='0.16'
+pkgver='0.17.4'
 pkgrel='1'
 pkgdesc='ansible-lint to JUnit converter'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python-setuptools' 'python-lxml')
 depends=('ansible-lint' 'python-lxml')
 license=('BSD')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c717fdeaac2efc7bcf5d9f80015e1cd7b2856d0fa7b5ca4f636d43b4d0c2315a')
+sha256sums=('7ac309572a7d2fdb7e204e4ba8b6f77898a2fab5efe46f65fd1ae9cf6f0e36f2')
 
 package() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
