@@ -2,7 +2,7 @@
 # Contributor: Tim Schumacher <timschumi@gmx.de>
 
 pkgname=python-ytmusicapi
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Unofficial API for YouTube Music"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-requests')
 makedepends=('python-setuptools')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('0ef2ebcad2e9dbc4d5155764996835f5c0b65517ad15c4b1edd9ac3b81d0a95a')
+sha256sums=('26cb481dceb54c54048111ebe783780e8aba30bd04708703193109fed6eb0b60')
 
 build() {
   cd ytmusicapi-$pkgver
