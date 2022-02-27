@@ -1,0 +1,12 @@
+[Unit]
+Description=alist
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/bin
+ExecStart=/usr/bin/alist -conf data/config.json
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
