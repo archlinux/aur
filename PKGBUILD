@@ -1,7 +1,7 @@
 pkgname=webcord
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="A Discord web-based client made with the Electron API."
+pkgdesc="A Discord and Fosscord web-based client made with the Electron API."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
@@ -20,10 +20,10 @@ source=(
 )
 
 sha512sums=(
-    '92c54c9114b67aed10a87b63ac57ec8f43af52e8d50801cc77ec8c07379dfac4bb6d0fa189b97ba4c09fce4145680bf658f9ad0b21b0fc896bfb669a9d1d36c8'
-    '9761e1f579422e478fcf6546658878dbae1e4cd2fcc1e4d107d2a2730b7b6c9671e03ca049c3e8b21447b4dc48f336a01de8aebfeace25d80f0984e1211d2b4f'
+    '11defc22bf72a727ab77fcd4823cf586ec9743fb66585a4697a7de6eb960386ab1585601075771d4957626bdc901ab5e61d0bff5d1a925b94aec3dbb4f432dc7'
+    '71ed07229617f2b09ae9eba7e3b7898db79f6bb6b3709fd6547e3210796965648524dbfbcf77b106eeea474df16d2dc2159e412ea57963c5a2df4a32ed75475b'
     '0c81274928a1dfd2d9adb2f8a7df011bb6d178a00bb4378ff0c9ccd17c6fbc180521c76c79969cd81eac611b9636e04036de906dd5be34cadc370fd93b0d21a4'
-    '873224ab8ad4ee1877173136726da3e14686d48426953be57d2d9d5881791a1041517982e9af9c2259b14fb2bd0b63da370995b548d769f17c85348c1a4c3c31'
+    '6c8aa696fb3c20876b502c3447759260754f05dcd163c7d017e53e0a474f0a38809c41c3574a1ff6cd9bbcd7794fbe222c5cbdaf832dff8c2b396215a1f624f2'
 )
 
 prepare() {
