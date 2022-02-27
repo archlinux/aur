@@ -2,8 +2,8 @@
 
 pkgname=clash-premium-script
 _pkgname=clash-premium-installer
-pkgver=r11.e729951
-pkgrel=2
+pkgver=r15.c2b80f9
+pkgrel=1
 pkgdesc="Simple clash premium core script for Linux."
 arch=('any')
 url="https://github.com/Kr328/clash-premium-installer"
@@ -15,15 +15,15 @@ backup=("etc/clash/config.yaml" "etc/default/clash")
 source=("git+https://github.com/Kr328/clash-premium-installer.git"
         "arch.patch"
 		"config.yaml")
-sha256sums=('SKIP' 
-            'b12839b50154a1ff31fa6aa2e9de482ddd9a2bcd45a83bed0fae11549d479646'
-			'1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
+sha256sums=('SKIP'
+            '6af9092581610933b96641155769dd92c1f0d6d918b0f8cf0cd9f8a583d18f38'
+            'e172230e94128e4b98b7c610a74cda8cf7e7dd33672ad2c23fe5fc8d295bd6ed')
 
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-			
+
 prepare() {
     cd "${srcdir}"/clash-premium-installer/
     git apply ../arch.patch

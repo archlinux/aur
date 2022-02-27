@@ -1,5 +1,4 @@
 post_install() {
-    systemctl daemon-reload
 	echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     echo "+  Install successfully                                         +"
     echo "+                                                               +"
@@ -14,14 +13,6 @@ post_install() {
 }
 
 post_upgrade() {
-    systemctl daemon-reload
-	systemctl restart clash
+    post_install
 }
 
-pre_remove() {
-    systemctl disable --now clash
-}
-
-post_remove() {
-    systemctl daemon-reload
-}
