@@ -1,7 +1,7 @@
 pkgbase = python-nutils
 	pkgdesc = Numerical Utilities for Finite Element Analysis
 	pkgver = 7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evalf/nutils
 	arch = any
 	license = MIT

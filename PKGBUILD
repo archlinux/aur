@@ -3,7 +3,7 @@ _base=nutils
 pkgname=python-${_base}
 pkgdesc="Numerical Utilities for Finite Element Analysis"
 pkgver=7.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/evalf/${_base}"
 license=(MIT)
@@ -25,7 +25,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  MPLBACKEND=Agg python -m pytest
+  MPLBACKEND=Agg python -m pytest -k 'not cli'
 }
 
 package() {
