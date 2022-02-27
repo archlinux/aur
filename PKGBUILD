@@ -3,7 +3,7 @@
 
 _pkgname=pim
 pkgname=pim-git
-pkgver=0.10.0.r0.g4dd8ea3
+pkgver=0.10.1.r0.g2f8d537
 pkgrel=1
 pkgdesc="Python image viewer with vim-like keybindings. Git-Version"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('desktop-file-utils' 'python-gobject>=3.22')
 makedepends=('git')
 conflicts=('pim')
 provides=('pim=0.10.0')
-source=('pim::git://github.com/Narrat/Pim.git')
+source=('pim::git+https://github.com/Narrat/Pim.git')
 md5sums=('SKIP')
 
 
