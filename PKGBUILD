@@ -52,16 +52,16 @@ build() {
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     -DLauncher_SHARE_DEST_DIR="share/${_pkgname}" \
     ..
-  make
+  cmake --build .
 }
 
 check() {
   cd "${srcdir}/PolyMC/build"
-  make test
+  ctest .
 }
 
 package() {
   cd "${srcdir}/PolyMC/build"
-  make install DESTDIR="${pkgdir}"
+  cmake --install . --prefix "${pkgdir}"
 }
 
