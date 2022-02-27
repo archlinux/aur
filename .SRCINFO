@@ -1,6 +1,6 @@
 pkgbase = keymapper
 	pkgdesc = A cross-platform context-aware keyremapper
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/houmain/keymapper
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = keymapper
 	depends = gcc-libs
 	depends = libusb
 	depends = libx11
-	source = https://github.com/houmain/keymapper/archive/1.8.1/keymapper-1.8.1.tar.gz
+	source = https://github.com/houmain/keymapper/archive/1.8.2/keymapper-1.8.2.tar.gz
 	source = keymapperd.service
 	source = keymapper.desktop
-	sha256sums = e92829aaad3502463962570c69910b99c813a1b6ceee213fd18efb624dd73837
+	sha256sums = 816040542d90a79f3f5e039952c7c23ebc81e92845baaeb418c9d349c2d0fd97
 	sha256sums = 1c403c317815a339cd1f9c081533b207e93464b138696a9caef9a62489a70416
 	sha256sums = 32797443d2b92d3b01d683563426fbea3a18e16ad965759c9ce06ea301488654
 
