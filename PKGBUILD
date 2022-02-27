@@ -1,7 +1,7 @@
 # Maintainer: ibrokemypie <ibrokemypie@bastardi.net>
 pkgname=bcml-git
 _name=BCML
-pkgver=r1068.8cb37ed
+pkgver=r1096.4068f61
 pkgrel=1
 pkgdesc="Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager for BOTW"
 arch=('x86_64')
@@ -18,13 +18,14 @@ depends=(
 		'python-oead'
 		'python-pycrosskit'
 		'python-pyqtwebengine'
+		'python-qtpy'
 		'python-pywebview'
 		'python-pyaml'
 		'python-requests'
 		'python-rstb'
 		'python-xxhash'
 )
-makedepends=('git' 'npm' 'nodejs>=14.0.0' 'mkdocs' 'mkdocs-material' 'python-setuptools' 'gendesk')
+makedepends=('git' 'npm' 'nodejs>=14.0.0' 'mkdocs' 'mkdocs-material' 'python-wheel' 'python-build' 'python-installer' 'gendesk')
 optdepends=('cemu')
 source=('git+https://github.com/NiceneNerd/BCML' "${_name}.png::https://i.imgur.com/OiqKPx0.png")
 sha256sums=('SKIP'
@@ -50,12 +51,14 @@ build() {
 	cd "${srcdir}/${_name}"
 	mkdocs build -d bcml/assets/help
 	
-	python setup.py build
+	# python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_name}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	# python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "${srcdir}/${_name}.desktop" "$pkgdir/usr/share/applications/${_name}.desktop"
 	install -Dm644 "${srcdir}/${_name}.png" "$pkgdir/usr/share/pixmaps/${_name}.png"
 }

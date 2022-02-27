@@ -1,6 +1,6 @@
 pkgbase = bcml-git
 	pkgdesc = Breath of the Wild Cross-Platform Mod Loader: A mod merger and manager for BOTW
-	pkgver = r1068.8cb37ed
+	pkgver = r1096.4068f61
 	pkgrel = 1
 	url = https://github.com/NiceneNerd/BCML
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = bcml-git
 	makedepends = nodejs>=14.0.0
 	makedepends = mkdocs
 	makedepends = mkdocs-material
-	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = gendesk
 	depends = python>=3.7
 	depends = p7zip
@@ -22,6 +24,7 @@ pkgbase = bcml-git
 	depends = python-oead
 	depends = python-pycrosskit
 	depends = python-pyqtwebengine
+	depends = python-qtpy
 	depends = python-pywebview
 	depends = python-pyaml
 	depends = python-requests
