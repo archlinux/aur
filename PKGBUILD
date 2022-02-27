@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="QOwnNotes-x86_64.AppImage"
 source=("https://github.com/pbek/QOwnNotes/releases/download/v$pkgver/QOwnNotes-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums=('a2f879172e3c9f3fc2944ef3cb6656ad0d2771f1a1b5bfdf1f4eb6df3aa652ea')
+sha256sums=('13e23e929e6dee1694b9c1631dfd39207fc90b3bf6e8b85b2178d289c3c905ef')
 
 prepare() {
     chmod +x "${_appimage}"
