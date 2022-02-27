@@ -1,15 +1,15 @@
 pkgbase = python-botorch
 	pkgdesc = Bayesian Optimization in PyTorch
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://botorch.org
 	changelog = CHANGELOG.md
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-setuptools-scm
-	makedepends = python-sphinx
 	depends = python>=3.7
 	depends = python-pytorch
 	depends = python-gpytorch
