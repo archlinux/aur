@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 pkgname=protobuf-go
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Go support for Google's protocol buffers"
 arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
 url="https://github.com/golang/protobuf"
@@ -16,7 +16,7 @@ build() {
 	mkdir -p ${srcdir}/src/github.com/golang/
 	cp -r ${srcdir}/protobuf-${pkgver} ${srcdir}/src/github.com/golang/protobuf
 	cd ${srcdir}/src/github.com/golang/protobuf
-	GOPATH=${srcdir} GOBIN=${srcdir}/bin go get -v ./...
+	GOPATH=${srcdir} GOBIN=${srcdir}/bin GOFLAGS="-modcacherw" go get -v ./...
 }
 
 package() {
