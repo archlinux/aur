@@ -2,7 +2,7 @@
 
 pkgname=picolibc
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library designed for embedded 32 and 64 bit systems"
 arch=('i686' 'x86_64')
 url="https://keithp.com/picolibc/"
@@ -29,5 +29,5 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  DESTDIR="$pkgdir" meson install -C "_build"
+  meson install -C "_build" --destdir "$pkgdir"
 }
