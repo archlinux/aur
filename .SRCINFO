@@ -1,7 +1,7 @@
 pkgbase = alist-bin
 	pkgdesc = Another file list program that supports multiple storage
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Xhofe/alist
 	arch = aarch64
 	arch = arm
@@ -12,7 +12,7 @@ pkgbase = alist-bin
 	license = AGPL3
 	provides = alist
 	source = alist.service
-	sha256sums = 4fe3bea4a6a0fd67e89dfaf7dd273754f9b93e22f70d5aae41789e2cf20b1cc6
+	sha256sums = 432974ff640e0830249dd28d9151092caef3e5bfec427ed270a028c5b8c50152
 	source_aarch64 = alist-2.1.0-aarch64.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-arm64.tar.gz
 	sha256sums_aarch64 = 2421692ba382902212e801db1e2b1bcc073ba03bd0db50995469f8c67317c9c2
 	source_arm = alist-2.1.0-arm.tar.gz::https://github.com/Xhofe/alist/releases/download/v2.1.0/alist-linux-arm-5.tar.gz

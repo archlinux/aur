@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/bin
-ExecStart=/usr/bin/alist -conf data/config.json
+ExecStart=/usr/bin/alist -conf /var/lib/alist/config.json
 Restart=on-failure
 
 [Install]
