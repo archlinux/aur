@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-git
-pkgver=2.3.57.8.r0.ge56be3c97
+pkgver=2.3.57.11.r1.gd49bafc8a
 pkgrel=1
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
@@ -9,22 +9,20 @@ arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
-depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'nlopt' 'imath' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
 replaces=('slic3r++')
-makedepends=('boost>=1.73.0' 'git' 'cereal' 'cmake' 'eigen' 'libigl' 'ninja' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
+makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-prerelease')
 source=("SuperSlicer::git+https://github.com/supermerill/SuperSlicer.git"
         "0001-wxgtk3-is-broken-on-wayland.patch"
-        "https://raw.githubusercontent.com/archlinux/svntogit-community/1dea61c0b581ff5001d073689f68b0323740be93/trunk/prusa-slicer-openexr3.patch"
-        "tbb-2021.patch"
-        "FindTBB.cmake")
+        "0002-fix-cereal.patch"
+        "0003-openexr3.patch")
 sha512sums=('SKIP'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
-            'c33c2414746bc9d7dceb5af59ecb4aed2189211fc3c8b144d712a39d3677ba4d366eb9b4dd05fbc3811954d69cd1273d714dc4536489fe153ac1aee2919e5c98'
-            'b8425f6d0402042f73891d21d1be370d0afc3a156f8366da5d1cd73aeb197347dbe59a544b95b1aa40b2a3e28c520ac410fa4f92aa99822c0cb8b41b595d6519'
-            '5a6426f7d5b1761923c83838b1b5c976529b7a4b5e8c5c98f34c6174d8636fbfca34e3a04ed5f5314c88db3261c454c9f4576f7cf58f6623a43cff08a0b5b105')
+            '182205e77a77c36b1bdb1b449bd6eb3b593cfb6f97527f1cd7dd90c09db5698e570942303b29007d1285742b3bdf5b3e01dab59bf56fc890e3942f65bccd46b4'
+            'a83cad3b8c64012c929a8d10a8946c621a74dde139a1ed4f667b65121a48e3fb4aaa26d6444513ec739d7e4864bfef1aeba67802b495ace8e5aafa6e822eebd6')
 
 pkgver()
 {
@@ -42,10 +40,11 @@ prepare()
 	sed -i 's,add_subdirectory(test),,g' src/CMakeLists.txt
 
 	# apply patches
-	patch --forward --strip=1 --input="$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
-	patch -p1 < "$srcdir/prusa-slicer-openexr3.patch" # Fix build with openEXR 3
-	patch -p1 < "$srcdir/tbb-2021.patch" # Fix build with TBB 2021
-	cp "$srcdir/FindTBB.cmake" "cmake/modules/FindTBB.cmake" # Fix build with TBB 2021
+	patch -Np1 -i "$srcdir/0001-wxgtk3-is-broken-on-wayland.patch"
+	echo "iiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+	patch -Np1 -i "$srcdir/0002-fix-cereal.patch"
+	echo "eieahie"
+	patch -Np1 -i "$srcdir/0003-openexr3.patch"
 }
 
 build()
@@ -67,13 +66,13 @@ build()
 		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev-314/bin/wx-config \
 		-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument -Wl,-rpath=/opt/wxgtk-dev-314/lib"
 
-	ninja
+	samu
 }
 
 package()
 {
 	cd "$srcdir/SuperSlicer/build"
 
-	DESTDIR="$pkgdir" ninja install
+	DESTDIR="$pkgdir" samu install
 	test ! -h "$pkgdir/usr/share/SuperSlicer/resources" || rm "$pkgdir/usr/share/SuperSlicer/resources"
 }
