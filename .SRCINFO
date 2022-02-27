@@ -1,7 +1,7 @@
 pkgbase = gmailctl
 	pkgdesc = Declarative configuration for Gmail filters
-	pkgver = 0.8.0
-	pkgrel = 0
+	pkgver = 0.10.0
+	pkgrel = 1
 	url = https://github.com/mbrt/gmailctl
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = gmailctl
 	makedepends = git
 	makedepends = go
 	provides = gmailctl
-	source = git+https://github.com/mbrt/gmailctl#tag=v0.8.0
+	source = git+https://github.com/mbrt/gmailctl#tag=v0.10.0
 	md5sums = SKIP
 
 pkgname = gmailctl
-
