@@ -1,34 +1,49 @@
-# Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-# Contributor: Jeremy Cowgar <jeremy@cowgar.com>
+# Maintainer: fuero <fuerob@gmail.com>
 
-pkgname=empty
-pkgver=0.6.20b
+pkgname=cwordle-git
+_pkgname=cwordle
+pkgver=r15.4a5c8e6
 pkgrel=1
-pkgdesc="Run applications under pseudo-terminal sessions"
-arch=('i686' 'x86_64')
-url="http://empty.sourceforge.net/"
-license=('custom')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tgz)
-sha256sums=('7e6636e400856984c4405ce7bd0843aaa3329fa3efd20c58df8400a9eaa35f09')
+pkgdesc='Wordle clone for Unix Terminals in C'
+arch=('x86_64')
+url="https://github.com/velorek1/${_pkgname}"
+license=('MIT')
+makedepends=('gcc' 'cmake' 'git')
+depends=('glibc')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
+source=("${_pkgname}::git+${url}" 'cmake.patch')
+sha256sums=(
+  'SKIP'
+  'e7d800bccba41eeaa0c06d5d3a8fccce5378c9e454e4cc0cc357ab5205d9bf07'
+)
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  (
+    set -o pipefail
+    git describe --long --tags 2> /dev/null | sed "s/^[A-Za-z\.\-]*//;s/\([^-]*-\)g/r\1/;s/-/./g" || 
+    printf "r%s.%s\n" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  )
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  patch -p1 < ${srcdir}/cmake.patch
+}
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-# man pages to the right location
-  sed -e 's|/man/man1|/share/man/man1|g' -i Makefile
-
-  make
+  cmake -B build -S "${srcdir}/${_pkgname}" \
+        -DCMAKE_BUILD_TYPE='Release' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -Wno-dev
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-  make PREFIX="${pkgdir}"/usr install
-
-# license file
-  install -Dm644 COPYRIGHT "${pkgdir}"/usr/share/licenses/$pkgname/COPYRIGHT
-
-# docs
-  install -Dm644 CHANGELOG "${pkgdir}"/usr/share/doc/$pkgname/CHANGELOG
-  install -Dm644 README "${pkgdir}"/usr/share/doc/$pkgname/README
+  DESTDIR="$pkgdir" cmake --install build
+  cd "${srcdir}/${_pkgname}"
+  install -Dm644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
+
