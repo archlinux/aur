@@ -1,8 +1,8 @@
 # Maintainer: Kyle Brady <kyle at spark - gap dot com>
 
 pkgname=project-zomboid-server
-# While the pkgver is set to 41.65, the latest version will always be downloaded via steamcmd
-pkgver=41.65
+# While the pkgver is set to 41.66, the latest version will always be downloaded via steamcmd
+pkgver=41.66
 pkgrel=1
 pkgdesc="Dedicated server for the game Project Zomboid"
 arch=('x86_64')
