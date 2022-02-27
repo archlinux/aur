@@ -1,21 +1,24 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=sphinx-copybutton
 pkgname="python-${_pyname}-doc"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Documentation for Sphinx-Copybutton extension"
 arch=('any')
 url="https://sphinx-copybutton.readthedocs.io"
 license=('MIT')
-makedepends=("python-${_pyname}=${pkgver}" 'ipython' 'python-sphinx-book-theme')
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('e7c8bd6e2a59e696b864281ff82f7194')
+makedepends=("python-${_pyname}=${pkgver}" 'ipython' 'python-sphinx-book-theme' 'python-myst-nb')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/executablebooks/sphinx-copybutton/master/CHANGELOG.md")
+md5sums=('223f26b9ba5397e5554075bc540a3b46'
+         'SKIP')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}/docs
 
 #   sed -i "/^exclude/s/\"\]/\",\ \"\*\*\.ipynb_checkpoints\"\]/" conf.py
-    sed -i "/^extensions/s/directive\"\]/directive\",\ \'IPython\.sphinxext\.ipython_console_highlighting\'\]/" conf.py
+#   sed -i "/^extensions/s/directive\"\]/directive\",\ \'IPython\.sphinxext\.ipython_console_highlighting\'\]/" conf.py
+    ln -rs ${srcdir}/CHANGELOG.md ${srcdir}/${_pyname}-${pkgver}
 }
 
 build() {
