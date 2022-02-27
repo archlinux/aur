@@ -7,7 +7,7 @@ _vlcver=3.0.16
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=8
+pkgrel=9
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,16 +25,10 @@ depends=(
   'a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
   'libmatroska' 'taglib' 'libmpcdec' 'faad2' 'libmad'
   'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
-  'libarchive' 'qt5-base'
+  'libarchive' 'qt5-base' "ffmpeg>=5"
   'qt5-x11extras' 'qt5-svg' 'freetype2' 'fribidi' 'harfbuzz'
   'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'wayland-protocols'
 )
-# Manjaro still on 4.4.1 and Arch use ffmpeg4.4
-if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
-  depends+=("ffmpeg")
-else
-  depends+=("ffmpeg>=5")
-fi
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
 # For Manjaro user this feature is disabled
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
