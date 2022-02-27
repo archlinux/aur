@@ -1,6 +1,6 @@
 pkgbase = fastlbry-terminal-git
 	pkgdesc = A fully featured, terminal application to interact with LBRY
-	pkgver = 0.5.r183.g18bb1d2
+	pkgver = 0.5.r187.g563c79e
 	pkgrel = 1
 	url = https://www.notabug.org/jyamihud/FastLBRY-terminal
 	arch = any
@@ -12,6 +12,6 @@ pkgbase = fastlbry-terminal-git
 	source = git+https://www.notabug.org/jyamihud/FastLBRY-terminal.git
 	source = fastlbry-terminal.desktop
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = a4b9625cf5d47ebb1a5987926f26ad9ea7391c7c1dc26ebc6a9c933e860862a1
 
 pkgname = fastlbry-terminal-git

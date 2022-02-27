@@ -4,7 +4,7 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r183.g18bb1d2
+pkgver=0.5.r187.g563c79e
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('lbry-app-bin: for login support to the LBRY network'
             'lbry-desktop-git: for login support to the LBRY network')
 source=("git+$url.git"
         "${_pkgname}.desktop")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP' 'a4b9625cf5d47ebb1a5987926f26ad9ea7391c7c1dc26ebc6a9c933e860862a1')
 
 pkgver() {
   cd ${srcdir}/FastLBRY-terminal
@@ -25,7 +25,7 @@ pkgver() {
 
 package() {
   install -dm 0755 "${pkgdir}/usr/share/applications"
-  install -m 0644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications"
+  install -m 0644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/"
 
   cd ${srcdir}/FastLBRY-terminal
 
