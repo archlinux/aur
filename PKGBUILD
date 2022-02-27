@@ -9,7 +9,7 @@ arch=(any)
 license=('GPL-2')
 depends=()
 makedepends=()
-source=("git://github.com/fzerorubigd/yubipam.git")
+source=("git+https://github.com/fzerorubigd/yubipam.git")
 md5sums=('SKIP')
 provides=('yubipam')
 pkgver() {

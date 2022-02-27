@@ -7,8 +7,7 @@ pkgbase = yubipam-git
 	arch = any
 	license = GPL-2
 	provides = yubipam
-	source = git://github.com/fzerorubigd/yubipam.git
+	source = git+https://github.com/fzerorubigd/yubipam.git
 	md5sums = SKIP
 
 pkgname = yubipam-git
-
