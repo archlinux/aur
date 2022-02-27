@@ -1,7 +1,7 @@
 # Maintainer: The3DmaN <the3dman dot appdev at protonmail dot com>
 
 pkgname=idokremote-git
-pkgver=r128.fbfde61
+pkgver=r131.dd279f5
 pkgrel=1
 pkgdesc="Remote for Kodi"
 arch=("any")
