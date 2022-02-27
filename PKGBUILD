@@ -3,7 +3,7 @@ _base=tiptop
 pkgname=${_base}-cli
 pkgdesc="Command-line system monitoring"
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
@@ -25,7 +25,7 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
   chmod +x test-env/bin/${_base}
-  PATH="${PWD}/test-env/bin:$PATH" test-env/bin/python -m pytest --codeblocks
+  PATH="${PWD}/test-env/bin:$PATH" test-env/bin/python -m pytest --codeblocks -k 'not README'
 }
 
 package() {
