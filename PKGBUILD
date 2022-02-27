@@ -13,7 +13,7 @@ depends=('ncurses' 'libtar' 'gzip')
 makedepends=('git')
 provides=('nffm')
 backup=('etc/nffm/color.conf' 'etc/nffm/extension.conf')
-source=(git://github.com/mariostg/nffm)
+source=(git+https://github.com/mariostg/nffm)
 md5sums=('SKIP')
 
 
