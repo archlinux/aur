@@ -4,14 +4,14 @@
 
 pkgname=openscenegraph-git
 pkgver=3.6.5.r103.g06558a5dd
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, high performance real-time graphics toolkit"
 arch=(x86_64)
 url="http://www.openscenegraph.org"
 license=('custom:OSGPL')
 depends=(libglvnd libxinerama)
-makedepends=(git cmake fontconfig ffmpeg gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
-optdepends=(ffmpeg gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
+makedepends=(git cmake fontconfig ffmpeg4.4 gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
+optdepends=(ffmpeg4.4 gdal gst-plugins-base-libs jasper librsvg libvncserver openexr poppler-glib)
 provides=(openscenegraph openthreads)
 conflicts=(openscenegraph openthreads)
 source=("git+https://github.com/openscenegraph/OpenSceneGraph.git#branch=OpenSceneGraph-3.6")
@@ -21,6 +21,8 @@ pkgver() {
   cd "${srcdir}/OpenSceneGraph"
   git describe --long --tags | sed 's/^OpenSceneGraph.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 prepare() {
   mkdir -p "${srcdir}/OpenSceneGraph/build"
