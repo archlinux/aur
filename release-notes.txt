@@ -1,0 +1,19 @@
+Release notes to tbsm version v0.6, Feb 2022
+==============================================
+031c2a3 - Makefile: Add new target 'update'
+e7cc113 - Manual: Add Tips&Tricks section
+          Thanks to all who gave a hint
+afdb675 - Allow configuration of session search paths by conf file
+          Thanks to Douglas
+54b0c57 - Support XDG Base Directory Specification
+          Thanks to Vladimir
+0f04aa3 - Exit on error in config file. Prior was such an error ignored
+9f82e2d - Allow custom Xorg startup file
+53d339e - Improved user information in verbose mode - 1a4d9f1
+a6e7bcb - Add new doc file ReleaseNotes (Hey, you're reading it!)
+a6e7bcb - Rename ChangeLog to ReleaseLog
+================================================================================
+Previous tbsm version was v0.5, Dez 2018
+--------------------------------------------------------------------------------
+To view older release notes : tbsm doc log
+The full changelog is online: https://github.com/loh-tar/tbsm/commits/master

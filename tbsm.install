@@ -1,3 +1,13 @@
 post_install() {
-  echo "TIP! It may wise to run 'tbsm doc man' to read most notably chapter 3"
+  echo -e "*\n* TIP! It may wise to run 'tbsm doc man' to read most notably chapter 3\n*"
+}
+
+post_upgrade() {
+  # Well, I agree that, if every package would print such hint, it would be annoying.
+  # But 1) noobs like me didn't know that feature 2) I tried some packages, but without success
+  # Let's promote this cool feature :-)
+
+  [ $1 == $2 ] && return                 # Nothing todo, looks like reinstall
+  [ "${1%-*}" == "${2%-*}" ] && return   # Still Nothing todo, looks like pkg fix only
+  echo -e "*\n* TIP! Look at the release notes what may new or is fixed: pacman -Qc tbsm\n*"
 }
