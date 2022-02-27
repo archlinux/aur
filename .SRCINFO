@@ -1,12 +1,15 @@
 pkgbase = cast_control
 	pkgdesc = Control Chromecasts from Linux and D-Bus
 	pkgver = 0.11.8.post0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/alexdelorenzo/cast_control
 	arch = any
 	license = AGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-aiopath
 	depends = python-appdirs
 	depends = python-click
