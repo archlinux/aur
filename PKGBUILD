@@ -5,7 +5,6 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64' 'aarch64')
-depends=('libevdevplus' 'libuinputplus')
 conflicts=(ydotool)
 provides=(ydotool)
 url="https://github.com/ReimuNotMoe/ydotool"
