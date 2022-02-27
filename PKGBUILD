@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 
 pkgname=godoctor-git
-pkgver=480.20170519
+pkgver=520.20211103
 pkgrel=1
 pkgdesc="Go Doctor - The Golang Refactoring Engine"
 arch=('i686' 'x86_64')

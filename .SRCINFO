@@ -1,6 +1,6 @@
 pkgbase = godoctor-git
 	pkgdesc = Go Doctor - The Golang Refactoring Engine
-	pkgver = 480.20170519
+	pkgver = 520.20211103
 	pkgrel = 1
 	url = https://github.com/godoctor/godoctor
 	arch = i686
@@ -13,4 +13,3 @@ pkgbase = godoctor-git
 	md5sums = SKIP
 
 pkgname = godoctor-git
-
