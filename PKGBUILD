@@ -2,7 +2,7 @@
 # Previous Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=gops
-pkgver=0.3.20
+pkgver=0.3.22
 pkgrel=1
 pkgdesc='A tool to list and diagnose Go processes currently running on your system'
 arch=('i686' 'x86_64')
@@ -32,4 +32,4 @@ package() {
   install -Dm755 gops "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-sha256sums=('db75b86f21755571b5662a221be02d855ee869dc17cd23cb2c0e339eefbbb518')
+sha256sums=('a8092305465b28b0db83eb7087edca958de6522bc3ebb14656ecb8aef521e07b')
