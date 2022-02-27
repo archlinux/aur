@@ -1,7 +1,7 @@
 pkgbase = schildichat-desktop
 	pkgdesc = A Matrix client based on Element with a more traditional instant messaging experience
-	pkgver = 1.9.8.sc.1
-	pkgrel = 2
+	pkgver = 1.10.4.sc.1
+	pkgrel = 1
 	url = https://schildi.chat
 	arch = x86_64
 	license = Apache
@@ -13,9 +13,9 @@ pkgbase = schildichat-desktop
 	makedepends = sqlcipher
 	makedepends = nvm
 	makedepends = make
-	depends = electron13
+	depends = electron15
 	depends = sqlcipher
-	source = git+https://github.com/SchildiChat/schildichat-desktop.git#tag=v1.9.8-sc.1
+	source = git+https://github.com/SchildiChat/schildichat-desktop.git#tag=v1.10.4-sc.1
 	source = git+https://github.com/SchildiChat/matrix-js-sdk.git
 	source = git+https://github.com/SchildiChat/matrix-react-sdk.git
 	source = git+https://github.com/SchildiChat/element-web.git
