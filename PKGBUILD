@@ -2,8 +2,8 @@
 
 _gemname=regexp_parser
 pkgname=ruby-${_gemname}
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.1
+pkgrel=1
 pkgdesc="A regular expression parser library for Ruby"
 arch=(any)
 depends=(ruby)
@@ -13,7 +13,7 @@ url=https://github.com/ammar/regexp_parser
 license=(MIT)
 options=(!emptydirs)
 source=(https://github.com/ammar/regexp_parser/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('606a7fce30616867ecbc4d570a21869c67760c79c0e9f0d7644fc57b72832424')
+sha256sums=('410086a37f5a28ed994be9b9bbac866275c4c31cc5bad27f1a4e466d03cfa743')
 
 build() {
   cd $_gemname-$pkgver

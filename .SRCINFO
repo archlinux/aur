@@ -1,7 +1,7 @@
 pkgbase = ruby-regexp_parser
 	pkgdesc = A regular expression parser library for Ruby
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/ammar/regexp_parser
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = ruby-regexp_parser
 	makedepends = ruby-rspec
 	depends = ruby
 	options = !emptydirs
-	source = https://github.com/ammar/regexp_parser/archive/v2.2.0/regexp_parser-2.2.0.tar.gz
-	sha256sums = 606a7fce30616867ecbc4d570a21869c67760c79c0e9f0d7644fc57b72832424
+	source = https://github.com/ammar/regexp_parser/archive/v2.2.1/regexp_parser-2.2.1.tar.gz
+	sha256sums = 410086a37f5a28ed994be9b9bbac866275c4c31cc5bad27f1a4e466d03cfa743
 
 pkgname = ruby-regexp_parser
