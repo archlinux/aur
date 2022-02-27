@@ -2,7 +2,7 @@
 pkgname=86box
 _pkgname=86Box
 pkgver=3.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
@@ -10,6 +10,7 @@ license=('GPL2')
 depends=('alsa-lib' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=('86box-roms: ROM files')
+options=('!buildflags')
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
     '86box'

@@ -1,7 +1,7 @@
 pkgbase = 86box
 	pkgdesc = Emulator of x86-based machines based on PCem.
 	pkgver = 3.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = 86box
 	depends = rtmidi
 	depends = sdl2
 	optdepends = 86box-roms: ROM files
+	options = !buildflags
 	source = https://github.com/86Box/86Box/archive/refs/tags/v3.2.1.tar.gz
 	source = 86box
 	source = 86Box.desktop
