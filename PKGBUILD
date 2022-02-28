@@ -2,10 +2,10 @@
 _name=ctrcdnfetch
 pkgname=$_name-git
 pkgver=a8090ef
-pkgrel=1
+pkgrel=2
 pkgdesc="Download Content from Nintendo CDN after 11.8 (git)"
 arch=(x86_64)
-url="https://github.com/KookiesGH/$_name"
+url="https://github.com/luigoalma/$_name"
 license=('MIT')
 depends=('openssl' 'curl')
 makedepends=('git')
