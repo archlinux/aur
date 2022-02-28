@@ -10,6 +10,7 @@ pkgbase = substance-designer
 	depends = glu
 	depends = hicolor-icon-theme
 	depends = libtiff4
+	depends = libxcrypt-compat
 	options = !strip
 	source = https://download.substance3d.com/adobe-substance-3d-designer/11.x/Adobe_Substance_3D_Designer-11.3.3-5429-linux-x64-standard.rpm
 	sha256sums = 132e09f1559b76667ea035c19f084225915a824df0b21a811dcfd288f5761f42
