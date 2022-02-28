@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1095.87ed9cb
+pkgver=r1097.608a24a
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=(
 )
 provides=('quickmedia' 'qm' 'quickmedia-video-player')
 conflicts=('quickmedia' 'qm' 'quickmedia-video-player')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1095.87ed9cb.tar.gz")
-sha512sums=('e0244f732da747944122b5a0a7bbed6b1035642bd21b0b9b70c2752bc0f443e76c256f400459c5a13e515a929799f06f00d8c72160d455f4a6d94a7563cd448f')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1097.608a24a.tar.gz")
+sha512sums=('e5a7a8463b6f51345dd009187cd2821152705f10f7f4b193174de56b3914bdbd540b7e4d1d073d071a993426b17f9f8a8222bcd34758e9066d06840b608aac79')
 
 build() {
   cd "$srcdir"
@@ -34,7 +34,11 @@ package() {
   install -Dm755 "sibs-build/$(sibs platform)/release/quickmedia" "$pkgdir/usr/bin/quickmedia"
   ln -sf "/usr/bin/quickmedia" "$pkgdir/usr/bin/qm"
   install -Dm644 boards.json "$pkgdir/usr/share/quickmedia/boards.json"
-  install -Dm644 input.conf "$pkgdir/usr/share/quickmedia/input.conf"
+
+  install -Dm644 mpv/fonts/Material-Design-Iconic-Font.ttf "$pkgdir/usr/share/quickmedia/mpv/fonts/Material-Design-Iconic-Font.ttf"
+  install -Dm644 mpv/scripts/mordenx.lua "$pkgdir/usr/share/quickmedia/mpv/scripts/mordenx.lua"
+  install -Dm644 mpv/input.conf "$pkgdir/usr/share/quickmedia/mpv/input.conf"
+  install -Dm644 mpv/mpv.conf "$pkgdir/usr/share/quickmedia/mpv/mpv.conf"
 
   for file in images/* icons/* shaders/* themes/*; do
     install -Dm644 "$file" "$pkgdir/usr/share/quickmedia/$file"
