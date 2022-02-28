@@ -32,7 +32,7 @@ prepare() {
                 --name "Studio 3T" \
                 --pkgname "$pkgname" \
                 --pkgdesc "$pkgdesc" \
-                --categories="Science;Education;Developmenti;Application"
+                --categories="Science;Education;Development;Application"
 }
 
 package() {
@@ -45,7 +45,6 @@ package() {
     mkdir -p "$pkgdir/usr/share/applications/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
-    #cd ${srcdir}
     ln -s "/opt/$pkgname/Studio-3T" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
