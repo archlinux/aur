@@ -1,5 +1,5 @@
 pkgbase = hysteria-bin
-	pkgdesc = TCP relay & SOCKS5/HTTP proxy tool optimized for poor network environments (binary release)
+	pkgdesc = A feature-packed network utility optimized for networks of poor quality (Binary Release)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/HyNetwork/hysteria
