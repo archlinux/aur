@@ -1,17 +1,20 @@
 pkgbase = etcher-cli-bin
 	pkgdesc = Burn images to SD cards & USB drives, safe & easy
 	pkgver = 1.4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.etcher.io/
+	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
 	provides = etcher-cli
 	conflicts = etcher-cli
 	conflicts = etcher-cli-git
+	noextract = etcher-cli-bin-1.4.9-x86_64.tar.gz
 	options = !strip
-	source = https://github.com/balena-io/etcher/releases/download/v1.4.9/balena-etcher-cli-1.4.9-linux-x64.tar.gz
-	sha256sums = 67d1173fdf7c4c528f4027147463597cffdef9d50ddcf0c74c9651685b1c451e
+	source_i686 = etcher-cli-bin-1.4.9-x86_64.tar.gz::https://github.com/balena-io/etcher/releases/download/v1.4.9/balena-etcher-cli-1.4.9-linux-x86.tar.gz
+	sha256sums_i686 = 4af2f1662fbbc2e7ee9b4d50f52b403b9ca5a1c6a83f56cbf1b6bb5368b90ced
+	source_x86_64 = etcher-cli-bin-1.4.9-x86_64.tar.gz::https://github.com/balena-io/etcher/releases/download/v1.4.9/balena-etcher-cli-1.4.9-linux-x64.tar.gz
+	sha256sums_x86_64 = 4af2f1662fbbc2e7ee9b4d50f52b403b9ca5a1c6a83f56cbf1b6bb5368b90ced
 
 pkgname = etcher-cli-bin
-
