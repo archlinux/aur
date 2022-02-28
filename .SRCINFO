@@ -1,6 +1,6 @@
 pkgbase = python-pynvml
 	pkgdesc = Python Bindings for the NVIDIA Management Library
-	pkgver = 11.0.0
+	pkgver = 11.4.1
 	pkgrel = 1
 	url = https://pypi.org/project/pynvml/
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = python-pynvml
 	makedepends = python-setuptools
 	depends = nvidia-utils
 	depends = python
-	source = https://pypi.python.org/packages/source/p/pynvml/pynvml-11.0.0.tar.gz
-	sha256sums = d5fc4a22d355b40c341d6ba0aa888a2d4d2253177d243900f8401b7e6cacb1bb
+	source = https://pypi.python.org/packages/source/p/pynvml/pynvml-11.4.1.tar.gz
+	sha256sums = b2e4a33b80569d093b513f5804db0c7f40cfc86f15a013ae7a8e99c5e175d5dd
 
 pkgname = python-pynvml
-
