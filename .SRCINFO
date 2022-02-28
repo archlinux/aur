@@ -1,6 +1,6 @@
 pkgbase = tvheadend-git
 	pkgdesc = TV streaming server for Linux
-	pkgver = 4.3.r1947.gdbaa0f850
+	pkgver = 4.3.r2009.g1295dd2be
 	pkgrel = 1
 	url = https://tvheadend.org/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tvheadend-git
 	makedepends = git
 	makedepends = python
 	depends = avahi
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = libavresample
 	depends = libdvbcsa
 	depends = libfdk-aac
@@ -38,10 +38,11 @@ pkgbase = tvheadend-git
 	source = tvheadend.service
 	source = tmpfile.conf
 	source = user.conf
+	source = 0001-use-ffmpeg4.4.patch
 	sha512sums = SKIP
 	sha512sums = d29662ee47f2d0da98d444819f730a8c487999454d60d7397b0f67068300ab5111ffce18befc9fdef5ff8fa1925213716837ea44808fb934197e4a56f98de8a7
 	sha512sums = 1080c8a2530d1f16ab5304cdd81c9c9da23b281e44a4874f4921905c843d876831214af481f9be91a74291ed4a6a10684dbdfb8f926b51bbb6895b92d493b201
 	sha512sums = 5e0475cfe1f915bd3269ba3e9e0ca6cc7e492988bfd4f1feafcbbd3e8b0276c228f0b08a4116f3213d12c0ea940eff0dc71601a6e6ddcda934964cf51a665539
+	sha512sums = f381843e870723bffe34648e6427a5bbfb85076f59b2def1e89b58bc68db93f06dbd6fe20b508bb72daecf0e832094beae769425c121c632a9d017edd00b8575
 
 pkgname = tvheadend-git
-
