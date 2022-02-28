@@ -1,6 +1,6 @@
 # Maintainer: Swarnaditya Singh <demonkingswarn@protonmail.com>
 pkgname=ytmenu-git
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 epoch=
 pkgdesc="A posix script to find and watch youtube videos from the terminal. "
@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/demonkingswarn/ytmenu"
 license=('GPL3')
 groups=()
-depends=()
+depends=(mpv dmenu)
 makedepends=(git)
 checkdepends=()
 optdepends=()
