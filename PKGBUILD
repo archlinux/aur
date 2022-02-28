@@ -3,7 +3,7 @@
 # Maintainer: Ingo Meyer <IJ_M@gmx.de>
 
 pkgname="ayatana-webmail-no-indicator-messages"
-pkgver="21.11.17"
+pkgver="22.2.26"
 pkgrel="1"
 pkgdesc="Webmail notifications and actions for any desktop without ayatana-indicator-messages dependency"
 arch=("any")
@@ -13,7 +13,7 @@ depends=("hicolor-icon-theme" "dconf" "gobject-introspection" "desktop-file-util
 makedepends=("python-setuptools" "python-polib")
 install="ayatana-webmail.install"
 source=("ayatana-webmail-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/${pkgver}.tar.gz")
-md5sums=("62696ef144dfdae00abe3cdc730da341")
+md5sums=("98ee497c3d3fa3122524c0f654163bc0")
 provides=("ayatana-webmail=${pkgver}")
 replaces=("unity-mail")
 conflicts=("ayatana-webmail" "unity-mail")
