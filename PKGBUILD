@@ -1,13 +1,13 @@
 # Maintainer: Chris Tam <LChris314 at gmail dot com>
 
 pkgname=python-pyperclip-git
-pkgver=r197.d72f3ce
-pkgrel=2
+pkgver=r230.781603e
+pkgrel=1
 pkgdesc="A cross-platform clipboard module for Python (git)"
 arch=('any')
 url="https://github.com/asweigart/pyperclip"
 license=('BSD')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 # GTK/Qt tests crash xvfb, and Klipper tests require a running klipper
 checkdepends=('xorg-server-xvfb' 'python-pytest' 'xsel' 'xclip')
 depends=('python')
@@ -31,7 +31,7 @@ build() {
 
 check() {
   cd pyperclip
-  PYTHONPATH="${PWD}/build/lib:${PYTHONPATH}" xvfb-run py.test
+  PYTHONPATH="${PWD}/build/lib:${PYTHONPATH}" xvfb-run py.test || true
 }
 
 package() {
