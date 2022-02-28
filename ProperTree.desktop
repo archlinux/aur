@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ProperTree
+Comment=Cross platform GUI plist editor written in python.
+Exec=ProperTree
+Icon=ProperTree
+Terminal=false
+Type=Application
+Categories=Development

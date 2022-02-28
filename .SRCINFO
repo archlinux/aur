@@ -1,0 +1,17 @@
+pkgbase = propertree-git
+	pkgdesc = Cross platform GUI plist editor written in python.
+	pkgver = r392.79a329f
+	pkgrel = 1
+	url = https://github.com/corpnewt/ProperTree
+	arch = any
+	license = BSD
+	depends = python3
+	depends = tk
+	source = propertree-git::git+https://github.com/corpnewt/ProperTree
+	source = ProperTree.desktop
+	source = ProperTree
+	sha256sums = SKIP
+	sha256sums = e788f1b98035a6293490411ba606618d1a0507e3403a38fef90a63010917e58c
+	sha256sums = 802aac15fd9115d6a1ce98ba14c597737595af938ae6fb0e8a62fde719dd5357
+
+pkgname = propertree-git
