@@ -1,11 +1,11 @@
 pkgbase = sled
 	pkgdesc = Simple text editor
-	pkgver = 0.7
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://strahinja.srht.site/sled
 	arch = x86_64
 	license = GPL3
-	source = sled-0.7.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v0.7.tar.gz
-	md5sums = 4a1c23aa8e52e2c37ffab83d2220bbb1
+	source = sled-0.8.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v0.8.tar.gz
+	md5sums = 5f234582d76e5a58d71f7d6a01c2d59b
 
 pkgname = sled
