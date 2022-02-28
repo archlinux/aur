@@ -1,0 +1,27 @@
+[Unit]
+Description=Prometheus Postfix Exporter
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus-postfix-exporter --systemd.enable
+ExecReload=/bin/kill -HUP $MAINPID
+DynamicUser=true
+SupplementaryGroups=postdrop
+
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectKernelModules=true
+ProtectKernelTunables=true
+PrivateTmp=true
+LockPersonality=true
+ProtectHostname=true
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+PrivateDevices=true
+RestrictRealtime=true
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+
+[Install]
+WantedBy=multi-user.target

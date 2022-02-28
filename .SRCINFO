@@ -1,0 +1,16 @@
+pkgbase = prometheus-postfix-exporter
+	pkgdesc = Prometheus exporter for Postfix metrics
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/kumina/postfix_exporter
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	options = strip
+	source = prometheus-postfix-exporter-0.3.0.tar.gz::https://github.com/kumina/postfix_exporter/archive/refs/tags/0.3.0.tar.gz
+	source = prometheus-postfix-exporter.service
+	sha256sums = a0d45f3615d6f24b5532d4048fbb08a248588cac7587279aef1473b6e50b6157
+	sha256sums = 5a7b37fd4a67ea28ccd27f96fda2fd2063bc92214dcf21bc92746566cf301bb8
+
+pkgname = prometheus-postfix-exporter
