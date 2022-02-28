@@ -2,7 +2,7 @@
 # https://gitlab.com/lulzbot3d/cura-le/curabuild-lulzbot/
 pkgname=cura-lulzbot
 pkgver=3.6.21
-pkgrel=7
+pkgrel=8
 pkgdesc='Cura LulzBot Edition for LulzBot 3D Printers by Aleph Objects, Inc.'
 arch=('x86_64')
 url='https://www.lulzbot.com/cura'
@@ -14,6 +14,7 @@ depends=('cython'
          'gcc-fortran'
          'libffi6'
          'libsavitar'
+         'libxcrypt-compat'
          'openblas'
          'python'
          'python-nose'
