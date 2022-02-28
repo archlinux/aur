@@ -1,5 +1,5 @@
 pkgbase = obs-backgroundremoval
-	pkgdesc = Background removal plugin for OBS studio (precomopiled onnxruntime)
+	pkgdesc = Background removal plugin for OBS studio (precompiled onnxruntime)
 	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/royshil/obs-backgroundremoval

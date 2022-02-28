@@ -10,7 +10,7 @@ _source="${pkgname}-${pkgver}"
 
 arch=(x86_64)
 url='https://github.com/royshil/obs-backgroundremoval'
-pkgdesc='Background removal plugin for OBS studio (precomopiled onnxruntime)'
+pkgdesc='Background removal plugin for OBS studio (precompiled onnxruntime)'
 license=(MIT custom)
 depends=(obs-studio opencv)
 makedepends=(cmake)
