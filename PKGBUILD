@@ -37,5 +37,6 @@ build() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install out/hentaijs-linux-x64/* /usr/bin/hentaijs
+  echo $pkgdir
+  cp -R out/hentaijs-linux-x64/* "$pkgdir/"
 }
