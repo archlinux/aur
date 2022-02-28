@@ -11,6 +11,7 @@ url="https://tari.in/www/software/ayatana-webmail/"
 license=("GPL3")
 depends=("hicolor-icon-theme" "dconf" "gobject-introspection" "desktop-file-utils" "libnotify" "libcanberra" "gnome-keyring" "python-babel" "python-gobject" "python-psutil" "python-secretstorage" "python-urllib3")
 makedepends=("python-setuptools" "python-polib")
+optdepends=("ayatana-indicator-messages: Support for indicator messages")
 install="ayatana-webmail.install"
 source=("ayatana-webmail-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/ayatana-webmail/archive/${pkgver}.tar.gz")
 md5sums=("98ee497c3d3fa3122524c0f654163bc0")

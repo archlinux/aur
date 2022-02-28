@@ -20,6 +20,7 @@ pkgbase = ayatana-webmail-no-indicator-messages
 	depends = python-psutil
 	depends = python-secretstorage
 	depends = python-urllib3
+	optdepends = ayatana-indicator-messages: Support for indicator messages
 	provides = ayatana-webmail=22.2.26
 	conflicts = ayatana-webmail
 	conflicts = unity-mail
