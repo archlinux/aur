@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="https://libisl.sourceforge.io"
 depends=('gmp')
 license=('MIT')
+provides=('libisl')
 conflicts=('isl-git' 'isl14' 'isl15' 'isl16' 'isl17')
 source=("https://libisl.sourceforge.io/isl-${pkgver}.tar.xz")
 sha256sums=('043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad')
