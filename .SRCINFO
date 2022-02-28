@@ -1,7 +1,7 @@
 pkgbase = alist-bin
 	pkgdesc = Another file list program that supports multiple storage
 	pkgver = 2.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Xhofe/alist
 	arch = aarch64
 	arch = arm
@@ -10,6 +10,7 @@ pkgbase = alist-bin
 	arch = i686
 	arch = x86_64
 	license = AGPL3
+	makedepends = go
 	provides = alist
 	source = alist-2.1.0::git+https://github.com/Xhofe/alist#tag=v2.1.0
 	source = alist-2.1.0-web.tar.gz::https://github.com/alist-org/alist-web/releases/download/2.1.0/dist.tar.gz
