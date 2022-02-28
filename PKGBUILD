@@ -2,7 +2,7 @@
 # Contributor: gls < ghostlovescorebg at gmail dot com >
 
 pkgname=rompr
-pkgver=1.60
+pkgver=1.60.1
 pkgrel=1
 pkgdesc="A php web frontend to MPD and Mopidy"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('apache: webserver to serve app'
             'nginx: webserver to serve app'
             'mysql: alternate database platform to sqlite')
 source=("https://github.com/fatg3erman/RompR/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('721b0a1e021236600873ca39ffd781098df51c85f87cba8f64352907df7913fd')
+sha256sums=('35c1af52754468aece86ad3428a3a94246bdbad9992beef9999c413b8caeb8d5')
 install="${pkgname}.install"
 
 package() {
