@@ -40,5 +40,5 @@ build() {
 package() {
   cd ${srcdir}/vkBasalt-${pkgver}
 
-  DESTDIR="${pkgdir}" ninja install -C build
+  DESTDIR="${pkgdir}" ninja -C build install
 }
