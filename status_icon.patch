@@ -1,0 +1,40 @@
+diff --git a/ayatanawebmail/application.py b/ayatanawebmail/application.py
+index 917fb3b..1525801 100755
+--- a/ayatanawebmail/application.py
++++ b/ayatanawebmail/application.py
+@@ -187,8 +187,9 @@ class MessagingMenu(object):
+                 gi.require_version('AppIndicator3', '0.1')
+                 self.oAppIndicator = importlib.import_module('gi.repository.AppIndicator3')
+ 
+-        self.oIndicator = self.oAppIndicator.Indicator.new(APPNAME, 'ayatanawebmail-messages', self.oAppIndicator.IndicatorCategory.APPLICATION_STATUS)
+-        self.oIndicator.set_attention_icon('ayatanawebmail-messages-new')
++        self.oIndicatorIconNoMessages = 'ayatanawebmail-messages'
++        self.oIndicatorIconNewMessages = 'ayatanawebmail-messages-new'
++        self.oIndicator = self.oAppIndicator.Indicator.new(APPNAME, self.oIndicatorIconNoMessages, self.oAppIndicator.IndicatorCategory.APPLICATION_STATUS)
+         self.oIndicator.set_status(self.oAppIndicator.IndicatorStatus.ACTIVE)
+         self.oMenu = Gtk.Menu()
+         self.oMenu.append(Gtk.SeparatorMenuItem())
+@@ -265,6 +266,7 @@ class MessagingMenu(object):
+             self.oMenu.insert(oMenuItem, len(self.oMenu.get_children()) - self.nMenuItems)
+ 
+             if bDrawAttention:
++                self.oIndicator.set_icon(self.oIndicatorIconNewMessages)
+                 self.oIndicator.set_status(self.oAppIndicator.IndicatorStatus.ATTENTION)
+ 
+             self.oMenuItemClear.set_sensitive(True)
+@@ -287,6 +289,7 @@ class MessagingMenu(object):
+ 
+             if len(self.oMenu.get_children()) - self.nMenuItems == 0:
+ 
++                self.oIndicator.set_icon(self.oIndicatorIconNoMessages)
+                 self.oIndicator.set_status(self.oAppIndicator.IndicatorStatus.ACTIVE)
+                 self.oMenuItemClear.set_sensitive(False)
+ 
+@@ -332,6 +335,7 @@ class MessagingMenu(object):
+ 
+         if len(self.oMenu.get_children()) - self.nMenuItems == 0:
+ 
++            self.oIndicator.set_icon(self.oIndicatorIconNoMessages)
+             self.oIndicator.set_status(self.oAppIndicator.IndicatorStatus.ACTIVE)
+             self.oMenuItemClear.set_sensitive(False)
+ 
