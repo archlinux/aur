@@ -9,7 +9,7 @@
 buildarch=4
 
 pkgname=mister-bin
-pkgver=20220211
+pkgver=20220224
 pkgrel=1
 pkgdesc="Userspace binary that manages MiSTer on the ARM side, prebuilt"
 arch=('armv7h')
@@ -23,7 +23,7 @@ optdepends=('linux-mister: MiSTer userspace probably needs custom kernel drivers
 source=("https://github.com/MiSTer-devel/Main_MiSTer/raw/master/releases/MiSTer_${pkgver}"
         'mister-bin.install'
         'MiSTer.service')
-sha256sums=('a7ae558e7d93b8f16a858d602a4c1595f13ec3175ae22acce4545a76cbdad585'
+sha256sums=('b910469bfebbc894c0f0672b75afbe761efefde297c5d5ea05df940a40a27d10'
             'cab7d3dfc8b0fd15deaef00dd5931b66da3a59e721fba6f957de7f4a915b8c98'
             '6f9a9a14420078c5fc5afeab364aba4a0be55992e95b897b913ed76e4fbe2971')
 
