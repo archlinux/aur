@@ -2,7 +2,7 @@
 _pkgname='pysptools'
 pkgname=("python-$_pkgname")
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A hyperspectral imaging tools box."
 arch=('x86_64')
 depends=('python'
@@ -11,11 +11,11 @@ depends=('python'
          'python-scikit-learn'
          'python-spectral'
          'python-matplotlib'
+         'python-cvxopt'
         )
 makedepends=('python-setuptools'
              'python-pytest')
-optdepends=('python-cvxopt: run FCLS'
-            'jupyter: if you want to use the notebook display functionality'
+optdepends=('jupyter: if you want to use the notebook display functionality'
             'python-tabulate: use by ml module'
             'python-pandas: use by ml module'
             'python-plotnine: use by ml module'

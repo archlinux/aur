@@ -1,7 +1,7 @@
 pkgbase = python-pysptools
 	pkgdesc = A hyperspectral imaging tools box.
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pysptools.sourceforge.io/
 	arch = x86_64
 	license = Apache
@@ -13,7 +13,7 @@ pkgbase = python-pysptools
 	depends = python-scikit-learn
 	depends = python-spectral
 	depends = python-matplotlib
-	optdepends = python-cvxopt: run FCLS
+	depends = python-cvxopt
 	optdepends = jupyter: if you want to use the notebook display functionality
 	optdepends = python-tabulate: use by ml module
 	optdepends = python-pandas: use by ml module
