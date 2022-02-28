@@ -10,8 +10,9 @@
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d,libgccjit}-git)
-pkgver=12.0.1_r191804.gafeaaf4b352
+pkgver=12.0.1_r191818.g800b3191c75
 _majorver=${pkgver%%.*}
+_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
@@ -65,9 +66,6 @@ prepare() {
 
   # Arch Linux installs x86_64 libraries /lib
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-
-  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" gcc/configure
 
   # D hacks
   patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
@@ -124,8 +122,7 @@ build() {
   make -O STAGE1_CFLAGS="-O2" \
           BOOT_CFLAGS="$CFLAGS" \
           BOOT_LDFLAGS="$LDFLAGS" \
-          LDFLAGS_FOR_TARGET="$LDFLAGS" \
-          profiledbootstrap
+          LDFLAGS_FOR_TARGET="$LDFLAGS" 
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
