@@ -1,7 +1,7 @@
 # Maintainer: Nick Burrett <nick@sqrt.co.uk>
 pkgname=comskip
 pkgver=0.82.009
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Comskip is a free MPEG commercial break detector'.
 _gitname='comskip'
@@ -9,7 +9,7 @@ url='http://github.com/erikkaashoek/Comskip'
 arch=('x86_64' 'i686')
 license=('GPL3')
 makedepends=('git')
-depends=('ffmpeg' 'argtable')
+depends=('ffmpeg4.4' 'argtable')
 source=("https://github.com/erikkaashoek/Comskip/archive/0.82.009.tar.gz"
         "compilation.patch")
 sha256sums=('eae287eff75f018d71a92623ffa67529f8dc75fd6165d07f1b299cdf10c2981a'
@@ -22,7 +22,7 @@ prepare() {
 build() {
   cd "${srcdir}/Comskip-${pkgver}"
   ./autogen.sh
-  ./configure --prefix=/usr
+  PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig/ ./configure --prefix=/usr
   make clean
   make
 }

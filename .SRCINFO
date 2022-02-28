@@ -1,14 +1,14 @@
 pkgbase = comskip
 	pkgdesc = Comskip is a free MPEG commercial break detector.
 	pkgver = 0.82.009
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = http://github.com/erikkaashoek/Comskip
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = git
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = argtable
 	source = https://github.com/erikkaashoek/Comskip/archive/0.82.009.tar.gz
 	source = compilation.patch
@@ -16,4 +16,3 @@ pkgbase = comskip
 	sha256sums = 5ea83b9e7189b9f320e3890891c0273daa5325b35298a3b921a904e9a357b798
 
 pkgname = comskip
-
