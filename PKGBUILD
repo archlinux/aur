@@ -2,7 +2,7 @@
 
 pkgname=soniccd-git
 pkgver=r476.972e89f
-pkgrel=1
+pkgrel=2
 pkgdesc='A full decompilation of Sonic CD 2011, based on the PC remake with
 improvements & tweaks from the mobile remakes.'
 arch=('any')
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
 	cd "$srcdir/Sonic-CD-11-Decompilation"
-	make ${MAKEFLAGS:--j$(nproc)} # CXXFLAGS=O2
+	make ${MAKEFLAGS:-CXXFLAGS=-O2 -j$(nproc)}
 }
 
 package() {
