@@ -1,7 +1,8 @@
 # Maintainer: t-ask <t-ask-aur at cixera.com>
-# Co-maintainer: Oscar Morante <spacepluk@gmail.com>
-# Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+# Contributor: Oscar Morante <spacepluk@gmail.com>
+# Contributor: Dragoon Aethis <dragoon@dragonic.eu>
 # Co-maintainer: Robbie Powell <lehthanis@gmail.com>
+# Co-maintainer: Rain Shinotsu <Rain_Shinotsu at protonmail dot com>
 
 pkgname=substance-painter
 pkgver=7.4.1
@@ -11,7 +12,7 @@ pkgdesc="3D painting software allowing you to texture, render and share your wor
 arch=('x86_64')
 url='https://download.substance3d.com/substance-painter'
 license=('custom')
-depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
+depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4' 'libxcrypt-compat')
 options=('!strip') # PNG assets here should be left untouched!
 
 source=("https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-${pkgver}-${_build}-linux-x64-standard.rpm")

@@ -10,6 +10,7 @@ pkgbase = substance-painter
 	depends = glu
 	depends = hicolor-icon-theme
 	depends = libtiff4
+	depends = libxcrypt-compat
 	options = !strip
 	source = https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.4.1-1418-linux-x64-standard.rpm
 	sha256sums = 0f6ba736e1d4590ea1f760e77e75e54ef2f20a1185b7af7d3988f3b60261e08b
