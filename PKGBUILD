@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=uresourced
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Dynamically allocate resources to the active user"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -11,7 +11,7 @@ makedepends=('meson')
 backup=("etc/$pkgname.conf")
 install="$pkgname.install"
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6d0cf3030f6aa1fd9f9beaa2d68d84d894bb9d40d7e44cfe18468354c11336ed')
+sha256sums=('d8e44989981f8682a5e323244630d81970e464448029a6182d7aac5bc0c1d110')
 
 build() {
   arch-meson "$pkgname-v$pkgver" build -Dappmanagement='true'
