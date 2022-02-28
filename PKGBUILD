@@ -55,7 +55,11 @@ build() {
         -D LIBAVFORMAT_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
         -D LIBAVFORMAT_LIBRARIES=/usr/lib/ffmpeg4.4/libavformat.so \
         -D LIBAVUTIL_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
-        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so
+        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so \
+        -D LIBSWSCALE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
+        -D LIBAVUTIL_LIBRARIES=/usr/lib/ffmpeg4.4/libavutil.so \
+        -D LIBSWSCALE_INCLUDE_DIR=/usr/include/ffmpeg4.4 \
+        -D LIBSWSCALE_LIBRARIES=/usr/lib/ffmpeg4.4/libswscale.so
 
     make -C build
 }
