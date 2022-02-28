@@ -22,8 +22,8 @@ pkgbase = clapper-git
 	optdepends = gst-libav>=1.18.0: Popular video decoders
 	optdepends = gstreamer-vaapi>=1.18.0: Intel/AMD video acceleration
 	optdepends = gst-plugins-ugly>=1.18.0: CD/DVD playback
-	optdepends = gst-plugin-va>=1.18.0: Video acceleration
-	optdepends = gtuber>=r242: Support for proprietary video-streaming services
+	optdepends = gst-plugin-va>=1.18.0: Intel/AMD video acceleration (experimental)
+	optdepends = gtuber>=r242: Play videos from various services
 	provides = clapper
 	provides = libgstclapper-1.0
 	conflicts = clapper
