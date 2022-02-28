@@ -1,0 +1,15 @@
+pkgbase = pks-agent-git
+	pkgdesc = Caches PKS credentials in memory
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/wiktor/pks-agent
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo
+	makedepends = git
+	provides = pks-agent
+	conflicts = pks-agent
+	source = pks-agent::git+https://gitlab.com/wiktor/pks-agent
+	sha512sums = SKIP
+
+pkgname = pks-agent-git
