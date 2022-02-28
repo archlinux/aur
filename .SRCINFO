@@ -1,18 +1,13 @@
 pkgbase = python-pytils
 	pkgdesc = Russian-specific string utils
-	pkgver = 0.3
+	pkgver = 0.4.1
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/pytils/
+	url = https://pypi.python.org/pypi/pytils
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python2
-	source = https://pypi.python.org/packages/source/p/pytils/pytils-0.3.tar.gz
-	sha256sums = 1e85118d095d48928fef1a73e3e1dccdbc07bc931131705976b7dd05b66627fc
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/p/pytils/pytils-0.4.1.tar.gz
+	sha512sums = c309251fded7a8ed9812dfbcd5f1cf2979f1be891e66fe7a451f99f606cfbcf3acd19d14e1e252a45114d3a5d034a8d3b7ac8f9837dd70f599eb6a7b89d36e9a
 
 pkgname = python-pytils
-	depends = python
-
-pkgname = python2-pytils
-	depends = python2
-

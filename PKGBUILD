@@ -1,41 +1,25 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
-
-pkgbase=python-pytils
-pkgname=('python-pytils' 'python2-pytils')
-pkgver=0.3
-pkgrel=1
+_base=pytils
+pkgname=python-${_base}
 pkgdesc="Russian-specific string utils"
-arch=('any')
-url="https://pypi.python.org/pypi/pytils/"
-license=('MIT')
-makedepends=('python' 'python2')
-source=(https://pypi.python.org/packages/source/p/pytils/pytils-${pkgver}.tar.gz)
-sha256sums=('1e85118d095d48928fef1a73e3e1dccdbc07bc931131705976b7dd05b66627fc')
+pkgver=0.4.1
+pkgrel=1
+arch=(any)
+url="https://pypi.python.org/pypi/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('c309251fded7a8ed9812dfbcd5f1cf2979f1be891e66fe7a451f99f606cfbcf3acd19d14e1e252a45114d3a5d034a8d3b7ac8f9837dd70f599eb6a7b89d36e9a')
 
 build() {
-  cd $srcdir
-  cp -r pytils-$pkgver pytils2-$pkgver
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-check() {
-  cd $srcdir/pytils-$pkgver
-  python3 setup.py check
-
-  cd $srcdir/pytils2-$pkgver
-  python2 setup.py check
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-package_python-pytils() {
-  depends=('python')
-  cd "$srcdir/pytils-$pkgver"
-  python3 setup.py install --root "${pkgdir}" --optimize=1
-}
-
-package_python2-pytils() {
-  depends=('python2')
-  cd "$srcdir/pytils2-$pkgver"
-  python2 setup.py install --root "${pkgdir}" --optimize=1
-}
-
-# vim:set ts=2 sw=2 et:
