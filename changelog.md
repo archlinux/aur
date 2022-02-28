@@ -1,3 +1,11 @@
+## GE-Proton7-3 Released
+
+Another hotfix build.
+
+--Finally-- got the build corruption issue fixed. There was a mixup with the pefixup script and transition from proton 7 stable to proton 7 experimental builds.
+Took me a while but I got it sorted and Warframe and the Batman games as well as vcrun are all working properly again.
+I quadruple checked on my side this time. What a long day.
+
 ## GE-Proton7-1 Released
 
 Why the new naming scheme?

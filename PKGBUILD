@@ -5,10 +5,8 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton7_2
+pkgver=GE_Proton7_3
 pkgrel=1
-# remove epoch after some time, maybe 3 month or so
-# we need to do this since upstream naming has changed :(
 epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -66,8 +64,8 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
         "supplementary.tar.zst")
-sha512sums=('7e6c3646f11425cb074734b99d7af626c9a37cd193076accf42b3336f6bbee643553165021c5de16b5cfa6dce5d6cf4ef908019a2b681fe1c557e79b1489a53c'
-            '44e72a7ac5014cbb9686aed4b9c8c83011947610d8365b51cef5e2527c787cc1752e2aa64895b8a18d8b4af774c75acf62a27ec392c38b61d9ea8cb43fbda8fe')
+sha512sums=('d3d43785bfdc7fd9af1c47d1dc109c77c0abeb4f552f764a0ce6ebf8e127701fd0a32ce3cc2ed1cae350622883760bf94e93d815669155896de44a5825e6904d'
+            '6a0edd52bbbe0bc724bcb92a3fe05b22393d4e7e40869c3eb978c6a997ac2ace2af76809fa7587513848c86ab29285665cdcd2e1ddb7a1de5fd0cf950e889383')
 
 build() {
 ## patches
@@ -77,8 +75,7 @@ sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' ${_srcdir}/compatibilitytool.vdf
 ## remove artifacts
 rm "${_srcdir}"/protonfixes/*.tar.xz
 ## fixes from namcap inspection
-chmod -R a+r "${_srcdir}"/protonfixes/gamefixes
-strip --preserve-dates --strip-unneeded "${_srcdir}"/dist/bin/wine*
+strip --preserve-dates --strip-unneeded "${_srcdir}"/files/bin/wine*
 }
 
 package() {
