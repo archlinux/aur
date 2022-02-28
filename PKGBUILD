@@ -1,7 +1,7 @@
 # Maintainer: Jacob Parnell <jparnell@mailfence.com>
 _pkgbin=internxt-drive
 pkgname=internxt-drive-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Internxt Drive client UI"
 package="internxt-drive-${pkgver}.AppImage"
@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://internxt.com'
 license=('AGPL3')
 source=("${package}::https://github.com/internxt/drive-desktop/releases/download/v${pkgver}/${package}")
-sha256sums=('82ec40cee445b061979d66217549a00a422e1008d56217e6a83bbef61b0c8c8c')
+sha256sums=('e0b8a98c003d12aae9a7bac799645374b2624b0ed1b78ae1d2dd82b78ee77e5e')
 
 build() {
 	# Extract files from AppImage
