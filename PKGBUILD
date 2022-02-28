@@ -2,11 +2,11 @@
 # Maintainer: monosans
 # Based on wlroots-git PKGBUILD
 pkgname=wlroots-eglstreams-git
-pkgver=0.16.0.r5365.5bde12a6
+pkgver=0.16.0.r5388.0558b203
 pkgrel=1
 license=(MIT)
 pkgdesc='Modular Wayland compositor library with EGLStreams support (git version)'
-url=https://github.com/danvd/wlroots-eglstreams
+url=https://github.com/git-bruh/wlroots-eglstreams
 arch=(x86_64)
 provides=("libwlroots.so" "wlroots=${pkgver%%.r*}" wlroots-git)
 conflicts=(wlroots wlroots-git)
