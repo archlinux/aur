@@ -1,0 +1,11 @@
+# makepkg files
+pkg/
+src/
+*.xz
+*.zst
+
+# mkarchchroot files
+*.log
+
+# source files
+*.gz
