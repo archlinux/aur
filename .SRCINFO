@@ -1,6 +1,6 @@
 pkgbase = cwordle-git
 	pkgdesc = Wordle clone for Unix Terminals in C
-	pkgver = r15.4a5c8e6
+	pkgver = r18.87322fe
 	pkgrel = 1
 	url = https://github.com/velorek1/cwordle
 	arch = x86_64
@@ -12,8 +12,6 @@ pkgbase = cwordle-git
 	provides = cwordle
 	conflicts = cwordle
 	source = cwordle::git+https://github.com/velorek1/cwordle
-	source = cmake.patch
 	sha256sums = SKIP
-	sha256sums = e7d800bccba41eeaa0c06d5d3a8fccce5378c9e454e4cc0cc357ab5205d9bf07
 
 pkgname = cwordle-git
