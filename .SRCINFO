@@ -12,7 +12,6 @@ pkgbase = amor
 	license = FDL
 	makedepends = cmake
 	makedepends = extra-cmake-modules
-	makedepends = automoc4
 	depends = kxmlgui
 	depends = kwindowsystem
 	depends = kconfig
@@ -25,4 +24,3 @@ pkgbase = amor
 	sha1sums = SKIP
 
 pkgname = amor
-
