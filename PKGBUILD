@@ -33,10 +33,9 @@ build() {
   cd "$pkgname-$pkgver"
   echo $(pwd)
   npm run make-linux
-  mkdir -p ~/bin/hentaijs
-  mv out/hentaijs-linux-x64/hentaijs ~/bin/hentaijs
 }
 
 package() {
-  echo "idk what to put here"
+  cd "$pkgname-$pkgver"
+  install out/hentaijs-linux-x64/* /usr/bin/hentaijs
 }
