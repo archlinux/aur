@@ -1,6 +1,6 @@
 pkgbase = av1an-git
 	pkgdesc = A cross-platform all-in-one tool for streamlining AV1 encoding
-	pkgver = 0.3.1.r15.g6c70e2c
+	pkgver = 0.3.1.r17.gda8ccf1
 	pkgrel = 1
 	url = https://github.com/master-of-zen/Av1an
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = av1an-git
 	makedepends = cargo
 	makedepends = nasm
 	makedepends = clang
-	depends = ffmpeg4.4
+	depends = ffmpeg
 	depends = aom
 	depends = vapoursynth
 	optdepends = svt-av1: SVT-AV1 encoder support
