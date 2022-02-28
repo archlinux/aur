@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=reshade-shaders-git
-pkgver=r876.891aca4
+pkgver=r879.a2314cb
 pkgrel=1
 pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
@@ -19,8 +19,8 @@ pkgver() {
 package() {
   cd ${srcdir}/reshade-shaders
 
-  install -dm 755 "${pkgdir}/usr/share/reshade/shaders"
-  install -Dm 644 Shaders/*.*  "${pkgdir}/usr/share/reshade/shaders/"
-  install -dm 755 "${pkgdir}/usr/share/reshade/textures"
-  install -Dm 644 Textures/*.* "${pkgdir}/usr/share/reshade/textures/"
+  install -dm 755 "${pkgdir}/opt/reshade/shaders"
+  install -Dm 644 Shaders/*.*  "${pkgdir}/opt/reshade/shaders/"
+  install -dm 755 "${pkgdir}/opt/reshade/textures"
+  install -Dm 644 Textures/*.* "${pkgdir}/opt/reshade/textures/"
 }
