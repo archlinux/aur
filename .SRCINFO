@@ -1,0 +1,18 @@
+pkgbase = crash-bandicoot-3
+	pkgdesc = PlayStation game.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Crash_Bandicoot:_Warped
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SCES-01420.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot%203%20-%20Warped%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.zip/Crash%20Bandicoot%203%20-%20Warped%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.bin
+	source = SCES-01420.cue::https://archive.org/download/redump.psx/Crash%20Bandicoot%203%20-%20Warped%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.zip/Crash%20Bandicoot%203%20-%20Warped%20%28Europe%29%20%28En%2CFr%2CDe%2CEs%2CIt%29.cue
+	source = com.naughtydog.CrashBandicoot3.desktop
+	source = com.naughtydog.CrashBandicoot3.png
+	sha256sums = aef1ed3bdc7abfab1458aac51356dad67f462653ea39b0196de0ff68dbafccf1
+	sha256sums = 0374b10b80144d4f55e79b747c0df5c7f1cebdaccdbd589de1822a39f25a8e27
+	sha256sums = 89d92feb511f0bd2e3e2b751e213e445d211d033b9979d673750b26895e16e64
+	sha256sums = 96f31f67465a333f534b08d792088e93fb99d615644b55f0ebca13958ae90ebe
+
+pkgname = crash-bandicoot-3

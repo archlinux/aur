@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Crash Bandicoot - Warped (SCES-01420)
+GenericName=Crash Bandicoot 3
+Comment=Third installment of the Crash Bandicoot franchise for the PlayStation console.
+Type=Application
+TryExec=duckstation-qt
+Exec=duckstation-qt -fullscreen "/usr/games/com.naughtydog.CrashBandicoot3/SCES-01420.cue"
+Icon=com.naughtydog.CrashBandicoot3
+Categories=Games;
+Terminal=false
+Keywords=Crash
+Actions=preferences;
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=duckstation-qt
+
+X-Desktop-File-Install-Version=0.26
