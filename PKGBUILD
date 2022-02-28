@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=jprofiler
-pkgver=12.0.3
+pkgver=13.0
 pkgrel=1
 options=(!strip)
 pkgdesc="The Award-Winning All-in-One Java Profiler"
@@ -11,7 +11,7 @@ depends=('java-environment')
 source=("https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_$(echo $pkgver | sed 's/\./_/g').tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('e65fcfd4e63850c35368028f07a1e2d41c077f66dbe78f525f28c6fd72d07519'
+sha256sums=('67c2a9859a459eac5172981c2a572f1b124eab160aaa1da4ed7e632bd51732d1'
             'be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a'
             'ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36')
 
@@ -37,7 +37,7 @@ package() {
     mv "${target}/license.txt" "$licensedir"
     mv "${target}/license.html" "$licensedir"
 
-    local image_var="dcmbrc"
+    local image_var="n23wev"
     cp "${target}/.install4j/i4j_extf_5_${image_var}_u9lgq5@2x.png" "${hicolor}/64x64/apps/${pkgname}.png"
     cp "${target}/.install4j/i4j_extf_5_${image_var}_u9lgq5.png" "${hicolor}/32x32/apps/${pkgname}.png"
     cp "${target}/.install4j/i4j_extf_4_${image_var}_1u8i2ka.png" "${hicolor}/16x16/apps/${pkgname}.png"
