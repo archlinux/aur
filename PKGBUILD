@@ -5,7 +5,6 @@ pkgbase="linux-$_target"
 pkgname=("$pkgbase" "$pkgbase-headers")
 pkgver=5.15.25
 _armbver=Filename: pool/main/l/linux-5.15.25-sunxi64/linux-dtb-current-sunxi64_22.02.1_arm64.deb
-_armbrel=1
 _kernver="$pkgver-$_target"
 pkgrel=1
 arch=('aarch64')
@@ -15,9 +14,9 @@ license=('GPL2')
 options=('!strip')
 source=(
   "linux.preset"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
-  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-dtb-current-${_target}_${_armbver}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-image-current-${_target}_${_armbver}_arm64.deb"
+  "https://beta.armbian.com/pool/main/l/linux-$_kernver/linux-headers-current-${_target}_${_armbver}_arm64.deb"
 )
 sha512sums=(
   'f01e7925b262d2874a8a991b1f27d057356a2a384d2012b61be5a631d4e4d7cf87461c8fb9e7f183831f5a829ad204897f1f0545a52df6288a0e04a5c2e31b96'
@@ -43,9 +42,9 @@ _package() {
 
   cd "$srcdir"
 
-  ar x "linux-dtb-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-dtb-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-image-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/boot"
@@ -80,9 +79,9 @@ _package-headers() {
 
   cd "$srcdir"
 
-  ar x "linux-image-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-image-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
-  ar x "linux-headers-current-${_target}_${_armbver}-trunk.${_armbrel}_arm64.deb"
+  ar x "linux-headers-current-${_target}_${_armbver}_arm64.deb"
   tar -xf data.tar.xz
 
   install -dm755 "$pkgdir/usr/lib/modules/$_kernver"
