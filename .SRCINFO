@@ -1,6 +1,6 @@
 pkgbase = python-tensorflow-metadata
 	pkgdesc = Utilities for passing TensorFlow-related metadata between tools
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/tensorflow/metadata
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-tensorflow-metadata
 	depends = absl-py
 	depends = python-googleapis-common-protos
 	depends = python-protobuf
-	source = https://github.com/tensorflow/metadata/archive/v1.6.0/python-tensorflow-metadata-1.6.0.tar.gz
-	sha256sums = 750796336ff14f4d99f536e64387689115881eead177320b0c7119ecccea0421
+	source = https://github.com/tensorflow/metadata/archive/v1.7.0/python-tensorflow-metadata-1.7.0.tar.gz
+	sha256sums = 9c64ad3813afbc7466e0eefba33359968b8fe33a375b8b5b87f340dd3abe56c7
 
 pkgname = python-tensorflow-metadata
