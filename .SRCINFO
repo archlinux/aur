@@ -1,7 +1,7 @@
 pkgbase = pcraster
 	pkgdesc = Environmental modelling software
 	pkgver = 4.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pcraster.edu/
 	arch = i686
 	arch = x86_64
