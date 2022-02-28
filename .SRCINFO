@@ -1,6 +1,6 @@
 pkgbase = helm-diff
 	pkgdesc = Helm plugin that shows a diff explaining what a helm upgrade would change
-	pkgver = 3.4.1
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://github.com/databus23/helm-diff
 	install = helm-diff.install
@@ -8,7 +8,7 @@ pkgbase = helm-diff
 	license = Apache
 	makedepends = go
 	depends = helm
-	source = https://github.com/databus23/helm-diff/archive/v3.4.1/helm-diff-3.4.1.tar.gz
-	sha256sums = a58f42a47410a53e8ab39558b0b00a6aeeef6dc44e3af2ecaa2dc9370f0a6f18
+	source = https://github.com/databus23/helm-diff/archive/v3.4.2/helm-diff-3.4.2.tar.gz
+	sha256sums = d17040056e55179e05d8f6079d47a3ce01dbc6dc5400df2b92886d39310d5daa
 
 pkgname = helm-diff
