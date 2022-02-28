@@ -1,17 +1,18 @@
 pkgbase = lsi-lsa
 	pkgdesc = LSI Storage Authority Software Suite
 	pkgver = 007.019.006.000
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.broadcom.com/products/storage
 	install = lsi-lsa.install
 	arch = x86_64
-	license = custom:LSI
+	license = custom:Broadcom
 	makedepends = patchelf
 	depends = openslp
 	depends = lsi-openpegasus
 	depends = curl
 	depends = perl
 	depends = libcrypt.so=1
+	depends = libldap24
 	options = !strip
 	backup = opt/lsi/LSIStorageAuthority/installtype
 	backup = opt/lsi/LSIStorageAuthority/conf/LSA.conf
@@ -21,13 +22,11 @@ pkgbase = lsi-lsa
 	source = LSI_Storage_Authority_Software_User_Guide_rev2.2.pdf::https://docs.broadcom.com/doc/DB15-001161
 	source = lsi_lsa.service
 	source = lsa_launcher.sh
-	source = 007.019.006.000_LSA_Linux.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/007.019.006.000_LSA_Linux-x64.zip
-	source = https://archive.archlinux.org/repos/2021/11/18/core/os/x86_64/libldap-2.4.59-2-x86_64.pkg.tar.zst
+	source = 007.019.006.000_LSA_Linux-x64.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/007.019.006.000_LSA_Linux-x64.zip
 	sha256sums = 5196f542b52457abb94bce4e069005543a7e748270b7b673e5afa669e7af2e03
 	sha256sums = edb87a322a06afb7c78058132f648123325fc633db2df4d062a127f5ed9f465a
 	sha256sums = 5d65b855b7d38192ef8fd0ce34cab567efd5f9af922c080876a10e96a62b0b17
 	sha256sums = 1df03403bc1d780797f0eba59d85b1941a1c77f911d9e7d5d5ae4f288e52663a
 	sha256sums = d0cfca9e144b12b8c5886f7d975546fe7e1ca13573f62d80f721363397e3b5dd
-	sha256sums = 8589d6d7ba2c2890961ac5a28b664bc4a066cc00b19f22ee0af792f0d9ed182c
 
 pkgname = lsi-lsa
