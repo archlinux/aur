@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=28.0.50
-_fix_commit=b071459
-pkgrel=2
+_fix_commit=8a7aea8
+pkgrel=3
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -16,8 +16,8 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'lib
 	 'hicolor-icon-theme' 'desktop-file-utils' 'alsa-lib' 'gnutls' 'cairo' 'zlib')
 makedepends=('rustup' 'python')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
-sha256sums=('768f58e4b9059d3fe29611194fcd7f5b781c42f5335e867eb8811ae576786f6d')
-
+sha256sums=('61fd36dd9af3b6323721b2c2f3ac47034b5907b48a0119ec8da37c2910018383')
+ 
 prepare() {
     cd ${pkgname}-0.0.${_fix_commit}
     rustup install "$(cat rust-toolchain)"
@@ -48,6 +48,5 @@ package() {
     mv "$pkgdir"/usr/share/man/man1/{ctags.1.gz,ctags.emacs.1}
 
     # fix user/root permissions on usr/share files
-    _emacs_ver=$(ls "$pkgdir/usr/share/emacs" | grep '[[:digit:]].*')
-    find "$pkgdir"/usr/share/emacs/$_emacs_ver -exec chown root:root {} \;
+    find "$pkgdir"/usr/share/emacs/$pkgver -exec chown root:root {} \;
 }
