@@ -1,8 +1,8 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=python-podman-git
-pkgver=3.2.1
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Python bindings for Podman's RESTful API"
 arch=('any')
 url="https://github.com/containers/podman-py"
