@@ -1,7 +1,7 @@
 # Maintainer: Kodi <kodicraft4@gmail.com>
 pkgname=hentai.js
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc="rule34.xxx wrapper written in electron"
 arch=('x86_64')
