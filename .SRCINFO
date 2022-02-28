@@ -1,7 +1,7 @@
 pkgbase = kontur-plugin
 	pkgdesc = Kontur.Plugin is an extension for web browsers that allows users to perform cryptographic operations in SKB Kontur services.
-	pkgver = 4.0.4.202
-	pkgrel = 3
+	pkgver = 4.0.5.221
+	pkgrel = 1
 	url = https://help.kontur.ru/plugin/
 	arch = x86_64
 	license = proprietary
