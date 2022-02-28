@@ -1,14 +1,14 @@
 pkgbase = python-sphinxcontrib-plantuml
 	pkgdesc = Sphinx 'plantuml' extension
-	pkgver = 0.22
-	pkgrel = 2
+	pkgver = 0.23
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/sphinxcontrib-plantuml
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = plantuml
 	depends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-plantuml/sphinxcontrib-plantuml-0.22.tar.gz
-	sha256sums = a42c7a13ab1ae9ed18e8e8b0f76b8d35dc476fdebe6e634354fe6fd0f261f686
+	source = https://files.pythonhosted.org/packages/source/s/sphinxcontrib-plantuml/sphinxcontrib-plantuml-0.23.tar.gz
+	sha256sums = 1d55518f0a86ecd6c96ba8ff8c884adca05bac3e58e76a692a3cd19aa7f42acf
 
 pkgname = python-sphinxcontrib-plantuml
