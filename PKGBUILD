@@ -3,7 +3,7 @@
 
 pkgbase=gridcoinresearch
 pkgname=(gridcoinresearch-qt gridcoinresearchd)
-pkgver=5.3.2.0
+pkgver=5.3.3.0
 pkgrel=1
 pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network"
 makedepends=('boost' 'qt5-charts' 'qt5-tools' 'qrencode')
@@ -11,13 +11,13 @@ depends=('db' 'libzip')
 
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://gridcoin.us"
-license=('custom:gridcoin')
+license=('MIT')
 
 _sourcename="Gridcoin-Research-$pkgver"
 
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/gridcoin-community/Gridcoin-Research/archive/$pkgver.tar.gz")
 
-sha256sums=('8cc7d668e3a189877ffcf535076bef928a553da0b393729f1f6576524ad2d813')
+sha256sums=('45c80a24a289c5488df8cf3fdc713b19679a9a248de75227b552d72321ac0ed7')
 
 # leaving in case needed for future patches
 #prepare() {
@@ -36,20 +36,21 @@ build() {
 
 package_gridcoinresearch-qt() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Qt GUI)"
-  depends=('boost-libs' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts' 'qt5-svg')
+  depends=('libzip' 'boost-libs' 'miniupnpc' 'qrencode' 'qt5-base' 'qt5-charts' 'qt5-svg')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
 
   cd "$srcdir/$_sourcename"
 
   install -Dm755 usr/bin/gridcoinresearch "$pkgdir/usr/bin/gridcoinresearch"
-  cp -r ${srcdir}/${_sourcename}/usr/share ${pkgdir}/usr/share/
+  install -Dm644 usr/share/applications/gridcoinresearch.desktop "$pkgdir/usr/share/applications/gridcoinresearch.desktop"
+  cp -r usr/share/icons "$pkgdir/usr/share/icons"
   install -Dm644 doc/gridcoinresearch.1 "$pkgdir/usr/share/man/man1/gridcoinresearch.1"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 package_gridcoinresearchd() {
   pkgdesc="A cryptocurrency that rewards users for participating on the BOINC network (Daemon/CLI)"
-  depends=('boost-libs' 'miniupnpc')
+  depends=('libzip' 'boost-libs' 'miniupnpc')
   optdepends=('boinc: to earn Gridcoin rewards by doing computational research')
   replaces=('gridcoinresearch-daemon')
   conflicts=('gridcoinresearch-daemon')
