@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocalution
-pkgver=4.5.2
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Next generation library for iterative sparse solvers for ROCm platform'
 arch=('x86_64')
@@ -11,23 +11,16 @@ depends=('hip' 'rocsparse' 'rocblas' 'rocprim' 'rocrand' 'openmp')
 makedepends=('cmake' 'rocm-cmake' 'git')
 _git='https://github.com/ROCmSoftwarePlatform/rocALUTION'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('8be38922320cd9d4fc465a30f0322843849f62c0c7dad2bdbe52290a1b69d2a0')
+sha256sums=('19bcfe8f74b9161a2e0318465dceab50d877b1f08db80dc88e330e098b174c3e')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
-  CXX=/opt/rocm/bin/hipcc \
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/develop/docs/markdown/clang_options.md
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
-  cmake -B build -Wno-dev \
+  cmake -B build \
         -S "$_dirname" \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -DROCM_PATH=/opt/rocm \
-        -DSUPPORT_HIP=ON \
-        -DSUPPORT_OMP=ON \
-        -DSUPPORT_MPI=OFF \
-        -Dhip_DIR=/opt/rocm/hip/lib/cmake/hip \
-        -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr
+        -DROCM_PATH=/opt/rocm
   make -C build
 }
 
