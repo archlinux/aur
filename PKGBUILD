@@ -3,7 +3,7 @@
 
 pkgname=python-ufo2ft
 _pyname=${pkgname#python-}
-pkgver=2.25.2
+pkgver=2.25.3
 pkgrel=1
 pkgdesc='A bridge from UFOs to FontTools objects'
 arch=(any)
@@ -17,7 +17,9 @@ _pydeps=(booleanoperations
          fs) # for fonttools[ufo]
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer}
+             python-setuptools-scm
+             python-wheel)
 checkdepends=(python-compreffor
               python-pytest
               python-skia-pathops)
@@ -26,11 +28,11 @@ optdepends=(python-compreffor
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('a285881efc8cb6b86de167063e269c63c75f8cf49be6e8ad1e74d14cabdfd800')
+sha256sums=('e0eb84a25f98a2bbce78ae5b8f7dcfa3c57d283d2dadc81331709343e27babde')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -40,6 +42,6 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
