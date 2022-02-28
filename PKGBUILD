@@ -34,7 +34,7 @@ package() {
   optdepends=('reshade-shaders-git')
   cd ${srcdir}/vkBasalt-${pkgver}
 
-  DESTDIR="${pkgdir}" ninja install -C build
+  DESTDIR="${pkgdir}" ninja -C build install
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/vkBasalt"
 }
