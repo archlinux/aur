@@ -18,7 +18,7 @@ source_x86_64=("${pkgname}-${pkgver}-${CARCH}.tar.gz::https://github.com/balena-
 noextract=("${pkgname}-${pkgver}-${CARCH}.tar.gz")
 options=("!strip")
 sha256sums_i686=('4af2f1662fbbc2e7ee9b4d50f52b403b9ca5a1c6a83f56cbf1b6bb5368b90ced')
-sha256sums_x86_64=('4af2f1662fbbc2e7ee9b4d50f52b403b9ca5a1c6a83f56cbf1b6bb5368b90ced')
+sha256sums_x86_64=('67d1173fdf7c4c528f4027147463597cffdef9d50ddcf0c74c9651685b1c451e')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}-${CARCH}"
