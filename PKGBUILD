@@ -3,7 +3,7 @@
 pkgbase=libadwaita-git-pkgs
 _pkgname=libadwaita
 pkgname=(libadwaita-docs-git libadwaita-demos-git)
-pkgver=1.0.1.3.gfddc56f7
+pkgver=1.0.1+3+gfddc56f7
 pkgrel=1
 epoch=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/-/\./g'
+  git describe --tags | sed 's/-/+/g'
 }
 
 prepare() {
@@ -45,19 +45,36 @@ check() (
 _pick() {
   local p="$1" f d; shift
   for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
+    d="$srcdir/$p/${f#"$srcdir/tmppkgdir/"}"
     mkdir -p "$(dirname "$d")"
     mv "$f" "$d"
     rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
 }
 
+_package() {
+  meson install -C build --destdir="$srcdir/tmppkgdir"
+
+  cd "$srcdir/tmppkgdir"
+
+  _pick docs usr/share/doc
+
+  _pick demo usr/bin/adwaita-1-demo
+  _pick demo usr/share/applications/org.gnome.Adwaita1.Demo.desktop
+  _pick demo usr/share/icons/hicolor/*/apps/org.gnome.Adwaita1.Demo[-.]*
+  _pick demo usr/share/metainfo/org.gnome.Adwaita1.Demo.metainfo.xml
+
+}
+
 package_libadwaita-docs-git() {
+  _package
+
   pkgdesc+=" (documentation)"
   depends=()
   provides=(libadwaita-docs)
   conflicts=(libadwaita-docs)
-  mv docs/* "$pkgdir"
+
+  mv "$srcdir"/docs/* "$pkgdir"
 }
 
 package_libadwaita-demos-git() {
@@ -65,7 +82,8 @@ package_libadwaita-demos-git() {
   depends=(libadwaita)
   provides=(libadwaita-demos)
   conflicts=(libadwaita-demos)
-  mv demo/* "$pkgdir"
+
+  mv "$srcdir"/demo/* "$pkgdir"
 }
 
 # vim:set sw=2 et:
