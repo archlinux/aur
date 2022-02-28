@@ -8,7 +8,7 @@ _npmname=cli
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="${_npmscope}-${_npmname}"
-pkgver=4.5.15
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Standard tooling for Vue.js development'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=()
 conflicts=('nodejs-vue-cli' 'vue')
 source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname-$pkgver.tgz")
 noextract=("${source[@]%%::*}")
-sha256sums=('1b30ab732dd74684212623a1b25853905f3b788d4a2ddb5bf8de80107ee53bf2')
+sha256sums=('962578794d8feceaa85fe420ee4c8035505355bb981b2f559fbcbfe96ef53eac')
 
 package() {
   mkdir -p "${pkgdir}"/usr/lib
@@ -38,8 +38,6 @@ package() {
 
   # Package contains reference to $srcdir/$pkgdir
   find "${pkgdir}" -type f -name package.json -execdir sed -i '/_where/d' {} \+
-
-  sed -i "s|$pkgdir||" "$pkgdir"/usr/lib/node_modules/"$_npmid"/node_modules/sshpk/package.json
 
   # Add license
   install -Dm644 "$pkgdir/usr/lib/node_modules/$_npmid/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
