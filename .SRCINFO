@@ -12,7 +12,6 @@ pkgbase = proton-ge-custom-bin
 	license = MIT
 	license = MPL
 	license = custom
-	makedepends = patch
 	depends = python
 	depends = vulkan-icd-loader
 	depends = lib32-libusb

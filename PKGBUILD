@@ -17,7 +17,6 @@ provides=('proton' "proton-ge-custom=${pkgver/_/.}")
 conflicts=('proton-ge-custom-legacy-bin' 'proton-ge-custom')
 
 ## dependencies
-makedepends=('patch')
 depends=('python'
          'vulkan-icd-loader'
          'lib32-libusb'
