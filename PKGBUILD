@@ -34,8 +34,6 @@ package() {
 
   install -Dm644 "$_pkgname"/res/css/* -t "$pkgdir"/usr/share/abaddon/css
   install -Dm644 "$_pkgname"/res/res/* -t "$pkgdir"/usr/share/abaddon/res
-  install -d "$pkgdir"/usr/share/abaddon/fonts
-  cp -r "$_pkgname"/res/fonts/* "$pkgdir"/usr/share/abaddon/fonts/
 
   install -Dm755 abaddon.desktop \
     "$pkgdir"/usr/share/applications/abaddon.desktop
