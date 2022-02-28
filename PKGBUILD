@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=7.0-20220218b
+_srctag=7.0-20220228
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=7.1.2
-_asyncver=1.9.4
+_monover=7.1.5
+_asyncver=2c41ae8
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
@@ -125,7 +125,7 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
-    wine-futex_waitv.patch
+    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch::https://github.com/wine-mirror/wine/commit/25946b48148784e8275c1685f6498ab88f553ca3.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
@@ -254,12 +254,12 @@ prepare() {
         sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
-        # Fix futex_waitv on recent linux-api-headers
-        patch -p1 -i "$srcdir"/wine-futex_waitv.patch
+        # Fix wldap32 compilation on 32bit
+        wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
         # Add FSR for fshack
-        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
-        #patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
     pushd dxvk
@@ -317,9 +317,9 @@ build() {
     # If you want the "best" possible optimizations for your system you can use
     # `-march=native` and remove the `-mtune=core-avx2` option.
     # `-O2` is adjusted to `-O3` since AVX is disabled
-    export CFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
-    export CXXFLAGS="-O3 -march=native -pipe" # -mtune=haswell -pipe"
-    export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
+    export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+    export RUSTFLAGS="-C opt-level=3 -C target-cpu=nocona"
     export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
     # If using -march=native and the CPU supports AVX, launching a d3d9
@@ -401,11 +401,11 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
-            'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
-            '7d989e9b29643897eaadb970d65e71140b11f4d641ef8816bd17feb9ad2ca992'
-            '62f1c2e7295801cedc7b1d8aea6ba3804ea61419cbf6a113dc700d95755ae1d9'
+            'cb03854b5d868b2d0912da42e01536bb673e009ed5263f4eeb8836a2a9c36f43'
+            'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68'
+            '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
+            'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'ef42c2303fd9855687a5fb0fb47a11c5bb4cf3ed7e58d48b82185c96addf6d50'
-            '12a587972a101a6d0c279a3820135277097c5f3e9f5990c5741d5fb1626dc770'
+            '85b334d33bf1f4424f8ca8c613c16ee08716fb952aaa9e93528f4c3320694669'
+            '6ba5728332e5ea2b717855b1cd5c6e13ddc5b3ec34bfed4a78dbe3ef8e289806'
             '6126f8c93d73b7309fb22c244dae645c755c1ed8759caac3edc91d81a71e8f45')

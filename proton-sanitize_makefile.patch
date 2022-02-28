@@ -184,7 +184,7 @@ index c70751a..1096dc1 100644
  endif
  endef
 diff --git a/make/rules-common.mk b/make/rules-common.mk
-index 0e38bb8..5fed88e 100644
+index 0e38bb8..d497b7a 100644
 --- a/make/rules-common.mk
 +++ b/make/rules-common.mk
 @@ -113,8 +113,12 @@ $(2)_LIBFLAGS$(3) = $$(foreach d,$$($(2)_DEPS$(3)),-L$$($$(d)_LIBDIR$(3))) \
@@ -193,7 +193,7 @@ index 0e38bb8..5fed88e 100644
  $(2)_ENV$(3) = \
 +    WINEDEBUG="-all" \
 +    WINEPREFIX="$$(OBJ)/pfx-wine$(3)" \
-+    WINEDLLOVERRIDES="winemenubuilder=d;mscoree=d;mshtml=d" \
++    WINEDLLOVERRIDES="winemenubuilder=d;" \
      CARGO_HOME=$$(OBJ)/.cargo \
      CARGO_TARGET_$$(call toupper,$$(CARGO_TARGET_$(3)))_LINKER="$$(TARGET_$(4)$(3))-gcc" \
 +    CARGO_TARGET_$$(call toupper,$$(CARGO_TARGET_$(3)))_RUSTFLAGS="$$(RUSTFLAGS)" \
