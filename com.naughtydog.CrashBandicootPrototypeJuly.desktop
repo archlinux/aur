@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Crash Bandicoot (Apr 8, 1996 prototype)
+GenericName=Crash Bandicoot (July prototype)
+Comment=No soundtrack; no gems; additional levels.
+Type=Application
+TryExec=duckstation-qt
+Exec=duckstation-qt -fullscreen "/usr/games/com.naughtydog.CrashBandicootPrototypeJuly/SCUS-94900.img"
+Icon=com.naughtydog.CrashBandicootPrototypeJuly
+Categories=Games;
+Terminal=false
+Keywords=Crash
+Actions=preferences;
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=duckstation-qt
+
+X-Desktop-File-Install-Version=0.26

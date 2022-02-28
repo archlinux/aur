@@ -1,0 +1,16 @@
+pkgbase = crash-bandicoot-prototype-july
+	pkgdesc = A prototype of Crash Bandicoot for the PlayStation (July 1996).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://hiddenpalace.org/Crash_Bandicoot_(Jul_15,_1996_prototype)
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SCUS-94900.7z::https://archive.org/download/CrashBandicootJul151996prototype/Crash%20Bandicoot%20%28Jul%2015%2C%201996%20prototype%29.7z
+	source = com.naughtydog.CrashBandicootPrototypeJuly.desktop
+	source = com.naughtydog.CrashBandicootPrototypeJuly.png
+	sha256sums = 224910f62dc2ac7077dade613a740807ae6afe993e2971b76d2f4c2129528e6a
+	sha256sums = 5a03b7e2fde27ac84d40cfedbd32f9ca2249da866a3050b4c199448bda3775a2
+	sha256sums = dd03ddeb7071abd890721a97ef3e8ac23188c3939efa36fc2e4ecd15af78e4de
+
+pkgname = crash-bandicoot-prototype-july
