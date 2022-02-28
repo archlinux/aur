@@ -1,0 +1,16 @@
+pkgbase = crash-bandicoot-prototype
+	pkgdesc = A prototype of Crash Bandicoot for the PlayStation.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://hiddenpalace.org/Crash_Bandicoot_(Apr_8,_1996_prototype)
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SCUS-94900.tar.bz::https://files.hiddenpalace.org/0/04/Crash_bandicoot_1_prototype.tar.bz2
+	source = com.naughtydog.CrashBandicootPrototype.desktop
+	source = com.naughtydog.CrashBandicootPrototype.png
+	sha256sums = 67e051a225b62b37b6adec5079a612f33d8cc2f2cd8f5a6550fa41dec2eb1de0
+	sha256sums = 85fc6ae9eec584a81a8eed657df3f2520b5ce0d1be113a34787c130262b12e3d
+	sha256sums = d0f67dc5a09b76181d490d1e03b611b366af9b61dacaf7ed5d665f813f96842a
+
+pkgname = crash-bandicoot-prototype
