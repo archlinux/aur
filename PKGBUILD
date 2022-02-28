@@ -4,53 +4,33 @@ pkgname=alist-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.1.0
 _pkgver=${pkgver}
-pkgrel=6
+pkgrel=7
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "arm" "armv6h" "armv7h"  "i686" "x86_64")
 url="https://github.com/Xhofe/alist"
 license=('AGPL3')
-makedepends=('go')
 provides=(${_pkgname})
-source=(
-"${_pkgname}-${pkgver}::git+https://github.com/Xhofe/alist#tag=v${pkgver}"
-"${_pkgname}-${pkgver}-web.tar.gz::https://github.com/alist-org/alist-web/releases/download/${pkgver}/dist.tar.gz"
-"alist.service"
+backup=("etc/alist/config.json")
+source=("alist.service" "config.json")
+install=alist.install
+source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-arm64.tar.gz")
+source_arm=("$_pkgname-$pkgver-arm.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-arm-5.tar.gz")
+source_armv6h=("$_pkgname-$pkgver-armv6h.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-arm-6.tar.gz")
+source_armv7h=("$_pkgname-$pkgver-armv7h.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-arm-7.tar.gz")
+source_i686=("$_pkgname-$pkgver-i686.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-386.tar.gz")
+source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-amd64.tar.gz")
+sha256sums=('b96d55f7e83310a7556a5b023be60e12f44c484e3e136f1488d737126c9ed34f'
+'ba9cd5b593313183ad8c0f008a6edba539063193c416d3893a5344e104a3fff1'
 )
-sha256sums=('SKIP'
-            '2bba9149988f9429270d0378750d249ab2c39d210cd3331b0b8b54ee690c39ee'
-            '432974ff640e0830249dd28d9151092caef3e5bfec427ed270a028c5b8c50152')
-prepare(){
-    cd $srcdir/
-    cp -pvrf dist/* ${_pkgname}-${pkgver}/public
-    cd ${_pkgname}-${pkgver}
-    sed -i 's|"data/|"/var/lib/alist/|g' conf/config.go
-    sed -i 's|"data/|"/var/lib/alist/|g' bootstrap/log.go
-
-}
-build(){
-    cd $srcdir/${_pkgname}-${pkgver}
-    appName="alist"
-    builtAt="$(date +'%F %T %z')"
-    goVersion=$(go version | sed 's/go version //')
-    gitAuthor=$(git show -s --format='format:%aN <%ae>' HEAD)
-    gitCommit=$(git log --pretty=format:"%h" -1)
-    gitTag=$(git describe --long --tags --dirty --always)
-    ldflags="\
-    -w -s \
-    -X 'github.com/Xhofe/alist/conf.BuiltAt=$builtAt' \
-    -X 'github.com/Xhofe/alist/conf.GoVersion=$goVersion' \
-    -X 'github.com/Xhofe/alist/conf.GitAuthor=$gitAuthor' \
-    -X 'github.com/Xhofe/alist/conf.GitCommit=$gitCommit' \
-    -X 'github.com/Xhofe/alist/conf.GitTag=$gitTag' \
-    "
-    go build -ldflags="$ldflags" alist.go
-
-
-}
+sha256sums_aarch64=('2421692ba382902212e801db1e2b1bcc073ba03bd0db50995469f8c67317c9c2')
+sha256sums_arm=('ad76cc4f53fe0babc1f9a3a5fc43d7538744796234b41479a9b95225576cb429')
+sha256sums_armv6h=('9f47b7e83cf4af21e1a24b27c7703460351e062541d71fd78a57f5b305162fdd')
+sha256sums_armv7h=('67e927bdae8fa703928b2350c12c125f29d4c4eb9278f3d99650d397543a714e')
+sha256sums_i686=('9d543f2f57019b4476823c7ca38dfcd27cd1b25ad07b89fe5267158c4bc3e2ac')
+sha256sums_x86_64=('c52d35bd04ae6a99763979f290e2124e448809701530a53450d2e48f3e98d21b')
 
 package() {
-    cd $srcdir/
-    install -Dm755 ${_pkgname}-${pkgver}/alist ${pkgdir}/usr/bin/alist
+    install -Dm755 alist-linux* ${pkgdir}/usr/bin/alist
     install -Dm644 alist.service -t ${pkgdir}/usr/lib/systemd/system/
+    install -Dm644 config.json -t ${pkgdir}/etc/alist
 }
-
