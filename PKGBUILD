@@ -1,5 +1,5 @@
 pkgname=sigma-ex-amp-bin
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Audio Assault Modern High Gain Amp Simulator Next Generation"
 arch=('x86_64')
@@ -13,9 +13,10 @@ sha256sums=('81b5cfc2851b158188f60483a18c8f47fa6aa0d7a43d771e16ca6290c2e2ee04')
 
 prepare () {
 	## Extract Duality Bass Studio
-	_archive="`xdg-user-dir DOWNLOAD`/SigmaEXFinal.zip"
+	_archive="`xdg-user-dir DOWNLOAD`/SigmaEXFeb27.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
+	unzip "Sigma EX Linux.zip"
 	find $srcdir -name ".DS_Store" -delete
 }
 
