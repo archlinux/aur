@@ -3,6 +3,7 @@ pkgbase = reshade-shaders-git
 	pkgver = r879.a2314cb
 	pkgrel = 1
 	url = https://github.com/crosire/reshade-shaders
+	install = reshade-shaders.install
 	arch = any
 	license = custom
 	makedepends = git

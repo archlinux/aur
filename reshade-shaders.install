@@ -1,0 +1,4 @@
+post_upgrade() {
+  echo "The files are now installed in a new location to be usable within Steam Proton."
+  echo "You may need to update any config file with a path pointing to the previous location."
+}

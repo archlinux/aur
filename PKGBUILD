@@ -10,6 +10,7 @@ license=('custom')
 makedepends=('git')
 source=("git+https://github.com/crosire/reshade-shaders.git#branch=master")
 sha256sums=(SKIP)
+install=reshade-shaders.install
 
 pkgver() {
   cd "reshade-shaders"
