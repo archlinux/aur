@@ -16,7 +16,7 @@ options=('!strip')
 source=()
 
 source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${pkgver}/mailspring-${pkgver}-amd64.deb")
-sha256sums_x86_64=('e90bf0e2c9d634c92091923ce9df63d80962c7847ff41f60c94f29cd4094ec44')
+sha256sums_x86_64=('1c4b391a5118e9a162a3642a57888ee90ecdbe83dac8122268734b39ae8f7a35')
 
 depends=("libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
 
