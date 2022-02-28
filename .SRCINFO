@@ -1,7 +1,7 @@
 pkgbase = python-cplot
 	pkgdesc = Plot complex functions
 	pkgver = 0.8.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/cplot
 	arch = x86_64
 	license = GPL3

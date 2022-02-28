@@ -3,7 +3,7 @@ _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -25,7 +25,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not riemann'
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not riemann and not tools'
 }
 
 package() {
