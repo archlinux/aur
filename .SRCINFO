@@ -1,0 +1,15 @@
+pkgbase = minics-git
+	pkgdesc = Miniature certificate store for OpenPGP
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/wiktor/minics
+	arch = x86_64
+	license = LGPL
+	makedepends = cargo
+	makedepends = git
+	provides = minics
+	conflicts = minics
+	source = git+https://gitlab.com/wiktor/minics
+	sha512sums = SKIP
+
+pkgname = minics-git
