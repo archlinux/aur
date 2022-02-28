@@ -1,41 +1,25 @@
-# $Id: pkgbuild-mode.el,v 1.23 2007/10/20 16:02:14 juergen Exp $
 # Contributor: Sergey Mastykov <smastykov[at]gmail[dot]com>
-
-pkgbase=python-selection
-pkgname=('python-selection' 'python2-selection')
-pkgver=0.0.11
-pkgrel=1 
+_base=selection
+pkgname=python-${_base}
 pkgdesc="API to extract content from HTML & XML documents"
-arch=('any')
-url="https://pypi.python.org/pypi/selection"
-license=('MIT')
-makedepends=('python' 'python2')
-source=(https://pypi.python.org/packages/source/s/selection/selection-${pkgver}.tar.gz)
-sha256sums=('3e2f5b21bda0c6a877ca42f23f017cb2e95873155fa10ae3ae44520280a9e819')
+pkgver=0.0.14
+pkgrel=1
+arch=(any)
+url="https://pypi.org/project/${_base}"
+license=(MIT)
+depends=(python-lxml python-six python-weblib)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('8749f6c589cbc834f676432f90028161aa9eea029a6960859ae4790378e12736c153b485696b9cf00e0e9eff29afee5b63c2fa1ee69c5d563e406cf7149f29cb')
 
 build() {
-  cd $srcdir
-  cp -r selection-$pkgver selection2-$pkgver
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-check() {
-  cd $srcdir/selection-$pkgver 
-  python3 setup.py check
-  
-  cd $srcdir/selection2-$pkgver 
-  python2 setup.py check  
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-package_python-selection() {
-  depends=('python' 'python-lxml' 'python-six' 'python-weblib')
-  cd "$srcdir/selection-$pkgver"
-  python3 setup.py install --root "${pkgdir}" --optimize=1
-}
-
-package_python2-selection() {
-  depends=('python2' 'python2-lxml' 'python2-six' 'python2-weblib')
-  cd "$srcdir/selection2-$pkgver"
-  python2 setup.py install --root "${pkgdir}" --optimize=1
-}
-
-# vim:set ts=2 sw=2 et:
