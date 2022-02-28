@@ -1,7 +1,7 @@
 pkgbase = python-pychromecast
 	pkgdesc = Library for Python 3 to communicate with the Google Chromecast
-	pkgver = 10.2.3
-	pkgrel = 2
+	pkgver = 10.3.0
+	pkgrel = 1
 	url = https://github.com/home-assistant-libs/pychromecast
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = python-pychromecast
 	depends = python-protobuf
 	depends = python-zeroconf
 	depends = python-casttube
-	source = https://pypi.org/packages/source/P/PyChromecast/PyChromecast-10.2.3.tar.gz
-	sha256sums = ddb86c5acdc13e8bdadd2b7f5738fda36b32c1750548f7b629ca8d178f05e0da
+	source = https://pypi.org/packages/source/P/PyChromecast/PyChromecast-10.3.0.tar.gz
+	sha256sums = 4eb107446fdbed876f48c83202b6212b221286168a55c16b3eb8edf4200f10a1
 
 pkgname = python-pychromecast
