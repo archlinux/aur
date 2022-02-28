@@ -2,7 +2,7 @@
 # Contributor:  Francesco Masala <mail@francescomasala.me>
 
 pkgname=bottles
-pkgver=2022.2.14
+pkgver=2022.2.28
 pkgrel=1
 pkgdesc='Easily manage wine and proton prefix'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   'gamemode')
 makedepends=('meson' 'ninja')
 source=("${pkgname}-${pkgver}-trento.tar.gz::https://github.com/bottlesdevs/Bottles/archive/${pkgver}-trento.tar.gz")
-sha256sums=('7f8b57b444a68c75b6a3c8e6b40bc8b375e3583f1cc325b9c32c2e98e1adb7a2')
+sha256sums=('a22ac7cdc95affc15ca01a5138e4aef2eb192c292ebd6f855da4621e5e880c59')
 
 build() {
   if [[ -d Bottles ]]; then 
