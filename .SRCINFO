@@ -24,4 +24,3 @@ pkgbase = r-promises
 	sha256sums = 8d3a8217909e91f4c2a2eebba5ac8fc902a9ac1a9e9d8a30815c9dc0f162c4b7
 
 pkgname = r-promises
-
