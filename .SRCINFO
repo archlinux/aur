@@ -1,6 +1,6 @@
 pkgbase = pls
 	pkgdesc = A better ls for developers
-	pkgver = 1.12.0
+	pkgver = 1.13.1
 	pkgrel = 1
 	url = https://pypi.org/project/pls/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = pls
 	depends = python-rich
 	depends = python-yaml
 	optdepends = nerd-fonts: icon support
-	source = pls::git+https://github.com/dhruvkb/pls#tag=1.12.0
+	source = pls::git+https://github.com/dhruvkb/pls#tag=1.13.1
 	sha512sums = SKIP
 
 pkgname = pls
