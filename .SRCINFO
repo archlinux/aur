@@ -12,6 +12,7 @@ pkgbase = spek-alternative
 	license = GPL3
 	makedepends = intltool
 	depends = desktop-file-utils
+	depends = ffmpeg
 	depends = ffmpeg4.4
 	depends = wxgtk2
 	provides = spek
