@@ -1,0 +1,11 @@
+--- a/configure
++++ a/configure
+@@ -11,6 +11,8 @@
+ 
+ ROOTDIR=$(cd "$(dirname "$0")"; pwd)
+ test -z "$PKG_CONFIG" && PKG_CONFIG=pkg-config
++
++export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig/
+ 
+ #
+ # Options
