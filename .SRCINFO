@@ -6,12 +6,13 @@ pkgbase = pcraster
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	depends = python-pyqt5-chart
-	depends = cmake
 	depends = boost
 	depends = python-numpy
 	depends = xerces-c
 	depends = gdal
+	depends = ncurses
 	source = https://github.com/pcraster/pcraster/archive/refs/tags/pcraster-4.3.2.tar.gz
 	sha512sums = 78e6b9d2970a9b9d55dba3312e4bd613d3fab714db67139dcc6ae102e62a220543d8e6d15afd343c76d1c02187e6c3626419d9997add65aaf1f66ad1b0738475
 
