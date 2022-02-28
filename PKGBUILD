@@ -33,10 +33,8 @@ build() {
   cd "$pkgname-$pkgver"
   echo $(pwd)
   npm run make-linux
-  mkdir /usr/bin/hentaijs
-  cd out/hentaijs-linux-x64
-  mv * /usr/bin/hentaijs
-  ln -s /usr/bin/hentaijs/hentaijs /usr/bin/hentai.js
+  mkdir -p ~/bin/hentaijs
+  mv out/hentaijs-linux-x64/hentaijs ~/bin/hentaijs
 }
 
 package() {
