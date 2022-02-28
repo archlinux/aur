@@ -9,6 +9,7 @@ pkgbase = python-lifelines
 	depends = python-autograd-gamma
 	depends = python-matplotlib
 	depends = python-pandas
+	depends = python-formulaic
 	options = !emptydirs
 	source = lifelines-0.26.4.tar.gz::https://github.com/CamDavidsonPilon/lifelines/archive/refs/tags/v0.26.4.tar.gz
 	sha256sums = d54e1fb66d3b74a0f1bd139e46a00452d3cc22f0988cfe05e70a43ea0e5fcb03
