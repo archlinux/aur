@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=artanis-git
-pkgver=0.4.1.r26.gf7b80e0
+pkgver=0.5.1.r3.g6528821
 pkgrel=1
 pkgdesc="A fast monolithic web-framework of Scheme"
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   ./autogen.sh 
-  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr \
+  GUILE_EFFECTIVE_VERSION=3.0 ./configure --prefix=/usr \
 			 --bindir=/usr/bin \
 			 --datarootdir=/usr/share \
 			 --infodir=/usr/share/info 
