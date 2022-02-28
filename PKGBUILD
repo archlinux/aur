@@ -1,13 +1,13 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=7.3-GE-1
+_srctag=GE-Proton7-2
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=7.1.2
+_monover=7.1.5
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
 arch=(x86_64 x86_64_v3)
@@ -102,7 +102,7 @@ provides=('proton')
 #install=${pkgname}.install
 source=(
     proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=${_srctag}
-    wine::git+https://github.com/wine-mirror/wine.git
+    wine-valve::git+https://github.com/ValveSoftware/wine.git
     dxvk::git+https://github.com/doitsujin/dxvk.git
     openvr::git+https://github.com/ValveSoftware/openvr.git
     liberation-fonts::git+https://github.com/liberationfonts/liberation-fonts.git
@@ -196,7 +196,7 @@ prepare() {
     cd proton-ge-custom
 
     _submodules=(
-        wine
+        wine-valve::wine
         dxvk
         openvr
         liberation-fonts::fonts/liberation-fonts
@@ -258,7 +258,7 @@ prepare() {
     popd
     done
 
-    ./patches/protonprep.sh
+    ./patches/protonprep-valve.sh
 
     pushd wine
         # From Arch Wine
@@ -406,8 +406,8 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
+            'cb03854b5d868b2d0912da42e01536bb673e009ed5263f4eeb8836a2a9c36f43'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '4eb65888f4f1f56a2c5fb94f2d8138351e18c5356a1359ebbd02b098c1c9a811'
-            '881d710e14a5ef2c98889f2338e1ba68c05961ee6132a82afb12cfc0ec7e9906'
+            '70552bec5f83dc8c43dbfdf4746a2317de2adac2111d27aea4bd5ccb8378f874'
+            '586eca7ba347a1b9dd84f3fcf1b8ed4ed8bf9866c6c68fb67b95e855dd5f0a78'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')

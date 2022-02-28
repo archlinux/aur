@@ -1,5 +1,5 @@
 diff --git a/Makefile.in b/Makefile.in
-index 8eb74e70..11b4f7c7 100644
+index 1c4fd7d4..4574b32d 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -63,7 +63,6 @@ ifeq ($(ENABLE_CCACHE),1)
@@ -45,7 +45,7 @@ index 8eb74e70..11b4f7c7 100644
  	rm -rf $(abspath $(DIST_PREFIX))
  	python3 $(SRCDIR)/default_pfx.py $(abspath $(DIST_PREFIX)) $(abspath $(DST_DIR)) $(STEAM_RUNTIME_RUNSH)
  
-@@ -451,11 +451,15 @@ $(eval $(call rules-meson,dav1d,64))
+@@ -449,11 +449,15 @@ $(eval $(call rules-meson,dav1d,64))
  ##
  
  GST_COMMON_MESON_ARGS := \
@@ -61,7 +61,7 @@ index 8eb74e70..11b4f7c7 100644
  	-Dglib-asserts=disabled \
  	-Dglib-checks=disabled \
  	-Dnls=disabled \
-@@ -479,6 +483,8 @@ GSTREAMER_MESON_ARGS := \
+@@ -477,6 +481,8 @@ GSTREAMER_MESON_ARGS := \
  	-Dbenchmarks=disabled \
  	-Dtools=disabled \
  	-Dbash-completion=disabled \
@@ -70,7 +70,7 @@ index 8eb74e70..11b4f7c7 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GSTREAMER_DEPENDS = gst_orc
-@@ -515,6 +521,7 @@ GST_BASE_MESON_ARGS := \
+@@ -513,6 +519,7 @@ GST_BASE_MESON_ARGS := \
  	-Dx11=disabled \
  	-Dxshm=disabled \
  	-Dxvideo=disabled \
@@ -78,7 +78,7 @@ index 8eb74e70..11b4f7c7 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BASE_DEPENDS = gst_orc gstreamer
-@@ -578,7 +585,7 @@ GST_GOOD_MESON_ARGS := \
+@@ -576,7 +583,7 @@ GST_GOOD_MESON_ARGS := \
  	-Dwavenc=disabled \
  	-Dximagesrc=disabled \
  	-Dy4m=enabled \
@@ -87,7 +87,7 @@ index 8eb74e70..11b4f7c7 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_GOOD_DEPENDS = gst_orc gstreamer gst_base
-@@ -594,6 +601,8 @@ $(eval $(call rules-meson,gst_good,64))
+@@ -592,6 +599,8 @@ $(eval $(call rules-meson,gst_good,64))
  
  GST_LIBAV_MESON_ARGS := \
          -Ddoc=disabled \
@@ -96,7 +96,7 @@ index 8eb74e70..11b4f7c7 100644
      $(GST_COMMON_MESON_ARGS)
  
  GST_LIBAV_DEPENDS = gst_orc gstreamer gst_base
-@@ -663,6 +672,8 @@ GST_BAD_MESON_ARGS := \
+@@ -661,6 +670,8 @@ GST_BAD_MESON_ARGS := \
  	-Dvoamrwbenc=disabled \
  	-Dnvcodec=disabled \
  	-Dx265=disabled \
@@ -105,7 +105,7 @@ index 8eb74e70..11b4f7c7 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_BAD_DEPENDS = gst_orc gstreamer gst_base
-@@ -677,6 +688,7 @@ $(eval $(call rules-meson,gst_bad,64))
+@@ -675,6 +686,7 @@ $(eval $(call rules-meson,gst_bad,64))
  
  GST_UGLY_MESON_ARGS := \
          -Ddoc='disabled' \
@@ -113,7 +113,7 @@ index 8eb74e70..11b4f7c7 100644
  	$(GST_COMMON_MESON_ARGS)
  
  GST_UGLY_DEPENDS = gst_orc gstreamer gst_base
-@@ -808,7 +820,13 @@ WINE_SOURCE_ARGS = \
+@@ -806,7 +818,13 @@ WINE_SOURCE_ARGS = \
    --exclude include/config.h.in \
  
  WINE_CONFIGURE_ARGS = \
@@ -127,7 +127,7 @@ index 8eb74e70..11b4f7c7 100644
    --disable-tests
  
  WINE_CONFIGURE_ARGS64 = --enable-win64
-@@ -871,6 +889,9 @@ $(OBJ)/.vrclient-post-source:
+@@ -869,6 +887,9 @@ $(OBJ)/.vrclient-post-source:
  DXVK_MESON_ARGS32 = --bindir=$(DXVK_DST32)/lib/wine/dxvk
  DXVK_MESON_ARGS64 = --bindir=$(DXVK_DST64)/lib64/wine/dxvk
  
@@ -137,7 +137,7 @@ index 8eb74e70..11b4f7c7 100644
  $(eval $(call rules-source,dxvk,$(SRCDIR)/dxvk))
  $(eval $(call rules-meson,dxvk,32,CROSS))
  $(eval $(call rules-meson,dxvk,64,CROSS))
-@@ -893,6 +914,9 @@ $(OBJ)/.dxvk-post-build32:
+@@ -891,6 +912,9 @@ $(OBJ)/.dxvk-post-build32:
  DXVK_NVAPI_MESON_ARGS32 = --bindir=$(DXVK_NVAPI_DST32)/lib/wine/nvapi
  DXVK_NVAPI_MESON_ARGS64 = --bindir=$(DXVK_NVAPI_DST64)/lib64/wine/nvapi
  
@@ -147,7 +147,7 @@ index 8eb74e70..11b4f7c7 100644
  $(eval $(call rules-source,dxvk-nvapi,$(SRCDIR)/dxvk-nvapi))
  $(eval $(call rules-meson,dxvk-nvapi,32,CROSS))
  $(eval $(call rules-meson,dxvk-nvapi,64,CROSS))
-@@ -956,10 +980,13 @@ VKD3D_PROTON_SOURCE_ARGS = \
+@@ -954,10 +978,13 @@ VKD3D_PROTON_SOURCE_ARGS = \
    --exclude vkd3d_build.h.in \
    --exclude vkd3d_version.h.in \
  
