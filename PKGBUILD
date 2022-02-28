@@ -1,12 +1,11 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-3
+_srctag=GE-Proton7-4
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.5
-_proton_commit=b88a829b030a1521aef63fae128f2d955270fa7a
 pkgrel=1
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
@@ -119,20 +118,16 @@ source=(
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
     gst-libav::git+https://gitlab.freedesktop.org/gstreamer/gst-libav.git
-    ffmpeg-meson::git+https://gitlab.freedesktop.org/gstreamer/meson-ports/ffmpeg.git
+    ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git
     dav1d::git+https://code.videolan.org/videolan/dav1d.git
     gst-plugins-rs::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs.git
     dxil-spirv::git+https://github.com/HansKristian-Work/dxil-spirv.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
-    lsteamclient-gloriouseggroll::git+https://github.com/gloriouseggroll/lsteamclient.git
-    vrclient_x64-gloriouseggroll::git+https://github.com/gloriouseggroll/vrclient_x64.git
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
-    proton::git+https://github.com/ValveSoftware/Proton.git#commit=${_proton_commit}
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
-    https://github.com/wine-mirror/wine/commit/25946b48148784e8275c1685f6498ab88f553ca3.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
     proton-disable_lock.patch
@@ -215,12 +210,10 @@ prepare() {
         SPIRV-Headers
         Vulkan-Loader
         gst-libav
-        ffmpeg-meson::FFmpeg
+        ffmpeg::FFmpeg
         dav1d
         gst-plugins-rs
         wine-staging
-        lsteamclient-gloriouseggroll::lsteamclient
-        vrclient_x64-gloriouseggroll::vrclient_x64
         protonfixes-gloriouseggroll::protonfixes
         gst-plugins-bad
         gst-plugins-ugly
@@ -270,17 +263,11 @@ prepare() {
         sed 's/-lldap_r/-lldap/' -i configure
         # Adds more 16:10 resolutions for use with FSR
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
-        # Fix wldap32 compilation
-        patch -p1 -i "$srcdir"/25946b48148784e8275c1685f6498ab88f553ca3.patch
     popd
 
     patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
-
-    # Copy vrclient_x64 from Proton until the repo submodule is updated
-    rm -rf vrclient_x64
-    cp -r "$srcdir"/proton/vrclient_x64 vrclient_x64
 
     # Remove repos from srcdir to save space
     for submodule in "${_submodules[@]}"; do
@@ -289,7 +276,6 @@ prepare() {
     rm -rf "$srcdir"/dxil-spirv
     rm -rf "$srcdir"/Vulkan-Headers
     rm -rf "$srcdir"/SPIRV-Headers
-    rm -rf "$srcdir"/proton
 }
 
 build() {
@@ -412,14 +398,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'SKIP'
-            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'cb03854b5d868b2d0912da42e01536bb673e009ed5263f4eeb8836a2a9c36f43'
-            '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'cb6abcf9da238c541be51b812402875f9f62759001c209bdcd2b7a0a07302cc7'
+            'c6c640110fcb194b512ed94f4ec40cbf560cd4df5e9993fb821da3ca5b771297'
             'e5cb2054a5d23e956d7cd85c2f716c03852fe78c54ad689f2946ffe68a76c56a'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
