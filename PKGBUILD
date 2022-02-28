@@ -33,12 +33,12 @@ build() {
   cd "$pkgname-$pkgver"
   echo $(pwd)
   npm run make-linux
-}
-
-package() {
-  echo "idk what to put here"
   mkdir /usr/bin/hentaijs
   cd out/hentaijs-linux-x64
   mv * /usr/bin/hentaijs
   ln -s /usr/bin/hentaijs/hentaijs /usr/bin/hentai.js
+}
+
+package() {
+  echo "idk what to put here"
 }
