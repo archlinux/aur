@@ -1,7 +1,7 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Barfin
 
 pkgname=green-tunnel-bin
-pkgver=1.7.4
+pkgver=1.8.3
 pkgrel=1
 pkgdesc='An anti-censorship utility designed to bypass the DPI system that is put in place by various ISPs to block access to certain websites'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nss'
          'libxss')
 makedepends=('tar')
 source=("${pkgname}-${pkgver}.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v${pkgver}/green-tunnel-debian.zip")
-sha256sums=('9b7da96908ead5252f233713c16967ddcc3a6eff0282a43cf91e5e623c596b6c')
+sha256sums=('d00a6f4e43993a4b8c96546a3a8afbe04a5d11d0d65ab9dcc5137b0b6857f3dc')
 
 package() {
   ar x green-tunnel_${pkgver}_amd64.deb
