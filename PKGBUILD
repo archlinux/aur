@@ -5,7 +5,7 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton7_1
+pkgver=GE_Proton7_2
 pkgrel=1
 # remove epoch after some time, maybe 3 month or so
 # we need to do this since upstream naming has changed :(
@@ -65,10 +65,10 @@ backup=("${_protoncfg}")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
-source=(${_pkgname}-${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
+source=(${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
         "supplementary.tar.zst")
-sha512sums=('e41efb3b1ad9014a6b23a62b9372623e456db4b4546c44966b867d5ce0bbc5367d4c17046ed108179b69d27c2ee8e323a8e57698683e4ca807a23a9a5b16db41'
-            'a5cacb0d5a619fbdcf89840ad818185d123dc9627592330435f9bdde45b9ae6b740e6d72e1af1c5267687055fb04c49bef2a940b4d80cae57170ebe692fb8523')
+sha512sums=('7e6c3646f11425cb074734b99d7af626c9a37cd193076accf42b3336f6bbee643553165021c5de16b5cfa6dce5d6cf4ef908019a2b681fe1c557e79b1489a53c'
+            '44e72a7ac5014cbb9686aed4b9c8c83011947610d8365b51cef5e2527c787cc1752e2aa64895b8a18d8b4af774c75acf62a27ec392c38b61d9ea8cb43fbda8fe')
 
 build() {
 ## patches
