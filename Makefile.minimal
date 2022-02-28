@@ -7,6 +7,8 @@ DIRS = src
 
 TEST_DIRS =
 
+PEGASUS_ENABLE_CQL = false
+
 include $(ROOT)/mak/recurse.mak
 
 .PHONY: FORCE
@@ -20,7 +22,6 @@ minimal: FORCE
 	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Client -f Makefile
 	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Config -f Makefile
 	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Query/QueryCommon -f Makefile
-	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/CQL -f Makefile
 	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/WQL -f Makefile
 	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Query/QueryExpression -f Makefile
 	$(MAKE) --directory=$(PEGASUS_ROOT)/src/Pegasus/Provider -f Makefile

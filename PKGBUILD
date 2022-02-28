@@ -2,21 +2,20 @@
 
 pkgname=lsi-openpegasus
 pkgver=2.14.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Openpegasus libs for LSI (Broadcom) Raid products"
 arch=('x86_64')
 url='http://www.avagotech.com/products/server-storage'
 license=('custom:TOG')
 depends=('sqlite'
          'openssl'
-         'libxcrypt'
-         'libcrypt.so'
+         'libcrypt.so=2'
          )
 makedepends=('icu'
-             'openssl'
              'net-snmp'
              'openslp'
              'setconf'
+             'libxcrypt'
              )
 source=('https://collaboration.opengroup.org/pegasus/documents/32572/pegasus-2.14.1.tar.gz'
         'https://src.fedoraproject.org/rpms/tog-pegasus/raw/main/f/pegasus-2.7.0-PIE.patch'
@@ -36,7 +35,7 @@ sha256sums=('9f2f13a35da218f3cb6e8478246ff7c4d3010560bb4d5de9cbf4272d48e353fb'
             '5de02253442ef8cb3b6f744fa4dd3237b66d96911ab8badd63336a7e1d28a429'
             'deb3e52e5406419cc42d15f1a668ed291ef8337217bb5bc9cefd01ef3b804371'
             '832be374999213a6d940e84c449a7c3566d9dda2b1c2348d7bc601bc907fc228'
-            '7cd222778cc829536ef6fb9c6fb688ac1114f6492cfa61b3881e655c5f38ac96'
+            'SKIP'
             )
 options=('debug')
 
@@ -68,17 +67,17 @@ prepare() {
   # set lib output directory
   setconf configure libbase lib
 
-  # add missing z library
-  sed 's|lcrypt|& -lz|g' -i mak/config-linux.mak
-
-  # silence deprecation warning (?)
+  # silence easy deprecation warnings
+  # https://man7.org/linux/man-pages/man3/pthread_yield.3.html
   sed 's|pthread_yield|sched_yield|g' -i src/Pegasus/Common/Threads.h
+  # https://www.openssl.org/docs/manmaster/man3/ERR_remove_state.html
+  sed 's|ERR_remove_state(0);||g' -i src/Pegasus/Common/SSLContextRep.h
 }
 
 build() {
   cd pegasus
 
-  export PEGASUS_EXTRA_C_FLAGS="${CFLAGS} -Wall -Wno-unused -fno-strict-aliasing"
+  export PEGASUS_EXTRA_C_FLAGS="${CFLAGS} -fno-strict-aliasing"
   export PEGASUS_EXTRA_CXX_FLAGS="${PEGASUS_EXTRA_C_FLAGS} -std=c++14"
   export PEGASUS_EXTRA_LINK_FLAGS="${LDFLAGS}"
   export PEGASUS_EXTRA_PROGRAM_LINK_FLAGS="-pie -Wl,-z,relro,-z,now,-z,nodlopen,-z,noexecstack"
@@ -96,7 +95,6 @@ package() {
                 'libpegclient.so.1'
                 'libpegcommon.so.1'
                 'libpegconfig.so.1'
-                'libpegcql.so.1'
                 'libpegexportserver.so.1'
                 'libpeggeneral.so.1'
                 'libpeghandler.so.1'
