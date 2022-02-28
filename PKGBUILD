@@ -48,7 +48,9 @@ MOLD="YES"        # Use the mold linker.
                   # This is the default linker.
                   # Notice that it will always be used.
 
-JIT="YES"         # Enable native just-in-time compilation. libgccjit is in AUR.
+JIT="YES"         # Enable native just-in-time compilation. Use libgccjit,
+                  # which is already included in Arch's gcc package.
+                  #
                   # This compiles only performance critical elisp files.
                   #
                   # To compile all elisp on demand, add
@@ -161,14 +163,6 @@ if [[ $CLANG == "YES" ]]; then
   else
   makedepends+=( 'lld' )
   export LD="/usr/bin/lld" ;
-  fi
-fi
-
-if [[ $JIT == "YES" ]]; then
-  if [[ $CLI == "YES" ]]; then
-    depends_nox+=( 'libgccjit' );
-  else
-    depends+=( 'libgccjit' );
   fi
 fi
 
