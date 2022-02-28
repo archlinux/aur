@@ -1,0 +1,14 @@
+pkgbase = rvpk
+	pkgdesc = Extract Valve VPK (V1 & V2) archives (and create V1 archives)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/panzi/rust-vpk
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	depends = gcc-libs
+	depends = fuse2
+	source = https://github.com/panzi/rust-vpk/archive/refs/tags/v1.1.0.tar.gz
+	b2sums = 2f62758e7a702044b14a4be121c284e9ad1911195c8b20ceb08285cb56271a1d42bf7f907c1534caf8e9669a8ba49965857c359dfdcdc11bd1d0a89d286a86ae
+
+pkgname = rvpk
