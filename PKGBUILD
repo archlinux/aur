@@ -5,7 +5,7 @@
 pkgname=gtk-theme-windows10
 pkgver=3.2.1
 pkgrel=1
-pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
+pkgdesc="GTK 3.x Theme that looks like the Windows 10 default theme."
 arch=('any')
 url="https://github.com/B00merang-Project/Windows-10"
 license=('GPL')
