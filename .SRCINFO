@@ -1,5 +1,5 @@
 pkgbase = syncthing-git
-	pkgver = 1.16.1.r22.g3746c899b
+	pkgver = 1.19.1.rc.2.r4.gbd0acd04b
 	pkgrel = 1
 	url = https://syncthing.net/
 	arch = x86_64
@@ -7,6 +7,7 @@ pkgbase = syncthing-git
 	makedepends = git
 	makedepends = go
 	makedepends = inetutils
+	options = !lto
 	source = git+https://github.com/syncthing/syncthing.git
 	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/syncthing/trunk/syncthing-relaysrv.sysusers
 	source = https://raw.githubusercontent.com/archlinux/svntogit-community/packages/syncthing/trunk/syncthing-relaysrv.tmpfiles
@@ -27,4 +28,3 @@ pkgname = syncthing-relaysrv-git
 	pkgdesc = Relay server for Syncthing
 	provides = syncthing-relaysrv
 	conflicts = syncthing-relaysrv
-

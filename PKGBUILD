@@ -7,7 +7,7 @@
 
 pkgbase=syncthing-git
 pkgname=(syncthing-git syncthing-relaysrv-git)
-pkgver=1.16.1.r22.g3746c899b
+pkgver=1.19.1.rc.2.r4.gbd0acd04b
 pkgrel=1
 arch=(x86_64)
 url="https://syncthing.net/"
@@ -23,6 +23,7 @@ sha256sums=('SKIP'
             'f899998985f2d374af57f17ef6362c37a305467858195b74d1c1def71d97273f'
             '7c2fbc9608d81f8080f8a9102b867a52a050b61f426a0c182ccc1cb5815e4981'
             '4e00b06544a900b206fc41b9250ab75ea51b8e1489b1eff042da4f08d8a84ab0')
+options=(!lto)
 
 prepare() {
   install -d "src/github.com/syncthing"
@@ -46,8 +47,8 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-  go run build.go -no-upgrade -version v${pkgver} build
-  go run build.go -no-upgrade -version v${pkgver} build strelaysrv
+  go run build.go -no-upgrade build
+  go run build.go -no-upgrade build strelaysrv
 }
 
 check() {
