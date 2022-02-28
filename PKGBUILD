@@ -6,7 +6,7 @@
 pkgname=studio-3t
 pkgver=2022.2.0
 pkgrel=1
-pkgdesc="The professional workspace for MongoDB (formerly known as MongoChef)"
+pkgdesc="The Professional Client, IDE and GUI for MongoDB"
 arch=('x86_64')
 url="https://studio3t.com"
 license=("custom")
