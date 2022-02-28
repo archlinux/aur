@@ -22,7 +22,7 @@ sha256sums_x86_64=('67d1173fdf7c4c528f4027147463597cffdef9d50ddcf0c74c9651685b1c
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}-${CARCH}"
-    bsdtar --strip-components 1 -zxf "${pkgname}-${pkgver}.tar.gz" -C "${pkgname}-${pkgver}-${CARCH}"
+    bsdtar --strip-components 1 -zxf "${pkgname}-${pkgver}-${CARCH}.tar.gz" -C "${pkgname}-${pkgver}-${CARCH}"
 }
 
 package() {
