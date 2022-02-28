@@ -1,30 +1,39 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: codyfish <fe27 at gmx dot net>
+# Contributor: sofiageo <george at sofianos dot dev>
 pkgname=rocm-validation-suite
-pkgver=3.10.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Tool for detecting and troubleshooting common problems affecting AMD
 GPUs"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/ROCmValidationSuite"
 license=('MIT')
-depends=('pciutils' 'doxygen' 'rocblas' 'rocm-smi-lib64' 'git')
+depends=('pciutils' 'doxygen' 'rocblas' 'rocm-smi-lib64' 'git' 'libpciaccess')
 makedepends=('cmake')
-options=(!staticlibs strip)
+options=(!staticlibs strip !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/ROCmValidationSuite/archive/rocm-$pkgver.tar.gz"
-        "action.patch")
-sha256sums=('9f9a530f7850770663e0b0ec0c786367f2e22500a472ac6652c4fd9fb4df4f64'
-            '8edac06b0658c77f91ce77bbfbe539c4f001b27ab205aabcad91cbecf19bd4d0')
+        "gtest.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/ROCmValidationSuite/pull/523.patch"
+        "rvs-os-type.patch::https://github.com/acxz/ROCmValidationSuite/commit/eb1a4bf5de8d8ba25f21ee13d6af1c46416e3961.patch")
+sha256sums=('d4348bb2894e64727daba8006b9ae5b64622051aeef637442be069ecd5ce10c8'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd "$srcdir/ROCmValidationSuite-rocm-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/action.patch"
+  patch --forward --strip=1 --input="${srcdir}/gtest.patch"
+  patch --forward --strip=1 --input="${srcdir}/rvs-os-type.patch"
 }
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
 
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm/rvs \
+  # -fcf-protection is not supported by HIP, see
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/develop/docs/markdown/clang_options.md
+  CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
+  cmake -DROCM_PATH=/opt/rocm \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         "$srcdir/ROCmValidationSuite-rocm-$pkgver"
   make
 }
@@ -37,7 +46,7 @@ package() {
   # add links
   install -d "$pkgdir/usr/bin"
   local _fn
-  for _fn in rocm_validation_suite; do
-    ln -s "/opt/rocm/rvs/bin/$_fn" "$pkgdir/usr/bin/$_fn"
+  for _fn in rvs; do
+    ln -s "/opt/rocm/rvs/$_fn" "$pkgdir/usr/bin/$_fn"
   done
 }
