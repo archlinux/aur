@@ -4,7 +4,7 @@
 pkgname=deal-ii
 _realname=dealii
 pkgver=9.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
@@ -111,6 +111,13 @@ build() {
 
   sed -i '122ifedisableexcept(FE_INVALID);\n' \
       ${srcdir}/${_realname}-$pkgver/tests/quick_tests/scalapack.cc
+
+  # Fix a test to work with TBB's oneAPI:
+  sed -i '/include .tbb.task_scheduler.init.h./d' \
+      ${srcdir}/${_realname}-$pkgver/tests/quick_tests/tbb.cc
+
+  sed -i 's/tbb::task_scheduler_init::default_num_threads/MultithreadInfo::n_threads/' \
+      ${srcdir}/${_realname}-$pkgver/tests/quick_tests/tbb.cc
 
   # Also remove from LDFLAGS if necessary
   LDFLAGS=$(echo $LDFLAGS | sed 's/--as-needed,//')
