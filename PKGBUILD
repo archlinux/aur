@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2022.01
+pkgver=2022.02
 pkgrel=1
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
