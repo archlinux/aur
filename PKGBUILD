@@ -15,7 +15,6 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 # 	'python-pytz'
 # 	'python-pandas'
 # 	'python-numba')
-optdepends=()
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/f/fluids/fluids-$pkgver.tar.gz")
 sha256sums=('4bfe176256d8c8ce3038c802574e0d1931bff93a912ab6998d51210b138cf8dd')
 
