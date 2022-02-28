@@ -10,8 +10,10 @@ pkgbase = propertree-git
 	source = propertree-git::git+https://github.com/corpnewt/ProperTree
 	source = ProperTree.desktop
 	source = ProperTree
+	source = ProperTree.png
 	sha256sums = SKIP
 	sha256sums = e788f1b98035a6293490411ba606618d1a0507e3403a38fef90a63010917e58c
 	sha256sums = 802aac15fd9115d6a1ce98ba14c597737595af938ae6fb0e8a62fde719dd5357
+	sha256sums = af2748672492af4c6d83070b4df8956c278db5cd83150dce9ea5ac3c37823137
 
 pkgname = propertree-git
