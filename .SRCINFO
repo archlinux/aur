@@ -1,5 +1,5 @@
 pkgbase = yank-note-bin
-	pkgdesc = An Electron-based music player
+	pkgdesc = A Hackable Markdown Note Application for Programmers.
 	pkgver = 3.24.0
 	pkgrel = 1
 	url = https://github.com/purocean/yn
