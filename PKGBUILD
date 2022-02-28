@@ -1,32 +1,24 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-nvidia
-pkgver=4.5.2
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
 license=('MIT')
 makedepends=('libelf' 'cmake' 'git')
-depends=('cuda' 'llvm-amdgpu')
+depends=('cuda' 'rocm-llvm')
 provides=('hip')
 conflicts=('hip')
 _hip='https://github.com/ROCm-Developer-Tools/HIP'
 _hipamd='https://github.com/ROCm-Developer-Tools/hipamd'
 source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
-        "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
-        'disable-testing.patch')
-sha256sums=('c2113dc3c421b8084cd507d91b6fbc0170765a464b71fb0d96bb875df368f160'
-            'b6f35b1a1d0c466b5af28e26baf646ae63267eccc4852204db1e0c7222a39ce2'
-            '3f158fb78296477db176c53a8df60b8034004c400b6c62f558c94663a5246883')
+        "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz")
+sha256sums=('508555cb068f0c35b930d8f7fc0bb42c64cc555e618434b9135d8d0257ff6977'
+            'f75389b799fc5117452ed74cb4ee2afbb6de93de4367a065851ddc74ea4f9ee3')
 _dirhip="$(basename "$_hip")-$(basename "${source[0]}" ".tar.gz")"
 _dirhipamd="$(basename "$_hipamd")-$(basename "${source[1]}" ".tar.gz")"
-
-prepare() {
-  cd "$_dirhipamd"
-  # Tests are broken with cmake 3.21
-  patch -Np1 -i "$srcdir/disable-testing.patch"
-}
 
 build() {
   mkdir build && cd build
