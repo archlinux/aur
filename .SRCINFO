@@ -1,0 +1,19 @@
+pkgbase = python-chemicals
+	pkgdesc = Chemical database of Chemical Engineering Design Library
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/calebbell/chemicals
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-pandas
+	depends = python-fluids
+	source = python-chemicals-1.0.17.tar.gz::https://files.pythonhosted.org/packages/source/c/chemicals/chemicals-1.0.17.tar.gz
+	sha256sums = 5ca049e432c80ec30835612f4a6cac34bc065f15c1d874945b5bdc2f788f4261
+
+pkgname = python-chemicals
