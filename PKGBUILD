@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://studio3t.com"
 license=("custom")
 depends=('gtk2')
-makedepends=('gendesk' 'unzip')
+makedepends=('gendesk')
 provides=('studio-3t')
 replaces=('mongochef')
 
