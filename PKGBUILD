@@ -6,14 +6,14 @@ pkgver=2.4.6
 pkgrel=1
 pkgdesc="Extract Tool and Lib for open Half-Life and other games package formats"
 arch=('x86_64')
-url='http://nemesis.thewavelength.net/index.php?c=108'
+url='https://nemstools.github.io/pages/Miscellaneous-HLLib.html'
 license=('GPL' 'LGPL')
 depends=('gcc-libs')
 makedepends=('git')
 provides=('hlextract'
           'hllib'
           )
-source=("hllib-${pkgver}.zip::http://nemesis.thewavelength.net/files/files/hllib${pkgver/./}.zip"
+source=("hllib-${pkgver}.zip::http://nemstools.github.io/files/hllib${pkgver//./}.zip"
         "hllib-${pkgver}-r1.patch"
         )
 sha256sums=('ed12bee31ec867a92e3daf4c52653ea2afb78c4ce69ca01a6f1588068ae5a1e9'
