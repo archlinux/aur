@@ -3,8 +3,8 @@
 # Contributor: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10
-pkgver=3.2
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines."
 arch=('any')
 url="https://github.com/B00merang-Project/Windows-10"
@@ -14,7 +14,7 @@ optdepends=('gnome-themes-extra: for the GTK3 theme?'
             'windows10-tint2rc: theme for tint2')
 changelog=${pkgname}.changelog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/B00merang-Project/Windows-10/archive/${pkgver}.tar.gz")
-sha1sums=('f68b7fadb2a94fa056ab5aab437ce027ec9ea49d')
+sha1sums=('3ab1dd1ecc386e57f42a3ce5f0b9f30a6490e0a3')
 
 
 package() {
