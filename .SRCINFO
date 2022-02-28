@@ -1,6 +1,6 @@
 pkgbase = rocblas
 	pkgdesc = Next generation BLAS implementation for ROCm platform
-	pkgver = 5.0.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://rocblas.readthedocs.io/en/latest
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = rocblas
 	depends = hip
 	depends = openmp
 	options = !strip
-	source = rocblas-5.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.0.0.tar.gz
-	sha256sums = 4b01fba937ada774f09c7ccb5e9fdc66e1a5d46c130be833e3706e6b5841b1da
+	source = rocblas-5.0.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocBLAS/archive/rocm-5.0.1.tar.gz
+	sha256sums = a2f615046d77ca7bddd93d88a7638cf0b2cc18e0614be5ca93e758c9ada11bf8
 
 pkgname = rocblas
