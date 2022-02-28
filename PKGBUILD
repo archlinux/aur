@@ -2,7 +2,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 
 pkgname=ignition-cmake
-pkgver=2.10.0
+pkgver=2.11.0
 pkgrel=1
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('cmake' 'pkg-config' 'ruby-ronn' 'doxygen')
 optdepends=()
 conflicts=()
 source=("https://github.com/ignitionrobotics/ign-cmake/archive/${pkgname}2_${pkgver}.tar.gz")
-sha256sums=('b6075d0835d50a7fe2e1cdfce9fabe74a76d3e5cf677ce1da203bfa88035e88a')
+sha256sums=('d9e0f211b4395555c7c3e21ff58d32c7fe8578a6c0bc9ed443201dbaf70df547')
 
 _dir="ign-cmake-${pkgname}2_${pkgver}"
 
