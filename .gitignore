@@ -10,3 +10,4 @@
 !msm_profile.sh
 !ld.so.lsi-msm.conf
 !ld.so.lsi-msm-snmp.conf
+!tweak_scripts.diff

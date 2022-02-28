@@ -17,8 +17,15 @@ post_install() {
   ldconfig &> /dev/null
 
   . /etc/profile.d/msm.sh
-  cd "$MSM_HOME"
-  /usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=$MSM_HOME/jre -Djava.util.prefs.userRoot=$MSM_HOME/jre/.userPrefs -classpath .:GUI.jar ExternalApp.ConfigRepositoryMain 71244 -set INSTALLER_VERSION "v${1%-*}"
+  cd "${MSM_HOME}"
+  LC_ALL=C \
+  /usr/lib/jvm/java-8-openjdk/jre/bin/java \
+   -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
+   -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
+   -classpath .:GUI.jar \
+   ExternalApp.ConfigRepositoryMain 71244 \
+   -set INSTALLER_VERSION "v${1%-*}" \
+   &> /dev/null
 
   _instructions
 }
@@ -27,21 +34,54 @@ post_upgrade() {
   ldconfig &> /dev/null
 
   . /etc/profile.d/msm.sh
-  cd "$MSM_HOME"
+  cd "${MSM_HOME}"
   rm -fr ActiveClientList.txt
-  /usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=$MSM_HOME/jre -Djava.util.prefs.userRoot=$MSM_HOME/jre/.userPrefs -classpath .:Framework/Framework.jar VivaldiHeartbeat ActiveClientList.txt
-  /usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=$MSM_HOME/jre -Djava.util.prefs.userRoot=$MSM_HOME/jre/.userPrefs -classpath .:GUI.jar ExternalApp.ConfigRepositoryMain 71244 -clear
-  /usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=$MSM_HOME/jre -Djava.util.prefs.userRoot=$MSM_HOME/jre/.userPrefs -classpath .:GUI.jar ExternalApp.ConfigRepositoryMain 71244 -set INSTALLER_VERSION "v${1%-*}"
+  LC_ALL=C \
+  /usr/lib/jvm/java-8-openjdk/jre/bin/java \
+    -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
+    -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
+    -classpath .:Framework/Framework.jar \
+    VivaldiHeartbeat ActiveClientList.txt \
+    &> /dev/null
+  LC_ALL=C \
+  /usr/lib/jvm/java-8-openjdk/jre/bin/java \
+    -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
+    -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
+    -classpath .:GUI.jar \
+    ExternalApp.ConfigRepositoryMain 71244 \
+    -clear \
+    &> /dev/null
+  LC_ALL=C \
+  /usr/lib/jvm/java-8-openjdk/jre/bin/java \
+    -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
+    -Djava.util.prefs.userRoot="$MSM_HOME}/jre/.userPrefs" \
+    -classpath .:GUI.jar \
+    ExternalApp.ConfigRepositoryMain 71244 \
+    -set INSTALLER_VERSION "v${1%-*}" \
+    &> /dev/null
 
   _instructions
 }
 
 pre_remove() {
   . /etc/profile.d/msm.sh
-  cd "$MSM_HOME"
+  cd "${MSM_HOME}"
   rm -fr ActiveClientList.txt
-  /usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=$MSM_HOME/jre -Djava.util.prefs.userRoot=$MSM_HOME/jre/.userPrefs -classpath .:Framework/Framework.jar VivaldiHeartbeat ActiveClientList.txt
-  /usr/lib/jvm/java-8-openjdk/jre/bin/java -Djava.util.prefs.systemRoot=$MSM_HOME/jre -Djava.util.prefs.userRoot=$MSM_HOME/jre/.userPrefs -classpath .:GUI.jar ExternalApp.ConfigRepositoryMain 71244 -clear
+  LC_ALL=C \
+  /usr/lib/jvm/java-8-openjdk/jre/bin/java \
+    -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
+    -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
+    -classpath .:Framework/Framework.jar \
+    VivaldiHeartbeat ActiveClientList.txt \
+    &> /dev/null
+  LC_ALL=C \
+  /usr/lib/jvm/java-8-openjdk/jre/bin/java \
+    -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
+    -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
+    -classpath .:GUI.jar \
+    ExternalApp.ConfigRepositoryMain 71244 \
+    -clear \
+    &> /dev/null
 
   if [ "$(systemctl is-active lsi_msm)" = "active" ]; then
     systemctl stop lsi_msm

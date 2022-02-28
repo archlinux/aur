@@ -1,0 +1,223 @@
+diff --git a/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh b/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
+index 832433f..3a68c5c 100755
+--- a/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
++++ b/usr/share/MegaRAID_Storage_Manager/Framework/shutdown.sh
+@@ -1,6 +1,9 @@
+-#cd "$MSM_HOME/Framework"
+-#java -classpath rt.jar:jsse.jar:jce.jar -Djava.library.path=. -jar shutdown.jar
+-
+-
+-cd "$MSM_HOME/Framework"
+-$JRE_HOME/bin/java -classpath rt.jar:jsse.jar:jce.jar:Framework.jar:framework_shutdown.jar:. -Djava.library.path=. shutdown.FrameworkShutdown
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++cd "${MSM_HOME}/Framework"
++LC_ALL=C /usr/lib/jvm/java-8-openjdk/jre/bin/java \
++  -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
++  -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
++  -classpath rt.jar:jsse.jar:jce.jar:Framework.jar:framework_shutdown.jar:. \
++  -Djava.library.path=. \
++  shutdown.FrameworkShutdown
+diff --git a/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh b/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
+index 8ddda6a..a1877e0 100755
+--- a/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
++++ b/usr/share/MegaRAID_Storage_Manager/Framework/startup.sh
+@@ -1,4 +1,9 @@
+-cd "$MSM_HOME/Framework"
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++cd "${MSM_HOME}/Framework"
+-LD_PRELOAD=amd64/libjsig.so;export LD_PRELOAD
+-LD_LIBRARY_PATH=`pwd`:/opt/lsi/Apache:/opt/lsi/Pegasus:/opt/lsi/openssl;export LD_LIBRARY_PATH
+-$JRE_HOME/bin/java -classpath $JRE_HOME/bin/javax.activation.jar:rt.jar:jsse.jar:jce.jar:javax.mail.jar:Framework.jar -Djava.library.path=. Framework.FrameworkManager
++LC_ALL=C /usr/lib/jvm/java-8-openjdk/jre/bin/java \
++  -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
++  -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
++  -classpath rt.jar:jsse.jar:jce.jar:javax.activation.jar:javax.mail.jar:Framework.jar \
++  -Djava.library.path=. \
++  Framework.FrameworkManager
+diff --git a/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup b/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup
+index ccc38a4..1e4f9e8 100755
+--- a/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup
++++ b/usr/share/MegaRAID_Storage_Manager/MegaPopup/popup
+@@ -1,4 +1,9 @@
+-#! /bin/sh
+-. /etc/init.d/msm_profile
+-cd "$MSM_HOME/MegaPopup"
+-$JRE_HOME/bin/java -classpath .:Popup.jar:../GUI.jar Popup.Communicator ajsgyqkj=71244 &> /dev/null
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++cd "${MSM_HOME}/MegaPopup"
++LC_ALL=C /usr/lib/jvm/java-8-openjdk/jre/bin/java \
++  -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
++  -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
++  -classpath .:Popup.jar:../GUI.jar \
++  Popup.Communicator ajsgyqkj=71244 \
++  &> /dev/null
+diff --git a/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh b/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh
+index 42fb383..43e31af 100755
+--- a/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh
++++ b/usr/share/MegaRAID_Storage_Manager/MegaPopup/shutdownpopup.sh
+@@ -1,5 +1,9 @@
+-#! /bin/sh
+-. /etc/init.d/msm_profile
+-cd "$MSM_HOME/MegaPopup"
+-
+-$JRE_HOME/bin/java -classpath  PopupShutdown.jar:../GUI.jar shutdown.PopupShutdown 1> /dev/null 2> /dev/null
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++cd "${MSM_HOME}/MegaPopup"
++LC_ALL=C /usr/lib/jvm/java-8-openjdk/jre/bin/java \
++  -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
++  -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
++  -classpath .:PopupShutdown.jar:../GUI.jar \
++  shutdown.PopupShutdown \
++  &> /dev/null
+diff --git a/usr/share/MegaRAID_Storage_Manager/starthelp.sh b/usr/share/MegaRAID_Storage_Manager/starthelp.sh
+old mode 100755
+new mode 100644
+index ea64995..a7da0c7
+--- a/usr/share/MegaRAID_Storage_Manager/starthelp.sh
++++ b/usr/share/MegaRAID_Storage_Manager/starthelp.sh
+@@ -1,37 +1,29 @@
+-#!/bin/sh
+-. /etc/init.d/msm_profile
+-if [ "$2" == "" ]; then
+-	DOCLANG=`echo $LANG`
+-	echo $DOCLANG
+-	EXTDIR=`echo $DOCLANG | awk '{print substr($1,1,2)}'`
+-	if [ "$EXTDIR" = "zh" ]; then
+-	        EXTDIR=`echo $DOCLANG | awk '{print substr($1,1,5)}'`
+-        	EXTDIR=`echo $EXTDIR | sed 's/_/-/g'`
+-	fi
+-	if [ -d "$MSM_HOME/docs/$EXTDIR" ]; then
+-        	DOCDIR="$MSM_HOME/docs/$EXTDIR"
+-	else
+-        	DOCDIR="$MSM_HOME/docs"
+-	fi
+-	PARAM="msmHELP.htm"
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++if [ "${2}" == "" ]; then
++  DOCLANG="$(echo ${LANG})"
++  echo ${DOCLANG}
++  EXTDIR="$(echo $DOCLANG | awk '{print substr($1,1,2)}')"
++  if [ "$EXTDIR" = "zh" ]; then
++    EXTDIR="$(echo ${DOCLANG} | awk '{print substr($1,1,5)}')"
++    EXTDIR="$(echo ${EXTDIR} | sed 's/_/-/g')"
++  fi
++  if [ -d "${MSM_HOME}/docs/${EXTDIR}" ]; then
++    DOCDIR="${MSM_HOME}/docs/${EXTDIR}"
++  else
++    DOCDIR="${MSM_HOME}/docs"
++  fi
++  PARAM="msmHELP.htm"
+ else
+-	DOCDIR="$MSM_HOME/$1"
+-	PARAM="$2"
++  DOCDIR="${MSM_HOME}/${1}"
++  PARAM="${2}"
+ fi
+-CHECK=`which mozilla`
++CHECK="$(which xdg-open)"
+ if [ "${CHECK}" = "" ]; then
+-        echo "mozilla not present"
++  echo "xdg-open not present"
+ else
+-        mozilla "file:///$DOCDIR/$PARAM"
+-        exit
++  xdg-open "file:///${DOCDIR}/${PARAM}"
++  exit
+ fi
+ 
+-CHECK=`which firefox`
+-if [ "${CHECK}" = "" ]; then
+-        echo "firefox not present"
+-else
+-        firefox "$(echo file:///$DOCDIR/$PARAM|sed 's/ /%20/g')"
+-        exit
+-fi
+-
+-echo "Support Browser are not installed on this system. Please install mozilla/firefox to launch help"
++echo "Support Browser are not installed on this system. Please install xdg-open to launch help"
+diff --git a/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh b/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
+index cb02669..952a29f 100755
+--- a/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
++++ b/usr/share/MegaRAID_Storage_Manager/startmonitorhelp.sh
+@@ -1,23 +1,16 @@
+-. /etc/init.d/msm_profile
+-if [ "0$1" = "0" ]; then
+-        path=docs/MegaMonitor
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++if [ "0${1}" = "0" ]; then
++  path=docs/MegaMonitor
+ else
+-        path=$1
++  path="${1}"
+ fi
+-CHECK=`which mozilla`
++CHECK="$(which xdg-open)"
+ if [ "${CHECK}" = "" ]; then
+-        echo "mozilla not present"
++  echo "xdg-open not present"
+ else
+-        mozilla "file:///$MSM_HOME/$path/msm_monitor.htm"
+-        exit
++  xdg-open "file:///${MSM_HOME}/${path}/msm_monitor.htm"
++  exit
+ fi
+- 
+-CHECK=`which firefox`
+-if [ "${CHECK}" = "" ]; then
+-        echo "firefox not present"
+-else
+-        firefox "$(echo file:///$MSM_HOME/$path/msm_monitor.htm|sed 's/ /%20/g')"
+-        exit
+-fi
+- 
+-echo "Support Browser are not installed on this system. Please install mozilla/firefox to launch help"
++
++echo "Support Browser are not installed on this system. Please install xdg-open to launch help"
+diff --git a/usr/share/MegaRAID_Storage_Manager/startupui.sh b/usr/share/MegaRAID_Storage_Manager/startupui.sh
+index a3e78c6..719d7e2 100755
+--- a/usr/share/MegaRAID_Storage_Manager/startupui.sh
++++ b/usr/share/MegaRAID_Storage_Manager/startupui.sh
+@@ -1,8 +1,10 @@
+-if [ "$DISPLAY" = "" ]; then
+- echo "X11 Display variable is not properly set"
+-fi
+-. /etc/init.d/msm_profile
+-cd "$MSM_HOME"
++#!/usr/bin/sh
++. /etc/profile.d/msm.sh
++cd "${MSM_HOME}"
+-#XMODIFIERS=@im=none
+-$JRE_HOME/bin/java -DVENUS=true -classpath .:GUI.jar:monitorgui.jar:DebugLog.jar:log4j-1.2.15.jar:jaxen-1.1.jar:jdom-1.1.jar GUI.VivaldiStartupDialog ajsgyqkj=71244
+-
++LC_ALL=C /usr/lib/jvm/java-8-openjdk/jre/bin/java \
++  -DVENUS=true \
++  -Djava.util.prefs.systemRoot="${MSM_HOME}/jre" \
++  -Djava.util.prefs.userRoot="${MSM_HOME}/jre/.userPrefs" \
++  -classpath .:GUI.jar:monitorgui.jar:DebugLog.jar:jaxen-1.1.jar:jdom-1.1.jar \
++  GUI.VivaldiStartupDialog ajsgyqkj=71244 \
++  &> /dev/null
+diff --git a/etc/X11/xinit/xinitrc.d/popup.sh b/etc/X11/xinit/xinitrc.d/popup.sh
+index 9329228..fdc978e 100755
+--- a/etc/X11/xinit/xinitrc.d/popup.sh
++++ b/etc/X11/xinit/xinitrc.d/popup.sh
+@@ -1,13 +1,5 @@
+ #!/bin/sh
+ . /etc/init.d/msm_profile
+-cd "$MSM_HOME/MegaPopup"
+-#POPUP=popup_bin
+-#apid=`pidof ${POPUP} | cut -f1 -d" "`
+-#if [ "$apid" != "" ] ; then
+-#	./popup -stop
+-#fi
+-#if [ -f "$MSM_HOME/MegaPopup/Popup.pid" ]; then
+-#	./popup -stop
+-#fi
++cd "${MçSM_HOME}/MegaPopup"
+ ./popup &
+ cd -
