@@ -5,12 +5,12 @@ pkgbase = the-secret-of-monkey-island
 	url = https://en.wikipedia.org/wiki/The_Secret_of_Monkey_Island
 	arch = any
 	license = custom
-	depends = duckstation
+	depends = scummvm
 	source = monkeyEGA-it.tar.xz::https://archive.org/download/monkeyEGA.tar/monkeyEGA.tar.xz
 	source = com.lucasarts.TheSecretOfMonkeyIsland.desktop
 	source = com.lucasarts.TheSecretOfMonkeyIsland.png
 	sha256sums = 2f0653859c685d0c11f606de08821161d72b782fb6f1d03f2d28be09ebd45ec3
-	sha256sums = 164e8c1600da8de441557ff2c06d9638e3de37f0713e990a1cf18d2e04fc9f13
+	sha256sums = d36b6bdd6ca455f3c5b25cde51c9e892d8757666adaf902081ff21038cec2b34
 	sha256sums = a7ecf1b2a0b779e8bc086ee842db5241558187a369739b46eba8c9aa22db440c
 
 pkgname = the-secret-of-monkey-island
