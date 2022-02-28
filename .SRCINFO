@@ -1,7 +1,7 @@
 pkgbase = dial-a-pirate
 	pkgdesc = A LÖVE implementation of Dial-A-Pirate from the EGA version of The Secret of Monkey Island
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tallero/dial-a-pirate
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,6 @@ pkgbase = dial-a-pirate
 	sha512sums = SKIP
 	sha512sums = 18ed8c35ae97402b0b5b10630f7e9a477015200a6447fd6a45cab7e580d781381beb2b1c6bb8e2c893ddb6b0142ecec58b24831e75a0501f8ab3e3f5132b6e45
 	sha512sums = 3aba506f26279f439d37a1105e3ac10ea63d69a5c184f9a41bff425421bd4a9a65a7c17952f17369fe9b908ea5924fdeaf5dbf6eef2be285d96b49d03d991be2
-	sha512sums = e1b0baa32976c3583649dc3c3cedc2317297f74b7ead60c977084b07ec1d534f26bbbf200aa5d207b69805f6790b3d54853d3263ae71e17cf8e687cdf1b4c18e
+	sha512sums = b1c111f49ef594e06a3882a517a4cdc7314b5a8472989d694099e0313b0041643071ce5c461bba23c5837cc57aaeec6e641e5df4aabb69eb03b667a7a060d8cf
 
 pkgname = dial-a-pirate
