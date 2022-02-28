@@ -8,22 +8,24 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.1.3
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
+arch=(x86_64)
 url="http://www.mutt.org/"
-license=('GPL2')
-arch=('x86_64')
-provides=('mutt')
-conflicts=('mutt')
-depends=('gdbm' 'glibc' 'libgpg-error' 'openssl' 'libsasl' 'mime-types' 'slang'
-'sqlite' 'zlib')
-makedepends=('docbook-xml' 'docbook-xsl' 'elinks' 'git' 'gpgme' 'krb5'
-'libidn2' 'lynx' 'libxslt')
-optdepends=('perl: for smime_keys'
-            'python: for experimental mutt_oath2.py'
-            'smtp-forwarder: to send mail')
-backup=('etc/Muttrc')
+license=(GPL2)
+depends=(glibc libgpg-error openssl libsasl mime-types slang sqlite zlib)
+makedepends=(docbook-xml docbook-xsl elinks gdbm git gpgme krb5 libidn2 libxslt
+lynx ncurses)
+provides=(mutt)
+conflicts=(mutt)
+optdepends=(
+  'perl: for smime_keys'
+  'python: for experimental mutt_oath2.py'
+  'smtp-forwarder: to send mail'
+)
+backup=(etc/Muttrc)
+options=(debug)
 source=("git+https://gitlab.com/muttmua/${_pkgbase}.git#tag=${_pkgbase}-${pkgver//./-}-rel?signed")
 sha512sums=('SKIP')
 b2sums=('SKIP')
@@ -56,12 +58,12 @@ build() {
 }
 
 package() {
-  depends+=('libgpgme.so' 'libgssapi_krb5.so' 'libidn2.so')
+  depends+=(libgdbm.so libgpgme.so libgssapi_krb5.so libidn2.so)
 
   cd "${_pkgbase}"
-  make DESTDIR="${pkgdir}" install
-  install -vDm 644 contrib/gpg.rc "${pkgdir}/etc/Muttrc.gpg.dist"
+  make DESTDIR="$pkgdir" install
+  install -vDm 644 contrib/gpg.rc "$pkgdir/etc/Muttrc.gpg.dist"
 
   # /etc/mime.types is provided by mailcap
-  rm "${pkgdir}"/etc/mime.types{,.dist}
+  rm "$pkgdir/etc/mime.types"{,.dist}
 }
