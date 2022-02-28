@@ -38,5 +38,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   echo $pkgdir
-  cp -R out/hentaijs-linux-x64/* "$pkgdir/"
+  mkdir "$pkgdir/opt/$pkgname"
+  cp -Rf out/hentaijs-linux-x64/* "$pkgdir/opt/$pkgname"
+  cp -Rf out/hentaijs-linux-x64/* /usr/bin/
 }
