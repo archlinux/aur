@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vdu_controls
-pkgver=1.5.8
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ddcutil' 'python' 'python-pyqt5')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('0cb5bd9fe1097e66519adca0765788f0f1e2dcc5961aba179fd36f267cb8c590'
+sha256sums=('47583bc396a6495db6c128e5b01c1dcd9a271b34e329b4a6e3dd03a3045b4df5'
             'e2a7db639d78f066d8214fea9751d5fe4cb14a8835dc2cd5d96d45049abcdab8')
 
 build() {
