@@ -5,7 +5,7 @@
 # Contributor: ahrs
 
 pkgname=mailspring
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=2
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
@@ -16,14 +16,14 @@ options=('!strip')
 source=()
 
 source_x86_64=("https://github.com/Foundry376/Mailspring/releases/download/${pkgver}/mailspring-${pkgver}-amd64.deb")
-sha256sums_x86_64=('a3bc365c77791673d8b7d8fc2081b2e8e80ab5d78d6ffa99f848971849f43544')
+sha256sums_x86_64=('e90bf0e2c9d634c92091923ce9df63d80962c7847ff41f60c94f29cd4094ec44')
 
 depends=("libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
 
 optdepends=('libappindicator-gtk3: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" )
 
 package() {
-	cd ${srcdir}
+	  	cd ${srcdir}
 
 	tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
     chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
