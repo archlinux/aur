@@ -1,0 +1,20 @@
+pkgbase = httptoolkit-git
+	pkgdesc = Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client.
+	pkgver = v1.7.0.r0.g871e047
+	pkgrel = 1
+	epoch = 1
+	url = https://httptoolkit.tech/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nvm
+	depends = electron14
+	depends = python
+	provides = httptoolkit
+	conflicts = httptoolkit-bin
+	source = httptoolkit-git::git+https://github.com/httptoolkit/httptoolkit-desktop.git
+	source = httptoolkit.desktop
+	md5sums = SKIP
+	md5sums = faf640796c9ad59c3fe56dac09b19767
+
+pkgname = httptoolkit-git
