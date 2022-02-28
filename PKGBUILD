@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=vblade
-pkgver=24
+pkgver=25
 pkgrel=1
 pkgdesc="Virtual EtherDrive(R) blade AoE target"
 arch=('i686' 'x86_64')
