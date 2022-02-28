@@ -1,6 +1,6 @@
 .PHONY: container
 
-DOCKER_CMD = docker run --rm -v $(shell pwd):/home/build/src
+DOCKER_CMD = docker run --rm -v $(shell pwd):/home/build/src:Z
 IMG = protonutils-build
 
 container:
