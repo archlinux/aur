@@ -1,13 +1,11 @@
 pkgbase = aaaaxy
 	pkgdesc = A nonlinear puzzle platformer taking place in non-Euclidean geometry
 	pkgver = 1.1.215
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/divVerent/aaaaxy
 	arch = x86_64
 	license = Apache
 	makedepends = go
-	makedepends = graphviz
-	makedepends = imagemagick
 	makedepends = libxcursor
 	makedepends = libxinerama
 	makedepends = libxi

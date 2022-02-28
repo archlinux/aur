@@ -3,7 +3,7 @@
 
 pkgname=aaaaxy
 pkgver=1.1.215
-pkgrel=1
+pkgrel=2
 pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
@@ -14,7 +14,7 @@ depends=('alsa-lib' 'hicolor-icon-theme' 'libglvnd' 'libx11')
 # external linker is used with --as-needed in Arch's default LDFLAGS, these will
 # not actually be linked to by the final binary. This is why these are in
 # makedepends but not depends.
-makedepends=('go' 'graphviz' 'imagemagick' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
+makedepends=('go' 'libxcursor' 'libxinerama' 'libxi' 'libxrandr' 'make')
 source=("aaaaxy-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${url}/releases/download/v${pkgver}/sdl-gamecontrollerdb-for-aaaaxy-v${pkgver}.zip")
 sha256sums=('bff896ad38eff104a8433664da2544eace84e848a4e5bc6554edb8fdc3240d6d'
@@ -30,7 +30,6 @@ build() {
   cd "$pkgname-$pkgver"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export AAAAXY_BUILD_USE_VERSION_FILE=true
-  export AAAAXY_GENERATE_ASSETS=false
   make BUILDTYPE=release
 }
 
