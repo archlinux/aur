@@ -1,7 +1,7 @@
 # Maintainer Torsten Keßler <t dot kessler at posteo dot de>
 
 pkgname=rocsolver
-pkgver=4.5.2
+pkgver=5.0.1
 pkgrel=1
 pkgdesc='Subset of LAPACK functionality on the ROCm platform'
 arch=('x86_64')
@@ -10,21 +10,25 @@ license=('BSD 2-Clause')
 depends=('hip' 'rocblas')
 makedepends=('cmake' 'fmt' 'python' 'python-pyaml' 'rocm-cmake')
 _git='https://github.com/ROCmSoftwarePlatform/rocSOLVER'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('4639322bd1e77fedfdeb9032633bde6211a0b1cc16a612db7754f873f18a492f')
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+        "fmt.patch::https://github.com/acxz/rocSOLVER/commit/0f4658e04ac7b48fea213f29b209a0206b67c43f.patch")
+sha256sums=('0086d673ed47b8713ea2906061c59f30ed4b5bd6181a1702428ca7dc6a8c14f8'
+            'SKIP')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
+
+prepare() {
+    cd "${_dirname}"
+    patch --forward --strip=1 --input="${srcdir}/fmt.patch"
+}
 
 build() {
     # -fcf-protection is not supported by HIP, see
-    # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-4.5.x/docs/markdown/clang_options.md
+    # https://github.com/ROCm-Developer-Tools/HIP/blob/develop/docs/markdown/clang_options.md
     CXX=/opt/rocm/bin/hipcc \
     CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
-    cmake   -B build -Wno-dev \
+    cmake   -B build \
             -S "$_dirname" \
-            -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-            -DCMAKE_PREFIX_PATH=/opt/rocm/llvm/lib/cmake/llvm \
-            -DBUILD_CLIENTS_TESTS=OFF \
-            -DBUILD_CLIENTS_BENCHMARKS=OFF
+            -DCMAKE_INSTALL_PREFIX=/opt/rocm
     make -C build
 }
 
