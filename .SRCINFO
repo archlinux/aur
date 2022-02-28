@@ -1,0 +1,30 @@
+pkgbase = clang-git
+	pkgdesc = C language family frontend for LLVM
+	pkgver = r416361.fdfe26ddbeb1
+	pkgrel = 1
+	url = https://clang.llvm.org/get_started.html
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = git
+	makedepends = cmake
+	makedepends = zlib
+	makedepends = ccache
+	depends = libxml2
+	depends = libedit
+	depends = perl
+	depends = python
+	optdepends = openmp: OpenMP support in clang with -fopenmp
+	optdepends = python: for scan-view and git-clang-format
+	optdepends = llvm: referenced by some clang headers
+	provides = clang-analyzer=r416361.fdfe26ddbeb1
+	provides = clang-tools-extra=r416361.fdfe26ddbeb1
+	provides = clang
+	conflicts = clang-analyzer
+	conflicts = clang-tools-extra
+	conflicts = clang
+	replaces = clang-analyzer
+	replaces = clang-tools-extra
+	source = llvm-project::git+https://github.com/llvm/llvm-project#branch=main
+	md5sums = SKIP
+
+pkgname = clang-git
