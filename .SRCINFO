@@ -8,7 +8,7 @@ pkgbase = anyk
 	makedepends = unzip
 	depends = java8-openjfx
 	provides = abevjava
-	source = https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava
+	source = AbevJava-3.14.0.0.1-1::https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava
 	source = abevjava
 	source = abevjavapath.cfg
 	source = anyk.desktop

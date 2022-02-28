@@ -13,7 +13,7 @@ license=('proprietary')
 depends=('java8-openjfx')
 makedepends=('unzip')
 provides=('abevjava')
-source=("https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava"
+source=("AbevJava-${pkgver}.${subver}-${pkgrel}::https://nav.gov.hu/pfile/rpmFile?path=/nyomtatvanyok/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/AbevJava"
         'abevjava'
         'abevjavapath.cfg'
         'anyk.desktop'
