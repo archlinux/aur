@@ -1,7 +1,7 @@
 # Maintainer: Star <hengxings783@gmail.com>
 
 pkgname=pikapika-bin
-pkgver=1.3.9
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A cross platform comic client."
 arch=("x86_64")
@@ -30,4 +30,4 @@ package() {
     install -Dm644 "squashfs-root/pikapika.desktop" "${pkgdir}/usr/share/applications/pikapika.desktop"
     cp -r "squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
-sha256sums=('8a81634e2b5b1680807cc75997f450f1b802fcfc50f79618c5e3cde2fe15b2b5')
+sha256sums=('c2f8a7ea5c4c6fd234ec4ca0f10a2cb51a1d38fddf851a7149a149ae12a1e79d')
