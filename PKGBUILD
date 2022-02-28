@@ -44,7 +44,7 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
 md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
          "${_wechat_devtools_md5}"
          2280bfbbf29981fd5adce334f40146ff   # nodejs
-         87a3849f7105f411bee25da9532b0382   # compiler
+         a9e061c97afbbc295b5664a2d8065492   # compiler
          1abd6b4ebbbb918f601a6c5dbad55a05   # desktop
          0f4353664123320280ea4d6bb295dce2   # svg
          "SKIP"
