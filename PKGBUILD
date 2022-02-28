@@ -27,24 +27,25 @@ depends=(
 
     python-cairo
     python-psutil
-    python-websockets
     python-pam
     python-pyfiglet
     python-fuzzywuzzy
+    python-dasbus
 )
 makedepends=(
     git
     sed
     python3
     meson
+    ninja
     wayland-protocols
     xorgproto
 )
 arch=('any')
 url="https://github.com/jbuchermn/newm"
 source=(
-	'git+https://github.com/jbuchermn/pywm.git'
-	'git+https://github.com/jbuchermn/newm.git'
+	'git+https://github.com/jbuchermn/pywm.git#branch=v0.3'
+	'git+https://github.com/jbuchermn/newm.git#branch=v0.3'
 )
 md5sums=(
 	'SKIP'
