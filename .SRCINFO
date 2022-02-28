@@ -1,7 +1,7 @@
 pkgbase = cq-editor-bin
 	pkgdesc = CadQuery GUI editor based on PyQT
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CadQuery/CQ-editor
 	arch = x86_64
 	license = Apache 2.0

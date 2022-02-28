@@ -3,7 +3,7 @@
 pkgname=cq-editor-bin
 _gitname=CQ-editor
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 url="https://github.com/CadQuery/CQ-editor"
 pkgdesc="CadQuery GUI editor based on PyQT"
 provides=("cq-editor")
@@ -29,7 +29,7 @@ package() {
 
   mkdir -p "${pkgdir}/usr/bin/"
 
-  ln -s "${pkgdir}/opt/${pkgname}/CQ-editor" "${pkgdir}/usr/bin/cq-editor"
+  ln -s "/opt/${pkgname}/CQ-editor" "${pkgdir}/usr/bin/cq-editor"
 
   # icon for .desktop
 
