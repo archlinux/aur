@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Dial-a-pirate
+GenericName=Dial a pirate
+Comment=The Secret Of Monkey Island serial generator
+Type=Application
+Exec=dial-a-pirate
+Icon=com.github.tallero.DialAPirate
+Categories=Games;
+Terminal=false
+Keywords=Monkey
+
+X-Desktop-File-Install-Version=0.26
