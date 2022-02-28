@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Crash Bandicoot (SCES-00344)
 GenericName=Crash Bandicoot
-Comment=PlayStation best title.
+Comment=PlayStation title.
 Type=Application
 TryExec=duckstation-qt
 Exec=duckstation-qt -fullscreen "/usr/games/com.naughtydog.CrashBandicoot/SCES-00344.cue"

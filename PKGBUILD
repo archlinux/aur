@@ -2,7 +2,7 @@ _uuid="SCES-00344"
 _app_id="com.naughtydog.CrashBandicoot"
 pkgname=crash-bandicoot
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PlayStation game."
 arch=('any')
 url="https://en.wikipedia.org/wiki/Crash_Bandicoot_(video_game)"
@@ -15,7 +15,7 @@ source=("${_uuid}.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot
         "com.naughtydog.CrashBandicoot.png")
 sha256sums=("a086b6fdd8d908393ff8a7e29be1e7add7cc0a495a221f526c6aa0e784329a54"
 	    "24ef65cee46ca7274da45d9a2cb7ecd67d9e64f6fb76c05f3c60dec15abaa5ec"
-	    "55950c9236778ebfb025b8da8cffde657f92db65ea2327a1f5d7889b5281e86f"
+	    "ac48d94e9b78ab6d45d620d66cf9957d48709237afbfdeae46de3c3125fadeb6"
 	    "4ebcdd92dd26fd86a70d2a9ee94126b0aa0a522bfc49992509c2a4f928d3971b")
 
 package() {
