@@ -1,10 +1,12 @@
 # Maintainer: t-ask <t-ask-aur at cixera.com>
-# Co-maintainer: Oscar Morante <spacepluk@gmail.com>
-# Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+# Co-maintainer: lehthanis <lehthanis@gmail.com>
+# Co-maintainer: Rain_Shinotsu <Rain_Shinotsu@protonmail.com>
+# Contributor: Oscar Morante <spacepluk@gmail.com>
+# Contributor: Dragoon Aethis <dragoon@dragonic.eu>
 
 pkgname=substance-player
-pkgver=11.3.1
-_build=5355
+pkgver=11.3.3
+_build=5429
 pkgrel=1
 pkgdesc="PBR material preview, visualization and tweaking software."
 arch=('x86_64')
@@ -14,7 +16,7 @@ depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
 source=("https://download.substance3d.com/substance-player/11.x/Substance_Player-${pkgver}-${_build}-linux-x64-standard.rpm")
 
-sha256sums=('e595705145205afe9a4693eb33dbd812bcaba41651a2c01ca202a7a3763da4c4')
+sha256sums=('72583d4a07f90a0f23a272691e4e0775060cbb796a2fde0b22fbb24b1e208ff0')
 
 validpgpkeys=()
 
