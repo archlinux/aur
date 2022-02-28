@@ -1,17 +1,13 @@
 diff --git a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
-index efaf0a792..c69f6bdd4 100644
+index efaf0a792..6c9ffcca3 100644
 --- a/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
 +++ b/Telegram/SourceFiles/platform/linux/main_window_linux.cpp
-@@ -166,11 +166,7 @@ void SkipTaskbar(QWindow *window, bool skip) {
- }
+@@ -231,7 +231,7 @@ QIcon TrayIconGen(int counter, bool muted) {
+ 	const auto iconName = GetTrayIconName(counter, muted);
+ 	const auto panelIconName = GetPanelIconName(counter, muted);
  
- QString GetPanelIconName(int counter, bool muted) {
--	return (counter > 0)
--		? (muted
--			? kMutePanelTrayIconName.utf16()
--			: kAttentionPanelTrayIconName.utf16())
--		: kPanelTrayIconName.utf16();
-+	return kPanelTrayIconName.utf16();
- }
- 
- QString GetTrayIconName(int counter, bool muted) {
+-	if (iconName == panelIconName) {
++	if (0 && iconName == panelIconName) {
+ 		const auto result = QIcon::fromTheme(iconName);
+ 		UpdateIconRegenerationNeeded(result, counter, muted, iconThemeName);
+ 		return result;
