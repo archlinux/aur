@@ -1,6 +1,6 @@
 pkgbase = xlunch-git
 	pkgdesc = Graphical app launcher for X with few dependencies
-	pkgver = 4.7.1.r0.g020ea10
+	pkgver = 4.7.3.r0.g96db085
 	pkgrel = 1
 	url = http://xlunch.org/
 	arch = i686
@@ -26,4 +26,3 @@ pkgbase = xlunch-git
 	md5sums = 7bc2cc30625750d62739d028c3b439b4
 
 pkgname = xlunch-git
-
