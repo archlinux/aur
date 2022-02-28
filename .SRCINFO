@@ -1,0 +1,18 @@
+pkgbase = yank-note-bin
+	pkgdesc = An Electron-based music player
+	pkgver = 3.24.0
+	pkgrel = 1
+	url = https://github.com/purocean/yn
+	arch = x86_64
+	license = AGPL3
+	makedepends = asar
+	makedepends = yarn
+	depends = electron
+	depends = pandoc
+	options = !strip
+	source = yank-note-3.24.0.deb::https://github.com/purocean/yn/releases/download/v3.24.0/Yank-Note-linux-amd64-3.24.0.deb
+	source = yank-note.sh
+	sha256sums = bf91311b0396dac2fa59451d0700ef9b55c17f8f4c8559c81c3c2ffdce1f85a5
+	sha256sums = ea47e7cea0b74bf9a0f96a853432a49ddfdba61017b68dcae47d1e4862327409
+
+pkgname = yank-note-bin
