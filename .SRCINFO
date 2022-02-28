@@ -1,0 +1,15 @@
+pkgbase = ceserver-git
+	pkgdesc = Cheat Engine Server.
+	pkgver = r5666.afeb8029
+	pkgrel = 1
+	url = https://github.com/cheat-engine/cheat-engine/tree/master/Cheat%20Engine/ceserver
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gcc
+	depends = zlib
+	provides = ceserver
+	source = ceserver::git+https://github.com/cheat-engine/cheat-engine.git
+	md5sums = SKIP
+
+pkgname = ceserver-git
