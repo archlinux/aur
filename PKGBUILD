@@ -2,10 +2,10 @@
 # Contributer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=python-playwright-git
-pkgver=1.19.0
+pkgver=1.19.0.6.g14b56cf
 pkgrel=1
 pkgdesc="a Python library to automate Chromium, Firefox and WebKit browsers with a single API"
-arch=(x86_64 aarch64)
+arch=(x86_64)
 url=https://github.com/microsoft/playwright-python
 license=(Apache)
 provides=(python-playwright)
@@ -21,9 +21,4 @@ package() {
   cd ${srcdir}/${pkgname}
   pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location "${srcdir}/${pkgname}"
   python -O -m compileall "${pkgdir}"
-  if [ ${CARCH} != "x86_64" ]
-  then
-    depends+=('nodejs')
-    sed -i "s#\$SCRIPT_PATH/node#node#" "${pkgdir}/$(python -c \"import site; print(site.getsitepackages()[0])\")/playwright/driver/playwright.sh"
-  fi
 }
