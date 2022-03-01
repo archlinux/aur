@@ -1,4 +1,4 @@
-pkgname=rubik
+pkgname=rubik-git
 pkgdesc="A keyboard driven virtual Rubik's cube made in rust."
 pkgver=r17.8f577ae
 pkgrel=1

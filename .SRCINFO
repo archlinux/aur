@@ -1,4 +1,4 @@
-pkgbase = rubik
+pkgbase = rubik-git
 	pkgdesc = A keyboard driven virtual Rubik's cube made in rust.
 	pkgver = r17.8f577ae
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = rubik
 	source = git+https://github.com/alansartorio/rubik.git
 	md5sums = SKIP
 
-pkgname = rubik
+pkgname = rubik-git
