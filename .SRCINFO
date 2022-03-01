@@ -1,6 +1,6 @@
 pkgbase = python-streamlit-webrtc
 	pkgdesc = Real-time video and audio streams over the network, with Streamlit
-	pkgver = 0.35.1
+	pkgver = 0.35.2
 	pkgrel = 1
 	url = https://github.com/whitphx/streamlit-webrtc
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-streamlit-webrtc
 	makedepends = python-setuptools
 	depends = python-aiortc
 	depends = python-streamlit
-	source = streamlit-webrtc-0.35.1.tar.gz::https://files.pythonhosted.org/packages/source/s/streamlit-webrtc/streamlit-webrtc-0.35.1.tar.gz
-	sha512sums = 17633e83fb3135f2a9929f95699c3dc2cf3f1689255df8ee923a56e6048a39473391956f8b96449f6c73675fdf7507d6638af9b5e65afbbbdce8733a0be3fdc9
+	source = streamlit-webrtc-0.35.2.tar.gz::https://files.pythonhosted.org/packages/source/s/streamlit-webrtc/streamlit-webrtc-0.35.2.tar.gz
+	sha512sums = f0d6ec6ffd9f87d809e6b1541759c45fea405ebdbdf5a22b7947010a291ef0c630538d3db717e38e71973d856fbed5cc4e229b17e6a24be26df4ff82415ee817
 
 pkgname = python-streamlit-webrtc
