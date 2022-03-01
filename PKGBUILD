@@ -8,7 +8,7 @@ url="https://melianmiko.ru/openfreebuds"
 license=('GPLv3')
 depends=(python dbus-python python-gobject libappindicator-gtk3 libkeybinder3 gtk3 python-psutil bluez)
 makedepends=(make python-pip python)
-source=("$pkgname-$pkgver::git+https://github.com/melianmiko/mibandpreview.git#tag=v$pkgver")
+source=("$pkgname-$pkgver::git+https://github.com/melianmiko/openfreebuds.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
