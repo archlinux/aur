@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = GE_Proton7_3
+	pkgver = GE_Proton7_4
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -14,15 +14,12 @@ pkgbase = proton-ge-custom-bin
 	license = custom
 	depends = python
 	depends = vulkan-icd-loader
-	depends = lib32-libusb
 	depends = lib32-openal
-	depends = lib32-sdl2
-	depends = lib32-v4l-utils
-	depends = lib32-jack
 	depends = lib32-libva
 	depends = ffmpeg4.4
 	depends = lib32-speex
 	depends = lib32-libtheora
+	depends = lib32-libvdpau
 	depends = gst-plugins-bad-libs
 	depends = lib32-gst-plugins-base-libs
 	depends = libjpeg6-turbo
@@ -39,15 +36,16 @@ pkgbase = proton-ge-custom-bin
 	optdepends = winetricks: protonfixes backend - highly recommended
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
+	optdepends = lib32-libusb: wine usb support
 	provides = proton
-	provides = proton-ge-custom=GE.Proton7_3
+	provides = proton-ge-custom=GE.Proton7_4
 	conflicts = proton-ge-custom-legacy-bin
 	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = GE-Proton7-3_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-3/GE-Proton7-3.tar.gz
+	source = GE-Proton7-4_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-4/GE-Proton7-4.tar.gz
 	source = supplementary.tar.zst
-	sha512sums = d3d43785bfdc7fd9af1c47d1dc109c77c0abeb4f552f764a0ce6ebf8e127701fd0a32ce3cc2ed1cae350622883760bf94e93d815669155896de44a5825e6904d
-	sha512sums = 6a0edd52bbbe0bc724bcb92a3fe05b22393d4e7e40869c3eb978c6a997ac2ace2af76809fa7587513848c86ab29285665cdcd2e1ddb7a1de5fd0cf950e889383
+	sha512sums = 69e5ea189c042ee7296bbc2b364000f6b3afbf17e114c1726e03cb39530622e154585128a5341484c90de9edcd201ac4422652853bd3f528a8c4a9d94c2d7ccf
+	sha512sums = b159d14b04373fe0a643a07386e0c7fbc14471f68cdf37aacdc1deb115d332ff888f53b9881b8c01934a6820583cf0b173c4fdea614ebe3cc30267fe427fc6bf
 
 pkgname = proton-ge-custom-bin

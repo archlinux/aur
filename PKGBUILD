@@ -5,7 +5,7 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton7_3
+pkgver=GE_Proton7_4
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -17,15 +17,14 @@ conflicts=('proton-ge-custom-legacy-bin' 'proton-ge-custom')
 ## dependencies
 depends=('python'
          'vulkan-icd-loader'
-         'lib32-libusb'
          'lib32-openal'
-         'lib32-sdl2'
-         'lib32-v4l-utils'
-         'lib32-jack'
+         # libav support #
          'lib32-libva'
          'ffmpeg4.4'
          'lib32-speex'
          'lib32-libtheora'
+         'lib32-libvdpau'
+         # gstreamer support #
          'gst-plugins-bad-libs'
          'lib32-gst-plugins-base-libs'
          'libjpeg6-turbo'
@@ -41,7 +40,8 @@ optdepends=('kdialog: KDE splash dialog support'
             'vulkan-driver: driver to be used by dxvk'
             'winetricks: protonfixes backend - highly recommended'
             'wine: support for 32bit prefixes'
-            'xboxdrv: gamepad driver service')
+            'xboxdrv: gamepad driver service'
+            'lib32-libusb: wine usb support')
 
 ## makepkg options
 options=('!strip')
@@ -64,8 +64,8 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
         "supplementary.tar.zst")
-sha512sums=('d3d43785bfdc7fd9af1c47d1dc109c77c0abeb4f552f764a0ce6ebf8e127701fd0a32ce3cc2ed1cae350622883760bf94e93d815669155896de44a5825e6904d'
-            '6a0edd52bbbe0bc724bcb92a3fe05b22393d4e7e40869c3eb978c6a997ac2ace2af76809fa7587513848c86ab29285665cdcd2e1ddb7a1de5fd0cf950e889383')
+sha512sums=('69e5ea189c042ee7296bbc2b364000f6b3afbf17e114c1726e03cb39530622e154585128a5341484c90de9edcd201ac4422652853bd3f528a8c4a9d94c2d7ccf'
+            'b159d14b04373fe0a643a07386e0c7fbc14471f68cdf37aacdc1deb115d332ff888f53b9881b8c01934a6820583cf0b173c4fdea614ebe3cc30267fe427fc6bf')
 
 build() {
 ## patches
@@ -74,6 +74,7 @@ sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proto
 sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' ${_srcdir}/compatibilitytool.vdf
 ## remove artifacts
 rm "${_srcdir}"/protonfixes/*.tar.xz
+rm -rf "${_srcdir}"/protonfixes/.git*
 ## fixes from namcap inspection
 strip --preserve-dates --strip-unneeded "${_srcdir}"/files/bin/wine*
 }

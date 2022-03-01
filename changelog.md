@@ -1,3 +1,16 @@
+## GE-Proton7-4 Released
+Another hotfix build:
+
+Added HideWineExports patch from wine-staging. Fixes games that need it, notably those using EAC disable workarounds such as:
+
+Jump Force
+Dragonball Fighter Z
+Naruto to Boruto: Shinobi Striker
+
+Added EAC disable workaround for single player in Naruto to Boruto: Shinobi Striker
+Added upstream ldap patch so that build does not fail when using newer ldap library (this is mostly needed for compiling outside of proton build environment)
+Fixed build environment submodule symlink issue
+
 ## GE-Proton7-3 Released
 
 Another hotfix build.
