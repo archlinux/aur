@@ -1,7 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=custom-adwaita-folder-icons-git
-pkgver=r26.a187dd4
+pkgver=r33.d3ea429
+_branch=gnome-3
 pkgrel=1
 pkgdesc='Custom Adwaita folder icons to help organize directories'
 arch=(any)
@@ -10,7 +11,7 @@ license=(unknown)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("icons::git+$url.git")
+source=("icons::git+$url.git#branch=$_branch")
 md5sums=(SKIP)
 
 pkgver() {
