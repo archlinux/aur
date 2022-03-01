@@ -43,10 +43,12 @@ echo "LC_ALL=$LANG" > ${UPDATE_PATH}/run.conf
 /usr/bin/sed -i '/^[[:blank:]]*strip_keys_from_indentity_file/ s/./#&/' ${UPDATE_PATH}/uninstall.sh
 
 echo "Installing update"
+set +e
 chmod +x ${UPDATE_PATH}/install.sh
 chmod +x ${UPDATE_PATH}/uninstall.sh
 cd ${UPDATE_PATH} && ${UPDATE_PATH}/install.sh -q -v -u $USER
 
+set -e
 cp ${TMP}/upgrade.sh /opt/crashplan/bin/upgrade.sh
 
 echo "Amending installed files"

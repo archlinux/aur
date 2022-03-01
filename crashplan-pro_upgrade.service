@@ -2,8 +2,7 @@
 Description=CrashPlanPRO Backup Engine Upgrade
 After=network.target
 Requires=crashplan-pro.service
-After=crashplan-pro.service
-PropogatesReloadTo=crashplan-pro.service
+PropagatesReloadTo=crashplan-pro.service
 OnSuccess=crashplan-pro.service
 RefuseManualStart=True
 
@@ -13,4 +12,5 @@ EnvironmentFile=/opt/crashplan/bin/run.conf
 WorkingDirectory=/opt/crashplan
 ExecStart=/opt/crashplan/bin/upgrade.sh
 Restart=no
-
+StandardOutput=append:/opt/crashplan/log/service_upgrade.log
+StandardError=append:/opt/crashplan/log/service_upgrade.log
