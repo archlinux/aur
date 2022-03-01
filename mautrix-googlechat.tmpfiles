@@ -1,0 +1,3 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+z /etc/mautrix-googlechat/* 0640 root mautrix-googlechat -
+d /var/log/mautrix-googlechat 0750 mautrix-googlechat mautrix-googlechat

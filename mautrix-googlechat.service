@@ -1,8 +1,30 @@
 [Unit]
 Description=Mautrix Google Chat bridge
+After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/python -m mautrix_googlechat -c /etc/mautrix-googlechat/config.yaml
+User=mautrix-googlechat
+ExecStart=/usr/bin/python -m mautrix_googlechat -n -c /etc/mautrix-googlechat/config.yaml
+
+NoNewPrivileges=yes
+MemoryDenyWriteExecute=true
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectHostname=true
+ProtectKernelModules=true
+PrivateUsers=true
+ProtectClock=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
 
 [Install]
 WantedBy=multi-user.target

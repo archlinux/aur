@@ -1,0 +1,11 @@
+--- a/mautrix_googlechat/example-config.yaml	2021-12-18 23:35:28.000000000 +0200
++++ b/mautrix_googlechat/example-config.yaml	2022-03-01 22:04:05.359642474 +0200
+@@ -220,7 +220,7 @@
+         file:
+             class: logging.handlers.RotatingFileHandler
+             formatter: normal
+-            filename: ./mautrix-googlechat.log
++            filename: /var/log/mautrix-googlechat/googlechat.log
+             maxBytes: 10485760
+             backupCount: 10
+         console:
