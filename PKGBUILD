@@ -4,7 +4,8 @@
 
 _pkgname=tshock
 pkgname=${_pkgname}-bin
-pkgver=4.5.14
+pkgver=4.5.15
+_terraria_ver=1.4.3.5
 # Because of tag 4.2200 is 4.2.2.1228 and tag 4.2202 is 4.2.2.0224 epoch must be 1
 epoch=1
 pkgrel=5
@@ -16,7 +17,7 @@ depends=("mono" "tmux")
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=(
-	"${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v${pkgver}/TShock${pkgver}_Terraria1.4.3.4.zip"
+	"${_pkgname}_${pkgver}.zip::https://github.com/Pryaxis/TShock/releases/download/v${pkgver}/TShock${pkgver}_Terraria${_terraria_ver}.zip"
 	"${_pkgname}.sh"
 	"default.conf"
 	"${_pkgname}@.service"
@@ -25,7 +26,7 @@ source=(
 	"${_pkgname}.install"
 )
 noextract=("${_pkgname}_${pkgver}.zip")
-sha512sums=('ff91d9e50f8de5e63ec875471d0480f8776b46afdb485e103a82bb7117441c1394c71d24a77e49aa8235232c53208092238a4708cfd082c8e88a02655ce3af0c'
+sha512sums=('2135dae9ba0098c10b94f153a005606f53874fa477c58330050a4bf1e46ffd3a9eb9353f723b16d728f0621d1b0dabd624ac1efae0d2ac8494a8b116acba471c'
 	'SKIP'
 	'SKIP'
 	'SKIP'
