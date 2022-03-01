@@ -15,22 +15,22 @@ pkgver() {
 }
 
 prepare() {
-	cd "$pkgname"
+	cd "$srcdir/$_reponame"
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-	cd "$pkgname"
+	cd "$srcdir/$_reponame"
 	env CARGO_INCREMENTAL=0 cargo build --release --locked --offline
 }
 
 check() {
-	cd "$pkgname"
+	cd "$srcdir/$_reponame"
 	env CARGO_INCREMENTAL=0 cargo test --locked --offline
 }
 
 package() {
-	cd "$pkgname"
+	cd "$srcdir/$_reponame"
 	
 	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "extra/Rubik.desktop"
 	install -D -m755 "target/release/rubik" "$pkgdir/usr/bin/rubik"
