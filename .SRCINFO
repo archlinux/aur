@@ -1,0 +1,22 @@
+pkgbase = bongocat-osu-git
+	pkgdesc = An osu! Bongo Cat overlay
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/CSaratakij/bongocat-osu
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = gcc
+	depends = sdl2
+	depends = sfml
+	depends = xorg-xrandr
+	source = git+https://github.com/CSaratakij/bongocat-osu.git
+	source = bongocat
+	source = bongocat-osu.desktop
+	md5sums = SKIP
+	md5sums = 7272510ab9cd539568371ac98073ae2c
+	md5sums = eb134c206930a1211ce863dbeeede344
+
+pkgname = bongocat-osu-git
