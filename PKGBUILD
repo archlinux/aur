@@ -1,11 +1,12 @@
+# -*- mode: Shell-script; eval: (setq indent-tabs-mode nil); eval: (setq tab-width 2) -*-
+# Maintainer: Dominic Meiser < git at msrd0 dot de >
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=26aadb2508f9022cbfc72e73b558c6791f5d46d9  # tags/1.50.3^0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-pkgname=mingw-w64-pango
-pkgver=1.50.3
+pkgname=mingw-w64-pango-static
+pkgver=1.50.4
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
@@ -23,17 +24,15 @@ makedepends=('gtk-doc'
              'mingw-w64-meson'
              'mingw-w64-wine'
              'git')
+provides=("mingw-w64-pango=$pkgver")
+conflicts=('mingw-w64-pango')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://gitlab.gnome.org/GNOME/pango.git#commit=${_commit}")
+source=("git+https://gitlab.gnome.org/GNOME/pango.git#tag=$pkgver")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/pango"
-  git describe --tags | sed 's/-/+/g'
-}
 
 prepare() {
   cd "${srcdir}/pango"
+  sed -E -i -e "/subdir\('(utils|examples|tests)'\)/d" meson.build
 }
 
 build() {
@@ -43,7 +42,7 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-meson \
       --buildtype=release \
-      --default-library=both \
+      --default-library=static \
       -D 'gtk_doc=false' \
       -D 'introspection=disabled' \
       ..
@@ -58,9 +57,6 @@ package() {
     cd "${srcdir}/pango/build-${_arch}"
     DESTDIR="${pkgdir}" ninja install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    find "${pkgdir}/usr/${_arch}" -name '*.a' | xargs ${_arch}-strip -g
   done
 }
-
-# vim:set ts=2 sw=2 et:
