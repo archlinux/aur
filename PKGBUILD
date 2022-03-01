@@ -1,15 +1,15 @@
 # Maintainer: artemtech <sofyanartem@gmail.com>
 
 pkgname=citramanik-qt-git
-pkgver=1.3.0.r13.981129c
+pkgver=1.3.0.r14.37e82cf
 pkgrel=1
 pkgdesc="Your next way to export your Inkscape work for all purpose quickly"
 arch=("x86_64")
 url="https://citramanik.dev-is.my.id"
 license=("GPLv3")
 provides=("citramanik-qt-git")
-conflicts=("citramanik-qt-git" "citramanik-qt-bin")
-replaces=("citramanik-qt-git" "citramanik-qt-bin")
+conflicts=("citramanik-qt-bin")
+replaces=("citramanik-qt-bin")
 depends=("python-pyqt5"
          "python-appdirs"
          "python-lxml"
