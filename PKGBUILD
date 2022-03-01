@@ -1,0 +1,58 @@
+# Maintainer: sommio <sommio.mail@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Yamashita Ren
+# Contributor: Fredrick Brennan <admin@8chan.co>
+# Contributor: Julien Machiels
+
+pkgname=waifu2x-converter-cpp-cuda10-git
+pkgver=5.3.4.2.g57520b2
+pkgrel=1
+pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
+arch=('x86_64')
+url='https://github.com/DeadSix27/waifu2x-converter-cpp'
+license=('MIT')
+depends=('opencv'
+         'cuda-10.2'
+         'opencl-icd-loader'
+         )
+makedepends=('cmake'
+             'git'
+             'opencl-headers'
+             )
+provides=('waifu2x-converter-cpp')
+conflicts=('waifu2x-converter-cpp')
+source=('git+https://github.com/DeadSix27/waifu2x-converter-cpp.git'
+        'https://patch-diff.githubusercontent.com/raw/DeadSix27/waifu2x-converter-cpp/pull/267.diff')
+sha256sums=('SKIP'
+            'fa49ef26b94c57356897d1b8aa3324f07deb25448ba8768ea2ed474015875583'
+           )
+options=('debug')
+
+pkgver() {
+  cd waifu2x-converter-cpp
+  echo $(git describe --long --tags | tr - . | tr -d v)
+}
+
+prepare() {
+  patch -d waifu2x-converter-cpp -p1 -i "${srcdir}/267.diff"
+}
+
+build() {
+  cmake -S waifu2x-converter-cpp -B build \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCUDA_NVCC_FLAGS='-std=c++11' \
+    -DINSTALL_MODELS=ON \
+    -DOPENCV_PREFIX=/usr \
+    -DCUDA_HOST_COMPILER=/opt/cuda-10.2/bin/gcc \
+    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda-10.2 
+
+  cmake --build build
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --build build --target install
+
+  install -Dm644 waifu2x-converter-cpp/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
