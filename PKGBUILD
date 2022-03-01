@@ -255,7 +255,7 @@ prepare() {
         # Fix openldap 2.5+ detection
         sed 's/-lldap_r/-lldap/' -i configure
         # Fix wldap32 compilation on 32bit
-        wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
+        patch -p1 -i "$srcdir"/wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
         # Add FSR for fshack
         patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
