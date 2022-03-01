@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=crm-git
-pkgver=v0.1.8.r0.ga874dec
+pkgver=0.1.8.r8.gd6277b1
 pkgrel=1
 pkgdesc="crm 是一个在终端运行的镜像管理程序，能够对 Cargo 镜像源进行简单的添加、修改、删除操作，并能帮助您快速的切换不同的 Cargo 镜像源。"
 arch=('any')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${pkgname%-git}/"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
