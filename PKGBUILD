@@ -9,14 +9,13 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 pkgbase=mingw-w64-harfbuzz-static
 pkgname=('mingw-w64-harfbuzz-static' 'mingw-w64-harfbuzz-static-icu')
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
 license=('MIT')
 depends=('mingw-w64-crt'
          'mingw-w64-glib2'
-         'mingw-w64-graphite'
          'mingw-w64-freetype2')
 makedepends=('mingw-w64-meson'
              'mingw-w64-cairo'
@@ -39,10 +38,7 @@ build() {
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-meson \
       --default-library static \
-      -D c_args=-DGRAPHITE2_STATIC \
-      -D cpp_args=-DGRAPHITE2_STATIC \
       -D b_lto=false \
-      -D graphite=enabled \
       -D tests=disabled \
       -D docs=disabled \
       ..

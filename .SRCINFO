@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-harfbuzz-static
 	pkgdesc = OpenType text shaping engine (mingw-w64)
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = mingw-w64-harfbuzz-static
 	makedepends = git
 	depends = mingw-w64-crt
 	depends = mingw-w64-glib2
-	depends = mingw-w64-graphite
 	depends = mingw-w64-freetype2
 	options = !strip
 	options = staticlibs
