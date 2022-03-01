@@ -1,0 +1,15 @@
+pkgbase = jbr-linux-x64
+	pkgdesc = A patched JetBrainsRuntime which fix fcitx5 cursor bug
+	pkgver = 20220201
+	pkgrel = 1
+	url = https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64
+	install = jbr-linux-x64.install
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/releases/download/2022-02-01_08-58/jbr-linux-x64-2022-02-01_08-58.zip
+	source = jbr-linux-x64.install
+	sha256sums = 7e35c51218e11c2bfe06c0553a680680950139928dea4e70ecfad8d47ccd51c0
+	sha256sums = e4415576a0dfd268e6cfd0d08f1d00460141ea3d044296753eb609dec59a2219
+
+pkgname = jbr-linux-x64
