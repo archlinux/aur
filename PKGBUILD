@@ -46,8 +46,7 @@ build() {
     -DINSTALL_MODELS=ON \
     -DOPENCV_PREFIX=/usr \
     -DCUDA_HOST_COMPILER=/opt/cuda-10.2/bin/gcc \
-    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda-10.2 
-
+    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda-10.2
   cmake --build build
 }
 
