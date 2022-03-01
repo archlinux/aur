@@ -2,7 +2,7 @@
 # Maintainer: Max Mazurov <fox.cpp at disroot dot org>
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
 pkgname='maddy'
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc='Composable all-in-one mail server'
 arch=('x86_64')
@@ -12,13 +12,13 @@ depends=('glibc')
 makedepends=('go' 'git' 'scdoc')
 optdepends=()
 source=(
-    "${pkgname}-${pkgver}.tar.zst::https://foxcpp.dev/maddy-builds/${pkgver}/maddy-${pkgver}-src.tar.zst"
-    "${pkgname}-${pkgver}.tar.zst.sig::https://foxcpp.dev/maddy-builds/${pkgver}/maddy-${pkgver}-src.tar.zst.sig"
+    "${pkgname}-${pkgver}.tar.zst::https://maddy.email/builds/${pkgver}/maddy-${pkgver}-src.tar.zst"
+    "${pkgname}-${pkgver}.tar.zst.sig::https://maddy.email/builds/${pkgver}/maddy-${pkgver}-src.tar.zst.sig"
     'maddy.sysusers'
     'maddy.tmpfiles'
 )
 backup=('etc/maddy/maddy.conf')
-sha512sums=('1cc96187a411e964091182b8e4b81ac30120dfdaa0356ac9aa127a168fdcd44b297e789e49309c4cc18b6cfdfce9f0a4eba63895d9134d4d296f0351ccc1d699'
+sha512sums=('0e15844b931ee28f73741e4f7a9bf0ae4095e5150d7b860fc02f2fb7634efcc617c27663fe631dcb5e9547b7521f59bee542135136fdc76c07beb363c03cf231'
             'SKIP'
             '750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589'
             'f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5')
