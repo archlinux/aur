@@ -1,12 +1,17 @@
 pkgbase = brother-hl3140cw-cups-bin
 	pkgdesc = CUPS wrapper for Brother HL-3140CW printer
 	pkgver = 1.1.4
-	pkgrel = 0
+	pkgrel = 1
 	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl3140cw_us_eu
+	install = brother-hl3140cw-cups-bin.install
 	arch = i686
 	arch = x86_64
 	groups = base-devel
 	license = EULA
+	depends = brother-hl3140cw-lpr-bin
+	depends = cups
+	provides = brother-hl3140cw
+	conflicts = brother-hl3140cw
 	source = https://download.brother.com/welcome/dlf007070/hl3140cwcupswrapper-1.1.4-0.i386.deb
 	md5sums = 2b7e8d7d9685599d8e5955fc4636b967
 

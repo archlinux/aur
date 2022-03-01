@@ -1,0 +1,8 @@
+# Ignore everything (default)
+*
+
+# Exceptions
+!.gitignore
+!.SRCINFO
+!brother-hl3140cw-cups-bin.install
+!PKGBUILD

@@ -1,0 +1,11 @@
+post_install() {
+	/opt/brother/Printers/hl3140cw/cupswrapper/cupswrapperhl3140cw -i
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	/opt/brother/Printers/hl3140cw/cupswrapper/cupswrapperhl3140cw -e
+}
