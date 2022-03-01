@@ -2,7 +2,7 @@
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
 pkgname=mullvad-vpn-bin
-pkgver=2021.6
+pkgver=2022.1
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-*}")
 install="${pkgname%-*}.install"
 source=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc}
         "${pkgname%-*}.sh")
-sha256sums=('95b9638f304a00d72ce6b6f3a38ff9f623142541cfaa4d6e9aa142c27d86ea6e'
+sha256sums=('713043f60a146f5a8669abd4c05e3fde8e5b7658d4b9cd269ea9cc7264f22268'
             'SKIP'
             'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
