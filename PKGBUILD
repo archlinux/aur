@@ -10,7 +10,7 @@ pkgname=($pkgbase gcc10-libs gcc10-fortran)
 pkgver=10.3.0
 _majorver=${pkgver%%.*}
 _islver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
@@ -214,7 +214,7 @@ package_gcc10-fortran() {
   make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
     install-{toolexeclibDATA,nodist_fincludeHEADERS,gfor_cHEADERS}
   make -C $CHOST/libgomp DESTDIR="$pkgdir" install-nodist_fincludeHEADERS
-  make -C gcc DESTDIR="$pkgdir" fortran.install-{common,man,info}
+  make -C gcc DESTDIR="$pkgdir" fortran.install-common
   install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
 
   ln -s gfortran-${_majorver} "$pkgdir/usr/bin/f95-${_majorver}"
