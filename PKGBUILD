@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=arti
-pkgver=0.0.4
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="An implementation of Tor in Rust"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('sqlite' 'openssl' 'xz')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgname-v$pkgver/$pkgname-$pkgname-v$pkgver.tar.gz")
-sha256sums=('ce31cb770456a6c438a7ccd35871150d7c4ab71e5892f240438fdd2a8e366380')
+sha256sums=('0dd539e1baef55b92af7931dc7de1dfe3a01c65ee44d1a1fdcf9f33eb5f9be81')
 options=('!lto')
 
 prepare() {
