@@ -125,7 +125,7 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
-    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch::https://github.com/wine-mirror/wine/commit/25946b48148784e8275c1685f6498ab88f553ca3.patch
+    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
     proton-sanitize_makefile.patch
