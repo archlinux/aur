@@ -7,7 +7,7 @@ _srcname=linux-5.16
 _major=5.16
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=10
+_minor=11
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
@@ -33,6 +33,9 @@ source=(
   0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
   0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
   0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
+  0005-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch
+  0006-mt76-mt7921-reduce-log-severity-levels-for-informati.patch
+  0007-Revert-NFSv4.1-query-for-fs_location-attr-on-a-new-f.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -40,15 +43,18 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('ef45618d83f7c8234af2edae8ae51239bc8ae3e1523e04e34d05be70d9216aa7240d398695e55818d84613695fe7ee0d804165968379183a07e550d083695333'
+b2sums=('a620061022bd7906cfe0136f476dc92d33afbb3cb144ce2aff301beb0535f202c056309e5ead53109118a1f47c1ca8e530315074c9d5df9f2720cd0170ac8bde'
         'SKIP'
-        '6394d715c765e27aafa3ef7ba34fb17522eb14c5e004b8ab54eb31b55bcb782205d516cdef5f7204739890642289cd1f2ef8ac430a7ee63698ccf3b3d7b0b118'
+        '165fc78193959c0876158b3448fe33361a9b30ead17f216b92f94a11aad7a6a0e38a852a69239d954ad71978c14b79f8aca19903ce9d540c9776c855308beb50'
         'SKIP'
         'b837c6c0d9b5e39047ebddececa28f7fbe078b8c6d8d95028cb6bf5265f7b754415e3eed779d5bce075b1163f9b5fdd28b06f2552abf99061a436e3665aa0c8a'
-        '4531d063ee9a7c50e357a544041285965d0b2d03d1f22df06c58ef9341502e120ec712d418a403d153fae0cd3dccd31046891d7659459358176d6e29a72024f2'
-        '33c8bc77c60c4fcc16740a95e49ec9fde853d04dceb8a47b1ae0ef4d14d05d453346efd9fb96579f28990c44664728937af79c52c8da8889a3502f2ade6eee11'
-        'a5e5a53119135c5e82c0de604b8ece29716ba6452305606f009a3c8c0c990f3ec6b44d9940afa30455eb64f1f281145dcd0f72b576a0ea4520d67504a5a5f501'
-        'cbf0456551864c4064193e34a7a9abdd633901063fd709549aa579090b26e486ced264d204bc19a9d099cd157e0ab9de728c43d28a8bbf2addf9f1f320b47507')
+        'fcbd8714ac56ee03e8c61615773fbc104db77a2ebe761b3e94449889733b0c61779c54f891998fe46c9fe6238517c82c39d9073f053760590396552a6ae28e98'
+        'b742a79eb3829e0798f01e0a4f76164a2a5ed53c1eeb751735e28ec60976a58c3383a48a17c8165aa7b0c38996f9c99ab34912b0f116d3e76efa6de43a11f330'
+        '146afd039830cc2f8752f048e62df32ef9216c608b7cd98bccaac963fcd167d7215ef0f8f21de165fc6dc00b76f0e30bda03b9f83c2b94458634322765e0389d'
+        '47ad8f60760a65e0ef732035b981166376faec33284701c414600b42416a5c65f23bdee149874deb3472c1b3559f8b61ef5d0c3f5c4b965dc8c6fb6eb9f76b18'
+        '0f84ab2d64281c45ad22ce7e148f526e37dc2c35a715ed8b29a311c07f29ce4a6b4a52cab019048f46f7b626a5716ed68a8a603dc723cc8158ffc77a5c940b86'
+        '079582f81133b2bc24b2868700104ee747a4b1ad3da31180bcb37db9abd111d89b06801b81305c426d4ed7f7ec0e7341b0d30e312dc8f1e9b326c11ef6d6ff55'
+        '95bb03860cc91cfe9ebfea7128eda2be281c97bec5f6fdaa90404b4043d87c8689053d44d49bf504eac5e128e5132dad33bf90d67474eceb6c2f7a205b65b5a5')
 
 
 export KBUILD_BUILD_HOST=archlinux
