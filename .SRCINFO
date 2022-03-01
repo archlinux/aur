@@ -1,6 +1,6 @@
 pkgbase = dsd-louiserigherve-git
 	pkgdesc = Decoder for P25 Phase 1, D-STAR, NXDN/IDAS, ProVoice, DMR/MOTOTRBO, X2-TDMA, dPMR (LouisErigHerve's fork).
-	pkgver = 1.6.0.r109.g1599d5b
+	pkgver = 1.6.0.r111.g5077daf
 	pkgrel = 1
 	url = https://github.com/LouisErigHerve/dsd
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = dsd-louiserigherve-git
 	license = ISC
 	makedepends = cmake
 	makedepends = git
+	makedepends = help2man
 	depends = gcc-libs
 	depends = glibc
 	depends = itpp
@@ -23,4 +24,3 @@ pkgbase = dsd-louiserigherve-git
 	sha256sums = SKIP
 
 pkgname = dsd-louiserigherve-git
-

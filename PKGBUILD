@@ -2,14 +2,14 @@
 
 pkgname=dsd-louiserigherve-git
 _pkgname="${pkgname%-git}"
-pkgver=1.6.0.r109.g1599d5b
+pkgver=1.6.0.r111.g5077daf
 pkgrel=1
 pkgdesc="Decoder for P25 Phase 1, D-STAR, NXDN/IDAS, ProVoice, DMR/MOTOTRBO, X2-TDMA, dPMR (LouisErigHerve's fork)."
 arch=('x86_64')
 url="https://github.com/LouisErigHerve/dsd"
 license=('GPL2' 'ISC')
 depends=('gcc-libs' 'glibc' 'itpp' 'libsndfile' 'mbelib' 'portaudio')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'help2man')
 provides=("${_pkgname}" 'dsd')
 conflicts=("${_pkgname}" 'dsd' 'dsd-git')
 source=("${_pkgname}::git+${url}")
@@ -26,6 +26,7 @@ build() {
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
+  sed -i 's|help2man -n|help2man --no-discard-stderr -n|' build/CMakeFiles/dsd.dir/build.make
   make -C build
 }
 
