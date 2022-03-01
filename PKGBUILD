@@ -7,7 +7,7 @@
 pkgname=waifu2x-converter-cpp-cuda10-git
 pkgver=5.3.4.2.g57520b2
 pkgrel=1
-pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA support (GIT Version)"
+pkgdesc="Image Super-Resolution for Anime-Style-Art. (re-implementation in C++ using OpenCV). with CUDA 10 support (GIT Version)"
 arch=('x86_64')
 url='https://github.com/DeadSix27/waifu2x-converter-cpp'
 license=('MIT')
