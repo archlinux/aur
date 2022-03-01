@@ -1,6 +1,6 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=whalebird
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="An Electron based Mastodon, Pleroma and Misskey client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('whalebird')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/$pkgver.tar.gz"
         whalebird.desktop
         electron-builder.yml)
-md5sums=('92c60f22bda5096b0b3419fc4d34971b'
+md5sums=('87ac223b7942c1e5f931ee2ebdcde07f'
          '2cf7ef689d208d2fa41ce3622dce3545'
          '68af72623ba3763c9a1ea440b72a253d')
 
