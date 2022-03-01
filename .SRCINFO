@@ -1,8 +1,8 @@
 pkgbase = zsh-fzf-plugin-git
 	pkgdesc = Zsh plugin to enable fzf history search (sourced from Oh My Zsh, for use without it)
-	pkgver = r6555.511ed6540
-	pkgrel = 1
-	url = https://github.com/ohmyzsh/ohmyzsh
+	pkgver = r102605958
+	pkgrel = 2
+	url = https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/fzf
 	arch = any
 	license = MIT
 	makedepends = git
