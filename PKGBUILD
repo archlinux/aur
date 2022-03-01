@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='wasmer-bin'
-pkgver='2.1.1'
+pkgver='2.2.0'
 _shortver="${pkgver%.*}"
 _majorver="${_shortver%.*}"
 pkgrel='1'
@@ -55,7 +55,7 @@ package() {
   cd "$srcdir"
 
   msg2 'Installing executable commands...'
-  for name in wasmer wapm wax; do
+  for name in wasmer wapm wax wasmer-headless; do
     install -Dm755 "bin/$name" "$pkgdir/usr/bin/$name"
   done
 
