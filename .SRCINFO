@@ -1,0 +1,36 @@
+pkgbase = r-gganimate
+	pkgdesc = A Grammar of Animated Graphics
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gganimate
+	arch = any
+	license = MIT
+	checkdepends = r-magick
+	checkdepends = r-testthat
+	checkdepends = r-transformr
+	depends = r-ggplot2
+	depends = r-stringi
+	depends = r-tweenr
+	depends = r-rlang
+	depends = r-glue
+	depends = r-progress
+	depends = r-plyr
+	depends = r-scales
+	optdepends = r-magick
+	optdepends = r-svglite
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-base64enc
+	optdepends = r-htmltools
+	optdepends = r-covr
+	optdepends = r-transformr
+	optdepends = r-av
+	optdepends = r-gifski
+	optdepends = r-ragg
+	source = https://cran.r-project.org/src/contrib/gganimate_1.0.7.tar.gz
+	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	sha256sums = 0efc065cced5e9dac8855b33a49cc680808e60f10d2168357ceaf52e9234db10
+	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
+
+pkgname = r-gganimate
