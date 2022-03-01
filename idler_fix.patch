@@ -1,0 +1,14 @@
+diff --git a/ayatanawebmail/idler.py b/ayatanawebmail/idler.py
+index 8f956ea..3e852a1 100755
+--- a/ayatanawebmail/idler.py
++++ b/ayatanawebmail/idler.py
+@@ -22,6 +22,9 @@ class Idler(object):
+ 
+     def stop(self):
+ 
++        if self.oConnection.oImap is not None:
++            # Send a NOOP command to interrupt the IDLE mode and free the blocked thread
++            self.oConnection.oImap.noop()
+         self.oEvent.set()
+ 
+     def join(self):
