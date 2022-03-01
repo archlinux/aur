@@ -1,0 +1,39 @@
+diff --git a/src/fuse/mutex.c b/src/fuse/mutex.c
+index beb6f93..f8c44d4 100644
+--- a/src/fuse/mutex.c
++++ b/src/fuse/mutex.c
+@@ -35,16 +35,6 @@
+ #endif
+ #endif
+ 
+-/**
+- * This prototype is somehow missing in various Linux pthread
+- * include files. But we need it and it seems to be available
+- * on all pthread-systems so far. Odd.
+- */
+-#ifndef _MSC_VER
+-extern int pthread_mutexattr_setkind_np (pthread_mutexattr_t * attr,
+-                                         int kind);
+-#endif
+-
+ 
+ /**
+  * @brief Structure for MUTual EXclusion (Mutex).
+@@ -68,7 +58,7 @@ GNUNET_mutex_create (int isRecursive)
+   if (isRecursive)
+     {
+ #ifdef __linux__
+-      GNUNET_assert (0 == pthread_mutexattr_setkind_np
++      GNUNET_assert (0 == pthread_mutexattr_settype
+ 		     (&attr, PTHREAD_MUTEX_RECURSIVE_NP));
+ #elif BSD || SOLARIS || OSX || WINDOWS
+       GNUNET_assert (0 == pthread_mutexattr_settype
+@@ -78,7 +68,7 @@ GNUNET_mutex_create (int isRecursive)
+   else
+     {
+ #ifdef __linux__
+-      GNUNET_assert (0 == pthread_mutexattr_setkind_np
++      GNUNET_assert (0 == pthread_mutexattr_settype
+ 		     (&attr, PTHREAD_MUTEX_ERRORCHECK_NP));
+ #else
+       GNUNET_assert (0 == pthread_mutexattr_settype

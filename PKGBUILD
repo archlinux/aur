@@ -215,35 +215,30 @@ _get_mirror() {
 	return 1
 }
 
-source=("$(_get_mirror _pkg_mirrors)")
+source=("$(_get_mirror _pkg_mirrors)"
+        'pthread_mutexattr_settype.patch')
 
-sha512sums=('973ec06d97a032b5805ef148221be18e101a9b6211b47ab750e32597017fe3a7b7d879fdaf689339c5c3f70d6eb4a154c65ad04b7b6034dd85a4c735205b5042')
+sha256sums=('2cbeb79cc2aa9939d5faaaf52c21da125029cb6646c1db0d3b9e9feea7f23fa6'
+            '56238f02eb33570d494db8888a27e561fcf78ff3558d818ff233eed36f80040d')
 
 prepare() {
-
 	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 < "${srcdir}/pthread_mutexattr_settype.patch"
 	./configure --prefix=/usr
-
 }
 
 build() {
-
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make
-
 }
 
 check() {
-
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make check
-
 }
 
 package() {
-
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-
 }
 
