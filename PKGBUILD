@@ -4,7 +4,7 @@
 pkgbase=caffe
 pkgname=('caffe' 'caffe-doc')
 pkgver=1.0
-pkgrel=17
+pkgrel=18
 pkgdesc='A deep learning framework made with expression, speed, and modularity in mind (cpu only)'
 arch=('x86_64')
 url='https://caffe.berkeleyvision.org/'
@@ -12,7 +12,7 @@ license=('BSD')
 makedepends=('openblas' 'lapack' 'boost-libs' 'protobuf' 'google-glog' 'gflags'
              'hdf5' 'opencv' 'leveldb' 'lmdb' 'python' 'python-numpy' 'python-pandas'
              'boost' 'doxygen' 'texlive-core' 'texlive-latexextra' 'ghostscript')
-source=("https://github.com/BVLC/caffe/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/BVLC/caffe/archive/${pkgver}/caffe-${pkgver}.tar.gz"
         'Makefile.config'
         '010-caffe-opencv4-fix.patch'::'https://github.com/BVLC/caffe/commit/7f503bd9a19758a173064e299ab9d4cac65ed60f.patch'
         '020-caffe-protobuf3.19.4-fix.patch'::'https://github.com/BVLC/caffe/commit/1b317bab3f6413a1b5d87c9d3a300d785a4173f9.patch')
@@ -22,23 +22,23 @@ sha256sums=('71d3c9eb8a183150f965a465824d01fe82826c22505f7aa314f700ace03fa77f'
             '65be5a646ab32e9b277b4352b702a57ac6c79af5258e12e33b9751f07d1031aa')
 
 prepare() {
-    cp -af Makefile.config "${pkgname}-${pkgver}"
+    cp -af Makefile.config "caffe-${pkgver}"
     
     # https://github.com/BVLC/caffe/pull/6625
-    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/010-caffe-opencv4-fix.patch"
+    patch -d "caffe-${pkgver}" -Np1 -i "${srcdir}/010-caffe-opencv4-fix.patch"
     
     # https://github.com/BVLC/caffe/pull/7044
-    patch -d "${pkgname}-${pkgver}" -Np1 -i "${srcdir}/020-caffe-protobuf3.19.4-fix.patch"
+    patch -d "caffe-${pkgver}" -Np1 -i "${srcdir}/020-caffe-protobuf3.19.4-fix.patch"
 }
 
 build() {
-    make -C "${pkgname}-${pkgver}" all pycaffe test
-    rm -rf  "${pkgname}-${pkgver}/doxygen"
-    make -C "${pkgname}-${pkgver}" docs distribute
+    make -C "caffe-${pkgver}" all pycaffe test
+    rm -rf  "caffe-${pkgver}/doxygen"
+    make -C "caffe-${pkgver}" docs distribute
 }
 
 check() {
-    make -C "${pkgname}-${pkgver}" runtest
+    make -C "caffe-${pkgver}" runtest
 }
 
 package_caffe() {
