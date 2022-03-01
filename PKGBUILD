@@ -16,8 +16,8 @@ depends=(
 )
 
 ## BEGIN generated variables
-pkgver=2022.02.13.edge.r22.g6b66141252
-source=(https://github.com/Bonnee/freecad-build-arch/releases/download/2022.02.13.edge.r22.g6b66141252/freecad-archive.tar.gz)
+pkgver=2022.02.13.edge.r28.g0a841a76e0
+source=(https://github.com/Bonnee/freecad-build-arch/releases/download/2022.02.13.edge.r28.g0a841a76e0/freecad-archive.tar.gz)
 sha1sums=(SKIP)
 
 ## END generated variables
