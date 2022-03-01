@@ -12,7 +12,7 @@ to work. Please install the backends you prefer to use after installing tessen.
 
 post_upgrade() {
   printf "%s" "\
-tessen "$1" has some breaking changes since "$2" was released. Please consult
+tessen v2.0.0 has some breaking changes since v1.3.1 was released. Please consult
 the man page of tessen or the CHANGELOG.md file on GitHub for more details.
 
 https://github.com/ayushnix/tessen/blob/v2.0.0/CHANGELOG.md#200---2022-02-19
