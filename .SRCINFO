@@ -1,0 +1,15 @@
+pkgbase = python-gas_dynamics
+	pkgdesc = Gas dynamics equations, table generators, oblique shock chart generators and more.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://pypi.org/project/gas-dynamics/
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	depends = python
+	depends = python-scipy
+	depends = python-matplotlib
+	source = https://files.pythonhosted.org/packages/py3/g/gas_dynamics/gas_dynamics-0.4.2-py3-none-any.whl
+	b2sums = 73064b3dc2ffd2f5271d39b151794ac03fc3f263bd754168cab81750ecf3bbb75121ec148b4ff0142b641be8a8347a6b53ba1244cfa9804302cda414aa487076
+
+pkgname = python-gas_dynamics
