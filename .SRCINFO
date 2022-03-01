@@ -1,12 +1,12 @@
 pkgbase = discord-rpc-cli-git
 	pkgdesc = A Discord RPC cli client written purely in Rust
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Rayrsn/Discord-RPC-cli
-	arch = any
+	arch = x86_64
 	license = GPL
-	makedepends = rust
-	source = https://github.com/Rayrsn/Discord-RPC-cli/archive/refs/tags/V1.2.1.zip
-	md5sums = 4ed57f745719e4b21165f9482a8714ca
+	makedepends = cargo
+	source = https://github.com/Rayrsn/Discord-RPC-cli/archive/refs/tags/V1.3.0.zip
+	md5sums = 1c644c878ba327f2421d7cb64ef905ba
 
 pkgname = discord-rpc-cli-git
