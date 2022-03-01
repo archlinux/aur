@@ -3,7 +3,7 @@
 pkgname='python-gas_dynamics'
 _name=${pkgname#python-}
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Gas dynamics equations, table generators, oblique shock chart generators and more.'
 url='https://pypi.org/project/gas-dynamics/'
@@ -18,7 +18,7 @@ b2sums=('73064b3dc2ffd2f5271d39b151794ac03fc3f263bd754168cab81750ecf3bbb75121ec1
 )
 
 build() {
-  echo "Already built"
+  rm -r tests
 }
 
 package() {
