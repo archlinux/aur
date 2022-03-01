@@ -1,0 +1,5 @@
+*.zst
+src/
+*.run
+pkg/
+LICENSE
