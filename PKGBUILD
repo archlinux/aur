@@ -2,14 +2,14 @@
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=('gmsh' 'gmsh-docs')
 pkgver=4.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('x86_64')
 url="http://gmsh.info/"
 license=('custom')
 makedepends=('cmake' 'desktop-file-utils' 'sed' 'swig' 'texlive-core' 'voro++'
              'fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
-             'glu')
+             'glu' 'cgns' 'lapack')
 options=(!emptydirs)
 source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
 sha256sums=('ffd64900844208719c88d91a66c281889023132b7a9e282c51548cb9f6f3ad44'
@@ -37,8 +37,10 @@ build() {
    cd build
 
    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DENABLE_BUILD_SHARED=ON \
-      -DENABLE_SYSTEM_CONTRIB=ON  -DGMM_INC=0 -DMMG3D_INC=0 \
-      -DENABLE_PETSC=FALSE ..
+      -DENABLE_SYSTEM_CONTRIB=ON -DENABLE_BLAS_LAPACK=ON \
+      -DENABLE_CGNS=ON -DENABLE_ANN=ON -DENABLE_ALGLIB=ON \
+      -DENABLE_METIS=ON -DENABLE_OCC=ON -DENABLE_MED=ON \
+      -DENABLE_VOROPP=ON -DENABLE_EIGEN=OFF -DENABLE_PETSC=FALSE ..
 
    make
    LC_ALL=C make doc
@@ -46,7 +48,7 @@ build() {
 
 package_gmsh() {
    depends=('fltk' 'med' 'opencascade' 'cairo' 'metis' 'alglib' 'ann'
-            'glu')
+            'glu' 'cgns' 'lapack')
    optdepends=('gmsh-docs: docs for gmsh'
             'python2: for gmsh.py'
             'python: for gmsh.py'
