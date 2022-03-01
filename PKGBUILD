@@ -3,7 +3,7 @@
 
 pkgname=mvnvm
 pkgver=1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Maven version manager"
 arch=('any')
 url="https://mvnvm.org/"
@@ -11,10 +11,14 @@ license=('Apache')
 depends=('sh')
 conflicts=('maven')
 provides=('maven')
-source=("${pkgname}-${pkgver}"::"https://bitbucket.org/mjensen/mvnvm/raw/mvnvm-${pkgver}/mvn")
-sha256sums=('466c2e701317152d6f3653d662b1af565815a50d4b95112d40e1ab2e54c132c5')
+source=("https://bitbucket.org/mjensen/mvnvm/get/${pkgname}-${pkgver}.tar.bz2")
+noextract=("${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('c469d11a52c5085f287e13477762a844bfeaf56d691b53671dc4e979600736b2')
+
+prepare() {
+  tar --strip-components 1 -C "${srcdir}" -xf "${pkgname}-${pkgver}.tar.bz2"
+}
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}" ${pkgdir}/usr/bin/mvn
+  install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/mvn"{,Debug}
 }
