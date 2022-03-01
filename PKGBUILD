@@ -6,7 +6,7 @@
 # Maintainer: zzy-ac <zy-ac@qq.com>
 pkgname=bongocat-osu-git
 _gitname=bongocat-osu
-pkgver=1.1
+pkgver=1.5.3
 pkgrel=1
 epoch=
 pkgdesc="An osu! Bongo Cat overlay"
