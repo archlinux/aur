@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=hyperglot
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='A database and tools for detecting language support in fonts'
 arch=(any)
@@ -13,17 +13,19 @@ _py_deps=(click
           unicodedata2
           yaml)
 depends=(python ${_py_deps[@]/#/python-})
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer}
+             python-setuptools
+             python-wheel)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d3972415b42f947cc2d261d324fedddd65a3efd35ef7806d9280a29a1438a607')
+sha256sums=('067672f89849cea4fee291a49b5827f9c9c5b7e109b78a130ecd8d34aa66b7fc')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
