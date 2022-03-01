@@ -26,7 +26,7 @@ package() {
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/electron-qq"
 }
-sha256sums=('648f720db9c2ac9666ec276d4367708f1544a3f732cfe5d8eef026add55d88f2'
+sha256sums=('84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38'
             '43da1c99b7a6aee974c20da3bcf925b660dff4ba44a447c86066c84c8bc95fbd'
             'a1cbce70262a3bf3c9a51b1be178378eae13ed454f557f1526b24af87d0be6aa')
 sha256sums_aarch64=('595115a1c0e6ff6a63964ea04ad14cfe895ed21296ff66a1425e3fb5cfbef230')
