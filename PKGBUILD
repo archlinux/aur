@@ -6,8 +6,8 @@
 
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.1.0
+pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -94,13 +94,9 @@ backup=(
   'etc/logrotate.d/libvirtd.qemu'
   'etc/sasl2/libvirt.conf'
 )
-source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc}
-        "$pkgname"-fix-snapshot-revert.patch::https://gitlab.com/libvirt/libvirt/-/commit/76deb65.patch
-        "$pkgname"-fix-virProcessGetStatInfo.patch::https://gitlab.com/libvirt/libvirt/-/commit/105dace.patch)
-sha256sums=('51e6e8ff04bafe96d7e314b213dcd41fb1163d9b4f0f75cdab01e663728f4cf6'
-            'SKIP'
-            '06164af980ab2ece221de494f4da5a0d38c22c0f1ac527dd53aed2e2dbf1ed48'
-            'a7b0f7b2941c0fed41205c8db3d3d37ed9ccee910e44196d2d2bf5aa0eb986d8')
+source=("https://libvirt.org/sources/$pkgname-$pkgver.tar.xz"{,.asc})
+sha256sums=('3c6c43becffeb34a3f397c616206aa69a893ff8bf5e8208393c84e8e75352934'
+            'SKIP')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
 
 prepare() {
@@ -114,10 +110,6 @@ prepare() {
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
     src/qemu/qemu.conf \
     src/qemu/test_libvirtd_qemu.aug.in
-
-  # bugs fixed post-release
-  patch -Np1 < ../libvirt-fix-snapshot-revert.patch
-  patch -Np1 < ../libvirt-fix-virProcessGetStatInfo.patch
 }
 
 build() {
@@ -126,6 +118,7 @@ build() {
   arch-meson build \
     --libexecdir=lib/libvirt \
     -Drunstatedir=/run \
+    -Dqemu_user=kvm \
     -Dqemu_group=kvm \
     -Dnetcf=disabled \
     -Dopenwsman=disabled \
@@ -161,7 +154,6 @@ package_libvirt() {
   cd "$pkgname-$pkgver"
   DESTDIR="$pkgdir" ninja -C build install
 
-  mv "$pkgdir"/etc/{sysconfig,conf.d}
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
   echo "g libvirt - -" > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
   echo "z /var/lib/libvirt/qemu 0751" > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
