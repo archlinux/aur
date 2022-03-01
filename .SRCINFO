@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-poppler
+pkgbase = mingw-w64-poppler-static
 	pkgdesc = PDF rendering library based on xpdf 3.0 (mingw-w64)
 	pkgver = 22.01.0
 	pkgrel = 1
@@ -9,15 +9,20 @@ pkgbase = mingw-w64-poppler
 	makedepends = mingw-w64-glib2
 	makedepends = mingw-w64-icu
 	makedepends = mingw-w64-curl
+	makedepends = ninja
 	makedepends = python
 	depends = mingw-w64-openjpeg2
 	depends = mingw-w64-cairo
 	optdepends = mingw-w64-glib2: libpoppler-glib
 	optdepends = mingw-w64-qt5-base: libpoppler-qt5
+	provides = mingw-w64-poppler=22.01.0
+	conflicts = mingw-w64-poppler
 	options = !strip
 	options = staticlibs
 	options = !buildflags
 	source = https://poppler.freedesktop.org/poppler-22.01.0.tar.xz
+	source = cmake-libs-harfbuzz.patch
 	sha256sums = 7d3493056b5b86413e5c693c2cae02c5c06cd8e618d14c2c31e2c84b67b2313e
+	sha256sums = e236e36067d056af8bb330065169ed503e855ac3fee42c176bf099b043d76752
 
-pkgname = mingw-w64-poppler
+pkgname = mingw-w64-poppler-static

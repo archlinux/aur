@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 645560d..7f0f0ab 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -149,6 +149,7 @@ set(GTK_REQUIRED "3.22")
+ set(GDK_PIXBUF_REQUIRED "2.36")
+ 
+ find_package(Freetype REQUIRED)
++find_package(HarfBuzz REQUIRED)
+ if(WITH_FONTCONFIGURATION_FONTCONFIG)
+   find_package(Fontconfig REQUIRED)
+ endif()
+@@ -480,7 +481,7 @@ set(poppler_SRCS
+   splash/SplashXPath.cc
+   splash/SplashXPathScanner.cc
+ )
+-set(poppler_LIBS ${FREETYPE_LIBRARIES})
++set(poppler_LIBS ${FREETYPE_LIBRARIES} ${HarfBuzz_LIBRARY})
+ if(FONTCONFIG_FOUND)
+   set(poppler_LIBS ${poppler_LIBS} ${FONTCONFIG_LIBRARIES})
+ endif()
