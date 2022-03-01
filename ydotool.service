@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts ydotoold service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/ydotoold
+ExecReload=/usr/bin/kill -HUP $MAINPID
+KillMode=process
+TimeoutSec=180
+
+[Install]
+WantedBy=default.target
