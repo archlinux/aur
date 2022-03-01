@@ -1,7 +1,7 @@
 pkgbase = stitchy-git
 	pkgdesc = Cross stitch pattern designer.
 	pkgver = 7610be8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/segfault87/stitchy
 	install = stitchy.install
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = stitchy-git
 	license = GPL3
 	makedepends = git
 	depends = qjson
-	source = git://github.com/segfault87/stitchy.git
+	source = git+https://github.com/segfault87/stitchy.git
 	source = stitchy.desktop
 	md5sums = SKIP
 	md5sums = 126841e4b1ff8c8ab949b6be1b2a801c
 
 pkgname = stitchy-git
-
