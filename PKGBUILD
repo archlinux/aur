@@ -2,7 +2,7 @@
 
 pkgname=python-slixmpp
 _pkgbase=slixmpp
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -34,3 +34,4 @@ package() {
     # This one is only used when Cython is unavailable, or on pypy3.
     rm "$pkgdir"/usr/lib/python3.*/site-packages/slixmpp/stringprep.py
 }
+sha512sums=('fdd0360b45a716a01769d62dea896aa8146b706a425b6873d516f50d76d7049aa985237938aae626c5a4aefa816cc63bb523fc5c73c758023a17570f27e99ebe')
