@@ -129,7 +129,7 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     dxvk-async-${_asyncver}.patch::https://raw.githubusercontent.com/Sporif/dxvk-async/${_asyncver}/dxvk-async.patch
-    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch::https://github.com/wine-mirror/wine/commit/25946b48148784e8275c1685f6498ab88f553ca3.patch
+    wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
     wine-futex_waitv.patch
     wine-winevulkan_fsr.patch
     wine-more_8x5_res.patch
@@ -415,7 +415,7 @@ sha256sums=('SKIP'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '59f146dde0f0540ca4648fc648e6b16335c71921deaf111b5fe8c3967881661d'
             'ddde07c98045a3bc15fab5eaf3c6a756a6a4b4eaeec646d4339168b86ac00463'
-            '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
+            'c94513348b9fe5342af3008b829856614ea04ffe84171ac6f323e61008afb805'
             '7d989e9b29643897eaadb970d65e71140b11f4d641ef8816bd17feb9ad2ca992'
             'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
