@@ -2,7 +2,7 @@
 
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
@@ -10,6 +10,7 @@ url='https://github.com/NVIDIA/DALI'
 license=('Apache')
 depends=(
   cuda
+  ffmpeg
   libtar
   lmdb
   opencv
@@ -35,24 +36,22 @@ prepare() {
 }
 
 build() {
-  mkdir "${srcdir}/${pkgname}/build"
-  cd "${srcdir}/${pkgname}/build"
   cmake \
-    -DBUILD_LMDB:BOOL=ON \
-    -DCMAKE_BUILD_TYPE:String=Release \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DCMAKE_SKIP_RPATH:BOOL=ON \
-    -DProtobuf_USE_STATIC_LIBS:BOOL=OFF \
-    ..
-  make
-  cd 'dali/python'
+    -B "${srcdir}/build" \
+    -DBUILD_LMDB=ON \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DProtobuf_USE_STATIC_LIBS=OFF \
+    -S "${srcdir}/${pkgname}"
+  make -C "${srcdir}/build"
+  cd "${srcdir}/build/dali/python"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  make DESTDIR="${pkgdir}" install
-  cd 'dali/python'
+  make -C "${srcdir}/build" DESTDIR="${pkgdir}" install
+  cd "${srcdir}/build/dali/python"
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   # create softlink to save space
   ln -sf "/usr/lib/python$(get_pyver)/site-packages/nvidia/dali/libdali.so" "${pkgdir}/usr/lib/libdali.so"
