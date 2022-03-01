@@ -17,7 +17,6 @@ pkgbase = gcc10
 	makedepends = python
 	options = !emptydirs
 	options = !lto
-	options = debug
 	source = https://sourceware.org/pub/gcc/releases/gcc-10.3.0/gcc-10.3.0.tar.xz
 	source = https://sourceware.org/pub/gcc/releases/gcc-10.3.0/gcc-10.3.0.tar.xz.sig
 	source = https://mirror.sobukus.de/files/src/isl/isl-0.24.tar.xz

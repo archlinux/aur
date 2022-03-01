@@ -17,7 +17,7 @@ license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
 makedepends=(binutils doxygen git libmpc python)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs !lto debug)
+options=(!emptydirs !lto)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%%+*}
 source=(https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz{,.sig}
         https://mirror.sobukus.de/files/src/isl/isl-${_islver}.tar.xz
