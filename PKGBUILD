@@ -4,7 +4,7 @@
 
 _pkgname=sxhkd
 pkgname=${_pkgname}-git
-pkgver=166.a96fb0f
+pkgver=187.fe241b0
 pkgrel=1
 pkgdesc='A simple X hotkey daemon'
 arch=('i686' 'x86_64' 'armv7h')
@@ -14,7 +14,7 @@ depends=('libxcb' 'xcb-util-keysyms')
 makedepends=('git' 'xcb-util')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git://github.com/baskerville/${_pkgname}.git")
+source=("git+https://github.com/baskerville/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
