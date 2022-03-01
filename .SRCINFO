@@ -1,7 +1,7 @@
 pkgbase = mipsr5900el-unknown-linux-gnu-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files (mipsr5900el-unknown-linux-gnu)
 	pkgver = 2.34
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
@@ -13,4 +13,3 @@ pkgbase = mipsr5900el-unknown-linux-gnu-binutils
 	sha1sums = SKIP
 
 pkgname = mipsr5900el-unknown-linux-gnu-binutils
-

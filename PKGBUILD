@@ -3,7 +3,7 @@
 _target=mipsr5900el-unknown-linux-gnu
 pkgname=$_target-binutils
 pkgver=2.34
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of programs to assemble and manipulate binary and object files ($_target)"
 arch=(x86_64)
 url='http://www.gnu.org/software/binutils/'
@@ -25,7 +25,6 @@ build() {
   ./configure --target=$_target \
               --prefix=/usr \
               --disable-nls \
-              --disable-libctf \
               --enable-shared \
               --enable-plugins \
               --enable-deterministic-archives
@@ -48,7 +47,7 @@ package() {
 
   # Remove file conflicting with host binutils and manpages for MS Windows tools
   rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
-
-  # Remove info documents that conflict with host version
   rm -r "$pkgdir"/usr/share/info
+  rm "$pkgdir"/usr/lib/libctf*
+  rm "$pkgdir"/usr/include/ctf{,-api}.h
 }
