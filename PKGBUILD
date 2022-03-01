@@ -1,53 +1,46 @@
 # Maintainer: Guy Boldon <gb@guyboldon.com>
 
-pkgname=coolero-git
+pkgname=coolero
+_app_id="org.$pkgname.Coolero"
 pkgver=0.8.0
 pkgrel=1
-pkgdesc='Monitor and control your cooling devices.'
-arch=('x86_64')
-url='https://gitlab.com/codifryed/coolero'
+pkgdesc="A program to monitor and control your cooling devices"
+arch=('any')
+url="https://gitlab.com/codifryed/coolero"
 license=('GPL3')
-depends=(
-  python
-  python-poetry
-  pyside6
-  qt6-svg
-  liquidctl
-  python-apscheduler
-  python-matplotlib
-  python-numpy
-  python-psutil
-  python-setproctitle
-  python-jeepney
-  python-pyamdgpuinfo
-)
-makedepends=(
-  git
-  python-build
-  python-installer
-)
-checkdepends=()
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("$url/-/archive/$pkgver/${pkgname%-git}-$pkgver.tar.gz")
-sha256sums=(
-  '31dea237415d9a1ddc70a11ab3fbde2f0d662212954268579dcbc2b5c67d86ab'
-)
+depends=('hicolor-icon-theme' 'polkit' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
+         'python-matplotlib' 'python-numpy' 'python-psutil' 'python-setproctitle' 'python-jeepney'
+         'python-pyamdgpuinfo')
+makedepends=('python-build' 'python-installer' 'python-poetry')
+checkdepends=('appstream-glib' 'desktop-file-utils')
+optdepends=('nvidia-utils: NVIDIA GPU support')
+provides=("$pkgname")
+conflicts=("$pkgname")
+source=("https://gitlab.com/codifryed/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('31dea237415d9a1ddc70a11ab3fbde2f0d662212954268579dcbc2b5c67d86ab')
 
 build() {
-  cd ${pkgname%-git}-$pkgver
+  cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd ${pkgname%-git}-$pkgver
-  python -m coolero -h
+  cd "$pkgname-$pkgver"
+  desktop-file-validate "metadata/$_app_id.desktop"
+  appstream-util validate-relax "metadata/$_app_id.metainfo.xml"
   python -m coolero -v
 }
 
 package() {
-  cd ${pkgname%-git}-$pkgver
-  python -m installer --destdir="$pkgdir" dist/coolero-$pkgver-*.whl
-  install -D -m644 "metadata/org.coolero.Coolero.desktop" "${pkgdir}/usr/share/applications/org.coolero.Coolero.desktop"
-  install -D -m644 "metadata/org.coolero.Coolero.png" "$pkgdir/usr/share/pixmaps/org.coolero.Coolero.png"
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Remove duplicate license files
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm "${pkgdir}${site_packages}/$pkgname-$pkgver.dist-info"/{COPYING.txt,LICENSE}
+
+  install -Dm644 "metadata/$_app_id.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "metadata/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
+  install -Dm644 "metadata/$_app_id.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "metadata/$_app_id.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
 }
