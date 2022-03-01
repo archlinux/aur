@@ -2,7 +2,7 @@
 
 _pkgname=fdns
 pkgname=${_pkgname}-git
-pkgver=0.9.64.2+4+gd179f8d
+pkgver=0.9.68+gee1991f
 pkgrel=1
 pkgdesc="Firejail DNS-over-HTTPS proxy server - git version"
 arch=(x86_64)
@@ -21,7 +21,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    git describe --tags | sed -e 's/-/+/g' -e 's/^v//'
+    #git describe --tags | sed -e 's/-/+/g' -e 's/^v//'
+    _version="$(grep "PACKAGE_VERSION=" configure | awk '{split($0,a,"="); print a[2]}' | sed "s/'//g")"
+    _tag="$(git describe --tags | sed -e 's/-/+/g' -e 's/^v//' | awk '{split($0,a,"+"); print a[3]}')"
+    echo "${_version}+${_tag}"
 }
 
 build() {
