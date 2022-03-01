@@ -13,18 +13,18 @@ provides=('electron-qq' 'icalingua')
 conflicts=('electron-qq')
 replaces=('electron-qq')
 source=(512x512.png
-        ${pkgname}.desktop
-        ${pkgname})
+        ${_pkgname}.desktop
+        ${_pkgname})
 source_x86_64=("app-x86_64-${pkgver}.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-x86_64.asar")
 source_aarch64=("app-aarch64-${pkgver}.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-arm64.asar")
 source_i686=("app-i686-${pkgver}.asar::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v${pkgver//_/-}/app-ia32.asar")
 
 package() {
-    install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
-    install -Dm644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
-    install -Dm644 "app-${CARCH}-${pkgver}.asar" "${pkgdir}/usr/lib/${pkgname}/${pkgname}.asar"
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    ln -s "/usr/bin/${pkgname}" "${pkgdir}/usr/bin/electron-qq"
+    install -Dm644 -t "${pkgdir}/usr/share/applications" "${_pkgname}.desktop"
+    install -Dm644 "512x512.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+    install -Dm644 "app-${CARCH}-${pkgver}.asar" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.asar"
+    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/electron-qq"
 }
 sha256sums=('f87b876d5b619a13104d94278f24753b1732fab2413131ebbd6c774495a35cea'
             'b088d20934708c53e50492694efefbf9a9dcb62fefb8d1d4976f36f32f84af86'
