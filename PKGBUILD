@@ -2,7 +2,7 @@
 # contributors: yochananmarqos, bpierre, PedroHLC, rodrigo21
 pkgname='vkbasalt'
 pkgver=0.3.2.5
-pkgrel=1
+pkgrel=3
 pkgdesc='A Vulkan post-processing layer. Some of the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
@@ -15,9 +15,9 @@ install=vkbasalt.install
 
 prepare() {
   cd ${srcdir}/vkBasalt-${pkgver}
-  sed -i 's|/path/to/reshade-shaders/Textures|/usr/share/reshade/textures|g' \
+  sed -i 's|/path/to/reshade-shaders/Textures|/opt/reshade/textures|g' \
     "config/vkBasalt.conf"
-  sed -i 's|/path/to/reshade-shaders/Shaders|/usr/share/reshade/shaders|g' \
+  sed -i 's|/path/to/reshade-shaders/Shaders|/opt/reshade/shaders|g' \
     "config/vkBasalt.conf"
 }
 
@@ -35,6 +35,10 @@ package() {
   cd ${srcdir}/vkBasalt-${pkgver}
 
   DESTDIR="${pkgdir}" ninja -C build install
+  install -dm 755 "${pkgdir}/opt/vkBasalt/lib"
+  mv "${pkgdir}/usr/lib/libvkbasalt.so" "${pkgdir}/opt/vkBasalt/lib/"
+  rmdir "${pkgdir}/usr/lib"
+  sed -i 's|libvkbasalt.so|/opt/vkBasalt/lib/libvkbasalt.so|g' "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt.json"
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/vkBasalt"
 }
