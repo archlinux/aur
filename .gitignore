@@ -1,0 +1,7 @@
+# Ignore everything (default)
+*
+
+# Exceptions
+!.gitignore
+!.SRCINFO
+!PKGBUILD
