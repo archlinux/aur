@@ -3,7 +3,7 @@
 
 pkgname=ttyd
 pkgver=1.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Share your terminal over the web'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url=https://tsl0922.github.io/ttyd/
@@ -27,7 +27,9 @@ build() {
 	cc -Wall slogin.c -o slogin -lpam -lpam_misc -lutil
 	cd ttyd-$pkgver
 	mv CMakeLists.txt CMakeLists.txt.0
-	sed 's/find_package\\(Libwebsockets 1.7.0 QUIET\\)/find_package\\(Libwebsockets 1.8.0 QUIET\\)/' CMakeLists.txt.0 > CMakeLists.txt
+	sed -e 's/find_package(Libwebsockets 1.7.0 QUIET)/find_package(Libwebsockets 4.3.1...<5.0.0 QUIET)/'	\
+	    -e 's/cmake_minimum_required(VERSION 2.8)/cmake_minimum_required(VERSION 3.19)/'	\
+	    CMakeLists.txt.0 > CMakeLists.txt
 	mkdir -p build && cd build
 	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make

@@ -1,7 +1,7 @@
 pkgbase = ttyd
 	pkgdesc = Share your terminal over the web
 	pkgver = 1.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://tsl0922.github.io/ttyd/
 	arch = i686
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = ttyd
 	sha512sums = 192b8b7216017b862e665a4ce2f89eef0499a6b2738d4dfffe8abd95b622c7f6729c9995adfd84d042fb3301e05fc6f58a458fe84f2ff2679deeb7e9efaf679f
 
 pkgname = ttyd
-
