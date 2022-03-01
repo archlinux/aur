@@ -12,7 +12,7 @@ noextract=(${_pkgname})
 options=("!strip")
 provides=("siyuan")
 source=("https://download.fastgit.org/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("d449adc42f438d927b44dd3b765314babe2695f0daafdd9db4c4e6a2f71e4ec0aa318952041272551f61c2df7571c74c56ec65bccaadd0303b8233132953aa26")
+sha512sums=("8147246ef0fdc09ff626046526656be4d8669d2a34e2d2ab8da9c7a92ec8defa9f61b19fd5b9302c44933000d924f0fb379df914430e749af4dca4faf837653c")
 
 _installdir=/opt/appimages
 
