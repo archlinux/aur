@@ -1,17 +1,17 @@
 pkgbase = ros-noetic-catkin
 	pkgdesc = ROS - Low-level build system macros and infrastructure for ROS.
 	pkgver = 0.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/catkin
 	arch = any
 	license = BSD
 	makedepends = cmake
-	makedepends = python-catkin-pkg
+	makedepends = python-catkin_pkg
 	makedepends = python-empy
 	makedepends = python
 	depends = python-nose
 	depends = gtest
-	depends = python-catkin-pkg
+	depends = python-catkin_pkg
 	depends = python-empy
 	depends = gmock
 	depends = python
@@ -20,4 +20,3 @@ pkgbase = ros-noetic-catkin
 	sha256sums = 363857f037d8f300a5889d00dc8248673f363d587d639c11e23f1f0fd3c22b92
 
 pkgname = ros-noetic-catkin
-

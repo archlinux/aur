@@ -4,7 +4,7 @@ url='https://wiki.ros.org/catkin'
 pkgname='ros-noetic-catkin'
 pkgver='0.8.10'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -13,7 +13,7 @@ ros_makedepends=(
 makedepends=(
     cmake
     ${ros_makedepends[@]}
-    python-catkin-pkg
+    python-catkin_pkg
     python-empy
     python
 )
@@ -25,7 +25,7 @@ depends=(
     ${ros_depends[@]}
     python-nose
     gtest
-    python-catkin-pkg
+    python-catkin_pkg
     python-empy
     gmock
     python
