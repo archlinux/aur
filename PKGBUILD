@@ -6,8 +6,8 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2022.1
-_channel=beta
-_rel=2
+_channel=stable
+_rel=1
 # beta
 pkgver=${_pkgver}.${_channel}${_rel}
 # stable
@@ -25,8 +25,8 @@ options=('!lto')
 install="${pkgname%-beta}.install"
 _commit=973ee47bec89df537b8ecae20235071055693ec5
 source=(
-        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed" # beta
-#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
+#        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed" # beta
+        "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed" # stable
 #        "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit" # unverified commit by mvd-ows
         "${pkgname%-beta}.sh"
