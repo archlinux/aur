@@ -1,9 +1,9 @@
-
-# maintainer: Amr Okasha <amradel55 at gmail dot com>
+# maintainer: J. C. Hammons <jch at bitma dot st>
+# contributer: Amr Okasha <amradel55 at gmail dot com>
 # contributer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=netron-bin
-pkgver=5.5.4
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models"
 arch=('x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/lutzroeder/netron/releases/download/v${pkgver}/Netron-${pkgver}.AppImage"
         'LICENSE::https://github.com/lutzroeder/netron/raw/main/LICENSE')
-sha256sums=('5f3ec93ba918866a2aa0e365051d7a82c625b25f1b481fb8040d0aac2561511a'
+sha256sums=('b65a4eec553689518963269eeb27c5a27ec62547d638540d2ab002c6ef169e15'
             '535cb2c7c8990f967c106e3035e4df8d3e070144af1163b86c8bb58b65fe5e88')
 package() {
   chmod 755 ./${pkgname}-${pkgver}.AppImage
