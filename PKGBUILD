@@ -1,7 +1,7 @@
 pkgname=rubik-git
 pkgdesc="A keyboard driven virtual Rubik's cube made in rust."
 pkgver=r17.8f577ae
-pkgrel=1
+pkgrel=2
 _reponame=rubik
 arch=('x86_64')
 url="https://github.com/alansartorio/rubik"
