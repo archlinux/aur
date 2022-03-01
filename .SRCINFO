@@ -17,7 +17,7 @@ pkgbase = openfreebuds
 	depends = python-psutil
 	depends = bluez
 	depends = python-pillow
-	source = openfreebuds-0.9::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.9
+	source = openfreebuds-0.9::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.9-2
 	md5sums = SKIP
 
 pkgname = openfreebuds
