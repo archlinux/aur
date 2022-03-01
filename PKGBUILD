@@ -11,7 +11,7 @@
 
 pkgname=gitkraken-standalone
 pkgrel=1
-pkgver=8.2.0
+pkgver=8.3.1
 pkgdesc="Stand-alone version of GitKraken for labs and computers without internet access (requires license file)."
 url="https://support.gitkraken.com/standalone/standalone/"
 provides=('gitkraken')
@@ -31,7 +31,7 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-sha256sums=('9c96f28050ddd311c6b55caaee15b6a1021ab05669783d1f8199b14ad0d21c6e'
+sha256sums=('bd4af5a887137e8bc4f950ff0e29ac4aeef4b976100d721185d1dad91ec24e80'
             'f4a63737eccf279b0b131fe34e4a711aaf0dd5be86e932baf2593069553ef3b1'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
