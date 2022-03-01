@@ -2,7 +2,7 @@
 # Contributor: Daniel "dtubber" Wanner <daniel.wanner@tubber.xyz>
 
 pkgname="ryzenadj-git"
-pkgver=0.8.1.r5.ga3871a2
+pkgver=0.9.0.r5.g4dff748
 pkgrel=1
 pkgdesc="RyzenAdj tool for adjusting Ryzen Mobile power states"
 url="https://github.com/FlyGoat/RyzenAdj"
@@ -32,4 +32,5 @@ package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dsm 755 build/ryzenadj $pkgdir/usr/bin/ryzenadj
     install -Dsm 744 build/libryzenadj.so $pkgdir/usr/lib/libryzenadj.so
+    install -Dm 744 lib/ryzenadj.h $pkgdir/usr/include/ryzenadj.h
 }
