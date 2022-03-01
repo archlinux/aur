@@ -1,16 +1,16 @@
 diff --git a/proton b/proton
-index 4423e05..becbbcc 100755
+index bc9b8d4..f81ebbf 100755
 --- a/proton
 +++ b/proton
-@@ -291,7 +291,6 @@ class Proton:
-         self.user_settings_file = self.path("user_settings.py")
+@@ -335,7 +335,6 @@ class Proton:
          self.wine_bin = self.bin_dir + "wine"
+         self.wine64_bin = self.bin_dir + "wine64"
          self.wineserver_bin = self.bin_dir + "wineserver"
 -        self.dist_lock = FileLock(self.path("dist.lock"), timeout=-1)
  
      def path(self, d):
          return self.base_dir + d
-@@ -1247,8 +1246,6 @@ if __name__ == "__main__":
+@@ -1350,8 +1349,6 @@ if __name__ == "__main__":
  
      g_proton = Proton(os.path.dirname(sys.argv[0]))
  
@@ -19,7 +19,7 @@ index 4423e05..becbbcc 100755
  
      g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
  
-@@ -1257,7 +1254,8 @@ if __name__ == "__main__":
+@@ -1360,7 +1357,8 @@ if __name__ == "__main__":
      g_session.init_wine()
  
      if g_proton.missing_default_prefix():
