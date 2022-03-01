@@ -1,6 +1,6 @@
 pkgbase = nspawn-git
 	pkgdesc = A wrapper around machinectl for easy-deployment of nspawn.org containers
-	pkgver = r42.1fa9eae
+	pkgver = r2.8907cb8
 	pkgrel = 1
 	url = https://github.com/nspawn/nspawn
 	arch = any
