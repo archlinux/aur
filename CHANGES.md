@@ -4,6 +4,44 @@
 
 This document lists all changes of `LittleBrother` with the most recent changes at the top.
 
+## Version 0.4.19 Revision 121 (February 13th, 2022)
+
+* Upgrade to `python_base_app` version 0.2.36 (lots of trouble releasing `python_base_app`)
+
+## Version 0.4.18 Revision 119 (February 5th, 2022)
+
+* Upgrade to `python_base_app` version 0.2.34
+
+## Version 0.4.17 Revision 117 (January 30th, 2022)
+
+* Closes #166, see [here](https://github.com/marcus67/little_brother/issues/166) 
+  (Thanks to [Bas Hulsken](https://github.com/bhulsken)!)
+* Upgrade package `alembic` to version 1.7.5
+* Make upgrade message in administration views more concise, include link to `CHANGES.md`
+
+## Version 0.4.16 Revision 116 (January 30th, 2022)
+
+* Upgrade to `python_base_app` version 0.2.33
+* Closes #165, see [here](https://github.com/marcus67/little_brother/issues/165)
+
+## Version 0.4.15 Revision 115 (January 28th, 2022)
+
+* Upgrade to `python_base_app` version 0.2.31
+* Closes #158, see [here](https://github.com/marcus67/little_brother/issues/158)
+* Closes #164, see [here](https://github.com/marcus67/little_brother/issues/164)
+
+## Version 0.4.14 Revision 114 (January 6th, 2022)
+
+* Closes #163, see [here](https://github.com/marcus67/little_brother/issues/163)
+
+## Version 0.4.13 Revision 113 (January 5th, 2022)
+
+* Add CODE_OF_CONDUCT.md and CONTRIBUTING.md
+* Added Snyk package health score badge
+* Add second Docker image 
+  [`little-brother-ubuntu-client`](https://hub.docker.com/repository/docker/marcusrickert/little-brother-ubuntu-client)
+* Renamed Docker image `little-brother-slave` to `little-brother-client`. 
+
 ## Version 0.4.12 Revision 112 (December 29th, 2021)
 
 * Closes #87, see [here](https://github.com/marcus67/little_brother/issues/87)
@@ -39,7 +77,7 @@ This document lists all changes of `LittleBrother` with the most recent changes 
 * Upgrade WTForms to version 3.0.0a1
 
 
-## Version 0.4.8 Revision 107 (August 21th, 2021)
+## Version 0.4.8 Revision 107 (August 21st, 2021)
 
 *   Closes #130, see [here](https://github.com/marcus67/little_brother/issues/130)
 *   Provide `ruleset_check_interval` in `UserStatus`
@@ -96,9 +134,9 @@ This document lists all changes of `LittleBrother` with the most recent changes 
 *   Split up test class `TestStatusServer`
 *   Add test cases for users page: 
     *   add and delete user, edit user,
-    *   assign/unassign rule set, 
+    *   assign/un-assign rule set, 
     *   move up/down rule set,
-    *   assign/unassign device
+    *   assign/un-assign device
 *   Add test cases for devices page: add and delete device, edit device
 *   Add test cases for admin page: edit rule override, add, extend, and delete time extension
 *   Add test cases for invalid data in rule override and device
@@ -265,7 +303,7 @@ This document lists all changes of `LittleBrother` with the most recent changes 
 *   Update Italian localization (locale "it")
 *   Issue error when no database user is given when driver != sqlite
 *   Register logging filter for alembic
-*   Add latest change date of translations as column to localization table
+*   Add the latest change date of translations as column to localization table
 
 ## Version 0.3.0 Revision 65 (July 18th, 2020)
     
