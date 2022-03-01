@@ -1,8 +1,8 @@
 # Maintainer: Caesim404 <caesim404 at gmail dot com>
 
 pkgname="yatqa"
-_realpkgver="3.9.8.3f"
-pkgver="3.9.8.3.f"
+_realpkgver="3.9.9"
+pkgver="$_realpkgver"
 epoch="1"
 pkgrel="1"
 pkgdesc="Tool for managing TeamSpeak 3 servers and instances"
@@ -17,7 +17,7 @@ source=("https://dl.yat.qa/stable/YaTQA-Setup_${_realpkgver}.exe"
         "yatqa.desktop"
         "yatqa.install"
         "LICENSE")
-sha256sums=('6764e4eaa3eeb70afb27507fd8092c05bd235a0867445b2953be13c1a138bb9b'
+sha256sums=('4089dc8cb9374caa416e0dee9c432b774ec7be31e70f66e23a7c9eb922e9310c'
             '57fcd761e93b6f5d8bd6f4e354aafc9174ecdeea0fe39ea89dc68245b3c9ce02'
             '98c8f8313858f9fd7a00f75001effcf298b8b1bc43e142ac3e361016f5be9c6f'
             '45fe54d9f4655abb6774a01c961ee547507a92c2499645164f14ea5b1dc1a55a'
