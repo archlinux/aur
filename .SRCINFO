@@ -1,0 +1,21 @@
+pkgbase = gmult-git
+	pkgdesc = Multiplication Puzzle is a simple game inspired by the multiplication game inside the popular editor emacs
+	pkgver = r98
+	pkgrel = 1
+	url = https://git.launchpad.net/gmult
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = bzr
+	makedepends = meson
+	makedepends = vala
+	makedepends = python-dulwich
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	provides = gmult
+	conflicts = gmult
+	source = bzr+lp:gmult
+	b2sums = SKIP
+
+pkgname = gmult-git
