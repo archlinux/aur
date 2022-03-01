@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=poezio
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A full-featured command-line IRC-like XMPP (Jabber) client"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=('poezio-omemo: OMEMO plugin'
             'python-pyinotify: Autoaway with screen plugin (also works with tmux)'
             'figlet: ASCII art plugin')
 
-sha256sums=('475ac5e6eb00e7c191e17bc095c0b70c91a419c4d9a962c1fd09706c42505308')
+sha256sums=('411231d038130ab2c876b516e79fa6aec7cae53750246b0f312de5e58c694ecd')
 
 build() {
     cd $pkgname-v$pkgver
