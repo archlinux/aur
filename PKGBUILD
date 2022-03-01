@@ -3,14 +3,13 @@ pkgname=casparcg-server
 pkgver=2.3.3
 _pkgver=$pkgver-lts-stable
 _cef_version=3.3578.1870.gc974488
-pkgrel=5
+pkgrel=6
 pkgdesc="Software used to play out professional graphics, audio and video to multiple outputs"
 arch=('x86_64')
 url="https://github.com/CasparCG/server"
 license=('GPL3')
 depends=(ffmpeg libgl freeimage glew tbb openal sfml libxcomposite libxss pango nss at-spi2-atk ttf-liberation)
 makedepends=(cmake ninja boost dos2unix)
-options=(debug !strip)
 source=("https://github.com/CasparCG/server/archive/refs/tags/v$_pkgver.tar.gz"
         "https://github.com/CasparCG/server/commit/f0e678e7cabc69d573d59f24f9fd3ceca322ab85.patch"
         "https://github.com/CasparCG/server/commit/9cafa27838039aa65af3c97fe7d0c4531a952cdc.patch"
@@ -34,7 +33,7 @@ sha256sums=('6d8e973949009e95bb5a6496e26cbe680efd77666936e131df0da569f8f7c7e1'
             '5c6f2a3007e3a8739bc1f3eaec3c694af9836aed1943217843a92acff80950c1'
             '322158baef39dff7bfcf899a2ffea0fbe148443664beac380b9be6858a2b71d1'
             'a87a88f65e9cf192f4ae93afb20ecc4527b2357ebe1e26e23425d1e8f5e888ed'
-            '3e9c407baa225f9654503f277a4ad7cb9fef2cc40da70867777549e4719c4e71'
+            'd82dd031ca0d3d46b0c18c018b59a5426e0cba0627ac434b61d683b69b347f86'
             'b7c5401f342917ece7be583566bfc48b5cc1a8ff9f6470d396130b4aca7dfb22'
             'ce9dd83ae2ef9289e551f0a3ecbe246537195049c15f69bbfdc6c3ddd23291c2')
 

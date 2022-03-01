@@ -127,7 +127,7 @@ index 6b31f8f81..e20eb6703 100644
          if (codec->capabilities & AV_CODEC_CAP_AUTO_THREADS) {
              numThreads = 0;
 diff --git a/src/modules/ffmpeg/util/av_util.cpp b/src/modules/ffmpeg/util/av_util.cpp
-index 96d535446..17717e939 100644
+index 96d535446..9e61ab42a 100644
 --- a/src/modules/ffmpeg/util/av_util.cpp
 +++ b/src/modules/ffmpeg/util/av_util.cpp
 @@ -9,7 +9,9 @@
@@ -140,7 +140,7 @@ index 96d535446..17717e939 100644
  #include <libavutil/pixfmt.h>
  }
  #if defined(_MSC_VER)
-@@ -119,47 +121,50 @@ core::pixel_format get_pixel_format(AVPixelFormat pix_fmt)
+@@ -119,47 +121,51 @@ core::pixel_format get_pixel_format(AVPixelFormat pix_fmt)
  core::pixel_format_desc pixel_format_desc(AVPixelFormat pix_fmt, int width, int height, std::vector<int>& data_map)
  {
      // Get linesizes
@@ -181,7 +181,8 @@ index 96d535446..17717e939 100644
 +            ptrdiff_t linesizes1[4];
 +            for (int i = 0; i < 4; i++) linesizes1[i] = linesizes[i];
 +            av_image_fill_plane_sizes(sizes, pix_fmt, height, linesizes1);
-+            auto h2    = sizes[1] / linesizes[1];
++            auto size2 = static_cast<int>(sizes[1]);
++            auto h2    = size2 / linesizes[1];
  
 -            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0], height, 1));
 -            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[1], h2, 1));
