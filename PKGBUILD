@@ -1,8 +1,8 @@
 # Maintainer: Dct Mei <dctxmei@yandex.com>
 
 pkgname=qv2ray-plugin-trojan
-pkgver=2.0.0
-pkgrel=4
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Qv2ray Plugin: Trojan"
 arch=('x86_64')
 url="https://github.com/Qv2ray/QvPlugin-Trojan"
@@ -10,24 +10,24 @@ license=('GPL3')
 depends=('openssl' 'qt5-base' 'qv2ray')
 makedepends=('boost' 'cmake' 'git' 'ninja')
 groups=('qv2ray-plugin')
-source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
+source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$srcdir/$pkgname-$pkgver/"
-    git submodule update --init
+    cd "${srcdir}"/"${pkgname}-${pkgver}"/
+    git submodule update --init --recursive
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver/"
+    cd "${srcdir}"/"${pkgname}-${pkgver}"/
     mkdir -p build && cd build
     cmake .. \
-        -DCMAKE_BUILD_TYPE=Release \
-        -GNinja
+          -DCMAKE_BUILD_TYPE=Release \
+          -GNinja
     ninja
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver/build/"
-    install -Dm 755 libQvTrojanPlugin.so -t "$pkgdir/usr/share/qv2ray/plugins/"
+    cd "${srcdir}"/"${pkgname}-${pkgver}"/build/
+    install -Dm 644 libQvPlugin-Trojan.so -t "${pkgdir}"/usr/share/qv2ray/plugins/
 }
