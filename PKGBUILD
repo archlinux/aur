@@ -28,7 +28,7 @@ _nativ_dialogs='true'
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.6.r404.g10f2e483b
+pkgver=v0.6.6.r478.gf5ee9c92c
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -48,12 +48,10 @@ source=(
 	'libretroshare::git+https://github.com/RetroShare/libretroshare.git'
 	'openpgpsdk::git+https://github.com/RetroShare/OpenPGP-SDK.git'
 )
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 # Add sql dependency
 [[ "$_no_sqlcipher" == 'true' ]] && depends=(${depends[@]} 'sqlite') || depends=(${depends[@]} 'sqlcipher')
