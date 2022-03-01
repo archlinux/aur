@@ -1,0 +1,22 @@
+pkgbase = vault-cli
+	pkgdesc = 12-factor oriented command line tool for Hashicorp Vault
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/desbma/vault-cli
+	arch = any
+	license = APL2
+	makedepends = python-pip
+	makedepends = python-sphinx
+	makedepends = python-sphinx-autodoc-typehints
+	makedepends = python-sphinxcontrib-programoutput
+	depends = python>=3.6
+	depends = python-requests
+	depends = python-yaml>5.3.1
+	depends = python-click
+	depends = python-jinja
+	optdepends = vault
+	conflicts = python-hvac
+	source = vault-cli-3.1.0.tar.gz::https://github.com/peopledoc/vault-cli/archive/3.1.0.tar.gz
+	sha512sums = ec0b09aaeccf61ff2868db9584be8f2d1f291b8d4fe4eef272855144fec0aa7a9bb6174d2c30e837bdb73ff134294b405ce97d0dc6c57e6e3be3fae708847778
+
+pkgname = vault-cli
