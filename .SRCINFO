@@ -16,7 +16,7 @@ pkgbase = openfreebuds
 	depends = gtk3
 	depends = python-psutil
 	depends = bluez
-	source = openfreebuds-0.8::git+https://github.com/melianmiko/mibandpreview.git#tag=v0.8
+	source = openfreebuds-0.8::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.8
 	md5sums = SKIP
 
 pkgname = openfreebuds
