@@ -1,13 +1,13 @@
 # Maintainer: J. Nathanael Philipp <nathanael@philipp.land>
 pkgname=ledger
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Web based ledger system to keep track of your money"
 arch=("any")
 url="https://github.com/jnphilipp/ledger"
 license=("GPL3+")
 makedepends=("git" "help2man" "python" "python-virtualenv")
-depends=("python" "python-django" "python-gobject" "python-dbus" "systemd")
+depends=("python" "python-django" "python-gobject" "python-dbus" "systemd" "uwsgi" "uwsgi-plugin-python")
 source=("git://github.com/jnphilipp/ledger.git"
         "git://github.com/jnphilipp/django_bootstrap5.git")
 md5sums=(SKIP SKIP)
