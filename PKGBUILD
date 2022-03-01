@@ -2,13 +2,15 @@
 pkgname=python-poetryup
 _name=${pkgname#python-}
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Updates dependencies and bumps their version in Poetry."
 url="https://github.com/MousaZeidBaker/poetryup"
 depends=('python')
 makedepends=('python-setuptools')
 optdepends=(
     'python-poetry'
+    'python-typer'
+    'python-packaging'
 )
 license=('MIT')
 arch=('any')
