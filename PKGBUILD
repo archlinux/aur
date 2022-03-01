@@ -219,7 +219,7 @@ source=("$(_get_mirror _pkg_mirrors)"
         'pthread_mutexattr_settype.patch')
 
 sha256sums=('2cbeb79cc2aa9939d5faaaf52c21da125029cb6646c1db0d3b9e9feea7f23fa6'
-            '56238f02eb33570d494db8888a27e561fcf78ff3558d818ff233eed36f80040d')
+            'd0a8e422f7228f685064d06cb54f38bbf307372f76f3623d1bd23ae119bfd3e8')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

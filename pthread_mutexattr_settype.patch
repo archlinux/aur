@@ -1,5 +1,5 @@
 diff --git a/src/fuse/mutex.c b/src/fuse/mutex.c
-index beb6f93..f8c44d4 100644
+index beb6f93..f035ec8 100644
 --- a/src/fuse/mutex.c
 +++ b/src/fuse/mutex.c
 @@ -35,16 +35,6 @@
@@ -19,21 +19,27 @@ index beb6f93..f8c44d4 100644
  
  /**
   * @brief Structure for MUTual EXclusion (Mutex).
-@@ -68,7 +58,7 @@ GNUNET_mutex_create (int isRecursive)
+@@ -67,23 +57,13 @@ GNUNET_mutex_create (int isRecursive)
+   pthread_mutexattr_init (&attr);
    if (isRecursive)
      {
- #ifdef __linux__
+-#ifdef __linux__
 -      GNUNET_assert (0 == pthread_mutexattr_setkind_np
-+      GNUNET_assert (0 == pthread_mutexattr_settype
- 		     (&attr, PTHREAD_MUTEX_RECURSIVE_NP));
- #elif BSD || SOLARIS || OSX || WINDOWS
+-		     (&attr, PTHREAD_MUTEX_RECURSIVE_NP));
+-#elif BSD || SOLARIS || OSX || WINDOWS
        GNUNET_assert (0 == pthread_mutexattr_settype
-@@ -78,7 +68,7 @@ GNUNET_mutex_create (int isRecursive)
+ 		     (&attr, PTHREAD_MUTEX_RECURSIVE));
+-#endif
+     }
    else
      {
- #ifdef __linux__
+-#ifdef __linux__
 -      GNUNET_assert (0 == pthread_mutexattr_setkind_np
-+      GNUNET_assert (0 == pthread_mutexattr_settype
- 		     (&attr, PTHREAD_MUTEX_ERRORCHECK_NP));
- #else
+-		     (&attr, PTHREAD_MUTEX_ERRORCHECK_NP));
+-#else
        GNUNET_assert (0 == pthread_mutexattr_settype
+ 		     (&attr, PTHREAD_MUTEX_ERRORCHECK));
+-#endif
+     }
+   mut = GNUNET_new (struct GNUNET_Mutex);
+   GNUNET_assert (0 == pthread_mutex_init (&mut->pt, &attr));
