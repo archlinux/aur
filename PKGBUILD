@@ -1,6 +1,6 @@
 # Maintainer: Senderman <doletov.fyodor@yandex.ru>
 pkgname=nvidia-system-monitor-qt
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="Task Manager for Linux for Nvidia graphics cards (QT vesrion)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('nvidia-utils' 'qt5-base' 'which')
 makedepends=('cmake')
 source=("${pkgname}::https://github.com/congard/nvidia-system-monitor-qt/archive/v${pkgver}.tar.gz" "${pkgname}.desktop")
-md5sums=('48f630859650cd186c7ed0e11733ad43'
+md5sums=('6a05a35aa6159a946bab3264b832a5f0'
          'dedc8a5da5ad205be610a688d0b3fec5')
 
 
