@@ -3,11 +3,14 @@ pre_install() {
     echo 'Stopping & disabling Mullvad VPN daemon...'
     /opt/Mullvad\ VPN/resources/mullvad-setup prepare-restart || true
     systemctl disable --now mullvad-daemon
+    cp /var/log/mullvad-vpn/daemon.log /var/log/mullvad-vpn/old-install-daemon.log \
+      || echo "Failed to copy old daemon log"
   fi
 
   pkill -x "mullvad-gui" || true
 
-  rm -f /var/cache/mullvad-vpn/relays.json || true
+  rm -f /var/cache/mullvad-vpn/relays.json
+  rm -f /var/cache/mullvad-vpn/api-ip-address.txt
 }
 
 post_install() {
@@ -30,14 +33,15 @@ post_upgrade() {
 }
 
 pre_remove() {
-  /usr/bin/mullvad account clear-history || echo "Failed to remove leftover WireGuard keys"
-
   # the user might've disabled or stopped the service themselves already
   echo 'Making sure the Mullvad VPN daemon is stopped & disabled...'
   systemctl stop mullvad-daemon || true
   systemctl disable mullvad-daemon || true
 
-  /opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || true
+  pkill -x "mullvad-gui" || true
+
+  /opt/Mullvad\ VPN/resources/mullvad-setup reset-firewall || echo "Failed to reset firewall"
+  /opt/Mullvad\ VPN/resources/mullvad-setup clear-history || echo "Failed to remove leftover WireGuard keys"
 }
 
 post_remove() {
@@ -47,6 +51,12 @@ post_remove() {
   echo 'sudo rm -rf /var/cache/mullvad-vpn/'
   echo ''
   echo 'Optionally remove config:'
-  echo 'sudo rm -rf /etc/mullvad-vpn'
+  echo 'sudo rm -rf /etc/mullvad-vpn/'
+  echo ''
+  echo 'Optionally remove app settings:'
+  echo 'rm -rf ~/.config/Mullvad VPN/'
+  echo ''
+  echo 'Optionally remove auto-launcher:'
+  echo 'rm ~/.config/autostart/mullvad-vpn.desktop'
   echo -------------------------------------------------------------
 }
