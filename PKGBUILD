@@ -1,7 +1,7 @@
 # Maintainer: Javier Domingo Cansino <javierdo1@gmail.com>
 pkgname=helmsman-git
-pkgver=1.8.1.r8.gbe24069
 pkgrel=1
+pkgver=3.8.1
 pkgdesc="Helmsman upstream"
 arch=('x86_64')
 url="https://github.com/Praqma/helmsman"
@@ -24,15 +24,20 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	GOPATH="$srcdir" go get -fix -v -x ${_gourl}
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build ./cmd/...
 }
 
 check() {
 	cd "$srcdir/${pkgname%-git}"
-	GOPATH="$GOPATH:$srcdir" go test -v -x ${_gourl}
+	go test ./...
 }
 
 package() {
   mkdir -p "$pkgdir/usr/bin"
-  install -p -m755 "$srcdir/bin/helmsman" "$pkgdir/usr/bin"
+  install -p -m755 "$srcdir/helmsman/helmsman" "$pkgdir/usr/bin"
 }
