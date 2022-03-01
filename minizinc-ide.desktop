@@ -3,6 +3,8 @@ Type=Application
 Name=MiniZinc IDE
 Comment=Simple IDE for writing and running MiniZinc models
 Icon=/opt/minizinc-ide/resources/icon.png
-Exec=MiniZincIDE
+#Exec= env LD_LIBRARY_PATH=/opt/minizinc-ide/lib:$LD_LIBRARY_PATH
+#Exec=MiniZincIDE
+Exec=sh -c "LD_LIBRARY_PATH=/opt/minizinc-ide/lib:$LDLIBRARY_PATH MiniZincIDE"
 Terminal=false
 Categories=Development;IDE;
