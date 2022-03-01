@@ -11,10 +11,14 @@ license=("custom")
 makedepends=('rsync')
 depends=('libxcrypt-compat')
 provides=('texlive-bin'  'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean'
-'asymptote' 'git-latexdiff' 'psutils'
+
+'texlive-htmlxml'
+'asymptote' 'git-latexdiff' 'psutils' 't1utils'
 )
 conflicts=('texlive-bin'  'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-langchinese' 'texlive-langcyrillic' 'texlive-langextra' 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean'
-'asymptote' 'git-latexdiff' 'psutils'
+
+'texlive-htmlxml'
+'asymptote' 'git-latexdiff' 'psutils' 't1utils'
 )
 source=("https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
 "LICENSE::http://texlive.tug.org/texlive/LICENSE.TL"
