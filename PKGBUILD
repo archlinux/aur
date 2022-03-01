@@ -58,7 +58,7 @@ package_caffe-git() {
             'python-leveldb' 'python-scikit-image' 'python-pydotplus'
         # NOTE:
         # python-pydotplus (or python-pydot) is required by python executable 'draw_net.py'
-        # https://github.com/BVLC/caffe/blob/04ab089db018a292ae48d51732dd6c66766b36b6/python/caffe/draw.py#L7-L22
+        # https://github.com/BVLC/caffe/blob/9b891540183ddc834a02b2bd81b31afae71b2153/python/caffe/draw.py#L7-L22
     )
     provides=('caffe' 'caffe-cpu-git')
     conflicts=('caffe' 'caffe-cpu-git')
