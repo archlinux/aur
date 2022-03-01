@@ -1,14 +1,14 @@
 pkgbase = crowdin-cli-bin
 	pkgdesc = Command line tool that allows you to manage and synchronize localization resources with your Crowdin project
-	pkgver = 3.7.7
+	pkgver = 3.7.8
 	pkgrel = 1
 	url = https://support.crowdin.com/cli-tool/
 	arch = x86_64
 	license = MIT
 	depends = java-runtime>=8
-	provides = crowdin-cli=3.7.7
+	provides = crowdin-cli=3.7.8
 	conflicts = crowdin-cli
 	source = https://artifacts.crowdin.com/repo/rpm/crowdin3.rpm
-	sha256sums = 6e24970ccd20f661df10907f7f5a38b7d8092e1501c8c07c37198c9116a63a08
+	sha256sums = bed2b251ae26aef10fbfe6f49048544058a3b36c9e6ef0446809e2ca95a645cc
 
 pkgname = crowdin-cli-bin
