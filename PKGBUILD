@@ -1,8 +1,8 @@
 pkgbase=python-cron-descriptor
-pkgname=('python-cron-descriptor' 'python2-cron-descriptor')
+pkgname=python-cron-descriptor
 projname=cron-descriptor
 pkgver=1.2.24
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library that converts cron expressions into human readable strings."
 arch=('any')
 license=('MIT')
@@ -15,11 +15,4 @@ package_python-cron-descriptor() {
 
   cd "${srcdir}/${projname}-${pkgver}"
   python3 setup.py install --root=$pkgdir/ --optimize=1
-}
-
-package_python2-cron-descriptor() {
-  depends=('python2')
-
-  cd "${srcdir}/${projname}-${pkgver}"
-  python2 setup.py install --root=$pkgdir/ --optimize=1
 }
