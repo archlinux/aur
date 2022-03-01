@@ -7,7 +7,7 @@
 pkgname=bongocat-osu-git
 _gitname=bongocat-osu
 pkgver=1.1
-pkgrel=2
+pkgrel=1
 epoch=
 pkgdesc="An osu! Bongo Cat overlay"
 arch=(x86_64)
