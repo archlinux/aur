@@ -5,22 +5,22 @@
 # Contributor: Eduardo Romero <eduardo@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-_wine_commit=d318f43559dbb0093e22bab1aa0eb9dc01170cc2
-_stag_commit=68441b1d9552b1a75c45a981c0a0279d064349fb
-
 pkgname=wine-ge-custom
-_srctag=7.2-GE-2 
+_srctag=GE-Proton7-1
 pkgver=${_srctag//-/.}
-pkgrel=3
+pkgrel=1
+epoch=1
 
+_wine_commit=8b92bf3aa3d5e9248a2df6c2c27a5ed24a639f0e
+_stag_commit=68441b1d9552b1a75c45a981c0a0279d064349fb
 #_winever=${pkgver%.*}
-_winever=$pkgver
+#_winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
+_winever=$_pkgbasever
 
 source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=${_srctag}
-        wine::git+https://github.com/wine-mirror/wine.git#commit=${_wine_commit}
+        wine-valve::git+https://github.com/ValveSoftware/wine.git#commit=${_wine_commit}
         wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=${_stag_commit}
-        https://raw.githubusercontent.com/Frogging-Family/wine-tkg-git/cbf83264a16183d6b4d574e746522969fb02d126/wine-tkg-git/wine-tkg-patches/proton/fsync_futex_waitv.patch
         wine-more_8x5_res.patch
         wine-wmclass.patch
         wine-isolate_home.patch
@@ -29,7 +29,6 @@ source=(wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.gi
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'd2ec70d61851ba43dc523898b415746b9ec0a2b0a98aa2bd0e19b4dd8afee2ab74c9bf841a80336380d79f15ddd3b9ff56362bb6a9557d4c1094a674a70ce2c8'
             '13b0a9b1712eb3bf847a7bc78a46d5d32d6a8358c59b94289594811c2f25de925334aa7f76033176b49156117ada1c58bc1425a3e8514cbf305c27650a2b84e2'
             '30437d8ee92c5741fa50a7fe346ccfc48ba809dad0d740903a05a67781d23ea38a5094038a070a253e3fdd8046783b46a5420df6361bdd30cb229d3d88107569'
             '3dcdbd523fcbe79b9e9e9b026b9d0a5edf296514c7b48bd465d2dc05a8ca08e23ba8817e2de08edfe52286a2a2f81db42b65f71254cabe496752b9d45131d282'
@@ -89,12 +88,9 @@ makedepends=(autoconf bison perl fontforge flex mingw-w64-gcc
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
   vkd3d                 lib32-vkd3d
-  libcups               lib32-libcups
-  sane
   libgphoto2
   gsm
   ffmpeg
-  samba
   opencl-headers
 )
 
@@ -120,25 +116,22 @@ optdepends=(
   vulkan-icd-loader     lib32-vulkan-icd-loader
   sdl2                  lib32-sdl2
   vkd3d                 lib32-vkd3d
-  sane
   libgphoto2
   gsm
   ffmpeg
-  cups
-  samba           dosbox
+  dosbox
 )
 
-provides=("wine=${_srctag%%-*}" "wine-wow64=${_srctag%%-*}")
+provides=("wine=7.3" "wine-wow64=7.3")
 conflicts=('wine' 'wine-wow64')
 install=wine.install
 
 prepare() {
   pushd $pkgname
-    rm -r wine && cp -r "$srcdir"/wine wine
+    rm -r proton-wine && cp -r "$srcdir"/wine-valve proton-wine
     rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
-    cp "$srcdir"/fsync_futex_waitv.patch patches/proton/57-fsync_futex_waitv.patch
-    patches/protonprep.sh
-    pushd wine
+    patches/protonprep-lutris.sh
+    pushd proton-wine
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
@@ -148,10 +141,10 @@ prepare() {
     popd
   popd
 
-  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/wine/configure*
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/proton-wine/configure*
 
   # Fix openldap 2.5+ detection
-  sed 's/-lldap_r/-lldap/' -i $pkgname/wine/configure
+  sed 's/-lldap_r/-lldap/' -i $pkgname/proton-wine/configure
 
   # Get rid of old build dirs
   rm -rf $pkgname-{32,64}-build
@@ -168,8 +161,8 @@ build() {
   # MingW Wine builds fail with relro
   export LDFLAGS="${LDFLAGS/,-z,relro/}"
 
-  export CFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
-  export CXXFLAGS="-O3 -march=nocona -pipe -mtune=core-avx2"
+  export CFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
+  export CXXFLAGS="-O3 -march=nocona -mtune=core-avx2 -pipe"
   export LDFLAGS="-Wl,-O1,--sort-common,--as-needed"
 
   export CFLAGS+=" -mno-avx2 -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
@@ -182,7 +175,7 @@ build() {
   msg2 "Building Wine-64..."
 
   cd "$srcdir/$pkgname-64-build"
-  ../$pkgname/wine/configure \
+  ../$pkgname/proton-wine/configure \
     --prefix=/usr \
     --libdir=/usr/lib \
     --with-x \
@@ -208,7 +201,7 @@ build() {
   export CROSSCXXFLAGS="$CXXFLAGS"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
   cd "$srcdir/$pkgname-32-build"
-  ../$pkgname/wine/configure \
+  ../$pkgname/proton-wine/configure \
     --prefix=/usr \
     --with-x \
     --with-faudio \
