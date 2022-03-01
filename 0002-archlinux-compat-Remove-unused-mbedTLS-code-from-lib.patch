@@ -1,4 +1,4 @@
-From 9e72afecf7c3418f6c42c72e7976845d0b13059e Mon Sep 17 00:00:00 2001
+From 9c91534538a25c40a023cce364229f2ccb147842 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 31 Jan 2022 20:20:40 +0100
 Subject: [PATCH 2/2] archlinux-compat: Remove unused mbedTLS code from libcurl
@@ -9,7 +9,7 @@ Subject: [PATCH 2/2] archlinux-compat: Remove unused mbedTLS code from libcurl
  1 file changed, 1 insertion(+), 24 deletions(-)
 
 diff --git a/lib/libimhex/source/helpers/net.cpp b/lib/libimhex/source/helpers/net.cpp
-index ee4905a9..3ab5ea12 100644
+index 3201f330..8f333e27 100644
 --- a/lib/libimhex/source/helpers/net.cpp
 +++ b/lib/libimhex/source/helpers/net.cpp
 @@ -7,8 +7,6 @@

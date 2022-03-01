@@ -1,16 +1,16 @@
-From 1a6e81cbcafb7486beabfc7be597d2370fde4448 Mon Sep 17 00:00:00 2001
+From a1d68ed92b1295a95cf6be7188e10bda661d7b44 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 10 Jan 2022 15:47:10 +0100
-Subject: [PATCH 1/2] makepkg: Remove external dependencies check
+Subject: [PATCH 1/2] makepkg: Remove external stuff
 
 ---
- CMakeLists.txt            |  1 -
- cmake/build_helpers.cmake | 11 -----------
+ CMakeLists.txt            |  4 ----
+ cmake/build_helpers.cmake | 28 ----------------------------
  lib/external/libromfs     |  2 +-
- 3 files changed, 1 insertion(+), 13 deletions(-)
+ 3 files changed, 1 insertion(+), 33 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 59087df6..eb396e59 100644
+index 38189364..8a4f72c0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -11,7 +11,6 @@ include("${IMHEX_BASE_FOLDER}/cmake/build_helpers.cmake")
@@ -21,11 +21,19 @@ index 59087df6..eb396e59 100644
  
  # List plugin names here. Project name must match folder name
  set(PLUGINS
+@@ -36,6 +35,3 @@ add_subdirectory(tests EXCLUDE_FROM_ALL)
+ 
+ # Configure packaging
+ createPackage()
+-
+-# Download and install all current files from the ImHex-Patterns repo
+-downloadImHexPatternsFiles()
+\ No newline at end of file
 diff --git a/cmake/build_helpers.cmake b/cmake/build_helpers.cmake
-index 6dcf890d..d1f0b3a6 100644
+index b2f850ae..873525fb 100644
 --- a/cmake/build_helpers.cmake
 +++ b/cmake/build_helpers.cmake
-@@ -269,14 +269,3 @@ macro(setDefaultBuiltTypeIfUnset)
+@@ -270,31 +270,3 @@ macro(setDefaultBuiltTypeIfUnset)
          set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
      endif()
  endmacro()
@@ -40,6 +48,23 @@ index 6dcf890d..d1f0b3a6 100644
 -        endif()
 -    endforeach ()
 -endmacro()
+-
+-
+-function(downloadImHexPatternsFiles)
+-    FetchContent_Declare(
+-        imhex_patterns
+-        GIT_REPOSITORY https://github.com/WerWolv/ImHex-Patterns.git
+-        GIT_TAG master
+-    )
+-
+-    FetchContent_Populate(imhex_patterns)
+-
+-    set(PATTERNS_FOLDERS_TO_INSTALL constants encodings includes patterns yara magic)
+-    foreach (FOLDER ${PATTERNS_FOLDERS_TO_INSTALL})
+-        install(DIRECTORY "${imhex_patterns_SOURCE_DIR}/${FOLDER}" DESTINATION "./")
+-    endforeach()
+-
+-endfunction()
 \ No newline at end of file
 diff --git a/lib/external/libromfs b/lib/external/libromfs
 index 0842d22d..5d327344 160000
