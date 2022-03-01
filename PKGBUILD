@@ -1,6 +1,6 @@
 # Maintainer: osch <oliver at luced de>
 pkgname=luajit-lanes
-pkgver=3.15.1
+pkgver=3.16.0
 pkgrel=1
 epoch=
 pkgdesc="A solution for running Lua multithreaded"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LuaLanes/lanes/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('ad240ec8b55cecadf9e028c1a748824a')
+md5sums=('e2269b56449ac1b7d8973ed1f40871b7')
 validpgpkeys=()
 
 prepare() {
