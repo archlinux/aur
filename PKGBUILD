@@ -2,7 +2,7 @@
 
 pkgname=dhall-toml
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert between Dhall and TOML"
 url="https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-toml"
 license=("custom: BSD3")

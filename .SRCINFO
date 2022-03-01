@@ -1,7 +1,7 @@
 pkgbase = dhall-toml
 	pkgdesc = Convert between Dhall and TOML
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhall-lang/dhall-haskell/tree/master/dhall-toml
 	arch = x86_64
 	license = custom: BSD3
