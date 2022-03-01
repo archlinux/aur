@@ -1,0 +1,206 @@
+diff --git a/src/modules/decklink/producer/decklink_producer.cpp b/src/modules/decklink/producer/decklink_producer.cpp
+index 87c115d87..16b1af0e6 100644
+--- a/src/modules/decklink/producer/decklink_producer.cpp
++++ b/src/modules/decklink/producer/decklink_producer.cpp
+@@ -58,6 +58,7 @@ extern "C" {
+ #include <libavfilter/buffersink.h>
+ #include <libavfilter/buffersrc.h>
+ #include <libavformat/avformat.h>
++#include <libavutil/channel_layout.h>
+ #include <libavutil/opt.h>
+ #include <libavutil/pixfmt.h>
+ #include <libavutil/samplefmt.h>
+diff --git a/src/modules/ffmpeg/consumer/ffmpeg_consumer.cpp b/src/modules/ffmpeg/consumer/ffmpeg_consumer.cpp
+index c7aa6ea4a..6f9182757 100644
+--- a/src/modules/ffmpeg/consumer/ffmpeg_consumer.cpp
++++ b/src/modules/ffmpeg/consumer/ffmpeg_consumer.cpp
+@@ -57,6 +57,7 @@ extern "C" {
+ #include <libavfilter/buffersink.h>
+ #include <libavfilter/buffersrc.h>
+ #include <libavformat/avformat.h>
++#include <libavutil/channel_layout.h>
+ #include <libavutil/opt.h>
+ #include <libavutil/pixfmt.h>
+ #include <libavutil/samplefmt.h>
+diff --git a/src/modules/ffmpeg/ffmpeg.cpp b/src/modules/ffmpeg/ffmpeg.cpp
+index dc532eb55..ee3d25449 100644
+--- a/src/modules/ffmpeg/ffmpeg.cpp
++++ b/src/modules/ffmpeg/ffmpeg.cpp
+@@ -49,37 +49,6 @@ extern "C" {
+ }
+ 
+ namespace caspar { namespace ffmpeg {
+-int ffmpeg_lock_callback(void** mutex, enum AVLockOp op)
+-{
+-    if (mutex == nullptr)
+-        return 0;
+-
+-    auto my_mutex = reinterpret_cast<std::recursive_mutex*>(*mutex);
+-
+-    switch (op) {
+-        case AV_LOCK_CREATE: {
+-            *mutex = new std::recursive_mutex();
+-            break;
+-        }
+-        case AV_LOCK_OBTAIN: {
+-            if (my_mutex != nullptr)
+-                my_mutex->lock();
+-            break;
+-        }
+-        case AV_LOCK_RELEASE: {
+-            if (my_mutex != nullptr)
+-                my_mutex->unlock();
+-            break;
+-        }
+-        case AV_LOCK_DESTROY: {
+-            delete my_mutex;
+-            *mutex = nullptr;
+-            break;
+-        }
+-    }
+-    return 0;
+-}
+-
+ static void sanitize(uint8_t* line)
+ {
+     while (*line != 0u) {
+@@ -143,18 +112,16 @@ void log_for_thread(void* ptr, int level, const char* fmt, va_list vl) { log_cal
+ 
+ void init(core::module_dependencies dependencies)
+ {
+-    av_lockmgr_register(ffmpeg_lock_callback);
+     av_log_set_callback(log_for_thread);
+ 
+-    avfilter_register_all();
+-    av_register_all();
+     avformat_network_init();
+-    avcodec_register_all();
+     avdevice_register_all();
+ 
++#if LIBAVFORMAT_VERSION_MAJOR < 59
+     // mpegts demuxer does not seek acture with binary search.
+     const auto ts_demuxer = av_find_input_format("mpegts");
+     ts_demuxer->flags = AVFMT_SHOW_IDS | AVFMT_TS_DISCONT | AVFMT_NOBINSEARCH | AVFMT_GENERIC_INDEX;
++#endif
+ 
+     dependencies.consumer_registry->register_consumer_factory(L"FFmpeg Consumer", create_consumer);
+     dependencies.consumer_registry->register_preconfigured_consumer_factory(L"ffmpeg", create_preconfigured_consumer);
+@@ -166,6 +133,5 @@ void uninit()
+ {
+     // avfilter_uninit();
+     avformat_network_deinit();
+-    av_lockmgr_register(nullptr);
+ }
+ }} // namespace caspar::ffmpeg
+diff --git a/src/modules/ffmpeg/producer/av_input.cpp b/src/modules/ffmpeg/producer/av_input.cpp
+index 775491e20..bc3946aa8 100644
+--- a/src/modules/ffmpeg/producer/av_input.cpp
++++ b/src/modules/ffmpeg/producer/av_input.cpp
+@@ -124,7 +124,7 @@ void Input::internal_reset()
+ 
+     static const std::set<std::wstring> PROTOCOLS_TREATED_AS_FORMATS = {L"dshow", L"v4l2", L"iec61883"};
+ 
+-    AVInputFormat* input_format = nullptr;
++    const AVInputFormat* input_format = nullptr;
+     auto           url_parts    = caspar::protocol_split(u16(filename_));
+     if (url_parts.first == L"http" || url_parts.first == L"https") {
+         FF(av_dict_set(&options, "multiple_requests", "1", 0)); // NOTE https://trac.ffmpeg.org/ticket/7034#comment:3
+diff --git a/src/modules/ffmpeg/producer/av_producer.cpp b/src/modules/ffmpeg/producer/av_producer.cpp
+index 6b31f8f81..e20eb6703 100644
+--- a/src/modules/ffmpeg/producer/av_producer.cpp
++++ b/src/modules/ffmpeg/producer/av_producer.cpp
+@@ -36,6 +36,7 @@ extern "C" {
+ #include <libavfilter/buffersrc.h>
+ #include <libavformat/avformat.h>
+ #include <libavutil/avutil.h>
++#include <libavutil/channel_layout.h>
+ #include <libavutil/error.h>
+ #include <libavutil/opt.h>
+ #include <libavutil/pixfmt.h>
+@@ -102,8 +103,6 @@ struct Decoder
+ 
+         FF(avcodec_parameters_to_context(ctx.get(), stream->codecpar));
+ 
+-        FF(av_opt_set_int(ctx.get(), "refcounted_frames", 1, 0));
+-
+         int numThreads = 1;
+         if (codec->capabilities & AV_CODEC_CAP_AUTO_THREADS) {
+             numThreads = 0;
+diff --git a/src/modules/ffmpeg/util/av_util.cpp b/src/modules/ffmpeg/util/av_util.cpp
+index 96d535446..17717e939 100644
+--- a/src/modules/ffmpeg/util/av_util.cpp
++++ b/src/modules/ffmpeg/util/av_util.cpp
+@@ -9,7 +9,9 @@
+ extern "C" {
+ #include <libavcodec/avcodec.h>
+ #include <libavfilter/avfilter.h>
++#include <libavutil/channel_layout.h>
+ #include <libavutil/frame.h>
++#include <libavutil/imgutils.h>
+ #include <libavutil/pixfmt.h>
+ }
+ #if defined(_MSC_VER)
+@@ -119,47 +121,50 @@ core::pixel_format get_pixel_format(AVPixelFormat pix_fmt)
+ core::pixel_format_desc pixel_format_desc(AVPixelFormat pix_fmt, int width, int height, std::vector<int>& data_map)
+ {
+     // Get linesizes
+-    AVPicture dummy_pict;
+-    avpicture_fill(&dummy_pict, nullptr, pix_fmt, width, height);
++    int linesizes[4];
++    av_image_fill_linesizes(linesizes, pix_fmt, width);
+ 
+     core::pixel_format_desc desc = get_pixel_format(pix_fmt);
+ 
+     switch (desc.format) {
+         case core::pixel_format::gray:
+         case core::pixel_format::luma: {
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0], height, 1));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[0], height, 1));
+             return desc;
+         }
+         case core::pixel_format::bgr:
+         case core::pixel_format::rgb: {
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0] / 3, height, 3));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[0] / 3, height, 3));
+             return desc;
+         }
+         case core::pixel_format::bgra:
+         case core::pixel_format::argb:
+         case core::pixel_format::rgba:
+         case core::pixel_format::abgr: {
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0] / 4, height, 4));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[0] / 4, height, 4));
+             return desc;
+         }
+         case core::pixel_format::ycbcr:
+         case core::pixel_format::ycbcra: {
+             // Find chroma height
+-            auto size2 = static_cast<int>(dummy_pict.data[2] - dummy_pict.data[1]);
+-            auto h2    = size2 / dummy_pict.linesize[1];
++            size_t sizes[4];
++            ptrdiff_t linesizes1[4];
++            for (int i = 0; i < 4; i++) linesizes1[i] = linesizes[i];
++            av_image_fill_plane_sizes(sizes, pix_fmt, height, linesizes1);
++            auto h2    = sizes[1] / linesizes[1];
+ 
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0], height, 1));
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[1], h2, 1));
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[2], h2, 1));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[0], height, 1));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[1], h2, 1));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[2], h2, 1));
+ 
+             if (desc.format == core::pixel_format::ycbcra)
+-                desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[3], height, 1));
++                desc.planes.push_back(core::pixel_format_desc::plane(linesizes[3], height, 1));
+ 
+             return desc;
+         }
+         case core::pixel_format::uyvy: {
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0] / 2, height, 2));
+-            desc.planes.push_back(core::pixel_format_desc::plane(dummy_pict.linesize[0] / 4, height, 4));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[0] / 2, height, 2));
++            desc.planes.push_back(core::pixel_format_desc::plane(linesizes[0] / 4, height, 4));
+ 
+             data_map.clear();
+             data_map.push_back(0);
