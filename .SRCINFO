@@ -1,7 +1,7 @@
 pkgbase = osmosisd-bin
 	pkgdesc = The AMM Laboratory on Cosmos
 	pkgver = 6.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osmosis-labs/osmosis
 	arch = x86_64
 	arch = aarch64
