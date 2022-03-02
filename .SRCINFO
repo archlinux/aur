@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-mbf-utility
 	pkgdesc = ROS - The mbf_utility package.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/move_base_flex/mbf_utility
 	arch = any
 	license = BSD
@@ -24,4 +24,3 @@ pkgbase = ros-noetic-mbf-utility
 	sha256sums = ba73e07835df8cbc310e41dd223e572c1babb1b18edbf923b508f8f795ceb79a
 
 pkgname = ros-noetic-mbf-utility
-

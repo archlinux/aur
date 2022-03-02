@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-mbf-utility
 pkgver=0.3.4
 pkgdesc="ROS - The mbf_utility package."
 url='http://wiki.ros.org/move_base_flex/mbf_utility'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
