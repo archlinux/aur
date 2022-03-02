@@ -1,7 +1,7 @@
 # Maintainer: Stick <stick@stma.is>
 pkgname=python-cleantoots
 _name=${pkgname#python-}
-pkgver=0.4.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Cleanup your toot history"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('450898a58b905a10a37e8fdf3ce2d825f43baa74e8e516f61362e0f99a2767b6')
+sha256sums=('24f2f2e5e0c4c4383f8088c84b5de6933110b4a4e31dfea0226bb7ac8ec3ea8e')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"

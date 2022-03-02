@@ -1,6 +1,6 @@
 pkgbase = python-cleantoots
 	pkgdesc = Cleanup your toot history
-	pkgver = 0.4.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://gabnotes.org/cleantoots-clean-your-toot-history/
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = python-cleantoots
 	depends = python-click
 	depends = python-html2text
 	depends = python-pendulum
+	source = https://files.pythonhosted.org/packages/source/c/cleantoots/cleantoots-0.7.0.tar.gz
+	sha256sums = 24f2f2e5e0c4c4383f8088c84b5de6933110b4a4e31dfea0226bb7ac8ec3ea8e
 
 pkgname = python-cleantoots
-
