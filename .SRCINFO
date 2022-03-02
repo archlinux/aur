@@ -13,7 +13,7 @@ pkgbase = clash-premium-script
 	depends = iproute2
 	backup = etc/clash/config.yaml
 	backup = etc/default/clash
-	source = git+https://github.com/Kr328/clash-premium-installer.git#commit=c2b80f9
+	source = git+https://github.com/Kr328/clash-premium-installer.git
 	source = arch.patch
 	source = config.yaml
 	sha256sums = SKIP

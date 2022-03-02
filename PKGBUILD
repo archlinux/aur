@@ -12,7 +12,7 @@ install=${pkgname}.install
 depends=('clash-premium-bin' 'systemd' 'nftables' 'iproute2')
 makedepends=('git')
 backup=("etc/clash/config.yaml" "etc/default/clash")
-source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=c2b80f9"
+source=("git+https://github.com/Kr328/clash-premium-installer.git"
         "arch.patch"
 		"config.yaml")
 sha256sums=('SKIP'
