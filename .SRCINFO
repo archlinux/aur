@@ -1,6 +1,6 @@
 pkgbase = st-nu1ll1nux
 	pkgdesc = Concise Build of Suckless Simple Terminal
-	pkgver = 0.8.5
+	pkgver = 0.8.5.r10
 	pkgrel = 1
 	url = https://gitlab.com/qYp/st
 	arch = x86_64

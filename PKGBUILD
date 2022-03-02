@@ -2,7 +2,7 @@
 # ---
 _pkgbase=st
 pkgname=st-nu1ll1nux
-pkgver=0.8.5
+pkgver=0.8.5.r10
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "1.0.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.8.5.r""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
