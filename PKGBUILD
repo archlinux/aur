@@ -51,17 +51,17 @@ build() {
 
   cmake \
     -B build \
-    -DCMAKE_BUILD_TYPE:STRING='None' \
-    -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
-    -Dwarnings-as-errors:BOOL='OFF' \
-    -Dclient:BOOL='ON' \
-    -Dserver:BOOL='OFF' \
-    -Dbundled-celt:BOOL='ON' \
-    -Dbundled-json:BOOL='OFF' \
-    -Dbundled-opus:BOOL='OFF' \
-    -Dbundled-rnnoise:BOOL='OFF' \
-    -Dbundled-speex:BOOL='OFF' \
-    -Dupdate:BOOL='OFF' \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -Dwarnings-as-errors='OFF' \
+    -Dclient='ON' \
+    -Dserver='OFF' \
+    -Dbundled-celt='ON' \
+    -Dbundled-json='OFF' \
+    -Dbundled-opus='OFF' \
+    -Dbundled-rnnoise='OFF' \
+    -Dbundled-speex='OFF' \
+    -Dupdate='OFF' \
     -Wno-dev
   make -C build
 }
