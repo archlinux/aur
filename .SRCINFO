@@ -1,7 +1,7 @@
 pkgbase = gtg
 	pkgdesc = Personal GTD like organizer for the GNOME desktop environment
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Apps/GTG
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = gtg
 	depends = python-caldav
 	depends = python-dbus
 	depends = python-gobject
-	depends = python-liblarch>=3.1
+	depends = python-liblarch>=3.2
 	depends = python-lxml
 	optdepends = pdftk: for the export and print plugin
 	optdepends = python-cheetah3: for the export and print plugin
