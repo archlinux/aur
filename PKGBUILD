@@ -1,7 +1,8 @@
-# Maintainer: Batuhan Baserdem <lastname dot firstname at gmail dot com>
+# Maintainer: Alexey Peschany <nelex111 at gmail dot com>
+# Contributor: Batuhan Baserdem <lastname dot firstname at gmail dot com>
 # Based on: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 pkgname=spaceship-prompt
-pkgver=3.15.0
+pkgver=3.16.4
 pkgrel=1
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')
@@ -13,8 +14,8 @@ provides=('spaceship-zsh-theme' 'spaceship-prompt')
 install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "$pkgname.install")
-md5sums=('2f4379340c7c306bdefafe9ff4d948ff'
-         'bd24fc2d741cb12ba49b36742d879f64')
+sha256sums=('b2844fb24e2cc24de8a296b61088a04df274ae65a2e797583dc18586bff6ebe9'
+         '2d022de82c32fb4965a1209aac346c6d9736e635a6c9dc653b1288b6b8f65cde')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
