@@ -2,3 +2,4 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!unzip-6.0_CVE-2021-4217.patch

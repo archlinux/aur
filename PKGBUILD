@@ -8,7 +8,7 @@
 
 pkgname=unzip-iconv
 pkgver=6.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Unpacks .zip archives such as those made by PKZIP. With iconv patch for -O / -I goodness."
 arch=('x86_64')
 url='http://infozip.sourceforge.net/UnZip.html'
@@ -36,6 +36,7 @@ source=("http://downloads.sourceforge.net/infozip/unzip${pkgver/./}.tar.gz"
         'http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/symlink.patch'
         'http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/avoid-strip.patch'
         'http://cgit.openembedded.org/openembedded-core/plain/meta/recipes-extended/unzip/unzip/define-ldflags.patch'
+        'unzip-6.0_CVE-2021-4217.patch'
         )
 sha256sums=('036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
             'd628193875fd6881d8797cfc7fabda6ff21558550e830bd6aa9cefd49af5df15'
@@ -56,7 +57,7 @@ sha256sums=('036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37'
             '547be7926c0d9350b6bf4b43dc6404d8dd0d5a8601e5aaab6691b21c2cc81b0d'
             '3dc2aefeb58823a5b1bf3a28f9c459dc07aef7395c2864e968e4f83d98971699'
             '7934a7123a4acc1d971c60e7ee609af1d18dd01827cf27bdc63004e263c5c742'
-            )
+            'cb88ba5a2c9bdffd5867206a48841f638e2a7970e88cc009b90202bdca988b8b')
 
 prepare() {
   cd "unzip${pkgver/./}"
@@ -77,6 +78,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/symlink.patch"
   patch -Np1 -i "${srcdir}/avoid-strip.patch"
   patch -Np1 -i "${srcdir}/define-ldflags.patch"
+  patch -Np1 -i "${srcdir}/unzip-6.0_CVE-2021-4217.patch"
 }
 
 build() {
