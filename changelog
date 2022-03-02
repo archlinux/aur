@@ -1,3 +1,14 @@
+2022-03-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.3.5-1:
+    Added OnlineFlags bot config property (@Deyvan #2511).
+    Removed Statistics global config property. Added RemoteCommunication bot config property in its place that allows switching communication with Steam group and ASF STM listing on per-bot basis. Existing users of Statistics: false will be automatically migrated to RemoteConnection: 0. If you've disabled automatic config migration through cmd-line switch, you'll need to migrate yourself, as obsolete property will be removed in the next release cycle (@JustArchi).
+    Directly connected with the above, we've added new remote communication wiki section in place of old statistics section, where users can now learn about third-party remote communication included in ASF. We recommend to give it a read if privacy subject is important to you (@JustArchi).
+    Added additional delay logic to GamesPlayedWhileIdle if the session was previously forcefully disconnected due to starting a game (@JustArchi).
+    MatchActively setting of TradingPreferences no longer requires SteamTradeMatcher to be enabled as well. It's now possible to match cards passively (SteamTradeMatcher), actively (MatchActively), or both. Previously standalone active matching was not possible (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
+    [Deprecation] Features deprecated in the previous release cycle have been removed (@JustArchi).
 2022-02-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.2.5-1:
     [!] Fixed inadequate access verification when using proxy commands. Due to security nature of this issue, we recommend an upgrade immediately (@JustArchi, #GHSA-88ch-366c-5m89).
