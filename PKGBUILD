@@ -1,31 +1,35 @@
-# Maintainer: hexchain <i at hexchain dot org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: hexchain <i at hexchain dot org>
 
-_pypiname=pyperformance
-pkgname=python-$_pypiname
-pkgver=1.0.1
+pkgname=python-pyperformance
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Python Performance Benchmark Suite'
-url="https://github.com/python/pyperformance"
-depends=('python-pyperf' 'python-six')
-makedepends=('python-pip')
-checkdepends=('python-tox')
 license=('MIT')
 arch=('any')
-source=("https://pypi.org/packages/source/${_pypiname:0:1}/$_pypiname/$_pypiname-$pkgver.tar.gz")
-sha256sums=('6522d28a539ccd28a3da51e8ec1f5891dd05e917d16d7d1d7f1bccdc4b8922ce')
+url="https://github.com/python/pyperformance"
+depends=('python-pyperf' 'python-toml' 'python-packaging')
+makedepends=(
+	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+	'python-sphinx')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pyperformance/pyperformance-$pkgver.tar.gz")
+sha256sums=('759645cad9492be36301a7d2abeae564ef66e93539812a55e576839c81df80fa')
 
 build() {
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py build
-}
-
-check() {
-    cd "$srcdir/$_pypiname-$pkgver"
-    tox -s true
+	cd "pyperformance-$pkgver"
+	python -m build --wheel --no-isolation
+	cd doc
+	make man
 }
 
 package() {
-    cd "$srcdir/$_pypiname-$pkgver"
-    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
-    install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	export PYTHONHASHSEED=0
+	cd "pyperformance-$pkgver"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 doc/build/man/pythonperformancebenchmarksuite.1 \
+		-t "$pkgdir/usr/share/man/man1/"
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
