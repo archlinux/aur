@@ -1,0 +1,11 @@
+pkgbase = cleanup-bin
+	pkgdesc = Remove gone Git branches with ease
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/dominikbraun/cleanup
+	arch = x86_64
+	license = Apache
+	source = cleanup-v0.3.0-linux-amd64.tar.gz::https://github.com/dominikbraun/cleanup/releases/download/0.3.0/cleanup-linux-amd64.tar.gz
+	sha256sums = 91d31c7f569d50d72ad7df37d7c3c5ac0fcba467ad57e100206b771ca0549f08
+
+pkgname = cleanup-bin
