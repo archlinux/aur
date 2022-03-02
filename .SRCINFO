@@ -1,4 +1,4 @@
-pkgbase = dwm
+pkgbase = dwm-nu1ll1nux
 	pkgdesc = Concise Build of Suckless DWM
 	pkgver = 1.0
 	pkgrel = 1
