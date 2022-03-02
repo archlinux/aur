@@ -1,13 +1,16 @@
+# Maintainer: Alan Sartorio
+
 pkgname=rubik-git
 pkgdesc="A keyboard driven virtual Rubik's cube made in rust."
-pkgver=r17.8f577ae
-pkgrel=2
+pkgver=r18.e534ef9
+pkgrel=1
 _reponame=rubik
 arch=('x86_64')
 url="https://github.com/alansartorio/rubik"
 makedepends=('git' 'rust' 'cargo')
 source=("git+$url.git")
 md5sums=(SKIP)
+license=('MIT')
 
 pkgver() {
     cd "$srcdir/$_reponame"
@@ -32,6 +35,6 @@ check() {
 package() {
 	cd "$srcdir/$_reponame"
 	
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "extra/Rubik.desktop"
+	install -D -m644 "extra/Rubik.desktop" "$pkgdir/usr/share/applications/Rubik.desktop" 
 	install -D -m755 "target/release/rubik" "$pkgdir/usr/bin/rubik"
 }
