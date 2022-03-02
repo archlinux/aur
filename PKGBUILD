@@ -3,13 +3,13 @@
 
 pkgname=python-plaster-pastedeploy
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A loader interface around multiple config file formats."
 arch=('any')
 url="https://github.com/pylons/plaster_pastedeploy"
 license=('MIT')
 depends=('python-plaster' 'python-pastedeploy')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 changelog=CHANGES.rst
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-$pkgver.tar.gz"
@@ -20,7 +20,7 @@ validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
 
 build(){
 	cd "plaster_pastedeploy-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 }
 
 check(){
@@ -31,7 +31,7 @@ check(){
 package(){
 	export PYTHONHASHSEED=0
 	cd "plaster_pastedeploy-$pkgver"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 }

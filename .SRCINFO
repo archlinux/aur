@@ -1,7 +1,7 @@
 pkgbase = python-plaster-pastedeploy
 	pkgdesc = A loader interface around multiple config file formats.
 	pkgver = 0.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pylons/plaster_pastedeploy
 	changelog = CHANGES.rst
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-plaster-pastedeploy
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-plaster
 	depends = python-pastedeploy
