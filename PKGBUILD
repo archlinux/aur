@@ -1,12 +1,12 @@
 pkgname=openblack-git
-pkgver=r1103.ac816c1
+pkgver=r1275.af7d35c
 pkgrel=1
 pkgdesc="Open source reimplementation of the game Black & White (2001)."
 arch=('x86_64')
 url="https://github.com/openblack/openblack"
 license=('GPL3' 'MIT')
 
-depends=('fmt' 'spdlog' 'entt' 'sdl2' 'glm' 'bgfx')
+depends=('fmt' 'spdlog' 'entt' 'sdl2' 'glm' 'bgfx' 'bullet')
 makedepends=('git' 'cmake' 'bgfx-cmake-git' 'cxxopts')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
