@@ -24,6 +24,7 @@ package() {
   cd $_pkgname
   make PREFIX=/usr DESTDIR="$pkgdir" install
   mv "$pkgdir/usr/sbin/nxaabat" "$pkgdir/usr/sbin/nxpm" "$pkgdir/usr/sbin/nxsuspend" "$pkgdir/usr/sbin/nxsysdaemon" "$pkgdir/usr/bin"
+  rmdir "$pkgdir/usr/sbin"
   install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -m644 -D README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
