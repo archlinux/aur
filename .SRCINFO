@@ -9,7 +9,7 @@ pkgbase = gdm-settings-git
 	checkdepends = appstream
 	makedepends = git
 	makedepends = meson
-	makedepends = blueprint-compiler-git>=r128
+	makedepends = blueprint-compiler-git
 	makedepends = gobject-introspection
 	depends = libadwaita
 	depends = glib2

@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
 license=('AGPL3')
 depends=('libadwaita' 'glib2' 'python-gobject')
-makedepends=('git' 'meson' 'blueprint-compiler-git>=r128' 'gobject-introspection')
+makedepends=('git' 'meson' 'blueprint-compiler-git' 'gobject-introspection')
 checkdepends=('appstream')
 provides=('gdm-settings')
 conflicts=('gdm-settings')
