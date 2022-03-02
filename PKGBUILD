@@ -20,6 +20,6 @@ pkgver() {
 
 package() {
     cd ${pkgname}
-    install -Dm775 opt/${_pkgname}/* -g wheel -o root -t "${pkgdir}/opt/${_pkgname}"
+    install -Dm775 opt/${_pkgname}/* -g wheel -o ${USER} -t "${pkgdir}/opt/${_pkgname}"
     install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
