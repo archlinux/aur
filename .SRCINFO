@@ -1,6 +1,6 @@
 pkgbase = oc-auxiliary-tools
 	pkgdesc = Cross-platform GUI management tools for OpenCore
-	pkgver = 20220195
+	pkgver = 20220198
 	pkgrel = 1
 	url = https://github.com/ic005k/OCAuxiliaryTools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = oc-auxiliary-tools
 	makedepends = glfw
 	makedepends = libxcb
 	depends = qt5-base
-	source = https://github.com/ic005k/OCAuxiliaryTools/archive/refs/tags/20220195.tar.gz
+	source = https://github.com/ic005k/OCAuxiliaryTools/archive/refs/tags/20220198.tar.gz
 	source = oc-auxiliary-tools.desktop
 	md5sums = 2e579ee59d1bb4781ce11fb3fe240aa5
 	md5sums = 609d3c45ab44be86dc3251346f2240d7
