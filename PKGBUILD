@@ -1,4 +1,4 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-costmap-converter
 pkgver=0.0.13
@@ -6,7 +6,7 @@ _pkgver_patch=0
 pkgdesc="ROS : converts costmaps"
 url='http://wiki.ros.org/costmap_converter'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-catkin)
