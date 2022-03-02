@@ -6,13 +6,13 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-1
+_srctag=GE-Proton7-2
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
 
-_wine_commit=8b92bf3aa3d5e9248a2df6c2c27a5ed24a639f0e
-_stag_commit=68441b1d9552b1a75c45a981c0a0279d064349fb
+_wine_commit=65e392f679220050b27d04117af7cfd2dfa6abe4
+_stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 #_winever=${pkgver%.*}
 #_winever=$pkgver
 _pkgbasever=${pkgver/rc/-rc}
@@ -122,7 +122,7 @@ optdepends=(
   dosbox
 )
 
-provides=("wine=7.3" "wine-wow64=7.3")
+provides=("wine=7.0" "wine-wow64=7.0")
 conflicts=('wine' 'wine-wow64')
 install=wine.install
 

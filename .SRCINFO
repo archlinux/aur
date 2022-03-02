@@ -1,6 +1,6 @@
 pkgbase = wine-ge-custom
 	pkgdesc = A compatibility layer for running Windows programs - GloriousEggroll branch
-	pkgver = GE.Proton7.1
+	pkgver = GE.Proton7.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/wine-ge-custom
@@ -144,15 +144,15 @@ pkgbase = wine-ge-custom
 	optdepends = gsm
 	optdepends = ffmpeg
 	optdepends = dosbox
-	provides = wine=7.3
-	provides = wine-wow64=7.3
+	provides = wine=7.0
+	provides = wine-wow64=7.0
 	conflicts = wine
 	conflicts = wine-wow64
 	options = !staticlibs
 	options = !lto
-	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton7-1
-	source = wine-valve::git+https://github.com/ValveSoftware/wine.git#commit=8b92bf3aa3d5e9248a2df6c2c27a5ed24a639f0e
-	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=68441b1d9552b1a75c45a981c0a0279d064349fb
+	source = wine-ge-custom::git+https://github.com/GloriousEggroll/wine-ge-custom.git#tag=GE-Proton7-2
+	source = wine-valve::git+https://github.com/ValveSoftware/wine.git#commit=65e392f679220050b27d04117af7cfd2dfa6abe4
+	source = wine-staging::git+https://github.com/wine-staging/wine-staging.git#commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 	source = wine-more_8x5_res.patch
 	source = wine-wmclass.patch
 	source = wine-isolate_home.patch
