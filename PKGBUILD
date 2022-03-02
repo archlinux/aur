@@ -6,10 +6,15 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
-url="https://gitlab.com/qYp/st"
+url="https://gitlab.com/qYp/${_pkgbase}"
 license=('MIT')
-depends=(gcc libxft-bgra-git)
-makedepends=(git)
+options=('zipman')
+depends=('libxft')
+makedepends=('ncurses' 'libxft' 'git')
+optdepends=(
+    'dmenu: feed urls to dmenu'
+    'libcurl: for curl'
+  )
 provides=(st)
 conflicts=(st)
 replaces=(st)
@@ -22,8 +27,19 @@ pkgver() {
   printf "1.0.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd "${_pkgbase}"           
-  NAME="${pkgname}" DESTDIR="${pkgdir}" make clean install
+prepare() {
+	cd $srcdir/${_pkgbase}
+	sed -i '/tic /d' Makefile
 }
 
+build() {
+	cd "${_pkgbase}"
+	make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
+}
+
+package() {
+	cd "${_pkgbase}"
+	make PREFIX=/usr DESTDIR="${pkgdir}" clean install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 Xdefaults "${pkgdir}/usr/share/doc/${pkgname}/Xdefaults.example"
+}
