@@ -1,7 +1,7 @@
 pkgbase = orthanc-plugin-dicomweb
 	pkgdesc = Extends Orthanc with support of the DICOMweb protocols
 	pkgver = 1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://book.orthanc-server.com/plugins/dicomweb.html
 	arch = x86_64
 	arch = i686
