@@ -1,5 +1,5 @@
 pkgbase = aaaaxy
-	pkgdesc = A nonlinear puzzle platformer taking place in non-Euclidean geometry
+	pkgdesc = A nonlinear puzzle platformer taking place in impossible spaces
 	pkgver = 1.1.225
 	pkgrel = 1
 	url = https://github.com/divVerent/aaaaxy

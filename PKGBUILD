@@ -4,7 +4,7 @@
 pkgname=aaaaxy
 pkgver=1.1.225
 pkgrel=1
-pkgdesc='A nonlinear puzzle platformer taking place in non-Euclidean geometry'
+pkgdesc='A nonlinear puzzle platformer taking place in impossible spaces'
 arch=('x86_64')
 url="https://github.com/divVerent/$pkgname"
 license=('Apache')
