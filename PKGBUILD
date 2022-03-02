@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Library package author: Timothy A. Davis <Davis@tamu.edu>
 
 _author=davis
 _pkgname=GraphBLAS
 pkgname=graphblas
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A full implementation of the GraphBLAS standard (graphblas.org)"
 arch=('any')
 url="http://faculty.cse.tamu.edu/$_author/$_pkgname.html"
