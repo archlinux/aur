@@ -1,7 +1,7 @@
 pkgbase = python-pyramid
 	pkgdesc = Open source Python web framework
 	pkgver = 2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Pylons/pyramid
 	arch = any
 	license = custom:RPL
@@ -13,7 +13,7 @@ pkgbase = python-pyramid
 	makedepends = python-repoze.lru
 	makedepends = python-setuptools
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-hupper
 	depends = python-plaster

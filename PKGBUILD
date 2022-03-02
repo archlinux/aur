@@ -4,7 +4,7 @@
 
 pkgname=python-pyramid
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Open source Python web framework'
 arch=('any')
 url='https://github.com/Pylons/pyramid'
@@ -26,7 +26,7 @@ makedepends=(
   'python-repoze.lru'
   'python-setuptools'
   'python-build'
-  'python-install'
+  'python-installer'
   'python-wheel')
 optdepends=(
   'python-pyramid-debugtoolbar: development mode'
@@ -42,7 +42,7 @@ validpgpkeys=('CC1A48C957AC6ABEF05B2C596BC977B056B829E5')
 
 build() {
   cd "pyramid-$pkgver"
-  python -m build --wheel --skip-dependency-check --no-isolation
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -53,7 +53,7 @@ check() {
 package() {
   export PYTHONHASHSEED=0
   cd "pyramid-$pkgver"
-  python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+  python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
