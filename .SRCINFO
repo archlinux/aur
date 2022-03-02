@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-libpng
+pkgbase = mingw-w64-libpng-static
 	pkgdesc = A collection of routines used to create PNG format graphics (mingw-w64)
 	pkgver = 1.6.37
 	pkgrel = 1
@@ -7,6 +7,8 @@ pkgbase = mingw-w64-libpng
 	license = custom
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-zlib
+	provides = mingw-w64-libpng=1.6.37
+	conflicts = mingw-w64-libpng
 	options = !strip
 	options = !buildflags
 	options = staticlibs
@@ -15,5 +17,4 @@ pkgbase = mingw-w64-libpng
 	sha256sums = 505e70834d35383537b6491e7ae8641f1a4bed1876dbfe361201fc80868d88ca
 	sha256sums = 10d9e0cb60e2b387a79b355eb7527c0bee2ed8cbd12cf04417cabc4d6976683c
 
-pkgname = mingw-w64-libpng
-
+pkgname = mingw-w64-libpng-static

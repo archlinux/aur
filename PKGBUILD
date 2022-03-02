@@ -1,6 +1,8 @@
+# -*- mode: Shell-script; eval: (setq indent-tabs-mode nil); eval: (setq tab-width 2) -*-
+# Maintainer: Dominic Meiser <git at msrd0 dot de>
 # Contributor: Daniel Kirchner <daniel AT ekpyron DOT org>
 
-pkgname=mingw-w64-libpng
+pkgname=mingw-w64-libpng-static
 pkgver=1.6.37
 _apngver=$pkgver
 pkgrel=1
@@ -8,6 +10,8 @@ arch=('any')
 pkgdesc="A collection of routines used to create PNG format graphics (mingw-w64)"
 depends=('mingw-w64-zlib')
 makedepends=('mingw-w64-configure')
+provides=("mingw-w64-libpng=$pkgver")
+conflicts=('mingw-w64-libpng')
 license=('custom')
 url="http://www.libpng.org/pub/png/libpng.html"
 options=('!strip' '!buildflags' 'staticlibs')
@@ -30,7 +34,7 @@ build() {
   cd "$srcdir/libpng-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure
+    ${_arch}-configure --disable-shared
     make
     popd
   done
@@ -39,10 +43,9 @@ build() {
 package () {
   for _arch in ${_architectures}; do
     cd "${srcdir}/libpng-${pkgver}/build-${_arch}"
-    make install DESTDIR="${pkgdir}"
+    DESTDIR="${pkgdir}" make install
     rm -r "${pkgdir}"/usr/${_arch}/share
     rm "${pkgdir}"/usr/${_arch}/bin/*.exe
-    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 }
