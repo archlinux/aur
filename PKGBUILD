@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
 pkgname=(hydrus)
-pkgver=474
+pkgver=475
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -17,14 +17,14 @@ depends=(python python-opencv python-beautifulsoup4 python-yaml
          python-pysocks python-psutil python-send2trash python-html5lib
          python-requests python-qtpy emoji-font python-mpv
          python-service-identity qt5-python-bindings fmt pyside2)
-makedepends=(git)
+makedepends=(git mkdocs mkdocs-material)
 optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqt5-chart: display bandwidth usage charts'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS')
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=83b2d2e6f128ceb00513400800a7aba95add99e8"
+source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=0f76d8a28cf1151358542c8f4655bbf1510b1429"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
@@ -49,6 +49,9 @@ build() {
 
   msg 'Compiling .py files...'
   python -OO -m compileall -fq .
+
+  msg 'Building documentation...'
+  mkdocs build -d help
 }
 
 package_hydrus() {
