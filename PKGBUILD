@@ -1,10 +1,10 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Project author: Jean Guyomarch <jean@guyomarch.bzh>
 
 _author=jeanguyomarch
 pkgname=eovim
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eovim is the Enlightened Neovim. That's just an EFL GUI client for Neovim."
 arch=('any')
 url="https://phab.enlightenment.org/w/projects/eovim/"

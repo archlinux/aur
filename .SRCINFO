@@ -1,7 +1,7 @@
 pkgbase = eovim
 	pkgdesc = Eovim is the Enlightened Neovim. That's just an EFL GUI client for Neovim.
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://phab.enlightenment.org/w/projects/eovim/
 	arch = any
 	license = MIT
@@ -16,4 +16,3 @@ pkgbase = eovim
 	sha256sums = d11da1d3736e19af4d6f7f97a382893fcfa0eba58f7137290e7c8a1ce802f53e
 
 pkgname = eovim
-
