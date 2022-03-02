@@ -1,6 +1,6 @@
 pkgbase = i3-swallow-git
 	pkgdesc = Swallow a terminal window after a blocking application is run in i3
-	pkgver = r66.7a9faed
+	pkgver = r69.6fbc046
 	pkgrel = 1
 	url = https://github.com/jamesofarrell/i3-swallow
 	arch = any

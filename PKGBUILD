@@ -3,7 +3,7 @@
 
 _pkgname=i3-swallow
 pkgname=$_pkgname-git
-pkgver=r66.7a9faed
+pkgver=r69.6fbc046
 pkgrel=1
 pkgdesc="Swallow a terminal window after a blocking application is run in i3"
 arch=('any')
@@ -23,6 +23,6 @@ pkgver()
 
 package() {
   cd "$srcdir/${_pkgname}"
-  install -Dm 755 swallow.py "${pkgdir}"/usr/bin/swallow
+  install -Dm 755 "i3_swallow/swallow.py" "${pkgdir}"/usr/bin/swallow
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
