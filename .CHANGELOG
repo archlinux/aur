@@ -1,6 +1,37 @@
 Version history
 ===============
 
+0.9.42
+------
+
+2022-02-25
+
+Don't focus the IP address entry field in the lobby when you select "connect
+to somebody else". The focusing led to a bug that is now fixed: The field
+would even be unhidden and focused whenever the lobby window reappeared after
+a game, when you were already connected and in a room.
+
+Alleviated enet versioning mismatch: derelict-enet offers D bindings only for
+enet 1.3.15, but the binaries of enet 1.3.16 or the current enet 1.3.17 have
+differently-sized struct ENetPeer. Now, the Lix server computes the struct
+size at runtime, allowing to run with all enet binaries >= 1.3.13.
+
+Fixed a theoretically possible, although unlikely, memory leak in networking.
+
+Fixed a linker warning about max!(int, int). Now, Lix's code itself generates
+zero warnings again.
+
+Refactored the server-side networking code. Rooms carry their own logic. This
+will help in the future to support version restrictions per room.
+
+Linux build notes: Added workaround for LDC running out of stack space. You
+can raise the stack size in the current shell with: ulimit -s 16384
+
+Removed note from April 2020 in the readme about compilers before LDC 1.21;
+compilers that old aren't prevalent anymore.
+
+
+
 0.9.41
 ------
 
