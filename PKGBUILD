@@ -1,4 +1,5 @@
-# Maintainer: Devin Christensen <quixoten at gmail dot com>
+# Maintainer: Khorne <khorne at khorne dot me>
+# Contributor: Devin Christensen <quixoten at gmail dot com>
 pkgname=terminess-powerline-font-git
 pkgver=r202.e80e3eb
 pkgrel=2
