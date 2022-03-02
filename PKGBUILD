@@ -15,12 +15,12 @@ source=("git://github.com/scarygliders/${pkgname//-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname//-git}"
 	printf '%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname//-git}"
 
 	install -d -m755 "${pkgdir}"/{usr/bin,opt/$pkgname}
 	install -m644 Ui_*.py "${pkgdir}/opt/${pkgname}/"
