@@ -1,6 +1,6 @@
 pkgbase = rife-ncnn-vulkan
 	pkgdesc = RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library.
-	pkgver = 20210520
+	pkgver = 20220228
 	pkgrel = 1
 	url = https://github.com/nihui/rife-ncnn-vulkan
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = rife-ncnn-vulkan
 	provides = rife-ncnn-vulkan
 	conflicts = rife-ncnn-vulkan-git
 	conflicts = rife-ncnn-vulkan-bin
-	source = https://github.com/nihui/rife-ncnn-vulkan/archive/refs/tags/20210520.tar.gz
-	sha256sums = 499f095ec3d4e3ae1de912be694e7d3f5f3227ae816a1a987e9d78db05090303
+	source = https://github.com/nihui/rife-ncnn-vulkan/archive/refs/tags/20220228.tar.gz
+	sha256sums = 7308a6095f2541f70414e20990792fd5cf3e05a551e179f63baf28313ab965fb
 
 pkgname = rife-ncnn-vulkan
-
