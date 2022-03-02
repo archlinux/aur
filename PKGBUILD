@@ -2,9 +2,9 @@
 
 pkgname=qcal
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Console-based quick calendar for CalDAV'
-arch=('any')
+arch=('x86_64')
 url='https://git.sr.ht/~psic4t/qcal'
 license=('GPL')
 makedepends=('go')
@@ -13,6 +13,11 @@ sha512sums=('4084af17690a6f3f52329c74f2d8bfb187fa8a749c390f117256b03d2263acb0850
 
 build() {
 	cd ${pkgname}-${pkgver}
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath"
 	make
 }
 

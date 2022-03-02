@@ -1,9 +1,9 @@
 pkgbase = qcal
 	pkgdesc = Console-based quick calendar for CalDAV
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~psic4t/qcal
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = go
 	source = qcal-0.8.4.tar.gz::https://git.sr.ht/~psic4t/qcal/archive/0.8.4.tar.gz
