@@ -1,0 +1,18 @@
+pkgbase = bandcamp-collection-downloader-git
+	pkgdesc = CLI downloader of your purchase from Bandcamp
+	pkgver = 2021.12.05.r6.gc3442ee
+	pkgrel = 1
+	url = https://framagit.org/Ezwen/bandcamp-collection-downloader
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = gradle
+	depends = java-runtime-headless
+	provides = bandcamp-collection-downloader
+	conflicts = bandcamp-collection-downloader
+	source = git+https://framagit.org/Ezwen/bandcamp-collection-downloader.git
+	source = bandcamp-collection-downloader.sh
+	sha256sums = SKIP
+	sha256sums = af5f89fefed91d7669d1b2dd35de2a294bbcbced8fea40c5abb45011caf57209
+
+pkgname = bandcamp-collection-downloader-git
