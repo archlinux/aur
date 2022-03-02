@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-ecl-console
 	pkgdesc = ROS - Color codes for ansii consoles.
 	pkgver = 0.61.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/ecl_console
 	arch = any
 	license = BSD
@@ -19,4 +19,3 @@ pkgbase = ros-melodic-ecl-console
 	sha256sums = 5586ad3bb23b745e301fb78ddc22ae1125f5b0c559d93e39b9c832ca2307557b
 
 pkgname = ros-melodic-ecl-console
-
