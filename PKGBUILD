@@ -8,8 +8,8 @@ pkgdesc="Concise Build of Suckless DWM"
 arch=('x86_64')
 url="https://gitlab.com/qYp/dwm"
 license=('MIT')
-depends=(gcc xorg-server xorg-xinit libxft-bgra-git)
-makedepends=(git coreutils)
+depends=('libxft')
+makedepends=('git')
 optdepends=(
     'xorg-xrandr: Allows for changing the resolution of the screen'
     'xwallpaper:  Allows for setting a wallpaper'
@@ -30,12 +30,13 @@ pkgver() {
 }
 
 build() {
-  cd "${_pkgbase}"
-  DESTDIR="$pkgdir" make
+	cd "${_pkgbase}"
+	NAME="${pkgname}" make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11
 }
 
 package() {
-  cd "${_pkgbase}"
-  NAME="${pkgname}" DESTDIR="${pkgdir}" make clean install
+	cd "${_pkgbase}"
+	NAME="${pkgname}" make PREFIX=/usr DESTDIR="${pkgdir}" clean install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
-
