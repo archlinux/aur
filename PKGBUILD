@@ -2,8 +2,8 @@
 
 _gemname=asciidoctor-html5s
 pkgname="ruby-$_gemname"
-pkgver=0.3.0
-pkgrel=9
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Semantic HTML5 converter (backend) for Asciidoctor'
 arch=(x86_64)
 url="https://github.com/jirutka/$_gemname"
@@ -12,7 +12,7 @@ depends=(asciidoctor ruby ruby-thread_safe)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('dc917b72397f1fa34c27b217977b33368418530f2a130b0691ab32e768d54a77')
+sha256sums=('416b7a71d81bd59c556f6ef4a3edbaa50e49d6785619519a5d68eaec3173cbfd')
 
 package() {
 	local _gemdir="$(ruby -e'puts Gem.default_dir')"
