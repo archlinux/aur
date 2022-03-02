@@ -1,7 +1,7 @@
 # Maintainer: Lorenzo Nizzi <lorenzo.nizzi.grifi@gmail.com>
 pkgname=gosign
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Nuovo tool di firma e rinnovo online per i certificati digitali emessi da InfoCert"
 arch=('x86_64')
 url="https://www.firma.infocert.it"
@@ -24,7 +24,7 @@ package(){
 	install -dm 755 "$pkgdir/usr/share/pixmaps"
 	install -dm 755 "$pkgdir/usr/share/doc"
 	install -dm 755 "$pkgdir/usr"
-	install -D -m644 "/usr/lib/gosigndesktop/resources/app/node_modules/yargs-parser/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 "/usr/share/doc/gosigndesktop/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
+#	install -D -m644 "/usr/lib/gosigndesktop/resources/app/node_modules/yargs-parser/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+#	install -D -m644 "/usr/share/doc/gosigndesktop/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 
 }
