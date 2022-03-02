@@ -2,7 +2,7 @@
 # Contributor: François-Xavier Bru <francoisxavier.bru at orange dot com>
 
 pkgname=dependency-check-cli
-pkgver=6.5.3
+pkgver=7.0.0
 pkgrel=1
 pkgdesc="Dependency-Check is a Software Composition Analysis (SCA) tool that attempts to detect publicly disclosed vulnerabilities contained within a project's dependencies."
 arch=('any')
@@ -21,4 +21,4 @@ package() {
   ln -s /opt/${pkgname%%-cli}/bin/dependency-check.sh "${pkgdir}"/usr/bin/dependency-check
 }
 
-sha256sums=('462e60ca6c2ab213b6aaf9aa29cfcf842ec61da90dd49ab0de87c056200e16da')
+sha256sums=('a96ce95ed78a477eedea033be13ed593d2cc4ed91b45d2ca7cdca1aea7fcb58c')
