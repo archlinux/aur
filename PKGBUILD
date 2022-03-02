@@ -1,7 +1,7 @@
 # Maintainer: Devin Christensen <quixoten at gmail dot com>
 pkgname=terminess-powerline-font-git
 pkgver=r202.e80e3eb
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminess Powerline"
 arch=('any')
 url='https://github.com/powerline/fonts'
