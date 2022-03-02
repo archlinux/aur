@@ -17,7 +17,7 @@
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
@@ -31,7 +31,7 @@ options=('!strip')
 _zipfile="Popcorn-Time-${pkgver}-linux64.zip"
 source=("https://github.com/popcorn-official/popcorn-desktop/releases/download/v${pkgver}/$_zipfile"
         "${_pkgname}.desktop" )
-sha256sums=('0fe15d2933b331a49b2da9a820e45a722b7d2d3224f92da0a31ce4a1296adad3'
+sha256sums=('b0a6398ac6e0d5c52ca4a2e0dae77b6588649867d7207bdeb7ca496e2c584b8a'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 package() {
