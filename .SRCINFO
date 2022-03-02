@@ -1,0 +1,18 @@
+pkgbase = xnec2c-git
+	pkgdesc = GTK+ Antenna EM Modeling Client
+	pkgver = 4.4.6.r0.gef6f187
+	pkgrel = 1
+	url = https://www.xnec2c.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	optdepends = gnuplot: to use plotted output/data files
+	optdepends = lapacke: LAPACK+BLAS support
+	provides = xnec2c
+	conflicts = xnec2c
+	source = xnec2c-git::git+https://github.com/KJ7LNW/xnec2c.git
+	md5sums = SKIP
+
+pkgname = xnec2c-git
