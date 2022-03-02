@@ -1,4 +1,4 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Library package author: Timothy A. Davis <Davis@tamu.edu>
 
 _author=GraphBLAS
@@ -6,8 +6,8 @@ __author=davis
 _pkgname=LAGraph
 __pkgname=lagraph
 pkgname=$__pkgname-git
-pkgver=22July2019.r134.g63a6fd7
-pkgrel=1
+pkgver=28Feb2022.r8.gf8e41e801
+pkgrel=2
 pkgdesc="A library plus a test harness for collecting algorithms that use the GraphBLAS."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
