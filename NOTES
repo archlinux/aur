@@ -1,0 +1,22 @@
+OpenLiteSpeed build process isn't pretty, and it doesn't follow
+Linux filesystem standards, so it goes in /opt/lsws.
+
+There are PHP packages in AUR that include phpXX-litespeed for LiteSpeed SAPI support.
+
+Modifications to build on Arch Linux:
+  archlinux.patch
+    * Add 'pacman' as a valid package manager to build.sh so it doesn't quit.
+    * Globally replace /tmp/lshttpd with /run/lshttpd. While this is configurable
+      in some places, it is hardcoded in others, so a source code change is needed.
+    * Globally replace /usr/local/lsws with /opt/lsws. While this is configurable
+      in some places, it is hardcoded in others, so a source code change is needed.
+    * Build admin_php (PHP 5.6) from source to avoid old libcrypt.so.1 dependency.
+  build_yajl.sh.patch
+    * Git fetch of yajl fails, so pull from a different URL.
+  openlitespeed.sysusers
+    * Create and run as user lshttpd.
+    * Create user lsadm for WebAdmin.
+  openlitespeed.tmpfiles
+    * Special directory/file ownership is needed, so everything is set to root:root,
+      and systemd-tmpfiles handles it after package is installed.
+

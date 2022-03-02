@@ -1,0 +1,15 @@
+diff --git a/script/build_yajl.sh b/script/build_yajl.sh
+index 2fd5cac..b6ed748 100755
+--- a/script/build_yajl.sh
++++ b/script/build_yajl.sh
+@@ -6,8 +6,9 @@ cd src
+
+
+     # Install YAJL2
+-    wget http://github.com/lloyd/yajl/tarball/2.1.0 -O yajl-2.1.0.tar.gz
++    wget https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz -O yajl-2.1.0.tar.gz
+     tar -xvzf yajl-2.1.0.tar.gz
++    mv yajl-2.1.0 lloyd-yajl-66cb08c
+     cd lloyd-yajl-66cb08c
+     ./configure -p $PREFIX
+

@@ -1,0 +1,14 @@
+d /run/lshttpd 0755 lshttpd lshttpd -
+
+z /opt/lsws/autoupdate - lshttpd lshttpd - -
+z /opt/lsws/cachedata - lshttpd lshttpd - -
+z /opt/lsws/cgid - root lshttpd - -
+z /opt/lsws/Example/logs - lshttpd lshttpd - -
+z /opt/lsws/logs - lshttpd lshttpd - -
+z /opt/lsws/phpbuild - lsadm lsadm - -
+Z /opt/lsws/conf - lsadm lshttpd - -
+Z /opt/lsws/tmp - lshttpd lshttpd - -
+Z /opt/lsws/admin/conf - lsadm lsadm - -
+z /opt/lsws/admin/logs - lshttpd lshttpd - -
+z /opt/lsws/admin/tmp - lsadm lshttpd - -
+z /opt/lsws/admin/cgid - root lshttpd - -
