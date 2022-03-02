@@ -1,4 +1,4 @@
-# Maintainer: Daniel Nakhimovich < dnahimov at gmail dot com >
+# Maintainer: DanielNak <daniel@tee.cat>
 # Contributor: Max Zhao < alcasa dot mz at gmail dot com >
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 
@@ -6,7 +6,7 @@ _author=jart
 _pkgname=hiptext
 pkgname=hiptext-gif
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool for rendering images and videos inside terminals (w/ gif patch).'
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
