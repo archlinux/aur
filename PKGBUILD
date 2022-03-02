@@ -4,9 +4,9 @@
 # Contributor: Henrik Olsson
 
 pkgname=sunflower
-_pkgver=0.4-62
+_pkgver=0.5-63
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=(any)
 license=(GPL3)
@@ -16,21 +16,21 @@ makedepends=(python-setuptools libnotify)
 optdepends=('libnotify'
             'python-mutagen: audio-metadata support'
             'gvfs: mount-management')
-source=("https://github.com/MeanEYE/Sunflower/releases/download/0.4-62/sunflower-${_pkgver}.tgz")
-sha256sums=('f2c47e58efb460f18b4bbaf839a9765ac0e2ae1805d7cbd04b3e345d2d74e900')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MeanEYE/Sunflower/archive/refs/tags/${_pkgver}.tar.gz")
+sha256sums=('cfffdd6c6b7628104200768ae6e594f8547073a82e016bb13efec6d73358ec30')
 
 build() {
-  cd "${srcdir}/Sunflower"
+  cd "${srcdir}/Sunflower-${_pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/Sunflower"
+  cd "${srcdir}/Sunflower-${_pkgver}"
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
 
   python setup.py install --root="$pkgdir/" --optimize=1  --skip-build
   install -Dm644 images/sunflower.svg "${pkgdir}"/usr/lib/python${_pyver}/site-packages/images/sunflower.svg
   install -Dm644 images/sunflower.png "${pkgdir}/usr/share/pixmaps/sunflower.png"
-  rm -rd "${pkgdir}/usr/images"
-  cp -r "${srcdir}"/Sunflower/translations/ "${pkgdir}/usr/share/locale"
+  cp -r translations/ "${pkgdir}/usr/share/locale"
+  rmdir "${pkgdir}/usr/share/sunflower/translations"
 }

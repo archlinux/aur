@@ -1,7 +1,7 @@
 pkgbase = sunflower
 	pkgdesc = Small and highly customizable twin-panel file manager for Linux with support for plugins
-	pkgver = 0.4.62
-	pkgrel = 5
+	pkgver = 0.5.63
+	pkgrel = 1
 	url = https://sunflower-fm.org
 	arch = any
 	license = GPL3
@@ -16,8 +16,7 @@ pkgbase = sunflower
 	optdepends = libnotify
 	optdepends = python-mutagen: audio-metadata support
 	optdepends = gvfs: mount-management
-	source = https://github.com/MeanEYE/Sunflower/releases/download/0.4-62/sunflower-0.4-62.tgz
-	sha256sums = f2c47e58efb460f18b4bbaf839a9765ac0e2ae1805d7cbd04b3e345d2d74e900
+	source = sunflower-0.5.63.tar.gz::https://github.com/MeanEYE/Sunflower/archive/refs/tags/0.5-63.tar.gz
+	sha256sums = cfffdd6c6b7628104200768ae6e594f8547073a82e016bb13efec6d73358ec30
 
 pkgname = sunflower
-
