@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Library package author: Gabriel Nützi <gnuetzi@gmail.com>
 
 _author=gabyx
 _pkgname=ApproxMVBB
 pkgname=approxmvbb
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast algorithms to compute an approximation of the minimal volume oriented bounding box of a point cloud in 3D."
 arch=('any')
 url="http://$_author.github.io/$_pkgname/"
