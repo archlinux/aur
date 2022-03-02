@@ -1,6 +1,6 @@
 pkgbase = sirikali
 	pkgdesc = A Qt/C++ GUI front end to sshfs, ecryptfs-simple, cryfs, gocryptfs, securefs, fscrypt and encfs
-	pkgver = 1.4.8
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://mhogomchungu.github.io/sirikali/
 	arch = i686
@@ -23,10 +23,10 @@ pkgbase = sirikali
 	optdepends = securefs: for securefs backend
 	optdepends = sshfs: for SSHFS backend
 	conflicts = sirikali-git
-	source = SiriKali-1.4.8.tar.xz::https://github.com/mhogomchungu/sirikali/releases/download/1.4.8/SiriKali-1.4.8.tar.xz
-	source = SiriKali-1.4.8.tar.xz.asc::https://github.com/mhogomchungu/sirikali/releases/download/1.4.8/SiriKali-1.4.8.tar.xz.asc
+	source = SiriKali-1.5.0.tar.xz::https://github.com/mhogomchungu/sirikali/releases/download/1.5.0/SiriKali-1.5.0.tar.xz
+	source = SiriKali-1.5.0.tar.xz.asc::https://github.com/mhogomchungu/sirikali/releases/download/1.5.0/SiriKali-1.5.0.tar.xz.asc
 	validpgpkeys = 6855E493B5B2DF96E319BB6D16E2E1ACC6F51242
-	sha256sums = 959c802c90034582b0a1998aad65e958e120e8b2dc381716f082383048da2a23
+	sha256sums = 848506f6130a3e10ccc3b767c4ae7b27b1f69828ef25d42dfa8d651cd3d5520e
 	sha256sums = SKIP
 
 pkgname = sirikali
