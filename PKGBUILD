@@ -2,11 +2,10 @@
 # ---
 pkgrel=1
 pkgver=1.0
-pkgname=dwm
-pkgbase=dwm-nu1ll1nux
+pkgname=dwm-nu1ll1nux
 pkgdesc="Concise Build of Suckless DWM"
 arch=('x86_64')
-url="https://gitlab.com/qYp/${pkgname}"
+url="https://gitlab.com/qYp/dwm"
 license=('MIT')
 depends=(gcc xorg-server xorg-xinit libxft-bgra-git)
 makedepends=(git coreutils)
