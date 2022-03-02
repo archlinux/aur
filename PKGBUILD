@@ -3,9 +3,10 @@
 
 pkgname=python36
 pkgver=3.6.15
-pkgrel=2
+pkgrel=3
 _pybasever=3.6
 _pymajver=3
+_pyminver=6
 pkgdesc="Major release 3.6 of the Python high-level programming language"
 arch=('i686' 'x86_64' 'arm' 'pentium4')
 license=('custom')
@@ -15,7 +16,7 @@ makedepends=('tk' 'sqlite' 'bluez-libs' 'mpdecimal')
 optdepends=('tk: for tkinter' 'sqlite')
 source=(http://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
 sha256sums=('6e28d7cdd6dd513dd190e49bca3972e20fcf455090ccf2ef3f1a227614135d91')
-provides=("python=$pkgver")
+provides=("python=$pkgver" "python$_pymajver$_pyminver-pip" "python$_pymajver$_pyminver-setuptools")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -43,8 +44,7 @@ build() {
               --with-dbmliborder=gdbm:ndbm \
               --with-system-libmpdec \
               --with-system-ffi \
-              --enable-loadable-sqlite-extensions \
-              --without-ensurepip
+              --enable-loadable-sqlite-extensions
 
   make
 }
