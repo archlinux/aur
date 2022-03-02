@@ -2,7 +2,7 @@
 
 pkgname=ydotool-bin
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64' 'aarch64')
 conflicts=(ydotool)
