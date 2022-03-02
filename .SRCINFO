@@ -1,0 +1,18 @@
+pkgbase = nxpolkit-git
+	pkgdesc = Polkit client for NX
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/nxpolkit
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gtk2
+	depends = polkit
+	optdepends = nxinit: Session initialiastion
+	provides = nxpolkit
+	conflicts = nxpolkit
+	source = nxpolkit::git+http://git.weitnahbei.de/nullmark/nxpolkit#branch=devalafy
+	sha256sums = SKIP
+
+pkgname = nxpolkit-git
