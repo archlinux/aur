@@ -9,4 +9,4 @@ pkgbase = pksg
 	source = https://github.com/siphr/psg.git
 	md5sums = SKIP
 
-pkgname = psg
+pkgname = pksg

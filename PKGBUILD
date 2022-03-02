@@ -22,7 +22,7 @@ build() {
 package() {
     echo "INSTALLING..."
     mkdir -p $pkgdir/usr/bin
-    cp "$srcdir/psg" "$pkgdir/usr/bin/pksg"
+    cp "$srcdir/pksg" "$pkgdir/usr/bin/pksg"
     echo 'Finished setting up pksg.'
 }
 
