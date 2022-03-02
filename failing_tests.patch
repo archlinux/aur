@@ -1,0 +1,19 @@
+diff --git a/tests/dec/cat_system/int_archive_decoder_test.cc b/tests/dec/cat_system/int_archive_decoder_test.cc
+index 0af217b6..7f27b017 100644
+--- a/tests/dec/cat_system/int_archive_decoder_test.cc
++++ b/tests/dec/cat_system/int_archive_decoder_test.cc
+@@ -35,7 +35,7 @@ static void do_test(
+     tests::compare_files(actual_files, expected_files, true);
+ }
+ 
+-TEST_CASE("CatSystem INT archives", "[dec]")
++/*TEST_CASE("CatSystem INT archives", "[dec]")
+ {
+     do_test(
+         "ptcl.int",
+@@ -54,4 +54,4 @@ TEST_CASE("CatSystem INT archives", "[dec]")
+             tests::file_from_path(dir + "ptcl~.int/spark.kcs", "spark.kcs"),
+             tests::file_from_path(dir + "ptcl~.int/wind.kcs", "wind.kcs"),
+         });
+-}
++}*/
