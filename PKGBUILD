@@ -3,7 +3,7 @@
 pkgname=clash-premium-script
 _pkgname=clash-premium-installer
 pkgver=r15.c2b80f9
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple clash premium core script for Linux."
 arch=('any')
 url="https://github.com/Kr328/clash-premium-installer"
@@ -12,12 +12,12 @@ install=${pkgname}.install
 depends=('clash-premium-bin' 'systemd' 'nftables' 'iproute2')
 makedepends=('git')
 backup=("etc/clash/config.yaml" "etc/default/clash")
-source=("git+https://github.com/Kr328/clash-premium-installer.git"
+source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=c2b80f9"
         "arch.patch"
 		"config.yaml")
 sha256sums=('SKIP'
             '6af9092581610933b96641155769dd92c1f0d6d918b0f8cf0cd9f8a583d18f38'
-            'e172230e94128e4b98b7c610a74cda8cf7e7dd33672ad2c23fe5fc8d295bd6ed')
+            '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 pkgver() {
   cd "${_pkgname}"
