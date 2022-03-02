@@ -10,8 +10,8 @@
 
 pkgname=keepassxc-git
 _gitname=keepassxc
-pkgver=2.6.3.r297.g12990e59
-pkgrel=2
+pkgver=2.6.3.r325.g4f071035
+pkgrel=1
 pkgdesc="Cross-platform community-driven port of KeePass Password Safe"
 arch=('i686' 'x86_64')
 url="https://github.com/keepassxreboot/keepassxc"
@@ -43,7 +43,6 @@ build() {
         -DCMAKE_VERBOSE_MAKEFILE=OFF \
         -DWITH_GUI_TESTS=ON \
         -DWITH_XC_ALL=ON \
-        -DWITH_XC_KEESHARE_SECURE=ON \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make -C build
 }
