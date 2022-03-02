@@ -1,12 +1,12 @@
 pkgbase = messenger-gtk-git
 	pkgdesc = A graphical user interface for GNUnet Messenger
-	pkgver = r94.5f2a26c
+	pkgver = r102.3090047
 	pkgrel = 1
 	url = https://gnunet.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = gnunet-git
+	depends = gnunet
 	depends = libgnunetchat
 	depends = gtk3
 	depends = libhandy

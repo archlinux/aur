@@ -2,13 +2,13 @@
 
 _appname='messenger-gtk'
 pkgname="${_appname}-git"
-pkgver='r94.5f2a26c'
+pkgver='r102.3090047'
 pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://gnunet.org"
 license=('GPL')
-depends=('gnunet-git' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
+depends=('gnunet' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
