@@ -3,12 +3,16 @@
 
 pkgname=scaleway-cli
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal."
 arch=('x86_64')
 url="https://scaleway.com"
 license=('Apache')
 makedepends=('go' 'git')
+optdepends=(
+  'bash-completion: Bash completions'
+  'zsh-completions: ZSH completitons'
+)
 source=("https://github.com/scaleway/$pkgname/archive/v${pkgver}.tar.gz")
 
 build() {
@@ -31,10 +35,8 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 scw "$pkgdir/usr/bin/scw"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  # Leaving the autocomplete out for now since it depends on bash-completion
-  # It can still be installed with scw autocomplete install
-  #PATH=.:$PATH scw autocomplete script shell=zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_scw"
-  #PATH=.:$PATH scw autocomplete script shell=bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/scw"
+  ./scw autocomplete script shell=zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_scw"
+  ./scw autocomplete script shell=bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/scw"
 }
 
 sha256sums=('7baa6d7af5602703bc9b1f54beb5a36642151cc12d6584d6ab76df8bb088365e')
