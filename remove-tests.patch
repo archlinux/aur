@@ -1,0 +1,16 @@
+diff --git a/setup.py b/setup.py
+index 7a00292..c5a12bb 100755
+--- a/setup.py
++++ b/setup.py
+@@ -41,9 +41,9 @@ setup_params = {
+         "run_python_base_app_test_suite.py",
+     ],
+ 
+-    "packages" : [ 'python_base_app', 'python_base_app.test' ],
++    "packages" : [ 'python_base_app' ],
+     "include_package_data": True,
+-    
++
+     "long_description" : long_description,
+     "long_description_content_type" : 'text/markdown',
+ }
