@@ -3,7 +3,7 @@
 pkgname=gasket-dkms
 _pkgname=gasket
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Coral driver for PCIe-based Edge TPU devices, such as the M.2 and Mini PCIe Accelerator'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://coral.withgoogle.com/'
@@ -14,25 +14,25 @@ makedepends=('sed' 'binutils')
 # The links to the files are taken from:
 # https://packages.cloud.google.com/apt/dists/coral-edgetpu-stable/main
 source_x86_64=(
-    'gasket-dkms_1.0-17.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-17_all_7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c.deb'
+  'gasket-dkms_1.0-18.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-18_all_00606bc20aed9a7d2a9da7a6d51a87dbc7f275be392fb3e1131ef6f627a49168.deb'
 )
 source_armv7h=(
-    'gasket-dkms_1.0-17.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-17_all_7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c.deb'
+  'gasket-dkms_1.0-18.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-18_all_00606bc20aed9a7d2a9da7a6d51a87dbc7f275be392fb3e1131ef6f627a49168.deb'
 )
 source_aarch64=(
-    'gasket-dkms_1.0-17.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_16.0_arm64_0b4fb43e4f7b44a0ce1f13b0736b3b7f03b09a24fca7e81bdb40185e98527325.deb'
+  'gasket-dkms_1.0-18.deb::https://packages.cloud.google.com/apt/pool/gasket-dkms_1.0-18_all_00606bc20aed9a7d2a9da7a6d51a87dbc7f275be392fb3e1131ef6f627a49168.deb'
 )
-sha256sums_x86_64=('7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c')
-sha256sums_armv7h=('7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c')
-sha256sums_aarch64=('7f150cae9e4cce8d4ffdbff05e6b1c9280afed17ee5caf41ffba5d5270a3757c')
+sha256sums_x86_64=('00606bc20aed9a7d2a9da7a6d51a87dbc7f275be392fb3e1131ef6f627a49168')
+sha256sums_armv7h=('00606bc20aed9a7d2a9da7a6d51a87dbc7f275be392fb3e1131ef6f627a49168')
+sha256sums_aarch64=('00606bc20aed9a7d2a9da7a6d51a87dbc7f275be392fb3e1131ef6f627a49168')
 
 noextract=(
-    'gasket-dkms_1.0-17.deb'
+    'gasket-dkms_1.0-18.deb'
 )
 
 build() {
   mkdir -p ${srcdir}/gasket-dkms/
-  ar x ${srcdir}/gasket-dkms_1.0-17.deb
+  ar x ${srcdir}/gasket-dkms_1.0-18.deb
   tar -xJf data.tar.xz -C ${srcdir}/gasket-dkms/
 }
 
