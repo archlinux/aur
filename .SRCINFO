@@ -1,7 +1,7 @@
 pkgbase = art-rawconverter
 	pkgdesc = Raw image Converter forked from RawTherapee with ease of use in mind (including blackfoxx-theme)
 	pkgver = 1.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
 	arch = x86_64
