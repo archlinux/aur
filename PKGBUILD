@@ -20,7 +20,7 @@ sha256sums=('eed24445f42112372afcd19b9506e43a9b2e5368c8c910559ee42b61835925c3'
 install=ydotool.install
 
 package() {
-	install -Dm755 "$srcdir/ydotool-release-ubuntu-latest" "$pkgdir/usr/loca/bin/ydotool"
+	install -Dm755 "$srcdir/ydotool-release-ubuntu-latest" "$pkgdir/usr/local/bin/ydotool"
 	install -Dm755 "$srcdir/ydotoold-release-ubuntu-latest" "$pkgdir/usr/local/bin/ydotoold"
 	install -Dm644 "$srcdir/80-uinput.rules" "$pkgdir/etc/udev/rules.d/80-uinput.rules"
 	install -dm755 "$pkgdir/usr/lib/systemd/system/"
