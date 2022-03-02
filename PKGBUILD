@@ -38,9 +38,9 @@ options=('!strip')
 
 _create_links() {
   # create soname links
-  for _lib in $(find "${pkgdir}" -name '*.so*' -type f); do
+  find "$pkgdir" -type f -name '*.so*' -print0 | while read -d $'\0' _lib; do
     _soname=$(dirname "${_lib}")/$(readelf -d "${_lib}" | grep -Po 'SONAME.*: \[\K[^]]*' || true)
-    _base=$(echo ${_soname} | sed -r 's/(.*).so.*/\1.so/')
+    _base=$(echo ${_soname} | sed -r 's/(.*)\.so.*/\1.so/')
     [[ -e "${_soname}" ]] || ln -s $(basename "${_lib}") "${_soname}"
     [[ -e "${_base}" ]] || ln -s $(basename "${_soname}") "${_base}"
   done
