@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-mbf-costmap-core
 pkgver=0.3.4
 pkgdesc="ROS - A Highly Flexible Navigation Framework."
 url='http://wiki.ros.org/move_base_flex/mbf_costmap_core'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

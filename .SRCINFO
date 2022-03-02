@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-mbf-costmap-core
 	pkgdesc = ROS - A Highly Flexible Navigation Framework.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/move_base_flex/mbf_costmap_core
 	arch = any
 	license = BSD
@@ -26,4 +26,3 @@ pkgbase = ros-noetic-mbf-costmap-core
 	sha256sums = 0c1f3874d19db615328306a36c4e2709514df4117b14782e88378618e590f35b
 
 pkgname = ros-noetic-mbf-costmap-core
-
