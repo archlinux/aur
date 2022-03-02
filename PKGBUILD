@@ -2,9 +2,9 @@
 _pkgname=linux
 _kernver=5.16.11
 _archver=arch1
-_pkgrel=1
+_pkgrel=2
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=5.16.11-arch1-1
+_KERNNAME=5.16.11-arch1-2
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('3f04c162f9d4772ac8531a826c23049a5ba7687402c03a14dc9881428e91464e'
-            '1c36f21c04f0d7a663d8094b840511f45b9220f0e683c5d64fe61d8df879eaf4'
-            'a44c405da604e916beb7bde60d7a4c10b56aa90231e41a9c09d0f778e6c2594f')
+sha256sums=('1a5ca51c80f0939ebb6060758f12bccc836872ec110579d0b3d728b06b6c326d'
+            '15d5c4db36eab51adfea8404053b70cf6aca537b7da7226d72e6710802b0bf41'
+            '8e41ca188238ff74762322aefce6275da1a8ecc0677291d78252eaae3865b062')
 
 package_linux-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.16.11.arch1-1-bin() {
+package_linux5.16.11.arch1-2-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -81,7 +81,7 @@ package_linux5.16.11.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.16.11.arch1-1-headers-bin() {
+package_linux5.16.11.arch1-2-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.16.11.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.16.11.arch1-1-docs-bin() {
+package_linux5.16.11.arch1-2-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
