@@ -4,22 +4,20 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20220114.dd72b805e
+pkgver=20220124.c285dd695
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://mupdf.com/'
 license=('AGPL3')
 makedepends=('git' 'libxi' 'glu')
-depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser')
+depends=('libxrandr' 'harfbuzz' 'jbig2dec' 'libjpeg-turbo' 'openjpeg2' 'gumbo-parser' 'mujs')
 source=('git://git.ghostscript.com/mupdf.git'
         'git://git.ghostscript.com/thirdparty-extract.git'
         'git://git.ghostscript.com/thirdparty-freeglut.git'
         'git://git.ghostscript.com/thirdparty-lcms2.git'
-        'git://git.ghostscript.com/mujs.git'
         'desktop')
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,20 +34,22 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 
+	# update forks of thirdparty libraries
 	sed "/extract.git/c url = $(pwd)/../thirdparty-extract" -i .gitmodules
 	sed "/freeglut.git/c url = $(pwd)/../thirdparty-freeglut" -i .gitmodules
 	sed "/lcms2.git/c url = $(pwd)/../thirdparty-lcms2" -i .gitmodules
-	sed "/mujs.git/c url = $(pwd)/../mujs" -i .gitmodules
 	git submodule update --init thirdparty/extract
 	git submodule update --init thirdparty/freeglut
 	git submodule update --init thirdparty/lcms2
-	git submodule update --init thirdparty/mujs
 
 	# embedding CJK fonts into binaries is madness...
 	sed '/TOFU_CJK /c #define TOFU_CJK 1/' -i include/mupdf/fitz/config.h
 
 	# force internal freeglut; see e.g. 06c999fec01863a90824ba2f9f3ce98ea1a967d3
 	sed 's/USE_SYSTEM_GLUT :=/& no #/g' -i Makethird
+
+	# force system mujs
+	sed 's/$(USE_SYSTEM_MUJS)/yes/g' -i Makethird
 }
 
 build() {
