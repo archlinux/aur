@@ -1,6 +1,6 @@
 pkgbase = dwm-nu1ll1nux
 	pkgdesc = Concise Build of Suckless DWM
-	pkgver = 1.0
+	pkgver = 1.0.46
 	pkgrel = 1
 	url = https://gitlab.com/qYp/dwm
 	arch = x86_64

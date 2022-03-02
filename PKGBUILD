@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgrel=1
-pkgver=1.0
+pkgver=1.0.46
 _pkgbase=dwm
 pkgname=dwm-nu1ll1nux
 pkgdesc="Concise Build of Suckless DWM"
@@ -38,5 +38,4 @@ package() {
 	cd "${_pkgbase}"
 	NAME="${pkgname}" make PREFIX=/usr DESTDIR="${pkgdir}" clean install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
