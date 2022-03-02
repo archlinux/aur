@@ -1,9 +1,9 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 _prgname=vim-razer
 pkgname=neo${_prgname}-git
-pkgver=v1.2.r5.g4802fbe
-pkgrel=2
+pkgver=v1.2.r11.gb19bdc1
+pkgrel=3
 pkgdesc="Makes RGB Razer keyboards change key colors to complement what you do in neovim."
 arch=('any')
 url='https://github.com/DanManN/vim-razer'
