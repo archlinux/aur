@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.16
-_minor=11
+_minor=12
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -335,7 +335,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('d877304a868cf29bb32d059544806314c2cd975be6132eee645d1dd54ed6e1281c4ea4a18ce30c9b59a8d2b5cd9a0bcf9933a36d4754201fb04e06dee2717e7a'
+sha512sums=('01639c4cec36aa9718cdd2c720289bb26d2da6a208bb0d0466de0a82cabec3254fbae528740404cdcba33c3f1801c098c53521f2cb58f93a01b4c3daa658f78e'
             'SKIP'
             '62b6a9898934d11989fc8e133390b2a2636738ddb72d219b80528742ab3c08bb4213cee9c5fffb5ede2809554c9a14e5114ca8469e924447c2736b2dc21d9077'
             '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
