@@ -3,10 +3,11 @@
 
 pkgname=python311
 pkgver=3.11.0a5
-pkgrel=1
+pkgrel=2
 _pyver=3.11.0
 _pybasever=3.11
 _pymajver=3
+_pyminver=11
 pkgdesc="Major release 3.11 of the Python high-level programming language"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -20,7 +21,7 @@ validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
 )
-provides=("python=$_pyver")
+provides=("python=$_pyver" "python$_pymajver$_pyminver-pip" "python$_pymajver$_pyminver-setuptools")
 
 prepare() {
   cd "${srcdir}/Python-${pkgver}"
@@ -50,7 +51,6 @@ build() {
               --with-system-ffi \
               --with-system-libmpdec \
               --enable-loadable-sqlite-extensions \
-              --without-ensurepip \
               --with-tzpath=/usr/share/zoneinfo
 
   make EXTRA_CFLAGS="$CFLAGS"
