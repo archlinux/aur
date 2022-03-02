@@ -4,7 +4,7 @@
 
 pkgname=python-pyperf
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolkit to run Python benchmarks'
 url='https://github.com/vstinner/pyperf'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python')
 makedepends=(
 	'python-build'
-	'python-install'
+	'python-installer'
 	'python-setuptools'
 	'python-sphinx'
 	'python-wheel')
@@ -30,7 +30,7 @@ prepare() {
 
 build() {
 	cd "pyperf-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	cd doc
 	make man
 }
@@ -43,7 +43,7 @@ check() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "pyperf-$pkgver"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 	install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm644 doc/build/man/pyperf.1 -t "$pkgdir/usr/share/man/man1/"

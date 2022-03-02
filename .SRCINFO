@@ -1,14 +1,14 @@
 pkgbase = python-pyperf
 	pkgdesc = Toolkit to run Python benchmarks
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vstinner/pyperf
 	changelog = changelog.rst
 	arch = any
 	license = MIT
 	checkdepends = python-psutil
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-wheel
