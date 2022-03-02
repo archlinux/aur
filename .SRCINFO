@@ -1,8 +1,8 @@
 pkgbase = python-nxt
 	pkgdesc = A python driver/interface for the Lego Mindstorms NXT robot based on NXT_python.
-	pkgver = 3.0
-	pkgrel = 2
-	url = https://github.com/Eelviny/nxt-python
+	pkgver = 3.0.0
+	pkgrel = 3
+	url = https://github.com/schodet/nxt-python
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -11,8 +11,7 @@ pkgbase = python-nxt
 	optdepends = python-pybluez
 	provides = python-nxt
 	conflicts = python-nxt
-	source = nxt-python-3.0.zip::https://github.com/Eelviny/nxt-python/archive/96bbf2505e96d475df5e9bca01b556887aa8a610.zip
-	sha256sums = f391242ae2f4e7907c56f7d8c25b380a9b3cbec0cbf92061972cf2003ddb3226
+	source = nxt-python-3.0.0.zip::https://github.com/schodet/nxt-python/archive/refs/tags/3.0.0.zip
+	sha256sums = 69e0f9058f8c970278e3660795817b6f46ecc26248b2b9449a890f5093d2c1aa
 
 pkgname = python-nxt
-
