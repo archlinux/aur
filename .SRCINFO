@@ -1,0 +1,24 @@
+pkgbase = wcofun
+	pkgdesc = Stream and download animes directly from your terminal.
+	pkgver = r34.0118b37
+	pkgrel = 1
+	url = https://github.com/matheusfillipe/wcofun.cli
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = coreutils
+	depends = htmlq
+	depends = jq
+	depends = fzf
+	depends = rofi
+	depends = mpv
+	depends = bash
+	optdepends = curl-impersonate-chrome: Bypass cloudflare blocks solving not found errors
+	optdepends = rofi: GUI menu
+	optdepends = dmenu: GUI menu
+	provides = wcofun
+	source = git+https://github.com/matheusfillipe/wcofun.cli
+	md5sums = SKIP
+
+pkgname = wcofun
