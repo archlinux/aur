@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Python package author: Rodrigo Gomes <rodgomesc@gmail.com>
 
 _pkgname=avell-unofficial-control-center
 _author=rodgomesc
 pkgname=python-$_pkgname-git
-pkgver=1.0.2.r27.3dd0238
-pkgrel=1
+pkgver=1.0.4.r62.e32e243
+pkgrel=2
 pkgdesc="A driver and interface to control keyboard rgb led of ITE 8291 like Avell laptops."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
