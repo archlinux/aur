@@ -19,13 +19,13 @@ depends=('python'
          'vulkan-icd-loader'
          'lib32-libusb'
          'lib32-openal'
-#         # libav support #
+         # libav support #
          'lib32-libva'
          'ffmpeg4.4'
          'lib32-speex'
          'lib32-libtheora'
          'lib32-libvdpau'
-#         # gstreamer support #
+         # gstreamer support #
          'gst-plugins-bad-libs'
          'lib32-gst-plugins-base-libs'
          'libjpeg6-turbo'
