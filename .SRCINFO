@@ -1,0 +1,16 @@
+pkgbase = skim-fzf-dropin
+	pkgdesc = A dropin fzf replacement using skim
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = bash
+	depends = skim
+	provides = fzf
+	conflicts = fzf
+	source = fzf
+	source = fzf-tmux
+	sha256sums = bd114b61f031914ddfcb768498f23976701ddbf789e016048aef864f0b391154
+	sha256sums = fab2692ebe57af2fb0a7a01ee3fa3d4cb59eccd4943d7299d6ffeaa3b7388e19
+
+pkgname = skim-fzf-dropin
