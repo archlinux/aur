@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-ddynamic-reconfigure
 pkgver=0.4.1
 pkgdesc="ROS - The ddynamic_reconfigure package."
 url='https://github.com/pal-robotics/ddynamic_reconfigure'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
