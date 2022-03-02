@@ -2,6 +2,7 @@
 # ---
 pkgrel=1
 pkgver=1.0
+_baseame=dwm
 pkgname=dwm-nu1ll1nux
 pkgdesc="Concise Build of Suckless DWM"
 arch=('x86_64')
@@ -24,17 +25,17 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${_basename}"
   printf "1.0.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${_basename}"
   DESTDIR="$pkgdir" make
 }
 
 package() {
-  cd ${pkgname}           
+  cd "${_basename}"
   NAME="${pkgname}" DESTDIR="${pkgdir}" make clean install
 }
 
