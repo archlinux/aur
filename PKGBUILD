@@ -2,7 +2,7 @@
 
 pkgname=python-tagpy
 pkgver=2018.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for TagLib'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url='http://pypi.python.org/pypi/tagpy'
@@ -27,7 +27,7 @@ build() {
     --taglib-inc-dir=/usr/include/taglib/ \
     --boost-inc-dir=/usr/include/boost/ \
     --boost-lib-dir=/usr/lib/ \
-    --boost-python-libname=boost_python
+    --boost-python-libname=boost_python3
   python setup.py build
 }
 

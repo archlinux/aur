@@ -1,7 +1,7 @@
 pkgbase = python-tagpy
 	pkgdesc = Python bindings for TagLib
 	pkgver = 2018.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/tagpy
 	arch = i686
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = python-tagpy
 	sha256sums = 51a5a77a8ffcb079c99d024a83f77bb4a5bba6552c8372c19ae99e71d4220968
 
 pkgname = python-tagpy
-
