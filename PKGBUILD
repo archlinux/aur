@@ -1,7 +1,7 @@
 # Maintainer: kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=scalafmt
-pkgver=2.5.3
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
