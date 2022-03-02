@@ -10,8 +10,8 @@ pkgbase = modmanager
 	depends = aria2
 	depends = quazip
 	depends = hicolor-icon-theme
-	provides = modmanager
-	conflicts = modmanager
+	provides = modmanager-git
+	conflicts = modmanager-git
 	source = modmanager-1.1.0.zip::https://github.com/kaniol-lck/modmanager/archive/refs/tags/v1.1.0.zip
 	md5sums = 150e18a3fa90154893904affc16cbfb2
 
