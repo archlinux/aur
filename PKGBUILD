@@ -2,7 +2,7 @@
 
 pkgname=element-web-bin
 pkgver=1.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Glossy Matrix collaboration client — web version (built files without electron dependencies)."
 arch=(any)
 url="https://github.com/vector-im/element-web"
@@ -12,7 +12,7 @@ provides=(element-web)
 conflicts=(element-web)
 source=(element-web-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/element-v${pkgver}.tar.gz
         element-web-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/element-v${pkgver}.tar.gz.asc)
-sha256sums=('bbbf3a8cfc11563428e440ee4740473441d42df7f37767a0504ea79161914d20'
+sha256sums=('39e9266149ff85f593719bcf83889fcf32444e8ffac5807d7c0433f70a245df1'
             'SKIP')
 validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
 
