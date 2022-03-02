@@ -8,19 +8,22 @@
 pkgname=gnome-commander
 pkgver=1.14.1
 _pkgver=1.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Graphical two-pane filemanager for Gnome'
 arch=('i686' 'x86_64')
 url='http://gcmd.github.io/'
 license=('GPL')
 depends=('python' 'libgsf' 'exiv2' 'taglib' 'poppler-glib' 'libunique3' 'gtk2')
 makedepends=('perl-xml-parser' 'itstool' 'yelp-tools')
-source=(https://download.gnome.org/sources/gnome-commander/${_pkgver}/$pkgname-$pkgver.tar.xz)
-sha256sums=('73125b40969c76ee465b77ee1b305251a119658db8361e67283ae38a5942aff5')
+validpgpkeys=('7627E6FCECF4FC066A03B673F50A89A3ADE4C6E8') # Uwe Scholz
+_validpgpkeys=$(echo $validpgpkeys|tr -d \'|tr -d \( |tr -d \))
+source=("https://download.gnome.org/sources/$pkgname/${_pkgver}/$pkgname-$pkgver.tar.xz"
+	"https://keys.openpgp.org/vks/v1/by-fingerprint/$_validpgpkeys")
+sha256sums=('73125b40969c76ee465b77ee1b305251a119658db8361e67283ae38a5942aff5'
+            'efbe5516e7d781b72b33c4441558e600e4ce9b00e76355a709d25eb4fe24a0e9')
 
 build() {
   cd "$pkgname-$pkgver"
-
   ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc \
 	      --localstatedir=/var --with-help-dir=/usr/share/doc/$pkgname
   make
@@ -29,4 +32,4 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 DESTDIR="$pkgdir" install
- }
+}
