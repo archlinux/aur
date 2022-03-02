@@ -1,16 +1,16 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
-# Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
+# Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 
 pkgname=python-uqbar
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for building documentation with Sphinx, Graphviz and LaTeX'
 arch=('any')
 url="https://github.com/josiah-wolf-oberholtzer/uqbar"
 license=('MIT')
 depends=('python>=3.7' 'python-sphinx' 'python-unidecode' 'python-black' 'python-sphinx_rtd_theme')
-makedepends=('python-setuptools' 'python-build' 'python-install' 'python-wheel')
-checkdepends=('python-pytest')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+# checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'conf.py.patch')
 sha256sums=('df845fc36b94794aa1ab3879a8974d4498b2d468e7d8c83593caeec507c8e36f'
@@ -22,19 +22,19 @@ prepare() {
 
 build() {
 	cd "uqbar-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	make -C docs man
 }
 
-check() {
-	cd "uqbar-$pkgver"
-	PYTHONPATH=./ pytest -x || true
-}
+# check() {
+# 	cd "uqbar-$pkgver"
+# 	PYTHONPATH=./ pytest || true
+# }
 
 package() {
 	export PYTHONHASHSEED=0
 	cd "uqbar-$pkgver"
-	python -m install --optimize=1 --destdir="$pkgdir/" dist/*.whl
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 docs/build/man/uqbar.1 -t "$pkgdir/usr/share/man/man1/"
 }
