@@ -1,6 +1,6 @@
 pkgbase = openfreebuds
 	pkgdesc = Manager for HUAWEI FreeBuds (beta)
-	pkgver = 0.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://melianmiko.ru/openfreebuds
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = openfreebuds
 	depends = python-psutil
 	depends = bluez
 	depends = python-pillow
-	source = openfreebuds-0.9::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.9-2
+	source = openfreebuds-0.9.1::git+https://github.com/melianmiko/openfreebuds.git#tag=v0.9.1
 	md5sums = SKIP
 
 pkgname = openfreebuds
