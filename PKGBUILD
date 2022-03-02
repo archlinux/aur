@@ -12,14 +12,14 @@ eapver=2022.1
 eaprelease=3
 pkgver=221.4501.83
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform .NET IDE by JetBrains."
 arch=('any')
 options=('!strip' 'staticlibs')
 url="https://www.jetbrains.com/rider/eap/"
 license=("custom")
-optdepends=('mono: .NET runtime' 'msbuild-15-bin: build .NET Core projects')
+optdepends=('mono: .NET runtime' 'msbuild: build .NET Core projects')
 provides=("rider-eap")
 groups=("development" "IDE" "editor" "jetbrains")
 
