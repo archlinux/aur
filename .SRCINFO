@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-mbf-abstract-core
 	pkgdesc = ROS - This package provides common interfaces for navigation specific robot actions.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/mbf_abstract_core
 	arch = any
 	license = BSD
@@ -16,4 +16,3 @@ pkgbase = ros-noetic-mbf-abstract-core
 	sha256sums = ecb88ffe26600b0f94f037512ad4c954465ae13492da4c3463c5e4c7007b84bd
 
 pkgname = ros-noetic-mbf-abstract-core
-

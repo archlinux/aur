@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-mbf-abstract-core
 pkgver=0.3.4
 pkgdesc="ROS - This package provides common interfaces for navigation specific robot actions."
 url='http://wiki.ros.org/mbf_abstract_core'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
