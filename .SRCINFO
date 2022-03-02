@@ -1,7 +1,7 @@
 pkgbase = python-elevate
 	pkgdesc = Python library for requesting root privileges
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barneygale/elevate
 	arch = any
 	license = MIT
@@ -15,4 +15,3 @@ pkgbase = python-elevate
 	sha256sums = SKIP
 
 pkgname = python-elevate
-

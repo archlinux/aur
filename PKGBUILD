@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Python package author: Barney Gale <barney.gale@gmail.com>
 
 _pkgname=elevate
 _author=barneygale
 pkgname=python-$_pkgname
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for requesting root privileges"
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
