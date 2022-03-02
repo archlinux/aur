@@ -1,0 +1,15 @@
+pkgbase = nordic-kde-transparency-git
+	pkgdesc = Theme for KDE Plasma 5 using the awesome Nord color pallete and transparency
+	pkgver = 1.9.0.r129.g6ce5346
+	pkgrel = 1
+	url = https://github.com/Curve/Nordic
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = nordic-kde-git
+	provides = nordic-kde-transparency-git
+	options = !strip
+	source = git+https://github.com/Curve/Nordic.git
+	sha256sums = SKIP
+
+pkgname = nordic-kde-transparency-git
