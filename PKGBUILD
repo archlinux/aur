@@ -28,5 +28,4 @@ package(){
 	make DESTDIR="$pkgdir/" install
 	# install -Dm644 Doc/License.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	cd "$pkgdir/usr"
-	mv lib64 lib
 }
