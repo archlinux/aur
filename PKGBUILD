@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.181
-pkgver=5.4.v.181
+gitver=v5.4.182
+pkgver=5.4.v.182
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'a116408e0f5b287f5d913a284bac2ac1bf8641176aa6eb29d45e653d6e3be399'
+            '53c07d93b038348b9f6631cc9163e89e2b0b5ca0fe32c89eb8daa03dd220f141'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
