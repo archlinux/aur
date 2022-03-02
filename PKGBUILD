@@ -2,7 +2,7 @@
 # ---
 _pkgbase=st
 pkgname=st-nu1ll1nux
-pkgver=0.8.5.r10
+pkgver=0.8.2.r10
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
