@@ -1,6 +1,6 @@
 pkgbase = tessen
 	pkgdesc = An interactive menu to autotype and copy password-store and gopass data
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/ayushnix/tessen
 	install = tessen.install
@@ -19,7 +19,7 @@ pkgbase = tessen
 	optdepends = pass-otp: to generate OTP
 	optdepends = xdg-utils: to open URLs in default web browser
 	conflicts = tessen-git
-	source = https://github.com/ayushnix/tessen/releases/download/v2.0.1/tessen-2.0.1.tar.gz
-	sha256sums = a201855ce18c1f38f5b75e166613cc9160e55fcbe42b1934a68ec46217f81cc7
+	source = https://github.com/ayushnix/tessen/releases/download/v2.0.2/tessen-2.0.2.tar.gz
+	sha256sums = 65014436566c2b97e6b85a7db5045e6226c6722349c455e3ae10f026f9de2c69
 
 pkgname = tessen

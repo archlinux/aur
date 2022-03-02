@@ -1,7 +1,7 @@
 # Maintainer: Ayush Agarwal <ayushnix at fastmail dot com>
 
 pkgname=tessen
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="An interactive menu to autotype and copy password-store and gopass data"
 arch=(any)
@@ -22,7 +22,7 @@ optdepends=(
             'xdg-utils: to open URLs in default web browser')
 conflicts=('tessen-git')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('a201855ce18c1f38f5b75e166613cc9160e55fcbe42b1934a68ec46217f81cc7')
+sha256sums=('65014436566c2b97e6b85a7db5045e6226c6722349c455e3ae10f026f9de2c69')
 install=tessen.install
 
 package() {
