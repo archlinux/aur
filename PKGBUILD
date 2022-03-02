@@ -1,4 +1,4 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
@@ -9,7 +9,7 @@ _pkgver_patch=1
 pkgdesc="ROS - C++ implementation of Lie Groups using Eigen."
 url='http://www.ros.org/'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=()
