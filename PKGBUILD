@@ -5,26 +5,27 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton7_4
+pkgver=GE_Proton7_5
 pkgrel=1
 epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
 provides=('proton' "proton-ge-custom=${pkgver/_/.}")
-conflicts=('proton-ge-custom-legacy-bin' 'proton-ge-custom')
+conflicts=('proton-ge-custom')
 
 ## dependencies
 depends=('python'
          'vulkan-icd-loader'
+         'lib32-libusb'
          'lib32-openal'
-         # libav support #
+#         # libav support #
          'lib32-libva'
          'ffmpeg4.4'
          'lib32-speex'
          'lib32-libtheora'
          'lib32-libvdpau'
-         # gstreamer support #
+#         # gstreamer support #
          'gst-plugins-bad-libs'
          'lib32-gst-plugins-base-libs'
          'libjpeg6-turbo'
@@ -40,8 +41,7 @@ optdepends=('kdialog: KDE splash dialog support'
             'vulkan-driver: driver to be used by dxvk'
             'winetricks: protonfixes backend - highly recommended'
             'wine: support for 32bit prefixes'
-            'xboxdrv: gamepad driver service'
-            'lib32-libusb: wine usb support')
+            'xboxdrv: gamepad driver service')
 
 ## makepkg options
 options=('!strip')
@@ -64,12 +64,11 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
         "supplementary.tar.zst")
-sha512sums=('69e5ea189c042ee7296bbc2b364000f6b3afbf17e114c1726e03cb39530622e154585128a5341484c90de9edcd201ac4422652853bd3f528a8c4a9d94c2d7ccf'
-            'b159d14b04373fe0a643a07386e0c7fbc14471f68cdf37aacdc1deb115d332ff888f53b9881b8c01934a6820583cf0b173c4fdea614ebe3cc30267fe427fc6bf')
+sha512sums=('bec8eca24029c4e56c7fe3a77a8f08be172f54c377d1a92cce2b8be973e7406801eb79995a173a49b3a350229f45c8e90d2c7eaf13440287905b6066f9a51a4f'
+            'a484c4cd2003057cf0cbbd32ca5d0106e97c75434e7bef34b35be8239ad98a482358852e41e85abedf5b24ac4d0375c8fffc7deee81a9b08c7799a398f23773b')
 
 build() {
 ## patches
-install --mode=0755 ${srcdir}/patches/tracked_files ${_srcdir}/proton_ge_tracked_files
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
 sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' ${_srcdir}/compatibilitytool.vdf
 ## remove artifacts

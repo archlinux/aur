@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = GE_Proton7_4
+	pkgver = GE_Proton7_5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -14,6 +14,7 @@ pkgbase = proton-ge-custom-bin
 	license = custom
 	depends = python
 	depends = vulkan-icd-loader
+	depends = lib32-libusb
 	depends = lib32-openal
 	depends = lib32-libva
 	depends = ffmpeg4.4
@@ -36,16 +37,14 @@ pkgbase = proton-ge-custom-bin
 	optdepends = winetricks: protonfixes backend - highly recommended
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
-	optdepends = lib32-libusb: wine usb support
 	provides = proton
-	provides = proton-ge-custom=GE.Proton7_4
-	conflicts = proton-ge-custom-legacy-bin
+	provides = proton-ge-custom=GE.Proton7_5
 	conflicts = proton-ge-custom
 	options = !strip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
-	source = GE-Proton7-4_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-4/GE-Proton7-4.tar.gz
+	source = GE-Proton7-5_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-5/GE-Proton7-5.tar.gz
 	source = supplementary.tar.zst
-	sha512sums = 69e5ea189c042ee7296bbc2b364000f6b3afbf17e114c1726e03cb39530622e154585128a5341484c90de9edcd201ac4422652853bd3f528a8c4a9d94c2d7ccf
-	sha512sums = b159d14b04373fe0a643a07386e0c7fbc14471f68cdf37aacdc1deb115d332ff888f53b9881b8c01934a6820583cf0b173c4fdea614ebe3cc30267fe427fc6bf
+	sha512sums = bec8eca24029c4e56c7fe3a77a8f08be172f54c377d1a92cce2b8be973e7406801eb79995a173a49b3a350229f45c8e90d2c7eaf13440287905b6066f9a51a4f
+	sha512sums = a484c4cd2003057cf0cbbd32ca5d0106e97c75434e7bef34b35be8239ad98a482358852e41e85abedf5b24ac4d0375c8fffc7deee81a9b08c7799a398f23773b
 
 pkgname = proton-ge-custom-bin

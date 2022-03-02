@@ -1,3 +1,30 @@
+## GE-Proton7-5 Released
+
+### WINE:
+Added NVCUDA patches from staging (required to allow physx to work again -- yay)
+Added missing mouse rawinput patch from staging that allows true rawinput values rather than transformed values (this restores the same rawinput functionality of the previous proton-ge staging builds)
+Added upstream powrprof patches for FFVII and SpecialK
+Removed no longer needed customized mfplat reverts/patches -- upstream proton's work for CoD Blops III now
+
+### Protonfixes:
+
+Add protonfix for Project MIKHAIL: A Muv-Luv War Story
+Add protonfix for MotorGP
+Add protonfix for Exo One
+Remove no longer needed protonfix for Apex Legends
+
+### FFmpeg:
+
+Added missing h264 and AAC decoders (fixes video decoding when shadercache is disabled in some games, such as BL3 Markus intro) (Thanks mmbossoni)
+
+### DXVK:
+
+updated dxvk to git
+
+### VKD3D:
+
+updated vkd3d-proton to git
+
 ## GE-Proton7-4 Released
 Another hotfix build:
 
