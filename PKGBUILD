@@ -1,7 +1,7 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsq
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://github.com/multiprocessio/dsq"
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
-checkdepends=('jq')
+checkdepends=('python' 'jq')
 options=('!lto')
-_commit='a38803cd3232e89e7f631ad2503f7a4993f79924'
+_commit='c8ea2333dea01e79983acf70d0f13a139dc3b838'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -41,14 +41,15 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags ${LDFLAGS}" \
+    -ldflags "-linkmode external -extldflags ${LDFLAGS} \
+    -X main.Version=$pkgver" \
     .
 }
 
 check() {
   cd "$pkgname"
 
-  ./scripts/test.sh
+  ./scripts/test.py
 }
 
 package() {
