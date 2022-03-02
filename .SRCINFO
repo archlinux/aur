@@ -1,7 +1,7 @@
 pkgbase = graphblas
 	pkgdesc = A full implementation of the GraphBLAS standard (graphblas.org)
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://faculty.cse.tamu.edu/davis/GraphBLAS.html
 	arch = any
 	license = APACHE
