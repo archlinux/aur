@@ -6,7 +6,7 @@ url="https://github.com/you-win/openseeface-gd"
 license=('MIT')
 
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 
 depends=(
   'python3'
@@ -19,7 +19,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.zip::https://github.com/you-win/openseeface-gd/releases/download/${pkgver}/openseeface-gd_${pkgver}_linux.zip")
-sha256sums=('d98668164a0c12aa534500200250ba5f9adebe1d1674e2be896dcda6c9c28970')
+sha256sums=('31932f233a496054a3305033406e6f3fa2b14dc54e0d2fda3895349980714735')
 
 package() {
   mkdir -p $pkgdir/usr/{share/openseeface-gd,share/applications,bin}
