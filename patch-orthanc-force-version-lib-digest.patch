@@ -1,0 +1,12 @@
+--- b/OrthancWebViewer-2.8/Resources/Orthanc/CMake/DownloadOrthancFramework.cmake 2022-02-22 08:33:59.000000000 +0100
++++ a/OrthancWebViewer-2.8/Resources/Orthanc/CMake/DownloadOrthancFramework.cmake 2022-03-02 11:56:46.279043636 +0100
+@@ -142,6 +142,9 @@
+         set(ORTHANC_FRAMEWORK_MD5 "4b5d05683d747c29b2860ad79d11e62e")
+       elseif (ORTHANC_FRAMEWORK_VERSION STREQUAL "1.9.7")
+         set(ORTHANC_FRAMEWORK_MD5 "c912bbb860d640d3ae3003b5c9698205")
++      elseif (ORTHANC_FRAMEWORK_VERSION STREQUAL "1.10.0")
++        set(ORTHANC_FRAMEWORK_MD5 "8610c82d9153f22e929f2110f8f60279")
++
+
+       # Below this point are development snapshots that were used to
+       # release some plugin, before an official release of the Orthanc
