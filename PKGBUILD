@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-teb-local-planner
 pkgver=0.9.1
 pkgdesc="A plugin for the ROS base_local_planner of the 2D navigation stack."
 url='http://wiki.ros.org/teb_local_planner'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

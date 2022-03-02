@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-teb-local-planner
 	pkgdesc = A plugin for the ROS base_local_planner of the 2D navigation stack.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/teb_local_planner
 	arch = any
 	license = BSD
@@ -51,4 +51,3 @@ pkgbase = ros-noetic-teb-local-planner
 	sha256sums = 66d5084fb68aaa15befd6f4be6c3133082583d4e7f13e1c28b37d2f87d0c6280
 
 pkgname = ros-noetic-teb-local-planner
-
