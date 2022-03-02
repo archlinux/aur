@@ -1,11 +1,12 @@
 # Maintainer: zzjzxq33 <wojiushixxx at 126 dot com>
+# Co-Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
 pkgver=20220213
-pkgrel=1
+pkgrel=2
 pkgdesc="A static blog generator built with electron"
-arch=("x86_64")
+arch=('any')
 url="https://github.com/baiyang-lzy/bbg"
-license=('GPL')
+license=('Unlicense')
 depends=('gtk3' 'libxcb' 'electron')
 conflicts=('bbg-git')
 source=(
@@ -22,10 +23,10 @@ sha256sums=(
 )
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib/${pkgname}/
 	cd ${srcdir}/
-	install -Dm 644 app.asar ${pkgdir}/usr/lib/${pkgname}/app.asar
-	install -Dm 775 ${srcdir}/bbg ${pkgdir}/usr/bin/${pkgname}
-	install -Dm 644 ${srcdir}/bbg.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
-	install -Dm 644 ${srcdir}/icon.png ${pkgdir}/usr/share/icons/${pkgname}.png
+	install -dm755 ${pkgdir}/usr/lib/${pkgname}
+	install -Dm644 app.asar     ${pkgdir}/usr/lib/${pkgname}/app.asar
+	install -Dm755 bbg          ${pkgdir}/usr/bin/${pkgname}
+	install -Dm644 bbg.desktop  ${pkgdir}/usr/share/applications/${pkgname}.desktop
+	install -Dm644 icon.png     ${pkgdir}/usr/share/icons/${pkgname}.png
 }
