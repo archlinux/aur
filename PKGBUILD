@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch
-pkgver=9.0.1
+pkgver=9.2
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f2d91f78b3414cfdd2b5f1c0c9ccb8786ef039b35f928fcd83d4e6f88f53b32')
+sha256sums=('c31fc489614ed771ec81f795b6c3c0b5a982206a05b46f3539d4ccd7ab1b48f8')
 
 package() {
     cd "$srcdir/$pkgname-${pkgver}"
