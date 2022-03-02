@@ -1,6 +1,6 @@
 pkgbase = mumble-git
 	pkgdesc = An Open Source, low-latency, high quality voice chat software (git version)
-	pkgver = 1.4.0.development.snapshot.006.r446.g3b0fa8f8b
+	pkgver = 1.4.0.development.snapshot.006.r549.g7b55ed7ef
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mumble.info
@@ -17,6 +17,7 @@ pkgbase = mumble-git
 	makedepends = libpulse
 	makedepends = libsndfile
 	makedepends = mesa
+	makedepends = nlohmann-json
 	makedepends = pipewire
 	makedepends = protobuf
 	makedepends = python

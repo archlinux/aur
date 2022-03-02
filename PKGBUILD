@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r446.g3b0fa8f8b
+pkgver=1.4.0.development.snapshot.006.r549.g7b55ed7ef
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -18,8 +18,8 @@ depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11'
          'libxi' 'openssl' 'opus' 'poco' 'rnnoise' 'qt5-base' 'qt5-svg'
          'speex' 'xdg-utils')
 makedepends=('alsa-lib' 'avahi' 'boost' 'cmake' 'git' 'jack' 'lib32-gcc-libs'
-             'libpulse' 'libsndfile' 'mesa' 'pipewire' 'protobuf' 'python'
-             'qt5-tools' 'speech-dispatcher')
+             'libpulse' 'libsndfile' 'mesa' 'nlohmann-json' 'pipewire'
+             'protobuf' 'python' 'qt5-tools' 'speech-dispatcher')
 optdepends=('speech-dispatcher: Text-to-Speech support'
             'espeak-ng: Text-to-Speech support'
             'pipewire: PipeWire audio support')
@@ -57,6 +57,7 @@ build() {
     -Dclient:BOOL='ON' \
     -Dserver:BOOL='OFF' \
     -Dbundled-celt:BOOL='ON' \
+    -Dbundled-json:BOOL='OFF' \
     -Dbundled-opus:BOOL='OFF' \
     -Dbundled-rnnoise:BOOL='OFF' \
     -Dbundled-speex:BOOL='OFF' \
