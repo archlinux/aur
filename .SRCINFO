@@ -1,14 +1,14 @@
 pkgbase = python-plaster
 	pkgdesc = Loader interface for multiple config file formats
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/pylons/plaster
 	changelog = CHANGES.rst
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-pylons-sphinx-themes
