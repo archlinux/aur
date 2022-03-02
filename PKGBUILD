@@ -2,13 +2,13 @@
 
 pkgname=damo
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DAMON user-space tool"
 arch=('any')
 url='https://damonitor.github.io'
 license=('GPL2')
 depends=('python')
-makedepends=('python-build')
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('2dd22cb21dc3ee06374c957c45f80b3fee466e2655daf136961720337c47d4af')
 b2sums=('b80b3b03cbd08f7f1c117222af4b7d60d76db67003cd96c1ae83ac54c5d48df922ff01601cbd40980b741f231118aeefb9ba64cdbd2234c08f16c2d6afd838ca')

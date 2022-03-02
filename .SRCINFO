@@ -1,11 +1,11 @@
 pkgbase = damo
 	pkgdesc = DAMON user-space tool
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://damonitor.github.io
 	arch = any
 	license = GPL2
-	makedepends = python-build
+	makedepends = python-setuptools
 	depends = python
 	source = damo-1.2.2.tar.gz::https://github.com/awslabs/damo/archive/refs/tags/v1.2.2.tar.gz
 	sha256sums = 2dd22cb21dc3ee06374c957c45f80b3fee466e2655daf136961720337c47d4af
