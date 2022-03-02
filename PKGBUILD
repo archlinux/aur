@@ -3,7 +3,7 @@
 
 pkgname=yank-note-bin
 _pkgname=yank-note
-pkgver=3.24.0
+pkgver=3.25.0
 pkgrel=1
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('asar' 'yarn')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
-sha256sums=('bf91311b0396dac2fa59451d0700ef9b55c17f8f4c8559c81c3c2ffdce1f85a5'
+sha256sums=('a79997d78bd67100d163ea4b9b0e42f79c7d9ebb1c70afcff1c3c6b8bc63a9be'
             'ea47e7cea0b74bf9a0f96a853432a49ddfdba61017b68dcae47d1e4862327409')
 options=(!strip)
 prepare() {
