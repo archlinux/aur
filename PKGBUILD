@@ -3,9 +3,9 @@
 _base=meshplex
 pkgname=python-${_base}
 pkgdesc="Fast tools for simplex meshes"
-pkgver=0.17.0
+pkgver=0.17.2
 pkgrel=1
-arch=('any')
+arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
 depends=(python-meshio python-npx)
@@ -16,7 +16,7 @@ optdepends=('python-matplotlib: for Matplotlib rendering'
   'vtk: for create polygonal sphere'
 )
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('eb9beb17b50c22445a1daeaacbb53faebe7a240c931e6bd238116dc19e1f1766b0a21f2750e44f7da9537bf1fa110f90bbcf733792d330a46dde163830a0a153')
+sha512sums=('90c1a9ad7a138e2043f125a8aece4b15e46475d306d7e1a49050e9554e2113cc76fafc26a883da869f6ff702e3477ad7266a7e6d4de56076b7114b8288394fbd')
 
 build() {
   cd "${_base}-${pkgver}"
