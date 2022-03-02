@@ -7,7 +7,7 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=8.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -29,21 +29,6 @@ optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'open-iscsi: iSCSI support via iscsiadm')
 
 backup=(
-  'etc/conf.d/libvirtd'
-  'etc/conf.d/libvirt-guests'
-  'etc/conf.d/virtchd'
-  'etc/conf.d/virtinterfaced'
-  'etc/conf.d/virtlockd'
-  'etc/conf.d/virtlogd'
-  'etc/conf.d/virtlxcd'
-  'etc/conf.d/virtnetworkd'
-  'etc/conf.d/virtnodedevd'
-  'etc/conf.d/virtnwfilterd'
-  'etc/conf.d/virtproxyd'
-  'etc/conf.d/virtqemud'
-  'etc/conf.d/virtsecretd'
-  'etc/conf.d/virtstoraged'
-  'etc/conf.d/virtvboxd'
   'etc/libvirt/libvirt-admin.conf'
   'etc/libvirt/libvirt.conf'
   'etc/libvirt/libvirtd.conf'
@@ -118,8 +103,8 @@ build() {
   arch-meson build \
     --libexecdir=lib/libvirt \
     -Drunstatedir=/run \
-    -Dqemu_user=kvm \
-    -Dqemu_group=kvm \
+    -Dqemu_user=libvirt-qemu \
+    -Dqemu_group=libvirt-qemu \
     -Dnetcf=disabled \
     -Dopenwsman=disabled \
     -Dapparmor=disabled \
@@ -155,8 +140,10 @@ package_libvirt() {
   DESTDIR="$pkgdir" ninja -C build install
 
   mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
-  echo "g libvirt - -" > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
-  echo "z /var/lib/libvirt/qemu 0751" > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
+  echo 'g libvirt - -' > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'u libvirt-qemu /var/lib/libvirt "Libvirt QEMU user"' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'm libvirt-qemu kvm' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+  echo 'z /var/lib/libvirt/qemu 0751' > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
 
   chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
   chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
