@@ -14,7 +14,7 @@
 
 pkgname=discord-canary-electron-bin
 _pkgname=discord-canary
-pkgver=0.0.133
+pkgver=0.0.134
 pkgrel=1
 pkgdesc="Discord Canary (popular voice + video app) using the system provided electron for increased security and performance"
 arch=('x86_64')
@@ -22,7 +22,7 @@ provides=('discord-canary')
 conflicts=('discord-canary')
 url='https://canary.discordapp.com'
 license=('custom')
-depends=('electron' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
+depends=('electron15' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 makedepends=('asar')
 optdepends=('libpulse: Pulseaudio support'
             'xdg-utils: Open files'
@@ -33,7 +33,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'LICENSE.html::https://discordapp.com/terms'
         'OSS-LICENSES.html::https://discordapp.com/licenses')
 # Skip SHA256 of licenses, it fails always for some reason.
-sha256sums=('0aac162de74f8782825c440018cd2516503250b46d28b5480289ef3fdfe4a873'
+sha256sums=('1f225aea519c28c3ca59f7cefe99cd727f1f0d3263e8ee09f18e51036ddad643'
             'SKIP'
             'SKIP')
 
@@ -67,7 +67,7 @@ package() {
   
   # Create starter script for discord
   echo "#!/bin/sh" >> "$srcdir"/$_pkgname
-  echo "exec electron /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
+  echo "exec electron15 /usr/lib/$_pkgname/app.asar \$@" >> "$srcdir"/$_pkgname
   
   install -d "$pkgdir"/usr/{bin,share/{pixmaps,applications}}
   install -Dm 755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
