@@ -1,14 +1,16 @@
 pkgbase = python-inquirerpy
 	pkgdesc = Python port of Inquirer.js (A collection of common interactive command-line user interfaces)
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kazhala/InquirerPy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	depends = python-prompt_toolkit
 	source = https://files.pythonhosted.org/packages/source/I/InquirerPy/InquirerPy-0.3.1.tar.gz
 	sha256sums = 82995b728fa4cdac29bc6118d9da02e2f7f61f7b93ab430ca8ff40397ed8290b
 
 pkgname = python-inquirerpy
 	depends = python
+	depends = python-prompt_toolkit
