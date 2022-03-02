@@ -3,7 +3,7 @@
 
 pkgname=python-locust
 _name=${pkgname#python-}
-pkgver=2.5.0
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="Developer friendly load testing framework"
 arch=('any')
@@ -18,14 +18,21 @@ depends=(
 	'python-pyzmq'
 	'python-geventhttpclient'
 	'python-configargparse'
+	'python-psutil'
 	'python-flask-basicauth'
 	'python-flask-cors'
 	'python-roundrobin'
 	'python-typing_extensions'
 )
-makedepends=('python-setuptools')
+makedepends=(
+	'python-cryptography'
+	'python-mock'
+	'python-pyquery'
+	'python-setuptools'
+	'python-setuptools-scm'
+)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('975e29ad9019db3c5d29eeea7d087c5fd2b643fdbbf1161d445da9fc4308a620')
+sha256sums=('9c5110bdaf2d6ab72d68091e6685abf20bd138df711fde8dc88d81b8cb012b78')
 provides=("$pkgname")
 conflicts=("$pkgname")
 
