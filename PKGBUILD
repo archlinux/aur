@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=stc-isp-wine
-pkgver=v6.88L
+pkgver=v6.88O
 pkgrel=1
 pkgdesc="Wine STC-ISP 下载编程烧录软件"
 arch=('any')
@@ -10,7 +10,7 @@ license=('unknow')
 provides=('STC-ISP')
 conflicts=( ${pkgname%-wine} 'stc-isp-bin')
 replaces=('stc-isp-bin')
-depends=('wine' 'wqy-microhei' 'winetricks')
+depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko')
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
 makedepends=('unarchiver')
 backup=()
@@ -18,7 +18,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("${pkgname%-wine}-${pkgver}.zip::${url}/STCISP/${pkgname%-wine}-15xx-${pkgver}.zip"
         "${pkgname}.install")
-sha256sums=('741c7375c173c187a4172156dc2d6eb1f7b9196b0757bad6a0e5fd0da6a2ba50'
+sha256sums=('ce13269af0660ca4fc697c80bdc906c087538ae381bff09f52d922ae2dd0d148'
             'b2a93211b74f6e23a9c4dd508c65bf374c0a03c11174092f6ccec3e9194e47a6')
 noextract=("${pkgname%-wine}-${pkgver}.zip")
 
