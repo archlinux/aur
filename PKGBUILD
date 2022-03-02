@@ -42,6 +42,7 @@ depends=('python-pillow'
          'libvorbis'
          'libappindicator-gtk3'
          'libopenmpt' # AUR
+         'libsamplerate'
          )
          
 optdepends=('noto-fonts-cjk: Matching font for CJK characters'

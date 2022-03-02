@@ -37,6 +37,7 @@ pkgbase = tauon-music-box
 	depends = libvorbis
 	depends = libappindicator-gtk3
 	depends = libopenmpt
+	depends = libsamplerate
 	optdepends = noto-fonts-cjk: Matching font for CJK characters
 	optdepends = p7zip: 7z archive extraction support
 	optdepends = unrar: RAR archive extraction support
