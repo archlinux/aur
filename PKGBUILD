@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgrel=1
-pkgver=6.2
+pkgver=6.2.r47
 _pkgbase=dwm
 pkgname=dwm-nu1ll1nux
 pkgdesc="Concise Build of Suckless DWM"
