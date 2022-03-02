@@ -1,0 +1,15 @@
+pkgbase = nerd-fonts-hasklig
+	pkgdesc = Patched font Hasklig (Hasklug) from nerd-fonts library
+	pkgver = 2.1.0
+	pkgrel = 0
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	makedepends = fontconfig
+	source = Hasklig_2.1.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hasklig.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.1.0/LICENSE
+	sha256sums = 73a7387e9569ab33bee5aebb62ef86762c2e77084799760e41f61250c107cb6f
+	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
+
+pkgname = nerd-fonts-hasklig
