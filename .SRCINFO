@@ -1,0 +1,12 @@
+pkgbase = sweet-dark-theme
+	pkgdesc = Dark colorful Gtk3.20+ theme
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/EliverLara/Sweet
+	arch = any
+	license = GPL3
+	options = !strip
+	source = Sweet-Dark.zip::https://github.com/EliverLara/Sweet/releases/download/v3.0/Sweet-Dark.zip
+	sha256sums = SKIP
+
+pkgname = sweet-dark-theme
