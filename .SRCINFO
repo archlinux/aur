@@ -1,19 +1,21 @@
 pkgbase = python-imread
-	pkgdesc = mahotas-imread: A library to read & write to numpy arrays
-	pkgver = 0.7.1
+	pkgdesc = Read images to numpy arrays
+	pkgver = 0.7.3
 	pkgrel = 1
-	url = http://luispedro.org/software/imread/
+	url = https://github.com/luispedro/imread
 	arch = any
 	license = MIT
+	checkdepends = python-nose
 	makedepends = python-setuptools
-	depends = python
-	depends = libpng
-	depends = libtiff
-	depends = libwebp
+	makedepends = libpng
+	makedepends = libjpeg-turbo
+	makedepends = libtiff
+	makedepends = libwebp
+	makedepends = xcftools
+	makedepends = git
 	depends = python-numpy
-	provides = python-imread
-	source = https://pypi.python.org/packages/4e/7e/52603151a6746a229f80b3d22a08e468dce9bcf723728a3b99d050372e86/imread-0.7.1.tar.gz
-	sha256sums = c343b546ab54acdb50dbe69d6793d64ead3ba6d585022f5a7ad4687b7f3db79b
+	source = git+https://github.com/luispedro/imread.git?signed#tag=v0.7.3
+	validpgpkeys = 6FB8B07A620CC7A7FB5B2AB4110D6C98E760BEF2
+	sha512sums = SKIP
 
 pkgname = python-imread
-
