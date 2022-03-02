@@ -4,7 +4,7 @@
 
 pkgname=python-google-cloud-speech
 _name=google-cloud-speech
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc='A google cloud speech api for python to convert audio to text.'
 url='https://github.com/googleapis/python-speech'
@@ -23,18 +23,18 @@ makedepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-b2sums=('38a8372a4a8531c3c5f34fc5073e85b744dec5062459359a6a1f367f359b6472168a204510af4c41d35afbe3aa38aafc57c0d06428520d0997951f5f9fc881ad')
+b2sums=('4afc9ac685590c6ce48b440d702b13393b4e0112f10fbb3d2758b2e181d35a1bf983c83509391170a0697756adb7713807e66c23b72469d638400ee5a4aca1cf')
 
 build() {
   cd "$_name-$pkgver" || exit
-
-  export PYTHONHASHSEED=0
-  python setup.py build
+  python -m build --wheel --no-isolation
+  # export PYTHONHASHSEED=0
+  # python setup.py build
 }
 
 package() {
   cd "$_name-$pkgver" || exit
-
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  # python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
