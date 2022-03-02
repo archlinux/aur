@@ -1,0 +1,16 @@
+pkgbase = python-pygi
+	pkgdesc = Command line interface using gitignore.io API
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/onlined/pygi
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-levenshtein
+	source = python-pygi-1.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pygi/pygi-1.0.3.tar.gz
+	sha256sums = a2a5b5766b219b4643c316417ec8c3a361495e7f745555c9793c45eaad92d1b8
+
+pkgname = python-pygi
