@@ -1,6 +1,6 @@
 pkgbase = mpvpaper
 	pkgdesc = video wallpaper program for wlroots based wayland compositors
-	pkgver = 1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/GhostNaN/mpvpaper
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = mpvpaper
 	depends = mpv
 	depends = wlroots
 	optdepends = socat: control via sockets
-	source = mpvpaper-1.2.tar.gz::https://github.com/GhostNaN/mpvpaper/archive/1.2.tar.gz
-	md5sums = 83643f0354e4e753cc72fb94350d4217
+	source = mpvpaper-1.2.1.tar.gz::https://github.com/GhostNaN/mpvpaper/archive/1.2.1.tar.gz
+	b2sums = 6384e7b1b816a051b657d68cbc47792a20a6d016a6c4feefdf5bf8ddd87a9658959d426f3dcf4f7c7b396d62b5dccc1df47a8fa07a61a83c1eb0a534b84325cb
 
 pkgname = mpvpaper
