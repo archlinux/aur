@@ -1,21 +1,21 @@
 pkgbase = sonata
-	pkgdesc = Elegant GTK+ music client for MPD
-	pkgver = 1.6.2.1
-	pkgrel = 14
-	url = https://sourceforge.net/projects/sonata.berlios
+	pkgdesc = Elegant GTK+3 music client for MPD
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/multani/sonata
+	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = pygtk
-	depends = python2-mpd
-	optdepends = python2-tagpy: Metadata editing support
-	optdepends = python2-dbus: Various extra functionality (e.g. multimedia keys support)
-	provides = python2-mmkeys
-	source = https://downloads.sourceforge.net/sourceforge/sonata.berlios/sonata-1.6.2.1.tar.gz
-	source = mpd-0.18.patch
-	source = info.py.patch
-	md5sums = 0b912325e7175abad3bf6c0edc071e05
-	md5sums = 9bc61f5015f415dc16ceb84a95c99f5e
-	md5sums = 595fcf7615035829b264afecb5a1beeb
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = python-mpd2
+	optdepends = python-tagpy: metadata editing support
+	optdepends = python-dbus: multimedia keys support
+	source = sonata-1.7.0.tar.gz::https://github.com/multani/sonata/archive/refs/tags/v1.7.0.tar.gz
+	sha256sums = 564a226f8d57b286836742d234aa9fa8bc47b897a4f1d61f99a544777c5aab1e
 
 pkgname = sonata
-

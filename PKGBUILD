@@ -1,33 +1,29 @@
-# Maintainer: Angel Velasquez <angvp@archlinux.org>
-# Maintainer: Felix Yan <felixonmars@gmail.com>
-# Contributor: William Rea <sillywilly@gmail.com>
+# Maintainer:  twa022 <twa022 at gmail dot com>
+# Contributor: Florian Dejonckheere <florian at floriandejonckheere dot be>
+# Contributor: Anton Larionov <diffident dot cat at gmail dot com>
+# Contributor: Diego <cdprincipe@at@gmail@dot@com>
+# Contributor: Scott Horowitz <stonecrest[at]gmail[dot]com>
 
 pkgname=sonata
-pkgver=1.6.2.1
-pkgrel=14
-pkgdesc="Elegant GTK+ music client for MPD"
-arch=('x86_64')
-url="https://sourceforge.net/projects/sonata.berlios"
+pkgver=1.7.0
+pkgrel=1
+pkgdesc='Elegant GTK+3 music client for MPD'
+url='https://github.com/multani/sonata'
 license=('GPL3')
-depends=('pygtk' 'python2-mpd')
-optdepends=('python2-tagpy: Metadata editing support'
-            'python2-dbus: Various extra functionality (e.g. multimedia keys support)')
-provides=('python2-mmkeys')
-source=("https://downloads.sourceforge.net/sourceforge/${pkgname}.berlios/${pkgname}-$pkgver.tar.gz"
-        mpd-0.18.patch
-        info.py.patch)
-md5sums=('0b912325e7175abad3bf6c0edc071e05'
-         '9bc61f5015f415dc16ceb84a95c99f5e'
-         '595fcf7615035829b264afecb5a1beeb')
+arch=('i686' 'x86_64')
+depends=('python' 'python-gobject' 'gtk3' 'python-mpd2')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+optdepends=('python-tagpy: metadata editing support'
+            'python-dbus: multimedia keys support')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/multani/sonata/archive/refs/tags/v${pkgver}.tar.gz)
+sha256sums=('564a226f8d57b286836742d234aa9fa8bc47b897a4f1d61f99a544777c5aab1e')
 
 build() {
-  cd ${pkgname}-$pkgver
-  patch -Np1 -i "$srcdir/mpd-0.18.patch"
-  patch -Np0 -i "$srcdir/info.py.patch"
-  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' sonata/breadcrumbs.py
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m build -wn
 }
 
 package() {
-  cd ${pkgname}-$pkgver
-  python2 setup.py install --prefix=/usr --optimize=1 --root="$pkgdir"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python -m installer -d "${pkgdir}" dist/*.whl
 }
