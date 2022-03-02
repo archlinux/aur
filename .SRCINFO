@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-ddynamic-reconfigure
 	pkgdesc = ROS - The ddynamic_reconfigure package.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pal-robotics/ddynamic_reconfigure
 	arch = any
 	license = BSD
@@ -16,4 +16,3 @@ pkgbase = ros-noetic-ddynamic-reconfigure
 	sha256sums = dd832cbadd4e45454aa3589daab2d2673b64ea376dcaeba9fe6eb4d5f6683317
 
 pkgname = ros-noetic-ddynamic-reconfigure
-
