@@ -23,4 +23,4 @@ pkgbase = dwm-nu1ll1nux
 	source = git+https://gitlab.com/qYp/dwm.git
 	md5sums = SKIP
 
-pkgname = dwm
+pkgname = dwm-nu1ll1nux
