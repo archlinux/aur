@@ -1,15 +1,15 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Python package author: Kevin McCarthy <me@kevinmccarthy.org>
 
 _pkgname=vcrpy
 _author=kevin1024
 pkgname=python-$_pkgname-git
-pkgver=2.7.r835.0cf11d4
-pkgrel=2
+pkgver=4.1.1.r1006.c79a06f
+pkgrel=1
 pkgdesc="VCR.py simplifies and speeds up tests that make HTTP requests."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
-license=('')
+license=('MIT')
 depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=("python-$_pkgname")
@@ -24,7 +24,7 @@ prepare() {
 
 pkgver() {
   cd "$_pkgname"
-  printf "%s.r%s.%s" "$(cat setup.py | grep -i version | grep -v '#' | cut -d '"' -f2 | head -n 1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(cat vcr/__init__.py | grep -i version | grep -v '#' | cut -d '"' -f2 | head -n 1)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

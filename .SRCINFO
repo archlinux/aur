@@ -1,9 +1,10 @@
 pkgbase = python-vcrpy-git
 	pkgdesc = VCR.py simplifies and speeds up tests that make HTTP requests.
-	pkgver = 2.7.r835.0cf11d4
-	pkgrel = 2
+	pkgver = 4.1.1.r1006.c79a06f
+	pkgrel = 1
 	url = https://github.com/kevin1024/vcrpy
 	arch = any
+	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
@@ -13,4 +14,3 @@ pkgbase = python-vcrpy-git
 	md5sums = SKIP
 
 pkgname = python-vcrpy-git
-
