@@ -5,16 +5,16 @@ readonly default_model_path
 
 args=""
 
-while getopts "hv0:1:i:o:m:g:j:f:" arg; do
+while getopts "hv0:1:i:o:m:g:j:x:u:f:" arg; do
     case $arg in
     h) args="$args -$arg" ;;
     v) args="$args -$arg" ;;
-    1) args="$args -$arg $OPTARG" ;;
     0) args="$args -$arg $OPTARG" ;;
+    1) args="$args -$arg $OPTARG" ;;
     i) args="$args -$arg $OPTARG" ;;
     o) args="$args -$arg $OPTARG" ;;
     m)
-        if ! [ -d $OPTARG ]; then
+        if ! [ -d "$OPTARG" ]; then
             args="$args -m $default_model_path$OPTARG"
         else
             args="$args -$arg $OPTARG"
@@ -22,8 +22,11 @@ while getopts "hv0:1:i:o:m:g:j:f:" arg; do
         ;;
     g) args="$args -$arg $OPTARG" ;;
     j) args="$args -$arg $OPTARG" ;;
+    x) args="$args -$arg $OPTARG" ;;
+    u) args="$args -$arg $OPTARG" ;;
     f) args="$args -$arg $OPTARG" ;;
+    *) exit ;;
     esac
 done
 
-/usr/share/rife-ncnn-vulkan/rife-ncnn-vulkan $args
+/usr/share/rife-ncnn-vulkan/rife-ncnn-vulkan "$args"
