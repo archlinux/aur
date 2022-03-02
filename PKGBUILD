@@ -1,9 +1,9 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 # Python package author: Ines Montani <ines@explosion.ai>
 pkgname=python-wasabi-git
 _origpkgname=wasabi
-pkgver=0.0.15.r96.4ff962b
-pkgrel=2
+pkgver=0.9.0.r224.4cb261c
+pkgrel=3
 pkgdesc="A lightweight console printing and formatting toolkit"
 arch=("x86_64")
 url="https://github.com/ines/wasabi"
