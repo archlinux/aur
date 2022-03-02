@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-mbf-msgs
 	pkgdesc = ROS - Provides action definition files for GetPath, ExePath, Recovery and MoveBase.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/mbf_msgs
 	arch = any
 	license = BSD
@@ -24,4 +24,3 @@ pkgbase = ros-noetic-mbf-msgs
 	sha256sums = a97ef5748d93f9916ec8aa5884123d3c3c51a4fcdf255ec1efb15eaa92c00558
 
 pkgname = ros-noetic-mbf-msgs
-

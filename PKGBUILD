@@ -1,11 +1,11 @@
-# Maintainer: DanManN <dnahimov@gmail.com>
+# Maintainer: DanielNak <daniel@tee.cat>
 
 pkgname=ros-noetic-mbf-msgs
 pkgver=0.3.4
 pkgdesc="ROS - Provides action definition files for GetPath, ExePath, Recovery and MoveBase."
 url='http://wiki.ros.org/mbf_msgs'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
