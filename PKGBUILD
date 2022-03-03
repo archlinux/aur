@@ -2,7 +2,7 @@
 # Co-Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=vulkan-caps-viewer-x11
 pkgver=3.20
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
 arch=('x86_64' 'aarch64')
@@ -26,10 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-*}"
-  qmake \
-    QMAKE_CFLAGS="$CFLAGS" \
-    QMAKE_CXXFLAGS="$CXXFLAGS" \
-    QMAKE_LFLAGS="$LDFLAGS" \
+  qmake-qt5 \
     PREFIX=/usr \
     DEFINES+=X11
   make
