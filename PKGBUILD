@@ -4,7 +4,7 @@
 pkgname=python-pooch
 _pkgname=pooch
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for fetching and caching data files"
 arch=('any')
 url="https://www.fatiando.org/pooch/latest/"
@@ -21,6 +21,6 @@ build() {
 
 package() {
   cd "$srcdir/${_pkgname}-${pkgver}"
-  python -m pip install --no-deps .
+  python -m pip install --no-deps --root=${pkgdir} --prefix=/usr .
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

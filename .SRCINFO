@@ -1,7 +1,7 @@
 pkgbase = python-pooch
 	pkgdesc = Python library for fetching and caching data files
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fatiando.org/pooch/latest/
 	arch = any
 	license = BSD 3-Clause
