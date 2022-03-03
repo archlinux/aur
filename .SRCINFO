@@ -1,7 +1,7 @@
 pkgbase = blacksun-amp-bin
 	pkgdesc = Audio Assault An Extremely Versatile Amp
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/products/blacksun
 	arch = x86_64
 	groups = pro-audio
