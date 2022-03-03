@@ -1,7 +1,6 @@
-pkg/**
-src/**
+/pkg/
+/src/
 **.pkg.tar
-**.tgz
+**.pkg.tar.zst
 **.tar.gz
-venv/*
-new_ver.txt
+**.zip
