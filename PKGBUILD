@@ -3,7 +3,7 @@
 
 pkgname=woodpecker-cli
 _pkgname=${pkgname/-cli/}
-pkgver=0.15.0_rc2
+pkgver=0.15.0
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A community fork of the Drone CI system. CLI tool."
@@ -15,7 +15,7 @@ depends=('glibc')
 source=(
   "$pkgname-$_pkgver.tar.gz::https://github.com/woodpecker-ci/$_pkgname/archive/v$_pkgver.tar.gz"
 )
-sha256sums=('d683dc41b5a5f6473dd266aca9017ba53ffa7d64c5ae8a541be03b6571dbf7dd')
+sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4')
 prepare() {
   cd "$_pkgname-$_pkgver"
 
