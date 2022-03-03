@@ -2,13 +2,14 @@
 
 pkgname=genode-toolchain-bin
 pkgver=21.05
-pkgrel=1
+pkgrel=2
 pkgdesc="GCC-based toolchain for the genode framework"
 arch=('x86_64')
 url="http://genode.org"
-license=('GPL2')
-depends=('ncurses' 'ncurses5-compat-libs')
+license=('GPL3')
+depends=('make' 'ncurses' 'ncurses5-compat-libs' 'tcl' 'expect')
 makedepends=('tar')
+optdepends=('byacc' 'autoconf' 'bison' 'flex' 'git' 'gperf' 'subversion' 'qemu' 'libxml2' 'libisoburn' 'e2tools' 'libisoburn' 'autogen')
 provides=('genode-toolchain')
 options=('!strip' 'staticlibs')
 
