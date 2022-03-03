@@ -1,11 +1,11 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=talosctl
-pkgver=0.14.2
-_commit=06ea409b5ef62975a03a53a358e17921dbd8a26e
+pkgver=0.14.3
+_commit=73f4efd7b53baac12709281552f4eed7b47bfc1e
 # https://github.com/talos-systems/talos/blob/master/Makefile#L16
-_pkgs='v0.10.0-alpha.0-24-g6019223'
-_extras='v0.8.0-alpha.0-2-g8f607fc'
+_pkgs='v0.9.0-6-gbfcc795'
+_extras='v0.7.0-2-gb4c9d21'
 pkgrel=1
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
