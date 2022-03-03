@@ -1,5 +1,66 @@
 # rollup changelog
 
+## 2.69.0
+
+_2022-03-02_
+
+### Features
+
+- Introduce new `output.generatedCode.symbols` to control the usage of Symbols in Rollup-generated code (#4378)
+- soft-deprecate `output.namespaceToStringTag` in favor of `output.generatedCode.symbols` (#4378)
+
+### Bug Fixes
+
+- Properly handle `./` and `../` as external dependencies (#4419)
+- Make generated "Module" namespace toStringTag non-enumerable for correct Object.assign/spread behaviour (#4378)
+- Add file name to error when top-level-await is used in disallowed formats (#4421)
+
+### Pull Requests
+
+- [#4378](https://github.com/rollup/rollup/pull/4378): Make namespace @@toStringTag "Module" non-enumerable (@dnalborczyk and @lukastaegert)
+- [#4413](https://github.com/rollup/rollup/pull/4413): refactor: some code and type fixes (@dnalborczyk)
+- [#4418](https://github.com/rollup/rollup/pull/4418): chore: bump deps (@dnalborczyk)
+- [#4419](https://github.com/rollup/rollup/pull/4419): Properly handle upper directories as external dependencies (@lukastaegert)
+- [#4421](https://github.com/rollup/rollup/pull/4421): Improve the error prompt and output the error file name (@caoxiemeihao)
+- [#4423](https://github.com/rollup/rollup/pull/4423): Update 999-big-list-of-options.md (@leoj3n)
+
+## 2.68.0
+
+_2022-02-22_
+
+### Features
+
+- provide information about cached import resolutions in `shouldTransformCachedModule` (#4414)
+- Add "types" field to Rollup's package exports (#4416)
+
+### Pull Requests
+
+- [#4410](https://github.com/rollup/rollup/pull/4410): refactor: use map for declarations and name suggestions (@dnalborczyk)
+- [#4411](https://github.com/rollup/rollup/pull/4411): refactor: use map for namespace reexports by name (@dnalborczyk)
+- [#4412](https://github.com/rollup/rollup/pull/4412): refactor: use includes where appropriate (@dnalborczyk)
+- [#4414](https://github.com/rollup/rollup/pull/4414): Add resolved sources to shouldTransformCachedModule (@lukastaegert)
+- [#4416](https://github.com/rollup/rollup/pull/4416): Add Typescript 4.5 nodenext node12 module resolution support (@frank-dspeed)
+
+## 2.67.3
+
+_2022-02-18_
+
+### Bug Fixes
+
+- Do not swallow other errors when unfinished hook actions are detected (#4409)
+- Add additional information to output when there are unfinished hook actions (#4409)
+
+### Pull Requests
+
+- [#4399](https://github.com/rollup/rollup/pull/4399): docs: remove const (@TrickyPi)
+- [#4401](https://github.com/rollup/rollup/pull/4401): Improve test stability by getting independent of module id ordering in more places (@lukastaegert)
+- [#4403](https://github.com/rollup/rollup/pull/4403): fix: remove unnecessary property descriptor spread (@dnalborczyk)
+- [#4404](https://github.com/rollup/rollup/pull/4404): refactor: use map for import descriptions + re-export descriptions (@dnalborczyk)
+- [#4405](https://github.com/rollup/rollup/pull/4405): refactor: module exports to map (@dnalborczyk)
+- [#4406](https://github.com/rollup/rollup/pull/4406): Fix a typo in 'Direct plugin communication' code example (@younesmln)
+- [#4407](https://github.com/rollup/rollup/pull/4407): Document how resolveId is cached (@lukastaegert)
+- [#4409](https://github.com/rollup/rollup/pull/4409): Print ids for unfinished moduleParsed and shouldTransformCachedModule hooks (@lukastaegert)
+
 ## 2.67.2
 
 _2022-02-10_
