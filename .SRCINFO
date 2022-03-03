@@ -1,6 +1,6 @@
 pkgbase = popcorntime
 	pkgdesc = Stream movies from torrents. Skip the downloads. Launch, click, watch.
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = https://popcorntime.app/
 	arch = i686
@@ -15,11 +15,11 @@ pkgbase = popcorntime
 	depends = ttf-font
 	optdepends = net-tools: vpn.ht client
 	options = !strip
-	source = popcorn-desktop::git+https://github.com/popcorn-official/popcorn-desktop/#tag=v0.4.6
+	source = popcorn-desktop::git+https://github.com/popcorn-official/popcorn-desktop/#tag=v0.4.7
 	source = popcorntime.desktop
 	source = gulp-fixes.patch
 	sha256sums = SKIP
 	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
-	sha256sums = b805f400b476f181028d88569fd4e2c22daa7888e40655470e34f1143ee97414
+	sha256sums = fb550e8b891209bb98a32e18c9e84d8ad1c5603d734ba009d8ebbb53f92ff0a7
 
 pkgname = popcorntime

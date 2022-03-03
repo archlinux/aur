@@ -8,7 +8,7 @@
 # Contributor: Ricardo Band <me [at] xengi [dot] de>
 
 pkgname=popcorntime
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=(i686 x86_64)
@@ -44,7 +44,7 @@ source=(
 )
 sha256sums=('SKIP'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334'
-            'b805f400b476f181028d88569fd4e2c22daa7888e40655470e34f1143ee97414')
+            'fb550e8b891209bb98a32e18c9e84d8ad1c5603d734ba009d8ebbb53f92ff0a7')
 
 # Building the package
 prepare() {

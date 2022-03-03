@@ -1,5 +1,5 @@
 diff --git a/gulpfile.js b/gulpfile.js
-index 9238d763..80eb0c90 100644
+index b19f532c..9a712c90 100644
 --- a/gulpfile.js
 +++ b/gulpfile.js
 @@ -69,7 +69,7 @@ const parsePlatforms = () => {
@@ -11,14 +11,3 @@ index 9238d763..80eb0c90 100644
        {maxBuffer: 1024 * 500},
        (error, stdout, stderr) => {
          // build array
-@@ -142,8 +142,8 @@ const nw = new nwBuilder({
-   macIcns: './src/app/images/butter.icns',
-   version: nwVersion,
-   flavor: nwFlavor,
--  manifestUrl: 'http://popcorn-ru.tk/version.json',
--  downloadUrl: 'http://popcorn-ru.tk/nw/',
-+  manifestUrl: 'https://popcorn-ru.tk/version.json',
-+  downloadUrl: 'https://popcorn-ru.tk/nw/',
-   platforms: parsePlatforms()
- }).on('log', console.log);
- 
