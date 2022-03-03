@@ -7,7 +7,7 @@ _pkgname=LAGraph
 __pkgname=lagraph
 pkgname=$__pkgname-git
 pkgver=28Feb2022.r8.gf8e41e801
-pkgrel=2
+pkgrel=3
 pkgdesc="A library plus a test harness for collecting algorithms that use the GraphBLAS."
 arch=('any')
 url="https://github.com/$_author/$_pkgname"
@@ -30,7 +30,8 @@ pkgver() {
 build() {
 	cd "$srcdir/$_pkgname"
 	(( NJOB=$(nproc)-1 )) || NJOB=1
-	make library JOBS=$NJOB CMAKE_OPTIONS=-DCMAKE_INSTALL_PREFIX=/usr
+	cmake -DCMAKE_INSTALL_PREFIX=/usr .
+	make JOBS=$NJOB
 }
 
 package(){
