@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2
-pkgver=2.11.0
+pkgver=2.11.1
 pkgrel=1
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
@@ -20,17 +20,13 @@ source=(https://download-mirror.savannah.gnu.org/releases/freetype/freetype-$pkg
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
-        0004-Enable-long-PCF-family-names.patch
-        0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
-        0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch)
-sha256sums=('8bee39bd3968c4804b70614a0a3ad597299ad0e824bc8aad5ce8aaf48067bde7'
+        0004-Enable-long-PCF-family-names.patch)
+sha256sums=('3333ae7cfda88429c97a7ae63b7d01ab398076c3b67182e960e5684050f2c5c8'
             'SKIP'
-            'e606bdba5c0ee698902886140e4643551ffc8327b1b7d2b0c9129d1f93b1f36c'
-            '17ab1609cdbcaba3c5975f5cf1ffd078e067d560f906d5507390d41997e6c468'
-            '561d2f2503d180b796f868470612610f6d7fcb34efa0620ecab38fd39002e27a'
-            '9c068a984e7b9a27ff9e709839d522b66815ac4e8c7a5bd4ea0224335f7f2ef6'
-            '2b13b8cc9acc3e56be6b0f8102d648864227bf93637bc956d5052c77c8509782'
-            '21a2d243bc6b44d1cdb88ef29af2bd5ceda8d0faaf928bdc2c078a474ddc61f1')
+            '663310ef70f7830de462fb8964ee4fa1d49ad4aeb1a6eae5857707e161039a53'
+            '17cd4bd0c650b9bdd3bc30581ad6457524db14ec34b56f98e243357c3ab4bc05'
+            '0607ac8176d4f08bcfb78d07bdc2c66fcbe7dfde6c82a0e98d6e625597442fd0'
+            '6e5192dc08119e32992eee5a15595e131adcc9d2411066ca8691bfe2af14d97e')
 validpgpkeys=(58E0C111E39F5408C5D3EC76C1A60EACE707FDA5) # Werner Lemberg <wl@gnu.org>
 
 if [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]]; then
@@ -54,9 +50,6 @@ prepare() {
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
-  # https://gitlab.freedesktop.org/freetype/freetype/-/issues/1076
-  patch -Np1 -i ../0006-Return_FT_Err_Ok_while_trying_to_render_bitmap.patch
-  patch -Np1 -i ../0007-Restore_quiet_no-op_rendering_of_bitmap_glyphs.patch
 }
 
 build() {
