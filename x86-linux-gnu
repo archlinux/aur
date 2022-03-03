@@ -3,9 +3,12 @@ c = '/usr/bin/gcc'
 cpp = '/usr/bin/g++'
 ar = '/usr/bin/gcc-ar'
 strip = '/usr/bin/strip'
-pkgconfig = './pkgconf32'
+pkgconfig = '/usr/bin/pkgconf'
 
 [properties]
+pkg_config_libdir = '/usr/lib32/pkgconfig'
+
+[built-in options]
 c_args = ['-m32']
 c_link_args = ['-m32']
 cpp_args = ['-m32']
