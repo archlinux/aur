@@ -3,7 +3,7 @@
 
 pkgname=little-brother
 pkgver=0.4.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Parental controls for children"
 arch=('any')
 url='https://github.com/marcus67/little_brother'
@@ -25,7 +25,9 @@ depends=(
 	'python-selenium'
 	'python-urllib3'
 	'python-prometheus_client'
-	'python-humanize')
+	'python-humanize'
+	'python-base-app'
+	'python-some-flask-helpers')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGES.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
