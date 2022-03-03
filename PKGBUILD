@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-git
-pkgver=2.3.r7.g66b7cb5
-pkgrel=2
+pkgver=2.3.r25.ge24d8df
+pkgrel=1
 pkgdesc="An audio effect processor for PipeWire clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -46,7 +46,7 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake ..
+  qmake-qt5 ..
   make
   popd
 }
