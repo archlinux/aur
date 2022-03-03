@@ -1,15 +1,15 @@
 pkgbase = i3b
 	pkgdesc = Window manager scripts and configs
-	pkgver = 0.r18.g1883d85
+	pkgver = 0.r36.gc567c95
 	pkgrel = 1
 	url = https://github.com/DMBuce/i3b
 	arch = any
-	groups = perl
-	groups = xwininfo
-	groups = xdotool
-	groups = xprop
 	license = GPL3
 	makedepends = git
+	depends = perl
+	depends = xorg-xrandr
+	depends = xdotool
+	depends = xorg-xprop
 	source = i3b::git+https://github.com/DMBuce/i3b.git
 	md5sums = SKIP
 

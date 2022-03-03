@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=i3b
-pkgver=0.r18.g1883d85
+pkgver=0.r36.gc567c95
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -13,13 +13,12 @@ pkgdesc="Window manager scripts and configs"
 arch=(any)
 url="https://github.com/DMBuce/i3b"
 license=('GPL3')
-groups=(
-  perl
-  xwininfo
-  xdotool
-  xprop
-)
+groups=()
 depends=(
+  perl
+  xorg-xrandr
+  xdotool
+  xorg-xprop
 )
 makedepends=('git')
 provides=()
