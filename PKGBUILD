@@ -1,4 +1,4 @@
-# Maintainer: madmurphy <madmurphy333 AT gmail DOT com>
+# Maintainer: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: redfish <redfish AT galactica DOT pw>
 # Contributor: kertase <kertase AT gmail DOT com>
 # Contributor: Sergej Pupykin <pupykin DOT s+arch AT gmail.com>
@@ -35,6 +35,7 @@ optdepends=('bluez: for bluetooth transport'
             'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${pkgname}.conf")
 source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
+        "get_version.sh"
         "${pkgname}-system.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
@@ -45,6 +46,7 @@ install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
 sha256sums=('d32da6f13ff1cd8670525719ea0f79e9f76d2de7f6069860e0a77fc69a360068'
             'SKIP'
+            '8e8ee2d80c42aeabbd515e5b7bc9f0d199a7e6f46ef8a97e1e23313b44f74e4c'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
@@ -58,6 +60,9 @@ prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	export GNUNET_PREFIX='/usr/lib'
+	cp "${srcdir}/get_version.sh" "${srcdir}/${pkgname}-${pkgver}/contrib/get_version.sh"
+	chmod +x "${srcdir}/${pkgname}-${pkgver}/contrib/get_version.sh"
+	autoreconf -i
 
 }
 
