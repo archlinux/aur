@@ -1,6 +1,6 @@
 pkgbase = freeorion-git
 	pkgdesc = turn-based space empire and galactic conquest (4X) computer game
-	pkgver = 0.4.10.with.FreeOrionSDK.v12.1129.g905545428
+	pkgver = 0.4.10.with.FreeOrionSDK.v12.1255.g6a9b32fec
 	pkgrel = 1
 	url = http://www.freeorion.org/
 	arch = i686
