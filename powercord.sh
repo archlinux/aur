@@ -8,4 +8,4 @@ do
 	ln -s $d $XDG_DATA_HOME/powercord/plugins/ &>/dev/null
 done
 
-exec electron13 /usr/share/powercord/app $@
+exec electron15 /usr/share/powercord/app $@
