@@ -1,19 +1,16 @@
 pkgbase = ddctoolbox-git
-	pkgdesc = DDC Toolbox for Linux
-	pkgver = r203.578ce99
+	pkgdesc = Create and edit DDC headset correction files
+	pkgver = 2.0.1.r29.g1988c7b
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/ThePBone/DDCToolbox
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = qt5-base
-	depends = mesa
 	provides = ddctoolbox
 	conflicts = ddctoolbox
-	source = ddctoolbox::git+https://github.com/ThePBone/DDCToolbox
-	source = ddctoolbox.desktop
+	source = ddctoolbox::git+https://github.com/ThePBone/DDCToolbox.git
 	sha256sums = SKIP
-	sha256sums = d62019fb77f8cd40c7942453345f20e6479ba4ad22930ca2e138b1cddea9ed34
 
 pkgname = ddctoolbox-git
