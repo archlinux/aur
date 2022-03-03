@@ -1,0 +1,1 @@
+_have provlk && complete -F _command provlk

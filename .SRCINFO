@@ -1,0 +1,78 @@
+pkgbase = amdgpu-pro-installer-cfe
+	pkgver = 21.50_1373477
+	pkgrel = 1
+	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50
+	arch = x86_64
+	groups = Radeon_Software_for_Linux_Cosmic_Fusion_Edition
+	license = custom: multiple
+	makedepends = wget
+	source = GET-DEBS.sh
+	source = versions
+	source = progl
+	source = progl.bash-completion
+	source = provlk
+	source = provlk.bash-completion
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
+	sha256sums = e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354
+	sha256sums = 7bb670f1588c65404ed5dc231c02c4acff4b2150c3f0eba99e052debbb089c32
+	sha256sums = 5c3f42f4c01bd0b8d1a582f6a476cc1afa4dfe47209b4742fcde84fa52d075df
+
+pkgname = libamdenc-amdgpu-pro-cfe
+	pkgdesc = AMD Encode Core Library
+	license = custom: AMDGPU-PRO EULA
+
+pkgname = amf-amdgpu-pro-cfe
+	pkgdesc = AMDGPU Pro Advanced Multimedia Framework
+	license = custom: AMDGPU-PRO EULA
+	depends = libglvnd
+	depends = libx11
+	depends = vulkan-amdgpu-pro
+	depends = rocm-opencl-runtime
+	depends = libamdenc-amdgpu-pro
+	conflicts = amf-amdgpu-pro
+
+pkgname = amdgpu-pro-libgl-cfe
+	pkgdesc = AMDGPU Pro OpenGL driver
+	license = custom: AMDGPU-PRO EULA
+	depends = libdrm
+	depends = libx11
+	depends = libxcb
+	depends = libxdamage
+	depends = libxext
+	depends = libxfixes
+	depends = libxxf86vm
+	provides = libgl
+	conflicts = amdgpu-pro-libgl
+	backup = etc/amd/amdapfxx.blb
+
+pkgname = lib32-amdgpu-pro-libgl-cfe
+	pkgdesc = AMDGPU Pro OpenGL driver (32-bit)
+	license = custom: AMDGPU-PRO EULA
+	depends = amdgpu-pro-libgl=21.50_1373477-1
+	depends = lib32-libdrm
+	depends = lib32-libx11
+	depends = lib32-libxcb
+	depends = lib32-libxdamage
+	depends = lib32-libxext
+	depends = lib32-libxfixes
+	depends = lib32-libxxf86vm
+	provides = lib32-libgl
+	conflicts = lib32-amdgpu-pro-libgl
+	backup = etc/amd/amdrc
+	backup = etc/ld.so.conf.d/10-amdgpu-pro-i386.conf
+
+pkgname = vulkan-amdgpu-pro-cfe
+	pkgdesc = AMDGPU Pro Vulkan driver
+	license = custom: AMDGPU-PRO EULA
+	depends = 
+	provides = vulkan-driver
+	conflicts = vulkan-amdgpu-pro
+
+pkgname = lib32-vulkan-amdgpu-pro-cfe
+	pkgdesc = AMDGPU Pro Vulkan driver (32-bit)
+	license = custom: AMDGPU-PRO EULA
+	depends = 
+	provides = lib32-vulkan-driver
+	conflicts = lib32-vulkan-amdgpu-pro

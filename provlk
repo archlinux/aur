@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# This script applies amdgpu-pro Vulkan driver for specific application.
+# For example, running "$ provlk steam" will start steam with AMDGPU PRO driver.
+# You can test the difference (driverName, driverID) with vulkaninfo utility.
+
+provlk() {
+    export AMD_VULKAN_ICD=amdvlk-pro
+    export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/amd_pro_icd64.json:/usr/share/vulkan/icd.d/amd_pro_icd32.json
+}
+
+
+if [[ $(basename $0) == provlk ]]; then
+    provlk
+else
+    echo "Unknown function"
+    exit 1
+fi
+
+# applied variables, now execute the rest of the command
+"$@"
