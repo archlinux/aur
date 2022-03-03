@@ -1,7 +1,7 @@
-diff -rupN Pike-v8.0.1116/src/configure Pike-v8.0.1116b/src/configure
---- Pike-v8.0.1116/src/configure	2020-12-15 13:51:14.000000000 -0500
-+++ Pike-v8.0.1116b/src/configure	2021-02-06 23:16:10.401228493 -0500
-@@ -63941,19 +63941,6 @@ CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EX
+diff -rupN Pike-v8.0.1738/src/configure Pike-v8.0.1738b/src/configure
+--- Pike-v8.0.1738/src/configure	2022-01-30 17:41:59.000000000 -0500
++++ Pike-v8.0.1738b/src/configure	2022-03-02 18:57:20.598467530 -0500
+@@ -63797,19 +63797,6 @@ CPPFLAGS="${CPPFLAGS} ${CONF_CPPFLAGS_EX
  $as_echo_n "checking if an abi indicator would be appropriate for libdir... " >&6; }
  if ${pike_cv_lib_abi+:} false; then :
    $as_echo_n "(cached) " >&6
