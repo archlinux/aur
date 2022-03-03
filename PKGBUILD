@@ -4,7 +4,7 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='https://wiki.ros.org/dynamic_reconfigure'
 
 pkgname='ros-noetic-dynamic-reconfigure'
-pkgver='1.7.1'
+pkgver='1.7.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -42,7 +42,7 @@ depends=(
 
 _dir="dynamic_reconfigure-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/dynamic_reconfigure/archive/${pkgver}.tar.gz")
-sha256sums=('7cdb46269ae222a0ed5632d7c9b9d6f1e351c35dc9cc14b48930ad89273a5da5')
+sha256sums=('504caf3f4afc4775e95ba98d76211f22412c01049d0ab2cbd1be29b3325849f9')
 
 build() {
 	# Use ROS environment variables.
