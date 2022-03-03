@@ -1,0 +1,35 @@
+pkgbase = xapp-thumbnailers
+	pkgdesc = Thumbnailers for GTK Desktop Environments
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/linuxmint/xapp-thumbnailers
+	changelog = xapp-thumbnailers.changelog
+	arch = any
+	license = GPL3
+	source = xapp-thumbnailers-1.0.1.tar.gz::https://github.com/linuxmint/xapp-thumbnailers/archive/refs/tags/1.0.1.tar.gz
+	sha256sums = 5c7971edafd07e17b3961c3dbd0993e2511feb5db0c42c90332ff393100d2213
+
+pkgname = xapp-thumbnailers-common
+	pkgdesc = Common files for XApp thumbnailers
+	depends = python
+	depends = python-pillow
+
+pkgname = xapp-mp3-thumbnailer
+	pkgdesc = MP3 thumbnailer
+	depends = python-eyed3
+	depends = xapp-thumbnailers-common
+
+pkgname = xapp-epub-thumbnailer
+	pkgdesc = ePub thumbnailer
+	depends = xapp-thumbnailers-common
+
+pkgname = xapp-raw-thumbnailer
+	pkgdesc = RAW thumbnailer
+	depends = dcraw
+	depends = xapp-thumbnailers-common
+
+pkgname = xapp-appimage-thumbnailer
+	pkgdesc = AppImage thumbnailer
+	depends = python-pyelftools
+	depends = squashfs-tools
+	depends = xapp-thumbnailers-common
