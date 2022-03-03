@@ -2,7 +2,7 @@
 # Maintainer: Martin Dünkelmann <nc-duenkekl3 at netcologne.de>
 
 pkgname=ferdi-nightly-bin
-pkgver=5.6.3.nightly.16
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - nightly binary version'
 url='https://getferdi.com'
