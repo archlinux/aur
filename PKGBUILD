@@ -19,7 +19,7 @@ _installdir=/opt/appimages
 prepare() {
     cd ${srcdir}
     chmod a+x ${_pkgname}
-    ${srcdir}/${_pkgname} --appimage-extract
+    ${srcdir}/${_pkgname} --appimage-extract > /dev/null
     sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/siyuan.AppImage+" "squashfs-root/siyuan.desktop"
     sed -i "s+Icon=siyuan+Icon=siyuan-appimage+" "squashfs-root/siyuan.desktop"
 }
