@@ -3,7 +3,7 @@
 _pkgname="holehe"
 pkgname="${_pkgname}-git"
 pkgver=r383.1808bb2
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficiently finding registered accounts from emails."
 arch=("any")
 url="https://github.com/megadose/holehe"
@@ -31,4 +31,3 @@ package() {
     python setup.py install --root="${pkgdir}/" --prefix=/usr --optimize=1 --skip-build
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
-
