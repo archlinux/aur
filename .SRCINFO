@@ -1,0 +1,11 @@
+pkgbase = ioztat
+	pkgdesc = storage load analysis tool for OpenZFS
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/jimsalterjrs/ioztat
+	arch = any
+	license = BSD
+	source = ioztat-2.0.0.tar.gz::https://github.com/jimsalterjrs/ioztat/archive/refs/tags/v2.0.0.tar.gz
+	md5sums = e1f02315bc79e7f583f045a9753f53c4
+
+pkgname = ioztat
