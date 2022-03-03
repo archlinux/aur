@@ -43,11 +43,12 @@ post_install() {
 }
 
 post_upgrade() {
-  if [ $(vercmp $2 'v0.6.0-1') -lt 0 ]; then
-    return 0
-  fi
-  echo -e "${BOLD}The plugin API and tablet configuration format has changed in OpenTabletDriver 0.6${RESET}"
-  echo -e "You may want to clear the contents of the ${GREEN}Plugins/${RESET} and ${GREEN}Configurations/${RESET} folder in ${GREEN}~/.config/OpenTabletDriver/${RESET}"
-  echo "Mismatching GUI and daemon versions isn't supported, so make sure to restart the OpenTabletDriver daemon"
+  echo -e "${BOLD}Mismatching OpenTabletDriver versions between GUI and daemon isn't supported${RESET}"
+  echo -e "Restart your daemon with ${GREEN}systemctl --user restart opentabletdriver${RESET}"
   echo
+  if [ $(vercmp $2 0.6.0-1) -lt 0 ]; then
+    echo -e "${BOLD}The plugin API and tablet configuration format has changed in OpenTabletDriver 0.6${RESET}"
+    echo -e "You may want to clear the contents of the ${GREEN}Plugins/${RESET} and ${GREEN}Configurations/${RESET} folder in ${GREEN}~/.config/OpenTabletDriver/${RESET}"
+    echo
+  fi
 }

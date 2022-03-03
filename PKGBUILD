@@ -5,7 +5,7 @@ _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
 _spkgname=otd
 pkgver=0.6.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/OpenTabletDriver/OpenTabletDriver"
@@ -27,7 +27,7 @@ sha256sums=('d148aac9dee2175261669b51cedd046f19efff6fbda5573ca1f0e2a636d2d4d9'
             '20aac1584a8e08b5a9add1d02ce38e60ddfede615227df6f25c7422217df82b0'
             '88f7d9ae1e9402cfbf9266ddf0de642195b64de13a3d5ce6f93460ba035cf7f2'
             '4399359bf6107b612d10aaa06abb197db540b00a973cfec64c2b40d1fbbb2834'
-            'b28aa1d2d4f531d877f6601eb5e684f78cee7acfe2bd7af739e5144fd36bafdf')
+            'c18e36c7287db4dc16df687693f7ffe548620b26c03b2a98b0b44f4fdedfd442')
 
 _srcdir="OpenTabletDriver-$pkgver"
 
