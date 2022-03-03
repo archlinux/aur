@@ -10,20 +10,20 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=lasso
-pkgver=2.5.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Lasso is a free software C library aiming to implement the Liberty Alliance standards. ID-WSF and SAML 2.0."
 arch=('i686' 'x86_64')
 url="http://lasso.entrouvert.org/"
 license=('GNU')
 depends=('libxml2' 'xmlsec' 'openssl')
-makedepends=('perl' 'python-six' 'jdk')
+makedepends=('perl' 'python-six')
 source=("https://dev.entrouvert.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('f20bea62c04f3082d5c423f658bafe1bdde0012321c43092ed5d5a2c3ec7b21ec27d88d9fc630743fd7c99e767d9fd92b98de5d4f7d98c3a9e680717483daae1')
+sha512sums=('98615d6166cdec52abef4f5346119040f310dbee624c2cd168d2f95b5fe3e0e1437ec6bfc2cd8b680044438afa15770402f5aef87d1885f7bc61528617c17a74')
 
 build() {
   cd "${pkgname}"-"${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --disable-tests
   make CFLAGS="-g -O2 -w" CXXFLAGS="${CFLAGS}"
 }
 
