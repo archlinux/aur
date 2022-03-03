@@ -8,7 +8,7 @@
 
 pkgname=filebot
 pkgver=4.9.5
-pkgrel=0
+pkgrel=2
 pkgdesc="The ultimate TV and Movie Renamer"
 arch=('i686' 'x86_64' 'aarch64' 'armv7l' 'armv7h')
 url="https://www.filebot.net/"
