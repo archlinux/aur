@@ -67,7 +67,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.16.9
+pkgver=5.16.12
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,7 +76,7 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=4615bb2493649ad6fa133f864f94cb95c824f361
+_arch_config_commit=7e20361056a37b9ea62f85cf5d975b8c9ec83434
 _prjc_version=5.16
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20211114
@@ -86,24 +86,30 @@ source=(
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "${_prjc_patch}::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.16/prjc-patches-v4/0001-PRJC-for-5.16.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/88da2ed6eb5d8ddfdf9c7c22a044f118b332a6a9.patch"
-  "0002-${pkgbase}-${pkgver}-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/ff7a79a92a1f066a112a1f9e2ee256bd6b788caa.patch"
-  "0003-${pkgbase}-${pkgver}-Bluetooth-Read-codec-capabilities-only-if-supported.patch::https://github.com/archlinux/linux/commit/77bdba6b3d8eca6529fb4f60a58dc2ebaf129e3d.patch"
-  "0003-${pkgbase}-${pkgver}-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch::https://github.com/archlinux/linux/commit/3287b6c2c0ba21a3cab9c9d43722a9159c177eab.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/a345b8491dbab18e79fe483b502799f543d2932c.patch"
+  "0002-${pkgbase}-${pkgver}-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/fb368d9522e7fbe41e15f80dcd142d0860fc7a8a.patch"
+  "0003-${pkgbase}-${pkgver}-Bluetooth-Read-codec-capabilities-only-if-supported.patch::https://github.com/archlinux/linux/commit/a4e8508d74776157e6955f3ffdd78450f2f1d68e.patch"
+  "0004-${pkgbase}-${pkgver}-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch::https://github.com/archlinux/linux/commit/612b694f9c0c00ca4e880956a268e150f26f338c.patch"
+  "0005-${pkgbase}-${pkgver}-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch::https://github.com/archlinux/linux/commit/659d9308257d988404a64a1c60b9b06430dac076.patch"
+  "0006-${pkgbase}-${pkgver}-mt76-mt7921-reduce-log-severity-levels-for-inform.patch::https://github.com/archlinux/linux/commit/892368642e039ce475d9da8b47fefab914539cb8.patch"
+  "0007-${pkgbase}-${pkgver}-Revert-NFSv4.1-query-for-fs_location-attr-on-a-ne.patch::https://github.com/archlinux/linux/commit/1dbf0500e513a9f702e50e605c83595bd0f28f07.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('ce4544512021eebfb8d7c87e176ae1e4ba741021c60484369af5280c51c64df48553ab2d7b53de2c3e358ea9bfbb8545a1dc7ef694628668bfcab329c59fb0fc'
+b2sums=('762f7605607116d5c25535079f029d666a715c8d2fcb8f6f91fee8a2aefbf62e7ee9767de50b6dd4f9c16f88b5dc8b4a40f0d8f0a766c6a913978b1f96c8c0b7'
         'SKIP'
         'b837c6c0d9b5e39047ebddececa28f7fbe078b8c6d8d95028cb6bf5265f7b754415e3eed779d5bce075b1163f9b5fdd28b06f2552abf99061a436e3665aa0c8a'
         'e88ec884ec8a539f9acc55844193d98c009d820bf18d8a6ca4dcb03d796897a15efc7006b35a736f31218895ffaf5cc83851a12f4db1b8e56b69ac8518347d02'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        'c4c076a6e2986c716d119435f000e366058934123d882061709675df6c261dcbd705c2ec40660b1bd3de4c6299c18790eed62d52fa9918446029de9821d859f6'
-        'ff45b57566144afd4ca52b6ee24956f4024cfcf0e4a4bae675a5090df89cab3baa9f5ad54c118ad066e60a0a8ffd1a0877753e0c1ea43711d5600c835a07734f'
-        '4ffe9af0a2af7afaba36fd0b5ddbc2e41391e3aee39c9589e89c7a2b5ed87dd3fa5c6cd3fc00e46c67cc5b22a25bad0aaab43af76968b6e66d8a3cbe07e2886f'
-        'df9a41709c032091cf538940d618d383bc4635c8a874a82138693b84bbfd38ced5adfcf24cec9ebb59b551ceb7389865d35fefd3f185525994b5d840ecfd265e')
+        '9f4ae9541d3e10c86ee63c46aa353042c9b9c8e35667e2141ff40df105c0cc198b3908cfd04bcad64c6473bb60c19cfca600e19007a3be4bfc44d27a558f814c'
+        '73ce9a39faad18d7609f625763168db92d497ebd944bc70fdd069cc9616d2f084f2f75e3d7ff166ec214b343ca0012c74002e5237704acb1ec26b700e67b1a08'
+        '4392c5d95482f22c6c9472f6f9f33cf47d5f220203da09b74667148122e0f34773ba1970bdd8f6c969f77a4034ff7c41559c9c714d4cfb0d8c3631194e63523d'
+        '6bf523b4e83641f84299997ec34964c6ccb555944a8e535dc053c69ba78fc78b540eba591be4a1a3d83a82b6de36c48dbb4fb11d8118c97291cf0b38a7bc4f82'
+        '7692a34938d0adb3b28909313f88abb565d1725abd1f3bd4937f42d915019b85ab22401e4b754413dcac601c50cb473f4f4067e1fc42b0fb6603101e695cf098'
+        'a0b5bda8fc9585b48c75fa35db69b916fbc1ac02456cd4259206c9287e14d57ad85caeaf5ca489ca97c6bae2df6b14fd0823073fba8e8e2b9b67895b30112519'
+        '0386ef48cc78a52a575ce6a3296f4e4e5db6bd2ca1f149833166f30337cc3bfbd1143839d3787fe765c730afbf7a75623205fa6045ed6e73c904e7a71d6089b8')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
