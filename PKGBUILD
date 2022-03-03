@@ -1,7 +1,7 @@
 # Maintainer: Adam Tazul (SimPilotAadamT) <adam_tazul@outlook.com>
 
 pkgname=python-fildem-git
-pkgver=0.6.7
+pkgver=0
 pkgrel=1
 pkgdesc="This project is a fork of gnomehud with the adition of a global menu bar"
 arch=('i686' 'x86_64')

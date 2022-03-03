@@ -1,6 +1,6 @@
-pkgbase = python-fildem
+pkgbase = python-fildem-git
 	pkgdesc = This project is a fork of gnomehud with the adition of a global menu bar
-	pkgver = git
+	pkgver = 0
 	pkgrel = 1
 	url = https://github.com/gonzaarcr/fildem
 	arch = i686
@@ -14,10 +14,11 @@ pkgbase = python-fildem
 	depends = python-fuzzysearch
 	depends = python-future
 	depends = dbus-python
-	provides = python3-fildem=git
-	provides = python-fildem=git
+	provides = python3-fildem
+	provides = python-fildem
 	conflicts = python3-fildem
+	conflicts = python-fildem
 	source = git+https://github.com/gonzaarcr/fildem.git
 	md5sums = SKIP
 
-pkgname = python-fildem
+pkgname = python-fildem-git
