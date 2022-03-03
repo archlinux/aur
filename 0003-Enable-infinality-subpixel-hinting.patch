@@ -8,7 +8,7 @@ Subject: [PATCH] Enable infinality subpixel hinting
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 32da3fa039..0dd4021e24 100644
+index 32da3fa03903..0dd4021e2433 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
 @@ -688,8 +688,8 @@ FT_BEGIN_HEADER
