@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-joint-state-publisher
 	pkgdesc = ROS - This package contains a tool for setting and publishing joint state values for a given URDF.
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://wiki.ros.org/joint_state_publisher
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = ros-noetic-joint-state-publisher
 	depends = ros-noetic-python-qt-binding
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-rospy
-	source = ros-noetic-joint-state-publisher-1.15.0.tar.gz::https://github.com/ros/joint_state_publisher/archive/1.15.0.tar.gz
-	sha256sums = 3306a14bc2eac06d6faecc458766c9fc654c9fde062a5e676479772aab3c39cd
+	source = ros-noetic-joint-state-publisher-1.15.1.tar.gz::https://github.com/ros/joint_state_publisher/archive/1.15.1.tar.gz
+	sha256sums = 565824ef6537b2f104d8f1b29aeff375bc99a0a2d358db58596f141409b12b28
 
 pkgname = ros-noetic-joint-state-publisher
-

@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='https://wiki.ros.org/joint_state_publisher'
 
 pkgname='ros-noetic-joint-state-publisher'
-pkgver='1.15.0'
+pkgver='1.15.1'
 arch=('any')
 pkgrel=1
 license=('BSD')
@@ -32,7 +32,7 @@ depends=(
 
 _dir="joint_state_publisher-${pkgver}/joint_state_publisher"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/joint_state_publisher/archive/${pkgver}.tar.gz")
-sha256sums=('3306a14bc2eac06d6faecc458766c9fc654c9fde062a5e676479772aab3c39cd')
+sha256sums=('565824ef6537b2f104d8f1b29aeff375bc99a0a2d358db58596f141409b12b28')
 
 build() {
 	# Use ROS environment variables.
