@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
 pkgver=0.9.64.r7.g8ad32ab
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
 url="https://getgammy.com"
@@ -20,10 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  qmake \
-    QMAKE_CFLAGS="$CFLAGS" \
-    QMAKE_CXXFLAGS="$CXXFLAGS" \
-    QMAKE_LFLAGS="$LDFLAGS"
+  qmake-qt5
   make
 }
 
