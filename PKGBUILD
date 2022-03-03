@@ -4,7 +4,7 @@ url='https://github.com/ros/ros_comm'
 pkgname='ros-noetic-roscpp'
 pkgver='1.15.14'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -26,6 +26,7 @@ makedepends=(
     ros-build-tools
     ${ros_makedepends[@]}
     pkg-config
+    google-glog
 )
 
 ros_depends=(

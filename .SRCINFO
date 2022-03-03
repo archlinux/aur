@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-roscpp
 	pkgdesc = ROS - roscpp is a C++ implementation of ROS.
 	pkgver = 1.15.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ros/ros_comm
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = ros-noetic-roscpp
 	makedepends = ros-noetic-rostime
 	makedepends = ros-noetic-roslang
 	makedepends = pkg-config
+	makedepends = google-glog
 	depends = ros-noetic-rostime
 	depends = ros-noetic-xmlrpcpp
 	depends = ros-noetic-roscpp-traits
