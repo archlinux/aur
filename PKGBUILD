@@ -1,10 +1,11 @@
-# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: orumin <dev at orum.in>
 
 pkgbase=lib32-lapack
 _basename=lapack
 pkgname=('lib32-lapack' 'lib32-blas' 'lib32-cblas' 'lib32-lapacke')
-pkgver=3.9.0
+pkgver=3.10.0
 pkgrel=1
 url="https://www.netlib.org/lapack"
 pkgdesc="Linear Algebra PACKage (32-bit)"
@@ -12,7 +13,7 @@ makedepends=('gcc-fortran' 'lib32-gcc-libs' 'cmake' 'python')
 arch=('x86_64')
 license=("custom")
 source=($_basename-$pkgver.tar.gz::"https://github.com/Reference-LAPACK/lapack/archive/v$pkgver.tar.gz")
-sha1sums=('0451d180eed2b12b94aaae77e772d7573e87bec4')
+sha1sums=('4a9384523bf236c83568884e8c62d9517e41ac42')
 
 build() {
   mkdir -p ${srcdir}/build
