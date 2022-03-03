@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=r36.767cf57
+pkgver=r24.051ccfd
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -12,6 +12,10 @@ md5sums=('SKIP')
 makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool patch)
 depends=(brotli nss)
 provides=(curl-impersonate-chrome)
+
+# WORKAROUND The default /etc/makepkg.conf shipped by arch comes with -Werror=format which can't be 
+# overriden otherwise and wont let boringssl compile
+options=("!buildflags")
 
 BORING_SSL_COMMIT=3a667d10e94186fd503966f5638e134fe9fb4080
 BORING_SSL_URL="https://github.com/google/boringssl/archive/${BORING_SSL_COMMIT}.zip"
@@ -40,10 +44,18 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+patch_boringssl () {
+  cd ${srcdir}
+  cp ${browser_dir}/patches/boringssl-*.patch ${BORING_SSL_DIR}
+  cd ${BORING_SSL_DIR}
+  for p in $(ls boringssl-*.patch); do patch -p1 < $p; done
+}
+
 build_boringssl () {
   cd ${srcdir}
   cd ${BORING_SSL_DIR}
-  mkdir -p build && cd build
+  mkdir -p build 
+  cd build
   cmake -DCMAKE_POSITION_INDEPENDENT_CODE=on -GNinja ..
   ninja
   cd ${srcdir}
@@ -58,13 +70,15 @@ patch_nghttp2 () {
   cp ${browser_dir}/patches/libnghttp2-*.patch ${NGHTTP2_VERSION}/
   cd ${NGHTTP2_VERSION}
   for p in $(ls libnghttp2-*.patch); do patch -p1 < $p; done
-  autoreconf -i && automake && autoconf
+  autoreconf -i 
+  automake 
+  autoconf
 }
 
 build_nghttp2 () {
   cd ${srcdir}
   cd ${NGHTTP2_VERSION}
-  ./configure --prefix ${srcdir}/${NGHTTP2_VERSION}/build
+  ./configure --with-pic --prefix ${srcdir}/${NGHTTP2_VERSION}/build
   make
   make install
 }
@@ -89,6 +103,7 @@ build_curl () {
 }
 
 prepare () {
+  patch_boringssl
   patch_nghttp2
   patch_curl
 }
