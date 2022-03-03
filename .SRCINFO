@@ -1,22 +1,20 @@
 pkgbase = python-asn1
 	pkgdesc = ASN.1 encoder/decoder
-	pkgver = 2.4.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/andrivet/python-asn1
+	changelog = CHANGELOG.rst
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
-	checkdepends = python2-pytest
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
-	source = python-asn1-2.4.2.tar.gz::https://github.com/andrivet/python-asn1/archive/v2.4.2.tar.gz
-	sha256sums = a4bd0172f87d4161d649d0e924145a99de00bb1985ab4488ce58098893bc25c3
+	depends = python-future
+	source = python-asn1-2.5.0.tar.gz::https://github.com/andrivet/python-asn1/archive/v2.5.0.tar.gz
+	sha256sums = ba174e15974671f2d27474fa0ac53b8ccf920f78ab71302460489cc174effc77
 
 pkgname = python-asn1
-	depends = python-future
-
-pkgname = python2-asn1
-	depends = python2-future
-	depends = python2-enum34
