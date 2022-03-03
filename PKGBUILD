@@ -1,6 +1,6 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
-pkgver=2022.2.29
+pkgver=2022.2.288
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
@@ -14,9 +14,12 @@ conflicts=('cloudflare-warp')
 # zcat src/build/usr/share/doc/cloudflare-warp/changelog.gz  > cloudflare-warp-bin.changelog
 changelog=$pkgname.changelog
 
-# in ubuntu focal: apt-get --print-uris install cloudflare-warp
+#
+# when updating, find latest package by executing:
+#
+# `curl https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages`
 source=(
-    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_2_29_1_amd64_4c914fa5af_amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_2_288_1_amd64_8a351e87af_amd64.deb"
     "${pkgname}-${pkgver}-${pkgrel}-Release::https://pkg.cloudflareclient.com/dists/focal/Release"
     "${pkgname}-${pkgver}-${pkgrel}-Release.sig::https://pkg.cloudflareclient.com/dists/focal/Release.gpg"
     "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages"
@@ -38,11 +41,11 @@ source=(
 
 validpgpkeys=('C068A2B5771775193CBE1F2F6E2DD2174FA1C3BA')
 
-md5sums=('b9489e943a4b0b97fce23ac3ff23b422'
+md5sums=('336e647d16a9ccdf8b9806c1daf99ebc'
          'SKIP'
          'SKIP'
          'SKIP')
-sha256sums=('d690f6345ce378cce25991144ab471ac3276aa11ffe64ec1fb25de1c94a2bf97'
+sha256sums=('a6c1eb0631ad97069186ab1c4c17cede7e4cdef9e69f10ffadd8a4fea54e269b'
             'SKIP'
             'SKIP'
             'SKIP')
