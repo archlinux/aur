@@ -11,11 +11,6 @@ makedepends=(git)
 source=("git+${url}.git")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "${_pkgbase}"
-  printf "1.0.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
   cd "${pkgname}"
   rm -rf "${pkgdir}/usr/share/pacman/keyrings/concise*"
