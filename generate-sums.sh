@@ -36,9 +36,9 @@ for kern in ${!KERNEL_ARCH[@]}; do
     esac
     cat <<EOF
       _CARCH="${_CARCH}"
-      sha512sums=('$(sha512sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
-      b2sums=(    '$(b2sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
-      b3sums=(    '$(b3sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
+      sha512sums+=('$(sha512sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
+      b2sums+=(    '$(b2sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
+      b3sums+=(    '$(b3sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
 EOF
     echo '    ;;'
   done; echo '  esac;;'
