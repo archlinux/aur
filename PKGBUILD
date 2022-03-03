@@ -6,7 +6,7 @@
 
 pkgname=polymc
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -57,7 +57,7 @@ check() {
 
 package() {
   cd "${srcdir}/PolyMC/build"
-  cmake --install . --prefix "${pkgdir}/usr"
+  DESTDIR="${pkgdir}" cmake --install .
   install -D "${srcdir}/PolyMC/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
   install -D "${srcdir}/PolyMC/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
 }
