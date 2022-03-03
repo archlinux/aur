@@ -12,28 +12,37 @@ arch=(any)
 url=https://github.com/iamkroot/trakt-scrobbler
 license=(GPL2)
 depends=(
-    "systemd"
+	"systemd"
+	'python-requests<3.0.0' #auto-deps
+	'python-requests>=2.25.1' #auto-deps
+	'python-urllib3<2.0.0' #auto-deps
+	'python-urllib3>=1.26.0' #auto-deps
+	'python-guessit<4.0.0' #auto-deps
+	'python-guessit>=3.3.1' #auto-deps
+	'python-appdirs<2.0.0' #auto-deps
+	'python-appdirs>=1.4.4' #auto-deps
+	'python-cleo<0.9.0' #auto-deps
+	'python-cleo>=0.8.1' #auto-deps
+	'python-confuse<2.0.0' #auto-deps
+	'python-confuse>=1.4.0' #auto-deps
+	'python-jeepney<0.8' #auto-deps
+	'python-jeepney>=0.7' #auto-deps
+	'python-urlmatch<2.0.0' #auto-deps
+	'python-urlmatch>=1.0.1' #auto-deps
 )
 
 makedepends=(
     python-setuptools
-    python-dephell
     go-md2man
     gzip
 )
 source=(
     "$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
     "trakts-man.md"
-    "trakts.zsh"
 )
 sha256sums=('66523cbae25d211cdb7306034b3e2e545cd690bf6834188f43f3fdbb69b4fe49'
-            '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c'
-            '65442f8b6263da1f856bd74b2f9d49a5f8b1a5d9e0dc15927b1f40804ad99528')
+            '81c3fb93bf01c0e6c0bbc9b2ef853da3f691bc3c50b4a87a68072b11ba72691c')
 
-prepare() {
-    cd "$srcdir/$pkgname-$pkgver"
-    dephell deps convert --from pyproject.toml --to setup.py
-}
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py build
@@ -45,5 +54,5 @@ package()
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 "trakts.1.gz" "$pkgdir/usr/share/man/man1/trakts.1.gz"
-    install -Dm755 "$srcdir/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
+    install -Dm755 "completions/trakts.zsh" "$pkgdir/usr/share/zsh/site-functions/_trakts"
 }
