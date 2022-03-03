@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://github.com/WerWolv/ImHex'
 license=('GPL2')
@@ -21,30 +21,34 @@ source=("$pkgname::git+https://github.com/WerWolv/ImHex.git#tag=v$pkgver"
         "capstone::git+https://github.com/capstone-engine/capstone#branch=next"
         0001-makepkg-Remove-external-stuff.patch
         0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch
+        libromfs-0001-Fix-code-generation-for-clang.patch
         imhex.desktop)
 cksums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '3198617'
-        '40505814'
+        '948907946'
+        '345460920'
+        '2244423799'
         '4178124713')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '1106d46e20e014d0d82b0474ed6401bec523e0aee5570b9b1d8b82ca27537ed7'
-            '5a5e21bc9ca471ea9596706048892fee7fcf6cd7d4baf9ae65872be7280d9ae6'
+            '9135ba8227955249554983f680f0bbf3b5a615182f8913af1c5b0f8890a6c9dd'
+            'daf80fbf00f91a2dafa972c644fc5ab7fc43438e1a3d86515f7b1fa0e2ff1d13'
+            '5df68c1ee84ef55b07860b3b37120a21f488bbf9bff9466eb45fe81e537cd611'
             '72525512a241589cecd6141f32ad36cbe1b5b6f2629dd8ead0e37812321bdde6')
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        'b9cb8943d29cc074e76e42238da46071322d66d926b050f7078e3506dea4403b2ea7e5709cbdefea543ee2cf93c878f732a5237ad112030b9122b5bb00826b92'
-        '729d11c80a2fd74b9ee8f4a5e59d2eb469f2c1c9b3acfb883d43d7998b2b63f86bfbc895e429d766f9741d35893e790cfe84618ca5e20843244aaba36983d8b1'
+        'fe7d4248ab3cb04d7b78bd9b179a1fb06239c093c9960de30573e56bdddc0da993481e51fac5fad629510d0d75cac0b367ef1c8d23d58406fc5a1c4400920271'
+        'f694d8af5d577a5d3566efa70b391518d858ecb1743450e4c75a509ba9a5ee13a0de4b4bff260b569202d77a49d35bba4f04a25b105616b591775d93f29d6b4e'
+        'faa552370acc478ab155125fc029049edab8d105496201ec3763dfa5af3dc71ab334bd53545231e172643d51a4470db1a3d3573de007590bd88efe5ebef2fb44'
         '7b2d029de385fdc2536f57a4364add9752b9a5dc31df501e07bff1fd69fdd1de2afa19a5ac5a4c87fbf21c5d87cc96d3fe30d58825c050f5a7d25f6d85d08efc')
 
 prepare() {
@@ -62,6 +66,11 @@ prepare() {
   git apply \
     "$srcdir/0001-makepkg-Remove-external-stuff.patch" \
     "$srcdir/0002-archlinux-compat-Remove-unused-mbedTLS-code-from-lib.patch"
+
+  git -C lib/external/libromfs apply \
+    "$srcdir/libromfs-0001-Fix-code-generation-for-clang.patch" || \
+    git -C lib/external/libromfs apply -R --check \
+    "$srcdir/libromfs-0001-Fix-code-generation-for-clang.patch"
 }
 
 build() {
@@ -72,8 +81,6 @@ build() {
     -D CMAKE_BUILD_TYPE=RelWithDebInfo \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_SKIP_RPATH=ON \
-    -D CMAKE_C_COMPILER="gcc" \
-    -D CMAKE_CXX_COMPILER="g++" \
     -D USE_SYSTEM_LLVM=ON \
     -D USE_SYSTEM_YARA=ON \
     -D USE_SYSTEM_FMT=ON \
