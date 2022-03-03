@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='https://wiki.ros.org/topic_tools'
 
 pkgname='ros-noetic-topic-tools'
-pkgver='1.15.13'
+pkgver='1.15.14'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -43,7 +43,7 @@ depends=(
 
 _dir="ros_comm-${pkgver}/tools/topic_tools"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/ros_comm/archive/${pkgver}.tar.gz")
-sha256sums=('b676d6e688fe5ad78a9da9205477cc92ea6d54301f71caade1f27804d2d55000')
+sha256sums=('1083b58470a81323bc3a13aa9ae7c813e9fbc27b18f0e95a76b53e4076f3d872')
 
 build() {
 	# Use ROS environment variables.
