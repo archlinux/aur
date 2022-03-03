@@ -1,33 +1,31 @@
-# Maintainer: monkeyballs <mydick@cunny.com>
-
-pkgname="satania-buddy-git"
-_pkgname="sataniabuddy"
-pkgver=r68.ade3a6f
+# Maintainer: Gabriel Núñez Yuvé <gnuy@pm.me>
+pkgname=subdivx-get-git
+_pkgname=subdivx-get
+license=('MIT')
+pkgdesc="Download subtitles from subdivx."
+pkgver=r84.5f94541
 pkgrel=1
-pkgdesc="Virtual Satania Desktop Assistant"
-arch=("x86_64" "i686")
-url="https://git.cianig.ga/monkeyballs/sataniabuddy"
-license=('AGPL')
-depends=("openmotif" "cairo" "xorg-server")
-makedepends=("git" "make" "gcc")
-provides=("satania-buddy")
-conflicts=("satania-buddy")
-options=()
-source=(git+https://git.cianig.ga/monkeyballs/sataniabuddy)
-md5sums=('SKIP')
-prepare() {
-	cd "$srcdir"/"$_pkgname"
-	sed -i "s/AssetDirectory = \"\/usr\/local\/share\/satania\/assets\"/AssetDirectory = \"\/usr\/share\/satania\/assets\"/" main.c
-}
-build() {
-	cd "$srcdir"/"$_pkgname"
-	make
-}
+arch=('i686' 'x86_64')
+url='https://github.com/gnuy/subdivx-get'
+source=('git+git://github.com/gnuy/subdivx-get')
+depends=()
+makedepends=('go')
+sha1sums=('SKIP')
+
 pkgver() {
-	cd "$srcdir"/"$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/$_pkgname"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
+
+build(){
+  cd "$srcdir/$_pkgname"
+  GO111MODULE=on go build -o "$srcdir/bin/subdivx-get"
+}
+
 package() {
-	cd "$srcdir"/"$_pkgname"
-	make PREFIX="$pkgdir/usr" install
+  cd "$srcdir/bin"
+  install -Dm755 'subdivx-get' "$pkgdir/usr/bin/subdivx-get"
 }
