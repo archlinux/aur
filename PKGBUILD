@@ -1,7 +1,8 @@
-# Maintainer: Jesse Jaara <gmail.com: jesse.jaara>
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Jesse Jaara <gmail.com: jesse.jaara>
 
 pkgname=lib32-kmod
-pkgver=25
+pkgver=29
 pkgrel=1
 pkgdesc="Linux kernel module handling"
 arch=('x86_64')
@@ -12,7 +13,8 @@ makedepends=('gcc-multilib')
 options=('!libtool')
 validpgpkeys=('EAB33C9690013C733916AC839BA2A5A630CBEA53')  # Lucas DeMarchi
 source=("https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$pkgver.tar."{xz,sign})
-md5sums=('34f325cab568f842fdde4f8b2182f220' 'SKIP')
+md5sums=('e81e63acd80697d001c8d85c1acb38a0'
+         'SKIP')
 
 build() {
   export CC="gcc -m32"
