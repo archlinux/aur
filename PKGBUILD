@@ -2,7 +2,7 @@ pkgdesc="ROS - MAVLink message marshaling library."
 url='https://wiki.ros.org/mavlink'
 
 pkgname='ros-noetic-mavlink'
-pkgver=2022.2.2
+pkgver=2022.3.3
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('LGPLv3')
@@ -28,7 +28,7 @@ depends=(
 
 _dir="mavlink-gbp-release-upstream-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavlink-gbp-release/archive/upstream/${pkgver}.tar.gz")
-sha256sums=('6ce56f142cfacf9f77e288019bb90301df69de799ea6e44912cf39498256cc8f')
+sha256sums=('d3fcbfcdeaa4fcb9eac9a864e9354a6a7d068dd9354ef8189d23128a80d81c6a')
 
 build() {
     # Use ROS environment variables
