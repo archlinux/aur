@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=jamesdsp-pulse
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An audio effect processor for PulseAudio clients"
 arch=('x86_64')
 url="https://github.com/Audio4Linux/JDSP4Linux"
@@ -40,7 +40,7 @@ build() {
   cd "$srcdir/JDSP4Linux"
 
   pushd build
-  qmake .. "CONFIG += USE_PULSEAUDIO"
+  qmake-qt5 .. "CONFIG += USE_PULSEAUDIO"
   make
   popd
 }
