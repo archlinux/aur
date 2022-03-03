@@ -3,13 +3,14 @@
 # Based on http://xfce.10915.n7.nabble.com/NVidia-data-td16172.html
 # also based on arch bug report https://bugs.archlinux.org/task/25548
 
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
+# Maintainer:  FirstAirBender <noblechuk5[at]web[dot]de>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Merk Matthias <macem@chello.at>
 
 _pkgname=xfce4-sensors-plugin
 pkgname=xfce4-sensors-plugin-nvidia
-pkgver=1.4.1
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="A lm_sensors plugin for the Xfce panel with nvidia gpu support"
 arch=('i686' 'x86_64')
@@ -23,7 +24,7 @@ conflicts=('xfce4-sensors-plugin')
 source=(
 	https://archive.xfce.org/src/panel-plugins/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
 )
-sha256sums=('37d0dc569e735e482a18545c24eb1ce0229d6910e3a4d4c1dee0680999234be2')
+sha256sums=('171c0235f70c65f0ffee587e960d9da79b284855df22130239eac26272ec06c9')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
