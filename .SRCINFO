@@ -1,7 +1,7 @@
 pkgbase = silentdragonlite
 	pkgdesc = HUSH Lite wallet that supports z-addresses
 	pkgver = 1.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://git.hush.is/hush/SilentDragonLite
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = silentdragonlite
 	depends = qt5-websockets
 	depends = qt5-base
 	depends = qt5-tools
-	source = silentdragonlite-1.5.2.tar.gz::http://git.hush.is/hush/SilentDragonLite/archive/v1.5.2.tar.gz
+	source = silentdragonlite-1.5.2-3.tar.gz::http://git.hush.is/hush/SilentDragonLite/archive/v1.5.2.tar.gz
 	source = hushdlogo.png
 	source = silentdragonlite.desktop
 	source = silentdragonlite.png
