@@ -1,0 +1,21 @@
+--- start.sh	2018-02-09 07:53:54.000000000 -0800
++++ start-n.sh	2022-03-03 01:49:55.856471116 -0800
+@@ -14,14 +14,13 @@
+ 
+ # Actions
+ run_game() {
+- echo "Running ${GAME_NAME}"
+- cd game
+- chmod +x "runner"
+- ./"runner"
++	echo "Running ${GAME_NAME}"
++	cd game
++	./"runner"
+ }
+ 
+ default() {
+-  run_game
++	run_game
+ }
+ 
+ # Options
