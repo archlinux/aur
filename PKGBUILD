@@ -2,7 +2,7 @@
 
 pkgname='nsxiv-git'
 _pkgname=nsxiv
-pkgver=28.r0.g7a94a5e
+pkgver=29.r0.g231b317
 pkgrel=1
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)'
 arch=('x86_64')
