@@ -3,7 +3,7 @@
 # previous maintainer did not leave his email
 
 pkgname=pandoc-crossref-bin
-pkgver=0.3.12.2
+pkgver=0.3.12.2a
 _pandoc_pkgver=2.17.0.1
 pkgrel=1
 pkgdesc="Pandoc filter for cross-references - executable only"
