@@ -56,7 +56,7 @@ patch_nghttp2 () {
 build_nghttp2 () {
   cd ${srcdir}
   cd ${NGHTTP2_VERSION}
-  ./configure --prefix --with-pic ${srcdir}/${NGHTTP2_VERSION}/build
+  ./configure --with-pic --prefix ${srcdir}/${NGHTTP2_VERSION}/build
   make
   make install
 }
