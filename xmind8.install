@@ -1,6 +1,6 @@
 post_install() {
     echo '    Try to delete ~/.xmind/ directory if XMind crashes on start.'
-    echo '    Edit PKGBUILD and rebuild the package to change GTK or Java version.'
+    echo '    Edit PKGBUILD and rebuild the package to change GTK version or Java path.'
     echo '    You can also set GTK version in the "/usr/share/xmind/XMind/XMind.ini"'
     echo '    file on the line after "--launcher.GTK_version".'
     echo '    You must add "--add-modules=java.se.ee" line at the end of the file'
