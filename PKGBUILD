@@ -4,7 +4,7 @@ pkgdesc="ROS - diagnostic_updater contains tools for easily updating diagnostics
 url='https://wiki.ros.org/diagnostic_updater'
 
 pkgname='ros-noetic-diagnostic-updater'
-pkgver='1.10.4'
+pkgver='1.11.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -35,7 +35,7 @@ depends=(
 
 _dir="diagnostics-${pkgver}/diagnostic_updater"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/diagnostics/archive/${pkgver}.tar.gz")
-sha256sums=('70935296661d052397deea4a5cb3105ac5cf35843bf2d45b34f1f1a39c3552ec')
+sha256sums=('4810e44ba04deb6d7350349d106a5a1264fd53f156b2d45c10d468f32d5396b4')
 
 build() {
 	# Use ROS environment variables.
