@@ -1,20 +1,14 @@
 pkgbase = libwbxml
 	pkgdesc = Library and Tools to parse, encode and handle WBXML documents
-	pkgver = 0.11.7
-	pkgrel = 2
+	pkgver = 0.11.8
+	pkgrel = 1
 	url = https://github.com/libwbxml/libwbxml
 	arch = x86_64
 	license = LGPL
 	makedepends = cmake
 	makedepends = check
 	depends = expat
-	source = https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-0.11.7.tar.gz
-	source = 0001-Fix-crash-on-corrupted-wbxml.patch
-	source = 0002-Allow-the-use-of-a-namespace-specified-separator.patch
-	source = 0003-Change-the-default-internal-namespace-separator.patch
-	sha256sums = 35e2cf033066edebc0d96543c0bdde87273359e4f4e59291299d41e103bd6338
-	sha256sums = d3c3bcc8f204305ee5cd8acb20bab08b94c4eabfef1f0c324058728bb6b47d92
-	sha256sums = 0e7dd497194cad9e78949b9025d372610ae8ffd855914658031f04ca11b554ce
-	sha256sums = d2fea06a64270e460f8b95af65e472f44a07f6e096fa1e3776bbe294ffb845b5
+	source = https://github.com/libwbxml/libwbxml/archive/refs/tags/libwbxml-0.11.8.tar.gz
+	sha256sums = a6fe0e55369280c1a7698859a5c2bb37c8615c57a919b574cd8c16458279db66
 
 pkgname = libwbxml
