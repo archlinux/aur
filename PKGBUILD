@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=hotshots-git
 pkgver=r19.e3712ae
-pkgrel=1
+pkgrel=2
 pkgdesc="Screenshot and annotation software"
 arch=('x86_64')
 url="https://github.com/obiwankennedy/HotShots"
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
-    qmake -recursive  HotShots.pro \
+    qmake-qt5 -recursive  HotShots.pro \
         INSTALL_PREFIX=/usr \
         INSTALL_LIBDIR=INSTALL_PREFIX/lib
     make
