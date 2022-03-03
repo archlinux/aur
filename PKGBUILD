@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=liketaskmanager-git
 pkgver=2.3.r0.g2b37205
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that mimics the permformance monitoring of Windows Task Manager"
 arch=('x86_64')
 url="https://github.com/rejuce/LikeTaskManager"
@@ -27,8 +27,8 @@ prepare() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  qmake
-#  qmake -o Makefile LikeTaskManager.pro -spec linux-g++ CONFIG+=qtquickcompiler
+  qmake-qt5
+#  qmake-qt5 -o Makefile LikeTaskManager.pro -spec linux-g++ CONFIG+=qtquickcompiler
   make
 }
 
