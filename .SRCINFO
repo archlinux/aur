@@ -1,6 +1,6 @@
 pkgbase = shellcaster-git
 	pkgdesc = Terminal-based TUI podcast manager
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/jeff-hughes/shellcaster
 	arch = x86_64

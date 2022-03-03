@@ -1,7 +1,7 @@
 # Maintainer: Jeff Hughes <jeff.hughes@gmail.com>
 pkgname=shellcaster-git
 _pkgname=shellcaster
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 
 pkgdesc="Terminal-based TUI podcast manager"
