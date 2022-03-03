@@ -1,11 +1,11 @@
 pkgbase = slack-wayland
 	pkgdesc = Slack Desktop with system Electron and Ozone enabled for native Wayland support
 	pkgver = 4.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slack.com/downloads
 	arch = x86_64
 	license = custom:proprietary
-	depends = electron
+	depends = electron16
 	optdepends = libappindicator-gtk3: for notification indicator in the status bar on GNOME
 	provides = slack
 	provides = slack-desktop
@@ -13,6 +13,6 @@ pkgbase = slack-wayland
 	source = https://downloads.slack-edge.com/releases/linux/4.23.0/prod/x64/slack-desktop-4.23.0-amd64.deb
 	source = slack-wayland.sh
 	sha256sums = 3a823be14d9aaea2ef565ac6c3fc62580a10775bcc1eadcc62c3256999ea59f3
-	sha256sums = 788ce7958372c868be560934e4e715b2d7084e8eb2752b0bc74f1c64a22a8042
+	sha256sums = a1ce6b6a721919580e2e5138a90432bbe963366d4952373c92bbf9ccbc39ed0f
 
 pkgname = slack-wayland

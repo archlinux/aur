@@ -1,9 +1,9 @@
 #!/bin/sh
 
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-	exec electron /usr/lib/slack/app.asar --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland "$@"
+	exec electron16 /usr/lib/slack/app.asar --enable-features=UseOzonePlatform,WebRTCPipeWireCapturer --ozone-platform=wayland "$@"
 else
-	exec electron /usr/lib/slack/app.asar "$@"
+	exec electron16 /usr/lib/slack/app.asar "$@"
 fi
 
 
