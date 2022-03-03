@@ -4,9 +4,9 @@ pkgdesc="ROS - This package retrieves data from url-format files such as http://
 url='https://wiki.ros.org/resource_retriever'
 
 pkgname='ros-noetic-resource-retriever'
-pkgver='1.12.6'
+pkgver='1.12.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -37,7 +37,7 @@ depends=(
 
 _dir="resource_retriever-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/resource_retriever/archive/${pkgver}.tar.gz")
-sha256sums=('dd44ffa5838b47d34485c66332727989f087ddf025da7ef3f66a2935c71fcab3')
+sha256sums=('5e01da1e97915ef73b169955f4ec311ee292e3f01a3b465f6220bd8662f8e056')
 
 build() {
 	# Use ROS environment variables.
