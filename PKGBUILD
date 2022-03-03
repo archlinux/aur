@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=xfun
-_cranver=0.29
+_cranver=0.30
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(r)
 checkdepends=(r-mime r-testit)
 optdepends=(
     r-testit
-    r-codetools
     r-rstudioapi
     r-tinytex
     r-mime
@@ -30,8 +29,8 @@ optdepends=(
     r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
-        "R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('bf85bb7b4653d03e0730682ffe1d6d3544ac0b36989f9196b2054d356c224ef4'
+        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
+sha256sums=('ebf81cf302e051f0361dc4c8b519d99e20a353b4b29cee13e768663ff562c0ee'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
@@ -49,6 +48,6 @@ package() {
 
   cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 
-  install -Dm644 R-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
   install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
