@@ -16,5 +16,5 @@ package() {
   rm -rf "${pkgdir}/usr/share/pacman/keyrings/concise*"
   mkdir -p "${pkgdir}/opt/concise/keyring"
   install -Dm644 ${srcdir}/${pkgname}/usr/share/pacman/keyrings/* -t "${pkgdir}/usr/share/pacman/keyrings/"
-  install -Dm644 ${srcdir}/${pkgname}/opt/* -t "${pkgdir}/opt/concise/keyring/"
+  install -Dm755 ${srcdir}/${pkgname}/opt/* -t "${pkgdir}/opt/concise/keyring/"
 }
