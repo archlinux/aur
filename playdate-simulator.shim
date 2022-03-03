@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+if [[ -z "${PLAYDATE_SDK_PATH:-}" ]]; then
+  export PLAYDATE_SDK_PATH="${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk"
+fi
+exec "${PLAYDATE_SDK_PATH}/bin/PlaydateSimulator" "$@"

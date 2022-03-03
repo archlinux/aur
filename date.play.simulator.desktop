@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Playdate Simulator
+Exec=/usr/bin/PlaydateSimulator %u
+Icon=/usr/share/icons/hicolor/scalable/apps/date.play.simulator.svg
+Terminal=false
+Type=Application
+MimeType=application/x-playdate-game;x-scheme-handler/playdate-simulator
+StartupWMClass=PlaydateSimulator
+Categories=Development;
+StartupNotify=true

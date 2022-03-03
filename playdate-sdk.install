@@ -1,0 +1,38 @@
+post_install() {
+  echo >&2 'Installing icon set'
+  find /opt/playdate-sdk/Resources/file-icon -name '*.png' -exec \
+    bash -c '
+      basename="$(basename -s .png "$1")"
+      xdg-icon-resource install --mode system --context mimetypes \
+        --size "${basename#data-}" "$1" application-x-playdate' \
+    _ '{}' ';'
+
+  if [[ -x /usr/bin/zeal ]]; then
+    echo >&2
+    echo >&2 'To install Playdate SDK’s docset into Zeal, run:'
+    echo >&2
+    printf >&2 '    cp -r -t %s %s\n' \
+      '"${XDG_DATA_HOME:-"${HOME}/.local/share"}/Zeal/Zeal/docsets/"' \
+      '/opt/playdate-sdk/Playdate.docset'
+  fi
+
+  echo >&2
+  echo >&2 'Before you use the SDK, run this on your user account:'
+  echo >&2
+  echo >&2 '    mkdir "${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk"'
+  echo >&2 '    cp -rvt "${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk" /opt/playdate-sdk/{bin,Disk,Examples}'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo >&2
+  echo >&2 'To remove all traces from your user account, remove the'
+  echo >&2 'following directories:'
+  echo >&2
+  printf >&2 '    %s\n' \
+    '~/.local/share/playdate-sdk' \
+    '~/.Playdate\ Simulator'
+}
