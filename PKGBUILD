@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgrel=1
-pkgver=6.2
+pkgver=6.2.r.50
 _pkgbase=dwm
 pkgname=dwm-nu1ll1nux
 pkgdesc="Concise Build of Suckless DWM"
@@ -19,7 +19,6 @@ optdepends=(
   )
 provides=(dwm)
 conflicts=(dwm)
-backup=(usr/bin/dwm.bak)
 source=("git+$url.git")
 md5sums=('SKIP')
 
