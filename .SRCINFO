@@ -1,7 +1,7 @@
 pkgbase = deadbeef-git
 	pkgdesc = A GTK+ audio player for GNU/Linux (devel branch)
 	pkgver = r10851.9e814ce3c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deadbeef.sourceforge.io/
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = deadbeef-git
 	makedepends = libzip
 	makedepends = wavpack
 	makedepends = yasm
-	makedepends = ffmpeg
+	makedepends = ffmpeg4.4
 	makedepends = gtk2
 	makedepends = gtk3
 	makedepends = clang
