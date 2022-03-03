@@ -61,6 +61,6 @@ check() {
 
 package() {
   cd "${srcdir}/PolyMC/build"
-  cmake --install . --prefix "${pkgdir}"
+  DESTDIR="$pkgdir" cmake --install .
 }
 
