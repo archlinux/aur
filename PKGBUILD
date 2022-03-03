@@ -1,4 +1,4 @@
-# -*- mode: Shell-script; eval: (setq tab-width 2) -*-
+# -*- mode: Shell-script; eval: (setq indent-tabs-mode nil); eval: (setq tab-width 2) -*-
 # Maintainer: Dominic Meiser < git at msrd0 dot de >
 # Contributor: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
@@ -50,9 +50,9 @@ build() {
 }
 
 package_mingw-w64-harfbuzz-static() {
-	conflicts=('mingw-w64-harfbuzz')
-	provides=("mingw-w64-harfbuzz=$pkgver")
-	
+  conflicts=('mingw-w64-harfbuzz')
+  provides=("mingw-w64-harfbuzz=$pkgver")
+  
   for _arch in ${_architectures}; do
     cd "${srcdir}/harfbuzz/build-${_arch}-static"
     DESTDIR="${pkgdir}" ninja install
@@ -71,8 +71,8 @@ package_mingw-w64-harfbuzz-static-icu() {
   pkgdesc="OpenType text shaping engine (ICU integration, mingw-w64)"
   depends=('mingw-w64-harfbuzz-static'
            'mingw-w64-icu')
-	provides=("mingw-w64-harfbuzz-icu=$pkgver")
-	conflicts=('mingw-w64-harfbuzz-icu')
+  provides=("mingw-w64-harfbuzz-icu=$pkgver")
+  conflicts=('mingw-w64-harfbuzz-icu')
   for _arch in ${_architectures}; do
     cd "${srcdir}/harfbuzz/build-${_arch}-static"
     mkdir -p "${pkgdir}/usr/${_arch}"
