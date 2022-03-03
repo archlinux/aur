@@ -1,5 +1,5 @@
 pkgbase = concise-keyring
-	pkgdesc = The Concise Keyring
+	pkgdesc = Allows for installing packages from Concise repositories
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/qYp/concise-keyring
