@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=bombadil-git
-pkgver=2.2.4.r0.gc187cc6
+pkgver=3.0.0.r5.g9b03122
 pkgrel=1
 arch=('any')
 pkgdesc='A dotfile manager with templating'
