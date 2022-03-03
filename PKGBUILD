@@ -2,7 +2,7 @@
 # Contributor: Alexander F. Rødseth <xyproto at archlinux dot org>
 
 pkgname=python-cma
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='The Covariance Matrix Adaptation Evolution Strategy'
 arch=(any)
