@@ -30,7 +30,7 @@ conflicts=('gazebo')
 _pkgname=gazebo
 
 source=("gazebo"::"git+https://github.com/osrf/gazebo" "patch"::"https://github.com/osrf/gazebo/pull/3174.patch")
-sha256sums=('SKIP' '00f342f4f62926b93ad506017561e15f2ec64bcca6a12b1184be5fa4c50f971e')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -51,6 +51,7 @@ build() {
   cmake ..  -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
+  make
 }
 
 package() {
