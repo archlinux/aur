@@ -3,11 +3,11 @@
 # This must be built against the version of dovecot being used,
 # otherwise it will fail to load and thus work.
 # Specify the version of dovecot to be used here:
-_dcpkgver=2.3.16
+_dcpkgver=2.3.18
 # Make sure to bump pkgrel if changing this.
 
 pkgname=dovecot-fts-flatcurve
-pkgver=r227.f91337d
+pkgver=r335.452ae0f
 pkgrel=1
 pkgdesc="Dovecot FTS Flatcurve plugin (Xapian)"
 arch=('x86_64')
