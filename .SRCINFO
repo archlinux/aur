@@ -1,0 +1,16 @@
+pkgbase = python-pycklink
+	pkgdesc = PYCKLINK
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://pypi.org/project/pycklink
+	arch = any
+	license = unkown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	options = !strip
+	source = pycklink-0.0.5.tar.gz::https://files.pythonhosted.org/packages/6e/87/f7b1d0785c0fdbeefa830b363b701f16e4f33fbea39f98d9174f08a05c86/pycklink-0.0.5.tar.gz
+	sha256sums = 01e761a36c2a36c9431521fcf5305507e550a70334175ab9b5148f572f54be93
+
+pkgname = python-pycklink
