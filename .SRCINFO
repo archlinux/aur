@@ -1,6 +1,6 @@
 pkgbase = shellcaster-bin
 	pkgdesc = Terminal-based TUI podcast manager
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/jeff-hughes/shellcaster
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = shellcaster-bin
 	provides = shellcaster
 	conflicts = shellcaster
 	backup = etc/shellcaster/config.toml
-	source = shellcaster-bin-2.0.0.tar.gz::https://github.com/jeff-hughes/shellcaster/releases/download/v2.0.0/shellcaster-2.0.0-archlinux-x86_64.tar.gz
-	sha256sums = 866612f43617508fa8d8ae9241df7d43008c88d6bd7dda7db85c6604be42a663
+	source = shellcaster-bin-2.0.1.tar.gz::https://github.com/jeff-hughes/shellcaster/releases/download/v2.0.1/shellcaster-2.0.1-archlinux-x86_64.tar.gz
+	sha256sums = 57039739f1393283f6d3fd4121ed6d200ff17cecc0d22438172f1c127f9f3cd6
 
 pkgname = shellcaster-bin
