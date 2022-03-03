@@ -1,0 +1,9 @@
+#!/bin/sh
+
+post_install() {
+  setcap CAP_NET_BIND_SERVICE+ep usr/bin/netinstall-gui
+}
+
+post_upgrade() {
+  post_install
+}    
