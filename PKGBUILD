@@ -4,7 +4,7 @@
 
 pkgname=saml2aws
 pkgver=2.34.0
-pkgrel=0
+pkgrel=1
 pkgdesc='CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Versent/${pkgname}"
