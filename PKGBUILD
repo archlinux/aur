@@ -14,7 +14,7 @@ provides=('emacs' 'emacs-seq')
 conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-git' 'emacs-seq')
 replaces=('emacs26-git' 'emacs27-git' 'emacs-git' 'emacs-seq')
 
-source=("https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/$pkgver/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mpsq/emacs-gcc-wayland-devel-builder/releases/download/$pkgver/$pkgver.tar.gz")
 sha512sums=("94775d04d6e6b35e814156baa0f9da946d63b240c0f9cbf28ae608a4cd4182e36cc03f658555d936ffa38ced9fd28691124f8a4dd72c1f443c1f6f23039133d5")
 
 package() {
