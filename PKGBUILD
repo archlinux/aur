@@ -1,7 +1,7 @@
 # Maintainer: Basso Daniele <daniele05 dot bass at gmail dot com>
 pkgname=oc-auxiliary-tools
 pkgver=20220198
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform GUI management tools for OpenCore"
 arch=(x86_64)
 url="https://github.com/ic005k/OCAuxiliaryTools"
