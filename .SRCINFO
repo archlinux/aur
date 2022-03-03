@@ -1,6 +1,6 @@
 pkgbase = xrock
 	pkgdesc = The low level tools for rockchip SOC with maskrom and loader mode support.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/xboot/xrock
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = xrock
 	depends = libusb
 	conflicts = xrock-git
 	options = !strip
-	source = xrock-1.0.3.tar.gz::https://ghproxy.com/https://github.com/xboot/xrock/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 7bd0f06d06186fbeed770dc3406a668742808d45f4f19383f6e5f907043c9ccc
+	source = xrock-1.0.4.tar.gz::https://github.com/xboot/xrock/archive/refs/tags/v1.0.4.tar.gz
+	sha256sums = 3878af78d81afc64d58f7975dd77047e83fa9872a815d9359ad2b748418d0cdc
 
 pkgname = xrock
