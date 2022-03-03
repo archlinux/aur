@@ -10,7 +10,7 @@ arch=(i686 x86_64)
 url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
 license=('custom:chromiumos')
 depends=(libutil-linux openssl)
-makedepends=(git libyaml trousers)
+makedepends=(git libyaml trousers flashrom)
 source=(git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=$_tag)
 sha256sums=('SKIP')
 
