@@ -4,7 +4,7 @@
 
 pkgname=clrmamepro
 pkgver=4.044b
-pkgrel=1
+pkgrel=3
 pkgdesc="A ROM manager for MAME."
 arch=('x86_64' 'i686')
 url="https://mamedev.emulab.it/clrmamepro/"
