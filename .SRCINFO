@@ -30,7 +30,7 @@ pkgname = amf-amdgpu-pro-cfe
 	depends = libx11
 	depends = vulkan-amdgpu-pro
 	depends = rocm-opencl-runtime
-	depends = libamdenc-amdgpu-pro
+	depends = libamdenc-amdgpu-pro-cfe
 	conflicts = amf-amdgpu-pro
 
 pkgname = amdgpu-pro-libgl-cfe

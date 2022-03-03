@@ -84,7 +84,7 @@ move_copyright() {
 package_amf-amdgpu-pro-cfe () {
     pkgdesc="AMDGPU Pro Advanced Multimedia Framework"
     license=('custom: AMDGPU-PRO EULA')
-    depends=("libglvnd" "libx11" "vulkan-amdgpu-pro" "rocm-opencl-runtime" "libamdenc-amdgpu-pro")
+    depends=("libglvnd" "libx11" "vulkan-amdgpu-pro" "rocm-opencl-runtime" "libamdenc-amdgpu-pro-cfe")
     conflicts=("amf-amdgpu-pro")
 
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amf-amdgpu-pro_${amf_ver}-${minor}_amd64.deb
