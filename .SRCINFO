@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-hasklig
 	pkgdesc = Patched font Hasklig (Hasklug) from nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
