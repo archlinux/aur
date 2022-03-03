@@ -1,18 +1,21 @@
 pkgbase = python-ci_watson
 	pkgdesc = CI helper for STScI Jenkins
-	pkgver = 0.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://ci_watson.readthedocs.io
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
+	checkdepends = python-pytest-astropy-header
+	checkdepends = python-astropy
 	makedepends = python-setuptools-scm
-	makedepends = python-pytest
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-numpydoc
 	makedepends = python-sphinx-automodapi
-	source = https://github.com/spacetelescope/ci_watson/archive/0.5.tar.gz
-	md5sums = b229fcdf7d74e8f7217945a8d83efc08
+	source = https://github.com/spacetelescope/ci_watson/archive/0.6.0.tar.gz
+	md5sums = 549ac916cb03e78f002a9fe64b187d4a
 
 pkgname = python-ci_watson
 	depends = python>=3.5
@@ -21,4 +24,3 @@ pkgname = python-ci_watson
 
 pkgname = python-ci_watson-doc
 	pkgdesc = Documentation for CI Watson
-

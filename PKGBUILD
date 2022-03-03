@@ -2,34 +2,37 @@
 pkgbase=python-ci_watson
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="CI helper for STScI Jenkins"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://ci_watson.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-pytest' 'python-sphinx_rtd_theme' 'python-numpydoc' 'python-sphinx-automodapi')
-#checkdepends=('python-pytest-astropy-header')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-sphinx_rtd_theme' 'python-numpydoc' 'python-sphinx-automodapi')
+checkdepends=('python-pytest-astropy-header' 'python-astropy')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('b229fcdf7d74e8f7217945a8d83efc08')
+md5sums=('549ac916cb03e78f002a9fe64b187d4a')
 
 prepare() {
     export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
+    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    python setup.py build_sphinx
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py${_pyver}.egg-info
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+    PYTHONPATH="../build/lib" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test
-#   pytest
+    PYTHONPATH="build/lib" pytest || warning "Tests failed"
 }
 
 package_python-ci_watson() {
@@ -39,12 +42,12 @@ package_python-ci_watson() {
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-ci_watson-doc() {
     pkgdesc="Documentation for CI Watson"
-    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.md
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
