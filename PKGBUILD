@@ -45,7 +45,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 pick_mr() {

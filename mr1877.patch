@@ -1,8 +1,8 @@
 Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
-Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1887
+Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1877
 Editor: Sung Mingi <FiestaLake@protonmail.com>
 Commit: 5f62dc8b585bbb7fe83b65ef56395a15c73e15af
-Last Updated: 02/11/22 (Mutter 41.3+4+g2405c3b3b.2)
+Last Updated: 02/11/22 (Mutter 41.3+4+g2405c3b3b-2)
 
 diff --git a/src/compositor/clutter-utils.c b/src/compositor/clutter-utils.c
 index 86d788562..3c7165f1e 100644
