@@ -1,7 +1,7 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=godot-cpp
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='C++ bindings for the Godot script API'
 arch=('x86_64')
@@ -13,10 +13,8 @@ source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot-cpp.pc.in
 )
-sha256sums=(
-  c62b679cc775bad1dae188839f43801c50d13e7a3dd7589b760d58dff83ac766
-  fc0b47b2b2edbeef088d0c1a124e597df7474d820eba833ce7822ed670f92974
-)
+sha256sums=('d8502bacde2e45231ee886b7154da61a453a77b0d286104b8761aaaffc2d6e38'
+            'fc0b47b2b2edbeef088d0c1a124e597df7474d820eba833ce7822ed670f92974')
 
 prepare() {
   cd "$srcdir"/godot-cpp-*
