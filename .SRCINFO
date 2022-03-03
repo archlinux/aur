@@ -1,7 +1,7 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
 	pkgver = 6.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
@@ -41,5 +41,4 @@ pkgname = qt6-base-headless
 	optdepends = md4c: C Markdown parser
 	optdepends = unixodbc: ODBC driver
 	optdepends = shared-mime-info: Freedesktop.org Shared MIME Info
-	optdepends = qt6-translations
-	optdepends = Translations
+	optdepends = qt6-translations: Translations
