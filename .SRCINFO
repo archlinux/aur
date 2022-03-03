@@ -1,7 +1,7 @@
 pkgbase = python-fildem-git
 	pkgdesc = This project is a fork of gnomehud with the adition of a global menu bar
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gonzaarcr/fildem
 	arch = i686
 	arch = x86_64
