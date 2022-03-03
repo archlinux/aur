@@ -1,7 +1,7 @@
 pkgbase = podman-tui-git
 	pkgdesc = Podman Terminal User Interface
 	pkgver = 0.1.0.r39.g26da2fa
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/containers/podman-tui
 	arch = x86_64
 	license = APACHE
@@ -9,6 +9,8 @@ pkgbase = podman-tui-git
 	makedepends = git
 	makedepends = btrfs-progs
 	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
 	provides = podman-tui
 	conflicts = podman-tui
 	source = podman-tui::git+https://github.com/containers/podman-tui.git#branch=main

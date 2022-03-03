@@ -2,12 +2,12 @@
 pkgname="podman-tui-git"
 _pkgname="podman-tui"
 pkgver=0.1.0.r39.g26da2fa
-pkgrel=2
+pkgrel=3
 pkgdesc="Podman Terminal User Interface"
 arch=('x86_64')
 url="https://github.com/containers/podman-tui"
 license=('APACHE')
-makedepends=('go>=1.17' 'git' 'btrfs-progs' 'make')
+makedepends=('go>=1.17' 'git' 'btrfs-progs' 'make' 'gcc' 'pkgconf')
 conflicts=('podman-tui')
 provides=('podman-tui')
 source=("podman-tui::git+https://github.com/containers/podman-tui.git#branch=main")
