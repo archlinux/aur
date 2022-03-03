@@ -1,0 +1,20 @@
+--- a/Makefile	2021-12-23 10:15:03.000000000 +0200
++++ b/Makefile	2022-03-03 12:00:19.621310928 +0200
+@@ -13,7 +13,7 @@
+ 
+ JDBC_CONFIG = jdbc_config
+ 
+-LIBDIR=/usr/lib64/
++LIBDIR=/usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server
+ 
+ SHLIB_LINK += -L$(LIBDIR) -ljvm
+ 
+@@ -32,7 +32,7 @@
+ all:$(TRGTS)
+ 
+ JAVAFILES:
+-	javac $(JFLAGS) $(JAVA_SOURCES)
++	/usr/lib/jvm/java-8-openjdk/bin/javac $(JFLAGS) $(JAVA_SOURCES)
+ 
+ # the db name is hard-coded in the tests
+ override USE_MODULE_DB =
