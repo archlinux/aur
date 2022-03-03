@@ -1,7 +1,7 @@
 pkgbase = clrmamepro
 	pkgdesc = A ROM manager for MAME.
 	pkgver = 4.044b
-	pkgrel = 1
+	pkgrel = 3
 	url = https://mamedev.emulab.it/clrmamepro/
 	arch = x86_64
 	arch = i686
