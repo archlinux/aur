@@ -13,7 +13,7 @@ pkgver=8.update9
 pkgrel=1
 pkgdesc="Brainstorming and Mind Mapping Software"
 arch=('x86_64')
-url="https://www.xmind.net"
+url="https://www.xmind.net/xmind8-pro/"
 license=('EPL' 'LGPL')
 depends=('java-runtime>=8')
 optdepends=(
