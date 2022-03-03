@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.2.2
+_qtver=6.2.3
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -21,23 +21,24 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 groups=(qt6)
 conflicts=(qt6-base)
 provides=(qt6-base)
-options=(!lto)
+options=(debug)
 _pkgfn="qtbase-everywhere-src-$_qtver"
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
-        qt6-base-cflags.patch
-        qt6-base-nostrip.patch)
-sha256sums=('85ab9180180c2eaf84cd11ae4c6d5a6a69f2f8fd7260aaccfd91a3e7e7232c1a'
-            'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c'
-            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
+        qmake-cflags.patch
+        qmake-config.patch)
+sha256sums=('34d6d0072e197241463c417ad72610c3d44e2efd6062868e9a95283103d75df4'
+            '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
+            '4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa')
 
 prepare() {
-  patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
-  patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
+  patch -d $_pkgfn -p1 < qmake-cflags.patch # Use system CFLAGS
+  patch -d $_pkgfn -p1 < qmake-config.patch # Don't strip binaries with qmake and use -ltcg, cf. QTBUG-73834
 }
 
 build() {
   cmake -B build -S "$_pkgfn" -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DINSTALL_BINDIR=lib/qt6/bin \
     -DINSTALL_PUBLICBINDIR=usr/bin \
     -DINSTALL_LIBEXECDIR=lib/qt6 \
@@ -50,6 +51,7 @@ build() {
     -DQT_FEATURE_journald=ON \
     -DQT_FEATURE_openssl_linked=ON \
     -DQT_FEATURE_system_sqlite=ON \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     \
     -DQT_FEATURE_gui=OFF \
     -DQT_FEATURE_widgets=OFF \
@@ -60,6 +62,7 @@ build() {
 }
 
 package() {
+  optdepends+=(qt6-translations Translations)
   DESTDIR="$pkgdir" cmake --install build
 
   install -Dm644 $_pkgfn/LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgbase
