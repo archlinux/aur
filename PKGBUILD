@@ -2,7 +2,7 @@
 
 pkgname=mopidy-musicbox
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web Client for Mopidy Music Server and the Pi MusicBox"
 arch=('any')
 url="https://github.com/pimusicbox/mopidy-musicbox-webclient"
