@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-firefox
-pkgver=r36.767cf57
+pkgver=r54.051ccfd
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox"
@@ -56,7 +56,7 @@ patch_nghttp2 () {
 build_nghttp2 () {
   cd ${srcdir}
   cd ${NGHTTP2_VERSION}
-  ./configure --prefix ${srcdir}/${NGHTTP2_VERSION}/build
+  ./configure --prefix --with-pic ${srcdir}/${NGHTTP2_VERSION}/build
   make
   make install
 }
