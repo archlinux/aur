@@ -1,7 +1,7 @@
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 _name=bicep
 pkgname=$_name-bin
-pkgver=0.4.1008
+pkgver=0.4.1272
 pkgrel=1
 pkgdesc="Bicep is a declarative language for describing and deploying Azure resources"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=($_name)
 options=('!strip')
 source=("${pkgname}-${pkgver}::https://github.com/Azure/${_name}/releases/download/v${pkgver}/${_name}-linux-x64"
   "https://raw.githubusercontent.com/Azure/${_name}/v${pkgver}/LICENSE")
-b2sums=('822883fce41d191aa6b35fe1a2b3c3582ef7d7d0d5038433b735800eb56707232fc16f361ff1b1ecf9522b46ef18967487078ac8ae8854b63c02ac2222ef08db'
+b2sums=('13b3f9573c0b49a5a9b12c6f448b7fe61e093dd02b49e7f30b5cc4edd1f364008132fea436faecc5d2cfe29264a89ef22cca5e1f652fa5b0ff2a131e9958cbe7'
         '1e0a143630bdf1d10e34a180d83b967ca132c6c976b5a7c93c1452b6747d3f05ed0aab8c7ef7436af61971ebab7b9fc6aa7378784e3776d8913c6825a6cb3e74')
 
 package() {
