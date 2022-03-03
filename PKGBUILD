@@ -14,7 +14,7 @@ conflicts=('openlp')
 makedepends=('qt5-tools' 'git' 'python-pip')
 depends=('python>=3.10' 'python<3.11' 'python-pyqt5' 'phonon-qt5'
          'python-pyqt5-webengine' 'python-flask' 'python-flask-cors'
-         'python-pymediainfo'
+         'python-pymediainfo' 'python-qrcode'
          'python-chardet' 'python-lxml' 'python-six'
          'python-beautifulsoup4' 'python-pyenchant' 'python-dbus'
          'python-alembic' 'mediainfo' 'qt5-multimedia' 'python-zeroconf'

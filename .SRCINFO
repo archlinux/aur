@@ -17,6 +17,7 @@ pkgbase = openlp-git
 	depends = python-flask
 	depends = python-flask-cors
 	depends = python-pymediainfo
+	depends = python-qrcode
 	depends = python-chardet
 	depends = python-lxml
 	depends = python-six
