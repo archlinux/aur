@@ -3,15 +3,19 @@
 
 pkgname=marktext-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.16.3
-pkgrel=2
+pkgver=0.17.0
+pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
-arch=('x86_64')
-url='https://marktext.app'
-license=('MIT')
+arch=(x86_64)
+url=https://marktext.app
+license=(MIT)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-depends=('gtk3' 'libsecret' 'libxkbfile' 'libxss' 'nss')
+depends=(gtk3
+         libsecret
+         libxkbfile
+         libxss
+         nss)
 _source() {
 	local _github=https://github.com/marktext/marktext
 	echo $pkgname-$pkgver.tar.gz::$_github/releases/download/v$pkgver/$_pkgname-x64.tar.gz
@@ -21,8 +25,8 @@ _source() {
 	done
 }
 source=($(_source))
-sha256sums=('0327ec9e576de8e08664342c1edc59ed6fb13bb90d8bfdac30482089e7bd5ec0'
-            '3be693fa7d0b652543c7f74de0df0272ead88743de7be24f286d82d78966fcb3'
+sha256sums=('5a699dfa9f82edf62cb6cd054844b9bcbf20c91a2052a415e6efc9fac5c15442'
+            '95c55fae2e35c1b022d69736e496b04b24caba9cb7d7a7d4613076ea85d2b7cf'
             '27ef0b9185f38bdf516db32fa8900e3bfd182937bb14f63a978713d74ad97fa2'
             'f67f6826499b5fa25a931b706a7d500972c049fb23f406f4692206dfe1a302fc'
             'f6a3e0673b78d9e04e60afba4ed05ea9967c52308175a80f07f06b1125bafebe'
@@ -33,22 +37,22 @@ sha256sums=('0327ec9e576de8e08664342c1edc59ed6fb13bb90d8bfdac30482089e7bd5ec0'
             'bb55503655caa407094514c9f086aca13ebd66bd178bfe3394c63464a66ba727')
 
 prepare() {
-    sed -i -e "s|Exec=.*|Exec=/usr/lib/marktext/marktext %F|" \
-        "$pkgname-$pkgver.desktop"
+	sed -i -e "s|Exec=.*|Exec=/usr/lib/marktext/marktext %F|" \
+		"$pkgname-$pkgver.desktop"
 }
 
 package() {
-    install -d "$pkgdir/usr/lib"
-    cp -rT "$_pkgname-x64" "$pkgdir/usr/lib/$_pkgname"
+	install -d "$pkgdir/usr/lib"
+	cp -rT "$_pkgname-x64" "$pkgdir/usr/lib/$_pkgname"
 	install -d "$pkgdir/usr/bin"
-    ln -sf "/usr/lib/marktext/marktext" "$pkgdir/usr/bin/marktext"
-    install -Dm644 "$pkgname-$pkgver.desktop" \
-        "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    for s in 16 24 32 48 64 128 256 512; do
-        install -Dm644 "$pkgname-${s}x${s}.png" \
-            "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/$_pkgname.png"
-    done
-    cd "$_pkgname-x64"
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
-        {LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
+	ln -sf "/usr/lib/marktext/marktext" "$pkgdir/usr/bin/marktext"
+	install -Dm644 "$pkgname-$pkgver.desktop" \
+		"$pkgdir/usr/share/applications/$_pkgname.desktop"
+	for s in 16 24 32 48 64 128 256 512; do
+		install -Dm644 "$pkgname-${s}x${s}.png" \
+			"$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/$_pkgname.png"
+	done
+	cd "$_pkgname-x64"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" \
+		{LICENSE,LICENSE.electron.txt,LICENSES.chromium.html}
 }
