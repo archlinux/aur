@@ -11,7 +11,7 @@ makedepends=(glew glfw libxcb)
 provides=()
 conflicts=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz" "$pkgname.desktop")
-md5sums=('2e579ee59d1bb4781ce11fb3fe240aa5' '609d3c45ab44be86dc3251346f2240d7') #autofill using updpkgsums
+md5sums=('8404a69d6c0cf053c1b1a3a6e67133a6' '609d3c45ab44be86dc3251346f2240d7') #autofill using updpkgsums
 
 build() {
   cd "$srcdir/OCAuxiliaryTools-$pkgver"
