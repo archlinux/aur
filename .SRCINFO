@@ -1,6 +1,6 @@
 pkgbase = drgn
 	pkgdesc = Programmable debugger
-	pkgver = 0.0.16
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://github.com/osandov/drgn
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = drgn
 	depends = libelf
 	depends = libkdumpfile
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/d/drgn/drgn-0.0.16.tar.gz
-	sha256sums = a6b50233c8c415a1948736294f68a6bdf32dfe9e3752b28c0468f84043dcfd94
+	source = https://files.pythonhosted.org/packages/source/d/drgn/drgn-0.0.18.tar.gz
+	sha256sums = 2e2fec7ffa706bc6febf64dea8f5a9600d1e0f784b6e2f00f08e57cf38a4f36c
 
 pkgname = drgn
