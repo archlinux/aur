@@ -10,18 +10,20 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=apache-mod_auth_mellon
-pkgver=0.13.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Authentication module for Apache that authenticates the user against a SAML 2.0 IdP, and grants access to directories depending on attributes received from the IdP."
 arch=('i686' 'x86_64')
-url="https://github.com/UNINETT/mod_auth_mellon"
+url="https://github.com/latchset/mod_auth_mellon"
 license=('LGPL')
 depends=('apache' 'lasso')
-source=("https://github.com/UNINETT/mod_auth_mellon/releases/download/v${pkgver}/mod_auth_mellon-${pkgver}.tar.gz")
-sha512sums=('ad0479be8aa94404a832d11f7ead1f704d86cab2f11aa6f90b895be9b4028026f15ec8ee85260ca76f4a001c115ff14b4b7c9e8da74676a1f0295f6c2f0a1341')
+source=("https://github.com/latchset/mod_auth_mellon/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('477ac302fda9ed33b2ca51e88379250a41cc85111e71cacc8ba9f16cd8a2b63af6393fb038fc8f5c211b97926ef368c5989c92570c2e3c9eae072c7b4d32d7d5')
 
 build() {
   cd "$srcdir"/mod_auth_mellon-$pkgver
+  ./autogen.sh
+  ./configure
   apxs -L/usr/lib -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libxml2 -I/usr/include/xmlsec1 -c mod_auth_mellon.c
 }
 
