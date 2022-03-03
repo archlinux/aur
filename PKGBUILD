@@ -37,4 +37,5 @@ package() {
 	cd "${_pkgbase}"
 	NAME="${pkgname}" make PREFIX=/usr DESTDIR="${pkgdir}" clean install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 Nu1LL1nuX-DWM.desktop "${pkgdir}/usr/share/xsessions/Nu1LL1nuX-DWM.desktop"
 }
