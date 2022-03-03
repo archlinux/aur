@@ -1,0 +1,14 @@
+[Unit]
+Description=Rdio Scanner
+
+[Service]
+User=rdio-scanner
+Group=rdio-scanner
+Environment=LC_ALL=en_US.utf8
+WorkingDirectory=/var/lib/rdio-scanner
+ExecStart=/usr/bin/rdio-scanner -base_dir /var/lib/rdio-scanner
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
