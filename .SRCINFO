@@ -1,13 +1,13 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (version 2, binary packaging)
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://github.com/kata-containers/kata-containers/releases/download/2.3.2/kata-static-2.3.2-x86_64.tar.xz
-	sha512sums = 26b6e477eccc3d07b2615e6c696cf1bd56e919e87a751347a09496d083c25319ff62723ca80edec2a3066d9ae3177c94a43b24e527d21a8a5f138c3b23463300
-	b2sums = e586b88b5d7b7224f68f0043059cf1b0431984b1b36f7b29741b808141eec3aea46fa653913fbaf640a8b3bad19aeecd35efbdb48d1b6021ec85ab1b38205908
+	source = https://github.com/kata-containers/kata-containers/releases/download/2.3.3/kata-static-2.3.3-x86_64.tar.xz
+	sha512sums = 47976d7533794c7ba19123ea995e1fc4cb56c11f4ee4b46b0ad332b8eeca62a339e61b0ef30764b69ab00633f1fc396033dd1b911aa11d335fe9a3a12ee94123
+	b2sums = aec0d4dfa246b953afba6e23aac6022725f817c07f5691cd83757947b7e84b0602ebdac07ccfa2337211513dd3d9761991b92205b78880dd28fcd5a879dae403
 
 pkgname = kata-runtime-bin
 	install = kata2-runtime.install

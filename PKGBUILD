@@ -10,7 +10,7 @@ pkgname=(
   linux-kata-bin
   #kata-containers-static
 )
-pkgver="2.3.2"
+pkgver="2.3.3"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (version 2, binary packaging)"
@@ -19,9 +19,9 @@ url="https://katacontainers.io"
 license=('Apache')
 
 source=("https://github.com/kata-containers/kata-containers/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz")
-sha512sums=(26b6e477eccc3d07b2615e6c696cf1bd56e919e87a751347a09496d083c25319ff62723ca80edec2a3066d9ae3177c94a43b24e527d21a8a5f138c3b23463300)
-b2sums=(    e586b88b5d7b7224f68f0043059cf1b0431984b1b36f7b29741b808141eec3aea46fa653913fbaf640a8b3bad19aeecd35efbdb48d1b6021ec85ab1b38205908)
-b3sums=(    48681061e9892ad9c954ada365f5675a8cf5163b060792ee13586741bbccb769)
+sha512sums=(47976d7533794c7ba19123ea995e1fc4cb56c11f4ee4b46b0ad332b8eeca62a339e61b0ef30764b69ab00633f1fc396033dd1b911aa11d335fe9a3a12ee94123)
+b2sums=(    aec0d4dfa246b953afba6e23aac6022725f817c07f5691cd83757947b7e84b0602ebdac07ccfa2337211513dd3d9761991b92205b78880dd28fcd5a879dae403)
+b3sums=(    9f01aa881995dbbc98a056be0cc97ec986d81ce90d75bee5cc90aaf431b668b1)
 
 package_kata-runtime-bin() {
   optdepends=(
