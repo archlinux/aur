@@ -1,3 +1,6 @@
-pkg
-saml2aws*
-src
+/pkg/
+/src/
+**.pkg.tar
+**.pkg.tar.zst
+**.tar.gz
+**.zip

@@ -1,13 +1,22 @@
 pkgbase = saml2aws-bin
-	pkgdesc = CLI tool to login and retrieve AWS temporary credentials using a SAML IDP
+	pkgdesc = CLI tool which enables you to login and retrieve AWS temporary credentials using a SAML IDP
 	pkgver = 2.34.0
-	pkgrel = 1
-	url = https://github.com/versent/saml2aws
+	pkgrel = 2
+	url = https://github.com/Versent/saml2aws
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = MIT
 	provides = saml2aws
 	conflicts = saml2aws
-	source = https://github.com/versent/saml2aws/releases/download/v2.34.0/saml2aws_2.34.0_linux_amd64.tar.gz
-	b2sums = 65a197c66e38b50baf9160179de167d4a0bc0224bb42ea2298a4b7354691aa787e7d0d5933c58da690b7e3e0fa44413a1a999cdddeee5dfbeff4b21f079d5ff5
+	source_x86_64 = https://github.com/Versent/saml2aws/releases/download/v2.34.0/saml2aws_2.34.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a3396182237adabf53657fb915dc7d9d5cce01e76d8fb120dd95f7f61272fa9c
+	source_aarch64 = https://github.com/Versent/saml2aws/releases/download/v2.34.0/saml2aws_2.34.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1f8f323ed4676eef59efb0926609a39c9a09247d84c39a540767fad3c7fcb95e
+	source_armv7h = https://github.com/Versent/saml2aws/releases/download/v2.34.0/saml2aws_2.34.0_linux_armv6.tar.gz
+	sha256sums_armv7h = 72dab8c63c3331f5781d4cb53c8aef194f25c872396ad5e99c26101bbf2325e4
+	source_armv6h = https://github.com/Versent/saml2aws/releases/download/v2.34.0/saml2aws_2.34.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 72dab8c63c3331f5781d4cb53c8aef194f25c872396ad5e99c26101bbf2325e4
 
 pkgname = saml2aws-bin
