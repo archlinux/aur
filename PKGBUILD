@@ -1,8 +1,7 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 # Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
 
 pkgname=scorecard
-pkgver=3.2.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Security health metrics for Open Source'
 arch=(any)
@@ -10,7 +9,7 @@ url='https://github.com/ossf/scorecard'
 license=(APACHE)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ossf/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('9f54dc9861e0d0fd1427a9a40dfd041abcde3d9f81b7c25608dff8a0a63399b48f2f04f2caa6813e5d0139b4dd0e267146a2b81234f439b745299feacd8e616f')
+b2sums=('f8a4a13b38c671210868bcd47f6ee8cb05f0931c5a25d368f3a5687d1a3625f06b5f85ccf4e1e443354395e483a797b0b53c3e759fcf2b819b9d7d89f366d5fe')
 
 build() {
   cd $pkgname-$pkgver
