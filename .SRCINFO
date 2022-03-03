@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-harfbuzz-static
 	pkgdesc = OpenType text shaping engine (mingw-w64)
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
@@ -17,16 +17,16 @@ pkgbase = mingw-w64-harfbuzz-static
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = git+https://github.com/harfbuzz/harfbuzz.git#commit=be91d2917d9860326cb5fd1d03ffe1042a72f6d3
+	source = git+https://github.com/harfbuzz/harfbuzz.git#commit=8d1b000a3edc90c12267b836b4ef3f81c0e53edc
 	sha256sums = SKIP
 
 pkgname = mingw-w64-harfbuzz-static
-	provides = mingw-w64-harfbuzz=3.2.0
+	provides = mingw-w64-harfbuzz=4.0.0
 	conflicts = mingw-w64-harfbuzz
 
 pkgname = mingw-w64-harfbuzz-static-icu
 	pkgdesc = OpenType text shaping engine (ICU integration, mingw-w64)
 	depends = mingw-w64-harfbuzz-static
 	depends = mingw-w64-icu
-	provides = mingw-w64-harfbuzz-icu=3.2.0
+	provides = mingw-w64-harfbuzz-icu=4.0.0
 	conflicts = mingw-w64-harfbuzz-icu
