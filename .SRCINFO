@@ -1,0 +1,16 @@
+pkgbase = python-bflb-crypto-plus
+	pkgdesc = PyCryptoPlus is an extension to the Python Crypto module (www.pycrypto.org).
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://pypi.org/project/bflb-crypto-plus
+	arch = any
+	license = LGPL3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	options = !strip
+	source = bflb_crypto_plus-1.0.tar.gz::https://files.pythonhosted.org/packages/b1/a4/bda733fe91c9b3424627597768bf8ab2cf683f1e81a88544d126f94536bd/bflb_crypto_plus-1.0.tar.gz
+	sha256sums = b1b483874e5d2ecb49f9f85259715ad94b76f9627b3de9fa677f6ca5ce666242
+
+pkgname = python-bflb-crypto-plus
