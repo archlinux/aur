@@ -3,7 +3,7 @@
 _pkgname=libegit2
 pkgname=emacs-${_pkgname}-wbundled-git
 pkgver=r463.77bd28a
-pkgrel=2
+pkgrel=3
 pkgdesc='Emacs bindings for libgit2 without bundled libgit2'
 arch=('i686' 'x86_64')
 url="https://github.com/magit/libegit2"
