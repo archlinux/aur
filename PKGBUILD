@@ -2,7 +2,7 @@
 
 pkgname=cubiomes-viewer
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An efficient graphical Minecraft seed finder and map viewer"
 arch=("x86_64")
 url="https://github.com/Cubitect/cubiomes-viewer"
@@ -21,7 +21,7 @@ build() {
 
 package() {
     install -Dm755 "cubiomes-viewer/build/cubiomes-viewer" "${pkgdir}/usr/bin/cubiomes-viewer"
-    install -Dm644 "cubiomes-viewer/icons/map.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "cubiomes-viewer/rc/icons/map.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     gendesk -f -n --pkgname "${pkgname}" \
         --pkgdesc "$pkgdesc" \
         --name "Cubiomes Viewer" \
