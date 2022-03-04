@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-quick3d
-_qtver=5.15.2
-pkgver=5.15.2+kde+r19
-pkgrel=5
-_commit=3e3e53c834b25dc2959dd30f319d12d6f84ee1e3
+_basever=5.15.3
+pkgver=5.15.3+kde+r2
+pkgrel=1
+_commit=1ede2ac20170357b3e8d7d9810e5474e08170827
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=('qt5-declarative')
 makedepends=('git' 'assimp')
 optdepends=('assimp: assimp import plugin')
 groups=('qt' 'qt5')
-_pkgfqn=qtquick3d
+_pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         qt5-quick3d-assimp-5.1.patch)
 sha256sums=('SKIP'
@@ -23,16 +23,12 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   mkdir -p build
-
-  cd $_pkgfqn
-  git revert -n 80196af36528e66826549a8b54d6cc5988db1622 # Revert version bump
-
-  patch -p1 < ../qt5-quick3d-assimp-5.1.patch # Fix build with assimp 5.1
+  patch -d $_pkgfqn -p1 < qt5-quick3d-assimp-5.1.patch # Fix build with assimp 5.1
 }
 
 build() {
