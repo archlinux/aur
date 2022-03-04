@@ -1,6 +1,6 @@
 pkgbase = cargo-about-git
 	pkgdesc = Cargo plugin to generate list of all licenses for a crate (git)
-	pkgver = 0.4.7.r0.g58b60df
+	pkgver = 0.5.0.r0.gb167704
 	pkgrel = 1
 	url = https://github.com/EmbarkStudios/cargo-about
 	arch = x86_64
