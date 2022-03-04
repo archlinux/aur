@@ -10,10 +10,10 @@
 
 pkgname=chromium-no-extras
 _pkgname=chromium
-pkgver=98.0.4758.102
+pkgver=99.0.4844.51
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=5
+_gcc_patchset=3
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
 arch=('x86_64')
 url="https://www.chromium.org/Home"
@@ -33,26 +33,20 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        downgrade-duplicate-peer-error-to-dvlog.patch
         fix-build-break-with-system-libdrm.patch
         sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
-        breakpad-fix-for-non-constant-SIGSTKSZ.patch
+        webcodecs-stop-using-AudioOpusEncoder.patch
         use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
         sql-make-VirtualCursor-standard-layout-type.patch
-        chromium-93-ffmpeg-4.4.patch
-        unbundle-ffmpeg-av_stream_get_first_dts.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('415b47e912766cd07f9f52e95bc6470b835acf1d6f566ae32e66ba8be608f33e'
+sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'f561145514e9d30a696a82f6a6a4eca06e664b58d7cda30dad9afb2cef341a4d'
-            '291c6a6ad44c06ae8d1b13433f0c4e37d280c70fb06eaa97a1cc9b0dcc122aaa'
+            '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
             'edf4d973ff197409d319bb6fbbaa529e53bc62347d26b0733c45a116a1b23f37'
             'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
-            'b4d28867c1fabde6c50a2cfa3f784730446c4d86e5191e0f0000fbf7b0f91ecf'
-            '9c9c280be968f06d269167943680fb72a26fbb05d8c15f60507e316e8a9075d5'
+            '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
+            '34bcb151c0bc51ada5aa7beda6e87356e0eaafa83a621e11e5803717adc39ffc'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
-            '1a9e074f417f8ffd78bcd6874d8e2e74a239905bf662f76a7755fa40dc476b57'
-            '1f0c1a7a1eb67d91765c9f28df815f58e1c6dc7b37d0acd4d68cac8e5515786c'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -108,22 +102,10 @@ prepare() {
   # runtime -- this allows signing into Chromium without baked-in values
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
-  # Patches to build with ffmpeg 4.4; remove when ffmpeg 5.0 moves to stable
-  if ! pkg-config --atleast-version 59 libavformat; then
-    # Fix build with older ffmpeg
-    patch -Np1 -i ../chromium-93-ffmpeg-4.4.patch
-
-    # Substitute the custom function 'av_stream_get_first_dts' for ffmpeg 4.4;
-    # drop this for ffmpeg 5.0 which is patched to include the above function.
-    # https://crbug.com/1251779
-    patch -Np1 -i ../unbundle-ffmpeg-av_stream_get_first_dts.patch
-  fi
-
   # Upstream fixes
-  patch -Np1 -F3 -i ../downgrade-duplicate-peer-error-to-dvlog.patch
   patch -Np1 -i ../fix-build-break-with-system-libdrm.patch
   patch -Np1 -i ../sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
-  patch -Np1 -d third_party//breakpad/breakpad <../breakpad-fix-for-non-constant-SIGSTKSZ.patch
+  patch -Np1 -i ../webcodecs-stop-using-AudioOpusEncoder.patch
   patch -Np1 -d third_party/pdfium <../use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
