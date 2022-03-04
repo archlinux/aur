@@ -3,7 +3,7 @@
 
 _pkgname=FishFight
 pkgname=fishfight-git
-pkgver=0.4.1.r13.g187abc3
+pkgver=0.4.2.r0.g8fd0850
 pkgrel=1
 pkgdesc="A tactical 2D shooter game"
 arch=('x86_64')
