@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_qtver=5.15.2
-pkgver=5.15.2+kde+r39
-pkgrel=3
-_commit=dba14d48611b9e9d59576172658779ab4a39b416
+_basever=5.15.3
+pkgver=5.15.3+kde+r18
+pkgrel=1
+_commit=6d926ec2739f2289c6b0bbfbc325700046e1ceee
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -13,21 +13,18 @@ pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics'
 depends=('qt5-declarative' 'assimp')
 makedepends=('git' 'vulkan-headers')
 groups=('qt' 'qt5')
-_pkgfqn=qt3d
+_pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
 options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   mkdir -p build
-
-  cd $_pkgfqn
-  git revert -n 997ff3ad21b9303aa3321a86e5c5b9cfcfc2f807 # Revert version bump
 }
 
 build() {
