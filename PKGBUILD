@@ -7,16 +7,18 @@ pkgname=dwarffortress-ironhand
 _pkgname=dwarffortress
 _pkgver=47_05
 pkgver="0.${_pkgver/_/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A single-player fantasy game in which you build a dwarven outpost or play an adventurer in a randomly generated world"
 arch=('x86_64' 'i686')
 url="http://www.bay12games.com/dwarves/"
 license=('custom:dwarffortress')
-depends=(gtk2 glu sdl_image libsndfile openal sdl_ttf glew gcc-libs glib2)
+depends=(gcc-libs glew glib2 glu gtk3 libsndfile openal sdl sdl_image sdl_ttf)
 makedepends=(git cmake)
-optdepends=('nvidia-utils: If you have nvidia graphics'
+optdepends=(
   'alsa-lib: for alsa sound'
-  'libpulse: for pulse sound')
+  'libpulse: for pulse sound'
+  'nvidia-utils: If you have nvidia graphics'
+)
 options=('!strip' '!buildflags')
 install=${_pkgname}.install
 # I made a fucking github repo with the sole purpose of unfucking df a bit
