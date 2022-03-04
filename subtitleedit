@@ -1,2 +1,2 @@
 #!/bin/sh
-exec mono /usr/share/subtitleedit/SubtitleEdit.exe "$@"
+exec mono /opt/subtitleedit/SubtitleEdit.exe "$@"

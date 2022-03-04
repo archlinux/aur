@@ -1,41 +1,40 @@
+# Maintainer: Nocifer <apmichalopoulos at gmail dot com>
+# Contributor: eduardosm
+
 pkgname=subtitleedit
 pkgver=3.6.4
-pkgrel=1
-pkgdesc="A subtitle editor"
+pkgrel=2
+pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
-url="http://www.nikse.dk/subtitleedit/"
+url='https://www.nikse.dk/SubtitleEdit'
 license=('GPL3')
 depends=('mono')
-optdepends=(
-    'vlc: Video support'
-    'mpv: Video support'
-    'tesseract: OCR support'
-)
-makedepends=('unzip' 'imagemagick')
-source=(
-    "https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/SE${pkgver//./}.zip"
-    "https://github.com/SubtitleEdit/subtitleedit/raw/$pkgver/src/ui/Icons/SE.ico"
-    "subtitleedit"
-    "subtitleedit.desktop"
-)
-sha256sums=(
-    '9577ac0b570213e7d49acf0cfa8111f843c9ded4a7a962f83ddaf00e345fb843'
-    '7efc7a341ee949f5b3742741a1431c0af7ab14aa1d7f35a654f6ec2eb4fc9457'
-    '2060b2b85e2c50152a266a3697efe7b9fbfe7c2af4cdf6a9c6af8a30a6169b52'
-    '32977a0b82619f04e1ce904ac9c02ced410aa6cb563e86e90ce46225dc63adee'
-)
+optdepends=('vlc: Video support'
+            'mpv: Video support'
+            'tesseract: OCR support')
+makedepends=('unzip')
+source=("https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/SE${pkgver//./}.zip"
+        'subtitleedit'
+        'subtitleedit.desktop'
+        'subtitleedit.png')
+sha256sums=('9577ac0b570213e7d49acf0cfa8111f843c9ded4a7a962f83ddaf00e345fb843'
+            '51ae2411ed70a40607a78dd863db98bf5692bfaff7f8c230ddf82f0dc78d1cc3'
+            '54ffb47864611c6aebb29ecfabd49089cfe6decc320e3f25043c39ec7f27a5fb'
+            '700d09858ac76341054d7edc79952fbfca70df674d2b567e3713579e5963f631')
+
 noextract=("SE${pkgver//./}.zip")
 
 package() {
-    install -d "$pkgdir/usr/share/subtitleedit"
-    unzip "$srcdir/SE${pkgver//./}.zip" -d "$pkgdir/usr/share/subtitleedit"
-    rm -r "$pkgdir/usr/share/subtitleedit/Tesseract302"
-    rm "$pkgdir/usr/share/subtitleedit/Hunspell"{x86,x64}.dll
-    touch "$pkgdir/usr/share/subtitleedit/.PACKAGE-MANAGER"
+    install -dm755 "$pkgdir/opt/subtitleedit"
+    unzip "$srcdir/SE${pkgver//./}.zip" -d "$pkgdir/opt/subtitleedit"
 
-    install -Dm755 "$srcdir/subtitleedit" "$pkgdir/usr/bin/subtitleedit"
+    rm -r "$pkgdir/opt/subtitleedit/Tesseract302"
+    rm "$pkgdir/opt/subtitleedit/Hunspell"{x86,x64}.dll
+    touch "$pkgdir/opt/subtitleedit/.PACKAGE-MANAGER"
+
+    install -Dm644 "$srcdir/subtitleedit" "$pkgdir/usr/bin/subtitleedit"
+
     install -Dm644 "$srcdir/subtitleedit.desktop" "$pkgdir/usr/share/applications/subtitleedit.desktop"
 
-    install -d "$pkgdir/usr/share/pixmaps"
-    convert "$srcdir/SE.ico[9]" "$pkgdir/usr/share/pixmaps/subtitleedit.png"
+    install -Dm644 "$srcdir/subtitleedit.png" "$pkgdir/usr/share/pixmaps/subtitleedit.png"
 }
