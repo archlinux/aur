@@ -1,0 +1,28 @@
+pkgbase = osirisedit
+	pkgdesc = A wavetable editor for the Osiris Eurorack synthesizer module.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://www.modbap.com/pages/osirisedit
+	arch = x86_64
+	groups = pro-audio
+	license = GPL3
+	makedepends = git
+	depends = gtk2
+	depends = jansson
+	depends = libsamplerate
+	depends = libsndfile
+	depends = sdl2
+	source = osirisedit::git+https://github.com/switchupcb/OsirisEdit#tag=v1.1.0
+	source = imgui::git+https://github.com/AndrewBelt/imgui.git#commit=cfb1dd6
+	source = lodepng::git+https://github.com/lvandeve/lodepng#commit=8a0f16a
+	source = osdialog::git+https://github.com/AndrewBelt/osdialog#commit=e66caf0
+	source = pffft::git+https://github.com/marton78/pffft#commit=c5062dc
+	source = osirisedit-makefile-flags.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 8b573b67aae5cf0375eede9d85356aef
+
+pkgname = osirisedit
