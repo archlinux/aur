@@ -2,7 +2,7 @@
 # contributor: Mikhail felixoid Shiryaev <mr.felixoid na gmail com>
 
 pkgname=vim-webapi-git
-pkgver=0.3.39.g10b8e92
+pkgver=0.3.43.gb09cbd3
 pkgrel=1
 pkgdesc="Vim Interface to Web API"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(vim curl)
 makedepends=(git)
 provides=(vim-webapi)
 conflicts=(vim-webapi)
-source=(git://github.com/mattn/webapi-vim.git)
+source=(git+https://github.com/mattn/webapi-vim.git)
 md5sums=(SKIP)
 install=vim-helptags.install
 
