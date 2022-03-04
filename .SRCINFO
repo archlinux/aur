@@ -1,6 +1,6 @@
 pkgbase = curl-impersonate-chrome
 	pkgdesc = A special compilation of curl that makes it impersonate Chrome
-	pkgver = r24.051ccfd
+	pkgver = r59.979750a
 	pkgrel = 1
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64

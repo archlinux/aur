@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=r24.051ccfd
+pkgver=r59.979750a
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -99,7 +99,19 @@ build_curl () {
   mkdir -p out
   cp src/curl out/curl-impersonate
   cp ${srcdir}/${browser_dir}/curl_* out/
+  strip out/curl-impersonate
   chmod +x out/*
+}
+
+build_libcurl () {
+  cd ${srcdir}
+  cd ${CURL_VERSION}
+  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" LIBS="-pthread" USE_CURL_SSLKEYLOGFILE=true 
+  make clean 
+  make
+  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
+  cp "lib/.libs/libcurl.so.$ver" "out/libcurl-impersonate.so.$ver"
+  strip "out/libcurl-impersonate.so.$ver"
 }
 
 prepare () {
@@ -112,11 +124,23 @@ build () {
   build_boringssl
   build_nghttp2
   build_curl
+  build_libcurl
 }
 
 package () {
-  cd ${CURL_VERSION}/out
+  mkdir -p "${pkgdir}/usr/lib/"
+
+  cd ${CURL_VERSION}
+  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
+  major=$(echo -n $ver | cut -d'.' -f1)
+  cd out/
+
   sed -i "s/\$dir\/curl-impersonate/${pkgname}/g" curl_*
   install -Dm755 curl-impersonate "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
+  install -Dm755 libcurl-impersonate.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-chrome.so.$ver"
+
+  cd "${pkgdir}/usr/lib/"
+  ln -s "libcurl-impersonate-chrome.so.$ver" "libcurl-impersonate-chrome.so.$major"
+  ln -s "libcurl-impersonate-chrome.so.$ver" "libcurl-impersonate-chrome.so"
 }
