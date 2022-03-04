@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${_name}::git+https://github.com/kipe/enocean")
+source=("${_name}::git+https://github.com/kipe/enocean.git")
 noextract=()
 sha512sums=('SKIP')
 

@@ -12,7 +12,7 @@ pkgbase = python-enocean-git
 	depends = python-pyserial
 	provides = python-enocean
 	conflicts = python-enocean
-	source = enocean::git+https://github.com/kipe/enocean
+	source = enocean::git+https://github.com/kipe/enocean.git
 	sha512sums = SKIP
 
 pkgname = python-enocean-git
