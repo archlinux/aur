@@ -11,7 +11,7 @@ source=("systemd-presets.hook")
 md5sums=('ad33e5dff5c12321c18fc20c3ec15b66')
 
 package() {
-    install -Dm644 "${srcdir}/systemd-presets.hook.hook" \
-      "${pkgdir}/usr/share/libalpm/hooks/70-systemd-presets.hook.hook"
+    install -Dm644 "${srcdir}/systemd-presets.hook" \
+      "${pkgdir}/usr/share/libalpm/hooks/70-systemd-presets.hook"
 }
 
