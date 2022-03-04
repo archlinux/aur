@@ -12,8 +12,12 @@ pkgbase = winclada
 	source = http://www.lillo.org.ar/phylogeny/winclada/winclad.zip
 	source = winclada.desktop
 	source = winclada.png
+	source = autodada.dad
+	source = nona.exe
 	sha256sums = 79a224ec2a4fd4a6089380cae37e5e10f8563299f4df37d8032a055951e0cf0b
 	sha256sums = 09b52775bc0ee2693e586f2603b44977278269fd671be5fac7db1621f4c88a8b
 	sha256sums = 3308a84fdc339350dde47a03ad502ca6d8a6d573bb3e5695c0c964ba72761279
+	sha256sums = f202661a399d9b81a1db347392ea79295bac6ccfae61e9c5e39d0aad2405bf1b
+	sha256sums = 786631e42427bcec3384c9f8285e24a4581db935967bb21db7f02c8b07ad20d2
 
 pkgname = winclada
