@@ -60,7 +60,7 @@ pkgname = amdgpu-pro-libgl-cfe
 pkgname = lib32-amdgpu-pro-libgl-cfe
 	pkgdesc = AMDGPU Pro OpenGL driver (32-bit)
 	license = custom: AMDGPU-PRO EULA
-	depends = amdgpu-pro-libgl-cfe=21.50_1373477-1
+	depends = amdgpu-pro-libgl-cfe
 	depends = lib32-libdrm
 	depends = lib32-libx11
 	depends = lib32-libxcb
