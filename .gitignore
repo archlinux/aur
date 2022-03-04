@@ -1,5 +1,5 @@
 pkg
 src
 *.png
-*.7z
+*.tar.zst
 *.pkg.tar.*

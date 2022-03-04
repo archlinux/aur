@@ -1,7 +1,7 @@
 pkgbase = steam++-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 2.6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64

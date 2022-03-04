@@ -3,7 +3,7 @@
 pkgname=steam++-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.6.9
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -27,10 +27,13 @@ package(){
     mkdir -p "${pkgdir}/usr/bin"
     cd "${pkgdir}/opt/steam++"
     tar -xvf "${srcdir}/Steam++_${CARCH}.tar.zst"
-    chmod +x "${pkgdir}/opt/steam++/Steam++"
+    for file in Steam++ libHarfBuzzSharp.so libSkiaSharp.so libe_sqlite3.so
+    do
+        chmod 755 "${pkgdir}/opt/steam++/${file}"
+    done
     install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/steam++.png"
     ln -sf /opt/steam++/Steam++ "${pkgdir}/usr/bin/steam++"
     install -Dm644 "${srcdir}/steamtools.desktop" "${pkgdir}/usr/share/applications/steam++.desktop"
-    # Fix font issue, will remove once upstream fix this
+    # Fix font issue, will remove once upstream fix this, enable this to fix crash at About page
     #sed -i "s|Exec=/usr/bin/steam++|Exec=env LANG=en_US.UTF-8 /usr/bin/steam++|" "${pkgdir}/usr/share/applications/steam++.desktop"
 }
