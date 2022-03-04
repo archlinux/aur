@@ -1,6 +1,6 @@
 pkgbase = stt
 	pkgdesc = Coqui-STT
-	pkgver = 0.9.3
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/coqui-ai/STT
 	arch = x86_64
