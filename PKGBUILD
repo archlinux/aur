@@ -1,7 +1,7 @@
 # Maintainer: Firegem <mrfiregem [at] protonmail [dot] ch>
 pkgname=wpaperd
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.1.1
+pkgrel=3
 pkgdesc='Wallpaper daemon for Wayland.'
 arch=('x86_64')
 url='https://github.com/danyspin97/wpaperd'
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'scdoc')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('709dddc373973d836881ba13f888e288aadc8c5c5062af1a6d36aae82beca595')
+sha256sums=('8756670001a114090f79ff3cd317d871ae0116cb98f6402a822e8c9251e35176')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -22,11 +22,19 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
-  scdoc < man/wpaperd-output.5.scd > target/release/wpaperd-output.5
+  scdoc < man/wpaperd-output.5.scd > man/wpaperd-output.5
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # executable
   install -Dm0755 -t "${pkgdir}/usr/bin/" "target/release/${pkgname}"
-  install -Dm0644 -t "${pkgdir}/usr/share/man/man5" target/release/wpaperd-output.5
+  # man pages
+  install -Dm0644 -t "${pkgdir}/usr/share/man/man1" man/wpaperd.1
+  install -Dm0644 -t "${pkgdir}/usr/share/man/man5" man/wpaperd-output.5
+  # completion
+  install -Dm0644 completions/${pkgname}.bash "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+  install -Dm0644 -t "${pkgdir}/usr/share/fish/vendor_completions.d" completions/${pkgname}.fish
+  install -Dm0644 -t "${pkgdir}/usr/share/zsh/site-functions" completions/_${pkgname}
+  install -Dm0644 -t "${pkgdir}/usr/share/elvish/completions" completions/${pkgname}.elv
 }
