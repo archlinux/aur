@@ -1,33 +1,76 @@
-# Maintainer: anzi2001 <anzi2001 at gmail dot com>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: anzi2001 <anzi2001 at gmail dot com>
 # Contributor: haha662 <haha662 at outlook dot com>
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=rmarkdown
-_cranver=2.11
+_cranver=2.12
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Dynamic Documents for R"
-arch=("any")
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=("GPL3")
-depends=("r>=3.0.0" "pandoc>=1.14" "r-knitr>=1.22" "r-yaml>=2.1.19" "r-htmltools>=0.3.5" "r-evaluate>=0.13" "r-base64enc" "r-jsonlite" "r-mime" "r-tinytex>=0.31" "r-xfun>=0.21" "r-stringr>=1.2.0" "r-jquerylib")
-# makedepends=()
-optdepends=("r-shiny>=1.6.0" "r-tufte" "r-testthat>=3.0.0" "r-digest" "r-dygraphs" "r-tibble" "r-fs" "r-pkgdown" "r-rsconnect")
+license=(GPL3)
+depends=(
+    pandoc
+    r-bslib
+    r-evaluate
+    r-htmltools
+    r-jquerylib
+    r-jsonlite
+    r-knitr
+    r-stringr
+    r-tinytex
+    r-xfun
+    r-yaml
+)
+checkdepends=(
+    r-curl
+    r-shiny
+    r-testthat
+    texlive-core
+    texlive-latexextra
+    ttf-font
+)
+optdepends=(
+    r-digest
+    r-dygraphs
+    r-fs
+    r-rsconnect
+    r-downlit
+    r-katex
+    r-sass
+    r-shiny
+    r-testthat
+    r-tibble
+    r-tufte
+    r-vctrs
+    r-withr
+)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('9371255300e7ea4cd936978ad2ca3d205d8605e09f4913cb0d4725005a7a9775')
+sha256sums=('c3aba9eda862483c7631485002b6b94e0076e4fdd2384a095ee30243b958e690')
+
+prepare() {
+  # Skip a test that might fail depending on environment
+  sed -i '/"Converting bib file is working"/a\ \ skip("Inconsistent test")' \
+      "${_cranname}/tests/testthat/test-pandoc.R"
+}
 
 build() {
-  cd "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
 
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+check() {
+  cd "${_cranname}/tests"
+  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
