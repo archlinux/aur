@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-websockets
-_qtver=5.15.2
-pkgver=5.15.2+kde+r7
-pkgrel=2
-_commit=b13b56904b76e96ea52d0efe56395acc94b17d96
+_basever=5.15.3
+pkgver=5.15.3+kde+r3
+pkgrel=1
+_commit=7196d2cc34adf9f45b50a9488f4ff95b36092993
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -14,21 +14,18 @@ depends=('qt5-base')
 makedepends=('qt5-declarative' 'git')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn=qtwebsockets
+_pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
 options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   mkdir -p build
-
-  cd $_pkgfqn
-  git revert -n 767afe93c3f104716a68ff563d4a4e4ee0a62d3d # Revert version bump
 }
 
 build() {
