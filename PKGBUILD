@@ -2,7 +2,7 @@
 
 # Disclaimer: This package is not from Nordic Semiconductor
 pkgname=nrf-connect-sdk
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Software development kit for Nordic Semiconductor products"
 arch=('x86_64')
