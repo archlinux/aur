@@ -1,17 +1,37 @@
 # Maintainer: Moses Miller <Majora320@gmail.com>
 
+fetch_version() {
+    python <<EOF
+import requests,json
+
+response = requests.get("https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds")
+builds = json.loads(response.text)
+stable_builds = -1
+
+for b in builds["value"]:
+    if b["sourceBranch"] == "refs/heads/stable" :
+        stable_builds = max(int(b["id"]), stable_builds)
+
+if stable_builds == -1:
+    os.exit(1)
+else:
+    print(stable_builds)
+EOF
+}
+
 pkgname=olympus-bin
-pkgver=2369
+pkgver=$(fetch_version)
 pkgrel=1
 pkgdesc='A mod manager for Celeste'
 arch=('x86_64')
 url='https://github.com/EverestAPI/Olympus'
 license=('MIT')
 depends=('love' 'lua51-lsqlite3')
-makedepends=('unzip')
+makedepends=('unzip' 'python')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip")
 noextract=("$pkgname-$pkgver.zip")
-sha256sums=('5bd3c575738f17a6bd2cd51e8d79b9b21d22d6222765c7738152da34a3697de8')
+sha256sums=('7e8dfe0a67bb29dbdf0573a6361cf4a12c1e97d24bdfd1de1940b156b3c90c9d')
+
 
 prepare() {
     unzip "$pkgname-$pkgver.zip"
