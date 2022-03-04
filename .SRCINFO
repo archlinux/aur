@@ -1,23 +1,24 @@
 pkgbase = r-tidyr
 	pkgdesc = Tidy Messy Data
-	pkgver = 1.1.4
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tidyr
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = r>=3.1
-	depends = r-dplyr>=0.8.2
-	depends = r-ellipsis>=0.1.0
+	checkdepends = r-data.table
+	checkdepends = r-testthat
+	makedepends = r-cpp11
+	depends = r-dplyr
+	depends = r-ellipsis
 	depends = r-glue
 	depends = r-lifecycle
 	depends = r-magrittr
 	depends = r-purrr
 	depends = r-rlang
-	depends = r-tibble>=2.1.1
-	depends = r-tidyselect>=1.1.0
-	depends = r-vctrs>=0.3.6
-	depends = r-cpp11>=0.2.6
+	depends = r-tibble
+	depends = r-tidyselect
+	depends = r-vctrs
 	optdepends = r-covr
 	optdepends = r-data.table
 	optdepends = r-jsonlite
@@ -26,7 +27,9 @@ pkgbase = r-tidyr
 	optdepends = r-repurrrsive
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tidyr_1.1.4.tar.gz
-	sha256sums = 0b0c98be98a433e15a2550f60330b31a58529a9c58bc2abd7bff6462ab761241
+	source = https://cran.r-project.org/src/contrib/tidyr_1.2.0.tar.gz
+	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
+	sha256sums = 8cd01da9e97827521d01ea50b9225f2705c46b7538bbf74bec6249a04c1213a8
+	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-tidyr
