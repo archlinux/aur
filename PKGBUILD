@@ -9,8 +9,8 @@ pkgrel=1
 arch=(i686 x86_64)
 url='https://chromium.googlesource.com/chromiumos/platform/vboot_reference'
 license=('custom:chromiumos')
-depends=(libutil-linux openssl)
-makedepends=(git libyaml trousers flashrom)
+depends=(libutil-linux openssl libzip flashrom)
+makedepends=(git libyaml trousers)
 source=(git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=$_tag)
 sha256sums=('SKIP')
 

@@ -9,9 +9,10 @@ pkgbase = vboot-utils
 	makedepends = git
 	makedepends = libyaml
 	makedepends = trousers
-	makedepends = flashrom
 	depends = libutil-linux
 	depends = openssl
+	depends = libzip
+	depends = flashrom
 	source = git+https://chromium.googlesource.com/chromiumos/platform/vboot_reference#branch=release-R100-14526.B
 	sha256sums = SKIP
 
