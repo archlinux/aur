@@ -7,7 +7,7 @@ pkgdesc="Coqui-STT for inference"
 arch=('x86_64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
-makedepends=('bazel<4' 'python-numpy' 'python-pip' 'python-wheel' 'git' 'sox' 'wget')
+makedepends=('bazel3' 'python-numpy' 'python-pip' 'python-wheel' 'git' 'sox' 'wget')
 source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
