@@ -3,17 +3,17 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=98.0.4758.80_2
+pkgver=99.0.4844.51_1
 pkgrel=1
-_pkgver=98.0.4758.80
-_pkgrel=2
+_pkgver=99.0.4844.51
+_pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
 depends=("gcc-libs" "glibc")
 makedepends=("ninja" "gn" "llvm" "lld" "clang" "ccache" "python" "unzip")
 
-_PGO_PATH='chrome-linux-4758-1643195016-f5cfe4c93eff056f51290a33e603a214804dbd80.profdata'
+_PGO_PATH='chrome-linux-4844-1645865283-f109af6d624d1eac542865359a5743a7256bac10.profdata'
 source=(
   "naiveproxy.service"
   "naiveproxy@.service"
@@ -21,20 +21,22 @@ source=(
   "${pkgname}-${_pkgver}-${_pkgrel}.tar.gz::https://github.com/klzgrad/naiveproxy/archive/refs/tags/v${_pkgver}-${_pkgrel}.tar.gz"
   "${_PGO_PATH}::https://storage.googleapis.com/chromium-optimization-profiles/pgo_profiles/${_PGO_PATH}"
 )
+
 sha1sums=(
   "4c18f44ba51d40bfd7e6ae8ecb30b8e812acb8e8"
   "013b31ae43e309bc6560b61e8b4196f8f14f738f"
   "3727d7da81b1480d60e593a7d6878d981b35c4f6"
-  "c2835f79e326dd5c21222b0f2bcf4e357730c110"
-  "f5cfe4c93eff056f51290a33e603a214804dbd80"
+  "926dce34339a555648a80b36598a1c32ca349c1b"
+  "f109af6d624d1eac542865359a5743a7256bac10"
 )
 sha256sums=(
   "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
   "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
   "5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb"
-  "687a1c43f5bff61b2c1857d65031a5234af358053cf00e20911b75b073e55df4"
-  "41a0a5550852919751e885252d163b2b490a330598c64d9f721482fa928bb691"
+  "e216eb250e921f2fed3445fbaf6677412637f73ed920010b6b75af39490ce438"
+  "1ab36777082237f59b2b1be2f66279cd58767539393059644c0ec2968373c619"
 )
+
 backup=(etc/naiveproxy/config.json)
 provides=('naiveproxy')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
@@ -101,6 +103,7 @@ build(){
     enable_mdns=false
     enable_reporting=false
     include_transport_security_state_preload_list=false
+    use_nss_certs=false
   '
 
   # use system clang
