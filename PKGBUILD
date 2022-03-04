@@ -2,20 +2,26 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-serialbus
-_qtver=5.15.2
-pkgver=${_qtver/-/}
-pkgrel=2
+_basever=5.15.3
+pkgver=5.15.3+kde+r0
+pkgrel=1
+_commit=22b3cad193232ab379a0c9e16989a7db1fdc9234
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Qt module for general purpose serial bus access'
 depends=('qt5-serialport')
-makedepends=()
+makedepends=('git')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('aeeb7e5c0d3f8503215b22e1a84c0002ca67cf63862f6e3c6ef44a67ca31bd88')
+_pkgfqn=${pkgname/5-/}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 options=(debug)
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
 
 prepare() {
   mkdir -p build
