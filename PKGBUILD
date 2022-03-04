@@ -2,10 +2,10 @@ pkgbase='python-hankel'
 pkgname=('python-hankel')
 _module='hankel'
 pkgver='1.1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Hankel Transformations using method of Ogata 2005"
 url="https://github.com/steven-murray/hankel"
-depends=('python' 'python-numpy>=1.9.3', 'python-scipy>=0.16.1', 'python-mpmath>=1.0.0')
+depends=('python' 'python-numpy>=1.9.3' 'python-scipy>=0.16.1' 'python-mpmath>=1.0.0')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
