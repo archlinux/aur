@@ -1,7 +1,7 @@
 # Maintainer: Que Quotion <quequotion@bugmenot.com>
 pkgname=xscreensaver-dbus-screenlock
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="DE integrated screen-locking with xscreensaver"
 arch=('any')
 url="http://ubuntuforums.org/showthread.php?t=1865593&s=1c7f28c50a3f258e1d3404e41f098a0b&p=11418175#post11418175"
@@ -15,8 +15,7 @@ md5sums=('9b052558e59944a66d4174a723c99011'
          '9181f92d592549c5506a9722b47b7e94'
          '8802e2b10232e39fe98b8c6e7228c83a'
          '65a7fb8a4d3e8183009e9caffc3e587a'
-         '90ebf9aabc89691dd20f70c78506daea'
-         '599874ebe25e03cbf95812ea8a6e8f25')
+         '90ebf9aabc89691dd20f70c78506daea')
 package() {
   #Python scripts
   install -Dm755 {${srcdir},${pkgdir}/usr/bin}/xscreensaver-dbus-screenlock-freedesktop.py
