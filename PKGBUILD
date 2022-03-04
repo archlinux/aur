@@ -1,15 +1,15 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=durdraw-git
-pkgver=20150227
+pkgver=20220216
 pkgrel=1
 pkgdesc="Frame based ASCII and ANSI drawing and playback program"
 url="http://cmang.org/durdraw/"
 license=("custom")
 arch=('any')
 makedepends=('git')
-depends=('python2')
+depends=('python')
 optdepends=('ansilove: png export, animated gif export'
-            'python2-pillow: animated gif export'
+            'python-pillow: animated gif export'
             'images2gif: animated gif export')
 conflicts=('durdraw')
 provides=('durdraw')
@@ -23,12 +23,9 @@ pkgver() {
 
 build() {
   cd durdraw
-  # todo, make it work with py3
-  #2to3 -w durdraw
-  sed -i 's|bin/python.*$|bin/env python2|' durdraw
   sed -i 's|/usr/local/share/|/usr/share/|' durdraw
-  grep -A5000 -m1 -e 'LEGAL' readme.txt > LICENSE
-  grep -B5000 -m1 -e 'Homepage' readme.txt > help.txt
+  grep -A5000 -m1 -e 'LEGAL' readme.md > LICENSE
+  grep -B5000 -m1 -e 'Homepage' readme.md > help.txt
 }
 
 package() {
@@ -41,7 +38,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 help.txt "$pkgdir/usr/share/doc/$pkgname/help.txt"
 
-  install -Dm644 vga.pcf "$pkgdir/usr/share/fonts/X11/misc/vga.pcf"
-  install -Dm644 dos437.ttf "$pkgdir/usr/share/fonts/TTF/dos437.ttf"
+  install -Dm644 extras/vga.pcf "$pkgdir/usr/share/fonts/X11/misc/vga.pcf"
+  install -Dm644 extras/dos437.ttf "$pkgdir/usr/share/fonts/TTF/dos437.ttf"
 }
 
