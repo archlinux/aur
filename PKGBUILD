@@ -4,7 +4,7 @@
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
 sha256sums=('220a1fe2afa6485bfc15dde23dd081804a29f94a86ce74164082aa8b2266e662'
-            'c1425baf873aee09e8a3f5f07cf8971227b527ecd66228f9c2dd7a5ba71992b9')
+            'e845c631a620e3b8dd4d18262824f6eed399803b9b395114444e1a61bdf6b527')
 
 build() {
     rm -rf "${srcdir}/root"
