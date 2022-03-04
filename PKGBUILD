@@ -9,12 +9,12 @@ arch=('aarch64' 'i686' 'x86_64')
 url="https://github.com/sozu-proxy/sozu"
 license=('GPL')
 depends=('openssl>=1.0.1')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 conflicts=('sozu-git')
 backup=('etc/sozu/config.toml')
 _commit=e4e7488232ad6523791b94ad201239bcf7eb9b30
 source=(
-  "git://github.com/sozu-proxy/sozu#commit=$_commit"
+  "git+https://github.com/sozu-proxy/sozu.git#commit=$_commit"
   'config.toml'
   'sozu.service'
 )
