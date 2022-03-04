@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_qtver=5.15.2
-pkgver=5.15.2+kde+r7
+_basever=5.15.3
+pkgver=5.15.3+kde+r5
 pkgrel=1
-_commit=19ae816330924f595be812a36dc3ed2a1e2aa29a
+_commit=8a377440b37f5633156a8e40c9f0dce5f4d5a665
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -14,21 +14,18 @@ depends=('qt5-base' 'bluez-libs')
 makedepends=('qt5-declarative' 'git')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn=qtconnectivity
+_pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
 options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   mkdir -p build
-
-  cd $_pkgfqn
-  git revert -n 69a87a9b831e36a578594a0a13130c384ad03121 # Revert version bump
 }
 
 build() {
