@@ -1,7 +1,7 @@
 pkgbase=kodi-eggz
 pkgname=kodi-eggz
-pkgver=19.3
-gittag=19.3-Matrix
+pkgver=19.4
+gittag=19.4-Matrix
 gittagvfs=4.0.0-Matrix
 pkgrel=3
 arch=('x86_64')
