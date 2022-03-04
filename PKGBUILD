@@ -3,15 +3,15 @@
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 
 pkgname=weather
-pkgver=2.3
+pkgver=2.4.2
 pkgrel=1
 pkgdesc="CLI tool which shows weather forecasts from METAR data"
 arch=('any')
 url="http://fungi.yuggoth.org/weather/"
 depends=('python')
 license=("custom:BSD2")
-source=("http://fungi.yuggoth.org/weather/src/$pkgname-$pkgver.tar.gz")
-md5sums=('1356e37f74097007b20987742927921b')
+source=("http://fungi.yuggoth.org/weather/src/$pkgname-$pkgver.tar.xz")
+md5sums=('8e765b7df7963a312e7183e32707f9e9')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
