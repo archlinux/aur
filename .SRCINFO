@@ -1,9 +1,9 @@
 pkgbase = dotacat
 	pkgdesc = Like lolcat, but faster. Written in Rust
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.scd31.com/stephen/dotacat
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = cargo
 	source = dotacat-0.2.0.tar.gz::https://gitlab.scd31.com/stephen/dotacat/-/archive/v0.2.0/dotacat-v0.2.0.tar.gz

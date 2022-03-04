@@ -2,9 +2,9 @@
 
 pkgname=dotacat
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Like lolcat, but faster. Written in Rust"
-arch=('x86_64')
+arch=('any')
 url="https://gitlab.scd31.com/stephen/dotacat"
 license=('MIT')
 makedepends=('cargo')
