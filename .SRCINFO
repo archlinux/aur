@@ -10,7 +10,7 @@ pkgbase = spicetify-cli
 	makedepends = go
         optdepends = xdg-utils: Allows for opening directories in default file manager
 	source = https://github.com/khanhas/spicetify-cli/archive/v2.9.2.tar.gz
-	sha256sums = 38a40381f4ed5bdb86cf9c29f044e7565829058070aa12c382d299eedd9195d3 
+	sha256sums = a8dfb752bfd696ef03291af961c4c2f3163f729fc95579a3843edbd3e91cda67
 
 pkgname = spicetify-cli
 
