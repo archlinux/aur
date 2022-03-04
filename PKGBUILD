@@ -29,12 +29,6 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  sed -i "s/from gi.repository import Gtk, GLib, Gdk, GObject, GtkSource/import gi\ngi.require_version('GtkSource', '4')\nfrom gi.repository import Gtk, GLib, Gdk, GObject, GtkSource/g" \
-    GTG/gtk/editor/taskview.py
-}
-
 build() {
   arch-meson "${pkgname%-git}" build
   meson compile -C build
