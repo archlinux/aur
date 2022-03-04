@@ -1,0 +1,16 @@
+pkgbase = docker-compose-v2-git
+	pkgdesc = Fast, isolated development environments using Docker, v2, git version
+	pkgver = r3154.1646411589.c64b044b7
+	pkgrel = 1
+	url = https://www.docker.com/
+	arch = any
+	license = Apache
+	checkdepends = docker
+	makedepends = git
+	makedepends = go
+	conflicts = docker-compose
+	conflicts = docker-compose-git
+	source = compose::git+https://github.com/docker/compose.git
+	sha512sums = SKIP
+
+pkgname = docker-compose-v2-git
