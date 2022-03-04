@@ -5,7 +5,7 @@
 
 _gemname=jekyll
 pkgname=$_gemname
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc='A simple, blog aware, static site generator.'
 arch=('any')
@@ -39,7 +39,7 @@ conflicts=('ruby-jekyll')
 replaces=('ruby-jekyll')
 options=(!emptydirs)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/jekyll/jekyll/archive/v${pkgver}.tar.gz)
-sha256sums=('3413623a27709877f5850f7991b6318d0a3d15960c84ac1b2fee4e7d3e72ccd7')
+sha256sums=('e3248e9f7e139156f7b430aed40d61d1a2df830da357807cbb9e42df8ea16be7')
 
 prepare() {
   cd ${_gemname}-${pkgver}
