@@ -21,7 +21,7 @@ NVCCFLAG="-DNDEBUG -D__CORRECT_ISO_CPP11_MATH_H_PROTO -O6 -std=c++11 -w -Xcompil
 source=("${_pkgname}::git+https://github.com/jamriska/${_pkgname}"
         "LICENSE")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "${_pkgname}"
