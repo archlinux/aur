@@ -1,0 +1,10 @@
+--- settings.py	2022-01-07 05:17:22.000000000 -0500
++++ new_settings.py	2022-03-03 18:25:16.093628103 -0500
+@@ -171,6 +171,7 @@
+ )
+ COMPRESS_OFFLINE = True
+ COMPRESS_CSS_HASHING_METHOD = "content"
++COMPRESS_ENABLED = True
+ 
+ 
+ def immutable_file_test(path, url):
