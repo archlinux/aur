@@ -1,0 +1,11 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/systemd/system-preset/*.preset
+Target = usr/lib/systemd/system/*
+
+[Action]
+Description = Applying systemd presets...
+When = PostTransaction
+Exec = /usr/bin/systemctl preset-all
