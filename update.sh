@@ -19,8 +19,8 @@ main() {
   if ! command -v updpkgsums &>/dev/null; then
     echo "updpkgsums could not be found."
     echo "This is needed to update the sha256 sums"
-    echo -e "Install with: sudo pacman -S pacman-contrib"
-    exit
+    echo -e "Installing for you with: sudo pacman -S pacman-contrib"
+    sudo pacman -S pacman-contrib --noconfirm
   fi
 
   ls
