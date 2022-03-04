@@ -5,13 +5,15 @@ pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch=('x86_64')
 license=('Apache')
 url='https://bazel.build/'
-depends=('java-environment=8' 'libarchive' 'zip' 'unzip')
+depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf' 'python')
 provides=("bazel=${pkgver}")
 conflicts=('bazel')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
         "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig")
+sha512sums=('d7f40d0cac95a06cea6cb5b7f7769085257caebc3ee84269dd9298da760d5615'
+            'SKIP')
 validpgpkeys=('71A1D0EFCFEB6281FD0437C93D5919B448457EE0')
 
 build() {
