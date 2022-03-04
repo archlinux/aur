@@ -1,6 +1,6 @@
 pkgbase = digitalwatchdog-client
 	pkgdesc = DW Spectrum Client
-	pkgver = 4.2.0
+	pkgver = 4.2.0.32842
 	pkgrel = 1
 	url = http://completeipsolution.com
 	install = digitalwatchdog-client.install

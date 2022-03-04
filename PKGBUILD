@@ -1,7 +1,7 @@
 # Maintainer: McKay Humpherys <mckaybhumpherys@gmail.com>
 # Contributor: McKay
 pkgname=digitalwatchdog-client
-pkgver=4.2.0
+pkgver=4.2.0.32842
 pkgrel=1
 pkgdesc="DW Spectrum Client"
 arch=('x86_64')
