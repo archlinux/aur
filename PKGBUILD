@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=kstart
 pkgver=4.3
-pkgrel=6
+pkgrel=7
 pkgdesc="Kerberos kinit supporting AFS and ticket refreshing"
 arch=(i686 x86_64)
 url="https://www.eyrie.org/~eagle/software/kstart/"
@@ -15,7 +15,7 @@ source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
 sha256sums=('9527702a48789084e314e5c08d4115129467ca7ef25983d7214c9439d31ef2a6'
             'SKIP'
             'a496742d7cb2f00e8714d2b36da6adc09efd8a62e4892572b69b458b6e790a4e'
-            'c8e8f5f247228c9564b00afb76e0d019fd58770d435f4a20479953e0b2ce5613'
+            '2730d02cc606c3019540fa907696bfa20b375ff3e1fb273cdb80c7c480b9081b'
             '514010cea54d80d1d41fe1885dbdd49225e52192be466e88979f91bac37c8022')
 validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 

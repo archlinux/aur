@@ -3,10 +3,12 @@ Description=Kerberos Ticket Acquisition Daemon
 
 [Service]
 Type=forking
-ExecStart=/usr/bin/k5start -K30 -a -H30 -f $KEYTAB -t -b -L
+ExecStart=/usr/bin/k5start -K30 -a -H30 -f $KEYTAB -U -t -b -L
 # -K30	Run forever, wake up every 30 min
 # -a	With -K, renew on every wakeup regardless of lifetime
 # -H30	With -K, renew if less than 30 min left (default 2 min)
+# -f	Use keytab to acquire initial tickets
+# -U	Read client principal name from keytab
 # -t	Run $AKLOG after every renewal (for OpenAFS)
 # -b	Detach on startup (only if -f keytab is specified)
 # -L	Log to syslog
