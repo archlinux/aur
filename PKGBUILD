@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=nerdctl
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Docker-compatible CLI for containerd"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=(
   'slirp4netns'
 ) # others: cni-isolation-plugin
 options=('!lto')
-_commit='9ec475aeb69209b9b2a3811aee0923e2eafd1644'
+_commit='20233c26d26f11ca73a9a775fba87ca884ab14d2' # v0.17.1
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
