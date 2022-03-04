@@ -2,10 +2,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-webchannel
-_qtver=5.15.2
-pkgver=5.15.2+kde+r5
-pkgrel=2
-_commit=fa8b07105b5e274daaa8adcc129fa4aa0447f9f7
+_basever=5.15.3
+pkgver=5.15.3+kde+r3
+pkgrel=1
+_commit=611016a49f3a9ba7b58bef29bc295323e06373ae
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -13,21 +13,18 @@ pkgdesc='Provides access to QObject or QML objects from HTML clients for seamles
 depends=('qt5-declarative')
 makedepends=('git')
 groups=('qt' 'qt5')
-_pkgfqn=qtwebchannel
+_pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
 sha256sums=('SKIP')
 options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   mkdir -p build
-
-  cd $_pkgfqn
-  git revert -n 0159fb80446f2fc472a2391de9fc83f55ca2d50e # Revert version bump
 }
 
 build() {
