@@ -3,23 +3,35 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=squeezelite
-pkgver=1.9.9.1390
+pkgver=1.9.9.1401
 pkgrel=1
 pkgdesc="Lightweight headless squeezebox emulator"
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="https://github.com/ralph-irving/squeezelite"
 license=(GPL3)
 depends=(alsa-lib faad2 flac libmad libvorbis mpg123 libsoxr ffmpeg)
+makedepends=(git)
 install=${pkgname}.install
-_commit=7cc4aa72cb767f2b7857d8ca9b7f7c206056b87f
-source=("${pkgname}-${pkgver}-${_commit}.tar.gz::https://github.com/ralph-irving/squeezelite/archive/${_commit}.tar.gz"
-        'service' 'conffile')
-sha256sums=('4615e7608d1b05931157f6cc12161d82ee89a99ab3c609c63268115c80fdbddd'
+_commit=894df3ea80f66a27a9ae5fab918acf62a6798b8b #micro 1401
+source=("git+https://github.com/ralph-irving/squeezelite.git#commit=${_commit}"
+        'squeezelite.service'
+        'conffile')
+sha256sums=('SKIP'
             '5b39e9754b6bcf06bcaaecab76ebf7c997966160b48692461d3be5d94ee5f004'
             'f0753a1cbd0194119226587ff9c12257438674d9b8e0179d22f0d5461ad3a70a')
 
+pkgver() {
+  cd "${srcdir}/squeezelite"
+
+  _maj=$(cat squeezelite.h|grep "#define MAJOR_VERSION" | awk '{print $3}' | sed 's/\"//g;s/-/_/g')
+  _min=$(cat squeezelite.h|grep "#define MINOR_VERSION" | awk '{print $3}' | sed 's/\"//g;s/-/_/g')
+  _mic=$(cat squeezelite.h|grep "#define MICRO_VERSION" | awk '{print $3}' | sed 's/\"//g;s/-/_/g')
+
+  printf "${_maj}.${_min}.${_mic}"
+}
+
 build() {
-  cd "${pkgname}-${_commit}"
+  cd "${srcdir}/squeezelite"
 
   export LDFLAGS="${LDFLAGS} -lasound -lpthread -lm -lrt"
   export OPTS="${OPTS} -DDSD -DRESAMPLE -DVISEXPORT -DFFMPEG -DLINKALL"
@@ -27,10 +39,11 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${_commit}"
+  cd "${srcdir}/squeezelite"
 
   install -m0755 -D squeezelite "${pkgdir}/usr/bin/squeezelite"
   install -Dm644 ../conffile "${pkgdir}/etc/squeezelite.conf.default"
-  install -Dm644 ../service "${pkgdir}/usr/lib/systemd/system/squeezelite.service"
-  install -Dm644 LICENSE.txt "${pkgdir}"/usr/share/licenses/squeezelite.LICENSE
+  install -Dm644 ../squeezelite.service -t "${pkgdir}/usr/lib/systemd/system/"
+  install -Dm644 doc/squeezelite.1 -t "${pkgdir}/usr/share/man/man1/"
+  install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
