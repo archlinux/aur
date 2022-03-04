@@ -10,6 +10,7 @@ pkgbase = ebsynth-cuda-git
 	provides = ebsynth
 	conflicts = ebsynth-git
 	source = ebsynth::git+https://github.com/jamriska/ebsynth
+	source = LICENSE
 	md5sums = SKIP
 
 pkgname = ebsynth-cuda-git
