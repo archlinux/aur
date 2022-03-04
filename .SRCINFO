@@ -1,7 +1,7 @@
 pkgbase = kubie-bin
 	pkgdesc = A more powerful alternative to kubectx and kubens
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sbstp/kubie
 	arch = x86_64
 	license = ZLIB
@@ -9,9 +9,11 @@ pkgbase = kubie-bin
 	provides = kubie
 	source = kubie-0.16.0::https://github.com/sbstp/kubie/releases/download/v0.16.0/kubie-linux-amd64
 	source = kubie-0.16.0.bash::https://raw.githubusercontent.com/sbstp/kubie/v0.16.0/completion/kubie.bash
+	source = kubie-0.16.0.fish::https://raw.githubusercontent.com/sbstp/kubie/v0.16.0/completion/kubie.fish
 	source = LICENSE::https://raw.githubusercontent.com/sbstp/kubie/v0.16.0/LICENSE
 	sha512sums = b4cc92a36a86b229df61c3be6a14f570a3fdebdc1603bf996d9e21814297a08365fc5c8f7d47305a355edf778f80be84fd974e2c2b16008fe44123fcc5114a92
 	sha512sums = 2e932767e4c016c9e2222d2e24f0e3eb3b0d398fb5f0d60dd3287433d55787d33d7423beb7fb3fb5a44ac41e899627419d1f1b263ad587c8bf54532bb0ad6bb2
+	sha512sums = 61a833d39fdbd95e00ff6ec65029e5ea8701966056a8f06a4a2bb6528b6990cbadec965d75cf4356d544db2f9cd9c6ff9b9a1ac783254ba51bcab681e7c6d059
 	sha512sums = 63c6f25e01c94602e2d986549154d91d14c957d3e99e16e955bc79f53b97805d973185f73c86004c201f56418e47228538fdcd039fbc8a586cdf761236e14fde
 
 pkgname = kubie-bin
