@@ -3,13 +3,14 @@
 _pkgname=SteamAccountSwitcher
 pkgname=steamaccountswitcher-git
 pkgver=r9.0e3fc48
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5/6 Steam account switcher for linux"
 arch=("any")
 url="https://github.com/ShayBox/${_pkgname}"
 license=("MIT")
 depends=(
     "steam"
+    "python-qtpy"
 )
 makedepends=(
     "git"

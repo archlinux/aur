@@ -1,7 +1,7 @@
 pkgbase = steamaccountswitcher-git
 	pkgdesc = Qt 5/6 Steam account switcher for linux
 	pkgver = r9.0e3fc48
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ShayBox/SteamAccountSwitcher
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = steamaccountswitcher-git
 	makedepends = python-pip
 	makedepends = python-poetry
 	depends = steam
+	depends = python-qtpy
 	optdepends = python-pyqt5: Qt5
 	optdepends = python-pyqt6: Qt6
 	source = git+https://github.com/ShayBox/SteamAccountSwitcher.git
