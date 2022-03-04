@@ -3,7 +3,7 @@
 _pkgname=babelfish
 pkgname=babelfish-fish
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Translate bash scripts to fish"
 arch=(x86_64)
 url="https://github.com/bouk/babelfish"
@@ -30,7 +30,7 @@ package() {
 	cd "$_pkgname-$pkgver"
 
     install -Dvm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "babel.fish" "$pkgdir/usr/share/fish/vendor_functions.d/babel.fish"
+    install -Dm644 "babel.fish" "$pkgdir/usr/share/fish/vendor_conf.d/babel.fish"
     
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
