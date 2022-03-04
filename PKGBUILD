@@ -6,7 +6,7 @@ pkgname=(
   regclient-regbot
 )
 pkgver=0.3.10
-pkgrel=4
+pkgrel=5
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/regclient/regclient'
@@ -35,6 +35,11 @@ build() {
     ./$i completion bash >$i.bash
     ./$i completion zsh >$i.zsh
   done
+}
+
+check() {
+	cd "${pkgbase}-${pkgver}"
+	go test -mod=readonly ./...
 }
 
 _pkgcommon() {
