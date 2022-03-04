@@ -68,12 +68,12 @@ index e7f869a1..1bf2c5d7 100644
      !qtwebengine_checkForGperf(QtWebEngine):return(false)
      !qtwebengine_checkForBison(QtWebEngine):return(false)
      !qtwebengine_checkForFlex(QtWebEngine):return(false)
--    !qtwebengine_checkForPython2(QtWebengine):return(false)
-+    !qtwebengine_checkForPython(QtWebengine):return(false)
+-    !qtwebengine_checkForPython2(QtWebEngine):return(false)
++    !qtwebengine_checkForPython(QtWebEngine):return(false)
+     !qtwebengine_checkForNodejs(QtWebEngine):return(false)
      !qtwebengine_checkForSanitizer(QtWebEngine):return(false)
      linux:!qtwebengine_checkForPkgCfg(QtWebEngine):return(false)
-     linux:!qtwebengine_checkForHostPkgCfg(QtWebEngine):return(false)
-@@ -50,7 +50,7 @@ defineReplace(qtwebengine_checkPdfError) {
+@@ -51,7 +51,7 @@ defineReplace(qtwebengine_checkPdfError) {
      !qtwebengine_checkForGperf(QtPdf):return(false)
      !qtwebengine_checkForBison(QtPdf):return(false)
      !qtwebengine_checkForFlex(QtPdf):return(false)
@@ -82,7 +82,7 @@ index e7f869a1..1bf2c5d7 100644
      !qtwebengine_checkForSanitizer(QtPdf):return(false)
      linux:!qtwebengine_checkForPkgCfg(QtPdf):return(false)
      linux:!qtwebengine_checkForHostPkgCfg(QtPdf):return(false)
-@@ -142,10 +142,10 @@ defineTest(qtwebengine_checkForFlex) {
+@@ -143,10 +143,10 @@ defineTest(qtwebengine_checkForFlex) {
      return(true)
  }
  
@@ -100,7 +100,7 @@ diff --git a/src/buildtools/configure.json b/src/buildtools/configure.json
 index 88d1790c..032aa665 100644
 --- a/src/buildtools/configure.json
 +++ b/src/buildtools/configure.json
-@@ -294,9 +294,9 @@
+@@ -289,9 +289,9 @@
              "label": "system ninja",
              "type": "detectNinja"
          },
@@ -113,7 +113,7 @@ index 88d1790c..032aa665 100644
              "log": "location"
          },
          "webengine-winversion": {
-@@ -372,7 +372,7 @@
+@@ -394,7 +394,7 @@
                           && features.webengine-gperf
                           && features.webengine-bison
                           && features.webengine-flex
@@ -122,16 +122,7 @@ index 88d1790c..032aa665 100644
                           && (!config.sanitizer || features.webengine-sanitizer)
                           && (!config.linux || features.pkg-config)
                           && (!config.linux || features.webengine-host-pkg-config)
-@@ -397,7 +397,7 @@
-                          && features.webengine-gperf
-                          && features.webengine-bison
-                          && features.webengine-flex
--                         && features.webengine-python2
-+                         && features.webengine-python
-                          && (!config.sanitizer || features.webengine-sanitizer)
-                          && (!config.linux || features.pkg-config)
-                          && (!config.linux || features.webengine-host-pkg-config)
-@@ -420,12 +420,12 @@
+@@ -417,12 +417,12 @@
              "autoDetect": "features.private_tests",
              "output": [ "privateFeature" ]
          },
