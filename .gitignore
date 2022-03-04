@@ -1,0 +1,7 @@
+# standard makepkg artifacts
+/pkg/
+/src/
+/*.pkg.tar.*
+
+# repository
+/enocean
