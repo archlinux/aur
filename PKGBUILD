@@ -2,7 +2,7 @@
 
 pkgname=coconut-lang
 _name=coconut
-pkgver=1.4.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Simple, elegant, Pythonic functional programming."
 arch=('any')
@@ -10,15 +10,7 @@ url="http://coconut-lang.org/"
 license=('Apache')
 depends=('python' 'python-pyparsing' 'python-prompt_toolkit' 'python-pygments')
 source=($pkgname-$pkgver.tgz::https://github.com/evhub/coconut/archive/v$pkgver.tar.gz)
-md5sums=('b7cd3cec147b9cd5051499cf3b802163')
-
-prepare() {
-  cd "$srcdir/$_name-$pkgver"
-  # the v1.3.X series wasn't usable on Arch because it requires ancient versions of libraries
-  # disabling the requirements caused an infinite loop/OOM
-  #sed -i  's/version_strictly = (/&); (\\/' coconut/constants.py
-  # 1.4.3 seems better, but still has warnings
-}
+md5sums=('4c3be8c88497319d6f8f29203d723aab')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
