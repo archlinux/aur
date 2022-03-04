@@ -1,8 +1,8 @@
-pkgbase = deepspeech
-	pkgdesc = A TensorFlow implementation of Baidu's DeepSpeech architecture
+pkgbase = stt-train
+	pkgdesc = Coqui-STT for training
 	pkgver = 0.9.3
 	pkgrel = 1
-	url = https://github.com/mozilla/DeepSpeech
+	url = https://github.com/coqui-ai/STT
 	arch = x86_64
 	license = MPL2
 	makedepends = bazel<4
@@ -12,14 +12,14 @@ pkgbase = deepspeech
 	makedepends = git
 	makedepends = sox
 	makedepends = wget
-	source = DeepSpeech-0.9.3::git+https://github.com/mozilla/DeepSpeech.git#tag=v0.9.3
+	source = STT-1.2.0::git+https://github.com/coqui-ai/STT.git#tag=v1.2.0
 	sha256sums = SKIP
 
-pkgname = deepspeech
+pkgname = stt-train
 	depends = sox
 
-pkgname = python-deepspeech
-	pkgdesc = DeepSpeech Python bindings
-	depends = deepspeech
+pkgname = python-stt
+	pkgdesc = STT Python bindings
+	depends = stt
 	depends = python-numpy
 
