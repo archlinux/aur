@@ -1,13 +1,13 @@
 # Maintainer: Paul Makles <paulmakles@gmail.com>
 pkgname=revolt-desktop-git
-pkgver=1.0.2.r10.g6ac8bf6
+pkgver=1.0.3.r0.g9f239d3
 pkgrel=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
 url="https://revolt.chat"
 license=("AGPL3")
 depends=("electron")
-makedepends=("git" "npm" "nodejs-lts-gallium")
+makedepends=("git" "npm" "nodejs")
 provides=("${pkgname%-git}")
 source=("git+https://github.com/revoltchat/desktop.git")
 md5sums=('SKIP')
