@@ -12,7 +12,6 @@ depends=(
 	'wine'
 	'wine_gecko'
 	'wine-mono'
-	'nona'
 )
 source=("http://www.lillo.org.ar/phylogeny/winclada/winclad.zip" "winclada.desktop" "winclada.png" "autodada.dad" "nona.exe")
 sha256sums=('79a224ec2a4fd4a6089380cae37e5e10f8563299f4df37d8032a055951e0cf0b'
