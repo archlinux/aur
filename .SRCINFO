@@ -1,25 +1,25 @@
 pkgbase = steam++-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
-	pkgver = 2.6.7
-	pkgrel = 2
+	pkgver = 2.6.9
+	pkgrel = 1
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	makedepends = p7zip
-	depends = dotnet-runtime>=6.0.1
+	makedepends = tar
+	makedepends = zstd
 	optdepends = steam: need official or flatpak version of steam
 	provides = steamt++
 	conflicts = steam++
-	noextract = Steam++_x86_64.7z
+	noextract = Steam++_x86_64.tar.zst
 	options = !strip
 	source = steamtools.desktop
 	source = icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png
 	sha256sums = 9d19a6f955cc212b7bbe71cd80c36d5d8286b5f5d7b9259b3c6b63b92f15fe97
 	sha256sums = 1c7e2b167b6b457c685d0d4890147edf70eb2a3eeefb12aa42ddd0c721b2f49d
-	source_x86_64 = Steam++_x86_64.7z::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.7/Steam++_linux_x64_v2.6.7.7z
-	sha256sums_x86_64 = 8c94467aa49e089728bada2b4291c91b7946f2cf8ff611209244af7163857b71
-	source_aarch64 = Steam++_aarch64.7z::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.7/Steam++_linux_arm64_v2.6.7.7z
-	sha256sums_aarch64 = e693ac7ef9c5e485b53450709dd708677828a07f3620b4c18d0965382af43784
+	source_x86_64 = Steam++_x86_64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.9/Steam++_linux_x64_v2.6.9.tar.zst
+	sha256sums_x86_64 = c59aea2b9a846409f20c4eca5723ffce7d97159f21d112db0c00ac707d81b02c
+	source_aarch64 = Steam++_aarch64.tar.zst::https://github.com/BeyondDimension/SteamTools/releases/download/2.6.9/Steam++_linux_arm64_v2.6.9.tar.zst
+	sha256sums_aarch64 = d45d21a42ce6a54092ce6a94c72618ced05b5fe7abc04f3803fff1ec89f31baa
 
 pkgname = steam++-bin
