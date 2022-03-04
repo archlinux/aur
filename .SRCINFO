@@ -1,6 +1,6 @@
 pkgbase = python-pymavlink
 	pkgdesc = python MAVLink interface and utilities
-	pkgver = 2.4.25
+	pkgver = 2.4.27
 	pkgrel = 1
 	url = https://github.com/ArduPilot/pymavlink/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-pymavlink
 	depends = python
 	depends = python-future
 	depends = python-lxml
-	source = python-pymavlink-2.4.25.tar.gz::https://pypi.org/packages/source/p/pymavlink/pymavlink-2.4.25.tar.gz
-	sha256sums = bcb5669e3f5fe91dd18122a5361fa17ad49d328f59e79224952e9039ab1a2a8f
+	source = python-pymavlink-2.4.27.tar.gz::https://pypi.org/packages/source/p/pymavlink/pymavlink-2.4.27.tar.gz
+	sha256sums = 0f35b58c1ecbeec0fd580864ff7ff4503f0f5bb370fdb1d3239dbb366315e826
 
 pkgname = python-pymavlink
