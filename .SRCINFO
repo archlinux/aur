@@ -11,7 +11,7 @@ pkgbase = qrcp-bin
 	conflicts = qr-filetransfer-git
 	conflicts = qrcp
 	source_x86_64 = qrcp-bin-0.8.5.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.8.5/qrcp_0.8.5_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8f20693ab15c45328cfb330848d7bbd9034ed3722308a552c992d185bc896d80
+	sha256sums_x86_64 = 932fc30ae639e2d5a89d8ce84b408a7d60cc23f14d17008fba8d8b56e70db427
 	source_i386 = qrcp-bin-0.8.5.tar.gz::https://github.com/claudiodangelis/qrcp/releases/download/0.8.5/qrcp_0.8.5_linux_i386.tar.gz
 	sha256sums_i386 = c4eaf5f865f72c0b7c058b4c877527b49b97d768944e3f05d25642f42d82424e
 
