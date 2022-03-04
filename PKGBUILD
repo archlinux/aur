@@ -1,29 +1,32 @@
-# Maintainer: fatalis <fatalis@fatalis.pw>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: fatalis <fatalis@fatalis.pw>
+
 pkgname=libsubhook
-pkgver=0.7
-pkgrel=2
-pkgdesc='Simple hooking library for C and C++'
+pkgver=0.8.2
+pkgrel=1
+pkgdesc='Simple hooking library for C/C++'
 arch=('x86_64')
-makedepends=('cmake')
 url='https://github.com/Zeex/subhook'
 license=('BSD')
-options=('staticlibs')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d89e2db9f6e485beb2a0d6f7baae1808f1bc47708142dd089dc64015abb605c6')
+depends=('glibc')
+makedepends=('cmake')
+provides=('libsubhook.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('ec90dae3549d73e275a6c84356d4cefc2a21b82061cfdc0833cf0866038e9917')
 
 build() {
-  cd "${srcdir}/subhook-${pkgver}"
-  mkdir -p build && cd build
-  cmake -DSUBHOOK_TESTS=0 -DSUBHOOK_STATIC=0 ..
-  make
-  cmake -DSUBHOOK_TESTS=0 -DSUBHOOK_STATIC=1 ..
-  make
+	cmake \
+		-B build \
+		-S "subhook-$pkgver" \
+		-DCMAKE_BUILD_TYPE='None' \
+		-DCMAKE_INSTALL_PREFIX='/usr' \
+		-DSUBHOOK_TESTS=0 \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-  cd "${srcdir}/subhook-${pkgver}"
-  install -d "${pkgdir}/usr/lib"
-  install -d "${pkgdir}/usr/include"
-  install -Dm644 build/libsubhook.{so,a} "${pkgdir}/usr/lib"
-  install -Dm644 subhook.h "${pkgdir}/usr/include"
+	DESTDIR="$pkgdir" make -C build install
+	cd "subhook-$pkgver"
+	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
