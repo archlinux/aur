@@ -1,6 +1,6 @@
 *.tar*
 pkg/
 src/
-svg2mod/
+python-svg2mod-git
 *.part
 *.zip
