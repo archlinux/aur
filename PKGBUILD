@@ -3,7 +3,7 @@
 
 pkgname=subtitleedit
 pkgver=3.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
 url='https://www.nikse.dk/SubtitleEdit'
@@ -32,7 +32,7 @@ package() {
     rm "$pkgdir/opt/subtitleedit/Hunspell"{x86,x64}.dll
     touch "$pkgdir/opt/subtitleedit/.PACKAGE-MANAGER"
 
-    install -Dm644 "$srcdir/subtitleedit" "$pkgdir/usr/bin/subtitleedit"
+    install -Dm755 "$srcdir/subtitleedit" "$pkgdir/usr/bin/subtitleedit"
 
     install -Dm644 "$srcdir/subtitleedit.desktop" "$pkgdir/usr/share/applications/subtitleedit.desktop"
 

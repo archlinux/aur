@@ -1,7 +1,7 @@
 pkgbase = subtitleedit
 	pkgdesc = An advanced subtitle editor and converter
 	pkgver = 3.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.nikse.dk/SubtitleEdit
 	arch = any
 	license = GPL3
