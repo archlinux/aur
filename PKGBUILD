@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.34.0
+pkgver=2.34.1
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -24,8 +24,10 @@ makedepends=(
 	'python-installer'
 	'python-wheel'
 	'python-sphinx'
-	'python-recommonmark')
+	'python-recommonmark'
+	'ipython')
 optdepends=(
+	'ipython'
 	'python-arrow: pyarrow support'
 	'python-pandas: pandas support'
 	'python-tqdm: tqdm support'
@@ -34,11 +36,11 @@ optdepends=(
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8852fa3e4c728928de5ee6fa413423aa828bf5ab8be66106693152e8e86e1538')
+sha256sums=('84314803eb7e8ebc4effe7e8960019e0993498a46d26121dd97fbe91960604f6')
 
 build() {
 	cd "python-bigquery-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	cd docs
 	PYTHONPATH=../ sphinx-build -b man ./ _build
 }
