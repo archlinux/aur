@@ -2,7 +2,7 @@
 # Maintainer: Mahor Foruzesh <mahorforuzesh at pm dot me>
 
 pkgname=tachidesk
-pkgver=0.6.1_r1072
+pkgver=0.6.2_r1074
 pkgrel=1
 __pkgname=tachidesk-server
 __PkgName=Tachidesk-Server
@@ -18,26 +18,26 @@ provides=("$pkgname" "$__pkgname")
 conflicts=("$pkgname-preview")
 __jar=$__PkgName-v$__pkgver-$__revnum.jar
 source=("$url/releases/download/v$__pkgver/$__jar"
-        "$pkgname.desktop"
-        "$pkgname.png"
-        "$pkgname-browser.sh"
-        "$pkgname-debug.sh"
-        "$pkgname-electron.sh")
-sha256sums=('05b9573e071dcfb9e656fa5ed34c122ea38767e38a23b4a4354737f6439eaf25'
+        "$__pkgname.desktop"
+        "$__pkgname.png"
+        "$__pkgname-browser-launcher.sh"
+        "$__pkgname-debug-launcher.sh"
+        "$__pkgname-electron-launcher.sh")
+sha256sums=('fecf9b73f5b9985a7984d2e01ec38944771690a6f2cda4aa9b6eab689ea79a32'
             '22a6a9a8c8198985759f66b35377d87bce82d46dbf7a4a7505b55621a9c5487e'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
-            'ab6896577aabad86dc1ed38612d926820e1c8c51074d46afda0c280e90b4f1a9'
-            'fdf5ed21e7b05a59521005ea618a40c46750a46a6cb1aa7cbd8c09bc9e595b94'
-            '56f12c13218ad58e1c9d26338d5d19b6ced92d789b043837be5d2420657ca417')
+            '1a075de252d4d1e4a025e26d379985995893e03d2ac9182ab8a48624b7076470'
+            '39636e9a235e129312cbea43ffdaa3739fa24737e1d6b3388b354d0219272f8b'
+            '354d8e7078d1f83157ee35d47effaa70568552fb41937b8fa4353480a3dff03b')
 
 noextract=("$__jar")
 
 package() {
-    install -Dm644 "$srcdir/$__jar"               "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
-    install -Dm644 "$srcdir/$pkgname.desktop"  -t "$pkgdir/usr/share/applications/"
-    install -Dm644 "$srcdir/$pkgname.png"      -t "$pkgdir/usr/share/pixmaps/"
-    install -Dm755 "$srcdir/$pkgname-browser.sh"  "$pkgdir/usr/bin/$pkgname-browser"
-    install -Dm755 "$srcdir/$pkgname-debug.sh"    "$pkgdir/usr/bin/$pkgname-debug"
-    install -Dm755 "$srcdir/$pkgname-electron.sh" "$pkgdir/usr/bin/$pkgname-electron"
-    ln -s  "$srcdir/usr/bin/$pkgname-browser"     "$pkgdir/usr/bin/$pkgname" # keep backwards compatibility
+    install -Dm644 "$srcdir/$__jar"             "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+    install -Dm644 "$srcdir/$__pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 "$srcdir/$__pkgname.png"     "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm755 "$srcdir/$__pkgname-browser-launcher.sh"  "$pkgdir/usr/bin/$pkgname-browser"
+    install -Dm755 "$srcdir/$__pkgname-debug-launcher.sh"    "$pkgdir/usr/bin/$pkgname-debug"
+    install -Dm755 "$srcdir/$__pkgname-electron-launcher.sh" "$pkgdir/usr/bin/$pkgname-electron"
+    ln -s  "$srcdir/usr/bin/$__pkgname-browser-launcher"     "$pkgdir/usr/bin/$pkgname" # keep backwards compatibility
 }
