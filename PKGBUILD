@@ -1,18 +1,17 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
-pkgname=nvenc
-_PkgName=NVEnc
-pkgver=5.43
+_UpstreamPkgName=NVEnc
+pkgname=${_UpstreamPkgName,,}
+pkgver=5.45
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
-url="https://github.com/rigaya/NVEnc"
+url="https://github.com/rigaya/$_UpstreamPkgName"
 license=('MIT')
 # While cuda and nvidia are not strictly necessary accoring the ldd
 # the program will not work at all without them installed.
 depends=('cuda>=10' 'ffmpeg' 'libass' 'nvidia>=435.21' 'vapoursynth')
 makedepends=('git')
-_commit="c187b1a5a432bad65a598dd8c47a072be8155f3b"
-source=(git+https://github.com/rigaya/NVEnc.git#commit=$_commit
+source=(git+${url}.git#tag=${pkgver}
         git+https://github.com/tplgy/cppcodec.git
         ldflags-adjustments.patch)
 sha256sums=('SKIP'
@@ -20,12 +19,12 @@ sha256sums=('SKIP'
             '9032a642a66219efe9413cee1cb371ca3f46de254c6b50f3605df3f385ec53a5')
 
 prepare() {
-	cd $_PkgName
+	cd $_UpstreamPkgName
 	patch --forward --strip=1 --input="${srcdir}/ldflags-adjustments.patch"
 }
 
 build() {
-	cd $_PkgName
+	cd $_UpstreamPkgName
 	git submodule init
 	git config --local submodule.cppcodec "$srcdir/cppcodec"
         git submodule update cppcodec
@@ -34,12 +33,10 @@ build() {
 }
 
 package() {
-	cd NVEnc
+	cd $_UpstreamPkgName
 	make PREFIX="$pkgdir/usr" install
 	# since it is MIT we need to install a license file
-	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp NVEnc_license.txt $pkgdir/usr/share/licenses/$pkgname/
+	install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" NVEnc_license.txt
 	# install documentation
-	mkdir -p $pkgdir/usr/share/doc/$pkgname
-	cp NVEncC_Options.* Readme.* $pkgdir/usr/share/doc/$pkgname
+	install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" NVEncC_Options.* Readme.*
 }
