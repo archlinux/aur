@@ -1,6 +1,6 @@
 pkgbase = mediatracker-git
 	pkgdesc = Self hosted platform for tracking movies, tv shows, video games, books and audiobooks.
-	pkgver = r474.a22d717
+	pkgver = r477.4cc562e
 	pkgrel = 1
 	url = https://github.com/bonukai/MediaTracker.git
 	arch = i686
