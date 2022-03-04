@@ -2,20 +2,26 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webview
-_qtver=5.15.2
-pkgver=${_qtver/-/}
-pkgrel=2
+_basever=5.15.3
+pkgver=5.15.3+kde+r0
+pkgrel=1
+_commit=ec4de0cec2299f4ae0228ea2c71011e0520ca40e
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Provides a way to display web content in a QML application'
 depends=('qt5-webengine')
-makedepends=()
+makedepends=('git')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('be9f46167e4977ead5ef5ecf883fdb812a4120f2436383583792f65557e481e7')
+_pkgfqn=${pkgname/5-/}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 options=(debug)
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
 
 prepare() {
   mkdir -p build
