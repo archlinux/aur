@@ -2,7 +2,7 @@
 
 pkgname=tarantool
 pkgver=2.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lua application server integrated with a database management system'
 arch=(x86_64)
 url='https://www.tarantool.org'
@@ -55,6 +55,9 @@ prepare() {
 
   git submodule sync
   git submodule update
+  git cherry-pick -n badf030ecb4633647a423de73e26acffd8619c1e # core: add x* memory allocation functions
+  git cherry-pick -n 8662fb740d5d4b246d2dc178a285eea0abb804ef # Move xmalloc to trivia/util.h
+  git cherry-pick -n bba7a2fadd2203ef8c837331ae0bd1dc4040b8bc # build: fix build with glibc-2.34
 }
 
 build() {
@@ -71,6 +74,7 @@ build() {
     -DENABLE_BACKTRACE:BOOL=ON \
     -DWITH_SYSTEMD:BOOL=ON \
     -DENABLE_DIST:BOOL=ON \
+    -DENABLE_LTO:BOOL=ON \
     .
   make
 }
