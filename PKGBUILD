@@ -2,7 +2,7 @@
 # ---
 _pkgname=BetterBin
 pkgname=betterbin
-pkgver=1.0.r58
+pkgver=1.0.r59
 pkgrel=1
 pkgdesc='A number of useful shell scripts to increace productivity and speed up your workflow!'
 arch=(x86_64)
