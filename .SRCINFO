@@ -1,0 +1,16 @@
+pkgbase = roflcat
+	pkgdesc = A faster lolcat, rainbows for your terminal.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jameslzhu/roflcat/
+	arch = any
+	license = BSD
+	license = custom
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = roflcat::git://github.com/jameslzhu/roflcat#commit=941d21c9be5574942812b4b620c4b5a9ea57437b
+	sha256sums = SKIP
+
+pkgname = roflcat
