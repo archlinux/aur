@@ -2,7 +2,7 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=doomretro
-pkgver=4.4.7
+pkgver=4.4.8
 pkgrel=1
 pkgdesc='The classic, refined DOOM source port'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('sdl2_image' 'sdl2_mixer' 'glibc')
 makedepends=('git' 'cmake')
 optdepends=('timidity++: for music playback')
-_commit='820423d3e3c4055666394b68b6141634c65a9043' # v4.4.7
+_commit='9529206253347d3b1adf9f310b8ab574ce2b8e90' # v4.4.8
 source=("$pkgname::git+https://github.com/bradharding/doomretro.git#commit=$_commit")
 b2sums=('SKIP')
 
