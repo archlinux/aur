@@ -5,7 +5,7 @@
 
 pkgname=elasticsearch
 pkgver=8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
@@ -68,7 +68,7 @@ package() {
 
   install -dm755 "$pkgdir"/etc
   echo 'xpack.security.enabled: false' >> "$pkgdir"/usr/share/elasticsearch/config/elasticsearch.yml
-  echo 'path.data: /usr/share/elasticsearch/data' >> "$pkgdir"/usr/share/elasticsearch/config/elasticsearch.yml
+  echo 'path.data: /var/lib/elasticsearch' >> "$pkgdir"/usr/share/elasticsearch/config/elasticsearch.yml
   mv "$pkgdir"/usr/share/elasticsearch/config "$pkgdir"/etc/elasticsearch
   chmod 2750 "$pkgdir"/etc/elasticsearch
 
