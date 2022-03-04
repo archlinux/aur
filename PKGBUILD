@@ -1,6 +1,6 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=qodem
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A re-implementation of the DOS-era Qmodem serial communications package."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('ncurses')
 #makedepends=('sdl')
 #optdepends=('sdl')
 source=("http://downloads.sourceforge.net/project/qodem/qodem/$pkgver/qodem-$pkgver.tar.gz")
-md5sums=('6df07398555d23beaf2233c13b8f2b6a')
+md5sums=('8a468f131b0332ceb1cc809ce000701d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
