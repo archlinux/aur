@@ -2,7 +2,7 @@
 
 pkgname=ignition-common-3
 pkgver=3.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="https://ignitionrobotics.org/libs/common"
@@ -24,6 +24,7 @@ build() {
   cd build
 
   # Configure build
+  export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib" \
