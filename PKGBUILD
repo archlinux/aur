@@ -2,7 +2,7 @@
 # Python package author: Stefan Marsiske <s@ctrlc.hu>
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=python-pysodium
-pkgver=0.7.5
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="python libsodium wrapper"
 arch=(any)
