@@ -2,6 +2,6 @@ pkg/
 src/
 
 *.bak
+*.zst
 *.zstd
 *.zip
-
