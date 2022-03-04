@@ -1,13 +1,13 @@
 # Maintainer: XiaYeSuiFeng <xiayesuifeng@firerain.me>
 pkgname=gopanel
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A control panel that is written in Golang and is able to manage Caddy 2'
 arch=('x86_64')
 license=('GPLv3')
 url='https://gitlab.com/xiayesuifeng/gopanel'
 backup=('etc/gopanel/config.json')
-depends=('caddy2')
+depends=('caddy')
 makedepends=('go' 'npm')
 source=("https://gitlab.com/xiayesuifeng/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "gopanel-web.tar.gz::https://gitlab.com/xiayesuifeng/${pkgname}-web/-/archive/master/gopanel-web-master.tar.gz")
