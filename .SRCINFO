@@ -1,15 +1,20 @@
 pkgbase = python-scrapelib
-	pkgdesc = a library for scraping things
+	pkgdesc = Library for scraping unreliable pages
 	pkgver = 2.0.5
-	pkgrel = 1
-	url = https://scrapelib.readthedocs.io/en/stable/
+	pkgrel = 2
+	url = https://github.com/jamesturk/scrapelib
 	arch = any
-	license = BSD-2-Clause
-	makedepends = python
-	makedepends = python-setuptools
-	depends = python
+	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	depends = python>=3.7
 	depends = python-requests
-	source = python-scrapelib-2.0.5.tar.gz::https://files.pythonhosted.org/packages/cc/54/e0e10c4d9ed85c0a67518f4588216517ac207ac4d5f59b6d811d1e8d9ece/scrapelib-2.0.5.tar.gz
-	sha256sums = fbfc520c7ac4cf8cfbf859b7bddf78be6b47bb4dcb07aec899dc26af9d128928
+	source = python-scrapelib-2.0.5.tar.gz::https://github.com/jamesturk/scrapelib/archive/2.0.5.tar.gz
+	sha256sums = 82698f7e5ee05363e2cb74d83b2e90f87a0370d1f0073ef12f2b942aba86afae
 
 pkgname = python-scrapelib

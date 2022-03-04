@@ -1,25 +1,43 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-scrapelib
 pkgver=2.0.5
-pkgrel=1
-pkgdesc='a library for scraping things'
+pkgrel=2
+pkgdesc='Library for scraping unreliable pages'
 arch=('any')
-url='https://scrapelib.readthedocs.io/en/stable/'
-license=('BSD-2-Clause')
-depends=('python' 'python-requests')
-makedepends=('python' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/cc/54/e0e10c4d9ed85c0a67518f4588216517ac207ac4d5f59b6d811d1e8d9ece/scrapelib-2.0.5.tar.gz")
-sha256sums=('fbfc520c7ac4cf8cfbf859b7bddf78be6b47bb4dcb07aec899dc26af9d128928')
-
-_pkgname=scrapelib
+url='https://github.com/jamesturk/scrapelib'
+license=('BSD')
+depends=('python>=3.7' 'python-requests')
+makedepends=(
+	'python-poetry'
+	'python-build'
+	'python-installer'
+	'python-sphinx'
+	'python-sphinx_rtd_theme')
+checkdepends=('python-pytest' 'python-mock')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('82698f7e5ee05363e2cb74d83b2e90f87a0370d1f0073ef12f2b942aba86afae')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+	cd "scrapelib-$pkgver"
+	python -m build --wheel --no-isolation
+	cd docs
+	PYTHONPATH=../ make man
+}
+
+check() {
+	cd "scrapelib-$pkgver"
+	pytest -x
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+	export PYTHONHASHSEED=0
+	cd "scrapelib-$pkgver"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 docs/_build/man/scrapelib.1 -t "$pkgdir/usr/share/man/man1/"
+
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	local _sitedir="$(python -c 'from site import getsitepackages as g; print(g()[0])')"
+	ln -s "$_sitedir/scrapelib-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
