@@ -3,8 +3,8 @@
 _target=sunxi64
 pkgbase="linux-$_target"
 pkgname=("$pkgbase" "$pkgbase-headers")
-pkgver=5.15.25
-_armbver=22.02.1
+pkgver=5.15.26
+_armbver=22.05.0-trunk.0002
 _kernver="$pkgver-$_target"
 pkgrel=1
 arch=('aarch64')
