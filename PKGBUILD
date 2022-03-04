@@ -1,12 +1,12 @@
 # Maintainer: Hans-Nikolai Viessmann <hans AT viess.mn>
-pkgname='barvinok'
+pkgname=barvinok
 pkgver=0.41.5
-pkgrel=2
-pkgdesc='A library for counting the number of integer points in parametric and non-parametric polytopes'
+pkgrel=3
+pkgdesc='A library for counting the number of integer points in (non-)parametric polytopes'
 arch=('x86_64')
 url='http://barvinok.gforge.inria.fr/'
 license=('GPL')
-depends=('ntl' 'isl>0.19' 'polylib-gmp')
+depends=('ntl' 'libisl>0.19' 'polylib-gmp')
 makedepends=('git')
 source=("git+https://repo.or.cz/barvinok.git#tag=$pkgname-$pkgver")
 sha256sums=('SKIP')
