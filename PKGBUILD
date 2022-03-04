@@ -1,7 +1,7 @@
 # Maintainer: Filipe Nascimento <flipee at tuta dot io>
 
 pkgname=qrcp
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Transfer files over Wi-Fi from your computer to a mobile device by scanning a QR code without leaving the terminal"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b77673bad880c9ffec1fa20cef6e46ae717702edd95bca3076919225e396db57')
+sha256sums=('f432347c3892c97ef31345e93435ca4ec3b5bacf09874635f6f50a610d804b26')
 
 build() {
     cd $pkgname-$pkgver
@@ -38,5 +38,6 @@ package() {
     cd $pkgname-$pkgver
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
     cp -r share/ "$pkgdir/usr"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
