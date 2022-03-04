@@ -1,14 +1,14 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r10522
+pkgver=r10529
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
 depends=('gcc-libs' 'zstd' 'zlib' 'sdl2' 'hicolor-icon-theme' 'freetype2' 'miniupnpc' 'fluidsynth')
-makedepends=('subversion' 'pkgconf' 'cmake' 'make')
+makedepends=('subversion' 'pkgconf' 'cmake')
 optdepends=('soundfont-fluid: Default MIDI soundfont for music'
 			'soundfont-realfont: Alternative higher quality MIDI soundfont'
             'simutrans-pak32.comic: Lowest resolution graphics set for Simutrans'
@@ -31,48 +31,18 @@ optdepends=('soundfont-fluid: Default MIDI soundfont for music'
             'simutrans-pak192.comic: Highest resolution graphics set for Simutrans')
 
 conflicts=('simutrans')
-source=($pkgname::svn+svn://servers.simutrans.org/simutrans/trunk
-        settings-folder.patch
-        path-for-game-data.patch
-        "How to add files and paksets.md")
-sha256sums=('SKIP'
-            'f397641a2700b3378b828bc00d595de616b5f9f6c39a7d371d505c9014d9c2ba'
-            '7a76f231594641253a3100ec39fb36344b870d5dbba0adccc4aa888943219d95'
-            '52a00091a71e250205adcb3ef8b86b560a5c27429ec700c5e5242f58184d90ab')
-            
-prepare() {
-  cd $pkgname
-
-  # Adjust paths
-  patch -Np0 -i ../settings-folder.patch
-  patch -Np0 -i ../path-for-game-data.patch
-}
+source=($pkgname::svn+svn://servers.simutrans.org/simutrans/trunk)
+sha256sums=('SKIP')
 
 build() {
-  cd $pkgname
-  cmake -S . -B build 
-  cmake build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build -j$(nproc) --target install
+  cmake -S $pkgname -B build 
+  cmake build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake --build build -j$(nproc)
 }
 
 package() {
-  #binary
-  install -Dm755 $pkgname/build/simutrans/simutrans "$pkgdir/usr/bin/simutrans"
-  rm $pkgname/build/simutrans/simutrans
-  
-  #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans"
-  cp -r $pkgname/build/simutrans/* "$pkgdir/usr/share/games/simutrans"
-
-  #desktop file and icon
-  install -Dm644 $pkgname/src/simutrans/simutrans.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/simutrans.svg"
-  install -Dm644 $pkgname/src/simutrans/.desktop "$pkgdir/usr/share/applications/simutrans.desktop"
-
-  #license
+  DESTDIR="$pkgdir" cmake --install build
   install -Dm644 $pkgname/simutrans/license.txt "$pkgdir/usr/share/licenses/simutrans/license.txt"
-  
-  install -Dm644 "How to add files and paksets.md" "$pkgdir/usr/share/games/simutrans/How to add files and paksets.md"
-
 }
 
 pkgver() {
