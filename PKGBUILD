@@ -2,27 +2,29 @@
 
 _pkgname=SteamAccountSwitcher
 pkgname=steamaccountswitcher-git
-pkgver=r8.ba83886
+pkgver=r9.0e3fc48
 pkgrel=1
-pkgdesc='Qt Steam account switcher for linux'
-arch=('any')
+pkgdesc="Qt 5/6 Steam account switcher for linux"
+arch=("any")
 url="https://github.com/ShayBox/${_pkgname}"
-license=('MIT')
+license=("MIT")
 depends=(
-    'steam'
+    "steam"
 )
 makedepends=(
-    'git'
-    'python-pip'
-    'python-poetry'
+    "git"
+    "python-pip"
+    "python-poetry"
+)
+optdepends=(
+    "python-pyqt5: Qt5"
+    "python-pyqt6: Qt6"
 )
 source=(
     "git+${url}.git"
-    "${_pkgname}.desktop"
 )
 sha512sums=(
-    'SKIP'
-    'cb8a5a23ce20dcb4df32a4f632cd3f2b8af49783f91c024cc280b5e3f5d380351a0749784a7ae5a281024a6c0216d5ea957a0841440a3016f9df023cea22b308'
+    "SKIP"
 )
 
 pkgver() {
@@ -36,9 +38,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"
-    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-    cd "${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
+    install -Dm644 "data/share/applications/steamswitcher.desktop" "${pkgdir}/usr/share/applications/steamswitcher.desktop"
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
 }
