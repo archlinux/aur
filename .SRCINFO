@@ -7,7 +7,7 @@ pkgbase = uefi-run
 	license = MIT
 	makedepends = rust
 	depends = qemu
-	depends = ovmf
+	depends = edk2-ovmf
 	source = https://github.com/Richard-W/uefi-run/archive/v0.4.0.tar.gz
 	md5sums = SKIP
 
