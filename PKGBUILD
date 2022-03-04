@@ -2,7 +2,7 @@
 
 pkgname=uefi-run
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Directly run UEFI applications in QEMU"
 arch=('x86_64')
 url=https://github.com/Richard-W/uefi-run
