@@ -36,7 +36,6 @@ depends=(
     vulkan-icd-loader
     vulkan-validation-layers
     wayland
-    wlroots-git
     xcb-util-errors
     xcb-util-renderutil
     xcb-util-wm

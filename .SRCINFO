@@ -30,7 +30,6 @@ pkgbase = sway-git-wlroots-git
 	depends = vulkan-icd-loader
 	depends = vulkan-validation-layers
 	depends = wayland
-	depends = wlroots-git
 	depends = xcb-util-errors
 	depends = xcb-util-renderutil
 	depends = xcb-util-wm
