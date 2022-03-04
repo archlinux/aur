@@ -8,10 +8,11 @@ pkgbase = sozu
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
+	makedepends = git
 	depends = openssl>=1.0.1
 	conflicts = sozu-git
 	backup = etc/sozu/config.toml
-	source = git://github.com/sozu-proxy/sozu#commit=e4e7488232ad6523791b94ad201239bcf7eb9b30
+	source = git+https://github.com/sozu-proxy/sozu.git#commit=e4e7488232ad6523791b94ad201239bcf7eb9b30
 	source = config.toml
 	source = sozu.service
 	sha256sums = SKIP
