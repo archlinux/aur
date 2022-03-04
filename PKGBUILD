@@ -1,7 +1,7 @@
 # Maintainer: Andrey Anshin <Andrey.Anshin@taragol.is>
 
 pkgname=discover-overlay
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Yet another Discord overlay for Linux written in Python using GTK3"
 arch=("x86_64")
@@ -23,7 +23,7 @@ conflicts=("discover-overlay-git")
 provides=("discover-overlay")
 optdepends=("gtk-layer-shell: Wayland support")
 source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/d/discover-overlay/${pkgname}-${pkgver}.tar.gz")
-sha512sums=("a513cb9a9abbf4cf38aac3c5baac7aee9f2d6de5e33a18838a2add6a8f0913be828c8ea9fd4499f7a27a0b890522e19874851ff0de58aa6659293225bf91835b")
+sha512sums=("29e84ea52758ca699909031244ba1647aafb288cc424dea7299324d601e19d02238b707917f1cf367a178f8dc1aa48fd2c8d2cbe38985d7cc772235facb39c8a")
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
