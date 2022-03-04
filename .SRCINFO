@@ -1,6 +1,6 @@
 pkgbase = libzypp-bindings-git
 	pkgdesc = ZYpp bindings for scripting languages
-	pkgver = r341.0baaf1d
+	pkgver = r351.e12c570
 	pkgrel = 1
 	url = https://github.com/openSUSE/libzypp-bindings
 	arch = i686
@@ -11,7 +11,6 @@ pkgbase = libzypp-bindings-git
 	makedepends = boost
 	makedepends = swig
 	makedepends = python
-	makedepends = python2
 	depends = libzypp-git
 	source = git+https://github.com/openSUSE/libzypp-bindings.git
 	source = make-ZyppCommon-cmake-module-includable.patch
@@ -23,10 +22,3 @@ pkgname = python-zypp-git
 	depends = python
 	provides = python-zypp
 	conflicts = python-zypp
-
-pkgname = python2-zypp-git
-	depends = libzypp-git
-	depends = python2
-	provides = python2-zypp
-	conflicts = python2-zypp
-

@@ -1,28 +1,27 @@
 # Contributor: Junchun Guan <junchunx.guan@gmail.com>
-
 pkgbase=libzypp-bindings-git
-pkgname=('python-zypp-git' 'python2-zypp-git')
-pkgver=r341.0baaf1d
+pkgname=('python-zypp-git')
+pkgver=r351.e12c570
 pkgrel=1
 pkgdesc="ZYpp bindings for scripting languages"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp-bindings"
-license=('GPL')
-depends=('libzypp-git')
-makedepends=('git' 'cmake' 'boost' 'swig' 'python' 'python2')
+license=(GPL)
+depends=(libzypp-git)
+makedepends=(git cmake boost swig python)
 source=('git+https://github.com/openSUSE/libzypp-bindings.git'
-        'make-ZyppCommon-cmake-module-includable.patch')
+  'make-ZyppCommon-cmake-module-includable.patch')
 md5sums=('SKIP'
-         '71d063d865f99ac00ab24cf759107376')
+  '71d063d865f99ac00ab24cf759107376')
 _gitname="libzypp-bindings"
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd ${_gitname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_gitname"
+  cd ${_gitname}
   patch -p1 -i $srcdir/${source[1]}
 
   # https://github.com/openSUSE/libzypp-bindings/pull/21
@@ -30,25 +29,11 @@ prepare() {
 }
 
 build() {
-  cp -r "$srcdir"/$_gitname "$srcdir"/$_gitname-py2
-
-  cd "$srcdir"/$_gitname
+  cd ${_gitname}
   cmake -D CMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_RUBY_BINDINGS=OFF \
     -DBUILD_PERL5_BINDINGS=OFF \
-    -DLIB=/lib \
-    -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-    .
-  make
-  cd "$srcdir"/$_gitname-py2
-  cmake -D CMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_RUBY_BINDINGS=OFF \
-    -DBUILD_PERL5_BINDINGS=OFF \
-    -DPythonLibs_FIND_VERSION_MAJOR=2 \
-    -DPythonLibs_FIND_VERSION=2.7 \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DLIB=/lib \
     -DCMAKE_VERBOSE_MAKEFILE=TRUE \
     .
@@ -56,17 +41,9 @@ build() {
 }
 
 package_python-zypp-git() {
-  depends=('libzypp-git' 'python')
-  provides=('python-zypp')
-  conflicts=('python-zypp')
-  cd "$srcdir"/$_gitname
-  make DESTDIR="${pkgdir}" install
-}
-
-package_python2-zypp-git() {
-  depends=('libzypp-git' 'python2')
-  provides=('python2-zypp')
-  conflicts=('python2-zypp')
-  cd "$srcdir"/$_gitname-py2
+  depends=(libzypp-git python)
+  provides=(python-zypp)
+  conflicts=(python-zypp)
+  cd ${_gitname}
   make DESTDIR="${pkgdir}" install
 }
