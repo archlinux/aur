@@ -1,6 +1,6 @@
 pkgbase = hamsket-nightly-bin
 	pkgdesc = Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one.
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/TheGoddessInari/hamsket
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = hamsket-nightly-bin
 	depends = nss
 	provides = hamsket
 	conflicts = hamsket-bin
-	source = hamsket.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/hamsket-0.6.3.tar.gz
+	source = hamsket.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/hamsket-0.6.4.tar.gz
 	source = hamsket.desktop
 	source = hamsket.png
 	sha256sums = SKIP

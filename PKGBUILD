@@ -4,7 +4,7 @@
 
 pkgname=hamsket-nightly-bin
 _pkgname=hamsket
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Free, Open Source and Cross Platform messaging and emailing app that combines common web applications into one."
 arch=(x86_64)
@@ -29,5 +29,5 @@ package() {
 
     install -Dm644 "$srcdir/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
-	install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$srcdir/$_pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
