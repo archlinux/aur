@@ -1,34 +1,41 @@
-# Maintainer: anzi2001 <anzi2001 at gmail dot com> 
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: anzi2001 <anzi2001 at gmail dot com>
 # Contributor: haha662 <haha662 at outlook dot com>
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=tinytex
-_cranver=0.36
+_cranver=0.37
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Helper Functions to Install and Maintain 'TeX Live', and Compile 'LaTeX' Documents"
-arch=("any")
+pkgdesc="Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents"
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=("MIT" "custom")
-depends=("r" "r-xfun>=0.29")
-# makedepends=()
-optdepends=("r-textit" "r-rstudioapi")
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz" "https://cran.r-project.org/web/packages/tinytex/LICENSE")
-sha256sums=('65e6c1b981686573dd406e97b9639224cc2640d55a59d6381360449f10763b78'
-            'f58c2f5b0f10b231d9cea9bc4ea0d849cd4279a21d03257be8dc9fd9452fad37')
+license=(MIT)
+depends=(r-xfun)
+checkdepends=(r-testit)
+optdepends=(r-testit r-rstudioapi)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
+        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
+sha256sums=('2f4f330711fd6cd96927c18f2f649487b8a83a06ed04b5928a0067163e7948d9'
+            'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
-  cd "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
 
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+check() {
+  cd "${_cranname}/tests"
+  R_LIBS="${srcdir}/build" _R_CHECK_PACKAGE_NAME_=false Rscript --vanilla test-cran.R
 }
 
 package() {
-  cd "${srcdir}"
-
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+
+  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
