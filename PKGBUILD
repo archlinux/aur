@@ -1,7 +1,7 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 
 pkgname=healthchecks
-pkgver=1.24.1
+pkgver=1.25.0
 pkgrel=1
 pkgdesc="A cron monitoring service with a web-based dashboard, API, and notification integrations."
 arch=('any')
@@ -24,8 +24,9 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname.service"
 	"$pkgname.sysusers"
         "$pkgname.tmpfiles"
-	"local_settings.py")
-sha256sums=('0dd07d95be0bc0ebb66ad854a711ab45b11ce3b05a27d4b7bd7d55ebe8540185'
+	"local_settings.py"
+        "settings.patch")
+sha256sums=('e6981feafd94839f9451b59af9d4dd0152cda5209ae8ddb2dcb4075c7e3350ae'
 	    'a7b75bdd35c6952e06e1cd3824450f7c613aff5e3fb1d9f4f57f517b57cefbde'
 	    '355ac237284642e24a3cbe7ddb285bf7dbb802e72ea7fe7c68f0476178ab94fc'
 	    '9d32c4d1404079cac9b7a4ccbc97e01d867735c2536f915220d2ac5dffc333e7'
@@ -35,8 +36,15 @@ sha256sums=('0dd07d95be0bc0ebb66ad854a711ab45b11ce3b05a27d4b7bd7d55ebe8540185'
 	    'efa32e5bb8ef6dae017e2e196e8a37e42e73c2aade36743905f544c0c8b936b8'
 	    '2407d81ae0224d5c394b35e20a3b29d138fbde3fdde951de9dfea44d97e73eca'
 	    'c04de046d176958b3705d751ac09cf018d395b6c37f38977ec4048a561d5041f'
-	    '5602dff3d3c96977eb5feeb1deb391bae189b9ad7c75b3226bd86665a7ed7762')
+	    '5602dff3d3c96977eb5feeb1deb391bae189b9ad7c75b3226bd86665a7ed7762'
+	    '6daf90731364cfb1b80fb94438d93891be6565cbbf220fbe4ba11b1f3fdbc777')
 
+prepare () {
+    cd "$pkgname-$pkgver/hc"
+    echo $(pwd)
+    patch -p0 -i '../../settings.patch'
+}
+    
 build() {
     cd "$pkgname-$pkgver"
     
