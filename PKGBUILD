@@ -1,7 +1,7 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=python2-opengl
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc='The most common cross platform Python binding to OpenGL and related APIs (for Python 2.7)'
 arch=('any')
@@ -9,8 +9,8 @@ url="http://pyopengl.sourceforge.net"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/b8/73/31c8177f3d236e9a5424f7267659c70ccea604dab0585bfcd55828397746/PyOpenGL-3.1.5.tar.gz")
-sha256sums=('4107ba0d0390da5766a08c242cf0cf3404c377ed293c5f6d701e457c57ba3424')
+source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/5b/01/f8fd986bc7f456f1a925ee0239f0391838ade92cdb6e5b674ffb8b86cfd6/PyOpenGL-3.1.6.tar.gz")
+sha512sums=('b6f2f083df0fd7cf8f8a1077f42fa388bce94c0edde00ed6492104af8306c9925b74649cd2c222be4205b0892e7975de2f7591d0f0bcd9540eb53c0de95fec00')
 
 package() {
   cd "PyOpenGL-${pkgver}"
