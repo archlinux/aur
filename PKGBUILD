@@ -2,7 +2,7 @@
 
 _pkgname=python-keepassxc-browser
 pkgname=$_pkgname-git
-pkgver=r49.5a16f1d
+pkgver=r53.14c6dae
 pkgrel=1
 pkgdesc='Access the KeepassXC Browser API from python'
 arch=(any)
@@ -14,14 +14,6 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(git+https://github.com/hrehfeld/python-keepassxc-browser.git)
 sha256sums=('SKIP')
-
-prepare() {
-  cd "$_pkgname"
-  # https://github.com/hrehfeld/python-keepassxc-browser/pull/29
-  git cherry-pick -n 201f28d7f1cd91c5c4a6dc41a6585e3b6e0afdf8
-  # https://github.com/hrehfeld/python-keepassxc-browser/pull/30
-  git cherry-pick -n 32efd3c6fb3e78f711eea0560bddbc131ee6e184
-}
 
 pkgver() {
   cd $_pkgname
