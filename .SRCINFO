@@ -1,12 +1,17 @@
 pkgbase = amdgpu-pro-installer-cfe
 	pkgver = 21.50_1373477
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50
 	arch = x86_64
 	groups = Radeon_Software_for_Linux_Cosmic_Fusion_Edition
 	license = custom: multiple
 	makedepends = wget
-	source = GET-DEBS.sh
+	source = GET-DEBS-AMF.sh
+	source = GET-DEBS-ENC.sh
+	source = GET-DEBS-LIBGL32.sh
+	source = GET-DEBS-LIBGL.sh
+	source = GET-DEBS-VULKAN32.sh
+	source = GET-DEBS-VULKAN.sh
 	source = versions
 	source = progl
 	source = progl.bash-completion
@@ -14,14 +19,15 @@ pkgbase = amdgpu-pro-installer-cfe
 	source = provlk.bash-completion
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
 	sha256sums = e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354
 	sha256sums = 7bb670f1588c65404ed5dc231c02c4acff4b2150c3f0eba99e052debbb089c32
 	sha256sums = 5c3f42f4c01bd0b8d1a582f6a476cc1afa4dfe47209b4742fcde84fa52d075df
-
-pkgname = libamdenc-amdgpu-pro-cfe
-	pkgdesc = AMD Encode Core Library
-	license = custom: AMDGPU-PRO EULA
 
 pkgname = amf-amdgpu-pro-cfe
 	pkgdesc = AMDGPU Pro Advanced Multimedia Framework
@@ -32,6 +38,10 @@ pkgname = amf-amdgpu-pro-cfe
 	depends = rocm-opencl-runtime
 	depends = libamdenc-amdgpu-pro-cfe
 	conflicts = amf-amdgpu-pro
+
+pkgname = libamdenc-amdgpu-pro-cfe
+	pkgdesc = AMD Encode Core Library
+	license = custom: AMDGPU-PRO EULA
 
 pkgname = amdgpu-pro-libgl-cfe
 	pkgdesc = AMDGPU Pro OpenGL driver

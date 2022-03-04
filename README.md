@@ -8,7 +8,7 @@ If a new update comes with new dependencies)
 This a fork maintained by 14-yrs old guy who isn't very patient nor experienced with doing this type of stuff , 
 so here's how you can help :
 1. Rewrite missing .sh and .py scripts from upstream archlinux-amdgpu-pro .
-2. When a New Update Hits repo.radeon.com update `GET-DEBS.sh` & `PKGBUILD` to support new changes
+2. When a New Update Hits repo.radeon.com update `GET-DEBS-*.sh` & `PKGBUILD` to support new changes
 and dependencies (if I didn't do so already) .
 3. Improve my scripts .
 

@@ -8,8 +8,8 @@ enc_ver=1.0
 
 pkgbase=amdgpu-pro-installer-cfe
 pkgname=(
-libamdenc-amdgpu-pro-cfe
 amf-amdgpu-pro-cfe
+libamdenc-amdgpu-pro-cfe
 amdgpu-pro-libgl-cfe
 lib32-amdgpu-pro-libgl-cfe
 vulkan-amdgpu-pro-cfe
@@ -17,7 +17,7 @@ lib32-vulkan-amdgpu-pro-cfe
 )
 
 pkgver=${major}_${minor}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url=https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50
 license=('custom: multiple')
@@ -26,7 +26,7 @@ makedepends=('wget')
 
 DLAGENTS='https::/usr/bin/wget --referer https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50 -N %u'
 
-source=(GET-DEBS.sh
+source=(GET-DEBS*
         versions
         progl
         progl.bash-completion
@@ -35,15 +35,39 @@ source=(GET-DEBS.sh
 
 sha256sums=("SKIP"
             "SKIP"
+            "SKIP"
+            "SKIP"
+            "SKIP"
+            "SKIP"
+            "SKIP"
             feb74796c3152cbafaba89d96e68a152f209bd3058c7eb0413cbe1ab0764e96f
             e32801c38b475cd8df17a407726b86db3de26410f563d688325b4d4314fc5354
             7bb670f1588c65404ed5dc231c02c4acff4b2150c3f0eba99e052debbb089c32
             5c3f42f4c01bd0b8d1a582f6a476cc1afa4dfe47209b4742fcde84fa52d075df)
 
-get_debs() {
-         bash ./GET-DEBS.sh
+get_debs_amf() {
+         bash ./GET-DEBS-AMF.sh
 }
 
+get_debs_enc() {
+         bash ./GET-DEBS-ENC.sh
+}
+
+get_debs_libgl() {
+         bash ./GET-DEBS-LIBGL.sh
+}
+
+get_debs_libgl32() {
+         bash ./GET-DEBS-LIBGL32.sh
+}
+
+get_debs_vulkan() {
+         bash ./GET-DEBS-VULKAN.sh
+}
+
+get_debs_vulkan32() {
+         bash ./GET-DEBS-VULKAN32.sh
+}
 
 # extracts a debian package
 # $1: deb file to extract
@@ -87,6 +111,7 @@ package_amf-amdgpu-pro-cfe () {
     depends=("libglvnd" "libx11" "vulkan-amdgpu-pro" "rocm-opencl-runtime" "libamdenc-amdgpu-pro-cfe")
     conflicts=("amf-amdgpu-pro")
 
+    get_debs_amf
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/amf-amdgpu-pro_${amf_ver}-${minor}_amd64.deb
     move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
@@ -96,7 +121,7 @@ package_libamdenc-amdgpu-pro-cfe () {
     pkgdesc="AMD Encode Core Library"
     license=('custom: AMDGPU-PRO EULA')
 
-    get_debs
+    get_debs_enc
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libamdenc-amdgpu-pro_${enc_ver}-${minor}_amd64.deb
     move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
@@ -110,6 +135,7 @@ package_amdgpu-pro-libgl-cfe () {
     backup=(etc/amd/amdapfxx.blb)
     conflicts=("amdgpu-pro-libgl")
 
+    get_debs_libgl
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libegl1-amdgpu-pro_${major}-${minor}_amd64.deb
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libgl1-amdgpu-pro-dri_${major}-${minor}_amd64.deb
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libgl1-amdgpu-pro-ext_${major}-${minor}_amd64.deb
@@ -138,6 +164,7 @@ package_lib32-amdgpu-pro-libgl-cfe () {
     backup=(etc/amd/amdrc etc/ld.so.conf.d/10-amdgpu-pro-i386.conf)
     conflicts=("lib32-amdgpu-pro-libgl")
 
+    get_debs_libgl32
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libegl1-amdgpu-pro_${major}-${minor}_i386.deb
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libgl1-amdgpu-pro-dri_${major}-${minor}_i386.deb
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/libgl1-amdgpu-pro-ext_${major}-${minor}_i386.deb
@@ -159,6 +186,8 @@ package_vulkan-amdgpu-pro-cfe () {
     provides=('vulkan-driver')
     depends=()
     conflicts=("vulkan-amdgpu-pro")
+
+    get_debs_vulkan
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/vulkan-amdgpu-pro_${major}-${minor}_amd64.deb
     move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
@@ -180,6 +209,7 @@ package_lib32-vulkan-amdgpu-pro-cfe () {
     depends=()
     conflicts=("lib32-vulkan-amdgpu-pro")
 
+    get_debs_vulkan32
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/vulkan-amdgpu-pro_${major}-${minor}_i386.deb
     move_libdir "opt/amdgpu-pro/lib/i386-linux-gnu" "usr/lib32"
     move_copyright
