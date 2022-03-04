@@ -1,21 +1,18 @@
 pkgbase = virtiofsd
-	pkgdesc = QEMU VirtioFSd
-	pkgver = 0.3
-	pkgrel = 3
-	url = https://virtio-fs.gitlab.io/
-	arch = i686
+	pkgdesc = A virtio-fs vhost-user device daemon written in Rust
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/virtio-fs/virtiofsd
 	arch = x86_64
-	license = GPL2
-	license = LGPL2.1
-	makedepends = pixman>=0.21.8
-	makedepends = python2
+	license = Apache
+	license = BSD
 	makedepends = git
-	source = git+https://gitlab.com/virtio-fs/qemu.git#tag=virtio-fs-v0.3
-	source = 0001-add-time-to-seccomp.patch
-	source = 0002-libvhost-user-Fix-the-VHOST_USER_PROTOCOL_F_SLAVE_SE.patch
-	sha256sums = SKIP
-	sha256sums = 7801e6e947c4203e797c7befd6b381c23b69e07bf8ae91f77d5b621c7c059f1b
-	sha256sums = bd5ca1495c998fac8988cdf0cab5677bf96d69ca19eea6252207a9a7c28afcdf
+	makedepends = rust
+	depends = gcc-libs
+	depends = libcap-ng
+	depends = libseccomp
+	options = !lto
+	source = virtiofsd::git+https://gitlab.com/virtio-fs/virtiofsd.git#commit=220405d7a2606c92636d31992b5cb3036a41047b
+	b2sums = SKIP
 
 pkgname = virtiofsd
-
