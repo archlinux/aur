@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=wiretrustee
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Connect your devices into a single secure private WireGuard®-based mesh network'
 url='https://wiretrustee.com'
@@ -20,7 +20,7 @@ source=(
   'wiretrustee@.service'
 )
 sha256sums=(
-  '1fbee81fbabacb609aeb44fb1a834756df3042344c47955c414a0ee4e1a7a99c'
+  'f7ff1cae316b25f6abff87470d0f67b4acd3f0c75c836e7271fd8b9c3d2a59f0'
   '185d92f240e92c8d58dde91bb45d73d09ea22fc48090f30330596f12e6d265e7'
   '672235231a73743878d77e94827c5aba326464dae63457f94cd51708ac84ba58'
 )
