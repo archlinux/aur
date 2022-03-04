@@ -1,19 +1,18 @@
-pkgname=bazel3
-pkgver=3.7.2
+pkgname=bazel31
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch=('x86_64')
 license=('Apache')
 url='https://bazel.build/'
-depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
+depends=('java-environment=8' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf' 'python')
 provides=("bazel=${pkgver}")
 conflicts=('bazel')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
         "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig")
-sha512sums=('e8746ef5ec22feb95e9dbbddb3fb56cf8f49c80f326fc2a4e0ce2619607826fac22f46bfb995daee55bf9ffabb9d646b8454be2bce7b479da5cf2a7e5b3be62b'
-            'SKIP')
+sha512sums=('SKIP')
 validpgpkeys=('71A1D0EFCFEB6281FD0437C93D5919B448457EE0')
 
 build() {
