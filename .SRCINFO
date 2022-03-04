@@ -1,6 +1,6 @@
 pkgbase = wiretrustee-bin
 	pkgdesc = Connect your devices into a single secure private WireGuard®-based mesh network
-	pkgver = 0.3.5
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://wiretrustee.com
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = wiretrustee-bin
 	source = wiretrustee@.service
 	sha256sums = 185d92f240e92c8d58dde91bb45d73d09ea22fc48090f30330596f12e6d265e7
 	sha256sums = 672235231a73743878d77e94827c5aba326464dae63457f94cd51708ac84ba58
-	source_x86_64 = wiretrustee-bin-0.3.5-amd64.tar.gz::https://github.com/wiretrustee/wiretrustee/releases/download/v0.3.5/wiretrustee_0.3.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 878b9b39f7b3176a360b5b2deb792314e43d2e6952ed1d5298f8282613b4b0b6
-	source_aarch64 = wiretrustee-bin-0.3.5-arm64.tar.gz::https://github.com/wiretrustee/wiretrustee/releases/download/v0.3.5/wiretrustee_0.3.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = b854bb0093876514e4a0ed2c3000d76d8922bf1ea76e3e8391e1ba2ae01e3872
-	source_armv6h = wiretrustee-bin-0.3.5-armv6.tar.gz::https://github.com/wiretrustee/wiretrustee/releases/download/v0.3.5/wiretrustee_0.3.5_linux_armv6.tar.gz
-	sha256sums_armv6h = 0d5cf4a75488bdbd5bb97fad981cd60a00252387dd33215e8cd9c24946ba7313
+	source_x86_64 = wiretrustee-bin-0.4.0-amd64.tar.gz::https://github.com/wiretrustee/wiretrustee/releases/download/v0.4.0/wiretrustee_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 52ec13fc6811eff12cc3d3d248e487351edb34d3756c5dc3e84209eee96a89e2
+	source_aarch64 = wiretrustee-bin-0.4.0-arm64.tar.gz::https://github.com/wiretrustee/wiretrustee/releases/download/v0.4.0/wiretrustee_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = e12e55498b6222661f3373661fd34766638d36508959af861dd61ed123c7184a
+	source_armv6h = wiretrustee-bin-0.4.0-armv6.tar.gz::https://github.com/wiretrustee/wiretrustee/releases/download/v0.4.0/wiretrustee_0.4.0_linux_armv6.tar.gz
+	sha256sums_armv6h = 3f56c9968cef73d4f64506cea7c87ebb9374978cab8dabd2558d45859a8d6c0b
 
 pkgname = wiretrustee-bin
