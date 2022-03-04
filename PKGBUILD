@@ -3,11 +3,12 @@ pkgver=r3154.1646411589.c64b044b7
 pkgrel=1
 pkgdesc="Fast, isolated development environments using Docker, v2, git version"
 arch=('any')
-url="https://www.docker.com/"
+url="https://github.com/docker/compose"
 license=("Apache")
 makedepends=('git' 'go')
 checkdepends=('docker')
-conflicts=('docker-compose' 'docker-compose-git')
+conflicts=('docker-compose')
+provides=('docker-compose')
 source=("compose::git+https://github.com/docker/compose.git")
 sha512sums=('SKIP')
 
