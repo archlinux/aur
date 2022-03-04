@@ -2,21 +2,27 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-charts
-_qtver=5.15.2
-pkgver=${_qtver/-/}
-pkgrel=2
+_basever=5.15.3
+pkgver=5.15.3+kde+r0
+pkgrel=1
+_commit=f13988aa1ad9de5d92e7b0ba4d0d947dd019d759
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3')
 pkgdesc='Provides a set of easy to use chart components'
 depends=('qt5-base')
-makedepends=('qt5-declarative')
+makedepends=('qt5-declarative' 'git')
 optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e0750e4195bd8a8b9758ab4d98d437edbe273cd3d289dd6a8f325df6d13f3d11')
+_pkgfqn=${pkgname/5-/}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 options=(debug)
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
 
 prepare() {
   mkdir -p build
