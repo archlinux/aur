@@ -1,0 +1,15 @@
+pkgbase = mod-builder
+	pkgdesc = A cli tool that automatically sets up a minecraft modding environment
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/a-weeb-programmer/mod-builder
+	arch = any
+	license = GPL3
+	depends = unzip
+	depends = grep
+	depends = sed
+	depends = wget
+	source = mod-builder-1.0.tar.gz::https://github.com/a-weeb-programmer/mod-builder/archive/refs/tags/v1.0.tar.gz
+	sha256sums = a2c51bfe5e1dddb73c49bd345cba4bd6eecdb3bb7f3db60cfab8ccd8449ee7b6
+
+pkgname = mod-builder
