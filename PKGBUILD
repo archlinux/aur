@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=6
 pkgrel=1
-pkgver=8.0.0.r30587.5d379d2ad903
+pkgver=8.0.0.r30815.3ee2fba50b72
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -50,17 +50,14 @@ build() {
   cd ${_hgrepo}
   ./bootstrap --gnulib-srcdir="$srcdir"/gnulib
 
-  [[ -d build ]] && rm -rf build
-  mkdir build
-  cd build
-  ../configure QCOLLECTIONGENERATOR=qhelpgenerator-qt5 CXXFLAGS="$CXXFLAGS -fcommon" \
+  ./configure QCOLLECTIONGENERATOR=qhelpgenerator-qt5 CXXFLAGS="$CXXFLAGS -fcommon" \
 	       --prefix=/usr --libexecdir=/usr/lib --enable-shared --disable-jit \
 	       --with-umfpack --disable-java --with-hdf5 --disable-docs 
   make
 }
 
 package() {
-  cd ${_hgrepo}/build
+  cd ${_hgrepo}
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-pdf
   
