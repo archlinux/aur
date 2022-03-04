@@ -1,0 +1,19 @@
+[Unit]
+Description=Velocity - Minecraft proxy
+Wants=network.target velocity.socket
+After=network.target
+
+[Service]
+User=velocity
+Group=velocity
+WorkingDirectory=/srv/velocity
+StandardInput=socket
+StandardOutput=journal
+StandardError=journal
+ExecStart=/usr/bin/paper-velocity
+Restart=on-failure
+RestartSec=15s
+
+[Install]
+Also=velocity.socket
+

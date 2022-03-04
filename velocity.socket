@@ -1,0 +1,10 @@
+
+[Socket]
+SocketUser=velocity
+SocketGroup=velocity
+SocketMode=0660
+ListenFIFO=%t/velocity.fifo
+
+[Install]
+WantedBy=sockets.target
+
