@@ -2,20 +2,26 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-scxml
-_qtver=5.15.2
-pkgver=${_qtver/-/}
-pkgrel=2
+_basever=5.15.3
+pkgver=5.15.3+kde+r0
+pkgrel=1
+_commit=50d2da3965ed8e85f3f5f5760393c42b12d34a9f
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc='Static and runtime integration of SCXML models into Qt code'
 depends=('qt5-declarative')
-makedepends=()
+makedepends=('git')
 groups=('qt' 'qt5')
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('60b9590b9a41c60cee7b8a8c8410ee4625f0389c1ff8d79883ec5a985638a7dc')
+_pkgfqn=${pkgname/5-/}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 options=(debug)
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
 
 prepare() {
   mkdir -p build
