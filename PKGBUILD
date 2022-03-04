@@ -17,4 +17,6 @@ package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
   mkdir -p $pkgdir/"$sitepackages"
   cp -r $srcdir/pysodium/* $pkgdir/"$sitepackages"
+
+  install -Dm644 "$srcdir/pysodium/pysodium-${pkgver}.dist-info/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
