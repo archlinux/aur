@@ -1,16 +1,16 @@
 # Maintainer: Douglas Chimento <dchimento@gmail.com>
 pkgname=lndmon-git
 _name=lndmon
-pkgver=r126.a1fa10f
+pkgver=r127.2ef0e42
 pkgrel=1
 pkgdesc="${_name} monitors lnd via prometheus"
-url='https://github.com/lightninglabs/lndmon'
+url='https://github.com/dougEfish/lndmon'
 optdepends=('lnd-bin' 'lnd')
 makedepends=('go')
 checkdepends=()
 license=('MIT')
 arch=('any')
-source=("git+https://github.com/lightninglabs/lndmon.git")
+source=("git+https://github.com/dougEfresh/lndmon.git")
 sha256sums=('SKIP')
 
 pkgver() {
