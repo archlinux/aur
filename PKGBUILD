@@ -1,14 +1,14 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 
 pkgname=cadical
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A simple CDCL satisfiability solver"
 arch=('x86_64')
 url="http://fmv.jku.at/cadical/"
 license=('MIT')
 source=("https://github.com/arminbiere/cadical/archive/rel-$pkgver.tar.gz")
-md5sums=('5bd15d1e198d2e904a8af8b7873dd341')
+md5sums=('79a7070b4ae539d14accaea2687c98d3')
 
 build() {
   cd "$srcdir/$pkgname-rel-$pkgver"
