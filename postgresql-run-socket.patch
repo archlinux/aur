@@ -1,0 +1,12 @@
+diff -upr postgresql-13.1.orig/src/include/pg_config_manual.h postgresql-13.1/src/include/pg_config_manual.h
+--- postgresql-13.1.orig/src/include/pg_config_manual.h	2020-11-10 00:24:30.000000000 +0200
++++ postgresql-13.1/src/include/pg_config_manual.h	2020-12-10 01:55:35.999605194 +0200
+@@ -201,7 +201,7 @@
+  * support them yet.
+  */
+ #ifndef WIN32
+-#define DEFAULT_PGSOCKET_DIR  "/tmp"
++#define DEFAULT_PGSOCKET_DIR  "/run/postgresql"
+ #else
+ #define DEFAULT_PGSOCKET_DIR ""
+ #endif
