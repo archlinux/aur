@@ -1,20 +1,19 @@
 pkgbase = winclada
 	pkgdesc = Winclada‐ASADO
-	pkgver = 1.6.1
+	pkgver = 2.0
 	pkgrel = 1
-	url = http://www.diversityoflife.org/winclada/
+	url = http://www.lillo.org.ar/phylogeny/winclada/
 	arch = x86_64
 	license = custom
 	depends = wine
 	depends = wine_gecko
 	depends = wine-mono
 	depends = nona
-	source = http://www.diversityoflife.org/winclada/Winclad.exe
+	source = http://www.lillo.org.ar/phylogeny/winclada/winclad.zip
 	source = winclada.desktop
 	source = winclada.png
-	sha256sums = 4c6647c3ca56a57a74ab508feb71755f0ffdf7204b148e326397953ac8d32a6b
+	sha256sums = 79a224ec2a4fd4a6089380cae37e5e10f8563299f4df37d8032a055951e0cf0b
 	sha256sums = 09b52775bc0ee2693e586f2603b44977278269fd671be5fac7db1621f4c88a8b
 	sha256sums = 3308a84fdc339350dde47a03ad502ca6d8a6d573bb3e5695c0c964ba72761279
 
 pkgname = winclada
-
