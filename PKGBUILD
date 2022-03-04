@@ -1,28 +1,25 @@
-# Maintainer: Christian Schwarz <me@cschwarz.com>
-pkgbase=python-yoctopuce
-pkgname=("python-yoctopuce" "python2-yoctopuce")
-pkgver=1.10.22936
+# Contributor: Christian Schwarz <me@cschwarz.com>
+_base=yoctopuce
+pkgname=python-${_base}
+pkgver=1.10.48220
 pkgrel=1
-pkgdesc="Yoctopuce Python API"
-arch=('any')
-url="https://pypi.python.org/pypi/yoctopuce"
-license=('unknown')
-makedepends=('python-setuptools' 'python2-setuptools')
-options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/y/yoctopuce/yoctopuce-$pkgver.tar.gz")
-md5sums=('f97ad6bc34a140044298ecac57370829')
+pkgdesc="Yoctopuce python API"
+arch=(any)
+url="https://pypi.org/project/${_base}"
+license=('custom')
+depends=(python)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('54bdc1ee3c446a8814fd95547cfb81f38e1ad2636f1ad8c3d99b470af5af88cf4820bb567bd3479df2cd9e5d0e0da39890d9bfaba8f5ed8d3b18ce366cfc9341')
 
-package_python-yoctopuce() {
-  depends=("python")
-  cd "$srcdir/yoctopuce-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python2-yoctopuce() {
-  depends=("python2")
-  cd "$srcdir/yoctopuce-$pkgver"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-
-# vim:set ts=2 sw=2 et:
