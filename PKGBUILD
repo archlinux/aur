@@ -1,8 +1,8 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=tuxedo-touchpad-switch
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="A Linux userspace driver to enable and disable the touchpads on TongFang/Uniwill laptops"
 url="https://github.com/tuxedocomputers/tuxedo-touchpad-switch"
 arch=(x86_64)
@@ -14,23 +14,18 @@ makedepends=("git" "cmake" "ninja")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-_commit="88c8e4561087a3c7e8bf60bdd72a1f0005864eb0"
+_commit="cf8bd26506ca3a215bfa269c534eca985bd2d03d"
 #https://github.com/tuxedocomputers/tuxedo-touchpad-switch/archive/v$pkgver/${pkgname}-${pkgver}.tar.gz
 source=(
   git+https://github.com/tuxedocomputers/tuxedo-touchpad-switch.git#commit=$_commit
-  0001-plasma_5-24.patch
 )
 sha256sums=(
   SKIP
-  5f9f5e02c2913ea16936961c4bd02ad444123d0a6cc441fa8f5cab9b5f905b7b
 )
-#sha256sums=('dd4fa6871735fed3e094f177f0a2d0861fd3411ef4e6fbf1fbba5405a01ae219')
 
-prepare() {
-  cd "${pkgname}"
-
-  patch -p1 -i "${srcdir}/0001-plasma_5-24.patch"
-}
+#prepare() {
+#  cd "${pkgname}"
+#}
 
 build() {
   cd "${pkgname}"
