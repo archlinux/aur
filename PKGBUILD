@@ -1,7 +1,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=terra
-_cranver=1.5-17
+_cranver=1.5-21
 pkgname=r-${_cranname,,}
 pkgdesc="Spatial Data Analysis"
 url="https://cran.r-project.org/package=terra"
@@ -15,7 +15,7 @@ optdepends=("r-tinytest" "r-ncdf4" "r-sf" "r-deldir" "r-raster")
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=("e9a9a7384172dbe381543fdd780cf58f")
+sha256sums=("091ee928ccaa6561aa9f8ee6c1c99f139dc89f1653c2a76a035cca14d404f43f")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
