@@ -1,6 +1,6 @@
 pkgbase = simulationcraft-git
 	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.
-	pkgver = r48171.fcd4bef3be
+	pkgver = r49242.50800a203f
 	pkgrel = 1
 	url = https://github.com/simulationcraft/simc
 	arch = i686

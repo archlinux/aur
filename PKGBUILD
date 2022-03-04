@@ -3,7 +3,7 @@
 
 _gui=true
 _gitname=simc
-pkgver=r48171.fcd4bef3be
+pkgver=r49242.50800a203f
 pkgrel=1
 pkgname=simulationcraft-git
 pkgdesc="A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage."
@@ -31,7 +31,7 @@ prepare() {
 
     mkdir -p build
     cd build
-    cmake -DCMAKE_BUILD_TYPE=Release -DSC_TO_INSTALL=ON ..
+    cmake -DCMAKE_BUILD_TYPE=Release ..
 }
 
 build() {
@@ -58,7 +58,7 @@ package() {
 
     install -Dm644 qt/icon/SimulationCraft.xpm "${pkgdir}/usr/share/pixmaps/SimulationCraft.xpm"
     install -Dm644 "${srcdir}/SimulationCraft.desktop" "${pkgdir}/usr/share/applications/SimulationCraft.desktop"
-    for _locale in locale/* ; do
+    for _locale in qt/locale/* ; do
         install -Dm644 "${_locale}" "${pkgdir}/usr/share/${pkgname%-*}/${_locale}"
     done
     install -Dm755 build/qt/SimulationCraft "${pkgdir}/usr/bin/${pkgname%-*}"
