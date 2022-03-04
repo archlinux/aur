@@ -18,7 +18,8 @@ NVCCFLAG="-DNDEBUG -D__CORRECT_ISO_CPP11_MATH_H_PROTO -O6 -std=c++11 -w -Xcompil
 # backup=()
 #options=()
 #install=
-source=("${_pkgname}::git+https://github.com/jamriska/${_pkgname}")
+source=("${_pkgname}::git+https://github.com/jamriska/${_pkgname}"
+        "LICENSE")
 noextract=()
 md5sums=('SKIP')
 
@@ -39,13 +40,16 @@ build() {
 
 
 package() {
-	cd "$srcdir/${_pkgname}"
+	cd "${_pkgname}"
     #install -dm644 "${pkgdir}/usr/share/${_pkgname}/examples"
     #install -dm644 "${pkgdir}/usr/share/${_pkgname}/doc"
 
     #install -DM644 "examples/*" "${pkgdir}/usr/share/${_pkgname}/examples/" 
     #install -DM644 "doc/*" "${pkgdir}/usr/share/${_pkgname}/doc/"
+    cd "$srcdir"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
+    cd "${_pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
     install -Dm755 "bin/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
 }
