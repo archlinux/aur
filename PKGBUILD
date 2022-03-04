@@ -1,9 +1,9 @@
-pkgbase=stt-train
-pkgname=('stt-train' 'python-stt')
+pkgbase=stt
+pkgname=('stt' 'python-stt')
 _pkgname=STT
 pkgver=1.2.0
 pkgrel=1
-pkgdesc="Coqui-STT for training"
+pkgdesc="Coqui-STT for inference"
 arch=('x86_64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
