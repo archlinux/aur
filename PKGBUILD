@@ -2,21 +2,27 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-remoteobjects
-_qtver=5.15.2
-pkgver=${_qtver/-/}
-pkgrel=2
+_basever=5.15.3
+pkgver=5.15.3+kde+r0
+pkgrel=1
+_commit=581475dfeb44c8b51c0be86e0f2f57df7d117a80
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='Inter-process communication (IPC) module developed for Qt'
 depends=(qt5-base)
-makedepends=(qt5-declarative)
+makedepends=(qt5-declarative git)
 optdepends=('qt5-declarative: QML bindings')
 groups=(qt qt5)
-_pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('6781b6bc90888254ea77ce812736dac00c67fa4eeb3095f5cd65e4b9c15dcfc2')
+_pkgfqn=${pkgname/5-/}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 options=(debug)
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
 
 prepare() {
   mkdir -p build
