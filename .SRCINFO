@@ -1,5 +1,5 @@
 pkgbase = betterbin
-	pkgdesc = A number of useful shell scripts to increace productivity and speed up your workflow
+	pkgdesc = A number of useful shell scripts to increace productivity and speed up your workflow!
 	pkgver = 1.0.r58
 	pkgrel = 1
 	url = https://gitlab.com/qYp/betterbin

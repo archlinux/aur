@@ -4,7 +4,7 @@ _pkgname=BetterBin
 pkgname=betterbin
 pkgver=1.0.r58
 pkgrel=1
-pkgdesc='A number of useful shell scripts to increace productivity and speed up your workflow'
+pkgdesc='A number of useful shell scripts to increace productivity and speed up your workflow!'
 arch=(x86_64)
 url="https://gitlab.com/qYp/${pkgname}"
 license=('MIT')
@@ -22,8 +22,6 @@ package() {
   cd ${pkgname}
   rm -rf ${pkgdir}/usr/bin/{"$(ls -1 ${srcdir}/${pkgname}/opt/${_pkgname})"}
   mkdir -p "${pkgdir}/usr/bin" ; mkdir -p "${pkgdir}/opt/${_pkgname}" ; mkdir -p "${pkgdir}/tmp/${_pkgname}"
-  install -Dm775 opt/${_pkgname}/* -g wheel -o ${USER} -t "${pkgdir}/opt/${_pkgname}"
+  install -Dm775 usr/bin/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin/"
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  ln -sf ${pkgdir}/opt/${_pkgname}/* "${pkgdir}/tmp/${_pkgname}"
-  install -Dm755 ${pkgdir}/tmp/${_pkgname}/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin"
 }
