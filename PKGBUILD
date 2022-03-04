@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-firefox
-pkgver=r54.051ccfd
+pkgver=r59.979750a
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox"
@@ -63,7 +63,7 @@ build_nghttp2 () {
 
 patch_curl () {
   cd ${srcdir}
-  cp ${browser_dir}/patches/curl-*.patch ${CURL_VERSION}/
+  cp ${browser_dir}/patches/curl-*.patch ${CURL_VERSION}/ 
   cd ${CURL_VERSION}
   for p in $(ls curl-*.patch); do patch -p1 < $p; done
   autoreconf -fi
@@ -78,6 +78,18 @@ build_curl () {
   cp src/curl out/curl-impersonate
   cp ${srcdir}/${browser_dir}/curl_* out/
   chmod +x out/*
+  strip out/curl-impersonate
+}
+
+build_libcurl () {
+  cd ${srcdir}
+  cd ${CURL_VERSION}
+  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  make clean
+  make
+  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
+  cp "lib/.libs/libcurl.so.$ver" "out/libcurl-impersonate.so.$ver"
+  strip "out/libcurl-impersonate.so.$ver"
 }
 
 prepare () {
@@ -89,11 +101,23 @@ build () {
   build_nss
   build_nghttp2
   build_curl
+  build_libcurl
 }
 
 package () {
-  cd ${CURL_VERSION}/out
+  mkdir -p "${pkgdir}/usr/lib/"
+
+  cd ${CURL_VERSION}
+  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
+  major=$(echo -n $ver | cut -d'.' -f1)
+  cd out/
+
   sed -i "s/\$dir\/curl-impersonate/${pkgname}/g" curl_*
   install -Dm755 curl-impersonate "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
+  install -Dm755 libcurl-impersonate.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-firefox.so.$ver"
+
+  cd "${pkgdir}/usr/lib/"
+  ln -s "libcurl-impersonate-firefox.so.$ver" "libcurl-impersonate-firefox.so.$major"
+  ln -s "libcurl-impersonate-firefox.so.$ver" "libcurl-impersonate-firefox.so"
 }
