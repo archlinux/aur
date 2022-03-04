@@ -2,8 +2,8 @@
 
 _pkgname=opencontest-server
 pkgname=opencontest-server-git
-pkgver=v2.5.3_2_ge2c3b5f
-pkgrel=2
+pkgver=v2.6.2_8_g2cbba5e
+pkgrel=1
 pkgdesc="An OpenContest server written in Python"
 arch=(any)
 url="https://github.com/LadueCS/OpenContest-Server"
@@ -29,7 +29,7 @@ package() {
 
   python -c "from setuptools import setup; setup();" install --root="$pkgdir" --optimize=1
 
-  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
-  install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  install -vDm644 conf/systemd.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -vDm644 conf/sysusers.conf "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -vDm644 conf/tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 }

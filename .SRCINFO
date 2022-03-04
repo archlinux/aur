@@ -1,7 +1,7 @@
 pkgbase = opencontest-server-git
 	pkgdesc = An OpenContest server written in Python
-	pkgver = v2.5.3_2_ge2c3b5f
-	pkgrel = 2
+	pkgver = v2.6.2_8_g2cbba5e
+	pkgrel = 1
 	url = https://github.com/LadueCS/OpenContest-Server
 	arch = any
 	license = AGPL
