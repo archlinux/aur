@@ -1,5 +1,5 @@
 pkgname=kimageannotator-git
-pkgver=r987.6ebffb1
+pkgver=r1096.c2919a5
 pkgrel=1
 pkgdesc='Tool for annotating images'
 arch=('i686' 'x86_64')
@@ -15,6 +15,7 @@ makedepends=(
   extra-cmake-modules
   qt5-tools
   kcolorpicker-git
+  chrpath
 )
 conflicts=(${pkgname%-git})
 provides=(${pkgname%-git})
@@ -42,6 +43,8 @@ package(){
   make DESTDIR="$pkgdir" install
   cd "$pkgdir"/usr
   install -dm755 bin
-  install -Dm544 "$srcdir/kImageAnnotator/build/example/kImageAnnotator-example" bin/kImageAnnotator-example
+  install -Dm555 "$srcdir/kimageannotator/build/example/kImageAnnotator-example" bin/kImageAnnotator-example
+  strip "$pkgdir/usr/bin/kImageAnnotator-example"
+  chrpath -d "$pkgdir/usr/bin/kImageAnnotator-example"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = kimageannotator-git
 	pkgdesc = Tool for annotating images
-	pkgver = r987.6ebffb1
+	pkgver = r1096.c2919a5
 	pkgrel = 1
 	url = https://github.com/DamirPorobic/kimageannotator
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = kimageannotator-git
 	makedepends = extra-cmake-modules
 	makedepends = qt5-tools
 	makedepends = kcolorpicker-git
+	makedepends = chrpath
 	depends = qt5-base
 	depends = qt5-svg
 	provides = kimageannotator
@@ -19,4 +20,3 @@ pkgbase = kimageannotator-git
 	sha256sums = SKIP
 
 pkgname = kimageannotator-git
-
