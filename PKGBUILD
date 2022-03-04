@@ -1,6 +1,6 @@
 pkgname='python-cvxpy'
 _module='cvxpy'
-pkgver='1.1.17'
+pkgver='1.1.18'
 pkgrel=1
 pkgdesc="A domain-specific language for modeling convex optimization problems"
 url="http://github.com/cvxgrp/cvxpy/"
@@ -18,7 +18,7 @@ checkdepends=('glpk' 'python-pytest' 'python-cvxopt' 'python-osqp' 'python-scs')
 license=('Apache')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cvxgrp/cvxpy/archive/v${pkgver}.tar.gz")
-sha256sums=('6e14ede9de67afbf96cba2306a72fb4290e1c0d3b6849d782226ddb45c696ad8')
+sha256sums=('50041e75d6f87c11a13404727236794d708cd37413184b8079b96397ec3e98fe')
 
 build() {
     cd "${_module}-${pkgver}"
