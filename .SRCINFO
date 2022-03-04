@@ -1,0 +1,18 @@
+pkgbase = krunner-pass-wl-clipboard-git
+	pkgdesc = krunner-pass patched to use wl-clipboard
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/akermu/krunner-pass
+	arch = any
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = krunner
+	depends = qt5-base
+	depends = ki18n
+	depends = wl-clipboard
+	provides = krunner-pass
+	source = git://github.com/akermu/krunner-pass
+	md5sums = SKIP
+
+pkgname = krunner-pass-wl-clipboard-git
