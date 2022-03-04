@@ -1,42 +1,38 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer: Hermann Höhne <hoehermann@gmx.de>
+# Contributor: GI_Jack <GI_Jack@hackermail.com>
+
 pkgname=purple-gowhatsapp-git
-_pkgname=purple-gowhatsapp
-pkgver=r166.438fae6
+pkgnam=${pkgname%-git}
+pkgver=0.0.0
 pkgrel=1
-pkgdesc="A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp"
+pkgdesc="A libpurple/Pidgin plugin for WhatsApp, powered by whatsmeow"
 arch=('x86_64' 'i686')
 url="https://github.com/hoehermann/purple-gowhatsapp"
 license=('GPLv3')
 groups=()
 depends=('libpurple')
-makedepends=('git' 'go')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+makedepends=('git' 'go' 'cmake' 'make' 'pkg-config')
+provides=("${pkgnam}")
+conflicts=("${pkgnam}")
 install=
-source=("${_pkgname}::git+https://github.com/hoehermann/purple-gowhatsapp.git")
+source=("${pkgnam}::git+https://github.com/hoehermann/purple-gowhatsapp.git#branch=whatsmeow")
 noextract=()
 sha256sums=('SKIP')
 
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
-  cd "$srcdir/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/${_pkgname}"
-  GOPATH="$srcdir/gopath" make update-dep
+  export GOPATH="$srcdir/${pkgnam}/build/src/go/go"
+  cd "$srcdir/${pkgnam}"
+  bash version.sh "$srcdir/${pkgnam}/build"
 }
 
 build() {
-  cd "$srcdir/${_pkgname}"
-  GOPATH="$srcdir/gopath" make
+  mkdir -p "$srcdir/${pkgnam}/build"
+  cd "$srcdir/${pkgnam}/build"
+  cmake -G "Unix Makefiles" ..
+  cmake --build .
 }
 
-
 package() {
-  cd "${srcdir}/${_pkgname}"
-  GOPATH="$srcdir/gopath" make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgnam}/build"
+  make DESTDIR="$pkgdir/" install/strip
 }
