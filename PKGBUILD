@@ -3,7 +3,7 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver=0.1.22.r299.gfca00a5
+pkgver=0.1.22.r324.g630aafc
 pkgrel=1
 epoch=
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/s
 options=()
 install='eruption.install'
 changelog=
-source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=fca00a503b1f5526407e0b50d5b0e0432a03aa38')
+source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=630aafc42df1680452ad64635e9375d1092766f5')
 noextract=()
 sha512sums=('SKIP')
 
@@ -245,6 +245,8 @@ package() {
     install -m 644 "eruption/src/scripts/sysmon.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/swirl-perlin.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/swirl-perlin.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/swirl-simplex.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "eruption/src/scripts/swirl-simplex.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/swirl-turbulence.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/swirl-turbulence.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "eruption/src/scripts/swirl-voronoi.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -365,6 +367,7 @@ package() {
     install -m 644 "support/profiles/swirl-perlin-blue-red-dim.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin-rainbow-dim.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-perlin-red-yellow-dim.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/swirl-simplex-rainbow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/swirl-voronoi.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/turbulence.profile" "$pkgdir/var/lib/eruption/profiles/"
