@@ -4,13 +4,13 @@
 pkgname=alephone
 _pkgdate=20220115
 pkgver=1.5.0_$_pkgdate
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="https://alephone.lhowon.org/"
 license=('GPL3')
 depends=('sdl2_ttf' 'sdl2_image' 'sdl2_net' 'libmad' 'glu' 'zziplib'
-         'ffmpeg' 'boost-libs' 'curl')
+         'ffmpeg4.4' 'boost-libs' 'curl')
 optdepends=('alephone-eternalx: community-made scenario'
             'alephone-evil: community-made scenario'
             'alephone-infinity: original data for Marathon Infinity'
@@ -34,7 +34,7 @@ prepare() {
 build() {
   cd AlephOne-$_pkgdate
 
-  ./configure --prefix=/usr
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr
   make
 }
 
