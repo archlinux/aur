@@ -1,6 +1,6 @@
 pkgbase = mozc-ut
 	pkgdesc = The Open Source edition of Google Japanese Input bundled with the UT dictionary
-	pkgver = 2.26.4656.102.20220216
+	pkgver = 2.26.4666.102.20220305
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
@@ -16,12 +16,11 @@ pkgbase = mozc-ut
 	optdepends = fcitx-mozc-ut: Fcitx integration
 	optdepends = ibus-mozc: IBus integration
 	optdepends = emacs-mozc: Emacs integration
-	provides = mozc=2.26.4656.102
+	provides = mozc=2.26.4666.102
 	conflicts = mozc
-	replaces = mozc-ut-common
-	source = mozc-ut-git::git+https://github.com/google/mozc.git#commit=0dcb977536385e18f88e29b3ae42b07fd5f5f433
-	source = https://osdn.net/downloads/users/37/37724/mozcdic-ut-20220216.tar.bz2
+	source = mozc-ut-git::git+https://github.com/google/mozc.git#commit=650e8de7e6280dce751e4a27ae6cda3827ea8a29
+	source = https://osdn.net/downloads/users/37/37876/mozcdic-ut-20220305.tar.bz2
 	sha256sums = SKIP
-	sha256sums = 0fbbc3b4e561fccb43cea85a1c030ce252a5bac5abb95695a26277a8b0efdbbd
+	sha256sums = cb8020142ecbbbe961b5821b055b920d673853599fe8aa1c063386249dec2e00
 
 pkgname = mozc-ut
