@@ -1,0 +1,22 @@
+pkgbase = libdcmtk14-bin
+	pkgdesc = OFFIS DICOM toolkit runtime libraries.
+	pkgver = 3.6.4
+	pkgrel = 2.1
+	url = https://dicom.offis.de/dcmtk
+	arch = i686
+	arch = x86_64
+	depends = charls1>=1.0
+	depends = icu66>=66.1
+	depends = libpng>=1.6.2
+	depends = libtiff>=4.0.3
+	depends = libwrap>=7.6
+	depends = libxml2>=2.7.4
+	depends = openssl>=1.1
+	depends = zlib>=1.1.4
+	provides = libdcmtk14
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://mirrors.kernel.org/ubuntu/pool/universe/d/dcmtk/libdcmtk14_3.6.4-2.1build2_amd64.deb
+	sha256sums_x86_64 = 8ddf35f844d9a285e1d8ff0f0218327c2e399e60d9271d1c35935b4ee00fab97
+
+pkgname = libdcmtk14-bin
