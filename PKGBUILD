@@ -3,7 +3,7 @@
 pkgname=yubioath-desktop
 pkgdesc='Yubico Authenticator for Desktop'
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/Yubico/yubioath-desktop'
 license=('BSD')
@@ -39,7 +39,7 @@ package() {
     install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 
     install -Dm 644 resources/icons/com.yubico.yubioath.svg "$pkgdir"/usr/share/pixmaps/com.yubico.yubioath.svg
-    install -Dm 755 resources/com.yubico.yubioath.desktop "$pkgdir"/usr/share/applications/com.yubico.yubioath.desktop
-    install -Dm 755 resources/com.yubico.yubioath.appdata.xml "$pkgdir"/usr/share/metainfo/com.yubico.yubioath.appdata.xml
+    install -Dm 644 resources/com.yubico.yubioath.desktop "$pkgdir"/usr/share/applications/com.yubico.yubioath.desktop
+    install -Dm 644 resources/com.yubico.yubioath.appdata.xml "$pkgdir"/usr/share/metainfo/com.yubico.yubioath.appdata.xml
 }
 
