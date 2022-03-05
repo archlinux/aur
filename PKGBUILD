@@ -1,46 +1,36 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libsafec
-_pkgname=safeclib
-pkgver=02092020
-_gitver=6d921f4
+pkgver=3.7.1
 pkgrel=1
-_pkgver="${pkgver}.0-${_gitver}"
+epoch=1
 pkgdesc='Implementtion of C11 Annex K + ISO TR24731 Bounds Checking Interface'
-arch=('i686' 'x86_64')
-url='https://rurban.github.io/safeclib'
-_url='https://github.com/rurban/safeclib'
-depends=('pkgconfig')
-makedepends=('clang' 'git')
 license=('MIT')
-# https://github.com/rurban/safeclib/archive/v17102019.tar.gz
-source=("${_url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ee13cb914be5e7da7c363c839f905fc8b2a3c43c341c21f627a2094e05107362')
-
-prepare() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  # Ugly workaround to solve this
-  git init
-  git add .
-  git commit -m "$(date)"
-  ./build-aux/autogen.sh
-  CC="clang -march=native -fstrict-aliasing" ./configure --prefix=/usr
-}
+arch=('i686' 'x86_64')
+url='https://github.com/rurban/safeclib'
+depends=('perl')
+makedepends=('doxygen')
+provides=("$pkgname.so=3-64")
+changelog=CHANGELOG
+source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/safeclib-$pkgver.tar.xz")
+sha256sums=('71d3ec970f930bd980f2a41127228eeedfc53749e4c6b203329adc4ff7df32a7')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "safeclib-$pkgver"
+  ./configure --prefix=/usr
   make
 }
 
 check() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "safeclib-$pkgver"
   make check
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
-  install -Dm0644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  cd "safeclib-$pkgver"
+  DESTDIR="$pkgdir/" make install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

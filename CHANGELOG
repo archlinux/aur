@@ -1,0 +1,337 @@
+
+        ChangeLog file for safeclib
+
+Changes in 3.7.1
+        - Fixed powerpc compilation of the perf tests. GH #113
+
+Changes in 3.7
+        - Switched to proper semantic versioning for upstream packagers.
+        - Fixed getenv_s to allow dest=NULL or dmax=0 as in the spec. (GH #109)
+        - Fixed qsort_s with gcc-12 (GH #110)
+        - Updated to Unicode 14 (tested against perl 5.35.7)
+          export define SAFECLIB_UNICODE_VERSION 14
+        - Added stpcpy_s and stpncpy_s as in the Intel safestringlib fork.
+        - Added our own portable implementation of the family of printf_s
+          functions. This make the results and errno sideeffects more predictable.
+          scanf_s not yet. Fixes GH #97.
+        - This also adds support for the %Lx family of printf handlers: %L[fFeEaAgG]
+          and wide-char %ls, %lc conversions.
+          (GH #103). Now just custom sscanf_s and UTF-8 support is missing.
+	- Added a --disable-hardening option, which bypasses obviously failing
+	  AX_APPEND_COMPILE_FLAGS probes (PR #107, ffontaine).
+	  E.g. needed on some exotic uclibc buildroot targets.
+        - Some minor bugfixes, like unknown size_t GH #89, ECONSTANTS as enums
+          on hurd (GH #101), sprintf_s with "" arg (GH #97).
+        - Minor test improvements overall.
+        - Don't build/install wchar manpages with --disable-wchar (GH #95)
+
+Changes in v02092020 3.6.0
+        - Improved generated man pages. Describe not the private _chk functions,
+          but the public _s functions. Merge duplicate return values.
+
+Changes in v31082020 3.6.0
+        - Added smokers for more architectures and distros:
+          ubuntu, debian, centos, fedora, rhel /
+          x86_64, i386, arm32, aarch64, s390x, ppc64le on travis and drone.
+          just ubuntu arm32, arm64 and s390x are broken. (GH #81)
+          Big-endian works.
+        - Updated Unicode to version 13. Very few changes only.
+        - Use __attribute__format printf and scanf checks, and prepared for the
+          eventual wprintf and wscanf formats which are waiting to be added into gcc
+          since 2008. (GH #85)
+        - favor gcc-{ar,ranlib,nm} to find the plugin paths (e.g. for lto)
+        - move typedef rsize_t below def. of size_t (GH #89)
+        - kernel module: detect new time64_t and use old_time32_t for our API.
+          We didn't add the new time64_t API's yet.
+        - tests: add 2 missing HAVE_CT_BOS_OVR comptime overflows
+        - tests: fixes for latest msys2, new HAVE_MINGW64 now also defines __MINGW32__
+        - travis: improve distchecks timeouts.
+        - hardened compiler flags: -fstack-protector-strong -fstack-clash-protection
+          -fcf-protection
+        - Move SAFECLIB_HAVE_C99 to public safe_config.h (Hauke Mehrtens)
+        - Fix wcslwr_s error msg prefixes.
+
+Changes in v05112019 3.5.2
+        - Fixed musl compilation by don't undefining _GNU_SOURCE
+          with getenv_s (PR #83, Fabrice Fontaine)
+
+Changes in v29102019 3.5.2
+        - Fixed musl compilation by adding some _GNU_SOURCE
+          (PR #82, Fabrice Fontaine)
+
+Changes in v17102019 3.5.2
+        - Fixed mbsrtowcs_s error message prefix.
+        - Fixed t_mbsrtowcs_s.exe compilation under newer mingw gcc.
+
+Changes in v16102019 3.5.1
+        - Fixed memset_s for the upper 4 bits of 64 bit words (GH #73)
+        - Fixed strncat_s error handling for slen exceeds src.
+          clear dest, not src (GH #73)
+        - Fixed vswprintf_s by checking for failing malloc (GH #78)
+        - Several minor test improvements
+
+Changes in v04062019 3.5.0
+        - Updated towctrans case-mappings and normalization to Unicode 12.1
+          Even the canon tables on windows need now a special bsearch in an
+          exception list, previously only the compat tables.
+        - Unversioned and renamed the libsafec.pc pkg-config file (PR #56)
+        - Fixed strnlen_s and wcsnlen_s for long enough smax arguments.
+          Now you can get the length without knowing the length beforehand. (GH #65)
+        - Fixed various C++ regressions (GH #64, GH #58)
+        - Fixed a linux kernel module regression from 3.4 (GH #67),
+          use the mb() macro.
+        - Fixed MEMORY_BARRIER on exotic compilers: replace
+          asm("memory_barrier" ::: "memory") with __sync_synchronize()
+        - Fixed headers and linkage for the latest msys2-w32api-headers-7
+        - Fixed src and tests for the nvidia pgi pgcc compiler (17.4 and 19.4).
+          This compiler has such a bad optimizer, that it cannot get the
+          object_size of all static vars. It also crashes on some valid code.
+        - Added -mcet -fcf-protection=full probe (GH #60)
+        - Added the Huawei securec library to the docs
+        - Renamed internal build-tools to build-aux
+        - Reformat all source code with clang-format, added
+          build-aux/clang-format-all.sh
+
+Changes in v30122018 3.4.0
+        - Updated towctrans case-mappings to Unicode 11.0 (GH #62)
+        - Improved memset_s, memzero_s security by adding a CPU memory barrier,
+          not just a compiler barrier. (GH #63)
+          Check various memory_barrier insns (mfence, sfence, lwsync, membar,
+          lock..., memory_barrier) and use it for the memset primitives
+          to reliably sync memory stores with possibly re-ordered loads.
+          Note that glibc/BSD explicit_bzero or Microsoft SecureZeroMemory only do
+          a simple compiler barrier, which is not Spectre, Meltdown secure.
+        - add pic_flag to RETPOLINE cflags and ldflags (GH #55)
+        - Add --disable-doc option (GH #54)
+
+Changes in v03032018 3.3.0
+        - Added compile-time and run-time object_size checks (BOS), resulting
+          in EOVERFLOW error codes. Compilers only do this reliably with static
+          arrays, less so with literal strings. With known static allocation size
+          you can bypass RSIZE_MAX_* limits. BOS even knows about malloc sizes
+          on some platforms.
+          Renamed all functions to _*_chk, with the API as macros. (GH #40)
+        - Added run-time libmpx pointer boundary checks if supported. (GH #49)
+          gcc-5+ (optional), icc-15+
+        - Improved performance of mem_prim_set/mem_prim_move on 64bit machines by factor 2
+          by using 64bit ops, not 32bit. With clang-4+ memcpy_s is now as fast as
+          memcpy native, with gcc only 77% slower.
+          Added more benchmarks and improved the timing.
+        - Made the unsafe functions snprintf_s, vsnprintf_s, snwprintf_s, vsnwprintf_s
+          safe by guaranteeing null termination. Only tmpnam_s remains unsafe. (GH #52)
+        - Added strnatcmp_s, strnatcasecmp_s
+        - Add --disable-constraint-handler option. undef the run-time
+          invoke_safe_{str,mem}_constraint_handler function calls
+          in safe_config.h to avoid the large errormsg strings. No run-time
+          performance improvements, as those calls only happen in the error cases.
+        - Added --enable-warn-dmax option to warn when dmax != sizeof(dest),
+          and fatalized via --enable-error-dmax.
+        - Fixed wrong count max check in memmove32_s
+        - Fully tested against other secure libc extensions, the native msvcrt 7.0 (Win8)
+          and the msvcrt under wine-2.0.4 and wine-3.0.
+        - Fixed --disable-shared for Windows.
+        - Optimized null-slack clearing of dest, unrolling the memset loop with
+          small dest buffers.
+        - truncating funcs {v,}sn{w,}printf_s: clear dest on errors after printing to it
+        - Fixed compilation of the linux kernel module (PR #43, Fabrice Fontaine)
+        - Fixed c++ strictness when !c99 (e.g. g++ 4.3)
+        - Changed retval of sprintf_s/vsprintf_s on all errors from 0 to -1,
+          deviating from the standard. The original -1 retval was changed with
+          http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1141.pdf by Microsoft
+          to keep count += sprintf(buf + count, format_string, args) working,
+          where all errors simply returned 0. Later Microsoft and all others
+          changed the error return value back to -1, to be consistent with other
+          sprintf functions. So do we. (GH #45)
+        - Removed errno of sprintf_s/vsprintf_s, return the negative ES error code.
+        - sprintf_s/vsprintf_s on Windows use now the native vsnprintf_s function
+          to reject illegal format specifiers.
+        - More hardening with gcc-7.3/clang-7: Probe for -Wl,-z,textonly and
+          -Wl,-z,retpolineplt, currently only with lld-7
+        - Fixed wcsnorm_compose_s >RSIZE_MAX_WSTR integer overflow
+        - Fixed overlap checks to be C11 conformant, cast to uintptr_t. (GH #51)
+        - add strnatcmp_s, add strcmp_s src overflow checks,
+          ESUNTERM for src to avoid overflows
+        - Reworked C11 compatibility to closer align with the existing Windows+BSD
+          sec_api's, esp. with slen=0 cases of the cpy and move functions, while still
+          following the spec. (GH #39)
+          There's no seperate logic if the library was compiled with a C11 compiler
+          anymore. See the testcases for the remaining discrepances.
+        In detail:
+        - Return EOK and set dest[0] = 0 on n/slen = 0 with:
+          memccpy_s, strncpy_s
+        - Exit early with EOK on n/count=0 with:
+          mem{cpy,move}{16,32}_s, memset{16,32}_s, strcpyfld{,in,out}}_s,
+          wcs{lwr,upr}_s
+        - Change dmax to bytes to follow the documentation with:
+          mem{cpy,move}{16,32}_s
+        - Change memcmp{16,32} to work with natural sizes, not bytes.
+        - strncat_s, wcsncat_s: with slen=0 and dest=NULL and dmax=0, return EOK
+        - fwscanf_s: on mingw reset errno when *fmt = L'\0'
+        - vfwscanf_s: break early on mingw when *fmt = L'\0'
+        - wcstombs_s: clear dest when dest==src (as with msvcrt)
+        - {v,}sprintf_s: allow empty dest/dmax for size calculation
+
+Changes in v15012018 3.2.0
+        - Fixed 32bit Windows wchar conversion functions, by changing wint_t to uint32_t
+          types for most internal conversions.
+        - Changed 2 public APIs:
+          int iswfc(uint32_t wc);
+          int towfc_s(wchar_t *restrict dest, rsize_t dmax, const uint32_t src);
+        - Removed ssize_t GNU extension (jeremyhannon)
+        - Removed illegal warnings with C++
+        - Fixed tests failing with C++
+        - Fixed cygwin smokes on Appveyor
+        - Workaround broken gcc-4.8 strchr macro
+        - Probe for broken strnstr, broken in newlib until Aug 2017.
+        - Fixed mingw smokes on Appveyor, adjusted many tests using
+          the native sec_api variants which do deviate from safeclib.
+        - Clear dest on empty src with *ncpy_s and *ncat_s: PR #38 (Arjun Gour)
+        - More hardening: Add -Wl,-z,noexecstack to AM_LDFLAGS,
+          retpoline, textonly not yet.
+
+Changes in v09102017 3.1.0
+        Summary: With a non-C11 compiler not on windows the API didn't change, only docs.
+        - Fixed man pages: show public headers, hide private headers.
+        - Removed html pages from the release tarball
+        - Fixed slen=0 behaviour with cpy functions: When the library is compiled
+        with a C11 compiler, slen=0 is permitted, with an older compiler keep
+        erroring with ESZEROL: strncpy_s, wcsncpy_s, wcslwr_s, wcsupr_s, strcpyfld_s,
+        strcpyfldin_s, strcpyfldout_s
+        - Fixed docs for this behaviour: wcsncat_s, strncat_s
+        - Added hardened WARN_CFLAGS and WARN_LDFLAGS, minor fixes for the
+        hardened flags on older compilers,
+        probe for -Wl,--as-needed -Wl,-z,relro -Wl,-z,now
+        - Fixed NFD canon table for windows (sizeof wchar_t == 2) for 9 expansions
+        of length 6: U+1D160 - U+1D1C0
+        - Fixed _dec_w16 and _ENC_W16 encoding on windows, convert from and to
+        surrogate pair.
+        - Fixed distcheck and release targets, added distcheck to travis
+
+Changes in v04102017 3.0.0
+        - Added mingw cross-compilation support and changes.
+        The MINGW_HAS_SECURE_API deviates in strtok_s, vsnprintf_s, wcstok_s
+        from C11 in w64, and in vswprintf for w32. (!__STRICT_ANSI__).
+        Add EXPORT and EXTERN decls for dllexport/dllimport.
+        Cleanup the src headers.
+        - Added -D_FORTIFY_SOURCE=2
+        - Made it -Wall -Wextra -Werror -pedantic safe
+        - Added cygwin and freebsd support
+        - Install bin/check_for_unsafe_apis. Renamed and improved: 7x faster,
+          added missing conversion hints. also install its man1.
+        - Seperated internal libstdunsafe target, for std but unsafe C11
+          functions: snprintf_s, vsnprintf_s, snwprintf_s, vsnwprintf_s, tmpnam_s
+        - Added --enable-unsafe (the 5 funcs above are not included by default).
+        defines SAFECLIB_ENABLE_UNSAFE
+        - Added --disable-extensions, skipping all non-C11 safe functions.
+        This contains in summary only 13 functions for now:
+        memcpy_s, memmove_s, memset_s, sprintf_s, strcat_s, strcpy_s, strncat_s,
+        strncpy_s, strnlen_s, strtok_s, vsprintf_s, strerror_s, strerrorlen_s
+        plus all the new C11 functions.
+        defines SAFECLIB_DISABLE_EXTENSIONS
+        - Rearranged src layout
+        - Macrofied many more tests, add CHECK_SLACK, errnot_t return and ERRNO checks.
+        - Improved some tests for old gcc -ansi (c89) memcmp
+        - Add unlikely() to improve branch prediction
+        - Added --enable-gcov and a gcov target. lcov support not yet,
+        but via gcov2perl and some fixups essentially the same. See build-tools/smoke.sh
+        - Added a check-valgrind make target with support for BSD make
+        - Added all missing safe wchar and multibyte string C11 functions:
+        mbsrtowcs_s, mbstowcs_s, wcsrtombs_s, wcstombs_s, wcrtomb_s,
+        wctomb_s, wcsnlen_s, wcscpy_s, wcsncpy_s, wcscat_s, wcsncat_s,
+        wcstok_s, swprintf_s, vswprintf_s, wmemcpy_s, wmemmove_s,
+        wprintf_s, fwprintf_s, vfwprintf_s, vwprintf_s, vswscanf_s, swscanf_s,
+        wscanf_s, vwscanf_s, vfwscanf_s, fwscanf_s
+        - Added RSIZE_MAX_WMEM and RSIZE_MAX_WSTR limits,
+        wchar_t maybe 2 or 4 bytes.
+        - Added all missing safe C11 IO functions:
+        sscanf_s, scanf_s, fscanf_s, vsscanf_s, vscanf_s, vfscanf_s,
+        fprintf_s, printf_s, vfprintf_s, vprintf_s, tmpnam_s (unsafe),
+        tmpfile_s, gets_s.
+        - Added all missing safe C11 time and stdlib functions:
+        asctime_s, ctime_s, gmtime_s, localtime_s, getenv_s,
+        bsearch_s, qsort_s.
+        - Added --disable-wchar to disable the new multibyte and wchar functions,
+        but not the old 16/32 memory functions.
+        defines SAFECLIB_DISABLE_WCHAR
+        - Better debugging support: add .i target
+        - Fixed memset32_s for n > RSIZE_MAX_MEM32 ESLEMAX,
+        was only RSIZE_MAX_MEM16.
+        - Added the wcsfc_s, wcsnorm_s, wcsicmp_s extensions to be able to compare wide
+        strings.
+        - Added --enable-norm-compat to enable the big compatbility modes NFKD, NFKC
+        for wcsnorm_s.
+        - Added the timingsafe_bcmp and timingsafe_memcmp extensions from OpenBSD,
+        and memccpy_s derived from FreeBSD.
+        - Changed strtok_s to set errno to ES* values. C11 does nothing,
+        but with wcstok_s sets errno to EINVAL.
+        - Changed memset_s, harmonized with C11 API
+        - Changed mem{cpy,move,set}_s with smax/n=0, dependent if compiled with
+        a C11 compiler or not.
+        - Added a C11 compiler probe from latest autoconf git.
+        - Eliminated str/mem/lib inclusion loops. You need to include the right header(s).
+        - Clarify return values for {str,wcs}tok_s
+        - Negative return error values for all printf functions,
+          Make clear that errno is not set with _s violations, only the underlying
+          system call sets it. (EINVAL, EOVERFLOW, EILSEQ, EOF)
+        - Updated from autoconf 2.68 to 2.69
+
+Changes in v30082017 2.1.1
+        - Added vsprintf_s, vsnprintf_s. They are C11.
+        - Fixed travis smoking with different compilers.
+        - Fixed test with wrong -fsanitize=address strcmp() results.
+          asan returns just sgn(strcmp()), not the position.
+        - Macrofied some tests, use probed stdlib defines for fallbacks,
+          and add missing headers.
+        - Added empty stubs for all missing safe C11 functions
+        - Fixed C++ support for sprintf* and bool. Resolve restrict from
+        config.h before the header declarations.
+
+Changes in v25082017 2.1.0
+        - Fixed many tests. They were not enabled at all. See #10.
+        sprintf_s, snprintf_s, memcpy16_s, memcpy32_s,
+        memmove_s, memmove16_s, memmove32_s, memset_s,
+        strcpyfldout_s, strljustify_s,
+        - Changed some errors: Throw ESLEMAX when smax exceeds max,
+        before the smax>dmax check (ESNOSPC):
+        memcpy_s, memcpy16_s, memcpy32_s, memcmp_s, memcmp16_s,
+        memcmp32_s, memmove_s, memmove16_s, memmov32_s.
+        - Reverted a strljustify_s change by me.
+        - Document that memset_s on C11 allows n = ZERO, and
+        ESNULLP will be EINVAL
+        - --enable-debug on Darwin disables shared
+        - add snprintf_s, which is the unsafe variant of sprintf_s
+
+Changes in v24082017 2.0.1
+        - Added man (3) pages and proper documentation.
+        See https://rurban.github.io/safeclib/
+        - Added a safe_config.h for some new configure options:
+        strmax, memmax, nullstack and STRTOK_DELIM_MAX_LEN
+
+Changes in v15082017 2.0.0
+        - Add restrict to all pointer args, where applicable
+        - Change ESLEMAX to ESNOSPC for `(smax > dmax)` overflows
+        - Made it -Wall -pedantic safe
+        - Fix strljustify_s for empty src
+        - Fix various test errors: wrong printf format types, mostly on 64bit.
+        uninitialized variables, wrong variable types, wrong variables.
+        - test_strcspn_s.c: fix for g++
+        - Fixup sprintf_s: Use the established API, call the str_constraint_handler,
+        return the proper error values. Add tests.
+        - Add guards to prevent name mangleing when headers are used in c++ code.
+        - change memset_s to __STDC_WANT_LIB_EXT1__
+        - memset16_s, memset32_s: change API analog to memset_s.
+        Also add the smax C11 argument there, to be consistent.
+        smax denotes the max. number of bytes, the max size.
+        - add missing AM_PROG_AR to configure.ac
+
+Changes in v10052013 1.0.0
+        - Autogenerate safe_lib_errno.h safe_types.h
+        - use C99 stdbool instead of boolean_t, replace TRUE/FALSE with true/false
+
+Changes in v04122012 1.0.0
+        - Update documentation
+        - Support slkm: linux kernel module
+
+Changes in v08112011 0.0
+        - autotoolized
+        - taken from http://sourceforge.net/projects/safeclib/
