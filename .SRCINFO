@@ -1,0 +1,22 @@
+pkgbase = irpf-2019
+	pkgdesc = Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF) 2019
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	depends = sh
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2019/irpf/arquivos/IRPF2019-1.7.zip
+	source = copyright
+	source = irpf-2019
+	source = irpf-2019.desktop
+	source = irpf-2019.png
+	md5sums = 4a684e8957c4467f2649bca44fc2ee14
+	md5sums = ebf9470d2ddcd24e8680337786a2e9bb
+	md5sums = 12de9d1dc7c19b18c2ad0d14e0f439e0
+	md5sums = 0ca4a1d0f052731889c8405f6244d174
+	md5sums = 43d8c9617118578f03b2c4eeb1c72c57
+
+pkgname = irpf-2019

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Imposto de Renda Pessoa Física 2019
+Comment=Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF) 2019
+Exec=irpf-2019
+StartupNotify=true
+Icon=irpf-2019
+Terminal=false
+Type=Application
+Categories=Network;
