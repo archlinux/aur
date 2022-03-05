@@ -1,0 +1,23 @@
+pkgbase = tulip-pm
+	pkgdesc = Pacman wrapper and AUR helper written in go by Calinix Team.
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Calinix-Team/tulip
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	makedepends = go>=1.17
+	depends = pacman>5
+	depends = git
+	optdepends = sudo: privilege elevation
+	optdepends = doas: privilege elevation
+	options = !lto
+	source = tulip-pm-0.0.3.tar.gz::https://github.com/Calinix-Team/tulip/archive/refs/tags/v0.0.3.tar.gz
+	sha256sums = d9c82fcd5c4a44735c8760c1002015d06c7d902a9dfe33611f502b7e777d83d7
+
+pkgname = tulip-pm
