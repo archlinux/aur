@@ -1,7 +1,8 @@
-# Contributor: Pellegrino Prevete
+# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# Contributor: Carlos Aznarán <caznaranl@uni.pe>
 
 pkgname=python2-imagesize
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 
 pkgdesc='Getting image size from png/jpeg/jpeg2000/gif file'
@@ -14,7 +15,7 @@ makedepends=('python2-setuptools')
 
 source=("https://files.pythonhosted.org/packages/source/i/imagesize/imagesize-$pkgver.tar.gz")
 
-sha256sums=('b1f6b5a4eab1f73479a50fb79fcf729514a900c341d8503d62a62dbc4127a2b1')
+sha256sums=('cd1750d452385ca327479d45b64d9c7729ecf0b3969a58148298c77092261f9d')
 
 build() {
   cd "$srcdir"/imagesize-$pkgver
