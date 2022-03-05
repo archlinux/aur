@@ -2,18 +2,18 @@
 
 _pkgname=feathernotes
 pkgname=$_pkgname-git
-pkgver=0.4.6.18.g9f99845
+pkgver=0.10.0.10.gf0a367c
 pkgrel=1
 pkgdesc='Lightweight Qt hierarchical notes-manager for Linux.'
 arch=('i686' 'x86_64')
-url='https://github.com/tsujan/FeatherNotes'
+url='https://github.com/tsujan/feathernotes'
 license=('GPL3')
-depends=('qt5-x11extras' 'qt5-svg' 'shared-mime-info' 'desktop-file-utils')
-makedepends=('git')
+depends=('qt5-x11extras' 'qt5-svg' 'shared-mime-info' 'desktop-file-utils' 'hunspell')
+makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('qt5-translations: localized keyboard shortcuts')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/tsujan/FeatherNotes.git")
+source=("$_pkgname::git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -24,11 +24,11 @@ pkgver() {
 build() {
   rm -Rf build && mkdir build
   cd build
-  qmake $srcdir/$_pkgname/ CONFIG+=debug
+  cmake $srcdir/$_pkgname/
   make
 }
 
 package() {
   cd build
-  make INSTALL_ROOT=$pkgdir install
+  make DESTDIR=$pkgdir install
 }
