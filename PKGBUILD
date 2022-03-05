@@ -2,23 +2,15 @@
 # Contributor: Xiao-Long Chen <chenxiaolong at cxl.epac.to>
 
 pkgname=charls
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A C++ JPEG-LS library implementation'
 arch=('i686' 'x86_64')
 url='https://github.com/team-charls/charls'
 license=('BSD')
-makedepends=('cmake' 'dos2unix')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/team-charls/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('0d6af23928ba4f1205b1b74754111e5f5f6b47d192199ffa7a70d14b824ad97d')
-
-prepare() {
-  # remove CRLF sequence
-  for i in $(find $pkgname-$pkgver -type f -exec file {} \; | grep CRLF | sed 's/:.*$//')
-  do
-    dos2unix $i
-  done
-}
+makedepends=('cmake')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('e1d7dd70cd9d6d46de5abbf22278dc8169707995a21e8bf705f5746c04c76891')
 
 build() {
   mkdir -p build
