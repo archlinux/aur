@@ -4,8 +4,7 @@
 
 pkgname=qt5-mqtt
 _qtver=5.15.2
-_basever=5.15.3
-pkgver=0
+pkgver=${_qtver/-/}
 pkgrel=2
 pkgdesc="Module to implement MQTT protocol v3.1/3.1.1/5.0"
 arch=(x86_64)
