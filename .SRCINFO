@@ -1,0 +1,22 @@
+pkgbase = portx-bin
+	pkgdesc = lightweight cross-platform SSH Client
+	pkgver = 2.0.7
+	pkgrel = 4
+	url = https://portx.online/
+	arch = x86_64
+	license = Proprietary
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libappindicator-gtk3
+	depends = libsecret
+	provides = portx
+	source = PortX_latest_amd64.deb::https://cdn.netsarang.com/0ac7ea20/PortX_latest_amd64.deb
+	sha256sums = da8b1d933deac86cf9b123c146a639c473909590ddc69de89e31f3f48b5b4559
+
+pkgname = portx-bin
