@@ -1,0 +1,17 @@
+pkgbase = nxrandrd-git
+	pkgdesc = Randr daemon for NX
+	pkgver = 0.99
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/nxrandrd
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = nxlib
+	optdepends = nxinit: Session initialiastion
+	provides = nxrandrd
+	conflicts = nxrandrd
+	source = nxrandrd::git+http://git.weitnahbei.de/nullmark/nxrandrd
+	sha256sums = SKIP
+
+pkgname = nxrandrd-git
