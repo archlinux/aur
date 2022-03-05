@@ -6,7 +6,7 @@ pkgname=crackmapexec
 _pkgname=CrackMapExec
 pkgver=5.2.2dev
 _pkgver=5.2.2
-pkgrel=4
+pkgrel=1
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
@@ -29,7 +29,6 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 	 'python-zope-interface' 'python-pywerview' 'python-gevent' 'python-neo4j'
 	 'python-aioconsole')
 
-#makedepends=('python-setuptools' 'python-poetry')
 makedepends=('python-build' 'python-installer' 'python-poetry')
 source=("${url}/archive/v${_pkgver}.tar.gz")
 sha512sums=('7120f82c4a4247bcd114fa33e9b4f5ce1007a2e93180563fa95d337ce4b127d13cb9f3a2b07005d5cbbbb1cc6d3f38f3214abdccb627cf455d451122bd2f2846')
@@ -49,13 +48,8 @@ build() {
 
 package() {
   cd "${_pkgname}-${_pkgver}/"
-
-  #python setup.py install --root="${pkgdir}" --optimize=1
   python -m installer --destdir="$pkgdir" dist/*.whl
  
-  # Needed to operate:
-  #install -d "${pkgdir}/usr/lib/python3.9/site-packages/cme/thirdparty/pywerview/"
-  #touch "${pkgdir}/usr/lib/python3.9/site-packages/cme/thirdparty/pywerview/.default"
   # Install the license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
  
