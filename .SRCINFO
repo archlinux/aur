@@ -1,9 +1,9 @@
 pkgbase = indicator-kdeconnect-git
 	pkgdesc = Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)
 	pkgver = r625.669bdd5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/b4j4/indicator-kdeconnect
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = git
 	makedepends = meson

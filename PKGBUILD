@@ -8,10 +8,10 @@
 
 pkgname=indicator-kdeconnect-git
 pkgver=r625.669bdd5
-pkgrel=1
+pkgrel=2
 _pkgname=indicator-kdeconnect
 pkgdesc="Integrate KDEConnect on desktop environments that use AppIndicators (e.g. Unity)"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/b4j4/indicator-kdeconnect"
 license=('GPL')
 conflicts=('indicator-kdeconnect')
@@ -20,10 +20,13 @@ depends=('libappindicator-gtk3' 'kdeconnect' 'vala' 'python-requests-oauthlib' '
 makedepends=('git' 'meson' 'ninja')
 source=(
   'git+https://github.com/b4j4/indicator-kdeconnect.git'
-  'fix-build.patch')
+  'fix-build.patch'
+)
+
 sha256sums=(
   'SKIP'
-  '91085b7e77d143b438ba2564b70e4537ad1bd89f1f218e4df39e97e9a6419f19')
+  '91085b7e77d143b438ba2564b70e4537ad1bd89f1f218e4df39e97e9a6419f19'
+)
 
 pkgver() {
   cd $_pkgname
