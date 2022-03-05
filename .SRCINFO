@@ -1,6 +1,6 @@
 pkgbase = offpunk-git
 	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities
-	pkgver = 0.4.r10.gaf57715
+	pkgver = 0.9.r0.g100f69e
 	pkgrel = 1
 	url = https://tildegit.org/ploum/AV-98-offline
 	arch = any
