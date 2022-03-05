@@ -15,7 +15,7 @@ pkgbase = bazel31-bin
 	noextract = bazel-3.1.0-linux-x86_64
 	options = !strip
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-linux-x86_64
-	sha256sums = 605118766dbe07d04f4f15a809b231247eef3f302c431dcb712a514244662a47d3eb784add3b20d69d415954f7a95f9988215560911079289170a383343398d1
+	sha256sums = 753434f4fa730266cf5ce21d1fdd425e1e167dd9347ad3e8adc19e8c0d54edca
 
 pkgname = bazel31-bin
 
