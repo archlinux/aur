@@ -2,7 +2,7 @@
 
 _electron=electron
 pkgname=revolt-desktop
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='User-first chat platform built with modern web technologies'
 arch=(any)
@@ -13,21 +13,19 @@ makedepends=(npm)
 source=("https://github.com/revoltchat/desktop/archive/v$pkgver.tar.gz"
 				"https://raw.githubusercontent.com/revoltchat/desktop/master/LICENSE"
         "$pkgname.js")
-sha256sums=('d50a97712e32cc6d19553c471c6dffdf59ac5275e4b56428ea8eefab8f92d0bb'
+sha256sums=('862fba73fcc3161270f599fc1791d3b0b9b3fa697cee9e9f02cc7dbc4f7a64ce'
             '147078bfdb948f3ac5ff0e4bb97bd040b61fef4dd5fb8ff851ef333ff048caf9'
             '3a9ae188a92ca0620a0838b32e0ab4a38b1fcca4c313d9a1c933c469f8d60df0')
 
 build() {
 	cd "desktop-$pkgver"
-	npm install --ignore-scripts
-	npm run build:bundle
+	yarn
+	yarn run build:bundle
 	rm -r node_modules
-	npm install --ignore-scripts --production
+	yarn plugin import workspace-tools
+	yarn workspaces focus --production
 
 	sed -i "s~@ELECTRON@~$_electron~" "$srcdir/$pkgname.js"
-
-	# Copy the icon to bundle dir
-	cp src/icon.png bundle
 }
 
 package() {
@@ -50,7 +48,7 @@ package() {
 	ln -s $(realpath -m --relative-to="/usr/share/licenses/$pkgname" "$_appdir/LICENSE") "$pkgdir/usr/share/licenses/$pkgname"
 
 	# Clean up
-	rm -r "$pkgdir$_appdir/"{build,src,package,tsconfig.json,"$pkgname.sh"}
+	rm -r "$pkgdir$_appdir/"{src,package,tsconfig.json,yarn.lock,"$pkgname.sh"}
 	find "$pkgdir$_appdir" \
 		-name ".*" -prune -exec rm -r '{}' \;
 }
