@@ -54,7 +54,7 @@ package_diopser-clap-git() {
 }
 
 package_diopser-vst3-git() {
-    provides=('diopser-clap')
+    provides=('diopser-vst3')
 
     cd "$srcdir/$_repo"
     install -dm755 "$pkgdir/usr/lib/vst3"

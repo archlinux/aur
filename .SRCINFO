@@ -1,6 +1,6 @@
 pkgbase = diopser-git
 	pkgdesc = A totally original phase rotation plugin - part of NIH-plug
-	pkgver = e491ff6
+	pkgver = 0.0.1.r558.e491ff6
 	pkgrel = 1
 	url = https://github.com/jatinchowdhury18/AnalogTapeModel
 	arch = x86_64
@@ -15,4 +15,4 @@ pkgname = diopser-clap-git
 	provides = diopser-clap
 
 pkgname = diopser-vst3-git
-	provides = diopser-clap
+	provides = diopser-vst3
