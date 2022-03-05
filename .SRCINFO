@@ -1,7 +1,7 @@
 pkgbase = tiptop-cli
 	pkgdesc = Command-line system monitoring
-	pkgver = 0.1.6
-	pkgrel = 2
+	pkgver = 0.1.8
+	pkgrel = 1
 	url = https://github.com/nschloe/tiptop
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = tiptop-cli
 	depends = python-textual
 	provides = tiptop
 	conflicts = tiptop
-	source = https://github.com/nschloe/tiptop/archive/v0.1.6.tar.gz
-	sha512sums = 252595e8b3c35209bc3490f8ffb19162132be11aa037d7c1479a02406e83349b7a813e776adadf826e598ad99749277036a30300b606b036c7f4c092431e6339
+	source = https://github.com/nschloe/tiptop/archive/v0.1.8.tar.gz
+	sha512sums = f1b92d6f98b9b71a89cd5991b77a2553cb0050052b882f41e215b0d4fdde40a9136ace4503b35c83055ff0998cd7dae4aedd8a919a9ecd499514ed55798adf3e
 
 pkgname = tiptop-cli

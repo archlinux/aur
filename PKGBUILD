@@ -2,8 +2,8 @@
 _base=tiptop
 pkgname=${_base}-cli
 pkgdesc="Command-line system monitoring"
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
@@ -13,10 +13,11 @@ checkdepends=(python-pytest-codeblocks)
 provides=(${_base})
 conflicts=(${_base})
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('252595e8b3c35209bc3490f8ffb19162132be11aa037d7c1479a02406e83349b7a813e776adadf826e598ad99749277036a30300b606b036c7f4c092431e6339')
+sha512sums=('f1b92d6f98b9b71a89cd5991b77a2553cb0050052b882f41e215b0d4fdde40a9136ace4503b35c83055ff0998cd7dae4aedd8a919a9ecd499514ed55798adf3e')
 
 build() {
   cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
@@ -25,12 +26,11 @@ check() {
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
   chmod +x test-env/bin/${_base}
-  PATH="${PWD}/test-env/bin:$PATH" test-env/bin/python -m pytest --codeblocks -k 'not README'
+  PATH="${PWD}/test-env/bin:$PATH" test-env/bin/python -m pytest --codeblocks
 }
 
 package() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
 
   # https://github.com/FFY00/python-install/pull/6
