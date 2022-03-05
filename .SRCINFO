@@ -1,6 +1,6 @@
 pkgbase = i3b
 	pkgdesc = Window manager scripts and configs
-	pkgver = 0.r59.g1e0d4c5
+	pkgver = 0.r65.g853be23
 	pkgrel = 1
 	url = https://github.com/DMBuce/i3b
 	arch = any
@@ -10,6 +10,12 @@ pkgbase = i3b
 	depends = i3-wm
 	depends = xorg-xrandr
 	depends = xdotool
+	depends = bash
+	depends = jq
+	depends = bash
+	depends = rofi
+	depends = rofi-blezz
+	depends = sed
 	source = i3b::git+https://github.com/DMBuce/i3b.git
 	md5sums = SKIP
 

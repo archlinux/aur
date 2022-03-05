@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=i3b
-pkgver=0.r59.g1e0d4c5
+pkgver=0.r65.g853be23
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -15,10 +15,21 @@ url="https://github.com/DMBuce/i3b"
 license=('GPL3')
 groups=()
 depends=(
+  # i3move
   perl
   i3-wm
   xorg-xrandr
   xdotool
+
+  # i3scratchmark
+  bash
+  jq
+
+  # rofi-blezz
+  bash
+  rofi
+  rofi-blezz
+  sed
 )
 makedepends=('git')
 provides=()
