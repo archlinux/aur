@@ -6,7 +6,7 @@
 pkgbase=pyexiftool
 _pkgname=PyExifTool
 pkgname='python-pyexiftool'
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Library to communicate with an instance of ExifTool command-line application"
 arch=('any')
@@ -17,7 +17,7 @@ _pkgname_prefix="${_pkgname:0:1}"
 _pkgname_underscored="${_pkgname//-/_}"
 _pkgurl="https://files.pythonhosted.org/packages/py3/$_pkgname_prefix/$_pkgname/$_pkgname_underscored-$pkgver-py3-none-any.whl"
 source=("$_pkgurl")
-sha512sums=('09267ee5e725ffd37cf2b2df46a83b1d4bdbd401096d4a9f24d5a8d4477e1e8678f164bfcd96fb73f873aef151933fe82859e6180b1a6dac1ea91bc87319f6c8')
+sha512sums=('9a9e0fdacad6f013e581943761ab33e0b056ac10dc2522cc5e7a925fe5aca9a3b6b395499401c1b3257cdd2b5457d6e98373a4da183ae029b378f97269860f6c')
 
 package() {
   cd "$srcdir" || exit
