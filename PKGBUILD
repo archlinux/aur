@@ -2,8 +2,8 @@
 # Maintainer: Owen Wang <newo@duck.com>
 
 pkgname=vatsim-manager
-pkgver=0.2.0
-pkgrel=3
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Installer and manager for VATSIM clients"
 arch=('x86_64')
 url="https://github.com/wiggleforlife/vatsim-manager"
@@ -14,7 +14,7 @@ optdepends=('wine: ATC and AFV client support'
 	    'winetricks: ATC and AFV client support')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ffa6c74b487e3bb07b755010a2a4acbf9ea35fe1ae5053425e7b36eb2bc4ab80')
+sha256sums=('ea37a4ca0872d58e780bdc756f69a1a011a2cb0d78c449a73faf1e97e12bc2fa')
 options=('!buildflags')
 
 build() {
@@ -26,6 +26,6 @@ build() {
 
 package() {
 	cd "$srcdir/vatsim-manager-$pkgver/build"
-        chmod +rwx vatsim-mgr
-	install -D vatsim-mgr "$pkgdir/usr/bin/vatsim-mgr"
+        chmod +rwx vatsim-manager
+	install -D vatsim-manager "$pkgdir/usr/bin/vatsim-manager"
 }
