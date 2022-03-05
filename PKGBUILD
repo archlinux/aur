@@ -11,7 +11,7 @@ pkgver=10.3.0
 _majorver=${pkgver%%.*}
 _islver=0.24
 pkgrel=2
-pkgdesc='The GNU Compiler Collection'
+pkgdesc='The GNU Compiler Collection (10.x.x)'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='https://gcc.gnu.org'
@@ -30,8 +30,8 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
 b2sums=('ac7898f5eb8a7c5f151a526d1bb38913a68b50a65e4d010ac09fa20b6c801c671c790d780f23ccb8e4ecdfc686f4aa588082ccc9eb5c80c7b0e30788f824c1eb'
         'SKIP'
         '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
-        '2c64090b879d6faea7f20095eff1b9bd6a09fe3b15b3890783d3715171678ab62d32c91af683b878746fb14441dbe09768474417840f96a561443415f76afb63'
-        '3cf318835b9833ac7c5d3a6026fff8b4f18b098e18c9649d00e32273688ff06ec3af41f0d0aee9d2261725e0ff08f47a224ccfe5ebb06646aaf318ff8ac9a0d1')
+        'a76d19c7830b0a141302890522086fc1548c177611501caac7e66d576e541b64ca3f6e977de715268a9872dfdd6368a011b92e01f7944ec0088f899ac0d2a2a5'
+        '02b655b5668f7dea51c3b3e4ff46d5a4aee5a04ed5e26b98a6470f39c2e98ddc0519bffeeedd982c31ef3c171457e4d1beaff32767d1aedd9346837aac4ec3ee')
 
 prepare() {
   [[ ! -d gcc ]] && ln -s gcc-${pkgver/+/-} gcc
@@ -71,6 +71,7 @@ build() {
       --libexecdir=/usr/lib \
       --mandir=/usr/share/man \
       --infodir=/usr/share/info \
+      --with-pkgversion="Arch Linux $pkgver-$pkgrel" \
       --with-bugurl=https://bugs.archlinux.org/ \
       --enable-languages=c,c++,fortran,lto \
       --with-isl \
@@ -149,7 +150,7 @@ package_gcc10-libs() {
 package_gcc10() {
   pkgdesc="The GNU Compiler Collection - C and C++ frontends (10.x.x)"
   depends=("${pkgbase}-libs=$pkgver-$pkgrel" 'binutils>=2.28' libmpc zstd)
-  options=(!emptydirs staticlibs debug)
+  options=(!emptydirs staticlibs)
 
   cd gcc-build
 
