@@ -12,9 +12,9 @@ pkgver=0.0.1.r558.e491ff6
 pkgrel=1
 pkgdesc='A totally original phase rotation plugin - part of NIH-plug'
 arch=('x86_64')
-url="https://github.com/jatinchowdhury18/AnalogTapeModel"
+url=jhttps://github.com/robbert-vdh/nih-plug/tree/master/plugins/diopserj
 license=('GPL3')
-groups=("nih-plug")
+groups=('nih-plug')
 # TODO: Add more dependencies when we add a GUI
 depends=()
 makedepends=('git' 'cargo-nightly')
