@@ -1,3 +1,34 @@
+## GE-Proton7-8 Released
+
+Hotfix:
+
+disable ntdll-CriticalSection from staging, it breaks ffxiv and deep rock galactic
+EDIT: 3/5/22 -- I uploaded an incorrect build previously. I have now uploaded the correct build. Please note that the sha512sum has -changed-.
+
+Sorry for the hiccup.
+
+## GE-Proton7-7 Released
+
+HOTFIX:
+
+disabled server-Signal_Thread staging patchset that breaks steamclient in new prefixes for some games (notably Dragonball Fighter Z)
+fixed path check for 32 bit smite EAC protonfix
+fixed video rendering in RUST
+
+Sigh. One of these days I'll get a release right the first time. That day is not today.
+
+## GE-Proton7-6 Released
+
+Wine-Staging is back! I rebased all of the patch sets from staging that did not cleanly apply and applied them on top of proton-experimental.
+
+A detailed list surrounding staging patches can be found in /patches/protonprep-valve-staging.sh. If it's in the -W list then reasoning is provided. If it's not in the -W list that means it applied cleanly without issues. Note that some patch sets in the -W list are applied manually because they do apply, just not without fuzz.
+
+wine-staging rebased and applied on top of proton-experimental (yes, all of it!)
+wine updated to latest proton-experimental
+dxvk updated to git
+vkd3d-proton updated to git
+protonfix added for SMITE to fix incorrect EAC library location (works now, yay)
+
 ## GE-Proton7-5 Released
 
 ### WINE:
