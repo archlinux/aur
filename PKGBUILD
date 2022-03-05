@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=i3b
-pkgver=0.r36.gc567c95
+pkgver=0.r59.g1e0d4c5
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -16,9 +16,9 @@ license=('GPL3')
 groups=()
 depends=(
   perl
+  i3-wm
   xorg-xrandr
   xdotool
-  xorg-xprop
 )
 makedepends=('git')
 provides=()
