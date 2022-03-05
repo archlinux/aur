@@ -1,0 +1,30 @@
+commit c8ed2ec382672d579433c3d69685b604f6021401
+Author: TomZ <tom@flowee.org>
+Date:   Sat Jan 22 23:25:53 2022 +0100
+
+    Make compile
+
+diff --git a/libs/networkmanager/NetworkManager.h b/libs/networkmanager/NetworkManager.h
+index b42b6b3f2..38a5b4669 100644
+--- a/libs/networkmanager/NetworkManager.h
++++ b/libs/networkmanager/NetworkManager.h
+@@ -21,6 +21,7 @@
+ #include <string>
+ #include <cstdint>
+ #include <vector>
++#include <map>
+ 
+ #include <boost/asio/io_service.hpp>
+ #include <boost/asio/ip/tcp.hpp>
+diff --git a/libs/p2p/SyncChainAction.h b/libs/p2p/SyncChainAction.h
+index 44bbd1507..74b428af2 100644
+--- a/libs/p2p/SyncChainAction.h
++++ b/libs/p2p/SyncChainAction.h
+@@ -21,6 +21,7 @@
+ #include "Action.h"
+ 
+ #include <set>
++#include <map>
+ 
+ class SyncChainAction : public Action
+ {

@@ -15,13 +15,18 @@ backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
 source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver.tar.gz"
     "flowee.logrotate"
-    "flowee.conf")
+    "flowee.conf"
+    "std.diff")
 
 sha256sums=("81829dccf49be1ea7950a3ea33087a09cbf08f9a7ab8c8b6daf87d41556ecd8c"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
-    "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
+    "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89"
+    "1257e6f40c54d99099d9180ab95ffb661141c97ac0c983de9f7155237f4709d8")
 
 build() {
+  cd thehub-$pkgver
+  patch -p1 < $srcdir/std.diff
+  cd ..
   mkdir -p build
   cd build
   cmake -Denable_gui=false -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub-$pkgver
