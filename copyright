@@ -1,7 +1,7 @@
 A Secretaria da Receita Federal do Brasil (RFB) informa que o programa
 aplicativo para preenchimento da Declaração de Ajuste Anual do Imposto
-sobre a Renda da Pessoa Física do exercício de 2018 (IRPF 2018),
-ano-calendário de 2017, desenvolvido pelo Serpro para a RFB, é objeto
+sobre a Renda da Pessoa Física do exercício de 2019 (IRPF 2019),
+ano-calendário de 2018, desenvolvido pelo Serpro para a RFB, é objeto
 de propriedade intelectual da União e tem seu uso licenciado para o
 contribuinte, para ser utilizado exclusivamente para os fins a que se
 destina. Seu uso indiscriminado para finalidade diversa sujeita o
@@ -9,4 +9,4 @@ responsável às penas da lei.
 
 ATENÇÃO!
 
-A receita federal recomenda Java 1.7 para o IRPF-2018.
+A receita federal recomenda Java 1.8 para o IRPF-2019.
