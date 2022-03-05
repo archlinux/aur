@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop-rspec
 	pkgdesc = Code style checking for RSpec files
-	pkgver = 2.8.0
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/rubocop/rubocop-rspec
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = ruby-rubocop-rspec
 	depends = ruby-rubocop
 	depends = ruby-rubocop-ast
 	options = !emptydirs
-	source = https://github.com/rubocop/rubocop-rspec/archive/v2.8.0/rubocop-rspec-2.8.0.tar.gz
-	sha256sums = fd05f741a4b84fd23e07c81e1dde9645dbb21eca757a2b8c7c555868618cbbf6
+	source = https://github.com/rubocop/rubocop-rspec/archive/v2.9.0/rubocop-rspec-2.9.0.tar.gz
+	sha256sums = 561d8bd2a6721532fa6a1f9e1cd30208c4167fbf5b6f63885841b2ad97923f14
 
 pkgname = ruby-rubocop-rspec
