@@ -1,3 +1,12 @@
+From bf3ac150506fa16bfc049ed6eb8b159e98e5760e Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sat, 26 Feb 2022 11:36:46 +0100
+Subject: [PATCH 2/4] OpenEXR3
+
+---
+ src/cmake/Modules/FindOpenEXR.cmake | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
 diff --git a/src/cmake/Modules/FindOpenEXR.cmake b/src/cmake/Modules/FindOpenEXR.cmake
 index 090f80b8..a2f7b4c6 100644
 --- a/src/cmake/Modules/FindOpenEXR.cmake
@@ -25,3 +34,6 @@ index 090f80b8..a2f7b4c6 100644
  ENDIF()
  
  MARK_AS_ADVANCED(
+-- 
+2.35.1
+

@@ -1,20 +1,22 @@
-From 5e3f0b7ebf3b9a75f47c2c04f9ca41cbf800b40c Mon Sep 17 00:00:00 2001
+From 5bb8fe4b8270ea98d78802a791816aee9a811559 Mon Sep 17 00:00:00 2001
 From: howetuft <howetuft@gmail.com>
 Date: Tue, 11 Jan 2022 21:59:38 +0100
-Subject: [PATCH] SelectCudaComputeArch.patch
+Subject: [PATCH 1/4] SelectCudaComputeArch
 
 ---
- src/cmake/external_libs.cmake | 5 +++++
- 1 file changed, 5 insertions(+)
+ src/cmake/external_libs.cmake | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/src/cmake/external_libs.cmake b/src/cmake/external_libs.cmake
-index a9595cf0..6d90cc5c 100644
+index 6aeee1a9..2e4c26b7 100644
 --- a/src/cmake/external_libs.cmake
 +++ b/src/cmake/external_libs.cmake
-@@ -151,6 +151,11 @@ if(WITH_CYCLES_CUDA_BINARIES OR NOT WITH_CUDA_DYNLOAD)
+@@ -129,7 +129,12 @@ endif()
+ if(WITH_CYCLES_CUDA_BINARIES OR NOT WITH_CUDA_DYNLOAD)
    find_package(CUDA) # Try to auto locate CUDA toolkit
    if(CUDA_FOUND)
-     message(STATUS "CUDA nvcc = ${CUDA_NVCC_EXECUTABLE}")
+-    message(STATUS "Found CUDA ${CUDA_NVCC_EXECUTABLE} (${CUDA_VERSION})")
++    message(STATUS "CUDA nvcc = ${CUDA_NVCC_EXECUTABLE}")
 +    CUDA_SELECT_NVCC_ARCH_FLAGS(CUDA_ARCH_FLAGS Auto)
 +    string(REGEX REPLACE " compute_[0-9]+" "" CYCLES_CUDA_BINARIES_ARCH "${CUDA_ARCH_FLAGS_readable}")
 +    string(REGEX REPLACE " " ";" CYCLES_CUDA_BINARIES_ARCH "${CYCLES_CUDA_BINARIES_ARCH}")
@@ -24,5 +26,5 @@ index a9595cf0..6d90cc5c 100644
      message(STATUS "CUDA compiler not found, disabling WITH_CYCLES_CUDA_BINARIES")
      set(WITH_CYCLES_CUDA_BINARIES OFF)
 -- 
-2.34.1
+2.35.1
 
