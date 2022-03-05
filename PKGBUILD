@@ -5,7 +5,7 @@
 
 pkgname=systemd-readahead
 pkgver=216
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Standalone version of the fast built-in readahead implementation dropped in systemd 217"
 arch=('i686' 'x86_64')
@@ -19,8 +19,8 @@ provides=()
 conflicts=()
 replaces=()
 install=systemd-readahead.install
-source=("http://www.freedesktop.org/software/systemd/systemd-$pkgver.tar.xz")
-md5sums=('04fda588a04f549da0f397dce3ae6a39')
+source=("https://freedesktop.org/software/systemd/systemd-$pkgver.tar.xz" "systemd-$pkgver-fixes.patch")
+md5sums=('04fda588a04f549da0f397dce3ae6a39' 'SKIP')
 
 prepare()
 {
@@ -29,11 +29,15 @@ prepare()
     # systemd-notify no longer supports readahead playing
     sed -i -e 's:ExecStart=@SYSTEMD_NOTIFY@ --readahead=done:ExecStart=/bin/touch /run/systemd/readahead/done:' \
                 units/systemd-readahead-done.service.in || die
+                
+    patch -t -p1 < "$srcdir/systemd-$pkgver-fixes.patch" # LANG=C diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x 'libtool' -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h systemd-216/ src/systemd-216/ > diff.diff
 }
 
 build()
 {
     cd "systemd-$pkgver"
+
+    export CC=clang
 
     ./configure --enable-readahead --prefix=/usr                                                \
                 --disable-maintainer-mode                                                       \
@@ -123,17 +127,22 @@ package()
     # Install main app
     install -Dm 755 "systemd-readahead" "$pkgdir/usr/lib/systemd/systemd-readahead"
 
+    install -d "$pkgdir/usr/lib/systemd/system/"
+
     # Install unit files
-    install -Dm 644 "units/systemd-readahead-drop.service" "$pkgdir/usr/lib/systemd/system/systemd-readahead-drop.service"
-    install -Dm 644 "units/systemd-readahead-collect.service" "$pkgdir/usr/lib/systemd/system/systemd-readahead-collect.service"
-    install -Dm 644 "units/systemd-readahead-replay.service" "$pkgdir/usr/lib/systemd/system/systemd-readahead-replay.service"
-    install -Dm 644 "units/systemd-readahead-done.service" "$pkgdir/usr/lib/systemd/system/systemd-readahead-done.service"
-    install -Dm 644 "units/systemd-readahead-done.timer" "$pkgdir/usr/lib/systemd/system/systemd-readahead-done.timer"
+    install -Dm 644 "units/systemd-readahead-drop.service"    "$pkgdir/usr/lib/systemd/system/"
+    install -Dm 644 "units/systemd-readahead-collect.service" "$pkgdir/usr/lib/systemd/system/"
+    install -Dm 644 "units/systemd-readahead-replay.service"  "$pkgdir/usr/lib/systemd/system/"
+    install -Dm 644 "units/systemd-readahead-done.service"    "$pkgdir/usr/lib/systemd/system/"
+    install -Dm 644 "units/systemd-readahead-done.timer"      "$pkgdir/usr/lib/systemd/system/"
+
+
+    install -d "$pkgdir/usr/share/man/man8/"
 
     # Install manpages and aliases
-    install -Dm 644 "man/systemd-readahead-collect.service.8" "$pkgdir/usr/share/man/man8/systemd-readahead-collect.service.8"
-    install -Dm 644 "man/systemd-readahead-done.service.8"    "$pkgdir/usr/share/man/man8/systemd-readahead-done.service.8"
-    install -Dm 644 "man/systemd-readahead-done.timer.8"      "$pkgdir/usr/share/man/man8/systemd-readahead-done.timer.8"
-    install -Dm 644 "man/systemd-readahead-replay.service.8"  "$pkgdir/usr/share/man/man8/systemd-readahead-replay.service.8"
-    install -Dm 644 "man/systemd-readahead.8"                 "$pkgdir/usr/share/man/man8/systemd-readahead.8"
+    install -Dm 644 "man/systemd-readahead-collect.service.8" "$pkgdir/usr/share/man/man8/"
+    install -Dm 644 "man/systemd-readahead-done.service.8"    "$pkgdir/usr/share/man/man8/"
+    install -Dm 644 "man/systemd-readahead-done.timer.8"      "$pkgdir/usr/share/man/man8/"
+    install -Dm 644 "man/systemd-readahead-replay.service.8"  "$pkgdir/usr/share/man/man8/"
+    install -Dm 644 "man/systemd-readahead.8"                 "$pkgdir/usr/share/man/man8/"
 }

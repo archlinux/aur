@@ -1,0 +1,100 @@
+--
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/shared/missing.h b/shared/missing.h
+--- a/src/shared/missing.h	2014-08-18 18:12:55.000000000 +0200
++++ b/src/shared/missing.h	2022-03-04 23:58:20.446830463 +0100
+@@ -204,7 +204,7 @@
+ }
+ #endif
+ 
+-#ifndef HAVE_MEMFD_CREATE
++#if 0
+ static inline int memfd_create(const char *name, uint64_t flags) {
+         return syscall(__NR_memfd_create, name, flags);
+ }
+
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/libsystemd/sd-bus/bus-error.h b/libsystemd/sd-bus/bus-error.h
+--- a/src/libsystemd/sd-bus/bus-error.h	2014-02-13 03:42:35.000000000 +0100
++++ b/src/libsystemd/sd-bus/bus-error.h	2022-03-05 00:13:20.713402153 +0100
+@@ -32,7 +32,7 @@
+ };
+ typedef struct name_error_mapping name_error_mapping;
+ 
+-const name_error_mapping* bus_error_mapping_lookup(const char *str, unsigned int len);
++const name_error_mapping* bus_error_mapping_lookup(const char *str, size_t len);
+ 
+ bool bus_error_is_dirty(sd_bus_error *e);
+ 
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/shared/af-list.c b/shared/af-list.c
+--- a/src/shared/af-list.c	2014-03-18 18:05:50.000000000 +0100
++++ b/src/shared/af-list.c	2022-03-05 00:15:09.181996570 +0100
+@@ -25,7 +25,7 @@
+ #include "util.h"
+ #include "af-list.h"
+ 
+-static const struct af_name* lookup_af(register const char *str, register unsigned int len);
++static const struct af_name* lookup_af(register const char *str, register size_t len);
+ 
+ #include "af-to-name.h"
+ #include "af-from-name.h"
+
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/shared/arphrd-list.c b/shared/arphrd-list.c
+--- a/src/shared/arphrd-list.c	2014-08-12 01:54:39.000000000 +0200
++++ b/src/shared/arphrd-list.c	2022-03-05 00:15:33.875793200 +0100
+@@ -26,7 +26,7 @@
+ #include "util.h"
+ #include "arphrd-list.h"
+ 
+-static const struct arphrd_name* lookup_arphrd(register const char *str, register unsigned int len);
++static const struct arphrd_name* lookup_arphrd(register const char *str, register size_t len);
+ 
+ #include "arphrd-to-name.h"
+ #include "arphrd-from-name.h"
+
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/shared/errno-list.c b/shared/errno-list.c
+--- a/src/shared/errno-list.c	2014-03-18 18:05:50.000000000 +0100
++++ b/src/shared/errno-list.c	2022-03-05 00:14:25.211193081 +0100
+@@ -26,7 +26,7 @@
+ #include "errno-list.h"
+ 
+ static const struct errno_name* lookup_errno(register const char *str,
+-                                                 register unsigned int len);
++                                                 register size_t len);
+ 
+ #include "errno-to-name.h"
+ #include "errno-from-name.h"
+
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/shared/util.c b/shared/util.c
+--- a/src/shared/util.c	2014-08-20 00:18:14.000000000 +0200
++++ b/src/shared/util.c	2022-03-05 00:19:52.614405844 +0100
+@@ -61,6 +61,7 @@
+ #include <locale.h>
+ #include <sys/personality.h>
+ #include <libgen.h>
++#include <sys/sysmacros.h>
+ #undef basename
+ 
+ #ifdef HAVE_SYS_AUXV_H
+
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/libudev/libudev-device.c b/libudev/libudev-device.c
+--- a/src/libudev/libudev-device.c	2014-08-01 18:46:39.000000000 +0200
++++ b/src/libudev/libudev-device.c	2022-03-05 00:21:25.109774234 +0100
+@@ -32,6 +32,7 @@
+ #include <sys/ioctl.h>
+ #include <sys/socket.h>
+ #include <linux/sockios.h>
++#include <sys/sysmacros.h>
+ 
+ #include "libudev.h"
+ #include "libudev-private.h"
+
+diff -urN -x '*.Plo' -x '*.la' -x '*.Po' -x '*.a' -x '*.json' -x Makefile -x config.h -x config.log -x '*.status' -x libtool -x '*.in' -x '*.extra' -x libsystemd.sym -x '*.lo' -x '*.gperf' -x '*test*' -x bus-error-mapping.c -x af-from-name.h a/readahead/readahead-common.c b/readahead/readahead-common.c
+--- a/src/readahead/readahead-common.c	2014-06-23 12:40:38.000000000 +0200
++++ b/src/readahead/readahead-common.c	2022-03-05 00:22:57.995209400 +0100
+@@ -27,6 +27,7 @@
+ #include <fcntl.h>
+ #include <sys/mman.h>
+ #include <unistd.h>
++#include <sys/sysmacros.h>
+ 
+ #include "log.h"
+ #include "readahead-common.h"
