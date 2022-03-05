@@ -1,6 +1,6 @@
 pkgbase = ryzom-git
 	pkgdesc = Ryzom is a Free to Play MMORPG . This version is for playing on an official server or launch a server
-	pkgver = Live.746.r302.g720f6da8b
+	pkgver = r9767.a6139ade2
 	pkgrel = 1
 	url = http://www.ryzom.com/
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = ryzom-git
 	depends = libpng
 	depends = libjpeg
 	depends = boost
-	depends = luabind-ryzom-git
+	depends = luabind-ryzom
 	depends = libsquish
 	depends = lua
 	depends = mariadb-clients
