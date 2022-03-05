@@ -18,7 +18,7 @@ pkgname=(pipewire-full-git
          pipewire-full-ffmpeg-git
          pipewire-full-roc-git
          )
-pkgver=0.3.45.r60.ge34d9d20
+pkgver=0.3.48.r13.g8026b65c
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -28,7 +28,7 @@ makedepends=(git meson doxygen python-docutils graphviz ncurses
              readline libsndfile alsa-lib dbus rtkit libpulse
              webrtc-audio-processing libusb bluez-libs
              sbc libldac libfreeaptx libfdk-aac
-             lilv libx11 libcanberra
+             lilv libx11 libxfixes libcanberra
              avahi openssl
              gst-plugins-base-libs
              jack2
@@ -42,7 +42,7 @@ sha256sums=('SKIP')
 prepare() {
   cd $_pkgbase
   # remove export of LD_LIBRARY_PATH for pw-jack as it would add /usr/lib
-  sed -e '/LD_LIBRARY_PATH/d' -i pipewire-jack/src/pw-jack.in
+  sed -i '/LD_LIBRARY_PATH/d' pipewire-jack/src/pw-jack.in
 }
 
 pkgver() {
@@ -111,13 +111,15 @@ package_pipewire-full-git() {
 
   meson install -C build --destdir "$pkgdir"
 
-  mkdir -p "$pkgdir/etc/alsa/conf.d"
-  ln -st "$pkgdir/etc/alsa/conf.d" \
-    /usr/share/alsa/alsa.conf.d/50-pipewire.conf
-
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $_pkgbase/COPYING
 
   cd "$pkgdir"
+
+  mkdir -p etc/alsa/conf.d
+  ln -st etc/alsa/conf.d /usr/share/alsa/alsa.conf.d/50-pipewire.conf
+
+  # directories for overrides
+  mkdir -p etc/pipewire/{client-rt,client,minimal,pipewire,pipewire-pulse}.conf.d
 
   _pick docs usr/share/doc
 
@@ -225,7 +227,7 @@ package_pipewire-full-v4l2-git() {
 
 package_pipewire-full-x11-bell-git() {
   pkgdesc+=" - X11 bell"
-  depends=(sh libx11 pipewire-full-git
+  depends=(sh libx11 libxfixes pipewire-full-git
            libpipewire-$_ver.so libcanberra.so)
   provides=(pipewire-x11-bell)
   conflicts=(pipewire-x11-bell)
