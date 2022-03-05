@@ -1,5 +1,5 @@
 # Maintainer: LMH01 <lmh-01@netcologne.de>
-pkgname=acquire-rs
+pkgname=acquire_rs
 pkgver=1.0.1
 pkgrel=2
 pkgdesc='The board game Acquire written in rust to be played via the command line'

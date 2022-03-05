@@ -1,4 +1,4 @@
-pkgbase = acquire-rs
+pkgbase = acquire_rs
 	pkgdesc = The board game Acquire written in rust to be played via the command line
 	pkgver = 1.0.1
 	pkgrel = 2
@@ -7,7 +7,7 @@ pkgbase = acquire-rs
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = acquire-rs-1.0.1.tar.gz::https://github.com/LMH01/Acquire_rs/archive/refs/tags/v1.0.1.tar.gz
+	source = acquire_rs-1.0.1.tar.gz::https://github.com/LMH01/Acquire_rs/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = 50fef42b653b20188577bc0274f0013493a2cd78347ded70b8b6576e9735d5db
 
-pkgname = acquire-rs
+pkgname = acquire_rs
