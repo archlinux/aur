@@ -17,7 +17,6 @@ pkgbase = bazel31
 	options = !distcc
 	options = !strip
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-dist.zip
-	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-dist.zip.sig
 
 pkgname = bazel31
 

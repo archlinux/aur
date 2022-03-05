@@ -10,8 +10,7 @@ makedepends=('git' 'protobuf' 'python')
 provides=("bazel=${pkgver}")
 conflicts=('bazel')
 options=('!distcc' '!strip')
-source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
-        "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig")
+source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip")
 
 build() {
   curl -L https://github.com/ll-h/bazel/commit/c814c1f908801795b99e19c5abc3d29213710a2e.patch|patch -p1
