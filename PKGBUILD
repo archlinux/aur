@@ -1,6 +1,6 @@
 # Maintainer: VHSgunzo <vhsgunzo.github.io>
 pkgname=lutris-wine-git
-pkgver=0.66.r4.g53ca1f4
+pkgver=0.67.r0.gbd26bbb
 pkgrel=1
 pkgdesc='Easy launch of your Windows applications and games with Wine/Proton'
 arch=('any')
@@ -68,5 +68,6 @@ package() {
     install -Dm644 usr/share/lutris-wine/db/DOOMEternalx64vk.lwdb ${pkgdir}/usr/share/lutris-wine/db/DOOMEternalx64vk.lwdb
     install -Dm644 usr/share/lutris-wine/db/nvapi64-tests.lwdb ${pkgdir}/usr/share/lutris-wine/db/nvapi64-tests.lwdb
     install -Dm644 usr/share/lutris-wine/gif/league-of-legends.gif ${pkgdir}/usr/share/lutris-wine/gif/league-of-legends.gif
+    install -Dm644 usr/share/lutris-wine/db/GenshinImpact.lwdb ${pkgdir}/usr/share/lutris-wine/db/GenshinImpact.lwdb
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/lutris-wine/LICENSE
 }
