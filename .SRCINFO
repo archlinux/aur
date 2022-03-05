@@ -1,18 +1,15 @@
 pkgbase = rime-solarpinyin
 	pkgdesc = Simplified pinyin input for rime
-	pkgver = 1.1.4.20211201
+	pkgver = 1.1.4.20220306
 	pkgrel = 1
 	url = https://github.com/so1ar/rime-cloverpinyin
 	arch = x86_64
 	license = LGPL
 	makedepends = librime
 	depends = rime-prelude
-	depends = rime-emoji
 	provides = rime-cloverpinyin
-	provides = rime-symbols
 	conflicts = rime-cloverpinyin
-	conflicts = rime-symbols
-	source = https://github.com/so1ar/rime-cloverpinyin/releases/download/1.1.4.20211201/clover.schema-1.1.4.20211201.zip
-	sha256sums = c2fb71d6575db27a127cf20e638ecb98eeec8e5bea9f33bdc6bc90dd3e9a89f6
+	source = https://github.com/so1ar/rime-cloverpinyin/releases/download/1.1.4.20220306/clover.schema-1.1.4.20220306.zip
+	sha256sums = 1130550142b99b2b1a2eb0e2ef740a3a5772433262164320aa4b394eed530c99
 
 pkgname = rime-solarpinyin

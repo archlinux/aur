@@ -2,18 +2,18 @@
 # Maintainer: fkxxyz <fkxxyz@163.com>
 
 pkgname=rime-solarpinyin
-pkgver=1.1.4.20211201
+pkgver=1.1.4.20220306
 pkgrel=1
 pkgdesc="Simplified pinyin input for rime"
 arch=('x86_64')
 url="https://github.com/so1ar/rime-cloverpinyin"
 license=('LGPL')
-depends=('rime-prelude' 'rime-emoji')
+depends=('rime-prelude')
 makedepends=('librime')
-provides=('rime-cloverpinyin' 'rime-symbols')
-conflicts=('rime-cloverpinyin' 'rime-symbols')
+provides=('rime-cloverpinyin')
+conflicts=('rime-cloverpinyin')
 source=(https://github.com/so1ar/rime-cloverpinyin/releases/download/${pkgver}/clover.schema-${pkgver}.zip)
-sha256sums=('c2fb71d6575db27a127cf20e638ecb98eeec8e5bea9f33bdc6bc90dd3e9a89f6')
+sha256sums=('1130550142b99b2b1a2eb0e2ef740a3a5772433262164320aa4b394eed530c99')
 
 build(){
   cd $srcdir
@@ -23,8 +23,8 @@ build(){
 package() {
   cd $srcdir
   rm build/*.txt
-  rm -rf opencc/emoji*
+  rm -rf opencc
   install -Dm644 *.yaml -t "$pkgdir"/usr/share/rime-data/
   install -Dm644 build/* -t "$pkgdir"/usr/share/rime-data/build/
-  install -Dm644 opencc/* -t "$pkgdir"/usr/share/rime-data/opencc
+  #install -Dm644 opencc/* -t "$pkgdir"/usr/share/rime-data/opencc
 }
