@@ -2,6 +2,7 @@
 # Contributor: Alex Avance <aravance at gmail.com>
 
 pkgname=wine-discord-ipc-bridge-git
+desc="Enable games running under wine to use Discord Rich Presence"
 pkgver=0.0.2.1.g2584e36
 pkgrel=1
 arch=('x86_64' 'i686')
