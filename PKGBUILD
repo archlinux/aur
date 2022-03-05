@@ -3,14 +3,14 @@
 pkgname=python-pypsrp
 _pkgname=pypsrp
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python PowerShell Remoting Protocol Client Library"
 url="https://pypi.org/project/pypsrp/"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-six' 'python-cryptography' 'python-requests'
 	 'python-pyspnego' 'python-gssapi')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-krb5: for Kerberos authentication on Linux'
             'python-requests-credssp: for CredSSP authentication')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
