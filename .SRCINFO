@@ -51,6 +51,7 @@ pkgbase = mplayer2-build-git
 	replaces = mplayer2
 	noextract = mplayer2-2.0.tar.xz
 	options = !emptydirs
+	options = !lto
 	backup = etc/mplayer/codecs.conf
 	backup = etc/mplayer/input.conf
 	source = mplayer2-2.0.tar.xz::https://www.dropbox.com/s/8vv627lsfh4l9sn/mplayer2-2.0.tar.xz?dl=0

@@ -52,7 +52,7 @@ backup=('etc/mplayer/codecs.conf'
 provides=('mplayer' 'mplayer2')
 conflicts=('mplayer' 'mplayer2')
 replaces=('mplayer' 'mplayer2')
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 source=('mplayer2-2.0.tar.xz::https://www.dropbox.com/s/8vv627lsfh4l9sn/mplayer2-2.0.tar.xz?dl=0'
         'git+https://repo.or.cz/mplayer2-build.git'
         'git+https://repo.or.cz/mplayer2.git'
