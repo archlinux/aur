@@ -19,7 +19,7 @@ pkgbase = bazel31
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-dist.zip
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-dist.zip.sig
 	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
-	sha512sums = e8746ef5ec22feb95e9dbbddb3fb56cf8f49c80f326fc2a4e0ce2619607826fac22f46bfb995daee55bf9ffabb9d646b8454be2bce7b479da5cf2a7e5b3be62b
+	sha512sums = d7f40d0cac95a06cea6cb5b7f7769085257caebc3ee84269dd9298da760d5615
 	sha512sums = SKIP
 
 pkgname = bazel31
