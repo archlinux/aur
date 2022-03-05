@@ -1,0 +1,30 @@
+[Unit]
+Description=Pluggable Transport using WebRTC, inspired by Flashproxy - Proxy
+After=network.target nss-lookup.target
+
+[Service]
+ExecStart=/usr/bin/snowflake-proxy
+
+Restart=on-failure
+
+# Hardening
+DynamicUser=true
+NoNewPrivileges=true
+
+PrivateTmp=true
+PrivateDevices=true
+PrivateMounts=true
+PrivateIPC=true
+
+ProtectHome=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectProc=invisible
+ProtectHostname=true
+ProtectClock=true
+ProtectSystem=strict
+
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
