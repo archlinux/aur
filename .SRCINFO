@@ -1,0 +1,18 @@
+pkgbase = fifa-99
+	pkgdesc = Football simulation videogame for the PlayStation console.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/FIFA_99
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SLES-01587.bin::https://archive.org/download/redump.psx/FIFA%2099%20%28Italy%29.zip/FIFA%2099%20%28Italy%29.bin
+	source = SLES-01587.cue::https://archive.org/download/redump.psx/FIFA%2099%20%28Italy%29.zip/FIFA%2099%20%28Italy%29.cue
+	source = com.easports.FIFA99.desktop
+	source = com.easports.FIFA99.png
+	sha256sums = 8c718bfeb4c179a97e7277f60344702a6881ff8542260056cd570caeab1721b4
+	sha256sums = d90d104740d4dbdef23b4de55e5847dc7d38512a6b10391ef330cd91dc323880
+	sha256sums = 96fcc1cfcaf5add8d943516989dee334dc7bd1db91f3c6f2a95b5340965728a9
+	sha256sums = 74a94ec526b9287f73144253920d94d4fc38cda6344b18180123c57c5b5f0085
+
+pkgname = fifa-99
