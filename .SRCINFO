@@ -1,0 +1,12 @@
+pkgbase = fuse-archive
+	pkgdesc = FUSE file system for archives and compressed files (ZIP, RAR, 7Z, ISO, TGZ, XZ...)
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/google/fuse-archive
+	arch = x86_64
+	license = Apache-2.0
+	checkdepends = go
+	source = fuse-archive-0.1.9.tar.gz::https://github.com/google/fuse-archive/archive/refs/tags/v0.1.9.tar.gz
+	sha256sums = 22fb9df77583b36595d370b3d6151349b530ee45f3f9e278255cc020cefb0667
+
+pkgname = fuse-archive
