@@ -12,12 +12,12 @@ _launcherver='1.25.1'
 _linuxver='b024359583da621c6e5402b2c2f46c6061c975ac'
 pkgver="$_launcherver.${_linuxver:0:9}"
 pkgrel='1'
-pkgdesc="Mod launcher for The Simpsons: Hit & Run."
+pkgdesc='Mod launcher for The Simpsons: Hit & Run.'
 arch=(
   'x86_64'
   'i686'
 )
-url="https://donutteam.com/"
+url='https://donutteam.com/'
 # The mod launcher uses libraries under the ZLIB and Lua licenses, but it doesn't make sense to
 # bundle them with this package because said licenses should be managed by their respective Linux
 # packages (e.g. the TinyXML ZLIB license installed by the Linux zlib package.) and Windows licenses
@@ -48,9 +48,9 @@ $_linuxver/lml-linux-launcher-$_linuxver.zip"
 )
 md5sums=(
   # Skip the mod launcher ZIP because no hashes are provided by upstream.
-  "SKIP"
+  'SKIP'
   # SKip the mod launcher Linux launcher ZIP because the latest master is subject to change.
-  "SKIP"
+  'SKIP'
 )
 
 package() {
@@ -58,7 +58,7 @@ package() {
 
   # Install the Windows executable to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/ because it's
   # an executable, but not meant to be ran as-is.
-  install -Dm644 "Lucas Simpsons Hit & Run Mod Launcher.exe" "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
+  install -Dm644 'Lucas Simpsons Hit & Run Mod Launcher.exe' "$pkgdir/usr/lib/$pkgname/$pkgname.exe"
   # Install the default hacks to /usr/lib/lucas-simpsons-hit-and-run-mod-launcher/dlls for the same
   # reason.
   install -Dm644 -t "$pkgdir/usr/lib/$pkgname/dlls/" DLLs/*
@@ -82,5 +82,5 @@ package() {
   install -Dm644 "data/com.donutteam.$pkgname.desktop" \
     "$pkgdir/usr/share/applications/com.donutteam.$pkgname.desktop"
   # Install the helper script.
-  install -m655 "bin/check-for-duplicate-lmlms.sh" "$pkgdir/usr/bin/check-for-duplicate-lmlms"
+  install -m655 'bin/check-for-duplicate-lmlms.sh' "$pkgdir/usr/bin/check-for-duplicate-lmlms"
 }
