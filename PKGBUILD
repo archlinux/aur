@@ -3,7 +3,7 @@
 pkgname=cpu
 pkgver=20220131
 pkgrel=1
-pkgdesc='cpu command in go, inspired by the Plan cpu command'
+pkgdesc='cpu command in Go, inspired by the Plan 9 cpu command'
 arch=('any')
 license=('BSD')
 makedepends=(git go)
