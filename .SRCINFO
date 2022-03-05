@@ -1,15 +1,15 @@
 pkgbase = amide
 	pkgdesc = Medical imaging data examiner
 	pkgver = 1.0.6
-	pkgrel = 7
+	pkgrel = 8
 	url = http://amide.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	makedepends = gtk-doc
 	makedepends = gnome-doc-utils
 	makedepends = intltool
+	makedepends = libxml2
 	depends = dcmtk
-	depends = ffmpeg
 	depends = gsl
 	depends = libgnomecanvas
 	depends = volpack
@@ -20,4 +20,3 @@ pkgbase = amide
 	sha512sums = 34af3c04ff094fe942f02ff8603617f969415e1c4ebc1ef16fba0bcb6d4070285c5027a4212ec49d07e343ca141010507c284dd30b4884545e324411b116d37c
 
 pkgname = amide
-
