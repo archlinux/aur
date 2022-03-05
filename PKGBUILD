@@ -5,7 +5,7 @@ pkgdesc='Correct, reproducible, and fast builds for everyone'
 arch=('x86_64')
 license=('Apache')
 url='https://bazel.build/'
-depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
+depends=('java-environment=8' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf' 'python')
 provides=("bazel=${pkgver}")
 conflicts=('bazel')
