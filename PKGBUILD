@@ -5,7 +5,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libunistring
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for manipulating Unicode strings and C strings (mingw-w64)"
 arch=('any')
 url="https://www.gnu.org/software/libunistring/"
@@ -25,15 +25,15 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
       --enable-threads=win32
-    make
+    make DESTDIR="${srcdir}/install-${_arch}" install
     popd
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/libunistring-${pkgver}/build-${_arch}"
-    make DESTDIR="${pkgdir}" install
+    cd "${srcdir}"
+    cp -r "install-${_arch}/"* "${pkgdir}"
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
     rm "${pkgdir}/usr/${_arch}/share/info/dir"
