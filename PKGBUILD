@@ -12,7 +12,7 @@
 #   git -C dbus remote set-url origin https://gitlab.freedesktop.org/dbus/dbus.git
 pkgbase=dbus-selinux
 pkgname=(dbus-selinux dbus-docs-selinux)
-pkgver=1.12.20
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system with SELinux support"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
@@ -24,12 +24,11 @@ groups=('selinux')
 # https://github.com/archlinux/svntogit-packages/commit/4e247891655844511c775fba566df270f8d0d55f
 depends=('systemd-libs-selinux>=242.84-2' expat audit)
 makedepends=(systemd-selinux xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive audit libselinux)
-_commit=a0926ef86f413f18202ffa19cb1433b6ba00ac36  # tags/dbus-1.12.18^0
 source=("git+https://gitlab.freedesktop.org/dbus/dbus.git?signed#tag=dbus-$pkgver"
         dbus-reload.hook no-fatal-warnings.diff)
 sha256sums=('SKIP'
             'd636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3'
-            '6958eeec07557b92a28419eb1702331ee2f0a6fd17285e37dfb6130b9fa4cf6e')
+            'c10395be67e1127a58d7173b587fbbf16f8a8b271c41293558fcf9e27c185478')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
 prepare() {
@@ -48,7 +47,7 @@ build() {
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib/dbus-1.0 \
-    runstatedir=/run \
+    --runstatedir=/run \
     --with-console-auth-dir=/run/console/ \
     --with-dbus-user=dbus \
     --with-system-pid-file=/run/dbus/pid \
@@ -68,7 +67,7 @@ build() {
 }
 
 check() {
-  make -C dbus check
+  make -C dbus -j1 check
 }
 
 package_dbus-selinux() {
@@ -86,10 +85,12 @@ package_dbus-selinux() {
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
 
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 
   # Split docs
-  mv "$pkgdir/usr/share/doc" "$srcdir"
+  mkdir -p doc/usr/share
+  mv {"$pkgdir",doc}/usr/share/doc
+
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 }
 
 package_dbus-docs-selinux() {
@@ -97,8 +98,9 @@ package_dbus-docs-selinux() {
   depends=()
   conflicts=("${pkgname/-selinux}")
 
+  mv doc/* "$pkgdir"
+
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
-  mv doc "$pkgdir/usr/share"
 }
 
 # vim:set sw=2 et:
