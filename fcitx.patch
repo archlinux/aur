@@ -1,6 +1,6 @@
 diff -ruN google-mozc-git/src/BUILD.fcitx.bazel fcitx-mozc-git/src/BUILD.fcitx.bazel
 --- google-mozc-git/src/BUILD.fcitx.bazel	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/BUILD.fcitx.bazel	2022-02-25 03:10:58.944724168 +0200
++++ fcitx-mozc-git/src/BUILD.fcitx.bazel	2022-03-05 23:38:14.962971592 +0200
 @@ -0,0 +1,27 @@
 +package(
 +    default_visibility = ["//visibility:public"],
@@ -29,9 +29,46 @@ diff -ruN google-mozc-git/src/BUILD.fcitx.bazel fcitx-mozc-git/src/BUILD.fcitx.b
 +        "-lfcitx-utils",
 +    ],
 +)
+diff -ruN google-mozc-git/src/gyp/gyp.patch fcitx-mozc-git/src/gyp/gyp.patch
+--- google-mozc-git/src/gyp/gyp.patch	2022-03-05 23:38:12.704698418 +0200
++++ fcitx-mozc-git/src/gyp/gyp.patch	2022-03-05 23:38:13.998959782 +0200
+@@ -8,7 +8,7 @@
+            extra_bindings.append(('unique_name',
+ -              hashlib.md5(outputs[0]).hexdigest()))
+ +              hashlib.md5(outputs[0].encode('utf-8')).hexdigest()))
+-
++ 
+          self.ninja.build(outputs, rule_name, self.GypPathToNinja(source),
+                           implicit=inputs,
+ diff --git a/pylib/gyp/mac_tool.py b/pylib/gyp/mac_tool.py
+@@ -30,7 +30,7 @@
+ +    # _, error = CoreFoundation.CFPropertyListCreateFromXMLData(None, d, 0, None)
+ +    # if error:
+ +    #   return
+-
++ 
+      fp = open(dest, 'wb')
+      fp.write(s.decode(input_code).encode('UTF-16'))
+ diff --git a/pylib/gyp/msvs_emulation.py b/pylib/gyp/msvs_emulation.py
+@@ -39,13 +39,13 @@
+ +++ b/pylib/gyp/msvs_emulation.py
+ @@ -38,8 +38,8 @@ def QuoteForRspFile(arg):
+    # use that function to handle command line arguments.
+-
++ 
+    # Use a heuristic to try to find args that are paths, and normalize them
+ -  if arg.find('/') > 0 or arg.count('/') > 1:
+ -    arg = os.path.normpath(arg)
+ +  # if arg.find('/') > 0 or arg.count('/') > 1:
+ +  #  arg = os.path.normpath(arg)
+-
++ 
+    # For a literal quote, CommandLineToArgvW requires 2n+1 backslashes
+    # preceding it, and results in n backslashes + the quote. So we substitute
+ @@ -138,7 +138,8 @@ def _FindDirectXInstallation():
 diff -ruN google-mozc-git/src/unix/fcitx/BUILD fcitx-mozc-git/src/unix/fcitx/BUILD
 --- google-mozc-git/src/unix/fcitx/BUILD	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/BUILD	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/BUILD	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,97 @@
 +load(
 +    "//:build_defs.bzl",
@@ -132,7 +169,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/BUILD fcitx-mozc-git/src/unix/fcitx/BUI
 +
 diff -ruN google-mozc-git/src/unix/fcitx/eim.cc fcitx-mozc-git/src/unix/fcitx/eim.cc
 --- google-mozc-git/src/unix/fcitx/eim.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/eim.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/eim.cc	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,271 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -407,7 +444,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/eim.cc fcitx-mozc-git/src/unix/fcitx/ei
 +}
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx.gyp fcitx-mozc-git/src/unix/fcitx/fcitx.gyp
 --- google-mozc-git/src/unix/fcitx/fcitx.gyp	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx.gyp	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx.gyp	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,111 @@
 +#
 +# Copyright (c) 2010-2012 fcitx Project http://code.google.com/p/fcitx/
@@ -522,7 +559,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx.gyp fcitx-mozc-git/src/unix/fcitx
 +}
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc
 --- google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,243 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -769,7 +806,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.cc fcitx-mozc-g
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h
 --- google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,79 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -852,7 +889,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_event_handler.h fcitx-mozc-gi
 +#endif  // MOZC_UNIX_FCITX_KEY_EVENT_HANDLER_H_
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc
 --- google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.cc	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,521 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1377,7 +1414,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.cc fcitx-mozc-git/
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h
 --- google-mozc-git/src/unix/fcitx/fcitx_key_translator.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_key_translator.h	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,121 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1502,7 +1539,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_key_translator.h fcitx-mozc-git/s
 +#endif  // MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.cc fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc
 --- google-mozc-git/src/unix/fcitx/fcitx_mozc.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.cc	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,552 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -2058,7 +2095,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.cc fcitx-mozc-git/src/unix/f
 +}  // namespace mozc_unix_scim
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx-mozc.conf fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf
 --- google-mozc-git/src/unix/fcitx/fcitx-mozc.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx-mozc.conf	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,11 @@
 +[Addon]
 +Name=fcitx-mozc
@@ -2073,7 +2110,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx-mozc.conf fcitx-mozc-git/src/unix
 +LoadLocal=True
 diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h
 --- google-mozc-git/src/unix/fcitx/fcitx_mozc.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/fcitx_mozc.h	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,176 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -2253,7 +2290,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/fcitx_mozc.h fcitx-mozc-git/src/unix/fc
 +
 diff -ruN google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh
 --- google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,10 @@
 +#!/bin/sh
 +
@@ -2267,7 +2304,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/gen_fcitx_mozc_i18n.sh fcitx-mozc-git/s
 +done
 diff -ruN google-mozc-git/src/unix/fcitx/mozc.conf fcitx-mozc-git/src/unix/fcitx/mozc.conf
 --- google-mozc-git/src/unix/fcitx/mozc.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc.conf	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc.conf	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,7 @@
 +[InputMethod]
 +UniqueName=mozc
@@ -2278,7 +2315,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc.conf fcitx-mozc-git/src/unix/fcitx
 +Parent=fcitx-mozc
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.cc fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc
 --- google-mozc-git/src/unix/fcitx/mozc_connection.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.cc	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,214 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2496,7 +2533,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.cc fcitx-mozc-git/src/u
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/unix/fcitx/mozc_connection.h
 --- google-mozc-git/src/unix/fcitx/mozc_connection.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.h	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_connection.h	2022-03-05 23:38:14.969642953 +0200
 @@ -0,0 +1,154 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2654,7 +2691,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_connection.h fcitx-mozc-git/src/un
 +#endif  // MOZC_UNIX_SCIM_MOZC_CONNECTION_H_
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.cc fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc
 --- google-mozc-git/src/unix/fcitx/mozc_response_parser.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.cc	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,447 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -3105,7 +3142,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.cc fcitx-mozc-git/
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h
 --- google-mozc-git/src/unix/fcitx/mozc_response_parser.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/mozc_response_parser.h	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,97 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -3206,7 +3243,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/mozc_response_parser.h fcitx-mozc-git/s
 +#endif  // MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
 diff -ruN google-mozc-git/src/unix/fcitx/po/ca.po fcitx-mozc-git/src/unix/fcitx/po/ca.po
 --- google-mozc-git/src/unix/fcitx/po/ca.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ca.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ca.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,80 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3290,7 +3327,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ca.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Premeu Ctrl+Alt+H per mostrar els usos."
 diff -ruN google-mozc-git/src/unix/fcitx/po/da.po fcitx-mozc-git/src/unix/fcitx/po/da.po
 --- google-mozc-git/src/unix/fcitx/po/da.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/da.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/da.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,80 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3374,7 +3411,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/da.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Tryk på Ctrl+Alt+H for at vise anvendelser."
 diff -ruN google-mozc-git/src/unix/fcitx/po/de.po fcitx-mozc-git/src/unix/fcitx/po/de.po
 --- google-mozc-git/src/unix/fcitx/po/de.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/de.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/de.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,86 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3464,7 +3501,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/de.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Ctrl+Alt+H um die Hilfe anzuzeigen"
 diff -ruN google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot
 --- google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,78 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3546,7 +3583,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/fcitx-mozc.pot fcitx-mozc-git/src/un
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx/po/ja.po fcitx-mozc-git/src/unix/fcitx/po/ja.po
 --- google-mozc-git/src/unix/fcitx/po/ja.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ja.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ja.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,87 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3637,8 +3674,8 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ja.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Ctrl+Alt+H キーを押して用例を表示"
 diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/po/ko.po
 --- google-mozc-git/src/unix/fcitx/po/ko.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ko.po	2022-02-25 03:10:58.948057601 +0200
-@@ -0,0 +1,80 @@
++++ fcitx-mozc-git/src/unix/fcitx/po/ko.po	2022-03-05 23:38:14.972978633 +0200
+@@ -0,0 +1,81 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the PACKAGE package.
@@ -3646,13 +3683,14 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/
 +# Translators:
 +# Bon Keun Seo <scobyseo@gmail.com>, 2017
 +# JungHee Lee <daemul72@gmail.com>, 2020
++# JungHee Lee <daemul72@gmail.com>, 2020,2022
 +msgid ""
 +msgstr ""
 +"Project-Id-Version: fcitx\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2020-11-11 00:03-0800\n"
-+"PO-Revision-Date: 2020-11-10 08:03+0000\n"
-+"Last-Translator: csslayer <wengxt@gmail.com>\n"
++"POT-Creation-Date: 2022-03-01 20:27+0000\n"
++"PO-Revision-Date: 2022-03-01 14:57+0000\n"
++"Last-Translator: JungHee Lee <daemul72@gmail.com>\n"
 +"Language-Team: Korean (http://www.transifex.com/fcitx/fcitx/language/ko/)\n"
 +"Language: ko\n"
 +"MIME-Version: 1.0\n"
@@ -3664,55 +3702,55 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/
 +msgid "Press Escape to go back"
 +msgstr "돌아가려면 ESC를 누르세요"
 +
-+#: ../fcitx_mozc.cc:65
++#: ../fcitx_mozc.cc:68
 +msgid "Direct"
 +msgstr "직접입력"
 +
-+#: ../fcitx_mozc.cc:70
++#: ../fcitx_mozc.cc:73
 +msgid "Hiragana"
 +msgstr "히라가나"
 +
-+#: ../fcitx_mozc.cc:75
++#: ../fcitx_mozc.cc:78
 +msgid "Full Katakana"
 +msgstr "전각 가타가나"
 +
-+#: ../fcitx_mozc.cc:80
++#: ../fcitx_mozc.cc:83
 +msgid "Half ASCII"
 +msgstr "반각 아스키"
 +
-+#: ../fcitx_mozc.cc:85
++#: ../fcitx_mozc.cc:88
 +msgid "Full ASCII"
 +msgstr "전각 아스키"
 +
-+#: ../fcitx_mozc.cc:90
++#: ../fcitx_mozc.cc:93
 +msgid "Half Katakana"
 +msgstr "반각 가타가나"
 +
-+#: ../fcitx_mozc.cc:406 ../fcitx_mozc.cc:407 ../fcitx_mozc.cc:469
++#: ../fcitx_mozc.cc:409 ../fcitx_mozc.cc:410 ../fcitx_mozc.cc:472
 +msgid "Composition Mode"
 +msgstr "조합 모드"
 +
-+#: ../fcitx_mozc.cc:417 ../fcitx_mozc.cc:418
++#: ../fcitx_mozc.cc:420 ../fcitx_mozc.cc:421
 +msgid "Tool"
 +msgstr "도구"
 +
-+#: ../fcitx_mozc.cc:482
++#: ../fcitx_mozc.cc:485
 +msgid "Mozc Tool"
 +msgstr "Mozc 도구"
 +
-+#: ../fcitx_mozc.cc:488
++#: ../fcitx_mozc.cc:491
 +msgid "Configuration Tool"
-+msgstr "환경설정 도구"
++msgstr "구성 도구"
 +
-+#: ../fcitx_mozc.cc:489
++#: ../fcitx_mozc.cc:492
 +msgid "Dictionary Tool"
 +msgstr "사전 도구"
 +
-+#: ../fcitx_mozc.cc:490
++#: ../fcitx_mozc.cc:493
 +msgid "Add Word"
 +msgstr "단어 추가"
 +
-+#: ../fcitx_mozc.cc:491
++#: ../fcitx_mozc.cc:494
 +msgid "About Mozc"
 +msgstr "Mozc에 대해"
 +
@@ -3721,7 +3759,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ko.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "사용법을 보려면 Ctrl+Alt+H를 누르십시오."
 diff -ruN google-mozc-git/src/unix/fcitx/po/Messages.sh fcitx-mozc-git/src/unix/fcitx/po/Messages.sh
 --- google-mozc-git/src/unix/fcitx/po/Messages.sh	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/Messages.sh	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/Messages.sh	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,33 @@
 +#!/bin/sh
 +
@@ -3758,7 +3796,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/Messages.sh fcitx-mozc-git/src/unix/
 +echo "Done"
 diff -ruN google-mozc-git/src/unix/fcitx/po/ru.po fcitx-mozc-git/src/unix/fcitx/po/ru.po
 --- google-mozc-git/src/unix/fcitx/po/ru.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/ru.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/ru.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,82 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3844,7 +3882,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/ru.po fcitx-mozc-git/src/unix/fcitx/
 +msgstr "Нажмите Ctrl+Alt+H, чтобы показать использование."
 diff -ruN google-mozc-git/src/unix/fcitx/po/zh_CN.po fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po
 --- google-mozc-git/src/unix/fcitx/po/zh_CN.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/zh_CN.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,85 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -3933,7 +3971,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/zh_CN.po fcitx-mozc-git/src/unix/fci
 +msgstr "按下 Ctrl+Alt+H 显示用法。"
 diff -ruN google-mozc-git/src/unix/fcitx/po/zh_TW.po fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po
 --- google-mozc-git/src/unix/fcitx/po/zh_TW.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/po/zh_TW.po	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,84 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
@@ -4021,7 +4059,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/po/zh_TW.po fcitx-mozc-git/src/unix/fci
 +msgstr "按下 Ctrl+Alt+H 顯示用法。"
 diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.cc fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc
 --- google-mozc-git/src/unix/fcitx/surrounding_text_util.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.cc	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,243 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
@@ -4268,7 +4306,7 @@ diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.cc fcitx-mozc-git
 +}  // namespace mozc
 diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.h fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h
 --- google-mozc-git/src/unix/fcitx/surrounding_text_util.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h	2022-02-25 03:10:58.948057601 +0200
++++ fcitx-mozc-git/src/unix/fcitx/surrounding_text_util.h	2022-03-05 23:38:14.972978633 +0200
 @@ -0,0 +1,87 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
@@ -4358,12 +4396,67 @@ diff -ruN google-mozc-git/src/unix/fcitx/surrounding_text_util.h fcitx-mozc-git/
 +
 +#endif  // MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
 diff -ruN google-mozc-git/src/WORKSPACE.bazel fcitx-mozc-git/src/WORKSPACE.bazel
---- google-mozc-git/src/WORKSPACE.bazel	2022-02-25 02:23:45.619278720 +0200
+--- google-mozc-git/src/WORKSPACE.bazel	2022-03-05 23:38:12.704698418 +0200
 +++ fcitx-mozc-git/src/WORKSPACE.bazel	2022-02-25 02:25:22.830847556 +0200
-@@ -60,6 +60,22 @@
-     build_file = "BUILD.ibus.bazel",
+@@ -1,18 +1,14 @@
+ # An identifier for this repository.
+ workspace(name = "mozc")
+-
+-load(
+-    "@bazel_tools//tools/build_defs/repo:http.bzl",
+-    "http_archive",
+-    "http_file",
+-)
++load("@bazel_tools//tools/build_defs/repo:http.bzl",
++     "http_archive", "http_file")
+ load("//:config.bzl", "QT_BASE_PATH")
+ 
+-# This rule refers to $ANDROID_SDK_HOME.
++# This rule reffers $ANDROID_SDK_HOME
+ android_sdk_repository(name = "androidsdk")
+ 
+ # Android NDK version should be r11c+ for Abseil.
+-# This rule refers to $ANDROID_NDK_HOME.
++# This rule reffers $ANDROID_NDK_HOME
+ android_ndk_repository(name = "androidndk")
+ 
+ local_repository(
+@@ -31,9 +27,7 @@
+     name = "com_google_protobuf",
+     path = "third_party/protobuf",
+ )
+-
+ load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
+-
+ protobuf_deps()
+ 
+ # This git_repository rule is an alternative for the above rule.
+@@ -46,50 +40,64 @@
+ # Gtest
+ new_local_repository(
+     name = "gtest",
+-    build_file = "third_party/gtest/BUILD.bazel",
+     path = "third_party/gtest",
++    build_file = "third_party/gtest/BUILD.bazel",
  )
  
+ # Gtk2
+ new_local_repository(
+     name = "gtk2",
+-    build_file = "BUILD.gtk2.bazel",
+     # This path should be updated per the environment.
+     path = "/usr",  # For Debian
++    build_file = "BUILD.gtk2.bazel",
+ )
+ 
+ # iBus
+ new_local_repository(
+     name = "ibus",
++    # This path should be updated per the environment.
++    path = "/usr",  # For Debian
+     build_file = "BUILD.ibus.bazel",
++)
++
 +# Fcitx
 +new_local_repository(
 +    name = "fcitx",
@@ -4375,11 +4468,147 @@ diff -ruN google-mozc-git/src/WORKSPACE.bazel fcitx-mozc-git/src/WORKSPACE.bazel
 +# Fcitx 5
 +new_local_repository(
 +    name = "fcitx5",
-+    # This path should be updated per the environment.
-+    path = "/usr",  # For Debian
+     # This path should be updated per the environment.
+     path = "/usr",  # For Debian
 +    build_file = "BUILD.fcitx5.bazel",
-+)
-+
+ )
+ 
  # Japanese Usage Dictionary
  new_local_repository(
      name = "ja_usage_dict",
+-    build_file = "BUILD.ja_usage_dict.bazel",
+     path = "third_party/japanese_usage_dictionary",
++    build_file = "BUILD.ja_usage_dict.bazel",
+ )
+ 
+ # Qt
+ new_local_repository(
+     name = "io_qt",
+-    build_file = "BUILD.qt.bazel",
+     # This path should be updated per the environment.
+     path = QT_BASE_PATH,
++    build_file = "BUILD.qt.bazel",
+ )
+ 
+ # Python
+ http_archive(
+     name = "rules_python",
+-    sha256 = "aa96a691d3a8177f3215b14b0edc9641787abaaa30363a080165d06ab65e1161",
+     url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.1/rules_python-0.0.1.tar.gz",
++    sha256 = "aa96a691d3a8177f3215b14b0edc9641787abaaa30363a080165d06ab65e1161",
+ )
+-
+ load("@rules_python//python:repositories.bzl", "py_repositories")
+-
+ py_repositories()
+ 
+ # Only needed if using the packaging rules.
+@@ -99,11 +107,11 @@
+ # Bazel Skylib
+ http_archive(
+     name = "bazel_skylib",
+-    sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
+     urls = [
+-        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
+-        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
+-    ],
++            "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
++            "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
++           ],
++   sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
+ )
+ 
+ # Bazel macOS build (2021-10-30)
+@@ -113,78 +121,70 @@
+     sha256 = "77e8bf6fda706f420a55874ae6ee4df0c9d95da6c7838228b26910fc82eea5a2",
+     url = "https://github.com/bazelbuild/rules_apple/releases/download/0.32.0/rules_apple.0.32.0.tar.gz",
+ )
+-
+ load(
+     "@build_bazel_rules_apple//apple:repositories.bzl",
+     "apple_rules_dependencies",
+ )
+-
+ apple_rules_dependencies()
+ 
+ # Material icons
+ http_file(
+     name = "material_icon_dictionary_png",
+-    downloaded_file_path = "dictionary.png",
+-    sha256 = "6d2ac7befa038d4f32e07136293acaf5d8645a4daecb6d063f34be2ffea59b55",
+     urls = [
+         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/chrome_reader_mode/materialiconsoutlined/48dp/1x/outline_chrome_reader_mode_black_48dp.png",
+     ],
++    downloaded_file_path = "dictionary.png",
++    sha256 = "6d2ac7befa038d4f32e07136293acaf5d8645a4daecb6d063f34be2ffea59b55",
+ )
+-
+ http_file(
+     name = "material_icon_dictionary_svg",
+-    downloaded_file_path = "dictionary.svg",
+-    sha256 = "a4c7b9bfb442a7497b72d74358c31034c4fef1ab2a50659834784580751ac04d",
+     urls = [
+         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/chrome_reader_mode/materialiconsoutlined/24px.svg",
+     ],
++    downloaded_file_path = "dictionary.svg",
++    sha256 = "a4c7b9bfb442a7497b72d74358c31034c4fef1ab2a50659834784580751ac04d",
+ )
+-
+ http_file(
+     name = "material_icon_properties_png",
+-    downloaded_file_path = "properties.png",
+-    sha256 = "c4ae8bb7992f43157be9d026f76a7039af6e0e3de0f220842208dfda8c38714a",
+     urls = [
+         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/settings/materialiconsround/48dp/1x/round_settings_black_48dp.png",
+     ],
++    downloaded_file_path = "properties.png",
++    sha256 = "c4ae8bb7992f43157be9d026f76a7039af6e0e3de0f220842208dfda8c38714a",
+ )
+-
+ http_file(
+     name = "material_icon_properties_svg",
+-    downloaded_file_path = "properties.svg",
+-    sha256 = "9b01b133be1caffc680f132d385d0e594262d6cfd29759a63c428050b83fe628",
+     urls = [
+         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/settings/materialiconsround/24px.svg",
+     ],
++    downloaded_file_path = "properties.svg",
++    sha256 = "9b01b133be1caffc680f132d385d0e594262d6cfd29759a63c428050b83fe628",
+ )
+-
+ http_file(
+     name = "material_icon_tool_png",
+-    downloaded_file_path = "tool.png",
+-    sha256 = "269433bf6d6948a93ab6a57a73ceb5930870223046052cfffe01eeca37327d3e",
+     urls = [
+         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/build/materialicons/48dp/1x/baseline_build_black_48dp.png",
+     ],
++    downloaded_file_path = "tool.png",
++    sha256 = "269433bf6d6948a93ab6a57a73ceb5930870223046052cfffe01eeca37327d3e",
+ )
+-
+ http_file(
+     name = "material_icon_tool_svg",
+-    downloaded_file_path = "tool.svg",
+-    sha256 = "df34fba3d09778db69503a23b688761051dbf65b5bccb0d7b729c69ff61c3804",
+     urls = [
+         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/build/materialicons/24px.svg",
+     ],
++    downloaded_file_path = "tool.svg",
++    sha256 = "df34fba3d09778db69503a23b688761051dbf65b5bccb0d7b729c69ff61c3804",
+ )
+ 
+ # Zip code
+ http_archive(
+     name = "zip_code_ken_all",
+-    build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
+     url = "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip",
++    build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
+ )
+-
+ http_archive(
+     name = "zip_code_jigyosyo",
+-    build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
+     url = "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
++    build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
+ )
