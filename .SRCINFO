@@ -1,6 +1,6 @@
 pkgbase = dmscripts-git
 	pkgdesc = A collection of dmenu scripts
-	pkgver = 1.0.r230.ccf2685
+	pkgver = 1.0.r408.5fd2806
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dmscripts.git
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = dmscripts-git
 	makedepends = git
 	depends = dmenu
 	depends = ffmpeg
+	depends = mpv
 	depends = findutils
 	depends = xclip
 	depends = xdotool
@@ -22,15 +23,17 @@ pkgbase = dmscripts-git
 	optdepends = mpd: used by dm-music
 	optdepends = qutebrowser: used by dm-bookman
 	optdepends = reddio: used by dm-reddit
-	optdepends = zenity: used by dm-reddit
+	optdepends = yad: used by dm-reddit and dm-weather
 	optdepends = slock: used by dm-logout
-	optdepends = sxiv: used by dm-setbg
-	optdepends = xwallpaper: used by dm-setbg
+	optdepends = imv: the default image viewer used by dm-setbg, supports wayland
+	optdepends = sxiv: an alternative image viewer used by dm-setbg, X11 only
+	optdepends = xwallpaper: used by dm-setbg in x11
+	optdepends = swaybg: used by dm-setbg in wayland
 	optdepends = udisks2: used by dm-usbmount
+	optdepends = wl-clipboard: wayland alternative to xclip
 	provides = dmscripts
 	conflicts = dmscripts
 	source = git+https://gitlab.com/dwt1/dmscripts.git
 	md5sums = SKIP
 
 pkgname = dmscripts-git
-

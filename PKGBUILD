@@ -1,13 +1,13 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dmscripts-git
 _pkgname=dmscripts
-pkgver=1.0.r230.ccf2685
+pkgver=1.0.r408.5fd2806
 pkgrel=1
 pkgdesc="A collection of dmenu scripts"
 arch=('any')
 url="https://gitlab.com/dwt1/dmscripts.git"
 license=('GPL3')
-depends=(dmenu ffmpeg findutils xclip xdotool xorg-xrandr bind jq)
+depends=(dmenu ffmpeg mpv findutils xclip xdotool xorg-xrandr bind jq)
 groups=()
 makedepends=(pandoc git)
 checkdepends=()
@@ -19,11 +19,14 @@ optdepends=(
   'mpd: used by dm-music'
   'qutebrowser: used by dm-bookman'
   'reddio: used by dm-reddit'
-  'zenity: used by dm-reddit'
+  'yad: used by dm-reddit and dm-weather'
   'slock: used by dm-logout'
-  'sxiv: used by dm-setbg'
-  'xwallpaper: used by dm-setbg'
+  'imv: the default image viewer used by dm-setbg, supports wayland'
+  'sxiv: an alternative image viewer used by dm-setbg, X11 only'
+  'xwallpaper: used by dm-setbg in x11'
+  'swaybg: used by dm-setbg in wayland'
   'udisks2: used by dm-usbmount'
+  'wl-clipboard: wayland alternative to xclip'
   )
 provides=(dmscripts)
 conflicts=(dmscripts)
