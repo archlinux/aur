@@ -8,7 +8,7 @@ pkgbase=arc-gtk-theme
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme' 'arc-solid-gtk-theme')
 pkgdesc="A flat theme with transparent elements for GTK 2,3,4 and Gnome-Shell"
-pkgver=20220102
+pkgver=20220223
 pkgrel=1
 arch=('any')
 # Upstream url: https://github.com/horst3180/arc-theme
@@ -21,22 +21,17 @@ optdepends=('arc-icon-theme: recommended icon theme'
 makedepends=('meson>=0.53.0' 'sassc' 'glib2' 'gdk-pixbuf2')
 
 source=("${pkgname}-${pkgver}.tar.xz::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz"
-        "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc"
-        "fix.patch::https://github.com/jnsh/arc-theme/commit/0effc8f889718e941424d4b26e592aea2e68a2f8.patch")
-sha512sums=('6d9f97a6adf3dd21a4ca74efc4548cee57058584b3b58c7324690a4c9a4bd383d36d61122dd65e897e690f54ecb95c03b2aead0b12bdd664a76fadb5357c0b27'
-            'SKIP'
-            '61420b5642a3024b049d356dd8471d92dd92134b12e1b4d7151d031359f0a939a1ecacdfa2c614c74e5c13c91441761bd87a330c509881d2b363cb6ecafb681b')
+        "${pkgname}-${pkgver}.tar.xz.sig::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz.asc")
+sha512sums=('33a0e73e9951fcfe74f80af5e1449df23a5564d11a26b930cbc17b0f74887aedf2634579da1e0484e22465422f62559c801dbcd35221fbb7b7fc783671103aa4'
+            'SKIP')
 validpgpkeys=('31743CDF250EF641E57503E5FAEDBC4FB5AA3B17')
 
 # Latest stable Arch package versions
-_cinnamonver=5.0
+_cinnamonver=5.2
 _gnomeshellver=41
-_gtk4ver=4.6
 
 prepare() {
     cd ${_pkgname}-${pkgver}
-
-    patch -p1 <"${srcdir}/fix.patch"
 }
 
 build() {
@@ -45,16 +40,14 @@ build() {
     meson --prefix=/usr build \
       -Dgnome_shell_gresource=true \
       -Dcinnamon_version="${_cinnamonver}" \
-      -Dgnome_shell_version="${_gnomeshellver}" \
-      -Dgtk4_version="${_gtk4ver}"
+      -Dgnome_shell_version="${_gnomeshellver}"
     meson compile -C build
 
     meson --prefix=/usr build-solid \
       -Dtransparency=false \
       -Dgnome_shell_gresource=true \
       -Dcinnamon_version="${_cinnamonver}" \
-      -Dgnome_shell_version="${_gnomeshellver}" \
-      -Dgtk4_version="${_gtk4ver}"
+      -Dgnome_shell_version="${_gnomeshellver}"
     meson compile -C build-solid
 }
 
