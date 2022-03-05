@@ -1,6 +1,6 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=luced
-pkgver=0.01
+pkgver=0.02
 pkgrel=1
 epoch=
 pkgdesc="The Lucid Editor - a fast & lightweight text editor for X11."
@@ -23,7 +23,7 @@ install=
 changelog=
 source=("https://luced.de/releases/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=()
+md5sums=('fe35d0c4e62ef744ee10fd189776b1ef')
 validpgpkeys=()
 
 prepare() {
@@ -45,4 +45,3 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install-strip
 }
-md5sums=('3b0a8b1480494d83f0d69e4853495712')
