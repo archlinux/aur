@@ -2,7 +2,7 @@
 
 pkgname="xnp2kai-azo234"
 pkgver="rev.22"
-pkgrel="1"
+pkgrel="3"
 pkgdesc="AZO234's version of Neko Project II kai. NP2kai is PC-9801 series emulator."
 url="https://github.com/AZO234/NP2kai"
 source=("https://github.com/AZO234/NP2kai/archive/$pkgver.tar.gz")

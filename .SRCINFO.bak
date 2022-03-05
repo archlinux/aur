@@ -1,0 +1,22 @@
+pkgbase = xnp2kai-azo234
+    pkgver = rev.22 
+    pkgrel = 2 
+    pkgdesc = AZO234's version of Neko Project II kai. NP2kai is PC-9801 series emulator. 
+    url = https://github.com/AZO234/NP2kai 
+    source = https://github.com/AZO234/NP2kai/archive/rev.22.tar.gz 
+    arch = x86_64 
+    license = MIT 
+
+    md5sums = 502c7123224b542ec9daf904dcd96b3c 
+
+    makedepends = automake 
+    makedepends = cmake 
+    makedepends = glibc
+
+    depends = libx11
+    depends = gtk2 
+    depends = sdl2 
+    depends = sdl2_ttf 
+    depends = sdl2_mixer 
+    depends = libusb
+pkgname = xnp2kai-azo234 
