@@ -9,8 +9,8 @@ url="https://helio.fm/"
 license=('GPL3')
 depends=('libcurl-gnutls')
 options=('!strip' '!emptydirs')
-source_x86_64=("https://ci.helio.fm/helio-${pkgver}-x64.deb")
-sha512sums_x86_64=('5f2d339d39c70f9097ada268e16e9d4f2a5471a319562299e13b14e1ed1c231f83bfada779baa2190c04fe87df4184cbaa496163fdcb5b9a5a7314d9de01057a')
+source=("https://ci.helio.fm/helio-${pkgver}-x64.deb")
+sha512sums=('5f2d339d39c70f9097ada268e16e9d4f2a5471a319562299e13b14e1ed1c231f83bfada779baa2190c04fe87df4184cbaa496163fdcb5b9a5a7314d9de01057a')
 
 package(){
     # Extract package data
