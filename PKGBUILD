@@ -1,7 +1,7 @@
 # Maintainer: PrivateGER <privateger@privateger.me>
 pkgname=patreon-dl
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='A downloader for Patreon content.'
 arch=('x86_64' 'arm' 'aarch64')
 url="https://github.com/PrivateGER/patreon-dl"
@@ -9,7 +9,7 @@ license=('Unlicense')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1cd9d5123f4af5c9ca93c655f376c3d65ec7c5a13cdd505eb502ce9dc93b21b8')
+sha256sums=('ddd3956de68140b1dfefb554fbd1742f834ff1c5c219cc9b9848638a139673f3')
 
 prepare(){
   cd "$pkgname-$pkgver"
