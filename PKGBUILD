@@ -1,9 +1,9 @@
-# Maintainer: David Radford <croxis gmail com>
+# Maintainer: Mike Pento <mpento darkforge net>
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Tucos <baspape@gmail.com>
 
 pkgname=panda3d-python2
-pkgver=1.10.10
+pkgver=1.10.11
 pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
@@ -81,5 +81,5 @@ package() {
 }
 sha256=('a8e438d4a13ac8c81b80d288326617b3'
         '057269173f3c1987953302519bc744fa')
-md5sums=('0dc7b0afea709d8527088985bb46d04e'
+md5sums=('9aeb39d97c7afe87cd211fdda70eea4d'
          '057269173f3c1987953302519bc744fa')
