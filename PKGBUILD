@@ -2,20 +2,20 @@
 
 _pkgname=understand
 pkgname=$_pkgname-bin
-_pkgbuild=1050
-pkgver=6.0.$_pkgbuild
+_pkgbuild=1096
+pkgver=6.1.$_pkgbuild
 pkgrel=1
 pkgdesc="Static analysis tool for maintaining, measuring & analyzing critical or large code bases."
 arch=('x86_64')
 url="https://scitools.com/"
 license=('custom')
-depends=('libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext' 'ncurses5-compat-libs' 'freetype2')
+depends=('libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext' 'freetype2' 'libxcrypt-compat')
 options=('!strip')
 
-source=("http://builds.scitools.com/all_builds/b$_pkgbuild/${_pkgname^}/${_pkgname^}-$pkgver-Linux-64bit.tgz"
+source=("https://latest.scitools.com/${_pkgname^}/${_pkgname^}-$pkgver-Linux-64bit.tgz"
 "$_pkgname.desktop"
 "$_pkgname")
-sha256sums=('9e6750fceabb2524e84295d9e08b36015f615b3cbf8060c82a39b542ef319d64'
+sha256sums=('c62967879954e83b55171c214a4d3068cfec95b4038789dd22b732d370811951'
             '8cb7852252e678b12a7d84b1ccb99bdae9e22f47793787be827cae98076957c9'
             '85ef433c24bbc0545552592cb342affa720a8f0fbe2dc6a5e488ee5cb054b0e6')
 
