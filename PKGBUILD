@@ -20,7 +20,8 @@ conflicts=()
 replaces=()
 install=systemd-readahead.install
 source=("https://freedesktop.org/software/systemd/systemd-$pkgver.tar.xz" "systemd-$pkgver-fixes.patch")
-md5sums=('04fda588a04f549da0f397dce3ae6a39' 'SKIP')
+md5sums=('04fda588a04f549da0f397dce3ae6a39'
+         'e680c9819960a97b0691b27f3d0afb37')
 
 prepare()
 {
@@ -36,8 +37,6 @@ prepare()
 build()
 {
     cd "systemd-$pkgver"
-
-    export CC=clang
 
     ./configure --enable-readahead --prefix=/usr                                                \
                 --disable-maintainer-mode                                                       \
@@ -127,9 +126,10 @@ package()
     # Install main app
     install -Dm 755 "systemd-readahead" "$pkgdir/usr/lib/systemd/systemd-readahead"
 
-    install -d "$pkgdir/usr/lib/systemd/system/"
 
     # Install unit files
+    install -d "$pkgdir/usr/lib/systemd/system/"
+
     install -Dm 644 "units/systemd-readahead-drop.service"    "$pkgdir/usr/lib/systemd/system/"
     install -Dm 644 "units/systemd-readahead-collect.service" "$pkgdir/usr/lib/systemd/system/"
     install -Dm 644 "units/systemd-readahead-replay.service"  "$pkgdir/usr/lib/systemd/system/"
@@ -137,9 +137,9 @@ package()
     install -Dm 644 "units/systemd-readahead-done.timer"      "$pkgdir/usr/lib/systemd/system/"
 
 
+    # Install manpages and aliases
     install -d "$pkgdir/usr/share/man/man8/"
 
-    # Install manpages and aliases
     install -Dm 644 "man/systemd-readahead-collect.service.8" "$pkgdir/usr/share/man/man8/"
     install -Dm 644 "man/systemd-readahead-done.service.8"    "$pkgdir/usr/share/man/man8/"
     install -Dm 644 "man/systemd-readahead-done.timer.8"      "$pkgdir/usr/share/man/man8/"
