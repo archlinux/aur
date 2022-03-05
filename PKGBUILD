@@ -5,7 +5,7 @@ _ghname='EternalTerminal'
 _tarname='et'
 pkgbase='eternalterminal'
 pkgname=('eternalterminal-client' 'eternalterminal-server' 'eternalterminal')
-pkgver='6.1.8'
+pkgver='6.1.11'
 pkgrel=1
 arch=('x86_64')
 depends=(
@@ -21,7 +21,7 @@ source=(
 		"https://github.com/MisterTea/${_ghname}/archive/${_tarname}-v${pkgver}.tar.gz"
 )
 sha256sums=(
-		'c82c62722d5e4db5b4596bcaafd4a4cf8c236968cb3782f791f5c38a62b10fb9'
+		'bff58ae9122a39a7012e741d2d514b0966725c942021f3279fa7e2b00cfd20a3'
 )
 
 prepare() {
