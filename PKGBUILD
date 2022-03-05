@@ -20,7 +20,7 @@ md5sums=('18c52e6fb8966b7700665dca289d077f'
          '8504bb22dae9d49e8b6d70d7e6910f1b'
          '982ec78eed2887657189aefbe0c642d0'
          'bf36b281a9fc81f624f31f2623a3ad0e')
-
+ 
 prepare() {
   cd gcc-$pkgver
 
