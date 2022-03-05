@@ -2,11 +2,11 @@
 #			Jake <aur@ja-ke.tech>
 
 # These variables should be updated with ./update_download_id.sh
-_download_url='https://magentacloud.de/s/9TQAjLaXFd5pj9B/download/cgm-rc-flight-simulator-linux-2024.zip'
+_download_url='https://magentacloud.de/s/Mf6jBEmzQ6yEnbK/download/cgm-rc-flight-simulator-linux-2033.zip'
 # _download_[id|file] can be cleaned up later
-_download_id='9TQAjLaXFd5pj9B'
-_download_file='cgm-rc-flight-simulator-linux-2024.zip'
-_pkgver='2.024'
+_download_id='Mf6jBEmzQ6yEnbK'
+_download_file='cgm-rc-flight-simulator-linux-2033.zip'
+_pkgver='2.033'
 
 pkgname=next
 pkgver="${_pkgver}"
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.zip::${_download_url}"
         "next.desktop"
         "next.sh")
 
-sha512sums=('a954bcddf0f58cc37cbbd53dcf2c9987782ce8bcd787ccc3a0c48ef1b86db2199bd57d0235ea04a480f26018a4e1ef628b7c27819e581b86203e749d05653679'
+sha512sums=('4c96a989c7a3f9234592ce4a07a3460226fcdc955f9b14ec9429ba5a0896394b77bee5b9a1e739c137264b0eb65566ee234fb605baece18f28f853db7423f0bd'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
             'c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669')
 
@@ -36,6 +36,9 @@ prepare() {
   cd "${srcdir}/${pkgname}"
 
   tail -n 2 ReadMe.txt > License.txt
+
+  # Remove OSX stuff
+  find . -type f -name ".DS_Store" -exec rm {} \;
 }
 
 package() {
