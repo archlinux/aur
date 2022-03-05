@@ -2,7 +2,7 @@
 # Contributor: Xiao-Long Chen <chenxiaolong at cxl.epac.to>
 
 pkgname=charls
-pkgver=2.3.1
+pkgver=2.3.2
 pkgrel=1
 pkgdesc='A C++ JPEG-LS library implementation'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/team-charls/charls'
 license=('BSD')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('d274107538c70abfce5459c40ed1ec5ef354193ad9e2c55de6293ca358d52e97')
+sha256sums=('b758e3f3a6f875d69454f6131fe7a4daf574f8b0e2c890dc9f8c1d3083a4dc78')
 
 build() {
   mkdir -p build
