@@ -1,7 +1,7 @@
 pkgbase = manx-tt-superbike
 	pkgdesc = Arcade game.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://en.wikipedia.org/wiki/Manx_TT_Super_Bike
 	arch = any
 	license = custom
@@ -12,7 +12,7 @@ pkgbase = manx-tt-superbike
 	source = com.sega.ManxTTSuperBike.desktop
 	source = com.sega.ManxTTSuperBike.png
 	sha256sums = 4e3acc78f0621998442363a6cd482256279c5ce7d1f8eaf781cc217285b28f9a
-	sha256sums = bc1c69e001e251c0ab413cf5c3a2d2bc399c0b1acb07870d847b1ccc77d95f82
+	sha256sums = e7bec7bb90ae1ce9b0f27ded0c32b532b8931d9edc3f9ae983dfd6419819dd09
 	sha256sums = ea721774cfd5c10b8b1658051d87650567bd1b96dfbfaabe33500949ea8cfce7
 
 pkgname = manx-tt-superbike
