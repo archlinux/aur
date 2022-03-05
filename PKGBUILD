@@ -1,4 +1,4 @@
-# Maintainer: Joshua Small <technion@lolware.net>
+# Maintainer: Hiro Protagonist <hp@half-done.org>
 
 _pkgname="nginx"
 _user="http"
@@ -15,7 +15,7 @@ _log_path="/var/log/${_pkgname}"
 pkgname=nginx-libressl
 pkgver=1.20.2
 pkgrel=1
-librever=3.4.2
+librever=3.5.0
 pkgdesc="lightweight HTTP server, statically linked against LibreSSL."
 arch=('i686' 'x86_64')
 
@@ -101,4 +101,4 @@ sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
             '958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42'
-            'cb82ca7d547336917352fbd23db2fc483c6c44d35157b32780214ec74197b3ce')
+            'f01d4f76191558158a06afbdc2405fefd5b02540a197ab2546c840e06a5c0fb7')
