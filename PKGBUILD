@@ -1,14 +1,15 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: JustKidding <jk@vin.ovh>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=libstdc++5
 pkgver=3.3.6
-pkgrel=7
+pkgrel=8
 pkgdesc="GNU Standard C++ library version 3"
 arch=('x86_64')
 url="https://gcc.gnu.org"
 license=('GPL' 'LGPL')
 depends=('gcc-libs')
-makedepends=('binutils' 'gcc')
+makedepends=('gcc' 'binutils')
 options=('!makeflags')
 source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-{core,g++}-${pkgver}.tar.bz2
         gcc-3.4.3-no_multilib_amd64.patch
@@ -24,15 +25,25 @@ prepare() {
   cd gcc-$pkgver
 
   patch -Np1 -i $srcdir/gcc-3.4.3-no_multilib_amd64.patch
-  patch -Np1 -i $srcdir/gcc-3.4.6-ucontext.patch
-  
   # fix build issue with recent gcc
   sed -i "s#O_CREAT#O_CREAT, 0666#" gcc/collect2.c
 
   # No fixincludes
-  sed -i -e 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+  sed -e 's@\./fixinc\.sh@-c true@' \
+      -e '# Clean up some warnings that arent our business' \
+      -e 's:-Wstrict-prototypes::g' \
+      -e 's:-Wtraditional::g' \
+      -e 's:-pedantic::g' \
+      -e 's:-Wall::g' \
+    -i 'gcc/Makefile.in'
+  sed -e 's:-Wall -Wtraditional -pedantic::g' -i 'libiberty/configure'
 
-  patch -Np0 -i ../siginfo.patch
+  # Patches are the wrong way to do this
+  sed -e '# gcc-3.4.6-ucontext.patch' \
+      -e 's:\bstruct ucontext\b:ucontext_t:g' \
+      -e '# siginfo.patch' \
+      -e 's:\bstruct siginfo\b:siginfo_t:g' \
+    -i $(grep --include 'linux*.h' -lrFe $'struct ucontext\nstruct siginfo' gcc/config/)
 
   mkdir ../gcc-build
 }
@@ -46,7 +57,7 @@ build(){
   CPP=/usr/bin/cpp ../gcc-${pkgver}/configure --prefix=/usr --enable-shared \
       --enable-languages=c++ --enable-threads=posix --enable-__cxa_atexit \
       --disable-multilib --libdir=/usr/lib
-  make all-target-libstdc++-v3 BOOT_CFLAGS="${CFLAGS}" STAGE1_CFLAGS="-O"
+  make all-target-libstdc++-v3 BOOT_CFLAGS="${CFLAGS}" STAGE1_CFLAGS="-O" -j$(nproc)
 }
 
 package() {
