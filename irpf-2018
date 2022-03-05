@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+_JAVA_AWT_WM_NONREPARENTING=1 java \
+  -Dawt.useSystemAAFontSettings=on \
+  -Dswing.aatext=true \
+  -jar /usr/share/IRPF/irpf-2018/irpf-2018.jar
