@@ -10,7 +10,7 @@ url="http://www.gerd-neugebauer.de/software/TeX/BibTool/en/"
 license=('GPL')
 depends=('glibc' 'texlive-bin')
 source=(http://www.gerd-neugebauer.de/software/TeX/BibTool/BibTool-$pkgver.tar.gz)
-sha256sums=('c47d78add3179095e087231cf19f4a73c83db82db44413d2e674b7a402615572')
+sha256sums=('7134ce3a05fe94c04b88f18261139656ac4c0c0893de15acc0daabc90248b8fa')
 
 build() {
   cd BibTool
