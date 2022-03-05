@@ -1,6 +1,6 @@
 pkgbase = polybar
 	pkgdesc = A fast and easy-to-use status bar
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/polybar/polybar
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = polybar
 	depends = curl
 	optdepends = i3-wm: i3 module support
 	conflicts = polybar-git
-	source = https://github.com/polybar/polybar/releases/download/3.6.0/polybar-3.6.0.tar.gz
-	sha256sums = 563473d5ae2b83d4dba6372f85cbcfd8d5a271b4cf3345ff57acff9c81e1b065
+	source = https://github.com/polybar/polybar/releases/download/3.6.1/polybar-3.6.1.tar.gz
+	sha256sums = a898ba8c847895be41efe5a31bb1b839da2c10b130b8411d5016982fbaadff7b
 
 pkgname = polybar
