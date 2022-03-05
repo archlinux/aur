@@ -1,0 +1,12 @@
+pkgbase = hunspell-hi
+	pkgdesc = Hindi dictionary for Hunspell
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/Shreeshrii/hindi-hunspell
+	arch = any
+	license = GPL3
+	depends = hunspell
+	source = hunspell-hi-2.1.1.zip::https://github.com/Shreeshrii/hindi-hunspell/archive/refs/tags/v2.1.1.zip
+	md5sums = 22a9510c77cffb60ef86e79506db1358
+
+pkgname = hunspell-hi
