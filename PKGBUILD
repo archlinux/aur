@@ -17,8 +17,8 @@ groups=(pro-audio)
 depends=(gtk3 wxgtk3-dev-light libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
          soundtouch portaudio portmidi lame jack)
 makedepends=(git cmake clang sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs
-             ffmpeg nasm chrpath)
-optdepends=('ffmpeg: additional import/export capabilities')
+             ffmpeg4.4 nasm chrpath)
+optdepends=('ffmpeg4.4: additional import/export capabilities')
 provides=(tenacity)
 conflicts=(tenacity)
 source=("git+https://git.sr.ht/~tenacity/tenacity")
@@ -28,6 +28,8 @@ pkgver() {
   cd tenacity
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+
+export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 prepare() {
   cd tenacity/images/icons
