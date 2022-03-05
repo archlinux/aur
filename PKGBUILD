@@ -1,10 +1,11 @@
 # Maintainer: Gabriel Rauter <rauter.gabriel@gmail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pls
 pkgver=1.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A better ls for developers'
-url='https://pypi.org/project/pls/'
+url='https://dhruvkb.github.io/pls'
 arch=('any')
 license=('GPL3')
 depends=(
@@ -16,23 +17,20 @@ optdepends=(
 )
 makedepends=(
   'git'
-  'python-dephell'
+  'python-poetry-core'
+  'python-build'
+  'python-installer'
 )
 
-source=($pkgname::"git+https://github.com/dhruvkb/pls#tag=$pkgver")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dhruvkb/pls/archive/$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-prepare() {
-  cd $pkgname
-  dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
-  cd $pkgname
-  python setup.py build
+  cd $pkgname-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd $pkgname
-  python setup.py install --root="$pkgdir" -O1 --skip-build
+  cd $pkgname-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

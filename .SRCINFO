@@ -1,16 +1,18 @@
 pkgbase = pls
 	pkgdesc = A better ls for developers
 	pkgver = 1.13.1
-	pkgrel = 1
-	url = https://pypi.org/project/pls/
+	pkgrel = 2
+	url = https://dhruvkb.github.io/pls
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = python-dephell
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-rich
 	depends = python-yaml
 	optdepends = nerd-fonts: icon support
-	source = pls::git+https://github.com/dhruvkb/pls#tag=1.13.1
+	source = pls-1.13.1.tar.gz::https://github.com/dhruvkb/pls/archive/1.13.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = pls
