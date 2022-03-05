@@ -23,7 +23,7 @@ source=(
   "$pkgname.png"
 )
 md5sums=('7e0eec8fcc34d90d9e7888b7ccaef4ed'
-         'ebf9470d2ddcd24e8680337786a2e9bb'
+         '7b4f64fbc5f95c918c2f9db09c908603'
          '29ba102b96c052b655ed70b6723d45af'
          '4e5cb890abf125a7743091bee69fa4ab'
          '43d8c9617118578f03b2c4eeb1c72c57')
