@@ -42,8 +42,11 @@ depends=(
     'zlib'
 )
 makedepends=('git' 'nasm' 'clang' 'ffnvcodec-headers' 'amf-headers-git' 'opencl-headers')
-optdepends=('intel-media-sdk: for Intel Quick Sync Video'
+optdepends=('intel-media-driver: for Intel VAAPI support (Broadwell and newer)'
+            'intel-media-sdk: for Intel Quick Sync Video'
             'intel-compute-runtime: for Intel OpenCL runtime based Tonemapping'
+            'libva-intel-driver: for Intel legacy VAAPI support (10th Gen and older)'
+            'libva-mesa-driver: for AMD VAAPI support'
             'nvidia-utils: for Nvidia NVDEC/NVENC support')
 source=("git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v${pkgver}-${pkgrel}")
 sha256sums=('SKIP')
