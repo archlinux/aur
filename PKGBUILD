@@ -12,7 +12,7 @@ pkgver=0.0.1.r558.e491ff6
 pkgrel=1
 pkgdesc='A totally original phase rotation plugin - part of NIH-plug'
 arch=('x86_64')
-url=jhttps://github.com/robbert-vdh/nih-plug/tree/master/plugins/diopserj
+url="https://github.com/robbert-vdh/nih-plug/tree/master/plugins/diopser"
 license=('GPL3')
 groups=('nih-plug')
 # TODO: Add more dependencies when we add a GUI
