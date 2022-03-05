@@ -1,5 +1,5 @@
 pkgname=luabind-ryzom
-pkgver=v0.9.1.r409.g3dd7c54
+pkgver=v0.9.1.r414.gbbb9f40
 pkgrel=1
 provides=('luabind')
 pkgdesc="A library that helps you create bindings between C++ and Lua"
@@ -20,12 +20,12 @@ pkgver() {
 build() {
   mkdir ${srcdir}/luabind/build
   cd ${srcdir}/luabind/build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DLUABIND_DYNAMIC_LINK=ON -DCMAKE_INSTALL_PREFIX=/usr ..
 }
 
 package() {
   cd ${srcdir}/luabind/build
   make DESTDIR="$pkgdir/" install
   cd ${pkgdir}/usr/lib
-  ln -s libluabindd.so libluabind.so
+  ln -s libluabind09.so libluabind.so
 }

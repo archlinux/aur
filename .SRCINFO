@@ -1,6 +1,6 @@
 pkgbase = luabind-ryzom
 	pkgdesc = A library that helps you create bindings between C++ and Lua
-	pkgver = v0.9.1.r409.g3dd7c54
+	pkgver = v0.9.1.r414.gbbb9f40
 	pkgrel = 1
 	url = http://www.rasterbar.com/products/luabind.html
 	arch = i686
