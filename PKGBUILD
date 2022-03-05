@@ -4,7 +4,7 @@
 _pkgname='ory-hydra'
 pkgname="${_pkgname}-bin"
 pkgver=1.11.7
-pkgrel=1
+pkgrel=2
 pkgdesc="OAuth 2.0 and OpenID Connect Provider"
 arch=('x86_64')
 url="https://ory.sh"
