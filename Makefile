@@ -7,7 +7,7 @@ clean:
 
 .PHONY: geninteg
 geninteg:
-	sed -i '/.*sums=(/,$$d' PKGBUILD
+	sed -i '/.*sums.*=(/,$$d' PKGBUILD
 	makepkg --geninteg >> PKGBUILD
 
 .PHONY: srcinfo
