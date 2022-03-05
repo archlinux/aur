@@ -1,12 +1,12 @@
 pkgbase = notable-insiders-electron
 	pkgdesc = Insider build of the Notable note-taking app
 	pkgver = 1.9.0.beta.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/notable/notable-insiders
 	arch = any
 	license = UNLICENSED
 	makedepends = asar
-	depends = electron16
+	depends = electron17
 	depends = sh
 	provides = notable
 	conflicts = notable-insiders-bin
