@@ -17,5 +17,5 @@ pkgbase = bazel31-bin
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-linux-x86_64
 	sha256sums = 605118766dbe07d04f4f15a809b231247eef3f302c431dcb712a514244662a47d3eb784add3b20d69d415954f7a95f9988215560911079289170a383343398d1
 
-pkgname = bazel3-bin
+pkgname = bazel31-bin
 
