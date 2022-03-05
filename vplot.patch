@@ -1,0 +1,13 @@
+--- lib/vplot.kg	2020-03-29 10:27:49.000000000 +0200
++++ lib/vplot.patched	2022-03-05 18:18:07.443003535 +0100
+@@ -31,8 +31,8 @@
+ p9.2d::p9.2d,tmp," | page -b -w"
+ p9.3d::"gs '-sOutputFile=-' -r96 -g1133x1133 -dBATCH -dNOPAUSE -q "
+ p9.3d::p9.3d,tmp," | page -b -w"
+-u.2d::"gv -spartan -scale=0.7 -media=BBOX ",tmp
+-u.3d::"gv -spartan -scale=0.5 -media=BBOX ",tmp
++u.2d::"zathura ",tmp
++u.3d::"zathura ",tmp
+ v2c:::[.h~:plan9;p9.2d;u.2d]
+ v3c:::[.h~:plan9;p9.3d;u.3d]
+ xsc::[-1 1 0.1]
