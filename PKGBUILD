@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-roms-git
-pkgver=20220216.r7.ge4b515f
+pkgver=20220216.r11.g7552166
 pkgrel=1
 pkgdesc='ROMs for the 86Box emulator.'
 arch=('any')
