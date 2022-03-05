@@ -3,7 +3,7 @@
 
 pkgname=pls
 pkgver=1.13.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A better ls for developers'
 url='https://dhruvkb.github.io/pls'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhruvkb/pls/archive/$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('95558fbdec13a0f49d6d2dbf310cbad1966a6583bdf46c83f0b588078dd06c33222706a48dd6c475cbb1753996aa84ff1e5feaac099f21fb29cbf7f05d1a90c0')
 
 build() {
   cd $pkgname-$pkgver

@@ -1,7 +1,7 @@
 pkgbase = pls
 	pkgdesc = A better ls for developers
 	pkgver = 1.13.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dhruvkb.github.io/pls
 	arch = any
 	license = GPL3
@@ -13,6 +13,6 @@ pkgbase = pls
 	depends = python-yaml
 	optdepends = nerd-fonts: icon support
 	source = pls-1.13.1.tar.gz::https://github.com/dhruvkb/pls/archive/1.13.1.tar.gz
-	sha512sums = SKIP
+	sha512sums = 95558fbdec13a0f49d6d2dbf310cbad1966a6583bdf46c83f0b588078dd06c33222706a48dd6c475cbb1753996aa84ff1e5feaac099f21fb29cbf7f05d1a90c0
 
 pkgname = pls
