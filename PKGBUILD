@@ -9,7 +9,7 @@ _use_meson=0
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-pkgver=4.2.beta1.r0.g6221ff02d
+pkgver=4.2.beta1.r5.gf0c055546
 pkgrel=1
 epoch=1
 pkgdesc="Plugins for Audacious (git version)"
@@ -39,9 +39,6 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-
-  # Work around build failure due to FFmpeg 5.0 APIs returning const pointers
-  CXXFLAGS+=' -fpermissive'
 
   if [ "$_use_meson" = 1 ]; then
     arch-meson build
