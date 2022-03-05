@@ -8,7 +8,7 @@
 # Maintainer: Koopa <codingkoopa@gmail.com>
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
-_launcherver='1.25.1'
+_launcherver='1.26'
 _linuxver='b024359583da621c6e5402b2c2f46c6061c975ac'
 pkgver="$_launcherver.${_linuxver:0:9}"
 pkgrel='1'
