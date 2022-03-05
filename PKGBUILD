@@ -1,7 +1,7 @@
 pkgname=portx-bin
 _pkgname=portx
 pkgver=2.0.7
-pkgrel=4
+pkgrel=1
 pkgdesc="lightweight cross-platform SSH Client"
 arch=("x86_64")
 license=("Proprietary")
