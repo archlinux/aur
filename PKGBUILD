@@ -16,11 +16,12 @@ depends=(
 )
 
 ## BEGIN generated variables
-pkgver=2022.02.13.edge.r32.gaf47e98463
-source=(https://github.com/Bonnee/freecad-build-arch/releases/download/2022.02.13.edge.r32.gaf47e98463/freecad-archive.tar.gz)
+pkgver=2022.03.04.edge.r0.g1506b09f12
 sha1sums=(SKIP)
 
 ## END generated variables
+
+source=("https://github.com/Bonnee/freecad-build-arch/releases/download/${pkgver}/freecad-archive.tar.gz")
 
 package() {
 	# Symlink to /usr/bin
