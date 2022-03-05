@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 TryExec=kronos
-Exec=kronos -a -f -i "/usr/games/saturn/Manx TT Super Bike/81210.cue"
+Exec=kronos -a -f -i "/usr/games/com.sega.ManxTTSuperBike/81210.cue"
 Icon=com.sega.ManxTTSuperBike
 Terminal=false
 Categories=Games;
