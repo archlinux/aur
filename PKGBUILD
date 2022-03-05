@@ -67,20 +67,20 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/$pkgname/mods/" Mods/*.lmlm
 
   # Install the mod launcher Linux launcher files.
-  cd lml-linux-launcher-master-* || exit 1
+  cd lml-linux-launcher-$_linuxver || exit 1
 
   # Install the mod launcher launcher.
-  install -Dm655 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+  install -Dm655 "bin/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   # Install the MIME types.
-  install -Dm644 "$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+  install -Dm644 "data/$pkgname.xml" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
   # Install the icons.
   for SIZE in 16 22 32 48 64 256; do
-    install -Dm644 "$pkgname-$SIZE.png" \
+    install -Dm644 "data/$pkgname-$SIZE.png" \
       "$pkgdir/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/$pkgname.png"
   done
   # Install the desktop entry.
-  install -Dm644 "com.donutteam.$pkgname.desktop" \
+  install -Dm644 "data/com.donutteam.$pkgname.desktop" \
     "$pkgdir/usr/share/applications/com.donutteam.$pkgname.desktop"
   # Install the helper script.
-  install -m655 "check-for-duplicate-lmlms.sh" "$pkgdir/usr/bin/check-for-duplicate-lmlms"
+  install -m655 "bin/check-for-duplicate-lmlms.sh" "$pkgdir/usr/bin/check-for-duplicate-lmlms"
 }
