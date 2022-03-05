@@ -1,7 +1,7 @@
 pkgbase = wob
 	pkgdesc = A lightweight overlay volume/backlight/progress/anything bar for Wayland
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/francma/wob
 	arch = i686
 	arch = x86_64
