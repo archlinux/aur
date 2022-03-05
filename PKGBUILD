@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=rocrand
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='Pseudo-random and quasi-random number generator on ROCm'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('gcc-fortran: Use Fortran wrapper'
             'python: Use Python wrapper')
 _git='https://github.com/ROCmSoftwarePlatform/rocRAND'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('ec4c509a9afda8bb1a0f2aec53bd5f1db3961792344a6b70554364a9b11a25d4')
+sha256sums=('2dbce2a7fb273c2f9456c002adf3a510b9ec79f2ff32dfccdd59948f3ddb1505')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
