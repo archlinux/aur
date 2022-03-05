@@ -2,6 +2,40 @@
 
 ## 接口更新说明
 
+1.4.57 fix: fix bond_spot_quote interface
+
+    1. 修复 bond_spot_quote 接口数据错位问题
+
+1.4.56 fix: fix index_detail_hist_cni and index_detail_cni interface
+
+    1. 修改 index_detail_hist_cni 接口，新增 date 参数，可以指定 date 来获取数据
+    2. 修改 index_detail_cni 的 date 参数的格式为 "202201"
+
+1.4.55 fix: fix energy_carbon interface
+
+    1. 修复 energy_carbon_gz 接口的返回字段格式并且按日期排序
+    2. 修复 energy_carbon_hb 接口的返回字段格式并且按日期排序
+    3. 修复 energy_carbon_eu 接口的返回字段格式并且按日期排序
+    4. 修复 energy_carbon_sz 接口的返回字段格式并且按日期排序
+    5. 修复 energy_carbon_bj 接口的返回字段格式并且按日期排序
+    6. 修复上述接口的文档描述信息
+
+1.4.54 fix: fix stock_hot_rank_relate_em interface
+
+    1. 修复 stock_hot_rank_relate_em 接口的字段描述信息
+
+1.4.53 add: add stock_hot_rank_relate_em interface
+
+    1. 新增 stock_hot_rank_relate_em 接口，该接口可以获取东方财富-个股人气榜-相关股票数据
+
+1.4.52 add: add stock_hot_rank_latest_em interface
+
+    1. 新增 stock_hot_rank_latest_em 接口，该接口可以获取东方财富-个股人气榜-人气排名数据
+
+1.4.51 add: add stock_hot_keyword_em interface
+
+    1. 新增 stock_hot_keyword_em 接口，该接口可以获取指定股票的相关实时热门概念数据
+
 1.4.50 add: add stock_hot_rank_detail_realtime_em interface
 
     1. 新增 stock_hot_rank_detail_realtime_em 接口，该接口可以获取东方财富个股人气榜-实时变动数据
@@ -33,6 +67,20 @@
     3. 修改 air_quality_hist 接口的请求日期格式，从 '2022-01-01' 为 '20220101'
 
 ## 版本更新说明
+
+1.4.57 fix: fix bond_spot_quote interface
+
+1.4.56 fix: fix index_detail_hist_cni and index_detail_cni interface
+
+1.4.55 fix: fix energy_carbon interface
+
+1.4.54 fix: fix stock_hot_rank_relate_em interface
+
+1.4.53 add: add stock_hot_rank_relate_em interface
+
+1.4.52 add: add stock_hot_rank_latest_em interface
+
+1.4.51 add: add stock_hot_keyword_em interface
 
 1.4.50 add: add stock_hot_rank_detail_realtime_em interface
 
