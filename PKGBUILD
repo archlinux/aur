@@ -2,18 +2,12 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname='libplacebo-git'
-pkgver=4.157.0.5.g51b0e24
+pkgver=4.192.0.41.gb840fbd
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://code.videolan.org/videolan/libplacebo'
 arch=('x86_64')
 license=('LGPL2.1')
-makedepends=('git'
-             'meson'
-             'ninja'
-             'vulkan-headers'
-             'python-mako'
-             )
 depends=('libvulkan.so'
          'liblcms2.so'
          'glslang'
@@ -24,12 +18,28 @@ depends=('libvulkan.so'
          'libavutil.so'
          'libavformat.so'
          )
+makedepends=('git'
+             'meson'
+             'ninja'
+             'vulkan-headers'
+             'vulkan-icd-loader'
+             'python-mako'
+             'ffmpeg'
+             'lcms2'
+             'shaderc'
+             'dav1d'
+             )
 provides=('libplacebo'
           'libplacebo.so'
           )
 conflicts=('libplacebo')
-source=('git+https://code.videolan.org/videolan/libplacebo.git')
-sha256sums=('SKIP')
+source=('git+https://code.videolan.org/videolan/libplacebo.git'
+        'git+https://github.com/Immediate-Mode-UI/Nuklear.git'
+        )
+sha256sums=('SKIP'
+            'SKIP'
+            )
+options=('debug')
 
 pkgver() {
   cd libplacebo
@@ -38,6 +48,11 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd libplacebo
+  git config submodule.demos/3rdparty/nuklear.url "${srcdir}/Nuklear"
+  git submodule update --init \
+    demos/3rdparty/nuklear
 }
 
 build() {
@@ -48,9 +63,10 @@ build() {
     -D shaderc=enabled \
     -D lcms=enabled \
     -D d3d11=disabled \
-    -D tests=true
+    -D tests=true \
+    -D demos=false
 
-  ninja
+   LC_ALL=C ninja
 
 }
 
