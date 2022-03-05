@@ -1,8 +1,5 @@
 pkg/
 src/
-.AURINFO
-jkmeter/
-jkmeter-*.tar.xz
+jkmeter-*.pkg.tar.*
 jkmeter-*.src.tar.gz
-jkmeter-*.tar.gz
 jkmeter-*.tar.bz2

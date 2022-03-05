@@ -1,16 +1,14 @@
 pkgbase = jkmeter
 	pkgdesc = A horizontal or vertical bargraph level meter based on the ideas of mastering guru Bob Katz.
-	pkgver = 0.6.5
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = clthreads
 	depends = clxclient
 	depends = jack
-	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/jkmeter-0.6.5.tar.bz2
-	md5sums = 24ef3f54227ead9408248340c543a470
+	source = http://kokkinizita.linuxaudio.org/linuxaudio/downloads/jkmeter-0.9.0.tar.bz2
+	sha256sums = 0062ca9a0d000b937364567ff41e3bf15798807c839d1a981e7fe6aedfdb7378
 
 pkgname = jkmeter
-
