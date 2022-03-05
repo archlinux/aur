@@ -8,7 +8,9 @@
 # Maintainer: Koopa <codingkoopa@gmail.com>
 
 pkgname='lucas-simpsons-hit-and-run-mod-launcher'
-pkgver='1.25.1'
+_launcherver='1.25.1'
+_linuxver='b024359583da621c6e5402b2c2f46c6061c975ac'
+pkgver="$_launcherver.${_linuxver:0:9}"
 pkgrel='1'
 pkgdesc="Mod launcher for The Simpsons: Hit & Run."
 arch=(
@@ -37,13 +39,12 @@ optdeps=(
 source=(
   # TODO: Add the package version here to the saved file name too!
   # Official mod launcher download for the current release.
-  "$pkgname-${pkgver}.zip::https://cdn.donutteam.com/Downloads/Tools/\
-Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${pkgver}.zip"
+  "$pkgname-${_launcherver}.zip::https://cdn.donutteam.com/Downloads/Tools/\
+Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${_launcherver}.zip"
   # Unofficial mod launcher Linux launcher download for the latest master branch.
   # TODO: release these in lockstep with the launcher?
-  "lml-linux-launcher.zip::https://gitlab.com/CodingKoopa/\
-lucas-simpsons-hit-and-run-mod-launcher-linux-launcher/-/archive/master/\
-lucas-simpsons-hit-and-run-mod-launcher-linux-launcher-master.zip"
+  "https://gitlab.com/CodingKoopa/lml-linux-launcher/-/archive/\
+$_linuxver/lml-linux-launcher-$_linuxver.zip"
 )
 md5sums=(
   # Skip the mod launcher ZIP because no hashes are provided by upstream.
