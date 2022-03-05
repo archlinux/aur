@@ -2,8 +2,8 @@
 
 pkgname=php-xmlrpc
 _extname=xmlrpc
-pkgver=1.0.0RC2
-pkgrel=2
+pkgver=1.0.0RC3
+pkgrel=1
 pkgdesc="PHP extension to write XML-RPC servers and clients"
 arch=("i686" "x86_64")
 url="https://pecl.php.net/package/xmlrpc"
@@ -12,7 +12,7 @@ depends=('glibc' 'libxml2')
 makedepends=('php')
 source=("http://pecl.php.net/get/$_extname-$pkgver.tgz")
 backup=("etc/php/conf.d/$_extname.ini")
-sha256sums=('9800a5f627c24e2f6acf61f816a54c66e9fdffbfabc598ffc0f0f1165d3ef041')
+sha256sums=('65ce03491782f9d9d5e9bc70bfe684255e5afa8486a2960c7a7cab033882a282')
 
 build() {
 	cd "$srcdir/$_extname-$pkgver"
