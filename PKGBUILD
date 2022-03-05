@@ -2,7 +2,7 @@
 
 pkgname=snowflake-pt-proxy
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC (proxy part)"
 url="https://snowflake.torproject.org"
 license=('BSD')
@@ -12,9 +12,9 @@ makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/archive/v$pkgver/snowflake-v$pkgver.tar.gz"
         snowflake-proxy.service)
 sha256sums=('e9538c1bed1d3354ea68962e2cc829d9eaf5730667bff0013871163ccf47bb56'
-            '562e53cd615f7f26df0e39aef2b5b5626a026a3c9a601c1d47a63ae70f4d7ed1')
+            '81ed80bea97fb9874734d4ec7ccb9a850e6aa5b186a354990066344446bd1412')
 b2sums=('14cd360c2154207a88be20d0bb711a926a732340058ffd7653d586ddd78c842d9d3c04dcc369e2cd146ee3089616c409b18efc74c6b2329fc980690368438fa8'
-        'fa45242d7f35a8fd79a36533249fde87777c69dd1415eeadc2a11a39f768fa754aa1831191ba31ebf6e2167471ab97c237ceafd8be95d71ed34995e0e2ad64a2')
+        '2ba698a76a06b8ebee3cd8c44562783aa3939f66528d1573ac93a59dcc6a8de61f160b5dbc0e8b83c2473bedf037d69fbee9b33befa24027693e556fd5d3d575')
 
 build() {
   cd "snowflake-v$pkgver"

@@ -28,3 +28,6 @@ ProtectSystem=strict
 
 MemoryDenyWriteExecute=true
 RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target
