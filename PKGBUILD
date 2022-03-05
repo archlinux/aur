@@ -1,13 +1,13 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=vkd3d-proton-mingw-git
-pkgver=2.5.r81.g9c354936
+pkgver=2.6.r0.g3e5aab6f
 pkgrel=1
 pkgdesc='Fork of VKD3D. Development branches for Protons Direct3D 12 implementation'
 arch=('x86_64')
 url="https://github.com/HansKristian-Work/vkd3d-proton"
 license=('LGPL-2.1')
-depends=('vulkan-icd-loader' 'wine>=4.0rc1' 'lib32-vulkan-icd-loader' 'bash')
+depends=('vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'bash')
 makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc' 'mingw-w64-tools')
 provides=('vkd3d-proton' 'd3d12.dll' "vkd3d-proton=$pkgver")
 conflicts=('vkd3d-proton' 'd3d12.dll')
@@ -81,8 +81,8 @@ prepare() {
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    cross_cflags+=" -mno-avx -mno-avx2"
-    cross_cxxflags+=" -mno-avx -mno-avx2"
+    cross_cflags+=" -mno-avx2"
+    cross_cxxflags+=" -mno-avx2"
 
     # These flags are taken from Proton, I don't know if there are issues with Arch wine.
     cross_cflags+=" -mfpmath=sse -fwrapv -fno-strict-aliasing -gdwarf-2 -gstrict-dwarf"
@@ -94,8 +94,8 @@ prepare() {
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${cross_ldflags// /\',\'}\'|g"
 
-    cross_cflags+=" -mstackrealign"
-    cross_cxxflags+=" -mstackrealign"
+    cross_cflags+=" -mstackrealign -mno-avx"
+    cross_cxxflags+=" -mstackrealign -mno-avx"
     sed -i build-win32.txt \
         -e "s|@CARGS@|\'${cross_cflags// /\',\'}\'|g" \
         -e "s|@CXXARGS@|\'${cross_cxxflags// /\',\'}\'|g" \
@@ -136,4 +136,3 @@ sha256sums=('SKIP'
             'SKIP'
             '459d0de87abd6ea44ac71b4d7a005b6cfc9b2a75613ecda161223e95a22414d8'
             '8fc019d1dca8c52b6af96c40ff06a6c215aad3e713ae17be72c7422f1ba45634')
-
