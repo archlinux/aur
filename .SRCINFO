@@ -14,3 +14,19 @@ pkgbase = green-tunnel-bin
 	sha256sums = d00a6f4e43993a4b8c96546a3a8afbe04a5d11d0d65ab9dcc5137b0b6857f3dc
 
 pkgname = green-tunnel-bin
+pkgbase = green-tunnel-bin
+	pkgdesc = An anti-censorship utility designed to bypass the DPI system that is put in place by various ISPs to block access to certain websites
+	pkgver = 1.8.3
+	pkgrel = 3
+	url = https://github.com/SadeghHayeri/GreenTunnel
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	provides = green-tunnel
+	source = green-tunnel-bin-1.8.3.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v1.8.3/green-tunnel-debian.zip
+	sha256sums = d00a6f4e43993a4b8c96546a3a8afbe04a5d11d0d65ab9dcc5137b0b6857f3dc
+
+pkgname = green-tunnel-bin
