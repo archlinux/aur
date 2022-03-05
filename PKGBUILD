@@ -24,12 +24,12 @@ url='https://github.com/kanidm/kanidm'
 source=("$pkgbase::git://github.com/${_basename}/${_basename}.git")
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-makedepends=(cargo git)
+makedepends=(cargo git systemd)
 sha256sums=(SKIP)
 
 pkgver() {
   cd "$pkgbase"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
