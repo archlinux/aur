@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=alephone-git
-pkgver=1.5.r5536.7ca24da0
+pkgver=1.5.r5553.44e1a42c
 pkgrel=1
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software (development version)'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://alephone.lhowon.org/"
 license=('GPL3')
 conflicts=("alephone")
 provides=("alephone")
-depends=('sdl2_ttf' 'sdl2_image' 'sdl2_net' 'libmad' 'glu' 'zziplib' 'ffmpeg'
+depends=('sdl2_ttf' 'sdl2_image' 'sdl2_net' 'libmad' 'glu' 'zziplib' 'ffmpeg4.4'
          'boost-libs' 'curl')
 optdepends=('alephone-eternalx: community-made scenario'
             'alephone-evil: community-made scenario'
@@ -40,7 +40,8 @@ prepare() {
 build() {
   cd alephone
   
-  ./autogen.sh --prefix=/usr --without-smpeg
+  ./autogen.sh 
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --without-smpeg
   make
 }
 
