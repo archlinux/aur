@@ -1,7 +1,7 @@
 pkgbase = realvnc-vnc-viewer
 	pkgdesc = VNC remote desktop client software by RealVNC
 	pkgver = 6.21.1109
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.realvnc.com/
 	arch = x86_64
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = realvnc-vnc-viewer
 	conflicts = tightvnc
 	conflicts = tigervnc
 	conflicts = turbovnc
+	conflicts = libxcrypt-compat
 	source_x86_64 = https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.21.1109-Linux-x64.deb
 	sha1sums_x86_64 = 63008140b0897ef09e8a54625e637e2ccef3d67a
 	source_i686 = https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-6.21.1109-Linux-x86.deb
