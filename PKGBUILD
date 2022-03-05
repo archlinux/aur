@@ -16,7 +16,7 @@ arch=(x86_64 x86_64_v3 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+         nss-hg ttf-font libpulse xorg-server-xwayland
          libvpx libwebp libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xvfb
@@ -32,9 +32,11 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
+depends_x86_64=(ffmpeg4.4)
+depends_aarch64=(ffmpeg)
 backup=('usr/lib/librewolf-nightly/librewolf.cfg'
         'usr/lib/librewolf-nightly/distribution/policies.json')
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags !strip !lto !debug)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _repo=https://hg.mozilla.org/mozilla-unified
 install=librewolf-nightly.install
@@ -42,12 +44,14 @@ source=("hg+$_repo#revision=autoland"
         $_pkgname.desktop
         "git+https://gitlab.com/vnepogodin/librewolf-common.git"
         "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch")
+        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch"
+        "default192x192.png")
 sha512sums=('SKIP'
             '5a0932eeceba04a09133a7b61e9eee49cd5bdacb2daadc132e910fdd3ef8392262208b6401043655bff58068b2320022daa6722f11aed9284c5b5a008d570bcd'
             'SKIP'
             'SKIP'
-            'f00f547a55df90a2f96c7b5f3a3c46b033f985db9a12257cb57f617ae8e0df9558baf6a79a7825f4866de45f9f4875cbbf1f0b99cd44371e047c6bc5dc6c78ba')
+            '16e9cd48fc8a62ce0cdf5dbf1f56e8963dedec99e3f14a9d4f49bdc0ab0849d35cd1d8aedd42084d563f932028ba152830cf3c5122a403450813ac98e768abc1'
+            '2ebb0e9b37ea6445d71ab783ca180def1125ec76bff685cce31705360f32fd26d205ba95e232848663bd1c1d927873985d3658105588feb7f09aec0180b6e3a7')
 
 pkgver() {
   cd mozilla-unified
@@ -168,6 +172,20 @@ fi
   # Remove some pre-installed addons that might be questionable
   patch -Np1 -i ${_patches_dir}/remove_addons.patch
 
+  # Disable (some) megabar functionality
+  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
+  patch -Np1 -i ${_patches_dir}/removed-patches/megabar.patch
+
+  # Debian patch to enable global menubar
+  # disabled for the default build, as it seems to cause issues in some configurations
+  # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
+  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
+
+  # KDE menu
+  # patch -Np1 -i ${_patches_dir}/mozilla-kde.patch
+  # custom patch that does not conflict with the unity patch
+  patch -Np1 -i ${_patches_dir}/mozilla-kde_after_unity.patch
+
   # Disabling Pocket
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
@@ -175,7 +193,8 @@ fi
   patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
 
   # Remove Internal Plugin Certificates
-  #patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
+  # patch -Np1 -i ${_patches_dir}/sed-patches/remove-internal-plugin-certs.patch
+  # => breaks profiled builds since 90.0, it seems
 
   # allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
@@ -187,31 +206,37 @@ fi
 
   # Assorted patches
   patch -Np1 -i ${_patches_dir}/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/browser-confvars.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
   # allow overriding the color scheme light/dark preference with RFP
-  patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
+  # deprecated, will probably be dropped soon
+  # patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
 
   # fix an URL in 'about' dialog
-  patch -Np1 -i ${_patches_dir}/about-dialog.patch
+  # patch -Np1 -i ${_patches_dir}/about-dialog.patch
 
   # change some hardcoded directory strings that could lead to unnecessarily
   # created directories
   patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
 
+  # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
+  # should not break things, buuuuuuuuuut we'll see.
+  patch -Np1 -i ${_patches_dir}/dbus_name.patch
+
   # allow uBlockOrigin to run in private mode by default, without user intervention.
   patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
 
-  # ui patches
+  # add custom uBO assets (on first launch only)
+  patch -Np1 -i ${_patches_dir}/custom-ubo-assets-bootstrap-location.patch
 
-  # show a warning saying that changing language is not allowed through the UI,
-  # and that it requires to visit our FAQ, instead of telling the user to check his connection.
-  patch -Np1 -i ${_patches_dir}/ui-patches/add-language-warning.patch
+  # ui patches
 
   # remove references to firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
   patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
+
+  #
+  patch -Np1 -i ${_patches_dir}/ui-patches/hide-safe-browsing.patch
 
   # remove firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
@@ -228,7 +253,13 @@ fi
   # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
-  rm -f ${srcdir}/librewolf-common/source_files/mozconfig
+  # pref pane
+  patch -Np1 -i ${_patches_dir}/librewolf-pref-pane.patch
+
+  # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
+  patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
+
+  rm -f ${srcdir}/librewolf-common/source_files/mozconfig # what was this for? TODO
   cp -r ${srcdir}/librewolf-common/source_files/browser ./
 }
 
@@ -265,33 +296,33 @@ END
 
 fi
 
-#  ./mach build
+  ./mach build
 
-#  echo "Profiling instrumented browser..."
-#  ./mach package
-#  LLVM_PROFDATA=llvm-profdata \
-#    JARLOG_FILE="$PWD/jarlog" \
-#    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
-#    ./mach python build/pgo/profileserver.py
+  echo "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata \
+    JARLOG_FILE="$PWD/jarlog" \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+    ./mach python build/pgo/profileserver.py
 
-#  stat -c "Profile data found (%s bytes)" merged.profdata
-#  test -s merged.profdata
+  stat -c "Profile data found (%s bytes)" merged.profdata
+  test -s merged.profdata
 
-#  stat -c "Jar log found (%s bytes)" jarlog
-#  test -s jarlog
+  stat -c "Jar log found (%s bytes)" jarlog
+  test -s jarlog
 
-#  echo "Removing instrumented browser..."
-#  ./mach clobber
+  echo "Removing instrumented browser..."
+  ./mach clobber
 
-#  echo "Building optimized browser..."
+  echo "Building optimized browser..."
 
 if [[ $CARCH == 'aarch64' ]]; then
 
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto
-#ac_add_options --enable-profile-use
-#ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-#ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 END
 
@@ -299,9 +330,9 @@ else
 
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
-#ac_add_options --enable-profile-use=cross
-#ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-#ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+ac_add_options --enable-profile-use=cross
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
 ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
@@ -358,7 +389,9 @@ END
     install -Dm644 browser/branding/${_pkgname}/default$i.png \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  install -Dm644 browser/branding/${_pkgname}/content/about-logo.png \
+  #install -Dm644 browser/branding/${_pkgname}/content/about-logo.png \
+  #  "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
+  install -Dm644 ${srcdir}/default192x192.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
 
   # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
