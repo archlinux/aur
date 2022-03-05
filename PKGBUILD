@@ -4,8 +4,8 @@
 # Contributor: N30N <archlinux@alunamation.com>
 
 pkgname=lightzone
-pkgver=4.2.3
-pkgrel=3
+pkgver=4.2.4
+pkgrel=1
 pkgdesc="Open-source professional-level digital darkroom software"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
@@ -13,7 +13,6 @@ arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
 depends=('java-runtime>11'
-    'java-openjfx>11'
     'javahelp2'
     'lcms2'
     'lensfun'
@@ -35,7 +34,7 @@ makedepends=('java-environment>11'
     'libtiff')
 
 source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
-md5sums=('fde0d532e943cb08bc69640e82de8a65')
+md5sums=('b1d18105ca726aadb0fe223242587b46')
 
 build() {
   if [ -d /usr/lib/jvm/java-17-openjdk ]; then
@@ -50,7 +49,7 @@ build() {
   MAKEFLAGS="-j1"
 
   cd "${srcdir}/LightZone-${pkgver}/"
-  sed -i 's|http://repo2|https://repo1|' lightcrafts/build.xml
+  # sed -i 's|http://repo2|https://repo1|' lightcrafts/build.xml
   ant -f linux/build.xml jar
 }
 
