@@ -1,0 +1,22 @@
+pkgbase = irpf-2020
+	pkgdesc = Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF) 2020
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	depends = sh
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020-2.2.zip
+	source = copyright
+	source = irpf-2020
+	source = irpf-2020.desktop
+	source = irpf-2020.png
+	md5sums = 20e577535cdf8213508eb2fdbd2530f8
+	md5sums = 4671623c2cff2dc938615e2af44d13aa
+	md5sums = d1d1d5117fee890623bc9900f80d7a05
+	md5sums = 4b3d640b804e0cf15526b5a64f8da315
+	md5sums = 43d8c9617118578f03b2c4eeb1c72c57
+
+pkgname = irpf-2020
