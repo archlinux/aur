@@ -4,7 +4,7 @@
 pkgname=scratch3-bin
 _pkgname=scratch3
 conflicts=("scratch3")
-pkgver=3.28.0
+pkgver=3.29.1
 pkgrel=1
 pkgdesc="Scratch 3.0 as a self-contained desktop application"
 arch=("x86_64" "i686" "aarch64" "arm7h")
@@ -19,7 +19,7 @@ source=("https://downloads.scratch.mit.edu/desktop/Scratch%20$pkgver%20Setup.exe
         "${_pkgname}-icons.tar.gz"
         "${_pkgname}.xml")
 noextract=("Scratch%20$pkgver%20Setup.exe")
-sha256sums=('03037e3e4c5227c496dfc9d905e59bb3308c8ce82aec11d545cdd75145da18a2'
+sha256sums=('dfca2f1a842aea69a2b0a22ca66fa7852f86259e3da4f576f8ae7fa16f1e9134'
             '8d7c41e0bba6db4070714002851a5d16edc08f3918ed8badb510b4ce9246da8f'
             '0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da'
             '1445107a18b05cee3db8d6cd59e57b9a0468f70d9aceffefd0a1f24196f8b2da'
@@ -36,18 +36,18 @@ prepare() {
 # Copy the electron files needed for scratch and rename the executable
   cp -rf /usr/lib/electron13/* $srcdir/$pkgname/
   mv $pkgname/electron $pkgname/$_pkgname
-  
+
 # All license files in one place
   mv $pkgname/LICENSE LICENSE-electron
   mv $pkgname/LICENSES.chromium.html LICENSES.chromium.html
-  
+
 # This file is useless
   rm $pkgname/resources/default_app.asar
 
 # We don't need, if any, windows/dos file executables, remove them.
   find $srcdir/$pkgname/ -type f -name "*.exe" -delete
   find $srcdir/$pkgname/ -type f -name "*.dll" -delete
-  
+
 # Hack to make scratch3 work with electron > 11 (Credit: unphysicalix)
   tmpdir=$(mktemp -d -p ${srcdir})
   asar extract ${srcdir}/$pkgname/resources/app.asar $tmpdir
@@ -59,7 +59,7 @@ prepare() {
 package() {
   install -dm755 ${pkgdir}/usr/bin
   ln -sf /opt/${pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
-  
+
   install -Dm644 "${_pkgname}.desktop" $pkgdir/usr/share/applications/${_pkgname}.desktop
   install -Dm644 "ScratchDesktop.svg" $pkgdir/usr/share/icons/hicolor/scalable/apps/${_pkgname}.svg
   install -Dm644 "cathead.svg" $pkgdir/usr/share/icons/hicolor/scalable/mimetypes/x-scratch3-sprite.svg
