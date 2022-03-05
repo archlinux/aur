@@ -3,7 +3,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=rocm-opencl-runtime
-pkgver=5.0.1
+pkgver=5.0.2
 pkgrel=1
 pkgdesc='Radeon Open Compute - OpenCL runtime'
 arch=('x86_64')
@@ -16,8 +16,8 @@ conflicts=('opencl-amdgpu-pro-pal')
 _rocclr='https://github.com/ROCm-Developer-Tools/ROCclr'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
         "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz")
-sha256sums=('948bd36e212ce3015540aebc5c8a1741ba7f0a8d5b0d52aba2178bbb202cff84'
-            'f7e0fdedf50b1b1378708ce02afd6194dd5df94611dec20e9a5aab95751b3959')
+sha256sums=('3edb1992ba28b4a7f82dd66fbd121f62bd859c1afb7ceb47fa856bd68feedc95'
+            '34decd84652268dde865f38e66f8fb4750a08c2457fea52ad962bced82a03e5e')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 _rocclr_dir="$(basename "$_rocclr")-$(basename "${source[1]}" .tar.gz)"
 
