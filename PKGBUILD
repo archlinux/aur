@@ -2,8 +2,8 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 _base=NiaPy
 pkgname=python-${_base,,}
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Python microframework for building nature-inspired algorithms"
 url="https://${_base}.org"
 arch=(any)
@@ -11,12 +11,7 @@ license=(MIT)
 depends=(python-pandas python-matplotlib python-openpyxl)
 checkdepends=(python-pytest)
 source=(https://github.com/NiaOrg/${_base}/archive/${pkgver}.tar.gz)
-sha512sums=('77e8d16fd02671154605b21e4d32225ded0d53bd8e809d4f99d6449db33a915d669bb7c864935251c7842bfd8d0c20d30d77f2a8b538e03d104691f90553f034')
-
-prepare() {
-  # https://github.com/NiaOrg/NiaPy/issues/371
-  sed -i '/^    description/,+2d' "${_base}-${pkgver}/setup.py"
-}
+sha512sums=('7c2233e24bfeebad277f44897bc4763d55de514693f84bfcc06b325f6b7adb06e8a7668df58e9a6c2350a51f6d8145afff5081841e8f9c5f1d0dc38be4e96653')
 
 build() {
   cd ${_base}-${pkgver}
@@ -26,7 +21,7 @@ build() {
 
 check() {
   cd ${_base}-${pkgver}
-  python -m pytest -k 'not problem_functions'
+  python -m pytest
 }
 
 package() {
