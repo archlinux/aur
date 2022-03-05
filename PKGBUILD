@@ -4,11 +4,11 @@
 pkgname=dantalian-rs
 _realname="${pkgname%-rs}"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A nfo file generator for your anime. Source from Bangumi."
 url="https://github.com/nanozuki/dantalian"
 makedepends=('cargo')
-depends=('openssl')
+depends=('openssl' 'gcc-libs')
 arch=('i686' 'x86_64')
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nanozuki/$_realname/archive/v$pkgver.tar.gz")

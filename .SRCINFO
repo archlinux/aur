@@ -1,13 +1,14 @@
 pkgbase = dantalian-rs
 	pkgdesc = A nfo file generator for your anime. Source from Bangumi.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nanozuki/dantalian
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = openssl
+	depends = gcc-libs
 	source = dantalian-rs-0.4.1.tar.gz::https://github.com/nanozuki/dantalian/archive/v0.4.1.tar.gz
 	sha512sums = 17abac2a428c75b5d84851df0ee3e581956270eb58042688e067e186ae507e724143a97afa85b66c566668282160888310d7e12ecae1e26c444617bc03c7734b
 
