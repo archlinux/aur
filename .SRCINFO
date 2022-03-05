@@ -1,0 +1,19 @@
+pkgbase = issie
+	pkgdesc = Digital electronics schematic editor and simulator
+	pkgver = 2.4.5
+	pkgrel = 1
+	url = https://github.com/tomcl/ISSIE
+	arch = x86_64
+	arch = arm64
+	license = GPL3
+	makedepends = nodejs-lts-fermium
+	makedepends = npm
+	makedepends = dotnet-sdk
+	depends = hicolor-icon-theme
+	depends = zlib
+	source = issie-2.4.5.tar.gz::https://github.com/tomcl/issie/archive/refs/tags/v2.4.5.tar.gz
+	source = issie.desktop
+	sha256sums = ef90bdacd653dc0cc5e0e28b5789dce2bb08af943b668ab2d6304b2209f1a23c
+	sha256sums = 047d4635c7ada3742f76cae84b4a85892c39005c74e309ceebc0e80c325b3d3b
+
+pkgname = issie
