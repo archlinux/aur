@@ -2,3 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
+!wob.service
+!wob.socket
