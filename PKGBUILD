@@ -11,7 +11,7 @@ sha256sums=('0f349db737f375c42f0ce0fda05d3a5627fb1627d7422c5fc84680ec9a936dfd')
 
 build() {
   cd ${srcdir}/${pkgname}
-  make
+  make kg
 }
 
 check() {
