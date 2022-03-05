@@ -1,7 +1,7 @@
 # Maintainer: Matthew Gamble <git@matthewgamble.net>
 
 pkgname=drawio
-pkgver=16.4.5
+pkgver=16.6.6
 pkgrel=1
 pkgdesc="Diagram drawing application built on web technology"
 arch=("any")
@@ -9,7 +9,7 @@ url="https://github.com/jgraph/drawio"
 license=("Apache")
 options=(!strip)
 source=("draw-${pkgver}.war::https://github.com/jgraph/drawio/releases/download/v${pkgver}/draw.war")
-sha256sums=("c42e2ba131dcc8b2bb2bf521a18f873ac6d22d02ce94b26e7571102d82780800")
+sha256sums=("bad6e2d9b989f947e8a7c87f7ca9394a7ba1b26ee4e1c3d552e70fb3a01c2c49")
 
 prepare() {
     rm -rf META-INF WEB-INF
