@@ -2,7 +2,7 @@
 # Maintainer: Martin Franc <me@martinfranc.eu>
 
 pkgname=wob-git
-pkgver=0.12
+pkgver=0.13
 pkgrel=1
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64')
@@ -31,5 +31,7 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 wob/contrib/systemd/wob.service -t "$pkgdir/usr/lib/systemd/user"
+  install -Dm644 wob/contrib/systemd/wob.socket  -t "$pkgdir/usr/lib/systemd/user"
   install -Dm644 wob/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
