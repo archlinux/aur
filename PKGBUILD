@@ -13,7 +13,7 @@ options=('!strip')
 source=(
     "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-linux-x86_64"
 )
-noextract=("bazel_nojdk-${pkgver}-linux-x86_64")
+noextract=("bazel-${pkgver}-linux-x86_64")
 sha256sums=(
     "605118766dbe07d04f4f15a809b231247eef3f302c431dcb712a514244662a47d3eb784add3b20d69d415954f7a95f9988215560911079289170a383343398d1"
 )
