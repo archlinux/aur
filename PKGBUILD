@@ -1,27 +1,23 @@
-# Maintainer: codestation <codestation404@gmail.com>
+# Maintainer : silverhikari <kerrickethan@gmail.com>
+# Contributor: codestation <codestation404@gmail.com>
 
 pkgname=qcma
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Content Manager Assistant for the PS Vita"
 arch=("i686" "x86_64")
 url="https://github.com/codestation/qcma"
 license=('GPL')
 makedepends=('qt5-tools')
-depends=('qt5-base' 'libvitamtp>=2.5.9' 'ffmpeg' 'libnotify')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${pkgname}/archive/v${pkgver}.tar.gz" "qcma-avdecoder.patch")
-sha256sums=('f107b6cfd69f7346cd1e7a1f125f866f12d1e1a63a22f44981043f58d8811f80' '1a8acfe28c5bb1ead66805da76b09d28cf858ea55858ccc5e6362b1c053fd9d9')
-
-prepare() {
-   cd $pkgname-$pkgver
-   patch -Np1 -i "${srcdir}/qcma-avdecoder.patch"
-}
+depends=('qt5-base' 'libvitamtp>=2.5.9' 'libnotify')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codestation/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('f107b6cfd69f7346cd1e7a1f125f866f12d1e1a63a22f44981043f58d8811f80')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   lrelease-qt5 common/resources/translations/*.ts
-  qmake-qt5 qcma.pro PREFIX="/usr"
+  qmake-qt5 qcma.pro PREFIX="/usr" CONFIG+=DISABLE_FFMPEG
   make
 }
 
