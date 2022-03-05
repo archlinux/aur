@@ -1,13 +1,10 @@
 pkgbase = python-bleak
 	pkgdesc = Bluetooth Low Energy platform Agnostic Klient for Python
 	pkgver = 0.14.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hbldh/bleak
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-pytest-cov
-	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
 	makedepends = bluez-utils
 	depends = python
