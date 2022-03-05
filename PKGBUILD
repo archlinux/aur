@@ -1,7 +1,7 @@
 # Maintainer: goetzc
 # Maintainer: Kim Scarborough <sluggo@unknown.nu>
 pkgname=cantata-git
-pkgver=2.3.3.r35.g4c1b8fd49
+pkgver=2.5.0.r7590.af04723c0
 pkgrel=1
 pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -15,15 +15,16 @@ depends=(qt5-multimedia
          media-player-info
          mpg123
          taglib-extras
-         udisks2)
+         udisks2
+         )
 optdepends=('perl-uri: Dynamic playlist'
             'mpd: Playback'
-            'ffmpeg: ReplayGain support')
+            'ffmpeg: ReplayGain support'
+            )
 makedepends=(git cmake qt5-tools ffmpeg)
 conflicts=(cantata)
 provides=(cantata)
 source=("$pkgname::git+https://github.com/CDrummond/cantata.git")
-sha1sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
@@ -50,3 +51,5 @@ package() {
     cd build
     make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
+
+sha256sums=('SKIP')
