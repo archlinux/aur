@@ -2,17 +2,18 @@
 
 _pkgname=meteo-qt
 pkgname=$_pkgname-git
-pkgver=0.8.1.13.g886e154
+pkgver=3.1.10.g0a83f51
 pkgrel=1
 pkgdesc='System tray application for weather status information'
 arch=('any')
 url='https://github.com/dglent/meteo-qt'
 license=('GPL3')
-depends=('libxkbcommon-x11' 'python-lxml' 'python-pyqt5' 'python-sip' 'python-urllib3')
-makedepends=('python' 'qt5-tools')
+depends=('python-lxml' 'python-pyqt5' 'python-sip4' 'python-urllib3')
+makedepends=('git' 'qt5-tools')
+optdepends=('qt5-translations: translations of some native UI components')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git+https://github.com/dglent/meteo-qt.git')
+source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -24,3 +25,4 @@ package() {
   cd $_pkgname
   python setup.py install --root $pkgdir
 }
+
