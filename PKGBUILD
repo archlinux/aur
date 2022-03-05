@@ -12,9 +12,6 @@ conflicts=('bazel')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
         "https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig")
-sha512sums=('d7f40d0cac95a06cea6cb5b7f7769085257caebc3ee84269dd9298da760d5615'
-            'SKIP')
-validpgpkeys=('71A1D0EFCFEB6281FD0437C93D5919B448457EE0')
 
 build() {
   curl -L https://github.com/ll-h/bazel/commit/c814c1f908801795b99e19c5abc3d29213710a2e.patch|patch -p1

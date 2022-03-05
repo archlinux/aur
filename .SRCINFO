@@ -8,7 +8,7 @@ pkgbase = bazel31
 	makedepends = git
 	makedepends = protobuf
 	makedepends = python
-	depends = java-environment=11
+	depends = java-environment=8
 	depends = libarchive
 	depends = zip
 	depends = unzip
@@ -18,9 +18,6 @@ pkgbase = bazel31
 	options = !strip
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-dist.zip
 	source = https://github.com/bazelbuild/bazel/releases/download/3.1.0/bazel-3.1.0-dist.zip.sig
-	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
-	sha512sums = d7f40d0cac95a06cea6cb5b7f7769085257caebc3ee84269dd9298da760d5615
-	sha512sums = SKIP
 
 pkgname = bazel31
 
