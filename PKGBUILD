@@ -1,33 +1,27 @@
-# Maintainer: monkeyballs <mydick@cunny.com>
 
-pkgname="satania-buddy-git"
-_pkgname="sataniabuddy"
-pkgver=r68.ade3a6f
-pkgrel=1
-pkgdesc="Virtual Satania Desktop Assistant"
-arch=("x86_64" "i686")
-url="https://git.cianig.ga/monkeyballs/sataniabuddy"
-license=('AGPL')
-depends=("openmotif" "cairo" "xorg-server")
-makedepends=("git" "make" "gcc")
-provides=("satania-buddy")
-conflicts=("satania-buddy")
-options=()
-source=(git+https://git.cianig.ga/monkeyballs/sataniabuddy)
-md5sums=('SKIP')
-prepare() {
-	cd "$srcdir"/"$_pkgname"
-	sed -i "s/AssetDirectory = \"\/usr\/local\/share\/satania\/assets\"/AssetDirectory = \"\/usr\/share\/satania\/assets\"/" main.c
-}
-build() {
-	cd "$srcdir"/"$_pkgname"
-	make
-}
-pkgver() {
-	cd "$srcdir"/"$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-package() {
-	cd "$srcdir"/"$_pkgname"
-	make PREFIX="$pkgdir/usr" install
+pkgname='manga-cli-notprash-git'                                                                 
+_pkgname='manga-cli'                                                                             
+pkgver=r43.6f90d80                                                                           
+pkgrel=1                                                                                         
+pkgdesc="Script to read manga from cli."                                                         
+arch=('any')                                                                                     
+url="https://github.com/notprash/manga-cli.git"                                                  
+license=('MIT')                                                                                  
+depends=('curl' 'zathura' 'zathura-cb' 'pup')                                                    
+makedepends=('git')                                                                              
+optdepends=('zathura-pdf-poppler: view manga file as pdf' 'imagemagick: converting files to pdf')
+provides=('manga-cli-notprash-git')                                                                           
+source=("git+$url")                                                                              
+md5sums=('SKIP')                                                                                 
+                                                                                                 
+                                                                                                 
+pkgver() {                                                                                       
+    cd "$srcdir/${_pkgname}"                                                                     
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"           
+}                                                                                                
+                                                                                                 
+                                                                                                 
+package() {                                                                                      
+    cd "$srcdir/$_pkgname"                                                                       
+	install -Dm755 ./manga-cli "$pkgdir/usr/bin/manga-cli"
 }
