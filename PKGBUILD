@@ -2,7 +2,7 @@
 
 _pkgname=ddstats-rust
 pkgname=${_pkgname}-bin
-pkgver=1
+pkgver=3
 pkgrel=1
 source=("https://github.com/lsaa/ddstats-rust/releases/download/v0.6.10-180/ddstats-rust-linux-x86_64.zip")
 arch=('x86_64')
