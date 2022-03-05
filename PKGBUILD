@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bibtool
-pkgver=2.69
-pkgrel=1
+pkgver=2.68
+pkgrel=4
 pkgdesc="Command line manipulation of BibTeX files."
 arch=('i686' 'x86_64')
 url="http://www.gerd-neugebauer.de/software/TeX/BibTool/en/"
