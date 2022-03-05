@@ -5,7 +5,7 @@
 # Contributor: wahnby <wahnby AT yahoo DOT fr>
 
 pkgname='gnunet'
-pkgver='0.16.0'
+pkgver='0.16.1'
 pkgrel=1
 pkgdesc='A framework for secure peer-to-peer networking'
 arch=('i686' 'x86_64')
@@ -35,7 +35,6 @@ optdepends=('bluez: for bluetooth transport'
             'zbar: for reading/writing QR codes using gnunet-qr')
 backup=("etc/${pkgname}.conf")
 source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
-        "get_version.sh"
         "${pkgname}-system.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles"
@@ -44,9 +43,8 @@ source=("ftp://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.gz"{,.sig}
         "${pkgname}-user.service")
 install="${pkgname}.install"
 validpgpkeys=('3D11063C10F98D14BD24D1470B0998EF86F59B6A')
-sha256sums=('d32da6f13ff1cd8670525719ea0f79e9f76d2de7f6069860e0a77fc69a360068'
+sha256sums=('df8026dd0b1c285ebc57e820e6b29e87c3d0f210bb0899f6b5317261f8e01c5c'
             'SKIP'
-            '8e8ee2d80c42aeabbd515e5b7bc9f0d199a7e6f46ef8a97e1e23313b44f74e4c'
             '163818b89beddcaf78937daba5bdf0ae060b2975de0731aa13d1ccdd813cf262'
             '66299dbbdd0219d2f5f0520e69fc094f38f789724d973c2f63a421257ea4f755'
             '5c34e1ecc6208900426f8e399e8c3edbef12cce19eba605fd7364ddb3547d9f0'
@@ -54,14 +52,11 @@ sha256sums=('d32da6f13ff1cd8670525719ea0f79e9f76d2de7f6069860e0a77fc69a360068'
             '3f17b9ed2c1f8cc0f919fe477df99678c17778a31f1eeb56517e285e3cef30f2'
             '60caee20b53bcc69522556b35ac3d35d89e28c49b9a22a2ed5121df4a2c33be5')
 
-
 prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	export GNUNET_PREFIX='/usr/lib'
-	cp "${srcdir}/get_version.sh" "${srcdir}/${pkgname}-${pkgver}/contrib/get_version.sh"
-	chmod +x "${srcdir}/${pkgname}-${pkgver}/contrib/get_version.sh"
 	autoreconf -i
 
 }
@@ -72,7 +67,6 @@ build() {
 
 	./configure --prefix='/usr' --enable-experimental
 	make
-	make -C contrib
 
 }
 
@@ -81,7 +75,6 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
-	make DESTDIR="${pkgdir}" -C contrib install
 
 	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	install -Dm644 "${srcdir}/${pkgname}-system.service" \
@@ -123,4 +116,3 @@ package() {
 	} > "${pkgdir}/etc/${pkgname}.conf"
 
 }
-
