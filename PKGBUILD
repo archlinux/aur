@@ -2,8 +2,8 @@
 # Co-Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.5.r31.ga7459de
-pkgrel=2
+pkgver=2.5.r58.g15ccd24
+pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
@@ -17,19 +17,12 @@ optdepends=('texlive-latexextra: for the pdftex module'
             'mathjax: for formula preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://gitlab.gnome.org/World/apostrophe.git'
-        "${pkgname%-git}.patch")
-sha256sums=('SKIP'
-            '6471631544fd666074ade2aec0e15c48a09735f8305ce64e8ba5091b28c20039')
+source=('git+https://gitlab.gnome.org/World/apostrophe.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/${pkgname%-git}"
-  patch -Np1 -i "$srcdir/${pkgname%-git}.patch"
 }
 
 build() {

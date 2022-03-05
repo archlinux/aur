@@ -1,7 +1,7 @@
 pkgbase = apostrophe-git
 	pkgdesc = A distraction free Markdown editor for GNU/Linux made with GTK+
-	pkgver = 2.5.r31.ga7459de
-	pkgrel = 2
+	pkgver = 2.5.r58.g15ccd24
+	pkgrel = 1
 	url = https://world.pages.gitlab.gnome.org/apostrophe
 	arch = any
 	license = GPL3
@@ -25,8 +25,6 @@ pkgbase = apostrophe-git
 	provides = apostrophe
 	conflicts = apostrophe
 	source = git+https://gitlab.gnome.org/World/apostrophe.git
-	source = apostrophe.patch
 	sha256sums = SKIP
-	sha256sums = 6471631544fd666074ade2aec0e15c48a09735f8305ce64e8ba5091b28c20039
 
 pkgname = apostrophe-git
