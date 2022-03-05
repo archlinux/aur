@@ -4,7 +4,7 @@ pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
 pkgver=v7.1
 _gittag=v7.1-rc
-pkgrel=2
+pkgrel=3
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 arch=("any")
@@ -33,7 +33,7 @@ build() {
 
 package() { 
   mkdir -p "${pkgdir}/usr/share/"
-  cp -r "${srcdir}/${_gitname}/Release/" "${pkgdir}/usr/share/${pkgname}"
+  cp -r "${srcdir}/${_gitname}/artifacts/linux-x64/" "${pkgdir}/usr/share/${pkgname}"
   mkdir -p "${pkgdir}/usr/bin/"
   ln -s "/usr/share/${pkgname}/ILSpy" "${pkgdir}/usr/bin/${pkgname}"
 
