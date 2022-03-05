@@ -5,7 +5,7 @@
 
 pkgname=systemd-readahead
 pkgver=216
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Standalone version of the fast built-in readahead implementation dropped in systemd 217"
 arch=('i686' 'x86_64')

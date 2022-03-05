@@ -1,7 +1,7 @@
 pkgbase = systemd-readahead
 	pkgdesc = Standalone version of the fast built-in readahead implementation dropped in systemd 217
 	pkgver = 216
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dev.gentoo.org/~pacho/systemd-readahead.html
 	install = systemd-readahead.install
 	arch = i686

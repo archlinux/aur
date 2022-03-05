@@ -8,7 +8,7 @@ post_install()
     echo -e "\e[7m>> \e[3msystemctl enable systemd-readahead-replay\e[0m"
     echo ""
     echo -e "For more info use \e[3mman\e[0m or just take a look to the original help page:"
-    echo -e "<\e[4mhttp://www.freedesktop.org/software/systemd/man/systemd-readahead.html\e[0m>"
+    echo -e "<\e[4mhttps://web.archive.org/web/20140719150344id_/http://www.freedesktop.org/software/systemd/man/systemd-readahead.html\e[0m>"
     echo ""
 }
 
