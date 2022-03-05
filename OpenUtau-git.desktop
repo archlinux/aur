@@ -5,4 +5,4 @@ Type=Application
 Exec=openutau 
 Name=OpenUtau 
 Icon=/usr/share/pixmaps/openutau.svg 
-Categories=Multimedia 
+Categories=Multimedia;

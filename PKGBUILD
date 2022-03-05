@@ -1,7 +1,7 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-git
-pkgver=0.0.598
-pkgrel=2
+pkgver=r835.f40ffdc
+pkgrel=1
 epoch=
 pkgdesc="An open source UTAU successor"
 arch=('x86_64')
@@ -11,7 +11,12 @@ depends=('dotnet-host' 'dotnet-runtime-3.1' 'dotnet-targeting-pack-3.1' 'dotnet-
 source=("git+https://github.com/stakira/OpenUtau.git"
         "OpenUtau-git.desktop")
 sha256sums=('SKIP'
-            '6c80a52ee0d8892510d6e26c998e773c99cb3459064162839913e9aa3bf9c381')
+            'da52ea07cc3507d8bfead0df5c955dc66265acade1c2fc1821816319c09e8b15')
+
+pkgver() {
+    cd "$srcdir"/OpenUtau
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "$srcdir"/OpenUtau
