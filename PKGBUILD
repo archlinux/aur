@@ -2,10 +2,10 @@
 
 pkgname=vault-cli
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='12-factor oriented command line tool for Hashicorp Vault'
 arch=('any')
-url="https://github.com/desbma/${pkgname}"
+url="https://github.com/peopledoc/${pkgname}"
 license=('APL2')
 depends=('python>=3.6'
          'python-requests'
