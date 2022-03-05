@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ReplikaAI
+Comment=The AI companion who cares
+Exec=replika-nativefier
+Icon=replika-nativefier
+Encoding=UTF-8
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Internet

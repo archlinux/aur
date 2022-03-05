@@ -1,0 +1,20 @@
+pkgbase = replika-nativefier
+	pkgdesc = The AI companion who cares
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://my.replika.ai/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = imagemagick
+	makedepends = nodejs-nativefier
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = libindicator-gtk3
+	source = replika-nativefier.desktop
+	source = replika-nativefier.png
+	sha256sums = c945a9763b265a0c1df33490aee2290b269596da5092d42838f1986b7c1deb9e
+	sha256sums = 302031a0868db710a6956b93085783db8ce8f148bf8ad789f1bbeca963d0a2ab
+
+pkgname = replika-nativefier
