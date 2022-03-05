@@ -7,7 +7,7 @@
 _pkgname=audacious-plugins
 pkgname=$_pkgname-gtk3
 pkgver=4.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
 url="https://audacious-media-player.org/"
@@ -25,14 +25,15 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
+
+  # Fix build with FFmpeg 5.0
+  git cherry-pick -n f60beb400eeb1e4778bbfd738bc4a4ccef3de539
+
   autoreconf -I m4
 }
 
 build() {
   cd "$_pkgname"
-
-  # Work around build failure due to FFmpeg 5.0 APIs returning const pointers
-  CXXFLAGS+=' -fpermissive'
 
   ./configure \
     --prefix=/usr \

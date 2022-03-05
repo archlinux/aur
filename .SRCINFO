@@ -1,7 +1,7 @@
 pkgbase = audacious-plugins-gtk3
 	pkgdesc = Plugins for Audacious
 	pkgver = 4.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://audacious-media-player.org/
 	arch = i686
 	arch = x86_64
