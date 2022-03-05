@@ -1,45 +1,71 @@
-# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
-_pkgname=cheese
-pkgname=$_pkgname-git
-pkgver=3.38.0+17+gf5553f7d
+_pkgbase=cheese
+pkgbase=$_pkgbase-git
+pkgname=($_pkgbase-git lib$_pkgbase-git)
+pkgver=41.1+r5+gddee436d
 pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
-arch=(any)
+arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
          libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
 makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
 checkdepends=(xorg-server-xvfb)
-provides=($_pkgname)
-conflicts=($_pkgname)
-groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/cheese.git")
+source=("git+https://gitlab.gnome.org/GNOME/${_pkgbase}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgname
-  #git tag -f 3.34.0 61ff7a2c26b618cb24be7ca3c050530671055602  # Fixup missing tag
+  cd "${_pkgbase}"
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
-  arch-meson $_pkgname build -D tests=true
-  ninja -C build
+  arch-meson "${_pkgbase}" build -D tests=true
+  meson compile -C build
 }
 
 check() (
-  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/$_pkgname/data}"
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/cheese/data}"
   export GSETTINGS_SCHEMA_DIR
 
-  xvfb-run meson test -C build --print-errorlogs
+  dbus-run-session xvfb-run -s '-nolisten local' \
+    meson test -C build --print-errorlogs
 )
 
-package() {
-  DESTDIR="$pkgdir" meson install -C build
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
+
+package_cheese-git() {
+  depends+=("libcheese=$pkgver-$pkgrel")
+  provides=("${_pkgbase}")
+  groups=(gnome)
+
+  meson install -C build --destdir "$pkgdir"
+
+  cd "$pkgdir"
+
+  _pick libs usr/include
+  _pick libs usr/lib/{girepository-1.0,libcheese*,pkgconfig}
+  _pick libs usr/share/{gir-1.0,glib-2.0/schemas,gtk-doc}
+}
+
+package_libcheese-git() {
+  pkgdesc="Webcam widget for Clutter and GTK"
+  depends=(clutter clutter-gtk clutter-gst gdk-pixbuf2 glib2 gtk3 libcanberra
+           gstreamer gst-plugins-base-libs gst-plugins-bad-libs)
+  provides=(libcheese.so libcheese-gtk.so libcheese)
+  mv libs/* "$pkgdir"
+}
+
+# vim:set sw=2 et:
