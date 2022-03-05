@@ -1,7 +1,7 @@
 # Maintainer: Mohd Lee <faulty.lee+aur@gmail.com>
 # Contributor: Ricardo Band <email@ricardo.band>
 pkgname=storageexplorer
-pkgver=1.22.1
+pkgver=1.23.0
 pkgrel=1
 pkgdesc="Microsoft Azure Storage Explorer is a standalone app from Microsoft that allows you to easily work with Azure Storage data on Windows, macOS and Linux."
 arch=(x86_64)
@@ -12,13 +12,14 @@ provides=('storageexplorer')
 changelog=
 source=("Linux.StorageExplorer-linux-x64-v$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v$pkgver/Linux_StorageExplorer-linux-x64.tar.gz"
         "storageexplorer.desktop")
-sha256sums=('50c7e26e08bfb86913669ce2b38197b809d0e7adf5d72d6edf6642aab051b23c'
+sha256sums=('d93a4a51649a6fa0d38823215de304564590c681ebf619aaff8bb2de7e7fa86e'
             '0cc2d608894c17d8b3e76f7dd98d73314447d4435a7378d944d4c6ea948d0bf4')
 
 package() {
     install -dm 755 "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "chrome_100_percent.pak" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "chrome_200_percent.pak" "${pkgdir}/opt/StorageExplorer/"
+    install -m 755 "chrome_crashpad_handler" "${pkgdir}/opt/StorageExplorer/"
     install -m 755 "chrome-sandbox" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "icudtl.dat" "${pkgdir}/opt/StorageExplorer/"
     install -m 644 "libEGL.so" "${pkgdir}/opt/StorageExplorer/"
