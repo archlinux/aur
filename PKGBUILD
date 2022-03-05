@@ -5,14 +5,14 @@
 
 _pkgname=gnome-bluetooth
 pkgname=$_pkgname-git
-pkgver=42.alpha+2+g65004396
+pkgver=42.beta.2+10+g35a0c4c8
 pkgrel=1
 pkgdesc="The GNOME Bluetooth Subsystem"
 url="https://wiki.gnome.org/Projects/GnomeBluetooth"
-arch=(x86_64)
+arch=(i686 pentium4 x86_64)
 license=(GPL LGPL)
 depends=(gtk3
-         libadwaita
+         libadwaita-git
          libnotify
          bluez
          libcanberra
@@ -39,7 +39,7 @@ prepare() {
 }
 
 build() {
-  arch-meson $_pkgname build -D gtk_doc=true -D icon_update=false
+  arch-meson $_pkgname build -D gtk_doc=true
   meson compile -C build
 }
 
