@@ -1,52 +1,61 @@
-# Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
-pkgname=gnome-control-center-git
-pkgver=3.35.91+3+ga80bbdf1a
-pkgrel=2
+_pkgname=gnome-control-center
+pkgname=$_pkgname-git
+pkgver=42.beta1+82+ga080e5c45
+pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
 license=(GPL2)
-arch=(x86_64)
+arch=(i686 pentium4 x86_64)
 provides=(gnome-control-center)
-conflicts=(gnome-control-center)
-depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
+depends=(accountsservice cups-pk-helper gnome-bluetooth-git gnome-desktop-git
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas-git gtk3
-         libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
-         gnome-color-manager smbclient libmm-glib libgnomekbd grilo clutter-gtk libibus
-         cheese-git libgudev bolt)
+         libgtop libnma-git nm-connection-editor sound-theme-freedesktop upower libpwquality
+         gnome-color-manager smbclient libmm-glib libgnomekbd libibus libcheese-git
+         libgudev bolt udisks2 libhandy gsound colord-gtk4)
 makedepends=(docbook-xsl modemmanager git python meson)
+checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
 optdepends=('system-config-printer: Printer settings'
-            'gnome-user-share: Bluetooth and WebDAV file sharing'
+            'gnome-user-share: WebDAV file sharing'
+            'gnome-remote-desktop: screen sharing'
             'rygel: media sharing'
-            'vino: screen sharing'
             'openssh: remote login'
-            'power-profiles-daemon: power profiles support')
+            'power-profiles-daemon: Power profiles support')
 groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git"
+source=("${_pkgname}::git+https://gitlab.gnome.org/GNOME/gnome-control-center.git"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd gnome-control-center
+  cd "${_pkgname}"
   git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd gnome-control-center
-  git submodule init
-  git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
+  cd "${_pkgname}"
+
+  # Install bare logos into pixmaps, not icons
+  sed -i "/install_dir/s/'icons'/'pixmaps'/" panels/info-overview/meson.build
+
+  git submodule init subprojects/gvc
+  git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
 }
 
 
 build() {
-  arch-meson gnome-control-center build -D documentation=true
-  ninja -C build
+  arch-meson "${_pkgname}" build -D documentation=true
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
   install -d -o root -g 102 -m 750 "$pkgdir/usr/share/polkit-1/rules.d"
 }
