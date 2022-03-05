@@ -1,8 +1,8 @@
 pkgbase = vault-cli
 	pkgdesc = 12-factor oriented command line tool for Hashicorp Vault
 	pkgver = 3.1.0
-	pkgrel = 1
-	url = https://github.com/desbma/vault-cli
+	pkgrel = 2
+	url = https://github.com/peopledoc/vault-cli
 	arch = any
 	license = APL2
 	makedepends = python-pip
