@@ -4,8 +4,8 @@
 
 pkgname=crackmapexec
 _pkgname=CrackMapExec
-pkgver=5.1.7dev
-_pkgver=5.1.6.dev0
+pkgver=5.2.2dev
+_pkgver=5.2.2
 pkgrel=4
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
@@ -29,30 +29,33 @@ depends=('impacket' 'python' 'python-aiowinreg' 'python-asn1crypto'
 	 'python-zope-interface' 'python-pywerview' 'python-gevent' 'python-neo4j'
 	 'python-aioconsole')
 
-makedepends=('python-setuptools' 'python-poetry')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('3b4be83d30d58908f0828adb3b64aea608eb40ca21a9f9d3f69289f4be976ba9933990de6db46801ec3318ce93879af9ae30ed4bd3bcbbe0cbec748c82af4f11')
+#makedepends=('python-setuptools' 'python-poetry')
+makedepends=('python-build' 'python-installer' 'python-poetry')
+source=("${url}/archive/v${_pkgver}.tar.gz")
+sha512sums=('7120f82c4a4247bcd114fa33e9b4f5ce1007a2e93180563fa95d337ce4b127d13cb9f3a2b07005d5cbbbb1cc6d3f38f3214abdccb627cf455d451122bd2f2846')
 
-prepare() {
-  cd $_pkgname-$pkgver
-  make clean
-}
+#prepare() {
+#  cd $_pkgname-$_pkgver
+#  make clean
+#}
 
 build() {
-  cd $_pkgname-$pkgver
+  cd $_pkgname-$_pkgver
   poetry build
+  python -m build --wheel --no-isolation
   cd dist
   tar zxvf "${pkgname}-${_pkgver}.tar.gz"
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  cd "dist/${pkgname}-${_pkgver}"
-  python setup.py install --root=${pkgdir} --optimize=1
+  cd "${_pkgname}-${_pkgver}/"
+
+  #python setup.py install --root="${pkgdir}" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
  
   # Needed to operate:
-  install -d "${pkgdir}/usr/lib/python3.9/site-packages/cme/thirdparty/pywerview/"
-  touch "${pkgdir}/usr/lib/python3.9/site-packages/cme/thirdparty/pywerview/.default"
+  #install -d "${pkgdir}/usr/lib/python3.9/site-packages/cme/thirdparty/pywerview/"
+  #touch "${pkgdir}/usr/lib/python3.9/site-packages/cme/thirdparty/pywerview/.default"
   # Install the license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
  
