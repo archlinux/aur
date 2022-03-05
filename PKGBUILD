@@ -4,14 +4,14 @@
 _pkgname=passff-host
 pkgname=$_pkgname-librewolf-git
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Host app for the WebExtension PassFF. Ported to LibreWolf."
 arch=(any)
 url="https://github.com/passff/passff-host"
 license=('GPL2')
 depends=('python')
 makedepends=(git jq)
-conflicts=("$_pkgname" 'passff-host-git')
+conflicts=()
 source=("$_pkgname::git+https://github.com/passff/passff-host.git")
 sha384sums=('SKIP')
 
