@@ -54,9 +54,9 @@ conflicts=('mplayer' 'mplayer2')
 replaces=('mplayer' 'mplayer2')
 options=('!emptydirs')
 source=('mplayer2-2.0.tar.xz::https://www.dropbox.com/s/8vv627lsfh4l9sn/mplayer2-2.0.tar.xz?dl=0'
-        'git+http://repo.or.cz/mplayer2-build.git'
-        'git+http://repo.or.cz/mplayer2.git'
-        'libav::git://repo.or.cz/FFMpeg-mirror/mplayer-patches.git'
+        'git+https://repo.or.cz/mplayer2-build.git'
+        'git+https://repo.or.cz/mplayer2.git'
+        'libav::git+https://repo.or.cz/FFMpeg-mirror/mplayer-patches.git'
         'git+https://github.com/libass/libass.git'
         'use-pkg-config-for-dvdnav_dvdread.patch'
         'switch_title-switch-to-next-title-if-no-parameter-passed.patch'
@@ -65,10 +65,10 @@ source=('mplayer2-2.0.tar.xz::https://www.dropbox.com/s/8vv627lsfh4l9sn/mplayer2
         'samba-4.0.patch'
         'vo_gl_locale_fix.patch'
         'mplayer.svg::https://upload.wikimedia.org/wikipedia/commons/8/81/MPlayer.svg'
-        'patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co'
-        'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co'
-        'patch-libvo_vo_giflib.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libvo_vo_gif89a.c?view=co'
-        'patch-libmpdemux-demux_gif.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_gif.c?view=co'
+        'patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/branches/2017Q1/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co'
+        'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/branches/2017Q1/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co'
+        'patch-libvo_vo_giflib.patch::https://svnweb.freebsd.org/ports/branches/2017Q1/multimedia/mplayer2/files/patch-libvo_vo_gif89a.c?view=co'
+        'patch-libmpdemux-demux_gif.patch::https://svnweb.freebsd.org/ports/branches/2017Q1/multimedia/mplayer2/files/patch-libmpdemux-demux_gif.c?view=co'
         )
 sha256sums=('f1d17397bbdfcff2220d8b4bc17e7de5b78488736e21dca2df0d8a3216c85910'
             'SKIP'
