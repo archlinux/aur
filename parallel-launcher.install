@@ -1,5 +1,6 @@
 post_install() {
 	xdg-mime install /usr/share/parallel-launcher/bps-mime.xml
+	xdg-mime default parallel-launcher.desktop x-scheme-handler/rhdc
 	update-desktop-database /usr/share/applications
 }
 

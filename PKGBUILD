@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=5.9.0
+pkgver=5.10.0
 pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
@@ -14,7 +14,6 @@ depends=(
 	'gcc-libs'
 	'qt5-base'
 	'qt5-svg'
-	'sdl2'
 	'findutils'
 	'xdg-utils'
 	'flatpak'
@@ -37,13 +36,13 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/22e534cc148e79fa9bc82e0c305cf1c1/parallel-launcher-5.9.0.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/b1fae6470ee47c9ca4f857bd428a71da/parallel-launcher-5.10.0.tar.gz')
 noextract=()
-sha256sums=('8bc1001b5f9eee4e80567226ae1982601a7a8161c6bd1824dfb13da5cc332892')
+sha256sums=('9ca22f7d63dd06c1b60fd336fa60019edc75af6706fff34cc67da8ca3a82e02a')
 validpgpkeys=()
 
 build() {
-	qmake-qt5 app.pro -spec linux-g++
+	qmake-qt5 "CONFIG+=precompiled-helpers" app.pro -spec linux-g++
 	lrelease app.pro
 	make
 }
@@ -57,7 +56,6 @@ package() {
 	install -D lang/parallel-launcher.en_gb.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.en_gb.qm
 	install -D lang/parallel-launcher.it.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.it.qm
 	install -D lang/parallel-launcher.es.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.es.qm
-	install -D lang/parallel-launcher.eo.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.eo.qm
 	install -D lang/parallel-launcher.fr_ca.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.fr_ca.qm
 	install -D lang/parallel-launcher.fr.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.fr.qm
 	install -D lang/parallel-launcher.de.qm $pkgdir/usr/share/parallel-launcher/parallel-launcher.de.qm
