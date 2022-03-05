@@ -2,7 +2,7 @@
 
 pkgname=whoogle
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A self-hosted, ad-free, privacy-respecting metasearch engine'
 arch=(x86_64 aarch64)
 url="https://github.com/benbusby/whoogle-search"
