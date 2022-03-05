@@ -20,7 +20,8 @@ check() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/{bin,lib}
+  mkdir -p ${pkgdir}/usr/{bin,lib} ${pkgdir}/etc/profile.d
   cp ${srcdir}/${pkgname}/{kg,kplot} ${pkgdir}/usr/bin
   cp -a ${srcdir}/${pkgname}/lib ${pkgdir}/usr/lib/klong
+  echo "KLONGPATH=/usr/lib/klong" > ${pkgdir}/etc/profile.d/klong.sh
 }
