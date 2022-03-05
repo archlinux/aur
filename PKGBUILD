@@ -4,7 +4,7 @@ pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
 pkgver='0.5.6'
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
 depends=(
@@ -12,7 +12,6 @@ depends=(
     'python-marshmallow'
     'python-marshmallow-enum'
     'python-typing_inspect'
-    'python-stringcase'
 )
 optdepends=()
 makedepends=(
