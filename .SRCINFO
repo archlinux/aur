@@ -1,12 +1,13 @@
 pkgbase = libsubhook
 	pkgdesc = Simple hooking library for C/C++
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zeex/subhook
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	depends = glibc
+	provides = libsubhook.so
 	source = libsubhook-0.8.2.tar.gz::https://github.com/Zeex/subhook/archive/v0.8.2.tar.gz
 	sha256sums = ec90dae3549d73e275a6c84356d4cefc2a21b82061cfdc0833cf0866038e9917
 

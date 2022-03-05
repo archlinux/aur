@@ -3,7 +3,7 @@
 
 pkgname=libsubhook
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple hooking library for C/C++'
 arch=('x86_64')
 url='https://github.com/Zeex/subhook'
