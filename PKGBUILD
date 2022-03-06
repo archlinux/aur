@@ -1,10 +1,10 @@
 # Maintainer: Eragon <sam.vzh@gmail.com>
 pkgname=bide
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="BIDE, Basic IDE by Zezombye"
 arch=("any")
-url="https://www.planet-casio.com/Fr/logiciels/voir_un_logiciel_casio.php?showid=118"
+url="https://github.com/Zezombye/BIDE"
 license=('GPL')
 depends=("java-runtime=8")
 provides=("bide")
