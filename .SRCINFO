@@ -1,0 +1,17 @@
+pkgbase = python-riden-git
+	pkgdesc = A python library for Riden RD power supplies
+	pkgver = r19.d070961
+	pkgrel = 1
+	url = https://github.com/shaybox/riden
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	depends = python
+	depends = python-click
+	depends = python-modbus-tk
+	depends = python-pyserial
+	provides = riden
+	source = git+https://github.com/shaybox/riden.git
+	sha512sums = SKIP
+
+pkgname = python-riden-git
