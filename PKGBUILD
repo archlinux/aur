@@ -10,7 +10,7 @@ pkgname=(
   ppsspp-assets
 )
 pkgver=1.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
