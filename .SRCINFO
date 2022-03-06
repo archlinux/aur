@@ -1,0 +1,16 @@
+pkgbase = gd32-dfu-utils
+	pkgdesc = Dfu-utils GD32 fork. Dfu-util - Device Firmware Upgrade Utilities
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://github.com/riscv-mcu/gd32-dfu-utils
+	arch = x86_64
+	license = MIT
+	depends = libusb
+	optdepends = python: dfuse-pack tool support
+	optdepends = python-intelhex: Intel HEX file format support
+	conflicts = xfel-git
+	options = !strip
+	source = gd32-dfu-utils-0.9.tar.gz::https://github.com/riscv-mcu/gd32-dfu-utils/archive/refs/tags/v0.9.tar.gz
+	sha256sums = 6312461aab3650b0be8648a7afb9bbf2e63328defe80b25b6c2c85973b39f8f5
+
+pkgname = gd32-dfu-utils
