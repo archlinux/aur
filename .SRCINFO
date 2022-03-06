@@ -1,6 +1,6 @@
 pkgbase = python-networkx-git
 	pkgdesc = Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
-	pkgver = 2.7.r2.g4283d156d
+	pkgver = 2.7.1.r3.g6b2f8c2fc
 	pkgrel = 1
 	url = https://github.com/networkx/networkx
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-networkx-git
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-scipy
-	provides = python-networkx=2.7.r2.g4283d156d
+	provides = python-networkx=2.7.1.r3.g6b2f8c2fc
 	conflicts = python-networkx
 	source = git+https://github.com/networkx/networkx#branch=main
 	sha512sums = SKIP
