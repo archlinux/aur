@@ -4,7 +4,7 @@
 
 pkgname=lib32-dconf
 pkgver=0.40.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A low-level configuration system'
 arch=(x86_64)
 url=https://live.gnome.org/dconf
