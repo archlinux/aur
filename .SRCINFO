@@ -1,0 +1,14 @@
+pkgbase = pacman-cache-server-git
+	pkgdesc = Caching pacman mirror for faster downloads at home
+	pkgver = 7.344299c
+	pkgrel = 1
+	url = https://github.com/antonilol/pacman-cache-server
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nodejs
+	depends = npm
+	source = pacman-cache-server::git+https://github.com/antonilol/pacman-cache-server
+	md5sums = SKIP
+
+pkgname = pacman-cache-server-git
