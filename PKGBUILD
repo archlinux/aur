@@ -13,6 +13,7 @@ depends=(
     "python-pyserial"
 )
 provides=("${_pkgname}" "python-${_pkgname}")
+conflicts=("python-modbus-tk-git")
 source=("https://files.pythonhosted.org/packages/ce/e9/30d86eb912bf868b8c97698b5747f10cf72dc26c674fd030249bc3275484/modbus_tk-1.1.2.tar.gz")
 sha256sums=("893514bbd8c92118d20a19979e0239e7cb2a63f8f1795a0271e57def09d11770")
 
