@@ -2,7 +2,7 @@
 
 pkgname=quarto-cli
 pkgver=0.9.64
-pkgrel=1
+pkgrel=2
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
 arch=('x86_64' 'i686')
@@ -30,7 +30,6 @@ build() {
 
   mkdir -p "package/dist/bin"
   cd "package/dist/bin"
-  rm ./deno
   cp /usr/bin/deno .
   ./deno cache --reload ../../../src/quarto.ts --unstable --importmap=../../../src/import_map.json
   cd ../../src/
