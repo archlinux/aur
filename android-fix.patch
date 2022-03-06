@@ -1,14 +1,14 @@
---- WORKSPACE.bazel	2022-03-05 00:20:07.475695963 -0500
-+++ WORKSPACE.bazel-new	2022-03-05 00:26:07.743855702 -0500
-@@ -5,11 +5,11 @@
+--- WORKSPACE.bazel	2022-03-06 00:39:40.491411251 -0500
++++ WORKSPACE.bazel-new	2022-03-06 00:42:45.792180833 -0500
+@@ -9,11 +9,11 @@
  load("//:config.bzl", "QT_BASE_PATH")
  
- # This rule reffers $ANDROID_SDK_HOME
+ # This rule refers to $ANDROID_SDK_HOME.
 -android_sdk_repository(name = "androidsdk")
 +#android_sdk_repository(name = "androidsdk")
  
  # Android NDK version should be r11c+ for Abseil.
- # This rule reffers $ANDROID_NDK_HOME
+ # This rule refers to $ANDROID_NDK_HOME.
 -android_ndk_repository(name = "androidndk")
 +#android_ndk_repository(name = "androidndk")
  
