@@ -3,7 +3,7 @@
 pkgname=streampi-server
 pkgver=1.0.0_EA+3
 _pkgver=1.0.0-EA+3
-pkgrel=2
+pkgrel=3
 pkgdesc='An Opensource Alternative to the Elgato Stream Deck for the Raspberry Pi'
 arch=('x86_64')
 url='https://stream-pi.com'
@@ -19,8 +19,6 @@ sha256sums=('ee16c0aff017260608a7fbc299449bf9a9e3d7c18f3c33ee8eb2745f94112e75'
             '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 
 package() {
-  echo "$source"
-  sleep 10
   install -d "${pkgdir}/usr/bin" "${pkgdir}/opt"
   cp -avR "stream-pi-server-${_pkgver}" "${pkgdir}/opt/streampi-server"
   ln -sr "${pkgdir}/opt/streampi-server/bin/Stream-Pi Server" "${pkgdir}/usr/bin/streampi-server"

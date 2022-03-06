@@ -1,7 +1,7 @@
 pkgbase = streampi-server
 	pkgdesc = An Opensource Alternative to the Elgato Stream Deck for the Raspberry Pi
 	pkgver = 1.0.0_EA+3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://stream-pi.com
 	arch = x86_64
 	license = GPL3
