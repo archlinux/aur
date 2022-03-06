@@ -1,15 +1,15 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=mdbook-epub
-pkgver=0.3.0
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="MDBook EPUB Backend"
 url="https://github.com/Michael-F-Bryan/mdbook-epub"
 arch=(x86_64)
 license=(MIT)
 makedepends=(rust cargo)
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('1dfa8a58e969d975d365d32dec4ebbfbb066e55c58c3f329d59f96c8bae121f4')
+source=("$url/archive/$pkgver.tar.gz")
+sha256sums=('d2cf2c38c50a3eb476c14854f395ce3423ec58ddc310699d747df5a6f37f6cf1')
 
 build() {
   cd mdbook-epub-$pkgver
