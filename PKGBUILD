@@ -14,7 +14,7 @@ arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
 url="https://cachyos.org"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg nss ttf-font libpulse
+         ffmpeg4.4 nss ttf-font libpulse
          aom harfbuzz graphite
          libvpx libjpeg zlib icu libevent pipewire)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
@@ -173,14 +173,15 @@ END
   # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
   patch -Np1 -i ${_patches_dir}/megabar.patch
 
+  # disabled for the default build, as it seems to cause issues in some configurations
+  # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
+  msg2 "Debian patch to enable global menubar"
+  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
+
   # KDE patches (W. Rosenauer)
   msg2 "---- Patching for KDE"
   patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  # patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
-
-  msg2 "Debian patch to enable global menubar"
-  # disabled for the default build, as it seems to cause issues in some configurations
-  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
+  patch -Np1 -i ${_patches_dir}/kde/mozilla-kde_after_unity.patch
 
   msg2  "Disabling Pocket"
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
