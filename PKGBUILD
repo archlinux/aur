@@ -3,7 +3,7 @@
 pkgname=sdfs
 pkgver=3.10.8.0
 _pkgver=b914fcfbd10198552a1c892dede83b16774ffb03
-pkgrel=2
+pkgrel=3
 pkgdesc="Deduplication file system from Opendedup"
 arch=('x86_64')
 url="http://opendedup.org"
@@ -19,7 +19,7 @@ md5sums=('6d230c16d98e41e42753cf275f718936'
 build () {
   cd "${srcdir}/$pkgname-$_pkgver"
   patch -Np1 -i ${srcdir}/build-fix.patch
-  JAVA_HOME=/usr/lib/jvm/default/jre mvn package
+  JAVA_HOME=/usr/lib/jvm/default mvn package
 }
 
 package() {
