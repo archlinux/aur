@@ -3,7 +3,7 @@
 
 pkgname=lib32-libteam
 pkgver=1.31
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for controlling team network device'
 arch=(x86_64)
 url=http://libteam.org/
