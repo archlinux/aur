@@ -2,15 +2,15 @@
 
 pkgbase=python-pyuca
 pkgname=($pkgbase 'python2-pyuca')
-pkgver=1.1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc='Python implementation of the Unicode Collation Algorithm (UCA)'
 arch=('any')
 url='https://github.com/jtauber/pyuca'
 license=('MIT' 'custom')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/jtauber/pyuca/archive/v$pkgver.tar.gz")
-sha256sums=('6b831bb920ad4936e7a0d0e506374fd20b8b3ffc4119c59d9df0d60e8e6dbcc6')
+source=("$pkgbase-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('41a47aa598c152a52b1dc4aa210c6db62cc7f72d13cee2caee80841c3cc49e19')
 
 prepare() {
     cp -r pyuca-$pkgver pyuca-$pkgver-python2
