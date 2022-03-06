@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wxmaxima-git
-pkgver=20.12.2.r43.gdffcb10c7
+pkgver=21.11.0.r131.gbd2cba297
 pkgrel=1
 pkgdesc="A document based interface for the computer algebra system Maxima."
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ build() {
   [ -d build ] || mkdir build
   cd build
   cmake ..
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr --build .
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr build .
   make
 }
 
