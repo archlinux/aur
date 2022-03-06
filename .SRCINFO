@@ -5,6 +5,7 @@ pkgbase = fcitx5-fbterm-git
 	url = https://github.com/fcitx/fcitx5-fbterm
 	arch = x86_64
 	license = GPL3
+	makedepends = cmake
 	depends = fcitx5
 	depends = fcitx5-gtk
 	optdepends = fbterm: fbterm to use fcitx5-fbterm

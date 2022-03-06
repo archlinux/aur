@@ -5,6 +5,7 @@ pkgrel="1"
 pkgdesc="fcitx-fbterm refactor for fcitx5. Fbterm support for fcitx"
 arch=("x86_64")
 depends=("fcitx5" "fcitx5-gtk")
+makedepends=("cmake")
 license=("GPL3")
 source=("git+https://github.com/fcitx/$reponame")
 url="https://github.com/fcitx/$reponame"
