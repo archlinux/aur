@@ -14,7 +14,7 @@ pkgbase = libdicomscope-jni-bin
 	replaces = dicomscope<3.6.0
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = http://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/libdicomscope-jni_3.6.0-20build1_amd64.deb
+	source_x86_64 = https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/libdicomscope-jni_3.6.0-20build1_amd64.deb
 	sha256sums_x86_64 = 80824e47379de237f5a5c4a118ef960cc2280f870544ccab0c2543e1b10dbc36
 
 pkgname = libdicomscope-jni-bin

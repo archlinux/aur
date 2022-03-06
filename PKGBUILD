@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!emptydirs')
 
-source_x86_64=("http://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/${_pkgname}_${pkgver}-${_pkgrel}_amd64.deb")
+source_x86_64=("https://mirrors.kernel.org/ubuntu/pool/universe/d/dicomscope/${_pkgname}_${pkgver}-${_pkgrel}_amd64.deb")
 
 package() {
 	# Extract package data
