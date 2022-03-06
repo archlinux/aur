@@ -5,13 +5,14 @@
 pkgname=libdcmtk14-bin
 _pkgname=libdcmtk14
 pkgver=3.6.4
-pkgrel=2.2
+pkgrel=2.3
 _pkgrel=2.1build2
 pkgdesc="OFFIS DICOM toolkit runtime libraries."
 arch=('i686' 'x86_64')
 url="https://dicom.offis.de/dcmtk"
 _url="https://packages.ubuntu.com/bionic/libdcmtk14" # LTS
 provides=("${_pkgname}")
+replaces=("${_pkgname}")
 depends=('charls1>=1.0' 'icu66>=66.1' 'libpng>=1.6.2' 'libtiff>=4.0.3' 'libwrap>=7.6' 'libxml2>=2.7.4' 'openssl>=1.1' 'zlib>=1.1.4')
 options=('!strip' '!emptydirs')
 
@@ -24,5 +25,6 @@ package() {
 
   install -D -m644 "${pkgdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
 
 sha256sums_x86_64=('8ddf35f844d9a285e1d8ff0f0218327c2e399e60d9271d1c35935b4ee00fab97')
