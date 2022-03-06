@@ -7,8 +7,8 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=97.0
-pkgrel=2
+pkgver=97.0.2
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('6c8a7dcb47122d033383fd62a1bcaefff0290a6c23d057898e8ff9c72749df28'
+sha256sums=('c9f127741beabde78b021dc95b1740259d01677d461400682cb30e072126f075'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
