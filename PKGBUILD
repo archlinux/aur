@@ -5,7 +5,7 @@
 
 pkgname=lib32-libgcrypt15
 pkgver=1.5.6
-pkgrel=6
+pkgrel=7
 pkgdesc='General purpose cryptographic library based on the code from GnuPG'
 arch=(x86_64)
 url=https://gnupg.org/
