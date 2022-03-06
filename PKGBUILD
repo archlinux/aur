@@ -7,7 +7,7 @@
 
 pkgname=lib32-libnewt
 pkgver=0.52.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Not Erik's Windowing Toolkit - text mode windowing with slang"
 arch=(x86_64)
 url=https://fedorahosted.org/newt/
