@@ -1,25 +1,16 @@
-# Maintainer: nitsky
-arch=('x86_64')
-conflicts=(deno)
-license=('MIT')
-pkgdesc="A secure JavaScript and TypeScript runtime."
+# Maintainer: Pig Fang <g-plane@hotmail.com>
 pkgname=deno-bin
+pkgver=1.19.2
 pkgrel=1
-pkgver=1.9.0
-provides=('deno')
-sha256sums_x86_64=('94341d2eb5a319986bb35e7959d35dbe47c55904fb56f4245e528e9b9e2a7a44')
-source_x86_64=("$pkgname-$pkgver.zip::https://github.com/denoland/deno/releases/download/v${pkgver}/deno-x86_64-unknown-linux-gnu.zip")
-url='https://deno.land/'
+pkgdesc="A modern runtime for JavaScript and TypeScript."
+arch=(x86_64)
+url="https://deno.land"
+license=(MIT)
+provides=(deno)
+conflicts=(deno deno-git)
+source=(https://github.com/denoland/deno/releases/download/v$pkgver/deno-$arch-unknown-linux-gnu.zip)
+sha256sums=(6864d019f0ced1657843fde73022bd53b13dc2e14923393a6ec9cde2097ca867)
 
 package() {
-  install -D -m 755 deno "$pkgdir/usr/bin/deno"
-  if [ -d "$pkgdir/usr/share/bash-completion/completions/" ]; then
-    deno completions bash > "$pkgdir/usr/share/bash-completion/completions/deno"
-  fi
-  if [ -d "$pkgdir/usr/share/fish/completions/" ]; then
-    deno completions fish > "$pkgdir/usr/share/fish/completions/deno.fish"
-  fi
-  if [ -d "$pkgdir/usr/share/zsh/site-functions/" ]; then
-    deno completions zsh > "$pkgdir/usr/share/zsh/site-functions/_deno"
-  fi
+  install -Dm755 ./deno "$pkgdir"/usr/bin/deno
 }
