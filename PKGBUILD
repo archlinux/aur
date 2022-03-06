@@ -6,7 +6,7 @@
 
 pkgname=lib32-libsodium
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern, portable, easy to use crypto library'
 arch=(x86_64)
 url='https://github.com/jedisct1/libsodium'
