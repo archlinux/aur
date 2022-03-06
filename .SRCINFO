@@ -1,6 +1,6 @@
 pkgbase = profile-sync-daemon-brave
 	pkgdesc = Brave browser support for profile-sync-daemon
-	pkgver = 2021.11.01
+	pkgver = 2022.03.01
 	pkgrel = 1
 	arch = any
 	license = none
