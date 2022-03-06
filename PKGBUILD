@@ -1,9 +1,9 @@
 # Maintainer: Jack Roehr <jack@seatgull.com>
 pkgname=vector-git
-pkgver=0
+pkgver=v0.12.0.r2551.g4384165b84
 pkgrel=0
 depends=("zlib" "gcc-libs")
-makedepends=('rust' 'cargo-nightly')
+makedepends=('cargo-nightly' 'git' 'rust')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://vector.dev"
 license=("MPL")
