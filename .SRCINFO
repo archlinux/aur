@@ -1,9 +1,10 @@
 pkgbase = cups-git
-	pkgver = 2.3.3.r28.gab83aeec8
+	pkgver = 2.4.1.r14.g55359b905
 	pkgrel = 1
-	url = https://www.cups.org/
+	url = https://openprinting.github.io/cups/
 	arch = x86_64
-	license = GPL
+	license = Apache
+	makedepends = git
 	makedepends = libtiff
 	makedepends = libpng
 	makedepends = acl
@@ -24,49 +25,37 @@ pkgbase = cups-git
 	makedepends = systemd
 	makedepends = inetutils
 	makedepends = libpaper
-	makedepends = valgrind
-	makedepends = git
-	source = git+https://github.com/apple/cups.git
+	source = git+https://github.com/OpenPrinting/cups.git
 	source = cups.logrotate
 	source = cups.pam
 	source = cups.sysusers
-	source = cups-no-export-ssllibs.patch
-	source = cups-no-gzip-man.patch
-	source = cups-1.6.2-statedir.patch
-	source = cups-systemd-socket.patch
+	source = cups-2.4.0-statedir.patch
+	source = cups-freebind.patch
 	source = guid.patch
-	source = samsung-printer-workaround.patch
-	validpgpkeys = 3737FD0D0E63B30172440D2DDBA3A7AB08D76223
-	validpgpkeys = 45D083946E3035282B3CCA9AF434104235DA97EB
-	validpgpkeys = 845464660B686AAB36540B6F999559A027815955
 	sha256sums = SKIP
 	sha256sums = d87fa0f0b5ec677aae34668f260333db17ce303aa1a752cba5f8e72623d9acf9
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
 	sha256sums = 06173dfaea37bdd9b39b3e09aba98c34ae7112a2f521db45a688907d8848caa2
-	sha256sums = ff3eb0782af0405f5dafe89e04b1b4ea7a49afc5496860d724343bd04f375832
-	sha256sums = b8fc2e3bc603495f0278410350ea8f0161d9d83719feb64f573b63430cb4800b
-	sha256sums = 23349c96f2f7aeb7d48e3bcd35a969f5d5ac8f55a032b0cfaa0a03d7e37ea9af
-	sha256sums = ea5a3d378807d45e1959c0b3893c84e50298b57d7f11943f9ed8ba2166d17cd7
-	sha256sums = d4537526c1e075866ae22ad263da000fc2a592d36c26b79a459a1cfdade2bb2d
-	sha256sums = ae3e154b8382f3412c73d863f4db095e722eb5255e15f0684b2bb9e02e5438af
+	sha256sums = f0b15192952c151b1843742c87850ff3a7d0f3ba5dd236ed16623ef908472ad7
+	sha256sums = 3385047b9ac8a7b13aeb8f0ca55d15f793ce7283516db0155fe28a67923c592d
+	sha256sums = 0bf6a75ba1b051771f155d9a5d36b307a6d40c6857d645b250fe93f3fb713474
 
 pkgname = libcups-git
-	pkgdesc = The CUPS Printing System - client libraries and headers (GIT version)
+	pkgdesc = The CUPS Printing System - client libraries and headers
 	depends = gnutls
-	depends = libtiff>=4.0.0
-	depends = libpng>=1.5.7
+	depends = libtiff
+	depends = libpng
 	depends = krb5
 	depends = avahi
 	depends = libusb
-	provides = libcups=2.3.3
+	provides = libcups=2.4.1
 	conflicts = libcups
 
 pkgname = cups-git
-	pkgdesc = The CUPS Printing System - daemon package (GIT version)
+	pkgdesc = The CUPS Printing System - daemon package
 	install = cups.install
 	depends = acl
 	depends = pam
-	depends = libcups>=2.3.3
 	depends = cups-filters
 	depends = bc
 	depends = dbus
@@ -76,7 +65,7 @@ pkgname = cups-git
 	depends = libcups-git
 	optdepends = xdg-utils: xdg .desktop file support
 	optdepends = colord: for ICC color profile support
-	provides = cups=2.3.3
+	provides = cups
 	conflicts = cups
 	backup = etc/cups/cupsd.conf
 	backup = etc/cups/snmp.conf
