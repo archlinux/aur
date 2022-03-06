@@ -7,6 +7,9 @@ pkgbase = drawterm
 	arch = x86_64
 	license = MIT
 	makedepends = git
+	provides = drawterm
+	conflicts = drawterm
+	conflicts = drawterm-hg
 	source = git+https://github.com/9fans/drawterm#commit=fa5671bcef0970e0b143745d9fbac195cb7626e6
 	sha256sums = SKIP
 
