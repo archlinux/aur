@@ -4,7 +4,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=5.9
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.11
 _now=`date +%N`
@@ -12,7 +12,6 @@ pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for
 arch=('any')
 license=('EUPL-1.2')
 url="https://github.com/pi-hole/pi-hole"
-depends=('pi-hole-ftl>=5.0' 'bc' 'perl' 'gnu-netcat' 'inetutils' 'iproute2' 'logrotate' 'bind-tools' 'sudo' 'lsof')
 optdepends=(
 'lighttpd: a secure, fast, compliant and very flexible web-server'
 'php-cgi: CGI and FCGI SAPI for PHP needed only for lighttpd'
@@ -43,8 +42,8 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 
 sha256sums=('13e7c3d7cdf19c9b9b8a449fea86d55ef68fce9b67ee3ad0429104c0ff509dde'
             '589ef049135a90d622fc68299140e4dc16451ce541b804b35ffa5d25201afeb4'
-            '39286a6b553fc5b91a507fd462a1844899352e458f316c4a924cdd7009134aea'
-            '2864f9c2ea8bf2c7d32b665d583f1058f3a7e829932ca4076308053c0ccbb278'
+            '4de3d093636751afdf2f68948c810e8514427b9a0265c317da7d30b07d7726fa'
+            'da64d5e04c527c48819e70bb2d784b1c8861024a4b6ddccace1b723f102ab2c3'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             'f70964f8b176d9ffcf4f44140036f0cfc030cbbe836634a885da082cfee4d1f7'
             '032770450ba4a1085bcb0bf3f944c436c5702f3a3faf984fbbba2d3dbc6accea'
