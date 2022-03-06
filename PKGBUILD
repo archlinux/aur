@@ -15,7 +15,7 @@ sha512sums=('a2b13c7f66cb068dde5592646a7b8e45789bd5b40317406540080b4c726d02c7774
 
 build() {
   cd "$srcdir/insta-$pkgver/cargo-insta"
-  cargo build --release --locked --bin "$pkgname"
+  cargo build --release --locked
 }
 
 check() {
