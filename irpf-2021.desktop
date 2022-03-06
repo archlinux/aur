@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Imposto de Renda Pessoa Física 2021
+Comment=Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF) 2021
+Exec=irpf-2021
+StartupNotify=true
+Icon=irpf-2021
+Terminal=false
+Type=Application
+Categories=Network;

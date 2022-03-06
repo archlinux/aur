@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+
+_JAVA_AWT_WM_NONREPARENTING=1 AWT_TOOLKIT=MToolkit java \
+  -Dawt.useSystemAAFontSettings=on \
+  -Dswing.aatext=true \
+  -jar /usr/share/IRPF/irpf-2021/irpf-2021.jar

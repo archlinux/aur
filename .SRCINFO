@@ -1,0 +1,22 @@
+pkgbase = irpf-2021
+	pkgdesc = Programa Gerador de Declaração (PGD) da Declaração do Imposto sobre a Renda das Pessoas Físicas (DIRPF) 2021
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://www.gov.br/receitafederal/pt-br
+	arch = any
+	license = custom
+	depends = java-runtime
+	depends = hicolor-icon-theme
+	depends = sh
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2021/irpf/arquivos/IRPF2021-1.9.zip
+	source = copyright
+	source = irpf-2021
+	source = irpf-2021.desktop
+	source = irpf-2021.png
+	md5sums = 1a87fe2428166e915c84290c5a301818
+	md5sums = b430413d18902ace305eb2254e3535db
+	md5sums = aacd18e1111652b3dc4afe3e15991532
+	md5sums = 99766fa8ada3b64c25037473ffeb5725
+	md5sums = 43d8c9617118578f03b2c4eeb1c72c57
+
+pkgname = irpf-2021
