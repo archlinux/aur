@@ -1,7 +1,7 @@
 pkgbase = libdicomscope-jni-bin
 	pkgdesc = OFFIS DICOM viewer (JNI files).
 	pkgver = 3.6.0
-	pkgrel = 20
+	pkgrel = 20.1
 	url = https://dicom.offis.de/dscope.php.en
 	arch = i686
 	arch = x86_64
