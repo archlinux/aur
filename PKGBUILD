@@ -2,8 +2,8 @@
 
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
-pkgver='1.2.1'
-pkgrel=2
+pkgver='1.3.1'
+pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
