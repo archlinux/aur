@@ -2,7 +2,7 @@
 
 _pkgname='uhi'
 pkgname="python-${_pkgname}"
-pkgver='0.3.0'
+pkgver='0.3.1'
 pkgrel=1
 pkgdesc="Contains the code for the PlottableHistogram Protocol, to be used in type checking libraries wanting to conform to the protocol."
 arch=('any')
