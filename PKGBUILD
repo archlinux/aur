@@ -2,23 +2,22 @@
 
 _pkgname=xfce4-terminal
 pkgname=${_pkgname}-devel
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A modern terminal emulator primarly for the Xfce desktop environment (Development version)"
-arch=('i686' 'x86_64')
-url="http://www.xfce.org/"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://docs.xfce.org/apps/terminal/start"
 license=('GPL2')
-groups=('xfce4')
+groups=('xfce4-devel')
 depends=('libxfce4ui>=4.17.2' 'vte3' 'hicolor-icon-theme')
 makedepends=('intltool')
 conflicts=('terminal' "$_pkgname")
 provides=("${_pkgname}=${pkgver}")
-replaces=('terminal')
-source=(http://archive.xfce.org/src/apps/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('8746cf1435f6da7f508b0af126d21133ccb69ca0b623339df5559bc5f8177db2')
+source=("https://archive.xfce.org/src/apps/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
+sha256sums=('52e915a59cd74ed34e8e3f1057065f03e54709b9d50560b554af4d49944d353a')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "${_pkgname}-${pkgver}"
 
   ./configure \
     --prefix=/usr \
@@ -31,7 +30,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
-
