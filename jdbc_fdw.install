@@ -1,0 +1,5 @@
+post_install() {
+  echo "Please override your postgresql service with the following"
+  echo "  [Service]"
+  echo "  Environment=\"LD_LIBRARY_PATH=/usr/lib/jvm/java-8-openjdk/jre/lib/amd64/server\""
+}

@@ -1,5 +1,5 @@
 --- a/Makefile	2021-12-23 10:15:03.000000000 +0200
-+++ b/Makefile	2022-03-03 12:00:19.621310928 +0200
++++ b/Makefile	2022-03-06 16:36:03.777862228 +0200
 @@ -13,7 +13,7 @@
  
  JDBC_CONFIG = jdbc_config
@@ -9,7 +9,13 @@
  
  SHLIB_LINK += -L$(LIBDIR) -ljvm
  
-@@ -32,7 +32,7 @@
+@@ -27,12 +27,12 @@
+  
+ PG_CPPFLAGS=-D'PKG_LIB_DIR=$(pkglibdir)' -I$(libpq_srcdir)
+ 
+-JFLAGS = -d $(pkglibdir)
++JFLAGS = -d .
+ 
  all:$(TRGTS)
  
  JAVAFILES:

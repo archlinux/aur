@@ -1,15 +1,17 @@
 pkgbase = jdbc_fdw
 	pkgdesc = PostgreSQL Foreign Data Wrapper (FDW) for remote databases using JDBC
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pgspider/jdbc_fdw
+	install = jdbc_fdw.install
 	arch = x86_64
 	license = PostgreSQL
 	makedepends = jdk8-openjdk
 	depends = postgresql
+	depends = jre8-openjdk
 	source = https://github.com/pgspider/jdbc_fdw/archive/refs/tags/v0.1.0.tar.gz
 	source = openjdk8.patch
 	sha256sums = 552fc5cb2f27ae48182bf7fe24a2c993c4a6dacd91d86cfaeb501c45586d2e27
-	sha256sums = fe77b21484362c837f6b76cea2eb4748dd08c084965afa011eff20eb407a7cd5
+	sha256sums = 3737594028b022e459e2cc912afeea00584540c41bb6e635a73681549c6e5cd1
 
 pkgname = jdbc_fdw
