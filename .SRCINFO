@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg
 	pkgdesc = FFmpeg for Jellyfin
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	license = GPL3
@@ -49,7 +49,7 @@ pkgbase = jellyfin-ffmpeg
 	optdepends = libva-intel-driver: for Intel legacy VAAPI support (10th Gen and older)
 	optdepends = libva-mesa-driver: for AMD VAAPI support
 	optdepends = nvidia-utils: for Nvidia NVDEC/NVENC support
-	source = git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v4.4.1-2
+	source = git+https://github.com/jellyfin/jellyfin-ffmpeg.git#tag=v4.4.1-3
 	sha256sums = SKIP
 
 pkgname = jellyfin-ffmpeg
