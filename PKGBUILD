@@ -3,7 +3,7 @@
 _pkgname=riden
 pkgname="python-${_pkgname}-git"
 pkgver=r19.d070961
-pkgrel=1
+pkgrel=2
 pkgdesc="A python library for Riden RD power supplies"
 arch=("any")
 url="https://github.com/shaybox/${_pkgname}"
@@ -17,7 +17,7 @@ depends=(
 makedepends=(
     "python-poetry"
 )
-provides=("${_pkgname}")
+provides=("${_pkgname}" "python-${_pkgname}")
 source=("git+${url}.git")
 sha512sums=("SKIP")
 
