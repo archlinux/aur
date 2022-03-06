@@ -3,7 +3,7 @@
 # Contributor : Anagastes
 
 pkgname=qownnotes-qt5-bin
-pkgver=22.2.10
+pkgver=22.3.1
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration - qt5-bin"
 arch=('x86_64')
