@@ -1,0 +1,29 @@
+--- kg.c	2022-03-06 13:09:00.977218318 +0100
++++ kg.c.patched	2022-03-06 13:08:55.547237162 +0100
+@@ -6440,13 +6440,15 @@
+  * Bytecode Compiler, Code generator
+  */
+ 
++static cell	New;
++
+ static void emit(cell p) {
+ 	save(p);
+ 	if (NIL == P) {
+-		P = Prog = cons(p, NIL);
++		New = cons(p, NIL); cdr(P) = New;
+ 	}
+ 	else {
+-		cdr(P) = cons(p, NIL);
++		New = cons(p, NIL); cdr(P) = New;
+ 		P = cdr(P);
+ 	}
+ 	unsave(1);
+@@ -7158,8 +7160,6 @@
+ 	bye(0);
+ }
+ 
+-static cell	New;
+-
+ #define setargv(a) \
+ 	do { \
+ 		New = argv_to_list(&argv[a]); \
