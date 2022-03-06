@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 _pkgname=probe-cli
 pkgname=ooniprobe-cli
-pkgver=3.13.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc='Next generation OONI Probe CLI'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("https://github.com/ooni/probe-cli/archive/v$pkgver/$_pkgname-$pkgver.tar.gz")
-sha256sums=('a055aed8c2d0d898b7cdb843cf247cf3b593c8ac7045103c08b3088b7d4d1737')
+sha256sums=('8bb85d526fae0ec544b3766e6e988e696e83252aed24a29e4de8c10f5beb094e')
 
 build() {
   cd "$_pkgname-$pkgver"
