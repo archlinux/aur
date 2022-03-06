@@ -1,7 +1,7 @@
 # Maintainer: Fabien LEFEBVRE <contact@d1ceward.com>
 
 pkgname=gliderlabs-sigil
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Standalone string interpolator and template processor'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 conflicts=('sigil')
 source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.tgz"
         "https://raw.githubusercontent.com/gliderlabs/sigil/master/LICENSE")
-sha256sums=('f0fd555f70e4fdf952ef1b4e416a4beaf4789ce1d410d2d75aaac1fe2efa67c9'
+sha256sums=('ec977b09b819bca7d474bf47d9c650a87a25f93d2959003ac3c492e8e0ce1666'
             '90b8e840cef9b3c39c1419cf394efe2480544056f55d7d709f3c1b4f47fe9321')
 
 package() {
