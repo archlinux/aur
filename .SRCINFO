@@ -1,7 +1,7 @@
 pkgbase = obs-rtspserver
 	pkgdesc = This is a plugin for obs-studio, encoding the output and publish rtsp stream
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://obsproject.com/forum/resources/obs-rtspserver.1037/
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = obs-rtspserver
 	makedepends = ffmpeg
 	makedepends = pciutils
 	depends = obs-studio>=27.2.0
-	source = obs-rtspserver::git+https://github.com/iamscottxu/obs-rtspserver.git#tag=v2.2.0
+	source = obs-rtspserver::git+https://github.com/iamscottxu/obs-rtspserver.git#tag=v2.2.1
 	source = obs-studio-27.2.0.tar.gz::https://github.com/obsproject/obs-studio/archive/27.2.0.tar.gz
 	sha256sums = SKIP
 	sha256sums = c52d99cba6c536cb805e3e0f54663c33cfc43a1b7521bec97d241019499f9789

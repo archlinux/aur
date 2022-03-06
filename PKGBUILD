@@ -1,9 +1,9 @@
 # Maintainer: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-rtspserver
-pkgver=2.2.0
+pkgver=2.2.1
 _obsver=27.2.0
-pkgrel=3
+pkgrel=1
 pkgdesc="This is a plugin for obs-studio, encoding the output and publish rtsp stream"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/obs-rtspserver.1037/"
