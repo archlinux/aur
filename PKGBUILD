@@ -14,7 +14,7 @@ license=('OFFIS')
 groups=('')
 depends=(
   'java-runtime'
-  'libdicomscope-jni'
+  'libdicomscope-jni-bin'
   )
 backup=('etc/dcmtk/DICOMscope.cfg')
 options=('!strip' '!emptydirs')
