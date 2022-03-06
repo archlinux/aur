@@ -10,6 +10,7 @@ pkgbase = pacman-cache-server-git
 	depends = npm
 	source = pacman-cache-server::git+https://github.com/antonilol/pacman-cache-server
 	source = pacman-cache-server.service
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c4b943a9b5db96d777b82d6180025893684f67a29926644e728b274c8df5fe97
 
 pkgname = pacman-cache-server-git
