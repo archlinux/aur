@@ -1,0 +1,19 @@
+pkgbase = sprinkles-git
+	pkgdesc = Dynamic Windowmanager forked from DWM with lots of sprinkles on top!
+	pkgver = 6.1.99
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/sprinkles
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	provides = sprinkles
+	conflicts = sprinkles
+	source = sprinkles::git+http://git.weitnahbei.de/nullmark/sprinkles
+	sha256sums = SKIP
+
+pkgname = sprinkles-git
