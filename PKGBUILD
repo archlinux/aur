@@ -8,7 +8,7 @@ arch=('any')
 url=https://github.com/antonilol/pacman-cache-server
 license=('MIT')
 source=("pacman-cache-server::git+$url" "pacman-cache-server.service")
-md5sums=('SKIP')
+sha256sums=('SKIP' 'c4b943a9b5db96d777b82d6180025893684f67a29926644e728b274c8df5fe97')
 depends=('nodejs' 'npm')
 makedepends=('git')
 
