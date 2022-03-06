@@ -4,7 +4,7 @@
 # Contributor: zwergnase <zwergnase@posteo.de>
 
 pkgname=sunvox
-pkgver=2.0d
+pkgver=2.0e
 pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('alsa-lib'
 makedepends=('unzip' 'icoutils')
 optdepends=('jack: jack audio server output')
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip sunvox.desktop sunvox.xml)
-sha256sums=('355727b8c855c034b27b7522e7515d0f895ef71c62a4f75d9e84db29ec73b423'
+sha256sums=('bf87509d1afba6eb0e0075fccad0c284a8b16311088e0df4bce4c3eae03f4b4a'
             '21680b38c66e4375f0a01e496d3167fe8695ada60204c885ff63e63022b63495'
             '7ac2192298abdda802832518c98721b08881e32e8b470f2989c614852dd44f67')
 
