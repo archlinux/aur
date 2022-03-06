@@ -1,9 +1,10 @@
 pkgbase = dxtractor-bin
 	pkgdesc = Collect DXVK Cache files from your system
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NastyGamer/DXVKache
 	arch = x86_64
+	license = unknown
 	provides = dxtractor
 	provides = dxtractor=1.0.0
 	source = https://github.com/NastyGamer/DXVKache/releases/download/1.0.0/DXtractor-1.0.0
