@@ -1,0 +1,21 @@
+pkgbase = iwlwifi-beacon-lts
+	pkgdesc = Intel wireless chips driver (with beacon timeout patch)
+	pkgver = 5.15.26
+	pkgrel = 1
+	url = https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = linux-lts-headers
+	makedepends = xz
+	provides = iwlwifi
+	conflicts = iwlwifi
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.26.tar.xz
+	source = beacon_timeout.patch
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = f9aff9e30c5468d37a1434c59ac550bf0afeeee54707aca50bc49343efca40a6
+	sha256sums = fc018a306271537199a15ef5636c8f4ff8860536f95c4bcc01347ec23b4ee277
+
+pkgname = iwlwifi-beacon-lts
