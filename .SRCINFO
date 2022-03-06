@@ -1,0 +1,14 @@
+pkgbase = cargo-deadlinks
+	pkgdesc = Cargo plugin for checking your documentation for broken links
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/deadlinks/cargo-deadlinks
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = cargo-deadlinks-0.8.1.tar.gz::https://github.com/deadlinks/cargo-deadlinks/archive/0.8.1.tar.gz
+	sha512sums = 90dc97084a99f310f5572f7b64b1e3bf1c90ea2f3d199028aa5f8de560cf1891d1afe9c50daccfbc69336019f148ae307441f4be03fa3a5ba1ed3ac590803bc4
+
+pkgname = cargo-deadlinks
