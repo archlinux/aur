@@ -1,0 +1,21 @@
+pkgbase = sankeymatic-web-git
+	pkgdesc = A Sankey diagram builder for everyone
+	pkgver = r120.ef55750
+	pkgrel = 1
+	url = https://sankeymatic.com
+	arch = any
+	license = ISC
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/nowthis/sankeymatic
+	source = https://sankeymatic.com/build/canvg/lib/umd.js
+	source = https://sankeymatic.com/build/d3.v2.js
+	source = https://sankeymatic.com/favicon.ico
+	source = https://sankeymatic.com/i/SKM-trsp-300.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sankeymatic-web-git
