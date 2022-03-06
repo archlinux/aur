@@ -2,30 +2,34 @@
 pkgbase=python-iminuit
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.9.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('i686' 'x86_64')
 url="https://iminuit.readthedocs.io"
 license=('GPL' 'MIT')
-makedepends=('python-setuptools' 'python-numpy' 'cmake')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-numpy' 'cmake')
 checkdepends=('python-pytest'
               'python-scipy'
-              'python-numba>0.54.0'
+#             'python-numba>0.54.0'
               'python-matplotlib'
               'python-tabulate')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('9f3dcf2b8f02f162a6cad12860df5295')
+md5sums=('3e0072200e7da7890748aecac4329c5c')
 
 prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i '/cmake/d' pyproject.toml
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py build
+    #python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -47,5 +51,6 @@ package_python-iminuit() {
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    #python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
