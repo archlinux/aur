@@ -3,16 +3,15 @@
 _pkgname=ridengui
 pkgname="${_pkgname}-git"
 pkgver=r20.db74a11
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5/6 based GUI for Riden RDXX power supplies written in Python"
 arch=("any")
 url="https://github.com/shaybox/${_pkgname}"
 license=("MIT")
 depends=(
     "python"
-    "python-click"
-    "python-modbus-tk"
-    "python-pyserial"
+    "python-riden"
+    "python-pyqt5"
 )
 makedepends=(
     "python-poetry"
