@@ -1,7 +1,7 @@
 pkgbase = qdvdauthor
 	pkgdesc = QDVDAuthor is a GUI frontend for dvdauthor, video DVD creator.
 	pkgver = 2.3.1
-	pkgrel = 12
+	pkgrel = 13
 	url = https://sourceforge.net/projects/qdvd
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qdvdauthor
 	depends = vlc
 	depends = xine-lib
 	depends = libx11
-	source = https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-2.3.1-012a.tar.gz
-	md5sums = 24efd1aa4d5455806c4ec1289855b08f
+	source = https://sourceforge.net/projects/qdvd/files/archlinux/qdvdauthor-2.3.1-013a.tar.gz
+	md5sums = 47cc4cc2ba33d8058f7978b9ba89f127
 
 pkgname = qdvdauthor
