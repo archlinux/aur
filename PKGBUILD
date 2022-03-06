@@ -3,19 +3,20 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin-development
-pkgver=5.5.DEVELOPMENT
-vendorver=5.5-DEVELOPMENT-SNAPSHOT-2021-12-07-a
+pkgver=5.6.DEVELOPMENT
+vendorver=5.6-DEVELOPMENT-SNAPSHOT-2022-02-11-a
 pkgrel=1
-pkgdesc="Binary builds of the Swift programming language"
+pkgdesc="Binary builds of the Swift programming language (dev snapshot)"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('libutil-linux' 'libxml2' 'python36')
+depends=('libutil-linux' 'libxml2')
+optdepends=('python36: required for REPL')
 makedepends=('patchelf')
 options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
-source=("https://swift.org/builds/swift-5.5-branch/centos8/swift-${vendorver}/swift-${vendorver}-centos8.tar.gz")
+source=("https://swift.org/builds/swift-5.6-branch/centos8/swift-${vendorver}/swift-${vendorver}-centos8.tar.gz")
 sha256sums=('SKIP')
 
 package() {
