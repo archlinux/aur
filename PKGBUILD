@@ -6,7 +6,7 @@
 
 pkgname=lib32-cracklib
 pkgver=2.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Password Checking Library'
 arch=(x86_64)
 url=https://github.com/cracklib/cracklib
