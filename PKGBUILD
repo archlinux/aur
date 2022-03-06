@@ -2,7 +2,6 @@
 # 
 # * check the systemd units on their preconditions, especially nptd, ... 
 #   as they are a copy of suse service files from https://build.opensuse.org/package/view_file/home:firstyear:kanidm/kanidm:w
-# * systemd activate and run should be added to package if this is so with other arch packages 
 # 
 # if somebody wants to maintain or contribute, just drop a note, i will add you.
 
