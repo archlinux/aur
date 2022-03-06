@@ -1,0 +1,34 @@
+10.2 Build 1001 - 2nd March 2022
+
+- Add support for locales other than English
+
+10.2 Build 1000 - 16th December 2021
+
+- CPU Integer test, made some changes to the order of operations in the test. This should stop them being optimised away on non-windows builds
+- CPU Test results, changed how results (Prime, Compression, Encryption and Sorting tests) are saved in baseline/results files so they are the same as the windows version of PerformanceTest and can be more easily used to manually calculate the CPU/Memory mark
+
+10.1 Build 1005 - 20th October 2021
+
+- Linux and Mac (command line tool): Added flag to enable debugging "-debug"
+- Mac (command line tool): Added ability to specify which test suite(s) to autorun "-r [1-3]" [CPU, Memory, All tests]
+
+10.1 Build 1004 - 27th August 2021
+
+- Linux: Added ability to specify which test suite(s) to autorun "-r [1-3]" [CPU, Memory, All tests]
+
+10.1 Build 1003 - 26th August 2021
+
+- Linux: Added autorun command line argument "-r" for easier automation of testing process.
+
+10.1 Build 1002 - 11th June 2021
+
+- Fixed problem generating upload checksum on Red Hat Linux
+
+10.1 Build 1001 - 3rd May 2021
+
+- Added memory test suite for Linux and Mac
+- Memory test scores are directly comparable with Windows Version
+
+10.1 Build 1000 - 3rd March 2021
+
+- First release of Linux and Mac version of PerformanceTest CPU test suite

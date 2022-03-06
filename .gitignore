@@ -1,0 +1,4 @@
+/pkg/
+/src/
+passmark-performancetest-bin-*.pkg.tar.zst
+pt_linux_x64_*.zip
