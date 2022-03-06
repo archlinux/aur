@@ -16,7 +16,6 @@ optdepends=(
   'doas: privilege elevation'
 )
 makedepends=('go>=1.17')
-options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jguer/yay/archive/v${pkgver}.tar.gz")
 sha256sums=('17240f2eca254814516d38e3cf235211a7015844e835df46465b9f062304d94a')
 
