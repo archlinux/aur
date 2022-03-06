@@ -10,6 +10,7 @@ pkgbase = lib32-sdl12-compat
 	makedepends = git
 	depends = lib32-sdl2
 	depends = lib32-glu
+	depends = sdl12-compat
 	provides = lib32-sdl=1.12.15
 	conflicts = lib32-sdl
 	source = git+https://github.com/libsdl-org/sdl12-compat.git#commit=030111ab691581d2eb0cd44586d69a4398185560
