@@ -21,5 +21,5 @@ build() {
 package() {
   mkdir -p "$pkgdir"/usr/{bin,lib/systemd/system}
   cp -r "$srcdir"/pacman-cache-server "$pkgdir"/usr/lib/"$pkgname"
-  cp pacman-cache-server.service /usr/lib/systemd/system
+  cp pacman-cache-server.service "$pkgdir"/usr/lib/systemd/system
 }
