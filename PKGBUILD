@@ -4,7 +4,7 @@ _pkgbasename=switchtube-dl
 options=(!strip) # Otherwise all libraries will be stripped from the executable file
 
 pkgname=$_pkgbasename-bin
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1 # Increment when PKGBUILD is changed
 pkgdesc="Simple CLI for downloading videos from SwitchTube"
 arch=('x86_64')
