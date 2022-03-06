@@ -1,0 +1,15 @@
+pkgbase = runjail-git
+	pkgdesc = runjail is a tool to create ad-hoc sandboxes on Linux
+	pkgver = r100.a755f93
+	pkgrel = 1
+	url = https://github.com/debfx/runjail
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = libseccomp
+	provides = runjail
+	source = git+https://github.com/debfx/runjail.git
+	sha512sums = SKIP
+
+pkgname = runjail-git
