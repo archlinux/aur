@@ -1,32 +1,30 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: yaroslav <proninyaroslav@mail.ru>
 
 pkgname=infer
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Static Analyzer by Facebook"
+pkgdesc="A static analyzer for Java, C, C++, and Objective-C"
 arch=('x86_64')
 url="https://github.com/facebook/infer"
-license=('BSD')
-depends=('java-environment' 'gcc>=5.0.0' 'opam>=2.0.0' 'ocaml>=4.11.1')
-makedepends=('git' 'rsync' 'cmake' 'ninja')
-source=("${pkgname}::git://github.com/facebook/infer.git")
-sha256sums=('SKIP')
-
+license=('MIT')
+depends=('java-environment' 'opam' 'ocaml')
+makedepends=('git' 'rsync' 'cmake' 'ninja' 'python' 'clang')
+options=('!buildflags')
+source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('201c7797668a4b498fe108fcc13031b72d9dbf04dab0dc65dd6bd3f30e1f89ee')
 
 build() {
-    cd "${pkgname}"
-    ./build-infer.sh -y
+  cd "$pkgname-$pkgver"
+
+  mkdir -p clang-setup
+  CLANG_CMAKE_ARGS="-Wno-dev" CLANG_TMP_DIR="$(pwd)/clang-setup" INFER_CONFIGURE_OPTS="--prefix=/usr" ./build-infer.sh -y
 }
 
 package() {
-    srcdir="${pkgname}"
-    mkdir -p "${pkgdir}/usr/lib/${pkgname}" "${pkgdir}/usr/bin"
-    cp -r "${srcdir}/${pkgname}" "${pkgdir}/usr/lib/${pkgname}"
-    cp -r "${srcdir}/facebook-clang-plugins/" "${pkgdir}/usr/lib/${pkgname}"
-    cat > "${pkgdir}/usr/bin/infer" <<EOF
-#!/bin/bash
-/usr/lib/infer/infer/bin/infer "\$@"
-EOF
-    chmod +x "${pkgdir}/usr/bin/infer"
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
