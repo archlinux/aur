@@ -1,7 +1,7 @@
 # Maintainer: Kostas Kardaras <kostas.kardaras at gmail dot com>
 
 pkgname=profile-sync-daemon-brave
-pkgver=2021.11.01
+pkgver=2022.03.01
 pkgrel=1
 pkgdesc="Brave browser support for profile-sync-daemon"
 arch=('any')
