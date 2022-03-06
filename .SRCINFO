@@ -1,4 +1,4 @@
-pkgbase = msbuild-git
+pkgbase = mono-msbuild-git
 	pkgver = 16.10.1.r5004.g63458bd6c
 	pkgrel = 1
 	url = https://github.com/mono/msbuild
@@ -18,12 +18,12 @@ pkgbase = msbuild-git
 	sha256sums = a13ecb4125c673372d87a3b7d957fc8716a3c3e74cd08e9e354b5dcf170ed453
 	sha256sums = SKIP
 
-pkgname = msbuild-git
+pkgname = mono-msbuild-git
 	pkgdesc = Xamarin implementation of the Microsoft build system (Git version)
 	provides = msbuild
 	conflicts = msbuild
 
-pkgname = msbuild-sdkresolver-git
+pkgname = mono-msbuild-sdkresolver-git
 	pkgdesc = Xamarin implementation of the Microsoft build system (SDK resolver) (Git version)
 	depends = msbuild
 	provides = msbuild-sdkresolver

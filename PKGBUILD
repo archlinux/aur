@@ -3,8 +3,8 @@
 # Contributor: jtmb <packaging at technologicalwizardry dot com>
 
 _pkgbase=msbuild
-pkgbase=msbuild-git
-pkgname=('msbuild-git' 'msbuild-sdkresolver-git')
+pkgbase=mono-msbuild-git
+pkgname=('mono-msbuild-git' 'mono-msbuild-sdkresolver-git')
 pkgver=16.10.1.r5004.g63458bd6c
 pkgrel=1
 arch=('x86_64')
@@ -58,7 +58,7 @@ build() {
     sed -i "s@${srcdir}/target@@g" "${srcdir}/target/usr/bin/msbuild"
 }
 
-package_msbuild-git() {
+package_mono-msbuild-git() {
     pkgdesc="Xamarin implementation of the Microsoft build system (Git version)"
     conflicts=('msbuild')
     provides=('msbuild')
@@ -67,7 +67,7 @@ package_msbuild-git() {
     rm -rf "${pkgdir}/usr/lib/mono/msbuild/Current/bin/SdkResolvers/Microsoft.DotNet.MSBuildSdkResolver"
 }
 
-package_msbuild-sdkresolver-git() {
+package_mono-msbuild-sdkresolver-git() {
     pkgdesc="Xamarin implementation of the Microsoft build system (SDK resolver) (Git version)"
     depends=('msbuild')
     conflicts=('msbuild-sdkresolver')
