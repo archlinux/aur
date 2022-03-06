@@ -2,7 +2,7 @@
 # Contributor: xantares
 
 pkgname=stargate
-pkgver=22.02.1
+pkgver=22.03.1
 pkgrel=1
 pkgdesc="A digital audio workstation (DAW) with a powerful pattern-based workflow"
 license=('GPL')
@@ -38,7 +38,7 @@ optdepends=(
     'python-pyqt5: qt5 backend'
 )
 source=("https://github.com/stargateaudio/stargate/archive/refs/tags/release-${pkgver}.tar.gz")
-sha256sums=('c29b4400f91c8db8d0f61c234f50d24a05f632bd2bf94ae5a395f1142ff6a184')
+sha256sums=('7aadee110cf82d56b6c2e638486e53ee6c6f0340017e18f2f225e2e15642fb16')
 
 build() {
   cd stargate-release-${pkgver}/src
