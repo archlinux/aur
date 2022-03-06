@@ -1,7 +1,7 @@
 pkgbase = dm-fotowelt
 	pkgdesc = an offline client for creating photobooks, greeting cards, posters and more, uploading and ordering them at fotoparadies.de
 	pkgver = 7.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.fotoparadies.de/
 	install = dm-fotowelt.install
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = dm-fotowelt
 	depends = curl
 	depends = wget
 	depends = snappy
+	depends = libxcrypt-compat
 	source = https://dls.photoprintit.com/download/Data/1320-de_DE/hps/setup_dm_Fotowelt.tgz
 	sha256sums = 68eec4dae341a6b6182f0859b3f753eec020172afbd2fa6b134905a052f53c26
 
