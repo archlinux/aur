@@ -7,7 +7,7 @@
 
 pkgname=swift-language
 _swiftver=swift-5.5-RELEASE
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 swiftargumentparserver=0.4.3
 swiftcryptover=1.1.5
