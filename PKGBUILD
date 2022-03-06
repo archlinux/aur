@@ -1,6 +1,6 @@
 # Maintainer: Peter Flynn <peter@flynn.network>
 pkgname=foundry-bin
-pkgver=0.1.0.r20220225
+pkgver=0.1.0.r20220306
 pkgrel=1
 pkgdesc="A blazing fast, portable and modular toolkit for Ethereum application development written in Rust"
 arch=('aarch64' 'x86_64')
@@ -16,6 +16,8 @@ prepare() {
 	cd "$srcdir"
 	mkdir usr
 	export FOUNDRY_DIR="$srcdir/usr"
+	# Prevent .bashrc modification
+	export PATH="$PATH:$srcdir/usr/bin"
 	if [ ! -s foundry.paradigm.xyz ]; then
 		echo "Foundry failed to download installer."
 		exit 1
