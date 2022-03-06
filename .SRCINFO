@@ -1,0 +1,17 @@
+pkgbase = ridengui-git
+	pkgdesc = Qt 5/6 based GUI for Riden RDXX power supplies written in Python
+	pkgver = r20.db74a11
+	pkgrel = 1
+	url = https://github.com/shaybox/ridengui
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	depends = python
+	depends = python-click
+	depends = python-modbus-tk
+	depends = python-pyserial
+	provides = ridengui
+	source = git+https://github.com/shaybox/ridengui.git
+	sha512sums = SKIP
+
+pkgname = ridengui-git
