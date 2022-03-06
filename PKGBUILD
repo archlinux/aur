@@ -3,7 +3,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=odin-dev-bin
-_pkgver=2022-02
+_pkgver=2022-03
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
@@ -17,8 +17,8 @@ conflicts=(odin)
 options=(!strip)
 source=("odin-dev-${_pkgver}.tar.gz::https://github.com/odin-lang/Odin/archive/refs/tags/dev-${_pkgver}.tar.gz")
 source_x86_64=("https://github.com/odin-lang/Odin/releases/download/dev-${_pkgver}/odin-ubuntu-dev-${_pkgver}.zip")
-sha256sums=('d8d4ee55f34ce6634ae2037974bfd683b7432d990fc811df3b32ff5f36086dfc')
-sha256sums_x86_64=('be4c3001dd69aec19b25a106eff5b171c6ccdcdc0e9780cd04bc70bfb5d3d362')
+sha256sums=('6bf8f60978b6f8968aa723e1dd92a975c6ce3f811190369ba9019f37328f1852')
+sha256sums_x86_64=('69d5e71841f986cd536c86eac17365eed8b27c51f91d1c1be1edcacc8e150628')
 
 build() {
   #cd "${srcdir}/ubuntu_artifacts"
