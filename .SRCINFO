@@ -1,0 +1,16 @@
+pkgbase = zfetch
+	pkgdesc = simple but pretty fetch script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jornmann/zfetch
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = sed
+	depends = procps-ng
+	depends = coreutils
+	depends = gzip
+	source = https://github.com/jornmann/zfetch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 380752fa36a9cd9d212be4283f41de441a798b6055ea0b8a607c78c8ee0c20b1
+
+pkgname = zfetch
