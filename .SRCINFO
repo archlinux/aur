@@ -1,7 +1,7 @@
 pkgbase = pokeget-git
 	pkgdesc = Pokeget is a bash script you can use to display cool sprites of pokemon in your terminal.
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 1.1.r7.gc1fc8a9
+	pkgrel = 1
 	url = https://github.com/talwat/pokeget
 	arch = any
 	license = MIT
