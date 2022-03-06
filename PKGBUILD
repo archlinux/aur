@@ -3,7 +3,7 @@
 
 pkgname=gmid
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
 url='https://gmid.omarpolo.com'
@@ -22,6 +22,12 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	install -Dm755 contrib/gencert -t "$pkgdir/usr/share/$pkgname"
+	install -Dm755 contrib/renew-certs -t "$pkgdir/usr/share/$pkgname"
+	install -Dm644 contrib/gmid.service -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+
+	mkdir -p "$pkgdir/usr/share/vimfiles"
+	cp -R contrib/vim/* "$pkgdir/usr/share/vimfiles/"
 }
