@@ -37,8 +37,7 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   arch-meson dconf build \
-    --libdir=/usr/lib32 \
-    -D enable-man=false
+    --libdir=/usr/lib32
   ninja -C build
 }
 
