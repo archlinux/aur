@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-5
+_srctag=GE-Proton7-8
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -254,7 +254,7 @@ prepare() {
     popd
     done
 
-    ./patches/protonprep-valve.sh
+    ./patches/protonprep-valve-staging.sh
 
     pushd wine
         # From Arch Wine
@@ -332,6 +332,7 @@ build() {
     export CXXFLAGS+=" -mno-avx2"
 
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_HOME="${srcdir}"/build/.cargo
     export WINEESYNC=0
     export WINEFSYNC=0
     export DISPLAY=
@@ -402,6 +403,6 @@ sha256sums=('SKIP'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'cb03854b5d868b2d0912da42e01536bb673e009ed5263f4eeb8836a2a9c36f43'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'c6c640110fcb194b512ed94f4ec40cbf560cd4df5e9993fb821da3ca5b771297'
+            '6faf03925917c3a16915a5223c48aa23d68cb02e9a7fa0a136bd28b2e3a07a5f'
             'e5cb2054a5d23e956d7cd85c2f716c03852fe78c54ad689f2946ffe68a76c56a'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
