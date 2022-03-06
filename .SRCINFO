@@ -6,6 +6,7 @@ pkgbase = burp-backup
 	install = burp.install
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = AGPL3
 	makedepends = uthash
 	depends = acl
