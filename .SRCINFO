@@ -1,0 +1,17 @@
+pkgbase = qdocumentview-git
+	pkgdesc = QDocumentView is a widget to render multi-page documents
+	pkgver = r7.d58dd20
+	pkgrel = 1
+	url = https://gitlab.com/marcusbritanicus/qdocumentview
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	makedepends = git
+	makedepends = poppler-qt5
+	depends = qt5-base
+	depends = djvulibre
+	depends = poppler-qt5
+	source = git+https://gitlab.com/marcusbritanicus/qdocumentview
+	sha256sums = SKIP
+
+pkgname = qdocumentview-git
