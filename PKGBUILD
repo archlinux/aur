@@ -31,7 +31,7 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -Dm755 contrib/gencert -t "$pkgdir/usr/share/$_pkgname"
 	install -Dm755 contrib/renew-certs -t "$pkgdir/usr/share/$_pkgname"
-	install -Dm755 contrib/gmid.service -t "$pkgdir/usr/lib/systemd/system"
+	install -Dm644 contrib/gmid.service -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 
