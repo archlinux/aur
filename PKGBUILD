@@ -6,12 +6,12 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-2
+_srctag=GE-Proton7-5
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
 
-_wine_commit=65e392f679220050b27d04117af7cfd2dfa6abe4
+_wine_commit=10da6d78c52fb0d7a90fe39be0c79c244232a11d
 _stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 #_winever=${pkgver%.*}
 #_winever=$pkgver
@@ -130,7 +130,7 @@ prepare() {
   pushd $pkgname
     rm -r proton-wine && cp -r "$srcdir"/wine-valve proton-wine
     rm -r wine-staging && cp -r "$srcdir"/wine-staging wine-staging
-    patches/protonprep-lutris.sh
+    patches/protonprep-lutris-staging.sh
     pushd proton-wine
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
