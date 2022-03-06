@@ -3,7 +3,7 @@
 _pkgname='boost-histogram'
 pkgname="python-${_pkgname}"
 pkgver='1.3.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('x86_64')
 url='https://github.com/scikit-hep/boost-histogram'
@@ -57,7 +57,7 @@ build() {
 check() {
   cd "${srcdir}/${pkgname}"
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${python_version}" pytest || return 0  # one test fails due to Boost bug - https://github.com/boostorg/histogram/pull/302
+  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${python_version}" pytest
 }
 
 package() {
