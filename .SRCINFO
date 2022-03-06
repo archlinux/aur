@@ -1,6 +1,6 @@
 pkgbase = ngnk-git
 	pkgdesc = simple fast vector programming language
-	pkgver = r3096.338d4c8
+	pkgver = r3111.ba0e0ba
 	pkgrel = 1
 	url = https://codeberg.org/ngn/k
 	arch = armv7h

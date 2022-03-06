@@ -1,7 +1,7 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar DOT eu DOT org>
 
 pkgname=ngnk-git
-pkgver=r3096.338d4c8
+pkgver=r3111.ba0e0ba
 pkgrel=1
 pkgdesc="simple fast vector programming language"
 arch=('armv7h' 'aarch64' 'i686' 'x86_64')
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd k
-  make k-dflt
+  make k-libc
 }
 
 check() {
