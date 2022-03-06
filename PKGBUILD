@@ -2,12 +2,12 @@
 
 pkgname=gd32-dfu-utils
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Dfu-utils GD32 fork. Dfu-util - Device Firmware Upgrade Utilities"
 arch=('x86_64')
 url="https://github.com/riscv-mcu/gd32-dfu-utils"
-license=('MIT')
+license=('GPLv2')
 groups=()
 depends=('libusb')
 makedepends=()
@@ -16,8 +16,8 @@ optdepends=(
   'python: dfuse-pack tool support'
   'python-intelhex: Intel HEX file format support'
 )
-provides=()
-conflicts=(xfel-git)
+provides=("GD32-dfu-util")
+conflicts=()
 replaces=()
 backup=()
 options=('!strip')
