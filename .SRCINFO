@@ -1,14 +1,15 @@
-pkgbase = dragon-drag-and-drop
+pkgbase = dragon-drop
 	pkgdesc = Simple drag-and-drop source/sink for X
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/mwh/dragon
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	depends = gtk3
-	source = dragon-drag-and-drop-1.1.1.tar.gz::https://github.com/mwh/dragon/archive/v1.1.1.tar.gz
-	sha256sums = 010a508c539c35bd128c54bbe57ad7c17c078e1b95e7bd3457a8589973e0b171
+	conflicts = dragon-drag-and-drop
+	replaces = dragon-drag-and-drop
+	source = dragon-drop-1.2.0.tar.gz::https://github.com/mwh/dragon/archive/v1.2.0.tar.gz
+	sha256sums = 9bda28e96d715c759c8a1db754bdfde5e7d83671e13cd25a892f6b5e29357994
 
-pkgname = dragon-drag-and-drop
-
+pkgname = dragon-drop

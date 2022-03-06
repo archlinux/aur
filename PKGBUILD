@@ -2,23 +2,25 @@
 # Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 
 _pkgname=dragon
-pkgname=dragon-drag-and-drop
-pkgver=1.1.1
+pkgname=dragon-drop
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Simple drag-and-drop source/sink for X'
 arch=('i686' 'x86_64')
 url='https://github.com/mwh/dragon'
 license=('GPL3')
 depends=('gtk3')
+conflicts=('dragon-drag-and-drop')
+replaces=('dragon-drag-and-drop')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mwh/dragon/archive/v${pkgver}.tar.gz")
-sha256sums=('010a508c539c35bd128c54bbe57ad7c17c078e1b95e7bd3457a8589973e0b171')
+sha256sums=('9bda28e96d715c759c8a1db754bdfde5e7d83671e13cd25a892f6b5e29357994')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  make
+  make NAME=${pkgname}
 }
 
 package() {
   cd "${_pkgname}-${pkgver}"
-  install -m755 -D dragon "$pkgdir/usr/bin/${pkgname%-git}"
+  make DESTDIR="${pkgdir}/usr" PREFIX='' NAME=${pkgname} install
 }
