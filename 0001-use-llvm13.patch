@@ -1,0 +1,33 @@
+From 5295e01a6b9b8e50d4ea2aa3f6fb015ad39c0371 Mon Sep 17 00:00:00 2001
+From: FabioLolix <fabio.loli@disroot.org>
+Date: Sun, 6 Mar 2022 13:51:29 +0100
+Subject: [PATCH] use llvm13
+
+---
+ Makefile | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index ceff3c20..ef3dc59b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -40,11 +40,11 @@ ifeq ($(OS), Darwin)
+     LDFLAGS:=$(LDFLAGS) -lLLVM-C
+ endif
+ ifeq ($(OS), Linux)
+-    LLVM_CONFIG=llvm-config-11
+-    ifneq ($(shell which llvm-config-11 2>/dev/null),)
+-        LLVM_CONFIG=llvm-config-11
+-    else ifneq ($(shell which llvm-config-11-64 2>/dev/null),)
+-        LLVM_CONFIG=llvm-config-11-64
++    LLVM_CONFIG=llvm-config
++    ifneq ($(shell which llvm-config 2>/dev/null),)
++        LLVM_CONFIG=llvm-config
++    else ifneq ($(shell which llvm-config-64 2>/dev/null),)
++        LLVM_CONFIG=llvm-config-64
+     else
+         ifeq ($(shell $(LLVM_CONFIG) --version | grep '^11\.'),)
+             $(error "Requirement: llvm-config must be version 11")
+-- 
+2.35.1
+

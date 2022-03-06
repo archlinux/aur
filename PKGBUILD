@@ -4,22 +4,22 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r4965.0bc3652f
+pkgver=r5763.758d1e2a
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
 url="https://github.com/odin-lang/odin"
 license=(BSD)
-depends=(glibc ncurses)
+depends=(glibc llvm-libs ncurses)
 makedepends=(git clang llvm)
 provides=(odin)
 conflicts=(odin)
 
 source=("git+https://github.com/odin-lang/odin.git"
-	"0001-update-odin-to-use-llvm-12.patch")
+        '0001-use-llvm13.patch')
 
-sha256sums=("SKIP"
-	    "950663559a9677db912babbc7372b16d41ba03d64d3ea0f39544680fce8a0a25")
+sha256sums=('SKIP'
+            '4e0e571d4067975f0405564d7110d67092549a213a3012ff3a42f93efffda84f')
 
 pkgver() {
     cd "${_pkgname}"
@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    patch --forward --strip=1 --input="${srcdir}/0001-update-odin-to-use-llvm-12.patch"
+    patch --forward --strip=1 --input="${srcdir}/0001-use-llvm13.patch"
     sed -i "s/linux\/libraylib.a/system:raylib/g" "vendor/raylib/raylib.odin"
     make release
 }

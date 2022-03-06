@@ -1,6 +1,6 @@
 pkgbase = odin-git
 	pkgdesc = A fast, concise, readable, pragmatic and open sourced programming language.
-	pkgver = r4965.0bc3652f
+	pkgver = r5763.758d1e2a
 	pkgrel = 1
 	url = https://github.com/odin-lang/odin
 	arch = x86_64
@@ -9,12 +9,13 @@ pkgbase = odin-git
 	makedepends = clang
 	makedepends = llvm
 	depends = glibc
+	depends = llvm-libs
 	depends = ncurses
 	provides = odin
 	conflicts = odin
 	source = git+https://github.com/odin-lang/odin.git
-	source = 0001-update-odin-to-use-llvm-12.patch
+	source = 0001-use-llvm13.patch
 	sha256sums = SKIP
-	sha256sums = 950663559a9677db912babbc7372b16d41ba03d64d3ea0f39544680fce8a0a25
+	sha256sums = 4e0e571d4067975f0405564d7110d67092549a213a3012ff3a42f93efffda84f
 
 pkgname = odin-git
