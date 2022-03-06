@@ -3,7 +3,7 @@
 _pkgname=modbus-tk
 pkgname="python-${_pkgname}-git"
 pkgver=r180.c168f71
-pkgrel=1
+pkgrel=2
 pkgdesc="Create Modbus app easily with Python"
 arch=("any")
 url="https://github.com/ljean/${_pkgname}"
@@ -12,7 +12,7 @@ depends=(
     "python"
     "python-pyserial"
 )
-provides=("${_pkgname}")
+provides=("${_pkgname}" "python-${_pkgname}")
 source=("git+${url}.git")
 sha512sums=("SKIP")
 
