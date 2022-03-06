@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=mdbook-epub-git
-pkgver=0.3.0+12.g640a81209b
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="MDBook EPUB Backend"
 url="https://github.com/Michael-F-Bryan/mdbook-epub"
@@ -15,7 +15,7 @@ provides=(mdbook-epub=${pkgver%+*})
 
 pkgver() {
   cd mdbook-epub
-  git describe --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
+  git describe --tags --abbrev=10 | sed 's/^v//; s/-/+/; s/-/./'
 }
 
 build() {
