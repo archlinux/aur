@@ -1,28 +1,28 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Johan Vandegriff <johan at vandymail dot com>
 
 pkgname=streampi-server
-pkgver=0.0.6
-pkgrel=1
+pkgver=1.0.0_EA+3
+_pkgver=1.0.0-EA+3
+pkgrel=2
 pkgdesc='An Opensource Alternative to the Elgato Stream Deck for the Raspberry Pi'
 arch=('x86_64')
 url='https://stream-pi.com'
-license=('MIT')
+license=('GPL3')
 depends=('java-runtime>=11'
-         'ttf-roboto'
+         'alsa-lib'
          'libnet'
          'gtk3'
          'gtk2')
-source=("${pkgname}-${pkgver}.zip::https://github.com/dubbadhar/streampi_server/releases/download/${pkgver}/linux64.zip"
-        'LICENSE::https://github.com/dubbadhar/streampi_server/raw/master/LICENSE')
-sha256sums=('9b171b41a4060430f3251856f6024e2b4cba328c829fe864dc908cbcf380a17c'
-            '9cf04e2ea376310dc9957385a2151dad13150abbba0f01084f5b0324307519ae')
+source=("${pkgname}-${pkgver}.zip::https://github.com/stream-pi/server/releases/download/${_pkgver}/stream-pi-server-linux-x64-${_pkgver}-executable.zip"
+        'LICENSE::https://raw.githubusercontent.com/stream-pi/server/master/LICENSE')
+sha256sums=('ee16c0aff017260608a7fbc299449bf9a9e3d7c18f3c33ee8eb2745f94112e75'
+            '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 
 package() {
+  echo "$source"
+  sleep 10
   install -d "${pkgdir}/usr/bin" "${pkgdir}/opt"
-  cp -avR linux64 "${pkgdir}/opt/streampi-server"
-  echo "#!/usr/bin/env bash
-  cd /opt/streampi-server
-  ./server.sh" > streampi-server
-  install -Dm755 streampi-server -t "${pkgdir}/usr/bin"
+  cp -avR "stream-pi-server-${_pkgver}" "${pkgdir}/opt/streampi-server"
+  ln -sr "${pkgdir}/opt/streampi-server/bin/Stream-Pi Server" "${pkgdir}/usr/bin/streampi-server"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
