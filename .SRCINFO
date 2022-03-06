@@ -1,6 +1,6 @@
 pkgbase = swift-bin-development
-	pkgdesc = Binary builds of the Swift programming language
-	pkgver = 5.5.DEVELOPMENT
+	pkgdesc = Binary builds of the Swift programming language (dev snapshot)
+	pkgver = 5.6.DEVELOPMENT
 	pkgrel = 1
 	url = https://swift.org
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = swift-bin-development
 	makedepends = patchelf
 	depends = libutil-linux
 	depends = libxml2
-	depends = python36
+	optdepends = python36: required for REPL
 	provides = swift-language
 	replaces = swift-language-bin
 	options = !strip
-	source = https://swift.org/builds/swift-5.5-branch/centos8/swift-5.5-DEVELOPMENT-SNAPSHOT-2021-12-07-a/swift-5.5-DEVELOPMENT-SNAPSHOT-2021-12-07-a-centos8.tar.gz
+	source = https://swift.org/builds/swift-5.6-branch/centos8/swift-5.6-DEVELOPMENT-SNAPSHOT-2022-02-11-a/swift-5.6-DEVELOPMENT-SNAPSHOT-2022-02-11-a-centos8.tar.gz
 	sha256sums = SKIP
 
 pkgname = swift-bin-development
