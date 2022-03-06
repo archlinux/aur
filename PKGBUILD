@@ -9,19 +9,20 @@
 _electron=electron15
 pkgname=schildichat-desktop
 pkgver=1.10.4.sc.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
 url="https://schildi.chat"
 license=(Apache)
-makedepends=(npm git yarn python rust sqlcipher nvm make)
-depends=(${_electron} sqlcipher)
+makedepends=(npm git yarn python rust tcl nvm make)
+depends=(${_electron})
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#tag=v${pkgver/.sc./-sc.}
         git+https://github.com/SchildiChat/matrix-js-sdk.git
         git+https://github.com/SchildiChat/matrix-react-sdk.git
         git+https://github.com/SchildiChat/element-web.git
         git+https://github.com/SchildiChat/element-desktop.git
         autolaunch.patch
+        encapsulate-sqlcipher.diff
         schildichat-desktop.desktop
         schildichat-desktop.sh)
 sha256sums=('SKIP'
@@ -30,8 +31,9 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
+            '3b2112d25b258b67d18b9329faeb9e5c5b218732c9c020ee01911347a90a1cb8'
             '04610d85973c320d0fea5853c8a5fd55e701e9d31c0651bb9b698ed31546d3eb'
-            '26c4058e067932a63f8143ed06c65f97b22ddcb693130580de9ffd1a24f1f5c7')
+            'da41f71e000cd64f8da66725c0ff95bbf525d5d5f953a93f355ea8d9f5f6ef53')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
@@ -51,6 +53,7 @@ prepare() {
 
   cd element-desktop
   patch -p1 < "${srcdir}/autolaunch.patch"
+  patch -p1 < "${srcdir}/encapsulate-sqlcipher.diff"
   cd "${srcdir}/${pkgname}"
   make setup
 }
