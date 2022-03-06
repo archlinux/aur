@@ -3,7 +3,7 @@
 
 pkgname=termius-beta
 pkgver=7.35.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
@@ -34,6 +34,8 @@ package() {
     cd "$srcdir"/$pkgname
 
     cp -r \
+        chrome_100_percent.pak \
+        chrome_crashpad_handler \
         icudtl.dat \
         libffmpeg.so \
         locales \
@@ -50,6 +52,7 @@ package() {
 
     find "$pkgdir"/opt/$pkgname/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/$pkgname/termius-beta
+    chmod 755 "$pkgdir"/opt/$pkgname/chrome_crashpad_handler
 
     mkdir -p "$pkgdir"/usr/bin
     ln -sf /opt/$pkgname/termius-beta "$pkgdir"/usr/bin/$pkgname

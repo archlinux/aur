@@ -1,7 +1,7 @@
 pkgbase = termius-beta
 	pkgdesc = Desktop SSH Client
 	pkgver = 7.35.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.termius.com/
 	arch = x86_64
 	license = custom
