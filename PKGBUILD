@@ -1,13 +1,13 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=lagrange-git
-pkgver=1.10.3.r7.ga7163a05
-pkgrel=2
+pkgver=1.11.1.r5.g370e3977
+pkgrel=1
 pkgdesc="A desktop GUI client for browsing Geminispace"
 arch=('i686' 'x86_64')
 url="https://gmi.skyjake.fi/lagrange/"
 license=('BSD')
-depends=('glibc' 'fribidi' 'harfbuzz' 'hicolor-icon-theme' 'libunistring' 'libwebp' 'openssl' 'pcre' 'sdl2' 'zlib')
+depends=('glibc' 'fribidi' 'harfbuzz' 'hicolor-icon-theme' 'libunistring' 'libwebp' 'mpg123' 'openssl' 'pcre' 'sdl2' 'zlib')
 makedepends=('git' 'cmake' 'zip')
 optdepends=('mpg123')
 provides=('lagrange')
