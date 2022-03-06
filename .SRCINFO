@@ -1,6 +1,6 @@
 pkgbase = hip-runtime-nvidia
 	pkgdesc = Heterogeneous Interface for Portability ROCm
-	pkgver = 5.0.1
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = hip-runtime-nvidia
 	depends = rocm-llvm
 	provides = hip
 	conflicts = hip
-	source = hip-runtime-nvidia-5.0.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-5.0.1.tar.gz
-	source = hip-runtime-nvidia-hipamd-5.0.1.tar.gz::https://github.com/ROCm-Developer-Tools/hipamd/archive/rocm-5.0.1.tar.gz
-	sha256sums = 508555cb068f0c35b930d8f7fc0bb42c64cc555e618434b9135d8d0257ff6977
-	sha256sums = f75389b799fc5117452ed74cb4ee2afbb6de93de4367a065851ddc74ea4f9ee3
+	source = hip-runtime-nvidia-5.0.2.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/rocm-5.0.2.tar.gz
+	source = hip-runtime-nvidia-hipamd-5.0.2.tar.gz::https://github.com/ROCm-Developer-Tools/hipamd/archive/rocm-5.0.2.tar.gz
+	sha256sums = e23601e6f4f62083899ea6356fffbe88d1deb20fa61f2c970e3c0474cd8886ca
+	sha256sums = 80e7268dd22eba0f2f9222932480dede1d80e56227c0168c6a0cc8e4f23d3b76
 
 pkgname = hip-runtime-nvidia
