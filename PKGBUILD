@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli-bin
 pkgver=0.7.4
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="\$HOME, \$HOME everywhere"
 arch=("x86_64" "aarch64" "armv7l" "armv7h")
@@ -60,8 +60,8 @@ b2sums_x86_64=(
     "c9785cc556ad8d3296623c42aa1e6c296f241f8279986eaf2b774579b0ba5c20c4970209387164dcc06da47b37b0cb0c1c0c88f96e3dfca9bc299bd861c06213"
 )
 # Checksums are the same for armv7l and armv7h
-sha256sums_armv7l=("${sha256sums_armv7[@]}")
-sha256sums_armv7h=("${sha256sums_armv7[@]}")
+b2sums_armv7l=("${b2sums_armv7[@]}")
+b2sums_armv7h=("${b2sums_armv7[@]}")
 
 noextract=()
 validpgpkeys=()
