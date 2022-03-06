@@ -1,7 +1,7 @@
 pkgbase = libdcmtk14-bin
 	pkgdesc = OFFIS DICOM toolkit runtime libraries.
 	pkgver = 3.6.4
-	pkgrel = 2.1
+	pkgrel = 2.2
 	url = https://dicom.offis.de/dcmtk
 	arch = i686
 	arch = x86_64
