@@ -1,7 +1,7 @@
 # Maintainer: Pig Fang <g-plane@hotmail.com>
 pkgname=deno-bin
 pkgver=1.19.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern runtime for JavaScript and TypeScript."
 arch=(x86_64)
 url="https://deno.land"

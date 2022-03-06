@@ -1,7 +1,7 @@
 pkgbase = deno-bin
 	pkgdesc = A modern runtime for JavaScript and TypeScript.
 	pkgver = 1.19.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deno.land
 	arch = x86_64
 	license = MIT
