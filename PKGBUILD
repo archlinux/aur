@@ -3,7 +3,7 @@
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
-pkgver=96.0b6
+pkgver=98.0b9
 pkgrel=1
 pkgdesc="Adds a 'firefox'-symlink for 'firefox-developer-edition'. Also symlinks extensions, icon- and .desktop-files."
 arch=("any")
@@ -34,7 +34,7 @@ sha256sums=(
 )
 
 pkgver() {
-  pacman -Qi firefox-developer-edition | grep -E '^Version[[:space:]]*:' | head -n 1 | awk -F ':' '{print $2}' | sed -E 's|-.*||' | tr -d '[[:space:]]'
+  pacman -Q firefox-developer-edition | cut -d ' ' -f 2 | sed -E 's|-.*||'
 }
 
 package() {
