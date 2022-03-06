@@ -46,12 +46,9 @@ Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%20${_launcherver}.zip"
   "https://gitlab.com/CodingKoopa/lml-linux-launcher/-/archive/\
 $_linuxver/lml-linux-launcher-$_linuxver.zip"
 )
-md5sums=(
-  # Skip the mod launcher ZIP because no hashes are provided by upstream.
-  'SKIP'
-  # SKip the mod launcher Linux launcher ZIP because the latest master is subject to change.
-  'SKIP'
-)
+sha256sums=(
+  'ed469c8cf29f3f4fcfb3793e3afb7c3e4d8f6c5d824e9d8645b31eb7f93cbb00'
+  '49f643d14cf04c882548f22feb25db6e91af2635c93291f97fbdfd47ec81f98f')
 
 package() {
   # Install the mod launcher files.

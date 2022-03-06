@@ -12,7 +12,7 @@ pkgbase = lucas-simpsons-hit-and-run-mod-launcher
 	optdepends = icoutils: old launcher support
 	source = lucas-simpsons-hit-and-run-mod-launcher-1.26.zip::https://cdn.donutteam.com/Downloads/Tools/Lucas'%20Simpsons%20Hit%20&%20Run%20Mod%20Launcher%201.26.zip
 	source = https://gitlab.com/CodingKoopa/lml-linux-launcher/-/archive/b024359583da621c6e5402b2c2f46c6061c975ac/lml-linux-launcher-b024359583da621c6e5402b2c2f46c6061c975ac.zip
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = ed469c8cf29f3f4fcfb3793e3afb7c3e4d8f6c5d824e9d8645b31eb7f93cbb00
+	sha256sums = 49f643d14cf04c882548f22feb25db6e91af2635c93291f97fbdfd47ec81f98f
 
 pkgname = lucas-simpsons-hit-and-run-mod-launcher
