@@ -3,7 +3,7 @@
 
 pkgname=bazel-buildtools
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
 license=('Apache')
@@ -16,7 +16,7 @@ sha256sums=("7f43df3cca7bb4ea443b4159edd7a204c8d771890a69a50a190dc9543760ca21")
 
 build() {
   cd buildtools-$pkgver
-  bazel build //buildifier //buildozer //unused_deps
+  PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build //buildifier //buildozer //unused_deps
 }
 
 package() {
