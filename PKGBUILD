@@ -4,8 +4,8 @@
 pkgbase=hepmc
 pkgname=("${pkgbase}" "${pkgbase}-docs")
 _pkgname=HepMC3
-pkgver=3.2.4
-pkgrel=4
+pkgver=3.2.5
+pkgrel=1
 pkgdesc="A particle physics package for storing collision events from Monte Carlo generators"
 arch=('x86_64')
 url="http://hepmc.web.cern.ch/"
@@ -16,7 +16,7 @@ optdepends=('root: ROOT I/O'
             'pythia8: Pythia support'
             'python: Python interface')
 source=("${pkgbase}-${pkgver}.tar.gz::http://hepmc.web.cern.ch/${pkgbase}/releases/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e088fccfd1a6c2f8e1089f457101bee1e5c7a9777e9d51c6419c8a288a49e1bb')
+sha256sums=('cd0f75c80f75549c59cc2a829ece7601c77de97cb2a5ab75790cac8e1d585032')
 
 build() {
     mkdir build
