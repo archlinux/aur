@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec /usr/lib/ultimmc/UltimMC -d "${XDG_DATA_HOME-"$HOME"/.local/share}/ultimmc" "$@"
