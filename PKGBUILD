@@ -3,7 +3,7 @@
 
 pkgname=libstdc++5
 pkgver=3.3.6
-pkgrel=8
+pkgrel=9
 pkgdesc="GNU Standard C++ library version 3"
 arch=('x86_64')
 url="https://gcc.gnu.org"
@@ -51,6 +51,7 @@ prepare() {
 build(){
   export CFLAGS="-march=${CARCH/_/-} -O2"
   export CXXFLAGS="-march=${CARCH/_/-} -O2"
+  export SHELL='/usr/bin/bash' # doesn't work with fish
   unset CPPFLAGS
 
   cd gcc-build
