@@ -1,7 +1,7 @@
 # Maintainer: Antoni Spaanderman <56turtle56@gmail.com>
 
 pkgname=pacman-cache-server-git
-pkgver=8.0e2cb61
+pkgver=8.0e2cb61.2
 pkgrel=1
 pkgdesc="Caching pacman mirror for faster downloads at home"
 arch=('any')
