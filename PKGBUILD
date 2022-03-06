@@ -2,7 +2,7 @@
 # Maintainer: Max Mazurov <fox.cpp at disroot dot org>
 # Contributor: Jonas Heinrich <onny@project-insantiy.org>
 pkgname='maddy'
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc='Composable all-in-one mail server'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     'maddy.tmpfiles'
 )
 backup=('etc/maddy/maddy.conf')
-sha512sums=('0e15844b931ee28f73741e4f7a9bf0ae4095e5150d7b860fc02f2fb7634efcc617c27663fe631dcb5e9547b7521f59bee542135136fdc76c07beb363c03cf231'
+sha512sums=('8e459a3cac5bc25bc873ac1497b8e4e76a2d182f9909874d8811ac68bc861f848c712d5140d3a097a8df69b092b3266b7d1a493f45a4c2260bad76f6779a67d9'
             'SKIP'
             '750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589'
             'f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5')
