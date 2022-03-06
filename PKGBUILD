@@ -1,8 +1,8 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # Co-Maintainer: Frank Tao <frank.tao@uwaterloo.ca>
 pkgname=wayfire-git
-pkgver=0.7.2.r20220103.0a921f7
-pkgrel=2
+pkgver=0.7.2.r191.g9458f589
+pkgrel=1
 pkgdesc="3D wayland compositor"
 arch=('x86_64')
 url="https://github.com/WayfireWM/wayfire"
@@ -14,12 +14,14 @@ provides=("${pkgname%-git}" 'wlroots-git' 'wf-config-git')
 conflicts=("$pkgname" 'wlroots-git' 'wlroots' 'wf-config-git' 'wf-config')
 replaces=()
 options=()
+
 source=('git+https://github.com/WayfireWM/wayfire')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/wayfire"
-    git tag -l | awk '/^[0-9.]+$/ {print $0} /^v{1}[0-9.]+$/ {print substr($0,2)}'|sort -n|tail -n1
+  tag=$(git tag -l | awk '/^[0-9.]+$/ {print $0} /^v{1}[0-9.]+$/ {print substr($0,2)}'|sort -n|tail -n1)
+  printf "$tag.r%s.g%s" "$(git rev-list --count v${tag}..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
