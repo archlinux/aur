@@ -1,6 +1,6 @@
 pkgbase = audiorelay
 	pkgdesc = Stream your PC audio to your phone
-	pkgver = 0.23.1
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://audiorelay.net
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = audiorelay
 	depends = java-runtime=17
 	depends = libpulse
 	depends = opus
-	source = https://dl.audiorelay.net/setups/linux/audiorelay-0.23.1.deb
-	sha256sums = 540a5e3893bbea4f31a8c1d3285e2522e3459197575416ead8177ad115db0c24
+	source = https://dl.audiorelay.net/setups/linux/audiorelay-0.24.0.deb
+	sha256sums = 6441f5d1fa2c0bf9e75b3302d32a1c3155d9f6130ae8f49f5a93b04e1ac84e3f
 
 pkgname = audiorelay
