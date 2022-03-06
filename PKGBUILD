@@ -11,7 +11,7 @@ source=("http://t3x.org/klong/klong${pkgver}.tgz"
         "emit.patch")
 sha256sums=('0f349db737f375c42f0ce0fda05d3a5627fb1627d7422c5fc84680ec9a936dfd'
             '60be54e072864940c728d1d792b97590886358ecf5fb8f2751f6ce2d36e5e8c5'
-            'c849646638736277f109944f15378ebe719da998664cad982a810dc01b6862b7')
+            '2578d015a5e613ffaaf17e9354eb32f1962d5260a13d1df6ebf404f9e5ac9076')
 
 prepare() {
   cd ${srcdir}/${pkgname}
