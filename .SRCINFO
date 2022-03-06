@@ -1,11 +1,11 @@
 pkgbase = squareline-studio
 	pkgdesc = Visual drag-and-drop UI editor to create beautiful Graphical User Interfaces quickly and easily
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://squareline.io/
 	arch = x86_64
 	license = custom
-	source = https://static.squareline.io/downloads/SquareLine_Studio_Linux_v1_0_2.zip
-	sha256sums = 770299431e2988b9319a2e1101d67b3d9f26d3f935af234220df2830e14ea331
+	source = https://static.squareline.io/downloads/SquareLine_Studio_Linux_v1_0_3.zip
+	sha256sums = 9a06b11d05399c690f06051932d26c4852290b2295188d1053ed5c3d1f3db694
 
 pkgname = squareline-studio
