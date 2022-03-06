@@ -1,0 +1,12 @@
+pkgbase = arkscript
+	pkgdesc = A small, fast, functional scripting language
+	pkgver = 3.1.3
+	pkgrel = 1
+	url = https://arkscript-lang.dev/
+	arch = x86_64
+	license = MPL2
+	depends = gcc>=9
+	source = arkscript-v3.1.3.tar.gz::https://github.com/ArkScript-lang/Ark/releases/download/v3.1.3/linux-gcc-9.zip
+	sha256sums = SKIP
+
+pkgname = arkscript
