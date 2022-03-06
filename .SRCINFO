@@ -1,7 +1,7 @@
 pkgbase = drawterm
 	pkgdesc = Connect to Plan 9 CPU servers from other operating systems.
 	pkgver = 20210326
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/9fans/drawterm
 	arch = i686
 	arch = x86_64

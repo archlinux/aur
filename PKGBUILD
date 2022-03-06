@@ -2,7 +2,7 @@
 
 pkgname=drawterm
 pkgver=20210326
-pkgrel=1
+pkgrel=2
 pkgdesc="Connect to Plan 9 CPU servers from other operating systems."
 provides=($pkgname)
 conflicts=("${pkgname%-*}" "${pkgname%-*}-hg")
