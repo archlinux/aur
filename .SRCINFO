@@ -1,6 +1,6 @@
 pkgbase = cie-middleware-git
 	pkgdesc = Middleware della CIE (Carta di Identità Elettronica) per Linux (mio fork)
-	pkgver = podofo.1.4.2.r1.c64f008
+	pkgver = 1.4.2.r2.5a355bc
 	pkgrel = 1
 	url = https://developers.italia.it/it/cie
 	install = cie-middleware.install
