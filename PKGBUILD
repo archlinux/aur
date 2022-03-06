@@ -5,7 +5,7 @@
 
 pkgname=lib32-libproxy
 pkgver=0.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc='A library that provides automatic proxy configuration management'
 arch=(x86_64)
 url=https://libproxy.github.io/libproxy/
