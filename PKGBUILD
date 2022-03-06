@@ -7,7 +7,7 @@
 
 pkgname=lib32-libtirpc
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
 arch=(x86_64)
 url=http://libtirpc.sourceforge.net/
