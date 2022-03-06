@@ -3,7 +3,7 @@
 
 pkgname=lib32-glew1.10
 pkgver=1.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A cross-platform C/C++ extension loading library'
 arch=(x86_64)
 url=http://glew.sourceforge.net
