@@ -1,7 +1,7 @@
 pkgbase = python-modbus-tk-git
 	pkgdesc = Create Modbus app easily with Python
 	pkgver = r180.c168f71
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ljean/modbus-tk
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-modbus-tk-git
 	depends = python-pyserial
 	provides = modbus-tk
 	provides = python-modbus-tk
+	conflicts = python-modbus-tk
 	source = git+https://github.com/ljean/modbus-tk.git
 	sha512sums = SKIP
 
