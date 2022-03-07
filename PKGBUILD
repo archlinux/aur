@@ -2,7 +2,7 @@
 # Contributor: rustemb <rustemb at systemli dot org>
 
 pkgname=shadowsocks-rust
-pkgver=1.13.5
+pkgver=1.14.0
 pkgrel=1
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=(
     'shadowsocks-rust@.service'
     'shadowsocks-rust-server@.service')
 
-sha512sums=('6f9926b70a5a4a035968e5b3c581774c807d1eb8a2ce2192c8390ea1c0f66f2384b5e3d7df0cb94364a6f09302af42727c174a984c2cc3cef0db10e5092b0294'
+sha512sums=('a3ea5fa1a1e7d87ea328bd8bb6152bccd865551a04206092e4b65579ee52cab50d3ca2c009f24889f276a7f7fad88bc0770a8ee3e5556f444b6f18d80274ea9e'
             '3a79d6958e61e891d208cea17b02ed5fe0318bbecc8d1bda7b8297e6ffdad186a86cf0fc55cb2904ed67bd460856f7136b6550ab493de31435df97285279d47d'
             '23a33b6e43ac5e91866c0aab8b0166790559ebdb49b3ea91393a977d2636a0c75f99544f559e0a248be1eb54e6bf8ad1cda8887a85d773a9214de16c4f223f1f')
 
