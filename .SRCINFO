@@ -1,7 +1,7 @@
 pkgbase = budgie-screensaver-git
-	pkgdesc = Budgie's fork of GNOME's legacy screensaver
-	pkgver = 3.6.0.r75.gd72022b
-	pkgrel = 2
+	pkgdesc = Budgie's fork of GNOME's legacy screensaver, latest git
+	pkgver = v5.0.r0.g07dcdfe
+	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-screensaver
 	arch = x86_64
 	license = GPL2
