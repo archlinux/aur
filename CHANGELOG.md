@@ -1,3 +1,58 @@
+## 11.4.2 (2022-03-07)
+
+## What's Changed
+Removed google fonts from CSP.
+
+Dependency bumps:
+
+* build(deps): bump @mui/material from 5.2.4 to 5.2.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1205
+* build(deps-dev): bump @types/react from 17.0.37 to 17.0.38 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1208
+* build(deps): bump swr from 1.1.1 to 1.1.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1203
+* build(deps-dev): bump cypress from 9.1.1 to 9.2.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1206
+* build(deps-dev): bump @types/node from 17.0.1 to 17.0.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1204
+* build(deps): bump react-use from 17.3.1 to 17.3.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1209
+* build(deps): bump react-i18next from 11.15.1 to 11.15.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1215
+* build(deps-dev): bump eslint-plugin-import from 2.25.3 to 2.25.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1214
+* build(deps): bump @mui/material from 5.2.5 to 5.2.6 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1213
+* build(deps-dev): bump @types/node from 17.0.5 to 17.0.6 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1212
+* build(deps): bump i18next from 21.6.3 to 21.6.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1210
+* build(deps-dev): bump @types/jest from 27.0.3 to 27.4.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1211
+* build(deps): bump i18next from 21.6.4 to 21.6.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1221
+* build(deps): bump @mui/material from 5.2.6 to 5.2.7 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1220
+* build(deps): bump react-dropzone from 11.4.2 to 11.5.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1219
+* build(deps-dev): bump @types/file-saver from 2.0.4 to 2.0.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1225
+* build(deps): bump @mui/material from 5.2.7 to 5.2.8 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1226
+* build(deps-dev): bump @types/node from 17.0.6 to 17.0.9 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1228
+* build(deps): bump i18next from 21.6.5 to 21.6.6 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1224
+* build(deps-dev): bump cypress from 9.2.0 to 9.2.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1227
+* build(deps): bump go.uber.org/zap from 1.19.1 to 1.20.0 by @dependabot in https://github.com/jhaals/yopass/pull/1216
+* build(deps): bump github.com/prometheus/client_golang from 1.11.0 to 1.12.0 by @dependabot in https://github.com/jhaals/yopass/pull/1229
+* build(deps): bump nanoid from 3.1.30 to 3.2.0 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1231
+* build(deps): bump github.com/prometheus/client_golang from 1.12.0 to 1.12.1 by @dependabot in https://github.com/jhaals/yopass/pull/1246
+* build(deps): bump @mui/material from 5.2.8 to 5.3.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1245
+* build(deps): bump @fontsource/roboto from 4.5.1 to 4.5.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1244
+* build(deps-dev): bump @types/node from 17.0.9 to 17.0.13 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1243
+* build(deps-dev): bump typescript from 4.5.4 to 4.5.5 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1232
+* build(deps-dev): bump cypress from 9.2.1 to 9.3.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1235
+* build(deps): bump i18next-http-backend from 1.3.1 to 1.3.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1233
+* build(deps): bump next from 12.0.7 to 12.0.10 in /next by @dependabot in https://github.com/jhaals/yopass/pull/1248
+* build(deps): bump i18next from 21.6.6 to 21.6.10 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1241
+* build(deps-dev): bump @types/react-router-dom from 5.3.2 to 5.3.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1236
+* build(deps): bump @mui/material from 5.3.1 to 5.4.4 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1274
+* build(deps-dev): bump cypress from 9.3.1 to 9.5.1 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1273
+* build(deps): bump swr from 1.1.2 to 1.2.2 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1266
+* build(deps): bump @fontsource/roboto from 4.5.2 to 4.5.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1256
+* build(deps): bump follow-redirects from 1.14.3 to 1.14.8 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1260
+* build(deps): bump go.uber.org/zap from 1.20.0 to 1.21.0 by @dependabot in https://github.com/jhaals/yopass/pull/1259
+* build(deps-dev): bump @types/node from 17.0.13 to 17.0.21 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1270
+* build(deps-dev): bump @types/react from 17.0.38 to 17.0.39 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1257
+* build(deps): bump i18next-browser-languagedetector from 6.1.2 to 6.1.3 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1251
+* build(deps): bump @fortawesome/react-fontawesome from 0.1.16 to 0.1.17 in /website by @dependabot in https://github.com/jhaals/yopass/pull/1252
+* build(deps): bump next from 12.0.10 to 12.1.0 in /next by @dependabot in https://github.com/jhaals/yopass/pull/1264
+
+
+**Full Changelog**: https://github.com/jhaals/yopass/compare/11.4.1...11.4.2
+
 ## 11.4.1 (2021-12-21)
 
 ## What's Changed
