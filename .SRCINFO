@@ -1,0 +1,15 @@
+pkgbase = rv-link-udev-git
+	pkgdesc = A JTAG emulator/debugger for RISC-V micro-controllers that runs on a RISC-V development board (Sipeed Longan Nano for example).
+	pkgver = 0.2.1.r95.g04f3781
+	pkgrel = 1
+	url = https://github.com/michahoiting/rv-link
+	arch = any
+	license = MulanPSL
+	makedepends = git
+	depends = libusb
+	provides = rv-link-udev
+	options = !strip
+	source = rv-link-udev::git+https://github.com/michahoiting/rv-link.git
+	sha256sums = SKIP
+
+pkgname = rv-link-udev-git
