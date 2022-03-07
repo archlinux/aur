@@ -1,13 +1,12 @@
 pkgbase = eos_portable_archive
 	pkgdesc = A portable binary archive to be used with boost::serialization
 	pkgver = 5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://epa.codeplex.com/
 	arch = any
 	license = custom
 	depends = boost
-	source = https://codeplexarchive.blob.core.windows.net/archive/projects/epa/epa.zip
+	source = http://web.archive.org/web/20210630011224/https://codeplexarchive.blob.core.windows.net/archive/projects/epa/epa.zip
 	sha256sums = 8db1d984bb6be6571cea2caf52f8dfcd421b607f3d35384544376d5645dcd482
 
 pkgname = eos_portable_archive
-
