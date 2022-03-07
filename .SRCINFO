@@ -1,6 +1,6 @@
 pkgbase = lib32-shaderc
 	pkgdesc = Collection of tools, libraries and tests for shader compilation (32bit)
-	pkgver = 2021.3
+	pkgver = 2022.1
 	pkgrel = 1
 	url = https://github.com/google/shaderc
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = lib32-shaderc
 	makedepends = ninja
 	makedepends = python
 	makedepends = spirv-headers
-	depends = shaderc>=2021.3
+	depends = shaderc>=2022.1
 	depends = lib32-glibc
 	depends = lib32-gcc-libs
-	depends = lib32-glslang>=8.13.3559
-	depends = lib32-spirv-tools>=2019.5
+	depends = lib32-glslang
+	depends = lib32-spirv-tools
 	provides = libshaderc_shared.so
 	conflicts = lib32-shaderc-git
-	source = shaderc-2021.3.tar.gz::https://github.com/google/shaderc/archive/v2021.3.tar.gz
-	sha512sums = 759eca72564bea59c06d31f70a85571a391360d5d428db85a30f934d080bb25e254ecb5650f71a96742cf417f09d819f36d301e92294a5d0d294581ca554248a
+	source = shaderc-2022.1.tar.gz::https://github.com/google/shaderc/archive/v2022.1.tar.gz
+	sha512sums = 21c2462cb434d94da87c71ba660f6cd5b161450d7faeff8789b41db25e64f2baa7c560e78aa856d128c5a73699215d6b1085b5ca19a4640237adf194793ad44b
 
 pkgname = lib32-shaderc
