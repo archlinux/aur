@@ -2,7 +2,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.5.3.r56.gf9cfa8e6
+pkgver=10.6.r1.g6c759b42
 pkgrel=1
 pkgdesc="A feature-rich, modern desktop - latest git"
 arch=('x86_64')
@@ -18,7 +18,6 @@ optdepends=('gnome-backgrounds: Default background'
 provides=('budgie-desktop')
 conflicts=('budgie-desktop')
 source=("$pkgname"::'git+https://github.com/BuddiesOfBudgie/budgie-desktop.git')
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
