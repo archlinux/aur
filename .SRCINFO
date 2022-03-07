@@ -5,7 +5,6 @@ pkgbase = roomeqwizard
 	url = https://www.roomeqwizard.com
 	arch = any
 	license = custom
-	depends = java-runtime>=8
 	source = https://www.roomeqwizard.com/installers/REW_linux_5_20_4.sh
 	sha512sums = 6e130a77e7adc8ff13a2d99e5aadad19868b38ff08ed1d29e9f35223a712c1fe73fa7345a5fdf6b510d451688f685ab5c7aa12537dabc182a110b68bcc3b430b
 
