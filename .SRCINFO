@@ -1,7 +1,7 @@
 pkgbase = multimc-development-bin
 	pkgdesc = A custom launcher for Minecraft that focuses on predictability, long term stability and simplicity.
 	pkgver = 0.6.14_develop_3230
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MultiMC/Launcher
 	arch = x86_64
 	arch = i686

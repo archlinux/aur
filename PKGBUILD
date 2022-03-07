@@ -2,7 +2,7 @@
 
 pkgname="multimc-development-bin"
 pkgver=0.6.14_develop_3230
-pkgrel=2
+pkgrel=3
 pkgdesc="A custom launcher for Minecraft that focuses on predictability, long term stability and simplicity."
 arch=("x86_64" "i686")
 url="https://github.com/MultiMC/Launcher"
@@ -24,12 +24,11 @@ prepare() {
 package() {
     mkdir -p  $pkgdir/usr/bin
     mkdir -p  $pkgdir/usr/lib/multimc-development
-    mkdir -p  $pkgdir/usr/share/applications
-    mkdir -p  $pkgdir/usr/share/licenses/multimc-development
 
-    cp multimc-development.desktop $pkgdir/usr/share/applications/multimc-development.desktop
-    cp multimc.png $pkgdir/usr/lib/multimc-development/multimc.png
-    cp LICENSE $pkgdir/usr/share/licenses/multimc-development/LICENSE
-    cp MultiMC/* $pkgdir/usr/lib/multimc-development -r
+    install -Dm 644 $srcdir/multimc-development.desktop $pkgdir/usr/share/applications/multimc-development.desktop
+    install -Dm 755 $srcdir/multimc.png $pkgdir/usr/lib/multimc-development/multimc.png
+    install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/multimc-development/LICENSE
+    install -Dm 755 $srcdir/MultiMC/MultiMC $pkgdir/usr/lib/multimc-development
+    cp -r $srcdir/MultiMC/* $pkgdir/usr/lib/multimc-development
     ln -s /usr/lib/multimc-development/MultiMC $pkgdir/usr/bin/multimc-development
 }
