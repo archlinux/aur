@@ -1,6 +1,6 @@
 pkgbase = menyoki-git
 	pkgdesc = Screen{shot,cast} and perform ImageOps on the command line (git)
-	pkgver = 1.5.6.r0.g088e9c2
+	pkgver = 1.6.0.r0.g7bcf595
 	pkgrel = 1
 	url = https://github.com/orhun/menyoki
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = menyoki-git
 	optdepends = slop: area selection support
 	provides = menyoki
 	conflicts = menyoki
-	options = !lto
 	source = git+https://github.com/orhun/menyoki
 	sha512sums = SKIP
 
