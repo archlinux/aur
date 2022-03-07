@@ -1,6 +1,6 @@
 ## uAu (unattended Arch upgrade) package build
 
-package build for uAu (https://github.com/steadfasterX/arch_uau/)
+package build for uau (https://github.com/steadfasterX/arch_uau/)
 
 ## Guide
 
@@ -8,13 +8,13 @@ package build for uAu (https://github.com/steadfasterX/arch_uau/)
 
 `gpg --receive-keys 1D1F0DC78F173680`
 
-`trizen -S --noconfirm aur-comment-fetcher-git checkupdates+aur python3-memoizedb`
+`yay -S --noconfirm aur-comment-fetcher-git checkupdates+aur python3-memoizedb`
 
 #### optional: Install mail
 
 If you have the command `mail` **not** available on your system:
 
-`sudo pacman -S ssmtp`
+`yay -S ssmtp`
 
 I use and have tested only sstmp but every sendmail-like `mail` cmd will do.
 
@@ -37,6 +37,6 @@ All options are well documented in that conf file. Just adjust it to your needs.
 This one should be used VERY carefully as ignoring packages can result in unexpected system behavior.
 Each "IgnorePkg=" can just contain 1 package name.
 
-* Bad example: libraries
-* Good example: kernel
+Bad example: libraries
+Good example: kernel
 
