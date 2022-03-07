@@ -2,7 +2,7 @@
 
 pkgname=wayfire-desktop-git
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://wayfire.org/'
 pkgdesc='A meta package to use Wayfire as a desktop'
@@ -11,7 +11,7 @@ conflicts=(wayfire-desktop)
 depends=(
         'wayfire'
         'wf-config'
-        'wayfire-plugins-extra'
+        #'wayfire-plugins-extra'
         'wf-shell'
         'wcm'
         'wf-recorder'
@@ -53,3 +53,4 @@ optdepends=(
         'xorg-xhost: to run xwayland apps with elevated privilage'
         'alacritty: recommended terminal'
         )
+
