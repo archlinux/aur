@@ -1,6 +1,6 @@
 pkg/
 src/
 rezonateur-*.tar.gz
-rezonateur-*.tar.xz
+rezonateur-*.pkg.tar.xz
+rezonateur-*.pkg.tar.zst
 rezonateur-*.src.tar.gz
-.AURINFO
