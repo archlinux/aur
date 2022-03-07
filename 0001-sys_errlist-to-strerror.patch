@@ -1,0 +1,34 @@
+From a74b7521f9de1b35a1505ac4dbaba4c3f21e3d6a Mon Sep 17 00:00:00 2001
+From: eshrh <esrh@gatech.edu>
+Date: Mon, 7 Mar 2022 13:28:57 -0500
+Subject: [PATCH] sys_errlist to strerror
+
+---
+ dvorak7min.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dvorak7min.c b/dvorak7min.c
+index 5f94dfe..92b6a11 100644
+--- a/dvorak7min.c
++++ b/dvorak7min.c
+@@ -193,7 +193,7 @@ int importText (char const * const fileName, char** buf, unsigned int length)
+    
+    file = fopen (fileName, "r");
+    if (!file) {
+-      postmortem = sys_errlist[errno];
++      postmortem = strerror(errno);
+       return -1;
+    }
+    
+@@ -220,7 +220,7 @@ int importText (char const * const fileName, char** buf, unsigned int length)
+    while (1) {
+       c = fgetc (file);
+       if (errno) {
+-	 postmortem = sys_errlist[errno];
++     postmortem = strerror(errno);
+ 	 fclose (file);
+ 	 return -1;
+       }
+-- 
+2.35.1
+

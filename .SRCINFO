@@ -1,7 +1,7 @@
 pkgbase = dvorak7min
 	pkgdesc = dvorak7min is a simple ncurses-based typing tutor for those trying to become fluent with the Dvorak keyboard layout
 	pkgver = 1.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://packages.debian.org/unstable/games/dvorak7min
 	arch = i686
 	arch = x86_64
@@ -11,4 +11,3 @@ pkgbase = dvorak7min
 	md5sums = e2c3e02b4f0cf24fcf29118d01f52956
 
 pkgname = dvorak7min
-
