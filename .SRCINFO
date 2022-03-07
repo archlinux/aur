@@ -1,0 +1,50 @@
+pkgbase = linux-hardened-versioned-bin
+	pkgdesc = The Security-Hardened Linux kernel and modules | repackaged with a unique package name for each version
+	pkgver = 5.15.26.hardened1
+	pkgrel = 1
+	url = https://github.com/anthraxx/linux-hardened
+	arch = x86_64
+	license = GPL2
+	noextract = linux-hardened-5.15.26.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-headers-5.15.26.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-docs-5.15.26.hardened1-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-5.15.26.hardened1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-headers-5.15.26.hardened1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-docs-5.15.26.hardened1-1-x86_64.pkg.tar.zst
+	sha256sums = b8b68367278c1962f8388faa09031bf156645afac0c3b8b291a146db3d6e145f
+	sha256sums = cf3a69dec68c8c1cb762fe8bbae6420637164a7ab864504567c3cd2b0296b245
+	sha256sums = 393ef02cfeb41b6bc742590c0d414f89f815e8374040c2ba8d00a40c6001d8b9
+
+pkgname = linux-hardened-versioned-bin
+	pkgdesc = Dummy package depending on linux5.15.26.hardened1-1-hardened-bin
+	depends = linux5.15.26.hardened1-1-hardened-bin
+	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
+
+pkgname = linux-hardened-versioned-headers-bin
+	pkgdesc = Dummy package depending on linux5.15.26.hardened1-1-hardened-headers-bin
+	depends = linux5.15.26.hardened1-1-hardened-headers-bin
+
+pkgname = linux-hardened-versioned-docs-bin
+	pkgdesc = Dummy package depending on linux5.15.26.hardened1-1-hardened-docs-bin
+	depends = linux5.15.26.hardened1-1-hardened-docs-bin
+
+pkgname = linux5.15.26.hardened1-1-hardened-bin
+	pkgdesc = The Security-Hardened Linux kernel and modules, version 5.15.26-hardened1-1-hardened
+	depends = coreutils
+	depends = initramfs
+	depends = kmod
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = usbctl: deny_new_usb control
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	conflicts = linux-hardened
+
+pkgname = linux5.15.26.hardened1-1-hardened-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 5.15.26-hardened1-1-hardened
+	conflicts = linux-hardened-headers
+
+pkgname = linux5.15.26.hardened1-1-hardened-docs-bin
+	pkgdesc = Documentation for the Security-Hardened Linux kernel 5.15.26-hardened1-1-hardened
+	conflicts = linux-hardened-docs
