@@ -12,7 +12,7 @@
 
 pkgname=nextdns-unprivileged
 origname=nextdns
-pkgver=1.37.7
+pkgver=1.37.8
 pkgrel=1
 pkgdesc='The NextDNS DoH client running as unprivileged user.'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "01-socket.patch"
 )
 
-sha256sums=('4e9525981c0874e09881d7d56c0f32076130ee3d539c1bdb597f031deb57d675'
+sha256sums=('1b1d99f4256ff7937d34d5c26bab17ecee121cfff68708d2fa2eca902655f675'
             'd5715e3be5aa970b8e3e9552e786965d4c33bdc2ae372e708f9a8f3e9c0d45e9'
             '96dcfb0ccbbf30a140ff44101b90160faadca97f9aed4b1d73e2e2db52655fec'
             'fc6f48d9bdb3ad953e37aef163ec3fa3da8d3ca5fab4b78186481fb2988385a2'
@@ -53,3 +53,4 @@ package() {
     install -vDm 644 "$srcdir/${origname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${origname}.conf"
     install -vDm 644 "$srcdir/${origname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${origname}.conf"
 }
+
