@@ -1,14 +1,14 @@
 pkgbase = tuyapi-cli
 	pkgdesc = A CLI for Tuya devices.
-	pkgver = v1.18.3.r0.g8e86743
-	pkgrel = 1
+	pkgver = 1.18.3
+	pkgrel = 2
 	url = https://github.com/TuyaAPI/cli
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = git
-	provides = tuya-cli
-	source = tuyapi-cli::git+https://github.com/TuyaAPI/cli.git
-	md5sums = SKIP
+	depends = nodejs
+	noextract = tuyapi-cli-1.18.3.tar.gz
+	source = tuyapi-cli-1.18.3.tar.gz::https://github.com/TuyaAPI/cli/archive/refs/tags/v1.18.3.tar.gz
+	sha256sums = f4d484c82a56255225b6c1c3a92b048d53e357c306c0699847bb0c1eccf5953e
 
 pkgname = tuyapi-cli

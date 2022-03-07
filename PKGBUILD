@@ -1,31 +1,26 @@
+# Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
+
 pkgname=tuyapi-cli
-_pkgname=cli
-pkgver=v1.18.3.r0.g8e86743
-pkgrel=1
+pkgver=1.18.3
+pkgrel=2
 pkgdesc="A CLI for Tuya devices."
-arch=("x86_64")
+arch=('any')
 url="https://github.com/TuyaAPI/cli"
 license=('MIT')
-makedepends=(npm git)
-provides=(tuya-cli)
-source=("${pkgname}::git+https://github.com/TuyaAPI/cli.git")
-md5sums=('SKIP')
-
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-build() {
-    cd ${srcdir}/${pkgname}
-    npm install
-}
+depends=('nodejs')
+makedepends=('npm')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
+noextract=("${pkgname}-${pkgver}.tar.gz")
+sha256sums=('f4d484c82a56255225b6c1c3a92b048d53e357c306c0699847bb0c1eccf5953e')
 
 package() {
-    cd ${srcdir}/${pkgname}
-    npm install -g --prefix "${pkgdir}/usr"
+    npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
     chown -R root:root "${pkgdir}"
+
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s /usr/lib/node_modules/@tuyapi/cli/LICENSE \
+        "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
