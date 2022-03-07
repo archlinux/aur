@@ -1,6 +1,7 @@
 [Unit]
 Description=Actix web server running Mozilla Firefox Sync Storage
-After=network.target
+Wants=mysql.service
+After=network.target mysql.service
 
 [Service]
 ExecStart=/usr/bin/firefox-syncstorage --config=/etc/firefox-syncstorage.toml
