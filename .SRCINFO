@@ -1,0 +1,17 @@
+pkgbase = coordcon
+	pkgdesc = Commandline tool to convert geo coordinates
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/jnphilipp/coordcon
+	arch = any
+	license = GPL3+
+	makedepends = git
+	makedepends = help2man
+	makedepends = python
+	makedepends = python-virtualenv
+	depends = python
+	depends = python-utm
+	source = git://github.com/jnphilipp/coordcon.git
+	md5sums = SKIP
+
+pkgname = coordcon
