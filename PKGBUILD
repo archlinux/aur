@@ -2,7 +2,7 @@
 _base=tiptop
 pkgname=${_base}-cli
 pkgdesc="Command-line system monitoring"
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
@@ -13,7 +13,7 @@ checkdepends=(python-pytest-codeblocks)
 provides=(${_base})
 conflicts=(${_base})
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ed851e6b2b3b0ce86d518f09db7b711314f86618a401a33eb89ef68161db67492d5e7f208862adb780d4bfbd818fa38212c079635e91f6755fc179b36aaee371')
+sha512sums=('c3740c637ae7c9d41f7b165ef678eced6bcfce5cbed62f0f35328220ee7e6ef58cf442143ecd83364842c14ae8b39b5fa33b5e4d6ce9cf182e4ad7ef61fc5e32')
 
 build() {
   cd ${_base}-${pkgver}
