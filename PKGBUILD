@@ -4,7 +4,7 @@
 _pkgname=glib
 pkgname=lib32-glib
 pkgver=1.2.10
-pkgrel=4
+pkgrel=5
 pkgdesc="Common C routines used by Gtk+ and other libs (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
@@ -12,7 +12,6 @@ license=('LGPL')
 depends=('lib32-glibc' 'sh')
 makedepends=('gcc-multilib')
 options=('!makeflags')
-install=glib.install
 source=(https://download.gnome.org/sources/glib/1.2/${_pkgname}-${pkgver}.tar.gz
 	glib-1.2.10-gcc9.patch
 	gcc340.patch aclocal-fixes.patch glib1-autotools.patch)
@@ -32,6 +31,8 @@ prepare() {
 }
 
 build() {
+  export CFLAGS="${CFLAGS} -Wno-error -Wno-format -Wno-format-security"
+  export CXXFLAGS="${CXXFLAGS} -Wno-error -Wno-format -Wno-format-security"
   export CC="gcc -m32"
   cd ${_pkgname}-${pkgver}
   if [[ $CARCH = "i686" ]]; then
