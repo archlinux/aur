@@ -1,7 +1,7 @@
 pkgbase = gdb-frontend-bin
 	pkgdesc = An easy, flexible and extensionable GUI debugger
 	pkgver = 0.10.3.beta
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rohanrhu/gdb-frontend
 	arch = x86_64
 	license = GPL3

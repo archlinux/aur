@@ -4,7 +4,7 @@ pkgname=gdb-frontend-bin
 _pkgname=gdb-frontend
 pkgver=0.10.3.beta
 _pkgver=0.10.3-beta
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy, flexible and extensionable GUI debugger"
 arch=('x86_64')
 url='https://github.com/rohanrhu/gdb-frontend'
@@ -27,12 +27,12 @@ prepare() {
 build() {
     cd "${_pkgname}-${_pkgver}"
     python setup.py build
-
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-    install -Dm644 "${srcdir}/${_pkgname}-${_pkgver}/frontend/images/bug.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 }
 
 package() {
     cd "${_pkgname}-${_pkgver}"
     python setup.py install --root="$pkgdir" --optimize=1
+
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${_pkgname}-${_pkgver}/frontend/images/bug.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 }
