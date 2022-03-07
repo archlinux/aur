@@ -1,14 +1,13 @@
 pkgbase = fez-dot
 	pkgdesc = A rotating translucent four dimensions hypercube
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 3
 	url = https://github.com/FishHawk/FezDot
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = qt5-quickcontrols2
-	source = fez-dot-0.1.0.tar.gz::https://github.com/FishHawk/FezDot/archive/0.1.0.tar.gz
-	sha256sums = d199bb2ee8ea3bb5f967cb9e853fa685c856788543d4a31916a003d926ade278
+	source = fez-dot-0.1.1.tar.gz::https://github.com/FishHawk/FezDot/archive/0.1.1.tar.gz
+	sha256sums = 4d46d97a703d0e735c02b980f050160323c54f7a688c7ff5e3c27fe8cdf95c4b
 
 pkgname = fez-dot
-
