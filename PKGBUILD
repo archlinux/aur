@@ -2,10 +2,10 @@
 # Contributor:
 
 pkgname=mpc-qt-git
-pkgver=20.10.r8.g81d1b80
+pkgver=22.02.r25.g437e062
 pkgrel=1
 epoch=1
-pkgdesc='A clone of Media Player Classic reimplimented in Qt.'
+pkgdesc='A clone of Media Player Classic reimplemented in Qt.'
 url='https://github.com/mpc-qt/mpc-qt'
 arch=('x86_64')
 license=('GPL2')
