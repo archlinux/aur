@@ -2,7 +2,7 @@
 pkgname=thelounge-git
 _realname=thelounge
 pkgver=v4.3.1.rc.1.r0.g38fa3bee
-pkgrel=5
+pkgrel=6
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
-            'df4f110f8457a6727b5d3d1fead19d01d754f92563952699c3ef413c72366446')
+            'c07fc7aaa91f6d2407d9ea2d15bfa780bfc06e3487efa138a9385307dcf9f41d')
 
 pkgver() {
     cd $_realname
