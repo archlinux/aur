@@ -9,7 +9,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 # https://github.com/buildbot/buildbot/releases
-pkgver=3.4.1
+pkgver=3.5.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
 pkgrel=1
 arch=(any)
@@ -17,9 +17,9 @@ url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-ldap3 python-lz4 python-treq python-txrequests
               python-moto python-docker python-parameterized python-mock python-subunit
-              python-unidiff
+              python-unidiff python-psutil
               openssh chromium)
-makedepends=(python-twisted python-jinja python-zope-interface python-sqlalchemy
+makedepends=(python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
              python-alembic python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
              python-graphql-core python-hvac
@@ -32,7 +32,7 @@ source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbo
         "buildbot-contrib-systemd-common.patch::https://github.com/buildbot/buildbot-contrib/pull/22.patch"
         "python310.diff"
         "graphql-core.diff")
-sha256sums=('16d604c0dfa7b673318e13fe2ef15199ac6f19863b0e4d4d2624705a5401720c'
+sha256sums=('53b58e056d7da5c83b669ce1bf213147beedba6fa6a60dadba3e80d385239ced'
             'SKIP'
             'SKIP'
             '896eede4c33a8574d7c29ac4a28cebbe3d7e850931a86e945328f8ea358195a9'
@@ -142,7 +142,7 @@ check() {
 package_buildbot() {
   pkgdesc='The Continuous Integration Framework'
   # include setuptools as plugins are enumerated via pkg_resources
-  depends=(buildbot-common python-twisted python-jinja python-zope-interface python-sqlalchemy
+  depends=(buildbot-common python-twisted python-jinja python-msgpack python-zope-interface python-sqlalchemy
            python-alembic python-dateutil python-txaio
            python-autobahn python-pyjwt python-yaml python-setuptools)
   optdepends=(
