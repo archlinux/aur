@@ -8,6 +8,7 @@ Group=pihole
 PIDFile=/run/pihole-ftl/pihole-FTL.pid
 ExecStartPre=/bin/chown -R pihole:pihole /etc/pihole
 ExecStartPre=-/bin/chown root:root /etc/pihole/logrotate
+ExecStartPre=-/bin/rm -f /dev/shm/FTL-*
 ExecStart=/usr/bin/pihole-FTL no-daemon
 ExecReload=/bin/kill -USR1 $MAINPID
 Restart=on-failure
