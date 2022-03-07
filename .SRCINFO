@@ -1,19 +1,19 @@
 pkgbase = osu-lazer
 	pkgdesc = The new open source version of osu!, the free-to-win rhythm game
-	pkgver = 2021.1111.0
+	pkgver = 2022.306.0
 	pkgrel = 1
 	url = https://osu.ppy.sh/
 	arch = x86_64
 	license = MIT
 	license = custom:CC-BY-NC 4.0
 	makedepends = git
-	makedepends = dotnet-sdk>=5.0.5.sdk202
+	makedepends = dotnet-sdk>=6.0.0
 	depends = ffmpeg
 	depends = libgl
 	depends = sdl2
 	depends = shared-mime-info
-	depends = dotnet-runtime>=5.0.0
-	source = osu-lazer::git+https://github.com/ppy/osu.git#tag=2021.1111.0
+	depends = dotnet-runtime>=6.0.0
+	source = osu-lazer::git+https://github.com/ppy/osu.git#tag=2022.306.0
 	source = CC-BY-NC-4.0::https://github.com/ppy/osu-resources/raw/master/LICENCE.md
 	source = osu-launcher
 	source = osu-lazer.desktop
@@ -21,7 +21,7 @@ pkgbase = osu-lazer
 	source = x-osu-lazer.xml
 	sha256sums = SKIP
 	sha256sums = 30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244
-	sha256sums = a34d37ed6d35788501985ad3c8f63888849734549113e11f43321917fdfa16bf
+	sha256sums = df49f92c03b67833b58a6cd3f7e520092e68b3ef17915e867b122adfcbf00dad
 	sha256sums = 9935414fdd95c02c7fd2d0d200ce1037dfce95cd7f1d04b25a275ce0902401c6
 	sha256sums = 3b3a9075f79ca7f2a4fd34eb182a5c1ada6eb118a95e49c1526df516365bbfe5
 	sha256sums = d842b333a014a666012548097ddf80a6f147896ad5460365560ce7f11834297f
