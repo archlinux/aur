@@ -1,9 +1,9 @@
-# Maintainer: shmilee <shmilee[dot]zju[at]gmail[dot]com>
+# Maintainer: Alex Tharp <alex@toastercup.io>
 
 pkgname=python3-keybinder
 pkgver=1.1.2
-pkgrel=2
-pkgdesc='python 3 global keybinding library for X.'
+pkgrel=3
+pkgdesc='Python 3 global keybinding library for X.'
 arch=(any)
 url='https://github.com/LiuLang/python3-keybinder'
 license=('GPLv3')
