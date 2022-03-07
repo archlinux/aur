@@ -1,32 +1,23 @@
-# Maintainer: Stavros Polymenis <sp@orbitalfox.com>
+# Maintainer: Jonathan Neidel <aur at jneidel dot com>
+
 pkgname=portal
-pkgver=0.2
-pkgrel=9
-pkgdesc="A personal portal system. Alpha version, do not install unless you know what you are doing"
-arch=(any)
-url="https://github.com/orbifx/portal"
-license=('LGPL3')
-groups=()
-depends=(sudo postfix dovecot nginx avahi)
+pkgver=1.0.3
+pkgrel=1
+pkgdesc="Quick and easy command-line file transfer utility from any computer to another"
+arch=(x86_64 aarch64)
+url="https://github.com/ZinoKader/portal"
+license=(MIT)
+depends=()
 makedepends=()
-optdepends=(yamado-git)
-provides=("portal")
-conflicts=()
-replaces=()
-options=()
-install="portal.install"
-changelog=
-source=(#"git+https://github.com/orbifx/portal.git"
-  https://github.com/orbifx/portal/releases/download/v0.3-alpha/portal.tar.gz)
-noextract=()
-md5sums=('ff3343d24e2ec014d0e62d3cbb37cef6')
+optdepends=()
+provides=(portal)
+source_x86_64=("https://github.com/ZinoKader/portal/releases/download/v${pkgver}/portal_${pkgver}_Linux_x86_64.tar.gz")
+source_aarch64=("https://github.com/ZinoKader/portal/releases/download/v${pkgver}/portal_${pkgver}_Linux_arm64.tar.gz")
+sha256sums_x86_64=("20a22b220efa9d9f26321ba3276856bbe82eb54c91939e7989036da5c6e694df")
+sha256sums_aarch64=("40a0c0b9daf18f6e7c0fe794dfda2aef4b41cf52fa1843254cc1d34efddfc40f")
 
 package() {
-	install -Dm544 portal "$pkgdir/usr/bin/portal"
-	install -Dm544 portal-postconf "$pkgdir/usr/bin/portal-postconf"
-	install -Dm544 portal-doveconf "$pkgdir/usr/bin/portal-doveconf"
-	install -Dm440 ../portal.sudo "${pkgdir}/etc/sudoers.d/${pkgname}"
-	install -Dm544 ../master.cf "$pkgdir/usr/share/portal/master.cf"
-	install -Dm544 ../10-master.conf "$pkgdir/usr/share/portal/10-master.conf"
-	install -Dm544 ../avahi.service "$pkgdir/etc/avahi/services/portal.service"
+  cd "$srcdir"
+  mkdir -p "$pkgdir/usr/bin"
+  cp portal "$pkgdir/usr/bin/"
 }
