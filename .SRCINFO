@@ -1,6 +1,6 @@
 pkgbase = 86box-git
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.2.1.r164.g396f491a
+	pkgver = 3.2.1.r168.gfbd29271
 	pkgrel = 1
 	url = https://86box.net/
 	arch = pentium4
