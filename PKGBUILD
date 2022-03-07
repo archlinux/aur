@@ -16,8 +16,10 @@ source=("$url/releases/download/$pkgver/$__pkgname-$pkgver-linux-x64.tar.gz")
 sha256sums=('c29b04c312c9054f5a4ee6f2f45a23d315c46a359c9ef7058e90e1c4c5090664')
 
 package() {
-    install -dm755 "$pkgdir/opt/$__pkgname"
-    cp -a "$srcdir/data"  "$srcdir/lib"  "$srcdir/$__binname" "$pkgdir/opt/$__pkgname/"
+    install -dm755 "$pkgdir/opt/"
+    cp -a "$srcdir/" "$pkgdir/opt/$__pkgname/"
+    rm "$pkgdir/opt/$__pkgname/$__pkgname-$pkgver-linux-x64.tar.gz"
+
     install -dm755 "$pkgdir/usr/bin/"
     ln -sr "$pkgdir/opt/$__pkgname/$__binname" "$pkgdir/usr/bin/$__pkgname"
     install -Dm644 "$srcdir/$__pkgname.desktop" -t "$pkgdir/usr/share/applications/"
