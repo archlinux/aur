@@ -50,7 +50,7 @@ pkgbase=linux-bfq-dev
 _major=5.16
 _minor=12
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,7 +71,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K220303v1"
+_bfq_rel="r2K220307v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -337,7 +337,7 @@ done
 
 sha512sums=('01639c4cec36aa9718cdd2c720289bb26d2da6a208bb0d0466de0a82cabec3254fbae528740404cdcba33c3f1801c098c53521f2cb58f93a01b4c3daa658f78e'
             'SKIP'
-            '12d7662c656472bf24e19c074b8b772e2cb1d5049f115ed2b0aabb61cfff98d45fddfe326664cdf2fbef3ee2ede7291bd9286bf0642b742af3f9102221bce5bb'
+            'e5731b69f3be5d81d642394c0df460d7f23009786737fc972c56f4ac8e197042fb9456e3827c441ea17596e5b59b712b40e7d635c516f8e6baadc650bb8bac13'
             '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
             '860c3d6f0c1b4528e11ce3e99cb0c3acf67f8f657f1471774bd14d75bdc92a72eb33d60fc3b7fd7465b2716733a5c7ad9d07107f96f2a568505573618583d5dd'
             'ab229799fe12a9a9b1f52ea8714abaa66085a3173f04e2d5e533b0920ba8b72e41c37ab7332db8b15b1810b9b14baf84777128de9d3495f7b438cdb5805f1a25'
