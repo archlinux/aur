@@ -3,7 +3,7 @@ _release=alpha
 _target=arch
 
 pkgname=makedeb-alpha
-pkgver=11.0.1
+pkgver=11.2.0
 pkgrel=1
 pkgdesc="A simplicity-focused packaging tool for Debian archives (${_release} release)"
 arch=('any')
