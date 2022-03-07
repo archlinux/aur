@@ -1,7 +1,7 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=volatile-git
-pkgver=0.28.d4e0090
+pkgver=0.33.64f5dbb
 pkgrel=1
 pkgdesc="Simple ALSA status icon and volume control"
 url="https://github.com/gavinhungry/volatile"
@@ -9,7 +9,7 @@ license=('MIT')
 arch=('any')
 makedepends=('git')
 depends=('pygtk' 'python2-pyalsaaudio')
-source=("${pkgname}::git+${url}.git#branch=master")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver () {
