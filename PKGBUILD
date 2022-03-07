@@ -18,7 +18,7 @@ install="${_appname}.install"
 source=("git+https://github.com/mozilla-services/${_srcname}.git"
 	"${_appname}.service")
 sha256sums=('SKIP'
-	'37081d252bda6cb82f360d4a82eec77ffade0acdf1c7f7dcac31012d4c5abfdf')
+	'609e057cd835ea54b06b32b98e210cd946255f652e7754c9160fd7c94379a83d')
 backup=("etc/${_appname}.toml")
 
 pkgver() {
