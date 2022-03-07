@@ -1,6 +1,6 @@
 pkgbase = budgie-control-center-git
 	pkgdesc = Budgie's main interface to configure various aspects of the desktop, latest git
-	pkgver = 6a239d3f8
+	pkgver = v1.0.0.r0.ga0bc23403
 	pkgrel = 1
 	url = https://github.com/BuddiesOfBudgie/budgie-control-center
 	arch = x86_64

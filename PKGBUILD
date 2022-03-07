@@ -1,7 +1,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-control-center-git
-pkgver=6a239d3f8
+pkgver=v1.0.0.r0.ga0bc23403
 pkgrel=1
 pkgdesc="Budgie's main interface to configure various aspects of the desktop, latest git"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
@@ -24,18 +24,18 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git rev-parse --short HEAD
+    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update --init
+    meson build -Ddocumentation=true
 }
 
 
 build() {
     cd "$srcdir/$pkgname"
-    arch-meson build -D documentation=true
     meson compile -C build
 }
 
