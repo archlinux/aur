@@ -5,7 +5,7 @@
 # This PKGBUILD was prepared for pacman 4.1 by William. Thank you. :-)
 
 pkgname=i3-git
-pkgver=4.19.1.r56.gab2a22a7
+pkgver=4.20.r91.gc822eff1
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager'
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ makedepends=('git' 'bison' 'flex' 'asciidoc' 'xmlto' 'meson')
 optdepends=('i3lock: For locking your screen.'
             'i3status: To display system information with a bar.')
 options=('docs')
-source=('git://github.com/i3/i3#branch=next')
+source=('git+https://github.com/i3/i3#branch=next')
 sha1sums=('SKIP')
 
 pkgver() {

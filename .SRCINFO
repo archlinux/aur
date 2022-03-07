@@ -1,6 +1,6 @@
 pkgbase = i3-git
 	pkgdesc = An improved dynamic tiling window manager
-	pkgver = 4.19.1.r56.gab2a22a7
+	pkgver = 4.20.r91.gc822eff1
 	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
@@ -31,8 +31,7 @@ pkgbase = i3-git
 	conflicts = i3-gaps
 	conflicts = i3-gaps-next-git
 	options = docs
-	source = git://github.com/i3/i3#branch=next
+	source = git+https://github.com/i3/i3#branch=next
 	sha1sums = SKIP
 
 pkgname = i3-git
-
