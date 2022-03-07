@@ -2,8 +2,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pls
-pkgver=1.13.1
-pkgrel=3
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='A better ls for developers'
 url='https://dhruvkb.github.io/pls'
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dhruvkb/pls/archive/$pkgver.tar.gz")
-sha512sums=('95558fbdec13a0f49d6d2dbf310cbad1966a6583bdf46c83f0b588078dd06c33222706a48dd6c475cbb1753996aa84ff1e5feaac099f21fb29cbf7f05d1a90c0')
+sha512sums=('f8ee76c97c66474c6528cce3baf76b53910c4f533958a787aef7c85b709cbcc36f2ae50d0ed6a45be68fe99095cbf23f9452160be1654387f45b34793dbadc16')
 
 build() {
   cd $pkgname-$pkgver
