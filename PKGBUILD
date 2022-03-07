@@ -4,11 +4,11 @@
 
 pkgname=nted-git
 pkgver=1.10.19.r2.g6af6374
-pkgrel=1
+pkgrel=2
 pkgdesc="A free music score editor for Linux."
 arch=('i686' 'x86_64')
 depends=('harfbuzz' 'gdk-pixbuf2' 'pango' 'gtk2' 'alsa-lib')
-makedepends=('git')
+makedepends=('git' 'gcc6')
 license=('GPL')
 url="https://gitlab.com/stefanhusmann/nted"
 options=('!libtool' '!strip' '!makeflags')
@@ -27,7 +27,7 @@ build() {
   aclocal
   automake --add-missing
   autoreconf
-  CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing -fpermissive" ./configure --prefix=/usr 
+  CXX=g++-6 CXXFLAGS=" -O2 -std=c++11 -Wno-narrowing -fpermissive" ./configure --prefix=/usr 
   make
 }
 

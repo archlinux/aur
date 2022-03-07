@@ -1,12 +1,13 @@
 pkgbase = nted-git
 	pkgdesc = A free music score editor for Linux.
 	pkgver = 1.10.19.r2.g6af6374
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/stefanhusmann/nted
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = gcc6
 	depends = harfbuzz
 	depends = gdk-pixbuf2
 	depends = pango
@@ -21,4 +22,3 @@ pkgbase = nted-git
 	md5sums = SKIP
 
 pkgname = nted-git
-
