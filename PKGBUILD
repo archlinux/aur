@@ -1,14 +1,14 @@
 # Maintainer: Reto Brunner <reto@labrat.space>
 pkgname=thelounge-git
 _realname=thelounge
-pkgver=v4.3.0.r3.g172cd637
-pkgrel=4
+pkgver=v4.3.1.rc.1.r0.g38fa3bee
+pkgrel=5
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
-depends=('nodejs-lts-gallium') # the build on node 17 is broken
-makedepends=('yarn' 'git' 'python2' 'npm')
+depends=('nodejs')
+makedepends=('yarn' 'git' 'python' 'npm')
 conflicts=('thelounge')
 backup=('etc/thelounge/config.js')
 source=(
@@ -32,27 +32,26 @@ pkgver() {
 prepare(){
     echo /etc/thelounge > "$_realname/.thelounge_home"
     cd $_realname
-    yarn install --frozen-lockfile --non-interactive --ignore-optional --ignore-scripts
+    yarn install --frozen-lockfile --non-interactive --ignore-scripts --cache-folder "$srcdir/yarn-cache"
 }
 
 build() {
     cd $_realname
     export NODE_ENV=production
     yarn build
-    npm pack .
+    yarn pack --filename "$pkgname-$pkgver.tar.gz" .
 }
 
 
 package() {
     cd $_realname
-    version=`git describe --abbrev=0`
     export NODE_ENV=production
-    npm install -g --prefix "$pkgdir/usr" "./$_realname-${version#v}.tgz" \
-        --cache "${srcdir}/npm-cache" --build-from-source=sqlite3
+    yarn global add --frozen-lockfile --non-interactive --ignore-scripts --cache-folder "$srcdir/yarn-cache" \
+    --prefix "$pkgdir/usr" --global-folder "$pkgdir/opt/thelounge" --offline file:"$(pwd)/$pkgname-$pkgver.tar.gz"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/npm/issues/9359 for details.
-    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+    find "${pkgdir}"/{usr,opt} -type d -exec chmod 755 {} +
 
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
