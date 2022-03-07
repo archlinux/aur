@@ -12,5 +12,4 @@ commit_msg="update to $pk_name ver $pk_ver, rel version $pk_rel"
 git add PKGBUILD .SRCINFO
 git commit -m "$commit_msg"
 git push aur master
-git push aur2 master
 git status
