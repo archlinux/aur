@@ -1,10 +1,10 @@
 pkgbase = wwphone
 	pkgdesc = A proprietary CTI and SIP client from wwcom
 	pkgver = 3.4.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wwcom.ch/
 	arch = x86_64
-	license = custom:"Copyright (c) 2021 by wwcom ag"
+	license = custom:"Copyright (c) 2022 by wwcom ag"
 	depends = alsa-lib
 	depends = gtk-engine-murrine
 	depends = gtk2

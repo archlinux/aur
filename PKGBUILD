@@ -2,10 +2,10 @@
 
 pkgname=wwphone
 pkgver=3.4.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A proprietary CTI and SIP client from wwcom"
 arch=('x86_64')
-license=('custom:"Copyright (c) 2021 by wwcom ag"')
+license=('custom:"Copyright (c) 2022 by wwcom ag"')
 url="https://www.wwcom.ch/"
 
 source=("https://wwcom.ch/downloads/wwphone_${pkgver//./_}.deb")
