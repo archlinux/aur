@@ -1,7 +1,7 @@
 pkgbase = kicad-i18n-git
 	pkgdesc = Translations for KiCad source code.
 	pkgver = r1879.e89d9a8
-	pkgrel = 4
+	pkgrel = 5
 	url = http://kicad-pcb.org/
 	arch = any
 	license = GPL

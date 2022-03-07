@@ -4,7 +4,7 @@
 
 pkgname=kicad-i18n-git
 pkgver=r1879.e89d9a8
-pkgrel=4
+pkgrel=5
 pkgdesc="Translations for KiCad source code."
 arch=('any')
 url="http://kicad-pcb.org/"
@@ -15,12 +15,12 @@ source=('git+https://gitlab.com/kicad/code/kicad-i18n.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname%-git}
   printf "r%s.%s" "$(git rev-list HEAD --count --first-parent)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $pkgname
+  cd ${pkgname%-git}
   [[ -d build ]] || mkdir build
   cd build
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd $pkgname
+  cd ${pkgname%-git}
   cd build
   make DESTDIR="${pkgdir}" install
 }
