@@ -3,14 +3,14 @@
 
 pkgname=audacium
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='telemetry free version of audacity'
 arch=(x86_64)
 url="https://github.com/SartoxOnlyGNU/$pkgname"
 license=(GPL2)
 depends=(alsa-lib
          expat
-         ffmpeg
+         ffmpeg4.4
          gtk2
          libid3tag
          libmad

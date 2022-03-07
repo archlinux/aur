@@ -1,7 +1,7 @@
 pkgbase = audacium
 	pkgdesc = telemetry free version of audacity
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SartoxOnlyGNU/audacium
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = audacium
 	makedepends = conan
 	depends = alsa-lib
 	depends = expat
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = gtk2
 	depends = libid3tag
 	depends = libmad
