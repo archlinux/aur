@@ -1,7 +1,7 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="linux-on-drugs-git"
 pkgver="r4.841a229"
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives drugs to your terminal"
 arch=(x86_64 i686)
 url="https://github.com/SkwalExe/linux-on-drugs"
@@ -19,6 +19,8 @@ pkgver() {
 
 prepare() {
 	cd linux-on-drugs
+        rustup install stable
+      
         sudo rm -rf /usr/bin/linux-on-drugs
 }
 
