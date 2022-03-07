@@ -1,6 +1,6 @@
 # Maintainer: Connor Behan <connor.behan@gmail.com>
 pkgname=libbdplus
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Library for handling the BD+ protection scheme on bluray discs"
 arch=('i686' 'x86_64')
@@ -19,4 +19,4 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
-md5sums=('f1ad1c67943d81e1e2e3ab1c1a8f3ebb')
+sha256sums=('b93eea3eaef33d6e9155d2c34b068c505493aa5a4936e63274f4342ab0f40a58')
