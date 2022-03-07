@@ -1,5 +1,5 @@
-# Maintainer:  dreieck
-# Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: dreieck
 
 _pkgname="firefox-developer-edition-firefox-symlink"
 pkgname="${_pkgname}-latest"
