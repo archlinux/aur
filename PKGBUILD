@@ -1,7 +1,7 @@
 # Maintainer: SKBotNL <skbotnl@mailfence.com>
 
 pkgname="multimc-development-bin"
-pkgver=0.6.14_develop_3223
+pkgver=0.6.14_develop_3230
 pkgrel=1
 pkgdesc="A custom launcher for Minecraft that focuses on predictability, long term stability and simplicity."
 arch=("x86_64" "i686")
