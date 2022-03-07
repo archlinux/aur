@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer
 pkgver=2022.306.0
-pkgrel=1
+pkgrel=2
 
 dotnet_version=6.0
 
