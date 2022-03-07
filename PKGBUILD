@@ -18,6 +18,7 @@ package() {
   sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"
 
   mkdir -p "$pkgdir/usr/bin" \
+           "$pkgdir/usr/share/icons" \
            "$pkgdir/usr/share/licenses/$pkgname" \
            "$pkgdir/usr/share/doc/$pkgname" \
            "$pkgdir/usr/share/applications/$pkgname"
@@ -28,11 +29,15 @@ package() {
   cp -L "$pkgdir/usr/share/java/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
   rm "$pkgdir/usr/share/java/$pkgname/REW.desktop"
 
+  cp "$pkgdir/usr/share/java/$pkgname/.install4j/i4j_extf_3_1byc03v_1rq5vvq.png" "$pkgdir/usr/share/icons/$pkgname.png"
+
   # repair
   sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/java/$pkgname/.install4j/response.varfile"
   sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/java/$pkgname/.install4j/install.prop"
   sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+
   sed "s/REW/Room EQ Wizard/g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
+  echo "Icon=/usr/share/icons/$pkgname.png" >> "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 
   # basic cleanup
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/files.log"
