@@ -1,23 +1,35 @@
 pkgbase = libadwaita-git
-	pkgdesc = Library full of GTK widgets for mobile phones
-	pkgver = 1.1.beta.r5.ge70ae74d
-	pkgrel = 3
-	url = https://gitlab.gnome.org/GNOME/libadwaita
+	pkgdesc = Building blocks for modern adaptive GNOME applications
+	pkgver = 1.1.rc
+	pkgrel = 1
+	url = https://gnome.pages.gitlab.gnome.org/libadwaita
 	arch = i686
 	arch = pentium4
 	arch = x86_64
 	license = LGPL
-	checkdepends = xorg-server-xvfb
+	checkdepends = weston
 	makedepends = git
-	makedepends = gobject-introspection
 	makedepends = meson
+	makedepends = gi-docgen
 	makedepends = sassc
+	makedepends = gobject-introspection
 	makedepends = vala
-	makedepends = wayland-protocols
 	depends = gtk4
 	provides = libadwaita
 	conflicts = libadwaita
-	source = git+https://gitlab.gnome.org/GNOME/libadwaita
-	md5sums = SKIP
+	source = libadwaita::git+https://gitlab.gnome.org/GNOME/libadwaita
+	sha256sums = SKIP
 
 pkgname = libadwaita-git
+	depends = gtk4
+	depends = libgtk-4.so
+	provides = libadwaita
+	provides = libadwaita-1.so
+
+pkgname = libadwaita-git-docs
+	pkgdesc = Building blocks for modern adaptive GNOME applications (documentation)
+	depends = 
+
+pkgname = libadwaita-git-demos
+	pkgdesc = Building blocks for modern adaptive GNOME applications (demo applications)
+	depends = libadwaita-git
