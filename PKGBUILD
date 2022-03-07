@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com>
 
 pkgname=simutrans-svn
-pkgver=r10529
+pkgver=r10543
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build from SVN"
 arch=('any')
@@ -36,7 +36,7 @@ sha256sums=('SKIP')
 
 build() {
   cmake -S $pkgname -B build 
-  cmake build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_GAMES_DATADIR=1
   cmake --build build -j$(nproc)
 }
 
