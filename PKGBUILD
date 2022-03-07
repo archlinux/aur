@@ -1,56 +1,45 @@
-# Maintainer: Amos Wenger <amos@itch.io>
-# Contributor: FrozenCow <frozencow@gmail.com>
-
+# Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=itch-bin
-pkgver=23.6.3
-pkgrel=3
-pkgdesc="The best way to play itch.io games."
-
-arch=('i686' 'x86_64')
+_pkgname="${pkgname%-bin}"
+pkgver=25.5.1
+pkgrel=1
+epoch=
+pkgdesc="The best way to play your itch.io games"
+arch=('any')
 url="https://github.com/itchio/itch"
 license=('MIT')
-
-depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'libxss')
-makedepends=()
-options=('!strip')
-provides=('itch')
-conflicts=('itch')
-install="itch.install"
-
-[ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
-[ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
-
-# sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
-source=("https://github.com/itchio/itch/releases/download/v${pkgver}/itch-${pkgver}-${_ITCH_ARCH}.tar.xz" 
-"extras.tar.gz")
-sha256sums=('d9015929cecf5d68c05b109dc462ee42d457f7e7a5feb8885678fcc355ae8212' '66da55a3c7700a411aadc70123ac3bff4ba4a529683381fa9dd14ef303065799')
-
-prepare() {
-  basedir=`cd .. && pwd`;
-  tar xf "${basedir}/extras.tar.gz"
-}
+depends=('electron11')
+provides=($_pkgname)
+conflicts=($_pkgname)
+install=$_pkgname.install
+source=(
+	"$_pkgname-$pkgver.zip::https://broth.itch.ovh/$_pkgname/linux-amd64/$pkgver/archive/default"
+	"$_pkgname-$pkgver-src.tar.gz::https://github.com/itchio/itch/archive/v$pkgver.tar.gz"
+	"https://raw.githubusercontent.com/itchio/$_pkgname/master/LICENSE"
+	"$_pkgname.sh"
+	"io.itch.$_pkgname.desktop"
+)
+sha256sums=('fdd916c79beb90c19c7ee404e11398e5f2f5c7c402ae68910b4f70e6918071ed'
+            '0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249'
+            '747d5f4b6f82e28fbd50e192ee6e977159e4848cb55e0cc6ee04219832932d7c'
+            '734863afafacbc599235bdc5f66f29f80a7a544b4c733fb1ab8adaad50bd8465'
+            '9c5a5fcbd03e6d2e5dd15b39f4c1f93a57ab341ef947d287acef47386044ecd1')
 
 package() {
-  tar xf itch-${pkgver}-${_ITCH_ARCH}.tar.xz
-  cd "${srcdir}/itch-${pkgver}-${_ITCH_ARCH}"
+	install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
-  install -d "${pkgdir}/usr/lib/itch"
-  cp -a "${srcdir}/itch-${pkgver}-${_ITCH_ARCH}/." "${pkgdir}/usr/lib/itch"
+	install -d "$pkgdir/usr/share/$_pkgname/"
+	cp -r "$srcdir"/resources/app/** "$pkgdir/usr/share/$_pkgname/"
 
-  install -d "${pkgdir}/usr/share/applications"
-  install -Dm644 "${srcdir}/extras/io.itch.itch.desktop" "${pkgdir}/usr/share/applications/itch.desktop"
+ 	install -Dm644 io.itch.$_pkgname.desktop -t "${pkgdir}/usr/share/applications/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  for icon in ${srcdir}/extras/icon*.png
-  do
-    iconsize="${icon#${srcdir}/extras/icon}"
-    iconsize="${iconsize%.png}"
-    icondir="${pkgdir}/usr/share/icons/hicolor/${iconsize}x${iconsize}/apps/"
-    install -d "${icondir}"
-    install -Dm644 "$icon" "$icondir/itch.png"
-  done
-
-  install -D -m644 "${srcdir}/extras/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/itch/itch" "${pkgdir}/usr/bin/itch"
+	for icon in $_pkgname-$pkgver/release/images/itch-icons/icon*.png
+	do
+		iconsize="${icon#$_pkgname-$pkgver/release/images/itch-icons/icon}"
+		iconsize="${iconsize%.png}"
+		icondir="${pkgdir}/usr/share/icons/hicolor/${iconsize}x${iconsize}/apps/"
+		install -d "${icondir}"
+		install -Dm644 "$icon" "$icondir/itch.png"
+	done
 }
