@@ -3,7 +3,7 @@
 
 pkgname=marktext-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=(x86_64)
@@ -25,7 +25,7 @@ _source() {
 	done
 }
 source=($(_source))
-sha256sums=('5a699dfa9f82edf62cb6cd054844b9bcbf20c91a2052a415e6efc9fac5c15442'
+sha256sums=('6e333bcd1e8ae0cd93e1de52bdb966fdd9b8896986acb72f13d23ae100872e5c'
             '95c55fae2e35c1b022d69736e496b04b24caba9cb7d7a7d4613076ea85d2b7cf'
             '27ef0b9185f38bdf516db32fa8900e3bfd182937bb14f63a978713d74ad97fa2'
             'f67f6826499b5fa25a931b706a7d500972c049fb23f406f4692206dfe1a302fc'
