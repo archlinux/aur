@@ -1,10 +1,12 @@
-# Maintainer: Justin Kromlinger <hashworks@archlinux.org>
+# Maintainer: Christopher Snowhill <kode54@gmail.com>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
 # Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
-pkgname=elasticsearch
-pkgver=7.17.0
+_pkgname=elasticsearch
+pkgname=elasticsearch7
+pkgver=7.17.1
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
@@ -12,8 +14,10 @@ url="https://www.elastic.co/products/elasticsearch"
 license=('Apache')
 depends=('java-runtime-headless<=17' 'systemd' 'libxml2')
 makedepends=('java-environment=17')
+provides=("elasticsearch=$pkgver")
+conflicts=('elasticsearch')
 source=(
-  $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
+  $_pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
   elasticsearch@.service
   elasticsearch-keystore.service
@@ -25,7 +29,7 @@ source=(
   remove-systemd-distribution-check.patch
   remove-systemd-package-check.patch
 )
-sha256sums=('64392a523a534ed0d25439cc0998a20cf4ea74578b0e85cd0fb188421e0126a1'
+sha256sums=('c4243783c90785bcf5c5854beb0bdd4e85a40d7db31c3c493f420030a89f784d'
             '9e1f68ff275ef2b5f2b93d2823efc5cc9643da696fcbe09a3ea7520ada35ffba'
             '8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
@@ -43,13 +47,13 @@ backup=('etc/elasticsearch/elasticsearch.yml'
         'etc/default/elasticsearch')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   patch -Np1 -i "$srcdir"/remove-systemd-distribution-check.patch
   patch -Np1 -i "$srcdir"/remove-systemd-package-check.patch
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
   export GRADLE_OPTS="-Dbuild.snapshot=false -Dlicense.key=x-pack/plugin/core/snapshot.key"
   ./gradlew :modules:systemd:assemble
@@ -57,7 +61,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $_pkgname-$pkgver
 
   install -dm755 "$pkgdir"/{usr/share,var/lib,var/log}/elasticsearch
   install -dm755 "$pkgdir"/usr/bin

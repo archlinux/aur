@@ -1,6 +1,6 @@
-pkgbase = elasticsearch
+pkgbase = elasticsearch7
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
-	pkgver = 7.17.0
+	pkgver = 7.17.1
 	pkgrel = 1
 	url = https://www.elastic.co/products/elasticsearch
 	arch = x86_64
@@ -9,11 +9,13 @@ pkgbase = elasticsearch
 	depends = java-runtime-headless<=17
 	depends = systemd
 	depends = libxml2
+	provides = elasticsearch=7.17.1
+	conflicts = elasticsearch
 	backup = etc/elasticsearch/elasticsearch.yml
 	backup = etc/elasticsearch/log4j2.properties
 	backup = etc/elasticsearch/jvm.options
 	backup = etc/default/elasticsearch
-	source = elasticsearch-7.17.0.tar.gz::https://github.com/elastic/elasticsearch/archive/v7.17.0.tar.gz
+	source = elasticsearch-7.17.1.tar.gz::https://github.com/elastic/elasticsearch/archive/v7.17.1.tar.gz
 	source = elasticsearch.service
 	source = elasticsearch@.service
 	source = elasticsearch-keystore.service
@@ -24,7 +26,7 @@ pkgbase = elasticsearch
 	source = elasticsearch.default
 	source = remove-systemd-distribution-check.patch
 	source = remove-systemd-package-check.patch
-	sha256sums = 64392a523a534ed0d25439cc0998a20cf4ea74578b0e85cd0fb188421e0126a1
+	sha256sums = c4243783c90785bcf5c5854beb0bdd4e85a40d7db31c3c493f420030a89f784d
 	sha256sums = 9e1f68ff275ef2b5f2b93d2823efc5cc9643da696fcbe09a3ea7520ada35ffba
 	sha256sums = 8a76ad9a44a34eca8d6cb7ec9d8f1b01d46c114765b0a76094de8d72f0477351
 	sha256sums = bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f
@@ -36,4 +38,4 @@ pkgbase = elasticsearch
 	sha256sums = 96934e6518245a4110714c3e1c1eb7bfaf4dd0026cc917efc322f3bfa4c3b5ec
 	sha256sums = e00c45812db63a0fa6ea4de27e8f489e38e01fafdb155e5421f5faf659c2905d
 
-pkgname = elasticsearch
+pkgname = elasticsearch7
