@@ -6,7 +6,8 @@ After=network-online.target
 [Service]
 User=root
 ExecStart=/usr/bin/thu-isatap start
-# ExecStop=/usr/bin/thu-isatap stop
+ExecStop=/usr/bin/thu-isatap stop
+RemainAfterExit=yes
 Type=oneshot
 
 [Install]
