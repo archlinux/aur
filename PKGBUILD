@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=imgbrd-grabber
 pkgver=7.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('x86_64')
 url="https://github.com/Bionus/imgbrd-grabber"
@@ -19,17 +19,20 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-
 prepare() {
-    cd "$srcdir/${pkgname%}"
+    cd "$srcdir/${pkgname}"
     git submodule init
     git config submodule.qt-android-cmake.url "$srcdir/qt-android-cmake"
-    git config submodule.qt-android-cmake.path "$srcdir/${pkgname%-git}/cmake/qt-android-cmake"
+    git config submodule.qt-android-cmake.path "$srcdir/${pkgname}/src/cmake/qt-android-cmake"
     git config submodule.cotire.url "$srcdir/cotire"
-    git config submodule.cotire.path "$srcdir/${pkgname%-git}/cmake/cotire"
+    git config submodule.cotire.path "$srcdir/${pkgname}/src/cmake/cotire"
     git config submodule.Catch2.url $srcdir/Catch2
-    git config submodule.Catch2.path "$srcdir/${pkgname%-git}/tests/src/vendor/catch"
+    git config submodule.Catch2.path "$srcdir/${pkgname}/src/tests/src/vendor/catch"
     git submodule update
+
+    # Manually update Catch2 to branch v2.x (https://github.com/Bionus/imgbrd-grabber/commit/20f063f50df7a14a65f2de37bb986a54010bbf2c)
+    cd "$srcdir/${pkgname}/src/tests/src/vendor/catch"
+    git checkout origin/v2.x
 }
 
 build() {
