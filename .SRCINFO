@@ -1,6 +1,6 @@
 pkgbase = acroread-fonts-systemwide
 	pkgdesc = Fonts from Adobe Acrobat Reader DC
-	pkgver = DC_2020.012.20041
+	pkgver = DC_2021.011.20039
 	pkgrel = 1
 	epoch = 1
 	url = http://www.adobe.com/products/acrobat/acrrasianfontpack.html
@@ -11,11 +11,10 @@ pkgbase = acroread-fonts-systemwide
 	conflicts = ttf-adobe-fonts-cjkext
 	conflicts = acroread-fonts
 	conflicts = acroread-font-chinese-simplified
-	noextract = AcroRdrDC2001220041_en_US.exe
-	source = http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2001220041/AcroRdrDC2001220041_en_US.exe
-	source = http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/misc/FontPack1902120058_XtdAlf_Lang_DC.msi
-	sha256sums = 9dd98fe4d1abd7574ca99fa697983a1865bf1f343172e228c2bfbf638c2ddf73
-	sha256sums = b5b9e15791a177715fa5e93ea458f8627cada7ac3218531461cfd35cecef6c24
+	noextract = AcroRdrDC2101120039_en_US.exe
+	source = http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2101120039/AcroRdrDC2101120039_en_US.exe
+	source = http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/misc/FontPack2200120085_XtdAlf_Lang_DC.msi
+	sha256sums = 9ea7854fc05fd9c92b070893c6b199fbef922e36304e85177503df6d1470cd62
+	sha256sums = 21664fb9d0c7440459579867fb54d3ac6b9c6472ad0ef573f234c7bc0a4f23d3
 
 pkgname = acroread-fonts-systemwide
-

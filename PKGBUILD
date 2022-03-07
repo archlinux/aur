@@ -7,8 +7,8 @@
 pkgname=acroread-fonts-systemwide
 epoch=1
 _cloudver=DC
-_ver=2020.012.20041
-_fontpackver=2019.021.20058
+_ver=2021.011.20039
+_fontpackver=2022.001.20085
 _shortver=${_ver:2}
 _nodotver=${_shortver//.}
 _fpshortver=${_fontpackver:2}
@@ -27,8 +27,8 @@ conflicts=('ttf-adobe-fonts'
 source=("http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/${_nodotver}/AcroRdr${_cloudver}${_nodotver}_en_US.exe"
         "http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/misc/FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi")
 noextract=("AcroRdr${_cloudver}${_nodotver}_en_US.exe")
-sha256sums=('9dd98fe4d1abd7574ca99fa697983a1865bf1f343172e228c2bfbf638c2ddf73'
-            'b5b9e15791a177715fa5e93ea458f8627cada7ac3218531461cfd35cecef6c24')
+sha256sums=('9ea7854fc05fd9c92b070893c6b199fbef922e36304e85177503df6d1470cd62'
+            '21664fb9d0c7440459579867fb54d3ac6b9c6472ad0ef573f234c7bc0a4f23d3')
 
 prepare() {
   cd "$srcdir"
