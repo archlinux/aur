@@ -1,65 +1,38 @@
-# Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
+# Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=filebeat-bin
-_pkgbase=${pkgname%%-bin}
-pkgver=7.10.0
+pkgver=8.0.1
 pkgrel=1
-pkgdesc='Collects, pre-processes, and forwards log files from remote sources (precompiled)'
+pkgdesc='Filebeat sends log files to Logstash or directly to Elasticsearch'
 arch=('i686' 'x86_64')
-url="https://www.elastic.co/products/beats"
+url='https://www.elastic.co/beats/filebeat'
 license=('custom:Elastic')
-backup=("etc/$_pkgbase/$_pkgbase.yml")
+backup=('etc/filebeat/filebeat.yml')
 optdepends=('elasticsearch: for running standalone installation')
-install="$_pkgbase.install"
 options=('!strip')
-provides=("$_pkgbase")
-conflicts=("$_pkgbase")
-source=("$_pkgbase.install"
-        "$_pkgbase.service"
-        "$_pkgbase.sysusers")
+source_i686=("https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-$pkgver-arm64.deb")
+source_x86_64=("https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-$pkgver-amd64.deb")
+source=(
+    'filebeat.sysusers'
+    'filebeat.tmpfiles'
+)
+sha512sums_i686=('8658cf3fd1a1146d36e793ad0d44e1de4b103d3ed1608421989f7e39f88a94942b7a13a4495ea2efd0d893ebe58d2224d6714ec9808b7d7656d92046aeae83cb')
+sha512sums_x86_64=('a47fb63bf140bd1f9c7d395b6c28a5be3363e424af38d885b053d0a3cb6c57552ea353735b31baf31c186a786a1f8b44ea1729665b2f1b6ade492b2411965a01')
+sha512sums=(
+    'a8b689a8b741d1ed730056a03d5ea01600fc72caea2fd70d404727e0b79436a6af7185b5e39b9ead860dc4c0f232542b75b5c30647d10f4437a93629ed07649e'
+    '9e37bb768681915596d3ed29d4ba6241b41d7be5bdeb0950219d67c177e942a52f48bc69ea44bcc7166296368432e30d49aae6b1bfc03326d6994e3612000bf3'
+)
 
-source_i686=("https://artifacts.elastic.co/downloads/beats/$_pkgbase/$_pkgbase-$pkgver-linux-x86.tar.gz")
-source_x86_64=("https://artifacts.elastic.co/downloads/beats/$_pkgbase/$_pkgbase-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('ec5ea00ff6204467639b7d1484332e63d85be4e131f065885a225b6a56db4767'
-            'c9d5fc8ff09cd636845ccfcef283a38574ab4f0a32e720c4c0717869f3dbebe0'
-            '33feb3690f8b31563cc1e2da557c2aa326501ce9ccd7e0a142036902bfdb05ff')
-sha256sums_i686=('96861b56f2e9ae8f6eede26dab21a6dd26c8de53e826dce8daa427575bef6384')
-sha256sums_x86_64=('249d1594e651e92ce582730fd3995d73855d8e12502238089da5f7dba36d17fa')
+prepare() {
+    tar -xf data.tar.gz
+    rm -rf etc/init.d
+    mv lib usr
+    chmod 644 etc/filebeat/filebeat.yml
+    sed -i '/^\[Service\]$/{n;s/.*/User=filebeat/}' usr/lib/systemd/system/filebeat.service
+}
 
 package() {
-    if [[ $CARCH == 'i686' ]] ; then
-      beats_arch=x86
-    else
-      beats_arch=$CARCH
-    fi
-
-    cd "$srcdir/$_pkgbase-$pkgver-linux-$beats_arch"
-
-    for d in lib log ; do
-        mkdir -p "$pkgdir/var/$d/$_pkgbase"
-    done
-
-    install -D -m755 $_pkgbase     "$pkgdir/usr/bin/$_pkgbase"
-
-    for f in $_pkgbase.{,reference.}yml fields.yml ; do
-      install -D -m644 $f "$pkgdir/etc/$_pkgbase/$f"
-    done
-
-    for f in NOTICE.txt README.md ; do
-      install -D -m644 $f "$pkgdir/usr/share/$_pkgbase/$f"
-    done
-
-    install -D -m644 LICENSE.txt \
-                     "$pkgdir/usr/share/licenses/$_pkgbase/LICENSE"
-
-    cp -r kibana "$pkgdir/usr/share/$_pkgbase"
-    cp -r module "$pkgdir/usr/share/$_pkgbase"
-    cp -r modules.d "$pkgdir/etc/$_pkgbase"
-
-    install -D -m644 "$srcdir/$_pkgbase.service" \
-                     "$pkgdir/usr/lib/systemd/system/$_pkgbase.service"
-
-    # See man page for sysusers.d(5)
-    install -D -m644 "$srcdir/$_pkgbase.sysusers" \
-                     "$pkgdir/usr/lib/sysusers.d/$_pkgbase.conf"
+    install -Dm644 filebeat.sysusers "$pkgdir/usr/lib/sysusers.d/filebeat.conf"
+    install -Dm644 filebeat.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/filebeat.conf"
+    cp -r etc usr "$pkgdir/"
 }

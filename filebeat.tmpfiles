@@ -1,0 +1,1 @@
+d /var/lib/filebeat 0750 filebeat filebeat
