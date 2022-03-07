@@ -1,0 +1,17 @@
+pkgbase = python-lsp-all
+	pkgver = 1
+	pkgrel = 1
+	arch = x86_64
+	depends = python-lsp-server
+	depends = python-lsp-black
+	depends = python-lsp-isort
+	depends = python-lsp-mypy
+	depends = python-pyls-flake8
+	depends = python-rope
+	depends = python-mccabe
+	depends = python-pycodestyle
+	depends = python-pydocstyle
+	depends = autopep8
+	depends = yapf
+
+pkgname = python-lsp-all
