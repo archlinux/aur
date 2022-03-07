@@ -1,7 +1,7 @@
 pkgbase = firefox-syncstorage-git
 	pkgdesc = Sync storage with build-in token server for running a self-hosted firefox sync server.
 	pkgver = 0.10.2.r51.gaa18c1a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mozilla-services/syncstorage-rs
 	install = firefox-syncstorage.install
 	arch = i686
@@ -26,6 +26,6 @@ pkgbase = firefox-syncstorage-git
 	source = git+https://github.com/mozilla-services/syncstorage-rs.git
 	source = firefox-syncstorage.service
 	sha256sums = SKIP
-	sha256sums = 37081d252bda6cb82f360d4a82eec77ffade0acdf1c7f7dcac31012d4c5abfdf
+	sha256sums = 609e057cd835ea54b06b32b98e210cd946255f652e7754c9160fd7c94379a83d
 
 pkgname = firefox-syncstorage-git
