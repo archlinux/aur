@@ -5,7 +5,7 @@ _name=backports.cached_property
 pkgname=python-backports.cached_property
 pkgver=1.0.1
 pkgrel=1
-pkgdesc="Cloup (= Click + groups) contains a set of Click extensions for multiple purposes."
+pkgdesc="Python 3.8 functools.cached_property backport to python 3.6."
 
 arch=('any')
 license=('MIT')
