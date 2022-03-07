@@ -3,7 +3,7 @@
 
 pkgname=lib32-libvpx
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='VP8 and VP9 codec'
 arch=(x86_64)
 url=https://www.webmproject.org/
@@ -33,6 +33,9 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
+
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
 
   ./configure \
     --prefix=/usr \
