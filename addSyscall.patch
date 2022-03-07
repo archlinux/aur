@@ -1,0 +1,17 @@
+diff --unified --recursive --text package.orig/e4rat-lite/src/listener.cc package.new/e4rat-lite/src/listener.cc
+--- package.orig/e4rat-lite/src/listener.cc	2022-03-07 10:37:36.170200772 -0500
++++ package.new/e4rat-lite/src/listener.cc	2022-03-07 12:55:03.593793894 -0500
+@@ -153,12 +153,7 @@
+ 
+ void addSyscall(struct audit_rule_data* rule, const char* sc, int machine)
+ {
+-    int syscall_nr;
+-    syscall_nr = audit_name_to_syscall(sc, machine);
+-    if(syscall_nr == -1)
+-        throw std::logic_error(_("Cannot convert syscall to number"));
+-
+-    audit_rule_syscall_data(rule, syscall_nr);
++    audit_rule_syscallbyname_data(rule, sc);
+ }
+ 
+ void AuditListener::activateRules(int machine)

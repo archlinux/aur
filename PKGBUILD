@@ -4,8 +4,8 @@ pkgname=e4rat-lite-git
 _gitname=e4rat-lite
 pkgdesc="An improved version of e4rat, a toolset to accelerate the boot process and application startups."
 url=https://github.com/LendyZhang/$_gitname
-pkgver=2.7.r89.896e93a
-pkgrel=1
+pkgver=2.7.r90.ebf7d86
+pkgrel=2
 
 arch=(i686 x86_64)
 license=('GPL3')
@@ -18,11 +18,13 @@ conflicts=('ureadahead' 'e4rat-preload-lite' 'e4rat-preload-lite-git' 'e4rat-lit
 
 source=("git://github.com/LendyZhang/$_gitname.git"
         "$pkgname.install"
-        "e4rat-lite-git-update.hook")
+        "e4rat-lite-git-update.hook"
+	"addSyscall.patch")
 
 md5sums=('SKIP'
          'e0deb0fc92359da3a1970bbab467ffdf'
-         'b889cd20982a0d95fb694719174f5a11')
+         'b889cd20982a0d95fb694719174f5a11'
+         'ec21f5d9b665a5da41db6c2eb4c8ef46')
          
 install=$pkgname.install
 backup=('etc/e4rat-lite.conf')
@@ -33,6 +35,10 @@ pkgver() {
 }
 
 prepare() {
+
+	#Apply patch to addSyscall function
+	patch --directory="$_gitname" --forward --strip=2 --input="$srcdir/addSyscall.patch"
+
 	cd "$srcdir"
 
 	#Edit the cmd to automatically re-build the package
