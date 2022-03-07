@@ -1,7 +1,7 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coreemu/core/
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = core
 	depends = ethtool
 	depends = fabric
 	depends = iproute2
+	depends = nftables
 	depends = libev
 	depends = python
 	depends = python-grpcio
