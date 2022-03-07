@@ -1,11 +1,13 @@
 pkgbase = libtorrent-ps-ch
 	pkgdesc = BitTorrent library written in C++ for use with rtorrent-ps-ch
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rakshasa/libtorrent
 	arch = any
 	license = GPL2
 	depends = openssl
+	depends = autoconf
+	depends = automake
 	provides = libtorrent
 	conflicts = libtorrent
 	conflicts = libtorrent-ps
