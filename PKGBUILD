@@ -1,4 +1,5 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
+pkgbase="linux-on-drugs"
 pkgname="linux-on-drugs-git"
 pkgver="r4.841a229"
 pkgrel=2
