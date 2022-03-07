@@ -2,7 +2,7 @@
 _pkgname=jgmenu
 pkgname=$_pkgname-git
 pkgver=v4.4.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support"
 arch=('x86_64')
 url="https://github.com/johanmalm/$_pkgname"
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}"
 	make DESTDIR="$pkgdir/" install
 }
 
