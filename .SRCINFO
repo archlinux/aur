@@ -1,6 +1,6 @@
 pkgbase = ba-pentest-commons-meta
 	pkgdesc = Common tools for Penetration Testing (BlackArch repo)
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://blackarch.org/
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = ba-pentest-commons-meta
 	depends = gittools
 	depends = gopherus
 	depends = xxeserv
+	depends = feroxbuster
 	depends = metasploit
 	depends = pwncat
 	depends = crackmapexec
@@ -36,6 +37,11 @@ pkgbase = ba-pentest-commons-meta
 	depends = exploitdb
 	depends = nfs-utils
 	depends = pspy
+	depends = enum4linux-ng
+	depends = rdp-sec-check
+	depends = activedirectoryenum
+	depends = adenum
+	depends = smbmap
 	depends = john
 	depends = wordlistctl
 	depends = seclists
@@ -45,7 +51,8 @@ pkgbase = ba-pentest-commons-meta
 	depends = vim
 	depends = dos2unix
 	depends = dbeaver
+	depends = pass-station
+	depends = ctf-party
 	depends = nessus
 
 pkgname = ba-pentest-commons-meta
-
