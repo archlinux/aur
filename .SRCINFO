@@ -1,8 +1,8 @@
 pkgbase = python2-libxml2
 	pkgdesc = XML parsing library, version 2
 	pkgver = 2.9.13
-	pkgrel = 1
-	url = http://www.xmlsoft.org/
+	pkgrel = 2
+	url = https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home
 	arch = aarch64
 	arch = i686
 	arch = pentium4

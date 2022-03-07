@@ -8,9 +8,9 @@
 _pkgname=libxml2
 pkgname=python2-$_pkgname
 pkgver=2.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc='XML parsing library, version 2'
-url='http://www.xmlsoft.org/'
+url='https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home'
 arch=(aarch64 i686 pentium4 x86_64)
 license=(MIT)
 depends=(zlib readline ncurses xz icu)
@@ -71,20 +71,25 @@ check() {
 
 package() {
   make -C build DESTDIR="$pkgdir" install
-  
+
   python2 -m compileall -d /usr/lib "$pkgdir/usr/lib"
-  python2 -O -m compileall -d /usr/lib "$pkgdir/usr/lib" 
+  python2 -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 
   install -Dm 644 build/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 
   rm -rf "${pkgdir}/usr/bin/"
   rm -rf "${pkgdir}/usr/bin/"
+  rm -rf "${pkgdir}/usr/include/libxml2/libxml"
   rm -rf "${pkgdir}/usr/lib/cmake"
   rm -rf "${pkgdir}/usr/lib/libxml2"*
   rm -rf "${pkgdir}/usr/lib/pkgconfig"
   rm -rf "${pkgdir}/usr/lib/xml2Conf.sh"
   rm -rf "${pkgdir}/usr/share/aclocal"
-  rm -rf "${pkgdir}/usr/include/libxml2/libxml"
+  rm -rf "${pkgdir}/usr/share/doc/libxml2"
+  rm -rf "${pkgdir}/usr/share/doc/libxml2-python-${pkgver}"
+  rm -rf "${pkgdir}/usr/share/gtk-doc/html/libxml2"
+  rm -rf "${pkgdir}/usr/share/man/man1"
+  rm -rf "${pkgdir}/usr/share/man/man3"
 }
 
 # vim: ts=2 sw=2 et:
