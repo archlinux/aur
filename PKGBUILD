@@ -5,8 +5,8 @@
 pkgbase=python-pylru
 pkgname=('python-pylru')
 _name=pylru
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="A least recently used (LRU) cache implementation"
 arch=('any')
 url="https://github.com/jlhutch/pylru"
@@ -14,7 +14,7 @@ license=('GPL2')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("${_name}-${pkgver}.tar.gz::https://github.com/jlhutch/pylru/archive/v${pkgver}.tar.gz")
-sha256sums=('c4dcf175f6317539199434db13ffea0f642a52fac1e547e2e5f0866686fc9292')
+sha256sums=('8d8d5ac67c5567137c53cf505a851a0c125666bd64402a111f141ae35db00859')
 
 prepare() {
   cp -a ${_name}-${pkgver}{,-python2}
