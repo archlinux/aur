@@ -10,7 +10,7 @@
 
 pkgname=ros2-galactic
 pkgver=2021.07.16
-pkgrel=11
+pkgrel=12
 pkgdesc="A set of software libraries and tools for building robot applications"
 url="https://docs.ros.org/en/galactic/"
 arch=('any')
@@ -47,6 +47,12 @@ prepare() {
     # Clone the repos
     mkdir -p $srcdir/ros2/src
     vcs import $srcdir/ros2/src < $srcdir/ros2/ros2.repos
+
+    # Setup git (required for the cherry-pick commands)
+    export GIT_COMMITTER_NAME="PKGBUILD"
+    export GIT_COMMITTER_EMAIL="pkgbuild@example.com"
+    export GIT_AUTHOR_NAME="PKGBUILD"
+    export GIT_AUTHOR_EMAIL="pkgbuild@example.com"
 
     # Fix some issues in the code (TODO: Gradually move to upstream)
     ## google_benchmark_vendor: apply patch to update google_benchmark to v1.5.4
