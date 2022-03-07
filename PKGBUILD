@@ -2,28 +2,24 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Lukas Böger <dev___AT___lboeger___DOT___de>
 pkgname=dune-pdelab
-_tarver=2.7
+_tarver=2.8
 _tar="${_tarver}/${pkgname}-releases-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=3
+pkgrel=1
 pkgdesc="New generalized discretization module for a wide range of discretization methods"
 arch=('x86_64')
-url="https://www.dune-project.org/modules/${pkgname}"
+url="https://dune-project.org/modules/${pkgname}"
 license=('LGPL3' 'custom:GPL2 with runtime exception')
-depends=('dune-functions>=2.7' 'dune-alugrid>=2.7' 'superlu' 'arpackpp' 'suitesparse' 'parmetis' 'scotch')
+depends=('dune-functions>=2.8.0' 'dune-alugrid>=2.8.0' 'superlu' 'arpackpp' 'suitesparse')
 makedepends=('doxygen' 'graphviz' 'eigen')
-optdepends=(
-  'texlive-core: Type setting system'
-  'biber: A Unicode-capable BibTeX replacement for biblatex users'
-  'doxygen: Generate the class documentation from C++ sources'
+optdepends=('doxygen: Generate the class documentation from C++ sources'
   'eigen: Lightweight C++ template library for vector and matrix math'
-  'dune-alugrid: for creation ALUGrid from gmsh file'
   'dune-multidomaingrid: for Multiple-Domain Grid Function Space test for Poisson')
 source=(https://gitlab.dune-project.org/pdelab/${pkgname}/-/archive/releases/${_tar})
-sha512sums=('f080d6ac1cec818c92629cffbf6e6ae17dc8a8c7121a5d72e98e4fea1320ab4d331d77faeabc6ef4aac14d06fd5f834eaa7ea4e9520afc51f213a877d7f1f47d')
+sha512sums=('5f9c6daf6147ce28f84a5a906aff7bf89a0f607c9087e59358ab8ebba902dda6cefa196222ce77cc03df5dd38896757b2d9cf2b0c5e73416ac7bd82348b96558')
 
 prepare() {
-  sed -i 's/^Version: '"${pkgver}"'-git/Version: '"${pkgver}"'/' ${pkgname}-releases-${_tarver}/dune.module
+  sed -i 's/^Version: 2.7-git/Version: '"${pkgver}"'/' ${pkgname}-releases-${_tarver}/dune.module
 }
 
 build() {
@@ -32,7 +28,6 @@ build() {
     -B build-cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_CXX_STANDARD=17 \
     -DCMAKE_C_COMPILER=gcc \
@@ -46,7 +41,5 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --build build-cmake --target install
   install -Dm644 ${pkgname}-releases-${_tarver}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cd "${pkgdir}/usr/share/dune/cmake/modules"
-  rm CorrectWindowsPaths.cmake FindPETSc.cmake FindPackageMultipass.cmake ResolveCompilerPaths.cmake
   find "${pkgdir}" -type d -empty -delete
 }
