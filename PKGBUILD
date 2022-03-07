@@ -2,7 +2,7 @@
 
 _appname=user_oidc
 pkgname=nextcloud-app-${_appname/_/-}
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='OIDC connect user backend for Nextcloud'
 arch=(x86_64)
@@ -13,8 +13,8 @@ makedepends=(composer
              npm
              rsync)
 _archive="$_appname-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1a4b15c08a14bc8384c338d474a11f9a8a3a6e81a616163faa4d808d710bcdd4')
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('77eb8729f36df0a89105d2091f2cc9168fec9e953d8624baeb1e1c66c28236a0')
 
 prepare() {
 	cd "$_archive"
