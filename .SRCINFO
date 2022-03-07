@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 7.2
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -17,7 +17,7 @@ pkgbase = aurutils
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: default pager
 	optdepends = ninja: aur-sync ninja support
-	source = aurutils-7.2.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/7.2.tar.gz
-	sha256sums = f7968625c4cf39592c40beebc64fd8c6295a9ad8f3edcdfda67d8d4fed16cb63
+	source = aurutils-8.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/8.tar.gz
+	sha256sums = 56ae3a79147b7663b31b6e3a6791717398915bfffdb23f4af907d4472f5bfca7
 
 pkgname = aurutils
