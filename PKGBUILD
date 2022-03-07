@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=rollup
-pkgver=2.69.2
+pkgver=2.70.0
 pkgrel=1
 pkgdesc="Next-generation ES6 module bundler"
 arch=('any')
@@ -14,7 +14,9 @@ changelog=CHANGELOG.md
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('bf3f45c96dff068c89cccbbca0814b748a9ae8a7e447aefc4757fa65d0dd258a')
+sha256sums=('7d0ef6d3ee7e0c8f342a514cc9bd113993701916b8fe48665178c9b1ca4b83f5')
+
+PURGE_TARGETS=('CHANGELOG.md')
 
 package() {
 	export NODE_ENV=production
