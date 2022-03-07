@@ -1,4 +1,4 @@
-# Maintainer: Storm Dragon <stormdragon2976@gmail.com> 
+# Maintainer: Storm Dragon <stormdragon2976@hotmail.com> 
 # Maintainer: Michael Taboada <michael@2mb.solutions>
 
 pkgname='botamusique'
