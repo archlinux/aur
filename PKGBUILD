@@ -2,10 +2,10 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=zesarux-git
-pkgver=10.1.13122021.r270.g9fb48289
+pkgver=10.1.beta2.r17.gcb1af25
 _ver=10.1
 pkgrel=1
-pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. WARNING. This is a Snapshot version and not a stable one. Some features may not work or suffer random crashes or abnormal CPU use"
+pkgdesc="A Zx80/Zx81/Z88, Zx Spectrum 16/48/128/+2/+2A and ZX-Uno emulator with ULAPlus support. Development version."
 arch=('i686' 'x86_64')
 url="https://github.com/chernandezba/zesarux"
 license=('GPL3')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   	cd "$srcdir/zesarux-code"
-        git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+        git describe --long --tags | sed 's/^ZEsarUX-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
