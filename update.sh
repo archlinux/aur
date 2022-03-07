@@ -1,6 +1,6 @@
 #!/bin/bash
 
-latest_version=$(curl -Is "https://github.com/snyk/snyk/releases/latest" | grep "location" | head -1 | sed "s#.*tag/v##g" | tr -d "\r")
+latest_version=$(curl -Is "https://github.com/snyk/cli/releases/latest" | grep "location" | head -1 | sed "s#.*tag/v##g" | tr -d "\r")
 echo "Latest Snyk CLI Version: v${latest_version}"
 
 sed -i "s/^pkgver=.*$/pkgver=${latest_version}/" ./PKGBUILD
