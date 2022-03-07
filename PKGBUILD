@@ -5,7 +5,7 @@
 pkgname=rtf2latex2e
 pkgver=2.2.3
 dashedver=${pkgver//./-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to convert rich text format (RTF) documents to LaTeX 2e format."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/rtf2latex2e/"
@@ -18,22 +18,22 @@ source=(http://downloads.sourceforge.net/$pkgname/files/$pkgname-$dashedver.tar.
 sha256sums=('7ef86edea11d5513cd86789257a91265fc82d978541d38ab2c08d3e9d6fcd3c3')
 
 prepare() {
-  cd "${srcdir}/$pkgname-$dashedver"
+  cd $pkgname-$dashedver
   sed -i 's/prefix?=\/usr\/local/prefix?=\/usr/g' Makefile
   sed -i 's+ChangeLog+Changelog+g' Makefile
 }
 
 build() {
-  cd "${srcdir}/$pkgname-$dashedver"
-  make
+  cd $pkgname-$dashedver
+  CFLAGS+=" -fcommon" make
 }
 
 check() {
-  cd "${srcdir}/$pkgname-$dashedver"
-  make test
+  cd $pkgname-$dashedver
+  CFLAGS+=" -fcommon" make test
 }
 
 package() {
-  cd "${srcdir}/$pkgname-$dashedver"
-  make DESTDIR="${pkgdir}" install
+  cd $pkgname-$dashedver
+  make DESTDIR="$pkgdir" install
 }

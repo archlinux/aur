@@ -1,7 +1,7 @@
 pkgbase = rtf2latex2e
 	pkgdesc = Tool to convert rich text format (RTF) documents to LaTeX 2e format.
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/projects/rtf2latex2e/
 	arch = i686
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = rtf2latex2e
 	sha256sums = 7ef86edea11d5513cd86789257a91265fc82d978541d38ab2c08d3e9d6fcd3c3
 
 pkgname = rtf2latex2e
-
