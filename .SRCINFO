@@ -1,0 +1,16 @@
+pkgbase = python-doq
+	pkgdesc = Docstring generator
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/heavenshell/py-doq
+	arch = any
+	license = BSD
+	depends = python-parso
+	depends = python-jinja
+	depends = python-toml
+	provides = doq-0.9.1
+	conflicts = doq-0.9.1
+	source = doq-0.9.1::https://files.pythonhosted.org/packages/source/d/doq/doq-0.9.1.tar.gz
+	sha256sums = baccc348ddf967c8bf32bfdf54da8326e1dc74f37865e2c176012ad0bc7eea1e
+
+pkgname = python-doq
