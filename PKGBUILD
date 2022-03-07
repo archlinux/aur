@@ -5,9 +5,9 @@
 
 pkgname=transifex-client
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/transifex/cli"
 license=('Apache')
 depends=()
