@@ -5,7 +5,7 @@
 
 pkgname=elasticsearch
 pkgver=8.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
@@ -31,7 +31,7 @@ sha256sums=('6f06521e623dee36940df0b314a390fe10c766d2f8ac30e257a5b027770655c4'
             'bac40d87acaa5bee209ceb6dfa253009a072e9243fe3b94be42fb5cd44727d6f'
             '22a78a165a810608188faea6f2b0b381f27b1e9d60126c3b3e729124540589a8'
             'b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c'
-            '815f6a39db6f54bb40750c382ffbdc298d2c4c187ee8ea7e2f855923e2ff354b'
+            'fc9683349457f56bcd044cd8e711bc8efd43d32f9547d5b21a66650c6dfbed73'
             '74a772e9f73e2cecda45dcd30ade2f6114db657ed36231292bdf9a7ca04eab78'
             'bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8'
             '96934e6518245a4110714c3e1c1eb7bfaf4dd0026cc917efc322f3bfa4c3b5ec'
