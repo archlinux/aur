@@ -4,7 +4,7 @@
 pkgname=easyeda-bin
 _pkgname=${pkgname%-bin}
 pkgver=6.4.32
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple and Powerful Electronic Circuit Design Tool"
 arch=('x86_64')
 url="https://easyeda.com/"
@@ -35,9 +35,9 @@ package() {
 	install -Dm644	${pkgdir}/opt/${_pkgname}/EASYEDA.dkt \
 					${pkgdir}/usr/share/applications/${_pkgname}.desktop
 
-	sed -i 's|/easyeda/icon/128x128/easyeda.png|easyeda|g' \
+	sed -i 's|/easyeda-linux-x64/icon/128x128/easyeda.png|easyeda|g' \
 		${pkgdir}/usr/share/applications/${_pkgname}.desktop
-	sed -i 's|/opt/easyeda/||g' \
+	sed -i 's|/easyeda-linux-x64/||g' \
 		${pkgdir}/usr/share/applications/${_pkgname}.desktop
 	rm -rf ${pkgdir}/opt/${_pkgname}/EASYEDA.dkt
 
