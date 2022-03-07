@@ -4,7 +4,7 @@
 
 pkgname="ayatana-webmail-no-indicator-messages"
 pkgver="22.2.26"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Webmail notifications and actions for any desktop without ayatana-indicator-messages dependency"
 arch=("any")
 url="https://tari.in/www/software/ayatana-webmail/"
@@ -39,5 +39,8 @@ build()
 package()
 {
     cd ayatana-webmail-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --optimize=1 \
+                            --prefix=/usr \
+                            --root="${pkgdir}" \
+                            --skip-build
 }
