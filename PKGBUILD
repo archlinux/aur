@@ -2,14 +2,14 @@
 
 pkgname=hashbrowns-git
 pkgver=0.18.5a3aeb2
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides cryptographic hashes with a minimal UI'
 url='https://github.com/gavinhungry/hashbrowns'
 license=('MIT')
 arch=('any')
 makedepends=('git')
 depends=('pygtk' 'pango' 'python2-pysha3')
-source=("${pkgname}::git+${url}.git#branch=master")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
