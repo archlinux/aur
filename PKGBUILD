@@ -13,7 +13,7 @@ provides=('gdal=3.4.0')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=('x86_64')
 url="https://gdal.org/"
@@ -33,11 +33,11 @@ options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         https://raw.githubusercontent.com/archlinux/svntogit-community/3a1ed1385f3ff65de7f463789e58c77afe1fb6fa/trunk/gdal-perl-vendor.patch
-	https://raw.githubusercontent.com/archlinux/svntogit-community/fee18e5073726b7f00132851251f5714ff75043c/trunk/poppler-21.10.0.patch
+	https://raw.githubusercontent.com/archlinux/svntogit-community/b1f3eb2d48ab8ffdf6ce78b11eff4f9fdc2099dc/trunk/poppler-22.03.0.patch
 )
 sha256sums=('ac7bd2bb9436f3fc38bc7309704672980f82d64b4d57627d27849259b8f71d5c'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed'
-            '3074318889631fa9a9f351feccedb4d7a368b56017cc3660276c7aac154af6de'
+            'b60d94457199ab49ff11cbbb793cd6cd459c732265d342f1c04721f164383e73'
 )
 
 prepare() {
@@ -49,9 +49,8 @@ prepare() {
   echo "Fixing gdal-perl bindings..."
   patch -Np0 -i "${srcdir}"/gdal-perl-vendor.patch
 
-  # Isn´t needed anymore?
-  #echo "Applying poppler 21.10.0..."
-  #patch -Np2 -i "${srcdir}"/poppler-21.10.0.patch
+  echo "Applying poppler 22.03.0..."
+  patch -Np1 -i "${srcdir}"/poppler-22.03.0.patch
 }
 
 build() {
