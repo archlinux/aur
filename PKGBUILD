@@ -39,6 +39,10 @@ package() {
   sed "s/REW/Room EQ Wizard/g" -i "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
   echo "Icon=/usr/share/icons/$pkgname.png" >> "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
 
+  # fix waterfall crash
+  # https://www.avnirvana.com/threads/rew-for-linux-waterfall-drawing-problem.2956/
+  sed "s/^-Dsun.java2d.opengl=.*$/-Dsun.java2d.opengl=True/" -i "$pkgdir/usr/share/java/$pkgname/$pkgname.vmoptions"
+
   # basic cleanup
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/files.log"
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/installation.log"
