@@ -1,7 +1,7 @@
 pkgbase = linux-on-drugs-git
 	pkgdesc = Gives drugs to your terminal
-	pkgver = r4.841a229
-	pkgrel = 2
+	pkgver = r5.34a1515
+	pkgrel = 1
 	url = https://github.com/SkwalExe/linux-on-drugs
 	install = linux-on-drugs.install
 	arch = x86_64
