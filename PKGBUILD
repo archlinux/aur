@@ -7,7 +7,7 @@
 _productVariant=Germany
 # leave this unset to get a package name based on the application name
 pkgname=
-pkgrel=1
+pkgrel=2
 
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
@@ -21,7 +21,7 @@ _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Czechia=(cs_CZ 4860 'CEWE FOTOLAB fotosvet' 7.1.3 "CEWE fotosvět")
 _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.3)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.2.1 'CEWE Fotobuch' d9edd2bb89870dc61692e73f81fe0efa)
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.2.2 'CEWE Fotobuch' d9edd2bb89870dc61692e73f81fe0efa)
 _prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.2.2 '' d9edd2bb89870dc61692e73f81fe0efa)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.4)
 _prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
@@ -78,7 +78,7 @@ md5sums=(SKIP SKIP)
 
 url="http://www.cewe.de/"
 license=("custom:eula")
-depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy')
+depends=('libx11' 'libjpeg' 'curl' 'wget' 'snappy' 'libxcrypt-compat')
 makedepends=('unzip' 'xdg-utils')
 arch=('i686' 'x86_64')
 source=($source 'updater.pl')
