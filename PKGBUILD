@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.93.4
+pkgver=3.93.5
 pkgrel=1
 _node_version=16
 pkgdesc="Official Tutanota email client"
@@ -12,10 +12,10 @@ license=('GPL3')
 depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
 #makedepends=('node-gyp>=8.1.0' 'nodejs>=16.3.0' 'npm>=7.0.0')
 makedepends=('nvm')
-source=("https://github.com/tutao/tutanota/archive/${pkgname%-*}-release-$pkgver.tar.gz"
+source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('b9cf1b845b6597da098ffe9597d8b25a319a2d3547efa259bf1e59ae2eb7091c'
+sha256sums=('aa1c02d92bb3747891059f8fc29895f6e93d9e800eb76a52d74882875aa9eaab'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
@@ -35,16 +35,16 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  cd "${pkgname%-*}-$pkgname-release-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   npm ci
   npm run build-packages
-  node desktop -l --custom-desktop-release --unpacked
+  node desktop --custom-desktop-release --unpacked
 }
 
 package() {
-  cd "${pkgname%-*}-${pkgname%-*}-release-$pkgver"
+  cd "${pkgname%-*}-$pkgname-release-$pkgver"
   install -d "$pkgdir/opt/$pkgname/"
   cp -r build/desktop/linux-unpacked/* \
     "$pkgdir/opt/$pkgname/"
