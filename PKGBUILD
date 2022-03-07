@@ -4,7 +4,7 @@
 # This PKGBUILD script and the config file are based on Arch's linux package 5.16.11-arch1
 
 pkgbase=linux-mainline-git
-pkgver=v5.17.rc6.r46.719fce7539cd
+pkgver=v5.17.rc7.r0.ffb217a13a2e
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -18,15 +18,17 @@ makedepends=(
 options=('!strip')
 _srcname=linux-torvalds
 source=(
-  "$_srcname::git+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
+  "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux"
   config         # the main kernel config file
+  config.extra   # additional configs
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            'a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31')
+            'a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31'
+            '6c593d021527cef8f328cbce0da5a5dcd0d418468d93ff7aef43c700aad51349')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -55,7 +57,7 @@ prepare() {
   done
 
   echo "Setting config..."
-  cp ../config .config
+  cat ../config ../config.extra > .config
   make olddefconfig
   diff -u ../config .config || :
 
