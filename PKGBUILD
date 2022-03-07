@@ -11,7 +11,7 @@
 # Contributor: Tim Zebulla <amon at faumrahrer dot de>
 
 pkgname=weechat-git
-pkgver=3.2.r89.g6052c1a5c
+pkgver=3.4.r93.gf81a0dc4d
 pkgrel=1
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=(i686 x86_64 armv7h aarch64)
@@ -33,7 +33,7 @@ source=("git+https://github.com/${pkgname%-git}/${pkgname%-git}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-	git -C ${pkgname%-git} describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git -C ${pkgname%-git} describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-rc/rc/g;s/-/./g'
 }
 
 # cmake does not correctly handle CPPFLAGS, so kludge it in anyway:
