@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://fsqlf.sourceforge.net/"
 license=('LGPL')
 depends=('wxgtk2')
-makedepends=('flex' 'gcc' 'make')
+makedepends=('flex' 'gcc' 'make' 'git')
 source=("git+https://github.com/dnsmkl/fsqlf.git")
 sha256sums=('SKIP')
 

@@ -9,9 +9,9 @@ pkgbase = fsqlf-git
 	makedepends = flex
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = wxgtk2
 	source = git+https://github.com/dnsmkl/fsqlf.git
 	sha256sums = SKIP
 
 pkgname = fsqlf-git
-
