@@ -1,0 +1,11 @@
+pkgbase = linux-meta
+	pkgdesc = Metapkg for linux kernels
+	pkgver = 0.0.0
+	pkgrel = 2
+	arch = any
+	license = GPL
+	optdepends = linux
+	optdepends = linux-zen
+	optdepends = linux-tkg
+
+pkgname = linux-meta
