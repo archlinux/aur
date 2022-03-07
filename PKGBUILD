@@ -1,16 +1,17 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 _repo='MedzikUser/imgurs'
-_ver=v0.4.0
+_ver=v0.5.0
 
 pkgname='imgurs'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
-pkgdesc='CLI for Imgur API'
+pkgdesc='CLI for Imgur API written in Rust'
 arch=('x86_64')
-url="https://github.com/${_repo}"
+url="https://github.com/$_repo"
 license=('BSD3')
 
-makedepends=('git' 'cargo')
+depends=('openssl')
+makedepends=('git' 'cargo' 'pkg-config')
 optdepends=(
   'libnotify: Notification support'
   'xsel: Clipboard support'
@@ -35,8 +36,8 @@ package() {
   target/release/$pkgname completions zsh > "$pkgdir"/usr/share/zsh/site-functions/_$pkgname
   target/release/$pkgname completions fish > "$pkgdir"/usr/share/fish/vendor_completions.d/$pkgname.fish
 
-  mkdir -p "$pkgdir"/usr/share/man/man1
-  target/release/$pkgname manpage | gzip > "$pkgdir"/usr/share/man/man1/$pkgname.1.gz
+  mkdir -p "$pkgdir/usr/share/man/man1"
+  target/release/$pkgname manpage | gzip > "$pkgdir/usr/share/man/man1/$pkgname.1.gz"
 
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
