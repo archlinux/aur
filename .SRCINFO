@@ -1,7 +1,7 @@
 pkgbase = pls
-	pkgdesc = A better ls for developers
+	pkgdesc = Prettier `ls` for the pros
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dhruvkb.github.io/pls
 	arch = any
 	license = GPL3

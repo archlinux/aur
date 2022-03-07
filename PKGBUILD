@@ -3,8 +3,8 @@
 
 pkgname=pls
 pkgver=1.14.0
-pkgrel=1
-pkgdesc='A better ls for developers'
+pkgrel=2
+pkgdesc='Prettier `ls` for the pros'
 url='https://dhruvkb.github.io/pls'
 arch=('any')
 license=('GPL3')
