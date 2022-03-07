@@ -1,7 +1,7 @@
 # Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=sfeed
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='RSS and Atom parser'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('curl: sfeed_update script'
 provides=('sfeed-curses')
 conflicts=('sfeed-curses')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7d3cdaf8dcc6582f6655330f82f8a57ca37c4b9c84ff995b09b7b7fb9fe58b58')
+sha256sums=('49d32e98a47a80a2a6cbd5d816938057d4ca3910e0a6a814b2c2a6520fbda9ba')
 
 build() {
   # To change the theme for sfeed_curses you can set SFEED_THEME. See the themes directory for the theme names.
