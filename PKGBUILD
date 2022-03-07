@@ -4,15 +4,15 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard
-pkgver=5.20.4
-_pkgver=5_20_4
+pkgver=5.20.5
+_pkgver=5_20_5
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('any')
 url="https://www.roomeqwizard.com"
 license=('custom')
 source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
-sha512sums=('6e130a77e7adc8ff13a2d99e5aadad19868b38ff08ed1d29e9f35223a712c1fe73fa7345a5fdf6b510d451688f685ab5c7aa12537dabc182a110b68bcc3b430b')
+sha512sums=('68a8059295f197a1102fac091dec27f74deb05d2fb5cba1fbc23e113546bb9f832995136015200188eff0fe3a1a6695d4b9fe08a0c3eee6cf53ccfd514fcfec2')
 
 package() {
   sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/opt/$pkgname"
