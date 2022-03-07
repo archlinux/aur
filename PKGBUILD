@@ -22,7 +22,7 @@ pkgver() {
 
 
 build() {
-	cd "$pkgname-$pkgver"
+  cd "${srcdir}/${_pkgname}"
 	./configure --with-gtktheme --with-lx --with-pmenu --prefix=/usr
 	make
 }
