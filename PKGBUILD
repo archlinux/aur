@@ -25,6 +25,7 @@ prepare() {
   sed -i "s/%pkgdesc%/${pkgdesc}/g" "${_app_id}.desktop"
   sed -i "s/%_app_id%/${_app_id}/g" "${_app_id}.desktop"
   sed -i "s/%_uuid%/${_uuid}/g" "${_app_id}.desktop"
+  sed -i -e "s/${_rom_filename}/${_uuid}/g" "${_rom_filename}.cue"
 }
 
 
@@ -34,11 +35,8 @@ package() {
   install -Dm755 "${_app_id}.desktop" "${pkgdir}/usr/share/applications/${_app_id}.desktop"
   install -Dm644 "${_app_id}.png" "${pkgdir}/usr/share/icons/${_app_id}.png"
 
-  sed -i -e "s/${_rom_filename}/${_uuid}/g" "${_rom_filename}.cue"
-
   for _bin in *; do
     if [[ "${_bin}" == *".bin" || "${_bin}" == *".cue" ]]; then
-      echo $_bin
       _dest=${_bin/$_rom_filename/$_uuid}
       install -Dm644 "${_bin}" "${_game}/${_dest}"
     fi
