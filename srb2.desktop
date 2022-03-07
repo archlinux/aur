@@ -1,6 +1,8 @@
 [Desktop Entry]
 Type=Application
 Name=Sonic Robo Blast 2
+GenericName=3D platformer game
+Comment=3D classic Sonic fangame based on Doom Legacy
 Exec=srb2
 Icon=srb2
 Terminal=false

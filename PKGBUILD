@@ -1,11 +1,12 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: DeedleFake <yisszev at beckforce dot com>
 # Contributor: JJK
+# Contributor: DilithiumNitrate
 
 pkgname=srb2
-pkgver=2.2.9
-_dataver=2.2.9
-pkgrel=2
+pkgver=2.2.10
+_dataver=2.2.10
+pkgrel=1
 pkgdesc='A 3D Sonic fan game based off of Doom Legacy (aka "Sonic Robo Blast 2")'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,21 +17,18 @@ makedepends_i686=('nasm')
 source=("https://github.com/STJr/SRB2/archive/SRB2_release_${pkgver}.zip"
         "srb2.desktop"
         "srb2-opengl.desktop")
-sha256sums=('ed152f0f1f52eb0104947527ae92180a8858738ffff19a282b7c95d7a219bfb8'
-            'ac9fa63f29ad9413797da8c6f0a4f76fa6f4dd0710d1e84a457a8c42cf6df4f9'
-            'f696bab390d2b1028bf2f5c5d4d838c0981dc211cec4c4a8f349b7ec0580e701')
+sha256sums=('eab373a60408247faf85247199a6ce65053b2da5ed9f4eda95d2d08355434b8b'
+            '8ffd2b2d1662045ce890b59ff420f9426531e073e9c8f4f5c158da53e150cc21'
+            'ff5f4a5413cf3110d9b064a98f8512a925bf8e7f127c8cf7ddb43885cff3c38d')
 
 prepare() {
   cd SRB2-SRB2_release_$pkgver/src
 
-  # fix error with `endef` not being recognized
-  sed -i 's/\tendef/  endef/' Makefile.cfg
-
-  # Fix compilation issue with gcc 10
-  sed '1iCFLAGS=-fcommon' -i Makefile
-
   # disable Animated PNG saving support, allows build with libpng16
   sed 's|#define USE_APNG|/* & */|' -i m_misc.c
+
+  # make comptime.sh optional
+  sed 's/^comptime\.c ::/comptime.c :/' -i Makefile
 
   # use better version string
   sed 's/-DCOMPVERSION//' -i Makefile
@@ -47,7 +45,7 @@ build() {
 
 package() {
   [ "$CARCH" == "x86_64" ] && IS64BIT="64" || IS64BIT=""
-  install -Dm755 SRB2-SRB2_release_$pkgver/bin/Linux$IS64BIT/Release/lsdl2srb2 \
+  install -Dm755 SRB2-SRB2_release_$pkgver/bin/lsdl2srb2 \
     "$pkgdir"/usr/bin/srb2
 
   # icon + .desktop
