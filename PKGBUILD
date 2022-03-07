@@ -4,7 +4,7 @@
 
 pkgname=python2-pycurl
 pkgver=7.44.1
-pkgrel=1
+pkgrel=5
 pkgdesc="A Python 2.x interface to libcurl"
 arch=('x86_64')
 url="http://pycurl.sourceforge.net/"
@@ -28,4 +28,5 @@ package() {
   cd pycurl-$pkgver
   python2 setup.py install -O1 --root="$pkgdir"
   install -Dm644 COPYING-MIT -t "$pkgdir"/usr/share/licenses/$pkgname/
+  rm -rf $pkgdir/usr/share/doc
 }
