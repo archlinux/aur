@@ -1,1 +1,3 @@
 pkgbuild-upgrade.rs
+src
+.gitignore
