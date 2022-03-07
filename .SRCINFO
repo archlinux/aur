@@ -1,0 +1,21 @@
+pkgbase = statinator4k-git
+	pkgdesc = Prints out system status information for things like the dwm (or sprinkles) bar
+	pkgver = 20.0.99
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/statinator4k
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	optdepends = dbus: notifications,
+	optdepends = alsa-lib: Alsa volume display
+	provides = statinator4k
+	conflicts = statinator4k
+	source = statinator4k::git+http://git.weitnahbei.de/nullmark/statinator4k
+	sha256sums = SKIP
+
+pkgname = statinator4k-git
