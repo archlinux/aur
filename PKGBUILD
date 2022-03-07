@@ -8,12 +8,14 @@ arch=('any')
 url='https://play.date/dev/'
 license=('custom')
 depends=('xdg-utils')
+makedepends=('curl' 'jq')
 optdepends=('zeal: read the Playdate SDK docset offline')
 options=('!strip')
 install="${pkgname}.install"
+_url_base='https://download-keycdn.panic.com/playdate_sdk/Linux/PlaydateSDK'
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://download-keycdn.panic.com/playdate_sdk/Linux/PlaydateSDK-${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::${_url_base}-${pkgver}.tar.gz"
   'date.play.simulator.desktop'
   'playdate-sdk.install'
   'playdate-simulator.shim'
@@ -36,6 +38,12 @@ prepare() {
     -C "${srcdir}/${pkgname}-${pkgver}" \
     --exclude='setup.sh' \
     --strip-components=1
+}
+
+pkgver() {
+  curl -s -o /dev/null -w '%{json}' "${_url_base}-latest.tar.gz" \
+    | jq -r '.redirect_url' \
+    | sed -E 's/.*SDK-(.*)\.tar\.gz/\1/'
 }
 
 package() {
