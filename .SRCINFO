@@ -1,0 +1,17 @@
+pkgbase = pokeshell-git
+	pkgdesc = A shell program to show pokemon sprites in the terminal.
+	pkgver = r42.40026ce
+	pkgrel = 1
+	url = https://github.com/acxz/pokeshell
+	arch = any
+	license = GPLv3
+	depends = curl
+	depends = jq
+	depends = imagemagick
+	depends = timg
+	provides = pokeshell
+	conflicts = pokeshell
+	source = pokeshell::git+https://github.com/acxz/pokeshell
+	sha256sums = SKIP
+
+pkgname = pokeshell-git
