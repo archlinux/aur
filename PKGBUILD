@@ -4,9 +4,11 @@
 # or use:
 # $ curl -sL $(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "s/^.*\(\/allusion-app\/Allusion\/releases\/download\/.*\/latest-linux.yml\)\".*/https:\/\/github.com\1/p" | head -n1)
 
+#timestamp: 2022-03-07T22:28:06.097Z
+
 pkgname=allusion-appimage
 pkgver=1.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Allusion is a tool built for artists, aimed to help you organize your Visual Library – A single place that contains your entire collection of references, inspiration and any other kinds of images."
 arch=('x86_64')
 url='https://allusion-app.github.io'
@@ -18,7 +20,7 @@ gittag=$(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "
 gitver="${pkgver}${gittag}"
 source_x86_64=("Allusion-${gitver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
 noextract=("Allusion-${gitver}.AppImage")
-sha256sums_x86_64=('f49b33a2fd0b215a520f90cba0aae5f70338d5054cfbf29634bbafa37037477a')
+sha256sums_x86_64=('50baa17c3943dc6b7b1cdb1d467e96998fa9fb605feee221f80c4e41f1f058d1')
 
 package() {
     # Install AppImage
