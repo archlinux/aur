@@ -1,0 +1,13 @@
+pkgbase = python-devrandom
+	pkgdesc = /dev/random support for python's 'random' module.
+	pkgver = 3.b253746
+	pkgrel = 1
+	url = https://gitlab.com/ewtoombs/python-devrandom
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://gitlab.com/ewtoombs/python-devrandom.git
+	md5sums = SKIP
+
+pkgname = python-devrandom
