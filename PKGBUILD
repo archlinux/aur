@@ -1,8 +1,8 @@
 # Maintainer: purpleleaf  <max@ganoia.eu>
 _pkgname=jgmenu
 pkgname=$_pkgname-git
-pkgver=`git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'  | sed 's:^v::'`
-pkgrel=1
+pkgver=v4.4.0
+pkgrel=2
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support"
 arch=('x86_64')
 url="https://github.com/johanmalm/$_pkgname"
@@ -14,8 +14,10 @@ source=("${_pkgname}::git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd ${pkgname}
- echo $pkgver
+  cd "${srcdir}/${_pkgname}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 
