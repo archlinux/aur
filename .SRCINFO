@@ -1,0 +1,13 @@
+pkgbase = vim-detectspelllang
+	pkgdesc = Make Vim autodetect the spellcheck language
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/Konfekt/vim-detectspelllang
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	depends = vim-plugin-runtime
+	source = vim-detectspelllang-2.2.tar.gz::https://github.com/Konfekt/vim-detectspelllang/archive/refs/tags/2.2.tar.gz
+	sha256sums = 8159bac05721bd116d320c53f96312667c4b81365b81d67a83ebaa2243eb2611
+
+pkgname = vim-detectspelllang
