@@ -1,6 +1,6 @@
 # Maintainer: Sematre <sematre at gmx dot de>
 pkgname=python-iso639-lang
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 
 pkgdesc="A lightweight library for the ISO 639 standard."
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f98e00e5bc70bca842a62c3e34a721d1513676cbb6961ad9aacb2c4007e3e487')
+sha256sums=('ab40ce1889ff812310d78b700f7d16167ff0144fe83b43455f1d0c1a4c723960')
 
 build() {
 	cd "iso639-${pkgver}"
