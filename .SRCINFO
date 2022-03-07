@@ -1,13 +1,13 @@
 pkgbase = exoscale-cli
 	pkgdesc = Command-line tool for everything at Exoscale: compute, storage, dns
-	pkgver = 1.50.0
+	pkgver = 1.51.1
 	pkgrel = 1
 	url = https://github.com/exoscale/cli
 	arch = x86_64
 	license = EPL
 	provides = exoscale-cli
 	conflicts = exoscale-cli
-	source = https://github.com/exoscale/cli/releases/download/v1.50.0/exoscale-cli_1.50.0_linux_amd64.tar.gz
-	sha256sums = ada75b24de8b4c49d9490624e01bfbfaef4b269c18e6c1bb6b23f1f40dc0b931
+	source = https://github.com/exoscale/cli/releases/download/v1.51.1/exoscale-cli_1.51.1_linux_amd64.tar.gz
+	sha256sums = 27ccb7a8ff9ebab656a79af019df481f900a862c91df38fc8c7e2b917035398e
 
 pkgname = exoscale-cli
