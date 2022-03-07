@@ -1,0 +1,18 @@
+pkgbase = wikidoc-git
+	pkgdesc = Python script allows to create nice looking PDF files from a github wiki. Requires mardown-formatted wiki.
+	pkgver = r34.20180311.7fb66a4
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/jobisoft/wikidoc
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = pandoc
+	depends = python2
+	depends = wkhtmltopdf
+	provides = wikidoc=r34.20180311.7fb66a4
+	conflicts = wikidoc
+	source = wikidoc::git+git://github.com/jobisoft/wikidoc.git
+	sha256sums = SKIP
+
+pkgname = wikidoc-git
