@@ -2,8 +2,8 @@
 # Contributor: Oliver Friedrich <olifriedrich at gmail dot com>
 
 pkgname='tonelib-metal-bin'
-pkgver=1.0.0
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="ToneLib Metal – Guitar amp simulator targeted at metal players"
 arch=('x86_64')
 license=('custom')
