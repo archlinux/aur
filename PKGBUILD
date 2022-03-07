@@ -3,17 +3,15 @@
 
 pkgname='tonelib-metal-bin'
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ToneLib Metal – Guitar amp simulator targeted at metal players"
 arch=('x86_64')
-_filename="ToneLib-Metal-amd64.deb"
 license=('custom')
 url="https://tonelib.net/tonelib-metal"
 depends=('alsa-lib' 'desktop-file-utils' 'freetype2' 'hicolor-icon-theme' 'mesa')
 optdepends=('jack: JACK output')
-source=("https://www.tonelib.net/download/${_filename}")
-sha256sums=('5c338e1f57f2b6bdb9fe484d65d62a541b7eeb11ec9cb7673b841ff33dc74d32')
-
+source=("${pkgname}-${pkgver}.deb::https://www.tonelib.net/download/ToneLib-Metal-amd64.deb")
+sha256sums=('17910ac0d43d7ff91d64b148f900d91efc1ebd5fef0e7c4c752993fef9d7eae8')
 
 package () {
     tar xf data.tar.xz -C "${pkgdir}"
