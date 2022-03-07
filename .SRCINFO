@@ -1,0 +1,16 @@
+pkgbase = qtrvsim-git
+	pkgdesc = RISC-V CPU simulator for education purposes
+	pkgver = r873.c708880
+	pkgrel = 1
+	url = https://github.com/cvut/qtrvsim
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = elfutils
+	depends = qt5-base
+	provides = qtrvsim
+	conflicts = qtrvsim
+	source = git+https://github.com/cvut/qtrvsim.git
+	sha256sums = SKIP
+
+pkgname = qtrvsim-git
