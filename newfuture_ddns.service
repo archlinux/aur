@@ -1,0 +1,13 @@
+[Unit]
+Description=NewFuture DDNS Service
+Wants=network-online.target
+After=network-online.target
+	
+[Service]
+DynamicUser=true
+Type=oneshot
+ExecStart=/usr/bin/ddns -c /etc/ddns/config.json
+TimeoutSec=180
+	
+[Install]
+WantedBy=multi-user.target
