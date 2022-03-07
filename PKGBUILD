@@ -3,12 +3,12 @@
 
 pkgname=rime-solarpinyin
 pkgver=1.2.0.20220306
-pkgrel=1
+pkgrel=2
 pkgdesc="Simplified pinyin input for rime"
 arch=('x86_64')
 url="https://github.com/so1ar/rime-cloverpinyin"
 license=('LGPL')
-depends=('rime-prelude')
+depends=('rime-prelude' 'rime-opencc-emoji-symbols-git')
 makedepends=('librime')
 provides=('rime-cloverpinyin')
 conflicts=('rime-cloverpinyin')
