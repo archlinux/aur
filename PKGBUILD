@@ -2,17 +2,17 @@
 
 pkgname=python-yandex-music-api
 _name=${pkgname#python-}
-pkgver=1.0.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Unofficial Python library for the Yandex.Music API"
 arch=('any')
 url="https://github.com/MarshalX/yandex-music-api"
 license=('LGPL3')
-depends=('python' 'python-requests')
+depends=('python' 'python-requests' 'python-aiohttp' 'python-aiofiles')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("https://github.com/MarshalX/$_name/archive/v$pkgver.tar.gz")
-md5sums=('3fc0b3af5dafdcd304f4eb072e8894e1')
+md5sums=('bdc737cd48b827345a8c157b9c79794e')
 
 build() {
   cd $srcdir/$_name-$pkgver
