@@ -1,0 +1,16 @@
+pkgbase = saparoton-git
+	pkgdesc = Simple TUI interface for madasul
+	pkgver = 666.0.3
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/saparoton
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = socat
+	provides = saparoton
+	conflicts = saparoton
+	source = maasul::git+http://git.weitnahbei.de/nullmark/saparoton
+	sha256sums = SKIP
+
+pkgname = saparoton-git
