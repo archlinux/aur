@@ -2,8 +2,8 @@
 # Maintainer: fkxxyz <fkxxyz@163.com>
 
 pkgname=rime-solarpinyin
-pkgver=1.2.0.20220306
-pkgrel=2
+pkgver=1.2.0.20220308
+pkgrel=1
 pkgdesc="Simplified pinyin input for rime"
 arch=('x86_64')
 url="https://github.com/so1ar/rime-cloverpinyin"
