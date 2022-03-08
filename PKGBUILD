@@ -2,7 +2,7 @@
 # Contributor: Pawel Mizio <miziakmwa at gmail dot com>
 
 pkgname=miniongg
-pkgver=3.0.9.r1.9aeb2f21
+pkgver=3.0.11.r1.5710ea73
 pkgrel=1
 pkgdesc="Elder Scrolls Online and World of Warcraft Addon Manager"
 arch=('any')
@@ -12,13 +12,13 @@ depends=('jre-openjdk' 'java-openjfx')
 makedepends=('unzip')
 provides=("miniongg")
 
-source=("https://cdn.mmoui.com/minion/v3/MinionClientUpdate-9aeb2f21d334d495253cdd8364859ca5ce90b9db.zip"
-	"https://cdn.mmoui.com/minion/v3/MinionLibsUpdate-32.zip"
+source=("https://cdn.mmoui.com/minion/v3/MinionClientUpdate-5710ea736478fd7193e68b70defc0ee404ba4576.zip"
+	"https://cdn.mmoui.com/minion/v3/MinionLibsUpdate-34.zip"
 	"Minion-EULA.html::https://minion.mmoui.com/?license"
 	"miniongg.sh"
 	"minion.desktop")
-md5sums=("0dee919c8a16af52a4cf61dca1d00486"
-	"afc7ce623dbae08643aa0246983ac607"
+md5sums=("f77afcb80189172d20801ebcd2dc03d3"
+	"f898b87eabed14af121639bc1c2d6151"
 	"SKIP"
 	"ac963b2368a1db40b44d7a3b147546d4"
 	"cb92061ae2d15effbddc3b23600cfeaf")
