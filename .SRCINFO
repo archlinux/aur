@@ -1,0 +1,23 @@
+pkgbase = madasul-git
+	pkgdesc = A really simple playlist daemon
+	pkgver = 666.0.3
+	pkgrel = 1
+	url = https://git.weitnahbei.de/nullmark/madasul
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = socat
+	optdepends = mpg321: example musicplayer config
+	optdepends = ogg128: example musicplayer config
+	optdepends = libnotify: example musicplayer config
+	optdepends = id3v2: example playlist generator
+	optdepends = vorbis-tools: example playlist generator
+	optdepends = dmenu: example gui interface
+	optdepends = saparoton: interface for madasul
+	provides = madasul
+	conflicts = madasul
+	source = maasul::git+http://git.weitnahbei.de/nullmark/madasul
+	sha256sums = SKIP
+
+pkgname = madasul-git
