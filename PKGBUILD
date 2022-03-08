@@ -8,10 +8,6 @@ pkgdesc="stax2aws is a CLI tool that enables you to log in and retrieve temporar
 url="https://www.stax.io/developer/aws-access-cli/"
 arch=('x86_64')
 license=('UNLICENSED')
-optdepends=(
-  'sudo: privilege elevation'
-  'doas: privilege elevation'
-)
 
 source=("https://github.com/stax-labs/stax2aws-releases/releases/download/v${pkgver}/stax2aws_${pkgver}_linux_amd64.tar.gz")
 sha256sums=('f7700e6bfdab3c1f985710b15ef4212e2448d7fd0105509213f5e9822a4207a2')
