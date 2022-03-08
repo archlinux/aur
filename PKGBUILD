@@ -1,6 +1,6 @@
 # Maintainer: Michał Lisowski <lisu@riseup.net>
 pkgname=opensubtitles-uploader
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Desktop app to upload subtitles to OpenSubtitles, using Node.JS and NWjs"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('npm' 'git' 'gulp')
 source=("${pkgname}::https://github.com/vankasteelj/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.png")
-md5sums=('f12740d363c6282bbd2ab0e3f20100ba'
+md5sums=('145185946d5066b83d55c933f30c1e26'
          'f38a85d864e5aca6706a76adec1c5e86'
          'f8e90af7251e2c76a9d863e283aa3804')
 
