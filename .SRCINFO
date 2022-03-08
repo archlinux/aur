@@ -1,14 +1,14 @@
 pkgbase = hentai.js
 	pkgdesc = rule34.xxx wrapper written in electron
-	pkgver = 2.3.6
-	pkgrel = 5
+	pkgver = 3.3.0
+	pkgrel = 0
 	url = https://github.com/KodiCraft/hentai.js
 	arch = x86_64
 	license = MIT
 	depends = nodejs
 	depends = npm
 	optdepends = electron
-	source = https://github.com/KodiCraft/hentai.js/archive/refs/tags/v2.3.6.tar.gz
-	md5sums = 830890c232c20fdc4793f16799d95103
+	source = https://github.com/KodiCraft/hentai.js/archive/refs/tags/v3.3.0.tar.gz
+	md5sums = 2e0b5f5f43f9201bd9de9689c35424ad
 
 pkgname = hentai.js

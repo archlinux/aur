@@ -1,7 +1,7 @@
 # Maintainer: Kodi <kodicraft4@gmail.com>
 pkgname=hentai.js
-pkgver=2.3.6
-pkgrel=5
+pkgver=3.3.0
+pkgrel=0
 
 pkgdesc="rule34.xxx wrapper written in electron"
 arch=('x86_64')
@@ -21,12 +21,12 @@ optdepends=("electron")
 # changelog=
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 # noextract=()
-md5sums=('830890c232c20fdc4793f16799d95103')
+md5sums=('2e0b5f5f43f9201bd9de9689c35424ad')
 # validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
-  npm install	--cache "${srcdir}/npm-cache"
+    npm install	--cache "${srcdir}/npm-cache"
 }
 
 build() {
