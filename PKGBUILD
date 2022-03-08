@@ -42,5 +42,5 @@ package() {
   cp -r "out/hentaijs-linux-x64/" "$pkgdir/usr/local/lib/hentaijs/"
   chmod 755 -R "$pkgdir/usr/local/lib/hentaijs/" 
   mkdir -p "$pkgdir/usr/local/bin/"
-  ln -s "$pkgdir/usr/local/lib/hentaijs/hentaijs-linux-x64/hentaijs" "$pkgdir/usr/local/bin/hentai.js"
+  ln -s "/usr/local/lib/hentaijs/hentaijs-linux-x64/hentaijs" "$pkgdir/usr/local/bin/hentai.js"
 }
