@@ -1,7 +1,7 @@
 pkgbase = ledger-go
 	pkgdesc = A double-entry accounting system with a command-line reporting interface
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/howeyc/ledger
 	arch = x86_64
 	arch = i686

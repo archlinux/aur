@@ -3,7 +3,7 @@
 pkgname=ledger-go
 _pkgname=${pkgname%-go}
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A double-entry accounting system with a command-line reporting interface"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/howeyc/ledger"
@@ -37,6 +37,6 @@ package() {
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/cmd/web-quickview-sample.toml "${pkgdir}/usr/share/${_pkgname}/web-quickview-sample.toml"
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/cmd/web-reports-sample.toml "${pkgdir}/usr/share/${_pkgname}/web-reports-sample.toml"
 
-  install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/vim-ledger/ftplugin/ledger.vim "${pkgdir}/usr/share/${_pkgname}/vim-ledger/ftplugin/ledger.vim"
-  install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/vim-ledger/syntax/ledger.vim "${pkgdir}/usr/share/${_pkgname}/vim-ledger/syntax/ledger.vim"
+  install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/vim-ledger/ftplugin/ledger.vim "${pkgdir}/usr/share/${_pkgname}/vim-ledger/ftplugin/ledger.vim"
+  install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/vim-ledger/syntax/ledger.vim "${pkgdir}/usr/share/${_pkgname}/vim-ledger/syntax/ledger.vim"
 }
