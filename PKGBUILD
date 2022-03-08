@@ -10,15 +10,16 @@
 
 _qt_module=qtsvg
 pkgname=mingw-w64-qt5-svg
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
 depends=('mingw-w64-qt5-base')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-_commit=5b9285c34731e67f9f1d61ec804740991f2a0380
-pkgver+=+kde+r14
+_commit=2f42157cabbd1db6249ccb1d14e6eede80451e0c
+_basever=$pkgver
+pkgver+=+kde+r12
 makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
@@ -33,13 +34,11 @@ _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-
-  git revert -n 9aac88424a1b76e0198b52437af58a6d94aff8e9 # Revert version bump
 }
 
 build() {
