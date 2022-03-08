@@ -1,0 +1,19 @@
+pkgbase = windscribegui-git
+	pkgdesc = Qt 5/6 based GUI for Windscribe VPN written in Python
+	pkgver = r2.3cecaab
+	pkgrel = 1
+	url = https://github.com/shaybox/windscribegui
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = windscribe-cli
+	depends = python-qtpy
+	depends = python-windscribe
+	optdepends = python-pyqt5: Qt5
+	optdepends = python-pyqt6: Qt6
+	source = git+https://github.com/shaybox/windscribegui.git
+	sha512sums = SKIP
+
+pkgname = windscribegui-git
