@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 6.22.r0.ga703038b
+	pkgver = 7.3.r5.ga79a08a6
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -150,12 +150,13 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine-staging=6.22.r0.ga703038b
-	provides = wine=6.22
+	provides = wine-staging=7.3.r5.ga79a08a6
+	provides = wine=7.3
 	provides = wine-wow64
 	conflicts = wine
 	conflicts = wine-wow64
 	options = staticlibs
+	options = !lto
 	source = git+https://github.com/wine-staging/wine-staging.git
 	source = git://source.winehq.org/git/wine.git
 	source = 30-win32-aliases.conf
