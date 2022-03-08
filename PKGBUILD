@@ -3,7 +3,7 @@
 pkgname=lcd4linux-git
 _pkgname=lcd4linux
 pkgver=r1167.cb69a93
-pkgrel=2
+pkgrel=3
 pkgdesc="Grabs information from the kernel and other systems and displays it on an LCD"
 arch=('i686' 'x86_64')
 url="https://wiki.lcd4linux.tk/doku.php"

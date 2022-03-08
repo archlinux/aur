@@ -1,8 +1,8 @@
 pkgbase = lcd4linux-git
 	pkgdesc = Grabs information from the kernel and other systems and displays it on an LCD
 	pkgver = r1167.cb69a93
-	pkgrel = 1
-	url = https://github.com/jmccrohan/lcd4linux
+	pkgrel = 3
+	url = https://wiki.lcd4linux.tk/doku.php
 	arch = i686
 	arch = x86_64
 	license = GPLv2
