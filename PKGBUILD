@@ -33,7 +33,6 @@ validpgpkeys=()
 
 package() {
   set -euxo pipefail
-  cd "$pkgname-master"
   echo $pkgdir
 
   mkdir -p "$pkgdir"/usr/share/X11/xkb/symbols/
