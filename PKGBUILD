@@ -3,7 +3,7 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='r14047.g8fd35b90a'
+pkgver='r14374.ge62c82605'
 pkgrel='1'
 epoch='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
@@ -24,7 +24,7 @@ source=(
 
 )
 sha512sums=('SKIP'
-            '03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9'
+            '6f291b0d37ad5ed9f6688a8836447fff9cf1b88af0124997c5b8e1de1ede0b1a2a78a81a57516786950c49c2318677c8bf24104dc025bdd22ece8c8cc61c7d3f'
             'c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2')
 
 _sourcedirectory="$pkgname"
@@ -41,11 +41,11 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' {'configs','packages'}'/'*'/package.json'
 
+	# Apply hadron-build fixes
+	patch --forward -p1 < "$srcdir/hadron-build.diff"
+
 	# Run the first part of npm run bootstrap
 	npm install
-
-	# Apply hadron-build fixes
-	patch -d 'node_modules/hadron-build/' --forward -p1 < "$srcdir/hadron-build.diff"
 
 	# Apply browserslist fixes
 	for _folder in 'node_modules/@mongodb-js/'*'/node_modules/browserslist'; do
