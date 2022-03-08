@@ -27,6 +27,7 @@ pkgbase = spot-client-git
 	optdepends = org.freedesktop.secrets
 	provides = spot-client
 	conflicts = spot-client
+	options = !lto
 	source = spot-client-git::git+https://github.com/xou816/spot
 	source = disable-clippy.patch
 	sha512sums = SKIP

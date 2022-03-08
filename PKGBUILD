@@ -14,6 +14,7 @@ makedepends=('cargo' 'git' 'meson>=0.50.0')
 checkdepends=('appstream-glib')
 provides=("$_projectname-client")
 conflicts=("$_projectname-client")
+options=('!lto') # build breaks with LTO enabled (https://gitlab.com/dpeukert/pkgbuilds/-/issues/38)
 source=(
 	"$pkgname::git+$url"
 	'disable-clippy.patch'
