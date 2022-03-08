@@ -5,8 +5,6 @@ pkgbase = stax2aws-git-bin
 	url = https://www.stax.io/developer/aws-access-cli/
 	arch = x86_64
 	license = UNLICENSED
-	optdepends = sudo: privilege elevation
-	optdepends = doas: privilege elevation
 	source = https://github.com/stax-labs/stax2aws-releases/releases/download/v1.4.1/stax2aws_1.4.1_linux_amd64.tar.gz
 	sha256sums = f7700e6bfdab3c1f985710b15ef4212e2448d7fd0105509213f5e9822a4207a2
 
