@@ -5,27 +5,26 @@
 
 pkgname=kotatogram-desktop-beta
 _pkgname=kotatogram-desktop
-pkgver=1.4.6
-pkgrel=2
+pkgver=1.4.9
+pkgrel=1
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Beta version'
 arch=('x86_64')
 url="https://kotatogram.github.io"
 license=('GPL3')
 provides=(kotatogram-desktop kotatogram-desktop-beta)
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
-         'qt5-imageformats' 'qt5-svg' 'qt5-wayland' 'libdbusmenu-qt5' 'xxhash' 'kwayland' 'glibmm'
+depends=('hunspell' 'ffmpeg4.4' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'kwayland' 'glibmm'
          'rnnoise' 'pipewire' 'libxtst' 'jemalloc' 'libxrandr' 'abseil-cpp' 'libjpeg-turbo' 'opus' 'openssl' 'libx11' 'libvpx' 'libxcomposite'
-         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs')
+         'libxdamage' 'libxext' 'libxfixes' 'zlib' 'wayland'  'glibc' 'libsigc++' 'glib2' 'xcb-util-keysyms' 'libxcb' 'gcc-libs' 'libdispatch')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'extra-cmake-modules' 'webkit2gtk' 'unzip'
-             'yasm' 'libtg_owt')
+             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'webkit2gtk' 'unzip'
+             'yasm' 'libtg_owt' 'meson')
 optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin' 'kotatogram-dev-git' 'kotatogram-desktop-git')
 source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#tag=k${pkgver}"
         "${_pkgname}-libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
         "${_pkgname}-GSL::git+https://github.com/Microsoft/GSL.git"
-        "${_pkgname}-Catch::git+https://github.com/philsquared/Catch"
         "${_pkgname}-xxHash::git+https://github.com/Cyan4973/xxHash.git"
         "${_pkgname}-rlottie::git+https://github.com/desktop-app/rlottie.git"
         "${_pkgname}-lz4::git+https://github.com/lz4/lz4.git"
@@ -54,9 +53,13 @@ source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#tag=k${p
         "${_pkgname}-lib_webview::git+https://github.com/desktop-app/lib_webview.git"
         "${_pkgname}-lib_waylandshells::git+https://github.com/desktop-app/lib_waylandshells.git"
         "${_pkgname}-jemalloc::git+https://github.com/jemalloc/jemalloc.git"
+        "${_pkgname}-kwayland::git+https://github.com/KDE/kwayland.git"
+        "${_pkgname}-dispatch::git+https://github.com/apple/swift-corelibs-libdispatch.git"
 
         "0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
-        "block-sponsored_messages.patch")
+        "block-sponsored_messages.patch"
+        )
+
 
 b2sums=('SKIP'
         'SKIP'
@@ -90,12 +93,12 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
+        'SKIP'
         '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
-        '1e2705008ea8cef1a5c46793a6115ba0f35f77529d18ea04a03e5a0e89980916d78d49a9aa86863b1a0b440debb650262ceb3c9d68600ffe6e5c98fd65804526')
+        '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    git submodule init
 
     git config submodule.cmake.url "${srcdir}/${_pkgname}-cmake_helpers"
 
@@ -115,7 +118,6 @@ prepare() {
 
     git config submodule.Telegram/ThirdParty/libtgvoip.url "${srcdir}/${_pkgname}-libtgvoip"
     git config submodule.Telegram/ThirdParty/GSL.url "${srcdir}/${_pkgname}-GSL"
-    git config submodule.Telegram/ThirdParty/Catch.url "${srcdir}/${_pkgname}-Catch"
     git config submodule.Telegram/ThirdParty/xxHash.url "${srcdir}/${_pkgname}-xxHash"
     git config submodule.Telegram/ThirdParty/rlottie.url "${srcdir}/${_pkgname}-rlottie"
     git config submodule.Telegram/ThirdParty/lz4.url "${srcdir}/${_pkgname}-lz4"
@@ -130,23 +132,36 @@ prepare() {
     git config submodule.Telegram/ThirdParty/fcitx5-qt.url "${srcdir}/${_pkgname}-fcitx5-qt"
     git config submodule.Telegram/ThirdParty/tgcalls.url "${srcdir}/${_pkgname}-tgcalls"
     git config submodule.Telegram/ThirdParty/jemalloc.url "${srcdir}/${_pkgname}-jemalloc"
+    git config submodule.Telegram/ThirdParty/kwayland.url "${srcdir}/${_pkgname}-kwayland"
+    git config submodule.Telegram/ThirdParty/dispatch.url "${srcdir}/${_pkgname}-dispatch"
 
-    git submodule update
+    git submodule update --init
 
     #patches
-    patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+    #patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
     patch -p1 < "${srcdir}/block-sponsored_messages.patch"
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
+    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
+    export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig' # force build with ffmpeg4.4
     cmake . \
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DDESKTOP_APP_QT6=off \
         -DTDESKTOP_API_TEST=ON
+
+    # Hack to compile for ffmpeg4.4
+    sed -i "s|/usr/lib/libav|/usr/lib/ffmpeg4.4/libav|g" build/build.ninja
+    sed -i "s|/usr/lib/libsw|/usr/lib/ffmpeg4.4/libsw|g" build/build.ninja
+    sed -i "s|-lavcodec|/usr/lib/ffmpeg4.4/libavcodec.so|g" build/build.ninja
+    sed -i "s|-lavformat|/usr/lib/ffmpeg4.4/libavformat.so|g" build/build.ninja
+    sed -i "s|-lavutil|/usr/lib/ffmpeg4.4/libavutil.so|g" build/build.ninja
+    sed -i "s|-lswscale|/usr/lib/ffmpeg4.4/libswscale.so|g" build/build.ninja
+    sed -i "s|-lswresample|/usr/lib/ffmpeg4.4/libswresample.so|g" build/build.ninja
+
     cmake --build build
 }
 
