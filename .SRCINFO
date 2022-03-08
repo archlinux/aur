@@ -1,12 +1,11 @@
 pkgbase = lib32-libstdc++28
 	pkgdesc = GNU Standard C++ library - 2.8.0
 	pkgver = 2.8.0+14
-	pkgrel = 2
+	pkgrel = 3
 	url = http://rpm.pbone.net
 	arch = x86_64
 	license = GPL
 	makedepends = rpmextract
-	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	options = !strip
 	source = ftp://ftp.pbone.net/mirror/archive.download.redhat.com/pub/redhat/linux/5.2/en/os/i386/RedHat/RPMS/libstdc++-2.8.0-14.i386.rpm
