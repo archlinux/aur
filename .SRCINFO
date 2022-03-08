@@ -1,0 +1,12 @@
+pkgbase = cf-ddns
+	pkgdesc = Simple program to update Cloudflare A records, useful for dynamic dns
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~imraniq/cf-ddns
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	source = https://git.sr.ht/~imraniq/cf-ddns/archive/v0.1.0.tar.gz
+	sha256sums = ba15bffb85fe4b6344819d242560702d411236570a3c68cf9447a359831fb40a
+
+pkgname = cf-ddns
