@@ -2,5 +2,5 @@
 /src/
 /*.pkg.tar
 /*.pkg.tar.*
-
+/*.log
 /*.sh
