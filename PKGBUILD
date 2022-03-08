@@ -3,9 +3,9 @@
 _pkgname=telegram-tdlib
 pkgname=${_pkgname}
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform library for building Telegram clients'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url='https://core.telegram.org/tdlib'
 license=('Boost')
 depends=('openssl' 'zlib')
