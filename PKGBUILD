@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-filemanager
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Cutefish File Manager, simple to use, beautiful, and retain the classic PC interactive design"
 arch=('x86_64')
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=('fishui' 'kio' 'solid')
 makedepends=('extra-cmake-modules' 'qt5-tools')
 source=("https://github.com/cutefishos/filemanager/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('6f82edc3a27734a38575a9ce1fe717ab324ece71bfba14fc07d9a794a9bdc17ebd8c94ccc7c442b51b6a30ed5e222af05779783525887758f461efdd4e860663')
+sha512sums=('af3f1caa982c19e14357346d6227034086020977f21b4f06af500d5d92845d142ee530fb151649fd2e7dadbd1837eb13c400968a3b407412baed7044fb60101d')
 
 build() {
   cd filemanager-$pkgver
