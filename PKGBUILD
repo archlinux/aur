@@ -3,7 +3,7 @@ pkgname='asxxxx'
 _pkgverbase='5.40'
 _sourcebase='https://shop-pdp.net/_ftp/asxxxx/'
 pkgver=${_pkgverbase}u05
-pkgrel=1
+pkgrel=2
 pkgdesc='Series of microprocessor cross assemblers for Z80, 6502, 8080, 6800, 1802 and many more'
 url='https://shop-pdp.net/ashtml/asxxxx.php'
 license=('GPL3')
@@ -20,8 +20,8 @@ sha256sums=('ac8277b85308b9fdc3e27c50557cc3ba45fe0de85ddc96c936fb25e5fd3a3e22'
 
 prepare() {
   # convert to unix as described in readme
-  for update in ${noextract}; do
-    unzip -L -a -u ${update}
+  for update in ${noextract[@]}; do
+    unzip -L -a -u -o ${update}
   done
 }
 

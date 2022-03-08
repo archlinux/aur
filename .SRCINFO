@@ -1,7 +1,7 @@
 pkgbase = asxxxx
 	pkgdesc = Series of microprocessor cross assemblers for Z80, 6502, 8080, 6800, 1802 and many more
 	pkgver = 5.40u05
-	pkgrel = 1
+	pkgrel = 2
 	url = https://shop-pdp.net/ashtml/asxxxx.php
 	arch = x86_64
 	license = GPL3
