@@ -11,7 +11,6 @@ arch=('i686' 'x86_64')
 url='http://www.mbayer.de/html2text'
 license=('GPL2')
 depends=('gcc-libs')
-conflicts=('html2text')
 source=("git+https://github.com/grobian/${pkgname%%-*}.git")
 sha1sums=(SKIP)
 
@@ -23,7 +22,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  sed -e 's/html2textrc/html2text-cpprc/g' html2text.cpp
+  sed -e 's/html2textrc/html2text-cpprc/g' -i html2text.cpp
 
   ./configure
 }
