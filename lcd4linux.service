@@ -5,7 +5,7 @@ Description=daemon for driving LCD based displays
 Type=forking
 ExecStart=/usr/sbin/lcd4linux
 User=root
-PIDFile=/var/run/lcd4linux.pid
+PIDFile=/run/lcd4linux.pid
 Restart=on-abort
 
 [Install]
