@@ -4,7 +4,7 @@ _pkgname=scikit-hep-testdata
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}")
 pkgver=0.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
 arch=('any')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
@@ -23,7 +23,7 @@ build() {
 
 check() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py pytest
+    PYTHONPATH=build/lib pytest tests
 }
 
 package() {
