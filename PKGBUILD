@@ -6,23 +6,23 @@
 
 _gemname=rails
 pkgname=ruby-$_gemname
-pkgver=6.1.4.1
-pkgrel=2
+pkgver=6.1.4.7
+pkgrel=1
 pkgdesc='Full-stack web application framework.'
 arch=(any)
 url='http://www.rubyonrails.org'
 license=(MIT)
-depends=(ruby ruby-activesupport ruby-actionpack ruby-actionview ruby-activemodel \
-         ruby-activerecord ruby-actionmailer ruby-railties ruby-bundler \
-         ruby-sprockets-rails ruby-actioncable)
+depends=(ruby ruby-activesupport ruby-actionpack ruby-actionview ruby-activemodel
+	ruby-activerecord ruby-actionmailer ruby-railties ruby-bundler
+	ruby-sprockets-rails ruby-actioncable)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('7f5dd7a71046aedb6859eb4288b31b738fb8544bd9fb27574085b58cbaa8a9f8')
+sha256sums=('c58a13335748caa55182e69afac033d864c84c2d1e7e891b754b56ea0de0974f')
 
 package() {
-    local _gemdir="$(ruby -e'puts Gem.default_dir')"
-    gem install -no-documentation --ignore-dependencies --no-user-install \
-        -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-    rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+	local _gemdir="$(ruby -e'puts Gem.default_dir')"
+	gem install -no-documentation --ignore-dependencies --no-user-install \
+		-i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+	rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
