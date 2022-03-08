@@ -1,20 +1,18 @@
-diff --git a/commands/release.js b/commands/release.js
-index 42de1d1a1..1ef8d08a0 100644
---- a/commands/release.js
-+++ b/commands/release.js
-@@ -465,10 +465,7 @@ exports.run = (argv, done) => {
-     task('install dependencies', installDependencies),
+diff --git a/packages/hadron-build/commands/release.js b/packages/hadron-build/commands/release.js
+index 74f4da84e..8aa3f843c 100644
+--- a/packages/hadron-build/commands/release.js
++++ b/packages/hadron-build/commands/release.js
+@@ -490,9 +490,6 @@ exports.run = (argv, done) => {
      task('write license file', writeLicenseFile),
      task('remove development files', removeDevelopmentFiles),
--    !noAsar && task('create application asar', createApplicationAsar),
+     !noAsar && task('create application asar', createApplicationAsar),
 -    !skipInstaller && task('create branded installer', createBrandedInstaller),
 -    task('create application zip', createApplicationZip),
 -    task('store build configuration as json', writeConfigToJson)
-+    !noAsar && task('create application asar', createApplicationAsar)
    ].filter(Boolean));
-
+ 
    return async.series(tasks, (_err) => {
-@@ -482,9 +479,5 @@ exports.run = (argv, done) => {
+@@ -506,9 +503,5 @@ exports.run = (argv, done) => {
  exports.handler = (argv) => {
    exports.run(argv, (_err, CONFIG) => {
      cli.abortIfError(_err);
@@ -24,26 +22,24 @@ index 42de1d1a1..1ef8d08a0 100644
 -    });
    });
  };
-diff --git a/lib/target.js b/lib/target.js
-index 6ee5baebb..007ed52af 100644
---- a/lib/target.js
-+++ b/lib/target.js
-@@ -4,8 +4,6 @@ const semver = require('semver');
- const path = require('path');
+diff --git a/packages/hadron-build/lib/target.js b/packages/hadron-build/lib/target.js
+index 70e8cb7d3..3d169edfc 100644
+--- a/packages/hadron-build/lib/target.js
++++ b/packages/hadron-build/lib/target.js
+@@ -10,8 +10,6 @@ const path = require('path');
+ const { promisify } = require('util');
  const normalizePkg = require('normalize-package-data');
  const parseGitHubRepoURL = require('parse-github-repo-url');
 -const ffmpegAfterExtract = require('electron-packager-plugin-non-proprietary-codecs-ffmpeg')
 -  .default;
  const windowsInstallerVersion = require('./windows-installer-version');
  const debug = require('debug')('hadron-build:target');
-
-@@ -206,8 +204,7 @@ class Target {
-       platform: this.platform,
+ const execFile = promisify(childProcess.execFile);
+@@ -210,7 +208,6 @@ class Target {
        arch: this.arch,
        electronVersion: this.electronVersion,
--      sign: null,
+       sign: null,
 -      afterExtract: [ffmpegAfterExtract]
-+      sign: null
      };
-
+ 
      if (this.platform === 'win32') {

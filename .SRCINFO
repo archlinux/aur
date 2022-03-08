@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-isolated-git
 	pkgdesc = The official GUI for MongoDB - Isolated Edition - git version
-	pkgver = r14047.g8fd35b90a
+	pkgver = r14374.ge62c82605
 	pkgrel = 1
 	epoch = 1
 	url = https://www.mongodb.com/products/compass
@@ -25,7 +25,7 @@ pkgbase = mongodb-compass-isolated-git
 	source = hadron-build.diff
 	source = browserslist.diff
 	sha512sums = SKIP
-	sha512sums = 03b766834ce0c85abca10fe98ab4aa12a20d1110a4afb11b85c06e7e34ceec1163933be51d7a1881fd576d2cef01118319c856e9bcac92aaefb95084dc2a97f9
+	sha512sums = 6f291b0d37ad5ed9f6688a8836447fff9cf1b88af0124997c5b8e1de1ede0b1a2a78a81a57516786950c49c2318677c8bf24104dc025bdd22ece8c8cc61c7d3f
 	sha512sums = c7ed26d911cea41cea65ede61d41c22c24296c88c4a21532d81b3092844cd65a866fe8e390570362eb7f0200a897a86e97387e8afb4e1ad8e8398c7265d529d2
 
 pkgname = mongodb-compass-isolated-git
