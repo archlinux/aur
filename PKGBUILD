@@ -6,7 +6,7 @@
 
 pkgname=powerdevil-ddcutil
 _pkgname=${pkgname%-ddcutil}
-pkgver=5.24.2
+pkgver=5.24.3
 pkgrel=1
 pkgdesc='Power management for KDE plasma with DDC/CI enabled'
 arch=(x86_64)
@@ -21,7 +21,7 @@ groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$pkgver/$_pkgname-$pkgver.tar.xz{,.sig}
         '45-ddcutil-i2c.rules'
         'i2c.sysusers')
-sha256sums=('8c742e057f19e3852ed6403e7a3f86fa70a478ae0c6c30a492491a5b02b7cd8d'
+sha256sums=('495275be84a96572d2e2a7ee343e1ab98c79e7c8eef402a7f26d86863e25f010'
             'SKIP'
             'aa9980b02beb49e0ccafc59c57fc6b28b31308e60559120697a864a511fbef6c'
             'bf5ee4f9876505628c5ce84e84e918c70d66be70b766d62bb138e294608ffbae')
