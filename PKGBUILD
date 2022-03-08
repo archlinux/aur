@@ -11,7 +11,8 @@
 
 _qt_module=qtscript
 pkgname=mingw-w64-qt5-script
-pkgver=5.15.2
+_basever=5.15.3
+pkgver=5.15.8
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
@@ -20,12 +21,13 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
+makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('a299715369afbd1caa4d7fa2875d442eab91adcaacafce54a36922442624673e')
+_pkgfqn=${_qt_module}
+source=(git+https://code.qt.io/qt/$_pkgfqn.git#tag=v${pkgver}-lts)
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -88,6 +90,8 @@ package() {
       [[ -d "${pkgdir}/usr/${_arch}/lib/qt/bin/" ]] && \
         find "${pkgdir}/usr/${_arch}/lib/qt/bin/" -exec strip --strip-all {} \;
       find "${pkgdir}/usr/${_arch}/lib/" -iname "*.so.$pkgver" -exec strip --strip-unneeded {} \;
+
+      sed -e "s|$pkgver\ |$_basever |" -i "$pkgdir"/usr/$_arch/lib/cmake/*/*Config.cmake
       popd
     done
 
