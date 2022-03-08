@@ -21,6 +21,7 @@ pkgbase = ansible-lint-git
 	depends = python-tenacity
 	depends = ansible-core
 	depends = yamllint
+	depends = python-ansible-compat
 	optdepends = ansible: check official ansible collections
 	provides = ansible-lint
 	conflicts = ansible-lint
