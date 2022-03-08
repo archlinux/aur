@@ -3,7 +3,7 @@
 _pkgname='pyTooling.TerminalUI'
 pkgname=python-${_pkgname,,}
 pkgname=${pkgname/./-}
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="A set of helpers to implement a text user interface (TUI) in a terminal"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('python' 'python-colorama' 'python-pytooling')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('014b63736d4b50a909562a16d4da81b57babea69de93f65263d73d12b360b66f')
+sha256sums=('bc496a68dfd7a8ef8ad0cc1e2e6e068ee08c4e6bd725eafe2ca3f5d91afdcf4c')
 
 build() {
   cd "$_pkgname-$pkgver"
