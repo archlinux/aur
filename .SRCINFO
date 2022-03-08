@@ -1,13 +1,13 @@
 pkgbase = ttc-iosevka-curly-slab-super
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 15.0.1
+	pkgver = 15.0.2
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v15.0.1/super-ttc-iosevka-curly-slab-15.0.1.zip
-	source = ttc-iosevka-curly-slab-super-15.0.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v15.0.1/LICENSE.md
-	sha256sums = 16f4e66f79f35bda87fd27e20e411d4348e7e0f64274bf8e617eb264cfea7440
+	source = https://github.com/be5invis/Iosevka/releases/download/v15.0.2/super-ttc-iosevka-curly-slab-15.0.2.zip
+	source = ttc-iosevka-curly-slab-super-15.0.2-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v15.0.2/LICENSE.md
+	sha256sums = 5a3b2f7b7a8e8d62d9e6feb0d2c57e2263308df2a322a4e10b8bdf116ba7a37c
 	sha256sums = 46ecadda73abf39cda76731a94fd357b743f882dc1156b4410a2967a811c4ff1
 
 pkgname = ttc-iosevka-curly-slab-super
