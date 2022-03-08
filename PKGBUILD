@@ -1,40 +1,30 @@
-# Maintainer: Harms <thotro at lyse dot net>
+# Maintainer: Brendan <ball dot brendan 50 at gmail dot com>
+# Contributor: Harms <thotro at lyse dot net>
 pkgname=forticlient
-pkgver=6.0.8.0140
+pkgver=7.0.1.0057
 pkgrel=1
-epoch=
-pkgdesc="FortiClient"
-arch=("x86_64")
-url=""
+pkgdesc="An endpoint protection application"
+arch=('x86_64')
+url="https://www.forticlient.com"
 license=('custom')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
+groups=('')
 provides=(forticlient)
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://repo.fortinet.com/repo/ubuntu/pool/multiverse/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-noextract=()
-sha256sums=('d6667104f4c2766dfa0b62336ed9ca201bcc098cc612d6ac457628106e183b75')
-validpgpkeys=()
+depends=('libxss' 'libsecret' 'alsa-lib' 'libnotify' 'gtk3' 'nss' 'libxcrypt-compat' 'libappindicator-gtk2')
+backup=('etc/forticlient/config.db')
+options=('!strip' '!emptydirs')
+source=("https://repo.fortinet.com/repo/7.0/ubuntu/pool/multiverse/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
+sha512sums=('2d4598f5618c2de0789b80de9c9b7a720e2cce8e88e7e4bd8d1f1ac3c6b07f82f536c84c45560efac4a7750a0cb906122e43ba2d97046b2a7e1aa6cb0d1b56e7')
 
-prepare() {
-	mkdir "$pkgname-$pkgver"
-	bsdtar -xC "$pkgname-$pkgver" -f data.tar.xz
-	cd "$pkgname-$pkgver"
-}
+package(){
 
-package() {
-	cd "$pkgname-$pkgver"
-	cp -R etc "${pkgdir}/etc"
-	cp -R usr "${pkgdir}/usr"
-	cp -R opt "${pkgdir}/opt"
-	cp -R lib "${pkgdir}/usr/lib"
-	cp -R var "${pkgdir}/var"
+	# Extract package data
+	tar xf data.tar.xz -C "${pkgdir}"
+
+	# Fix directory structure differences
+	cd "${pkgdir}"
+
+	mkdir -p usr/lib 2> /dev/null; mv lib/* usr/lib; rm -rf lib
+
+	cd ..
+
 }
