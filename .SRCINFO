@@ -1,7 +1,7 @@
 pkgbase = aeskulap
 	pkgdesc = Medical image viewer and DICOM client
 	pkgver = 0.2.2.beta2.8.ge710562
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nongnu.org/aeskulap
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = aeskulap
 	makedepends = intltool
 	makedepends = perl-xml-parser
 	makedepends = gconf
+	makedepends = icu
 	depends = libglademm
 	depends = dconf
 	depends = dcmtk
@@ -19,4 +20,3 @@ pkgbase = aeskulap
 	md5sums = SKIP
 
 pkgname = aeskulap
-
