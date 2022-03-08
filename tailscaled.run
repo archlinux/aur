@@ -1,5 +1,4 @@
 #!/bin/sh
-sv check NetworkManager >/dev/null || exit 1
 conf=/etc/default/tailscaled
 [ -r $conf ] && . $conf
 exec tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port "${PORT:?}" $FLAGS
