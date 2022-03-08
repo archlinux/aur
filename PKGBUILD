@@ -2,7 +2,7 @@
 
 pkgname=man-pages-fi-git
 _gitname=manpages-l10n
-pkgver=r17992.168bf0eb64
+pkgver=r18107.446ed85103
 pkgrel=1
 pkgdesc="Finnish man pages (Git version)"
 arch=('any')
