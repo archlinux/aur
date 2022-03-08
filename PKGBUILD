@@ -1,5 +1,5 @@
 pkgname=rdo
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="A simple doas/sudo alternative."
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ source=(
 )
 
 sha512sums=(
-"bdfefe006269a61d6387a265ec02ba8953b6014025bdb2f722e4ebf619c3002835c26d257d60890ffd616a82601dac63a2e526b6643ad7b36e257c2c1c97b72b"
+"0f8251f0c85f0076b8e0a38ef0b6ac84f614b0629ee5778adcaa62728df2c704577b005541e39e76862e20a26986b150f8aa682761c5d32ccb1625d591ef8699"
 )
 
 build() {
@@ -25,6 +25,5 @@ package() {
 	mkdir -p $pkgdir/etc
 	mkdir -p $pkgdir/usr/bin
 	install -oroot -Dm4755 rdo $pkgdir/usr/bin/rdo 
-	install -oroot -Dm0640 rdo_sample.conf $pkgdir/etc/rdo.conf
-	sed -i "s/sw1tchbl4d3/$USER/g" $pkgdir/etc/rdo.conf
+	install -oroot -Dm0600 rdo_sample.conf $pkgdir/etc/rdo.conf
 }
