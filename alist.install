@@ -1,3 +1,8 @@
+post_install(){
+    if [ ! -d "/var/lib/alist/" ]; then
+        mkdir /var/lib/alist/
+    fi
+}
 post_upgrade(){
     if [ ! -d "/var/lib/alist/" ]; then
         mkdir /var/lib/alist/
