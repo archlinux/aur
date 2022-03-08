@@ -2,7 +2,7 @@
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 
 pkgname=runelite
-pkgver=2.4.0
+pkgver=2.4.2
 pkgrel=1
 epoch=1
 pkgdesc="Open source Old School RuneScape client."
@@ -21,7 +21,7 @@ source=("${pkgver}_RuneLite.jar::https://github.com/runelite/launcher/releases/d
     "${pkgver}_runelite.png::https://raw.githubusercontent.com/runelite/launcher/${pkgver}/appimage/runelite.png"
     runelite.desktop)
 noextract=('RuneLite.jar')
-sha256sums=('0371df868e2d803aa84a170cb685d9db04bd9a1bda80110f0f12ad0570328348'
+sha256sums=('a8a33f9e9b53b71516ab04a93fca499f6c9f7675b487bad10ad513809cc27bde'
     '1487fb5a1804002fd63fe8c01c75258c148fbfa0e2c5d9e97056f9fcd607c0ad'
     '81cb6ce7d8c4b9154e9840ab9d2938d0e6234f227049f004cacf90724f95cc11'
     'SKIP')
@@ -48,5 +48,5 @@ package() {
         "${pkgdir}/usr/bin/runelite"
 
     echo '#!/bin/sh' > "${pkgdir}/usr/bin/runelite"
-    echo 'exec java -Dhttps.protocols=TLSv1.2 -jar /usr/share/java/runelite/RuneLite.jar "$@"' >> "${pkgdir}/usr/bin/runelite"
+    echo 'exec java -jar /usr/share/java/runelite/RuneLite.jar "$@"' >> "${pkgdir}/usr/bin/runelite"
 }
