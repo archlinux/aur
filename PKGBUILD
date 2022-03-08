@@ -1,6 +1,6 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 pkgname=tremc
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Curses interface for transmission - python3 fork of transmission-remote-cli"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python')
 optdepends=('python-geoip: Guess which country peers come from'
             'python-xerox: Copy magnet links to the system clipboard')
 source=("https://github.com/tremc/tremc/archive/$pkgver.tar.gz")
-md5sums=('e38e0d7868f9979d8a103372be28eeb8')
+md5sums=('65db18d723bd17c17b7ea53f4e246539')
 
 conflicts=('tremc-git')
 
