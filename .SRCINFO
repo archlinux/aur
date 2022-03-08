@@ -1,6 +1,6 @@
 pkgbase = audacium-git
 	pkgdesc = telemetry free version of audacity
-	pkgver = 1.0.0.r29.ga823ce5dc
+	pkgver = 1.0.0.r56.ge9ea30102
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/SartoxOnlyGNU/audacium
@@ -33,7 +33,7 @@ pkgbase = audacium-git
 	depends = vamp-plugin-sdk
 	depends = libsoxr
 	depends = soundtouch
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	provides = audacity
 	conflicts = audacity
 	conflicts = audacity-git

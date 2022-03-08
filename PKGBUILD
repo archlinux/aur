@@ -1,6 +1,6 @@
 # Maintainer: silverhikari
 pkgname=audacium-git
-pkgver=1.0.0.r29.ga823ce5dc
+pkgver=1.0.0.r56.ge9ea30102
 pkgrel=1
 epoch=2
 pkgdesc="telemetry free version of audacity"
@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/SartoxOnlyGNU/audacium"
 license=('GPL2')
 groups=()
-depends=(alsa-lib libx11 gtk2 expat libid3tag libogg libsndfile libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch ffmpeg)
+depends=(alsa-lib libx11 gtk2 expat libid3tag libogg libsndfile libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch ffmpeg4.4)
 makedepends=(git cmake sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs jack nasm conan)
 provides=('audacity')
 conflicts=('audacity' 'audacity-git')
