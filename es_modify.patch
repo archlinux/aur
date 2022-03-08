@@ -1,0 +1,1310 @@
+--- es.txt	2022-03-08 22:16:17.299041537 +0800
++++ es.txt	2022-03-08 22:16:37.737850968 +0800
+@@ -1,24 +1,11 @@
+ 手机	手机 📱 📲
+-吃瓜	吃瓜 [吃瓜]
+-奸笑	奸笑 [奸笑]
+-机智	机智 [机智]
+-耶	耶 [耶]
+-天啊	天啊 [天啊]
+-社会	社会 [社会社会]
+-好的	好的 [好的]
+-打脸	打脸 [打脸]
+-翻白眼	翻白眼 [翻白眼]
+-苦涩	苦涩 [苦涩]
+-裂开	裂开 [裂开]
+-抠鼻	抠鼻 [抠鼻]
+ 五笔	五笔 98五笔 86五笔 新世纪五笔
+ 大笑	大笑 😀 😁 😂 🤣 😃 😄 🤩 😅 😆 😉 😊 😋 😎 😺 😸 😹
+ 开心	开心 😀 😁 😂 🤣 😃 😄 🤩 😅 😆 😉 😊 😋 😎 😺 😸 😹
+ 快乐	快乐 😀 😁 😂 🤣 😃 😄 🤩 😅 😆 😉 😊 😋 😎 😺 😸 😹
+ 笑	笑 😀 😁 😂 🤣 😃 😄 🤩 😅 😆 😉 😊 😋 😎 😺 😸 😹
+ 笑脸	笑脸 😀 😁 😂 🤣 😃 😄 🤩 😅 😆 😉 😊 😋 😎 😺 😸 😹
+-笑哭	笑哭 😂 🤣 😹
+-笑cry	笑cry 😂 🤣 😹
++笑哭	笑哭 笑cry 😂 🤣 😹
+ 破涕为笑	破涕为笑 😂 🤣 😹
+ 眨眼	眨眼 😉
+ 媚眼	媚眼 😉
+@@ -41,9 +28,9 @@ 蛤	蛤 🤓 🐸 𓆏
+ 拥抱	拥抱 🤗 🫂
+ 尴尬	尴尬 😅
+ 还好	还好 😅
+-叹气	叹气 😮‍💨 [叹气]
++叹气	叹气 😮‍💨
+ 星星眼	星星眼 🤩
+-哇	哇 [哇] 🤩
++哇	哇 🤩
+ 思考	思考 🤔 🤨 🥴 🧐
+ 怀疑	怀疑 🤔 🤨 🥴 🧐
+ 醉	醉 🥴
+@@ -52,7 +39,7 @@ 无语	无语 😒 😐 😑 😶 🤐 �
+ 冷漠	冷漠 😶
+ 厌恶	厌恶 🙄 🙃
+ 讨厌	讨厌 🙃 🙄
+-白眼	白眼 🙄 [翻白眼]
++白眼	白眼 🙄
+ 傻笑	傻笑 😏
+ 偷笑	偷笑 😏
+ 冷笑	冷笑 😏
+@@ -91,7 +78,7 @@ 辣鸡	辣鸡 🙃 🚮 🚯
+ 见钱眼开	见钱眼开 🤑
+ 拜金	拜金 🤑
+ 贪	贪 🤑
+-皱眉	皱眉 [皱眉] 🙁 😦 🙍‍♂ 🙍 🙍‍♀ 🙍🏻‍♂️ 🙍🏼‍♂️ 🙍🏽‍♂️ 🙍🏾‍♂️ 🙍🏿‍♂️ 🙍🏻 🙍🏼 🙍🏽 🙍🏾 🙍🏿 🙍🏻‍♀️ 🙍🏼‍♀️ 🙍🏽‍♀️ 🙍🏾‍♀️ 🙍🏿‍♀️ ☹
++皱眉	皱眉 🙁 😦 🙍‍♂ 🙍 🙍‍♀ 🙍🏻‍♂️ 🙍🏼‍♂️ 🙍🏽‍♂️ 🙍🏾‍♂️ 🙍🏿‍♂️ 🙍🏻 🙍🏼 🙍🏽 🙍🏾 🙍🏿 🙍🏻‍♀️ 🙍🏼‍♀️ 🙍🏽‍♀️ 🙍🏾‍♀️ 🙍🏿‍♀️ ☹
+ 失望	失望 😞
+ 低落	低落 😞
+ 着急	着急 😟
+@@ -280,13 +267,11 @@ 美人鱼	美人鱼 🧜‍♂ 🧜 🧜
+ 妖怪	妖怪 🧞‍♂ 🧞 🧞‍♀ 🧚‍♂️ 🧚 🧚‍♀️ 🧚🏻‍♂️ 🧚🏼‍♂️ 🧚🏽‍♂️ 🧚🏾‍♂️ 🧚🏿‍♂️ 🧚🏻 🧚🏼 🧚🏽 🧚🏾 🧚🏿 🧚🏻‍♀️ 🧚🏼‍♀️ 🧚🏽‍♀️ 🧚🏾‍♀️ 🧚🏿‍♀️
+ 妖精	妖精 🧞‍♂ 🧞 🧞‍♀ 🧚‍♂️ 🧚 🧚‍♀️ 🧚🏻‍♂️ 🧚🏼‍♂️ 🧚🏽‍♂️ 🧚🏾‍♂️ 🧚🏿‍♂️ 🧚🏻 🧚🏼 🧚🏽 🧚🏾 🧚🏿 🧚🏻‍♀️ 🧚🏼‍♀️ 🧚🏽‍♀️ 🧚🏾‍♀️ 🧚🏿‍♀️
+ 僵尸	僵尸 🧟‍♂ 🧟 🧟‍♀
+-不	不 🙅‍♂ 🙅 🙅‍♀ 🆖 🙅🏻‍♂️ 🙅🏼‍♂️ 🙅🏽‍♂️ 🙅🏾‍♂️ 🙅🏿‍♂️ 🙅🏻 🙅🏼 🙅🏽 🙅🏾 🙅🏿 🙅🏻‍♀️ 🙅🏼‍♀️ 🙅🏽‍♀️ 🙅🏾‍♀️ 🙅🏿‍♀️
+-不行	不行 🙅‍♂ 🙅 🙅‍♀ 🆖 🙅🏻‍♂️ 🙅🏼‍♂️ 🙅🏽‍♂️ 🙅🏾‍♂️ 🙅🏿‍♂️ 🙅🏻 🙅🏼 🙅🏽 🙅🏾 🙅🏿 🙅🏻‍♀️ 🙅🏼‍♀️ 🙅🏽‍♀️ 🙅🏾‍♀️ 🙅🏿‍♀️
+-no	no No 锘 Nobelium 102 259 の ノ 🙅‍♂ 🙅 🙅‍♀ 🆖 🙅🏻‍♂️ 🙅🏼‍♂️ 🙅🏽‍♂️ 🙅🏾‍♂️ 🙅🏿‍♂️ 🙅🏻 🙅🏼 🙅🏽 🙅🏾 🙅🏿 🙅🏻‍♀️ 🙅🏼‍♀️ 🙅🏽‍♀️ 🙅🏾‍♀️ 🙅🏿‍♀️
+-好	好 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
+-行	行 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
+-可以	可以 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
+-OK	OK 🆗 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
++不	不 no 🙅‍♂ 🙅 🙅‍♀ 🆖 🙅🏻‍♂️ 🙅🏼‍♂️ 🙅🏽‍♂️ 🙅🏾‍♂️ 🙅🏿‍♂️ 🙅🏻 🙅🏼 🙅🏽 🙅🏾 🙅🏿 🙅🏻‍♀️ 🙅🏼‍♀️ 🙅🏽‍♀️ 🙅🏾‍♀️ 🙅🏿‍♀️
++不行	不行 no 🙅‍♂ 🙅 🙅‍♀ 🆖 🙅🏻‍♂️ 🙅🏼‍♂️ 🙅🏽‍♂️ 🙅🏾‍♂️ 🙅🏿‍♂️ 🙅🏻 🙅🏼 🙅🏽 🙅🏾 🙅🏿 🙅🏻‍♀️ 🙅🏼‍♀️ 🙅🏽‍♀️ 🙅🏾‍♀️ 🙅🏿‍♀️
++好	好 OK 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
++行	行 OK 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
++可以	可以 OK 🙆‍♂ 🙆 🙆‍♀ 👌 👍 🆗 🙆🏻‍♂️ 🙆🏼‍♂️ 🙆🏽‍♂️ 🙆🏾‍♂️ 🙆🏿‍♂️ 🙆🏻 🙆🏼 🙆🏽 🙆🏾 🙆🏿 🙆🏻‍♀️ 🙆🏼‍♀️ 🙆🏽‍♀️ 🙆🏾‍♀️ 🙆🏿‍♀️ 👌🏻 👌🏼 👌🏽 👌🏾 👌🏿 👍🏻 👍🏼 👍🏽 👍🏾 👍🏿
+ 小费	小费 💁‍♂ 💁 💁‍♀ 🈂 💁🏻‍♂️ 💁🏼‍♂️ 💁🏽‍♂️ 💁🏾‍♂️ 💁🏿‍♂️ 💁🏻 💁🏼 💁🏽 💁🏾 💁🏿 💁🏻‍♀️ 💁🏼‍♀️ 💁🏽‍♀️ 💁🏾‍♀️ 💁🏿‍♀️
+ 费用	费用 🈂
+ 服务费	服务费 🈂
+@@ -408,8 +393,7 @@ 墨镜	墨镜 🕶 😎
+ 护目镜	护目镜 🥽
+ 实验服	实验服 🥼
+ 领带	领带 👔
+-T恤	T恤 👕
+-T恤衫	T恤衫 👕
++短袖	短袖 T恤 👕
+ 牛仔裤	牛仔裤 👖
+ 裤	裤 👖
+ 裤子	裤子 👖
+@@ -425,8 +409,7 @@ 短裤	短裤 🩳
+ 莎丽	莎丽 🥻
+ 救生	救生 🦺
+ 和服	和服 👘
+-比基尼	比基尼 👙
+-bikini	bikini 👙
++比基尼	比基尼 bikini 👙
+ 包	包 👜 👝 👛 🎒 💼
+ 书包	书包 🎒
+ 钱包	钱包 👛 💰
+@@ -454,9 +437,7 @@ 标语	标语 🪧
+ 牌子	牌子 🪧
+ 海报	海报 🪧
+ 布告	布告 🪧
+-万圣节	万圣节 😨 😰 😱 🤡 😈 👿 👹 👺 💀 ☠️ 👻 👽 👾 🤖 🧙‍ 🧚‍ 🧛‍ 🧜‍ 🧝‍ 🧞‍ 🧟‍ 🕴 💚 🖤 🦄 🦇 🦉 🕷 🕸 🥀 🍫 🍬 🍭 🏚 🌃 🛸 🌕 🌚 🌩 ⚡️ 🎃 🔮 🎭 🕯 🗡 ⛓ ⚰️ ⚱️
+-万圣节前夕	万圣节前夕 😨 😰 😱 🤡 😈 👿 👹 👺 💀 ☠️ 👻 👽 👾 🤖 🧙‍ 🧚‍ 🧛‍ 🧜‍ 🧝‍ 🧞‍ 🧟‍ 🕴 💚 🖤 🦄 🦇 🦉 🕷 🕸 🥀 🍫 🍬 🍭 🏚 🌃 🛸 🌕 🌚 🌩 ⚡️ 🎃 🔮 🎭 🕯 🗡 ⛓ ⚰️ ⚱️
+-Halloween	Halloween 😨 😰 😱 🤡 😈 👿 👹 👺 💀 ☠️ 👻 👽 👾 🤖 🧙‍ 🧚‍ 🧛‍ 🧜‍ 🧝‍ 🧞‍ 🧟‍ 🕴 💚 🖤 🦄 🦇 🦉 🕷 🕸 🥀 🍫 🍬 🍭 🏚 🌃 🛸 🌕 🌚 🌩 ⚡️ 🎃 🔮 🎭 🕯 🗡 ⛓ ⚰️ ⚱️
++万圣节	万圣节 Halloween 😨 😰 😱 🤡 😈 👿 👹 👺 💀 ☠️ 👻 👽 👾 🤖 🧙‍ 🧚‍ 🧛‍ 🧜‍ 🧝‍ 🧞‍ 🧟‍ 🕴 💚 🖤 🦄 🦇 🦉 🕷 🕸 🥀 🍫 🍬 🍭 🏚 🌃 🛸 🌕 🌚 🌩 ⚡️ 🎃 🔮 🎭 🕯 🗡 ⛓ ⚰️ ⚱️
+ 公文包	公文包 💼
+ 线	线 🧵 🧶 ➰ ᝰ ︴ ﹏ ﹌ ﹋ ╳ ╲ ╱ ︶ ︵ 〵 〴 〳 〆 〄
+ 毛线	毛线 🧶
+@@ -472,7 +453,7 @@ 不听	不听 🙉
+ 猴	猴 🐵 🐒 🙈 🙉 🙊
+ 碰撞	碰撞 💥
+ 爆炸	爆炸 💥
+-汗	汗 [汗] 😓 💦
++汗	汗 😓 💦
+ 流汗	流汗 😓
+ 汗水	汗水 💦
+ 出汗	出汗 😓 🥵 💦
+@@ -1018,7 +999,7 @@ 板车	板车 🛴 🛵
+ 脚踏车	脚踏车 🛴
+ 电动车	电动车 🛵
+ 铁轨	铁轨 🛤
+-加油	加油 [加油] [加油加油] ⛽
++加油	加油 ⛽
+ 红绿灯	红绿灯 🚥 🚦
+ 施工	施工 🚧
+ 锚	锚 ⚓
+@@ -1068,8 +1049,7 @@ 石	石 🪨
+ 石头	石头 🪨
+ 岩石	岩石 🪨
+ 苯	苯 ⌬ ⏣
+-苯环	苯环 ⌬ ⏣
+-benzene	benzene ⌬ ⏣
++苯环	苯环 benzene ⌬ ⏣
+ 刀	刀 🔪 🗡️ 🍴 🍽️
+ 菜刀	菜刀 🔪
+ 罐	罐 🏺
+@@ -1133,8 +1113,7 @@ 调节	调节 🎚 🎛
+ 收音机	收音机 📻
+ 来电	来电 📲
+ 电话	电话 ☎ ☏ 📞 ℡ 📱 📲 ✆ 🤙
+-BP机	BP机 📟
+-传呼机	传呼机 📟
++传呼机	传呼机 BP机 📟
+ 传真	传真 📠 ℻
+ 电池	电池 🔋
+ 插销	插销 🔌
+@@ -1230,8 +1209,7 @@ 锤子	锤子 🔨 ⚒ 🛠
+ 锤	锤 🔨 ⚒ 🛠
+ 锄	锄 ⛏ ⚒
+ 锄头	锄头 ⛏ ⚒
+-匕首	匕首 🗡 † ‡
+-dagger	dagger † ‡ 🗡
++匕首	匕首 dagger 🗡 † ‡
+ 剑	剑 ⚔
+ 枪	枪 🔫
+ 手枪	手枪 🔫
+@@ -1249,8 +1227,7 @@ 吸铁石	吸铁石 🧲
+ 蒸馏	蒸馏 ⚗
+ 试管	试管 🧪
+ 培养皿	培养皿 🧫
+-DNA	DNA 🧬
+-基因	基因 🧬
++基因	基因 DNA 🧬
+ 灭火器	灭火器 🧯
+ 显微镜	显微镜 🔬
+ 望远镜	望远镜 🔭
+@@ -1308,9 +1285,8 @@ 声音	声音 🔇 🔈 🔉 🔊
+ 音量	音量 🔇 🔈 🔉 🔊
+ 静音	静音 🔇
+ 扩音器	扩音器 📢 📣
+-ATM	ATM 🏧
+-取款机	取款机 🏧
+-提款机	提款机 🏧
++取款机	取款机 ATM 🏧
++提款机	提款机 ATM 🏧
+ 轮椅	轮椅 ♿ 🦽 🦼 👨‍🦽 👩‍🦽 🧑‍🦽 👨‍🦼 👩‍🦼 🧑‍🦼 👨🏻‍🦽 👨🏼‍🦽 👨🏽‍🦽 👨🏾‍🦽 👨🏿‍🦽 👩🏻‍🦽 👩🏼‍🦽 👩🏽‍🦽 👩🏾‍🦽 👩🏿‍🦽 🧑🏻‍🦽 🧑🏼‍🦽 🧑🏽‍🦽 🧑🏾‍🦽 🧑🏿‍🦽 👨🏻‍🦼 👨🏼‍🦼 👨🏽‍🦼 👨🏾‍🦼 👨🏿‍🦼 👩🏻‍🦼 👩🏼‍🦼 👩🏽‍🦼 👩🏾‍🦼 👩🏿‍🦼 🧑🏻‍🦼 🧑🏼‍🦼 🧑🏽‍🦼 🧑🏾‍🦼 🧑🏿‍🦼
+ 休息室	休息室 🚻
+ 厕所	厕所 🚾 🚹 🚺
+@@ -1332,8 +1308,6 @@ 薛定谔	薛定谔 埃尔温·薛定谔
+ 玻尔	玻尔 尼尔斯·玻尔 Niels Bohr
+ 达芬奇	达·芬奇 列奥纳多·达·芬奇 Leonardo da Vinci
+ 狄拉克	狄拉克 保罗·狄拉克 Paul Dirac
+-社会主义核心价值观	社会主义核心价值观 富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善 富强 民主 文明 和谐 自由 平等 公正 法治 爱国 敬业 诚信 友善
+-八荣八耻	八荣八耻 社会主义荣辱观 以热爱祖国为荣，以危害祖国为耻；以服务人民为荣，以背离人民为耻；以崇尚科学为荣，以愚昧无知为耻；以辛勤劳动为荣，以好逸恶劳为耻；以团结互助为荣，以损人利己为耻；以诚实守信为荣，以见利忘义为耻；以遵纪守法为荣，以违法乱纪为耻；以艰苦奋斗为荣，以骄奢淫逸为耻。
+ 性	性 ♂ ♀ ⚢ ⚣ ⚤ ⚥ ⚦ ⚧️ ⚧ ⚨ ⚩ ⚪ ⚫ ⚬ ⚭ ⚮ ⚯
+ 性别	性别 ♂ ♀ ⚢ ⚣ ⚤ ⚥ ⚦ ⚧️ ⚧ ⚨ ⚩ ⚪ ⚫ ⚬ ⚭ ⚮ ⚯
+ 两性	两性 ♂ ♀ ⚢ ⚣ ⚤ ⚥ ⚦ ⚧️ ⚧ ⚨ ⚩ ⚪ ⚫ ⚬ ⚭ ⚮ ⚯
+@@ -1344,346 +1318,6 @@ 肺	肺 🫁
+ 温泉	温泉 ♨
+ 停	停 🛑 ✋ ✋🏻 ✋🏼 ✋🏽 ✋🏾 ✋🏿
+ 停止	停止 🛑 ✋ ✋🏻 ✋🏼 ✋🏽 ✋🏾 ✋🏿
+-a	a A ㄚ あ ア ā á ǎ à Å Ā Á Ă À ⓐ Ⓐ 🄰 🅐 🅰 ⒜ 🄐 🇦 𝒶 𝒜 𝓪 𝓐 𝔞 𝔄 𝖆 𝕬 a̶̶ A̶ 𝚊 𝙰 𝕒 𝔸 ȁ â ă ȃ ȧ ä å ã ₐ ᵃ ª ⱥ ꬰ ả ą ạ ḁ ẚ ấ ầ ẫ ẩ ắ ằ ẵ ẳ ǡ ǟ ǻ ậ ặ ᶏ ɐ ᵄ ɑ ᵅ ᶐ ɒ ᶛ Ȁ Â Ȃ Ȧ Ä Ã ᴀ ᴬ Ⱥ Ả Ą Ạ Ḁ Ấ Ầ Ẫ Ẩ Ắ Ằ Ẵ Ẳ Ǡ Ǟ Ǻ Ậ Ặ Ɐ Ɑ Ɒ
+-b	b B 硼 Boron 5 10.81 ㄅ ⓑ Ⓑ 🄱 🅑 🅱 ⒝ 🄑 🇧 𝒷 ℬ 𝓫 𝓑 𝔟 𝔅 𝖇 𝕭 b̶ B̶ 𝚋 𝙱 𝕓 𝔹 ḃ ḅ ᵇ ƀ ƃ  ḇ ɓ ᵬ ᶀ ꞗ Ḃ Ḅ ʙ ᴃ ᴮ ᴯ Ƀ Ƃ  Ḇ Ɓ  Ꞗ
+-c	c C 碳 Carbon 6 12.01 ㄘ ℃ ⓒ Ⓒ ©️ 🄲 🅒 🅲 ⒞ 🄒 🇨 𝒸 𝒞 𝓬 𝓒 𝔠 ℭ 𝖈 𝕮 c̶ C̶ 𝚌 𝙲 𝕔 ℂ ç Ç ć č ĉ ċ ᶜ ȼ ꞓ ƈ  ḉ ꞔ ɕ ᶝ ꜿ Ć Č Ĉ Ċ ᴄ Ȼ Ꞓ Ƈ  Ḉ Ꜿ
+-d	d D ㄉ 'd ⓓ Ⓓ 🄳 🅓 🅳 ⒟ 🄓 🇩 𝒹 𝒟 𝓭 𝓓 𝔡 𝔇 𝖉 𝕯 d̶ D̶ 𝚍 𝙳 𝕕 𝔻 ď ḋ ᵈ đ ƌ ᵭ ḑ ḓ ḏ ḍ ɖ ɗ ᶑ ᶁ ð ᶞ ꝱ ʤ ʣ ʥ ȡ ƍ ǳ ǆ ẟ Ď Ḋ ᴅ ᴆ ᴰ Đ Ƌ Ḑ Ḓ Ḏ Ḍ Ɖ Ɗ Ð Ǳ ǲ Ǆ ǅ
+-e	e E ㄜ ㄝ え エ ē é ě è Ē É Ĕ È ⓔ Ⓔ 🄴 🅔 🅴 ⒠ 🄔 🇪 ℯ ℰ 𝓮 𝓔 𝔢 𝔈 𝖊 𝕰 e̶ E̶ 𝚎 𝙴 𝕖 𝔼 ȅ ê ĕ ȇ ê̄ ê̌ ė ë ẽ ₑ ᵉ ɇ ꬳ ẻ ȩ ę ḙ ẹ ḛ ḗ ḕ ế ề ễ ể ḝ ệ ᶒ ꬴ ɘ ə ɚ ᶕ ɛ ᵋ ᶓ ɜ ᵌ ᴈ ᶟ ɝ ᶔ ɞ ʚ ǝ ₔ ᵊ ȝ ⱸ Ȅ Ê Ĕ Ȇ Ê̄ Ê̌ Ė Ë Ẽ ᴇ ᴱ Ɇ Ẻ Ȩ Ę Ḙ Ẹ Ḛ Ḗ Ḕ Ế Ề Ễ Ể Ḝ Ệ Ə Ɛ Ɜ Ǝ ⱻ ᴲ Ȝ
+-f	f F 氟 Fluorine 9 19.00 ㄈ ℉ ⓕ Ⓕ 🄵 🅕 🅵 ⒡ 🄕 🇫 𝒻 ℱ 𝓯 𝓕 𝔣 𝔉 𝖋 𝕱 f̶ F̶ 𝚏 𝙵 𝕗 𝔽 ḟ ᶠ ƒ ᵮ ᶂ ꞙ Ḟ ꜰ Ƒ Ꞙ ꟻ
+-g	g G ㄍ ⓖ Ⓖ 🄶 🅖 🅶 ⒢ 🄖 🇬 ℊ 𝒢 𝓰 𝓖 𝔤 𝔊 𝖌 𝕲 g̶ G̶ 𝚐 𝙶 𝕘 𝔾 ḡ ǵ ǧ ĝ ğ ġ ᵍ ǥ ꞡ ģ ɠ ᵷ ᶃ ɡ ꬶ ᶢ ɣ ˠ ɤ ᵹ Ḡ Ǵ Ǧ Ĝ Ğ Ġ ʛ ᴳ Ǥ Ꞡ Ģ Ɠ Ɡ Ɣ
+-h	h H 氢 Hydrogen 1 1.008 ㄏ ⓗ Ⓗ 🄷 🅗 🅷 ⒣ 🄗 🇭 ℏ ħ Ħ 𝒽 ℋ 𝓱 𝓗 𝔥 ℌ 𝖍 𝕳 h̶ H̶ 𝚑 𝙷 𝕙 ℍ ĥ ȟ ḣ ḧ ͪ ħ ɦ ʱ ꜧ ꭜ ɧ ḩ ẖ ḫ ḥ ⱨ ꞕ ɥ ᶣ ʮ ʯ ⱶ Ĥ Ȟ Ḣ Ḧ ʜ ᴴ Ħ Ɦ Ꜧ Ḩ Ḫ Ḥ Ⱨ Ɥ Ⱶ
+-i	i I 碘 Iodine 53 126.9 ㄧ い イ ī í ǐ ì Ī Í Ĭ Ì ⓘ Ⓘ 🄸 🅘 🅸 ⒤ 🄘 🇮 𝒾 ℐ 𝓲 𝓘 𝔦 ℑ 𝖎 𝕴 i̶ I̶ 𝚒 𝙸 𝕚 𝕀 ȉ î ĭ ȋ ï ĩ ᵢ ı ɨ ᶤ ỉ į ị ḭ ᴉ ᵎ ḯ ᶖ ɩ ᶥ ᵼ Ȉ Î Ĭ Ȋ Ï Ĩ ɪ ᴵ ᶦ Ɨ ᵻ ᶧ Ỉ Į Ị Ḭ Ḯ Ɩ ꟾ
+-j	j J ㄐ ⓙ Ⓙ 🄹 🅙 🅹 ⒥ 🄙 🇯 𝒿 𝒥 𝓳 𝓙 𝔧 𝔍 𝖏 𝕵 j̶ J̶ 𝚓 𝙹 𝕛 𝕁 ĵ ǰ ⱼ ʲ ɉ ȷ ɟ ᶡ ʄ ʝ ᶨ Ĵ ᴊ ᴶ Ɉ Ʝ
+-k	k K 钾 Potassium 19 39.10 ㄎ ⓚ Ⓚ 🄺 🅚 🅺 ⒦ 🄚 🇰 𝓀 𝒦 𝓴 𝓚 𝔨 𝔎 𝖐 𝕶 k̶ K̶ 𝚔 𝙺 𝕜 𝕂 ḱ k̂ ǩ ₖ ᵏ ꝁ ꝃ ꞣ ꝅ ķ ḵ ḳ ƙ ᶄ ⱪ ʞ ĸ Ḱ Ǩ ᴋ ᴷ Ꝁ Ꝃ Ꞣ Ꝅ Ķ Ḵ Ḳ Ƙ Ⱪ Ʞ ㉿
+-l	l L ㄌ ⓛ Ⓛ 🄻 🅛 🅻 ⒧ 🄛 🇱 𝓁 ℒ 𝓵 𝓛 𝔩 𝔏 𝖑 𝕷 l̶ L̶ 𝚕 𝙻 𝕝 𝕃 ĺ ˡ ł ꝉ ƚ ⱡ ɫ ꭞ ꬸ ɬ ľ ļ ḻ ḽ ḷ ŀ ꝲ ƛ ᶅ ᶪ ɭ ᶩ ḹ ꬷ ꭝ ꬹ ȴ ꝇ Ĺ ʟ ᶫ Ƚ Ꝉ Ł ᴌ Ⱡ Ɫ Ɬ Ľ Ļ Ḻ Ḽ Ḷ Ŀ Ꝇ
+-m	m M ㄇ ㆬ ⓜ Ⓜ 🄼 🅜 🅼 ⒨ 🄜 🇲 𝓂 ℳ 𝓶 𝓜 𝔪 𝔐 𝖒 𝕸 m̶ M̶ 𝚖 𝙼 𝕞 𝕄 m̄ ḿ m̀ ṁ ᵐ ₘ ṃ ᵯ ɱ ᶬ ꬺ ᶆ ꝳ ɯ ᵚ ɰ ᶭ ᴟ M̄ Ḿ M̀ Ṁ ᴍ ᴹ Ṃ Ɱ Ɯ ꟽ ꟿ
+-n	n N 氮 Nitrogen 7 14.01 ㄋ ㄯ ん ン ⓝ Ⓝ 🄽 🅝 🅽 ⒩ 🄝 🇳 𝓃 𝒩 𝓷 𝓝 𝔫 𝔑 𝖓 𝕹 n̶ N̶ 𝚗 𝙽 𝕟 ℕ ń ň ǹ ṅ ñ ₙ ⁿ ɲ ᶮ ɳ ᶯ ȵ ƞ ŋ ᵑ ꬻ ꬼ ꝴ ŉ ꞥ ņ ṉ ṋ ṇ ᵰ ꞑ ᶇ Ń Ň Ǹ Ṅ Ñ ɴ ᴺ ᴻ ᶰ Ɲ Ƞ Ŋ Ņ Ṉ Ṋ Ṇ Ꞑ
+-o	o O 氧 Oxygen 8 16.00 ㄛ お オ ō ó ǒ ò Ō Ó Ǒ Ò ⓞ Ⓞ 🄾 🅞 🅾 ⒪ 🄞 🇴 ℴ 𝒪 𝓸 𝓞 𝔬 𝔒 𝖔 𝕺 o̶ O̶ 𝚘 𝙾 𝕠 𝕆 ô Ô Ø ö Ö ō ő ô ŏ ȯ õ ₒ ᵒ º ɔ ᵓ ᶗ ꬿ ø ǫ ọ ơ ɵ ᶱ ᴑ ᴒ ᴓ ꝋ ꝍ ṓ ṑ ố ồ ỗ ổ ȱ ȫ ȭ ṍ ṏ ộ ǭ ǿ ớ ờ ỡ ở ợ ɷ ⱺ ᴖ ᵔ ᴗ ᵕ Ő Ô Ŏ Ȯ Õ ᴏ ᴼ Ɔ ᴐ Ø Ǫ Ọ Ơ Ɵ Ꝋ Ꝍ Ṓ Ṑ Ố Ồ Ỗ Ổ Ȱ Ȫ Ȭ Ṍ Ṏ Ộ Ǭ Ǿ Ớ Ờ Ỡ Ở Ợ
+-p	p P 磷 Phosphorus 15 30.97 ㄆ ⓟ Ⓟ ℗ 🄿 🅟 🅿 ⒫ 🄟 🇵 𝓅 𝒫 𝓹 𝓟 𝔭 𝔓 𝖕 𝕻 p̶ P̶ 𝚙 𝙿 𝕡 ℙ ṕ ṗ ᵖ ᵽ ꝑ ᵱ ƥ ᶈ ꝓ ꝕ ɸ ᶲ ⱷ Ṕ Ṗ ᴘ ᴾ Ᵽ Ꝑ Ƥ Ꝓ Ꝕ ꟼ
+-q	q Q ㄑ ー ⓠ Ⓠ 🅀 🅠 🆀 ⒬ 🄠 🇶 𝓆 𝒬 𝓺 𝓠 𝔮 𝔔 𝖖 𝕼 q̶ Q̶ 𝚚 𝚀 𝕢 ℚ ɋ ꝗ ꝙ ʠ Ɋ Ꝗ Ꝙ
+-r	r R ㄖ ʀ ⓡ Ⓡ 🅁 🅡 🆁 ⒭ 🄡 🇷 𝓇 ℛ 𝓻 𝓡 𝔯 ℜ 𝖗 𝕽 r̶ R̶ 𝚛 𝚁 𝕣 ℝ ŕ ř ȑ ȓ ṙ ᵣ ɍ ꞧ ᵲ ŗ ṟ ṛ ṝ ᵳ ɽ ᶉ ꭇ ꭈ ꭊ ꭉ ꝵ ꭋ ꭌ ɹ ʴ ɺ ɻ ʵ ⱹ ɼ ʳ ɾ ɿ ꝛ ꝝ Ŕ Ř Ȑ Ȓ Ṙ ʀ ᴙ ᴿ Ʀ ꭆ Ɍ Ꞧ Ŗ Ṟ Ṛ Ṝ Ɽ ꝶ ʶ ʁ Ꝛ Ꝝ
+-s	s S 硫 Sulfur 16 32.06 ㄙ 's $ ⓢ Ⓢ 🅂 🅢 🆂 ⒮ 🄢 🇸 𝓈 𝒮 𝓼 𝓢 𝔰 𝔖 𝖘 𝕾 s̶ S̶ 𝚜 𝚂 𝕤 𝕊 ś ŝ š ṡ ˢ ʂ ᶳ ᵴ ꞩ ᶊ ş ṣ ș ȿ ṥ ṧ ṩ ʃ ᶴ ʆ ᶘ ʅ ƪ ß ſ ẛ ẜ ẝ Ś Ŝ Š Ṡ ꜱ Ꞩ Ş Ṣ Ș Ṥ Ṧ Ṩ Ʃ ẞ
+-t	t T ㄊ っ ッ ⓣ Ⓣ 🅃 🅣 🆃 ⒯ 🄣 🇹 𝓉 𝒯 𝓽 𝓣 𝔱 𝔗 𝖙 𝕿 t̶ T̶ 𝚝 𝚃 𝕥 𝕋 ť ṫ ẗ ᵗ ₜ ʈ þ ꝥ ꝧ ŧ ⱦ ţ ṯ ṱ ṭ ț ƭ ᵵ ƫ ᶵ ʇ ȶ ꝷ Ť Ṫ ᴛ ᵀ Ʈ Þ Ꝥ Ꝧ Ŧ Ⱦ Ţ Ṯ Ṱ Ṭ Ț Ƭ Ʇ
+-u	u U 铀 Uranium 92 238 ㄨ ㄩ う ウ ū ú ǔ ù ü ǖ ǘ ǚ ǜ Ū Ú Ŭ Ù Ü Ǖ Ǘ Ǚ Ǜ ⓤ Ⓤ 🅄 🅤 🆄 ⒰ 🄤 🇺 𝓊 𝒰 𝓾 𝓤 𝔲 𝔘 𝖚 𝖀 u̶ U̶ 𝚞 𝚄 𝕦 𝕌 ŭ ù ȕ û ȗ ů ũ ᵤ ᵘ ʉ ᶶ ủ ų ṷ ụ ṳ ṵ ư ʊ ᶷ ᵿ ᶙ ṻ ṹ ứ ừ ữ ử ự ꭒ ꭟ ꝸ ꭎ ꭏ ᴝ ᵙ ᴞ Ű Ȕ Û Ŭ Ȗ Ů Ũ ᴜ ᵁ ᶸ Ʉ Ủ Ų Ṷ Ụ Ṳ Ṵ Ư Ʊ Ṻ Ṹ Ứ Ừ Ữ Ử Ự
+-v	v V 钒 Vanadium 23 50.94 ㄪ ⓥ Ⓥ 🅅 🅥 🆅 ⒱ 🄥 🇻 𝓋 𝒱 𝓿 𝓥 𝔳 𝔙 𝖛 𝖁 v̶ V̶ 𝚟 𝚅 𝕧 𝕍 ṽ ᵛ ᵥ ṿ ꝟ ʋ ᶹ ᶌ ⱴ ⱱ ỽ ʌ ᶺ Ṽ ᴠ ⱽ Ṿ Ꝟ Ʋ Ỽ Ʌ
+-w	w W 钨 Tungsten 74 184 ⓦ Ⓦ 🅆 🅦 🆆 ⒲ 🄦 🇼 𝓌 𝒲 𝔀 𝓦 𝔴 𝔚 𝖜 𝖂 w̶ W̶ 𝚠 𝚆 𝕨 𝕎 ẃ ẁ ŵ ẇ ẅ ẘ ʷ ẉ ƿ ʍ ⱳ Ẃ Ẁ Ŵ Ẇ Ẅ W̊ ᴡ ᵂ Ẉ Ƿ Ⱳ
+-x	x X ㄒ ⓧ Ⓧ 🅇 🅧 🆇 ⒳ 🄧 🇽 𝓍 𝒳 𝔁 𝓧 𝔵 𝔛 𝖝 𝖃 x̶ X̶ 𝚡 𝚇 𝕩 𝕏 ẋ ẍ ᶍ ˣ ₓ ꭖ ꭗ ꭘ ꭙ Ẋ Ẍ
+-y	y Y 钇 Yttrium 39 88.91 ⓨ Ⓨ 🅈 🅨 🆈 ⒴ 🄨 🇾 𝓎 𝒴 𝔂 𝓨 𝔶 𝔜 𝖞 𝖄 y̶ Y̶ 𝚢 𝚈 𝕪 𝕐 ȳ ý ỳ ŷ ẏ ÿ ẙ ỹ ʸ ɏ ỷ ỵ ƴ ʎ ỿ ꭚ Ȳ Ý Ỳ Ŷ Ẏ Ÿ Ỹ ʏ Ɏ Ỷ Ỵ Ƴ Ỿ
+-z	z Z ㄗ ⓩ Ⓩ 🅉 🅩 🆉 ⒵ 🄩 🇿 𝓏 𝒵 𝔃 𝓩 𝔷 ℨ 𝖟 𝖅 z̶ Z̶ 𝚣 𝚉 𝕫 ℤ ź ž ẑ ż ᶻ ʐ ᶼ ʑ ᶽ ƶ ẕ ẓ ᵶ ȥ ⱬ ᶎ ʒ ᶾ ǯ ʓ ƹ ƺ ᶚ θ ᶿ ɀ ꝣ Ź Ž Ẑ Ż ᴢ Ƶ Ẕ Ẓ Ȥ Ⱬ Ʒ ᴣ Ǯ Ƹ Ɀ Ꝣ
+-zh	zh ㄓ
+-zhi	zhi ㄓ
+-ch	ch ㄔ
+-sh	sh ㄕ
+-ai	ai ㄞ
+-ei	ei ㄟ
+-an	an ㄢ
+-en	en ㄣ
+-ang	ang ㄤ
+-eng	eng ㄥ
+-er	er Er 铒 Erbium 68 167 ㄦ
+-ng	ng ㄫ ㆭ
+-ci	ci ㄘ
+-beng	beng ㄅㄥ
+-peng	peng ㄆㄥ
+-meng	meng ㄇㄥ
+-feng	feng ㄈㄥ
+-you	you ㄧㄡ
+-iu	iu ㄧㄡ
+-wei	wei ㄨㄟ
+-ui	ui ㄨㄟ
+-wen	wen ㄨㄣ
+-weng	weng ㄨㄥ
+-un	un ㄨㄣ ㄩㄣ
+-yan	yan ㄧㄢ
+-ian	ian ㄧㄢ
+-yuan	yuan ㄩㄢ
+-uan	uan ㄩㄢ
+-yin	yin ㄧㄣ
+-in	in In 铟 Indium 49 114.8 ㄧㄣ
+-sn	sn Sn 锡 Stannum 50 118.7
+-sb	sb Sb 锑 Antimony 51 121.8
+-xe	xe Xe 氙 Xenon 54 131.3
+-cs	cs Cs 铯 Cesium 55 133
+-eu	eu Eu 铕 Europium 63 152
+-gd	gd Gd 钆 Gadolinium 64 157
+-tb	tb Tb 铽 Terbium 65 159
+-dy	dy Dy 镝 Dysprosium 66 162.5
+-yb	yb Yb 镱 Ytterbium 70 173
+-hg	hg Hg 汞 Mercury 80 200.6
+-tl	tl Tl 铊 Thallium 81 204.5
+-pb	pb Pb 铅 Lead 82 207
+-rn	rn Rn 氡 Radon 86 222
+-fr	fr Fr 钫 Francium 87 223
+-np	np Np 镎 Neptunium 93 237
+-yun	yun ㄩㄣ
+-ying	ying ㄧㄥ
+-ing	ing ㄧㄥ
+-ong	ong ㄨㄥ
+-yong	yong ㄩㄥ
+-iong	iong ㄩㄥ
+-gn	gn ㄬ
+-aa	aa ꜳ Ꜳ
+-ae	ae æ ǣ ǽ ᵆ ᴂ Æ Ǣ Ǽ ᴭ ᴁ
+-ao	ao ㄠ ꜵ Ꜵ
+-au	au Au 金 Gold 79 197 ꜷ Ꜷ
+-av	av ꜹ ꜻ Ꜹ Ꜻ
+-ay	ay ꜽ Ꜽ
+-db	db Db 𬭊 Dubnium 105 262 ȸ
+-sg	sg Sg 𬭳 Seaborgium 106 263
+-bh	bh Bh 𬭛 Bohrium 107 264
+-hs	hs Hs 𬭶 Hassium 108 265
+-mt	mt Mt 鿏 Meitnerium 109 266
+-ds	ds Ds 𫟼 Darmstadtium 110 269
+-rg	rg Rg 𬬭 Roentgenium 111 272
+-cn	cn Cn 鿔 Copernicium 112 277
+-nh	nh Nh 鿭 Nihonium 113 286
+-ff	ff ﬀ
+-ffi	ffi ﬃ
+-ffl	ffl ﬄ
+-fl	fl Fl 𫓧 Flerovium 114 289 ﬂ
+-mc	mc Mc 镆 Moscovium 115 289
+-lv	lv Lv 𫟷 Livermorium 116 293
+-fn	fn ʩ
+-hv	hv ƕ Ƕ
+-ij	ij ĳ Ĳ
+-lj	lj ǉ
+-ll	ll ỻ Ỻ
+-ls	ls ʪ
+-lz	lz ʫ ɮ
+-nj	nj ǌ ǋ Ǌ
+-oe	oe œ ᴔ Œ ɶ
+-oi	oi ƣ Ƣ
+-oo	oo ꝏ Ꝏ
+-ou	ou ㄡ ȣ Ȣ ᴽ
+-qp	qp ȹ
+-tc	tc Tc 锝 Technetium 43 98 ʨ
+-th	th Th 钍 Thorium 90 232 ᵺ
+-ts	ts Ts 鿬 Tennessine 117 294 ʦ ʧ
+-og	og Og 鿫 Oganesson 118 294
+-tz	tz ꜩ Ꜩ
+-ue	ue ᵫ
+-vy	vy ꝡ Ꝡ
+-ww	ww ʬ
+-vu	vu ゔ ヴ
+-va	va ゔぁ ヴァ
+-whi	whi うぃ ウィ
+-vi	vi ゔぃ ヴィ
+-whe	whe うぇ ウェ
+-ve	ve ゔぇ ヴェ
+-vo	vo ゔぉ ヴォ
+-vya	vya ゔゃ ヴャ
+-vyu	vyu ゔゅ ヴュ
+-vyo	vyo ゔょ ヴョ
+-ka	ka か カ
+-ga	ga Ga 镓 Gallium 31 69.72 が ガ
+-zr	zr Zr 锆 Zirconium 40 91.22
+-nb	nb Nb 铌 Niobium 41 92.91
+-nga	nga かﾟ  カﾟ
+-ki	ki き キ
+-gi	gi ぎ ギ
+-ngi	ngi きﾟ キﾟ
+-kya	kya きゃ キャ
+-gya	gya ぎゃ ギャ
+-ngya	ngya きﾟゃ キﾟャ
+-kyu	kyu きゅ キュ
+-gyu	gyu ぎゅ ギュ
+-ngyu	ngyu きﾟゅ キﾟュ
+-kyo	kyo きょ キョ
+-gyo	gyo ぎょ ギョ
+-ngyo	ngyo きﾟょ キﾟョ
+-ku	ku く ク
+-gu	gu ぐ グ
+-ngu	ngu くﾟ クﾟ
+-kwa	kwa くぁ クァ くゎ クヮ
+-kwi	kwi くぃ クィ
+-kwe	kwe くぇ クェ
+-kwo	kwo くぉ クォ
+-kwya	kwya くゃ クャ
+-kwyu	kwyu くゅ クュ
+-kwyo	kwyo くょ クョ
+-gwa	gwa ぐゎ グヮ
+-ngwa	ngwa くﾟゎ クﾟヮ
+-ke	ke け ケ
+-ge	ge Ge 锗 Germanium 32 72.63 げ ゲ
+-as	as As 砷 Arsenic 33 74.92
+-nge	nge けﾟ ケﾟ
+-ko	ko こ コ
+-go	go ご ゴ
+-ngo	ngo こﾟ コﾟ
+-sa	sa さ サ
+-za	za ざ ザ
+-shi	shi ㄕ し シ
+-ji	ji じ ジ ぢ ヂ
+-she	she しぇ シェ
+-je	je じぇ ジェ
+-sha	sha しゃ シャ
+-ja	ja じゃ ジャ
+-shu	shu しゅ シュ
+-ju	ju じゅ ジュ
+-sho	sho しょ ショ
+-jo	jo じょ ジョ
+-su	su す ス
+-zu	zu ず ズ づ ヅ
+-si	si Si 硅 Silicon 14 28.09 ㄙ すぃ スィ
+-cl	cl Cl 氯 Chlorine 17 35.45
+-ar	ar Ar 氩 Argon 18 39.95
+-ca	ca Ca 钙 Calcium 20 40.08
+-sc	sc Sc 钪 Scandium 21 44.96
+-cr	cr Cr 铬 Chromium 24 52.00
+-mn	mn Mn 锰 Manganese 25 54.94
+-zi	zi ㄗ ずぃ ズィ
+-se	se Se 硒 Selenium 34 78.96 せ セ
+-br	br Br 溴 Bromine 35 79.90
+-kr	kr Kr 氪 Krypton 36 83.80
+-rb	rb Rb 铷 Rubidium 37 85.47
+-sr	sr Sr 锶 Strontium 38 87.62
+-ze	ze ぜ ゼ
+-ce	ce Ce 铈 Cerium 58 140 せﾟ セﾟ
+-pr	pr Pr 镨 Praseodymium 59 141
+-nd	nd Nd 钕 Neodymium 60 144
+-pm	pm Pm 钷 Promethium 61 145
+-lr	lr Lr 铹 Lawrencium 103 260
+-rf	rf Rf 𬬻 Rutherfordium 104 261
+-so	so そ ソ
+-zo	zo ぞ ゾ
+-ta	ta Ta 钽 Tantalum 73 181 た タ
+-da	da だ ダ
+-chi	chi Χ 𝛸 χ 𝜒 ㄔ ち チ
+-che	che ちぇ チェ
+-cha	cha ちゃ チャ
+-chu	chu ちゅ チュ
+-cho	cho ちょ チョ
+-tsu	tsu つ ツ
+-tu	tu つﾟ ツﾟ とぅ トゥ
+-tsa	tsa つぁ ツァ
+-tsi	tsi つぃ ツィ
+-tse	tse つぇ ツェ
+-tso	tso つぉ ツォ
+-te	te Te 碲 Tellurium 52 127.6 て テ
+-de	de で デ
+-ti	ti Ti 钛 Titanium 22 47.87 てぃ ティ
+-di	di でぃ ディ
+-tya	tya てゃ テャ
+-dya	dya でゃ デャ
+-tyu	tyu てゅ テュ
+-dyu	dyu でゅ デュ
+-tyo	tyo てょ テョ
+-dyo	dyo でょ デョ
+-to	to と ト
+-do	do ど ド
+-du	du どぅ ドゥ
+-na	na Na 钠 Sodium 11 22.99 な ナ
+-mg	mg Mg 镁 Magnesium 12 24.31
+-al	al Al 铝 Aluminum 13 26.98
+-ni	ni Ni 镍 Nickel 28 58.69 に ニ
+-cu	cu Cu 铜 Copper 29 63.55
+-zn	zn Zn 锌 Zinc 30 65.58
+-nya	nya にゃ ニャ
+-nyu	nyu にゅ ニュ
+-nyo	nyo にょ ニョ
+-nu	nu Ν 𝛮 ν 𝜈 ぬ ヌ
+-ne	ne Ne 氖 Neon 10 20.18 ね ネ
+-ha	ha は ハ
+-ba	ba Ba 钡 Barium 56 137.3 ば バ
+-pa	pa Pa 镤 Protactinium 91 231 ぱ パ
+-hi	hi ひ ヒ
+-bi	bi Bi 铋 Bismuth 83 209 び ビ
+-pi	pi Π 𝛱 π 𝜋 ϖ 𝜛 ぴ ピ
+-hya	hya ひゃ ヒャ
+-bya	bya びゃ ビャ
+-pya	pya ぴゃ ピャ
+-hyu	hyu ひゅ ヒュ
+-byu	byu びゅ ビュ
+-pyu	pyu ぴゅ ピュ
+-hyo	hyo ひょ ヒョ
+-byo	byo びょ ビョ
+-pyo	pyo ぴょ ピョ
+-fu	fu ふ フ
+-bu	bu ぶ ブ
+-pu	pu Pu 钚 Plutonium 94 244 ぷ プ
+-am	am Am 镅 Americium 95 243
+-cm	cm Cm 锔 Curium 96 247
+-bk	bk Bk 锫 Berkelium 97 247
+-cf	cf Cf 锎 Californium 98 251
+-es	es Es 锿 Einsteinium 99 252
+-fm	fm Fm 镄 Fermium 100 257
+-md	md Md 钔 Mendelevium 101 258
+-fa	fa ふぁ ファ
+-fi	fi ふぃ フィ ﬁ
+-fe	fe Fe 铁 Iron 26 55.85 ふぇ フェ
+-co	co Co 钴 Cobalt 27 58.93
+-fo	fo ㄈㄛ ふぉ フォ
+-fya	fya ふゃ フャ
+-fyu	fyu ふゅ フュ
+-fyo	fyo ふょ フョ
+-he	he He 氦 Helium 2 4.003 へ ヘ
+-be	be Be 铍 Beryllium 4 9.012 べ ベ
+-pe	pe ぺ ペ
+-ho	ho Ho 钬 Holmium 67 165 ほ ホ
+-bo	bo ㄅㄛ ぼ ボ
+-po	po Po 钋 Polonium 84 209 ㄆㄛ ぽ ポ
+-hu	hu ほぅ ホゥ
+-ma	ma ま マ
+-mi	mi み ミ
+-mya	mya みゃ ミャ
+-myu	myu みゅ ミュ
+-myo	myo みょ ミョ
+-mu	mu Μ 𝛭 μ 𝜇 む ム
+-me	me め メ
+-mo	mo Mo 钼 Molybdenum 42 95.96 ㄇㄛ も モ
+-ya	ya や ヤ
+-yu	yu ゆ ユ
+-yo	yo よ ヨ
+-ra	ra Ra 镭 Radium 88 226 ら ラ
+-ac	ac Ac 锕 Actinium 89 227
+-la	la La 镧 Lanthanum 57 139 らﾟ ラﾟ
+-ri	ri ㄖ り リ
+-li	li Li 锂 Lithium 3 6.941 りﾟ リﾟ
+-rya	rya りゃ リャ
+-lya	lya りﾟゃ リﾟャ
+-ryu	ryu りゅ リュ
+-lyu	lyu りﾟゅ リﾟュ
+-ryo	ryo りょ リョ
+-lyo	lyo りﾟょ リﾟョ
+-ru	ru Ru 钌 Ruthenium 44 101.1 る ル
+-rh	rh Rh 铑 Rhodium 45 102.9
+-pd	pd Pd 钯 Palladium 46 106.4
+-ag	ag Ag 银 Silver 47 107.9
+-cd	cd Cd 镉 Cadmium 48 112.4
+-lu	lu Lu 镥 Lutetium 71 175 るﾟ ルﾟ
+-hf	hf Hf 铪 Hafnium 72 178.5
+-re	re Re 铼 Rhenium 75 186 れ レ
+-os	os Os 锇 Osmium 76 190
+-ir	ir Ir 铱 Iridium 77 192
+-pt	pt Pt 铂 Platinum 78 195
+-le	le れﾟ レﾟ
+-ro	ro ろ ロ
+-lo	lo ろﾟ ロﾟ
+-wa	wa わ ワ
+-wi	wi ゐ ヰ
+-we	we ゑ ヱ
+-wo	wo を ヲ
+-hbar	hbar ℏ ħ
+-alpha	alpha Α 𝛢 α 𝛼
+-beta	beta Β 𝛣 β 𝛽
+-gamma	gamma Γ 𝛤 γ 𝛾
+-delta	delta Δ 𝛥 δ 𝛿
+-epsilon	epsilon Ε 𝛦 ε 𝜀 ϵ 𝜖
+-zeta	zeta Ζ 𝛧 ζ 𝜁
+-eta	eta Η 𝛨 η 𝜂
+-theta	theta Θ 𝛩 ϴ 𝛳 θ 𝜃 ϑ 𝜗
+-iota	iota Ι 𝛪 ι 𝜄
+-kappa	kappa Κ 𝛫 κ 𝜅 ϰ 𝜘
+-lambda	lambda Λ 𝛬 λ 𝜆
+-xi	xi Ξ 𝛯 ξ 𝜉
+-omicron	omicron Ο 𝛰 ο 𝜊
+-rho	rho Ρ 𝛲 ρ 𝜌 ϱ 𝜚
+-sigma	sigma Σ 𝛴 σ 𝜎
+-tau	tau Τ 𝛵 τ 𝜏
+-upsilon	upsilon Υ 𝛶 υ 𝜐
+-phi	phi Φ 𝛷 φ 𝜑 ϕ 𝜙
+-psi	psi Ψ 𝛹 ψ 𝜓
+-omega	omega Ω 𝛺 ω 𝜔
+ 厘	厘 ㌢
+ 质量	质量 ㎍ ㎎ ㎏
+ 克	克 ㎍ ㎎ ㎏ ㌘
+@@ -1722,7 +1356,6 @@ 法拉	法拉 ㎊ ㎋ ㎌
+ 字节	字节 ㎅ ㎆ ㎇
+ 对数	对数 ㏑ ㏒
+ 摩尔	摩尔 ㏖
+-ppm	ppm ㏙
+ 分贝	分贝 ㏈
+ 平方米	平方米 ㎡
+ 英里	英里 ㏕
+@@ -1798,8 +1431,7 @@ 点	点 · ・ • ● ⬤ :00 :15 :30 :
+ 半	半 :30
+ 上午	上午 ㏂
+ 下午	下午 ㏘
+-酸碱	酸碱 ㏗
+-pH	pH ㏗
++酸碱	酸碱 pH ㏗
+ 比例	比例 4:3 16:9
+ 标准	标准 ⊖ ⦵
+ 定义	定义 ≔ ≝ ≕
+@@ -1828,11 +1460,8 @@ 俄语	俄语 а б в г д е ё ж з
+ 俄	俄 а б в г д е ё ж з и й к л м н о п р с т у ф х ц ч ш щ ъ ы ь э ю я А Б В Г Д Е Ё Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я
+ 韩语	韩语 ㄱ ㄲ ㄳ ㄴ ㄵ ㄶ ㄷ ㄸ ㄹ ㄺ ㄻ ㄼ ㄽ ㄾ ㄿ ㅀ ㅁ ㅂ ㅃ ㅄ ㅅ ㅆ ㅇ ㅈ ㅉ ㅊ ㅋ ㅌ ㅍ ㅎ ㅏ ㅐ ㅑ ㅒ ㅓ ㅔ ㅕ ㅖ ㅗ ㅘ ㅙ ㅚ ㅛ ㅜ ㅝ ㅞ ㅟ ㅠ ㅡ ㅢ ㅥ ㅦ ㅧ ㅨ ㅩ ㅪ ㅫ ㅬ ㅭ ㅮ ㅯ ㅰ ㅱ ㅲ ㅳ ㅴ ㅵ ㅶ ㅷ ㅸ ㅹ ㅺ ㅻ ㅼ ㅽ ㅾ ㅿ ㆀ ㆁ ㆂ ㆃ ㆄ ㆅ ㆆ ㆇ ㆈ ㆉ ㆊ ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ ㉠ ㉡ ㉢ ㉣ ㉤ ㉥ ㉦ ㉧ ㉨ ㉩ ㉪ ㉫ ㉬ ㉭ ㉮ ㉯ ㉰ ㉱ ㉲ ㉳ ㉴ ㉵ ㉶ ㉷ ㉸ ㉹ ㉺ ㉻ ㉼ ㉽ ㉾ ㉿ ㈀ ㈁ ㈂ ㈃ ㈄ ㈅ ㈆ ㈇ ㈈ ㈉ ㈊ ㈋ ㈌ ㈍ ㈎ ㈏ ㈐ ㈑ ㈒ ㈓ ㈔ ㈕ ㈖ ㈗ ㈘ ㈙ ㈚ ㈛ ㈜ ㈝ ㈞
+ 韩	韩 ㄱ ㄲ ㄳ ㄴ ㄵ ㄶ ㄷ ㄸ ㄹ ㄺ ㄻ ㄼ ㄽ ㄾ ㄿ ㅀ ㅁ ㅂ ㅃ ㅄ ㅅ ㅆ ㅇ ㅈ ㅉ ㅊ ㅋ ㅌ ㅍ ㅎ ㅏ ㅐ ㅑ ㅒ ㅓ ㅔ ㅕ ㅖ ㅗ ㅘ ㅙ ㅚ ㅛ ㅜ ㅝ ㅞ ㅟ ㅠ ㅡ ㅢ ㅥ ㅦ ㅧ ㅨ ㅩ ㅪ ㅫ ㅬ ㅭ ㅮ ㅯ ㅰ ㅱ ㅲ ㅳ ㅴ ㅵ ㅶ ㅷ ㅸ ㅹ ㅺ ㅻ ㅼ ㅽ ㅾ ㅿ ㆀ ㆁ ㆂ ㆃ ㆄ ㆅ ㆆ ㆇ ㆈ ㆉ ㆊ ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ ㉠ ㉡ ㉢ ㉣ ㉤ ㉥ ㉦ ㉧ ㉨ ㉩ ㉪ ㉫ ㉬ ㉭ ㉮ ㉯ ㉰ ㉱ ㉲ ㉳ ㉴ ㉵ ㉶ ㉷ ㉸ ㉹ ㉺ ㉻ ㉼ ㉽ ㉾ ㉿ ㈀ ㈁ ㈂ ㈃ ㈄ ㈅ ㈆ ㈇ ㈈ ㈉ ㈊ ㈋ ㈌ ㈍ ㈎ ㈏ ㈐ ㈑ ㈒ ㈓ ㈔ ㈕ ㈖ ㈗ ㈘ ㈙ ㈚ ㈛ ㈜ ㈝ ㈞
+-元素	元素 氢H 氦He 锂Li 铍Be 硼B 碳C 氮N 氧O 氟F 氖Ne 钠Na 镁Mg 铝Al 硅Si 磷P 硫S 氯Cl 氩Ar 钾K 钙Ca 钪Sc 钛Ti 钒V 铬Cr 锰Mn 铁Fe 钴Co 镍Ni 铜Cu 锌Zn 镓Ga 锗Ge 砷As 硒Se 溴Br 氪Kr 铷Rb 锶Sr 钇Y 锆Zr 铌Nb 钼Mo 锝Tc 钌Ru 铑Rh 钯Pd 银Ag 镉Cd 铟In 锡Sn 锑Sb 碲Te 碘I 氙Xe 铯Cs 钡Ba 镧La 铈Ce 镨Pr 钕Nd 钷Pm 钐Sm 铕Eu 钆Gd 铽Tb 镝Dy 钬Ho 铒Er 铥Tm 镱Yb 镥Lu 铪Hf 钽Ta 钨W 铼Re 锇Os 铱Ir 铂Pt 金Au 汞Hg 铊Tl 铅Pb 铋Bi 钋Po 砹At 氡Rn 钫Fr 镭Ra 锕Ac 钍Th 镤Pa 铀U 镎Np 钚Pu 镅Am 锔Cm 锫Bk 锎Cf 锿Es 镄Fm 钔Md 锘No 铹Lr 𬬻Rf 𬭊Db 𬭳Sg 𬭛Bh 𬭶Hs 鿏Mt 𫟼Ds 𬬭Rg 鿔Cn 鿭Nh 𫓧Fl 镆Mc 𫟷Lv 鿬Ts 鿫Og
+ 象形文字	象形文字 𓀀 𓀁 𓀂 𓀃 𓀄 𓀅 𓀆 𓀇 𓀈 𓀉 𓀊 𓀋 𓀌 𓀍 𓀎 𓀏 𓀐 𓀑 𓀒 𓀓 𓀔 𓀕 𓀖 𓀗 𓀘 𓀙 𓀚 𓀛 𓀜 𓀝 𓀞 𓀟 𓀠 𓀡 𓀢 𓀣 𓀤 𓀥 𓀦 𓀧 𓀨 𓀩 𓀪 𓀫 𓀬 𓀻 𓀼 𓀽 𓀾 𓀿 𓁀 𓁁 𓁂 𓁃 𓁄 𓁅 𓁆 𓁇 𓁈 𓁉 𓁟 𓁠 𓁩 𓁶 𓁷 𓃒 𓃗 𓃘 𓃝 𓃟 𓃠 𓃡 𓃩 𓃬 𓃯 𓃰 𓃱 𓃲 𓃵 𓃷 𓃻 𓅜 𓅦 𓅪 𓅭 𓅰 𓆟 𓆡 𓆏 𓃭 𓃹 𓃾 𓄿 𓆂 𓅓 𓅔 𓅡 𓅡 𓅬 𓅱 𓅿 𓆈 𓆉 𓆊 𓆌 𓆋 𓆐 𓆑 𓆓 𓆕 𓆗 𓆙 𓆚 𓆞 𓆣 𓆤 𓆦 𓆧 𓆨 𓆫 𓆱 𓇳 𓇹 𓊛
+ 制表	制表 ─ ━ │ ┃ ┄ ┅ ┆ ┇ ┈ ┉ ┊ ┋ ┌ ┍ ┎ ┏ ┐ ┑ ┒ ┓ └ ┕ ┖ ┗ ┘ ┙ ┚ ┛ ├ ┝ ┞ ┟ ┠ ┡ ┢ ┣ ┤ ┥ ┦ ┧ ┨ ┩ ┪ ┫ ┬ ┭ ┮ ┯ ┰ ┱ ┲ ┳ ┴ ┵ ┶ ┷ ┸ ┹ ┶ ┻ ┼ ┽ ┾ ┿ ╀ ╁ ╂ ╃ ╄ ╅ ╆ ╇ ╈ ╉ ╊ ╋ ═ ║ ╒ ╓ ╔ ╕ ╖ ╗ ╘ ╙ ╚ ╛ ╜ ╝ ╞ ╟ ╠ ╡ ╢ ╣ ╤ ╥ ╦ ╧ ╨ ╩ ╪ ╫ ╬ ╭ ╮ ╯ ╰ ╱ ╲ ╳
+-up	up 🆙
+-soon	soon 🔜
+ 上	上 ㊤ 🆙 ⬆ ↑ ⇑ ⇧ ⇡ ⇈ 📈
+ 下	下 ㊦ ⬇ ↓ ⇓ ⇩ ⇣ ⇊ 📉
+ 上涨	上涨 📈
+@@ -1900,14 +1529,7 @@ 确定	确定 ✅
+ 错	错 ❌ ✖ ✗ ✘ × ☒ ❎
+ 错误	错误 ❌ ✖ ✗ ✘ × ☒ ❎
+ 偏	偏 ∂ 𝛛 𝜕 𝝏
+-partial	partial ∂ 𝛛 𝜕 𝝏
+-tm	tm Tm 铥 Thulium 69 169 ™
+-sm	sm Sm 钐 Samarium 62 150.5 ℠
+ 根号	根号 √ ∛ ∜
+-nabla	nabla ∇
+-del	del ∇
+-atled	atled ∇
+-at	at At 砹 Astatine 85 210 @
+ 加	加 + ➕ ⁺ ₊ ⊕
+ 和	和 & ∑ ∧
+ 求和	求和 ∑
+@@ -2004,13 +1626,11 @@ 满分	满分 💯
+ 大写	大写 🔠
+ 小写	小写 🔡
+ 数字	数字 🔢 № ⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ㉑ ㉒ ㉓ ㉔ ㉕ ㉖ ㉗ ㉘ ㉙ ㉚ ㉛ ㉜ ㉝ ㉞ ㉟ ㊱ ㊲ ㊳ ㊴ ㊵ ㊶ ㊷ ㊸ ㊹ ㊺ ㊻ ㊼ ㊽ ㊾ ㊿ ⓿ ❶ ❷ ❸ ❹ ❺ ❻ ❼ ❽ ❾ ❿ ⓫ ⓬ ⓭ ⓮ ⓯ ⓰ ⓱ ⓲ ⓳ ⓴ 🄋 ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ 🄌 ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ ㉈ ㉉ ㉊ ㉋ ㉌ ㉍ ㉎ ㉏ ⑴ ⑵ ⑶ ⑷ ⑸ ⑹ ⑺ ⑻ ⑼ ⑽ ⑾ ⑿ ⒀ ⒁ ⒂ ⒃ ⒄ ⒅ ⒆ ⒇ 🄀 ⒈ ⒉ ⒊ ⒋ ⒌ ⒍ ⒎ ⒏ ⒐ ⒑ ⒒ ⒓ ⒔ ⒕ ⒖ ⒗ ⒘ ⒙ ⒚ ⒛ 🄁 🄂 🄃 🄄 🄅 🄆 🄇 🄈 🄉 🄊 ㈠ ㈡ ㈢ ㈣ ㈤ ㈥ ㈦ ㈧ ㈨ ㈩ ㊀ ㊁ ㊂ ㊃ ㊄ ㊅ ㊆ ㊇ ㊈ ㊉ 🈩 🈔 🈪 🉂 🉁
+-number	number №
+ 符号	符号 🔣
+ 埃	埃 Å
+ 字母	字母 🔤
+ 求救	求救 🆘
+ 免费	免费 🆓
+-vs	vs 🆚
+ 身份	身份 🆔
+ 清除	清除 🆑
+ 升级	升级 🆙
+@@ -2026,7 +1646,6 @@ 营	营 🈺
+ 满	满 🈵
+ 木	木 🪵 ㊍ ㈭
+ 木头	木头 🪵
+-金	金 ㊎ ㈮
+ 土	土 ㊏ ㈯
+ 株	株 ㊑ ㈱
+ 有	有 🈶 ㊒ ㈲
+@@ -2120,11 +1739,7 @@ 自然	自然 🌃 🌃 🌄 🌅 🌆 �
+ 生肖	生肖 🐭 🐮 🐯 🐰 🐲 🐍 🐴 🐏 🐵 🐔 🐶 🐷
+ 五官	五官 👀 👁 👂 👃 👄 👅
+ 血	血 🩸
+-AB型血	AB型血 🆎
+-A型血	A型血 🅰
+-B型血	B型血 🅱
+-O型血	O型血 🅾
+-国旗	国旗 🏳 🏴 🏁 🇦 🇧 🇨 🇩 🇪 🇫 🇬 🇭 🇮 🇯 🇰 🇱 🇲 🇳 🇴 🇵 🇶 🇷 🇸 🇹 🇺 🇻 🇼 🇽 🇾 🇿 🇨🇳 🇭🇰 🇲🇴 🇺🇸 🇷🇺 🇯🇵 🇰🇷 🇺🇳 🇬🇧 🏳️‍🌈 🇦🇫 🇦🇽 🇦🇱 🇩🇿 🇦🇸 🇦🇩 🇦🇴 🇦🇮 🇦🇶 🇦🇬 🇦🇷 🇦🇲 🇦🇼 🇦🇺 🇦🇹 🇦🇿 🇧🇸 🇧🇭 🇧🇩 🇧🇧 🇧🇾 🇧🇪 🇧🇿 🇧🇯 🇧🇲 🇧🇹 🇧🇴 🇧🇦 🇧🇼 🇧🇷 🇮🇴 🇻🇬 🇧🇳 🇧🇬 🇧🇫 🇧🇮 🇰🇭 🇨🇲 🇨🇦 🇮🇨 🇨🇻 🇧🇶 🇰🇾 🇨🇫 🇹🇩 🇨🇱 🇨🇽 🇨🇨 🇨🇴 🇰🇲 🇨🇬 🇨🇩 🇨🇰 🇨🇷 🇨🇮 🇭🇷 🇨🇺 🇨🇼 🇨🇾 🇨🇿 🇩🇰 🇩🇯 🇩🇲 🇩🇴 🇪🇨 🇪🇬 🇸🇻 🇬🇶 🇪🇷 🇪🇪 🇪🇹 🇪🇺 🇫🇰 🇫🇴 🇫🇯 🇫🇮 🇫🇷 🇬🇫 🇵🇫 🇹🇫 🇬🇦 🇬🇲 🇬🇪 🇩🇪 🇬🇭 🇬🇮 🇬🇷 🇬🇱 🇬🇩 🇬🇩 🇬🇵 🇬🇺 🇬🇹 🇬🇬 🇬🇳 🇬🇼 🇬🇾 🇭🇹 🇭🇳 🇭🇺 🇮🇸 🇮🇳 🇮🇩 🇮🇷 🇮🇶 🇮🇪 🇮🇪 🇮🇲 🇮🇱 🇮🇹 🇯🇲 🎌 🇯🇪 🇯🇴 🇰🇿 🇰🇪 🇰🇮 🇽🇰 🇰🇼 🇰🇬 🇱🇦 🇱🇻 🇱🇧 🇱🇸 🇱🇷 🇱🇾 🇱🇮 🇱🇹 🇱🇺 🇲🇰 🇲🇬 🇲🇼 🇲🇾 🇲🇻 🇲🇱 🇲🇹 🇲🇭 🇲🇶 🇲🇷 🇲🇺 🇾🇹 🇲🇽 🇫🇲 🇲🇩 🇲🇨 🇲🇳 🇲🇪 🇲🇸 🇲🇦 🇲🇿 🇲🇲 🇳🇦 🇳🇷 🇳🇵 🇳🇱 🇳🇨 🇳🇿 🇳🇮 🇳🇪 🇳🇬 🇳🇺 🇳🇫 🇰🇵 🇲🇵 🇳🇴 🇴🇲 🇵🇰 🇵🇼 🇵🇸 🇵🇦 🇵🇬 🇵🇾 🇵🇪 🇵🇭 🇵🇳 🇵🇱 🇵🇹 🇵🇷 🇶🇦 🇷🇪 🇷🇴 🇷🇼 🇼🇸 🇸🇲 🇸🇹 🇸🇦 🇸🇳 🇷🇸 🇸🇨 🇸🇱 🇸🇬 🇸🇽 🇸🇰 🇸🇮 🇬🇸 🇸🇧 🇸🇴 🇿🇦 🇸🇸 🇪🇸 🇱🇰 🇧🇱 🇸🇭 🇰🇳 🇱🇨 🇵🇲 🇻🇨 🇸🇩 🇸🇷 🇸🇿 🇸🇪 🇨🇭 🇸🇾 🇹🇯 🇹🇿 🇹🇭 🇹🇱 🇹🇬 🇹🇰 🇹🇴 🇹🇹 🇹🇳 🇹🇷 🇹🇲 🇹🇨 🇹🇻 🇻🇮 🇺🇬 🇺🇦 🇦🇪 🇬🇧 🇺🇾 🇺🇿 🇻🇺 🇻🇦 🇻🇪 🇻🇳 🇼🇫 🇪🇭 🇾🇪 🇿🇲 🇿🇼
++血型	血型 🆎🅰 🅱 🅾
+ 旗帜	旗帜 🏁 🚩 🎌 🏴 🏳 🏳️‍🌈 🏳️‍⚧️ 🏴‍☠️
+ 旗子	旗子 🏁 🚩 🎌 🏴 🏳 🏳️‍🌈 🏳️‍⚧️ 🏴‍☠️
+ 红旗	红旗 🚩
+@@ -2138,385 +1753,320 @@ 同性	同性 ⚢ ⚣ 🏳️‍🌈 �
+ 异性恋	异性恋 ⚤ 💏 👫 💏
+ 同性恋	同性恋 ⚢ ⚣ 🏳️‍🌈 👬 👭 👨‍❤️‍👨 👩‍❤️‍👩 👨‍❤️‍💋‍👨 👩‍❤️‍💋‍👩
+ 海盗	海盗 🏴‍☠️
+-阿森松岛	阿森松岛 🇦🇨
+-Ascension	Ascension 🇦🇨
+-安道尔	安道尔 🇦🇩
+-Andorra	Andorra 🇦🇩
+-阿拉伯联合酋长国	阿拉伯联合酋长国 🇦🇪
+-Arab	Arab 🇦🇪
+-阿富汗	阿富汗 🇦🇫
+-Afghanistan	Afghanistan 🇦🇫
+-安提瓜和巴布达	安提瓜和巴布达 🇦🇬
+-Antigua	Antigua 🇦🇬
+-Barbuda	Barbuda 🇦🇬
+-安圭拉岛	安圭拉岛 🇦🇮
+-Anguilla	Anguilla 🇦🇮
+-阿尔巴尼亚	阿尔巴尼亚 🇦🇱
+-Albania	Albania 🇦🇱
+-亚美尼亚	亚美尼亚 🇦🇲
+-Armenia	Armenia 🇦🇲
+-安哥拉	安哥拉 🇦🇴
+-Angola	Angola 🇦🇴
+-南极洲	南极洲 🇦🇶
+-Antarctica	Antarctica 🇦🇶
+-阿根廷	阿根廷 🇦🇷
+-Argentina	Argentina 🇦🇷
+-奥地利	奥地利 🇦🇹
+-Austria	Austria 🇦🇹
+-澳大利亚	澳大利亚 🇦🇺
+-Australia	Australia 🇦🇺
+-阿鲁巴岛	阿鲁巴岛 🇦🇼
+-Aruba	Aruba 🇦🇼
+-阿兰群岛	阿兰群岛 🇦🇽
+-Åland	Åland 🇦🇽
+-阿塞拜疆	阿塞拜疆 🇦🇿
+-Azerbaijan	Azerbaijan 🇦🇿
+-波斯尼亚和黑塞哥维那	波斯尼亚和黑塞哥维那 🇧🇦
+-Bosnia	Bosnia 🇧🇦
+-Herzegovina	Herzegovina 🇧🇦
+-巴巴多斯	巴巴多斯 🇧🇧
+-Barbados	Barbados 🇧🇧
+-孟加拉	孟加拉 🇧🇩
+-Bangladesh	Bangladesh 🇧🇩
+-比利时	比利时 🇧🇪
+-Belgium	Belgium 🇧🇪
+-布基纳法索	布基纳法索 🇧🇫
+-BurkinaFaso	BurkinaFaso 🇧🇫
+-保加利亚	保加利亚 🇧🇬
+-Bulgaria	Bulgaria 🇧🇬
+-巴林	巴林 🇧🇭
+-Bahrain	Bahrain 🇧🇭
+-布隆迪	布隆迪 🇧🇮
+-Burundi	Burundi 🇧🇮
+-贝宁	贝宁 🇧🇯
+-Benin	Benin 🇧🇯
+-百慕大	百慕大 🇧🇲
+-Bermuda	Bermuda 🇧🇲
+-文莱	文莱 🇧🇳
+-Brunei	Brunei 🇧🇳
+-玻利维亚	玻利维亚 🇧🇴
+-Bolivia	Bolivia 🇧🇴
+-加勒比	加勒比 🇧🇶
+-Caribbean	Caribbean 🇧🇶
+-巴西	巴西 🇧🇷
+-Brazil	Brazil 🇧🇷
+-巴哈马	巴哈马 🇧🇸
+-Bahamas	Bahamas 🇧🇸
+-不丹	不丹 🇧🇹
+-Bhutan	Bhutan 🇧🇹
+-布维岛	布维岛 🇧🇻
+-Bouvet	Bouvet 🇧🇻
+-博茨瓦纳	博茨瓦纳 🇧🇼
+-Botswana	Botswana 🇧🇼
+-白俄罗斯	白俄罗斯 🇧🇾
+-Belarus	Belarus 🇧🇾
+-伯利兹	伯利兹 🇧🇿
+-Belize	Belize 🇧🇿
+-加拿大	加拿大 🇨🇦
+-Canada	Canada 🇨🇦
+-科科斯	科科斯 🇨🇨
+-Cocos	Cocos 🇨🇨
+-刚果	刚果 🇨🇩 🇨🇬
+-Congo	Congo 🇨🇩 🇨🇬
+-中非共和国	中非共和国 🇨🇫
+-African	African 🇨🇫
+-瑞士	瑞士 🇨🇭
+-Switzerland	Switzerland 🇨🇭
+-科特迪瓦	科特迪瓦 🇨🇮
+-库克群岛	库克群岛 🇨🇰
+-Cook	Cook 🇨🇰
+-智利	智利 🇨🇱
+-Chile	Chile 🇨🇱
+-喀麦隆	喀麦隆 🇨🇲
+-Cameroon	Cameroon 🇨🇲
+-中国	中国 🇨🇳 中华人民共和国
+-中华人民共和国	中华人民共和国 🇨🇳
+-China	China 🇨🇳
+-哥伦比亚	哥伦比亚 🇨🇴
+-Colombia	Colombia 🇨🇴
+-克利珀顿	克利珀顿 🇨🇵
+-Clipperton	Clipperton 🇨🇵
+-哥斯达黎加	哥斯达黎加 🇨🇷
+-古巴	古巴 🇨🇺
+-Cuba	Cuba 🇨🇺
+-佛得角	佛得角 🇨🇻
+-库拉索	库拉索 🇨🇼
+-Curaçao	Curaçao 🇨🇼
+-圣诞岛	圣诞岛 🇨🇽
+-Christmas	Christmas 🇨🇽
+-塞浦路斯	塞浦路斯 🇨🇾
+-Cyprus	Cyprus 🇨🇾
+-捷克	捷克 🇨🇿
+-Czech	Czech 🇨🇿
+-德国	德国 🇩🇪 德意志联邦共和国
+-Germany	Germany 🇩🇪
+-迪戈加西亚岛	迪戈加西亚岛 🇩🇬
+-吉布提	吉布提 🇩🇯
+-Djibouti	Djibouti 🇩🇯
+-丹麦	丹麦 🇩🇰
+-Denmark	Denmark 🇩🇰
+-多米尼加	多米尼加 🇩🇲 🇩🇴
+-Dominica	Dominica 🇩🇲 🇩🇴
+-阿尔及利亚	阿尔及利亚 🇩🇿
+-Algeria	Algeria 🇩🇿
+-休达	休达 🇪🇦
+-梅利利亚	梅利利亚 🇪🇦
+-Ceuta	Ceuta 🇪🇦
+-Melilla	Melilla 🇪🇦
+-厄瓜多尔	厄瓜多尔 🇪🇨
+-Ecuador	Ecuador 🇪🇨
+-爱沙尼亚	爱沙尼亚 🇪🇪
+-Estonia	Estonia 🇪🇪
+-埃及	埃及 🇪🇬
+-Egypt	Egypt 🇪🇬
+-撒哈拉	撒哈拉 🇪🇭
+-Sahara	Sahara 🇪🇭
+-厄立特里亚	厄立特里亚 🇪🇷
+-Eritrea	Eritrea 🇪🇷
+-西班牙	西班牙 🇪🇸
+-Spain	Spain 🇪🇸
+-埃塞俄比亚	埃塞俄比亚 🇪🇹
+-Ethiopia	Ethiopia 🇪🇹
++阿森松岛	阿森松岛 Ascension 🇦🇨
++安道尔	安道尔 Andorra 🇦🇩
++阿拉伯联合酋长国	阿拉伯联合酋长国 Arab 🇦🇪
++阿富汗	阿富汗 Afghanistan 🇦🇫
++安提瓜和巴布达	安提瓜和巴布达 Antigua Barbuda 🇦🇬
++安圭拉岛	安圭拉岛 Anguilla 🇦🇮
++阿尔巴尼亚	阿尔巴尼亚 Albania 🇦🇱
++亚美尼亚	亚美尼亚 Armenia 🇦🇲
++安哥拉	安哥拉 Angola 🇦🇴
++南极洲	南极洲 Antarctica 🇦🇶
++阿根廷	阿根廷 Argentina 🇦🇷
++奥地利	奥地利 Austria 🇦🇹
++澳大利亚	澳大利亚 Australia 🇦🇺
++阿鲁巴岛	阿鲁巴岛 Aruba 🇦🇼
++阿兰群岛	阿兰群岛 Åland 🇦🇽
++阿塞拜疆	阿塞拜疆 Azerbaijan 🇦🇿
++波斯尼亚和黑塞哥维那	波斯尼亚和黑塞哥维那 Bosnia Herzegovina 🇧🇦
++巴巴多斯	巴巴多斯 Barbados 🇧🇧
++孟加拉	孟加拉 Bangladesh 🇧🇩
++比利时	比利时 Belgium 🇧🇪
++布基纳法索	布基纳法索 BurkinaFaso 🇧🇫
++保加利亚	保加利亚 Bulgaria 🇧🇬
++巴林	巴林 Bahrain 🇧🇭
++布隆迪	布隆迪 Burundi 🇧🇮
++贝宁	贝宁 Benin 🇧🇯
++百慕大	百慕大 Bermuda 🇧🇲
++文莱	文莱 Brunei 🇧🇳
++玻利维亚	玻利维亚 Bolivia 🇧🇴
++加勒比	加勒比 Caribbean 🇧🇶
++巴西	巴西 Brazil 🇧🇷
++巴哈马	巴哈马 Bahamas 🇧🇸
++不丹	不丹 Bhutan 🇧🇹
++布维岛	布维岛 Bouvet 🇧🇻
++博茨瓦纳	博茨瓦纳 Botswana 🇧🇼
++白俄罗斯	白俄罗斯 Belarus 🇧🇾
++伯利兹	伯利兹 Belize 🇧🇿
++加拿大	加拿大 Canada 🇨🇦
++科科斯	科科斯 Cocos 🇨🇨
++刚果	刚果 Congo 🇨🇩 🇨🇬
++中非共和国	中非共和国 African 🇨🇫
++瑞士	瑞士 Switzerland 🇨🇭
++科特迪瓦	科特迪瓦 Côte d'Ivoire 🇨🇮
++库克群岛	库克群岛 Cook 🇨🇰
++智利	智利 Chile 🇨🇱
++喀麦隆	喀麦隆 Cameroon 🇨🇲
++中国	中国 China PRC 🇨🇳 中华人民共和国
++中华人民共和国	中华人民共和国 PRC 🇨🇳
++哥伦比亚	哥伦比亚 Colombia 🇨🇴
++克利珀顿	克利珀顿 Clipperton 🇨🇵
++哥斯达黎加	哥斯达黎加 Costa Rica 🇨🇷
++古巴	古巴 Cuba 🇨🇺
++佛得角	佛得角 Cape Verde 🇨🇻
++库拉索	库拉索 Curaçao 🇨🇼
++圣诞岛	圣诞岛 Christmas 🇨🇽
++塞浦路斯	塞浦路斯 Cyprus 🇨🇾
++捷克	捷克 Czech 🇨🇿
++德国	德国 Germany 🇩🇪 德意志联邦共和国
++迪戈加西亚岛	迪戈加西亚岛 Diego Garcia 🇩🇬
++吉布提	吉布提 Djibouti 🇩🇯
++丹麦	丹麦 Denmark 🇩🇰
++多米尼加	多米尼加 Dominica 🇩🇲 🇩🇴
++阿尔及利亚	阿尔及利亚 Algeria 🇩🇿
++休达	休达 Ceuta 🇪🇦
++梅利利亚	梅利利亚 Melilla 🇪🇦
++厄瓜多尔	厄瓜多尔 Ecuador 🇪🇨
++爱沙尼亚	爱沙尼亚 Estonia 🇪🇪
++埃及	埃及 Egypt 🇪🇬
++撒哈拉	撒哈拉 Sahara 🇪🇭
++厄立特里亚	厄立特里亚 Eritrea 🇪🇷
++西班牙	西班牙 Spain 🇪🇸
++埃塞俄比亚	埃塞俄比亚 Ethiopia 🇪🇹
+ 欧盟	欧盟 🇪🇺
+-芬兰	芬兰 🇫🇮
+-Finland	Finland 🇫🇮
+-斐济	斐济 🇫🇯
+-Fiji	Fiji 🇫🇯
+-福克兰群岛	福克兰群岛 🇫🇰
+-Falkland	Falkland 🇫🇰
+-密克罗尼西亚	密克罗尼西亚 🇫🇲
+-法罗群岛	法罗群岛 🇫🇴
+-Faroe	Faroe 🇫🇴
+-法国	法国 🇫🇷 法兰西共和国
+-France	France 🇫🇷
+-加蓬	加蓬 🇬🇦
+-Gabon	Gabon 🇬🇦
++芬兰	芬兰 Finland 🇫🇮
++斐济	斐济 Fiji 🇫🇯
++福克兰群岛	福克兰群岛 Falkland 🇫🇰
++密克罗尼西亚	密克罗尼西亚 Micronesia 🇫🇲
++法罗群岛	法罗群岛 Faroe 🇫🇴
++法国	法国 France 🏳️ 🇫🇷 法兰西共和国
++加蓬	加蓬 Gabon 🇬🇦
+ 英国	英国 🇬🇧 大不列颠及北爱尔兰联合王国
+-格林纳达	格林纳达 🇬🇩
+-Grenada	Grenada 🇬🇩
+-格鲁吉亚	格鲁吉亚 🇬🇪
+-Georgia	Georgia 🇬🇪
+-加纳	加纳 🇬🇭
+-Ghana	Ghana 🇬🇭
+-直布罗陀	直布罗陀 🇬🇮
+-Gibraltar	Gibraltar 🇬🇮
+-格陵兰	格陵兰 🇬🇱
+-Greenland	Greenland 🇬🇱
+-冈比亚	冈比亚 🇬🇲
+-Gambia	Gambia 🇬🇲
+-几内亚	几内亚 🇬🇳
+-Guinea	Guinea 🇬🇳
+-赤道几内亚	赤道几内亚 🇬🇶
+-希腊	希腊 🇬🇷 αalpha βbeta γgamma δdelta εepsilon ζzeta ηeta θtheta ιiota κkappa λlambda μmu νnu ξxi οomicron πpi ρrho σsigma τtau υupsilon φphi χchi ψpsi ωomega Αalpha Βbeta Γgamma Δdelta Εepsilon Ζzeta Ηeta Θtheta Ιiota Κkappa Λlambda Μmu Νnu Ξxi Οomicron Πpi Ρrho Σsigma Τtau Υupsilon Φphi Χchi Ψpsi Ωomega
+-Greece	Greece 🇬🇷
+-危地马拉	危地马拉 🇬🇹
+-Guatemala	Guatemala 🇬🇹
+-关岛	关岛 🇬🇺
+-Guam	Guam 🇬🇺
+-几内亚比绍	几内亚比绍 🇬🇼
++格林纳达	格林纳达 Grenada 🇬🇩
++格鲁吉亚	格鲁吉亚 Georgia 🇬🇪
++加纳	加纳 Ghana 🇬🇭
++直布罗陀	直布罗陀 Gibraltar 🇬🇮
++格陵兰	格陵兰 Greenland 🇬🇱
++冈比亚	冈比亚 Gambia 🇬🇲
++几内亚	几内亚 Guinea 🇬🇳
++赤道几内亚	赤道几内亚 Equatorial Guinea 🇬🇶
++希腊	希腊 Greece 🇬🇷 αalpha βbeta γgamma δdelta εepsilon ζzeta ηeta θtheta ιiota κkappa λlambda μmu νnu ξxi οomicron πpi ρrho σsigma τtau υupsilon φphi χchi ψpsi ωomega Αalpha Βbeta Γgamma Δdelta Εepsilon Ζzeta Ηeta Θtheta Ιiota Κkappa Λlambda Μmu Νnu Ξxi Οomicron Πpi Ρrho Σsigma Τtau Υupsilon Φphi Χchi Ψpsi Ωomega
++危地马拉	危地马拉 Guatemala 🇬🇹
++关岛	关岛 Guam 🇬🇺
++几内亚比绍	几内亚比绍 Guinea-Bissau 🇬🇼
+ 香港	香港 🇭🇰
+-洪都拉斯	洪都拉斯 🇭🇳
+-Honduras	Honduras 🇭🇳
+-克罗地亚	克罗地亚 🇭🇷
+-Croatia	Croatia 🇭🇷
+-海地	海地 🇭🇹
+-Haiti	Haiti 🇭🇹
+-匈牙利	匈牙利 🇭🇺
+-Hungary	Hungary 🇭🇺
+-印度尼西亚	印度尼西亚 🇮🇩
+-Indonesia	Indonesia 🇮🇩
+-爱尔兰	爱尔兰 🇮🇪
+-Ireland	Ireland 🇮🇪
+-以色列	以色列 🇮🇱
+-Israel	Israel 🇮🇱
+-印度	印度 🇮🇳
+-India	India 🇮🇳
+-伊拉克	伊拉克 🇮🇶
+-Iraq	Iraq 🇮🇶
+-伊朗	伊朗 🇮🇷
+-Iran	Iran 🇮🇷
+-冰岛	冰岛 🇮🇸
+-Iceland	Iceland 🇮🇸
+-意大利	意大利 🇮🇹
+-Italy	Italy 🇮🇹
+-牙买加	牙买加 🇯🇲
+-Jamaica	Jamaica 🇯🇲
+-约旦	约旦 🇯🇴
+-Jordan	Jordan 🇯🇴
+-日本	日本 🇯🇵 🗾 🎌 ㍻ ㍼ ㍽ ㍾ ㍿
+-Japan	Japan 🇯🇵 🗾 🎌
+-肯尼亚	肯尼亚 🇰🇪
+-Kenya	Kenya 🇰🇪
+-吉尔吉斯斯坦	吉尔吉斯斯坦 🇰🇬
+-Kyrgyzstan	Kyrgyzstan 🇰🇬
+-柬埔寨	柬埔寨 🇰🇭
+-Cambodia	Cambodia 🇰🇭
+-基里巴斯	基里巴斯 🇰🇮
+-Kiribati	Kiribati 🇰🇮
++洪都拉斯	洪都拉斯 Honduras 🇭🇳
++克罗地亚	克罗地亚 Croatia 🇭🇷
++海地	海地 Haiti 🇭🇹
++匈牙利	匈牙利 Hungary 🇭🇺
++印度尼西亚	印度尼西亚 Indonesia 🇮🇩
++爱尔兰	爱尔兰 Ireland 🇮🇪
++以色列	以色列 Israel 🇮🇱
++印度	印度 India 🇮🇳
++伊拉克	伊拉克 Iraq 🇮🇶
++伊朗	伊朗 Iran 🇮🇷
++冰岛	冰岛 Iceland 🇮🇸
++意大利	意大利 Italy 🇮🇹
++牙买加	牙买加 Jamaica 🇯🇲
++约旦	约旦 Jordan 🇯🇴
++日本	日本 Japan 🇯🇵 🗾 🎌 ㍻ ㍼ ㍽ ㍾ ㍿
++肯尼亚	肯尼亚 Kenya 🇰🇪
++吉尔吉斯斯坦	吉尔吉斯斯坦 Kyrgyzstan 🇰🇬
++柬埔寨	柬埔寨 Cambodia 🇰🇭
++基里巴斯	基里巴斯 Kiribati 🇰🇮
+ 朝鲜	朝鲜 🇰🇵
+ 韩国	韩国 🇰🇷
+-Korea	Korea 🇰🇵 🇰🇷
+-科威特	科威特 🇰🇼
+-Kuwait	Kuwait 🇰🇼
+-哈萨克斯坦	哈萨克斯坦 🇰🇿
+-Kazakhstan	Kazakhstan 🇰🇿
+-老挝	老挝 🇱🇦
+-黎巴嫩	黎巴嫩 🇱🇧
+-Lebanon	Lebanon 🇱🇧
+-列支敦士登	列支敦士登 🇱🇮
+-Liechtenstein	Liechtenstein 🇱🇮
+-利比里亚	利比里亚 🇱🇷
+-Liberia	Liberia 🇱🇷
+-莱索托	莱索托 🇱🇸
+-Lesotho	Lesotho 🇱🇸
+-立陶宛	立陶宛 🇱🇹
+-Lithuania	Lithuania 🇱🇹
+-卢森堡	卢森堡 🇱🇺
+-Luxemburg	Luxemburg 🇱🇺
+-拉脱维亚	拉脱维亚 🇱🇻
+-Latvia	Latvia 🇱🇻
+-利比亚	利比亚 🇱🇾
+-Libya	Libya 🇱🇾
+-摩洛哥	摩洛哥 🇲🇦
+-Morocco	Morocco 🇲🇦
+-摩纳哥	摩纳哥 🇲🇨
+-Monaco	Monaco 🇲🇨
+-摩尔多瓦	摩尔多瓦 🇲🇩
+-Moldova	Moldova 🇲🇩
+-黑山	黑山 🇲🇪
+-Montenegro	Montenegro 🇲🇪
+-马达加斯加	马达加斯加 🇲🇬
+-Madagascar	Madagascar 🇲🇬
+-马其顿	马其顿 🇲🇰
+-Macedonia	Macedonia 🇲🇰
+-马里	马里 🇲🇱
+-Mali	Mali 🇲🇱
+-缅甸	缅甸 🇲🇲
+-Myanmar	Myanmar 🇲🇲
+-蒙古	蒙古 🇲🇳
+-Mongolia	Mongolia 🇲🇳
+-澳门	澳门 🇲🇴
+-Macau	Macau 🇲🇴
+-毛里塔尼亚	毛里塔尼亚 🇲🇷
+-Mauritania	Mauritania 🇲🇷
+-马耳他	马耳他 🇲🇹
+-Malta	Malta 🇲🇹
+-毛里求斯	毛里求斯 🇲🇺
+-Mauritius	Mauritius 🇲🇺
+-马尔代夫	马尔代夫 🇲🇻
+-Maldives	Maldives 🇲🇻
+-马拉维	马拉维 🇲🇼
+-Malawi	Malawi 🇲🇼
+-墨西哥	墨西哥 🇲🇽
+-Mexico	Mexico 🇲🇽
+-马来西亚	马来西亚 🇲🇾
+-Malaysia	Malaysia 🇲🇾
+-莫桑比克	莫桑比克 🇲🇿
+-Mozambique	Mozambique 🇲🇿
+-纳米比亚	纳米比亚 🇳🇦
+-Namibia	Namibia 🇳🇦
+-尼日尔	尼日尔 🇳🇪
+-Niger	Niger 🇳🇪
+-尼日利亚	尼日利亚 🇳🇬
+-Nigeria	Nigeria 🇳🇬
+-尼加拉瓜	尼加拉瓜 🇳🇮
+-Nicaragua	Nicaragua 🇳🇮
+-荷兰	荷兰 🇳🇱
+-Netherlands	Netherlands 🇳🇱
+-挪威	挪威 🇳🇴
+-Norway	Norway 🇳🇴
+-尼泊尔	尼泊尔 🇳🇵
+-Nepal	Nepal 🇳🇵
+-瑙鲁	瑙鲁 🇳🇷
+-Nauru	Nauru 🇳🇷
+-新西兰	新西兰 🇳🇿
+-阿曼	阿曼 🇴🇲
+-Oman	Oman 🇴🇲
+-巴拿马	巴拿马 🇵🇦
+-Panama	Panama 🇵🇦
+-秘鲁	秘鲁 🇵🇪
+-Peru	Peru 🇵🇪
+-菲律宾	菲律宾 🇵🇭
+-Philippines	Philippines 🇵🇭
+-巴基斯坦	巴基斯坦 🇵🇰
+-Pakistan	Pakistan 🇵🇰
+-波兰	波兰 🇵🇱
+-Poland	Poland 🇵🇱
+-葡萄牙	葡萄牙 🇵🇹
+-Portugal	Portugal 🇵🇹
+-巴拉圭	巴拉圭 🇵🇾
+-Paraguay	Paraguay 🇵🇾
+-卡塔尔	卡塔尔 🇶🇦
+-Qatar	Qatar 🇶🇦
+-罗马尼亚	罗马尼亚 🇷🇴
+-Romania	Romania 🇷🇴
+-塞尔维亚	塞尔维亚 🇷🇸
+-Serbia	Serbia 🇷🇸
+-俄罗斯	俄罗斯 🇷🇺
+-Russia	Russia 🇷🇺
++科威特	科威特 Kuwait 🇰🇼
++哈萨克斯坦	哈萨克斯坦 Kazakhstan 🇰🇿
++老挝	老挝 Laos 🇱🇦
++黎巴嫩	黎巴嫩 Lebanon 🇱🇧
++列支敦士登	列支敦士登 Liechtenstein 🇱🇮
++利比里亚	利比里亚 Liberia 🇱🇷
++莱索托	莱索托 Lesotho 🇱🇸
++立陶宛	立陶宛 Lithuania 🇱🇹
++卢森堡	卢森堡 Luxemburg 🇱🇺
++拉脱维亚	拉脱维亚 Latvia 🇱🇻
++利比亚	利比亚 Libya 🇱🇾
++摩洛哥	摩洛哥 Morocco 🇲🇦
++摩纳哥	摩纳哥 Monaco 🇲🇨
++摩尔多瓦	摩尔多瓦 Moldova 🇲🇩
++黑山	黑山 Montenegro 🇲🇪
++马达加斯加	马达加斯加 Madagascar 🇲🇬
++马其顿	马其顿 Macedonia 🇲🇰
++马里	马里 Mali 🇲🇱
++缅甸	缅甸 Myanmar 🇲🇲
++蒙古	蒙古 Mongolia 🇲🇳
++澳门	澳门 Macau 🇲🇴
++毛里塔尼亚	毛里塔尼亚 Mauritania 🇲🇷
++马耳他	马耳他 Malta 🇲🇹
++毛里求斯	毛里求斯 Mauritius 🇲🇺
++马尔代夫	马尔代夫 Maldives 🇲🇻
++马拉维	马拉维 Malawi 🇲🇼
++墨西哥	墨西哥 Mexico 🇲🇽
++马来西亚	马来西亚 Malaysia 🇲🇾
++莫桑比克	莫桑比克 Mozambique 🇲🇿
++纳米比亚	纳米比亚 Namibia 🇳🇦
++尼日尔	尼日尔 Niger 🇳🇪
++尼日利亚	尼日利亚 Nigeria 🇳🇬
++尼加拉瓜	尼加拉瓜 Nicaragua 🇳🇮
++荷兰	荷兰 Netherlands 🇳🇱
++挪威	挪威 Norway 🇳🇴
++尼泊尔	尼泊尔 Nepal 🇳🇵
++瑙鲁	瑙鲁 Nauru 🇳🇷
++新西兰	新西兰 New Zealand 🇳🇿
++阿曼	阿曼 Oman 🇴🇲
++巴拿马	巴拿马 Panama 🇵🇦
++秘鲁	秘鲁 Peru 🇵🇪
++菲律宾	菲律宾 Philippines 🇵🇭
++巴基斯坦	巴基斯坦 Pakistan 🇵🇰
++波兰	波兰 Poland 🇵🇱
++葡萄牙	葡萄牙 Portugal 🇵🇹
++巴拉圭	巴拉圭 Paraguay 🇵🇾
++卡塔尔	卡塔尔 Qatar 🇶🇦
++罗马尼亚	罗马尼亚 Romania 🇷🇴
++塞尔维亚	塞尔维亚 Serbia 🇷🇸
++俄罗斯	俄罗斯 Russia 🇷🇺
+ 俄国	俄国 🇷🇺
+-卢旺达	卢旺达 🇷🇼
+-Rwanda	Rwanda 🇷🇼
+-苏丹	苏丹 🇸🇩
+-Sudan	Sudan 🇸🇩
+-瑞典	瑞典 🇸🇪
+-Sweden	Sweden 🇸🇪
+-新加坡	新加坡 🇸🇬
+-Singapore	Singapore 🇸🇬
+-斯洛文尼亚	斯洛文尼亚 🇸🇮
+-Slovenia	Slovenia 🇸🇮
+-斯洛伐克	斯洛伐克 🇸🇰
+-Slovakia	Slovakia 🇸🇰
+-塞内加尔	塞内加尔 🇸🇳
+-Senegal	senegal 🇸🇳
+-索马里	索马里 🇸🇴
+-Somalia	Somalia 🇸🇴
+-叙利亚	叙利亚 🇸🇾
+-Syria	Syria 🇸🇾
+-斯威士兰	斯威士兰 🇸🇿
+-Swaziland	Swaziland 🇸🇿
+-乍得	乍得 🇹🇩
+-Chad	Chad 🇹🇩
+-多哥	多哥 🇹🇬
+-Togo	Togo 🇹🇬
+-泰国	泰国 🇹🇭
+-Thailand	Thailand 🇹🇭
+-东帝汶	东帝汶 🇹🇱
+-塔吉克斯坦	塔吉克斯坦 🇹🇯
+-Tajikistan	Tajikistan 🇹🇯
+-土库曼斯坦	土库曼斯坦 🇹🇲
+-Turkmenistan	Turkmenistan 🇹🇲
+-突尼斯	突尼斯 🇹🇳
+-Tunisia	Tunisia 🇹🇳
+-土耳其	土耳其 🇹🇷
+-Turkey	Turkey 🇹🇷
+-台湾	台湾 🇹🇼
+-坦桑尼亚	坦桑尼亚 🇹🇿
+-Tanzania	Tanzania 🇹🇿
+-乌克兰	乌克兰 🇺🇦
+-Ukraine	Ukraine 🇺🇦
+-乌干达	乌干达 🇺🇬
+-Uganda	Uganda 🇺🇬
++卢旺达	卢旺达 Rwanda 🇷🇼
++苏丹	苏丹 Sudan 🇸🇩
++瑞典	瑞典 Sweden 🇸🇪
++新加坡	新加坡 Singapore 🇸🇬
++斯洛文尼亚	斯洛文尼亚 Slovenia 🇸🇮
++斯洛伐克	斯洛伐克 Slovakia 🇸🇰
++塞内加尔	塞内加尔 Senegal 🇸🇳
++索马里	索马里 Somalia 🇸🇴
++叙利亚	叙利亚 Syria 🇸🇾
++斯威士兰	斯威士兰 Swaziland 🇸🇿
++乍得	乍得 Chad 🇹🇩
++多哥	多哥 Togo 🇹🇬
++泰国	泰国 Thailand 🇹🇭
++东帝汶	东帝汶 East Timor 🇹🇱
++塔吉克斯坦	塔吉克斯坦 Tajikistan 🇹🇯
++土库曼斯坦	土库曼斯坦 Turkmenistan 🇹🇲
++突尼斯	突尼斯 Tunisia 🇹🇳
++土耳其	土耳其 Turkey 🇹🇷
++坦桑尼亚	坦桑尼亚 Tanzania 🇹🇿
++乌克兰	乌克兰 Ukraine 🇺🇦
++乌干达	乌干达 Uganda 🇺🇬
+ 联合国	联合国 🇺🇳
+-美国	美国 🇺🇸 美利坚合众国
+-乌拉圭	乌拉圭 🇺🇾
+-Uruguay	Uruguay 🇺🇾
+-乌兹别克斯坦	乌兹别克斯坦 🇺🇿
+-Uzbekistan	Uzbekistan 🇺🇿
+-梵蒂冈	梵蒂冈 🇻🇦
+-Vatican	Vatican 🇻🇦
+-委内瑞拉	委内瑞拉 🇻🇪
+-Venezuela	Venezuela 🇻🇪
+-越南	越南 🇻🇳
+-Vietnam	Vietnam 🇻🇳
+-萨摩亚	萨摩亚 🇼🇸
+-Samoa	Samoa 🇼🇸
+-科索沃	科索沃 🇽🇰
+-Kosovo	Kosovo 🇽🇰
+-也门	也门 🇾🇪
+-Yemen	Yemen 🇾🇪
++美国	美国 America 🇺🇸 美利坚合众国
++乌拉圭	乌拉圭 Uruguay 🇺🇾
++乌兹别克斯坦	乌兹别克斯坦 Uzbekistan 🇺🇿
++梵蒂冈	梵蒂冈 Vatican 🇻🇦
++委内瑞拉	委内瑞拉 Venezuela 🇻🇪
++越南	越南 Vietnam 🇻🇳
++萨摩亚	萨摩亚 Samoa 🇼🇸
++科索沃	科索沃 Kosovo 🇽🇰
++也门	也门 Yemen 🇾🇪
+ 南非	南非 🇿🇦
+-赞比亚	赞比亚 🇿🇲
+-Zambia	Zambia 🇿🇲
+-津巴布韦	津巴布韦 🇿🇼
+-Zimbabwe	Zimbabwe 🇿🇼
+\ 文件尾没有换行符
++赞比亚	赞比亚 Zambia 🇿🇲
++津巴布韦	津巴布韦 Zimbabwe 🇿🇼
++氢	氢 H
++氦	氦 He
++锂	锂 Li
++铍	铍 Be
++硼	硼 B
++碳	碳 C
++氮	氮 N
++氧	氧 O
++氟	氟 F
++氖	氖 Ne
++钠	钠 Na
++镁	镁 Mg
++铝	铝 Al
++硅	硅 Si
++磷	磷 P
++硫	硫 S
++氯	氯 Cl
++氩	氩 Ar
++钾	钾 K
++钙	钙 Ca
++钪	钪 Sc
++钛	钛 Ti
++钒	钒 V
++铬	铬 Cr
++锰	锰 Mn
++铁	铁 Fe
++钴	钴 Co
++镍	镍 Ni
++铜	铜 Cu
++锌	锌 Zn
++镓	镓 Ga
++锗	锗 Ge
++砷	砷 As
++硒	硒 Se
++溴	溴 Br
++氪	氪 Kr
++铷	铷 Rb
++锶	锶 Sr
++钇	钇 Y
++锆	锆 Zr
++铌	铌 Nb
++钼	钼 Mo
++锝	锝 Tc
++钌	钌 Ru
++铑	铑 Rh
++钯	钯 Pd
++银	银 Ag
++镉	镉 Cd
++铟	铟 In
++锡	锡 Sn
++锑	锑 Sb
++碲	碲 Te
++碘	碘 I
++氙	氙 Xe
++铯	铯 Cs
++钡	钡 Ba
++镧	镧 La
++铈	铈 Ce
++镨	镨 Pr
++钕	钕 Nd
++钷	钷 Pm
++钐	钐 Sm
++铕	铕 Eu
++钆	钆 Gd
++铽	铽 Tb
++镝	镝 Dy
++钬	钬 Ho
++铒	铒 Er
++铥	铥 Tm
++镱	镱 Yb
++镥	镥 Lu
++铪	铪 Hf
++钽	钽 Ta
++钨	钨 W
++铼	铼 Re
++锇	锇 Os
++铱	铱 Ir
++铂	铂 Pt
++金	金 Au ㊎ ㈮
++汞	汞 Hg
++铊	铊 Tl
++铅	铅 Pb
++铋	铋 Bi
++钋	钋 Po
++砹	砹 At
++氡	氡 Rn
++钫	钫 Fr
++镭	镭 Ra
++锕	锕 Ac
++钍	钍 Th
++镤	镤 Pa
++铀	铀 U
++镎	镎 Np
++钚	钚 Pu
++镅	镅 Am
++锔	锔 Cm
++锫	锫 Bk
++锎	锎 Cf
++锿	锿 Es
++镄	镄 Fm
++钔	钔 Md
++锘	锘 No
++铹	铹 Lr
++𬬻	𬬻 Rf
++𬭊	𬭊 Db
++𬭳	𬭳 Sg
++𬭛	𬭛 Bh
++𬭶	𬭶 Hs
++鿏	鿏 Mt
++𫟼	𫟼 Ds
++𬬭	𬬭 Rg
++鿔	鿔 Cn
++鿭	鿭 Nh
++𫓧	𫓧 Fl
++镆	镆 Mc
++𫟷	𫟷 Lv
++鿬	鿬 Ts
++鿫	鿫 Og
