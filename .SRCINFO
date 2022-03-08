@@ -1,0 +1,20 @@
+pkgbase = opencircuitdesign-netgen-git
+	pkgdesc = netlist LVS tool
+	pkgver = @bfb01e0
+	pkgrel = 2
+	epoch = 1
+	url = http://opencircuitdesign.com/netgen/
+	arch = x86_64
+	license = GPL-1.0-only
+	makedepends = git
+	makedepends = gcc
+	makedepends = bison
+	makedepends = flex
+	makedepends = pkgconf
+	depends = tcl
+	depends = tk
+	options = !strip
+	source = netgen::git://opencircuitdesign.com/netgen
+	sha256sums = SKIP
+
+pkgname = opencircuitdesign-netgen-git
