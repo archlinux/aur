@@ -1,3 +1,8 @@
+2022-03-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.3.7-1:
+    Fixed missing zh-CN and zh-TW translations, regression from V5.2.3.4 (@JustArchi #2532).
+  * 5.2.3.6:
+    Reverted ASF-ui update back to V5.2.2.5 version due to JustArchiNET/ASF-ui#1556 - this should fix infinite loading screen (@JustArchi).
 2022-03-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.3.5-1:
     Added OnlineFlags bot config property (@Deyvan #2511).
