@@ -1,13 +1,14 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-git
 pkgver=r837.fbe1b3b
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="An open source UTAU successor"
 arch=('x86_64')
 url="https://github.com/stakira/OpenUtau"
 license=('MIT')
 depends=('dotnet-host' 'dotnet-runtime-3.1' 'dotnet-targeting-pack-3.1' 'dotnet-sdk-3.1' 'fuse2' 'fuse3' 'fuse-common')
+options=(staticlibs)
 source=("git+https://github.com/stakira/OpenUtau.git"
         "OpenUtau-git.desktop")
 sha256sums=('SKIP'
@@ -23,15 +24,15 @@ build() {
 
 	# arch doesn't support arm and openutau doesn't support x86 :/
 	dotnet restore OpenUtau -r linux-x64
-	dotnet publish OpenUtau -c Release -r linux-x64 --self-contained true -o bin/linux
+	dotnet publish OpenUtau -c Release -r linux-x64 --self-contained true -o bin/linux-x64
 }
 
 package() {
 
     # Copy libraries
-    install -Dm755 "$srcdir"/OpenUtau/bin/linux/OpenUtau \
-      "$pkgdir"/usr/lib/$pkgname/OpenUtau
-    cp -r "$srcdir"/OpenUtau/bin/linux/* "$pkgdir"/usr/lib/$pkgname/
+    install -Dm755 "$srcdir"/OpenUtau/bin/linux-x64/OpenUtau \
+      "$pkgdir"/usr/lib/"$pkgname"/OpenUtau
+    cp -r "$srcdir"/OpenUtau/bin/linux-x64/* "$pkgdir"/usr/lib/$pkgname/
 
     # Wrapper
     echo "#!/bin/sh" > "$srcdir"/openutau
