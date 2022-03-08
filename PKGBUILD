@@ -9,7 +9,7 @@
 
 _qt_module=qtremoteobjects
 pkgname=mingw-w64-qt5-remoteobjects-static
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 arch=('any')
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -17,17 +17,30 @@ depends=('mingw-w64-qt5-base-static')
 optdepends=('mingw-w64-qt5-declarative-static: QML bindings')
 makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative-static')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
+_commit=581475dfeb44c8b51c0be86e0f2f57df7d117a80
+_basever=$pkgver
+pkgver+=+kde+r0
+makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('6781b6bc90888254ea77ce812736dac00c67fa4eeb3095f5cd65e4b9c15dcfc2')
+_pkgfqn=${_qt_module}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 depends+=(${pkgname%-static}) # the static version relies on the shared version for build tools and headers
 _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgfqn}"
+}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
@@ -45,6 +58,9 @@ build() {
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.a|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap ||g" {} \;
+
+      # avoid `.obj/release/qconnectionfactories.o:qconnectionfactories.cpp:(.text.unlikely+0xf): relocation truncated to fit: IMAGE_REL_AMD64_REL32 against undefined symbol `__cxa_pure_virtual'`
+      [[ $_arch == x86_64-w64-mingw32 ]] && find . -type f -iname 'Makefile*' -exec sed -i 's|\(CXX.*\)\( -o .obj/release/qconnectionfactories.o\)|\1 -mcmodel=large \2|g' {} \;
 
       make
       popd
