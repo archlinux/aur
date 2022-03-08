@@ -1,7 +1,7 @@
 # Maintainer: Kodi <kodicraft4@gmail.com>
 pkgname=hentai.js
 pkgver=2.3.6
-pkgrel=3
+pkgrel=4
 
 pkgdesc="rule34.xxx wrapper written in electron"
 arch=('x86_64')
@@ -42,7 +42,7 @@ package() {
   cp -rL "out/hentaijs-linux-x64/" "$pkgdir/usr/local/lib/hentaijs/"
   chmod 755 -R "$pkgdir/usr/local/lib/hentaijs/" 
   mkdir -p "$pkgdir/usr/local/bin/"
-  ln -sr "../lib/hentaijs/hentaijs-linux-x64/hentaijs" "/usr/local/bin/hentai.js"
+  ln -sr "$pkgdir/usr/local/lib/hentaijs/hentaijs-linux-x64/hentaijs" "/usr/local/bin/hentai.js"
 }
 
 
