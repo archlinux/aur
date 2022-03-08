@@ -1,6 +1,6 @@
 # Maintainer: thegala <thegala at disroot dot org>
 pkgname=icestudio-appimage
-pkgver=0.6.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A real gamechanger in the world of Open Source FPGAs"
 arch=('x86_64')
