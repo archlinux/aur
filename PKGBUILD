@@ -8,7 +8,7 @@ pkgdesc="Elder Scrolls Online and World of Warcraft Addon Manager"
 arch=('any')
 url='https://minion.mmoui.com/'
 license=('custom')
-depends=('jre-openjdk' 'java-openjfx')
+depends=('java-runtime' 'java-openjfx')
 makedepends=('unzip')
 provides=("miniongg")
 
