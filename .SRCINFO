@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-webchannel
 	pkgdesc = Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)
-	pkgver = 5.15.2
+	pkgver = 5.15.3+kde+r3
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = mingw-w64-qt5-webchannel
 	license = custom
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
+	makedepends = git
 	depends = mingw-w64-qt5-declarative
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtwebchannel-everywhere-src-5.15.2.tar.xz
-	sha256sums = 127fe79c43b386713f151ed7d411cd81e45e29f9c955584f29736f78c9303ec1
+	source = git+https://invent.kde.org/qt/qt/qtwebchannel#commit=611016a49f3a9ba7b58bef29bc295323e06373ae
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-webchannel
-

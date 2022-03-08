@@ -9,23 +9,36 @@
 
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
 license=('GPL3' 'LGPL' 'FDL' 'custom')
+_commit=611016a49f3a9ba7b58bef29bc295323e06373ae
+_basever=$pkgver
+pkgver+=+kde+r3
+makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('127fe79c43b386713f151ed7d411cd81e45e29f9c955584f29736f78c9303ec1')
+_pkgfqn=${_qt_module}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
+
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgfqn}"
+}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
