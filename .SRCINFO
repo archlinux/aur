@@ -2,12 +2,12 @@ pkgbase = pinecil-firmware-updater-git
 	pkgdesc = Application for updating Pinecil soldering iron
 	pkgver = r21.1b111e0
 	pkgrel = 1
-	url = https://github.com/pine64/pinecil-firmware-updater
+	url = https://github.com/pine64/pine64_updater
 	arch = any
 	license = Apache
 	depends = dfu-util
-	provides = pinecil-firmware-updater
-	source = git+https://github.com/pine64/pinecil-firmware-updater.git
+	provides = pine64_updater
+	source = git+https://github.com/pine64/pine64_updater.git#branch=old-pinecil-updater
 	md5sums = SKIP
 
 pkgname = pinecil-firmware-updater-git
