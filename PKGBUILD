@@ -74,9 +74,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=182
+_minor=183
 _srcname=linux-${_major}
-_clr=${_major}.181-174
+_clr=${_major}.182-175
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -127,7 +127,8 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
+    scripts/config --set-str DEFAULT_HOSTNAME archlinux \
+                   --enable IKCONFIG \
                    --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
@@ -354,7 +355,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '18f54cb71b1ae1a397fed1e7a35897aa807feb2cb2c8e8c8a93e70fb451dce66'
+            '69c153d9d425273762df1d1f917904e0b9f765fb7a9b49ea32a27f2264a614cc'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
