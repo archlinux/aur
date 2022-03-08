@@ -1,13 +1,14 @@
 pkgbase = synology-hyper-backup-explorer
 	pkgdesc = A desktop tool for browsing, decrypting, and extracting different versions of backup data in Hyper Backup repositories
 	pkgver = 3.0.0.0149
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.synology.com/en-global/releaseNote/HyperBackupExplorer
 	arch = x86_64
 	license = unknown
 	depends = qt5-base
 	depends = gtk2
 	depends = openssl-1.0
+	depends = libxcrypt-compat
 	options = !strip
 	source = https://global.download.synology.com/download/Utility/HyperBackupExplorer/3.0.0-0149/Linux/x86_64/HyperBackupExplorer-3.0.0-0149-linux.tar.bz2
 	sha256sums = 58605171a1fcc3f33117375c55ae738686667c85db3645ced23bb4f26545030f
