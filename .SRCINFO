@@ -11,6 +11,6 @@ pkgbase = rime-solarpinyin
 	provides = rime-cloverpinyin
 	conflicts = rime-cloverpinyin
 	source = https://github.com/so1ar/rime-cloverpinyin/releases/download/1.2.0.20220308/clover.schema-1.2.0.20220308.zip
-	sha256sums = 547d966298eb9a082e4854557e0a6c673af239e97b29266d1fecd704f8f7272b
+	sha256sums = e7f920c37d84b7771cb7851581e51d11512af3f38e81890130294b2751bac42a
 
 pkgname = rime-solarpinyin

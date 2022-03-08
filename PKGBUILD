@@ -13,7 +13,7 @@ makedepends=('librime')
 provides=('rime-cloverpinyin')
 conflicts=('rime-cloverpinyin')
 source=(https://github.com/so1ar/rime-cloverpinyin/releases/download/${pkgver}/clover.schema-${pkgver}.zip)
-sha256sums=('547d966298eb9a082e4854557e0a6c673af239e97b29266d1fecd704f8f7272b')
+sha256sums=('e7f920c37d84b7771cb7851581e51d11512af3f38e81890130294b2751bac42a')
 
 build(){
   cd $srcdir
