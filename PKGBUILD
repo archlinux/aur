@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sword-svn
-pkgver=1.9.0.svnversion.3837
+pkgver=1.9.0.svnversion.3874
 pkgrel=1
 epoch=3
 pkgdesc="Libraries for Bible programs - svn-version"
@@ -12,7 +12,7 @@ depends=('curl' 'clucene' 'xapian-core')
 makedepends=('subversion')
 provides=('sword=1.9.1')
 conflicts=('sword')
-source=('sword::svn+https://www.crosswire.org/svn/sword/trunk/#revision=3837')
+source=('sword::svn+https://www.crosswire.org/svn/sword/trunk/')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -33,5 +33,4 @@ package() {
   cd "${pkgname%-svn}"
   make DESTDIR="$pkgdir/" install
   make DESTDIR="$pkgdir/" install_config
-  mv "$pkgdir"/usr/lib/libsword-1.9.0.3837M.so "$pkgdir"/usr/lib/libsword-1.9.0.3837.so 
 }

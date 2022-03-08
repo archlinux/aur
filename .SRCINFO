@@ -1,6 +1,6 @@
 pkgbase = sword-svn
 	pkgdesc = Libraries for Bible programs - svn-version
-	pkgver = 1.9.0.svnversion.3837
+	pkgver = 1.9.0.svnversion.3874
 	pkgrel = 1
 	epoch = 3
 	url = http://www.crosswire.org/sword/
@@ -13,7 +13,7 @@ pkgbase = sword-svn
 	depends = xapian-core
 	provides = sword=1.9.1
 	conflicts = sword
-	source = sword::svn+https://www.crosswire.org/svn/sword/trunk/#revision=3837
+	source = sword::svn+https://www.crosswire.org/svn/sword/trunk/
 	sha256sums = SKIP
 
 pkgname = sword-svn
