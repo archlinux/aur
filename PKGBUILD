@@ -8,7 +8,7 @@ arch=('any')
 url="http://common-lisp.net/project/armedbear/"
 license=('GPL')
 depends=('java-runtime' 'bash')
-makedepends=('ant' 'net-tools' 'git' 'inet-utils' 'java-environment>=11')
+makedepends=('ant' 'net-tools' 'git' 'inetutils' 'java-environment>=11')
 provides=('abcl' 'common-lisp')
 conflicts=('abcl')
 source=("abcl.git::git+https://gitlab.common-lisp.net/abcl/abcl.git" abcl.sh)

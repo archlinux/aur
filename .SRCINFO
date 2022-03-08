@@ -8,7 +8,7 @@ pkgbase = abcl-git
 	makedepends = ant
 	makedepends = net-tools
 	makedepends = git
-	makedepends = inet-utils
+	makedepends = inetutils
 	makedepends = java-environment>=11
 	depends = java-runtime
 	depends = bash
