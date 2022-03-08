@@ -1,11 +1,12 @@
 # Maintainer: Ben Poest <ben@poest.com>
+# Contributor: Jolly_Roberts
 # Contributor: dreieck
 # Contributor: Cirk2
 
 _pkgname=libcpufeatures
 pkgname="${_pkgname}-git"
 pkgver=0.6.0+68.r267.d20220222.40e1c71
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform C library to retrieve CPU features (such as available instructions) at runtime. By google."
 url="https://github.com/google/cpu_features"
 arch=(
@@ -28,7 +29,7 @@ conflicts=(
   'libvolk'
 )
 source=(
-  "${_pkgname}::git+git://github.com/google/cpu_features.git"
+  "${_pkgname}::git+git://github.com/google/cpu_features.git#branch=main"
 )
 sha256sums=(
   'SKIP'
