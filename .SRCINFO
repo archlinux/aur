@@ -1,0 +1,15 @@
+pkgbase = python-pytorch-msssim-git
+	pkgdesc = Fast and differentiable MS-SSIM and SSIM for pytorch
+	pkgver = r134.a948c90
+	pkgrel = 1
+	url = https://github.com/trougnouf/pytorch-msssim
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-pytorch
+	provides = python-pytorch-msssim
+	conflicts = python-pytorch-msssim
+	source = git+https://github.com/trougnouf/pytorch-msssim.git
+	sha256sums = SKIP
+
+pkgname = python-pytorch-msssim-git
