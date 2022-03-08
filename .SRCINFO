@@ -1,6 +1,6 @@
 pkgbase = libminizinc
 	pkgdesc = A modelling language for constraint programming problems
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://www.minizinc.org/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = libminizinc
 	depends = coin-or-cbc
 	provides = minizinc
 	conflicts = minizinc-bin
-	source = libminizinc-2.6.0.tar.gz::https://github.com/MiniZinc/libminizinc/archive/2.6.0.tar.gz
-	sha256sums = 35559e75db3b9b5cd939879935ea5b4f343104040c9ca40aafef06b44ddc6fd7
+	source = libminizinc-2.6.1.tar.gz::https://github.com/MiniZinc/libminizinc/archive/2.6.1.tar.gz
+	sha256sums = 2a36a2df3967923f265044ba38041b0ed688d9541316fc368038466ca7068c0d
 
 pkgname = libminizinc
