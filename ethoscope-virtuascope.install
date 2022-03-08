@@ -16,7 +16,11 @@ post_install() {
     echo 'expire_logs_days = 10' >> /etc/my.cnf.d/server.cnf
     echo 'max_binlog_size  = 100M' >> /etc/my.cnf.d/server.cnf
 
-    #enable the virtuascope and mysqldb services
+    #create the python package for the ethoscope
+    cd /opt/ethoscope-node/src/
+    python setup.py develop
+
+    echo "enable the virtuascope and mysqldb services"
     cp /opt/ethoscope-node/scripts/virtuascope.service /usr/lib/systemd/system/
     systemctl enable virtuascope
     systemctl enable mysqld
