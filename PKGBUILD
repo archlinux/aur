@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=5.1.r105626.g8e825ec3ab
+pkgver=5.1.r105881.g1bed27acef
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -63,7 +63,7 @@ depends=(
   srt
   svt-av1
   v4l-utils
-  vmaf-git
+  vmaf
   xz
   zlib
 )
