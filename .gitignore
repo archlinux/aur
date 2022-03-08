@@ -2,6 +2,7 @@ amarok-*.pkg.tar.zst
 amarok-*.pkg.tar.xz
 amarok-*.tar.gz
 amarok-*.tar.xz
+ffmpeg5_cmakelist_configure.patch
 amarok-*.log
 PKGBUILD-namcap.log
 amarok/
