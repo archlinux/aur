@@ -2,7 +2,7 @@
 # Contributor: Artem Senichev <artemsen@gmail.com>
 
 pkgname=swayimg
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc='Image viewer for Sway/Wayland'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 optdepends=('bash-completion: Bash completions')
 url='https://github.com/artemsen/swayimg'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('7d4ae96122032d60e7b87320559fd389')
+md5sums=('85651d22f9e87e6cb1298b266010d0f7')
 
 build() {
   local meson_options=(
