@@ -1,4 +1,7 @@
 post_upgrade(){
+    if [ ! -d "/var/lib/alist/" ]; then
+        mkdir /var/lib/alist/
+    fi
     echo -e "\033[31m If you're upgrading from below 2.1.0-7 \033[0m"
     echo -e "\033[31m Please move your db file ( perhaps /usr/bin/data/data.db)  to  /var/lib/alist/data.db \033[0m"
     echo "You can run "
