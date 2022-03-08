@@ -39,9 +39,9 @@ post_install() {
 
 # arg 1:  the new package version
 # arg 2:  the old package version
-post_upgrade() {
-    # do something here
-}
+#post_upgrade() {
+#    # do something here
+#}
 
 # arg 1:  the old package version
 pre_remove() {
@@ -51,6 +51,6 @@ pre_remove() {
 }
 
 # arg 1:  the old package version
-post_remove() {
+#post_remove() {
     # do something here
-}
+#}
