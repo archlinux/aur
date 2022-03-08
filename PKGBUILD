@@ -2,7 +2,7 @@
 
 pkgname=rime-opencc-emoji-symbols-git
 pkgver=20220209.r40.45a0c6b
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime 输入法 Emoji 与符号滤镜"
 arch=('any')
 url="https://github.com/rtransformation/rime-opencc_emoji_symbols"
