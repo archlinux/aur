@@ -2,45 +2,44 @@
 # Maintainer: Daniel J Griffiths <ghost1227@archlinux.us>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
-set -u
-pkgname='html2text-with-utf8'
+pkgname='html2text-cpp'
 _pkgname='html2text'
-pkgver='1.3.2a'
-pkgrel='2'
-pkgdesc='A HTML to text converter with utf-8 patch'
+pkgver=r91.49db615
+pkgrel=1
+pkgdesc='A C/C++ based HTML to text converter'
 arch=('i686' 'x86_64')
 url='http://www.mbayer.de/html2text'
 license=('GPL2')
 depends=('gcc-libs')
-makedepends=('patch')
 conflicts=('html2text')
-source=("http://www.mbayer.de/html2text/downloads/${_pkgname}-${pkgver}.tar.gz"
-  "http://www.mbayer.de/html2text/downloads/patch-utf8-${_pkgname}-${pkgver}.diff")
-sha256sums=('000b39d5d910b867ff7e087177b470a1e26e2819920dcffd5991c33f6d480392'
-            'be4e90094d2854059924cb2c59ca31a5e9e0e22d2245fa5dc0c03f604798c5d1')
+source=("git+https://github.com/grobian/${pkgname%%-*}.git")
+sha1sums=(SKIP)
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
-  set -u
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}/patch-utf8-html2text-1.3.2a.diff"
+  cd "${srcdir}/${_pkgname}"
+
+  sed -e 's/html2textrc/html2text-cpprc/g' html2text.cpp
+
   ./configure
-  set +u
 }
 
 build() {
-  set -u
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  make -s -j $(nproc)
-  set +u
+  cd "${srcdir}/${_pkgname}"
+  make
 }
 
 package() {
-  set -u
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
 
-  install -Dpm755 'html2text' "${pkgdir}/usr/bin/html2text"
-  install -Dpm644 'html2text.1.gz' "${pkgdir}/usr/share/man/man1/html2text.1.gz"
-  install -Dpm644 'html2textrc.5.gz' "${pkgdir}/usr/share/man/man5/html2textrc.5.gz"
-  set +u
+  gzip -f html2text.1
+  gzip -f html2textrc.5
+
+  install -Dpm755 'html2text' "${pkgdir}/usr/bin/html2text-cpp"
+  install -Dpm644 'html2text.1.gz' "${pkgdir}/usr/share/man/man1/html2text-cpp.1.gz"
+  install -Dpm644 'html2textrc.5.gz' "${pkgdir}/usr/share/man/man5/html2text-cpprc.5.gz"
 }
-set +u
