@@ -1,5 +1,5 @@
 pkgname=dnf-plugins-extras
-pkgver=4.0.15
+pkgver=4.0.16
 pkgrel=1
 pkgdesc="Extras DNF Plugins"
 arch=('any')
@@ -7,13 +7,17 @@ url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
 depends=('dnf>=4.4.3' 'python')
 makedepends=('cmake>=3.13' 'python-sphinx')
-checkdepends=('python-nose')
-optdepends=('snapper: for snapper plugin'
+checkdepends=('python-pytest' 'python-pykickstart' 'python-systemd')
+optdepends=('dbus-python: for snapper plugin'
+            'python-pycurl: for torproxy plugin'
+            'python-pykickstart: for kickstart plugin'
+            'python-systemd: for system-upgrade plugin'
+            'snapper:  for snapper plugin'
             'tracer:  for tracer plugin')
 backup=('etc/dnf/plugins/rpmconf.conf'
         'etc/dnf/plugins/torproxy.conf')
 source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2e7c962019675579d638a5c9ab63f0f5ce7fe19869bcfb579dc20860d3ee152b')
+sha256sums=('5715a6c8418fee1ac4f175b0c4ae0051fbce59641e201f9df97dfdccf11a9ea0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -38,7 +42,7 @@ build() {
 #check() {
 #	cd "$pkgname-$pkgver"
 #
-#	PYTHONPATH=./plugins nosetests -s tests
+#	pytest
 #}
 
 package() {
