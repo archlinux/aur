@@ -5,7 +5,7 @@ pkgname=$_pkgname-git-bin
 pkgver=1.4.1
 pkgrel=1
 pkgdesc="stax2aws is a CLI tool that enables you to log in and retrieve temporary credentials granting access to your Stax-managed AWS accounts."
-url="https://www.stax.io/developer/aws-access-cli/"
+url="https://github.com/stax-labs/stax2aws-releases"
 arch=('x86_64')
 license=('UNLICENSED')
 
