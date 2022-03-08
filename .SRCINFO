@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-connectivity-static
 	pkgdesc = Provides access to Bluetooth hardware (mingw-w64)
-	pkgver = 5.15.2
+	pkgver = 5.15.3+kde+r0
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -12,13 +12,13 @@ pkgbase = mingw-w64-qt5-connectivity-static
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-qt5-declarative-static
+	makedepends = git
 	depends = mingw-w64-qt5-base-static
 	depends = mingw-w64-qt5-connectivity
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtconnectivity-everywhere-src-5.15.2.tar.xz
-	sha256sums = 0380327871f76103e5b8c2a305988d76d352b6a982b3e7b3bc3cdc184c64bfa0
+	source = git+https://invent.kde.org/qt/qt/qtconnectivity#commit=8a377440b37f5633156a8e40c9f0dce5f4d5a665
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-connectivity-static
-
