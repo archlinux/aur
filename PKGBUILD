@@ -19,10 +19,6 @@ sha256sums=('SKIP'
 prepare() {
   cd "${srcdir}/linux-$pkgver"
 
-  # https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg1910510.html
-  sed -i 's|$(srctree)/||' "${srcdir}/linux-${pkgver}/drivers/net/wireless/intel/iwlwifi/dvm/Makefile"
-  sed -i 's|$(srctree)/||' "${srcdir}/linux-${pkgver}/drivers/net/wireless/intel/iwlwifi/mvm/Makefile"
-
   patch -p1 < "${srcdir}/beacon_timeout.patch"
 }
 

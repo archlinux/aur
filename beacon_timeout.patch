@@ -1,25 +1,16 @@
-From ad3187dfd4f741e291a1ca0d3ce5b714eacbd279 Mon Sep 17 00:00:00 2001
-From: Zachary Michaels <mikezackles@gmail.com>
-Date: Thu, 7 Jan 2021 08:13:11 -0800
-Subject: [PATCH] iwlwifi: Make missed beacon timeout configurable
-
-Makes the beacon timeout a module parameter, allowing the original default (16
-missed beacons) to be kept while also enabling users that experience problems to
-increase the timeout.
-
-See https://bugzilla.kernel.org/show_bug.cgi?id=203709
----
- drivers/net/wireless/intel/iwlwifi/iwl-drv.c       | 4 ++++
- drivers/net/wireless/intel/iwlwifi/iwl-modparams.h | 2 ++
- drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c  | 3 ++-
- drivers/net/wireless/intel/iwlwifi/mvm/mvm.h       | 1 -
- 4 files changed, 8 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-drv.c b/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
-index 9dcd2e990c9c..ec01f922b2e7 100644
---- a/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
-+++ b/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
-@@ -1732,6 +1732,7 @@ struct iwl_mod_params iwlwifi_mod_params = {
+diff -ur linux-5.15.26/drivers/net/wireless/intel/iwlwifi/dvm/Makefile linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/dvm/Makefile
+--- linux-5.15.26/drivers/net/wireless/intel/iwlwifi/dvm/Makefile	2022-03-02 11:48:10.000000000 +0100
++++ linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/dvm/Makefile	2022-03-08 20:52:15.802786503 +0100
+@@ -11,4 +11,4 @@
+ iwldvm-$(CONFIG_IWLWIFI_LEDS) += led.o
+ iwldvm-$(CONFIG_IWLWIFI_DEBUGFS) += debugfs.o
+ 
+-ccflags-y += -I $(srctree)/$(src)/../
++ccflags-y += -I $(src)/../
+diff -ur linux-5.15.26/drivers/net/wireless/intel/iwlwifi/iwl-drv.c linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/iwl-drv.c
+--- linux-5.15.26/drivers/net/wireless/intel/iwlwifi/iwl-drv.c	2022-03-02 11:48:10.000000000 +0100
++++ linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/iwl-drv.c	2022-03-08 20:52:15.812786477 +0100
+@@ -1711,6 +1711,7 @@
  	.power_level = IWL_POWER_INDEX_1,
  	.uapsd_disable = IWL_DISABLE_UAPSD_BSS | IWL_DISABLE_UAPSD_P2P_CLIENT,
  	.enable_ini = true,
@@ -27,7 +18,7 @@ index 9dcd2e990c9c..ec01f922b2e7 100644
  	/* the rest are 0 by default */
  };
  IWL_EXPORT_SYMBOL(iwlwifi_mod_params);
-@@ -1849,6 +1850,9 @@ module_param_named(enable_ini, iwlwifi_mod_params.enable_ini,
+@@ -1826,6 +1827,9 @@
  		   bool, S_IRUGO | S_IWUSR);
  MODULE_PARM_DESC(enable_ini,
  		 "Enable debug INI TLV FW debug infrastructure (default: true");
@@ -37,11 +28,10 @@ index 9dcd2e990c9c..ec01f922b2e7 100644
  
  /*
   * set bt_coex_active to true, uCode will do kill/defer
-diff --git a/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h b/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
-index e8ce3a300857..801d12a27354 100644
---- a/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
-+++ b/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
-@@ -115,6 +115,7 @@ enum iwl_uapsd_disable {
+diff -ur linux-5.15.26/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h
+--- linux-5.15.26/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h	2022-03-02 11:48:10.000000000 +0100
++++ linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/iwl-modparams.h	2022-03-08 20:52:15.812786477 +0100
+@@ -62,6 +62,7 @@
   * @disable_11ac: disable VHT capabilities, default = false.
   * @remove_when_gone: remove an inaccessible device from the PCIe bus.
   * @enable_ini: enable new FW debug infratructure (INI TLVs)
@@ -49,7 +39,7 @@ index e8ce3a300857..801d12a27354 100644
   */
  struct iwl_mod_params {
  	int swcrypto;
-@@ -137,6 +138,7 @@ struct iwl_mod_params {
+@@ -84,6 +85,7 @@
  	bool disable_11ax;
  	bool remove_when_gone;
  	bool enable_ini;
@@ -57,39 +47,47 @@ index e8ce3a300857..801d12a27354 100644
  };
  
  static inline bool iwl_enable_rx_ampdu(void)
-diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c b/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c
-index cbdebefb854a..07fc82398373 100644
---- a/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c
-+++ b/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c
-@@ -63,6 +63,7 @@
- #include <linux/etherdevice.h>
+diff -ur linux-5.15.26/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c
+--- linux-5.15.26/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c	2022-03-02 11:48:10.000000000 +0100
++++ linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/mvm/mac-ctxt.c	2022-03-08 21:16:17.720715422 +0100
+@@ -8,6 +8,7 @@
+ #include <linux/crc32.h>
  #include <net/mac80211.h>
  #include "iwl-io.h"
 +#include "iwl-modparams.h"
  #include "iwl-prph.h"
  #include "fw-api.h"
  #include "mvm.h"
-@@ -1428,7 +1429,7 @@ void iwl_mvm_rx_missed_beacons_notif(struct iwl_mvm *mvm,
+@@ -1398,9 +1399,9 @@
  	 * TODO: the threshold should be adjusted based on latency conditions,
  	 * and/or in case of a CS flow on one of the other AP vifs.
  	 */
 -	if (rx_missed_bcon > IWL_MVM_MISSED_BEACONS_THRESHOLD_LONG)
 +	if (rx_missed_bcon > iwlwifi_mod_params.beacon_timeout)
  		iwl_mvm_connection_loss(mvm, vif, "missed beacons");
- 	else if (rx_missed_bcon_since_rx > IWL_MVM_MISSED_BEACONS_THRESHOLD)
+-	else if (rx_missed_bcon_since_rx > IWL_MVM_MISSED_BEACONS_THRESHOLD)
++	else if (rx_missed_bcon_since_rx > (iwlwifi_mod_params.beacon_timeout / 2))
  		ieee80211_beacon_loss(vif);
-diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h b/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
-index 7159d1da3e77..ce960d7d6a00 100644
---- a/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
-+++ b/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
-@@ -92,7 +92,6 @@
+ 
+ 	iwl_dbg_tlv_time_point(&mvm->fwrt,
+diff -ur linux-5.15.26/drivers/net/wireless/intel/iwlwifi/mvm/Makefile linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/mvm/Makefile
+--- linux-5.15.26/drivers/net/wireless/intel/iwlwifi/mvm/Makefile	2022-03-02 11:48:10.000000000 +0100
++++ linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/mvm/Makefile	2022-03-08 20:52:15.812786477 +0100
+@@ -11,4 +11,4 @@
+ iwlmvm-$(CONFIG_IWLWIFI_LEDS) += led.o
+ iwlmvm-$(CONFIG_PM) += d3.o
+ 
+-ccflags-y += -I $(srctree)/$(src)/../
++ccflags-y += -I $(src)/../
+diff -ur linux-5.15.26/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h
+--- linux-5.15.26/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h	2022-03-02 11:48:10.000000000 +0100
++++ linux-5.15.26.new/drivers/net/wireless/intel/iwlwifi/mvm/mvm.h	2022-03-08 21:17:10.511313082 +0100
+@@ -37,8 +37,6 @@
+ #define IWL_MVM_MAX_ADDRESSES		5
  /* RSSI offset for WkP */
  #define IWL_RSSI_OFFSET 50
- #define IWL_MVM_MISSED_BEACONS_THRESHOLD 8
+-#define IWL_MVM_MISSED_BEACONS_THRESHOLD 8
 -#define IWL_MVM_MISSED_BEACONS_THRESHOLD_LONG 16
  
  /* A TimeUnit is 1024 microsecond */
  #define MSEC_TO_TU(_msec)	(_msec*1000/1024)
--- 
-2.29.2
-
