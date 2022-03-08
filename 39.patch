@@ -1,0 +1,10 @@
+--- a/CMakeLists.txt	2022-02-26 18:00:26.000000000 +0100
++++ b/CMakeLists.txt	2022-03-08 12:48:34.812922067 +0100
+@@ -15,6 +15,6 @@
+ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS Plasma)
+ 
+ add_subdirectory(plugin)
+-add_subdirectory(package/translations)
++add_subdirectory(translations)
+ 
+ plasma_install_package(package org.kde.weatherWidget-2)
