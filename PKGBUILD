@@ -13,8 +13,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor - with tran
 #   - erbium: 12
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron12
-pkgver=1.59.0
+_electron=electron13
+pkgver=1.65.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -23,7 +23,7 @@ depends=($_electron 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python2' 'yarn' 'nodejs-lts-fermium')
+makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs-lts-fermium')
 conflicts=('code')
 provides=('code' 'vscode')
 install='code-transparent.install'
@@ -37,7 +37,7 @@ sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
             'b8bdb0e53cf8748140ed444c9b02cb6a57a7e1e120d96861d4cc9f79744a987f0253c052a238c78aa2c3f86459c4afb6f3b687435f0588d8f640822a9908b257'
             'b1aa0d7c5b3e3e8ba1172822d75ea38e90efc431b270e0b4ca9e45bf9c0be0f60922c8618969ef071b5b6dbd9ac9f030294f1bf49bcc28c187b46d113dca63a7'
-            '74f6b4a95cd7552e43bce3b6a0db72771741ccc141b2a46db3d8eee1157b4b47d5bb5d55ccfd60559f17d234f51f85de9dc52070be4865ee170a6e7d36a8d2f1'
+            '92913eede12335d21d032dc6e0bc01d1f29062ce6375a5648f6c59dd1f343a798e5791819a904fb7b3504058a5daae6a1c3286cb9f95be211540992bdab92d17'
             'e662f0bf3f55a82ce9bce98f22c6be80ee83c1e2241d2eca596326478887ec6b73c7d0041903e17f35a424578ccc22674354931166dc7c7d7e76bb97135e009e')
 
 # Even though we don't officially support other archs, let's
@@ -115,29 +115,14 @@ prepare() {
 }
 
 build() {
-  # https://github.com/mapbox/node-sqlite3/issues/1044
-  mkdir -p path
-  ln -sf /usr/bin/python2 path/python
-  export PATH="$PWD/path:$PATH"
-
   cd $_pkgname
 
   yarn install --arch=$_vscode_arch
 
-  # The default memory limit may be too low for current versions of node
-  # to successfully build vscode. Change it if this number still doesn't
-  # work for your system.
-  mem_limit="--max_old_space_size=8192"
-
-  if ! /usr/bin/node $mem_limit /usr/bin/gulp vscode-linux-$_vscode_arch-min
-  then
-      echo
-      echo "*** NOTE: If the build failed due to running out of file handles (EMFILE),"
-      echo "*** you will need to raise your max open file limit."
-      echo "*** You can check this for more information on how to increase this limit:"
-      echo "***    https://ro-che.info/articles/2017-03-26-increase-open-files-limit"
-      exit 1
-  fi
+  gulp compile-build
+  gulp compile-extension-media
+  gulp compile-extensions-build
+  gulp vscode-linux-$_vscode_arch-min
 }
 
 package() {
@@ -146,7 +131,7 @@ package() {
   cp -r --no-preserve=ownership --preserve=mode VSCode-linux-$_vscode_arch/resources/app/* "$pkgdir"/usr/lib/$_pkgname/
 
   # Replace statically included binary with system copy
-  ln -sf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules.asar.unpacked/vscode-ripgrep/bin/rg
+  ln -sf /usr/bin/rg "$pkgdir"/usr/lib/code/node_modules.asar.unpacked/@vscode/ripgrep/bin/rg
 
   # Install binary
   install -Dm 755 code.sh "$pkgdir"/usr/bin/code-oss
