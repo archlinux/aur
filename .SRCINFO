@@ -1,0 +1,16 @@
+pkgbase = python-windscribe-git
+	pkgdesc = A python wrapper library for Windscribe CLI
+	pkgver = r10.8dbf882
+	pkgrel = 1
+	url = https://github.com/shaybox/windscribe
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	depends = python
+	depends = python-pexpect
+	provides = windscribe
+	provides = python-windscribe
+	source = git+https://github.com/shaybox/windscribe.git
+	sha512sums = SKIP
+
+pkgname = python-windscribe-git
