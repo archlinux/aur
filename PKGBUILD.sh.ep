@@ -4,18 +4,20 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 arch=(<%== include 'fragments/mingw-w64-qt5-non_any_archs' %>)
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
-depends=(<%== qt5deps qw(declarative) %>)
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers')
+depends=(<%== qt5deps qw(declarative) %> 'mingw-w64-assimp')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'assimp')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 \
 % content_for prepare => begin
 
-  # ensure qgltf is linked against zlib
-  echo 'LIBS += -L/usr/lib -lz' >> tools/qgltf/qgltf.pro
+  # ensure qgltf is linked against assimp and zlib
+  echo 'LIBS += -L/usr/lib -lassimp -lz' >> tools/qgltf/qgltf.pro
+  # avoid linker errors related to an attempt to use Qt's bundled zlib by enforcing use of system assimp
+  sed -i 's|include.*||g' tools/qgltf/qgltf.pro
 % end
 \
 % content_for build_config_before_make => begin
