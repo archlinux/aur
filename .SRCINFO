@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-3d-static
 	pkgdesc = C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)
-	pkgver = 5.15.2
+	pkgver = 5.15.3+kde+r18
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -12,13 +12,15 @@ pkgbase = mingw-w64-qt5-3d-static
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-pkg-config
 	makedepends = mingw-w64-vulkan-headers
+	makedepends = assimp
+	makedepends = git
 	depends = mingw-w64-qt5-declarative-static
+	depends = mingw-w64-assimp
 	depends = mingw-w64-qt5-3d
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qt3d-everywhere-src-5.15.2.tar.xz
-	sha256sums = 03ed6a48c813c75296c19f5d721184ab168280b69d2656cf16f877d3d4c55c1d
+	source = git+https://invent.kde.org/qt/qt/qt3d#commit=6d926ec2739f2289c6b0bbfbc325700046e1ceee
+	sha256sums = SKIP
 
 pkgname = mingw-w64-qt5-3d-static
-

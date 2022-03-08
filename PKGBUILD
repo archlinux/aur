@@ -10,30 +10,41 @@
 
 _qt_module=qt3d
 pkgname=mingw-w64-qt5-3d-static
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 arch=('any')
 pkgdesc="C++ and QML APIs for easy inclusion of 3D graphics (mingw-w64)"
-depends=('mingw-w64-qt5-declarative-static')
-makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers')
+depends=('mingw-w64-qt5-declarative-static' 'mingw-w64-assimp')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config' 'mingw-w64-vulkan-headers' 'assimp')
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
+_commit=6d926ec2739f2289c6b0bbfbc325700046e1ceee
+_basever=$pkgver
+pkgver+=+kde+r18
+makedepends+=('git')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
-_pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('03ed6a48c813c75296c19f5d721184ab168280b69d2656cf16f877d3d4c55c1d')
+_pkgfqn=${_qt_module}
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 depends+=(${pkgname%-static}) # the static version relies on the shared version for build tools and headers
 _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 
+pkgver() {
+  cd $_pkgfqn
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
+}
+
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # ensure qgltf is linked against zlib
-  echo 'LIBS += -L/usr/lib -lz' >> tools/qgltf/qgltf.pro
+  # ensure qgltf is linked against assimp and zlib
+  echo 'LIBS += -L/usr/lib -lassimp -lz' >> tools/qgltf/qgltf.pro
+  # avoid linker errors related to an attempt to use Qt's bundled zlib by enforcing use of system assimp
+  sed -i 's|include.*||g' tools/qgltf/qgltf.pro
 }
 
 build() {
