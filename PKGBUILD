@@ -2,7 +2,7 @@
 
 pkgname=man-pages-cs-git
 _gitname=manpages-l10n
-pkgver=r17992.168bf0eb64
+pkgver=r18106.439c7cb95b
 pkgrel=1
 pkgdesc="Czech man pages (Git version)"
 arch=('any')
