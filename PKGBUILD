@@ -2,8 +2,11 @@
 ## Co-Maintainer:  Jaja <jaja@mailbox.org>
 ## Co-Maintainer:  floriplum <floriplum@mailbox.org>
 
+## Linted using:
+##   $ shellcheck PKGBUILD -e SC2034,SC2148,SC2154
+
 ## pkginfo
-pkgdesc="A fancy custom distribution of Valves Proton with various patches"
+pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-bin
 pkgver=GE_Proton7_8
 pkgrel=1
@@ -62,15 +65,15 @@ backup=("${_protoncfg}")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
-source=(${_pkgver}_${pkgrel}.tar.gz::"${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
+source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
         "supplementary.tar.zst")
 sha512sums=('0da118a8acd380336b40fa18bff4f3e8825c5c27c6101373143afff4864748a06bc0f1d17f9ed79fab94844f2958fe627909552c79aba8204a14596ff14ae8de'
             'a484c4cd2003057cf0cbbd32ca5d0106e97c75434e7bef34b35be8239ad98a482358852e41e85abedf5b24ac4d0375c8fffc7deee81a9b08c7799a398f23773b')
 
 build() {
 ## patches
-sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
-sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' ${_srcdir}/compatibilitytool.vdf
+sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launchers/proton.sh
+sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_srcdir}"/compatibilitytool.vdf
 ## remove artifacts
 rm "${_srcdir}"/protonfixes/*.tar.xz
 rm -rf "${_srcdir}"/protonfixes/.git*
@@ -80,17 +83,17 @@ strip --preserve-dates --strip-unneeded "${_srcdir}"/files/bin/wine*
 
 package() {
 ## create paths
-install -d ${pkgdir}/${_protondir}/
-install -d ${pkgdir}/${_licensedir}/
-install -d ${pkgdir}/$(dirname ${_execfile})/
+install -d "${pkgdir}/${_protondir}/"
+install -d "${pkgdir}/${_licensedir}/"
+install -d "${pkgdir}/$(dirname ${_execfile})/"
 ## licenses
-mv ${_srcdir}/LICENSE ${pkgdir}/${_licensedir}/license
-mv ${_srcdir}/LICENSE.OFL ${pkgdir}/${_licensedir}/license_OFL
-mv ${_srcdir}/PATENTS.AV1 ${pkgdir}/${_licensedir}/license_AV1
-mv ${_srcdir}/protonfixes/LICENSE ${pkgdir}/${_licensedir}/license_protonfixes
+mv "${_srcdir}/LICENSE" "${pkgdir}/${_licensedir}/license"
+mv "${_srcdir}/LICENSE.OFL" "${pkgdir}/${_licensedir}/license_OFL"
+mv "${_srcdir}/PATENTS.AV1" "${pkgdir}/${_licensedir}/license_AV1"
+mv "${_srcdir}/protonfixes/LICENSE" "${pkgdir}/${_licensedir}/license_protonfixes"
 ## config files
-install --mode=0775 --group=50 ${srcdir}/configs/user_settings.py ${pkgdir}/${_protoncfg}
+install --mode=0775 --group=50 "${srcdir}"/configs/user_settings.py "${pkgdir}/${_protoncfg}"
 ## executables
-mv ${_srcdir}/* ${pkgdir}/${_protondir}
-install --mode=0755 ${srcdir}/launchers/proton.sh ${pkgdir}/${_execfile}
+mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
+install --mode=0755 "${srcdir}"/launchers/proton.sh "${pkgdir}/${_execfile}"
 }
