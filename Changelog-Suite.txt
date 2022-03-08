@@ -1,5 +1,17 @@
 Changelog for AirVPN Suite
 
+Version 1.2.0 RC 2 - 8 March 2022
+
+- [ProMIND] vpnclient.hpp: added methods init(), initSupportedDataCiphers(), isDataCipherSupported() and getSupportedDataCiphers()
+- [ProMIND] vpnclient.hpp: added cipher member to struct EventData
+- [ProMIND] vpnclient.hpp: added getPushedDns() method
+- [ProMIND] airvpntools.cpp: added normalizeBoolValue() method for the normalization of "simple" bools to extended values conforming to Suite's option parser and to be used to extend OpenVPN3 "simple" bool options
+- [ProMIND] lohher.hpp: flushLog() is now synchronized and thread safe by using a semaphore
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.0 RC 1 - 15 February 2022
 
 - [ProMIND] Updated to OpenVPN 3.7.2 AirVPN
