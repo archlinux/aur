@@ -11,10 +11,14 @@ pkgdesc="A room acoustics analysis software for measuring and analysing room and
 arch=('any')
 url="https://www.roomeqwizard.com"
 license=('custom')
+depends=('java-runtime=8' 'xdg-utils')
+makedepends=('java-environment=8' 'fontconfig' 'freetype2')
 source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
 sha512sums=('68a8059295f197a1102fac091dec27f74deb05d2fb5cba1fbc23e113546bb9f832995136015200188eff0fe3a1a6695d4b9fe08a0c3eee6cf53ccfd514fcfec2')
 
 package() {
+  export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
+
   sh REW_linux_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"
 
   mkdir -p "$pkgdir/usr/bin" \
