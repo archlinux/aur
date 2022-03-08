@@ -10,8 +10,7 @@ pkgbase = otf-monaco-powerline-font-git
 	provides = otf-monaco-powerline-font
 	conflicts = monaco-powerline-font
 	conflicts = otf-monaco-powerline-font
-	source = monaco-powerline-font::git+http://gist.github.com/229a0729ec79c6fcec81
+	source = monaco-powerline-font::git+https://gist.github.com/229a0729ec79c6fcec81.git
 	md5sums = SKIP
 
 pkgname = otf-monaco-powerline-font-git
-
