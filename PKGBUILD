@@ -4,9 +4,10 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-base-headless
-pkgver=5.15.2+kde+r305
+_basever=5.15.3
+pkgver=5.15.3+kde+r133
 pkgrel=1
-_commit=77c620f0a1f8a5e8e126fd00a7beba6ac8005ad0
+_commit=e68ca8e51375d963b2391715f70b42707992dbd8
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -32,14 +33,11 @@ options=(debug)
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   cd ${_pkgfqn}
-
-  git revert -n 6344955d17e17e2398720fe60c34cfc2a4a95208 # Revert version bump
-
   patch -p1 < ../qmake-cflags.patch # Use system CFLAGS in qmake
   patch -p1 < ../qmake-config.patch # Don't strip binaries with qmake and use -ltcg, cf. QTBUG-73834
 }
