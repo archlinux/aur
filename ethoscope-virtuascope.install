@@ -1,11 +1,4 @@
-## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
-
-# arg 1:  the new package version
 post_install() {
-
 
     echo "Set up mysql database"
     mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -31,26 +24,8 @@ post_install() {
 
 }
 
-## arg 1:  the new package version
-## arg 2:  the old package version
-#pre_upgrade() {
-    # do something here
-#}
-
-# arg 1:  the new package version
-# arg 2:  the old package version
-#post_upgrade() {
-#    # do something here
-#}
-
-# arg 1:  the old package version
 pre_remove() {
     echo "disabling systemd service files"
     systemctl stop ethoscope_virtuascope
     systemctl disable ethoscope_virtuascope
 }
-
-# arg 1:  the old package version
-#post_remove() {
-    # do something here
-#}
