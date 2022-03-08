@@ -20,9 +20,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=269
+_minor=270
 _srcname=linux-${_major}
-_clr=${_major}.268-194
+_clr=${_major}.269-195
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -69,8 +69,9 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
-                   --enable-after IKCONFIG IKCONFIG_PROC \
+    scripts/config --set-str DEFAULT_HOSTNAME archlinux \
+                   --enable IKCONFIG \
+                   --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
     # Power management and ACPI options
@@ -277,7 +278,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            'c603528f955e0325546ac7e939780ef8ce3df1f7016b8fb80ea58e5d36076731'
+            '1fe5d524ec4253b524b8d0ae12aab8ac0bc9054d11c4a735aa8216779ce5ef13'
             'SKIP')
 
 validpgpkeys=(
