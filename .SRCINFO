@@ -1,13 +1,14 @@
 pkgbase = abcl-git
 	pkgdesc = Full implementation of the Common Lisp language in the JVM
-	pkgver = r3546.217ed0f2
-	pkgrel = 2
+	pkgver = r3600.f6f8ce01
+	pkgrel = 1
 	url = http://common-lisp.net/project/armedbear/
 	arch = any
 	license = GPL
 	makedepends = ant
 	makedepends = net-tools
-	makedepends = subversion
+	makedepends = git
+	makedepends = inet-utils
 	makedepends = java-environment>=11
 	depends = java-runtime
 	depends = bash
@@ -16,8 +17,7 @@ pkgbase = abcl-git
 	conflicts = abcl
 	source = abcl.git::git+https://gitlab.common-lisp.net/abcl/abcl.git
 	source = abcl.sh
-	md5sums = SKIP
-	md5sums = d51ffd115b32f9a47f849fc7630ced4f
+	sha256sums = SKIP
+	sha256sums = 8afb6578b1ac5b25a7b270069e81e1e99da6bfac661eadfc97e61acb43f5f3b0
 
 pkgname = abcl-git
-
