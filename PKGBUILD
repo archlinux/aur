@@ -2,7 +2,7 @@
 
 _pkgname='pyAttributes'
 pkgname=python-${_pkgname,,}
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Implementations of .NET-like attributes realized with Python decorators"
 arch=(any)
@@ -12,7 +12,7 @@ depends=('python' 'python-argcomplete' 'python-pytooling')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('47ab3f4765483805acca31a6376e66a4741fe04d1f77c3c565d6b763004f729c')
+sha256sums=('f9979ac6cef8caa7a7ca1773d71c4a57c3526df3f5598609a8c6da0051020299')
 
 build() {
   cd "$_pkgname-$pkgver"
