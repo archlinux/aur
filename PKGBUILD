@@ -5,11 +5,11 @@ pkgname="stm32cubeide"
 pkgver=1.9.0
 _pkgver_ext=1.9.0_12015_20220302_0855
 _pkg_file_name=en.st-stm32cubeide_1.9.0_12015_20220302_0855_amd64.sh_v1.9.0.zip
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('xdg-user-dirs' 'imagemagick')
-depends=('java-runtime' 'ncurses5-compat-libs' 'glibc' 'libusb' 'webkit2gtk')
+depends=('java-runtime' 'glibc' 'libusb' 'webkit2gtk' 'arm-none-eabi-gdb')
 optdepends=('jlink-software-and-documentation' 'stlink')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
@@ -97,6 +97,11 @@ Type=Application
 Categories=Development
 END
 
+	msg2 'Replace GDB by system'
+	rm "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin/arm-none-eabi-gdb*
+	ln -s usr/bin/arm-none-eabi-gdb "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
+	ln -s usr/bin/arm-none-eabi-gdb-add-index "${pkgdir}/opt/stm32cubeide/plugins/"com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32*/tools/bin
+	
 	msg2 'Instalation of license file'
 	install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -D -o root -g root -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" "${srcdir}/dm00218346.pdf"
