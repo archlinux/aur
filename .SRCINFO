@@ -1,10 +1,12 @@
 pkgbase = osm2pgrouting
 	pkgdesc = Import tool for OpenStreetMap data to pgRouting database
 	pkgver = 2.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pgrouting.org
 	arch = x86_64
 	license = GPL
+	makedepends = boost
+	makedepends = cmake
 	depends = libpqxx
 	depends = expat
 	source = https://github.com/pgRouting/osm2pgrouting/archive/refs/tags/v2.3.8.tar.gz
