@@ -2,7 +2,7 @@
 _base=py-pde
 pkgname=python-${_base}
 pkgdesc="Python package for solving partial differential equations"
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 arch=(any)
 url="https://github.com/zwicker-group/${_base}"
@@ -15,7 +15,7 @@ optdepends=('python-h5py: for storing data in the hierarchical file format'
   'python-tqdm: for display progress bars during calculations'
   'napari: for displaying images interactively')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('bb040cab2d7bd9a7b5dfb03bbd418c08747a911f6abee2e222f31d7f08bef3ae765b9a617a28ff3552a410acb73955c77c105eef02f09cd8750fa23d0a965911')
+sha512sums=('f958ca4b24b19823c3eec50d7460440b5c4c0f6daaafe7f3c63cb3937c39f7556c27cfdea8431f6e563e17c9b6705699f78ca39b507bd81f116b43bba3d043f5')
 
 build() {
   cd ${_base}-${pkgver}
