@@ -1,17 +1,16 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 _repo='MedzikUser/imgurs'
-_ver=v0.5.0
+_ver=v0.5.1
 
 pkgname='imgurs'
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='CLI for Imgur API written in Rust'
 arch=('x86_64')
 url="https://github.com/$_repo"
 license=('BSD3')
 
-depends=('openssl')
-makedepends=('git' 'cargo' 'pkg-config')
+makedepends=('git' 'cargo')
 optdepends=(
   'libnotify: Notification support'
   'xsel: Clipboard support'
