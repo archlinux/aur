@@ -13,29 +13,31 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.0.99.1.r168.g34b870da8
+pkgver=21.1.99.1.r173.g7d2014e7d
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
 url="https://xorg.freedesktop.org"
+options=('debug')
 makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxkbfile' 'libxfont2' 'libpciaccess' 'libxv' 'libxcvt'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
+_srcurl=git+https://gitlab.freedesktop.org/xorg/xserver.git
+source=($_srcurl
         xvfb-run # with updates from FC master
         xvfb-run.1)
 sha512sums=('SKIP'
-            '4154dd55702b98083b26077bf70c60aa957b4795dbf831bcc4c78b3cb44efe214f0cf8e3c140729c829b5f24e7466a24615ab8dbcce0ac6ebee3229531091514'
+            '87c79b4a928e74463f96f58d277558783eac9b8ea6ba00d6bbbb67ad84c4d65b3792d960ea2a70089ae18162e82ae572a49ad36df169c974cc99dbaa51f63eb2'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
-  
+
 pkgver() {
   cd "${_pkgbase}"
   # cutting off 'xorg.server.' prefix that presents in the git tag
-  git describe --long --tags| sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed "s/$(git describe --long --tags | cut -d- -f3)/$(grep -m 1 version meson.build | awk '{print $2}' | sed "s/'//g;s/,//g")/g" | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -104,7 +106,7 @@ package_xorg-server-git() {
   _pkgname='xorg-server'
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=25.2' 'X-ABI-XINPUT_VERSION=24.4' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
+  provides=('X-ABI-VIDEODRV_VERSION=25.3' 'X-ABI-XINPUT_VERSION=24.4' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
   conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-git.install
