@@ -1,30 +1,19 @@
 pkgbase = python-ipython-sql
-	pkgdesc = Issue SQL commands from IPython.
-	pkgver = 0.3.9
+	pkgdesc = RDBMS access via IPython
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/ipython-sql
 	arch = any
-	license = custom:PYTHON
-	makedepends = ipython
-	makedepends = python-sqlalchemy
-	makedepends = python-prettytable
-	makedepends = python-sqlparse
-	makedepends = ipython2
-	makedepends = python2-sqlalchemy
-	makedepends = python2-prettytable
-	makedepends = python2-sqlparse
-	source = https://files.pythonhosted.org/packages/source/i/ipython-sql/ipython-sql-0.3.9.tar.gz
-	md5sums = 69407492ac7fcb92520e10d24b3b3194
-
-pkgname = python-ipython-sql
+	license = MIT
 	depends = ipython
 	depends = python-sqlalchemy
 	depends = python-prettytable
 	depends = python-sqlparse
+	depends = python-six
+	optdepends = python-pandas: DataFrame support
+	optdepends = python-pymysql: connect to MySQL database
+	optdepends = python-psycopg2: connect to PostgreSQL database
+	source = https://files.pythonhosted.org/packages/source/i/ipython-sql/ipython-sql-0.4.0.tar.gz
+	sha256sums = 3e888e59bf57277cbd6f383cb232858b2d7c71219e5749257128f16d9857e46c
 
-pkgname = python2-ipython-sql
-	depends = ipython2
-	depends = python2-sqlalchemy
-	depends = python2-prettytable
-	depends = python2-sqlparse
-
+pkgname = python-ipython-sql
