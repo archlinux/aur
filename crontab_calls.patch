@@ -1,18 +1,18 @@
---- a/plugins/cron/functions.go	2021-06-07 02:25:18.000000000 +0200
-+++ b/plugins/cron/functions.go	2021-07-12 15:58:47.292094682 +0200
+--- a/plugins/cron/functions.go	2022-03-08 17:40:53.000000000 +0100
++++ b/plugins/cron/functions.go	2022-03-08 22:37:11.883706200 +0100
 @@ -81,13 +81,13 @@
  }
 
  func deleteCrontab() error {
--	command := common.NewShellCmd("crontab -l -u dokku")
-+	command := common.NewShellCmd("crontab -l")
+-	command := common.NewShellCmd("sudo /usr/bin/crontab -l -u dokku")
++	command := common.NewShellCmd("sudo /usr/bin/crontab -l")
  	command.ShowOutput = false
  	if !command.Execute() {
  		return nil
  	}
 
--	command = common.NewShellCmd("crontab -r -u dokku")
-+	command = common.NewShellCmd("crontab -r")
+-	command = common.NewShellCmd("sudo /usr/bin/crontab -r -u dokku")
++	command = common.NewShellCmd("sudo /usr/bin/crontab -r")
  	command.ShowOutput = false
  	out, err := command.CombinedOutput()
  	if err != nil {
@@ -20,8 +20,8 @@
  		return fmt.Errorf("Unable to template out schedule file: %v", err)
  	}
 
--	command := common.NewShellCmd(fmt.Sprintf("crontab -u dokku %s", tmpFile.Name()))
-+	command := common.NewShellCmd(fmt.Sprintf("crontab %s", tmpFile.Name()))
+-	command := common.NewShellCmd(fmt.Sprintf("sudo /usr/bin/crontab -u dokku %s", tmpFile.Name()))
++	command := common.NewShellCmd(fmt.Sprintf("sudo /usr/bin/crontab %s", tmpFile.Name()))
  	command.ShowOutput = false
  	out, err := command.CombinedOutput()
  	if err != nil {
