@@ -3,7 +3,7 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=wine-git
-pkgver=6.22.r0.g986254d6c17
+pkgver=7.3.r297.g99ef287bb72
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (git version)'
 arch=('x86_64')
@@ -84,7 +84,7 @@ optdepends=(
     'samba'
     'dosbox'
 )
-options=('staticlibs')
+options=('staticlibs' '!lto')
 install="${pkgname}.install"
 provides=("wine=${pkgver}" "bin32-wine=${pkgver}" "wine-wow64=${pkgver}")
 conflicts=('wine' 'bin32-wine' 'wine-wow64')
@@ -112,9 +112,7 @@ pkgver() {
 }
 
 build() {
-    # workaround for FS#55128
-    # https://bugs.archlinux.org/task/55128
-    # https://bugs.winehq.org/show_bug.cgi?id=43530
+    # does not compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/-fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
     
