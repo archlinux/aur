@@ -1,7 +1,7 @@
 pkgbase = python311
 	pkgdesc = Major release 3.11 of the Python high-level programming language
-	pkgver = 3.11.0a5
-	pkgrel = 2
+	pkgver = 3.11.0a6
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = python311
 	provides = python=3.11.0
 	provides = python311-pip
 	provides = python311-setuptools
-	source = https://www.python.org/ftp/python/3.11.0/Python-3.11.0a5.tar.xz
+	source = https://www.python.org/ftp/python/3.11.0/Python-3.11.0a6.tar.xz
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = 3dab241811e83f1eae691fd5b567c52b864db0b236ebf245e839250bc3ac399f
+	sha256sums = 1c53a2ff75879633e30cac29d2aa6b7a010e355b95f0bf9ac691beccf5f9d12a
 
 pkgname = python311
