@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname="gog-inscryption-demo"
-pkgver=2
+pkgver=2.50729
 pkgrel=1
 pkgdesc='Roguelike deck-building game. GOG version, uses Wine.'
 arch=('any')
@@ -17,10 +17,10 @@ conflicts=('gog-inscryption')
 options=('!strip')
 install="${pkgname}.install"
 _shortname="${pkgname#gog-}"
-_setup_exe="setup_${_shortname}_${pkgver}.exe"
+_setup_basename="setup_${_shortname}_${pkgver%.*}_(${pkgver##*.})"
 
 source=(
-  "${_setup_exe}::gogdownloader://${_shortname/-/_}/en1installer0"
+  "${_setup_basename}.exe::gogdownloader://${_shortname/-/_}/en1installer0"
   "${pkgname}.desktop"
   "${_shortname%-demo}.bash"
 )
@@ -39,12 +39,12 @@ noextract=("${pkgname}.tar.gz")
 prepare() {
   mkdir -p "${srcdir}/${_shortname}"
   cd "${srcdir}/${_shortname}"
-  innoextract -c -m --progress=1 "${srcdir}/${_setup_exe}"
+  innoextract -c -m --progress=1 "${srcdir}/${_setup_basename}.exe"
 }
 
 package() {
   echo >&2 'Querying GOG ID'
-  _gog_id="$(innoextract -s --gog-game-id "${srcdir}/${_setup_exe}")"
+  _gog_id="$(innoextract -s --gog-game-id "${srcdir}/${_setup_basename}.exe")"
 
   echo >&2 'Packaging game icon'
   install -D -m 644 -T \

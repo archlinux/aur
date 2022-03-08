@@ -1,6 +1,6 @@
 /.vscode
 /src
 /pkg
-*.exe
+/setup_*
 *.pkg.*
 *.tar.*

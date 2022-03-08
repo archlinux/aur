@@ -1,6 +1,6 @@
 pkgbase = gog-inscryption-demo
 	pkgdesc = Roguelike deck-building game. GOG version, uses Wine.
-	pkgver = 2
+	pkgver = 2.50729
 	pkgrel = 1
 	url = https://www.inscryption.com/
 	install = gog-inscryption-demo.install
@@ -15,7 +15,7 @@ pkgbase = gog-inscryption-demo
 	conflicts = gog-inscryption
 	noextract = gog-inscryption-demo.tar.gz
 	options = !strip
-	source = setup_inscryption-demo_2.exe::gogdownloader://inscryption_demo/en1installer0
+	source = setup_inscryption-demo_2_(50729).exe::gogdownloader://inscryption_demo/en1installer0
 	source = gog-inscryption-demo.desktop
 	source = inscryption.bash
 	sha512sums = e7775de1db016b2c0a8092900a04944f5c170545dfcedfe4b1de7855cd3a02ee5e80dbba0d9010fa37400762195f9bb06c3636baf1a0800fd16189ffa12d0a23
