@@ -16,7 +16,7 @@ pkgbase = libretro-cap32-git
 	depends = libretro-core-info
 	provides = libretro-cap32
 	conflicts = libretro-cap32
-	source = libretro-cap32::git+https://github.com/libretro/libretro-cap32.git
-	md5sums = SKIP
+	source = git+https://github.com/libretro/libretro-cap32.git
+	b2sums = SKIP
 
 pkgname = libretro-cap32-git
