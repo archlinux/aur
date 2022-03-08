@@ -24,6 +24,7 @@ pkgbase = spot-client
 	depends = openssl
 	depends = pango
 	optdepends = org.freedesktop.secrets
+	options = !lto
 	source = spot-client-0.3.1-1.tar.gz::https://github.com/xou816/spot/archive/0.3.1.tar.gz
 	source = disable-clippy.patch
 	sha512sums = b0127dbe2a1430dcc288c9ef6bd61f0afa92e4ca6316d4e84c7e6bf7051cffc90a8778312e04991f91a2090728a7ce3e288249d1c8562106f7851dc701e97873
