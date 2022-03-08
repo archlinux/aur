@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname="gog-inscryption-demo"
-pkgver=1.0.0
+pkgver=2
 pkgrel=1
 pkgdesc='Roguelike deck-building game. GOG version, uses Wine.'
 arch=('any')
@@ -28,7 +28,7 @@ source=(
 sha512sums=(
   'e7775de1db016b2c0a8092900a04944f5c170545dfcedfe4b1de7855cd3a02ee5e80dbba0d9010fa37400762195f9bb06c3636baf1a0800fd16189ffa12d0a23'
   'fd902d5c85732c034cc2c772efc2c5183dd19b3ce3ac7786890d761079525dbc30421cda5a0f8da3b935adc6e7089f38de82337643369bcf6022216dc3666a9d'
-  '765d86ce9ecb9af8fb0a97fb6b1d8efe81388a30d0b62d9e0f4cc7aba90905e1642624980cc88a68cb860ba91d18bfb418a76185e61a228bddcde18e57846cba'
+  '0a8db49802625c2207a2efae3b498f53547c79f0b003e6ca020c7aa2e0870e4a6393688d4b1e244f23088cbeab830112bf925c0f464fc58e97c5b5d0582e2232'
 )
 
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
