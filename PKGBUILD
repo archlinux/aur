@@ -11,7 +11,7 @@
 pkgname=chromium-no-extras
 _pkgname=chromium
 pkgver=99.0.4844.51
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=3
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -190,9 +190,6 @@ build() {
   # Let Chromium set its own symbol level
   CFLAGS=${CFLAGS/-g }
   CXXFLAGS=${CXXFLAGS/-g }
-  # -fvar-tracking-assignments is not recognized by clang
-  CFLAGS=${CFLAGS/-fvar-tracking-assignments}
-  CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
 
   # https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
   CFLAGS=${CFLAGS/-fexceptions}

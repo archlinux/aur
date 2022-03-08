@@ -1,7 +1,7 @@
 pkgbase = chromium-no-extras
 	pkgdesc = Chromium without hangout services, widevine, pipewire, or chromedriver
 	pkgver = 99.0.4844.51
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.chromium.org/Home
 	arch = x86_64
 	license = BSD
