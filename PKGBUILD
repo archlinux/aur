@@ -5,7 +5,7 @@ pkgdesc="A club management plugin for jameica."
 arch=('any')
 url="http://www.jverein.de"
 license=("GPL")
-depends=('java-runtime>=1.5' 'jameica>=2.6' 'hibiscus>=2.6' 'libstdc++5')
+depends=('java-runtime>=1.5' 'jameica>=2.6' 'hibiscus>=2.6')
 makedepends=('unzip')
 install=$pkgname.install
 #source=("${pkgname}-${pkgver}.zip::https://github.com/$pkgname/$pkgname/archive/${pkgver}.tar.gz")
