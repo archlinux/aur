@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-normalize
 pkgver=1.22.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio normalization using ffmpeg."
 arch=(any)
 url="https://github.com/slhck/ffmpeg-normalize"
@@ -20,7 +20,7 @@ build() {
 }
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python test/test.py
+  pytest test/test.py
 }
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
