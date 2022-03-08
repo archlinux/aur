@@ -1,5 +1,5 @@
 # Maintainer: cod_er <itzz@duck.com>
-pkgname=linux-material-wallpapers
+pkgname=material-linux-wallpapers
 pkgver=1
 pkgrel=1
 pkgdesc="Win11 & andrio12 based material style wallpapers"

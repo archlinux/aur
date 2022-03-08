@@ -1,4 +1,4 @@
-pkgbase = linux-material-wallpapers
+pkgbase = material-linux-wallpapers
 	pkgdesc = Win11 & andrio12 based material style wallpapers
 	pkgver = 1
 	pkgrel = 1
@@ -6,9 +6,9 @@ pkgbase = linux-material-wallpapers
 	arch = any
 	license = GPL
 	makedepends = git
-	provides = linux-material-wallpapers
-	conflicts = linux-material-wallpapers
-	source = linux-material-wallpapers::git+https://gitlab.com/cod_er/material-linux-wallpapers
+	provides = material-linux-wallpapers
+	conflicts = material-linux-wallpapers
+	source = material-linux-wallpapers::git+https://gitlab.com/cod_er/material-linux-wallpapers
 	md5sums = SKIP
 
-pkgname = linux-material-wallpapers
+pkgname = material-linux-wallpapers
