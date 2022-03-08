@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=cutefish-icons
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="System default icon theme of CutefishOS"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('cutefish')
 depends=()
 makedepends=('extra-cmake-modules' 'ninja')
 source=("https://github.com/cutefishos/icons/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('22259bf9f601dcfa577bdab0d12cebae48cb05dfe8ab8d67560656692cdab5afd1412c71656a64de088b0db13792d1e1f44e4eff5a713fb3274530aba0ba5c58')
+sha512sums=('064f81cf8f9ac6d3fdf3eff4500df0c349335432c49fd2d7a01cc84060b97372c2ea92998670cf68e0f1e8f099aedb9164a285af4f74da47bb750754649df464')
 
 build() {
   cd icons-$pkgver
