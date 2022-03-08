@@ -47,6 +47,6 @@ package() {
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/files.log"
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/installation.log"
   rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/uninstall.png"
-  rm -f "$pkgdir/usr/share/java/$pkgname/.install4j/*.desktop"
+  rm -f $pkgdir/usr/share/java/$pkgname/.install4j/*.desktop
   rm -rf "$pkgdir/usr/share/java/$pkgname/uninstall"
 }
