@@ -1,8 +1,8 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 _pkgname=eka2l1
 pkgname="${_pkgname}-git"
-pkgver=4746.4d9e1addc
-pkgrel=1
+pkgver=5279.0c5314e82
+pkgrel=2
 pkgdesc="Experimental Symbian OS emulator (GIT version)"
 arch=('x86_64')
 url="https://github.com/EKA2L1/EKA2L1"
@@ -25,6 +25,7 @@ depends=(
     'pango'
 	'vulkan-icd-loader'
   'gtk3'
+  'sdl2'
 )
 provides=('eka2l1')
 conflicts=('eka2l1')
@@ -33,7 +34,7 @@ source=(
   "eka2l1"
 )
 md5sums=('SKIP'
-         'a37f85023bcce416aaaf6b72e0d01c46')
+         '904f15dfd859ab3c10d7f1b9a78db41d')
 
 pkgver() {
 	cd "${_pkgname}-git"
@@ -43,19 +44,17 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}-git"
 	git submodule update --recursive --init
-  #find src/ -type f -exec sed -i 's/std::int16_t/int16_t/g' {} +
-  #find src/ -type f -exec sed -i 's/std::uint32_t/uint32_t/g' {} +
-  #find src/ -type f -exec sed -i 's/std::uint8_t/uint8_t/g' {} +
-  sed -i 's/std::uint64_t surface_handle_64/std::uint32_t surface_handle_64/g' src/emu/drivers/src/graphics/backend/vulkan/graphics_vulkan.cpp
+    sed -i 's/constexpr size_t signal_stack_size = std::max(SIGSTKSZ/const size_t signal_stack_size = std::max<size_t>(SIGSTKSZ/g' src/external/dynarmic/src/backend/x64/exception_handler_posix.cpp 
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}-git"
 
-	mkdir -p build
-	cd build/
-	cmake -DCMAKE_BUILD_TYPE=Release -DGLFW_INSTALL=OFF -DCMAKE_INSTALL_PREFIX=/opt/eka2l1 ..
-  make
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DEKA2L1_NO_TERMINAL=ON -DEKA2L1_ENABLE_UNEXPECTED_EXCEPTION_HANDLER=ON -DEKA2L1_BUILD_VULKAN_BACKEND=OFF -DCMAKE_INSTALL_PREFIX=/opt/eka2l1 .
+
+    cd build
+
+    make
 }
 
 package() {
