@@ -2,7 +2,7 @@
 
 pkgname=ledger-go
 _pkgname=${pkgname%-go}
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A double-entry accounting system with a command-line reporting interface"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -13,7 +13,7 @@ makedepends=(go)
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f9bae288db54b14e329792a4c7979f67a142430e69548525cfde7197c16a55d6')
+sha256sums=('928ec540cf9e23e7d436794b669bf89a6b414f6740c217b9231829e6f8e0032d')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -23,6 +23,7 @@ build() {
 	-o ledger-go \
     -trimpath \
     -buildmode=pie \
+    -ldflags="-s -w -X github.com/howeyc/ledger/ledger/cmd.version=${pkgver}" \
     ./ledger
 }
 
@@ -35,4 +36,7 @@ package() {
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/cmd/web-portfolio-sample.toml "${pkgdir}/usr/share/${_pkgname}/web-portfolio-sample.toml"
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/cmd/web-quickview-sample.toml "${pkgdir}/usr/share/${_pkgname}/web-quickview-sample.toml"
   install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/cmd/web-reports-sample.toml "${pkgdir}/usr/share/${_pkgname}/web-reports-sample.toml"
+
+  install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/vim-ledger/ftplugin/ledger.vim "${pkgdir}/usr/share/${_pkgname}/vim-ledger/ftplugin/ledger.vim"
+  install -Dm644 "${srcdir}"/${_pkgname}-${pkgver}/ledger/vim-ledger/syntax/ledger.vim "${pkgdir}/usr/share/${_pkgname}/vim-ledger/syntax/ledger.vim"
 }
