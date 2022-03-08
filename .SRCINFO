@@ -1,16 +1,16 @@
 pkgbase = aphototoollibre
 	pkgdesc = Photo editor for Linux
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://www.ahola.me/aphototoollibre.html
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base>=5.15.2
 	depends = hicolor-icon-theme
-	source = aphototoollibre-1.0.1-2-src.tar.gz::https://github.com/aphototool/A-Photo-Tool-Libre/archive/refs/tags/v1.0.1-2.tar.gz
-	source = aphototoollibre-1.0.1-2-src.tar.gz.asc::https://github.com/aphototool/A-Photo-Tool-Libre/releases/download/v1.0.1-2/v1.0.1-2.tar.gz.asc
+	source = aphototoollibre-1.0.2-1-src.tar.gz::https://github.com/aphototool/A-Photo-Tool-Libre/archive/refs/tags/v1.0.2-1.tar.gz
+	source = aphototoollibre-1.0.2-1-src.tar.gz.asc::https://github.com/aphototool/A-Photo-Tool-Libre/releases/download/v1.0.2-1/v1.0.2-1.tar.gz.asc
 	validpgpkeys = A970F7E40CB64F0D5B9FC516AFE56C2DF614820C
-	sha256sums = 42f22e1c294c89704cd564365b2519981ef02f3c9b95f176c6d243fd6c420d98
+	sha256sums = 2197498de0059392a62621f7c7e696d0d54bb57779b82e442d6ba89849e12c73
 	sha256sums = SKIP
 
 pkgname = aphototoollibre
