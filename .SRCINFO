@@ -1,0 +1,18 @@
+pkgbase = ethoscope-virtuascope
+	pkgdesc = A platform for monitoring animal behaviour in real time from a raspberry pi - virtuascope addon
+	pkgver = r1969.g0521648
+	pkgrel = 1
+	url = http://lab.gilest.ro/ethoscope
+	install = ethoscope-virtuascope.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ethoscope-node
+	depends = python-scipy
+	depends = python-opencv
+	depends = fmt
+	depends = mariadb
+	source = ethoscope-virtuascope::git+https://github.com/gilestrolab/ethoscope.git
+	md5sums = SKIP
+
+pkgname = ethoscope-virtuascope
