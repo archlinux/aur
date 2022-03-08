@@ -17,9 +17,10 @@
 
 _qt_module=qtbase
 pkgname=mingw-w64-qt5-base-static
-pkgver=5.15.2+kde+r274
+pkgver=5.15.3+kde+r133
 pkgrel=1
-_commit=98aa64af7e1e677bd107bfb0c432cabf7c3a5e32
+_basever=${pkgver%%+*}
+_commit=e68ca8e51375d963b2391715f70b42707992dbd8
 pkgdesc='A cross-platform application and UI framework, native OpenGL backend (mingw-w64)'
 arch=('any')
 url='https://www.qt.io/'
@@ -70,50 +71,48 @@ source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
         '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch'
         '0032-Fix-crashes-in-rasterization-code-using-setjmp.patch')
 sha256sums=('SKIP'
-            '8ec72a1bb610e30a06c5bd301e0f502a4b1098e4f7709950d42f8d4f6b4529b1'
-            '3e2150bf9fd9b7bf4e02a7355b3316f1129159de4523dd56e2e002c17461a06b'
-            'e18708d7a35920fff7b366cd98fabf87dda254b940581df2a3768dd22be86989'
-            '8be908199db7ed2d11dfa5b1a8b037a183e1a331b818e511a62ed366e56e322b'
-            'ea9abbd04d03beb28682824750449ec734d0cd5980d18e43ee8c43a081522a39'
-            'ede654c3021e9b2b5672fe67e6f3c8841dc3e9f59a16e1119adc5581021b6584'
-            '238a37d318d46d02e6a0632e58824ec64e323bf1a80f04fd2ca673eeb7eac167'
-            '1afa605f868eb859192c9e4a36474e2c9d3fd9808b8bbe83bf28fe44a0c5354a'
-            '3c9c7d80b88d7da333c13b366e0807d3d1bea7641a6e8540142c2197e00fb177'
-            'ca065a912f79b3b8bd511d076e8d15e18802a7dc4baeb4f9af2a9ad1b2d65b25'
-            '519cf065067d7d1a15d02735457576f85d3d32ed2548650e93866e0e903e88bc'
-            '0811548a8f4c533f3b0df2b6114de673754aa269264a7bc99cc69db4228e24a8'
-            'e8e754415d38b286c94f4227a372ef9d875d5f7d5493a88815903d0d9425f198'
-            'ddddd2c328870aa66feed1415a34437cdbb6e086e6309fe5ac640cd551fdbc8d'
-            '9cf7eac11820012cedd0f5da75e7690e83a80e7002af0dec283d4b424142c22d'
-            '24e7863c621ab360c392b29244fcb2ffc4d116b8a5ef1f4e2a40841218c9bee1'
-            '790fb8562e2eee0b80bf23d6123e2f2c537021d8bbbec45053b12b8330244f93'
-            '6ff67b6c2c17478096409a90ee3e00b2a34b3e64dc8ecf24af8c4f33fbe9b083'
-            '3ce30f710591ba5dddb7c3a5cf0f9743da203ecc84d2e727e6d0f6a2a9502db6'
-            '80e5af98f00d73ad4210aa4fd4aed5f3259d7b965b2933568c30e539bb8a3fe3'
-            '9409620a23301e6410310ef9c865f19b185b35fa52593fc75f3674c1c95be81d'
-            'd5fe2bcaa51e96ae1254d4596aabd4635d31959d15c2e5e6eefd238f824f1cf2'
-            '2bfd85eb2dad9ffbd3ca0920208091e85792c3b3673beff3467929ef3f7c399d'
-            '11d8dc525166ccbbc431fb3ed3a56540bfe26ad69b180c99ab6d3d9322d85ccc'
-            'a633e33bf22e33ba549bd7bec1dbb3c1896922ed9041239f70fe13b32162c836'
-            '0057e150aed1f2119dd7dff27d21ed7f160ba398e9a4630c4f8ff979203dc8c2'
-            '30395cee07666b2cab06051033e3532140e8c4258ab6d576ef6514b90731bc8d'
-            'a7ee924a26424c15f4a639f7e11ef154e70325c67e78d7d9231e7cff51fc01b2'
-            '431bd1f62600f985a4160fcdb2e44a6d8fec807eadb2f68738f941a649335150'
-            'ba978e69e897e5ada1dce268517a5aeb356250052738c61730718f5014a39490'
-            'f6c3027f58205167f6a18e51463ee0702c1f4a57106ff6a75dff6c3a9e654ebc'
-            '0f6796e6c7e0436b61bbc3947197f821732a07db900d440772054cf25a9ca9de')
+            'afba71c5989978f286179a49607976a35237496d86ac89be8757c899a40d537e'
+            'b030be6a881a7e1398676079581b7aa72d439989eb1f19092630c43ce0ea95d5'
+            '8f964778a3c1d88643e9264e883b8733a8c7b0f4b02cf939e90fdf68842caa98'
+            '2bed971bda26f4f0dfec4cce6e3ced11c47b310de50672f68a0dda287a588849'
+            'dfb2dff89fd4e40622212f042165156fa3ed2d469b6531f942199de33caad14f'
+            'a12a73536da03752abbdb30d4a9cc969ff428e9e3152980cd021640f905ce03b'
+            '254f0b967ba8084880542dcd27b7fb641d36969006d1f5f0da9d54e1969b30a1'
+            'b8806f862bce296d55da97cb3273f6a7dcb92e7d1266b9610f88b994e1a3ad25'
+            '6eb966cfeb80b5170fbd36e51f968a86d89dff532d1bef9daccbcf720b0474f2'
+            '9da382aca0cf299d1f736c1adff9033706e4047be419264c6b9ae78370a04756'
+            '7c8a923aa2bf5600c0f2993e4e869dab663f3dd2ab27c15035310c06661e4aed'
+            'ee873b1f6a6e543cb288b39f135b6450f861f5ebcc8b4a7d367ea1bdb197170a'
+            'b4ca4c64daf48cd1a7ca9d55e91d53294b719c50dd392ba84e0bdc1a8acc597f'
+            '8f840fb187612cb28a94bd4a8083c83e29a42b2731e28f8686dcb37411cc69a9'
+            '867e7ad44c2aac86f858d973a7af6514385a4f50d200f4259b30d470a3551b35'
+            '13443e40d4a470219a2f6dc2dedcd988dd481ebe724f74fb5f1e7fa4fbe29e6e'
+            '47b0f93c86108c03641efbdd97b54809a4ac0b575b86f27b7c6217e87320cda3'
+            'fcac1dd8349e98b20ac4041856fd1d22c56326697fae5ab53e1823caeba10b01'
+            'd4a31f994dbc39c9267bd2378f10212a5606a78d60956218349a4dc0faa4f215'
+            '03dc0efe46cc96984c971e0e744bbf32cadc9fa65a58a9d6435f0ed59169409d'
+            'd1432fe90e63616e898d7f0c541fe28588101230ca3fe2e20da39365967a64f4'
+            'd9b68a39699e83674738d507bbe35290893085c8cee5f947ba74d3ef8eaa0a36'
+            '6711df068cc141a72ec9a9d1d8d7afa0f718c2fe9799523d03ce47d1574efad0'
+            'ea2d56b4f2eebd9a83c13706f9e4e37dfe4ba92af76195b97a81230734cbb300'
+            'b872519418f451d8196fe22182a26994fb9b81c49ad6ca151b895e23e274cc7c'
+            '4e7f7cfd9e0ab4f7251f32c5a6cf81b05e2435172f145b5caad64a5e12487116'
+            'e69332fb658d70256ba232726db853d55372a4f45a5a5b9479a21a10fe807d67'
+            '19c5cc4283416942f1575284357a3c3a74bc625f95aecb80d2a8dcc7d2d8c08f'
+            'b924d45463042e345630b9d54460a8547749f3fa3a3ffb7de3c4e514e92a9a9b'
+            '97657b673e434befb42ccb1c153d1094a6d1c23044eb7725aea3a64aaf2ec5b1'
+            '562da92bdb7bf27dd44c2ae4f45381668fc80f1e8a0241b8c039c7e2884cfbae'
+            '6cd22e4e73ecf402af473859aaedcb4ec62173605a2e4127d72ef73c6882b323')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
 pkgver() {
   cd $_pkgfqn
-  echo "5.15.2+kde+r"`git rev-list --count origin/5.15.2..$_commit`
+  echo "$_basever+kde+r"`git rev-list --count v$_basever-lts-lgpl..$_commit`
 }
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-
-  git revert -n 6344955d17e17e2398720fe60c34cfc2a4a95208 # Revert version bump
 
   # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
