@@ -1,6 +1,6 @@
 # Maintainer: HitCoder <hitcoder9768@gmail.com>
 pkgname=openutau-git
-pkgver=r835.f40ffdc
+pkgver=r837.fbe1b3b
 pkgrel=1
 epoch=
 pkgdesc="An open source UTAU successor"
@@ -21,15 +21,15 @@ pkgver() {
 build() {
 	cd "$srcdir"/OpenUtau
 	dotnet restore OpenUtau
-	dotnet build OpenUtau
+	dotnet publish OpenUtau -c Release -o bin/linux
 }
 
 package() {
 
     # Copy libraries
-    install -Dm755 "$srcdir"/OpenUtau/OpenUtau/bin/Debug/netcoreapp3.1/OpenUtau \
+    install -Dm755 "$srcdir"/OpenUtau/bin/linux/OpenUtau \
       "$pkgdir"/usr/lib/$pkgname/OpenUtau
-    cp -r "$srcdir"/OpenUtau/OpenUtau/bin/Debug/netcoreapp3.1/* "$pkgdir"/usr/lib/$pkgname/
+    cp -r "$srcdir"/OpenUtau/bin/linux/* "$pkgdir"/usr/lib/$pkgname/
 
     # Wrapper
     echo "#!/bin/sh" > "$srcdir"/openutau
