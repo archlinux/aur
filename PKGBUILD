@@ -2,15 +2,15 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=1.8.0
-_pkgver_ext=1.8.0_11526_20211125_0815
-_pkg_file_name=en.st-stm32cubeide_1.8.0_11526_20211125_0815_amd64.sh_v1.8.0.zip
+pkgver=1.9.0
+_pkgver_ext=1.9.0_12015_20220302_0855
+_pkg_file_name=en.st-stm32cubeide_1.9.0_12015_20220302_0855_amd64.sh_v1.9.0.zip
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('xdg-user-dirs' 'imagemagick')
-depends=('java-runtime' 'jlink-software-and-documentation' 'stlink' 'ncurses5-compat-libs' 'glibc' 'libusb' 'webkit2gtk')
-optdepends=()
+depends=('java-runtime' 'ncurses5-compat-libs' 'glibc' 'libusb' 'webkit2gtk')
+optdepends=('jlink-software-and-documentation' 'stlink')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('Commercial')
@@ -32,7 +32,7 @@ fi
 source=("local://${_pkg_file_name}"
 	"99-jlink.rules.patch"
 	"https://www.st.com/resource/en/license_agreement/dm00218346.pdf")
-sha256sums=('623db74cd47dd42675193e4ed3c5880d708ad187c95fedec8337042789e004b2'
+sha256sums=('fbb1c8dae35fe1bceba167db90041eab2dbd309ecbe3b6d81f22f0520ebc7fb2'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP')
 
@@ -86,7 +86,7 @@ END
 	install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/${pkgname}.desktop" <<END
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.8.0
+Comment=STM32CubeIDE 1.9.0
 GenericName=STM32CubeIDE
 Exec=env GDK_BACKEND=x11 stm32cubeide %F
 Icon=stm32cubeide
