@@ -2,7 +2,7 @@ pkgbase = iwlwifi-beacon-lts
 	pkgdesc = Intel wireless chips driver (with beacon timeout patch)
 	pkgver = 5.15.26
 	pkgrel = 1
-	url = https://wireless.wiki.kernel.org/en/users/drivers/iwlwifi
+	url = https://bugzilla.kernel.org/show_bug.cgi?id=203709
 	arch = i686
 	arch = x86_64
 	license = GPL
