@@ -26,6 +26,8 @@ prepare() {
 
 build() {
   export CC="gcc -m32"
+  export CFLAGS="${CFLAGS} -Wno-error -Wno-format -Wno-format-security"
+  export CXXFLAGS="${CXXFLAGS} -Wno-error -Wno-format -Wno-format-security"
   cd gtk+-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc \
     --mandir=/usr/share/man --infodir=/usr/share/info \
