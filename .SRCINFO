@@ -1,18 +1,19 @@
 pkgbase = r-httpuv
 	pkgdesc = HTTP and WebSocket Server Library
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=httpuv
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	license = GPL3
-	makedepends = make
-	depends = r>=2.15.1
-	depends = r-rcpp>=1.0.7
+	license = GPL
+	checkdepends = r-curl
+	checkdepends = r-testthat
+	checkdepends = r-websocket
+	depends = libuv
+	depends = r-rcpp
 	depends = r-r6
 	depends = r-promises
-	depends = r-later>=0.8.0
+	depends = r-later
 	depends = zlib
 	optdepends = r-testthat
 	optdepends = r-callr
