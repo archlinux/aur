@@ -24,7 +24,7 @@ msg() {
 
 license() {
     msg "By installing this software you agree to the term of the Segger license."
-    msg "See /usr/share/licenses/jlink-software-and-documentation/License.txt"
+    msg "See /usr/share/licenses/jlink-software-and-documentation/LicenseIncGUI.txt"
     msg "SEGGER J-Link software may only be used with original SEGGER products and authorized OEM products."
     msg "The use of the licensed software to operate SEGGER product clones is prohibited and illegal."
 }
