@@ -1,7 +1,7 @@
 # Maintainer: Caleb Fontenot <foley2431@gmail.com>
 
 pkgname=howdy-git
-pkgver=2.6.1.r12.g95331bd
+pkgver=2.6.1.r77.g96767fe
 pkgrel=1
 pkgdesc="Windows Hello for Linux"
 arch=('x86_64')
@@ -51,7 +51,9 @@ package() {
 	cd "howdy"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/howdy/LICENSE"
 	mkdir -p "${pkgdir}/usr/lib/security/howdy"
-	cp -r src/* "${pkgdir}/usr/lib/security/howdy"
+	cp -rv howdy/src/* "${pkgdir}/usr/lib/security/howdy"
+    mkdir -p ${pkgdir}/usr/lib/howdy-gtk
+	cp -rv howdy-gtk/src/* ${pkgdir}/usr/lib/howdy-gtk
 	cp "${srcdir}/dlib_face_recognition_resnet_model_v1.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data/"
 	cp "${srcdir}/mmod_human_face_detector.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data/"
 	cp "${srcdir}/shape_predictor_5_face_landmarks.dat" "${pkgdir}/usr/lib/security/howdy/dlib-data/"
@@ -60,6 +62,6 @@ package() {
 	ln -s /lib/security/howdy/cli.py "${pkgdir}/usr/bin/howdy"
 	chmod +x "${pkgdir}/usr/lib/security/howdy/cli.py"
 	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-	cp autocomplete/howdy "${pkgdir}/usr/share/bash-completion/completions/howdy"
+	cp -v howdy/src/autocomplete/howdy "${pkgdir}/usr/share/bash-completion/completions/howdy"
 }
 
