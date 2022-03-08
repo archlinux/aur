@@ -1,7 +1,7 @@
-# Maintainer: mistiru <mistiru plus aur at pm dot me>
+# Maintainer: mistiru <dev at mistiru dot me>
 
 pkgname=meta-group-texlive-most
-pkgver=202009131536
+pkgver=202203080059
 pkgrel=1
 pkgdesc='Meta package for texlive-most'
 arch=('any')
