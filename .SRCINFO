@@ -1,7 +1,7 @@
 pkgbase = ansible-lint-git
 	pkgdesc = Checks playbooks for practices and behaviour that could potentially be improved.
 	pkgver = 6.0.0a0.r3.gc4cdd50b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ansible-community/ansible-lint
 	arch = any
 	license = MIT
@@ -18,7 +18,6 @@ pkgbase = ansible-lint-git
 	depends = python-packaging
 	depends = python-wcmatch
 	depends = python-enrich
-	depends = python-tenacity
 	depends = ansible-core
 	depends = yamllint
 	depends = python-ansible-compat

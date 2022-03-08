@@ -6,14 +6,13 @@
 _pkgname=ansible-lint
 pkgname=ansible-lint-git
 pkgver=6.0.0a0.r3.gc4cdd50b
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks playbooks for practices and behaviour that could potentially be improved."
 arch=('any')
 url="https://github.com/ansible-community/ansible-lint"
 license=('MIT')
 depends=('python' 'python-ruamel-yaml' 'python-pyaml' 'python-rich' 'python-packaging'
-          'python-wcmatch' 'python-enrich' 'python-tenacity' 'ansible-core' 'yamllint'
-          'python-ansible-compat')
+          'python-wcmatch' 'python-enrich' 'ansible-core' 'yamllint' 'python-ansible-compat')
 makedepends=('git' 'python-pip' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
 checkdepends=('python-pytest')
 optdepends=('ansible: check official ansible collections')
