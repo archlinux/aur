@@ -1,0 +1,26 @@
+pkgbase = gog-inscryption
+	pkgdesc = Roguelike deck-building game. GOG version, uses Wine.
+	pkgver = 1.08.51256
+	pkgrel = 1
+	url = https://www.inscryption.com/
+	install = gog-inscryption.install
+	arch = x86_64
+	license = custom
+	makedepends = innoextract
+	makedepends = lgogdownloader
+	depends = wine
+	depends = wine-mono
+	optdepends = lib32-alsa-lib: sound support for ALSA
+	optdepends = lib32-libpulse: sound support for PulseAudio
+	conflicts = gog-inscryption-demo
+	options = !strip
+	source = setup_inscryption_1.08_(51256).exe::gogdownloader://1224800338/en1installer0
+	source = setup_inscryption_1.08_(51256)-1.bin::gogdownloader://1224800338/en1installer1
+	source = gog-inscryption.desktop
+	source = inscryption.bash
+	sha512sums = 0e294700cbbe3888ddecc5f1162803434b5c75b7bb4c82c6e23a77753fea35f0a16fe27a0851ed58708522923f4f9563390448703f4fa36d42079e620c5a69cc
+	sha512sums = 75ac79d2d4802dd82627bd921964bcc4957cfa0eaa7e81f2c495ebf4bc27a81372b5779149ab9f024b8634617ec1a2a015fceaf795a1db85f73ae4f579f6a2e2
+	sha512sums = 65226f2e071bc7dad63d683d6ad5f255dff354ca6c5478fa2e606933383af48d2ee2b2fa1450936227a59e1831f2ff44293d00a835daa98aa215b6e50755a7bf
+	sha512sums = 0a8db49802625c2207a2efae3b498f53547c79f0b003e6ca020c7aa2e0870e4a6393688d4b1e244f23088cbeab830112bf925c0f464fc58e97c5b5d0582e2232
+
+pkgname = gog-inscryption
