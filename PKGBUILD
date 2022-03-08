@@ -17,7 +17,7 @@ conflicts=('gog-inscryption')
 options=('!strip')
 install="${pkgname}.install"
 _shortname="${pkgname#gog-}"
-_setup_exe="setup_${_shortname}_${pkgver%.*}_(${pkgver##*.}).exe"
+_setup_exe="setup_${_shortname}_${pkgver}.exe"
 
 source=(
   "${_setup_exe}::gogdownloader://${_shortname/-/_}/en1installer0"
