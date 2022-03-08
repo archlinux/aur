@@ -2,7 +2,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=flyway
-pkgver=8.5.0
+pkgver=8.5.2
 pkgrel=1
 pkgdesc="Database migration utility written Java, supporting a wide range of databases"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://flywaydb.org/"
 license=('Apache')
 depends=('java-environment>=8')
 source=(https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$pkgver/flyway-commandline-$pkgver.tar.gz)
-sha512sums=('887cef55933311784a17430e94836f2771cadccec7cc946cc1f190c94eceea7f738614fc8b35d9cac86a8972e446bdadc7aa7bfc17dafe47363b1dd27e0a4bfa')
+sha512sums=('8aa585a4a249d39441ae0def6943bb45b9569cc766470fc2ffb912863d5a03f0f71afaeb56948d0c2d26de3318dc9f879680b3821ad9d9b85f1c44f75bf61902')
 
 package() {
   cd $srcdir
@@ -21,7 +21,7 @@ package() {
 
   cat << 'EOF' > $pkgdir/usr/bin/flyway
 #!/bin/sh
-"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-8.5.0/lib/*:/opt/flyway/flyway-8.5.0/lib/community/*:/opt/flyway/flyway-8.5.0/drivers/* org.flywaydb.commandline.Main "$@"
+"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-8.5.2/lib/*:/opt/flyway/flyway-8.5.2/lib/community/*:/opt/flyway/flyway-8.5.2/drivers/* org.flywaydb.commandline.Main "$@"
 EOF
   chmod 755 $pkgdir/usr/bin/flyway
 }
