@@ -1,7 +1,7 @@
 # Maintainer: ahub <ahub@riseup.net>
 
 pkgname=qrop
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Crop planning and recordkeeping software for and by market gardeners." arch=("x86_64")
 url="https://qrop.frama.io/"
@@ -12,7 +12,7 @@ makedepends=("make" "cmake" "sqlite")
 source=("https://framagit.org/ah/qrop/-/archive/v${pkgver}/${pkgname}-v$pkgver.tar.gz"
   "qrop.desktop::https://framagit.org/-/snippets/6043/raw/main/snippetfile1.txt")
 
-sha256sums=("7ac9faa9bc7f16e098fa452c51643ec8d3f3ecb2f23dde90e9b9507952cd6077"
+sha256sums=("3e75c7050688aabb358668a4820f3401952142832bf4e7a4975500fe73243d5a"
   "0659fd27c86e86e62bce66525e0c738c2975f28c68faf18d696634a0e59c88fd")
 
 build() {
