@@ -25,7 +25,7 @@ source=(
 md5sums=('1a87fe2428166e915c84290c5a301818'
          'b430413d18902ace305eb2254e3535db'
          'aacd18e1111652b3dc4afe3e15991532'
-         '99766fa8ada3b64c25037473ffeb5725'
+         'e08b215ec417ed2d65951690535971f8'
          '43d8c9617118578f03b2c4eeb1c72c57')
  
 depends=('java-runtime' 'hicolor-icon-theme' 'sh')
