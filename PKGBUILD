@@ -2,21 +2,21 @@
 
 _pkgname='mplhep'
 pkgname="python-${_pkgname}"
-pkgver='0.3.22'
+pkgver='0.3.23'
 pkgrel=1
 pkgdesc="A set of helpers for matplotlib to more easily produce plots typically needed in HEP."
 arch=('any')
 url='https://github.com/scikit-hep/mplhep'
 license=('MIT')
 depends=('python-numpy' 'python-matplotlib' 'python-mplhep_data' 'python-uhi' 'python-packaging')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
-checkdepends=('python-pytest' 'python-pytest-mock' 'python-importlib-metadata' 'python-boost-histogram' 'python-scipy' 'python-uproot')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm' 'python-wheel')
+checkdepends=('python-pytest' 'python-pytest-mock' 'python-importlib-metadata' 'python-boost-histogram' 'python-scipy' 'python-uproot' 'python-scikit-hep-testdata')
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  python setup.py bdist_egg
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -24,12 +24,11 @@ check() {
   find tests -type f -exec sed \
       -e 's@uproot4@uproot@g' \
       -i {} \;
-  # some tests fail because of unpackaged deps
-  # PYTHONPATH="${PWD}/build/lib:${PWD}/src" pytest
+  PYTHONPATH="${PWD}/build/lib:${PWD}/src" pytest tests
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  python setup.py install  --skip-build --root="${pkgdir}/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
