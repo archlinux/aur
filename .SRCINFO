@@ -1,0 +1,17 @@
+pkgbase = utilyre-st-git
+	pkgdesc = A simple virtual terminal emulator for X patched with bold-is-not-bright, ligatures, and xresources
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/utilyre/st.git
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = libxft-bgra
+	provides = st
+	conflicts = st
+	conflicts = st-git
+	source = git+https://github.com/utilyre/st.git
+	md5sums = SKIP
+
+pkgname = utilyre-st-git
