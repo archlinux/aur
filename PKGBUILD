@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-ui-git
-pkgver=2.21.4
+pkgver=2.21.5
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI - beta'
 arch=('i686' 'x86_64')
@@ -36,13 +36,14 @@ build() {
   fi
 
   # Compile C sources (Tray)
-  if [ "ui" = "ui" ]; then
-    cd src/UI.GTK.Linux.Tray
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=. 
-    make
-    strip -S --strip-unneeded -o eddie-tray-strip eddie_tray
-    cd ../..
-  fi
+  # Removed in 2.21.5, compatibility issue
+  #if [ "ui" = "ui" ]; then
+  #  cd src/UI.GTK.Linux.Tray
+  #  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=. 
+  #  make
+  #  strip -S --strip-unneeded -o eddie-tray-strip eddie_tray
+  #  cd ../..
+  #fi
 
   # Compile C sources
   chmod +x src/eddie.linux.postbuild.sh
@@ -86,7 +87,7 @@ package() {
     install -Dm755 "src/App.Forms.Linux/bin/$_pkgarch/Release/App.Forms.Linux.exe" "$pkgdir/usr/lib/eddie-ui/eddie-ui.exe"
     install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Forms.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Forms.dll"
     install -Dm644 "src/App.Forms.Linux/bin/$_pkgarch/Release/Lib.Forms.Skin.dll" "$pkgdir/usr/lib/eddie-ui/Lib.Forms.Skin.dll"
-    install -Dm755 "src/UI.GTK.Linux.Tray/eddie-tray-strip" "$pkgdir/usr/lib/eddie-ui/eddie-tray"
+    #install -Dm755 "src/UI.GTK.Linux.Tray/eddie-tray-strip" "$pkgdir/usr/lib/eddie-ui/eddie-tray"
     install -Dm644 "repository/linux_arch/bundle/eddie-ui/usr/share/pixmaps/eddie-ui.png"  "$pkgdir/usr/share/pixmaps/eddie-ui.png"
   fi
 
