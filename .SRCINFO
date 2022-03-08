@@ -1,7 +1,7 @@
 pkgbase = pyoxidizer
 	pkgdesc = A modern Python application packaging and distribution tool
-	pkgver = 0.18.0
-	pkgrel = 3
+	pkgver = 0.20.0
+	pkgrel = 1
 	url = https://github.com/indygreg/PyOxidizer
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = pyoxidizer
 	depends = gcc-libs
 	depends = openssl
 	depends = zlib
-	source = pyoxidizer-0.18.0.tar.gz::https://github.com/indygreg/PyOxidizer/archive/pyoxidizer/0.18.0.tar.gz
-	sha512sums = c863d2cd5e386176212c93a79b669e0ccd1a8ede53b121cc5947b122675cba925a8d3cd7ea92bec14a6401b97ae8ab063860c95fe1fecf36c059a5c61c831681
+	source = pyoxidizer-0.20.0.tar.gz::https://github.com/indygreg/PyOxidizer/archive/pyoxidizer/0.20.0.tar.gz
+	sha512sums = 54dd14fcdf0cf676185de9d567d55935c059df29e825eabea8ea105a17c9a79eaba9328f37e97691b9282abf18a2e943ecadb93d2b16be28311a5b74af58427b
 
 pkgname = pyoxidizer
