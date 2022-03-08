@@ -6,7 +6,7 @@
 # Contributor: Stefan Husmann <stefan-husmann at t-online dot de>
 
 pkgname=sagemath-git
-pkgver=9.6.beta3.r0.g1e8ba0aac4
+pkgver=9.6.beta4.r0.gb21ca55c56
 pkgrel=1
 pkgdesc='Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab'
 arch=(x86_64)
@@ -47,7 +47,7 @@ optdepends=('cython: to compile cython code'
   'python-pip: to install optional packages with sage -pip'
   'sage-notebook-exporter: convert flask notebooks to Jupyter'
   'python-database-knotinfo: interface to the KnotInfo and LinkInfo databases')
-makedepends=(cython boost ratpoints python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
+makedepends=(cython boost python-jinja sirocco mcqd coxeter bliss tdlib python-pkgconfig shared_meataxe git)
 conflicts=(sagemath)
 provides=(sagemath)
 source=(git://git.sagemath.org/sage.git#branch=develop

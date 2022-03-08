@@ -1,13 +1,12 @@
 pkgbase = sagemath-git
 	pkgdesc = Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab
-	pkgver = 9.6.beta3.r0.g1e8ba0aac4
+	pkgver = 9.6.beta4.r0.gb21ca55c56
 	pkgrel = 1
 	url = http://www.sagemath.org
 	arch = x86_64
 	license = GPL
 	makedepends = cython
 	makedepends = boost
-	makedepends = ratpoints
 	makedepends = python-jinja
 	makedepends = sirocco
 	makedepends = mcqd
