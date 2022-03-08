@@ -1,22 +1,13 @@
 pkgbase = python-webassets
 	pkgdesc = Asset management application for Python web development
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/miracle2k/webassets
 	arch = any
-	license = BSD
-	makedepends = python2-setuptools
+	license = custom
 	makedepends = python-setuptools
+	depends = python
 	source = https://github.com/miracle2k/webassets/archive/2.0.tar.gz
-	sha256sums = 0639e8d40dc785d5a125723383c9717ff32945cb09ab71d37b134eefee274d78
-
-pkgname = python2-webassets
-	optdepends = python2-pillow: support for image manipulation
-	optdepends = python2-nose: required to run tests
-	optdepends = python2-mock: required to run tests
+	sha512sums = 6d62d4e5c1ed81a2d235c24776b632574f3670ae3d863c5f5a79d0e1afc7acfa7965e532b7975503df758dbe6c8dbd857b250a6ea8e4b414c8f1ae12fb8addd7
 
 pkgname = python-webassets
-	optdepends = python-pillow: support for image manipulation
-	optdepends = python-nose: required to run tests
-	optdepends = python-mock: required to run tests
-
