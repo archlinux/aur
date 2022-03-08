@@ -1,6 +1,6 @@
 pkgbase = libucw-git
 	pkgdesc = General purpose library for the C language
-	pkgver = v6.5.13.r2.dcc163ae
+	pkgver = v6.5.13.r3.7308e240
 	pkgrel = 1
 	url = http://www.ucw.cz/libucw/
 	arch = any
