@@ -1,0 +1,12 @@
+pkgbase = squint
+	pkgdesc = duplicates the output of a monitor into a X11 window
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://github.com/a-ba/squint/
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	source = https://github.com/a-ba/squint/archive/v0.8.3.tar.gz
+	sha256sums = 1b5845e359a94bf93e87a8dfb0a3e3df6ad2914e47fa646275a4261a81b638d9
+
+pkgname = squint
