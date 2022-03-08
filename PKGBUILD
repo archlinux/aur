@@ -77,9 +77,9 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.16
-_minor=12
+_minor=13
 _srcname=linux-${_major}
-_clr=${_major}.11-1128
+_clr=${_major}.12-1129
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -150,7 +150,8 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
+    scripts/config --set-str DEFAULT_HOSTNAME archlinux \
+                   --enable IKCONFIG \
                    --enable IKCONFIG_PROC \
                    --undefine RT_GROUP_SCHED
 
@@ -402,7 +403,7 @@ done
 
 sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
             'SKIP'
-            'a495f0e33a432485654495918940b25069def9886a391a853a88e576df864e91'
+            'aaa5555a903f794fb753f35427781b608d72ea34993c018ae1289037376037a0'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba'
             'c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197'
