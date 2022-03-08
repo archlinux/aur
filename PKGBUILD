@@ -4,11 +4,11 @@
 
 _pkgname=lxqt-panel
 pkgname=$_pkgname-git
-pkgver=0.13.0.1104.gc6f910fd
+pkgver=1.0.0.32.gcd4b9b8b
 pkgrel=1
 pkgdesc='The LXQt desktop panel'
 arch=('i686' 'x86_64')
-url='https://github.com/lxde/lxqt-panel'
+url='https://github.com/lxqt/lxqt-panel'
 license=('GPL2')
 depends=(
       "alsa-lib" "libpulse" "lm_sensors" "libstatgrab" "libsysstat-git"
@@ -19,7 +19,7 @@ depends=(
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/lxde/$_pkgname.git")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {

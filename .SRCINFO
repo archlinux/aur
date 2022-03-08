@@ -1,8 +1,8 @@
 pkgbase = lxqt-panel-git
 	pkgdesc = The LXQt desktop panel
-	pkgver = 0.13.0.1104.gc6f910fd
+	pkgver = 1.0.0.32.gcd4b9b8b
 	pkgrel = 1
-	url = https://github.com/lxde/lxqt-panel
+	url = https://github.com/lxqt/lxqt-panel
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -23,8 +23,7 @@ pkgbase = lxqt-panel-git
 	depends = lxqt-globalkeys-git
 	provides = lxqt-panel
 	conflicts = lxqt-panel
-	source = git+https://github.com/lxde/lxqt-panel.git
+	source = git+https://github.com/lxqt/lxqt-panel.git
 	sha256sums = SKIP
 
 pkgname = lxqt-panel-git
-
