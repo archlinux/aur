@@ -6,12 +6,12 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-5
+_srctag=GE-Proton7-6
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
 
-_wine_commit=10da6d78c52fb0d7a90fe39be0c79c244232a11d
+_wine_commit=ca3681631adc4723e672aacc0a25a109983781fa
 _stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 #_winever=${pkgver%.*}
 #_winever=$pkgver
