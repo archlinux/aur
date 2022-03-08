@@ -20,8 +20,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir"/OpenUtau
-	dotnet restore OpenUtau
-	dotnet publish OpenUtau -c Release -o bin/linux
+
+	# arch doesn't support arm and openutau doesn't support x86 :/
+	dotnet restore OpenUtau -r linux-x64
+	dotnet publish OpenUtau -c Release -r linux-x64 --self-contained true -o bin/linux
 }
 
 package() {
