@@ -1,0 +1,13 @@
+pkgbase = wordle-cli-bin
+	pkgdesc = Play Wordle CLI in your terminal.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/nimblebun/wordle-cli
+	arch = x86_64
+	license = MIT
+	provides = wordle
+	conflicts = wordle
+	source = https://github.com/nimblebun/wordle-cli/releases/download/v1.0.5/wordle_1.0.5_linux_amd64
+	sha256sums = ddcfa2cbe46d6875d62916cd28dd262ad6b133da1359aa4c4b1314eb92d3138c
+
+pkgname = wordle-cli-bin
