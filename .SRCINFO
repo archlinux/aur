@@ -1,13 +1,15 @@
 pkgbase = soem
 	pkgdesc = Simple Open EtherCAT Master Library
 	pkgver = 1.4.0.r61.g9b6ebd6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openethercatsociety.github.io/doc/soem
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
 	makedepends = git
 	source = git+https://github.com/OpenEtherCATsociety/SOEM.git#commit=9b6ebd6e43e03be461c5eab803a74786319a14db
+	source = fix-scatech.patch
 	sha256sums = SKIP
+	sha256sums = a3755e1a5f371bae982b4c36b5a3df0d1ff6d38c2f31b1b70326e5b8343050fe
 
 pkgname = soem

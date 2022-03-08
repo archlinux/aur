@@ -1,0 +1,48 @@
+diff -ru SOEM/soem/ethercatcoe.c SOEM-fixed/soem/ethercatcoe.c
+--- SOEM/soem/ethercatcoe.c	2022-03-08 10:24:11.535282886 +0800
++++ SOEM-fixed/soem/ethercatcoe.c	2022-03-08 11:06:40.655327076 +0800
+@@ -688,6 +688,12 @@
+       /* number of available sub indexes */
+       nidx = rdat;
+       bsize = 0;
++      // check for some buggy devices
++      if (context->slavelist[Slave].eep_man == 0x00000D37 && context->slavelist[Slave].eep_id == 0x0C710004 && context->slavelist[Slave].eep_rev == 0x00000002) {
++         if (nidx == 0x48) {
++            return 16;
++         }
++      }
+       /* read all PDO's */
+       for (idxloop = 1; idxloop <= nidx; idxloop++)
+       {
+@@ -696,6 +702,31 @@
+          wkc = ecx_SDOread(context, Slave, PDOassign, (uint8)idxloop, FALSE, &rdl, &rdat, EC_TIMEOUTRXM);
+          /* result is index of PDO */
+          idx = etohs(rdat);
++         // check for some buggy devices
++         if (context->slavelist[Slave].eep_man == 0x00000D37 && context->slavelist[Slave].eep_id == 0x0C710004 && context->slavelist[Slave].eep_rev == 0x00000002) {
++            switch (idx) {
++            case 0x1600:
++            case 0x1A00:
++               bsize += 16;
++               break;
++            case 0x1601:
++            case 0x1603:
++            case 0x1A01:
++            case 0x1A02:
++               bsize += 32;
++               break;
++            case 0x1605:
++               bsize += 64;
++               break;
++            case 0x1A04:
++            case 0x1A06:
++               bsize += 128;
++               break;
++            default:
++               break;
++            }
++            continue;
++         }
+          if (idx > 0)
+          {
+             rdl = sizeof(subcnt); subcnt = 0;
