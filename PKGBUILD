@@ -1,13 +1,13 @@
 # Maintainer: Gnarflord <aur@gnarf.link>
 pkgname=bakelite
-pkgver=r79.0bb9d7f
+pkgver=r91.3739017
 pkgrel=1
 pkgdesc="Incremental backup with strong cryptographic confidentiality baked into the data model"
 arch=('x86_64')
 url="https://github.com/richfelker/bakelite"
 license=('GPL2')
 source=("git+https://github.com/richfelker/bakelite.git#branch=main")
-md5sums=("SKIP")
+md5sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"

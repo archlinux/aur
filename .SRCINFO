@@ -1,6 +1,6 @@
 pkgbase = bakelite
 	pkgdesc = Incremental backup with strong cryptographic confidentiality baked into the data model
-	pkgver = r79.0bb9d7f
+	pkgver = r91.3739017
 	pkgrel = 1
 	url = https://github.com/richfelker/bakelite
 	arch = x86_64
