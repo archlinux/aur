@@ -91,6 +91,5 @@ package() {
     
   install -Dm666 "${srcdir}/etc/kaiengine.conf" "${pkgdir}/etc/kaiengine.conf"
 
-  # Unfortunately on Arch sbin is just a symlink
-  install -Dm775 "${srcdir}/usr/sbin/kaiengine" "${pkgdir}/usr/bin/kaiengine"
+  install -Dm775 "${srcdir}/usr/bin/kaiengine" "${pkgdir}/usr/bin/kaiengine"
 }
