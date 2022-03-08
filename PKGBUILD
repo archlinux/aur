@@ -4,14 +4,13 @@
 _pkgname=gtk
 pkgname=lib32-gtk
 pkgver=1.2.10
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-platform toolkit (v1) (32-bit)"
 arch=('x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
 depends=('lib32-libxi' 'lib32-glib')
 makedepends=('lib32-libxt' 'gcc-multilib' 'glib')
-install=gtk.install
 source=(https://download.gnome.org/sources/gtk+/1.2/gtk+-${pkgver}.tar.gz
         aclocal-fixes.patch)
 sha1sums=('a5adcb909257da01ae4d4761e1d41081d06e4d7c'
