@@ -1,6 +1,6 @@
 pkgbase = helio-workstation-bin
 	pkgdesc = Helio is free and cross-platform lightweight music creation playground.
-	pkgver = 3.8
+	pkgver = 3.9
 	pkgrel = 1
 	url = https://helio.fm/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = helio-workstation-bin
 	depends = libcurl-gnutls
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://ci.helio.fm/helio-3.8-x64.deb
-	sha512sums_x86_64 = 5f2d339d39c70f9097ada268e16e9d4f2a5471a319562299e13b14e1ed1c231f83bfada779baa2190c04fe87df4184cbaa496163fdcb5b9a5a7314d9de01057a
+	source = https://ci.helio.fm/helio-3.9-x64.deb
+	sha512sums = c4fe27ca1caf8b766dcd5a8f767286a162c0f84658d8f01c497191d17158cf033882e61dec7d4c2fec317e460ce98ae7762fb832d5df9a13dcd60af2218b13b5
 
 pkgname = helio-workstation-bin
