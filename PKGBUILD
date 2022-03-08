@@ -2,7 +2,7 @@
 
 _pkgname=windscribegui
 pkgname="${_pkgname}-git"
-pkgver=r2.3cecaab
+pkgver=r3.ec1bccb
 pkgrel=1
 pkgdesc="Qt 5/6 based GUI for Windscribe VPN written in Python"
 arch=("any")
@@ -42,5 +42,6 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     install -Dm644 "data/share/applications/windscribe.desktop" "${pkgdir}/usr/share/applications/windscribe.desktop"
+    install -Dm644 "data/share/icons/hicolor/256x256/apps/windscribe.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/windscribe.png"
     PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps dist/*.whl
 }

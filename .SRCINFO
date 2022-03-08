@@ -1,6 +1,6 @@
 pkgbase = windscribegui-git
 	pkgdesc = Qt 5/6 based GUI for Windscribe VPN written in Python
-	pkgver = r2.3cecaab
+	pkgver = r3.ec1bccb
 	pkgrel = 1
 	url = https://github.com/shaybox/windscribegui
 	arch = any
