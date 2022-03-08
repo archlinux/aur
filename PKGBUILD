@@ -21,7 +21,7 @@ optdepends=("electron")
 # changelog=
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 # noextract=()
-md5sums=("SKIP")
+md5sums=('830890c232c20fdc4793f16799d95103')
 # validpgpkeys=()
 
 prepare() {
@@ -39,8 +39,10 @@ package() {
   npm run make-linux
   
   mkdir -p "$pkgdir/usr/local/lib/hentaijs"
-  cp -r "out/hentaijs-linux-x64/" "$pkgdir/usr/local/lib/hentaijs/"
+  cp -rL "out/hentaijs-linux-x64/" "$pkgdir/usr/local/lib/hentaijs/"
   chmod 755 -R "$pkgdir/usr/local/lib/hentaijs/" 
   mkdir -p "$pkgdir/usr/local/bin/"
-  ln -s "/usr/local/lib/hentaijs/hentaijs-linux-x64/hentaijs" "$pkgdir/usr/local/bin/hentai.js"
+  ln -sr "../lib/hentaijs/hentaijs-linux-x64/hentaijs" "/usr/local/bin/hentai.js"
 }
+
+
