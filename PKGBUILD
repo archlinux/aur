@@ -1,10 +1,11 @@
 # Maintainer: Ilaï Deutel <PlMWPh1WSmypRv0JQljz> (echo ... | tr 'A-Za-z' 'l-za-kL-ZA-K' | base64 -d)
+# Contributor: i.further
 # Contributor: Flaviu Tamas <me@flaviutamas.com>
 # Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2018.11.26.r751.g5c01c682
+pkgver=2022.1.8.r59.g8753ceea
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.pypa.io"
@@ -65,9 +66,9 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  PIPENV_SHELL=bash python -m pipenv --completion | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/pipenv"
-  PIPENV_SHELL=zsh  python -m pipenv --completion | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_pipenv"
-  PIPENV_SHELL=fish python -m pipenv --completion | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/pipenv.fish"
+  _PIPENV_COMPLETE=bash_source python -m pipenv | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/pipenv"
+  _PIPENV_COMPLETE=zsh_source python -m pipenv  | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_pipenv"
+  /usr/bin/env _PIPENV_COMPLETE=fish_source python -m pipenv | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/pipenv.fish"
 
   cd pipenv/vendor
   find -name '*LICENSE' -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/licenses/${pkgname}/vendor/{}" \;
