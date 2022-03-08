@@ -1,6 +1,6 @@
 pkgbase = genie-systemd-git
 	pkgdesc = A quick way into a systemd "bottle" for WSL
-	pkgver = 2.1.r13.g391a645
+	pkgver = 2.2.r11.g577a561
 	pkgrel = 1
 	url = https://github.com/arkane-systems/genie
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = genie-systemd-git
 	conflicts = genie-systemd
 	options = !strip
 	backup = etc/genie.ini
-	source = git+https://github.com/arkane-systems/genie.git#branch=dev-2.2
+	source = git+https://github.com/arkane-systems/genie.git
 	sha256sums = SKIP
 
 pkgname = genie-systemd-git

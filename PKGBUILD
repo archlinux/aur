@@ -3,7 +3,7 @@
 # Contributor: Rayfalling <Rayfalling@outlook.com>
 # Contributor: facekapow, rayfalling, Ducksoft
 pkgname=genie-systemd-git
-pkgver=2.1.r13.g391a645
+pkgver=2.2.r11.g577a561
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('git' 'python-pip')
 provides=('genie-systemd')
 conflicts=('genie-systemd')
 options=(!strip)
-source=("git+https://github.com/arkane-systems/genie.git#branch=dev-2.2")
+source=("git+https://github.com/arkane-systems/genie.git")
 sha256sums=('SKIP')
 backup=('etc/genie.ini')
 
@@ -31,16 +31,7 @@ build() {
 package() {
   cd genie
 	make DESTDIR=${pkgdir} internal-package
-
-  # Need to fix symlinks and mandoc here because makefile generates a tar, which we don't need.
-  mkdir -p ${pkgdir}/usr/lib/systemd/system-environment-generators
-  mkdir -p ${pkgdir}/usr/lib/systemd/user-environment-generators
-	ln -s ${pkgdir}/usr/lib/genie/80-genie-envar.sh ${pkgdir}/usr/lib/systemd/system-environment-generators/80-genie-envar.sh
-	ln -s ${pkgdir}/usr/lib/genie/80-genie-envar.sh ${pkgdir}/usr/lib/systemd/user-environment-generators/80-genie-envar.sh
-
-	cp "othersrc/docs/genie.8" /tmp/genie.8
-	gzip -f9 "/tmp/genie.8"
-	install -Dm 0644 -o root "/tmp/genie.8.gz" -t "${pkgdir}/usr/share/man/man8"
+	make DESTDIR=${pkgdir} internal-supplement
 }
 
 # vim:set ts=2 sw=2 et:
