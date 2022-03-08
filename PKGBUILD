@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/$_repo"
 license=('BSD3')
 
-makedepends=('git' 'cargo')
+makedepends=('cargo')
 optdepends=(
   'libnotify: Notification support'
   'xsel: Clipboard support'

@@ -5,7 +5,6 @@ pkgbase = imgurs
 	url = https://github.com/MedzikUser/imgurs
 	arch = x86_64
 	license = BSD3
-	makedepends = git
 	makedepends = cargo
 	optdepends = libnotify: Notification support
 	optdepends = xsel: Clipboard support
