@@ -4,14 +4,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=aarchup-git
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="Fork of archup a small and lightweight update-notifier for archlinux."
 url="https://github.com/inglor/aarchup"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libnotify' 'gtk2')
-makedepends=('git' 'cmake' 'ninja')
+makedepends=('git' 'cmake' 'meson' 'ninja')
 source=("git+https://gitlab.com/artafinde/aarchup.git")
 md5sums=('SKIP')
 conflicts=('aarchup')

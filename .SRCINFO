@@ -1,6 +1,6 @@
 pkgbase = aarchup-git
 	pkgdesc = Fork of archup a small and lightweight update-notifier for archlinux.
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://github.com/inglor/aarchup
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = aarchup-git
 	license = GPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = meson
 	makedepends = ninja
 	depends = libnotify
 	depends = gtk2
@@ -18,4 +19,3 @@ pkgbase = aarchup-git
 	md5sums = SKIP
 
 pkgname = aarchup-git
-
