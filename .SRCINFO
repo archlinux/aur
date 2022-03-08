@@ -1,6 +1,6 @@
 pkgbase = python2-revolut
 	pkgdesc = Revolut API client for Python
-	pkgver = 0.6
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://github.com/emesik/revolut-python
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = python2-revolut
 	depends = python2-requests
 	depends = python2-dateutil
 	depends = python2-pyjwt
-	source = https://github.com/emesik/revolut-python/archive/v0.6.tar.gz
-	md5sums = 1b5b117b66020d68c5ac8a491b802ffa
+	source = https://github.com/emesik/revolut-python/archive/v0.8.4.tar.gz
+	md5sums = e3be37c065800977a141cb41bec53212
 
 pkgname = python2-revolut
-
