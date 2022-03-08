@@ -3,7 +3,7 @@
 
 pkgname=asciigraph
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies"
 arch=('x86_64')
 url='https://github.com/guptarohit/asciigraph'
@@ -36,5 +36,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 build/asciigraph "${pkgdir}/usr/bin/asciigraph"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/asciigraph/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/licenses/asciigraph/README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/asciigraph/README.md"
 }
