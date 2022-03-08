@@ -13,7 +13,6 @@ pkgbase = gog-inscryption-demo
 	optdepends = lib32-alsa-lib: sound support for ALSA
 	optdepends = lib32-libpulse: sound support for PulseAudio
 	conflicts = gog-inscryption
-	noextract = gog-inscryption-demo.tar.gz
 	options = !strip
 	source = setup_inscryption-demo_2_(50729).exe::gogdownloader://inscryption_demo/en1installer0
 	source = gog-inscryption-demo.desktop

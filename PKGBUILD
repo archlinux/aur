@@ -34,8 +34,6 @@ sha512sums=(
 DLAGENTS+=('gogdownloader::/usr/bin/lgogdownloader --download-file=%u -o %o')
 PKGEXT=.pkg.tar
 
-noextract=("${pkgname}.tar.gz")
-
 prepare() {
   mkdir -p "${srcdir}/${_shortname}"
   cd "${srcdir}/${_shortname}"
