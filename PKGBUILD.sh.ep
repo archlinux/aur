@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt5-module';
 \
-pkgver=5.15.2
+pkgver=5.15.3
 pkgrel=1
 arch=(<%== include 'fragments/mingw-w64-qt5-non_any_archs' %>)
 pkgdesc="Inter-process communication (IPC) module developed for Qt (mingw-w64)"
@@ -18,5 +18,8 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5QmlDevTools|-L/usr/lib /usr/$_arch/lib/libQt5QmlDevTools.a|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib /usr/$_arch/lib/libQt5Bootstrap.so|g" {} \;
       find . -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap ||g" {} \;
+
+      # avoid `.obj/release/qconnectionfactories.o:qconnectionfactories.cpp:(.text.unlikely+0xf): relocation truncated to fit: IMAGE_REL_AMD64_REL32 against undefined symbol `__cxa_pure_virtual'`
+      [[ $_arch == x86_64-w64-mingw32 ]] && find . -type f -iname 'Makefile*' -exec sed -i 's|\(CXX.*\)\( -o .obj/release/qconnectionfactories.o\)|\1 -mcmodel=large \2|g' {} \;
 
 % end
