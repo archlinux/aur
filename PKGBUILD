@@ -5,8 +5,8 @@ _name=${pkgname#python-}
 pkgdesc="Pythonic bindings for FFmpeg"
 url="https://docs.mikeboers.com/pyav/"
 
-pkgver=8.1.0
-pkgrel=2
+pkgver=9.0.0
+pkgrel=1
 
 arch=("x86_64" "i686")
 license=("BSD")
@@ -27,8 +27,8 @@ source=(
     "01-build-with-ffmpeg4.4.patch"
 )
 sha256sums=(
-    "0402169bc27e38e0f44e0e0e1854cf488337e86206b6d25d6dae2bfd7a1a0230"
-    "c2a3ac73c69e383b956ea14da023531f9a44e281725efc97e448f29da6ad6f3a"
+    "785b7434542e24dff32e6d78764ccd998bb1c85a48a602a2b5c8ee0d7676fbd8"
+    "46f75e0b9c22409d0935063aca5a7b6d8f22559abcd0691d783e351862f11c25"
 )
 
 prepare() {

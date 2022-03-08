@@ -1,21 +1,20 @@
 diff --unified --recursive --text a/setup.py b/setup.py
---- a/setup.py	2021-12-29 20:36:22.000000000 +0200
-+++ b/setup.py	2022-02-21 16:10:47.404733470 +0200
-@@ -140,6 +140,10 @@
+--- a/setup.py	2022-03-08 01:52:23.000000000 +0200
++++ b/setup.py	2022-03-08 09:59:04.574755359 +0200
+@@ -123,6 +123,9 @@
      ffmpeg_lib = []
      ffmpeg_include = []
  
 +# force ffmpeg4.4 paths
 +ffmpeg_lib = ["/usr/lib/ffmpeg4.4"]
 +ffmpeg_include = ["/usr/include/ffmpeg4.4"]
-+
  
  # The "extras" to be supplied to every one of our modules.
  # This is expanded heavily by the `config` command.
-@@ -412,6 +416,7 @@
-             if any(s.endswith('.pyx') for s in ext.sources):
-                 if is_msvc():
-                     ext.define_macros.append(('inline', '__inline'))
+@@ -253,6 +256,7 @@
+         # the existing extension instead of replacing them all.
+         for i, ext in enumerate(self.distribution.ext_modules):
+             if any(s.endswith(".pyx") for s in ext.sources):
 +                ext.library_dirs = ["/usr/lib/ffmpeg4.4"]
                  new_ext = cythonize(
                      ext,
