@@ -2,11 +2,12 @@
 
 pkgname=elgin-nfce-printer
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Drivers for Elgin NFC-e RM22, i7, i8 and i9 printers."
 arch=("x86_64" "i686")
 url="https://www.elgin.com.br/Produtos/Automacao/impressorasn%C3%A3ofiscais/impressora-termica-de-cupom-i9-full"
 license=("unknown")
+depends=("libxcrypt-compat")
 makedepends=("unrar")
 install=
 source=("$pkgname-$pkgver.rar::https://d2u2qhufg0q9tn.cloudfront.net/assets/arquivos/imgCard_4ce638a5-22e5-4a0d-a820-0108152ced91_imgCard_3969ab8d-70ab-4b53-ac90-d84cc55ddd70_Elgin_i9_Linux_Driver_v1.2.3Linux.rar")
