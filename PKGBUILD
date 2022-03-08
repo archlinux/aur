@@ -13,8 +13,14 @@ url="https://www.roomeqwizard.com"
 license=('custom')
 depends=('java-runtime=8' 'xdg-utils')
 makedepends=('java-environment=8' 'fontconfig' 'freetype2')
-source=("https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh")
-sha512sums=('68a8059295f197a1102fac091dec27f74deb05d2fb5cba1fbc23e113546bb9f832995136015200188eff0fe3a1a6695d4b9fe08a0c3eee6cf53ccfd514fcfec2')
+source=(
+    "https://www.roomeqwizard.com/installers/REW_linux_$_pkgver.sh"
+    "https://www.roomeqwizard.com/Sampledata.mdat"
+)
+sha512sums=(
+    '68a8059295f197a1102fac091dec27f74deb05d2fb5cba1fbc23e113546bb9f832995136015200188eff0fe3a1a6695d4b9fe08a0c3eee6cf53ccfd514fcfec2'
+    '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770'
+)
 
 package() {
   export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
@@ -34,6 +40,8 @@ package() {
   rm "$pkgdir/usr/share/java/$pkgname/REW.desktop"
 
   cp "$pkgdir/usr/share/java/$pkgname/.install4j/i4j_extf_3_1byc03v_1rq5vvq.png" "$pkgdir/usr/share/icons/$pkgname.png"
+
+  cp Sampledata.mdat "$pkgdir/usr/share/doc/$pkgname/"
 
   # repair
   sed "s%$pkgdir%%g" -i "$pkgdir/usr/share/java/$pkgname/.install4j/response.varfile"
