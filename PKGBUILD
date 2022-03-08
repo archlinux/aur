@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r2617.1f15836b
+pkgver=r2999.3830f834
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -14,12 +14,13 @@ options=(!strip)
 
 depends=('php' 'curl' 'mktorrent')
 makedepends=('git')
-optdepends=('php-geoip: enable geoip plugin'
-            'geoip: enable geoip plugin'
+optdepends=('ffmpeg: enable screenshots plugin'
+            'sox: enable spectrogram plugin'
+            'mediainfo: enable mediainfo plugin'
+            'php-geoip: enable geoip plugin'
             'unrar: enable unpack plugin'
             'unzip: enable unpack plugin'
-            'plowshare: fileupload plugin functionality'
-            'python-cfscrape: cloudflare plugin requirement')
+            'python-cloudscraper: cloudflare plugin requirement')
  
 conflicts=('rutorrent' 'rutorrent-plugins')
 provides=('rutorrent' 'rutorrent-plugins')
@@ -29,39 +30,9 @@ backup=("${_webdir}/rutorrent/conf/config.php"
         "${_webdir}/rutorrent/conf/access.ini"
         "${_webdir}/rutorrent/conf/plugins.ini")
 
-_plugins=('extra/filemanager'
-          'extra/fileshare'
-          'extra/fileupload'
-          'extra/mediastream'
-          'titlebar'
-          'ratiocolor'
-          'mobile')
+source=("rutorrent::git+https://github.com/Novik/ruTorrent.git")
 
-_themes=('MaterialDesign'
-         'QuickBox'
-         'FlatUI')
-
-source=("plugins.ini"
-        "https://raw.githubusercontent.com/weixiyen/jquery-filedrop/master/jquery.filedrop.js"
-        "rutorrent::git+https://github.com/Novik/ruTorrent.git"
-        "titlebar::git+https://github.com/SanKen/rutorrent-titlebar.git"
-        "ratiocolor::git+https://github.com/senki/rutorrent-ratiocolor.git"
-        "extra::git+https://github.com/nelu/rutorrent-thirdparty-plugins.git"
-        "mobile::git+https://github.com/xombiemp/rutorrentMobile.git"
-        "MaterialDesign::git+https://github.com/Phlooo/ruTorrent-MaterialDesign.git"
-        "QuickBox::git+https://github.com/QuickBox/club-QuickBox.git"
-        "git+https://github.com/exetico/FlatUI.git")
-
-md5sums=('21b595d878e49dde91fca665a0a8effb'
-         '3e0002fe9ce69f43513152c515944559'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/rutorrent"
@@ -85,8 +56,6 @@ prepare() {
     done
 
     for i in rar zip unzip unrar tar; do
-        sed -i ../extra/filemanager/conf.php \
-            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '/usr/bin/$i':"
         sed -i plugins/unpack/conf.php \
             -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '/usr/bin/$i':"
     done
@@ -110,18 +79,6 @@ package() {
     export LC_ALL=$LANG
     cd "$srcdir/rutorrent/plugins"
 
-    for i in ${_plugins[@]}; do
-        rm -rf "$srcdir/$i/.git"
-        cp -r  "$srcdir/$i" .
-    done
-
-    for i in ${_themes[@]}; do
-        rm -rf "$srcdir/$i/.git"
-        cp -r  "$srcdir/$i" ./theme/themes
-    done
-
-    cp -f  "$srcdir/jquery.filedrop.js" filedrop/jquery.filedrop.js
-
     install -dm755 "$pkgdir/$_webdir"
 
     cd "$pkgdir/$_webdir"
@@ -131,7 +88,6 @@ package() {
 
     cd rutorrent
 
-    install -Dm755 "$srcdir/plugins.ini" conf/plugins.ini
     mkdir -p tmp
     cp share/.htaccess tmp/
 }
