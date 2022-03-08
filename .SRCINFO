@@ -1,0 +1,16 @@
+pkgbase = man-pages-uk-git
+	pkgdesc = Ukrainian man pages (Git version)
+	pkgver = r18106.439c7cb95b
+	pkgrel = 1
+	url = https://salsa.debian.org/manpages-l10n-team/manpages-l10n
+	arch = any
+	license = GPL3
+	makedepends = po4a
+	makedepends = git
+	depends = man
+	conflicts = man-pages-uk
+	options = !emptydirs
+	source = manpages-l10n::git+https://salsa.debian.org/manpages-l10n-team/manpages-l10n.git
+	sha512sums = SKIP
+
+pkgname = man-pages-uk-git
