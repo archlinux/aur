@@ -9,10 +9,10 @@
 
 pkgname=rider-eap
 eapver=2022.1
-eaprelease=3
-pkgver=221.4501.83
+eaprelease=5
+pkgver=221.4906.10
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="A cross-platform .NET IDE by JetBrains."
 arch=('any')
@@ -26,7 +26,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop"
         "ResharperHost-runtime-folder.sh")
-sha256sums=('b85fe0c81a192c29bb35a454893b82bb9c98de13082948774e76195003ee4b01'
+sha256sums=('2adf9c97569c5a506353d716b6bfb0d858b26c5063e652d46c12d284f456d593'
             'ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf'
             '4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d')
 
