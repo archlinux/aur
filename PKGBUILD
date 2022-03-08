@@ -1,14 +1,14 @@
 # Maintainer: steadfasterX <steadfasterX [at] gmail -dot- com>
 pkgname=uau
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="unattended upgrades for Arch. Schedule automatic upgrades while respecting the recommended upgrade process (Arch wiki - System maintenance)."
 arch=('any')
 url="https://github.com/steadfasterX/arch_uau"
 license=('LGPL3')
 depends=('aur-comment-fetcher-git' 'archnews2' 'sudo' 'pacman' 'python3-memoizedb')
 makedepends=('git')
-optdepends=('ssmtp: to provide the sendmail like mail command' 'yay')
+optdepends=('ssmtp: extreme simple Mail Transport Agent' 's-nail: to provide the sendmail like mail command' 'yay')
 backup=('etc/unattended-arch-upgrade.conf' 'etc/unattended-arch-upgrade.ignore')
 source=("https://github.com/steadfasterX/arch_$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('6414fe93ccb8521664282c34234a89b4')

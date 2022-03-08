@@ -14,7 +14,7 @@ package build for uau (https://github.com/steadfasterX/arch_uau/)
 
 If you have the command `mail` **not** available on your system:
 
-`yay -S ssmtp`
+`yay -S ssmtp s-nail`
 
 I use and have tested only sstmp but every sendmail-like `mail` cmd will do.
 
