@@ -24,7 +24,7 @@ pkgver=2111.1
 _build1=8.4.1
 _build2=53939787
 _cart='CART22FH2'
-pkgrel=2
+pkgrel=3
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 url='https://www.vmware.com/go/viewclients'
@@ -39,7 +39,7 @@ sha256sums=('901a48ede481b5ad5954c48ea362d396d06cbc04df917a11864afd34725fafc3'
             'd6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
             'a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226'
-            'cea92d3ed97b717c631fed5664c06fc71a6deac21ba32da78970c582ed48c747')
+            '0fe0b3d1c253361321e96d50997eaf151d311c55c62c73e8ea5007f9ae4448cb')
 
 # We need these functions for the Gentoo eclass...
 ebegin() {
@@ -133,7 +133,8 @@ package_vmware-horizon-client() {
 	install -D -m0644 "${srcdir}/vmware-horizon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/vmware-horizon.svg"
 	for SIZE in 16 24 32 48 64 96 128; do
 		install -d "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/"
-		rsvg-convert -w "${SIZE}" -h "${SIZE}" "${srcdir}/vmware-horizon.svg" > "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/vmware-horizon.png"
+		rsvg-convert -w "${SIZE}" -h "${SIZE}" "${srcdir}/vmware-horizon.svg" \
+			-o "${pkgdir}/usr/share/icons/hicolor/${SIZE}x${SIZE}/apps/vmware-horizon.png"
 	done
 }
 
