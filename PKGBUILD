@@ -1,7 +1,7 @@
 # Maintainer: dec05eba <dec05eba@protonmail.com>
 
 pkgname=quickmedia-git
-pkgver=r1116.15d06ab
+pkgver=r1117.037040e
 pkgrel=1
 pkgdesc='A rofi inspired native client for web services. Supports youtube, peertube, lbry, soundcloud, nyaa.si, 4chan, matrix, saucenao, hotexamples, anilist and several manga sites.'
 arch=('x86_64')
@@ -19,8 +19,8 @@ optdepends=(
 )
 provides=('quickmedia' 'qm' 'quickmedia-video-player')
 conflicts=('quickmedia' 'qm' 'quickmedia-video-player')
-source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1116.15d06ab.tar.gz")
-sha512sums=('21306fdbfafe354684e57590e8c471fb1c99077682df135389c984cef8dc155179be01f2e618edfe24387490921b69c3a5ca4cba5eddbb0331ec09777ef10c53')
+source=("${pkgname}-${pkgver}.tar.gz::https://dec05eba.com/snapshot/QuickMedia.git.r1117.037040e.tar.gz")
+sha512sums=('d7837400288763e9a5d17e2f451d3b8b03a124f11687b9fab96be27e84721f629bb1f60630d0f058949527988d876528b117a7dc374098f3ce349f7546ab3ebe')
 
 build() {
   cd "$srcdir"
