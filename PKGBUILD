@@ -1,15 +1,16 @@
-# Maintainer: Alex Sarum <rum.274.4 at gmail dot com>
+# Maintainer: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
+# Contributor: Alex Sarum <rum.274.4 at gmail dot com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgbase=unicorn-git
-pkgname=('unicorn-git' 'python-unicorn-git' 'python2-unicorn-git' 'ruby-unicorn-git')
-pkgver=1.0.2.rc3.r54.g94c94cdf
+pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-git')
+pkgver=2.0.0.rc6.r0.gc10639fd
 pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
 license=('GPL2')
-makedepends=('git' 'python' 'python2' 'python-setuptools' 'python2-setuptools' 'ruby')
+makedepends=('git' 'cmake' 'python' 'python-setuptools' 'ruby')
 options=('staticlibs' '!emptydirs')
 source=(${pkgbase}::git+https://github.com/unicorn-engine/unicorn)
 sha512sums=('SKIP')
@@ -19,27 +20,19 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd ${pkgbase}
-  sed 's|-O3|-O2|g' -i Makefile qemu/configure
-  sed 's|-g ||g' -i qemu/configure
-  sed 's|UNICORN_DEBUG ?= yes|UNICORN_DEBUG ?= no|g' -i config.mk
-  cp -ra bindings/python{,2}
-  sed -r 's|(python)$|\12|' -i bindings/python2/*.py
-}
-
 build() {
   cd ${pkgbase}
-  make
+  (mkdir -p build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make
+  )
   (cd bindings
     python const_generator.py python
     python const_generator.py ruby
   )
   (cd bindings/python
     python setup.py build
-  )
-  (cd bindings/python2
-    python2 setup.py build
   )
   (cd bindings/ruby/unicorn_gem
     gem build unicorn-engine.gemspec
@@ -71,21 +64,12 @@ package_python-unicorn-git() {
   install -Dm 644 sample* shellcode.py -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
-package_python2-unicorn-git() {
-  depends=('python2' 'unicorn' 'python2-setuptools')
-  provides=('python2-unicorn')
-  conflicts=('python2-unicorn')
-  cd ${pkgbase}/bindings/python2
-  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm 644 sample* shellcode.py -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
-}
-
 package_ruby-unicorn-git() {
   depends=('ruby' 'unicorn')
   provides=('ruby-unicorn')
   conflicts=('ruby-unicorn')
   cd ${pkgbase}/bindings/ruby/unicorn_gem
-  local _gemdir="$(gem env gemdir)"
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" \
     -n "${pkgdir}/usr/bin" unicorn-*.gem -- --with-opt-include="${srcdir}/${pkgbase}/include"
   rm -r "${pkgdir}/${_gemdir}"/{cache/unicorn-*.gem,build_info}
