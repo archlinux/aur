@@ -10,7 +10,7 @@ depends=('gtk3')
 makedepends=('cargo' 'git')
 provides=('pizarra')
 conflicts=('pizarra')
-source=('pizarra-git::git+https://gitlab.com/categulario/pizarra-gtk')
+source=('pizarra-git::git+https://gitlab.com/categulario/pizarra-gtk#branch=main')
 sha256sums=('SKIP')
 
 pkgver() {
