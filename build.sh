@@ -10,6 +10,7 @@ clean() {
 install() {
     # Assumes you are on Arch, btw.
     makepkg
+    makepkg --printsrcinfo > .SRCINFO
 }
 
 check() {
