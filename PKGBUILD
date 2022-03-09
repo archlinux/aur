@@ -2,7 +2,7 @@
 # Contributor: Patrick Lühne <patrick-arch@luehne.de>
 
 pkgname=python-miio
-pkgver=0.5.10
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Python library & console tool for controlling Xiaomi smart appliances"
 url="https://github.com/rytilahti/python-miio"
@@ -27,17 +27,19 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
+	'python-pytest'
 	'python-sphinx'
 	'python-sphinx-click'
 	'python-sphinx_rtd_theme'
 	'python-sphinxcontrib-apidoc')
 install=miio.install
+changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('5997b973ed9119b0f33ec532fbb90af81cab34e08bbcd3e23b23c0d041b57994712a026ef7f79d7ac242e8db685af4c09b833cd19eea289a5edf85f5717eed3d')
+sha512sums=('804029ffa10760d3563b9025e3a074e5622494562c412ef4a3d7d8b62e2bd01ac3f4ee65de1d271143196464355f58a38364460454ead647254989d6ff550b12')
 
 build() {
 	cd "$pkgname-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
+	python -m build --wheel --no-isolation
 	cd docs
 	PYTHONPATH=../ make man
 }
