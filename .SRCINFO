@@ -1,13 +1,13 @@
 pkgbase = traitor-bin
 	pkgdesc = Automatic Linux privesc via exploitation of low-hanging fruit.
-	pkgver = 0.0.9
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/liamg/traitor
 	arch = x86_64
 	license = MIT
-	source = https://github.com/liamg/traitor/releases/download/v0.0.9/traitor-amd64
-	source = https://github.com/liamg/traitor/archive/v0.0.9.tar.gz
-	sha256sums = 6e08212071f8b95216a56d0a5edef8fbf23cd33f212762a236060c486f9319d0
-	sha256sums = 467479a4345b96cfbb472b629724311e094c97b2c728d93614e9a559d2fb92aa
+	source = https://github.com/liamg/traitor/releases/download/v0.0.13/traitor-amd64
+	source = https://github.com/liamg/traitor/archive/v0.0.13.tar.gz
+	sha256sums = c87966a280098a45c90dac27666f3f01f6b6999e7b08719a8035f1355d696ad4
+	sha256sums = 845adf2dfd545d5353f1023ff7e106a2e96ecb4c740c2e103e8af74b610e2aa4
 
 pkgname = traitor-bin
