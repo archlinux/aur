@@ -2,31 +2,31 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname=python-retryrequests
-_name="${pkgname#python-}"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='Python library for HTTP requests using requests package with exponential back-off retry'
+pkgdesc='Library for HTTP requests using python-requests with exponential back-off retry'
 arch=('any')
 url='https://github.com/thombashi/retryrequests'
 license=('MIT')
-depends=('python-requests>=2.18.4' 'python-requests<3')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
-sha256sums=('aa61e2790f5e86ff44636ff865af280198b204fc9e09e1aa2315c512d70ee4fb'
+depends=('python-requests')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/r/retryrequests/retryrequests-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/r/retryrequests/retryrequests-$pkgver.tar.gz.asc")
+sha256sums=('d82009abfbf7be105f153a4e460e24f761563743cc2de9f5e5d863b075d6ea5c'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
-  cd "$_name-$pkgver"
-  python setup.py build
+  cd "retryrequests-$pkgver"
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$_name-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  export PYTHONHASHSEED=0
+  cd "retryrequests-$pkgver"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
