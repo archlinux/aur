@@ -1,38 +1,24 @@
-# Maintainer: pfm <vorticity at mail dot ru>
-pkgname=("python-txsni" "python2-txsni")
-_pkgname=txsni
+# Contributor: pfm <vorticity at mail dot ru>
+_base=txsni
+pkgname=python-${_base}
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple support for running a TLS server with Twisted"
 arch=(any)
-url="https://github.com/glyph/txsni"
-license=('MIT')
-makedepends=("python-setuptools" "python2-setuptools")
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/glyph/$_pkgname/archive/v$pkgver.tar.gz")
-md5sums=('eb2e48f731264a4398b8b3e6141af08e')
-
-prepare() {
-    cp -a $_pkgname-$pkgver{,-py2}
-}
+url="https://github.com/glyph/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('c03d2a3b3527954371ec6878a952490816c8bbbad3181b14d4d1586410e1dd9a7c4e8074f3e11ad6a19b5963e36ec3e797ef6dd7556bfdf0b4c62161ed16e829')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
-
-    cd "$srcdir/$_pkgname-$pkgver-py2"
-    python2 setup.py build
+  cd ${_base}-${pkgver}
+  python setup.py build
 }
 
-package_python-txsni() {
-    depends=("python")
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
-package_python2-txsni() {
-    depends=("python2")
-    cd "$srcdir/$_pkgname-$pkgver-py2"
-    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
