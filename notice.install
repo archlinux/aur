@@ -1,4 +1,4 @@
-removeal_notice() {
+removal_notice() {
         echo "###########################################################"
         echo " #############           NOTICE             ############## "
         echo "###########################################################"
@@ -13,9 +13,9 @@ removeal_notice() {
 }
 
 pre_install() {
-        removeal_notice
+        removal_notice
 }
 
 pre_upgrade() {
-        removeal_notice
+        removal_notice
 }
