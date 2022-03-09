@@ -26,7 +26,7 @@ build() {
   for _arch in ${_architectures}; do
     cp -r MUMPS_${pkgver} build-${_arch} && pushd build-${_arch}
     make -C src ../include/mumps_int_def.h
-    make CC=${_arch}-gcc OPTC="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" FC=${_arch}-gfortran FL=${_arch}-gfortran OPTF="-O2 -fallow-argument-mismatch" AR="${_arch}-ar vr " RANLIB=${_arch}-ranlib LIBOTHERS="-lpthread -lssp" -j1
+    make CC=${_arch}-gcc OPTC="-D_FORTIFY_SOURCE=2 -O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4" FC=${_arch}-gfortran FL=${_arch}-gfortran OPTF="-O2 -fallow-argument-mismatch" AR="${_arch}-ar vr " RANLIB=${_arch}-ranlib LIBOTHERS="-lpthread -lssp"
     popd
   done
 }
