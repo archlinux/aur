@@ -4,7 +4,7 @@
 pkgname=ccs-tools
 _timestamp=20210910
 pkgver=1.8.9
-pkgrel=1
+pkgrel=2
 pkgdesc='TOMOYO Linux 1.8.x userspace tools'
 arch=('any')
 url='http://akari.osdn.jp/'
@@ -18,7 +18,7 @@ source=("http://osdn.jp/frs/redir.php?f=/tomoyo/49693/${pkgname}-${pkgver}-${_ti
         "tomoyo.logrotate")
 sha256sums=('7900126cf2dd8706c42c2c1ef7a37fd8b50f1505abd7d9c3d653dc390fb4d620'
             'SKIP'
-            'ea447aaaed7fdc9ed6b08d5c256237cd8f2ea74a6f157829613af5b3a3b18bfa'
+            'fa56f61721def18cf035c5f42fe079e98a87914d165043ca4f706655368df69b'
             'd88cdc21bb68a7e2abf0512f10dc56e57db7ca172e179d0fb50998ccf3caf648')
 validpgpkeys=('43C83369623D7AD3A96C2FC7425F128D0C64F52A')
 
