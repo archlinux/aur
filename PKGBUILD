@@ -4,8 +4,8 @@
 # from: function
 
 pkgname=anbox-image-nocsd-gapps
-pkgver=1.gapps.20220115
-pkgrel=1
+pkgver=1.gapps.20220215
+pkgrel=2
 pkgdesc="Android image for running in Anbox, with no-csd patch, OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -39,7 +39,7 @@ md5sums=('6c31bf493856f982da3d7d78b6e23b85'
          '2c96f31ead428ee2d1fbd2a65dd6962d'
          '9f0dd33e444d816ab62fe8e8514a0c0e'
          '0a59e1a43891f21a09fe06f18f0f5feb'
-         '75aa612eb356d973b8e43d0b11f077fb')
+         '5eab749ef46f6bf988c83fe89735c69b')
 
 function:pkgver () {
   local _anbox_rel _gapps_rel
