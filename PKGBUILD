@@ -4,7 +4,7 @@ pkgbase=khronos-ocl-icd-git
 pkgname=('khronos-ocl-icd-git'
          'lib32-khronos-ocl-icd-git'
         )
-pkgver=2022.01.04.2.gcd7d07c
+pkgver=2022.01.04.3.gc8490f9
 pkgrel=1
 arch=('x86_64')
 url="http://www.khronos.org/registry/cl"
@@ -14,22 +14,22 @@ makedepends=('git'
              'opencl-headers-git'
              'lib32-gcc-libs'
              )
-source=('ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git')
+source=('git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git')
 sha256sums=('SKIP')
 options=('debug')
 
 pkgver() {
-  cd ocl
+  cd OpenCL-ICD-Loader
   echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
   # fix .cmake path
-  sed 's|${CMAKE_INSTALL_DATADIR}/cmake|${CMAKE_INSTALL_LIBDIR}/cmake|g' -i ocl/CMakeLists.txt
+  sed 's|${CMAKE_INSTALL_DATADIR}/cmake|${CMAKE_INSTALL_LIBDIR}/cmake|g' -i OpenCL-ICD-Loader/CMakeLists.txt
 }
 
 build() {
-  cmake -S ocl -B build64 \
+  cmake -S OpenCL-ICD-Loader -B build64 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=ON
@@ -40,7 +40,7 @@ build() {
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  cmake -S ocl -B build32 \
+  cmake -S OpenCL-ICD-Loader -B build32 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib32 \
@@ -67,7 +67,7 @@ conflicts=('khronos-ocl-icd'
            )
   DESTDIR="${pkgdir}" cmake --build build64 --target install
 
-  install -Dm644 ocl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 OpenCL-ICD-Loader/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_lib32-khronos-ocl-icd-git() {
@@ -81,7 +81,7 @@ conflicts=('lib32-khronos-ocl-icd'
            'lib32-opencl-icd-loader'
            'lib32-ocl-icd'
            )
-   DESTDIR="${pkgdir}" cmake --build build32 --target install
+  DESTDIR="${pkgdir}" cmake --build build32 --target install
 
-  install -Dm644 ocl/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 OpenCL-ICD-Loader/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
