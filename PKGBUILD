@@ -1,7 +1,7 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
@@ -16,25 +16,26 @@ depends=(
     "xdelta3"
     "cabextract"
     "git"
+    "curl"
+    "iputils"
 )
 
 optdepends=(
     "mangohud: FPS Hud/GUI"
     "gamemode: Game Optimizations"
-    "switcheroo-control: Hybrid GPU Support"
     "vkbasalt: Required to use custom shaders (install this and reshade-shaders-git)"
     "reshade-shaders-git: Required by vkBasalt config files (install this and vkbasalt)"
 )
 
 source=(
-    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/faac827748e51e84faebbacf7e4250e3/An_Anime_Game_Launcher.AppImage"
+    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/f2653f2d8c469594a93128e013471404/An_Anime_Game_Launcher.AppImage"
     "icon.png"
     "an-anime-game-launcher-bin.desktop"
     "an-anime-game-launcher-bin.sh"
 )
 
 md5sums=(
-    'a8bc4a50bdd07415baf78fc4fc74d256'
+    '286bdc627d240a68124650f08ec94b74'
     '82d75ad72aed6c6962f203f9c6f329d3'
     'acb9fecb5d938c4fb8e5facb0511bc23'
     'aa1d36e938b47b1f9fcff6aa5cec588b'
