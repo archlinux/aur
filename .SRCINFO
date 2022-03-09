@@ -1,11 +1,11 @@
 pkgbase = insomnia-electron-bin
 	pkgdesc = Cross-platform HTTP and GraphQL Client
 	pkgver = 2022.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kong/insomnia
 	arch = any
 	license = MIT
-	depends = electron11
+	depends = electron12
 	provides = insomnia
 	conflicts = insomnia
 	source = https://github.com/Kong/insomnia/releases/download/core@2022.1.0/Insomnia.Core-2022.1.0.tar.gz

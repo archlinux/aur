@@ -1,11 +1,11 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron11
+_electron=electron12
 _appname=insomnia
 pkgname="$_appname-electron-bin"
 _dirname="Insomnia.Core"
 pkgver=2022.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
 _repo=Kong/insomnia
