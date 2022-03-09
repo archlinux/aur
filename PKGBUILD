@@ -5,7 +5,7 @@
 _pkgbase=nvidia-settings
 _branch=470
 pkgname=lib32-libxnvctrl-470xx
-pkgver=510.54
+pkgver=470.103.01
 pkgrel=1
 pkgdesc='NVIDIA NV-CONTROL X extension (470 legacy branch, 32-bit)'
 url='https://github.com/NVIDIA/nvidia-settings'
