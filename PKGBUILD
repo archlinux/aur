@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -160,5 +160,5 @@ package ()
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-sha256sums=('682c6ad29f736ff7af0d029b03277f2a08617edb37903f74996f12ad08fe6b91'
+sha256sums=('334dd3bfb3ca69659b381ae2012a2188a414a6c86dec75e3eec3b0b33e11ac1e'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
