@@ -4,7 +4,7 @@
 
 _pkgname=Juno-mirage-standard-buttons
 pkgname=juno-mirage-standard-buttons-theme-git
-pkgver=r131.597d8cc
+pkgver=r155.4e2516f
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 url="https://github.com/EliverLara/Juno"
