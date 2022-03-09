@@ -1,9 +1,9 @@
 # Maintainer: Lucas Pape <development@lucaspape.de>
 
 _npmname=monitoring.js
-_npmver=1.2.2
+_npmver=1.2.3
 pkgname=monitoring.js
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Run commands on local/remote servers and send messages when they fail"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/lucaspape/monitoring.js"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/monitoring.js/-/monitoring.js-${pkgver}.tgz")
 sha512sums=('SKIP')
-backup=(etc/monitoring.js)
+backup=(etc/monitoring.js{*.json})
 
 package() {
   cd ${srcdir}
