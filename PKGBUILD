@@ -5,8 +5,8 @@
 
 _pkgname=libcpufeatures
 pkgname="${_pkgname}-git"
-pkgver=0.6.0+68.r267.d20220222.40e1c71
-pkgrel=3
+pkgver=0.7.0+3.r272.d20220309.e4e535d
+pkgrel=1
 pkgdesc="A cross-platform C library to retrieve CPU features (such as available instructions) at runtime. By google."
 url="https://github.com/google/cpu_features"
 arch=(
