@@ -1,7 +1,7 @@
 # Maintainer: Alad Wenter <https://github.com/AladW>
 # Co-Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
 pkgname=aurutils
-pkgver=8.1
+pkgver=8.1.1
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 url='https://github.com/AladW/aurutils'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 changelog=aurutils.changelog
 install=aurutils.install
-sha256sums=('19efcaba7f56d3fd3e1130d5092e41ac73e623f075e741aca893b0e3adeae2f1')
+sha256sums=('79bd38b159788fdb37831e368fa9d4649767b0c30aac388b03633363f45e4c17')
 depends=('git' 'jq' 'pacutils' 'curl' 'expect')
 optdepends=('bash-completion: bash completion'
             'zsh: zsh completion'
