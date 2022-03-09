@@ -1,0 +1,13 @@
+pkgbase = tsc-ls
+	pkgdesc = Language server for the TSC scripting format.
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/nimblebun/tsc-language-server
+	arch = x86_64
+	license = MIT
+	provides = tsc-ls
+	conflicts = tsc-ls
+	source = https://github.com/nimblebun/tsc-language-server/releases/download/v1.0.7/tsc-ls_1.0.7_linux_amd64
+	sha256sums = 7663e705d4bcea64e181bb237791d113f9b93a5cb05de84538e6d64390fc8614
+
+pkgname = tsc-ls
