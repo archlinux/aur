@@ -1,7 +1,7 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=frum-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A little bit fast and modern Ruby version manager written in Rust"
 arch=("x86_64")
 url="https://github.com/TaKO8Ki/frum"
@@ -19,4 +19,13 @@ package() {
   ln -s "/opt/frum/frum" "$pkgdir/usr/bin/frum"
 
   chmod +x "$pkgdir/opt/frum"
+
+  mkdir -p "$pkgdir"/usr/share/bash-completion/completions
+  "$pkgdir/usr/bin/frum" completions --shell bash > "$pkgdir"/usr/share/bash-completion/completions/frum
+
+  mkdir -p "$pkgdir"/usr/share/fish/vendor_completions.d
+  "$pkgdir/usr/bin/frum" completions --shell fish > "$pkgdir"/usr/share/fish/vendor_completions.d/frum.fish
+
+  mkdir -p "$pkgdir"/usr/share/zsh/site-functions
+  "$pkgdir/usr/bin/frum" completions --shell zsh > "$pkgdir"/usr/share/zsh/site-functions/_frum
 }
