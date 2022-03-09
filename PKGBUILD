@@ -1,32 +1,29 @@
 # Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Ersei <samb at disroot dot org>
 
 pkgname=woodpecker
 pkgver=0.15.0
-pkgrel=1
-pkgdesc="A community fork of the Drone CI system."
+pkgrel=2
+pkgdesc="A community fork of the Drone CI system. Frontend server."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
 license=('Apache')
 makedepends=('git' 'go' 'yarn')
 depends=('glibc')
-optdepends=('docker: Docker backend')
-backup=(etc/woodpecker.conf etc/woodpecker-agent.conf)
+optdepends=()
+backup=(etc/woodpecker.conf)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/woodpecker-ci/$pkgname/archive/v$pkgver.tar.gz"
   'woodpecker.service'
-  'woodpecker-agent.service'
   'tmpfiles.conf'
   'sysusers.conf'
   'woodpecker.conf'
-  'woodpecker-agent.conf'
 )
 sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4'
             '18bb1cc48b42fdb9df711a73a5c1753489ff68c2790b6f24811050f1ab353ac0'
-            '77d03cc1faec8ad0f313e3965b272545d3c4067c640f7cb30d80cbfcfc49720c'
-            'eb2d8ee56073527b3373721f0693a7c1331ce994d1843a6d8396268face86963'
-            'bb9e8df7ddd14a329f3b9f06a72fc89b14f78581da14c22b6a7cc6e49f7b80ae'
-            '1513eb61bacffa643c02ccb9e4132aa49640abb9943eba7fcf96712eda463fdf'
-            'dc91524c6976eb4515607bfdd08e58a3c18867cd26c623146475054a2adb0f3f')
+            '1bf038355c6ec78adb9e8ae194c9df1c4a47fc7195fe97c68d8c44af3ef72f60'
+            '878466f384b124353a7247bcc26f374a8c174874afc47c227eefaf38b9905e5a'
+            '1513eb61bacffa643c02ccb9e4132aa49640abb9943eba7fcf96712eda463fdf')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -51,16 +48,14 @@ build() {
       warn "untested architecture - if needed update PKGBUILD to build on arch $CARCH";;
   esac
 
-  GOFLAGS=-trimpath make build
+  GOFLAGS=-trimpath make build-server
 }
 
 package() {
   install -vDm644 woodpecker.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-  install -vDm644 woodpecker-agent.service "$pkgdir/usr/lib/systemd/system/$pkgname-agent.service"
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -vDm600 woodpecker.conf "$pkgdir/etc/$pkgname.conf"
-  install -vDm600 woodpecker-agent.conf "$pkgdir/etc/$pkgname-agent.conf"
 
   cd "$pkgname-$pkgver"
 
