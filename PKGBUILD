@@ -1,8 +1,9 @@
 # Maintainer: Jean Finas <jean@finas.io>
 # Contributer: Ignacio Felipe <djkork@gmail.com>
+# Contributer: bangbang93 <bangbang93@163.com>
 pkgname=qsync
-pkgver=1.0.5.0305
-pkgrel=3
+pkgver=1.0.6.2624
+pkgrel=1
 epoch=1
 pkgdesc="QNap's synchronization client"
 url="https://www.qnap.com/en/utilities/essentials"
@@ -18,11 +19,10 @@ source=("${pkgname}-${pkgver}.deb::https://download.qnap.com/Storage/Utility/QNA
 
 
 noextract=()
-md5sums=('9c34cb93a86e1d3364c12a4a1270232d'
-    'ef5abc8367e97f42313bb4545d6acadf'
-    '923af1881c03c429c4623305d108a5b5'
-    'cfa6be2d8391bde792381740542176b2'
-    )
+md5sums=('23fe012d1ca8a7681362490ab519303a'
+         'ef5abc8367e97f42313bb4545d6acadf'
+         '923af1881c03c429c4623305d108a5b5'
+         'cfa6be2d8391bde792381740542176b2')
 
 package() {
 	cd $srcdir
