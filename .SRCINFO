@@ -6,7 +6,9 @@ pkgbase = tachidesk-sorayomi-bin
 	arch = x86_64
 	license = MPL2
 	depends = zenity
+	optdepends = tachidesk-server
 	provides = tachidesk-sorayomi
+	conflicts = tachidesk-sorayomi
 	source = https://github.com/Suwayomi/Tachidesk-Sorayomi/releases/download/0.1.1/tachidesk-sorayomi-0.1.1-linux-x64.tar.gz
 	sha256sums = 331ca1ffcbf459d44d01fcc0e7cc6fab3a90a0e81fb852df791d7795127dbd97
 
