@@ -1,32 +1,31 @@
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Ashley Whetter <(firstname) @ awhetter.co.uk>
-
-pkgbase=python-seqlearn-git
-pkgname=('python-seqlearn-git' 'python2-seqlearn-git')
+_base=seqlearn
+pkgname=python-${_base}-git
 pkgver=r89.32d4bfa
 pkgrel=1
-pkgdesc="A sequence classification toolkit for Python."
-arch=('i686' 'x86_64')
-url="http://larsmans.github.io/seqlearn/"
-license=('custom: Copyright 2013-2014 Lars Buitinck / University of Amsterdam and contributors')
-makedepends=('git')
-options=(!emptydirs)
-source=(git+https://github.com/larsmans/seqlearn.git)
-md5sums=("SKIP")
+pkgdesc="A sequence classification toolkit for Python"
+arch=(any)
+url="https://github.com/larsmans/${_base}"
+license=('custom')
+depends=(python-scipy)
+makedepends=(cython python-setuptools git)
+source=(git+${url}.git)
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/seqlearn"
+  cd ${_base}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package_python-seqlearn-git() {
-  depends=('python' 'python-numpy>=1.6' 'python-scipy>=0.11' 'cython>=0.20.2')
-  cd "$srcdir/seqlearn"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+  cd ${_base}
+  export PYTHONHASHSEED=0
+  python setup.py build_ext --inplace
 }
 
-package_python2-seqlearn-git() {
-  depends=('python2' 'python2-numpy>=1.6' 'python2-scipy>=0.11' 'cython2>=0.20.2')
-  cd "$srcdir/seqlearn"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+package() {
+  cd ${_base}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
