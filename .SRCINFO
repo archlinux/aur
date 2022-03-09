@@ -1,6 +1,6 @@
 pkgbase = bomi-git
 	pkgdesc = Powerful and easy-to-use GUI multimedia player based on mpv (git version)
-	pkgver = 0.9.11.r60.gc9e545eb
+	pkgver = 0.9.11.r65.g9544cb07
 	pkgrel = 1
 	url = http://bomi-player.github.io
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = bomi-git
 	depends = libgl
 	depends = fribidi
 	depends = libass
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = xdg-utils
 	optdepends = libva-intel-driver: hardware acceleration support for Intel GPU
 	optdepends = mesa-vdpau: hardware acceleration support for AMD/NVIDIA opensource driver
@@ -42,9 +42,7 @@ pkgbase = bomi-git
 	provides = bomi
 	conflicts = cmplayer
 	conflicts = bomi
-	options = !buildflags
 	source = git+https://github.com/demokritos/bomi.git
 	md5sums = SKIP
 
 pkgname = bomi-git
-

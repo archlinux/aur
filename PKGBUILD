@@ -6,7 +6,7 @@
 _pkgbase=bomi
 
 pkgname=$_pkgbase-git
-pkgver=0.9.11.r60.gc9e545eb
+pkgver=0.9.11.r65.g9544cb07
 pkgrel=1
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv (git version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL')
 depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-svg'
          'libdvdread' 'libdvdnav' 'libcdio-paranoia' 'libcdio' 'smbclient'
          'alsa-lib' 'libpulse' 'jack' 'libchardet' 'libbluray'
-         'libva' 'libvdpau' 'libgl' 'fribidi' 'libass' 'ffmpeg' 'xdg-utils')
+         'libva' 'libvdpau' 'libgl' 'fribidi' 'libass' 'ffmpeg4.4' 'xdg-utils')
 makedepends=('git' 'mesa' 'gcc' 'pkg-config' 'python' 'qt5-tools')
 optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'mesa-vdpau: hardware acceleration support for AMD/NVIDIA opensource driver'
@@ -27,7 +27,7 @@ conflicts=('cmplayer' 'bomi')
 source=(git+https://github.com/demokritos/${_pkgbase}.git)
 md5sums=('SKIP')
 #options=(debug !strip)
-options=(!buildflags)
+#options=(!buildflags)
 
 pkgver() {
     cd "$srcdir/$_pkgbase"
@@ -37,7 +37,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgbase"
 
-    ./configure --prefix=/usr
+    PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr
 }
 
 build() {
