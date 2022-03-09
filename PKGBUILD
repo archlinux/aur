@@ -13,7 +13,7 @@ makedepends=('tar')
 conflicts=('deepin-wine-wechat' 'deepin.com.wechat' 'deepin.com.wechat2')
 source=(
     #"https://community-store-packages.deepin.com/appstore/pool/appstore/c/${pkgname}/${pkgname}_${_pkgver}_i386.deb"
-    "https://github.com/JoveYu/PKGBUILD/releases/download/0.0.1/${pkgname}_${_pkgver}_i386.deb"
+    "${pkgname}_${_pkgver}_i386.deb::https://github.com/JoveYu/PKGBUILD/releases/download/0.0.1/${pkgname}_${_pkgver}_i386.deb"
     "libldap24.tar.gz"
 )
 md5sums=('b48cd3c089b7c2bb7b68aba018b306b1'
