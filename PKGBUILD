@@ -1,7 +1,7 @@
 # Maintainer: Matt Fields (0x6d617474) <aur at 0x6d617474 dot net>
 
 pkgname=wp-cli
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -14,7 +14,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli-bundle/archive/v${pkgver}.tar.gz")
-md5sums=('b26c0a64f1da59113e7721b428129b5a')
+md5sums=('41a672728dcf8c0f7d6a5624beea9dde')
 
 build() {
   cd "${pkgname}-bundle-${pkgver}"
