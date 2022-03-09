@@ -5,7 +5,7 @@
  active=yes
  client_id=737663962677510245
 -binary_path=
-+binary_path=/lib/mpv-discord
++binary_path=/usr/lib/mpv-discord/mpv-discord
  socket_path=/tmp/mpvsocket
  use_static_socket_path=yes
  autohide_threshold=0
