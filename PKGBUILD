@@ -3,7 +3,7 @@ _pkgname=RTKLIB
 pkgname=rtklib-qt-git
 provides=("rtklib-qt")
 pkgver=r128.27e5448
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Program Package for GNSS Positioning"
 arch=('x86_64')
 url="http://www.rtklib.com/"
@@ -26,8 +26,8 @@ prepare(){
 
 build() {
     cd "${_pkgname}"
-    qmake -recursive
-    make
+    qmake
+    make sub-src
 }
 
 package() {
