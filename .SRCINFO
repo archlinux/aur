@@ -1,0 +1,13 @@
+pkgbase = omegat-textra-plugin
+	pkgdesc = NICT TexTra Machine Translation API plugin for OmegaT
+	pkgver = 2020.2.2
+	pkgrel = 1
+	url = https://github.com/miurahr/omegat-textra-plugin/
+	arch = any
+	license = GPL3
+	depends = omegat
+	options = !strip
+	source = https://github.com/miurahr/omegat-textra-plugin/releases/download/v2020.2.2/omegat-textra-plugin-2020.2.2.zip
+	sha256sums = 97ccbc96a8c1566768a8765cc36388c770bdaa68dcb035b4d779cc784cccd3e4
+
+pkgname = omegat-textra-plugin
