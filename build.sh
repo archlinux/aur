@@ -1,14 +1,10 @@
 #!/bin/sh
 
-set -euxo pipefail
-
-help() {
-    echo "Usage: $0 [clean|install|check]"
-}
+set -euo pipefail
 
 clean() {
-    rm ./sigi-*.tar.gz ./sigi-*.tar.zst
-    rm -r ./pkg ./src
+    rm -f ./sigi-*.tar.gz ./sigi-*.tar.zst
+    rm -rf ./pkg ./src
 }
 
 install() {
@@ -20,7 +16,7 @@ check() {
     pkgdir="./pkg/sigi"
     if [ ! -x "$pkgdir/usr/bin/sigi" ]
     then
-	>&2 echo "Sigi binary was not installed and executable"
+        >&2 echo "Sigi binary was not installed and executable"
 	exit 1
     elif [ ! -f "$pkgdir/usr/share/man/man1/sigi.1.gz" ]
     then
@@ -31,17 +27,35 @@ check() {
     "$pkgdir"/usr/bin/sigi --version
 }
 
+bootstrap() {
+    pacman -S git base-devel cargo
+}
+
+help() {
+    echo "Usage: $0 [bootstrap|clean|install|check]..."
+}
+
 run() {
     case "$1" in
-        clean)   clean   ;;
-        install) install ;;
-        check)   check   ;;
-	*)       >&2 help
-		 >&2 echo "Unknown target: $1"
-		 exit 1 ;;
+	bootstrap) bootstrap ;;
+        clean)     clean   ;;
+        install)   install ;;
+        check)     check   ;;
+	*)         >&2 help
+	           >&2 echo "Unknown target: $1"
+	           exit 1 ;;
     esac
 }
 
+# Exit with help message if no input.
+if [ "$@unset" = unset ]
+then
+  help && exit
+fi
+
+set -x
+
+# Handle all args as run commands.
 for cmd in "$@"
 do
     run "$cmd"
