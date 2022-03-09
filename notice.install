@@ -1,0 +1,21 @@
+removeal_notice() {
+        echo "###########################################################"
+        echo " #############           NOTICE             ############## "
+        echo "###########################################################"
+        echo "# This package is just a dummy package that installs      #"
+        echo "# vazirmatn-fonts. Please install that package directly   #"
+        echo "# as I intent to remove this package, for more info       #"
+        echo "# on why this is happening go see these links:            #"
+        echo "#                                                         #"
+        echo "# https://rastikerdar.github.io/vazirmatn/fa/docs/HELP-fa #"
+        echo "# https://github.com/rastikerdar/vazirmatn/issues/235     #"
+        echo "###########################################################"
+}
+
+pre_install() {
+        removeal_notice
+}
+
+pre_upgrade() {
+        removeal_notice
+}

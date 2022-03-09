@@ -1,8 +1,9 @@
 pkgbase = vazir-fonts
 	pkgdesc = A beautiful Persian font based on DejaVu font.
 	pkgver = 32.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rastikerdar/vazirmatn
+	install = notice.install
 	arch = any
 	license = OFL
 	depends = vazirmatn-fonts
