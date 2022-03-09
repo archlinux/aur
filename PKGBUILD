@@ -16,7 +16,7 @@ depends=(
 )
 
 ## BEGIN generated variables
-pkgver=2022.03.04.edge.r3.g0ba0b6a7f8
+pkgver=2022.03.07.edge.r1.g15b631e7bf
 sha1sums=(SKIP)
 
 ## END generated variables
