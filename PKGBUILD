@@ -3,7 +3,7 @@
 
 pkgname=woodpecker
 pkgver=0.15.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A community fork of the Drone CI system. Frontend server."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
@@ -23,7 +23,7 @@ sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4'
             '18bb1cc48b42fdb9df711a73a5c1753489ff68c2790b6f24811050f1ab353ac0'
             '1bf038355c6ec78adb9e8ae194c9df1c4a47fc7195fe97c68d8c44af3ef72f60'
             '878466f384b124353a7247bcc26f374a8c174874afc47c227eefaf38b9905e5a'
-            '38657281e23d0f0d9ee0894c9857b8c8361c755ff64201f563c8698bd20d8072')
+            '68600b85ea2f0ba0e1eef8d588029321e16e476d686766496545f22099a0573c')
 
 prepare() {
   cd "$pkgname-$pkgver"
