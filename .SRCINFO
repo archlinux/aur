@@ -1,4 +1,4 @@
-pkgbase = python-time-uuid
+pkgbase = python-time_uuid
 	pkgdesc = A sensible class for dealing with UUIDv1
 	pkgver = 0.2.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = python-time-uuid
 	source = https://pypi.org/packages/source/t/time-uuid/time-uuid-0.2.0.tar.gz
 	sha512sums = 99c6f51dccf289f8470ea402485096fd946d8770006297c06540e93b95dcbc7630266961fc021b40fae648f15cb45d5667a416397b92281831984798d0a4d234
 
-pkgname = python-time-uuid
+pkgname = python-time_uuid

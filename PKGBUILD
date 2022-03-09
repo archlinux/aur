@@ -1,6 +1,6 @@
 # Contributor: Jagannathan Tiruvallur Eachambadi <jagannathante@gmail.com>
 _base=time-uuid
-pkgname=python-${_base}
+pkgname=python-${_base/-/_}
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="A sensible class for dealing with UUIDv1"
