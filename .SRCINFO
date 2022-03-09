@@ -2,17 +2,12 @@ pkgbase = python-pem
 	pkgdesc = Parsing and splitting of PEM files
 	pkgver = 21.2.0
 	pkgrel = 1
-	url = https://pem.readthedocs.io
+	url = https://github.com/hynek/pem
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = pem-21.2.0.tar.gz::https://github.com/hynek/pem/archive/21.2.0.tar.gz
-	md5sums = bc7a3623aaae89d2a79ab7e7b7c8a655
+	depends = python
+	source = https://github.com/hynek/pem/archive/21.2.0.tar.gz
+	sha512sums = 7e6f6d46bd1c8ab5c84b0edee182fbec7ae3c37e2005854ff1bc6f43cb47490a1f3bb0ac97cbc9e8c0ff830d4f22fcddd52f68206452a16ba862354a75491b18
 
 pkgname = python-pem
-	depends = python
-
-pkgname = python2-pem
-	depends = python2
-
