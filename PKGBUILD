@@ -44,13 +44,11 @@ source=("hg+$_repo#revision=autoland"
         $_pkgname.desktop
         "git+https://gitlab.com/vnepogodin/librewolf-common.git"
         "git+https://gitlab.com/vnepogodin/librewolf-settings.git"
-        "0001-Use-remoting-name-for-GDK-application-names.patch::${_arch_git}/0001-Use-remoting-name-for-GDK-application-names.patch"
         "default192x192.png")
 sha512sums=('SKIP'
             '5a0932eeceba04a09133a7b61e9eee49cd5bdacb2daadc132e910fdd3ef8392262208b6401043655bff58068b2320022daa6722f11aed9284c5b5a008d570bcd'
             'SKIP'
             'SKIP'
-            '16e9cd48fc8a62ce0cdf5dbf1f56e8963dedec99e3f14a9d4f49bdc0ab0849d35cd1d8aedd42084d563f932028ba152830cf3c5122a403450813ac98e768abc1'
             '2ebb0e9b37ea6445d71ab783ca180def1125ec76bff685cce31705360f32fd26d205ba95e232848663bd1c1d927873985d3658105588feb7f09aec0180b6e3a7')
 
 pkgver() {
