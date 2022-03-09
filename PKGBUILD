@@ -29,7 +29,6 @@ build()
     echo -e "\033[0;32mConfiguration is needed before the installation. For assistance, read the included \"README.md\".\033[0m"
 
     cd "${srcdir}"/"${_pkgname}"/ || exit
-    git checkout next_release
     git checkout tags/"${pkgver}"
     git submodule update --init --merge --recursive
     composer install --no-dev
