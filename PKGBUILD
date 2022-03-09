@@ -1,55 +1,25 @@
-pkgbase=('python-sciscipy')
-pkgname=('python-sciscipy' 'python2-sciscipy')
+# Contributor: Michel Zou <xantares09@hotmail.com>
+_base=sciscipy
+pkgname=python-${_base}
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Scilab API for Python"
-arch=('any')
-url="http://forge.scilab.org/index.php/p/sciscipy/"
-license=('GPL')
-source=("http://forge.scilab.org/index.php/p/sciscipy/downloads/get/sciscipy-${pkgver}.tar.gz"
-        "fixlib.diff")
-md5sums=('80fa3e4dbd85445c2535e173c24ffc77'
-         'SKIP')
-makedepends=('python-setuptools' 'python2-setuptools' 'scilab')
-
-prepare() {
-  cd "$srcdir/sciscipy-$pkgver"
-  patch -p1 -i "$srcdir/fixlib.diff"
-  /usr/lib/python2.7/Tools/scripts/reindent.py setup.py
-  2to3 -w setup.py scilab.py
-
-  cp -r "$srcdir/sciscipy-$pkgver" "$srcdir/sciscipy-$pkgver-py2"
-
-  sed -i "s|PyString_|PyBytes_|g" sciconv_write.c
-  sed -i "s|PyInt_|PyLong_|g" sciconv_write.c
-}
+arch=(any)
+url="http://forge.scilab.org/index.php/p/${_base}"
+license=(GPL)
+depends=(python-numpy scilab)
+makedepends=(python-setuptools)
+source=(${url}/downloads/get/${_base}-${pkgver}.tar.gz)
+sha512sums=('2aef9505ae61182e349a2d97cc6efc83e5ab3735f66d9084f2861cd0ff19a82d86d729ec8c9b6dcafc8518c91ef26ce3ffc7decac7064fe4b10ea9e761a231e6')
 
 build() {
-  cd "$srcdir/sciscipy-$pkgver-py2"
-  python2 setup.py build
-  cd "$srcdir/sciscipy-$pkgver"
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
-check () {
-  cd "$srcdir/sciscipy-$pkgver"
-#   python2 setup.py test
-}
-
-package_python2-sciscipy() {
-  depends=('python2-numpy' 'scilab')
-  conflicts=('python-sciscipy')
-
-  cd "$srcdir/sciscipy-$pkgver-py2"
-  python2 ./setup.py install --prefix=/usr --root="$pkgdir"
-}
-
-package_python-sciscipy() {
-  depends=('python-numpy' 'scilab')
-  conflicts=('python2-sciscipy')
-
-  cd "$srcdir/sciscipy-$pkgver"
-  python ./setup.py install --prefix=/usr --root="$pkgdir"
+package() {
+  cd ${_base}-${pkgver}
+  python setup.py install --prefix=/usr --root="$pkgdir"
 }
 
 # test:
