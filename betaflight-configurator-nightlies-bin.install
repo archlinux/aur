@@ -1,7 +1,5 @@
 post_install() {
-  echo "Dont forget to add your user into the uucp group for serial access. To do that, run:"
-  echo "> sudo usermod -aG uucp $USER"
-  echo "(See https://wiki.archlinux.org/title/Users_and_groups#User_groups)"
+  echo 'Add your user into uucp group with "sudo gpasswd -a $USER uucp" for serial access!'
 }
 
 post_upgrade() {
