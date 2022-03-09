@@ -11,6 +11,7 @@ url="https://github.com/$_repo"
 license=('BSD3')
 
 makedepends=('cargo')
+optdepends=('discord: Discord IPC socket (discord client stable)')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_ver.tar.gz")
 sha256sums=('SKIP')
