@@ -1,0 +1,241 @@
+diff -rupN rt-8u202-ga.orig/buildSrc/linux.gradle rt-8u202-ga/buildSrc/linux.gradle
+--- rt-8u202-ga.orig/buildSrc/linux.gradle	2019-06-03 15:45:22.599465670 +0200
++++ rt-8u202-ga/buildSrc/linux.gradle	2019-06-03 15:50:59.746039363 +0200
+@@ -44,8 +44,11 @@ LINUX.library = { name -> return "lib${n
+ def commonFlags = [
+         "-fno-strict-aliasing", "-fPIC", "-fno-omit-frame-pointer", // optimization flags
+         "-fstack-protector",
++        "-Wno-error=cast-function-type","-Wno-error=deprecated-declarations",
+         "-W", "-Wall", "-Wno-unused", "-Wno-parentheses", "-Werror=implicit-function-declaration"] // warning flags
+
++commonFlags.addAll(System.getenv("CFLAGS").trim().replaceAll(" +", " ").split(" "))
++
+ if (!IS_64) {
+     commonFlags += "-m32"
+ }
+@@ -60,6 +63,9 @@ def ccFlagsGTK3 = ccFlags
+ def linkFlags = ["-static-libgcc", "-static-libstdc++", "-shared", commonFlags,
+                  "-z", "relro",
+                  "-Wl,--gc-sections"].flatten()
++
++linkFlags.addAll(System.getenv("LDFLAGS").trim().split(" "))
++
+ def defaultLinkFlags = linkFlags.flatten()
+
+ def gtk2CCFlags = [  ];
+@@ -274,7 +280,7 @@ LINUX.iio.nativeSource = [
+ LINUX.iio.compiler = compiler
+ LINUX.iio.ccFlags = [ccFlags].flatten()
+ LINUX.iio.linker = linker
+-LINUX.iio.linkFlags = [linkFlags].flatten()
++LINUX.iio.linkFlags = [linkFlags, "-ljpeg"].flatten()
+ LINUX.iio.lib = "javafx_iio"
+
+ LINUX.prismES2 = [:]
+@@ -339,5 +345,5 @@ LINUX.media.lib = "ar"
+ LINUX.webkit = [:]
+ LINUX.webkit.compiler = compiler
+ LINUX.webkit.linker = linker
+-LINUX.webkit.ccFlags = commonFlags.flatten()
++LINUX.webkit.ccFlags = [commonFlags , "-std=gnu++14", "-fno-lto"].flatten()
+ LINUX.webkit.linkFlags = defaultLinkFlags.flatten()
+diff -rupN rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile
+--- rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile	2019-06-03 15:45:28.772858454 +0200
++++ rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/avplugin/Makefile	2019-06-03 15:52:15.503480874 +0200
+@@ -22,7 +22,7 @@ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+ OBJBASE_DIR = $(BUILD_DIR)/obj/plugins/avplugin
+ endif
+
+-CFLAGS = -fPIC                   \
++CFLAGS := -fPIC                   \
+          -Wformat                \
+          -Wextra                 \
+          -Wformat-security       \
+@@ -35,13 +35,8 @@ CFLAGS = -fPIC                   \
+          -DGST_DISABLE_LOADSAVE  \
+          -DGSTREAMER_LITE \
+          -DG_DISABLE_DEPRECATED \
+-         -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+
+ INCLUDES= -I../../../plugins                          \
+           -I../../../plugins/av                       \
+@@ -51,11 +46,12 @@ INCLUDES= -I../../../plugins
+           -I$(GLIB_DIR)/glib                          \
+           -I$(GLIB_DIR)/gmodule
+
+-LDFLAGS = -L$(BUILD_DIR)    \
++LDFLAGS := -L$(BUILD_DIR)    \
+           -z relro          \
+           -lgstreamer-lite  \
+           -lglib-lite  \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+
+ ifneq ($(strip $(LIBAV_DIR)),)
+ INCLUDES += -I$(LIBAV_DIR)/include
+diff -rupN rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile
+--- rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile	2019-06-03 15:45:28.772858454 +0200
++++ rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/fxplugins/Makefile	2019-06-03 15:53:26.784252777 +0200
+@@ -19,7 +19,7 @@ DIRLIST = progressbuffer       \
+
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+
+-CFLAGS = -fPIC                   \
++CFLAGS := -fPIC                   \
+          -Wformat                \
+          -Wextra                 \
+          -Wformat-security       \
+@@ -36,14 +36,8 @@ CFLAGS = -fPIC                   \
+          -DGST_DISABLE_GST_DEBUG \
+          -DGSTREAMER_LITE \
+          -DG_DISABLE_DEPRECATED \
+-         -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
+-
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+
+ INCLUDES = -I$(SRCBASE_DIR) \
+ 	   $(addprefix -I$(SRCBASE_DIR)/,$(DIRLIST)) \
+@@ -53,9 +47,10 @@ INCLUDES = -I$(SRCBASE_DIR) \
+            -I$(GLIB_DIR)/glib                        \
+            -I$(GLIB_DIR)/gmodule
+
+-LDFLAGS = -L$(BUILD_DIR) -lgstreamer-lite -lglib-lite \
++LDFLAGS := -L$(BUILD_DIR) -lgstreamer-lite -lglib-lite \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+diff -rupN rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile
+--- rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile	2019-06-03 15:45:28.772858454 +0200
++++ rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/gstreamer-lite/Makefile	2019-06-03 15:55:03.568631974 +0200
+@@ -41,7 +41,7 @@ DIRLIST = gstreamer/gst \
+
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+
+-CFLAGS =-fPIC                   \
++CFLAGS :=-fPIC                   \
+         -Wformat                \
+         -Wextra                 \
+         -Wformat-security       \
+@@ -56,13 +56,8 @@ CFLAGS =-fPIC                   \
+         -DGST_DISABLE_GST_DEBUG \
+         -DGST_DISABLE_LOADSAVE  \
+         -DG_DISABLE_DEPRECATED   \
+-        -ffunction-sections -fdata-sections
+-
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
++        -ffunction-sections -fdata-sections \
++        ${CFLAGS}
+
+ INCLUDES = -I$(BASE_DIR)/plugins                          \
+ 	   -I$(SRCBASE_DIR)/projects/build/linux/common   \
+@@ -83,9 +78,10 @@ INCLUDES = -I$(BASE_DIR)/plugins
+ PACKAGES_INCLUDES := $(shell pkg-config --cflags alsa)
+ PACKAGES_LIBS := $(shell pkg-config --libs alsa)
+
+-LDFLAGS = -L$(BUILD_DIR) -lm -lglib-lite $(PACKAGES_LIBS) \
++LDFLAGS := -L$(BUILD_DIR) -lm -lglib-lite $(PACKAGES_LIBS) \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+diff -rupN rt-8u202-ga.orig/modules/media/src/main/native/jfxmedia/projects/linux/Makefile rt-8u202-ga/modules/media/src/main/native/jfxmedia/projects/linux/Makefile
+--- rt-8u202-ga.orig/modules/media/src/main/native/jfxmedia/projects/linux/Makefile	2019-06-03 15:45:28.819525570 +0200
++++ rt-8u202-ga/modules/media/src/main/native/jfxmedia/projects/linux/Makefile	2019-06-03 15:57:02.209910725 +0200
+@@ -17,7 +17,7 @@ DIRLIST = jni                \
+
+ TARGET = $(BUILD_DIR)/lib$(BASE_NAME).so
+
+-CFLAGS = -DTARGET_OS_LINUX=1     \
++CFLAGS := -DTARGET_OS_LINUX=1     \
+          -D_GNU_SOURCE           \
+          -DGST_REMOVE_DEPRECATED \
+          -DGST_DISABLE_GST_DEBUG \
+@@ -27,7 +27,8 @@ CFLAGS = -DTARGET_OS_LINUX=1     \
+          -DJFXMEDIA_JNI_EXPORTS  \
+          -DLINUX                 \
+          -DG_DISABLE_DEPRECATED  \
+-         -ffunction-sections -fdata-sections
++         -ffunction-sections -fdata-sections \
++         ${CFLAGS}
+
+ CPPFLAGS = -fno-rtti -ffunction-sections -fdata-sections
+
+@@ -57,21 +58,16 @@ ifdef HOST_COMPILE
+ 	           -I$(GLIB_LITE_DIR)/glib \
+ 	           -I$(GLIB_LITE_DIR)/gmodule
+
+-	LDFLAGS = -Wl,-rpath,\$$ORIGIN -L$(BUILD_DIR) -lgstreamer-lite -lglib-lite \
++LDFLAGS := -Wl,-rpath,\$$ORIGIN -L$(BUILD_DIR) -lgstreamer-lite -lglib-lite \
+             -z relro \
+-            -static-libgcc -static-libstdc++ -Wl,--gc-sections
++            -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++            ${LDFLAGS}
+ else
+ 	CFLAGS += $(EXTRA_CFLAGS)
+ 	INCLUDES = $(BASE_INCLUDES)
+ 	LDFLAGS = -Wl,-rpath,\$$ORIGIN -L$(BUILD_DIR) $(EXTRA_LDFLAGS)
+ endif
+
+-ifeq ($(BUILD_TYPE), Release)
+-	CFLAGS += -Os
+-else
+-	CFLAGS += -g -Wall -D_DEBUG
+-endif
+-
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+     LDFLAGS += -m32
+--- rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile	2019-06-04 07:44:53.882738260 +0000
++++ rt-8u202-ga/modules/media/src/main/native/gstreamer/projects/linux/glib-lite/Makefile	2019-06-04 07:47:36.024744987 +0000
+@@ -40,20 +40,15 @@ CFLAGS += -fPIC \
+          -DMATCH_LIMIT=10000000 \
+          -DMATCH_LIMIT_RECURSION=10000000
+ 
+-ifeq ($(BUILD_TYPE), Release)
+-    CFLAGS += -Os
+-else
+-    CFLAGS += -g -Wall
+-endif
+-
+ INCLUDES = -I$(SRCBASE_DIR) \
+ 	   -I$(SRCBASE_DIR)/glib \
+ 	   -I$(SRCBASE_DIR)/build/linux \
+ 	   -I$(LIBFFI_DIR)/include
+ 
+-LDFLAGS = -L$(BUILD_DIR) -lffi \
++LDFLAGS := -L$(BUILD_DIR) -lffi \
+           -z relro \
+-          -static-libgcc -static-libstdc++ -Wl,--gc-sections
++          -static-libgcc -static-libstdc++ -Wl,--gc-sections \
++          ${LDFLAGS}
+ 
+ ifeq ($(ARCH), x32)
+     CFLAGS += -m32
+

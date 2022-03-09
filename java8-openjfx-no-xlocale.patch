@@ -1,0 +1,29 @@
+diff -rupN rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c rt-8u202-ga/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c
+--- rt-8u202-ga.orig/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c	2019-06-03 14:24:26.400583977 +0200
++++ rt-8u202-ga/modules/media/src/main/native/gstreamer/3rd_party/glib/glib-2.56.1/glib/gstrfuncs.c	2019-06-03 14:25:04.844259624 +0200
+@@ -37,11 +37,6 @@
+ #include <errno.h>
+ #include <ctype.h>              /* For tolower() */
+ 
+-#ifdef HAVE_XLOCALE_H
+-/* Needed on BSD/OS X for e.g. strtod_l */
+-#include <xlocale.h>
+-#endif
+-
+ #ifdef G_OS_WIN32
+ #include <windows.h>
+ #endif
+
+--- rt-8u202-ga.orig/modules/web/src/main/native/Source/ThirdParty/libxslt/src/libxslt/xsltlocale.h
++++ rt-8u202-ga/modules/web/src/main/native/Source/ThirdParty/libxslt/src/libxslt/xsltlocale.h
+@@ -25,9 +25,6 @@
+ #ifdef HAVE_LOCALE_H
+ #include <locale.h>
+ #endif
+-#ifdef HAVE_XLOCALE_H
+-#include <xlocale.h>
+-#endif
+ 
+ typedef locale_t xsltLocale;
+ typedef xmlChar xsltLocaleChar;
+

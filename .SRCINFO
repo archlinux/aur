@@ -1,0 +1,58 @@
+pkgbase = java8-openjfx
+	pkgdesc = Java OpenJFX 8 client application platform (open-source implementation of JavaFX)
+	pkgver = 8.u202
+	pkgrel = 4
+	url = https://wiki.openjdk.java.net/display/OpenJFX/Main
+	arch = x86_64
+	license = GPL
+	makedepends = alsa-lib
+	makedepends = cairo
+	makedepends = cmake
+	makedepends = ffmpeg4.4
+	makedepends = freetype2
+	makedepends = gdk-pixbuf2
+	makedepends = glib2
+	makedepends = gperf
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = java-environment-openjdk=8
+	makedepends = libgl
+	makedepends = libx11
+	makedepends = libxtst
+	makedepends = pango
+	makedepends = python
+	makedepends = qt5-base
+	makedepends = ruby
+	makedepends = unzip
+	makedepends = webkit2gtk
+	source = https://hg.openjdk.java.net/openjfx/8u-dev/rt/archive/8u202-ga.tar.bz2
+	source = gradle.properties
+	source = https://services.gradle.org/distributions/gradle-4.8-bin.zip
+	source = java8-openjfx-flags.patch
+	source = java8-openjfx-no-xlocale.patch
+	source = java8-openjfx-no-sys-sysctl.patch
+	source = java8-openjfx-CVE-2021-3517-fix.patch::https://gitlab.gnome.org/GNOME/libxml2/-/commit/bf22713507fe1fc3a2c4b525cf0a88c2dc87a3a2.patch
+	source = java8-openjfx-CVE-2021-3522-fix.patch::https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/commit/8a88e5c1db05ebadfd4569955f6f47c23cdca3c4.patch
+	sha256sums = 12b0538d04c4bd451e4692ee06357ac36233ff4ec2af9fa3b9bbdbab48c3f2fc
+	sha256sums = d1c2255893e5ec6268d7c92bb6539cde629d325872f26cffb5f1f616c9d5f30d
+	sha256sums = f3e29692a8faa94eb0b02ebf36fa263a642b3ae8694ef806c45c345b8683f1ba
+	sha256sums = a2e0d5ac5cdb83958d2886aef7f5a419f460e103959f65aaadd69cb26cc6adec
+	sha256sums = b21f6b254acc7aa2124521b6521d3bdfdfcfd9b062624a84ef73608120957d0d
+	sha256sums = cd1a2bd60f636662e4f3334217b3e14f1d51cf30b77b9ca3eff8d030312fd26a
+	sha256sums = 4db6e995d46f5ab29c4169dab5dbbe367ebd01dee66ef1750abe5cf0c8364d42
+	sha256sums = 3487eb180fff9866c8b8b08be45f13fa9e8edd04e5719bc867e59b09b81954b4
+
+pkgname = java8-openjfx
+	depends = java-runtime-openjdk=8
+	depends = libgl
+	depends = libx11
+	depends = libxtst
+	optdepends = ffmpeg4.4: Media support,
+	optdepends = gtk2: GTK2 support,
+	optdepends = gtk3: GTK3 support,
+	optdepends = webkit2gtk: Web support
+	provides = java-openjfx=8
+
+pkgname = java8-openjfx-doc
+
+pkgname = java8-openjfx-src

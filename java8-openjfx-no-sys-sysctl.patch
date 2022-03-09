@@ -1,0 +1,12 @@
+diff --git a/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp b/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
+index 40f83f25..df39a3c7 100644
+--- a/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
++++ b/modules/fxpackager/src/main/native/library/common/PosixPlatform.cpp
+@@ -43,7 +43,6 @@
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ #include <unistd.h>
+-#include <sys/sysctl.h>
+ #include <iostream>
+ #include <dlfcn.h>
+ #include <signal.h>
