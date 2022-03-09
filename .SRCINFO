@@ -1,6 +1,6 @@
 pkgbase = substance-painter
 	pkgdesc = 3D painting software allowing you to texture, render and share your work.
-	pkgver = 7.4.1
+	pkgver = 7.4.2
 	pkgrel = 1
 	url = https://download.substance3d.com/substance-painter
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = substance-painter
 	depends = libtiff4
 	depends = libxcrypt-compat
 	options = !strip
-	source = https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.4.1-1418-linux-x64-standard.rpm
-	sha256sums = 0f6ba736e1d4590ea1f760e77e75e54ef2f20a1185b7af7d3988f3b60261e08b
+	source = https://download.substance3d.com/adobe-substance-3d-painter/7.x/Adobe_Substance_3D_Painter-7.4.2-1551-linux-x64-standard.rpm
+	sha256sums = 7bb5ae66cf25c4f916cb74a0227ab49866ffeb73d82e8870c2bc954c89c0dd77
 
 pkgname = substance-painter
