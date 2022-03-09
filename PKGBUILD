@@ -24,7 +24,7 @@ package() {
     cd $srcdir/$_pkgbase
     mkdir -p $pkgdir/etc/mpv/scripts/
     mkdir -p $pkgdir/etc/mpv/script-opts/
-    mkdir $pkgdir/lib/
+    mkdir -p $pkgdir/lib/
     install -Dm644 "scripts/discord.lua" "${pkgdir}/etc/mpv/scripts/"
     install -Dm644 "script-opts/discord.conf" "${pkgdir}/etc/mpv/script-opts/"
     install -Dm644 "bin/linux/mpv-discord" "${pkgdir}/lib/"
