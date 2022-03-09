@@ -1,15 +1,15 @@
 pkgbase = betaflight-configurator-nightlies-bin
-	pkgdesc = Crossplatform configuration tool for the Betaflight flight control system
-	pkgver = v20210510.2720
-	pkgrel = 2
-	url = https://github.com/betaflight/betaflight-configurator
+	pkgdesc = Nightly builds of the Betaflight Configurator
+	pkgver = v20220306.73
+	pkgrel = 1
+	url = https://github.com/betaflight/betaflight-configurator-nightlies
+	install = betaflight-configurator-nightlies-bin.install
 	arch = x86_64
 	license = GPL3
+	provides = betaflight-configurator
 	conflicts = betaflight-configurator
-	conflicts = betaflight-configurator-bin
 	options = !strip
-	source = https://github.com/betaflight/betaflight-configurator-nightlies/releases/download/v20210510.2720/betaflight-configurator_10.8.0_linux64.zip
-	sha256sums = 61cd542953fb8fcbfac6cd62484dae96f2bbffdf97b460ce3feff08d181ce0e5
+	source = https://github.com/betaflight/betaflight-configurator-nightlies/releases/download/v20220306.73/betaflight-configurator_10.8.0-debug-75600b9_linux64-portable.zip
+	sha256sums = d02e568a4eb8b9e15a47ecef7db6f4e0f8e448eb0071f5936e86a7d38dec8b58
 
 pkgname = betaflight-configurator-nightlies-bin
-
