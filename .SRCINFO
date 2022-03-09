@@ -1,0 +1,15 @@
+pkgbase = python-unicorn-binance-local-depth-cache
+	pkgdesc = An unofficial Python API to use the Binance REST API
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/LUCIT-Systems-and-Development/unicorn-binance-local-depth-cache
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-unicorn-binance-rest-api
+	depends = python-unicorn-binance-websocket-api
+	source = python-unicorn-binance-local-depth-cache-0.6.0.tar.gz::https://github.com/LUCIT-Systems-and-Development/unicorn-binance-local-depth-cache/archive/0.6.0.tar.gz
+	sha256sums = 75d4950ddaab89c29f9d4e4803fbdeb5e392ad6a9505886c9a1315330fcab7e2
+
+pkgname = python-unicorn-binance-local-depth-cache
