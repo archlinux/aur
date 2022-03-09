@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RKimer
+Comment=Lightweight speedcubing timer written in Kotlin
+TryExec=rkimer
+Exec=/usr/bin/rkimer
+Terminal=false
+Categorises=Speedcubing;
+Keywords=speedcubing;rubiks;rkimer;
+Icon=/usr/share/rkimer/rkimer.ico

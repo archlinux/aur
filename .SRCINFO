@@ -1,0 +1,13 @@
+pkgbase = rkimer
+	pkgdesc = A lightweight speedcubing timer written in Kotlin
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Code-Log/rkimer
+	arch = any
+	license = GPL3
+	makedepends = jdk-openjdk
+	provides = rkimer
+	source = rkimer::git+https://github.com/Code-Log/rkimer#branch=master
+	sha256sums = SKIP
+
+pkgname = rkimer
