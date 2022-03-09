@@ -6,11 +6,5 @@ pkgbase = vazir-fonts
 	arch = any
 	license = OFL
 	depends = vazirmatn-fonts
-	provides = ttf-vazir
-	provides = vazir-fonts
-	provides = vazirmatn
-	provides = vazirmatn-fonts
-	conflicts = ttf-vazir
-	conflicts = vazirmatn
 
 pkgname = vazir-fonts
