@@ -3,8 +3,8 @@
 
 pkgbase=linux-zen-g14
 _pkgbase=linux-zen
-pkgver=5.16.12.zen1
-pkgrel=1
+pkgver=5.16.13.zen1
+pkgrel=2
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -21,10 +21,14 @@ source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel#tag=$_srctag"
   "config::https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/linux-zen/trunk/config" # the main kernel config file
   "git+https://gitlab.com/asus-linux/fedora-kernel.git#branch=rog-5.16"
+  "0009.patch::https://github.com/torvalds/linux/commit/6a5a14b18972ae03861e2ed15152f731de29baaa.patch"
+  "0010.patch::https://github.com/torvalds/linux/commit/426c0ff27b833939ed434b4a468bdc010864922a.patch"
 )
 sha256sums=('SKIP'
             '4fb8b32bd7f9b11fa9e546d705982500f8e6ae63e0a49b9d2f2931f86905648e'
-            'SKIP')
+            'SKIP'
+            '848bcbea6810c7e259265313e3307927114e5c87d3e535410490f298e89d55b3'
+            '2f25547987bb4938b2f4a8bf419c1689e41ae1360bbe32df29cbf1bf1b438ff8')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -36,7 +40,10 @@ prepare() {
 
   cp ../fedora-kernel/*.patch $srcdir
   cp ../fedora-kernel/kernel.spec $srcdir
-
+  rm $srcdir/9016-platform-x86-amd-pmc-Simplify-error-handling-path.patch
+  cp $srcdir/0009.patch $srcdir/9016-platform-x86-amd-pmc-Simplify-error-handling-path.patch
+  rm $srcdir/9018-platform-x86-amd-pmc-Add-support-for-AMD-Smart-Trace.patch
+  cp $srcdir/0010.patch $srcdir/9018-platform-x86-amd-pmc-Add-support-for-AMD-Smart-Trace.patch
   #sed -i '/0001-squashed-amd-pstate-v3-for-5.14.patch/d' $srcdir/kernel.spec
 
   echo "Setting version..."
