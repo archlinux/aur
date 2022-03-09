@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="Produce dynamic, standards-compliant version strings"
 url="https://github.com/mtkennerly/dunamai"
 
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 
 arch=("any")
@@ -21,7 +21,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("284dc9acbd3d6b749440332e46164f64b207c56eaf4af412d856cf9f08978932")
+sha256sums=("8f880666168bf7be6d795e39a6c80451caf7ec430f0f0c2d920e5d9bbb439b15")
 
 build() {
     cd "${srcdir}"/${_name}-${pkgver}
