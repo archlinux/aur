@@ -3,7 +3,7 @@
 
 pkgname=crowdsec
 pkgver=1.3.2
-pkgrel=1
+pkgrel=3
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
 url="https://crowdsec.net"
@@ -31,7 +31,7 @@ provides=('crowdsec')
 build(){
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	# Adjust the Makefile to show the proper build version
-	sed -ie "s/^BUILD_VERSION.*$/BUILD_VERSION = v'$pkgver'/g" Makefile
+	sed -ie "s/^BUILD_VERSION.*$/BUILD_VERSION = v${pkgver}/g" Makefile
 
 	make -f Makefile -s build
 	make -f Makefile -s package
