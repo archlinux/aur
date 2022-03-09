@@ -1,61 +1,30 @@
-# Maintainer: mawcomw <mawcomw@gmail.com>
-
-pkgbase=python-sievelib
-#pkgname=('python-sievelib' 'python2-sievelib')
-pkgname=('python2-sievelib')
-pkgver=0.8
-pkgrel=3
-arch=('i686' 'x86_64')
-url="http://bitbucket.org/tonioo/sievelib"
-license=('MIT')
-#makedepends=('python2' 'python')
-makedepends=('python2')
-source=("https://pypi.python.org/packages/source/s/sievelib/sievelib-$pkgver.tar.gz")
-md5sums=('0bcf3cf7b166944c609b71f0ac69ca0a')
-
-prepare() {
-   cp -r sievelib-${pkgver} python2-sievelib-${pkgver}
-}
+# Contributor: mawcomw <mawcomw@gmail.com>
+_base=sievelib
+pkgname=python-${_base}
+pkgdesc="Client-side Sieve and Managesieve library written in Python"
+pkgver=1.2.1
+pkgrel=1
+arch=(any)
+url="https://github.com/tonioo/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools-scm git)
+source=("git+${url}.git?#tag=${pkgver}")
+sha512sums=('SKIP')
 
 build() {
-#   cd $srcdir/sievelib-${pkgver}
-#   python setup.py build
-
-   cd $srcdir/python2-sievelib-${pkgver}
-   python2 setup.py build
+  cd ${_base}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-#check(){
-#   cd $srcdir/sievelib-${pkgver}
-#   python setup.py test
-#   
-#   cd $srcdir/python2-sievelib-${pkgver}
-#   python2 setup.py test
-#}
-
-package_python-sievelib() {
-#   Python3 incompatible!!!
-#   ===============
-#
-#   depends=('python' )
-#   pkgdesc="Python3 Client-side SIEVE library"
-#
-#   cd sievelib-${pkgver}
-#   python setup.py install --root="${pkgdir}" --optimize=1
-#
-#   install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/$pkgname/COPYING
-
-   echo "INFO: python-sievelib library is not compatible with Python 3!"
-
-   return 0
+check() {
+  cd ${_base}
+  python setup.py test
 }
 
-package_python2-sievelib() {
-   depends=('python2' )
-   pkgdesc="Python2 Client-side SIEVE library"
-   
-   cd python2-sievelib-${pkgver}
-   python2 setup.py install --root="${pkgdir}" --optimize=1
-
-   install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/$pkgname/COPYING
+package() {
+  cd ${_base}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
