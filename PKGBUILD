@@ -1,6 +1,6 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
-pkgver=0.3.487_gb4be2e2
+pkgver=0.3.496_gf879203
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
@@ -13,14 +13,14 @@ makedepends=('dotnet-host' 'dotnet-sdk' 'dotnet-runtime')
 optdepends=()
 provides=('fvim')
 conflicts=('fvim')
-source=("https://github.com/yatli/fvim/archive/refs/tags/v0.3.487+gb4be2e2.tar.gz")
+source=("https://github.com/yatli/fvim/archive/refs/tags/v0.3.496+gf879203.tar.gz")
 md5sums=('SKIP')
 options=('staticlibs')
 
 build() {
     cd "${srcdir}/${pkgname}-${_pkgver}"
     dotnet publish fvim.fsproj \
-        -f net5.0 \
+        -f net6.0 \
         -c Release \
         -r linux-x64 \
         --self-contained
@@ -37,7 +37,7 @@ package() {
     install -m755 lib/fvim-linux-launcher "${pkgdir}/usr/bin/fvim"
     install Assets/fvim.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/fvim.png"
     install lib/fvim.desktop "${pkgdir}/usr/share/applications/fvim.desktop"
-    cp -dpr bin/Release/net5.0/linux-x64/* "${pkgdir}/usr/share/fvim"
+    cp -dpr bin/Release/net6.0/linux-x64/* "${pkgdir}/usr/share/fvim"
     chmod 755 "${pkgdir}/usr/share/fvim/FVim"
     chmod 755 "${pkgdir}/usr/bin/fvim"
 }
