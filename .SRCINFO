@@ -1,6 +1,6 @@
 pkgbase = guilded
 	pkgdesc = Chat for Gaming Communities
-	pkgver = 1.0.9122075
+	pkgver = 1.0.9126173
 	pkgrel = 1
 	url = https://www.guilded.gg/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = guilded
 	depends = util-linux-libs
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = guilded-1.0.9122075.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb
-	sha256sums = ad02fdd116bb1502e926a3c60ab791b07a6f7876621ebf5102d42978461d2a93
+	source = guilded-1.0.9126173.deb::https://www.guilded.gg/downloads/Guilded-Linux.deb
+	sha256sums = 0b29f5fa9bdb275ec32cf905abd83c9f3fa157a02d7813fc87b842f307bcbd47
 
 pkgname = guilded
