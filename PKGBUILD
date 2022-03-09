@@ -17,7 +17,7 @@ options=()
 install=
 source=('git+https://github.com/gsauthof/dracut-sshd.git')
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -40,5 +40,7 @@ package() {
   target="$pkgdir/usr/lib/dracut/modules.d/46sshd"
   install -Dt "$target" -m 0755 46sshd/module-setup.sh
   install -Dt "$target" -m 0644 46sshd/sshd.service
+  install -Dt "$target" -m 0644 46sshd/motd
+  install -Dt "$target" -m 0644 46sshd/profile
   install -Dt "$target" -m 0644 46sshd/sshd_config
 }
