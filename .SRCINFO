@@ -1,6 +1,6 @@
 pkgbase = gurk-git
 	pkgdesc = CLI client for Signal
-	pkgver = 0.2.3.r156.gf89dbf6
+	pkgver = 0.2.3.r157.g82272fb
 	pkgrel = 1
 	url = https://github.com/boxdot/gurk-rs
 	arch = x86_64
