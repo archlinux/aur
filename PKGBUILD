@@ -1,31 +1,32 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
-_modulename=todoist-api-python
-pkgname=python-$_modulename
+pkgname=python-todoist-api-python
+_name=${pkgname#python-}
+__name=${_name//-/_}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="This is the official Python API client for the Todoist REST API."
 arch=(any)
-url="https://github.com/Doist/$_modulename"
-license=('BSD')
+url="https://github.com/Doist/$_name"
+license=('MIT')
 groups=()
 depends=(python-requests)
-makedepends=(python-build python-installer python-poetry)
+makedepends=(python-build python-installer)
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('177abf9fbbb9f3f7d8cbcebc5ec8e2b37bd9c7e72b7682805d5647bf18b26eb8')
+source=("https://files.pythonhosted.org/packages/source/${__name::1}/$__name/$__name-$pkgver.tar.gz")
+sha256sums=('cee8c8993e889635a9ad5947e40d0f5969f4fefc3787fd7be6f32e42561a2244')
 
 build() {
-    cd "$srcdir/$_modulename-$pkgver"
-    python -m build --wheel --no-isolation
+    cd "$srcdir/$__name-$pkgver"
+    python setup.py build
 }
 
 package() {
-    cd "$srcdir/$_modulename-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    cd "$srcdir/$__name-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1
 }
 
