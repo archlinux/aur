@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=Midnight Rescue
+Type=Application
+Name=Midnight Rescue
+Comment=A classic educational game from Abandonia, played in DosBox.
+Exec=/usr/bin/midnight-rescue
+Icon=midnight-rescue
+Categories=Game;Abandonia;
+Terminal=false
+StartupNotify=false
