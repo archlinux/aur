@@ -2,7 +2,7 @@
 
 pkgname='mpv-discordrpc-git'
 pkgver=v1.4.1.UNKNOWN.r5.gc8270e5
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord Rich Presence integration for mpv Media Player'
 url='https://github.com/cniw/mpv-discordRPC'
 arch=('any')
@@ -16,12 +16,11 @@ pkgver() {
 }
 
 package() {
-  cd ${srcdir}
+  cd ${srcdir}/mpv-discordRPC
   mkdir -p ${pkgdir}/etc/mpv/scripts/mpv-discordRPC/
   mkdir -p ${pkgdir}/etc/mpv/script-opts/
-  mkdir -p ${pkgdir}/etc/mpv/script/
-  install -Dm644 "mpv_discordRPC.conf" "${pkgdir}/etc/mpv/script-opts/"
   install -Dm644 "status-line.lua" "${pkgdir}/etc/mpv/scripts/"
+  install -Dm644 "mpv_discordRPC.conf" "${pkgdir}/etc/mpv/script-opts/"
   install -Dm644 "mpv-discordRPC/lua-discordRPC.lua" "${pkgdir}/etc/mpv/scripts/mpv-discordRPC/"
   install -Dm644 "mpv-discordRPC/catalogs.lua" "${pkgdir}/etc/mpv/scripts/mpv-discordRPC/"
   install -Dm644 "mpv-discordRPC/main.lua" "${pkgdir}/etc/mpv/scripts/mpv-discordRPC/"
