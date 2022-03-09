@@ -1,4 +1,4 @@
-# maintainer: xeruf <27f at pm dot me>
+# Maintainer: xeruf <27jf at pm dot me>
 pkgname=perl-text-layout
 pkgver=0.021
 pkgrel=1
