@@ -1,0 +1,18 @@
+pkgbase = enquirer
+	pkgdesc = Command line utility for stylish interactive prompts
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/termapps/enquirer
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = rust
+	depends = gcc-libs
+	source = enquirer-0.6.1.tar.gz::https://github.com/termapps/enquirer/archive/refs/tags/v0.6.1.tar.gz
+	source = Cargo.lock
+	sha256sums = b0539686bd8f5807f1f5219a7d5809913fbbf7af73913d169001241ad19b568f
+	sha256sums = d5771d18324fd91f940736ea27cb4fb84e6663901f16dcdac0d4fed2c2d90b23
+	b2sums = 32dc8f097d69b8c092da47d875f3970ab17ef19836c8e9adde0ee66b235858b1ad313bbc07c3682eec0257390ba5f713a9765de8a1a1cfaafcefe9bda85f20db
+	b2sums = 2c44f124039ced129704c389a7b8cca37ef6f9b7c51ecbbf9c6fb825dad2e1390b75d99df81b6fc0d895eb9750b8a53ad7af54dc9ef3195e0c33ab8d462fe11e
+
+pkgname = enquirer
