@@ -4,7 +4,7 @@
 
 _pkgname=Juno-palenight
 pkgname=juno-palenight-theme-git
-pkgver=r117.632f395
+pkgver=r149.42c4d68
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 url="https://github.com/EliverLara/Juno"
