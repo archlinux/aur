@@ -1,29 +1,25 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
-
-pkgname=('python-twiggy' 'python2-twiggy')
-pkgver=0.4.7
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+_base=twiggy
+pkgname=python-${_base}
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="trac xmlrpc library"
+pkgdesc="a Pythonic logger"
 arch=(any)
-url="http://twiggy.wearpants.org/"
-license=('BSD')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(https://pypi.org/packages/source/t/twiggy/Twiggy-$pkgver.tar.gz)
+url="https://github.com/wearpants/${_base}"
+license=('custom:BSD-3-clause')
+depends=(python-six)
+makedepends=(python-setuptools)
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('d8cc2fe85ac6b58a451129c5bcd54f7d4b61d55833b9869b48bea1572a74f0fc73ac29370f1e3dc4fc618256fbaa681e3322a5684419504f898a20370e502314')
 
-package_python-twiggy() {
-  cd $srcdir/Twiggy-$pkgver
-
-  python setup.py install --root=$pkgdir --optimize=1
-
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python2-twiggy() {
-  cd $srcdir/Twiggy-$pkgver
-
-  python2 setup.py install --root=$pkgdir --optimize=1
-
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-md5sums=('4d363a8d6b966b7ec617a08bf129f2b9')
