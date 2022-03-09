@@ -1,6 +1,6 @@
 pkgbase = gitless
 	pkgdesc = A scientifically proven easier-to-use git interface
-	pkgver = 0.9.16
+	pkgver = 0.9.17
 	pkgrel = 1
 	url = https://github.com/goldstar611/gitless
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gitless
 	depends = python-pygit2>=1.4.0
 	depends = python-setuptools
 	depends = python-argcomplete
-	source = https://github.com/goldstar611/gitless/archive/0.9.16.tar.gz
-	sha256sums = c54386b5972caa749720a464be394b766d80fc59f45aa2c66d6f1a838747f575
+	source = https://github.com/goldstar611/gitless/archive/0.9.17.tar.gz
+	sha256sums = 138651f4fcc80a8218652733a51687bfb6851e3aac4feeeb1b293f5e807f0548
 
 pkgname = gitless
