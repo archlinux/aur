@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=gtk3-no_deadkeys_underline
-pkgver=3.24.31
+pkgver=3.24.33
 pkgrel=1
 epoch=1
 pkgdesc="Like gtk3 in extra but with a patch to disable dead keys having an underline below them while typing"
@@ -13,15 +13,16 @@ depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          dconf libxcomposite libxdamage pango shared-mime-info at-spi2-atk
          wayland libxkbcommon adwaita-icon-theme json-glib librsvg
          wayland-protocols desktop-file-utils mesa cantarell-fonts libcolord
-         rest libcups libcanberra fribidi iso-codes libcloudproviders
+         rest libcups fribidi iso-codes libcloudproviders
          gtk-update-icon-cache)
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
+optdepends=('evince: Default print preview command')
 provides=(gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so gtk3)
 conflicts=(gtk3-print-backends gtk3)
 replaces=("gtk3-print-backends<=3.22.26-1")
 license=(LGPL)
 install=gtk3.install
-_commit=ab45bde94c7bbd140b12fa0dd6203f7b98d1a715 # tags/3.24.31^0
+_commit=8ff9b2f83ff491cbfcbf9b30c706bd917679e7cc # tags/3.24.33^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         no_deadkeys_underline.patch
@@ -87,7 +88,7 @@ END
 
   _pick demo usr/bin/gtk3-{demo,demo-application,icon-browser,widget-factory}
   _pick demo usr/share/applications/gtk3-{demo,icon-browser,widget-factory}.desktop
-  _pick demo usr/share/glib-2.0/schemas/org.gtk.Demo.gschema.xml
+  _pick demo usr/share/glib-2.0/schemas/org.gtk.{Demo,exampleapp}.gschema.xml
   _pick demo usr/share/icons/hicolor/*/apps/gtk3-{demo,widget-factory}[-.]*
   _pick demo usr/share/man/man1/gtk3-{demo,demo-application,icon-browser,widget-factory}.1
 }
