@@ -1,13 +1,14 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-doc-utils
 pkgver=0.20.10+16+gc03cc09
-pkgrel=2
+pkgrel=3
 pkgdesc="Documentation utilities for Gnome"
 arch=('any')
 license=('GPL' 'LGPL')
-depends=('libxslt' 'python2' 'docbook-xml' 'rarian')
-makedepends=('intltool' gnome-common git)
+depends=(docbook-xml rarian python2-libxml2)
+makedepends=(intltool gnome-common git)
 url="https://www.gnome.org"
 _commit=c03cc0963996934e03587af3e351c2bb9dab6b2a  # master
 source=("git+https://git.gnome.org/browse/gnome-doc-utils#commit=$_commit")
