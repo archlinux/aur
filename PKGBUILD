@@ -7,14 +7,14 @@ _lang=en-US
 pkgname=${_name}-${_channel}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
-_version=99.0a1
-pkgver=99.0a1.20220304152603+h49b96467418f
+_version=100.0a1
+pkgver=100.0a1.20220309094444+ha65fc42d14c7
 pkgrel=1
 arch=(i686 x86_64)
 license=(MPL GPL LGPL)
 depends=(dbus-glib gtk3 libxt nss mime-types)
 optdepends=('pulseaudio: audio support'
-            'ffmpeg4.4: h.264 video'
+            'ffmpeg: h.264 video'
             'hunspell: spell checking'
             'hyphen: hyphenation'
             'libnotify: notification integration'
