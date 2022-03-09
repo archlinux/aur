@@ -1,0 +1,15 @@
+pkgbase = doasedit-alternative
+	pkgdesc = Enable doers to edit non-user-writable files with an unprivileged editor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/TotallyLeGIT/doasedit
+	arch = any
+	license = MIT
+	depends = doas
+	depends = sh
+	provides = doasedit
+	conflicts = doasedit
+	source = doasedit-alternative-1.0.0.tar.gz::https://codeberg.org/TotallyLeGIT/doasedit/archive/1.0.0.tar.gz
+	sha256sums = 59f78cf9336250b6fc72a763cce144cbcdd2236b9b388e11a0962db4ab9a7775
+
+pkgname = doasedit-alternative
