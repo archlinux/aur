@@ -4,7 +4,7 @@
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
 pkgname=insomnia
-pkgver=2021.7.2
+pkgver=2022.1.1
 pkgrel=1
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
@@ -12,12 +12,12 @@ url="https://github.com/Kong/insomnia"
 arch=('any')
 license=('MIT')
 depends=()
-makedepends=('npm' 'nvm' 'fontconfig')
+makedepends=('npm' 'nvm' 'fontconfig' 'libxcrypt-compat' 'rpm-tools')
 source=(
   "https://github.com/Kong/insomnia/archive/refs/tags/core@${pkgver}.tar.gz"
   "insomnia.desktop"
 )
-b2sums=('7efd5e63b66489c76edd727bf9c8dda93ae54d05528c6629533a0d2187b558313a24c9591c0b9eadac8538f3f6a2b1dd63a5806784ecffd084f5560f640575dd'
+b2sums=('a5aaf5bca2182243d1ed9426e35b28bfe119faa7974496a962f4dfba83e3336bf586e97e9844a8362f53266845c8c89a2459bec61fd2b8efff45aa49cbc7fe05'
         '38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e')
 
 _ensure_local_nvm() {
