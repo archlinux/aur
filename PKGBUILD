@@ -4,7 +4,7 @@
 
 _pkgname=Juno-mirage
 pkgname=juno-mirage-theme-git
-pkgver=r131.7d23780
+pkgver=r154.ac200ba
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 url="https://github.com/EliverLara/Juno"
