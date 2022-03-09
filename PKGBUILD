@@ -2,18 +2,18 @@
 
 pkgname=molotov
 # Check last version by a call on https://desktop-auto-upgrade.molotov.tv/linux/manifest.json
-pkgver=4.4.4
+pkgver=4.4.8
 pkgrel=1
 pkgdesc="Streaming access to French (only) TV channels."
 arch=('i686' 'x86_64')
 url="http://www.molotov.tv/"
 license=('unknown')
-depends=('fuse' 'desktop-file-utils' 'xdg-utils')
+depends=('fuse' 'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils')
 makedepends=('p7zip')
 options=('!strip')
-source=("Molotov-${pkgver}.AppImage::http://desktop-auto-upgrade.molotov.tv/linux/${pkgver}/$pkgname.AppImage"
+source=("https://desktop-auto-upgrade.molotov.tv/linux/Molotov-${pkgver}.AppImage"
         'molotov')
-sha256sums=('bd2b9cdc4ecfb4b101e0861644e41fee436a37a1a3a505d4646dcf57610b4ad8'
+sha256sums=('00f0bca55ef3928e41e405ea2f6895f365ed23a9aa3eff9fb7863817a8e36b6d'
             '3a2d0c45ec2a964b229ee44a729d5d86319d573296ca44c8a33e171ce23a3b47')
 
 prepare() {
