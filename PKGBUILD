@@ -2,7 +2,7 @@
 pkgname='geant4'
 pkgver=11.0.1
 _pkgver=v11.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions."
 depends=('cmake>=3.16'
          'xerces-c>=3'
@@ -39,8 +39,7 @@ install="${pkgname}.install"
 source=("http://geant4-data.web.cern.ch/releases/${pkgname}-${_pkgver}.tar.gz"
         "${pkgname}.install")
 
-
-md5sums=('882bfeb9077423944642902bc914d07f'
+md5sums=('598d6d3489214a1e7e3c4c02084b7faa'
          'a6abacd078760aebda58316454d7e0c9')
 
 ## Remove this if you want to keep an even smaller package
