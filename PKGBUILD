@@ -3,7 +3,7 @@
 
 pkgname=woodpecker-agent
 pkgver=0.15.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A community fork of the Drone CI system. Agent program."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
@@ -15,7 +15,7 @@ backup=(etc/woodpecker-agent.conf)
 _pkgname=${pkgname/-agent/}
 source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/woodpecker-ci/$_pkgname/archive/v$pkgver.tar.gz"
-  'woodpecker-agent.service'
+  'systemd.service'
   'tmpfiles.conf'
   'sysusers.conf'
   'woodpecker-agent.conf'
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-  install -vDm644 woodpecker-agent.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+  install -vDm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -vDm644 sysusers.conf "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -vDm644 tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
   install -vDm600 woodpecker-agent.conf "$pkgdir/etc/$pkgname.conf"
