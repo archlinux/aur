@@ -1,41 +1,23 @@
-# Maintainer: Michael Stegeman <mstegeman@mozilla.com>
-pkgbase=python-singleton-decorator
-pkgname=('python-singleton-decorator' 'python2-singleton-decorator')
+# Contributor: Michael Stegeman <mstegeman@mozilla.com>
+_base=singleton-decorator
+pkgname=python-${_base}
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='A testable decorator that allows you to easily create singleton objects"'
-arch=('any')
-url='https://pypi.org/project/singleton-decorator/'
-license=('GPL3')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(
-  "https://files.pythonhosted.org/packages/33/98/a8b5c919bee1152a9a1afd82014431f8db5882699754de50d1b3aba4d136/singleton-decorator-${pkgver}.tar.gz"
-)
-sha256sums=(
-  '1a90ad8a8a738be591c9c167fdd677c5d4a43d1bc6b1c128227be1c5e03bee07'
-)
-
-prepare() {
-  cp -a singleton-decorator-${pkgver}{,-py2}
-  find "singleton-decorator-${pkgver}-py2" -name \*.py -exec sed -i '1s/python$/&2/' {} +
-}
+pkgdesc="A testable decorator that allows you to easily create singleton objects"
+arch=(any)
+url="https://pypi.org/project/${_base}"
+license=(GPL3)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('180376a79a7db65a9959b365cb0b44a1d165e31a5a50ff268c1f994eef635fd87414307074db13d7329ec989a0c23589f07119d3319a47f2387b09f9c71f1f3f')
 
 build() {
-  cd "${srcdir}/singleton-decorator-${pkgver}"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
-
-  cd "${srcdir}/singleton-decorator-${pkgver}-py2"
-  python2 setup.py build
 }
 
-package_python-singleton-decorator() {
-  cd "${srcdir}/singleton-decorator-${pkgver}"
-  python setup.py install --root="$pkgdir" --optimize=1
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
-
-package_python2-singleton-decorator() {
-  cd "${srcdir}/singleton-decorator-${pkgver}-py2"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-}
-
-# vim:set ts=2 sw=2 et ft=sh:
