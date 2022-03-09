@@ -1,0 +1,17 @@
+diff --git a/packages/insomnia-app/config/electronbuilder.json b/packages/insomnia-app/config/electronbuilder.json
+index 7a6dd7a4..e6bb7655 100644
+--- a/packages/insomnia-app/config/electronbuilder.json
++++ b/packages/insomnia-app/config/electronbuilder.json
+@@ -79,11 +79,7 @@
+     "synopsis": "__SYNOPSIS__",
+     "category": "Development",
+     "target": [
+-      "AppImage",
+-      "deb",
+-      "tar.gz",
+-      "rpm",
+-      "snap"
++      "dir"
+     ]
+   }
+ }

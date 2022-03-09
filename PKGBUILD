@@ -4,7 +4,7 @@ _electron=electron11
 _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
-pkgver=2021.5.3
+pkgver=2022.1.0
 pkgrel=1
 pkgdesc='Cross-platform HTTP and GraphQL Client'
 arch=(any)
@@ -16,10 +16,12 @@ provides=("$_appname")
 conflicts=("$_appname")
 source=("$url/archive/core@$pkgver.tar.gz"
         "$_appname.sh"
-				"$_appname.desktop")
-sha256sums=('86f26c2c2d9fc4f7aa27fc821e69fbc21b2e5fefc3b471a7059d5edd0a1688c2'
+        "$_appname.desktop"
+        "electron_target.patch")
+sha256sums=('eeb0d955bbd2ccfe043eb4ca951b8ec8462d86185c2dfbce35b999d8b0206d79'
             '9eba2a175624d9236f9acbefffd92a5a6a64bf6250700b29684d7aa4a1057c77'
-            '790a02378c36db77797669e6b58a426a037664c2680e8b29b9f606c6bb517e94')
+            '790a02378c36db77797669e6b58a426a037664c2680e8b29b9f606c6bb517e94'
+            'd8bd680dc7d4b56a58f28d93d54cf11ef897a2da7e09d80028ed42f94d3f08c9')
 
 _ensure_local_nvm() {
 	# lets be sure we are starting clean
@@ -33,8 +35,11 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-	cd "$srcdir"
+	_ensure_local_nvm
 	sed -i "s~@ELECTRON@~$_electron~" "$_appname.sh"
+	cd "$_dirname-$pkgver"
+	nvm install
+	patch -p1 -i "$srcdir/electron_target.patch"
 }
 
 build() {
