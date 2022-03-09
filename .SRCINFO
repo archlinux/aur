@@ -1,6 +1,6 @@
 pkgbase = rkimer-git
 	pkgdesc = A lightweight speedcubing timer written in Kotlin
-	pkgver = r29.e6fff47
+	pkgver = r40.e77f8af
 	pkgrel = 1
 	url = https://github.com/Code-Log/rkimer
 	arch = any
