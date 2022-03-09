@@ -11,7 +11,7 @@ pkgbase = pizarra-git
 	depends = gtk3
 	provides = pizarra
 	conflicts = pizarra
-	source = pizarra-git::git+https://gitlab.com/categulario/pizarra-gtk
+	source = pizarra-git::git+https://gitlab.com/categulario/pizarra-gtk#branch=main
 	sha256sums = SKIP
 
 pkgname = pizarra-git
