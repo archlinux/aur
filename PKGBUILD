@@ -3,12 +3,12 @@
 
 pkgname=python-coincurve
 pkgver=17.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform Python CFFI bindings for libsecp256k1'
 arch=('x86_64')
 url="https://github.com/ofek/coincurve"
 license=('GPL')
-depends=('python-cffi' 'python-requests')
+depends=('python-cffi' 'python-requests' 'libsecp256k1')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/coincurve/coincurve-$pkgver.tar.gz")
 sha256sums=('68da55aff898702952fda3ee04fd6ed60bb6b91f919c69270786ed766b548b93')
