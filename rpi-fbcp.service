@@ -1,0 +1,9 @@
+[Unit]
+Description=copy framebuffer for TFT screen
+After=systemd-user-sessions.service plymouth-quit-wait.service getty-pre.target rc-local.service
+
+[Service]
+ExecStart=/usr/bin/rpi-fbcp
+
+[Install]
+WantedBy=getty.target

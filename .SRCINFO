@@ -1,0 +1,19 @@
+pkgbase = rpi-fbcp-git
+	pkgdesc = Copy dispmanx display to framebuffer.
+	pkgver = r14.af8d322
+	pkgrel = 1
+	url = https://github.com/tasanakorn/rpi-fbcp.git
+	arch = aarch64
+	arch = arm7h
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = raspberrypi-firmware
+	provides = rpi-fbcp
+	conflicts = rpi-fbcp
+	source = git+https://github.com/tasanakorn/rpi-fbcp.git
+	source = rpi-fbcp.service
+	sha256sums = SKIP
+	sha256sums = 52739086cec44a635cf345897304fecf16863ffa1fb54c7ef20e8cfbd7eb97c4
+
+pkgname = rpi-fbcp-git
