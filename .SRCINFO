@@ -1,7 +1,7 @@
 pkgbase = python-glcontext
 	pkgdesc = A library providing OpenGL implementation for ModernGL on multiple platforms.
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moderngl/glcontext
 	arch = any
 	license = MIT
