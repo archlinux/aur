@@ -7,7 +7,7 @@ pkgdesc="A lightweight speedcubing timer written in Kotlin"
 arch=('any')
 url="https://github.com/Code-Log/rkimer"
 license=('GPL3')
-makedepends=('jdk-openjdk')
+makedepends=('jdk-openjdk' 'gradle')
 provides=('rkimer')
 source=('rkimer::git+https://github.com/Code-Log/rkimer#branch=master')
 noextract=()

@@ -6,6 +6,7 @@ pkgbase = rkimer
 	arch = any
 	license = GPL3
 	makedepends = jdk-openjdk
+	makedepends = gradle
 	provides = rkimer
 	source = rkimer::git+https://github.com/Code-Log/rkimer#branch=master
 	sha256sums = SKIP
