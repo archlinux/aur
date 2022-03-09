@@ -1,6 +1,6 @@
 pkgbase = juno-standard-buttons-theme-git
 	pkgdesc = GTK themes inspired by epic vscode themes
-	pkgver = r114.df9b431
+	pkgver = r147.1bba343
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
 	arch = any

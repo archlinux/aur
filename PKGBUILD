@@ -4,7 +4,7 @@
 
 _pkgname=Juno-standard-buttons
 pkgname=juno-standard-buttons-theme-git
-pkgver=r114.df9b431
+pkgver=r147.1bba343
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 url="https://github.com/EliverLara/Juno"
