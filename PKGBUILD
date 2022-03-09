@@ -1,34 +1,24 @@
-# Maintainer: j605
-
-_pkgname="time_uuid"
-pkgbase="python-$_pkgname"
-pkgname=("python-$_pkgname" "python2-$_pkgname")
+# Contributor: Jagannathan Tiruvallur Eachambadi <jagannathante@gmail.com>
+_base=time-uuid
+pkgname=python-${_base}
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="A sensible class for dealing with UUIDv1"
-arch=('any')
-license=('BSD')
-url="https://github.com/samuraisam/$_pkgname"
-makedepends=('python' 'python2')
-source=("https://pypi.python.org/packages/eb/2c/033a19c31c5ca828104cd8666623904b9f64c1ff0858fa7ac6789130df3e/${_pkgname/_/-}-$pkgver.tar.gz"
-        "license.txt")
-md5sums=("1483a8d84e5938f3efed1d71d91e27f3"
-         "5c2857983bc7c937295d85e97aa776bb")
+arch=(any)
+license=('custom')
+url="https://github.com/samuraisam/${_base/-/_}"
+depends=(python)
+makedepends=(python-setuptools)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('99c6f51dccf289f8470ea402485096fd946d8770006297c06540e93b95dcbc7630266961fc021b40fae648f15cb45d5667a416397b92281831984798d0a4d234')
 
-package_python2-time_uuid() {
-  depends=('python2')
-
-  cd ${_pkgname/_/-}-$pkgver
-  python2 setup.py install --prefix=/usr --root="${pkgdir}"
-
-  install -Dm 644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python-time_uuid() {
-  depends=('python')
-
-  cd ${_pkgname/_/-}-$pkgver
-  python setup.py install --prefix=/usr --root="${pkgdir}"
-
-  install -Dm 644 "${srcdir}/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
