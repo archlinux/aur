@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=xdroid-bin
-pkgver=7.1021
+pkgver=8.0.64
 pkgrel=1
 epoch=
 pkgdesc="卓懿,让安卓应用融入Linux平台应用生态体系，卓懿 x86_64 版（个人免费下载使用，不得用于商业用途）。"
@@ -10,7 +10,7 @@ url="https://www.linzhuotech.com/Product/download"
 license=('custom')
 groups=()
 depends=("dkms" "xdg-utils")
-makedepends=()
+makedepends=("libarchive")
 checkdepends=()
 optdepends=()
 provides=("xDroidInstall")
@@ -20,9 +20,9 @@ backup=()
 options=('!strip')
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}.tar.gz")
-noextract=(${pkgname}-${pkgver}.tar.gz)
-sha256sums=('595567f6a6abfe63107fcb2b1b08b61659a5b61f97b316c5b2cd84b83f13d3b2')
+source=("${pkgname}-${pkgver}.zip::https://d6.injdk.cn/xdroid/xDroidInstall-${arch}-v${pkgver}.zip")
+noextract=(${pkgname}-${pkgver}.zip)
+sha256sums=('508a8fb4a17e83c22db181f62202c40ee0b4aeb8a73393a6c856e2aa0748de1d')
 #validpgpkeys=()
 
 package() {
@@ -31,7 +31,7 @@ package() {
                     "${pkgdir}/usr/share/icons" \
                     "${pkgdir}/usr/share/applications"
 
-    tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner  --no-same-permissions -C "${pkgdir}/opt/${pkgname}"
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.zip" --no-same-owner  --no-same-permissions -C "${pkgdir}/opt/${pkgname}"
 
     ln -sf "/opt/${pkgname%-bin}/xAppCenter.png" "${pkgdir}/usr/share/icons/xAppCenter.png"
     ln -sf "/opt/${pkgname%-bin}/xAppCenter.desktop" "${pkgdir}/usr/share/applications/xAppCenter.desktop"
