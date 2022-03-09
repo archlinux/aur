@@ -7,14 +7,14 @@ pkgrel=1
 epoch=1
 pkgdesc="Libretro core info files"
 arch=('any')
-url="https://github.com/libretro/libretro-core-info"
+url="https://github.com/libretro/$_pkgname"
 license=('MIT')
 groups=('libretro')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname

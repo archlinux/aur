@@ -10,7 +10,7 @@ pkgbase = libretro-core-info-git
 	makedepends = git
 	provides = libretro-core-info
 	conflicts = libretro-core-info
-	source = libretro-core-info::git+https://github.com/libretro/libretro-core-info.git
-	md5sums = SKIP
+	source = git+https://github.com/libretro/libretro-core-info.git
+	b2sums = SKIP
 
 pkgname = libretro-core-info-git
