@@ -1,28 +1,39 @@
 _uuid="SCUS-94900"
 _app_id="com.naughtydog.CrashBandicootE3"
+_title="Crash Bandicoot (May 11, 1996 prototype)"
+_rom_filename="Crash Bandicoot (c) 1996 Naughty Dog V3.44"
 pkgname=crash-bandicoot-e3
 pkgver=3.44
 pkgrel=1
-pkgdesc="E3 demo version."
+pkgdesc="A prototype of Crash Bandicoot for the Sony PlayStation."
 arch=('any')
 url="https://hiddenpalace.org/Crash_Bandicoot_(May_11,_1996_prototype)"
 depends=('duckstation')
 license=("custom")
 _dmca_exemption="https://archive.org/about/dmca.php"
 source=("${_uuid}.7z::https://files.hiddenpalace.org/c/c8/Crash_Bandicoot_%28May_11%2C_1996_prototype%29.7z"
-        "com.naughtydog.CrashBandicootE3.desktop"
-        "com.naughtydog.CrashBandicootE3.png")
+        "psx-template.desktop"
+        "${_app_id}.png::https://files.hiddenpalace.org/e/ea/CB_E3_DEMO.png")
 sha256sums=("3084ce9b2decfe365abf8bd54c4d6d0f2b0257b8b3f2298aff0d3d8e68b08096"
-	    "f0d06fbdcd20e0626143da1fbb86226a75e662f78422b57d02ac0d0fc611079b"
-	    "70c0b9eb0bcc0e74f8366d1cbcfe39f0c3bc2e05ed1c6d9f777952f9ea5f188a")
+	    "fdfbc31089c3e1b63e92ff58618262b72d1f8baba11a1688f0b8ab3a932d70c6"
+	    "4564d43794c766f33d38fdef54cdfd998c2ea6f111439dce1307e07c5fca8b73")
+
+prepare() {
+  local _game_path="${_title}/Crash Bandicoot (05-11-1996)"
+  mv "${_game_path}/"*.{ccd,img,sub} ./
+
+  mv psx-template.desktop "${_app_id}.desktop"
+  sed -i "s/%_title%/${_title}/g" "${_app_id}.desktop"
+  sed -i "s/%pkgdesc%/${pkgdesc}/g" "${_app_id}.desktop"
+  sed -i "s/%_app_id%/${_app_id}/g" "${_app_id}.desktop"
+  sed -i "s/%_uuid%/${_uuid}/g" "${_app_id}.desktop"
+}
 
 package() {
-  local _game_path="Crash Bandicoot (May 11, 1996 prototype)/Crash Bandicoot (05-11-1996)"
-  local _game_title="Crash Bandicoot (c) 1996 Naughty Dog V3.44"
   local _game="${pkgdir}/usr/games/${_app_id}"
-  install -Dm755 "${_game_path}/${_game_title}.ccd" "${_game}/${_uuid}.ccd"
-  install -Dm755 "${_game_path}/${_game_title}.img" "${_game}/${_uuid}.img"
-  install -Dm755 "${_game_path}/${_game_title}.sub" "${_game}/${_uuid}.sub"
+  install -Dm644 "${_rom_filename}.ccd" "${_game}/${_uuid}.ccd"
+  install -Dm644 "${_rom_filename}.img" "${_game}/${_uuid}.img"
+  install -Dm644 "${_rom_filename}.sub" "${_game}/${_uuid}.sub"
   install -Dm755 "${_app_id}.desktop" "${pkgdir}/usr/share/applications/${_app_id}.desktop"
-  install -Dm755 "${_app_id}.png" "${pkgdir}/usr/share/icons/${_app_id}.png"
+  install -Dm644 "${_app_id}.png" "${pkgdir}/usr/share/icons/${_app_id}.png"
 }
