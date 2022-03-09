@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=opencl-clhpp-git
-pkgver=2.0.16.1.g62d36e4
+pkgver=2.0.16.4.g61a5c9a
 pkgrel=1
 pkgdesc='OpenCLTM API C++ bindings. (GIT Version)'
 arch=('any')
@@ -31,8 +31,6 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
-
   # fix .cmake path
   sed 's|cmake/OpenCLHeadersCpp|OpenCLHeadersCpp/cmake|g' -i OpenCL-CLHPP/CMakeLists.txt
 
@@ -53,15 +51,14 @@ prepare() {
 }
 
 build() {
-  cd build
-
-  cmake ../OpenCL-CLHPP \
+  cmake -S OpenCL-CLHPP -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_EXAMPLES=OFF \
-    -DBUILD_TESTS=ON
+    -DOPENCL_CLHPP_BUILD_TESTING=ON \
+    -DBUILD_TESTING=ON
 
-  make
+  cmake --build build
 }
 
 check() {
@@ -69,10 +66,10 @@ check() {
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" cmake --build build --target install
 
   install -d "${pkgdir}/usr/share/doc/OpenCL-CLHPP"
   (cd build/docs; doxygen -u)
-  make -C build docs
+  cmake --build build --target docs
   install -Dm644 OpenCL-CLHPP/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
