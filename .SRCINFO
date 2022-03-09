@@ -1,0 +1,21 @@
+pkgbase = python-unicorn-binance-rest-api
+	pkgdesc = An unofficial Python API to use the Binance REST API
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/LUCIT-Systems-and-Development/unicorn-binance-rest-api
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-certifi
+	depends = python-colorama
+	depends = python-cryptography
+	depends = python-dateparser
+	depends = python-pyopenssl
+	depends = python-pytz
+	depends = python-service-identity
+	depends = python-ujson
+	source = python-unicorn-binance-rest-api-1.4.1.tar.gz::https://github.com/LUCIT-Systems-and-Development/unicorn-binance-rest-api/archive/1.4.1.tar.gz
+	sha256sums = b709629ab3d077a502590573230b88644bba1a7065c54e02d5854300c9bafd2f
+
+pkgname = python-unicorn-binance-rest-api
