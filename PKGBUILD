@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	# https://github.com/Arisotura/melonDS/issues/1103
-	# export CFLAGS="$CFLAGS -Wa,--noexecstack"
+	# LDFLAGS+=' -Wl,-z,noexecstack'
 	make -C $_pkgname
 }
 
