@@ -2,7 +2,7 @@
 
 _pkgname=Sparrow
 pkgname=sparrow-wallet
-pkgver=1.5.6
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Bitcoin Wallet that works with BitBox02"
 arch=('x86_64' 'arm64')
@@ -12,7 +12,7 @@ depends=('libnet' 'hicolor-icon-theme' 'alsa-lib' 'libxtst' 'libxrender' 'java-r
 makedepends=('p7zip' 'gendesk')
 validpgpkeys=('D4D0D3202FC06849A257B38DE94618334C674B40')
 source=("https://github.com/sparrowwallet/sparrow/releases/download/$pkgver/sparrow-$pkgver.tar.gz")
-sha256sums=('724f139a82744b3d8b29deb37f3a60a7db271affc094692e468a9161c4acf368')
+sha256sums=('4f45aed37115a7d7756d405d2a47e63e4cd2b6fb1df6b82110f74da865d989f2')
 
 prepare() {
 	# Comment
