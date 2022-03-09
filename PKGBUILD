@@ -1,7 +1,7 @@
 # Maintainer:   selpast <selpast@pm.me>
 
 pkgname='mpv-discordrpc-git'
-pkgver=v1.4.1.UNKNOWN.r5.gc8270e5
+pkgver=1.4.1.UNKNOWN.r5.gc8270e5
 pkgrel=2
 pkgdesc='Discord Rich Presence integration for mpv Media Player'
 url='https://github.com/cniw/mpv-discordRPC'
