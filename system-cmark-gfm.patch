@@ -21,16 +21,3 @@ index cad9d54..e07d4ab 100644
  
  clean:
  	rm -f $(LIBCMARK) $(OBJECTS) $(SHLIB) $(STATLIB)
-diff --git a/tests/testthat/test-extensions.R b/tests/testthat/test-extensions.R
-index d0eb354..fa922fe 100644
---- a/tests/testthat/test-extensions.R
-+++ b/tests/testthat/test-extensions.R
-@@ -1,7 +1,7 @@
- context("test-extensions")
- 
- test_that("list extensions", {
--  expect_equal(list_extensions(), c("table", "strikethrough", "autolink", "tagfilter"))
-+  expect_equal(list_extensions(), c("table", "strikethrough", "autolink", "tagfilter", "tasklist"))
- })
- 
- test_that("strikethrough", {
