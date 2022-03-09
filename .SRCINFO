@@ -1,7 +1,7 @@
 pkgbase = mozjpeg
 	pkgdesc = JPEG image codec with accelerated baseline decoding and superior encoding
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/mozjpeg
 	arch = i686
 	arch = x86_64

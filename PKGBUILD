@@ -6,7 +6,7 @@
 
 pkgname="mozjpeg"
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="JPEG image codec with accelerated baseline decoding and superior encoding"
 url="https://github.com/mozilla/mozjpeg"
 license=("BSD")
@@ -20,25 +20,30 @@ provides=("libjpeg" "libjpeg.so=8-64" "turbojpeg" "libjpeg-turbo")
 conflicts=("libjpeg" "mozjpeg-git" "turbojpeg" "libjpeg-turbo")
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DENABLE_STATIC=FALSE -DPNG_SUPPORTED=TRUE -DWITH_JPEG8=TRUE .
-	make
+    cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # Fix test: https://github.com/mozilla/mozjpeg/pull/415
+    sed -i 's/--revert;arithmetic/-revert;-arithmetic/' CMakeLists.txt
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DENABLE_STATIC=FALSE -DPNG_SUPPORTED=TRUE -DWITH_JPEG8=TRUE .
+    make
 }
 
-# much too slow for default, can be enabled if desired
-#check() {
-#	cd "${srcdir}/${pkgname}-${pkgver}"
-#	make test
-#}
+# There are a lot of tests: if you don't want to run them, you or
+# your AUR helper should use `makepkg --nocheck`.
+check() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make test
+}
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make \
-		DESTDIR="${pkgdir}" \
-		docdir="/usr/share/doc/${pkgname}" \
-		exampledir="/usr/share/doc/${pkgname}" \
-		install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make \
+        DESTDIR="${pkgdir}" \
+        docdir="/usr/share/doc/${pkgname}" \
+        exampledir="/usr/share/doc/${pkgname}" \
+        install
 
-	install -D LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -m644 jpegint.h "${pkgdir}/usr/include"
+    install -D LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -m644 jpegint.h "${pkgdir}/usr/include"
 }
