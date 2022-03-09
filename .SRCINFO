@@ -1,6 +1,7 @@
 pkgbase = whatismyip
+	pkgdesc = A bash script getting the public ip of the default route [using AWS]
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = curl
