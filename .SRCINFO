@@ -1,11 +1,11 @@
 pkgbase = cgminer
 	pkgdesc = Multi-threaded multi-pool GPU, FPGA and ASIC miner for bitcoin
 	pkgver = 4.11.1
-	pkgrel = 7
+	pkgrel = 10
 	url = http://ck.kolivas.org/apps/cgminer/
 	arch = x86_64
-  arch = i386
-  arch = armv7h
+	arch = i386
+	arch = armv7h
 	license = GPL3
 	makedepends = git
 	depends = curl
@@ -21,4 +21,3 @@ pkgbase = cgminer
 	sha512sums = 3317b60c6b1f14c47d8ee636113ef40a4023ab14054129de80a37947b381fd2b647a7053f4e1bb639efa225a514e862fa531908714c34040dda2d6221dde7f5f
 
 pkgname = cgminer
-
