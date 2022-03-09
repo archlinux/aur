@@ -1,6 +1,6 @@
 pkgbase = sigma-ex-amp-bin
 	pkgdesc = Audio Assault Modern High Gain Amp Simulator Next Generation
-	pkgver = 22.03.02
+	pkgver = 22.03.08
 	pkgrel = 1
 	url = https://audioassault.mx/products/sigma
 	arch = x86_64

@@ -1,5 +1,5 @@
 pkgname=sigma-ex-amp-bin
-pkgver=22.03.02
+pkgver=22.03.08
 pkgrel=1
 pkgdesc="Audio Assault Modern High Gain Amp Simulator Next Generation"
 arch=('x86_64')
@@ -13,10 +13,10 @@ sha256sums=('81b5cfc2851b158188f60483a18c8f47fa6aa0d7a43d771e16ca6290c2e2ee04')
 
 prepare () {
 	## Extract Duality Bass Studio
-	_archive="`xdg-user-dir DOWNLOAD`/Sigma_2_3_22.zip"
+	_archive="`xdg-user-dir DOWNLOAD`/SigmaExv105.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
-	unzip "Sigma_2_3_22.zip"
+	unzip "SigmaExv105.zip"
 	find $srcdir -name ".DS_Store" -delete
 }
 
@@ -26,7 +26,7 @@ package() {
     cp -rf "$srcdir/Sigma EX Linux/Sigma EX"/{IRs,MIDI,Presets} "$pkgdir/opt/Audio Assault/Sigma EX"
 
     ## Install VST Plugin
-    install -Dm755 "$srcdir/Sigma EX Linux/Sigma EX vst2.so" "$pkgdir/usr/lib/vst/Sigma EX.so"
+    install -Dm755 "$srcdir/Sigma EX Linux/Sigma EX VST2.so" "$pkgdir/usr/lib/vst/Sigma EX.so"
 
     ## Install VST3 Plugin
     mkdir -p "$pkgdir/usr/lib/vst3"
