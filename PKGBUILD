@@ -2,9 +2,9 @@
 
 _pkgname=ddstats-rust
 pkgname=${_pkgname}-bin
-pkgver=3
+pkgver=4
 pkgrel=1
-source=("https://github.com/lsaa/ddstats-rust/releases/download/v0.6.10-180/ddstats-rust-linux-x86_64.zip")
+source=("https://github.com/lsaa/ddstats-rust/releases/download/v0.6.10-181/ddstats-rust-linux-x86_64.zip")
 arch=('x86_64')
 sha256sums=('SKIP')
 b2sums=('SKIP')
