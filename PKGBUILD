@@ -15,7 +15,7 @@ source=("${_uuid}.7z::https://files.hiddenpalace.org/c/c8/Crash_Bandicoot_%28May
         "psx-template.desktop"
         "${_app_id}.png::https://files.hiddenpalace.org/e/ea/CB_E3_DEMO.png")
 sha256sums=("3084ce9b2decfe365abf8bd54c4d6d0f2b0257b8b3f2298aff0d3d8e68b08096"
-	    "fdfbc31089c3e1b63e92ff58618262b72d1f8baba11a1688f0b8ab3a932d70c6"
+	    "0e02de299792b54e399964867bf16cb37551ef7a5b1b42fcb9d1d1d7331f7550"
 	    "4564d43794c766f33d38fdef54cdfd998c2ea6f111439dce1307e07c5fca8b73")
 
 prepare() {
