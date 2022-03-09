@@ -2,7 +2,7 @@
 
 pkgname='mpv-discordrpc-git'
 pkgver=1.4.1.UNKNOWN.r5.gc8270e5
-pkgrel=2
+pkgrel=1
 pkgdesc='Discord Rich Presence integration for mpv Media Player'
 url='https://github.com/cniw/mpv-discordRPC'
 arch=('any')
