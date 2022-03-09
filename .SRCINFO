@@ -1,0 +1,12 @@
+pkgbase = python-anyascii
+	pkgdesc = Transliterates almost all Unicode characters to ASCII
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/anyascii/anyascii
+	arch = any
+	license = ISC
+	depends = python
+	source = python-anyascii-0.3.0.tar.gz::https://github.com/anyascii/anyascii/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = 8afb5388b694e67bedafe9798b1b8ba0d4f3a7141f4a9980f75ca3f489843fc1
+
+pkgname = python-anyascii
