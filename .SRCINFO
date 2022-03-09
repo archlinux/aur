@@ -1,0 +1,12 @@
+pkgbase = kubernetes-secret-decode-bin
+	pkgdesc = Be able to easily see the values of a secret.
+	pkgver = 3.0.0
+	pkgrel = 0
+	url = https://github.com/ashleyschuett/kubernetes-secret-decode
+	arch = x86_64
+	license = Apache-2.0
+	conflicts = kubernetes-secret-decode-git
+	source = https://github.com/ashleyschuett/kubernetes-secret-decode/releases/download/v3.0.0/kubernetes-secret-decode_3.0.0_Linux_x86_64.tar.gz
+	sha256sums = 599e16041aa84f8a57812a860a6cc87d144eaa5126af953269e28577ed716e1b
+
+pkgname = kubernetes-secret-decode-bin
