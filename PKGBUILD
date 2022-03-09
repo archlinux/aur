@@ -1,26 +1,25 @@
-# Maintainer: redfish <redfish@galactica.pw>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: redfish <redfish@galactica.pw>
 
 pkgname=python-coincurve
-_pkgname=coincurve
-pkgver=15.0.0
+pkgver=17.0.0
 pkgrel=1
 pkgdesc='Cross-platform Python CFFI bindings for libsecp256k1'
-arch=('any')
+arch=('x86_64')
 url="https://github.com/ofek/coincurve"
 license=('GPL')
-depends=('python')
-makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-#source=("https://github.com/ofek/${_pkgname}/archive/${pkver}.tar.gz")
+depends=('python-cffi' 'python-requests')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/coincurve/coincurve-$pkgver.tar.gz")
+sha256sums=('68da55aff898702952fda3ee04fd6ed60bb6b91f919c69270786ed766b548b93')
 
 build() {
-    cd "$_pkgname-$pkgver"
-    python setup.py build
+	cd "coincurve-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	export PYTHONHASHSEED=0
+	cd "coincurve-$pkgver"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 }
-
-sha256sums=('06524b11edb9427dc34cfdb5cd4bb707bf2c874b8bb901ce8c3aad48163e5a65')
