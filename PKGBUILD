@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=5.15.26.hardened1
-_kernver=5.15.26
+_pkgver=5.15.27.hardened1
+_kernver=5.15.27
 _hardenedver=hardened1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=5.15.26-hardened1-1-hardened
+_KERNNAME=5.15.27-hardened1-1-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,9 +44,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('b8b68367278c1962f8388faa09031bf156645afac0c3b8b291a146db3d6e145f'
-            'cf3a69dec68c8c1cb762fe8bbae6420637164a7ab864504567c3cd2b0296b245'
-            '393ef02cfeb41b6bc742590c0d414f89f815e8374040c2ba8d00a40c6001d8b9')
+sha256sums=('4fac487e864f66344dea8c880c41f90691d24e96d657583f633e932f5e63179e'
+            'ade4261d1edb0f3a8f9d0e5f6e9180a315d3b298e39f47bf92abbaac5de6477e'
+            'ff4a851efc9a91a96f74dd2bd8ba322b919fa877583bf40be56ecbaffda1717b')
 
 package_linux-hardened-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -64,7 +64,7 @@ package_linux-hardened-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.15.26.hardened1-1-hardened-bin() {
+package_linux5.15.27.hardened1-1-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -80,7 +80,7 @@ package_linux5.15.26.hardened1-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.15.26.hardened1-1-hardened-headers-bin() {
+package_linux5.15.27.hardened1-1-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -88,7 +88,7 @@ package_linux5.15.26.hardened1-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.15.26.hardened1-1-hardened-docs-bin() {
+package_linux5.15.27.hardened1-1-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
