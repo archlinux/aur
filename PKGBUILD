@@ -1,18 +1,27 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Richard PALO <richard.palo@free.fr>
-pkgname=python-proteus
-pkgver=5.8.1
+_base=proteus
+pkgname=python-${_base}
+pkgver=6.2.2
 pkgrel=1
 pkgdesc="Library to access Tryton server as a client"
-arch=('any')
-url="http://www.tryton.org/"
-license=('LGPL3')
-makedepends=('python-setuptools')
-depends=('python-dateutil')
-optdepends=('python-trytond>=5.8: Trytond server')
-source=("https://pypi.io/packages/source/p/proteus/proteus-$pkgver.tar.gz")
-sha512sums=('dc74ea3592bffc46ad43d546f8876ffaaedb4be2127857e3c1b299d9127e340bba6cd2dcfa4ce40f044087d5333a8c785c56b8fd26ce0a3dfc6258f7e1fd247f')
+arch=(any)
+url="https://www.tryton.org"
+license=(LGPL3)
+depends=(python-defusedxml python-dateutil)
+makedepends=(python-setuptools)
+optdepends=('python-trytond: Trytond server')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('063045d652be807b00c28599a4d6015a594bb125b044b6187cb86e5d331b3a5b731ef2eab2ced3c0b896a484bc20b9b54b6a86cefd09186373897f1c6114af74')
+
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
+}
 
 package() {
-  cd "$srcdir/proteus-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
