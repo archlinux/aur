@@ -1,5 +1,5 @@
 pkgbase = sparrow-wallet
-	pkgdesc = Bitcoin Wallet that works with BitBox02
+	pkgdesc = Bitcoin wallet with pro functionalities like single- and multisig, Transaction Editor, built-in Tor, connection to private Electrum and much more. Different Hardware Wallets supported.
 	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://sparrowwallet.com/
