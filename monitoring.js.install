@@ -9,6 +9,6 @@ post_upgrade(){
 }
 
 pre_remove() {
-	systemctl stop monitoring-js.service
-	systemctl disable monitoring-js.service
+	systemctl stop monitoring.js.service
+	systemctl disable monitoring.js.service
 }

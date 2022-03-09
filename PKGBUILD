@@ -1,9 +1,9 @@
 # Maintainer: Lucas Pape <development@lucaspape.de>
 
 _npmname=monitoring.js
-_npmver=1.1.6
+_npmver=1.1.8
 pkgname=monitoring.js
-pkgver=1.1.6
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Run commands on local/remote servers and send messages when they fail"
 arch=('i686' 'x86_64')
@@ -28,8 +28,9 @@ package() {
 
   cp "${srcdir}/package/scripts/monitoring.js" "${pkgdir}/usr/bin/"
   cp "${srcdir}/package/scripts/monitoring.js-setup" "${pkgdir}/usr/bin/"
-  cp "${srcdir}/package/scripts/monitoring-js.service" "${pkgdir}/etc/systemd/system/"
+  cp "${srcdir}/package/scripts/monitoring.js.service" "${pkgdir}/etc/systemd/system/"
   cp "${srcdir}/package/scripts/cpuload-per-core.sh" "${pkgdir}/usr/bin/cpuload-per-core"
+  cp "${srcdir}/package/scripts/check-docker-compose.sh" "${pkgdir}/usr/bin/check-docker-compose"
   cp -r "${srcdir}/package/commands/" "${pkgdir}/etc/monitoring.js/commands/"
 
   chmod -R +x ${pkgdir}/usr/bin/
