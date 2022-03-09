@@ -76,15 +76,15 @@ fi
 pkgbase=linux-manjaro-xanmod-tt
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.26
+pkgver=${_major}.27
 _branch=5.x
 xanmod=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Xanmod TT'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="5cb26aa742377f7af39647a6ad61b1e01d374a4a" # 5.15.26
+__commit="032bf5b85121de64f02924fac166a9d64b259dfb" # 5.15.27
 
 license=(GPL2)
 makedepends=(
@@ -109,11 +109,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
-            'SKIP'                                                              #        tar.sign
-            'b87c21a5cec4725fe4ebcdc954dd9cddaf5149399c7e22320b6b06ace0654e19'  # xanmod TT
-            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '3f647f91def4920e9b98c526356a6f96bdb60b385a1cbca55b4a0611c5a96d98') # manjaro
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+            'SKIP'
+            '681d00da4035eb6856c7a183340a63987430cec7f95484473722a966ea5af20b'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
+            '21ad1131109e4d90158c17435b9736d322b73c5792f57e759f07b00a34ac05ac')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
