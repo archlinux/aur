@@ -1,38 +1,24 @@
-# Maintainer: pfm <vorticity at mail dot ru>
-pkgname=("python-txacme" "python2-txacme")
-_pkgname=txacme
+# Contributor: pfm <vorticity at mail dot ru>
+_base=txacme
+pkgname=python-txacme
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="ACME protocol implementation for Twisted"
 arch=(any)
-url="https://txacme.readthedocs.io"
-license=('MIT')
-makedepends=("python-setuptools" "python2-setuptools")
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/twisted/$_pkgname/archive/$pkgver.tar.gz")
-md5sums=('78b2dea6877a23910a33d47a4d79bf90')
-
-prepare() {
-    cp -a $_pkgname-$pkgver{,-py2}
-}
+url="https://github.com/twisted/${_base}"
+license=(MIT)
+depends=(python-acme python-attrs python-pem python-treq python-txsni python-eliot)
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('b0a6c6401a9a6d8f8a59c29e34aaf398778f327f5907d4406273b4d0fce6c8449d388a5a687efb25bab5799fd7ddf9a0e2ce482a9b1457d93875a05f593dfa1c')
 
 build() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py build
-
-    cd "$srcdir/$_pkgname-$pkgver-py2"
-    python2 setup.py build
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
-package_python-txacme() {
-    depends=("python")
-    cd "$srcdir/$_pkgname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
-package_python2-txacme() {
-    depends=("python2")
-    cd "$srcdir/$_pkgname-$pkgver-py2"
-    python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
