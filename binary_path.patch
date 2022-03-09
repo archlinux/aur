@@ -1,0 +1,11 @@
+--- discord.conf	2022-03-09 14:21:59.949510578 +0400
++++ discord.conf	2022-03-09 14:27:07.542841948 +0400
+@@ -1,7 +1,7 @@
+ key=D
+ active=yes
+ client_id=737663962677510245
+-binary_path=
++binary_path=/lib/mpv-discord
+ socket_path=/tmp/mpvsocket
+ use_static_socket_path=yes
+ autohide_threshold=0
