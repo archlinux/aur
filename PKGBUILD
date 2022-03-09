@@ -1,20 +1,21 @@
 # Maintainer: Bertrand Lemasle <blemasle@gmail.com>
 
 pkgname=libindi-astrolink4usb-git
-pkgver=r30.2b4fb4f
+pkgver=1.9.5.r30.2b4fb4f
+_libindiver=1.9.5
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, support for Astrolink 4 USB device"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(GPL3)
 arch=(i686 x86_64)
-depends=(libindi=1.9.4)
+depends=(libindi=${_libindiver})
 makedepends=(git cmake)
 source=("git+https://github.com/astrojolo/astrolink4usb.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd astrolink4usb
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "${_libindiver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
