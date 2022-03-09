@@ -1,7 +1,7 @@
 # Maintainer: Yasuaki Uechi <y@uechi.io> (https://uechi.io)
 
 pkgname=cfddns
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Yet another DDNS client for Cloudflare'
 arch=('any')
@@ -17,8 +17,8 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  '5713fdc54c990baeecb18f57a1e0c6b9e70d3178f6eae05dbef1a3897f4547c9'
-  '7cc3f2402decf9da7584468d1f42cb12d1708b22cef1f4898bfa46d5d48ac31b'
+  'a9257ae415bbda633d99dbd99120716b028059c378d213def6faeee12a49768c'
+  'b6ba6f675093dbe515868d43d4e2dcec2a0ee3c419a7f58fa20f2700fad93844'
   'fd0d38ae6df41e37512bc6a4d94e467b80adffa684890562527a824dc1c45e28'
 )
 

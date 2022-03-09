@@ -1,5 +1,5 @@
 [Unit]
-Description=DDNS client for CloudFlare DNS
+Description=Yet another DDNS client for Cloudflare
 After=network-online.target
 
 [Service]
