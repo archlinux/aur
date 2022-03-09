@@ -4,7 +4,7 @@
 
 _pkgname=Juno-ocean-standard-buttons
 pkgname=juno-ocean-standard-buttons-theme-git
-pkgver=r114.c186c61
+pkgver=r148.0ed1329
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
 url="https://github.com/EliverLara/Juno"
