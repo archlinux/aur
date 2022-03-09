@@ -1,25 +1,12 @@
 pkgbase = python-pyupset
 	pkgdesc = Python implementation of the UpSet visualisation suite by Lex et al.
 	pkgver = 0.1.1.post7
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/pyupset
+	pkgrel = 2
+	url = https://pypi.python.org/project/PyUpSet
 	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-setuptools
-	makedepends = python2
-	makedepends = python2-setuptools
-	options = !emptydirs
-	source = python-pyupset-0.1.1.post7.tar.gz::https://pypi.python.org/packages/70/4e/ed9ef0952561292b6138c9c1a6eb8362ad13df227174ddc3057c69db5ed7/PyUpSet-0.1.1.post7.tar.gz#md5=474b1ea07fea4c9566b2aea7e0b0b7c2
-	sha256sums = eb413e67109c1609464fda325fd1b6703bdfacff93e83cfd02e9ba2b937c230f
+	depends = python-pandas
+	source = https://pypi.org/packages/source/P/PyUpSet/PyUpSet-0.1.1.post7.tar.gz
+	sha512sums = 91b01345f525ef7b4c2a1d6b29146631b089d435964527b44414759db0a1d885be54198ebc72bcef7817c761e0efda4513e57402514d2db8970deb7ee4fbddef
 
 pkgname = python-pyupset
-	depends = python
-	depends = python-numpy
-	depends = python-pandas
-
-pkgname = python2-pyupset
-	depends = python2
-	depends = python2-numpy
-	depends = python2-pandas
-
