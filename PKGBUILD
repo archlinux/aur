@@ -3,8 +3,8 @@
 # All my PKGBUILDs are managed at https://github.com/thomaseizinger/pkgbuilds
 
 pkgname=photoprism
-pkgver="220121"
-commit="2b4c8e1f"
+pkgver="220302"
+commit="0059f429"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
@@ -44,7 +44,7 @@ validpgpkeys=()
 
 build() {
 	cd "$pkgname"
-	scripts/build.sh prod ./photoprism
+	DOCKER_ARCH=$CARCH GO_BIN=/usr/bin/go scripts/build.sh prod ./photoprism
 
 	cd "frontend";
 	npm install
