@@ -1,7 +1,7 @@
 pkgbase = python-aplpy
 	pkgdesc = An astronomical plotting library in python
-	pkgver = 2.0.3
-	pkgrel = 3
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://aplpy.github.io/
 	arch = any
 	license = MIT
@@ -12,7 +12,8 @@ pkgbase = python-aplpy
 	depends = python-pillow
 	depends = python-astropy
 	depends = python-pyavm
-	source = https://files.pythonhosted.org/packages/source/a/aplpy/APLpy-2.0.3.tar.gz
-	sha512sums = ad9e2079bc5cc3d60c88b49d11ef452d674a2223753d3c4b39db55bdb7b0ec598cff1edcd27d0539c3a3127b4c3bc7e0d57a3723841850fd49ed2206db5893d2
+	depends = python-reproject
+	source = https://files.pythonhosted.org/packages/source/a/aplpy/aplpy-2.1.0.tar.gz
+	sha512sums = 16e058eb6696a0e981024d62896973449f73342c3629368b1d420a9118eb35969d3a8acba069d0892cb585aca47df815d0eab780eda1004e082f0ca8cb82d5cf
 
 pkgname = python-aplpy
