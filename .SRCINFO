@@ -1,6 +1,6 @@
 pkgbase = misskey
 	pkgdesc = 🌎 An interplanetary microblogging platform 🚀 (Experimental)
-	pkgver = 12.107.0
+	pkgver = 12.108.0
 	pkgrel = 1
 	url = https://github.com/misskey-dev/misskey
 	install = misskey.install
@@ -9,7 +9,7 @@ pkgbase = misskey
 	license = MIT
 	makedepends = git
 	makedepends = python
-	depends = nodejs-lts-gallium
+	depends = nodejs-lts-gallium>=16.14.0
 	depends = npm
 	depends = postgresql
 	depends = redis
@@ -18,7 +18,7 @@ pkgbase = misskey
 	optdepends = ffmpeg: something something
 	optdepends = nginx: reverse-proxy usage
 	options = !strip
-	source = git+https://github.com/misskey-dev/misskey.git#commit=6e7e11e061deba94d3ff21b1391c10785b94f6e5
+	source = git+https://github.com/misskey-dev/misskey.git#commit=6fc35868ff89c51720aad6e13676d10aa0785cf8
 	source = misskey.install
 	source = misskey.service
 	source = misskey.sysusers

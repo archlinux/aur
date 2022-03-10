@@ -1,20 +1,20 @@
 # Maintainer: Fabian Bornschein <fabiscafe@mailbox.org>
 
 pkgname=misskey
-pkgver=12.107.0
+pkgver=12.108.0
 pkgrel=1
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
 options=("!strip")
 arch=("x86_64")
 license=("AGPL3" "MIT")
-depends=("nodejs-lts-gallium" "npm" "postgresql" "redis" "yarn")
+depends=("nodejs-lts-gallium>=16.14.0" "npm" "postgresql" "redis" "yarn")
 makedepends=("git" "python")
 install="misskey.install"
 optdepends=("elasticsearch: search functionality"
             "ffmpeg: something something"
             "nginx: reverse-proxy usage")
-_commit="6e7e11e061deba94d3ff21b1391c10785b94f6e5" #tag/12.107.0
+_commit="6fc35868ff89c51720aad6e13676d10aa0785cf8" #tag/12.108.0
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
@@ -50,8 +50,6 @@ prepare() {
     
     sed -i \
         's|https://example.tld/|https://wiki.archlinux.org/title/Misskey|;
-        s|use option 1, uncomment|not use option 1, comment out|;
-        s|#port: 3000|port: 3000|;
         s|example-misskey-user|misskey|;
         s|  pass: example-misskey-pass|# pass: misskey|;
         s|#outgoingAddressFamily: ipv4|outgoingAddressFamily: dual|' \
