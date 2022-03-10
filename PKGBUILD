@@ -15,6 +15,7 @@ package() {
   mkdir -p "$pkgdir/etc"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/man/man1"
+  cp "zfetch.sh" "$pkgdir/usr/bin/zfetch"
   install --mode=644 "zfetchrc" "$pkgdir/etc/zfetchrc"
   gzip "zfetch.1"
   install --mode=644 "zfetch.1.gz" "$pkgdir/usr/share/man/man1"
