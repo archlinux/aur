@@ -1,41 +1,29 @@
-From b4a2c0b184c9c9599421b15a430fb88deb5dbd17 Mon Sep 17 00:00:00 2001
-From: Eli Schwartz <eschwartz@archlinux.org>
-Date: Sun, 28 Oct 2018 15:01:58 -0400
-Subject: [PATCH] only build the module in dkms.conf
-
----
- scripts/dkms.mkconf | 19 ++-----------------
- 1 file changed, 2 insertions(+), 17 deletions(-)
-
-diff --git a/scripts/dkms.mkconf b/scripts/dkms.mkconf
-index 88c289383..5a859a0e0 100755
---- a/scripts/dkms.mkconf
-+++ b/scripts/dkms.mkconf
-@@ -25,22 +25,7 @@ PACKAGE_CONFIG="${pkgcfg}"
+diff -pNaru5 a/scripts/dkms.mkconf b/scripts/dkms.mkconf
+--- a/scripts/dkms.mkconf	2022-02-27 22:34:12.217602790 -0500
++++ b/scripts/dkms.mkconf	2022-02-27 22:35:26.478116353 -0500
+@@ -26,18 +26,11 @@ PACKAGE_VERSION="${pkgver}"
+ PACKAGE_CONFIG="${pkgcfg}"
+ NO_WEAK_MODULES="yes"
  PRE_BUILD="configure
    --prefix=/usr
    --with-config=kernel
 -  --with-linux=\$(
--    case \`lsb_release -is\` in
--      (Debian|Devuan)
--        if [[ -e \${kernel_source_dir/%build/source} ]]
--        then
--          echo \${kernel_source_dir/%build/source}
--        else
--          # A kpkg exception for Proxmox 2.0
--          echo \${kernel_source_dir}
--        fi
--      ;;
--      (*)
--        echo \${kernel_source_dir}
--      ;;
--    esac
+-    if [ -e "\${kernel_source_dir/%build/source}" ]
+-    then
+-      echo "\${kernel_source_dir/%build/source}"
+-    else
+-      echo "\${kernel_source_dir}"
+-    fi
 -  )
 +  --with-linux=\${kernel_source_dir}
-   --with-linux-obj=\${kernel_source_dir}
-   --with-spl=\${source_tree}/spl-\${PACKAGE_VERSION}
-   --with-spl-obj=\${dkms_tree}/spl/\${PACKAGE_VERSION}/\${kernelver}/\${arch}
-@@ -78,7 +63,7 @@ POST_BUILD="scripts/dkms.postbuild
+   --with-linux-obj="\${kernel_source_dir}"
+   \$(
+     [[ -n \"\${ICP_ROOT}\" ]] && \\
+     {
+       echo --with-qat=\"\${ICP_ROOT}\"
+@@ -66,11 +59,11 @@ POST_BUILD="scripts/dkms.postbuild
+   -a \${arch}
+   -k \${kernelver}
    -t \${dkms_tree}
  "
  AUTOINSTALL="yes"
@@ -44,6 +32,5 @@ index 88c289383..5a859a0e0 100755
  STRIP[0]="\$(
    [[ -r \${PACKAGE_CONFIG} ]] \\
    && source \${PACKAGE_CONFIG} \\
--- 
-2.19.1
-
+   && shopt -q -s extglob \\
+   && [[ \${ZFS_DKMS_DISABLE_STRIP,,} == @(y|yes) ]] \\

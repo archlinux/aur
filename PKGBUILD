@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.1.99.r553.gdf42e20ac6
+pkgver=2.1.99.r909.g1282274f33
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -56,15 +56,15 @@ source+=(
   'zfs.initcpio.hook'
 )
 md5sums=('SKIP'
-         '25ddbcc775faef1fc25211b82b7e9fe8'
+         'f79ac000c5b50b6e270a3800eca0f198'
          'eca615c602740315333aedd417d83541'
          'fa15be4761c8a56ad0177d1a06a4c7f8')
 sha256sums=('SKIP'
-            '7da29212a34851b04d72ee6aad30576ed744b04ace091d5f55e202faaf8fb8d2'
+            '78426b72029177579a5fe8d1f9e187e10f5a327691d36d62f5e27dd4d68206bf'
             'da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d'
             '9c20256093997f7cfa9e7eb5d85d4a712d528a6ff19ef35b83ad03fb1ceae3bc')
 b2sums=('SKIP'
-        '914e519bd2172fef1c9032695cecb3c00a73cbcaeb37496f0f9058e636dabd0116d527ad490a82b51e7abf74837af539ddaa9d969a949ec648ba40b281a817be'
+        'cb8e694cbe61db48eff3e94ac2e6c7b9f005038ab5ef76bf6e11ddfa257554509d433fbf9b6aeb7a9c8706a871346ba2aaa937ef31197fd93269afde3c0ec3bd'
         '570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3'
         'e14366cbf680e3337d3d478fe759a09be224c963cc5207bee991805312afc49a49e6691f11e5b8bbe8dde60e8d855bd96e7f4f48f24a4c6d4a8c1bab7fc2bba0')
 
@@ -120,14 +120,12 @@ prepare() {
   set -u
   cd "${_srcdir}"
 
-  local _pt
-  for _pt in "${source[@]%%::*}"; do
-    _pt="${_pt##*/}"
-    if [[ "${_pt}" = *.patch ]]; then
-      set +u; msg2 "Patch ${_pt}"; set -u
-      patch -Nup1 -i "${srcdir}/${_pt}"
-    fi
-  done
+  #From: Eli Schwartz <eschwartz@archlinux.org>
+  #Date: Sun, 28 Oct 2018 15:01:58 -0400
+  #Subject: [PATCH] only build the module in dkms.conf
+  #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
+  # diff -pNaru5 'a' 'b' > '0001-only-build-the-module-in-dkms.conf.patch'
+  patch -Nup1 -i "${srcdir}/0001-only-build-the-module-in-dkms.conf.patch"
 
   # DKMS install customized all the way back to autoconf
   local _dkmsdir="${srcdir}/dkms.Arch"
@@ -154,10 +152,6 @@ prepare() {
 build() {
   set -u
   cd "${_srcdir}"
-  if [ -z "${MAKEFLAGS:=}" ] || [ "${MAKEFLAGS//-j/}" = "${MAKEFLAGS}" ]; then
-    local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-    MAKEFLAGS+=" -j ${_nproc}"
-  fi
   if [ ! -s 'configure' ]; then
     ./autogen.sh
   fi
