@@ -1,8 +1,9 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=opentyrian-git
-pkgver=1136
+pkgver=2.1.20220309
 pkgrel=1
+epoch=1
 pkgdesc="Open-source port of the DOS shoot-em-up Tyrian"
 url="https://github.com/opentyrian/opentyrian"
 arch=(i686 x86_64)
@@ -19,7 +20,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd opentyrian
-  git rev-list --count HEAD
+  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 build() {
