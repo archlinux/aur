@@ -1,0 +1,14 @@
+pkgbase = ruby-metasm
+	pkgdesc = Metasm is a cross-architecture assembler, disassembler, linker, and debugger.
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://www.cr0.org/progs/metasm/
+	arch = any
+	license = LGPL2.1
+	depends = ruby
+	noextract = metasm-1.0.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/metasm-1.0.5.gem
+	sha256sums = 919f6758f6044cc74ffbe34faa7d74b784a719dd67b5001ed80692b8db5cf236
+
+pkgname = ruby-metasm
