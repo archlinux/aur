@@ -1,0 +1,13 @@
+pkgbase = verdict
+	pkgdesc = Compute quality functions of 2 and 3-dimensional regions
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/sandialabs/verdict
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = glibc
+	source = https://github.com/sandialabs/verdict/archive/refs/tags/1.4.0.tar.gz
+	sha256sums = 40efa47bced00df650cead5f1525695bb751eaf9145f136177d6c8a718847481
+
+pkgname = verdict
