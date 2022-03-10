@@ -1,15 +1,15 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=desktop-files-creator-git
-pkgver=r30.08b06ab
+pkgver=r61.abbfd9f
 pkgrel=1
 pkgdesc='Simple app to create desktop files on GNU/Linux'
 url="https://github.com/alexkdeveloper/${pkgname%-git}"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL3')
-depends=('gtk3')
+depends=('gtk4' 'libadwaita')
 checkdepends=('appstream-glib')
-makedepends=('vala' 'meson')
+makedepends=('git' 'meson' 'vala')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
