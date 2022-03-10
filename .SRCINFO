@@ -1,0 +1,23 @@
+pkgbase = libretro-same-cdi-git
+	pkgdesc = Philips CD-i core
+	pkgver = r19.dcc76a5b
+	pkgrel = 1
+	url = https://github.com/libretro/same_cdi
+	arch = aarch64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	groups = libretro
+	license = GPL2
+	makedepends = git
+	makedepends = libglvnd
+	makedepends = python
+	depends = glibc
+	provides = libretro-same-cdi
+	conflicts = libretro-same-cdi
+	source = libretro-same-cdi::git+https://github.com/libretro/same_cdi.git
+	b2sums = SKIP
+
+pkgname = libretro-same-cdi-git
