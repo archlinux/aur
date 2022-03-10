@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=opengnb-git
-pkgver=1.2.8.4
+pkgver=1.2.8.5.2.g2b623eb
 pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=('any')
@@ -32,7 +32,9 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
     make -f Makefile.debian install
-    install -dm0755 "${pkgdir}/usr"
+    install -dm0755 "${pkgdir}/usr" \
+                    "${pkgdir}/usr/lib/systemd/system/"
     cp -rv bin "${pkgdir}/usr"
+    cp -rv scripts/opengnb@.service "${pkgdir}/usr/lib/systemd/system/"
     install -Dm0644 "${srcdir}/${pkgname%-git}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 }
