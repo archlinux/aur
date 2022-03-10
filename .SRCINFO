@@ -1,0 +1,16 @@
+pkgbase = saucer-cli-git
+	pkgdesc = A cli program to simplify working with saucer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/saucer/saucer-cli
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	provides = saucer-cli
+	conflicts = saucer-cli
+	source = git+https://github.com/saucer/saucer-cli
+	sha256sums = SKIP
+
+pkgname = saucer-cli-git
