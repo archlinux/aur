@@ -1,7 +1,7 @@
 pkgbase = rider-eap
 	pkgdesc = A cross-platform .NET IDE by JetBrains.
 	pkgver = 221.4906.10
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.jetbrains.com/rider/eap/
 	arch = any

@@ -12,7 +12,7 @@ eapver=2022.1
 eaprelease=5
 pkgver=221.4906.10
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform .NET IDE by JetBrains."
 arch=('any')
@@ -40,30 +40,6 @@ package() {
 
     cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/"* "${pkgdir}/usr/share/${pkgname}"
     cp -R --no-preserve=ownership "${srcdir}/JetBrains Rider-${pkgver}/license/"* "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    if [ -n ${DOTNET_ROOT} ]; then
-        # assumption if DOTNET_ROOT is set, we will use that version instead of the bundled version
-        runtimeFolder=$(${srcdir}/../ResharperHost-runtime-folder.sh)
-        find ${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost -maxdepth 1 -type d \( -name "*-x64*" -or -name "*-arm*" -or -name "*-x86*" \) -and -not \( -name "*symref" -or -name "$runtimeFolder" \) -exec rm -rf {} \;
-
-        #dotnet
-        if [ -f "${DOTNET_ROOT}/dotnet" ]; then
-            rm "${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost/${runtimeFolder}/dotnet"/dotnet
-            ln -s "${DOTNET_ROOT}"/dotnet "${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost/${runtimeFolder}/dotnet"/dotnet
-        fi
-
-        #host
-        if [ -d "${DOTNET_ROOT}/host" ]; then
-            rm -rf "${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost/${runtimeFolder}/dotnet"/host
-            ln -s "${DOTNET_ROOT}"/host "${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost/${runtimeFolder}/dotnet"/host
-        fi
-
-        #shared
-        if [ -d "${DOTNET_ROOT}/shared" ]; then
-            rm -rf "${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost/${runtimeFolder}/dotnet"/shared
-            ln -s "${DOTNET_ROOT}"/shared "${pkgdir}/usr/share/${pkgname}/lib/ReSharperHost/${runtimeFolder}/dotnet"/shared
-        fi
-    fi
 
     install -m644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     ln -s "/usr/share/${pkgname}/bin/rider.sh" "${pkgdir}/usr/bin/rider-eap"
