@@ -1,6 +1,6 @@
 pkgbase = python-islpy
 	pkgdesc = Python wrapper for isl, an integer set library
-	pkgver = 2022.1.1
+	pkgver = 2022.1.2
 	pkgrel = 1
 	url = https://documen.tician.de/islpy
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = python-islpy
 	makedepends = git
 	depends = python-pytools
 	depends = python-pytest
-	source = git+https://github.com/inducer/islpy.git?signed#tag=v2022.1.1
+	source = git+https://github.com/inducer/islpy.git?signed#tag=v2022.1.2
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
 	sha512sums = SKIP
 
