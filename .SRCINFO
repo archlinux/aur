@@ -1,13 +1,13 @@
 pkgbase = concourse
-	pkgver = 7.6.0
+	pkgver = 7.7.0
 	pkgrel = 1
 	url = https://concourse-ci.org
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go-pie
 	makedepends = yarn
-	source = concourse-7.6.0.tar.gz::https://github.com/concourse/concourse/archive/v7.6.0.tar.gz
-	source = https://github.com/concourse/concourse/releases/download/v7.6.0/concourse-7.6.0-linux-amd64.tgz
+	source = concourse-7.7.0.tar.gz::https://github.com/concourse/concourse/archive/v7.7.0.tar.gz
+	source = https://github.com/concourse/concourse/releases/download/v7.7.0/concourse-7.7.0-linux-amd64.tgz
 	sha256sums = 3d0e42f2aa342c392650f3195d039b4e44b5efecbe9eac7ab8fafc8379cc0ae9
 	sha256sums = 66db22e71808f8a710c00ae5f54ff54b09cfdf2a08252f2bdf7f6e5a7c04d707
 
