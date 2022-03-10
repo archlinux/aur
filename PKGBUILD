@@ -3,7 +3,7 @@
 _gemname=rex-core
 pkgname=ruby-$_gemname
 pkgver=0.1.26
-pkgrel=2
+pkgrel=3
 pkgdesc="Core libraries required for the Ruby Exploitation (Rex) Suite."
 arch=(any)
 url="https://github.com/rapid7/rex-core"
