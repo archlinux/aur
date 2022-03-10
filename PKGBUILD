@@ -1,9 +1,10 @@
 # Maintainer: Brett Cornwall <ainola@archlinux.org>
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=swaybg
-pkgver=1.1
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Wallpaper tool for Wayland compositors'
 arch=(x86_64)
 url='https://github.com/swaywm/swaybg'
@@ -22,7 +23,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz"
     "$pkgname-$pkgver.tar.gz.sig::https://github.com/swaywm/swaybg/releases/download/v$pkgver/swaybg-$pkgver.tar.gz.sig"
 )
-sha512sums=('2b262402c4d93908facde82b07a3df1ee698b802b7e9c07e6eff0325cb9ddf712c544574c5aeb481f69dfb1857a88bf8e654bfe0dd3b2178fd3a44109e104692'
+sha512sums=('e5ac7af1690974206f916e1d99a8dde0e837acbc686e2de2c46d505201f239a059f998adc22192205d1ad75b5905222f16aed243b31920e19c0ff2229b8eda2c'
             'SKIP')
 validpgpkeys=(
     "9DDA3B9FA5D58DD5392C78E652CB6609B22DA89A"  # Drew DeVault
