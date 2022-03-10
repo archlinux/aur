@@ -1,6 +1,6 @@
 pkgbase = adw-gtk3
 	pkgdesc = The theme from libadwaita ported to GTK-3
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/lassekongo83/adw-gtk3
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = adw-gtk3
 	makedepends = git
 	makedepends = meson
 	makedepends = sassc
-	source = git+https://github.com/lassekongo83/adw-gtk3.git#commit=a1e1867e82c0a2d851ef7948bc3c7ac877a2ae99
+	source = git+https://github.com/lassekongo83/adw-gtk3.git#commit=78b21cb5ea1f983b9cad96b7ae211202925252aa
 	md5sums = SKIP
 
 pkgname = adw-gtk3
