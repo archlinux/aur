@@ -1,6 +1,7 @@
 # Maintainer: xeruf <27jf at pm dot me>
+_pkgname=Text-Layout
 pkgname=perl-text-layout
-pkgver=0.021
+pkgver=0.028
 pkgrel=1
 pkgdesc="Pango style markup formatting"
 arch=('any')
@@ -8,9 +9,9 @@ license=('Artistic2.0')
 options=('!emptydirs')
 depends=()
 url='https://metacpan.org/pod/Text::Layout'
-source=("https://cpan.metacpan.org/authors/id/J/JV/JV/Text-Layout-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('5dd7fba13f234487c2525673bbc4626fe38f686580f29635063ee3f73faebc40c964de219c8dffa821ab4475b002fe18519671a838c9a2f14e86f99b88c89fc7')
-_distdir="Text-Layout-${pkgver}"
+_distdir="${_pkgname}-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
