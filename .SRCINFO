@@ -1,0 +1,12 @@
+pkgbase = r-linprog
+	pkgdesc = Linear Programming / Optimization
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://cran.r-project.org/package=linprog
+	arch = any
+	license = GPL
+	depends = r-lpsolve
+	source = https://cran.r-project.org/src/contrib/linprog_0.9-4.tar.gz
+	sha256sums = 81a6aa2fdc075f12dc912794d0554f87705a8b872b99c89a90a69ee9ada864b4
+
+pkgname = r-linprog
