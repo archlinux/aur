@@ -1,7 +1,7 @@
 # Maintainer: Sup3Legacy <constantin {dot} gierczak {dot} galle (at) protonmail [dot] com>
 
 pkgname=gurk-git
-pkgver=0.2.3.r157.g82272fb
+pkgver=0.2.3.r158.g0ccf134
 pkgrel=1
 pkgdesc='CLI client for Signal'
 arch=('x86_64')
