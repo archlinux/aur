@@ -8,11 +8,13 @@ pkgdesc="Suitable for business personnal long-distance intelligent network acces
 arch=('x86_64')
 url="https://pgy.oray.com/download/"
 license=('custom')
+provides=('pgyvpn-bin')
+conflicts=('pgyvpn')
 install=pgyvpn-bin.install
 source=('LICENSE::https://service.oray.com/question/1820.html'
         "${pkgname%-bin}.service"
         "${_pkgname}_Ubuntu_${pkgver}_X86_64.deb::https://pgy.oray.com/dl/42/download?os=Ubuntu%20Linux(X86_64)")
-sha256sums=('9d4dcbc1d1777407a207834caae778a4d4388f14bc70464c3fa08d64ff247308'
+sha256sums=('SKIP'
             '25995cc8f865139147ced000fea52a8f4dda072addbf9e4a3b18b5c599a8be7f'
             '7fabd22c75ac21f5c23d4682988ddf5832315b97986acb9790370a107349d1ac')
 
