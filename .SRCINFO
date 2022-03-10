@@ -1,0 +1,21 @@
+pkgbase = ymp3cli.sh-git
+	pkgdesc = Inspired in "paij0se/ymp3cli", "ymp3cli.sh" is a cli created in "shell script" to listen or download music/songs.
+	pkgver = r10.5557ce7
+	pkgrel = 1
+	url = https://github.com/FlamesX-128/ymp3cli.sh.git
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = curl
+	optdepends = diff
+	optdepends = flyingrub-scdl
+	optdepends = mpv
+	optdepends = tput
+	optdepends = spotdl
+	optdepends = youtube-dl
+	provides = ymp3cli.sh
+	conflicts = ymp3cli.sh
+	source = git+https://github.com/FlamesX-128/ymp3cli.sh.git
+	md5sums = SKIP
+
+pkgname = ymp3cli.sh
