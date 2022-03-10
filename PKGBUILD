@@ -3,7 +3,7 @@
 
 pkgname=woodpecker-agent
 pkgver=0.15.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A community fork of the Drone CI system. Agent program."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
