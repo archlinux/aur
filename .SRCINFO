@@ -1,12 +1,12 @@
 pkgbase = aavmf-bin
 	pkgdesc = QEMU Aarch64 Virtual Machine UEFI Firmware
 	pkgver = 2022.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tianocore.org/edk2/
 	arch = any
 	license = BSD
 	optdepends = qemu: Make use of the firmware
-	source = https://snapshot.debian.org/archive/debian/20220226T025804Z/pool/main/e/edk2/qemu-efi-aarch64_2022.02-1_all.deb
-	sha256sums = 040f6a0b3076584e98374114fcfc3d89c3037c28f7417ffbd3f0d2999991cd05
+	source = https://snapshot.debian.org/archive/debian/20220310T035035Z/pool/main/e/edk2/qemu-efi-aarch64_2022.02-2_all.deb
+	sha256sums = 2f42218ef1fabfac725ebe94fcc132a61db2acf64f491e2498a296c726cbec79
 
 pkgname = aavmf-bin

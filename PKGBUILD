@@ -1,17 +1,17 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
-_snapshot=20220226T025804Z
-_pkgrel=1
+_snapshot=20220310T035035Z
+_pkgrel=2
 pkgname=aavmf-bin
 pkgver=2022.02
-pkgrel=1
+pkgrel=2
 pkgdesc='QEMU Aarch64 Virtual Machine UEFI Firmware'
 arch=('any')
 url='https://www.tianocore.org/edk2/'
 license=('BSD')
 optdepends=('qemu: Make use of the firmware')
 source=("https://snapshot.debian.org/archive/debian/${_snapshot}/pool/main/e/edk2/qemu-efi-aarch64_${pkgver}-${_pkgrel}_all.deb")
-sha256sums=('040f6a0b3076584e98374114fcfc3d89c3037c28f7417ffbd3f0d2999991cd05')
+sha256sums=('2f42218ef1fabfac725ebe94fcc132a61db2acf64f491e2498a296c726cbec79')
 
 package() {
 	bsdtar -xv -C "$pkgdir" -f "$srcdir/data.tar.xz"
