@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.2.1.2408.96a333ee
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
