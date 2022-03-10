@@ -1,14 +1,12 @@
 pkgbase = r-magic
 	pkgdesc = Create and Investigate Magic Squares
-	pkgver = 1.5.9
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=magic
 	arch = any
 	license = GPL2
-	depends = r
 	depends = r-abind
-	source = https://cran.r-project.org/src/contrib/magic_1.5-9.tar.gz
-	md5sums = 646462b59a5118860f2109685ca84509
+	source = https://cran.r-project.org/src/contrib/magic_1.6-0.tar.gz
+	sha256sums = 4516d48c9618e3f395db873e886f5deb3b66b32ebe10d4c26c1420ac848acbbf
 
 pkgname = r-magic
-
