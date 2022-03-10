@@ -10,7 +10,13 @@ pkgdesc='Language and environment for statistical computing and graphicsi (versi
 arch=('x86_64')
 license=('GPL')
 url='https://www.r-project.org/'
-provides=('r')
+# The package providing the dependency will need to specify the version in its
+# 'provides' array. It's not enough that the version of the package contains
+# that information - since 'provides' are abstract features that do not
+# necessarily map to packages neatly, the version provided must be specified
+# there as well.
+# src.: https://www.reddit.com/r/archlinux/comments/ebj3vo/x/fb61u92
+provides=('r=3.5.2')
 conflicts=('r')
 depends=(
     'blas' 'lapack' 'bzip2'  'libpng' 'libjpeg' 'libtiff' 'ncurses' 'pcre'

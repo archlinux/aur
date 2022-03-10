@@ -32,7 +32,7 @@ pkgbase = r352
 	optdepends = texlive-bin: latex sty files
 	optdepends = gcc-fortran: needed to compile some CRAN packages
 	optdepends = openblas: faster linear algebra
-	provides = r
+	provides = r=3.5.2
 	conflicts = r
 	options = !makeflags
 	options = !emptydirs
