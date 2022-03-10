@@ -1,5 +1,5 @@
 pkgname=glslang-git
-pkgver=8.13.3743.r232.g6a6e311d
+pkgver=11.8.0.r20.g538231d8
 pkgrel=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator, git version'
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --long --tags --exclude master-tot --exclude SDK-candidate\* --exclude untagged\* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --exclude master-tot --exclude sdk\* --exclude SDK-candidate\* --exclude untagged\* | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
