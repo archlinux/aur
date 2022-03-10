@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/G-dH/custom-hot-corners-extended"
 license=('GPL3')
 depends=('gnome-shell')
+provides=('gnome-shell-extension-custom-hot-corners-extended')
 source=("${url}/archive/Ext-v${pkgver}${_pkgrev}.tar.gz")
 sha256sums=('d74ddc32a201522b7040e6156ee3ff86a41abb25675f02225f32f256651be15b')
 
