@@ -3,7 +3,7 @@
 _rockname=fluent
 _project=$_rockname-lua
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
-pkgver=0.0.5
+pkgver=0.1.1
 _rockrel=0
 pkgrel=1
 pkgdesc='Lua implementation of Project Fluent'
@@ -20,7 +20,7 @@ makedepends=(lua
              luarocks)
 _archive="$_project-$pkgver"
 source=("$_archive.tgz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ac48a86e752d811da063da6a9f2632f359bb798b31ab1d55e5b48aab53398ac5')
+sha256sums=('e9581cfd27ad875174225836852beb6af89fb69686a1b384e7d2aa63e9a858d3')
 
 _package_helper() {
 	cd "$_archive"
