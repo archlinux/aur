@@ -1,11 +1,11 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r77608.ad44af718c
+pkgver=r77624.6c833594a1
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
 url='https://www.paraview.org'
 license=('custom')
-depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-libharu')
+depends=('mingw-w64-qt5-xmlpatterns' 'mingw-w64-qt5-tools' 'mingw-w64-qt5-svg' 'mingw-w64-boost' 'mingw-w64-glew' 'mingw-w64-freetype2' 'mingw-w64-libxml2' 'mingw-w64-libtiff' 'mingw-w64-jsoncpp' 'mingw-w64-hdf5' 'mingw-w64-lz4' 'mingw-w64-proj' 'mingw-w64-cgns' 'mingw-w64-netcdf' 'mingw-w64-double-conversion' 'mingw-w64-protobuf' 'mingw-w64-pugixml' 'mingw-w64-libtheora' 'mingw-w64-gl2ps' 'mingw-w64-libharu' 'mingw-w64-verdict')
 makedepends=('git' 'mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-wine' 'mingw-w64-pegtl2' 'mingw-w64-wine-qt' 'protobuf' 'mingw-w64-cli11' 'mingw-w64-exprtk-git' 'mingw-w64-nlohmann-json')
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
