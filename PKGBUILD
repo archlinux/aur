@@ -3,7 +3,7 @@
 
 _name=cardinal
 pkgname=cardinal-git
-pkgver=r766.d650589
+pkgver=22.02.r90.gc61e13a
 pkgrel=1
 pkgdesc="Virtual modular synthesizer plugin"
 arch=(x86_64)
@@ -28,6 +28,7 @@ source=(
   git+https://github.com/distrho/dpf.git
   git+https://github.com/meganz/mingw-std-threads.git
   git+https://github.com/dltcollab/sse2neon.git
+  git+https://github.com/vcvrack/befaco.git
   git+https://github.com/cardinalmodules/fundamental.git
   git+https://github.com/cardinalmodules/audibleinstruments.git
   animatedcircuits::git+https://github.com/animatedcircuits/rackmodules.git
@@ -68,6 +69,25 @@ source=(
   git+https://github.com/cardinalmodules/ihtsyn.git
   git+https://github.com/jerrysievert/quickjs.git
   git+https://github.com/nikolaivchr/autinn.git
+  git+https://gitlab.com/falktx/substation-opensource.git
+  git+https://github.com/mockbatheborg/mockbamodular.git
+  git+https://github.com/8mode/8mode-vcv_modules.git
+  git+https://github.com/kauewerner/axioma.git
+  git+https://github.com/jensschulze/goodsheperd.git
+  git+https://gitlab.com/hampton-harmonics/hampton-harmonics-modules.git
+  git+https://github.com/martin-lueders/ml_modules.git
+  git+https://github.com/rarebreeds/orbits.git
+  git+https://github.com/aptrn/stocaudio-modules.git
+  git+https://github.com/catronomix/catro-modulo.git
+  git+https://github.com/grough/lilac-loop-vcv.git
+  git+https://github.com/janne808/kocmoc-rack-modules.git
+  git+https://github.com/patheros/pathsetmodules.git
+  git+https://github.com/algoritmarte/algoritmartevcvplugin.git
+  git+https://github.com/aaronstatic/aaronstatic_modules.git
+  git+https://github.com/netboy3/msm-vcvrack-plugin.git
+  git+https://github.com/mhetrick/nonlinearcircuits.git
+  git+https://github.com/clone45/voxglitch.git
+  git+https://github.com/cardinalmodules/arableinstruments.git
 
   git+https://github.com/distrho/pugl.git
 
@@ -164,11 +184,31 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
   cd $_name
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -178,6 +218,7 @@ prepare() {
   git config submodule.dpf.url ../dpf
   git config submodule.include.mingw-std-threads.url ../mingw-std-threads
   git config submodule.include.sse2neon.url ../sse2neon
+  git config submodule.plugins.Befaco.url ../befaco
   git config submodule.plugins.Fundamental.url ../fundamental
   git config submodule.plugins.AudibleInstruments.url ../audibleinstruments
   git config submodule.plugins.AnimatedCircuits.url ../animatedcircuits
@@ -188,8 +229,8 @@ prepare() {
   git config submodule.plugins.ESeries.url ../eseries
   git config submodule.plugins.JW-Modules.url ../jw-modules
   git config submodule.plugins.rackwindows.url ../rackwindows
-  git config submodule.plugins.impromptumodular.url ../impromptumodular
-  git config submodule.plugins.amalgamatedharmonics.url ../amalgamatedharmonics
+  git config submodule.plugins.ImpromptuModular.url ../impromptumodular
+  git config submodule.plugins.AmalgamatedHarmonics.url ../amalgamatedharmonics
   git config submodule.plugins.cf.url ../cf
   git config submodule.plugins.MindMeldModular.url ../mindmeldmodular
   git config submodule.plugins.ValleyAudio.url ../valleyrackfree
@@ -218,6 +259,25 @@ prepare() {
   git config submodule.plugins.ihtsyn.url ../ihtsyn
   git config submodule.plugins.QuickJS.url ../quickjs
   git config submodule.plugins.Autinn.url ../autinn
+  git config submodule.plugins.substation-opensource.url ../substation-opensource
+  git config submodule.plugins.MockbaModular.url ../mockbamodular
+  git config submodule.plugins.8Mode.url ../8mode-vcv_modules
+  git config submodule.plugins.Axioma.url ../axioma
+  git config submodule.plugins.GoodShepherd.url ../goodshepherd
+  git config submodule.plugins.HamptonHarmonics.url ../hampton-harmonics-modules
+  git config submodule.plugins.ML_modules.url ../ml_modules
+  git config submodule.plugins.Orbits.url ../orbits
+  git config submodule.plugins.stocaudio.url ../stocaudio-modules
+  git config submodule.plugins.CatroModulo.url ../catro-modulo
+  git config submodule.plugins.LilacLoop.url ../lilac-loop-vcv
+  git config submodule.plugins.kocmoc.url ../kocmoc-rack-modules
+  git config submodule.plugins.PathSet.url ../pathsetmodules
+  git config submodule.plugins.Algoritmarte.url ../algoritmartevcvplugin
+  git config submodule.plugins.Aaronstatic.url ../aaronstatic_modules
+  git config submodule.plugins.MSM.url ../msm-vcvrack-plugin
+  git config submodule.plugins.nonlinearcircuits.url ../nonlinearcircuits
+  git config submodule.plugins.voxglitch.url ../voxglitch
+  git config submodule.plugins.ArableInstruments.url ../arableinstruments
   git submodule update
 
   (
@@ -286,6 +346,30 @@ prepare() {
     git config submodule.Gamma.url "$srcdir/gamma"
     git submodule update
   )
+  (
+    cd plugins/ArableInstruments
+    git submodule init
+    git config submodule.eurorack.url "$srcdir/eurorack"
+    git config submodule.parasites.avrlib.url "$srcdir/avril"
+    git config submodule.parasites.avrlibx.url "$srcdir/avrilx"
+    git config submodule.parasites.stmlib.url "$srcdir/stmlib"
+    git config submodule.parasites.stm_audio_bootloader.url "$srcdir/stm-audio-bootloader"
+    git config submodule.parasites.avr_audio_bootloader.url "$srcdir/avr-audio-bootloader"
+    git submodule update
+  )
+  (
+    cd plugins/ArableInstruments/eurorack
+    git submodule init
+    git config submodule.avrlib.url "$srcdir/avril"
+    git config submodule.avrlibx.url "$srcdir/avrilx"
+    git config submodule.stmlib.url "$srcdir/stmlib"
+    git config submodule.stm_audio_bootloader.url "$srcdir/stm-audio-bootloader"
+    git config submodule.avr_audio_bootloader.url "$srcdir/avr-audio-bootloader"
+    git submodule update
+  )
+
+  # remove unneeded calls to unsafe debug functions: https://github.com/clone45/voxglitch/issues/127
+  sed '/DEBUG(/d' -i plugins/voxglitch/src/Common/common.hpp plugins/voxglitch/src/Ghosts/GhostsEx.hpp
 }
 
 build() {
