@@ -1,0 +1,15 @@
+pkgbase = otf-daddytimemono-git
+	pkgdesc = A monospaced font for programmers and other terminal groupies
+	pkgver = 1.2.2.r6.g042eb9f
+	pkgrel = 1
+	url = https://github.com/BourgeoisBear/DaddyTimeMono
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	makedepends = fontforge
+	depends = fontconfig
+	provides = otf-daddytimemono
+	source = git+https://github.com/BourgeoisBear/DaddyTimeMono.git
+	md5sums = SKIP
+
+pkgname = otf-daddytimemono-git
