@@ -1,0 +1,20 @@
+pkgbase = nkk-fossil
+	pkgdesc = Wayland client library w/ cairo drawing
+	pkgver = r25.d3d9016a07
+	pkgrel = 1
+	url = https://code.jessemcclure.org/nkk
+	arch = x86_64
+	license = MIT
+	makedepends = fossil
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = harfbuzz
+	depends = libxkbcommon
+	depends = pango
+	depends = wayland
+	provides = nkk
+	source = fossil+https://code.jessemcclure.org/nkk
+	sha256sums = SKIP
+
+pkgname = nkk-fossil
