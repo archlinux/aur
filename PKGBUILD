@@ -42,6 +42,26 @@ sha512sums=(
     'SKIP'
 )
 
+# Avoid the following linking issue:
+# src.: https://bbs.archlinux.org/viewtopic.php?pid=1953816#p1953816
+# src.: https://github.com/radfordneal/pqR/issues/41#issuecomment-649139014
+# ---
+# /usr/bin/ld: ../unix/sys-unix.o:(.bss+0x0): multiple definition of `ptr_R_ProcessEvents'; ../unix/system.o:(.bss+0x20): first defined here
+export CFLAGS+=' -fcommon'
+# Disable a check in the Fortran compiler as a call to a R function has
+# inverted arguments
+# src.: https://github.com/radfordneal/pqR/issues/41#issuecomment-649139014
+# ---
+#
+#    91 |         call dqrsl(x, ldx, n, k, qraux, sigma, sigma, dummy,
+#       |                                               2
+# ......
+#   111 |                call dqrsl(x, ldx, n, k, qraux, sigma, dummy, sigma,
+#       |                                                      1
+# Error: Rank mismatch between actual argument at (1) and actual argument at (2) (rank-1 and scalar)
+# make[5]: *** [../../../../etc/Makeconf:185: lminfl.o] Error 1
+export FFLAGS+=' -fallow-argument-mismatch'
+
 prepare() {
     cd R-${pkgver}
     # set texmf dir correctly in makefile
