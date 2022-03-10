@@ -14,7 +14,7 @@ depends=(
     'readline' 'zlib' 'perl' 'gcc-libs' 'libxt' 'libxmu' 'pango' 'xz' 'zip'
     'unzip' 'curl' 'icu'
 )
-makedepends=('jdk7-openjdk' 'gcc-fortran' 'tk')
+makedepends=('jdk-openjdk' 'gcc-fortran' 'tk')
 optdepends=(
     'tk: tcl/tk interface'
     'texlive-bin: latex sty files'
