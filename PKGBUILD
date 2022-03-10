@@ -1,7 +1,7 @@
 # Maintainer: siphr <archlinux@techtum.dev>
 pkgname=rwu
 pkgver=0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Random Urdu words/phrases generator."
 depends=(python)
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 
 build() {
     echo "PREPARING..."
-    pip install urw 
+    pip install -U urw
     
     echo "echo BUILD DATE: `date`" > rwu
     echo "python -m urw.urw \$@" >> rwu
