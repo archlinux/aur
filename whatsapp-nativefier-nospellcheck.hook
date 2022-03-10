@@ -1,0 +1,17 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = whatsapp-nativefier-nospellcheck-hook
+
+
+[Action]
+Description = Disabling spellchecker...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/whatsapp-nativefier-nospellcheck

@@ -1,0 +1,4 @@
+post_install() {
+	echo "Disabling spellcheck in the current whatsapp-nativefier install"
+	sed -i 's/"spellcheck":true/"spellcheck":false/g' /opt/whatsapp-nativefier/resources/app/nativefier.json
+}

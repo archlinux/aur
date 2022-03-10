@@ -1,0 +1,2 @@
+#!/bin/bash
+sed -i 's/"spellcheck":true,/"spellcheck":false,/g' /opt/whatsapp-nativefier/resources/app/nativefier.json
