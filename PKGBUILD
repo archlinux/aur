@@ -22,14 +22,12 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	make -C $_pkgname/src/burner/libretro generate-files
+}
+
 build() {
-	cd $_pkgname/src/burner/libretro
-	make generate-files
-	if [[ $CARCH == x86_64 ]]; then
-		make EXTERNAL_ZLIB=1 USE_X64_DRC=1
-	else
-		make EXTERNAL_ZLIB=1
-	fi
+	make -C $_pkgname/src/burner/libretro EXTERNAL_ZLIB=1
 }
 
 package() {
