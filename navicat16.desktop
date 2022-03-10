@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Navicat Premium 16
+GenericName=Database Development Tool
+Icon=navicat16.png
+Exec=/opt/navicat16-premium-cs/AppRun
+Categories=Development;
+Keywords=database;sql;
+

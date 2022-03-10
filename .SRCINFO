@@ -1,0 +1,13 @@
+pkgbase = navicat16-premium-cs
+	pkgdesc = Navicat Premium is a multi-connection database development tool. (Chinese Simplified)
+	pkgver = 16.0.8
+	pkgrel = 1
+	url = https://www.navicat.com/en/navicat-16-highlights
+	arch = x86_64
+	license = GPL3
+	source = navicat16-premium-cs-16.0.8.AppImage::https://download.navicat.com.cn/download/navicat16-premium-cs.AppImage
+	source = navicat16.desktop
+	sha256sums = ea90a0a6ebb495650d5da8b16505e161b3669454147750b79d53f313325e23e0
+	sha256sums = b53285c7999e8c2141e1060c2513425e7dfc617372096e2001efe5de6ffbf8ab
+
+pkgname = navicat16-premium-cs
