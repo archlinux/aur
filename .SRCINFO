@@ -1,7 +1,7 @@
 pkgbase = siril
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.siril.org/
 	arch = x86_64
 	license = GPLv3
@@ -24,7 +24,7 @@ pkgbase = siril
 	optdepends = ffms2: films native support as image sequences and import
 	optdepends = libcurl-gnutls: check for updates
 	optdepends = gnuplot: photometry graphs creation
-	source = https://free-astro.org/download/siril-1.0.0-rc2.tar.bz2
-	sha256sums = 4dd5acb27b4b75b402cd992df106ae55d12a0324fafb043c2d08dd10a9562e3f
+	source = https://free-astro.org/download/siril-1.0.0.tar.bz2
+	sha256sums = 22fec7b88b94c40c4180e6637fef8a7cd8ea95ccaf23323e403bf2296ec274bc
 
 pkgname = siril
