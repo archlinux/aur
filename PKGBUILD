@@ -2,7 +2,7 @@
 
 _plug=vcm
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2021.09.11.12.g8144cd8
+pkgver=2022.02.10.AC.0.g5123442
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GITversion)"
 arch=('x86_64')
@@ -20,12 +20,9 @@ conflicts=("vapoursynth-plugin-${_plug}"
            'vapoursynth-plugin-vcfreq'
            'vapoursynth-plugin-vcmove'
            )
-source=("${_plug}::git+https://github.com/AmusementClub/vcm.git"
-        'vcm_doc-20210914.7z::http://www.avisynth.nl/users/vcmohan/vcm/vcm.7z'
-        )
-sha256sums=('SKIP'
-            '09b6f8109fbd9f78d6988642273fbdbf69a9007dc9da2a26879533fe166d67dd'
-            )
+source=("${_plug}::git+https://github.com/AmusementClub/vcm.git")
+sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -59,5 +56,5 @@ build() {
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
-  for i in *.html; do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done
+  (cd "${_plug}/docs"; for i in *.html vcmisc0.png ; do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
 }

@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vcm-git
 	pkgdesc = Plugin for Vapoursynth: vcm (GITversion)
-	pkgver = 2021.09.11.12.g8144cd8
+	pkgver = 2022.02.10.AC.0.g5123442
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=172594
 	arch = x86_64
@@ -14,9 +14,8 @@ pkgbase = vapoursynth-plugin-vcm-git
 	conflicts = vapoursynth-plugin-vcmod
 	conflicts = vapoursynth-plugin-vcfreq
 	conflicts = vapoursynth-plugin-vcmove
+	options = debug
 	source = vcm::git+https://github.com/AmusementClub/vcm.git
-	source = vcm_doc-20210914.7z::http://www.avisynth.nl/users/vcmohan/vcm/vcm.7z
 	sha256sums = SKIP
-	sha256sums = 09b6f8109fbd9f78d6988642273fbdbf69a9007dc9da2a26879533fe166d67dd
 
 pkgname = vapoursynth-plugin-vcm-git
