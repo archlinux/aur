@@ -5,9 +5,8 @@
 
 pkgname="stm32cubeprog"
 _pkgname="STM32CubeProgrammer"
-pkgver=2.9.0
-_stlink_updater_ver=3.9.3
-pkgrel=4
+pkgver=2.10.0
+pkgrel=1
 pkgdesc="An all-in-one multi-OS software tool for programming STM32 products."
 arch=('x86_64')
 url="https://www.st.com/en/development-tools/stm32cubeprog.html"
@@ -31,18 +30,10 @@ makedepends=('xdotool'
 provides=("${pkgname}rammer")
 options=('!strip')
 _pkg_main_name="${pkgname//prog/prg}-lin_v${pkgver//./-}"
-_pkg_main_url_index="af/f8/e3/60/56/b9/42/9d"
-_stlink_updater_name="stsw-link007-v${_stlink_updater_ver//./-}"
-_stlink_url_index="16/ac/ae/04/0b/01/42/5a"
-# stm32cubeprog
-## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
-# stsw-link007
-## https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stsw-link007/_jcr_content/get-software/get-software-table-body.nocache.html/st-site-cx/components/containers/product/get-software-table-body.html
+_pkg_main_url_index="2b/58/90/97/ad/a1/46/10"
 source=("en.${_pkg_main_name}.zip::https://www.st.com/content/ccc/resource/technical/software/utility/group0/${_pkg_main_url_index}/${_pkg_main_name}/files/${_pkg_main_name}.zip/jcr:content/translations/en.${_pkg_main_name}.zip"
-        "en.${_stlink_updater_name}.zip::https://www.st.com/content/ccc/resource/technical/software/firmware/group1/${_stlink_url_index}/${_stlink_updater_name}/files/${_stlink_updater_name}.zip/jcr:content/translations/en.${_stlink_updater_name}.zip"
         "${pkgname}.xdotool")
-sha256sums=('53b3648bd0297330b4e82eaba80d69d9fa50ac8e57a41c32d00ac32ca77ccad9'
-            '56666bd0985fa403008b0a88194266a92dcf346232fa0f4de8a9d072bee62318'
+sha256sums=('6d736e049f0e1a1d606bc2d2789c7527d164c08f6ee92525dd590a05f971c322'
             '3194268b73572c4e0fb69e51145f989e85c0415d1c2d932d115708b0c514b005')
 
 prepare() {
@@ -118,10 +109,5 @@ END
 
   # Remove STM32CubePrgUpd update
   rm -rf ${pkgdir}/opt/${pkgname}/updater
-
-  # ST-link updater
-  # https://community.st.com/s/question/0D53W00000mlLP9/how-to-install-stlinkupgradejar-from-stswlink007-so-it-can-be-found-by-stm32cubeprogrammer
-  install -Dm644 stsw-link007/AllPlatforms/STLinkUpgrade.jar ${pkgdir}/opt/${pkgname}/Drivers/FirmwareUpgrade/STLinkUpgrade.jar
-  install -Dm644 stsw-link007/AllPlatforms/native/linux_x64/libSTLinkUSBDriver.so ${pkgdir}/opt/${pkgname}/Drivers/FirmwareUpgrade/native/linux_x64/libSTLinkUSBDriver.so
 }
 # vim: set sw=2 ts=2 et:
