@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Stepanov <dubj@cock.li>
 pkgname=enano
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An editor to autosign document"
 arch=('any')
 license=('GPL')
