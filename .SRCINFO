@@ -1,0 +1,12 @@
+pkgbase = imcat-git
+	pkgdesc = Preview any size image in a terminal window.
+	pkgver = r22.218d975
+	pkgrel = 1
+	url = https://github.com/stolk/imcat
+	arch = any
+	license = CC0
+	provides = imcat-git
+	source = git+https://github.com/stolk/imcat.git
+	sha256sums = SKIP
+
+pkgname = imcat-git
