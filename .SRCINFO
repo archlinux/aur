@@ -1,0 +1,16 @@
+pkgbase = ruby-rex-core
+	pkgdesc = Core libraries required for the Ruby Exploitation (Rex) Suite.
+	pkgver = 0.1.26
+	pkgrel = 1
+	url = https://github.com/rapid7/rex-core
+	arch = any
+	license = BSD
+	depends = ruby
+	noextract = rex-core-0.1.26.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rex-core-0.1.26.gem
+	source = https://raw.githubusercontent.com/rapid7/rex-bin_tools/master/LICENSE
+	sha256sums = a091ca3ee8ca39a1a5f4ec823c11a145348e55d2e49129c104a82c6e30384cc2
+	sha256sums = 22a0624299df52a759730e5e3c56bee73812e1760b4cd4382c29346058df4297
+
+pkgname = ruby-rex-core
