@@ -1,7 +1,7 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=zenith
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('nvidia-utils')
 provides=('zenith')
 conflicts=('zenith-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('bea1f9e7f373c335322dfbaead7a8f10')
+sha256sums=('e3f914e5effb842f5931b5b8310e05e90a40f6aff7384b54a9f18a73ba567032')
 
 build() {
     cd "$pkgname-$pkgver"
