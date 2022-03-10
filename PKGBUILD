@@ -1,14 +1,17 @@
-# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Maintainer: William Gathoye <william + aur [at] gathoye [dot] be>
+# Contributor: Ronald van Haren <ronald.archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 # Contributor: K. Piche <kpiche@rogers.com>
 
-pkgname=r
+pkgname=r352
 pkgver=3.5.2
 pkgrel=1
-pkgdesc='Language and environment for statistical computing and graphics'
+pkgdesc='Language and environment for statistical computing and graphicsi (version 3.5.2)'
 arch=('x86_64')
 license=('GPL')
 url='https://www.r-project.org/'
+provides=('r')
+conflicts=('r')
 depends=(
     'blas' 'lapack' 'bzip2'  'libpng' 'libjpeg' 'libtiff' 'ncurses' 'pcre'
     'readline' 'zlib' 'perl' 'gcc-libs' 'libxt' 'libxmu' 'pango' 'xz' 'zip'

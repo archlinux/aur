@@ -1,5 +1,5 @@
-pkgbase = r
-	pkgdesc = Language and environment for statistical computing and graphics
+pkgbase = r352
+	pkgdesc = Language and environment for statistical computing and graphicsi (version 3.5.2)
 	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://www.r-project.org/
@@ -32,6 +32,8 @@ pkgbase = r
 	optdepends = texlive-bin: latex sty files
 	optdepends = gcc-fortran: needed to compile some CRAN packages
 	optdepends = openblas: faster linear algebra
+	provides = r
+	conflicts = r
 	options = !makeflags
 	options = !emptydirs
 	backup = etc/R/Makeconf
@@ -48,4 +50,4 @@ pkgbase = r
 	sha512sums = 55ed6e819dcbb231d842d825134b84d1a24db177558d5dad9369d57fd21d0239d6433c4311531171a101ca3c7c0685493e9cc6c1fe9e4e0df59f2331cff150ba
 	sha512sums = aae388c5b6c02d9fb857914032b0cd7d68a9f21e30c39ba11f5a29aaf1d742545482054b57ce18872eabb6605bbb359b2fc1e9be5ce6881443fdbdf6b67fab3b
 
-pkgname = r
+pkgname = r352
