@@ -16,8 +16,6 @@ sha256sums=('SKIP'
             '6dc75c75af900877096457eda180b4c83d439de2d66e2de60796ace6cbf6db6b')
 
 install=${pkgname}.install
-clover.base.ucs.dict.yaml      
-clover.base.ucs_other.dict.yaml
 package() {
   cd ${srcdir}/${pkgname%-git*}/
   install -Dm644 build/flypy.{prism,reverse,table}.bin -t "$pkgdir"/usr/share/rime-data/build
