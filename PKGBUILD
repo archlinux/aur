@@ -3,14 +3,14 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cjs-git
-pkgver=4.4.0.r0.gfe3b1ec4
-pkgrel=2
+pkgver=5.2.0.r2.g66962c83
+pkgrel=1
 pkgdesc="Javascript Bindings for Cinnamon"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/${pkgname%-git}"
 license=('GPL')
-depends=('dbus-glib' 'gtk3' 'gobject-introspection-runtime' 'js52')
-makedepends=('git' 'autoconf-archive' 'gobject-introspection')
+depends=('dbus-glib' 'gtk3' 'gobject-introspection-runtime' 'js78')
+makedepends=('git' 'meson' 'samurai' 'gobject-introspection')
 checkdepends=('xorg-server-xvfb')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,40 +18,33 @@ source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}"/${pkgname%-git}
+    cd "${srcdir}/${pkgname%-git}"
 
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-    cd "${srcdir}"/${pkgname%-git}
-
-    autoreconf -fi
-}
-
 build() {
-    cd "${srcdir}"/${pkgname%-git}
+    mkdir -p "${srcdir}/${pkgname%-git}/builddir"
+    cd "${srcdir}/${pkgname%-git}/builddir"
 
-    ./configure --prefix=/usr \
-                --libexecdir=/usr/lib \
-                --disable-static \
-                --disable-Werror
+    meson --prefix=/usr \
+          --libexecdir=/usr/lib \
+          --buildtype=plain \
+          -Dinstalled_tests=false \
+          ..
 
-    #https://bugzilla.gnome.org/show_bug.cgi?id=656231
-    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-
-    make
+    samu
 }
 
 check() {
-    cd "${srcdir}"/${pkgname%-git}
+    cd "${srcdir}/${pkgname%-git}/builddir"
 
     # Needs a display
-    xvfb-run make -k check || :
+    xvfb-run meson test --print-errorlogs
 }
 
 package() {
-    cd "${srcdir}"/${pkgname%-git}
+    cd "${srcdir}/${pkgname%-git}/builddir"
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" samu install
 }
