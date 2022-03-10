@@ -1,44 +1,38 @@
-# Maintainer: nroi <nroi@mailbox.org>
-pkgname=flexo-git
+# Maintainer: desbma
+# shellcheck disable=SC2034,SC2148,SC2154,SC2164
+pkgname=flexo
 pkgrel=1
-pkgver=1.6.5.r0.g0e49e52
-pkgdesc="A central pacman cache"
+pkgver=1.6.5
+pkgdesc='A central pacman cache'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://github.com/nroi/flexo'
+url="https://github.com/nroi/${pkgname}"
 license=('MIT')
-provides=("flexo")
-makedepends=('cargo' 'git')
+provides=('flexo')
+conflicts=('flexo-git')
+makedepends=('rust' 'git')
 depends=('curl' 'pacman-contrib')
 backup=('etc/flexo/flexo.toml')
-install="${pkgname%-git}.install"
-source=('git+https://github.com/nroi/flexo.git'
+install='flexo.install'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nroi/${pkgname}/archive/${pkgver}.tar.gz"
         'sysuser.conf'
         'flexo.install'
-        'flexo.service'
-)
-sha256sums=('SKIP'
+        'flexo.service')
+sha256sums=('c869be598d4535c6df609b23537ee21f1a65f23f21463737101946bd8d529103'
             'b6a618c66d3ffb9ad119b0497d2181cdd382ec870cc768606debed40716c1f4e'
             '662e8c6c4d024ec035c2c02d9298a8cb6062cfb30d02bfaecf17a9d3d9b35167'
-            '0ba13ff1d92b51433635e1fbf5f1017e3e06b3e408be663acb1fbf65f344a3ad'
-)
+            '0ba13ff1d92b51433635e1fbf5f1017e3e06b3e408be663acb1fbf65f344a3ad')
 
 build() {
-  cd "${pkgname%-git}/${pkgname%-git}"
-  # To avoid the warning "Package contains reference to $srcdir"
-  export CARGO_BUILD_RUSTFLAGS="--remap-path-prefix $HOME=HOME"
-  cargo build --release
-}
-
-pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${pkgname}-${pkgver}/flexo"
+  cargo build --release --locked
 }
 
 package() {
-  install -Dm644 "${pkgname%-git}/LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/flexo.service" "${pkgdir}/usr/lib/systemd/system/flexo.service"
   install -Dm644 "${srcdir}/sysuser.conf" "${pkgdir}/usr/lib/sysusers.d/flexo.conf"
-  install -Dm644 "${pkgname%-git}/${pkgname%-git}/conf/flexo.toml" "$pkgdir/etc/flexo/flexo.toml"
-  install -Dm755 "${pkgname%-git}/${pkgname%-git}/target/release/flexo" "$pkgdir/usr/bin/flexo"
-  install -Dm755 "${pkgname%-git}/flexo_purge_cache" "$pkgdir/usr/bin/flexo_purge_cache"
+  install -Dm644 "./flexo/conf/flexo.toml" "${pkgdir}/etc/flexo/flexo.toml"
+  install -Dm755 "./flexo/target/release/flexo" "${pkgdir}/usr/bin/flexo"
+  install -Dm755 "./flexo_purge_cache" "${pkgdir}/usr/bin/flexo_purge_cache"
 }
