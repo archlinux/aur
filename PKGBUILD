@@ -62,6 +62,13 @@ export CFLAGS+=' -fcommon'
 # make[5]: *** [../../../../etc/Makeconf:185: lminfl.o] Error 1
 export FFLAGS+=' -fallow-argument-mismatch'
 
+# Testing the package:
+# mkdir ./chroot
+# CHROOT=./chroot
+# mkarchroot $CHROOT/root base-devel
+# makechrootpkg -c -r $CHROOT
+# src.: https://wiki.archlinux.org/title/DeveloperWiki:Building_in_a_clean_chroot
+
 prepare() {
     cd R-${pkgver}
     # set texmf dir correctly in makefile
