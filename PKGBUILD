@@ -5,7 +5,7 @@
 
 pkgname=lib32-polkit
 pkgver=0.120
-pkgrel=4
+pkgrel=5
 pkgdesc='Application development toolkit for controlling system-wide privileges'
 arch=(x86_64)
 license=(LGPL)
@@ -45,6 +45,9 @@ prepare() {
   # CVE-2021-4034
   git cherry-pick -n a2bf5c9c83b6ae46cbd5c779d3055bff81ded683
 
+  # CVE-2021-4115
+  git cherry-pick -n 41cb093f554da8772362654a128a84dd8a5542a7
+
   # Fix build with Meson 0.61.0
   git apply -3 ../meson-0.61.diff
 
@@ -75,4 +78,4 @@ package() {
   rm -r "$pkgdir"/{etc,usr/{bin,include,lib,share}}
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 et:
