@@ -1,16 +1,15 @@
 pkgbase = vignette-git
 	pkgdesc = The open source VTuber software toolkit. ❤
-	pkgver = 2021.1102.2
+	pkgver = 2021.1102.2.r1.3bf9b44
 	pkgrel = 1
 	url = https://github.com/vignette-project/vignette
 	arch = i686
 	arch = x86_64
 	license = Non-Profit OSL
 	makedepends = git
-	makedepends = dotnet-sdk>=5
-	makedepends = dotnet-targeting-pack>=5
-	makedepends = netstandard-targeting-pack>=5
-	depends = dotnet-runtime>=5
+	makedepends = dotnet-sdk-5.0-bin
+	makedepends = dotnet-targeting-pack-5.0-bin
+	depends = dotnet-runtime-5.0-bin
 	depends = ffmpeg
 	depends = libgl
 	depends = libgeotiff
