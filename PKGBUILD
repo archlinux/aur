@@ -3,18 +3,16 @@
 _gemname=rex-core
 pkgname=ruby-$_gemname
 pkgver=0.1.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Core libraries required for the Ruby Exploitation (Rex) Suite."
 arch=(any)
 url="https://github.com/rapid7/rex-core"
 license=('BSD')
-depends=(
-	ruby
-)
+depends=(ruby)
 options=(!emptydirs)
 source=(
 	https://rubygems.org/downloads/$_gemname-$pkgver.gem
-	https://raw.githubusercontent.com/rapid7/rex-bin_tools/master/LICENSE
+	https://raw.githubusercontent.com/rapid7/$_gemname/master/LICENSE
 )
 noextract=($_gemname-$pkgver.gem)
 sha256sums=(
