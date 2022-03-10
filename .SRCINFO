@@ -1,15 +1,16 @@
 pkgbase = cookcli-git
 	pkgdesc = CookCLI is provided as a command-line tool to make Cook recipe management easier, and enable automation and scripting workflows for the CookLang ecosystem. Build from source.
-	pkgver = 0.0.12
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/cooklang/CookCLI
 	arch = x86_64
 	license = MIT
 	depends = swift-language
+	depends = libdispatch
 	provides = cookcli
 	conflicts = cookcli
 	conflicts = cookcli-bin
-	source = CookCLI_0.0.12.zip::https://github.com/cooklang/CookCLI/archive/refs/tags/v0.0.12.tar.gz
-	sha256sums = aad91ae8c230667d810091e3498fed5d4b88a39979beae9d64bd0fa22bb7e8be
+	source = CookCLI_0.1.3.zip::https://github.com/cooklang/CookCLI/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 73415872a045a9b217feddf6bd6f32d47776c62746cccefcd9a91cccb648fc2a
 
 pkgname = cookcli-git
