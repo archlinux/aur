@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=x11-emoji-picker
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Linux XServer emoji picker written in C++.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt5-base' 'icu' 'xdotool')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b0005945ddcea87c515f6887cef36c74b8b0533494ea456e06b7512180ae909d')
+sha256sums=('b2027e19d56df9a12a1b13e13f20c1eeb98c8db66c129bb02ccae7dc70bb064e')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
