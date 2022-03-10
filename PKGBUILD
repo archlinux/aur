@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.93.5
+pkgver=3.93.6
 pkgrel=1
 _node_version=16
 pkgdesc="Official Tutanota email client"
@@ -15,7 +15,7 @@ makedepends=('nvm')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('aa1c02d92bb3747891059f8fc29895f6e93d9e800eb76a52d74882875aa9eaab'
+sha256sums=('25332602dc3e599d62812b05339ae7dafe53f06df628aef061391e61ce153bf5'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
