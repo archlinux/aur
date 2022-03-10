@@ -2,7 +2,7 @@
 _php=php74
 _phpize=phpize74
 pkgname="${_php}-xdebug"
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 pkgdesc="PHP debugging extension"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=('Xdebug')
 depends=("${_php}")
 source=("https://xdebug.org/files/xdebug-${pkgver}.tgz"
   "xdebug.ini")
-sha256sums=('9be3ae0fdb4dc4a4c68084626cddc56f12396487e309a8c8dd318f0f900d1a68'
+sha256sums=('37d0a6701955f5b3406c6c327b7702bd7c21462e656f3b4cce24a05258013d4e'
             '7c66883dc2ade69069ef84e30188b25630748aa9c8b0dd123727c00505421205')
 backup=("etc/${_php}/conf.d/xdebug.ini")
 
