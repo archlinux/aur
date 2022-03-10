@@ -12,6 +12,6 @@ Target = whatsapp-nativefier-nospellcheck-hook
 
 
 [Action]
-Description = Disabling spellchecker...
+Description = Disabling spellcheck...
 When = PostTransaction
 Exec = /usr/share/libalpm/scripts/whatsapp-nativefier-nospellcheck

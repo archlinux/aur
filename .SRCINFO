@@ -1,4 +1,4 @@
-pkgbase = whatsapp-nativefier-nospellchecker-hook
+pkgbase = whatsapp-nativefier-nospellcheck-hook
 	pkgdesc = Pacman hook to disable whatsapp-nativefier spellcheck after install or upgrade.
 	pkgver = 1
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = whatsapp-nativefier-nospellchecker-hook
 	sha1sums = ff104376c17185bd85820c9010a293102d2b0720
 	sha1sums = dfae59bebd372d4bffe12914a9fc683dbe26058c
 
-pkgname = whatsapp-nativefier-nospellchecker-hook
+pkgname = whatsapp-nativefier-nospellcheck-hook
