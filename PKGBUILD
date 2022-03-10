@@ -2,7 +2,7 @@
 
 pkgname=gti-git
 pkgver=v1.7.0.13.g69bd9a7
-pkgrel=2
+pkgrel=3
 pkgdesc='A silly git launcher'
 arch=('i686' 'x86_64')
 url='http://r-wos.org/hacks/gti'
@@ -10,7 +10,7 @@ license=('custom')
 makedepends=('git')
 provides=('gti')
 conflicts=('gti')
-source=('git://github.com/rwos/gti.git')
+source=('git+https://github.com/rwos/gti.git')
 sha256sums=('SKIP')
 
 pkgver() {
