@@ -1,8 +1,8 @@
 # Maintainer: Jerry Reinoehl <jerryreinoehl@gmail.com>
 pkgname=mkinitcpio-message
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="mkinitcpio hook to display a message"
+pkgrel=2
+pkgdesc="mkinitcpio hook to display a message or logo"
 arch=(any)
 url="https://github.com/jerryreinoehl/mkinitcpio-message"
 license=('GPL')

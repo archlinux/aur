@@ -1,7 +1,7 @@
 pkgbase = mkinitcpio-message
-	pkgdesc = mkinitcpio hook to display a message
+	pkgdesc = mkinitcpio hook to display a message or logo
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jerryreinoehl/mkinitcpio-message
 	install = mkinitcpio-message.install
 	arch = any
