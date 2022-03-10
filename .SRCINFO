@@ -34,6 +34,7 @@ pkgbase = mingw-w64-vtk-git
 	depends = mingw-w64-gl2ps
 	depends = mingw-w64-cgns
 	depends = mingw-w64-libharu
+	depends = mingw-w64-verdict
 	provides = mingw-w64-vtk
 	conflicts = mingw-w64-vtk
 	options = !buildflags
