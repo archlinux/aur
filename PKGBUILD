@@ -23,7 +23,7 @@ package() {
   # install -Dm644 opencc/* -t "$pkgdir"/usr/share/rime-data/opencc
   install -Dm644 punctuator.yaml -t "$pkgdir"/usr/share/rime-data
   # install -Dm644 {key_bindings,symbols,default}.yaml -t "$pkgdir"/usr/share/rime-data
-  install -Dm644 clover.{base.ucs.dict,base.ucs_other,dict,key_bindings,phrase.dict,schema}.yaml -t "$pkgdir"/usr/share/rime-data
+  install -Dm644 clover.{base.ucs.dict,base.ucs_other.dict,dict,key_bindings,phrase.dict,schema}.yaml -t "$pkgdir"/usr/share/rime-data
   install -Dm644 luna_{pinyin_fluency,pinyin,pinyin_simp}.schema.yaml -t "$pkgdir"/usr/share/rime-data
   install -Dm644 double.{custom,schema}.yaml -t "$pkgdir"/usr/share/rime-data
   install -Dm644 flypy.{custom,schema}.yaml -t "$pkgdir"/usr/share/rime-data
