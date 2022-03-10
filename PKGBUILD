@@ -1,11 +1,12 @@
-# Maintainer : Thomas Laroche <tho.laroche@gmail.com>
+# Maintainer : whoami <whoami@systemli.org>
+# Contributor : Thomas Laroche <tho.laroche@gmail.com>
 # Contributor : Tom Gundersen <teg@jklm.no>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 
 pkgbase=transmission-sequential
 pkgname=(transmission-sequential-cli transmission-sequential-gtk transmission-sequential-qt)
 pkgver=3.00
-pkgrel=3
+pkgrel=4
 _seqpatch=1
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
@@ -18,14 +19,9 @@ source=(https://github.com/Mikayex/transmission/archive/${pkgver}-seq${_seqpatch
         transmission_autoconf.patch
         transmission-sequential-cli.sysusers
         transmission-sequential-cli.tmpfiles)
-sha256sums=('fc74e0d7879cc79e43d85ae374233bb4530ab14d6cddafe593a81a95005b4258'
-            '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
-            '1c01a2977a58b9199d2564b5441986b7ef5b0e9b1cb6dc52ce7c64bf6a9ad251'
-            '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
-            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
 
 prepare() {
-  #Copy third party files from official source package
+  # Copy third party files from official source package
   cp -r transmission-$pkgver/third-party/ transmission-$pkgver-seq${_seqpatch}
 
   cd transmission-$pkgver-seq${_seqpatch}
@@ -99,3 +95,8 @@ package_transmission-sequential-qt() {
   install -Dm644 qt/icons/transmission.png "$pkgdir/usr/share/pixmaps/transmission-qt.png"
   install -Dm644 qt/transmission-qt.desktop "$pkgdir/usr/share/applications/transmission-qt.desktop"
 }
+sha256sums=('fc74e0d7879cc79e43d85ae374233bb4530ab14d6cddafe593a81a95005b4258'
+            '9144652fe742f7f7dd6657716e378da60b751aaeda8bef8344b3eefc4db255f2'
+            'a17dd80c289ac1323e3648c79c0ebbe7a321557eadc396d62a7b1d3e2097de43'
+            '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
+            '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
