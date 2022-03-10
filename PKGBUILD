@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair.bonnett@gmail.com>
 
 pkgname=python-remi-git
-pkgver=2021.03.02.r3.ge6ca627
+pkgver=2022.03.07.r2.g9eeb9c2
 pkgrel=1
 pkgdesc="Cross-platform GUI library which renders in a web browser."
 arch=('any')
@@ -24,8 +24,8 @@ package() {
 	cd "$srcdir/remi"
 	python setup.py install --root="$pkgdir/" --optimize=1
   cd "$pkgdir"
-  rm -r usr/lib/python3.[1-9]/site-packages/test/
-  rm -r usr/lib/python3.[1-9]/site-packages/editor/
+  rm -r usr/lib/python3.[0-9]*/site-packages/test/
+  rm -r usr/lib/python3.[0-9]*/site-packages/editor/
   mkdir -p "usr/share/doc/python-remi-git"
   cp -r "$srcdir/remi/examples" "usr/share/doc/python-remi-git"
 }
