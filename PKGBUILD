@@ -37,6 +37,8 @@ make_without_lto="make CC=clang HOSTCC=clang"
 # "Modern performance" – uses a slimmer config with
 # performance tuned to your specific machine (-march=native)
 USE_MPERFORMANCE=${USE_MPERFORMANCE:=false}
+# "Ancient" config – for older machines
+FOR_ANCIENT=${FOR_ANCIENT:=false}
 
 pkgver() {
   echo ${pkgver}
@@ -67,6 +69,8 @@ build() {
   _defconfig="nitrous_defconfig"
   if $USE_MPERFORMANCE; then
     _defconfig="nitrous-mperformance_defconfig"
+  elif $FOR_ANCIENT; then
+    _defconfig="nitrous-ancient_defconfig"
   fi
 
   rm -f .clang
