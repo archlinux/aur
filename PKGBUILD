@@ -3,7 +3,7 @@
 _gemname=rex-struct2
 pkgname=ruby-$_gemname
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby Exploitation(Rex) library for generating/manipulating C-Style structs"
 arch=(any)
 url="https://github.com/rapid7/rex-struct2"
