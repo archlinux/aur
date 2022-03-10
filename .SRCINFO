@@ -1,6 +1,6 @@
 pkgbase = lxqt-panel-git
 	pkgdesc = The LXQt desktop panel
-	pkgver = 1.0.0.32.gcd4b9b8b
+	pkgver = 1.0.0.45.g86dd6fa9
 	pkgrel = 1
 	url = https://github.com/lxqt/lxqt-panel
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = lxqt-panel-git
 	depends = lm_sensors
 	depends = libstatgrab
 	depends = libsysstat-git
+	depends = libxtst
 	depends = solid
 	depends = menu-cache
 	depends = libxcomposite
