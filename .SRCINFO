@@ -1,7 +1,7 @@
 pkgbase = enano
-	pkgdesc = An editor to autosign document
+	pkgdesc = A bash script to autosign documents
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	license = GPL
 	depends = nano

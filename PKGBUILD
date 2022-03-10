@@ -1,8 +1,8 @@
 # Maintainer: Konstantin Stepanov <dubj@cock.li>
 pkgname=enano
 pkgver=1.0
-pkgrel=2
-pkgdesc="An editor to autosign document"
+pkgrel=3
+pkgdesc="A bash script to autosign documents"
 arch=('any')
 license=('GPL')
 depends=('nano' 'python3' 'gnupg' 'xfce4-terminal')
