@@ -1,13 +1,12 @@
 pkgbase = forkboard
 	pkgdesc = An ElectronJS Dashboard App to show wallets balances from Chia and Forks in one convenient location.
 	pkgver = 1.0.4
-	pkgrel = 1.0
+	pkgrel = 1.1
 	url = https://github.com/aaroncarpenter/fork-board
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	makedepends = yarn
 	depends = gtk3
 	depends = nss
 	source = fork-board-1.0.4.tar.gz::https://github.com/aaroncarpenter/fork-board/archive/refs/tags/v1.0.4.tar.gz
