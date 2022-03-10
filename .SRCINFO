@@ -1,0 +1,13 @@
+pkgbase = mkinitcpio-message
+	pkgdesc = mkinitcpio hook to display a message
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jerryreinoehl/mkinitcpio-message
+	install = mkinitcpio-message.install
+	arch = any
+	license = GPL
+	depends = mkinitcpio
+	source = mkinitcpio-message-1.0.0.tar.gz::https://github.com/jerryreinoehl/mkinitcpio-message/archive/v1.0.0.tar.gz
+	sha256sums = c8d8727c31c2fed78326983804fce989ceecf67c8d14965981965224538dfc2d
+
+pkgname = mkinitcpio-message

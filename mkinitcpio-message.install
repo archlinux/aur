@@ -1,0 +1,10 @@
+#!/bin/sh
+
+post_install() {
+  echo " > Put your message in /etc/initcpio/message, add 'message' to your"
+  echo " > HOOKS array in /etc/mkinitcpio.conf, and rebuild initial ramdisk."
+}
+
+post_remove() {
+  sed -ri '/^HOOKS=/s/ ?\bmessage\b//g' /etc/mkinitcpio.conf
+}
