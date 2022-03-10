@@ -1,0 +1,21 @@
+pkgbase = xdp-tools
+	pkgdesc = Utilities for use with XDP and libxdp
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/xdp-project/xdp-tools
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = m4
+	makedepends = pkgconfig
+	makedepends = libpcap
+	makedepends = zlib
+	depends = libelf
+	depends = linux-api-headers
+	depends = libbpf
+	source = git+https://github.com/xdp-project/xdp-tools#tag=v1.2.3
+	sha256sums = SKIP
+
+pkgname = xdp-tools
