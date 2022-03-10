@@ -1,0 +1,21 @@
+pkgbase = ruby-rex-bin_tools
+	pkgdesc = A suite of tools for analyzing Elf,Mach, and PE format executables to find specific chunks of code.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/rapid7/rex-bin_tools
+	arch = any
+	license = BSD
+	depends = ruby
+	depends = ruby-metasm
+	depends = ruby-rex-arch
+	depends = ruby-rex-core
+	depends = ruby-rex-struct2
+	depends = ruby-rex-text
+	noextract = rex-bin_tools-0.1.8.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rex-bin_tools-0.1.8.gem
+	source = https://raw.githubusercontent.com/rapid7/rex-bin_tools/master/LICENSE
+	sha256sums = f2e13761500d03c445bee90e28457711aeaddf065882992e94ad47f50114b95c
+	sha256sums = 22a0624299df52a759730e5e3c56bee73812e1760b4cd4382c29346058df4297
+
+pkgname = ruby-rex-bin_tools
