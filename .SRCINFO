@@ -1,0 +1,17 @@
+pkgbase = ruby-rex-arch
+	pkgdesc = This library contains architecture specific information such as registers, opcodes, and stack manipulation routines.
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/rapid7/rex-arch
+	arch = any
+	license = BSD
+	depends = ruby
+	depends = ruby-rex-text
+	noextract = rex-arch-0.1.14.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rex-arch-0.1.14.gem
+	source = https://raw.githubusercontent.com/rapid7/rex-arch/master/LICENSE
+	sha256sums = 77111f85811731c3f95d571355356e9bba84bec843ad232318ef2683023129be
+	sha256sums = 22a0624299df52a759730e5e3c56bee73812e1760b4cd4382c29346058df4297
+
+pkgname = ruby-rex-arch
