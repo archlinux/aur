@@ -3,7 +3,7 @@
 pkgname="python-unicorn-binance-websocket-api"
 _pkgname=${pkgname#python-}
 pkgver=1.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Python API to use the Binance REST API"
 arch=('any')
 url="https://github.com/LUCIT-Systems-and-Development/$_pkgname"
@@ -15,6 +15,7 @@ sha256sums=('437664e0359d8ef264663f54ab5c00678f50c8eb6b357418ef00e0d3e6fadd03')
 
 build() {
   cd $_pkgname-$pkgver
+  rm tools/*
   python setup.py build
 }
 
