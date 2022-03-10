@@ -1,0 +1,20 @@
+pkgbase = boosteroid
+	pkgdesc = Boosteroid client desktop
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://boosteroid.com/downloads
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	makedepends = tar
+	makedepends = coreutils
+	depends = libva
+	depends = libvdpau
+	depends = libxcb
+	depends = traceroute
+	depends = ocl-icd
+	depends = pcre2
+	source = boosteroid-install-x64.md5
+	md5sums = 4a86840339f151b05e60347362ced37f
+
+pkgname = boosteroid
