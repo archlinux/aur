@@ -32,7 +32,7 @@ prepare() {
 
 build() {
 	cd "invidious"
-	shards update && shards install
+	shards install --production
 	crystal build --release src/invidious.cr
 }
 
