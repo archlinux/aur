@@ -1,27 +1,28 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
-_npmname=webpack
+# Maintainer: Jonathan Neidel <aur@jneidel.com>
+
 pkgname=nodejs-webpack
-pkgver=5.64.0
+pkgver=5.70.0
 pkgrel=1
 pkgdesc="JavaScript bundler (CommonJs, AMD, ES6 modules, CSS, Images, JSON, CoffeeScript, LESS)"
 arch=(any)
 url="https://webpack.js.org/"
 license=(MIT)
-depends=('nodejs')
-makedepends=('npm')
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
-noextract=($_npmname-$pkgver.tgz)
-sha256sums=('86a7242474750ff41f879c732b7b2093485d38ea343dfcf055fadfeb9f1d0861')
-options=(!strip)
+depends=(nodejs)
+makedepends=(npm)
+source=("${pkgname}-${pkgver}.tgz::http://registry.npmjs.org/${pkgname#nodejs-}/-/${pkgname#nodejs-}-${pkgver}.tgz")
+noextract=("${pkgname}-${pkgver}.tgz")
+sha256sums=("ae0c864188574863a49a3f631080afb85bb350e4d3e66f83698a1c748c12bb52")
 
 package() {
-  cd $srcdir
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
-  find "$pkgdir"/usr -type d -exec chmod 755 {} +
-  install -Dm755 "$_npmdir/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+  # copied from: nodejs-nativefier
+  npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
 
-# vim:set ts=2 sw=2 et:
+  # Fixing permissions
+  find "$pkgdir"/usr -type d -exec chmod 755 {} +
+
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
+
+  install -Dm644 "$pkgdir/usr/lib/node_modules/${pkgname#nodejs-}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
