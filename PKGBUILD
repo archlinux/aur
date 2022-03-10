@@ -9,14 +9,14 @@
 # Contributor: MacWolf <macwolf at archlinux dot de>
 
 pkgname=vlc-git
-pkgver=4.0.0.r15273.g03674aee04
+pkgver=4.0.0.r18660.g5f74392dcb
 pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)"
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64')
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua'
-         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp' 'libmad'
+         'libmatroska' 'taglib' 'libmpcdec' 'ffmpeg4.4' 'faad2' 'libupnp' 'libmad'
          'libmpeg2' 'xcb-util-keysyms' 'libtar' 'libxinerama' 'libsecret'
          'libarchive' 'qt5-base' 'qt5-x11extras' 'qt5-svg' 'freetype2'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'wayland-protocols'
@@ -31,7 +31,7 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-             'lirc' 'libgoom2' 'projectm' 'chromaprint' 'git' 'aom' 'srt'
+             'lirc' 'libgoom2' 'projectm' 'git' 'aom' 'srt'
              'vulkan-headers' 'dav1d' 'flex' 'bison' 'xosd' 'aribb25' 'pcsclite')
 optdepends=('avahi: service discovery using bonjour protocol'
             'gst-plugins-base-libs: for libgst plugins'
@@ -99,8 +99,8 @@ optdepends=('avahi: service discovery using bonjour protocol'
 _name=vlc
 conflicts=("${_name}" 'vlc-dev' 'vlc-plugin' 'vlc-stable-git')
 provides=("${_name}=${pkgver}")
-options=(!emptydirs)
-source=('git+https://git.videolan.org/git/vlc.git'
+options=(debug !emptydirs)
+source=('git+https://github.com/videolan/vlc.git'
         'lua53_compat.patch'
         'vlc-live-media-2021.patch'
         'update-vlc-plugin-cache.hook')
@@ -131,12 +131,13 @@ prepare() {
 build() {
   cd "${srcdir}/${_name}"
 
-  export CFLAGS+=" -I/usr/include/samba-4.0"
+  export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
   export LUAC=/usr/bin/luac
   export LUA_LIBS="$(pkg-config --libs lua)"
   export RCC=/usr/bin/rcc-qt5
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
 
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -207,7 +208,7 @@ build() {
               --enable-jack \
               --enable-samplerate \
               --enable-soxr \
-              --enable-chromaprint \
+              --disable-chromaprint \
               --enable-chromecast \
               --enable-qt \
               --enable-skins2 \
@@ -235,6 +236,10 @@ build() {
               --enable-aom \
               --enable-srt \
               --enable-dav1d
+
+  # prevent excessive overlinking due to libtool
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
   make
 }
 
