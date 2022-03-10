@@ -1,6 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=saucer-cli-git
-pkgver=1.0.0
+_gitname=saucer-cli
+pkgver=r7.4a6f1f8
 pkgrel=1
 pkgdesc="A cli program to simplify working with saucer"
 arch=('any')
@@ -9,11 +10,16 @@ license=('MIT')
 makedepends=('git' 'cmake' 'ninja')
 conflicts=('saucer-cli')
 provides=('saucer-cli')
-source=("git+https://github.com/saucer/saucer-cli")
+source=("git+https://github.com/saucer/$_gitname")
 sha256sums=('SKIP')
 
+pkgver() {
+        cd "$_gitname"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+}
+
 build() {
-  cd "${srcdir}/saucer-cli"
+  cd "${srcdir}/$_gitname"
   mkdir -p build
   cd build
   cmake -GNinja -DCMAKE_BUILD_TYPE=Release ..
@@ -22,6 +28,6 @@ build() {
 
 package() {
   # install binary
-  install -Dm 755 "${srcdir}/saucer-cli/build/saucer" "${pkgdir}/usr/bin/saucer"
+  install -Dm 755 "${srcdir}/$_gitname/build/saucer" "${pkgdir}/usr/bin/saucer"
   mkdir -p "${pkgdir}/usr/bin/"
 }

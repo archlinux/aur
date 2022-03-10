@@ -1,6 +1,6 @@
 pkgbase = saucer-cli-git
 	pkgdesc = A cli program to simplify working with saucer
-	pkgver = 1.0.0
+	pkgver = r7.4a6f1f8
 	pkgrel = 1
 	url = https://github.com/saucer/saucer-cli
 	arch = any
