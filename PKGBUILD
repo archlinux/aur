@@ -2,7 +2,7 @@
 
 pkgname=phpactor
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP completion, refactoring, introspection tool and language server"
 arch=(any)
 url="https://github.com/phpactor/phpactor"
@@ -22,7 +22,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin" "$LIB_DIRECTORY"
 
   cp -r . "$LIB_DIRECTORY"
-  composer install --no-interaction --working-dir "$LIB_DIRECTORY"
+  composer install --no-interaction --no-dev --optimize-autoloader --working-dir "$LIB_DIRECTORY"
 
   ln -s "$LIB_DIRECTORY/bin/phpactor" "$pkgdir/usr/bin/phpactor"
 }
