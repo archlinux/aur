@@ -1,0 +1,20 @@
+pkgbase = agdsn-zsh-config
+	pkgdesc = AG DSN Zsh Config
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/agdsn/agdsn-zsh-config
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = zsh
+	depends = coreutils
+	depends = grep
+	depends = sed
+	depends = procps
+	provides = grml-zsh-config
+	provides = grmlzshrc
+	conflicts = grml-zsh-config
+	source = agdsn-zsh-config-0.4.0.tar.gz::https://github.com/agdsn/agdsn-zsh-config/archive/v0.4.0.tar.gz
+	sha256sums = 19aa0a2959e6c68b18d0968df741f729ed16888d47d59103927c64a3a6dc250d
+
+pkgname = agdsn-zsh-config
