@@ -1,12 +1,12 @@
 pkgbase = perl-string-interpolate-named
 	pkgdesc = Interpolated named arguments in string
-	pkgver = 1.01
+	pkgver = 1.03
 	pkgrel = 1
 	url = https://metacpan.org/release/String-Interpolate-Named
 	arch = any
 	license = unknown
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/J/JV/JV/String-Interpolate-Named-1.01.tar.gz
+	source = https://cpan.metacpan.org/authors/id/J/JV/JV/String-Interpolate-Named-1.03.tar.gz
 	sha512sums = c32b2659119a18749a0741c4ff2a7103b5084938b9d07e4d39b2c19de98c8afdbd90953910c4d9fa6a87440eb9f33b53b7c32b7f9a4e2a638aee925ea2443f34
 
 pkgname = perl-string-interpolate-named

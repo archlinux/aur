@@ -1,7 +1,7 @@
-# maintainer: xeruf <27f at pm dot me>
+# Maintainer: xeruf <27jf at pm dot me>
 _pkgname='String-Interpolate-Named'
 pkgname=perl-string-interpolate-named
-pkgver=1.01
+pkgver=1.03
 pkgrel=1
 pkgdesc="Interpolated named arguments in string"
 arch=('any')
