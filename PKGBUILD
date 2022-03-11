@@ -1,6 +1,8 @@
-# Maintainer: Nicolas Stalder <n+archlinux@stalder.io>
+# Maintainer: Sung Mingi <FiestaLake@protonmail.com>
+# Contributor: Nicolas Stalder <n+archlinux@stalder.io>
+
 pkgname=nextdns-bin
-pkgver="1.37.7"
+pkgver=1.37.10
 pkgrel=1
 pkgdesc="NextDNS CLI client (DoH Proxy)"
 url="https://github.com/nextdns/nextdns"
@@ -16,7 +18,7 @@ source=(
   nextdns.service
 )
 # add dummy entries for `make generate-checksums` to create SHA256 instead of MD5 check sums
-sha256sums=('c87a94f75fdb70216b03fcf4945cac4248778bf80ad4ada828c549cfe27b56fa'
+sha256sums=('15540c5839d20c3694fe16d1e581727215046edff636717625e7a96b12a0e0d3'
             '00b0c930275df825475b0d86062f7488131f1b2b5e16e5ec6f9983e53138505b')
 
 build() {

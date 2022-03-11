@@ -1,6 +1,6 @@
 pkgbase = nextdns-bin
 	pkgdesc = NextDNS CLI client (DoH Proxy)
-	pkgver = 1.37.7
+	pkgver = 1.37.10
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = nextdns-bin
 	provides = nextdns
 	conflicts = nextdns
 	backup = etc/nextdns.conf
-	source = https://github.com/nextdns/nextdns/releases/download/v1.37.7/nextdns_1.37.7_linux_amd64.tar.gz
+	source = https://github.com/nextdns/nextdns/releases/download/v1.37.10/nextdns_1.37.10_linux_amd64.tar.gz
 	source = nextdns.service
-	sha256sums = c87a94f75fdb70216b03fcf4945cac4248778bf80ad4ada828c549cfe27b56fa
+	sha256sums = 15540c5839d20c3694fe16d1e581727215046edff636717625e7a96b12a0e0d3
 	sha256sums = 00b0c930275df825475b0d86062f7488131f1b2b5e16e5ec6f9983e53138505b
 
 pkgname = nextdns-bin
