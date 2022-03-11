@@ -1,7 +1,7 @@
 # Maintainer: Michael Duell <aur@akurei.me>
 # Contributor: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=otii
-pkgver=2.8.3
+pkgver=2.8.4
 pkgrel=1
 pkgdesc="Energy consumption analysis software by Qoitech"
 arch=('x86_64')
@@ -23,5 +23,5 @@ package() {
     cp -a lib "$pkgdir/usr/"
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
-b2sums=('2281719670a63e202041c395697427a8b1b19f02cefaeb6bc9e26661c8b594fb8cb5015678aa22f162d68a43f230b58feeb28c2bd52b8074064cf00c9311cc3e'
+b2sums=('544842b6d3d3409145e930beac7dfcdcdef7f8277ffa032d24d21eb098f9d2304aba9e62656833d911842f0515b89a097ea4ad4199f626177b4b7cb02917495b'
         'c98463c76cc9ffa3321cf55d75a127bd65fd805e7892dba2ea4104eb71c89d201ad765310b78ad444905fdcefc613f9d02c1f3e0b2979c99753a0c31a755fd00')
