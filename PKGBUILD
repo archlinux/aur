@@ -3,7 +3,7 @@
 pkgname='nsxiv-git'
 _pkgname=nsxiv
 pkgver=29.r0.g231b317
-pkgrel=1
+pkgrel=2
 pkgdesc='Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer (GIT VERSION)'
 arch=('x86_64')
 license=('GPL2')
@@ -21,7 +21,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$_pkgname"
-  ln -s config.def.h config.h
+  [ ! -f config.h ] && cp config.def.h config.h
+  sed -i -e '/^install: / s|: all|:|' Makefile
 }
 
 build() {
