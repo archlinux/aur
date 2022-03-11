@@ -1,9 +1,9 @@
 # Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 
 pkgname=sozi-bin
-pkgver=21.12.06
+pkgver=22.02.23~beta
 # the build version is obtained from [here](https://github.com/sozi-projects/Sozi/releases)
-_buildver=21.12.06-1638805322
+_buildver=22.2.23-1645647480
 _electronver="9.4.4"
 pkgrel=1
 pkgdesc="A zooming presentation editor and player based on SVG and JavaScript"
@@ -14,8 +14,8 @@ conflicts=("${pkgname%-bin}")
 arch=('x86_64')
 license=('MPL2')
 
-source=("https://github.com/sozi-projects/Sozi/releases/download/v${pkgver}/sozi-${_buildver}-linux-x64.tar.xz")
-sha512sums=('b67461ae1670c6bf38e9bfa0689ded498ea0776526584507daf0b81e1971aa219f65dedda63e6a7468c24d02d78f7eccbbe71e0c2f1a93a1a610a647387647b1')
+source=("https://github.com/sozi-projects/Sozi/releases/download/v${pkgver//\~/-}/sozi-${_buildver}.pacman")
+sha512sums=('189823058278362cd65fe895d05d9c333fad688beae02cf63d2e77915438fb5b89f38649273a653dbe6f1bef1feae34aed2f60e9110c99e0dac671f159ca97b0')
 
 depends=("gconf" "libnotify" "alsa-lib" "nss" "gtk2" "gtkmm" "libxtst")
 optdepends=(
@@ -26,14 +26,16 @@ optdepends=(
 )
 options=(!strip)
 
-package() {
-  cd "${srcdir}/sozi-${_buildver}-linux-x64/"
-  mkdir -p "${pkgdir}/opt/sozi-${pkgver}/"
-  cp -a * "${pkgdir}/opt/sozi-${pkgver}/"
-  rm -r "${pkgdir}/opt/sozi-${pkgver}/install/"
+prepare() {
+  sed -i 's|Exec=/opt/Sozi/sozi|Exec=sozi|' usr/share/applications/sozi.desktop
+}
 
-  install -D -m644 "install/sozi.png" "${pkgdir}/usr/share/pixmaps/sozi.png"
-  install -D -m755 "install/sozi.desktop" "${pkgdir}/usr/share/applications/sozi.desktop"
+package() {
+  mkdir -p "${pkgdir}/opt/sozi-${pkgver}/"
+  cp -a opt/Sozi/* "${pkgdir}/opt/sozi-${pkgver}/"
+
+  install -D -m644 "usr/share/icons/hicolor/256x256/apps/sozi.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/sozi.png"
+  install -D -m755 "usr/share/applications/sozi.desktop" "${pkgdir}/usr/share/applications/sozi.desktop"
 
   mkdir -p "${pkgdir}/usr/bin/"
   ln -s "/opt/sozi-${pkgver}/sozi" "${pkgdir}/usr/bin/"
