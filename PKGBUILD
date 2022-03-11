@@ -1,7 +1,7 @@
 # Maintainer: zaoqi <zaomir@outlook.com>
 
 pkgname=koreader-bin
-pkgver=2022.02
+pkgver=2.5.6
 pkgrel=1
 pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Cervantes, Kindle, Kobo, PocketBook and Android devices"
 arch=("x86_64")
