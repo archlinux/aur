@@ -18,6 +18,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.4.5] - 2022-03-11
+
+## 🐛 Fixes
+
+- **Fixes "output from `rover-fed2` was malformed" serialization errors - @EverlastingBugstopper, #1030**
+
+  Federation 2 was broken in 0.4.4, every `rover fed2 supergraph compose` command would return "output from `rover-fed2` was malformed" which was not helpful.
+
+  `rover fed2 supergraph compose` now uses `harmonizer@v2.0.0-preview.4-1`/`@apollo/composition@v2.0.0-preview.4` under the hood and the data passed between rover and rover-fed2 is matched up properly. Happy federating!
+
 # [0.4.4] - 2022-03-09
 
 ## 🛠 Maintenance

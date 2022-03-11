@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=('apollo-rover' 'apollo-rover-fed2')
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 options=('!lto')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ca8f7ef20ae3022b254c5df15651a81b7643ce6cdb59c6711f3b956ff3f3de47')
+sha256sums=('7c9c0b82757d03bf666ec3b80fcbc9a6e9bb51d27da0b0764bd4c262fd619a42')
 
 prepare() {
 	cd "rover-$pkgver"
