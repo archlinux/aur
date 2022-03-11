@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=opentyrian-git
-pkgver=2.1.20220309
+pkgver=2.1.20220309+r4+g425fe65
 pkgrel=1
 epoch=1
 pkgdesc="Open-source port of the DOS shoot-em-up Tyrian"
@@ -23,16 +23,27 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
+prepare() {
+  cd opentyrian
+}
+
+_make() {
+  make prefix=/usr \
+    OPENTYRIAN_VERSION="$pkgver-$pkgrel" VCS_IDREV=false \
+    "$@"
+}
+
 build() {
   cd opentyrian
-  make prefix=/usr all
+  _make all
 }
 
 package() {
   cd opentyrian
-  make DESTDIR="$pkgdir" prefix=/usr install
+  _make DESTDIR="$pkgdir" install
 
-  install -Dt "$pkgdir/usr/share/applications" -m644 linux/opentyrian.desktop
+  # Install all icons, not just one
+  rm -r "$pkgdir/usr/share/pixmaps"
   for _x in 22 24 32 48 128; do
     install -Dm644 "linux/icons/tyrian-$_x.png" \
       "$pkgdir/usr/share/icons/hicolor/${_x}x${_x}/apps/opentyrian.png"
