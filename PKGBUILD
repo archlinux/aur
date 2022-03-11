@@ -4,14 +4,15 @@
 
 pkgname=barman
 _realname=barman
-pkgver=2.18
-pkgrel=1
+pkgver=2.19
+pkgrel=3
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64')
 url="http://www.pgbarman.org"
 license=('GPL3')
 depends=('rsync' 'python' 'python-argh' 'python-psycopg2' 'python-dateutil' 'python-argcomplete')
-makedepends=('python-distribute')
+makedepends=('python-distribute' 'python-sphinx' 'python-mock' 'python-pytest' )  # 'python-sphinx-bootstrap-theme' is in the AUR
+optdepends=('python-boto3' 'python-botocore')
 provides=('barman')
 options=(!emptydirs)
 
@@ -24,7 +25,7 @@ source=(
   streaming-server.conf-template
 )
 
-md5sums=('3977b9144a782d040882b71d37d96b24'
+md5sums=('77c0feeb33a208102371eb181f61b04e'
          '0e48345895f88b3939543c00928a199b'
          '58c5b20b8e1272ab4ce46757f6613e0d'
          'b43254374978938f7d21035a3356b531'
@@ -42,6 +43,10 @@ package()
   # install docs
   install -Dm 0644 README.rst -t   "${pkgdir}/usr/share/doc/${pkgname}"
 
+  # install the bash_completion
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  install -m 0644 scripts/barman.bash_completion "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+
   # install example files
   cd doc
   install -Dm 0644 barman.conf -t  "${pkgdir}/usr/share/doc/${pkgname}/etc/"
@@ -52,9 +57,9 @@ package()
            "${pkgdir}/usr/share/doc/${pkgname}/etc/logrotate.d/"
   install -m 0644 barman.crond     "${pkgdir}/usr/share/doc/${pkgname}/etc/cron.d/barman"
   install -m 0644 barman.logrotate "${pkgdir}/usr/share/doc/${pkgname}/etc/logrotate.d/barman"
-
   install -Dm 0644 passive-server.conf-template -t   "${pkgdir}/usr/share/doc/${pkgname}/etc/barman.d/"
   install -Dm 0644 ssh-server.conf-template -t       "${pkgdir}/usr/share/doc/${pkgname}/etc/barman.d/"
   install -Dm 0644 streaming-server.conf-template -t "${pkgdir}/usr/share/doc/${pkgname}/etc/barman.d/"
 
 }
+
