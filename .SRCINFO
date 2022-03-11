@@ -1,6 +1,6 @@
-pkgbase = mozillavpn
+pkgbase = mozillavpn-git
 	pkgdesc = A fast, secure and easy to use VPN. Built by the makers of Firefox.
-	pkgver = 2.7.0
+	pkgver = v2.7.1
 	pkgrel = 1
 	url = https://vpn.mozilla.org/
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = mozillavpn
 	makedepends = qt5-tools
 	makedepends = go
 	makedepends = flex
+	makedepends = python-pip
 	makedepends = python-yaml
 	depends = polkit
 	depends = libxcb
@@ -30,9 +31,7 @@ pkgbase = mozillavpn
 	depends = wireguard-tools
 	depends = WIREGUARD-MODULE
 	depends = openresolv
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.7.0-impish1/mozillavpn_2.7.0.orig.tar.gz
-	source = https://launchpad.net/~mozillacorp/+archive/ubuntu/mozillavpn/+sourcefiles/mozillavpn/2.7.0-impish1/mozillavpn_2.7.0-impish1.debian.tar.xz
-	sha256sums = 0aca5cc0752d30b7b120d8cf277cac6ef4e085db5f9d68fec3450030b0b1215b
-	sha256sums = 064e87240c6807aecfee3e22c3510d7ceb49c4f969ed041458dca6cce6ccf060
+	source = mozillavpn-git-v2.7.1::git+https://github.com/mozilla-mobile/mozilla-vpn-client.git#tag=v2.7.1
+	sha256sums = SKIP
 
-pkgname = mozillavpn
+pkgname = mozillavpn-git
