@@ -10,6 +10,7 @@
 
 pkgname=aseprite
 pkgver=1.2.33
+_skiaver=m96
 pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
@@ -38,7 +39,7 @@ makedepends=(# "Meta" dependencies
              )
 source=("https://github.com/aseprite/aseprite/releases/download/v$pkgver/Aseprite-v$pkgver-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
-        "skia.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/m96-2f1f21b8a9.tar.gz"
+        "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-2f1f21b8a9.tar.gz"
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -63,7 +64,7 @@ prepare() {
 	bsdtar -xf "${noextract[0]}" -C aseprite
 	# Extract Skia's sources
 	mkdir -p skia
-	bsdtar -xf skia.tar.gz -C skia
+	bsdtar -xf skia-$_skiaver.tar.gz -C skia
 	# Fix up Aseprite's desktop integration
 	env -C aseprite patch -tp1 <desktop.patch
 	# Allow using more shared libs
