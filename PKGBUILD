@@ -1,7 +1,7 @@
 # Maintainer: Peter Lamby <admin@peterlamby.de>
 pkgname=hypnos-soil
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='Backend for Hypnos - The selfhosted audio cloud'
 groups=('hypnos')
 arch=('i686' 'x86_64')
