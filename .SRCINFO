@@ -1,0 +1,13 @@
+pkgbase = sddm-theme-catppuccin-git
+	pkgdesc = Soothing pastel theme for SDDM
+	pkgver = r40.da92da8
+	pkgrel = 1
+	url = https://github.com/catppuccin/sddm
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sddm
+	source = catppuccin::git+https://github.com/catppuccin/sddm.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-catppuccin-git
