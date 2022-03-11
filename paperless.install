@@ -1,0 +1,36 @@
+post_install(){
+ cat <<INFO
+
+To complete the installation of this paperless fork, edit /etc/paperless.conf,
+then create the database with
+
+    sudo -u paperless paperless-manage migrate
+
+and create a super user with
+
+    sudo -u paperless paperless-manage createsuperuser
+
+Paperless services can be started together with
+
+    sudo systemctl start paperless.target
+
+INFO
+}
+
+post_upgrade(){
+ # warn the user if the provided hook is not being used
+ if [ ! -e "/etc/pacman.d/hooks/paperless.hook" ]; then
+  cat <<INFO
+
+To complete the update process of Paperless-ng, you should run eventual new migrations with
+
+    sudo -u paperless paperless-manage migrate
+
+This process can be automated by running once
+
+    sudo mkdir -p /etc/pacman.d/hooks/
+    sudo ln -s /usr/share/paperless/docs/paperless.hook /etc/pacman.d/hooks/
+
+INFO
+ fi
+}

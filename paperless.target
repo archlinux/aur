@@ -1,0 +1,8 @@
+[Unit]
+Description=Paperless services
+After=network.target
+Wants=paperless-webserver.service paperless-consumer.service paperless-scheduler.service
+Requires=redis.service
+
+[Install]
+WantedBy=multi-user.target

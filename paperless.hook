@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = paperless-ngx
+
+[Action]
+Description = Migrating the Paperless database
+When = PostTransaction
+Exec = /usr/bin/runuser -u paperless -- /usr/bin/paperless-manage migrate --noinput
