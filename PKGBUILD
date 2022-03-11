@@ -2,8 +2,8 @@
 # Contributor: Xwang <xwaang1976@gmail.com>
 
 pkgname=openmodelica-git
-pkgver=1.16.0.dev.r590.g8f5710f752
-pkgrel=2
+pkgver=1.19.0.dev.r669.gc94e2ebbd9
+pkgrel=1
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -31,8 +31,9 @@ md5sums=('SKIP'
 depends=('java-environment' 'lapack' #'lpsolve' 'openscenegraph' 'python' 'ruby' 'suitesparse'
          'boost-libs' 'qt5-webkit' 'qt5-xmlpatterns' 'qt5-svg' 'qt5-tools' # 'fmilib'
          )
-makedepends=('git' 'gcc-fortran' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr4-runtime' 'expat' 'ncurses' 'readline')
-optdepends=('zip: requested when exporting to FMU')
+makedepends=('git' 'gcc-fortran' 'boost' 'clang' 'cmake' 'jre-openjdk' 'antlr4-runtime' 'expat' 'ncurses' 'readline')
+optdepends=('zip: requested when exporting to FMU'
+			'sundials: adds more numerical solvers to the simulation runtime')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
 
@@ -82,7 +83,7 @@ build() {
     autoreconf -fi
     autoconf
     export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
-    ./configure --prefix=/usr/ CC=clang CXX=clang++ --with-UMFPACK
+    ./configure --prefix=/usr/ CC=clang --with-UMFPACK # CXX=clang++
     make
 }
  
@@ -97,5 +98,5 @@ package() {
     install -D -m644 "OMPlot/OMPlot/OMPlotGUI/Resources/icons/omplot.ico" "${pkgdir}/usr/share/openmodelica/icons/omplot.ico"
     install -D -m644 "OMCompiler/COPYING" "${pkgdir}/usr/share/licenses/openmodelica/LICENSE"
     mkdir "$pkgdir"/usr/OMSens/
-    cp -r "OMSens" "$pkgdir/usr/" #Copy OMSens' modules in the working directory
+    cp -r "OMSens" "$pkgdir/usr/share/OMSens" #Copy OMSens' modules in the working directory
 }
