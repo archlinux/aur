@@ -2,7 +2,7 @@
 # Contributor: Andrew Eikum
 
 pkgname=faudio
-pkgver=22.02
+pkgver=22.03
 pkgrel=1
 pkgdesc="XAudio2 reimplementation"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('custom:zlib')
 depends=('sdl2' 'gst-libav')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FNA-XNA/FAudio/archive/$pkgver.tar.gz")
-sha512sums=('d16e67709f5a224a62c59091d003ad8c7f07c472533aeb8f9af6b264a4137cba9675023e32bb595465d46ff706c8837b83c309824e5141d2bb839c60e7d97347')
+sha512sums=('8eba240f45571de5138bd5664d2c38f2797c750c2d407fa3aa1de04531dbd51af60761c19f3ac78b8cb98341fa9e0ed4129135786a13cc45a5b5bdfc0c989a38')
 
 prepare() {
   mkdir -p build
