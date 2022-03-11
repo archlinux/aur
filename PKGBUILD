@@ -1,25 +1,22 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=ydotool
-pkgver=0.2.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64' 'aarch64')
 depends=('libevdevplus' 'libuinputplus')
 makedepends=('cmake' 'ninja' 'scdoc')
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('AGPL3')
-source=("$url/archive/v$pkgver.tar.gz"
-        "$url/pull/96.patch"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "80-uinput.rules")
-sha256sums=('2311b003d2ff383f3348f17101f0df74f56616d530d66d0a014a52ba85a5dcf1'
-            'f462b5f62306a5431e5aa39d1a8ba670300f7304a15cc720af5ded65193eaeda'
+sha256sums=('02311cdc608f205711b06a95e5fd71093b2294f4920efc526f5e98a2ddab42b8'
             'e092f5e7e474aec6c980c458046d0ff11b18750b53de2bf0a0aba1ca26e6d58e')
 install=ydotool.install
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch -sp1 -i ../96.patch
 }
 
 build() {
