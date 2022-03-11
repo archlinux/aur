@@ -67,8 +67,8 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.10
-_minor=100
-_rtpatchver=62
+_minor=104
+_rtpatchver=63
 _clr=${_major}.59-83
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -78,7 +78,7 @@ pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-preempt-rt"
 license=('GPL2')
-makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
+makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'xmlto')
 options=('!strip')
 _gcc_more_v='20211114'
 source=(
@@ -121,7 +121,8 @@ prepare() {
     echo "Enable extra stuff from arch kernel..."
 
     # General setup
-    scripts/config --enable IKCONFIG \
+    scripts/config --set-str DEFAULT_HOSTNAME archlinux \
+                   --enable IKCONFIG \
                    --enable IKCONFIG_PROC
 
     # Power management and ACPI options
@@ -241,6 +242,7 @@ _package() {
 
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+    depends=(pahole)
 
     cd ${_srcname}
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -328,9 +330,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('d56965afc9b6a3d26d53db40ccd37fd9d15f2ca6bfd54ef6f0f8b6e92c170999'
+sha256sums=('394a9267ea8e24d0f0cfaad3439bf43abe7bcf6479dc9548e485b48a0ac562f1'
             'SKIP'
-            '6096509b8fec803a04578e7c17a506d9c755f4d80f1437b763e5623519b935f2'
+            'e781e7d2cb25ed7d26a6c78ed68b5c58662c254fc3616666625d25529b693b9e'
             'SKIP'
             'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba')
 
