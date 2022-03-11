@@ -1,8 +1,8 @@
 # Maintainer: Nathaniel Maia <natemaia10@gmail.com>
 
 pkgname=dk
-pkgver=1.6
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 pkgdesc="A tiling window manager in the vein of dwm, bspwm, and xmonad."
 url="https://bitbucket.org/natemaia/dk"
 arch=('x86_64')
