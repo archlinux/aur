@@ -1,0 +1,164 @@
+From 72ff8cf57132e843e3dc95c3f49696c112f9a1b0 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Mon, 7 Feb 2022 16:45:31 -0800
+Subject: [PATCH 09/34] x86/sgx: Export sgx_encl_ewb_cpumask()
+
+Using sgx_encl_ewb_cpumask() to learn which CPUs might have executed
+an enclave is useful to ensure that TLBs are cleared when changes are
+made to enclave pages.
+
+sgx_encl_ewb_cpumask() is used within the reclaimer when an enclave
+page is evicted. The upcoming SGX2 support enables changes to be
+made to enclave pages and will require TLBs to not refer to the
+changed pages and thus will be needing sgx_encl_ewb_cpumask().
+
+Relocate sgx_encl_ewb_cpumask() to be with the rest of the enclave
+code in encl.c now that it is no longer unique to the reclaimer.
+
+Take care to ensure that any future usage maintains the
+current context requirement that ETRACK has been called first.
+Expand the existing comments to highlight this while moving them
+to a more prominent location before the function.
+
+No functional change.
+
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 67 ++++++++++++++++++++++++++++++++++
+ arch/x86/kernel/cpu/sgx/encl.h |  1 +
+ arch/x86/kernel/cpu/sgx/main.c | 29 ---------------
+ 3 files changed, 68 insertions(+), 29 deletions(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 85429db8c8b5..8cb99fc542a6 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -636,6 +636,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
+ 	return 0;
+ }
+ 
++/**
++ * sgx_encl_ewb_cpumask() - Query which CPUs might be accessing the enclave
++ * @encl: the enclave
++ *
++ * Some SGX functions require that no cached linear-to-physical address
++ * mappings are present before they can succeed. For example, ENCLS[EWB]
++ * copies a page from the enclave page cache to regular main memory but
++ * it fails if it cannot ensure that there are no cached
++ * linear-to-physical address mappings referring to the page.
++ *
++ * SGX hardware flushes all cached linear-to-physical mappings on a CPU
++ * when an enclave is exited via ENCLU[EEXIT] or an Asynchronous Enclave
++ * Exit (AEX). Exiting an enclave will thus ensure cached linear-to-physical
++ * address mappings are cleared but coordination with the tracking done within
++ * the SGX hardware is needed to support the SGX functions that depend on this
++ * cache clearing.
++ *
++ * When the ENCLS[ETRACK] function is issued on an enclave the hardware
++ * tracks threads operating inside the enclave at that time. The SGX
++ * hardware tracking require that all the identified threads must have
++ * exited the enclave in order to flush the mappings before a function such
++ * as ENCLS[EWB] will be permitted
++ *
++ * The following flow is used to support SGX functions that require that
++ * no cached linear-to-physical address mappings are present:
++ * 1) Execute ENCLS[ETRACK] to initiate hardware tracking.
++ * 2) Use this function (sgx_encl_ewb_cpumask()) to query which CPUs might be
++ *    accessing the enclave.
++ * 3) Send IPI to identified CPUs, kicking them out of the enclave and
++ *    thus flushing all locally cached linear-to-physical address mappings.
++ * 4) Execute SGX function.
++ *
++ * Context: It is required to call this function after ENCLS[ETRACK].
++ *          This will ensure that if any new mm appears (racing with
++ *          sgx_encl_mm_add()) then the new mm will enter into the
++ *          enclave with fresh linear-to-physical address mappings.
++ *
++ *          It is required that all IPIs are completed before a new
++ *          ENCLS[ETRACK] is issued so be sure to protect steps 1 to 3
++ *          of the above flow with the enclave's mutex.
++ *
++ * Return: cpumask of CPUs that might be accessing @encl
++ */
++const cpumask_t *sgx_encl_ewb_cpumask(struct sgx_encl *encl)
++{
++	cpumask_t *cpumask = &encl->cpumask;
++	struct sgx_encl_mm *encl_mm;
++	int idx;
++
++	cpumask_clear(cpumask);
++
++	idx = srcu_read_lock(&encl->srcu);
++
++	list_for_each_entry_rcu(encl_mm, &encl->mm_list, list) {
++		if (!mmget_not_zero(encl_mm->mm))
++			continue;
++
++		cpumask_or(cpumask, cpumask, mm_cpumask(encl_mm->mm));
++
++		mmput_async(encl_mm->mm);
++	}
++
++	srcu_read_unlock(&encl->srcu, idx);
++
++	return cpumask;
++}
++
+ static struct page *sgx_encl_get_backing_page(struct sgx_encl *encl,
+ 					      pgoff_t index)
+ {
+diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
+index dc262d843411..44431da21757 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.h
++++ b/arch/x86/kernel/cpu/sgx/encl.h
+@@ -106,6 +106,7 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+ 
+ void sgx_encl_release(struct kref *ref);
+ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm);
++const cpumask_t *sgx_encl_ewb_cpumask(struct sgx_encl *encl);
+ int sgx_encl_get_backing(struct sgx_encl *encl, unsigned long page_index,
+ 			 struct sgx_backing *backing);
+ void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
+diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
+index 4b41efc9e367..d481e8b0e7bc 100644
+--- a/arch/x86/kernel/cpu/sgx/main.c
++++ b/arch/x86/kernel/cpu/sgx/main.c
+@@ -203,35 +203,6 @@ static void sgx_ipi_cb(void *info)
+ {
+ }
+ 
+-static const cpumask_t *sgx_encl_ewb_cpumask(struct sgx_encl *encl)
+-{
+-	cpumask_t *cpumask = &encl->cpumask;
+-	struct sgx_encl_mm *encl_mm;
+-	int idx;
+-
+-	/*
+-	 * Can race with sgx_encl_mm_add(), but ETRACK has already been
+-	 * executed, which means that the CPUs running in the new mm will enter
+-	 * into the enclave with a fresh epoch.
+-	 */
+-	cpumask_clear(cpumask);
+-
+-	idx = srcu_read_lock(&encl->srcu);
+-
+-	list_for_each_entry_rcu(encl_mm, &encl->mm_list, list) {
+-		if (!mmget_not_zero(encl_mm->mm))
+-			continue;
+-
+-		cpumask_or(cpumask, cpumask, mm_cpumask(encl_mm->mm));
+-
+-		mmput_async(encl_mm->mm);
+-	}
+-
+-	srcu_read_unlock(&encl->srcu, idx);
+-
+-	return cpumask;
+-}
+-
+ /*
+  * Swap page to the regular memory transformed to the blocked state by using
+  * EBLOCK, which means that it can no longer be referenced (no new TLB entries).
+-- 
+2.35.1
+

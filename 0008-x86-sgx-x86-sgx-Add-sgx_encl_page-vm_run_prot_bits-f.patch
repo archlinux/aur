@@ -1,0 +1,168 @@
+From f2bdca656a164126d3a89893828d334ae008c93a Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Mon, 7 Feb 2022 16:45:30 -0800
+Subject: [PATCH 08/34] x86/sgx: x86/sgx: Add sgx_encl_page->vm_run_prot_bits
+ for dynamic permission changes
+
+Enclave creators declare their enclave page permissions (EPCM
+permissions) at the time the pages are added to the enclave. These
+page permissions are the vetted permissible accesses of the enclave
+pages and stashed off (in struct sgx_encl_page->vm_max_prot_bits)
+for later comparison with enclave PTEs and VMAs.
+
+Current permission support assume that EPCM permissions remain static
+for the lifetime of the enclave. This is about to change with the
+addition of support for SGX2 where the EPCM permissions of enclave
+pages belonging to an initialized enclave may change during the
+enclave's lifetime.
+
+Support for changing of EPCM permissions should continue to respect
+the vetted maximum protection bits maintained in
+sgx_encl_page->vm_max_prot_bits. Towards this end, add
+sgx_encl_page->vm_run_prot_bits in preparation for support of
+enclave page permission changes. sgx_encl_page->vm_run_prot_bits
+reflect the active EPCM permissions of an enclave page and are not to
+exceed sgx_encl_page->vm_max_prot_bits.
+
+Two permission fields are used: sgx_encl_page->vm_run_prot_bits
+reflects the current EPCM permissions and is used to manage the page
+table entries while sgx_encl_page->vm_max_prot_bits contains the vetted
+maximum protection bits and is used to guide which EPCM permissions
+are allowed in the upcoming SGX2 permission changing support (it guides
+what values sgx_encl_page->vm_run_prot_bits may have).
+
+Consider this example how sgx_encl_page->vm_max_prot_bits and
+sgx_encl_page->vm_run_prot_bits are used:
+
+(1) Add an enclave page with secinfo of RW to an uninitialized enclave:
+    sgx_encl_page->vm_max_prot_bits = RW
+    sgx_encl_page->vm_run_prot_bits = RW
+
+    At this point RW VMAs would be allowed to access this page and PTEs
+    would allow write access as guided by
+    sgx_encl_page->vm_run_prot_bits.
+
+(2) User space invokes SGX2 to change the EPCM permissions to read-only.
+    This is allowed because sgx_encl_page->vm_max_prot_bits = RW:
+    sgx_encl_page->vm_max_prot_bits = RW
+    sgx_encl_page->vm_run_prot_bits = R
+
+    At this point only new read-only VMAs would be allowed to access
+    this page and PTEs would not allow write access as guided
+    by sgx_encl_page->vm_run_prot_bits.
+
+(3) User space invokes SGX2 to change the EPCM permissions to RX.
+    This will not be supported by the kernel because
+    sgx_encl_page->vm_max_prot_bits = RW:
+    sgx_encl_page->vm_max_prot_bits = RW
+    sgx_encl_page->vm_run_prot_bits = R
+
+(3) User space invokes SGX2 to change the EPCM permissions to RW.
+    This will be allowed because sgx_encl_page->vm_max_prot_bits = RW:
+    sgx_encl_page->vm_max_prot_bits = RW
+    sgx_encl_page->vm_run_prot_bits = RW
+
+    At this point RW VMAs would again be allowed to access this page
+    and PTEs would allow write access as guided by
+    sgx_encl_page->vm_run_prot_bits.
+
+struct sgx_encl_page hosting this information is maintained for each
+enclave page so the space consumed by the struct is important.
+The existing sgx_encl_page->vm_max_prot_bits is already unsigned long
+while only using three bits. Transition to a bitfield for the two
+members containing protection bits.
+
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ Documentation/x86/sgx.rst       | 10 ++++++++++
+ arch/x86/kernel/cpu/sgx/encl.c  |  6 +++---
+ arch/x86/kernel/cpu/sgx/encl.h  |  3 ++-
+ arch/x86/kernel/cpu/sgx/ioctl.c |  6 ++++++
+ 4 files changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/x86/sgx.rst b/Documentation/x86/sgx.rst
+index 5659932728a5..9df620b59f83 100644
+--- a/Documentation/x86/sgx.rst
++++ b/Documentation/x86/sgx.rst
+@@ -99,6 +99,16 @@ The relationships between the different permission masks are:
+ * PTEs are installed to match the EPCM permissions, but not be more
+   relaxed than the VMA permissions.
+ 
++During runtime the EPCM permissions of enclave pages belonging to an
++initialized enclave can change on systems supporting SGX2. In support
++of these runtime changes the kernel maintains (for each enclave page)
++the most permissive EPCM permission mask allowed by policy as
++the ``vm_max_prot_bits`` of that page. EPCM permissions are not allowed
++to be relaxed beyond ``vm_max_prot_bits``.  The kernel also maintains
++the currently active EPCM permissions of an enclave page as its
++``vm_run_prot_bits`` to ensure PTEs and new VMAs respect the active
++EPCM permission values.
++
+ On systems supporting SGX2 EPCM permissions may change while the
+ enclave page belongs to a VMA without impacting the VMA permissions.
+ This means that a running VMA may appear to allow access to an enclave
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index acedccf8c4ef..85429db8c8b5 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -205,7 +205,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+ 	 * exceed the VMA permissions.
+ 	 */
+ 	vm_prot_bits = vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
+-	page_prot_bits = entry->vm_max_prot_bits & vm_prot_bits;
++	page_prot_bits = entry->vm_run_prot_bits & vm_prot_bits;
+ 	/*
+ 	 * Add VM_SHARED so that PTE is made writable right away if VMA
+ 	 * and EPCM are writable (no COW in SGX).
+@@ -258,7 +258,7 @@ static vm_fault_t sgx_vma_pfn_mkwrite(struct vm_fault *vmf)
+ 		goto out;
+ 	}
+ 
+-	if (!(entry->vm_max_prot_bits & VM_WRITE))
++	if (!(entry->vm_run_prot_bits & VM_WRITE))
+ 		ret = VM_FAULT_SIGBUS;
+ 
+ out:
+@@ -321,7 +321,7 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+ 	mutex_lock(&encl->lock);
+ 	xas_lock(&xas);
+ 	xas_for_each(&xas, page, PFN_DOWN(end - 1)) {
+-		if (~page->vm_max_prot_bits & vm_prot_bits) {
++		if (~page->vm_run_prot_bits & vm_prot_bits) {
+ 			ret = -EACCES;
+ 			break;
+ 		}
+diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
+index fec43ca65065..dc262d843411 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.h
++++ b/arch/x86/kernel/cpu/sgx/encl.h
+@@ -27,7 +27,8 @@
+ 
+ struct sgx_encl_page {
+ 	unsigned long desc;
+-	unsigned long vm_max_prot_bits;
++	unsigned long vm_max_prot_bits:8;
++	unsigned long vm_run_prot_bits:8;
+ 	struct sgx_epc_page *epc_page;
+ 	struct sgx_encl *encl;
+ 	struct sgx_va_page *va_page;
+diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
+index 83df20e3e633..7e0819a89532 100644
+--- a/arch/x86/kernel/cpu/sgx/ioctl.c
++++ b/arch/x86/kernel/cpu/sgx/ioctl.c
+@@ -197,6 +197,12 @@ static struct sgx_encl_page *sgx_encl_page_alloc(struct sgx_encl *encl,
+ 	/* Calculate maximum of the VM flags for the page. */
+ 	encl_page->vm_max_prot_bits = calc_vm_prot_bits(prot, 0);
+ 
++	/*
++	 * At time of allocation, the runtime protection bits are the same
++	 * as the maximum protection bits.
++	 */
++	encl_page->vm_run_prot_bits = encl_page->vm_max_prot_bits;
++
+ 	return encl_page;
+ }
+ 
+-- 
+2.35.1
+

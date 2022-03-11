@@ -1,0 +1,161 @@
+From 2cf17dff036b8b00dc43747698ae72f51c751361 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Mon, 7 Feb 2022 16:45:29 -0800
+Subject: [PATCH 07/34] x86/sgx: Add pfn_mkwrite() handler for present PTEs
+
+By default a write page fault on a present PTE inherits the
+permissions of the VMA.
+
+When using SGX2, enclave page permissions maintained in the
+hardware's Enclave Page Cache Map (EPCM) may change after a VMA
+accessing the page is created. A VMA's permissions may thus be
+more relaxed than the EPCM permissions even though the VMA was
+originally created not to have more relaxed permissions. Following
+the default behavior during a page fault on a present PTE while
+the VMA permissions are more relaxed than the EPCM permissions would
+result in the PTE for an enclave page to be writable even
+though the page is not writable according to the EPCM permissions.
+
+The kernel should not allow writing to a page if that page is not
+writable: the PTE should accurately reflect the EPCM permissions
+while not being more relaxed than the VMA permissions.
+
+Do not blindly accept VMA permissions on a page fault due to a
+write attempt to a present PTE. Install a pfn_mkwrite() handler
+that ensures that the VMA permissions agree with the EPCM
+permissions in this regard.
+
+Before and after page fault flow scenarios
+==========================================
+
+Consider the following scenario that will be possible when using SGX2:
+* An enclave page exists with RW EPCM permissions.
+* A RW VMA maps the range spanning the enclave page.
+* The enclave page's EPCM permissions are changed to read-only.
+* There is no PTE for the enclave page.
+
+Considering that the PTE is not present in the scenario,
+user space will observe the following when attempting to write to the
+enclave page from within the enclave:
+ 1) Instruction writing to enclave page is run from within the enclave.
+ 2) A page fault with second and third bits set (0x6) is encountered
+    and handled by the SGX handler sgx_vma_fault() that installs a
+    read-only page table entry following previous patch that installs
+    a PTE with permissions that VMA and enclave agree on
+    (read-only in this case).
+ 3) Instruction writing to enclave page is re-attempted.
+ 4) A page fault with first three bits set (0x7) is encountered and
+    transparently (from SGX driver and user space perspective) handled
+    by the kernel with the PTE made writable because the VMA is
+    writable.
+ 5) Instruction writing to enclave page is re-attempted.
+ 6) Since the EPCM permissions prevents writing to the page a new page
+    fault is encountered, this time with the SGX flag set in the error
+    code (0x8007). No action is taken by the kernel for this page fault
+    and execution returns to user space.
+ 7) Typically such a fault will be passed on to an application with a
+    signal but if the enclave is entered with the vDSO function provided
+    by the kernel then user space does not receive a signal but instead
+    the vDSO function returns successfully with exception information
+    (vector=14, error code=0x8007, and address) within the exception
+    fields within the vDSO function's struct sgx_enclave_run.
+
+As can be observed it is not possible for user space to write to an
+enclave page if that page's EPCM permissions do not allow so,
+no matter what the VMA or PTE allows.
+
+Even so, the kernel should not allow writing to a page if that page is
+not writable. The PTE should accurately reflect the EPCM permissions.
+
+With a pfn_mkwrite() handler that ensures that the VMA permissions
+agree with the EPCM permissions user space observes the following
+when attempting to write to the enclave page from within the enclave:
+ 1) Instruction writing to enclave page is run from within the enclave.
+ 2) A page fault with second and third bits set (0x6) is encountered
+    and handled by the SGX handler sgx_vma_fault() that installs a
+    read-only page table entry following previous patch that installs
+    a PTE with permissions that VMA and enclave agree on
+    (read-only in this case).
+ 3) Instruction writing to enclave page is re-attempted.
+ 4) A page fault with first three bits set (0x7) is encountered and
+    passed to the pfn_mkwrite() handler for consideration. The handler
+    determines that the page should not be writable and returns SIGBUS.
+ 5) Typically such a fault will be passed on to an application with a
+    signal but if the enclave is entered with the vDSO function provided
+    by the kernel then user space does not receive a signal but instead
+    the vDSO function returns successfully with exception information
+    (vector=14, error code=0x7, and address) within the exception fields
+    within the vDSO function's struct sgx_enclave_run.
+
+The accurate exception information supports the SGX runtime, which is
+virtually always implemented inside a shared library, by providing
+accurate information in support of its management of the SGX enclave.
+
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 42 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 2f80f9e5e8c6..acedccf8c4ef 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -225,6 +225,47 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+ 	return VM_FAULT_NOPAGE;
+ }
+ 
++/*
++ * A fault occurred while writing to a present enclave PTE. Since PTE is
++ * present this will not be handled by sgx_vma_fault(). VMA may allow
++ * writing to the page while enclave (as based on EPCM permissions) does
++ * not. Do not follow the default of inheriting VMA permissions in this
++ * regard, ensure enclave also allows writing to the page.
++ */
++static vm_fault_t sgx_vma_pfn_mkwrite(struct vm_fault *vmf)
++{
++	unsigned long addr = (unsigned long)vmf->address;
++	struct vm_area_struct *vma = vmf->vma;
++	struct sgx_encl_page *entry;
++	struct sgx_encl *encl;
++	vm_fault_t ret = 0;
++
++	encl = vma->vm_private_data;
++
++	/*
++	 * It's very unlikely but possible that allocating memory for the
++	 * mm_list entry of a forked process failed in sgx_vma_open(). When
++	 * this happens, vm_private_data is set to NULL.
++	 */
++	if (unlikely(!encl))
++		return VM_FAULT_SIGBUS;
++
++	mutex_lock(&encl->lock);
++
++	entry = xa_load(&encl->page_array, PFN_DOWN(addr));
++	if (!entry) {
++		ret = VM_FAULT_SIGBUS;
++		goto out;
++	}
++
++	if (!(entry->vm_max_prot_bits & VM_WRITE))
++		ret = VM_FAULT_SIGBUS;
++
++out:
++	mutex_unlock(&encl->lock);
++	return ret;
++}
++
+ static void sgx_vma_open(struct vm_area_struct *vma)
+ {
+ 	struct sgx_encl *encl = vma->vm_private_data;
+@@ -422,6 +463,7 @@ const struct vm_operations_struct sgx_vm_ops = {
+ 	.mprotect = sgx_vma_mprotect,
+ 	.open = sgx_vma_open,
+ 	.access = sgx_vma_access,
++	.pfn_mkwrite = sgx_vma_pfn_mkwrite,
+ };
+ 
+ /**
+-- 
+2.35.1
+

@@ -1,0 +1,63 @@
+From 6580ecec3c24b798a94858e32820e047dd14317c Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Mon, 7 Feb 2022 16:45:27 -0800
+Subject: [PATCH 05/34] Documentation/x86: Document SGX permission details
+
+Provide summary of the various permissions involved in
+managing access to enclave pages. This summary documents
+the foundation for additions related to runtime managing of
+enclave page permissions that is made possible with SGX2.
+
+Suggested-by: Andy Lutomirski <luto@kernel.org>
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ Documentation/x86/sgx.rst | 28 +++++++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/Documentation/x86/sgx.rst b/Documentation/x86/sgx.rst
+index 265568a9292c..89ff924b1480 100644
+--- a/Documentation/x86/sgx.rst
++++ b/Documentation/x86/sgx.rst
+@@ -71,16 +71,34 @@ The processor tracks EPC pages in a hardware metadata structure called the
+ which describes the owning enclave, access rights and page type among the other
+ things.
+ 
+-EPCM permissions are separate from the normal page tables.  This prevents the
+-kernel from, for instance, allowing writes to data which an enclave wishes to
+-remain read-only.  EPCM permissions may only impose additional restrictions on
+-top of normal x86 page permissions.
+-
+ For all intents and purposes, the SGX architecture allows the processor to
+ invalidate all EPCM entries at will.  This requires that software be prepared to
+ handle an EPCM fault at any time.  In practice, this can happen on events like
+ power transitions when the ephemeral key that encrypts enclave memory is lost.
+ 
++Details about enclave page permissions
++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++
++EPCM permissions are separate from the normal page tables.  This prevents the
++kernel from, for instance, allowing writes to data which an enclave wishes
++to remain read-only.
++
++Three permission masks are relevant to SGX:
++
++* EPCM permissions.
++* Page Table Entry (PTE) permissions.
++* Virtual Memory Area (VMA) permissions.
++
++An enclave is only able to access an enclave page if all three permission
++masks enable it to do so.
++
++The relationships between the different permission masks are:
++
++* An SGX VMA can only be created if its permissions are the same or weaker
++  than the EPCM permissions.
++* PTEs are installed to match the EPCM permissions, but not be more
++  relaxed than the VMA permissions.
++
+ Application interface
+ =====================
+ 
+-- 
+2.35.1
+

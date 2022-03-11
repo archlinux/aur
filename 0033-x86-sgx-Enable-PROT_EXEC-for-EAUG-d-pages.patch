@@ -1,0 +1,46 @@
+From 48d8abe084ef10a653a831437f6fb5117051acec Mon Sep 17 00:00:00 2001
+From: Jarkko Sakkinen <jarkko@kernel.org>
+Date: Mon, 7 Mar 2022 17:28:42 +0200
+Subject: [PATCH 33/34] x86/sgx: Enable PROT_EXEC for EAUG'd pages
+
+vm_max_permissions was created to control the pre-initialization content
+that contributes to MRSIGNATURE. It was never meant to be as a limit to
+dynamically added pages.
+
+E.g. static content could be used as a hook for LSM's to decide whether
+certain signature is qualified for EINIT. Dynamic content has nothing to
+do with that. The current mechanisms only add to the complexity on how
+to control PTE and EPCM permissions, and do not add anything else than
+obfuscity to security side of things.
+
+Thus add PROT_EXEC to the permissions assigned by the #PF handler.
+
+Signed-off-by: Jarkko Sakkinen <jarkko@kernel.org>
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 5fe7189eac9d..cbafad786ff5 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -201,12 +201,11 @@ static vm_fault_t sgx_encl_eaug_page(struct vm_area_struct *vma,
+ 	encl_page->encl = encl;
+ 
+ 	/*
+-	 * Adding a regular page that is architecturally allowed to only
+-	 * be created with RW permissions.
+-	 * TBD: Interface with user space policy to support max permissions
+-	 * of RWX.
++	 * Dynamic pages do not contribute to MRSIGNATURE, i.e. they are
++	 * controlled only by PTE and EPCM permissions. Thus, the no limit
++	 * is set here.
+ 	 */
+-	prot = PROT_READ | PROT_WRITE;
++	prot = PROT_READ | PROT_WRITE | PROT_EXEC;
+ 	encl_page->vm_run_prot_bits = calc_vm_prot_bits(prot, 0);
+ 	encl_page->vm_max_prot_bits = encl_page->vm_run_prot_bits;
+ 
+-- 
+2.35.1
+

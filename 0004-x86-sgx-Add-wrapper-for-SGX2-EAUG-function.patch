@@ -1,0 +1,41 @@
+From dd3f8f27edf1638ae4eb10d40513ca6f290a826c Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Mon, 7 Feb 2022 16:45:26 -0800
+Subject: [PATCH 04/34] x86/sgx: Add wrapper for SGX2 EAUG function
+
+Add a wrapper for the EAUG ENCLS leaf function used to
+add a page to an initialized enclave.
+
+EAUG:
+1) Stores all properties of the new enclave page in the SGX
+   hardware's Enclave Page Cache Map (EPCM).
+2) Sets the PENDING bit in the EPCM entry of the enclave page.
+   This bit is cleared by the enclave by invoking ENCLU leaf
+   function EACCEPT or EACCEPTCOPY.
+
+Access from within the enclave to the new enclave page is not
+possible until the PENDING bit is cleared.
+
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encls.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encls.h b/arch/x86/kernel/cpu/sgx/encls.h
+index 7a1ecf704ec1..99004b02e2ed 100644
+--- a/arch/x86/kernel/cpu/sgx/encls.h
++++ b/arch/x86/kernel/cpu/sgx/encls.h
+@@ -227,4 +227,10 @@ static inline int __emodt(struct sgx_secinfo *secinfo, void *addr)
+ 	return __encls_ret_2(EMODT, secinfo, addr);
+ }
+ 
++/* Zero a page of EPC memory and add it to an initialized enclave. */
++static inline int __eaug(struct sgx_pageinfo *pginfo, void *addr)
++{
++	return __encls_2(EAUG, pginfo, addr);
++}
++
+ #endif /* _X86_ENCLS_H */
+-- 
+2.35.1
+
