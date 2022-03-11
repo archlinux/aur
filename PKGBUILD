@@ -3,13 +3,12 @@
 # Contributor: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=8d1b000a3edc90c12267b836b4ef3f81c0e53edc  # tags/4.0.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgbase=mingw-w64-harfbuzz-static
 pkgname=('mingw-w64-harfbuzz-static' 'mingw-w64-harfbuzz-static-icu')
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -21,19 +20,13 @@ makedepends=('mingw-w64-meson'
              'mingw-w64-cairo'
              'mingw-w64-icu'
              'python'
-             'ragel'
-             'git')
+             'ragel')
 options=('!strip' 'staticlibs' '!buildflags')
-source=("git+https://github.com/harfbuzz/harfbuzz.git#commit=${_commit}")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd harfbuzz
-  git describe --tags | sed 's/-/+/g'
-}
+source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('449edee95208344d75f8e886da6ae390a3e1002e5b3ca4eb7ed42e69958491e2')
 
 build() {
-  cd harfbuzz
+  cd "$srcdir/harfbuzz-$pkgver"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-meson \
@@ -54,7 +47,7 @@ package_mingw-w64-harfbuzz-static() {
   provides=("mingw-w64-harfbuzz=$pkgver")
   
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}-static"
+    cd "$srcdir/harfbuzz-$pkgver/build-${_arch}-static"
     DESTDIR="${pkgdir}" ninja install
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
@@ -74,7 +67,7 @@ package_mingw-w64-harfbuzz-static-icu() {
   provides=("mingw-w64-harfbuzz-icu=$pkgver")
   conflicts=('mingw-w64-harfbuzz-icu')
   for _arch in ${_architectures}; do
-    cd "${srcdir}/harfbuzz/build-${_arch}-static"
+    cd "$srcdir/harfbuzz-$pkgver/build-${_arch}-static"
     mkdir -p "${pkgdir}/usr/${_arch}"
     mv hb-icu/usr/${_arch}/* "${pkgdir}/usr/${_arch}"
   done
