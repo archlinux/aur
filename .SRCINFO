@@ -1,7 +1,7 @@
 pkgbase = r-sf
 	pkgdesc = Simple Features for R
-	pkgver = 1.0.6
-	pkgrel = 2
+	pkgver = 1.0.7
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sf
 	arch = i686
 	arch = x86_64
@@ -52,7 +52,7 @@ pkgbase = r-sf
 	optdepends = r-tmap
 	optdepends = r-vctrs
 	optdepends = r-wk
-	source = https://cran.r-project.org/src/contrib/sf_1.0-6.tar.gz
-	sha256sums = 6b0c1a5feb2cd5d2ade7623973c3cf7af53345c082a811876ad04d0bc08db8e6
+	source = https://cran.r-project.org/src/contrib/sf_1.0-7.tar.gz
+	sha256sums = d0731fab9438d73a55af7232f0474b36f4b2a4e6d66adaa141632f4a60265453
 
 pkgname = r-sf

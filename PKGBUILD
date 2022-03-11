@@ -1,13 +1,13 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 
 _cranname=sf
-_cranver=1.0-6
+_cranver=1.0-7
 pkgname=r-${_cranname,,}
 pkgdesc="Simple Features for R"
 url="https://cran.r-project.org/package=sf"
 license=("GPL-2 | MIT")
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 
 arch=("i686" "x86_64")
 depends=("gdal" "geos" "proj" "r" "r-classint" "r-dbi" "r-magrittr" "r-rcpp" "r-s2" "r-units")
@@ -15,7 +15,7 @@ optdepends=("r-blob" "r-covr" "r-dplyr" "r-ggplot2" "r-knitr" "r-lwgeom" "r-maps
 makedepends=()
 
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=("6b0c1a5feb2cd5d2ade7623973c3cf7af53345c082a811876ad04d0bc08db8e6")
+sha256sums=("d0731fab9438d73a55af7232f0474b36f4b2a4e6d66adaa141632f4a60265453")
 
 build() {
     R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
