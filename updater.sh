@@ -35,7 +35,7 @@ try_increment() {
     wget -q --show-progress "${source[0]}" || return
 
     ## Update checksum
-    local targetsum="$(sha256sum bitwig-studio-${pkgver}.deb | cut -d ' ' -f 1)"
+    local targetsum="$(sha256sum bitwig-studio-${shortver}.deb | cut -d ' ' -f 1)"
     sed -i "s/sha256sums=('${sha256sums[0]}')/sha256sums=('${targetsum}')/" PKGBUILD
     sed -i "s/pkgrel=.*/pkgrel='${targetrel}'/" PKGBUILD
 
