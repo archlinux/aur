@@ -1,26 +1,32 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=ddalpha
-_cranver=1.3.4
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-ddalpha
+_cranver=1.3.11
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Depth-Based Classification and Calculation of Data Depth"
-arch=('x86_64')
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL2')
-depends=('r' 'r-robustbase' 'r-sfsmisc' 'r-geometry' 'r-rcpp>=0.11.0' 'r-bh')
+license=(GPL2)
+depends=(
+    r-robustbase
+    r-sfsmisc
+    r-geometry
+    r-rcpp
+)
+makedepends=(gcc-fortran r-bh)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('c30b4a3a9549cb4dc0a8e51e06f5b6e4c457c5326acc8f4680968c920f59b6e9')
 
-
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('1b1ef25af8070f3256f733ff89079307')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
