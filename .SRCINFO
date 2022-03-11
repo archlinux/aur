@@ -1,6 +1,6 @@
 pkgbase = hypnos-solanum
 	pkgdesc = Frontend for Hypnos - The selfhosted audio cloud
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.sr.ht/~serra/Solanum
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = hypnos-solanum
 	license = GPL3
 	makedepends = git
 	makedepends = npm
-	source = git+https://git.sr.ht/~serra/Solanum#tag=v0.1.0
-	source = git+https://git.sr.ht/~serra/Soil#tag=v0.1.0
+	source = git+https://git.sr.ht/~serra/Solanum#tag=v0.2.0
+	source = git+https://git.sr.ht/~serra/Soil#tag=v0.2.0
 	sha256sums = SKIP
 	sha256sums = SKIP
 

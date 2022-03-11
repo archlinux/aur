@@ -1,6 +1,6 @@
 # Maintainer: Peter Lamby <admin@peterlamby.de>
 pkgname=hypnos-solanum
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Frontend for Hypnos - The selfhosted audio cloud'
 groups=('hypnos')
