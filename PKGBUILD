@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/demonkingswarn/ytmenu"
 license=('GPL3')
 groups=()
-depends=(mpv dmenu)
+depends=(mpv fzf yt-dlp)
 makedepends=(git)
 checkdepends=()
 optdepends=()
@@ -24,9 +24,14 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+	cd "${_pkgname}"
+	printf "1.4_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 package() {
 		rm -rf ytmenu
-        wget https://github.com/DemonKingSwarn/ytmenu/raw/main/ytmenu
-		doas cp ytmenu $HOME/.local/bin/
+        curl -sL "https://github.com/DemonKingSwarn/ytmenu/raw/main/ytmenu" -o ~/.local/bin/ytmenu
+		chmod +x ~/.local/bin/ytmenu
 }
 
