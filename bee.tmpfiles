@@ -1,0 +1,4 @@
+# vim: se ft=conf:
+D /var/lib/bee 750 bee
+D /var/lib/bee/keys 700 bee
+f /var/lib/bee/password 600 bee
