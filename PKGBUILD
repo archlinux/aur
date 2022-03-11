@@ -2,7 +2,7 @@
 # Maintainer: peippo <christoph+aur@christophfink.com>
 pkgname=protozero
 pkgver=1.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist protocol buffer decoder and encoder in C++"
 url="https://github.com/mapbox/protozero"
 arch=('any')
@@ -14,19 +14,31 @@ build() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
 
-  # the iwyu tool has a non-default file name,
-  # cmake does not find it automatically
-  cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DIWYU_TOOL=/usr/bin/iwyu-tool \
-    ..
+  # clang++ is strict with mixing C++11 and C++17 features,
+  # fails to build test,
+  # see https://aur.archlinux.org/packages/protozero#comment-855739
+  if [[ "${CXX}" == "clang++" ]]; then
+    cmake \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DIWYU_TOOL=/usr/bin/iwyu-tool \
+      -DBUILD_TESTING=OFF \
+      -DCLANG_TIDY=OFF \
+      ..
+  else
+    cmake \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -DIWYU_TOOL=/usr/bin/iwyu-tool \
+      ..
+  fi
 
   make
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
-  make test
+  if [[ "${CXX}" != "clang++" ]]; then
+    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    make test
+  fi
 }
 
 package() {
