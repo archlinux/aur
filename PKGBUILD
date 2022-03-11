@@ -6,8 +6,8 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-_tag=20220209
-pkgver=20220209.6342082
+_tag=20220310
+pkgver=20220309.cd01f85
 pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -23,17 +23,6 @@ validpgpkeys=('4CDE8575E547BF835FE15807A31B6BD72486CFD6') # Josh Boyer <jwboyer@
 
 _backports=(
 )
-
-
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
-}
 
 prepare() {
   cd ${_pkgbase}
@@ -60,7 +49,7 @@ build() {
   cat ${_pkgbase}/amd-ucode/microcode_amd*.bin > kernel/x86/microcode/AuthenticAMD.bin
 
   # Reproducibility: set the timestamp on the bin file
-  if [[ -n ${SOURCE_DATE_EPOCH} ]]; then 
+  if [[ -n ${SOURCE_DATE_EPOCH} ]]; then
     touch -d @${SOURCE_DATE_EPOCH} kernel/x86/microcode/AuthenticAMD.bin
   fi
 
@@ -68,6 +57,16 @@ build() {
   echo kernel/x86/microcode/AuthenticAMD.bin |
     bsdtar --uid 0 --gid 0 -cnf - -T - |
     bsdtar --null -cf - --format=newc @- > amd-ucode.img
+}
+
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
 #package_linux-firmware-whence() {
@@ -95,21 +94,21 @@ package_linux-firmware-uncompressed() {
   cd "$pkgdir"
   _pick linux-firmware-nfp usr/lib/firmware/netronome
   _pick linux-firmware-nfp usr/share/licenses/${pkgname}/LICENCE.Netronome
-   
+
   _pick linux-firmware-mellanox usr/lib/firmware/mellanox
-  
+
   _pick linux-firmware-marvell usr/lib/firmware/{libertas,mwl8k,mwlwifi,mrvl}
   _pick linux-firmware-marvell usr/share/licenses/${pkgname}/LICENCE.{Marvell,NXP}
-  
+
   _pick linux-firmware-qcom usr/lib/firmware/{qcom,a300_*}
   _pick linux-firmware-qcom usr/share/licenses/${pkgname}/LICENSE.qcom
-  
+
   _pick linux-firmware-liquidio usr/lib/firmware/liquidio
   _pick linux-firmware-liquidio usr/share/licenses/${pkgname}/LICENCE.cavium_liquidio
-  
+
   _pick linux-firmware-qlogic usr/lib/firmware/{qlogic,qed,ql2???_*,c{b,t,t2}fw-*}
   _pick linux-firmware-qlogic usr/share/licenses/${pkgname}/LICENCE.{qla1280,qla2xxx}
-  
+
   _pick linux-firmware-bnx2x usr/lib/firmware/bnx2x*
 }
 
