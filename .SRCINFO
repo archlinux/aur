@@ -1,13 +1,13 @@
 pkgbase = pass-ln
 	pkgdesc = Pass extension for creating symbolic links
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/raxod502/pass-ln
 	arch = any
 	license = MIT
 	depends = pass
 	depends = coreutils
-	source = https://github.com/raxod502/pass-ln/releases/download/v1.0.0/pass-ln-1.0.0.tar.gz
-	sha256sums = 828bcb6118a55182d9ae8db4f47465bc14b5488b09c8efe179fe845350844003
+	source = https://github.com/raxod502/pass-ln/releases/download/v2.0.0/pass-ln-2.0.0.tar.gz
+	sha256sums = e9521261347c499409a76d6937304ff7ac6ed190cc212bac58cf893a8bb72d72
 
 pkgname = pass-ln
