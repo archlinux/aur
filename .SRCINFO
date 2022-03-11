@@ -1,0 +1,13 @@
+pkgbase = aws-asl-languageserver
+	pkgdesc = Language server for AWS Step Function's ASL, extracted from aws-toolkit-vscode
+	pkgver = 1.36.0
+	pkgrel = 1
+	url = https://github.com/aws/aws-toolkit-vscode
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	source = aws-asl-languageserver-1.36.0.tar.gz::https://github.com/aws/aws-toolkit-vscode/archive/refs/tags/v1.36.0.tar.gz
+	sha256sums = e097589ab77220d4dc576c87cbcbbc06b57098f5dd5503571741ed2906cc8b2f
+
+pkgname = aws-asl-languageserver
