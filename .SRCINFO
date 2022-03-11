@@ -32,6 +32,7 @@ pkgbase = aseprite
 	depends = libfontconfig.so
 	depends = libxcursor
 	noextract = Aseprite-v1.2.33-Source.zip
+	noextract = skia-m96.tar.gz
 	source = https://github.com/aseprite/aseprite/releases/download/v1.2.33/Aseprite-v1.2.33-Source.zip
 	source = skia-m96.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/m96-2f1f21b8a9.tar.gz
 	source = desktop.patch
