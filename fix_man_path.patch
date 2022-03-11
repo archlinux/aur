@@ -1,0 +1,13 @@
+diff --git a/jdresolve/Makefile b/jdresolve/Makefile
+index 814a8b6..4081d43 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ prefix=/usr
+ INSTALL=/usr/bin/install
+ BINDIR=$(prefix)/bin
+-MANDIR=$(prefix)/man/man1
++MANDIR=$(prefix)/share/man/man1
+ 
+ none:
+ 

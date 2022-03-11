@@ -1,0 +1,17 @@
+pkgbase = jdresolve-git
+	pkgdesc = A fast and recursive DNS name resolver for log files
+	pkgver = r11.365e7f0
+	pkgrel = 1
+	url = https://github.com/jdrowell/jdresolve
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = git
+	depends = perl-net-dns
+	provides = jdresolve
+	conflicts = jdresolve
+	source = jdresolve::git+https://github.com/jdrowell/jdresolve
+	source = fix_man_path.patch
+	md5sums = SKIP
+	md5sums = 7080466cab31a0a594d9301425fdfbaf
+
+pkgname = jdresolve-git
