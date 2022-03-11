@@ -1,8 +1,10 @@
 # Contributer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributer: Guillaume ALAUX <guillaume@archlinux.org>
+# Contributer: Github user prehonor
 # Contributer: Github user RikudouPatrickstar
 
 # This PKGBUILD is directly modified from community/java11-openjdk
+# imfix patch is from https://github.com/prehonor/myJetBrainsRuntime
 # Methods to build JBR with JCEF support is from https://github.com/RikudouPatrickstar/JetBrainsRuntime-for-Linux-x64/blob/master/.github/workflows/jbr-linux-x64.yml
 
 # TODO add test, see about packaging jtreg and using it here
