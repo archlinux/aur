@@ -1,7 +1,7 @@
 pkgbase = python-dash
 	pkgdesc = A python framework for building analytical web applications
-	pkgver = 2.1.0
-	pkgrel = 2
+	pkgver = 2.2.0
+	pkgrel = 1
 	url = https://plot.ly/products/dash/
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = python-dash
 	conflicts = python-dash-html-components
 	conflicts = python-dash-renderer
 	conflicts = python-dash-table
-	source = https://pypi.org/packages/source/d/dash/dash-2.1.0.tar.gz
-	sha256sums = b5b29a3e2862a6700cf50582d81bda4edfe57d47e1c71c519a6c87f9187587e5
+	source = https://pypi.org/packages/source/d/dash/dash-2.2.0.tar.gz
+	sha256sums = e88e6615695e83b7a8339301a92700461435fef734b40eca864cff6d853a3b9c
 
 pkgname = python-dash
