@@ -1,35 +1,26 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Paul Sajna <sajattack at gmail dot com>
 
 pkgname=fern-wifi-cracker
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 groups=('blackarch' 'blackarch-cracker' 'blackarch-wireless')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
 arch=('any')
 url='https://github.com/savio-code/fern-wifi-cracker'
 license=('GPL2')
-depends=('python' 'python-pyqt5' 'aircrack-ng' 'xterm' 'subversion' 'scapy'
-         'macchanger')
+depends=('python' 'python-pyqt5' 'aircrack-ng' 'subversion' 'scapy' 'macchanger')
 replaces=('fern-wifi-cracker-git')
-conflicts=('fern-wifi-cracker-git')
-install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/savio-code/fern-wifi-cracker/archive/v${pkgver}.tar.gz")
-sha256sums=('0d9d622139fc54ddd4010eba30b5d73c41382c7356a7e7a19730acd38652683c')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        'fern')
+sha256sums=('f081f4105217c12a93683ffc3ded706d3f1cc1a573511c90d6e9980a425795c7'
+            '028f5c7aad864ea9de2364bcc161e746b18a2dbbc5ff9480bef879da90802f16')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/Fern-Wifi-Cracker"
-
-  mkdir -p "$pkgdir/usr/bin"
-  mkdir -p "$pkgdir/usr/share/fern-wifi-cracker"
-
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/fern-wifi-cracker"
-
-  cat > "$pkgdir/usr/bin/fern" << EOF
-#!/bin/sh
-cd /usr/share/fern-wifi-cracker
-exec python execute.py "\$@"
-EOF
-
-  chmod 755 "${pkgdir}/usr/bin/fern"
+	install -D fern -t "$pkgdir/usr/bin/"
+	cd "$pkgname-$pkgver/Fern-Wifi-Cracker"
+	install -d "$pkgdir/usr/share/$pkgname/"
+	cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+	python -O -m compileall "$pkgdir/"
 }
