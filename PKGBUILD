@@ -2,7 +2,7 @@
 
 pkgname='vault-acme'
 pkgdesc='A Vault secret engine to retrieve TLS certificates validated by an ACME provider'
-pkgver='0.0.6'
+pkgver='0.0.8'
 pkgrel='1'
 url="https://github.com/remilapeyre/vault-acme"
 license=('MPL')
