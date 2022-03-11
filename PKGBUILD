@@ -1,8 +1,8 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=FastFlix
 pkgname=${_UpstreamPkgName,,}
-pkgver=4.7.0
-pkgrel=2
+pkgver=4.7.1
+pkgrel=1
 pkgdesc="Simple and friendly GUI for encoding videos"
 arch=('x86_64')
 url="https://github.com/cdgriffith/$_UpstreamPkgName"
