@@ -1,6 +1,6 @@
 # Maintainer: Denis mezencevdenis@yandex.ru
 pkgname="template-for-java-cli-app-github-integrated-aur"
-pkgver="0.0.1"
+pkgver="0.0.4"
 pkgrel=1
 epoch=
 pkgdesc="Template for creating aur package"
@@ -19,14 +19,15 @@ backup=()
 options=()
 install=
 changelog=
-source=('myecho')
+source=("$pkgname-$pkgver.zip::https://github.com/mezlogo/template-for-java-cli-app-github-integrated/releases/download/v$pkgver/mycliapp.zip")
 noextract=()
-md5sums=('d5a7e439813ae92a289d5d9639544826')
+md5sums=('a249ea0f34a01b4a6a70905d045ede65')
 validpgpkeys=()
 
 # prepare() {
+# 	_downloaded_name="${source[0]%%::*}"
+# 	unzip "$_downloaded_name"
 # }
-
 build() {
 	true
 }
@@ -35,5 +36,9 @@ build() {
 # }
 
 package() {
-	install -Dm 755 ${srcdir}/myecho $pkgdir/usr/bin/myecho
+	install -dm755 "$pkgdir/opt/mycliapp/bin"
+	install -dm755 "$pkgdir/usr/bin"
+	cp -R "$srcdir/mycliapp/lib" "$pkgdir/opt/mycliapp/lib"
+	install -Dm755 "$srcdir/mycliapp/bin/mycliapp" "$pkgdir/opt/mycliapp/bin/mycliapp"
+	ln -s "$pkgdir/opt/mycliapp/bin/mycliapp" "$pkgdir/usr/bin/mycliapp"
 }
