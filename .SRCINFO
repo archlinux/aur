@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-mpi_stubs
+	pkgdesc = A dummy, no-op MPI implementation (mingw-w64)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/scivision/mpi_stubs
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-crt
+	options = !buildflags
+	options = staticlibs
+	options = !strip
+	source = https://github.com/scivision/mpi_stubs/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = f5dca59df87398ddcbc351ff73447781b7ff74e218f4466ac272ef8daf6db757
+
+pkgname = mingw-w64-mpi_stubs
