@@ -1,15 +1,15 @@
 pkgbase = python-bugzilla
 	pkgdesc = Bugzilla XMLRPC access module
-	pkgver = 3.0.2
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/python-bugzilla/python-bugzilla
 	arch = any
 	license = GPL2
+	makedepends = python-setuptools
 	depends = python
 	depends = python-requests
 	depends = python-docutils
-	source = python-bugzilla-3.0.2.tar.gz::https://github.com/python-bugzilla/python-bugzilla/archive/v3.0.2.tar.gz
-	sha1sums = 9c01f19ed38d91bd951460552b1c73b1b1b60265
+	source = python-bugzilla-3.2.0.tar.gz::https://github.com/python-bugzilla/python-bugzilla/archive/v3.2.0.tar.gz
+	sha1sums = 27586ca68dcbcc00910a1d1beb25c144fa3617cc
 
 pkgname = python-bugzilla
-

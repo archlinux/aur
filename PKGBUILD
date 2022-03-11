@@ -1,16 +1,16 @@
 # Maintainer: Achilleas Pipinellis <axilleas archlinux.info>
 
 pkgname=python-bugzilla
-pkgver=3.0.2
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Bugzilla XMLRPC access module"
 arch=(any)
 url="https://github.com/python-bugzilla/python-bugzilla"
 license=(GPL2)
 depends=("python" "python-requests" "python-docutils")
-makedepends=()
+makedepends=("python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha1sums=('9c01f19ed38d91bd951460552b1c73b1b1b60265')
+sha1sums=('27586ca68dcbcc00910a1d1beb25c144fa3617cc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
