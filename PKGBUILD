@@ -1,26 +1,59 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=geometry
-_cranver=0.3-6
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-geometry
+_cranver=0.4.5
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Mesh Generation and Surface Tesselation"
-arch=('x86_64')
+pkgdesc="Mesh Generation and Surface Tessellation"
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL (>= 3) + file LICENSE')
-depends=('r' 'r-magic')
+license=(GPL3)
+depends=(
+    qhull
+    r-magic
+    r-rcpp
+    r-lpsolve
+    r-linprog
+)
+makedepends=(r-rcppprogress)
+checkdepends=(r-testthat)
+optdepends=(
+    r-spelling
+    r-testthat
+    r-rgl
+    r-r.matlab
+    r-tripack
+)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+sha256sums=('8fedd17c64468721d398e3c17a39706321ab71098b29f5e8d8039dd115a220d8')
 
-optdepends=('r-testthat' 'r-rgl' 'r-r.matlab' 'r-tripack')
+prepare() {
+  cd "${_cranname}/src"
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('82c05b2b9cf6d36d70472c88aae9dde8')
+  # Build against system qhull
+  rm *_r.c *_r.h qhull_ra.h
+  echo -e 'PKG_LIBS = -lqhull_r\nPKG_CPPFLAGS = -I/usr/include/libqhull_r' >> Makevars
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  # Skip test that fails with system qhull
+  cd ../tests/testthat
+  sed -i '/"convhulln throws an error with duplicated points"/a\ \ skip("Using system qhull")' \
+      test-convhulln.R
 }
+
+build() {
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
+}
+
+check() {
+  cd "${_cranname}/tests"
+  R_LIBS="${srcdir}/build" NOT_CRAN=true Rscript --vanilla testthat.R
+}
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
 
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
