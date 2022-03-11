@@ -1,6 +1,6 @@
 pkgbase = go-cqhttp-bin
 	pkgdesc = Lightweight, native cross-platform implementation of cqhttp in Golang.
-	pkgver = v1.0.0_rc1
+	pkgver = 1.0.0_rc1
 	pkgrel = 1
 	url = https://github.com/Mrs4s/go-cqhttp/releases
 	arch = i686
