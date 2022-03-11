@@ -7,6 +7,7 @@ pkgbase = python-psycopg-pool
 	license = LGPL-3
 	makedepends = python-setuptools
 	depends = python
+	depends = python-psycopg
 	source = https://files.pythonhosted.org/packages/source/p/psycopg-pool/psycopg-pool-3.1.1.tar.gz
 	sha256sums = bc579078dc8209f1ce280228460f96770756f24babb5d8ab2418800e9082a973
 
