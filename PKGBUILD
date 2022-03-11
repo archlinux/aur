@@ -1,7 +1,7 @@
 # Maintainer: Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=hypr-git
-pkgver=0.0.r255.fa20d13
+pkgver=0.0.r327.6104017
 pkgrel=1
 pkgdesc="Hypr is a Linux tiling window manager for Xorg. It's written in XCB with modern C++ and aims to provide easily readable and expandable code."
 arch=('x86_64')
@@ -30,6 +30,6 @@ package() {
     install -D "build/Hypr" "${pkgdir}/usr/bin"
 
     mkdir -p "${pkgdir}/usr/share/xsessions"
-    install -D "example/hypr.desktop" "${pkgdir}/usr/share/xsessions" 
+    install -Dm644 "example/hypr.desktop" "${pkgdir}/usr/share/xsessions" 
 }
 
