@@ -1,18 +1,17 @@
 pkgbase = manx-tt-superbike
-	pkgdesc = Arcade game.
+	pkgdesc = 1995 arcade racing game developed jointly by Sega AM3 and Sega-AM4.
 	pkgver = 1.0
 	pkgrel = 2
 	url = https://en.wikipedia.org/wiki/Manx_TT_Super_Bike
 	arch = any
 	license = custom
-	makedepends = unzip
 	makedepends = p7zip
 	depends = kronos
-	source = M.zip::https://archive.org/download/SegaSaturnChampionCollection/M.zip
-	source = com.sega.ManxTTSuperBike.desktop
-	source = com.sega.ManxTTSuperBike.png
-	sha256sums = 4e3acc78f0621998442363a6cd482256279c5ce7d1f8eaf781cc217285b28f9a
-	sha256sums = e7bec7bb90ae1ce9b0f27ded0c32b532b8931d9edc3f9ae983dfd6419819dd09
-	sha256sums = ea721774cfd5c10b8b1658051d87650567bd1b96dfbfaabe33500949ea8cfce7
+	source = manx-tt-superbike.7z::https://archive.org/download/SegaSaturnChampionCollection/M.zip/Manx%20TT%20SuperBike.7z
+	source = saturn-template.desktop
+	source = com.sega.ManxTTSuperBike.png::https://upload.wikimedia.org/wikipedia/en/b/b2/ManxTTSuperbikeBox.jpg
+	sha256sums = a9b74bcaa89202ae18585547f91579194ba9815308ab3dd6400daa602de74cab
+	sha256sums = cddae03b9321eecd3d2db2b23d09494eca063b01ddb3661d9e5a61689a2eba6d
+	sha256sums = 9e03b0023093232fae99b381b2be1c4408aa77a62fd09a46a3653bb1a5633a54
 
 pkgname = manx-tt-superbike
