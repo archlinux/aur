@@ -1,35 +1,29 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_static_wlroots=1
-_static_liftoff=1
-
 _pkgname=gamescope
 pkgname=${_pkgname}-git
-pkgver=3.9.2.r5.ga5a31d4
-pkgrel=1
+pkgver=3.11.27.r0.ga913f85
+pkgrel=2
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
 license=("custom:BSD-2-Clause")
-depends=("libxcomposite" "libxtst" "libxres" "sdl2" "pipewire")
-makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-protocols")
+depends=(
+    # gamescope
+    "libxcomposite" "libxtst" "libxres" "sdl2" "pipewire" "libliftoff"
+    # wlroots
+    "libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd"
+)
+makedepends=("git" "meson" "ninja" "patch" "vulkan-headers" "glslang" "wayland-protocols" "cmake")
 provides=($_pkgname "steamcompmgr")
 conflicts=($_pkgname "steamcompmgr")
-source=("git+https://github.com/Plagman/gamescope.git")
-sha512sums=('SKIP')
+source=("$_pkgname::git+https://github.com/Plagman/gamescope.git"
+        "git+https://gitlab.freedesktop.org/wlroots/wlroots.git"
+        "git+https://github.com/nothings/stb.git")
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
-if [ $_static_wlroots -gt 0 ]; then
-    depends+=("libdrm" "libxkbcommon" "libinput" "pixman" "xorg-xwayland" "xcb-util-renderutil" "xcb-util-wm" "xcb-util-errors" "seatd")
-    makedepends+=("cmake")
-else
-    depends+=("wlroots-git")
-fi
-
-if [ $_static_liftoff -gt 0 ]; then
-    depends+=("libdrm")
-else
-    depends+=("libliftoff<0.2.0")
-fi
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -48,27 +42,19 @@ prepare() {
         git apply "../$src"
     done
 
-    [ $_static_wlroots -gt 0 ] || rm -rf "subprojects/wlroots"
-    [ $_static_liftoff -gt 0 ] || rm -rf "subprojects/libliftoff"
+    git submodule init
+    git config submodule.subprojects/wlroots.url "$srcdir/wlroots"
+    git config submodule.subprojects/libliftoff.active "false"
+    git submodule update
+
+    # HACK: manually clone stb into subprojects
+    git clone "$srcdir/stb" "subprojects/stb"
+    cp "subprojects/packagefiles/stb/meson.build" "subprojects/stb/"
 }
 
 build() {
 
-    _force_static=(stb)
-    [ $_static_wlroots -gt 0 ] && _force_static+=(wlroots)
-    [ $_static_liftoff -gt 0 ] && _force_static+=(libliftoff)
-
-    # combine _force_static into comma (,) seperated list
-    # warning: following code does not work when items in _force_static have spaces in them
-    _force_fallback=$(echo "${_force_static[*]}" | tr " " ",")
-
-    if [ -z "$_force_fallback" ]; then
-        _force_fallback="[]"
-    fi
-
-    echo "Statically linking: $_force_fallback"
-
-    meson setup --prefix /usr --buildtype=release --force-fallback-for=$_force_fallback "$srcdir/$_pkgname" build
+    arch-meson "$srcdir/$_pkgname" build --force-fallback-for=wlroots,stb
     ninja -C build
 }
 
@@ -83,7 +69,6 @@ package() {
 
     # Delete library files that were linked statically
     rm -rfv "$pkgdir/usr/include/wlr" "$pkgdir/usr/lib/libwlroots.a" "$pkgdir/usr/lib/libwlroots*" "$pkgdir/usr/lib/pkgconfig/wlroots.pc"
-    rm -rfv "$pkgdir/usr/include/libliftoff.h" "$pkgdir/usr/lib/libliftoff.a" "$pkgdir/usr/lib/libliftoff*" "$pkgdir/usr/lib/pkgconfig/libliftoff.pc"
 
     # Delete empty directories
     find "$pkgdir" -type d -empty -print -delete
