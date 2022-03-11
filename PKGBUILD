@@ -1,7 +1,7 @@
 pkgname=binge-bin
 _pkgname=Binge-bin
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Binge desktop application"
 arch=('x86_64')
@@ -19,7 +19,7 @@ package() {
     install -dm755 "$pkgdir/opt/Binge"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/Binge"
-    cp -r "$pkgdir/opt/Binge/icon.svg" "$pkgdir/usr/share/pixmaps/binge.svg"  
+    cp -r "$pkgdir/opt/Binge/binge.svg" "$pkgdir/usr/share/pixmaps"  
 
 
     # Link to binary
