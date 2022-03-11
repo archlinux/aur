@@ -1,0 +1,13 @@
+pkgbase = discordupdater
+	pkgdesc = Discord updating script by maidado
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/maidado/discordupdater
+	arch = x86_64
+	depends = wget
+	depends = bash
+	depends = discord
+	source = discordupdater-1.tar.gz::https://github.com/maidado/discordupdater/archive/1.tar.gz
+	sha256sums = SKIP
+
+pkgname = discordupdater
