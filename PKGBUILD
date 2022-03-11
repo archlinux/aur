@@ -2,7 +2,7 @@
 # Contributor: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname=cloud-nuke
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="AWS cloud account cleaning tool"
 url="https://github.com/gruntwork-io/cloud-nuke"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e84805a35b247959ffe84a521747dc74c4439bea34228fdb5cd48cc32b50e314')
+sha256sums=('e785a4e8028f190c0ecdd628ee46aa8ac99baea87ad437098aacf12bedbca98d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
