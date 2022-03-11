@@ -1,0 +1,8 @@
+## arg 1:  the new package version
+post_install() {
+cat <<End-of-message
+
+Copy /usr/share/doc/bitwarden-menu-git/config.ini.example into ~/.config/bwm/config.ini and edit. Add vault URLs and logins to config file if desired.
+
+End-of-message
+}
