@@ -1,11 +1,11 @@
 pkgbase = catppuccin-wallpapers-git
 	pkgdesc = Wallpapers to match your Catppuccin setups!
-	pkgver = r54.64d670b
+	pkgver = r58.4760c0c
 	pkgrel = 1
 	url = https://github.com/catppuccin/wallpapers
 	arch = any
 	license = MIT
-	source = catppuccin-wallpapers-git::git+https://github.com/catppuccin/wallpapers.git
+	source = catppuccin-wallpapers::git+https://github.com/catppuccin/wallpapers.git
 	sha256sums = SKIP
 
 pkgname = catppuccin-wallpapers-git
