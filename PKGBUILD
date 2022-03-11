@@ -1,13 +1,13 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-nunavut-git
-pkgver=r67.9910428
+pkgver=r126.89e2f20
 pkgrel=1
 pkgdesc='Generate Code from DSDL using pydsdl and jinja2'
 arch=('x86_64')
 url='https://uavcan.org'
 license=('MIT')
-depends=('python' 'python-pydsdl' 'python-jinja' 'python-markupsafe')
+depends=('python' 'python-pydsdl' 'python-pyyaml' 'python-importlib_resources')
 optdepends=()
 makedepends=('python' 'python-setuptools')
 provides=('python-nunavut')
