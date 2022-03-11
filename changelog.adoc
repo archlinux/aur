@@ -2,6 +2,31 @@
 
 // scriv-insert-here
 
+== 3.4.0 (2022-03-11)
+
+Enhancements:
+
+* New commands for interacting with Globus Groups
+** `globus groups set-policies` to manage a group's policies
+** `globus group member list` to list members of a group
+** `globus group member invite` to invite a member to join a group
+** `globus group member approve` to approve a member who has requested to join a group
+** `globus group member reject` to reject a member who has requested to join a group
+** `globus group invite accept` to accept an invitation to a group
+** `globus group invite decline` to decline an invitation to a group
+** `globus group join` to join a group, with an option `--request` for groups
+   which require approval for members
+** `globus group leave` to leave a group
+* `globus group member add` now supports the `--role` argument for adding
+    members with the `manager` and `admin` roles
+* A new command for interacting with Globus Search,
+  `globus search delete-by-query` to bulk-delete data from a Globus Search index
+
+Bugfixes:
+
+* Fix an issue which caused certain commands like `globus mkdir` to retry
+  incorrectly when failing, leading to unnecessary delays on failure
+
 == 3.3.0 (2022-02-18)
 
 Enhancements:
