@@ -1,7 +1,7 @@
 # Maintainer : Eric Lesiuta <elesiuta@gmail.com>
 
 pkgname=picosnitch
-pkgver=0.11.3
+pkgver=0.11.4
 pkgrel=1
 pkgdesc='Protect your privacy, see which applications make network connections'
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=()
 provides=()
 conflicts=()
 source=("picosnitch-${pkgver}.tar.gz::https://github.com/elesiuta/picosnitch/releases/download/v${pkgver}/picosnitch.tar.gz")
-sha256sums=('d03be6a9b3853d0ca4946ebacecf69f1e4cc0e18608469703ea99828fa4a30ba')
+sha256sums=('8bba6ac95a5ae6d613a7ab3f95addbbf77ae6d44717cc903119ba4dbdef31b83')
 
 build() {
     python setup.py build
