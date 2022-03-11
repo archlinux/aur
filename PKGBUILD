@@ -20,6 +20,6 @@ options=('staticlibs')
 
 package() {
 	cd $srcdir
-        rpmextract.sh fvim-linux-x86_64-v0.3.489+g98c4036.rpm
+        rpmextract.sh fvim-linux-x86_64-v0.3.498+g0190abd.rpm
 	cp -r "$srcdir/usr" "$pkgdir"
 }
