@@ -1,4 +1,4 @@
-# Maintainer: Mike Cronce <mike@cronce.io>
+# Maintainer: Barry Ira <barry@jorts.space>
 
 pkgname=pscale-bin
 _pkgname=pscale
