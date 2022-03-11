@@ -1,6 +1,6 @@
 # Maintainer: K4YT3X <aur@k4yt3x.com>
 pkgname=nspawn
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="A wrapper around machinectl for easy-deployment of nspawn.org containers"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/nspawn/nspawn"
 license=('GPL3')
 depends=('systemd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nspawn/nspawn/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fbebb7991b6a8e40a4031e2976c031e43bf62f9d6d04fff8627ff8487e234eb9')
+b2sums=('9a066f660ad05f36b2b176d8bffac8c8ff20911a05d2fbeab7210f6dd4e5ccbc1a774a036e5992ae44b1966631ddd65acad7d4993ec6b7a253661aad9c57c206')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

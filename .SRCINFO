@@ -1,12 +1,12 @@
 pkgbase = nspawn
 	pkgdesc = A wrapper around machinectl for easy-deployment of nspawn.org containers
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/nspawn/nspawn
 	arch = any
 	license = GPL3
 	depends = systemd
-	source = nspawn-0.5.tar.gz::https://github.com/nspawn/nspawn/archive/refs/tags/0.5.tar.gz
-	sha256sums = fbebb7991b6a8e40a4031e2976c031e43bf62f9d6d04fff8627ff8487e234eb9
+	source = nspawn-0.6.tar.gz::https://github.com/nspawn/nspawn/archive/refs/tags/0.6.tar.gz
+	b2sums = 9a066f660ad05f36b2b176d8bffac8c8ff20911a05d2fbeab7210f6dd4e5ccbc1a774a036e5992ae44b1966631ddd65acad7d4993ec6b7a253661aad9c57c206
 
 pkgname = nspawn
