@@ -1,0 +1,15 @@
+pkgbase = pc-nrfconnect-programmer
+	pkgdesc = Programmer app for nRF Connect for Desktop
+	pkgver = 2.3.3
+	pkgrel = 1
+	url = https://github.com/NordicSemiconductor/pc-nrfconnect-programmer
+	arch = any
+	license = Nordic-4-Clause
+	makedepends = npm
+	optdepends = nrf-udev: udev rules for nRF (Nordic Semiconductor) development kits
+	noextract = pc-nrfconnect-programmer-2.3.3.tar.gz
+	options = !strip
+	source = pc-nrfconnect-programmer-2.3.3.tar.gz::https://github.com/NordicSemiconductor/pc-nrfconnect-programmer/archive/refs/tags/v2.3.3.tar.gz
+	sha256sums = 7f740c5b8a14303437555096ed2235efee91c3e80e13b769fb2263c89c5b1411
+
+pkgname = pc-nrfconnect-programmer
