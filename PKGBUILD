@@ -1,4 +1,5 @@
-# Maintainer: Batuhan Baserdem <last.first@gmail.com>
+# Maintainer: XavRan <leandro.espinozar@protonmail.com>
+# Contributor: Batuhan Baserdem <last.first@gmail.com>
 # Based on powerline-console-fonts by; Simon Doppler <dopsi[at]dopsi[dot]ch>
 
 _reponame='fonts'
