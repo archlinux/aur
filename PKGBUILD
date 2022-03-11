@@ -1,6 +1,6 @@
 # Maintainer: Waffle Lapkin <waffle.lapkin@gmail.com>
 pkgname='anilibria-winmaclinux'
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='AniLibria client for major desktop platforms (stable)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/anilibria/anilibria-winmacl
 		"0001-change-Exec-value-in-.desktop-file-to-match-archlinu.patch"
 		"0001-Change-instalation-path-to-be-Arch-linux-friendly.patch"
 		"0001-disable-version-check.patch")
-sha256sums=('7cbcced4e9a327d6598fb7104ca49e46affe4f648c85852607930fe8e45cf9ed'
+sha256sums=('e4ef701b62d581edf1740361a40c4b3777f02f3ee11be6414a431ab78498dfa5'
             '31185f54427a0b14a4992672477fe2ae79aefd408c92ded1f3730bed55af4649'
             '9d700ba5a449b1ec7e9403d61aaf334e30bc6499c412f2bdcc9bd862e7ad2ca4'
             '4099873fd5e3276a3a59d56d035aecae67fb6cc4ce6ea64aec90c1149dc657c9')
