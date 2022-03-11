@@ -38,13 +38,13 @@ pkgbase = java11-jetbrains-imfix
 	makedepends = mesa
 	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb11_0_14_1-b2043.11
 	source = git+https://github.com/JetBrains/jcef.git#commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
-	source = https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch
+	source = idea.patch
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4
+	sha256sums = d895f224a2130a677e52e176dc740186d40a6b2b5fc100c1d09f0413d9115ae7
 	sha256sums = 915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6
 	sha256sums = 3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07
 	sha256sums = c0c01fcc02dc18ed96ef697b3bedce0e8336b212cb1fcee90b2129987f4ae8ec
