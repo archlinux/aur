@@ -22,7 +22,7 @@ post_upgrade(){
  if [ ! -e "/etc/pacman.d/hooks/paperless.hook" ]; then
   cat <<INFO
 
-To complete the update process of Paperless-ng, you should run eventual new migrations with
+To complete the update process of paperless, you should run new migrations with
 
     sudo -u paperless paperless-manage migrate
 
