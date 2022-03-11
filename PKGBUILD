@@ -3,23 +3,22 @@
 
 pkgname=python-ipympl
 _pkgname="${pkgname#*-}"
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
 depends=(
-  'python')
-makedepends=(
   'jupyter'
   'jupyterlab'
   'jupyterlab_pygments'
   'npm'
-  'python-setuptools'
-  'python-jupyter_packaging')
+  'python')
+makedepends=(
+  'python-setuptools')
 license=('BSD')
 arch=(any)
-source=("https://pypi.python.org/packages/ab/78/fdbeed8afa9e9cd4c907c689cc8d507be7ffd7c50be3806545d85103eef1/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('9084bf9cde227b58c2e939d357db5ce37dc352d8907ff94f51c20699e3290d5f2b6c412a95ba9d2b2a405ff14ca2fed51d98918912de58fb05e6ea35a97cb93e')
+source=("https://pypi.python.org/packages/a7/f4/cf0df832bf9d5de54641fe31721df380e5c6a5cb95861c757881e87e3065/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('5e9448c57cc871a93c318b37d1a6ed5384b7ba77a34777e304b02ead88e3cc43812f8f0d7199402522513d5dec561f641362e58b4c0e7ba9acc1ec23f128a6c5')
 
 build() {
   cd "${_pkgname}-${pkgver}"
