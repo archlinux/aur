@@ -1,12 +1,14 @@
 pkgbase = pacext-git
 	pkgdesc = Pacman extensions with more convenient syntax
-	pkgver = r21.03f7140
+	pkgver = r22.a04ded2
 	pkgrel = 1
 	url = https://github.com/CRISPYricePC/pacext
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = pacman
+	depends = bash
+	depends = awk
 	optdepends = sudo: Running root commands
 	optdepends = doas: Running root commands
 	provides = pacext

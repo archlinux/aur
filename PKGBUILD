@@ -1,7 +1,7 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 _pkgname=pacext
 pkgname="${_pkgname}-git"
-pkgver=r21.03f7140
+pkgver=r22.a04ded2
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -11,7 +11,7 @@ pkgdesc="Pacman extensions with more convenient syntax"
 arch=('any')
 url="https://github.com/CRISPYricePC/${_pkgname}"
 license=('MIT')
-depends=('pacman')
+depends=('pacman' 'bash' 'awk')
 makedepends=('git')
 optdepends=('sudo: Running root commands' 'doas: Running root commands')
 provides=('pacext')
