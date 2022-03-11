@@ -1,17 +1,17 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=pulsemeeter
-pkgver=1.2.6
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="A pulseaudio audio routing application"
 url="https://github.com/theRealCarneiro/pulsemeeter"
 arch=('i686' 'x86_64')
 license=('MIT')
-depends=('python' 'python-gobject' 'python-appdirs' 'python-pulsectl' 'pulse-vumeter-git' 'gtk3' 'noise-suppression-for-voice' 'swh-plugins')
+depends=('gtk3' 'python' 'python-gobject' 'python-appdirs' 'python-pulsectl' 'pulse-vumeter-git' 'noise-suppression-for-voice' 'swh-plugins')
 provides=('pulsemeeter')
 makedepends=('git' 'python-setuptools')
 optdepends=('glade: customize interface' 'pulseaudio' 'pipewire-pulse')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(da4b51c19725d4afa8be545472f4e460)
+md5sums=(8395e42f0ebe817c05eda0fb8dedb5a0)
 
 pkgver(){
 	cd $pkgname-$pkgver
