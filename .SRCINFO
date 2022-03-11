@@ -1,0 +1,27 @@
+pkgbase = spice-git
+	pkgdesc = SPICE server
+	pkgver = 0.15.0.78.gb24e2ea6
+	pkgrel = 1
+	url = https://www.spice-space.org
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	makedepends = meson
+	makedepends = spice-protocol-git
+	makedepends = python-six
+	makedepends = python-pyparsing
+	makedepends = libcacard
+	depends = pixman
+	depends = opus
+	depends = libjpeg-turbo
+	depends = glib2
+	depends = libsasl
+	depends = lz4
+	provides = spice
+	conflicts = spice
+	source = git+https://gitlab.freedesktop.org/spice/spice.git
+	source = spice-common_detect-pyparsing.patch
+	sha256sums = SKIP
+	sha256sums = ae77744c7df2805b0c9fd248be4c03b1a685165c08da112a5a41eaab8454f962
+
+pkgname = spice-git
