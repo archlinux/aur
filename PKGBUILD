@@ -9,7 +9,7 @@ url='https://github.com/maidado/alterfalter'
 depends=("alsa-utils")
 optdepends=("pulseaudio: ALSA alternative")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('6ef2bbd25ed39055a9f4754c6ffdfbb17c0896b0c1562bb0327365db48eb1f8d')
+sha256sums=('SKIP')
 build() {
    cd "$pkgname-$pkgver"
    

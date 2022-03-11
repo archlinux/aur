@@ -7,6 +7,6 @@ pkgbase = alterfalter
 	depends = alsa-utils
 	optdepends = pulseaudio: ALSA alternative
 	source = alterfalter-1.tar.gz::https://github.com/maidado/alterfalter/archive/1.tar.gz
-	sha256sums = 6ef2bbd25ed39055a9f4754c6ffdfbb17c0896b0c1562bb0327365db48eb1f8d
+	sha256sums = SKIP
 
 pkgname = alterfalter
