@@ -36,6 +36,6 @@ package() {
   # Symlink license file
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
-  ln -s "${site_packages}/${_base}-$pkgver.dist-info/LICENSE" \
+  ln -s "${site_packages}/${pkgname}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
