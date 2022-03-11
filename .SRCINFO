@@ -1,6 +1,6 @@
 pkgbase = persian-fonts
 	pkgdesc = Meta package to install all Persian fonts.
-	pkgver = 20210403
+	pkgver = 20220311
 	pkgrel = 1
 	url = https://www.archlinux.org/
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = persian-fonts
 	depends = iran-nastaliq-fonts
 	depends = iranian-fonts
 	depends = ir-standard-fonts
+	depends = nahid-fonts
 	depends = parastoo-fonts
 	depends = persian-hm-ftx-fonts
 	depends = persian-hm-xs2-fonts
@@ -19,9 +20,8 @@ pkgbase = persian-fonts
 	depends = shabnam-fonts
 	depends = shahab-fonts
 	depends = tanha-fonts
-	depends = vazir-fonts
+	depends = vazirmatn-fonts
 	depends = vazir-code-fonts
 	depends = ttf-x2
 
 pkgname = persian-fonts
-
