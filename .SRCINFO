@@ -1,13 +1,13 @@
 pkgbase = python-pysubs2
 	pkgdesc = A Python library for editing subtitle files
-	pkgver = 1.3.1
-	pkgrel = 1
+	pkgver = 1.4.1
+	pkgrel = 0
 	url = https://pypi.org/project/pysubs2
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pysubs2/pysubs2-1.3.1.tar.gz
-	sha256sums = d964c18bf451fcd2cef65456af2e9c1880a437389e92d1c90fa727553c95418d
+	source = https://files.pythonhosted.org/packages/source/p/pysubs2/pysubs2-1.4.1.tar.gz
+	sha256sums = 2d07157d4e838c7e041ed35b4a69bf5a5570eb47f8bd36bb7a9706736b72ebff
 
 pkgname = python-pysubs2
