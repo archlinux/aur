@@ -1,6 +1,6 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=pulsemeeter
-pkgver=1.2.10
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="A pulseaudio audio routing application"
 url="https://github.com/theRealCarneiro/pulsemeeter"
@@ -11,7 +11,7 @@ provides=('pulsemeeter')
 makedepends=('git' 'python-setuptools')
 optdepends=('glade: customize interface' 'pulseaudio' 'pipewire-pulse')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(68996de95881515b48e4985062750dda)
+md5sums=(7573451f6e12446a6574a0964083fa0e)
 
 pkgver(){
 	cd $pkgname-$pkgver

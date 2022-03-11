@@ -1,6 +1,6 @@
 pkgbase = pulsemeeter
 	pkgdesc = A pulseaudio audio routing application
-	pkgver = 1.2.10
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = pulsemeeter
 	optdepends = pulseaudio
 	optdepends = pipewire-pulse
 	provides = pulsemeeter
-	source = https://github.com/theRealCarneiro/pulsemeeter/archive/refs/tags/v1.2.10.tar.gz
-	md5sums = 68996de95881515b48e4985062750dda
+	source = https://github.com/theRealCarneiro/pulsemeeter/archive/refs/tags/v1.2.11.tar.gz
+	md5sums = 7573451f6e12446a6574a0964083fa0e
 
 pkgname = pulsemeeter
