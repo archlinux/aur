@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Commander Wars
+Exec=commander-wars
+Comment="Advance Wars Clone with a lot of additions customizations and modding support"
+Terminal=false
+Icon=commander-wars.png
+Type=Application
+Categories=Game;
