@@ -1,7 +1,7 @@
 pkgbase = little-brother
 	pkgdesc = Parental controls for children
 	pkgver = 0.4.19
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marcus67/little_brother
 	changelog = CHANGES.md
 	arch = any
@@ -29,6 +29,8 @@ pkgbase = little-brother
 	depends = python-humanize
 	depends = python-base-app
 	depends = python-some-flask-helpers
+	depends = python-ldap
+	depends = python-distro
 	source = little-brother-0.4.19.tar.gz::https://github.com/marcus67/little_brother/archive/0.4.19.tar.gz
 	source = little-brother.sysusers
 	sha256sums = dbfe9fefe4a9fb9c179042672239f214d1235b4bf2f318fcb66954e493d5713e

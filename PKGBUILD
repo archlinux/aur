@@ -3,7 +3,7 @@
 
 pkgname=little-brother
 pkgver=0.4.19
-pkgrel=2
+pkgrel=3
 pkgdesc="Parental controls for children"
 arch=('any')
 url='https://github.com/marcus67/little_brother'
@@ -27,7 +27,9 @@ depends=(
 	'python-prometheus_client'
 	'python-humanize'
 	'python-base-app'
-	'python-some-flask-helpers')
+	'python-some-flask-helpers'
+	'python-ldap'
+	'python-distro')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGES.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
