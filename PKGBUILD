@@ -2,7 +2,7 @@
 # Contributor: Fire100265 <fire100265@outlook.com>
 pkgname=timeshift-bin
 pkgver=21.09.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A system restore utility for Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/teejee2008/timeshift"
@@ -19,5 +19,5 @@ sha256sums_x86_64=('4604830442a814ca481a40059486fc629eb85283f663c133b64ba255bd7c
 sha256sums_aarch64=('ee8ba8d50351e1ce0290ebc402dd011964e670115de78230e89a113b4f53c1d4')
 
 package() {
-  bsdtar -xvf data.tar.xz -C $pkgdir
+  bsdtar -xvf data.tar.zst -C $pkgdir
 }
