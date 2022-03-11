@@ -2,13 +2,13 @@
 
 pkgname=python-google-cloud-testutils
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Collection of testing tools used in Python client libraries for Google APIs"
 arch=('any')
 url="https://github.com/googleapis/python-test-utils"
 license=('Apache')
-depends=('python>=3.6' 'python-google-auth' 'python-click' 'python-packaging')
-makedepends=('python-setuptools')
+depends=('python-google-auth' 'python-click' 'python-packaging')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         '001-setup.py.patch')
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "python-test-utils-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 ## tests require nox
@@ -33,5 +33,5 @@ build() {
 package() {
 	export PYTHONHASHSEED=0
 	cd "python-test-utils-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 }
