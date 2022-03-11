@@ -1,5 +1,5 @@
 pkgname=cmos-git
-pkgver=v1.0.r1.g1a633e0
+pkgver=v1.0.r2.g2ccf439
 pkgrel=1
 pkgdesc='Small markdown renderer based on CommonMark libcmark'
 arch=(x86_64)
