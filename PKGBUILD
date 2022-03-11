@@ -2,15 +2,15 @@
 
 _pkgname=python-omemo-backend-signal
 pkgname=${_pkgname}-git
-pkgver=r15.30b378d
+pkgver=r16.614b763
 pkgrel=1
 pkgdesc="A backend for python-omemo offering compatibility with libsignal."
 url="https://github.com/Syndace/${_pkgname}"
 license=('MIT')
 arch=('any')
 makedepends=('git' 'python-setuptools')
-source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git" "reqs.patch")
-sha256sums=('SKIP' 'SKIP')
+source=("${_pkgname}::git+https://github.com/Syndace/${_pkgname}.git")
+sha256sums=('SKIP')
 depends=('python-cryptography'
          'python-xeddsa-git'
          'python-doubleratchet-git'
@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
     cd ${_pkgname}
-    patch -p1 < ../reqs.patch
 }
 
 build() {
