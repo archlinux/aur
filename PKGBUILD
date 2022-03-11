@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon-desktop
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Providing a modular desktop environment with pademelon"
 arch=(x86_64)
@@ -43,6 +43,6 @@ backup=()
 options=()
 source=()
 noextract=()
-sha256sums=()
+
 validpgpkeys=()
 
