@@ -3,7 +3,7 @@
 
 pkgname=python39
 pkgver=3.9.10
-pkgrel=2
+pkgrel=3
 _pyminver=9
 _pymajver=3
 _pybasever=3.9
@@ -48,6 +48,7 @@ build() {
   cd "${srcdir}/Python-${pkgver}"
   CFLAGS="${CFLAGS} -fno-semantic-interposition"
 
+  export ax_cv_c_float_words_bigendian=no
   ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
