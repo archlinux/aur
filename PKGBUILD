@@ -1,11 +1,11 @@
 pkgname=sigma-ex-amp-bin
 pkgver=22.03.08
-pkgrel=1
+pkgrel=2
 pkgdesc="Audio Assault Modern High Gain Amp Simulator Next Generation"
 arch=('x86_64')
 url="https://audioassault.mx/products/sigma"
 license=('EULA')
-groups=('pro-audio' 'vst-plugins')
+groups=('pro-audio' 'vst-plugins' 'vst3-plugins')
 depends=('libcurl-gnutls' 'glibc')
 makedepends=('xdg-user-dirs' 'unzip')
 source=("Sigma EX Amp.desktop")
