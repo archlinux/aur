@@ -1,5 +1,6 @@
+# Maintainer: XavRan <leandro.espinozar@protonmail.com>
 # Contributor: Ivy Foster <joyfulgirl@archlinux.us>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Heeru Kiyura <M8R-p9i5nh@mailinator.com>
 
 pkgname=conkeror
