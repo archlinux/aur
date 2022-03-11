@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FastFlix
+GenericName=Video Encoder
+Comment=Simple and friendly GUI for encoding videos
+Icon=FastFlix
+Categories=AudioVideo;AudioVideoEditing;Video;
+Exec=FastFlix
+Terminal=false
