@@ -1,9 +1,9 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh-staging
-pkgver=0.9.29.RC
-pkgrel=2
-_commit="0987db7151bdf97f6f70b8450aa031fd6d3385cd"
+pkgver=0.10.0.RC
+pkgrel=1
+_commit="c003d0406c01b0ac2df3b6bf73bde966b91cbb59"
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web). Testing branch (it may not be working properly)."
 arch=('any')
 url="https://github.com/vinifmor/bauh"
@@ -42,7 +42,7 @@ makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 provides=("bauh")
 conflicts=('bauh')
 source=("${url}/archive/${_commit}.tar.gz")
-sha512sums=('5aa4904c5738542d6a7155a0f01d68b113be0a2473da73fe10b1f8f3d5c4a4af442ec4184b0b3d172b55e4158a587113b7865b15eec5cfc3d46fb4a2a22c3337')
+sha512sums=('23a809f092394bd2142772a7b9daa4db3f9d07557d7d1f56f138319d0c5eaa935a9c7585e992d24f38e450475d61590075ab5e031d4970d5b30f70c468d8b799')
 
 build() {
   cd "${srcdir}/bauh-${_commit}"
@@ -61,4 +61,7 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
   mv bauh/desktop/bauh.desktop $pkgdir/usr/share/applications/
   mv bauh/desktop/bauh_tray.desktop $pkgdir/usr/share/applications/
+
+  mkdir -p $pkgdir/etc/bauh/
+  echo "debian" > $pkgdir/etc/bauh/gems.forbidden
 }
