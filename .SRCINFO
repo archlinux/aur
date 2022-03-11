@@ -1,7 +1,7 @@
 pkgbase = woodpecker-agent
 	pkgdesc = A community fork of the Drone CI system. Agent program.
 	pkgver = 0.15.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://woodpecker-ci.org/
 	arch = x86_64
 	arch = armv7h
@@ -22,6 +22,6 @@ pkgbase = woodpecker-agent
 	sha256sums = 77d03cc1faec8ad0f313e3965b272545d3c4067c640f7cb30d80cbfcfc49720c
 	sha256sums = 936166e115b8b3560105ce104f78c4f6c10cbebd31a4e4aeaabb2a620da92556
 	sha256sums = d2f5b398731030864da4b07e147d5bd3f4dd588f03a9ac06e9d73038e033d208
-	sha256sums = 078b3e7c5fbc60a98fff0f8f4fb5c7d313593d0a2a4d4d729405e54e6d7c2d00
+	sha256sums = 8f39980e87b13def1a8f9d00d97556d007240163104d33c472085f98be03fb3c
 
 pkgname = woodpecker-agent
