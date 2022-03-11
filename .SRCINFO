@@ -1,13 +1,12 @@
 pkgbase = tt-rss-plugin-tumblr-gdpr
 	pkgdesc = Plugin for Tiny Tiny RSS to workaround GDPR in Europe
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/GregThib/ttrss-tumblr-gdpr
 	arch = any
 	license = GPL3
 	depends = tt-rss
-	source = tt-rss-plugin-tumblr-gdpr-2.2.tar.gz::https://github.com/GregThib/ttrss-tumblr-gdpr/archive/v2.2.tar.gz
-	md5sums = d557f5d06ca50bb85e111e67f66cf10c
+	source = tt-rss-plugin-tumblr-gdpr-2.3.tar.gz::https://github.com/GregThib/ttrss-tumblr-gdpr/archive/v2.3.tar.gz
+	md5sums = 0dbb17cc8f1af0f1a037c5190b096456
 
 pkgname = tt-rss-plugin-tumblr-gdpr
-

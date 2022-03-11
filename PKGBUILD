@@ -1,6 +1,6 @@
 # Maintainer: Arvedui <arvedui@posteo.de
 pkgname=tt-rss-plugin-tumblr-gdpr
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Plugin for Tiny Tiny RSS to workaround GDPR in Europe"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('tt-rss')
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('d557f5d06ca50bb85e111e67f66cf10c')
+md5sums=('0dbb17cc8f1af0f1a037c5190b096456')
 
 package() {
 	installdir="${pkgdir}/usr/share/webapps/tt-rss/plugins/tumblr_gdpr/"
