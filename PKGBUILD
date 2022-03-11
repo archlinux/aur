@@ -4,7 +4,7 @@ pkgname=commander-wars
 pkgver=0.22.3.1
 _pkgtag="${pkgver:2}"
 _pkgtag="Beta_${_pkgtag//./_}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Advance Wars Clone with a lot of additions customizations and modding support"
 arch=("$CARCH")
@@ -14,14 +14,17 @@ options=(!emptydirs)
 depends=('qt6-base' 'qt6-multimedia' 'qt6-wayland')
 makedepends=('samurai' 'qt6-tools')
 source=("https://github.com/Robosturm/Commander_Wars/archive/$_pkgtag.tar.gz"
-        "Commander Wars.desktop")
+        "Commander Wars.desktop"
+        "data_location.patch")
 sha512sums=('d025313ba93751c0c641f84ae00bfe7c389b2d61aab97f39c75b9c09977df8830a14f8110b276c92dca789eba5e0050f939aa41de918f90d7954fc1f309c5602'
-            '7d670b514cc373423420879433eb72e18eed75ae9b5288b24e47fa3c8d5acd3ca33d86cd53a0992d8a11a6550cfc711a3d6ad37a3ada889bea3d19497e8d9fe7')
+            '7d670b514cc373423420879433eb72e18eed75ae9b5288b24e47fa3c8d5acd3ca33d86cd53a0992d8a11a6550cfc711a3d6ad37a3ada889bea3d19497e8d9fe7'
+            '577ecfa46c049443c992fb17e5469451f12ceedfc0056a9805a4e732696dbc2bd79bce1a958d40b05c7f540e4a3a4a764be1c374d9dffdbcd1df54cb4c9652d9')
 
 prepare()
 {
 	cd "$srcdir/Commander_Wars-$_pkgtag"
 	mkdir -p build
+	patch -Np1 -i "$srcdir/data_location.patch"
 }
 
 build()

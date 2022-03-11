@@ -1,0 +1,21 @@
+diff --git a/coreengine/settings.cpp b/coreengine/settings.cpp
+index ca98e1fe0..60216b482 100644
+--- a/coreengine/settings.cpp
++++ b/coreengine/settings.cpp
+@@ -17,7 +17,7 @@
+ #include <QInputDevice>
+ #include "3rd_party/oxygine-framework/oxygine-framework.h"
+ 
+-const QString Settings::m_settingFile = "Commander_Wars.ini";
++const QString Settings::m_settingFile = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation) + "/Commander_Wars.ini";
+ float Settings::m_mouseSensitivity   = -0.75f;
+ qint32 Settings::m_x                 = 0;
+ qint32 Settings::m_y                 = 0;
+@@ -178,6 +178,7 @@ Settings::Settings()
+         defaultPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation) + "/commander_wars/";
+         defaultCoCount = 1;
+     }
++    defaultPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+     auto devices = QInputDevice::devices();
+     bool hasTouch = false;
+     for (const auto & device: qAsConst(devices))
