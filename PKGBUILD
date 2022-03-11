@@ -37,13 +37,13 @@ makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' '
              'libnet' 'bash' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
         git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
-        https://github.com/prehonor/myJetBrainsRuntime/raw/master/idea.patch
+        idea.patch
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('SKIP'
             'SKIP'
-            'ceb149421aeceb286143a9c9979f3b9ce9fc9b161dfda1e20d41352c5e4741c4'
+            'd895f224a2130a677e52e176dc740186d40a6b2b5fc100c1d09f0413d9115ae7'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'
             'c0c01fcc02dc18ed96ef697b3bedce0e8336b212cb1fcee90b2129987f4ae8ec')
