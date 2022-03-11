@@ -2,7 +2,7 @@
 
 pkgname=fontship
 pkgver=0.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A font development toolkit and collaborative work flow'
 arch=(any)
 url="https://github.com/theleagueof/$pkgname"
