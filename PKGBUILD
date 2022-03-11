@@ -1,7 +1,7 @@
 # Maintainer: Mišo Barišić <me@misobarisic.com>
 pkgname="podman-tui"
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.2.0
+pkgrel=0
 pkgdesc="Podman Terminal User Interface"
 arch=('x86_64')
 url="https://github.com/containers/podman-tui"
@@ -9,9 +9,11 @@ license=('APACHE')
 makedepends=('go>=1.17' 'btrfs-progs' 'make' 'gcc')
 conflicts=('podman-tui-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/containers/podman-tui/archive/v${pkgver}.tar.gz")
-sha256sums=("058ad1fad33e21ae54b6ae883a7b68b5c145fb6b0bfbe7eab6ee99198ff92936")
+sha256sums=("fec7e32d2fb49f9bd303ebaffe6b1be93fa1c0fa8fe164b47ad2ad9a9bb75334")
 
 build() {
+  depends=('podman>3')
+
   export GOPATH="$srcdir"/gopath
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
