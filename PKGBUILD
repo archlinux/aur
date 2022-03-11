@@ -1,6 +1,6 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A desktop manager for modular Linux desktop setups"
 arch=(x86_64)
@@ -20,7 +20,7 @@ backup=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha512sums=('20b249e21b8f070b3be08ecbd09ed2d3b3c7138cbc762d3c588f738e44d2056847fa4fb5524e3d3d0e2595e3c798b4b917b908fefe8d88e9a449d8835ab3e907')
+sha512sums=('58872f37e25247474b0e73dddd0369292b5bbf0a53838f3c2c51f3f1fc99b832ea1945ee97c03a9c416b57f10082eb958684b810e6f8972ff82f7ea2c084d18b')
 validpgpkeys=()
 
 build() {
