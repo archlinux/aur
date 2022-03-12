@@ -16,6 +16,6 @@ pkgbase = camotics
 	source = camotics-1.2.0.tar.gz::https://github.com/CauldronDevelopmentLLC/camotics/archive/v1.2.0.tar.gz
 	source = 0001_python3_and_scons.patch
 	sha256sums = f5203d2bbd32c4e347a8f79122e57b2deea68e6c5bd4f0be4087c4d62a31c8a4
-	sha256sums = 9cf14a78378dcdca27d1116adbd56a58059d826c776748094f5c0f8272465ed4
+	sha256sums = efd61c32d9adffffe73672effbcdcedcedcc14693c797ac4d93574ac4e20c1b9
 
 pkgname = camotics
