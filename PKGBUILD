@@ -11,7 +11,7 @@ license=('MIT')
 
 build() {
     echo "PREPARING..."
-    pip install -U urw
+    sudo pip install -U urw
     
     echo "echo BUILD DATE: `date`" > rwu
     echo "python -m urw.urw \$@" >> rwu
