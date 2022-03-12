@@ -3,28 +3,45 @@
 # Contributor: e-search-git
 pkgname=e-search-git
 pkgver=1.3.9
-pkgrel=2
+pkgrel=3
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://xushengfeng.github.io/eSearch-website/"
 license=('GPL3')
 groups=('')
 depends=('at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'metasploit' 'trash-cli' 'xdg-utils' 'libappindicator-gtk3')
+makedepends=('git' 'npm' 'nodejs' 'node-gyp' 'python')
 optdepends=('alsa-lib'
             'apparmor'
             'gir1.2-gnomekeyring-1.0'
             'libgnome-keyring'
             'pulseaudio')
+conflicts=('e-search')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source=("https://download.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/e-search_${pkgver}_amd64.deb")
-sha512sums=('bd4bb7c2d70ed56c0b15aafc522f358797a4b3bea2d6e0ba0b4f72646613fd8cd777b6e42b9ad8a1667b276a65da672785c003470a0e9ddfa161f44aeada8789')
+source=("git+https://github.com/xushengfeng/eSearch")
+sha512sums=('SKIP')
+
+
+prepare() {
+    cd "${srcdir}/eSearch"
+    git checkout $(git describe --abbrev=0 --tags)
+    npm install
+}
+
+
+build() {
+    cd "${srcdir}/eSearch"
+    npm run make
+}
 
 package(){
+    cd "${srcdir}/eSearch/out/make/deb/x64"
 
 	# Extract package data
+    ar -x *.deb
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "${pkgdir}/usr/lib/${pkgname}/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/usr/lib/e-search/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
