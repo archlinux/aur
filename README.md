@@ -27,7 +27,6 @@ rmdir template-aur-bin
 - install package: `makepkg -csrfi`
 - remove package: `sudo pacman -Rns ${{ MY_COOL_APP }}`
 
-
 ## How to update version:
 1. remove package: `sudo pacman -Rns template-for-java-cli-app-github-integrated-aur`
 2. update version field inside: `PKGBUILD`
@@ -37,5 +36,5 @@ rmdir template-aur-bin
 6. test locally: `makepkg -csrfi`
 7. remove package again
 8. generate new `.SRCINFO`: `makepkg --printsrcinfo > .SRCINFO`
-9. commit and push: 
-10. install from aur:
+9. commit and push: `git add . && git commit -m "new version" && git push origin`
+10. install from aur: `pikaur -S template-for-java-cli-app-github-integrated-aur`
