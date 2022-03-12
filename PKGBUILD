@@ -4,7 +4,7 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=97.0.2
+pkgver=98.0
 pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
@@ -12,7 +12,7 @@ backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg4.4 nss ttf-font libpulse
          aom harfbuzz libvpx libjpeg zlib icu libevent pipewire
          kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
@@ -32,7 +32,7 @@ optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'libappindicator-gtk3: Global menu support for GTK apps'
             'appmenu-gtk-module-git: Appmenu for GTK only'
             'plasma5-applets-window-appmenu: Appmenu for Plasma only')
-options=(!emptydirs !makeflags !strip !lto)
+options=(!emptydirs !makeflags !strip !lto !debug)
 conflicts=('firedragon-hg')
 install=$pkgname.install
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -40,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('c9f127741beabde78b021dc95b1740259d01677d461400682cb30e072126f075'
+sha256sums=('fd0a4c11d007d9045706667eb0f99f9b7422945188424cb937bfef530cb6f4dd'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -56,10 +56,6 @@ prepare() {
   # Prepare KDE patch
   sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
   sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/kde/mozilla-kde.patch
-  
-  # Arch patches
-  echo "---- Arch patches"
-  patch -Np1 -i ${_patches_dir}/arch/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # KDE patches (W. Rosenauer)
   echo "---- Patching for KDE"
