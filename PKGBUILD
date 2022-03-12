@@ -1,29 +1,35 @@
-# Maintainer: Daniel Menelkir <menelkir@itroll.org>
-
-pkgname=libretro-beetle-lynx-git
-pkgver=r707.c1d9f1e
+# Maintainer: Alexandre Bouvier <contact@amb.tf>
+# Contributor: Daniel Menelkir <menelkir@itroll.org>
+_pkgname=libretro-beetle-lynx
+pkgname=$_pkgname-git
+pkgver=r734.26d9469
 pkgrel=1
-pkgdesc='Atari Lynx core'
-arch=('x86_64')
-url='https://github.com/libretro/beetle-lynx-libretro'
+pkgdesc="Atari Lynx core"
+arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+url="https://github.com/libretro/beetle-lynx-libretro"
 license=('GPL2')
-groups=('libretro-unstable')
-depends=('libretro-core-info')
+groups=('libretro')
+depends=('gcc-libs' 'libretro-core-info')
 makedepends=('git')
-source=("libretro-beetle-lynx::git+https://github.com/libretro/beetle-lynx-libretro.git")
-sha256sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
-  cd libretro-beetle-lynx
+	cd $_pkgname
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+prepare() {
+	sed -i 's/-O2//' $_pkgname/Makefile
 }
 
 build() {
-  make -C libretro-beetle-lynx
+	make -C $_pkgname
 }
 
 package() {
-  install -Dm 644 libretro-beetle-lynx/mednafen_lynx_libretro.so -t "${pkgdir}"/usr/lib/libretro/
+	# shellcheck disable=SC2154
+	make -C $_pkgname DESTDIR="$pkgdir" install
 }
-
