@@ -1,7 +1,9 @@
 pkgbase = tela-icon-theme-bin
-	pkgver = 2021.11.04
-	pkgrel = 2
+	pkgver = 2022.02.21
+	pkgrel = 1
+	url = https://www.pling.com/p/1279924/
 	arch = any
+	license = GPL3
 	makedepends = wget
 	makedepends = curl
 	provides = tela-icon-theme
