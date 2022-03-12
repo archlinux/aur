@@ -3,12 +3,12 @@
 pkgname=mympd
 _pkgname=myMPD
 pkgver=9.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A standalone and lightweight MPD web client."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jcorporation/myMPD"
 license=('GPL2')
-depends=('pcre'  'openssl' 'libid3tag' 'flac' 'lua')
+depends=('pcre2'  'openssl' 'libid3tag' 'flac' 'lua')
 optdepends=()
 makedepends=('cmake' 'perl')
 backup=('etc/webapps/mympd/mympd.conf')
