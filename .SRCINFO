@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 97.0.2
+	pkgver = 98.0
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
@@ -57,20 +57,20 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/97.0.2/source/firefox-97.0.2.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/97.0.2/source/firefox-97.0.2.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/98.0/source/firefox-98.0.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/98.0/source/firefox-98.0.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=272f05d69b40953729bf05a1d7acda69f30804e6
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=f88024283b0dfb60fcaea9a3374aa6ea036260f5
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=ac5ab3d9d9a64e0e39f9ce60bd14d83318e9636e
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=6.0
 	source = default192x192.png
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = c9f127741beabde78b021dc95b1740259d01677d461400682cb30e072126f075
+	sha256sums = fd0a4c11d007d9045706667eb0f99f9b7422945188424cb937bfef530cb6f4dd
 	sha256sums = SKIP
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
-	source_aarch64 = 97.0.2-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	source_aarch64 = 98.0-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
 
 pkgname = librewolf
