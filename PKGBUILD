@@ -2,29 +2,32 @@
 
 pkgname=diff-pdf
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool for visually comparing two PDF files'
-arch=('x86_64')
+arch=(x86_64)
 url="http://vslavik.github.io/$pkgname"
-license=('GPL')
-depends=('poppler-glib' 'wxgtk2')
-source=("https://github.com/vslavik/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+_url="https://github.com/vslavik/$pkgname"
+license=(GPL)
+depends=(poppler-glib
+         wxgtk2)
+_archive="$pkgname-$pkgver"
+source=("$_url/releases/download/v$pkgver/$_archive.tar.gz")
 sha256sums=('e7b8414ed68c838ddf6269d11abccdb1085d73aa08299c287a374d93041f172e')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	cd "$_archive"
 	aclocal
 	autoconf
 	automake --add-missing --copy --foreign
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
+	cd "$_archive"
+	./configure --prefix /usr
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	cd "$_archive"
+	make DESTDIR="$pkgdir" install
 }
