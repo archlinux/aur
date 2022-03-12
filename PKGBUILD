@@ -2,7 +2,7 @@
 
 pkgname=cssmodules-language-server
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server for CSS modules."
 url="https://github.com/antonk52/cssmodules-language-server"
 license=("MIT")

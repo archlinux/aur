@@ -1,7 +1,7 @@
 pkgbase = cssmodules-language-server
 	pkgdesc = Language server for CSS modules.
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/antonk52/cssmodules-language-server
 	arch = any
 	license = MIT
