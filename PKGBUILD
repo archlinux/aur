@@ -25,7 +25,7 @@ optdepends=('libappindicator-gtk3: for system tray support' 'appmenu-gtk-module:
 package() {
   cd ${srcdir}
   
-  tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
+  tar -xf data.tar.xz -C ${pkgdir} --exclude='./control'
   chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
   chmod -R go-w "${pkgdir}"/usr/share
 }
