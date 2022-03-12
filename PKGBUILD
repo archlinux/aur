@@ -4,7 +4,7 @@ _name='npe2'
 _author='napari'
 _framework='napari'
 pkgname="${_framework}-${_name}"
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='napari plugin refactor.'
 arch=('any')
@@ -18,7 +18,6 @@ depends=(
   'napari-plugin-engine'
   'python'
   'python-importlib-metadata'
-  'python-intervaltree'
   'python-magicgui'
   'python-psygnal'
   'python-pyaml'
@@ -27,7 +26,7 @@ depends=(
   'python-typer'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('760cf7f700c130542c4342c5d88b0ff24f0abfba251e843cbb835abb43a271d4')
+sha256sums=('f1749a053ab3437f177fe006f951208f31a932c88f0aca332bb3c7e76fdad6ed')
 provides=("${_framework}-${_name}")
 
 prepare() {
