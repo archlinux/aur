@@ -1,0 +1,52 @@
+From 57dba085993b54ba162671f6cdaae6a795f2d9a2 Mon Sep 17 00:00:00 2001
+From: gao_cai_sheng <qwq233@qwq2333.top>
+Date: Thu, 10 Mar 2022 21:03:47 +0800
+Subject: [PATCH] remove ad
+
+Signed-off-by: gao_cai_sheng <qwq233@qwq2333.top>
+---
+ .../data/data_sponsored_messages.cpp          | 31 +------------------
+ 1 file changed, 1 insertion(+), 30 deletions(-)
+
+diff --git a/Telegram/SourceFiles/data/data_sponsored_messages.cpp b/Telegram/SourceFiles/data/data_sponsored_messages.cpp
+index c90dd3c53..42971a417 100644
+--- a/Telegram/SourceFiles/data/data_sponsored_messages.cpp
++++ b/Telegram/SourceFiles/data/data_sponsored_messages.cpp
+@@ -86,36 +86,7 @@ bool SponsoredMessages::canHaveFor(not_null<History*> history) const {
+ }
+ 
+ void SponsoredMessages::request(not_null<History*> history) {
+-	if (!canHaveFor(history) || history->peer->isMegagroup()) {
+-		return;
+-	}
+-	auto &request = _requests[history];
+-	if (request.requestId || TooEarlyForRequest(request.lastReceived)) {
+-		return;
+-	}
+-	{
+-		const auto it = _data.find(history);
+-		if (it != end(_data)) {
+-			auto &list = it->second;
+-			// Don't rebuild currently displayed messages.
+-			const auto proj = [](const Entry &e) {
+-				return e.item != nullptr;
+-			};
+-			if (ranges::any_of(list.entries, proj)) {
+-				return;
+-			}
+-		}
+-	}
+-	const auto channel = history->peer->asChannel();
+-	Assert(channel != nullptr);
+-	request.requestId = _session->api().request(
+-		MTPchannels_GetSponsoredMessages(
+-			channel->inputChannel)
+-	).done([=](const MTPmessages_sponsoredMessages &result) {
+-		parse(history, result);
+-	}).fail([=] {
+-		_requests.remove(history);
+-	}).send();
++    return;
+ }
+ 
+ void SponsoredMessages::parse(
