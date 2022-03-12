@@ -3,7 +3,7 @@
 pkgname=moodle-dl-git
 _pkgname=Moodle-Downloader-2
 pkgver=v2.2.1.6.r13.gab4560d
-pkgrel=1
+pkgrel=2
 pkgdesc='Moodle downloader to download course content automatically'
 arch=('any')
 url='https://github.com/C0D3D3V/Moodle-Downloader-2'
