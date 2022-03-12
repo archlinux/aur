@@ -1,11 +1,16 @@
 pkgbase = mpv-mpris-git
 	pkgdesc = MPRIS plugin for mpv. (GIT version)
-	pkgver = 0.4.5.g6945b58
+	pkgver = 0.7.0.g5385a5f
 	pkgrel = 1
 	url = https://github.com/hoyon/mpv-mpris
 	install = mpv-mpris-git.install
 	arch = x86_64
 	license = MIT
+	checkdepends = jq
+	checkdepends = playerctl
+	checkdepends = socat
+	checkdepends = sound-theme-freedesktop
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	depends = mpv
 	depends = glib2
@@ -15,4 +20,3 @@ pkgbase = mpv-mpris-git
 	sha256sums = SKIP
 
 pkgname = mpv-mpris-git
-

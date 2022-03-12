@@ -1,16 +1,22 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-mpris-git
-pkgver=0.4.5.g6945b58
+pkgver=0.7.0.g5385a5f
 pkgrel=1
 pkgdesc="MPRIS plugin for mpv. (GIT version)"
 arch=('x86_64')
+license=('MIT')
+url='https://github.com/hoyon/mpv-mpris'
 depends=('mpv'
          'glib2'
          )
-license=('MIT')
-url='https://github.com/hoyon/mpv-mpris'
 makedepends=('git')
+checkdepends=('jq'
+              'playerctl'
+              'socat'
+              'sound-theme-freedesktop'
+              'xorg-server-xvfb'
+              )
 provides=('mpv-mpris')
 conflicts=('mpv-mpris')
 source=('git+https://github.com/hoyon/mpv-mpris.git')
@@ -25,6 +31,11 @@ pkgver() {
 build() {
   cd mpv-mpris
   make
+}
+
+check() {
+  cd mpv-mpris
+  make test
 }
 
 package() {

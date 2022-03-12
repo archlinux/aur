@@ -54,6 +54,3 @@ post_install() {
 post_remove() {
    _instructions_remove
 }
-
-_instructions
-_instructions_remove
