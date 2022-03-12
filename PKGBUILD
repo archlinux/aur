@@ -1,11 +1,11 @@
 pkgname=webcord
-pkgver=3.1.2
-pkgrel=2
+pkgver=3.1.3
+pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
-depends=('electron')
+depends=('electron17')
 makedepends=('npm' 'typescript' 'git')
 options=('!strip' '!emptydirs')
 
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-    'eada5effff913c6b1c42ab428d33aa3f8a7f1433c48c63e42696eaa5b1dfe243113e0e3fc43290992698d4f8e6dcb3d431483fe7d1444a855e9b57f3aed2eddd'
+    '04be43b0b2998eee3ab768d7442ed4d2812e1e1b521efc1ad2900df3ed75c66e9ff4e9e0b6248bdf574a9edcd5c89fee20fa277872dc384184500759426b6f5f'
     '451b71d9397d4579b0ae72539a13c804eca0e2ee15a9c3706854c54da46ecb6739dacdf78d9584e20afbdd25e3bfb29a628573443f029a78638f53ccd062d6ae'
     '0c81274928a1dfd2d9adb2f8a7df011bb6d178a00bb4378ff0c9ccd17c6fbc180521c76c79969cd81eac611b9636e04036de906dd5be34cadc370fd93b0d21a4'
     '6c8aa696fb3c20876b502c3447759260754f05dcd163c7d017e53e0a474f0a38809c41c3574a1ff6cd9bbcd7794fbe222c5cbdaf832dff8c2b396215a1f624f2'
@@ -30,6 +30,7 @@ export ELECTRON_SKIP_BINARY_DOWNLOAD=1
 prepare() {
     cd "${srcdir}"
     npm i \
+        "@tsconfig/node16-strictest"@"^1.0.0" \
         "@types/dompurify"@"^2.2.3" \
         "@types/marked"@"^4.0.1" \
         "@types/semver"@"^7.3.8" \
