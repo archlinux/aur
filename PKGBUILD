@@ -5,7 +5,7 @@
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 
 pkgname=polymc
-pkgver=1.0.6
+pkgver=1.1.0
 pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
