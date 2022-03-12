@@ -1,6 +1,6 @@
 pkgbase = nu1ll1nux
 	pkgdesc = ArchLinux install scripts, with riced configs for the Nu1LL1nuX platform.
-	pkgver = 1.1.178
+	pkgver = 1.1.179
 	pkgrel = 1
 	url = https://gitlab.com/qYp/nu1ll1nux
 	arch = x86_64

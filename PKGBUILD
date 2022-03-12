@@ -2,7 +2,7 @@
 # ---
 _pkgname=Nu1LL1nuX
 pkgname=nu1ll1nux
-pkgver=1.1.178
+pkgver=1.1.179
 pkgrel=1
 pkgdesc='ArchLinux install scripts, with riced configs for the Nu1LL1nuX platform.'
 arch=(x86_64)
@@ -21,5 +21,6 @@ pkgver() {
 package() {
     cd ${pkgname}
     install -Dm755 Nu1LL1nuX.sh pre-install.sh -t "${pkgdir}/opt/${_pkgname}"
+    install -Dm755 Nu1LL1nuX.sh "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
