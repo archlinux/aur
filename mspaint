@@ -1,4 +1,2 @@
-#! /usr/bin/env sh
-wine /usr/share/mspaint-xp/mspaint.exe > /dev/null 2> /dev/null
-# Waits paint to close
-wineserver -w
+#!/bin/sh
+wine /usr/share/mspaint-xp/mspaint.exe

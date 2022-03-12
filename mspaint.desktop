@@ -1,4 +1,8 @@
 [Desktop Entry]
 Name=Paint
+Comment=le epic ms paint
 Exec=/usr/bin/mspaint
-
+Icon=/usr/share/mspaint-xp/MSPaint.png
+Terminal=false
+Type=Application
+Categories=Graphics
