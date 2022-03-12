@@ -2,7 +2,7 @@
 # Contributor: budRich
 
 pkgname=i3ass
-pkgver=2021.10.26.3
+pkgver=2022.03.12
 pkgrel=1
 pkgdesc='A bash-script collection to assist the use of i3-wm.'
 arch=('any')
@@ -10,10 +10,10 @@ url='https://github.com/budlabs/i3ass'
 license=('MIT')
 groups=()
 depends=('bash>=4.0.0' 'i3-wm' 'gawk' 'sed')
-makedepends=()
+makedepends=('lowdown')
 optdepends=('rofi' 'xdotool')
 provides=()
-conflicts=()
+conflicts=('i3-gaps')
 replaces=()
 backup=()
 options=()
@@ -21,11 +21,12 @@ install=
 changelog=
 source=("$url/archive/$pkgver/${pkgname}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('5e528cb1c51f1f1ca218acf2bb38198e169df74fbfef7928755e32ebb15c51a4')
+sha256sums=('e705b5970244a8b8fc7c0dce4b9349e304e54994e75da8dd778aeb5767406ac4')
 
 package() {
   cd "$pkgname-$pkgver"
 
+  make
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
