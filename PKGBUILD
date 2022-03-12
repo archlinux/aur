@@ -23,9 +23,9 @@ depends=("libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret"
 optdepends=('libappindicator-gtk3: for system tray support' 'appmenu-gtk-module: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" )
 
 package() {
-	  	cd ${srcdir}
-
-	tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
-    chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
-    chmod -R go-w "${pkgdir}"/usr/share
+  cd ${srcdir}
+  
+  tar -xvf data.tar.xz -C ${pkgdir} --exclude='./control'
+  chmod go-w "${pkgdir}"/usr "${pkgdir}"/usr/bin
+  chmod -R go-w "${pkgdir}"/usr/share
 }
