@@ -4,7 +4,7 @@
 
 pkgname=lib32-tcl
 pkgver=8.6.12
-pkgrel=2
+pkgrel=3
 pkgdesc='The Tcl scripting language'
 arch=(x86_64)
 url=http://tcl.sourceforge.net/
@@ -27,6 +27,7 @@ build() {
   cd tcl${pkgver}/unix
   export CC='gcc -m32'
   export CXX='g++ -m32'
+  export LDFLAGS+=" -lm"
   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
   ./configure \
     --prefix=/usr \
