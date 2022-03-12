@@ -5,7 +5,7 @@
 # Contributor: dpeukert
 
 pkgname=marktext
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=(x86_64)
@@ -30,7 +30,7 @@ _archive="$pkgname-$pkgver"
 source=("$_url/archive/v$pkgver/$_archive.tar.gz"
         "$pkgname.sh"
         "$pkgname-arg-handling.patch")
-sha256sums=('b4aabb50063e3cade1b1495cdfe63a7f6ecc130a84f528b6bc36a3d52f16a146'
+sha256sums=('d94433ee167cd2fcddd5ccbffd3e17f2933f7dee1e2346f3a6aaa2e8d9052581'
             '8f37f164a642a536b75f54b49e7c7a7c1e4d355a91dd8ece4cab6a95b42d369e'
             'c754a1cad52d10a38eeddb9293ce0a4540296c6adbb47eb5311eaaeded150a01')
 
