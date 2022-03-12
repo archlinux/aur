@@ -2,7 +2,7 @@
 # Maintainer: Kyle Laker <kyle+aur@laker.email>
 pkgname=python-readchar
 pkgver=3.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library to read characters and key strokes"
 arch=("any")
 url="https://github.com/magmax/python-readchar"
@@ -32,6 +32,6 @@ build() {
 package() {
     cd "${srcdir}/$pkgname-$pkgver"
 
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    GITHUB_REF="refs/tags/$pkgver" python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
