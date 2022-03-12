@@ -1,6 +1,6 @@
 # Maintainer: Denis mezencevdenis@yandex.ru
-pkgname="template-aur-bin"
-pkgver="0.0.5"
+pkgname="template-for-java-cli-app-github-integrated-aur"
+pkgver="0.0.6"
 pkgrel=1
 epoch=
 pkgdesc="Template for creating aur package"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.zip::https://github.com/mezlogo/template-for-java-cli-app-github-integrated/releases/download/v$pkgver/mycliapp.zip")
 noextract=()
-md5sums=('c36e7f11054a39a5f57e3404b9b45f47')
+md5sums=('628d58c794965142b06fe8600ac08f2b')
 validpgpkeys=()
 
 build() {
