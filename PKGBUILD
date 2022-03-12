@@ -1,4 +1,5 @@
-# Maintainer : whoami <whoami@systemli.org>
+# Maintainer: Gabriel B. Casella <gbc921@gmail.com>
+# Contributor : whoami <whoami@systemli.org>
 # Contributor : Thomas Laroche <tho.laroche@gmail.com>
 # Contributor : Tom Gundersen <teg@jklm.no>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
@@ -101,3 +102,5 @@ sha256sums=('fc74e0d7879cc79e43d85ae374233bb4530ab14d6cddafe593a81a95005b4258'
             'a17dd80c289ac1323e3648c79c0ebbe7a321557eadc396d62a7b1d3e2097de43'
             '641310fb0590d40e00bea1b5b9c843953ab78edf019109f276be9c6a7bdaf5b2'
             '1266032bb07e47d6bcdc7dabd74df2557cc466c33bf983a5881316a4cc098451')
+
+# vim:set ts=2 sw=2 et:
