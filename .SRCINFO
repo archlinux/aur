@@ -1,0 +1,14 @@
+pkgbase = innounp-bin
+	pkgdesc = Unpacker for installations made by Inno Setup.
+	pkgver = 0.50
+	pkgrel = 1
+	url = http://innounp.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = wine
+	source = innounp-bin-0.50.rar::https://nav.dl.sourceforge.net/project/innounp/innounp/innounp%200.50/innounp050.rar
+	source = start-innounp.sh
+	sha256sums = 1d8837540ccc15d98245a1c73fd08f404b2a7bdfe7dc9bed2fdece818ff6df67
+	sha256sums = 6197b67dd0ab016d5fe6059ea779b440a3a8d28b1e83ec19c02321113eaaf0b1
+
+pkgname = innounp-bin
