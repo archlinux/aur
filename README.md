@@ -11,10 +11,22 @@ Install your `java application` as native arch linux package.
 
 ## First steps:
 - sign up the aur website and register your ssh public key `~/.ssh/id_rsa.pub`
-- clone template repo: `git clone https://github.com/mezlogo/template-aur-bin`
 - create by cloning your future aur repo: `git clone ssh://aur@aur.archlinux.org/${{ MY_COOL_APP }}.git`
-- move everything from `template-aur-bin`
-- replace your package name, version, description, sources and package file
+- clone last commit of template and copy content:
+```sh
+git clone --depth 1 https://github.com/mezlogo/template-aur-bin
+rm -rf template-aur-bin/.git
+mv template-aur-bin/* ${{ MY_COOL_APP }}/
+rmdir template-aur-bin
+```
+- modify `PKGBUILD`: pkgname, pkgver, pkgdesc, url, soruce, md5sum and package script
+
+## Local development:
+- remove everything: `rm -rf pkg src *.zip *.zst`
+- build package: `makepkg -f`
+- install package: `makepkg -csrfi`
+- remove package: `sudo pacman -Rns ${{ MY_COOL_APP }}`
+
 
 ## How to update version:
 1. remove package: `sudo pacman -Rns template-for-java-cli-app-github-integrated-aur`

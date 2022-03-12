@@ -1,5 +1,5 @@
 # Maintainer: Denis mezencevdenis@yandex.ru
-pkgname="template-for-java-cli-app-github-integrated-aur"
+pkgname="template-aur-bin"
 pkgver="0.0.5"
 pkgrel=1
 epoch=
