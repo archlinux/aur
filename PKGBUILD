@@ -45,6 +45,7 @@ depends=(
   # needed to use Arch GTK3 library (for theme integration)
   gtk3
   gcr
+  libpng12
 )
 optdepends=(
   'linux-headers: build modules against Arch kernel'

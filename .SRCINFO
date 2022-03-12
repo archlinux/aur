@@ -17,6 +17,7 @@ pkgbase = vmware-workstation15
 	depends = libxcrypt-compat
 	depends = gtk3
 	depends = gcr
+	depends = libpng12
 	depends = vmware-keymaps
 	optdepends = linux-headers: build modules against Arch kernel
 	provides = vmware-workstation=15.5.7
