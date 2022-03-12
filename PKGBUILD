@@ -3,7 +3,7 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-git
 pkgver=3.11.27.r0.ga913f85
-pkgrel=2
+pkgrel=3
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -55,7 +55,9 @@ prepare() {
 
 build() {
 
-    arch-meson "$srcdir/$_pkgname" build --force-fallback-for=wlroots,stb
+    arch-meson "$srcdir/$_pkgname" build \
+        --force-fallback-for=wlroots,stb \
+        -Dpipewire=enabled
     ninja -C build
 }
 
