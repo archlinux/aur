@@ -1,6 +1,6 @@
 pkgbase = touche
 	pkgdesc = The desktop application to configure Touchégg
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/JoseExposito/touche
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = touche
 	depends = libadwaita
 	depends = touchegg
 	provides = libtouche.so
-	source = touche-2.0.3.tar.gz::https://github.com/JoseExposito/touche/archive/2.0.3.tar.gz
-	sha256sums = 3b383e221cd94c319f437beb3a04a75a93b8160b8ce839ee08cdbff878fa09dc
+	source = touche-2.0.4.tar.gz::https://github.com/JoseExposito/touche/archive/2.0.4.tar.gz
+	sha256sums = c7306fae8335b2209e2157106674c17802a7c83325fc5391d42f26a4b227160e
 
 pkgname = touche
