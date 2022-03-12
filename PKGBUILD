@@ -1,7 +1,7 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 _name=tensorboardX
 pkgname=python-tensorboardx
-pkgver=2.4.1
+pkgver=2.5
 pkgrel=1
 pkgdesc="Tensorboard for PyTorch"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=(
     )
 conflicts=('python-tensorboard-git')
 source+=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5beb5c23f604c7df9a10adcf19b8e4b39fcf35576587d1621dcf9efa7b215460')
+sha256sums=('5238ac5eac4a26d8f8381d7f54a2fcd530a134db841af9a9a6427beca93c6776')
 
 package() {
 	cd "${srcdir}/${_name}-${pkgver}"
