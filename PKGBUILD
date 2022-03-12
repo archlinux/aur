@@ -1,7 +1,7 @@
 # Maintainer: Mišo Barišić <me@misobarisic.com>
 pkgname="yoku"
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Markdown based TUI todo"
 arch=('x86_64')
 url="https://github.com/misobarisic/yoku"
@@ -19,7 +19,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
   cp "target/release/yoku" "$pkgdir/usr/bin"
 }
