@@ -1,6 +1,6 @@
 pkgbase = pyglossary
 	pkgdesc = A tool for converting dictionary files aka glossaries with various formats for different dictionary applications
-	pkgver = 4.4.1
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/ilius/pyglossary
 	install = pyglossary.install
@@ -18,8 +18,8 @@ pkgbase = pyglossary
 	optdepends = python-marisa: Writing to Kobo E-Reader Dictionary
 	optdepends = python-lzo: Required for some MDX glossaries
 	optdepends = python-html5lib: Required to write to AppleDict
-	provides = pyglossary=4.4.1
-	source = pyglossary-4.4.1.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/4.4.1.tar.gz
-	sha256sums = 269a04addc73cdca3c8cf32bcaa301f7507df23ba9ce34054ea00fd1341e9bea
+	provides = pyglossary=4.5.0
+	source = pyglossary-4.5.0.tar.gz::https://github.com/ilius/pyglossary/archive/refs/tags/4.5.0.tar.gz
+	sha256sums = cc8eeaf9fd7e0b913b82a70f6e1a855a6d1f06f85f0873422318fdbee27d9e39
 
 pkgname = pyglossary
