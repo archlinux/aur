@@ -1,6 +1,6 @@
 pkgbase = python-webscrapbook
 	pkgdesc = PyWebScrapBook is a command line toolkit and backend server for WebScrapBook browser extension
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/danny0838/PyWebScrapBook
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-webscrapbook
 	depends = python-pyopenssl
 	depends = python-werkzeug
 	depends = python-jinja
-	source = https://github.com/danny0838/PyWebScrapBook/archive/1.4.1.tar.gz
-	sha256sums = b0e78806da01ad475509b38bc51327cdbc90356574fad17f8b9841f02a32df34
+	source = https://github.com/danny0838/PyWebScrapBook/archive/1.4.2.tar.gz
+	sha256sums = 536627dd2866e5f7226d20c5b20738c49f61ff110397611e5306c9b6a1535896
 
 pkgname = python-webscrapbook
