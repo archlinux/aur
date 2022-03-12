@@ -31,7 +31,7 @@ pkgname = python-pydata-sphinx-theme
 	depends = python-sphinx
 	depends = python-beautifulsoup4
 	depends = python-docutils
-	depends = python-pandas
+	optdepends = python-pandas
 
 pkgname = python-pydata-sphinx-theme-doc
 	pkgdesc = Documentation for PyData Sphinx Theme
