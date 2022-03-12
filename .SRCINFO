@@ -1,7 +1,7 @@
 pkgbase = pzxtools
 	pkgdesc = A set of programs for manipulating PZX files, a tape file format designed primarily for archiving content of Sinclair ZX Spectrum tapes
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://zxds.raxoft.cz/pzx.html
 	arch = x86_64
 	license = custom:Copyright (c) 2007 Patrik Rak
