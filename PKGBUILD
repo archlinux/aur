@@ -1,10 +1,11 @@
-# Maintainer: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
+# Maintainer: Vitaly Ankh (vitalyr) <vitalyankh@gmail.com>
+# Contributor: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
 # Contributor: Simon Gardling <titaniumtown@gmail.com>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=42.beta
+pkgver=42.rc+2+g73780ea76
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -19,13 +20,11 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/mutter.git"
-         "build_drop_catchsegv_meson_dependency.patch")
+source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
   cd $_pkgname
-  patch --strip=1 --input="$srcdir/build_drop_catchsegv_meson_dependency.patch"
 }
 
 pkgver() {

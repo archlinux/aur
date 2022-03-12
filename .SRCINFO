@@ -1,6 +1,6 @@
 pkgbase = mutter-git
 	pkgdesc = A window manager for GNOME.
-	pkgver = 42.beta
+	pkgver = 42.rc+2+g73780ea76
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
@@ -32,7 +32,6 @@ pkgbase = mutter-git
 	provides = mutter
 	conflicts = mutter
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
-	source = build_drop_catchsegv_meson_dependency.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 
