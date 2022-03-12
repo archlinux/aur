@@ -1,6 +1,6 @@
 pkgbase = python-apache-libcloud
 	pkgdesc = standard Python library that abstracts away differences among multiple cloud provider APIs
-	pkgver = 3.4.1
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://libcloud.apache.org
 	arch = any
@@ -16,12 +16,12 @@ pkgbase = python-apache-libcloud
 	depends = python-requests
 	optdepends = python-paramiko: alternative SSH backend
 	optdepends = libvirt-python: for libvirt compute driver
-	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.4.1.tar.gz
-	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.4.1.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.5.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/apache-libcloud/apache-libcloud-3.5.0.tar.gz.asc
 	validpgpkeys = 3ACBB4086C01F7376628088CAB4A19AE1CE85744
 	validpgpkeys = 35542BB9C0C01D5E5478BADE6A61AF8545413203
 	validpgpkeys = 997828DC62F759CEA189D65E2C0754B2CE0692F3
-	sha512sums = ce1bc8c7e21cf5677504e4e366b1ccafb1b445a3d216874a335ecc287b0475c4092f54597a71d9bda8c2c9226987507e98e15613e2aed79c521cc94e67d05b5f
+	sha512sums = e23620b39fea5d2893fe00fe312f594925e8003b1377b1e09f5045fca86a364b3edad328bc455d0da8071c9d9ca22e23ba60386cc25b6e0b1e9311f1425986ee
 	sha512sums = SKIP
 
 pkgname = python-apache-libcloud
