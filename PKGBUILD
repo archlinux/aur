@@ -2,9 +2,9 @@
 # Contributor: Westofer Raymond <westoferraymond@gmail.com>
 pkgname=athens-git
 _pkgname=athens
-pkgver=v1.0.0.beta.68.r3.g2d3c0862
+pkgver=v2.0.0.beta.20
 pkgrel=1
-pkgdesc="Athens is an open-source and local-first alternative to Roam Research. Athens lets you take notes... Master branch "
+pkgdesc="Open-source knowledge graph"
 arch=('i686' 'x86_64')
 url="https://github.com/athensresearch/athens"
 license=('Eclipse Public License - v 1.0')
@@ -28,8 +28,8 @@ pkgver() {
 prepare() {
     cd "$srcdir/${_pkgname}"
     # electron builder enforces email and homepage
-    jq '.author|={"name":"athensresearch" , "email":"athensresearch@gmail.com"}' package.json  > tmp.json && mv tmp.json package.json
-    jq '.homepage="https://github.com/athensresearch/athens"' package.json > tmp.json && mv tmp.json package.json
+    jq '.author|={"name":"athensresearch" , "email":"athensresearch@gmail.com"}' package.json >tmp.json && mv tmp.json package.json
+    jq '.homepage="https://github.com/athensresearch/athens"' package.json >tmp.json && mv tmp.json package.json
     yarn upgrade electron@"$(</usr/lib/electron/version)"
 }
 
@@ -38,14 +38,13 @@ build() {
     local i686=ia32 x86_64=x64
 
     yarn --cache-folder "${srcdir}/yarn-cache"
-    lein compile 
+    lein compile
 
     yarn --cache-folder "${srcdir}/yarn-cache" run \
         electron-builder --linux --"${!CARCH}" --dir \
         -c.electronDist=/usr/lib/electron \
         -c.electronVersion="$(</usr/lib/electron/version)"
 }
-
 
 package() {
     # desktop file
@@ -58,4 +57,3 @@ package() {
     install -Dm644 "build/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm644 "dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}.asar"
 }
-
