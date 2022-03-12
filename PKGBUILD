@@ -2,11 +2,11 @@
 # Contributor: Devaux Fabien <fdev31@gmail.com>
 
 pkgname=kvazaar-git
-pkgver=2.1.0.r1.g7856583e
+pkgver=2.1.0.r63.g96b00ff5
 pkgrel=1
 pkgdesc='An open-source HEVC encoder (git version)'
 arch=('x86_64')
-url='http://ultravideo.cs.tut.fi/#encoder'
+url='http://ultravideo.fi/#encoder'
 license=('BSD')
 depends=('crypto++')
 makedepends=('git' 'yasm')
