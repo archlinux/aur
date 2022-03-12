@@ -1,19 +1,20 @@
 pkgbase = python-migra
-	pkgdesc = Like but for PostgreSQL schemas
+	pkgdesc = A schema comparison tool for PostgreSQL
 	pkgver = 3.0.1621480950
-	pkgrel = 1
+	pkgrel = 2
 	url = https://databaseci.com/docs/migra
 	arch = any
 	license = Unlicense
-	makedepends = python-setuptools
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-installer
 	depends = python
-	depends = python-schemainspect
 	depends = python-sqlbag
-	source = https://files.pythonhosted.org/packages/source/m/migra/migra-3.0.1621480950.tar.gz
-	sha256sums = 5fdce56fe7de79b17b7875250c1e90c645117cc8d358c5a43b38b815390a4445
+	depends = python-six
+	depends = python-schemainspect
+	depends = python-psycopg2
+	source = python-migra::git+https://github.com/djrobstep/migra.git#commit=01acaf2edac85f2a9329169159ad610ab1fa66be
+	b2sums = SKIP
 
 pkgname = python-migra
-	depends = python
-	depends = python-schemainspect
-	depends = python-sqlbag
-

@@ -1,27 +1,60 @@
-# Maintainer: Marco A Rojas <marco.rojas@zentek.com.mx>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Marco A Rojas <marco.rojas@zentek.com.mx>
 
-pkgbase='python-migra'
-pkgname=('python-migra')
-_module='migra'
-pkgver='3.0.1621480950'
-pkgrel=1
-pkgdesc="Like `diff` but for PostgreSQL schemas"
-url="https://databaseci.com/docs/migra"
-depends=('python' 'python-schemainspect' 'python-sqlbag')
-makedepends=('python-setuptools')
-license=('Unlicense')
+pkgname=python-migra
+pkgver=3.0.1621480950
+pkgrel=2
+pkgdesc="A schema comparison tool for PostgreSQL"
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('5fdce56fe7de79b17b7875250c1e90c645117cc8d358c5a43b38b815390a4445')
+url="https://databaseci.com/docs/migra"
+license=('Unlicense')
+depends=(
+  'python'
+  'python-sqlbag'
+  'python-six'
+  'python-schemainspect'
+  'python-psycopg2'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-poetry-core'
+  'python-installer'
+)
+_commit='01acaf2edac85f2a9329169159ad610ab1fa66be'
+source=("$pkgname::git+https://github.com/djrobstep/migra.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "$pkgname"
+}
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+  cd "$pkgname"
+
+  python \
+    -m build \
+    --wheel \
+    --no-isolation
+}
+
+check() {
+  cd "$pkgname"
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/python-migra/LICENSE"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  cd "$pkgname"
+
+  python \
+    -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
+
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
