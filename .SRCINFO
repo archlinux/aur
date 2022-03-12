@@ -5,6 +5,7 @@ pkgbase = hypr-git
 	url = https://github.com/vaxerski/Hypr
 	arch = x86_64
 	license = BSD
+	makedepends = git
 	depends = cairo
 	depends = gdb
 	depends = ninja
@@ -19,6 +20,8 @@ pkgbase = hypr-git
 	depends = gtkmm
 	depends = gtk4
 	depends = gtkmm3
+	options = !makeflags
+	options = !buildflags
 	source = hypr-git::git+https://github.com/vaxerski/Hypr
 	sha256sums = SKIP
 
