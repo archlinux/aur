@@ -3,7 +3,7 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.12.0'
-pkgrel='8214'
+pkgrel='8215'
 _rel='559ef65'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	"sysusers.conf"
 	"videoservertmp.conf")
 noextract=("${source[@]%%::*}")
-sha256sums=('e4f13c9efd844ef393270041c2d26d47ab9e638b087f469de17a78f3f79e5398'
-            'd763e29397f43bf9b99050eb6f7b0a03dd326e39ed56fd2dc480259165da2d0c'
+sha256sums=('c6318d1027c154dbf3ec465375cdaebe4e2753d6a36ddf313fc6a84ac5bf358b'
+            '062bd950a6786a1de25c077581116fa3fd39c939f6ea9274c54a17f4a336f38e'
             '7da74ca97c53669f95efea718bbf05ddd7b0d5b0b97dc93d2777ed8c64388254'
             '4b0fcdf8cc77eb8748041fbc78d2d7b3e75ced0d1b96b6ce38c17241441bc022'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
