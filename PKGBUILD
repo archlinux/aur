@@ -2,7 +2,7 @@
 
 pkgname=pzxtools
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of programs for manipulating PZX files, a tape file format designed primarily for archiving content of Sinclair ZX Spectrum tapes"
 arch=('x86_64')
 url="http://zxds.raxoft.cz/pzx.html"
