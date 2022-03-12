@@ -43,9 +43,8 @@ build() {
   cd build
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="/usr" \
-    -DLauncher_LAYOUT=lin-system \
-    -DLauncher_APP_BINARY_NAME="${pkgname}" \
-    -DLauncher_SHARE_DEST_DIR="share/${pkgname}" \
+    -DLauncher_PORTABLE=OFF \
+    -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     ..
   cmake --build .
 }
@@ -57,7 +56,5 @@ check() {
 
 package() {
   cd "${srcdir}/PolyMC/build"
-  DESTDIR="${pkgdir}" cmake --install .
-  install -D "${srcdir}/PolyMC/build/libLauncher_quazip.so" "${pkgdir}/usr/lib/libLauncher_quazip.so"
-  install -D "${srcdir}/PolyMC/build/libLauncher_nbt++.so" "${pkgdir}/usr/lib/libLauncher_nbt++.so"
+  DESTDIR="$pkgdir" cmake --install .
 }
