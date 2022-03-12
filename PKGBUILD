@@ -139,8 +139,6 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=7.1.3_3204469
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.7
-
 makedepends+=(
   python
   dmg2img
@@ -150,8 +148,8 @@ makedepends+=(
 
 source+=(
   "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/unlocker.py"
-  "efi-patches-${_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/uefipatch/efi-patches.txt"
+  "unlocker.py"
+  "efi-patches.txt"
 )
 sha256sums+=(
   '9ba3e002cc2ed3d3adc96b8b748d49c72069acac35f0fcc71ceaa7729895da17'
@@ -198,7 +196,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   dmg2img -s VMware-Fusion-${_vmware_fusion_ver/_/-}.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}.iso
   7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
-  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
+  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
 
@@ -441,7 +439,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python3 "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
+  python3 "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -456,7 +454,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx -O binary -j efi${arch} --set-section-flags efi${arch}=a efi${arch}.rom.Z
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom.Z")'; $v = uncompress($v); print $v;' < efi${arch}.rom.Z > efi${arch}.rom
 
-    UEFIPatch efi${arch}.rom "$srcdir/efi-patches-${_unlocker_ver}.txt" -o efi${arch}.rom > /dev/null
+    UEFIPatch efi${arch}.rom "$srcdir/efi-patches.txt" -o efi${arch}.rom > /dev/null
 
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom")'; $v = compress($v); print $v;' < efi${arch}.rom > efi${arch}.rom.Z
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx --update-section efi${arch}=efi${arch}.rom.Z
