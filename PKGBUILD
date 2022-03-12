@@ -1,8 +1,8 @@
 # Maintainer: Nathan Vance <natervance@gmail.com>
 
 pkgname=libbible
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="A simplified interface to the SWORD project."
 arch=('x86_64')
 url="https://vance.fish/git/libbible"
@@ -23,5 +23,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('598a4e5af653ce06c6dbe53e58a83847e3286578fe105bf2c304ff1c66f17e9c'
+sha256sums=('9b4161f1662f3f35e1973bd5af9f8f0039a2d32deb8a613b8d43080e9b58398c'
             'SKIP')
