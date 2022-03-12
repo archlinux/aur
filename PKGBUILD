@@ -3,13 +3,13 @@
 
 pkgname=bottles-git
 pkgver=2022.2.28.trento.4.r62.gfd622b29
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Easily manage wineprefix using environments"
 arch=(any)
 url="https://usebottles.com/"
 license=(GPL3)
-depends=(python libhandy dconf patool python-yaml p7zip cabextract)
+depends=(python libhandy dconf patool python-yaml p7zip cabextract wine)
 makedepends=(meson ninja appstream-glib git)
 provides=(bottles)
 conflicts=(bottles)
