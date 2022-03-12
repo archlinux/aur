@@ -2,7 +2,7 @@
 
 pkgname=vscode-langservers-extracted
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language servers extracted from VSCode."
 url="https://github.com/hrsh7th/vscode-langservers-extracted"
 license=("MIT")

@@ -1,7 +1,7 @@
 pkgbase = vscode-langservers-extracted
 	pkgdesc = Language servers extracted from VSCode.
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrsh7th/vscode-langservers-extracted
 	arch = any
 	license = MIT
