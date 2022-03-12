@@ -1,0 +1,16 @@
+pkgbase = yoku-git
+	pkgdesc = Markdown based TUI todo
+	pkgver = 0.1.0.r0.gfeb96db
+	pkgrel = 1
+	url = https://github.com/misobarisic/yoku
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = rust
+	provides = yoku
+	conflicts = yoku
+	conflicts = yoku-bin
+	source = yoku::git+https://github.com/misobarisic/yoku.git#branch=main
+	sha256sums = SKIP
+
+pkgname = yoku-git
