@@ -1,6 +1,6 @@
 pkgbase = raspberrypi-devicetree-git
 	pkgdesc = Downstream devicetrees and overlays for Raspberry Pi
-	pkgver = 20220120
+	pkgver = 20220308
 	pkgrel = 1
 	url = https://github.com/raspberrypi/firmware
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = raspberrypi-devicetree-git
 	conflicts = linux-raspberrypi
 	conflicts = linux-raspberrypi4
 	options = !strip
-	source = https://github.com/raspberrypi/firmware/archive/c6d56567ff6ef17fd85159770f22abcf2c5953ed.tar.gz
-	md5sums = fb3890d4ae3f4caf432698e944989254
+	source = https://github.com/raspberrypi/firmware/archive/191360eaf2e5933eaa0ed76ac0d62722b6f9a58f.tar.gz
+	md5sums = c62776b7d10cf082f755b0f8ddd2e51b
 
 pkgname = raspberrypi-devicetree-git
