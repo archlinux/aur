@@ -2,9 +2,9 @@
 
 _pluginname=replay-source
 pkgname=obs-$_pluginname
-pkgver=1.6.9
+pkgver=1.6.10
 _obsver=27.2.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Plugin to (slow motion) instant replay sources from memory"
 arch=("i686" "x86_64" "aarch64")
 url="https://obsproject.com/forum/resources/replay-source.686/"
@@ -12,7 +12,7 @@ license=("GPL2")
 depends=("obs-studio>=$_obsver")
 makedepends=("cmake" "git" "libxcomposite" "ffmpeg" "pciutils")
 source=(
-  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=2af7f09de62b90684cde2d0b11019bb71810142b"
+  "$pkgname::git+https://github.com/exeldro/$pkgname#commit=319f0806784a98ca813c4ba7f0e1b3c19d0d149e"
   "obs-studio-$_obsver.tar.gz::https://github.com/obsproject/obs-studio/archive/$_obsver.tar.gz"
 )
 sha256sums=(
