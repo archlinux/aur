@@ -1,26 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=normcap
-pkgver=0.2.10
+pkgver=0.3.0b1
 pkgrel=1
 pkgdesc="OCR powered screen-capture tool to capture information instead of images"
 arch=('any')
 url="https://dynobo.github.io/normcap"
 license=('GPL')
-depends=('leptonica' 'pyside2' 'python-importlib-metadata' 'python-importlib_resources'
-         'python-jeepney' 'python-tesserocr' 'tesseract-data-eng')
+depends=('leptonica' 'pyside6' 'python-importlib-metadata' 'python-importlib_resources'
+         'python-jeepney' 'python-pytesseract' 'tesseract-data-eng')
 makedepends=('python-pip' 'python-poetry')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dynobo/normcap/archive/refs/tags/v$pkgver.tar.gz"
 #        "https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('0bcf20fe4497b05127cca07a236a6448eb97ba86ee19e89cf66a7ca4beea29ab'
+sha256sums=('f92293a6b7d027d986d1463c529a99a39e4e3a2e37e463f455cc14d472c3ed76'
             '29992fdb19773faa7582e44fe4394d4772984d5b7b9b7b347617c387f0a260f9')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  # Relax requirements
-  sed -i 's/python = ">=3.7.1,<3.10"/python = ">=3.7.1"/g' pyproject.toml
-}
 
 build() {
   cd "$pkgname-$pkgver"
