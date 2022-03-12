@@ -33,6 +33,5 @@ pkgbase = mutter-git
 	conflicts = mutter
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git
 	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = mutter-git

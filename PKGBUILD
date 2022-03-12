@@ -21,7 +21,7 @@ provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
   cd $_pkgname
