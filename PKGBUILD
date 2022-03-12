@@ -6,7 +6,7 @@
 
 pkgname=mailspring
 pkgver=1.10.1
-pkgrel=0
+pkgrel=1
 pkgdesc="A beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
 arch=('x86_64')
 license=('custom: GPL3 and (C) 2016-2019 Foundry 376, LLC.')
