@@ -143,8 +143,6 @@ if [ -n "$_enable_macOS_guests" ]; then
 _vmware_fusion_ver=10.1.6_12989998
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
-_unlocker_ver=3.0.7
-
 makedepends+=(
   python
   unzip
@@ -154,8 +152,8 @@ makedepends+=(
 source+=(
   "darwinPre15-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwinPre15.zip.tar"
   "darwin-tools-${_vmware_fusion_ver}.zip.tar::https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/${_vmware_fusion_ver/_//}/packages/com.vmware.fusion.tools.darwin.zip.tar"
-  "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/unlocker.py"
-  "efi-patches-${_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/uefipatch/efi-patches.txt"
+  "unlocker.py"
+  "efi-patches.txt"
 )
 sha256sums+=(
   '195313791f2c2cf880b0ba6c9d130e40ab6729335c0980fcc40df4209c1ed52b'
@@ -208,7 +206,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     rm -rf payload manifest.plist
   done
 
-  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
+  sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker.py"
 fi
 }
 
@@ -448,7 +446,7 @@ fi
 
 if [ -n "$_enable_macOS_guests" ]; then
   msg "Patching VMware to enable macOS guest support"
-  python3 "$srcdir/unlocker-${_unlocker_ver}.py" > /dev/null
+  python3 "$srcdir/unlocker.py" > /dev/null
 
   for isoimage in ${_fusion_isoimages[@]}
   do
@@ -460,7 +458,7 @@ if [ -n "$_enable_macOS_guests" ]; then
   _efi_arch=(32 64)
   for arch in ${_efi_arch[@]}
   do
-    UEFIPatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches-${_unlocker_ver}.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
+    UEFIPatch "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" "$srcdir/efi-patches.txt" -o "$pkgdir/usr/lib/vmware/roms/EFI${arch}.ROM" > /dev/null
   done
 fi
 
