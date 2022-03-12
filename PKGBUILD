@@ -1,6 +1,6 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_tagname=v0.4.1
+_tagname=v0.5.0
 pkgname=poezio-omemo
 _pkgname=${pkgname}
 pkgrel=1
