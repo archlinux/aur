@@ -1,17 +1,21 @@
 pkgbase = tabby-fossil
 	pkgdesc = Tabbed tiling wayland compositor
-	pkgver = 1.4r105.2745794ce3
+	pkgver = 2.0r129.8b61ce82dc
 	pkgrel = 1
 	url = https://code.jessemcclure.org/tabby
 	arch = x86_64
 	license = MIT
 	makedepends = fossil
+	makedepends = wayland-protocols
 	depends = cairo
-	depends = fontconfig
+	depends = glib2
 	depends = glibc
 	depends = libxkbcommon
+	depends = nkk
+	depends = pango
 	depends = wayland
 	depends = wlroots
+	optdepends = polkit: starting wlroots-based compositors without seatd
 	source = fossil+https://code.jessemcclure.org/tabby
 	sha256sums = SKIP
 
