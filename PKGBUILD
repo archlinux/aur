@@ -19,5 +19,6 @@ prepare() {
 
 package() {
   npm i -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
+  chown -R root:root "$pkgdir"
   install -Dm644 package/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
