@@ -2,8 +2,8 @@
 _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
-pkgver=0.8.9
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -13,7 +13,7 @@ checkdepends=(python-pytest-codeblocks python-meshzoo)
 optdepends=('python-meshzoo: for riemann sphere plots'
   'python-pyvista: for create an unstructured grid')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f639d9a3c866b0381884fe85fbf942aa03cfc3058c89ee3c90b08a5b1bd957c804501d16c65fb20931a5373aa97aa00b62cf8976238a85617508d40d7adc386a')
+sha512sums=('f6f8da1e973b714d482fb9623bc030b467bc8b117175fae6f92315ca612dec80a84a7837aabf93a35746dd27bbb20c8cd473307e540b459ef66ceb73e1cad335')
 
 build() {
   cd ${_base}-${pkgver}
@@ -25,7 +25,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not riemann and not tools'
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not riemann'
 }
 
 package() {

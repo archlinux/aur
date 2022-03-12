@@ -1,7 +1,7 @@
 pkgbase = python-cplot
 	pkgdesc = Plot complex functions
-	pkgver = 0.8.9
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/nschloe/cplot
 	arch = x86_64
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = python-cplot
 	depends = python-pypng
 	optdepends = python-meshzoo: for riemann sphere plots
 	optdepends = python-pyvista: for create an unstructured grid
-	source = https://github.com/nschloe/cplot/archive/v0.8.9.tar.gz
-	sha512sums = f639d9a3c866b0381884fe85fbf942aa03cfc3058c89ee3c90b08a5b1bd957c804501d16c65fb20931a5373aa97aa00b62cf8976238a85617508d40d7adc386a
+	source = https://github.com/nschloe/cplot/archive/v0.9.0.tar.gz
+	sha512sums = f6f8da1e973b714d482fb9623bc030b467bc8b117175fae6f92315ca612dec80a84a7837aabf93a35746dd27bbb20c8cd473307e540b459ef66ceb73e1cad335
 
 pkgname = python-cplot
