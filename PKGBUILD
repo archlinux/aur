@@ -48,6 +48,7 @@ prepare() {
     git submodule update
 
     # HACK: manually clone stb into subprojects
+    rm -rf "subprojects/stb"
     git clone "$srcdir/stb" "subprojects/stb"
     cp "subprojects/packagefiles/stb/meson.build" "subprojects/stb/"
 }
