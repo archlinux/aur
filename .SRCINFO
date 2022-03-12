@@ -1,0 +1,18 @@
+pkgbase = pine64-rkdeveloptool-git
+	pkgdesc = fastboot-like CLI tool for flashing rockchip devices, forked to support the PineNote and Quartz64 as well as other Pine64 RK devices
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitlab.com/pine64-org/quartz-bsp/rkdeveloptool
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = scdoc
+	depends = libusb
+	provides = rkdeveloptool
+	conflicts = rkdeveloptool
+	source = git+https://gitlab.com/pine64-org/quartz-bsp/rkdeveloptool.git
+	sha256sums = SKIP
+
+pkgname = pine64-rkdeveloptool-git
