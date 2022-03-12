@@ -1,0 +1,18 @@
+pkgbase = chowcentaur-bin
+	pkgdesc = Digital emulation of the Klon Centaur guitar pedal using RNNs, Wave Digital Filters, and more
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://chowdsp.com/
+	arch = x86_64
+	groups = vst3-plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	license = BSD
+	depends = libglvnd
+	depends = freetype2
+	depends = alsa-lib
+	conflicts = chowkloncentaurmodel.lv2-git
+	source = https://github.com/jatinchowdhury18/KlonCentaur/releases/download/v1.4.0/ChowCentaur-Linux-x64-1.4.0.deb
+	sha256sums = abd0fda32e5b45f0b144ac3d4559009e3b837a9be0b859d99a82c4bba9c52303
+
+pkgname = chowcentaur-bin
