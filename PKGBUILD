@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-displays')
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Output management utility for sway Wayland compositor"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-displays"
@@ -16,4 +16,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
   install -D -t "$pkgdir"/usr/share/pixmaps nwg-displays.svg
+  install -D -t "$pkgdir"/usr/share/applications nwg-displays.desktop
 }

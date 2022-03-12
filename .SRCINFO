@@ -1,7 +1,7 @@
 pkgbase = nwg-displays
 	pkgdesc = Output management utility for sway Wayland compositor
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/nwg-displays
 	arch = x86_64
 	license = MIT
