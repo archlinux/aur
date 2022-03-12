@@ -1,7 +1,7 @@
 pkgbase = yoku
 	pkgdesc = Markdown based TUI todo
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/misobarisic/yoku
 	arch = x86_64
 	license = GPL3
