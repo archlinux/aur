@@ -5,8 +5,8 @@
 pkgbase=python-pytorch-noavx
 pkgname=("python-pytorch-noavx" "python-pytorch-noavx-cuda")
 _pkgname="pytorch"
-pkgver=1.11.0rc5
-_pkgver=1.11.0-rc5
+pkgver=1.11.0
+_pkgver=1.11.0
 pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"

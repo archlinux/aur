@@ -1,6 +1,6 @@
 pkgbase = python-pytorch-noavx
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
-	pkgver = 1.11.0rc5
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://pytorch.org
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = python-pytorch-noavx
 	depends = intel-mkl
 	depends = python-typing_extensions
 	options = !lto
-	source = pytorch-1.11.0rc5::git+https://github.com/pytorch/pytorch.git#tag=v1.11.0-rc5
+	source = pytorch-1.11.0::git+https://github.com/pytorch/pytorch.git#tag=v1.11.0
 	source = python-pytorch-noavx-pthreadpool::git+https://github.com/Maratyszcza/pthreadpool.git
 	source = python-pytorch-noavx-NNPACK::git+https://github.com/Maratyszcza/NNPACK.git
 	source = python-pytorch-noavx-ios-cmake::git+https://github.com/Yangqing/ios-cmake.git
