@@ -1,6 +1,6 @@
 pkgbase = betterbin
 	pkgdesc = Various useful shell scripts to increace productivity and efficiency in ones workflow!
-	pkgver = 1.0.r66
+	pkgver = 1.0.r64
 	pkgrel = 1
 	url = https://gitlab.com/qYp/betterbin
 	arch = x86_64
