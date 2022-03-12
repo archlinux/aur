@@ -45,8 +45,8 @@ prepare() {
 }
 
 build() {
-  export CFLAGS="$CFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized -Wformat"
-  export CXXFLAGS="$CXXFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized -Wformat"
+  export CFLAGS="$CFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
+  export CXXFLAGS="$CXXFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
   make -C open-zwave
 }
 
