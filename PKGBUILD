@@ -2,7 +2,7 @@
 # Maintainer: e-search-git
 # Contributor: e-search-git
 pkgname=e-search-git
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
