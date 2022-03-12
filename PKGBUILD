@@ -4,7 +4,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-workspaces
-pkgver=0.2.31
+pkgver=0.2.32
 pkgrel=1
 pkgdesc="Cargo plugin for managing cargo workspaces and their crates"
 url="https://github.com/pksunkara/cargo-workspaces"
@@ -12,20 +12,12 @@ depends=('gcc-libs' 'openssl' 'zlib')
 makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "${pkgname}-fix-tests.patch::$url/commit/f6a38cdd8f974022d6faf77471f6375fcf165dae.patch"
-        "${pkgname}-cargo-lock.patch::$url/commit/84c98f1baedc007e13e39a360a0b1dc6094c8bef.patch")
-sha512sums=('ede610ac6ca24b9169dd6c9eb5dcd07c01508e2321947e9b9ceb31fc9ba9de54b6a5bebd4100ca4dbfd7ed225f1329c9546d953caeb3fb277c92ede4f0d33021'
-            '9d94f28adcac7aacf51df708279b54b0f5a5a54d8f443267e3f677271c37885f67c35ff2eda600467435596f72b523d50115199c7ac8adca233551b005512329'
-            '09b23c6934cd40634e31e8f791d82dfe55ae83f0ffa3b50d21280d0fd1ca1db85513f74735ad685831310df2a3c57b2e66f7290e27f5c6353c1b815f39ce0105')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('c35cf519264f90e54dd40aafb334820204a990844617338515ada63aad3b5159731b8eed475c2c74a07f2eb42bdf5bbb2429901877f2957971ae5a02007934d2')
 options=('!lto')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -Np1 -i "../${pkgname}-fix-tests.patch"
-  patch -Np1 -i "../${pkgname}-cargo-lock.patch"
-
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}/${pkgname}"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
