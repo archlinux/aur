@@ -10,8 +10,6 @@ license=('GPL3')
 depends=('openssl' 'libplist' 'avahi' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 optdepends=('gstreamer-vaapi: GStreamer plugin required for certain GPUs')
 makedepends=('cmake')
-conflicts=('uxplay')
-provides=('uxplay')
 source=("$_gitname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "uxplay.desktop")
 sha256sums=('70fc14441b2ebe335b59bae959fc828382e45ae01f0c0c5b9b7d9da4dbc3b1e1'
             '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
