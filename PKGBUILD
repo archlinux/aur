@@ -57,7 +57,7 @@ check() {
 }
 
 package_python-pydata-sphinx-theme() {
-    depends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils')
+    depends=('python-sphinx' 'python-beautifulsoup4' 'python-docutils' 'python-pandas')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
