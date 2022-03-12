@@ -1,10 +1,10 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=drizzlepac
 pkgname=python-${_pyname}-doc
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Documentation for DrizzlePac"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.stsci.edu/scientific-community/software/drizzlepac.html"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}"
@@ -20,22 +20,28 @@ makedepends=("python-${_pyname}=${pkgver}"
              'texlive-latexextra'
              'python-bokeh'
              'python-scikit-image'
-             'python-pypdf2')
+             'python-pypdf2'
+             'python-astrocut')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz"
-        'fix_changelog_title-3.3.0.patch'
-        'fix_changelog_indent.patch')
+        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCell14_14.png"
+        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCell14_15.png"
+        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/SkyCellCombo.png"
+        "https://raw.githubusercontent.com/spacetelescope/drizzlepac/master/doc/source/ZoomSkyCellCombo.png"
+        'fix_catalog_generation_title_level.patch')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
-md5sums=('9a1c3dfafbbdd477fedfb5f9747ced44'
-         'cc5c4f5b71429895ac093c39e66af232'
-         'd466b6dc479df8144ce13dacf5081d44')
+md5sums=('0d66e2128ea86951ab4114dfc9e16430'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         '3c29fa986f6ee57c2c63d94cea8fb3ff')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    patch -Np1 -i "${srcdir}/fix_changelog_title-3.3.0.patch"
-    patch -Np1 -i "${srcdir}/fix_changelog_indent.patch"
-#   sed -i 's/stylesheet/css_file/' doc/source/conf.py
+    patch -Np1 -i "${srcdir}/fix_catalog_generation_title_level.patch"
     mv ${_pyname} _${_pyname}
+    ln -s ${srcdir}/*.png ${srcdir}/${_pyname}-${pkgver}/doc/source
 }
 
 build() {
