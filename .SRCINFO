@@ -1,5 +1,5 @@
 pkgbase = betterzsh
-	pkgdesc = Configurations to enhance user experience with the ZSH shell.
+	pkgdesc = Configurations to enhance user experience within the ZSH shell.
 	pkgver = 1.0.r5
 	pkgrel = 1
 	url = https://gitlab.com/qYp/betterzsh

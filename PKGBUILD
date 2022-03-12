@@ -3,7 +3,7 @@
 pkgname=betterzsh
 pkgver=1.0.r5
 pkgrel=1
-pkgdesc='Configurations to enhance user experience with the ZSH shell.'
+pkgdesc='Configurations to enhance user experience within the ZSH shell.'
 arch=(any)
 url="https://gitlab.com/qYp/${pkgname}"
 license=('MIT')
