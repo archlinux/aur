@@ -20,8 +20,6 @@ pkgver() {
 
 package() {
   cd ${pkgname}
-  rm -rf ${pkgdir}/usr/bin/{"$(ls -1 ${srcdir}/${pkgname}/usr/bin/${_pkgname})"}
-  mkdir -p "${pkgdir}/usr/bin" ; mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm775 usr/bin/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin/"
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
