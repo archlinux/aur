@@ -3,7 +3,7 @@
 pkgname=lunar-magic
 pkgver=3.31
 _pkgver=331
-pkgrel=2
+pkgrel=1
 pkgdesc='Level editor for Super Mario World'
 url='https://fusoya.eludevisibility.org/lm/index.html'
 arch=('i686' 'x86_64')
