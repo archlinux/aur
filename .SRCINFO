@@ -1,6 +1,6 @@
 pkgbase = pulsemeeter-git
 	pkgdesc = A pulseaudio audio routing application
-	pkgver = 1.2.9.r0.c4602d2
+	pkgver = 1.2.12.r1.b5a40db
 	pkgrel = 1
 	url = https://github.com/theRealCarneiro/pulsemeeter
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = pulsemeeter-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = gtk3
+	depends = libappindicator-gtk3
 	depends = python
 	depends = python-gobject
 	depends = python-appdirs
