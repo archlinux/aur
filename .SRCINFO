@@ -1,0 +1,28 @@
+pkgbase = python-astrocut
+	pkgdesc = Tools for making image cutouts from sets of TESS full frame images
+	pkgver = 0.9
+	pkgrel = 1
+	url = https://astrocut.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-astropy
+	makedepends = python-sphinx_rtd_theme
+	makedepends = python-astropy
+	makedepends = python-scipy
+	source = https://files.pythonhosted.org/packages/source/a/astrocut/astrocut-0.9.tar.gz
+	md5sums = 6f7cbc73f9c0e0f08c2442547c7cff0c
+
+pkgname = python-astrocut
+	depends = python>=3.6
+	depends = python-astropy
+	depends = python-scipy
+	depends = python-pillow
+	optdepends = python-astrocut-doc: Documentation for astrocut
+
+pkgname = python-astrocut-doc
+	pkgdesc = Documentation for python-astrocut
