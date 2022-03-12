@@ -1,7 +1,7 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
 	pkgver = 1.3.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xushengfeng.github.io/eSearch-website/
 	install = e-search.install
 	arch = x86_64
@@ -27,6 +27,7 @@ pkgbase = e-search
 	optdepends = apparmor
 	optdepends = libgnome-keyring
 	optdepends = pulseaudio
+	conflicts = e-search-git
 	options = !strip
 	options = !emptydirs
 	source = https://download.fastgit.org/xushengfeng/eSearch/releases/download/1.3.9/e-search_1.3.9.aur
