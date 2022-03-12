@@ -1,8 +1,8 @@
+# Maintainer: Mike Pento <mpento darkforge net>
 
-# Maintainer: Developpix <developpix@gmail.com>
 pkgname=jmonkeyplatform
-pkgver=3.2.2
-pkgrel=2
+pkgver=3.3.0
+pkgrel=1
 pkgdesc="A complete 3D game development suite written purely in Java."
 arch=('any')
 url="http://jmonkeyengine.org"
@@ -15,7 +15,7 @@ source=(
   "${pkgname}.png"
 )
 sha512sums=(
-  '0d783874e6c12406edd6a09f41edf75fa25113c7738ad3244a8bdc0db17368ed9d25b7debea9d3bcd60e186a37b1490ba528a1ea26325b3bc20c269b57d01c25'
+  'b3c277f70dd14dd926ca2ca0fe8854ccfdaf0e8e1f6e5bcda078263c257ed4c0c6f3a3655a41b2787b507670c9b309b6bbafc40f6b687ab3a74d482a922a077d'
   '1eca00283501e72ba2b15c79321ad1ed3f153339f3c165090f37712be687e9b3f47be3738ed6522c7302b245405671eb3d12b1ef0de1373d97c7b3f1b472b464'
   'ff02936a70abab71026ba3cb6411a617dc5cb806ac4c1079d9e3118b48847da292c346ec49ca93393a030332a8062b626f5b2332f0f87384d3c34d2e66911fb8'
 )
