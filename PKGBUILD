@@ -1,7 +1,7 @@
 # Maintainer: Wolfgang Popp <mail@wolfgang-popp.de>
 pkgname=ytcc
-pkgver=2.5.4
-pkgrel=3
+pkgver=2.5.5
+pkgrel=1
 pkgdesc="Command line tool to keep track of playlists"
 arch=('any')
 url="https://github.com/woefe/ytcc"
@@ -10,7 +10,7 @@ depends=('python-click' 'yt-dlp' 'python-wcwidth')
 optdepends=('mpv' 'fzf' 'youtube-dl')
 makedepends=('git' 'python-setuptools')
 source=("https://github.com/woefe/ytcc/archive/v${pkgver}.tar.gz")
-sha256sums=('1a0c744e3cd762dc0f71a80b86aacfdc94e9636dfbf10211ca2581e8ec59f78f')
+sha256sums=('ba40993cbebde32c0942cb8c4eff0864a43974ed6f5b84cf2271b124d08cddb1')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
