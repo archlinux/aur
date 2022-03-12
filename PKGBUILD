@@ -26,7 +26,7 @@ build() {
   go build -o build cmd/dstp/main.go
 }
 
-test() {
+check() {
   cd "$pkgname-$pkgver"
   go test ./...
 }
