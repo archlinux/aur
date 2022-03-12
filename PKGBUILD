@@ -6,14 +6,14 @@
 
 pkgname=polymc
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
 depends=('java-runtime' 'libgl' 'qt5-base' 'zlib')
 provides=('polymc')
-conflicts=('polymc' 'multimc')
+conflicts=('polymc')
 makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
             'openal: to use system OpenAL libraries'
@@ -44,7 +44,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_PORTABLE=OFF \
-    -DLauncher_APP_BINARY_NAME="${_pkgname}" \
+    -DLauncher_APP_BINARY_NAME="${pkgname}" \
     ..
   cmake --build .
 }
